@@ -1,5 +1,7 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass article
 \begin_preamble
 \usepackage{dcolumn}
@@ -11,12 +13,11 @@
 \graphics default
 \paperfontsize default
 \spacing single
-\papersize Default
-\paperpackage a4
-\use_geometry 0
+\papersize default
+\use_geometry false
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -27,48 +28,77 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tracking_changes false
+\output_changes true
+\end_header
 
-\layout Title
+\begin_body
+
+\begin_layout Title
 
 A Better Decimal-Alignment Solution
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 An alternative way to have decimal alignment in tables is through the dcolumn
  package.
  Add the following to the LateX preamble:
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 
-\backslash 
+\backslash
 usepackage{dcolumn} 
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 
-\backslash 
+\backslash
 newcolumntype{d}[1]{D{.}{.}{#1}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 To have a column decimally aligned, enter in the 
-\family sans 
+\family sans
 Special Column Alignment
-\family default 
+\family default
  box of the 
-\family sans 
+\family sans
 Table extra
-\family default 
+\family default
  form the following:
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 d{number of decimals of the data}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 In the following table we entered 
-\family typewriter 
+\family typewriter
 d{4}
-\family default 
+\family default
 :
-\layout Standard
-\added_space_top 0.3cm \added_space_bottom 0.3cm \align center 
+\end_layout
+
+
+\begin_layout Standard
+
+
+\begin_inset VSpace 0.3cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
 
 \begin_inset  Tabular
 <lyxtabular version="3" rows="5" columns="2">
@@ -79,123 +109,164 @@ d{4}
 <cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 Expression
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell multicolumn="1" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 Value 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell multicolumn="1" alignment="right" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 3.1416
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 36.462
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 80663.
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 1.3402e18
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 </row>
 </lyxtabular>
 
-\end_inset 
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset VSpace 0.3cm
+\end_inset
+
+
+\end_layout
+
+
+\begin_layout Standard
 
 To create extra column space just increase the number of decimals in 
-\family typewriter 
+\family typewriter
 d{}
-\family default 
+\family default
 .
  Setting the multicolumn attribute for a single cell makes it insensitive
  to the decimal alignment which comes in handy as well.
  A drawback of this method is that math mode is not allowed in a column
  with decimal alignment except if the multicolumn attribute is set.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 This method offers the same flexibility as the 
-\family typewriter 
+\family typewriter
 dcolumn
-\family default 
+\family default
  package.
  One could, for example, change the alignment separator, and have different
  alignment separators for different columns by defining multiple column
  types in the preamble.
  The syntax is as follows: 
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 D{inputsep}{outputsep}{decimal places}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 The interested reader is directed towards the 
-\family typewriter 
+\family typewriter
 dcolumn
-\family default 
+\family default
  package documentation for more details.
-\the_end
+\end_layout
+
+\end_body
+\end_document

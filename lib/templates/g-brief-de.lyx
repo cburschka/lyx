@@ -1,5 +1,7 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass g-brief-de
 \begin_preamble
 %%\lochermarke
@@ -14,12 +16,11 @@
 \graphics default
 \paperfontsize default
 \spacing single
-\papersize Default
-\paperpackage a4
-\use_geometry 0
+\papersize default
+\use_geometry false
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -30,91 +31,153 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tracking_changes false
+\output_changes true
+\end_header
 
-\layout Name
+\begin_body
+
+\begin_layout Name
 
 Thomas Hartkens
-\layout Unterschrift
+\end_layout
+
+\begin_layout Unterschrift
 
 Thomas Hartkens
-\layout Strasse
+\end_layout
+
+\begin_layout Strasse
 
 Edmund-Siemers-Allee 25
-\layout Zusatz
+\end_layout
 
-\layout Ort
+\begin_layout Zusatz
+
+\end_layout
+
+\begin_layout Ort
 
 20434 Hamburg
-\layout Land
+\end_layout
 
-\layout RetourAdresse
+\begin_layout Land
 
-\layout Telefon
+\end_layout
+
+\begin_layout RetourAdresse
+
+\end_layout
+
+\begin_layout Telefon
 
 +49 40 3333333
-\layout Telefax
+\end_layout
 
-\layout Telex
+\begin_layout Telefax
 
-\layout EMail
+\end_layout
+
+\begin_layout Telex
+
+\end_layout
+
+\begin_layout EMail
 
 thomas@hartkens.de 
-\layout HTTP
+\end_layout
+
+\begin_layout HTTP
 
 www.hartkens.de/thomas
-\layout Bank
+\end_layout
 
-\layout BLZ
+\begin_layout Bank
 
-\layout Konto
+\end_layout
 
-\layout Adresse
+\begin_layout BLZ
+
+\end_layout
+
+\begin_layout Konto
+
+\end_layout
+
+\begin_layout Adresse
 
 Hans Beispiel
-\newline 
+\newline
 Teststrasse 34
-\newline 
+\newline
 26871 Musterberg
-\layout Betreff
+\end_layout
+
+\begin_layout Betreff
 
 Musterbrief
-\layout Postvermerk
+\end_layout
+
+\begin_layout Postvermerk
 
 EINSCHREIBEN
-\layout MeinZeichen
+\end_layout
 
-\layout IhrZeichen
+\begin_layout MeinZeichen
+
+\end_layout
+
+\begin_layout IhrZeichen
 
 TH
-\layout IhrSchreiben
+\end_layout
 
-\layout Anlagen
+\begin_layout IhrSchreiben
 
-\layout Verteiler
+\end_layout
 
-\layout Datum
+\begin_layout Anlagen
+
+\end_layout
+
+\begin_layout Verteiler
+
+\end_layout
+
+\begin_layout Datum
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Brieftext
+\begin_layout Standard
 
-\backslash 
+\backslash
 today
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Anrede
+\end_layout
+
+\begin_layout Anrede
 
 Sehr geehrter Herr Beispiel,
-\layout Gruss
+\end_layout
+
+\begin_layout Gruss
 
 Mit freundlichen Grüßen,
-\layout Brieftext
+\end_layout
+
+\begin_layout Brieftext
 
 seit der siebten Mieterhöhung im laufenden Jahr konnte ich keinen Zahlungseingan
 g von Ihnen mehr verbuchen.
  Ich bitte Sie Ihren Verpflichtungen schnellstens nachzukommen, da ich mich
  sonst gezwungen sehe, Ihre Miete ein weiteres mal anzuheben.
-\the_end
+\end_layout
+
+\end_body
+\end_document

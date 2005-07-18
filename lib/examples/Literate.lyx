@@ -1,5 +1,7 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass literate-article
 \language english
 \inputencoding default
@@ -7,12 +9,11 @@
 \graphics default
 \paperfontsize default
 \spacing single
-\papersize Default
-\paperpackage a4
-\use_geometry 0
+\papersize default
+\use_geometry false
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -23,80 +24,107 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tracking_changes false
+\output_changes true
+\end_header
 
-\layout Title
+\begin_body
+
+\begin_layout Title
 
 LyX and Literate Programming
-\newline 
+\newline
 An example program
-\layout Author
+\end_layout
+
+\begin_layout Author
 
 Edmar Wienskoski Jr.
-\newline 
+\newline
 edmar-w-jr@technologist.com
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Modified by Bernard Michael Hurley bernardh@westherts.ac.uk ---- Don't blame
  Edmar for any errors that have crept in!
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Abstract
+\end_layout
+
+\begin_layout Abstract
 
 
-\series bold 
+\series bold
 Note:
-\series default 
+\series default
  This example program is provided for educational use only.
  The functionality in this C program has been superceded by the equivalent
  Python code in 
-\emph on 
+\emph on
 examples/listerrors.lyx
-\emph default 
+\emph default
  which should be installed in the LyX scripts directory.
-\layout Date
+\end_layout
+
+\begin_layout Date
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 today
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset LatexCommand \tableofcontents{}
 
-\end_inset 
+\end_inset
 
 
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Introduction
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 After typesetting a document, LyX scans the LaTeX log file looking for errors.
  For each error found, the line number is obtained and a error box is displayed
  in the LyX screen at that position.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 To use this feature to view compilation errors while working with literate
  documents, we need a program that filters the compilation errors and puts
  them in a format suitable for LyX reading it.
  
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 In this document we present a filter that recognizes compilation error messages
  from noweb, gnu C, and the IBM C compiler (xlc).
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 The filter is required to read from standard input, parse for error messages
  and copy the error messages to the standard output.
@@ -106,176 +134,202 @@ The filter is required to read from standard input, parse for error messages
  read other formats as well (like gcc error messages for example).
  This mechanism is necessary to fully explore the literate programming tool's
  capabilities.
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Algorithm
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Function bodies>>=
-\newline 
+\newline
 int
-\newline 
+\newline
 main (int argc, char **argv)
-\newline 
+\newline
 {
-\newline 
+\newline
   if (argc == 2) {
-\newline 
+\newline
     switch (argv[1][0]) {
-\newline 
+\newline
     case 'n':
-\newline 
+\newline
       <<Scan input for noweb error messages>>
-\newline 
+\newline
       break;
-\newline 
+\newline
     case 'x':
-\newline 
+\newline
       <<Scan input for xlc error messages>>
-\newline 
+\newline
       break;
-\newline 
+\newline
     case 'a':
-\newline 
+\newline
       <<AIX system using both noweb and xlc>>
-\newline 
+\newline
       break;
-\newline 
+\newline
     case 's':
-\newline 
+\newline
     case 'b':
-\newline 
+\newline
       <<Solaris and Linux systems using both noweb and gcc>>
-\newline 
+\newline
       break;
-\newline 
+\newline
     case 'g':
-\newline 
+\newline
     default:
-\newline 
+\newline
       <<Scan input for gcc error messages>>
-\newline 
+\newline
       break;
-\newline 
+\newline
     }
-\newline 
+\newline
   } else {
-\newline 
+\newline
     <<Scan input for gcc error messages>>
-\newline 
+\newline
   }
-\newline 
+\newline
 }
-\newline 
+\newline
 @
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Function prototypes>>=
-\newline 
+\newline
 int main (int argc, char **argv);
-\newline 
+\newline
 @
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Data Structures
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 We resort to some global variables to allow access from several different
  routines.
  These are the buffer and related pointers used during the parse of the
  input.
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Global variables>>=
-\newline 
+\newline
 char    buffer[200][200];
-\newline 
+\newline
 int     last_buf_line;
-\newline 
+\newline
 int     last_err_line;
-\newline 
+\newline
 int     err_line;
-\newline 
+\newline
 @ 
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 The output format
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 The output format mimics the TeX error messages format.
  This function prints a number of lines residing in the global variable
  
-\family typewriter 
+\family typewriter
 buffer
-\family default 
+\family default
 , a program name and line number.
  There is no special requirement on the input strings, they can be anything.
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 This function has been slightly changed from EW's original to make scanning
  a bit easier with LaTeX::scanLogFile().
  The test has been added because LyX can crash if empty lines are allowed
  here --- I can't figure out why! --- BMH
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Function bodies>>=
-\newline 
+\newline
 void
-\newline 
+\newline
 output_error (int buf_size, int error_line, char *tool)
-\newline 
+\newline
 {
-\newline 
+\newline
   int     i;
-\newline 
+\newline
  
-\newline 
+\newline
   fprintf(stdout, "! Build Error: ==> %s ==>
-\backslash 
+\backslash
 n", tool);
-\newline 
+\newline
   fprintf(stdout, " ...
-\backslash 
+\backslash
 n
-\backslash 
+\backslash
 nl.%d ...
-\backslash 
+\backslash
 n", error_line);
-\newline 
+\newline
  
-\newline 
+\newline
   for (i=0; i<buf_size; i++)
-\newline 
+\newline
     if (strlen(buffer[i]) != 0)
-\newline 
+\newline
       fprintf(stdout, "%s", buffer[i]);
-\newline 
+\newline
  
-\newline 
+\newline
   fprintf(stdout, "
-\backslash 
+\backslash
 n");
-\newline 
+\newline
 }
-\newline 
+\newline
 @
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Function prototypes>>=
-\newline 
+\newline
 void output_error (int buf_size, int error_line, char *tool);
-\newline 
+\newline
 @
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Functions Implementation
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Both noweave and notangle routines, always output one single line for each
  error found, thus to scan the buffer for noweb error messages is enough
@@ -283,26 +337,30 @@ Both noweave and notangle routines, always output one single line for each
  Note that the noweb software does not provide a line error number, so all
  errors boxes related to noweb messages will be displayed at the beginning
  of the file.
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Scan input for noweb error messages>>=
-\newline 
+\newline
 {
-\newline 
+\newline
   last_buf_line = 0;
-\newline 
+\newline
   while (fgets(buffer[0], 200, stdin)) {
-\newline 
+\newline
     if (noweb_try(0))
-\newline 
+\newline
       output_error(1, err_line, "noweb");
-\newline 
+\newline
   }
-\newline 
+\newline
 }
-\newline 
+\newline
 @
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 The examination itself is very inefficient.
  Unfortunately noweb doesn't have any characteristic that would help to
@@ -310,221 +368,241 @@ The examination itself is very inefficient.
  The solution is to collect all possible output messages in an array of
  strings, and turn the examination process into a linear search in this
  array.
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Global variables>>=
-\newline 
+\newline
 char *noweb_msgs[] = {
-\newline 
+\newline
   "couldn't open file",
-\newline 
+\newline
   "couldn't open temporary file",
-\newline 
+\newline
   "error writing temporary file",
-\newline 
+\newline
   "ill-formed option",
-\newline 
+\newline
   "unknown option",
-\newline 
+\newline
   "Bad format sequence",
-\newline 
+\newline
   "Can't open output file",
-\newline 
+\newline
   "Can't open temporary file",
-\newline 
+\newline
   "Capacity exceeded:",
-\newline 
+\newline
   "Ignoring unknown option -",
-\newline 
+\newline
   "This can't happen:",
-\newline 
+\newline
   "non-numeric line number in"
-\newline 
+\newline
 };
-\newline 
+\newline
 
-\newline 
+\newline
 char *noweb_msgs_mimic_gcc[] = {
-\newline 
+\newline
   ": unescaped << in documentation chunk"
-\newline 
+\newline
 };
-\newline 
+\newline
 @
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 A noweb error message can be any string that contains a matching pair of
- < <\SpecialChar ~
-\SpecialChar ~
-\SpecialChar ~
+ < <\InsetSpace ~
+\InsetSpace ~
+\InsetSpace ~
 > >, or any of the above strings
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Function bodies>>=
-\newline 
+\newline
 int
-\newline 
+\newline
 noweb_try (int buf_line)
-\newline 
+\newline
 {
-\newline 
+\newline
   char    *s, *t, *b;
-\newline 
+\newline
   int     i; 
-\newline 
+\newline
 
-\newline 
+\newline
   b = buffer[buf_line];
-\newline 
+\newline
   err_line = 0;
-\newline 
+\newline
 
-\newline 
+\newline
   for (i=0; i<1; i++) {
-\newline 
+\newline
       s = (char *)strstr (b, noweb_msgs_mimic_gcc[i]);
-\newline 
+\newline
       if (s != NULL) {
-\newline 
+\newline
         t = (char *)strchr(buffer[buf_line], ':');
-\newline 
+\newline
         err_line = atoi(t+1);
-\newline 
+\newline
         t = buffer[buf_line];
-\newline 
+\newline
         ++s;
-\newline 
+\newline
         while (*(t++) = *(s++));
-\newline 
+\newline
         return 1;
-\newline 
+\newline
       }
-\newline 
+\newline
   }
-\newline 
+\newline
   s = (char *)strstr(b, "<<");
-\newline 
+\newline
   if (s != NULL) {
-\newline 
+\newline
     s = (char *)strstr(s+2, ">>");
-\newline 
+\newline
     if (s != NULL) {
-\newline 
+\newline
       return 1;
-\newline 
+\newline
     }
-\newline 
+\newline
   } else { 
-\newline 
+\newline
      for (i = 0; i < 12; ++i) {
-\newline 
+\newline
         s = (char *)strstr (b, noweb_msgs[i]);
-\newline 
+\newline
         if (s != NULL) {
-\newline 
+\newline
            return 1;
-\newline 
+\newline
         }
-\newline 
+\newline
     }
-\newline 
+\newline
   }
-\newline 
+\newline
   return 0;
-\newline 
+\newline
 }
-\newline 
+\newline
 @
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Function prototypes>>=
-\newline 
+\newline
 int noweb_try (int buf_line);
-\newline 
+\newline
 @
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 The xlc compiler always outputs one single line for each error found, thus
  to scan the buffer for xlc error messages it is enough to exam one input
  line at a time.
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Scan input for xlc error messages>>= 
-\newline 
+\newline
 {
-\newline 
+\newline
   last_buf_line = 0;
-\newline 
+\newline
   while (fgets(buffer[last_buf_line], 200, stdin)) {
-\newline 
+\newline
     if (xlc_try(0))
-\newline 
+\newline
       output_error(1, err_line, "xlc");
-\newline 
+\newline
   }
-\newline 
+\newline
 }
-\newline 
+\newline
 @
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 A xlc error message is easy to identify.
  Every error message starts with a quoted string with no spaces, a comma,
  a space, the word 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 line
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 , a space, and some variable text.
  The following routine tests if a given buffer line matches this criteria:
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Function bodies>>=
-\newline 
+\newline
 int 
-\newline 
+\newline
 xlc_try (int buf_line)
-\newline 
+\newline
 {
-\newline 
+\newline
   char    *s, *t;
-\newline 
+\newline
  
-\newline 
+\newline
   t = buffer[buf_line];
-\newline 
+\newline
   s = t+1;
-\newline 
+\newline
   while (*s != '"' && *s != ' ' && *s != '
-\backslash 
+\backslash
 0')
-\newline 
+\newline
     s++;
-\newline 
+\newline
   if (*t != '"' || *s != '"' || strncmp(s+1, ", line ", 7) != 0)
-\newline 
+\newline
     return 0;
-\newline 
+\newline
   s += 8;
-\newline 
+\newline
   err_line = atoi(s);
-\newline 
+\newline
   return 1;
-\newline 
+\newline
 }
-\newline 
+\newline
 @
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Function prototypes>>=
-\newline 
+\newline
 int xlc_try (int buf_line);
-\newline 
+\newline
 @
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 The gcc compiler error messages are more complicated to scan.
  Each error can span more than one line in the buffer.
@@ -535,15 +613,17 @@ The gcc compiler error messages are more complicated to scan.
  At the time they differ, all the accumulated lines, except the last one,
  will belong to one single error message, which now can be output-ed to
  LyX.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Every gcc error message contains a string with no space followed by a 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 :
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 .
  If the next character is a space, then this line is a header of a error
@@ -551,446 +631,491 @@ Every gcc error message contains a string with no space followed by a
  where the error was found.
  Otherwise, the next thing is a integer number followed by another 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 :
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 .
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Scan input for gcc error messages>>=
-\newline 
+\newline
 {
-\newline 
+\newline
   char    *s, *t;
-\newline 
+\newline
  
-\newline 
+\newline
   last_buf_line = 0;
-\newline 
+\newline
   while (fgets(buffer[last_buf_line], 200, stdin)) {
-\newline 
+\newline
     /****** Skip lines until I find an error */
-\newline 
+\newline
     s = (char *)strpbrk(buffer[last_buf_line], " :");
-\newline 
+\newline
     if (s == NULL || *s == ' ')
-\newline 
+\newline
       continue; /* No gcc error found here */
-\newline 
+\newline
     do {
-\newline 
+\newline
       <<gcc error message criteria is to find a "...:999:" or a "...: ">>
-\newline 
+\newline
       /****** OK It is an error message, get line number */
-\newline 
+\newline
       err_line = atoi(s+1);
-\newline 
+\newline
       if (last_err_line == 0 || last_err_line == err_line) {
-\newline 
+\newline
         last_err_line = err_line;
-\newline 
+\newline
         continue; /* It's either a header or a continuation, don't output
  yet */
-\newline 
+\newline
       }
-\newline 
+\newline
       /****** Completed the scan of one error message, output it to LyX
  */
-\newline 
+\newline
       discharge_buffer(1);
-\newline 
+\newline
       break;
-\newline 
+\newline
     } while (fgets(buffer[last_buf_line], 200, stdin));
-\newline 
+\newline
   }
-\newline 
+\newline
   /****** EOF completes the scan of whatever was being scanned */
-\newline 
+\newline
   discharge_buffer(0);
-\newline 
+\newline
 }
-\newline 
+\newline
 @
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<gcc error message criteria is to find a "...:999:" or a "...: ">>=
-\newline 
+\newline
 /****** Search first ":" in the error number */
-\newline 
+\newline
 s = (char *)strpbrk(buffer[last_buf_line], " :");
-\newline 
+\newline
 last_buf_line++;
-\newline 
+\newline
 if (s == NULL || *s == ' ') 
-\newline 
+\newline
   <<No gcc error found here, but it might terminate the scanning of a previous
  one>>
-\newline 
+\newline
 /****** Search second ":" in the error number */
-\newline 
+\newline
 t = (char *)strpbrk(s+1, " :");
-\newline 
+\newline
 if (t == NULL || *t == ' ')
-\newline 
+\newline
   <<No gcc error found here, but it might terminate the scanning of a previous
  one>>
-\newline 
+\newline
 /****** Verify if is all digits between ":" */
-\newline 
+\newline
 if (t != s+1+strspn(s+1, "0123456789")) 
-\newline 
+\newline
   <<No gcc error found here, but it might terminate the scanning of a previous
  one>>
-\newline 
+\newline
 @
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<No gcc error found here, but it might terminate the scanning of a previous
  one>>=
-\newline 
+\newline
 {
-\newline 
+\newline
   err_line = 0;
-\newline 
+\newline
   discharge_buffer(1);
-\newline 
+\newline
   continue;
-\newline 
+\newline
 }
-\newline 
+\newline
 @
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 As we mentioned, when the scan of one gcc error message is completed everything
  in the buffer except the last line is one single error message.
  But if the scan terminates with a EOF or through finding one line that
  does not match the gcc error message criteria, then there is no 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 last line
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  in the buffer to be concerned with.
  In those cases we empty the buffer completely.
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Function bodies>>=
-\newline 
+\newline
 void
-\newline 
+\newline
 discharge_buffer (int save_last)
-\newline 
+\newline
 {
-\newline 
+\newline
  if (last_err_line != 0) { 
-\newline 
+\newline
    clean_gcc_messages();
-\newline 
+\newline
    if (save_last != 0) {
-\newline 
+\newline
       output_error(last_buf_line-1, last_err_line, "gcc");
-\newline 
+\newline
       strcpy (buffer[0], buffer[last_buf_line-1]);
-\newline 
+\newline
       last_err_line = err_line;
-\newline 
+\newline
       last_buf_line = 1;
-\newline 
+\newline
     } else { 
-\newline 
+\newline
       ++last_buf_line;
-\newline 
+\newline
       clean_gcc_messages();
-\newline 
+\newline
       output_error(last_buf_line-1, last_err_line, "gcc");
-\newline 
+\newline
       last_err_line = 0;
-\newline 
+\newline
       last_buf_line = 0;
-\newline 
+\newline
     }
-\newline 
+\newline
   }
-\newline 
+\newline
 }
-\newline 
+\newline
 @
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Function prototypes>>=
-\newline 
+\newline
 void discharge_buffer (int save_last);
-\newline 
+\newline
 @
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 The next function 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 cleans
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  superfluous information from gcc messages, namely the name of the noweb
  file and the line number of the Error.
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 More could be done.
  For instance, some way of distinguishing between gcc Errors and Warnings
  should be devised.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Function bodies>>=
-\newline 
+\newline
 void
-\newline 
+\newline
 clean_gcc_messages ()
-\newline 
+\newline
 {
-\newline 
+\newline
   int index;
-\newline 
+\newline
   char search [30]; 
-\newline 
+\newline
   char *tail, *head; 
-\newline 
+\newline
   int search_len = sprintf(search, ".nw:%d:", last_err_line);
-\newline 
+\newline
   
-\newline 
+\newline
   for (index = 0; index < last_buf_line-1; index++) {
-\newline 
+\newline
     tail = (char *)strstr (buffer[index], search);
-\newline 
+\newline
     if ( tail == NULL) {
-\newline 
+\newline
        tail = (char *) strstr (buffer[index], ".nw:");
-\newline 
+\newline
        if (tail) {
-\newline 
+\newline
           tail += 4;
-\newline 
+\newline
        }
-\newline 
+\newline
     } else {
-\newline 
+\newline
        tail += search_len;
-\newline 
+\newline
     }
-\newline 
+\newline
     if (tail != NULL) {
-\newline 
+\newline
        head = buffer[index];
-\newline 
+\newline
        while (*(head++) = *(tail++));
-\newline 
+\newline
     }
-\newline 
+\newline
   }
-\newline 
+\newline
 }
-\newline 
+\newline
 @
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Function prototypes>>=
-\newline 
+\newline
 void clean_gcc_messages ();
-\newline 
+\newline
 @
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 To combine the scan of noweb error messages and xlc error messages is very
  simple.
  We just try each one for every input line:
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<AIX system using both noweb and xlc>>=
-\newline 
+\newline
 {
-\newline 
+\newline
   last_buf_line = 0;
-\newline 
+\newline
   while (fgets(buffer[0], 200, stdin)) {
-\newline 
+\newline
     if (noweb_try(0))
-\newline 
+\newline
       output_error(1, err_line, "noweb");
-\newline 
+\newline
     else if (xlc_try(0))
-\newline 
+\newline
       output_error(1, err_line, "xlc");
-\newline 
+\newline
   }
-\newline 
+\newline
 }
-\newline 
+\newline
 @
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 To combine the scan of noweb error messages and gcc error messages is simple
  if we realize that it is not possible to find a noweb error message in
  the middle of a gcc error message.
  So we just repeat the gcc procedure and test for noweb error messages in
  the beginning of the scan:
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Solaris and Linux systems using both noweb and gcc>>=
-\newline 
+\newline
 {
-\newline 
+\newline
   char    *s, *t;
-\newline 
+\newline
  
-\newline 
+\newline
   last_buf_line = 0;
-\newline 
+\newline
   while (fgets(buffer[last_buf_line], 200, stdin)) {
-\newline 
+\newline
     /****** Skip lines until I find an error */
-\newline 
+\newline
     if (last_buf_line == 0 && noweb_try(0)) {
-\newline 
+\newline
       output_error(1, err_line, "noweb");
-\newline 
+\newline
       continue;
-\newline 
+\newline
     }
-\newline 
+\newline
     s = (char *)strpbrk(buffer[last_buf_line], " :");
-\newline 
+\newline
     if (s == NULL || *s == ' ')
-\newline 
+\newline
       continue; /* No gcc error found here */
-\newline 
+\newline
     do {
-\newline 
+\newline
       <<gcc error message criteria is to find a "...:999:" or a "...: ">>
-\newline 
+\newline
       /****** OK It is an error, get line number */
-\newline 
+\newline
       err_line = atoi(s+1);
-\newline 
+\newline
       if (last_err_line == 0 || last_err_line == err_line) {
-\newline 
+\newline
         last_err_line = err_line;
-\newline 
+\newline
         continue; /* It's either a header or a continuation, don't output
  yet */
-\newline 
+\newline
       }
-\newline 
+\newline
       /****** Completed the scan of one error message, output it to LyX
  */
-\newline 
+\newline
       discharge_buffer(1);
-\newline 
+\newline
       break;
-\newline 
+\newline
     } while (fgets(buffer[last_buf_line], 200, stdin));
-\newline 
+\newline
   }
-\newline 
+\newline
   /****** EOF completes the scan of whatever was being scanned */
-\newline 
+\newline
   discharge_buffer(0);
-\newline 
+\newline
 }
-\newline 
+\newline
 @
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Wrapping the code into a file
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<listerrors.c>>=
-\newline 
+\newline
 #include <stdio.h>
-\newline 
+\newline
 #include <strings.h>       
-\newline 
+\newline
  
-\newline 
+\newline
 <<Global variables>>
-\newline 
+\newline
 <<Function prototypes>>
-\newline 
+\newline
 <<Function bodies>>
-\newline 
+\newline
 @
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 To build this program, we want to add the 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 -L
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  option in the tangle command to force gdb to load the file 
-\family typewriter 
+\family typewriter
 Literate.nw
-\family default 
+\family default
  instead of 
-\family typewriter 
+\family typewriter
 listerrors.c
-\family default 
+\family default
 .
  In accordance with this, we pass the 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 -g
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  option to gcc.
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<build-script>>=
-\newline 
+\newline
 #!/bin/sh
-\newline 
+\newline
 if [ -z "$NOWEB_SOURCE" ]; then NOWEB_SOURCE=Literate.nw; fi
-\newline 
+\newline
 notangle -L -Rlisterrors.c ${NOWEB_SOURCE} > listerrors.c
-\newline 
+\newline
 gcc -g -o listerrors listerrors.c
-\newline 
+\newline
 @
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 This project can be tangled and compiled from LyX if you set 
-\family typewriter 
+\family typewriter
 
-\backslash 
+\backslash
 build_command
-\family default 
+\family default
  to call a generic script that always extracts a scrap named 
-\family typewriter 
+\family typewriter
 build-script
-\family default 
+\family default
  and executes it.
  Here is a example of such generic script:
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 #!/bin/sh
-\newline 
+\newline
 notangle -Rbuild-script $1 | env NOWEB_SOURCE=$1 sh
-\layout LyX-Code
+\end_layout
 
-\the_end
+\begin_layout LyX-Code
+
+\end_layout
+
+\end_body
+\end_document

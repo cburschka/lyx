@@ -1,5 +1,7 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass article
 \language polish
 \inputencoding latin2
@@ -7,12 +9,11 @@
 \graphics default
 \paperfontsize default
 \spacing single
-\papersize a4paper
-\paperpackage a4
-\use_geometry 0
+\papersize default
+\use_geometry false
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -23,49 +24,60 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tracking_changes false
+\output_changes true
+\end_header
 
-\layout Title
+\begin_body
+
+\begin_layout Title
 
 Witaj w LyXie!
-\layout Section*
+\end_layout
+
+\begin_layout Section*
 
 Kilka uwag zanim rozpoczniesz pracê z LyXem
-\layout Enumerate
+\end_layout
+
+\begin_layout Enumerate
 
 Pakiet LyXa zawiera wspania³± (angielskojêzyczn±) dokumentacjê---u¿ywaj
  jej! Rozpocznij w 
-\family sans 
-\bar under 
+\family sans
+\bar under
 P
-\bar default 
+\bar default
 omoc->
-\bar under 
+\bar under
 W
-\bar default 
+\bar default
 prowadzenie
-\family default 
+\family default
 , da Ci to krótkie wprowadzenie do dokumentacji.
  Potem poczytaj o LyXie w 
-\family sans 
-\bar under 
+\family sans
+\bar under
 P
-\bar default 
+\bar default
 omoc->
-\bar under 
+\bar under
 S
-\bar default 
+\bar default
 amouczek
-\family default 
+\family default
 .
-\layout Enumerate
+\end_layout
+
+\begin_layout Enumerate
 
 Zwiemy LyXa 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 procesorem tekstu
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 .
  Z za³o¿enia LyX ró¿ni siê od innych procesorów tekstu---pozwala bowiem
@@ -73,88 +85,103 @@ procesorem tekstu
  Ró¿ni siê jednak bardzo niewiele, wiêc nie ma obawy.
  W razie problemów zajrzyj do dokumentacji.
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Czy wspomnieli¶my ju¿, ¿e powiniene¶ przeczytaæ dokumentacjê?
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
-\layout Enumerate
+\end_layout
+
+\begin_layout Enumerate
 
 Wynik pracy wygl±da naprawdê wspaniale! Wybierz teraz 
-\family sans 
-\bar under 
+\family sans
+\bar under
 P
-\bar default 
-lik->Podgl±d\SpecialChar ~
+\bar default
+lik->Podgl±d\InsetSpace ~
 dvi
-\family default 
+\family default
  by zobaczyæ ten dokument w ca³ej okaza³o¶ci.
-\layout Enumerate
+\end_layout
+
+\begin_layout Enumerate
 
 Pakiet zawiera wiele szablonów (
-\family sans 
-\bar under 
+\family sans
+\bar under
 P
-\bar default 
-lik->Nowy\SpecialChar ~
-z\SpecialChar ~
+\bar default
+lik->Nowy\InsetSpace ~
+z\InsetSpace ~
 szablonu
-\family default 
+\family default
 ) i przyk³adów (
-\family sans 
-\bar under 
+\family sans
+\bar under
 P
-\bar default 
+\bar default
 lik->
-\bar under 
+\bar under
 O
-\bar default 
+\bar default
 twó
-\family default 
+\family default
 rz).
-\layout Enumerate
+\end_layout
+
+\begin_layout Enumerate
 
 Tak, LyX potrafi wszystko (prawie) to co LaTeX.
  Potrafi tak¿e importowaæ pliki LaTeXa.
  U¿ytkownicy znaj±cy ju¿ LaTeXa powinni pomin±æ resztê 
-\emph on 
+\emph on
 Samouczka
-\emph default 
+\emph default
  i przej¶æ bezpo¶rednio do rozdzia³u 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 LyX for LaTeX Users
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  (uwaga pozostali U¿ytkownicy: nie, nie musicie znaæ LaTeXa by u¿ywaæ LyXa).
-\layout Enumerate
+\end_layout
+
+\begin_layout Enumerate
 
 LyX potrafi tak¿e pracowaæ dla tych z Was, którzy mówi± w innym ni¿ angielski
  jêzyku.
  Zobacz w 
-\family sans 
-\bar under 
+\family sans
+\bar under
 P
-\bar default 
+\bar default
 omoc->
-\bar under 
+\bar under
 K
-\bar default 
+\bar default
 onfiguracja
-\family default 
+\family default
  .
-\layout Enumerate
+\end_layout
+
+\begin_layout Enumerate
 
 Oficjalna strona LyXa to 
-\family typewriter 
+\family typewriter
 www.lyx.org
-\family default 
+\family default
 .
  Znajdziesz tam informacje o LyXie, mo¿esz zapisaæ siê na LyXowe listy dyskusyjn
 e, pobraæ the LyX Graphical Tour i nie tylko.
-\the_end
+\end_layout
+
+\end_body
+\end_document

@@ -1,5 +1,7 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass foils
 \options dvips
 \language english
@@ -8,12 +10,11 @@
 \graphics default
 \paperfontsize default
 \spacing single
-\papersize a4paper
-\paperpackage a4
-\use_geometry 0
+\papersize default
+\use_geometry false
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation landscape
 \secnumdepth 3
 \tocdepth 3
@@ -24,139 +25,221 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle foilheadings
+\tracking_changes false
+\output_changes true
+\end_header
 
-\layout Standard
+\begin_body
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 MyLogo{HUT/ECDL Kimmo Koli 
-\backslash 
+\backslash
 today}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout ShortFoilhead
-\line_bottom 
+\end_layout
+
+\begin_layout ShortFoilhead
+
 Landscape slide example with a figure
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\begin_inset Minipage
-position 1
-inner_position 0
-height "0pt"
+\lyxline
+
+\end_layout
+
+
+\begin_layout Standard
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
 width "52page%"
-collapsed false
+special "none"
+height "1pt"
+height_special "totalheight"
+status open
 
-\layout Standard
+\begin_layout Standard
 
 It is possible to place text beside a figure (clipart platypus in this example)
  using the minipage enviroment
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 The text can contain also item lists
-\layout TickList
+\end_layout
+
+\begin_layout TickList
 
 Also other lists like tick lists 
-\layout CrossList
+\end_layout
+
+\begin_layout CrossList
 
 and cross lists can be entered
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\hfill 
+\hfill
 
-\begin_inset Minipage
-position 1
-inner_position 0
-height "0pt"
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
 width "45page%"
-collapsed false
+special "none"
+height "1pt"
+height_special "totalheight"
+status open
 
-\layout Standard
-\added_space_top 0.3cm \added_space_bottom 0.3cm \align center 
+
+\begin_layout Standard
+
+
+\begin_inset VSpace 0.3cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
 
 \begin_inset Graphics
 	filename ../clipart/platypus.eps
 	display monochrome
 	width 10cm
 	rotateOrigin center
-\end_inset 
+\end_inset
 
 
-\end_inset 
+\end_layout
+
+\begin_layout Standard
 
 
-\layout Standard
+\begin_inset VSpace 0.3cm
+\end_inset
+
+
+\end_layout
+
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 
 You can also add more text below below the minipages as you may have guessed.
-\layout ShortFoilhead
-\line_bottom 
+\end_layout
+
+\begin_layout ShortFoilhead
+
 How it was done
-\layout Itemize
+\end_layout
+
+\begin_layout Standard
 
 
-\family roman 
+\lyxline
+
+\end_layout
+
+
+\begin_layout Itemize
+
+
+\family roman
 Just select with the mouse the text paragraphs you want to mark as minipages
  and then select
-\emph on 
+\emph on
  
-\family default 
-\emph default 
+\family default
+\emph default
 Layout->Paragraph:ExtraOpt
-\family roman 
+\family roman
  and press the 
-\family default 
+\family default
 Minipage
-\family roman 
+\family roman
  button and add a minipage width.
  
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\family roman 
+\family roman
 Then put cursor to the paragraph containing the figure and mark it also
  a minipage, but add also the 
-\family default 
+\family default
 HFill between the Minipage paragraphs
-\family roman 
+\family roman
  and
-\emph on 
+\emph on
  
-\family default 
-\emph default 
+\family default
+\emph default
 Start a new Minipage
-\family roman 
+\family roman
  options
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\family roman 
+\family roman
 You can also change the alignment in this
-\family default 
+\family default
  Extra options
-\family roman 
+\family roman
  menu to middle for all minipage paragraphs for a better result.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\family roman 
+\family roman
 Somehow (correct this if you know how) the figure size set by the 
-\family default 
+\family default
 % of the page
-\family roman 
+\family roman
  doesn't scale the picture right but still the 
-\family default 
+\family default
 cm
-\family roman 
+\family roman
  and 
-\family default 
+\family default
 inches
-\family roman 
+\family roman
  entries will work.
-\the_end
+\end_layout
+
+\end_body
+\end_document

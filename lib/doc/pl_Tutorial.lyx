@@ -1,5 +1,7 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass book
 \begin_preamble
 \sloppy
@@ -9,13 +11,12 @@
 \fontscheme default
 \graphics none
 \paperfontsize 12
-\spacing single 
-\papersize letterpaper
-\paperpackage a4
-\use_geometry 0
+\spacing single
+\papersize default
+\use_geometry false
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -26,51 +27,68 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle headings
+\tracking_changes false
+\output_changes true
+\end_header
 
-\layout Title
+\begin_body
+
+\begin_layout Title
 
 The LyX Tutorial
-\layout Author
+\end_layout
+
+\begin_layout Author
 
 by Amir Karger and the LyX Team
-\newline 
+\newline
 polskie t³umaczenie: Wojtek Pêkala
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset LatexCommand \tableofcontents{}
 
-\end_inset 
+\end_inset
 
 
-\layout Chapter
+\end_layout
+
+\begin_layout Chapter
 
 Wprowadzenie
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 LyX wita.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Dokument niniejszy 
 \begin_inset LatexCommand \htmlurl{http://friko2.onet.pl/wr/voyttek}
 
-\end_inset 
+\end_inset
 
  jest przeznaczony dla tych, którzy nigdy nie s³yszeli o LaTeX-u lub znaj±
  go tak sobie.
  Bez obaw - aby móc u¿ywaæ LyX-a nie trzeba uczyæ siê LaTeX-a.
  O to w koñcu w LyX-ie chodzi: ma on byæ wizualnym interfejsem do LaTeX-a
  w stylu prawie WYSIWYG.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Niektórzy zapewne siêgnêli do tego dokumentu, bo próbowali wpisaæ dwie spacje
  po kropce (
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 .
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 ) albo wstawiæ 3 puste linie miêdzy akapitami.
  Po paru frustruj±cych próbach zrozumieli jednak, ¿e to niemo¿liwe.
@@ -84,143 +102,163 @@ Niektórzy zapewne siêgnêli do tego dokumentu, bo próbowali wpisaæ dwie spacje
  drukarski.
  I tu pojawia siê LyX; jego rol± jest przejêcie sk³adu drukarskiego.
  Pozwala przez to skupiæ siê na istotnych sprawach, takich jak tre¶æ utworu.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Tak wiêc uzbrój siê w cierpliwo¶æ i czytaj dalej.
  Trud opanowania elementarza zwróci siê na pewno.
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 O podrêczniku
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Na wstêpie tej sekcji nale¿y zaznaczyæ, ¿e w przeciwieñstwie do innych pod\SpecialChar \-
 rêczni
 ków ten zak³ada, ¿e u¿ytkownik 
-\series bold 
-\emph on 
+\series bold
+\emph on
 NIE
-\series default 
-\emph toggle 
+\series default
+\emph toggle
  jest g³upi i wie po co jest kla\SpecialChar \-
 wiatura, umie u¿yæ myszy oraz pos³ugiwaæ
  siê oknami.
  Z drugiej strony z za³o¿enia nie musi mieæ pojêcia o LaTeX-u.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\emph on 
+\emph on
 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 Elementarz
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 
-\emph toggle 
+\emph toggle
  u¿ywa notacji opisanej we 
-\emph on 
+\emph on
 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 Wprowadzeniu
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
 
-\emph toggle 
+\emph toggle
 .
  Je¶li go jeszcze nie przeczyta³e¶, zrób to teraz.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Powodem odsy³ania do innych rozdzia³ów osobnego podrêcznika jest lenistwo.
  Zespó³ LyX-a jest wystarczaj±co zajêty rozbudow± programu i usuwaniem b³êdów,
  ¿eby nie redagowaæ 5 identycznych wersji tej samej sekcji w 5 ró¿nych dokumenta
 ch.
  Zatem przeczytaj 
-\emph on 
+\emph on
 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 Wprowadzenie
-\emph toggle 
+\emph toggle
 
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
 , zawieraj±ce wszystko, co potrzebne na temat 
-\emph on 
+\emph on
 wszystkich
-\emph toggle 
+\emph toggle
  podrêczników.
  Po powrocie podejmij lekturê od tego miejsca.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Skoro ju¿ wiadomo, co oznaczaj± ró¿ne czcionki, opiszemy po krótce cel 
-\emph on 
+\emph on
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Elementarza
-\emph toggle 
+\emph toggle
 
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 .
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Czym 
-\emph on 
+\emph on
 jest
-\emph toggle 
+\emph toggle
  Elementarz i czym 
-\emph on 
+\emph on
 nie jest 
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Od Pioniera s³ów kilka\SpecialChar \ldots{}
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Oto krótka notka 
-\emph toggle 
-\noun on 
+\emph toggle
+\noun on
 John'a Weiss'a
-\emph default 
-\noun default 
+\emph default
+\noun default
 , pierwszego autora 
-\emph on 
+\emph on
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Elementarza
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 
-\emph default 
+\emph default
 :
-\layout Quotation
+\end_layout
+
+\begin_layout Quotation
 
 Pocz±tkowo mia³em szerokie plany co do 
-\emph on 
+\emph on
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Elementarza
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 
-\emph toggle 
-\noun toggle 
+\emph toggle
+\noun toggle
 .
  Lecz, tak jak w przypadku innych przedsiêwziêæ, rzeczywisto¶æ je zwe\SpecialChar \-
 ryfikowa³a.
@@ -228,184 +266,222 @@ ryfikowa³a.
  go do sensownego zakresu.
  Stwier\SpecialChar \-
 dzi³em równie¿, ¿e pokryje siê on w du¿ej mierze z 
-\emph on 
+\emph on
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Podrêcznikiem u¿ytkownika
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 
-\emph toggle 
+\emph toggle
 .
  Po co dwa razy pisaæ to samo?
-\layout Quotation
+\end_layout
+
+\begin_layout Quotation
 
 Tak czy inaczej, zacz±³em rozumieæ, ¿e ludzie najlepiej ucz± siê przez:
-\begin_deeper 
-\layout Enumerate
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
 
 ogl±danie przyk³adów
-\begin_deeper 
-\layout Quotation
+\end_layout
+
+\begin_deeper
+\begin_layout Quotation
 
 lub
-\end_deeper 
-\layout Enumerate
+\end_layout
+\end_deeper
+\begin_layout Enumerate
 
 robienie rzeczy samemu.
-\end_deeper 
-\layout Quotation
+\end_layout
+\end_deeper
+\begin_layout Quotation
 
 Z ciê¿kim sercem wyrzuci³em jakie¶ 20 stron, które ju¿ napisa³em i zacz±³em
  od pocz±tku.
  Jedyn± pozosta³o¶ci± jest podrozdzia³ 
 \begin_inset LatexCommand \ref{sec:what-is-lyx}
 
-\end_inset 
+\end_inset
 
 .
  Ca³a reszta to przyk³ady i æwiczenia.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Najlepsze wykorzystanie Elementarza
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Zgodnie z zapowiedzi± John'a Weiss'a 
-\emph on 
+\emph on
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Elementarz
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 
-\emph toggle 
+\emph toggle
  sk³ada siê z æwiczeñ i przyk³adów.
  Aby jak najlepiej z niego skorzystaæ nale¿y przeczytaæ go, pisz±c po drodze
  wszystkie rzeczy, o które prosz± i wykonuj±c wszystkie æwiczenia.
  Dla wygody warto wydrukowaæ niniejszy dokument.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Podrozdzia³ 
 \begin_inset LatexCommand \ref{sec:what-is-lyx}
 
-\end_inset 
+\end_inset
 
  jest pozosta³o¶ci± poprzedniej wersji 
-\emph on 
+\emph on
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Elementarza
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 
-\emph toggle 
+\emph toggle
  i cechuje go swoista bezpo¶rednio¶æ.
  Tym niemniej stanowi sympatyczne wprowadzenie do LyX-a i wyk³adniê idei
  tej aplikacji.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Czego 
-\emph on 
+\emph on
 nie
-\emph default 
+\emph default
  znajdziecie:
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Instrukcji jak:
-\begin_deeper 
-\layout Itemize
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
 
 pos³ugiwaæ siê mysz±
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 u¿ywaæ programu w X-Windows
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 pos³ugiwaæ siê klawiatur±
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Opanowanie powy¿szych umiejêtno¶ci jest konieczne i nie wchodzi w zakres
  tego podrêcznika.
  Spe³nia on za to mnóstwo innych zadañ
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 \SpecialChar \ldots{}
 and occupational therapy ain't one of 'em! (Sarkastyczny styl orygina³u
  rozmija siê ze skromnymi mo¿liwo¶ciami t³umacza, jak równie¿ jego pogl±dem
  na rzetelny podrêcznik)
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\end_deeper 
-\layout Itemize
+\end_layout
+\end_deeper
+\begin_layout Itemize
 
 Prowadzenia za rêkê, protekcjonalno¶ci czy ³opatologii .
-\begin_deeper 
-\layout Standard
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
 
 To przecie¿ tylko program komputerowy, bez obaw ! Poza tym zak³adamy, ¿e
  czytelnik jest rozgarniêty.
  Mo¿e byæ zagubiony, zdezorientowany, ale nie g³upi.
-\end_deeper 
-\layout Itemize
+\end_layout
+\end_deeper
+\begin_layout Itemize
 
 Opisu wszystkich mo¿liwo¶ci LyX-a.
-\begin_deeper 
-\layout Standard
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
 
 Nie ma potrzeby powielania 
-\emph on 
+\emph on
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Podrêcznika u¿ytkownika
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Celem tego dokumentu jest wprowadzenie czytelnika na w³a¶ciwe obroty, tak
  by po jego przeczytaniu nie potrzebowa³ niczego poza 
-\emph on 
+\emph on
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Podrêcznikiem u¿ytkownika
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 
-\emph default 
+\emph default
 .
  Próba zawarcia informacji o wszystkich mo¿liwo¶ciach LyX-a w 
-\emph on 
+\emph on
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Elementarzu
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 
-\emph default 
+\emph default
  owocowa³aby jego chroniczn± nieaktualno¶ci±.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Nie znaczy to oczywi¶cie, ¿e nie zostan± przedstawione ¿adne z mo¿liwo¶ci
  LyX-a.
@@ -416,39 +492,49 @@ Nie znaczy to oczywi¶cie, ¿e nie zostan± przedstawione ¿adne z mo¿liwo¶ci
  kilku bardziej zaawansowanych funkcji, jak tryb formu³.
  [Naturalnie sposób pracy z formu³ami nie ulegnie istotnej zmianie.
  Byæ mo¿e zostanie udoskonalony, ale ca³kowita zmiana jest raczej niemo¿liwa.]
-\end_deeper 
-\layout Itemize
+\end_layout
+\end_deeper
+\begin_layout Itemize
 
 Szczegó³owego obja¶nienia LaTeX-a.
-\begin_deeper 
-\layout Standard
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
 
 Niepotrzebne.
  Chc±cym opanowaæ sztuczki z LaTeX-em polecamy ksi±¿ki na ten temat.
  Opublikowano ju¿ kilka dobrych tytu³ów.
-\end_deeper 
-\layout Standard
+\end_layout
+\end_deeper
+\begin_layout Standard
 
 Komu w drogê, temu czas.
  Mo¿na rzuciæ okiem na nastêpny podrozdzia³ lub przej¶æ wprost do podrozdzia³u
  
 \begin_inset LatexCommand \ref{sec:first-doc-ex}
 
-\end_inset 
+\end_inset
 
 .
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Czym jest LyX?
 \begin_inset LatexCommand \label{sec:what-is-lyx}
 
-\end_inset 
+\end_inset
 
 
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Przegl±d
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Niektórzy nowi u¿ytkownicy LyX-a maj± k³opoty z przestawieniem siê na w³a¶ciwe
  temu programowi podej¶cie do zagadnienia edycji tekstu.
@@ -459,11 +545,11 @@ wanymi maszynami do pisania.
  ograniczenia.
  Podkre¶lanie, które sprowadza siê do nadpisywania wyrazów znakiem 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 _
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 , sta³o siê sposobem na wyró¿nienie tekstu.
  Aby utworzyæ tabele nale¿a³o najpierw okre¶liæ wielko¶æ ka¿dej kolumny,
@@ -471,11 +557,15 @@ _
  To samo dotyczy³o liczb i tekstu wyrównywanego do prawej.
  Dzielenie wyrazów u koñca linii wymaga³o wprawnego oka i zdolno¶ci przewidywani
 a.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Innymi s³owy u¿ytkownicy nauczyli siê martwiæ detalami i rozmieszczeniem
  poszczególnych znaków.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 W konsekwencji prawie wszystkie procesory tekstu powielaj± to podej¶cie.
  Wci±¿ u¿ywaj± tabulatorów celem uzyskania pustego miejsca.
@@ -485,60 +575,66 @@ W konsekwencji prawie wszystkie procesory tekstu powielaj± to podej¶cie.
  g³owi\SpecialChar \-
 cê w elektrycznej maszynie do pisania.
  Wiadomo w czym rzecz.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Tu w³a¶nie LyX ró¿ni siê od pozosta³ych procesorów tekstu.
  Nie trzeba siê martwiæ po³o¿eniem ka¿dego znaku.
  U¿ytkownik okre¶la, 
-\emph on 
+\emph on
 co zamierza pisaæ
-\emph toggle 
+\emph toggle
  a LyX troszczy siê o resztê, stosuj±c zestaw regu³ zwany
-\emph on 
+\emph on
  stylem
-\emph toggle 
+\emph toggle
 .
  Oto przyk³ad:
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Za³ó¿my, ¿e piszesz raport.
  Aby go rozpocz±æ, potrzebujesz podrozdzia³u zwanego 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Wprowadzenie
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 .
  Otwierasz w swoim procesorze tekstu menu, które zmienia rozmiar czcionki
  i wybierasz odpowiedni± wielko¶æ.
  Nastêpnie wpisujesz 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 1.___Wprowadzenie
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 .
  Oczywi¶cie je¿eli zechcesz przenie¶æ dany podrozdzia³ w inne miejsce lub
  wstawiæ przed nim co¶ innego, musisz zadbaæ o zmianê numeracji, jak równie¿
  zawarto¶ci spisu tre¶ci.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 W LyX-ie rozwijasz listê umieszczon± na lewym skraju paska zadañ, wybierasz
  pozycjê 
-\family sans 
+\family sans
 Section
-\family default 
+\family default
  i piszesz 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Wprowadzenie
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 .
  Tak, to wszystko.
@@ -546,7 +642,9 @@ Wprowadzenie
  przenumerowany, gdziekolwiek siê znajdzie.
  Jest nawet sposób na automatyczn± aktualizacjê wszelkich odno¶ników do
  tego podrozdzia³u w obrêbie pliku.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Istnieje jeszcze problem spójno¶ci.
  Po piêciu dniach ponownie otwierasz raport i zaczynasz czwarty podrozdzia³,
@@ -559,7 +657,9 @@ szego.
  To komputer martwi siê o uci±¿liwe ksiêgowanie, jaki element ma jak± czcionkê,
  nie u¿ytkownik.
  W koñcu z tym komputery radz± sobie najlepiej.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Oto inny przyk³ad.
  Za³ó¿my, ¿e tworzysz listê.
@@ -570,34 +670,50 @@ Oto inny przyk³ad.
  i co ma zawieraæ.
  To wszystko.
  
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Na tym polega podstawowa idea LyX-a: okre¶l co robisz, a nie jak to zrobiæ.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Ró¿nice miêdzy LyX-em a innymi edytorami
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Istnieje ca³a gama sposobików z innych edytorów, które nie znajd± zastosowania
  w LyX-ie.
  Na pocz±tku mo¿e to irytowaæ.
  Nie szkodzi.
  Pozbycie siê niedobrych nawyków wymaga czasu.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Oto ma³a lista rzeczy, których nie ma w LyX-ie:
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Nies³awna linijka tabulatora, szeroko obecna we wspó³czesnych komercyjnych
  edytorach tekstu.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Tabulatory
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Dodatkowe puste linie [uzyskiwane dwu- lub wiêcejkrotnym przyci¶niêciem
  Enter]
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Tabulatory, które wraz z linijk± s³u¿± do wskazania po³o¿enia poszczególnych
  s³ów na stronie, s± w LyX-ie kompletnie bezu¿yteczne.
@@ -607,39 +723,57 @@ Tabulatory, które wraz z linijk± s³u¿± do wskazania po³o¿enia poszczególnych
  Co do odstêpów, samodzielne ich okre¶lanie to kompletny prze¿ytek.
  Odstêpy miêdzy liniami tekstu s± zmienne, tak jak odstêpy miêdzy s³owami.
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Istniej± sposoby regulacji minimalnych i maksymalnych odstepów, lecz wymagaj±
  znajomo¶ci LaTeX-a.
  O tym potem.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 A to lista elementów obecnych w LyX-ie, lecz zachowuj±cych siê w sposób
  nieco odmienny od oczekiwanego:
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Sterowanie wciêciami
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Koñce stron
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Odstêpy miêdzy liniami
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Puste miejsca, poziome i pionowe
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Czcionki ró¿nych rozmiarów
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Ró¿ne kszta³ty [wyt³uszczenie, kursywa, podkre¶lenie]
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Choæ wy¿ej wymienione wystêpuj± w LyX-ie, u¿ytkownik zasadniczo ich nie
  potrzebuje.
@@ -651,29 +785,43 @@ Choæ wy¿ej wymienione wystêpuj± w LyX-ie, u¿ytkownik zasadniczo ich nie
  Jedynym wyj±tkiem s± odstêpy miêdzy liniami, gdzie mo¿na okre¶liæ odleg³o¶æ
  miêdzy akapitami, jak równie¿ miêdzy liniami w obrêbie akapitu.
  Choæ wiêkszo¶æ szczegó³ów znajduje siê w 
-\emph on 
+\emph on
 Podrêczniku u¿ytkownika
-\emph toggle 
+\emph toggle
 , czytelnik zostanie ogólnie zapoznany z powy¿szymi mo¿liwo¶ciami.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 W koñcu istniej± obszary, w których LyX [i LaTeX] przewy¿sza zwyk³e edytory:
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Dzielenie i przenoszenie wyrazów
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Listy dowolnego rodzaju
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Formu³y matematyczne
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Tabele
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Odno¶niki
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Oczywi¶cie wiele nowoczesnych edytorów obs³uguje symbole matematyczne, tabele
  i przenoszenie wyrazów.
@@ -682,12 +830,14 @@ Oczywi¶cie wiele nowoczesnych edytorów obs³uguje symbole matematyczne, tabele
  LaTeX z kolei funkcjonuje od ponad 10 lat i sprawdza siê.
  Przez ten czas usuniêto wszystkie b³êdy
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Wprawdzie nic nie jest doskona³e, ale LaTeX jest naprawdê bliski idea³u.
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
  Co wiêcej, rzadko który z nowoczesnych edytorów obs³uguje po¶rednie odno¶niki,
@@ -698,89 +848,99 @@ roz\SpecialChar \-
 dzia³ach.
  Inne, jako nieco bardziej zaawansowane, zostan± przedstawione pod koniec
  tego dokumentu lub w 
-\emph on 
+\emph on
 Podrêczniku u¿ytkownika
-\emph toggle 
+\emph toggle
 .
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Czym u licha jest LaTeX?
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LaTeX to system przygotowywania dokumentów zaprojektowany przez Leslie Lamport-a
  w 1985
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 ¯ród³em informacji w tym podrozdziale jest 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 
-\emph on 
+\emph on
 A Guide to LaTeX2e
-\emph default 
+\emph default
 ,
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 , praca Helmuta Kopki i Patrick-a Daly, znajduj±ca siê w bibliografii 
-\emph on 
+\emph on
 Podrêcznika u¿ytkownika
-\emph default 
+\emph default
 .
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
  LaTeX jest nak³adk± jêzyka typograficznego o nazwie TeX, stworzonego przez
  Donalda Knuth-a w 1984.
  
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 TeX
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  wymawia siê 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 tech
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 .
  Wokó³ TeX-a naros³o sporo nieporozumieñ.
  TeX wykonuje sekwencje poleceñ zawarte w plikach ASCII.
  Rezultatem s± pliki w formacie 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 sprzêtowo niezale¿nym
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 , skrótowo (z angielska) 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Dvi
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 .
  Plik taki mo¿na wys³aæ do dowolnego urz±dzenia obs³uguj±cego Dvi lub przetworzy
 æ na inny format, jak Postscript.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Gdyby TeX nie mia³ innych mo¿liwo¶ci, by³by niczym wiêcej ni¿ procesorem
  sk³adu drukarskiego.
  Jednak¿e TeX pozwala na definiownie makr.
  I tu zaczyna siê w³a¶ciwa akcja.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Wiêkszo¶æ u¿ytkowników TeX-a tak naprawdê u¿ywa pakietu makr stworzonych
  przez Knutha celem ukrycia szczegó³ów sk³adu.
@@ -793,7 +953,9 @@ Wiêkszo¶æ u¿ytkowników TeX-a tak naprawdê u¿ywa pakietu makr stworzonych
  Jego polecenia sk³adaj± rozdzia³y, tabele czy formu³y matematyczne w spójny,
  przystêpny sposób.
  Pakietem tym sta³ siê LaTeX.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Odt±d, obok rozwoju LaTeX-a, inni u¿ytkownicy tworzyli w³asne pakiety makr,
  obs³uguj±ce prezentacje, artyku³y dla pism matematycznych itp.
@@ -804,39 +966,45 @@ Odt±d, obok rozwoju LaTeX-a, inni u¿ytkownicy tworzyli w³asne pakiety makr,
  wspiera u¿ycie nowych rodzajów czcionek itd.
  W gruncie rzeczy LaTeX sam w sobie jest ca³kiem rozbudowanym jêzykiem !
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 ...i by³ nim równie¿ przed wersj± 2e, która jedynie poszerzy³a niektóre jego
  mo¿liwo¶ci.
-\end_inset 
+\end_layout
+
+\end_inset
 
  
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 U¿ytkownicy na ca³ym ¶wiecie dodaj± swoje w³asne rozszerzenia do standardowych
  funkcji LaTeX-a.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Istniej± dwa sposoby rozszerzania LaTeX-a: klasy i style.
  
-\emph on 
+\emph on
 Klasa
-\emph toggle 
- to zbiór makr LaTeX-a i\SpecialChar ~
+\emph toggle
+ to zbiór makr LaTeX-a i\InsetSpace ~
 TeX-a opisuj±cy nowy typ dokumentu, jak ksi±¿ka
  czy artyku³.
  Istniej± klasy dla prezentacji, pism fizycznych, matematycznych...
  niektóre uniwersytety maj± nawet w³asne klasy dla prac naukowych.
  
-\emph on 
+\emph on
 Styl
-\emph toggle 
+\emph toggle
  ró¿ni siê od klasy tym, ¿e nie definiuje nowego typu dokumentów, lecz 
-\emph on 
+\emph on
 zachowanie
-\emph toggle 
+\emph toggle
  ju¿ istniej±cych.
  Na przyk³ad LyX okre¶la marginesy stron i odstêpy miêdzy liniami w oparciu
  o dwa ró¿ne pliki stylów LaTeX-a.
@@ -845,32 +1013,46 @@ zachowanie
  efektowne nag³ówki stron, w³asne bibliografie, zmianê po³o¿enia i wygl±du
  przypisów, tabel i rysunków, specjalne rodzaje list itd.
  itp.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Oto podsumowanie:
-\layout List
+\end_layout
+
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 TeX: Jêzyk sk³adu drukarskiego u¿ywaj±cy makr.
-\layout List
+\end_layout
+
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 LaTeX: Pakiet makr TeX-a\SpecialChar \@.
 
-\layout List
+\end_layout
+
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 klasa: Opis typu dokumentu w LaTeX-u\SpecialChar \@.
 
-\layout List
+\end_layout
+
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 styl: Modyfikuje sposób dzia³ania LaTeX-a.
-\layout List
+\end_layout
+
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 LyX: Graficzny WYSIWYM procesor tekstu u¿ywaj±cy LaTeX-a do drukowania.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 U podstaw tego wszystkiego le¿y stary dobry TeX, tworz±cy pliki Dvi.
  Wiêkszo¶æ u¿ytkowników przekszta³ca te pliki na format Postscript, wysy³ane
@@ -878,179 +1060,193 @@ U podstaw tego wszystkiego le¿y stary dobry TeX, tworz±cy pliki Dvi.
  Kr±¿± równie¿ pog³oski o urz±dzeniach, które naprawdê obs³uguj± format
  Dvi.
  Tak czy inaczej rozdzia³ niniejszy mia³ wyja¶niæ 
-\emph on 
+\emph on
 czemu
-\emph toggle 
+\emph toggle
  LyX dzia³a trochê inaczej od innych edytorów.
  Powód jest prosty: LyX u¿ywa LaTeX-a jako zaplecza drukarskiego i tak jak
  LaTeX koncentruje siê na zawarto¶ci dokumentu.
  To komputer zajmuje siê jego wizualn± stron±.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 I jeszcze jedno.
  LaTeX wymawia siê jak TeX --- czyli 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 latech
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 .
  Inna wymowa, a szczególnie taka, jak w nazwie materia³u szeroko stosowanego
  w przemy¶le gumowym, jest b³êdna.
  Z kolei 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 LyX
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  wymawia siê 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 lyks
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 .
  Albo 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 laks
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 , albo 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 luks
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 , zale¿nie od kraju pochodzenia u¿ytkownika\SpecialChar \ldots{}
 
-\layout Chapter
+\end_layout
+
+\begin_layout Chapter
 
 Pierwsze kroki w LyX-ie
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Pierwszy dokument w LyX-ie
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset LatexCommand \label{sec:first-doc-ex}
 
-\end_inset 
+\end_inset
 
 Przed przyst±pieniem do pisania przyda siê kilka informacji u³atwiaj±cych
  pracê z 
-\emph on 
+\emph on
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Elementarzem
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 
-\emph toggle 
+\emph toggle
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Poniewa¿ nie ujêto w nim mnóstwa wiadomo¶ci, pierwsz± rzecz± jest umieæ
  dotrzeæ do innych plików z pomoc±.
  To na szczê¶cie jest do¶æ proste.
  Nale¿y uruchomiæ LyX-a, nastêpnie wybraæ 
-\family sans 
+\family sans
 Podrêcznik u¿ytkownika
-\family default 
+\family default
  z menu 
-\family sans 
+\family sans
 Pomo
-\bar under 
+\bar under
 c
-\family default 
-\bar default 
+\family default
+\bar default
 .
  Mo¿na równie¿ wczytaæ 
-\emph on 
+\emph on
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Elementarz
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 
-\emph toggle 
+\emph toggle
  (o ile nie ma go ju¿ na ekranie).
  W ten sposób mo¿na czytaæ je redaguj±c jednocze¶nie swój w³asny dokument
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Same podrêczniki mog± byæ jednocze¶nie dobrymi przyk³adami u¿ycia ró¿norodnych
  funkcji LyX-a.
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
  Je¿eli otwarto wiêcej ni¿ jeden dokument to do prze³±czania miêdzy nimi
  s³u¿y menu 
-\family sans 
-\bar under 
+\family sans
+\bar under
 D
-\bar default 
+\bar default
 okumenty
-\family default 
+\family default
 .
  
-\emph on 
+\emph on
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Elementarz
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 
-\emph toggle 
+\emph toggle
  nie bêdzie obja¶nia³ szczegó³owo tematów opisanych w innych podrêcznikach.
  Mo¿e to na pocz±tku nieco utrudniæ lekturê, ale zapobiega rozdêciu 
-\emph on 
+\emph on
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Elementarza
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 
-\emph toggle 
+\emph toggle
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\emph on 
+\emph on
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Elementarz
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 
-\emph toggle 
+\emph toggle
  zak³ada, ¿e dzia³a pe³na wersja LyX-a i LaTeX-a, xdvi lub inna przegl±darka
  dvi, dvips lub inny sposób konwersji dokumentu dvi do formatu Postscript,
  oraz drukarka.
@@ -1058,386 +1254,428 @@ Elementarz
  Je¿eli który¶ z w/w warunków nie jest spe³niony trzeba bêdzie (np.
  z pomoc± administratora systemu) system nale¿ycie doposa¿yæ.
  Potrzebne informacje dostêpne s± w innych podrêcznikach.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Ponadto napisano æwiczebny dokument LyX-a.
  Nazywa siê 
-\family typewriter 
+\family typewriter
 example_raw.lyx
-\family default 
+\family default
  i wygl±da, jakby zosta³ napisany przez kogo¶ nie maj±cego pojêcia o fantastyczn
 ych mo¿liwo¶ciach LyX-a.
  W miarê poznawania nowych funkcji programu nale¿y poprawiaæ odpowiednie
  fragmenty tego pliku.
  Zawiera on tak¿e wskazówki co do ulepszenia dokumentu.
  Drog± na skróty albo sprawdzeniem rezultatów pracy mo¿e byæ plik 
-\family typewriter 
+\family typewriter
 example_lyxified.lyx
-\family default 
+\family default
 , zawieraj±cy ten sam tekst, napisany i z³o¿ony przez eksperta.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Pisanie, ogl±danie, drukowanie
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Otwórz nowy plik poleceniem 
-\family sans 
+\family sans
 Nowy
-\family default 
+\family default
  z menu 
-\family sans 
+\family sans
 Plik
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Napisz zdanie, np.: 
-\family typewriter 
+\family typewriter
 To mój pierwszy dokument w LyX-ie !
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 W porz±dku.
  Mo¿na wpisaæ cokolwiek.
  To naprawdê wszystko jedno.
  Przepraszamy za powy¿szy przyk³ad, jak równie¿ za pozosta³e zdania, o wpisanie
  których poprosimy w przysz³o¶ci.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Zapisz dokument poleceniem
-\family sans 
+\family sans
  Zapisz 
-\bar under 
+\bar under
 j
-\bar default 
+\bar default
 ako 
-\family default 
+\family default
 z menu 
-\family sans 
+\family sans
 Plik\SpecialChar \@.
 
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Uruchom LaTeX-a celem utworzenia pliku dvi, u¿ywaj±c polecenia 
-\family sans 
+\family sans
 Obejrzyj jako 
-\bar under 
+\bar under
 D
-\bar default 
+\bar default
 VI
-\family default 
+\family default
  z podmenu 
-\family sans 
+\family sans
 Pod
-\bar under 
+\bar under
 g
-\bar default 
+\bar default
 l±d
-\family default 
+\family default
  w menu 
-\family sans 
-\bar under 
+\family sans
+\bar under
 P
-\bar default 
+\bar default
 lik
-\family default 
+\family default
 .
  LyX uruchomi kdvi (lub inn± przegl±darkê dvi), co otworzy nowe okno przedstawia
 j±ce wygl±d dokumentu na wydruku
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Dobrym pomys³em oszczêdzaj±cym czas jest pozostawienie otwartego okna kdvi
  po obejrzeniu dokumentu.
  Nastêpnym razem wystarczy u¿yæ polecenia 
-\family sans 
+\family sans
 Aktualizuj DVI
-\family default 
+\family default
  z podmenu 
-\family sans 
+\family sans
 Podgl±d
-\family default 
+\family default
 , by móc du¿o szybciej ujrzeæ dokument w kdvi.
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Wydrukuj dokument poleceniem 
-\family sans 
-\bar under 
+\family sans
+\bar under
 D
-\bar default 
+\bar default
 rukuj
-\family default 
+\family default
  z menu 
-\family sans 
-\bar under 
+\family sans
+\bar under
 P
-\bar default 
+\bar default
 lik
-\family default 
+\family default
 , po naci¶niêciu OK\SpecialChar \@.
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Gratulacje ! Napisa³e¶ i wydrukowa³e¶ Twój pierwszy dokument w LyX-ie.
  Ca³a reszta to tylko szczegó³y, opisane w 
-\emph on 
+\emph on
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Elementarzu
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 
-\emph toggle 
+\emph toggle
 , 
-\emph on 
+\emph on
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Podrêczniku u¿ytkownika
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 
-\emph toggle 
+\emph toggle
  i 
-\emph on 
+\emph on
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Opisie poleceñ
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 
-\emph toggle 
+\emph toggle
 .
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Proste operacje
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 W LyX-ie mo¿na wykonaæ wiêkszo¶æ czynno¶ci znanych z innych procesorów tekstu.
  Przenosi on automatycznie s³owa czy robi wciêcia w akapitach.
  Otwórz kilka menu by przekonaæ siê, ¿e wiêkszo¶æ prostych poleceñ jest
  na swoim miejscu (np.
  
-\family sans 
-\bar under 
+\family sans
+\bar under
 W
-\bar default 
+\bar default
 yj¶cie
-\family default 
+\family default
 ,
-\family sans 
+\family sans
  
-\bar under 
+\bar under
 W
-\bar default 
+\bar default
 klej
-\family default 
+\family default
 , 
-\family sans 
-\bar under 
+\family sans
+\bar under
 D
-\bar default 
+\bar default
 rukuj
-\family default 
+\family default
 ) pod nazwami jakich mog³e¶ oczekiwaæ, i zachowuje siê zgodnie z przewidywaniami.
  Poni¿ej znajduje siê krótki opis innych funkcji:
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 Cofnij LyX posiada 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 nieograniczone cofniêcie
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 , co oznacza , ¿e mo¿na cofn±æ wszystkie zmiany dokonane od otwarcia dokumentu
  u¿ywaj±c polecenia 
-\family sans 
-\bar under 
+\family sans
+\bar under
 C
-\bar default 
+\bar default
 ofnij
-\family default 
+\family default
  z menu 
-\family sans 
-\bar under 
+\family sans
+\bar under
 E
-\bar default 
+\bar default
 dycja
-\family default 
+\family default
 .
  Je¶li cofn±³e¶ siê zbyt g³êboko polecenie Przywróæ z tego samego menu naprawi
  b³±d.
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 Wytnij/Wklej/Kopiuj Polecenia 
-\family sans 
-\bar under 
+\family sans
+\bar under
 E
-\bar default 
+\bar default
 dycja->Wy
-\bar under 
+\bar under
 t
-\bar default 
+\bar default
 nij
-\family default 
+\family default
 , 
-\family sans 
-\bar under 
+\family sans
+\bar under
 E
-\bar default 
+\bar default
 dycja->
-\bar under 
+\bar under
 W
-\bar default 
+\bar default
 klej
-\family default 
+\family default
  i 
-\family sans 
-\bar under 
+\family sans
+\bar under
 E
-\bar default 
+\bar default
 dycja->
-\bar under 
+\bar under
 K
-\bar default 
+\bar default
 opiuj
-\family default 
+\family default
  s³u¿±
-\family sans 
-\bar under 
+\family sans
+\bar under
  
-\family default 
-\bar default 
+\family default
+\bar default
 do wycinania wklejania i kopiowania.
  Automatyczne wklejanie zaznaczonego tekstu odbywa siê za pomoc± ¶rodkowego
  przycisku myszy.
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 Znajd¼/Zast±p Polecenie 
-\family sans 
-\bar under 
+\family sans
+\bar under
 E
-\bar default 
+\bar default
 dycja->
-\bar under 
+\bar under
 Z
-\bar default 
-najd¼\SpecialChar ~
-i\SpecialChar ~
+\bar default
+najd¼\InsetSpace ~
+i\InsetSpace ~
 zast±p
-\family default 
+\family default
  s³u¿y do przeszu\SpecialChar \-
 kiwania z uwzglêdnieniem wielko¶ci liter.
  W oknie polecenia strza³ki w przód i w ty³ okre¶laj± kierunek szukania,
  a przycisk 
-\family sans 
-\bar under 
+\family sans
+\bar under
 Z
-\bar default 
+\bar default
 ast±p
-\family default 
+\family default
  powoduje zast±pienie znalezionych s³ów.
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Po zakoñczeniu zamknij okno, lub je¶li to wygodniejsze, zostaw je otwarte.
  Wiêkszo¶æ okien w LyX-ie --- w³±cznie z 
-\family sans 
-\bar under 
+\family sans
+\bar under
 Z
-\bar default 
-najd¼j\SpecialChar ~
-i\SpecialChar ~
+\bar default
+najd¼j\InsetSpace ~
+i\InsetSpace ~
 zast±p
-\family default 
+\family default
 , 
-\family sans 
-Spisem\SpecialChar ~
+\family sans
+Spisem\InsetSpace ~
 tre¶ci
-\family default 
+\family default
  i 
-\family sans 
-\bar under 
+\family sans
+\bar under
 U
-\bar default 
+\bar default
 k³adem
-\family default 
+\family default
 , jak równie¿ ró¿nymi oknami fromu³---daje siê wys³aæ w t³o bez konieczno¶ci
  zamykania.
  Klika okien, jak
-\bar under 
+\bar under
  
-\family sans 
+\family sans
 P
-\bar default 
+\bar default
 lik->
-\bar under 
+\bar under
 O
-\bar default 
+\bar default
 twórz
-\family default 
+\family default
  wymaga zamkniêcia przed wpisaniem czegokolwiek w oknie g³ównym.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Description
+\end_layout
 
-Formatowanie\SpecialChar ~
+\begin_layout Description
+
+Formatowanie\InsetSpace ~
 znaków Tekst mo¿e byæ 
-\emph on 
+\emph on
 wyró¿niony
-\emph toggle 
+\emph toggle
  (z regu³y kursyw±), 
-\series bold 
+\series bold
 wyt³uszczony
-\series default 
+\series default
  lub napisany jako 
-\noun on 
+\noun on
 nazwa w³asna
-\noun toggle 
+\noun toggle
  (zwykle kapitalikami, np.
  nazwiska) za pomoc± prze³±czalnych przycisków z menu Uk³ad.
-\layout Description
+\end_layout
 
-Pasek\SpecialChar ~
+\begin_layout Description
+
+Pasek\InsetSpace ~
 narzêdzi Poni¿ej menu znajduje siê pasek narzêdzi, u³atwiaj±cy wykonanie
  najpopularniejszych poleceñ, takich jak Wklej i Drukuj.
  Je¶li kursor myszy znajdzie siê na d³u¿ej nad przyciskiem z paska zadañ,
  pojawi siê ma³a ¿ó³ta podpowied¼ funkcji tego przycisku.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Naturalnie jak dot±d nie napisa³e¶ tak du¿o, by skorzystaæ z wiêkszo¶ci
  tych funkcji.
  W miarê postêpów jednak próbuj cofania, wklejania itd.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 WYSIWYM: puste miejsca w LyX-ie
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset LatexCommand \label{sec:whitespace}
 
-\end_inset 
+\end_inset
 
  Jedn± z najtrudniejszych dla nowego u¿ytkownika nowinek jest sposób w jaki
  LyX obchodzi siê z pustymi miejscami.
@@ -1447,29 +1685,31 @@ WYSIWYM: puste miejsca w LyX-ie
  Klawisz Tab nie przesuwa kursora do nastêpnego tabulatora - tak naprawdê
  nie ma tabulatorów! Brak linijki u szczytu strony, która pozwala³aby na
  ustawienie marginesów lub tabulatorów.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Wiele komercyjnych edytorów bazuje na zasadzie 
-\emph toggle 
+\emph toggle
 WYSIWYG --- What You See Is What You Get (Dostajesz to, co widzisz).
  LyX z kolei spe³nia zasadê 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 What You See Is What You 
-\emph on 
+\emph on
 Mean
-\emph default 
+\emph default
 .
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  (Dostajesz to, o co ci chodzi).
  Wpisujesz tre¶æ, a LyX sk³ada j± tak, ¿eby ca³o¶æ mia³a ³adny wygl±d.
  Naci¶niêcie 
-\family sans 
+\family sans
 Return
-\family default 
+\family default
  w sensie gramatycznym rozdziela akapity, za¶ spacja s³owa, tak wiêc nie
  ma sensu powielanie ich obok siebie; tabulator nie ma ¿adnej funkcji gramatyczn
 ej, zatem LyX go nie u¿ywa.
@@ -1478,16 +1718,18 @@ ej, zatem LyX go nie u¿ywa.
  Przejrzyj podrozdzia³ 
 \begin_inset LatexCommand \ref{sec:what-is-lyx}
 
-\end_inset 
+\end_inset
 
  celem lepszego poznania zasady WYSIWYM.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LyX posiada wiele metod na dopasowanie formatu dokumentu do potrzeb.
  Ostatecznie LyX niekoniecznie musi wygenerowaæ 
-\emph on 
+\emph on
 dok³adnie
-\emph toggle 
+\emph toggle
  to, o co chodzi.
  Podrêcznik u¿ytkownika opisuje szczegó³owo te metody.
  Nale¿± do nich wype³nienia poziome i pionowe --- bardziej skuteczne i wszechstr
@@ -1497,10 +1739,14 @@ onne ni¿ grupy spacji czy pustych linijek --- i rêczne sposoby zmiany wielko¶ci
  na koñcu.
  Standardowe edytory wymagaj± rozpraszanie siê formatowaniem w trakcie powstawan
 ia dokumentu.
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 ¦rodowiska
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Ró¿ne czê¶ci dokumentu pe³ni± ró¿n± funkcjê; czê¶ci te nazwiemy ¶rodowiskami.
  Dokument sk³ada siê w wiêkszo¶ci ze zwyk³ego tekstu.
@@ -1509,15 +1755,17 @@ Ró¿ne czê¶ci dokumentu pe³ni± ró¿n± funkcjê; czê¶ci te nazwiemy ¶rodowiskami.
  Pewne typy dokumentów wymagaj± specjalnych ¶rodowisk.
  Artyku³ bêdzie wymaga³ streszczenia i tytu³u.
  List ich nie potrzebuje, ale zawiera zapewne ¶rodowisko dla adresu nadawcy.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 ¦rodowiska stanowi± wa¿ny sk³adnik LyX-owego has³a 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 dostajesz, o co Ci chodzi
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 .
  ¦rodowisko mo¿e okre¶laæ styl, rozmiar czcionki, rodzaj wciêæ akapitu,
@@ -1528,267 +1776,299 @@ dostajesz, o co Ci chodzi
  kursywy; w ró¿nych jêzykach ró¿nie wygl±daj± wciêcia akapitów, w du¿ym
  zakresie zmieniaj± siê tak¿e standardy bibliografii.
  LyX pomaga unikn±æ konieczno¶ci uczenia siê tych ró¿nych stylów formatowania.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Lista ¶rodowisk znajduje siê w lewym rogu paska narzêdzi (pod menu 
-\family sans 
-\bar under 
+\family sans
+\bar under
 P
-\bar default 
+\bar default
 lik
-\family default 
+\family default
 ) i wskazuje bie¿±ce ¶rodowisko.
  Rozpoczêcie pracy w ka¿dym dokumencie nastêpuje w ¶rodowisku 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Standard
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 , domy¶lnym dla tekstu.
  Tytu³em æwiczenia u¿yj kilku ró¿nych ¶rodowisk w pisanym przez siebie dokumenci
 e.
  W tym celu wybierz konkretne ¶rodowisko klikaj±c na strza³ce w dó³ umieszczonej
  przy prawym brzegu rozwijalnej listy ¶rodowisk.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Sekcje i podrozdzia³y
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Napisz s³owo 
-\family typewriter 
+\family typewriter
 Wprowadzenie
-\family default 
+\family default
  w pierwszej linijce nowego dokumentu LyX-a i wybierz ¶rodowisko 
-\family sans 
+\family sans
 Section 
-\family default 
+\family default
 z listy ¶rodowisk
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Nie musisz 
-\emph on 
+\emph on
 zaznaczaæ
-\emph toggle 
+\emph toggle
  linijki.
  Je¶li niczego nie zaznaczy³e¶ LyX zmienia ¶rodowisko akapitu, w którym
  znajduje siê kursor.
  ¦rodowisko kilku akapitów naraz mo¿e zostaæ zmienione przez zaznaczenie
  ich przed wyborem nowego ¶rodowiska.
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
  LyX nadaje podrozdzia³owi numer 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 1
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  i sk³ada tytu³ podrozdzia³u wiêksz± czcionk±.
  (Oczywi¶cie tytu³ ten zostanie prawid³owo z³o¿ony w pliku dvi lub na wydruku.)
  Nastêpnie naci¶nij 
-\family sans 
+\family sans
 Return
-\family default 
+\family default
 .
  Zauwa¿, ¿e zawarto¶æ listy ¶rodowisk zmieni³a siê z 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Section
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  z powrotem na 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Standard
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 .
  Tytu³y podrozdzia³ów, jak wiêkszo¶æ ¶rodowisk koñcz± siê automatycznie
  wraz z naci¶niêciem Return..
  Wpisz klika s³ów wprowadzenia:
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 To jest wprowadzenie do mojego pierwszego dokumentu w LyX-ie.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Naci¶nij 
-\family sans 
+\family sans
 Return
-\family default 
+\family default
  ponownie i jeszcze raz wybierz 
-\family sans 
+\family sans
 Section
-\family default 
+\family default
  z listy ¶rodowisk.
  LyX wstawi 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 2
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  i czeka na dalszy ci±g.
  Wpisz 
-\family typewriter 
+\family typewriter
 Takie tam
-\family default 
+\family default
  i zauwa¿, ¿e LyX ponownie sk³ada tekst jako tytu³ podrozdzia³u.
  
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 To nie koniec.
  Id¼ na koniec pierwszego podrozdzia³u (po: 
-\family typewriter 
+\family typewriter
 mojego pierwszego dokumentu w LyX-ie
-\family default 
+\family default
 ) i naci¶nij Return raz jeszcze, nastêpnie wybieraj±c ¶rodowisko 
-\family sans 
+\family sans
 Section
-\family default 
+\family default
 .
  LyX znowu wstawia 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 2
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  czekaj±c na ci±g dalszy.
  Napisz 
-\family typewriter 
+\family typewriter
 O tym dokumencie
-\family default 
+\family default
 .
  Podrozdzia³ 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Takie tam
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 , który mia³ numer 2, zosta³ automatycznie przenumerowany na 3! W stylu
  prawdziwego WYSIWYM twoim jedynym zadaniem jest wskazanie fragmentów, które
  bêd± tytu³ami, a LyX zajmuje siê ich numeracj± i sk³adem.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Naci¶nij Return aby powróciæ do ¶rodowiska 
-\family sans 
+\family sans
 Standard
-\family default 
+\family default
  i wpisz nastêpuj±ce piêæ zdañ:
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 Podrozdzia³y i sekcje zosta³y opisane poni¿ej.
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 Opis Podrozdzia³u
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 Podrozdzia³y s± wiêksze ni¿ sekcje.
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 Opis sekcji
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 Sekcje s± mniejsze ni¿ podrozdzia³y.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Kliknij na drugiej linijce i wybierz ¶rodowisko 
-\family sans 
+\family sans
 Subsection
-\family default 
+\family default
 .
  LyX oznaczy sekcjê 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 2.1
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 , i z³o¿y j± czcionk± wiêksz± od normalnego tekstu lecz mniejsz± od tytu³u
  podrozdzia³u.
  Zmieñ ¶rodowisko czwartej linijki na 
-\family sans 
+\family sans
 Subsection
-\family default 
+\family default
 .
  Zgodnie z przewidywaniami LyX nada³ jej numer 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 2.2
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 .
  Gdyby wstawiæ jeszcze jeden podrozdzia³ przed podrozdzia³em 2, zosta³by
  on przenumerowany na 3 i sekcje nosi³y by numery 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 3.1
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  i 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 3.2
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Kolejne poziomy zawieraj± 
-\family sans 
+\family sans
 Subsubsection
-\family default 
+\family default
 , 
-\family sans 
+\family sans
 Paragraph
-\family default 
+\family default
 , 
-\family sans 
+\family sans
 i Subparagraph
-\family default 
+\family default
 .
  Przetrenuj je na w³asn± rêkê.
  Byæ mo¿e zauwa¿ysz, ¿e nag³ówki akapitów i podakapitów nie s± numerowane
  i ¿e podakapity s± wcinane.
  Je¶li chcesz to zmieniæ przeczytaj
-\emph on 
+\emph on
  Podrêcznik u¿ytkownika
-\emph toggle 
+\emph toggle
 .
  Tytu³y rozdzia³ów --- ¶rodowisko Chapter --- s± najwy¿szym poziomem, powy¿ej
  podrozdzia³ów, ale mo¿na ich u¿ywaæ tylko w niektórych typach (klasach)
  dokumentów LyX-a (patrz podrozdzia³ 
-\emph default 
+\emph default
 
 \begin_inset LatexCommand \ref{sec:textclasses}
 
-\end_inset 
+\end_inset
 
 ).
  
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Je¿eli nie chcesz numerowanych rozdzia³ów i podrozdzia³ów, u¿yj odpowiednich
  ¶rodowisk.
@@ -1796,138 +2076,168 @@ Je¿eli nie chcesz numerowanych rozdzia³ów i podrozdzia³ów, u¿yj odpowiednich
  nadaje tytu³owi podrozdzia³u te same atrybuty ale bez numerowania go.
  Istniej± odpowiednie ¶rodowiska 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 z gwiazdk±
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  dla 
-\family sans 
+\family sans
 Subsection
-\family default 
+\family default
  
-\family sans 
+\family sans
 i Subsubsection
-\family default 
+\family default
 .
  Zmieñ ¶rodowiska niektórych sekcji na ich odpowiedniki 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 z gwiazdk±
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  i zwróæ uwagê na zmianê numeracji pozosta³ych sekcji.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\series bold 
+\series bold
 Æwiczenie
-\series default 
+\series default
 : Popraw tytu³y sekcji i podrozdzia³ów w 
-\family typewriter 
+\family typewriter
 example_raw.lyx
-\family default 
+\family default
 .
  Znajdziesz ten dokument w katalogu 
-\family typewriter 
+\family typewriter
 examples/
-\family default 
+\family default
 .
  Wykonaj polecenie Plik->Otwórz i naci¶nij Przyk³ady.
- Otwórz dokument i zachowaj go poleceniem Plik->Zapisz\SpecialChar ~
+ Otwórz dokument i zachowaj go poleceniem Plik->Zapisz\InsetSpace ~
 jako w swoim katalogu
  jako kopiê robocz±.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Listy i podlisty
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LyX dysponuje szeregiem ró¿nych ¶rodowisk do sk³adu list.
  ¦rodowiska te uwalniaj± u¿ytkownika od uci±¿liwego naciskania Tab milion
  razy lub przenumerowywania listy za ka¿dym razem gdy wstawia co¶ w ¶rodek,
  pozwalaj±c mu skoncentrowaæ siê na zawarto¶ci
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Tak, przesadzamy z ci±g³ym podkre¶laniem tego faktu w 
-\emph on 
+\emph on
 Elementarzu
-\emph toggle 
+\emph toggle
 .
  Ale na tym polega LyX, wiêc prosimy o wyrozumia³o¶æ.
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
  Ró¿ne listy wymagaj± odpowiednich ¶rodowisk:
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Lista z wierszami rozpoczynanymi znaczkiem --- ¶rodowisko Itemize --- nadaje
  siê do prezentacji celem opisania poszczególnych punktów.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Numerowane listy i podlisty ¶rodowiska 
-\family sans 
+\family sans
 Enumerate
-\family default 
+\family default
  by³yby w³a¶ciwe w streszczeniu.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Dokument opisuj±cy pakiety oprogramowania mo¿e u¿ywaæ ¶rodowiska 
-\family sans 
+\family sans
 Description
-\family default 
+\family default
 , w którym ka¿da pozycja listy rozpoczyna siê wyt³uszczonym drukiem.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 ¦rodowisko 
-\family sans 
+\family sans
 List
-\family default 
+\family default
  --- nieobecne w LaTeX-u --- to trochê inna forma ¶rodowiska 
-\family sans 
+\family sans
 Description
-\family default 
+\family default
 .
  
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Wypisz listê powodów, dla których LyX jest lepszy ni¿ inne edytory .
  W dowolnym miejscu dokumentu napisz:
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\family typewriter 
+\family typewriter
 LyX jest lepszy ni¿ inne edytory, poniewa¿:
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 i naci¶nij Return.
  Teraz wybierz 
-\family sans 
+\family sans
 Itemize
-\family default 
+\family default
  z listy ¶rodowisk.
  LyX postawi znaczek (konkretnie znak mno¿enia, który zostanie wydrukowany
  jako kó³ko).
  Wylicz swoje argumenty i naci¶nij 
-\family sans 
+\family sans
 Return
-\family default 
+\family default
 : 
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 Robi za ciebie sk³ad drukarski.
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 Formu³y tworzy w trybie WYSIWYG
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 Bardzo ³atwo tworzy listy!
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 ¦rodowiska list, w przeciwieñstwie do tytu³ów nie koñcz± siê wraz z przyci¶niêci
 em Return.
@@ -1935,191 +2245,215 @@ em Return.
  Powy¿szy przyk³ad utworzy zatem listê trzech argumentów.
  Je¶li która¶ z pozycji listy ma mieæ wiêcej ni¿ jeden akapit, nale¿y u¿yæ
  bezpiecznego koñca linii, uzyskiwanego przyci¶niêciem 
-\family sans 
+\family sans
 C-Return
-\family default 
-\emph toggle 
+\family default
+\emph toggle
 .
  Aby zakoñczyæ listê, nale¿y ponownie wybraæ ¶rodowisko Standard z listy
  ¶rodowisk (lub kombinacj± klawiszy 
-\family sans 
-\emph default 
-M-p\SpecialChar ~
+\family sans
+\emph default
+M-p\InsetSpace ~
 s
-\family default 
+\family default
 ).
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Powsta³a piêkna lista argumentów.
  Mo¿na obejrzeæ jak LaTeX poradzi sobie z wydrukiem.
  Ale jak uzyskaæ numeracjê argumentów? Po prostu zaznacz ca³± listê
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 LyX nie pozwoli na zaznaczenie pierwszego znaczka, o ile nie zostanie zaznaczony
  akapit przed list±, co akurat nie jest potrzebne.
  Podobnie nie mo¿na zaznaczyæ numeru postawionego przed tytu³em rozdzia³u.
  Nie szkodzi.
-\end_inset 
+\end_layout
+
+\end_inset
 
  i z listy ¶rodowisk wybierz
-\family sans 
+\family sans
  Enumerate
-\family default 
+\family default
 .
  Voila ! Jak wspomniano, LyX troszczy siê o numeracjê listy w przypadku
  dodania lub wstawienia pozycji.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Je¶li lista jest wci±¿ zaznaczona mo¿na wypróbowaæ pozosta³e dwa ¶rodowiska,
  
-\family sans 
+\family sans
 Description
-\family default 
+\family default
  and 
-\family sans 
+\family sans
 List
-\family default 
+\family default
 .
  W obu lista sk³ada siê z has³a -- pierwszego s³owa danej pozycji oraz nastêpuj±
 cej po nim definicji, która tworzy resztê akapitu (a¿ do naci¶niêcia 
-\family sans 
+\family sans
 Return
-\family default 
+\family default
 ).
  Has³o jest wyt³uszczone (
-\family sans 
+\family sans
 Description
-\family default 
+\family default
 ) lub odseparowane 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 tabulatorem
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Ale jest to tabulator drukarski, a nie ¿a³osny, ograniczony, niereformowalny
  tabulator maszyny do pisania.
-\end_inset 
+\end_layout
+
+\end_inset
 
  (
-\family sans 
+\family sans
 List
-\family default 
+\family default
 ) od reszty akapitu.
  Has³o sk³adaj±ce siê z wiêcej ni¿ jednego s³owa mo¿na uzyskaæ rozdzielaj±c
  jego sk³adniki tward± spacj±, wstawian± naci¶niêciem 
-\family sans 
+\family sans
 C-Space
-\family default 
+\family default
  i wy¶wietlan± jako ma³e, ró¿owe 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 u
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\series bold 
+\series bold
 Æwiczenie
-\series default 
+\series default
 : Sformatuj listy z pliku 
-\family typewriter 
+\family typewriter
 example_raw.lyx.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Listy mo¿na zagnie¿d¿aæ na wszelkie mo¿liwe sposoby.
  Narzucaj±cym siê przyk³adem by³oby pisanie planu.
  Listy numerowane i ze znaczkami maj± ró¿ne sposoby numerowania i oznaczania
  podlist.
  W 
-\emph on 
+\emph on
 Podrêczniku u¿ytkownika
-\emph toggle 
+\emph toggle
  mo¿na znale¼æ szczegó³owy opis ró¿nych typów list, jak równie¿ przyk³ady
  z u¿yciem 
-\emph on 
+\emph on
 mnóstwa
-\emph toggle 
+\emph toggle
  zagnie¿d¿eñ.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Inne ¶rodowiska: Verses, Quotations, i inne
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Istniej± dwa ¶rodowiska wyró¿niaj±ce cytaty z otaczaj±cego tekstu: 
-\family sans 
+\family sans
 Quote
-\family default 
+\family default
  dla krótkich, a 
-\family sans 
+\family sans
 Quotation
-\family default 
+\family default
  dla d³ugich cytatów.
  Programy komputerowe (¶rodowisko 
-\family sans 
+\family sans
 LyX-Code
-\family default 
+\family default
 , u¿ywane równie¿ w Elementarzu w przyk³adach d³u¿szych tekstów) pisane
  s± czcionk± maszynow±.; ¶rodowisko to jest jedynym w LyX-ie, gdzie mo¿na
  u¿ywaæ wielokrotnych spacji celem formatowania kodu.
  Do pisania poezji s³u¿y ¶rodowisko 
-\family sans 
+\family sans
 Verse
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 nie wspominaj±c o odrobinie talentu.
-\end_inset 
+\end_layout
+
+\end_inset
 
 , z klawiszem Return
-\family default 
+\family default
  rozdzielaj±cym strofy, a 
-\family sans 
+\family sans
 C-Return
-\family default 
+\family default
  linijki wewn±trz strofy.
  
-\emph on 
+\emph on
 Podrêcznik u¿ytkownika
-\emph toggle 
+\emph toggle
  drobiazgowo opisuje wszystkie dostêpne ¶rodowiska.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\series bold 
+\series bold
 Æwiczenie
-\series default 
+\series default
 : U¿yj ¶rodowisk 
-\family sans 
+\family sans
 Quote, LyX-Code,
-\family default 
+\family default
  i 
-\family sans 
+\family sans
 Verse
-\family default 
+\family default
  celem poprawnego sformatowania pliku 
-\family typewriter 
+\family typewriter
 example_raw.lyx
-\layout Chapter
+\end_layout
+
+\begin_layout Chapter
 
 Pisanie dokumentów
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Zadaniem poprzedniego rozdzia³u by³o wdro¿enie u¿ytkownika do pisania tekstów
  w LyX-ie.
@@ -2132,18 +2466,24 @@ i.
  Zostan± wprowadzone klasy tekstu, pozwalaj±ce na pisanie ró¿nych typów
  dokumentów, oraz dodatki, które stanowi± o ró¿nicy miêdzy tekstem, a dokumentem
 , takie jak tytu³y, przypisy, odsy³acze, bibliografie i spisy tre¶ci.
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Klasy tekstu i wzorce: pisanie listów
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset LatexCommand \label{sec:textclasses}
 
-\end_inset 
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Ró¿ne typy dokumentów wymagaj± ró¿nego formatowania.
  Na przyk³ad ksi±¿ki zasadniczo s± drukowane na obu stronach kartki, za¶
@@ -2152,62 +2492,70 @@ Ró¿ne typy dokumentów wymagaj± ró¿nego formatowania.
  nadawcy i podpis, którenie maj± sensu w ksi±¿ce czy artykule.
  Klasy tekstu
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Dla u¿ytkowników LaTeX-a: ekwiwalent latexowej 
-\emph on 
+\emph on
 documentclass
-\end_inset 
+\end_layout
+
+\end_inset
 
  w LyX-ie s³u¿± do opisu tych zasadniczych ró¿niæ miêdzy typami dokumentów.
  Ten 
-\emph on 
+\emph on
 Elementarz
-\emph toggle 
+\emph toggle
  zosta³ napisany w klasie 
-\family sans 
+\family sans
 Book
-\family default 
+\family default
 .
  Klasy to kolejny element WYSIWYM; informuj± LyX-a jak sk³adaæ dokument,
  uwalniaj±c od tego u¿ytkownika.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Twój dokument jest prawdopodobnie klasy 
-\family sans 
+\family sans
 Article
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 To domy¶lna klasa, chyba ¿e j± zmieniæ w pliku 
-\family typewriter 
+\family typewriter
 lyxrc
-\family default 
+\family default
 .
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
  Spróbuj zmieniæ klasê u¿ywaj±c listy klas w oknie polecenia Uk³ad->Dokument
-\family default 
+\family default
 , celem obejrzenia ró¿nic w formatowaniu dokumentów.
  Je¶li zmienisz klasê swojego dokumentu na 
-\family sans 
+\family sans
 Book
-\family default 
+\family default
  i obejrzysz listê ¶rodowisk, zauwa¿ysz, ¿e wiêkszo¶æ z nich nie uleg³a
  zmianie.
  Dodatkowo pojawi siê ¶rodowisko 
-\family sans 
+\family sans
 Chapter
-\family default 
+\family default
 .
  W razie w±tpliwo¶ci, czy dane ¶rodowisko istnieje w klasie najlepiej zajrzeæ
  na listê ¶rodowisk.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Rozmiary czcionek, druk jedno- lub dwukolumnowy, nag³ówki stron to mo¿liwe
  ró¿nice miêdzy formatami czasopism.
@@ -2217,17 +2565,31 @@ Rozmiary czcionek, druk jedno- lub dwukolumnowy, nag³ówki stron to mo¿liwe
  LyX równie¿ je akceptuje.
  Na przyk³ad LyX obs³uguje format (i dodatkowe ¶rodowiska) dla biuletynu
  Amerykañskiego Towarzystwa Matematycznego stosuj±c klasê 
-\family sans 
-Article\SpecialChar ~
+\family sans
+Article\InsetSpace ~
 (AMS)
-\family default 
+\family default
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Oto bardzo krótki zestaw niektórych klas.
  Jak zwykle Podrêcznik u¿ytkownika zawiera brakuj±ce szczegó³y:
-\layout Standard
-\added_space_top 0.3cm \added_space_bottom 0.3cm \align center 
+\end_layout
+
+
+\begin_layout Standard
+
+
+\begin_inset VSpace 0.3cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
 
 \begin_inset  Tabular
 <lyxtabular version="3" rows="7" columns="2">
@@ -2238,140 +2600,182 @@ Oto bardzo krótki zestaw niektórych klas.
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 Nazwa
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 Uwagi
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 </row>
 <row topline="true">
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 article
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 druk jednostronny, bez rozdzia³ów
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 </row>
 <row topline="true">
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 article (AMS)
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 uk³ad i ¶rodowiska dla American Math Society
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 </row>
 <row topline="true">
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 report
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 d³u¿szy ni¿ article, druk dwustronny
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 </row>
 <row topline="true" bottomline="true">
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 book
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 report + dodatki z przodu i z ty³u
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 </row>
 <row bottomline="true">
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 slides
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 slajdy (z FoilTeX-em w³±cznie)
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 </row>
 <row bottomline="true">
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 letter
 \lang english
  
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 list---mnóstwo dodatkowych ¶rodowisk dla adresu, podpisu\SpecialChar \ldots{}
 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 </row>
 </lyxtabular>
 
-\end_inset 
+\end_inset
 
 
-\layout Section
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset VSpace 0.3cm
+\end_inset
+
+
+\end_layout
+
+
+\begin_layout Section
 
 Wzorce: pisanie listu
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Jedn± z najbardziej popularnych klas tekstu jest Letter (list).
  Nowy list mo¿na rozpocz±æ tworz±c nowy plik poleceniem Nowy, i wybieraj±c
@@ -2382,54 +2786,60 @@ Jedn± z najbardziej popularnych klas tekstu jest Letter (list).
  Dlatego LyX posiada wzorzec listu, bêd±cy przyk³adowym listem.
  Posiadaj±c wzorzec mo¿na po prostu zast±piæ jego fragmenty w³asnym tekstem
  kiedy pisze siê w³asny list.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Utwórz nowy plik poleceniem Plik->Nowy ze wzorca.
  Po podaniu nazwy nowego pliku, w oknie Wybierz wzorzec wybierz 
-\family typewriter 
+\family typewriter
 latex_letter.lyx
-\family default 
+\family default
 .
  Zapisz i wydrukuj plik celem obejrzenia formatu poszczególnych ¶rodowisk.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Na li¶cie ¶rodowisk znajduje siê teraz kilka pozycji w³±cznie ze ¶rodowiskiem
  
-\family sans 
-My\SpecialChar ~
+\family sans
+My\InsetSpace ~
 Address
-\family default 
+\family default
  (mój adres), których nie ma w innych klasach.
  Inne ¶rodowiska jak 
-\family sans 
+\family sans
 Quote czy Description
-\family default 
+\family default
 , s± ju¿ znane.
  Warto wypróbowaæ ich dzia³anie.
  Mo¿na np.
  zauwa¿yæ, ¿e ¶rodowisko 
-\family sans 
+\family sans
 Signature
-\family default 
+\family default
  rozpoczyna siê s³owem 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Signature:
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  na czerwono przed w³a¶ciwym podpisem.
  S³owo to nie poka¿e siê na wydruku.
  Istnieje tylko w celu pokazania miejsca podpisu.
  Niewa¿ne zreszt±, gdzie to ¶rodowisku znajduje siê w pliku.
  Nale¿y pamiêtaæ, ¿e LyX jest WYSIWYM; ¶rodowisko 
-\family sans 
+\family sans
 Signature
-\family default 
+\family default
  mo¿e byæ wstawione gdziekolwiek, ale LyX sprawi, ¿e na wydruku zostanie
  umieszczone na koñcu.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Wzorzec jest normalnym plikiem LyX-a.
  Oznacza to, ¿e mo¿esz wstawiæ swój adres i podpis i zapisaæ tak zmieniony
@@ -2438,85 +2848,99 @@ Wzorzec jest normalnym plikiem LyX-a.
  Nie proponujemy tu ¿adnego szczególnego æwiczenia.
  Po prostu napisz do kogo¶ list
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Jedno ostrze¿enie.
  Je¶li wykasujesz ca³y tekst ze ¶rodowiska np.
  wykasujesz ca³e pole 
-\family sans 
-My\SpecialChar ~
+\family sans
+My\InsetSpace ~
 Address
-\family default 
+\family default
  celem wpisania w³asnego adresu i przemie¶cisz kursor nic nie wpisuj±c,
  ryzykujesz znikniêcie ¶rodowiska.
  Dzieje siê tak , poniewa¿ ¶rodowisko nie mo¿e istnieæ bez tekstu.
  Aby je odzyskaæ nale¿y wybraæ je ponownie z listy ¶rodowisk.
-\end_inset 
+\end_layout
+
+\end_inset
 
 !
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Tytu³y dokumentu
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Tytu³ (który mo¿e sk³adaæ siê z w³a¶ciwego tytu³u, autora, a nawet streszczenia)
  jest uwa¿any w LyX-ie (podobnie jak w LaTeX-u) za osobn± czê¶æ dokumentu.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Wróæ do swojego pliku 
-\family typewriter 
+\family typewriter
 newfile.lyx i
-\family default 
+\family default
  upewnij siê
-\family typewriter 
+\family typewriter
 ,
-\family default 
+\family default
  ¿e u¿ywa klasy 
-\family sans 
+\family sans
 Article
-\family default 
+\family default
 .
  Wpisz tytu³ w pierwszej linijce, i zmieñ ¶rodowisko na 
-\family sans 
+\family sans
 Title
-\family default 
+\family default
 .
  W nastêpnej linijce wpisz swoje imiê i nazwisko i ustaw ¶rodowisko 
-\family sans 
+\family sans
 Author
-\family default 
+\family default
 .
  W nastêpnej linijce napisz datê w ¶rodowisku 
-\family sans 
+\family sans
 Date
-\family default 
+\family default
 .
  Napisz ze dwa akapity podsumowuj±ce zawarto¶æ dokumentu w ¶rodowisku 
-\family sans 
+\family sans
 Abstract
-\family default 
+\family default
 .
  Teraz obejrzyj wydruk.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\series bold 
+\series bold
 Æwiczenie
-\series default 
+\series default
 : Popraw tytu³, datê i autora 
-\family typewriter 
+\family typewriter
 w example_raw.lyx
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Etykiety i odno¶niki
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset LatexCommand \label{sec:labels}
 
-\end_inset 
+\end_inset
 
  Zaetykietowaæ mo¿na podrozdzia³ (albo sekcjê, czy te¿, rzadziej, pop prostu
  kawa³ek tekstu) w dowolnym dokumencie.
@@ -2528,168 +2952,192 @@ Etykiety i odno¶niki
  odno¶ników.
  Automatyczne etykiety i odno¶niki to jedna z najwiêkszych zalet LyX-a (i
  LaTeX-a) w porównaniu do zwyk³ych edytorów.
-\layout Subsection*
+\end_layout
+
+\begin_layout Subsection*
 
 Pierwsza etykieta
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Oznaczmy nasz drugi podrozdzia³ zatytu³owany 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 O tym dokumencie
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 .
  Kliknij na koñcu linijki tytu³u podrozdzia³u i u¿yj polecenia 
-\family sans 
+\family sans
 Wstaw->Etykietê
-\family default 
+\family default
 .
  W oknie wpisz nazwê podrozdzia³u: 
-\family typewriter 
+\family typewriter
 sec:o_dok
-\family default 
+\family default
 , która wygl±da na dobre opisowe oznaczenie, niekoliduj±ce z ewentualnymi
  innymi nazwami etykiet
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Piszemy 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 sec:
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  , bo mo¿na etykietowaæ tak¿e równania.
  tabele i rysunki.
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
  Po naci¶niêciu OK nazwa etykiety zostanie umieszczona w prostok±cie obok
  tytu³u podrozdzia³u.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Sk±din±d etykieta mog³aby byæ wstawiona w dowolnym miejscu w ¶rodku podrozdzia³u.
  Odno¶niki do podrozdzia³u wskazuj± na ostatni podrozdzia³ lub sekcjê, której
  tytu³ znajduje siê przed etykiet±.
  Umieszczenie jej w linijce tytu³u (czy w pierwszej linijce tekstu) zapewnia
  odwo³anie do pocz±tku podrozdzia³u.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Jak dot±d niewiele siê zmieni³o --- plik 
-\family typewriter 
+\family typewriter
 dvi
-\family default 
+\family default
  wygl±da dok³adnie jak wygl±da³, poniewa¿ etykiety nie pojawiaj± siê na
  wydruku.
  Tym niemniej je¶li do³o¿ono etykietê, to mo¿na siê do niej odwo³aæ za pomoc±
  odno¶nika.
  Zrobimy to w nastêpnym kroku.
-\layout Subsection*
+\end_layout
+
+\begin_layout Subsection*
 
 Pierwszy odno¶nik
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Umie¶æ kursor w dowolnym miejscu swojego dokumentu.
  Napisz:
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 Je¶li chcesz zasiêgn±æ wiêcej informacji o tym dokumencie,zobacz podrozdzia³
  , który rozpoczyna siê na stronie .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Nastêpnie --- z kursorem po s³owie podrozdzia³ --- u¿yj polecenia 
-\family sans 
+\family sans
 Wstaw->Odno¶nik
-\family default 
+\family default
 .
  Otworzy siê okno 
-\family sans 
-Wstaw\SpecialChar ~
+\family sans
+Wstaw\InsetSpace ~
 odno¶nik
-\family default 
+\family default
 , pokazuj±c listê mo¿liwych etykiet.
  W tej chwili powinna byæ tylko jedna: 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 sec:o_dokumencie
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 .
  Wybierz j± i kliknij na 
-\family sans 
-Wstaw\SpecialChar ~
+\family sans
+Wstaw\InsetSpace ~
 odno¶nik
-\family default 
+\family default
 .
  Teraz przesuñ kursor za s³owo 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 stronie
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  i kliknij na 
-\family sans 
-Wstaw\SpecialChar ~
-numer\SpecialChar ~
+\family sans
+Wstaw\InsetSpace ~
+numer\InsetSpace ~
 strony
-\family default 
+\family default
  w oknie 
-\family sans 
-Wstaw\SpecialChar ~
+\family sans
+Wstaw\InsetSpace ~
 odno¶nik
-\family default 
+\family default
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LyX wstawia odno¶nik do prostok±ta w miejscu kursora.
  Na wydruku prostok±t z odno¶nikiem zostanie zast±piony numerem podrozdzia³u,
  wzglêdnie strony ( w zale¿no¶ci co wskaza³e¶ w oknie 
-\family sans 
-Wstaw\SpecialChar ~
+\family sans
+Wstaw\InsetSpace ~
 odno¶nik
-\family default 
+\family default
 ).
  Dla wygody odno¶niki dzia³aj± jak hiper³±cza w trakcie edycji dokumentu
  LyX-a; klikniêcie na nich przenosi kursor do wskazywanej etykiety.
  U¿yj polecenia 
-\family sans 
-Plik->Podgl±d->Obejrzyj\SpecialChar ~
-jako\SpecialChar ~
+\family sans
+Plik->Podgl±d->Obejrzyj\InsetSpace ~
+jako\InsetSpace ~
 DVI
-\family default 
+\family default
  aby zobaczyæ, ¿e na ostatniej stronie odsy³amy do 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 podrozdzia³u 2
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  i 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 strony 1
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  (czy innej, na której akurat jest tytu³ 2.
  podrozdzia³u).
-\layout Subsection*
+\end_layout
+
+\begin_layout Subsection*
 
 Wiêcej o etykietach
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Wspomniano o obs³udze numerowania odno¶ników przez LyX-a; teraz mo¿na j±
  przetestowaæ.
@@ -2697,49 +3145,53 @@ Wspomniano o obs³udze numerowania odno¶ników przez LyX-a; teraz mo¿na j±
  Uaktualnij podgl±d --- voilà! --- odno¶nik zmieni³ numer na 3! Zmieñ ¶rodowisko
  
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 O tym dokumencie
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  na 
-\family sans 
+\family sans
 Subsection
-\family default 
+\family default
 , a odno¶nik wska¿e sekcjê 2.1 zamiast podrozdzia³u 3.
  Odno¶nik do strony nie zmieni siê oczywi¶cie tak d³ugo, a¿ nie wpiszesz
  ca³ej strony tekstu przed wskazywan± etykiet±.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 W ramach poszerzonych æwiczeñ spróbuj wstawiæ etykietê 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 sec:moja_etykieta
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  w miejsce pierwszego odno¶nika i umie¶æ w innym miejscu dokumentu odno¶nik
  do niej.
  Podczas czêstego wstawiania odno¶ników warto zostawiæ otwarte okno
-\family sans 
- Wstaw\SpecialChar ~
+\family sans
+ Wstaw\InsetSpace ~
 odno¶nik
-\family default 
+\family default
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Je¿eli chcesz sprawdziæ, czy odno¶niki wy¶wietlaj± prawid³owe strony we
  wiêkszych dokumentach, skopiuj kilka stron z 
-\emph on 
+\emph on
 Podrêcznika u¿ytkownika
-\emph default 
+\emph default
  i wklej po¿yczony tekst do swojego dokumentu.
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Skopiowanie tytu³u rozdzia³u mo¿e spowodowaæ b³±d LyX-a, poniewa¿ rozdzia³y
  nie s± dozwolone w klasie Article.
@@ -2747,410 +3199,476 @@ Skopiowanie tytu³u rozdzia³u mo¿e spowodowaæ b³±d LyX-a, poniewa¿ rozdzia³y
  Je¶li chcesz wiedzieæ, czemu tak siê dzieje, zobacz podrozdzia³ 
 \begin_inset LatexCommand \ref{sec:textclasses}
 
-\end_inset 
+\end_inset
 
 .
  
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\series bold 
+\series bold
 Æwiczenie
-\series default 
+\series default
 : Popraw odno¶niki w 
-\family typewriter 
+\family typewriter
 example_raw.lyx
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Przypisy i notatki
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Przypisy s± dodawane za pomoc± przycisku 
-\family sans 
-Wstaw\SpecialChar ~
+\family sans
+Wstaw\InsetSpace ~
 przypis
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Przycisk oznaczony jest strza³k± wskazuj±c± przypis
-\end_inset 
+\end_layout
 
- z paska narzêdzi lub poleceniem Wstaw\SpecialChar ~
+\end_inset
+
+ z paska narzêdzi lub poleceniem Wstaw\InsetSpace ~
 przypis
-\family default 
+\family default
 .
  Kliknij na koñcu s³owa 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 LyX
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  gdzie¶ w dokumencie i naci¶nij przycisk 
-\family sans 
-Wstaw\SpecialChar ~
+\family sans
+Wstaw\InsetSpace ~
 przypis
-\family default 
+\family default
 .
  Poni¿ej bie¿±cej linijki otworzy siê linijka przypisu.
  Przy jej lewym koñcu jest s³owo 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 foot
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  napisane czerwonym kolorem na szarym tle.
  Reszta linijki jest okolona czerwon± lini±.; tu w³a¶nie nale¿y wpisaæ tekst
  przypisu.
  Kursor powinien znajdowaæ siê na pocz±tku tej linijki.
  Napisz
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 LyX jest procesorem tekstu dokonuj±cym sk³adu drukarskiego.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Teraz kliknij na s³owie 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 foot
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 .
  Linijka przypisu zniknê³a pozostawiaj±c s³owo 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 foot
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  zapisane jako czerwony indeks górny, pokazuj±c gdzie na wydruku znajdzie
  siê przypis; nazwiemy to 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 zwijaniem
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  przypisu.
  Mo¿na j± tak¿e w ka¿dej chwili rozwin±æ przez klikniêcie na czerwonym znaczku.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Mo¿na zapytaæ, czemu przypis pokazywany jest jako czerwony indeks, a nie
  jako liczba.
  Dzieje siê tak, gdy¿ LyX zajmuje siê numerowaniem przypisów 
-\emph on 
+\emph on
 na wydrukach
-\emph default 
+\emph default
 , o czym mo¿esz siê przekonaæ ogl±daj±c plik dvi (lub wydruk).
  Dodanie nowego przypisu powoduje odpowiednie przenumerowanie ju¿ istniej±cych.
  Poniewa¿ LyX (a w³a¶ciwie LaTeX) radzi sobie z tym na bie¿±co, nie ma potrzeby
  zapisywania numerów przypisów w pliku LyX-a.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Przypis mo¿e byæ wycinany i wklejany tak jak zwyk³y tekst.
  Przekonaj siê o tym sam ! Wystarczy zaznaczyæ znaczek przypisu,
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Byæ mo¿e ³atwiej zaznaczyæ go przy pomocy klawiszy.
  Zaznaczaj±c znaczek stopki mysz± mo¿na przypadkiem otworzyæ stopkê.
-\end_inset 
+\end_layout
+
+\end_inset
 
  poczym wyci±æ go i wkleiæ.
  Poza tym mo¿na zamieniæ w przypis zwyk³y tekst, zaznaczaj±c go i naciskaj±c
  przycisk 
-\family sans 
-Wstaw\SpecialChar ~
+\family sans
+Wstaw\InsetSpace ~
 przypis
-\family default 
+\family default
 .
-\layout Standard
+\end_layout
 
-Przycisk Wstaw\SpecialChar ~
+\begin_layout Standard
+
+Przycisk Wstaw\InsetSpace ~
 notatkê dodaje notatki na marginesach
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Przycisk przedstawia strza³kê wskazuj±c± kolumnê tekstu na marginesie i
  powinien znajdowaæ siê po prawej stronie przycisku 
-\family sans 
-Wstaw\SpecialChar ~
+\family sans
+Wstaw\InsetSpace ~
 stopkê 
-\family default 
+\family default
 na pasku narzêdzi.
-\end_inset 
+\end_layout
+
+\end_inset
 
 , co osi±gn±æ mo¿na równie¿ poleceniem 
-\family sans 
+\family sans
 Wstaw->Notatkê
-\family default 
+\family default
 \SpecialChar \@.
  Notatki zachowuj± siê jak przypisy, z tym ¿e: 
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 znaczki na ekranie maj± napis 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 margin
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  zamiast 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 foot
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 notatki pojawi± siê na marginesie, a nie pod tekstem 
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 notatki nie s± numerowane
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Kiedy notatka jest zwiniêta, na marginesie pojawia siê wykrzyknik, który
  nie poka¿e siê na wydruku.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Zmieñ swój przypis o LyX-ie z powrotem w tekst, a nastêpnie w notatkê.
  Obejrzyj plik dvi aby zobaczyæ jak wygl±da taka notatka.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\series bold 
+\series bold
 Æwiczenie
-\series default 
+\series default
 : Popraw przypis w 
-\family typewriter 
+\family typewriter
 example_raw.lyx
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Bibliografie
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset LatexCommand \label{sec:bibliographies}
 
-\end_inset 
+\end_inset
 
  Bibliografie zachowuj± siê podobnie do odno¶ników.
  Bibliografia zawiera listê odsy³aczy do literatury na koñcu dokumentu,
  do których mo¿na siê odwo³ywaæ w tek¶cie.
  Podobnie jak tytu³y podrozdzia³ów pozycje bibliografii s± przez LyX-a i
  LaTeX-a automatycznie numerowane, jak równie¿ odwo³ania do nich.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Id¼ na koniec dokumentu i ustaw ¶rodowisko 
-\family sans 
+\family sans
 Bibliography
-\family default 
+\family default
 .
  Teraz ka¿dy akapit bêdzie pozycj± bibliografii.
  Napisz 
-\family typewriter 
+\family typewriter
 Elementarz LyX-a, Zespó³ Dokumentacji LyX-a
-\family default 
+\family default
  jako swoj± pierwsz± pozycjê.
  Zauwa¿, ¿e LyX automatycznie umieszcza numer w prostok±cie przed ka¿d±
  pozycj±.
  Kliknij na takim numerze, aby otworzyæ okno 
-\family sans 
-Pozycja\SpecialChar ~
+\family sans
+Pozycja\InsetSpace ~
 bibliografii
-\family default 
+\family default
 .
  Pierwsze z pól, edycyjnych, 
-\family sans 
+\family sans
 Klucz
-\family default 
+\family default
 , s³u¿y do odwo³añ z tekstu dokumentu LyX-a.
  Domy¶lnie jest on liczb±.
  Wpisz w to pole 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 elementarz
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  celem ³atwiejszego zapamiêtania.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Znajd¼ teraz w swoim dokumencie jakie¶ miejsce do umieszczenia odwo³ania
  do literatury.
  Wstaw je za pomoc± 
-\family sans 
-Wstaw->Odwo³anie\SpecialChar ~
-do\SpecialChar ~
+\family sans
+Wstaw->Odwo³anie\InsetSpace ~
+do\InsetSpace ~
 literatury
-\family default 
+\family default
 \SpecialChar \@.
  LyX wstawi w tekst prostok±t z trzema znakami zapytania w nawiasach kwadratowyc
 h i pojawi siê okno 
-\family sans 
-Wstaw\SpecialChar ~
+\family sans
+Wstaw\InsetSpace ~
 odwo³anie
-\family default 
+\family default
 .
  U¿ywaj±c rozwijalnej listy na prawo od pola 
-\family sans 
+\family sans
 Klucz
-\family default 
+\family default
 , wybierz 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 elementarz
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  (w tej chwili to jedyna pozycja bibliografii).
  Obejrzyj na podgl±dzie wygl±d odwo³ania w tek¶cie.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Do czego s³u¿± pozosta³e pola? Pole 
-\family sans 
+\family sans
 Uwaga
-\family default 
+\family default
  w oknie 
-\family sans 
+\family sans
 Odwo³anie
-\family default 
+\family default
  wstawia notkê (jak strona lub rozdzia³ w przywo³anej ksi±¿ce lub artykule)
  w nawiasach po odwo³aniu.
  Je¶li wolisz skróty zamiast liczb (np.
  
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 [Smi95]
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  odwo³uje siê do artyku³u Smith-a z 1995) u¿yj pola 
-\family sans 
+\family sans
 Etykieta
-\family default 
+\family default
  z okna 
-\family sans 
-Pozycja\SpecialChar ~
+\family sans
+Pozycja\InsetSpace ~
 bibliografii
-\family default 
+\family default
 .
  Jak zwykle szczegó³y opisano w 
-\emph on 
+\emph on
 Podrêczniku u¿ytkownika.
 
-\emph toggle 
+\emph toggle
  
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\series bold 
+\series bold
 Æwiczenie: 
-\series default 
+\series default
 Wykonaj bibliografiê i odwo³ania w 
-\family typewriter 
+\family typewriter
 example_raw.lyx
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Spis tre¶ci
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Je¶li zamierzasz wstawiæ spis tre¶ci na pocz±tku dokumentu, LyX znakomicie
  to u³atwi.
  Naci¶nij 
-\family sans 
+\family sans
 Return
-\family default 
+\family default
  za tytu³em dokumentu i przed pierwszym tytu³em podrozdzia³u
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Nawet nie próbuj umie¶ciæ kursora przed numerem podrozdzia³u.
  Nie uda siê.
  Tak czy inaczej nie mo¿na rêcznie poprawiaæ tego numeru, bo LyX numeruje
  podrozdzia³y automatycznie.
-\end_inset 
+\end_layout
+
+\end_inset
 
  i wykonaj polecenie 
-\family sans 
-Wstaw->Spisy->Spis\SpecialChar ~
+\family sans
+Wstaw->Spisy->Spis\InsetSpace ~
 tre¶ci
-\family default 
+\family default
 .
  W prostok±cie w pierwszej linijce dokumentu pojawi siê napis 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Spis tre¶ci
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Wygl±da to niepozornie, ale na podgl±dzie widaæ kompletny spis tre¶ci dokumentu
  w ca³ej okaza³o¶ci.
  Jak zwykle, w przypadku zmiany kolejno¶ci rozdzia³ów lub dodania nowych,
  spis tre¶ci na wydruku zostanie uaktualniony.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Spis tre¶ci nie pokazuje siê w edytowanej wersji dokumentu, bo i tak nie
  ma mo¿liwo¶ci jego edycji.
  Mo¿na jednak wy¶wietliæ go za pomoc± polecenia
-\family sans 
- Edycja->Struktura\SpecialChar ~
+\family sans
+ Edycja->Struktura\InsetSpace ~
 dokumentu
-\family default 
+\family default
 .
  To bardzo u¿yteczne narzêdzie, które umo¿liwia ³atwe poruszanie siê po
  dokumencie.
  Klikniêcie na tytule podrozdzia³u w oknie 
-\family sans 
-Struktura\SpecialChar ~
+\family sans
+Struktura\InsetSpace ~
 dokumentu
-\family default 
+\family default
  wyró¿nia ten tytu³ i przenosi w to miejsce kursor (w oknie edycyjnym).
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Pozbyæ siê spisu tre¶ci mo¿na kasuj±c go tak jak inne znaki.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\series bold 
+\series bold
 Æwiczenie
-\series default 
+\series default
 : Wstaw spis tre¶ci w pliku 
-\family typewriter 
+\family typewriter
 example_raw.lyx
-\layout Chapter
+\end_layout
+
+\begin_layout Chapter
 
 Formu³y matematyczne
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LaTeX jest u¿ywany przez wielu naukowców z powodu jego ¶wietnie wygl±daj±cych
  równañ, powstaj±cych bez potrzeby u¿ywania znaków kontrolnych i edytorów
@@ -3164,49 +3682,61 @@ LaTeX jest u¿ywany przez wielu naukowców z powodu jego ¶wietnie wygl±daj±cych
  paska narzêdzi formu³ matematycznych, który umo¿liwia tworzenie profesjonalnie
  wygl±daj±cych równañ w sposób ³atwy i szybki
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 LyX nie potrafi, niestety, sprawdziæ 
-\emph on 
+\emph on
 poprawno¶ci
-\emph toggle 
+\emph toggle
  tych równañ.
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Tryb formu³ matematycznych
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 W dowolnym miejscu swojego dokumentu napisz: 
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 Lubiê równanie Einsteina, E=mc^2, bo  jest takie proste
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Takie równanie nie wygl±da za ³adnie, nawet na podgl±dzie.
  Brak w nim spacji miêdzy literami a znakiem równo¶ci i prawdziwego indeksu
  górnego dla 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 2
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 .
  Taki nieciekawy sk³ad jest skutkiem tego, ¿e LyX nie zosta³ poinformowany
  o pisaniu równania i z³o¿y³ je jak zwyk³y tekst.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Tekst matematyczny powinno pisaæ siê w trybie formu³ matematycznych.
  Aby wej¶æ w tryb formu³ wystarczy nacisn±æ przycisk na pasku narzêdzi oznaczony
  niebieskim symbolem 
 \begin_inset Formula $\frac{a+b}{c}$
-\end_inset 
+\end_inset
 
  .
  LyX wstawi w tekst ma³y niebieski prostok±t okolony czerwon± ramk±.
@@ -3217,34 +3747,38 @@ Tekst matematyczny powinno pisaæ siê w trybie formu³ matematycznych.
  Wyra¿enie napisane jest na niebiesko, a niebieski prostok±t znika kiedy
  punkt wstawiania nie jest pusty.
  Teraz naci¶nij Esc celem opuszczenia trybu matematycznego (zauwa¿, ¿e powtórne
- przyci¶niêcie przycisku Tryb\SpecialChar ~
+ przyci¶niêcie przycisku Tryb\InsetSpace ~
 formu³ 
-\emph on 
+\emph on
 nie opuszcza 
-\emph toggle 
+\emph toggle
 trybu formu³).
  Znika czerwona ramka, kursor znajduje siê na prawo od wyra¿enia, ewentualne
  dalsze pisanie bêdzie w trybie zwyk³ego tekstu.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Obejrzyj podgl±d i zauwa¿ ³adnie z³o¿one równanie, zawieraj±ce spacje miêdzy
  literami i znakiem równao¶ci, a tak¿e 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 2
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  jako indeks górny.
  Litery w trybie formu³ traktowane s± jak zmienne i pisane s± kursyw±.
  Liczby traktowane s± jak liczby.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Edycja formu³ to kolejny przyk³ad podej¶cia WYSIWYM.
  W LaTeX-u wyra¿enie matematyczne tworzy siê pisz±c tekst i u¿ywaj±c poleceñ
  typu 
-\backslash 
+\backslash
 sqrt; mo¿e to byæ uci±¿liwe, z braku mo¿liwo¶ci zobaczenia wyra¿enia zanim
  uruchomi siê program LaTeX-a, co powoduje stratê czasu na poprawkê ewentualnych
  b³êdów jak zgubione nawiasy itd.
@@ -3255,18 +3789,22 @@ sqrt; mo¿e to byæ uci±¿liwe, z braku mo¿liwo¶ci zobaczenia wyra¿enia zanim
  w 99% nie trzeba rêcznie poprawiaæ rozmiarów czcionki czy odstêpów.
  W ten sposób (przepraszamy za powtarzanie siê), u¿ytkownik mo¿e skupiæ
  siê na zawarto¶ci wyra¿eñ matematycznych, a nie na ich formacie.
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Praca z równaniem
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Zmieñ teraz 
 \begin_inset Formula $E=mc^{2}$
-\end_inset 
+\end_inset
 
  na 
 \begin_inset Formula $E=1+mc^{2}$
-\end_inset 
+\end_inset
 
 .
  U¿yj klawiszy strza³ek aby przemie¶ciæ kursor do wnêtrza wyra¿enia.
@@ -3275,112 +3813,118 @@ Zmieñ teraz
  Za pomoc± strza³ki w lewo i w prawo przesuñ kursor za znak równo¶ci i napisz
  
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 1+
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 .
  Jak poprzednio mo¿na u¿yæ klawiszy strza³ek lub 
-\family sans 
+\family sans
 Esc
-\family default 
+\family default
  celem opuszczenia trybu formu³, co spowoduje znikniêcie czerwonej ramki.
  W opinii wielu u¿ytkowników wej¶cie w tryb formu³ kursorem jest bardzo
  wygodne, ale zawsze mo¿na klikn±æ w którym¶ miejscu wyra¿enia, ¿eby przenie¶æ
  tam kursor i przej¶æ tym samym do trybu formu³.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 W odró¿nieniu od specjalnych klawiszy opisanych poni¿ej, pisanie w trybie
  formu³ nie ró¿ni siê od pisania zwyk³ego tekstu.
  
-\family sans 
+\family sans
 Delete
-\family default 
+\family default
  i 
-\family sans 
+\family sans
 Backspace
-\family default 
+\family default
  kasuj± znaki, zaznaczaæ tekst mo¿na za pomoc± klawiszy lub myszy, dzia³a
  
-\family sans 
+\family sans
 Edycja->Cofnij
-\family default 
+\family default
 , wycinanie oraz wklejanie.
  Z jednym trzeba ostro¿nie: po wyj¶ciu z trybu formu³ nieopatrzne
-\family sans 
+\family sans
  Backspace/Delete 
-\family default 
+\family default
 potrafi za jednym zamachem skasowaæ ca³e wyra¿enie.
  Na szczê¶cie 
-\family sans 
+\family sans
 Cofnij
-\family default 
+\family default
  naprawi b³±d.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Jak zmieniæ 
 \begin_inset Formula $E=mc^{2}$
-\end_inset 
+\end_inset
 
  na 
 \begin_inset Formula $E=mc^{2.5}+1$
-\end_inset 
+\end_inset
 
 ? Jak poprzednio, mo¿na od razu klikn±æ mysz± we w³a¶ciwe miejsce.
  Mo¿na tak¿e u¿yæ klawiszy strza³ek.
  Je¶li kursor znajduje siê zaraz za 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 c
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 , ale przed 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 2
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 , naci¶niêcie strza³ki w górê przesunie kursor na poziom indeksu górnego,
  tu¿ przed 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 2
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 .
  Dodaj 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 .5
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 .
  Naci¶niêcie strza³ki w dó³ przesunie kursor z powrotem na zwyk³y poziom.
  Naci¶niêcie tej strza³ki w dowolnym miejscu indeksu górnego przenosi kursor
  w miejsce zaraz 
-\emph on 
+\emph on
 za
-\emph toggle 
+\emph toggle
  tym indeksem (tak ¿e od razu mo¿esz dopisaæ 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 +1
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 ).
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Do poruszania siê po wyra¿eniu mo¿na tak¿e u¿yæ spacji.
  Je¿eli kursor znajduje siê w strukturze matematycznej (indeksie dolnym,
@@ -3391,48 +3935,48 @@ Do poruszania siê po wyra¿eniu mo¿na tak¿e u¿yæ spacji.
  spacji przeniesie go na zwyk³y poziom tu¿ za indeksem.
  Oznacza to, ¿e mo¿esz napisaæ 
 \begin_inset Formula $E=mc^{1+x}-2$
-\end_inset 
+\end_inset
 
  bez u¿ywania myszy czy klawiszy strza³ek.
  Uwa¿aj, ¿eby nie nacisn±æ spacji miêdzy 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 1
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  a 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 +
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 , inaczej opu¶cisz indeks górny.
  W miejscach, gdzie spacja nie ma sensu (np.
  miêdzy 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 m
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  i 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 c
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 ), naci¶niêcie spacji jest ignorowane
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Spacja i tabulator nie s³u¿± do wstawiania dodatkowego wolnego miejsca miêdzy
  czê¶ciami równania.
@@ -3441,20 +3985,24 @@ Spacja i tabulator nie s³u¿± do wstawiania dodatkowego wolnego miejsca miêdzy
  
 \begin_inset LatexCommand \ref{sec:whitespace}
 
-\end_inset 
+\end_inset
 
 ) Je¶li nie satysfakcjonuje Ciê efekt sk³adu LyX-a, istniej± sposoby zmiany
  odstêpów, o czym wiêcej pisze Podrêcznik u¿ytkownika --- ale od³ó¿ poprawki
  dopóki nie ukoñczysz pisania tre¶ci dokumentu.
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Zauwa¿, ¿e opuszczenie trybu formu³ klawiszem 
-\family sans 
+\family sans
 Esc
-\family default 
+\family default
  powoduje brak spacji za wyra¿eniem.
  Nie jest to problem, je¿eli piszesz potem kropkê lub przecinek, ale je¶li
  chcesz napisaæ jakie¶ s³owo, musisz dodatkowo nacisn±æ spacjê.
@@ -3462,90 +4010,104 @@ Esc
  Naci¶niêcie spacji wychodzi z tego trybu i wstawia spacjê za formu³±.
  W ten sposób mo¿na szybciej napisaæ 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 
 \begin_inset Formula $f=ma$
-\end_inset 
+\end_inset
 
  to moje ulubione równanie
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  zamiast 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 
 \begin_inset Formula $f=ma$
-\end_inset 
+\end_inset
 
 to moje ulubione równanie
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 .
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Potêgi i indeksy
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Wyk³adnik mo¿e byæ wprowadzony z paska narzêdzi, ale pro¶ciej jest u¿yæ
  znak 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 ^
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 .
  LyX ustawia wówczas punkt wstawiania (niebieski prostok±t) w indeks górny,
  dziêki czemu cokolwiek napiszesz bêdzie wy¿ej i mniejsz± czcionk±.
  Ca³y dalszy pisany tekst do naci¶niêcia spacji (lub Esc celem opuszczenia
  trybu formu³) bêdzie indeksem górnym.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Pisanie indeksów dolnych jest równie proste --- zaczyna siê naci¶niêciem
  klawisza podkre¶lenia, 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 _
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 .
  Mo¿na podnosiæ i opuszczaæ oba indeksy, np.:
 \begin_inset Formula $A_{a_{0}+b^{2}}+C^{a_{0}+b^{2}}$
-\end_inset 
+\end_inset
 
 .
  
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\series bold 
+\series bold
 Æwiczenie
-\series default 
+\series default
 : Przerób equation 1 z 
-\family typewriter 
+\family typewriter
 example_raw.lyx
-\family default 
+\family default
  w trybie formu³.
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Pasek narzêdzi formu³ matematycznych
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 W klyx-ie jest to pasek, w lyx-ie panel
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Pasek narzêdzi do wygodny sposób na wprowadzanie symboli i wykonywanie skompliko
 wanej edycji formu³.
@@ -3555,168 +4117,186 @@ wanej edycji formu³.
  podrêczników.
  Otwórz zatem pasek narzêdzi i pozostaw go otwartym na czas lektury tego
  podrozdzia³u.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Litery greckie i symbole
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Naci¶niêcie przycisku oznaczonego napisem 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 
 \begin_inset Formula $\Gamma\rho\epsilon\epsilon\kappa$
-\end_inset 
+\end_inset
 
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  otwiera menu z greckimi literami.
  Wybór której¶ powoduje wstawienie jej do tekstu.
  Zauwa¿, ¿e istnieje kilka wariantów epsilon, pi, fi, teta, i sigma.
  Wybór elementu z paska narzêdzi formu³ zawsze powoduje przej¶cie w tryb
  formu³
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Cztery pozosta³e przyciski u koñca paska oferuj± szerok± gamê symboli matematycz
 nych: strza³ek, relacji, operatorów, sum i ca³ek.
  Ostatni przycisk przeznaczono na 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 ró¿ne
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 .
  
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 Nothing you can do that can't be done\SpecialChar \ldots{}
  All you need is 
 \begin_inset Formula $\heartsuit$
-\end_inset 
+\end_inset
 
 .
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Pierwiastki, wektory i nawiasy
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Aby utworzyæ pierwiastek wystarczy nacisn±æ przycisk oznaczony pierwiastkiem.
  Pierwiastek pojawi siê w tek¶cie, a pod nim kursor w punkcie wstawiania.
  Mo¿esz wpisywaæ zmienne, liczby, inne pierwiastki, u³amki itp.
  LyX automatycznie dostosuje rozmiar pierwiastka do tego, co w ¶rodku.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Nadpisywanie znaków (
 \begin_inset Formula $\overrightarrow{v}$
-\end_inset 
+\end_inset
 
 ) lub ich grup (
 \begin_inset Formula $\overrightarrow{a+b}$
-\end_inset 
+\end_inset
 
 ) odbywa siê w ten sam sposób.
  Naci¶nij przycisk 
-\family sans 
+\family sans
 Daszki, tyldy, wektory
-\family default 
-, oznaczony niebieskim prostok±tem przykrytym czarn± tyld±\SpecialChar ~
+\family default
+, oznaczony niebieskim prostok±tem przykrytym czarn± tyld±\InsetSpace ~
 (~).
  Kliknij na symbolu, ¿eby wstawiæ go w tekst wraz punktem wstawiania nad
  lub pod symbolem.
  Nastêpnie napisz, co chcesz, w punkcie wstawiania i opu¶æ tryb formu³ naci¶niêc
 iem spacji.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Ograniczniki takie jak nawiasy okr±g³e, kwadratowe i klamrowe dzia³aj± podobnie,
  ale s± trochê bardziej skomplikowane.
  Naci¶nij przycisk 
-\family sans 
+\family sans
 Ogranicznik
-\family default 
+\family default
 , oznaczony niebieskim prostok±tem w czarnych nawiasach kwadratowych.
  Otwiera on okno ograniczników.
  Kliknij na lewym ograniczniku u¿ywaj±c 
-\emph on 
+\emph on
 lewego klawisza
-\emph toggle 
+\emph toggle
  myszy, nastêpnie na prawym u¿ywaj±c 
-\emph on 
+\emph on
 prawego klawisza
-\emph toggle 
+\emph toggle
 .
  (wzglêdnie u¿yj przycisków wyboru opcji oznaczonych 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Lewy
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  i 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Prawy,
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  poczym kliknij na odpowiednim ograniczniku 
-\emph on 
+\emph on
 lewym 
-\emph toggle 
+\emph toggle
 klawiszem myszy.) Wybrane ograniczniki pokazane s± w ramce u szczytu okna.
  Domy¶lnie jest to para nawiasów okr±g³ych, ale w opisany powy¿ej sposób
  mo¿na je zmieniæ na kwadratowe, parê kwadratowy -- okr±g³y a nawet wybraæ
  nawias 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 pusty
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  celem wygenerowania wzoru 
-\emph default 
+\emph default
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 
 \begin_inset Formula $a=\left\langle 7\right.$
-\end_inset 
+\end_inset
 
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  (pusty ogranicznik wy¶wietlany jest jako linia przerywana w LyX-ie, ale
  nie pojawia siê na wydruku).
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Po wyborze ograniczników kliknij 
-\family sans 
+\family sans
 OK
-\family default 
+\family default
  aby wstawiæ je w wyra¿enie (albo naci¶nij 
-\family sans 
+\family sans
 Zastosuj
-\family default 
+\family default
 , je¶li chcesz pozostawiæ okno otwarte).
  Leniuchy mog± pisaæ nawiasy wprost z klawiatury zamiast wybieraæ je z paska
  narzêdzi, ale tak wstawiane nawiasy bêd± wielko¶ci normalnego tekstu, co
  wygl±da ¼le, kiedy otaczaj± du¿y u³amek albo macierz.
  Po¶rednictwo paska narzêdzi gwarantuje, ¿e rozmiar ograniczników dostosowuje
  siê wyra¿eñ pomiêdzy nimi.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Istnieje mo¿liwo¶æ obudowania istniej±cego tekstu pierwiastkiem, wektorem
  lub ogranicznikami.
@@ -3725,18 +4305,22 @@ Istnieje mo¿liwo¶æ obudowania istniej±cego tekstu pierwiastkiem, wektorem
  Zastosuj ten sposób do zmiany formy zapisu drugiego prawa Newton'a ze skalarnej
  na wektorow± (
 \begin_inset Formula $f=ma$
-\end_inset 
+\end_inset
 
  na 
 \begin_inset Formula $\overrightarrow{f}=m\overrightarrow{a}$
-\end_inset 
+\end_inset
 
 ).
  Poznana w³a¶nie metoda pos³u¿y równie¿ do wstawiania miêdzy nawiasy macierzy.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 U³amki
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Aby w trybie formu³ wstawiæ u³amek, wystarczy nacisn±æ przycisk oznaczony
  niebieskimi kwadratami oddzielonymi czarn± kresk± u³amkow±.
@@ -3745,140 +4329,148 @@ Aby w trybie formu³ wstawiæ u³amek, wystarczy nacisn±æ przycisk oznaczony
  lub mysz±.
  Kliknij na górnym prostok±cie i naci¶nij 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 1
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 .
  Nastêpnie naci¶nij strza³kê w dó³ i wpisz 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 2
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 .
  Stworzy³e¶ u³amek ! Oczywi¶cie w ka¿dy z prostok±tów mo¿na wpisaæ wszystko:
  zmienne z wyk³adnikami, pierwiastki czy inne u³amki.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\series bold 
+\series bold
 Æwiczenie
-\series default 
+\series default
 : Napisz 2 równanie z 
-\family typewriter 
+\family typewriter
 example_raw.lyx
-\family default 
+\family default
  w trybie formu³.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Tryb TeX-a: granice, log, sin i inne
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Poniewa¿ litery w trybie formu³ interpretowane s± jako zmienne, je¿eli napiszesz
  
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 sin
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 , LyX zrozumie to jako iloczyn zmiennych 
 \begin_inset Formula $s$
-\end_inset 
+\end_inset
 
 , 
 \begin_inset Formula $i$
-\end_inset 
+\end_inset
 
  i 
 \begin_inset Formula $n$
-\end_inset 
+\end_inset
 
 .
  Te trzy litery zostan± napisane kursyw±, podczas gdy tak naprawdê powinny
  byæ symbolem 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 sin
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  z³o¿onym czcionk± Roman.
  W dodatku LyX nie wstawi spacji miêdzy s³owo 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 sin
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  i 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 x
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  (naci¶niêcie spacji po prostu opu¶ci tryb formu³).
  W jaki sposób zatem uzyskaæ 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 
 \begin_inset Formula $\sin x$
-\end_inset 
+\end_inset
 
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  zamiast 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 
 \begin_inset Formula $sinx$
-\end_inset 
+\end_inset
 
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 ? 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Wybierz 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 sin
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  z rozwijalnej listy 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Funkcje
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  na pasku narzêdzi formu³.
  Wstawione s³owo 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 sin
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  napisane jest na czerwono, czcionk± Roman, w trybie znanym sk±din±d jako
  tryb TeX-a.
@@ -3886,16 +4478,18 @@ sin
  skasowanie ca³ego s³owa.
  Teraz napisz 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 x
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 , które wy¶wietlone bêdzie niebiesk± kursyw±, jak tego mo¿na siê spodziewaæ
  po trybie formu³.
  Sprawd¼, ¿e na podgl±dzie wyra¿enie zosta³o poprawnie z³o¿one.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Inne polecenia wymagaj±ce wstawiania w trybie TeX-a z u¿yciem listy funkcji
  to funkcje trygonometryczne i ich odwrotno¶ci, funkcje hiperboliczne, logarytmy
@@ -3903,117 +4497,135 @@ Inne polecenia wymagaj±ce wstawiania w trybie TeX-a z u¿yciem listy funkcji
  Funkcje te mog± byæ wzbogacane o indeksy górne i dolne, konieczne w wyra¿eniach
  typu 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 
 \begin_inset Formula $\cos^{2}\theta$
-\end_inset 
+\end_inset
 
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  lub 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 
 \begin_inset Formula $\lim_{n\rightarrow\infty}$
-\end_inset 
+\end_inset
 
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\series bold 
+\series bold
 Æwiczenie
-\series default 
+\series default
 : Przepisz equation 3 z 
-\family typewriter 
+\family typewriter
 example_raw.lyx
-\family default 
+\family default
  w trybie formu³.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Macierze
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset LatexCommand \label{sec:matrices}
 
-\end_inset 
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Naci¶nij przycisk 
-\family sans 
+\family sans
 Macierz
-\family default 
+\family default
  na pasku narzêdzi.
  Okno 
-\family sans 
+\family sans
 Macierz
-\family default 
+\family default
  ma dwa suwaki pozwalaj±ce wybraæ ilo¶æ wierszy i kolumn macierzy.
  Wybierz 2 wiersze i 3 kolumny, poczym naci¶nij 
-\family sans 
+\family sans
 Zastosuj
-\family default 
+\family default
  lub 
-\family sans 
+\family sans
 OK
-\family default 
+\family default
 .
  LyX wstawi 6 punktów wstawiania w macierzy 
 \begin_inset Formula $2\times3$
-\end_inset 
+\end_inset
 
 .
  Jak zwykle mo¿na wstawiaæ dowolne wyra¿enia matematyczne (pierwiastek,
  inn± macierz itd.).
  Mo¿na równie¿ pozostawiæ niektóre komórki macierzy puste.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Do poruszania siê po macierzy w poziomie s³u¿y klawisz 
-\family sans 
+\family sans
 Tab
-\family default 
+\family default
 .
  Dodatkowo mo¿na u¿yæ klawiszy strza³ek.
  Strza³ka w prawo u¿yta na prawym brzegu jednej komórki przenosi kursor
  do komórki obok, strza³ka w dó³ do kolejnego wiersza itd.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Zobacz w
-\emph on 
+\emph on
  Podrêczniku u¿ytkownika
-\emph toggle 
+\emph toggle
  jak zmieniæ poziome wyrównywanie wyra¿eñ w ka¿dej kolumnie i jak zmieniæ
  pionowe po³o¿enie ca³ej macierzy.
  Je¿eli zachodzi potrzeba utworzenia tabeli wype³nionej tekstem, nale¿y
  raczej u¿yæ doskonale obs³ugiwanych prze LyX-a tabel, ni¿ próbowaæ pisaæ
  tekst w macierzy.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Tryb równañ
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Ten podrozdzia³ dotyczy opcji nieobecnej w menu klyx 0.9.6, gdzie wystêpuje
  ona na pasku narzêdzi.
  (przyp.
  t³um.)
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Wszystkie wyra¿enia poznane dotychczas znajdowa³y siê w jednej linijce z
  tekstem.
@@ -4022,92 +4634,110 @@ Wszystkie wyra¿enia poznane dotychczas znajdowa³y siê w jednej linijce z
  Do pisania takich wyra¿eñ s³u¿y tryb równañ.
  Dodatkowo, tylko wyra¿enia w tym trybie mog± byæ numerowane i etykietowane
  (patrz: 
-\emph on 
+\emph on
 Podrêcznik u¿ytkownika
-\emph toggle 
+\emph toggle
 ), a ponadto równania wielolinijkowe (patrz podrozdz.
-\emph default 
+\emph default
 
 \begin_inset LatexCommand \ref{sec:multiline}
 
-\end_inset 
+\end_inset
 
 
-\emph toggle 
+\emph toggle
 )musz± byæ pisane w tym trybie.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Naci¶nij przycisk 
-\family sans 
+\family sans
 Równanie
-\family default 
+\family default
  na pasku narzêdzi, oznaczony czarnymi linijkami tekstu nad i pod niebieskim
  prostok±tem.
  LyX umie¶ci w tek¶cie punkt wstawiania, który pojawi siê na ¶rodku nowej
  linijki.
  Nastêpnie obejrzyj podgl±d.
  Przycisk 
-\family sans 
+\family sans
 Równanie
-\family default 
+\family default
  jest w istocie prze³±cznikiem.
  Pos³u¿ siê nim w stosunku do kilku ju¿ utworzonych formu³ matematycznych,
  prze³±czaj±c je w tryb równañ i z powrotem.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Tryb równañ ró¿ni siê w paru punktach od zwyk³ego trybu formu³ matematycznych:
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Domy¶lny rozmiar niektórych symboli jak 
 \begin_inset Formula $\sum$
-\end_inset 
+\end_inset
 
  i 
 \begin_inset Formula $\int$
-\end_inset 
+\end_inset
 
  jest nieco mniejszy
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Indeksy granic i sum (ale nie ca³ek) s± pisane raczej poni¿ej ni¿ obok symboli
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Tekst jest wyrównywany do ¶rodka
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Poza tymi ró¿nicami wyra¿enia zwyk³e i te w trybie równañ s± do siebie bardzo
  podobne.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Koñcowa uwaga co do sk³adu wyra¿eñ w trybie równañ: wyra¿enie mo¿e byæ w
  nowym akapicie lub nie.
  Je¶li równanie ma byæ w ¶rodku zdania lub akapitu, nie naciskaj 
-\family sans 
+\family sans
 Return
-\family default 
+\family default
 , w przeciwnym razie 
-\emph on 
+\emph on
 za
-\emph toggle 
+\emph toggle
  równaniem rozpocznie siê nowy akapit, którego pierwsza linijka bêdzie wciêta
  - efekt którego zapewne chcia³by¶ unikn±æ.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\series bold 
+\series bold
 Æwiczenie
-\series default 
+\series default
 : Obejrzyj formu³y z pliku 
-\family typewriter 
+\family typewriter
 example_raw.lyx
-\family default 
+\family default
  w trybie równañ i uchwyæ ró¿nice sk³adu.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\series bold 
+\series bold
 Æwiczenie
-\series default 
+\series default
 : Pos³uguj±c siê ró¿nymi narzêdziami poznanymi w tym podrozdziale, powiniene¶
  umieæ z³o¿yæ nastêpuj±ce równanie: 
 \begin_inset Formula \[
@@ -4116,65 +4746,81 @@ f(x)=\left\{ \begin{array}{cc}
 0 & x=0\\
 \sum_{i=1}^{5}\alpha_{i}+\sqrt{-\frac{1}{x}} & x<0\end{array}\right.\]
 
-\end_inset 
+\end_inset
 
 
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Równania wielolinijkowe
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset LatexCommand \label{sec:multiline}
 
-\end_inset 
+\end_inset
 
  Spróbuj napisaæ nastêpuj±ce równania i obejrzyj podgl±d.
  Zadanie wymaga dwukrotnego utworzenia oddzielnych formu³ w trybie równañ.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset Formula \[
 x=y+y+y+y+y\]
 
-\end_inset 
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset Formula \[
 =5y\]
 
-\end_inset 
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Wynik wygl±da ¼le ! Je¿eli pisze siê dwa lub wiêcej równañ jedno za drugim,
  wygl±daj± o wiele lepiej kiedy ich znaki równo¶ci s± wyrównane; widaæ to
  zw³aszcza gdy drugie równanie nie ma lewej strony.
  LyX pozwala pisaæ równania wielolinijkowe panuj±c do pewnego stopnia nad
  wyrównywaniem.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset Formula \begin{eqnarray*}
 x & = & y+y+y+y+y\\
  & = & 5y\end{eqnarray*}
 
-\end_inset 
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 To wygl±da 
-\emph on 
+\emph on
 du¿o
-\emph toggle 
+\emph toggle
  lepiej! Znaki równo¶ci s± wyrównane i jest mniejszy pionowy odstêp miêdzy
  równaniami.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Aby móc zacz±æ równanie wielolinijkowe, nale¿y wej¶æ w tryb równañ i nacisn±æ
  C-Return.
@@ -4182,9 +4828,9 @@ Aby móc zacz±æ równanie wielolinijkowe, nale¿y wej¶æ w tryb równañ i nacisn±æ
  Spróbuj samemu odtworzyæ wy¿ej pokazane równanie.
  Podobnie jak w macierzach, do poruszania siê po równaniu mo¿na u¿yæ myszy,
  klawisza 
-\family sans 
+\family sans
 Tab
-\family default 
+\family default
  lub klawiszy strza³ek.
  Nie szkodzi je¶li w równaniu wielolinijkowym zostanie jeden lub wiêcej
  pustych punktów wstawiania.
@@ -4194,10 +4840,12 @@ Tab
 x & = & a+b+c+d\\
  &  & +e+f+g\end{eqnarray*}
 
-\end_inset 
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LyX wyrównuje drugie (¶rodkowe) pole w ka¿dej linijce, tak wiêc zwykle tam
  bêdziesz umieszczaæ znak równo¶ci czy inny operator relacji; w gruncie
@@ -4207,26 +4855,28 @@ LyX wyrównuje drugie (¶rodkowe) pole w ka¿dej linijce, tak wiêc zwykle tam
  
 \begin_inset LatexCommand \ref{sec:matrices}
 
-\end_inset 
+\end_inset
 
 ).
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Je¿eli chcesz pisaæ jeszcze d³u¿sze równania, pos³u¿ siê 
-\family sans 
+\family sans
 C-Return
-\family default 
+\family default
  do wstawienia nowej linijki z trzema pustymi punktami wstawiania.
  Je¶li w momencie naciskania 
-\family sans 
+\family sans
 C-Return
-\family default 
+\family default
  kursor nie jest na koñcu linijki, reszta linijki zostanie przeniesiona
  do nowoutworzonej.
  Je¶li naci¶niesz 
-\family sans 
+\family sans
 C-Return
-\family default 
+\family default
  po napisaniu równania jednolinijkowego, znajdzie siê ono ca³e w pierwszym
  polu.
  Przesuñ kursor przed pierwszy znak równo¶ci i naci¶nij C-Tab aby przenie¶æ
@@ -4235,156 +4885,188 @@ C-Return
  przenie¶æ praw± stronê równania na trzecie pole.
  Spróbuj przerobiæ równanie 
 \begin_inset Formula $E=mc^{2}$
-\end_inset 
+\end_inset
 
  na
 \begin_inset Formula \begin{eqnarray*}
 E & = & mc^{2}\\
  & = & mc\times c\end{eqnarray*}
 
-\end_inset 
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Je¿eli wstawi³e¶ za du¿o linijek, przesuñ kursor na koniec bie¿±cej linijki
  i naci¶nij 
-\family sans 
-M-e\SpecialChar ~
+\family sans
+M-e\InsetSpace ~
 k
-\family default 
+\family default
  aby skasowaæ nastêpn± nadmiarow± linijkê.
  Usunie to koniec linijki i do³±czy (wszystkie trzy punkty wstawiania) do
  bie¿±cej linijki.
  Je¿eli nastêpna linijka jest pusta, spowoduje to jej skasowanie.
  Ostrze¿enie: naci¶niêcie 
-\family sans 
-M-e\SpecialChar ~
+\family sans
+M-e\InsetSpace ~
 k
-\family default 
+\family default
  kiedy kursor nie jest na koñcu linijki mo¿e prowadziæ do dziwnych efektów.
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Jeszcze wiêcej matematyki
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Tryb formu³ matematycznych posiada du¿o wiêcej mo¿liwo¶ci.
  Dotychczas pokazano podstawy, w
-\emph on 
+\emph on
  Podrêczniku u¿ytkownika
-\emph default 
+\emph default
  znajduj± siê wskazówki co do:
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Etykietowania i numerowania wyra¿eñ.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Zmiany czcionki, np.
  pisania t³ustym drukiem w wyra¿eniu.
  Tutaj wspomnimy tylko, ¿e przyci¶niêcie przycisku trybu formu³ w trakcie
  pisania formu³y zmienia czcionkê na Roman a¿ do naci¶niêcia spacji.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Poprawianie rozmiarów czcionki i odstêpów wewn±trz wyra¿enia.
  (Nie przejmuj siê tym przed ostatecznym wydrukiem!)
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Pisania makr.
  Bardzo pomocne narzêdzie.
  Dziêki definicji makra na pocz±tku dokumentu mo¿na go u¿ywaæ w ca³ej zawarto¶ci.
  Zmiana definicji powoduje zmianê w ca³ym dokumencie.
  Makro mo¿e nawet przyjmowaæ argumenty.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Mnóstwa innych rzeczy, które nie zmie¶ci³y siê w niniejszym 
-\emph on 
+\emph on
 Elementarzu
-\emph default 
+\emph default
 .
-\layout Chapter
+\end_layout
+
+\begin_layout Chapter
 
 Ró¿ne
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Inne wa¿niejsze mo¿liwo¶ci LyX-a
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Nie opisano wszystkich poleceñ LyX-a i nie by³o to zamiarem tego podrêcznika.
  Jak zwykle, wiêcej informacji mo¿na znale¼æ w 
-\emph on 
+\emph on
 Podrêczniku u¿ytkownika
-\emph toggle 
+\emph toggle
 .
  Dok³adna funkcja ka¿dego polecenia z menu jest opisana w 
-\emph on 
+\emph on
 Opisie poleceñ
-\emph toggle 
+\emph toggle
 .
  Poni¿ej wspomnimy o kilku wa¿niejszych mo¿liwo¶ciach LyX-a
-\emph default 
+\emph default
 \SpecialChar \ldots{}
 
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 LyX ma wizualn± obs³ugê tabel.
  Polecenie 
-\family sans 
+\family sans
 W
-\bar under 
+\bar under
 s
-\bar default 
+\bar default
 taw->Ta
-\bar under 
+\bar under
 b
-\bar default 
+\bar default
 elê
-\family default 
+\family default
  s³u¿y do umieszczenia w tek¶cie tabeli.
  Klikniêcie
-\emph on 
+\emph on
  prawym klawiszem
-\emph default 
+\emph default
  myszy na tabeli wywo³uje okno pozwalaj±ce na jej wszechstronn± edycjê.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 LyX obs³uguje grafikê postscriptow± (lub w LaTeX-u) wstawian± do dokumentu.
  (Zgad³e¶: 
-\family sans 
+\family sans
 W
-\bar under 
+\bar under
 s
-\bar default 
+\bar default
 taw->
-\bar under 
+\bar under
 R
-\bar default 
+\bar default
 ysunek
-\family default 
+\family default
 .
  Nastêpnie kliknij na rysunku, by wybraæ plik z rysunkiem do wstawienia,
  mo¿esz go potem rozci±gn±æ, obróciæ itp.) Tabele i rysunki mog± mieæ podpisy,
  a LyX automatycznie generuje ich spisy.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Istnieje kontrola wersji dokumentów za po¶rednictwem RCS (po wiêcej informacji
  wykonaj polecenie 
-\family typewriter 
+\family typewriter
 man rcsintro
-\family default 
+\family default
 )
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 LyX jest wysoce konfigurowalny.
  Wygl±d programu i wydruku daje siê zmieniaæ na ró¿ne sposoby.
  Informacja o tych sposobach jest dostêpna dziêki poleceniu 
-\family sans 
-\bar under 
+\family sans
+\bar under
 P
-\bar default 
+\bar default
 omoc->Przystosowywanie
-\family default 
+\family default
 .
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Program LyX jest tworzony przez zespó³ programistów z piêciu kontynentów.
  Z tego powodu LyX ma lepsz± obs³ugê jêzyków innych ni¿ angielski (niderlandzkie
@@ -4392,23 +5074,31 @@ go, niemieckiego, greckiego, czeskiego, tureckiego,\SpecialChar \ldots{}
 ) ni¿ niejeden procesor
  tekstu.
  Co wiêcej, obs³uga ta wci±¿ siê poprawia.
-\layout Itemize
+\end_layout
 
-Pisownia dokumentu jest sprawdzana poleceniem Edycja->Sprawdzanie\SpecialChar ~
+\begin_layout Itemize
+
+Pisownia dokumentu jest sprawdzana poleceniem Edycja->Sprawdzanie\InsetSpace ~
 pisowni
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 od kursora do koñca dokumentu
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 LyX dla u¿ytkowników LaTeX-a
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Je¶li nie masz pojêcia o LaTeX-u, nie musisz czytaæ tego podrozdzia³u.
  Móg³by¶ wszak¿e nauczyæ siê LaTeX-a i dopiero tutaj wróciæ.
@@ -4419,42 +5109,50 @@ Je¶li nie masz pojêcia o LaTeX-u, nie musisz czytaæ tego podrozdzia³u.
  LaTeX-a.
  Obecnie mo¿e irytowaæ konwersja starszych dokumentów LaTeX-a i parê innych
  zagadnieñ, ale nastêpne wersje LyX-a rozwi±¿± i te problemy.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Poniewa¿ jest to tylko elementarz, poruszymy w nim wy³±cznie rzeczy których
  nowi u¿ytkownicy LyX-a najprawdopodobniej s± ciekawi.
  Aby przesadnie nie rozdymaæ 
-\emph on 
+\emph on
 Elementarza
-\emph toggle 
+\emph toggle
  zostan± podane tylko podstawowe informacje.
  
-\emph on 
+\emph on
 Podrêcznik U¿ytkownika
-\emph toggle 
+\emph toggle
  jest obfitym ¼ród³em wiadomo¶ci o ró¿nicach miêdzy LyX-em i LaTeX-em, oraz
  stosowaniu LaTeX-owych trików w LyX-ie.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Tryb TeX-a
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Cokolwiek napisze siê w trybie TeX-a jest przekazywane wprost do LaTeX-a
  i wy¶wietlane na ekranie czerwonym kolorem.
  W tryb TeX-a wchodzi siê poleceniem 
-\family sans 
-\bar under 
+\family sans
+\bar under
 U
-\bar default 
+\bar default
 k³ad->
-\bar under 
+\bar under
 F
-\bar default 
-ormat\SpecialChar ~
+\bar default
+ormat\InsetSpace ~
 TeX-a
-\family default 
+\family default
 , albo klikaj±c na czerwonym przycisku-prze³±czniku TeX-a na pasku narzêdzi.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 W trybie formu³ format TeX-a jest obs³ugiwany trochê inaczej.
  Do formatu TeX-a wchodzi siê pisz±c backslash.
@@ -4465,53 +5163,57 @@ W trybie formu³ format TeX-a jest obs³ugiwany trochê inaczej.
  Po wyj¶ciu z trybu formatu TeX-a, je¿eli LyX zna wpisane polecenie, przekszta³c
 a je wizualnie.
  Tak wiêc je¶li w trybie formu³ napiszesz 
-\family typewriter 
+\family typewriter
 
-\backslash 
+\backslash
 gamma
-\family default 
+\family default
 , a potem spacjê, LyX zast±pi czerwone 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 gamma
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  niebieskim 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 
 \begin_inset Formula $\gamma$
-\end_inset 
+\end_inset
 
 
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 .
  Tak siê dzieje dla prawie wszystkich prostych makr matematycznych (jednak¿e
  zauwa¿, ¿e funkcje jak 
-\family typewriter 
+\family typewriter
 
-\backslash 
+\backslash
 sin
-\family default 
+\family default
  pozostan± na czerwono, bo ich forma nie ró¿ni siê od zapisu).
  Taka procedura mo¿e byæ szybsza ni¿ korzystanie z paska narzêdzi, zw³aszcza
  dla do¶wiadczonych u¿ytkowników LaTeX-a.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Szczególnym traktowaniem w trybie formu³ w TeX-u cieszy siê nawias klamrowy,
  wstawiany na czerwono i w parach otwieraj±cy-zamykaj±cy.
  Kursor po wstawieniu nawiasów znajduje siê w ¶rodku 
-\emph on 
+\emph on
 poza
-\emph toggle 
+\emph toggle
  formatem TeX-a, co pomaga przy wprowadzaniu poleceñ nieznanych LyX-owi,
  które to polecenia wymagaj± argumentów.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LyX nie potrafi zrobiæ absolutnie wszystkiego co LaTeX (jeszcze?).
  Kilka wyszukanych funkcji nie jest wcale obs³ugiwanych, inne nie dzia³aj±
@@ -4520,21 +5222,25 @@ LyX nie potrafi zrobiæ absolutnie wszystkiego co LaTeX (jeszcze?).
  oraz wygody LyX-a, takich jak wizualny tryb formu³, tabele i edycja.
  LyX nigdy nie bêdzie móg³ obs³ugiwaæ ka¿dego pakietu LaTeX-owego.
  Jednak, pisz±c 
-\family typewriter 
+\family typewriter
 
-\backslash 
+\backslash
 usepackage{foo}
-\family default 
+\family default
 w preambule (zobacz podrozdz.: 
 \begin_inset LatexCommand \ref{sec:preamble}
 
-\end_inset 
+\end_inset
 
 ), mo¿esz u¿yæ dowolnego pakietu, choæ bez wizualnej obs³ugi jego funkcji.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Konwersja dokumentów LaTeX-a do LyX-a.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Niestety nie dzia³a za dobrze w LyX-ie wersji 0.12.
  Zespó³ LyX-a zagwarantowa³, ¿e od wersji 0.14, pliki LyX-a bêd± u¿ywaæ podzbioru
@@ -4543,200 +5249,233 @@ Niestety nie dzia³a za dobrze w LyX-ie wersji 0.12.
  Zanim to nast±pi prowadzone s± prace nad programem w Perlu o nazwie reLyX,
  przeznaczonym do t³umaczenia formatu LaTeX-a na LyX-a.
  Program i instrukcja znajduj± siê w katalogu 
-\family typewriter 
+\family typewriter
 development/reLyX
-\family default 
+\family default
  w dystrybucji LyX-a.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Konwersja dokumentów LyX-a do LaTeX-a .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Mo¿e zaistnieæ potrzeba konwersji dokumentu LyX-a na format LaTeX-a.
  Na przyk³ad wspó³pracownik lub wspó³autor nie ma LyX-a aby móc przeczytaæ
  dokument.
  Wystarczy w tym celu wykonaæ polecenie 
-\family sans 
-Plik->Eksport->jako\SpecialChar ~
+\family sans
+Plik->Eksport->jako\InsetSpace ~
 LaTeX.
  
-\family default 
+\family default
 Utworzy to plik co¶.tex z edytowanego co¶.lyx.
  LyX zawsze tworzy tymczasowy plik LaTeX-a zanim uruchomi ten program, ale
  pliki te s± trudne do czytania i zapisywane w tymczasowych katalogach.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Preambu³a LaTeX-a
-\layout Subsubsection
+\end_layout
+
+\begin_layout Subsubsection
 
 Klasa dokumentu
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Okno wywo³ywanie poleceniem Uk³ad->Dokument ustawia szereg opcji, które
  przekazywane s± do polecenia 
-\family typewriter 
+\family typewriter
 
-\backslash 
+\backslash
 documentclass
-\family default 
+\family default
  .
  W tym oknie mo¿na zmieniæ klasê dokumentu, domy¶lny rozmiar czcionki i
  papieru.
  Ewentualne dodatkowe opcje dla 
-\family typewriter 
+\family typewriter
 
-\backslash 
+\backslash
 documentclass
-\family default 
+\family default
  nale¿y wpisaæ w polu 
-\family sans 
-Dodatkowe\SpecialChar ~
+\family sans
+Dodatkowe\InsetSpace ~
 opcje
-\family default 
+\family default
 .
-\layout Subsubsection
+\end_layout
+
+\begin_layout Subsubsection
 
 Inne wykorzystanie preambu³y
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset LatexCommand \label{sec:preamble}
 
-\end_inset 
+\end_inset
 
  Je¶li chcia³by¶ wstawiæ specjalne polecenia do preambu³y dokumentu LaTeX-a,
  mo¿esz u¿yæ ich równie¿ w dokumencie LyX-a.
  Wykonaj polecenie 
-\family sans 
-Uk³ad->Preambu³a\SpecialChar ~
+\family sans
+Uk³ad->Preambu³a\InsetSpace ~
 LaTeX-a 
-\family default 
+\family default
 i napisz je w otworzonym oknie.
  Cokolwiek tam wpiszesz, zostanie bezpo¶rednio przekazane LaTeX-owi (podobnie
  jak tekst pisany w trybie TeX-a).
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 BibTeX
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LyX obs³uguje BibTeX w sposób dobry acz niekompletny.
  BibTeX pozwala budowaæ bazy danych odwo³añ do literatury celem u¿ycia w
  wielu dokumentach.
  U¿yj 
-\family sans 
-Wstaw->Spisy->Odsy³acz\SpecialChar ~
+\family sans
+Wstaw->Spisy->Odsy³acz\InsetSpace ~
 BibTeX-a
-\family default 
+\family default
  celem w³±czenia pliku typu bib.
  Klikniêcie na powsta³ym w ten sposób prostok±cie oznaczonym 
-\family sans 
+\family sans
 Odno¶niki wygenerowane przez BibTeX
-\family default 
+\family default
  otworzy okno BibTeX-a.
  W polu 
-\family sans 
-Baza\SpecialChar ~
+\family sans
+Baza\InsetSpace ~
 danych
-\family default 
+\family default
  wpisz to co wpisa³by¶ nawiasach polecenia 
-\family typewriter 
+\family typewriter
 
-\backslash 
+\backslash
 bibliography{}
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Tak jak w LaTeX-u, bibliografie powinny byæ odseparowane przecinkami, nie
  spacjami/tabulatorami.
-\end_inset 
+\end_layout
+
+\end_inset
 
  
-\family default 
+\family default
 .
  W polu 
-\family sans 
+\family sans
 Styl
-\family default 
+\family default
  wpisz, to co wpisa³by¶ nawiasach polecenia 
-\family typewriter 
+\family typewriter
 
-\backslash 
+\backslash
 bibliographystyle{}
-\family default 
+\family default
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Po wykonaniu powy¿szych czynno¶ci mo¿na u¿ywaæ cytatów z dowolnych bibliografii
  w³±czanych poleceniem 
-\family sans 
-Wstaw->Odwo³anie\SpecialChar ~
-do\SpecialChar ~
+\family sans
+Wstaw->Odwo³anie\InsetSpace ~
+do\InsetSpace ~
 literatury 
-\family default 
+\family default
 (zobacz podrozdz.:
 \begin_inset LatexCommand \ref{sec:bibliographies}
 
-\end_inset 
+\end_inset
 
 ).
  LyX zajmie siê u¿yciem BibTeX-a.
  Powód, dla którego, piszemy, ¿e LyX ma 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 dobr± lecz niepe³n± obs³ugê bibliografii
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  jest ten, ¿e LyX nie potrafi samodzielnie tworzyæ plików bib i nie podpowie
  listy wszystkich odwo³añ do literatury w oknie 
-\family sans 
+\family sans
 Literatura
-\family default 
+\family default
 .
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Inne
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Tward± spacjê wstawia siê przez 
-\family sans 
+\family sans
 C-space
-\family default 
+\family default
 .
  Na ekranie wygl±da jak ma³e, ró¿owe 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 u
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 .
  Jest ich mnóstwo w niniejszym Elementarzu.
- W menu Wstaw->Znak\SpecialChar ~
+ W menu Wstaw->Znak\InsetSpace ~
 specjalny znajduje siê wiêcej znaków specjalnych, z wielokrop
 kiem, wymuszonym koñcem linii i punktem podzia³u w³±cznie.
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 B³êdy!
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Czasem, po uruchomieniu LaTeX-a pojawiaj± siê b³êdy na skutek nie zrozumienia
  przez LaTeX lub LyX fragmentów dokumentu.
  W takim wypadku LyX generuje etykiety b³êdów (prostok±t z napisem 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 B³±d
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 ).
  Klikniêcie na takiej etykiecie otwiera okno obja¶niaj±ce rodzaj b³êdu.
  Bardzo rzadko b³±d dotyczy LyX-a.
  B³êdy LaTeX-a, wystêpuj±ce najczê¶ciej we wstawkach TeX-a, cytowane s±
  przez LyX-a dos³ownie.
-\the_end
+\end_layout
+
+\end_body
+\end_document

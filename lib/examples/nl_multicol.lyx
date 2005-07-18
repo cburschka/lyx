@@ -1,5 +1,7 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass article
 \begin_preamble
 \usepackage{multicol}
@@ -10,12 +12,11 @@
 \graphics default
 \paperfontsize default
 \spacing single
-\papersize a4paper
-\paperpackage a4
-\use_geometry 0
+\papersize default
+\use_geometry false
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -26,42 +27,57 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tracking_changes false
+\output_changes true
+\end_header
 
-\layout Title
+\begin_body
+
+\begin_layout Title
 
 Meervoudige kolommen
-\layout Author
+\end_layout
+
+\begin_layout Author
 
 door 
-\noun on 
+\noun on
 Lars Gullik Bjønnes
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Strekking
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Het is de bedoeling van dit hoofdstuk aan te geven hoe het LaTeX pakket
  
-\family typewriter 
+\family typewriter
 multicol
-\family default 
+\family default
  gebruikt kan worden in een LyX document.
  Aangezien LyX het pakket 
-\family typewriter 
+\family typewriter
 multicol
-\family default 
+\family default
  nog niet van nature ondersteunt, moeten we een aantal kleine handelingen
  verrichten.
  Door dit deel te lezen zal duidelijk worden hoe dit gedaan moet worden.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Beperkingen 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Met het 
-\family typewriter 
+\family typewriter
 multicol
-\family default 
+\family default
  pakket kun je op dezelfde pagina tussen een of meer kolommen schakelen.
  Voetnoten worden correct behandeld (voor het merendeel), maar worden aan
  de voet van de pagina geplaatst en niet onder elke kolom.
@@ -70,58 +86,82 @@ multicol
  Op dit moment kunnen alleen pagina-brede floats worden gebruikt binnen
  de omgeving.
  
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Voorbeelden
-\layout Subsubsection
+\end_layout
+
+\begin_layout Subsubsection
 
 Twee kolommen
-\layout Standard
-\added_space_bottom -2ex 
+\end_layout
+
+\begin_layout Standard
+
 Als je twee kolommen in uw tekst wenst, moet je de LaTeX mode gebruiken
  om 
-\family typewriter 
+\family typewriter
 
-\backslash 
+\backslash
 begin{multicols}{2}
-\family default 
+\family default
  te plaatsen op het punt waar je wilt dat de twee kolommen beginnen en 
-\family typewriter 
+\family typewriter
 
-\backslash 
+\backslash
 end{multicols}
-\family default 
+\family default
  waar je wilt dat ze eindigen.
  Zoals hier: 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset VSpace -2ex
+\end_inset
+
+
+\end_layout
+
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 begin{multicols}{2}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
-\noindent 
+\end_layout
 
-\series bold 
-\size small 
+\begin_layout Standard
+\noindent
+
+\series bold
+\size small
 Het avontuur van het lege huis
-\series default 
+\series default
 
-\newline 
+\newline
 door 
-\noun on 
+\noun on
 Sir Arthur Conan Doyle
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\size small 
+\size small
 Het was in het voorjaar van het jaar 1894 dat iedereen in Londen  geïnteresseerd
  was in, en de fatsoenlijke wereld ontzet door, de moord op de  rechtschapen
  Ronald Adair, onder de meest ongebruikelijke en onverklaarbare  omstandigheden.
@@ -147,44 +187,68 @@ Het was in het voorjaar van het jaar 1894 dat iedereen in Londen  geïnteresseerd
  belangrijkste taak hebben moeten rekenen zo te handelen, als ik niet gehouden
  was geweest aan het verbod van hemzelf, dat slechts sinds de derde van
  de  vorige maand werd opgeheven.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 end{multicols}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Subsubsection
+\end_layout
+
+\begin_layout Subsubsection
 
 Meervoudige kolommen
-\layout Standard
-\added_space_bottom -2ex 
+\end_layout
+
+\begin_layout Standard
+
 Hetzelfde patroon wordt toegepast als je meer dan twee kolommen wenst.
  (je kunt meer dan drie kolommen definieren, maar dat is mogelijk minder
  plezierig voor het oog.)
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset VSpace -2ex
+\end_inset
+
+
+\end_layout
+
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 begin{multicols}{3}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\size footnotesize 
+\size footnotesize
 U kunt zich voorstellen dat mijn nauwe vriendschap met Sherlock Holmes me
  heeft geïnteresseerd in misdaad, en dat ik na zijn verdwijnen nooit heb
  nagelaten nauwgezet de diverse zaken te lezen die werden voorgeleid.
@@ -204,64 +268,104 @@ U kunt zich voorstellen dat mijn nauwe vriendschap met Sherlock Holmes me
  gekronkeld, maar ik vond geen uitleg die me geschikt leek.
  Met het risico een bekend verhaal te vertellen, wil ik de feiten samenvatten,
  die bij het gerecht bekend waren in de conclusie van het onderzoek.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 end{multicols}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Subsubsection
+\end_layout
+
+\begin_layout Subsubsection
 
 Kolommen binnen kolommen
-\layout Standard
-\added_space_bottom -2ex 
+\end_layout
+
+\begin_layout Standard
+
 Je kunt zelfs kolommen binnen kolommen definieren:
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset VSpace -2ex
+\end_inset
+
+
+\end_layout
+
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 begin{multicols}{2}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
-\added_space_bottom -2ex 
+\end_layout
 
-\size footnotesize 
+\begin_layout Standard
+
+
+\size footnotesize
 De rechtschapen Ronald Adair was de tweede zoon van de Graaf van Maynooth,
  de toenmalige gouverneur van een Australische kolonie.
  Adair's moeder was teruggekeerd uit Australie om een staar operatie te
  ondergaan en zij, haar zoon Ronald en haar dochter Hilda leefden samen
  op Park Lane 427.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset VSpace -2ex
+\end_inset
+
+
+\end_layout
+
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 begin{multicols}{2}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\size footnotesize 
+\size footnotesize
 De kinderen begaven zich in het beste milieu en hadden, voor zover bekend,
  geen vijanden en geen bijzondere gebreken.
  Hij was verloofd geweest met Edith Woodley, uit Carstairs, maar de verloving
@@ -273,23 +377,29 @@ en.
  Desondanks was het deze gemakkelijke jonge aristocraat die de dood vond,
  op een vreemde en onverwachte manier, tussen tien en elf-twintig op de
  avond van 30 maart, 1894.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 end{multicols}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\size footnotesize 
+\size footnotesize
 Ronald Adair was bijzonder gesteld op het kaartspel, maar nooit zodanig
  dat de verliezen hem zouden schaden.
  Hij was een lid van de Baldwin, de Cavendish en de Bagatelle kaart clubs.
@@ -297,9 +407,9 @@ Ronald Adair was bijzonder gesteld op het kaartspel, maar nooit zodanig
  whist had gespeeld bij de laatstgenoemde club.
  Hij had daar in de namiddag ook gespeeld.
 
-\size default 
+\size default
  
-\size footnotesize 
+\size footnotesize
 De bewijzen van zij die met hem gespeeld hadden-- Mr.
  Murray, Sir John Hardy,  en kolonel Moran-- toonden aan dat het spel whist
  was geweest en dat er  eerlijk was gedeeld.
@@ -312,66 +422,86 @@ ge speler en werd meestal de winnaar.
  al eens vierhonderd en twintig pond had gewonnen in een enkele zitting,
  enkele weken geleden, van Godfrey Milner en Lord Balmoral.
  Tot zover zijn recente geschiedenis zoals dat uit het onderzoek bleek.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 end{multicols}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Voorbeelden voor gevorderden
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Zoals je mogelijk weet, kent 
-\family typewriter 
+\family typewriter
 multicol
-\family default 
+\family default
  vele mogelijkheden om eigenschappen aan te passen.
  De volgende voorbeelden tonen hoe deze mogelijkheden vanuit LyX kunnen
  worden gebruikt.
  
-\layout Subsubsection
+\end_layout
+
+\begin_layout Subsubsection
 
 Inleiding en overslaan
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Als er minder dan 5cm ruimte op de pagina over is, zal op een nieuwe pagina
  worden begonnen voor dit deel dat een inleidende tekst boven twee  kolommen
  heeft:
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 begin{multicols}{2}[
-\end_inset 
+\end_layout
+
+\end_inset
 
 En het verhaal gaat verder en verder en verder\SpecialChar \ldots{}
  
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 ][5cm]
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\size small 
+\size small
 Op de avond van de misdaad kwam hij precies om tien uur terug van de club.
  Zijn moeder en zuster waren uit en brachten de avond bij een kennis door.
  De bediende getuigde dat ze hem in de voorste kamer op de tweede verdieping,
@@ -392,59 +522,75 @@ Op de avond van de misdaad kwam hij precies om tien uur terug van de club.
  Er stonden een aantal getallen op een vel papier, met de namen van enkele
  kaartvrienden daarnaast, waaruit de conclusie werd getrokken dat hij voor
  zijn dood naar streefde zijn verliezen en winsten aan het spel op te maken.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 end{multicols}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Subsubsection
+\end_layout
+
+\begin_layout Subsubsection
 
 Inleiding en secties
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Wat te doen als je wilt dat met de inleiding meteen een nieuwe sectie begint?
  Dat kan, maar alleen door LaTeX opdrachten binnen de parameters voor de
  
-\family typewriter 
+\family typewriter
 multicols
-\family default 
+\family default
  opdracht.
  Hierdoor kan de sectie opdracht niet door LyX worden gegenereerd.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 begin{multicols}{2}[
-\backslash 
+\backslash
 subsubsection{
-\end_inset 
+\end_layout
+
+\end_inset
 
 Dit is de sectie opdracht als inleiding
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 }][5cm]
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\size small 
+\size small
 Het nauwkeurig onderzoeken van de omstandigheden zorgde er alleen voor dat
  de zaak moeilijker werd.
  In de eerste plaats was er geen reden te verzinnen waarom de jonge man
@@ -474,66 +620,80 @@ s op nog geen honderd yards van het huis.
 d werden door de volledige afwezigheid van een motief, want, zoals ik heb
  gezegd, de jonge Adair had voor zover bekend geen vijanden en er was geen
  poging gedaan om geld of andere waardevolle zaken uit de kamer te verwijderen.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 end{multicols}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Subsubsection
+\end_layout
+
+\begin_layout Subsubsection
 
 Lege ruimte
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Het 
-\family typewriter 
+\family typewriter
 multicol
-\family default 
+\family default
  pakket vereist dat een zekere ruimte aanwezig is voor en na een deel met
   meerdere kolommen.
   Bovendien zal 
-\family typewriter 
+\family typewriter
 multicol
-\family default 
+\family default
  een lege ruimte plaatsen voor en na het deel met meerdere kolommen.
    De opdrachten om de voorkeursinstellingen voor de witruimte aan te passen
  moeten geplaatst worden voor 
-\family typewriter 
+\family typewriter
 
-\backslash 
+\backslash
 begin{multicols}
-\family default 
+\family default
 .
  Dit voorbeeld plaatst een witruimte van 3cm voor en na de tekst in meerdere
  kolommen:
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 setlength{
-\backslash 
+\backslash
 multicolsep}{3cm}
-\backslash 
+\backslash
 begin{multicols}{2}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\size small 
+\size small
 De hele dag bleven deze feiten in mijn gedachten, strevend naar een theorie
  die ze allemaal kon verenigen en de weg van de minste weerstand die volgens
  mijn vriend het startpunt was van elk onderzoek.
@@ -559,80 +719,102 @@ De hele dag bleven deze feiten in mijn gedachten, strevend naar een theorie
  bezitter erg waardevol waren.
  Met een verwijtende snauw lichte hij zijn hielen en ik zag zijn kromme
  rug en witte bakkebaarden verdwijnen tussen de menigte.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 end{multicols}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Paragraph
+\end_layout
+
+\begin_layout Paragraph
 
 Opmerking:
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 De waarden die u heeft aangepast met 
-\family typewriter 
+\family typewriter
 
-\backslash 
+\backslash
 setlength
-\family default 
+\family default
  moeten na gebruik weer naar hun voorkeursinstelling worden teruggezet,
  omdat je anders de aangepaste waarden voor de rest van het document behoudt.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 setlength{
-\backslash 
+\backslash
 multicolsep}{13pt}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Subsubsection
+\end_layout
+
+\begin_layout Subsubsection
 
 Kolom breedte en afscheiding
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 De breedte van de kolommen in de 
-\family sans 
+\family sans
 multicols
-\family default 
+\family default
  omgeving wordt automatisch ingesteld, maar je kunt de ruimte tussen de
  kolommen bewust aanpassen.
  De ruimte tussen de volgende twee kolommen is 3cm breed:
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 setlength{
-\backslash 
+\backslash
 columnsep}{3cm}
-\backslash 
+\backslash
 begin{multicols}{2}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\size small 
+\size small
 Mijn observatie van Park Lane nr.
   427 heeft weinig bijgedragen aan een oplossing voor het probleem waarin
  ik was geïnteresseerd.
@@ -647,95 +829,119 @@ Mijn observatie van Park Lane nr.
  Tot mijn verbazing was het niemand minder dan de vreemde oude boeken verzamelaa
 r, zijn spitse verschrompelde gezicht in het witte haar gehuld, en zijn
  waardevolle boekdelen, minstens tientallen, onder zijn arm geklemd.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 end{multicols}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Wederom moeten we de waarden naar hun voorkeursinstellingen terugzetten
  om te voorkomen dat ze voor de rest van het document worden gebruikt.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 setlength{
-\backslash 
+\backslash
 columnsep}{10pt}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Subsubsection
+\end_layout
+
+\begin_layout Subsubsection
 
 Vertikale strepen
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Tussen twee kolommen wordt een regel met breedte 
-\family typewriter 
+\family typewriter
 
-\backslash 
+\backslash
 columnseprule
-\family default 
+\family default
  geplaatst.
  Als deze lijn op 0 pt is ingesteld wordt de streep onderdrukt.
  In het volgende voorbeeld is de lijn die twee kolommen van elkaar scheidt
  2 pt breed.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 setlength{
-\backslash 
+\backslash
 columnseprule}{2pt}
-\backslash 
+\backslash
 begin{multicols}{2}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\size small 
+\size small
 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 U bent verbaasd mij te zien, mijnheer,
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  zij hij, met een vreemde, schorre stem.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\size small 
+\size small
 Dat werd door mij bevestigd.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\size small 
+\size small
 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 Weet U, ik heb een geweten, mijnheer, en toen ik zag dat u in dit huis ging,
  terwijl ik u achterna strompelde, dacht ik bij mezelf, ik zal eens binnen
@@ -743,107 +949,128 @@ Weet U, ik heb een geweten, mijnheer, en toen ik zag dat u in dit huis ging,
  kwade bedoelingen had en hem veel verschuldigd ben voor het oprapen van
  mijn boeken.
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\size small 
+\size small
 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 Het was een kleine moeite,
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  zei ik.
  
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 Mag ik u vragen hoe u wist wie ik ben?
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\size small 
+\size small
 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 Weet u, meneer, als ik zo vrij mag zijn, ik ben een buurman van u, want
  mijn kleine boekenwinkel is op de hoek van de Church Street en ik zou 
  u er graag eens zien.
  Misschien verzamelt u ook boeken, meneer.
  Hier heb ik 
-\noun on 
-British\SpecialChar ~
+\noun on
+British\InsetSpace ~
 Birds
-\noun default 
+\noun default
 , 
-\noun on 
+\noun on
 Catullus
-\noun default 
+\noun default
  en 
-\noun on 
+\noun on
 The Holy War
-\noun default 
+\noun default
 --een koopje, stuk voor stuk.
  Met vijf boeken kunt u dat gat vullen op de tweede boekenplank.
  Het lijkt rommelig, vindt u ook niet, meneer?
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 end{multicols}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Zoals gebruikelijk moeten we de waarde herstellen na gebruik.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 setlength{
-\backslash 
+\backslash
 columnseprule}{0pt}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Je zult naar de bibliotheek moeten gaan om de rest van het verhaal te lezen.
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 \SpecialChar \ldots{}
 of het verhaal opscharrelen in het Gutenberg project, ergens op het web.
  
-\end_inset 
+\end_layout
+
+\end_inset
 
  Geloof het of niet, maar dit is een erg spannende scène uit het verhaal\SpecialChar \ldots{}
 
-\the_end
+\end_layout
+
+\end_body
+\end_document

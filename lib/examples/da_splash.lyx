@@ -1,5 +1,7 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass article
 \language danish
 \inputencoding default
@@ -7,12 +9,11 @@
 \graphics default
 \paperfontsize default
 \spacing single
-\papersize Default
-\paperpackage a4
-\use_geometry 0
+\papersize default
+\use_geometry false
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -23,51 +24,62 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tracking_changes false
+\output_changes true
+\end_header
 
-\layout Title
+\begin_body
+
+\begin_layout Title
 
 Velkommen til LyX!
-\layout Section*
+\end_layout
+
+\begin_layout Section*
 
 7 ting du bør vide om brugen af LyX
-\layout Enumerate
+\end_layout
+
+\begin_layout Enumerate
 
 LyX indeholder grundig dokumentation --- brug den! Start med 
-\family sans 
-\bar under 
+\family sans
+\bar under
 H
-\bar default 
+\bar default
 jælp\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 I
-\bar default 
+\bar default
 ntroduktion
-\family default 
+\family default
 , som vil give dig et meget kort overblik over dokumentationen\SpecialChar \@.
  Lær derefter
  om LyX med
-\family sans 
+\family sans
  
-\bar under 
+\bar under
 H
-\bar default 
+\bar default
 jælp\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 G
-\bar default 
+\bar default
 ennemgang\SpecialChar \@.
 
-\layout Enumerate
+\end_layout
+
+\begin_layout Enumerate
 
 LyX er, hvad vi kalder en 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 dokumentbehandler
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
 \SpecialChar \@.
  Den er grundlæggende forskellig fra almindelige tekstbehandlere --- på
@@ -76,87 +88,100 @@ dokumentbehandler
  smule anderledes\SpecialChar \@.
  Dokumentationen vil gøre dette tydeligt for dig
 \begin_inset Foot
-collapsed false
+status open
 
-\layout Standard
+\begin_layout Standard
 
 Fik vi nævnt, at du bør læse dokumentationen?
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
-\layout Enumerate
+\end_layout
+
+\begin_layout Enumerate
 
 Resultaterne fra LyX ser fantastiske ud! Vælg 
-\family sans 
-\bar under 
+\family sans
+\bar under
 V
-\bar default 
+\bar default
 is\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 D
-\bar default 
+\bar default
 VI
-\family default 
+\family default
  nu, så kan du selv se.
-\layout Enumerate
+\end_layout
+
+\begin_layout Enumerate
 
 Ja, LyX kan efterligne (næsten) al LaTeX's funktioner\SpecialChar \@.
  Og ja, LyX kan importere
  LaTeX-filer\SpecialChar \@.
  Erfarne LaTeX-brugere kan skimme resten af 
-\emph on 
+\emph on
 Gennemgangen
-\emph default 
+\emph default
  og derefter læse afsnittet 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 LyX for LaTeX-brugere
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 \SpecialChar \@.
  (Alle andre: bare rolig, du behøver ikke at kende noget til LaTeX for at
  kunne bruge LyX\SpecialChar \@.
 )
-\layout Enumerate
+\end_layout
+
+\begin_layout Enumerate
 
 LyX har mange funktioner for dem, der læser eller skriver på andre sprog
  end engelsk\SpecialChar \@.
  Derover kan tastebindinger, værktøjslinie og mange andre egenskaber
  kan ændres (de fleste ved at rette i 
-\family typewriter 
+\family typewriter
 lyxrc
-\family default 
+\family default
 -filen).
  Se 
-\family sans 
-\bar under 
+\family sans
+\bar under
 H
-\bar default 
+\bar default
 jælp\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 P
-\bar default 
+\bar default
 ersonliggørelse
-\family default 
+\family default
  for detaljer\SpecialChar \@.
 
-\layout Enumerate
+\end_layout
+
+\begin_layout Enumerate
 
 LyX's hjemmeside er på 
-\family typewriter 
+\family typewriter
 
 \begin_inset LatexCommand \url{http://www.lyx.org/}
 
-\end_inset 
+\end_inset
 
 
-\family default 
+\family default
 \SpecialChar \@.
  Find oplysninger om LyX, abonnér på LyX's postlister, tag en grafisk rundtur
  m.m\SpecialChar \@.
 
-\the_end
+\end_layout
+
+\end_body
+\end_document

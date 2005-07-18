@@ -1,18 +1,19 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass article
 \language german
 \inputencoding latin1
 \fontscheme default
 \graphics dvips
 \paperfontsize 12
-\spacing single 
-\papersize a4paper
-\paperpackage a4
-\use_geometry 0
+\spacing single
+\papersize default
+\use_geometry false
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -23,108 +24,155 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle plain
+\tracking_changes false
+\output_changes true
+\end_header
 
-\layout Standard
+\begin_body
+
+\begin_layout Standard
 
 DIES IST DER TITEL DES DOKUMENTS 
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Hinweis: der Titel sollte mehr nach einem Titel aussehen
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 von Fee LyX 
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Hinweis: Fee LyX ist der AUTHOR
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 12.
  Juni 1972 
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Hinweis: dies ist ein DATE
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Inhaltsverzeichnis 
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Hinweis: Es wäre schön, wenn wir das Verzeichnis nicht selber schreiben
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 müßten
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 1.
  Grundidee..................1
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 1.1 Wie LyX es macht...............1
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 1.2 Warum LyX besser ist ...............1
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 2.
  LyX-Merkmale
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 3.
  Lahme Versuche mit anderen LyX-Teilen
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 4.
  Mathematik
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 ---------------------------------------------------
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 1.
  Grundidee 
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Hinweis:
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Abschnittüberschriften sollten ein wenig hervorgehoben sein
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Die Grundidee von LyX ist, daß Sie sich um den Inhalt Ihrer Dokumente kümmern
  sollten, und nicht um das Aussehen.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 1.1 Wie LyX es macht
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LyX benutzt LaTeX, ein Textsatzsystem für Dokumente, das Leslie Lamport
  1985 entworfen hatte.
@@ -132,26 +180,34 @@ LyX benutzt LaTeX, ein Textsatzsystem für Dokumente, das Leslie Lamport
  entwickelt hatte.
  Die Grundidee von LaTeX ist ähnlich wie die von LyX.
  Leslie Lamport sagte einmal (siehe Referenz [1]):
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Hinweis: dieser Zitat-Verweis sollte nicht fest sein.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Was wäre, wenn wir Lamports Buch als zweites in der Literaturverzeichnis
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 haben wollten?
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 Der Sinn des typographischen Entwurfs ist, daß der Leser die Ideen des Autors
  versteht.
@@ -164,22 +220,28 @@ Der Sinn des typographischen Entwurfs ist, daß der Leser die Ideen des Autors
  Während Sie Ihr Dokument schreiben, sollten Sie sich auf die logische Struktur
  konzentrieren, nicht auf sein Aussehen.
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
 
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Hinweis: Dies ist ein Zitat
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 1.2 Warum LyX besser ist
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LyX kann mehr Menschen nützen als LaTeX.
  Es ist viel leichter zu lernen, weil Sie nicht LaTeX lernen müssen (LaTeX
@@ -187,11 +249,11 @@ LyX kann mehr Menschen nützen als LaTeX.
  LyX ist im Prinzip wie andere WYSIWYG-Textverarbeitungen, aber LyX ist
  WYSIWYM 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 What you see is what you mean
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
 .
  Auf diese Weise verbindet es die Benutzerfreundlichkeit einer Textverarbeitung
@@ -199,158 +261,223 @@ What you see is what you mean
  Das ist eine gute Sache.
  Außerdem ist das Dateiformat plattformunabhängig.
  Das Beste aber ist: es ist KOSTENLOS!
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 2.
  LyX-Merkmale
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LyX hat viele Merkmale, die das Schreiben von Dokumenten erleichtern.
  (Warum sollte man es sonst benutzen?
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Hinweis: Dieser hervorgehobene Satz würde in einer Fußnote besser aussehen
-\end_inset 
+\end_layout
+
+\end_inset
 
 ) Ich bin SEHR AUFGEREGT
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Hinweis: Hervorheben!
-\end_inset 
+\end_layout
+
+\end_inset
 
  über sie zu sprechen.
  Hier sind ein paar:
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 * LyX kümmert sich für Sie um Ränder und die Numerierung von Fußnoten
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 * LyX erleichtert das Schreiben und Bearbeiten von mathematischen Formeln
  
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Für eine mehr philosophische Diskussion, warum LyX besser als viele andere
  Textverarbeitungen ist, lesen Sie bitte Abschnitt 1.2 auf Seite 1.
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Hinweis: Dieser Querverweis sollte nicht fest sein.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Was wäre, wenn wir die Abschnittsnummern ändern würden?
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 3.
  Lahme Versuche mit anderen LyX-Teilen
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Neulich schrieb ich ein Programm.
  Es sah so aus:
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 5 REM BEACHTET MEIN TOLLES PROGRAMM
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 10 PRINT 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 ICH BIN TOLL!
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 20 GOTO 10
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Hinweis: Dies ist Computer-CODE
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Nach all dem wissenschaftlichen Denken fühlte ich mehr künstlerisch, also
  schrieb ich dies Gedicht:
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LyX ist eine wirklich großartige
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 schriftsetzende Textverarbeitung
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Es spart soviel Zeit.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Hinweis: Es ist nicht sehr gut, aber es ist Poesie, auch als VERSE
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 bekannt
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 4.
  Mathematik 
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Hinweis: diese mathematischen Dinge sollten im Mathematikmodus gedruckt
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 werden!
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Meine Lieblingsformel ist die Lösung einer quadratischen Gleichung.
  Aus ax^2+bx+c=0 (Gl.1) folgt x= -b +/- der Quadratwurzel aus b^2-4ac, dividiert
  durch 2a (Gl.
  2).
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Eine weitere Lieblingsformel ist die Ableitung: f'(x) ist der Grenzwert
  von f(x+deltax) - f(x) dividiert durch deltax, wenn deltax gegen 0 geht
  (Gl.
  3).
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 ------------------------------------------------
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LITERATUR
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 [1] Lamport, Leslie.
  LaTeX: A Document Preparation System.
  Addison-Wesley, Reading, Massachusetts, second edition, 1994.
-\the_end
+\end_layout
+
+\end_body
+\end_document

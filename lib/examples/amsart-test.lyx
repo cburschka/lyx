@@ -1,5 +1,7 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass amsart
 \language english
 \inputencoding default
@@ -7,12 +9,11 @@
 \graphics default
 \paperfontsize default
 \spacing single
-\papersize Default
-\paperpackage a4
-\use_geometry 0
+\papersize default
+\use_geometry false
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -23,79 +24,112 @@
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
+\tracking_changes false
+\output_changes true
+\end_header
 
-\layout Title
+\begin_body
+
+\begin_layout Title
 
 Test of AMS-Art Style
-\layout Author
+\end_layout
+
+\begin_layout Author
 
 David L.
  Johnson
-\layout Address
+\end_layout
+
+\begin_layout Address
 
 Department of Mathematics
-\newline 
+\newline
 Lehigh University
-\newline 
+\newline
 Bethlehem, PA 18015
-\layout Current Address
+\end_layout
+
+\begin_layout Current Address
 
 Home
-\layout Email
+\end_layout
+
+\begin_layout Email
 
 dlj0@lehigh.edu
-\layout URL
+\end_layout
+
+\begin_layout URL
 
 http://www.lehigh.edu/~dlj0/dlj0.html
-\layout Keywords
+\end_layout
+
+\begin_layout Keywords
 
 Test
-\layout Thanks
+\end_layout
+
+\begin_layout Thanks
 
 To Emmanuel, for forcing me to fix this, and Jean-Marc, for making it possible,
  and necessary.
  Also to Mate, who suggested numerous improvements.
-\layout Dedicatory
+\end_layout
+
+\begin_layout Dedicatory
 
 To my wife.
-\layout Translator
+\end_layout
+
+\begin_layout Translator
 
 Joe
-\layout Subjectclass
+\end_layout
+
+\begin_layout Subjectclass
 
 Primary: 12G34, Secondary: 09G87
-\layout Abstract
+\end_layout
+
+\begin_layout Abstract
 
 This is not very abstract.
  Note that the abstract must be part of the title stuff for AMS.
  LyX is aware of that since version 0.12.1.
  Good.
  
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Introduction
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 This file, and any amsart-* LyX file, can be converted to either of the
  numbering schemes by simply changing the document class in the 
-\family sans 
-\bar under 
+\family sans
+\bar under
 L
-\bar default 
+\bar default
 ayout-
-\bar under 
+\bar under
 D
-\bar default 
+\bar default
 ocument
-\family default 
+\family default
  popup.
  The styles are:
-\layout Enumerate
+\end_layout
+
+\begin_layout Enumerate
 
 amsart - The standard AMS-article format.
  All results and similar statements are numbered as 
 \begin_inset Formula $(n.m)$
-\end_inset 
+\end_inset
 
 , where the first number refers to the section, and the second refers to
  the total number of results (Theorems, Corollaries, Propositions, Definitions
@@ -103,16 +137,22 @@ amsart - The standard AMS-article format.
  There are also many (but not all) environments available unnumbered, which
  is occasionally needed.
  Unnumbered environments indicated by an asterisk at the end.
-\layout Enumerate
+\end_layout
+
+\begin_layout Enumerate
 
 amsart-seq - Here, numbering for each type of statement is in its own sequence,
  with no reference to the section number.
  There are also many (but not all) environments available unnumbered, which
  is occasionally needed.
-\layout Theorem
+\end_layout
+
+\begin_layout Theorem
 
 This is a numbered theorem
-\layout Proof
+\end_layout
+
+\begin_layout Proof
 
 Here is its proof.
  Here is its proof.
@@ -121,7 +161,9 @@ Here is its proof.
  Here is its proof.
  Here is its proof.
  
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 More text.
  Note that two occurrences of the same environment, like two definitions,
@@ -129,10 +171,14 @@ More text.
  For the moment, the best way is to include a paragraph with a %, in the
  LaTeX environment, if you really want two definitions (or whatever) together,
  with no intervening text of another sort.
-\layout Theorem*
+\end_layout
+
+\begin_layout Theorem*
 
 This is an unnumbered theorem
-\layout Proof
+\end_layout
+
+\begin_layout Proof
 
 Here is its proof.
  Here is its proof.
@@ -140,71 +186,109 @@ Here is its proof.
  Here is its proof.
  Here is its proof.
  Here is its proof.
-\layout Corollary
+\end_layout
+
+\begin_layout Corollary
 
 First corollary.
-\layout Proof
+\end_layout
+
+\begin_layout Proof
 
 Its proof.
-\layout Corollary*
+\end_layout
+
+\begin_layout Corollary*
 
 Unnumbered corollary.
  
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 %
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Corollary*
+\end_layout
+
+\begin_layout Corollary*
 
 A second, with no intervening text.
  Note the % to force a separation.
-\layout Lemma
+\end_layout
+
+\begin_layout Lemma
 
 Lemma number 1
-\layout Proposition
+\end_layout
+
+\begin_layout Proposition
 
 First proposition.
-\layout Proposition*
+\end_layout
+
+\begin_layout Proposition*
 
 Unnumbered version.
-\layout Conjecture
+\end_layout
+
+\begin_layout Conjecture
 
 A wild guess.
-\layout Conjecture*
+\end_layout
+
+\begin_layout Conjecture*
 
 So wild I didn't number it.
-\layout Criterion
+\end_layout
+
+\begin_layout Criterion
 
 Need some criteria
-\layout Algorithm
+\end_layout
+
+\begin_layout Algorithm
 
 first this, then the next
-\layout Fact
+\end_layout
+
+\begin_layout Fact
 
 Not fiction.
-\layout Fact*
+\end_layout
+
+\begin_layout Fact*
 
 Bald statement of fact.
  Unnumbered environments are often used for emphasis, or in a short presentation
  that doesn't require numbered results.
  
-\layout Axiom
+\end_layout
+
+\begin_layout Axiom
 
 It stands to reason.
-\layout Definition
+\end_layout
+
+\begin_layout Definition
 
 a word means exactly what I say it means.
-\layout Definition*
+\end_layout
+
+\begin_layout Definition*
 
 Unnumbered.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Plain text.
  Plain text.
@@ -217,10 +301,14 @@ Plain text.
  Plain text.
  Plain text.
  
-\layout Example
+\end_layout
+
+\begin_layout Example
 
 This should be an example.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Plain text.
  Plain text.
@@ -236,225 +324,364 @@ Plain text.
  Plain text.
  Plain text.
  
-\layout Condition
+\end_layout
+
+\begin_layout Condition
 
 If you say so.
-\layout Problem
+\end_layout
+
+\begin_layout Problem
 
 I don't know what to write is the problem.
-\layout Remark
+\end_layout
+
+\begin_layout Remark
 
 I think this will be useful.
-\layout Claim
+\end_layout
+
+\begin_layout Claim
 
 I did it the way the documentation said to.
-\layout Note
+\end_layout
+
+\begin_layout Note
 
 It may need more work yet.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 More plain text, in standard format.
-\layout Theorem
+\end_layout
+
+\begin_layout Theorem
 
 This is a second numbered theorem
-\layout Proof
+\end_layout
+
+\begin_layout Proof
 
 Here is its proof.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 More text.
-\layout Corollary
+\end_layout
+
+\begin_layout Corollary
 
 Second corollary.
-\layout Proof
+\end_layout
+
+\begin_layout Proof
 
 Its proof.
-\layout Lemma
+\end_layout
+
+\begin_layout Lemma
 
 Lemma number 2
-\layout Proposition
+\end_layout
+
+\begin_layout Proposition
 
 Second proposition.
-\layout Conjecture
+\end_layout
+
+\begin_layout Conjecture
 
 A wild guess.
-\layout Criterion
+\end_layout
+
+\begin_layout Criterion
 
 Need some criteria
-\layout Notation
+\end_layout
+
+\begin_layout Notation
 
 
 \begin_inset Formula $S=\mathbb{R}$
-\end_inset 
+\end_inset
 
 .
-\layout Summary
+\end_layout
+
+\begin_layout Summary
 
 In the end, will it matter?
-\layout Acknowledgement
+\end_layout
+
+\begin_layout Acknowledgement
 
 Thanks to Mattias Ettrich.
  Without him I never would have learned LaTeX.
-\layout Case
+\end_layout
+
+\begin_layout Case
 
 If this works, then the rest will.
-\layout Conclusion
+\end_layout
+
+\begin_layout Conclusion
 
 It seems to work.
-\layout Proof
+\end_layout
+
+\begin_layout Proof
 
 Here goes another proof.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Plain text.
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Next try.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 This tries out the section environments.
-\layout Theorem
+\end_layout
+
+\begin_layout Theorem
 
 This is a theorem
-\layout Proof
+\end_layout
+
+\begin_layout Proof
 
 Here is its proof.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 More text.
-\layout Corollary
+\end_layout
+
+\begin_layout Corollary
 
 Third corollary.
  First one of this section.
-\layout Proof
+\end_layout
+
+\begin_layout Proof
 
 Its proof.
-\layout Lemma
+\end_layout
+
+\begin_layout Lemma
 
 Lemma number 3
-\layout Proposition
+\end_layout
+
+\begin_layout Proposition
 
 Third proposition.
-\layout Conjecture
+\end_layout
+
+\begin_layout Conjecture
 
 A wild guess.
-\layout Criterion
+\end_layout
+
+\begin_layout Criterion
 
 Need some criteria
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 This is a subsection
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 With more results therein.
-\layout Theorem
+\end_layout
+
+\begin_layout Theorem
 
 This is a theorem, maybe the fourth one.
-\layout Proof
+\end_layout
+
+\begin_layout Proof
 
 Here is its proof.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 More text.
-\layout Corollary
+\end_layout
+
+\begin_layout Corollary
 
 Fourth corollary.
-\layout Proof
+\end_layout
+
+\begin_layout Proof
 
 Its proof.
-\layout Lemma
+\end_layout
+
+\begin_layout Lemma
 
 Lemma number 4
-\layout Proposition
+\end_layout
+
+\begin_layout Proposition
 
 Fourth proposition.
-\layout Conjecture
+\end_layout
+
+\begin_layout Conjecture
 
 A wild guess.
-\layout Criterion
+\end_layout
+
+\begin_layout Criterion
 
 Need some criteria
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 More random text.
-\layout Theorem
+\end_layout
+
+\begin_layout Theorem
 
 This is a theorem
-\layout Proof
+\end_layout
+
+\begin_layout Proof
 
 Here is its proof.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 More text.
-\layout Claim
+\end_layout
+
+\begin_layout Claim
 
 I believe this is true.
-\layout Proof
+\end_layout
+
+\begin_layout Proof
 
 Its proof.
-\layout Lemma
+\end_layout
+
+\begin_layout Lemma
 
 Lemma number 5
-\layout Proposition
+\end_layout
+
+\begin_layout Proposition
 
 Fifth proposition.
-\layout Conjecture
+\end_layout
+
+\begin_layout Conjecture
 
 A wild guess.
-\layout Criterion
+\end_layout
+
+\begin_layout Criterion
 
 Need some criteria
-\layout Subsubsection
+\end_layout
+
+\begin_layout Subsubsection
 
 This is the subsection with results.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 The quick, brown fox jumped over the lazy dog.
-\layout Theorem
+\end_layout
+
+\begin_layout Theorem
 
 This is a theorem - sixth in the series
-\layout Proof
+\end_layout
+
+\begin_layout Proof
 
 Here is its proof.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 More text.
-\layout Corollary
+\end_layout
+
+\begin_layout Corollary
 
 Sixth corollary.
-\layout Proof
+\end_layout
+
+\begin_layout Proof
 
 Its proof.
-\layout Lemma
+\end_layout
+
+\begin_layout Lemma
 
 Lemma number 6
-\layout Proposition
+\end_layout
+
+\begin_layout Proposition
 
 Sixth proposition.
-\layout Conjecture
+\end_layout
+
+\begin_layout Conjecture
 
 A wild guess.
-\layout Criterion
+\end_layout
+
+\begin_layout Criterion
 
 Need some criteria
-\layout Bibliography
+\end_layout
+
+\begin_layout Bibliography
 \bibitem {1}
 
 Johnson, D.
  L.
  
-\emph on 
+\emph on
 Out of my head
-\layout Bibliography
+\end_layout
+
+\begin_layout Bibliography
 \bibitem {2}
 
 American Mathematical Society, 
-\emph on 
+\emph on
 Instructions for preparation of papers and monographs: AMS-LaTeX
-\emph default 
+\emph default
 , (1997).
-\layout Bibliography
+\end_layout
+
+\begin_layout Bibliography
 \bibitem {3}
 
 American Mathematical Society, 
-\the_end
+\end_layout
+
+\end_body
+\end_document

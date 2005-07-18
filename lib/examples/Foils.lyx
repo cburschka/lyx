@@ -1,5 +1,7 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass foils
 \begin_preamble
 \raggedright
@@ -12,12 +14,11 @@
 \graphics dvips
 \paperfontsize default
 \spacing single
-\papersize Default
-\paperpackage a4
-\use_geometry 0
+\papersize default
+\use_geometry false
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \paperwidth 0cm
 \paperheight 0cm
@@ -37,343 +38,449 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\bullet 0
-5
-2
--1
-\end_bullet
-\bullet 1
-5
-4
--1
-\end_bullet
-\bullet 2
-4
-8
--1
-\end_bullet
-\bullet 3
-1
-3
--1
-\end_bullet
+\bullet 0 5 2 -1
+\bullet 1 5 4 -1
+\bullet 2 4 8 -1
+\bullet 3 1 3 -1
+\tracking_changes false
+\output_changes true
+\end_header
 
-\layout Title
-\added_space_bottom 7pt 
+\begin_body
+
+\begin_layout Title
+
 Foils Class 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset VSpace 7pt
+\end_inset
+
+
+\end_layout
+
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 hrule height 7pt
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Author
+\end_layout
+
+\begin_layout Author
 
 
-\noun on 
+\noun on
 Allan Rae 
-\noun default 
-\layout Date
+\noun default
+\end_layout
+
+\begin_layout Date
 
 November 19 1997
-\layout Abstract
+\end_layout
+
+\begin_layout Abstract
 
 LyX and FoilTeX combine to provide a powerful presentation package for creating
  
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 foils
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  also known as slides and overhead transparencies.
-\layout Foilhead
+\end_layout
+
+\begin_layout Foilhead
 
 This is a Foilhead
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 hrule height 3pt
-\end_inset 
+\end_layout
+
+\end_inset
 
  
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 A Foilhead starts a new foil.
  A 
-\emph on 
+\emph on
 short
-\emph default 
+\emph default
  version is also provided that reduces the separation between the Foilhead
  and the body of the foil.
  Almost all the environments found in other classes are also supported.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 zerolistvertdimens{}
-\end_inset 
+\end_layout
+
+\end_inset
 
 The new Itemize Bullet Selection popup
-\begin_deeper 
-\layout Itemize
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
 
 is tailor-made for use with the foils class
-\begin_deeper 
-\layout Itemize
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
 
 allowing you to select the bullet used
-\begin_deeper 
-\layout Itemize
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
 
 at each of the four levels of the Itemize environment
-\end_deeper 
-\end_deeper 
-\end_deeper 
-\layout Itemize
+\end_layout
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Itemize
 
 NOTE: to get the full capabilities of the Itemize Bullet Selection popup
  read the Special Tools manual and the ItemizeBullets.lyx file included with
  the examples.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 NOTE 2: To get your list spacing small like this use the FoilTeX command:
  
-\family typewriter 
+\family typewriter
 
-\backslash 
+\backslash
 zerolistvertdimens{}
-\family default 
+\family default
  set as TeX at the start of the first item.
-\layout ShortFoilhead
+\end_layout
+
+\begin_layout ShortFoilhead
 
 This is a ShortFoilhead
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 hrule height 3pt
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 The foils class has been extended to provide two additional bullet-lists.
  These lists are namely:
-\layout TickList
+\end_layout
+
+\begin_layout TickList
 
 TickList
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 and
-\layout CrossList
+\end_layout
+
+\begin_layout CrossList
 
 CrossList
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 These two lists were added because the listing of do's and don'ts or good
  and bad are relatively common in foils.
  Providing a dedicated paragraph style for these occasions should allow
  faster entry and simplify interaction with LyX.
-\layout Rotatefoilhead
+\end_layout
+
+\begin_layout Rotatefoilhead
 
 Rotatefoilhead
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\backslash 
+\backslash
 hrule height 3pt
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Create landscape foils by using Rotatefoilhead
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Note that if you are viewing this with xdvi the page will appear to overrun
  the page dimensions because it xdvi doesn't rotate the text
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 If you view this document using ghostview or something similar then the
  page should appear rotated.
  If not then you probably don't have the necessary dvips driver.
-\layout Definition*
+\end_layout
+
+\begin_layout Definition*
 
 There are also several environments specially designed for presenting Theorems,
  Lemmas, Corollaries, Propositions, Proofs and Definitions.
  These are available as numbered or unnumbered environments.
-\layout ShortRotatefoilhead
+\end_layout
+
+\begin_layout ShortRotatefoilhead
 
 ShortRotateFoilhead
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 hrule height 3pt
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Again the short version reduces the space below the heading
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Another way to control the amount of separation is to adjust the length
  in the preamble.
  This will affect both the normal and short versions of foilhead and rotatefoilh
 ead.
  For example,
-\newline 
+\newline
 
-\family typewriter 
+\family typewriter
  
-\backslash 
+\backslash
 setlength{
-\backslash 
+\backslash
 foilheadskip}{-0.5in} 
-\family default 
+\family default
 
-\newline 
+\newline
 will reduce the spacing by 0.5 inches.
  Other units include mm (millimeters) and pt (points).
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 The 
-\emph on 
+\emph on
 short
-\emph default 
+\emph default
  versions of the foilheads reduce the separation by 0.5 inches (approximately
  12.5mm).
-\layout ShortFoilhead
+\end_layout
+
+\begin_layout ShortFoilhead
 
 Tricky Proofs
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 hrule height 3pt 
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Lemma*
+\end_layout
+
+\begin_layout Lemma*
 
 Several consecutive paragraphs of type
-\emph on 
+\emph on
  Theorem
-\emph default 
+\emph default
 , 
-\emph on 
+\emph on
 Lemma
-\emph default 
+\emph default
 , 
-\emph on 
+\emph on
 Corollary
-\emph default 
+\emph default
 , 
-\emph on 
+\emph on
 Proposition
-\emph default 
+\emph default
 , 
-\emph on 
+\emph on
 Definition
-\emph default 
+\emph default
 , 
-\emph on 
+\emph on
 Proof
-\emph default 
+\emph default
  or the starred versions of these are part of the same environment.
-\layout Lemma*
+\end_layout
+
+\begin_layout Lemma*
 
 As you can see, we are still in the same lemma.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 %
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Lemma*
+\end_layout
+
+\begin_layout Lemma*
 
 To force this second Lemma straight after the first it's necessary to add
  some dividing text or as I've done in this case separate the two by inserting
  a 
-\emph on 
+\emph on
 TeX
-\emph default 
+\emph default
  inset that simply contains a 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 %
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 .
  This is simply a comment character in LaTeX but the insertion of the LaTeX
  paragraph is sufficient to fool LyX into correctly handling the multiple
  environments.
-\layout Lemma*
+\end_layout
+
+\begin_layout Lemma*
 
 NOTE: You only have this problem with multiple paragraphs of the same type
  
-\emph on 
+\emph on
 not
-\emph default 
+\emph default
  with different types such as a Proof followed by a Theorem.
-\layout ShortFoilhead
+\end_layout
+
+\begin_layout ShortFoilhead
 
 Tables and Figures
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 hrule height 3pt 
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
-\added_space_top 0.3cm \added_space_bottom 0.3cm \align center 
+\end_layout
+
+
+\begin_layout Standard
+
+
+\begin_inset VSpace 0.3cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
 
 \begin_inset  Tabular
 <lyxtabular version="3" rows="3" columns="3">
@@ -385,92 +492,122 @@ hrule height 3pt
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 Column1
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 Column2
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 Column3
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 </row>
 <row topline="true">
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 A
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 
-\emph on 
+\emph on
 simple
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 table
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 </row>
 <row topline="true" bottomline="true">
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 
-\bar under 
+\bar under
 example
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 with
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 
-\series bold 
+\series bold
 foils
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 </row>
 </lyxtabular>
 
-\end_inset 
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset VSpace 0.3cm
+\end_inset
+
+
+\end_layout
+
+
+\begin_layout Standard
 
 Both tables and figures are supported in Foils however floats don't float
  instead they appear exactly where they appear in the text.
@@ -478,10 +615,11 @@ Both tables and figures are supported in Foils however floats don't float
 \begin_inset Float table
 placement htbp
 wide false
-collapsed false
+sideways false
+status open
 
-\layout Standard
-\align center 
+\begin_layout Standard
+\align center
 
 \begin_inset  Tabular
 <lyxtabular version="3" rows="3" columns="3">
@@ -493,237 +631,294 @@ collapsed false
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 Row1
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 
-\emph on 
+\emph on
 Another
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 simple
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 </row>
 <row topline="true">
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 Row2
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 
-\bar under 
+\bar under
 table
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 example
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 </row>
 <row topline="true" bottomline="true">
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 Row3
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 
-\series bold 
+\series bold
 with
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 foils
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 </row>
 </lyxtabular>
 
-\end_inset 
+\end_inset
 
 
-\layout Caption
+\end_layout
+
+\begin_layout Caption
 
 This is a non-floating 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 float
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  table
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout ShortFoilhead
+\end_layout
+
+\begin_layout ShortFoilhead
 
 Headers and Footers
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 hrule height 3pt
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 FoilTeX provides some powerful header and footer capabilities
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 You can also use the standard footnotes like this one.
-\end_inset 
+\end_layout
+
+\end_inset
 
  that are best set in the preamble although they may be set at any point
  in a document.
  If you want to change these settings in the document the best place to
  do so is at the very top of a foil ie.
  straight after the foilhead.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 The left-footer is controlled by two commands: 
-\family typewriter 
+\family typewriter
 
-\backslash 
+\backslash
 MyLogo{}
-\family default 
+\family default
  and 
-\family typewriter 
+\family typewriter
 
-\backslash 
+\backslash
 Restriction{}
-\family default 
+\family default
 .
  The first is meant to allow you to include a graphic logo on your foils
  and defaults to 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 -Typeset by FoilTeX-
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 .
  While the second is meant to provide a classification for the audience
  eg.
  Confidential.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 The remaining corners are controlled by:
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\family typewriter 
+\family typewriter
 
-\backslash 
+\backslash
 rightfooter{}
-\family default 
+\family default
  -- which defaults to page numbers
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\family typewriter 
+\family typewriter
 
-\backslash 
+\backslash
 rightheader{}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\family typewriter 
+\family typewriter
 
-\backslash 
+\backslash
 leftheader{}
-\layout Foilhead
+\end_layout
+
+\begin_layout Foilhead
 
 Further Reading
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 hrule height 3pt
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Your LaTeX distribution should include some documentation on FoilTeX.
  There are many more features in FoilTeX than those described here.
  For example, FoilTeX can automatically place a horizontal rule between
  the headers and all foilheads, and between the body and the footers.
-\layout Bibliography
+\end_layout
+
+\begin_layout Bibliography
 \bibitem {2}
 
 Jim Hafner, 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 The FoilTeX Class Package
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 , 
-\family typewriter 
+\family typewriter
 .../texmf/texmf/doc/latex/foiltex/foiltex.dvi
-\layout Bibliography
+\end_layout
+
+\begin_layout Bibliography
 \bibitem {2}
 
 LyX Documentation Team, 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 Advanced Editing Tools
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 .
-\the_end
+\end_layout
+
+\end_body
+\end_document

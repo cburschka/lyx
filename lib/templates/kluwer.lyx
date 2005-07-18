@@ -1,5 +1,7 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass kluwer
 \language english
 \inputencoding default
@@ -8,12 +10,11 @@
 \float_placement t
 \paperfontsize default
 \spacing single
-\papersize Default
-\paperpackage a4
-\use_geometry 0
+\papersize default
+\use_geometry false
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \secnumdepth 4
 \tocdepth 0
@@ -24,225 +25,315 @@
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
+\tracking_changes false
+\output_changes true
+\end_header
 
-\layout Standard
+\begin_body
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 begin{article}
-\layout Standard
+\end_layout
 
-\backslash 
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\backslash
 begin{opening}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Title
+\end_layout
+
+\begin_layout Title
 
 <Title of the article>
-\layout Subtitle
+\end_layout
+
+\begin_layout Subtitle
 
 <Subtitle of the article(if needed)>
-\layout Author
+\end_layout
+
+\begin_layout Author
 
 <First-1>.<Middle-1>.
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
  
-\backslash 
+\backslash
 surname{
-\end_inset 
+\end_layout
+
+\end_inset
 
 <Surname-1>
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 }
-\backslash 
+\backslash
 email{
-\end_inset 
+\end_layout
+
+\end_inset
 
 <e-mail-1>
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 }
-\end_inset 
+\end_layout
+
+\end_inset
 
 ,
-\newline 
+\newline
 <First-2>.<Middle-2>.
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
  
-\backslash 
+\backslash
 surname{
-\end_inset 
+\end_layout
+
+\end_inset
 
 <Surname-2>
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 }
-\backslash 
+\backslash
 email{
-\end_inset 
+\end_layout
+
+\end_inset
 
 <e-mail-2>
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 }
-\end_inset 
+\end_layout
+
+\end_inset
 
  and
-\newline 
+\newline
 <First-3>.<Middle-3>.
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
  
-\backslash 
+\backslash
 surname{
-\end_inset 
+\end_layout
+
+\end_inset
 
 <Surname-3>
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 }
-\backslash 
+\backslash
 email{
-\end_inset 
+\end_layout
+
+\end_inset
 
 <e-mail-3>
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 }
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
-\layout Address
+\end_layout
+
+\begin_layout Address
 
 <Institution and Address>
-\layout RunningTitle
+\end_layout
+
+\begin_layout RunningTitle
 
 <Running title of the article (printed on top of odd pages)>
-\layout RunningAuthor
+\end_layout
+
+\begin_layout RunningAuthor
 
 <Running author (printed on top of even pages)>
-\layout Abstract
+\end_layout
+
+\begin_layout Abstract
 
 <abstract text>
-\layout Keywords
+\end_layout
+
+\begin_layout Keywords
 
 <Journal approved keywords>
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 end{opening}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Introduction
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 <intro text>
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 The theory
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 <theory text; a citation reference is included 
 \begin_inset LatexCommand \cite{PaperI}
 
-\end_inset 
+\end_inset
 
 >
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 The numerical method
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 <numerical method text>
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Results and discussion
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 <results and discussion text>
-\layout Acknowledgements
+\end_layout
+
+\begin_layout Acknowledgements
 
 <acknowledgment text>
-\layout Appendix
+\end_layout
 
-\layout Section
+\begin_layout Appendix
+
+\end_layout
+
+\begin_layout Section
 
 An appendix section
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 <appendix text>
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Another appendix section
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 <another appendix text>
-\layout References
+\end_layout
+
+\begin_layout References
 \bibitem [\protect\citeauthoryear{Surname-1 et al.}{year}]{PaperI}
 
 Surname-1, First-1, Middle-1., Surname-2, First-2, Middle-2.
  and Surname-3, First-3, Middle-3.: year, 
-\emph on 
+\emph on
 Journal abbreviation
-\emph default 
+\emph default
  
-\series bold 
+\series bold
 volume
-\series default 
+\series default
 , page.
-\layout AddressForOffprints
+\end_layout
+
+\begin_layout AddressForOffprints
 
 <Address for offprints, printed at the end of the article>
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 end{article}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\the_end
+\end_layout
+
+\end_body
+\end_document

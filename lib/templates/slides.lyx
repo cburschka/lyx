@@ -1,5 +1,7 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass slides
 \begin_preamble
 % Uncomment to print out only slides and overlays
@@ -16,12 +18,11 @@
 \graphics dvips
 \paperfontsize default
 \spacing single
-\papersize Default
-\paperpackage a4
-\use_geometry 0
+\papersize default
+\use_geometry false
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -32,68 +33,112 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tracking_changes false
+\output_changes true
+\end_header
 
-\layout Slide
+\begin_body
 
-\layout Standard
+\begin_layout Slide
+
+\end_layout
+
+\begin_layout Standard
 
 Test slide.
-\layout InvisibleText
+\end_layout
 
-\layout Standard
+\begin_layout InvisibleText
+
+\end_layout
+
+\begin_layout Standard
 
 Text visible only in an overlay.
-\layout VisibleText
+\end_layout
 
-\layout Standard
+\begin_layout VisibleText
+
+\end_layout
+
+\begin_layout Standard
 
 Text visible in the main slide.
-\layout Overlay
+\end_layout
 
-\layout Standard
+\begin_layout Overlay
+
+\end_layout
+
+\begin_layout Standard
 
 Test overlay.
-\layout VisibleText
+\end_layout
 
-\layout Standard
+\begin_layout VisibleText
+
+\end_layout
+
+\begin_layout Standard
 
 Text visible only in an overlay.
-\layout InvisibleText
+\end_layout
 
-\layout Standard
+\begin_layout InvisibleText
+
+\end_layout
+
+\begin_layout Standard
 
 Text visible in the main slide.
-\layout VisibleText
+\end_layout
 
-\layout Note
+\begin_layout VisibleText
 
-\layout Standard
+\end_layout
+
+\begin_layout Note
+
+\end_layout
+
+\begin_layout Standard
 
 Test note.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 A time marker: 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 settime{60}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Don't talk more than 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 addtime{200}
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
-\the_end
+\end_layout
+
+\end_body
+\end_document

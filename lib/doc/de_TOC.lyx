@@ -1,18 +1,19 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass article
 \language german
 \inputencoding latin1
 \fontscheme default
 \graphics none
 \paperfontsize 10
-\spacing single 
-\papersize Default
-\paperpackage widemarginsa4
-\use_geometry 0
+\spacing single
+\papersize default
+\use_geometry false
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -23,3937 +24,5154 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tracking_changes false
+\begin_preamble
+\usepackage{a4wide}
+\end_preamble
+\output_changes true
+\end_header
 
-\layout Title
+\begin_body
+
+\begin_layout Title
 
 Inhaltsverzeichnis LyX Dokumentation
-\layout Section*
+\end_layout
+
+\begin_layout Section*
 
 Einführung in LyX
-\newline 
+\newline
 oder
-\newline 
+\newline
 Das Einmaleins der LyX-Dokumentation
-\layout Description
+\end_layout
+
+\begin_layout Description
 1 
 Die Philosophie von LyX
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 1.1 
 Was ist LyX
-\layout Description
+\end_layout
+
+\begin_layout Description
 1.2 
 Unterschiede zwischen LyX und Textverarbeitungen
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 1.3 
 Was 
-\emph on 
+\emph on
 ist
-\emph default 
+\emph default
  denn nun LaTeX (und muß ich das wissen)?
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 2 
 Der Weg durch die Dokumentation
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 2.1 
 Das Format der Handbücher
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.2 
 Die Handbücher
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3 
 
 
 Wie helfe ich beim LyX Projekt?
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.1 
 Mithilfe bei LyX
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.1.1 
 Fehler melden
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.1.2 
 Fixes und neue Fähigkeiten beisteuern
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3.2 
 Hilfe bei der Dokumentation
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.2.1 
 Fehler in den Handbüchern
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.2.2 
 Dem Dokumentationsteam beitreten
+\end_layout
 \end_deeper
 \end_deeper
-\layout Section*
+\begin_layout Section*
 
 LyX: Häufig gestellte Fragen mit Antworten
-\newline 
+\newline
 Version 0.3.6
-\layout Description
+\end_layout
+
+\begin_layout Description
 1 
 Einleitung und generelle Informationen
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 1.1 
 Was ist LyX?
-\layout Description
+\end_layout
+
+\begin_layout Description
 1.2 
 Schön, aber ist das nützlich?
-\layout Description
+\end_layout
+
+\begin_layout Description
 1.3 
 Womit fange ich an?
-\layout Description
+\end_layout
+
+\begin_layout Description
 1.4 
 Läuft LyX auch auf meinem Computer?
-\layout Description
+\end_layout
+
+\begin_layout Description
 1.5 
 Wieviel Festplattenplatz benötigt LyX?
-\layout Description
+\end_layout
+
+\begin_layout Description
 1.6 
 Ist LyX wirklich Open Source? 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 2 
 Quellen im Internet
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 2.1 
 Wo soll ich im World Wide Web nach LyX suchen?
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.2 
 Wo kann ich LyX via FTP bekommen?
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.3 
 Welche Mailing Listen gibt es?
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.4 
 Werden die Mailing Listen irgendwo archiviert?
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.5 
 Schlaumeier.
  Also, Wo werden sie archiviert?
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3 
 Kompatibilität mit anderen Text/Dokumenten\SpecialChar \-
 systemen
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.1 
 Kann ich LaTeX Dateien lesen/schreiben?
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.2 
 Kann ich Word Dateien lesen/schreiben?
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3 
 Kann ich HTML Dateien lesen/schreiben?
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4 
 Bezug und Compilierung von LyX
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.1 
 Was wird benötigt?
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.2 
 Wie compiliere ich es?
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.3 
 Ich hasse Compilieren.
  Wo sind die vorkompilierten Pakete?
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 5 
 Was ist 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 Evil Red Text
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
 ? (Wichtig!)
-\layout Description
+\end_layout
+
+\begin_layout Description
 6 
 Fragen zur Benutzung von LyX
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.1 
 Generelle Fragen
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.1.1 
 Wie ändere ich die Abstände in eine Liste (Itemize/\SpecialChar \-
 Enumerate/ Description)?
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.1.2 
 Wie kann ich Gleichungen Kapitelweise numerieren?
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.1.3 
 Ist das auch für Abbildungen und Tabellen möglich?
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.1.4 
 Wie ändere ich die Fußnotenzählung in Symbole (Stern, Dagger usw.)?
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.1.5 
 Wie vermeide ich Witwen und Schusterjungen?
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.1.6 
 Wie bekomme ich eine formatierte Liste, die z.
 
 B.
  mit 1.a) beginnt?
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.1.7 
 Wie kann ich in LyX Worte zählen?
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.1.8 
 Wie kann ich einen definierten horizontalen Abstand einfügen?
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.1.9 
 Wie kann ich Zitate in der Form [1,2,3,6] oder [1-3,6] anstelle von [1][2][3][6]
  erhalten?
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 6.2 
 Fragen zu Abbildungen
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.2.1 
 Was ist der Unterschied zwischen einer 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 Abbildung
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
  und einer 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 Float Abbildung
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
 ?
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.2.2 
 Wie bekomme ich LyX dazu, eine Abbildung genau dort einzufügen, wo ich sie
  haben will?
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.2.3 
 Was bedeutet 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 Too many unprocessed floats
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
 ?
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 6.3 
 Fragen zum Mathematik-Modus
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.3.1 
 Wie kann ich in einer mathematischen Gleichung normalen Text eingeben?
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.3.2 
 Wie erzeuge ich eine Kubikwurzel (oder höhere)?
+\end_layout
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 7 
 Fragen zur Benutzung von LyX
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 7.1 
 Wie konvertiere ich mit einem Kommandozeilen\SpecialChar \-
 Befehl eine LyX-Datei nach LaTeX?
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.2 
 Wie erzeuge ich aus meinem LyX-Dokument eine PDF-Datei?
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.3 
 Warum sehen die Zeichensätze meines Textes in 
-\family typewriter 
+\family typewriter
 acroread
-\family default 
+\family default
  so schlecht aus?
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.4 
 Warum kann meine tolle neue Ghostscript-Version die eingebundenen EPS-Abbildunge
 n nicht richtig verarbeiten?
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 8 
 Fragen zu LyX unter Windows
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 8.1 
 Warum flackern Menüs und die Werkzeugleiste?
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 9 
 Wo bekomme ich weitere Hilfe?
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 9.1 
 Meine Frage ist immer noch nicht beantwortet...
-\layout Description
+\end_layout
+
+\begin_layout Description
 9.2 
 Ich will jemandem via Mail von meinem Problem berichten
-\layout Description
+\end_layout
+
+\begin_layout Description
 9.3 
 Was soll ich in einer Hilfeanfrage alles angeben?
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 10 
 Administrative Information und Danksagung
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 10.1 
 Feedback ist willkommen
-\layout Description
+\end_layout
+
+\begin_layout Description
 10.2 
 Formate, in denen dieser Text erhältlich ist
-\layout Description
+\end_layout
+
+\begin_layout Description
 10.3 
 Autor und Danksagung
-\layout Description
+\end_layout
+
+\begin_layout Description
 10.4 
 Ausschluß und Copyright
+\end_layout
 \end_deeper
-\layout Section*
+\begin_layout Section*
 
 Das LyX-Tutorium
-\layout Description
+\end_layout
+
+\begin_layout Description
 1 
 Einleitung
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 1.1 
 Willkommen bei LyX
-\layout Description
+\end_layout
+
+\begin_layout Description
 1.2 
 Was das Tutorium 
-\emph on 
+\emph on
 ist
-\emph default 
+\emph default
 , und was 
-\emph on 
+\emph on
 nicht
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 1.2.1 
 Wie Sie den größten Nutzen aus dem Tutorium ziehen
-\layout Description
+\end_layout
+
+\begin_layout Description
 1.2.2 
 Was Sie hier 
-\emph on 
+\emph on
 nicht
-\emph default 
+\emph default
  finden
+\end_layout
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 2 
 Die ersten Schritte mit LyX
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 2.1 
 Ihr erstes LyX-Dokument
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 2.1.1 
 Eingabe, Betrachten und Drucken
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.1.2 
 Einfache Vorgänge
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.1.3 
 WYSIWYM: Leerzeichen in LyX
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 2.2 
 Umgebungstypen
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 2.2.1 
 Abschnitte und Unterabschnitte
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.2.2 
 Listen und Teillisten
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.2.3 
 Weitere Umgebungstypen: Verse, Zitate und andere
+\end_layout
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 3 
 Das Schreiben von Dokumenten
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.1 
 Dokumentklassen und Vorlagen: Das Schreiben von Briefen
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.2 
 Vorlagen: Briefe schreiben
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3 
 Dokumententitel
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.4 
 Marken und Querverweise
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.4.1 
 Ihre erste Textmarke
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.4.2 
 Ihr erster Querverweis
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.4.3 
 Weitere Möglichkeiten mit Marken
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3.5 
 Fußnoten und Randnotizen
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.6 
 Bibliographie
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.7 
 Inhaltsverzeichnis
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4 
 Der Gebrauch mathematischer Ausdrücke
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.1 
 Der Mathematik-Modus
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.2 
 In Gleichungen bewegen
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.3 
 Exponenten und Indizes
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4 
 Die Tafel der Mathematiksymbole
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.4.1 
 Griechische Buchstaben und Symbole
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.2 
 Quadratwurzeln, Akzente und Klammern
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.3 
 Brüche
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.4 
 TeX-Modus: Grenzwerte, Logarithmen, Trigonometrische Funktionen und anderes
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.5 
 Matrizen
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.6 
 Abgesetzte Formeln
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.5 
 Mehrzeilige Gleichungen
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.6 
 Weitere mathematische Sachen
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 5 
 Vermischtes
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.1 
 Andere wichtige LyX-Merkmale
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.2 
 LyX für LaTeX-Benutzer
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.2.1 
 Der TeX-Modus
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.2.2 
 LaTeX-Dokumente nach LyX konvertieren --- 
-\family typewriter 
+\family typewriter
 reLyX
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.2.3 
 LyX-Dokumente nach LaTeX konvertieren
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.2.4 
 Der LaTeX-Vorspann
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.2.4.1 
 Die Dokumentenklasse
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.2.4.2 
 Andere Einträge im Vorspann
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 5.2.5 
 BibTeX
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.2.6 
 Sonstiges
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 5.3 
 Fehler!
+\end_layout
 \end_deeper
-\layout Section*
+\begin_layout Section*
 
 Das LyX-Benutzerhandbuch
-\layout Description
+\end_layout
+
+\begin_layout Description
 1 
 Einleitung
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 1.1 
 Was ist LyX?
-\layout Description
+\end_layout
+
+\begin_layout Description
 1.2 
 Die ersten Schritte
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 1.2.1 
 Der Aufruf von LyX
-\layout Description
+\end_layout
+
+\begin_layout Description
 1.2.2 
 Wie LyX aussieht
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 1.2.2.1 
 Das Hauptfenster
-\layout Description
+\end_layout
+
+\begin_layout Description
 1.2.2.2 
 Dialoge
 \begin_inset LatexCommand \index{Dialoge}
 
-\end_inset 
+\end_inset
 
 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 1.2.3 
 HILFE!
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 1.3 
 Die LyX-Schnittstelle
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 1.3.1 
 Einfache Datei-Befehle
-\layout Description
+\end_layout
+
+\begin_layout Description
 1.3.2 
 Einfache Editier-Funktionen
-\layout Description
+\end_layout
+
+\begin_layout Description
 1.3.3 
 
-\family sans 
-\bar under 
+\family sans
+\bar under
 R
-\bar default 
+\bar default
 ückgängig
-\family default 
+\family default
 
 \begin_inset LatexCommand \index{Ruckgängig@Rückgängig}
 
-\end_inset 
+\end_inset
 
  (
-\family sans 
+\family sans
 Strg+Z
-\family default 
+\family default
 ) und 
-\family sans 
-\bar under 
+\family sans
+\bar under
 W
-\bar default 
+\bar default
 iederholen
-\family default 
+\family default
 
 \begin_inset LatexCommand \index{Wiederholen}
 
-\end_inset 
+\end_inset
 
  (
-\family sans 
+\family sans
 Umschalt+Strg+Z
-\family default 
+\family default
 )
-\layout Description
+\end_layout
+
+\begin_layout Description
 1.3.4 
 Die Grundfunktionen der Maus
 \begin_inset LatexCommand \index{Mausfunktionen}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 1.3.5 
 Grundlegende Tastaturfunktionen
 \begin_inset LatexCommand \index{Tastaturfunktionen}
 
-\end_inset 
+\end_inset
 
 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 1.4 
 Wie man LyX zusammen mit anderen Programmen benutzt
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 1.4.1 
 ASCII-Dateien
 \begin_inset LatexCommand \index{Datei!importieren}
 
-\end_inset 
+\end_inset
 
  importieren
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 1.4.2 
 Ausschneiden und Kopieren zwischen LyX und anderen Programmen
+\end_layout
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 2 
 Die LyX-Einrichtung und unterstützende Anwendungen
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 2.1 
 Einleitung
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.2 
 LyX-Grundeinstellungen
 \begin_inset LatexCommand \index{Grundeinstellungen}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.3 
 LaTeX
 \begin_inset LatexCommand \index{LaTeX}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.4 
 Dvips und Ghostscript
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 2.4.1 
 Was Sie benötigen
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.4.2 
 Dvips
 \begin_inset LatexCommand \index{Dvips}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.4.3 
 Ghostscript
 \begin_inset LatexCommand \index{Ghostscript}
 
-\end_inset 
+\end_inset
 
 , Xdvi
 \begin_inset LatexCommand \index{xdvi}
 
-\end_inset 
+\end_inset
 
  und gv
 \begin_inset LatexCommand \index{gv}
 
-\end_inset 
+\end_inset
 
 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 2.5 
 Der Drucker
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3 
 LyX-Grundlagen
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.1 
 Dokumenttypen
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.1.1 
 Einleitung
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.1.2 
 
 
 Die verschiedenen Dokumentklassen
 \begin_inset LatexCommand \index{Dokumentklassen}
 
-\end_inset 
+\end_inset
 
+
+\end_layout
 
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.1.2.1 
 Übersicht
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.1.2.2 
 Eine Klasse auswählen
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.1.2.3 
 Eigenschaften
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3.1.3 
 Feineinstellung der Standardwerte
 \begin_inset LatexCommand \index{Standardwerte}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.1.4 
 Seitenorientierung
 \begin_inset LatexCommand \index{Seitenorientierung}
 
-\end_inset 
+\end_inset
 
 , Papierformat
 \begin_inset LatexCommand \index{Papierformat}
 
-\end_inset 
+\end_inset
 
  und Ränder
 \begin_inset LatexCommand \index{Rander@Ränder}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.1.5 
 Wichtiger Hinweis:
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3.2 
 Absatzeinrückung
 \begin_inset LatexCommand \index{Absatzeinruckung@Absatzeinrückung}
 
-\end_inset 
+\end_inset
 
  und Absatztrennung
 \begin_inset LatexCommand \index{Absatztrennung}
 
-\end_inset 
+\end_inset
 
+
+\end_layout
 
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.2.1 
 Einleitung
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.2.2 
 Globale Absatztrennung
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.2.3 
 Feineinstellung
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.2.4 
 Zeilenabstände ändern
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3.3 
 Absatzumgebungen
 \begin_inset LatexCommand \index{Absatzumgebungen}
 
-\end_inset 
+\end_inset
 
  
 
 
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.3.1 
 Überblick
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3.2 
 Standard
 \begin_inset LatexCommand \index{Standard}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3.3 
 Dokumenttitel
 \begin_inset LatexCommand \index{Dokumenttitel}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3.4 
 Überschriften
 \begin_inset LatexCommand \index{Uberschriften@Überschriften}
 
-\end_inset 
+\end_inset
 
+
+\end_layout
 
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.3.4.1 
 Numerierte Überschriften
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3.4.2 
 Nichtnumerierte Überschriften
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3.4.3 
 Ändern der Numerierung
 \begin_inset LatexCommand \index{Numerierung}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3.4.4 
 Spezielle Informationen
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3.4.5 
 Einen Anhang erstellen
 \begin_inset LatexCommand \index{Anhang erstellen}
 
-\end_inset 
+\end_inset
 
 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3.3.5 
 Zitate
 \begin_inset LatexCommand \index{Zitat}
 
-\end_inset 
+\end_inset
 
  und Lyrik
 \begin_inset LatexCommand \index{Lyrik}
 
-\end_inset 
+\end_inset
 
+
+\end_layout
 
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.3.5.1 
 
-\family sans 
+\family sans
 Zitat (kurz)
-\family default 
+\family default
 
 \begin_inset LatexCommand \index{Zitat!(kurz)}
 
-\end_inset 
+\end_inset
 
 und 
-\family sans 
+\family sans
 Zitat (lang)
-\family default 
+\family default
 
 \begin_inset LatexCommand \index{Zitat!(lang)}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3.5.2 
 
-\family sans 
+\family sans
 Gedicht
 \begin_inset LatexCommand \index{Lyrik}
 
-\end_inset 
+\end_inset
 
 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3.3.6 
 Listen
 \begin_inset LatexCommand \index{Listen}
 
-\end_inset 
+\end_inset
 
+
+\end_layout
 
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.3.6.1 
 Allgemeine Eigenschaften
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3.6.2 
 
-\family sans 
+\family sans
 Auf\SpecialChar \textcompwordmark{}
 listung
 \begin_inset LatexCommand \index{Auf\/listung}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3.6.3 
 
-\family sans 
+\family sans
 Aufzählung
 \begin_inset LatexCommand \index{Aufzahlung@Aufzählung}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3.6.4 
 
-\family sans 
+\family sans
 Beschreibung
 \begin_inset LatexCommand \index{Beschreibung}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3.6.5 
 Die LyX-
-\family sans 
+\family sans
 Liste
-\family default 
+\family default
 
 \begin_inset LatexCommand \index{LyX-Liste}
 
-\end_inset 
+\end_inset
 
 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3.3.7 
 Briefe
 \begin_inset LatexCommand \index{Briefe}
 
-\end_inset 
+\end_inset
 
+
+\end_layout
 
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.3.7.1 
 
-\family sans 
+\family sans
 Adresse
 \begin_inset LatexCommand \index{Adresse}
 
-\end_inset 
+\end_inset
 
 
-\family default 
+\family default
  und 
-\family sans 
-Right\SpecialChar ~
+\family sans
+Right\InsetSpace ~
 Address
-\family default 
+\family default
 
 \begin_inset LatexCommand \index{Right Address}
 
-\end_inset 
+\end_inset
 
 : Ein Überblick
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3.7.2 
 Gebrauch
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3.3.8 
 Wissenschaftliche Texte
 \begin_inset LatexCommand \index{Wissenschaftliche Texte}
 
-\end_inset 
+\end_inset
 
+
+\end_layout
 
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.3.8.1 
 
-\family sans 
+\family sans
 Zusammenfassung
 \begin_inset LatexCommand \index{Zusammenfassung}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3.8.2 
 Literaturverzeichnis
 \begin_inset LatexCommand \index{Literaturverzeichnis}
 
-\end_inset 
+\end_inset
 
 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3.3.9 
 Besondere Umgebungen
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.3.9.1 
 
-\family sans 
+\family sans
 Beschriftung
 \begin_inset LatexCommand \index{Beschriftung}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3.9.2 
 
-\family sans 
+\family sans
 L
 
 yX-Code
 \begin_inset LatexCommand \index{LyX-Code}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3.9.3 
 
-\family sans 
+\family sans
 Kommentar
 \begin_inset LatexCommand \index{Kommentar}
 
-\end_inset 
+\end_inset
 
 
+\end_layout
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 3.4 
 Umgebungen schachteln
 \begin_inset LatexCommand \index{Umgebungen schachteln}
 
-\end_inset 
+\end_inset
 
 
 
+
+\end_layout
 
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.4.1 
 Der große Wurf
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.4.2 
 Was Sie schachteln können und was nicht
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.4.3 
 Andere Dinge schachteln: Tabellen
 \begin_inset LatexCommand \index{Tabellen}
 
-\end_inset 
+\end_inset
 
 , Mathematik
 \begin_inset LatexCommand \index{Mathematik}
 
-\end_inset 
+\end_inset
 
 , Gleitobjekte
 \begin_inset LatexCommand \index{Gleitobjekte}
 
-\end_inset 
+\end_inset
 
  usw.
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.4.4 
 Gebrauch und allgemeine Eigenschaften
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.4.4.1 
 Die verschiedenen Bindungen
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3.4.5 
 Einige Beispiele
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.4.5.1 
 Beispiel 1: Sechsfache und gemischte Schachtelung
 \begin_inset LatexCommand \index{Schachtelungsbeispiele}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.4.5.2 
 Beispiel 2: Vererbung
 \begin_inset LatexCommand \index{Schachtelungsbeispiele}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.4.5.3 
 Beispiel 3: Marken, Stufen
-\family sans 
+\family sans
  
-\family default 
+\family default
 und
-\family sans 
+\family sans
  Aufzählung
-\family default 
+\family default
 - und 
-\family sans 
+\family sans
 Auf\SpecialChar \textcompwordmark{}
 listung
-\family default 
+\family default
 -Umgebungen
 \begin_inset LatexCommand \index{Schachtelungsbeispiele}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.4.5.4 
 Beispiel 4: Übergeschnappt
 \begin_inset LatexCommand \index{Schachtelungsbeispiele}
 
-\end_inset 
+\end_inset
 
 
+\end_layout
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 3.5 
 Fonts
 \begin_inset LatexCommand \index{Fonts}
 
-\end_inset 
+\end_inset
 
  und Textstile
 \begin_inset LatexCommand \index{Textstile}
 
-\end_inset 
+\end_inset
 
+
+\end_layout
 
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.5.1 
 Überblick
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.5.2 
 Globale Optionen
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.5.3 
 Gebrauch unterschiedlicher Buchstabenstile
 \begin_inset LatexCommand \index{Buchstabenstile}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.5.4 
 Feineinstellung mit dem 
-\family sans 
+\family sans
 Zeichen
-\family default 
+\family default
 
 \begin_inset LatexCommand \index{Zeichensatzattribute}
 
-\end_inset 
+\end_inset
 
 -Menü
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3.6 
 Drucken
 \begin_inset LatexCommand \index{drucken}
 
-\end_inset 
+\end_inset
 
  und Druckvorschau
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.6.1 
 Überblick
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.6.2 
 Schnelles Ansehen mit 
-\family typewriter 
+\family typewriter
 xdvi
 \begin_inset LatexCommand \index{xdvi}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.6.3 
 Die PostScript
-\series medium 
+\series medium
 ®
-\series default 
+\series default
 -Version mit 
-\family typewriter 
+\family typewriter
 gv
 \begin_inset LatexCommand \index{gv}
 
-\end_inset 
+\end_inset
 
 
-\family default 
+\family default
  anschauen
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.6.4 
 Die Datei drucken
 \begin_inset LatexCommand \index{drucken}
 
-\end_inset 
+\end_inset
 
 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3.7 
 Ein paar Worte über Typographie
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.7.1 
 Bindestriche
 \begin_inset LatexCommand \index{Bindestriche}
 
-\end_inset 
+\end_inset
 
  und Silbentrennung
 \begin_inset LatexCommand \index{Silbentrennung}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.7.2 
 Satzzeichen
 \begin_inset LatexCommand \index{Satzzeichen}
 
-\end_inset 
+\end_inset
 
+
+\end_layout
 
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.7.2.1 
 Abkürzungen
 \begin_inset LatexCommand \index{Abkurzungen@Abkürzungen}
 
-\end_inset 
+\end_inset
 
  und Satzenden
 \begin_inset LatexCommand \index{Satzenden}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.7.2.2 
 Anführungszeichen
 \begin_inset LatexCommand \index{Anfuhrungszeichen@Anführungszeichen}
 
-\end_inset 
+\end_inset
 
 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3.7.3 
 Ligaturen
 \begin_inset LatexCommand \index{Ligaturen}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.7.4 
 Schusterjungen
 \begin_inset LatexCommand \index{Schusterjungen}
 
-\end_inset 
+\end_inset
 
  und Hurenkinder
 \begin_inset LatexCommand \index{Hurenkinder}
 
-\end_inset 
+\end_inset
 
 
+\end_layout
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 4 
 Gleitobjekte
 \begin_inset LatexCommand \index{Gleitobjekte}
 
-\end_inset 
+\end_inset
 
 : Fußnoten, Randnotizen, Abbildungen und Tabellen 
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.1 
 Fußnoten
 \begin_inset LatexCommand \index{Fußnoten}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.2 
 Randnotizen
 \begin_inset LatexCommand \index{Randnotizen}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.3 
 Abbildungen
 \begin_inset LatexCommand \index{Abbildungen}
 
-\end_inset 
+\end_inset
 
  und eingebundene Grafiken
 \begin_inset LatexCommand \index{Grafiken}
 
-\end_inset 
+\end_inset
 
+
+\end_layout
 
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.3.1 
 Die 
-\family sans 
+\family sans
 Beschriftung
-\family default 
+\family default
 
 \begin_inset LatexCommand \index{Beschriftung}
 
-\end_inset 
+\end_inset
 
 -Umgebung für Abbildungen
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.3.1.1 
 Die Benutzung der 
-\family sans 
+\family sans
 Beschriftung
-\family default 
+\family default
 -Umgebung
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.3.1.2 
 Plazierung von 
-\family sans 
+\family sans
 Beschriftung
-\family default 
+\family default
 
 \begin_inset LatexCommand \index{Beschriftung}
 
-\end_inset 
+\end_inset
 
 -Umgebungen 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.3.2 
 
-\family typewriter 
+\family typewriter
 xfig
 \begin_inset LatexCommand \index{xfig}
 
-\end_inset 
+\end_inset
 
 
-\family default 
+\family default
  und LyX
 
 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.4 
 Tabellen
 \begin_inset LatexCommand \index{Tabellen}
 
-\end_inset 
+\end_inset
 
+
+\end_layout
 
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.4.1 
 Das Dialogfenster 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 Tabellen-Einstellungen bearbeiten
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
 
 \begin_inset LatexCommand \index{Tabellen!Einstellungen bearbeiten}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.2 
 Was kann eine Zelle
 \begin_inset LatexCommand \index{Tabellenzelle}
 
-\end_inset 
+\end_inset
 
  alles enthalten? 
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.3 
 Ausschneiden
 \begin_inset LatexCommand \index{Tabellen!ausschneiden}
 
-\end_inset 
+\end_inset
 
  und Einfügen
 \begin_inset LatexCommand \index{Tabellen!einfügen}
 
-\end_inset 
+\end_inset
 
  in Tabellen
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.4 
 Mehrzeiliger Text in Tabellen
 \begin_inset LatexCommand \index{Tabellen!mehrzeiliger Text}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.5 
 Tabellen in 
-\family sans 
+\family sans
 Beschriftung
-\family default 
+\family default
 -Umgebungen
 \begin_inset LatexCommand \index{Tabellen!in Beschriftung-Umgebungen}
 
-\end_inset 
+\end_inset
 
+
+\end_layout
 
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.4.5.1 
 Tabellentitel
 \begin_inset LatexCommand \index{Tabellen!-titel}
 
-\end_inset 
+\end_inset
 
  in 
-\family sans 
+\family sans
 Beschriftung
-\family default 
+\family default
 -Umgebungen
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.5.2 
 Plazierung von 
-\family sans 
+\family sans
 Beschriftung
-\family default 
+\family default
 -Umgebungen
+\end_layout
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 4.5 
 Inhaltsverzeichnisse
 \begin_inset LatexCommand \index{Inhaltsverzeichnisse}
 
-\end_inset 
+\end_inset
 
  und andere Listen
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.5.1 
 Das Inhaltsverzeichnis
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.5.2 
 Liste der Abbildungen
 \begin_inset LatexCommand \index{Liste der Abbildungen}
 
-\end_inset 
+\end_inset
 
 , Tabellen
 \begin_inset LatexCommand \index{Liste der Tabellen}
 
-\end_inset 
+\end_inset
 
  und Algorithmen
 \begin_inset LatexCommand \index{Liste der Algorithmen}
 
-\end_inset 
+\end_inset
 
 
+\end_layout
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 5 
 Mathematische Formeln
 \begin_inset LatexCommand \index{mathematische!Formeln}
 
-\end_inset 
+\end_inset
 
 
 
+
+\end_layout
 
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.1 
 Grundlagen
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.1.1 
 Mathed starten
 \begin_inset LatexCommand \index{Mathed}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.1.2 
 Wie man sich in einer Gleichung
 \begin_inset LatexCommand \index{Gleichung}
 
-\end_inset 
+\end_inset
 
  bewegt
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.1.3 
 Text auswählen
 \begin_inset LatexCommand \index{Mathed!Text auswählen}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.1.4 
 Exponenten
 \begin_inset LatexCommand \index{Exponenten}
 
-\end_inset 
+\end_inset
 
  und Indizes
 \begin_inset LatexCommand \index{Indizes}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.1.5 
 Brüche
 \begin_inset LatexCommand \index{Bruche@Brüche}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.1.6 
 Summen
 \begin_inset LatexCommand \index{Summen}
 
-\end_inset 
+\end_inset
 
  und Integrale
 \begin_inset LatexCommand \index{Integrale}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.1.7 
 Das Menü
-\family sans 
+\family sans
  Mathe-Kontrollfläche
 \begin_inset LatexCommand \index{Mathed!Kontrollfläche}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.1.8 
 Andere mathematische Symbole
 \begin_inset LatexCommand \index{mathematische!Symbole}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.1.9 
 Mathematische Funktionen
 \begin_inset LatexCommand \index{mathematische!Funktionen}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.1.10 
 Weitere Symbole
 \begin_inset LatexCommand \index{Symbole}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.1.11 
 Akzente
 \begin_inset LatexCommand \index{Akzente}
 
-\end_inset 
+\end_inset
 
 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 5.2 
 Klammern
 \begin_inset LatexCommand \index{Klammern}
 
-\end_inset 
+\end_inset
 
  und Dekorationen
 \begin_inset LatexCommand \index{Dekorationen}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.3 
 Gruppierung
 \begin_inset LatexCommand \index{Gruppierung}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.4 
 Matrizen
 \begin_inset LatexCommand \index{Matrizen}
 
-\end_inset 
+\end_inset
 
  und mehrzeilige Gleichungen
 \begin_inset LatexCommand \index{Gleichungen}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.5 
 Gleichungen numerieren
 \begin_inset LatexCommand \index{Gleichungen!numerieren}
 
-\end_inset 
+\end_inset
 
  und markieren
 \begin_inset LatexCommand \index{Gleichungen!markieren}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.6 
 Benutzerdefinierte Makros
 \begin_inset LatexCommand \index{Makros}
 
-\end_inset 
+\end_inset
 
  im 
-\family typewriter 
+\family typewriter
 Mathe-Modus
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.6.1 
 Hinweise zum Gebrauch von Makros
 \begin_inset LatexCommand \index{Makros}
 
-\end_inset 
+\end_inset
 
+
+\end_layout
 
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.6.1.1 
 Wie man sie erzeugt
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.6.1.2 
 Wie man sich im Makro bewegt
+\end_layout
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 5.7 
 Feineinstellungen
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.7.1 
 Schriftstile
 \begin_inset LatexCommand \index{Schriftstile}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.7.2 
 Mathematischer Textmodus
 \begin_inset LatexCommand \index{mathematische!-r Textmodus}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.7.3 
 Fontgrößen
 \begin_inset LatexCommand \index{Fontgroße@Fontgröße}
 
-\end_inset 
+\end_inset
 
 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 5.8 
 AMS-TeX
 \begin_inset LatexCommand \index{AMS-TeX}
 
-\end_inset 
+\end_inset
 
+
+\end_layout
 
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.8.1 
 AMS verwenden
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.8.2 
 AMS-Symbole
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.8.3 
 AMS-Formeln
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 5.9 
 Weitergehende Literatur
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 6 
 Weitere Werkzeuge
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.1 
 Querverweise
 \begin_inset LatexCommand \index{Querverweis}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.2 
 URLs (Uniform Resource Locators)
 \begin_inset LatexCommand \index{URL}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.3 
 Kurze Titel
 \begin_inset LatexCommand \index{Titel!kurze}
 
-\end_inset 
+\end_inset
 
  mit optionalen Argumenten definieren
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.4 
 Manuelle Feineinstellungen
 \begin_inset LatexCommand \index{Feineinstellungen}
 
-\end_inset 
+\end_inset
 
+
+\end_layout
 
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.4.1 
 Zusätzlicher waagerechter Leerraum
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.4.2 
 Zusätzlicher senkrechter Leerraum
 \begin_inset LatexCommand \index{Leerraum - senkrechter}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.4.3 
 Absatzausrichtung
 \begin_inset LatexCommand \index{Absatzausrichtung}
 
-\end_inset 
+\end_inset
 
  ändern
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.4.4 
 Manuelle Seitenumbrüche
 \begin_inset LatexCommand \index{Seitenumbruche@Seitenumbrüche}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.4.5 
 Geschützte Leerzeichen
 \begin_inset LatexCommand \index{Leerzeichen - geschützte}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.4.6 
 Manueller Zeilenumbruch
 \begin_inset LatexCommand \index{Zeilenumbruch!manueller}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.4.7 
 Horizontale Linien
 \begin_inset LatexCommand \index{horizontale Linien}
 
-\end_inset 
+\end_inset
 
 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 6.5 
 Rechtschreibprüfung
 \begin_inset LatexCommand \index{Rechtschreibprufung@Rechtschreibprüfung}
 
-\end_inset 
+\end_inset
 
+
+\end_layout
 
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.5.1 
 Optionen für die Rechtschreibprüfung
 \begin_inset LatexCommand \index{Rechtschreibprufung@Rechtschreibprüfung}
 
-\end_inset 
+\end_inset
 
+
+\end_layout
 
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.5.1.1 
 Benutzerschnittstelle Rechtschreibprüfung
 \begin_inset LatexCommand \index{Rechtschreibprufung@Rechtschreibprüfung}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.5.1.2 
 Persönliches Wörterbuch
 \begin_inset LatexCommand \index{Worterbuch - personliches@Wörterbuch - persönliches}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.5.1.3 
 Weitere Optionen
 \begin_inset LatexCommand \index{Rechtschreibprüfung}
 
-\end_inset 
+\end_inset
 
 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 6.5.2 
 Probleme
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.5.3 
 Grenzen
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 6.6 
 Internationale Unterstützung
 \begin_inset LatexCommand \index{Internationale Unterstützung}
 
-\end_inset 
+\end_inset
 
+
+\end_layout
 
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.6.1 
 Sprachoptionen
 \begin_inset LatexCommand \index{Sprachoptionen}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.6.2 
 Tastaturtabellen
 \begin_inset LatexCommand \index{Tastaturtabellen}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.6.3 
 Zeichentabellen
 \begin_inset LatexCommand \index{Zeichentabellen}
 
-\end_inset 
+\end_inset
 
 
+\end_layout
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 7 
 Die restlichen Befehle
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 7.1 
 Die Werkzeugleiste
 \begin_inset LatexCommand \index{Werkzeugleiste}
 
-\end_inset 
+\end_inset
 
  
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.2 
 
-\family sans 
-\bar under 
+\family sans
+\bar under
 D
-\bar default 
+\bar default
 atei\SpecialChar \menuseparator
 
-\family default 
+\family default
  \SpecialChar \ldots{}
 
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 7.2.1 
 
-\family sans 
+\family sans
 Versions
-\bar under 
+\bar under
 k
-\bar default 
+\bar default
 ontrolle
 \begin_inset LatexCommand \index{Versionskontrolle}
 
-\end_inset 
+\end_inset
 
 \SpecialChar \menuseparator
 
-\bar under 
+\bar under
 R
-\bar default 
+\bar default
 egistrieren\SpecialChar \ldots{}
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.2.2 
 
-\family sans 
-\bar under 
+\family sans
+\bar under
 I
-\bar default 
+\bar default
 mportieren\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 L
-\bar default 
+\bar default
 aT
-\family default 
+\family default
 
 
 
-\family sans 
+\family sans
 eX\SpecialChar \ldots{}
 /
-\bar under 
+\bar under
 N
-\bar default 
+\bar default
 oWeb\SpecialChar \ldots{}
 
 \begin_inset LatexCommand \index{Datei!importieren}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.2.3 
 
-\family sans 
-\bar under 
+\family sans
+\bar under
 E
-\bar default 
+\bar default
 xportieren\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 D
-\bar default 
+\bar default
 VI/
-\bar under 
+\bar under
 H
-\bar default 
+\bar default
 TML/
-\bar under 
+\bar under
 L
-\bar default 
+\bar default
 aT
-\family default 
+\family default
 
 
 
-\family sans 
+\family sans
 eX/
-\bar under 
+\bar under
 P
-\bar default 
+\bar default
 DF/Pos
-\bar under 
+\bar under
 t
-\bar default 
+\bar default
 script/
-\bar under 
+\bar under
 B
-\bar default 
+\bar default
 enutzerdef\SpecialChar \textcompwordmark{}
 iniert\SpecialChar \ldots{}
 
 \begin_inset LatexCommand \index{Datei!exportieren}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.2.4 
 
-\family sans 
+\family sans
 Fa
-\bar under 
+\bar under
 x
-\bar default 
+\bar default
 en
-\family default 
+\family default
 \SpecialChar \ldots{}
 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 7.3 
 
-\family sans 
-\bar under 
+\family sans
+\bar under
 B
-\bar default 
+\bar default
 earbeiten\SpecialChar \menuseparator
 
-\family default 
+\family default
  \SpecialChar \ldots{}
+
+\end_layout
 
 \begin_deeper
-\layout Description
+\begin_layout Description
 7.3.1 
 
-\family sans 
+\family sans
 Externe A
-\bar under 
+\bar under
 u
-\bar default 
+\bar default
 swahl einfügen\SpecialChar \menuseparator
 als 
-\bar under 
+\bar under
 Z
-\bar default 
+\bar default
 eilen/als 
-\bar under 
+\bar under
 A
-\bar default 
+\bar default
 bsätze
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.3.2 
 
-\family sans 
-\bar under 
+\family sans
+\bar under
 M
-\bar default 
+\bar default
 athe\SpecialChar \menuseparator
 
-\family default 
+\family default
  \SpecialChar \ldots{}
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.3.3 
 
-\family sans 
+\family sans
 T
-\family default 
+\family default
 
 
 
-\family sans 
+\family sans
 e
-\bar under 
+\bar under
 X
-\bar default 
+\bar default
  prüfen
 \begin_inset LatexCommand \index{TeX!prufen@prüfen}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.3.4 
 
-\family sans 
+\family sans
 Alle Fe
-\bar under 
+\bar under
 h
-\bar default 
+\bar default
 lermarken entfernen
 \begin_inset LatexCommand \index{Fehlermarken entfernen}
 
-\end_inset 
+\end_inset
 
 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 7.4 
 
-\family sans 
-\bar under 
+\family sans
+\bar under
 E
-\bar default 
+\bar default
 infügen\SpecialChar \menuseparator
 
-\family default 
+\family default
  \SpecialChar \ldots{}
 
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 7.4.1 
 
-\family sans 
-\bar under 
+\family sans
+\bar under
 M
-\bar default 
+\bar default
 athe\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 C
-\bar default 
+\bar default
 ases/AMS align, alignat, f\SpecialChar \textcompwordmark{}
 lalign
-\family default 
+\family default
 , 
-\family sans 
+\family sans
 gather
-\family default 
+\family default
  und
-\family sans 
+\family sans
  multline-Umgebung
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.4.2 
 
-\family sans 
+\family sans
 St
-\bar under 
+\bar under
 i
-\bar default 
+\bar default
 chwort\SpecialChar \ldots{}
 
 \begin_inset LatexCommand \index{Index}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.4.3 
 
-\family sans 
+\family sans
 T
-\family default 
+\family default
 
 
 
-\family sans 
+\family sans
 e
-\bar under 
+\bar under
 X
-\bar default 
+\bar default
 
 \begin_inset LatexCommand \index{TeX}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.4.4 
 
-\family sans 
+\family sans
 Mini
-\bar under 
+\bar under
 p
-\bar default 
+\bar default
 age
 \begin_inset LatexCommand \index{Minipage}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.4.5 
 
-\family sans 
+\family sans
 Gleit
-\bar under 
+\bar under
 o
-\bar default 
+\bar default
 bjekte\SpecialChar \menuseparator
 Algorithmus
 \begin_inset LatexCommand \index{Algorithmus}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.4.6 
 
-\family sans 
-\bar under 
+\family sans
+\bar under
 D
-\bar default 
+\bar default
 atei
-\family default 
+\family default
  
-\family sans 
+\family sans
 einfügen
-\family default 
+\family default
 \SpecialChar \menuseparator
  \SpecialChar \ldots{}
 
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 7.4.6.1 
 
-\family sans 
+\family sans
 Ly
-\family default 
+\family default
 
 
 
-\family sans 
+\family sans
 X Dokument\SpecialChar \ldots{}
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.4.6.2 
 
-\family sans 
+\family sans
 ASCII
 \begin_inset LatexCommand \index{ASCII}
 
-\end_inset 
+\end_inset
 
  als 
-\bar under 
+\bar under
 Z
-\bar default 
+\bar default
 eilen/
-\bar under 
+\bar under
 A
-\bar default 
+\bar default
 SCII als Absätze\SpecialChar \ldots{}
 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 7.4.7 
 
-\family sans 
-\bar under 
+\family sans
+\bar under
 E
-\bar default 
+\bar default
 xternes Material\SpecialChar \ldots{}
 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 7.5 
 
-\family sans 
+\family sans
 Ans
-\bar under 
+\bar under
 i
-\bar default 
+\bar default
 cht\SpecialChar \menuseparator
 
-\family default 
+\family default
  \SpecialChar \ldots{}
 
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 7.5.1 
 
-\family sans 
-\bar under 
+\family sans
+\bar under
 P
-\bar default 
+\bar default
 DF
-\family default 
+\family default
  und 
-\family sans 
-\bar under 
+\family sans
+\bar under
 A
-\bar default 
+\bar default
 ktualisieren\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 P
-\bar default 
+\bar default
 DF
 \begin_inset LatexCommand \index{PDF}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.5.2 
 
-\family sans 
-\bar under 
+\family sans
+\bar under
 P
-\bar default 
+\bar default
 DF (dvipdf
-\bar under 
+\bar under
 m
-\bar default 
+\bar default
 )
-\family default 
+\family default
  und 
-\family sans 
-\bar under 
+\family sans
+\bar under
 A
-\bar default 
+\bar default
 ktualisieren\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 P
-\bar default 
+\bar default
 DF (dvipdf
-\bar under 
+\bar under
 m
-\bar default 
+\bar default
 )
-\family default 
+\family default
  
-\family sans 
+\family sans
 
 \begin_inset LatexCommand \index{PDF (dvipdfm)}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.5.3 
 
-\family sans 
-\bar under 
+\family sans
+\bar under
 L
-\bar default 
+\bar default
 aT
-\family default 
+\family default
 
 
 
-\family sans 
+\family sans
 eX-Protokoll
 \begin_inset LatexCommand \index{LaTeX-Protokoll}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.5.4 
 
-\family sans 
+\family sans
 T
-\family default 
+\family default
 
 
 
-\family sans 
+\family sans
 e
-\bar under 
+\bar under
 X
-\bar default 
+\bar default
 -Informationen
 \begin_inset LatexCommand \index{TeX!-Informationen}
 
-\end_inset 
+\end_inset
 
 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 7.6 
 
-\family sans 
-\bar under 
+\family sans
+\bar under
 N
-\bar default 
+\bar default
 avigieren\SpecialChar \menuseparator
 
-\family default 
+\family default
  \SpecialChar \ldots{}
 
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 7.6.1 
 
-\family sans 
+\family sans
 Abbildung
 \begin_inset LatexCommand \index{Abbildung}
 
-\end_inset 
+\end_inset
 
 
-\family default 
+\family default
  und 
-\family sans 
+\family sans
 Tabelle
 \begin_inset LatexCommand \index{Tabelle}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.6.2 
 
-\family sans 
-\bar under 
+\family sans
+\bar under
 F
-\bar default 
+\bar default
 ehler
 \begin_inset LatexCommand \index{Fehler}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.6.3 
 
-\family sans 
-\bar under 
+\family sans
+\bar under
 N
-\bar default 
+\bar default
 otiz
 \begin_inset LatexCommand \index{Notiz}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.6.4 
 
-\family sans 
-\bar under 
+\family sans
+\bar under
 R
-\bar default 
+\bar default
 eferenzen
 \begin_inset LatexCommand \index{Referenzen}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.6.5 
 
-\family sans 
-\bar under 
+\family sans
+\bar under
 L
-\bar default 
+\bar default
 esezeichen
 \begin_inset LatexCommand \index{Lesezeichen}
 
-\end_inset 
+\end_inset
 
 \SpecialChar \menuseparator
 
-\family default 
+\family default
  \SpecialChar \ldots{}
 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 7.7 
 
-\family sans 
+\family sans
 Do
-\bar under 
+\bar under
 k
-\bar default 
+\bar default
 umente
 \begin_inset LatexCommand \index{Dokumente}
 
-\end_inset 
+\end_inset
 
 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 8 
 Danksagung
-\layout Section*
+\end_layout
+
+\begin_layout Section*
 
 Profi-Tipps: erweiterte Textbearbeitung mit LyX
-\layout Description
+\end_layout
+
+\begin_layout Description
 1 
 Einleitung
-\layout Description
+\end_layout
+
+\begin_layout Description
 2 
 LyX und LaTeX
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 2.1 
 Wie LyX LaTeX benutzt
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.2 
 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 Hilfe! LyX hat eine unleserliche 
-\family typewriter 
+\family typewriter
 .tex
-\family default 
+\family default
 -Datei erzeugt!
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.3 
 LaTeX-Dateien nach LyX konvertieren
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.4 
 LaTeX-Code (ERT) in LyX-Dokumente einsetzen
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.5 
 LyX und der LaTeX-Vorspann
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 2.5.1 
 Über den LaTeX-Vorspann
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.5.2 
 Den Vorspann ändern
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.5.3 
 Beispiele
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 2.5.3.1 
 Beispiel 1: Verschiebungen (Offsets)
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.5.3.2 
 Beispiel 2: Aufkleber
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.5.3.3 
 Beispiel
-\series medium 
+\series medium
  
-\series default 
+\series default
 3: Absatzeinrückung
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.5.3.4 
 Beispiel 4: Dieses Dokument
+\end_layout
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 2.6 
 LyX und LaTeX-Fehler
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3 
 Ergänzende Werkzeuge
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.1 
 Erstellen eines Literaturverzeichnisses mit BibTeX
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.2 
 Erstellen eines Stichwortverzeichnisses
 \begin_inset LatexCommand \index{Stichwortverzeichnis}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3 
 Mehrteilige Dokumente
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.3.1 
 Allgemeine Handhabung
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3.2 
 Querverweise zwischen Dateien
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3.4 
 Algorithmen
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.5 
 Teilabbildungen
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.6 
 Kunstvolle Kopf- und Fußzeilen
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.7 
 Minipage
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.8 
 Text um Abbildungen herumfließen lassen
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.9 
 Sonderformate für Tabellen
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.9.1 
 Zusätzlichen Leerraum in Spalten entfernen
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.9.2 
 Ändern des Spaltentrennzeichens
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.9.3 
 Eine Spalte nach einem Dezimalpunkt ausrichten
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.9.4 
 Eine bessere Lösung für die Dezimalpunktausrichtung
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3.10 
 Listenmarkierer auswählen
 
 
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.10.1 
 Einleitung
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.10.2 
 Das Dialogfenster
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.10.3 
 So funktioniert es
+\end_layout
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 4 
 Besondere Dokumentklassen
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.1 
 AMS-Mathe
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.1.1 
 Was diese Formate bieten
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.2 
 Dinbrief
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.3 
 Paper
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4 
 A&A Paper
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.4.1 
 Einleitung
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.2 
 Der Anfang
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.3 
 Der Titelblock
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.4 
 Die Zusammenfassung
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.5 
 Unterstützte Umgebungstypen
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.6 
 Von LyX nicht unterstützte Befehle
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.7 
 Gleitende Abbildungen und Tabellen
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.8 
 Das Schiedsrichter-Format
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.9 
 Der Beispielartikel
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.5 
 AASTeX
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.5.1 
 Einleitung
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.5.2 
 Einen neuen Artikel beginnen
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.5.3 
 Der Abschluß eines Artikels
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.5.4 
 Hinweise zu einzelnen Befehlen
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.5.4.1 
 Dinge, die wie erwartet funktionieren
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.5.4.2 
 Dinge, die funktionieren, jedoch zusätzlicher Hinweise bedürfen
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.5.4.3 
 Nicht implementierte Dinge (LaTeX-Code verwenden)
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.5.4.4 
 Dinge, die nicht implementiert werden können
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.5.5 
 FAQs, Tips, Tricks und andere Wiederholungen
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.5.5.1 
 Wie man LyX und AASTeX zusammenarbeiten läßt
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.5.5.2 
 LaTeX-Fehler beim Verarbeiten von Tabellen
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.5.5.3 
 Literaturverzeichnisse
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.5.5.4 
 Einbinden von EPS-Dateien
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.5.5.5 
 Möglichkeiten, die ich nicht realisiert habe
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.5.6 
 Schlußbemerkung
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.6 
 ijmpd
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.6.1 
 Überblick
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.6.2 
 Ein Papier schreiben
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.6.3 
 Ein Papier zum Versenden vorbereiten
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.7 
 Kluwer
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.7.1 
 Überblick
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.7.2 
 Ein Papier schreiben
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.7.3 
 Ein Papier zum Versenden vorbereiten
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.7.4 
 Besonderheiten des Kluwer-Paketes
 
 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.8 
 Koma-Script
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.8.1 
 Überblick
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.8.2 
 article (koma-script), report (koma-script) und book (koma-script)
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.8.3 
 letter (koma-script)
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.8.4 
 Die neue Briefklasse: letter (koma-script v.2)
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.8.5 
 Probleme
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.9 
 Springer-Zeitschriften (
-\family sans 
+\family sans
 svjour
-\family default 
+\family default
 )
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.9.1 
 Beschreibung
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.9.2 
 Neue Stile
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.9.3 
 Unterstützte Zeitschriften
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.9.4 
 Danksagung
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.9.5 
 Fehler
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.10 
 AGU journals (aguplus)
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.10.1 
 Beschreibung
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.10.2 
 Neue Umgebungen
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.10.3 
 Neue Gleitobjekte
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.10.4 
 Unterstützte Journale
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.11 
 EGS journals (egs)
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.11.1 
 Beschreibung
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.11.2 
 Neue Umgebungen
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.12 
 Folien [S
-\noun on 
+\noun on
 li
-\noun default 
+\noun default
 TeX] 
 
 
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.12.1 
 Einleitung
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.12.2 
 Zu Beginn
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.12.3 
 Absatzumgebungen
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.12.3.1 
 Unterstützte Umgebungen
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.12.3.2 
 Kniffe mit den neuen Absatzumgebungen
 
 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.12.4 
 Erstellen einer Präsentation mit 
-\family sans 
+\family sans
 Slide
-\family default 
+\family default
 , 
-\family sans 
+\family sans
 Overlay
-\family default 
+\family default
  und 
-\family sans 
+\family sans
 Hinweis
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.12.4.1 
 Die 
-\family sans 
+\family sans
 Slide-
-\family default 
+\family default
 Umgebung benutzen
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.12.4.2 
 Die 
-\family sans 
+\family sans
 Overlay
-\family default 
+\family default
 - mit der 
-\family sans 
+\family sans
 Slide
-\family default 
+\family default
 -Umgebung benutzen
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.12.4.3 
 Die 
-\family sans 
+\family sans
 Hinweis
-\family default 
+\family default
 - mit der 
-\family sans 
+\family sans
 Slide
-\family default 
+\family default
 -Umgebung benutzen
-\family sans 
+\family sans
 
 
 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.12.5 
 Die Vorlagedatei für die 
-\family sans 
+\family sans
 slides-
-\family default 
+\family default
 Klasse
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.13 
 Folien [
-\family sans 
-\noun on 
+\family sans
+\noun on
 Foil
-\family default 
+\family default
 TeX
-\noun default 
+\noun default
 ]
 
 
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.13.1 
 Einleitung
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.13.2 
 Zu Beginn
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.13.2.1 
 Weitere Optionen
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.13.3 
 Unterstützte Umgebungstypen
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.13.4 
 Die Erstellung eines Foliensatzes
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.13.4.1 
 Anlegen einer Titelseite
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.13.4.2 
 Eine neue Folie beginnen
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.13.4.3 
 Theoreme, Lemmas, Beweise und anderes
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.13.4.4 
 Aufzählungen
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.13.4.5 
 Abbildungen und Tabellen
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.13.4.6 
 Kopf- und Fußzeilen der Seite
 
 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.13.5 
 Nicht unterstützte Befehle von 
-\family sans 
+\family sans
 Foil
-\family default 
+\family default
 TeX
 
 
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.13.5.1 
 Längenangaben
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.13.5.2 
 Kopf- und Fußzeilen
+\end_layout
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 4.14 
 Latex8 (IEEE-Konferenzpapiere)
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.14.1 
 Einleitung
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.14.2 
 Erste Schritte
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.14.3 
 Unterstützte Umgebungstypen
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.14.4 
 Unterschiede zwischen Bildschirm und Druckbild
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.15 
 Hollywood (Skripte nach Hollywood-Spezifikation)
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.15.1 
 Einleitung
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.15.2 
 Besondere Probleme
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.15.3 
 Besondere Funktionen
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.15.4 
 Seitengrößen und Randbreiten
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.15.5 
 Umgebungstypen
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.15.6 
 Skript Jargon
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.16 
 Broadway
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.16.1 
 Einleitung
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.16.2 
 Besondere Probleme
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.16.3 
 Besondere Funktionen
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.16.4 
 Seitengrößen und Randbreiten
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.16.5 
 Umgebungstypen
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.17 
 RevTeX4
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.17.1 
 Installation
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.17.2 
 LaTeX-Vorspann
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.17.3 
 Format
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.17.4 
 Wichtige Hinweise
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.17.5 
 Nachteile
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.18 
 Article (mwart), book (mwbk) and report (mwrep)
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.19 
 Elsevier Journals
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 5 
 Import und Export anderer Dateiformate
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.1 
 Einleitung
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.2 
 Import anderer Formate
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.2.1 
 LaTeX
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.2.2 
 ASCII-Text
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.2.3 
 NoWeb
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 5.3 
 Export nach anderen Formaten
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.3.1 
 LaTeX
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.3.2 
 DVI
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.3.3 
 PostScript®
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.3.4 
 ASCII-Text
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.3.5 
 HTML
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.3.6 
 PDF
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.3.6.1 
 pdfLaTeX benutzen
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.3.6.2 
 Warum sieht der Text mit Acrobat®Reader so schlecht aus?
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.3.6.3 
 Warum funktioniert der Befehl 
-\family typewriter 
+\family typewriter
 
-\backslash 
+\backslash
 boldsymbol{}
-\family default 
+\family default
  nicht mit 
-\family typewriter 
+\family typewriter
 ps\SpecialChar \-
 latex
-\family default 
+\family default
 ?
-\family typewriter 
+\family typewriter
 
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.3.6.4 
 Kann man LaTeX-Code schreiben, der nur mit pdfLaTeX bearbeitet wird?
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.3.6.5 
 Wie mache ich URLs anklickbar?
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 5.3.7 
 Benutzerdefiniert
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 5.4 
 Die vollständige reLyX-Beschreibung
 
 
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.4.1 
 Übersicht
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.4.2 
 Optionen
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.4.3 
 Beschreibung
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.4.3.1 
 Einleitung
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.4.3.2 
 Benutzung
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.4.3.3 
 Womit reLyX umgehen kann
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.4.3.4 
 Womit reLyX nicht umgehen kann, jedoch keine Fehler auftreten
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.4.3.5 
 Womit reLyX wirklich schlecht umgeht --- echte Fehler
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.4.3.6 
 Was LyX nicht handhaben kann
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 5.4.4 
 Beispiele
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.4.5 
 Hinweise
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.4.5.1 
 Fehlerberichte
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.4.5.2 
 Details zur Implementation:
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.4.5.3 
 Format-Dateien
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.4.5.4 
 Syntaxdateien
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.4.5.5 
 Verschiedenes
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 5.4.6 
 Diagnostik
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.4.7 
 Warnungen
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.4.8 
 Dateien
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.4.9 
 Siehe auch
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.4.10 
 Autoren
+\end_layout
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 6 
 LyX-Funktionen, die zusätzliche Programme benötigen
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.1 
 Die Verwendung von LyX mit den SGML-Tools (LinuxDoc)
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.1.1 
 Überblick
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.1.2 
 Vorbereitung und Umgang mit einem SGML (LinuxDoc)-Doku\SpecialChar \-
 ment
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.1.2.1 
 Zu Beginn
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.1.2.2 
 Abspeichern
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 6.1.3 
 Die Verwendung der Absatzumgebungen in SGML (LinuxDoc)
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.1.3.1 
 Die Struktur eines SGML (LinuxDoc)-Dokumentes
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.1.3.2 
 Die Absatzumgebungen in SGML (LinuxDoc)
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.1.3.3 
 Andere Format-Elemente
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 6.1.4 
 Die Verwendung der SGML (LinuxDoc)-Skripte
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.1.5 
 Fehlersuche in SGML (LinuxDoc)
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 6.2 
 TeX prüfen
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.2.1 
 Einleitung
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.2.2 
 Der Aufruf
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.2.3 
 Anpassung an persönliche Wünsche
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 6.3 
 Versionskontrolle in LyX
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.3.1 
 Einleitung
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.3.2 
 RCS-Befehle in LyX
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.3.2.1 
 
-\family sans 
-\series medium 
+\family sans
+\series medium
 Registrieren
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.3.2.2 
 
-\family sans 
-\series medium 
+\family sans
+\series medium
 Änderungen einchecken\SpecialChar \ldots{}
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.3.2.3 
 
-\family sans 
-\series medium 
+\family sans
+\series medium
 Arbeitskopie erzeugen
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.3.2.4 
 
-\family sans 
-\series medium 
+\family sans
+\series medium
 Letzte Version wiederherstellen
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.3.2.5 
 
-\family sans 
-\series medium 
+\family sans
+\series medium
 Letzte Version widerrufen
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.3.2.6 
 
-\family sans 
-\series medium 
+\family sans
+\series medium
 Entwicklung anzeigen
+\end_layout
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 6.4 
 Literarische Programmierung
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.4.1 
 Einleitung
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.4.2 
 Was ist Literarische Programmierung?
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.4.2.1 
 Literaturhinweise
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 6.4.3 
 LyX und Literarische Programmierung
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.4.3.1 
 Erstellen von Dokumentation und Quellcode (weben und verknoten)
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.4.3.2 
 LyX-Konfiguration
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.4.3.3 
 Erweiterungen zur Fehlersuche
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.4.3.4 
 Werkzeugleistenerweiterungen
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.4.3.5 
 Farben anpassen
+\end_layout
 \end_deeper
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 7 
 Geheimnisse der LaTeX-Meister
 
 
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 7.1 
 Tricks für Fußnoten und Randnotizen
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 7.1.1 
 Fußnoten
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.1.2 
 Randnotizen
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 7.2 
 Mehrspaltige Dokumente
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 7.2.1 
 Absicht
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.2.2 
 Einschränkungen
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.2.3 
 Beispiele
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 7.2.3.1 
 Zwei Spalten
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.2.3.2 
 Mehr als zwei Spalten
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.2.3.3 
 Spalten innerhalb einer Spalte
+\end_layout
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 7.3 
 Numerierung in der 
-\family sans 
+\family sans
 Aufzählung
-\family default 
+\family default
 -Absatzumgebung
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.4 
 Zusätzlicher Leerraum zwischen Tabellenzeilen
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.5 
 Abgesetzte Großbuchstaben
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.6 
 Ungewöhnliche Absatzformen
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.7 
 Zusammenfassung
+\end_layout
 \end_deeper
-\layout Section*
+\begin_layout Section*
 
 LyX-Anpassung:
-\newline 
+\newline
 Möglichkeiten für fortgeschrittene Nutzer
-\layout Description
+\end_layout
+
+\begin_layout Description
 1 
 Einleitung
-\layout Description
+\end_layout
+
+\begin_layout Description
 2 
 Die Konfigurationsdateien von LyX
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 2.1 
 Was befindet sich in 
-\family typewriter 
+\family typewriter
 LyXDir
-\family default 
+\family default
 ?
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 2.1.1 
 Automatisch erzeugte Dateien
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.1.2 
 Verzeichnisse
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.1.3 
 Dateien, die Sie nicht verändern sollten
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.1.4 
 Andere Dateien
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 2.2 
 Das lokale Konfigurationsverzeichnis
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.3 
 LyX mit mehreren Konfigurationen
 
 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3 
 Der Dialog 
-\family sans 
-\bar under 
+\family sans
+\bar under
 B
-\bar default 
+\bar default
 earbeiten\SpecialChar \menuseparator
 E
-\bar under 
+\bar under
 i
-\bar default 
+\bar default
 nstellungen
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.1 
 Der erste Aufruf des Dialogs
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.2 
 Bildschirmdarstellung und Zeichensätze
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.2.1 
 Auf
 
 lösung und Vergrößerungsfaktor
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.2.2 
 Befehle zur Festlegung des Zeichensatzes
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.2.3 
 Zeichensatzkodierung
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3.3 
 Tastatur-Einstellung
 
 
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.3.1 
 
-\family typewriter 
+\family typewriter
 xmodmap
-\family default 
+\family default
  und 
-\family typewriter 
+\family typewriter
 xkeycaps
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.3.1.1 
 
-\family typewriter 
+\family typewriter
 xmodmap
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3.1.2 
 
-\family typewriter 
+\family typewriter
 xkeycaps
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3.3.2 
 Sondertasten
 \begin_inset LatexCommand \index{Sondertasten}
 
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3.3 
 Hilfreiche Hinweise und Tips
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3.4 
 Tastaturkürzel
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.5 
 Die Benutzerschnittstelle
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.6 
 Konverter, Formate und Druckvorschau
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.7 
 Optionen für den ASCII-Export
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.8 
 Drucker
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.9 
 Bildschirmfarben
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.10 
 Automatische Einstellungen
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.11 
 Weitere Befehle
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4 
 Internationales LyX
 
 
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.1 
 Eine andere Sprache für die Schnittstelle auswählen
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.2 
 Tastaturkürzel für andere Sprachen anpassen
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.3 
 LyX übersetzen
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.3.1 
 Die Benutzerschnittstelle übersetzen (Textmeldungen)
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.3.2 
 Die Dokumentation übersetzen
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.4 
 Internationale Tastaturbelegung
 
 
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.4.1 
 Eigene Tastaturtabellen definieren: das 
-\emph on 
+\emph on
 Keymap
-\emph default 
+\emph default
 -Dateiformat
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.5 
 Internationale Tastaturtabellen: 
-\emph on 
+\emph on
 Keymaps
-\emph default 
+\emph default
 
 
+
+\end_layout
 
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.5.1 
 Die 
-\family typewriter 
+\family typewriter
 .kmap
-\family default 
+\family default
 -Datei
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.5.2 
 Die 
-\family typewriter 
+\family typewriter
 .cdef
-\family default 
+\family default
 -Datei
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.5.3 
 Tote Tasten definieren
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.5.4 
 Ihre Sprachkonfiguration einstellen
 
 
+\end_layout
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 5 
 Installieren neuer Textklassen, Layouts und Vorlagen
 
 
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.1 
 Installation eines neuen LaTeX-Paketes
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.2 
 Layouts
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.2.1 
 Unterstützung neuer Dokumentenklassen
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.2.2 
 LaTeX2e 
-\family typewriter 
+\family typewriter
 sty
-\family default 
+\family default
 -Datei
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.2.3 
 LaTeX2e 
-\family sans 
+\family sans
 cls
-\family default 
+\family default
 -Datei
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.2.4 
 LaTeX 2.09 
-\family sans 
+\family sans
 sty
-\family default 
+\family default
 -Datei
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 5.3 
 Deklaration einer neuen Textklasse
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.3.1 
 Allgemeine Parameter für Textklassen
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.3.2 
 Der Abschnitt 
-\family typewriter 
+\family typewriter
 ClassOptions
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.3.3 
 Einzelne Absatz-Layouts 
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.3.4 
 Beschreibung des Zeichensatzes
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 5.4 
 Vorlagen erstellen
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 6 
 Eine Anleitung für Drucker
 
 
 
 
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.1 
 Einleitung
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.2 
 Die Datei 
-\family typewriter 
+\family typewriter
 /etc/printcap
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.2.1 
 Überblick
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.2.2 
 Der Druckername
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.2.3 
 Die Drucker-Gerätedatei
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.2.4 
 Das Spulverzeichnis und die Logdatei
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.2.5 
 Die Filterdatei
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.2.6 
 Zusätzliche Kürzel
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 6.3 
 Wir bauen einen Druckerfilter
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.3.1 
 PostScript®-Dateien mit Hilfe von Ghostscript ausdrucken
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.3.2 
 Wenn Ihr Drucker bereits PostScript® versteht\SpecialChar \ldots{}
 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 6.4 
 Der Druckerspuldämon 
-\family typewriter 
+\family typewriter
 lpd
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.5 
 Kurze Zusammenfassung
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 7 
 Die Einfügung Externes Material
 
 
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 7.1 
 Hintergrund
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.2 
 Wie funktioniert das?
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.3 
 Der Dialog 
-\family sans 
+\family sans
 Externe Datei bearbeiten
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.4 
 Beispiele
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.5 
 Die Konfigurationsdatei
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.6 
 Der Ersetzungsmechanismus
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.7 
 Sicherheitshinweise
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.8 
 Die Zukunft der externen Einfügung
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 8 \start_of_appendix 
 Tastaturkürzel
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 8.1 
 Werkzeugleiste
-\layout Description
+\end_layout
+
+\begin_layout Description
 8.2 
 Menüs
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 8.2.1 
 Datei
-\layout Description
+\end_layout
+
+\begin_layout Description
 8.2.2 
 Bearbeiten
-\layout Description
+\end_layout
+
+\begin_layout Description
 8.2.3 
 Einfügen
-\layout Description
+\end_layout
+
+\begin_layout Description
 8.2.4 
 
-\family sans 
+\family sans
 Format
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 8.2.4.1 
 
-\family sans 
+\family sans
 Format\SpecialChar \menuseparator
 Zeichen\SpecialChar \ldots{}
 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 8.2.5 
 View
-\layout Description
+\end_layout
+
+\begin_layout Description
 8.2.6 
 Navigate
-\layout Description
+\end_layout
+
+\begin_layout Description
 8.2.7 
 Help
-\layout Description
+\end_layout
+
+\begin_layout Description
 8.2.8 
 Absatzformat
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 8.3 
 Tastatur
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 8.3.1 
 Specifische Definitionen aus 
-\family typewriter 
+\family typewriter
 emacs.bind
-\layout Description
+\end_layout
+
+\begin_layout Description
 8.3.2 
 Specifische Definitionen aus 
-\family typewriter 
+\family typewriter
 cua.bind
-\layout Description
+\end_layout
+
+\begin_layout Description
 8.3.3 
 Spezifische Definitionen aus 
-\family typewriter 
+\family typewriter
 sciword.bind
-\layout Description
+\end_layout
+
+\begin_layout Description
 8.3.4 
 Standard-Definitionen im Mathematikmodus
-\layout Description
+\end_layout
+
+\begin_layout Description
 8.3.5 
 Sonstige Tastaturkürzel
+\end_layout
 \end_deeper
 \end_deeper
 
-\the_end
+\end_layout
+
+\end_body
+\end_document

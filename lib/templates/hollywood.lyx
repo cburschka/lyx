@@ -1,5 +1,7 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass hollywood
 \language english
 \inputencoding default
@@ -7,12 +9,11 @@
 \graphics default
 \paperfontsize 12
 \spacing single
-\papersize letterpaper
-\paperpackage a4
-\use_geometry 1
+\papersize default
+\use_geometry true
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \leftmargin 1.5in
 \topmargin 48bp
@@ -30,41 +31,85 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle fancy
+\tracking_changes false
+\output_changes true
+\end_header
 
-\layout Title
+\begin_body
+
+\begin_layout Title
 
 <your title>
-\layout Author
-\added_space_bottom vfill 
+\end_layout
+
+\begin_layout Author
+
 <your name>
-\layout Right Address
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+
+\begin_layout Right Address
 
 <your address>
-\newline 
+\newline
 <continued>
-\newline 
+\newline
 <last line>
-\layout Narrative
-\pagebreak_top 
+\end_layout
+
+
+\begin_layout Standard
+
+
+\newpage
+
+\end_layout
+
+\begin_layout Narrative
+
 Delete this text.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Don't date your script
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Use a three hole punch.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Bind it in plain vanilla with no text on the binding.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Use two 1.5in brass brads and hammer them down.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Remember---nothing goes in a script that you cannot see or hear!! 1 page
  per minute.
  120 pages max.
-\layout Narrative
+\end_layout
+
+\begin_layout Narrative
 
 See examples/script_form.lyx for details.
-\the_end
+\end_layout
+
+\end_body
+\end_document

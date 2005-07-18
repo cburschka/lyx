@@ -1,5 +1,7 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass article
 \language dutch
 \inputencoding default
@@ -7,12 +9,11 @@
 \graphics dvips
 \paperfontsize 12
 \spacing single
-\papersize a4paper
-\paperpackage a4
-\use_geometry 0
+\papersize default
+\use_geometry false
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -23,35 +24,54 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle plain
+\tracking_changes false
+\output_changes true
+\end_header
 
-\layout Title
+\begin_body
+
+\begin_layout Title
 
 DIT IS DE TITEL VAN HET DOCUMENT
-\layout Author
+\end_layout
+
+\begin_layout Author
 
 door Fee LyX
-\layout Date
+\end_layout
+
+\begin_layout Date
 
 June 12, 1972
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset LatexCommand \tableofcontents{}
 
-\end_inset 
+\end_inset
 
 
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Uitgangspunten
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Het uitgangspunt van LyX is dat je je niet bezig houdt met de vormgeving,
  maar met de inhoud van je tekst.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Hoe LyX het fikst
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LyX gebruikt LaTeX, een tekstverwerkingssysteem ontworpen door Leslie Lamport
  in 1985.
@@ -61,10 +81,12 @@ LyX gebruikt LaTeX, een tekstverwerkingssysteem ontworpen door Leslie Lamport
  Leslie Lamport zei eens (zie referentie 
 \begin_inset LatexCommand \cite{lamport}
 
-\end_inset 
+\end_inset
 
 ):
-\layout Quote
+\end_layout
+
+\begin_layout Quote
 
 De functie van typografisch ontwerp is om de lezer te helpen de ideeën van
  de schrijver te begrijpen.
@@ -77,34 +99,38 @@ De functie van typografisch ontwerp is om de lezer te helpen de ideeën van
  structuur moeten aangeven door bepaalde commando's te typen....
  Als je je document aan het schrijven bent, zou je je bezig moeten houden
  met de logische structuur, niet met het zichtbare uiterlijk.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Waarom LyX beter is
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset LatexCommand \label{sec:lyxbeter}
 
-\end_inset 
+\end_inset
 
 LyX kan voor meer mensen handig zijn dan LaTeX.
  Het is aanzienlijk eenvoudiger te leren, omdat je LaTeX niet hoeft te leren
  (wat eigenlijk een programmeertaal is).
  LyX is in feite net als andere 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 Wat je ziet is wat je krijgt
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  tekstverwerkers, behalve dat LyX 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 Wat je ziet is wat je bedoelt
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  is.
  Op deze manier combineert het het gemak van tekstverwerkers met de kracht
@@ -112,159 +138,206 @@ Wat je ziet is wat je bedoelt
  Dit is Goed.
  Ook is het bestandsformaat niet afhankelijk van het platform.
  En als beste: het is VRIJ!
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 De mogelijkheden van LyX
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LyX heeft vele mogelijkheden die het schrijven van documenten vergemakkelijken.
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Waarom zou je het anders willen gebruiken?
-\end_inset 
+\end_layout
+
+\end_inset
 
  Ik vind het 
-\emph on 
+\emph on
 geweldig
-\emph default 
+\emph default
  om er over te vertellen.
  Hier volgt een lijst van slechts een deel van deze mogelijkhedeb.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 LyX regelt marges, en het nummeren van voetnoten voor je
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 LyX maakt het gemakkelijk om wiskundige formules te maken en te veranderen
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Voor een meer filosofische verhandeling waarom LyX beter is dan andere tekstverw
 erkers, zie Sectie 
 \begin_inset LatexCommand \ref{sec:lyxbeter}
 
-\end_inset 
+\end_inset
 
 , welke te vinden is op pagina 
 \begin_inset LatexCommand \pageref{sec:lyxbeter}
 
-\end_inset 
+\end_inset
 
 .
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Slappe pogingen om andere dingen in LyX te gebruiken
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Ik heb laatst een programma geschreven.
  Het zag er uit als volgt.
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 5  REMARK MIJN GEWELDIGE PROGRAMMA
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 10 PRINT 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 IK BEN GEWELDIG!
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 20 GOTO 10
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Na al dit wetenschappelijk denkwerk, voelde ik mij meer artistiek, dus schreef
  ik deze haiku
-\layout Verse
+\end_layout
+
+\begin_layout Verse
 
 LyX is echt geweldig 
-\newline 
+\newline
 Tekstzettende tekstverwerker
-\newline 
+\newline
 Hij bespaart zo veel tijd
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Wiskunde dingen
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Mijn favoriete vergelijking is de oplossing van een kwadratische vergelijking.
  Als 
 \begin_inset Formula $ax^{2}+bx+c=0$
-\end_inset 
+\end_inset
 
  (verg.1), dan is 
 \begin_inset Formula $x=\frac{-b\pm \sqrt{b^{2}-4ac}}{2a}$
-\end_inset 
+\end_inset
 
  (verg.
  2).
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Een andere favoriete vergelijking is de grondslag van calculus: 
 \begin_inset Formula $f'(x)\equiv \lim _{\Delta x\rightarrow 0}\frac{f(x+\Delta x)-f(x)}{\Delta x}$
-\end_inset 
+\end_inset
 
  (verg.
  3).
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Opmerkingen
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Een paar opmerkingen over het verLyXen van dit bestand:
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Ik kon de lijnen die met streepjes gemaakt waren verwijderen.
  Deze waren daar enkel om de titel en de referenties van de rest van het
  document te scheiden.
  LyX (LaTeX) begrijpt genoeg om deze onderdelen van het document met witruimte
  te scheiden.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Ik heb niet de moeite genomen de wiskudige vergelijkingen in display-modus
  te zetten.
  Ik gebruikte ook niet de mogelijkheid van LyX om de vergelijkingen automatisch
  te nummeren, omdat dit niet in de 
-\emph on 
+\emph on
 Turorial
-\emph default 
+\emph default
  wordt beschreven.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Ik hoefde het woord 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 Referenties
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  niet te typen.
  LyX schrijft dit automatisch (of het woord 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 Bibliografie
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 , afhankelijk van de tekstklasse) wanneer je 
-\family sans 
+\family sans
 Bibliography
-\family default 
+\family default
  stijl kiest.
-\layout Bibliography
+\end_layout
+
+\begin_layout Bibliography
 \bibitem {lamport}
 
 Lamport, Leslie.
-\emph on 
+\emph on
 LaTeX: A Document Preparation System.
 
-\emph default 
+\emph default
  Addison-Wesley, Reading, Massachusetts, second edition, 1994.
-\the_end
+\end_layout
+
+\end_body
+\end_document

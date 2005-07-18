@@ -1,5 +1,7 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass article
 \language spanish
 \inputencoding latin1
@@ -7,12 +9,11 @@
 \graphics dvips
 \paperfontsize 12
 \spacing single
-\papersize a4paper
-\paperpackage a4
-\use_geometry 0
+\papersize default
+\use_geometry false
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -23,34 +24,53 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle plain
+\tracking_changes false
+\output_changes true
+\end_header
 
-\layout Title
+\begin_body
+
+\begin_layout Title
 
 HAU IDAZKIAREN IZENBURUA DA
-\layout Author
+\end_layout
+
+\begin_layout Author
 
 egilea: Norbait
-\layout Date
+\end_layout
+
+\begin_layout Date
 
 1973ko urriak 23
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset LatexCommand \tableofcontents{}
 
-\end_inset 
+\end_inset
 
 
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Oinarrizko Izakera
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LyX-en oinarrizko izakeran idatzi beharrekoan datza, eta ez itxuran.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 LyX-ek nola lantzen duen
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LyX-ek LaTeX erabiltzen du, Leslie Lamport-ek 1985-an diseinatu zuen idazki
  prestaketa sisteman.
@@ -60,10 +80,12 @@ LyX-ek LaTeX erabiltzen du, Leslie Lamport-ek 1985-an diseinatu zuen idazki
  Leslie Lamport-ek esan zuen (
 \begin_inset LatexCommand \cite{Lamport}
 
-\end_inset 
+\end_inset
 
  erreferentzia ikusi) :
-\layout Quote
+\end_layout
+
+\begin_layout Quote
 
 Tipografi diseinuaren betebeharra irakurtzaileak egilearen burutazioak ulerttu
  araztean datza.
@@ -75,34 +97,38 @@ Tipografi diseinuaren betebeharra irakurtzaileak egilearen burutazioak ulerttu
  idatziz nahi duzun logika egitura esan behar diozu [...] Idazki bat idazten
  duzun bitartean, bere logikaren egituran arduratu beharra daukazu, ez bere
  itxuran.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 LyX zergatik da hobeagoa
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset LatexCommand \label{atal:lyxhobeagoa}
 
-\end_inset 
+\end_inset
 
 LyX erabiltzaileentzat LaTeX baino erabilgarriagoa izan daiteke.
  Askoz ere erabil errazagokoa da, LaTeX zer den ikasi beharrik ez bait daukazu
  (azken finean ia programaketa hizkuntza denez).
  LyX ia beste 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 ikusten duzuna lortzen duzu
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 -n idazki prozesatzaileen bezalakoa da, LyX ordea 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 ikusten duzuna esan nahi duzu
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  da.
  Era honetan, idazki prozesatzaileen erreztasuna LaTeX-en indarrarekin batzen
@@ -111,111 +137,148 @@ ikusten duzuna esan nahi duzu
  Horretaz gain, fitxategiaren egitura erabiltzen duzun ordenagailu/sistema-tik
  aske dago.
  Eta onena zera da, ASKEA eta DOHAINEKOA dela.
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 LyX-en Ezaugarriak
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LyX-ek idazkiak idazteko erreztasun asko eskeintzen dituen ezugarri ugari
  ditu.
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 bestela, zertarako nahiko zenuke erabiltzea?
-\end_inset 
+\end_layout
+
+\end_inset
 
  Beraietaz mintzatzeak 
-\emph on 
+\emph on
 asko unkitzen
-\emph default 
+\emph default
  nau.
  Hemen, beraietariko batzuen zerrenda bat daukazu.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Margenak eta Orri Oineko Oharren zenbaketetaz LyX bera arduratzen da
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 LyX-ek matematika ekuazioak idaztean izugarrizko erreztasuna eskeintzen
  du.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LyX beste testu prozesatzaileen baino hobeago izatearen zergatia eztabaidatzeko,
  
 \begin_inset LatexCommand \ref{atal:lyxhobeagoa}
 
-\end_inset 
+\end_inset
 
  atala ikusi, 
 \begin_inset LatexCommand \pageref{atal:lyxhobeagoa}
 
-\end_inset 
+\end_inset
 
  orrialdean aurkitzen da.
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 LyX-eko gauz gehiago erabiltzean saiakera hutsak
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Lehengo batean programa bat idatzi nuen.
  Ondoko hau zen:
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 5 REMARK NERE PROGRAMA IKUSGARRIA
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 10 PRINT 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 IKUSGARRIA NAIZ
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 20 GOTO 10 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Zientzilan ikaragarri haundi honen ondoren, artista bat nintzela sentitzen
  hasi nintzen, eta ondorengo hori idatzi nuen:
-\layout Verse
+\end_layout
+
+\begin_layout Verse
 
 LyX idazki prozezatzaile
-\newline 
+\newline
 Zoragarri bat da
-\newline 
+\newline
 Hainbeste denbora aurrezten du
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Matematikak
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Nere ekuazio gogokoena bigarren mailako ekuazio baten emaitza da.
  Baldin eta 
 \begin_inset Formula $ax^{2}+bx+c=0$
-\end_inset 
+\end_inset
 
  (1.ek), orduan 
 \begin_inset Formula $x=\frac{-b\pm \sqrt{b^{2}-4ac}}{2a}$
-\end_inset 
+\end_inset
 
  (2.
  ek) .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Beste ekuazio polita kalkulu oinarria da: 
 \begin_inset Formula $f'(x)\equiv \lim _{\Delta x\rightarrow 0}\frac{f(x+\Delta x)-f(x)}{\Delta x}$
-\end_inset 
+\end_inset
 
  (3.
  ek).
-\layout Bibliography
+\end_layout
+
+\begin_layout Bibliography
 \bibitem {Lamport}
 
 Lamport, Leslie.
  LaTeX: A Document Preparation System.
  Addison-Wesley, Reading, Massachusetts, bigarren argitaraketa, 1994.
-\the_end
+\end_layout
+
+\end_body
+\end_document

@@ -1,18 +1,19 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass article
 \language swedish
 \inputencoding latin1
 \fontscheme default
 \graphics default
 \paperfontsize 12
-\spacing single 
-\papersize a4paper
-\paperpackage a4
-\use_geometry 0
+\spacing single
+\papersize default
+\use_geometry false
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -23,33 +24,46 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle plain
+\tracking_changes false
+\output_changes true
+\end_header
 
-\layout Title
+\begin_body
+
+\begin_layout Title
 
 Introduktion till LyX
-\newline 
+\newline
 eller
-\newline 
+\newline
 Hur använda dessa manualer!
-\layout Author
+\end_layout
+
+\begin_layout Author
 
 av John Weiss och dokumentationsgruppen för LyX
-\newline 
+\newline
 
-\size normal 
-\emph on 
+\size normal
+\emph on
 (Översatt från engelskan av 
-\noun on 
+\noun on
 Joacim Persson
-\noun default 
+\noun default
 )
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Att navigera runt i dokumentationen
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Välkommen till LyX!
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 För att det skall bli lättare att hitta svar på dina frågor och beskriva
  alla funktioner i LyX har dokumentationen delats upp i flera filer.
@@ -57,51 +71,85 @@ För att det skall bli lättare att hitta svar på dina frågor och beskriva
  Innan du börjar plöja runt i de andra filerna bör du grundligt läsa igenom
  denna eftersom den innehåller en hel del information och kommentarer som
  kan spara dig lite tid.
-\layout Standard
-\added_space_top bigskip \added_space_bottom medskip \align center 
+\end_layout
+
+
+\begin_layout Standard
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
 VARNING!!
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+
+\begin_layout Standard
 
 Dokumentationen är till stor del ofullständig i nuläget! Som programmet,
  är manualerna fortfarande i beta-stadiet.
  Allt blir färdigt till version 1.0
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Den engelska då förstås.
  (ö.anm)
-\end_inset 
+\end_layout
+
+\end_inset
 
 , på hedersord!
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Gör oss alla en tjänst -- om något i dokumentationen verkar förvirrande,
  är oklart, eller fel, tveka inte att tala om det för oss! Du kan nå LyX-folket
  på utvecklarnas epostlista 
-\family typewriter 
+\family typewriter
 lyx-docs@lists.lyx.org
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 På listan talas engelska.
  Felaktigheter i de engelska orginalversionerna slår troligen igenom i den
  svenska.
  Om det bara är fel i den svenska versionen, eller om din engelska är knagglig,
  kontakta översättaren av respektive dokument.
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
 
-\family default 
+\family default
  
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Formen på manualerna
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Några av er har kanske skrivit ut manualen.
  Andra kanske läser den på skärmen med LyX.
@@ -113,747 +161,897 @@ Några av er har kanske skrivit ut manualen.
  Det finns ett fönster för innehållsförteckningen.
  Du öppnar det genom att vänsterklicka på den gråa rutan märkt 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 Innehåll
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
  i dokumentfönstret, eller genom att välja 
-\family sans 
+\family sans
 Innehållsförteckning
-\family default 
+\family default
  från menyn 
-\family sans 
+\family sans
 Redigera
-\family default 
+\family default
 .
  För att titta på en fotnot, som ser ut så här
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Hej på dej du!
-\end_inset 
+\end_layout
+
+\end_inset
 
 , klicka på den med vänsterknappen på musen.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Nu när vi klarat ut några av skillnaderna mellan den tryckta versionen och
  den på skärmen kan vi gå över till formatet på detta dokument.
  Emellanåt finner du text olika teckenstilar:
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\emph on 
+\emph on
 Betonad stil
-\emph default 
+\emph default
  används för betoning av ord och fraser i allmänhet, boktitlar, namn på
  avsnitt i andra manualer och notiser från författarna.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\family typewriter 
+\family typewriter
 Skrivmaskinsstil
-\family default 
+\family default
  används för programnamn och filnamn, LaTeX-kod, LyX-kod och funktioner.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\family sans 
+\family sans
 Linjärer
-\family default 
+\family default
  används för menyval, knappar och namn på dialogrutor, samt för namnen på
  tangenter på tangentbordet.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\noun on 
+\noun on
 Namnstil
-\noun default 
+\noun default
  används för personnamn.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 För tangenter och deras bindningar till funktioner kommer du troligtvis
  att hänvisas till 
-\emph on 
+\emph on
 Tangentbindningar
-\emph default 
+\emph default
  i 
-\emph on 
+\emph on
 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 Referensmanualen
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
 
-\emph default 
+\emph default
 .
  När vi refererar till tangenter så använder vi följande skrivsätt för prefix:
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 
-\family sans 
+\family sans
 C-
-\family default 
+\family default
 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
  indikerar 
-\family sans 
+\family sans
 Control.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 
-\family sans 
+\family sans
 S-
-\family default 
+\family default
 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
  indikerar 
-\family sans 
+\family sans
 Shift
-\family default 
+\family default
 .
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 
-\family sans 
+\family sans
 M-
-\family default 
+\family default
 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
  indikerar 
-\family sans 
+\family sans
 Meta-
-\family default 
+\family default
  tangenten, vilken på många tangentbord är samma som 
-\family sans 
+\family sans
 Alt
-\family default 
+\family default
 .
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 
-\family sans 
+\family sans
 F1
-\family default 
+\family default
 
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
  \SpecialChar \ldots{}
  
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 
-\family sans 
+\family sans
 F12
-\family default 
+\family default
 
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
  är funktionstangenterna
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 
-\family sans 
+\family sans
 Esc
-\family default 
+\family default
 
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
  är 
-\family sans 
+\family sans
 Escape.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 
-\family sans 
+\family sans
 Vänster
-\family default 
+\family default
 
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
  
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 
-\family sans 
+\family sans
 Höger
-\family default 
+\family default
 
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
  
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 
-\family sans 
+\family sans
 Upp
-\family default 
+\family default
 
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
  
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 
-\family sans 
+\family sans
 Ned
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 : piltangenterna.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 
-\family sans 
+\family sans
 Insert
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 
-\family sans 
+\family sans
 Delete
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 
-\family sans 
+\family sans
 Home
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 
-\family sans 
+\family sans
 End
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 
-\family sans 
+\family sans
 PageUp
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 
-\family sans 
+\family sans
 PageDown
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 : Detta är de sex tangenterna som finns på många PC-tangentbord.
  
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 
-\family sans 
+\family sans
 PageUp
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  och 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 
-\family sans 
+\family sans
 PageDown
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  heter även 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 
-\family sans 
+\family sans
 Prior
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  och 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 
-\family sans 
+\family sans
 Next
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  på vissa tangentbord.
  
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\family sans 
+\family sans
 Retur
-\family default 
+\family default
  och 
-\family sans 
+\family sans
 Enter
-\family default 
+\family default
  avser båda samma tangent.
  Vissa tangentbord betecknar 
-\family sans 
+\family sans
 Retur
-\family default 
+\family default
  med 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 Return
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 , andra med 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 Enter
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 , och vissa har en av varje.
  LyX behandlar alla som samma tangent, så vi kommer att använda 
-\family sans 
+\family sans
 Retur
-\family default 
+\family default
  och 
-\family sans 
+\family sans
 Enter
-\family default 
+\family default
  om vartannat.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Du lär också se något i stil med 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 [Se 
-\emph on 
+\emph on
 Referensmanualen
-\emph default 
+\emph default
 ]
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  ibland.
  Vi har listat de förvalda tangentbindningarna för funktionerna i 
-\emph on 
+\emph on
 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 Referensmanualen
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 
-\emph default 
+\emph default
 , så titta där med.
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Manualerna
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Följande lista beskriver innehållet i var och en av filerna i dokumentationen:
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 
-\emph on 
+\emph on
 Introduktion 
-\emph default 
+\emph default
 Denna fil.
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 
-\emph on 
+\emph on
 Nybörjarkurs 
-\emph default 
+\emph default
 Om du är nybörjare med LyX, och aldrig har använt LaTeX förut, eller aldrig
  ens hört talas om LaTeX så bör du börja här.
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 
-\emph on 
+\emph on
 Handboken 
-\emph default 
+\emph default
 Huvuddokumentationen.
  Vi försöker täcka 
-\emph on 
+\emph on
 det mesta 
-\emph default 
+\emph default
 av grundläggande funktioner och tillgängliga finesser i LyX här.
  Huvudmanualen förtsätter att du har åtminstone någon kunskap om LaTeX,
  eller att du läst 
-\emph on 
+\emph on
 Nybörjarkursen.
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 
-\emph on 
-Avancerad\SpecialChar ~
+\emph on
+Avancerad\InsetSpace ~
 redigering 
-\emph default 
+\emph default
 Förlängning av 
-\emph on 
+\emph on
 Handboken 
-\emph default 
+\emph default
 som behandlar fler dokumenttyper och särskild redigering, bland annat några
  knep med LaTeX.
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 
-\emph on 
+\emph on
 Anpassning 
-\emph default 
+\emph default
 En beskrivning till hur man skräddarsyr tangentbindningar, verktygspanelen
  och andra saker i LyX.
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 
-\emph on 
+\emph on
 Referensmanualen 
-\emph default 
+\emph default
 Denna innehåller en utförlig, detaljerad beskrivning av finesserna i LyX.
  Dock utan de hjälpsamma tipsen och beskrivningarna som finns i 
-\emph on 
-Handboken.Särskilda\SpecialChar ~
+\emph on
+Handboken.Särskilda\InsetSpace ~
 verktyg 
-\emph default 
+\emph default
 En fil som täcker alla specialverktyg och avancerade företeelser, bland
  annat några knep som används av mästarna på LaTeX.
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 
-\emph on 
-Kända\SpecialChar ~
+\emph on
+Kända\InsetSpace ~
 fel 
-\emph default 
+\emph default
 Denna fil innehåller en lista av fel i programmet LyX, och ger instruktioner
  om vad du skall göra om du hittar ett.
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 
-\emph on 
+\emph on
 LaTeX-konfiguration 
-\emph default 
+\emph default
 LyX undersöker ditt system vid installationen.
  Denna fil innehåller information om vad LyX har tagit reda på om din LaTeX-inst
 allation.
  Titta i den och se om du saknar något som du skulle vilja ha.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Dessa filer kommer att hänvisa till varandra när så är nödvändigt.
  Till exempel innehåller 
-\emph on 
+\emph on
 Handboken
-\emph default 
+\emph default
  inte 
-\emph on 
+\emph on
 all 
-\emph default 
+\emph default
 information om installation och anpassning utan hänvisar läsaren till 
-\emph on 
+\emph on
 Anpassning
-\emph default 
+\emph default
  för mer information.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Vi vill åter igen betona en viktig sak:
-\layout Standard
-\added_space_top 0.51cm \added_space_bottom 0.51cm \align center 
+\end_layout
+
+
+\begin_layout Standard
+
+
+\begin_inset VSpace 0.51cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
 Om du aldrig använt eller ens hört talas om LaTeX, läs 
-\emph on 
+\emph on
 Nybörjarkursen
-\emph default 
+\emph default
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset VSpace 0.51cm
+\end_inset
+
+
+\end_layout
+
+
+\begin_layout Standard
 
 LyX kan annars kanske förfalla konstig och oanvändbar för dig.
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Att bidra till dokumentationsprojektet
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Rapportera fel
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Det är enkelt.
  Skicka bara ett meddelande antingen till utvecklarnas epostlista eller
  till användarnas epostlista.
  Om du sätter titeln till 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 Doc Error
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  eller något liknande blir det lättare för oss att se det.
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Nu finns det förstås ännu ingen särskild epostlista för den svenska versionen
  
-\emph on 
+\emph on
 (ö.anm.)
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
-\added_space_top 1.06cm \added_space_bottom 1.06cm \align center 
+\end_layout
 
-\shape italic 
+
+\begin_layout Standard
+
+
+\begin_inset VSpace 1.06cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\shape italic
 Ändra aldrig i någon av manualerna utan att först tala med författaren i
  fråga! 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset VSpace 1.06cm
+\end_inset
+
+
+\end_layout
+
+
+\begin_layout Standard
 
 Sådana ändringar hamnar ändå inte i dokumentationen, eftersom dokumentationsgrup
 pen har orginalen i CVS-trädet.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Att sätta igång
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Dokumentationsprojektet kan, som allt annat i LyX-projektet, alltid behöva
  hjälp! Om du är sugen på att bidra till projektet så bör du 
-\emph on 
+\emph on
 först
-\emph default 
+\emph default
  göra följande:
-\layout Enumerate
+\end_layout
+
+\begin_layout Enumerate
 
 Skaffa den senaste versionen av källkoden till LyX.
  I filträdet hittar du en katalog som heter 
-\family typewriter 
+\family typewriter
 development
-\family default 
+\family default
 .
  I den katalogen ligger en fil som heter 
-\family typewriter 
+\family typewriter
 DocStyle.lyx
-\family default 
+\family default
 .
  Läs den; den fastslår stilen på dokumentationen.
-\layout Enumerate
+\end_layout
+
+\begin_layout Enumerate
 
 Läs 
-\family typewriter 
+\family typewriter
 DocStyle.lyx
-\family default 
+\family default
  igen.
-\layout Enumerate
+\end_layout
+
+\begin_layout Enumerate
 
 Läs sedan 
-\emph on 
+\emph on
 Handboken
-\emph default 
+\emph default
 .
  Alltihop.
  
-\begin_deeper 
-\layout Standard
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
 
 Vitsen med det är att ge dig idéer.
  
-\emph on 
+\emph on
 Handboken
-\emph default 
+\emph default
  är den mest kompletta av alla handböckerna.
  Där bör du få en uppfattning om hur vi vill att manualerna skall skrivas
  och se ut.
-\end_deeper 
-\layout Enumerate
+\end_layout
+\end_deeper
+\begin_layout Enumerate
 
 Kontakta slutligen utvecklingsgruppen på: 
-\begin_deeper 
-\layout Standard
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
 
 
-\family typewriter 
+\family typewriter
 lyx@via.ecp.fr
-\family default 
+\family default
  
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Vi vill försäkra oss om att du förstår stilen som beskrivs i 
-\family typewriter 
+\family typewriter
 DocStyle.lyx
-\family default 
-\emph on 
+\family default
+\emph on
  innan
-\emph default 
+\emph default
  du börjar skriva.
  Annars kommer vi att be dig skriva om dina bidrag.
-\end_deeper 
-\layout Standard
+\end_layout
+\end_deeper
+\begin_layout Standard
 
 
-\emph on 
+\emph on
 Fundera
-\emph default 
+\emph default
  inte ens på att börja skriva innan vi talats vid via epost.
  Du kan följa pågående arbete med dokumentationen på dokumentationsgruppens
  hemsida.
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Svenska
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\emph on 
+\emph on
 (Tillägg till den svenska översättningen)
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Svenska typografiska fackord
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 I översättningarna av både denna 
-\emph on 
+\emph on
 Introduktion, Handboken, 
-\emph default 
+\emph default
 och lokaliseringen
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Description
+\begin_layout Description
 
 Lokalisering Översättning av meddelanden i ett program.
-\end_inset 
+\end_layout
+
+\end_inset
 
  av LyX har jag försökt använda mig av vedertagna svenska typografiska fackterme
 r.
  Det kan tänkas att dessa inte alltid är bekanta för en lekman, så här följer
  en kort ordlista: 
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 Antikva kallas i engelska texter för 
-\emph on 
+\emph on
 Roman
-\emph default 
+\emph default
 .
  Det är alltså vanlig rak stil med seriffer som denna.
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 Bomber dekorationer som används för att markera element i en uppställning.
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 Brödtext den teckenstil som används för löpande text i ett visst dokument.
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 Kapitäler 
-\shape smallcaps 
+\shape smallcaps
 Snitt som ser ut så här.
  
-\shape default 
+\shape default
 Det är inte riktigt samma sak som 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 små versaler
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
 ; ett kapitälsnitt har gemena med samma form som versaler, men de är inte
  bara rena förminskningar av versalerna.
  Gemenerna skall ha något mer svärta än om de vore förminskade versaler.
  Förr i tiden sattes de med en lätt spärr, för att förbättra ordbilden.
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 Kägel höjd på typen inklusive kött.
  Här använt som synonym för radavstånd.
@@ -861,43 +1059,53 @@ Kägel höjd på typen inklusive kött.
  texten inom dokumentet bättre (efter en uppsättning komplicerade regler
  som kanske bara Donald Knuth själv förstår), så 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 kägel
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
  är inte ett exakt mått i LyX/LaTeX, snarare en egenskap för stilen på dokumente
 t.
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 Kött 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 luft
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
  runt själva tecknen, vertikalt och horisontellt.
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 Linjärer 
-\family sans 
+\family sans
 Teckensnitt utan seriffer, som denna.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Jag rekommenderar att läsaren dessutom läser någon svensk bok i ämnet.
  Nu är jag programmerare och inte typograf, så det kan tänkas att jag misstagit
  mig på betydelserna här och där.
  Har du förslag till förbättringar av översättningarna kan du kontakta mig
  på 
-\family typewriter 
+\family typewriter
 sp2joap1@ida.his.se
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Svensk typografi
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Typografiska traditioner och konventioner skiljer sig från land till land.
  Eftersom traditionerna skiljer sig åt, och läsarna kan förväntas vara tränade
@@ -907,195 +1115,212 @@ Typografiska traditioner och konventioner skiljer sig från land till land.
  I de engelska manualerna för LyX och LaTeX är det genomgående amerikansk
  typografi som används i exempel, och det bör man vara medveten om.
  Det finns åtskilliga böcker om svensk typografi; titta i hyllorna 
-\family sans 
+\family sans
 Aef
-\family default 
+\family default
  och 
-\family sans 
+\family sans
 Poa
-\family default 
+\family default
  i närmaste bibliotek, eller prata med din bokhandlare.
  Var dock försiktig med hur mycket du läser, typografi kan vara svårt vanebildan
 de! Jag skall här bara kort nämna några särdrag för svensk typografi gentemot
  engelsk:
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Citat skrivs 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 citat
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
  (dubbelapostrofer om båda sidor, vända åt samma håll).
  I bland, och särskilt i äldre texter, används »måsögon», vända åt samma
  håll.
  Bara det första stöds i menyn 
-\family sans 
+\family sans
 Stil->Citattecken
-\family default 
+\family default
  för närvarande.
  Citat inom citat som: 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 Kalle sa 'hej' till oss.
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
 , skrivs med enkla apostrofer, åt samma håll.
  Men det finns även andra varianter, som 
 \begin_inset Quotes ald
-\end_inset 
+\end_inset
 
 citat
 \begin_inset Quotes ard
-\end_inset 
+\end_inset
 
  som ibland används av svenskar.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 --- (helfyrkants talstreck) används inte i svensk typografi.
  Använd -- (
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 pratminus
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
 ) i stället.
  Observera att matematikläget i LyX har särskilt minustecken.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Vi har mindre avstånd mellan meningar än engelsktalande.
  (I handböckerna nämns ibland situationer där användaren försöker 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 lägga två mellanslag före stor bokstav
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
 , vilket kanske låter besynnerligt för svenskar.) Detta sköter Babel-paketet
  till LaTeX om automatiskt, om du sätter språket till 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 swedish
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
  i 
-\family sans 
+\family sans
 Stil->Dokument
-\family default 
+\family default
 .
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 I utombrittisk europeisk typografi används 
-\emph on 
+\emph on
 didot
-\emph default 
+\emph default
 -systemet som måttsystem.
  Amerikaner och britter använder sig av 
-\emph on 
+\emph on
 pica
-\emph default 
+\emph default
 .
  I didotsystemet är en 
-\emph on 
+\emph on
 punkt 
-\emph default 
-0,376\SpecialChar ~
+\emph default
+0,376\InsetSpace ~
 mm, och i picasystemet är en 
-\emph on 
+\emph on
 point
-\emph default 
- 0,352\SpecialChar ~
+\emph default
+ 0,352\InsetSpace ~
 mm.
  TeX hanterar båda, men LaTeX använder typgrader mätta i pica om inget annat
  anges
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 \SpecialChar \ldots{}
 tror jag
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
  Nu spelar det ingen större roll eftersom TeX eliminerar sätteriet på tryckeriet.
  Den 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 storlek
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
  som sätts i 
-\family sans 
+\family sans
 Stil->Tecken
-\family default 
+\family default
  är 
-\emph on 
+\emph on
 relativ
-\emph default 
+\emph default
 ; det är inte fasta teckengrader utan en uppsättning grader noga balanserade
  mot varandra, vilka kan variera mellan olika dokumentklasser i LaTeX.
  Denna abstraktion är unik för LaTeX och därför används inte de konventionella
  teckengradsnamnen i LyX (
-\emph on 
+\emph on
 petit, korpus, cicero, mittel 
-\emph default 
+\emph default
 osv.).
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Vi använder kommatecken som decimaltecken, och punkt för att markera tusental:
  
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 3,141.593
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
  (engelsk typografi är tvärtom: 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 3.141,593
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
 ).
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Nu är det förstås din ensak hur du skriver dina dokument, och det är alltid
  
-\emph on 
+\emph on
 läsbarheten
-\emph default 
+\emph default
  
-\emph on 
+\emph on
 som
-\emph default 
+\emph default
  
-\emph on 
+\emph on
 är
-\emph default 
+\emph default
  
-\emph on 
+\emph on
 viktigast.
  
-\emph default 
+\emph default
 Det kan kanske vara motiverat att använda engelsk typografi för texter som
  till exempel skall läsas av svenska datavetenskapstudenter, eftersom de
  högst troligen plöjer igenom mängder av engelsk kurslitteratur, och är
  mest vana vid den stilen, men använd gott omdöme.
  Det kan nämnas att det har gjorts studier på senare år rörande hur vi läser.
  Det finns litteratur i det ämnet med.
-\the_end
+\end_layout
+
+\end_body
+\end_document

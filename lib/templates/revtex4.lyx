@@ -1,206 +1,266 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass revtex4
 \options aps,preprint
 \language english
+\tracking_changes false
+\output_changes true
+\end_header
 
-\layout Preprint
+\begin_body
+
+\begin_layout Preprint
 
 This line only printed with preprint option
-\layout Title
+\end_layout
+
+\begin_layout Title
 
 Insert your Title Here
-\layout Author
+\end_layout
+
+\begin_layout Author
 
 Author1
-\layout Author Email
+\end_layout
+
+\begin_layout Author Email
 
 foo@bar.edu
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Make sure to put any Email, URL, and Thanks layouts IN
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 BETWEEN the Author layout and the corresponding Address
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 layout for that author.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Author URL
+\end_layout
+
+\begin_layout Author URL
 
 http://bar.com/~foo
-\layout Thanks
+\end_layout
+
+\begin_layout Thanks
 
 Thanks to you, Mrs.
  Robinson!
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Use Thanks layout instead of inserting footnotes.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Footnotes in the title will do weird things in REVTeX 4!
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Affiliation
+\end_layout
+
+\begin_layout Affiliation
 
 Address for author 1 
-\layout Author
+\end_layout
+
+\begin_layout Author
 
 Author2
-\layout Author Email
+\end_layout
+
+\begin_layout Author Email
 
 bar@foo.edu
-\layout Affiliation
+\end_layout
+
+\begin_layout Affiliation
 
 Address for author 2
-\layout Abstract
+\end_layout
+
+\begin_layout Abstract
 
 Insert your abstract here.
  It should be interesting.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 You don't have to write 
-\backslash 
+\backslash
 maketitle..
  LyX does this by itself.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 introduction
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Any of the style options, like 
-\family typewriter 
+\family typewriter
 prl
-\family default 
+\family default
  or 
-\family typewriter 
+\family typewriter
 preprint
-\family default 
+\family default
  should go in the 
-\family sans 
-Extra\SpecialChar ~
+\family sans
+Extra\InsetSpace ~
 Options
-\family default 
+\family default
  field in the 
-\family sans 
-Document\SpecialChar ~
+\family sans
+Document\InsetSpace ~
 Layout
-\family default 
+\family default
  popup (accessed from the 
-\family sans 
+\family sans
 Layout
-\family default 
+\family default
  menu).
  See the REVTeX 4 manual for style options, special macros, and the like.
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 methods
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Special REVTeX macros must be typed in TeX mode, so typing 
-\family typewriter 
+\family typewriter
 
-\backslash 
+\backslash
 openone
-\family default 
+\family default
  in TeX mode yields 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 openone{}
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
  REVTeX macros can also be used freely in the math editor, so you can type
  
 \begin_inset Formula $\sqrt{\overstar{a}}>b$
-\end_inset 
+\end_inset
 
 , for example, which uses the REVTeX 
-\family typewriter 
+\family typewriter
 
-\backslash 
+\backslash
 overstar
-\family default 
+\family default
  command.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 You can do a bibliography by hand, as shown below, but it may be easier
  to erase that and use BibTeX---in fact, APS encourages authors to use BibTeX.
  If you do use BibTeX, use the REVTeX bibliography style file, 
-\family typewriter 
+\family typewriter
 revtex.bst
-\family default 
+\family default
  (i.e., just put 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 revtex
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  in the 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 style
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  box in the 
-\family sans 
+\family sans
 Insert\SpecialChar \menuseparator
-Lists\SpecialChar ~
-&\SpecialChar ~
+Lists\InsetSpace ~
+&\InsetSpace ~
 TOC\SpecialChar \menuseparator
-BibTeX\SpecialChar ~
+BibTeX\InsetSpace ~
 Reference
-\family default 
+\family default
  popup).
  With either method, you can cite references with the LyX citation commands
 \begin_inset LatexCommand \cite{mycitation}
 
-\end_inset 
+\end_inset
 
 .
-\layout Acknowledgments
+\end_layout
+
+\begin_layout Acknowledgments
 
 Thank you so much!
-\layout Bibliography
+\end_layout
+
+\begin_layout Bibliography
 \bibitem {mycitation}
 
 Author, 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 Title
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 , Journal 
-\series bold 
+\series bold
 Volume
-\series default 
+\series default
 , page--numbers (year).
-\the_end
+\end_layout
+
+\end_body
+\end_document

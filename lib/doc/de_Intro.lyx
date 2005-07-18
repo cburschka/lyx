@@ -1,18 +1,19 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass book
 \language german
 \inputencoding latin1
 \fontscheme default
 \graphics none
 \paperfontsize default
-\spacing single 
-\papersize Default
-\paperpackage a4
-\use_geometry 1
+\spacing single
+\papersize default
+\use_geometry true
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \leftmargin 2cm
 \topmargin 1cm
@@ -27,98 +28,130 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tracking_changes false
+\output_changes true
+\end_header
 
-\layout Title
+\begin_body
+
+\begin_layout Title
 
 Einführung in LyX
-\newline 
+\newline
 oder
-\newline 
+\newline
 Das Einmaleins der LyX-Dokumentation
-\layout Author
+\end_layout
+
+\begin_layout Author
 
 vom LyX Team
 \begin_inset Foot
-collapsed false
+status open
 
-\layout Standard
+\begin_layout Standard
 
 Deutsche Übersetzung: 
-\noun on 
+\noun on
 Peter Sütterlin
-\noun default 
+\noun default
  und 
-\noun on 
+\noun on
 Hartmut
-\noun default 
+\noun default
  
-\noun on 
+\noun on
 Haase
-\noun default 
+\noun default
 .
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Date
+\end_layout
 
-13.\SpecialChar ~
+\begin_layout Date
+
+13.\InsetSpace ~
 September 2003
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset LatexCommand \tableofcontents{}
 
-\end_inset 
+\end_inset
 
 
-\layout Chapter
+\end_layout
+
+\begin_layout Chapter
 
 Die Philosophie von LyX
-\layout Standard
-\align center 
+\end_layout
 
-\begin_inset Minipage
-position 1
-inner_position 0
-height "0pt"
+\begin_layout Standard
+\align center
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
 width "80text%"
-collapsed false
+special "none"
+height "1pt"
+height_special "totalheight"
+status open
 
-\layout Standard
+\begin_layout Standard
 
 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 Onkel Cosmo, warum nennt man das Ding Textverarbeitung?
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 Ganz einfach Skyler: Du hast doch gesehen was die Lebensmittelverarbeitung
  mit dem Essen anstellt, oder?
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\hfill 
+\hfill
 -- Jeff MacNelly in "Shoe"
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Was ist LyX
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LyX ist ein komplettes System zur Erstellung von Dokumenten.
  Es ist unübertroffen beim Schreiben von komplexen wissenschaftlichen und
@@ -138,17 +171,19 @@ LyX ist ein komplettes System zur Erstellung von Dokumenten.
  in referierten wissenschaftlichen Zeitschriften, Skripte für Theaterstücke
  und Filme, wirtschaftliche Proposals\SpecialChar \ldots{}
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LyX ist ein Programm das einen sehr modernen Ansatz zum computerunterstützten
  Schreiben von Texten bietet.
  Durch die Verwendung einer 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 Markup
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
 -Sprache weicht dieser Ansatz vom obsoleten Schreibmaschinen-Konzept ab.
  Er wendet sich an Autoren die schnell und mit minimalem Aufwand professionell
@@ -156,7 +191,9 @@ Markup
  werden zu müssen.
  Mit LyX wird diese Aufgabe praktisch vollständig vom Computer übernommen,
  der Autor kann sich auf den Inhalt des Textes konzentrieren.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Ein Teil der anfänglichen Herausforderung bei der Nutzung von LyX liegt
  in der Änderung der Denkweise, die Sie, der Leser, schaffen müssen.
@@ -165,11 +202,11 @@ Ein Teil der anfänglichen Herausforderung bei der Nutzung von LyX liegt
  Das Unterstreichen zum Beispiel, das eigentlich mehr ein Übermalen mit
  einem 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 _
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  ist, wurde ein Standardweg, um Text hervorzuheben.
  Beim Anlegen einer Tabelle mußte man sich im voraus überlegen, wie groß
@@ -177,7 +214,9 @@ _
  Das gleiche gilt für Briefe oder anderen rechtsbündigen Text.
  Wort\SpecialChar \textcompwordmark{}
 trennungen am Zeilenende verlangten ein scharfes Auge und viel Vorausdenken.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 In anderen Worten, wir haben gelernt und geübt, uns darum zu kümmern, welcher
  Buchstabe wo gesetzt wird.
@@ -193,56 +232,62 @@ In anderen Worten, wir haben gelernt und geübt, uns darum zu kümmern, welcher
  das) was Du siehst.
  Leider führt das aber meist nur zu einem 'Was Du siehst ist alles was Du
  bekommst'.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 In genau diesem Punkt unterscheidet sich LyX von einer herkömmlichen Textverarbe
 itung.
  Sie kümmern sich nicht selber darum, wie der Satz genau durchgeführt wird.
  Sie sagen LyX, 
-\emph on 
+\emph on
 was Sie machen wollen
-\emph default 
+\emph default
 , und LyX kümmert sich um den Rest.
  Dabei folgt es einem festen Regelwerk, das man als 
-\emph on 
+\emph on
 Stil
-\emph default 
+\emph default
  bezeichnet.
 \begin_inset Foot
-collapsed false
+status open
 
-\layout Standard
+\begin_layout Standard
 
 Fairerweise muß man sagen, daß die meisten aktuellen Textverarbeitungsprogramme
  mittlerweile auch so etwas wie Stilvorlagen unterstützen, die ein ähnliches
  Konzept darstellen.
  Leider werden Sie, so unsere Erfahrung, in der Realität kaum genutzt.
-\end_inset 
+\end_layout
+
+\end_inset
 
  Sehen wir uns ein kleines Beispiel an:
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Nehmen wir an, Sie schreiben einen Bericht.
  Zu Beginn wollen Sie einen Abschnitt 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 Einleitung
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
 .
  Sie gehen also in das entsprechende Menü Ihrer Textverarbeitung und suchen
  eine neue Zeichensatzgröße aus, schalten Fettdruck ein.
  Dann schreiben Sie 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
-1.\SpecialChar ~
-\SpecialChar ~
+1.\InsetSpace ~
+\InsetSpace ~
 Einleitung
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 .
  Wenn Sie natürlich zu einem späteren Zeitpunkt beschließen, daß dieses
@@ -250,23 +295,27 @@ Einleitung
  Sie ein weiteres Kapitel davor einfügen wollen, dann müssen Sie die Numerierung
  für dieses und alle folgenden Kapitel sowie die Einträge im Inhaltsverzeichnis
  ändern.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 In LyX öffnen Sie das Auswahl-Menü auf der linken Seite der Werkzeugleiste
  und wählen als Typ 
-\family sans 
+\family sans
 Abschnitt
-\family default 
+\family default
  und schreiben 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 Einleitung
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Ja, das ist wirklich alles.
  Wenn Sie diesen Abschnitt später an eine andere Stelle verschieben, wird
@@ -275,7 +324,9 @@ Ja, das ist wirklich alles.
  korrekt über das LyX-eigene System getan haben, werden auch all diese Verweise
  (Kapitel- und Seitennummern) automatisch aktualisiert.
  Sie werden nie wieder explizite Kapitelnummern verwenden.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Und dann ist da noch das Problem mit der Konsistenz.
  Fünf Tage später laden Sie den Bericht wieder und schreiben ein Kapitel
@@ -286,7 +337,9 @@ Und dann ist da noch das Problem mit der Konsistenz.
  Dieses Problem existiert in LyX nicht, denn der Computer kümmert sich um
  solche Dinge.
  Dafür ist er schließlich gedacht.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Oder stellen Sie sich vor, Sie erstellen eine Liste.
  In anderen Textverarbeitungen besteht eine solche Liste meist aus einer
@@ -297,62 +350,66 @@ Oder stellen Sie sich vor, Sie erstellen eine Liste.
  Mit LyX haben Sie nur zwei Dinge, um die Sie sich kümmern müssen: Was für
  eine Art von Liste Sie wollen, und was darinstehen soll.
  Das ist alles.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Die Grundidee von LyX ist also: Sagen Sie, 
-\emph on 
+\emph on
 was
-\emph default 
+\emph default
  Sie wollen, nicht 
-\emph on 
+\emph on
 wie
-\emph default 
+\emph default
  man es macht.
  An die Stelle des 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 WYSIWYG
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
  tritt bei LyX das 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 WYSIWYM
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
 : What you see is what you 
-\emph on 
+\emph on
 mean
-\emph default 
+\emph default
 , was man sieht ist was man 
-\emph on 
+\emph on
 meint
-\emph default 
+\emph default
 .
  Dies ist ein sehr mächtiges Konzept daß das Schreiben von Texten stark
  vereinfacht.
  Und es ist auch der Grund, warum LyX weniger für das Erstellen von Flugblättern
  oder Werbezetteln geeignet ist: Denn dort 
-\emph on 
+\emph on
 wollen
-\emph default 
+\emph default
  Sie genau angeben, wo welches Textelement erscheint, denn es gibt keine
  funktionellen Elemente wie Absätze, Abschnitte usw.
  Das bedeutet nicht, daß in LyX irgendwelche tollen Funktionen fehlen -
  es ist einfach nicht das richtige Programm für diesen Zweck --- Sie verwenden
  ja auch keinen Schraubendreher, um damit Nägel einzuschlagen (außer vielleicht
  ihr Schraubendreher hat eine lebenslängliche Garantie).
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Unterschiede zwischen LyX und Textverarbeitungen
 \begin_inset Foot
-collapsed false
+status open
 
-\layout Standard
+\begin_layout Standard
 
 Nein, dies ist nicht der Versuch, einen heiligen Krieg der Textverarbeitungen
  anzufangen (oder zu gewinnen).
@@ -360,27 +417,39 @@ Nein, dies ist nicht der Versuch, einen heiligen Krieg der Textverarbeitungen
  Und einer dieser vielen Vorteile, das WYSIWYM-Prinzip, unterscheidet sich
  grundlegend von der Vorstellung, die 99% der Nutzer von einer Textverarbeitung
  haben.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Hier ist eine kleine Aufzählung von Dingen, die Sie bei LyX nicht finden
  werden:
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Das Lineal
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Tabulatoren
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 zusätzliche Leerzeichen oder -zeilen (also mehrmals hintereinander 
-\family sans 
+\family sans
 Enter
-\family default 
+\family default
  oder die Leertaste betätigen)
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Tabulatoren, zusammen mit dem Lineal, welches Ihnen die Position von Einträgen
  auf der Seite anzeigen, sind in LyX sinnlos.
@@ -392,40 +461,58 @@ Tabulatoren, zusammen mit dem Lineal, welches Ihnen die Position von Einträgen
  Leerzeilen nacheinander einfügen zu können.
  Aber wenn Sie sich erst an das WYSIWYM-Prinzip gewöhnt haben, wird es Ihnen
  als der natürlichere Weg erscheinen.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Hier nun ein paar Dinge, die es zwar in LyX gibt, jedoch anders verwendet
  werden, als man sich das vielleicht vorstellt:
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Kontrolle des Einzuges
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Seitenumbrüche
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Zeilenabstände (d.
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 ,
-\end_inset 
+\end_layout
 
-h.\SpecialChar ~
+\end_inset
+
+h.\InsetSpace ~
 einzeilig, zweizeilig usw.)
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Zwischenräume ohne Text, horizontal wie vertikal
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Zeichensätze und -größen
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Schriftarten (fett, schräg, unterstrichen usw.)
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Obwohl es all dies in LyX gibt, benötigt man es im Normalfall nicht.
  LyX nimmt notwendige Einstellungen kontextbezogen vor.
@@ -437,45 +524,61 @@ ten und -größen gesetzt.
  Generell sind alle Abstände zwischen Worten, Zeilen und Absätzen variabel
  und werden von LyX bestimmt.
 \begin_inset Foot
-collapsed false
+status open
 
-\layout Standard
+\begin_layout Standard
 
 Selbstverständlich gibt es die Möglichkeit, alle diese Abstände entweder
  lokal oder global für das gesamte Dokument zu verändern.
  Nur in wenigen Fällen ist dabei Wissen über LaTeX notwendig.
  Näheres finden Sie im 
-\emph on 
+\emph on
 Benutzerhandbuch
-\emph default 
+\emph default
  und den 
-\emph on 
+\emph on
 Profi-Tipps
-\emph default 
+\emph default
 .
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Schließlich gibt es auch einige Gebiete, in denen LyX (und LaTeX) unserer
  Meinung nach herkömmlichen Textverarbeitungen weit überlegen sind:
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Silbentrennung 
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Aufzählungen aller Art
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Mathematiksatz
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Tabellen
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Querverweise im Text
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Zugegeben, viele moderne Textverarbeitungen können mit mathematischen Symbolen
  umgehen, und einige beginnen bereits mit der Einführung von Stildefinitionen
@@ -483,90 +586,98 @@ Zugegeben, viele moderne Textverarbeitungen können mit mathematischen Symbolen
  Dies ist jedoch noch nicht sehr lange so.
  Im Gegensatz dazu basiert LyX auf dem Textsatzsystem LaTeX, welches bereits
  seit über 10 Jahren existiert und 
-\emph on 
+\emph on
 funktioniert
-\emph default 
+\emph default
 .
  All die kleinen Fehler, die ein neues Programm immer hat, sind bei LaTeX
  schon lange gefunden und beseitigt.
 \begin_inset Foot
-collapsed false
+status open
 
-\layout Standard
+\begin_layout Standard
 
 Natürlich ist nichts perfekt, aber LaTeX ist so nahe an einem fehlerfreien
  Computerprogramm, wie dies nur möglich ist.
-\end_inset 
+\end_layout
+
+\end_inset
 
  
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Was 
-\emph on 
+\emph on
 ist
-\emph default 
+\emph default
  denn nun LaTeX (und muß ich das wissen)?
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LaTeX ist ein System zur Erstellung von Texten, das 1985 von 
-\noun on 
+\noun on
 Leslie Lamport 
-\noun default 
+\noun default
 entworfen wurde.
 \begin_inset Foot
-collapsed false
+status open
 
-\layout Standard
+\begin_layout Standard
 
 Die Information in diesem Abschnitt basiert auf den Angaben in dem Buch
  
-\emph on 
+\emph on
 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 A Guide to LaTeX2e
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 
-\emph default 
+\emph default
  von 
-\noun on 
+\noun on
 Helmut Kopka
-\noun default 
+\noun default
  und 
-\noun on 
+\noun on
 Patrick Daly
-\noun default 
+\noun default
 .
  Die genaue Quellenangabe finden Sie im Literaturverzeichnis des 
-\emph on 
+\emph on
 Benutzerhandbuches
-\emph default 
+\emph default
 .
-\end_inset 
+\end_layout
+
+\end_inset
 
  Es basiert auf der Textsatz-Sprache TeX, die von 
-\noun on 
+\noun on
 Donald Knuth 
-\noun default 
+\noun default
 1984 entwickelt wurde.
  
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 TeX
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
  spricht man aus wie 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 Blech
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
 , und manche halten es auch für etwas blechern.
  Das liegt aber daran, daß die wenigsten verstehen, was TeX eigentlich ist.
@@ -576,58 +687,64 @@ Blech
  so schwierig wie eine echte Schriftsatz-Maschine in einer Druckerei.
  Aber viele der 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 Tricks
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
  der Schriftsetzer wurden von Knuth als Computer-Algorithmus formuliert
  und in TeX integriert, daher sehen seine Druckergebnisse so hervorragend
  aus.
  TeX erzeugt als Ausgabe eine Datei, die man als geräteunabhängig (
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 device independent
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
 , 
-\family typewriter 
+\family typewriter
 dvi
-\family default 
+\family default
 ) bezeichnet.
  Eine solche 
-\family typewriter 
+\family typewriter
 dvi
-\family default 
+\family default
 -Datei kann von vielen Programmen, die dieses Format verstehen, gelesen
  werden und in andere Formate wie z.
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 ,
-\end_inset 
+\end_layout
+
+\end_inset
 
 B.
  PostScript® oder PDF umgewandelt werden.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Wäre das bereits alles, TeX wäre nichts anderes als ein primitiver Textsetzer.
  Aber in TeX ist es möglich, eigene Befehlssequenzen, sogenannte Makros,
  zu definieren.
  Und dadurch sind die Möglichkeiten von TeX schier unbegrenzt.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Die meisten Leute, die TeX verwenden, benutzen tatsächlich ein Makropaket,
  das 
-\noun on 
+\noun on
 Knuth
-\noun default 
+\noun default
  zusammengestellt hat, um den Großteil der Details beim Zeichensatz vor
  dem Anwender zu verstecken.
  Dieses Makropaket ist meist gemeint, wenn man von TeX spricht.
@@ -635,9 +752,9 @@ Knuth
  normaler Anwender, das machen nur diejenigen Leute, die selber Makropakete
  entwickeln.
  Und hier kommt 
-\noun on 
+\noun on
 Leslie Lamport
-\noun default 
+\noun default
  ins Spiel.
  Er wollte ein Makropaket, daß sich näher am Benutzer orientiert, und nicht
  an den Feinheiten beim Textsatz.
@@ -645,7 +762,9 @@ Leslie Lamport
 he Formeln schreiben lassen, ohne zu verwirrend zu sein.
  So wurde LaTeX geboren.
  
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Parallel zur Weiterentwicklung von LaTeX entstanden andere, spezielle Pakete
  für TeX: Eines, um Folien zu schreiben oder eines, um Artikel für mathematische
@@ -653,57 +772,61 @@ Parallel zur Weiterentwicklung von LaTeX entstanden andere, spezielle Pakete
  Einige der Autoren verwendeten dazu TeX, andere begannen, LaTeX abzuändern.
  Um dieses Wirrwarr zu vereinfachen, begann eine Gruppe von LaTeX-Experten
  (zu denen natürlich auch 
-\noun on 
+\noun on
 Lamport
-\noun default 
+\noun default
  selbst gehörte) in den späten 80-er Jahren, LaTeX2e zu entwickeln, die
  heutige Version von LaTeX.
  Diese neue Version stellt auch Befehle zur Verfügung, um einfach neue Makros
  zu erstellen, andere Zeichensätze zu definieren und so weiter.
  Alles in allem ist LaTeX dadurch selber eine ziemlich umfangreiche 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 Sprache
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
  geworden.
  Überall auf der Welt haben Benutzer ihre eigenen Erweiterungen für LaTeX
  geschrieben.
  
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Es existieren zwei unterschiedliche Wege, wie man LaTeX erweitern kann:
  Klassen und Stile.
  Eine 
-\emph on 
+\emph on
 Klasse
-\emph default 
+\emph default
  besteht aus einer Reihe von LaTeX- (und TeX-) Makros, die eine neue Art
  von Dokument beschreiben, wie etwa ein Buch oder einen Artikel.
  Es gibt z.
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 ,
-\end_inset 
+\end_layout
+
+\end_inset
 
 B.
  Klassen für Folien, für Artikel in mathematischen oder physikalischen Zeitschri
 ften\SpecialChar \ldots{}
  viele Universitäten haben sogar eine eigene Klasse für ihre Dissertationen
  zusammengestellt! Im Gegensatz dazu definiert ein 
-\emph on 
+\emph on
 Stil
-\emph default 
+\emph default
  keine neue Art von Dokument, sondern eine anderes 
-\emph on 
+\emph on
 Verhalten
-\emph default 
+\emph default
 , das ein Dokument nutzen kann.
  So nutzt LyX zwei unterschiedliche Stil-Dateien, um die Ränder und Zeilenabstän
 de in den Dokumenten festzulegen.
@@ -712,99 +835,119 @@ de in den Dokumenten festzulegen.
  handhaben zu können, spezielle Kopf- und Fußzeilen zu erstellen, Literaturliste
 n den eigenen Wünschen anzupassen, Erscheinungsbild und Position von Fußnoten,
  Tabellen und Abbildungen zu verändern und so weiter und so fort.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Hier eine kurze Zusammenfassung:
-\layout List
+\end_layout
+
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 TeX: Makrofähige Programmiersprache für Schriftsatz.
-\layout List
+\end_layout
+
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 LaTeX: Makropaket auf der Basis von TeX.
-\layout List
+\end_layout
+
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 Klassen: Beschreibung eines Dokumententyps, verwendet LaTeX.
  
-\layout List
+\end_layout
+
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 Stile: Verändern die Standardeinstellungen von LaTeX.
  
-\layout List
+\end_layout
+
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 LyX: Visuelle WYSIWYM-Textverarbeitung, die LaTeX mit all seinen Fähigkeiten
  zum Ausdruck verwendet.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Der Zweck dieses Abschnittes war es, ihnen zu zeigen, 
-\emph on 
+\emph on
 warum
-\emph default 
+\emph default
  LyX etwas anders arbeitet als andere Textverarbeitungen.
  Dieser Grund ist einfach: LyX verwendet LaTeX als Formatierprogramm für
  den Ausdruck.
  Wie auch LaTeX konzentriert sich LyX auf den Inhalt Ihres Textes --- also
  
-\emph on 
+\emph on
 was
-\emph default 
+\emph default
  Sie schreiben.
  Der Rechner kümmert sich dann darum, daß es gut aussieht.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Ach ja --- eine letzte Bemerkung.
  LaTeX spricht man aus wie TeX, das sich auf das Wort Blech reimt.
  Laut Lamport kann man LaTeX auch 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 Läitech
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
  aussprechen.
  Wer es so ausspricht wie das Material, aus dem Kondome hergestellt werden,
  spricht es falsch.
  LyX dagegen spricht man 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 Lücks
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
 .
  Oder 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 Licks
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
  --- je nachdem, aus welchem Land man stammt\SpecialChar \ldots{}
  aber über die Aussprache wurden
  auf der Mailing Liste schon endlose Diskussionen geführt, also sprechen
  Sie es einfach so aus, wie es Ihnen gefällt --- nur nicht 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 word
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
 .
  
-\family typewriter 
+\family typewriter
 :-)
-\layout Chapter
+\end_layout
+
+\begin_layout Chapter
 
 Der Weg durch die Dokumentation
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Die LyX-Dokumentation wurde in mehrere Dateien aufgeteilt, um es einfacher
  zu machen, all Ihre Fragen zu beantworten und alle Möglichkeiten und Vorzüge
@@ -813,12 +956,14 @@ Die LyX-Dokumentation wurde in mehrere Dateien aufgeteilt, um es einfacher
  beschrieben wird.
  Bevor Sie sich jedoch diesen Dateien widmen, lesen Sie bitte sorgfältig
  die vorliegende 
-\emph on 
+\emph on
 Einführung
-\emph default 
+\emph default
 , denn sie enthält eine Menge wichtiger und hilfreicher Informationen und
  Hinweise, die Ihnen einige Zeit ersparen können.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Obwohl LyX mittlerweile eine Versionsnummer 1.0 weit überschritten hat, kann
  die Dokumentation immer noch teilweise unvollständig sein oder sich noch
@@ -826,54 +971,60 @@ Obwohl LyX mittlerweile eine Versionsnummer 1.0 weit überschritten hat, kann
  Wie auch das Programm LyX selber wird die Dokumentation von einer Gruppe
  von Freiwilligen geschrieben, die 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 nebenher
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
  auch noch einem richtigen Beruf nachgehen, Familien haben, ihren Müll wegbringe
 n müssen usw.
  Wir sind ständig bemüht, die Texte so vollständig und korrekt wie möglich
  zu halten, doch das gelingt manchmal nicht da die Entwickler immer dabei
  sind, neue Details einzubauen, während wir die alten noch dokumentieren.
- Wenn Sie an dieser Situation etwas ändern wollen gibt Ihnen Abschnitt\SpecialChar ~
+ Wenn Sie an dieser Situation etwas ändern wollen gibt Ihnen Abschnitt\InsetSpace ~
 
 \begin_inset LatexCommand \vref{sec:Helfen}
 
-\end_inset 
+\end_inset
 
  einige Hinweise, wie auch Sie Ihren Teil zu LyX beitragen können.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Und noch eine Bitte: Wenn Ihnen in dieser Dokumentation irgendetwas unklar
  oder falsch erscheint, zögern Sie nicht, uns dies mitzuteilen! Sie erreichen
  das LyX-Entwickler-Team über die Mailing-Liste 
 \begin_inset LatexCommand \url{lyx-docs@lists.lyx.org}
 
-\end_inset 
+\end_inset
 
 .
  Falls Sie dringende Fragen haben, die in der Dokumentation offensichtlich
  nicht beantwortet werden, gibt es eine sehr aktive Mailing Liste die Sie
  unter 
-\family typewriter 
+\family typewriter
 lyx-users@lists.lyx.org
-\family default 
+\family default
  erreichen können.
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Das Format der Handbücher
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Einige von Ihnen haben vielleicht die gesamte Dokumentation ausgedruckt.
  Andere lesen sie 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 online
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
 , also als Datei in LyX.
  Für diejenigen, die online lesen, gibt es einige Unterschiede zur gedruckten
@@ -883,35 +1034,39 @@ online
  Es sind zunächst auch weder Inhaltsverzeichnis noch Fußnoten sichtbar.
  Eine Fußnote sieht so
 \begin_inset Foot
-collapsed false
+status open
 
-\layout Standard
+\begin_layout Standard
 
 Hallo! Zum Schließen dieser Fußnote klicken Sie bitte auf das grau unterlegte
  Feld mit dem Wort 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 Fußnote
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
 .
-\end_inset 
+\end_layout
+
+\end_inset
 
  aus.
  Um sie zu öffnen, klicken Sie mit dem linken Mausknopf darauf.
  Um das Inhaltsverzeichnis zu betrachten klicken Sie entweder auf den entspreche
 nden grauen Kasten oder wählen Sie das Menü 
-\family sans 
-\bar under 
+\family sans
+\bar under
 N
-\bar default 
+\bar default
 avigieren
-\family default 
+\family default
 , dort wird der Inhalt ebenfalls automatisch angezeigt -- Versuchen Sie
  es einmal!
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 In der gedruckten Version dieser Hilfetexte erscheinen die Querverweise
  mit ihren tatsächlichen Kapitel- und Seitennummern.
@@ -919,53 +1074,55 @@ In der gedruckten Version dieser Hilfetexte erscheinen die Querverweise
  Felder wie das folgende: 
 \begin_inset LatexCommand \vref{sec:Helfen}
 
-\end_inset 
+\end_inset
 
  (in der gedruckten Version steht hier eine Zahl).
  Wenn Sie mit der Maus auf diesen grauen Kasten klicken, öffnet sich automatisch
  ein Fenster mit allen Querverweisen des Dokumentes.
  In diesem Dokument finden Sie nur den Eintrag 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 sec:Helfen
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
 .
  Sie gelangen an die entsprechende Stelle, wenn Sie die Schaltfläche 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 
-\family sans 
+\family sans
 Gehe zu Referenz
-\family default 
+\family default
 
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
  anklicken.
  Zurück an die Ausgangsposition zu gelangen ist genauso einfach.
  Mit 
-\family sans 
+\family sans
 Strg+<
-\family default 
+\family default
  kommen Sie wieder zurück an die ursprüngliche Stelle.
  (Was 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 
-\family sans 
+\family sans
 Strg+<
-\family default 
+\family default
 
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
  bedeutet, wird gleich erklärt.)
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Nachdem nun die wichtigsten Unterschiede zwischen der gedruckten und der
  Online-Dokumenta\SpecialChar \-
@@ -973,320 +1130,348 @@ tion geklärt sind, können wir uns mit dem Format der Handbücher
  befassen.
  Sie werden immer wieder Begriffe finden, die in unterschiedlichen Zeichensätzen
  gesetzt sind:
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\emph on 
+\emph on
 Hervorgehoben
-\emph default 
+\emph default
  wird generell benutzt, um Dinge zu betonen, Buchtitel zum Beispiel, oder
  Namen von Abschnitten in anderen Handbüchern oder Hinweise der Autoren.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\family typewriter 
+\family typewriter
 Schreibmaschine
-\family default 
+\family default
  kennzeichnet Programmtext und Dateinamen, LaTeX- und/oder LyX-Code und
  Funktionen.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\family sans 
+\family sans
 Serifenfrei
-\family default 
+\family default
  bezeichnet Namen von Menüs, Knöpfen, Popups und Tasten der Tastatur.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\noun on 
+\noun on
 Kapitälchen
-\noun default 
+\noun default
  werden für Eigennamen verwendet.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Tasten und Tastaturbelegungen werden im Abschnitt 
-\emph on 
+\emph on
 Grundlegende Tastaturfunktionen
-\emph default 
+\emph default
  des 
-\emph on 
+\emph on
 Benutzerhandbuches
-\emph default 
+\emph default
  behandelt.
  Wenn Tasten bezeichnet werden sollen, gelten folgende Regeln:
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\family sans 
+\family sans
 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 Strg+
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
 
-\family default 
+\family default
  wird in den Menüs mit 
-\family sans 
+\family sans
 C- 
-\family default 
+\family default
 bezeichnet.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\family sans 
+\family sans
 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 Umschalt+
-\family default 
+\family default
 
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
  wird in den Menüs mit
-\family sans 
+\family sans
  S-
-\family default 
+\family default
  (
 \begin_inset Formula $\Uparrow$
-\end_inset 
+\end_inset
 
 ) bezeichnet.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\family sans 
+\family sans
 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 Alt+
-\family default 
+\family default
 
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
  wird in den Menüs mit 
-\family sans 
+\family sans
 M- 
-\family default 
+\family default
 bezeichnet.
  Wenn Ihre Tastatur eine 
-\family sans 
+\family sans
 Meta
-\family default 
+\family default
 -Taste hat, ist diese gemeint.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\family sans 
+\family sans
 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 F1
-\family default 
+\family default
 
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
  \SpecialChar \ldots{}
  
-\family sans 
+\family sans
 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 F12
-\family default 
+\family default
 
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
  sind die Funktionstasten.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 
-\family sans 
+\family sans
 Esc
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  ist die Escape-Taste.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\family sans 
+\family sans
 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 L
-\family default 
+\family default
 inks
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
  
-\family sans 
+\family sans
 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 R
-\family default 
+\family default
 echts
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
  
-\family sans 
+\family sans
 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 Auf
-\family default 
+\family default
 
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
  
-\family sans 
+\family sans
 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 Ab
-\family default 
+\family default
 
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
 : die Cursor-Tasten.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\family sans 
+\family sans
 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 Einfg
-\family default 
+\family default
 
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
  
-\family sans 
+\family sans
 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 Entf
-\family default 
+\family default
 
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
  
-\family sans 
+\family sans
 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
-Pos\SpecialChar ~
+Pos\InsetSpace ~
 1
-\family default 
+\family default
 
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
  
-\family sans 
+\family sans
 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 Ende
-\family default 
+\family default
 
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
  
-\family sans 
+\family sans
 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 Bild
 \begin_inset Formula $\uparrow$
-\end_inset 
+\end_inset
 
 
-\family default 
+\family default
 
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
  
-\family sans 
+\family sans
 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 Bild
 \begin_inset Formula $\downarrow$
-\end_inset 
+\end_inset
 
 
-\family default 
+\family default
 
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
 : Das sind die 6 Tasten über den Cursor-Tasten.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\family sans 
+\family sans
 Return
-\family default 
+\family default
  und 
-\family sans 
+\family sans
 Enter
-\family default 
+\family default
  bezeichnen dieselbe Taste.
  Manche Tastaturen haben diese beiden Tasten, manche bezeichnen sie auch
  nur mit einem abgeknickten Pfeil.
  Für LyX sind beide Tasten gleichwertig, deshalb muß keine Unterscheidung
  gemacht werden.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Ab und zu werden Sie auch Hinweise sehen wie 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 (siehe 
-\emph on 
+\emph on
 Tutorium
-\emph default 
+\emph default
 )
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
 .
  Dort sind für jede Funktion auch alle möglichen Tastaturbelegungen aufgezählt,
@@ -1295,19 +1480,19 @@ Tutorium
 e Tastaturbelegungen verbreitet sind: Der standardmäßig voreingestellte
  
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 CUA
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
 -Stil (Nutzern aus der PC-Welt vertraut) und der 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 Emacs
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
 -Stil, der mehr von denen verwendet wird, die im Unix-Umfeld groß geworden
  sind und dort diesen Editor verwenden.
@@ -1315,31 +1500,39 @@ Emacs
  die Standardeinstellung CUA.
  Falls Sie Emacs verwenden sind Sie sicher auch clever genug die Dokumentation
  zu lesen und die entsprechenden Tastaturkürzel selbst herauszusuchen.
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Die Handbücher
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Die folgende Liste beschreibt den Inhalt aller Dateien der LyX-Dokumentation:
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 
-\emph on 
+\emph on
 Einführung
-\emph default 
- \SpecialChar ~
+\emph default
+ \InsetSpace ~
 
-\newline 
+\newline
 Diese Datei.
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 
-\emph on 
+\emph on
 Tutorium
-\emph default 
- \SpecialChar ~
+\emph default
+ \InsetSpace ~
 
-\newline 
+\newline
 Wenn Sie neu bei LyX sind und zuvor niemals LaTeX verwendet haben, sollten
  Sie hier mit dem Lesen beginnen.
  Wenn Sie der Meinung sind, LaTeX sei das Material, aus dem Kondome hergestellt
@@ -1347,147 +1540,196 @@ Wenn Sie neu bei LyX sind und zuvor niemals LaTeX verwendet haben, sollten
  Danach werden Sie vielleicht immer noch denken, LaTeX sei ein elastisches
  Material, aber immerhin wissen Sie dann, wie Sie mit LyX umgehen\SpecialChar \ldots{}
 
-\begin_deeper 
-\layout Standard
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
 
 Wenn Sie bereits mit LaTeX gearbeitet haben, sollten Sie das 
-\emph on 
+\emph on
 Tutorium
-\emph default 
+\emph default
  dennoch lesen und gleich mit dem Kapitel 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 LyX für LaTeX-Benutzer
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
  beginnen.
  Ein Überfliegen der restlichen Kapitel schadet aber sicherlich nicht.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Wenn Sie zu irgendeinem Zeitpunkt mit LyX nicht richtig klarkommen, lesen
  Sie das Tutorium (nochmals) sorgfältig durch; es stellt ein sehr gutes
  Sprungbrett für die weitere Suche in den anderen Handbüchern dar.
-\end_deeper 
-\layout Description
+\end_layout
+\end_deeper
+\begin_layout Description
 
 
-\emph on 
+\emph on
 Benutzerhandbuch
-\emph default 
- \SpecialChar ~
+\emph default
+ \InsetSpace ~
 
-\newline 
+\newline
 Der Hauptteil der Dokumentation.
  Hier werden (möglichst) alle grundlegenden Funktionen und Fähigkeiten von
  LyX beschrieben.
  Der Text setzt voraus, daß Sie das 
-\emph on 
+\emph on
 Tutorium
-\emph default 
+\emph default
  gelesen haben.
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 
-\emph on 
+\emph on
 Profi-Tipps
-\emph default 
- \SpecialChar ~
+\emph default
+ \InsetSpace ~
 
-\newline 
+\newline
 Erweiterung des 
-\emph on 
+\emph on
 Benutzerhandbuches
-\emph default 
+\emph default
 .
  Es erläutert die Verwendung von LaTeX-Kommandos, zusätzliche Layouts und
  erweiterte Bearbeitungsmöglichkeiten, inklusive einiger Tricks der LaTeX-Profis.
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 
-\emph on 
+\emph on
 Anpassung
-\emph default 
- \SpecialChar ~
+\emph default
+ \InsetSpace ~
 
-\newline 
+\newline
 Eine Beschreibung der Konfigurationsmöglichkeiten für Fortgeschrittene.
  Hier wird auch beschrieben, wie LyX konfiguriert wird.
  Das umfaßt Tastaturbelegung, Internationalisierung und Konfigurationsdateien.
  Denken Sie besser nicht daran, es zu lesen, ohne vorher das 
-\emph on 
+\emph on
 Tutorium
-\emph default 
+\emph default
  durchgearbeitet zu haben.
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 
-\emph on 
-LaTeX\SpecialChar ~
+\emph on
+LaTeX\InsetSpace ~
 Konfiguration
-\emph default 
- \SpecialChar ~
+\emph default
+ \InsetSpace ~
 
-\newline 
+\newline
 Bei der Installation untersucht LyX Ihr System.
  Diese Datei enthält die dabei gefundenen Informationen.
  Sehen Sie sich diese Datei ruhig einmal an und entscheiden, welche eventuell
  fehlenden LaTeX-Pakete Sie noch installieren wollen.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Die einzelnen Dokumente verweisen teilweise aufeinander.
  So enthält das 
-\emph on 
+\emph on
 Benutzerhandbuch
-\emph default 
+\emph default
  auch einige Informationen zur Installation und Anpassung, verweist den
  Leser aber für weitere Infos an das Handbuch 
-\emph on 
+\emph on
 Anpassung
-\emph default 
+\emph default
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Bevor es jetzt richtig losgeht, noch einmal der Hinweis:
-\layout Standard
-\added_space_top 0.51cm \added_space_bottom 0.51cm \align center 
+\end_layout
+
+
+\begin_layout Standard
+
+
+\begin_inset VSpace 0.51cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
 Wenn Sie LyX das erste Mal verwenden, sollten Sie 
-\series bold 
+\series bold
 jetzt
-\series default 
+\series default
  das 
-\emph on 
+\emph on
 Tutorium
-\emph default 
+\emph default
  lesen!
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset VSpace 0.51cm
+\end_inset
+
+
+\end_layout
+
+
+\begin_layout Standard
 
 Sie ersparen sich dadurch sicherlich einiges an Frustration und werden die
  Vorzüge von LyX sicher schnell zu schätzen wissen.
  Denn LyX kann alles, was Sie von anderen Textverarbeitungen her kennen,
  wenn es auch einen anderen Ansatz verwendet.
-\layout Chapter
+\end_layout
+
+\begin_layout Chapter
 
 
 \begin_inset LatexCommand \label{sec:Helfen}
 
-\end_inset 
+\end_inset
 
 Wie helfe ich beim LyX Projekt?
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Mithilfe bei LyX
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LyX ist hauptsächlich in C++ geschrieben (Der LaTeX-Import ist in Perl geschrieb
 en).
  Es ist ein sehr großes Projekt, und dadurch sicher nicht ohne Fehler oder
  den Bedarf, den vorhandenen Code zu verbessern.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Fehler melden
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Es mag sein daß Sie beim Benutzen von LyX auf Dinge stoßen, die Sie als
  Fehler ansehen.
@@ -1496,12 +1738,14 @@ Es mag sein daß Sie beim Benutzen von LyX auf Dinge stoßen, die Sie als
  hohe Priorität: Hinweise auf Stellen, die Ihnen unklar oder verwirrend
  erscheinen sind besonders hilfreich.
  
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LyX hat ein Web-basiertes Fehlermeldesystem, den 
 \begin_inset LatexCommand \htmlurl[LyX Bug Tracker]{http://bugzilla.lyx.org}
 
-\end_inset 
+\end_inset
 
 .
  Sie sollten dort nachsehen bevor Sie einen Fehler melden, denn vielleicht
@@ -1509,17 +1753,19 @@ LyX hat ein Web-basiertes Fehlermeldesystem, den
  Wenn Sie einen Kommentar zu einem bestehenden Fehler abgeben wollen, oder
  einen neuen Fehler melden wollen, können Sie das über den Bug Tracker tun,
  oder Sie senden eine Email an die Entwickler-Liste, 
-\family typewriter 
+\family typewriter
 lyx-devel@lists.lyx.org
-\family default 
+\family default
 .
  Archive der Liste erreichen Sie über die 
 \begin_inset LatexCommand \htmlurl[LyX Homepage]{http://www.lyx.org/}
 
-\end_inset 
+\end_inset
 
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Eine gute (hilfreiche) Fehlerbeschreibung umfaßt mindestens auch die verwendete
  Version von LyX.
@@ -1534,107 +1780,113 @@ Eine gute (hilfreiche) Fehlerbeschreibung umfaßt mindestens auch die verwendete
  die Versionsnummern dieser externen Programme.
  Wenn es sich um ein Problem beim selbst compilieren handelt schicken Sie
  die Datei 
-\family typewriter 
+\family typewriter
 config.log
-\family default 
+\family default
  mit und geben Sie an, welchen Compiler sie verwenden.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Wenn Sie einen reproduzierbaren Absturz hervorrufen können wäre es extrem
  hilfreich wenn Sie sich die Zeit nehmen könnten, einen Backtrace mit einem
  nicht-gestripten Binary durchzuführen (das installierte binary ist meist
  gestrippt, im Gegensatz zu dem im Quellverzeichnis).
  Starten Sie LyX von 
-\family typewriter 
+\family typewriter
 gdb
-\family default 
+\family default
  aus, also z.
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 ,
-\end_inset 
+\end_layout
+
+\end_inset
 
 B.
  
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 
-\family typewriter 
+\family typewriter
 gdb /usr/src/lyx-1.2/src/lyx
-\family default 
+\family default
 
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
  und dann 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 
-\family typewriter 
+\family typewriter
 run
-\family default 
+\family default
 
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
 .
  Verursachen Sie den Absturz, Sie landen dann wieder an der Eingabeaufforderung
  von 
-\family typewriter 
+\family typewriter
 gdb
-\family default 
+\family default
 .
  Erzeugen sie mit dem Befehl 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 
-\family typewriter 
+\family typewriter
 bt
-\family default 
+\family default
 
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
  einen Backtrace und schicken diesen zusammen mit dem Fehlerbericht ein
 \begin_inset Foot
-collapsed false
+status open
 
-\layout Standard
+\begin_layout Standard
 
 Wenn Sie besonders gründlich sein wollen benutzen Sie die Befehle 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 
-\family typewriter 
+\family typewriter
 info locals
-\family default 
+\family default
 
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
  und 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 
-\family typewriter 
+\family typewriter
 up
-\family default 
+\family default
 
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
  um die Werte der lokalen Variablen in einigen übergeordneten Stack-Levels
  auszugeben.
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
  Im Zweifelsfall ist es aber wichtiger, einen reproduzierbaren Weg anzugeben,
@@ -1643,24 +1895,32 @@ up
  Ist der Absturz aber nicht so ohne weiteres reproduzierbar ist ein solcher
  Backtrace essentiell, denn er ist dann die einzige Möglichkeit, den Fehler
  einzukreisen.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Fixes und neue Fähigkeiten beisteuern
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Wenn Sie Änderungen an den LyX Quellen vorgenommen haben von denen Sie meinen
  daß sie fester Bestandteil von LyX werden sollten, schicken die diese Änderunge
 n als vereinheitlichte Differenz-Datei (
-\family typewriter 
+\family typewriter
 diff -u
-\family default 
+\family default
 ) an die oben angegebene Entwickler-Liste.
  Vergessen Sie nicht ein Änderungsprotokoll und eine Beschreibung, was der
  Patch macht.
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Hilfe bei der Dokumentation
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Die Dokumentation von LyX ist sehr ausführlich und umfangreich.
  Jedoch befindet sich LyX in stetiger Weiterentwicklung, und mit jeder Version
@@ -1669,106 +1929,133 @@ Die Dokumentation von LyX ist sehr ausführlich und umfangreich.
  bedarf.
  Dieser Abschnitt beschreibt, was Sie tun sollten wenn Sie einen Fehler
  finden oder einfach nur Vorschläge haben, wie man sie verbessern kann.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Fehler in den Handbüchern
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Wenn Sie eine Unstimmigkeit in der Dokumentation entdecken, schicken Sie
  bitte eine Mail an die Mailing Liste 
-\family typewriter 
+\family typewriter
 lyxdoc@lists.lyx.org
-\family default 
+\family default
 .
  Das Dokumentationsteam wird sich darum kümmern, daß sie beseitigt wird.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Dem Dokumentationsteam beitreten
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Wie alle anderen Bereiche von LyX kann auch das Dokumentations-Team Hilfe
  immer gut gebrauchen.
  Wenn Sie daran interessiert sind, bei der Dokumentation mitzumachen, müssen
  Sie zunächst folgende Dinge sicherstellen:
-\layout Enumerate
+\end_layout
+
+\begin_layout Enumerate
 
 Besorgen Sie sich die neueste Version der LyX-Quellen.
  Packen Sie das Archiv aus
 \begin_inset Foot
-collapsed false
+status open
 
-\layout Standard
+\begin_layout Standard
 
 Sie können sich die aktuellste Version auch aus dem LyX CVS Archiv besorgen
  - sie befindet sich im Modul 
-\family typewriter 
+\family typewriter
 lyxdoc
-\family default 
+\family default
 .
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
  Im Hauptverzeichnis finden sie das Unterverzeichnis 
-\family typewriter 
+\family typewriter
 lib/doc
-\family default 
+\family default
 .
  Darin befindet sich die Datei 
-\family typewriter 
+\family typewriter
 DocStyle.lyx
-\family default 
+\family default
 .
  Lesen Sie sie, sie ist ein Stil-Leitfaden für die Dokumentation.
-\layout Enumerate
+\end_layout
+
+\begin_layout Enumerate
 
 Gönnen Sie sich ein oder zwei Tage Pause und lesen Sie 
-\family typewriter 
+\family typewriter
 DocStyle.lyx
-\family default 
+\family default
  nochmal.
-\layout Enumerate
+\end_layout
+
+\begin_layout Enumerate
 
 Als nächstes lesen Sie 
-\emph on 
+\emph on
 Benutzerhandbuch
-\emph default 
+\emph default
  und 
-\emph on 
+\emph on
 Tutorium
-\emph default 
+\emph default
 .
-\begin_deeper 
-\layout Standard
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
 
 Dieser Schritt dient dazu Ideen zu liefern.
  Das 
-\emph on 
+\emph on
 Tutorium
-\emph default 
+\emph default
  und das 
-\emph on 
+\emph on
 Benutzerhandbuch
-\emph default 
+\emph default
  sind die vollständigsten und aktuellsten Dokumente der Serie.
  Es sollte Ihnen ein paar Hinweise geben, wie wir uns die Dokumentation
  vorstellen.
-\end_deeper 
-\layout Enumerate
+\end_layout
+\end_deeper
+\begin_layout Enumerate
 
 Setzen Sie sich mit dem Team in Verbindung:
-\begin_deeper 
-\layout Standard
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
 
 
-\family typewriter 
+\family typewriter
 lyx-docs@lists.lyx.org
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Dort können Sie ihre Ideen diskutieren und bekommen Feedback.
-\end_deeper 
-\layout Standard
+\end_layout
+\end_deeper
+\begin_layout Standard
 
 Dabei ist alles an Änderungen möglich, angefangen von Verbesserungen der
  Verständlichkeit bis hin zu einer kompletten Umstrukturierung --- alles
  was die Dokumentation verbessert ist herzlich willkommen.
-\the_end
+\end_layout
+
+\end_body
+\end_document

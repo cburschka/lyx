@@ -1,5 +1,7 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass hollywood
 \language english
 \inputencoding auto
@@ -7,12 +9,11 @@
 \graphics default
 \paperfontsize default
 \spacing other 0.90
-\papersize letterpaper
-\paperpackage a4
-\use_geometry 1
+\papersize default
+\use_geometry true
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \leftmargin 1.5in
 \topmargin 48bp
@@ -30,207 +31,316 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle fancy
+\tracking_changes false
+\output_changes true
+\end_header
 
-\layout General
+\begin_body
+
+\begin_layout General
 
 [NICHOLL FELLOWSHIPS in SCREENWRITING]
-\layout General
+\end_layout
+
+\begin_layout General
 
 http://www.oscars.org/academy/nichollindex.html
-\layout General
+\end_layout
+
+\begin_layout General
 
 
 \begin_inset ERT
-status Open
+status open
 
-\layout Dialogue
+\begin_layout Standard
 
-\backslash 
+\backslash
 thispagestyle{empty}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout General
+\end_layout
+
+\begin_layout General
 
 Formatted text courtesy of Ann Garretson
-\layout General
+\end_layout
+
+\begin_layout General
 
 http://www.halcyon.com/aga
-\layout General
+\end_layout
+
+\begin_layout General
 
 Copyright 1998 by the Academy of Motion Picture Arts and Sciences
-\layout General
+\end_layout
+
+\begin_layout General
 
 ----------
-\layout General
+\end_layout
+
+\begin_layout General
 
 FILE NOTES
-\layout General
+\end_layout
+
+\begin_layout General
 
 ----------
-\layout General
+\end_layout
+
+\begin_layout General
 
 Source: Academy of Motion Picture Arts and Sciences (A.M.P.A.S.)
-\layout General
+\end_layout
+
+\begin_layout General
 
 - The NICHOLL FELLOWSHIPS in SCREENWRITING
-\layout General
+\end_layout
+
+\begin_layout General
 
 - http://www.oscars.org/nicholl/index.html
-\layout General
+\end_layout
+
+\begin_layout General
 
 - E-mail: Greg Beal, gbeal@oscars.org
-\layout General
+\end_layout
+
+\begin_layout General
 
 File Info: April, 1998 (online)
-\layout General
+\end_layout
+
+\begin_layout General
 
 - http://www.oscars.org/nicholl/format_a.txt
-\layout General
+\end_layout
+
+\begin_layout General
 
 - View in a monospaced font -- preferably 12-point Courier.
-\layout General
+\end_layout
+
+\begin_layout General
 
 Copyright 1998 by the Academy of Motion Picture Arts and Sciences
-\layout General
+\end_layout
+
+\begin_layout General
 
 ----------
-\layout General
+\end_layout
+
+\begin_layout General
 
 Permission to use this script as a LyX example file was kindly granted by
  Greg Beal, gbeal@oscars.org.
-\layout General
+\end_layout
+
+\begin_layout General
 
 I added a few lines at the end of script about binding.
  The original script ended with the words 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 I'd never let you miss a meal.
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  There were also references to tabs, which don't exist in LyX, so I made
  minor changes in the text.
  Apologies and kudos to Ann Garretson.
  Be sure to thank her when you get your Oscar.
  
-\layout General
+\end_layout
+
+\begin_layout General
 
 Garst R.
  Reese
-\layout General
-\pagebreak_bottom 
+\end_layout
+
+\begin_layout General
+
 reese@isn.net
-\layout Title
+\end_layout
+
+\begin_layout Standard
+
+
+\newpage
+
+\end_layout
+
+
+\begin_layout Title
 
 FOR A FEW DAYS MORE
-\layout Author
-\added_space_bottom vfill 
+\end_layout
+
+\begin_layout Author
+
 by
-\newline 
+\newline
 April Rider
-\layout Right Address
-\pagebreak_bottom 
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+
+\begin_layout Right Address
+
 April Rider
-\newline 
+\newline
 555 George St.
  NNW
-\newline 
+\newline
 Kaplan, ND 77777 
-\newline 
+\newline
 999-999-9999
-\layout FADE IN:
+\end_layout
+
+\begin_layout Standard
+
+
+\newpage
+
+\end_layout
+
+
+\begin_layout FADE IN:
 
 
 \begin_inset LatexCommand \label{Joe}
 
-\end_inset 
+\end_inset
 
 
 \begin_inset LatexCommand \label{April}
 
-\end_inset 
+\end_inset
 
 
-\layout General
+\end_layout
+
+\begin_layout General
 
 
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout General
+\begin_layout General
 
 Use Layout->Document
-\layout General
+\end_layout
+
+\begin_layout General
 
 Spacing Other to set the spacing between lines.
  A value of .85 is probably the minimum.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout General
+\end_layout
+
+\begin_layout General
 
 
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout General
+\begin_layout General
 
 To change:
-\layout General
+\end_layout
+
+\begin_layout General
 
 
-\backslash 
+\backslash
 setlength{
-\backslash 
+\backslash
 dialogindent}{1in},
-\layout General
+\end_layout
+
+\begin_layout General
 
 
-\backslash 
+\backslash
 setlength{
-\backslash 
+\backslash
 parenoffset}{.5in},
-\layout General
+\end_layout
+
+\begin_layout General
 
 
-\backslash 
+\backslash
 setlength{
-\backslash 
+\backslash
 dialogLength}{4in},
-\layout General
+\end_layout
+
+\begin_layout General
 
 
-\backslash 
+\backslash
 setlength{
-\backslash 
+\backslash
 parenLength}{2in},
-\layout General
+\end_layout
+
+\begin_layout General
 
 
-\backslash 
+\backslash
 setlength{
-\backslash 
+\backslash
 speakeroffset}{1.2in}
-\layout General
+\end_layout
+
+\begin_layout General
 
 click TeX and enter new values as above.
-\layout General
+\end_layout
+
+\begin_layout General
 
 Parenoffset is the offset to the left of parentheticals from speaker names.
-\layout General
+\end_layout
+
+\begin_layout General
 
 Speakeroffset is the offset to the right of the dialog margin, so changing
  dialogindent will automatically change the position of parentheticals and
  speaker names.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout General
+\begin_layout General
 
 You can put your Speaker names in labels, the insert cross references to
  the labels.
@@ -239,43 +349,61 @@ You can put your Speaker names in labels, the insert cross references to
  This way you can use them in dialogue also, and change all references to
  your Speaker's names just by changing the label.
  
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout General
+\end_layout
+
+\begin_layout General
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Dialogue
+\begin_layout Standard
 
-\backslash 
+\backslash
 setlength{
-\backslash 
+\backslash
 parenLength}{1.7in}
-\layout Dialogue
+\end_layout
 
-\backslash 
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\backslash
 setlength{
-\backslash 
+\backslash
 dialogLength}{3.2in}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout INT.
+\end_layout
+
+\begin_layout INT.
 
 DRISKILL HOTEL SEMINAR ROOM - DAY
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 JOE and APRIL burst through the doors into a clean, well-lit seminar room
-\layout General
+\end_layout
+
+\begin_layout General
 
 
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout General
+\begin_layout General
 
 Use the description after INT.
  or EXT.
@@ -284,157 +412,211 @@ Use the description after INT.
  Notice that I did not use the labels for Joe and April here because they
  are upper-cased in discriptions only the first time they are used.
  You could make extra labels, but I think it would be error-prone.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 Are we in time?
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 How could they start without us? We're the main attraction.
-\layout Narrative
+\end_layout
+
+\begin_layout Narrative
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
  catches his breath as he leans against the podium at the front of the room.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Parenthetical
+\end_layout
+
+\begin_layout Parenthetical
 
 looking about the room
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 We are?
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 Don't be a moron.
  You know we've been invited to Austin to discuss script format.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 But why is the room empty?
-\layout Narrative
+\end_layout
+
+\begin_layout Narrative
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
  and 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
  both look out across the room -- rows of empty chairs and nary a person
  in sight.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 Okay, okay, don't panic.
-\layout Narrative
+\end_layout
+
+\begin_layout Narrative
 
 She takes three deep breaths.
  Then she looks at her watch and smiles.
-\layout Continuing
+\end_layout
 
-\layout Dialogue
+\begin_layout Continuing
+
+\end_layout
+
+\begin_layout Dialogue
 
 We're an hour early.
  We should rehearse.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 Okay, you start.
  Margins?
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 Left, 1.5 inches.
  Right, 0.75 inches.
  Top, 1.0 inch to the body, 0.5 inches to the number.
  Bottom, 0.5 to 1.5 inches, depending on where the page break comes.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 Page break?
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 Right above me.
  Rules for breaking a page.
@@ -442,699 +624,935 @@ Right above me.
  If a page breaks between a Speaker and a one sentence Dialogue, move it
  above the Speaker.
  A long Dialogue passage would be split -- but I'll get to that later.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 What about fonts?
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 Courier, 12 point, 10 pitch.
  Make sure it's a non-proportional version of Courier.
-\layout Narrative
+\end_layout
+
+\begin_layout Narrative
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 's grimace suggests that he's deep in thought.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 What about bold-face or italics? Or a Gothic font? I love to jazz up my
  scripts.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 No bold, no itals, no script fonts, no Gothic, no Helvetica, no Times Roman.
  Stick with Courier.
  That's the industry standard.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 Oh, we're talking about industry standards?
-\layout Narrative
+\end_layout
+
+\begin_layout Narrative
 
 Suddenly, 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
  bolts from behind the podium and runs out into:
-\layout INT.
+\end_layout
+
+\begin_layout INT.
 
 DRISKILL HOTEL HALLWAY - DAY
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
  glances up and down the hallway, then reaches back to open the door.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Parenthetical
+\end_layout
+
+\begin_layout Parenthetical
 
 calling
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
  -- come on! There's no one here.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Parenthetical
+\end_layout
+
+\begin_layout Parenthetical
 
 walking through the door
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 Ah, a scene heading.
  Or a slug line, as I was taught in film school.
  Always CAPPED.
  What happens if we \SpecialChar \ldots{}
 
-\layout EXT.
+\end_layout
+
+\begin_layout EXT.
 
 TEXAS CAPITOL BUILDING - DAY
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
  pinches himself as he stands with 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
  before the seat of Texas politics.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 How'd you do that?
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 There was a cut -- from the hallway to the capitol.
  What'd you want to do -- ride in a cab?
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 Dialogue margins.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 Left, 3.0 inches.
  Right, 2.5 inches.
  Of course, you can cheat those a tad.
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout General
+\begin_layout General
 
 These are from the paper edge, but you specify them from
-\layout General
+\end_layout
+
+\begin_layout General
 
 the left margin using dialoglength and dialogIndent.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 So, you have about 3.0 inches for each line of your dialogue?
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 You've got it.
  Though you can go out another three or four spaces to the right and no
  one will hold it against you.
-\layout Narrative
+\end_layout
+
+\begin_layout Narrative
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
  jots down several notes on a 3 x 5 card, studies the card for a moment,
  then scribbles another note.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Parenthetical
+\end_layout
+
+\begin_layout Parenthetical
 
 looking up
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 And the position of the speaker's name?
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 All CAPS, and about 2.7 inches from the left margin.
  Some writers center all the speakers' names.
-\layout General
+\end_layout
+
+\begin_layout General
 
 
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout General
+\begin_layout General
 
 Use More to break up a dialogue across a page boundary.
  It will put (MORE) at the bottom of the page, and insert the current speaker
  name and (CONT'D) at the top of the next page.
  You should not break mid-sentence.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout More
+\end_layout
 
-\layout Dialogue
+\begin_layout More
+
+\end_layout
+
+\begin_layout Dialogue
 
 Personally, I don't think it matters.
  The look of the script pages is slightly different in either case.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 Hey, what happened?
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 A page break appeared in the middle of my dialogue.
  You use (MORE) at the bottom of the page to show that the speaker's dialogue
  continues onto the next page.
  Then (CONT'D) next to the speaker to show that it has roots in the previous
  page.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 But not everybody uses MOREs and CONT'Ds, do they?
-\layout INT.
+\end_layout
+
+\begin_layout INT.
 
 CAPITOL BUILDING - DAY
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
  stares up into the dome.
  
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
  examines the portraits of Texas governors on the nearby walls.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 Some writers just plan their page ends so as to avoid them.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Parenthetical
+\end_layout
+
+\begin_layout Parenthetical
 
 considering
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 What about parentheticals?
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 Start them about a half-inch to the left of the speaker name.
  In our case that would be at 2.2 inches from the left margin.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 And what are they for?
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 For years, parentheticals were used to express emotion, the manner in which
  a speaker spoke her lines.
  Loudly, passionately, sadly, and so on.
  In recent years writers have often used them for brief bits of action.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Parenthetical
+\end_layout
+
+\begin_layout Parenthetical
 
 going up a stairway
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 Something like this?
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Parenthetical
+\end_layout
+
+\begin_layout Parenthetical
 
 following him
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 Exactly.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 How wide are parentheticals?
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 Not very -- about 1.5 inches.
  And they should wrap to the following line when they extend beyond that
  point.
-\layout Parenthetical
+\end_layout
+
+\begin_layout Parenthetical
 
 pointing up to the top of the page
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 If you place a parenthetical in the middle of a dialogue passage, it should
  remain distinct from the dialogue.
-\layout EXT.
+\end_layout
+
+\begin_layout EXT.
 
 MISSISSIPPI RIVERBOAT - NIGHT
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 A gambling boat rolls slowly along the mighty river.
  
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
  and 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
  wander about its upper deck.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 I have to ask -- what happened to CUT TO:s between scenes.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 Many writers still use transitions such as CUT TO: and DISSOLVE TO: between
  scenes.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 Those would introduce a new scene header?
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 And typically a different time and/or place.
  But many writers have dispensed with such transitions, feeling that a new
  scene header signifies a cut without the need of any additional indicator.
-\layout Narrative
+\end_layout
+
+\begin_layout Narrative
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
  stares out at the river.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 How did we reach the Mississippi and when did the sun set?
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 If you'd like \SpecialChar \ldots{}
 
-\layout EXT.
+\end_layout
+
+\begin_layout EXT.
 
 AIRPLANE - SUNSET
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 A jet liner cruises East across Texas.
-\layout INT.
+\end_layout
+
+\begin_layout INT.
 
 AIRPLANE - SUNSET
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 A customized interior, replete with lounge chairs and sofas.
  
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
  and 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
  sip margaritas.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 Is this a flashback?
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 Or it could be tomorrow.
  Or next week.
-\layout TITLE OVER:
+\end_layout
+
+\begin_layout TITLE OVER:
 
 October 19, 1997
-\layout Continuing
+\end_layout
 
-\layout General
+\begin_layout Continuing
+
+\end_layout
+
+\begin_layout General
 
 
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout General
+\begin_layout General
 
 Selecting 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 Continuing
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  will insert the current Speaker followed by (continuing) as a parenthetical.
  Don't worry, it will look right on the printed version.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 You see, a few weeks have passed.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 Okay, I didn't notice.
  But I thought only DAY and NIGHT were allowed on scene headers.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 Production managers would certainly prefer it that way, but many writers
  use headers as a means of showing a particular time of day, especially
  SUNRISE and SUNSET.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 So that's allowed?
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 On writer's drafts, without a doubt.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 A writer's draft?
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 Essentially, any draft that hasn't been paid for.
  Any draft to be sent to agents, studio execs, production companies, development
@@ -1142,584 +1560,772 @@ Essentially, any draft that hasn't been paid for.
  Those are writer's drafts.
  And they all should be FIRST DRAFTs, no matter how many versions the writer
  has actually written.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 You really think so?
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 That's my recommendation.
-\layout INT.
+\end_layout
+
+\begin_layout INT.
 
 BLUE CAMARO - DAY
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
  drives along Austin's Congress Avenue as 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
  rides shotgun.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 You speak any foreign languages?
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Parenthetical
+\end_layout
+
+\begin_layout Parenthetical
 
 in French
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 Why do you ask? (Pour quoi tu demandes?)
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 What about action scenes?
-\layout Narrative
+\end_layout
+
+\begin_layout Narrative
 
 SUDDENLY, A BLACK CADILLAC whips around a corner, racing quickly towards
  them.
  
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
  punches the accelerator and -- THE BLUE CAMARO leaps forward, leaving a
  trail of rubber.
  The Camaro takes a left, then a quick right to accelerate into -- A DARK
  ALLEY The Camaro quickly reaches a dead end, just as -- THE BLACK CADILLAC
  pulls into the alley, sealing it shut.
-\layout EXT.
+\end_layout
+
+\begin_layout EXT.
 
 DRISKILL HOTEL DAY
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
  leads a dazed and confused 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
  to the front door.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 That's one way to do an action scene.
  It's a variation on the Bill Goldman style that's used by many writers.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Parenthetical
+\end_layout
+
+\begin_layout Parenthetical
 
 coming to
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 But other writers just use normal description and standard scene headers
  for action scenes, don't they?
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 Many do.
-\layout INT.
+\end_layout
+
+\begin_layout INT.
 
 DRISKILL HOTEL ENTRANCE HALL -- PHONE BOOTH - DAY
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 A slightly less dazed 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
  speaks on the phone.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 I thought we were walking together.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
  (O.S.)
-\layout Parenthetical
+\end_layout
+
+\begin_layout Parenthetical
 
 filtered
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 Well, we were, but I realized a phone call was needed.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 You're filtered?
-\layout INTERCUT
+\end_layout
 
-\layout EXT.
+\begin_layout INTERCUT
+
+\end_layout
+
+\begin_layout EXT.
 
 STATE CAPITOL PHONE BOOTH - DAY
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 With the dome looming large behind her, 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
  speaks into the phone.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 Only when you hear my voice over the phone.
  Radio voices and phone calls often are filtered, though it's a convention
  that isn't used by everyone anymore.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 Let's try something easy.
  What about page numbers?
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 Number each and every page, though you can start with page two.
  The numbers should appear in the upper right hand corner, about 0.5 inches
  down and 0.75 inches from the right page edge.
  Those dimensions are not set in stone, but page numbers should always be
  placed in the upper right hand corner.
-\layout INT.
+\end_layout
+
+\begin_layout INT.
 
 DRISKILL HOTEL HALLWAY - DAY
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
  walks slowly towards the seminar room.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 You know, that pronouncement almost seemed godlike.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
  (V.O.)
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 If it were, I probably would have spoken in a voice over and not on the
  phone.
-\layout Narrative
+\end_layout
+
+\begin_layout Narrative
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
  searches the ceiling, trying to decide just where this disembodied voice
  is emanating from.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 What's a V.O.
  used for?
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
  (V.O.)
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 Oftentimes for narration, for a narrator's voice.
  In film noir the protagonists often filled the audience in on their thoughts
  or story details.
  Documentary films are filled with voice over.
-\layout INT.
+\end_layout
+
+\begin_layout INT.
 
 DRISKILL HOTEL SEMINAR ROOM - DAY
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
  races past 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
  to reach the podium first.
  
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
  walks slowly past the still-empty chairs.
  
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 At the podium 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
  gestures with his hands as if he were making a major political speech.
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
  sneaks up behind him and mimics his movements -- until he notices.
  
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
  spins to confront her.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 Why I ought'a \SpecialChar \ldots{}
 
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 I was just demonstrating the way many writers break description into shorter
  paragraphs.
  I've seen blocks of description covering an entire page.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 That makes for tough reading, doesn't it?
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 I know studio readers who just skip long description and read only dialogue.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 But there are pros who write scripts with extended descriptive passages.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 When you make a half-million or so per script, you can pretty much use any
  format you want.
-\layout Narrative
+\end_layout
+
+\begin_layout Narrative
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
  climbs atop the podium.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 But when you're like me, you have to stick to format.
  Is that what you're trying to say?
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 That's the story.
-\layout Narrative
+\end_layout
+
+\begin_layout Narrative
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
  jumps down from the podium and runs out the door just as conference ATTENDEES
  begin to enter.
-\layout Continuing
+\end_layout
 
-\layout Dialogue
+\begin_layout Continuing
+
+\end_layout
+
+\begin_layout Dialogue
 
 By the way, the first time you introduce a speaker in description, you CAP
  his name.
  And when you break dialogue with description, the standard is to place
  "continuing" within parentheses when a speaker chatters on and on.
-\layout Narrative
+\end_layout
+
+\begin_layout Narrative
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
  watches as a number of people sit down before her.
-\layout Continuing
+\end_layout
 
-\layout Dialogue
+\begin_layout Continuing
+
+\end_layout
+
+\begin_layout Dialogue
 
 Of course, many writers have dropped "continuing" from their repertoire.
  I mean, it's obvious that I'm still speaking, isn't it? And that I never
  stopped speaking.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
  (O.S.)
-\layout Parenthetical
+\end_layout
+
+\begin_layout Parenthetical
 
 shouting from beyond the door
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 Hey, 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 , c'mon.
  There's a buffet at the hotel and a shuttle leaving in two minutes.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Parenthetical
+\end_layout
+
+\begin_layout Parenthetical
 
 shouting
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 We haven't mentioned master scenes.
-\layout Narrative
+\end_layout
+
+\begin_layout Narrative
 
 A sheepish 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
  enters, then glances about the room as he slowly approaches the podium.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 That one I know.
  No CLOSEUPS, no WIDE SHOTS, no shots of any sort.
  Just scene headers, description and dialogue.
  And no scene numbers.
  Those are left to shooting scripts.
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 Don't worry, I would never let you miss a meal.
  Do you know how to make a script sandwich?
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{Joe}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 A script sandwich?
-\layout Speaker
+\end_layout
+
+\begin_layout Speaker
 
 
 \begin_inset LatexCommand \ref{April}
 
-\end_inset 
+\end_inset
 
 
-\layout Dialogue
+\end_layout
+
+\begin_layout Dialogue
 
 You need your script, two sheets of plain manila binding stock, a three
  hole punch, and three 1.5 inch brass brads.
@@ -1727,9 +2333,16 @@ You need your script, two sheets of plain manila binding stock, a three
  When you get it all assembled, you can hammer the brass brads down to make
  it good and tight.
  Now lets go eat.
-\layout FADE OUT
+\end_layout
 
-\layout Speaker
+\begin_layout FADE OUT
+
+\end_layout
+
+\begin_layout Speaker
 
 THE END
-\the_end
+\end_layout
+
+\end_body
+\end_document

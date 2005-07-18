@@ -1,21 +1,22 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass article
 \begin_preamble
 \usepackage{multicol}
 \end_preamble
-\language frenchb
+\language french
 \inputencoding latin1
 \fontscheme default
 \graphics default
 \paperfontsize default
 \spacing single
-\papersize a4paper
-\paperpackage a4
-\use_geometry 0
+\papersize default
+\use_geometry false
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -26,69 +27,92 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tracking_changes false
+\output_changes true
+\end_header
 
-\layout Title
+\begin_body
+
+\begin_layout Title
 
 MultiColonnes
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Informations de révision :
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Traduction : Mise à jour Date : 22/03/2002
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Original : Révision : 1.3, Date : 21/03/2002
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Author
+\end_layout
+
+\begin_layout Author
 
 par 
-\noun on 
+\noun on
 Lars Gullik Bjønnes
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Traduction par Adrien 
-\noun on 
+\noun on
 Rebollo
-\noun default 
+\noun default
  
-\family typewriter 
+\family typewriter
 <Adrien.Rebollo@gmx.fr>
-\family default 
+\family default
 .
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Objectif
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Le but de ce chapitre est de montrer comment utiliser le paquetage LaTeX
  
-\family typewriter 
+\family typewriter
 multicol
-\family default 
+\family default
  dans un document LyX.
  Comme LyX ne le supporte pas encore d'origine, il faut utiliser quelques
  trucs, qui devraient vous paraître clairs quand vous aurez lu cette section.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Limitations 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Le paquetage 
-\family typewriter 
+\family typewriter
 multicol
-\family default 
+\family default
  permet de basculer dans une même page entre le format sur une colonne et
  sur plusieurs.
  Les notes de bas de page sont gérées correctement (pour la plus grande
@@ -97,72 +121,88 @@ multicol
  désactivé dans l'implémentation actuelle.
  Aujourd'hui seuls des flottants couvrant en largeur toute la page peuvent
  être utilisés au sein de l'environnement.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Exemples
-\layout Subsubsection
+\end_layout
+
+\begin_layout Subsubsection
 
 Deux Colonnes
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Si vous voulez avoir deux colonnes dans votre texte, il faut pour insérer
  
-\family typewriter 
+\family typewriter
 
-\backslash 
+\backslash
 begin{multicols}{2}
-\family default 
+\family default
  en mode LaTeX à l'endroit où vous voulez démarrer la disposition en deux
  colonnes, et 
-\family typewriter 
+\family typewriter
 
-\backslash 
+\backslash
 end{multicols}
-\family default 
+\family default
  là où vous voulez qu'elle se termine.
  Comme ceci :
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 begin{multicols}{2}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
-\noindent 
+\end_layout
 
-\series bold 
-\size small 
+\begin_layout Standard
+\noindent
+
+\series bold
+\size small
 The Adventure of the Empty House
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 NdT : Ne pensant pas être à la hauteur d'une traduction littéraire de 
-\noun on 
+\noun on
 Conan Doyle
-\noun default 
+\noun default
 , et ne voyant pas de nécessité impérieuse d'insérer du texte français à
  la place, j'ai préféré le laisser tel quel.
  -- ar
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\newline 
+\newline
 by 
-\noun on 
+\noun on
 Sir Arthur Conan Doyle
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\size small 
+\size small
 It was in the spring of the year 1894 that all London was interested, and
  the fashionable world dismayed, by the murder of the Honourable Ronald
  Adair under most unusual and inexplicable circumstances.
@@ -184,44 +224,58 @@ ty which utterly submerged my mind.
  with them, for I should have considered it my first duty to do so, had
  I not been barred by a positive prohibition from his own lips, which was
  only withdrawn upon the third of last month.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 end{multicols}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Subsubsection
+\end_layout
+
+\begin_layout Subsubsection
 
 Colonnes Multiples
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Le même schéma s'applique si vous voulez plus de deux colonnes.
  (Vous pouvez avoir plus de 3 colonnes si vous voulez, mais ça risque de
  ne pas être très agréable à regarder.)
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 begin{multicols}{3}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\size footnotesize 
+\size footnotesize
 It can be imagined that my close intimacy with Sherlock Holmes had interested
  me deeply in crime, and that after his disappearance I never failed to
  read with care the various problems which came before the public.
@@ -241,64 +295,84 @@ It can be imagined that my close intimacy with Sherlock Holmes had interested
  found no explanation which appeared to me to be adequate.
  At the risk of telling a twice-told tale, I will recapitulate the facts
  as they were known to the public at the conclusion of the inquest.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 end{multicols}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Subsubsection
+\end_layout
+
+\begin_layout Subsubsection
 
 Des colonnes dans une Colonne
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Vous pouvez même avoir des colonnes dans une colonne :
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 begin{multicols}{2}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\size footnotesize 
+\size footnotesize
 The Honourable Ronald Adair was the second son of the Earl of Maynooth,
  at that time governor of one of the Australian colonies.
  Adair's mother had returned from Australia to undergo the operation for
  cataract, and she, her son Ronald, and her daughter Hilda were living together
  at 427 Park Lane.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 begin{multicols}{2}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\size footnotesize 
+\size footnotesize
 The youth moved in the best society--had, so far as was known, no enemies
  and no particular vices.
  He had been engaged to Miss Edith Woodley, of Carstairs, but the engagement
@@ -309,23 +383,29 @@ The youth moved in the best society--had, so far as was known, no enemies
  Yet it was upon this easy-going young aristocrat that death came, in most
  strange and unexpected form, between the hours of ten and eleven-twenty
  on the night of March 30, 1894.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 end{multicols}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\size footnotesize 
+\size footnotesize
 Ronald Adair was fond of cards--playing continually, but never for such
  stakes as would hurt him.
  He was a member of the Baldwin, the Cavendish, and the Bagatelle card clubs.
@@ -333,9 +413,9 @@ Ronald Adair was fond of cards--playing continually, but never for such
  a rubber of whist at the latter club.
  He had also played there in the afternoon.
 
-\size default 
+\size default
  
-\size footnotesize 
+\size footnotesize
 The evidence of those who had played with him-- Mr.
  Murray, Sir John Hardy, and Colonel Moran--showed that the game was whist,
  and that there was a fairly equal fall of the cards.
@@ -348,56 +428,74 @@ The evidence of those who had played with him-- Mr.
  actually won as much as four hundred and twenty pounds in a sitting, some
  weeks before, from Godfrey Milner and Lord Balmoral.
  So much for his recent history as it came out at the inquest.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 end{multicols}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Exemples complexes
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Comme vous le savez sans doute 
-\family typewriter 
+\family typewriter
 multicol
-\family default 
+\family default
  a plusieurs variables de personnalisation.
  Les exemples suivants montrent comment elles peuvent être utilisées depuis
  LyX.
-\layout Subsubsection
+\end_layout
+
+\begin_layout Subsubsection
 
 Préface et Saut de page
-\layout Standard
+\end_layout
 
-S'il reste moins de 5\SpecialChar ~
+\begin_layout Standard
+
+S'il reste moins de 5\InsetSpace ~
 cm sur la page, un saut de page sera inséré avant ce
  morceau, avec un texte de préface au-dessus des deux colonnes :
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 begin{multicols}{2}[Et l'histoire continue et continue et continue et continue...][5cm]
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\size small 
+\size small
 On the evening of the crime, he returned from the club exactly at ten.
  His mother and sister were out spending the evening with a relation.
  The servant deposed that she heard him enter the front room on the second
@@ -417,51 +515,65 @@ On the evening of the crime, he returned from the club exactly at ten.
  There were some figures also upon a sheet of paper, with the names of some
  club friends opposite to them, from which it was conjectured that before
  his death he was endeavouring to make out his losses or winnings at cards.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 end{multicols}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Subsubsection
+\end_layout
+
+\begin_layout Subsubsection
 
 Préface et Sections
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Comment faire si vous voulez que la préface soit un en-tête de section ?
  Vous pouvez le faire, mais seulement par l'intermédiaire de commandes LaTeX
  à l'intérieur des paramètres de la commande 
-\family typewriter 
+\family typewriter
 multicols
-\family default 
+\family default
 .
  Pour cette raison, la commande ne peut pas être fournie par LyX :
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 begin{multicols}{2}[
-\backslash 
+\backslash
 subsubsection{C'est la commande de section en préface}][5cm]
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\size small 
+\size small
 A minute examination of the circumstances served only to make the case more
  complex.
  In the first place, no reason could be given why the young man should have
@@ -489,67 +601,81 @@ A minute examination of the circumstances served only to make the case more
  complicated by entire absence of motive, since, as I have said, young Adair
  was not known to have any enemy, and no attempt had been made to remove
  the money or valuables in the room.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 end{multicols}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Subsubsection
+\end_layout
+
+\begin_layout Subsubsection
 
 Espace Libre
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Le paquetage 
-\family typewriter 
+\family typewriter
 multicol
-\family default 
+\family default
  nécessite une certaine quantité d'espace libre disponible avant et après
  chaque section en multi-colonnes.
  En plus 
-\family typewriter 
+\family typewriter
 multicol
-\family default 
+\family default
  insère de l'espace avant et après la section multi-colonnes.
  Pour changer ce comportement par défaut il faut insérer des commandes juste
  avant le
-\family typewriter 
+\family typewriter
  
-\backslash 
+\backslash
 begin{multicols}
-\family default 
+\family default
 .
- Dans cet exemple, on place 3\SpecialChar ~
+ Dans cet exemple, on place 3\InsetSpace ~
 cm d'espace avant et après le texte en multi-colonn
 es :
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 setlength{
-\backslash 
+\backslash
 multicolsep}{3cm}
-\backslash 
+\backslash
 begin{multicols}{2}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\size small 
+\size small
 All day I turned these facts over in my mind, endeavouring to hit upon some
  theory which could reconcile them all, and to find that line of least resistanc
 e which my poor friend had declared to be the starting-point of every investigat
@@ -575,81 +701,103 @@ ion.
  in the eyes of their owner.
  With a snarl of contempt he turned upon his heel, and I saw his curved
  back and white side-whiskers disappear among the throng.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 end{multicols}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Paragraph
+\end_layout
+
+\begin_layout Paragraph
 
 Remarque :
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Les valeurs que vous fixez avec 
-\family typewriter 
+\family typewriter
 
-\backslash 
+\backslash
 setlength
-\family default 
+\family default
  doivent être réinitialisées, sinon vous garderez les valeurs modifiées
  tout au long de votre document.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 setlength{
-\backslash 
+\backslash
 multicolsep}{13pt}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Subsubsection
+\end_layout
+
+\begin_layout Subsubsection
 
 Largeur de Colonne et Séparation
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 La largeur des colonnes dans un environnement 
-\family sans 
+\family sans
 multicols
-\family default 
+\family default
  est calculée automatiquement, mais vous pouvez modifier explicitement l'espace
  entre deux colonnes.
- Dans l'exemple suivant, l'espace entre les deux colonnes est de 3\SpecialChar ~
+ Dans l'exemple suivant, l'espace entre les deux colonnes est de 3\InsetSpace ~
 cm :
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 setlength{
-\backslash 
+\backslash
 columnsep}{3cm}
-\backslash 
+\backslash
 begin{multicols}{2}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\size small 
+\size small
 My observations of No.
  427 Park Lane did little to clear up the problem in which I was interested.
  The house was separated from the street by a low wall and railing, the
@@ -663,97 +811,121 @@ My observations of No.
  To my astonishment it was none other than my strange old book collector,
  his sharp, wizened face peering out from a frame of white hair, and his
  precious volumes, a dozen of them at least, wedged under his right arm.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 end{multicols}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Une fois de plus, il faut réinitialiser la valeur pour éviter de l'utiliser
  dans le reste du document.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 setlength{
-\backslash 
+\backslash
 columnsep}{10pt}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Subsubsection
+\end_layout
+
+\begin_layout Subsubsection
 
 Lignes Verticales
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Entre deux colonnes, il y a un trait de largeur 
-\family typewriter 
+\family typewriter
 
-\backslash 
+\backslash
 columnseprule
-\family default 
+\family default
 .
- Si cette largeur est fixée à 0\SpecialChar ~
+ Si cette largeur est fixée à 0\InsetSpace ~
 pt, le trait est supprimé.
- Dans l'exemple suivant, la ligne séparant les deux colonnes fait 2\SpecialChar ~
+ Dans l'exemple suivant, la ligne séparant les deux colonnes fait 2\InsetSpace ~
 pt d'épaisseu
 r.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 setlength{
-\backslash 
+\backslash
 columnseprule}{2pt}
-\backslash 
+\backslash
 begin{multicols}{2}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\size small 
+\size small
 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 You're surprised to see me, sir,
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  said he, in a strange, croaking voice.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\size small 
+\size small
 I acknowledged that I was.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\size small 
+\size small
 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 Well, I've a conscience, sir, and when I chanced to see you go into this
  house, as I came hobbling after you, I thought to myself, I'll just step
@@ -761,105 +933,126 @@ Well, I've a conscience, sir, and when I chanced to see you go into this
  in my manner there was not any harm meant, and that I am much obliged to
  him for picking up my books.
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\size small 
+\size small
 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 You make too much of a trifle,
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  said I.
  
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 May I ask how you knew who I was?
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\size small 
+\size small
 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 Well, sir, if it isn't too great a liberty, I am a neighbour of yours, for
  you'll find my little bookshop at the corner of Church Street, and very
  happy to see you, I am sure.
  Maybe you collect yourself, sir.
  Here's 
-\noun on 
-British\SpecialChar ~
+\noun on
+British\InsetSpace ~
 Birds
-\noun default 
+\noun default
 , and 
-\noun on 
+\noun on
 Catullus
-\noun default 
+\noun default
 , and 
-\noun on 
+\noun on
 The Holy War
-\noun default 
+\noun default
 --a bargain, every one of them.
  With five volumes you could just fill that gap on that second shelf.
  It looks untidy, does it not, sir?
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 end{multicols}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Comme d'habitude, on réinitialise la valeur après usage.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 setlength{
-\backslash 
+\backslash
 columnseprule}{0pt}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Pour lire le reste de l'histoire, il faudra que vous alliez à la bibliothèque...
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 ...ou trichez comme nous et allez la trouver dans le projet Gutenberg quelque
  part sur le réseau.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\the_end
+\end_layout
+
+\end_body
+\end_document

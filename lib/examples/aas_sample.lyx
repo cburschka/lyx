@@ -1,5 +1,7 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass aastex
 \begin_preamble
 \newcommand{\vdag}{(v)^\dagger}
@@ -14,12 +16,11 @@
 \graphics default
 \paperfontsize default
 \spacing single
-\papersize Default
-\paperpackage a4
-\use_geometry 0
+\papersize default
+\use_geometry false
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -30,241 +31,322 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tracking_changes false
+\output_changes true
+\end_header
 
-\layout Title
+\begin_body
+
+\begin_layout Title
 
 Collapsed Cores in Globular Clusters,  Gauge-Boson Couplings, and AASTeX 
 Examples
-\layout Author
+\end_layout
+
+\begin_layout Author
 
 S.
  Djorgovski
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 altaffilmark{1,2,3}
-\end_inset 
+\end_layout
+
+\end_inset
 
  and Ivan R.
  King
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 altaffilmark{1}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Affiliation
+\end_layout
+
+\begin_layout Affiliation
 
 Astronomy Department, University of California, Berkeley, CA 94720
-\layout Author
+\end_layout
+
+\begin_layout Author
 
 C.
  D.
  Biemesderfer
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 altaffilmark{4,5}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Affiliation
+\end_layout
+
+\begin_layout Affiliation
 
 National Optical Astronomy Observatories, Tucson, AZ 85719
-\layout Email
+\end_layout
+
+\begin_layout Email
 
 aastex-help@aas.org
-\layout And
+\end_layout
 
-\layout Author
+\begin_layout And
+
+\end_layout
+
+\begin_layout Author
 
 R.
  J.
  Hanisch
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 altaffilmark{5}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Affiliation
+\end_layout
+
+\begin_layout Affiliation
 
 Space Telescope Science Institute, Baltimore, MD 21218
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 altaffiltext{1}{Visiting Astronomer, Cerro Tololo Inter-American Observatory.
  CTIO is operated by AURA, Inc.
-\backslash 
+\backslash
  under contract to the National Science Foundation.} 
-\layout Standard
+\end_layout
 
-\backslash 
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\backslash
 altaffiltext{2}{Society of Fellows, Harvard University.} 
-\layout Standard
+\end_layout
 
-\backslash 
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\backslash
 altaffiltext{3}{present address: Center for Astrophysics, 60 Garden Street,
  Cambridge, MA 02138} 
-\layout Standard
+\end_layout
 
-\backslash 
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\backslash
 altaffiltext{4}{Visiting Programmer, Space Telescope Science Institute}
  
-\layout Standard
+\end_layout
 
-\backslash 
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\backslash
 altaffiltext{5}{Patron, Alonso's Bar and Grill}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Abstract
+\end_layout
+
+\begin_layout Abstract
 
 This is a preliminary report on surface photometry of the major fraction
  of known globular clusters, to see which of them show the signs of a collapsed
  core.
  We also explore some diversionary mathematics and recreational tables.
  
-\layout Keywords
+\end_layout
+
+\begin_layout Keywords
 
 clusters: globular, peanut---bosons: bozos
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Introduction
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 A focal problem today in the dynamics of globular clusters is core collapse.
  It has been predicted by theory for decades 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 citep{hen61,lyn68,spi85}
-\end_inset 
+\end_layout
+
+\end_inset
 
 , but observation has been less alert to the phenomenon.
  For many years the central brightness peak in M15 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 citep{kin75,new78}
-\end_inset 
+\end_layout
+
+\end_inset
 
  seemed a unique anomaly.
  Then 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 citet{aur82}
-\end_inset 
+\end_layout
+
+\end_inset
 
  suggested a central peak in NGC 6397, and a limited photographic survey
  of ours 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 citep[Paper I]{djo84}
-\end_inset 
+\end_layout
+
+\end_inset
 
  found three more cases, including NGC 6624, whose sharp center had often
  been remarked on 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 citep{can78}
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
  
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Observations
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 All our observations were short direct exposures with CCD's.
  At Lick Observatory we used a TI 500
 \begin_inset Formula \( \times  \)
-\end_inset 
+\end_inset
 
 500 chip and a GEC 575
 \begin_inset Formula \( \times  \)
-\end_inset 
+\end_inset
 
 385, on the 1-m Nickel reflector.
  The only filter available at Lick was red.
  At CTIO we used a GEC 575
 \begin_inset Formula \( \times  \)
-\end_inset 
+\end_inset
 
 385, with 
 \begin_inset Formula \( B,V, \)
-\end_inset 
+\end_inset
 
  and 
 \begin_inset Formula \( R \)
-\end_inset 
+\end_inset
 
  filters, and an RCA 512
 \begin_inset Formula \( \times  \)
-\end_inset 
+\end_inset
 
 320, with 
 \begin_inset Formula \( U,B,V,R, \)
-\end_inset 
+\end_inset
 
  and 
 \begin_inset Formula \( I \)
-\end_inset 
+\end_inset
 
  filters, on the 1.5-m reflector.
  In the CTIO observations we tried to concentrate on the shortest practicable
  wavelengths; but faintness, reddening, and poor short-wavelength sensitivity
  often kept us from observing in 
 \begin_inset Formula \( U \)
-\end_inset 
+\end_inset
 
  or even in 
 \begin_inset Formula \( B \)
-\end_inset 
+\end_inset
 
 .
  All four cameras had scales of the order of 0.4 arcsec/pixel, and our field
  sizes were around 3 arcmin.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 The CCD images are unfortunately not always suitable, for very poor clusters
  or for clusters with large cores.
@@ -272,50 +354,62 @@ The CCD images are unfortunately not always suitable, for very poor clusters
  CCD profiles by collecting from the literature a number of star-count profiles
  
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 citep{kin68,pet76,har84,ort85}
-\end_inset 
+\end_layout
+
+\end_inset
 
 , as well as photoelectric profiles 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 citep{kin66,kin75}
-\end_inset 
+\end_layout
+
+\end_inset
 
  and electronographic profiles 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 citep{kro84}
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
  In a few cases we judged normality by eye estimates on one of the Sky Surveys.
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Helicity Amplitudes
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 It has been realized that helicity amplitudes provide a convenient means
  for Feynman diagram
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Footnotes can be inserted like this.
-\end_inset 
+\end_layout
+
+\end_inset
 
  evaluations.
  These amplitude-level techniques are particularly convenient for calculations
@@ -325,85 +419,95 @@ Footnotes can be inserted like this.
  
 \begin_inset LatexCommand \cite{hag86}
 
-\end_inset 
+\end_inset
 
 ; we briefly summarize below.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Formalism
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset LatexCommand \label{bozomath}
 
-\end_inset 
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 A tree-level amplitude in 
 \begin_inset Formula \( e^{+}e^{-} \)
-\end_inset 
+\end_inset
 
  collisions can be expressed in terms of fermion strings of the form 
 \begin_inset Formula \begin{equation}
 \bar{v}(p_{2},\sigma _{2})P_{-\tau }\hat{a}_{1}\hat{a}_{2}\cdots \hat{a}_{n}u(p_{1},\sigma _{1}),
 \end{equation}
 
-\end_inset 
+\end_inset
 
  where 
 \begin_inset Formula \( p \)
-\end_inset 
+\end_inset
 
  and 
 \begin_inset Formula \( \sigma  \)
-\end_inset 
+\end_inset
 
  label the initial 
 \begin_inset Formula \( e^{\pm } \)
-\end_inset 
+\end_inset
 
  four-momenta and helicities 
 \begin_inset Formula \( (\sigma =\pm 1) \)
-\end_inset 
+\end_inset
 
 , 
 \begin_inset Formula \( \hat{a}_{i}=a^{\mu }_{i}\gamma _{\nu } \)
-\end_inset 
+\end_inset
 
  and 
 \begin_inset Formula \( P_{\tau }=\frac{1}{2}(1+\tau \gamma _{5}) \)
-\end_inset 
+\end_inset
 
  is a chirality projection operator 
 \begin_inset Formula \( (\tau =\pm1 ) \)
-\end_inset 
+\end_inset
 
 .
  The 
 \begin_inset Formula \( a^{\mu }_{i} \)
-\end_inset 
+\end_inset
 
  may be formed from particle four-momenta, gauge-boson polarization vectors
  or fermion strings with an uncontracted Lorentz index associated with final-sta
 te fermions.
-\layout NoteToEditor
+\end_layout
+
+\begin_layout NoteToEditor
 
 Figures 1 and 2 should appear side-by-side in print
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 In the chiral representation the 
 \begin_inset Formula \( \gamma  \)
-\end_inset 
+\end_inset
 
  matrices are expressed in terms of 
 \begin_inset Formula \( 2\times 2 \)
-\end_inset 
+\end_inset
 
  Pauli matrices 
 \begin_inset Formula \( \sigma  \)
-\end_inset 
+\end_inset
 
  and the unit matrix 1 as 
 \begin_inset Formula \begin{eqnarray}
@@ -414,10 +518,10 @@ In the chiral representation the
 -1 & 0\\
 0 & 1
 \end{array}\right) ,\nonumber \\
-\sigma ^{\mu }_{\pm } & = & ({\textbf {1}},\pm \sigma ),\nonumber 
+\sigma ^{\mu }_{\pm } & = & ({\textbf {1}},\pm \sigma ),\nonumber
 \end{eqnarray}
 
-\end_inset 
+\end_inset
 
  giving 
 \begin_inset Formula \begin{equation}
@@ -427,7 +531,7 @@ In the chiral representation the
 \end{array}\right) ,(\hat{a})_{\pm }=a_{\mu }\sigma ^{\mu }_{\pm },
 \end{equation}
 
-\end_inset 
+\end_inset
 
  The spinors are expressed in terms of two-component Weyl spinors as 
 \begin_inset Formula \begin{equation}
@@ -437,21 +541,25 @@ u=\left( \begin{array}{c}
 \end{array}\right) ,v={\textbf {(}}\vdag _{+}{\textbf {,}}\vdag _{-}{\textbf {)}}.
 \end{equation}
 
-\end_inset 
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 The Weyl spinors are given in terms of helicity eigenstates 
 \begin_inset Formula \( \chi _{\lambda }(p) \)
-\end_inset 
+\end_inset
 
  with 
 \begin_inset Formula \( \lambda =\pm1  \)
-\end_inset 
+\end_inset
 
  by 
-\layout MathLetters
+\end_layout
+
+\begin_layout MathLetters
 
 
 \begin_inset Formula \begin{eqnarray}
@@ -459,13 +567,17 @@ u(p,\lambda )_{\pm } & = & (E\pm \lambda |{\textbf {p}}|)^{1/2}\chi _{\lambda }(
 v(p,\lambda )_{\pm } & = & \pm \lambda (E\mp \lambda |{\textbf {p}}|)^{1/2}\chi _{-\lambda }(p)
 \end{eqnarray}
 
-\end_inset 
+\end_inset
 
 
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Floating material and so forth
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Consider a task that computes profile parameters for a modified Lorentzian
  of the form 
@@ -473,7 +585,7 @@ Consider a task that computes profile parameters for a modified Lorentzian
 I=\frac{1}{1+d_{1}^{P(1+d_{2})}}
 \end{equation}
 
-\end_inset 
+\end_inset
 
  where 
 \begin_inset Formula \[
@@ -483,7 +595,7 @@ d_{1}=\sqrt{\left( \begin{array}{c}
 \frac{y_{1}}{R_{min}}
 \end{array}\right) ^{2}}\]
 
-\end_inset 
+\end_inset
 
 
 \begin_inset Formula \[
@@ -493,127 +605,147 @@ d_{2}=\sqrt{\left( \begin{array}{c}
 \case {y_{1}}{PR_{min}}
 \end{array}\right) ^{2}}\]
 
-\end_inset 
+\end_inset
 
 
 \begin_inset Formula \[
 x_{1}=(x-x_{0})\cos \Theta +(y-y_{0})\sin \Theta \]
 
-\end_inset 
+\end_inset
 
 
 \begin_inset Formula \[
 y_{1}=-(x-x_{0})\sin \Theta +(y-y_{0})\cos \Theta \]
 
-\end_inset 
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 In these expressions 
 \begin_inset Formula \( x_{0} \)
-\end_inset 
+\end_inset
 
 ,
 \begin_inset Formula \( y_{0} \)
-\end_inset 
+\end_inset
 
  is the star center, and 
 \begin_inset Formula \( \Theta  \)
-\end_inset 
+\end_inset
 
  is the angle with the 
 \begin_inset Formula \( x \)
-\end_inset 
+\end_inset
 
  axis.
- Results of this task are shown in table\SpecialChar ~
+ Results of this task are shown in table\InsetSpace ~
 
 \begin_inset LatexCommand \ref{tbl-2}
 
-\end_inset 
+\end_inset
 
 .
  It is not clear how these sorts of analyses may affect determination of
  
 \begin_inset Formula \( M_{\sun } \)
-\end_inset 
+\end_inset
 
 , but the assumption is that the alternate results should be less than 90
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 degr
-\backslash 
+\backslash
  
-\end_inset 
+\end_layout
+
+\end_inset
 
 out of phase with previous values.
  We have no observations of 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 ion{Ca}{2}
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
  Roughly 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 slantfrac{4}{5}
-\end_inset 
+\end_layout
+
+\end_inset
 
  of the electronically submitted abstracts for AAS meetings are error-free.
-\layout Acknowledgements
+\end_layout
 
-\layout Standard
+\begin_layout Acknowledgements
+
+\end_layout
+
+\begin_layout Standard
 
 We are grateful to V.
  Barger, T.
  Han, and R.
  J.
  N.
- Phillips for doing the math in section\SpecialChar ~
+ Phillips for doing the math in section\InsetSpace ~
 
 \begin_inset LatexCommand \ref{bozomath}
 
-\end_inset 
+\end_inset
 
 .
  More information on the AASTeX macros package are available at 
 
 \begin_inset LatexCommand \url{http://www.aas.org/publications/aastex}
 
-\end_inset 
+\end_inset
 
 
  or the 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 anchor{ftp://www.aas.org/pubs/}{AAS ftp site}
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
-\layout Appendix
+\end_layout
 
-\layout Section
+\begin_layout Appendix
+
+\end_layout
+
+\begin_layout Section
 
 Appendicial material
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Consider once again a task that computes profile parameters for a modified
  Lorentzian of the form 
@@ -621,10 +753,12 @@ Consider once again a task that computes profile parameters for a modified
 I=\frac{1}{1+d_{1}^{P(1+d_{2})}}
 \end{equation}
 
-\end_inset 
+\end_inset
 
  where 
-\layout MathLetters
+\end_layout
+
+\begin_layout MathLetters
 
 
 \begin_inset Formula \[
@@ -634,7 +768,7 @@ d_{1}=\frac{3}{4}\sqrt{\left( \begin{array}{c}
 \frac{y_{1}}{R_{min}}
 \end{array}\right) ^{2}}\]
 
-\end_inset 
+\end_inset
 
 
 \begin_inset Formula \begin{equation}
@@ -645,7 +779,7 @@ d_{2}=\case {3}{4}\sqrt{\left( \begin{array}{c}
 \end{array}\right) ^{2}}
 \end{equation}
 
-\end_inset 
+\end_inset
 
 
 \begin_inset Formula \begin{eqnarray}
@@ -653,10 +787,12 @@ x_{1} & = & (x-x_{0})\cos \Theta +(y-y_{0})\sin \Theta \\
 y_{1} & = & -(x-x_{0})\sin \Theta +(y-y_{0})\cos \Theta 
 \end{eqnarray}
 
-\end_inset 
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 For completeness, here is one last equation.
  
@@ -664,26 +800,32 @@ For completeness, here is one last equation.
 e=mc^{2}
 \end{equation}
 
-\end_inset 
+\end_inset
 
 
-\layout References
+\end_layout
+
+\begin_layout References
 \bibitem [Auri\`ere(1982)]{aur82}
 
 Auri\i \`{e}
 re, M.
  1982, 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 aap
-\end_inset 
+\end_layout
+
+\end_inset
 
 , 109, 301 
-\layout References
+\end_layout
+
+\begin_layout References
 \bibitem [Canizares et al.(1978)]{can78}
 
 Canizares, C.
@@ -693,82 +835,104 @@ Canizares, C.
  E.
  1978, 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 apj
-\end_inset 
+\end_layout
+
+\end_inset
 
 , 224, 39 
-\layout References
+\end_layout
+
+\begin_layout References
 \bibitem [Djorgovski and King(1984)]{djo84}
 
 Djorgovski, S., and King, I.
  R.
  1984, 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 apjl
-\end_inset 
+\end_layout
+
+\end_inset
 
 , 277, L49 
-\layout References
+\end_layout
+
+\begin_layout References
 \bibitem [Hagiwara and Zeppenfeld(1986)]{hag86}
 
 Hagiwara, K., and Zeppenfeld, D.
  1986, Nucl.Phys., 274, 1 
-\layout References
+\end_layout
+
+\begin_layout References
 \bibitem [Harris and van den Bergh(1984)]{har84}
 
 Harris, W.
  E., and van den Bergh, S.
  1984, 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 aj
-\end_inset 
+\end_layout
+
+\end_inset
 
 , 89, 1816 
-\layout References
+\end_layout
+
+\begin_layout References
 \bibitem [H\`enon(1961)]{hen61}
 
 H\i \'{e}
 non, M.
  1961, Ann.d'Ap., 24, 369 
-\layout References
+\end_layout
+
+\begin_layout References
 \bibitem [King(1966)]{kin66}
 
 King, I.
  R.
  1966, 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 aj
-\end_inset 
+\end_layout
+
+\end_inset
 
 , 71, 276 
-\layout References
+\end_layout
+
+\begin_layout References
 \bibitem [King(1975)]{kin75}
 
 King, I.
  R.
  1975, Dynamics of Stellar Systems, A.
  Hayli, Dordrecht: Reidel, 1975, 99 
-\layout References
+\end_layout
+
+\begin_layout References
 \bibitem [King et al.(1968)]{kin68}
 
 King, I.
@@ -777,16 +941,20 @@ King, I.
  E.
  1968, 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 aj
-\end_inset 
+\end_layout
+
+\end_inset
 
 , 73, 456 
-\layout References
+\end_layout
+
+\begin_layout References
 \bibitem [Kron et al.(1984)]{kro84}
 
 Kron, G.
@@ -795,31 +963,39 @@ Kron, G.
  H.
  1984, 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 pasp
-\end_inset 
+\end_layout
+
+\end_inset
 
 , 96, 198 
-\layout References
+\end_layout
+
+\begin_layout References
 \bibitem [Lynden-Bell and Wood(1968)]{lyn68}
 
 Lynden-Bell, D., and Wood, R.
  1968, 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 mnras
-\end_inset 
+\end_layout
+
+\end_inset
 
 , 138, 495 
-\layout References
+\end_layout
+
+\begin_layout References
 \bibitem [Newell and O'Neil(1978)]{new78}
 
 Newell, E.
@@ -827,122 +1003,163 @@ Newell, E.
  J.
  1978, 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 apjs
-\end_inset 
+\end_layout
+
+\end_inset
 
 , 37, 27 
-\layout References
+\end_layout
+
+\begin_layout References
 \bibitem [Ortolani et al.(1985)]{ort85}
 
 Ortolani, S., Rosino, L., and Sandage, A.
  1985, 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 aj
-\end_inset 
+\end_layout
+
+\end_inset
 
 , 90, 473 
-\layout References
+\end_layout
+
+\begin_layout References
 \bibitem [Peterson(1976)]{pet76}
 
 Peterson, C.
  J.
  1976, 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 aj
-\end_inset 
+\end_layout
+
+\end_inset
 
 , 81, 617 
-\layout References
+\end_layout
+
+\begin_layout References
 \bibitem [Spitzer(1985)]{spi85}
 
 Spitzer, L.
  1985, Dynamics of Star Clusters, J.
  Goodman and P.
  Hut, Dordrecht: Reidel, 109 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 clearpage
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout FigCaption
+\end_layout
+
+\begin_layout FigCaption
 
 
 \begin_inset LatexCommand \label{fig1}
 
-\end_inset 
+\end_inset
 
 This is the first figure and it uses sgi9259.eps as its EPS figure file.
-\layout FigCaption
+\end_layout
+
+\begin_layout FigCaption
 
 
 \begin_inset LatexCommand \label{fig2}
 
-\end_inset 
+\end_inset
 
 This is an example of a long figure caption that must be set as a paragraph.
   The processor has to buffer the text of the caption, so it is good not
  to be too wordy, but that would make for poor communication as well.
  
-\layout FigCaption
+\end_layout
+
+\begin_layout FigCaption
 
 
 \begin_inset LatexCommand \label{fig3}
 
-\end_inset 
+\end_inset
 
 This figure has no associated EPS file, so the optional parameter is omitted.
  
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 clearpage
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 \begin_inset Float table
 wide false
-collapsed false
+sideways false
+status open
 
-\layout Caption
-\added_space_bottom medskip 
+\begin_layout Caption
+
 Terribly relevant tabular information.
 \begin_inset LatexCommand \label{tbl-2}
 
-\end_inset 
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+
+\begin_layout Standard
 
 
 \begin_inset  Tabular
@@ -965,882 +1182,1094 @@ Terribly relevant tabular information.
 <cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 Star 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
  Height 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
  
 \begin_inset Formula \( d_{x} \)
-\end_inset 
+\end_inset
 
 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
  
 \begin_inset Formula \( d_{y} \)
-\end_inset 
+\end_inset
 
 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
  
 \begin_inset Formula \( n \)
-\end_inset 
+\end_inset
 
 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
  
 \begin_inset Formula \( \chi ^{2} \)
-\end_inset 
+\end_inset
 
 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
  
 \begin_inset Formula \( R_{maj} \)
-\end_inset 
+\end_inset
 
 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
  
 \begin_inset Formula \( R_{min} \)
-\end_inset 
+\end_inset
 
 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell multicolumn="1" alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 
 \begin_inset Formula \( P \)
-\end_inset 
+\end_inset
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 tablenotemark{a}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
  
 \begin_inset Formula \( PR_{maj} \)
-\end_inset 
+\end_inset
 
 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
  
 \begin_inset Formula \( PR_{min} \)
-\end_inset 
+\end_inset
 
 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell multicolumn="1" alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 
 \begin_inset Formula \( \Theta  \)
-\end_inset 
+\end_inset
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 tablenotemark{b}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 Ref.
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 tableline
-\backslash 
+\backslash
 tableline
-\end_inset 
+\end_layout
+
+\end_inset
 
 1 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 33472.5 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 -0.1 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 0.4 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 53 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 27.4 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 2.065 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 1.940 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 3.900 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 68.3 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 116.2 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 -27.639
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 1,2
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
  2 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 27802.4 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 -0.3 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 -0.2 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 60 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 3.7 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 1.628 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 1.510 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 2.156 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 6.8 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 7.5 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 -26.764
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 3
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
  3 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 29210.6 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 0.9 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 0.3 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 60 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 3.4 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 1.622 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 1.551 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 2.159 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 6.7 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 7.3 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 -40.272
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 4
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
  4 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 32733.8 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 -1.2
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 tablenotemark{c}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 -0.5 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 41 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 54.8 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 2.282 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 2.156 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 4.313 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 117.4 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 78.2 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 -35.847
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 5,6
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
  5 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
  9607.4 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 -0.4 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 -0.4 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 60 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 1.4 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 1.669
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 tablenotemark{c}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 1.574 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 2.343 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 8.0 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 8.9 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 -33.417
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 7
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
  6 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 31638.6 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 1.6 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 0.1 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 39 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 315.2 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
  3.433 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 3.075 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 7.488 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 92.1 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 25.3 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 -12.052 
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="right" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 8
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 </row>
 </lyxtabular>
 
-\end_inset 
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 tablenotetext{a}{Sample footnote for table~
-\backslash 
+\backslash
 ref{tbl-2} that was generated with the 
-\backslash 
+\backslash
 LaTeX
-\backslash 
+\backslash
  table environment} 
-\layout Standard
+\end_layout
 
-\backslash 
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\backslash
 tablenotetext{b}{Yet another sample footnote for table~
-\backslash 
+\backslash
 ref{tbl-2}} 
-\layout Standard
+\end_layout
 
-\backslash 
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\backslash
 tablenotetext{c}{Another sample footnote for table~
-\backslash 
+\backslash
 ref{tbl-2}}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout TableComments
+\end_layout
+
+\begin_layout TableComments
 
 We can also attach a long-ish paragraph of explanatory material to a table.
  Use 
-\backslash 
+\backslash
 tablerefs to append a list of references.
  The following references were from a different table: I've patched them
  in here to show how they look, but don't take them too seriously---I certainly
  have not.
-\layout TableRefs
+\end_layout
+
+\begin_layout TableRefs
 
 (1) Barbuy, Spite, & Spite 1985; (2) Bond 1980; (3) Carbon et al.
  1987; (4) Hobbs & Duncan 1987; (5) Gilroy et al.
@@ -1853,81 +2282,106 @@ tablerefs to append a list of references.
  1984; (23) Spite & Spite 1986; (24) Hobbs & Thorburn 1991; (25) Hobbs et
  al.
  1991; (26) Olsen 1983.
-\end_inset 
+\end_layout
 
-\layout Standard
+\end_inset
+
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 % LyX can load deluxetable files verbatim.
  To see this in action, uncomment the following
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 % line (delete the 
-\end_inset 
+\end_layout
+
+\end_inset
 
 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 %
-\end_inset 
+\end_layout
+
+\end_inset
 
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 ) and copy the file table.tex from the AASTeX 5.0 distribution into
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 % the same directory as this file.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 %
-\end_inset 
+\end_layout
+
+\end_inset
 
 
 \begin_inset Include \input{table}
 
-\end_inset 
+\end_inset
 
 
 
-\the_end
+\end_layout
+
+\end_body
+\end_document

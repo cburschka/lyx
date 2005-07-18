@@ -1,5 +1,7 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass cv
 \begin_preamble
 %% You can modify the fonts used in the document be using the
@@ -28,12 +30,11 @@
 \graphics default
 \paperfontsize default
 \spacing single
-\papersize Default
-\paperpackage a4
-\use_geometry 0
+\papersize default
+\use_geometry false
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \secnumdepth -1
 \tocdepth -1
@@ -44,104 +45,136 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tracking_changes false
+\output_changes true
+\end_header
 
-\layout Left Header
+\begin_body
+
+\begin_layout Left Header
 
 123 Hamlet Street
-\newline 
+\newline
 Stratford-upon-Avon
-\layout Right Header
+\end_layout
+
+\begin_layout Right Header
 
 TEL: 888-PUCK
-\newline 
+\newline
 
-\family typewriter 
-\size small 
+\family typewriter
+\size small
 bill@globe.org
-\layout Title
+\end_layout
+
+\begin_layout Title
 
 William Shakespeare
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Some people put a summary here.
  Note: there are many LaTeX variables you can set in the preamble to change
  the look of the CV.
  Look there (choose 
-\family sans 
-\bar under 
+\family sans
+\bar under
 L
-\bar default 
+\bar default
 ayout
-\family default 
+\family default
 \SpecialChar \menuseparator
 
-\family sans 
-\bar under 
+\family sans
+\bar under
 L
-\bar default 
+\bar default
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 {}
-\end_inset 
+\end_layout
 
-aTeX\SpecialChar ~
+\end_inset
+
+aTeX\InsetSpace ~
 Preamble...
-\family default 
+\family default
 ) for examples.
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Work Experience
-\layout Topic
+\end_layout
+
+\begin_layout Topic
 \labelwidthstring MMMMM
 
 1593--1609 Wrote and produced plays for the Queen, and then for the King.
  He really liked them a lot, but they reminded him of plays by this guy,
  the Earl of Oxford.
-\layout Topic
+\end_layout
+
+\begin_layout Topic
 \labelwidthstring MMMMM
 
-\SpecialChar ~
+\InsetSpace ~
  If a topic does not have a subtitle, you have to put a protected space
  there.
  This is a shortcoming of LyX.
-\begin_deeper 
-\layout Standard
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
 
 But you can also use the paragraph depth setting, depending on what you
  want to do.
-\end_deeper 
-\layout Section
+\end_layout
+\end_deeper
+\begin_layout Section
 
 Education
-\layout Topic
+\end_layout
+
+\begin_layout Topic
 \labelwidthstring MMMMM
 
 1577--78 My Dad taught me stuff.
-\layout Topic
+\end_layout
+
+\begin_layout Topic
 \labelwidthstring MMMMM
 
-April\SpecialChar ~
-to\SpecialChar ~
-May\SpecialChar ~
+April\InsetSpace ~
+to\InsetSpace ~
+May\InsetSpace ~
 1581 Tried high school.
  Hated my English teacher.
  [Two things here: first, note (on paper) how a linebreak is inserted if
  your subtitle is too long; second, note that you have to use unbreakable
  spaces to embed spaces in the subtitle.]
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Publications
-\layout Bibliography
+\end_layout
+
+\begin_layout Bibliography
 \labelwidthstring Publications
 \bibitem {firstref}
 
 First Folio.
  Me.
  1623.
-\layout Bibliography
+\end_layout
+
+\begin_layout Bibliography
 \labelwidthstring Publications
 \bibitem {secondref}
 
@@ -150,7 +183,10 @@ These references could have been entered via BibTeX\SpecialChar \ldots{}
  can cite my work of 
 \begin_inset LatexCommand \cite{firstref}
 
-\end_inset 
+\end_inset
 
 .
-\the_end
+\end_layout
+
+\end_body
+\end_document

@@ -1,5 +1,7 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass article
 \language slovene
 \inputencoding latin2
@@ -7,12 +9,11 @@
 \graphics dvips
 \paperfontsize default
 \spacing single
-\papersize letterpaper
-\paperpackage a4
-\use_geometry 0
+\papersize default
+\use_geometry false
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -23,111 +24,158 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle plain
+\tracking_changes false
+\output_changes true
+\end_header
 
-\layout Standard
+\begin_body
+
+\begin_layout Standard
 
 TO JE NASLOV VA©EGA SPISA 
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Namig: naslov bi moral biti videti bolj kot naslov.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Avtor: Fe LyX
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Namig: Fe je AVTOR (angl.
  Author).
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 12.
  junij 1972
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Namig: to je DATUM (angl.
  Date).
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Kazalo
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Namig: Fino bi bilo, èe nam ne bi bilo treba roèno
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 dobesedno vpisovati vsebinskega kazala.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 1.
  Temeljna filozofija..................1
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 1.1 Kako se stvari loteva LyX...............1
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 1.2 Zakaj je LyX bolj¹i................1
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 2.
  Odlike LyXa
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 3.
  Nerodni poskusi uporabe LyXa
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 4.
  Matematiène zadev¹èine
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 ---------------------------------------------------
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 1.
  Temeljna filozofija
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Namig: naslovi razdelkov (angl.
  Section) bi verjetno
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 morali bolj izstopati.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Temeljna filozofija LyXa je, da naj bi se posveèali vsebini tistega, o èemer
  pi¹emo, ne obliki.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 1.1 Kako se stvari loteva LyX
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LyX uporablja LaTeX, sistem za pripravljanje spisov, ki ga je leta 1985
  zasnoval Leslie Lamport.
@@ -135,27 +183,35 @@ LyX uporablja LaTeX, sistem za pripravljanje spisov, ki ga je leta 1985
  ustvaril Donald Knuth.
  Filozofija LaTeXa je podobna filozofiji LyXa.
  Leslie Lamport je nekoè rekel (glej vir [1])
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Namig: Verjetno ta NAVZKRI®NI SKLIC ne bi smel
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 biti "vne¹en".
  Kaj, èe naredimo Lamportovo knjigo
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 za drugo postavko spiska literature?
-\end_inset 
+\end_layout
+
+\end_inset
 
 :
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 Tipografsko oblikovanje naj bi pomagalo bralcu razumeti avtorjeve zamisli.
  Da bi bilo spis lahko brati, mora njegova zunanja podoba odsevati njegovo
@@ -167,202 +223,273 @@ Tipografsko oblikovanje naj bi pomagalo bralcu razumeti avtorjeve zamisli.
  Med pisanjem bi se morali ukvarjati z logièno zgradbo spisa, ne pa z njegovo
  zunanjo podobo.
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
 
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Namig: To je NAVEDEK (angl.
  Quote).
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 1.2 Zakaj je LyX bolj¹i
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LyX je uporaben za veè ljudi kot LaTeX.
  Precej la¾je se ga je nauèiti, saj ni treba znati LaTeXa (ki je praktièno
  programski jezik).
  LyX je pravzaprav tak kot drugi urejevalniki besedil tipa 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 to, kar vidi¹, to tudi dobi¹
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
 , le da je vrste 
 \begin_inset Quotes gld
-\end_inset 
+\end_inset
 
 to, kar vidi¹, to tudi misli¹
 \begin_inset Quotes grd
-\end_inset 
+\end_inset
 
 .
  Tako zdru¾uje preprostost uporabe urejevalnikov besedil z moèjo LaTeXa.
  To je Dobra Stvar.
  Tudi datoteèni format je neodvisen od platforme.
  Najbolj¹e od vsega pa je, da je PROST!
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 2.
  Odlike LyXa
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LyX ima ¹tevilne odlike, ki nam olaj¹ajo pisanje spisov.
  (Navsezadnje, le zakaj bi ga drugaèe sploh ¾eleli uporabljati?
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Namig: Ta stavek v oklepaju je videti bolje kot
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 opomba v nogi.
-\end_inset 
+\end_layout
+
+\end_inset
 
 ) ZELO ME VESELI, 
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Namig: Poudarite!
-\end_inset 
+\end_layout
+
+\end_inset
 
  da lahko pi¹em o tem.
  Omenimo le dve odliki LyXa:
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 * Namesto vas skrbi za robove in ¹tevilèi opombe v nogi.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 * Olaj¹a pisanje in urejanje matematiènih obrazcev.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Bolj filozofsko razpravo o tem, zakaj je LyX bolj¹i od drugih urejevalnikov
  besedil, pa boste na¹li v razdelku 1.2 na strani 1.
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Namig: Verjetno ta NAVZKRI®NA SKLICEVANJA
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 ne bi smela biti "zakodirana".
  Kaj, èe spremenimo
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 ¹tevilke razdelkov?
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 3.
  Nerodni poskusi uporabe LyXa
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Zadnjiè sem napisal program, podoben spodnjemu:
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 5 REM MOJ STRA©NI PROGRAM
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 10 PRINT 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 STRA©EN SEM!
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 20 GOTO 10 
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Namig: To je raèunalni¹ka KODA (angl.
  Code).
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Po tem uèenem razmi¹ljanju me je nenadoma preplavilo bolj umetni¹ko razpolo¾enje
  in napisal sem tale haiku
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LyX je zares èudovit
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 stavni urejevalnik besedil
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 prihrani mi toliko èasa 
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Namig: Ni preveè dobro, a je poezija,
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 znana tudi kot VERZI (angl.
  Verse).
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 4.
  Matematiène zadev¹èine
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Namig: Te matematiène stvari bi morale biti izpisane
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 v matematiènem naèinu!
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Najbolj so mi pri srcu enaèbe za re¹itev kvadratne enaèbe.
  Èe je ax^2+bx+c=0 (en.
  1), potem je x= -b + ali minus kvadratni koren od b^2-4ac vse skupaj ulomljeno
  z 2a (en.
  2).
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Druga priljubljena enaèba je temelj matematiène analize: izraz f'(x) je
  definiran kot limita izraza f(x+deltax) - f(x) ulomljenega z deltax, ko
  gredo ¹tevila deltax proti niè (en.
  3).
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 ------------------------------------------------
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LITERATURA
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 [1] Lamport, Leslie.
  LaTeX: A Document Preparation System; Addison-Wesley, Reading, Massachusetts,
  druga izdaja, 1994.
-\the_end
+\end_layout
+
+\end_body
+\end_document

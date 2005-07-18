@@ -1,19 +1,18 @@
 #LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
-\lyxformat 233
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass docbook
 \language english
 \inputencoding auto
 \fontscheme default
 \graphics default
 \paperfontsize default
-\papersize Default
-\paperpackage a4
-\use_geometry 0
+\papersize default
+\use_geometry false
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
-\use_jurabib 0
-\use_bibtopic 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -24,8 +23,11 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tracking_changes 0
+\tracking_changes false
+\output_changes true
 \end_header
+
+\begin_body
 
 \begin_layout Title
 
@@ -48,7 +50,7 @@ status inlined
 Joe
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \begin_inset CharStyle Surname
@@ -59,7 +61,7 @@ status inlined
 Doe
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \end_layout
@@ -79,4 +81,5 @@ First Section
 First paragraph.
 \end_layout
 
+\end_body
 \end_document

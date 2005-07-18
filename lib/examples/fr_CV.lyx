@@ -1,5 +1,7 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass cv
 \begin_preamble
 %% Vous pouvez modifier les polices utilisés dans le document
@@ -28,18 +30,17 @@
 % To get more room for left column of Topic layouts, uncomment following line:
 % \setlength{\topicmargin}{0.3\textwidth}
 \end_preamble
-\language frenchb
+\language french
 \inputencoding default
 \fontscheme default
 \graphics default
 \paperfontsize default
-\spacing single 
-\papersize a4paper
-\paperpackage a4
-\use_geometry 0
+\spacing single
+\papersize default
+\use_geometry false
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \secnumdepth -1
 \tocdepth -1
@@ -50,104 +51,140 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tracking_changes false
+\output_changes true
+\end_header
 
-\layout Left Header
+\begin_body
+
+\begin_layout Left Header
 
 123, rue Hamlet
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Informations de révision :
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Traduction : Mise à jour OK, Date : 07/07/2003
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Original : Révision: 1.4, Date : 17/01/2003
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\newline 
+\newline
 Stratford-upon-Avon
-\layout Right Header
+\end_layout
+
+\begin_layout Right Header
 
 Tél.
  : 08.36.68.TR.UC
-\newline 
+\newline
 
-\family typewriter 
-\size small 
+\family typewriter
+\size small
 guillaume@monde.org
-\layout Title
+\end_layout
+
+\begin_layout Title
 
 William Shakespeare
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Ici certaines personnes mettent un résumé.
  Note : dans le préambule vous pouvez paramétrer de nombreuses variables
  LaTeX pour modifier l'aspect du CV.
  Allez-y (faites 
-\family sans 
+\family sans
 Format\SpecialChar \menuseparator
 Préambule\SpecialChar \ldots{}
 
-\family default 
+\family default
 ) pour y trouver des exemples.
  
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Expérience Professionnelle
-\layout Topic
+\end_layout
+
+\begin_layout Topic
 \labelwidthstring MMMMM
 
 1593--1609 J'ai écrit et mis en scène des pièces pour la Reine, puis pour
  le Roi.
  Il les a vraiment beaucoup aimées, mais elles lui rappelaient celles d'un
  certain Comte d'Oxford.
-\layout Topic
+\end_layout
+
+\begin_layout Topic
 \labelwidthstring MMMMM
 
-\SpecialChar ~
+\InsetSpace ~
  Si un élément n'a pas de sous-titre, vous devez mettre une espace insécable,
  comme ici.
  C'est un inconvénient de LyX.
-\begin_deeper 
-\layout Standard
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
 
 Mais vous pouvez aussi vous servir de la profondeur d'environnement, selon
  ce que vous voulez obtenir.
-\end_deeper 
-\layout Section
+\end_layout
+\end_deeper
+\begin_layout Section
 
 Formation
-\layout Topic
+\end_layout
+
+\begin_layout Topic
 \labelwidthstring MMMMM
 
 1577--78 Mon Papa m'a appris le métier.
-\layout Topic
+\end_layout
+
+\begin_layout Topic
 \labelwidthstring MMMMM
 
-Avril\SpecialChar ~
-à\SpecialChar ~
-mai\SpecialChar ~
+Avril\InsetSpace ~
+à\InsetSpace ~
+mai\InsetSpace ~
 1581 J'ai essayé le lycée.
  Je détestais mon professeur d'Anglais.
  [Deux choses à noter : remarquez d'abord qu'un passage à la ligne apparaît
  à l'impression si votre sous-titre est trop long ; ensuite, que vous devez
  utiliser des espaces insécables pour mettre des espaces dans le sous-titre.]
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Publications
-\layout Bibliography
+\end_layout
+
+\begin_layout Bibliography
 \labelwidthstring Publications
 \bibitem {premiere_ref}
 
 Premier Volume.
  Moi.
  1623.
-\layout Bibliography
+\end_layout
+
+\begin_layout Bibliography
 \labelwidthstring Publications
 \bibitem {seconde_ref}
 
@@ -155,18 +192,23 @@ Vous auriez pu entrer ces références avec BibTeX\SpecialChar \ldots{}
  Dans tous les cas, je peux
  citer ici mon 
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 oe{}
-\end_inset 
+\end_layout
+
+\end_inset
 
 uvre 
 \begin_inset LatexCommand \cite{premiere_ref}
 
-\end_inset 
+\end_inset
 
 .
-\the_end
+\end_layout
+
+\end_body
+\end_document

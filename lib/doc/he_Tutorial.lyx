@@ -1,5 +1,7 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass book
 \begin_preamble
 %disable hyphenation (breaking words at end of line)
@@ -22,13 +24,12 @@
 \fontscheme default
 \graphics default
 \paperfontsize default
-\spacing single 
-\papersize Default
-\paperpackage a4
-\use_geometry 0
+\spacing single
+\papersize default
+\use_geometry false
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 2
@@ -39,38 +40,53 @@
 \papercolumns 1
 \papersides 2
 \paperpagestyle fancy
+\tracking_changes false
+\output_changes true
+\end_header
 
-\layout Title
+\begin_body
+
+\begin_layout Title
 
 שעור מודרך
-\layout Author
+\end_layout
+
+\begin_layout Author
 
 עמיר קרגר וצוות ליקס
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 תורגם על ידי גדי קוזמא, 
-\numeric on 
+\numeric on
 2002
-\numeric off 
+\numeric off
 .
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset LatexCommand \tableofcontents{}
 
-\end_inset 
+\end_inset
 
 
-\layout Chapter
+\end_layout
+
+\begin_layout Chapter
 
 מבוא
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \lang english
@@ -78,15 +94,19 @@ If you cannot see anything in this document except for this paragraph, do
  not despair! Everything you need is in Dekel Tsur's site: 
 \begin_inset LatexCommand \htmlurl{http://www.math.tau.ac.il/~dekelts/lyx/}
 
-\end_inset 
+\end_inset
 
 .
  Get what you need, install it, and return to reading this document at your
  leisure.
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 ברוך הבא לליקס
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 הקובץ הזה מיועד לכל מי שלא שמעו אף פעם על 
 \lang english
@@ -108,20 +128,24 @@ LaTeX
 \lang hebrew
 .
  עם זאת, יש מה ללמוד אם רוצים להשתמש בליקס בצורה יעילה.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 יכול להיות שהגעת לפה כי ניסית לשים שני רווחים אחרי הנקודה בסוף המשפט
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 מנהג מקובל באנגלית 
 \lang english
 ---
 \lang hebrew
  ג.ק.
-\end_inset 
+\end_layout
+
+\end_inset
 
 , או שלוש שורות ריקות בסוף פיסקה.
  אחרי הרבה תסכול גילית שזה פשוט בלתי אפשרי.
@@ -134,32 +158,46 @@ collapsed true
 ---
 \lang hebrew
  תוכן הכתיבה שלך.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 אז התאזר בסבלנות.
  קריאת המסמך הזה בהחלט שווה את הזמן שלך.
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 מה המסמך הזה, ומה הוא לא
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 רק הערה קטנה.
  השעור המודרך משתמש בסימון שהוסבר בהקדמה.
  אם הגעת למסמך הזה קודם, לך תקרא את ההקדמה.
  כן, עכשיו.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 עכשיו, כשאתה יודע מה המשמעות של כל פונט, אנחנו רוצים לדבר קצת על מה המסמך
  הזה כן.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 להוציא את המירב מהשעור המודרך
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 מסמך זה הוא אוסף של תרגילים ודוגמאות.
  לתוצאה מירבית עדיף שממש תקליד את כל השטויות ושתנסה את כל התרגילים לראות
  אם הם מצליחים לך.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 אם אתה כבר מכיר את 
 \lang english
@@ -174,21 +212,27 @@ LaTeX
  גם אם אין לך כוח לקרוא את כל המסמך הזה, מומלץ בחום שתקרא את סעיף 
 \begin_inset LatexCommand \ref{sec:latexusers}
 
-\end_inset 
+\end_inset
 
  שנכתב במיוחד עבור משתמשי 
 \lang english
 LaTeX
 \lang hebrew
  מנוסים.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 מה לא תמצא פה
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 האכלה בכפית.
-\begin_deeper 
-\layout Standard
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
 
 המגמה המסתמנת היום בספרות מחשבים ו- 
 \lang english
@@ -196,7 +240,9 @@ do it yourself
 \lang hebrew
  היא: "הנח שלמשתמש יש אינטיליגנציה של בטטה".
  אנחנו לא נוקטים בגישה הזאת.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 עם זאת, אנחנו מבינים שאם הגעת לתעוד 
 \lang english
@@ -209,33 +255,43 @@ do it yourself
  אתה מין הסתם אבוד.
  לא טיפש.
  רק אבוד.
-\end_deeper 
-\layout Itemize
+\end_layout
+\end_deeper
+\begin_layout Itemize
 
 הוראות איך להשתמש בעכבר ובמקלדת.
-\begin_deeper 
-\layout Standard
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
 
 אם בשלב הנוכחי אתה לא יודע איך להשתמש במחשב, אנחנו לא יכולים לעזור לך.
  הנושאים האלה הינם מחוץ למסגרת התעוד של ליקס
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 מה גם שליקס מטבעו מיועד למשתמשים שיש להם קורטוב שכל בראש.
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
-\end_deeper 
-\layout Itemize
+\end_layout
+\end_deeper
+\begin_layout Itemize
 
 הסברים מפורטים על כל תכונה ותכונה של ליקס.
-\begin_deeper 
-\layout Standard
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
 
 מה, אתה רוצה את המדריך למשתמש פעמיים?
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 אבל ברצינות, המטרה שלנו היא להעמיד אותך על הרגליים כדי שתוכל לקרוא את המדריך
  למשתמש.
@@ -243,16 +299,19 @@ collapsed true
  מיותר, ולא מעודכן באופן קבוע.
  זו בעצם הקדמה )שניה(.
  העמד פנים שיש "ראה במדריך למשתמש" בסוף כל חלק.
-\end_deeper 
-\layout Itemize
+\end_layout
+\end_deeper
+\begin_layout Itemize
 
 הסברים מפורטים על 
 \lang english
 LaTeX
 \lang hebrew
 .
-\begin_deeper 
-\layout Standard
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
 
 זה פשוט מיותר.
  אם מה שאתה מחפש זה כל הדברים המגניבים שאפשר לעשות ב-
@@ -262,99 +321,110 @@ LaTeX
 , קח ספר.
  יש כמה ספרים מצוינים בשוק.
  אחרי הכל, לא צריך להמציא את הגלגל מחדש כל פעם.
-\end_deeper 
-\layout Standard
+\end_layout
+\end_deeper
+\begin_layout Standard
 
 ואם כך, באומץ למסמך הראשון.
-\layout Chapter
+\end_layout
+
+\begin_layout Chapter
 
 ההתחלה
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 המסמך הראשון שלך עם ליקס
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 נו, עוד הסבר אחד קצרצר לפני שממש מתחילים בפועל.
  בגלל שרוב המידע אינו פה, הדבר הראשון שאתה צריך לעשות הוא למצוא את קבצי
  העזרה האחרים.
  פתח את ליקס.
  בחר 
-\family sans 
+\family sans
 מדריך למשתמש
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 U
-\bar default 
+\bar default
 ser's Guide
-\family default 
+\family default
 \lang hebrew
 ( מתפריט ה
-\family sans 
+\family sans
 עזרה
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 H
-\bar default 
+\bar default
 elp
-\family default 
+\family default
 \lang hebrew
 (.
  מן הסתם אתה רוצה לפתוח גם את השעור המודרך )אם אתה לא כבר קורא אותו על המסך(.
  זה יאפשר לך לקרוא אותם בזמן שאתה כותב את המסמך שלך
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 חוץ מהתוכן, הקבצים האלה גם יכולים לשמש כדוגמא איך להשתמש בתכונות של ליקס.
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
  מרגע שיש לך יותר ממסמך אחד פתוח, אתה יכול להשתמש בתפריט ה
-\family sans 
+\family sans
 מסמכים
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 D
-\bar default 
+\bar default
 ocuments
-\family default 
+\family default
 \lang hebrew
 ( כדי לעבור מאחד לשני.
  השעור המודרך לא יכסה בפרוט נושאים שנדונים בקבצים אחרים.
  זה עלול להקשות בהתחלה, אבל בזכות זה השעור המודרך קצר יחסית.
  זה גם ירגיל אותך להשתמש בקבצי העזרה האחרים, ובטווח הרחוק זה יכול לחסוך
  לך הרבה זמן.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 במסמך הזה אנחנו מניחים שיש לך התקנה מלאה של ליקס, 
 \lang english
 LaTeX
 \lang hebrew
 , 
-\family typewriter 
+\family typewriter
 \lang english
 xdvi
-\family default 
+\family default
 \lang hebrew
  או כל תוכנה אחרת לצפייה בקבצי 
 \lang english
 dvi
 \lang hebrew
 , 
-\family typewriter 
+\family typewriter
 \lang english
 dvips
-\family default 
+\family default
 \lang hebrew
  או דרך אחרת לתרגם קבצי 
 \lang english
@@ -368,25 +438,25 @@ dvi
  אם לא, אתה )או איש סיסטם ידידותי( צריך לטפל בבעיה.
  מסמכים אחרים עוסקים בנושא זה
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 אפשר להתחיל מפרק 
-\numeric on 
+\numeric on
 2
-\numeric off 
+\numeric off
  של המדריך למשתמש, "התקנת ליקס ותוכנות עזר" )
-\emph on 
+\emph on
 \lang english
 LyX Setup and Supporting Applications
-\emph default 
+\emph default
 \lang hebrew
  ב-
-\emph on 
+\emph on
 \lang english
 User's Guide
-\emph default 
+\emph default
 \lang hebrew
 (.
  שם יש הפניות למסמכים נוספים 
@@ -395,36 +465,40 @@ User's Guide
 \lang hebrew
  ג
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 ק.
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 לקינוח, כתבנו קובץ שיאפשר לך להתאמן על כישורי הליקס שלך.
  הוא נקרא 
-\family typewriter 
+\family typewriter
 \lang english
 example_raw.lyx
-\family default 
+\family default
 \lang hebrew
 .
  חשוב עליו כאילו הוא טקסט שהוקלד על ידי מישהו שלא שמע על נפלאות הליקס.
  כאשר תלמד תכונות חדשות של ליקס, נציע לך להתאמן ע"י תיקון החלקים הרלבנטיים
  של 
-\family typewriter 
+\family typewriter
 \lang english
 example_raw.lyx
-\family default 
+\family default
 \lang hebrew
 .
  בנוסף יש בו "רמזים" איך לבצע את התיקון
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 הרמזים מופיעים כקוביות עם המילה 
 \lang english
@@ -432,47 +506,49 @@ note
 \lang hebrew
  בצהוב.
  לחיצה על קוביה תפתח אותה ותראה את תוכנה.
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
  אם אתה רוצה לרמות )או לבדוק אם עשית נכון( יש גם קובץ בשם 
-\family typewriter 
+\family typewriter
 \lang english
 example_lyxified.lyx
-\family default 
+\family default
 \lang hebrew
  שמכיל את אותו טקסט בצורה המומלצת על ידי מומחי הליקס
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 בעברית אנחנו מציעים לך שתי אופציות אטרקטיביות: או הקובץ 
-\family typewriter 
+\family typewriter
 \lang english
 he_example_raw.lyx
-\family default 
+\family default
 \lang hebrew
  )מומלץ( שבו הטקסט באנגלית ורק הרמזים בעברית, או 
-\family typewriter 
+\family typewriter
 \lang english
 he_he_example_raw.lyx
-\family default 
+\family default
 \lang hebrew
  שבו גם הטקסט וגם הרמזים בעברית )מומלץ אולי בזכות השירה, אבל לא כתרגיל ליקס,
  בשלב הזה חבל להעיק עליך עם בעיות מיוחדות לשימוש בעברית(.
  שים לב שאין 
-\family typewriter 
+\family typewriter
 \lang english
 he_example_lyxified.lyx
-\family default 
+\family default
 \lang hebrew
 .
  אם היה, הוא היה כמעט זהה ל- 
-\family typewriter 
+\family typewriter
 \lang english
 example_lyxified.lyx
-\family default 
+\family default
 \lang hebrew
  הרגיל 
 \lang english
@@ -480,71 +556,75 @@ example_lyxified.lyx
 \lang hebrew
  ג
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 ק.
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 את הדוגמאות האלה תמצא בספריה 
-\family typewriter 
+\family typewriter
 \lang english
 examples/
-\family default 
+\family default
 \lang hebrew
 .
  בחר 
-\family sans 
+\family sans
 קובץ:פתח
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 F
-\bar default 
+\bar default
 ile\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 O
-\bar default 
+\bar default
 pen
-\family default 
+\family default
 \lang hebrew
 ( ואז לחץ על כפתור ה
-\family sans 
+\family sans
 דוגמאות
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 E
-\bar default 
+\bar default
 xamples
-\family default 
+\family default
 \lang hebrew
 (.
  פתח את המסמך הלא מעובד ובחר 
-\family sans 
+\family sans
 קובץ:שמירה בשם
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 F
-\bar default 
+\bar default
 ile\SpecialChar \menuseparator
-Save\SpecialChar ~
+Save\InsetSpace ~
 
-\bar under 
+\bar under
 A
-\bar default 
+\bar default
 s
-\family default 
+\family default
 \lang hebrew
 ( כדי לשמור עותק בספריה האישית שלך שתוכל לשנות.
  אחרי כל שינוי שתבצע, בדוק מה קורה לפלט ה-
@@ -552,24 +632,28 @@ s
 dvi
 \lang hebrew
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 ומענין לענין באותו בנין: הספריה 
-\family typewriter 
+\family typewriter
 \lang english
 examples/
-\family default 
+\family default
 \lang hebrew
  מכילה הרבה קבצי דוגמא נוספים, שמדגימים כל מיני שימושים משוכללים של ליקס,
  בפרט דברים שמסיבות אורך, או מסיבות אחרות, לא מצאו את מקומם בתעוד הראשי.
  אחרי שמיצית את התעוד הרגיל, אתה יכול לנסות את הספריה הזאת כמקור מידע נוסף.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 הקלדה, צפייה, הדפסה
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 בחלק זה, ובתעוד בכלל, לא נסביר איך לעבוד עם עברית בליקס.
  הסברים בנושא זה נמצאים באתר של דקל צור שהפנייה אליו נמצאת בראש המסמך.
@@ -580,76 +664,88 @@ collapsed true
 \lang hebrew
  ג
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 ק.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 פתח קובץ חדש בעזרת 
-\family sans 
+\family sans
 קובץ:חדש
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 F
-\bar default 
+\bar default
 ile\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 N
-\bar default 
+\bar default
 ew
-\family default 
+\family default
 \lang hebrew
 (.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 הקלד משפט כמו 
-\family typewriter 
+\family typewriter
 \lang english
 This is my first LyX document!
 \lang hebrew
 
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 בסדר, בסדר, מצדנו תדפיס את דעתך על מצב החסה בשטחים.
  זה לא משנה.
  ואנחנו מתנצלים מראש על האויליות של משפט הדוגמא הזה וכל דבר אחר שנבקש ממך
  להקליד בעתיד.
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 שמור את המסמך עם 
-\family sans 
+\family sans
 קובץ:שמירה בשם
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 F
-\bar default 
+\bar default
 ile\SpecialChar \menuseparator
-Save\SpecialChar ~
+Save\InsetSpace ~
 
-\bar under 
+\bar under
 A
-\bar default 
+\bar default
 s
-\family default 
+\family default
 \lang hebrew
 (.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 הרץ את 
 \lang english
@@ -660,24 +756,24 @@ LaTeX
 dvi
 \lang hebrew
  בעזרת 
-\family sans 
+\family sans
 צפייה:
-\bar under 
+\bar under
 \lang english
 D
-\bar default 
+\bar default
 VI
-\family default 
+\family default
 \lang hebrew
  )\SpecialChar \menuseparator
 
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 V
-\bar default 
+\bar default
 iew
-\family default 
+\family default
 \lang hebrew
 (.
  סביר שתראה הדפסות בחלון שממנו הרצת את ליקס.
@@ -687,10 +783,10 @@ LaTeX
 \lang hebrew
  ואתה מוזמן להתעלם מהן לעת עתה.
  ליקס יריץ את 
-\family typewriter 
+\family typewriter
 \lang english
 xdvi
-\family default 
+\family default
 \lang hebrew
  )או תוכנה אחרת לצפייה בקבצי 
 \lang english
@@ -698,81 +794,87 @@ dvi
 \lang hebrew
 ( ויופיע חלון שבו תוכל לראות איך יראה הקובץ כשתדפיס אותו
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 אפשר לחסוך זמן בפעמים הבאות שאתה מבצע את הפעולה.
  השאר את החלון של 
-\family typewriter 
+\family typewriter
 \lang english
 xdvi
-\family default 
+\family default
 \lang hebrew
  פתוח, ובחר 
-\family sans 
+\family sans
 צפייה:עדכון:
-\bar under 
+\bar under
 \lang english
 D
-\bar default 
+\bar default
 VI
-\family default 
+\family default
 \lang hebrew
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 V
-\bar default 
+\bar default
 iew\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 U
-\bar default 
+\bar default
 pdate\SpecialChar \menuseparator
 
-\family default 
+\family default
 \lang hebrew
 (.
  חלון ה- 
-\family typewriter 
+\family typewriter
 \lang english
 xdvi
-\family default 
+\family default
 \lang hebrew
  יתעדכן ברגע שתלחץ עליו.
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 הדפס בעזרת 
-\family sans 
+\family sans
 קובץ:הדפס
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 F
-\bar default 
+\bar default
 ile\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 P
-\bar default 
+\bar default
 rint
-\family default 
+\family default
 \lang hebrew
 ( ולחיצה על 
-\family sans 
+\family sans
 \lang english
 OK
-\family default 
+\family default
 \lang hebrew
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 מזל טוב! כתבת והדפסת את מסמך הליקס הראשון שלך.
  כל השאר זה רק פרטים 
@@ -780,272 +882,289 @@ OK
 ---
 \lang hebrew
  ראה במדריך למשתמש, "תכונות נוספות" ו- "התאמה".
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 פעולות פשוטות
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 ליקס יכול לעשות את רוב מה שאתה רגיל לעשות עם מעבדי תמלילים.
  הוא ישבור שורות ויישר פסקאות באופן אוטומטי.
  תציץ בתפריטים ותראה
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 זה לא שאנחנו לא יודעים שעשית את זה הרבה לפני שפתחת את המסמך הזה.
-\end_inset 
+\end_layout
+
+\end_inset
 
  שרוב הפקודות שאתה רגיל אליהן )
-\family sans 
+\family sans
 קובץ:יציאה
-\family default 
+\family default
 , 
-\family sans 
+\family sans
 עריכה:הדבק
-\family default 
+\family default
 , 
-\family sans 
+\family sans
 קובץ:הדפס
-\family default 
+\family default
 ( נמצאות במקום הצפוי ובשם הצפוי, ועושות את מה שאתה מצפה.
  להלן תאור זריז של כמה פעולות פשוטות נוספות
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 ביטול לליקס יש את היכולת לביטול "אינסופי", כלומר אתה יכול לבטל את כל השינויים
  שעשית מאז שהעלת את המסמך בעזרת בחירת 
-\family sans 
+\family sans
 עריכה:בטל
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 E
-\bar default 
+\bar default
 dit\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 U
-\bar default 
+\bar default
 ndo
-\family default 
+\family default
 \lang hebrew
 ( שוב ושוב.
  אם הגזמת, בחר 
-\family sans 
+\family sans
 עריכה:בטל ביטול
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 E
-\bar default 
+\bar default
 dit\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 R
-\bar default 
+\bar default
 edo
-\family default 
+\family default
 \lang hebrew
 ( להחזיר את מה שביטלת.
-\begin_deeper 
-\layout Standard
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
 
 ]כרגע, ביטול מוגבל ל- 
-\numeric on 
+\numeric on
 100
-\numeric off 
+\numeric off
  צעדים.
  בנוסף אי אפשר לבטל כל דבר ודבר 
 \lang english
 ---
 \lang hebrew
  לדוגמא החלפת מחלקת המסמך )ראה בהמשך([
-\end_deeper 
-\layout Description
+\end_layout
+\end_deeper
+\begin_layout Description
 
 גזור/הדבק/העתק השתמש ב- 
-\family sans 
+\family sans
 עריכה:גזור
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 E
-\bar default 
+\bar default
 dit\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 C
-\bar default 
+\bar default
 ut
-\family default 
+\family default
 \lang hebrew
 (, 
-\family sans 
+\family sans
 עריכה:הדבק
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 E
-\bar default 
+\bar default
 dit\SpecialChar \menuseparator
 P
-\bar under 
+\bar under
 a
-\bar default 
+\bar default
 ste
-\family default 
+\family default
 \lang hebrew
 ( ו
-\family sans 
+\family sans
 עריכה:העתק
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 E
-\bar default 
+\bar default
 dit\SpecialChar \menuseparator
 C
-\bar under 
+\bar under
 o
-\bar default 
+\bar default
 py
-\family default 
+\family default
 \lang hebrew
 ( בהתאמה.
  לחילופין, אפשר להדביק מה שבחרת בעזרת הכפתור האמצעי של העכבר )בשביל זה לא
  צריך לגזור או להעתיק במפורש, רק לבחור(.
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 חפש/החלף השתמש ב- 
-\family sans 
-עריכה:חפש\SpecialChar ~
+\family sans
+עריכה:חפש\InsetSpace ~
 והחלף
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 E
-\bar default 
+\bar default
 dit\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 F
-\bar default 
-ind\SpecialChar ~
-&\SpecialChar ~
+\bar default
+ind\InsetSpace ~
+&\InsetSpace ~
 Replace
-\family default 
+\family default
 \lang hebrew
 ( כדי לחפש.
  בתיבת הדיאלוג השתמש בחצים קדימה ואחורה ובכפתור 
-\family sans 
+\family sans
 החלף
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 R
-\bar default 
+\bar default
 eplace
-\family default 
+\family default
 \lang hebrew
 ( כדי להחליף את המילה שנמצאה
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 סגור את החלון כשאתה גומר.
  או השאר אותו פתוח.
  רוב תבות הדיאלוג בליקס, כולל חלון החיפוש, חלון 
-\family sans 
+\family sans
 תוכן העניינים
-\family default 
+\family default
 , חלונות ה
-\family sans 
+\family sans
 מבנה
-\family default 
+\family default
  וחלונות מתמטיקה שונים ניתן להקטין או להזיז במקום לסגור.
  תבות דיאלוג מסוימות, כמו 
-\family sans 
+\family sans
 קובץ:פתיחה
-\family default 
+\family default
  לא מאפשרות לך להקליד כלום בחלון הראשי לפני שתסגור אותן ממש.
  החסרון הוא שכל עוד תיבת הדיאלוג היא החלון הפעיל, היא מקבלת את ההקלדות שלך,
  ולא המסמך.
  
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
-\layout Description
+\end_layout
 
-פורמט\SpecialChar ~
+\begin_layout Description
+
+פורמט\InsetSpace ~
 תו אפשר להדגיש טקסט )באנגלית זה נקרא 
-\emph on 
+\emph on
 \lang english
 Emphasize
-\emph default 
+\emph default
 \lang hebrew
  ותקבל אותיות מוטות, או 
-\emph on 
+\emph on
 \lang english
 italics
-\emph default 
+\emph default
 \lang hebrew
 (, להבליט אותו )
-\series bold 
+\series bold
 \lang english
 bold
-\series default 
+\series default
 \lang hebrew
 ( או לשים אותו בסגנון 
-\noun on 
+\noun on
 \lang english
 Noun
-\noun default 
+\noun default
 \lang hebrew
 , סגנון הידוע באנגלית גם בשם 
-\noun on 
+\noun on
 \lang english
 Small Caps
 \lang hebrew
 , 
-\noun default 
+\noun default
 ובו האותיות הרגילות מופיעות כאותיות ראשיות מוקטנות והאותיות הראשיות מופיעות
  בגודלן הרגיל.
  השתמש באופציות המתאימות מתפריט
-\noun on 
+\noun on
  
-\family sans 
-\noun default 
+\family sans
+\noun default
 מבנה
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 L
-\bar default 
+\bar default
 ayout
-\family default 
+\family default
 \lang hebrew
 (
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 אף אחד מאלה לא עובד כמו שצריך בעברית, בהתקנה הבסיסית של 
 \lang english
@@ -1055,22 +1174,28 @@ LaTeX
  הוראות כיצד לטפל בבעיה תמצא ב-
 \begin_inset LatexCommand \url{http://www.math.tau.ac.il/~dekelts/lyx/ttf.html}
 
-\end_inset 
+\end_inset
 
 .
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
-\layout Description
+\end_layout
 
-לוח\SpecialChar ~
+\begin_layout Description
+
+לוח\InsetSpace ~
 הכלים שנמצא בדיוק מתחת לתפריטים נותן קיצורים לכמה פונקציות נפוצות, כמו
  הדבק או הדפס.
  אם תשאיר את העכבר מספר שניות מעל הכפתור, יופיע פתק צהוב קטן שיאמר לך מה
  הוא עושה.
-\layout Description
+\end_layout
 
-שורת\SpecialChar ~
+\begin_layout Description
+
+שורת\InsetSpace ~
 מידע הפס האפור בתחתית החלון נקרא שורת המידע )
 \lang english
 minibuffer
@@ -1081,38 +1206,44 @@ minibuffer
  גם הודעות שגיאה יכולות להופיע פה.
  ישנם מצבים שבהם אפשר גם להקליד בשורת המידע, אבל על זה ידובר כבר במסמך אחר.
  מדובר בטכניקות מתקדמות שיכולות גם לשבש את המסמך שלך.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 ברור שחמש המילים שהקלדת עד עכשיו לא מאפשרות יותר מדי משחקים מעניינים עם
  האופציות האלה.
  ככל שהמסמך יתקדם, המצב ישתפר מבחינה זו.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 רווחים בליקס: 
 \lang english
 WYSIWYM
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset LatexCommand \label{sec:whitespace}
 
-\end_inset 
+\end_inset
 
 אחד מהדברים הקשים ביותר למשתמשים חדשים הוא נושא הרווחים.
  לא משנה כמה פעמים תקיש 
-\family sans 
+\family sans
 \lang english
 Return
-\family default 
+\family default
 \lang hebrew
  תקבל רק שורה ריקה אחת.
  לא משנה כמה פעמים תתרגז על מקש הרווח, עדיין תשאר עם רווח אחד.
  בשורה ריקה, ליקס לא מאפשר לך להקליד רווח.
  מקש ה- 
-\family sans 
+\family sans
 \lang english
 Tab
-\family default 
+\family default
 \lang hebrew
  לא יעביר אותן לנקודת העצירה )
 \lang english
@@ -1123,14 +1254,16 @@ tab stop
 ---
 \lang hebrew
  למעשה אין דבר כזה נקודות 
-\family sans 
+\family sans
 \lang english
 Tab
-\family default 
+\family default
 \lang hebrew
  בליקס.
  ואין סרגל שבו אתה יכול לשחק עם השוליים.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 רוב מעבדי התמלילים המסחריים מבוססים על קונצפט ה- 
 \lang english
@@ -1142,127 +1275,131 @@ What You See Is What You Get
 \lang hebrew
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 .
  ליקס, מאידך, מבוסס על העיקרון "
 \lang english
 What You See Is What You 
-\emph on 
+\emph on
 Mean
-\emph default 
+\emph default
 \lang hebrew
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 .
  אתה מקליד, וליקס דואג בשבילך שהפלט יראה יפה.
  בליקס, מקש ה-
-\family sans 
+\family sans
 \lang english
 Return
-\family default 
+\family default
 \lang hebrew
  מפריד בין פסקאות, ולכן אין משמעות לכמה 
-\family sans 
+\family sans
 \lang english
 Return
-\family default 
+\family default
 \lang hebrew
 -ים רצופים, באותה צורה 
-\family sans 
+\family sans
 רווח
-\family default 
+\family default
  מפריד בין מילים, ושוב, אם הפרדת אז הפרדת, רווחים נוספים הם מיותרים.
  ל-
-\family sans 
+\family sans
 \lang english
 Tab
-\family default 
+\family default
 \lang hebrew
  אין שום פונקציה דיקדוקית, ולכן ליקס לא משתמשת בו.
  בליקס אתה מתעסק הרבה יותר בתוכן והרבה פחות בצורה.
  ראה עוד בהקדמה )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 H
-\bar default 
+\bar default
 elp\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 I
-\bar default 
+\bar default
 ntroduction
-\family default 
+\family default
 \lang hebrew
 ( על קונצפט ה-
 \lang english
 WYSIWYM
 \lang hebrew
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 יש, כמובן, דרכים )רבות( לכוונן את פורמט המסמך שלך בליקס.
  בסופו של דבר, אי אפשר לצפות שליקס תנחש כל פעם בדיוק למה אתה מתכוון.
  המדריך למשתמש )
-\emph on 
+\emph on
 \lang english
 User's Guide
-\emph default 
+\emph default
 \lang hebrew
 ( מכיל אינפורמציה לגבי כל זה, כולל 
-\family sans 
+\family sans
 \lang english
 HFill
-\family default 
+\family default
 \lang hebrew
 -ים, ורווח אנכי, כלים רבי כוח לפתור בעיות כאלה, ושיטות לשנות את גודל הפונט,
  סוגי התוים וישור פסקאות ידנית.
  עם זאת, הרעיון הוא לכתוב את המסמך שלך קודם, ולהתעסק בכיוונון בסוף, ולא
  כמו במעבדי תמלילים רגילים, בהם נושא מראה הפלט מעסיק אותך באופן קבוע בזמן
  הכתיבה.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 סוג נוסף של רווח הוא הרווח המוגן )
-\family sans 
+\family sans
 \lang english
 Protected Blank
-\family default 
+\family default
 \lang hebrew
 (, שאותו תקבל אם תקיש 
-\family sans 
+\family sans
 \lang english
 C-Space
-\family default 
+\family default
 \lang hebrew
  או 
-\family sans 
-הוספה:תו\SpecialChar ~
-מיוחד:רווח\SpecialChar ~
+\family sans
+הוספה:תו\InsetSpace ~
+מיוחד:רווח\InsetSpace ~
 מוגן
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 I
-\bar default 
+\bar default
 nsert\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 S
-\bar default 
-pecial\SpecialChar ~
+\bar default
+pecial\InsetSpace ~
 Character\SpecialChar \menuseparator
-Protected\SpecialChar ~
+Protected\InsetSpace ~
 
-\bar under 
+\bar under
 B
-\bar default 
+\bar default
 lank
-\family default 
+\family default
 \lang hebrew
 (.
  על המסך הוא נראה כמו "
@@ -1271,63 +1408,71 @@ u
 \lang hebrew
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  קטן וכחול
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 אם אתה קורא את המסמך במחשב, מן הסתם כבר ראית אותם ותהית לגבי משמעותם.
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
  אם תשים 
-\family sans 
-רווח\SpecialChar ~
+\family sans
+רווח\InsetSpace ~
 מוגן
-\family default 
+\family default
  בין שתי מילים, זה יראה בדיוק כמו רווח רגיל בהדפסה.
  ההבדל הוא ש
-\family sans 
-רווח\SpecialChar ~
+\family sans
+רווח\InsetSpace ~
 מוגן
-\family default 
+\family default
  אומר ל- 
 \lang english
 LaTeX
 \lang hebrew
  לא לשבור את השורה בין שתי המילים האלה.
- מקובל, למשל, להשתמש בו כדי לכתוב משהו כמו "ראה פרק\SpecialChar ~
+ מקובל, למשל, להשתמש בו כדי לכתוב משהו כמו "ראה פרק\InsetSpace ~
 
-\numeric on 
+\numeric on
 1
-\numeric off 
+\numeric off
 ", כשאתה רוצה להיות בטוח שהמילים "פרק" ו- "
-\numeric on 
+\numeric on
 1
-\numeric off 
+\numeric off
 " יהיו על אותה שורה
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 במסמך הזה אנחנו משתמשים בהם כדי לתאר שמות של תפריטים, קיצורים, ותוים מיוחדים,
  כמו למשל 
-\family sans 
-רווח\SpecialChar ~
+\family sans
+רווח\InsetSpace ~
 מוגן
-\family default 
+\family default
 ...
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 סביבות
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 לחלקים שונים של המסמך יש מטרה שונה.
  אנחנו קוראים ל"סוג" הטקסט הסביבה )
@@ -1341,7 +1486,9 @@ environment
  מאמר מדעי מכיל תקציר.
  למכתב, לעומת זאת, אין כותרת, אבל כתובת השולח מופיעה בצורה מיוחדת ואפשר
  לצפות לסביבה הולמת.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 סביבות הם חלק מהותי מפילוסופית ה-
 \lang english
@@ -1351,26 +1498,28 @@ WYSIWYM
  סביבה יכולה להכתיב פונט, גודל פונט, אינדנטציה, מרווח ועוד ועוד.
  בנוסף הפורמט המדויק עבור סביבה מסוימת אינו קבוע.
  כתב עת א' יכול להשתמש בבולד, גודל 
-\numeric on 
+\numeric on
 18
-\numeric off 
+\numeric off
  ממורכז בשביל הכותרת, ורעהו דווקא באותיות מוטות ומיושרות לשמאל בגודל 
-\numeric on 
+\numeric on
 15
-\numeric off 
+\numeric off
 .
  לכל שפה יש תקנים משלה לישור פסקאות, והביבליוגרפיה משתנה משדה לשדה.
  ליקס חוסכת לך ללמוד את כל זה.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 תיבת ה
-\family sans 
+\family sans
 סביבה
-\family default 
+\family default
  נמצאת מצד שמאל בקצה לוח הכלים, מתחת לתפריט 
-\family sans 
+\family sans
 קובץ
-\family default 
+\family default
 .
  שם רשומה הסביבה שבה אתה כותב ברגע נתון.
  כשכתבת את המסמך הראשון שלך, הופיעה שם המילה 
@@ -1381,40 +1530,46 @@ Standard
  השלב הבא יהיה לשים במסמך שלך מספר סביבות שונות.
  כל מה שאתה צריך בשביל זה הוא תפריט הסביבות, שמתגלה כאשר לוחצים על איקון
  ה"חץ למטה", ישירות מימין לתיבת הסביבה.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 סעיפים ותתי-סעיפים
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 הקלד את המילה 
-\family typewriter 
+\family typewriter
 \lang english
 Introduction
-\family default 
+\family default
 \lang hebrew
  בשורה הראשונה של הקובץ שלך, ובחר 
-\family sans 
+\family sans
 \lang english
 Section
-\family default 
+\family default
 \lang hebrew
  מתפריט הסביבה
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 אתה לא צריך לבחור את השורה בשביל זה.
  אם ברגע נתון לא בחרת שום טקסט, ליקס תשנה את הפסקה הנוכחית לסביבה החדשה.
  לחילופין, כדי לשנות כמה פסקאות לסביבה חדשה בבת אחת, בחר אותן ואז בחר את
  הסביבה מהתפריט.
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
  ליקס שמה את המספר "
-\numeric on 
+\numeric on
 1
-\numeric off 
+\numeric off
 " ומשנה את את הכותרת לפונט גדול יותר.
  כמובן, הדבר מתבטא גם בקובץ ה- 
 \lang english
@@ -1422,108 +1577,118 @@ dvi
 \lang hebrew
  ובגרסה המודפסת.
  עכשיו הקש 
-\family sans 
+\family sans
 \lang english
 Return
-\family default 
+\family default
 \lang hebrew
 .
  שים לב שתיבת הסביבה השתנתה מ- 
-\family sans 
+\family sans
 \lang english
 Section
-\family default 
+\family default
 \lang hebrew
  בחזרה ל- 
-\family sans 
+\family sans
 \lang english
 Standard
-\family default 
+\family default
 \lang hebrew
 .
  כותרות פרקים וסעיפים, כמו הרבה סביבות אחרות, נגמרות כשאתה מקיש 
-\family sans 
+\family sans
 \lang english
 Return
 \lang hebrew
 
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 ראה במדריך למשתמש )
-\emph on 
+\emph on
 \lang english
 User's Guide
-\emph default 
+\emph default
 \lang hebrew
 ( איך לעשות כותרות בנות שתי שורות ומעלה.
  הסביבה 
-\family sans 
+\family sans
 \lang english
 Standard
-\family default 
+\family default
 \lang hebrew
 , לא באופן מפתיע, יכולה להמשיך פסקאות רבות.
  סביבות רשימה שונות )ראה למטה( גם לא נגמרות כשאתה מקיש על 
-\family sans 
+\family sans
 \lang english
 Return
-\family default 
+\family default
 \lang hebrew
 .
  אם שכחת באיזה סביבה אתה נמצא, פשוט תסתכל בתיבה.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\family default 
+\family default
 .
  הקלד את ההקדמה:
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 
 \lang english
 This is an introduction to my first LyX 
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 
 \lang english
 document.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 הקש 
-\family sans 
+\family sans
 \lang english
 Return
-\family default 
+\family default
 \lang hebrew
  שוב.
  בחר 
-\family sans 
+\family sans
 \lang english
 Section
-\family default 
+\family default
 \lang hebrew
  מתפריט הסביבה.
  ליקס רושמת "
-\numeric on 
+\numeric on
 2
-\numeric off 
+\numeric off
 " ומחכה לכותרת.
  הקלד 
-\family typewriter 
+\family typewriter
 \lang english
 More Stuff
-\family default 
+\family default
 \lang hebrew
 , ושים לב כיצד ליקס עורכת את הטקסט ככותרת.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 זה עוד לא הסוף! לך לסוף של סעיף 
-\numeric on 
+\numeric on
 1
-\numeric off 
+\numeric off
  )אחרי 
 \lang english
 my first LyX document
@@ -1533,22 +1698,22 @@ my first LyX document
 Return
 \lang hebrew
  שוב, ושוב בחר 
-\family sans 
+\family sans
 \lang english
 Section
-\family default 
+\family default
 \lang hebrew
  מתפריט הסביבה.
  ליקס רושמת "
-\numeric on 
+\numeric on
 2
-\numeric off 
+\numeric off
 " ומחכה.
  הקלד 
-\family typewriter 
+\family typewriter
 \lang english
 About this document
-\family default 
+\family default
 \lang hebrew
 .
  הסעיף 
@@ -1556,13 +1721,13 @@ About this document
 More Stuff
 \lang hebrew
  שהיה קודם סעיף 
-\numeric on 
+\numeric on
 2
-\numeric off 
+\numeric off
  הוא עכשיו סעיף 
-\numeric on 
+\numeric on
 3
-\numeric off 
+\numeric off
 ! לזה אנחנו מתכוונים כשאנחנו אומרים 
 \lang english
 WYSIWYM
@@ -1572,185 +1737,209 @@ WYSIWYM
 ---
 \lang hebrew
  ליקס דואגת למיספור ולעריכה.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 הקש 
-\family sans 
+\family sans
 \lang english
 Return
-\family default 
+\family default
 \lang hebrew
  כדי לחזור לסביבה 
-\family sans 
+\family sans
 \lang english
 Standard
-\family default 
+\family default
 \lang hebrew
 , והקלד את 
-\numeric on 
+\numeric on
 5
-\numeric off 
+\numeric off
  השורות הבאות
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 
 \lang english
 Sections and subsections are described below.
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 
 \lang english
 Section Description
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 
 \lang english
 Sections are bigger than subsections.
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 
 \lang english
 Subsection description
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 
 \lang english
 Subsections are smaller than sections.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 לחץ על השורה השניה ובחר 
-\family sans 
+\family sans
 \lang english
 Subsection
-\family default 
+\family default
 \lang hebrew
  מתפריט הסביבות.
  ליקס ממספרת את תת-הסעיף "
-\numeric on 
+\numeric on
 2.1
-\numeric off 
+\numeric off
 ", ונותנת לו פונט יותר גדול מלטקסט רגיל, אך יותר קטן מלסעיף.
  שנה גם את השורה הרביעית לכותרת תת-סעיף.
  נו, בשלב הזה זה הופעת ה"
-\numeric on 
+\numeric on
 2.2
-\numeric off 
+\numeric off
 " מן הסתם כבר לא מפתיעה.
  אם תוסיף עוד סעיף לפני סעיף 
-\numeric on 
+\numeric on
 2
-\numeric off 
+\numeric off
 , סעיף 
-\numeric on 
+\numeric on
 2
-\numeric off 
+\numeric off
  יהפוך לסעיף 
-\numeric on 
+\numeric on
 3
-\numeric off 
+\numeric off
 , ותתי הסעיפים יהפכו ל-
-\numeric on 
+\numeric on
 3.1
-\numeric off 
+\numeric off
  ו-
-\numeric on 
+\numeric on
 3.2
-\numeric off 
+\numeric off
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 הרמות הבאות של סיעוף נקראות 
-\family sans 
+\family sans
 \lang english
 Subsubsection
-\family default 
+\family default
 \lang hebrew
 , 
-\family sans 
+\family sans
 \lang english
 Paragraph
-\family default 
+\family default
 \lang hebrew
  ו-
-\family sans 
+\family sans
 \lang english
 Subparagraph
-\family default 
+\family default
 \lang hebrew
 .
  אנחנו משאירים לך להשתעשע איתם לבד.
  אתה תשים לב ששני האחרונים אינם ממוספרים, וש-
-\family sans 
+\family sans
 \lang english
 subparagraph
-\family default 
+\family default
 \lang hebrew
  גם מוכנס פנימה.
  המדריך למשתמש מסביר איך לשנות את זה.
  האמת היא שהרמה הגבוהה ביותר של סיעוף נקראת 
-\family sans 
+\family sans
 \lang english
 Chapter
-\family default 
+\family default
 \lang hebrew
 , מעל 
-\family sans 
+\family sans
 \lang english
 Section
-\family default 
+\family default
 \lang hebrew
 , אבל אתה יכול להשתמש בה רק בסוגי מסמכים מסוימים.
  על כך ראה סעיף 
 \begin_inset LatexCommand \ref{sec:textclasses}
 
-\end_inset 
+\end_inset
 
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 לסיום, במקרים מסוימים תצטרך סעיפים שאינם ממוספרים.
  גם עבורם קימות סביבות מוכנות.
  אם תשתמש בסביבה 
-\family sans 
+\family sans
 \lang english
 Section*
-\family default 
+\family default
 \lang hebrew
  )יתכן שתצטרך לגלול את רשימת הסביבות כדי למצוא אותה(, ליקס ישתמש באותו פונט
  ואותו גודל עבור הכותרת כמו עבור 
-\family sans 
+\family sans
 \lang english
 Section
-\family default 
+\family default
 \lang hebrew
  רגיל, אבל לא ימספר.
  ישנן גרסאות "כוכביות" גם ל-
-\family sans 
+\family sans
 \lang english
 Subsection
-\family default 
+\family default
 \lang hebrew
  ו-
-\family sans 
+\family sans
 \lang english
 Subsubsection
-\family default 
+\family default
 \lang hebrew
  בהתאמה.
  נסה לשנות כמה מהסעיפים במסמך שלך לסביבות אלה, ושים לב איך המספור של הסעיפים
  אחרי הסעיף ששינית משתנה בהתאמה.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 תרגיל: תקן את כותרות הסעיפים בקובץ 
-\family typewriter 
+\family typewriter
 \lang english
 he_example_raw.lyx
 \lang hebrew
 .
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 רשימות ורשימות משנה
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 לליקס יש כמה וכמה סביבות כדי ליצר רשימות.
  כך תשתחרר מהצורך המעיק ללחוץ על 
@@ -1759,9 +1948,9 @@ Tab
 \lang hebrew
  אלפי פעמים כשאתה כותב מתווה
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 הכוונה כאן למסמך מהסוג שבו הרבה מאוד מספרי סעיפים וסעיפי משנה ומעט מאוד
  תוכן 
@@ -1770,54 +1959,64 @@ collapsed true
 \lang hebrew
  ג
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 ק.
-\end_inset 
+\end_layout
+
+\end_inset
 
  ומהצורך למספר מחדש אם הוספת נקודה באמצע הרשימה.
  אתה יכול להתרכז בתוכן
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 כן, אולי הגזמנו קצת עם הנקודה הזו, אבל זו הנקודה העיקרית בפילוסופיה של ליקס,
  אז סלח לנו, בבקשה.
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
  להלן דוגמאות לכמה מהרשימות של ליקס, ושימושיהן:
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 הסביבה 
-\family sans 
+\family sans
 \lang english
 Itemize
-\family default 
+\family default
 \lang hebrew
  מיצרת רשימה עם עיגולים או כוכביות בצד )כמו רשימה זו( 
 \lang english
 ---
 \lang hebrew
  מעולה למצגת שקופיות.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 הסביבה 
-\family sans 
+\family sans
 \lang english
 Enumerate
-\family default 
+\family default
 \lang hebrew
  מיצרת רשימה ממוספרת, ורשימות משנה עם עם מספרים או אותיות.
  חיוני למתווים.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 הסביבה 
-\family sans 
+\family sans
 \lang english
 Description
-\family default 
+\family default
 \lang hebrew
  שמה את הנושא, המילה הראשונה, ב- 
 \lang english
@@ -1825,48 +2024,56 @@ bold
 \lang hebrew
  ואחריה את תאורו.
  אם אתה מכין רשימה של תוכנות ותאורן, זה יכול להיות במקום.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 הסביבה 
-\family sans 
+\family sans
 \lang english
 List
-\family default 
+\family default
 \lang hebrew
 , שאיננה קיימת ב- 
 \lang english
 LaTeX
 \lang hebrew
  רגיל אלא היא תוספת של ליקס, היא וריאציה על 
-\family sans 
+\family sans
 \lang english
 Description
-\family default 
+\family default
 \lang hebrew
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 בואו נכין רשימה של סיבות למה ליקס עדיפה על מעבדי תמלילים אחרים.
  במקום כלשהו במסמך, רשום
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 
 \lang english
 LyX is better than other word processors because:
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 והקש 
-\family sans 
+\family sans
 \lang english
 Return
-\family default 
+\family default
 \lang hebrew
 .
  עבשיו בחר 
-\family sans 
+\family sans
 \lang english
 Itemize
-\family default 
+\family default
 \lang hebrew
  מתפריט הסביבה.
  ליקס רושם עיגול 
@@ -1875,62 +2082,72 @@ Itemize
 \lang hebrew
  למעשה על המסך מופיעה כוכבית, אבל בפלט תראה עיגול.
  עכשיו הקלד את הסיבות:
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 
 \lang english
 Typesetting is done for you
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 
 \lang english
 Math is WYSIWYG
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 
 \lang english
 Lists are very easy to create!
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 סביבות רשימה, בניגוד לכותרות, לא נגמרות אחרי כל שורה חדשה.
  כשאתה מקיש 
-\family sans 
+\family sans
 \lang english
 Return
-\family default 
+\family default
 \lang hebrew
  ליקס מניחה שאתה רוצה עוד פריט.
  אם אתה רוצה יותר מפסקה אחת בתוך פריט אחד, הדרך הפשוטה ביותר היא להשתמש
  ב
-\family sans 
-שבירת\SpecialChar ~
+\family sans
+שבירת\InsetSpace ~
 שורה
-\family default 
+\family default
  
 \lang english
 ---
 \lang hebrew
  הקש 
-\family sans 
+\family sans
 \lang english
 C-Return
-\family default 
+\family default
 \lang hebrew
 .
  כדי לצאת מהרשימה, בחר שוב את הסביבה 
-\family sans 
+\family sans
 \lang english
 Standard
-\family default 
+\family default
 \lang hebrew
  או הקש 
-\family sans 
+\family sans
 \lang english
 M-p s
-\family default 
+\family default
 \lang hebrew
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 יש לך רשימה יפיפיה, אתה יכול גם להריץ את 
 \lang english
@@ -1939,49 +2156,53 @@ LaTeX
  כדי לראות איך היא תופיעה בהדפסה.
  אבל מה אם אתה רוצה למספר את הסיבות? בחר את כל הרשימה
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 אתה לא יכול לבחור את הכוכבית הראשונה.
  היא תסומן )בתכלת( רק אם הבחירה שלך כוללת חלקים מהפסקה הקודמת, שזה מן הסתם
  לא מה שאתה רוצה.
  כך אתה גם לא יכול לבחור את המספר הראשון ברשימה ממוספרת, וכו'.
  אל תדאג.
-\end_inset 
+\end_layout
+
+\end_inset
 
  ובחר 
-\family sans 
+\family sans
 \lang english
 Enumerate
-\family default 
+\family default
 \lang hebrew
  מתוך תפריט הסביבה.
  וואלה! כמו שכבר פרטנו, אם תוסיף או תמחק שורה, ליקס יתקן את המיספור.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 הרשימה עדיין מסומנת? למה שלא תשנה אותה לשני הסוגים הבאים, 
-\family sans 
+\family sans
 \lang english
 Description
-\family default 
+\family default
 \lang hebrew
  ו- 
-\family sans 
+\family sans
 \lang english
 List
 \lang hebrew
 
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 הסביבה 
-\family sans 
+\family sans
 \lang english
 List
-\family default 
+\family default
 \lang hebrew
  לא עובדת כראוי בעברית 
 \lang english
@@ -1989,20 +2210,22 @@ List
 \lang hebrew
  ג
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 ק.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\family default 
+\family default
  כדי לראות איך הם נראים.
  בסביבות אלה, כל פריט מורכב ממונח, המילה הראשונה, והגדרה, שאר הפסקה )עד
  הקשת 
-\family sans 
+\family sans
 \lang english
 Return
-\family default 
+\family default
 \lang hebrew
 (.
  ה"מונח" יכול להיות מודגש ב- 
@@ -2010,10 +2233,10 @@ Return
 bold
 \lang hebrew
  )
-\family sans 
+\family sans
 \lang english
 Description
-\family default 
+\family default
 \lang hebrew
 ( או מופרד על ידי "
 \lang english
@@ -2021,102 +2244,112 @@ tab
 \lang hebrew
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 מדובר ב- 
 \lang english
 tab
 \lang hebrew
  "חכם", שמשתנה לפי גודל המונח הארוך ביותר ברשימה.
-\end_inset 
+\end_layout
+
+\end_inset
 
  )
-\family sans 
+\family sans
 \lang english
 List
-\family default 
+\family default
 \lang hebrew
 ( משאר הפסקה.
  אם אתה רוצה יותר ממילה אחת במונח, הפרד אותן בעזרת 
-\family sans 
-רווח\SpecialChar ~
+\family sans
+רווח\InsetSpace ~
 מוגן
-\family default 
+\family default
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 תרגיל: תקן את הרשימה ב- 
-\family typewriter 
+\family typewriter
 \lang english
 he_example_raw.lyx
-\family default 
+\family default
 \lang hebrew
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 אפשר לקנן רשימות בתוך רשימות אחרות.
  דוגמא מתבקשת היא יצירת מתווים.
  רשימות ממוספרות ואחרות יראו אחרת אם תקנן אותן בתוך רשימות אחרות.
  ראה במדריך למשתמש )
-\emph on 
+\emph on
 \lang english
 User's Guide
-\emph default 
+\emph default
 \lang hebrew
 ( פרטים מלאים ומגוון של דוגמאות קינון.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 סביבות אחרות: שירה, ציטטות ועוד.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 כאשר צריך להבחין בין ציטטות לבין הטקסט המקיף אותן, אפשר להשתמש באחת משתי
  הסביבות הבאות: 
-\family sans 
+\family sans
 \lang english
 Quote
-\family default 
+\family default
 \lang hebrew
  לציטטות קצרות ו- 
-\family sans 
+\family sans
 \lang english
 Quotation
-\family default 
+\family default
 \lang hebrew
  לארוכות יותר.
  עבור קוד מחשב יש את הסביבה 
-\family sans 
+\family sans
 \lang english
 Lyx-Code
-\family default 
+\family default
 \lang hebrew
  )במסמך זה אנחנו משתמשים ב- 
-\family sans 
+\family sans
 \lang english
 Lyx-Code
-\family default 
+\family default
 \lang hebrew
  גם לדוגמאות הקלדה ארוכות(, והוא יופיע בפונט 
-\family typewriter 
+\family typewriter
 \lang english
 typewriter
 \lang hebrew
 
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 הכוונה כאן היא למה שידוע בד"כ כ- 
-\family typewriter 
+\family typewriter
 \lang english
 monospace
-\family default 
+\family default
 \lang hebrew
 , כלומר לכל האותיות רוחב קבוע 
 \lang english
@@ -2124,78 +2357,86 @@ monospace
 \lang hebrew
  ג
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 ק.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\family default 
+\family default
 .
  זו הסביבה היחידה בליקס שבה מותר להכניס כמה רווחים זה אחרי זה.
  כשנחה עליך ההשראה, הסביבה 
-\family sans 
+\family sans
 \lang english
 Verse
-\family default 
+\family default
 \lang hebrew
  תאפשר לך לכתוב שירה.
  המקש 
-\family sans 
+\family sans
 \lang english
 Return
-\family default 
+\family default
 \lang hebrew
  יפריד בין בית לבית, ו-
-\family sans 
+\family sans
 \lang english
 C-Return
-\family default 
+\family default
 \lang hebrew
  בין שורה לשורה בתוך הבית.
  במדריך למשתמש )
-\emph on 
+\emph on
 \lang english
 User's Guide
-\emph default 
+\emph default
 \lang hebrew
 ( תמצא תאור מלא של כל הסביבות של ליקס.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 תרגיל: תקן את 
-\family typewriter 
+\family typewriter
 \lang english
 he_example_raw.lyx
-\family default 
+\family default
 \lang hebrew
  לשמוש נכון ב- 
-\family sans 
+\family sans
 \lang english
 Quote
-\family default 
+\family default
 \lang hebrew
 , 
-\family sans 
+\family sans
 \lang english
 LyX-Code
-\family default 
+\family default
 \lang hebrew
  ו-
-\family sans 
+\family sans
 \lang english
 Verse
-\family default 
+\family default
 \lang hebrew
 .
-\layout Chapter
+\end_layout
+
+\begin_layout Chapter
 
 כתיבת מסמכים
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 בפרק הקודם למדת איך לכתוב טקסט בליקס, פעולות פשוטות ו
-\family sans 
+\family sans
 סביבות
-\family default 
+\family default
 , הדרך של ליקס לערוך את המסמך.
  בפרק זה נעזור לך לגשר את הפער בין טקסט סתם לבין מסמך שלם 
 \lang english
@@ -2203,27 +2444,31 @@ Verse
 \lang hebrew
  עבודה, מאמר, ספר, חוברת או מכתב.
  פה תלמד על 
-\family sans 
+\family sans
 מחלקות
-\family default 
+\family default
 , שמאפשרות לך לכתוב סוגים שונים של מסמכים.
  כמו כן נדבר על כותרות, הערות שולים, הפניות, ביבליוגרפיה ותוכן העניינים.
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 מחלקות
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset LatexCommand \label{sec:textclasses}
 
-\end_inset 
+\end_inset
 
 מסמכים שונים ערוכים בצורה שונה.
  לדוגמא, בעוד ספרים, ככלל, מודפסים דו-צדדית
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 הכוונה כאן למגוון של הבדלים קטנים בין דפים זוגיים ואי-זוגיים, כמו למשל גודל
  השוליים, מיקום מספרי הדפים, מיקום הערות צד, ולעיתים חוקים כמו "פרק חייב
@@ -2233,46 +2478,50 @@ collapsed true
 \lang hebrew
  ג
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 ק.
-\end_inset 
+\end_layout
+
+\end_inset
 
 , מאמרים מודפסים חד-צדדית.
  במכתב מופיעות כתובת השולח וחתימתו בצורה מיוחדת, אבל בספר או מאמר אין לזה
  משמעות.
  
-\family sans 
+\family sans
 מחלקה
-\family default 
+\family default
  )
-\family sans 
+\family sans
 \lang english
 Class
-\family default 
+\family default
 \lang hebrew
 ( בליקס היא קונצפט המאחד בתוכו את כל ההבדלים האלה
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 משתמשי 
 \lang english
 LaTeX
 \lang hebrew
 : זו המקבילה ל- 
-\family typewriter 
+\family typewriter
 \lang english
 documentclass
-\family default 
+\family default
 \lang hebrew
  ב- 
 \lang english
 LaTeX
 \lang hebrew
 .
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
  מחלקות הן נדבך מהותי בפילוסופית ה- 
@@ -2281,93 +2530,99 @@ WYSIWYM
 \lang hebrew
 .
  הן אומרות לליקס איך לערוך את המסמך, וחוסכות לך את הצורך לעשות זאת.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 המסמך שלך הוא מן הסתם במחלקה 
-\family sans 
+\family sans
 \lang english
 article
 \lang hebrew
 
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 זו בדרך כלל ברירת המחדל, אם כי אפשר לשנות את זה מקובץ הקונפיגורציה 
-\family typewriter 
+\family typewriter
 \lang english
 lyxrc
-\family default 
+\family default
 \lang hebrew
 .
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\family default 
+\family default
 .
  נסה להחליף את המחלקה בעזרת דף האופציות 
-\family sans 
+\family sans
 מסמך
-\family default 
+\family default
  )
-\family sans 
+\family sans
 \lang english
 Document
-\family default 
+\family default
 \lang hebrew
 ( בתיבת הדיאלוג 
-\family sans 
+\family sans
 מבנה:מסמך
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 L
-\bar default 
+\bar default
 ayout\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 D
-\bar default 
+\bar default
 ocument
-\family default 
+\family default
 \lang hebrew
 ( ושים לב איך הפלט משתנה.
  אם תשנה את המחלקה ל- 
-\family sans 
+\family sans
 \lang english
 book
-\family default 
+\family default
 \lang hebrew
  ותבחן את תפריט ה
-\family sans 
+\family sans
 סביבה
-\family default 
+\family default
 , תגלה שרוב הסביבות עדיין שם.
  עם זאת, נוספה לך הסביבה 
-\family sans 
+\family sans
 \lang english
 Chapter
-\family default 
+\family default
 \lang hebrew
 .
  בכל מצב שבו אינך בטוח מה הסביבות האפשריות ב
-\family sans 
+\family sans
 מחלקה
-\family default 
+\family default
  מסוימת, פשוט בדוק בתפריט הסביבה.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 כתבי עת שונים זה מזה בגודל הפונט, מספר הטורים )
-\numeric on 
+\numeric on
 2
-\numeric off 
+\numeric off
  או 
-\numeric on 
+\numeric on
 1
-\numeric off 
+\numeric off
 (, וכותרות העמודים, ועוד.
  ככל שעידן המחשבים מתקדם, כתבי עת מתחילים לאפשר הגשה אלקטרונית, ויוצרים
  קבצי סגנון 
@@ -2381,37 +2636,51 @@ LaTeX
 American Mathematics Society
 \lang hebrew
 ( בעזרת המחלקה 
-\family sans 
+\family sans
 \lang english
-article\SpecialChar ~
+article\InsetSpace ~
 (AMS)
-\family default 
+\family default
 \lang hebrew
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 להלן תקציר זריז של המחלקות החשובות יותר.
  ראה במדריך למשתמש )
-\emph on 
+\emph on
 \lang english
 User's Guide
-\emph default 
+\emph default
 \lang hebrew
 ( ובמיוחד במסמך התכונות הנוספות )
-\emph on 
+\emph on
 \lang english
 Extended Features
-\emph default 
+\emph default
 \lang hebrew
 ( בסעיף 
-\emph on 
+\emph on
 \lang english
 Special Document Classes
-\emph default 
+\emph default
 \lang hebrew
 .
-\layout Standard
-\added_space_top bigskip \added_space_bottom bigskip \align center 
+\end_layout
+
+
+\begin_layout Standard
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
 
 \begin_inset  Tabular
 <lyxtabular version="3" rows="7" columns="2">
@@ -2422,301 +2691,347 @@ Special Document Classes
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 הערות
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 שם
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 </row>
 <row topline="true">
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 צד אחד, אין פרקים )
-\family sans 
+\family sans
 \lang english
 Chapter
-\family default 
+\family default
 \lang hebrew
 (
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 
-\family sans 
+\family sans
 \lang english
 article
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 </row>
 <row topline="true">
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 מחלקה וסביבות עבור האגודה המתמטית האמריקאית
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 
-\family sans 
+\family sans
 \lang english
 article (AMS)
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 </row>
 <row topline="true">
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 ארוך יותר מ- 
-\family sans 
+\family sans
 \lang english
 article
-\family default 
+\family default
 \lang hebrew
 , ודו-צדדי
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 
-\family sans 
+\family sans
 \lang english
 report
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 </row>
 <row topline="true">
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 דו"ח )
-\family sans 
+\family sans
 \lang english
 report
-\family default 
+\family default
 \lang hebrew
 ( ובנוסף חומר קדמי ואחורי
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 
-\family sans 
+\family sans
 \lang english
 book
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 </row>
 <row topline="true">
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 שקפים )עם תמיכה ב- 
-\family typewriter 
+\family typewriter
 \lang english
 FoilTeX
-\family default 
+\family default
 \lang hebrew
 (
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 
-\family sans 
+\family sans
 \lang english
 slides
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 </row>
 <row topline="true" bottomline="true">
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 הרבה סביבות יחודיות, עבור כתובת, חתימה...
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 
-\family sans 
+\family sans
 \lang english
 letter
-\end_inset 
+\end_layout
+
+\end_inset
 </cell>
 </row>
 </lyxtabular>
 
-\end_inset 
+\end_inset
 
 
-\layout Section
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+
+\begin_layout Section
 
 תבניות: מכתב
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 אחת מהמחלקות הפופלריות ביותר היא 
-\family sans 
+\family sans
 \lang english
 letter
-\family default 
+\family default
 \lang hebrew
 , לכתיבת מכתבים.
  דרך אחת היא לפתוח קובץ 
-\family sans 
+\family sans
 חדש
-\family default 
+\family default
  ולבחור 
-\family sans 
+\family sans
 \lang english
 letter
-\family default 
+\family default
 \lang hebrew
  מתפריט ה
-\family sans 
+\family sans
 מחלקה
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 C
-\bar default 
+\bar default
 lass
-\family default 
+\family default
 \lang hebrew
 ( בתבת הדיאלוג 
-\family sans 
+\family sans
 מבנה:מסמך
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 L
-\bar default 
+\bar default
 ayout\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 D
-\bar default 
+\bar default
 ocument
-\family default 
+\family default
 \lang hebrew
 (.
  אבל לא מדובר פה בעבודה כפולה? כל פעם שאת כותבת מכתב עסקי, את צריכה את הכתובת
  שלך, כתובת הנמען, חתימה, וכו'.
  מסיבה זו לליקס יש תבנית עבור מכתבים, או מכתב דוגמא.
  מרגע שיש לך את התבנית את פשוט מחליפה את החלקים הנדרשים עבור כל מכתב.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 פתחי קובץ חדש בעזרת 
-\family sans 
-קובץ:חדש\SpecialChar ~
+\family sans
+קובץ:חדש\InsetSpace ~
 מתבנית
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 F
-\bar default 
+\bar default
 ile\SpecialChar \menuseparator
-New\SpecialChar ~
-from\SpecialChar ~
+New\InsetSpace ~
+from\InsetSpace ~
 
-\bar under 
+\bar under
 t
-\bar default 
+\bar default
 emplate
-\family default 
+\family default
 \lang hebrew
 (.
  בחרי את 
-\family typewriter 
+\family typewriter
 \lang english
 letter.lyx
-\family default 
+\family default
 \lang hebrew
  מתיבת הדיאלוג 
-\family sans 
+\family sans
 \lang english
-Choose\SpecialChar ~
+Choose\InsetSpace ~
 Template
-\family default 
+\family default
 \lang hebrew
 .
  שמרי והדפיסי כדי לראות איך נערכות הסביבות השונות.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 כשתסתכלי בתפריט הסביבה, תראי כמה וכמה סביבות, כמו 
-\family sans 
+\family sans
 \lang english
-My\SpecialChar ~
+My\InsetSpace ~
 Address
-\family default 
+\family default
 \lang hebrew
 , שלא קיימות במחלקות אחרות.
  אחרות, כמו 
-\family sans 
+\family sans
 \lang english
 Quote
-\family default 
+\family default
 \lang hebrew
  ו-
-\family sans 
+\family sans
 \lang english
 Description
-\family default 
+\family default
 \lang hebrew
  יהיו מוכרות.
  את יכולה להשתעשע עם הסביבות ולגלות בעצמך איך הן עובדות.
  שימי לב שהסביבה 
-\family sans 
+\family sans
 \lang english
 Signature
-\family default 
+\family default
 \lang hebrew
  )חתימה( מכילה את המילה "
 \lang english
@@ -2724,16 +3039,16 @@ Signature:
 \lang hebrew
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  באדום לפני החתימה עצמה.
  המילה הזאת נעלמת כשתדפיסי.
  מטרתה היא לסמן לך שזו חתימה.
  שימי לב שזה לא משנה איפה בקובץ מופיעה הסביבה 
-\family sans 
+\family sans
 \lang english
 Signature
-\family default 
+\family default
 \lang hebrew
 .
  ליקס היא 
@@ -2742,7 +3057,9 @@ WYSIWYM
 \lang hebrew
 , איפה שלא תשימי את הסביבה הזו, ליקס יודעת שזו חתימה ובפלט היא תופיע בסוף
  המכתב.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 תבנית היא פשוט קובץ ליקס רגיל.
  במילים אחרות, את יכולה למלא את הכתובת והחתימה שלך, ולשמור את הקובץ כתבנית
@@ -2751,9 +3068,9 @@ WYSIWYM
  אין סיבה שנציע פה תרגילים.
  פשוט כתבי מכתב למישהו
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 אזהרה אחת, אם את כותבת תבנית חדשה.
  אם את מוחקת את כל הטקסט בסביבה נתונה 
@@ -2761,11 +3078,11 @@ collapsed true
 ---
 \lang hebrew
  למשל אם מחקת את כל הסביבה 
-\family sans 
+\family sans
 \lang english
-My\SpecialChar ~
+My\InsetSpace ~
 Address
-\family default 
+\family default
 \lang hebrew
  כדי להחליף אותך בכתובתך שלך 
 \lang english
@@ -2774,20 +3091,28 @@ Address
  ואז תזיזי את הסמן בלי לרשום כלום, הסביבה תעלם.
  רוב הסביבות לא יכולות להתקיים בלי טקסט בתוכן.
  פשוט בחרי את הסביבה מחדש מהתפריט.
-\end_inset 
+\end_layout
+
+\end_inset
 
 !
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 תבניות יכולות לחסוך המון זמן, ואנחנו ממליצים לך להשתמש בהן בכל הזדמנות.
  בנוסף, הן יכולות לעזור ללמוד מחלקות מסמכים מורכבות יותר.
  לקינוח, הן יכולות להעיל למי שמתקין את ליקס עבור משתמשים פחות מנוסים.
  בשלב הלימודי הראשוני של ליקס, מכתב מותאם מראש לחברה שבה הם עובדים, יכול
  לחסוך הרבה מכאובים.
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 שער המסמך
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 ליקס )כמו 
 \lang english
@@ -2802,86 +3127,96 @@ LaTeX
 ---
 \lang hebrew
  כלחלק נפרד מהמסמך.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 חזור לקובץ 
-\family typewriter 
+\family typewriter
 \lang english
 newfile.lyx
-\family default 
+\family default
 \lang hebrew
  וודא שהוא משתמש ב
-\family sans 
+\family sans
 מחלקה
-\family default 
+\family default
  
-\family sans 
+\family sans
 \lang english
 article
 \lang hebrew
 
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 אל תשתמש יותר ב- 
 \lang english
 letter
 \lang hebrew
  כי מחלקה זו אינה תומכת באף אחד מחלקי השער.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\family default 
+\family default
 .
  בשורה הראשונה, הקלד את שם המסמך, והחלף את הסביבה ל-
-\family sans 
+\family sans
 \lang english
 Title
-\family default 
+\family default
 \lang hebrew
 .
  בשורה הבאה, הקלד את שמך ושנה את הסביבה ל-
-\family sans 
+\family sans
 \lang english
 Author
-\family default 
+\family default
 \lang hebrew
 .
  בשורה שאחריה הקלד את התאריך ושנה את הסביבה ל-
-\family sans 
+\family sans
 \lang english
 Date
-\family default 
+\family default
 \lang hebrew
 .
  הקלד סיכום קצר של המסמך בסביבה 
-\family sans 
+\family sans
 \lang english
 Abstract
-\family default 
+\family default
 \lang hebrew
 .
  הוצא הדפסה ותראה איך כל זה נראה.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 תרגיל: תקן את שער המסמך 
-\family typewriter 
+\family typewriter
 \lang english
 he_example_raw.lyx
-\family default 
+\family default
 \lang hebrew
 .
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 תויות והפניות
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset LatexCommand \label{sec:labels}
 
-\end_inset 
+\end_inset
 
 ניתן לשים תוית )
 \lang english
@@ -2901,10 +3236,14 @@ cross references
 LaTeX
 \lang hebrew
 ( על פני מעבדי תמלילים רגילים.
-\layout Subsection*
+\end_layout
+
+\begin_layout Subsection*
 
 התוית הראשונה שלך
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 בוא נתייג, לדוגמא, את הסעיף השני של המסמך, שכותרתו היא "
 \lang english
@@ -2912,39 +3251,39 @@ About this document
 \lang hebrew
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 .
  לחץ בסוף השורה הנ"ל, ובחר 
-\family sans 
+\family sans
 הוספה:תווית
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 I
-\bar default 
+\bar default
 nsert\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 L
-\bar default 
+\bar default
 abel
-\family default 
+\family default
 \lang hebrew
 (.
  תופיע תיבת דיאלוג עבור שם התוית.
  נשתמש ב- 
-\family typewriter 
+\family typewriter
 \lang english
 sec:aboutdocument
 \lang hebrew
 
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 אפשר להשתמש בטקסט בעברית בתוית בלי בעיה 
 \lang english
@@ -2952,54 +3291,60 @@ collapsed true
 \lang hebrew
  ג
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 ק.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\family default 
+\family default
 , שנראה כמו שם טוב שאין סיכוי גדול שנכניס בטעות שוב עבור תוית אחרת
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 אנחנו כתובים 
-\family typewriter 
+\family typewriter
 \lang english
 sec:
-\family default 
+\family default
 \lang hebrew
  כי אפשר למספר גם נוסחאות, טבלאות, תמונות, ופריטים ברשימות.
  למעשה ליקס )החל מגרסה 
-\numeric on 
+\numeric on
 1.2
-\numeric off 
+\numeric off
 ( מציעה את זה אוטומטית.
  שורשי מוסכמה זו הם בעולם ה-
 \lang english
 LaTeX
 \lang hebrew
 .
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
  אחרי שתלחץ על 
-\family sans 
+\family sans
 \lang english
 OK
-\family default 
+\family default
 \lang hebrew
 , הטקסט הנ"ל יופיע בקוביה אפורה ליד הכותרת.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 דרך אגב, היית יכול לשים את התוית בכל מקום בתוך הסעיף.
  ההפניה מתיחסת למספר הסעיף האחרון שהיה לפניה
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 זה לא ממש נכון 
 \lang english
@@ -3012,15 +3357,19 @@ collapsed true
 \lang hebrew
  ג
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 ק.
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
  כשאתה שם אותה על אותה שורה כמו הכותרת, או למצער בתחילת השורה הבאה, מובטח
  לך שכשתתיחס לתוית, תקבל את מספר העמוד שבו מתחיל הסעיף.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 עד עכשיו לא עשינו כלום 
 \lang english
@@ -3034,71 +3383,79 @@ dvi
  תויות לא מופיעות בגרסה המודפסת.
  הנקודה היא שמרגע שהוספת תוית אתה יכול להתייחס אליה.
  וזה הדבר הבא שנעשה.
-\layout Subsection*
+\end_layout
+
+\begin_layout Subsection*
 
 ההפניה הראשונה שלך
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 שים את הסמן במקום כלשהו בחלק 
-\numeric on 
+\numeric on
 2
-\numeric off 
+\numeric off
  של המסמך.
  הקלד
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 
 \lang english
 If you want to know more about this document, then see
-\newline 
+\newline
 Section , which can be found on page .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 שים את הסמן אחרי המילה 
 \lang english
 Section
 \lang hebrew
 , ובחר מתפריט ה
-\family sans 
+\family sans
 הוספה 
-\family default 
+\family default
 את האופציה
-\family sans 
+\family sans
  הפנייה
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 I
-\bar default 
+\bar default
 nsert\SpecialChar \menuseparator
-Cross\SpecialChar ~
+Cross\InsetSpace ~
 
-\bar under 
+\bar under
 R
-\bar default 
+\bar default
 eference
-\family default 
+\family default
 \lang hebrew
 (.
  תיבת הדיאלוג 
-\family sans 
+\family sans
 הפניות
-\family default 
+\family default
  )
-\family sans 
+\family sans
 \lang english
 References
-\family default 
+\family default
 \lang hebrew
 ( תופיע.
  החלק העיקרי שלה הוא רשימת כל התויות במסמך.
  ברגע זה צריכה להיות רק אחת, 
-\family typewriter 
+\family typewriter
 \lang english
 sec:aboutdocument
-\family default 
+\family default
 \lang hebrew
 .
  בחר אותה 
@@ -3110,18 +3467,18 @@ sec:aboutdocument
 ---
 \lang hebrew
  ושנה את סוג ההפניה )
-\family sans 
+\family sans
 \lang english
 Reference Type
-\family default 
+\family default
 \lang hebrew
 ( ל-
-\family sans 
+\family sans
 \lang english
 Standard
-\family default 
+\family default
 \lang hebrew
-\SpecialChar ~
+\InsetSpace ~
 
 \lang english
 ---
@@ -3131,14 +3488,14 @@ Standard
 ---
 \lang hebrew
  ולחץ על 
-\family sans 
+\family sans
 ישם
-\family default 
+\family default
  )
-\family sans 
+\family sans
 \lang english
 Apply
-\family default 
+\family default
 \lang hebrew
 (.
  כעת שים את הסמן אחרי המילה 
@@ -3146,119 +3503,125 @@ Apply
 page
 \lang hebrew
  ושנה את סוג ההפניה ל- 
-\family sans 
+\family sans
 \lang english
 Page Number
-\family default 
+\family default
 \lang hebrew
  ולחץ על 
-\family sans 
+\family sans
 ישם
-\family default 
+\family default
  )
-\family sans 
+\family sans
 \lang english
 Apply
-\family default 
+\family default
 \lang hebrew
 (.
  מקובל לשים 
-\family sans 
-רווח\SpecialChar ~
+\family sans
+רווח\InsetSpace ~
 מוגן
-\family default 
+\family default
  בין המילה 
 \lang english
 Section
 \lang hebrew
  לבין ההפניה, אבל זה כבר נושא אחר.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 במקום שבו היה הסמן, יופיע עכשיו מסמן )קוביה אפורה עם שם ההפניה(.
  במסמך המודפס יופיע מספר החלק או העמוד, לפי מה שבחרת בתיבת ההפניות.
  בחר 
-\family sans 
+\family sans
 צפייה:עדכון:
-\bar under 
+\bar under
 \lang english
 D
-\bar default 
+\bar default
 VI
-\family default 
+\family default
 \lang hebrew
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 V
-\bar default 
+\bar default
 iew\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 U
-\bar default 
+\bar default
 pdate\SpecialChar \menuseparator
 
-\family default 
+\family default
 \lang hebrew
 ( ותראה בעמוד האחרון )או איפה ששמת את ההפניות( שאנחנו מתיחסים ל-"
 \lang english
-Section\SpecialChar ~
+Section\InsetSpace ~
 2
 \lang hebrew
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  ו-"
 \lang english
-Page\SpecialChar ~
+Page\InsetSpace ~
 1
 \lang hebrew
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 , או בכל אופן, לעמוד שבו מופיע חלק 
-\numeric on 
+\numeric on
 2
-\numeric off 
+\numeric off
  כרגע.
  מתוך ליקס, המסמן משמש גם כקישור: לחץ עליו ותופיע תיבת הדיאלוג 
-\family sans 
+\family sans
 הפניות
-\family default 
+\family default
 , וממנה הכפתור 
-\family sans 
+\family sans
 \lang english
-Goto\SpecialChar ~
+Goto\InsetSpace ~
 reference
-\family default 
+\family default
 \lang hebrew
  לוקח אותך אל התוית הרלבנטית, בעוד 
 \lang english
 C-<
 \lang hebrew
  מחזיר את הסמן בחזרה להפניה.
-\layout Subsection*
+\end_layout
+
+\begin_layout Subsection*
 
 שעשועי תויות נוספים
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 קטני אמונה ודאי ירצו לראות את מנגנון המספור של ליקס בפעולה.
  לשם כך, הכנס סעיף חדש לפני סעיף 
-\numeric on 
+\numeric on
 2
-\numeric off 
+\numeric off
 .
  הרץ שוב את 
 \lang english
 LaTeX
 \lang hebrew
  והפלא ופלא, ההפניה השתנתה יחד עם מספר הסעיף ל-
-\numeric on 
+\numeric on
 3
-\numeric off 
+\numeric off
 .
  שנה את "
 \lang english
@@ -3266,133 +3629,147 @@ About this Document
 \lang hebrew
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  ל-
-\family sans 
+\family sans
 \lang english
 Subsection
-\family default 
+\family default
 \lang hebrew
 , ושים לב שההפניה משתנה מ-
-\numeric on 
+\numeric on
 3
-\numeric off 
+\numeric off
  ל-
-\numeric on 
+\numeric on
 2.1
-\numeric off 
+\numeric off
 .
  מספר הדף לא ישתנה, כמובן, אם לא תוסיף דף שלם של טקסט לפני התוית.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 אם אתה רוצה אימון נוסף בתויות, שים תוית חדשה "
-\family typewriter 
+\family typewriter
 \lang english
 sec:myfirstlabel
-\family default 
+\family default
 \lang hebrew
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  ליד ההפניה שלך, והתיחס לתוית זו ממקום אחר במסמך.
  אם אתה מכניס הפניות לעיתים קרובות )למשל אם אתה כותב מאמר לכתב עת(, יכול
  להיות שיהיה לך נוח להשאיר את חלון ההפניות פתוח.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 אם אתה עדין לא מאמין שזה עובד גם עבור מסמכים גדולים יותר, 
-\family sans 
+\family sans
 העתק
-\family default 
+\family default
  כמה דפים מתוך המדריך למשתמש, ו
-\family sans 
+\family sans
 הדבק
-\family default 
+\family default
  את הטקסט הגזול לתוך המסמך שלך
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 אגב, אם העתקת גם כותרת של פרק, אתה עלול לקבל הודעת שגיאה, כי פרקים אסורים
  ב
-\family sans 
+\family sans
 מחלקה
-\family default 
+\family default
  
-\family sans 
+\family sans
 \lang english
 class
-\family default 
+\family default
 \lang hebrew
 .
  אם זה יקרה, פשוט מחק את כותרת הפרק.
- אם שכחת למה, חזור לסעיף\SpecialChar ~
+ אם שכחת למה, חזור לסעיף\InsetSpace ~
 
 \begin_inset LatexCommand \ref{sec:textclasses}
 
-\end_inset 
+\end_inset
 
 .
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 תרגיל: תקן את ההפניות ב- 
-\family typewriter 
+\family typewriter
 \lang english
 he_example_raw.lyx
-\family default 
+\family default
 \lang hebrew
 .
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 הערות שוליים וצד
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 כדי להכניס הערת שוליים, ניתן להשתמש בכפתור 
-\family sans 
-הוסף\SpecialChar ~
-הערת\SpecialChar ~
+\family sans
+הוסף\InsetSpace ~
+הערת\InsetSpace ~
 שוליים 
-\family default 
+\family default
 על לוח הכלים
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 זה הכפתור שנראה כמו חץ שמצביע על שני פסים אדומים, שמעליהם כמה פסים שחורים.
-\end_inset 
+\end_layout
+
+\end_inset
 
  או ב
-\family sans 
-הוספה:הערת\SpecialChar ~
+\family sans
+הוספה:הערת\InsetSpace ~
 תחתית
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 I
-\bar default 
+\bar default
 nsert\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 F
-\bar default 
+\bar default
 ootnote
-\family default 
+\family default
 \lang hebrew
 (.
  לחץ בסוף שורה במקום כלשהו במסמך שלך, ואז על על הכפתור 
-\family sans 
-הוסף\SpecialChar ~
-הערת\SpecialChar ~
+\family sans
+הוסף\InsetSpace ~
+הערת\InsetSpace ~
 שוליים
-\family default 
+\family default
 .
  יופיע ריבוע אדום שבקצהו השמאלי קוביה אפורה קטנה ועליה הטקסט 
 \lang english
@@ -3405,12 +3782,16 @@ foot
 \lang hebrew
  זה המקום שבו יש להקליד את תוכן הערת השוליים.
  הקלד
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 
 \lang english
 Lyx is a typesetting word processor
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 כעת לחץ על המילה 
 \lang english
@@ -3436,7 +3817,9 @@ foot
 foot
 \lang hebrew
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 אם אתה תוהה למה המסמן לא מכיל את מספר הערת השוליים, התשובה היא שמספור הערות
  השוליים הוא עניינה של ליקס, לא שלך.
@@ -3455,81 +3838,91 @@ dvi
 LaTeX
 \lang hebrew
 ( דואג למספור הזה, אין סיבה לשמור את מספר ההערה בקובץ הליקס.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 הערות שוליים אפשר לחתוך ולהדביק כמו טקסט רגיל.
  נסה ותראה! כל מה שאתה צריך לעשות הוא לבחור את מסמן ההערה
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 לפעמים יכול להיות קשה לבחור את הערת השוליים בלי לפתוח אותה בטעות.
  במקרים כאלה, פשוט בחר בעזרת החצים.
-\end_inset 
+\end_layout
+
+\end_inset
 
  ולגזור ולהדביק אותו.
  בנוסף, אפשר להפוך טקסט רגיל להערת שוליים ע"י בחירתו, ולחיצה על הכפתור 
-\family sans 
-הוסף\SpecialChar ~
-הערת\SpecialChar ~
+\family sans
+הוסף\InsetSpace ~
+הערת\InsetSpace ~
 שוליים
-\family default 
+\family default
 .
  בכיוון ההפוך, לחץ על הכפתור 
-\family sans 
-הוסף\SpecialChar ~
-הערת\SpecialChar ~
+\family sans
+הוסף\InsetSpace ~
+הערת\InsetSpace ~
 שוליים
-\family default 
+\family default
  כאשר הסמן בתוך הערת שוליים פתוחה ותהפוך אותה לטקסט רגיל.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 הערות צד אפשר להכניס בעזרת הכפתור 
-\family sans 
-הכנס\SpecialChar ~
-הערת\SpecialChar ~
+\family sans
+הכנס\InsetSpace ~
+הערת\InsetSpace ~
 צד
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 הכפתור הזה מראה חץ מצביע על שלושה קוים אדומים ליד כמה קוים שחורים.
  הוא אמור להיות ממש ליד הפתור 
-\family sans 
-הכנס\SpecialChar ~
-הערת\SpecialChar ~
+\family sans
+הכנס\InsetSpace ~
+הערת\InsetSpace ~
 שוליים
-\family default 
+\family default
  בלוח הכלים.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\family default 
+\family default
  או בעזרת 
-\family sans 
-הוספה:הערת\SpecialChar ~
+\family sans
+הוספה:הערת\InsetSpace ~
 צד
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 I
-\bar default 
+\bar default
 nsert\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 M
-\bar default 
-arginal\SpecialChar ~
+\bar default
+arginal\InsetSpace ~
 Note
-\family default 
+\family default
 \lang hebrew
 (.
  הערות צד דומות להערות שוליים למעט ההבדלים הבאים:
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 המסמן על המסך אומר 
 \lang english
@@ -3540,13 +3933,19 @@ margin
 foot
 \lang hebrew
 .
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 בפלט הן מופיעות לצד הטקסט, ולא בתחתית העמוד.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 הערות צד אינן ממוספרות.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 שנה הערת שוליים אחת לטקסט רגיל, בחר את הטקסט והפוך אותו להערת צד.
  הרץ את 
@@ -3554,39 +3953,47 @@ foot
 LaTeX
 \lang hebrew
  כדי לראות איך נראת הערת צד בפלט.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 תרגיל: תקן את הערת השולים ב-
-\family typewriter 
+\family typewriter
 \lang english
 he_example_raw.lyx
-\family default 
+\family default
 \lang hebrew
 .
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 ביבליוגרפיה
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset LatexCommand \label{sec:bibliographies}
 
-\end_inset 
+\end_inset
 
 הפניות ביבליוגרפיות )במדעים המדויקים( דומות להפניות בתוך המסמך )סעיף 
 \begin_inset LatexCommand \ref{sec:labels}
 
-\end_inset 
+\end_inset
 
 (
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 כדי לקבל הפניות ביבליוגרפיות בצורה המקובלת במדעי החברה והרוח, תצטרך להשתמש
  בטכניקות של סעיף זה, בהערות שוליים, ובקצת יצירתיות.
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
  הביבליוגרפיה היא רשימת הפניות בסוף המסמך, ואפשר להתייחס אליהן ממקומות בגוף
@@ -3597,100 +4004,110 @@ LaTeX
 \lang hebrew
  חוסכים לך את הצורך למספר ידנית את הביבליוגרפיה עצמה ואת ההתייחסויות אליה
  בתוך הטקסט.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 לך לסוף המסמך שלך, ועבור לסביבה 
-\family sans 
+\family sans
 \lang english
 Bibliography
-\family default 
+\family default
 \lang hebrew
 .
  כל פעם שתקיש 
-\family sans 
+\family sans
 \lang english
 Return
-\family default 
+\family default
 \lang hebrew
  תופיע הפניה ביבליוגרפית חדשה.
  הקלד את ההפניה הראשונה
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 
 \lang english
 The LyX Tutorial, by the LyX DocTeam
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 שים לב שליקס שמה מספר בקוביה האפורה לפני כל הפניה באופן אוטומטי.
  לחץ על המספר בקוביה ותופיע תיבת הדיאלוג 
-\family sans 
+\family sans
 פריט ביבליוגרפי
-\family default 
+\family default
 .
  בשדה הראשון, 
-\family sans 
+\family sans
 \lang english
 Key
-\family default 
+\family default
 \lang hebrew
 , שים טקסט שישמש כדי להתיחס להפניה מתוך ליקס.
  ברירת המחדל היא מספר.
  שנה אותו ל-
-\family typewriter 
+\family typewriter
 \lang english
 lyxtutorial
-\family default 
+\family default
 \lang hebrew
  להקל על הזכרון.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 כעת בחר מקום במסמך שבו אתה רוצה לצטט את המסמך דנן.
  בחר 
-\family sans 
-הוספה:הפניית\SpecialChar ~
+\family sans
+הוספה:הפניית\InsetSpace ~
 ציטוט
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 I
-\bar default 
+\bar default
 nsert\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 C
-\bar default 
-itation\SpecialChar ~
+\bar default
+itation\InsetSpace ~
 Reference
-\family default 
+\family default
 \lang hebrew
 (.
  תיבת הדיאלוג 
-\family sans 
+\family sans
 ציטוטים
-\family default 
+\family default
  תופיע.
  מימין מופיעה רשימת כל ההפניות הביבליוגרפיות )
-\family sans 
+\family sans
 \lang english
 Bibliograph
-\bar under 
+\bar under
 y
-\bar default 
-\SpecialChar ~
+\bar default
+\InsetSpace ~
 keys
-\family default 
+\family default
 \lang hebrew
 ( ואתה יכול לבחור מתוכה את המקורות שאתה רוצה לצטט
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 זו הסיבה שעדיף לבחור שמות שיקלו על הזכרון, ולא להשאיר את המספר שמופיע באופן
  אוטומטי.
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
  בחר 
@@ -3699,14 +4116,14 @@ lyxtutorial
 \lang hebrew
  )נו, זה לא שיש לך כל כך הרבה אופציות בשלב זה( והשתמש בכפתור עם החץ שמאלה
  כדי להעביר אותו לרשימה משמאל, 
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 I
-\bar default 
-nset\SpecialChar ~
+\bar default
+nset\InsetSpace ~
 keys
-\family default 
+\family default
 \lang hebrew
  )אם אתה רוצה לצטט כמה מקורות בבת אחת, העבר אותם אחד אחד לרשימה משמאל באותה
  צורה(.
@@ -3716,17 +4133,19 @@ LaTeX
 \lang hebrew
  ותראה בתוך סוגריים מרובעים את המספר שמתאים למקור שסימנת ברשימה הביבליוגרפית
  בסוף המסמך.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 מה עם השדות שלא דיברנו עליהם? השדה 
-\family sans 
+\family sans
 \lang english
 Aft
-\bar under 
+\bar under
 e
-\bar default 
+\bar default
 r
-\family default 
+\family default
 \lang hebrew
  בחלון הציטוטים ישים הערה בתוך הסוגריים המרובעים, לדוגמא מספר העמוד או הפרק
  בספר או במאמר שאתה מצטט.
@@ -3740,89 +4159,97 @@ r
 Smith
 \lang hebrew
  ב- 
-\numeric on 
+\numeric on
 1995
-\numeric off 
+\numeric off
 (, השתמש בשדה 
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 L
-\bar default 
+\bar default
 abel
-\family default 
+\family default
 \lang hebrew
  בחלון 
-\family sans 
+\family sans
 הפריט הביבליוגרפי
-\family default 
+\family default
 .
  כרגיל, הפרטים המלאים מופיעים במדריך למשתמש.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 תרגיל: תקן את הביבליוגרפיה וההפניות אליה ב-
-\family typewriter 
+\family typewriter
 \lang english
 he_example_raw.lyx
-\family default 
+\family default
 \lang hebrew
 .
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 תוכן העניינים
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 יכול להיות שאתה רוצה תוכן ענינים בהתחלת המסמך שלך.
  עם ליקס, כל מה שאתה צריך לעשות הוא כדלקמן: הקש 
-\family sans 
+\family sans
 \lang english
 Return
-\family default 
+\family default
 \lang hebrew
  אחרי שם המסמך ולפני הכותרת של הסעיף הראשון
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 אין טעם ליאש את עצמך בנסיון ללחוץ או למחוק לפני מספר הסעיף.
  זה לא יעבוד.
  אתה לא יכול לשנות את מספר הסעיף כי ליקס קובעת אותו אוטומטית.
-\end_inset 
+\end_layout
+
+\end_inset
 
  ובחר 
-\family sans 
-הוספה:רשימות\SpecialChar ~
-ותוכן:תוכן\SpecialChar ~
+\family sans
+הוספה:רשימות\InsetSpace ~
+ותוכן:תוכן\InsetSpace ~
 העניינים
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 I
-\bar default 
+\bar default
 nsert\SpecialChar \menuseparator
-Lists\SpecialChar ~
-&\SpecialChar ~
+Lists\InsetSpace ~
+&\InsetSpace ~
 T
-\bar under 
+\bar under
 O
-\bar default 
+\bar default
 C\SpecialChar \menuseparator
-Table\SpecialChar ~
-of\SpecialChar ~
+Table\InsetSpace ~
+of\InsetSpace ~
 
-\bar under 
+\bar under
 C
-\bar default 
+\bar default
 ontents
-\family default 
+\family default
 \lang hebrew
 ( המילים 
-\family sans 
+\family sans
 תוכן העניינים
-\family default 
+\family default
  )
 \lang english
 Table of Contents
@@ -3832,7 +4259,9 @@ Table of Contents
 inset
 \lang hebrew
  בז'רגון של ליקס, שיתורגם מעכשיו כ"מסגרת"( בשורה הראשונה של המסמך.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 כדי להתרשם מהשנוי צריך להסתכל בקובץ ה-
 \lang english
@@ -3846,39 +4275,43 @@ dvi
 dvi
 \lang hebrew
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 תוכן העניינים לא מופיע על המסך כי ממילא אתה לא יכול לשנות אותו ישירות.
  לעומת זאת אתה יכול לראות אותו בחלון נפרד אם תלחץ על המסגרת של תוכן העניינים,
  או בעזרת 
-\family sans 
-צפייה:תוכן\SpecialChar ~
+\family sans
+צפייה:תוכן\InsetSpace ~
 העניינים
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 V
-\bar default 
+\bar default
 iew\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 T
-\bar default 
-able\SpecialChar ~
-of\SpecialChar ~
+\bar default
+able\InsetSpace ~
+of\InsetSpace ~
 Contents
-\family default 
+\family default
 \lang hebrew
 (
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 פקודת התפריט תעבוד גם אם לא הכנסת תוכן עניינים למסמך.
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
  זוהי דרך נוחה לגלוש במסמך.
@@ -3887,42 +4320,52 @@ collapsed true
  בנוסף אפשר להשתמש בחצים בחלון תוכן העניינים כדי לעבור מסעיף לסעיף במסמך.
  יכול להיות אפילו שיהיה לך נוח להשאיר את חלון תוכן העניינים פתוח באופן קבוע
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 לא פחות נוח להשתמש בתפריט ה
-\family sans 
+\family sans
 ניווט
-\family default 
+\family default
 , בו מופיע תוכן העניינים בצורה אוטומטית 
 \lang english
 ---
 \lang hebrew
  ג
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 ק.
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 כדי להפטר מתוכן העניינים, מחק את המסמן שלו כמו כל תו אחר.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 תרגיל: תקן את תוכן העניינים בקובץ 
-\family typewriter 
+\family typewriter
 \lang english
 he_example_raw.lyx
-\family default 
+\family default
 \lang hebrew
 .
-\layout Chapter
+\end_layout
+
+\begin_layout Chapter
 
 מתמטיקה
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 מדענים מעדיפים להשתמש ב-
 \lang english
@@ -3952,33 +4395,43 @@ LaTeX
 \lang hebrew
 , פאנל הנוסחאות )
 \lang english
-Math\SpecialChar ~
+Math\InsetSpace ~
 Panel
 \lang hebrew
 ( מאפשר לך להגיע לכל סימן רצוי, בלי לזכור פקודות קריפטיות בעל פה, וליצר
  מתמטיקה באיכות מקצועית בקלות
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 ליקס )עדיין( לא בודקת אם המתמטיקה שלך נכונה.
  עמך הסליחה.
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 מצב מתמטיקה
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 במקום כלשהו במסמך שלך, רשום 
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 
 \lang english
 I like what Einstein said, E=mc^2, because it's so simple.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 נו, הנוסחא הזו לא נראת מי-יודע-מה, גם בקובץ ה-
 \lang english
@@ -3986,13 +4439,15 @@ dvi
 \lang hebrew
 .
  אין רוח בין האותיות וסימן השווה, והיית רוצה שה-
-\numeric on 
+\numeric on
 2
-\numeric off 
+\numeric off
  יהיה מוגבה ומוקטן.
  כל זה קרה כי לא הודעת לליקס שמדובר בביטוי מתמטי, ולכן ליקס ערכה את זה כמו
  טקסט רגיל.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 מתמטיקה עורכים במוד מתמטי )ידוע גם כ"מצב מתמטיקה", "מצב נוסחאות", 
 \lang english
@@ -4005,30 +4460,32 @@ math mode
 (.
  כדי לעבור למוד זה, לחץ על הכפתור בלוח הכלים שעליו מופיע 
 \begin_inset Formula $\frac{a+b}{c}$
-\end_inset 
+\end_inset
 
  בכחול.
  ליקס תפתח ריבוע כחול בתוך ריבוע ורוד.
  הריבוע הכחול נקרא נקודת הקלדה, דהיינו מקום שבו אפשר להקליד, והריבוע הורוד
  מסמן שאתה במצב מתמטיקה.
  מכיוון שליקס כבר שמה את הסמן בתוך הריבוע הכחול, פשוט הקלד שוב 
-\family typewriter 
+\family typewriter
 \lang english
 E=mc^2
-\family default 
+\family default
 \lang hebrew
 .
  הביטוי מופיע בכחול, והריבוע הכחול נעלם ברגע שהכנסת את האות הראשונה.
  כעת הקש 
-\family sans 
+\family sans
 \lang english
 Esc
-\family default 
+\family default
 \lang hebrew
  כדי לצאת מהמצב מתמטי )לחיצה נוספת על כפתור המתמטיקה לא תוציא אותך ממצב
  מתמטיקה(.
  הריבוע הורוד נעלם ואם תקליד משהו הוא יופיע כטקסט רגיל.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 הרץ את 
 \lang english
@@ -4043,7 +4500,9 @@ dvi
  הקודם.
  ליקס מניחה שאותיות שאתה מקליד במצב מתמטיקה הן משתנים, ולכן היא מטה אותן.
  מספרים יוצאים כמספרים.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 מתמטיקה היא דוגמא נוספת לפילוסופית ה-
 \lang english
@@ -4055,12 +4514,12 @@ WYSIWYM
 LaTeX
 \lang hebrew
  אתה מקליד נוסחאות מתמטיות בעזרת פקודות טקסטואליות כמו 
-\family typewriter 
+\family typewriter
 \lang english
 
-\backslash 
+\backslash
 sqrt
-\family default 
+\family default
 \lang hebrew
 .
  זה יכול להיות מתסכל כי אין לך מושג איך זה יראה עד שאתה מריץ את 
@@ -4078,9 +4537,9 @@ LaTeX
 \lang hebrew
  כבר דואג לעריכה מקצועית.
  ב-%
-\numeric on 
+\numeric on
 99
-\numeric off 
+\numeric off
  מהמקרים אתה לא צריך לעשות שום שינוי בפונטים ובגדלים ש-
 \lang english
 LaTeX
@@ -4088,39 +4547,45 @@ LaTeX
  בוחרת בשבילך.
  כך )סליחה שאני חוזר על עצמי( אתה יכול להתרכז בתוכן של המתמטיקה שלך, ולא
  בצורה שלה.
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 ניווט במשוואה
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 בוא נשנה את 
 \begin_inset Formula $E=mc^{2}$
-\end_inset 
+\end_inset
 
  ל-
 \begin_inset Formula $E=1+mc^{2}$
-\end_inset 
+\end_inset
 
 .
  בעזרת מקשי החצים, הכנס את הסמן לתוך המשוואה.
  שים לב שברגע שנכנסת הופיע שוב הרבוע הורוד כדי להודיע לך שאתה במצב מתמטיקה.
  הבא את הסמן אל אחרי סימן השווה ופשוט הקלד 
-\family typewriter 
+\family typewriter
 \lang english
 1+
-\family default 
+\family default
 \lang hebrew
 .
  שוב, צא מהנוסחה בעזרת 
-\family typewriter 
+\family typewriter
 \lang english
 Esc
-\family default 
+\family default
 \lang hebrew
  או בעזרת החצים, והריבוע הורוד יעלם.
  הרבה מוצאים את החצים השיטה הנוחה ביותר לנווט במשוואה, אבל אתה גם יכול ללחוץ
  בכל מקום בתוכה כדי לשים את הסמן שם ולהכנס למצב מתמטיקה.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 חוץ מהכפתורים המיוחדים שיתוארו לעיל, הקלדה במצב מתמטיקה היא כמו הקלדה רגילה.
  אתה יכול להשתמש ב-
@@ -4134,9 +4599,9 @@ Backspace
  כדי למחוק.
  אתה יכול לבחור טקסט עם החצים או עם העכבר.
  
-\family sans 
+\family sans
 עריכה:בטל
-\family default 
+\family default
  עובדת במצב מתמטיקה, וכמו כן חיתוך והדבקה.
  שים לב: אם אתה מחוץ למצב המתמטיקה ואתה מקיש 
 \lang english
@@ -4149,99 +4614,103 @@ Delete
 , כל הביטוי ימחק כמקשה אחת.
  אל תדאג.
  
-\family sans 
+\family sans
 בטל
-\family default 
+\family default
  והוא יחזור.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 בוא נניח שאתה רוצה לשנות את 
 \begin_inset Formula $E=mc^{2}$
-\end_inset 
+\end_inset
 
  ל- 
 \begin_inset Formula $E=mc^{2.5}+1$
-\end_inset 
+\end_inset
 
 .
  כמובן שאתה יכול להשתמש בעכבר כדי להגיע למקום הרצוי.
  אבל אתה יכול גם להשתמש בחיצים.
  כאשר הסמן מיד אחרי ה-
 \begin_inset Formula $c$
-\end_inset 
+\end_inset
 
  אבל לפני ה-
-\numeric on 
+\numeric on
 2
-\numeric off 
+\numeric off
 , הקש על חץ למעלה כדי להגיע לרמה העליונה, לפני ה-
-\numeric on 
+\numeric on
 2
-\numeric off 
+\numeric off
 .
  הקש על חץ ימינה והוסף את ה"
 \begin_inset Formula $.5$
-\end_inset 
+\end_inset
 
 ".
  כעת הקש על חץ למטה.
  ותחזור לרמה התחתונה.
  לא משנה איפה היית ברמה העליונה, אחרי חץ למטה אתה תמצא מיד אחרי ה-
 \begin_inset Formula $^{2.5}$
-\end_inset 
+\end_inset
 
  ואתה יכול להקליד את ה-
-\family typewriter 
+\family typewriter
 \lang english
 +1
-\family default 
+\family default
 \lang hebrew
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 עוד דרך חשובה לנווט במשוואה היא מקש ה
-\family sans 
+\family sans
 רווח
-\family default 
+\family default
 .
  אם אתה נמצא בתוך מבנה מתמטי )טקסט מוגבה, טקסט מונמך, שבר, שורש, סוגרים,
  מטריצה וכל שאר הדברים שיוסברו בהמשך( הקשת 
-\family sans 
+\family sans
 רווח
-\family default 
+\family default
  תעביר את הסמן אל מעבר למבנה הזה.
  כך, אם אתה באמצע טקסט מוגבה, לחיצה על רווח תחזיר אותך לטקסט רגיל מיד אחרי
  סוף הטקסט המוגבה.
  כך אתה יכול להקליד 
 \begin_inset Formula $E=mc^{1+x}-2$
-\end_inset 
+\end_inset
 
  בלי להשתמש בעכבר או בחיצים.
  רק הזהר לא לנסות להכניס רווח בין האחד לפלוס, כי במקום זה הוא יוציא אותך
  ממבנה הטקסט המוגבה.
  כאשר אין לזה כל משמעות )למשל, בין ה-
 \begin_inset Formula $m$
-\end_inset 
+\end_inset
 
  ל-
 \begin_inset Formula $c$
-\end_inset 
+\end_inset
 
 (, רווח לא עושה כלום
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 אתה לא יכול להשתמש ב
-\family sans 
+\family sans
 רווח
-\family default 
+\family default
  ו-
-\family sans 
+\family sans
 \lang english
 Tab
-\family default 
+\family default
 \lang hebrew
  כדי לעשות רווחים במצב מתמטיקה.
  מרווח במצב מתמטיקה הוא בתחום הדפוס, ואתה צריך לתת לליקס )
@@ -4251,138 +4720,158 @@ LaTeX
 ( לטפל בו )ראה סעיף 
 \begin_inset LatexCommand \ref{sec:whitespace}
 
-\end_inset 
+\end_inset
 
 (.
  אם אתה לא מרוצה מהפלט הסופי, יש דרכים לכוונן את המרווח, שאתה יכול למצוא
  במדריך למשתמש.
  עם זאת, אין לך מה להתעסק בזה לפני שהתוכן של המסמך מושלם.
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 שים לב: אם הקלדת ביטוי מתמטי ויצאת עם 
-\family sans 
+\family sans
 \lang english
 Esc
-\family default 
+\family default
 \lang hebrew
 , לא יהיה רווח אחריו.
  זה בסדר אם התו הבא הוא נקודה או פסיק, אבל אם אתה צריך מילה אחרי הנוסחא,
  אתה חייב להקיש על 
-\family sans 
+\family sans
 רווח
-\family default 
+\family default
  פעם אחת.
  ויש קיצור: אם אתה בסוף הנוסחא ומקיש 
-\family sans 
+\family sans
 רווח
-\family default 
+\family default
 , תוצא מהנוסחא ויווצר רווח אחד אחריה.
  זה הדרך הקלה לכתוב "
 \begin_inset Formula $f=ma$
-\end_inset 
+\end_inset
 
  היא הנוסחא החביבה עלי" ולא "
 \begin_inset Formula $f=ma$
-\end_inset 
+\end_inset
 
 היא הנוסחא החביבה עלי".
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 חזקות ואינדקסים
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 אפשר, אמנם, להכניס חזקה בעזרת 
-\family sans 
+\family sans
 פאנל הנוסחאות
-\family default 
+\family default
  )ראה לעיל(, אבל הכי פשוט להשתמש במקש הגג "^".
  ליקס ישים את נקודת ההקלדה )הריבוע הכחול, זוכר?( מוגבהת, וכל מה שתקליד יוגבה
  ויוקטן, עד תקיש 
-\family sans 
+\family sans
 רווח
-\family default 
+\family default
  או 
-\family sans 
+\family sans
 \lang english
 Esc
-\family default 
+\family default
 \lang hebrew
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 טקסט מונמך )או אינדקס( הוא פשוט באותה מידה.
  הקש על קו תחתי "_".
  אפשר להמשיך ולשים טקסטים מוגבהים ברמות שונות על ידי שימוש חוזר בשיטה זו.
  למשל: 
 \begin_inset Formula $A_{\alpha_{0}+b^{2}}+C^{\alpha_{0}+b^{2}}$
-\end_inset 
+\end_inset
 
  .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 תרגיל: שים את משוואה 
-\numeric on 
+\numeric on
 1
-\numeric off 
+\numeric off
  ב-
-\family typewriter 
+\family typewriter
 \lang english
 he_example_raw.lyx
-\family default 
+\family default
 \lang hebrew
  במצב מתמטי.
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 פאנל הנוסחאות
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\family sans 
+\family sans
 פאנל הנוסחאות
-\family default 
+\family default
  הוא שיטה נוחה להכניס סימבולים מתמטיים ומבנים מורכבים אחרים.
  את כולם אפשר להכניס גם בעזרת המקלדת, אבל כרגע נתרכז ב
-\family sans 
+\family sans
 פאנל הנוסחאות
-\family default 
+\family default
  כדי שתקבל את התמונה הגדולה.
  מקשי פקודה אתה יכול ללמוד אחר כך, ממסמכים אחרים )זה היה רמז(.
  אז בחר 
-\family sans 
-הוספה:מתמטיקה:פאנל\SpecialChar ~
+\family sans
+הוספה:מתמטיקה:פאנל\InsetSpace ~
 הנוסחאות
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 I
-\bar default 
+\bar default
 nsert\SpecialChar \menuseparator
 Mat
-\bar under 
+\bar under
 h
-\bar default 
+\bar default
 \SpecialChar \menuseparator
-Math\SpecialChar ~
+Math\InsetSpace ~
 pane
-\bar under 
+\bar under
 l
-\family default 
-\bar default 
+\family default
+\bar default
 \lang hebrew
 ( והשאר את החלון פתוח במהלך קריאת הסעיף הזה.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 יוונית ועוד
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 הכפתור "
 \begin_inset Formula $\Gamma\rho\epsilon\epsilon\kappa$
-\end_inset 
+\end_inset
 
 " יוביל אותך לתפריט שממנו אתה יכול לבחור אותיות יונית.
  לחץ והן יופיעו אחרי הסמן.
@@ -4392,19 +4881,19 @@ l
 \lang hebrew
  אפסילון, פיי )
 \begin_inset Formula $\pi$
-\end_inset 
+\end_inset
 
  או 
 \begin_inset Formula $\varpi$
-\end_inset 
+\end_inset
 
 (, פי )
 \begin_inset Formula $\phi$
-\end_inset 
+\end_inset
 
  או 
 \begin_inset Formula $\varphi$
-\end_inset 
+\end_inset
 
 (, סיגמה ותטה 
 \lang english
@@ -4413,22 +4902,24 @@ l
  יש שתי גירסאות.
  וקיצור שעובד באופן כללי: אם תלחץ על כפתור כלשהו בפאנל הנוסחאות מחוץ למצב
  מתמטיקה, ליקס תעביר אותך למצב מתמטיקה, ותוסיף את הסימן.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 החלק התחתון של 
-\family sans 
+\family sans
 פאנל הנוסחאות
-\family default 
+\family default
  מכיל סה"כ 
-\numeric on 
+\numeric on
 12
-\numeric off 
+\numeric off
  כפתורים, שכפתור היוונית הוא רק אחד מהם, ומובילים אותך לעולם ומלואו של סימנים
  מתמטיים: חצים, יחסים, אופרטורים, סכומים ואינטגרלים
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 הכפתורים השחורים נותנים לך את הסימנים הרגילים של 
 \lang english
@@ -4437,7 +4928,9 @@ LaTeX
 .
  הכפתורים הכחולים נותנים לך סימונים נוספים, באדיבות האגודה המתמטית האמריקאית.
  אבל על זה ידובר כבר במקום אחר.
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
  שים לב שהשיטה הרגילה להכנסת טקסט מוגבה ומונמך נותנת לך גם להכניס את גבולות
@@ -4446,199 +4939,221 @@ LaTeX
  במיוחד.
  "הביטלס עברו בצוללת צהובה
 \begin_inset Formula $\ldots$
-\end_inset 
+\end_inset
 
  אמרו לי: כל מה שאתה צריך זה 
 \begin_inset Formula $\heartsuit$
-\end_inset 
+\end_inset
 
 ".
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 שורשים, כובעים וסוגריים
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 כדי לקבל שורש, פשוט לחץ על הכפתור עם הציור של שורש.
  יופיע סימן השורש הריבועי, והסמן יעבור לנקודת הקלדה חדשה, בתוך השורש.
  אתה יכול להקליד משתנים, מספרים, עוד שורשים, שברים, כל דבר שהוא.
  ליקס תגדיל באופן אוטומטי את השורש בהתאם לתוכן.
  
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 קישוט תו )
 \begin_inset Formula $\overrightarrow{v}$
-\end_inset 
+\end_inset
 
 ( או קבוצה של תוים )
 \begin_inset Formula $\overrightarrow{a+b}$
-\end_inset 
+\end_inset
 
 ( נעשה בדרך דומה.
  לחץ על כפתור ה
-\family sans 
+\family sans
 קישוט
-\family default 
+\family default
  שנראה כמו ריבוע כחול עם גל שחור )~( מעליו.
  לחץ על קישוט רצוי, והוא יופיע, עם נקודת הקלדה מתחתיו )או מעליו(.
  הקלד מה שאתה רוצה ולחץ על 
-\family sans 
+\family sans
 רווח
-\family default 
+\family default
  כדי "לצאת" מהקישוט.
  שים לב שיש שתי משפחות של קישוטים בחלון הנ"ל: העליונים )עם הכפתורים הגדולים(
  משנים את גודלם בהתאם לטקסט שאתה מקליד.
  לתחתונים יש גודל קבוע, והם מתאימים במיוחד לאות בודדת.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 סוגריים עגולים, מרובעים ומסולסלים עובדים בצורה דומה, רק קצת יותר מסובכת.
  לחץ על הכפתור 
-\family sans 
+\family sans
 סוגריים
-\family default 
+\family default
 , שנראה כמו רבוע כחול מוקף בסוגריים מרובעים שחורים, ותקבל את חלון ה
-\family sans 
+\family sans
 סוגריים
-\family default 
+\family default
 .
  לחץ על הסוגר השמאלי עם כפתור העכבר השמאלי, ועל הסוגר הימני עם כפתור העכבר
  הימני )לחילופין ניתן להשתמש באופציות 
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 L
-\bar default 
+\bar default
 eft
-\family default 
+\family default
 \lang hebrew
 , 
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 R
-\bar default 
+\bar default
 ight
-\family default 
+\family default
 \lang hebrew
  ו- 
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 B
-\bar default 
+\bar default
 oth
-\family default 
+\family default
 \lang hebrew
  ואז לבחור את הסוגריים עם כפתור העכבר השמאלי(.
  הבחירה הנוכחית מוצגת בקופסה בראש החלון.
  ברירת המחדל היא סוגריים עגולים, אבל בשיטה הזאת אתה יכול לקבל כל קומבינציה
  שתרצה, כולל אפילו הסוגר הריק, בשביל ביטויים כמו 
 \begin_inset Formula $a=\left\langle 7\right.$
-\end_inset 
+\end_inset
 
  )הסוגר הריק מופיע על המסך כקו שבור, אבל נעלם בפלט(.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 אחרי שבחרת את הסוגריים, לחץ על 
-\family sans 
+\family sans
 \lang english
 OK
-\family default 
+\family default
 \lang hebrew
  כדי להכניס אותן למסמך, או על 
-\family sans 
+\family sans
 ישם
-\family default 
+\family default
  )
-\family sans 
+\family sans
 \lang english
 Apply
-\family default 
+\family default
 \lang hebrew
 ( כדי להשאיר את החלון פתוח לפעם הבאה.
  עם אתה מתעצל, אתה יכול פשוט להקליד סוגריים במצב מתמטיקה במקום בחלון ה
-\family sans 
+\family sans
 סוגריים
-\family default 
+\family default
 .
  עם זאת, הסוגריים האלה יהיו בגודל רגיל, מה שיראה רע אם יש לך שבר או מטריצה
  בתוכם.
  שימוש בחלון ה
-\family sans 
+\family sans
 סוגריים
-\family default 
+\family default
  מבטיח שגודל הסוגריים יותאם למה שבתוכן.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 בנוסף, אפשר לשים סוגריים, שורש או קישוט על טקסט קיים.
  בחר את החלק של הנוסחא שאתה רוצה לשנות, ולחץ על הכפתור המתאים מ
-\family sans 
+\family sans
 פנל הנוסחאות
-\family default 
+\family default
 .
  נסה לשנות את החוק השני של ניוטון מסקלרים לוקטורים )
 \begin_inset Formula $f=ma$
-\end_inset 
+\end_inset
 
  ל- 
 \begin_inset Formula $\vec{f}=m\vec{a}$
-\end_inset 
+\end_inset
 
 (.
  אחרי שתלמד על מטריצות, זו תהיה הדרך הנוחה לשים סביבן סוגריים מכל סוג.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 שברים
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 אין דבר פשוט משברים במצב מתמטיקה.
  לחץ על כפתור ה
-\family sans 
+\family sans
 שבר
-\family default 
+\family default
  ב
-\family sans 
+\family sans
 פנל הנוסחאות
-\family default 
+\family default
 , שנראה כמו שבר עם ריבועים כחולים במונה ובמכנה.
  ליקס תיצר שתי נקודות הקלדה.
  כצפוי, אתה יכול להסתובב בשבר עם העכבר או החיצים.
  לחץ על הריבוע העליון והקש "
-\numeric on 
+\numeric on
 1
-\numeric off 
+\numeric off
 ".
  לחץ על 
-\family sans 
+\family sans
 חץ למטה
-\family default 
+\family default
  והקש "
-\numeric on 
+\numeric on
 2
-\numeric off 
+\numeric off
 ".
  יש לך שבר! כמובן, אתה יכול לשים כל ביטוי שהוא בכל אחת מהקופסאות: משתנים,
  חזקות, שורשים, שברים אחרים, הכל.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 תרגיל: תקן את משוואה 
-\numeric on 
+\numeric on
 2
-\numeric off 
+\numeric off
  ב-
-\family typewriter 
+\family typewriter
 \lang english
 he_example_raw.lyx
-\family default 
+\family default
 \lang hebrew
  כראוי.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 מצב 
 \lang english
 TeX
 \lang hebrew
 : גבולות, לוג, סינוס וחברים
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 מכיוון שאותיות במצב מתמטיקה נחשבות למשתנים, אם תקליד 
 \lang english
@@ -4646,15 +5161,15 @@ log
 \lang hebrew
  במצב מתמטיקה, ליקס תחשוב שאתה מתכוון למכפלה של שלושה משתנים: 
 \begin_inset Formula $l$
-\end_inset 
+\end_inset
 
 , 
 \begin_inset Formula $o$
-\end_inset 
+\end_inset
 
  ו- 
 \begin_inset Formula $g$
-\end_inset 
+\end_inset
 
 .
  שלוש האותיות יופיעו מוטות, שזה לא מה שרצית, אתה רצית את המילה 
@@ -4664,29 +5179,31 @@ log
  באותיות ישרות.
  בנוסף, ליקס לא תשים רווח בין הלוגריתם למשתנה 
 \begin_inset Formula $x$
-\end_inset 
+\end_inset
 
  )אם תקיש על רווח פשוט תצא ממוד המתמטיקה(.
  אז איך מקבלים 
 \begin_inset Formula $\log x$
-\end_inset 
+\end_inset
 
  במקום 
 \begin_inset Formula $logx$
-\end_inset 
+\end_inset
 
 ?
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 לחץ על 
 \lang english
 log
 \lang hebrew
  ברשימת הפונקציות ב
-\family sans 
-פנל\SpecialChar ~
+\family sans
+פנל\InsetSpace ~
 הנוסחאות
-\family default 
+\family default
 .
  המילה 
 \lang english
@@ -4699,10 +5216,10 @@ TeX
 \lang hebrew
 : במוד זה הכלל הוא דווקא שהטקסט מופיע באדום, ופונקציות אלה הן היוצא מהכלל.
  כל המילה נחשבת תו אחד, ואם תלחץ על 
-\family sans 
+\family sans
 \lang english
 Backspace
-\family default 
+\family default
 \lang hebrew
  היא תמחק באחת.
  עכשיו הקש 
@@ -4716,7 +5233,9 @@ dvi
 \lang hebrew
  הנוסחא תופיע כמו שצריך.
  נסה את זה!
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 פונקציות נוספות שאפשר להכניס במוד 
 \lang english
@@ -4727,186 +5246,202 @@ TeX
  אפשר להוסיף עליהן טקסט מונמך ומוגבה.
  למשל 
 \begin_inset Formula $\cos^{2}\theta$
-\end_inset 
+\end_inset
 
  או 
 \begin_inset Formula $\lim_{n\rightarrow\infty}$
-\end_inset 
+\end_inset
 
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 תרגיל: שים את נוסחא 
-\numeric on 
+\numeric on
 3
-\numeric off 
+\numeric off
  ב-
-\family typewriter 
+\family typewriter
 \lang english
 he_example_raw.lyx
-\family default 
+\family default
 \lang hebrew
  במוד מתמטיקה.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 מטריצות
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset LatexCommand \label{sec:matrices}
 
-\end_inset 
+\end_inset
 
 לחץ על כפתור המטריצה ב
-\family sans 
+\family sans
 פנל הנוסחאות
-\family default 
+\family default
 .
  לתיבת הדיאלוג 
-\family sans 
+\family sans
 מטריצה
-\family default 
+\family default
  יש שני מדדים "מחליקים" שמאפשרים לך לבחור כמה שורות וכמה עמודות אתה רוצה
  במטריצה שלך.
  בחר 
-\numeric on 
+\numeric on
 2
-\numeric off 
+\numeric off
  
-\family sans 
+\family sans
 שורות
-\family default 
+\family default
  )
-\family sans 
+\family sans
 \lang english
 Rows
-\family default 
+\family default
 \lang hebrew
 ( ו- 
-\numeric on 
+\numeric on
 3
-\numeric off 
+\numeric off
  
-\family sans 
+\family sans
 עמודות
-\family default 
+\family default
  )
-\family sans 
+\family sans
 \lang english
 Columns
-\family default 
+\family default
 \lang hebrew
 ( ולחץ על 
-\family sans 
+\family sans
 ישם
-\family default 
+\family default
  )
-\family sans 
+\family sans
 \lang english
 Apply
-\family default 
+\family default
 \lang hebrew
 ( או על 
-\family sans 
+\family sans
 אישור
-\family default 
+\family default
  )
-\family sans 
+\family sans
 \lang english
 OK
-\family default 
+\family default
 \lang hebrew
 (.
  ליקס מדפיסה 
-\numeric on 
+\numeric on
 6
-\numeric off 
+\numeric off
  נקודות הקלדה במטריצה של 
 \begin_inset Formula $2\times3$
-\end_inset 
+\end_inset
 
 .
  כרגיל אתה יכול לשים ביטוי כלשהוא )שורש רבועי, מטריצה קטנה, וכו'( בכל נקודת
  הקלדה.
  אתה יכול גם להשאיר חלק מהן ריקות, אם אתה רוצה.
  
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 המקש 
-\family sans 
+\family sans
 \lang english
 Tab
-\family default 
+\family default
 \lang hebrew
  יכול לשמש כדי לעבור מנקודה לנקודה במטריצה.
  לחליפין, אפשר להשתמש בחיצים.
  
-\family sans 
+\family sans
 חץ ימינה
-\family default 
+\family default
  בקצה ריבוע אחד יעביר אותך לריבוע הבא, 
-\family sans 
+\family sans
 חץ למטה
-\family default 
+\family default
  יוריד אותך שורה, וכו'.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 המטריצה קטנה עליך? 
-\family sans 
-עריכה:מתמטיקה:הוספת\SpecialChar ~
+\family sans
+עריכה:מתמטיקה:הוספת\InsetSpace ~
 שורה
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 E
-\bar default 
+\bar default
 dit\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 M
-\bar default 
+\bar default
 ath\SpecialChar \menuseparator
-Add\SpecialChar ~
+Add\InsetSpace ~
 Row
-\family default 
+\family default
 \lang hebrew
 ( ו
-\family sans 
-הוספת\SpecialChar ~
+\family sans
+הוספת\InsetSpace ~
 עמודה
-\family default 
+\family default
  )
-\family sans 
+\family sans
 \lang english
-Add\SpecialChar ~
+Add\InsetSpace ~
 Column
-\family default 
+\family default
 \lang hebrew
 ( מאותו תפריט.
  שורה חדשה תופיע מתחת לסמן, ועמודה חדשה מימין לו.
  הגזמת? 
-\family sans 
-מחיקת\SpecialChar ~
+\family sans
+מחיקת\InsetSpace ~
 שורה
-\family default 
+\family default
  ו
-\family sans 
-מחיקת\SpecialChar ~
+\family sans
+מחיקת\InsetSpace ~
 עמודה
-\family default 
+\family default
  מאותו תפריט יבטלו.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 ראה במדריך למשתמש איך לשנות את הישור האופקי של כל טור, איך לשנות את הישור
  האנכי של של המטריצה כולה, ועוד.
  שים לב שאם מה שאתה צריך זה טבלה של טקסט, לליקס יש תמיכה מעולה בטבלאות,
  שאינה קשורה למטריצות או למתמטיקה כלל.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 נוסחאות ממורכזות
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 כל הנוסחאות שרשמנו עד עכשיו הופיעו באמצע השורה.
  נוסחאות כאלה נקראות 
@@ -4920,109 +5455,129 @@ inline
  ונוסחאות של כמה שורות )ראה סעיף 
 \begin_inset LatexCommand \ref{sec:multiline}
 
-\end_inset 
+\end_inset
 
 ( חייבות להיות ממורכזות.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 לחץ על הכפתור 
-\family sans 
+\family sans
 ממורכז
-\family default 
+\family default
  ב
-\family sans 
+\family sans
 פנל הנוסחאות
-\family default 
+\family default
 , זה שנראה כמו ריבוע כחול באמצע בין שורות שחורות.
  ליקס פותחת נקודת הקלדה חדשה, אבל היא על שורה משלה, במרכזה.
  כעת הקלד ביטוי כבקשתך, וראה איך זה נראה.
  למעשה, הכפתור 
-\family sans 
+\family sans
 ממורכז
-\family default 
+\family default
  הוא מתג: כל לחיצה מעבירה את הנוסחא ממוד ממורכז למוד שורה ובחזרה.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 למצב ממורכז יש כמה הבדלים ממצב מתמטי רגיל:
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 כמה סימנים יופיעו בפונט גדול יותר כמו 
 \begin_inset Formula $\sum$
-\end_inset 
+\end_inset
 
 , או 
 \begin_inset Formula $\int$
-\end_inset 
+\end_inset
 
 .
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 טקסט מוגבה ומונמך על גבולות וסכומים )אבל לא על אינטגרלים( נכתב מתחת ומעל
  לסכום, ולא בצדדיו.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 הטקסט ממורכז.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 חוץ מאלה, מדובר במודים דומים מאוד.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 הערה אחרונה וחשובה: שים לב האם אתה שם את הנוסחה הממורכזת שלך בפסקה חדשה
  או לא.
  אם הנוסחה היא באמצע משפט או פסקה, אל תקיש 
-\family sans 
+\family sans
 \lang english
 Return
-\family default 
+\family default
 \lang hebrew
 .
  זה יגרום לטקסט אחרי הנוסחה לפתוח פסקה חדשה, ובפרט הוא יוכנס לתוך השורה,
  וזה בדרך כלל לא מה שאתה רוצה.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 תרגיל: הפוך את כל הנוסחאות ב-
-\family typewriter 
+\family typewriter
 \lang english
 he_example_raw.lyx
-\family default 
+\family default
 \lang hebrew
  לממורכזות, ושים לב לשינויים בעריכה.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 תרגיל: עם כל מה שלמדת בסעיף הזה, אתה כבר צריך להיות מסוגל לרשום נוסחה כמו
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 ואחרי שעשית את זה בדרך הקשה, למה שלא תנסה את 
-\family sans 
+\family sans
 הוספה:מתמטיקה:
-\bar under 
+\bar under
 \lang english
 C
-\bar default 
-ases\SpecialChar ~
+\bar default
+ases\InsetSpace ~
 environment
-\family default 
+\family default
 \lang hebrew
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 I
-\bar default 
+\bar default
 nsert\SpecialChar \menuseparator
 Mat
-\bar under 
+\bar under
 h
-\bar default 
+\bar default
 \SpecialChar \menuseparator
 
-\family default 
+\family default
 \lang hebrew
 (?
-\end_inset 
+\end_layout
+
+\end_inset
 
 
 \begin_inset Formula \[
@@ -5031,18 +5586,22 @@ f(x)=\left\{ \begin{array}{cc}
 0 & x=0\\
 \sum_{i=1}^{5}\alpha_{i}+\sqrt{-\frac{1}{x}} & x<0\end{array}\right.\]
 
-\end_inset 
+\end_inset
 
 
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 נוסחאות על כמה שורות
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset LatexCommand \label{sec:multiline}
 
-\end_inset 
+\end_inset
 
 נסי להכניס את הנוסחאות הבאות ולהסתכל בקובץ ה-
 \lang english
@@ -5053,16 +5612,18 @@ dvi
 \begin_inset Formula \[
 x=y+y+y+y+y\]
 
-\end_inset 
+\end_inset
 
 
 \begin_inset Formula \[
 =5y\]
 
-\end_inset 
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 זה לא נראה משהו בכלל! שתי נוסחאות אחת אחרי השניה נראות הרבה יותר טוב אם
  סימני השווה שלהן אחד מעל השני, במיוחד אם לנוסחא השניה אין צד שמאל.
@@ -5071,79 +5632,83 @@ x=y+y+y+y+y\]
 x & = & y+y+y+y+y\\
  & = & 5y\end{eqnarray*}
 
-\end_inset 
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 זה הרבה יותר טוב! סימני השווה מסודרים, ויש פחות רווח בין שתי הנוסחאות.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 כדי להתחיל משוואה מרובת שורות, פתחי משוואה ממורכזת, והקישי 
-\family sans 
+\family sans
 \lang english
 C-Return
-\family default 
+\family default
 \lang hebrew
 , או לחילופין בחרי 
-\family sans 
+\family sans
 הוספה:מתמטיקה:
 \lang english
-Eqnarray\SpecialChar ~
+Eqnarray\InsetSpace ~
 environment
-\family default 
+\family default
 \lang hebrew
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 I
-\bar default 
+\bar default
 nsert\SpecialChar \menuseparator
 Mat
-\bar under 
+\bar under
 h
-\bar default 
+\bar default
 \SpecialChar \menuseparator
 
-\family default 
+\family default
 \lang hebrew
 (.
  ליקס תדפיס שורה עם שלוש נקודות הקלדה ריקות.
  זו משוואה מרובת שורות עם שורה אחת.
  מאוכזבת? בחרי 
-\family sans 
-עריכה:מתמטיקה:הוסף\SpecialChar ~
+\family sans
+עריכה:מתמטיקה:הוסף\InsetSpace ~
 שורה
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 E
-\bar default 
+\bar default
 dit\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 M
-\bar default 
+\bar default
 ath\SpecialChar \menuseparator
-Add\SpecialChar ~
+Add\InsetSpace ~
 Row
-\family default 
+\family default
 \lang hebrew
 ( או הקישי 
-\family sans 
+\family sans
 \lang english
 C-Return
-\family default 
+\family default
 \lang hebrew
  שוב, ותקבלי שתי שורות כאלה.
  כמו במטריצות, את יכולה להשתמש בעכבר, בחצים וב-
-\family sans 
+\family sans
 \lang english
 Tab
-\family default 
+\family default
 \lang hebrew
  כדי לעבור מנקודה לנקודה.
  נסי לשכפל את המשוואה למעלה.
@@ -5151,9 +5716,9 @@ Tab
  מרובת-שורות.
  זה שימושי לא רק במשוואה למעלה, אלא גם במשוואות ארוכות כמו
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 שימי לב שהרווח אחרי הפלוס הראשון בשורה השני קצר מדי.
  זה אחד מהמקרים הנדירים ש-
@@ -5162,17 +5727,21 @@ LaTeX
 \lang hebrew
  טועה במרווח האוטומטי, וצריך לתקן אותה.
  יותר פרטים תמצאי במדריך למשתמש.
-\end_inset 
+\end_layout
+
+\end_inset
 
  
 \begin_inset Formula \begin{eqnarray*}
 x & = & a+b+c+d\\
  &  & +e+f+g\end{eqnarray*}
 
-\end_inset 
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 ליקס מיישרת את השדות השניים )אמצעיים( בכל שורה, כך שהרגיל יהיה לשים שם סימן
  שווה או סימני השוואה אחרים.
@@ -5180,112 +5749,118 @@ x & = & a+b+c+d\\
  מערך, בשביל זה יש מטריצות )ראי סעיף 
 \begin_inset LatexCommand \ref{sec:matrices}
 
-\end_inset 
+\end_inset
 
 (.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 אם את רוצה שרשרת ארוכה אפילו יותר של משוואות, הקישי 
-\family sans 
+\family sans
 \lang english
 C-Return
-\family default 
+\family default
 \lang hebrew
  ותקבלי שורה חדשה עם שלוש נקודות הקלדה ריקות.
  אם תעשי את זה כשאת לא בסוף השורה, כל מה שנמצא אחרי הסמן יעבור לשורה הבאה.
  אם הקלדת 
-\family sans 
+\family sans
 \lang english
 C-Return
-\family default 
+\family default
 \lang hebrew
  אחרי שכבר כתבת משוואה )של שורה אחת(, כל המשוואה תעבור לשדה הראשון.
  שימי את הסמן לפני סימן השווה, והקישי 
-\family sans 
+\family sans
 \lang english
 C-Tab
-\family default 
+\family default
 \lang hebrew
  כדי להעביר אותו ואת מה שאחרי לשדה השני.
  העבירי את הסמן לאחרי השווה, והקישי 
-\family sans 
+\family sans
 \lang english
 C-Tab
-\family default 
+\family default
 \lang hebrew
  שוב כדי להעביר את סוף המשוואה לשדה השלישי.
  לדוגמא נסי להעביר בצורה זו את המשוואה 
 \begin_inset Formula $E=mc^{2}$
-\end_inset 
+\end_inset
 
  ל-
 \begin_inset Formula \begin{eqnarray*}
 E & = & mc^{2}\\
  & = & mc\times c\end{eqnarray*}
 
-\end_inset 
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 אם פתחת יותר מדי שורות, הפתרון הוא 
-\family sans 
-עריכה:מתמטיקה:מחק\SpecialChar ~
+\family sans
+עריכה:מתמטיקה:מחק\InsetSpace ~
 שורה
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 E
-\bar default 
+\bar default
 dit\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 M
-\bar default 
+\bar default
 ath\SpecialChar \menuseparator
-Delete\SpecialChar ~
+Delete\InsetSpace ~
 Row
 \lang hebrew
 (
-\family default 
+\family default
 .
  לחילופין,
-\bar under 
+\bar under
  
-\bar default 
+\bar default
 שימי את הסמן בסוף השורה והקישי 
-\family sans 
+\family sans
 \lang english
 C-k
-\family default 
+\family default
 \lang hebrew
  כדי למחוק את השורה הבאה.
  המשוואה תתקצר בשורה, ותוכן )כל שלושת השדות( בשורה הבאה יודבק לסוף השורה
  הנוכחית.
  אם השורה הבאה ריקה, התוצאה תהיה שהיא תמחק.
  אם תשתמשי ב-
-\family sans 
+\family sans
 \lang english
 C-k
-\family default 
+\family default
 \lang hebrew
  באמצע השורה, כל מה שנמצא מהסמן ועד סוף השורה ימחק.
  למעשה 
-\family sans 
+\family sans
 \lang english
 C-k
-\family default 
+\family default
 \lang hebrew
  אינו מיוחד למצב מתמטיקה: הוא מוחק עד סוף השורה בכל מצב ובכל מוד פעולה.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 הערה אחרונה: לא התחלנו אפילו לכסות את נושא המשוואות מרובות השורות.
  מה, למשל, אומרות כל האופציות המיסתוריות ב
-\family sans 
+\family sans
 הוספה:מתמטיקה
-\family default 
+\family default
  שמתחילות ב-
 \lang english
 AMS
@@ -5296,45 +5871,67 @@ AMS
 \lang hebrew
  בראשי תיבות( מציעה אלטרנטיבות משלה למשוואות מרובות שורות.
  למה שתרצי להשתמש בהן? קראי על זה במדריך למשתמש.
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 עוד על מתמטיקה
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 כן יש עוד, עוד הרבה.
  אבל פה כבר הגיע הזמן להפנות אותך למדריך למשתמש, שם תמצא טיפים איך:
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 למספר נוסחאות ולשים עליהן תויות.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 לשנות פונטים, למשל לשים אותיות מובלטות, גוטיות או כפולות בתוך נוסחה.
  נעיר רק שאם תלחץ על כפתור המתמטיקה בלוח הכלים באמצע נוסחא, תוכל להקליד
  טקסט רגיל עד שתלחץ עליו שוב.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 שינוי גדלי פונטים ורווחים בתוך נוסחא )תתחיל לדאוג לזה רק אחרי הטיוטה האחרונה!(
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 כיצד לכתוב מקרו.
  מדובר בכלי חזק ביותר, אתה מגדיר אותו פעם אחת בתחילת המסמך ומשם ואילך אתה
  יכול להשתמש בו בכל מקום במסמך, ואם תשנה את ההגדרה הוא ישתנה בכל מקום.
  מקרו אפילו יכול לקבל משתנים!
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 ועוד הרבה דברים שלא היה לנו זמן להזכיר כאן.
-\layout Chapter
+\end_layout
+
+\begin_layout Chapter
 
 שונות
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 תכונות מרכזיות אחרות של ליקס
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 לא עברנו דרך כל הפקודות של ליקס וגם לא תכננו לעשות את זה.
  כרגיל, מידע מלא נמצא במדריך למשתמש.
  בסעיף הזה יש רק רשימה קצרה של נושאים מהותיים שנאלצנו להשמיט
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 ליקס תומכת 
 \lang english
@@ -5342,23 +5939,23 @@ WYSIWYM
 \lang hebrew
 -ית בטבלאות.
  השתמש ב
-\family sans 
+\family sans
 הוספה:טבלה
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 I
-\bar default 
+\bar default
 nsert\SpecialChar \menuseparator
 Ta
-\bar under 
+\bar under
 b
-\bar default 
-ular\SpecialChar ~
+\bar default
+ular\InsetSpace ~
 Material
-\family default 
+\family default
 \lang hebrew
 ( כדי לקבל טבלה )התעוד ושמות התפריטים באנגלית משתמשים במינוח 
 \lang english
@@ -5378,11 +5975,13 @@ LaTeX
 \lang hebrew
 (.
  לחץ על הטבלה עם כפתור העכבר הימני כדי לקבל את תיבת הדיאלוג 
-\family sans 
+\family sans
 טבלה
-\family default 
+\family default
  שמאפשרת לשנות אותה במגוון דרכים.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 ליקס תומכת בתמונות במגוון פורמטים )כולל 
 \lang english
@@ -5402,27 +6001,29 @@ LaTeX
 \lang hebrew
 (.
  ניחשת נכון: 
-\family sans 
+\family sans
 הוספה:איור
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 I
-\bar default 
+\bar default
 nsert\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 G
-\bar default 
+\bar default
 raphics
-\family default 
+\family default
 \lang hebrew
 (.
  לתמונות וטבלאות אפשר להוסיף כותרות, ולייצר באופן אוטומטי "רשימת טבלאות"
  ו"רשימת תמונות" כמו שעשית עם תוכן העניינים.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 ליקס תומכת בניהול גרסאות )
 \lang english
@@ -5434,13 +6035,15 @@ RCS
 \lang hebrew
 .
  )נסה 
-\family typewriter 
+\family typewriter
 \lang english
 man rcsintro
-\family default 
+\family default
 \lang hebrew
  למידע נוסף(
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 יש לך שליטה בלתי רגילה בהתנהגות של ליקס.
  כל דבר 
@@ -5453,45 +6056,47 @@ man rcsintro
 \lang hebrew
  ניתן להתאים במספר דרכים.
  את הרוב הגדול אפשר לבצע בנוחות בעזרת 
-\family sans 
+\family sans
 עריכה:העדפות
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 E
-\bar default 
+\bar default
 dit\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 P
-\bar default 
+\bar default
 references
-\family default 
+\family default
 \lang hebrew
 (.
  על זה אתה יכול ללמוד יותר ב
-\family sans 
-עזרה:התאמה\SpecialChar ~
+\family sans
+עזרה:התאמה\InsetSpace ~
 אישית
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 H
-\bar default 
+\bar default
 elp\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 C
-\bar default 
+\bar default
 ustomization
-\family default 
+\family default
 \lang hebrew
 (.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 המפתחים של ליקס מפוזרים על חמש יבשות ולליקס יש תמיכה מעולה בשפות שאינן אנגלית
  )הולנדית, גרמנית, יונית, צ'כית, טורקית\SpecialChar \ldots{}
@@ -5508,42 +6113,44 @@ LaTeX
 \lang hebrew
  ג
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 ק.[
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 מקשי פקודה מופיעים בתפריטים.
  כך אתה יכול לבצע את 
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 F
-\bar default 
+\bar default
 ile\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 O
-\bar default 
+\bar default
 pen
-\family default 
+\family default
 \lang hebrew
  בעזרת 
-\family sans 
+\family sans
 \lang english
 M-F
-\family default 
+\family default
 \lang hebrew
  ואחריו 
-\family sans 
+\family sans
 \lang english
 O
 \lang hebrew
 
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 בעברית מקשי הפקודה לא מודגשים באלגנטיות בקו תחתי אלא מופיעים משמאל לפקודה,
  לפעמים עם קו תחתי ולפעמים בלי )אם יש חוקיות, אני לא גיליתי אותה( 
@@ -5552,23 +6159,27 @@ collapsed true
 \lang hebrew
  ג
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 ק.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\family default 
+\family default
 .
  גם מקשי הפקודה ניתנים להתאמה, ולחלק מהשפות שליקס תורגם אליהן יש התאמות
  מקשים משלהן.
  שוב, מידע על זה ב
-\family sans 
-עזרה:התאמה\SpecialChar ~
+\family sans
+עזרה:התאמה\InsetSpace ~
 אישית
-\family default 
+\family default
 .
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 ליקס יכול לקרוא קבצי 
 \lang english
@@ -5578,70 +6189,80 @@ LaTeX
  ראה סעיף 
 \begin_inset LatexCommand \ref{sec:relyx}
 
-\end_inset 
+\end_inset
 
 .
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 בדוק איות
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 לא עובד בעברית.
  בנוסף, הוא מתייחס רק לשפת המסמך ומתעלם מהעובדה שניתן לשנות שפה מקומית )בעזרת
  
-\family sans 
+\family sans
 מבנה:תו
-\family default 
+\family default
 ( כך שהוא לא מאוד מועיל גם למסמכים משולבים עברית/אנגלית 
 \lang english
 ---
 \lang hebrew
  ג.ק.
-\end_inset 
+\end_layout
+
+\end_inset
 
  בעזרת 
-\family sans 
-עריכה:בדוק\SpecialChar ~
+\family sans
+עריכה:בדוק\InsetSpace ~
 איות
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 E
-\bar default 
+\bar default
 dit\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 S
-\bar default 
+\bar default
 pellchecker
-\family default 
+\family default
 \lang hebrew
 (
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 שים לב שהוא בודק רק מהסמן ועד סוף המסמך.
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 ליקס למשתמשי 
 \lang english
 LaTeX
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset LatexCommand \label{sec:latexusers}
 
-\end_inset 
+\end_inset
 
 אם אתה לא יודע כלום על 
 \lang english
@@ -5673,7 +6294,9 @@ LaTeX
 LaTeX
 \lang hebrew
  ישנים, ובמספר תחומים אחרים, אבל המצב משתפר מגירסה לגירסה של ליקס.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 מכיוון שזה רק שעור מודרך, ואנחנו רוצים לשמור את האורך שלו סביר, נשים פה
  רק מידע מינימלי, מכוון בעיקר למה שמשתמשים חדשים יכולים לרצות.
@@ -5686,12 +6309,16 @@ LaTeX
 LaTeX
 \lang hebrew
  בליקס.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 מוד 
 \lang english
 TeX
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 כל מה שאתה מקליד ב"מוד 
 \lang english
@@ -5699,7 +6326,7 @@ TeX
 \lang hebrew
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  יועבר ל- 
 \lang english
@@ -5707,24 +6334,24 @@ LaTeX
 \lang hebrew
  בלי שום עיבוד מצד ליקס.
  בחר 
-\family sans 
+\family sans
 הוספה:
-\bar under 
+\bar under
 \lang english
 T
-\bar default 
+\bar default
 eX
-\family default 
+\family default
 \lang hebrew
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 I
-\bar default 
+\bar default
 nsert\SpecialChar \menuseparator
 
-\family default 
+\family default
 \lang hebrew
 (.
  תקבל מסגרת עם הטקסט 
@@ -5737,7 +6364,9 @@ ERT
 LaTeX
 \lang hebrew
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 במצב מתמטיקה, מוד 
 \lang english
@@ -5763,9 +6392,9 @@ backslash
 TeX
 \lang hebrew
  ע"י הקשת 
-\family sans 
+\family sans
 רווח
-\family default 
+\family default
 , או כל תו לא אלפבתי, כמו מספר, קו תחתי, כובע או סוגריים.
  ברגע שזה קורה, ליקס בודקת אם היא מזהה את הפקודה שהקלדת, ואם כן, מציגה אותה
  
@@ -5774,45 +6403,47 @@ WYSIWYM
 \lang hebrew
 -ית.
  לדוגמא, אם הקלדת במצב מתמטיקה 
-\family typewriter 
+\family typewriter
 \lang english
 
-\backslash 
+\backslash
 gamma
-\family default 
+\family default
 \lang hebrew
 , ברגע שתלחץ על 
-\family sans 
+\family sans
 רווח
-\family default 
+\family default
 , ליקס תשנה את ה- 
 \lang english
 gamma
 \lang hebrew
  האדום ל-
 \begin_inset Formula $\gamma$
-\end_inset 
+\end_inset
 
  כחול.
  זה עובד כמעט לכל פקודות המתמטיקה הלא מסובכות )שים לב שפונקציות כמו 
-\family typewriter 
+\family typewriter
 \lang english
 
-\backslash 
+\backslash
 sin
-\family default 
+\family default
 \lang hebrew
  רק ישנו צבע לשחור(.
  למי שזוכר את קיצורי הפקודות זה יותר מהיר מאשר שימוש ב
-\family sans 
+\family sans
 פאנל הנוסחאות
-\family default 
+\family default
 , ומשתמשי 
 \lang english
 LaTeX
 \lang hebrew
  ותיקים לא צריכים ללמוד שום דבר חדש.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 עוד מקרה מיוחד הוא הסוגריים המסולסלים: אם תקליד אחד מהם במוד 
 \lang english
@@ -5824,7 +6455,9 @@ TeX
 \lang hebrew
  והסמן יהיה בין הסוגריים.
  כך נוח להקליד פקודות שליקס לא מכירה עדיין ומקבלות משתנה.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 ליקס לא תומכת )עדיין( בכל פקודה של 
 \lang english
@@ -5854,12 +6487,12 @@ WYSIWYM
 LaTeX
 \lang hebrew
  שאינה נתמכת ע"י ליקס, שים את הפקודה 
-\family typewriter 
+\family typewriter
 \lang english
 
-\backslash 
+\backslash
 usepackage{foo}
-\family default 
+\family default
 \lang hebrew
  ב- 
 \lang english
@@ -5868,7 +6501,7 @@ preamble
  )ראה סעיף 
 \begin_inset LatexCommand \ref{sec:preamble}
 
-\end_inset 
+\end_inset
 
 (.
  זה יאפשר לך להשתמש בחבילה, אם כי לא תהנה מתמיכה 
@@ -5876,126 +6509,136 @@ preamble
 WYSIWYM
 \lang hebrew
 -ית.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 יבוא מסמכי 
 \lang english
 LaTeX
 \lang hebrew
 : 
-\family typewriter 
+\family typewriter
 \lang english
 reLyX
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset LatexCommand \label{sec:relyx}
 
-\end_inset 
+\end_inset
 
 הפקודה ליבוא מסמכי 
 \lang english
 LaTeX
 \lang hebrew
 , היא 
-\family sans 
+\family sans
 קובץ:יבא:
-\bar under 
+\bar under
 \lang english
 L
-\bar default 
+\bar default
 aTeX
-\family default 
+\family default
 \lang hebrew
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 F
-\bar default 
+\bar default
 ile\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 I
-\bar default 
+\bar default
 mport\SpecialChar \menuseparator
 
-\family default 
+\family default
 \lang hebrew
 (.
  זה יריץ סקריפט פרל בשם 
-\family typewriter 
+\family typewriter
 \lang english
 reLyX
-\family default 
+\family default
 \lang hebrew
  שיתרגם קובץ בשם 
-\family typewriter 
+\family typewriter
 \lang english
 foo.tex
-\family default 
+\family default
 \lang hebrew
  לקובץ בשם 
-\family typewriter 
+\family typewriter
 \lang english
 foo.lyx
-\family default 
+\family default
 \lang hebrew
 .
  אם זה לא עבד משום מה, אתה יכול להריץ את 
-\family typewriter 
+\family typewriter
 \lang english
 reLyX
-\family default 
+\family default
 \lang hebrew
  בעצמך
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 כאשר ליקס מותקנת, הקובץ 
-\family typewriter 
+\family typewriter
 \lang english
 reLyX
-\family default 
+\family default
 \lang hebrew
  יושם באותה ספריה כמו ליקס עצמה )לדוגמא: 
-\family typewriter 
+\family typewriter
 \lang english
 /usr/local/bin/reLyX
-\family default 
+\family default
 \lang hebrew
 (.
  
-\family typewriter 
+\family typewriter
 \lang english
 reLyX
-\family default 
+\family default
 \lang hebrew
  זקוק לפרל )כיום גירסה 
-\numeric on 
+\numeric on
 5.002
-\numeric off 
+\numeric off
 (.
-\end_inset 
+\end_layout
+
+\end_inset
 
 , אולי עם אופציות מיוחדות.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\family typewriter 
+\family typewriter
 \lang english
 reLyX
-\family default 
+\family default
 \lang hebrew
  מתרגם את רוב קבצי ה-
 \lang english
@@ -6008,7 +6651,9 @@ TeX
 \lang hebrew
  כך שבתקווה, אחרי התרגום המסמך ימשיך להראות אותו דבר.
  חפש את המקומות האלה ותקן אותם ידנית, אם אפשר.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 ל-
 \lang english
@@ -6021,12 +6666,16 @@ manpage
 ( משלו.
  קרא אותו אם אתה זקוק למידע מפורט יותר על מה עובד ולא עובד, באגים ומעקפיהם,
  וכל האופציות.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 תרגום מסמכי ליקס ל-
 \lang english
 LaTeX
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 במקרים רבים תרצה לתרגם את קובץ הליקס שלך לקובץ 
 \lang english
@@ -6036,42 +6685,42 @@ LaTeX
  לדוגמא, אם לשותף לעבודה או למחקר אין ליקס ורוצה לקרוא אותו.
  אין קל מזה.
  בחר 
-\family sans 
+\family sans
 קובץ:יצא:
-\bar under 
+\bar under
 \lang english
 L
-\bar default 
+\bar default
 aTeX
-\family default 
+\family default
 \lang hebrew
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 F
-\bar default 
+\bar default
 ile\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 E
-\bar default 
+\bar default
 xport\SpecialChar \menuseparator
 
-\family default 
+\family default
 \lang hebrew
 (.
  אם הקובץ המקורי נקרא 
-\family typewriter 
+\family typewriter
 \lang english
 whatever.lyx
-\family default 
+\family default
 \lang hebrew
 , תקבל קובץ 
-\family typewriter 
+\family typewriter
 \lang english
 whatever.tex
-\family default 
+\family default
 \lang hebrew
 .
  מכיוון שליקס משתמשת ב-
@@ -6079,12 +6728,16 @@ whatever.tex
 LaTeX
 \lang hebrew
  באופן קבוע כדי להציג ולהדפיס, מן הסתם פעולת התרגום עולה לה בקלות.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 הקדמת 
 \lang english
 LaTeX
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 החלק של קובץ 
 \lang english
@@ -6095,72 +6748,80 @@ LaTeX
 preamble
 \lang hebrew
  באנגלית.
-\layout Subsubsection
+\end_layout
+
+\begin_layout Subsubsection
 
 מחלקת המסמך
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 תיבת הדיאלוג 
-\family sans 
+\family sans
 מבנה:מסמך
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 L
-\bar default 
+\bar default
 ayout\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 D
-\bar default 
+\bar default
 ocument
-\family default 
+\family default
 \lang hebrew
 ( מטפלת ברוב האופציות שהיית רוצה לשים בפקודה 
-\family typewriter 
+\family typewriter
 \lang english
 
-\backslash 
+\backslash
 documentclass
-\family default 
+\family default
 \lang hebrew
 , ובפרט בשינוי המחלקה, גודל הפונט והנייר.
  אופציות נוספות לפקודה 
-\family typewriter 
+\family typewriter
 \lang english
 
-\backslash 
+\backslash
 documentclass
-\family default 
+\family default
 \lang hebrew
  שים בתיבה 
-\family sans 
-אפשרויות\SpecialChar ~
+\family sans
+אפשרויות\InsetSpace ~
 נוספות
-\family default 
+\family default
  )
-\family sans 
+\family sans
 \lang english
 E
-\bar under 
+\bar under
 x
-\bar default 
-tra\SpecialChar ~
+\bar default
+tra\InsetSpace ~
 Options
-\family default 
+\family default
 \lang hebrew
 (.
-\layout Subsubsection
+\end_layout
+
+\begin_layout Subsubsection
 
 פקודות הקדמה אחרות
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset LatexCommand \label{sec:preamble}
 
-\end_inset 
+\end_inset
 
 אם יש פקודות נוספות שהיית שם בקובץ 
 \lang english
@@ -6168,22 +6829,22 @@ LaTeX
 \lang hebrew
 , אתה יכול להשתמש בהן גם בקובץ ליקס.
  בחר 
-\family sans 
+\family sans
 מבנה:הקדמה
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 L
-\bar default 
+\bar default
 ayout\SpecialChar \menuseparator
 P
-\bar under 
+\bar under
 r
-\bar default 
+\bar default
 eamble
-\family default 
+\family default
 \lang hebrew
 ( והקלד.
  כל מה שתרשום, כמו במוד 
@@ -6195,20 +6856,26 @@ TeX
 LaTeX
 \lang hebrew
  ישירות ללא עיבוד.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\end_inset 
+\end_layout
+
+\end_inset
 
 
 \lang english
 BibTeX
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 ליקס תומכת ב-
 \lang english
@@ -6221,47 +6888,47 @@ LaTeX
  שמאפשרת לך לבנות בסיס נתונים עבור ההפניות הביבליוגרפיות, ולהשתמש באותו
  בסיס נתונים עבור מסמכים שונים.
  בחר 
-\family sans 
-הוספה:רשימות\SpecialChar ~
-ותוכן:הפניית\SpecialChar ~
+\family sans
+הוספה:רשימות\InsetSpace ~
+ותוכן:הפניית\InsetSpace ~
 
 \lang english
 BibTeX
-\family default 
+\family default
 \lang hebrew
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 I
-\bar default 
+\bar default
 nsert\SpecialChar \menuseparator
-Lists\SpecialChar ~
-&\SpecialChar ~
+Lists\InsetSpace ~
+&\InsetSpace ~
 T
-\bar under 
+\bar under
 O
-\bar default 
+\bar default
 C\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 B
-\bar default 
-ibTex\SpecialChar ~
+\bar default
+ibTex\InsetSpace ~
 Reference
-\family default 
+\family default
 \lang hebrew
 ( כדי להשתמש בקובץ 
-\family typewriter 
+\family typewriter
 \lang english
 bib
-\family default 
+\family default
 \lang hebrew
 .
  לחץ על המסגרת 
 \lang english
-BibTeX\SpecialChar ~
-Generated\SpecialChar ~
+BibTeX\InsetSpace ~
+Generated\InsetSpace ~
 Reference
 \lang hebrew
  שנוצרה ותקבל את תיבת הדיאלוג 
@@ -6270,75 +6937,79 @@ BibTeX
 \lang hebrew
 .
  בשדה 
-\family sans 
+\family sans
 \lang english
 Database
-\family default 
+\family default
 \lang hebrew
 , שים מה שהיית שם בתוך הסוגריים המסולסלים של פקודת 
-\family typewriter 
+\family typewriter
 \lang english
 
-\backslash 
+\backslash
 bibliography
 \lang hebrew
 
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 כמו ב-
 \lang english
 LaTeX
 \lang hebrew
  רגיל, יש להפריד הפניות שונות עם פסיקים, בלי רווחים.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\family default 
+\family default
 .
  בדומה, בשדה 
-\family sans 
+\family sans
 \lang english
 Style
-\family default 
+\family default
 \lang hebrew
  שים מה שהיית שם בין הסוגריים של פקודת 
-\family typewriter 
+\family typewriter
 \lang english
 
-\backslash 
+\backslash
 bibliographystyle{}
-\family default 
+\family default
 \lang hebrew
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 מרגע שעשית את זה, אתה יכול לצטט מתוך הביבליוגרפיות שהכנסת בעזרת 
-\family sans 
-הוספה:הפניית\SpecialChar ~
+\family sans
+הוספה:הפניית\InsetSpace ~
 ציטוט
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 I
-\bar default 
+\bar default
 nsert\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 C
-\bar default 
-itation\SpecialChar ~
+\bar default
+itation\InsetSpace ~
 Reference
-\family default 
+\family default
 \lang hebrew
 (, ראה סעיף 
 \begin_inset LatexCommand \ref{sec:bibliographies}
 
-\end_inset 
+\end_inset
 
 .
  ליקס תדאג להריץ את 
@@ -6347,50 +7018,58 @@ BibTeX
 \lang hebrew
 .
  הרשימה בתיבת הדיאלוג 
-\family sans 
+\family sans
 ציטוטים
-\family default 
+\family default
  תראה את כל ההפניות בקובץ 
-\family typewriter 
+\family typewriter
 \lang english
 bib
-\family default 
+\family default
 \lang hebrew
  שלך.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 שונות
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 ראה תחת 
-\family sans 
-הוספה:תו\SpecialChar ~
+\family sans
+הוספה:תו\InsetSpace ~
 מיוחד
-\family default 
+\family default
  )
-\family sans 
-\bar under 
+\family sans
+\bar under
 \lang english
 I
-\bar default 
+\bar default
 nsert\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 S
-\bar default 
-pecial\SpecialChar ~
+\bar default
+pecial\InsetSpace ~
 Character
-\family default 
+\family default
 \lang hebrew
 ( עוד תוים מיוחדים, כמו שלוש נקודות, שבירת שורה או נקודת 
 \lang english
 hyphenation
 \lang hebrew
 .
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 שגיאות!
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 יקרה שהרצת 
 \lang english
@@ -6421,4 +7100,7 @@ TeX
 LaTeX
 \lang hebrew
  כלשונה.
-\the_end
+\end_layout
+
+\end_body
+\end_document

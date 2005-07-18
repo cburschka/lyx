@@ -1,5 +1,7 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass dinbrief
 \language german
 \inputencoding latin1
@@ -7,12 +9,11 @@
 \graphics default
 \paperfontsize 12
 \spacing single
-\papersize a4paper
-\paperpackage a4
-\use_geometry 0
+\papersize default
+\use_geometry false
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -23,53 +24,85 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle empty
+\tracking_changes false
+\output_changes true
+\end_header
 
-\layout My Address
+\begin_body
+
+\begin_layout My Address
 
 <Mein Name>
-\newline 
+\newline
 <Meine Straße>
-\newline 
+\newline
 <Meine Stadt>
-\layout Send To Address
+\end_layout
+
+\begin_layout Send To Address
 
 <Dein Name> 
-\newline 
+\newline
 <Deine Straße>
-\newline 
+\newline
 <Deine Stadt>
-\layout Stadt
+\end_layout
+
+\begin_layout Stadt
 
 <Stadt für Datum>
-\layout Datum
+\end_layout
+
+\begin_layout Datum
 
 08.
  Juni 1997
-\layout Signature
+\end_layout
+
+\begin_layout Signature
 
 <Meine Unterschrift>
-\layout Betreff
+\end_layout
+
+\begin_layout Betreff
 
 <Mein Betreff>
-\layout Opening
+\end_layout
+
+\begin_layout Opening
 
 <Anrede>
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 <Hierher kommt der Text>
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 <Auch in mehreren Absätzen>
-\layout Closing
+\end_layout
+
+\begin_layout Closing
 
 Mit freundlichen Grüßen
-\layout ps
+\end_layout
+
+\begin_layout ps
 
 <Postscript.>
-\layout cc
+\end_layout
+
+\begin_layout cc
 
 <Verteiler>
-\layout encl
+\end_layout
+
+\begin_layout encl
 
 <Anlagen>
-\the_end
+\end_layout
+
+\end_body
+\end_document

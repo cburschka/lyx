@@ -1,18 +1,19 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass book
 \language danish
 \inputencoding default
 \fontscheme default
 \graphics default
 \paperfontsize default
-\spacing single 
-\papersize Default
-\paperpackage a4
-\use_geometry 0
+\spacing single
+\papersize default
+\use_geometry false
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \secnumdepth 2
 \tocdepth 2
@@ -23,28 +24,43 @@
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
+\tracking_changes false
+\output_changes true
+\end_header
 
-\layout Title
+\begin_body
+
+\begin_layout Title
 
 Introduktion til LyX
-\layout Author
+\end_layout
+
+\begin_layout Author
 
 af John Weiss og LyX-holdet
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset LatexCommand \tableofcontents{}
 
-\end_inset 
+\end_inset
 
 
-\layout Chapter
+\end_layout
+
+\begin_layout Chapter
 
 LyX-filosofien
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Hvad er LyX?
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LyX er et system til at udfærdige dokumenter\SpecialChar \@.
  Det udmærker sig ved at kunne
@@ -66,16 +82,18 @@ er, litteraturhenvisninger, indekser m.m\SpecialChar \@.
  og selv en børnebog eller to), artikler i videnskabelige tidsskrifter,
  filmmanuskripter, forretningsplaner\SpecialChar \ldots{}
  og meget mere.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LyX er et program, der har en moderne tilgang til dokumentskrivning på computer
  med et markeringsparadigme, en tilgang, der bryder med det gammeldags 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 skrivemaskine-koncept
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
 \SpecialChar \@.
  Det er lavet til tekstforfattere, der hurtigt vil have et professionelt
@@ -84,7 +102,9 @@ ng\SpecialChar \@.
  Arbejdet med tekstopsætning klares hovedsageligt af computeren, ikke
  forfatteren; med LyX kan forfatteren koncentrere sig om indholdet\SpecialChar \@.
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 En af de udfordringer du kommer ud for, når du tager LyX i brug, er den
  anderledes tænkemåde, du er nødt til at lægge for dagen\SpecialChar \@.
@@ -95,11 +115,11 @@ En af de udfordringer du kommer ud for, når du tager LyX i brug, er den
  Understregning, som ikke er andet end at overskrive
  med 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 _
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
 -tegnet, blev en måde at lægge tryk på ord og sætninger\SpecialChar \@.
  Du var nødt til
@@ -109,7 +129,9 @@ _
  Orddeling
  ved linjeskift krævede et trænet øje og en den fremsynethed\SpecialChar \@.
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Med andre ord er blev vi alle trænet op til at bekymre os om små detaljer
  om, hvilket tegn der skulle placeres hvor\SpecialChar \@.
@@ -124,75 +146,81 @@ ammer overtaget denne måde at tænke på\SpecialChar \@.
 nens skrifttypehjul\SpecialChar \@.
  Dette er filosofien bag WYSIWYG-tekstbehandling: 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 What You See Is What You Get
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  (Du ser, hvad du får).
  Desværre er resultatet oftest 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 Du får ikke mere end det, du ser
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
 \SpecialChar \@.
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Det er her, LyX afviger fra almindelig tekstbehandling\SpecialChar \@.
  Du skal ikke bekymre
  dig om, hvor tegnene placeres på arket\SpecialChar \@.
  Du fortælle LyX 
-\emph on 
+\emph on
 hvad det er, du laver
-\emph default 
+\emph default
  og LyX klarer resten efter et regelsæt kaldet en 
-\emph on 
+\emph on
 stil
-\emph default 
+\emph default
 
 \begin_inset Foot
-collapsed false
+status open
 
-\layout Standard
+\begin_layout Standard
 
 Retfærdigvis skal det siges, at de nyeste udgaver af de mest populære kontorprog
 rammer har fået en slags stilark, som kan marker teksten på en lignende
  måde\SpecialChar \@.
  De bruges dog sjældent i praksis\SpecialChar \@.
 
-\end_inset 
+\end_layout
+
+\end_inset
 
 \SpecialChar \@.
  Lad os se på et lille eksempel:
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Du er ved at skrive en rapport\SpecialChar \@.
  I begyndelsen af rapporten vil du have et
  afsnit kaldet 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 Introduktion
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
 , så du bruger menuen i dit tekstbehandlingsprogram til ændring af skriftstørrel
 ser og vælger en ny skriftstørrelse\SpecialChar \@.
  Så aktiverer du fed skrift og skriver
  
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
-1.\SpecialChar ~
-\SpecialChar ~
+1.\InsetSpace ~
+\InsetSpace ~
 Introduktion
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
 \SpecialChar \@.
  Hvis du senere vil flytte afsnittet til et andet sted i dokumentet eller
@@ -200,23 +228,27 @@ Introduktion
  nummereringen for denne og alle efterfølgende sektioner samt i indholdsfortegne
 lsen\SpecialChar \@.
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 I LyX vælger du 
-\family sans 
+\family sans
 Sektion
-\family default 
+\family default
  i menuen til venstre for menuknapperne og skriver 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 Introduktion
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
 \SpecialChar \@.
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Det er det hele\SpecialChar \@.
  Hvis du flytter rundt på afsnittene vil de automatisk få
@@ -225,16 +257,18 @@ Det er det hele\SpecialChar \@.
  (ved at indsætte krydsreference-mærker), vil LyX automatisk opdatere dem
  i hele filen, så du altid nogensinde skal skrive et afsnitsnummer selv\SpecialChar \@.
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Lad os kigge på problematikken omkring konsistens\SpecialChar \@.
  Fem dage senere åbner
- du igen rapporten og begynder at skrive sektion\SpecialChar ~
+ du igen rapporten og begynder at skrive sektion\InsetSpace ~
 4\SpecialChar \@.
  Nu glemmer du at du brugte
- 18-punkts fed skrift i stedet for 16-punkts, så titlen på sektion\SpecialChar ~
+ 18-punkts fed skrift i stedet for 16-punkts, så titlen på sektion\InsetSpace ~
 4 står
- nu med en anden skrift end den du brugte til sektion\SpecialChar ~
+ nu med en anden skrift end den du brugte til sektion\InsetSpace ~
 1\SpecialChar \@.
  Dette problem findes
  ganske enkelt ikke i LyX\SpecialChar \@.
@@ -243,7 +277,9 @@ Lad os kigge på problematikken omkring konsistens\SpecialChar \@.
  Sådan noget er computere trods
  alt ret gode til\SpecialChar \@.
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Endnu et eksempel: Du laver en liste\SpecialChar \@.
  I andre tekstbehandlingsprogrammer
@@ -256,45 +292,47 @@ Endnu et eksempel: Du laver en liste\SpecialChar \@.
  skal der stå i den\SpecialChar \@.
  Det er det hele\SpecialChar \@.
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Så den grundlæggende idé bag LyX er: angiv 
-\emph on 
+\emph on
 hvad
-\emph default 
+\emph default
  du laver, ikke 
-\emph on 
+\emph on
 hvordan
-\emph default 
+\emph default
  du gør det\SpecialChar \@.
  I stedet for 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 Du ser, hvad du får
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
  er LyX-filosofien 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 Du ser, hvad du 
-\emph on 
+\emph on
 mener
-\emph default 
+\emph default
 
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
  (What You See Is What You Mean, WYSIWYM)\SpecialChar \@.
  Den gør det meget simplere at
  skrive dokumenter\SpecialChar \@.
  Det er også derfor LyX ikke er ret godt til at lave plakater
  og flyers --- i disse tilfælde vil du netop 
-\emph on 
+\emph on
 gerne
-\emph default 
+\emph default
  bestemme præcis hvor alt skal stå, fordi der ikke findes funktionsbestemte
  enheder som afsnit, sektioner o.s.v\SpecialChar \@.
  Det betyder ikke at LyX mangler en bestemt
@@ -302,14 +340,16 @@ gerne
  dette --- du bruger heller ikke en skruetrækker til at hamre søm i med
  (medmindre din skruetrækker har livsvarig garanti)\SpecialChar \@.
 
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Forskelle mellem LyX og anden tekst\SpecialChar \-
 behandling
 \begin_inset Foot
-collapsed false
+status open
 
-\layout Standard
+\begin_layout Standard
 
 Nej, vi prøver ikke på at starte (eller vinde) en fundamentalistisk tekstbehandl
 ingskrig, men vi mener at det er vigtigt at beskrive LyX's egenskaber\SpecialChar \@.
@@ -317,31 +357,43 @@ ingskrig, men vi mener at det er vigtigt at beskrive LyX's egenskaber\SpecialCha
  en af LyX's vigtigste egenskaber, WYSIWYM adskiller sig grundlæggende fra,
  hvad 99% af alle mennesker kender\SpecialChar \@.
 
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Dette finder du ikke i LyX:
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Linealen
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Tabulatorstop
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Ekstra mellemrum (f.eks.
  at indsætte 
-\family sans 
+\family sans
 Enter
-\family default 
+\family default
  eller 
-\family sans 
+\family sans
 Space
-\family default 
+\family default
  to eller flere gange efter hinanden)
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Tabulatorstop er sammen med linealen, der viser hvor ting er placeret på
  siden, ubrugelige i LyX\SpecialChar \@.
@@ -353,30 +405,46 @@ Tabulatorstop er sammen med linealen, der viser hvor ting er placeret på
  indsætte to tomme linjer efter hinanden, men det giver mening, når du tænker
  i WYSIWYM\SpecialChar \@.
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Her er nogle ting, der findes i LyX, men bruges på en anden måde, end man
  skulle tro:
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Indrykningsstyring
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Sideskift
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Linjeafstand (f.eks.
  enkelt, dobbelt o.s.v.)
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Afstand, vandret og lodret
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Skrifttyper og -størrelser
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Skriftjustering (fed, skråtstillet, understreget o.s.v.)
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Selvom de findes i LyX, har du normalt ikke brug for dem\SpecialChar \@.
  LyX tager sig af
@@ -391,45 +459,61 @@ drykning afhænger af konteksten; forskellige afsnitstyper indrykkes forskelligt\
  og afsnit fleksibel, styret af LyX\SpecialChar \@.
 
 \begin_inset Foot
-collapsed false
+status open
 
-\layout Standard
+\begin_layout Standard
 
 Det er muligt selv at finjustere disse (hvoraf enkelte kræver kendskab til
  LaTeX), i hele dokumentet eller dele heraf\SpecialChar \@.
  Se detaljerne i manualen 
-\emph on 
+\emph on
 Brugermanualen
-\emph default 
+\emph default
  og/eller 
-\emph on 
+\emph on
 Udvidede funktioner
-\emph default 
+\emph default
 \SpecialChar \@.
 
-\end_inset 
+\end_layout
+
+\end_inset
 
  
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Til sidste er der nogle områder, hvor vi mener at LyX (og LaTeX) overgår
  mange tekstbehandlingsprogrammer:
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Orddeling
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Alle former for lister
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Matematik
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Tabeller
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Krydsreferencer
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Godt nok kan mange nyere tekstbehandlingsprogrammer håndtere matematiske
  symboler, tabeller og orddeling --- og mange har bevæget sig mod stildefinition
@@ -437,68 +521,76 @@ er og WYSIWYM-filosofien.
  Det er dog først for nylig at dette er sket, hvorimod LyX bygger på do
  kuementudviklingssystemet-LaTeX, der har eksisteret i mere end 15 år og
  
-\emph on 
+\emph on
 virker
-\emph default 
+\emph default
 \SpecialChar \@.
  Alle fejlene er luget ud
 \begin_inset Foot
-collapsed false
+status open
 
-\layout Standard
+\begin_layout Standard
 
 Okay, vi ved godt at intet er helt perfekt, men LaTeX er så tæt på at være
  fejlfrit, som et program kan komme\SpecialChar \@.
 
-\end_inset 
+\end_layout
+
+\end_inset
 
 \SpecialChar \@.
 
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Hvad 
-\emph on 
+\emph on
 er
-\emph default 
+\emph default
  LaTeX (og hvad rager det mig)?
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LaTeX er et dokumentudviklingssystem, der blev lavet af Leslie Lamport tilbage
  i 1985
 \begin_inset Foot
-collapsed false
+status open
 
-\layout Standard
+\begin_layout Standard
 
 Oplysningerne i dette afsnit kommer fra 
-\emph on 
+\emph on
 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 A Guide to LaTeX2e
-\emph default 
+\emph default
 ,
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  af Helmut Kopka og Patrick Daly, som er nævnt i 
-\emph on 
+\emph on
 Brugermanualen
-\emph default 
+\emph default
 s litteraturliste\SpecialChar \@.
 
-\end_inset 
+\end_layout
+
+\end_inset
 
 \SpecialChar \@.
  Det er igen bygget op omkring et tekstopsætningssprog kaldet TeX (udtales
  
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 tæk
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
 ), som Donald Knuth lavede i 1984.
  Dog er det de færreste, der ved nøjagtig hvad TeX er\SpecialChar \@.
@@ -513,32 +605,34 @@ tæk
  I alle tilfælde er det, der kommer fra TeX en såkaldt
  
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 enhedsuafhængig
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
  fil, 
-\family typewriter 
+\family typewriter
 dvi
-\family default 
+\family default
 .
  Du kan sende 
-\family typewriter 
+\family typewriter
 dvi
-\family default 
+\family default
 -filen til alt hvad der forstår 
-\family typewriter 
+\family typewriter
 dvi
-\family default 
+\family default
  eller omsætter 
-\family typewriter 
+\family typewriter
 dvi
-\family default 
+\family default
  til andre formater såsom PostScript®, PDF, m.m\SpecialChar \@.
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Hvis ikke det var for én yderligere funktion, ville TeX kun være et program
  til opsætning af tekst\SpecialChar \@.
@@ -546,7 +640,9 @@ Hvis ikke det var for én yderligere funktion, ville TeX kun være et program
 
  Det er her, det bliver spændende\SpecialChar \@.
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 De fleste brugere at TeX bruger i virkeligheden en makropakke, som Knuth
  lavede for at skjule en del af detaljerne omkring opsætningen af tekst\SpecialChar \@.
@@ -567,7 +663,9 @@ orienteret\SpecialChar \@.
  måde\SpecialChar \@.
  Sådan blev LaTeX født\SpecialChar \@.
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Sideløbende med udviklingen af LaTeX lavede andre deres egne makropakker
  til TeX til at lave slides eller artikler til matematik-tidsskrifter o.s.v\SpecialChar \@.
@@ -583,27 +681,29 @@ Sideløbende med udviklingen af LaTeX lavede andre deres egne makropakker
  er LaTeX et ret omfattende selvstændigt sprog! Brugere verden over har
  lavet deres egne tilføjelser til LaTeX ud over de almindelige\SpecialChar \@.
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Der er to måder at udvide LaTeX: klasser og stile\SpecialChar \@.
  En 
-\emph on 
+\emph on
 klasse
-\emph default 
+\emph default
  er en samling LaTeX- og TeX-makroer, der beskriver en bestemt slags dokument,
  såsom en bog eller artikel\SpecialChar \@.
  Der er klasser til slides, fysiske eller matematiske
  tidsskrifter\SpecialChar \ldots{}
  mange universiteter har ligefrem sine egne klasse sine eksamenspro
 jekter og afhandlinger! En 
-\emph on 
+\emph on
 stil 
-\emph default 
+\emph default
 afviger fra en klasse ved at den ikke definerer en ny dokumenttype, men
  en anden 
-\emph on 
+\emph on
 opførsel
-\emph default 
+\emph default
 , ethvert dokument kan have\SpecialChar \@.
  For eksempel styrer LyX sidens margin og linjeafstan
 d med to LaTeX stil-filer\SpecialChar \@.
@@ -613,55 +713,73 @@ d med to LaTeX stil-filer\SpecialChar \@.
  justering af litteraturlister, ændring af fodnoters, tabellers og figurers
  placering og fremtræden, opsætning af lister o.s.v., o.s.v\SpecialChar \@.
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Her er en opsummering:
-\layout List
+\end_layout
+
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 TeX: Skriftopsætningssprog med makrofunktionalitet.
-\layout List
+\end_layout
+
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 LaTeX: Makropakke, der bygger på TeX\SpecialChar \@.
 
-\layout List
+\end_layout
+
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 klasser: Beskrivelser af en dokumenttype ved brug af LaTeX\SpecialChar \@.
 
-\layout List
+\end_layout
+
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 stile: Ændrer LaTeX's standardopførsel på en eller anden måde.
-\layout List
+\end_layout
+
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 LyX: Visuel, WYSIWYM-tekstbehandling, der bruger LaTeX-systemet til udskrifterne.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Formålet med dette afsnit var at prøve at forklare 
-\emph on 
+\emph on
 hvorfor
-\emph default 
+\emph default
  LyX er anderledes end andre tekstbehandlingsprogrammer\SpecialChar \@.
  Forklaringen er
  enkel: LyX bruger LaTeX til sine udskrifter\SpecialChar \@.
  Ligesom LaTeX fokuserer LyX
  på konteksten af det, du skriver --- 
-\emph on 
+\emph on
 hvad
-\emph default 
+\emph default
  du er ved at skrive.
  Maskinen styrer derefter, 
-\emph on 
+\emph on
 hvordan 
-\emph default 
+\emph default
 det skal se ud.
-\layout Chapter
+\end_layout
+
+\begin_layout Chapter
 
 Dokumentationen
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 For at gøre det nemmere at svare på dine spørgsmål og beskrive alle LyX's
  funktioner, er dokumentationen delt op i flere filer\SpecialChar \@.
@@ -672,53 +790,61 @@ For at gøre det nemmere at svare på dine spørgsmål og beskrive alle LyX's
  Det indeholder en masse nyttige oplysninger og kommentarer,
  der kan spare din tid\SpecialChar \@.
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Noget af dokumentationen kan være mangelfuld eller forældet, selvom vi forsøger
  hårdt på at følge med\SpecialChar \@.
  Som resten af LyX er manualerne udarbejdet af frivillige,
  der har 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 virkelige job
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
 , familier, opvask, kattebakker der skal tømmes o.s.v\SpecialChar \@.
  Vi gør vores bedste
  for at holde manualerne i tip-top stand, men det lykkes ikke altid, da
  udviklerne ynder at tilføje nye funktioner mens vi skriver om det gamle!
- (Hvis du vil hjælpe med at rette op på dette, skal du endelig læse kapitel\SpecialChar ~
-\SpecialChar ~
+ (Hvis du vil hjælpe med at rette op på dette, skal du endelig læse kapitel\InsetSpace ~
+\InsetSpace ~
 
 \begin_inset LatexCommand \ref{kap:Bidrag}
 
-\end_inset 
+\end_inset
 
 )\SpecialChar \@.
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Gør os i øvrigt en tjeneste --- hvis der er noget i manualerne, der forvirrer
  dig, er uklart eller forkert, må du endelig lade os det vide! Du kan kontakte
  de nuværende vedligeholdere af manualerne ved at skrive på engelsk til
  
-\family typewriter 
+\family typewriter
 lyx-docs@lists.lyx.org
-\family default 
+\family default
 .
  Hvis du har spørgsmål, der ikke åbenlyst besvares af dokumentationen og
  skal bruge hurtig hjælp, kan du benytte dig af postlisten for LyX-brugere,
  som du kan nå på 
-\family typewriter 
+\family typewriter
 lyx-users@lists.lyx.org
-\family default 
+\family default
 .
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Formatet
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Nogen trykker manualerne, mens andre læser dem på skærmen med LyX\SpecialChar \@.
  Fremtoningen
@@ -730,36 +856,42 @@ Nogen trykker manualerne, mens andre læser dem på skærmen med LyX\SpecialChar \@
  Fodnoter
  ser således ud
 \begin_inset Foot
-collapsed false
+status open
 
-\layout Standard
+\begin_layout Standard
 
 Hej!
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Klik på den grå firkant til venstre ovenpå denne boks\SpecialChar \@.
  Den der står 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 fodnote
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
  på\SpecialChar \@.
 
-\end_inset 
+\end_layout
+
+\end_inset
 
 \SpecialChar \@.
  Klik på den med venstre museknap for at åbne den\SpecialChar \@.
  For indholdsfortegnelsen
  kan du enten klikke på den grå firkant eller kigge i menuen 
-\family sans 
+\family sans
 Navigér
-\family default 
+\family default
 , hvor indholdsfortegnelsen vises automatisk\SpecialChar \@.
  (Prøv det af!)
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 I de trykte manualer optræder alle krydsreferencer som kapitelnumre, sektionsnum
 mer, undersektionsnumre o.s.v\SpecialChar \@.
@@ -767,7 +899,7 @@ mer, undersektionsnumre o.s.v\SpecialChar \@.
  grå bokse som denne: 
 \begin_inset LatexCommand \ref{kap:Bidrag}
 
-\end_inset 
+\end_inset
 
 .
  (De trykte manualer viser blot et nummer.) Hvis du klikker på firkanten
@@ -775,485 +907,515 @@ mer, undersektionsnumre o.s.v\SpecialChar \@.
  i dokumentet\SpecialChar \@.
  Denne introduktion har kun en enkelt, kaldet 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 kap:Bidrag
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
 .
  Du kan hoppe til dette kapitel blot ved at klikke på knappen 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 Gå til reference
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
 \SpecialChar \@.
  Det er ligeså nemt at hoppe tilbage hvor du kom fra\SpecialChar \@.
  Klik på 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 Gå tilbage
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
  eller tryk 
-\family sans 
+\family sans
 C-<
-\family default 
+\family default
  for at komme tilbage til din tidligere placering.
  (Hvad 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 
-\family sans 
+\family sans
 C-<
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  betyder? Se herunder)\SpecialChar \@.
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Nu, hvor vi har afklaret nogle af forskellene mellem den udskrevne version
  og den på skærmen, kan vi starte med at se på dette dokuments format\SpecialChar \@.
  Du
  vil støde på ord i forskellige skrifter:
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\emph on 
+\emph on
 Fremhævet stil
-\emph default 
+\emph default
  bruges til generel fremhævning, bogtitler, titler på andre afsnit i manualerne
  og noter fra forfatterne\SpecialChar \@.
 
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\family typewriter 
+\family typewriter
 Skrivemaskine
-\family default 
+\family default
  bruges til program- og filnavne, LaTeX-, og LyX-koder og funktioner.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\family sans 
+\family sans
 Grotesk
-\family default 
+\family default
  bruges til navne på menuer, knapper, vinduer og tastaturknapper.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\noun on 
+\noun on
 Kapitæler
-\noun default 
+\noun default
  bruges til personnavne.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 For genvejstaster henvises du nok til afsnittet 
-\emph on 
+\emph on
 Key Bindings
-\emph default 
+\emph default
  i 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 
-\emph on 
+\emph on
 Avancerede funktioner
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 
-\emph default 
+\emph default
  (filen 
-\family typewriter 
+\family typewriter
 Extended.lyx
-\family default 
+\family default
 ).
  Når vi skal beskrive taster, bruger vi følgende konventioner:
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\family sans 
+\family sans
 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 C-
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  betyder 
-\family sans 
+\family sans
 Control-
-\family default 
+\family default
  tasten.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\family sans 
+\family sans
 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 S-
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  betyder 
-\family sans 
+\family sans
 Skifte-
-\family default 
+\family default
  tasten.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 
-\family sans 
+\family sans
 M-
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  betyder 
-\family sans 
+\family sans
 Meta-
-\family default 
+\family default
  tasten, som på de fleste tastaturer er 
-\family sans 
+\family sans
 Alt-
-\family default 
+\family default
  tasten.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\family sans 
+\family sans
 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 F1
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  \SpecialChar \ldots{}
  
-\family sans 
+\family sans
 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 F12
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  er funktionstasterne.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\family sans 
+\family sans
 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 Esc
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  er escape-tasten.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\family sans 
+\family sans
 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 Venstre
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 , 
-\family sans 
+\family sans
 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 Højre
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 , 
-\family sans 
+\family sans
 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 Op
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 , 
-\family sans 
+\family sans
 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 Ned
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 : piletaster.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\family sans 
+\family sans
 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 Insert
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 , 
-\family sans 
+\family sans
 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 Delete
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 , 
-\family sans 
+\family sans
 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 Home
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 , 
-\family sans 
+\family sans
 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 End
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 , 
-\family sans 
+\family sans
 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 PageUp
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 , 
-\family sans 
+\family sans
 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 PageDown
-\family default 
+\family default
 
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
 : Det er de 6 taster, der er placeret lige over piletasterne på mange PC-tastatu
 rer.
  
-\family sans 
+\family sans
 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 PageUp
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  og 
-\family sans 
+\family sans
 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 PageDown
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  kaldes 
-\family sans 
+\family sans
 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 Prior
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  og 
-\family sans 
+\family sans
 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 Next
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  på visse tastaturer.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\family sans 
+\family sans
 Retur
-\family default 
+\family default
  og 
-\family sans 
+\family sans
 Enter
-\family default 
+\family default
  refererer til samme tast.
  Nogle tastaturer har navngivet 
-\family sans 
+\family sans
 Retur
-\family default 
+\family default
 -tasten 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 Return
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 , andre som 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 Enter,
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  atter andre har to taster.
  LyX behandler dem alle som samme tast, og kalder den både 
-\family sans 
+\family sans
 Retur
-\family default 
+\family default
  og 
-\family sans 
+\family sans
 Enter
-\family default 
+\family default
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Du kan også støde på fraser som 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 (Se 
-\emph on 
+\emph on
 'Avancerede funktioner
-\emph default 
+\emph default
 ')
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 \SpecialChar \@.
  Vi har vist de mulige standard-genvejstaster for en funktion i dens beskrivelse
  i manualen 
-\emph on 
+\emph on
 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 Avancerede funktioner
-\emph default 
+\emph default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 , så kig også der\SpecialChar \@.
  Bemærk, at der er to forskellige tastaturudlægninger,
  der benyttes kan bruges i LyX: 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 CUA
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 -typen er den normale og bekendt for de fleste PC-brugere\SpecialChar \@.
  
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 emacs
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 -typen er den almindelige for dem, der 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 voksede op
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  med Unix-systemer og brugte Emacs til tekstredigering\SpecialChar \@.
  Medmindre andet er
@@ -1261,127 +1423,151 @@ voksede op
  Hvis du kender Emacs,
  kan du nok selv læse dokumentationen og finde genvejstasterne selv\SpecialChar \@.
 
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Manualerne
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Den følgende liste beskriver indholdet af dokumentationens filer\SpecialChar \@.
  Bemærk,
  at ikke alle er oversat til dansk:
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 
-\emph on 
+\emph on
 Introduktion
-\begin_deeper 
-\layout Standard
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
 
 Denne fil.
-\end_deeper 
-\layout Description
+\end_layout
+\end_deeper
+\begin_layout Description
 
 
-\emph on 
+\emph on
 Selvstudium (Tutorial) 
-\begin_deeper 
-\layout Standard
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
 
 Hvis du ikke kender LyX i forvejen og ikke har brugt LaTeX, bør du starte
  her\SpecialChar \@.
  Hvis du tror, at LaTeX er et fleksibelt plastikmateriale, skal du helt
  sikkert læse 
-\emph on 
+\emph on
 Selvstudium
-\emph default 
+\emph default
 \SpecialChar \@.
  Bemærk at du efter at have læst 
-\emph on 
+\emph on
 Selvstudium
-\emph default 
+\emph default
  muligvis stadig vil tro, at LaTeX er et elastisk materiale --- men du vil
  vide, hvordan du bruger LyX\SpecialChar \@.
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Hvis du 
-\emph on 
+\emph on
 har
-\emph default 
+\emph default
  prøvet at bruge LaTeX før, kan du læse 
-\emph on 
+\emph on
 Selvstudium
-\emph default 
+\emph default
  fra starten af afsnittet 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 LyX for LaTeX-brugere
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 \SpecialChar \@.
  (Det vil heller ikke skade et skimme resten af dokumentet)
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Hvis du på noget tidspunkt føler dig på dybt vand, bør du tjekke 
-\emph on 
+\emph on
 Selvstudium
-\emph default 
+\emph default
  inden du dykker ned i de andre manualer\SpecialChar \@.
  Den er et godt springbrædt\SpecialChar \@.
 
-\end_deeper 
-\layout Description
+\end_layout
+\end_deeper
+\begin_layout Description
 
 
-\emph on 
-Brugermanual (User's\SpecialChar ~
+\emph on
+Brugermanual (User's\InsetSpace ~
 Guide)
-\begin_deeper 
-\layout Standard
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
 
 Den primære dokumentation\SpecialChar \@.
  Vi vil dække 
-\emph on 
+\emph on
 de fleste
-\emph default 
+\emph default
  af de grundlæggende LyX-funktioner her\SpecialChar \@.
  Brugermanualen vil gå ud fra, at
  du har læst 
-\emph on 
+\emph on
 Selvstudium
-\emph default 
+\emph default
 \SpecialChar \@.
 
-\end_deeper 
-\layout Description
+\end_layout
+\end_deeper
+\begin_layout Description
 
 
-\emph on 
-Avancerede\SpecialChar ~
-funktioner (Extended\SpecialChar ~
+\emph on
+Avancerede\InsetSpace ~
+funktioner (Extended\InsetSpace ~
 Features)
-\begin_deeper 
-\layout Standard
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
 
 En udvidelse af 
-\emph on 
+\emph on
 Brugermanual
-\emph default 
+\emph default
 \SpecialChar \@.
  Dokumenterer hvordan du bruger de gå LaTeX-kommandoer, yderligere layout,
  redigeringsfunktioner til bestemte formål --- og viser nogle af de (noget
  bizarre men snedige) trick, LaTeX-kendere har adgang til\SpecialChar \@.
 
-\end_deeper 
-\layout Description
+\end_layout
+\end_deeper
+\begin_layout Description
 
 
-\emph on 
+\emph on
 Tilpasning (Customization)
-\begin_deeper 
-\layout Standard
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
 
 En beskrivelse af avancerede LyX-funktioner, herunder hvordan du tilpasser
  LyX's generelle opførsel til dine behov\SpecialChar \@.
@@ -1389,20 +1575,23 @@ En beskrivelse af avancerede LyX-funktioner, herunder hvordan du tilpasser
  sprogtilpasning og konfigurationsfiler\SpecialChar \@.
  Du skal end ikke tænke på at kigge
  her, før du har læst 
-\emph on 
+\emph on
 Selvstudium
-\emph default 
+\emph default
 \SpecialChar \@.
 
-\end_deeper 
-\layout Description
+\end_layout
+\end_deeper
+\begin_layout Description
 
 
-\emph on 
-LaTeX-konfiguration (LaTeX\SpecialChar ~
+\emph on
+LaTeX-konfiguration (LaTeX\InsetSpace ~
 configuration)
-\begin_deeper 
-\layout Standard
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
 
 LyX undersøger dit system ved installationen\SpecialChar \@.
  Denne fil indeholder de oplysninger
@@ -1410,59 +1599,96 @@ LyX undersøger dit system ved installationen\SpecialChar \@.
  Tjek her for at se, om du mangler noget,
  du muligvis gerne ville have\SpecialChar \@.
 
-\end_deeper 
-\layout Standard
+\end_layout
+\end_deeper
+\begin_layout Standard
 
 Disse filer vil referere til hinanden, når det er nødvendigt\SpecialChar \@.
  For eksempel
  indeholder 
-\emph on 
+\emph on
 Brugermanual
-\emph default 
+\emph default
  nogen information om installation og tilpasning, men henviser læseren til
  
-\emph on 
+\emph on
 Tilpasning
-\emph default 
+\emph default
  for mere information\SpecialChar \@.
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Vi vil lige gentage en vigtigt pointe:
-\layout Standard
-\added_space_top bigskip \added_space_bottom bigskip \align center 
+\end_layout
+
+
+\begin_layout Standard
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
 Læs 
-\emph on 
+\emph on
 Selvstudium
-\emph default 
+\emph default
  nu, hvis du ikke kender LyX i forvejen\SpecialChar \@.
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+
+\begin_layout Standard
 
 Ellers vil du frustrere dig selv unødigt\SpecialChar \@.
  LyX kan rigtigt meget, men kræver
  en anden angrebsvinkel\SpecialChar \@.
 
-\layout Chapter
+\end_layout
+
+\begin_layout Chapter
 
 
 \begin_inset LatexCommand \label{kap:Bidrag}
 
-\end_inset 
+\end_inset
 
 Bidrag til LyX-projektet
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 At bidrage til LyX
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LyX er hovedsageligt skrevet i C++ (LaTeX-indlæseren er skrevet i Perl).
  Det er et stort projekt og er derfor ikke uden fejl eller behov for forbedringe
 r i kildeteksten.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Rapportér fejl
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Under brugen af LyX kan det ske at du finder noget, du anser for at være
  en fejl\SpecialChar \@.
@@ -1472,38 +1698,42 @@ Under brugen af LyX kan det ske at du finder noget, du anser for at være
  få at vide, hvis der er dele af brugerfladen, du synes er forvirrende eller
  uklare\SpecialChar \@.
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LyX har et fejlsporingssystem, som du finde på 
-\family typewriter 
+\family typewriter
 
 \begin_inset LatexCommand \htmlurl[LyX fejlsporing]{http://bugzilla.lyx.org/}
 
-\end_inset 
+\end_inset
 
 
-\family default 
+\family default
 .
  Du bar tjekke dette inden du indrapporterer en fejl, så du undgår at den
  allerede er anmeldt\SpecialChar \@.
  Hvis du har kommentarer til en eksisterende fejl eller
  vil rapportere en ny fejl, kan du enten bruge fejlsporingssystemet eller
  sende et engelsksproget brev til udviklingslisten på 
-\family typewriter 
+\family typewriter
 lyx-devel@lists.lyx.org
-\family default 
+\family default
 .
  Du finder arkivet fra denne liste på LyX's hoved-webside, 
-\family typewriter 
+\family typewriter
 
 \begin_inset LatexCommand \htmlurl[LyX webside]{http://www.lyx.org/}
 
-\end_inset 
+\end_inset
 
 
-\family default 
+\family default
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 En god (brugbar) fejlrapport fortæller som minimum hvilken udgave af LyX,
  du har problemer med\SpecialChar \@.
@@ -1517,136 +1747,148 @@ En god (brugbar) fejlrapport fortæller som minimum hvilken udgave af LyX,
 
  Hvis det er et problem med oversættelsen af kildekoden, skal du vedlægge
  filen
-\family typewriter 
+\family typewriter
  config.log
-\family default 
+\family default
 , og nævne hvilken oversætter, du bruger.
  
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Hvis du får LyX til at bryde ned, vil vi bede dig om at tage dig tid til
  at spore fejlen med gdb\SpecialChar \@.
  Kun LyX fra gdb ved for eksempel at skrive 
-\family typewriter 
-\size small 
+\family typewriter
+\size small
 
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
 gdb /users/steve/lyx-1.0.x/src/lyx
-\family default 
-\size default 
+\family default
+\size default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  og derefter 
-\family typewriter 
-\size small 
+\family typewriter
+\size small
 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 run
-\family default 
-\size default 
+\family default
+\size default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 .
  Få LyX til at bryde ned, hvorefter du går tilbage til gdb\SpecialChar \@.
  Brug kommandoen
  
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 
-\family typewriter 
-\size small 
+\family typewriter
+\size small
 bt
-\family default 
-\size default 
+\family default
+\size default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  til at lave en 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 backtrace
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
 -fil og medtag indholdet i din fejlrapport
 \begin_inset Foot
-collapsed false
+status open
 
-\layout Standard
+\begin_layout Standard
 
 hvis du vil være grundig, kan du bruge kommandoerne 
-\family typewriter 
+\family typewriter
 
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
 info locals
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  og 
-\family typewriter 
+\family typewriter
 
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
 up
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  til at udskrive indholdet af lokale variable og nogle få stakniveauer\SpecialChar \@.
 
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
  Hvis det er muligt, er en beskrivelse af hvordan man kan fremprovokere
  fejlen vigtigere end en 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 backtrace
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
 -fil, fordi vi så selv har mulighed for at undersøge fejlen\SpecialChar \@.
  Hvis fejlen
  ikke er let at reproducere er 
 \begin_inset Quotes sld
-\end_inset 
+\end_inset
 
 backtrace
 \begin_inset Quotes srd
-\end_inset 
+\end_inset
 
 -filen essentiel, da den i så tilfælde er alt hvad vi har at gå ud fra.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Bidrag med fejlrettelser og nye funktioner
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Hvis du har lavet ændringer i LyX's kildetekst, som du synes bør indføres
  i LyX, kan du sende dine ændringer som en diff-fil (i 'unified' format)
  til udviklingslisten, der blev nævnt ovenfor, sammen med en beskrivelse
  af ændringen og hvad den gør.
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Bidrag til dokumentationen
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LyX's dokumentation er omfattende\SpecialChar \@.
  Alligevel er LyX under konstant udvikling,
@@ -1656,116 +1898,143 @@ LyX's dokumentation er omfattende\SpecialChar \@.
  Dette afsnit beskriver hvad
  du gør, hvis du finder en fejl eller har forslag til forbedring af dokumentatio
 nen.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Rapportér fejl i manualerne
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Send et engelsksproget brev til postlisten 
-\family typewriter 
+\family typewriter
 lyx-docs@lists.lyx.org
-\family default 
+\family default
 , hvis du finder fejl i dokumentationen\SpecialChar \@.
  Dokumentationsholdet vil tage sig
  af de nødvendige rettelser\SpecialChar \@.
 
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Deltag i dokumentationsholdet.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Ligesom alt andet i LyX-projektet, kan LyX's dokumentationsprojekt altid
  bruge hjælp! Hvis du er interesseret i at bidrage til dokumentationsprojektet,
  skal du 
-\emph on 
+\emph on
 først
-\emph default 
+\emph default
  gennemføre følgende registrering:
-\layout Enumerate
+\end_layout
+
+\begin_layout Enumerate
 
 Hent den seneste kildetekst til LyX\SpecialChar \@.
  Udpak den
 \begin_inset Foot
-collapsed false
+status open
 
-\layout Standard
+\begin_layout Standard
 
 De mere eventyrlystne kan hente den seneste kildtekst fra LyX's CVS-arkiv
  --- den ligger i modulet 
-\family typewriter 
+\family typewriter
 lyxdoc
-\family default 
+\family default
 .
-\end_inset 
+\end_layout
+
+\end_inset
 
 \SpecialChar \@.
  Du vil finde et katalog inden i hovedkataloget kaldet 
-\family typewriter 
+\family typewriter
 lib/doc/
-\family default 
+\family default
 .
  Inden i dette katalog ligger filen 
-\family typewriter 
+\family typewriter
 DocStyle.lyx
-\family default 
+\family default
 \SpecialChar \@.
  Læs den, det er dokumentationens skabelon\SpecialChar \@.
 
-\layout Enumerate
+\end_layout
+
+\begin_layout Enumerate
 
 Tag et par dages pause og læs derefter 
-\family typewriter 
+\family typewriter
 DocStyle.lyx
-\family default 
+\family default
  igen\SpecialChar \@.
 
-\layout Enumerate
+\end_layout
+
+\begin_layout Enumerate
 
 Læs derefter 
-\emph on 
+\emph on
 Brugermanual
-\emph default 
+\emph default
  og 
-\emph on 
+\emph on
 Selvstudium
-\emph default 
+\emph default
 \SpecialChar \@.
 
-\begin_deeper 
-\layout Standard
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
 
 Meningen med denne øvelse er, at give dig idéer\SpecialChar \@.
  
-\emph on 
+\emph on
 Selvstudium
-\emph default 
+\emph default
  og 
-\emph on 
+\emph on
 Brugermanualen
-\emph default 
+\emph default
  vil altid være de mest opdaterede filer i dokumentationen\SpecialChar \@.
  Du vil kunne
  få et godt indtryk af, hvordan vi vil have manualerne til at se ud og virke\SpecialChar \@.
 
-\end_deeper 
-\layout Enumerate
+\end_layout
+\end_deeper
+\begin_layout Enumerate
 
 Kontakt holdet på engelsk på: 
-\begin_deeper 
-\layout Standard
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
 
 
-\family typewriter 
+\family typewriter
 lyx-docs@lists.lyx.org
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 og beskriv de ændringer, du foreslår og gå noget respons på dem\SpecialChar \@.
 
-\end_deeper 
-\layout Standard
+\end_layout
+\end_deeper
+\begin_layout Standard
 
 De ændringer, du kan foreslå at lave kan være alt lige fra at øge forståelighede
 n af teksten til at lave større omstruktureringer af dokumentationen.
  Alle forbedringer modtages med tak\SpecialChar \@.
 
-\the_end
+\end_layout
+
+\end_body
+\end_document

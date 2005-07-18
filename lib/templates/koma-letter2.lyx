@@ -1,5 +1,7 @@
 #LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
-\lyxformat 225
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass scrlttr2
 \begin_preamble
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -63,13 +65,12 @@
 \fontscheme palatino
 \graphics default
 \paperfontsize 11
-\spacing other 1.15 
-\papersize Default
-\paperpackage a4
-\use_geometry 0
+\spacing other 1.15
+\papersize default
+\use_geometry false
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -80,8 +81,11 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tracking_changes 0
+\tracking_changes false
+\output_changes true
 \end_header
+
+\begin_body
 
 \begin_layout Name
 
@@ -91,7 +95,7 @@ The LyX Developers Team
 \begin_layout SenderAddress
 
 140 Map Road
-\newline 
+\newline
 CVS City
 \end_layout
 
@@ -99,15 +103,15 @@ CVS City
 
 0011/222
 \begin_inset ERT
-status Collapsed
+status collapsed
 
 \begin_layout Standard
 
-\backslash 
+\backslash
 ,
 \end_layout
 
-\end_inset 
+\end_inset
 
 333
 \end_layout
@@ -125,9 +129,9 @@ www.lyx.org
 \begin_layout Backaddress
 
 The LyX Developers Team
-\newline 
+\newline
 140 Map Road
-\newline 
+\newline
 CVS City
 \end_layout
 
@@ -150,15 +154,15 @@ The Internet
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
 \begin_layout Standard
 
-\backslash 
+\backslash
 today
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \end_layout
@@ -167,9 +171,9 @@ today
 
 Mr X.
  Ample
-\newline 
+\newline
 666 Sesame Street
-\newline 
+\newline
 12345 Nowhere
 \end_layout
 
@@ -186,27 +190,27 @@ This template illustrates the use of the new scrlttr2 class (introduced
  2.9).
  This letter class is very flexible.
  Have a look at 
-\family sans 
+\family sans
 Layout\SpecialChar \menuseparator
 Document\SpecialChar \menuseparator
 Preamble
-\family default 
+\family default
  for the most common parameters.
  Please consult the KOMA Script documentation
 \begin_inset Foot
-collapsed true
+status collapsed
 
 \begin_layout Standard
 
 
 \begin_inset LatexCommand \url{http://www.ctan.org/tex-archive/macros/latex/contrib/supported/koma-script/scrguien.pdf}
 
-\end_inset 
+\end_inset
 
 
 \end_layout
 
-\end_inset 
+\end_inset
 
  for a detailed description.
 \end_layout
@@ -220,15 +224,15 @@ Have fun with it,
 
 P.
 \begin_inset ERT
-status Collapsed
+status collapsed
 
 \begin_layout Standard
 
-\backslash 
+\backslash
 ,
 \end_layout
 
-\end_inset 
+\end_inset
 
 S.: The blue colored items have to be before the address, the magenta colored
  after it.
@@ -239,4 +243,5 @@ S.: The blue colored items have to be before the address, the magenta colored
 The LyX Users
 \end_layout
 
+\end_body
 \end_document

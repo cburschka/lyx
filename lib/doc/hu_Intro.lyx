@@ -1,18 +1,19 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass article
 \language magyar
 \inputencoding latin2
 \fontscheme default
 \graphics default
 \paperfontsize default
-\spacing single 
-\papersize a4paper
-\paperpackage a4
-\use_geometry 0
+\spacing single
+\papersize default
+\use_geometry false
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -23,37 +24,52 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tracking_changes false
+\output_changes true
+\end_header
 
-\layout Title
+\begin_body
+
+\begin_layout Title
 
 Bevezetés a LyX használatába,
-\newline 
+\newline
 avagy
-\newline 
+\newline
 Hogyan használjuk ezeket a dokumentumokat
-\layout Author
+\end_layout
+
+\begin_layout Author
 
 John Weiss és a LyX Csapat
-\shape italic 
-\size small 
+\shape italic
+\size small
 
-\newline 
+\newline
 Fordította: Zrubecz László
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset LatexCommand \tableofcontents{}
 
-\end_inset 
+\end_inset
 
 
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Eligazodás a dokumentumok között
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Üdvözöljük a LyX-ben!
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Hogy könnyebb legyen megtalálnia a választ kérdéseire, és könnyebb legyen
  bemutatni a LyX összes sajátosságát, a dokumentációt több különbözõ részre
@@ -61,24 +77,50 @@ Hogy könnyebb legyen megtalálnia a választ kérdéseire, és könnyebb legyen
  Minden egyes résznek külön feladata van, ahogy azt késõbb majd részletezzük.
  Mielõtt nekilátna valamelyik olvasásának, elõször olvassa végig ezt a fájlt,
  ugyanis sok hasznos információt tartalmaz, aminek tudatában idõt spórolhat.
-\layout Standard
-\added_space_top bigskip \align center 
+\end_layout
+
+
+\begin_layout Standard
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
 FIGYELEM!!!!! FIGYELEM!!!!! FIGYELEM!!!!
-\layout Standard
-\added_space_bottom bigskip \align center 
+\end_layout
+
+\begin_layout Standard
+\align center
 Vigyázat, Will Robinson keze van a dologban!
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+
+\begin_layout Standard
 
 Habár a LyX verziószáma átlépte az 1.0-át, a dokumentáció néhány része lehet
  hogy nem teljes vagy elavult.
  Ahogy magát a programot is, a dokumentációt is önkéntesek készítik, akiknek
  ugye emellett van 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 igazi
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  munkájuk, családjuk, mosogatásra váró szennyesedényük, stb.
  Mi megteszünk minden tõlünk telhetõt, hogy ez a dokumentáció mindig naprakész
@@ -86,45 +128,55 @@ igazi
  Ha segíteni akar orvosolni ezt a problémát, mindenképpen olvassa el a 
 \begin_inset LatexCommand \ref{rész:Közremûködés}
 
-\end_inset 
+\end_inset
 
-\SpecialChar ~
+\InsetSpace ~
 részt\SpecialChar \@.
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Elõször is tegyen nekünk egy szívességet: ha valami nem tiszta, érthetetlen
  vagy rossz, ne habozzon, tudassa velünk! A dokumentációk jelenlegi fejlesztõit
  elérheti a levelezési listájukon: 
-\family typewriter 
+\family typewriter
 lyx-docs@lists.lyx.org
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\SpecialChar ~
+\InsetSpace ~
 Persze elõször érdemes nekünk (a fordítóknak) írni, hátha csak a fordítás
  a hibás :-(
-\end_inset 
+\end_layout
+
+\end_inset
 
  Ha olyan kérdése merülne fel, amit nem igazán a dokumentációhoz kapcsolódik,
  de sürgõsen szeretne választ kapni, írjon az aktív felhasználók listájára:
  lyx-users@lists.lyx.org
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\SpecialChar ~
+\InsetSpace ~
 A levelezõlista nyelve angol.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 A kézikönyvek formátuma
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Vannak akik nyomtatott formában olvassák a kézikönyvet, mások közvetlenül
  a LyX-bõl.
@@ -135,861 +187,1015 @@ Vannak akik nyomtatott formában olvassák a kézikönyvet, mások közvetlenül
  Továbbá, a lábjegyzetek és a tartalomjegyzék sem látható.
  Ezeket felbukkanó-ablakokon keresztül lehet elérni.
  Ha meg akarja nézni a tartalomjegyzéket, kattintson a 
-\family sans 
+\family sans
 Felé
-\bar under 
+\bar under
 p
-\bar default 
+\bar default
 ítés
-\family default 
+\family default
  menüpontra vagy a szürke dobozra a cím alatt.
  A lábjegyzet megtekintéséhez - ami így néz ki 
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\SpecialChar ~
+\InsetSpace ~
 Helló, én vagyok a lábjegyzet!
-\end_inset 
+\end_layout
+
+\end_inset
 
  - klikkeljen rá a bal egérgombbal.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 A nyomtatott formában az összes kereszthivatkozásnál látható az aktuális
  szakasz száma.
  A fájlban minden ilyen helyen egy szürke doboz látható, mint ez: 
 \begin_inset LatexCommand \ref{rész:Közremûködés}
 
-\end_inset 
+\end_inset
 
-\SpecialChar ~
+\InsetSpace ~
 rész\SpecialChar \@.
  (A nyomtatott formában itt számok találhatóak.) Ha rákattint a bal egérgombb
 al, egy felbukkanó-ablak jelenik meg, ami a dokumentumban lévõ összes hivatkozás
 t tartalmazza.
  Ez a dokumentum csak egyet tartalmaz 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 rész:Közremûködés
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  névvel.
  Ha rákattint a 
-\family sans 
+\family sans
 Hivatkozásra ugrás
-\family default 
+\family default
  gombra, rögtön a hivatkozott részre ugrik a kurzor.
  A 
-\family sans 
+\family sans
 Visszaugrás
-\family default 
+\family default
  gomb pedig visszarakja az eredeti pozíciójába.
  Leütve a következõ billentyûkombinációt: 
-\family sans 
+\family sans
 C-<
-\family default 
+\family default
 , a kurzor szintén visszaugrik az eredeti pozíciójába.
  (Hogy mit jelent a 
-\family sans 
+\family sans
 C-<
-\family default 
+\family default
 , lásd lejjebb.)
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Ezek után, hogy tisztáztunk néhány különbséget a nyomtatott és az elektronikus
  forma között, folytathatjuk ezen dokumentum formai vizsgálatát.
  Esetenként találkozhat különbözõ betûstílusokkal:
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\emph on 
+\emph on
 Kiemelt Stílus
-\emph default 
+\emph default
  - ezt az általános kiemelésekhez, érvelésekhez, könyv címekhez, más kézikönyvek
  egyes részeire való hivatkozáskor vagy a szerzõk megjegyzéseire használjuk.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\family typewriter 
+\family typewriter
 Typewriter
-\family default 
+\family default
  - ezt a programok és fájlok neveihez, LaTeX, LyX kódokhoz, funkciókhoz
  használjuk.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\family sans 
+\family sans
 Sans Serif
-\family default 
+\family default
  - ezt a menük, gombok, felbukkanó-ablakok neveihez és a billentyûkhöz használju
 k.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\noun on 
+\noun on
 Kapitális Stílus
-\noun default 
+\noun default
  - ezzel jelöljük a személyneveket.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 A billentyûkhöz, billentyû-kombinációkhoz elegendõ információt kaphat a
  
-\emph on 
+\emph on
 Referencia Kézikönyv Billentyû-kombinációk 
-\emph default 
+\emph default
 részében.
  Amikor a billentyû-kombináció használatára lesz szükség, mindig a következõ
  szabály szerint fogjuk jelölni:
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\family sans 
+\family sans
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 C-
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 
-\family default 
+\family default
  jelöli a 
-\family sans 
+\family sans
 Control
-\family default 
+\family default
  billentyût.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\family sans 
+\family sans
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 S-
-\family default 
+\family default
 
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  jelöli a
-\family sans 
+\family sans
  Shift
-\family default 
+\family default
  billentyût.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\family sans 
+\family sans
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 M-
-\family default 
+\family default
 
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  jelöli a 
-\family sans 
+\family sans
 Meta
-\family default 
+\family default
  billentyût, ami a legtöbb billentyûzeten az 
-\family sans 
+\family sans
 Alt
-\family default 
+\family default
  billentyû.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\family sans 
+\family sans
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 F1
-\family default 
+\family default
 
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  \SpecialChar \ldots{}
  
-\family sans 
+\family sans
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 F12
-\family default 
+\family default
 
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 : a funkció billentyûk.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\family sans 
+\family sans
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Esc
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 : az escape billentyû.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\family sans 
+\family sans
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Jobbra
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 , 
-\family sans 
+\family sans
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Balra
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 , 
-\family sans 
+\family sans
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Fel
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 , 
-\family sans 
+\family sans
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Le
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 : ez azt hiszem nyilvánvaló.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\family sans 
+\family sans
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Insert
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 , 
-\family sans 
+\family sans
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Delete
-\family default 
+\family default
 
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 , 
-\family sans 
+\family sans
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Home
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 , 
-\family sans 
+\family sans
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 End
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 , 
-\family sans 
+\family sans
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 PageUp
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 , 
-\family sans 
+\family sans
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 PageDown
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 : ez 6 billentyû, ami legtöbbször a kurzormozgató billentyûk felett található
  egy PC billentyûzeten.
  A 
-\family sans 
+\family sans
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 PageUp
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  és 
-\family sans 
+\family sans
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 PageDown
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  néhol 
-\family sans 
+\family sans
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Prior
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  és 
-\family sans 
+\family sans
 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Next
-\family default 
+\family default
 
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  néven szerepel.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
-\family sans 
+\family sans
 Return
-\family default 
+\family default
  és 
-\family sans 
+\family sans
 Enter:
-\family default 
+\family default
  mindkettõ ugyanazt a billentyût jelöli.
  Néhány billentyûzeten 
-\family sans 
+\family sans
 a Return
-\family default 
+\family default
  billentyû 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Return
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  néven, mashol 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 Enter
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  névvel van illetve.
  Néhol két külön billentyû is van.
  A LyX mindegyiket egyformán kezeli, így mi a 
-\family sans 
+\family sans
 Return
-\family default 
+\family default
  és az 
-\family sans 
+\family sans
 Enter
-\family default 
+\family default
  szót ugyanazzal a jelentéssel használjuk.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Szintén találkozhat néhányszor a következõ formával 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 (Lásd 
-\emph on 
+\emph on
 Referencia Kézikönyv
-\emph default 
+\emph default
 )
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
 .
  Az összes alapértelmezett billentyû-kombináció megtalálható a 
-\emph on 
+\emph on
 Referencia Kézikönyv
-\emph default 
+\emph default
 ben, így ott utánanézhet.
  Észlelhette, hogy két különbözõ billentyû-kombináció gyûjtemény is megtalálható
  a LyX-ben.
  Az egyik a 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 CUA
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  stílus, ami az alapértelmezett és azoknak ismerõs, akik a PC-s világban
  nõttek fel, a másik pedig az 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 emacs
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  stílusú, amelyiket fõleg azok használnak akik Unix-on nõttek fel és mindig
  az Emacs szövegszerkesztõt használták.
  Hacsak nincs külön jelezve, mi a dokumentációban mindig az alapértelmezett
  
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 CUA
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  stílusút írtuk le.
  Ha önnek az Emacs jobban tetszik, valószínûleg egyedül is meg fogja találni
  az önre vonatkozó billentyûzet-kombinációkat a dokumentációkból.
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 A kézikönyvek
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 A következõ listából megtudhatja az összes kézikönyv tartalmát:
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 
-\emph on 
+\emph on
 Bevezetés
-\emph default 
- \SpecialChar ~
+\emph default
+ \InsetSpace ~
 
-\newline 
+\newline
 Éppen ezt olvassa.
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 
-\emph on 
-Tankönyv \SpecialChar ~
+\emph on
+Tankönyv \InsetSpace ~
 
-\emph default 
+\emph default
 
-\newline 
+\newline
 Ha ön most látja elõször a LyX-et, és még soha nem használta a LaTeX-et
  sem, ez az a kézikönyv, amivel érdemes elkezdenie.
  Ha önnek esetleg a LaTeX eddig csak egy olyan dolgot jelentett, amibõl
  óvszert gyártanak, mindenképpen ezzel kezdje az olvasást! Lehet hogy miután
  elolvasta a 
-\emph on 
+\emph on
 Tankönyv
-\emph default 
+\emph default
 et, még mindig csak valami nyúlós dolog jut eszébe a LaTeX-rõl, de 
-\emph on 
+\emph on
 tudni fogja
-\emph default 
+\emph default
 , hogyan kell használni a LyX-et.
-\begin_deeper 
-\layout Standard
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
 
 Ha már használta a LaTeX-et, akkor is érdemes elolvasni a 
-\emph on 
+\emph on
 Tankönyv
-\emph default 
+\emph default
 et.
  Ebben az esetben kezdje a 
 \begin_inset Quotes pld
-\end_inset 
+\end_inset
 
 LyX a LaTeX felhasználóknak
 \begin_inset Quotes prd
-\end_inset 
+\end_inset
 
  fejezettel.
  (Egyébként senkinek nem árt, ha átnézni.)
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Ha bármikor úgy érzi, hogy elvesztette a fonalat a LyX használata közben,
  érdemes újból átfutni, mielõtt fejest ugrana valamelyik másik dokumentumba.
  Ez egy jó ugródeszka a LyX mélyebb megismeréséhez is.
-\end_deeper 
-\layout Description
+\end_layout
+\end_deeper
+\begin_layout Description
 
 
-\emph on 
-Felhasználói\SpecialChar ~
-Kézikönyv \SpecialChar ~
+\emph on
+Felhasználói\InsetSpace ~
+Kézikönyv \InsetSpace ~
 
-\newline 
+\newline
 
-\emph default 
+\emph default
 Ez az elsõdleges dokumentáció.
  Itt mutatjuk be a 
-\emph on 
+\emph on
 legtöbb
-\emph default 
+\emph default
  alapvetõ mûveletet és a LyX jellemzõit.
  Ez a dokumentum feltételezi, hogy ön elolvasta a 
-\emph on 
+\emph on
 Tankönyv
-\emph default 
+\emph default
 et.
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\SpecialChar ~
+\InsetSpace ~
 \SpecialChar \ldots{}
 vagy elegendõ tudása van a LaTeX-rõl.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 
-\emph on 
-Haladó\SpecialChar ~
-Szolgáltatások \SpecialChar ~
+\emph on
+Haladó\InsetSpace ~
+Szolgáltatások \InsetSpace ~
 
-\newline 
+\newline
 
-\emph default 
+\emph default
 Ez egy kiterjesztése a 
-\emph on 
+\emph on
 Felhasználói Kézikönyv
-\emph default 
+\emph default
 nek.
  Itt ismerheti meg a további dokumentum osztályok használatát, speciális
  szerkesztési feladatok megoldását.
  Továbbá megtanulhat néhány trükköt az igazi LaTeX mesterektõl is.
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 
-\emph on 
-Testreszabás \SpecialChar ~
+\emph on
+Testreszabás \InsetSpace ~
 
-\emph default 
+\emph default
 
-\newline 
+\newline
 Ez egy leírás haladó felhasználóknak, a LyX fejlettebb lehetõségeirõl, és
  a LyX viselkedésének, megjelenésének testreszabásáról.
  Szintén magába foglalja a konfigurációs fájlok leírását, nemzetközisítését,
  további billentyûzet-kombinációk használatát is.
  Semmiképpen sem javasolt elmélyülni ebben, mielõtt nincs tisztában a 
-\emph on 
+\emph on
 Tankönyv
-\emph default 
+\emph default
 ben leírtakkal!
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 
-\emph on 
-Referencia\SpecialChar ~
-Kézikönyv \SpecialChar ~
+\emph on
+Referencia\InsetSpace ~
+Kézikönyv \InsetSpace ~
 
-\emph default 
+\emph default
 
-\newline 
+\newline
 Ez a dokumentum egy kimerítõ, részletes, de nyers leírást ad a LyX lehetõségeirõ
 l.
  Szemben a többi dokumentációval, itt a hasznos magyarázatok és használati
  javaslatok elmaradnak, a teljes részletességért cserébe.
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 
-\emph on 
-Ismert\SpecialChar ~
-hibák \SpecialChar ~
+\emph on
+Ismert\InsetSpace ~
+hibák \InsetSpace ~
 
-\emph default 
+\emph default
 
-\newline 
+\newline
 Ez a dokumentum tartalmazza az ismert hibákat a LyX-ben, és információt
  szolgáltat a teendõkrõl, ha valaki hibát talál a programban.
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 
-\emph on 
-LaTeX\SpecialChar ~
-beállítások \SpecialChar ~
+\emph on
+LaTeX\InsetSpace ~
+beállítások \InsetSpace ~
 
-\emph default 
+\emph default
 
-\newline 
+\newline
 Ez a fájl az installáció vagy az újrakonfigurálás során jön létre.
  Ebben a fájlban találhat információt a LyX aktuális beállításairól, az
  elérhetõ szolgáltatásokról.
  Ha megtekinti, láthatja, hogy mi az ami éppen hiányzik a rendszerébõl az
  adott szolgáltatás használatához, amire esetleg szüksége lehet.
  
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Ezek a fájlok egymásra is hivatkoznak, ha ez szükséges.
  Például a 
-\emph on 
+\emph on
 Felhasználói Kézikönyv
-\emph default 
+\emph default
  tartalmaz némi információt az installálásról és testreszabásról, de bõvebb
  információkért a 
-\emph on 
+\emph on
 Testreszabás
-\emph default 
+\emph default
  kézikönyvet ajánlja.
  Ismét szeretnénk felhívni a figyelmet arra, hogy:
-\layout Standard
-\added_space_top 0.51cm \added_space_bottom 0.51cm \align center 
+\end_layout
+
+
+\begin_layout Standard
+
+
+\begin_inset VSpace 0.51cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
 Ha most használja elõször a LyX-et, olvassa el a Tankönyvet.
  Most rögtön!
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset VSpace 0.51cm
+\end_inset
+
+
+\end_layout
+
+
+\begin_layout Standard
 
 Egyébként, feleslegesen csalódást okozhat magának.
  A LyX mindent tud, amit egy szövegszerkesztõtõl elvárhat, de másként közelíti
  meg a dolgokat, mint ahogy azt megszokhatta.
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 
 \begin_inset LatexCommand \label{rész:Közremûködés}
 
-\end_inset 
+\end_inset
 
 Közremûködés a Dokumentációs Projektben
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 A kézikönyvben talált hibák jelentése
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Ez nagyon egyszerû, csak küld egy levelet a Felhasználók Listájára vagy
  a Fejlesztõk Listájára.
  A dokumentációval foglalkozó csapat elérhetõ a következõ levelezõlistán:
  
-\family typewriter 
+\family typewriter
 lyx-docs@lists.lyx.org
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\SpecialChar ~
+\InsetSpace ~
 Mielõtt ide írna jelezze a hibát nekünk a fordítóknak, mert lehet hogy csak
  a fordítás a hibás.
-\end_inset 
+\end_layout
+
+\end_inset
 
  Ha a javítás csekély mértékû, valaki ki fogja javítani, viszont ha komolyabb
  problémát észlel, javasolt felvenni a kapcsolatot a fejlesztõkkel mielõtt
  akármit is javítana.
-\layout Standard
-\added_space_top 1.06cm \added_space_bottom 1.06cm \align center 
+\end_layout
 
-\emph on 
+
+\begin_layout Standard
+
+
+\begin_inset VSpace 1.06cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\emph on
 Soha ne változtassa meg a kézikönyvek tartalmát, a fejlesztõk hozzájárulása
  nélkül!
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset VSpace 1.06cm
+\end_inset
+
+
+\end_layout
+
+
+\begin_layout Standard
 
 Egyébként a Dokumentációs Csapat folyamatosan, CVS-en keresztül karbantartja
  a dokumentációk prototípusát, így ezekben semmiféle zûrzavar nem keletkezhet
  a javítások során.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Csatlakozás a Dokumentációs Csapathoz
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 A LyX Dokumentációs Projekt, mint minden a LyX projekten belül, hasznosítani
  tudja az ön segítségét is.
  Ha ön szeretne közremûködni ebben, elõször is el kell végeznie a következõ
  feladatokat:
-\layout Enumerate
+\end_layout
+
+\begin_layout Enumerate
 
 Töltse le a legfrissebb LyX forráskódot
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\SpecialChar ~
+\InsetSpace ~
 A vállalkozó szellemûek mindig letölthetik a legfrissebb forrást a LyX CVS
  szerverérõl.
-\end_inset 
+\end_layout
+
+\end_inset
 
 , majd csomagolja ki.
-\layout Enumerate
+\end_layout
+
+\begin_layout Enumerate
 
 A kicsomagolt könyvtáron belül fog találni egy
-\family typewriter 
+\family typewriter
  DocStyle.lyx
-\family default 
+\family default
  nevû fájlt a
-\family typewriter 
+\family typewriter
  lib/doc
-\family default 
+\family default
  nevû alkönyvtárban.
  Olvassa végig, ez tartalmazza a dokumentációk formai szabályait.
-\layout Enumerate
+\end_layout
+
+\begin_layout Enumerate
 
 Tartson egy-két nap szünetet, aztán olvassa el újból!
-\layout Enumerate
+\end_layout
+
+\begin_layout Enumerate
 
 Ezután olvassa el a 
-\emph on 
+\emph on
 Felhasználói Kézikönyv
-\emph default 
+\emph default
 et és a 
-\emph on 
+\emph on
 Tankönyv
-\emph default 
+\emph default
 et is.
-\begin_deeper 
-\layout Standard
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
 
 Ennek az a célja, hogy ötleteket adjon, hogyan is kell kinézni egy dokumentáción
 ak.
  A 
-\emph on 
+\emph on
 Tankönyv 
-\emph default 
+\emph default
 és a 
-\emph on 
+\emph on
 Felhasználói Kézikönyv
-\emph default 
+\emph default
  egyébként mindig a legnaprakészebb az összes közül.
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\SpecialChar ~
+\InsetSpace ~
 Ez a megállapítás természetesen csak az eredeti angol verzióra igaz.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\end_deeper 
-\layout Enumerate
+\end_layout
+\end_deeper
+\begin_layout Enumerate
 
 Olvassa el újra a 
-\family typewriter 
+\family typewriter
 DocStyle.lyx
-\family default 
+\family default
  fájlt.
-\layout Enumerate
+\end_layout
+
+\begin_layout Enumerate
 
 Végül lépjen kapcsolatba a csapattal: 
-\begin_deeper 
-\layout Standard
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
 
 
-\family typewriter 
+\family typewriter
 lyx-docs@lists.lyx.org
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Biztosak akarunk lenni abban, hogy ön megértette a formai, tartalmi követelménye
 ket, 
-\emph on 
+\emph on
 mielõtt 
-\emph default 
+\emph default
 elkezdene írni.
  Ellenkezõ esetben önnek muszáj lesz átírnia a követelményeknek megfelelõre!
-\end_deeper 
-\layout Standard
+\end_layout
+\end_deeper
+\begin_layout Standard
 
 
-\emph on 
+\emph on
 Semmi esetre se 
-\emph default 
+\emph default
 kezdjen dokumentációt írni, amíg nem lépett kapcsolatba a Dokumentációs
  Csapattal.
  A Dokumentációs Csapat honlapján: 
 \begin_inset LatexCommand \url{http://www.lyx.org}
 
-\end_inset 
+\end_inset
 
  vagy a levelezási listánkon betekintést nyerhet az éppen aktuális tevékenységei
 nkbe.
  
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Csatlakozás a dokumentációk fordításához
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Ha ön esetleg a dokumentációk fordításába szeretne bekapcsolódni, vegye
  fel a kapcsolatot a fordítókkal a következõ e-mail címen: 
-\family typewriter 
+\family typewriter
 zrubi@k2.jozsef.kando.hu
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 A fordítás állásáról pedig információkat kaphat a következõ honlapon: 
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 
 \begin_inset LatexCommand \url{http://k2.jozsef.kando.hu/~zrubi/LyX}
 
-\end_inset 
+\end_inset
 
 
-\the_end
+\end_layout
+
+\end_body
+\end_document

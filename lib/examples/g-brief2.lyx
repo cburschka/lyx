@@ -1,5 +1,7 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass g-brief2
 \begin_preamble
 \lochermarke
@@ -13,13 +15,12 @@
 \fontscheme default
 \graphics default
 \paperfontsize default
-\spacing single 
-\papersize Default
-\paperpackage a4
-\use_geometry 0
+\spacing single
+\papersize default
+\use_geometry false
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -30,186 +31,296 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tracking_changes false
+\output_changes true
+\end_header
 
-\layout Name
+\begin_body
+
+\begin_layout Name
 
 Otto Raffzahn
-\layout Signature
+\end_layout
+
+\begin_layout Signature
 
 Otto Raffzahn
-\layout ReturnAddress
+\end_layout
+
+\begin_layout ReturnAddress
 
 Otto Raffzahn 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Letter
+\begin_layout Standard
 $
-\backslash 
+\backslash
 cdot$
-\end_inset 
+\end_layout
+
+\end_inset
 
  Finsterweg 13 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Letter
+\begin_layout Standard
 $
-\backslash 
+\backslash
 cdot$
-\end_inset 
+\end_layout
+
+\end_inset
 
  Tiefeschlucht
-\layout NameRowA
+\end_layout
+
+\begin_layout NameRowA
 
 
-\series bold 
+\series bold
 Otto Raffzahn
-\layout NameRowB
+\end_layout
 
-\layout NameRowC
+\begin_layout NameRowB
+
+\end_layout
+
+\begin_layout NameRowC
 
 Mietwucherer
-\layout NameRowD
+\end_layout
+
+\begin_layout NameRowD
 
 Menschenfreund
-\layout NameRowE
+\end_layout
+
+\begin_layout NameRowE
 
 & Gierschlund
-\layout NameRowF
+\end_layout
 
-\layout AddressRowA
+\begin_layout NameRowF
+
+\end_layout
+
+\begin_layout AddressRowA
 
 Wiesenacker 25a
-\layout AddressRowB
+\end_layout
+
+\begin_layout AddressRowB
 
 99533 Weitewelt
-\layout NameRowC
+\end_layout
 
-\layout NameRowD
+\begin_layout NameRowC
+
+\end_layout
+
+\begin_layout NameRowD
 
 Inselblick 12
-\layout NameRowE
+\end_layout
+
+\begin_layout NameRowE
 
 23213 Am Meer
-\layout NameRowF
+\end_layout
 
-\layout TelephoneRowA
+\begin_layout NameRowF
+
+\end_layout
+
+\begin_layout TelephoneRowA
 
 Festnetz: +49 000 0000000
-\layout TelephoneRowB
+\end_layout
+
+\begin_layout TelephoneRowB
 
 Freecall: +49 800 0000000
-\layout TelephoneRowC
+\end_layout
+
+\begin_layout TelephoneRowC
 
 Mobil: +49 171 00000000
-\layout TelephoneRowD
+\end_layout
+
+\begin_layout TelephoneRowD
 
 Fax: +49 0000 000-0000
-\layout TelephoneRowE
+\end_layout
 
-\layout TelephoneRowF
+\begin_layout TelephoneRowE
 
-\layout InternetRowA
+\end_layout
+
+\begin_layout TelephoneRowF
+
+\end_layout
+
+\begin_layout InternetRowA
 
 raffzahn@example.com
-\layout InternetRowB
+\end_layout
+
+\begin_layout InternetRowB
 
 info@example.com
-\layout InternetRowC
+\end_layout
+
+\begin_layout InternetRowC
 
 office@example.com
-\layout InternetRowD
+\end_layout
+
+\begin_layout InternetRowD
 
 http://www.example.com
-\layout InternetRowE
+\end_layout
+
+\begin_layout InternetRowE
 
 http://www.example.net
-\layout InternetRowF
+\end_layout
 
-\layout BankRowA
+\begin_layout InternetRowF
+
+\end_layout
+
+\begin_layout BankRowA
 
 Bankhaus Skrupellos & Co.
-\layout BankRowB
+\end_layout
+
+\begin_layout BankRowB
 
 BLZ: 000.000.00
-\layout BankRowC
+\end_layout
+
+\begin_layout BankRowC
 
 Konto: 000.000.000
-\layout BankRowD
+\end_layout
 
-\layout BankRowE
+\begin_layout BankRowD
 
-\layout BankRowF
+\end_layout
 
-\layout Address
+\begin_layout BankRowE
+
+\end_layout
+
+\begin_layout BankRowF
+
+\end_layout
+
+\begin_layout Address
 
 To
-\newline 
+\newline
 Else Mittellos
-\newline 
+\newline
 Finsterweg 12
-\newline 
+\newline
 93456 Tiefeschlucht
-\layout Reference
+\end_layout
+
+\begin_layout Reference
 
 Testing Letterstyles
-\layout PostalComment
+\end_layout
+
+\begin_layout PostalComment
 
 REGISTERED LETTER
-\layout MyRef
+\end_layout
+
+\begin_layout MyRef
 
 TH
-\layout YourRef
+\end_layout
+
+\begin_layout YourRef
 
 EM
-\layout YourMail
+\end_layout
 
-\layout Encl.
+\begin_layout YourMail
 
-\layout cc
+\end_layout
 
-\layout Date
+\begin_layout Encl.
+
+\end_layout
+
+\begin_layout cc
+
+\end_layout
+
+\begin_layout Date
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Letter
+\begin_layout Standard
 
-\backslash 
+\backslash
 today
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Opening
+\end_layout
+
+\begin_layout Opening
 
 Dear Mr.
  Example, 
-\layout Closing
+\end_layout
+
+\begin_layout Closing
 
 Yours sincerely
-\layout Letter
+\end_layout
+
+\begin_layout Letter
 
 
-\begin_inset Note
-collapsed false
+\begin_inset Note Note
+status open
 
-\layout Letter
+\begin_layout Letter
 
 More posibilities to customize your letter are available in:
-\layout Letter
+\end_layout
+
+\begin_layout Letter
 
 Format-\SpecialChar \menuseparator
 Document\SpecialChar \menuseparator
 Latex-Preamble.
-\layout Letter
+\end_layout
 
-\end_inset 
+\begin_layout Letter
+
+\end_layout
+
+\end_inset
 
 I am writing to ask whether you could send me any information about possibility
  of ...
-\layout Letter
+\end_layout
+
+\begin_layout Letter
 
 I would be very pleased if you could send me these informations.
-\the_end
+\end_layout
+
+\end_body
+\end_document

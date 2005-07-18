@@ -1,5 +1,7 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass chess
 \begin_preamble
 \usepackage{multicol}
@@ -15,12 +17,11 @@
 \graphics default
 \paperfontsize 12
 \spacing single
-\papersize Default
-\paperpackage a4
-\use_geometry 1
+\papersize default
+\use_geometry true
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \leftmargin 0.5in
 \topmargin 0.5in
@@ -38,129 +39,204 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle empty
+\tracking_changes false
+\output_changes true
+\end_header
 
-\layout Standard
-\align center 
+\begin_body
 
-\series bold 
-\size larger 
+\begin_layout Standard
+\align center
+
+\series bold
+\size larger
 Email Chess Game analyzed
-\size large 
+\size large
 
-\newline 
+\newline
 
-\newline 
+\newline
 Kayvan A.
  Sylvan
-\newline 
+\newline
 <kayvan@sylvan.com>
-\size default 
-\emph on 
+\size default
+\emph on
 
-\newline 
+\newline
 
-\newline 
+\newline
 Game start 05/29/2001
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 begin{multicols}{2}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 The following game was played at the IECC (International Email Chess Club).
  It is presented as an example of the fun you can have with LyX's new chess
  layout (based on the 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 skak.sty
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  package from CTAN).
-\layout Standard
-\added_space_top medskip \added_space_bottom smallskip \line_top \line_bottom 
+\end_layout
 
-\noun on 
+
+\begin_layout Standard
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\lyxline
+
+\end_layout
+
+\begin_layout Standard
+
+
+\noun on
 Sylvan, Kayvan
-\hfill 
+\hfill
 Wakeham, Marc 
-\noun default 
+\noun default
 
-\newline 
+\newline
 (1623)
-\hfill 
+\hfill
  (1639)
-\layout Mainline
-\added_space_bottom bigskip 
+\end_layout
+
+\begin_layout Standard
+
+
+\lyxline
+
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+
+\begin_layout Mainline
+
 1.
  e4 c5 2.
  Nc3 d6 3.
  g3 Nc6 4.
  Bg2 e6 5.
  Nge2
-\layout BoardCentered
+\end_layout
 
-\layout HighLight
+\begin_layout Standard
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+
+\begin_layout BoardCentered
+
+\end_layout
+
+\begin_layout HighLight
 
 d4,f4
-\layout Arrow
+\end_layout
+
+\begin_layout Arrow
 
 d2->d4
-\layout KnightMove
+\end_layout
+
+\begin_layout KnightMove
 
 g1->e2
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 vspace*{-0.75in} % This is a hack!
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 So far, so good.
  The e2 knight controls the d4 and f4 squares, preparing an eventual d4
  push.
  The diagrammed position has been reached before in hundreds of GM games.
-\layout Mainline
+\end_layout
+
+\begin_layout Mainline
 
 5...
  Be7?! 
-\layout Variation
+\end_layout
+
+\begin_layout Variation
 
 5...
  Nge7 [ 
-\backslash 
+\backslash
 equal{} was better.
  ]
-\layout Mainline
+\end_layout
+
+\begin_layout Mainline
 
 6.
  d4 cxd4 7.
  Nxd4 a6
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 With 7...
  a6, we are back in the well-trodden theory of this opening.
-\layout BoardCentered
+\end_layout
 
-\layout Mainline
+\begin_layout BoardCentered
+
+\end_layout
+
+\begin_layout Mainline
 
 8.
  Nxc6 bxc6 9.
@@ -168,52 +244,74 @@ With 7...
  Qg4 Bf6 11.
  Bf4 Ne7 12.
  Rad1
-\layout BoardCentered
+\end_layout
 
-\layout Arrow
+\begin_layout BoardCentered
+
+\end_layout
+
+\begin_layout Arrow
 
 a1->d1
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 vspace*{-0.5in} % Another hack!
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 White continues to develop pieces and also sets a trap for Black.
-\layout Mainline
+\end_layout
+
+\begin_layout Mainline
 
 12...
  O-O? [ This move loses instantly.
  ]
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 The following was better, even though white retains the upper hand.
-\layout Variation
+\end_layout
+
+\begin_layout Variation
 
 12...
  e5 13.
  Be3 Qc7 14.
  Na4 O-O [ 
-\backslash 
+\backslash
 wbetter ]
-\layout Mainline
+\end_layout
+
+\begin_layout Mainline
 
 13.
  e5!
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Black's knight and bishop form a bumbling pair here.
  The bishop is doomed.
-\layout Mainline
+\end_layout
+
+\begin_layout Mainline
 
 13...
  Nd5!? 14.
@@ -222,19 +320,28 @@ Black's knight and bishop form a bumbling pair here.
  Bxd6 Rfd8 17.
  Bc7 Rd7 18.
  Bf4 1-0
-\layout BoardCentered
+\end_layout
 
-\layout Standard
+\begin_layout BoardCentered
+
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 end{multicols}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\the_end
+\end_layout
+
+\end_body
+\end_document

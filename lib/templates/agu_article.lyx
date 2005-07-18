@@ -1,18 +1,19 @@
 #LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
-\lyxformat 228
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass agu-dtd
 \language english
 \inputencoding auto
 \fontscheme default
 \graphics default
 \paperfontsize default
-\spacing single 
-\papersize Default
-\paperpackage a4
-\use_geometry 0
+\spacing single
+\papersize default
+\use_geometry false
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -23,8 +24,11 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tracking_changes 0
+\tracking_changes false
+\output_changes true
 \end_header
+
+\begin_body
 
 \begin_layout Header
 
@@ -41,7 +45,7 @@ status inlined
 1234-2345
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \begin_inset CharStyle CODEN
@@ -52,7 +56,7 @@ status inlined
 GGGGFR
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \end_layout
@@ -68,7 +72,7 @@ status inlined
 INPUT1
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \begin_inset CharStyle SS-Title
@@ -79,7 +83,7 @@ status inlined
 Special section for data
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \end_layout
@@ -95,7 +99,7 @@ status inlined
 3
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \begin_inset CharStyle Year
@@ -106,7 +110,7 @@ status inlined
 2001
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \end_layout
@@ -122,7 +126,7 @@ status inlined
 7
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \begin_inset CharStyle Issue-day
@@ -133,7 +137,7 @@ status inlined
 13
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \begin_inset CharStyle Issue-months
@@ -144,7 +148,7 @@ status inlined
 Sep-Oct
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \end_layout
@@ -160,7 +164,7 @@ status inlined
 23
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \begin_inset CharStyle Month
@@ -171,7 +175,7 @@ status inlined
 1
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \begin_inset CharStyle Year
@@ -182,7 +186,7 @@ status inlined
 1999
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \end_layout
@@ -197,7 +201,7 @@ status inlined
 
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \begin_inset CharStyle Month
@@ -207,7 +211,7 @@ status inlined
 
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \begin_inset CharStyle Year
@@ -217,7 +221,7 @@ status inlined
 
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \end_layout
@@ -232,7 +236,7 @@ status inlined
 
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \begin_inset CharStyle Month
@@ -242,7 +246,7 @@ status inlined
 
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \begin_inset CharStyle Year
@@ -252,7 +256,7 @@ status inlined
 
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \end_layout
@@ -293,7 +297,7 @@ status inlined
 3524-2044/01/2001GC000435$00.00
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \begin_inset CharStyle Year
@@ -304,7 +308,7 @@ status inlined
 2001
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \end_layout
@@ -334,7 +338,7 @@ status inlined
 666
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \begin_inset CharStyle Dscr
@@ -345,7 +349,7 @@ status inlined
 Geodesy: crustal motion
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \end_layout
@@ -360,7 +364,7 @@ status inlined
 
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \begin_inset CharStyle Dscr
@@ -370,7 +374,7 @@ status inlined
 
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \end_layout
@@ -386,7 +390,7 @@ status inlined
 Crust
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \begin_inset CharStyle Keyword
@@ -397,7 +401,7 @@ status inlined
 Motion
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \end_layout
@@ -445,7 +449,7 @@ Dept.
  of Surveying
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \begin_inset CharStyle Orgname
@@ -457,7 +461,7 @@ Helsinki U.
  Tech
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \begin_inset CharStyle Street
@@ -467,7 +471,7 @@ status inlined
 
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \begin_inset CharStyle City
@@ -477,7 +481,7 @@ status inlined
 
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \begin_inset CharStyle State
@@ -487,7 +491,7 @@ status inlined
 
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \begin_inset CharStyle Postcode
@@ -497,7 +501,7 @@ status inlined
 
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \begin_inset CharStyle Country
@@ -507,7 +511,7 @@ status inlined
 
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \end_layout
@@ -522,7 +526,7 @@ status inlined
 
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \begin_inset CharStyle Orgname
@@ -532,7 +536,7 @@ status inlined
 
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \begin_inset CharStyle Street
@@ -542,7 +546,7 @@ status inlined
 
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \begin_inset CharStyle City
@@ -552,7 +556,7 @@ status inlined
 
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \begin_inset CharStyle Postcode
@@ -562,7 +566,7 @@ status inlined
 
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \begin_inset CharStyle Country
@@ -572,7 +576,7 @@ status inlined
 
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \end_layout
@@ -595,7 +599,7 @@ J.
  Res.
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \begin_inset CharStyle Volume
@@ -606,7 +610,7 @@ status inlined
 4
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \begin_inset CharStyle Issue-number
@@ -617,7 +621,7 @@ status inlined
 7
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \begin_inset CharStyle Citation-number
@@ -628,7 +632,7 @@ status inlined
 333
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \begin_inset CharStyle Year
@@ -638,13 +642,13 @@ status inlined
 
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \end_layout
 
 \begin_layout Date
-\noindent 
+\noindent
 
 \begin_inset CharStyle Day
 status inlined
@@ -653,7 +657,7 @@ status inlined
 
 \end_layout
 
-\end_inset 
+\end_inset
 
  
 \begin_inset CharStyle Month
@@ -663,7 +667,7 @@ status inlined
 
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \begin_inset CharStyle Year
@@ -673,13 +677,13 @@ status inlined
 
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \end_layout
 
 \begin_layout Author
-\noindent 
+\noindent
 
 \begin_inset CharStyle Firstname
 status inlined
@@ -689,7 +693,7 @@ status inlined
 Joe
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \begin_inset CharStyle Surname
@@ -700,7 +704,7 @@ status inlined
 Doe
 \end_layout
 
-\end_inset 
+\end_inset
 
 
 \end_layout
@@ -720,4 +724,5 @@ First Section
 section text
 \end_layout
 
+\end_body
 \end_document

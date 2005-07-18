@@ -1,5 +1,7 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass article
 \language spanish
 \inputencoding latin1
@@ -7,12 +9,11 @@
 \graphics dvips
 \paperfontsize 12
 \spacing single
-\papersize a4paper
-\paperpackage a4
-\use_geometry 0
+\papersize default
+\use_geometry false
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -23,103 +24,148 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle plain
+\tracking_changes false
+\output_changes true
+\end_header
 
-\layout Standard
+\begin_body
+
+\begin_layout Standard
 
 HAU IDAZKIAREN IZENBURUA DA
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Argibidea:: Izenburak izenburu baten itxura gehiago eduki beharko luke.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 egilea: Norbait
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Argibidea: Norbaitek egilea da.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 1973ko urriak 23
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Argibidea:Hau DATA bat da.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Aurkibide orokorra
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Argibidea: Zoragarria izango zatekeen aurkibidea eskuz idatzi
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 beharrik ez edukitzea.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 1.
  Oinarrizko Izakera..................1
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 1.1 LyX-ek nola lantzen duen...............1
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 1.2 LyX Zergaitik da hobeagoa...............1
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 2.
  LyX-en Ezaugarriak
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 3.
  LyX-eko gauz gehiago erabiltzean saiakera hutsak
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 4.
  Matematikak
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 ---------------------------------------------------
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 1.
  Oinarrizko Izakera
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Argibidea: Ataleko izenburuek gehiago nabarmendu beharko ziren.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LyX-en oinarrizko izakeran idatzi beharrekoan datza, eta ez itxuran.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 1.1 LyX-ek nola lantzen duen
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LyX-ek LaTeX erabiltzen du, Leslie Lamport-ek 1985-an diseinatu zuen idazki
  prestaketa sisteman.
@@ -127,29 +173,39 @@ LyX-ek LaTeX erabiltzen du, Leslie Lamport-ek 1985-an diseinatu zuen idazki
  eraikia izan zen.
  LaTeX LyX-en antzeko izakera baten gain diseinatuta dago.
  Leslie Lamport-ek esan zuen ([1] erreferentzia ikusi) 
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Argibidea: AIPAMEN ERREFERENTZI hau eskuz idatzita ez
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 egotea legezkoena izango zatekeen.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Zer gertatuko litzatekeen Lamport-en liburua bibliografiako
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 bigarren sarrera jartzen badugu?
-\end_inset 
+\end_layout
+
+\end_inset
 
 :
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 Tipografi diseinuaren betebeharra irakurtzaileak egilearen burutazioak ulerttu
  araztean datza.
@@ -162,41 +218,47 @@ Tipografi diseinuaren betebeharra irakurtzaileak egilearen burutazioak ulerttu
  duzun bitartean, bere logikaren egituran arduratu beharra daukazu, ez bere
  itxuran.
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Argibidea: Hau AIPAMEN bat da.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 1.2 LyX zergatik da hobeagoa
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LyX erabiltzaileentzat LaTeX baino erabilgarriagoa izan daiteke.
  Askoz ere erabil errazagokoa da, LaTeX zer den ikasi beharrik ez bait daukazu
  (azken finean ia programaketa hizkuntza denez).
  LyX ia beste 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 ikusten duzuna lortzen duzu
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 -n idazki prozesatzaileen bezalakoa da, LyX ordea 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 ikusten duzuna esan nahi duzu
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  da.
  Era honetan, idazki prozesatzaileen erreztasuna LaTeX-en indarrarekin batzen
@@ -205,159 +267,224 @@ ikusten duzuna esan nahi duzu
  Horretaz gain, fitxategiaren egitura erabiltzen duzun ordenagailu/sistema-tik
  aske dago.
  Eta onena zera da, ASKEA eta DOHAINEKOA dela.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 2.
  LyX-en Ezaugarriak
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LyX-ek idazkiak idazteko erreztasun asko eskeintzen dituen ezugarri ugari
  ditu (bestela, zertarako nahiko zenuke erabiltzea?
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Argibidea: Parentesi arteko azalpen hau orri oineko ohar batean
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 hobekiago egongo litzatekeen.
-\end_inset 
+\end_layout
+
+\end_inset
 
 ).
  Beraietaz mintzatzeak UNKITU egiten nau
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Argibidea: Nabarmendu ezazu!
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
  Hemen beraietariko batzuen zerrenda bat daukazu.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 * Margenak eta Orri Oineko Oharren zenbaketetaz LyX bera arduratzen da
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 * LyX-ek matematika ekuazioak idaztean izugarrizko erreztasuna eskeintzen
  du.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LyX beste testu prozesatzaileen baino hobeago izatearen zergatia eztabaidatzeko,
  1.2 atala ikusi, 1.
  orrialdean aurkitzen da.
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Argibidea: Ziurrenik, GURUTZATUTAKO ERREFERENTZI
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 hauek eskuz idatzirik ez luketeen egon behar.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Eta ataletako zenbakiak aldatzen baditugu?
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 3.
  LyX-eko gauz gehiago erabiltzean saiakera hutsak
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Lehengo batean programa bat idatzi nuen.
  Ondoko hau zen:
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 5 REMARK NERE PROGRAMA IKUSGARRIA
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 10 PRINT 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 IKUSGARRIA NAIZ
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 20 GOTO 10 
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Argibidea: Hau ordenagailu kodea da.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Zientzilan ikaragarri haundi honen ondoren, artista bat nintzela sentitzen
  hasi nintzen, eta ondorengo hori idatzi nuen:
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 LyX idazki prozezatzaile
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Zoragarri bat da
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Hainbeste denbora aurrezten du
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Argibidea: Ez da oso ona, baina olerkia da, estrofa bat
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 hain zuzen.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 4.
  Matematikak
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Argibidea: Hemendik aurrera agertzen diren ekuazio guztiak
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 matematika eran idatziak izan beharko ziren.
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Nere ekuazio gogokoena bigarren mailako ekuazio baten emaitza da.
  Baldin eta ax^2+bx+c=0 (1.ek), orduan x= -b + o ken b^2-4ac-ren erroketa,hau
  dena 2a (2.
  ek)-agatik zatitua.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Beste ekuazio ederrenetakoa kalkulu oinarria da: f'(x) limitzat definitzen
  da f(x+deltax) - f(x)-ren zerora hurbiltzen denean, deltax (3.
  ek)-egatik zatitua.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 ------------------------------------------------
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 ERREFERENTZIAK
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 [1] Lamport, Leslie.
  LaTeX: A Document Preparation System.
  Addison-Wesley, Reading, Massachusetts, bigarren argitaraketa, 1994.
-\the_end
+\end_layout
+
+\end_body
+\end_document

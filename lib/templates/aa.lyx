@@ -1,5 +1,7 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass aa
 \language english
 \inputencoding auto
@@ -7,12 +9,11 @@
 \graphics default
 \paperfontsize default
 \spacing single
-\papersize Default
-\paperpackage a4
-\use_geometry 0
+\papersize default
+\use_geometry false
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -23,131 +24,177 @@
 \papercolumns 2
 \papersides 2
 \paperpagestyle default
+\tracking_changes false
+\output_changes true
+\end_header
 
-\layout Title
+\begin_body
+
+\begin_layout Title
 
 This is your Title
-\layout Subtitle
+\end_layout
+
+\begin_layout Subtitle
 
 your subtitle
-\layout Author
+\end_layout
+
+\begin_layout Author
 
 Me
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 inst{
-\end_inset 
+\end_layout
+
+\end_inset
 
 1
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 }
-\backslash 
+\backslash
 and 
-\end_inset 
+\end_layout
+
+\end_inset
 
 You
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 inst{
-\end_inset 
+\end_layout
+
+\end_inset
 
 2
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 }
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Address
+\end_layout
+
+\begin_layout Address
 
 Here 
-\newline 
+\newline
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 email{
-\end_inset 
+\end_layout
+
+\end_inset
 
 myaddress
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 }
-\newline 
+\end_layout
 
-\backslash 
+\begin_layout Standard
+
+\backslash
 and
-\end_inset 
+\end_layout
+
+\end_inset
 
  There
-\newline 
+\newline
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 email{
-\end_inset 
+\end_layout
+
+\end_inset
 
 youraddress
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 }
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Offprint
+\end_layout
+
+\begin_layout Offprint
 
 Me
-\layout Date
+\end_layout
+
+\begin_layout Date
 
 Received ; Accepted
-\layout Abstract
+\end_layout
+
+\begin_layout Abstract
 
 Short abstract
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\newline 
+\end_layout
 
-\backslash 
+\begin_layout Standard
+
+\backslash
 keywords{
-\end_inset 
+\end_layout
+
+\end_inset
 
 keywords
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 }
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Introduction
-\the_end
+\end_layout
+
+\end_body
+\end_document

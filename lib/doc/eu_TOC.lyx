@@ -1,18 +1,19 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass article
 \language english
 \inputencoding default
 \fontscheme default
 \graphics default
 \paperfontsize default
-\spacing single 
-\papersize Default
-\paperpackage a4
-\use_geometry 0
+\spacing single
+\papersize default
+\use_geometry false
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -23,2378 +24,3531 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tracking_changes false
+\output_changes true
+\end_header
 
-\layout Title
+\begin_body
+
+\begin_layout Title
 
 LyX Documentation Table of Contents
-\layout Section*
+\end_layout
+
+\begin_layout Section*
 
 LyX Sarrera
-\layout Description
+\end_layout
+
+\begin_layout Description
 1 
 LyX-en filosofia
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 1.1 
 Zer da LyX?
-\layout Description
+\end_layout
+
+\begin_layout Description
 1.2 
 LyX eta testu-prozesadoreen 
-\newline 
+\newline
 arteko ezberdintasunak
 
 
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 1.3 
 Zer demontre da LaTeX?
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 2 
 Dokumentazioan nabigatzea
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 2.1 
 Eskuliburuen egitura
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.2 
 Eskuliburuak
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3 
 
 
 LyX proiektuan laguntzea
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.1 
 Lagundu LyX-i
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.1.1 
 Bidali errorea
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.1.2 
 Lagundu finkatzen eta ezaugarri berrietan
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3.2 
 Lagundu dokumentazioan
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.2.1 
 Eskuliburuetako errore-txostena
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.2.2 
 Dokumentazio-taldera elkartzea
+\end_layout
 \end_deeper
 \end_deeper
-\layout Section*
+\begin_layout Section*
 
 LyX Maiz Eginiko Galderak
-\newline 
+\newline
 0.3.7 bertsioa
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 .1 
 Sarrera eta informazio orokorra
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 .1.1 
 Zer da LyX? 
-\layout Description
+\end_layout
+
+\begin_layout Description
 .1.2 
 Oso polita, baina erabilgarria da?
-\layout Description
+\end_layout
+
+\begin_layout Description
 .1.3 
 Nondik hasiko naiz? 
-\layout Description
+\end_layout
+
+\begin_layout Description
 .1.4 
 Zein ordenagailutan erabil dezaket?
-\layout Description
+\end_layout
+
+\begin_layout Description
 .1.5 
 LyX-ek zenbat leku behar du disko gogorrean? 
-\layout Description
+\end_layout
+
+\begin_layout Description
 .1.6 
 LyX benetako software askea da? 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 .2 
 Interneteko euskarriak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 .2.1 
 LyX-i buruzkoak interneteko zein gunetan aurki ditzaket?
-\layout Description
+\end_layout
+
+\begin_layout Description
 .2.2 
 LyX-eko materiala zein FTP-tik eskura dezaket?
-\layout Description
+\end_layout
+
+\begin_layout Description
 .2.3 
 Zein posta-zerrenda daude?
-\layout Description
+\end_layout
+
+\begin_layout Description
 .2.4 
 Posta-zerrendak nonbaiten gordetzen dira?
-\layout Description
+\end_layout
+
+\begin_layout Description
 .2.5 
 Ederto, hi bai hi jatorra! Eta non gorde dituzue?
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 .3 
 Beste testu-prozesadore batzuekiko bateragarritasuna
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 .3.1 
 LaTeX fitxategiak irakur/idatz ditzaket?
-\layout Description
+\end_layout
+
+\begin_layout Description
 .3.2 
 Word fitxategiak irakur/idatz ditzaket?
-\layout Description
+\end_layout
+
+\begin_layout Description
 .3.3 
 HTML fitxategiak irakur/idatz ditzaket?
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 .4 
 LyX eskuratzea eta konpilatzea
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 .4.1 
 4.1 Zer behar dut?
-\layout Description
+\end_layout
+
+\begin_layout Description
 .4.2 
 Nola konpilatzen dut?
-\layout Description
+\end_layout
+
+\begin_layout Description
 .4.3 
 Konpilatzea gorrotatzen dut.
  Aurrekonpilatutako kode bitarrak non aurki ditzaket?
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 .5 
 Inpernuko Testu Gorriari buruzkoak (GARRANTZITSUA!)
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 .5.1 
 Zer da Inpernuko Testu Gorria (edo ERT)?
-\layout Description
+\end_layout
+
+\begin_layout Description
 .5.2 
 Nola sartzen dut Inpernuko Testu Gorri bat?
-\layout Description
+\end_layout
+
+\begin_layout Description
 .5.3 
 ERT multzo berria nahiko astuna da!
-\layout Description
+\end_layout
+
+\begin_layout Description
 .5.4 
 Badago beste aukerarik?
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 .6 
 LyX-en erabilerari buruzkoak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 .6.1 
 Galdera orokorrak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 .6.1.1 
 Nola ezabatu titulu azpiko data?
-\layout Description
+\end_layout
+
+\begin_layout Description
 .6.1.2 
 Nola alda ditzaket Elementua/\SpecialChar \-
 Zenbatua/\SpecialChar \-
 Azalpena zerrenda inguruneko tarteak?
-\layout Description
+\end_layout
+
+\begin_layout Description
 .6.1.3 
 Nola zenbatzen dira ekuazioak atalekiko?
-\layout Description
+\end_layout
+
+\begin_layout Description
 .6.1.4 
 Gauza bera irudi eta taulekin egiterik ba ote?
-\layout Description
+\end_layout
+
+\begin_layout Description
 .6.1.5 
 Oin-oharren zenbakiak ikurretara (izartxoa, daga, e.a.) nola aldatu?
-\layout Description
+\end_layout
+
+\begin_layout Description
 .6.1.6 
 Nola hil ditzaket alargun eta umezurtzak?
-\layout Description
+\end_layout
+
+\begin_layout Description
 .6.1.7 
 Nola egituratu zerrenda bat 1.a bezalakoarekin hasteko?
-\layout Description
+\end_layout
+
+\begin_layout Description
 .6.1.8 
 Nola zenbatu hitz-kopurua?
-\layout Description
+\end_layout
+
+\begin_layout Description
 .6.1.9 
 Nola finkatu tarte horizontal zehatz bat?
-\layout Description
+\end_layout
+
+\begin_layout Description
 .6.1.10 
 Zer egin zitazioek [1][2][3][6] ordez [1,2,3,6] edo [1-3,6] erakusteko?
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 .6.2 
 Irudiei buruzkoak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 .6.2.1 
 Zein ezberdintasun dute 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 irudia
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 k eta 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 irudi mugikorra
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 k?
-\layout Description
+\end_layout
+
+\begin_layout Description
 .6.2.2 
 Nola kokatu dezaket irudi bat nahi dudan lekuan?
-\layout Description
+\end_layout
+
+\begin_layout Description
 .6.2.3 
 Zer adierazten du 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 Too many unprocessed floats
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  errore-mezuak?
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 .6.3 
 Matematikako gauzak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 .6.3.1 
 Nola sartu testu arrunta matematikako ekuazio batean?
-\layout Description
+\end_layout
+
+\begin_layout Description
 .6.3.2 
 6.3.2 Nola egiten da erro kubiko bat (edo handiagoa)?
+\end_layout
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 .7 
 7LyX-en exekuzioari buruzkoak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 .7.1 
 Nola bihurtu LyX fitxategiak LaTeX-era komando lerroarekin?
-\layout Description
+\end_layout
+
+\begin_layout Description
 .7.2 
 Nola sortu LyX dokumentuaren PDF fitxategia?
-\layout Description
+\end_layout
+
+\begin_layout Description
 .7.3 
 Dokumentuaren letra-tipo itsusiak acroread-en?
-\layout Description
+\end_layout
+
+\begin_layout Description
 .7.4 
 Zergatik nire Ghostscript-en azken bertsioak ezin ditu egokiro marraztu
  lerro-barneko EPSak?
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 .8 
 LyX Windows-en 
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 .8.1 
 Zergatik egiten dute dardar tresna-barra eta menuak?
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 .9 
 Laguntza gehiago nola lortu
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 .9.1 
 Oraindik ez diezu nire galderei erantzun!
-\layout Description
+\end_layout
+
+\begin_layout Description
 .9.2 
 Nire arazoa norbaiti azaldu nahi diot
-\layout Description
+\end_layout
+
+\begin_layout Description
 .9.3 
 Laguntza-eskaeran zer jarri.
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 .10 
 Informazio administratiboa eta aitorpenak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 .10.1 
 Ohartarazpenei ongi etorria
-\layout Description
+\end_layout
+
+\begin_layout Description
 .10.2 
 MEG honen formatu eskuragarriak
-\layout Description
+\end_layout
+
+\begin_layout Description
 .10.3 
 Errudunak eta aitorpenak
-\layout Description
+\end_layout
+
+\begin_layout Description
 .10.4 
 Ezespena eta Copyright-a.
  
+\end_layout
 \end_deeper
 \end_deeper
-\layout Section*
+\begin_layout Section*
 
 
-\noun on 
+\noun on
 LyX Tutoretza
-\layout Description
+\end_layout
+
+\begin_layout Description
 1 
 Sarrera
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 1.1 
 Ongi etorri LyX-era! 
-\layout Description
+\end_layout
+
+\begin_layout Description
 1.2 
 Tutoretza hau zer da eta zer ez da.
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 1.2.1 
 Tutoretza erabilgarria izan dadin.
-\layout Description
+\end_layout
+
+\begin_layout Description
 1.2.2 
 Aurkituko 
-\emph on 
+\emph on
 ez
-\emph default 
+\emph default
  duzuna:
+\end_layout
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 2 
 LyX-ekin hastea
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 2.1 
 Lehenbiziko LyX dokumentua
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 2.1.1 
 Idaztea, ikustea eta inprimatzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.1.2 
 Eragiketa bakunak
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.1.3 
 WYSIWYM: zuriuneak LyX-en
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 2.2 
 Inguruneak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 2.2.1 
 Atalak eta azpiatalak
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.2.2 
 Zerrendak eta azpizerrendak
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.2.3 
 Beste inguruneak: Bertsoa, Zitazioa eta beste batzuk
+\end_layout
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 3 
 Dokumentuak idaztea
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.1 
 Testu-klaseak
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.2 
 Txantiloiak: eskutitza idaztea
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3 
 Dokumentuen tituluak
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.4 
 Etiketa eta erreferentzia gurutzatuak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.4.1 
 Zure aurreneko etiketa
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.4.2 
 Zure lehen erreferentzia gurutzatua
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.4.3 
 Etiketekin jolastea
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3.5 
 Oin-oharrak eta albokoak
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.6 
 Bibliografiak
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.7 
 Gaien aurkibidea
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4 
 Matematika erabiltzea
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.1 
 Matematika-era
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.2 
 Ekuazioetan murgiltzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.3 
 Berretzaile eta indizeak
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4 
 Matematikako panela
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.4.1 
 Grekera eta ikurrak
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.2 
 Erroketa, tilet eta mugatzaileak
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.3 
 Zatikiak
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.4 
 TeX era: limiteak, log, sinu eta bestelakoak
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.5 
 Matrizeak
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.6 
 Adierazpen-era
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.5 
 Matematikari buruzko gauza gehiago
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 5 
 Hainbat
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.1 
 LyX-en beste ezaugarri garrantzitsu batzuk
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.2 
 LyX LaTeX-eko erabiltzaileentzat
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.2.1 
 TeX era
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.2.2 
 LaTeX dokumentuak inportatzea: reLyX
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.2.3 
 LyX dokumentua LaTeX-era bihurtu
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.2.4 
 LaTeX hitzaurrea
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.2.4.1 
 Dokumentu-klasea
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.2.4.2 
 Hitzaurreko beste alderdi batzuk
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 5.2.5 
 BibTeX
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 5.3 
 Erroreak!
+\end_layout
 \end_deeper
-\layout Section*
+\begin_layout Section*
 
 LyX Erabiltzailearen Gida
-\layout Description
+\end_layout
+
+\begin_layout Description
 1 
 Sarrera
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 1.1 
 LyX zer da?
-\layout Description
+\end_layout
+
+\begin_layout Description
 1.2 
 Hasiera
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 1.2.1 
 LyX abiatzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 1.2.2 
 LyX-en itxura
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 1.2.2.1 
 Leiho nagusia
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 1.2.3 
 Laguntza!
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 1.3 
 LyX interfazea
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 1.3.1 
 Oinarrizko fitxategi-eragiketak
-\layout Description
+\end_layout
+
+\begin_layout Description
 1.3.2 
 Oinarrizko edizio-ezaugarriak
-\layout Description
+\end_layout
+
+\begin_layout Description
 1.3.3 
 Desegin eta berregin
-\layout Description
+\end_layout
+
+\begin_layout Description
 1.3.4 
 Saguaren oinarrizko laster-teklak
-\layout Description
+\end_layout
+
+\begin_layout Description
 1.3.5 
 Oinarrizko tekla-lasterbideak
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 1.4 
 LyX beste programa batzuekin erabiltzea
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 1.4.1 
 Inportatu ASCII fitxategiak
-\layout Description
+\end_layout
+
+\begin_layout Description
 1.4.2 
 LyX-en eta beste X programen artean ebaki eta itsastea
+\end_layout
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 2 
 LyX konfigurazioa eta beharrezko aplikazioak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 2.1 
 Sarrera
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.2 
 2.2 Oinarrizko LyX konfigurazioa
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.3 
 X teklatua konfiguratu
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 2.3.1 
 xmodmap eta xkeycaps
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 2.3.1.1 
 xmodmap
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.3.1.2 
 xkeycaps
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 2.3.2 
 Aldatzaileak eta Modu_txandaketa
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.3.3 
 Argibide eta trikimailu lagungarriak
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 2.4 
 LaTeX
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.5 
 Dvips eta Ghostscript
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 2.5.1 
 Behar duzuna
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.5.2 
 Dvips
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.5.3 
 Ghostscript, Xdvi eta Ghostview
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 2.6 
 Inprimagailua
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3 
 LyX-en oinarriak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.1 
 Dokumentu-motak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.1.1 
 Sarrera
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.1.2 
 
 
 Zenbait dokumentu-klase
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.1.2.1 
 Azalpen laburra
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.1.2.2 
 Klasea hautatzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.1.2.3 
 Propietateak
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3.1.3 
 Lehenetsitakoak egokitzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.1.4 
 Paper tamaina, orientazioa eta marjinak
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.1.5 
 Ohar garrantzitsua
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3.2 
 Paragrafoen koskatze eta bereizmena
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.2.1 
 Sarrera
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.2.2 
 Koskatze-metodo orokorra
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.2.3 
 Fintzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.2.4 
 Lerro-tartea aldatzea
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3.3 
 Paragrafo-inguruneak
 
 
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.3.1 
 Azalpen laburra
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3.2 
 Estandarra
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3.3 
 Dokumentu-tituluak
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3.4 
 Izenburuak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.3.4.1 
 Zenbatutako izenburuak
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3.4.2 
 Zenbatu gabeko izenburuak
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3.4.3 
 Zenbakera aldatzea
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3.4.4 
 Informazio berezia
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3.4.5 
 Eranskina sortzea
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3.3.5 
 Zitak eta bertsoak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.3.5.1 
 Zita eta zitazioa
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3.5.2 
 Bertsoa
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3.3.6 
 Zerrendak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.3.6.1 
 Ezaugarri orokorrak
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3.6.2 
 Elementua
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3.6.3 
 Zenbatuta
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3.6.4 
 Azalpena
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3.6.5 
 LyX-eko Zerrenda
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3.3.7 
 Gutunak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.3.7.1 
 Helbidea eta eskuin-helbidea: gainbegiratzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3.7.2 
 Erabilera
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3.3.8 
 Idazkera akademikoa
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.3.8.1 
 Laburpena
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3.8.2 
 Bibliografia
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3.3.9 
 Xede berezia
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.3.9.1 
 Epigrafea
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3.9.2 
 LyX kodea
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3.9.3 
 Iruzkina
+\end_layout
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 3.4 
 Inguruneak habiaratzea
 
 
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.4.1 
 Zertan datza bere garrantzia
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.4.2 
 Zer habiaratu dezakezu, eta zer ez?
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.4.3 
 Besteak habiaratzea: taulak, matematikak, mugikorrak, e.a.
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.4.4 
 Erabilera eta ezaugarri orokorrak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.4.4.1 
 Habiaratze-mugak
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3.4.5 
 Adibide batzuk
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.4.5.1 
 1.
  adibidea: sei mailako habiaratze-sakonera 
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.4.5.2 
 2.
  adibidea: herentzia
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.4.5.3 
 3.
  adibidea: etiketak, mailak eta Zenbatuta eta Elementua inguruneak.
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.4.5.4 
 4.
  adibidea: garunak astindu
+\end_layout
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 3.5 
 Letra-tipoak eta testu-estiloak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.5.1 
 Azalpen laburra
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.5.2 
 Aukera globalak
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.5.3 
 Beste karaktere-estiloak erabiltzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.5.4 
 Karaktereen diseinua fintzea
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3.6 
 Aurrebista eta inprimatzea
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.6.1 
 Azalpen laburra
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.6.2 
 Aurrebista azkarra: 
-\family typewriter 
+\family typewriter
 xdvi
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.6.3 
 PostScript®-en aurrebista: 
-\family typewriter 
+\family typewriter
 ghostview
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.6.4 
 Fitxategia inprimatzea
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3.7 
 Tipografiari buruzko aipamena
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.7.1 
 Hitz-zatiketa eta marratxoak
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.7.2 
 Puntuazio-markak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.7.2.1 
 Laburtzapenak eta sententzia-amaiera
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.7.2.2 
 Komatxoak
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3.7.3 
 Hizki-loturak
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.7.4 
 Alargunak eta umezurtzak
+\end_layout
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 4 
 Mugikorrak: taulak, irudiak, oin-oharrak eta albo-oharrak Taula, irudi eta
  oharrak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.1 
 Oin-oharrak
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.2 
 Albo-oharrak
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.3 
 4.3 Irudi eta grafiko inportatuak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.3.1 
 Irudi mugikorrak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.3.1.1 
 Irudi mugikorrak erabiltzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.3.1.2 
 Mugikorraren kokalekua
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.3.2 
 XFig eta LyX
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.4 
 Taulak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.4.1 
 Taula leihoa
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.2 
 Zer jar dezaket gelaxka batean?
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.3 
 Tauletan ebaki eta itsastea
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.4 
 Hainbat lerro gelaxketan
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.5 
 Taula mugikorrak
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.5 
 Gaien aurkibidea eta bestelako zerrendak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.5.1 
 Gaien aurkibidea
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.5.2 
 Irudi, taula eta algoritmoen zerrendak
+\end_layout
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 5 
 Matematika-formulak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.1 
 Oinarrizko matematika edizioa
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.1.1 
 Formula arakatzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.1.2 
 Testua hautatzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.1.3 
 Berretzaile eta azpindizeak
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.1.4 
 Zatikiak
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.1.5 
 Batura eta integralak
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.1.6 
 Matematikako panela
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.1.7 
 Beste matematika-ikurrak
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.1.8 
 Tarteak eraldatzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.1.9 
 Matematika funtzioak
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.1.10 
 Azentuak
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.1.11 
 Matematika editorea, LaTeX-eko erabiltzaileentzat
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 5.2 
 Kortxeteak eta apaingarriak
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.3 
 Taldekatzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.4 
 Matrizeak eta lerro anitzeko ekuazioak
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.5 
 Ekuazioak zenbatu eta etiketatzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.6 
 Makroak definitzea (matematika-eran)
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.6.1 
 Makroak erabiltzeko argibideak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.6.1.1 
 Nola sortu
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.6.1.2 
 Nola arakatu
+\end_layout
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 5.7 
 Fintzea
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.7.1 
 Letra-tipoak
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.7.2 
 Matematikako testu-modua
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.7.3 
 Letra-tamainak
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 5.8 
 AMS LaTeX
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.8.1 
 AMS euskarria gaitzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.8.2 
 AMS ikurrak
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.8.3 
 AMS formula-motak
+\end_layout
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 6 
 Bestelako tresnak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.1 
 Erreferentzia gurutzatuak
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.2 
 URLak (Uniform Resource Locators)
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.3 
 Titulu laburtuak aukerako argumentuekin 
-\newline 
+\newline
 zehaztea
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.4 
 Tartea, orrialdeztapen eta lerro-jauziak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.4.1 
 Tarte horizontal osagarria
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.4.2 
 Tarte bertikal osagarria
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.4.3 
 Paragrafo-lerrokadura aldatzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.4.4 
 Orrialde-jauziak derrigortzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.4.5 
 Zuriune babestuak
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.4.6 
 Lerroa jauztea
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 6.5 
 Zuzentzailea
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.5.1 
 Zuzentzailearen aukerak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.5.1.1 
 Hiztegia
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.5.1.2 
 Hiztegi pertsonala
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.5.1.3 
 Aukera gehiago
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 6.5.2 
 Mugapenak
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 6.6 
 Nazioarteko euskarria
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.6.1 
 Diseinua, hizkuntzaren aukerak
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.6.2 
 Teklatu-mapa konfiguratzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.6.3 
 6.6.3 Karaktereen taula
+\end_layout
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 7 
 Aitorpena
-\layout Section*
+\end_layout
+
+\begin_layout Section*
 
 LyX Ezaugarri Hedatuak
-\layout Description
+\end_layout
+
+\begin_layout Description
 1 
 Sarrera
-\layout Description
+\end_layout
+
+\begin_layout Description
 2 
 LyX eta LaTeX
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 2.1 
 LyX-ek nola erabiltzen du LaTeX
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.2 
 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 Lagundu! LyX-ek 
-\family typewriter 
+\family typewriter
 .tex
-\family default 
+\family default
  fitxategi irakurkaitza sortu du!
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.3 
 LaTeX fitxategiak LyX-era bihurtzen
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.4 
 LaTeX kodea LyX dokumentuetan txertatzea
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.5 
 LyX eta LaTeX-eko hitzaurrea
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 2.5.1 
 LaTeX-eko hitzaurreari buruz
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.5.2 
 Hitzaurrea aldatzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.5.3 
 Adibideak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 2.5.3.1 
 1.
  adibidea: desplazamendua
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.5.3.2 
 2.
  adibidea: etiketak
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.5.3.3 
 3.
  adibidea: paragrafoak koskatzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.5.3.4 
 4.
  adibidea: dokumentu hau
+\end_layout
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 2.6 
 LyX eta LaTeX-eko erroreak
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3 
 Tresna osagarriak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.1 
 BibTeX-ekin bibliografia prestatzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.2 
 Indize bat sortzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3 
 Zati anitzeko dokumentuak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.3.1 
 Eragiketa orokorra
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.3.2 
 Fitxategien arteko erreferentzia gurutzatuak
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3.4 
 Algoritmoak
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.5 
 Azpirudiak
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.6 
 Goiburuko eta orri-oin sofistikatuak
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.7 
 Orritxoak
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.8 
 Testua irudien inguruan egokitzea
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.9 
 Taulen aukera osagarriak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.9.1 
 Zutabeko tarte gehigarria ezabatzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.9.2 
 Zutabeko karaktere-bereizlea aldatzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.9.3 
 Puntu dezimalean lerrokatutako zutabea sortzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.9.4 
 Dezimalen lerrokadura hobea
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3.10 
 Elementuen bulet hautapena
 
 
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.10.1 
 Sarrera
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.10.2 
 Nolako itxura dauka
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.10.3 
 Nola erabili
+\end_layout
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 4 
 Dokumentu-klase bereziak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.1 
 AMS LaTeX
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.1.1 
 Diseinuok eskaintzen dutena
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.2 
 Dinbrief
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.3 
 Paper
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4 
 A&A Paper
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.4.1 
 Sarrera
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.2 
 Lanean hastea
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.3 
 Goiburuko zatia
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.4 
 Laburpena
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.5 
 Onartutako inguruneak
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.6 
 LyX-ek onartzen ez dituen komandoak
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.7 
 Irudi eta taula mugikorrak
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.8 
 Diseinua gainbegiratzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.9 
 Artikuluaren adibidea
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.5 
 AASTeX
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.5.1 
 Sarrera
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.5.2 
 Artikulu berri bat hastea
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.5.3 
 Artikulua amaitzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.5.4 
 Komando zehatzei buruzko oharrak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.5.4.1 
 Aurreikusi bezala lantzen dira
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.5.4.2 
 Badabiltzanak, baina iruzkinak behar dituztenak
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.5.4.3 
 Garatu gabe daudenak, erabili ERT
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.5.4.4 
 Garatu ezin daitezkeenak
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.5.5 
 MEG, iradokizunak, trikimailuak eta bestelako hausnarketak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.5.5.1 
 LyX eta AASTeX elkarlanean jartzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.5.5.2 
 LaTeX errorea taula bat prozesatzean
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.5.5.3 
 Erreferentziak
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.5.5.4 
 EPS fitxategiak gehitzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.5.5.5 
 Egin nitzakeenak, egin gabe
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.5.6 
 Azken 
-\emph on 
+\emph on
 ikuttua
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.6 
 ijmpd
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.6.1 
 Sarrera
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.6.2 
 Artikulua idaztea
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.6.3 
 Artikulua bidaltzeko prestatzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.6.4 
 ERTen erabilera
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.7 
 Kluwer
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.7.1 
 Sarrera
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.7.2 
 Artikulua idaztea
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.7.3 
 Artikulua bidaltzeko prestatzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.7.4 
 Kluwer paketearen 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 berezitasunak
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 
 
 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.8 
 Koma-Script
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.8.1 
 Sarrera
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.8.2 
 article (koma-script), report (koma-script), eta book (koma-script)
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.8.3 
 letter (koma-script)
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.8.4 
 Gutun klase berria: letter (koma-script v.2)
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.8.5 
 Arazoak
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.9 
 Springer aldizkariak (svjour)
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.9.1 
 Azalpena
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.9.2 
 Estilo berriak
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.9.3 
 Onartutako aldizkariak
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.9.4 
 Aitorpena
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.9.5 
 Akatsak
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.10 
 AGU aldizkariak (aguplus)
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.10.1 
 Azalpena
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.10.2 
 Estilo berriak
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.10.3 
 Mugikor berriak
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.10.4 
 Onartutako aldizkariak
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.10.5 
 Akatsak eta gogoratu beharrekoak
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.11 
 EGS aldizkariak (egs)
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.11.1 
 Azalpena
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.11.2 
 Estilo berriak
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.12 
 Gardenkiak (edo SliTeX)
 
 
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.12.1 
 Sarrera
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.12.2 
 Lanean hastea
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.12.3 
 Paragrafoen inguruneak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.12.3.1 
 Onartutako inguruneak
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.12.3.2 
 Ingurune berrien bitxikeriak
 
 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.12.4 
 Gardenkia, Gainjarria eta Ohar-ekin aurkezpena egitea
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.12.4.1 
 Gardenkia ingurunea erabiltzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.12.4.2 
 Gardenkiarekin Gainjarria erabiltzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.12.4.3 
 Gardenkiarekin Ohar erabiltzea
 
 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.12.5 
 Gardenkiaren txantiloia
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.13 
 Foils (edo FoilTeX)
 
 
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.13.1 
 Sarrera
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.13.2 
 Lanean hastea
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.13.2.1 
 Aukera osagarriak
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.13.3 
 Onartutako inguruneak
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.13.4 
 Gardenki-multzoa sortzea
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.13.4.1 
 Eman titulu-orri bat
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.13.4.2 
 Hasi gardenki berri bat
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.13.4.3 
 Teoremak, lemak, frogapenak eta bestelakoak
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.13.4.4 
 Zerrendak
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.13.4.5 
 Irudi eta taulak
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.13.4.6 
 Orriaren goiburukoak eta orri-oinak
 
 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.13.5 
 FoilTeX-eko onartu gabeko funtzioak
 
 
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.13.5.1 
 Luzerak
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.13.5.2 
 Goiburukoak eta orri-oinak
+\end_layout
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 4.14 
 Latex8 (IEEE jardunaldiko idazkiak)
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.14.1 
 Sarrera
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.14.2 
 Lanean hastea
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.14.3 
 Onartutako inguruneak
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.14.4 
 Pantaila eta paperaren arteko ezberdintasunak
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.15 
 Hollywood (Hollywood gidoi berezia)
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.15.1 
 Sarrera
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.15.2 
 Arazo bereziak
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.15.3 
 Ezaugarri bereziak
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.15.4 
 Paper tamaina eta marjinak
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.15.5 
 Inguruneak
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.15.6 
 Gidoiko argota
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.16 
 Broadway
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.16.1 
 Sarrera
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.16.2 
 Arazo bereziak
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.16.3 
 Ezaugarri bereziak
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.16.4 
 Paper tamainak eta marjinak
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.16.5 
 Inguruneak
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.17 
 RevTeX4
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.17.1 
 Instalazioa
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.17.2 
 Hitzaurreari buruz
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.17.3 
 Diseinuak
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.17.4 
 Ohar garrantzitsuak
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.17.5 
 Eragozpenak
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.18 
 Artikulua (mwart), liburua (mwbk) eta txostena (mwrep)
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.19 
 Elsevier aldizkariak
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.20 
 Memorandum (Memoir)
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.20.1 
 Laburpena
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.20.2 
 Oinarrizko ezaugarriak eta murriztapenak
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.20.3 
 Ezaugarri osagarriak
+\end_layout
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 5 
 Beste fitxategi formatuak inportatu eta esportatzea.
  
 
 
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.1 
 Gogoeta
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.2 
 Beste formatuetatik inportatzea
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.2.1 
 LaTeX
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.2.2 
 ASCII Testua
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.2.3 
 Noweb
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 5.3 
 Beste formatuetara esportatzea
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.3.1 
 LaTeX
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.3.2 
 DVI fitxategiak (Gailutik askeak)
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.3.3 
 PostScript®
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.3.4 
 ASCII testua
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.3.5 
 HTML
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.3.6 
 PDF
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.3.6.1 
 Erabili pdfLaTeX
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.3.6.2 
 Zergatik ikusten da testua hain gaizki Acrobat Reader-ekin?
 
 
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.3.6.3 
 Zergatik ez dabil 
-\backslash 
+\backslash
 boldsymbol{} komandoa pslatex erabiltzen dudanean?
 
 
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.3.6.4 
 Nola idatzi latex kodea, pdfLaTeX exekutatzean bakarrik prozesatzeko?
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.3.6.5 
 Zer egin dezaket URLak klikatu ahal izateko?
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 5.3.7 
 Pertsonalizazioa
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 5.4 
 reLyX, xehetasunak
 
 
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.4.1 
 Laburpena
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.4.2 
 Aukerak
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.4.3 
 Azalpena
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.4.3.1 
 Sarrera
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.4.3.2 
 Erabilera
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.4.3.3 
 reLyX-ek kudea ditzakeena
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.4.3.4 
 reLyX-ek kudeatu ezin ditzakena --- Baina ongi dagoena
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.4.3.5 
 reLyX-ek gaizki kudeatzen duenak ---hots, AKATSAK
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.4.3.6 
 LyX-ek kudea ezin dezakeena
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 5.4.4 
 Adibideak
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.4.5 
 Oharrak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.4.5.1 
 Errore-txostenak
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.4.5.2 
 Garaketaren xehetasunak:
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.4.5.3 
 Diseinuen fitxategiak
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.4.5.4 
 Sintaxien fitxategiak
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.4.5.5 
 Hainbat
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 5.4.6 
 Diagnostikoak
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.4.7 
 Abisuak
-\layout Description
-5.4.8 \pagebreak_top 
+\end_layout
+
+
+\begin_layout Standard
+
+
+\newpage
+
+\end_layout
+
+\begin_layout Description
+5.4.8
 Fitxategiak
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.4.9 
 Ikusi hauek ere
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.4.10 
 Egileak
+\end_layout
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 6 
 LyX-en funtzioentzako software osagarriak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.1 
 LyX SGML-Tools-ekin erabiltzea (edo LinuxDoc)
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.1.1 
 Sarrera
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.1.2 
 LinuxDoc dokumentua prestatu eta erabiltzea
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.1.2.1 
 Hasi lanean
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.1.2.2 
 LinuxDoc-en formatua
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 6.1.3 
 LinuxDoc-eko inguruneak erabiltzea
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.1.3.1 
 LinuxDoc dokumentuaren egitura
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.1.3.2 
 LinuxDoc-eko paragrafo-inguruneak
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.1.3.3 
 Beste funtzio batzuk
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.1.3.4 
 Erreferentzia gurutzatuak eta HTML
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 6.1.4 
 LinuxDoc-en sgml script-ak erabiltzea
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.1.5 
 LinuxDoc-en erroreak
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 6.2 
 TeX egiaztatzea
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.2.1 
 Sarrera
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.2.2 
 Nola erabili
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.2.3 
 Nola findu 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 6.3 
 Bertsio-kontrola LyX-en
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.3.1 
 Sarrera
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.3.2 
 RCS-ren komandoak LyX-en
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.3.2.1 
 Erregistratu
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.3.2.2 
 Egiaztatu aldaketak
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.3.2.3 
 Egiaztatu editatzeko
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.3.2.4 
 Itzuli azken bertsiora
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.3.2.5 
 Desegin azken egiaztaketa
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.3.2.6 
 Erakutsi historiala
+\end_layout
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 6.4 
 Literaturaren programazioa
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.4.1 
 Sarrera
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.4.2 
 Literaturaren programazioa
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.4.2.1 
 Erreferentziak
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 6.4.3 
 LyX eta literaturaren programazioa
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.4.3.1 
 Dokumentu eta kodea sortzea (weaving eta tangling)
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.4.3.2 
 LyX konfiguratzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.4.3.3 
 Arazketaren hedapenak
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.4.3.4 
 Tresna-barraren hedapenak
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.4.3.5 
 Koloreen pertsonalizazioa
+\end_layout
 \end_deeper
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 7 
 LaTeX-eko adituen sekretuak
 
 
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 7.1 
 Oin eta alboko oharrentzako trikimaluak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 7.1.1 
 Oin-oharrak
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.1.2 
 Albo-oharrak
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 7.2 
 Zutabe anitzak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 7.2.1 
 Xedea
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.2.2 
 Murriztapenak
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.2.3 
 Adibideak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 7.2.3.1 
 Bi zutabeko testua
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.2.3.2 
 Hainbat zutabeko testua
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.2.3.3 
 Zutabeak zutabeen barruan
+\end_layout
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 7.3 
 Zenbatua paragrafo-ingurunearen zenbakera
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.4 
 Taulako errenkaden arteko tarteaErrenkaden tartea
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.5 
 Letra kapitalak
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.6 
 Paragrafoen estandarrak ez diren forma
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.7 
 Laburpena
+\end_layout
 \end_deeper
-\layout Section*
+\begin_layout Section*
 
 LyX pertsonalizatzea: 
-\newline 
+\newline
 erabiltzaile aurreratuentzako ezaugarriak
-\layout Description
+\end_layout
+
+\begin_layout Description
 1 
 Sarrera
-\layout Description
+\end_layout
+
+\begin_layout Description
 2 
 LyX-en konfigurazioko fitxategiak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 2.1 
 Zer dago LyXDir-en?
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 2.1.1 
 Automatikoki sortutako fitxategiak
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.1.2 
 Direktorioak
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.1.3 
 Fitxategi hauek ez aldatu
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.1.4 
 Lerro bat edo bi behar duten fitxategiak\SpecialChar \ldots{}
 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 2.2 
 Zure konfigurazio lokaleko direktorioa
-\layout Description
+\end_layout
+
+\begin_layout Description
 2.3 
 LyX hainbat konfiguraziorekin exekutatzen
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3 
 Hobespenak leihoa
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.1 
 Leihoa lehen aldiz erabiltzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.2 
 Pantailako letra-tipoak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 3.2.1 
 DPIren ezarpenak eta zooma
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.2.2 
 Letra-tipoak definitzeko komandoak
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.2.3 
 Letra-kodeketa
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 3.3 
 Lasterbideak
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.4 
 Erabiltzailearen interfazea
 
 
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.5 
 Bihurtzaileak, formatuak eta ikustaileak
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.6 
 ASCIIra esportatzeko aukerak
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.7 
 Inprimagailua
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.8 
 Koloreak aldatzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.9 
 Autodetektatutako ezarpenak
-\layout Description
+\end_layout
+
+\begin_layout Description
 3.10 
 Hainbat
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4 
 LyX internazionalizatzea 
 
 
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.1 
 Interfazea beste hizkuntza batekin
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.2 
 LyX itzultzea
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.2.1 
 GUI itzultzea (testuen mezuak)
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.2.2 
 Dokumentazioa itzultzea
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.3 
 Teklatu internazionalaren euskarria
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.3.1 
 Zure teklatu-mapa definitzea: fitxategiaren formatua
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 4.4 
 Nazioarteko teklatu-mapa
 
 
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 4.4.1 
 
-\family typewriter 
+\family typewriter
 .kmap
-\family default 
+\family default
  fitxategia
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.2 
 
-\family typewriter 
+\family typewriter
 .cdef
-\series medium 
+\series medium
  
-\family default 
-\series default 
+\family default
+\series default
 fitxategia
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.3 
 Tekla hilak
-\layout Description
+\end_layout
+
+\begin_layout Description
 4.4.4 
 Hizkuntzaren konfigurazioa gordetzea
+\end_layout
 \end_deeper
 \end_deeper
-\layout Description
+\begin_layout Description
 5 
 Dokumentu-klase, diseinu eta txantiloi berriak instalatzea
 
 
 
 
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.1 
 LaTeX pakete berri bat instalatzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.2 
 Diseinuak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.2.1 
 Dokumentu-klase berriak onartzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.2.2 
 
-\family typewriter 
+\family typewriter
 sty
-\family default 
+\family default
  fitxategi baten diseinua
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.2.3 
 
-\family typewriter 
+\family typewriter
 cls
-\family default 
+\family default
  fitxategi baten diseinua
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 5.3 
 Testu-klase berri bat deklaratzea
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 5.3.1 
 Testu-klaseen parametro orokorrak
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.3.2 
 ClassOptions atala
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.3.3 
 Paragrafo-ingurune jakin batzuk
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.3.4 
 Mugikorrak
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.3.5 
 Zenbatzaileak
-\layout Description
+\end_layout
+
+\begin_layout Description
 5.3.6 
 Letra-tipo deskripzioa
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 5.4 
 Txantiloiak sortzea
 
 
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 6 
 Kanpoko materiala gehitzea
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 6.1 
 Testuingurua
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.2 
 Nola lantzen da?
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.3 
 Kanpo-materiala leihoa
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.4 
 Adibideak
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.5 
 Kanpoko txantiloiaren konfigurazio fitxategia
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.6 
 Ordezpen mekanismoa
-\layout Description
+\end_layout
+
+\begin_layout Description
 6.7 
 Segurtasunaren eztabaida
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 7 
 LyX zerbitzaria
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 7.1 
 Sarrera
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.2 
 LyX zerbitzaria abiatzea
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.3 
 Komunikazio normala
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.4 
 Jakinarazpena
-\layout Description
+\end_layout
+
+\begin_layout Description
 7.5 
 LYX zerbitzariaren protokoloa
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 8 \start_of_appendix 
 Lasterbideak
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 8.1 
 Tresna-barra
-\layout Description
+\end_layout
+
+\begin_layout Description
 8.2 
 Menua
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 8.2.1 
 Fitxategia
-\layout Description
+\end_layout
+
+\begin_layout Description
 8.2.2 
 Editatu
-\layout Description
+\end_layout
+
+\begin_layout Description
 8.2.3 
 Txertatu
-\layout Description
+\end_layout
+
+\begin_layout Description
 8.2.4 
 Diseinua
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 8.2.4.1 
 Diseinua
-\family sans 
+\family sans
 \SpecialChar \menuseparator
 
-\family default 
+\family default
 Karakterea
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 8.2.5 
 Ikusi
-\layout Description
+\end_layout
+
+\begin_layout Description
 8.2.6 
 Arakatu
-\layout Description
+\end_layout
+
+\begin_layout Description
 8.2.7 
 Laguntza
-\layout Description
+\end_layout
+
+\begin_layout Description
 8.2.8 
 Paragrafo-estiloa
+\end_layout
 \end_deeper
-\layout Description
+\begin_layout Description
 8.3 
 Teklatua
+\end_layout
+
 \begin_deeper
-\layout Description
+\begin_layout Description
 8.3.1 
 
-\family typewriter 
+\family typewriter
 emacs.bind
-\family default 
+\family default
 -i dagokionak
-\layout Description
+\end_layout
+
+\begin_layout Description
 8.3.2 
 
-\family typewriter 
+\family typewriter
 cua.bind
-\family default 
+\family default
 -i dagokionak
-\layout Description
+\end_layout
+
+\begin_layout Description
 8.3.3 
 
-\family typewriter 
+\family typewriter
 sciword.bind
-\family default 
+\family default
 -i dagozkionak
-\layout Description
+\end_layout
+
+\begin_layout Description
 8.3.4 
 A.3.4 Matematikako lasterbide estandarrak
-\layout Description
+\end_layout
+
+\begin_layout Description
 8.3.5 
 Beste azeleratzaileak
+\end_layout
 \end_deeper
 \end_deeper
 
-\the_end
+\end_layout
+
+\end_body
+\end_document

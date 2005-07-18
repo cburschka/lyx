@@ -1,5 +1,7 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
 \textclass literate-article
 \begin_preamble
 %
@@ -17,12 +19,11 @@
 \graphics default
 \paperfontsize default
 \spacing single
-\papersize Default
-\paperpackage a4
-\use_geometry 0
+\papersize default
+\use_geometry false
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -33,1443 +34,1689 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tracking_changes false
+\output_changes true
+\end_header
 
-\layout Title
+\begin_body
+
+\begin_layout Title
 
 
-\noun on 
+\noun on
 noweb2lyx
-\layout Author
+\end_layout
+
+\begin_layout Author
 
 Kayvan A.
  Sylvan <kayvan@sylvan.com>
-\layout Date
+\end_layout
+
+\begin_layout Date
 
 May 6, 1999
-\layout Abstract
+\end_layout
+
+\begin_layout Abstract
 
 This document describes and implements a perl script for importing noweb
  files into LyX
-\layout Standard
-\pagebreak_bottom 
+\end_layout
+
+\begin_layout Standard
+
 
 \begin_inset LatexCommand \tableofcontents{}
 
-\end_inset 
+\end_inset
 
 
-\layout Section
+\end_layout
+
+\begin_layout Standard
+
+
+\newpage
+
+\end_layout
+
+
+\begin_layout Section
 
 Introduction
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Since version 1.0.1, LyX now supports Literate Programming using 
-\noun on 
+\noun on
 noweb
-\noun default 
+\noun default
 .
  This addition to LyX made it very pleasant to write programs in the literate
  style (like this one).
  In addition to being able to write new literate programs, it would be quite
  useful if old 
-\noun on 
+\noun on
 noweb
-\noun default 
+\noun default
  code could be imported into LyX in some fashion.
  That's where this program comes in.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 The purpose of 
-\noun on 
+\noun on
 noweb2lyx
-\noun default 
+\noun default
  is to convert a 
-\noun on 
+\noun on
 noweb
-\noun default 
+\noun default
  file to LyX.
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<noweb2lyx.in>>=
-\newline 
+\newline
 #!@PERL@
-\newline 
+\newline
 # 
-\newline 
+\newline
 # Copyright (C) 1999 Kayvan A.
  Sylvan <kayvan@sylvan.com>
-\newline 
+\newline
 # You are free to use and modify this code under the terms of
-\newline 
+\newline
 # the GNU General Public Licence version 2 or later.
-\newline 
+\newline
 #
-\newline 
+\newline
 # Written with assistance from:
-\newline 
+\newline
 #   Edmar Wienskoski Jr.
  <edmar-w-jr@technologist.com>
-\newline 
+\newline
 #   Amir Karger <karger@post.harvard.edu>
-\newline 
+\newline
 #
-\newline 
-# $Id: noweb2lyx.lyx,v 1.4 2003/01/17 13:50:11 lasgouttes Exp $
-\newline 
+\newline
+# $Id: noweb2lyx.lyx,v 1.5 2005/07/18 09:42:27 jamatos Exp $
+\newline
 #
-\newline 
+\newline
 # NOTE: This file was automatically generated from noweb2lyx.lyx using noweb.
-\newline 
+\newline
 #
-\newline 
+\newline
 <<Setup variables from user supplied args>>
-\newline 
+\newline
 <<Subroutines>>
-\newline 
+\newline
 <<Convert noweb to LyX>>
-\newline 
+\newline
 @
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 The Noweb file defined
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 A 
-\noun on 
+\noun on
 noweb
-\noun default 
+\noun default
  file is a collection of documentation and code chunks.
  Documentation chunks simply start with an ``@'' and have no name:
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 @ Here is some documentation.
-\newline 
+\newline
 We can do arbitrary LaTeX code here.
-\newline 
+\newline
 [...
  blah blah blah ...]
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Code chunks look like this:
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 <
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 {}
-\end_inset 
+\end_layout
+
+\end_inset
 
 <Name of chunk here>
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 {}
-\end_inset 
+\end_layout
+
+\end_inset
 
 >=
-\newline 
+\newline
 {...
  code for the chunk goes here ...}
-\newline 
+\newline
 @ 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 The ``@'' is a necessary delimiter to end the code chunk.
  The other form that the ``@'' line takes is as follows:
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 <
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 {}
-\end_inset 
+\end_layout
+
+\end_inset
 
 <Name of chunk here>
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 {}
-\end_inset 
+\end_layout
+
+\end_inset
 
 >=
-\newline 
+\newline
 {...
  code for the chunk ...}
-\newline 
+\newline
 @ %def identifier1 identifier2
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 In the latter form, we are declaring to 
-\noun on 
+\noun on
 noweb
-\noun default 
+\noun default
  that this code chunk defines identifier1, identifier2, etc.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 When first tackling this problem, I spoke with members of the LyX team that
  knew about the literate programming extensions and reLyX (the LaTeX importing
  code).
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 One of the first ideas was to extend the reLyX code to understand the 
-\noun on 
+\noun on
 noweb
-\noun default 
+\noun default
  code chunks.
  This proved to be too hard and presents other problems
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 Not the least of these problems is the fact that << is a quote in French.
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
  On the other hand, it turns out that reLyX contains a very useful literal
  quoting mechanism.
  If the input file contains the construct
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 
-\backslash 
+\backslash
 begin{reLyXskip}
-\newline 
+\newline
 {...
  LaTeX stuff ...}
-\newline 
+\newline
 
-\backslash 
+\backslash
 end{reLyXskip}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 then reLyX will copy the surrounded code to the output file verbatim.
  Given this, the first part of the translation is easy; we simply have to
  copy the code chunks into an intermediate file that surrounds them with
  
-\family typewriter 
+\family typewriter
 
-\backslash 
+\backslash
 begin{reLyXskip}
-\family default 
+\family default
  and 
-\family typewriter 
+\family typewriter
 
-\backslash 
+\backslash
 end{reLyXskip}
-\family default 
+\family default
 .
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Once reLyX is done with the input file, the problem is reduced to changing
  the code chunks from LyX's LaTeX layout to the Scrap layout.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 There is one final constraint on 
-\noun on 
+\noun on
 noweb2lyx
-\noun default 
+\noun default
 .
  We want to be able to run it as a simple pre-processor and post-processor
  from within reLyX.
  We can accomplish this by setting the flags 
-\family roman 
-\series medium 
-\shape up 
-\size normal 
-\emph off 
-\bar no 
-\noun off 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
 \color none
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 [[pre_only]]
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\family default 
-\series default 
-\shape default 
-\size default 
-\emph default 
-\bar default 
-\noun default 
-\color default
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
  and 
-\family roman 
-\series medium 
-\shape up 
-\size normal 
-\emph off 
-\bar no 
-\noun off 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
 \color none
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 [[post_only]]
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\family default 
-\series default 
-\shape default 
-\size default 
-\emph default 
-\bar default 
-\noun default 
-\color default
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
  before we reach the main conversion code.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 With all that preamble out of the way, we now have the basic high-level
  outline for our code:
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Convert noweb to LyX>>=
-\newline 
+\newline
 if (!$post_only) {
-\newline 
+\newline
   <<Transform noweb for reLyX>>
-\newline 
+\newline
 }
-\newline 
+\newline
 if ((!$pre_only) && (!$post_only)) {
-\newline 
+\newline
   <<Run reLyX on intermediate file>>
-\newline 
+\newline
 }
-\newline 
+\newline
 if (!$pre_only) {
-\newline 
+\newline
   <<Fix up LyX file>>
-\newline 
+\newline
 }
-\newline 
+\newline
 <<Clean up>>
-\newline 
+\newline
 @
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Making a file that reLyX can process
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 In this section, we present the code that performs the task of creating
  the intermediate file that reLyX can process, using the algorithm that
  we just outlined.
  This algorithm is outlined in the code that follows:
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Transform noweb for reLyX>>=
-\newline 
+\newline
 <<Setup INPUT and OUTPUT>>
-\newline 
+\newline
 inputline: while(<INPUT>)
-\newline 
+\newline
 {
-\newline 
+\newline
   if (/^
-\backslash 
+\backslash
 s*
-\backslash 
+\backslash
 <
-\backslash 
+\backslash
 <.*
-\backslash 
+\backslash
 >
-\backslash 
+\backslash
 >=/) { # Beginning of a noweb scrap
-\newline 
+\newline
     <<Read in and output the noweb code chunk>>
-\newline 
+\newline
   } elsif (/^@
-\backslash 
+\backslash
 s+(.*)/) { # Beginning of a documentation chunk
-\newline 
+\newline
     print OUTPUT $1; # We do not need the ``@'' part
-\newline 
+\newline
   } elsif (/
-\backslash 
+\backslash
 [
-\backslash 
+\backslash
 [.+
-\backslash 
+\backslash
 ]
-\backslash 
+\backslash
 ]/) { # noweb quoted code
-\newline 
+\newline
     <<Perform special input quoting of [[var]]>>
-\newline 
+\newline
   } else {
-\newline 
+\newline
     print OUTPUT; # Just let the line pass through
-\newline 
+\newline
   }
-\newline 
+\newline
 }
-\newline 
+\newline
 <<Close INPUT and OUTPUT>>
-\newline 
+\newline
 @
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 In the code above, we do some pre-processing of the noweb ``[[...]]'' construct.
  This avoids some problems with reLyX confusing lists composed of ``[[...]]''
  constructs.
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Perform special input quoting of [[var]]>>=
-\newline 
+\newline
 s/
-\backslash 
+\backslash
 [
-\backslash 
+\backslash
 [.+?
-\backslash 
+\backslash
 ]{2,}/{$&}/g;
-\newline 
+\newline
 print OUTPUT;
-\newline 
+\newline
 @
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 While reading in the 
-\family roman 
-\series medium 
-\shape up 
-\size normal 
-\emph off 
-\bar no 
-\noun off 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
 \color none
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 [[INPUT]]
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\family default 
-\series default 
-\shape default 
-\size default 
-\emph default 
-\bar default 
-\noun default 
-\color default
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
  file, once we have identified a 
-\noun on 
+\noun on
 noweb
-\noun default 
+\noun default
  code chunk, we transform it into a form that is usable by reLyX.
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Read in and output the noweb code chunk>>= 
-\newline 
+\newline
 <<Save the beginning of the scrap to savedScrap>>
-\newline 
+\newline
 <<Concatenate the rest of the scrap>>
-\newline 
+\newline
 <<print out the scrap in a reLyXskip block>>
-\newline 
+\newline
 @
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 File input and output for the pre-processing step
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 In 
-\noun on 
+\noun on
 noweb2lyx
-\noun default 
+\noun default
 , we will use 
-\family roman 
-\series medium 
-\shape up 
-\size normal 
-\emph off 
-\bar no 
-\noun off 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
 \color none
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 [[INPUT]]
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\family default 
-\series default 
-\shape default 
-\size default 
-\emph default 
-\bar default 
-\noun default 
-\color default
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
  and 
-\family roman 
-\series medium 
-\shape up 
-\size normal 
-\emph off 
-\bar no 
-\noun off 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
 \color none
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 [[OUTPUT]]
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\family default 
-\series default 
-\shape default 
-\size default 
-\emph default 
-\bar default 
-\noun default 
-\color default
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
  to read and write files.
  In the code fragment above, we need to read from the input file and write
  to a file that will be later transformed by reLyX.
  If we are being called only to pre-process the input file, then there is
  no need to create a temporary file.
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Setup INPUT and OUTPUT>>=
-\newline 
+\newline
 if ($pre_only) {
-\newline 
+\newline
   &setup_files($input_file, $output_file);
-\newline 
+\newline
 } else {
-\newline 
+\newline
   $relyx_file = "temp$$";
-\newline 
+\newline
   &setup_files($input_file, $relyx_file);
-\newline 
+\newline
 }
-\newline 
+\newline
 @
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 This code uses a small perl subroutine, 
-\family roman 
-\series medium 
-\shape up 
-\size normal 
-\emph off 
-\bar no 
-\noun off 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
 \color none
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 [[setup_files]]
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\family default 
-\series default 
-\shape default 
-\size default 
-\emph default 
-\bar default 
-\noun default 
-\color default
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
 , which we define below:
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Subroutines>>=
-\newline 
+\newline
 sub setup_files {
-\newline 
+\newline
   my($in, $out) = @_;
-\newline 
+\newline
   open(INPUT, "<$in") || die "Can not read $in: $!
-\backslash 
+\backslash
 n";
-\newline 
+\newline
   open(OUTPUT, ">$out") || die "Can not write $out: $!
-\backslash 
+\backslash
 n";
-\newline 
+\newline
 }
-\newline 
+\newline
 @ %def setup_files   
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Reading in the 
-\noun on 
+\noun on
 noweb
-\noun default 
+\noun default
  scrap
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 After we see the beginning of the scrap, we need to read in and save the
  rest of the scrap for output.
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Save the beginning of the scrap to savedScrap>>=
-\newline 
+\newline
 $savedScrap = $_;
-\newline 
+\newline
 $endLine = "";
-\newline 
+\newline
 @
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Concatenate the rest of the scrap>>=
-\newline 
+\newline
 scrapline: while (<INPUT>) {
-\newline 
+\newline
   last scrapline if /^@
-\backslash 
+\backslash
 s+/;
-\newline 
+\newline
   $savedScrap .= $_;
-\newline 
+\newline
 };
-\newline 
+\newline
 switch: {
-\newline 
+\newline
   if (/^@
-\backslash 
+\backslash
 s+$/) {$savedScrap .= $_; last switch; }
-\newline 
+\newline
   if (/^@
-\backslash 
+\backslash
 s+%def.*$/) {$savedScrap .= $_; last switch; }
-\newline 
+\newline
   if (/^@
-\backslash 
+\backslash
 s+(.*)$/) {$savedScrap .= "@
-\backslash 
+\backslash
 n"; $endLine = "$1
-\backslash 
+\backslash
 n"; }
-\newline 
+\newline
 }
-\newline 
+\newline
 @
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Printing out the scrap
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 The final piece of the first pass of the conversion is done by this code.
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<print out the scrap in a reLyXskip block>>=
-\newline 
+\newline
 print OUTPUT "
-\backslash 
+\backslash
 
-\backslash 
+\backslash
 begin{reLyXskip}
-\backslash 
+\backslash
 n";
-\newline 
+\newline
 print OUTPUT $savedScrap;
-\newline 
+\newline
 print OUTPUT "
-\backslash 
+\backslash
 
-\backslash 
+\backslash
 end{reLyXskip}
-\backslash 
+\backslash
 n
-\backslash 
+\backslash
 n";
-\newline 
+\newline
 print OUTPUT "$endLine";
-\newline 
+\newline
 @
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Finally, we need to close the 
-\family roman 
-\series medium 
-\shape up 
-\size normal 
-\emph off 
-\bar no 
-\noun off 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
 \color none
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 [[INPUT]]
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\family default 
-\series default 
-\shape default 
-\size default 
-\emph default 
-\bar default 
-\noun default 
-\color default
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
  and 
-\family roman 
-\series medium 
-\shape up 
-\size normal 
-\emph off 
-\bar no 
-\noun off 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
 \color none
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 [[OUTPUT]]
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\family default 
-\series default 
-\shape default 
-\size default 
-\emph default 
-\bar default 
-\noun default 
-\color default
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
  files.
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Close INPUT and OUTPUT>>=
-\newline 
+\newline
 close(INPUT);
-\newline 
+\newline
 close(OUTPUT);
-\newline 
+\newline
 @
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Running reLyX
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 In this section, we describe and implement the code that runs reLyX on the
  intermediate file 
-\family roman 
-\series medium 
-\shape up 
-\size normal 
-\emph off 
-\bar no 
-\noun off 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
 \color none
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 [[relyx_file]]
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\family default 
-\series default 
-\shape default 
-\size default 
-\emph default 
-\bar default 
-\noun default 
-\color default
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
 .
  
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Selecting the document class
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 In order to run reLyX, we need to know the article class of the input document
  (to choose the corresponding literate document layout).
  For this, we need to parse the intermediate file.
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Run reLyX on intermediate file>>=
-\newline 
+\newline
 <<Parse for document class>>
-\newline 
+\newline
 <<Run reLyX with document class>>
-\newline 
+\newline
 @
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 In the code below, you'll see a strange regular expression to search for
  the document class.
  The reason for this kludge is that without it, we can't run 
-\noun on 
+\noun on
 noweb2lyx
-\noun default 
+\noun default
  on the 
-\emph on 
+\emph on
 noweb2lyx.nw
-\emph default 
+\emph default
  file that is generated by LyX
 \begin_inset Foot
-collapsed true
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
 reLyX searches for 
-\backslash 
+\backslash
 
-\backslash 
+\backslash
 doc
-\family roman 
-\series medium 
-\shape up 
-\size normal 
-\emph off 
-\bar no 
-\noun off 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
 \color none
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 {}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\family default 
-\series default 
-\shape default 
-\size default 
-\emph default 
-\bar default 
-\noun default 
-\color default
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
 ument
-\family roman 
-\series medium 
-\shape up 
-\size normal 
-\emph off 
-\bar no 
-\noun off 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
 \color none
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 {}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\family default 
-\series default 
-\shape default 
-\size default 
-\emph default 
-\bar default 
-\noun default 
-\color default
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
 class and gets confused, so we have to obfuscate it slightly.
-\end_inset 
+\end_layout
+
+\end_inset
 
 .
  With the regular expression as it is, we can actually run 
-\noun on 
+\noun on
 noweb2lyx
-\noun default 
+\noun default
  on itself and a produce a quite reasonable LyX file.
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Parse for document class>>=
-\newline 
+\newline
 open(INPUT, "<$relyx_file") ||
-\newline 
+\newline
   die "Can not read $relyx_file: $!
-\backslash 
+\backslash
 n";
-\newline 
+\newline
 $class = "article"; # default if none found
-\newline 
+\newline
 parse: while(<INPUT>) {
-\newline 
+\newline
   if (/
-\backslash 
+\backslash
 
-\backslash 
+\backslash
 docu[m]entclass{(.*)}/) {
-\newline 
+\newline
     $class = $1;
-\newline 
+\newline
     last parse;
-\newline 
+\newline
   }
-\newline 
+\newline
 }
-\newline 
+\newline
 close(INPUT);
-\newline 
+\newline
 @
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Running reLyX with the corresponding literate document layout
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Now that we know what the document class ought to be, we do:
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Run reLyX with document class>>= 
-\newline 
+\newline
 $doc_class = "literate-" .
  $class;
-\newline 
+\newline
 die "reLyX returned non-zero: $!
-\backslash 
+\backslash
 n"
-\newline 
+\newline
   if (system("reLyX -c $doc_class $relyx_file"));
-\newline 
+\newline
 @
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 reLyX performs the main bulk of the translation work.
  Note that if the ``literate-
-\emph on 
+\emph on
 class
-\emph default 
+\emph default
 '' document layout is not found, then reLyX will fail with an error.
  In that case, you may need to modify your 
-\noun on 
+\noun on
 noweb
-\noun default 
+\noun default
  input file to a supported document type.
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Fixing the reLyX output
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 We need to perform some post-processing of what reLyX produces in order
  to have the best output for our literate document.
  The outline of the post-processing steps are:
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Fix up LyX file>>=
-\newline 
+\newline
 <<Setup INPUT and OUTPUT for the final output>>
-\newline 
+\newline
 line: while(<INPUT>)
-\newline 
+\newline
 {
-\newline 
+\newline
   <<Fix code chunks in latex layout>>
-\newline 
+\newline
   <<Fix [[var]] noweb construct>>
-\newline 
+\newline
   print OUTPUT; # default
-\newline 
+\newline
 } 
-\newline 
+\newline
 <<Close INPUT and OUTPUT>>
-\newline 
+\newline
 @
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Note that in the perl code that is contained in the 
-\family roman 
-\series medium 
-\shape up 
-\size normal 
-\emph off 
-\bar no 
-\noun off 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
 \color none
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 [[while(<INPUT>)]]
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\family default 
-\series default 
-\shape default 
-\size default 
-\emph default 
-\bar default 
-\noun default 
-\color default
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
  loop above, the perl construct 
-\family roman 
-\series medium 
-\shape up 
-\size normal 
-\emph off 
-\bar no 
-\noun off 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
 \color none
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 [[next line]]
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\family default 
-\series default 
-\shape default 
-\size default 
-\emph default 
-\bar default 
-\noun default 
-\color default
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
  is sufficient to restart the loop.
  We can use this construct to do some relatively complex parsing of the
  reLyX generated file.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 File input and output for the post-processing
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Setting up the 
-\family roman 
-\series medium 
-\shape up 
-\size normal 
-\emph off 
-\bar no 
-\noun off 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
 \color none
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 [[INPUT]]
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\family default 
-\series default 
-\shape default 
-\size default 
-\emph default 
-\bar default 
-\noun default 
-\color default
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
  and 
-\family roman 
-\series medium 
-\shape up 
-\size normal 
-\emph off 
-\bar no 
-\noun off 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
 \color none
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 [[OUTPUT]]
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\family default 
-\series default 
-\shape default 
-\size default 
-\emph default 
-\bar default 
-\noun default 
-\color default
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
  is taken care of by this code:
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Setup INPUT and OUTPUT for the final output>>=
-\newline 
+\newline
 if ($post_only) {
-\newline 
+\newline
   &setup_files("$input_file", "$output_file");
-\newline 
+\newline
 } else {
-\newline 
+\newline
   &setup_files("$relyx_file.lyx", "$output_file");
-\newline 
+\newline
 }
-\newline 
+\newline
 @
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Making sure the code chunks are in the Scrap layout
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Now, as we outlined before, the final step is transforming the code-chunks
  which have been put into a LaTeX layout by LyX into the scrap layout.
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Fix code chunks in latex layout>>=
-\newline 
+\newline
 if (/
-\backslash 
+\backslash
 
-\backslash 
+\backslash
 latex latex/) { # Beginning of some latex code
-\newline 
+\newline
   if (($line = <INPUT>) =~ /^
-\backslash 
+\backslash
 s*<</) { # code scrap
-\newline 
+\newline
     <<Transform this chunk into layout scrap>>
-\newline 
+\newline
   } else {
-\newline 
+\newline
     # print the 
-\backslash 
+\backslash
 latex latex line + next line
-\newline 
+\newline
     print OUTPUT "$_$line";
-\newline 
+\newline
   }
-\newline 
+\newline
   next line;
-\newline 
+\newline
 }
-\newline 
+\newline
 @
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 When we are sure that we are in a code chunk, we must read in the rest of
  the code chunk and output a scrap layout for it:
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Transform this chunk into layout scrap>>=
-\newline 
+\newline
 $savedScrap = "
-\backslash 
+\backslash
 
-\backslash 
+\backslash
 layout Scrap
-\backslash 
+\backslash
 n
-\backslash 
+\backslash
 n$line";
-\newline 
+\newline
 codeline: while (<INPUT>) {
-\newline 
+\newline
   $savedScrap .= $_;
-\newline 
+\newline
   last codeline if /^@
-\backslash 
+\backslash
 s+/;
-\newline 
+\newline
 };
-\newline 
+\newline
 print OUTPUT $savedScrap;
-\newline 
+\newline
 <<Slurp up to the end of the latex layout>>
-\newline 
+\newline
 @
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Okay, now we just need to eat the rest of the latex layout.
  There should only be a few different types of lines for us to match:
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Slurp up to the end of the latex layout>>=
-\newline 
+\newline
 slurp: while (<INPUT>) {
-\newline 
+\newline
   last slurp if /
-\backslash 
+\backslash
 
-\backslash 
+\backslash
 latex /;
-\newline 
+\newline
   next slurp if /
-\backslash 
+\backslash
 
-\backslash 
+\backslash
 newline/;
-\newline 
+\newline
   next slurp if /^
-\backslash 
+\backslash
 s*$/;
-\newline 
+\newline
   warn "confused by line: $_";
-\newline 
+\newline
 }
-\newline 
+\newline
 @
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Taking care of the 
-\noun on 
+\noun on
 noweb
-\noun default 
+\noun default
  
-\emph on 
+\emph on
 [[quoted code]]
-\emph default 
+\emph default
  construct
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\noun on 
+\noun on
 noweb
-\noun default 
+\noun default
  allows the user to use a special code quoting mechanism in documentation
  chunks.
  Fixing this ``[[quoted-code]]'' 
-\noun on 
+\noun on
 noweb
-\noun default 
+\noun default
  syntax means putting the ``[[quoted-code]]'' in a LaTeX layout in the LyX
  file.
  Otherwise, LyX will backslash-quote the brackets, creating ugly output.
  The quoted-code is transformed by 
-\noun on 
+\noun on
 noweb
-\noun default 
+\noun default
  when it generates the final LaTeX code.
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Fix [[var]] noweb construct>>=
-\newline 
+\newline
 if (/
-\backslash 
+\backslash
 [
-\backslash 
+\backslash
 [.+
-\backslash 
+\backslash
 ]
-\backslash 
+\backslash
 ]/) { # special code for [[var]]
-\newline 
+\newline
   s/
-\backslash 
+\backslash
 [
-\backslash 
+\backslash
 [.+?
-\backslash 
+\backslash
 ]{2,}/
-\backslash 
+\backslash
 n
-\backslash 
+\backslash
 
-\backslash 
+\backslash
 latex latex
-\backslash 
+\backslash
 n$&
-\backslash 
+\backslash
 n
-\backslash 
+\backslash
 
-\backslash 
+\backslash
 latex default
-\backslash 
+\backslash
 n/g;
-\newline 
+\newline
   print OUTPUT;
-\newline 
+\newline
   next line;
-\newline 
+\newline
 }
-\newline 
+\newline
 @
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Cleaning up intermediate files
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 The cleanup code is very simple:
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Clean up>>=
-\newline 
+\newline
 system("rm -f $relyx_file*") unless ($post_only || $pre_only);
-\newline 
+\newline
 @
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 User supplied arguments
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 The 
-\noun on 
+\noun on
 noweb2lyx
-\noun default 
+\noun default
  script understands two arguments, input-file and output-file.
  It is also set up to be used internally by reLyX to pre-process or postprocess
  files in the import pipeline.
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Setup variables from user supplied args>>=
-\newline 
+\newline
 &usage() if ($#ARGV < 1); # zero or one argument 
-\newline 
+\newline
 if ($ARGV[0] eq "-pre") {
-\newline 
+\newline
   &usage unless ($#ARGV == 2);
-\newline 
+\newline
   $input_file = $ARGV[1]; $output_file = $ARGV[2]; $pre_only = 1;
-\newline 
+\newline
 } elsif ($ARGV[0] eq "-post") {
-\newline 
+\newline
   &usage unless ($#ARGV == 2);
-\newline 
+\newline
   $input_file = $ARGV[1]; $output_file = $ARGV[2]; $post_only = 1;
-\newline 
+\newline
 } else {
-\newline 
+\newline
   &usage unless ($#ARGV == 1);
-\newline 
+\newline
   $input_file = $ARGV[0]; $output_file = $ARGV[1];
-\newline 
+\newline
   $pre_only = 0; $post_only = 0;
-\newline 
+\newline
 }
-\newline 
+\newline
 @ %def input_file output_file pre_only post_only
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<Subroutines>>=
-\newline 
+\newline
 sub usage() {
-\newline 
+\newline
   print "Usage: noweb2lyx [-pre | -post] input-file output-file
-\newline 
+\newline
 
-\newline 
+\newline
 If -pre is specified, only pre-processes the input-file for reLyX.
-\newline 
+\newline
 Similarly, in the case of -post, post-processes reLyX output.
-\newline 
+\newline
 In case of bugs, Email Kayvan Sylvan <kayvan
-\backslash 
+\backslash
 @sylvan.com>.
-\backslash 
+\backslash
 n";
-\newline 
+\newline
   exit;
-\newline 
+\newline
 }
-\newline 
+\newline
 @ %def usage
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Generating the 
-\noun on 
+\noun on
 noweb2lyx
-\noun default 
+\noun default
  script
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 The noweb2lyx script can be tangled from LyX if you set 
-\family typewriter 
+\family typewriter
 
-\backslash 
+\backslash
 build_command
-\family default 
+\family default
  to call a generic script that always extracts a scrap named 
-\family typewriter 
+\family typewriter
 build-script
-\family default 
+\family default
  and executes it.
  Here is an example of such a script:
-\layout LyX-Code
+\end_layout
+
+\begin_layout LyX-Code
 
 #!/bin/sh
-\newline 
+\newline
 notangle -Rbuild-script $1 | sh
-\layout Scrap
+\end_layout
+
+\begin_layout Scrap
 
 <<build-script>>=
-\newline 
+\newline
 PREFIX=/usr
-\newline 
+\newline
 notangle -Rnoweb2lyx.in noweb2lyx.nw > noweb2lyx.in
-\newline 
+\newline
 sed -e "s=@PERL@=$PREFIX/bin/perl=" noweb2lyx.in > noweb2lyx
-\newline 
+\newline
 chmod +x noweb2lyx
-\newline 
+\newline
 @
-\layout Section*
-\pagebreak_top 
+\end_layout
+
+
+\begin_layout Standard
+
+
+\newpage
+
+\end_layout
+
+\begin_layout Section*
+
 Macros
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\family roman 
-\series medium 
-\shape up 
-\size normal 
-\emph off 
-\bar no 
-\noun off 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
 \color none
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 nowebchunks
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Section*
+\end_layout
+
+\begin_layout Section*
 
 Identifiers
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
-\family roman 
-\series medium 
-\shape up 
-\size normal 
-\emph off 
-\bar no 
-\noun off 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
 \color none
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+\backslash
 nowebindex
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\the_end
+\end_layout
+
+\end_body
+\end_document
