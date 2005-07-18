@@ -587,13 +587,15 @@ AC_ARG_WITH(packaging,
 AC_MSG_RESULT($lyx_use_packaging)
 case $lyx_use_packaging in
    macosx) AC_DEFINE(USE_MACOSX_PACKAGING, 1, [Define to 1 if LyX should use a MacOS X application bundle file layout])
-           default_prefix="/Applications/LyX.app"
+	   test $PACKAGE = "lyx" && PACKAGE=LyX
+	   default_prefix="/Applications/LyX.app"
 	   bindir='${prefix}/Contents/MacOS'
 	   libdir='${prefix}/Contents/Resources'
 	   datadir='${prefix}/Contents/Resources'
 	   mandir='${prefix}/Contents/Resources/man' ;;
   windows) AC_DEFINE(USE_WINDOWS_PACKAGING, 1, [Define to 1 if LyX should use a Windows-style file layout])
-           default_prefix="C:/Program Files/LyX"
+	   test $PACKAGE = "lyx" && PACKAGE=LyX
+	   default_prefix="C:/Program Files/LyX"
 	   bindir='${prefix}/bin'
 	   libdir='${prefix}/Resources'
 	   datadir='${prefix}/Resources'
