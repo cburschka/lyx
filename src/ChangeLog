@@ -387,7 +387,7 @@
 
 	* tabular.[hC]: added setCellInset to fix tabular paste.
 
-2005-05-11  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-05-11  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* buffer.C (save): check if destination is writable before trying
 	to copy a file
@@ -818,7 +818,7 @@
 	* lyxfunc.C (dispatch, getStatus): do not handle
 	LFUN_GOTO_PARAGRAPH here.
 
-2005-02-08  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-02-08  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* text3.C (dispatch): size() -> depth()
 
@@ -852,7 +852,7 @@
 
 	* BufferView.C (setCursor): size() -> depth()
 
-2005-02-08  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-02-08  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* text3.C (cursorPrevious): return true if depm changed something
 	(cursorNext): ditto
@@ -979,7 +979,7 @@
 	* text.C: various obvious clean-ups. Removal of ancient cruft.
 	Bug fixes, even.
 
-2005-01-31  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-01-31  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* vc-backend.C (find_file): rewrite to use boost.filesystem
 	(scanMaster): ditto
@@ -1022,7 +1022,7 @@
 
 	* lyx_cb.C (Reconfigure): call LaTeXFeatures::getAvailable()
 
-2005-01-27  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-01-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lyxlayout.[Ch]: change some vars from float to double
 
@@ -1193,7 +1193,7 @@
 	* CutAndPaste.C (pasteSelectionHelper): fix bug 1332 (preserve the
 	layout if pasting into an empty paragraph)
 
-2005-01-07  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-01-07  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* tex-accent.C: add <string>
 
@@ -1203,7 +1203,7 @@
 	* paragraph.C (write): reduce number of consecutive empty lines exported.
 	* buffer.C (LYX_FORMAT): increase file format to 239.
 
-2005-01-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-01-06  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* everywhere: change support/tostr.h -> support/convert.h
 
@@ -1254,7 +1254,7 @@
 	* bufferparams.C: add Spacing::Other to spacetranslator (fixes
 	broken custom document spacing).
 
-2005-01-05  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-01-05  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lyxfunc.C (getStatus): moved from lyxfunc.C put into anon
 	namespace, also more use of temp references and const
@@ -1397,7 +1397,7 @@
 
 	* tabular.[Ch]: remove setHeaderFooterRows as this code is never called.
 
-2004-12-03  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-12-03  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* cursor.C (goUpDown): remove call to idxUpDown2
 
@@ -1480,7 +1480,7 @@
 	plus one above and one below. This implies that one can do search
 	from y coordinates in the range [-1,workHeight]
 
-2004-11-25  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-11-25  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* rename a lot of InsetOld to InsetBase
 
@@ -1523,7 +1523,7 @@
 	* text3.C:
 	* undo.C: par->pit renaming
 
-2004-11-23  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-11-23  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* tabular.C (cellstruct): use initialization, store a shared_ptr
 	to insettext instead of the insettext directly, adjust to fit.
@@ -1562,7 +1562,7 @@
 	* text.C (cursorRightOneWord, cursorLeftOneWord, getWord):
 	* lyxfind.C (MatchString()): use isLetter instead of isWord
 
-2004-11-17  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-11-17  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* pariterator.h (operatir=): comment out un-implemented member
 	function.
@@ -1570,11 +1570,11 @@
 	* paragraph.h: resolve ambiguity found by gcc 4.0 with the use of a
 	static cast.
 
-2004-11-17  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-11-17  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lyxfont.h: include LColor.h to satisfy concept checks.
 
-2004-11-16  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-11-16  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* pariterator.h: add typdefs for value_type, difference_type,
 	pointer and reference to satisfy concept checks. Also add default
@@ -1652,12 +1652,12 @@
 	* converter.C (move): don't lie in the error message
 	* converter.h (isReachable, move): document
 
-2004-11-07  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-11-07  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* buffer.C: remove unused using lyx::support::atoi
 	* paragraph_funcs.C: ditto
 
-2004-11-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-11-06  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* bufferlist.C (exists): use bind and equal_to instead of
 	compare_memfun
@@ -1941,14 +1941,14 @@
 	thing that gets output (and the last at the end). Should fix bug
 	1404.
 
-2004-09-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-09-26  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* pch.h: use proper signal include
 
 	* LaTeX.h: Use preferred calling of Boost.Signal
 	* buffer.h: ditto
 
-2004-09-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-09-26  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* pch.h: dont include <boost/function/function0.hpp>
 
@@ -1974,7 +1974,7 @@
 	(findNextChange): use putSelectionAt in the forward direction
 	(operator()): use Paragraph::isWord
 
-2004-09-16  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-09-16  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* Spacing.C (set): c_str fix
 
@@ -1983,14 +1983,14 @@
 	* lyx_cb.C (Reconfigure): quote the name of configure script in
 	case it contains spaces
 
-2004-09-04  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-09-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* client: new dir
 
 	* Makefile.am (SUBDIRS): change order of subdirs and add client dir
 	(BOOST_LIBS): use top_buildir when looking for the file
 
-2004-08-30  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-08-30  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* pch.h: do not use include boost/format.hpp, multiple symbols
 		will result (gcc bug)
@@ -2059,7 +2059,7 @@
 	* tex-strings.C (string_papersize): Default -> default,
 	Custom -> custom, for consistency with other options.
 
-2004-08-15  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-08-15  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* pch.h: new file
 
@@ -2139,7 +2139,7 @@
 	(MenuBackend::expand): if a special menu has been set, skip
 	entries whose func() appears in this menu
 
-2004-08-14  Lars Gullik Bjonnes  <larsbj@lyx.org>
+2004-08-14  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* text3.C: use Debug::DEBUG a bit more
 
@@ -2169,14 +2169,14 @@
 	* BufferView_pimpl.C: reset external coord cache before every update.
 	This means the coord cache only contains valid entries.
 
-2004-08-14  Lars Gullik Bjonnes  <larsbj@lyx.org>
+2004-08-14  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	bug 1096
 	* BufferView_pimpl.C (getInsetByCode): move function out of class
 	and change in to a template in anon namespace. Also fix to do what
 	suits us better.
 
-2004-08-13  Lars Gullik Bjonnes  <larsbj@lyx.org>
+2004-08-13  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	bug 1305
 	* paragraph_funcs.C (moveItem): use Paragraph::value_type instead
@@ -2272,7 +2272,7 @@
 	* paragraph.C (simpleTeXOnePar): initialize rp.lang and
 	rp.intitle. Actually use rp in call to simpleTeXSpecialChars
 
-2004-08-01  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-08-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* text3.C (dispatch): remove special handling of button 4 and 5,
 	it is now taken care of in the frontend code.
@@ -2285,7 +2285,7 @@
 
 	* LaTeXFeatures.C: (jurabib) \RequirePackage -> \usepackage
 
-2004-07-25  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-07-25  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lyxlex_pimpl.C (compare_tags): chagne return type of operator()
 	to bool.
@@ -2298,7 +2298,7 @@
 	* InsetList.h: rename private variable list to list_
 	* InsetList.[Ch]: adjust accordingly.
 
-2004-07-24  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-07-24  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* text3.C, text2.C, text.C, tabular.C, paragraph_funcs.C, paragraph.C:
 	* lyxlength.C, lyxgluelength.C, lyxfunc.C, lyxfont.C, lyxfind.C:
@@ -2307,7 +2307,7 @@
 	* ParagraphParameters.C, LaTeXFeatures.C: replace
 	"support/std_sstream.h" with <sstream>
 
-2004-07-23  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-07-23  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lyxserver.C (startPipe): use this (pointer) not *this (reference)
 	* lyxsocket.C (LyXServerSocket): ditto
@@ -2317,12 +2317,12 @@
 
 	* LaTeXFeatures.C: check release date when loading jurabib.
 
-2004-07-22  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-07-22  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lyxserver.C (startPipe): call register_socket_callback
 	(endPipe): call unregister_socket_callback
 
-2004-07-21  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-07-21  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lyxsocket.C (LyXServerSocket): reduce max outstanding clients to 3
 	(LyXServerSocket): register the callback
@@ -2391,7 +2391,7 @@
 	* lyxfunc.C (getStatus): if lyx_gui::getStatus disables the
 	command, return early.
 
-2004-06-18  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-06-18  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* debug.h: add DEBUG to enum and fix size of ANY.
 
@@ -2408,7 +2408,7 @@
 	(editXY): ditto
 	(deleteEmptyParagraphMechanism): ditto
 
-2004-06-09  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-06-09  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* Makefile.am (dist_noinst_DATA): use the dist_ and noinst_
 	annotations to cleanup the Makefile slightly.
@@ -2453,7 +2453,7 @@
 	names of referenced external files
 	* outputparams.h: add exportdata member.
 
-2004-05-28  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-05-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* Makefile.am (DISTCLEANFILES): add version.C, stamp-version and
 	version.C-tmp
@@ -3433,11 +3433,11 @@
 	* iterators.C (lockPath): add a missing slice
 	* undo.C (performUndoOrRedo): remove redundant positioning code
 
-2004-02-01  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-02-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* vc-backend.C (scanMaster): ";" -> ';'
 
-2004-01-31  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-01-31  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lyxtextclasslist.C (less_textclass_avail_desc): inherit from
 	std::binary_function
@@ -3487,7 +3487,7 @@
 	* text3.C: move some of the edit(x,y) handling to the insets
 	some coordinate changes.
 
-2004-01-28  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-01-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* text.C: add using statements for std::advance and std::distance
 
@@ -3500,7 +3500,7 @@
 
 	* BufferView.C: add using statements for std::distance and std::swap
 
-2004-01-27  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-01-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* iterators.C: Remove the pimple, move the needed structures to
 	the header file. Create accessor for the positions stack.
@@ -3512,7 +3512,7 @@
 	(setFrom): new function
 	(operator!=): inline it
 
-2004-01-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-01-26  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lyxfind.C (replaceAll): use std::advance
 
@@ -3646,7 +3646,7 @@
 	* lyxfunc.C (menuNew, open, doImport):
 	FileFilterList change to the FileDialog open and save functions.
 
-2004-01-07  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-01-07  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* ShareContainer.h: make isEqual and isUnique adaptable
 
@@ -3680,11 +3680,11 @@
 	* lyxcursor.[Ch] (operator>): add
 	* textcursor.C (selStart, selEnd): use std::min and std::max
 
-2004-01-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-01-06  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* Chktex.C: include boost/format.hpp
 
-2004-01-05  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-01-05  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* InsetList.C: replace functor MathcIt with adaptable functor
 	InsetTablePosLess
@@ -4049,7 +4049,7 @@
 	* converter.C (convert): fix a crash: this function gets
 	called with buffer == 0 from importer code.
 
-2003-11-22  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2003-11-22  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* text3.C (cursorPrevious): make sure that we do not compare
 	iterators form different containers.

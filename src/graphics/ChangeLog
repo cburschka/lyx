@@ -13,14 +13,14 @@
 	lyx::graphics::Loader::Impl to silence MSVC warning:
 	"type name first seen using 'class' now seen using 'struct'".
 
-2005-01-27  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-01-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* PreviewLoader.C (Impl): use convert<> instead of atoi,strToXXX
 	and friends
 
 	* GraphicsParams.h (class Params): change angle from float to double
 
-2005-01-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-01-06  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* PreviewLoader.C (unique_filename): tostr -> convert
 
@@ -28,11 +28,11 @@
 
 	* PreviewLoader.C: lyxrc.preview_scale_factor is a string now.
 
-2004-11-25  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-11-25  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* rename a lot of InsetOld to InsetBase
 
-2004-11-20  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-11-20  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* GraphicsCache.C: include <map> to fix compilation with boost
 	1.32.0
@@ -52,7 +52,7 @@
 	* GraphicsConverter.C (move_file, build_script): protect
 	shell variables with quotes.
 
-2004-09-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-09-26  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* pch.h: use proper signal include
 
@@ -62,7 +62,7 @@
 	* GraphicsLoader.[Ch]: ditto
 	* PreviewLoader.[Ch]: ditto
 
-2004-09-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-09-26  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* pch.h: include <boost/function.hpp> instead of
 	<boost/function/function0.hpp>
@@ -74,13 +74,13 @@
 
 	* PreviewLoader.C (Impl::startLoading): remove space at end of line.
 
-2004-08-15  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-08-15  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* pch.h: new file
 
 	* Makefile.am: support pch
 
-2004-07-24  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-07-24  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* PreviewLoader.C, GraphicsParams.C, GraphicsConverter.C: change
 	"support/std_sstream.h" to <sstream>
@@ -115,17 +115,17 @@
 	* PreviewLoader.C: use always a temp dir
 	* PreviewLoader.C: check successfull creation of LaTeX file
 
-2004-01-31  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-01-31  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* PreviewLoader.C (FindFirst): inherit from std::unary_function
 	and make operator() const
 	(FindSnippet): inherit from unary_function, simplify slightly.
 
-2004-01-07  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-01-07  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* GraphicsTypes.C: include <string>
 
-2003-11-20  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2003-11-20  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* Previews.C: include paragraph.h
 	* PreviewLoader.C: ditto

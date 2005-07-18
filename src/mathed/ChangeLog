@@ -255,7 +255,7 @@
 	* math_gridinset.[hC]: add facilities for drawing/deleting partition
 	lines in matrix.
 
-2005-02-08  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-02-08  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* math_data.C (isInside): size() -> depth()
 
@@ -265,7 +265,7 @@
 	* math_diminset.C:
 	* math_nestinset.C: Use new cursor accessors.
 
-2005-01-27  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-01-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* math_parser.C,math_sizeinset.C: use convert<> instead of
 	atoi,strToXXX and friends
@@ -329,11 +329,11 @@
 
 	* Most insets: rename priv_dispatch to doDispatch
 
-2004-11-24  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-11-24  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* math_hullinset.C (operator): use common semantics
 
-2004-11-23  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-11-23  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* math_atom.C (operator): use common semantics
 
@@ -348,7 +348,7 @@
 	* math_hullinset.C (delCol): don't delete if this is the only column
 	* math_hullinset.C (getStatus): fix LFUN_TABULAR_FEATURE
 
-2004-11-16  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-11-16  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* math_inset.h: include math_data.h to satisfy concept checks.
 
@@ -360,7 +360,7 @@
 
 	* Makefile.am: add math_tfracinset.[Ch]
 
-2004-11-07  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-11-07  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* math_parser.C (parse1): change to use lyx::support::atoi
 	* math_sizeinset.C (MathSizeInset): ditto
@@ -396,7 +396,7 @@
 
 	* math_hullinset.C (plaintext): remove extraneous spaces
 
-2004-09-16  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-09-16  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* math_parser.C (tokenize): c_str fix
 	(mathed_parse_cell): c_str fix
@@ -412,7 +412,7 @@
 	(pipeThroughMaple): c_str fix
 	(pipeThroughOctave): c_str fix
 
-2004-09-15  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-09-15  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* math_binominset.h (MATH_BINOMINSET_H): fix include guard.
 
@@ -428,7 +428,7 @@
 	* formulamacro.C (write):
 	* math_macrotemplate.C (write): remove space at end of line.
 
-2004-08-15  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-08-15  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* pch.h: new file
 
@@ -449,7 +449,7 @@
 
 	* math_parser.C: Fix: #928
 
-2004-07-24  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-07-24  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* math_support.C, math_parser.C, math_nestinset.C, math_macrotable.C:
 	* math_hullinset.C, math_gridinset.C, math_factory.C: math_extern.C,
@@ -457,7 +457,7 @@
 	* command_inset.C: change "support/std_sstream.h"
 	to <sstream>
 
-2004-07-24  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-07-24  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* math_macrotable.C (expand): n is now size_t
 
@@ -466,7 +466,7 @@
 
 	* math_macroarg.[Ch] (MathMacroArgument): take size_t as arg
 
-2004-05-28  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-05-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* Makefile.am (EXTRA_DIST): add formulamacro.C
 
@@ -534,7 +534,7 @@
 
 	* math_nestinset.C: use const_cast to get to compile for stlport
 
-2004-01-28  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-01-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* math_hullinset.C: add using statements for std::ostream,
 	std::swap and std::vector

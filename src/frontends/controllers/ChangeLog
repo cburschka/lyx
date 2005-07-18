@@ -86,12 +86,12 @@
 	* biblio.C (getInfo): Show BibTeX annotation in citation preview
 	(parseBibTex): Treat \% as percent, not comment
 
-2005-02-08  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-02-08  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* ControlSpellchecker.C (nextWord): size() -> depth()
 	* ControlTabular.C(initializeParams): ditto
 
-2005-01-31  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-01-31  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* ControlGraphics.C (browse): rewrite to use boost.filesystem
 
@@ -117,7 +117,7 @@
 	* tex_helpers.C: use support/package.h to provide the paths to the
 	various directories used by LyX.
 
-2005-01-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-01-06  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* ControlTabularCreate.C (dispatchParams):
 	* ControlSpellchekcer.C (showSummary):
@@ -190,7 +190,7 @@
 
 	* ControlInclude.C (load): open nonlyx files via formats.edit()
 
-2004-08-15  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-08-15  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* pch.h: new file
 
@@ -211,11 +211,11 @@
 	(browseBib): new method, specialized to lookup bibtex database files
 	(browse): removed
 
-2004-07-25  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-07-25  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* ControlErrorList.C (goTo): shuffle code to avoid compiler warning.
 
-2004-07-24  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-07-24  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* biblio.C, ControlPrefs.C, ControlParagraph.C:
 	* ControlLog.C, ControlDocument.C, ControlAboutlyx.C: replace
@@ -395,11 +395,11 @@
 	* ControlPrint.C, ControlSendto.C: use always a temp dir
 	* ControlSendto.C: check return value of buffer()->writeFile()
 
-2004-02-01  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-02-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* biblio.C (parseBibTeX): "=" -> '='
 
-2004-01-31  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-01-31  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* biblio.C (RegexMatch): inherit from std::unary_function, make
 	operator() const and variable regex_ mutable.
@@ -407,14 +407,14 @@
 	* ControlSpellchecker.C (check): use correct types for the result
 	from distance.
 
-2004-01-28  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-01-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* ControlSpellchecker.C: add using statements for std::advance and
 	std::distance
 
 	* ControlExternal.C: add using statement for std::advance
 
-2004-01-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-01-26  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* ControlSpellchecker.C (check): use std::distance and
 	std::advance
@@ -443,7 +443,7 @@
 	* helper_funcs.[Ch] (browseFile, browseRelFile):
 	FileFilterList change to the FileDialog open and save functions.
 
-2004-01-07  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-01-07  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* ControlSendto.C (allFormats): use the unique-erase idom and
 	simplify some code a bit.

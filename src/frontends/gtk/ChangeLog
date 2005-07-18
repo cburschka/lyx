@@ -73,7 +73,7 @@
 	-1
 	* GTexinfo.C (onItemActivate): squash compiler warning
 
-2005-01-27  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-01-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* Several files: use convert<> instead of atoi,strToXXX and friends
 
@@ -83,7 +83,7 @@
 	* lyx_gui.C: use support/package.h to provide the paths to the
 	various directories used by LyX.
 
-2005-01-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-01-06  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* GParagraph.C: drop unused include tostr.h
 
@@ -175,7 +175,7 @@
 	* The Sendto Dialog:
 	  Dialogs.C, Makefile.am, GSendto.C, GSendto.h
 
-2004-11-17  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-11-17  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* Disable concept checks with the use of ugly preprocessor stuff
 	in several files.
@@ -325,7 +325,7 @@
 	* Dialogs.C, GCharacter.C, GCharacter.h, Makefile.am, ghelpers.h,
 	glade/Makefile.am, glade/character.glade
 
-2004-09-27  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-09-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* GXpmBtnTbl.C (construct): use Boost.Assert
 
@@ -338,16 +338,16 @@
 	* GMathPanel.C: resize-friendly packing
 	* glade/*.glade: misc tweaks
 
-2004-09-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-09-26  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* Reordered and a lot of includes in a lot of files.
 
-2004-09-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-09-26  Lars Gullik Bjønnes  <larsbj@gullik.net>
 	    John Spray  <spray_john@users.sourceforge.net>
 
 	* Initial move to gtk 2.4.
 
-2004-09-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-09-26  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* WS changes.
 
@@ -374,14 +374,14 @@
 	* GWorkArea.[Ch]: Add GWorkArea::onScrollWheel to implement
 	mouse-wheel scrolling of document
 
-2004-07-24  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-07-24  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* GPainter.C (text): use boost::scoped_array to store the
 	temporary wchar_t pointer
 
 	* lyx_gui.C: change "support/std_sstream.h" to <sstream>
 
-2004-07-22  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-07-22  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lyx_gui.C (register_socket_callback,unregister_socket_callback):
 	implement
@@ -390,12 +390,12 @@
 	* io_callback.[Ch]: new files
 	* Makefile.am (libgtk_la_SOURCES): handle them
 
-2004-07-21  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-07-21  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lyx_gui.C (register_socket_callback): add stub
 	(unregister_socket_callback): add stub
 
-2004-05-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-05-26  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* Makefile.am: dont create a separate xforms.lo use he files
 	directly when building libgtk instead.

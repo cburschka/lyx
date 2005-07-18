@@ -149,14 +149,14 @@
 
 	Also add "fs::path::default_name_check(fs::no_check);"
 
-2005-01-31  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-01-31  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* tex2lyx.C: rewrite to use boost.filesystem
 	* text.C: ditto
 
 	* Makefile.am (BOOST_LIBS): add BOOST_FILESYSTEM
 
-2005-01-27  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-01-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* Spacing (set): take double instead of float
 
@@ -171,7 +171,7 @@
 	* tex2lyx.C: use support/package.h to provide the paths to the
 	various directories used by LyX.
 
-2005-01-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-01-06  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* text.C: tostr -> convert
 
@@ -321,7 +321,7 @@
 	* texparser.C (skip_spaces): handle "\n +\n" correctly
 	* texparser.[Ch] (asMode): remove, since it is unused
 
-2004-05-27  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-05-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* Makefile.am (BUILT_SOURCES): move lengthcommon.C from here...
 	(tex2lyx_SOURCES): ... to here
@@ -339,11 +339,11 @@
 
 	* text.C (parse_text): handle vspaces like '1cm' correctly
 
-2004-02-01  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-02-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* text.C (parse_box): "\\" -> '\\' in calls to contains.
 
-2004-01-07  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-01-07  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* text.C: reorder the using statements.
 	(translate_len): remove usage of a uninitialized variable.

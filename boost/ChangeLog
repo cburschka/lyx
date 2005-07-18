@@ -1,4 +1,4 @@
-2005-01-05  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-01-05  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* boost/detail/lwm_win32_nt.h: new file
 
@@ -14,7 +14,7 @@
 	libboost_filesystem
 	* libs/filesystem/src/Makefile.am: ditto
 
-2004-12-04  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-12-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* boost/config/compiler/gcc.hpp: all to compile with gcc 4.0
 	without warnings.
@@ -23,11 +23,11 @@
 
 	* add spirit to the collection
 
-2004-11-20  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-11-20  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* update boost to version 1.32.0
 
-2004-04-03  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-04-03  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* libs/filesystem/src/Makefile.am (AM_CXXFLAGS): define
 	BOOST_USER_CONFIG
@@ -40,15 +40,15 @@
 	format_item::truncate_ from 'int' to 'std::streamsize', thereby
 	fixing a run-time error when using the library on a 64-bit machine.
 
-2004-02-05  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-02-05  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* update boost to version 1.31.0
 
-2004-01-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-01-26  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* libs/regex/src/Makefile.am: remove trailing backslash
 
-2004-01-08  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-01-08  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* add boost::filesystem.
 

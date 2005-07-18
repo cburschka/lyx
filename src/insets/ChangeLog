@@ -342,7 +342,7 @@
 	* insetgraphics.C (latex): Remove line continuation '%\n' (bug xxx,
 	workaround for broken HTML converter)
 
-2005-02-08  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-02-08  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* insetcollapsable.C (leaveInset): size() -> depth()
 	* insettabular.C (isRightToLeft): ditto
@@ -361,7 +361,7 @@
 	* insettabular.C:
 	* updatableinset.C: Use new cursor accessors.
 
-2005-01-31  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-01-31  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* insetinclude.C (loadIfNeeded): rewrite to use boost.filesystem
 
@@ -370,7 +370,7 @@
 	* insetgraphicsParams.C: protect a #warning preprocessor call
 	with a #ifdef WITH_WARNINGS guard.
 
-2005-01-27  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-01-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* Several files: use convert<> instead of atoi,strToXXX and friends
 
@@ -398,7 +398,7 @@
 	* ExternalTemplate.C: use support/package.h to provide the paths to the
 	various directories used by LyX.
 
-2005-01-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-01-06  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* insetwrap.C:
 	* insettabular.C:
@@ -408,7 +408,7 @@
 	* insetbibitem.C:
 	* ExternalTransforms.C (adjAngle): tostr -> convert
 
-2005-01-05  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-01-05  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* inset.[Ch] (forceDefaultParagraphs): delete since it is same as
 	base version
@@ -456,7 +456,7 @@
 	(draw): replace 'do not draw' optimization by 'draw with
 	nullpainter' one
 
-2004-12-03  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-12-03  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* insetbase.[Ch] (idxUpDown2): remove function
 
@@ -485,7 +485,7 @@
 	* insettext.C: adjust, (metrics): set the font before calling
 	LyXText::metrics
 
-2004-11-25  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-11-25  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* rename a lot of InsetOld to InsetBase
 
@@ -502,7 +502,7 @@
 
 	* insettabular.C (tabularFeatures): fix multicolumn handling
 
-2004-11-23  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-11-23  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* render_base.h (operator=): use common semantics
 
@@ -682,13 +682,13 @@
 	* insetgraphics.[hC] (createDocBookAttributes): Export parameters
 	as attributes with new method for docbook.
 
-2004-09-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-09-26  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* render_preview.h: Use preferred calling of Boost.Signal
 
 	* pch.h: use proper signal include
 
-2004-09-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-09-26  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* ExternalTransforms.h: User preferred calling of Boost.Function
 
@@ -718,7 +718,7 @@
 	* insettabular.C (isRightToLeft): instead of using
 	BufferView::getParentLanguage, use the data from the cursor
 
-2004-08-15  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-08-15  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* pch.h: new file
 
@@ -754,7 +754,7 @@
 
 	* insetcite.[Ch]: fix plaintext export.
 
-2004-08-14  Lars Gullik Bjonnes  <larsbj@lyx.org>
+2004-08-14  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* insettext.[Ch] (setDrawFrame): take a bool, get rid of the
 	DrawFrame enum.
@@ -799,7 +799,7 @@
 	* insetquotes.C (latex): same as above with OutputParams::lang.
 	Moreover the code actually works now.
 
-2004-07-24  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-07-24  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* insetwrap.C, insetvspace.C, insettabular.C, insetnote.C:
 	* insetinclude.C, insetgraphics.C, insetfloat.C:
@@ -1236,7 +1236,7 @@
 	(updateLocal): use the cur argument instead of the global cursor
 	* insetcollapsable.C (edit): dont call inset.edit(x,y) when opening
 
-2004-02-01  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-02-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* insetlatexaccent.C (checkContents): "c" -> 'c' in calls to contains
 
@@ -1259,7 +1259,7 @@
 	* updatableinset.[Ch]: adjust coordinate handling to 'screen absolute'
 	 coordinate
 
-2004-01-28  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-01-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* insettabular.C: add using statement for std::vector, remove
 	std:: where using was already used.
@@ -1333,7 +1333,7 @@
 
 	* insetnote.C (InsetNoteParams::write): write label only once
 
-2004-01-05  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-01-05  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* insetbranch.C (isBranchSelected): use the BranchNamesEqual
 	functor

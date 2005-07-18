@@ -167,7 +167,7 @@
 	* Makefile.am (build_package): Solaris sed does not like
 	spaces bewteen the ;-delimited commands.
 
-2005-02-25  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-02-25  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* Makefile.am (CLEANFILES): clean generated files
 
@@ -226,7 +226,7 @@
 	specify explicitly the location of the top level build directory
 	when the executable is run in-place.
 
-2005-01-31  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-01-31  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* fs_extras.C: add changes from Asger's Win32 patch.
 
@@ -239,7 +239,7 @@
 
 	* os_win32.h: remove cruft.
 
-2005-01-31  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-01-31  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* Makefile.am (libsupport_la_SOURCES): remove rmdir.C
 
@@ -247,7 +247,7 @@
 
 	* lyxlib.h: remove rmdir decl
 
-2005-01-31  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-01-31  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* .cvsignore: add package.C
 
@@ -267,7 +267,7 @@
 
 	* package.C.in: rewrite to use boost.filesystem
 
-2005-01-27  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-01-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* tests: add some code for automatic regression testing, can be
 	improved or removed as we see fit
@@ -409,17 +409,17 @@
 
 	* convert.C (string>): add specialization for long.
 
-2005-01-07  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-01-07  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* convert.h: remove the specializations, don't included unneeded
 	headers
 	* convert.C: add specialization for unsigned long
 
-2005-01-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-01-06  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* tostr.[Ch]: renamed to convert[ch]
 
-2005-01-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-01-06  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lstrings.[Ch]: change bformat to be a template
 
@@ -552,7 +552,7 @@
 
 	* textutils.h (isKommaChar): remove
 
-2004-11-16  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-11-16  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* forkedcontr.C (find_pid): simplify and also make pass concept
 	checks.
@@ -565,11 +565,11 @@
 	extension, return string() instead of "user" if the format could
 	not be determined
 
-2004-11-07  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-11-07  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* Make it clearer where include files are coming from.
 
-2004-11-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-11-06  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* translator.h: use bind, equal_to instead of equal_1st_in_pair
 	and equal_2nd_in_pair
@@ -601,7 +601,7 @@
 	* forkedcall.C (generateChild): strip quotes from each argument
 	of argv.
 
-2004-09-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-09-26  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* pch.h: use proper signal include
 
@@ -612,7 +612,7 @@
 
 	* FileMonitor.C: use the new signal typedef
 
-2004-09-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-09-26  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* forkedcall.h: remove include of <boost/function/funtion0.hpp>
 	* pch.h: ditto
@@ -626,16 +626,16 @@
 	* filetools.C (LibScriptSearch): quote the path of the script, in
 	case it contains spaces
 
-2004-09-04  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-09-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* tostr.C: reimplement using lexical_cast
 
-2004-08-30  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-08-30  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* pch.h: do not use include boost/format.hpp, multiple symbols
 	will result (gcc bug)
 
-2004-08-15  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-08-15  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* pch.h: new file
 
@@ -646,7 +646,7 @@
 	* globbing.C (FileFilterList): make sure that "All files (*)" is
 	always part of the filters list
 
-2004-07-24  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-07-24  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* tostr.C, lstrings.C, globbing.C, filetools.C: change
 	"support/std_sstream.h" to <sstream>
@@ -767,14 +767,14 @@
 	filetools.[Ch] (unzipFile): add argument for output filename
 	* filename.h: fix doxygen warning
 
-2004-02-01  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-02-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lstrings.h (contains_functor): delete
 	(contains): change into template, simplify
 
 	* lstrings.C (contains): remove both functions
 
-2004-01-31  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-01-31  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lyxalgo.h (eliminate_duplicates): reimplement with sort and the
 	unique-erase idom.
@@ -782,7 +782,7 @@
 	* lstrings.h (contains_functor): inherit from
 	std::binary_function, remove typedefs.
 
-2004-01-28  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-01-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* globbing.C: add using statement for std::distance, remove std::
 	from string.
@@ -803,7 +803,7 @@
 
 	* globbing.C (glob): compilation fix for cygwin.
 
-2004-01-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-01-06  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* Makefile.am (libsupport_la_SOURCES): remove BoostFormat.h and
 	boost-inst.C

@@ -92,7 +92,7 @@
 	* qfont_loader.C (charwidth): do no do font width caching with
 	Qt >= 3.1.0.
 
-2005-06-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-06-06  Lars Gullik Bjønnes  <larsbj@gullik.net>
 	(Committed Martin Vermeer <martin.vermeer@hut.fi>)
 
 	* QContentPane.[Ch]: implement keystroke event stack with
@@ -338,7 +338,7 @@
 
 	* QGraphics.[Ch] (slotEdit): unused cruft, so removed.
 
-2005-01-27  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-01-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* Several files: use convert<> instead of atoi,strToXXX and friends
 
@@ -380,7 +380,7 @@
 	* qfont_metrics.C (ascent, descent): correct the metrics returned
 	by Qt/Win 3.2.1 non-commercial edition.
 
-2005-01-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-01-06  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* QDocument.C:
 	* QBox.C: drop unused include tostr.h
@@ -398,7 +398,7 @@
 	* QDocument.C:
 	* QParagraph.C: store all float/double values as strings.
 
-2005-01-05  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-01-05  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* ui/moc/Makefile.am (libqt2uimoc_la_LINK): improve link trick
 	* moc/Makefile.am (libqt2moc_la_LINK): ditto
@@ -412,7 +412,7 @@
 
 	* lyx_gui.C: change getDVI() to int.
 
-2005-01-05  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-01-05  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* ui/Makefile.am (libqt2ui_la_LINK): Improve the trick to avoid
 	relink or lib all the time.
@@ -452,7 +452,7 @@
 
 	* Makefile.am (AM_CPPFLAGS): reformat slightly
 
-2004-12-03  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-12-03  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* Makefile.am, ui/Makefile.am (AM_CPPFLAGS): fix typo
 
@@ -506,7 +506,7 @@
 
 	* lengthcombo.C: whitespace
 
-2004-11-17  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-11-17  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* QPrefsDialog.h: include LColor.h to satisfy concept checks.
 	* lcolorcache.h: ditto
@@ -536,7 +536,7 @@
 	* ui/QPrefConvertersModule.C: improve ui for converter changes
 	[bug 1488].
 
-2004-11-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-11-06  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* QLImage.C (loadableFormats): use bind, equal_to instead of
 	compare_memfun
@@ -587,7 +587,7 @@
 	* BulletsModule.C (setBullet): use toqstr() for a string passed to
 	qt, otherwise it won't compile on SuSE 9.0
 
-2004-08-18  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-08-18  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* Some pch work.
 
@@ -596,7 +596,7 @@
 	* BulletsModule.C (setBullet): show custom bullet instead of "...",
 	change from John Levon.
 
-2004-08-15  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-08-15  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* qfontexample.h: add header guards
 
@@ -666,24 +666,24 @@
 
 	* QLPrintDialog.C (browseClicked): use ControlPrint::browse
 
-2004-08-01  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-08-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* QContentPane.C (keyPressEvent): make sure to use the smart
 	pointer as soon as possible.
 
-2004-07-24  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-07-24  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* QPrefs.C, QMathMatrixDialog.C:
 	* QLog.C, QAbout.C: change "support/std_sstream.h" to <sstream>
 
-2004-07-22  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-07-22  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lyx_gui.C (set_read_callback,remove_read_callback): delete funcs
 
 	* Makefile.dialogs (MOCFILES): remove io_callback.[Ch]
 	* io_callback.[Ch]: delete files
 
-2004-07-21  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-07-21  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* socket_callback.C (data_received): simplify
 	(socket_callback): take fd and boost::function as args.
@@ -709,7 +709,7 @@
 
 	* QCitation.[Ch]: add validation (fix bug 1617).
 
-2004-06-18  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-06-18  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lyx_gui.C (roman_font_name): go through QString when converting
 	to std::string.
@@ -731,7 +731,7 @@
 	* Q[a-zA-Z]*DialogBase.C: tell the QDialog base class who the
 	parent dialog is.
 
-2004-05-28  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-05-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* ui/Makefile.am (EXTRA_DIST): add QPreambleDialogBase.ui
 
@@ -1002,11 +1002,11 @@
 	* QRef.C: Disable goto button if there is no ref (bug 1037)
 	Restore setting of the buffer combo (bug 1511)
 
-2004-02-01  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-02-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* floatplacement.C (set): "c" -> 'c' in calls to contains
 
-2004-01-28  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-01-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* QPrefs.C: add using statement for std::distance
 	(findPos): add a typedef for the const_iterator.

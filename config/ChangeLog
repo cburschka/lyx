@@ -79,7 +79,7 @@
 
 	* lyxinclude.m4 (LYX_USE_PACKAGING): new macro.
 
-2005-01-05  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-01-05  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lyxinclude.m4 (enable_stdlib_debug): new switch
 	(enable_concept_checks): new switch
@@ -98,7 +98,7 @@
 
 	* common.am: setup variables for boost
 
-2004-12-04  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-12-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lyxinclude.m4 (lyx_pch_comp): next gcc version is 4.0 not 3.5
 
@@ -109,11 +109,11 @@
 	* lyxinclude.m4 (lyx_pch_comp): use CPPFLAGS instead of CXXFLAGS
 	for warning flags. 3.5 -> 4.0 for next gcc version
 
-2004-11-16  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-11-16  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lyxinclude.m4: next version of gcc will be 4.0 not 3.5
 
-2004-11-16  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-11-16  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lyxinclude.m4 (enable_debug): Add support for stdlibc++ concept
 	checks on gcc >3.4.
@@ -135,11 +135,11 @@
 
 	* lyxinclude.m4 (LYX_USE_FRONTENDS): mention gtk as frontend
 
-2004-08-30  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-08-30  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* common.am: improve pch handling a tiny bit
 
-2004-08-15  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-08-15  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lyxinclude.m4 (lyx_pch_comp,LYX_BUILD_PCH): set this for
 	precompiled header capable gcc compilers
@@ -147,49 +147,49 @@
 	* common.am (pch.h.gch,LYX_BUILD_PCH): support for precompiled
 	headers
 
-2004-07-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-07-26  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lyxinclude.m4: setup for gcc 3.5 use as well
 
-2004-07-24  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-07-24  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* common.am (AM_ETAGSFLAGS): setup variable
 
-2004-05-28  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-05-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* depcomp.diff: remove file
 	* gettext.m4.patch: remove file
 
-2004-05-27  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-05-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* acconfig.h: remove file
 
-2004-05-26  Lars Gullik Bjonnes  <larsbj@lyx.org>
+2004-05-26  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* nls.m4: new file
 
 	* Makefile.am: add more m4 files and reformat a bit
 
-2004-05-25  Lars Gullik Bjonnes  <larsbj@lyx.org>
+2004-05-25  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* config.rpath: new file
 
-2004-05-25  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-05-25  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* add some more m4 files to work around errors with older
 	automake/autoconf versions.
 
-2004-05-25  Lars Gullik Bjonnes  <larsbj@lyx.org>
+2004-05-25  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* update m4 files from automake 1.8 autoconf 2.59 and update other
 	m4 files to avoid auto warnings.
 
-2004-05-18  Lars Gullik Bjonnes  <larsbj@lyx.org>
+2004-05-18  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* lyxinclude.m4 (lyx_warning): change debug mode setup to use
 	AC_DEFINE
 
-2004-05-18  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-05-18  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lyxinclude.m4 (enable-debug): Use the libstdc++ debugging mode
 	if configuring with enable-debug.

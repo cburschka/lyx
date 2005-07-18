@@ -10,11 +10,11 @@
 	add licence blurb.
 	protect headers inside preprocessor guards.
 
-2005-02-25  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-02-25  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* Makefile.am (man_MANS): clean generated files
 
-2005-01-27  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2005-01-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* debug.C: use convert<> instead of atoi,strToXXX and friends
 
@@ -52,7 +52,7 @@
 
 	* client.C (formats): new, needed for libsupport.a
 
-2004-09-17  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-09-17  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* client.C (connect): don't use SUN_PATH, just use sizeof instead.
 	* client.C: include <cerrno>
@@ -69,7 +69,7 @@
 	* Makefile.am (INCLUDES): add ${srcdir}/.. to INCLUDES (needed
 	when building outside of source tree)
 
-2004-09-04  Lars Gullik Bjonnes  <larsbj@gullik.net>
+2004-09-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* messages.h: new file
 	* messages.C: new file
