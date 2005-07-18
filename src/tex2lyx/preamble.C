@@ -45,8 +45,9 @@ namespace {
 
 const char * const known_languages[] = { "austrian", "babel", "bahasa",
 "basque", "breton", "british", "bulgarian", "catalan", "croatian", "czech",
-"danish", "dutch", "english", "esperanto", "estonian", "finnish", "francais",
-"frenchb", "galician", "german", "germanb", "greek", "hebcal", "hebfont",
+"danish", "dutch", "english", "esperanto", "estonian", "finnish",
+"francais", "french", "frenchb", "frenchle", "frenchpro",
+"galician", "german", "germanb", "greek", "hebcal", "hebfont",
 "hebrew", "hebrew_newcode", "hebrew_oldcode", "hebrew_p", "hyphen",
 "icelandic", "irish", "italian", "latin", "lgrcmr", "lgrcmro", "lgrcmss",
 "lgrcmtt", "lgrenc", "lgrlcmss", "lgrlcmtt", "lheclas", "lhecmr",
@@ -56,6 +57,8 @@ const char * const known_languages[] = { "austrian", "babel", "bahasa",
 "russianb", "samin", "scottish", "serbian", "slovak", "slovene", "spanish",
 "swedish", "turkish", "ukraineb", "usorbian", "welsh", 0};
 
+const char * const known_french_languages[] = {"french", "frenchb", "francais",
+					       "frenchle", "frenchpro", 0};
 char const * const known_fontsizes[] = { "10pt", "11pt", "12pt", 0 };
 
 // some ugly stuff
@@ -69,7 +72,6 @@ string h_graphics                = "default";
 string h_paperfontsize           = "default";
 string h_spacing                 = "single";
 string h_papersize               = "default";
-string h_paperpackage            = "none";
 string h_use_geometry            = "false";
 string h_use_amsmath             = "0";
 string h_cite_engine             = "basic";
@@ -168,10 +170,7 @@ void handle_package(string const & name, string const & opts)
 	add_package(name, options);
 
 	//cerr << "handle_package: '" << name << "'\n";
-	if (name == "a4wide") {
-		h_papersize = "a4paper";
-		h_paperpackage = "widemarginsa4";
-	} else if (name == "ae")
+	if (name == "ae")
 		h_fontscheme = "ae";
 	else if (name == "aecompl")
 		h_fontscheme = "ae";
@@ -190,9 +189,17 @@ void handle_package(string const & name, string const & opts)
 		; // ignore this
 	else if (name == "verbatim")
 		; // ignore this
+	else if (name == "graphicx")
+		; // ignore this
 	else if (is_known(name, known_languages)) {
-		h_language = name;
-		h_quotes_language = name;
+		if (is_known(name, known_french_languages)) {
+			h_language = "french";
+			h_quotes_language = "french";
+		} else {
+			h_language = name;
+			h_quotes_language = name;
+		}
+
 	} else if (name == "natbib") {
 		h_cite_engine = "natbib_authoryear";
 		vector<string>::iterator it =
@@ -226,7 +233,7 @@ void handle_package(string const & name, string const & opts)
 void end_preamble(ostream & os, LyXTextClass const & /*textclass*/)
 {
 	os << "#LyX file created by  tex2lyx 0.1.2\n"
-	   << "\\lyxformat 241\n"
+	   << "\\lyxformat 243\n"
 	   << "\\begin_document\n"
 	   << "\\begin_header\n"
 	   << "\\textclass " << h_textclass << "\n"
@@ -240,7 +247,6 @@ void end_preamble(ostream & os, LyXTextClass const & /*textclass*/)
 	   << "\\paperfontsize " << h_paperfontsize << "\n"
 	   << "\\spacing " << h_spacing << "\n"
 	   << "\\papersize " << h_papersize << "\n"
-	   << "\\paperpackage " << h_paperpackage << "\n"
 	   << "\\use_geometry " << h_use_geometry << "\n"
 	   << "\\use_amsmath " << h_use_amsmath << "\n"
 	   << "\\cite_engine " << h_cite_engine << "\n"
@@ -366,6 +372,8 @@ LyXTextClass const parse_preamble(Parser & p, ostream & os, string const & force
 			vector<string> opts;
 			split(p.getArg('[', ']'), opts, ',');
 			handle_opt(opts, known_languages, h_language);
+			if (is_known(h_language, known_french_languages))
+				h_language = "french";
 			handle_opt(opts, known_fontsizes, h_paperfontsize);
 			// delete "pt" at the end
 			string::size_type i = h_paperfontsize.find("pt");
