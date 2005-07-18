@@ -1177,7 +1177,7 @@ InsetTabular::idx_type InsetTabular::getNearestCell(int x, int y) const
 {
 	idx_type idx_min = 0;
 	int dist_min = std::numeric_limits<int>::max();
-	for (idx_type i = 0; i < nargs(); ++i) {
+	for (idx_type i = 0, n = nargs(); i != n; ++i) {
 		if (theCoords.getInsets().has(tabular.getCellInset(i).get())) {
 			int const d = dist(i, x, y);
 			if (d < dist_min) {
@@ -1792,12 +1792,6 @@ void InsetTabular::getSelection(LCursor & cur,
 	re = tabular.row_of_cell(end.idx());
 	if (rs > re)
 		swap(rs, re);
-}
-
-
-size_t InsetTabular::nargs() const
-{
-	return tabular.getNumberOfCells();
 }
 
 

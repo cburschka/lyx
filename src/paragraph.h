@@ -323,23 +323,27 @@ public:
 	///
 	bool insetAllowed(InsetBase_code code);
 	///
-	InsetBase * getInset(lyx::pos_type pos);
+	InsetBase * getInset(lyx::pos_type pos) {
+		return insetlist.get(pos);
+	}
 	///
-	InsetBase const * getInset(lyx::pos_type pos) const;
-	///
-	InsetList insetlist;
+	InsetBase const * getInset(lyx::pos_type pos) const {
+		return insetlist.get(pos);
+	}
 
-
 	///
-	bool isHfill(lyx::pos_type pos) const;
+	bool isHfill(lyx::pos_type pos) const {
+	return isInset(pos)
+		&& getInset(pos)->lyxCode() == InsetBase::HFILL_CODE;
+	}
 	/// hinted by profiler
 	bool isInset(lyx::pos_type pos) const {
 		return getChar(pos) == static_cast<value_type>(META_INSET);
 	}
 	///
 	bool isNewline(lyx::pos_type pos) const;
-	///
-	bool isSeparator(lyx::pos_type pos) const;
+	/// return true if the char is a word separator
+	bool isSeparator(lyx::pos_type pos) const { return getChar(pos) == ' '; }
 	///
 	bool isLineSeparator(lyx::pos_type pos) const;
 	/// True if the character/inset at this point can be part of a word
@@ -389,6 +393,11 @@ public:
 
 	/// dump some information to lyxerr
 	void dump() const;
+
+public:
+	///
+	InsetList insetlist;
+
 private:
 	/// cached dimensions of paragraph
 	Dimension dim_;
@@ -405,6 +414,7 @@ private:
 	/// end of label
 	lyx::pos_type begin_of_body_;
 
+	/// Pimpl away stuff
 	class Pimpl;
 	///
 	friend class Paragraph::Pimpl;

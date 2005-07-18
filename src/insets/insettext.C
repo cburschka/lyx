@@ -406,12 +406,6 @@ void InsetText::setViewCache(BufferView const * bv) const
 }
 
 
-LyXText * InsetText::getText(int i) const
-{
-	return (i == 0) ? const_cast<LyXText*>(&text_) : 0;
-}
-
-
 void InsetText::appendParagraphs(Buffer * buffer, ParagraphList & plist)
 {
 #ifdef WITH_WARNINGS

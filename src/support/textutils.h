@@ -15,13 +15,6 @@
 #ifndef TEXTUTILS_H
 #define TEXTUTILS_H
 
-/// return true if the char is a word separator
-inline
-bool IsSeparatorChar(char c)
-{
-	return c == ' ';
-}
-
 
 /// return true if the char is a line separator
 inline

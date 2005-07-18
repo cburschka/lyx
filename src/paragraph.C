@@ -300,20 +300,6 @@ bool Paragraph::insetAllowed(InsetBase_code code)
 }
 
 
-InsetBase * Paragraph::getInset(pos_type pos)
-{
-	BOOST_ASSERT(pos < size());
-	return insetlist.get(pos);
-}
-
-
-InsetBase const * Paragraph::getInset(pos_type pos) const
-{
-	BOOST_ASSERT(pos < size());
-	return insetlist.get(pos);
-}
-
-
 // Gets uninstantiated font setting at position.
 LyXFont const Paragraph::getFontSettings(BufferParams const & bparams,
 					 pos_type pos) const
@@ -1466,26 +1452,6 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 }
 
 
-namespace {
-
-/// return true if the char is a meta-character for an inset
-inline
-bool IsInsetChar(char c)
-{
-	return (c == Paragraph::META_INSET);
-}
-
-} // namespace anon
-
-
-
-bool Paragraph::isHfill(pos_type pos) const
-{
-	return isInset(pos)
-		&& getInset(pos)->lyxCode() == InsetBase::HFILL_CODE;
-}
-
-
 bool Paragraph::isNewline(pos_type pos) const
 {
 	return isInset(pos)
@@ -1493,17 +1459,11 @@ bool Paragraph::isNewline(pos_type pos) const
 }
 
 
-bool Paragraph::isSeparator(pos_type pos) const
-{
-	return IsSeparatorChar(getChar(pos));
-}
-
-
 bool Paragraph::isLineSeparator(pos_type pos) const
 {
 	value_type const c = getChar(pos);
 	return IsLineSeparatorChar(c)
-		|| (IsInsetChar(c) && getInset(pos) &&
+		|| (c == Paragraph::META_INSET && getInset(pos) &&
 		getInset(pos)->isLineSeparator());
 }
 

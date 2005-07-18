@@ -106,7 +106,7 @@ public:
 	/// Appends \c list with all labels found within this inset.
 	void getLabelList(Buffer const &, std::vector<std::string> & list) const;
 	/// number of cells
-	size_t nargs() const;
+	size_t nargs() const { return tabular.getNumberOfCells(); }
 	///
 	boost::shared_ptr<InsetText const> cell(idx_type) const;
 	///
