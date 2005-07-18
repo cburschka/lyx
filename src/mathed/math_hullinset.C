@@ -1119,9 +1119,10 @@ void MathHullInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 
 bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
-		FuncStatus & flag) const
+		FuncStatus & status) const
 {
 	switch (cmd.action) {
+	// These are only enabled inside tabular
 	case LFUN_BREAKLINE:
 	case LFUN_MATH_NUMBER:
 	case LFUN_MATH_NONUMBER:
@@ -1129,10 +1130,10 @@ bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_MATH_MUTATE:
 	case LFUN_MATH_DISPLAY:
 		// we handle these
-		flag.enabled(true);
+		status.enabled(true);
 		return true;
 	case LFUN_INSERT_LABEL:
-		flag.enabled(type_ != "simple");
+		status.enabled(type_ != "simple");
 		return true;
 	case LFUN_TABULAR_FEATURE: {
 		istringstream is(cmd.argument);
@@ -1142,49 +1143,49 @@ bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 		    && (s == "append-row"
 			|| s == "delete-row"
 			|| s == "copy-row")) {
-			flag.message(bformat(
+			status.message(bformat(
 				N_("Can't change number of rows in '%1$s'"),
 				type_));
-			flag.enabled(false);
+			status.enabled(false);
 			return true;
 		}
 		if (!colChangeOK()
 		    && (s == "append-column"
 			|| s == "delete-column"
 			|| s == "copy-column")) {
-			flag.message(bformat(
+			status.message(bformat(
 				N_("Can't change number of columns in '%1$s'"),
 				type_));
-			flag.enabled(false);
+			status.enabled(false);
 			return true;
 		}
 		if ((type_ == "simple"
 		  || type_ == "equation"
 		  || type_ == "none") &&
 		    (s == "add-hline-above" || s == "add-hline-below")) {
-			flag.message(bformat(
+			status.message(bformat(
 				N_("Can't add horizontal grid lines in '%1$s'"),
 				type_));
-			flag.enabled(false);
+			status.enabled(false);
 			return true;
 		}
 		if (s == "add-vline-left" || s == "add-vline-right") {
-			flag.message(bformat(
+			status.message(bformat(
 				N_("Can't add vertical grid lines in '%1$s'"),
 				type_));
-			flag.enabled(false);
+			status.enabled(false);
 			return true;
 		}
 		if (s == "valign-top" || s == "valign-middle"
 		 || s == "valign-bottom" || s == "align-left"
 		 || s == "align-center" || s == "align-right") {
-			flag.enabled(false);
+			status.enabled(false);
 			return true;
 		}
-		return MathGridInset::getStatus(cur, cmd, flag);
+		return MathGridInset::getStatus(cur, cmd, status);
 	}
 	default:
-		return MathGridInset::getStatus(cur, cmd, flag);
+		return MathGridInset::getStatus(cur, cmd, status);
 	}
 }
 

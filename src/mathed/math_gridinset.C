@@ -1065,6 +1065,25 @@ void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		splitCell(cur);
 		break;
 
+	case LFUN_CELL_BACKWARD:
+		// See below.
+		cur.selection() = false;
+		if (!idxPrev(cur)) {
+			cmd = FuncRequest(LFUN_FINISHED_LEFT);
+			cur.undispatched();
+		}
+		break;
+	
+	case LFUN_CELL_FORWARD:
+		// Can't handle selection by additional 'shift' as this is
+		// hard bound to LFUN_CELL_BACKWARD
+		cur.selection() = false;
+		if (!idxNext(cur)) {
+			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
+			cur.undispatched();
+		}
+		break;
+
 	case LFUN_BREAKLINE: {
 		recordUndoInset(cur);
 		row_type const r = cur.row();
@@ -1262,28 +1281,28 @@ void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 
 bool MathGridInset::getStatus(LCursor & cur, FuncRequest const & cmd,
-		FuncStatus & flag) const
+		FuncStatus & status) const
 {
 	switch (cmd.action) {
 	case LFUN_TABULAR_FEATURE: {
 		string const s = cmd.argument;
 		if (nrows() <= 1 && (s == "delete-row" || s == "swap-row")) {
-			flag.enabled(false);
-			flag.message(N_("Only one row"));
+			status.enabled(false);
+			status.message(N_("Only one row"));
 			return true;
 		}
 		if (ncols() <= 1 &&
 		    (s == "delete-column" || s == "swap-column")) {
-			flag.enabled(false);
-			flag.message(N_("Only one column"));
+			status.enabled(false);
+			status.message(N_("Only one column"));
 			return true;
 		}
 		if ((rowinfo_[cur.row()].lines_ == 0 &&
 		     s == "delete-hline-above") ||
 		    (rowinfo_[cur.row() + 1].lines_ == 0 &&
 		     s == "delete-hline-below")) {
-			flag.enabled(false);
-			flag.message(N_("No hline to delete"));
+			status.enabled(false);
+			status.message(N_("No hline to delete"));
 			return true;
 		}
 
@@ -1291,8 +1310,8 @@ bool MathGridInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 		     s == "delete-vline-left") ||
 		    (colinfo_[cur.col() + 1].lines_ == 0 &&
 		     s == "delete-vline-right")) {
-			flag.enabled(false);
-			flag.message(N_("No vline to delete"));
+			status.enabled(false);
+			status.message(N_("No vline to delete"));
 			return true;
 		}
 		if (s == "valign-top" || s == "valign-middle" ||
@@ -1306,14 +1325,14 @@ bool MathGridInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 		    s == "copy-column" || s == "swap-column" ||
 		    s == "add-vline-left" || s == "add-vline-right" ||
 		    s == "delete-vline-left" || s == "delete-vline-right")
-			flag.enabled(true);
+			status.enabled(true);
 		else {
-			flag.enabled(false);
-			flag.message(bformat(
+			status.enabled(false);
+			status.message(bformat(
 				N_("Unknown tabular feature '%1$s'"), s));
 		}
 
-		flag.setOnOff(s == "align-left"    && halign(cur.col()) == 'l'
+		status.setOnOff(s == "align-left"    && halign(cur.col()) == 'l'
 		           || s == "align-right"   && halign(cur.col()) == 'r'
 			   || s == "align-center"  && halign(cur.col()) == 'c'
 			   || s == "valign-top"    && valign() == 't'
@@ -1325,26 +1344,33 @@ bool MathGridInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 		// Please check whether it is still needed!
 		// should be more precise
 		if (v_align_ == '\0') {
-			flag.enable(true);
+			status.enable(true);
 			break;
 		}
 		if (cmd.argument.empty()) {
-			flag.enable(false);
+			status.enable(false);
 			break;
 		}
 		if (!lyx::support::contains("tcb", cmd.argument[0])) {
-			flag.enable(false);
+			status.enable(false);
 			break;
 		}
-		flag.setOnOff(cmd.argument[0] == v_align_);
-		flag.enabled(true);
+		status.setOnOff(cmd.argument[0] == v_align_);
+		status.enabled(true);
 #endif
 		return true;
 	}
+
 	case LFUN_CELL_SPLIT:
-		flag.enabled(true);
+		status.enabled(true);
 		return true;
+
+	case LFUN_CELL_BACKWARD:
+	case LFUN_CELL_FORWARD:
+		status.enabled(true);
+		return true;
+
 	default:
-		return MathNestInset::getStatus(cur, cmd, flag);
+		return MathNestInset::getStatus(cur, cmd, status);
 	}
 }

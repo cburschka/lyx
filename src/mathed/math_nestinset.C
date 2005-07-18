@@ -473,8 +473,10 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		} else if (cur.posRight() || idxRight(cur)
 			|| cur.popRight() || cur.selection())
 			;
-		else
+		else {
 			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
+			cur.undispatched();
+		}
 		break;
 
 	case LFUN_LEFTSEL:
@@ -490,8 +492,10 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		} else if (cur.posLeft() || idxLeft(cur)
 			|| cur.popLeft() || cur.selection())
 			;
-		else
+		else {
 			cmd = FuncRequest(LFUN_FINISHED_LEFT);
+			cur.undispatched();
+		}
 		break;
 
 	case LFUN_UPSEL:
@@ -503,8 +507,10 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 			break;
 		}
 		cur.selHandle(cmd.action == LFUN_UPSEL);
-		if (!cur.up())
+		if (!cur.up()) {
 			cmd = FuncRequest(LFUN_FINISHED_UP);
+			cur.undispatched();
+		}
 		// fixes bug 1598. Please check!
 		cur.normalize();
 		break;
@@ -516,8 +522,10 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 			break;
 		}
 		cur.selHandle(cmd.action == LFUN_DOWNSEL);
-		if (!cur.down())
+		if (!cur.down()) {
 			cmd = FuncRequest(LFUN_FINISHED_DOWN);
+			cur.undispatched();
+		}
 		// fixes bug 1598. Please check!
 		cur.normalize();
 		break;
@@ -642,8 +650,10 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 			cur.insert(cmd.argument);
 			break;
 		}
-		if (!interpret(cur, cmd.argument[0]))
+		if (!interpret(cur, cmd.argument[0])) {
 			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
+			cur.undispatched();
+		}
 		break;
 
 	//case LFUN_GETXY:
