@@ -1031,7 +1031,7 @@ string LCursor::selectionAsString(bool label) const
 
 	if (inTexted()) {
 		Buffer const & buffer = *bv().buffer();
-		ParagraphList & pars = text()->paragraphs();
+		ParagraphList const & pars = text()->paragraphs();
 
 		// should be const ...
 		pit_type startpit = selBegin().pit();
@@ -1048,7 +1048,7 @@ string LCursor::selectionAsString(bool label) const
 
 		// The paragraphs in between (if any)
 		for (pit_type pit = startpit + 1; pit != endpit; ++pit) {
-			Paragraph & par = pars[pit];
+			Paragraph const & par = pars[pit];
 			result += par.asString(buffer, 0, par.size(), label) + "\n\n";
 		}
 

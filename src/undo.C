@@ -93,10 +93,10 @@ void doRecordUndo(Undo::undo_kind kind,
 		// record the relevant paragraphs
 		LyXText const * text = cell.text();
 		BOOST_ASSERT(text);
-		ParagraphList & plist = text->paragraphs();
-		ParagraphList::iterator first = plist.begin();
+		ParagraphList const & plist = text->paragraphs();
+		ParagraphList::const_iterator first = plist.begin();
 		advance(first, first_pit);
-		ParagraphList::iterator last = plist.begin();
+		ParagraphList::const_iterator last = plist.begin();
 		advance(last, last_pit + 1);
 		undo.pars = ParagraphList(first, last);
 	}

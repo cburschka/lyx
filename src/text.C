@@ -1665,15 +1665,6 @@ void LyXText::backspace(LCursor & cur)
 }
 
 
-Paragraph & LyXText::getPar(pit_type par) const
-{
-	//lyxerr << "getPar: " << par << " from " << paragraphs().size() << endl;
-	BOOST_ASSERT(par >= 0);
-	BOOST_ASSERT(par < int(paragraphs().size()));
-	return paragraphs()[par];
-}
-
-
 Row const & LyXText::firstRow() const
 {
 	return *paragraphs().front().rows().begin();

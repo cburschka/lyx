@@ -126,12 +126,12 @@ public:
 		FuncStatus & status) const;
 
 	/// access to out BufferView. This should go...
-//	BufferView * bv();
-	/// access to out BufferView. This should go...
 	BufferView * bv() const;
 
-	/// access to individual paragraphs
-	Paragraph & getPar(pit_type par) const;
+	/// read-only access to individual paragraph
+	Paragraph const & getPar(pit_type pit) const { return pars_[pit]; }
+	/// read-write access to individual paragraph
+	Paragraph & getPar(pit_type pit) { return pars_[pit]; }
 	// Returns the current font and depth as a message.
 	std::string LyXText::currentState(LCursor & cur);
 
@@ -291,7 +291,8 @@ public:
 	RowMetrics computeRowMetrics(pit_type pit, Row const & row) const;
 
 	/// access to our paragraphs
-	ParagraphList & paragraphs() const;
+	ParagraphList const & paragraphs() const { return pars_; }
+	ParagraphList & paragraphs() { return pars_; }
 	/// return true if this is the main text
 	bool isMainText() const;
 

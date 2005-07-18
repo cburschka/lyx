@@ -38,24 +38,21 @@ CursorSlice::CursorSlice(InsetBase & p)
 }
 
 
-size_t CursorSlice::nargs() const
+MathArray & CursorSlice::cell() const
 {
-	BOOST_ASSERT(inset_);
-	return inset_->nargs();
+	return inset_->asMathInset()->cell(idx_);
 }
 
 
-size_t CursorSlice::nrows() const
+Paragraph & CursorSlice::paragraph()
 {
-	BOOST_ASSERT(inset_);
-	return inset_->nrows();
+	return text()->getPar(pit_);
 }
 
 
-size_t CursorSlice::ncols() const
+Paragraph const & CursorSlice::paragraph() const
 {
-	BOOST_ASSERT(inset_);
-	return inset_->ncols();
+	return text()->getPar(pit_);
 }
 
 
@@ -77,49 +74,6 @@ CursorSlice::col_type CursorSlice::col() const
 {
 	BOOST_ASSERT(asMathInset());
 	return asMathInset()->col(idx_);
-}
-
-
-MathInset * CursorSlice::asMathInset() const
-{
-	BOOST_ASSERT(inset_);
-	return inset_->asMathInset();
-}
-
-
-MathArray & CursorSlice::cell() const
-{
-	BOOST_ASSERT(asMathInset());
-	return asMathInset()->cell(idx_);
-}
-
-
-LyXText * CursorSlice::text()
-{
-	BOOST_ASSERT(inset_);
-	return inset_->getText(idx_);
-}
-
-LyXText const * CursorSlice::text() const
-{
-	BOOST_ASSERT(inset_);
-	return inset_->getText(idx_);
-}
-
-
-Paragraph & CursorSlice::paragraph()
-{
-	// access to the main lyx text must be handled in the cursor
-	BOOST_ASSERT(text());
-	return text()->getPar(pit_);
-}
-
-
-Paragraph const & CursorSlice::paragraph() const
-{
-	// access to the main lyx text must be handled in the cursor
-	BOOST_ASSERT(text());
-	return text()->getPar(pit_);
 }
 
 

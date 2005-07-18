@@ -17,6 +17,7 @@
 #ifndef CURSORSLICE_H
 #define CURSORSLICE_H
 
+#include "insets/insetbase.h"
 #include "support/types.h"
 
 #include <cstddef>
@@ -28,7 +29,6 @@ class MathInset;
 class MathArray;
 class LyXText;
 class Paragraph;
-
 
 /// This encapsulates a single slice of a document iterator as used e.g.
 /// for cursors.
@@ -78,17 +78,11 @@ public:
 	/// return the last position within the paragraph
 	pos_type lastpos() const;
 	/// return the number of embedded cells
-	size_t nargs() const;
-	/*!
-	 * \return the number of columns.
-	 * This does only make sense in grid like insets.
-	 */
-	size_t ncols() const;
-	/*!
-	 * \return the number of rows.
-	 * This does only make sense in grid like insets.
-	 */
-	size_t nrows() const;
+	size_t nargs() const { return inset_->nargs(); }
+	/// return the number of columns (1 in non-grid-like insets)
+	size_t ncols() const { return inset_->ncols(); }
+	/// return the number of rows (1 in non-grid-like insets)
+	size_t nrows() const { return inset_->nrows(); }
 	/*!
 	 * \return the grid row of the current cell.
 	 * This does only make sense in grid like insets.
@@ -104,9 +98,9 @@ public:
 	/// texted specific stuff
 	///
 	/// returns text corresponding to this position
-	LyXText * text();
+	LyXText * text() { return inset_->getText(idx_); }
 	/// returns text corresponding to this position
-	LyXText const * text() const;
+	LyXText const * text() const { return inset_->getText(idx_); }
 	/// paragraph in this cell
 	Paragraph & paragraph();
 	/// paragraph in this cell
@@ -115,10 +109,10 @@ public:
 	///
 	/// mathed specific stuff
 	///
+	/// returns the owning inset if it is a MathInset, else 0
+	MathInset * asMathInset() const { return inset_->asMathInset(); }
 	/// returns cell corresponding to this position
 	MathArray & cell() const;
-	/// returns the owning inset if it is a MathInset, else 0
-	MathInset * asMathInset() const;
 
 	/// write some debug information to \p os
 	friend std::ostream & operator<<(std::ostream &, CursorSlice const &);
@@ -130,10 +124,8 @@ private:
 	 * Cell index of a position in this inset.
 	 * This is the primary cell information also for grid like insets,
 	 * although we have the convenience functions row() and col() for
-	 * those.
-	 * This means that the corresponding idx_ of a cell in a given row
-	 * and column changes every time the number of columns or number of
-	 * rows changes. Normally the cursor should stay in the same cell,
+	 * those * and column changes every time the number of columns ornumber
+	 * of rows changes. Normally the cursor should stay in the same cell,
 	 * so these changes should typically be performed like the following:
 	 * \code
 	 * row_type const r = cur.row();

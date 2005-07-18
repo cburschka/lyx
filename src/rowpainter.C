@@ -99,7 +99,7 @@ private:
 
 	/// LyXText for the row
 	LyXText const & text_;
-	ParagraphList & pars_;
+	ParagraphList const & pars_;
 
 	/// The row to paint
 	Row const & row_;
@@ -732,7 +732,7 @@ void paintPar
 	static PainterInfo nullpi(pi.base.bv, nop);
 	int const ww = pi.base.bv->workHeight();
 
-	Paragraph & par = text.paragraphs()[pit];
+	Paragraph const & par = text.paragraphs()[pit];
 
 	RowList::const_iterator const rb = par.rows().begin();
 	RowList::const_iterator const re = par.rows().end();

@@ -78,7 +78,7 @@ ParIterator & ParIterator::operator--()
 
 Paragraph & ParIterator::operator*() const
 {
-	return text()->getPar(pit());
+	return const_cast<Paragraph&>(text()->getPar(pit()));
 }
 
 
@@ -90,7 +90,7 @@ pit_type ParIterator::pit() const
 
 Paragraph * ParIterator::operator->() const
 {
-	return &text()->getPar(pit());
+	return const_cast<Paragraph*>(&text()->getPar(pit()));
 }
 
 
@@ -102,7 +102,7 @@ pit_type ParIterator::outerPar() const
 
 ParagraphList & ParIterator::plist() const
 {
-	return text()->paragraphs();
+	return const_cast<ParagraphList&>(text()->paragraphs());
 }
 
 

@@ -1082,7 +1082,8 @@ bool LyXText::cursorUp(LCursor & cur)
 	} else if (cur.pit() > 0) {
 		--cur.pit();
 		//cannot use 'par' now
-		updateNeeded |= setCursor(cur, cur.pit(), x2pos(cur.pit(), cur.paragraph().rows().size() - 1, x));
+		updateNeeded |= setCursor(cur, cur.pit(),
+      x2pos(cur.pit(), cur.paragraph().rows().size() - 1, x));
 	}
 
 	cur.x_target() = x;
@@ -1305,12 +1306,6 @@ bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur, LCursor const & old)
 		cur.resetAnchor();
 
 	return false;
-}
-
-
-ParagraphList & LyXText::paragraphs() const
-{
-	return const_cast<ParagraphList &>(pars_);
 }
 
 

@@ -1433,9 +1433,9 @@ int MathHullInset::docbook(Buffer const & buf, ostream & os,
 	ms <<  "<graphic fileref=\"eqn/";
 	if ( !label(0).empty())
 		ms << sgml::cleanID(buf, runparams, label(0));
-	else {
+	else
 		ms << sgml::uniqueID("anon");
-	}
+
 	if (runparams.flavor == OutputParams::XML)
 		ms << "\"/>";
 	else
