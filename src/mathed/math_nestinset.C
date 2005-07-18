@@ -458,6 +458,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_FINISHED_DOWN:
+		++cur.pos();
 		cur.bv().cursor() = cur;
 		break;
 

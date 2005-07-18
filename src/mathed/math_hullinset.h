@@ -177,6 +177,8 @@ private:
 	std::vector<std::string> label_;
 	///
 	boost::scoped_ptr<RenderPreview> preview_;
+	///
+	mutable bool use_preview_;
 //
 // Incorporate me
 //
@@ -202,9 +204,12 @@ public:
 
 protected:
 	///
-	void handleFont(LCursor &, std::string const & arg, std::string const & font);
+	void handleFont(LCursor & cur, std::string const & arg,
+		std::string const & font);
 	///
-	void handleFont2(LCursor &, std::string const & arg);
+	void handleFont2(LCursor & cur, std::string const & arg);
+	///
+	bool previewState(BufferView * bv) const;
 };
 
 #endif

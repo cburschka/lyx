@@ -187,7 +187,7 @@ MathHullInset & MathHullInset::operator=(MathHullInset const & other)
 
 InsetBase * MathHullInset::editXY(LCursor & cur, int x, int y)
 {
-	if (RenderPreview::status() == LyXRC::PREVIEW_ON) {
+	if (use_preview_) {
 		edit(cur, true);
 		return this;
 	}
@@ -244,25 +244,24 @@ int MathHullInset::defaultColSpace(col_type col)
 
 char const * MathHullInset::standardFont() const
 {
-	if (type_ == "none")
-		return "lyxnochange";
-	return "mathnormal";
+	return type_ == "none" ? "lyxnochange" : "mathnormal";
+}
+
+
+bool MathHullInset::previewState(BufferView * bv) const
+{
+	if (!editing(bv) && RenderPreview::status() == LyXRC::PREVIEW_ON) {
+		lyx::graphics::PreviewImage const * pimage =
+			preview_->getPreviewImage(*bv->buffer());
+		return pimage && pimage->image();
+	}
+	return false;
 }
 
 
 void MathHullInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	BOOST_ASSERT(mi.base.bv && mi.base.bv->buffer());
-
-	bool use_preview = false;
-	if (!editing(mi.base.bv) &&
-	    RenderPreview::status() == LyXRC::PREVIEW_ON) {
-		lyx::graphics::PreviewImage const * pimage =
-			preview_->getPreviewImage(*mi.base.bv->buffer());
-		use_preview = pimage && pimage->image();
-	}
-
-	if (use_preview) {
+	if (previewState(mi.base.bv)) {
 		preview_->metrics(mi, dim);
 		// insert a one pixel gap in front of the formula
 		dim.wid += 1;
@@ -306,17 +305,9 @@ void MathHullInset::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void MathHullInset::draw(PainterInfo & pi, int x, int y) const
 {
-	BOOST_ASSERT(pi.base.bv && pi.base.bv->buffer());
+	use_preview_ = previewState(pi.base.bv);
 
-	bool use_preview = false;
-	if (!editing(pi.base.bv) &&
-	    RenderPreview::status() == LyXRC::PREVIEW_ON) {
-		lyx::graphics::PreviewImage const * pimage =
-			preview_->getPreviewImage(*pi.base.bv->buffer());
-		use_preview = pimage && pimage->image();
-	}
-
-	if (use_preview) {
+	if (use_preview_) {
 		// one pixel gap in front
 		preview_->draw(pi, x + 1, y);
 		setPosCache(pi, x, y);
