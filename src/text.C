@@ -419,8 +419,6 @@ int LyXText::singleWidth(Paragraph const & par, pos_type pos) const
 int LyXText::singleWidth(Paragraph const & par,
 			 pos_type pos, char c, LyXFont const & font) const
 {
-	BOOST_ASSERT(pos < par.size());
-
 	// The most common case is handled first (Asger)
 	if (IsPrintable(c)) {
 		Language const * language = font.language();
@@ -2101,8 +2099,8 @@ int LyXText::cursorX(CursorSlice const & sl, bool boundary) const
 		body_pos = 0;
 
 	// Use font span to speed things up, see below
-	FontSpan font_span = par.fontSpan(row_pos);
-	LyXFont font = getFont(par, row_pos);
+	FontSpan font_span;
+	LyXFont font;
 
 	for (pos_type vpos = row_pos; vpos < cursor_vpos; ++vpos) {
 		pos_type pos = bidi.vis2log(vpos);

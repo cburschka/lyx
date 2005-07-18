@@ -979,14 +979,17 @@ void MathHullInset::doExtern(LCursor & cur, FuncRequest & func)
 
 void MathHullInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
+	lyxerr << "action: " << cmd.action << endl;
 	switch (cmd.action) {
 
 	case LFUN_FINISHED_LEFT:
 	case LFUN_FINISHED_RIGHT:
 	case LFUN_FINISHED_UP:
 	case LFUN_FINISHED_DOWN:
+		lyxerr << "action: " << cmd.action << endl;
 		MathGridInset::doDispatch(cur, cmd);
 		notifyCursorLeaves(cur);
+		cur.undispatched();
 		break;
 
 	case LFUN_BREAKPARAGRAPH:
@@ -1113,7 +1116,12 @@ bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 		FuncStatus & status) const
 {
 	switch (cmd.action) {
-	// These are only enabled inside tabular
+	case LFUN_FINISHED_LEFT:
+	case LFUN_FINISHED_RIGHT:
+	case LFUN_FINISHED_UP:
+	case LFUN_FINISHED_DOWN:
+		status.enabled(true);
+		return true;
 	case LFUN_BREAKLINE:
 	case LFUN_MATH_NUMBER:
 	case LFUN_MATH_NONUMBER:

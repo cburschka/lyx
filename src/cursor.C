@@ -120,10 +120,10 @@ namespace {
 		int x, int y, int xlow, int xhigh, int ylow, int yhigh)
 	{
 		BOOST_ASSERT(!cursor.empty());
-		CursorSlice bottom = cursor[0];
+		InsetBase & inset = cursor[0].inset();
 
-		DocIterator it = doc_iterator_begin(bottom.inset());
-		DocIterator const et = doc_iterator_end(bottom.inset());
+		DocIterator it = doc_iterator_begin(inset);
+		DocIterator const et = doc_iterator_end(inset);
 
 		double best_dist = std::numeric_limits<double>::max();;
 		DocIterator best_cursor = et;
@@ -136,8 +136,71 @@ namespace {
 				int xo = p.x_;
 				int yo = p.y_;
 				if (xlow <= xo && xo <= xhigh && ylow <= yo && yo <= yhigh) {
-					double d = (x - xo) * (x - xo) + (y - yo) * (y - yo);
-					//lyxerr << "xo: " << xo << " yo: " << yo << " d: " << d << endl;
+					double const dx = xo - x;
+					double const dy = yo - y;
+					double const d = dx * dx + dy * dy;
+					// '<=' in order to take the last possible position
+					// this is important for clicking behind \sum in e.g. '\sum_i a'
+					if (d <= best_dist) {
+						lyxerr << "*" << endl;
+						best_dist   = d;
+						best_cursor = it;
+					}
+				}
+			}
+		}
+
+		if (best_cursor != et) {
+			cursor.setCursor(best_cursor);
+			return true;
+		}
+
+		return false;
+	}
+
+
+	/// moves position closest to (x, y) in given box
+	bool bruteFind3(LCursor & cur, int x, int y, bool up)
+	{
+		BufferView & bv = cur.bv();
+		int ylow  = up ? 0 : y + 1;
+		int yhigh = up ? y - 1 : bv.workHeight();
+		int xlow = 0;
+		int xhigh = bv.workWidth();
+
+// FIXME: bit more work needed to get 'from' and 'to' right.
+		pit_type from = cur.bottom().pit();
+		pit_type to = cur.bottom().pit();
+		//lyxerr << "Pit start: " << from << endl;
+
+		//lyxerr << "bruteFind3: x: " << x << " y: " << y
+		//	<< " xlow: " << xlow << " xhigh: " << xhigh 
+		//	<< " ylow: " << ylow << " yhigh: " << yhigh 
+		//	<< endl;
+		InsetBase & inset = bv.buffer()->inset();
+		DocIterator it = doc_iterator_begin(inset);
+		it.pit() = from;
+		DocIterator et = doc_iterator_end(inset);
+
+		double best_dist = std::numeric_limits<double>::max();
+		DocIterator best_cursor = et;
+
+		for ( ; it != et; it.forwardPos()) {
+			// avoid invalid nesting when selecting
+			if (bv_funcs::status(&bv, it) == bv_funcs::CUR_INSIDE
+			    && (!cur.selection() || positionable(it, cur.anchor_))) {
+				Point p = bv_funcs::getPos(it, false);
+				int xo = p.x_;
+				int yo = p.y_;
+				if (xlow <= xo && xo <= xhigh && ylow <= yo && yo <= yhigh) {
+					double const dx = xo - x;
+					double const dy = yo - y;
+					double const d = dx * dx + dy * dy;
+					//lyxerr << "itx: " << xo << " ity: " << yo << " d: " << d
+					//	<< " dx: " << dx << " dy: " << dy
+					//	<< " idx: " << it.idx() << " pos: " << it.pos()
+					//	<< " it:\n" << it
+					//	<< endl;
 					// '<=' in order to take the last possible position
 					// this is important for clicking behind \sum in e.g. '\sum_i a'
 					if (d <= best_dist) {
@@ -150,12 +213,10 @@ namespace {
 		}
 
 		//lyxerr << "best_dist: " << best_dist << " cur:\n" << best_cursor << endl;
-		if (best_cursor != et) {
-			cursor.setCursor(best_cursor);
-			return true;
-		}
-
-		return false;
+		if (best_cursor == et)
+			return false;
+		cur.setCursor(best_cursor);
+		return true;
 	}
 
 } // namespace anon
@@ -873,12 +934,12 @@ void LCursor::touch()
 
 void LCursor::normalize()
 {
-	if (idx() >= nargs()) {
+	if (idx() > lastidx()) {
 		lyxerr << "this should not really happen - 1: "
 		       << idx() << ' ' << nargs()
 		       << " in: " << &inset() << endl;
+		idx() = lastidx();
 	}
-	idx() = min(idx(), lastidx());
 
 	if (pos() > lastpos()) {
 		lyxerr << "this should not really happen - 2: "
@@ -887,8 +948,8 @@ void LCursor::normalize()
 		WriteStream wi(lyxerr, false, true);
 		inset().asMathInset()->write(wi);
 		lyxerr << endl;
+		pos() = lastpos();
 	}
-	pos() = min(pos(), lastpos());
 }
 
 
@@ -935,6 +996,12 @@ bool LCursor::goUpDown(bool up)
 		}
 	}
 
+// FIXME: Switch this on for more robust movement
+#if 0
+
+	return bruteFind3(*this, xo, yo, up); 
+
+#else
 	//xarray().boundingBox(xlow, xhigh, ylow, yhigh);
 	//if (up)
 	//	yhigh = yo - 4;
@@ -947,9 +1014,10 @@ bool LCursor::goUpDown(bool up)
 
 	// try to find an inset that knows better then we
 	while (true) {
-		//lyxerr << "updown: We are in " << &inset() << " idx: " << idx() << endl;
+		lyxerr << "updown: We are in " << &inset() << " idx: " << idx() << endl;
 		// ask inset first
 		if (inset().idxUpDown(*this, up)) {
+			lyxerr << "idxUpDown triggered" << endl;
 			// try to find best position within this inset
 			if (!selection())
 				setCursor(bruteFind2(*this, xo, yo));
@@ -957,14 +1025,15 @@ bool LCursor::goUpDown(bool up)
 		}
 
 		// no such inset found, just take something "above"
-		//lyxerr << "updown: handled by strange case" << endl;
 		if (!popLeft()) {
+			lyxerr << "updown: popleft failed (strange case)" << endl;
 			int ylow  = up ? 0 : yo + 1;
 			int yhigh = up ? yo - 1 : bv().workHeight();
 			return bruteFind(*this, xo, yo, 0, bv().workWidth(), ylow, yhigh);
 		}
 
 		// any improvement so far?
+		lyxerr << "updown: popLeft succeeded" << endl;
 		int xnew;
 		int ynew;
 		getPos(xnew, ynew);
@@ -974,6 +1043,7 @@ bool LCursor::goUpDown(bool up)
 
 	// we should not come here.
 	BOOST_ASSERT(false);
+#endif
 }
 
 

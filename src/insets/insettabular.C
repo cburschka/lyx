@@ -432,8 +432,8 @@ void InsetTabular::edit(LCursor & cur, bool left)
 
 void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
-	//lyxerr << "# InsetTabular::dispatch: cmd: " << cmd << endl;
-	//lyxerr << "  cur:\n" << cur << endl;
+	lyxerr << "# InsetTabular::dispatch: cmd: " << cmd << endl;
+	lyxerr << "  cur:\n" << cur << endl;
 	CursorSlice sl = cur.top();
 	LCursor & bvcur = cur.bv().cursor();
 
@@ -1169,7 +1169,6 @@ void InsetTabular::setCursorFromCoordinates(LCursor & cur, int x, int y) const
 {
 	cur.idx() = getNearestCell(x, y);
 	cell(cur.idx())->text_.setCursorFromCoordinates(cur, x, y);
-	resetPos(cur);
 }
 
 
