@@ -521,13 +521,19 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		cell(cur.idx())->dispatch(cur, cmd);
 		cur.dispatched(); // override the cell's decision
 		if (sl == cur.top())
+			// if our LyXText didn't do anything to the cursor
+			// then we try to put the cursor into the cell below
+			// setting also the right targetX.
 			if (tabular.row_of_cell(cur.idx()) != tabular.rows() - 1) {
 				cur.idx() = tabular.getCellBelow(cur.idx());
 				cur.pit() = 0;
-				cur.pos() = 0;
+				cur.pos() = cell(cur.idx())->getText(0)->x2pos(
+					cur.pit(), 0, cur.targetX());
 			}
 		if (sl == cur.top()) {
-			cmd = FuncRequest(LFUN_FINISHED_DOWN);
+			// we trick it to go to the RIGHT after leaving the
+			// tabular.
+			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 			cur.undispatched();
 		}
 		break;
@@ -537,10 +543,17 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		cell(cur.idx())->dispatch(cur, cmd);
 		cur.dispatched(); // override the cell's decision
 		if (sl == cur.top())
+			// if our LyXText didn't do anything to the cursor
+			// then we try to put the cursor into the cell above
+			// setting also the right targetX.
 			if (tabular.row_of_cell(cur.idx()) != 0) {
 				cur.idx() = tabular.getCellAbove(cur.idx());
 				cur.pit() = cur.lastpit();
-				cur.pos() = cur.lastpos();
+				LyXText const * text = cell(cur.idx())->getText(0);
+				cur.pos() = text->x2pos(
+					cur.pit(),
+					text->paragraphs().back().rows().size()-1,
+					cur.targetX());
 			}
 		if (sl == cur.top()) {
 			cmd = FuncRequest(LFUN_FINISHED_UP);
