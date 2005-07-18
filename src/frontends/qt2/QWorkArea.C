@@ -17,6 +17,7 @@
 #include "support/filetools.h" // LibFileSearch
 #include "support/lstrings.h"
 #include "support/LAssert.h"
+#include "support/os.h"
 
 #include "QWorkArea.h"
 #include "qt_helpers.h"
@@ -232,8 +233,9 @@ void QWorkArea::dropEvent(QDropEvent* event)
 		lyxerr[Debug::GUI] << "QWorkArea::dropEvent: got URIs!"
 				   << endl;
 		for (QStringList::Iterator i = files.begin();
-		     i!=files.end(); ++i)
-			viewDispatch(FuncRequest(LFUN_FILE_OPEN, fromqstr(*i)));
-//			lyxerr << "got file: " << fromqstr(*i) << endl;
+		     i!=files.end(); ++i) {
+			string const file = os::internal_path(fromqstr(*i));
+			viewDispatch(FuncRequest(LFUN_FILE_OPEN, file));
+		}
 	}
 }

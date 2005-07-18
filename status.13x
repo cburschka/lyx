@@ -24,6 +24,11 @@ What's new
 
 * Document input/output:
 
-
 * User Interface:
 
+- Fix wrong path when drag-and-dropping files on Windows. [Qt only] 
+
+* Configuration/Installation:
+
+- compile without STL compatibilty support, since some systems do that
+  by default (Slackware, for ex.). [Qt only]
