@@ -253,40 +253,33 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 	pit_type startpit, pit_type endpit,
 	int startpos, int endpos, bool doclear)
 {
+        // Start of selection is really invalid.
 	if (startpit == pit_type(pars.size()) ||
 	    (startpos > pars[startpit].size()))
 		return PitPosPair(endpit, endpos);
 
+        // Start and end is inside same paragraph
 	if (endpit == pit_type(pars.size()) ||
 	    startpit == endpit) {
 		endpos -= pars[startpit].erase(startpos, endpos);
 		return PitPosPair(endpit, endpos);
 	}
 
-	// clear end/begin fragments of the first/last par in selection
 	bool all_erased = true;
 
+        // Clear fragments of the first par in selection
 	pars[startpit].erase(startpos, pars[startpit].size());
 	if (pars[startpit].size() != startpos)
 		all_erased = false;
 
+        // Clear fragments of the last par in selection
 	endpos -= pars[endpit].erase(0, endpos);
 	if (endpos != 0)
 		all_erased = false;
 
-	// Loop through the deleted pars if any, erasing as needed
-	for (pit_type pit = startpit + 1; pit != endpit;) {
-		// "erase" the contents of the par
-		pars[pit].erase(0, pars[pit].size());
-		if (!pars[pit].size()) {
-			// remove the par if it's now empty
-			pars.erase(pars.begin() + pit);
-			--endpit;
-		} else {
-			++pit;
-			all_erased = false;
-		}
-	}
+        // Erase all the "middle" paragraphs.
+        pars.erase(pars.begin() + startpit + 1, pars.begin() + endpit);
+        endpit = startpit + 1;
 
 #if 0 // FIXME: why for cut but not copy ?
 	// the cut selection should begin with standard layout
@@ -304,18 +297,17 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 		pars[startpit + 1].stripLeadingSpaces();
 	}
 
-	// paste the paragraphs again, if possible
+	// Merge first and last paragraph, if possible
 	if (all_erased &&
 	    (pars[startpit].hasSameLayout(pars[startpit + 1]) ||
 	     pars[startpit + 1].empty())) {
 		mergeParagraph(params, pars, startpit);
-		// this because endpar gets deleted here!
+		// This because endpar gets deleted here!
 		endpit = startpit;
 		endpos = startpos;
 	}
 
 	return PitPosPair(endpit, endpos);
-
 }
 
 
@@ -329,6 +321,7 @@ void copySelectionHelper(ParagraphList & pars,
 
 	// Clone the paragraphs within the selection.
 	ParagraphList paragraphs(pars.begin() + startpit, pars.begin() + endpit + 1);
+
 	for_each(paragraphs.begin(), paragraphs.end(), resetOwnerAndChanges());
 
 	// Cut out the end of the last paragraph.
@@ -341,18 +334,6 @@ void copySelectionHelper(ParagraphList & pars,
 
 	theCuts.push(make_pair(paragraphs, tc));
 }
-
-
-
-PitPosPair cutSelectionHelper(BufferParams const & params,
-	ParagraphList & pars, pit_type startpit, pit_type endpit,
-	int startpos, int endpos, textclass_type tc, bool doclear)
-{
-	copySelectionHelper(pars, startpit, endpit, startpos, endpos, tc);
-	return eraseSelectionHelper(params, pars, startpit, endpit,
-		startpos, endpos, doclear);
-}
-
 
 } // namespace anon
 
@@ -490,7 +471,7 @@ void cutSelection(LCursor & cur, bool doclear, bool realcut)
 		// finished. The solution used currently just works, to make it
 		// faster we need to be more clever and probably also have more
 		// calls to stuffClipboard. (Lgb)
-		cur.bv().stuffClipboard(cur.selectionAsString(true));
+//		cur.bv().stuffClipboard(cur.selectionAsString(true));
 
 		// This doesn't make sense, if there is no selection
 		if (!cur.selection())
@@ -615,10 +596,10 @@ void pasteSelection(LCursor & cur, size_t sel_index)
 
 		boost::tie(ppp, endpit) =
 			pasteSelectionHelper(cur.buffer(),
-								text->paragraphs(),
-								cur.pit(), cur.pos(),
-								cur.buffer().params().textclass,
-								sel_index, el);
+                                             text->paragraphs(),
+                                             cur.pit(), cur.pos(),
+                                             cur.buffer().params().textclass,
+                                             sel_index, el);
 		bufferErrors(cur.buffer(), el);
 		cur.bv().showErrorList(_("Paste"));
 

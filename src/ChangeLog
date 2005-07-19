@@ -1,3 +1,9 @@
+2005-07-19  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	bug 1920
+	* CutAndPaste.C (eraseSelectionHelper): erase all the "middle"
+	pars in one go.
+
 2005-07-18  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* messages.C: supress some lyxerr messages
