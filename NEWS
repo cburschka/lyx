@@ -15,8 +15,8 @@ We would like to highlight three fixes in particular:
   * It is now possible to typeset files which reside in a directory with
     spaces in its name; this requires a modern TeX implementation (such
     as teTeX 3.0).
-  * It is possible to use Ctrl-PageDown and Control-PageUp (<cmd>-tab
-    and <cmd>-backtab with Qt/Mac) to switch between the open documents.
+  * It is possible to use Ctrl-PageDown and Control-PageUp (<opt>-tab
+    and <opt><shift>-tab with LyX/Mac) to switch between the open documents.
   * LaTeX-type accents, ligature breaks and hyphenation marks are now
     considered as part of words 
 
