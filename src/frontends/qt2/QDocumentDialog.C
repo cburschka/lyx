@@ -132,8 +132,8 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	connect(textLayoutModule->twoColumnCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 
 	// margins
-	connect(marginsModule->marginCO, SIGNAL(activated(int)), this, SLOT(setCustomMargins(int)));
-	connect(marginsModule->marginCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(marginsModule->marginCB, SIGNAL(toggled(bool)), this, SLOT(setCustomMargins(bool)));
+	connect(marginsModule->marginCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 	connect(marginsModule->topLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(marginsModule->topUnit, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(marginsModule->bottomLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
@@ -150,7 +150,6 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	connect(marginsModule->footskipUnit, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 
 	// page layout
-	connect(pageLayoutModule->papersizeCO, SIGNAL(activated(int)), this, SLOT(setMargins(int)));
 	connect(pageLayoutModule->papersizeCO, SIGNAL(activated(int)), this, SLOT(setCustomPapersize(int)));
 	connect(pageLayoutModule->papersizeCO, SIGNAL(activated(int)), this, SLOT(setCustomPapersize(int)));
 	connect(pageLayoutModule->portraitRB, SIGNAL(toggled(bool)), this, SLOT(portraitChanged()));
@@ -266,23 +265,10 @@ void QDocumentDialog::portraitChanged()
 	setMargins(pageLayoutModule->papersizeCO->currentItem());
 }
 
-void QDocumentDialog::setMargins(int papersize)
+void QDocumentDialog::setMargins(bool custom)
 {
-	int olditem = marginsModule->marginCO->currentItem();
-	marginsModule->marginCO->clear();
-	marginsModule->marginCO->insertItem(qt_("Default"));
-	marginsModule->marginCO->insertItem(qt_("Custom"));
-	bool a4size = (papersize == 6 || papersize == 0
-			&& lyxrc.default_papersize == PAPER_A4);
-	if (a4size && pageLayoutModule->portraitRB->isChecked()) {
-		marginsModule->marginCO->insertItem(qt_("Small margins"));
-		marginsModule->marginCO->insertItem(qt_("Very small margins"));
-		marginsModule->marginCO->insertItem(qt_("Very wide margins"));
-	} else if (olditem > 1) {
-		olditem = 0;
-	}
-	marginsModule->marginCO->setCurrentItem(olditem);
-	setCustomMargins(olditem);
+	marginsModule->marginCB->setChecked(custom);
+	setCustomMargins(custom);
 }
 
 
@@ -300,37 +286,35 @@ void QDocumentDialog::setCustomPapersize(int papersize)
 }
 
 
-void QDocumentDialog::setCustomMargins(int margin)
+void QDocumentDialog::setCustomMargins(bool custom)
 {
-	bool const custom = (margin == 1);
+	marginsModule->topL->setEnabled(!custom);
+	marginsModule->topLE->setEnabled(!custom);
+	marginsModule->topUnit->setEnabled(!custom);
 
-	marginsModule->topL->setEnabled(custom);
-	marginsModule->topLE->setEnabled(custom);
-	marginsModule->topUnit->setEnabled(custom);
+	marginsModule->bottomL->setEnabled(!custom);
+	marginsModule->bottomLE->setEnabled(!custom);
+	marginsModule->bottomUnit->setEnabled(!custom);
 
-	marginsModule->bottomL->setEnabled(custom);
-	marginsModule->bottomLE->setEnabled(custom);
-	marginsModule->bottomUnit->setEnabled(custom);
+	marginsModule->innerL->setEnabled(!custom);
+	marginsModule->innerLE->setEnabled(!custom);
+	marginsModule->innerUnit->setEnabled(!custom);
 
-	marginsModule->innerL->setEnabled(custom);
-	marginsModule->innerLE->setEnabled(custom);
-	marginsModule->innerUnit->setEnabled(custom);
+	marginsModule->outerL->setEnabled(!custom);
+	marginsModule->outerLE->setEnabled(!custom);
+	marginsModule->outerUnit->setEnabled(!custom);
 
-	marginsModule->outerL->setEnabled(custom);
-	marginsModule->outerLE->setEnabled(custom);
-	marginsModule->outerUnit->setEnabled(custom);
+	marginsModule->headheightL->setEnabled(!custom);
+	marginsModule->headheightLE->setEnabled(!custom);
+	marginsModule->headheightUnit->setEnabled(!custom);
 
-	marginsModule->headheightL->setEnabled(custom);
-	marginsModule->headheightLE->setEnabled(custom);
-	marginsModule->headheightUnit->setEnabled(custom);
+	marginsModule->headsepL->setEnabled(!custom);
+	marginsModule->headsepLE->setEnabled(!custom);
+	marginsModule->headsepUnit->setEnabled(!custom);
 
-	marginsModule->headsepL->setEnabled(custom);
-	marginsModule->headsepLE->setEnabled(custom);
-	marginsModule->headsepUnit->setEnabled(custom);
-
-	marginsModule->footskipL->setEnabled(custom);
-	marginsModule->footskipLE->setEnabled(custom);
-	marginsModule->footskipUnit->setEnabled(custom);
+	marginsModule->footskipL->setEnabled(!custom);
+	marginsModule->footskipLE->setEnabled(!custom);
+	marginsModule->footskipUnit->setEnabled(!custom);
 }
 
 

@@ -209,7 +209,6 @@ void FormDocument::build()
 	paper_.reset(build_document_paper(this));
 
 	// disable for read-only documents
-	bcview().addReadOnly(paper_->choice_paperpackage);
 	bcview().addReadOnly(paper_->radio_portrait);
 	bcview().addReadOnly(paper_->radio_landscape);
 	bcview().addReadOnly(paper_->choice_papersize);
@@ -260,11 +259,6 @@ void FormDocument::build()
 			_(" Default | Custom | US letter | US legal "
 			  "| US executive | A3 | A4 | A5 "
 			  "| B3 | B4 | B5 ").c_str());
-	fl_addto_choice(paper_->choice_paperpackage,
-			_(" None "
-			  "| Small Margins "
-			  "| Very small Margins "
-			  "| Very wide Margins ").c_str());
 
 	fl_addto_choice(paper_->choice_custom_width_units,  units.c_str());
 	fl_addto_choice(paper_->choice_custom_height_units, units.c_str());
@@ -547,10 +541,6 @@ ButtonPolicy::SMInput FormDocument::input(FL_OBJECT * ob, long)
 		params.useClassDefaults();
 		UpdateLayoutDocument(params);
 
-	} else if (ob == paper_->radio_landscape) {
-		fl_set_choice(paper_->choice_paperpackage,
-			      PACKAGE_NONE + 1);
-
 	} else if (ob == paper_->choice_papersize) {
 		int const paperchoice = fl_get_choice(paper_->choice_papersize);
 		bool const defsize = paperchoice == 1;
@@ -623,34 +613,12 @@ ButtonPolicy::SMInput FormDocument::input(FL_OBJECT * ob, long)
 			fl_set_choice_text(paper_->choice_foot_skip_units,
 					   default_unit.c_str());
 
-	} else if (ob == paper_->choice_paperpackage &&
-		   fl_get_choice(paper_->choice_paperpackage) != 1) {
-
-		fl_set_button(paper_->check_use_geometry, 0);
-		setEnabled(paper_->input_top_margin,    false);
-		setEnabled(paper_->input_bottom_margin, false);
-		setEnabled(paper_->input_inner_margin,  false);
-		setEnabled(paper_->input_outer_margin,  false);
-		setEnabled(paper_->input_head_height,   false);
-		setEnabled(paper_->input_head_sep,      false);
-		setEnabled(paper_->input_foot_skip,     false);
-		setEnabled(paper_->choice_top_margin_units,    false);
-		setEnabled(paper_->choice_bottom_margin_units, false);
-		setEnabled(paper_->choice_inner_margin_units,  false);
-		setEnabled(paper_->choice_outer_margin_units,  false);
-		setEnabled(paper_->choice_head_height_units,   false);
-		setEnabled(paper_->choice_head_sep_units,      false);
-		setEnabled(paper_->choice_foot_skip_units,     false);
-
 	} else if (ob == paper_->check_use_geometry) {
 		// don't allow switching geometry off in custom papersize
 		// mode nor in A3, B3, and B4
 		int const choice = fl_get_choice(paper_->choice_papersize);
 		if (choice == 2 || choice == 6 || choice == 9 || choice == 10)
 			fl_set_button(paper_->check_use_geometry, 1);
-
-		fl_set_choice(paper_->choice_paperpackage,
-			      PACKAGE_NONE + 1);
 
 		bool const use_geom = fl_get_button(paper_->check_use_geometry);
 		setEnabled(paper_->input_top_margin,    use_geom);
@@ -667,20 +635,6 @@ ButtonPolicy::SMInput FormDocument::input(FL_OBJECT * ob, long)
 		setEnabled(paper_->choice_head_height_units,   use_geom);
 		setEnabled(paper_->choice_head_sep_units,      use_geom);
 		setEnabled(paper_->choice_foot_skip_units,     use_geom);
-	}
-
-	if (ob == paper_->choice_papersize || ob == paper_->radio_portrait
-	    || ob == paper_->radio_landscape) {
-		// either default papersize (preferences) or document
-		// papersize has to be A4
-		bool const enable = ( fl_get_choice(paper_->choice_papersize) == 1
-				      && lyxrc.default_papersize == PAPER_A4)
-			|| fl_get_choice(paper_->choice_papersize) == 7;
-		if (!enable)
-			fl_set_choice(paper_->choice_paperpackage,
-				      PACKAGE_NONE + 1);
-		setEnabled(paper_->choice_paperpackage,
-			   enable && fl_get_button(paper_->radio_portrait));
 	}
 
 	return ButtonPolicy::SMI_VALID;
@@ -1243,12 +1197,6 @@ void FormDocument::paper_update(BufferParams const & params)
 		fl_set_button(paper_->radio_landscape, 1);
 	else
 		fl_set_button(paper_->radio_portrait, 1);
-	setEnabled(paper_->choice_paperpackage,
-		   //either default papersize (preferences)
-		   //or document papersize has to be A4
-		   (paperchoice == 7
-		    || paperchoice == 1 && lyxrc.default_papersize == PAPER_A4)
-		   && fl_get_button(paper_->radio_portrait));
 
 	// Default unit choice is cm if metric, inches if US paper.
 	bool const metric = (paperchoice == 1 && lyxrc.default_papersize > PAPER_USEXECUTIVE)

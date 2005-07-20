@@ -1,3 +1,9 @@
+2005-07-20  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* FormDocument.C:
+	* forms/form_document.fd: remove the paperpackage widgets
+	(bug 1929).
+
 2005-07-18  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* FontInfo.C (query): revert earlier undocumented change.

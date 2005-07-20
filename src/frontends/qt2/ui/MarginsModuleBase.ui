@@ -13,13 +13,13 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>337</width>
-            <height>370</height>
+            <width>329</width>
+            <height>373</height>
         </rect>
     </property>
     <property stdset="1">
         <name>caption</name>
-        <string></string>
+        <string>MarginsModuleBase</string>
     </property>
     <grid>
         <property stdset="1">
@@ -30,246 +30,22 @@
             <name>spacing</name>
             <number>6</number>
         </property>
-        <widget row="1"  column="0" >
-            <class>QLabel</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>topL</cstring>
-            </property>
-            <property stdset="1">
-                <name>enabled</name>
-                <bool>false</bool>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>&amp;Top:</string>
-            </property>
-            <property>
-                <name>buddy</name>
-                <cstring>topLE</cstring>
-            </property>
-        </widget>
-        <widget row="2"  column="0" >
-            <class>QLabel</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>bottomL</cstring>
-            </property>
-            <property stdset="1">
-                <name>enabled</name>
-                <bool>false</bool>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>&amp;Bottom:</string>
-            </property>
-            <property>
-                <name>buddy</name>
-                <cstring>bottomLE</cstring>
-            </property>
-        </widget>
-        <widget row="3"  column="0" >
-            <class>QLabel</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>innerL</cstring>
-            </property>
-            <property stdset="1">
-                <name>enabled</name>
-                <bool>false</bool>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>&amp;Inner:</string>
-            </property>
-            <property>
-                <name>buddy</name>
-                <cstring>innerLE</cstring>
-            </property>
-        </widget>
-        <widget row="4"  column="0" >
-            <class>QLabel</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>outerL</cstring>
-            </property>
-            <property stdset="1">
-                <name>enabled</name>
-                <bool>false</bool>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>O&amp;uter:</string>
-            </property>
-            <property>
-                <name>buddy</name>
-                <cstring>outerLE</cstring>
-            </property>
-        </widget>
         <widget row="0"  column="0" >
-            <class>QLabel</class>
+            <class>QCheckBox</class>
             <property stdset="1">
                 <name>name</name>
-                <cstring>marginL</cstring>
+                <cstring>marginCB</cstring>
             </property>
             <property stdset="1">
                 <name>text</name>
-                <string>&amp;Margins:</string>
+                <string>&amp;Default Margins</string>
             </property>
             <property>
-                <name>buddy</name>
-                <cstring>marginCO</cstring>
+                <name>toolTip</name>
+                <string>Use the margin settings provided by the document class</string>
             </property>
         </widget>
-        <widget row="1"  column="1" >
-            <class>QLineEdit</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>topLE</cstring>
-            </property>
-            <property stdset="1">
-                <name>enabled</name>
-                <bool>false</bool>
-            </property>
-        </widget>
-        <widget row="2"  column="1" >
-            <class>QLineEdit</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>bottomLE</cstring>
-            </property>
-            <property stdset="1">
-                <name>enabled</name>
-                <bool>false</bool>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string></string>
-            </property>
-        </widget>
-        <widget row="4"  column="1" >
-            <class>QLineEdit</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>outerLE</cstring>
-            </property>
-            <property stdset="1">
-                <name>enabled</name>
-                <bool>false</bool>
-            </property>
-        </widget>
-        <widget row="7"  column="0" >
-            <class>QLabel</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>footskipL</cstring>
-            </property>
-            <property stdset="1">
-                <name>enabled</name>
-                <bool>false</bool>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>&amp;Foot skip:</string>
-            </property>
-            <property>
-                <name>buddy</name>
-                <cstring>footskipLE</cstring>
-            </property>
-        </widget>
-        <widget row="5"  column="0" >
-            <class>QLabel</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>headsepL</cstring>
-            </property>
-            <property stdset="1">
-                <name>enabled</name>
-                <bool>false</bool>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>Head &amp;sep:</string>
-            </property>
-            <property>
-                <name>buddy</name>
-                <cstring>headsepLE</cstring>
-            </property>
-        </widget>
-        <widget row="5"  column="1" >
-            <class>QLineEdit</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>headsepLE</cstring>
-            </property>
-            <property stdset="1">
-                <name>enabled</name>
-                <bool>false</bool>
-            </property>
-        </widget>
-        <widget row="6"  column="1" >
-            <class>QLineEdit</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>headheightLE</cstring>
-            </property>
-            <property stdset="1">
-                <name>enabled</name>
-                <bool>false</bool>
-            </property>
-        </widget>
-        <widget row="6"  column="0" >
-            <class>QLabel</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>headheightL</cstring>
-            </property>
-            <property stdset="1">
-                <name>enabled</name>
-                <bool>false</bool>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>Head &amp;height:</string>
-            </property>
-            <property>
-                <name>buddy</name>
-                <cstring>headheightLE</cstring>
-            </property>
-        </widget>
-        <widget row="7"  column="1" >
-            <class>QLineEdit</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>footskipLE</cstring>
-            </property>
-            <property stdset="1">
-                <name>enabled</name>
-                <bool>false</bool>
-            </property>
-        </widget>
-        <spacer row="8"  column="1" >
-            <property>
-                <name>name</name>
-                <cstring>Spacer21</cstring>
-            </property>
-            <property stdset="1">
-                <name>orientation</name>
-                <enum>Vertical</enum>
-            </property>
-            <property stdset="1">
-                <name>sizeType</name>
-                <enum>Expanding</enum>
-            </property>
-            <property>
-                <name>sizeHint</name>
-                <size>
-                    <width>20</width>
-                    <height>20</height>
-                </size>
-            </property>
-        </spacer>
-        <spacer row="3"  column="3" >
+        <spacer row="1"  column="1" >
             <property>
                 <name>name</name>
                 <cstring>Spacer22</cstring>
@@ -290,107 +66,385 @@
                 </size>
             </property>
         </spacer>
-        <widget row="1"  column="2" >
-            <class>LengthCombo</class>
+        <spacer row="2"  column="0" >
+            <property>
+                <name>name</name>
+                <cstring>Spacer21</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Vertical</enum>
+            </property>
+            <property stdset="1">
+                <name>sizeType</name>
+                <enum>Expanding</enum>
+            </property>
+            <property>
+                <name>sizeHint</name>
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+        <widget row="1"  column="0" >
+            <class>QLayoutWidget</class>
             <property stdset="1">
                 <name>name</name>
-                <cstring>topUnit</cstring>
+                <cstring>Layout5</cstring>
             </property>
-            <property stdset="1">
-                <name>enabled</name>
-                <bool>false</bool>
-            </property>
-        </widget>
-        <widget row="2"  column="2" >
-            <class>LengthCombo</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>bottomUnit</cstring>
-            </property>
-            <property stdset="1">
-                <name>enabled</name>
-                <bool>false</bool>
-            </property>
-        </widget>
-        <widget row="3"  column="2" >
-            <class>LengthCombo</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>innerUnit</cstring>
-            </property>
-            <property stdset="1">
-                <name>enabled</name>
-                <bool>false</bool>
-            </property>
-        </widget>
-        <widget row="3"  column="1" >
-            <class>QLineEdit</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>innerLE</cstring>
-            </property>
-            <property stdset="1">
-                <name>enabled</name>
-                <bool>false</bool>
-            </property>
-        </widget>
-        <widget row="4"  column="2" >
-            <class>LengthCombo</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>outerUnit</cstring>
-            </property>
-            <property stdset="1">
-                <name>enabled</name>
-                <bool>false</bool>
-            </property>
-        </widget>
-        <widget row="5"  column="2" >
-            <class>LengthCombo</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>headsepUnit</cstring>
-            </property>
-            <property stdset="1">
-                <name>enabled</name>
-                <bool>false</bool>
-            </property>
-        </widget>
-        <widget row="6"  column="2" >
-            <class>LengthCombo</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>headheightUnit</cstring>
-            </property>
-            <property stdset="1">
-                <name>enabled</name>
-                <bool>false</bool>
-            </property>
-        </widget>
-        <widget row="7"  column="2" >
-            <class>LengthCombo</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>footskipUnit</cstring>
-            </property>
-            <property stdset="1">
-                <name>enabled</name>
-                <bool>false</bool>
-            </property>
-        </widget>
-        <widget row="0"  column="1"  rowspan="1"  colspan="2" >
-            <class>QComboBox</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>marginCO</cstring>
-            </property>
-            <property stdset="1">
-                <name>sizePolicy</name>
-                <sizepolicy>
-                    <hsizetype>5</hsizetype>
-                    <vsizetype>0</vsizetype>
-                </sizepolicy>
-            </property>
+            <hbox>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>0</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <widget>
+                    <class>QLayoutWidget</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>Layout4</cstring>
+                    </property>
+                    <vbox>
+                        <property stdset="1">
+                            <name>margin</name>
+                            <number>0</number>
+                        </property>
+                        <property stdset="1">
+                            <name>spacing</name>
+                            <number>6</number>
+                        </property>
+                        <widget>
+                            <class>QLabel</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>topL</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>enabled</name>
+                                <bool>false</bool>
+                            </property>
+                            <property stdset="1">
+                                <name>text</name>
+                                <string>&amp;Top:</string>
+                            </property>
+                            <property>
+                                <name>buddy</name>
+                                <cstring>topLE</cstring>
+                            </property>
+                        </widget>
+                        <widget>
+                            <class>QLabel</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>bottomL</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>enabled</name>
+                                <bool>false</bool>
+                            </property>
+                            <property stdset="1">
+                                <name>text</name>
+                                <string>&amp;Bottom:</string>
+                            </property>
+                            <property>
+                                <name>buddy</name>
+                                <cstring>bottomLE</cstring>
+                            </property>
+                        </widget>
+                        <widget>
+                            <class>QLabel</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>innerL</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>enabled</name>
+                                <bool>false</bool>
+                            </property>
+                            <property stdset="1">
+                                <name>text</name>
+                                <string>&amp;Inner:</string>
+                            </property>
+                            <property>
+                                <name>buddy</name>
+                                <cstring>innerLE</cstring>
+                            </property>
+                        </widget>
+                        <widget>
+                            <class>QLabel</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>outerL</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>enabled</name>
+                                <bool>false</bool>
+                            </property>
+                            <property stdset="1">
+                                <name>text</name>
+                                <string>O&amp;uter:</string>
+                            </property>
+                            <property>
+                                <name>buddy</name>
+                                <cstring>outerLE</cstring>
+                            </property>
+                        </widget>
+                        <widget>
+                            <class>QLabel</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>headsepL</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>enabled</name>
+                                <bool>false</bool>
+                            </property>
+                            <property stdset="1">
+                                <name>text</name>
+                                <string>Head &amp;sep:</string>
+                            </property>
+                            <property>
+                                <name>buddy</name>
+                                <cstring>headsepLE</cstring>
+                            </property>
+                        </widget>
+                        <widget>
+                            <class>QLabel</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>headheightL</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>enabled</name>
+                                <bool>false</bool>
+                            </property>
+                            <property stdset="1">
+                                <name>text</name>
+                                <string>Head &amp;height:</string>
+                            </property>
+                            <property>
+                                <name>buddy</name>
+                                <cstring>headheightLE</cstring>
+                            </property>
+                        </widget>
+                        <widget>
+                            <class>QLabel</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>footskipL</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>enabled</name>
+                                <bool>false</bool>
+                            </property>
+                            <property stdset="1">
+                                <name>text</name>
+                                <string>&amp;Foot skip:</string>
+                            </property>
+                            <property>
+                                <name>buddy</name>
+                                <cstring>footskipLE</cstring>
+                            </property>
+                        </widget>
+                    </vbox>
+                </widget>
+                <widget>
+                    <class>QLayoutWidget</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>Layout3</cstring>
+                    </property>
+                    <vbox>
+                        <property stdset="1">
+                            <name>margin</name>
+                            <number>0</number>
+                        </property>
+                        <property stdset="1">
+                            <name>spacing</name>
+                            <number>6</number>
+                        </property>
+                        <widget>
+                            <class>QLineEdit</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>topLE</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>enabled</name>
+                                <bool>false</bool>
+                            </property>
+                        </widget>
+                        <widget>
+                            <class>QLineEdit</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>bottomLE</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>enabled</name>
+                                <bool>false</bool>
+                            </property>
+                            <property stdset="1">
+                                <name>text</name>
+                                <string></string>
+                            </property>
+                        </widget>
+                        <widget>
+                            <class>QLineEdit</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>innerLE</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>enabled</name>
+                                <bool>false</bool>
+                            </property>
+                        </widget>
+                        <widget>
+                            <class>QLineEdit</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>outerLE</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>enabled</name>
+                                <bool>false</bool>
+                            </property>
+                        </widget>
+                        <widget>
+                            <class>QLineEdit</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>headsepLE</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>enabled</name>
+                                <bool>false</bool>
+                            </property>
+                        </widget>
+                        <widget>
+                            <class>QLineEdit</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>headheightLE</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>enabled</name>
+                                <bool>false</bool>
+                            </property>
+                        </widget>
+                        <widget>
+                            <class>QLineEdit</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>footskipLE</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>enabled</name>
+                                <bool>false</bool>
+                            </property>
+                        </widget>
+                    </vbox>
+                </widget>
+                <widget>
+                    <class>QLayoutWidget</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>Layout2</cstring>
+                    </property>
+                    <vbox>
+                        <property stdset="1">
+                            <name>margin</name>
+                            <number>0</number>
+                        </property>
+                        <property stdset="1">
+                            <name>spacing</name>
+                            <number>6</number>
+                        </property>
+                        <widget>
+                            <class>LengthCombo</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>topUnit</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>enabled</name>
+                                <bool>false</bool>
+                            </property>
+                        </widget>
+                        <widget>
+                            <class>LengthCombo</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>bottomUnit</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>enabled</name>
+                                <bool>false</bool>
+                            </property>
+                        </widget>
+                        <widget>
+                            <class>LengthCombo</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>innerUnit</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>enabled</name>
+                                <bool>false</bool>
+                            </property>
+                        </widget>
+                        <widget>
+                            <class>LengthCombo</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>outerUnit</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>enabled</name>
+                                <bool>false</bool>
+                            </property>
+                        </widget>
+                        <widget>
+                            <class>LengthCombo</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>headsepUnit</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>enabled</name>
+                                <bool>false</bool>
+                            </property>
+                        </widget>
+                        <widget>
+                            <class>LengthCombo</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>headheightUnit</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>enabled</name>
+                                <bool>false</bool>
+                            </property>
+                        </widget>
+                        <widget>
+                            <class>LengthCombo</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>footskipUnit</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>enabled</name>
+                                <bool>false</bool>
+                            </property>
+                        </widget>
+                    </vbox>
+                </widget>
+            </hbox>
         </widget>
     </grid>
 </widget>
@@ -418,7 +472,6 @@
     </image>
 </images>
 <tabstops>
-    <tabstop>marginCO</tabstop>
     <tabstop>topLE</tabstop>
     <tabstop>bottomLE</tabstop>
     <tabstop>innerLE</tabstop>

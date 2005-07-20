@@ -167,8 +167,6 @@ void QDocument::build_dialog()
 	dialog_->textLayoutModule->lspacingCO->insertItem(
 		qt_("Custom"), Spacing::Other);
 
-	// margins
-	dialog_->setMargins(0);
 
 	// Manage the restore, ok, apply, restore and cancel/close buttons
 	bcview().setOK(dialog_->okPB);
@@ -387,13 +385,9 @@ void QDocument::apply()
 
 	// margins
 	params.use_geometry =
-		(dialog_->marginsModule->marginCO->currentItem() == 1
+		(!dialog_->marginsModule->marginCB->isChecked()
 		|| geom_papersize);
 
-	int margin = dialog_->marginsModule->marginCO->currentItem();
-	if (margin > 0) {
-		margin = margin - 1;
-	}
 	MarginsModuleBase const * m(dialog_->marginsModule);
 
 	params.leftmargin = widgetsToLength(m->innerLE, m->innerUnit);
@@ -555,7 +549,6 @@ void QDocument::update_contents()
 		case Spacing::Default: case Spacing::Single: nitem = 0; break;
 	}
 
-
 	// layout
 	dialog_->latexModule->classCO->setCurrentItem(params.textclass);
 
@@ -628,7 +621,6 @@ void QDocument::update_contents()
 	// paper
 	int const psize = params.papersize;
 	dialog_->pageLayoutModule->papersizeCO->setCurrentItem(psize);
-	dialog_->setMargins(psize);
 	dialog_->setCustomPapersize(psize);
 
 	bool const landscape =
@@ -648,11 +640,9 @@ void QDocument::update_contents()
 		dialog_->pageLayoutModule->paperheightUnitCO, params.paperheight, defaultUnit);
 
 	// margins
-
 	MarginsModuleBase * m = dialog_->marginsModule;
 
-	m->marginCO->setCurrentItem(0);
-	dialog_->setCustomMargins(0);
+	dialog_->setMargins(!params.use_geometry);
 
 	lengthToWidgets(m->topLE, m->topUnit,
 		params.topmargin, defaultUnit);

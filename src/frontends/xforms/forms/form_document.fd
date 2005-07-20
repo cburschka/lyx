@@ -179,7 +179,7 @@ argument: 0
 Name: form_document_paper
 Width: 395
 Height: 320
-Number of Objects: 29
+Number of Objects: 28
 
 --------------------
 class: FL_BOX
@@ -434,24 +434,6 @@ callback: C_FormDialogView_InputCB
 argument: 0
 
 --------------------
-class: FL_CHOICE
-type: NORMAL_CHOICE
-box: 210 175 160 25
-boxtype: FL_FRAME_BOX
-colors: FL_COL1 FL_BLACK
-alignment: FL_ALIGN_TOP
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Special (A4 portrait only):|#S
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: choice_paperpackage
-callback: C_FormDialogView_InputCB
-argument: 0
-
---------------------
 class: FL_INPUT
 type: NORMAL_INPUT
 box: 75 180 50 25
@@ -598,7 +580,7 @@ argument: 0
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 280 210 50 25
+box: 280 180 50 25
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -616,7 +598,7 @@ argument: 0
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 330 210 50 25
+box: 330 180 50 25
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
@@ -634,7 +616,7 @@ argument: 0
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 280 240 50 25
+box: 280 210 50 25
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -652,7 +634,7 @@ argument: 0
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 330 240 50 25
+box: 330 210 50 25
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
@@ -670,7 +652,7 @@ argument: 0
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 280 270 50 25
+box: 280 250 50 25
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -688,7 +670,7 @@ argument: 0
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 330 270 50 25
+box: 330 250 50 25
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT

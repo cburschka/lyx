@@ -57,9 +57,9 @@ public slots:
 
 protected slots:
 	void setLSpacing(int);
-	void setMargins(int);
+	void setMargins(bool);
 	void setCustomPapersize(int);
-	void setCustomMargins(int);
+	void setCustomMargins(bool);
 	void setSkip(int);
 	void enableSkip(bool);
 	void portraitChanged();
