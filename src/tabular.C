@@ -1344,6 +1344,7 @@ void LyXTabular::setMultiColumn(Buffer * buffer, idx_type cell,
 	cs.alignment = column_info[column_of_cell(cell)].alignment;
 	cs.top_line = row_info[row_of_cell(cell)].top_line;
 	cs.bottom_line = row_info[row_of_cell(cell)].bottom_line;
+	cs.left_line = column_info[column_of_cell(cell)].left_line;
 	cs.right_line = column_info[column_of_cell(cell+number-1)].right_line;
 	for (idx_type i = 1; i < number; ++i) {
 		cellstruct & cs1 = cellinfo_of_cell(cell + i);
