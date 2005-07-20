@@ -855,7 +855,7 @@ def convert_minipage(file):
         if file.body[i][:6] == "height":
             height = file.body[i][6:]
             # test for default value of 221 and convert it accordingly
-            if height == ' "0pt"':
+            if height == ' "0pt"' or height == ' "0"':
                 height = ' "1pt"'
             del file.body[i]
         else:
@@ -1112,7 +1112,6 @@ def convert_frameless_box(file):
 	if (params['use_parbox'] != '0' or
 	    params['has_inner_box'] != '1' or
 	    params['special'] != 'none' or
-	    inner_pos[params['inner_pos']] != pos[params['position']] or
 	    params['height_special'] != 'totalheight' or
 	    len2value(params['height']) != 1.0):
 
@@ -1522,7 +1521,6 @@ def revert_cite_engine(file):
 def convert_paperpackage(file):
     i = find_token(file.header, "\\paperpackage", 0)
     if i == -1:
-        file.warning("Malformed lyx file: Missing '\\paperpackage'.")
         return
 
     packages = {'default':'none','a4':'none', 'a4wide':'a4', 'widemarginsa4':'a4wide'}
@@ -1536,7 +1534,6 @@ def convert_paperpackage(file):
 def revert_paperpackage(file):
     i = find_token(file.header, "\\paperpackage", 0)
     if i == -1:
-        file.warning("Malformed lyx file: Missing '\\paperpackage'.")
         return
 
     packages = {'none':'a4', 'a4':'a4wide', 'a4wide':'widemarginsa4',
@@ -1857,6 +1854,43 @@ def convert_french(file):
     if i != -1:
         file.header[i] = "\\language french"
 
+    # Change language in the document body
+    regexp = re.compile(r'^\\lang\s+frenchb')
+    i = 0
+    while 1:
+        i = find_re(file.body, regexp, i)
+        if i == -1:
+            break
+        file.body[i] = "\\lang french"
+        i = i + 1
+
+
+def remove_paperpackage(file):
+    i = find_token(file.header, '\\paperpackage', 0)
+
+    if i == -1:
+        return
+
+    paperpackage = split(file.header[i])[1]
+
+    if paperpackage in ("a4", "a4wide", "widemarginsa4"):
+        j = find_token(file.header, '\\begin_preamble', 0)
+        conv = {"a4":"\\usepackage{a4}","a4wide": "\\usepackage{a4wide}",
+                "widemarginsa4": "\\usepackage[widemargins]{a4}"}
+        if j == -1:
+            # Add preamble
+            j = len(file.header) - 2
+            file.header[j:j]=["\\begin_preamble",
+                              conv[paperpackage],"\\end_preamble"]
+        else:
+            file.header[j+1:j+1] = conv[paperpackage]
+
+    del file.header[i]
+
+    i = find_token(file.header, '\\papersize', 0)
+    if i != -1:
+        file.header[i] = "\\papersize default"
+
 
 ##
 # Convertion hub
@@ -1884,9 +1918,11 @@ convert = [[223, [insert_tracking_changes, add_end_header, remove_color_default,
            [239, [normalize_paragraph_params]],
            [240, [convert_output_changes]],
            [241, [convert_ert_paragraphs]],
-           [242, [convert_french]]]
+           [242, [convert_french]],
+           [243, [remove_paperpackage]]]
 
-revert =  [[241, []],
+revert =  [[242, []],
+           [241, []],
            [240, [revert_ert_paragraphs]],
            [239, [revert_output_changes]],
            [238, []],

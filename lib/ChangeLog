@@ -1,3 +1,12 @@
+2005-07-20  José Matos  <jamatos@lyx.org>
+
+	* lyx2lyx/lyx_1_4.py (convert_minipage, convert_frameless_box):
+	small fixes for miniboxes	
+	(revert_cite_engine, convert_paperpackage): remove wrong warnings
+	(remove_paperpackage): update to format 243.
+
+	* lyx2lyx/LyX.py: update to format 243
+
 2005-07-15  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* configure.m4: typo
