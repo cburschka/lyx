@@ -3,11 +3,16 @@
 # Hartmut Haase <hha4491@atomstromfrei.de>
 # Peter Sütterlin <P.Suetterlin@astro.uu.nl>
 # Michael Schmitt <Michael.Schmitt@teststep.org>
-#
-# !!! Comment by M. Schmitt: Check translation of "quote" and "reference"!!!
-#
+# 
+# !!! M. Schmitt: Check translations of "quote" and "reference"!!!
+# 
 # Ein paar generelle Richtlinien für eine einheitliche Übersetzung (Vorschlag von M. Schmitt):
 #
+#   1. In Tooltips die "Sie"-Form verwenden. Beispiel:
+#         "Bearbeiten Sie den Vorspann in einem externen Editor"
+#   2. In Menüs die Infinitiv-Form verwenden. Beispiel:
+#         "Vorspann bearbeiten" 
+# 
 #   add                  -> hinzufügen / anfügen
 #   advanced             -> erweitert(e)
 #   allocate             -> bereitstellen
@@ -72,13 +77,13 @@
 #   type                 -> Art
 #   view(er)             -> ansehen / Ansicht / Betrachter
 #   wrap                 -> umflossenes Gleitobjekt
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2005-07-18 01:38+0200\n"
-"PO-Revision-Date: 2005-07-18 01:51+0200\n"
+"POT-Creation-Date: 2005-07-20 20:43+0200\n"
+"PO-Revision-Date: 2005-07-21 20:56+0200\n"
 "Last-Translator: Michael Schmitt <Michael.Schmitt@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -394,10 +399,10 @@ msgstr "Form:|#o"
 
 #: src/frontends/xforms/forms/form_character.fd:116
 msgid "Color:|#C"
-msgstr "Farben:|#a"
+msgstr "Farbe:|#a"
 
 #: src/frontends/xforms/forms/form_character.fd:134
-#: src/frontends/xforms/forms/form_document.fd:1251
+#: src/frontends/xforms/forms/form_document.fd:1233
 msgid "Language:|#L"
 msgstr "Sprache:|#p"
 
@@ -410,7 +415,7 @@ msgid "These are never toggled"
 msgstr "Kein Umschalten"
 
 #: src/frontends/xforms/forms/form_character.fd:188
-#: src/frontends/xforms/forms/form_document.fd:1487
+#: src/frontends/xforms/forms/form_document.fd:1469
 msgid "Size:|#z"
 msgstr "Größe:|#G"
 
@@ -439,7 +444,7 @@ msgid "@4->"
 msgstr "@4->"
 
 #: src/frontends/xforms/forms/form_citation.fd:134
-#: src/frontends/xforms/forms/form_document.fd:1909
+#: src/frontends/xforms/forms/form_document.fd:1891
 msgid "@9+"
 msgstr "@9+"
 
@@ -569,216 +574,212 @@ msgid "Custom sizes|#M"
 msgstr "Benutzerdefinierte Größen|#B"
 
 #: src/frontends/xforms/forms/form_document.fd:446
-msgid "Special (A4 portrait only):|#S"
-msgstr "Spezial (nur für A4-Hochformat):|#S"
-
-#: src/frontends/xforms/forms/form_document.fd:464
 msgid "Top:|#T"
 msgstr "Oben:|#O"
 
-#: src/frontends/xforms/forms/form_document.fd:500
+#: src/frontends/xforms/forms/form_document.fd:482
 msgid "Bottom:|#B"
 msgstr "Unten:|#U"
 
-#: src/frontends/xforms/forms/form_document.fd:536
+#: src/frontends/xforms/forms/form_document.fd:518
 msgid "Inner:|#I"
 msgstr "Innen:|#I"
 
-#: src/frontends/xforms/forms/form_document.fd:572
+#: src/frontends/xforms/forms/form_document.fd:554
 msgid "Outer:|#u"
 msgstr "Außen:|#A"
 
-#: src/frontends/xforms/forms/form_document.fd:608
+#: src/frontends/xforms/forms/form_document.fd:590
 msgid "Headheight:|#H"
 msgstr "Kopfzeilenhöhe:|#K"
 
-#: src/frontends/xforms/forms/form_document.fd:644
+#: src/frontends/xforms/forms/form_document.fd:626
 msgid "Headsep:|#d"
 msgstr "Abst. zum Kopf:|#K"
 
-#: src/frontends/xforms/forms/form_document.fd:680
+#: src/frontends/xforms/forms/form_document.fd:662
 msgid "Footskip:|#F"
 msgstr "Abst. zum Fuß:|#F"
 
-#: src/frontends/xforms/forms/form_document.fd:740
+#: src/frontends/xforms/forms/form_document.fd:722
 msgid "Sides"
 msgstr "Seiten"
 
-#: src/frontends/xforms/forms/form_document.fd:758
+#: src/frontends/xforms/forms/form_document.fd:740
 msgid "Separation"
 msgstr "Absatztrennung"
 
-#: src/frontends/xforms/forms/form_document.fd:776
+#: src/frontends/xforms/forms/form_document.fd:758
 msgid "Columns"
 msgstr "Spalten"
 
-#: src/frontends/xforms/forms/form_document.fd:794
+#: src/frontends/xforms/forms/form_document.fd:776
 msgid "Fonts:|#F"
 msgstr "Schriften:|#c"
 
-#: src/frontends/xforms/forms/form_document.fd:812
+#: src/frontends/xforms/forms/form_document.fd:794
 msgid "Font Size:|#O"
 msgstr "Schriftgröße:|#g"
 
-#: src/frontends/xforms/forms/form_document.fd:830
+#: src/frontends/xforms/forms/form_document.fd:812
 msgid "Class:|#C"
 msgstr "Klasse:|#K"
 
-#: src/frontends/xforms/forms/form_document.fd:848
+#: src/frontends/xforms/forms/form_document.fd:830
 msgid "Page style:|#P"
 msgstr "Seiten-Stil:|#n"
 
-#: src/frontends/xforms/forms/form_document.fd:866
+#: src/frontends/xforms/forms/form_document.fd:848
 msgid "Spacing:|#g"
 msgstr "Abstand:|#A"
 
-#: src/frontends/xforms/forms/form_document.fd:884
+#: src/frontends/xforms/forms/form_document.fd:866
 msgid "Extra Options:|#X"
 msgstr "Zusatz-Optionen:|#O"
 
-#: src/frontends/xforms/forms/form_document.fd:920
+#: src/frontends/xforms/forms/form_document.fd:902
 msgid "Default Skip:|#u"
 msgstr "Standard-Abstand:|#d"
 
-#: src/frontends/xforms/forms/form_document.fd:956
+#: src/frontends/xforms/forms/form_document.fd:938
 msgid "One|#n"
 msgstr "Einseitig|#i"
 
-#: src/frontends/xforms/forms/form_document.fd:974
+#: src/frontends/xforms/forms/form_document.fd:956
 msgid "Two|#T"
 msgstr "Zweiseitig|#w"
 
-#: src/frontends/xforms/forms/form_document.fd:1028
+#: src/frontends/xforms/forms/form_document.fd:1010
 msgid "One|#e"
 msgstr "1-spaltig|#1"
 
-#: src/frontends/xforms/forms/form_document.fd:1046
+#: src/frontends/xforms/forms/form_document.fd:1028
 msgid "Two|#w"
 msgstr "2-spaltig|#2"
 
-#: src/frontends/xforms/forms/form_document.fd:1100
+#: src/frontends/xforms/forms/form_document.fd:1082
 msgid "Indent|#I"
 msgstr "Einrückung|#E"
 
-#: src/frontends/xforms/forms/form_document.fd:1118
+#: src/frontends/xforms/forms/form_document.fd:1100
 msgid "Skip|#K"
 msgstr "Abstand|#t"
 
-#: src/frontends/xforms/forms/form_document.fd:1215
+#: src/frontends/xforms/forms/form_document.fd:1197
 #: src/frontends/xforms/forms/form_preferences.fd:326
 msgid "Encoding:|#E"
 msgstr "Kodierung:|#K"
 
-#: src/frontends/xforms/forms/form_document.fd:1233
+#: src/frontends/xforms/forms/form_document.fd:1215
 msgid "Quote Style:|#Q"
 msgstr "Stil der Anführungszeichen:|#A"
 
-#: src/frontends/xforms/forms/form_document.fd:1293
+#: src/frontends/xforms/forms/form_document.fd:1275
 msgid "Float Placement:|#L"
 msgstr "Gleitobjekt-Platzierung:|#P"
 
-#: src/frontends/xforms/forms/form_document.fd:1311
+#: src/frontends/xforms/forms/form_document.fd:1293
 msgid "Section number depth:"
 msgstr "Tiefe der Abschnittsnummerierung:"
 
-#: src/frontends/xforms/forms/form_document.fd:1333
+#: src/frontends/xforms/forms/form_document.fd:1315
 msgid "Table of contents depth:"
 msgstr "Tiefe im Inhaltsverzeichnis:"
 
-#: src/frontends/xforms/forms/form_document.fd:1355
+#: src/frontends/xforms/forms/form_document.fd:1337
 msgid "PS Driver:|#S"
 msgstr "PostScript-Treiber:|#T"
 
-#: src/frontends/xforms/forms/form_document.fd:1373
+#: src/frontends/xforms/forms/form_document.fd:1355
 msgid "Use AMS Math:|#M"
 msgstr "AMS-Mathe verwenden:|#A"
 
-#: src/frontends/xforms/forms/form_document.fd:1391
+#: src/frontends/xforms/forms/form_document.fd:1373
 msgid "Sectioned bibliography|#e"
 msgstr "Abschnittsspezifisches Literaturverzeichnis|#A"
 
-#: src/frontends/xforms/forms/form_document.fd:1409
+#: src/frontends/xforms/forms/form_document.fd:1391
 msgid "Citation Style:|#C"
 msgstr "Zitat-Stil:|#i"
 
-#: src/frontends/xforms/forms/form_document.fd:1451
+#: src/frontends/xforms/forms/form_document.fd:1433
 msgid "Bullet depth"
 msgstr "Aufzählungsebene"
 
-#: src/frontends/xforms/forms/form_document.fd:1505
+#: src/frontends/xforms/forms/form_document.fd:1487
 msgid "LaTeX:|#L"
 msgstr "LaTeX:|#L"
 
-#: src/frontends/xforms/forms/form_document.fd:1541
+#: src/frontends/xforms/forms/form_document.fd:1523
 msgid "1|#1"
 msgstr "1|#1"
 
-#: src/frontends/xforms/forms/form_document.fd:1560
+#: src/frontends/xforms/forms/form_document.fd:1542
 msgid "2|#2"
 msgstr "2|#2"
 
-#: src/frontends/xforms/forms/form_document.fd:1578
+#: src/frontends/xforms/forms/form_document.fd:1560
 msgid "3|#3"
 msgstr "3|#3"
 
-#: src/frontends/xforms/forms/form_document.fd:1596
+#: src/frontends/xforms/forms/form_document.fd:1578
 msgid "4|#4"
 msgstr "4|#4"
 
-#: src/frontends/xforms/forms/form_document.fd:1650
+#: src/frontends/xforms/forms/form_document.fd:1632
 msgid "Standard|#S"
 msgstr "Standard|#S"
 
-#: src/frontends/xforms/forms/form_document.fd:1669
+#: src/frontends/xforms/forms/form_document.fd:1651
 msgid "Maths|#M"
 msgstr "Mathe|#M"
 
-#: src/frontends/xforms/forms/form_document.fd:1687
+#: src/frontends/xforms/forms/form_document.fd:1669
 msgid "Ding 1|#D"
 msgstr "Ding 1|#D"
 
-#: src/frontends/xforms/forms/form_document.fd:1705
+#: src/frontends/xforms/forms/form_document.fd:1687
 msgid "Ding 2|#i"
 msgstr "Ding 2|#i"
 
-#: src/frontends/xforms/forms/form_document.fd:1723
+#: src/frontends/xforms/forms/form_document.fd:1705
 msgid "Ding 3|#n"
 msgstr "Ding 3|#n"
 
-#: src/frontends/xforms/forms/form_document.fd:1741
+#: src/frontends/xforms/forms/form_document.fd:1723
 msgid "Ding 4|#g"
 msgstr "Ding 4|#g"
 
-#: src/frontends/xforms/forms/form_document.fd:1801
+#: src/frontends/xforms/forms/form_document.fd:1783
 msgid "New Branch:|#N"
 msgstr "Neuer Zweig:|#N"
 
-#: src/frontends/xforms/forms/form_document.fd:1819
+#: src/frontends/xforms/forms/form_document.fd:1801
 #: src/frontends/xforms/forms/form_spellchecker.fd:134
 msgid "Add|#d"
 msgstr "Hinzufügen|#H"
 
-#: src/frontends/xforms/forms/form_document.fd:1837
+#: src/frontends/xforms/forms/form_document.fd:1819
 msgid "Remove|#e"
 msgstr "Entfernen|#E"
 
-#: src/frontends/xforms/forms/form_document.fd:1855
+#: src/frontends/xforms/forms/form_document.fd:1837
 msgid "Available Branches:"
 msgstr "Verfügbare Zweige:"
 
-#: src/frontends/xforms/forms/form_document.fd:1873
+#: src/frontends/xforms/forms/form_document.fd:1855
 msgid "Activated Branches:"
 msgstr "Aktivierte Zweige:"
 
-#: src/frontends/xforms/forms/form_document.fd:1891
+#: src/frontends/xforms/forms/form_document.fd:1873
 msgid "@5->"
 msgstr "@5->"
 
-#: src/frontends/xforms/forms/form_document.fd:1927
+#: src/frontends/xforms/forms/form_document.fd:1909
 msgid "Display Background:"
 msgstr "Anzeige (Hintergrund):"
 
-#: src/frontends/xforms/forms/form_document.fd:1945
+#: src/frontends/xforms/forms/form_document.fd:1927
 msgid "Modify"
 msgstr "Ändern"
 
@@ -1394,14 +1395,12 @@ msgid "Instant Preview:|#p"
 msgstr "Sofortige Vorschau:|#V"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1054
-#, fuzzy
 msgid "Real name:|#R"
-msgstr "Wirklicher Name : |#W"
+msgstr "Echter Name:|#N"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1072
-#, fuzzy
 msgid "Email address:|#E"
-msgstr "EMail-Adresse : |#E"
+msgstr "EMail-Adresse:|#E"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1114
 msgid "Spell command:|#S"
@@ -2187,7 +2186,7 @@ msgid "S&ectioned bibliography"
 msgstr "&Abschnittsspezifisches Literaturverzeichnis"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:186
-#: src/frontends/xforms/FormDocument.C:327
+#: src/frontends/xforms/FormDocument.C:321
 msgid "Select this if you want to split your bibliography into sections"
 msgstr ""
 
@@ -2390,7 +2389,7 @@ msgstr "PostScript-&Treiber:"
 #: src/frontends/qt2/ui/LanguageModuleBase.ui:56
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:209
 msgid "&Language:"
-msgstr "&Sprache:"
+msgstr "S&prache:"
 
 #: src/frontends/qt2/ui/LanguageModuleBase.ui:108
 msgid "&Use language's default encoding"
@@ -2404,37 +2403,45 @@ msgstr "&Kodierung:"
 msgid "&Quote Style:"
 msgstr "&Stil der Anführungszeichen:"
 
+#: src/frontends/qt2/ui/MarginsModuleBase.ui:22
+msgid "MarginsModuleBase"
+msgstr ""
+
+#: src/frontends/qt2/ui/MarginsModuleBase.ui:41
+msgid "&Default Margins"
+msgstr "&Standard-Ränder"
+
 #: src/frontends/qt2/ui/MarginsModuleBase.ui:45
+msgid "Use the margin settings provided by the document class"
+msgstr "Verwenden Sie die Rand-Einstellungen der Dokumentklasse"
+
+#: src/frontends/qt2/ui/MarginsModuleBase.ui:132
 msgid "&Top:"
 msgstr "&Oben:"
 
-#: src/frontends/qt2/ui/MarginsModuleBase.ui:64
+#: src/frontends/qt2/ui/MarginsModuleBase.ui:151
 msgid "&Bottom:"
 msgstr "&Unten:"
 
-#: src/frontends/qt2/ui/MarginsModuleBase.ui:83
+#: src/frontends/qt2/ui/MarginsModuleBase.ui:170
 msgid "&Inner:"
 msgstr "&Innen:"
 
-#: src/frontends/qt2/ui/MarginsModuleBase.ui:102
+#: src/frontends/qt2/ui/MarginsModuleBase.ui:189
 msgid "O&uter:"
 msgstr "&Außen:"
 
-#: src/frontends/qt2/ui/MarginsModuleBase.ui:117
-msgid "&Margins:"
-msgstr "&Ränder:"
-
-#: src/frontends/qt2/ui/MarginsModuleBase.ui:173
-msgid "&Foot skip:"
-msgstr "Abstand zum &Fuß:"
-
-#: src/frontends/qt2/ui/MarginsModuleBase.ui:192
+#: src/frontends/qt2/ui/MarginsModuleBase.ui:208
 msgid "Head &sep:"
 msgstr "Abstand zum &Kopf:"
 
-#: src/frontends/qt2/ui/MarginsModuleBase.ui:233
+#: src/frontends/qt2/ui/MarginsModuleBase.ui:227
 msgid "Head &height:"
 msgstr "&Kopfzeilenhöhe:"
+
+#: src/frontends/qt2/ui/MarginsModuleBase.ui:246
+msgid "&Foot skip:"
+msgstr "Abstand zum &Fuß:"
 
 #: src/frontends/qt2/ui/MathsModuleBase.ui:41
 msgid "&Use AMS math package automatically"
@@ -2907,9 +2914,8 @@ msgid "Select your branch"
 msgstr "Wählen Sie Ihren Zweig aus"
 
 #: src/frontends/qt2/ui/QChangesDialogBase.ui:60
-#, fuzzy
 msgid "Change:"
-msgstr "Änderung :"
+msgstr "Änderung:"
 
 #: src/frontends/qt2/ui/QChangesDialogBase.ui:75
 msgid "Details of the change"
@@ -2965,7 +2971,7 @@ msgstr "Schriftserie"
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:162
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:217
 #: src/frontends/qt2/QDocumentDialog.C:80 src/frontends/qt2/QPrefsDialog.C:104
-#: src/frontends/xforms/FormDocument.C:427
+#: src/frontends/xforms/FormDocument.C:421
 #: src/frontends/xforms/FormPreferences.C:273
 msgid "Language"
 msgstr "Sprache"
@@ -2981,7 +2987,7 @@ msgstr "&Serie:"
 
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:251
 msgid "&Color:"
-msgstr "F&arben:"
+msgstr "F&arbe:"
 
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:287
 msgid "Never Toggled"
@@ -3283,8 +3289,7 @@ msgstr "Bildschirmanzeige"
 #: src/frontends/controllers/ControlExternal.C:226
 #: src/frontends/controllers/ControlGraphics.C:169
 #: src/frontends/gtk/GDocument.C:174 src/frontends/gtk/GDocument.C:652
-#: src/frontends/qt2/QDocument.C:111 src/frontends/qt2/QDocumentDialog.C:273
-#: src/lyxfont.C:516
+#: src/frontends/qt2/QDocument.C:111 src/lyxfont.C:516
 msgid "Default"
 msgstr "Standard"
 
@@ -3760,7 +3765,7 @@ msgstr "1.5"
 #: src/frontends/qt2/ui/QVSpaceDialogBase.ui:151
 #: src/frontends/gtk/GDocument.C:148 src/frontends/gtk/GDocument.C:175
 #: src/frontends/gtk/GDocument.C:653 src/frontends/qt2/QDocument.C:112
-#: src/frontends/qt2/QDocument.C:168 src/frontends/qt2/QDocumentDialog.C:274
+#: src/frontends/qt2/QDocument.C:168
 msgid "Custom"
 msgstr "Benutzerdefiniert"
 
@@ -3794,7 +3799,6 @@ msgid "Lo&ngest label"
 msgstr "Län&gste Marke"
 
 #: src/frontends/qt2/ui/QPreambleDialogBase.ui:45
-#, fuzzy
 msgid "The LaTeX preamble"
 msgstr "Der LaTeX-Vorspann"
 
@@ -3803,9 +3807,8 @@ msgid "&Edit..."
 msgstr "&Bearbeiten..."
 
 #: src/frontends/qt2/ui/QPreambleDialogBase.ui:79
-#, fuzzy
 msgid "Edit the preamble in an external editor"
-msgstr "Den Vorspann mit einem externen Editor bearbeiten"
+msgstr "Bearbeiten Sie den Vorspann in einem externen Editor"
 
 #: src/frontends/qt2/ui/QPrefAsciiModule.ui:56
 msgid "&roff command:"
@@ -3813,17 +3816,17 @@ msgstr "&roff-Befehl:"
 
 #: src/frontends/qt2/ui/QPrefAsciiModule.ui:90
 msgid "Max. line length of exported plain text/LaTeX/SGML files"
-msgstr "Die maximale Zeilenlänge für exportierte ASCII/LaTeX/SGML-Dateien"
+msgstr "Maximale Zeilenlänge für exportierte Text/LaTeX/SGML-Dateien"
 
 #: src/frontends/qt2/ui/QPrefAsciiModule.ui:124
 msgid "Output &line length:"
 msgstr "Ausgabe &Zeilenlänge:"
 
 #: src/frontends/qt2/ui/QPrefAsciiModule.ui:139
-#, fuzzy
 msgid "External app for formating tables in plain text output"
 msgstr ""
-"Externe Anwendung für die Formatierung von Tabellen in der ASCII-Ausgabe"
+"Externe Anwendung für die Formatierung von Tabellen bei der Ausgabe als "
+"einfacher Text"
 
 #: src/frontends/qt2/ui/QPrefColorsModule.ui:56
 msgid "&Colors"
@@ -5217,9 +5220,8 @@ msgid "Note"
 msgstr "Hinweis"
 
 #: lib/layouts/IEEEtran.layout:223
-#, fuzzy
 msgid "Note #:"
-msgstr "Hinweis"
+msgstr "Hinweis #."
 
 #: lib/layouts/IEEEtran.layout:230 lib/layouts/amsart-plain.layout:126
 #: lib/layouts/amsart-seq.layout:238 lib/layouts/amsmaths-plain.inc:202
@@ -5378,7 +5380,7 @@ msgstr "Literaturverzeichnis"
 #: lib/layouts/aastex.layout:114 lib/layouts/aastex.layout:410
 #: lib/layouts/ijmpd.layout:162 lib/layouts/ijmpd.layout:170
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
-#: src/rowpainter.C:443
+#: src/rowpainter.C:415
 msgid "Appendix"
 msgstr "Anhang"
 
@@ -6141,7 +6143,7 @@ msgstr "Hauptvariante"
 #: lib/layouts/chess.layout:39
 #, fuzzy
 msgid "Mainline:"
-msgstr "Hauptvariante"
+msgstr "Hauptvariante: "
 
 #: lib/layouts/chess.layout:57
 msgid "Variation"
@@ -6749,9 +6751,8 @@ msgid "Brieftext"
 msgstr "Brieftext"
 
 #: lib/layouts/g-brief-de.layout:24
-#, fuzzy
 msgid "Text:"
-msgstr "Text"
+msgstr "Text:"
 
 #: lib/layouts/g-brief-de.layout:52
 msgid "Unterschrift"
@@ -6762,117 +6763,104 @@ msgid "Strasse"
 msgstr "Straße"
 
 #: lib/layouts/g-brief-de.layout:62
-#, fuzzy
 msgid "Strasse:"
-msgstr "Straße"
+msgstr "Straße:"
 
 #: lib/layouts/g-brief-de.layout:66
 msgid "Zusatz"
 msgstr "Zusatz"
 
 #: lib/layouts/g-brief-de.layout:69
-#, fuzzy
 msgid "Zusatz:"
-msgstr "Zusatz"
+msgstr "Zusatz:"
 
 #: lib/layouts/g-brief-de.layout:73
 msgid "Ort"
 msgstr "Ort"
 
 #: lib/layouts/g-brief-de.layout:76
-#, fuzzy
 msgid "Ort:"
-msgstr "Ort"
+msgstr "Ort:"
 
 #: lib/layouts/g-brief-de.layout:80
 msgid "Land"
 msgstr "Land"
 
 #: lib/layouts/g-brief-de.layout:83
-#, fuzzy
 msgid "Land:"
-msgstr "Land"
+msgstr "Land:"
 
 #: lib/layouts/g-brief-de.layout:87
 msgid "RetourAdresse"
 msgstr "Retour-Adresse"
 
 #: lib/layouts/g-brief-de.layout:90
-#, fuzzy
 msgid "RetourAdresse:"
-msgstr "Retour-Adresse"
+msgstr "Retour-Adresse:"
 
 #: lib/layouts/g-brief-de.layout:94
 msgid "MeinZeichen"
 msgstr "Mein Zeichen"
 
 #: lib/layouts/g-brief-de.layout:97
-#, fuzzy
 msgid "MeinZeichen:"
-msgstr "Mein Zeichen"
+msgstr "Mein Zeichen:"
 
 #: lib/layouts/g-brief-de.layout:101
 msgid "IhrZeichen"
 msgstr "Ihr Zeichen"
 
 #: lib/layouts/g-brief-de.layout:104
-#, fuzzy
 msgid "IhrZeichen:"
-msgstr "Ihr Zeichen"
+msgstr "Ihr Zeichen:"
 
 #: lib/layouts/g-brief-de.layout:108
 msgid "IhrSchreiben"
 msgstr "Ihr Schreiben"
 
 #: lib/layouts/g-brief-de.layout:111
-#, fuzzy
 msgid "IhrSchreiben:"
-msgstr "Ihr Schreiben"
+msgstr "Ihr Schreiben:"
 
 #: lib/layouts/g-brief-de.layout:115
 msgid "Telefon"
 msgstr "Telefon"
 
 #: lib/layouts/g-brief-de.layout:118
-#, fuzzy
 msgid "Telefon:"
-msgstr "Telefon"
+msgstr "Telefon:"
 
 #: lib/layouts/g-brief-de.layout:122 lib/layouts/g-brief-en.layout:122
 msgid "Telefax"
 msgstr "Telefax"
 
 #: lib/layouts/g-brief-de.layout:125 lib/layouts/g-brief-en.layout:125
-#, fuzzy
 msgid "Telefax:"
-msgstr "Telefax"
+msgstr "Telefax:"
 
 #: lib/layouts/g-brief-de.layout:129 lib/layouts/g-brief-en.layout:129
 msgid "Telex"
 msgstr "Telex"
 
 #: lib/layouts/g-brief-de.layout:132 lib/layouts/g-brief-en.layout:132
-#, fuzzy
 msgid "Telex:"
-msgstr "Telex"
+msgstr "Telex:"
 
 #: lib/layouts/g-brief-de.layout:136 lib/layouts/g-brief-en.layout:136
 msgid "EMail"
 msgstr "EMail"
 
 #: lib/layouts/g-brief-de.layout:139 lib/layouts/g-brief-en.layout:139
-#, fuzzy
 msgid "EMail:"
-msgstr "EMail"
+msgstr "EMail:"
 
 #: lib/layouts/g-brief-de.layout:143 lib/layouts/g-brief-en.layout:143
 msgid "HTTP"
 msgstr "HTTP"
 
 #: lib/layouts/g-brief-de.layout:146 lib/layouts/g-brief-en.layout:146
-#, fuzzy
 msgid "HTTP:"
-msgstr "HTTP"
+msgstr "HTTP:"
 
 #: lib/layouts/g-brief-de.layout:150 lib/layouts/g-brief-en.layout:150
 #: lib/layouts/scrlttr2.layout:220
@@ -6881,36 +6869,32 @@ msgstr "Bank"
 
 #: lib/layouts/g-brief-de.layout:153 lib/layouts/g-brief-en.layout:153
 #: lib/layouts/scrlttr2.layout:224
-#, fuzzy
 msgid "Bank:"
-msgstr "Bank"
+msgstr "Bank:"
 
 #: lib/layouts/g-brief-de.layout:157
 msgid "BLZ"
 msgstr "BLZ"
 
 #: lib/layouts/g-brief-de.layout:160
-#, fuzzy
 msgid "BLZ:"
-msgstr "BLZ"
+msgstr "BLZ:"
 
 #: lib/layouts/g-brief-de.layout:164
 msgid "Konto"
 msgstr "Konto"
 
 #: lib/layouts/g-brief-de.layout:167
-#, fuzzy
 msgid "Konto:"
-msgstr "Konto"
+msgstr "Konto:"
 
 #: lib/layouts/g-brief-de.layout:171
 msgid "Postvermerk"
 msgstr "Postvermerk"
 
 #: lib/layouts/g-brief-de.layout:174
-#, fuzzy
 msgid "Postvermerk:"
-msgstr "Postvermerk"
+msgstr "Postvermerk:"
 
 #: lib/layouts/g-brief-de.layout:178
 msgid "Adresse"
@@ -6945,9 +6929,8 @@ msgstr "Brieftext"
 #: lib/layouts/g-brief-en.layout:55 lib/layouts/g-brief2.layout:221
 #: lib/layouts/scrlettr.layout:147 lib/layouts/scrlttr2.layout:176
 #: lib/layouts/stdletter.inc:83
-#, fuzzy
 msgid "Signature:"
-msgstr "Unterschrift"
+msgstr "Unterschrift:"
 
 #: lib/layouts/g-brief-en.layout:59
 msgid "Street"
@@ -7061,9 +7044,8 @@ msgstr "Postvermerk"
 #: lib/layouts/revtex.layout:107 lib/layouts/revtex4.layout:124
 #: lib/layouts/scrlettr.layout:175 lib/layouts/scrlttr2.layout:248
 #: lib/layouts/amsdefs.inc:113
-#, fuzzy
 msgid "Date:"
-msgstr "Datum"
+msgstr "Datum:"
 
 #: lib/layouts/g-brief-en.layout:194 lib/layouts/g-brief2.layout:840
 msgid "Reference"
@@ -7106,279 +7088,248 @@ msgid "NameRowA"
 msgstr "Name Zeile A"
 
 #: lib/layouts/g-brief2.layout:86
-#, fuzzy
 msgid "NameRowA:"
-msgstr "Name Zeile A"
+msgstr "Name Zeile A:"
 
 #: lib/layouts/g-brief2.layout:95
 msgid "NameRowB"
 msgstr "Name Zeile B"
 
 #: lib/layouts/g-brief2.layout:105
-#, fuzzy
 msgid "NameRowB:"
-msgstr "Name Zeile B"
+msgstr "Name Zeile B:"
 
 #: lib/layouts/g-brief2.layout:114
 msgid "NameRowC"
 msgstr "Name Zeile C"
 
 #: lib/layouts/g-brief2.layout:124
-#, fuzzy
 msgid "NameRowC:"
-msgstr "Name Zeile C"
+msgstr "Name Zeile C:"
 
 #: lib/layouts/g-brief2.layout:133
 msgid "NameRowD"
 msgstr "Name Zeile D"
 
 #: lib/layouts/g-brief2.layout:143
-#, fuzzy
 msgid "NameRowD:"
-msgstr "Name Zeile D"
+msgstr "Name Zeile D:"
 
 #: lib/layouts/g-brief2.layout:152
 msgid "NameRowE"
 msgstr "Name Zeile E"
 
 #: lib/layouts/g-brief2.layout:162
-#, fuzzy
 msgid "NameRowE:"
-msgstr "Name Zeile E"
+msgstr "Name Zeile E:"
 
 #: lib/layouts/g-brief2.layout:171
 msgid "NameRowF"
 msgstr "Name Zeile F"
 
 #: lib/layouts/g-brief2.layout:181
-#, fuzzy
 msgid "NameRowF:"
-msgstr "Name Zeile F"
+msgstr "Name Zeile F:"
 
 #: lib/layouts/g-brief2.layout:190
 msgid "NameRowG"
 msgstr "Name Zeile G"
 
 #: lib/layouts/g-brief2.layout:200
-#, fuzzy
 msgid "NameRowG:"
-msgstr "Name Zeile G"
+msgstr "Name Zeile G:"
 
 #: lib/layouts/g-brief2.layout:230
 msgid "AddressRowA"
 msgstr "Adresse Zeile A"
 
 #: lib/layouts/g-brief2.layout:241
-#, fuzzy
 msgid "AddressRowA:"
-msgstr "Adresse Zeile A"
+msgstr "Adresse Zeile A:"
 
 #: lib/layouts/g-brief2.layout:250
 msgid "AddressRowB"
 msgstr "Adresse Zeile B"
 
 #: lib/layouts/g-brief2.layout:260
-#, fuzzy
 msgid "AddressRowB:"
-msgstr "Adresse Zeile B"
+msgstr "Adresse Zeile B:"
 
 #: lib/layouts/g-brief2.layout:269
 msgid "AddressRowC"
 msgstr "Adresse Zeile C"
 
 #: lib/layouts/g-brief2.layout:279
-#, fuzzy
 msgid "AddressRowC:"
-msgstr "Adresse Zeile C"
+msgstr "Adresse Zeile C:"
 
 #: lib/layouts/g-brief2.layout:288
 msgid "AddressRowD"
 msgstr "Adresse Zeile D"
 
 #: lib/layouts/g-brief2.layout:298
-#, fuzzy
 msgid "AddressRowD:"
-msgstr "Adresse Zeile D"
+msgstr "Adresse Zeile D:"
 
 #: lib/layouts/g-brief2.layout:307
 msgid "AddressRowE"
 msgstr "Adresse Zeile E"
 
 #: lib/layouts/g-brief2.layout:317
-#, fuzzy
 msgid "AddressRowE:"
-msgstr "Adresse Zeile E"
+msgstr "Adresse Zeile E:"
 
 #: lib/layouts/g-brief2.layout:326
 msgid "AddressRowF"
 msgstr "Adresse Zeile F"
 
 #: lib/layouts/g-brief2.layout:336
-#, fuzzy
 msgid "AddressRowF:"
-msgstr "Adresse Zeile F"
+msgstr "Adresse Zeile F:"
 
 #: lib/layouts/g-brief2.layout:345
 msgid "TelephoneRowA"
 msgstr "Telefon Zeile A"
 
 #: lib/layouts/g-brief2.layout:356
-#, fuzzy
 msgid "TelephoneRowA:"
-msgstr "Telefon Zeile A"
+msgstr "Telefon Zeile A:"
 
 #: lib/layouts/g-brief2.layout:365
 msgid "TelephoneRowB"
 msgstr "Telefon Zeile B"
 
 #: lib/layouts/g-brief2.layout:375
-#, fuzzy
 msgid "TelephoneRowB:"
-msgstr "Telefon Zeile B"
+msgstr "Telefon Zeile B:"
 
 #: lib/layouts/g-brief2.layout:384
 msgid "TelephoneRowC"
 msgstr "Telefon Zeile C"
 
 #: lib/layouts/g-brief2.layout:394
-#, fuzzy
 msgid "TelephoneRowC:"
-msgstr "Telefon Zeile C"
+msgstr "Telefon Zeile C:"
 
 #: lib/layouts/g-brief2.layout:403
 msgid "TelephoneRowD"
 msgstr "Telefon Zeile D"
 
 #: lib/layouts/g-brief2.layout:413
-#, fuzzy
 msgid "TelephoneRowD:"
-msgstr "Telefon Zeile D"
+msgstr "Telefon Zeile D:"
 
 #: lib/layouts/g-brief2.layout:422
 msgid "TelephoneRowE"
 msgstr "Telefon Zeile E"
 
 #: lib/layouts/g-brief2.layout:432
-#, fuzzy
 msgid "TelephoneRowE:"
-msgstr "Telefon Zeile E"
+msgstr "Telefon Zeile E:"
 
 #: lib/layouts/g-brief2.layout:441
 msgid "TelephoneRowF"
 msgstr "Telefon Zeile F"
 
 #: lib/layouts/g-brief2.layout:451
-#, fuzzy
 msgid "TelephoneRowF:"
-msgstr "Telefon Zeile F"
+msgstr "Telefon Zeile F:"
 
 #: lib/layouts/g-brief2.layout:460
 msgid "InternetRowA"
 msgstr "Internet Zeile A"
 
 #: lib/layouts/g-brief2.layout:471
-#, fuzzy
 msgid "InternetRowA:"
-msgstr "Internet Zeile A"
+msgstr "Internet Zeile A:"
 
 #: lib/layouts/g-brief2.layout:480
 msgid "InternetRowB"
 msgstr "Internet Zeile B"
 
 #: lib/layouts/g-brief2.layout:490
-#, fuzzy
 msgid "InternetRowB:"
-msgstr "Internet Zeile B"
+msgstr "Internet Zeile B:"
 
 #: lib/layouts/g-brief2.layout:499
 msgid "InternetRowC"
 msgstr "Internet Zeile C"
 
 #: lib/layouts/g-brief2.layout:509
-#, fuzzy
 msgid "InternetRowC:"
-msgstr "Internet Zeile C"
+msgstr "Internet Zeile C:"
 
 #: lib/layouts/g-brief2.layout:518
 msgid "InternetRowD"
 msgstr "Internet Zeile D"
 
 #: lib/layouts/g-brief2.layout:528
-#, fuzzy
 msgid "InternetRowD:"
-msgstr "Internet Zeile D"
+msgstr "Internet Zeile D:"
 
 #: lib/layouts/g-brief2.layout:537
 msgid "InternetRowE"
 msgstr "Internet Zeile E"
 
 #: lib/layouts/g-brief2.layout:547
-#, fuzzy
 msgid "InternetRowE:"
-msgstr "Internet Zeile E"
+msgstr "Internet Zeile E:"
 
 #: lib/layouts/g-brief2.layout:556
 msgid "InternetRowF"
 msgstr "Internet Zeile F"
 
 #: lib/layouts/g-brief2.layout:566
-#, fuzzy
 msgid "InternetRowF:"
-msgstr "Internet Zeile F"
+msgstr "Internet Zeile F:"
 
 #: lib/layouts/g-brief2.layout:575
 msgid "BankRowA"
 msgstr "Bank Zeile A"
 
 #: lib/layouts/g-brief2.layout:586
-#, fuzzy
 msgid "BankRowA:"
-msgstr "Bank Zeile A"
+msgstr "Bank Zeile A:"
 
 #: lib/layouts/g-brief2.layout:595
 msgid "BankRowB"
 msgstr "Bank Zeile B"
 
 #: lib/layouts/g-brief2.layout:605
-#, fuzzy
 msgid "BankRowB:"
-msgstr "Bank Zeile B"
+msgstr "Bank Zeile B:"
 
 #: lib/layouts/g-brief2.layout:614
 msgid "BankRowC"
 msgstr "Bank Zeile C"
 
 #: lib/layouts/g-brief2.layout:624
-#, fuzzy
 msgid "BankRowC:"
-msgstr "Bank Zeile C"
+msgstr "Bank Zeile C:"
 
 #: lib/layouts/g-brief2.layout:633
 msgid "BankRowD"
 msgstr "Bank Zeile D"
 
 #: lib/layouts/g-brief2.layout:643
-#, fuzzy
 msgid "BankRowD:"
-msgstr "Bank Zeile D"
+msgstr "Bank Zeile D:"
 
 #: lib/layouts/g-brief2.layout:652
 msgid "BankRowE"
 msgstr "Bank Zeile E"
 
 #: lib/layouts/g-brief2.layout:662
-#, fuzzy
 msgid "BankRowE:"
-msgstr "Bank Zeile E"
+msgstr "Bank Zeile E:"
 
 #: lib/layouts/g-brief2.layout:671
 msgid "BankRowF"
 msgstr "Bank Zeile F"
 
 #: lib/layouts/g-brief2.layout:681
-#, fuzzy
 msgid "BankRowF:"
-msgstr "Bank Zeile F"
+msgstr "Bank Zeile F:"
 
 #: lib/layouts/heb-article.layout:67
 #, fuzzy
@@ -7452,18 +7403,16 @@ msgid "Scene"
 msgstr "Szene"
 
 #: lib/layouts/ijmpd.layout:128
-#, fuzzy
 msgid "Theorem:"
-msgstr "Theorem"
+msgstr "Theorem:"
 
 #: lib/layouts/kluwer.layout:194
 msgid "AddressForOffprints"
 msgstr "Adresse für Sonderdrucke"
 
 #: lib/layouts/kluwer.layout:203
-#, fuzzy
 msgid "Address for Offprints:"
-msgstr "Adresse für Sonderdrucke"
+msgstr "Adresse für Sonderdrucke:"
 
 #: lib/layouts/kluwer.layout:213
 msgid "RunningTitle"
@@ -7471,18 +7420,16 @@ msgstr "Kolumnentitel"
 
 #: lib/layouts/kluwer.layout:222 lib/layouts/llncs.layout:159
 #: lib/layouts/svjour.inc:178
-#, fuzzy
 msgid "Running title:"
-msgstr "Kolumnentitel"
+msgstr "Kolumnentitel:"
 
 #: lib/layouts/kluwer.layout:236
 msgid "RunningAuthor"
 msgstr "Kolumne Autor"
 
 #: lib/layouts/kluwer.layout:244
-#, fuzzy
 msgid "Running author:"
-msgstr "Kolumne Autor"
+msgstr "Kolumne Autor:"
 
 #: lib/layouts/kluwer.layout:290 lib/layouts/paper.layout:171
 #: lib/layouts/revtex4.layout:234 lib/layouts/spie.layout:46
@@ -7529,9 +7476,8 @@ msgid "Author Running"
 msgstr "Kolumne Autor"
 
 #: lib/layouts/llncs.layout:201 lib/layouts/svjour.inc:207
-#, fuzzy
 msgid "Author Running:"
-msgstr "Kolumne Autor"
+msgstr "Kolumne Autor:"
 
 #: lib/layouts/llncs.layout:205
 msgid "TOC Author"
@@ -7568,18 +7514,16 @@ msgid "Note #."
 msgstr "Hinweis"
 
 #: lib/layouts/llncs.layout:370 lib/layouts/svjour.inc:432
-#, fuzzy
 msgid "Problem #."
-msgstr "Problem"
+msgstr "Problem #."
 
 #: lib/layouts/llncs.layout:381 lib/layouts/svjour.inc:443
 msgid "Property"
 msgstr "Eigenschaft"
 
 #: lib/layouts/llncs.layout:384 lib/layouts/svjour.inc:446
-#, fuzzy
 msgid "Property #."
-msgstr "Eigenschaft"
+msgstr "Eigenschaft #."
 
 #: lib/layouts/llncs.layout:394 lib/layouts/svjour.inc:457
 msgid "Question"
@@ -7656,9 +7600,8 @@ msgid "PACS"
 msgstr "PACS"
 
 #: lib/layouts/revtex4.layout:225
-#, fuzzy
 msgid "PACS number:"
-msgstr "PACS-Nummer: "
+msgstr "PACS-Nummer:"
 
 #: lib/layouts/scrbook.layout:16
 msgid "\\arabic{chapter}"
@@ -7705,27 +7648,24 @@ msgid "Telephone"
 msgstr "Telefon"
 
 #: lib/layouts/scrlettr.layout:161 lib/layouts/stdletter.inc:138
-#, fuzzy
 msgid "Telephone:"
-msgstr "Telefon"
+msgstr "Telefon:"
 
 #: lib/layouts/scrlettr.layout:165 lib/layouts/scrlttr2.layout:236
 msgid "Place"
 msgstr "Ort"
 
 #: lib/layouts/scrlettr.layout:168 lib/layouts/scrlttr2.layout:240
-#, fuzzy
 msgid "Place:"
-msgstr "Ort"
+msgstr "Ort:"
 
 #: lib/layouts/scrlettr.layout:179 lib/layouts/scrlttr2.layout:252
 msgid "Backaddress"
 msgstr "Rücksende-Adresse"
 
 #: lib/layouts/scrlettr.layout:182 lib/layouts/scrlttr2.layout:256
-#, fuzzy
 msgid "Backaddress:"
-msgstr "Rücksende-Adresse"
+msgstr "Rücksende-Adresse:"
 
 #: lib/layouts/scrlettr.layout:186 lib/layouts/scrlttr2.layout:260
 msgid "Specialmail"
@@ -7748,9 +7688,8 @@ msgid "Location:"
 msgstr "Adresszusatz"
 
 #: lib/layouts/scrlettr.layout:203 lib/layouts/scrlttr2.layout:280
-#, fuzzy
 msgid "Title:"
-msgstr "Titel"
+msgstr "Titel:"
 
 #: lib/layouts/scrlettr.layout:207 lib/layouts/scrlttr2.layout:284
 #: lib/layouts/scrclass.inc:167
@@ -9308,6 +9247,7 @@ msgid "Note|N"
 msgstr "Notiz|N"
 
 #: lib/ui/classic.ui:226
+#, fuzzy
 msgid "Lists & TOC|O"
 msgstr "Listen und Inhaltsverz.|L"
 
@@ -9570,9 +9510,8 @@ msgid "Reject All Changes|R"
 msgstr "Alle Änderungen ablehnen|b"
 
 #: lib/ui/classic.ui:327 lib/ui/stdmenus.ui:391
-#, fuzzy
 msgid "Show Changes in Output|S"
-msgstr "Breite des Bilds bei der Ausgabe"
+msgstr "In der Ausgabe anzeigen|I"
 
 #: lib/ui/classic.ui:334
 msgid "Character...|C"
@@ -9611,7 +9550,6 @@ msgid "Increase Environment Depth|i"
 msgstr "Umgebungstiefe erhöhen|e"
 
 #: lib/ui/classic.ui:346
-#, fuzzy
 msgid "LaTeX Preamble...|r"
 msgstr "LaTeX-Vorspann...|V"
 
@@ -9636,9 +9574,8 @@ msgid "TeX Information|X"
 msgstr "TeX-Informationen|X"
 
 #: lib/ui/classic.ui:374 lib/ui/stdmenus.ui:399
-#, fuzzy
 msgid "Next Note|N"
-msgstr "Notiz|N"
+msgstr "Nächste Notiz|N"
 
 #: lib/ui/classic.ui:375 lib/ui/stdmenus.ui:400
 msgid "Go to Label|L"
@@ -9747,7 +9684,7 @@ msgstr "Werkzeugleisten"
 
 #: lib/ui/stdmenus.ui:24
 msgid "Document|D"
-msgstr "Dokument|D"
+msgstr "Dokument|o"
 
 #: lib/ui/stdmenus.ui:25
 msgid "Tools|T"
@@ -9775,7 +9712,7 @@ msgstr "Ausschneiden"
 msgid "Copy"
 msgstr "Kopieren"
 
-#: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:623
+#: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:604
 #: src/mathed/math_nestinset.C:413 src/text3.C:805
 msgid "Paste"
 msgstr "Einfügen"
@@ -9802,7 +9739,7 @@ msgstr "Tabelle|T"
 
 #: lib/ui/stdmenus.ui:98
 msgid "Rows & Cols|C"
-msgstr ""
+msgstr "Zeilen & Spalten|Z"
 
 #: lib/ui/stdmenus.ui:100
 msgid "Increase List Depth|I"
@@ -9869,9 +9806,8 @@ msgid "Add Column"
 msgstr "Spalte anfügen"
 
 #: lib/ui/stdmenus.ui:155
-#, fuzzy
 msgid "Delete Column"
-msgstr "Spalte löschen|c"
+msgstr "Spalte löschen"
 
 #: lib/ui/stdmenus.ui:169
 msgid "Add Line Above"
@@ -10023,7 +9959,6 @@ msgid "Thesaurus...|T"
 msgstr "Thesaurus...|T"
 
 #: lib/ui/stdmenus.ui:428
-#, fuzzy
 msgid "TeX Information|I"
 msgstr "TeX-Informationen|X"
 
@@ -10060,12 +9995,10 @@ msgid "Find and replace"
 msgstr "Finden und ersetzen"
 
 #: lib/ui/stdtoolbars.ui:56
-#, fuzzy
 msgid "Toggle emphasis"
 msgstr "Hervorheben an/aus"
 
 #: lib/ui/stdtoolbars.ui:57
-#, fuzzy
 msgid "Toggle noun"
 msgstr "Kapitälchen an/aus"
 
@@ -10299,9 +10232,9 @@ msgid "minibuffer"
 msgstr ""
 
 #: src/BufferView.C:243
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s Errors (%2$s)"
-msgstr "%1$s und %2$s"
+msgstr "%1$s Fehler (%2$s)"
 
 #: src/BufferView_pimpl.C:255
 #, c-format
@@ -10454,7 +10387,7 @@ msgstr "ChkTeX-Warnung Nr. %1$d"
 msgid "ChkTeX warning id # "
 msgstr "ChkTeX-Warnung Nr. "
 
-#: src/CutAndPaste.C:402
+#: src/CutAndPaste.C:383
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -10467,11 +10400,11 @@ msgstr ""
 "da die Klasse von %3$s nach\n"
 "%4$s konvertiert wurde"
 
-#: src/CutAndPaste.C:406
+#: src/CutAndPaste.C:387
 msgid "Changed Layout"
 msgstr "Format geändert"
 
-#: src/CutAndPaste.C:425
+#: src/CutAndPaste.C:406
 #, fuzzy, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
@@ -10482,7 +10415,7 @@ msgstr ""
 "da die Klasse von %3$s nach\n"
 "%4$s konvertiert wurde"
 
-#: src/CutAndPaste.C:431
+#: src/CutAndPaste.C:412
 msgid "Undefined character style"
 msgstr "Undefinierter Zeichenstil"
 
@@ -10729,14 +10662,12 @@ msgid "No Documents Open!"
 msgstr "Keine Dokumente geöffnet!"
 
 #: src/MenuBackend.C:516
-#, fuzzy
 msgid "Plain Text as Lines"
-msgstr "ASCII-Text als Zeilen"
+msgstr "Einfacher Text als Zeilen"
 
 #: src/MenuBackend.C:518
-#, fuzzy
 msgid "Plain Text as Paragraphs"
-msgstr "ASCII-Text als Absätze"
+msgstr "Einfacher Text als Absätze"
 
 #: src/MenuBackend.C:706
 msgid "No Table of contents"
@@ -10770,7 +10701,6 @@ msgid "Unknown token: %1$s %2$s\n"
 msgstr "Unbekanntes Token: %1$s %2$s\n"
 
 #: src/buffer.C:448 src/buffer.C:455 src/buffer.C:470
-#, fuzzy
 msgid "Document header error"
 msgstr "Fehler im Dokumentkopf"
 
@@ -11008,7 +10938,6 @@ msgid "General information"
 msgstr "Allgemeine Informationen"
 
 #: src/client/debug.C:43 src/debug.C:66
-#, fuzzy
 msgid "Developers' general debug messages"
 msgstr "Allgemeine Testmeldungen der Entwickler"
 
@@ -11799,15 +11728,15 @@ msgstr "B3"
 msgid "B4"
 msgstr "B4"
 
-#: src/frontends/gtk/GDocument.C:662 src/frontends/qt2/QDocumentDialog.C:278
+#: src/frontends/gtk/GDocument.C:662
 msgid "Small margins"
 msgstr "Schmale Ränder"
 
-#: src/frontends/gtk/GDocument.C:663 src/frontends/qt2/QDocumentDialog.C:279
+#: src/frontends/gtk/GDocument.C:663
 msgid "Very small margins"
 msgstr "Sehr schmale Ränder"
 
-#: src/frontends/gtk/GDocument.C:664 src/frontends/qt2/QDocumentDialog.C:280
+#: src/frontends/gtk/GDocument.C:664
 msgid "Very wide margins"
 msgstr "Sehr breite Ränder"
 
@@ -11871,7 +11800,7 @@ msgid "Paragraph Settings"
 msgstr "Absatz-Einstellungen"
 
 #: src/frontends/gtk/GParagraph.C:99 src/frontends/qt2/QParagraph.C:120
-#: src/frontends/xforms/FormParagraph.C:188 src/paragraph.C:626
+#: src/frontends/xforms/FormParagraph.C:188 src/paragraph.C:612
 msgid "Senseless with this layout!"
 msgstr "Für dieses Format nicht relevant!"
 
@@ -11963,7 +11892,7 @@ msgstr "&Benutzerdefiniert..."
 
 #: src/frontends/qt2/BulletsModule.C:340
 #: src/frontends/qt2/QDocumentDialog.C:85
-#: src/frontends/xforms/FormDocument.C:431
+#: src/frontends/xforms/FormDocument.C:425
 msgid "Bullets"
 msgstr "Aufzählungszeichen"
 
@@ -11992,12 +11921,14 @@ msgstr "Zweig-Einstellungen"
 msgid ""
 "Change by %1$s\n"
 "\n"
-msgstr "Geändert durch: %1$s\n"
+msgstr ""
+"Änderung durch %1$s\n"
+"\n"
 
 #: src/frontends/qt2/QChanges.C:68
 #, c-format
 msgid "Change made at %1$s\n"
-msgstr "Geändert am: %1$s\n"
+msgstr "Geändert am %1$s\n"
 
 #: src/frontends/qt2/QCommandBuffer.C:79
 msgid "Previous command"
@@ -12109,24 +12040,24 @@ msgid "Float Placement"
 msgstr "Gleitobjekt-Platzierung"
 
 #: src/frontends/qt2/QDocumentDialog.C:86
-#: src/frontends/xforms/FormDocument.C:442
+#: src/frontends/xforms/FormDocument.C:436
 msgid "Branches"
 msgstr "Zweige"
 
 #: src/frontends/qt2/QDocumentDialog.C:87
-#: src/frontends/qt2/QDocumentDialog.C:212
+#: src/frontends/qt2/QDocumentDialog.C:211
 #: src/frontends/xforms/FormPreamble.C:29
 msgid "LaTeX Preamble"
 msgstr "LaTeX-Vorspann"
 
-#: src/frontends/qt2/QDocumentDialog.C:401
-#: src/frontends/qt2/QDocumentDialog.C:437
+#: src/frontends/qt2/QDocumentDialog.C:385
+#: src/frontends/qt2/QDocumentDialog.C:421
 msgid "No"
 msgstr "Nein"
 
-#: src/frontends/qt2/QDocumentDialog.C:402
-#: src/frontends/qt2/QDocumentDialog.C:437
-#: src/frontends/qt2/QDocumentDialog.C:504
+#: src/frontends/qt2/QDocumentDialog.C:386
+#: src/frontends/qt2/QDocumentDialog.C:421
+#: src/frontends/qt2/QDocumentDialog.C:488
 msgid "Yes"
 msgstr "Ja"
 
@@ -12321,9 +12252,8 @@ msgid "Outputs"
 msgstr "Ausgabe"
 
 #: src/frontends/qt2/QPrefsDialog.C:109
-#, fuzzy
 msgid "Plain text"
-msgstr "Nächstes"
+msgstr "Einfacher Text"
 
 #: src/frontends/qt2/QPrefsDialog.C:110
 msgid "Date format"
@@ -12358,23 +12288,23 @@ msgstr "Konverter"
 msgid "Copiers"
 msgstr "Kopierer"
 
-#: src/frontends/qt2/QPrefsDialog.C:933
+#: src/frontends/qt2/QPrefsDialog.C:918
 msgid "Select a document templates directory"
 msgstr "Wählen Sie ein Verzeichnis für die Dokumentvorlagen"
 
-#: src/frontends/qt2/QPrefsDialog.C:941
+#: src/frontends/qt2/QPrefsDialog.C:926
 msgid "Select a temporary directory"
 msgstr "Wählen Sie ein temporäres Verzeichnis"
 
-#: src/frontends/qt2/QPrefsDialog.C:949
+#: src/frontends/qt2/QPrefsDialog.C:934
 msgid "Select a backups directory"
 msgstr "Wählen Sie ein Verzeichnis für Sicherungen"
 
-#: src/frontends/qt2/QPrefsDialog.C:957
+#: src/frontends/qt2/QPrefsDialog.C:942
 msgid "Select a document directory"
 msgstr "Wählen Sie ein Dokumentverzeichnis"
 
-#: src/frontends/qt2/QPrefsDialog.C:965
+#: src/frontends/qt2/QPrefsDialog.C:950
 msgid "Give a filename for the LyX server pipe"
 msgstr "Geben Sie einen Dateinamen für die LyX-Server-Weiterleitung an"
 
@@ -12724,7 +12654,7 @@ msgstr " Einfach | Anderthalb | Doppelt | Benutzerdefiniert "
 msgid " SmallSkip | MedSkip | BigSkip | Length "
 msgstr " Klein | Mittel | Groß | Länge "
 
-#: src/frontends/xforms/FormDocument.C:260
+#: src/frontends/xforms/FormDocument.C:259
 msgid ""
 " Default | Custom | US letter | US legal | US executive | A3 | A4 | A5 | B3 "
 "| B4 | B5 "
@@ -12732,29 +12662,25 @@ msgstr ""
 " Standard | Benutzerdefiniert | US letter | US legal | US executive | A3 | "
 "A4 | A5 | B3 | B4 | B5 "
 
-#: src/frontends/xforms/FormDocument.C:264
-msgid " None | Small Margins | Very small Margins | Very wide Margins "
-msgstr " Keine | Schmale Ränder | Sehr schmale Ränder | Sehr breite Ränder "
-
-#: src/frontends/xforms/FormDocument.C:304
+#: src/frontends/xforms/FormDocument.C:298
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | <<text>> | >>text<< "
 msgstr " ``Text'' | ''Text'' | ,,Text`` | ,,Text'' | «Text» | »Text« "
 
-#: src/frontends/xforms/FormDocument.C:320
+#: src/frontends/xforms/FormDocument.C:314
 msgid " Basic | Natbib author-year | Natbib numerical | Jurabib "
 msgstr ""
 
-#: src/frontends/xforms/FormDocument.C:324
+#: src/frontends/xforms/FormDocument.C:318
 msgid ""
 "Natbib is used often for natural sciences and arts\n"
 "Jurabib is more common in law and humanities"
 msgstr ""
 
-#: src/frontends/xforms/FormDocument.C:336
+#: src/frontends/xforms/FormDocument.C:330
 msgid " Never | Automatically | Yes "
 msgstr ""
 
-#: src/frontends/xforms/FormDocument.C:367
+#: src/frontends/xforms/FormDocument.C:361
 msgid ""
 " Default | Tiny | Smallest | Smaller | Small | Normal | Large | Larger | "
 "Largest | Huge | Huger "
@@ -12762,56 +12688,56 @@ msgstr ""
 " Standard | Winzig | Sehr klein | Kleiner | Klein | Normal | Groß | Größer | "
 "Noch größer | Riesig | Gigantisch "
 
-#: src/frontends/xforms/FormDocument.C:395
+#: src/frontends/xforms/FormDocument.C:389
 msgid "Enter the name of a new branch."
 msgstr "Geben Sie den Namen eines neuen Zweigs ein."
 
-#: src/frontends/xforms/FormDocument.C:397
+#: src/frontends/xforms/FormDocument.C:391
 msgid "Add a new branch to the document."
 msgstr "Fügen Sie einen neuen Zweig zum Dokument hinzu."
 
-#: src/frontends/xforms/FormDocument.C:399
+#: src/frontends/xforms/FormDocument.C:393
 msgid "Remove the selected branch from the document."
 msgstr "Entfernen Sie den ausgewählten Zweig vom Dokument."
 
-#: src/frontends/xforms/FormDocument.C:401
+#: src/frontends/xforms/FormDocument.C:395
 msgid "Activate the selected branch for output."
 msgstr "Aktivieren Sie den ausgewählten Zweig für die Ausgabe."
 
-#: src/frontends/xforms/FormDocument.C:403
+#: src/frontends/xforms/FormDocument.C:397
 msgid "Deactivate the selected activated branch."
 msgstr "Deaktivieren Sie den ausgewählten, aktivierten Zweig."
 
-#: src/frontends/xforms/FormDocument.C:405
+#: src/frontends/xforms/FormDocument.C:399
 msgid "Available branches for this document."
 msgstr "Verfügbare Zweige für dieses Dokument."
 
-#: src/frontends/xforms/FormDocument.C:407
+#: src/frontends/xforms/FormDocument.C:401
 msgid "Activated branches. Content will occur in the document's output"
 msgstr "Aktivierte Zweige. Der Inhalt wird in der Dokumentausgabe erscheinen"
 
-#: src/frontends/xforms/FormDocument.C:409
+#: src/frontends/xforms/FormDocument.C:403
 msgid "Modify background color of branch inset"
 msgstr "Verändern Sie die Hintergrundfarbe der Zweig-Einfügung"
 
-#: src/frontends/xforms/FormDocument.C:411
+#: src/frontends/xforms/FormDocument.C:405
 msgid "Background color of branch inset"
 msgstr "Hintergrundfarbe der Zweig-Einfügung"
 
-#: src/frontends/xforms/FormDocument.C:423
+#: src/frontends/xforms/FormDocument.C:417
 msgid "Document"
 msgstr "Dokument"
 
-#: src/frontends/xforms/FormDocument.C:425
+#: src/frontends/xforms/FormDocument.C:419
 msgid "Paper"
 msgstr "Seite"
 
-#: src/frontends/xforms/FormDocument.C:429
+#: src/frontends/xforms/FormDocument.C:423
 #: src/frontends/xforms/FormGraphics.C:284
 msgid "Extra"
 msgstr "Extra"
 
-#: src/frontends/xforms/FormDocument.C:435
+#: src/frontends/xforms/FormDocument.C:429
 msgid ""
 "Your version of libXpm is older than 4.7.\n"
 "The `bullet' tab of the document dialog has been disabled"
@@ -12819,7 +12745,7 @@ msgstr ""
 "Sie verwenden eine alte Version (< 4.7) der libXpm.\n"
 "Daher wurde der Dialog \"Aufzählungszeichen\" deaktiviert."
 
-#: src/frontends/xforms/FormDocument.C:1384
+#: src/frontends/xforms/FormDocument.C:1332
 msgid "Document is read-only. No changes to layout permitted."
 msgstr ""
 "Das Dokument ist schreibgeschützt. Es sind keine Formatierungsänderungen "
@@ -13684,7 +13610,7 @@ msgstr "Keine Informationen vorhanden, um das Format %1$s zu importieren."
 msgid "imported."
 msgstr "wurde eingefügt."
 
-#: src/insets/insetbase.C:258
+#: src/insets/insetbase.C:265
 msgid "Opened inset"
 msgstr "Einfügung geöffnet"
 
@@ -13925,11 +13851,11 @@ msgstr "PrettyRef: "
 msgid "Opened table"
 msgstr "Tabelle geöffnet"
 
-#: src/insets/insettabular.C:1521
+#: src/insets/insettabular.C:1533
 msgid "Error setting multicolumn"
 msgstr "Fehler beim Festlegen der Mehrfachspalte"
 
-#: src/insets/insettabular.C:1522
+#: src/insets/insettabular.C:1534
 msgid "You cannot set multicolumn vertically."
 msgstr ""
 
@@ -14639,18 +14565,17 @@ msgid ""
 "\" is specified, an internal routine is used."
 msgstr ""
 "Hier können Sie ein externes Programm festlegen, das zur Formatierung von "
-"Tabellen in der ASCII-Ausgabe verwendet wird. Beispiel: \"groff -t -Tlatin1 $"
+"Tabellen in der Text-Ausgabe verwendet wird. Beispiel: \"groff -t -Tlatin1 $"
 "$FName\" wobei $$FName die Eingabedatei ist. Wird \"none\" angegeben, "
 "verwendet LyX eine interne Routine."
 
 #: src/lyxrc.C:2079
-#, fuzzy
 msgid ""
 "This is the maximum line length of an exported text file (LaTeX, SGML or "
 "plain text)."
 msgstr ""
-"Die maximale Zeilenlänge für exportierte ASCII-Dateien (LaTeX, SGML oder "
-"normaler Text)."
+"Dies ist die maximale Zeilenlänge für exportierte Text-Dateien (LaTeX, SGML "
+"oder einfacher Text)."
 
 #: src/lyxrc.C:2083
 msgid ""
@@ -15191,32 +15116,32 @@ msgstr ""
 msgid "No vertical grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_gridinset.C:1272
+#: src/mathed/math_gridinset.C:1291
 msgid "Only one row"
 msgstr ""
 
-#: src/mathed/math_gridinset.C:1278
+#: src/mathed/math_gridinset.C:1297
 msgid "Only one column"
 msgstr ""
 
-#: src/mathed/math_gridinset.C:1286
+#: src/mathed/math_gridinset.C:1305
 msgid "No hline to delete"
 msgstr ""
 
-#: src/mathed/math_gridinset.C:1295
+#: src/mathed/math_gridinset.C:1314
 msgid "No vline to delete"
 msgstr ""
 
-#: src/mathed/math_gridinset.C:1313
+#: src/mathed/math_gridinset.C:1332
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr ""
 
-#: src/mathed/math_hullinset.C:1028 src/mathed/math_hullinset.C:1037
+#: src/mathed/math_hullinset.C:1022 src/mathed/math_hullinset.C:1031
 msgid "No number"
 msgstr "Keine Nummer"
 
-#: src/mathed/math_hullinset.C:1028 src/mathed/math_hullinset.C:1037
+#: src/mathed/math_hullinset.C:1022 src/mathed/math_hullinset.C:1031
 msgid "Number"
 msgstr "Nummer"
 
@@ -15239,11 +15164,11 @@ msgstr ""
 msgid "Math editor mode"
 msgstr "Mathe-Editor-Modus"
 
-#: src/mathed/math_nestinset.C:763
+#: src/mathed/math_nestinset.C:774
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/math_nestinset.C:766
+#: src/mathed/math_nestinset.C:777
 msgid "entered math text mode (textrm)"
 msgstr ""
 
@@ -15348,7 +15273,7 @@ msgstr "Unbekannte Einfügung"
 msgid "Unknown token"
 msgstr "Unbekanntes Token"
 
-#: src/text.C:1171
+#: src/text.C:1166
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
@@ -15356,7 +15281,7 @@ msgstr ""
 "Sie können am Anfang eines Absatzes kein Leerzeichen einfügen. Bitte lesen "
 "Sie das Tutorium."
 
-#: src/text.C:1182
+#: src/text.C:1177
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Sie können zwei Leerzeichen nicht auf diese Weise eingeben. Bitte lesen Sie "
