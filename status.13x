@@ -28,6 +28,15 @@ What's new
 
 - Fix wrong path when drag-and-dropping files on Windows. [Qt only] 
 
+- Ensure that no dialogs have one shortcut assigned to more than one action.
+  Always connect the OK button to the Alt-O shortcut. [Qt only]
+
+- Ensure that the user cannot create a reference without first selecting
+  one in the reference dialog. [Qt only].
+
+- The Return key is no longer bound to the Goto button in the reference
+  dialog. [Qt only].
+
 * Configuration/Installation:
 
 - compile without STL compatibilty support, since some systems do that
