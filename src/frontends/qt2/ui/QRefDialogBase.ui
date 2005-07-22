@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>348</width>
+            <width>340</width>
             <height>439</height>
         </rect>
     </property>
@@ -398,18 +398,6 @@
         <signal>highlighted(const QString&amp;)</signal>
         <receiver>QRefDialogBase</receiver>
         <slot>refHighlighted(const QString&amp;)</slot>
-    </connection>
-    <connection>
-        <sender>refsLB</sender>
-        <signal>selected(const QString&amp;)</signal>
-        <receiver>QRefDialogBase</receiver>
-        <slot>refSelected(const QString&amp;)</slot>
-    </connection>
-    <connection>
-        <sender>refsLB</sender>
-        <signal>highlighted(const QString&amp;)</signal>
-        <receiver>QRefDialogBase</receiver>
-        <slot>changed_adaptor()</slot>
     </connection>
     <connection>
         <sender>sortCB</sender>

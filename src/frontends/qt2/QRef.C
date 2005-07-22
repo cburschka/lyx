@@ -85,6 +85,8 @@ void QRef::update_contents()
 	dialog_->bufferCO->setCurrentItem(controller().getBufferNum());
 
 	updateRefs();
+
+	bc().invalid();
 }
 
 

@@ -1,3 +1,35 @@
+2005-07-22  Angus Leeming  <leeming@lyx.org>
+
+	* QRef.C (update_contents): disable the OK button when the dialog is
+	first shown. The user must first select a reference.
+
+	* QRefDialog.C (changed_adaptor): only enable the OK button when
+	the "Label:" field is not empty.
+	(refHighlighted): set the text in the "Label:" field only when
+	an item is currently selected in the "Available refs" browser. (When
+	th signal connected to this slot is triggered.)
+
+	* QBibtexDialogBase.ui:
+	* QERTDialogBase.ui: remove the Alt-C shortcut from the Close button.
+
+	* QBibtexDialogBase.ui:
+	* QCitationDialogBase.ui:
+	* QERTDialogBase.ui:
+	* QGraphicsDialogBase.ui:
+	* QIndexDialogBase.ui:
+	* QRefDialogBase.ui:
+	* QSendtoDialogBase.ui: connect the Alt-O shortcut to the OK button.
+
+	* QGraphicsDialogBase.ui: change the shortcut to the "Origin" field.
+	* QPrefConvertersModule.ui: change the shortcut to the "From" field.
+	* QPrefLanguageModule.ui: change the shortcut to the "Use babel" field.
+	* QPrefUIModule.ui: change the shortcut to the "Cursor follows
+	scrollbar" field.
+	* QTabularDialogBase.ui: change the shortcut to the "Delete" field.
+
+	* QRefDialogBase.ui: disconnect signals emitted by the refsLB to the
+	refSelected and changed_adaptor slots.
+	
 2005-07-18  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* QWorkArea.C (dropEvent): convert file name to internal path
