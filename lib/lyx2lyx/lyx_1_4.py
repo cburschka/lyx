@@ -1521,7 +1521,6 @@ def revert_cite_engine(file):
 def convert_paperpackage(file):
     i = find_token(file.header, "\\paperpackage", 0)
     if i == -1:
-        file.warning("Malformed lyx file: Missing '\\paperpackage'.")
         return
 
     packages = {'default':'none','a4':'none', 'a4wide':'a4', 'widemarginsa4':'a4wide'}
@@ -1535,7 +1534,6 @@ def convert_paperpackage(file):
 def revert_paperpackage(file):
     i = find_token(file.header, "\\paperpackage", 0)
     if i == -1:
-        file.warning("Malformed lyx file: Missing '\\paperpackage'.")
         return
 
     packages = {'none':'a4', 'a4':'a4wide', 'a4wide':'widemarginsa4',
