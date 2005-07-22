@@ -13,13 +13,13 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>298</width>
+            <width>352</width>
             <height>313</height>
         </rect>
     </property>
     <property stdset="1">
         <name>caption</name>
-        <string></string>
+        <string>QBibtexDialogBase</string>
     </property>
     <property stdset="1">
         <name>sizeGripEnabled</name>
@@ -104,7 +104,7 @@
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>OK</string>
+                        <string>&amp;OK</string>
                     </property>
                     <property stdset="1">
                         <name>autoDefault</name>
@@ -338,7 +338,7 @@
             </property>
             <property stdset="1">
                 <name>text</name>
-                <string>C&amp;ontent:</string>
+                <string>&amp;Content:</string>
             </property>
             <property>
                 <name>buddy</name>

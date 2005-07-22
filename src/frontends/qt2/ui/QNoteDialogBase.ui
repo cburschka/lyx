@@ -14,12 +14,12 @@
             <x>0</x>
             <y>0</y>
             <width>188</width>
-            <height>146</height>
+            <height>192</height>
         </rect>
     </property>
     <property stdset="1">
         <name>caption</name>
-        <string></string>
+        <string>QNoteDialogBase</string>
     </property>
     <property stdset="1">
         <name>sizeGripEnabled</name>
@@ -42,7 +42,7 @@
             </property>
             <property stdset="1">
                 <name>text</name>
-                <string>OK</string>
+                <string>&amp;OK</string>
             </property>
             <property stdset="1">
                 <name>default</name>
@@ -57,7 +57,7 @@
             </property>
             <property stdset="1">
                 <name>text</name>
-                <string>&amp;Close</string>
+                <string>Close</string>
             </property>
             <property stdset="1">
                 <name>default</name>
@@ -106,7 +106,7 @@
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>C&amp;omment</string>
+                        <string>&amp;Comment</string>
                     </property>
                     <property>
                         <name>toolTip</name>

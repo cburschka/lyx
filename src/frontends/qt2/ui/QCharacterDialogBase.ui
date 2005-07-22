@@ -13,13 +13,13 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>360</width>
+            <width>356</width>
             <height>305</height>
         </rect>
     </property>
     <property stdset="1">
         <name>caption</name>
-        <string></string>
+        <string>QCharacterDialogBase</string>
     </property>
     <property stdset="1">
         <name>sizeGripEnabled</name>
@@ -537,7 +537,7 @@
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>&amp;Close</string>
+                        <string>Close</string>
                     </property>
                     <property stdset="1">
                         <name>autoDefault</name>

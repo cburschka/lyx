@@ -548,7 +548,7 @@ Format const * getFormat(std::string const & prettyname)
 } // namespace anon
 
 
-void QPrefsDialog::switch_copierLB(int nr)
+void QPrefsDialog::switch_copierLB(int)
 {
 	std::string const browser_text =
 		fromqstr(copiersModule->AllCopiersLB->currentText());
@@ -575,7 +575,7 @@ void QPrefsDialog::switch_copierLB(int nr)
 }
 
 
-void QPrefsDialog::switch_copierCO(int nr)
+void QPrefsDialog::switch_copierCO(int)
 {
 	std::string const combo_text =
 		fromqstr(copiersModule->copierFormatCO->currentText());

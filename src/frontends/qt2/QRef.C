@@ -16,6 +16,7 @@
 #include "Qt2BC.h"
 #include "qt_helpers.h"
 
+#include "controllers/ButtonController.h"
 #include "controllers/ControlRef.h"
 
 #include "insets/insetref.h"
@@ -99,6 +100,7 @@ void QRef::update_contents()
 		dialog_->bufferCO->setCurrentItem(controller().getBufferNum());
 
 	updateRefs();
+	bc().valid(false);
 }
 
 
