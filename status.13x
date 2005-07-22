@@ -37,6 +37,9 @@ What's new
 - The Return key is no longer bound to the Goto button in the reference
   dialog. [Qt only].
 
+- Do not trim spaces from either end of the find and replace strings in
+  the Edit->Find & Replace... dialog. [XForms only].
+
 * Configuration/Installation:
 
 - compile without STL compatibilty support, since some systems do that

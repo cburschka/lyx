@@ -15,7 +15,6 @@
 #include "FormSearch.h"
 #include "forms/form_search.h"
 #include "Tooltips.h"
-#include "xforms_helpers.h"
 
 #include FORMS_H_LOCATION
 
@@ -65,10 +64,24 @@ void FormSearch::update()
 }
 
 
+namespace {
+
+string const getUntrimmedString(FL_OBJECT * ob)
+{
+	lyx::Assert(ob->objclass == FL_INPUT);
+
+	char const * const tmp = fl_get_input(ob);
+	return tmp ? tmp : string();
+}
+
+} // namespace anon
+
+
+
 ButtonPolicy::SMInput FormSearch::input(FL_OBJECT * ob, long)
 {
 	if (ob == dialog_->button_findnext) {
-		controller().find(getString(dialog_->input_search),
+		controller().find(getUntrimmedString(dialog_->input_search),
 				  fl_get_button(dialog_->check_casesensitive),
 				  fl_get_button(dialog_->check_matchword),
 				  !fl_get_button(dialog_->check_searchbackwards));
@@ -76,8 +89,8 @@ ButtonPolicy::SMInput FormSearch::input(FL_OBJECT * ob, long)
 	} else if (ob == dialog_->button_replace || ob == dialog_->button_replaceall) {
 		bool const all = (ob == dialog_->button_replaceall);
 
-		controller().replace(getString(dialog_->input_search),
-				     getString(dialog_->input_replace),
+		controller().replace(getUntrimmedString(dialog_->input_search),
+				     getUntrimmedString(dialog_->input_replace),
 				     fl_get_button(dialog_->check_casesensitive),
 				     fl_get_button(dialog_->check_matchword),
 				     all);

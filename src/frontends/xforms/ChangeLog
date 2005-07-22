@@ -1,3 +1,7 @@
+2005-07-22  Angus Leeming  <leeming@lyx.org>
+
+	* FormSearch.C (input): do not trim the find and replace strings.
+
 2005-07-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* FormToc.C: consider gui name, not type, when trying to set the
@@ -124,7 +128,7 @@
 	* forms/form_maths_panel.fd (label): replace label "Greek" by
 	"abg" for alpha beta gamma.
 
-	* forms/form_tabular.fd (label): 
+	* forms/form_tabular.fd (label):
 	* FormDocument.C (build): remove use of latin1 in
 	some translatable strings. This confuses gettext.
 
@@ -139,7 +143,7 @@
 2003-05-26  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* forms/Makefile.am (EXTRA_DIST): do not forget to distribute
-	c_str.sed. 
+	c_str.sed.
 
 2003-04-09  Angus Leeming  <leeming@lyx.org>
 
@@ -167,7 +171,7 @@
 
 2003-03-13  Angus Leeming  <leeming@lyx.org>
 
-	* forms/fdfix.sh: 
+	* forms/fdfix.sh:
 	* forms/fdfixh.sed: fix #944 by making the temporary filenames unique
 	and so enable reentrant builds on SMP machines.
 
@@ -193,7 +197,7 @@
 
 2003-02-10  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
 
-	* FormDocument.C: Reset paperpackage to NONE when 
+	* FormDocument.C: Reset paperpackage to NONE when
 	papersize != A4 (bug 844)
 
 2003-01-31  Michael Schmitt  <michael.schmitt@teststep.org>
