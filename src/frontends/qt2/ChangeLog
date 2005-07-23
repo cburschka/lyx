@@ -1,3 +1,8 @@
+2005-07-23  Angus Leeming  <leeming@lyx.org>
+
+	* QRefDialogBase.ui: disconnect two refsLB signals to the
+	refSelected and changed_adaptor slots.
+
 2005-07-22  Angus Leeming  <leeming@lyx.org>
 
 	* QRef.C (update_contents): disable the OK button when the dialog is
