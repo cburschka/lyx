@@ -69,8 +69,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-16 18:08+0200\n"
-"PO-Revision-Date: 2005-04-07 23:48+0100\n"
+"POT-Creation-Date: 2005-07-23 18:03+0200\n"
+"PO-Revision-Date: 2005-07-23 18:33+0100\n"
 "Last-Translator: Michael Schmitt <Michael.Schmitt@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -124,12 +124,6 @@ msgstr "Schlüssel:|#S"
 #: ../src/frontends/xforms/forms/form_url.fd:116
 #: ../src/frontends/xforms/forms/form_wrap.fd:242
 #: ../src/frontends/qt2/ui/QAskForTextDialog.ui:124
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:260
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:92
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:147
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1138
-#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:128
-#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:90
 msgid "OK"
 msgstr "OK"
 
@@ -2232,9 +2226,7 @@ msgstr "Urheberrecht"
 
 #: ../src/frontends/qt2/ui/QAboutDialogBase.ui:213
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:204
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:516
 #: ../src/frontends/qt2/ui/QDelimiterDialogBase.ui:414
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:162
 #: ../src/frontends/qt2/ui/QErrorDialogBase.ui:92
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:141
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:318
@@ -2297,16 +2289,22 @@ msgid "The label as it appears in the document"
 msgstr "Die Marke, wie sie im Dokument erscheint"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:189
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:260
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:486
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:92
 #: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:99
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:151
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:111
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:292
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1138
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:356
+#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:128
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:250
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:278
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:708
 #: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:111
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:293
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:90
 #: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:280
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:156
 #: ../src/frontends/qt2/ui/QWrapDialogBase.ui:280
@@ -2505,6 +2503,17 @@ msgstr "Jede Änderung automatisch übernehmen"
 #: ../src/frontends/qt2/ui/QWrapDialogBase.ui:299
 msgid "&Apply"
 msgstr "&Übernehmen"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:516
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:166
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1190
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:261
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:366
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:291
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1334 src/LyXAction.C:125
+#: src/frontends/controllers/ButtonController.h:73
+msgid "Close"
+msgstr "Schließen"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:22
 #: src/frontends/qt2/QCitation.C:44 src/frontends/xforms/FormCitation.C:93
@@ -2716,10 +2725,10 @@ msgid "Show ERT button only"
 msgstr "Nur ERT-Knopf anzeigen"
 
 #: ../src/frontends/qt2/ui/QERTDialogBase.ui:94
-msgid "&Open"
-msgstr "&Geöffnet"
+msgid "O&pen"
+msgstr "Ge&öffnet"
 
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:98
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:102
 msgid "Show ERT contents"
 msgstr "ERT-Inhalt anzeigen"
 
@@ -2878,7 +2887,7 @@ msgstr "LyX-Anzeige"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:155
 msgid "&Show in LyX"
-msgstr "In LyX &anzeigen"
+msgstr "In &LyX anzeigen"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:159
 msgid "Display image in LyX"
@@ -2964,8 +2973,8 @@ msgid "Angle to rotate image by"
 msgstr "Winkel, um den das Bild gedreht werden soll"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:552
-msgid "&Origin:"
-msgstr "&Drehpunkt:"
+msgid "Or&igin:"
+msgstr "Dreh&punkt:"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:560
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:571
@@ -3055,15 +3064,6 @@ msgstr "&Beschriftung:"
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1048
 msgid "The caption for the sub-figure"
 msgstr "Die Beschriftung der Teilabbildung"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1190
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:261
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:366
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:291
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1334 src/LyXAction.C:125
-#: src/frontends/controllers/ButtonController.h:73
-msgid "Close"
-msgstr "Schließen"
 
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:22
 msgid "Include File"
@@ -3594,7 +3594,7 @@ msgid "&To:"
 msgstr "&Nach:"
 
 #: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:227
-msgid "F&rom:"
+msgid "&From:"
 msgstr "&Von:"
 
 #: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:249
@@ -3731,8 +3731,8 @@ msgid "Auto &begin"
 msgstr "Auto &Beginn"
 
 #: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:140
-msgid "Use &babel"
-msgstr "&Babel verwenden"
+msgid "Use b&abel"
+msgstr "Babel &verwenden"
 
 #: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:172
 msgid "&Global"
@@ -3744,7 +3744,7 @@ msgstr "&Rechts-nach-links Sprachunterstützung"
 
 #: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:194
 msgid "Auto &end"
-msgstr "Auto &Ende"
+msgstr "Auto E&nde"
 
 #: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:205
 msgid "Mark &foreign languages"
@@ -4040,8 +4040,8 @@ msgid "W&heel mouse scroll:"
 msgstr "&Rad-Maus Verschiebung:"
 
 #: ../src/frontends/qt2/ui/QPrefUIModule.ui:201
-msgid "Cursor follo&ws scrollbar"
-msgstr "Cursor folgt &Rollbalken"
+msgid "Cursor follows &scrollbar"
+msgstr "&Cursor folgt Rollbalken"
 
 #: ../src/frontends/qt2/ui/QPrefUIModule.ui:214
 msgid "Documents"
@@ -4165,7 +4165,7 @@ msgstr "Querverweis"
 msgid "Update the label list"
 msgstr "Liste der Marken aktualisieren"
 
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:89 src/frontends/qt2/QRef.C:125
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:89 src/frontends/qt2/QRef.C:127
 msgid "&Goto"
 msgstr "&Gehe zu"
 
@@ -4395,7 +4395,7 @@ msgstr "Spalte anfügen (rechts)"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:206
 msgid "De&lete"
-msgstr "&Löschen"
+msgstr "Lö&schen"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:214
 msgid "Delete current column"
@@ -4410,8 +4410,8 @@ msgid "Append row (below)"
 msgstr "Zeile anfügen (unterhalb)"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:265
-msgid "Dele&te"
-msgstr "&Löschen"
+msgid "Del&ete"
+msgstr "L&öschen"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:273
 msgid "Delete this row"
@@ -9741,19 +9741,19 @@ msgstr "Wählen Sie ein Dokumentverzeichnis"
 msgid "Give a filename for the LyX server pipe"
 msgstr "Geben Sie einen Dateinamen für die LyX-Server-Weiterleitung an"
 
-#: src/frontends/qt2/QRef.C:117
+#: src/frontends/qt2/QRef.C:119
 msgid "&Go back"
 msgstr "&Gehe zurück"
 
-#: src/frontends/qt2/QRef.C:119 src/frontends/xforms/FormRef.C:275
+#: src/frontends/qt2/QRef.C:121 src/frontends/xforms/FormRef.C:275
 msgid "Go back"
 msgstr "Gehe zurück"
 
-#: src/frontends/qt2/QRef.C:127
+#: src/frontends/qt2/QRef.C:129
 msgid "Go to label"
 msgstr "Gehe zur Marke"
 
-#: src/frontends/qt2/QSearch.C:30 src/frontends/xforms/FormSearch.C:25
+#: src/frontends/qt2/QSearch.C:30 src/frontends/xforms/FormSearch.C:24
 msgid "Find and Replace"
 msgstr "Finden und Ersetzen"
 
@@ -9942,7 +9942,6 @@ msgstr "Der im LyX-Dokument verwendete Schlüssel."
 msgid "Label used for final output."
 msgstr "Die für die endgültige Ausgabe verwendete Marke."
 
-#. set up the tooltips
 #: src/frontends/xforms/FormBibtex.C:67
 msgid ""
 "The database you want to cite from. Insert it without the default extension "
@@ -10287,7 +10286,6 @@ msgstr ""
 msgid "Clip image to the bounding box values."
 msgstr "Schneide das Bild auf die Werte der Begrenzungsbox zu."
 
-#. set up the tooltips for the extra section
 #: src/frontends/xforms/FormGraphics.C:251
 msgid ""
 "Insert the rotation angle in degrees. Positive value rotates anti-clockwise, "
@@ -10770,35 +10768,35 @@ msgid "Go to"
 msgstr "Gehe zu"
 
 #. set up the tooltips
-#: src/frontends/xforms/FormSearch.C:42
+#: src/frontends/xforms/FormSearch.C:41
 msgid "Enter the string you want to find."
 msgstr "Geben Sie die Zeichenkette ein, die Sie finden möchten."
 
-#: src/frontends/xforms/FormSearch.C:44
+#: src/frontends/xforms/FormSearch.C:43
 msgid "Enter the replacement string."
 msgstr "Geben Sie die Ersatz-Zeichenkette ein."
 
-#: src/frontends/xforms/FormSearch.C:46
+#: src/frontends/xforms/FormSearch.C:45
 msgid "Continue to next search result."
 msgstr "Mit dem nächsten Suchergebnis fortfahren."
 
-#: src/frontends/xforms/FormSearch.C:48
+#: src/frontends/xforms/FormSearch.C:47
 msgid "Replace search result by replacement string."
 msgstr "Suchergebnis mit Ersetzungszeichenkette ersetzen."
 
-#: src/frontends/xforms/FormSearch.C:50
+#: src/frontends/xforms/FormSearch.C:49
 msgid "Replace all by replacement string."
 msgstr "Alles mit der Ersetzungszeichenkette ersetzen."
 
-#: src/frontends/xforms/FormSearch.C:52
+#: src/frontends/xforms/FormSearch.C:51
 msgid "Do case sensitive search."
 msgstr "Groß-/Kleinschreibung beachten."
 
-#: src/frontends/xforms/FormSearch.C:54
+#: src/frontends/xforms/FormSearch.C:53
 msgid "Search only matching words."
 msgstr "Nur ganze Wörter suchen."
 
-#: src/frontends/xforms/FormSearch.C:56
+#: src/frontends/xforms/FormSearch.C:55
 msgid "Search backwards."
 msgstr "Rückwärts suchen."
 
@@ -10818,7 +10816,6 @@ msgstr ""
 "Dieser Befehl wird auf den im ausgewählten Format exportierten Bufferinhalt "
 "angewendet. $$FName wird dabei durch den Namen dieser Datei ersetzt."
 
-#. set up the tooltips
 #: src/frontends/xforms/FormSpellchecker.C:57
 msgid "Type replacement for unknown word or select from suggestions."
 msgstr ""
@@ -10888,7 +10885,6 @@ msgstr "Tabelle einfügen"
 msgid "LaTeX classes|LaTeX styles|BibTeX styles"
 msgstr "LaTeX-Klassen|LaTeX-Stile|BibTeX-Stile"
 
-#. set up the tooltips
 #: src/frontends/xforms/FormTexinfo.C:47
 msgid ""
 "Shows the installed classses and styles for LaTeX/BibTeX; available only if "
@@ -11396,7 +11392,6 @@ msgstr ""
 "Es konnte kein ispell-Prozess erzeugt werden.\n"
 "Sie haben möglicherweise nicht die passenden Sprachen installiert."
 
-#. select returned error
 #: src/ispell.C:259
 msgid ""
 "The spell process returned an error.\n"
@@ -11895,7 +11890,6 @@ msgstr "Befehl ist deaktiviert"
 msgid "Document is read-only"
 msgstr "Dokument ist schreibgeschützt"
 
-#. no
 #: src/lyxfunc.C:310
 msgid "Command not allowed without any document open"
 msgstr "Dieser Befehl ist nur bei geöffnetem Dokument möglich"
