@@ -207,13 +207,9 @@ void GDocument::doBuild()
 	// *** End "Page" Page ***
 
 	// *** Begin "Margins" Page ***
-	xml_->get_widget("Margins", box);
-	box->pack_start(marginscombo_, true, true, 0);
-	box->show_all();
-	marginscombo_.signal_changed().connect(
+	xml_->get_widget("DefaultMargins", defaultmargins_);
+	defaultmargins_->signal_clicked().connect(
 		sigc::mem_fun(*this, &GDocument::marginsChanged));
-	pagesizecombo_.signal_changed().connect(
-		sigc::mem_fun(*this, &GDocument::populateMargins));
 
 	xml_->get_widget("MarginTop", mtopspin_);
 	xml_->get_widget("MarginBottom", mbottomspin_);
@@ -347,7 +343,7 @@ void GDocument::update()
 	comboBoxTextSet(pagestylecombo_, params.pagestyle);
 	// *** End "Page" Page ***
 
-	marginscombo_.set_active(0);
+	defaultmargins_->set_active(!params.use_geometry);
 
 	setWidgetsFromLength(
 		*(mtopspin_->get_adjustment()),
@@ -377,6 +373,7 @@ void GDocument::update()
 		*(mfootskipspin_->get_adjustment()),
 		mfootskipunitcombo_,
 		LyXLength(params.footskip));
+	marginsChanged();
 
 	// *** End "Margins" Page ***
 
@@ -498,15 +495,7 @@ void GDocument::apply()
 	// *** End "Page" Page ***
 
 	// *** Begin "Margins" Page ***
-	int psize = pagesizecombo_.get_active_row_number();
-	bool geom_papersize = (psize == 1 || psize == 5 || psize == 8 || psize == 9);
-	params.use_geometry =
-		(marginscombo_.get_active_row_number() == 1 || geom_papersize);
-
-	int margin = marginscombo_.get_active_row_number();
-	if (margin > 0) {
-		margin = margin - 1;
-	}
+	params.use_geometry = !defaultmargins_->get_active();
 
 	params.topmargin = getLengthFromWidgets(
 		*(mtopspin_->get_adjustment()),
@@ -643,36 +632,9 @@ void GDocument::pageSizeChanged()
 }
 
 
-void GDocument::populateMargins()
-{
-	int olditem = marginscombo_.get_active_row_number();
-
-	marginscombo_.clear();
-	// Magic order
-	marginscombo_.append_text(_("Default"));
-	marginscombo_.append_text(_("Custom"));
-
-	int papersize = pagesizecombo_.get_active_row_number();
-	if (papersize < 0)
-		papersize = 0;
-
-	bool const a4size = (papersize == 6 || papersize == 0
-			&& lyxrc.default_papersize == PAPER_A4);
-	if (a4size && portraitradio_->get_active()) {
-		marginscombo_.append_text(_("Small margins"));
-		marginscombo_.append_text(_("Very small margins"));
-		marginscombo_.append_text(_("Very wide margins"));
-	} else if (olditem > 1) {
-		olditem = 0;
-	}
-	marginscombo_.set_active(olditem);
-}
-
-
 void GDocument::marginsChanged()
 {
-	bool const custom =
-		marginscombo_.get_active_row_number() == 1;
+	bool const custom = !defaultmargins_->get_active();
 
 	mtopspin_->set_sensitive(custom);
 	mbottomspin_->set_sensitive(custom);

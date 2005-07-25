@@ -37,7 +37,6 @@
 
 // FIXME: move this stuff out again
 #include "bufferlist.h"
-#include "buffer_funcs.h"
 #include "lyxfunc.h"
 #include "lyxserver.h"
 #include "lyxsocket.h"

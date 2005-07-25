@@ -74,7 +74,7 @@ private:
 	// *** End "Page" Page ***
 
 	// *** Begin "Margins" Page ***
-	Gtk::ComboBoxText marginscombo_;
+	Gtk::CheckButton * defaultmargins_;
 	Gtk::SpinButton * mtopspin_;
 	Gtk::SpinButton * mbottomspin_;
 	Gtk::SpinButton * minnerspin_;
@@ -89,7 +89,6 @@ private:
 	Gtk::ComboBoxText mheadsepunitcombo_;
 	Gtk::ComboBoxText mheadheightunitcombo_;
 	Gtk::ComboBoxText mfootskipunitcombo_;
-	void populateMargins();
 	void marginsChanged();
 	// *** End "Margins" Page ***
 
