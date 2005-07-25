@@ -1,6 +1,7 @@
 2005-07-25  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* tex2lyx.C (main): allow specification of output file name
+	* tex2lyx.C (main): write to infile.lyx if no output file is given
 
 2005-07-18  Lars Gullik Bjønnes  <larsbj@lyx.org>
 

@@ -52,6 +52,7 @@ using std::string;
 using std::vector;
 using std::map;
 
+using lyx::support::ChangeExtension;
 using lyx::support::isStrUnsignedInt;
 using lyx::support::ltrim;
 using lyx::support::MakeAbsPath;
@@ -495,8 +496,12 @@ int main(int argc, char * argv[])
 	// file name (the latter is optional).
 	string const infilename = MakeAbsPath(argv[1]);
 	string outfilename;
-	if (argc > 2)
-		outfilename = MakeAbsPath(argv[2]);
+	if (argc > 2) {
+		outfilename = argv[2];
+		if (outfilename != "-")
+			outfilename = MakeAbsPath(argv[2]);
+	} else
+		outfilename = ChangeExtension(infilename, ".lyx");
 
 	string const system_syntaxfile = lyx::support::LibFileSearch("", "syntax.default");
 	if (system_syntaxfile.empty()) {
@@ -510,7 +515,7 @@ int main(int argc, char * argv[])
 	masterFilePath = OnlyPath(infilename);
 	parentFilePath = masterFilePath;
 
-	if (outfilename.empty() || outfilename == "-") {
+	if (outfilename == "-") {
 		if (tex2lyx(infilename, cout))
 			return EXIT_SUCCESS;
 		else
