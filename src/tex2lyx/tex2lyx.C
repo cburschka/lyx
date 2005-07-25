@@ -267,7 +267,7 @@ typedef boost::function<int(string const &, string const &)> cmd_helper;
 
 int parse_help(string const &, string const &)
 {
-	cerr << "Usage: tex2lyx [ command line switches ] <infile.tex>\n"
+	cerr << "Usage: tex2lyx [ command line switches ] <infile.tex> [<outfile.lyx>]\n"
 	        "Command line switches (case sensitive):\n"
 	        "\t-help              summarize tex2lyx usage\n"
 	        "\t-f                 Force creation of .lyx files even if they exist already\n"
@@ -482,7 +482,7 @@ int main(int argc, char * argv[])
 	easyParse(argc, argv);
 
 	if (argc <= 1) {
-		cerr << "Usage: tex2lyx [ command line switches ] <infile.tex>\n"
+		cerr << "Usage: tex2lyx [ command line switches ] <infile.tex> [<outfile.lyx>]\n"
 		          "See tex2lyx -help." << endl;
 		return 2;
 	}
@@ -490,6 +490,13 @@ int main(int argc, char * argv[])
 	lyx::support::os::init(argc, argv);
 	lyx::support::init_package(argv[0], cl_system_support, cl_user_support,
 				   lyx::support::top_build_dir_is_two_levels_up);
+
+	// Now every known option is parsed. Look for input and output
+	// file name (the latter is optional).
+	string const infilename = MakeAbsPath(argv[1]);
+	string outfilename;
+	if (argc > 2)
+		outfilename = MakeAbsPath(argv[2]);
 
 	string const system_syntaxfile = lyx::support::LibFileSearch("", "syntax.default");
 	if (system_syntaxfile.empty()) {
@@ -500,14 +507,20 @@ int main(int argc, char * argv[])
 	if (!syntaxfile.empty())
 		read_syntaxfile(syntaxfile);
 
-	string const infilename = MakeAbsPath(argv[1]);
 	masterFilePath = OnlyPath(infilename);
 	parentFilePath = masterFilePath;
 
-	if (tex2lyx(infilename, cout))
-		return EXIT_SUCCESS;
-	else
-		return EXIT_FAILURE;
+	if (outfilename.empty() || outfilename == "-") {
+		if (tex2lyx(infilename, cout))
+			return EXIT_SUCCESS;
+		else
+			return EXIT_FAILURE;
+	} else {
+		if (tex2lyx(infilename, outfilename))
+			return EXIT_SUCCESS;
+		else
+			return EXIT_FAILURE;
+	}
 }
 
 // }])

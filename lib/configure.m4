@@ -260,7 +260,7 @@ SEARCH_PROG([for a raster image editor], RASTERIMAGE_EDITOR, gimp)
 SEARCH_PROG([for a text editor], TEXT_EDITOR, xemacs gvim kedit kwrite kate nedit gedit notepad)
 
 # Search for an installed tex2lyx or a ready-to-install one
-SEARCH_PROG([for a LaTeX -> LyX converter],tex_to_lyx_command, "$PWD/../src/tex2lyx/tex2lyx -f \$\$i >\$\$o" "tex2lyx$version_suffix -f \$\$i >\$\$o")
+SEARCH_PROG([for a LaTeX -> LyX converter],tex_to_lyx_command, "$PWD/../src/tex2lyx/tex2lyx -f \$\$i \$\$o" "tex2lyx$version_suffix -f \$\$i \$\$o")
 
 SEARCH_PROG([for a Noweb -> LyX converter],literate_to_lyx_command,"noweb2lyx \$\$i \$\$o")
 literate_to_lyx_command=`echo $literate_to_lyx_command | sed "s,noweb2lyx,noweb2lyx$version_suffix,"`
