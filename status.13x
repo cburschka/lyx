@@ -40,6 +40,8 @@ What's new
 - Do not trim spaces from either end of the find and replace strings in
   the Edit->Find & Replace... dialog. [XForms only].
 
+- Don't load the wasysym package automatically anymore (bug 1942)
+
 * Configuration/Installation:
 
 - compile without STL compatibilty support, since some systems do that

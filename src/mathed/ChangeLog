@@ -1,3 +1,8 @@
+2005-07-25  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* math_factory.C (initSymbols): Don't require wasysym for the wasy
+	font (bug 1942)
+
 2005-06-24  Joao Luis Meloni Assirati  <assirati@nonada.if.usp.br>
 
 	* math_parser.C (parse_verbatim_{option,item}): Add skipSpaces()

@@ -147,8 +147,9 @@ void initSymbols()
 			// store requirements as long as we can
 			if (tmp.inset == "msa" || tmp.inset == "msb")
 				tmp.requires = "amssymb";
-			else if (tmp.inset == "wasy")
-				tmp.requires = "wasysym";
+			// See http://bugzilla.lyx.org/show_bug.cgi?id=1942
+			// else if (tmp.inset == "wasy")
+			//	tmp.requires = "wasysym";
 
 			// symbol font is not available sometimes
 			string symbol_font = "lyxsymbol";
