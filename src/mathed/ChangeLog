@@ -1,3 +1,8 @@
+2005-07-26  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* math_factory.C (initSymbols): Don't require wasysym for the wasy
+	font (bug 1942)
+
 2005-07-15  Stephan Witt <stephan.witt@beusen.de>
 
 	* math_nestinset.C (getStatus): handle font change requests
