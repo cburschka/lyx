@@ -51,6 +51,17 @@ void end_deeper(ostream & os)
 
 }
 
+
+bool operator==(Font const & f1, Font const & f2)
+{
+	return
+		f1.size == f2.size &&
+		f1.family == f2.family &&
+		f1.series == f2.series &&
+		f1.shape == f2.shape;
+}
+
+
 void output_font_change(ostream & os, Font const & oldfont,
                         Font const & newfont)
 {
@@ -75,7 +86,7 @@ Context::Context(bool need_layout_,
 	: need_layout(need_layout_),
 	  need_end_layout(false), need_end_deeper(false),
 	  has_item(false), deeper_paragraph(false),
-	  textclass(textclass_),
+	  new_layout_allowed(true), textclass(textclass_),
 	  layout(layout_), parent_layout(parent_layout_),
 	  font(font_)
 {
@@ -83,6 +94,14 @@ Context::Context(bool need_layout_,
 		layout = textclass.defaultLayout();
 	if (!parent_layout.get())
 		parent_layout = textclass.defaultLayout();
+}
+
+
+Context::~Context()
+{
+	if (!extra_stuff.empty())
+		std::cerr << "Bug: Ignoring extra stuff '" << extra_stuff
+		          << '\'' << std::endl;
 }
 
 
@@ -104,8 +123,6 @@ void Context::check_layout(ostream & os)
 				}
 				begin_layout(os, layout, font, normalfont);
 				has_item = false;
-				need_layout=false;
-				need_end_layout = true;
 			} else {
 				// a standard paragraph in an
 				// enumeration. We have to recognize
@@ -114,16 +131,15 @@ void Context::check_layout(ostream & os)
 					begin_deeper(os);
 				begin_layout(os, textclass.defaultLayout(),
 				             font, normalfont);
-				need_layout=false;
-				need_end_layout = true;
 				deeper_paragraph = true;
 			}
+			need_layout = false;
 		} else {
 			// No list-like environment
 			begin_layout(os, layout, font, normalfont);
 			need_layout=false;
-			need_end_layout = true;
 		}
+		need_end_layout = true;
 		if (!extra_stuff.empty()) {
 			os << extra_stuff;
 			extra_stuff.erase();
@@ -206,8 +222,13 @@ void Context::dump(ostream & os, string const & desc) const
 		os << "has_item ";
 	if (deeper_paragraph)
 		os << "deeper_paragraph ";
+	if (new_layout_allowed)
+		os << "new_layout_allowed ";
 	if (!extra_stuff.empty())
 		os << "extrastuff=[" << extra_stuff << "] ";
-	os << "layout=" << layout->name();
-	os << " parent_layout=" << parent_layout->name() << "]" << endl;
+	os << "textclass=" << textclass.name()
+	   << " layout=" << layout->name()
+	   << " parent_layout=" << parent_layout->name() << "] font=["
+	   << font.size << ' ' << font.family << ' ' << font.series << ' '
+	   << font.shape << ']' << endl;
 }

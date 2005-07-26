@@ -50,18 +50,8 @@ using std::vector;
 namespace fs = boost::filesystem;
 
 
-/// thin wrapper around parse_text using a string
-string parse_text(Parser & p, unsigned flags, const bool outer,
-		  Context & context)
-{
-	ostringstream os;
-	parse_text(p, os, flags, outer, context);
-	return os.str();
-}
-
-
 void parse_text_in_inset(Parser & p, ostream & os, unsigned flags, bool outer,
-		Context & context)
+		Context const & context)
 {
 	Context newcontext(true, context.textclass);
 	newcontext.font = context.font;
@@ -70,19 +60,45 @@ void parse_text_in_inset(Parser & p, ostream & os, unsigned flags, bool outer,
 }
 
 
+namespace {
+
 /// parses a paragraph snippet, useful for example for \\emph{...}
 void parse_text_snippet(Parser & p, ostream & os, unsigned flags, bool outer,
 		Context & context)
 {
-	Context newcontext(false, context.textclass);
-	newcontext.font = context.font;
+	Context newcontext(context);
+	// Don't inherit the extra stuff
+	newcontext.extra_stuff.clear();
 	parse_text(p, os, flags, outer, newcontext);
-	// should not be needed
-	newcontext.check_end_layout(os);
+	// Make sure that we don't create invalid .lyx files
+	context.need_layout = newcontext.need_layout;
+	context.need_end_layout = newcontext.need_end_layout;
 }
 
 
-namespace {
+/*!
+ * Thin wrapper around parse_text_snippet() using a string.
+ *
+ * We completely ignore \c context.need_layout and \c context.need_end_layout,
+ * because our return value is not used directly (otherwise the stream version
+ * of parse_text_snippet() could be used). That means that the caller needs
+ * to do layout management manually.
+ * This is intended to parse text that does not create any layout changes.
+ */
+string parse_text_snippet(Parser & p, unsigned flags, const bool outer,
+		  Context & context)
+{
+	Context newcontext(context);
+	newcontext.need_layout = false;
+	newcontext.need_end_layout = false;
+	newcontext.new_layout_allowed = false;
+	// Avoid warning by Context::~Context()
+	newcontext.extra_stuff.clear();
+	ostringstream os;
+	parse_text_snippet(p, os, flags, outer, newcontext);
+	return os.str();
+}
+
 
 char const * const known_latex_commands[] = { "ref", "cite", "label", "index",
 "printindex", "pageref", "url", "vref", "vpageref", "prettyref", "eqref", 0 };
@@ -356,14 +372,10 @@ void skip_braces(Parser & p)
 }
 
 
-
-void handle_ert(ostream & os, string const & s, Context & context,
-                bool check_layout = true)
+void handle_ert(ostream & os, string const & s, Context & context)
 {
-	if (check_layout) {
-		// We must have a valid layout before outputting the ERT inset.
-		context.check_layout(os);
-	}
+	// We must have a valid layout before outputting the ERT inset.
+	context.check_layout(os);
 	Context newcontext(true, context.textclass);
 	begin_inset(os, "ERT");
 	os << "\nstatus collapsed\n";
@@ -655,14 +667,40 @@ void parse_box(Parser & p, ostream & os, unsigned flags, bool outer,
 }
 
 
+/// parse an unknown environment
+void parse_unknown_environment(Parser & p, string const & name, ostream & os,
+                               unsigned flags, bool outer,
+                               Context & parent_context)
+{
+	if (name == "tabbing")
+		// We need to remember that we have to handle '\=' specially
+		flags |= FLAG_TABBING;
+
+	// We need to translate font changes and paragraphs inside the
+	// environment to ERT if we have a non standard font.
+	// Otherwise things like
+	// \large\begin{foo}\huge bar\end{foo}
+	// will not work.
+	bool const specialfont =
+		(parent_context.font != parent_context.normalfont);
+	bool const new_layout_allowed = parent_context.new_layout_allowed;
+	if (specialfont)
+		parent_context.new_layout_allowed = false;
+	handle_ert(os, "\\begin{" + name + "}", parent_context);
+	parse_text_snippet(p, os, flags, outer, parent_context);
+	handle_ert(os, "\\end{" + name + "}", parent_context);
+	if (specialfont)
+		parent_context.new_layout_allowed = new_layout_allowed;
+}
+
+
 void parse_environment(Parser & p, ostream & os, bool outer,
-		       Context & parent_context)
+                       Context & parent_context)
 {
 	LyXLayout_ptr newlayout;
 	string const name = p.getArg('{', '}');
 	const bool is_starred = suffixIs(name, '*');
 	string const unstarred_name = rtrim(name, "*");
-	eat_whitespace(p, os, parent_context, false);
 	active_environments.push_back(name);
 
 	if (is_math_env(name)) {
@@ -675,13 +713,16 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 	}
 
 	else if (name == "tabular" || name == "longtable") {
+		eat_whitespace(p, os, parent_context, false);
 		parent_context.check_layout(os);
 		begin_inset(os, "Tabular ");
 		handle_tabular(p, os, name == "longtable", parent_context);
 		end_inset(os);
+		p.skip_spaces();
 	}
 
 	else if (parent_context.textclass.floats().typeExist(unstarred_name)) {
+		eat_whitespace(p, os, parent_context, false);
 		parent_context.check_layout(os);
 		begin_inset(os, "Float " + unstarred_name + "\n");
 		if (p.next_token().asInput() == "[") {
@@ -695,14 +736,43 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		// We don't need really a new paragraph, but
 		// we must make sure that the next item gets a \begin_layout.
 		parent_context.new_paragraph(os);
+		p.skip_spaces();
 	}
 
-	else if (name == "minipage")
+	else if (name == "minipage") {
+		eat_whitespace(p, os, parent_context, false);
 		parse_box(p, os, FLAG_END, outer, parent_context, false);
+		p.skip_spaces();
+	}
+
+	else if (name == "comment") {
+		eat_whitespace(p, os, parent_context, false);
+		parent_context.check_layout(os);
+		begin_inset(os, "Note Comment\n");
+		os << "status open\n";
+		parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
+		end_inset(os);
+		p.skip_spaces();
+	}
+
+	else if (name == "lyxgreyedout") {
+		eat_whitespace(p, os, parent_context, false);
+		parent_context.check_layout(os);
+		begin_inset(os, "Note Greyedout\n");
+		os << "status open\n";
+		parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
+		end_inset(os);
+		p.skip_spaces();
+	}
+
+	else if (!parent_context.new_layout_allowed)
+		parse_unknown_environment(p, name, os, FLAG_END, outer,
+		                          parent_context);
 
 	// Alignment settings
 	else if (name == "center" || name == "flushleft" || name == "flushright" ||
 	         name == "centering" || name == "raggedright" || name == "raggedleft") {
+		eat_whitespace(p, os, parent_context, false);
 		// We must begin a new paragraph if not already done
 		if (! parent_context.atParagraphStart()) {
 			parent_context.check_end_layout(os);
@@ -719,11 +789,13 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		parent_context.extra_stuff.erase();
 		// We must begin a new paragraph to reset the alignment
 		parent_context.new_paragraph(os);
+		p.skip_spaces();
 	}
 
 	// The single '=' is meant here.
 	else if ((newlayout = findLayout(parent_context.textclass, name)).get() &&
 		  newlayout->isEnvironment()) {
+		eat_whitespace(p, os, parent_context, false);
 		Context context(true, parent_context.textclass, newlayout,
 				parent_context.layout, parent_context.font);
 		if (parent_context.deeper_paragraph) {
@@ -756,10 +828,12 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		}
 		context.check_end_deeper(os);
 		parent_context.new_paragraph(os);
+		p.skip_spaces();
 	}
 
 	else if (name == "appendix") {
 		// This is no good latex style, but it works and is used in some documents...
+		eat_whitespace(p, os, parent_context, false);
 		parent_context.check_end_layout(os);
 		Context context(true, parent_context.textclass, parent_context.layout,
 				parent_context.layout, parent_context.font);
@@ -767,34 +841,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		os << "\\start_of_appendix\n";
 		parse_text(p, os, FLAG_END, outer, context);
 		context.check_end_layout(os);
-	}
-
-	else if (name == "comment") {
-		parent_context.check_layout(os);
-		begin_inset(os, "Note Comment\n");
-		os << "status open\n";
-		parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
-		end_inset(os);
-	}
-
-	else if (name == "lyxgreyedout") {
-		parent_context.check_layout(os);
-		begin_inset(os, "Note Greyedout\n");
-		os << "status open\n";
-		parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
-		end_inset(os);
-	}
-
-	else if (name == "tabbing") {
-		// We need to remember that we have to handle '\=' specially
-		handle_ert(os, "\\begin{" + name + "}", parent_context);
-		// FIXME: Try whether parse_text instead of parse_text_snippet
-		// works. Then no manual layout checking would be needed.
-		parent_context.check_end_layout(os);
-		parse_text_snippet(p, os, FLAG_END | FLAG_TABBING, outer,
-		                   parent_context);
-		parent_context.need_layout = true;
-		handle_ert(os, "\\end{" + name + "}", parent_context);
+		p.skip_spaces();
 	}
 
 	else if (known_environments.find(name) != known_environments.end()) {
@@ -808,36 +855,31 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			arguments.back();
 		if (!arguments.empty())
 			arguments.pop_back();
+		// See comment in parse_unknown_environment()
+		bool const specialfont =
+			(parent_context.font != parent_context.normalfont);
+		bool const new_layout_allowed =
+			parent_context.new_layout_allowed;
+		if (specialfont)
+			parent_context.new_layout_allowed = false;
 		parse_arguments("\\begin{" + name + "}", arguments, p, os,
 		                outer, parent_context);
 		if (contents == verbatim)
 			handle_ert(os, p.verbatimEnvironment(name),
 			           parent_context);
-		else {
-			// FIXME: Try whether parse_text instead of
-			// parse_text_snippet works. Then no manual layout
-			// checking would be needed.
-			parent_context.check_end_layout(os);
+		else
 			parse_text_snippet(p, os, FLAG_END, outer,
 			                   parent_context);
-			parent_context.need_layout = true;
-		}
 		handle_ert(os, "\\end{" + name + "}", parent_context);
+		if (specialfont)
+			parent_context.new_layout_allowed = new_layout_allowed;
 	}
 
-	else {
-		handle_ert(os, "\\begin{" + name + "}", parent_context);
-		// FIXME: Try whether parse_text instead of parse_text_snippet
-		// works. Then no manual layout checking would be needed.
-		parent_context.check_end_layout(os);
-		parse_text_snippet(p, os, FLAG_END, outer, parent_context);
-		parent_context.need_layout = true;
-		handle_ert(os, "\\end{" + name + "}", parent_context);
-	}
+	else
+		parse_unknown_environment(p, name, os, FLAG_END, outer,
+		                          parent_context);
 
 	active_environments.pop_back();
-	if (name != "math")
-		p.skip_spaces();
 }
 
 
@@ -851,11 +893,13 @@ void parse_comment(Parser & p, ostream & os, Token const & t, Context & context)
 		if (p.next_token().cat() == catNewline) {
 			// A newline after a comment line starts a new
 			// paragraph
-			if(!context.atParagraphStart()) {
-				// Only start a new paragraph if not already
-				// done (we might get called recursively)
-				context.new_paragraph(os);
-			}
+			if (context.new_layout_allowed) {
+				if(!context.atParagraphStart())
+					// Only start a new paragraph if not already
+					// done (we might get called recursively)
+					context.new_paragraph(os);
+			} else
+				handle_ert(os, "\n", context);
 			eat_whitespace(p, os, context, true);
 		}
 	} else {
@@ -899,12 +943,13 @@ void parse_text_attributes(Parser & p, ostream & os, unsigned flags, bool outer,
 			   string & currentvalue, string const & newvalue)
 {
 	context.check_layout(os);
-	string oldvalue = currentvalue;
+	string const oldvalue = currentvalue;
 	currentvalue = newvalue;
 	os << '\n' << attribute << ' ' << newvalue << "\n";
 	parse_text_snippet(p, os, flags, outer, context);
-	currentvalue = oldvalue;
+	context.check_layout(os);
 	os << '\n' << attribute << ' ' << oldvalue << "\n";
+	currentvalue = oldvalue;
 }
 
 
@@ -1061,7 +1106,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (p.isParagraph()) {
-			context.new_paragraph(os);
+			if (context.new_layout_allowed)
+				context.new_paragraph(os);
+			else
+				handle_ert(os, "\\par ", context);
 			eat_whitespace(p, os, context, true);
 		}
 
@@ -1076,55 +1124,85 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				os << t.character();
 		}
 
+		else if (t.cat() == catBegin &&
+		         p.next_token().cat() == catEnd) {
+			// {}
+			Token const prev = p.prev_token();
+			p.get_token();
+			if (p.next_token().character() == '`' ||
+			    (prev.character() == '-' &&
+			     p.next_token().character() == '-'))
+				; // ignore it in {}`` or -{}-
+			else
+				handle_ert(os, "{}", context);
+
+		}
+
 		else if (t.cat() == catBegin) {
 			context.check_layout(os);
 			// special handling of font attribute changes
 			Token const prev = p.prev_token();
 			Token const next = p.next_token();
 			Font const oldFont = context.font;
-			string const s = parse_text(p, FLAG_BRACE_LAST, outer,
-			                            context);
-			context.font = oldFont;
-			if (s.empty() && (p.next_token().character() == '`' ||
-			                  (prev.character() == '-' &&
-			                   p.next_token().character() == '-')))
-				; // ignore it in {}`` or -{}-
-			else if (s == "[" || s == "]" || s == "*")
-				os << s;
-			else if (is_known(next.cs(), known_sizes)) {
-				// s will change the size, so we must reset
-				// it here
-				os << s;
+			if (next.character() == '[' ||
+			    next.character() == ']' ||
+			    next.character() == '*') {
+				p.get_token();
+				if (p.next_token().cat() == catEnd) {
+					os << next.character();
+					p.get_token();
+				} else {
+					p.putback();
+					handle_ert(os, "{", context);
+					parse_text_snippet(p, os,
+							FLAG_BRACE_LAST,
+							outer, context);
+					handle_ert(os, "}", context);
+				}
+			} else if (! context.new_layout_allowed) {
+				handle_ert(os, "{", context);
+				parse_text_snippet(p, os, FLAG_BRACE_LAST,
+				                   outer, context);
+				handle_ert(os, "}", context);
+			} else if (is_known(next.cs(), known_sizes)) {
+				// next will change the size, so we must
+				// reset it here
+				parse_text_snippet(p, os, FLAG_BRACE_LAST,
+				                   outer, context);
 				if (!context.atParagraphStart())
 					os << "\n\\size "
 					   << context.font.size << "\n";
 			} else if (is_known(next.cs(), known_font_families)) {
-				// s will change the font family, so we must
-				// reset it here
-				os << s;
+				// next will change the font family, so we
+				// must reset it here
+				parse_text_snippet(p, os, FLAG_BRACE_LAST,
+				                   outer, context);
 				if (!context.atParagraphStart())
 					os << "\n\\family "
 					   << context.font.family << "\n";
 			} else if (is_known(next.cs(), known_font_series)) {
-				// s will change the font series, so we must
-				// reset it here
-				os << s;
+				// next will change the font series, so we
+				// must reset it here
+				parse_text_snippet(p, os, FLAG_BRACE_LAST,
+				                   outer, context);
 				if (!context.atParagraphStart())
 					os << "\n\\series "
 					   << context.font.series << "\n";
 			} else if (is_known(next.cs(), known_font_shapes)) {
-				// s will change the font shape, so we must
-				// reset it here
-				os << s;
+				// next will change the font shape, so we
+				// must reset it here
+				parse_text_snippet(p, os, FLAG_BRACE_LAST,
+				                   outer, context);
 				if (!context.atParagraphStart())
 					os << "\n\\shape "
 					   << context.font.shape << "\n";
 			} else if (is_known(next.cs(), known_old_font_families) ||
 			           is_known(next.cs(), known_old_font_series) ||
 			           is_known(next.cs(), known_old_font_shapes)) {
-				// s will change the font family, series
+				// next will change the font family, series
 				// and shape, so we must reset it here
-				os << s;
+				parse_text_snippet(p, os, FLAG_BRACE_LAST,
+				                   outer, context);
 				if (!context.atParagraphStart())
 					os <<  "\n\\family "
 					   << context.font.family
@@ -1133,10 +1211,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					   << "\n\\shape "
 					   << context.font.shape << "\n";
 			} else {
-				handle_ert(os, "{", context, false);
-				// s will end the current layout and begin a
-				// new one if necessary
-				os << s;
+				handle_ert(os, "{", context);
+				parse_text_snippet(p, os, FLAG_BRACE_LAST,
+				                   outer, context);
 				handle_ert(os, "}", context);
 			}
 		}
@@ -1195,9 +1272,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			bool optarg = false;
 			if (p.next_token().character() == '[') {
 				p.get_token(); // eat '['
-				Context newcontext(false, context.textclass);
-				newcontext.font = context.font;
-				s = parse_text(p, FLAG_BRACK_LAST, outer, newcontext);
+				s = parse_text_snippet(p, FLAG_BRACK_LAST,
+				                       outer, context);
 				optarg = true;
 			}
 			context.set_item();
@@ -1265,6 +1341,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		// Must attempt to parse "Section*" before "Section".
 		else if ((p.next_token().asInput() == "*") &&
+		         context.new_layout_allowed && 
 			 // The single '=' is meant here.
 			 (newlayout = findLayout(context.textclass,
 						 t.cs() + '*')).get() &&
@@ -1275,7 +1352,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		// The single '=' is meant here.
-		else if ((newlayout = findLayout(context.textclass, t.cs())).get() &&
+		else if (context.new_layout_allowed &&
+		         (newlayout = findLayout(context.textclass, t.cs())).get() &&
 			 newlayout->isCommand()) {
 			output_command_layout(os, p, outer, context, newlayout);
 			p.skip_spaces();
@@ -1446,9 +1524,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "ensuremath") {
 			p.skip_spaces();
 			context.check_layout(os);
-			Context newcontext(false, context.textclass);
-			newcontext.font = context.font;
-			string s = parse_text(p, FLAG_ITEM, false, newcontext);
+			string const s = p.verbatim_item();
 			if (s == "±" || s == "³" || s == "²" || s == "µ")
 				os << s;
 			else
@@ -1575,6 +1651,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.check_layout(os);
 			os << "\n\\bar under\n";
 			parse_text_snippet(p, os, FLAG_ITEM, outer, context);
+			context.check_layout(os);
 			os << "\n\\bar default\n";
 		}
 
@@ -1582,6 +1659,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.check_layout(os);
 			os << "\n\\" << t.cs() << " on\n";
 			parse_text_snippet(p, os, FLAG_ITEM, outer, context);
+			context.check_layout(os);
 			os << "\n\\" << t.cs() << " default\n";
 		}
 
@@ -1699,7 +1777,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			skip_braces(p);
 		}
 
-		else if (is_known(t.cs(), known_sizes)) {
+		else if (is_known(t.cs(), known_sizes) &&
+		         context.new_layout_allowed) {
 			char const * const * where = is_known(t.cs(), known_sizes);
 			context.check_layout(os);
 			Font const oldFont = context.font;
@@ -1708,7 +1787,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			eat_whitespace(p, os, context, false);
 		}
 
-		else if (is_known(t.cs(), known_font_families)) {
+		else if (is_known(t.cs(), known_font_families) &&
+		         context.new_layout_allowed) {
 			char const * const * where =
 				is_known(t.cs(), known_font_families);
 			context.check_layout(os);
@@ -1719,7 +1799,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			eat_whitespace(p, os, context, false);
 		}
 
-		else if (is_known(t.cs(), known_font_series)) {
+		else if (is_known(t.cs(), known_font_series) &&
+		         context.new_layout_allowed) {
 			char const * const * where =
 				is_known(t.cs(), known_font_series);
 			context.check_layout(os);
@@ -1730,7 +1811,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			eat_whitespace(p, os, context, false);
 		}
 
-		else if (is_known(t.cs(), known_font_shapes)) {
+		else if (is_known(t.cs(), known_font_shapes) &&
+		         context.new_layout_allowed) {
 			char const * const * where =
 				is_known(t.cs(), known_font_shapes);
 			context.check_layout(os);
@@ -1740,7 +1822,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			output_font_change(os, oldFont, context.font);
 			eat_whitespace(p, os, context, false);
 		}
-		else if (is_known(t.cs(), known_old_font_families)) {
+		else if (is_known(t.cs(), known_old_font_families) &&
+		         context.new_layout_allowed) {
 			char const * const * where =
 				is_known(t.cs(), known_old_font_families);
 			context.check_layout(os);
@@ -1753,7 +1836,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			eat_whitespace(p, os, context, false);
 		}
 
-		else if (is_known(t.cs(), known_old_font_series)) {
+		else if (is_known(t.cs(), known_old_font_series) &&
+		         context.new_layout_allowed) {
 			char const * const * where =
 				is_known(t.cs(), known_old_font_series);
 			context.check_layout(os);
@@ -1766,7 +1850,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			eat_whitespace(p, os, context, false);
 		}
 
-		else if (is_known(t.cs(), known_old_font_shapes)) {
+		else if (is_known(t.cs(), known_old_font_shapes) &&
+		         context.new_layout_allowed) {
 			char const * const * where =
 				is_known(t.cs(), known_old_font_shapes);
 			context.check_layout(os);
@@ -1885,7 +1970,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// we need the trim as the LyX parser chokes on such spaces
 			context.check_layout(os);
 			os << "\n\\i \\" << t.cs() << "{"
-			   << trim(parse_text(p, FLAG_ITEM, outer, context), " ") << "}\n";
+			   << trim(parse_text_snippet(p, FLAG_ITEM, outer, context), " ")
+			   << "}\n";
 		}
 
 		else if (t.cs() == "ss") {
@@ -1959,15 +2045,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			end_inset(os);
 		}
 
-		else if (t.cs() == "fancyhead") {
-			context.check_layout(os);
-			ostringstream ss;
-			ss << "\\fancyhead";
-			ss << p.getOpt();
-			ss << '{' << p.verbatim_item() << "}\n";
-			handle_ert(os, ss.str(), context);
-		}
-
 		else if (t.cs() == "bibliographystyle") {
 			// store new bibliographystyle
 			bibliographystyle = p.verbatim_item();
@@ -2000,6 +2077,13 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			os << t.cs();
 			end_inset(os);
 			skip_braces(p);
+		}
+
+		else if (t.cs() == "newpage") {
+			context.check_layout(os);
+			// FIXME: what about \\clearpage and \\pagebreak?
+			os << "\n\\newpage\n";
+			skip_braces(p); // eat {}
 		}
 
 		else if (t.cs() == "newcommand" ||
@@ -2133,6 +2217,5 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 	}
 }
-
 
 // }])

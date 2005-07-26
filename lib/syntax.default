@@ -125,6 +125,7 @@ $$
 \epsfig{}
 \epsfxsize
 \epsfysize
+\fancyhead[]{}
 \footnote[]{}
 \footnotesize
 \H{}
@@ -445,6 +446,7 @@ $$
 \glossaryentry{}{}       %only in .glo file (JMarc)
 % \graphpaper[](,)(,)    %picture
 \headtoname
+\href{}{translate}       % from the hyperref package
 \hspace{}
 \hspace*{}
 \hyphenation{}

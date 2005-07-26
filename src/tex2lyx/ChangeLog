@@ -1,3 +1,26 @@
+2005-07-26  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* context.[Ch] (~Context): new, warn about ignored extra stuff
+	* context.[Ch] (operator==, operator!=): new Font comparison operators
+	* context.C (check_layout): simplify logic
+	* context.C (dump): output all members
+	* context.h (new_layout_allowed): new member variable
+	* text.C (parse_text): remove string wrapper since it can lead to
+	invalid .lyx files (begin_layout/end_layout trouble)
+	* text.C (parse_text_snippet): Make sure that we don't create invalid
+	.lyx files
+	* text.C (parse_text_snippet): New string wrapper for simple text
+	* text.C (handle_ert): Always check layout
+	* text.C (parse_environment): Don't allow font changes in unknown
+	environments
+	* text.C (parse_unknown_environment): new, needed for the above
+	* text.C (parse_environment): Only swallo spaces when we know that it
+	does not harm
+	* text.C (parse_comment): Honor context.new_layout_allowed
+	* text.C (parse_text_attributes): Make sure that we have a valid
+	layout
+	* text.C (parse_text): Honor context.new_layout_allowed
+
 2005-07-25  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* tex2lyx.C (main): allow specification of output file name

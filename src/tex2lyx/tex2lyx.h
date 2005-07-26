@@ -34,12 +34,15 @@ extern std::map<std::string, std::vector<std::string> > used_packages;
 void parse_text(Parser & p, std::ostream & os, unsigned flags, bool outer,
 		Context & context);
 
-//std::string parse_text(Parser & p, unsigned flags, const bool outer,
-//		       Context & context);
-
-/// parses a subdocument, usually useful in insets (whence the name)
+/*!
+ * Parses a subdocument, usually useful in insets (whence the name).
+ *
+ * It ignores \c context.need_layout and \c context.need_end_layout and
+ * starts and ends always a new layout.
+ * Therefore this may only be used to parse text in insets or table cells.
+ */
 void parse_text_in_inset(Parser & p, std::ostream & os, unsigned flags,
-			 bool outer, Context & context);
+			 bool outer, Context const & context);
 
 
 /// in math.C

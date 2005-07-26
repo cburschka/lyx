@@ -45,12 +45,32 @@ public:
 };
 
 
+bool operator==(Font const &, Font const &);
+
+
+inline bool operator!=(Font const & f1, Font const & f2)
+{
+	return !operator==(f1, f2);
+}
+
+
 /// Output changed font parameters if \p oldfont and \p newfont differ
 void output_font_change(std::ostream & os, Font const & oldfont,
                         Font const & newfont);
 
 
-// A helper struct
+/*!
+ * A helper struct.
+ *
+ * Every bit of text has a corresponding context.
+ * Usage: Parsing begins with a global context. A new context is opened for
+ * every new LaTeX group, e.g. at the beginning of a new environment.
+ * The old context is used again after the group is closed.
+ *
+ * Since not all paragraph parameters in LyX have the same scoping as their
+ * LaTeX counterpart we may have to transfer context properties (e. g. the
+ * font) from and to the parent context.
+ */
 class Context {
 public:
 	Context(bool need_layout_,
@@ -58,6 +78,7 @@ public:
 		LyXLayout_ptr layout_ = LyXLayout_ptr(),
 		LyXLayout_ptr parent_layout_= LyXLayout_ptr(),
 	        Font font_ = Font());
+	~Context();
 
 	/// Output a \\begin_layout if requested
 	void check_layout(std::ostream & os);
@@ -97,13 +118,21 @@ public:
 	/// If there has been an \\begin_deeper, we'll need a matching
 	/// \\end_deeper
 	bool need_end_deeper;
-	/// If we are in an itemize-like environment, we need an \\item
+	/// If we are in an itemize-like environment, we need an \item
 	/// for each paragraph, otherwise this has to be a deeper
 	/// paragraph.
 	bool has_item;
 	/// we are handling a standard paragraph in an itemize-like
 	/// environment
 	bool deeper_paragraph;
+	/*!
+	 * Inside of unknown environments we may not allow font and layout
+	 * changes.
+	 * Otherwise things like
+	 * \\large\\begin{foo}\\huge bar\\end{foo}
+	 * would not work.
+	 */
+	bool new_layout_allowed;
 
 	/// The textclass of the document. Could actually be a global variable
 	LyXTextClass const & textclass;
