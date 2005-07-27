@@ -1,3 +1,8 @@
+2005-07-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* ControlToc.[Ch]: getGuiName takes a type argument now.
+	* ControlToc.C (getGuiName): Do all guiname translations here (bug 1870)
+
 2005-07-16  José Matos  <jamatos@fc.up.pt>
 
 	* ControlTabular.C (set): use a single papersize variable.

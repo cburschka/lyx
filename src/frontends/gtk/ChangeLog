@@ -1,3 +1,9 @@
+2005-07-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* GToc.C (update, updateContents): Do not compare against 
+	translatable strings (bug 1870).
+	Someone who can actually compile against gtk should verify this.
+
 2005-07-24  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* GDocument.[Ch], glade/document.glade: remove remaining

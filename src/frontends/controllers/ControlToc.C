@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "ControlToc.h"
+#include "gettext.h"
 
 using std::vector;
 using std::string;
@@ -20,6 +21,7 @@ class Buffer;
 
 namespace lyx {
 namespace frontend {
+
 
 ControlToc::ControlToc(Dialog & d)
 	: ControlCommand(d, "toc")
@@ -38,9 +40,12 @@ vector<string> const ControlToc::getTypes() const
 }
 
 
-string const ControlToc::getGuiName() const
+string const ControlToc::getGuiName(string const & type) const
 {
-	return toc::getGuiName(params().getCmdName(), kernel().buffer());
+	if (type == "TOC")
+		return _("Table of Contents");
+	else
+		return _(toc::getGuiName(type, kernel().buffer()));
 }
 
 

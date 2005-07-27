@@ -1,3 +1,8 @@
+2005-07-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QToc.C (updateType, update_contents): Do not compare against 
+	translatable strings (bug 1870).
+
 2005-07-23  Angus Leeming  <leeming@lyx.org>
 
 	* QRefDialogBase.ui: disconnect two refsLB signals to the

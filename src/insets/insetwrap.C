@@ -242,12 +242,12 @@ void InsetWrap::addToToc(lyx::toc::TocList & toclist, Buffer const & buf) const
 	// Find a caption layout in one of the (child inset's) pars
 	for (; pit != end; ++pit) {
 		if (pit->layout()->labeltype == LABEL_SENSITIVE) {
-			string const name = floatname(params_.type, buf.params());
+			string const type = params_.type;
 			string const str =
-				convert<string>(toclist[name].size() + 1)
+				convert<string>(toclist[type].size() + 1)
 				+ ". " + pit->asString(buf, false);
 			lyx::toc::TocItem const item(pit->id(), 0 , str);
-			toclist[name].push_back(item);
+			toclist[type].push_back(item);
 		}
 	}
 }

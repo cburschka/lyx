@@ -43,9 +43,8 @@ void FormToc::build()
 
 	vector<string> types = controller().getTypes();
 
-
 	string const choice =
-		' ' + getStringFromVector(controller().getTypes(), " | ") + ' ';
+		' ' + getStringFromVector(types, " | ") + ' ';
 	fl_addto_choice(dialog_->choice_toc_type, choice.c_str());
 
 	// Manage the cancel/close button
@@ -85,18 +84,23 @@ void FormToc::updateType()
 {
 	// Update the choice list from scratch
 	fl_clear_choice(dialog_->choice_toc_type);
-	string const choice = getStringFromVector(controller().getTypes(), "|");
-	fl_addto_choice(dialog_->choice_toc_type, choice.c_str());
-
-	// And select the correct one
-	string const guiname = controller().getGuiName();
-	fl_set_choice_text(dialog_->choice_toc_type, guiname.c_str());
+	vector<string> const & choice = controller().getTypes();
+	string const & type = toc::getType(controller().params().getCmdName());
+	for (vector<string>::const_iterator it = choice.begin();
+		it != choice.end(); ++it) {
+		string const & guiname = controller().getGuiName(*it);
+		fl_addto_choice(dialog_->choice_toc_type, guiname.c_str());
+		// And select the correct one
+		if (*it == type)
+			fl_set_choice(dialog_->choice_toc_type, it - choice.begin() + 1);
+	}
 }
 
 
 void FormToc::updateContents()
 {
-	string const type = getString(dialog_->choice_toc_type);
+	vector<string> types = controller().getTypes();
+	string const type = types[fl_get_choice(dialog_->choice_toc_type) - 1];
 	if (type.empty()) {
 		fl_clear_browser(dialog_->browser_toc);
 		fl_add_browser_line(dialog_->browser_toc,

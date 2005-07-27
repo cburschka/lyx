@@ -17,7 +17,6 @@
 #include "bufferparams.h"
 #include "FloatList.h"
 #include "funcrequest.h"
-#include "gettext.h"
 #include "LyXAction.h"
 #include "paragraph.h"
 #include "pariterator.h"
@@ -61,20 +60,20 @@ string const getType(string const & cmdName)
 {
 	// special case
 	if (cmdName == "tableofcontents")
-		return _("TOC");
+		return "TOC";
 	else
 		return cmdName;
 }
 
 
-string const getGuiName(string const & cmdName, Buffer const & buffer)
+string const getGuiName(string const & type, Buffer const & buffer)
 {
 	FloatList const & floats =
 		buffer.params().getLyXTextClass().floats();
-	if (floats.typeExist(cmdName))
-		return _(floats.getType(cmdName).name());
+	if (floats.typeExist(type))
+		return floats.getType(type).name();
 	else
-		return getType(cmdName);
+		return type;
 }
 
 
@@ -130,7 +129,7 @@ TocList const getTocList(Buffer const & buf)
 				tocstring = pit->asString(buf, true);
 			TocItem const item(pit->id(), toclevel - min_toclevel,
 					   tocstring);
-			toclist[_("TOC")].push_back(item);
+			toclist["TOC"].push_back(item);
 		}
 	}
 	return toclist;

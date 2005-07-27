@@ -56,12 +56,13 @@ void QToc::updateType()
 	dialog_->typeCO->clear();
 
 	vector<string> const & choice = controller().getTypes();
-	string const & guiname = controller().getGuiName();
+	string const & type = toc::getType(controller().params().getCmdName());
 
 	for (vector<string>::const_iterator it = choice.begin();
 		it != choice.end(); ++it) {
-		dialog_->typeCO->insertItem(toqstr(*it));
-		if (*it == guiname) {
+		string const & guiname = controller().getGuiName(*it);
+		dialog_->typeCO->insertItem(toqstr(guiname));
+		if (*it == type) {
 			dialog_->typeCO->setCurrentItem(it - choice.begin());
 			setTitle(guiname);
 		}
@@ -78,7 +79,8 @@ void QToc::update_contents()
 
 void QToc::updateToc(int newdepth)
 {
-	string type = fromqstr(dialog_->typeCO->currentText());
+	vector<string> const & choice = controller().getTypes();
+	string const & type = choice[dialog_->typeCO->currentItem()];
 
 	toc::Toc const & contents = controller().getContents(type);
 
@@ -157,6 +159,7 @@ void QToc::updateToc(int newdepth)
 
 	dialog_->tocLV->setUpdatesEnabled(true);
 	dialog_->tocLV->update();
+	setTitle(dialog_->typeCO->currentText());
 }
 
 

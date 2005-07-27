@@ -34,7 +34,7 @@ public:
 	std::vector<std::string> const getTypes() const;
 
 	/// Return the guiname from a given cmdName of the TOC param
-	std::string const getGuiName() const;
+	std::string const getGuiName(std::string const & type) const;
 
 	/// Given a type, returns the contents
 	toc::Toc const getContents(std::string const & type) const;

@@ -1,3 +1,9 @@
+2005-07-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* insetfloat.C: 
+	* insetwrap.C: Do not use translatable strings as internal identifier 
+	(bug 1870).
+
 2005-07-18  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* insetbase.C: include boost/current_function.hpp

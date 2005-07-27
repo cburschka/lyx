@@ -1,3 +1,8 @@
+2005-07-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* FormToc.C (updateType, update_contents): Do not compare against 
+	translatable strings (bug 1870).
+
 2005-07-22  Angus Leeming  <leeming@lyx.org>
 
 	* FormSearch.C (input): do not trim the find and replace strings.

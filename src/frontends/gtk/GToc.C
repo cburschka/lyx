@@ -88,7 +88,8 @@ void GToc::update()
 void GToc::updateType()
 {
 	changing_views_ = true;
-	string const targettype = controller().getGuiName();
+	string const targettype = 
+		toc::getType(controller().params().getCmdName());
 
 	typestore_->clear();
 	vector<string> types = controller().getTypes();
@@ -100,8 +101,9 @@ void GToc::updateType()
 	vector<string>::iterator it = types.begin();
 	vector<string>::iterator end = types.end();
 	for(;it != end; ++it) {
+		string const & guiname = controller().getGuiName(*it);
 		Gtk::TreeModel::iterator row = typestore_->append();
-		(*row)[listCol_] = *it;
+		(*row)[listCol_] = guiname;
 		if (*it == targettype)
 			typecombo_->set_active(row);
 	}
@@ -119,7 +121,8 @@ void GToc::updateContents()
 	}
 
 	Gtk::TreeModel::iterator it = typecombo_->get_active();
-	Glib::ustring const type = (*it)[listCol_];
+	vector<string> const & choice = controller().getTypes();
+	string const type = choice[(*it)[listColIndex_]];
 	toc::Toc const contents = controller().getContents(type);
 
 	// Check if all elements are the same.
