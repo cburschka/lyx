@@ -3,6 +3,14 @@
 # Thu 9 March 1995
 # Geoffrey Tobin
 # Nelson H. F. Beebe
+#
+# Changes 27 July 2005 by Angus Leeming to enable the Makefile to
+# work out of the box on both *nix and Windows machines under
+# the MinSYS environment.
+#
+# The Makefile can also be used unaltered to build a Windows executable
+# from a Linux box if make is invoked as:
+# $ make EXEEXT='.exe' CC='i386-mingw32-gcc'
 #=======================================================================
 
 BINDIR          = /usr/local/bin

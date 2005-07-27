@@ -1,9 +1,11 @@
 /* dt2dv - convert human-readable "DTL" file to DVI format
          - this is intended to invert dv2dt version 0.6.0
-   - version 0.6.1 - 14:38 GMT +11  Thu 9 March 1995
+   - version 0.6.2 - 27 July 2005
    - Geoffrey Tobin    G.Tobin@ee.latrobe.edu.au
    - fixes:  Michal Tomczak-Jaegermann    ntomczak@vm.ucs.ualberta.ca
              Nelson H. F. Beebe    beebe@math.utah.edu
+	     Angus Leeming leeming@lyx.org: Enable dt2dv to handle
+	     .dvi files containing strings longer than 1024 chars.
    - Reference:  "The DVI Driver Standard, Level 0",
                  by  The TUG DVI Driver Standards Committee.
                  Appendix A, "Device-Independent File Format".
