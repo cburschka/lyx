@@ -3,6 +3,14 @@
 # Thu 9 March 1995
 # Geoffrey Tobin
 # Nelson H. F. Beebe
+#
+# Changes 27 July 2005 by Angus Leeming to enable the Makefile to
+# work out of the box on both *nix and Windows machines under
+# the MinSYS environment.
+#
+# The Makefile can also be used unaltered to build a Windows executable
+# from a Linux box if make is invoked as:
+# $ make EXEEXT='.exe' CC='i386-mingw32-gcc'
 #=======================================================================
 
 BINDIR          = /usr/local/bin
@@ -16,8 +24,9 @@ COL		= col -b
 CP              = /bin/cp
 DITROFF		= ditroff
 DITROFF		= groff
-DT2DV		= dt2dv.exe
-DV2DT		= dv2dt.exe
+EXEEXT		= .exe
+DT2DV		= dt2dv$(EXEEXT)
+DV2DT		= dv2dt$(EXEEXT)
 EXES 		= $(DT2DV) $(DV2DT)
 LDFLAGS         = -s
 LDFLAGS         =
@@ -51,19 +60,19 @@ all:  dtl check
 
 doc:  dt2dv.hlp dv2dt.hlp dt2dv.ps dv2dt.ps
 
-dtl:  $(EXES)
+dtl:  dv2dt dt2dv
 
 check tests:  hello example tripvdu edited
 
-$(DV2DT): dv2dt.o dtl.h
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ dv2dt.o
+dv2dt: dv2dt.o dtl.h
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $(DV2DT) dv2dt.o
 
-$(DT2DV): dt2dv.o dtl.h
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ dt2dv.o
+dt2dv: dt2dv.o dtl.h
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $(DT2DV) dt2dv.o
 
-hello:  hello.dtl $(EXES)
-	./dt2dv hello.dtl hello2.dvi
-	./dv2dt hello2.dvi hello2.dtl
+hello:  hello.dtl dv2dt dt2dv
+	./$(DT2DV) hello.dtl hello2.dvi
+	./$(DV2DT) hello2.dvi hello2.dtl
 	-@diff hello.dtl hello2.dtl > hello.dif
 	@if [ -s hello.dif ] ; \
 	then echo ERROR: differences in hello.dif ; \
@@ -72,11 +81,11 @@ hello:  hello.dtl $(EXES)
 
 hello.dtl:  hello.tex
 	tex hello
-	./dv2dt hello.dvi hello.dtl
+	./$(DV2DT) hello.dvi hello.dtl
 
-example:  example.dtl $(EXES)
-	./dt2dv example.dtl example2.dvi
-	./dv2dt example2.dvi example2.dtl
+example:  example.dtl dv2dt dt2dv
+	./$(DT2DV) example.dtl example2.dvi
+	./$(DV2DT) example2.dvi example2.dtl
 	-@diff example.dtl example2.dtl > example.dif
 	@if [ -s example.dif ] ; \
 	then echo ERROR: differences in example.dif ; \
@@ -85,11 +94,11 @@ example:  example.dtl $(EXES)
 
 example.dtl:  example.tex
 	tex example
-	./dv2dt example.dvi example.dtl
+	./$(DV2DT) example.dvi example.dtl
 
-tripvdu:  tripvdu.dtl $(EXES)
-	./dt2dv tripvdu.dtl tripvdu2.dvi
-	./dv2dt tripvdu2.dvi tripvdu2.dtl
+tripvdu:  tripvdu.dtl dv2dt dt2dv
+	./$(DT2DV) tripvdu.dtl tripvdu2.dvi
+	./$(DV2DT) tripvdu2.dvi tripvdu2.dtl
 	-@diff tripvdu.dtl tripvdu2.dtl > tripvdu.dif
 	@if [ -s tripvdu.dif ] ; \
 	then echo ERROR: differences in tripvdu.dif ; \
@@ -98,15 +107,15 @@ tripvdu:  tripvdu.dtl $(EXES)
 
 tripvdu.dtl:  tripvdu.tex
 	tex tripvdu
-	./dv2dt tripvdu.dvi tripvdu.dtl
+	./$(DV2DT) tripvdu.dvi tripvdu.dtl
 
 # edited.txt is already a dtl file.
 
-edited:  edited.txt $(EXES)
-	./dt2dv edited.txt edited.dvi
-	./dv2dt edited.dvi edited2.dtl
-	./dt2dv edited2.dtl edited2.dvi
-	./dv2dt edited2.dvi edited3.dtl
+edited:  edited.txt dv2dt dt2dv
+	./$(DT2DV) edited.txt edited.dvi
+	./$(DV2DT) edited.dvi edited2.dtl
+	./$(DT2DV) edited2.dtl edited2.dvi
+	./$(DV2DT) edited2.dvi edited3.dtl
 	@if [ -s edited.dif ] ; \
 	then echo ERROR : differences in edited.dif ; \
 	else $(RM) edited.dif ; \
