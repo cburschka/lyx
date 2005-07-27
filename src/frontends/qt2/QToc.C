@@ -159,7 +159,7 @@ void QToc::updateToc(int newdepth)
 
 	dialog_->tocLV->setUpdatesEnabled(true);
 	dialog_->tocLV->update();
-	setTitle(dialog_->typeCO->currentText());
+	setTitle(fromqstr(dialog_->typeCO->currentText()));
 }
 
 

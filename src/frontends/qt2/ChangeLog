@@ -1,5 +1,9 @@
 2005-07-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
+	* QToc.C (update_contents): fix missing qstring->string translation.
+
+2005-07-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
 	* QToc.C (updateType, update_contents): Do not compare against 
 	translatable strings (bug 1870).
 
