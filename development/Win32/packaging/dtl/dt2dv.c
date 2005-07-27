@@ -2223,7 +2223,7 @@ xfer_len_string
 /* transfer (length and) quoted string from dtl to dvi file, */
 /* return number of bytes written to dvi file. */
 {
-  U4 k, k2;
+  U4 k, k2, lstr_maxsize;
   Lstring lstr;
 
   if (debug)
@@ -2232,11 +2232,12 @@ xfer_len_string
     fprintf (stderr, "(xfer_len_string) : entering xfer_len_string.\n");
   }
 
-  init_Lstring (&lstr, LSIZE);
-
   /* k[n] : length of special string */
 
   k = get_unsigned (dtl);
+
+  lstr_maxsize = (k > LSIZE) ? k : LSIZE;
+  init_Lstring (&lstr, lstr_maxsize);
 
   if (debug)
   {
