@@ -79,6 +79,8 @@ void ControlBibtex::getBibStyles(vector<string> & data) const
 	for (; it != end; ++it) {
 		*it = OnlyFilename(*it);
 	}
+	// sort on filename only (no path)
+	std::sort(data.begin(), data.end());
 }
 
 
@@ -97,6 +99,8 @@ void ControlBibtex::getBibFiles(vector<string> & data) const
 	for (; it != end; ++it) {
 		*it = OnlyFilename(*it);
 	}
+	// sort on filename only (no path)
+	std::sort(data.begin(), data.end());
 }
 
 

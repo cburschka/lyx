@@ -30,6 +30,7 @@ using std::endl;
 namespace lyx {
 
 using support::contains;
+using support::GetExtension;
 using support::GetFileContents;
 using support::getVectorFromString;
 using support::LibFileSearch;
@@ -82,6 +83,8 @@ void getTexFileList(string const & filename, std::vector<string> & list)
 		*it = regex.Merge((*it), "/");
 	}
 
+	// remove empty items and duplicates
+	list.erase(std::remove(list.begin(), list.end(), ""), list.end());
 	eliminate_duplicates(list);
 }
 
@@ -108,12 +111,22 @@ string const getListOfOptions(string const & classname, string const & type)
 string const getTexFileFromList(string const & file,
 			    string const & type)
 {
-	string const file_ = (type == "cls") ? file + ".cls" : file + ".sty";
+	string file_ = file;
+	// do we need to add the suffix?
+	if (!(GetExtension(file) == type))
+		file_ += '.' + type;
 
-	lyxerr << "Search for classfile " << file_ << endl;
+	lyxerr << "Searching for file " << file_ << endl;
 
-	string const lstfile =
-		((type == "cls") ? "clsFiles.lst" : "styFiles.lst");
+	string lstfile;
+	if (type == "cls")
+		lstfile = "clsFiles.lst";
+	else if (type == "sty")
+		lstfile = "styFiles.lst";
+	else if (type == "bst")
+		lstfile = "bstFiles.lst";
+	else if (type == "bib")
+		lstfile = "bibFiles.lst";
 	string const allClasses = GetFileContents(LibFileSearch(string(),
 								lstfile));
 	int entries = 0;

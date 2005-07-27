@@ -106,8 +106,14 @@ void GTexinfo::onItemActivate(
 		(*itemsstore_->get_iter(path))[listColIndex_];
 
 	ContentsType const & data = texdata_[activeStyle];
+
+	string file = data[choice];
+	if (!fullpathcheck_->get_active())
+		file = getTexFileFromList(data[choice],
+				controller().getFileType(activeStyle));
+
 	if (choice >= 0 && choice <= data.size() - 1)
-		controller().viewFile(data[choice]);
+		controller().viewFile(file);
 }
 
 
@@ -133,17 +139,15 @@ void GTexinfo::onRefresh()
 void GTexinfo::updateStyles()
 {
 	ContentsType & data = texdata_[activeStyle];
-	getTexFileList(activeStyle, data);
-
 	bool const withFullPath = fullpathcheck_->get_active();
+	getTexFileList(activeStyle, data, withFullPath);
 
 	itemsstore_->clear();
 	ContentsType::const_iterator it  = data.begin();
 	ContentsType::const_iterator end = data.end();
 	for (int rowindex = 0; it != end; ++it, ++rowindex) {
-		string const line = withFullPath ? *it : OnlyFilename(*it);
 		Gtk::TreeModel::iterator row = itemsstore_->append();
-		(*row)[listCol_] = line;
+		(*row)[listCol_] = *it;
 		(*row)[listColIndex_] = rowindex;
 	}
 }

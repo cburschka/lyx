@@ -1,5 +1,17 @@
 2005-07-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
+	* ControlBibtex.C: sort bst files (bug 1936)
+
+	* ControlTeXInfo.[Ch]: new member getFileType that returns the extension
+	of the supported files.
+	* ControlTeXInfo.[Ch] (getTeXFileList): takes bool withPath and sorts 
+	correctly when no path is requested (bug 1936)
+
+	* tex_helpers.C (getTeXFileList): remove empty items from the list 
+	(bug 1936); proper support the other file types than *cls.
+
+2005-07-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
 	* ControlToc.[Ch]: getGuiName takes a type argument now.
 	* ControlToc.C (getGuiName): Do all guiname translations here (bug 1870)
 

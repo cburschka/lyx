@@ -1,5 +1,13 @@
 2005-07-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
+	* QBibTeX.C: Do not insert empty items to bst combo.
+	
+	* QTexInfo.C: 
+	* QTexInfoDialog.c: Load and display full-path and no-path
+	lists correctly (bug 1936)
+
+2005-07-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
 	* QToc.C (update_contents): fix missing qstring->string translation.
 
 2005-07-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>

@@ -141,12 +141,15 @@ void QBibtex::update_contents()
 		dialog_->styleCB->insertItem(toqstr(item));
 	}
 
-	if (item_nr == -1) {
+	if (item_nr == -1 && !bibstyle.empty()) {
 		dialog_->styleCB->insertItem(toqstr(bibstyle));
 		item_nr = dialog_->styleCB->count() - 1;
 	}
 
-	dialog_->styleCB->setCurrentItem(item_nr);
+	if (item_nr != -1)
+		dialog_->styleCB->setCurrentItem(item_nr);
+	else
+		dialog_->styleCB->clearEdit();
 }
 
 

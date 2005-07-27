@@ -13,14 +13,20 @@
 #include "ControlTexinfo.h"
 #include "funcrequest.h"
 
+#include "support/filetools.h"
+
 
 using std::string;
+using std::vector;
 
 namespace lyx {
+
+using support::OnlyFilename;
+
 namespace frontend {
 
 void getTexFileList(ControlTexinfo::texFileSuffix type,
-		    std::vector<string> & list)
+		    std::vector<string> & list, bool withPath)
 {
 	string filename;
 	switch (type) {
@@ -42,6 +48,15 @@ void getTexFileList(ControlTexinfo::texFileSuffix type,
 		rescanTexStyles();
 		getTexFileList(filename, list);
 	}
+	if (withPath)
+		return;
+	vector<string>::iterator it  = list.begin();
+	vector<string>::iterator end = list.end();
+	for (; it != end; ++it) {
+		*it = OnlyFilename(*it);
+	}
+	// sort on filename only (no path)
+	std::sort(list.begin(), list.end());
 }
 
 
@@ -60,6 +75,24 @@ void ControlTexinfo::viewFile(string const & filename) const
 string const ControlTexinfo::getClassOptions(string const & filename) const
 {
 	return getListOfOptions(filename, "cls");
+}
+
+
+string const ControlTexinfo::getFileType(ControlTexinfo::texFileSuffix type) const
+{
+	string ftype;
+	switch (type) {
+	case ControlTexinfo::bst:
+		ftype = "bst";
+		break;
+	case ControlTexinfo::cls:
+		ftype = "cls";
+		break;
+	case ControlTexinfo::sty:
+		ftype = "sty";
+		break;
+	}
+	return ftype;
 }
 
 } // namespace frontend

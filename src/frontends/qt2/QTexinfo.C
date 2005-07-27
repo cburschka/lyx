@@ -50,17 +50,15 @@ void QTexinfo::build_dialog()
 void QTexinfo::updateStyles(ControlTexinfo::texFileSuffix whichStyle)
 {
 	ContentsType & data = texdata_[whichStyle];
-	getTexFileList(whichStyle, data);
-
 	bool const withFullPath = dialog_->path->isChecked();
+
+	getTexFileList(whichStyle, data, withFullPath);
 
 	dialog_->fileList->clear();
 	ContentsType::const_iterator it  = data.begin();
 	ContentsType::const_iterator end = data.end();
-	for (; it != end; ++it) {
-		string const line = withFullPath ? *it : OnlyFilename(*it);
-		dialog_->fileList->insertItem(toqstr(line));
-	}
+	for (; it != end; ++it)
+		dialog_->fileList->insertItem(toqstr(*it));
 
 	activeStyle = whichStyle;
 }

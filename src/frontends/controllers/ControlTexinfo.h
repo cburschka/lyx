@@ -41,6 +41,8 @@ public:
 	void viewFile(std::string const & filename) const;
 	/// show all classoptions
 	std::string const getClassOptions(std::string const & filename) const;
+	/// return file type as string
+	std::string const getFileType(ControlTexinfo::texFileSuffix type) const;
 private:
 	///
 	virtual void apply() {}
@@ -51,7 +53,7 @@ private:
  *  Each entry in the file list is returned as a pair<name_with_path, name_only>
  */
 void getTexFileList(ControlTexinfo::texFileSuffix type,
-		    std::vector<std::string> & contents);
+		    std::vector<std::string> & contents, bool withPath);
 
 } // namespace frontend
 } // namespace lyx

@@ -89,8 +89,12 @@ ButtonPolicy::SMInput FormTexinfo::input(FL_OBJECT * ob, long ob_value) {
 		// double click in browser: view selected file
 		ContentsType::size_type const sel = fl_get_browser(ob);
 		ContentsType const & data = texdata_[activeStyle];
+		string file = data[sel-1];
+		if (!fl_get_button(dialog_->check_fullpath))
+			file = getTexFileFromList(data[sel-1],
+				controller().getFileType(activeStyle));
 		if (sel >= 1 && sel <= data.size())
-			controller().viewFile(data[sel-1]);
+			controller().viewFile(file);
 
 		// reset the browser so that the following single-click
 		// callback doesn't do anything
@@ -125,17 +129,14 @@ ButtonPolicy::SMInput FormTexinfo::input(FL_OBJECT * ob, long ob_value) {
 void FormTexinfo::updateStyles(ControlTexinfo::texFileSuffix whichStyle)
 {
 	ContentsType & data = texdata_[whichStyle];
-	getTexFileList(whichStyle, data);
-
 	bool const withFullPath = fl_get_button(dialog_->check_fullpath);
+	getTexFileList(whichStyle, data, withFullPath);
 
 	fl_clear_browser(dialog_->browser);
 	ContentsType::const_iterator it  = data.begin();
 	ContentsType::const_iterator end = data.end();
-	for (; it != end; ++it) {
-		string const line = withFullPath ? *it : OnlyFilename(*it);
-		fl_add_browser_line(dialog_->browser, line.c_str());
-	}
+	for (; it != end; ++it)
+		fl_add_browser_line(dialog_->browser, (*it).c_str());
 
 	activeStyle = whichStyle;
 }

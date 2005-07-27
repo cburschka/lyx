@@ -13,6 +13,7 @@
 #include "QTexinfoDialog.h"
 #include "QTexinfo.h"
 
+#include <qcheckbox.h>
 #include <qcombobox.h>
 #include <qlistbox.h>
 #include <qpushbutton.h>
@@ -59,7 +60,11 @@ void QTexinfoDialog::viewClicked()
 {
 	vector<string>::size_type const fitem = fileList->currentItem();
 	vector<string> const & data = form_->texdata_[form_->activeStyle];
-	form_->controller().viewFile(data[fitem]);
+	string file = data[fitem];
+	if (!path->isChecked())
+		file = getTexFileFromList(data[fitem],
+			form_->controller().getFileType(form_->activeStyle));
+	form_->controller().viewFile(file);
 }
 
 
