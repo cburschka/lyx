@@ -45,16 +45,22 @@ def error(message):
 
 
 def manipulated_dtl(data):
-    psfile_re = re.compile(r'(.*PSfile=")(.*)(" llx=.*)')
+    psfile_re = re.compile(r'(special1 +)([0-9]+)( +\'PSfile=")(.*)(" llx=.*)')
 
     lines = data.split('\n')
     for i in range(len(lines)):
         line = lines[i]
-        match = psfile_re.search(line)
+        match = psfile_re.match(line)
         if match != None:
-            file = match.group(2).replace('"', '')
-            lines[i] = '%s%s%s' \
-                       % ( match.group(1), file, match.group(3) )
+            file = match.group(4)
+            filelen = len(file)
+            file = file.replace('"', '')
+            # Don't forget to update the length of the string too...
+            strlen = int(match.group(2)) - (filelen - len(file))
+
+            lines[i] = '%s%d%s%s%s' \
+                       % ( match.group(1), strlen, match.group(3),
+                           file, match.group(5) )
 
     return '\n'.join(lines)
 
