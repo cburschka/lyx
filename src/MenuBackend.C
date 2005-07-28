@@ -666,7 +666,9 @@ void expandToc(Menu & tomenu, LyXView const * view)
 	// know that all the entries in a TOC will be have status_ ==
 	// OK, so we avoid this unnecessary overhead (JMarc)
 
-	if (!view->buffer()) {
+
+	Buffer const * buf = view->buffer();
+	if (!buf) {
 		tomenu.add(MenuItem(MenuItem::Command,
 				    _("No Documents Open!"),
 				    FuncRequest(LFUN_NOACTION)),
@@ -674,7 +676,8 @@ void expandToc(Menu & tomenu, LyXView const * view)
 		return;
 	}
 
-	lyx::toc::TocList toc_list = lyx::toc::getTocList(*view->buffer());
+	FloatList const & floatlist = buf->params().getLyXTextClass().floats();
+	lyx::toc::TocList toc_list = lyx::toc::getTocList(*buf);
 	lyx::toc::TocList::const_iterator cit = toc_list.begin();
 	lyx::toc::TocList::const_iterator end = toc_list.end();
 	for (; cit != end; ++cit) {
@@ -692,8 +695,7 @@ void expandToc(Menu & tomenu, LyXView const * view)
 					   label,
 					   FuncRequest(ccit->action())));
 		}
-		string const & floatName = cit->first;
-		// Is the _(...) really needed here? (Lgb)
+		string const & floatName = floatlist.getType(cit->first).listName();
 		MenuItem item(MenuItem::Submenu, _(floatName));
 		item.submenu(menu.release());
 		tomenu.add(item);

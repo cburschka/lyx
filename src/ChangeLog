@@ -1,3 +1,8 @@
+2005-07-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* MenuBackend.C (expandToc): use Floating::listName() as title of
+	the floats submenus.
+
 2005-07-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* toc.[Ch]: Do not use translatable strings (bug 1870).
