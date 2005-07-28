@@ -1,3 +1,8 @@
+2005-07-28  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* insettabular.C (getStatus): disable line and paragraph breaks
+	in non-fixed-width cells (bug 1938).
+
 2005-07-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* insetfloat.C: 

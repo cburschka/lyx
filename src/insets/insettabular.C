@@ -1006,6 +1006,17 @@ bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
 		}
 	}
 
+	// disable in non-fixed-width cells
+	case LFUN_BREAKLINE:
+	case LFUN_BREAKPARAGRAPH:
+	case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
+	case LFUN_BREAKPARAGRAPH_SKIP: {
+		if (tabular.getPWidth(cur.idx()).zero()) {
+			status.enabled(false);
+			return true;
+		}
+	}
+
 	case LFUN_INSET_MODIFY:
 		if (translate(cmd.getArg(0)) == TABULAR_CODE) {
 			status.enabled(true);
