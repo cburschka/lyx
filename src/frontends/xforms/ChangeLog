@@ -1,3 +1,8 @@
+2005-07-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* FormDialogView.C (show): exit after update if Controller::exitEarly()
+	is true. (bug 1950)
+
 2005-07-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* FormTexInfo.C: Load and display full-path and no-path

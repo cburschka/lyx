@@ -1,3 +1,15 @@
+2005-07-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	bug 1950.
+	
+	* Dialog.h (exitEarly): virtual function, returns false as a
+	default. 
+
+	* ControlSpellchecker.h (exitEarly): return exitEarly_
+
+	* ControlSpellchecker.C (check): set exitEarly_ to true when
+	spell-checking is finished, false otherwise.
+
 2005-07-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* ControlBibtex.C: sort bst files (bug 1936)

@@ -145,6 +145,8 @@ void FormDialogView::show()
 	fl_freeze_form(form());
 	update();
 	fl_unfreeze_form(form());
+	if (dialog().controller().exitEarly())
+		return;
 
 	if (form()->visible) {
 		fl_raise_form(form());

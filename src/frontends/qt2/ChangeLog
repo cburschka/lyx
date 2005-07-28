@@ -1,3 +1,8 @@
+2005-07-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QDialogView.C (show): exit after update if Controller::exitEarly()
+	is true. (bug 1950)
+
 2005-07-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* QBibTeX.C: Do not insert empty items to bst combo.

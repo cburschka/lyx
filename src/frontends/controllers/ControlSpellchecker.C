@@ -54,7 +54,7 @@ namespace frontend {
 
 
 ControlSpellchecker::ControlSpellchecker(Dialog & parent)
-	: Dialog::Controller(parent),
+	: Dialog::Controller(parent), exitEarly_(false),
 	  oldval_(0), newvalue_(0), count_(0)
 {}
 
@@ -202,6 +202,7 @@ void ControlSpellchecker::check()
 		++start;
 
 	BufferParams & bufferparams = kernel().buffer().params();
+	exitEarly_ = false;
 
 	while (res == SpellBase::OK || res == SpellBase::IGNORED_WORD) {
 		word_ = nextWord(cur, start, bufferparams);
@@ -209,6 +210,7 @@ void ControlSpellchecker::check()
 		// end of document
 		if (getWord().empty()) {
 			showSummary();
+			exitEarly_ = true;
 			return;
 		}
 

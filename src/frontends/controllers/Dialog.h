@@ -186,6 +186,12 @@ public:
 	 *  return true.
 	 */
 	virtual bool disconnectOnApply() const { return false; }
+
+	/** \return true if Dialog::View::show() should not display the dialog
+	 *   after running update. Currently, only ControlSpellchecker 
+	 *   makes use of that.
+	*/
+	virtual bool exitEarly() const { return false; }
 	//@}
 
 protected:

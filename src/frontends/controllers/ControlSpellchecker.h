@@ -40,6 +40,8 @@ public:
 	virtual void dispatchParams() {}
 	///
 	virtual bool isBufferDependent() const { return true; }
+	///
+	virtual bool exitEarly() const { return exitEarly_; }
 
 	/// replace word with replacement
 	void replace(std::string const &);
@@ -75,6 +77,10 @@ private:
 
 	/// show count of checked words at normal exit
 	void showSummary();
+
+private:
+	/// set to true when spellchecking is finished
+	bool exitEarly_;
 
 	/// current word being checked and lang code
 	WordLangTuple word_;

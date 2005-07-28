@@ -51,6 +51,8 @@ void QDialogView::show()
 	form()->setMinimumSize(form()->sizeHint());
 
 	update();  // make sure its up-to-date
+	if (dialog().controller().exitEarly())
+		return;
 
 	form()->setCaption(toqstr("LyX: " + getTitle()));
 
