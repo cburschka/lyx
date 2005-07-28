@@ -1,0 +1,181 @@
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
+\textclass cv
+\begin_preamble
+%% You can modify the fonts used in the document be using the
+%% following macros. They take one parameter which is the font
+%% changing command.
+%% \headerfont: the font used in both headers.
+%%              Defaults to sans serif.
+%% \titlefont:  the font used for the title.
+%%              Defaults to \LARGE sans-serif semi bold condensed.
+%% \sectionfont: the font used by \section when beginning a new topic.
+%%              Defaults to sans-serif semi bold condensed.
+%% \itemfont:   the font used in descriptions of items.
+%%              Defaults to sans-serif slanted.
+% to make your name even bigger, uncomment the following line:
+% \titlefont{\Huge}
+%%
+%% You can modify the following parameters using \renewcommand:
+%% \topicmargin: the left margin inside topics.
+%%               Defaults to 20% of the text width (0.20\textwidth).
+% To get more room for left column of Topic layouts, uncomment following line:
+% \setlength{\topicmargin}{0.3\textwidth}
+\end_preamble
+\language ngerman
+\inputencoding auto
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single
+\papersize default
+\use_geometry false
+\use_amsmath 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth -1000
+\tocdepth -1000
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes true
+\end_header
+
+\begin_body
+
+\begin_layout Left Header
+123 Hamlet Street
+\newline
+Stratford-upon-Avon
+\end_layout
+
+\begin_layout Right Header
+TEL: 888-PUCK
+\newline
+
+\family typewriter
+\size small
+bill@globe.org
+\end_layout
+
+\begin_layout Title
+William Shakespeare
+\end_layout
+
+\begin_layout Standard
+Einige Leute schreiben hier eine Zusammenfassung.
+ Bemerkung: im Vorspann kann man viele LaTeX-Variablen setzen, um das Aussehen
+ des Lebenslaufes zu ändern.
+ Sehen Sie sich 
+\family sans
+\bar under
+D
+\bar default
+okument
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Einstellungen\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+L
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+{}
+\end_layout
+
+\end_inset
+
+aTeX-Vorspann
+\family default
+ an.
+\end_layout
+
+\begin_layout Section
+Arbeitserfahrungen
+\end_layout
+
+\begin_layout Topic
+\labelwidthstring MMMMM
+1593-1609 Schrieb und produzierte ich Schauspiele für die Königin, und dann
+ für den König.
+ Er mochte sie wirklich sehr, aber sie erinnerten ihn an die Schauspiele
+ des  Earl of Oxford.
+\end_layout
+
+\begin_layout Topic
+\labelwidthstring MMMMM
+\InsetSpace ~
+ Wenn ein Thema keinen Titel hat, müssen Sie dort stattdessen ein geschütztes
+ Leerzeichen einfügen.
+ Dies ist ein LyX-Mangel.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Aber Sie können auch die Absatztiefe ändern, abhängig davon, was Sie tun
+ möchten.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Erziehung
+\end_layout
+
+\begin_layout Topic
+\labelwidthstring MMMMM
+1577-78 Mein Vater unterrichtete mich.
+\end_layout
+
+\begin_layout Topic
+\labelwidthstring MMMMM
+April\InsetSpace ~
+bis\InsetSpace ~
+Mai\InsetSpace ~
+1581 Ich versuchte es an einer Oberschule.Ich haßte meinen Englischleh
+rer.
+ [Zwei Dinge sind hier zu beachten: als erstes sehen Sie sich in der Druckvorsch
+au an, wie ein Zeilenumbruch aussieht, wenn Ihr Titel zu lang ist; als zweites
+ beachten Sie, daß Sie geschützte Leerzeichen im Titel benutzen müssen,
+ wenn er nicht umgebrochen werden soll.]
+\end_layout
+
+\begin_layout Section
+Veröffentlichungen
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring Publications
+
+\bibitem {firstref}
+Erster Foliant.
+ Me.
+ 1623.
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring Publications
+
+\bibitem {secondref}
+Diese Referenzen könnten über BibTeX eingefügt worden sein\SpecialChar \ldots{}
+ Auf jeden Fall
+ kann ich hier meine Arbeiten aus 
+\begin_inset LatexCommand \cite{firstref}
+
+\end_inset
+
+ zitieren.
+\end_layout
+
+\end_body
+\end_document
