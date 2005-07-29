@@ -1882,9 +1882,12 @@ def remove_paperpackage(file):
             j = len(file.header) - 2
             file.header[j:j]=["\\begin_preamble",
                               conv[paperpackage],"\\end_preamble"]
+            i = i + 3
         else:
             file.header[j+1:j+1] = [conv[paperpackage]]
+            i = i + 1
 
+    print i, file.header[i]
     del file.header[i]
 
     i = find_token(file.header, '\\papersize', 0)

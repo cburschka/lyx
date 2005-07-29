@@ -1,5 +1,10 @@
 2005-07-29  José Matos  <jamatos@lyx.org>
 
+	* lyx_1_4.py (remove_paperpackage): Take into account the lines
+	added to preamble.
+
+2005-07-29  José Matos  <jamatos@lyx.org>
+
 	* lyx_1_4.py: Fix a4 package removal when the preamble is already there.
 
 2005-07-29  José Matos  <jamatos@lyx.org>
