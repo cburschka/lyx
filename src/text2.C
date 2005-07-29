@@ -622,18 +622,8 @@ void LyXText::insertInset(LCursor & cur, InsetBase * inset)
 // needed to insert the selection
 void LyXText::insertStringAsLines(LCursor & cur, string const & str)
 {
-	pit_type pit = cur.pit();
-	pos_type pos = cur.pos();
-	recordUndo(cur);
-
-	// only to be sure, should not be neccessary
-	cur.clearSelection();
-	cur.buffer().insertStringAsLines(pars_, pit, pos, current_font, str,
-		autoBreakRows_);
-
-	cur.resetAnchor();
-	setCursor(cur, cur.pit(), pos);
-	cur.setSelection();
+	cur.buffer().insertStringAsLines(pars_, cur.pit(), cur.pos(), 
+		current_font, str, autoBreakRows_);
 }
 
 
