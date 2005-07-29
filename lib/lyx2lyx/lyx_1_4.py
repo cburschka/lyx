@@ -1883,7 +1883,7 @@ def remove_paperpackage(file):
             file.header[j:j]=["\\begin_preamble",
                               conv[paperpackage],"\\end_preamble"]
         else:
-            file.header[j+1:j+1] = conv[paperpackage]
+            file.header[j+1:j+1] = [conv[paperpackage]]
 
     del file.header[i]
 
