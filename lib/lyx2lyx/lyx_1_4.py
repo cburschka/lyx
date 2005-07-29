@@ -1526,9 +1526,9 @@ def convert_paperpackage(file):
     packages = {'default':'none','a4':'none', 'a4wide':'a4', 'widemarginsa4':'a4wide'}
     if len(split(file.header[i])) > 1:
         paperpackage = split(file.header[i])[1]
+        file.header[i] = replace(file.header[i], paperpackage, packages[paperpackage])
     else:
-        paperpackage = "default"
-    file.header[i] = replace(file.header[i], paperpackage, packages[paperpackage])
+        file.header[i] = file.header[i] + ' widemarginsa4'
 
 
 def revert_paperpackage(file):
