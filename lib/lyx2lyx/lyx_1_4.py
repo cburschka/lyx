@@ -1896,9 +1896,8 @@ def remove_paperpackage(file):
 # Convertion hub
 #
 
-convert = [[222, [insert_tracking_changes]],
-           [223, [add_end_header, remove_color_default,
-                  convert_spaces, convert_bibtex, remove_insetparent]],
+convert = [[222, [insert_tracking_changes, add_end_header]],
+           [223, [remove_color_default, convert_spaces, convert_bibtex, remove_insetparent]],
            [224, [convert_external, convert_comment]],
            [225, [add_end_layout, layout2begin_layout, convert_end_document,
                   convert_table_valignment_middle, convert_breaks]],
@@ -1944,8 +1943,8 @@ revert =  [[242, []],
            [224, [rm_end_layout, begin_layout2layout, revert_end_document,
                   revert_valignment_middle, convert_vspace, convert_frameless_box]],
            [223, [revert_external_2, revert_comment, revert_eqref]],
-           [222, [rm_end_header, revert_spaces, revert_bibtex]],
-           [221, [rm_tracking_changes, rm_body_changes]]]
+           [222, [revert_spaces, revert_bibtex]],
+           [221, [rm_end_header, rm_tracking_changes, rm_body_changes]]]
 
 
 if __name__ == "__main__":
