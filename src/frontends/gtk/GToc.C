@@ -100,10 +100,14 @@ void GToc::updateType()
 
 	vector<string>::iterator it = types.begin();
 	vector<string>::iterator end = types.end();
+	int index = 0;
 	for(;it != end; ++it) {
 		string const & guiname = controller().getGuiName(*it);
 		Gtk::TreeModel::iterator row = typestore_->append();
 		(*row)[listCol_] = guiname;
+		(*row)[listColIndex_] = index;
+		++index;
+
 		if (*it == targettype)
 			typecombo_->set_active(row);
 	}

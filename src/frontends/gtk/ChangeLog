@@ -1,3 +1,7 @@
+2005-07-31  John Spray  <spray_john@users.sf.net>
+	* GToc.C: unbreak viewing lists other than TOC by storing 
+	integer index of entries in Type combobox.
+
 2005-07-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* GViewBase.C (show): exit after update if Controller::exitEarly()
