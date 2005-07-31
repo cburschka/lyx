@@ -86,6 +86,7 @@ Gtk::BuiltinStockID getGTKStockIcon(FuncRequest const & func)
 		case LFUN_MENUWRITE: return Gtk::Stock::SAVE;
 		case LFUN_MENUNEW: return Gtk::Stock::NEW;
 		case LFUN_WRITEAS: return Gtk::Stock::SAVE_AS;
+		case LFUN_MENURELOAD: return Gtk::Stock::REVERT_TO_SAVED;
 		case LFUN_CENTER: return Gtk::Stock::JUSTIFY_CENTER;
 		case LFUN_TOCVIEW: return Gtk::Stock::INDEX;
 		case LFUN_CLOSEBUFFER: return Gtk::Stock::CLOSE;
