@@ -1965,8 +1965,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "=" && (flags & FLAG_TABBING))
 			handle_ert(os, t.asInput(), context);
 
-		else if (t.cs() == "H" || t.cs() == "c" || t.cs() == "^" || t.cs() == "'"
-		      || t.cs() == "~" || t.cs() == "." || t.cs() == "=") {
+		else if (t.cs() == "H" || t.cs() == "c" || t.cs() == "^" 
+			 || t.cs() == "'" || t.cs() == "`"
+			 || t.cs() == "~" || t.cs() == "." || t.cs() == "=") {
 			// we need the trim as the LyX parser chokes on such spaces
 			context.check_layout(os);
 			os << "\n\\i \\" << t.cs() << "{"
