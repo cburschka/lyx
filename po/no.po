@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: lyx 1.4.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2005-07-18 01:38+0200\n"
-"PO-Revision-Date: 2005-07-18 11:21+0200\n"
+"PO-Revision-Date: 2005-07-31 21:29+0200\n"
 "Last-Translator: Lars Gullik Bjønnes <larsbj@lyx.org>\n"
 "Language-Team: norsk <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1817,7 +1817,7 @@ msgstr "Legg til kolonne"
 
 #: src/frontends/xforms/forms/form_tabular.fd:176
 msgid "Delete Column|#O"
-msgstr "Slett kolonne"
+msgstr "Slett kolonne|#O"
 
 #: src/frontends/xforms/forms/form_tabular.fd:194
 msgid "Append Row|#p"
@@ -2525,7 +2525,7 @@ msgstr "Referansenøkkel"
 #: src/frontends/qt2/ui/QBibitemDialogBase.ui:114
 #: src/frontends/qt2/ui/QRefDialogBase.ui:182 src/frontends/qt2/Dialogs.C:239
 msgid "&Label:"
-msgstr "&Referanse:"
+msgstr "&Merke:"
 
 #: src/frontends/qt2/ui/QBibitemDialogBase.ui:122
 #: src/frontends/qt2/ui/QBibitemDialogBase.ui:140
@@ -2952,15 +2952,15 @@ msgstr "Bruk endringer med én gang"
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:71
 #: src/frontends/qt2/ui/QCitationFindDialogBase.ui:117
 msgid "Bibliography entry"
-msgstr "Referanse-element"
+msgstr ""
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:112
 msgid "Move the selected citation down"
-msgstr "Flytt den valgte referansen ned"
+msgstr "Flytt den valgte litteraturreferansen ned"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:141
 msgid "Citations currently selected"
-msgstr "Referanser som er valgt"
+msgstr "Valgte litteraturreferanser"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:152
 msgid "D&elete"
@@ -2968,11 +2968,11 @@ msgstr "Sl&ett"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:178
 msgid "Move the selected citation up"
-msgstr "Flytt den valgte referansen opp"
+msgstr "Flytt den valgte litteraturreferansen opp"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:189
 msgid "&Citations:"
-msgstr "&Referanser:"
+msgstr "&Litteraturreferanser:"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:312
 msgid "A&pply"
@@ -2984,7 +2984,7 @@ msgstr "Stil"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:359
 msgid "Citation &style:"
-msgstr "Referansestil:"
+msgstr "Siteringsstil:"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:381
 msgid "Natbib citation style to use"
@@ -3500,7 +3500,7 @@ msgstr "Sett matte-font"
 
 #: src/frontends/qt2/ui/QMathDialogBase.ui:213 lib/ui/stdtoolbars.ui:131
 msgid "Insert fraction"
-msgstr "Brøk"
+msgstr "Sett inn brøk"
 
 #: src/frontends/qt2/ui/QMathDialogBase.ui:239
 msgid "Toggle between display and inline mode"
@@ -4337,7 +4337,7 @@ msgstr "Oppdater referanselisten"
 
 #: src/frontends/qt2/ui/QRefDialogBase.ui:89 src/frontends/qt2/QRef.C:143
 msgid "&Go to Label"
-msgstr "&Gå til referansen"
+msgstr "&Gå til merket"
 
 #: src/frontends/qt2/ui/QRefDialogBase.ui:93
 msgid "Jump to the label"
@@ -4381,11 +4381,11 @@ msgstr "Kryssreferansen slik den blir i utskrift"
 
 #: src/frontends/qt2/ui/QRefDialogBase.ui:353
 msgid "Available labels"
-msgstr "Tilgjengelige referanser"
+msgstr "Tilgjengelige referansemerker"
 
 #: src/frontends/qt2/ui/QRefDialogBase.ui:364
 msgid "L&abels in:"
-msgstr "Referanser i:"
+msgstr ""
 
 #: src/frontends/qt2/ui/QSearchDialogBase.ui:108
 msgid "Replace &with:"
@@ -7879,7 +7879,7 @@ msgstr ""
 #: lib/layouts/agu_stdtitle.inc:262 src/frontends/qt2/QCitation.C:50
 #: src/frontends/xforms/FormCitation.C:100
 msgid "Citation"
-msgstr "Referanse"
+msgstr "Litteraturreferanse"
 
 #: lib/layouts/agu_stdtitle.inc:265
 msgid "Citation:"
@@ -8834,27 +8834,27 @@ msgstr "Bytt om kolonner"
 
 #: lib/ui/classic.ui:141 lib/ui/stdmenus.ui:141
 msgid "Left|L"
-msgstr "Venstrejustert|V"
+msgstr "Venstrejuster|V"
 
 #: lib/ui/classic.ui:142 lib/ui/stdmenus.ui:142
 msgid "Center|C"
-msgstr "Sentrert"
+msgstr "Sentrer"
 
 #: lib/ui/classic.ui:143 lib/ui/stdmenus.ui:143
 msgid "Right|R"
-msgstr "Høyrejustert|H"
+msgstr "Høyrejuster|H"
 
 #: lib/ui/classic.ui:145 lib/ui/stdmenus.ui:145
 msgid "Top|T"
-msgstr "Toppjustert rad|T"
+msgstr "Toppjustere rad|T"
 
 #: lib/ui/classic.ui:146 lib/ui/stdmenus.ui:146
 msgid "Middle|M"
-msgstr "Midtjustert rad|M"
+msgstr "Midtjustere rad|M"
 
 #: lib/ui/classic.ui:147 lib/ui/stdmenus.ui:147
 msgid "Bottom|B"
-msgstr "Bunnjustert rad|B"
+msgstr "Bunnjustere rad|B"
 
 #: lib/ui/classic.ui:159 lib/ui/stdmenus.ui:161
 msgid "Toggle Numbering|N"
@@ -8862,7 +8862,7 @@ msgstr "Numerering av/på|N"
 
 #: lib/ui/classic.ui:160 lib/ui/stdmenus.ui:162
 msgid "Toggle Numbering of Line|u"
-msgstr "Linjenumerering av/på|u"
+msgstr "Linjenummerering av/på|u"
 
 #: lib/ui/classic.ui:162 lib/ui/stdmenus.ui:163
 msgid "Change Limits Type|L"
@@ -9563,19 +9563,19 @@ msgstr "Høyre linje|H"
 
 #: lib/ui/stdmenus.ui:149
 msgid "Add Row"
-msgstr "Legg til rad|a"
+msgstr "Legg til rad"
 
 #: lib/ui/stdmenus.ui:150
 msgid "Delete Row"
-msgstr "Slett rad|l"
+msgstr "Slett rad"
 
 #: lib/ui/stdmenus.ui:154
 msgid "Add Column"
-msgstr "Legg til kolonne|k"
+msgstr "Legg til kolonne"
 
 #: lib/ui/stdmenus.ui:155
 msgid "Delete Column"
-msgstr "Slett kolonne|S"
+msgstr "Slett kolonne"
 
 #: lib/ui/stdmenus.ui:169
 msgid "Add Line Above"
@@ -9880,44 +9880,43 @@ msgstr "Tabell"
 
 #: lib/ui/stdtoolbars.ui:95 lib/ui/stdtoolbars.ui:138
 msgid "Add row"
-msgstr "Legg til rad|a"
+msgstr "Legg til rad"
 
 #: lib/ui/stdtoolbars.ui:96 lib/ui/stdtoolbars.ui:139
 msgid "Add column"
-msgstr "Legg til kolonne|n"
+msgstr "Legg til kolonne"
 
 #: lib/ui/stdtoolbars.ui:97 lib/ui/stdtoolbars.ui:140
 msgid "Delete row"
-msgstr "Slett rad|l"
+msgstr "Slett rad"
 
 #: lib/ui/stdtoolbars.ui:98 lib/ui/stdtoolbars.ui:141
 msgid "Delete column"
-msgstr "Slett kolonne|S"
+msgstr "Slett kolonne"
 
 #: lib/ui/stdtoolbars.ui:100
 msgid "Set top line"
-msgstr "Merk øverste linje"
+msgstr "Toppstrek på/av"
 
 #: lib/ui/stdtoolbars.ui:101
 msgid "Set bottom line"
-msgstr "Merk nederste linje"
+msgstr "Bunnstrek på/av"
 
 #: lib/ui/stdtoolbars.ui:102
 msgid "Set left line"
-msgstr "Merk venstre linje"
+msgstr "Venstre strek på/av"
 
 #: lib/ui/stdtoolbars.ui:103
 msgid "Set right line"
-msgstr "Merk høyre linje"
+msgstr "Høyre strek på/av"
 
 #: lib/ui/stdtoolbars.ui:104
 msgid "Set all lines"
-msgstr "Merk alle linjer"
+msgstr "Alle linjer på"
 
 #: lib/ui/stdtoolbars.ui:105
-#, fuzzy
 msgid "Unset all lines"
-msgstr "Skriv ut alle sidene"
+msgstr "Alle linjer av"
 
 #: lib/ui/stdtoolbars.ui:107
 msgid "Align left"
@@ -9932,23 +9931,20 @@ msgid "Align right"
 msgstr "Høyrejuster"
 
 #: lib/ui/stdtoolbars.ui:111
-#, fuzzy
 msgid "Align top"
-msgstr "V. justering topp|o"
+msgstr "Toppjuster rad"
 
 #: lib/ui/stdtoolbars.ui:112
-#, fuzzy
 msgid "Align middle"
-msgstr "Justering"
+msgstr "Midtjuster rad"
 
 #: lib/ui/stdtoolbars.ui:113
-#, fuzzy
 msgid "Align bottom"
-msgstr "V. justering bunn|u"
+msgstr "Bunnjuster rad"
 
 #: lib/ui/stdtoolbars.ui:115
 msgid "Rotate cell"
-msgstr "Vri 90°"
+msgstr "Vri tabellruten 90°"
 
 #: lib/ui/stdtoolbars.ui:116
 msgid "Rotate table"
@@ -9967,9 +9963,8 @@ msgid "Show math panel"
 msgstr "Mattepanel"
 
 #: lib/ui/stdtoolbars.ui:122
-#, fuzzy
 msgid "Set display mode"
-msgstr "Klar for visning"
+msgstr "Bytt mellom formel i tekst, og fremhevet formel"
 
 #: lib/ui/stdtoolbars.ui:126
 msgid "Insert square root"
