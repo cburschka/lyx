@@ -1218,7 +1218,8 @@ bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur, LCursor const & old)
 		if (old.pos() > 0
 		    && old.pos() < oldpar.size()
 		    && oldpar.isLineSeparator(old.pos())
-		    && oldpar.isLineSeparator(old.pos() - 1)) {
+		    && oldpar.isLineSeparator(old.pos() - 1)
+		    && oldpar.lookupChange(old.pos() - 1) != Change::DELETED) {
 			// We need to set the text to Change::INSERTED to
 			// get it erased properly
 			pars_[old.pit()].setChange(old.pos() -1,

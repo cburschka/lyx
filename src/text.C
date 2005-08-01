@@ -1170,8 +1170,9 @@ void LyXText::insertChar(LCursor & cur, char c)
 			return;
 		}
 		BOOST_ASSERT(cur.pos() > 0);
-		if (par.isLineSeparator(cur.pos() - 1)
-		    || par.isNewline(cur.pos() - 1)) {
+		if ((par.isLineSeparator(cur.pos() - 1)
+		    || par.isNewline(cur.pos() - 1))
+		    && par.lookupChange(cur.pos() - 1) != Change::DELETED) {
 			static bool sent_space_message = false;
 			if (!sent_space_message) {
 				cur.message(_("You cannot type two spaces this way. "
