@@ -1,3 +1,7 @@
+2005-08-02  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* insetinclude.C (string2params): fix typo in error message (bug 1963).
+
 2005-07-28  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* insettabular.C (getStatus): disable line and paragraph breaks

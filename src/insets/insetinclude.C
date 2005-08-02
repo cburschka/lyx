@@ -761,7 +761,7 @@ void InsetIncludeMailer::string2params(string const & in,
 	string id;
 	lex >> id;
 	if (!lex || id != "Include")
-		return print_mailer_error("InsetBoxMailer", in, 2, "Include");
+		return print_mailer_error("InsetIncludeMailer", in, 2, "Include");
 
 	InsetInclude inset(params);
 	inset.read(lex);

@@ -64,6 +64,7 @@
 #include "insets/insetexternal.h"
 #include "insets/insetfloat.h"
 #include "insets/insetgraphics.h"
+#include "insets/insetinclude.h"
 #include "insets/insetnote.h"
 #include "insets/insettabular.h"
 #include "insets/insetvspace.h"
@@ -1138,7 +1139,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			string data = trim(cmd.argument.substr(name.size()));
 			if (name == "bibitem" ||
 			    name == "bibtex" ||
-			    name == "include" ||
 			    name == "index" ||
 			    name == "label" ||
 			    name == "ref" ||
@@ -1146,6 +1146,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			    name == "url") {
 				InsetCommandParams p(name);
 				data = InsetCommandMailer::params2string(name, p);
+			} else if (name == "include") {
+				InsetCommandParams p(data);
+				data = InsetIncludeMailer::params2string(p);
 			} else if (name == "box") {
 				// \c data == "Boxed" || "Frameless" etc
 				InsetBoxParams p(data);
