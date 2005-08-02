@@ -440,9 +440,22 @@ void BufferView::Pimpl::updateScrollbar()
 
 	// It would be better to fix the scrollbar to understand
 	// values in [0..1] and divide everything by wh
-	int const wh = workarea().workHeight() / 4;
-	int const h = t.getPar(anchor_ref_).height();
-	workarea().setScrollbarParams(t.paragraphs().size() * wh, anchor_ref_ * wh + int(offset_ref_ * wh / float(h)), int (wh * defaultRowHeight() / float(h)));
+
+	// estimated average paragraph height:
+	int const wh = workarea().workHeight() / 4; 
+	int h = t.getPar(anchor_ref_).height();
+	// Normalize anchor/offset (MV):
+	while (offset_ref_ > h) {
+		anchor_ref_++;
+		offset_ref_ -= h;
+		h = t.getPar(anchor_ref_).height();
+	}
+	
+	// The "+ 2" makes inoculates doc bottom display against
+	// unrealistic wh values (docs with very large paragraphs) (MV)
+	workarea().setScrollbarParams((t.paragraphs().size() + 2) * wh, 
+		anchor_ref_ * wh + int(offset_ref_ * wh / float(h)), 
+		int(wh * defaultRowHeight() / float(h)));
 //	workarea().setScrollbarParams(t.paragraphs().size(), anchor_ref_, 1);
 }
 

@@ -208,7 +208,8 @@ Buffer const * const LyXView::updateInset(InsetBase const * inset) const
 	Buffer const * buffer_ptr = 0;
 	if (inset) {
 		buffer_ptr = bufferview_->buffer();
-		bufferview_->update();
+		// No FitCursor:
+		bufferview_->update(Update::Force);
 	}
 	return buffer_ptr;
 }
