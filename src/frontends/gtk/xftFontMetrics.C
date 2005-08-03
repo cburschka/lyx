@@ -27,6 +27,7 @@
 #include "codeConvert.h"
 
 #include "support/lstrings.h"
+#include "debug.h"
 
 #include <gtkmm.h>
 
@@ -225,15 +226,20 @@ int width(wchar_t c,LyXFont const & f)
 int width(char const * s, size_t n, LyXFont const & f)
 {
 	boost::scoped_array<wchar_t> wcs(new wchar_t[n]);
-	size_t len;
+	int len; // Signed to handle error retvals
 	if (fontLoader.isSpecial(f)) {
 		unsigned char const * us =
 			reinterpret_cast<unsigned char const *>(s);
 		len = n;
 		std::copy(us, us + n, wcs.get());
-	} else
+	} else {
 		len = mbstowcs(wcs.get(), s, n);
-	return width(wcs.get(), len, f);
+		if (len < 0) {
+			lyxerr[Debug::FONT] << "Invalid multibyte encoding! '" << s << "'\n";
+			return n * width("0", 1, f);
+		}
+	}
+	return width(wcs.get(), static_cast<size_t>(len), f);
 }
 
 

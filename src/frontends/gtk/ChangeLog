@@ -1,3 +1,8 @@
+2005-07-02  John Spray  <spray@lyx.org>
+	* xftFontMetrics.C: Add error checking to call to mbstowcs 
+	in font_metrics::width, estimate width for strings that  
+	mbstowcs doesn't like.
+
 2005-07-31  John Spray  <spray_john@users.sf.net>
 	* GToc.C: unbreak viewing lists other than TOC by storing 
 	integer index of entries in Type combobox.
