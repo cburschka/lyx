@@ -1,3 +1,23 @@
+2005-07-31  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	bug 465.
+
+	* dociterator.h (clear, push_back, pop_back): change from
+	protected to public.
+
+	* buffer_funcs.C (getItemDepth): renamed from incrementItemDepth
+	and changed to just return the value of the item depth; take a
+	ParIterator as argument; take the itemdepth at outer nesting level
+	in account if necessary; cleanup and comment the code.
+	(resetEnumCounterNeeded): renamed from resetEnumCounterIfNeeded
+	and changed to just return true if reset is needed; take a
+	ParIterator as argument; cleanup and comment the code.
+	(setCounter): adapt to above changes.
+
+2005-07-30  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* text3.C (dispatch): make debug message optional
+
 2005-08-02  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyxfunc.C (dispatch): use InsetIncludeMailer for the include

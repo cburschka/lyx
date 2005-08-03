@@ -13,7 +13,6 @@
 #include <config.h>
 
 #include "buffer_funcs.h"
-
 #include "buffer.h"
 #include "bufferlist.h"
 #include "bufferparams.h"
@@ -272,75 +271,75 @@ int countWords(DocIterator const & from, DocIterator const & to)
 
 namespace {
 
-void incrementItemDepth(ParagraphList & pars, pit_type pit, pit_type first_pit)
+lyx::depth_type getDepth(DocIterator const & it)
 {
-	int const cur_labeltype = pars[pit].layout()->labeltype;
+	lyx::depth_type depth = 0;
+	for (size_t i = 0 ; i < it.depth() ; ++i) 
+		if (!it[i].inset().inMathed())
+			depth += it[i].paragraph().getDepth() + 1;
+	// remove 1 since the outer inset does not count
+	return depth - 1;
+}
 
-	if (cur_labeltype != LABEL_ENUMERATE && cur_labeltype != LABEL_ITEMIZE)
-		return;
+lyx::depth_type getItemDepth(ParIterator const & it)
+{	
+	Paragraph const & par = *it;
+	LYX_LABEL_TYPES const labeltype = par.layout()->labeltype;
 
-	int const cur_depth = pars[pit].getDepth();
+	if (labeltype != LABEL_ENUMERATE && labeltype != LABEL_ITEMIZE)
+ 		return 0;
 
-	pit_type prev_pit = pit - 1;
+	// this will hold the lowest depth encountered up to now.
+	lyx::depth_type min_depth = getDepth(it);
+	ParIterator prev_it = it;
 	while (true) {
-		int const prev_depth = pars[prev_pit].getDepth();
-		int const prev_labeltype = pars[prev_pit].layout()->labeltype;
-		if (prev_depth == 0 && cur_depth > 0) {
-			if (prev_labeltype == cur_labeltype) {
-				pars[pit].itemdepth = pars[prev_pit].itemdepth + 1;
-			}
-			break;
-		} else if (prev_depth < cur_depth) {
-			if (prev_labeltype == cur_labeltype) {
-				pars[pit].itemdepth = pars[prev_pit].itemdepth + 1;
-				break;
-			}
-		} else if (prev_depth == cur_depth) {
-			if (prev_labeltype == cur_labeltype) {
-				pars[pit].itemdepth = pars[prev_pit].itemdepth;
-				break;
+		if (prev_it.pit())
+			--prev_it.top().pit();
+		else {
+			// start of nested inset: go to outer par
+			prev_it.pop_back();
+			if (prev_it.empty()) {
+				// start of document: nothing to do
+				return 0;
 			}
 		}
-		if (prev_pit == first_pit)
-			break;
-
-		--prev_pit;
+		
+		// We search for the first paragraph with same label
+		// that is not more deeply nested.
+		Paragraph & prev_par = *prev_it;
+		lyx::depth_type const prev_depth = getDepth(prev_it);
+	 	if (labeltype == prev_par.layout()->labeltype) {
+			if (prev_depth < min_depth) {
+				return prev_par.itemdepth + 1;
+			}
+			else if (prev_depth == min_depth) {
+				return prev_par.itemdepth;
+			}
+		}
+		min_depth = std::min(min_depth, prev_depth);
+		// small optimization: if we are at depth 0, we won't
+		// find anything else
+		if (prev_depth == 0) {
+			return 0;
+		}
 	}
 }
 
 
-void resetEnumCounterIfNeeded(ParagraphList & pars, pit_type pit,
-	pit_type firstpit, Counters & counters)
+bool needEnumCounterReset(ParIterator const & it)
 {
-	if (pit == firstpit)
-		return;
-
-	int const cur_depth = pars[pit].getDepth();
-	pit_type prev_pit = pit - 1;
-	while (true) {
-		int const prev_depth = pars[prev_pit].getDepth();
-		int const prev_labeltype = pars[prev_pit].layout()->labeltype;
-		if (prev_depth <= cur_depth) {
-			if (prev_labeltype != LABEL_ENUMERATE) {
-				switch (pars[pit].itemdepth) {
-				case 0:
-					counters.reset("enumi");
-				case 1:
-					counters.reset("enumii");
-				case 2:
-					counters.reset("enumiii");
-				case 3:
-					counters.reset("enumiv");
-				}
-			}
-			break;
-		}
-
-		if (prev_pit == firstpit)
-			break;
-
-		--prev_pit;
+	Paragraph const & par = *it;
+	BOOST_ASSERT(par.layout()->labeltype == LABEL_ENUMERATE);
+	lyx::depth_type const cur_depth = par.getDepth();
+	ParIterator prev_it = it;
+	while (prev_it.pit()) {
+		--prev_it.top().pit();
+		Paragraph const & prev_par = *prev_it;
+		if (prev_par.getDepth() <= cur_depth)
+			return  prev_par.layout()->labeltype != LABEL_ENUMERATE;
 	}
+	// start of nested inset: reset
+	return true;
 }
 
 
@@ -353,9 +352,6 @@ void setCounter(Buffer const & buf, ParIterator & it)
 	LyXLayout_ptr const & layout = par.layout();
 	Counters & counters = textclass.counters();
 
-	// Always reset
-	par.itemdepth = 0;
-
 	if (it.pit() == 0) {
 		par.params().appendix(par.params().startOfAppendix());
 	} else {
@@ -365,10 +361,10 @@ void setCounter(Buffer const & buf, ParIterator & it)
 			par.params().appendix(true);
 			textclass.counters().reset();
 		}
-
-		// Maybe we have to increment the item depth.
-		incrementItemDepth(it.plist(), it.pit(), 0);
 	}
+
+	// Compute the item depth of the paragraph
+	par.itemdepth = getItemDepth(it);
 
 	// erase what was there before
 	par.params().labelString(string());
@@ -414,9 +410,6 @@ void setCounter(Buffer const & buf, ParIterator & it)
 
 		par.params().labelString(itemlabel);
 	} else if (layout->labeltype == LABEL_ENUMERATE) {
-		// Maybe we have to reset the enumeration counter.
-		resetEnumCounterIfNeeded(it.plist(), it.pit(), 0, counters);
-
 		// FIXME
 		// Yes I know this is a really, really! bad solution
 		// (Lgb)
@@ -437,6 +430,10 @@ void setCounter(Buffer const & buf, ParIterator & it)
 			// not a valid enumdepth...
 			break;
 		}
+
+		// Maybe we have to reset the enumeration counter.
+		if (needEnumCounterReset(it))
+			counters.reset(enumcounter);
 
 		counters.step(enumcounter);
 

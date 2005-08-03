@@ -207,7 +207,7 @@ public:
 	friend bool operator==(DocIterator const &, DocIterator const &);
 	///
 	friend class StableDocIterator;
-protected:
+//protected:
 	///
 	void clear() { slices_.clear(); }
 	///
