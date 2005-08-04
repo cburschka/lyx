@@ -108,8 +108,9 @@ bool ControlSpellchecker::initialiseParams(std::string const &)
 	bool const success = speller_->error().empty();
 
 	if (!success) {
-		Alert::error(_("The spell-checker could not be started"),
-			     speller_->error());
+		Alert::error(_("Spell-checker error"),
+			     _("The spell-checker could not be started")
+			     + '\n' + speller_->error());
 		speller_.reset(0);
 	}
 
@@ -259,14 +260,17 @@ bool ControlSpellchecker::checkAlive()
 	if (speller_->alive() && speller_->error().empty())
 		return true;
 
-	string message = speller_->error();
-	if (message.empty())
+	string message;
+	if (speller_->error().empty())
 		message = _("The spell-checker has died for some reason.\n"
-			 "Maybe it has been killed.");
+			    "Maybe it has been killed.");
+	else
+		message = _("The spell-checker has failed.") 
+			+ '\n' + speller_->error();
 
 	dialog().CancelButton();
 
-	Alert::error(_("The spell-checker has failed"), message);
+	Alert::error(_("Spell-checker error"), message);
 	return false;
 }
 
