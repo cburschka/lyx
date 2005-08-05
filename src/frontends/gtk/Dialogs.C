@@ -85,7 +85,7 @@
 #include "FormPreamble.h"
 #include "FormPreferences.h"
 #include "GPrint.h"
-#include "FormRef.h"
+#include "GRef.h"
 #include "GSearch.h"
 #include "GSendto.h"
 #include "FormTabular.h"
@@ -490,8 +490,9 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setView(new GPrint(*dialog));
 		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "ref") {
+		dialog->bc().view(new GBC(dialog->bc()));
 		dialog->setController(new ControlRef(*dialog));
-		dialog->setView(new FormRef(*dialog));
+		dialog->setView(new GRef(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "sendto") {
 		dialog->bc().view(new GBC(dialog->bc()));

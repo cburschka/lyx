@@ -71,6 +71,8 @@ libgtk_la_SOURCES = \
 	GParagraph.h \
 	GPrint.C \
 	GPrint.h \
+	GRef.C \
+	GRef.h \
 	GScreen.C \
 	GScreen.h \
 	GSearch.C \
@@ -143,7 +145,6 @@ xforms_objects = \
 	../xforms/FormMathsStyle.lo \
 	../xforms/FormPreamble.lo \
 	../xforms/FormPreferences.lo \
-	../xforms/FormRef.lo \
 	../xforms/forms_gettext.lo \
 	../xforms/FormTabular.lo \
 	../xforms/FormText.lo \

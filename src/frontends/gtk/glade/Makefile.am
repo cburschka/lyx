@@ -21,6 +21,7 @@ dist_glade_DATA = \
 	note.glade \
 	paragraph.glade \
 	print.glade \
+	ref.glade \
 	search.glade \
 	sendto.glade \
 	showfile.glade \

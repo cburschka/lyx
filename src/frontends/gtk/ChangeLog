@@ -1,3 +1,7 @@
+2005-07-05  John Spray  <spray@lyx.org>
+	* GRef.[Ch], glade/ref.glade: Add the reference insertion dialog
+	* Dialogs.C, Makefile.am, glade/Makefile.am: Use GRef
+
 2005-07-02  John Spray  <spray@lyx.org>
 	* xftFontMetrics.C: Add error checking to call to mbstowcs 
 	in font_metrics::width, estimate width for strings that  
