@@ -1,3 +1,8 @@
+2005-08-07  Angus Leeming  <leeming@lyx.org>
+
+	* ControlExternal.C (origin_gui_str): ensure that the strings
+	are translated.
+
 2005-08-04  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* ControlSpellchecker.C (checkAlive, initialiseParams): try to

@@ -239,7 +239,7 @@ vector<RotationDataType> const & all_origins()
 
 string const origin_gui_str(size_type i)
 {
-	return origin_gui_strs[i];
+	return _(origin_gui_strs[i]);
 }
 
 } // namespace external
