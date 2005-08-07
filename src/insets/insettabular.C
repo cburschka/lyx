@@ -1003,7 +1003,8 @@ bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
 		if (tablemode(cur)) {
 			status.enabled(false);
 			return true;
-		}
+		} else
+			return cell(cur.idx())->getStatus(cur, cmd, status);
 	}
 
 	// disable in non-fixed-width cells
@@ -1014,7 +1015,8 @@ bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
 		if (tabular.getPWidth(cur.idx()).zero()) {
 			status.enabled(false);
 			return true;
-		}
+		} else
+			return cell(cur.idx())->getStatus(cur, cmd, status);
 	}
 
 	case LFUN_INSET_MODIFY:

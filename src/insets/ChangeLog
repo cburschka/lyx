@@ -1,3 +1,8 @@
+2005-08-07  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* insettabular.C (getStatus): fix Helge's bug that a number of insets
+	including ERT could not be inserted in tabular.
+
 2005-08-02  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* insetinclude.C (string2params): fix typo in error message (bug 1963).
