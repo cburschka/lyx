@@ -27,7 +27,7 @@ std::string const getEnv(std::string const & envname);
  *  guarantee that it is in the form of a unix-style path.
  *  If the environment variable is not set, then the function returns
  *  an empty vector.
-Â */
+ */
 std::vector<std::string> const getEnvPath(std::string const & name);
 
 /** Set the contents of the environment variable @c name to @c value.
