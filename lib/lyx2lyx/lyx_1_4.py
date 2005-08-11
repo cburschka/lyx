@@ -1693,7 +1693,7 @@ def use_x_binary(file):
 #
 def normalize_paragraph_params(file):
     body = file.body
-    allowed_parameters = '\\paragraph_spacing', '\\noindent', '\\align', '\\labelwidthstring', "\\start_of_appendix"
+    allowed_parameters = '\\paragraph_spacing', '\\noindent', '\\align', '\\labelwidthstring', "\\start_of_appendix", "\\leftindent"
 
     i = 0
     while 1:

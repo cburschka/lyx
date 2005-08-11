@@ -1,5 +1,10 @@
 2005-07-29  José Matos  <jamatos@lyx.org>
 
+	* lyx_1_4.py:
+	* LyX.py: add \leftindent to the list of allowed paragraph parameters.
+
+2005-07-29  José Matos  <jamatos@lyx.org>
+
 	* lyx_1_4.py (remove_paperpackage): Take into account the lines
 	added to preamble.
 

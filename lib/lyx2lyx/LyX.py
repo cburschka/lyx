@@ -376,7 +376,7 @@ class LyX_Base:
         " Returns the TOC of this LyX document."
         paragraphs_filter = {'Title' : 0,'Chapter' : 1, 'Section' : 2, 'Subsection' : 3, 'Subsubsection': 4}
         allowed_insets = ['Quotes']
-        allowed_parameters = '\\paragraph_spacing', '\\noindent', '\\align', '\\labelwidthstring', "\\start_of_appendix"
+        allowed_parameters = '\\paragraph_spacing', '\\noindent', '\\align', '\\labelwidthstring', "\\start_of_appendix", "\\leftindent"
 
         sections = []
         for section in paragraphs_filter.keys():
