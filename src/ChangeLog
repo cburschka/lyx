@@ -1,3 +1,11 @@
+
+2005-08-02  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* text.C (cursorX): fix bug 1965: cursor movement at
+	line end broken in RtL.
+	(drawSelection): fix bug 1970: drawing of single-line 
+	selection broken for RtL.
+
 2005-07-31  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	bug 465.

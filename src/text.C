@@ -1898,12 +1898,13 @@ void LyXText::drawSelection(PainterInfo & pi, int x, int) const
 		X2 = !isRTL(par2) ? endx : 0 + dim_.wid;
 	}
 
-	if (!above && !below && &par1.getRow(beg.pos(), end.boundary())
+	if (!above && !below && &par1.getRow(beg.pos(), beg.boundary())
 	    == &par2.getRow(end.pos(), end.boundary()))
 	{
 		// paint only one rectangle
-		pi.pain.fillRectangle(x + x1, y1, X2 - x1, y2 - y1,
-				      LColor::selection);
+		int const b( !isRTL(par1) ? x + x1 : x + X1 );
+		int const w( !isRTL(par1) ? X2 - x1 : x2 - X1 );
+		pi.pain.fillRectangle(b, y1, w, y2 - y1, LColor::selection);
 		return;
 	}
 
@@ -2129,7 +2130,10 @@ int LyXText::cursorX(CursorSlice const & sl, bool boundary) const
 	
 	// see correction above
 	if (boundary_correction)
-		x += singleWidth(par, ppos);
+	    	if (getFont(par, ppos).isRightToLeft())
+			x -= singleWidth(par, ppos);
+		else
+			x += singleWidth(par, ppos);
 
 	return int(x);
 }
