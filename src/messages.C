@@ -115,6 +115,8 @@ public:
 		}
 		
 		char const * works = setlocale(LC_MESSAGES, lang_.c_str());
+		if (!works)
+			lyxerr << "Locale " << lang_ << " could not be set" << std::endl;
 		// CTYPE controls what getmessage thinks what encoding the po file uses
 		string oldCTYPE = setlocale(LC_CTYPE, NULL);
 		setlocale(LC_CTYPE, lang_.c_str());
