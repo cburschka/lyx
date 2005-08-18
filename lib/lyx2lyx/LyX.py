@@ -73,6 +73,14 @@ def get_backend(textclass):
     return "latex"
 
 
+def trim_eol(line):
+    " Remove end of line char(s)."
+    if line[-2:-1] == '\r':
+        return line[:-2]
+    else:
+        return line[:-1]
+
+
 ##
 # Class
 #
@@ -111,6 +119,7 @@ class LyX_Base:
         self.backend = "latex"
         self.textclass = "article"
         self.header = []
+        self.preamble = []
         self.body = []
         self.status = 0
 
@@ -133,33 +142,39 @@ class LyX_Base:
 
     def read(self):
         """Reads a file into the self.header and self.body parts, from self.input."""
-        preamble = 0
 
         while 1:
             line = self.input.readline()
             if not line:
                 self.error("Invalid LyX file.")
 
-            line = line[:-1]
-            # remove '\r' from line's end, if present
-            if line[-1:] == '\r':
-                line = line[:-1]
-
+            line = trim_eol(line)
             if check_token(line, '\\begin_preamble'):
-                preamble = 1
+                while 1:
+                    line = self.input.readline()
+                    if not line:
+                        self.error("Invalid LyX file.")
+
+                    line = trim_eol(line)
+                    if check_token(line, '\\end_preamble'):
+                        break
+                    
+                    if string.split(line)[:0] in ("\\layout", "\\begin_layout", "\\begin_body"):
+                        self.warning("Malformed LyX file: Missing '\\end_preamble'.")
+                        self.warning("Adding it now and hoping for the best.")
+
+                    self.preamble.append(line)
+
             if check_token(line, '\\end_preamble'):
-                preamble = 0
+                continue
 
-            if not preamble:
-                line = string.strip(line)
+            line = string.strip(line)
+            if not line:
+                continue
 
-            if not preamble:
-                if not line:
-                    continue
-
-                if string.split(line)[0] in ("\\layout", "\\begin_layout", "\\begin_body"):
-                    self.body.append(line)
-                    break
+            if string.split(line)[0] in ("\\layout", "\\begin_layout", "\\begin_body"):
+                self.body.append(line)
+                break
 
             self.header.append(line)
 
@@ -167,11 +182,7 @@ class LyX_Base:
             line = self.input.readline()
             if not line:
                 break
-            # remove '\r' from line's end, if present
-            if line[-2:-1] == '\r':
-                self.body.append(line[:-2])
-            else:
-                self.body.append(line[:-1])
+            self.body.append(trim_eol(line))
 
         self.textclass = get_value(self.header, "\\textclass", 0)
         self.backend = get_backend(self.textclass)
@@ -187,10 +198,17 @@ class LyX_Base:
         self.set_version()
         self.set_format()
 
-        for line in self.header:
-            self.output.write(line+"\n")
-        self.output.write("\n")
-        for line in self.body:
+        if self.preamble:
+            i = find_token(self.header, '\\textclass', 0) + 1
+            preamble = ['\\begin_preamble'] + self.preamble + ['\\end_preamble']
+            if i == 0:
+                self.error("Malformed LyX file: Missing '\\textclass'.")
+            else:
+                header = self.header[:i] + preamble + self.header[i:]
+        else:
+            header = self.header
+
+        for line in header + [''] + self.body:
             self.output.write(line+"\n")
 
 

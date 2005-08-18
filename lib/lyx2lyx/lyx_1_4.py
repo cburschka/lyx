@@ -1045,21 +1045,10 @@ def insert_ert(body, i, status, text):
 # Add text to the preamble if it is not already there.
 # Only the first line is checked!
 def add_to_preamble(file, text):
-    i = find_token(file.header, '\\begin_preamble', 0)
-    if i == -1:
-        file.header.extend(['\\begin_preamble'] + text + ['\\end_preamble'])
+    if find_token(file.preamble, text[0]) != -1:
         return
 
-    j = find_token(file.header, '\\end_preamble', i)
-    if j == -1:
-        file.warning("Malformed LyX file: Missing '\\end_preamble'.")
-        file.warning("Adding it now and hoping for the best.")
-        file.header.append('\\end_preamble')
-        j = len(file.header)
-
-    if find_token(file.header, text[0], i, j) != -1:
-        return
-    file.header[j:j] = text
+    file.preamble.extend(text)
 
 
 def convert_frameless_box(file):
@@ -1874,20 +1863,11 @@ def remove_paperpackage(file):
     paperpackage = split(file.header[i])[1]
 
     if paperpackage in ("a4", "a4wide", "widemarginsa4"):
-        j = find_token(file.header, '\\begin_preamble', 0)
         conv = {"a4":"\\usepackage{a4}","a4wide": "\\usepackage{a4wide}",
                 "widemarginsa4": "\\usepackage[widemargins]{a4}"}
-        if j == -1:
-            # Add preamble
-            j = len(file.header) - 2
-            file.header[j:j]=["\\begin_preamble",
-                              conv[paperpackage],"\\end_preamble"]
-            i = i + 3
-        else:
-            file.header[j+1:j+1] = [conv[paperpackage]]
-            i = i + 1
+        # for compatibility we ensure it is the first entry in preamble
+        file.preamble[0:0] = conv[paperpackage]
 
-    print i, file.header[i]
     del file.header[i]
 
     i = find_token(file.header, '\\papersize', 0)

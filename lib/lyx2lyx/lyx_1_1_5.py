@@ -140,18 +140,12 @@ def remove_space_in_units(file):
 
     unit_rexp = re.compile(r'[^ ]* (.*) (.*)')
 
-    begin_preamble = find_token(lines,"\\begin_preamble", 0)
-    end_preamble = find_token(lines, "\\end_preamble", 0)
     for margin in margins:
         i = 0
         while 1:
             i = find_token(lines, margin, i)
             if i == -1:
                 break
-
-            if i > begin_preamble and i < end_preamble:
-                i = i + 1
-                continue
 
             result = unit_rexp.search(lines[i])
             if result:

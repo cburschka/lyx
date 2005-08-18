@@ -730,7 +730,7 @@ def change_infoinset(file):
         i = i+5
 
 
-def change_preamble(file):
+def change_header(file):
     lines = file.header
     i = find_token(lines, "\\use_amsmath", 0)
     if i == -1:
@@ -739,7 +739,7 @@ def change_preamble(file):
 		      "\use_numerical_citations 0"]
 
 
-convert = [[220, [change_preamble, change_listof, fix_oldfloatinset,
+convert = [[220, [change_header, change_listof, fix_oldfloatinset,
                   update_tabular, update_longtables, remove_pextra,
                   remove_oldfloat, remove_figinset, remove_oldertinset,
                   remove_oldert, combine_ert, change_infoinset]]]
