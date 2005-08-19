@@ -423,6 +423,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_CUT:
+		cur.pos() = 0; // Prevent stale position >= size crash
 		cutSelection(cur, true, true);
 		cur.message(_("Cut"));
 		break;
@@ -814,7 +815,9 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		if (rs.empty())
 			rs = ')';
 		recordUndo(cur, Undo::ATOMIC);
-		cur.handleNest(MathAtom(new MathDelimInset(ls, rs)));
+		// Don't do this with multi-cell selections
+		if (cur.selBegin().idx() == cur.selEnd().idx())
+			cur.handleNest(MathAtom(new MathDelimInset(ls, rs)));
 		break;
 	}
 

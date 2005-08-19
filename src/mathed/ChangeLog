@@ -1,3 +1,9 @@
+
+2005-08-19  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* math_nestinset.C (doDispatch): fix crash when deleting across rows
+	in math array, and block multi-cell cut/copy leading to data loss
+
 2005-07-26  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* math_factory.C (initSymbols): Don't require wasysym for the wasy
