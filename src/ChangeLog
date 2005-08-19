@@ -1,3 +1,7 @@
+2005-08-19  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* CutAndPaste.C (eraseSelectionHelper): fix bug 1920
+	use old deleteion algorithm when changetracking is on.
 
 2005-08-18  Martin Vermeer  <martin.vermeer@hut.fi>
 

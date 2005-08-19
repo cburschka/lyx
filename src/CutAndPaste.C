@@ -278,9 +278,25 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 		all_erased = false;
 
         // Erase all the "middle" paragraphs.
-        pars.erase(pars.begin() + startpit + 1, pars.begin() + endpit);
-        endpit = startpit + 1;
-
+	if (params.tracking_changes) {
+		// Look through the deleted pars if any, erasing as needed
+		for (pit_type pit = startpit + 1; pit != endpit;) {
+			// "erase" the contents of the par
+			pars[pit].erase(0, pars[pit].size());
+			if (pars[pit].empty()) {
+				// remove the par if it's now empty
+				pars.erase(pars.begin() + pit);
+				--endpit;
+			} else {
+				++pit;
+				all_erased = false;
+			}
+		}
+	} else {
+		pars.erase(pars.begin() + startpit + 1, pars.begin() + endpit);
+		endpit = startpit + 1;
+	}
+	
 #if 0 // FIXME: why for cut but not copy ?
 	// the cut selection should begin with standard layout
 	if (realcut) {
