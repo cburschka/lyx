@@ -5,7 +5,7 @@ CLEANFILES += *.C *Base.h *Module.h *Dialog.h
 
 SUBDIRS = . moc
 
-EXTRA_DIST = pch.h QPreambleDialogBase.ui $(UIFILES)
+EXTRA_DIST = pch.h $(UIFILES)
 
 BUILT_SOURCES = $(PCH_FILE)
 
