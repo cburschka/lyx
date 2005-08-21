@@ -62,7 +62,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2005-07-18 01:38+0200\n"
+"POT-Creation-Date: 2005-08-21 15:19+0200\n"
 "PO-Revision-Date: 2005-07-18 01:50+0200\n"
 "Last-Translator: Pauli Virtanen <pauli.virtanen@hut.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -120,14 +120,6 @@ msgstr "Avain:|#A"
 #: src/frontends/xforms/forms/form_url.fd:116
 #: src/frontends/xforms/forms/form_vspace.fd:134
 #: src/frontends/xforms/forms/form_wrap.fd:242
-#: src/frontends/qt2/ui/QAskForTextDialog.ui:124
-#: src/frontends/qt2/ui/QBibtexDialogBase.ui:107
-#: src/frontends/qt2/ui/QBranchDialogBase.ui:45
-#: src/frontends/qt2/ui/QERTDialogBase.ui:147
-#: src/frontends/qt2/ui/QGraphicsDialogBase.ui:107
-#: src/frontends/qt2/ui/QIndexDialogBase.ui:128
-#: src/frontends/qt2/ui/QNoteDialogBase.ui:45
-#: src/frontends/qt2/ui/QSendtoDialogBase.ui:90
 msgid "OK"
 msgstr "OK"
 
@@ -398,7 +390,7 @@ msgid "Color:|#C"
 msgstr "Väri:|#V"
 
 #: src/frontends/xforms/forms/form_character.fd:134
-#: src/frontends/xforms/forms/form_document.fd:1251
+#: src/frontends/xforms/forms/form_document.fd:1233
 msgid "Language:|#L"
 msgstr "Kieli:|#K"
 
@@ -411,7 +403,7 @@ msgid "These are never toggled"
 msgstr "Koko alueeseen vaikuttavat"
 
 #: src/frontends/xforms/forms/form_character.fd:188
-#: src/frontends/xforms/forms/form_document.fd:1487
+#: src/frontends/xforms/forms/form_document.fd:1469
 msgid "Size:|#z"
 msgstr "Koko:|#K"
 
@@ -440,7 +432,7 @@ msgid "@4->"
 msgstr "@4->"
 
 #: src/frontends/xforms/forms/form_citation.fd:134
-#: src/frontends/xforms/forms/form_document.fd:1909
+#: src/frontends/xforms/forms/form_document.fd:1891
 msgid "@9+"
 msgstr "@9+"
 
@@ -569,225 +561,221 @@ msgid "Custom sizes|#M"
 msgstr "Muut koot|#M"
 
 #: src/frontends/xforms/forms/form_document.fd:446
-msgid "Special (A4 portrait only):|#S"
-msgstr "Erityinen (vain pysty A4):|#4"
-
-#: src/frontends/xforms/forms/form_document.fd:464
 msgid "Top:|#T"
 msgstr "Yläreuna:|#Y"
 
-#: src/frontends/xforms/forms/form_document.fd:500
+#: src/frontends/xforms/forms/form_document.fd:482
 msgid "Bottom:|#B"
 msgstr "Alareuna:|#r"
 
-#: src/frontends/xforms/forms/form_document.fd:536
+#: src/frontends/xforms/forms/form_document.fd:518
 msgid "Inner:|#I"
 msgstr "Sisäreuna:|#S"
 
-#: src/frontends/xforms/forms/form_document.fd:572
+#: src/frontends/xforms/forms/form_document.fd:554
 msgid "Outer:|#u"
 msgstr "Ulkoreuna:|#U"
 
-#: src/frontends/xforms/forms/form_document.fd:608
+#: src/frontends/xforms/forms/form_document.fd:590
 msgid "Headheight:|#H"
 msgstr "Sivuots. kork.:|#v"
 
-#: src/frontends/xforms/forms/form_document.fd:644
+#: src/frontends/xforms/forms/form_document.fd:626
 msgid "Headsep:|#d"
 msgstr "Sivuots. väli:|#o"
 
-#: src/frontends/xforms/forms/form_document.fd:680
+#: src/frontends/xforms/forms/form_document.fd:662
 msgid "Footskip:|#F"
 msgstr "Alaviiteväli:|#i"
 
-#: src/frontends/xforms/forms/form_document.fd:740
+#: src/frontends/xforms/forms/form_document.fd:722
 msgid "Sides"
 msgstr "Sivu"
 
-#: src/frontends/xforms/forms/form_document.fd:758
+#: src/frontends/xforms/forms/form_document.fd:740
 msgid "Separation"
 msgstr "Kappaleväli"
 
-#: src/frontends/xforms/forms/form_document.fd:776
+#: src/frontends/xforms/forms/form_document.fd:758
 msgid "Columns"
 msgstr "Sarakkeita"
 
-#: src/frontends/xforms/forms/form_document.fd:794
+#: src/frontends/xforms/forms/form_document.fd:776
 msgid "Fonts:|#F"
 msgstr "Kirjasinlajit:|#j"
 
-#: src/frontends/xforms/forms/form_document.fd:812
+#: src/frontends/xforms/forms/form_document.fd:794
 msgid "Font Size:|#O"
 msgstr "Kirjasinkoko:|#o"
 
-#: src/frontends/xforms/forms/form_document.fd:830
+#: src/frontends/xforms/forms/form_document.fd:812
 #, fuzzy
 msgid "Class:|#C"
 msgstr "Luokka:|#A"
 
-#: src/frontends/xforms/forms/form_document.fd:848
+#: src/frontends/xforms/forms/form_document.fd:830
 msgid "Page style:|#P"
 msgstr "Sivutyyli:|#S"
 
-#: src/frontends/xforms/forms/form_document.fd:866
+#: src/frontends/xforms/forms/form_document.fd:848
 msgid "Spacing:|#g"
 msgstr "Riviväli:|#i"
 
-#: src/frontends/xforms/forms/form_document.fd:884
+#: src/frontends/xforms/forms/form_document.fd:866
 msgid "Extra Options:|#X"
 msgstr "Lisäasetukset:|#e"
 
-#: src/frontends/xforms/forms/form_document.fd:920
+#: src/frontends/xforms/forms/form_document.fd:902
 msgid "Default Skip:|#u"
 msgstr "Kappaleväli:|#v"
 
-#: src/frontends/xforms/forms/form_document.fd:956
+#: src/frontends/xforms/forms/form_document.fd:938
 msgid "One|#n"
 msgstr "Yksipuolinen|#Y"
 
-#: src/frontends/xforms/forms/form_document.fd:974
+#: src/frontends/xforms/forms/form_document.fd:956
 msgid "Two|#T"
 msgstr "Kaksipuolinen|#K"
 
-#: src/frontends/xforms/forms/form_document.fd:1028
+#: src/frontends/xforms/forms/form_document.fd:1010
 msgid "One|#e"
 msgstr "1|#1"
 
-#: src/frontends/xforms/forms/form_document.fd:1046
+#: src/frontends/xforms/forms/form_document.fd:1028
 msgid "Two|#w"
 msgstr "2|#2"
 
-#: src/frontends/xforms/forms/form_document.fd:1100
+#: src/frontends/xforms/forms/form_document.fd:1082
 msgid "Indent|#I"
 msgstr "Sisennys|#n"
 
-#: src/frontends/xforms/forms/form_document.fd:1118
+#: src/frontends/xforms/forms/form_document.fd:1100
 msgid "Skip|#K"
 msgstr "Väli|#V"
 
-#: src/frontends/xforms/forms/form_document.fd:1215
+#: src/frontends/xforms/forms/form_document.fd:1197
 #: src/frontends/xforms/forms/form_preferences.fd:326
 msgid "Encoding:|#E"
 msgstr "Merkistö:|#M"
 
-#: src/frontends/xforms/forms/form_document.fd:1233
+#: src/frontends/xforms/forms/form_document.fd:1215
 #, fuzzy
 msgid "Quote Style:|#Q"
 msgstr "Lainausmerkit"
 
-#: src/frontends/xforms/forms/form_document.fd:1293
+#: src/frontends/xforms/forms/form_document.fd:1275
 msgid "Float Placement:|#L"
 msgstr "Irrallisten sijoitus:|#s"
 
-#: src/frontends/xforms/forms/form_document.fd:1311
+#: src/frontends/xforms/forms/form_document.fd:1293
 msgid "Section number depth:"
 msgstr "Otsikkotasojen lkm.:"
 
-#: src/frontends/xforms/forms/form_document.fd:1333
+#: src/frontends/xforms/forms/form_document.fd:1315
 msgid "Table of contents depth:"
 msgstr "Sisällysluettelotasojen lkm.:"
 
-#: src/frontends/xforms/forms/form_document.fd:1355
+#: src/frontends/xforms/forms/form_document.fd:1337
 msgid "PS Driver:|#S"
 msgstr "PS-ajuri:|#a"
 
-#: src/frontends/xforms/forms/form_document.fd:1373
+#: src/frontends/xforms/forms/form_document.fd:1355
 #, fuzzy
 msgid "Use AMS Math:|#M"
 msgstr "Käytä AMS-Mathia|#K"
 
-#: src/frontends/xforms/forms/form_document.fd:1391
+#: src/frontends/xforms/forms/form_document.fd:1373
 #, fuzzy
 msgid "Sectioned bibliography|#e"
 msgstr "Lisää viiteluettelo sisällysluetteloon|#l"
 
-#: src/frontends/xforms/forms/form_document.fd:1409
+#: src/frontends/xforms/forms/form_document.fd:1391
 #, fuzzy
 msgid "Citation Style:|#C"
 msgstr "Lähdeviitetyyli:|#y"
 
-#: src/frontends/xforms/forms/form_document.fd:1451
+#: src/frontends/xforms/forms/form_document.fd:1433
 msgid "Bullet depth"
 msgstr "Luettelomerkit"
 
-#: src/frontends/xforms/forms/form_document.fd:1505
+#: src/frontends/xforms/forms/form_document.fd:1487
 msgid "LaTeX:|#L"
 msgstr "LaTeX:|#X"
 
-#: src/frontends/xforms/forms/form_document.fd:1541
+#: src/frontends/xforms/forms/form_document.fd:1523
 msgid "1|#1"
 msgstr "1|#1"
 
-#: src/frontends/xforms/forms/form_document.fd:1560
+#: src/frontends/xforms/forms/form_document.fd:1542
 msgid "2|#2"
 msgstr "2|#2"
 
-#: src/frontends/xforms/forms/form_document.fd:1578
+#: src/frontends/xforms/forms/form_document.fd:1560
 msgid "3|#3"
 msgstr "3|#3"
 
-#: src/frontends/xforms/forms/form_document.fd:1596
+#: src/frontends/xforms/forms/form_document.fd:1578
 msgid "4|#4"
 msgstr "4|#4"
 
-#: src/frontends/xforms/forms/form_document.fd:1650
+#: src/frontends/xforms/forms/form_document.fd:1632
 msgid "Standard|#S"
 msgstr "Oletus|#O"
 
-#: src/frontends/xforms/forms/form_document.fd:1669
+#: src/frontends/xforms/forms/form_document.fd:1651
 msgid "Maths|#M"
 msgstr "Matem.|#M"
 
-#: src/frontends/xforms/forms/form_document.fd:1687
+#: src/frontends/xforms/forms/form_document.fd:1669
 msgid "Ding 1|#D"
 msgstr "Ding 1|#D"
 
-#: src/frontends/xforms/forms/form_document.fd:1705
+#: src/frontends/xforms/forms/form_document.fd:1687
 msgid "Ding 2|#i"
 msgstr "Ding 2|#i"
 
-#: src/frontends/xforms/forms/form_document.fd:1723
+#: src/frontends/xforms/forms/form_document.fd:1705
 msgid "Ding 3|#n"
 msgstr "Ding 3|#n"
 
-#: src/frontends/xforms/forms/form_document.fd:1741
+#: src/frontends/xforms/forms/form_document.fd:1723
 msgid "Ding 4|#g"
 msgstr "Ding 4|#g"
 
-#: src/frontends/xforms/forms/form_document.fd:1801
+#: src/frontends/xforms/forms/form_document.fd:1783
 msgid "New Branch:|#N"
 msgstr ""
 
-#: src/frontends/xforms/forms/form_document.fd:1819
+#: src/frontends/xforms/forms/form_document.fd:1801
 #: src/frontends/xforms/forms/form_spellchecker.fd:134
 msgid "Add|#d"
 msgstr "Lisää|#i"
 
-#: src/frontends/xforms/forms/form_document.fd:1837
+#: src/frontends/xforms/forms/form_document.fd:1819
 #, fuzzy
 msgid "Remove|#e"
 msgstr "&Poista"
 
-#: src/frontends/xforms/forms/form_document.fd:1855
+#: src/frontends/xforms/forms/form_document.fd:1837
 #, fuzzy
 msgid "Available Branches:"
 msgstr "Mahdolliset viitteet"
 
-#: src/frontends/xforms/forms/form_document.fd:1873
+#: src/frontends/xforms/forms/form_document.fd:1855
 msgid "Activated Branches:"
 msgstr ""
 
-#: src/frontends/xforms/forms/form_document.fd:1891
+#: src/frontends/xforms/forms/form_document.fd:1873
 #, fuzzy
 msgid "@5->"
 msgstr "@->"
 
-#: src/frontends/xforms/forms/form_document.fd:1927
+#: src/frontends/xforms/forms/form_document.fd:1909
 #, fuzzy
 msgid "Display Background:"
 msgstr "osion tausta"
 
-#: src/frontends/xforms/forms/form_document.fd:1945
+#: src/frontends/xforms/forms/form_document.fd:1927
 #, fuzzy
 msgid "Modify"
 msgstr "Muu&ta"
@@ -2090,7 +2078,7 @@ msgstr "Rivinvaihto nykyisellä rivillä|#R"
 #: src/frontends/xforms/forms/form_tabular.fd:1638
 #: src/frontends/xforms/forms/form_tabular.fd:1656
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:60
-#: src/frontends/qt2/QDocument.C:166 src/text.C:2208
+#: src/frontends/qt2/QDocument.C:166 src/text.C:2213
 msgid "Double"
 msgstr "Kaksink."
 
@@ -2236,7 +2224,7 @@ msgid "S&ectioned bibliography"
 msgstr "Viitteet"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:186
-#: src/frontends/xforms/FormDocument.C:327
+#: src/frontends/xforms/FormDocument.C:321
 msgid "Select this if you want to split your bibliography into sections"
 msgstr ""
 
@@ -2465,37 +2453,47 @@ msgstr "&Merkistö:"
 msgid "&Quote Style:"
 msgstr "Lainausmerkit"
 
+#: src/frontends/qt2/ui/MarginsModuleBase.ui:22
+msgid "MarginsModuleBase"
+msgstr ""
+
+#: src/frontends/qt2/ui/MarginsModuleBase.ui:41
+#, fuzzy
+msgid "&Default Margins"
+msgstr "&Oletuskieli:"
+
 #: src/frontends/qt2/ui/MarginsModuleBase.ui:45
+#, fuzzy
+msgid "Use the margin settings provided by the document class"
+msgstr "Palauta nykyisen luokan oletusasetukset"
+
+#: src/frontends/qt2/ui/MarginsModuleBase.ui:132
 msgid "&Top:"
 msgstr "&Yläreuna:"
 
-#: src/frontends/qt2/ui/MarginsModuleBase.ui:64
+#: src/frontends/qt2/ui/MarginsModuleBase.ui:151
 msgid "&Bottom:"
 msgstr "Ala&reuna:"
 
-#: src/frontends/qt2/ui/MarginsModuleBase.ui:83
+#: src/frontends/qt2/ui/MarginsModuleBase.ui:170
 msgid "&Inner:"
 msgstr "S&isä:"
 
-#: src/frontends/qt2/ui/MarginsModuleBase.ui:102
+#: src/frontends/qt2/ui/MarginsModuleBase.ui:189
 msgid "O&uter:"
 msgstr "&Ulko:"
 
-#: src/frontends/qt2/ui/MarginsModuleBase.ui:117
-msgid "&Margins:"
-msgstr "R&eunukset"
-
-#: src/frontends/qt2/ui/MarginsModuleBase.ui:173
-msgid "&Foot skip:"
-msgstr "Alav&iiteväli:"
-
-#: src/frontends/qt2/ui/MarginsModuleBase.ui:192
+#: src/frontends/qt2/ui/MarginsModuleBase.ui:208
 msgid "Head &sep:"
 msgstr "&Sivuots. väli:"
 
-#: src/frontends/qt2/ui/MarginsModuleBase.ui:233
+#: src/frontends/qt2/ui/MarginsModuleBase.ui:227
 msgid "Head &height:"
 msgstr "Sivuo&ts. kork.:"
+
+#: src/frontends/qt2/ui/MarginsModuleBase.ui:246
+msgid "&Foot skip:"
+msgstr "Alav&iiteväli:"
 
 #: src/frontends/qt2/ui/MathsModuleBase.ui:41
 #, fuzzy
@@ -2611,18 +2609,14 @@ msgstr "Copyright"
 #: src/frontends/qt2/ui/QBibitemDialogBase.ui:204
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:329
 #: src/frontends/qt2/ui/QBranchDialogBase.ui:60
-#: src/frontends/qt2/ui/QCharacterDialogBase.ui:540
 #: src/frontends/qt2/ui/QDelimiterDialogBase.ui:414
-#: src/frontends/qt2/ui/QERTDialogBase.ui:162
 #: src/frontends/qt2/ui/QErrorListDialogBase.ui:58
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:1188
 #: src/frontends/qt2/ui/QFloatDialogBase.ui:129
 #: src/frontends/qt2/ui/QIncludeDialogBase.ui:371
 #: src/frontends/qt2/ui/QLogDialogBase.ui:107
 #: src/frontends/qt2/ui/QMathDialogBase.ui:733
-#: src/frontends/qt2/ui/QNoteDialogBase.ui:60
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:402
-#: src/frontends/qt2/ui/QPreambleDialogBase.ui:149
 #: src/frontends/qt2/ui/QPrefsDialogBase.ui:140
 #: src/frontends/qt2/ui/QRefDialogBase.ui:329
 #: src/frontends/qt2/ui/QSearchDialogBase.ui:306
@@ -2645,11 +2639,37 @@ msgstr "LyX: Syötä tekstiä"
 msgid "&Dummy"
 msgstr "&Testi"
 
+#: src/frontends/qt2/ui/QAskForTextDialog.ui:124
+#: src/frontends/qt2/ui/QBibitemDialogBase.ui:189
+#: src/frontends/qt2/ui/QBibtexDialogBase.ui:107
+#: src/frontends/qt2/ui/QBoxDialogBase.ui:287
+#: src/frontends/qt2/ui/QBranchDialogBase.ui:45
+#: src/frontends/qt2/ui/QCharacterDialogBase.ui:510
+#: src/frontends/qt2/ui/QCitationDialogBase.ui:293
+#: src/frontends/qt2/ui/QDocumentDialogBase.ui:188
+#: src/frontends/qt2/ui/QERTDialogBase.ui:147
+#: src/frontends/qt2/ui/QExternalDialogBase.ui:1158
+#: src/frontends/qt2/ui/QFloatDialogBase.ui:103
+#: src/frontends/qt2/ui/QGraphicsDialogBase.ui:107
+#: src/frontends/qt2/ui/QIncludeDialogBase.ui:356
+#: src/frontends/qt2/ui/QIndexDialogBase.ui:128
+#: src/frontends/qt2/ui/QMathMatrixDialogBase.ui:250
+#: src/frontends/qt2/ui/QNoteDialogBase.ui:45
+#: src/frontends/qt2/ui/QParagraphDialogBase.ui:368
+#: src/frontends/qt2/ui/QRefDialogBase.ui:299
+#: src/frontends/qt2/ui/QSendtoDialogBase.ui:90
+#: src/frontends/qt2/ui/QTabularCreateDialogBase.ui:312
+#: src/frontends/qt2/ui/QURLDialogBase.ui:156
+#: src/frontends/qt2/ui/QVSpaceDialogBase.ui:214
+#: src/frontends/qt2/ui/QWrapDialogBase.ui:280
+msgid "&OK"
+msgstr "&OK"
+
 #: src/frontends/qt2/ui/QAskForTextDialog.ui:139
-#: src/frontends/qt2/ui/QDocumentDialogBase.ui:214 src/buffer_funcs.C:91
-#: src/buffer_funcs.C:117 src/buffer_funcs.C:158 src/bufferlist.C:84
-#: src/bufferlist.C:183 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:618
-#: src/lyxfunc.C:780 src/lyxfunc.C:1788 src/lyxvc.C:168
+#: src/frontends/qt2/ui/QDocumentDialogBase.ui:214 src/buffer_funcs.C:90
+#: src/buffer_funcs.C:116 src/buffer_funcs.C:157 src/bufferlist.C:84
+#: src/bufferlist.C:183 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:619
+#: src/lyxfunc.C:781 src/lyxfunc.C:1791 src/lyxvc.C:168
 msgid "&Cancel"
 msgstr "&Peru"
 
@@ -2674,25 +2694,6 @@ msgstr "&Nimike"
 #: src/frontends/qt2/ui/QBibitemDialogBase.ui:140
 msgid "The label as it appears in the document"
 msgstr "Nimike sellaisena kuin se näkyy asiakirjassa."
-
-#: src/frontends/qt2/ui/QBibitemDialogBase.ui:189
-#: src/frontends/qt2/ui/QBoxDialogBase.ui:287
-#: src/frontends/qt2/ui/QCharacterDialogBase.ui:510
-#: src/frontends/qt2/ui/QCitationDialogBase.ui:293
-#: src/frontends/qt2/ui/QDocumentDialogBase.ui:188
-#: src/frontends/qt2/ui/QExternalDialogBase.ui:1158
-#: src/frontends/qt2/ui/QFloatDialogBase.ui:103
-#: src/frontends/qt2/ui/QIncludeDialogBase.ui:356
-#: src/frontends/qt2/ui/QMathMatrixDialogBase.ui:250
-#: src/frontends/qt2/ui/QParagraphDialogBase.ui:368
-#: src/frontends/qt2/ui/QPreambleDialogBase.ui:111
-#: src/frontends/qt2/ui/QRefDialogBase.ui:299
-#: src/frontends/qt2/ui/QTabularCreateDialogBase.ui:312
-#: src/frontends/qt2/ui/QURLDialogBase.ui:156
-#: src/frontends/qt2/ui/QVSpaceDialogBase.ui:214
-#: src/frontends/qt2/ui/QWrapDialogBase.ui:280
-msgid "&OK"
-msgstr "&OK"
 
 #: src/frontends/qt2/ui/QBibtexAddDialogBase.ui:29
 #, fuzzy
@@ -2738,9 +2739,13 @@ msgstr "Valitse lisättävä BibTeX-tietokanta"
 #: src/frontends/qt2/ui/QIndexDialogBase.ui:143
 #: src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/BufferView_pimpl.C:285
 #: src/frontends/gtk/GBC.h:27 src/frontends/qt2/Qt2BC.h:36
-#: src/frontends/xforms/xformsBC.h:29 src/lyxfunc.C:731
+#: src/frontends/xforms/xformsBC.h:29 src/lyxfunc.C:732
 msgid "Cancel"
 msgstr "Peru"
+
+#: src/frontends/qt2/ui/QBibtexDialogBase.ui:22
+msgid "QBibtexDialogBase"
+msgstr ""
 
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:52
 msgid "St&yle"
@@ -2809,7 +2814,7 @@ msgstr "Lisää lähdeluettelo sisällysluetteloon"
 
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:341
 #, fuzzy
-msgid "C&ontent:"
+msgid "&Content:"
 msgstr "Sisältö"
 
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:360
@@ -2865,7 +2870,6 @@ msgstr "Pala&uta"
 #: src/frontends/qt2/ui/QFloatDialogBase.ui:118
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:133
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:387
-#: src/frontends/qt2/ui/QPreambleDialogBase.ui:130
 #: src/frontends/qt2/ui/QPrefsDialogBase.ui:125
 #: src/frontends/qt2/ui/QRefDialogBase.ui:314
 #: src/frontends/qt2/ui/QSendtoDialogBase.ui:109
@@ -2986,6 +2990,10 @@ msgstr "S&isä:"
 msgid "T&ype:"
 msgstr "T&yyppi:"
 
+#: src/frontends/qt2/ui/QBranchDialogBase.ui:22
+msgid "QBranchDialogBase"
+msgstr ""
+
 #: src/frontends/qt2/ui/QBranchDialogBase.ui:90
 #, fuzzy
 msgid "&Available branches:"
@@ -3032,6 +3040,11 @@ msgstr "Ei muutosta"
 msgid "Go to next change"
 msgstr "Siirry seuraavaan virheeseen"
 
+#: src/frontends/qt2/ui/QCharacterDialogBase.ui:22
+#, fuzzy
+msgid "QCharacterDialogBase"
+msgstr "Merkistö"
+
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:81
 msgid "&Family:"
 msgstr "&Perhe:"
@@ -3058,7 +3071,7 @@ msgstr "Kirjasinsarja:"
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:162
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:217
 #: src/frontends/qt2/QDocumentDialog.C:80 src/frontends/qt2/QPrefsDialog.C:104
-#: src/frontends/xforms/FormDocument.C:427
+#: src/frontends/xforms/FormDocument.C:421
 #: src/frontends/xforms/FormPreferences.C:273
 msgid "Language"
 msgstr "Kieli"
@@ -3118,6 +3131,18 @@ msgstr "Ota kukin muutos käyttöön automaattisesti"
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:440
 msgid "Apply each change automatically"
 msgstr "Ota kukin muutos käyttöön automaattisesti"
+
+#: src/frontends/qt2/ui/QCharacterDialogBase.ui:540
+#: src/frontends/qt2/ui/QERTDialogBase.ui:162
+#: src/frontends/qt2/ui/QGraphicsDialogBase.ui:159
+#: src/frontends/qt2/ui/QMathMatrixDialogBase.ui:261
+#: src/frontends/qt2/ui/QNoteDialogBase.ui:60
+#: src/frontends/qt2/ui/QPrintDialogBase.ui:366
+#: src/frontends/qt2/ui/QTabularCreateDialogBase.ui:323
+#: src/frontends/qt2/ui/QTabularDialogBase.ui:1252 src/frontends/gtk/GBC.h:28
+#: src/frontends/qt2/Qt2BC.h:36 src/frontends/xforms/xformsBC.h:29
+msgid "Close"
+msgstr "Sulje"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:71
 #: src/frontends/qt2/ui/QCitationFindDialogBase.ui:117
@@ -3288,6 +3313,11 @@ msgstr "Tallenna asiakirjan oletukseksi"
 msgid "Save settings as LyX's default document settings"
 msgstr "Tallenna asetukset LyXin oletusarvoiseen malliasiakirjaan"
 
+#: src/frontends/qt2/ui/QERTDialogBase.ui:22
+#, fuzzy
+msgid "QERTDialogBase"
+msgstr "Vuoropuhelu"
+
 #: src/frontends/qt2/ui/QERTDialogBase.ui:45
 msgid "Display"
 msgstr "Näyttö"
@@ -3309,7 +3339,8 @@ msgid "Show ERT button only"
 msgstr "Näytä vain ERT-osion painike"
 
 #: src/frontends/qt2/ui/QERTDialogBase.ui:94
-msgid "&Open"
+#, fuzzy
+msgid "O&pen"
 msgstr "&Auki"
 
 #: src/frontends/qt2/ui/QERTDialogBase.ui:98
@@ -3349,10 +3380,9 @@ msgid "&File:"
 msgstr "Tie&dosto:"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:204
-#: src/frontends/qt2/ui/QExternalDialogBase.ui:997
-#: src/frontends/qt2/ui/QGraphicsDialogBase.ui:837
-msgid "Get bounding box from the (EPS) file"
-msgstr "Lue rajauslaatikko (EPS-)tiedostosta"
+#: src/frontends/qt2/ui/QIncludeDialogBase.ui:94
+msgid "Select a file"
+msgstr "Valitse tiedosto"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:236
 #, fuzzy
@@ -3393,8 +3423,7 @@ msgstr "Näkymä ruudulla"
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:244
 #: src/frontends/controllers/ControlExternal.C:226
 #: src/frontends/controllers/ControlGraphics.C:169
-#: src/frontends/gtk/GDocument.C:174 src/frontends/gtk/GDocument.C:652
-#: src/frontends/qt2/QDocument.C:111 src/frontends/qt2/QDocumentDialog.C:273
+#: src/frontends/gtk/GDocument.C:174 src/frontends/qt2/QDocument.C:111
 #: src/lyxfont.C:516
 msgid "Default"
 msgstr "Oletus"
@@ -3440,7 +3469,6 @@ msgid "Angle to rotate image by"
 msgstr "Kuvan kiertymiskulma"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:558
-#: src/frontends/qt2/ui/QGraphicsDialogBase.ui:282
 msgid "&Origin:"
 msgstr "K&eskus:"
 
@@ -3514,6 +3542,11 @@ msgstr "Rajaa rajauslaatikkoon"
 msgid "&Get from File"
 msgstr "&Lue tiedostosta"
 
+#: src/frontends/qt2/ui/QExternalDialogBase.ui:997
+#: src/frontends/qt2/ui/QGraphicsDialogBase.ui:837
+msgid "Get bounding box from the (EPS) file"
+msgstr "Lue rajauslaatikko (EPS-)tiedostosta"
+
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:1012
 #: src/frontends/xforms/FormExternal.C:463
 msgid "Options"
@@ -3529,18 +3562,18 @@ msgstr "&Muoto:"
 msgid "O&ption:"
 msgstr "&Kuvateksti:"
 
-#: src/frontends/qt2/ui/QGraphicsDialogBase.ui:159
-#: src/frontends/qt2/ui/QMathMatrixDialogBase.ui:261
-#: src/frontends/qt2/ui/QPrintDialogBase.ui:366
-#: src/frontends/qt2/ui/QTabularCreateDialogBase.ui:323
-#: src/frontends/qt2/ui/QTabularDialogBase.ui:1252 src/frontends/gtk/GBC.h:28
-#: src/frontends/qt2/Qt2BC.h:36 src/frontends/xforms/xformsBC.h:29
-msgid "Close"
-msgstr "Sulje"
+#: src/frontends/qt2/ui/QGraphicsDialogBase.ui:29
+msgid "QGraphicsDialogBase"
+msgstr ""
 
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:186
 msgid "&Graphics"
 msgstr "&Kuva"
+
+#: src/frontends/qt2/ui/QGraphicsDialogBase.ui:282
+#, fuzzy
+msgid "Or&igin:"
+msgstr "K&eskus:"
 
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:314
 msgid "LyX Display"
@@ -3622,10 +3655,6 @@ msgstr "Alikuvan kuvateksti"
 msgid "File name to include"
 msgstr "Valitse sisällytettävä tiedosto"
 
-#: src/frontends/qt2/ui/QIncludeDialogBase.ui:94
-msgid "Select a file"
-msgstr "Valitse tiedosto"
-
 #: src/frontends/qt2/ui/QIncludeDialogBase.ui:122
 msgid "&Include Type:"
 msgstr "&Sisällytystyyppi:"
@@ -3668,6 +3697,10 @@ msgstr "&Näytä esikatselukuva"
 #: src/frontends/qt2/ui/QIncludeDialogBase.ui:263
 msgid "Show LaTeX preview"
 msgstr "Näytä LaTeX-esikatselu"
+
+#: src/frontends/qt2/ui/QIndexDialogBase.ui:22
+msgid "QIndexDialogBase"
+msgstr ""
 
 #: src/frontends/qt2/ui/QLogDialogBase.ui:88
 #: src/frontends/qt2/ui/QRefDialogBase.ui:67
@@ -3842,6 +3875,11 @@ msgstr "Sarakkeiden vaakatasaukset (t,c,b)"
 msgid "&Horizontal:"
 msgstr "&Vaaka:"
 
+#: src/frontends/qt2/ui/QNoteDialogBase.ui:22
+#, fuzzy
+msgid "QNoteDialogBase"
+msgstr "Vuoropuhelu"
+
 #: src/frontends/qt2/ui/QNoteDialogBase.ui:94
 #, fuzzy
 msgid "LyX &Note"
@@ -3854,7 +3892,7 @@ msgstr ""
 
 #: src/frontends/qt2/ui/QNoteDialogBase.ui:109
 #, fuzzy
-msgid "C&omment"
+msgid "&Comment"
 msgstr "Huomautus"
 
 #: src/frontends/qt2/ui/QNoteDialogBase.ui:113
@@ -3872,8 +3910,13 @@ msgstr ""
 msgid "Print as grey text"
 msgstr "Tulosta joka sivu"
 
+#: src/frontends/qt2/ui/QParagraphDialogBase.ui:22
+#, fuzzy
+msgid "QParagraphDialogBase"
+msgstr "Kappaletyyli asetettu"
+
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:48
-#: src/frontends/qt2/QDocument.C:162 src/text.C:2202
+#: src/frontends/qt2/QDocument.C:162 src/text.C:2207
 msgid "Single"
 msgstr "Yksink."
 
@@ -3884,8 +3927,7 @@ msgstr "1.5"
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:66
 #: src/frontends/qt2/ui/QVSpaceDialogBase.ui:151
 #: src/frontends/gtk/GDocument.C:148 src/frontends/gtk/GDocument.C:175
-#: src/frontends/gtk/GDocument.C:653 src/frontends/qt2/QDocument.C:112
-#: src/frontends/qt2/QDocument.C:168 src/frontends/qt2/QDocumentDialog.C:274
+#: src/frontends/qt2/QDocument.C:112 src/frontends/qt2/QDocument.C:168
 msgid "Custom"
 msgstr "Muu"
 
@@ -3918,22 +3960,8 @@ msgstr ""
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:275
 #, fuzzy
-msgid "Lo&ngest label"
+msgid "&Longest label"
 msgstr "&Pisin nimike"
-
-#: src/frontends/qt2/ui/QPreambleDialogBase.ui:45
-#, fuzzy
-msgid "The LaTeX preamble"
-msgstr "LaTeX-aloitusosa"
-
-#: src/frontends/qt2/ui/QPreambleDialogBase.ui:71
-msgid "&Edit..."
-msgstr "&Muokkaa..."
-
-#: src/frontends/qt2/ui/QPreambleDialogBase.ui:79
-#, fuzzy
-msgid "Edit the preamble in an external editor"
-msgstr "Muokkaa aloitusosaa toisella editorilla"
 
 #: src/frontends/qt2/ui/QPrefAsciiModule.ui:56
 msgid "&roff command:"
@@ -3961,6 +3989,11 @@ msgstr "&Värit"
 msgid "&Alter..."
 msgstr "&Muuta..."
 
+#: src/frontends/qt2/ui/QPrefConvertersModule.ui:22
+#, fuzzy
+msgid "QPrefConvertersModule"
+msgstr "Muuntimet"
+
 #: src/frontends/qt2/ui/QPrefConvertersModule.ui:85
 msgid "C&onverter:"
 msgstr "Muu&nnin:"
@@ -3970,7 +4003,8 @@ msgid "&To:[[as in 'From format x to format y']]"
 msgstr ""
 
 #: src/frontends/qt2/ui/QPrefConvertersModule.ui:136
-msgid "F&rom:"
+#, fuzzy
+msgid "&From:"
 msgstr "Läh&de:"
 
 #: src/frontends/qt2/ui/QPrefConvertersModule.ui:158
@@ -4121,6 +4155,10 @@ msgstr "Se&laa..."
 msgid "Use &keyboard map"
 msgstr "Käytä &näppäinkarttaa"
 
+#: src/frontends/qt2/ui/QPrefLanguageModule.ui:22
+msgid "QPrefLanguageModule"
+msgstr ""
+
 #: src/frontends/qt2/ui/QPrefLanguageModule.ui:41
 msgid "Command s&tart:"
 msgstr "Ko&mennon alku:"
@@ -4142,7 +4180,8 @@ msgid "Auto &begin"
 msgstr "Automaattinen al&ku"
 
 #: src/frontends/qt2/ui/QPrefLanguageModule.ui:140
-msgid "Use &babel"
+#, fuzzy
+msgid "Use b&abel"
 msgstr "Käytä &Babelia"
 
 #: src/frontends/qt2/ui/QPrefLanguageModule.ui:172
@@ -4431,6 +4470,10 @@ msgstr ""
 msgid "Use input encod&ing"
 msgstr "Käytä syötteen &merkistöä"
 
+#: src/frontends/qt2/ui/QPrefUIModule.ui:29
+msgid "QPrefUIModule"
+msgstr ""
+
 #: src/frontends/qt2/ui/QPrefUIModule.ui:63
 msgid "B&rowse..."
 msgstr "S&elaa..."
@@ -4472,11 +4515,12 @@ msgid "W&heel mouse scroll:"
 msgstr "&Hiiren rullan vieritys:"
 
 #: src/frontends/qt2/ui/QPrefUIModule.ui:377
-msgid "Cursor follo&ws scrollbar"
+#, fuzzy
+msgid "Cursor follows &scrollbar"
 msgstr "Koh&distin seuraa vierityspalkkia"
 
 #: src/frontends/qt2/ui/QPrefsDialogBase.ui:110 src/bufferlist.C:84
-#: src/bufferlist.C:183 src/lyxfunc.C:617
+#: src/bufferlist.C:183 src/lyxfunc.C:618
 msgid "&Save"
 msgstr "Ta&llenna"
 
@@ -4559,12 +4603,17 @@ msgstr "Syötä tuloste annetulle tulostimelle"
 msgid "Send output to a file"
 msgstr "Syötä tuloste tiedostoon"
 
+#: src/frontends/qt2/ui/QRefDialogBase.ui:22
+#, fuzzy
+msgid "QRefDialogBase"
+msgstr "Vuoropuhelu"
+
 #: src/frontends/qt2/ui/QRefDialogBase.ui:71
 #, fuzzy
 msgid "Update the label list"
 msgstr "Päivitä viiteluettelo"
 
-#: src/frontends/qt2/ui/QRefDialogBase.ui:89 src/frontends/qt2/QRef.C:143
+#: src/frontends/qt2/ui/QRefDialogBase.ui:89 src/frontends/qt2/QRef.C:145
 #, fuzzy
 msgid "&Go to Label"
 msgstr "&Nimike"
@@ -4621,7 +4670,7 @@ msgstr "Mahdolliset mallit"
 
 #: src/frontends/qt2/ui/QRefDialogBase.ui:364
 #, fuzzy
-msgid "L&abels in:"
+msgid "La&bels in:"
 msgstr "Otsikoitu kappale"
 
 #: src/frontends/qt2/ui/QSearchDialogBase.ui:108
@@ -4649,6 +4698,10 @@ msgstr "Korvaa k&aikki"
 #: src/frontends/qt2/ui/QSearchDialogBase.ui:295
 msgid "Search &backwards"
 msgstr "Etsi e&dellinen"
+
+#: src/frontends/qt2/ui/QSendtoDialogBase.ui:22
+msgid "QSendtoDialogBase"
+msgstr ""
 
 #: src/frontends/qt2/ui/QSendtoDialogBase.ui:45
 msgid "&Command:"
@@ -5567,7 +5620,7 @@ msgstr "Viitteet"
 #: lib/layouts/aastex.layout:114 lib/layouts/aastex.layout:410
 #: lib/layouts/ijmpd.layout:162 lib/layouts/ijmpd.layout:170
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
-#: src/rowpainter.C:443
+#: src/rowpainter.C:415
 msgid "Appendix"
 msgstr "Liite"
 
@@ -10131,16 +10184,16 @@ msgid "Redo|R"
 msgstr "Tee uudelleen|d"
 
 #: lib/ui/stdmenus.ui:84 lib/ui/stdtoolbars.ui:51
-#: src/mathed/math_nestinset.C:427 src/text3.C:821
+#: src/mathed/math_nestinset.C:428 src/text3.C:821
 msgid "Cut"
 msgstr "Leikkaa"
 
 #: lib/ui/stdmenus.ui:85 lib/ui/stdtoolbars.ui:52
-#: src/mathed/math_nestinset.C:432 src/text3.C:826
+#: src/mathed/math_nestinset.C:433 src/text3.C:826
 msgid "Copy"
 msgstr "Kopioi"
 
-#: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:623
+#: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:620
 #: src/mathed/math_nestinset.C:413 src/text3.C:805
 msgid "Paste"
 msgstr "Liitä"
@@ -10467,11 +10520,11 @@ msgstr "Haluatko tallentaa asiakirjan?"
 msgid "Print document"
 msgstr "Tuo asiakirja"
 
-#: lib/ui/stdtoolbars.ui:49 src/BufferView_pimpl.C:1063
+#: lib/ui/stdtoolbars.ui:49 src/BufferView_pimpl.C:1076
 msgid "Undo"
 msgstr "Kumoa"
 
-#: lib/ui/stdtoolbars.ui:50 src/BufferView_pimpl.C:1074
+#: lib/ui/stdtoolbars.ui:50 src/BufferView_pimpl.C:1087
 msgid "Redo"
 msgstr "Tee uudelleen"
 
@@ -10780,12 +10833,12 @@ msgid ""
 "Do you want to revert to the saved version?"
 msgstr "Asiakirja käyttää tuntematonta tekstiluokkaa \"%1$s\"."
 
-#: src/BufferView_pimpl.C:258 src/lyxfunc.C:779
+#: src/BufferView_pimpl.C:258 src/lyxfunc.C:780
 #, fuzzy
 msgid "Revert to saved document?"
 msgstr "Peru kaikki muokkaukset"
 
-#: src/BufferView_pimpl.C:259 src/lyxfunc.C:780 src/lyxvc.C:168
+#: src/BufferView_pimpl.C:259 src/lyxfunc.C:781 src/lyxvc.C:168
 #, fuzzy
 msgid "&Revert"
 msgstr "Hylkää muutokset|y"
@@ -10822,104 +10875,104 @@ msgstr "Liitä"
 msgid "Formatting document..."
 msgstr "Asiakirja muotoutuu..."
 
-#: src/BufferView_pimpl.C:716
+#: src/BufferView_pimpl.C:729
 #, fuzzy, c-format
 msgid "Saved bookmark %1$d"
 msgstr "Tallensi kirjanmerkin %1$d"
 
-#: src/BufferView_pimpl.C:749
+#: src/BufferView_pimpl.C:762
 #, fuzzy, c-format
 msgid "Moved to bookmark %1$d"
 msgstr "Siirtyi kirjanmerkille %1$d"
 
-#: src/BufferView_pimpl.C:808
+#: src/BufferView_pimpl.C:821
 msgid "Select LyX document to insert"
 msgstr "Valitse lisättävä LyX-asiakirja"
 
-#: src/BufferView_pimpl.C:810 src/frontends/controllers/ControlBibtex.C:48
+#: src/BufferView_pimpl.C:823 src/frontends/controllers/ControlBibtex.C:48
 #: src/frontends/controllers/ControlBibtex.C:59
 #: src/frontends/controllers/ControlExternal.C:160
 #: src/frontends/controllers/ControlGraphics.C:94
 #: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:133
-#: src/lyxfunc.C:1629 src/lyxfunc.C:1666 src/lyxfunc.C:1741
+#: src/lyxfunc.C:1632 src/lyxfunc.C:1669 src/lyxfunc.C:1744
 msgid "Documents|#o#O"
 msgstr "Asiakirjat|#A#a"
 
-#: src/BufferView_pimpl.C:812 src/lyxfunc.C:1668 src/lyxfunc.C:1743
+#: src/BufferView_pimpl.C:825 src/lyxfunc.C:1671 src/lyxfunc.C:1746
 msgid "Examples|#E#e"
 msgstr "Esimerkit|#E#e"
 
-#: src/BufferView_pimpl.C:817 src/lyx_cb.C:141 src/lyxfunc.C:1636
-#: src/lyxfunc.C:1673
+#: src/BufferView_pimpl.C:830 src/lyx_cb.C:141 src/lyxfunc.C:1639
+#: src/lyxfunc.C:1676
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "*.lyx| LyX-asiakirjat (*.lyx)"
 
-#: src/BufferView_pimpl.C:827 src/lyxfunc.C:1683 src/lyxfunc.C:1761
-#: src/lyxfunc.C:1775 src/lyxfunc.C:1791
+#: src/BufferView_pimpl.C:840 src/lyxfunc.C:1686 src/lyxfunc.C:1764
+#: src/lyxfunc.C:1778 src/lyxfunc.C:1794
 msgid "Canceled."
 msgstr "Peruttu."
 
-#: src/BufferView_pimpl.C:837
+#: src/BufferView_pimpl.C:850
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Lisätään asiakirja %1$s..."
 
-#: src/BufferView_pimpl.C:848
+#: src/BufferView_pimpl.C:861
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Asiakirja %1$s lisätty."
 
-#: src/BufferView_pimpl.C:849
+#: src/BufferView_pimpl.C:862
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Asiakirjaa %1$s ei voi lisätä"
 
-#: src/BufferView_pimpl.C:1066
+#: src/BufferView_pimpl.C:1079
 msgid "No further undo information"
 msgstr "Ei enää muuta kumottavaa"
 
-#: src/BufferView_pimpl.C:1077
+#: src/BufferView_pimpl.C:1090
 msgid "No further redo information"
 msgstr "Ei muuta uudelleen tehtävää"
 
-#: src/BufferView_pimpl.C:1206
+#: src/BufferView_pimpl.C:1219
 msgid "Mark off"
 msgstr "Merkintä pois päältä"
 
-#: src/BufferView_pimpl.C:1213
+#: src/BufferView_pimpl.C:1226
 msgid "Mark on"
 msgstr "Merkintä päälle"
 
-#: src/BufferView_pimpl.C:1220
+#: src/BufferView_pimpl.C:1233
 msgid "Mark removed"
 msgstr "Merkintä poistettu"
 
-#: src/BufferView_pimpl.C:1223
+#: src/BufferView_pimpl.C:1236
 msgid "Mark set"
 msgstr "Merkintä asetettu"
 
-#: src/BufferView_pimpl.C:1265
+#: src/BufferView_pimpl.C:1278
 #, fuzzy, c-format
 msgid "%1$d words in selection."
 msgstr "Yksi sana tarkastettu."
 
-#: src/BufferView_pimpl.C:1268
+#: src/BufferView_pimpl.C:1281
 #, fuzzy, c-format
 msgid "%1$d words in document."
 msgstr "LyXissä käytettävä avainsana."
 
-#: src/BufferView_pimpl.C:1273
+#: src/BufferView_pimpl.C:1286
 #, fuzzy
 msgid "One word in selection."
 msgstr "Yksi sana tarkastettu."
 
-#: src/BufferView_pimpl.C:1275
+#: src/BufferView_pimpl.C:1288
 #, fuzzy
 msgid "One word in document."
 msgstr "Asiakirja avautuu: "
 
-#: src/BufferView_pimpl.C:1278
+#: src/BufferView_pimpl.C:1291
 #, fuzzy
 msgid "Count words"
 msgstr "Nykyinen sana"
@@ -10933,7 +10986,7 @@ msgstr "ChkTeXin varoitus n:o # %1$d"
 msgid "ChkTeX warning id # "
 msgstr "ChkTeXin varoitus n:o #"
 
-#: src/CutAndPaste.C:402
+#: src/CutAndPaste.C:399
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -10946,12 +10999,12 @@ msgstr ""
 "koska luokka muuttui\n"
 "luokasta %3$s luokaksi %4$s"
 
-#: src/CutAndPaste.C:406
+#: src/CutAndPaste.C:403
 #, fuzzy
 msgid "Changed Layout"
 msgstr "Kappaleen tyyli"
 
-#: src/CutAndPaste.C:425
+#: src/CutAndPaste.C:422
 #, fuzzy, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
@@ -10962,7 +11015,7 @@ msgstr ""
 "koska luokka muuttui\n"
 "luokasta %3$s luokaksi %4$s"
 
-#: src/CutAndPaste.C:431
+#: src/CutAndPaste.C:428
 #, fuzzy
 msgid "Undefined character style"
 msgstr "Merkistö"
@@ -11215,7 +11268,7 @@ msgid "Running BibTeX."
 msgstr "BibTeX on käynnissä."
 
 #: src/MenuBackend.C:452 src/MenuBackend.C:473 src/MenuBackend.C:535
-#: src/MenuBackend.C:559 src/MenuBackend.C:584 src/MenuBackend.C:671
+#: src/MenuBackend.C:559 src/MenuBackend.C:584 src/MenuBackend.C:673
 msgid "No Documents Open!"
 msgstr "Avoimia asiakirjoja ei ole!"
 
@@ -11229,7 +11282,7 @@ msgstr "ASCII-teksti riveinä"
 msgid "Plain Text as Paragraphs"
 msgstr "ASCII-teksti kappaleina"
 
-#: src/MenuBackend.C:706
+#: src/MenuBackend.C:708
 msgid "No Table of contents"
 msgstr "Ei sisällysluetteloa"
 
@@ -11354,7 +11407,7 @@ msgstr ""
 msgid "Could not run chktex successfully."
 msgstr "Chktex-ajo onnistui"
 
-#: src/buffer_funcs.C:72
+#: src/buffer_funcs.C:71
 #, fuzzy, c-format
 msgid ""
 "The specified document\n"
@@ -11362,12 +11415,12 @@ msgid ""
 "could not be read."
 msgstr "Asiakirjan tallentaminen epäonnistui!"
 
-#: src/buffer_funcs.C:74
+#: src/buffer_funcs.C:73
 #, fuzzy
 msgid "Could not read document"
 msgstr "Asiakirjan avaaminen epäonnistui: "
 
-#: src/buffer_funcs.C:86
+#: src/buffer_funcs.C:85
 #, fuzzy, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -11375,21 +11428,21 @@ msgid ""
 "Recover emergency save?"
 msgstr "Asiakirjasta on olemassa hätätallennusversio!"
 
-#: src/buffer_funcs.C:89
+#: src/buffer_funcs.C:88
 msgid "Load emergency save?"
 msgstr ""
 
-#: src/buffer_funcs.C:90
+#: src/buffer_funcs.C:89
 #, fuzzy
 msgid "&Recover"
 msgstr "&Poista"
 
-#: src/buffer_funcs.C:90
+#: src/buffer_funcs.C:89
 #, fuzzy
 msgid "&Load Original"
 msgstr "K&eskus:"
 
-#: src/buffer_funcs.C:112
+#: src/buffer_funcs.C:111
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -11397,37 +11450,37 @@ msgid ""
 "Load the backup instead?"
 msgstr ""
 
-#: src/buffer_funcs.C:115
+#: src/buffer_funcs.C:114
 #, fuzzy
 msgid "Load backup?"
 msgstr "Palaa"
 
-#: src/buffer_funcs.C:116
+#: src/buffer_funcs.C:115
 #, fuzzy
 msgid "&Load backup"
 msgstr "&Palaa"
 
-#: src/buffer_funcs.C:116
+#: src/buffer_funcs.C:115
 #, fuzzy
 msgid "Load &original"
 msgstr "K&eskus:"
 
-#: src/buffer_funcs.C:155
+#: src/buffer_funcs.C:154
 #, fuzzy, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "Haluatko palauttaa asiakirjan versionhallinnasta?"
 
-#: src/buffer_funcs.C:157
+#: src/buffer_funcs.C:156
 #, fuzzy
 msgid "Retrieve from version control?"
 msgstr "Haluatko palauttaa asiakirjan versionhallinnasta?"
 
-#: src/buffer_funcs.C:158
+#: src/buffer_funcs.C:157
 #, fuzzy
 msgid "&Retrieve"
 msgstr "Pala&uta"
 
-#: src/buffer_funcs.C:190
+#: src/buffer_funcs.C:189
 #, fuzzy, c-format
 msgid ""
 "The specified document template\n"
@@ -11435,12 +11488,12 @@ msgid ""
 "could not be read."
 msgstr "Asiakirjan tallentaminen epäonnistui!"
 
-#: src/buffer_funcs.C:191
+#: src/buffer_funcs.C:190
 #, fuzzy
 msgid "Could not read template"
 msgstr "Ohjelma ei voinut käsitellä tiedostoa:"
 
-#: src/buffer_funcs.C:471
+#: src/buffer_funcs.C:468
 #, c-format
 msgid "%1$s #:"
 msgstr "%1$s #:"
@@ -11453,7 +11506,7 @@ msgid ""
 "Do you want to save the document or discard the changes?"
 msgstr "Asiakirja käyttää tuntematonta tekstiluokkaa \"%1$s\"."
 
-#: src/bufferlist.C:83 src/bufferlist.C:182 src/lyxfunc.C:616
+#: src/bufferlist.C:83 src/bufferlist.C:182 src/lyxfunc.C:617
 #, fuzzy
 msgid "Save changed document?"
 msgstr "Haluatko tallentaa asiakirjan?"
@@ -11694,7 +11747,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "&Kirjoituskone:"
 
-#: src/exporter.C:77 src/lyx_cb.C:168 src/lyxfunc.C:1788
+#: src/exporter.C:77 src/lyx_cb.C:168 src/lyxfunc.C:1791
 #, fuzzy
 msgid "&Over-write"
 msgstr "&Kirjoituskone:"
@@ -12048,13 +12101,19 @@ msgid "PostScript files (*.ps)"
 msgstr "PostScript-tiedostot (*.ps)"
 
 #: src/frontends/controllers/ControlSpellchecker.C:111
+#: src/frontends/controllers/ControlSpellchecker.C:273
+#, fuzzy
+msgid "Spell-checker error"
+msgstr "Oikoluku"
+
+#: src/frontends/controllers/ControlSpellchecker.C:112
 #, fuzzy
 msgid "The spell-checker could not be started"
 msgstr ""
 "Oikolukimen prosessi sulkeutui jostakin syystä.\n"
 "Se saatettiin sulkea väkisin."
 
-#: src/frontends/controllers/ControlSpellchecker.C:262
+#: src/frontends/controllers/ControlSpellchecker.C:265
 #, fuzzy
 msgid ""
 "The spell-checker has died for some reason.\n"
@@ -12063,26 +12122,32 @@ msgstr ""
 "Oikolukimen prosessi sulkeutui jostakin syystä.\n"
 "Se saatettiin sulkea väkisin."
 
-#: src/frontends/controllers/ControlSpellchecker.C:267
+#: src/frontends/controllers/ControlSpellchecker.C:268
 #, fuzzy
-msgid "The spell-checker has failed"
+msgid "The spell-checker has failed."
 msgstr ""
 "Oikolukimen prosessi sulkeutui jostakin syystä.\n"
 "Se saatettiin sulkea väkisin."
 
-#: src/frontends/controllers/ControlSpellchecker.C:281
+#: src/frontends/controllers/ControlSpellchecker.C:287
 #, fuzzy, c-format
 msgid "%1$d words checked."
 msgstr "Yksi sana tarkastettu."
 
-#: src/frontends/controllers/ControlSpellchecker.C:283
+#: src/frontends/controllers/ControlSpellchecker.C:289
 msgid "One word checked."
 msgstr "Yksi sana tarkastettu."
 
-#: src/frontends/controllers/ControlSpellchecker.C:286
+#: src/frontends/controllers/ControlSpellchecker.C:292
 #, fuzzy
 msgid "Spell-checking is complete"
 msgstr "Oikoluku valmis! "
+
+#: src/frontends/controllers/ControlToc.C:46 src/frontends/gtk/GToc.C:33
+#: src/frontends/qt2/QToc.C:41 src/frontends/xforms/FormToc.C:36
+#: src/insets/insettoc.C:42
+msgid "Table of Contents"
+msgstr "Sisällysluettelo"
 
 #: src/frontends/controllers/biblio.C:222
 #, c-format
@@ -12221,8 +12286,8 @@ msgstr "Käytt. PN|#y#Y"
 msgid "Index Entry"
 msgstr "Hakemistoviite"
 
-#: src/frontends/gtk/Dialogs.C:273 src/frontends/qt2/Dialogs.C:238
-#: src/frontends/xforms/Dialogs.C:251
+#: src/frontends/gtk/Dialogs.C:273 src/frontends/gtk/GRef.C:89
+#: src/frontends/qt2/Dialogs.C:238 src/frontends/xforms/Dialogs.C:251
 #, fuzzy
 msgid "Label"
 msgstr "&Nimike"
@@ -12348,18 +12413,6 @@ msgstr "B3"
 msgid "B4"
 msgstr "B4"
 
-#: src/frontends/gtk/GDocument.C:662 src/frontends/qt2/QDocumentDialog.C:278
-msgid "Small margins"
-msgstr "Kapeat reunukset"
-
-#: src/frontends/gtk/GDocument.C:663 src/frontends/qt2/QDocumentDialog.C:279
-msgid "Very small margins"
-msgstr "Hyvin kapeat reunukset"
-
-#: src/frontends/gtk/GDocument.C:664 src/frontends/qt2/QDocumentDialog.C:280
-msgid "Very wide margins"
-msgstr "Hyvin leveät reunukset"
-
 #: src/frontends/gtk/GERT.C:33
 #, fuzzy
 msgid "TeX Settings"
@@ -12431,12 +12484,23 @@ msgid "Paragraph Settings"
 msgstr "Kirjallisuusviitteiden asetukset"
 
 #: src/frontends/gtk/GParagraph.C:99 src/frontends/qt2/QParagraph.C:120
-#: src/frontends/xforms/FormParagraph.C:188 src/paragraph.C:626
+#: src/frontends/xforms/FormParagraph.C:188 src/paragraph.C:612
 msgid "Senseless with this layout!"
 msgstr "Järjetöntä tällä kappaletyylillä!"
 
+#: src/frontends/gtk/GRef.C:65 src/frontends/qt2/QRef.C:42
+#: src/frontends/xforms/FormRef.C:42
+#, fuzzy
+msgid "Cross-reference"
+msgstr "Viittaus"
+
+#: src/frontends/gtk/GRef.C:229
+#, fuzzy
+msgid "No labels found."
+msgstr "Ei tiedostoa!"
+
 #: src/frontends/gtk/GSearch.C:36 src/frontends/qt2/QSearch.C:31
-#: src/frontends/xforms/FormSearch.C:31
+#: src/frontends/xforms/FormSearch.C:30
 msgid "Find and Replace"
 msgstr "Etsi ja korvaa"
 
@@ -12470,17 +12534,12 @@ msgstr "Lisää taulukko"
 msgid "TeX Information"
 msgstr "TeX-tietoja|X"
 
-#: src/frontends/gtk/GToc.C:33 src/frontends/qt2/QToc.C:41
-#: src/frontends/xforms/FormToc.C:36 src/insets/insettoc.C:42
-msgid "Table of Contents"
-msgstr "Sisällysluettelo"
-
-#: src/frontends/gtk/GToc.C:116 src/frontends/xforms/FormErrorList.C:83
-#: src/frontends/xforms/FormToc.C:103 src/frontends/xforms/FormToc.C:121
+#: src/frontends/gtk/GToc.C:122 src/frontends/xforms/FormErrorList.C:83
+#: src/frontends/xforms/FormToc.C:107 src/frontends/xforms/FormToc.C:125
 msgid "*** No Lists ***"
 msgstr "*** Ei luetteloja ***"
 
-#: src/frontends/gtk/GToc.C:135
+#: src/frontends/gtk/GToc.C:142
 #, fuzzy
 msgid "*** No Items ***"
 msgstr "*** Ei luetteloja ***"
@@ -12534,7 +12593,7 @@ msgstr "Muu...|M"
 
 #: src/frontends/qt2/BulletsModule.C:340
 #: src/frontends/qt2/QDocumentDialog.C:85
-#: src/frontends/xforms/FormDocument.C:431
+#: src/frontends/xforms/FormDocument.C:425
 msgid "Bullets"
 msgstr "Merkit"
 
@@ -12651,7 +12710,7 @@ msgstr "yläotsikot"
 msgid "fancy"
 msgstr "hienot"
 
-#: src/frontends/qt2/QDocument.C:164 src/text.C:2205
+#: src/frontends/qt2/QDocument.C:164 src/text.C:2210
 msgid "OneHalf"
 msgstr "Puolikas"
 
@@ -12692,26 +12751,26 @@ msgid "Float Placement"
 msgstr "Irrallisten sijoitus:|#s"
 
 #: src/frontends/qt2/QDocumentDialog.C:86
-#: src/frontends/xforms/FormDocument.C:442
+#: src/frontends/xforms/FormDocument.C:436
 #, fuzzy
 msgid "Branches"
 msgstr "ranska"
 
 #: src/frontends/qt2/QDocumentDialog.C:87
-#: src/frontends/qt2/QDocumentDialog.C:212
+#: src/frontends/qt2/QDocumentDialog.C:211
 #: src/frontends/xforms/FormPreamble.C:29
 msgid "LaTeX Preamble"
 msgstr "LaTeX-aloitusosa"
 
-#: src/frontends/qt2/QDocumentDialog.C:401
-#: src/frontends/qt2/QDocumentDialog.C:437
+#: src/frontends/qt2/QDocumentDialog.C:385
+#: src/frontends/qt2/QDocumentDialog.C:421
 #, fuzzy
 msgid "No"
 msgstr "&Ei"
 
-#: src/frontends/qt2/QDocumentDialog.C:402
-#: src/frontends/qt2/QDocumentDialog.C:437
-#: src/frontends/qt2/QDocumentDialog.C:504
+#: src/frontends/qt2/QDocumentDialog.C:386
+#: src/frontends/qt2/QDocumentDialog.C:421
+#: src/frontends/qt2/QDocumentDialog.C:488
 #, fuzzy
 msgid "Yes"
 msgstr "&Kyllä"
@@ -12952,23 +13011,23 @@ msgstr "Muuntimet"
 msgid "Copiers"
 msgstr "Kopiot"
 
-#: src/frontends/qt2/QPrefsDialog.C:933
+#: src/frontends/qt2/QPrefsDialog.C:918
 msgid "Select a document templates directory"
 msgstr "Valitse asiakirjamallien hakemisto"
 
-#: src/frontends/qt2/QPrefsDialog.C:941
+#: src/frontends/qt2/QPrefsDialog.C:926
 msgid "Select a temporary directory"
 msgstr "Valitse väliaikaishakemisto"
 
-#: src/frontends/qt2/QPrefsDialog.C:949
+#: src/frontends/qt2/QPrefsDialog.C:934
 msgid "Select a backups directory"
 msgstr "Valitse varmuuskopiohakemisto"
 
-#: src/frontends/qt2/QPrefsDialog.C:957
+#: src/frontends/qt2/QPrefsDialog.C:942
 msgid "Select a document directory"
 msgstr "Valitse asiakirjahakemisto"
 
-#: src/frontends/qt2/QPrefsDialog.C:965
+#: src/frontends/qt2/QPrefsDialog.C:950
 msgid "Give a filename for the LyX server pipe"
 msgstr "Anna tiedostonimi LyX-palvelinputkelle"
 
@@ -12977,22 +13036,17 @@ msgstr "Anna tiedostonimi LyX-palvelinputkelle"
 msgid "Print Document"
 msgstr "Asiakirja"
 
-#: src/frontends/qt2/QRef.C:41 src/frontends/xforms/FormRef.C:42
-#, fuzzy
-msgid "Cross-reference"
-msgstr "Viittaus"
-
-#: src/frontends/qt2/QRef.C:135
+#: src/frontends/qt2/QRef.C:137
 #, fuzzy
 msgid "&Go Back"
 msgstr "&Palaa"
 
-#: src/frontends/qt2/QRef.C:137
+#: src/frontends/qt2/QRef.C:139
 #, fuzzy
 msgid "Jump back"
 msgstr "Palaa"
 
-#: src/frontends/qt2/QRef.C:145
+#: src/frontends/qt2/QRef.C:147
 #, fuzzy
 msgid "Jump to label"
 msgstr "Siirry viitteeseen"
@@ -13310,7 +13364,7 @@ msgstr "RGB"
 msgid "HSV"
 msgstr "HSV"
 
-#: src/frontends/xforms/FormDialogView.C:328
+#: src/frontends/xforms/FormDialogView.C:330
 #, c-format
 msgid "WARNING! %1$s"
 msgstr "Varoitus! %1$s"
@@ -13323,7 +13377,7 @@ msgstr " Yksinkertainen | Puolitoista | Kaksinkertainen | Muu "
 msgid " SmallSkip | MedSkip | BigSkip | Length "
 msgstr " Pieni | Keski | Suuri | Annettu pituus "
 
-#: src/frontends/xforms/FormDocument.C:260
+#: src/frontends/xforms/FormDocument.C:259
 msgid ""
 " Default | Custom | US letter | US legal | US executive | A3 | A4 | A5 | B3 "
 "| B4 | B5 "
@@ -13331,33 +13385,27 @@ msgstr ""
 " Oletus | Muu | US letter | US legal | US executive | A3 | A4 | A5 | B3 | B4 "
 "| B5 "
 
-#: src/frontends/xforms/FormDocument.C:264
-msgid " None | Small Margins | Very small Margins | Very wide Margins "
-msgstr ""
-" Ei mitään | Kapeat reunukset | Hyvin kapeat reunukset | Hyvin leveät "
-"reunukset"
-
-#: src/frontends/xforms/FormDocument.C:304
+#: src/frontends/xforms/FormDocument.C:298
 #, fuzzy
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | <<text>> | >>text<< "
 msgstr ""
 " ``teksti'' | ''teksti'' | ,,teksti`` | ,,teksti'' | «teksti» | »teksti« "
 
-#: src/frontends/xforms/FormDocument.C:320
+#: src/frontends/xforms/FormDocument.C:314
 msgid " Basic | Natbib author-year | Natbib numerical | Jurabib "
 msgstr ""
 
-#: src/frontends/xforms/FormDocument.C:324
+#: src/frontends/xforms/FormDocument.C:318
 msgid ""
 "Natbib is used often for natural sciences and arts\n"
 "Jurabib is more common in law and humanities"
 msgstr ""
 
-#: src/frontends/xforms/FormDocument.C:336
+#: src/frontends/xforms/FormDocument.C:330
 msgid " Never | Automatically | Yes "
 msgstr ""
 
-#: src/frontends/xforms/FormDocument.C:367
+#: src/frontends/xforms/FormDocument.C:361
 #, fuzzy
 msgid ""
 " Default | Tiny | Smallest | Smaller | Small | Normal | Large | Larger | "
@@ -13366,62 +13414,62 @@ msgstr ""
 " oletus | pikkuruinen | indeksi | alaviite | pieni | tavallinen | suuri | "
 "suurempi | suurin | valtava | valtavin"
 
-#: src/frontends/xforms/FormDocument.C:395
+#: src/frontends/xforms/FormDocument.C:389
 #, fuzzy
 msgid "Enter the name of a new branch."
 msgstr "Anna korvaava teksti."
 
-#: src/frontends/xforms/FormDocument.C:397
+#: src/frontends/xforms/FormDocument.C:391
 #, fuzzy
 msgid "Add a new branch to the document."
 msgstr "Mahdolliset viitteet valitussa asiakirjassa:"
 
-#: src/frontends/xforms/FormDocument.C:399
+#: src/frontends/xforms/FormDocument.C:393
 #, fuzzy
 msgid "Remove the selected branch from the document."
 msgstr "Poista valittu lähdeviite"
 
-#: src/frontends/xforms/FormDocument.C:401
+#: src/frontends/xforms/FormDocument.C:395
 #, fuzzy
 msgid "Activate the selected branch for output."
 msgstr "Siirrä valittua lähdeviitettä ylös"
 
-#: src/frontends/xforms/FormDocument.C:403
+#: src/frontends/xforms/FormDocument.C:397
 #, fuzzy
 msgid "Deactivate the selected activated branch."
 msgstr "Poista valittu lähdeviite"
 
-#: src/frontends/xforms/FormDocument.C:405
+#: src/frontends/xforms/FormDocument.C:399
 #, fuzzy
 msgid "Available branches for this document."
 msgstr "Mahdolliset viitteet valitussa asiakirjassa:"
 
-#: src/frontends/xforms/FormDocument.C:407
+#: src/frontends/xforms/FormDocument.C:401
 msgid "Activated branches. Content will occur in the document's output"
 msgstr ""
 
-#: src/frontends/xforms/FormDocument.C:409
+#: src/frontends/xforms/FormDocument.C:403
 msgid "Modify background color of branch inset"
 msgstr ""
 
-#: src/frontends/xforms/FormDocument.C:411
+#: src/frontends/xforms/FormDocument.C:405
 msgid "Background color of branch inset"
 msgstr ""
 
-#: src/frontends/xforms/FormDocument.C:423
+#: src/frontends/xforms/FormDocument.C:417
 msgid "Document"
 msgstr "Asiakirja"
 
-#: src/frontends/xforms/FormDocument.C:425
+#: src/frontends/xforms/FormDocument.C:419
 msgid "Paper"
 msgstr "Sivu"
 
-#: src/frontends/xforms/FormDocument.C:429
+#: src/frontends/xforms/FormDocument.C:423
 #: src/frontends/xforms/FormGraphics.C:284
 msgid "Extra"
 msgstr "Lisä"
 
-#: src/frontends/xforms/FormDocument.C:435
+#: src/frontends/xforms/FormDocument.C:429
 msgid ""
 "Your version of libXpm is older than 4.7.\n"
 "The `bullet' tab of the document dialog has been disabled"
@@ -13429,7 +13477,7 @@ msgstr ""
 "libXpm-versiosi on vanhempi kuin 4.7.\n"
 "Merkit-sivu asiakirjan asetuksista on pois käytöstä."
 
-#: src/frontends/xforms/FormDocument.C:1384
+#: src/frontends/xforms/FormDocument.C:1332
 msgid "Document is read-only. No changes to layout permitted."
 msgstr "Asiakirja on kirjoitussuojattu. Muotoilua ei voi muuttaa."
 
@@ -14061,35 +14109,35 @@ msgstr "Siirry takaisin lähtöpaikkaan."
 msgid "Go to"
 msgstr "Siirry"
 
-#: src/frontends/xforms/FormSearch.C:48
+#: src/frontends/xforms/FormSearch.C:47
 msgid "Enter the string you want to find."
 msgstr "Anna teksti, jota haluat etsiä."
 
-#: src/frontends/xforms/FormSearch.C:50
+#: src/frontends/xforms/FormSearch.C:49
 msgid "Enter the replacement string."
 msgstr "Anna korvaava teksti."
 
-#: src/frontends/xforms/FormSearch.C:52
+#: src/frontends/xforms/FormSearch.C:51
 msgid "Continue to next search result."
 msgstr "Jatka seuraavaan löydökseen."
 
-#: src/frontends/xforms/FormSearch.C:54
+#: src/frontends/xforms/FormSearch.C:53
 msgid "Replace search result by replacement string."
 msgstr "Korvaa löydös korvaavalla tekstillä."
 
-#: src/frontends/xforms/FormSearch.C:56
+#: src/frontends/xforms/FormSearch.C:55
 msgid "Replace all by replacement string."
 msgstr "Korvaa kaikki löydökset korvaavalla tekstillä."
 
-#: src/frontends/xforms/FormSearch.C:58
+#: src/frontends/xforms/FormSearch.C:57
 msgid "Do case sensitive search."
 msgstr "Vaadi sama kirjainkoko."
 
-#: src/frontends/xforms/FormSearch.C:60
+#: src/frontends/xforms/FormSearch.C:59
 msgid "Search only matching words."
 msgstr "Etsi vain täsmääviä sanoja."
 
-#: src/frontends/xforms/FormSearch.C:62
+#: src/frontends/xforms/FormSearch.C:61
 msgid "Search backwards."
 msgstr "Etsi edellinen."
 
@@ -14333,7 +14381,7 @@ msgstr "Ei tietoa, miten tuoda muodosta %1$s"
 msgid "imported."
 msgstr "tuotu."
 
-#: src/insets/insetbase.C:258
+#: src/insets/insetbase.C:265
 msgid "Opened inset"
 msgstr "Osio avattiin"
 
@@ -14590,12 +14638,12 @@ msgstr "Hieno viite: "
 msgid "Opened table"
 msgstr "Avaa tiedosto"
 
-#: src/insets/insettabular.C:1521
+#: src/insets/insettabular.C:1546
 #, fuzzy
 msgid "Error setting multicolumn"
 msgstr "Erityinen monisarake"
 
-#: src/insets/insettabular.C:1522
+#: src/insets/insettabular.C:1547
 msgid "You cannot set multicolumn vertically."
 msgstr ""
 
@@ -14816,11 +14864,11 @@ msgstr "&Poista"
 msgid "Choose a filename to save document as"
 msgstr "Valitse tiedostonimi, joksi asiakirja tallennetaan:"
 
-#: src/lyx_cb.C:135 src/lyxfunc.C:1631
+#: src/lyx_cb.C:135 src/lyxfunc.C:1634
 msgid "Templates|#T#t"
 msgstr "Mallipohjat|#o#O"
 
-#: src/lyx_cb.C:165 src/lyxfunc.C:1785
+#: src/lyx_cb.C:165 src/lyxfunc.C:1788
 #, fuzzy, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -14828,7 +14876,7 @@ msgid ""
 "Do you want to over-write that document?"
 msgstr "Asiakirja käyttää tuntematonta tekstiluokkaa \"%1$s\"."
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:1787
+#: src/lyx_cb.C:167 src/lyxfunc.C:1790
 #, fuzzy
 msgid "Over-write document?"
 msgstr "Haluatko tallentaa asiakirjan?"
@@ -15130,31 +15178,31 @@ msgstr "Kieli: %1$s, "
 msgid "  Number %1$s"
 msgstr "  Numero %1$s"
 
-#: src/lyxfunc.C:290
+#: src/lyxfunc.C:291
 msgid "Unknown function."
 msgstr "Tuntematon funktio."
 
-#: src/lyxfunc.C:326
+#: src/lyxfunc.C:327
 msgid "Nothing to do"
 msgstr "Ei mitään tehtävää"
 
-#: src/lyxfunc.C:344
+#: src/lyxfunc.C:345
 msgid "Unknown action"
 msgstr "Tuntematon toiminto"
 
-#: src/lyxfunc.C:350 src/lyxfunc.C:598
+#: src/lyxfunc.C:351 src/lyxfunc.C:599
 msgid "Command disabled"
 msgstr "Komento ei käytössä"
 
-#: src/lyxfunc.C:357
+#: src/lyxfunc.C:358
 msgid "Command not allowed without any document open"
 msgstr "Komento ei toimi ilman avoinna olevaa asiakirjaa"
 
-#: src/lyxfunc.C:592
+#: src/lyxfunc.C:593
 msgid "Document is read-only"
 msgstr "Asiakirja on kirjoitussuojattu"
 
-#: src/lyxfunc.C:613
+#: src/lyxfunc.C:614
 #, fuzzy, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -15162,127 +15210,127 @@ msgid ""
 "Do you want to save the document?"
 msgstr "Asiakirja käyttää tuntematonta tekstiluokkaa \"%1$s\"."
 
-#: src/lyxfunc.C:629
+#: src/lyxfunc.C:630
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
 "Check that your printer is set up correctly."
 msgstr ""
 
-#: src/lyxfunc.C:632
+#: src/lyxfunc.C:633
 #, fuzzy
 msgid "Print document failed"
 msgstr "Tulosta tiedostoon"
 
-#: src/lyxfunc.C:651
+#: src/lyxfunc.C:652
 #, fuzzy, c-format
 msgid ""
 "The document could not be converted\n"
 "into the document class %1$s."
 msgstr "Asiakirja käyttää tuntematonta tekstiluokkaa \"%1$s\"."
 
-#: src/lyxfunc.C:654
+#: src/lyxfunc.C:655
 #, fuzzy
 msgid "Could not change class"
 msgstr "Tiedoston muuntaminen epäonnistui"
 
-#: src/lyxfunc.C:762
+#: src/lyxfunc.C:763
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Asiakirja %1$s tallentuu..."
 
-#: src/lyxfunc.C:766
+#: src/lyxfunc.C:767
 msgid " done."
 msgstr " valmis."
 
-#: src/lyxfunc.C:777
+#: src/lyxfunc.C:778
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr ""
 
-#: src/lyxfunc.C:799
+#: src/lyxfunc.C:800
 #, fuzzy
 msgid "Build"
 msgstr "Käännösloki"
 
-#: src/lyxfunc.C:804
+#: src/lyxfunc.C:805
 #, fuzzy
 msgid "ChkTeX"
 msgstr "Tarkista TeX"
 
-#: src/lyxfunc.C:976 src/text3.C:1249
+#: src/lyxfunc.C:977 src/text3.C:1249
 msgid "Missing argument"
 msgstr "Argumentti puuttuu"
 
-#: src/lyxfunc.C:985
+#: src/lyxfunc.C:986
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Ohjetiedosto %1$s avautuu..."
 
-#: src/lyxfunc.C:1215
+#: src/lyxfunc.C:1218
 msgid "Opening child document "
 msgstr "Aliasiakirja avautuu: "
 
-#: src/lyxfunc.C:1294
+#: src/lyxfunc.C:1297
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Syntaksi: set-color <lyx_nimi> <x11_nimi>"
 
-#: src/lyxfunc.C:1305
+#: src/lyxfunc.C:1308
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Värin \"%1$s\" asetus epäonnistui: väri on määrittelemätön, tai sitä ei voi "
 "määritellä uudelleen."
 
-#: src/lyxfunc.C:1414
+#: src/lyxfunc.C:1417
 #, fuzzy
 msgid "Document defaults saved in "
 msgstr "Asiakirjan tallentaminen epäonnistui!"
 
-#: src/lyxfunc.C:1417
+#: src/lyxfunc.C:1420
 #, fuzzy
 msgid "Unable to save document defaults"
 msgstr "Tallenna asiakirjan oletukseksi"
 
-#: src/lyxfunc.C:1472
+#: src/lyxfunc.C:1475
 msgid "Converting document to new document class..."
 msgstr "Asiakirja muuntuu toiseen asiakirjaluokkaan sopivaksi..."
 
-#: src/lyxfunc.C:1481
+#: src/lyxfunc.C:1484
 msgid "Class switch"
 msgstr ""
 
-#: src/lyxfunc.C:1627
+#: src/lyxfunc.C:1630
 msgid "Select template file"
 msgstr "Valitse mallitiedosto"
 
-#: src/lyxfunc.C:1664
+#: src/lyxfunc.C:1667
 msgid "Select document to open"
 msgstr "Valitse avattava asiakirja"
 
-#: src/lyxfunc.C:1705
+#: src/lyxfunc.C:1708
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Asiakirja %1$s avautuu..."
 
-#: src/lyxfunc.C:1709
+#: src/lyxfunc.C:1712
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Asiakirja %1$s avautui."
 
-#: src/lyxfunc.C:1711
+#: src/lyxfunc.C:1714
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Asiakirjan %1$s avaaminen epäonnistui"
 
-#: src/lyxfunc.C:1736
+#: src/lyxfunc.C:1739
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Valitse tuotava %1$s-tiedosto"
 
-#: src/lyxfunc.C:1846
+#: src/lyxfunc.C:1849
 msgid "Welcome to LyX!"
 msgstr "Tervetuloa LyXiin!"
 
@@ -15830,35 +15878,35 @@ msgstr ""
 msgid "No vertical grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_gridinset.C:1272
+#: src/mathed/math_gridinset.C:1291
 msgid "Only one row"
 msgstr ""
 
-#: src/mathed/math_gridinset.C:1278
+#: src/mathed/math_gridinset.C:1297
 #, fuzzy
 msgid "Only one column"
 msgstr "Poista sarake|e"
 
-#: src/mathed/math_gridinset.C:1286
+#: src/mathed/math_gridinset.C:1305
 #, fuzzy
 msgid "No hline to delete"
 msgstr "Ei mitään tehtävää"
 
-#: src/mathed/math_gridinset.C:1295
+#: src/mathed/math_gridinset.C:1314
 msgid "No vline to delete"
 msgstr ""
 
-#: src/mathed/math_gridinset.C:1313
+#: src/mathed/math_gridinset.C:1332
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr ""
 
-#: src/mathed/math_hullinset.C:1028 src/mathed/math_hullinset.C:1037
+#: src/mathed/math_hullinset.C:1022 src/mathed/math_hullinset.C:1031
 #, fuzzy
 msgid "No number"
 msgstr "Numerointi"
 
-#: src/mathed/math_hullinset.C:1028 src/mathed/math_hullinset.C:1037
+#: src/mathed/math_hullinset.C:1022 src/mathed/math_hullinset.C:1031
 #, fuzzy
 msgid "Number"
 msgstr "Numerointi"
@@ -15882,11 +15930,11 @@ msgstr ""
 msgid "Math editor mode"
 msgstr "Matematiikkaeditoritila"
 
-#: src/mathed/math_nestinset.C:763
+#: src/mathed/math_nestinset.C:775
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/math_nestinset.C:766
+#: src/mathed/math_nestinset.C:778
 #, fuzzy
 msgid "entered math text mode (textrm)"
 msgstr "Tavallinen teksti\t\\textrm"
@@ -15981,65 +16029,65 @@ msgstr "Tuntematon luettelo sisällyksistä"
 msgid "Unknown token"
 msgstr "Tuntematon merkintä: "
 
-#: src/text.C:1171
+#: src/text.C:1166
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
 msgstr "Kappaleen alkuun ei voi lisätä välilyöntiä. Ks. Opastus."
 
-#: src/text.C:1182
+#: src/text.C:1178
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "Kahta perättäistä välilyöntiä ei voi lisätä näin. Ks. Opastus."
 
-#: src/text.C:2171
+#: src/text.C:2176
 #, fuzzy
 msgid "Change: "
 msgstr "Sivu:"
 
 # FIXME: Cannot translate properly!
-#: src/text.C:2175
+#: src/text.C:2180
 #, fuzzy
 msgid " at "
 msgstr " -> "
 
-#: src/text.C:2186
+#: src/text.C:2191
 #, c-format
 msgid "Font: %1$s"
 msgstr "Kirjasin: %1$s"
 
-#: src/text.C:2193
+#: src/text.C:2198
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr ", Syvyys: %1$d"
 
-#: src/text.C:2199
+#: src/text.C:2204
 msgid ", Spacing: "
 msgstr ", Välit: "
 
-#: src/text.C:2211
+#: src/text.C:2216
 msgid "Other ("
 msgstr "Muu ("
 
-#: src/text.C:2220
+#: src/text.C:2225
 #, fuzzy
 msgid ", Inset: "
 msgstr ", Syvyys: "
 
-#: src/text.C:2221
+#: src/text.C:2226
 msgid ", Paragraph: "
 msgstr ", kappale: "
 
-#: src/text.C:2222
+#: src/text.C:2227
 #, fuzzy
 msgid ", Id: "
 msgstr ", Syvyys: "
 
-#: src/text.C:2223
+#: src/text.C:2228
 #, fuzzy
 msgid ", Position: "
 msgstr "Väittämä"
 
-#: src/text.C:2224
+#: src/text.C:2229
 msgid ", Boundary: "
 msgstr ""
 
@@ -16083,10 +16131,6 @@ msgstr "Merkistö"
 msgid "Paragraph layout set"
 msgstr "Kappaletyyli asetettu"
 
-#: src/toc.C:64 src/toc.C:133
-msgid "TOC"
-msgstr ""
-
 #: src/vspace.C:487
 #, fuzzy
 msgid "Default skip"
@@ -16116,3 +16160,38 @@ msgstr "&Pysty:"
 #, fuzzy
 msgid "protected"
 msgstr "P&ikanäppäin:"
+
+#, fuzzy
+#~ msgid "The LaTeX preamble"
+#~ msgstr "LaTeX-aloitusosa"
+
+#~ msgid "&Edit..."
+#~ msgstr "&Muokkaa..."
+
+#, fuzzy
+#~ msgid "Edit the preamble in an external editor"
+#~ msgstr "Muokkaa aloitusosaa toisella editorilla"
+
+#~ msgid "Special (A4 portrait only):|#S"
+#~ msgstr "Erityinen (vain pysty A4):|#4"
+
+#~ msgid "&Margins:"
+#~ msgstr "R&eunukset"
+
+#, fuzzy
+#~ msgid "C&omment"
+#~ msgstr "Huomautus"
+
+#~ msgid "Small margins"
+#~ msgstr "Kapeat reunukset"
+
+#~ msgid "Very small margins"
+#~ msgstr "Hyvin kapeat reunukset"
+
+#~ msgid "Very wide margins"
+#~ msgstr "Hyvin leveät reunukset"
+
+#~ msgid " None | Small Margins | Very small Margins | Very wide Margins "
+#~ msgstr ""
+#~ " Ei mitään | Kapeat reunukset | Hyvin kapeat reunukset | Hyvin leveät "
+#~ "reunukset"

@@ -34,7 +34,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2005-07-18 01:38+0200\n"
+"POT-Creation-Date: 2005-08-21 15:19+0200\n"
 "PO-Revision-Date: 2005-07-18 01:46+0200\n"
 "Last-Translator: Vitaly Lipatov <lav@altlinux.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -93,14 +93,6 @@ msgstr ""
 #: src/frontends/xforms/forms/form_url.fd:116
 #: src/frontends/xforms/forms/form_vspace.fd:134
 #: src/frontends/xforms/forms/form_wrap.fd:242
-#: src/frontends/qt2/ui/QAskForTextDialog.ui:124
-#: src/frontends/qt2/ui/QBibtexDialogBase.ui:107
-#: src/frontends/qt2/ui/QBranchDialogBase.ui:45
-#: src/frontends/qt2/ui/QERTDialogBase.ui:147
-#: src/frontends/qt2/ui/QGraphicsDialogBase.ui:107
-#: src/frontends/qt2/ui/QIndexDialogBase.ui:128
-#: src/frontends/qt2/ui/QNoteDialogBase.ui:45
-#: src/frontends/qt2/ui/QSendtoDialogBase.ui:90
 msgid "OK"
 msgstr "ОК"
 
@@ -394,7 +386,7 @@ msgid "Color:|#C"
 msgstr "Цвета"
 
 #: src/frontends/xforms/forms/form_character.fd:134
-#: src/frontends/xforms/forms/form_document.fd:1251
+#: src/frontends/xforms/forms/form_document.fd:1233
 #, fuzzy
 msgid "Language:|#L"
 msgstr "Язык:"
@@ -412,7 +404,7 @@ msgid "These are never toggled"
 msgstr "Не переключается"
 
 #: src/frontends/xforms/forms/form_character.fd:188
-#: src/frontends/xforms/forms/form_document.fd:1487
+#: src/frontends/xforms/forms/form_document.fd:1469
 #, fuzzy
 msgid "Size:|#z"
 msgstr "Размер"
@@ -447,7 +439,7 @@ msgid "@4->"
 msgstr ""
 
 #: src/frontends/xforms/forms/form_citation.fd:134
-#: src/frontends/xforms/forms/form_document.fd:1909
+#: src/frontends/xforms/forms/form_document.fd:1891
 msgid "@9+"
 msgstr ""
 
@@ -599,141 +591,137 @@ msgid "Custom sizes|#M"
 msgstr "Заказчик"
 
 #: src/frontends/xforms/forms/form_document.fd:446
-msgid "Special (A4 portrait only):|#S"
-msgstr ""
-
-#: src/frontends/xforms/forms/form_document.fd:464
 #, fuzzy
 msgid "Top:|#T"
 msgstr "Сверху:"
 
-#: src/frontends/xforms/forms/form_document.fd:500
+#: src/frontends/xforms/forms/form_document.fd:482
 #, fuzzy
 msgid "Bottom:|#B"
 msgstr "Снизу:"
 
-#: src/frontends/xforms/forms/form_document.fd:536
+#: src/frontends/xforms/forms/form_document.fd:518
 #, fuzzy
 msgid "Inner:|#I"
 msgstr "Внутри:"
 
-#: src/frontends/xforms/forms/form_document.fd:572
+#: src/frontends/xforms/forms/form_document.fd:554
 #, fuzzy
 msgid "Outer:|#u"
 msgstr "Снаружи:"
 
-#: src/frontends/xforms/forms/form_document.fd:608
+#: src/frontends/xforms/forms/form_document.fd:590
 #, fuzzy
 msgid "Headheight:|#H"
 msgstr ""
 "Высота\n"
 "верха:"
 
-#: src/frontends/xforms/forms/form_document.fd:644
+#: src/frontends/xforms/forms/form_document.fd:626
 #, fuzzy
 msgid "Headsep:|#d"
 msgstr ""
 "Разделитель\n"
 "верха:"
 
-#: src/frontends/xforms/forms/form_document.fd:680
+#: src/frontends/xforms/forms/form_document.fd:662
 #, fuzzy
 msgid "Footskip:|#F"
 msgstr ""
 "Промежуток\n"
 "сноски:"
 
-#: src/frontends/xforms/forms/form_document.fd:740
+#: src/frontends/xforms/forms/form_document.fd:722
 #, fuzzy
 msgid "Sides"
 msgstr "Слайд"
 
-#: src/frontends/xforms/forms/form_document.fd:758
+#: src/frontends/xforms/forms/form_document.fd:740
 msgid "Separation"
 msgstr "Отделение абзацев"
 
-#: src/frontends/xforms/forms/form_document.fd:776
+#: src/frontends/xforms/forms/form_document.fd:758
 #, fuzzy
 msgid "Columns"
 msgstr "Колонок"
 
-#: src/frontends/xforms/forms/form_document.fd:794
+#: src/frontends/xforms/forms/form_document.fd:776
 #, fuzzy
 msgid "Fonts:|#F"
 msgstr "Шрифт:"
 
-#: src/frontends/xforms/forms/form_document.fd:812
+#: src/frontends/xforms/forms/form_document.fd:794
 #, fuzzy
 msgid "Font Size:|#O"
 msgstr "Используемые шрифты"
 
-#: src/frontends/xforms/forms/form_document.fd:830
+#: src/frontends/xforms/forms/form_document.fd:812
 #, fuzzy
 msgid "Class:|#C"
 msgstr "Свернутое"
 
-#: src/frontends/xforms/forms/form_document.fd:848
+#: src/frontends/xforms/forms/form_document.fd:830
 #, fuzzy
 msgid "Page style:|#P"
 msgstr ""
 "Стиль\n"
 "страницы:"
 
-#: src/frontends/xforms/forms/form_document.fd:866
+#: src/frontends/xforms/forms/form_document.fd:848
 #, fuzzy
 msgid "Spacing:|#g"
 msgstr ""
 "Междустрочный\n"
 "интервал"
 
-#: src/frontends/xforms/forms/form_document.fd:884
+#: src/frontends/xforms/forms/form_document.fd:866
 #, fuzzy
 msgid "Extra Options:|#X"
 msgstr "доп. параметры"
 
-#: src/frontends/xforms/forms/form_document.fd:920
+#: src/frontends/xforms/forms/form_document.fd:902
 #, fuzzy
 msgid "Default Skip:|#u"
 msgstr "Путь по умолчанию"
 
-#: src/frontends/xforms/forms/form_document.fd:956
+#: src/frontends/xforms/forms/form_document.fd:938
 msgid "One|#n"
 msgstr ""
 
-#: src/frontends/xforms/forms/form_document.fd:974
+#: src/frontends/xforms/forms/form_document.fd:956
 msgid "Two|#T"
 msgstr ""
 
-#: src/frontends/xforms/forms/form_document.fd:1028
+#: src/frontends/xforms/forms/form_document.fd:1010
 msgid "One|#e"
 msgstr ""
 
-#: src/frontends/xforms/forms/form_document.fd:1046
+#: src/frontends/xforms/forms/form_document.fd:1028
 msgid "Two|#w"
 msgstr ""
 
-#: src/frontends/xforms/forms/form_document.fd:1100
+#: src/frontends/xforms/forms/form_document.fd:1082
 #, fuzzy
 msgid "Indent|#I"
 msgstr "Отступ"
 
-#: src/frontends/xforms/forms/form_document.fd:1118
+#: src/frontends/xforms/forms/form_document.fd:1100
 #, fuzzy
 msgid "Skip|#K"
 msgstr "Промежутком"
 
-#: src/frontends/xforms/forms/form_document.fd:1215
+#: src/frontends/xforms/forms/form_document.fd:1197
 #: src/frontends/xforms/forms/form_preferences.fd:326
 #, fuzzy
 msgid "Encoding:|#E"
 msgstr "Кодировка:"
 
-#: src/frontends/xforms/forms/form_document.fd:1233
+#: src/frontends/xforms/forms/form_document.fd:1215
 #, fuzzy
 msgid "Quote Style:|#Q"
 msgstr "Тип кавычек"
 
-#: src/frontends/xforms/forms/form_document.fd:1293
+#: src/frontends/xforms/forms/form_document.fd:1275
 #, fuzzy
 msgid "Float Placement:|#L"
 msgstr ""
@@ -741,127 +729,127 @@ msgstr ""
 "плавающих объектов:\n"
 "[!](h,t,b,p)"
 
-#: src/frontends/xforms/forms/form_document.fd:1311
+#: src/frontends/xforms/forms/form_document.fd:1293
 #, fuzzy
 msgid "Section number depth:"
 msgstr ""
 "Глубина нумерации\n"
 "разделов"
 
-#: src/frontends/xforms/forms/form_document.fd:1333
+#: src/frontends/xforms/forms/form_document.fd:1315
 #, fuzzy
 msgid "Table of contents depth:"
 msgstr "Содержание"
 
-#: src/frontends/xforms/forms/form_document.fd:1355
+#: src/frontends/xforms/forms/form_document.fd:1337
 #, fuzzy
 msgid "PS Driver:|#S"
 msgstr "Серия:"
 
-#: src/frontends/xforms/forms/form_document.fd:1373
+#: src/frontends/xforms/forms/form_document.fd:1355
 #, fuzzy
 msgid "Use AMS Math:|#M"
 msgstr ""
 "Использовать\n"
 "AMS-математику"
 
-#: src/frontends/xforms/forms/form_document.fd:1391
+#: src/frontends/xforms/forms/form_document.fd:1373
 #, fuzzy
 msgid "Sectioned bibliography|#e"
 msgstr "Добавить библиографию в содержание"
 
-#: src/frontends/xforms/forms/form_document.fd:1409
+#: src/frontends/xforms/forms/form_document.fd:1391
 #, fuzzy
 msgid "Citation Style:|#C"
 msgstr "Представление ссылок"
 
-#: src/frontends/xforms/forms/form_document.fd:1451
+#: src/frontends/xforms/forms/form_document.fd:1433
 #, fuzzy
 msgid "Bullet depth"
 msgstr "Маркеры"
 
-#: src/frontends/xforms/forms/form_document.fd:1505
+#: src/frontends/xforms/forms/form_document.fd:1487
 #, fuzzy
 msgid "LaTeX:|#L"
 msgstr "LaTeX...|L"
 
-#: src/frontends/xforms/forms/form_document.fd:1541
+#: src/frontends/xforms/forms/form_document.fd:1523
 #, fuzzy
 msgid "1|#1"
 msgstr "11"
 
-#: src/frontends/xforms/forms/form_document.fd:1560
+#: src/frontends/xforms/forms/form_document.fd:1542
 msgid "2|#2"
 msgstr ""
 
-#: src/frontends/xforms/forms/form_document.fd:1578
+#: src/frontends/xforms/forms/form_document.fd:1560
 msgid "3|#3"
 msgstr ""
 
-#: src/frontends/xforms/forms/form_document.fd:1596
+#: src/frontends/xforms/forms/form_document.fd:1578
 msgid "4|#4"
 msgstr ""
 
-#: src/frontends/xforms/forms/form_document.fd:1650
+#: src/frontends/xforms/forms/form_document.fd:1632
 #, fuzzy
 msgid "Standard|#S"
 msgstr "Обычный"
 
-#: src/frontends/xforms/forms/form_document.fd:1669
+#: src/frontends/xforms/forms/form_document.fd:1651
 #, fuzzy
 msgid "Maths|#M"
 msgstr "Математика"
 
-#: src/frontends/xforms/forms/form_document.fd:1687
+#: src/frontends/xforms/forms/form_document.fd:1669
 msgid "Ding 1|#D"
 msgstr ""
 
-#: src/frontends/xforms/forms/form_document.fd:1705
+#: src/frontends/xforms/forms/form_document.fd:1687
 msgid "Ding 2|#i"
 msgstr ""
 
-#: src/frontends/xforms/forms/form_document.fd:1723
+#: src/frontends/xforms/forms/form_document.fd:1705
 msgid "Ding 3|#n"
 msgstr ""
 
-#: src/frontends/xforms/forms/form_document.fd:1741
+#: src/frontends/xforms/forms/form_document.fd:1723
 msgid "Ding 4|#g"
 msgstr ""
 
-#: src/frontends/xforms/forms/form_document.fd:1801
+#: src/frontends/xforms/forms/form_document.fd:1783
 msgid "New Branch:|#N"
 msgstr ""
 
-#: src/frontends/xforms/forms/form_document.fd:1819
+#: src/frontends/xforms/forms/form_document.fd:1801
 #: src/frontends/xforms/forms/form_spellchecker.fd:134
 #, fuzzy
 msgid "Add|#d"
 msgstr "Добавить"
 
-#: src/frontends/xforms/forms/form_document.fd:1837
+#: src/frontends/xforms/forms/form_document.fd:1819
 #, fuzzy
 msgid "Remove|#e"
 msgstr "Восстановить"
 
-#: src/frontends/xforms/forms/form_document.fd:1855
+#: src/frontends/xforms/forms/form_document.fd:1837
 #, fuzzy
 msgid "Available Branches:"
 msgstr "Сохранить параметры"
 
-#: src/frontends/xforms/forms/form_document.fd:1873
+#: src/frontends/xforms/forms/form_document.fd:1855
 msgid "Activated Branches:"
 msgstr ""
 
-#: src/frontends/xforms/forms/form_document.fd:1891
+#: src/frontends/xforms/forms/form_document.fd:1873
 msgid "@5->"
 msgstr ""
 
-#: src/frontends/xforms/forms/form_document.fd:1927
+#: src/frontends/xforms/forms/form_document.fd:1909
 #, fuzzy
 msgid "Display Background:"
 msgstr "Фон вкладки"
 
-#: src/frontends/xforms/forms/form_document.fd:1945
+#: src/frontends/xforms/forms/form_document.fd:1927
 #, fuzzy
 msgid "Modify"
 msgstr "Изменить"
@@ -2409,7 +2397,7 @@ msgstr "Разрыв страницы на текущей строке"
 #: src/frontends/xforms/forms/form_tabular.fd:1638
 #: src/frontends/xforms/forms/form_tabular.fd:1656
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:60
-#: src/frontends/qt2/QDocument.C:166 src/text.C:2208
+#: src/frontends/qt2/QDocument.C:166 src/text.C:2213
 msgid "Double"
 msgstr "Двойной"
 
@@ -2580,7 +2568,7 @@ msgid "S&ectioned bibliography"
 msgstr "Библиография"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:186
-#: src/frontends/xforms/FormDocument.C:327
+#: src/frontends/xforms/FormDocument.C:321
 msgid "Select this if you want to split your bibliography into sections"
 msgstr ""
 
@@ -2817,51 +2805,60 @@ msgstr "Кодировка:"
 msgid "&Quote Style:"
 msgstr "Тип кавычек"
 
+#: src/frontends/qt2/ui/MarginsModuleBase.ui:22
+msgid "MarginsModuleBase"
+msgstr ""
+
+#: src/frontends/qt2/ui/MarginsModuleBase.ui:41
+#, fuzzy
+msgid "&Default Margins"
+msgstr "Язык по умолчанию"
+
 #: src/frontends/qt2/ui/MarginsModuleBase.ui:45
+#, fuzzy
+msgid "Use the margin settings provided by the document class"
+msgstr "значения по умолчанию для этого класса документов?"
+
+#: src/frontends/qt2/ui/MarginsModuleBase.ui:132
 #, fuzzy
 msgid "&Top:"
 msgstr "Сверху:"
 
-#: src/frontends/qt2/ui/MarginsModuleBase.ui:64
+#: src/frontends/qt2/ui/MarginsModuleBase.ui:151
 #, fuzzy
 msgid "&Bottom:"
 msgstr "Снизу:"
 
-#: src/frontends/qt2/ui/MarginsModuleBase.ui:83
+#: src/frontends/qt2/ui/MarginsModuleBase.ui:170
 #, fuzzy
 msgid "&Inner:"
 msgstr "Внутри:"
 
-#: src/frontends/qt2/ui/MarginsModuleBase.ui:102
+#: src/frontends/qt2/ui/MarginsModuleBase.ui:189
 #, fuzzy
 msgid "O&uter:"
 msgstr "Снаружи:"
 
-#: src/frontends/qt2/ui/MarginsModuleBase.ui:117
-#, fuzzy
-msgid "&Margins:"
-msgstr "Поля"
-
-#: src/frontends/qt2/ui/MarginsModuleBase.ui:173
-#, fuzzy
-msgid "&Foot skip:"
-msgstr ""
-"Промежуток\n"
-"сноски:"
-
-#: src/frontends/qt2/ui/MarginsModuleBase.ui:192
+#: src/frontends/qt2/ui/MarginsModuleBase.ui:208
 #, fuzzy
 msgid "Head &sep:"
 msgstr ""
 "Разделитель\n"
 "верха:"
 
-#: src/frontends/qt2/ui/MarginsModuleBase.ui:233
+#: src/frontends/qt2/ui/MarginsModuleBase.ui:227
 #, fuzzy
 msgid "Head &height:"
 msgstr ""
 "Высота\n"
 "верха:"
+
+#: src/frontends/qt2/ui/MarginsModuleBase.ui:246
+#, fuzzy
+msgid "&Foot skip:"
+msgstr ""
+"Промежуток\n"
+"сноски:"
 
 #: src/frontends/qt2/ui/MathsModuleBase.ui:41
 msgid "&Use AMS math package automatically"
@@ -2989,18 +2986,14 @@ msgstr "Копирайт"
 #: src/frontends/qt2/ui/QBibitemDialogBase.ui:204
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:329
 #: src/frontends/qt2/ui/QBranchDialogBase.ui:60
-#: src/frontends/qt2/ui/QCharacterDialogBase.ui:540
 #: src/frontends/qt2/ui/QDelimiterDialogBase.ui:414
-#: src/frontends/qt2/ui/QERTDialogBase.ui:162
 #: src/frontends/qt2/ui/QErrorListDialogBase.ui:58
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:1188
 #: src/frontends/qt2/ui/QFloatDialogBase.ui:129
 #: src/frontends/qt2/ui/QIncludeDialogBase.ui:371
 #: src/frontends/qt2/ui/QLogDialogBase.ui:107
 #: src/frontends/qt2/ui/QMathDialogBase.ui:733
-#: src/frontends/qt2/ui/QNoteDialogBase.ui:60
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:402
-#: src/frontends/qt2/ui/QPreambleDialogBase.ui:149
 #: src/frontends/qt2/ui/QPrefsDialogBase.ui:140
 #: src/frontends/qt2/ui/QRefDialogBase.ui:329
 #: src/frontends/qt2/ui/QSearchDialogBase.ui:306
@@ -3024,11 +3017,38 @@ msgstr ""
 msgid "&Dummy"
 msgstr "Сводка"
 
+#: src/frontends/qt2/ui/QAskForTextDialog.ui:124
+#: src/frontends/qt2/ui/QBibitemDialogBase.ui:189
+#: src/frontends/qt2/ui/QBibtexDialogBase.ui:107
+#: src/frontends/qt2/ui/QBoxDialogBase.ui:287
+#: src/frontends/qt2/ui/QBranchDialogBase.ui:45
+#: src/frontends/qt2/ui/QCharacterDialogBase.ui:510
+#: src/frontends/qt2/ui/QCitationDialogBase.ui:293
+#: src/frontends/qt2/ui/QDocumentDialogBase.ui:188
+#: src/frontends/qt2/ui/QERTDialogBase.ui:147
+#: src/frontends/qt2/ui/QExternalDialogBase.ui:1158
+#: src/frontends/qt2/ui/QFloatDialogBase.ui:103
+#: src/frontends/qt2/ui/QGraphicsDialogBase.ui:107
+#: src/frontends/qt2/ui/QIncludeDialogBase.ui:356
+#: src/frontends/qt2/ui/QIndexDialogBase.ui:128
+#: src/frontends/qt2/ui/QMathMatrixDialogBase.ui:250
+#: src/frontends/qt2/ui/QNoteDialogBase.ui:45
+#: src/frontends/qt2/ui/QParagraphDialogBase.ui:368
+#: src/frontends/qt2/ui/QRefDialogBase.ui:299
+#: src/frontends/qt2/ui/QSendtoDialogBase.ui:90
+#: src/frontends/qt2/ui/QTabularCreateDialogBase.ui:312
+#: src/frontends/qt2/ui/QURLDialogBase.ui:156
+#: src/frontends/qt2/ui/QVSpaceDialogBase.ui:214
+#: src/frontends/qt2/ui/QWrapDialogBase.ui:280
+#, fuzzy
+msgid "&OK"
+msgstr "ОК"
+
 #: src/frontends/qt2/ui/QAskForTextDialog.ui:139
-#: src/frontends/qt2/ui/QDocumentDialogBase.ui:214 src/buffer_funcs.C:91
-#: src/buffer_funcs.C:117 src/buffer_funcs.C:158 src/bufferlist.C:84
-#: src/bufferlist.C:183 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:618
-#: src/lyxfunc.C:780 src/lyxfunc.C:1788 src/lyxvc.C:168
+#: src/frontends/qt2/ui/QDocumentDialogBase.ui:214 src/buffer_funcs.C:90
+#: src/buffer_funcs.C:116 src/buffer_funcs.C:157 src/bufferlist.C:84
+#: src/bufferlist.C:183 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:619
+#: src/lyxfunc.C:781 src/lyxfunc.C:1791 src/lyxvc.C:168
 msgid "&Cancel"
 msgstr "Отмена"
 
@@ -3054,26 +3074,6 @@ msgstr "Labeling"
 #, fuzzy
 msgid "The label as it appears in the document"
 msgstr "Название формата, как оно будет показываться в меню."
-
-#: src/frontends/qt2/ui/QBibitemDialogBase.ui:189
-#: src/frontends/qt2/ui/QBoxDialogBase.ui:287
-#: src/frontends/qt2/ui/QCharacterDialogBase.ui:510
-#: src/frontends/qt2/ui/QCitationDialogBase.ui:293
-#: src/frontends/qt2/ui/QDocumentDialogBase.ui:188
-#: src/frontends/qt2/ui/QExternalDialogBase.ui:1158
-#: src/frontends/qt2/ui/QFloatDialogBase.ui:103
-#: src/frontends/qt2/ui/QIncludeDialogBase.ui:356
-#: src/frontends/qt2/ui/QMathMatrixDialogBase.ui:250
-#: src/frontends/qt2/ui/QParagraphDialogBase.ui:368
-#: src/frontends/qt2/ui/QPreambleDialogBase.ui:111
-#: src/frontends/qt2/ui/QRefDialogBase.ui:299
-#: src/frontends/qt2/ui/QTabularCreateDialogBase.ui:312
-#: src/frontends/qt2/ui/QURLDialogBase.ui:156
-#: src/frontends/qt2/ui/QVSpaceDialogBase.ui:214
-#: src/frontends/qt2/ui/QWrapDialogBase.ui:280
-#, fuzzy
-msgid "&OK"
-msgstr "ОК"
 
 #: src/frontends/qt2/ui/QBibtexAddDialogBase.ui:29
 #, fuzzy
@@ -3120,9 +3120,13 @@ msgstr "Выберите базу данных BiBTeX для добавления"
 #: src/frontends/qt2/ui/QIndexDialogBase.ui:143
 #: src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/BufferView_pimpl.C:285
 #: src/frontends/gtk/GBC.h:27 src/frontends/qt2/Qt2BC.h:36
-#: src/frontends/xforms/xformsBC.h:29 src/lyxfunc.C:731
+#: src/frontends/xforms/xformsBC.h:29 src/lyxfunc.C:732
 msgid "Cancel"
 msgstr "Отмена"
+
+#: src/frontends/qt2/ui/QBibtexDialogBase.ui:22
+msgid "QBibtexDialogBase"
+msgstr ""
 
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:52
 #, fuzzy
@@ -3201,7 +3205,7 @@ msgstr "Просмотреть Содержание"
 
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:341
 #, fuzzy
-msgid "C&ontent:"
+msgid "&Content:"
 msgstr "Содержит"
 
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:360
@@ -3261,7 +3265,6 @@ msgstr "Восстановить"
 #: src/frontends/qt2/ui/QFloatDialogBase.ui:118
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:133
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:387
-#: src/frontends/qt2/ui/QPreambleDialogBase.ui:130
 #: src/frontends/qt2/ui/QPrefsDialogBase.ui:125
 #: src/frontends/qt2/ui/QRefDialogBase.ui:314
 #: src/frontends/qt2/ui/QSendtoDialogBase.ui:109
@@ -3391,6 +3394,10 @@ msgstr "Внутри:"
 msgid "T&ype:"
 msgstr "Тип:"
 
+#: src/frontends/qt2/ui/QBranchDialogBase.ui:22
+msgid "QBranchDialogBase"
+msgstr ""
+
 #: src/frontends/qt2/ui/QBranchDialogBase.ui:90
 #, fuzzy
 msgid "&Available branches:"
@@ -3438,6 +3445,11 @@ msgstr "Без изменений"
 msgid "Go to next change"
 msgstr "Перейти к следующей ошибке"
 
+#: src/frontends/qt2/ui/QCharacterDialogBase.ui:22
+#, fuzzy
+msgid "QCharacterDialogBase"
+msgstr "Набор символов"
+
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:81
 #, fuzzy
 msgid "&Family:"
@@ -3468,7 +3480,7 @@ msgstr "Используемые шрифты"
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:162
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:217
 #: src/frontends/qt2/QDocumentDialog.C:80 src/frontends/qt2/QPrefsDialog.C:104
-#: src/frontends/xforms/FormDocument.C:427
+#: src/frontends/xforms/FormDocument.C:421
 #: src/frontends/xforms/FormPreferences.C:273
 msgid "Language"
 msgstr "Язык"
@@ -3540,6 +3552,18 @@ msgstr ""
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:440
 msgid "Apply each change automatically"
 msgstr ""
+
+#: src/frontends/qt2/ui/QCharacterDialogBase.ui:540
+#: src/frontends/qt2/ui/QERTDialogBase.ui:162
+#: src/frontends/qt2/ui/QGraphicsDialogBase.ui:159
+#: src/frontends/qt2/ui/QMathMatrixDialogBase.ui:261
+#: src/frontends/qt2/ui/QNoteDialogBase.ui:60
+#: src/frontends/qt2/ui/QPrintDialogBase.ui:366
+#: src/frontends/qt2/ui/QTabularCreateDialogBase.ui:323
+#: src/frontends/qt2/ui/QTabularDialogBase.ui:1252 src/frontends/gtk/GBC.h:28
+#: src/frontends/qt2/Qt2BC.h:36 src/frontends/xforms/xformsBC.h:29
+msgid "Close"
+msgstr "Закрыть"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:71
 #: src/frontends/qt2/ui/QCitationFindDialogBase.ui:117
@@ -3731,6 +3755,11 @@ msgstr ""
 msgid "Save settings as LyX's default document settings"
 msgstr ""
 
+#: src/frontends/qt2/ui/QERTDialogBase.ui:22
+#, fuzzy
+msgid "QERTDialogBase"
+msgstr "Диалог"
+
 #: src/frontends/qt2/ui/QERTDialogBase.ui:45
 #, fuzzy
 msgid "Display"
@@ -3757,7 +3786,7 @@ msgstr ""
 
 #: src/frontends/qt2/ui/QERTDialogBase.ui:94
 #, fuzzy
-msgid "&Open"
+msgid "O&pen"
 msgstr "Раскрытое"
 
 #: src/frontends/qt2/ui/QERTDialogBase.ui:98
@@ -3803,10 +3832,10 @@ msgid "&File:"
 msgstr "Файл"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:204
-#: src/frontends/qt2/ui/QExternalDialogBase.ui:997
-#: src/frontends/qt2/ui/QGraphicsDialogBase.ui:837
-msgid "Get bounding box from the (EPS) file"
-msgstr ""
+#: src/frontends/qt2/ui/QIncludeDialogBase.ui:94
+#, fuzzy
+msgid "Select a file"
+msgstr "Выделить внешний файл"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:236
 #, fuzzy
@@ -3848,8 +3877,7 @@ msgstr "Показывать на экране"
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:244
 #: src/frontends/controllers/ControlExternal.C:226
 #: src/frontends/controllers/ControlGraphics.C:169
-#: src/frontends/gtk/GDocument.C:174 src/frontends/gtk/GDocument.C:652
-#: src/frontends/qt2/QDocument.C:111 src/frontends/qt2/QDocumentDialog.C:273
+#: src/frontends/gtk/GDocument.C:174 src/frontends/qt2/QDocument.C:111
 #: src/lyxfont.C:516
 msgid "Default"
 msgstr "По умолчанию"
@@ -3898,7 +3926,6 @@ msgid "Angle to rotate image by"
 msgstr ""
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:558
-#: src/frontends/qt2/ui/QGraphicsDialogBase.ui:282
 #, fuzzy
 msgid "&Origin:"
 msgstr ""
@@ -3980,6 +4007,11 @@ msgstr "Обрезать по ограничивающей рамке"
 msgid "&Get from File"
 msgstr "Получить значения из файла"
 
+#: src/frontends/qt2/ui/QExternalDialogBase.ui:997
+#: src/frontends/qt2/ui/QGraphicsDialogBase.ui:837
+msgid "Get bounding box from the (EPS) file"
+msgstr ""
+
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:1012
 #: src/frontends/xforms/FormExternal.C:463
 #, fuzzy
@@ -3996,19 +4028,21 @@ msgstr "Форматы"
 msgid "O&ption:"
 msgstr "Подпись"
 
-#: src/frontends/qt2/ui/QGraphicsDialogBase.ui:159
-#: src/frontends/qt2/ui/QMathMatrixDialogBase.ui:261
-#: src/frontends/qt2/ui/QPrintDialogBase.ui:366
-#: src/frontends/qt2/ui/QTabularCreateDialogBase.ui:323
-#: src/frontends/qt2/ui/QTabularDialogBase.ui:1252 src/frontends/gtk/GBC.h:28
-#: src/frontends/qt2/Qt2BC.h:36 src/frontends/xforms/xformsBC.h:29
-msgid "Close"
-msgstr "Закрыть"
+#: src/frontends/qt2/ui/QGraphicsDialogBase.ui:29
+msgid "QGraphicsDialogBase"
+msgstr ""
 
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:186
 #, fuzzy
 msgid "&Graphics"
 msgstr "Графика"
+
+#: src/frontends/qt2/ui/QGraphicsDialogBase.ui:282
+#, fuzzy
+msgid "Or&igin:"
+msgstr ""
+"Центр\n"
+"вращения"
 
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:314
 #, fuzzy
@@ -4109,11 +4143,6 @@ msgstr ""
 msgid "File name to include"
 msgstr "Выберите документ для вставки"
 
-#: src/frontends/qt2/ui/QIncludeDialogBase.ui:94
-#, fuzzy
-msgid "Select a file"
-msgstr "Выделить внешний файл"
-
 #: src/frontends/qt2/ui/QIncludeDialogBase.ui:122
 #, fuzzy
 msgid "&Include Type:"
@@ -4163,6 +4192,10 @@ msgstr "Показать файл"
 #, fuzzy
 msgid "Show LaTeX preview"
 msgstr "Преамбула LaTeX"
+
+#: src/frontends/qt2/ui/QIndexDialogBase.ui:22
+msgid "QIndexDialogBase"
+msgstr ""
 
 #: src/frontends/qt2/ui/QLogDialogBase.ui:88
 #: src/frontends/qt2/ui/QRefDialogBase.ui:67
@@ -4368,6 +4401,11 @@ msgstr ""
 "Гориз.\n"
 "выравнивание"
 
+#: src/frontends/qt2/ui/QNoteDialogBase.ui:22
+#, fuzzy
+msgid "QNoteDialogBase"
+msgstr "Диалог"
+
 #: src/frontends/qt2/ui/QNoteDialogBase.ui:94
 #, fuzzy
 msgid "LyX &Note"
@@ -4380,7 +4418,7 @@ msgstr ""
 
 #: src/frontends/qt2/ui/QNoteDialogBase.ui:109
 #, fuzzy
-msgid "C&omment"
+msgid "&Comment"
 msgstr "Комментарий"
 
 #: src/frontends/qt2/ui/QNoteDialogBase.ui:113
@@ -4397,8 +4435,13 @@ msgstr ""
 msgid "Print as grey text"
 msgstr ""
 
+#: src/frontends/qt2/ui/QParagraphDialogBase.ui:22
+#, fuzzy
+msgid "QParagraphDialogBase"
+msgstr "Установлено размещение абзаца"
+
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:48
-#: src/frontends/qt2/QDocument.C:162 src/text.C:2202
+#: src/frontends/qt2/QDocument.C:162 src/text.C:2207
 msgid "Single"
 msgstr ""
 "Оди-\n"
@@ -4411,8 +4454,7 @@ msgstr ""
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:66
 #: src/frontends/qt2/ui/QVSpaceDialogBase.ui:151
 #: src/frontends/gtk/GDocument.C:148 src/frontends/gtk/GDocument.C:175
-#: src/frontends/gtk/GDocument.C:653 src/frontends/qt2/QDocument.C:112
-#: src/frontends/qt2/QDocument.C:168 src/frontends/qt2/QDocumentDialog.C:274
+#: src/frontends/qt2/QDocument.C:112 src/frontends/qt2/QDocument.C:168
 msgid "Custom"
 msgstr "Пользовательский"
 
@@ -4447,24 +4489,10 @@ msgstr ""
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:275
 #, fuzzy
-msgid "Lo&ngest label"
+msgid "&Longest label"
 msgstr ""
 "Самая длинная\n"
 "метка:"
-
-#: src/frontends/qt2/ui/QPreambleDialogBase.ui:45
-#, fuzzy
-msgid "The LaTeX preamble"
-msgstr "Преамбула LaTeX"
-
-#: src/frontends/qt2/ui/QPreambleDialogBase.ui:71
-msgid "&Edit..."
-msgstr ""
-
-#: src/frontends/qt2/ui/QPreambleDialogBase.ui:79
-#, fuzzy
-msgid "Edit the preamble in an external editor"
-msgstr "Редактировать внешний объект"
 
 #: src/frontends/qt2/ui/QPrefAsciiModule.ui:56
 #, fuzzy
@@ -4496,6 +4524,11 @@ msgstr "Цвета"
 msgid "&Alter..."
 msgstr "другие ..."
 
+#: src/frontends/qt2/ui/QPrefConvertersModule.ui:22
+#, fuzzy
+msgid "QPrefConvertersModule"
+msgstr "Преобразователи"
+
 #: src/frontends/qt2/ui/QPrefConvertersModule.ui:85
 #, fuzzy
 msgid "C&onverter:"
@@ -4507,7 +4540,7 @@ msgstr ""
 
 #: src/frontends/qt2/ui/QPrefConvertersModule.ui:136
 #, fuzzy
-msgid "F&rom:"
+msgid "&From:"
 msgstr "Из"
 
 #: src/frontends/qt2/ui/QPrefConvertersModule.ui:158
@@ -4683,6 +4716,10 @@ msgstr "Обзор..."
 msgid "Use &keyboard map"
 msgstr "Клавиатурная раскладка"
 
+#: src/frontends/qt2/ui/QPrefLanguageModule.ui:22
+msgid "QPrefLanguageModule"
+msgstr ""
+
 #: src/frontends/qt2/ui/QPrefLanguageModule.ui:41
 #, fuzzy
 msgid "Command s&tart:"
@@ -4716,7 +4753,7 @@ msgstr ""
 
 #: src/frontends/qt2/ui/QPrefLanguageModule.ui:140
 #, fuzzy
-msgid "Use &babel"
+msgid "Use b&abel"
 msgstr ""
 "Использовать\n"
 "babel"
@@ -5071,6 +5108,10 @@ msgstr ""
 msgid "Use input encod&ing"
 msgstr "Входная кодировка"
 
+#: src/frontends/qt2/ui/QPrefUIModule.ui:29
+msgid "QPrefUIModule"
+msgstr ""
+
 #: src/frontends/qt2/ui/QPrefUIModule.ui:63
 #, fuzzy
 msgid "B&rowse..."
@@ -5122,11 +5163,11 @@ msgstr "Коэффициент для колёсика мыши"
 
 #: src/frontends/qt2/ui/QPrefUIModule.ui:377
 #, fuzzy
-msgid "Cursor follo&ws scrollbar"
+msgid "Cursor follows &scrollbar"
 msgstr "Курсор следует за полосой прокрутки"
 
 #: src/frontends/qt2/ui/QPrefsDialogBase.ui:110 src/bufferlist.C:84
-#: src/bufferlist.C:183 src/lyxfunc.C:617
+#: src/bufferlist.C:183 src/lyxfunc.C:618
 #, fuzzy
 msgid "&Save"
 msgstr "Сохранить"
@@ -5217,12 +5258,17 @@ msgstr ""
 msgid "Send output to a file"
 msgstr ""
 
+#: src/frontends/qt2/ui/QRefDialogBase.ui:22
+#, fuzzy
+msgid "QRefDialogBase"
+msgstr "Диалог"
+
 #: src/frontends/qt2/ui/QRefDialogBase.ui:71
 #, fuzzy
 msgid "Update the label list"
 msgstr "Редактировать параметры"
 
-#: src/frontends/qt2/ui/QRefDialogBase.ui:89 src/frontends/qt2/QRef.C:143
+#: src/frontends/qt2/ui/QRefDialogBase.ui:89 src/frontends/qt2/QRef.C:145
 #, fuzzy
 msgid "&Go to Label"
 msgstr "Labeling"
@@ -5281,7 +5327,7 @@ msgstr "Невозможно открыть шаблон"
 
 #: src/frontends/qt2/ui/QRefDialogBase.ui:364
 #, fuzzy
-msgid "L&abels in:"
+msgid "La&bels in:"
 msgstr "Labeling"
 
 #: src/frontends/qt2/ui/QSearchDialogBase.ui:108
@@ -5313,6 +5359,10 @@ msgstr "Заменить всё"
 
 #: src/frontends/qt2/ui/QSearchDialogBase.ui:295
 msgid "Search &backwards"
+msgstr ""
+
+#: src/frontends/qt2/ui/QSendtoDialogBase.ui:22
+msgid "QSendtoDialogBase"
 msgstr ""
 
 #: src/frontends/qt2/ui/QSendtoDialogBase.ui:45
@@ -6307,7 +6357,7 @@ msgstr "Библиография"
 #: lib/layouts/aastex.layout:114 lib/layouts/aastex.layout:410
 #: lib/layouts/ijmpd.layout:162 lib/layouts/ijmpd.layout:170
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
-#: src/rowpainter.C:443
+#: src/rowpainter.C:415
 msgid "Appendix"
 msgstr "Приложение"
 
@@ -10923,16 +10973,16 @@ msgid "Redo|R"
 msgstr "Повторить отменённое действие"
 
 #: lib/ui/stdmenus.ui:84 lib/ui/stdtoolbars.ui:51
-#: src/mathed/math_nestinset.C:427 src/text3.C:821
+#: src/mathed/math_nestinset.C:428 src/text3.C:821
 msgid "Cut"
 msgstr "Вырезать"
 
 #: lib/ui/stdmenus.ui:85 lib/ui/stdtoolbars.ui:52
-#: src/mathed/math_nestinset.C:432 src/text3.C:826
+#: src/mathed/math_nestinset.C:433 src/text3.C:826
 msgid "Copy"
 msgstr "Скопировать"
 
-#: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:623
+#: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:620
 #: src/mathed/math_nestinset.C:413 src/text3.C:805
 msgid "Paste"
 msgstr "Вставить"
@@ -11261,11 +11311,11 @@ msgstr "Сохранить документ?"
 msgid "Print document"
 msgstr "Импортировать документ"
 
-#: lib/ui/stdtoolbars.ui:49 src/BufferView_pimpl.C:1063
+#: lib/ui/stdtoolbars.ui:49 src/BufferView_pimpl.C:1076
 msgid "Undo"
 msgstr "Отменить последнее действие"
 
-#: lib/ui/stdtoolbars.ui:50 src/BufferView_pimpl.C:1074
+#: lib/ui/stdtoolbars.ui:50 src/BufferView_pimpl.C:1087
 msgid "Redo"
 msgstr "Повторить отменённое действие"
 
@@ -11576,12 +11626,12 @@ msgid ""
 "Do you want to revert to the saved version?"
 msgstr "Документ использует неизвестный класс текста \""
 
-#: src/BufferView_pimpl.C:258 src/lyxfunc.C:779
+#: src/BufferView_pimpl.C:258 src/lyxfunc.C:780
 #, fuzzy
 msgid "Revert to saved document?"
 msgstr "Вернуться к сохранённому"
 
-#: src/BufferView_pimpl.C:259 src/lyxfunc.C:780 src/lyxvc.C:168
+#: src/BufferView_pimpl.C:259 src/lyxfunc.C:781 src/lyxvc.C:168
 #, fuzzy
 msgid "&Revert"
 msgstr "Зарегистрировать"
@@ -11618,104 +11668,104 @@ msgstr "Вставить"
 msgid "Formatting document..."
 msgstr "Форматирование документа..."
 
-#: src/BufferView_pimpl.C:716
+#: src/BufferView_pimpl.C:729
 #, fuzzy, c-format
 msgid "Saved bookmark %1$d"
 msgstr "Сохранённая закладка"
 
-#: src/BufferView_pimpl.C:749
+#: src/BufferView_pimpl.C:762
 #, fuzzy, c-format
 msgid "Moved to bookmark %1$d"
 msgstr "Перемещены к закладке"
 
-#: src/BufferView_pimpl.C:808
+#: src/BufferView_pimpl.C:821
 msgid "Select LyX document to insert"
 msgstr "Выберите документ LyX для вставки"
 
-#: src/BufferView_pimpl.C:810 src/frontends/controllers/ControlBibtex.C:48
+#: src/BufferView_pimpl.C:823 src/frontends/controllers/ControlBibtex.C:48
 #: src/frontends/controllers/ControlBibtex.C:59
 #: src/frontends/controllers/ControlExternal.C:160
 #: src/frontends/controllers/ControlGraphics.C:94
 #: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:133
-#: src/lyxfunc.C:1629 src/lyxfunc.C:1666 src/lyxfunc.C:1741
+#: src/lyxfunc.C:1632 src/lyxfunc.C:1669 src/lyxfunc.C:1744
 msgid "Documents|#o#O"
 msgstr "Документы"
 
-#: src/BufferView_pimpl.C:812 src/lyxfunc.C:1668 src/lyxfunc.C:1743
+#: src/BufferView_pimpl.C:825 src/lyxfunc.C:1671 src/lyxfunc.C:1746
 msgid "Examples|#E#e"
 msgstr "Примеры"
 
-#: src/BufferView_pimpl.C:817 src/lyx_cb.C:141 src/lyxfunc.C:1636
-#: src/lyxfunc.C:1673
+#: src/BufferView_pimpl.C:830 src/lyx_cb.C:141 src/lyxfunc.C:1639
+#: src/lyxfunc.C:1676
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "*.lyx|Документ LyX (*.lyx)"
 
-#: src/BufferView_pimpl.C:827 src/lyxfunc.C:1683 src/lyxfunc.C:1761
-#: src/lyxfunc.C:1775 src/lyxfunc.C:1791
+#: src/BufferView_pimpl.C:840 src/lyxfunc.C:1686 src/lyxfunc.C:1764
+#: src/lyxfunc.C:1778 src/lyxfunc.C:1794
 msgid "Canceled."
 msgstr "Отменено."
 
-#: src/BufferView_pimpl.C:837
+#: src/BufferView_pimpl.C:850
 #, fuzzy, c-format
 msgid "Inserting document %1$s..."
 msgstr "Документ вставляется"
 
-#: src/BufferView_pimpl.C:848
+#: src/BufferView_pimpl.C:861
 #, fuzzy, c-format
 msgid "Document %1$s inserted."
 msgstr "Документ экспортирован как '"
 
-#: src/BufferView_pimpl.C:849
+#: src/BufferView_pimpl.C:862
 #, fuzzy, c-format
 msgid "Could not insert document %1$s"
 msgstr "Ошибка вставки документа"
 
-#: src/BufferView_pimpl.C:1066
+#: src/BufferView_pimpl.C:1079
 msgid "No further undo information"
 msgstr "Больше нет информации для отмены действия"
 
-#: src/BufferView_pimpl.C:1077
+#: src/BufferView_pimpl.C:1090
 msgid "No further redo information"
 msgstr "Нет дальнейшей информации для повторения отменённого действия"
 
-#: src/BufferView_pimpl.C:1206
+#: src/BufferView_pimpl.C:1219
 msgid "Mark off"
 msgstr "Метка выключена"
 
-#: src/BufferView_pimpl.C:1213
+#: src/BufferView_pimpl.C:1226
 msgid "Mark on"
 msgstr "Метка включена"
 
-#: src/BufferView_pimpl.C:1220
+#: src/BufferView_pimpl.C:1233
 msgid "Mark removed"
 msgstr "Метка удалена"
 
-#: src/BufferView_pimpl.C:1223
+#: src/BufferView_pimpl.C:1236
 msgid "Mark set"
 msgstr "Метка установлена"
 
-#: src/BufferView_pimpl.C:1265
+#: src/BufferView_pimpl.C:1278
 #, fuzzy, c-format
 msgid "%1$d words in selection."
 msgstr "Обнаружена одна ошибка"
 
-#: src/BufferView_pimpl.C:1268
+#: src/BufferView_pimpl.C:1281
 #, fuzzy, c-format
 msgid "%1$d words in document."
 msgstr "Ошибка открытия документа"
 
-#: src/BufferView_pimpl.C:1273
+#: src/BufferView_pimpl.C:1286
 #, fuzzy
 msgid "One word in selection."
 msgstr "Обнаружена одна ошибка"
 
-#: src/BufferView_pimpl.C:1275
+#: src/BufferView_pimpl.C:1288
 #, fuzzy
 msgid "One word in document."
 msgstr "Открываю подчинённый документ "
 
-#: src/BufferView_pimpl.C:1278
+#: src/BufferView_pimpl.C:1291
 #, fuzzy
 msgid "Count words"
 msgstr "Ключевые слова"
@@ -11730,7 +11780,7 @@ msgstr "Предупреждение ChkTeX #"
 msgid "ChkTeX warning id # "
 msgstr "Предупреждение ChkTeX #"
 
-#: src/CutAndPaste.C:402
+#: src/CutAndPaste.C:399
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -11739,19 +11789,19 @@ msgid ""
 "%3$s to %4$s"
 msgstr ""
 
-#: src/CutAndPaste.C:406
+#: src/CutAndPaste.C:403
 #, fuzzy
 msgid "Changed Layout"
 msgstr "Формат абзаца"
 
-#: src/CutAndPaste.C:425
+#: src/CutAndPaste.C:422
 #, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
 "%2$s to %3$s"
 msgstr ""
 
-#: src/CutAndPaste.C:431
+#: src/CutAndPaste.C:428
 #, fuzzy
 msgid "Undefined character style"
 msgstr "Набор символов"
@@ -12005,7 +12055,7 @@ msgid "Running BibTeX."
 msgstr "Выполняю BibTeX."
 
 #: src/MenuBackend.C:452 src/MenuBackend.C:473 src/MenuBackend.C:535
-#: src/MenuBackend.C:559 src/MenuBackend.C:584 src/MenuBackend.C:671
+#: src/MenuBackend.C:559 src/MenuBackend.C:584 src/MenuBackend.C:673
 msgid "No Documents Open!"
 msgstr "Нет открытых документов!"
 
@@ -12019,7 +12069,7 @@ msgstr "Простого текста отдельными строками"
 msgid "Plain Text as Paragraphs"
 msgstr "Простого текста целыми абзацами"
 
-#: src/MenuBackend.C:706
+#: src/MenuBackend.C:708
 #, fuzzy
 msgid "No Table of contents"
 msgstr "Нет содержания%i"
@@ -12145,7 +12195,7 @@ msgstr ""
 msgid "Could not run chktex successfully."
 msgstr "Chktex закончил работу успешно"
 
-#: src/buffer_funcs.C:72
+#: src/buffer_funcs.C:71
 #, fuzzy, c-format
 msgid ""
 "The specified document\n"
@@ -12153,12 +12203,12 @@ msgid ""
 "could not be read."
 msgstr "Документ не может быть сохранён!"
 
-#: src/buffer_funcs.C:74
+#: src/buffer_funcs.C:73
 #, fuzzy
 msgid "Could not read document"
 msgstr "Ошибка открытия документа"
 
-#: src/buffer_funcs.C:86
+#: src/buffer_funcs.C:85
 #, fuzzy, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -12166,23 +12216,23 @@ msgid ""
 "Recover emergency save?"
 msgstr "Обнаружена аварийная копия этого файла!"
 
-#: src/buffer_funcs.C:89
+#: src/buffer_funcs.C:88
 msgid "Load emergency save?"
 msgstr ""
 
-#: src/buffer_funcs.C:90
+#: src/buffer_funcs.C:89
 #, fuzzy
 msgid "&Recover"
 msgstr "обратный порядок"
 
-#: src/buffer_funcs.C:90
+#: src/buffer_funcs.C:89
 #, fuzzy
 msgid "&Load Original"
 msgstr ""
 "Центр\n"
 "вращения"
 
-#: src/buffer_funcs.C:112
+#: src/buffer_funcs.C:111
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -12190,39 +12240,39 @@ msgid ""
 "Load the backup instead?"
 msgstr ""
 
-#: src/buffer_funcs.C:115
+#: src/buffer_funcs.C:114
 #, fuzzy
 msgid "Load backup?"
 msgstr "Вернуться обратно"
 
-#: src/buffer_funcs.C:116
+#: src/buffer_funcs.C:115
 #, fuzzy
 msgid "&Load backup"
 msgstr "Назад"
 
-#: src/buffer_funcs.C:116
+#: src/buffer_funcs.C:115
 #, fuzzy
 msgid "Load &original"
 msgstr ""
 "Центр\n"
 "вращения"
 
-#: src/buffer_funcs.C:155
+#: src/buffer_funcs.C:154
 #, fuzzy, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "Вы хотите открыть документ с контролем версий?"
 
-#: src/buffer_funcs.C:157
+#: src/buffer_funcs.C:156
 #, fuzzy
 msgid "Retrieve from version control?"
 msgstr "Вы хотите открыть документ с контролем версий?"
 
-#: src/buffer_funcs.C:158
+#: src/buffer_funcs.C:157
 #, fuzzy
 msgid "&Retrieve"
 msgstr "Восстановить"
 
-#: src/buffer_funcs.C:190
+#: src/buffer_funcs.C:189
 #, fuzzy, c-format
 msgid ""
 "The specified document template\n"
@@ -12230,12 +12280,12 @@ msgid ""
 "could not be read."
 msgstr "Документ не может быть сохранён!"
 
-#: src/buffer_funcs.C:191
+#: src/buffer_funcs.C:190
 #, fuzzy
 msgid "Could not read template"
 msgstr "Ошибка запуска с файлом: "
 
-#: src/buffer_funcs.C:471
+#: src/buffer_funcs.C:468
 #, c-format
 msgid "%1$s #:"
 msgstr ""
@@ -12248,7 +12298,7 @@ msgid ""
 "Do you want to save the document or discard the changes?"
 msgstr "Документ использует неизвестный класс текста \""
 
-#: src/bufferlist.C:83 src/bufferlist.C:182 src/lyxfunc.C:616
+#: src/bufferlist.C:83 src/bufferlist.C:182 src/lyxfunc.C:617
 #, fuzzy
 msgid "Save changed document?"
 msgstr "Сохранить документ?"
@@ -12490,7 +12540,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Машинописный"
 
-#: src/exporter.C:77 src/lyx_cb.C:168 src/lyxfunc.C:1788
+#: src/exporter.C:77 src/lyx_cb.C:168 src/lyxfunc.C:1791
 #, fuzzy
 msgid "&Over-write"
 msgstr "Машинописный"
@@ -12859,13 +12909,19 @@ msgid "PostScript files (*.ps)"
 msgstr "Файлы PostScript (*.ps)"
 
 #: src/frontends/controllers/ControlSpellchecker.C:111
+#: src/frontends/controllers/ControlSpellchecker.C:273
+#, fuzzy
+msgid "Spell-checker error"
+msgstr "Проверка правописания"
+
+#: src/frontends/controllers/ControlSpellchecker.C:112
 #, fuzzy
 msgid "The spell-checker could not be started"
 msgstr ""
 "Процесс ispell почему-то умер.\n"
 "Возможно, кто-то его убил."
 
-#: src/frontends/controllers/ControlSpellchecker.C:262
+#: src/frontends/controllers/ControlSpellchecker.C:265
 #, fuzzy
 msgid ""
 "The spell-checker has died for some reason.\n"
@@ -12874,27 +12930,33 @@ msgstr ""
 "Процесс ispell почему-то умер.\n"
 "Возможно, кто-то его убил."
 
-#: src/frontends/controllers/ControlSpellchecker.C:267
+#: src/frontends/controllers/ControlSpellchecker.C:268
 #, fuzzy
-msgid "The spell-checker has failed"
+msgid "The spell-checker has failed."
 msgstr ""
 "Процесс ispell почему-то умер.\n"
 "Возможно, кто-то его убил."
 
-#: src/frontends/controllers/ControlSpellchecker.C:281
+#: src/frontends/controllers/ControlSpellchecker.C:287
 #, fuzzy, c-format
 msgid "%1$d words checked."
 msgstr "Обнаружена одна ошибка"
 
-#: src/frontends/controllers/ControlSpellchecker.C:283
+#: src/frontends/controllers/ControlSpellchecker.C:289
 #, fuzzy
 msgid "One word checked."
 msgstr "Обнаружена одна ошибка"
 
-#: src/frontends/controllers/ControlSpellchecker.C:286
+#: src/frontends/controllers/ControlSpellchecker.C:292
 #, fuzzy
 msgid "Spell-checking is complete"
 msgstr "Проверка правописания окончена"
+
+#: src/frontends/controllers/ControlToc.C:46 src/frontends/gtk/GToc.C:33
+#: src/frontends/qt2/QToc.C:41 src/frontends/xforms/FormToc.C:36
+#: src/insets/insettoc.C:42
+msgid "Table of Contents"
+msgstr "Содержание"
 
 #: src/frontends/controllers/biblio.C:222
 #, c-format
@@ -13033,8 +13095,8 @@ msgstr "Пользователя"
 msgid "Index Entry"
 msgstr "Слово в предметный указатель..."
 
-#: src/frontends/gtk/Dialogs.C:273 src/frontends/qt2/Dialogs.C:238
-#: src/frontends/xforms/Dialogs.C:251
+#: src/frontends/gtk/Dialogs.C:273 src/frontends/gtk/GRef.C:89
+#: src/frontends/qt2/Dialogs.C:238 src/frontends/xforms/Dialogs.C:251
 #, fuzzy
 msgid "Label"
 msgstr "Labeling"
@@ -13163,21 +13225,6 @@ msgstr "B3"
 msgid "B4"
 msgstr "B4"
 
-#: src/frontends/gtk/GDocument.C:662 src/frontends/qt2/QDocumentDialog.C:278
-#, fuzzy
-msgid "Small margins"
-msgstr "Поля"
-
-#: src/frontends/gtk/GDocument.C:663 src/frontends/qt2/QDocumentDialog.C:279
-#, fuzzy
-msgid "Very small margins"
-msgstr "A4 очень маленькие поля"
-
-#: src/frontends/gtk/GDocument.C:664 src/frontends/qt2/QDocumentDialog.C:280
-#, fuzzy
-msgid "Very wide margins"
-msgstr "A4 очень маленькие поля"
-
 #: src/frontends/gtk/GERT.C:33
 #, fuzzy
 msgid "TeX Settings"
@@ -13250,12 +13297,23 @@ msgid "Paragraph Settings"
 msgstr "Элемент библиографии"
 
 #: src/frontends/gtk/GParagraph.C:99 src/frontends/qt2/QParagraph.C:120
-#: src/frontends/xforms/FormParagraph.C:188 src/paragraph.C:626
+#: src/frontends/xforms/FormParagraph.C:188 src/paragraph.C:612
 msgid "Senseless with this layout!"
 msgstr "Бессмысленно в этом формате!"
 
+#: src/frontends/gtk/GRef.C:65 src/frontends/qt2/QRef.C:42
+#: src/frontends/xforms/FormRef.C:42
+#, fuzzy
+msgid "Cross-reference"
+msgstr "Перекрёстную ссылку..."
+
+#: src/frontends/gtk/GRef.C:229
+#, fuzzy
+msgid "No labels found."
+msgstr "Файл не найден!"
+
 #: src/frontends/gtk/GSearch.C:36 src/frontends/qt2/QSearch.C:31
-#: src/frontends/xforms/FormSearch.C:31
+#: src/frontends/xforms/FormSearch.C:30
 #, fuzzy
 msgid "Find and Replace"
 msgstr "Найти и заменить"
@@ -13291,17 +13349,12 @@ msgstr "Вставить таблицу"
 msgid "TeX Information"
 msgstr "Информация о LaTeX"
 
-#: src/frontends/gtk/GToc.C:33 src/frontends/qt2/QToc.C:41
-#: src/frontends/xforms/FormToc.C:36 src/insets/insettoc.C:42
-msgid "Table of Contents"
-msgstr "Содержание"
-
-#: src/frontends/gtk/GToc.C:116 src/frontends/xforms/FormErrorList.C:83
-#: src/frontends/xforms/FormToc.C:103 src/frontends/xforms/FormToc.C:121
+#: src/frontends/gtk/GToc.C:122 src/frontends/xforms/FormErrorList.C:83
+#: src/frontends/xforms/FormToc.C:107 src/frontends/xforms/FormToc.C:125
 msgid "*** No Lists ***"
 msgstr "*** Нет списков ***"
 
-#: src/frontends/gtk/GToc.C:135
+#: src/frontends/gtk/GToc.C:142
 #, fuzzy
 msgid "*** No Items ***"
 msgstr "*** Нет списков ***"
@@ -13351,7 +13404,7 @@ msgstr "Выборочно..."
 
 #: src/frontends/qt2/BulletsModule.C:340
 #: src/frontends/qt2/QDocumentDialog.C:85
-#: src/frontends/xforms/FormDocument.C:431
+#: src/frontends/xforms/FormDocument.C:425
 msgid "Bullets"
 msgstr "Маркеры"
 
@@ -13474,7 +13527,7 @@ msgstr "с заголовками"
 msgid "fancy"
 msgstr "красивый"
 
-#: src/frontends/qt2/QDocument.C:164 src/text.C:2205
+#: src/frontends/qt2/QDocument.C:164 src/text.C:2210
 msgid "OneHalf"
 msgstr "Полуторный"
 
@@ -13518,26 +13571,26 @@ msgstr ""
 "[!](h,t,b,p)"
 
 #: src/frontends/qt2/QDocumentDialog.C:86
-#: src/frontends/xforms/FormDocument.C:442
+#: src/frontends/xforms/FormDocument.C:436
 #, fuzzy
 msgid "Branches"
 msgstr "Французский"
 
 #: src/frontends/qt2/QDocumentDialog.C:87
-#: src/frontends/qt2/QDocumentDialog.C:212
+#: src/frontends/qt2/QDocumentDialog.C:211
 #: src/frontends/xforms/FormPreamble.C:29
 msgid "LaTeX Preamble"
 msgstr "Преамбула LaTeX"
 
-#: src/frontends/qt2/QDocumentDialog.C:401
-#: src/frontends/qt2/QDocumentDialog.C:437
+#: src/frontends/qt2/QDocumentDialog.C:385
+#: src/frontends/qt2/QDocumentDialog.C:421
 #, fuzzy
 msgid "No"
 msgstr "&Нет"
 
-#: src/frontends/qt2/QDocumentDialog.C:402
-#: src/frontends/qt2/QDocumentDialog.C:437
-#: src/frontends/qt2/QDocumentDialog.C:504
+#: src/frontends/qt2/QDocumentDialog.C:386
+#: src/frontends/qt2/QDocumentDialog.C:421
+#: src/frontends/qt2/QDocumentDialog.C:488
 #, fuzzy
 msgid "Yes"
 msgstr "&Да"
@@ -13791,27 +13844,27 @@ msgstr "Преобразователи"
 msgid "Copiers"
 msgstr "Копии"
 
-#: src/frontends/qt2/QPrefsDialog.C:933
+#: src/frontends/qt2/QPrefsDialog.C:918
 #, fuzzy
 msgid "Select a document templates directory"
 msgstr "Выберите документ LyX для вставки"
 
-#: src/frontends/qt2/QPrefsDialog.C:941
+#: src/frontends/qt2/QPrefsDialog.C:926
 #, fuzzy
 msgid "Select a temporary directory"
 msgstr "Ошибка создания временного каталога "
 
-#: src/frontends/qt2/QPrefsDialog.C:949
+#: src/frontends/qt2/QPrefsDialog.C:934
 #, fuzzy
 msgid "Select a backups directory"
 msgstr "Выберите документ LyX для вставки"
 
-#: src/frontends/qt2/QPrefsDialog.C:957
+#: src/frontends/qt2/QPrefsDialog.C:942
 #, fuzzy
 msgid "Select a document directory"
 msgstr "Выберите документ LyX для вставки"
 
-#: src/frontends/qt2/QPrefsDialog.C:965
+#: src/frontends/qt2/QPrefsDialog.C:950
 msgid "Give a filename for the LyX server pipe"
 msgstr ""
 
@@ -13820,22 +13873,17 @@ msgstr ""
 msgid "Print Document"
 msgstr "Документ"
 
-#: src/frontends/qt2/QRef.C:41 src/frontends/xforms/FormRef.C:42
-#, fuzzy
-msgid "Cross-reference"
-msgstr "Перекрёстную ссылку..."
-
-#: src/frontends/qt2/QRef.C:135
+#: src/frontends/qt2/QRef.C:137
 #, fuzzy
 msgid "&Go Back"
 msgstr "Назад"
 
-#: src/frontends/qt2/QRef.C:137
+#: src/frontends/qt2/QRef.C:139
 #, fuzzy
 msgid "Jump back"
 msgstr "Вернуться обратно"
 
-#: src/frontends/qt2/QRef.C:145
+#: src/frontends/qt2/QRef.C:147
 #, fuzzy
 msgid "Jump to label"
 msgstr "Перейти к ссылке"
@@ -14182,7 +14230,7 @@ msgstr ""
 msgid "HSV"
 msgstr ""
 
-#: src/frontends/xforms/FormDialogView.C:328
+#: src/frontends/xforms/FormDialogView.C:330
 #, fuzzy, c-format
 msgid "WARNING! %1$s"
 msgstr "ВНИМАНИЕ! "
@@ -14196,7 +14244,7 @@ msgstr " Одинарный | Полуторный | Двойной | Другой "
 msgid " SmallSkip | MedSkip | BigSkip | Length "
 msgstr " Маленький | Средний | Большой | Указать длину "
 
-#: src/frontends/xforms/FormDocument.C:260
+#: src/frontends/xforms/FormDocument.C:259
 msgid ""
 " Default | Custom | US letter | US legal | US executive | A3 | A4 | A5 | B3 "
 "| B4 | B5 "
@@ -14204,31 +14252,26 @@ msgstr ""
 " по умолчанию | пользовательский | US letter | US legal | US executive | A3 "
 "| A4 | A5 | B3 | B4 | B5 "
 
-#: src/frontends/xforms/FormDocument.C:264
-msgid " None | Small Margins | Very small Margins | Very wide Margins "
-msgstr ""
-" нет | A4 небольшие поля | А4 очень маленькие поля | A4 очень широкие поля "
-
-#: src/frontends/xforms/FormDocument.C:304
+#: src/frontends/xforms/FormDocument.C:298
 #, fuzzy
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | <<text>> | >>text<< "
 msgstr " ``текст'' | ''текст'' | ,,текст`` | ,,текст'' | ╚текст╩ | ╩текст╚ "
 
-#: src/frontends/xforms/FormDocument.C:320
+#: src/frontends/xforms/FormDocument.C:314
 msgid " Basic | Natbib author-year | Natbib numerical | Jurabib "
 msgstr ""
 
-#: src/frontends/xforms/FormDocument.C:324
+#: src/frontends/xforms/FormDocument.C:318
 msgid ""
 "Natbib is used often for natural sciences and arts\n"
 "Jurabib is more common in law and humanities"
 msgstr ""
 
-#: src/frontends/xforms/FormDocument.C:336
+#: src/frontends/xforms/FormDocument.C:330
 msgid " Never | Automatically | Yes "
 msgstr ""
 
-#: src/frontends/xforms/FormDocument.C:367
+#: src/frontends/xforms/FormDocument.C:361
 #, fuzzy
 msgid ""
 " Default | Tiny | Smallest | Smaller | Small | Normal | Large | Larger | "
@@ -14237,61 +14280,61 @@ msgstr ""
 " по умолчанию | крохотный | как индекс | как сноска | маленький | нормальный "
 "| большой | Большой | БОЛЬШОЙ | огромный | Огромный"
 
-#: src/frontends/xforms/FormDocument.C:395
+#: src/frontends/xforms/FormDocument.C:389
 msgid "Enter the name of a new branch."
 msgstr ""
 
-#: src/frontends/xforms/FormDocument.C:397
+#: src/frontends/xforms/FormDocument.C:391
 #, fuzzy
 msgid "Add a new branch to the document."
 msgstr "Выберите базу данных"
 
-#: src/frontends/xforms/FormDocument.C:399
+#: src/frontends/xforms/FormDocument.C:393
 #, fuzzy
 msgid "Remove the selected branch from the document."
 msgstr "Выберите базу данных"
 
-#: src/frontends/xforms/FormDocument.C:401
+#: src/frontends/xforms/FormDocument.C:395
 #, fuzzy
 msgid "Activate the selected branch for output."
 msgstr "Выберите базу данных"
 
-#: src/frontends/xforms/FormDocument.C:403
+#: src/frontends/xforms/FormDocument.C:397
 #, fuzzy
 msgid "Deactivate the selected activated branch."
 msgstr "Выберите базу данных"
 
-#: src/frontends/xforms/FormDocument.C:405
+#: src/frontends/xforms/FormDocument.C:399
 #, fuzzy
 msgid "Available branches for this document."
 msgstr "Выберите базу данных"
 
-#: src/frontends/xforms/FormDocument.C:407
+#: src/frontends/xforms/FormDocument.C:401
 msgid "Activated branches. Content will occur in the document's output"
 msgstr ""
 
-#: src/frontends/xforms/FormDocument.C:409
+#: src/frontends/xforms/FormDocument.C:403
 msgid "Modify background color of branch inset"
 msgstr ""
 
-#: src/frontends/xforms/FormDocument.C:411
+#: src/frontends/xforms/FormDocument.C:405
 msgid "Background color of branch inset"
 msgstr ""
 
-#: src/frontends/xforms/FormDocument.C:423
+#: src/frontends/xforms/FormDocument.C:417
 msgid "Document"
 msgstr "Документ"
 
-#: src/frontends/xforms/FormDocument.C:425
+#: src/frontends/xforms/FormDocument.C:419
 msgid "Paper"
 msgstr "Бумага"
 
-#: src/frontends/xforms/FormDocument.C:429
+#: src/frontends/xforms/FormDocument.C:423
 #: src/frontends/xforms/FormGraphics.C:284
 msgid "Extra"
 msgstr "Дополнительно"
 
-#: src/frontends/xforms/FormDocument.C:435
+#: src/frontends/xforms/FormDocument.C:429
 msgid ""
 "Your version of libXpm is older than 4.7.\n"
 "The `bullet' tab of the document dialog has been disabled"
@@ -14299,7 +14342,7 @@ msgstr ""
 "У вас версия библиотеки libXpm старее чем 4.7.\n"
 "Диалоги с \"пульками\" будут выключены."
 
-#: src/frontends/xforms/FormDocument.C:1384
+#: src/frontends/xforms/FormDocument.C:1332
 msgid "Document is read-only. No changes to layout permitted."
 msgstr ""
 "Документ доступен только для чтения. Никакие изменения формата недопустимы."
@@ -14954,40 +14997,40 @@ msgstr ""
 msgid "Go to"
 msgstr "&Перейти"
 
-#: src/frontends/xforms/FormSearch.C:48
+#: src/frontends/xforms/FormSearch.C:47
 #, fuzzy
 msgid "Enter the string you want to find."
 msgstr "Выберите документ LyX для вставки"
 
-#: src/frontends/xforms/FormSearch.C:50
+#: src/frontends/xforms/FormSearch.C:49
 #, fuzzy
 msgid "Enter the replacement string."
 msgstr "Выберите документ LyX для вставки"
 
-#: src/frontends/xforms/FormSearch.C:52
+#: src/frontends/xforms/FormSearch.C:51
 msgid "Continue to next search result."
 msgstr ""
 
-#: src/frontends/xforms/FormSearch.C:54
+#: src/frontends/xforms/FormSearch.C:53
 msgid "Replace search result by replacement string."
 msgstr ""
 
-#: src/frontends/xforms/FormSearch.C:56
+#: src/frontends/xforms/FormSearch.C:55
 msgid "Replace all by replacement string."
 msgstr ""
 
-#: src/frontends/xforms/FormSearch.C:58
+#: src/frontends/xforms/FormSearch.C:57
 #, fuzzy
 msgid "Do case sensitive search."
 msgstr ""
 "Учитывать\n"
 "регистр"
 
-#: src/frontends/xforms/FormSearch.C:60
+#: src/frontends/xforms/FormSearch.C:59
 msgid "Search only matching words."
 msgstr ""
 
-#: src/frontends/xforms/FormSearch.C:62
+#: src/frontends/xforms/FormSearch.C:61
 msgid "Search backwards."
 msgstr ""
 
@@ -15237,7 +15280,7 @@ msgstr "Нет информации для импортирования из"
 msgid "imported."
 msgstr "импортирован."
 
-#: src/insets/insetbase.C:258
+#: src/insets/insetbase.C:265
 msgid "Opened inset"
 msgstr "Открытая вкладка"
 
@@ -15496,12 +15539,12 @@ msgstr "Красивая ссылка: "
 msgid "Opened table"
 msgstr "Открыть файл"
 
-#: src/insets/insettabular.C:1521
+#: src/insets/insettabular.C:1546
 #, fuzzy
 msgid "Error setting multicolumn"
 msgstr "Многоколоночная"
 
-#: src/insets/insettabular.C:1522
+#: src/insets/insettabular.C:1547
 msgid "You cannot set multicolumn vertically."
 msgstr ""
 
@@ -15731,11 +15774,11 @@ msgstr "Название"
 msgid "Choose a filename to save document as"
 msgstr "Выберите название файла, под которым сохранить документ"
 
-#: src/lyx_cb.C:135 src/lyxfunc.C:1631
+#: src/lyx_cb.C:135 src/lyxfunc.C:1634
 msgid "Templates|#T#t"
 msgstr "Шаблоны"
 
-#: src/lyx_cb.C:165 src/lyxfunc.C:1785
+#: src/lyx_cb.C:165 src/lyxfunc.C:1788
 #, fuzzy, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -15743,7 +15786,7 @@ msgid ""
 "Do you want to over-write that document?"
 msgstr "Документ использует неизвестный класс текста \""
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:1787
+#: src/lyx_cb.C:167 src/lyxfunc.C:1790
 #, fuzzy
 msgid "Over-write document?"
 msgstr "Сохранить документ?"
@@ -16047,31 +16090,31 @@ msgstr "Язык:"
 msgid "  Number %1$s"
 msgstr "  Номер "
 
-#: src/lyxfunc.C:290
+#: src/lyxfunc.C:291
 msgid "Unknown function."
 msgstr "Неизвестная функция."
 
-#: src/lyxfunc.C:326
+#: src/lyxfunc.C:327
 msgid "Nothing to do"
 msgstr "Выполнять нечего"
 
-#: src/lyxfunc.C:344
+#: src/lyxfunc.C:345
 msgid "Unknown action"
 msgstr "Неизвестная команда"
 
-#: src/lyxfunc.C:350 src/lyxfunc.C:598
+#: src/lyxfunc.C:351 src/lyxfunc.C:599
 msgid "Command disabled"
 msgstr "Команда отключена"
 
-#: src/lyxfunc.C:357
+#: src/lyxfunc.C:358
 msgid "Command not allowed without any document open"
 msgstr "Команда недопустима без открытых документов"
 
-#: src/lyxfunc.C:592
+#: src/lyxfunc.C:593
 msgid "Document is read-only"
 msgstr "Документ доступен только для чтения"
 
-#: src/lyxfunc.C:613
+#: src/lyxfunc.C:614
 #, fuzzy, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -16079,128 +16122,128 @@ msgid ""
 "Do you want to save the document?"
 msgstr "Документ использует неизвестный класс текста \""
 
-#: src/lyxfunc.C:629
+#: src/lyxfunc.C:630
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
 "Check that your printer is set up correctly."
 msgstr ""
 
-#: src/lyxfunc.C:632
+#: src/lyxfunc.C:633
 #, fuzzy
 msgid "Print document failed"
 msgstr "Печатать в файл"
 
-#: src/lyxfunc.C:651
+#: src/lyxfunc.C:652
 #, fuzzy, c-format
 msgid ""
 "The document could not be converted\n"
 "into the document class %1$s."
 msgstr "Документ использует неизвестный класс текста \""
 
-#: src/lyxfunc.C:654
+#: src/lyxfunc.C:655
 #, fuzzy
 msgid "Could not change class"
 msgstr "Невозможно преобразовать файл"
 
-#: src/lyxfunc.C:762
+#: src/lyxfunc.C:763
 #, fuzzy, c-format
 msgid "Saving document %1$s..."
 msgstr "Сохраняю документ"
 
-#: src/lyxfunc.C:766
+#: src/lyxfunc.C:767
 #, fuzzy
 msgid " done."
 msgstr "Перейти вниз"
 
-#: src/lyxfunc.C:777
+#: src/lyxfunc.C:778
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr ""
 
-#: src/lyxfunc.C:799
+#: src/lyxfunc.C:800
 #, fuzzy
 msgid "Build"
 msgstr "Создать журнал сообщений"
 
-#: src/lyxfunc.C:804
+#: src/lyxfunc.C:805
 #, fuzzy
 msgid "ChkTeX"
 msgstr "Проверить TeX"
 
-#: src/lyxfunc.C:976 src/text3.C:1249
+#: src/lyxfunc.C:977 src/text3.C:1249
 msgid "Missing argument"
 msgstr "Отсутствует аргумент"
 
-#: src/lyxfunc.C:985
+#: src/lyxfunc.C:986
 #, fuzzy, c-format
 msgid "Opening help file %1$s..."
 msgstr "Открываю файл помощи"
 
-#: src/lyxfunc.C:1215
+#: src/lyxfunc.C:1218
 msgid "Opening child document "
 msgstr "Открываю подчинённый документ "
 
-#: src/lyxfunc.C:1294
+#: src/lyxfunc.C:1297
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Синтакс: set-color <lyx_name> <x11_name>"
 
-#: src/lyxfunc.C:1305
+#: src/lyxfunc.C:1308
 #, fuzzy, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr "\" не удалась -- цвет не определён или не может быть переопределён."
 
-#: src/lyxfunc.C:1414
+#: src/lyxfunc.C:1417
 #, fuzzy
 msgid "Document defaults saved in "
 msgstr "Документ не может быть сохранён!"
 
-#: src/lyxfunc.C:1417
+#: src/lyxfunc.C:1420
 #, fuzzy
 msgid "Unable to save document defaults"
 msgstr ""
 "Сохранить как установки\n"
 "по умолчанию для документа"
 
-#: src/lyxfunc.C:1472
+#: src/lyxfunc.C:1475
 msgid "Converting document to new document class..."
 msgstr "Преобразую документ к новому классу документа..."
 
-#: src/lyxfunc.C:1481
+#: src/lyxfunc.C:1484
 msgid "Class switch"
 msgstr ""
 
-#: src/lyxfunc.C:1627
+#: src/lyxfunc.C:1630
 msgid "Select template file"
 msgstr "Выберите файл шаблона"
 
-#: src/lyxfunc.C:1664
+#: src/lyxfunc.C:1667
 msgid "Select document to open"
 msgstr "Выберите документ для открытия"
 
-#: src/lyxfunc.C:1705
+#: src/lyxfunc.C:1708
 #, fuzzy, c-format
 msgid "Opening document %1$s..."
 msgstr "Открываю документ"
 
-#: src/lyxfunc.C:1709
+#: src/lyxfunc.C:1712
 #, fuzzy, c-format
 msgid "Document %1$s opened."
 msgstr "Нет открытых документов!"
 
-#: src/lyxfunc.C:1711
+#: src/lyxfunc.C:1714
 #, fuzzy, c-format
 msgid "Could not open document %1$s"
 msgstr "Ошибка открытия документа"
 
-#: src/lyxfunc.C:1736
+#: src/lyxfunc.C:1739
 #, fuzzy, c-format
 msgid "Select %1$s file to import"
 msgstr "Выберите файл для вставки"
 
-#: src/lyxfunc.C:1846
+#: src/lyxfunc.C:1849
 msgid "Welcome to LyX!"
 msgstr "Добро пожаловать в LyX!"
 
@@ -16756,35 +16799,35 @@ msgstr ""
 msgid "No vertical grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_gridinset.C:1272
+#: src/mathed/math_gridinset.C:1291
 msgid "Only one row"
 msgstr ""
 
-#: src/mathed/math_gridinset.C:1278
+#: src/mathed/math_gridinset.C:1297
 #, fuzzy
 msgid "Only one column"
 msgstr "Удалить столбец"
 
-#: src/mathed/math_gridinset.C:1286
+#: src/mathed/math_gridinset.C:1305
 #, fuzzy
 msgid "No hline to delete"
 msgstr "Выполнять нечего"
 
-#: src/mathed/math_gridinset.C:1295
+#: src/mathed/math_gridinset.C:1314
 msgid "No vline to delete"
 msgstr ""
 
-#: src/mathed/math_gridinset.C:1313
+#: src/mathed/math_gridinset.C:1332
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr ""
 
-#: src/mathed/math_hullinset.C:1028 src/mathed/math_hullinset.C:1037
+#: src/mathed/math_hullinset.C:1022 src/mathed/math_hullinset.C:1031
 #, fuzzy
 msgid "No number"
 msgstr "Номер"
 
-#: src/mathed/math_hullinset.C:1028 src/mathed/math_hullinset.C:1037
+#: src/mathed/math_hullinset.C:1022 src/mathed/math_hullinset.C:1031
 #, fuzzy
 msgid "Number"
 msgstr "Номер"
@@ -16808,11 +16851,11 @@ msgstr ""
 msgid "Math editor mode"
 msgstr "Режим математического редактора"
 
-#: src/mathed/math_nestinset.C:763
+#: src/mathed/math_nestinset.C:775
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/math_nestinset.C:766
+#: src/mathed/math_nestinset.C:778
 msgid "entered math text mode (textrm)"
 msgstr ""
 
@@ -16907,7 +16950,7 @@ msgstr "Неизвестный тип списка toc"
 msgid "Unknown token"
 msgstr " неизвестные токены"
 
-#: src/text.C:1171
+#: src/text.C:1166
 #, fuzzy
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
@@ -16915,59 +16958,59 @@ msgid ""
 msgstr ""
 "Вы не можете вставлять пробел в начале абзаца (см. Помощь|Самоучитель)."
 
-#: src/text.C:1182
+#: src/text.C:1178
 #, fuzzy
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "Вы не можете вводить пробелы таким образом (см. Помощь|Самоучитель)."
 
-#: src/text.C:2171
+#: src/text.C:2176
 #, fuzzy
 msgid "Change: "
 msgstr "Стр. от:"
 
-#: src/text.C:2175
+#: src/text.C:2180
 #, fuzzy
 msgid " at "
 msgstr " в "
 
-#: src/text.C:2186
+#: src/text.C:2191
 #, fuzzy, c-format
 msgid "Font: %1$s"
 msgstr "Шрифт:"
 
-#: src/text.C:2193
+#: src/text.C:2198
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr ", Уровень: "
 
-#: src/text.C:2199
+#: src/text.C:2204
 msgid ", Spacing: "
 msgstr "Промежутки"
 
-#: src/text.C:2211
+#: src/text.C:2216
 msgid "Other ("
 msgstr "Другой ("
 
-#: src/text.C:2220
+#: src/text.C:2225
 #, fuzzy
 msgid ", Inset: "
 msgstr ", Уровень: "
 
-#: src/text.C:2221
+#: src/text.C:2226
 msgid ", Paragraph: "
 msgstr ", Абзацев: "
 
-#: src/text.C:2222
+#: src/text.C:2227
 #, fuzzy
 msgid ", Id: "
 msgstr ", Уровень: "
 
-#: src/text.C:2223
+#: src/text.C:2228
 #, fuzzy
 msgid ", Position: "
 msgstr "Утверждение"
 
-#: src/text.C:2224
+#: src/text.C:2229
 msgid ", Boundary: "
 msgstr ""
 
@@ -17011,10 +17054,6 @@ msgstr "Набор символов"
 msgid "Paragraph layout set"
 msgstr "Установлено размещение абзаца"
 
-#: src/toc.C:64 src/toc.C:133
-msgid "TOC"
-msgstr ""
-
 #: src/vspace.C:487
 #, fuzzy
 msgid "Default skip"
@@ -17046,3 +17085,36 @@ msgid "protected"
 msgstr ""
 "Горячая\n"
 "клавиша"
+
+#, fuzzy
+#~ msgid "The LaTeX preamble"
+#~ msgstr "Преамбула LaTeX"
+
+#, fuzzy
+#~ msgid "Edit the preamble in an external editor"
+#~ msgstr "Редактировать внешний объект"
+
+#, fuzzy
+#~ msgid "&Margins:"
+#~ msgstr "Поля"
+
+#, fuzzy
+#~ msgid "C&omment"
+#~ msgstr "Комментарий"
+
+#, fuzzy
+#~ msgid "Small margins"
+#~ msgstr "Поля"
+
+#, fuzzy
+#~ msgid "Very small margins"
+#~ msgstr "A4 очень маленькие поля"
+
+#, fuzzy
+#~ msgid "Very wide margins"
+#~ msgstr "A4 очень маленькие поля"
+
+#~ msgid " None | Small Margins | Very small Margins | Very wide Margins "
+#~ msgstr ""
+#~ " нет | A4 небольшие поля | А4 очень маленькие поля | A4 очень широкие "
+#~ "поля "

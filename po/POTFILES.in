@@ -29,6 +29,7 @@ src/frontends/controllers/ControlLog.C
 src/frontends/controllers/ControlPrefs.C
 src/frontends/controllers/ControlPrint.C
 src/frontends/controllers/ControlSpellchecker.C
+src/frontends/controllers/ControlToc.C
 src/frontends/controllers/biblio.C
 src/frontends/controllers/character.C
 src/frontends/controllers/frnt_lang.C
@@ -50,6 +51,7 @@ src/frontends/gtk/GMathPanel.C
 src/frontends/gtk/GMathsMatrix.C
 src/frontends/gtk/GNote.C
 src/frontends/gtk/GParagraph.C
+src/frontends/gtk/GRef.C
 src/frontends/gtk/GSearch.C
 src/frontends/gtk/GSendto.C
 src/frontends/gtk/GShowFile.C
@@ -218,5 +220,4 @@ src/support/userinfo.C
 src/text.C
 src/text2.C
 src/text3.C
-src/toc.C
 src/vspace.C
