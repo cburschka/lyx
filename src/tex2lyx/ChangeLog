@@ -1,3 +1,8 @@
+2005-08-19  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* text.C (parse_text): Output \item in list environments that are
+	unknown to LyX (bug 1979)
+
 2005-07-30  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* text.C (parse_text): add forgotten \` accent.

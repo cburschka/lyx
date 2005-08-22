@@ -1278,6 +1278,15 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			}
 			context.set_item();
 			context.check_layout(os);
+			if (context.has_item) {
+				// An item in an unknown list-like environment
+				// FIXME: Do this in check_layout()!
+				context.has_item = false;
+				if (optarg)
+					handle_ert(os, "\\item", context);
+				else
+					handle_ert(os, "\\item ", context);
+			}
 			if (optarg) {
 				if (context.layout->labeltype != LABEL_MANUAL) {
 					// lyx does not support \item[\mybullet]
