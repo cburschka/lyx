@@ -1866,7 +1866,7 @@ def remove_paperpackage(file):
         conv = {"a4":"\\usepackage{a4}","a4wide": "\\usepackage{a4wide}",
                 "widemarginsa4": "\\usepackage[widemargins]{a4}"}
         # for compatibility we ensure it is the first entry in preamble
-        file.preamble[0:0] = conv[paperpackage]
+        file.preamble[0:0] = [conv[paperpackage]]
 
     del file.header[i]
 

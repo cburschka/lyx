@@ -1,5 +1,9 @@
 2005-08-18  José Matos  <jamatos@lyx.org>
 
+	* lyx_1_4.py (remove_paperpackage): fix bug 2001.
+
+2005-08-18  José Matos  <jamatos@lyx.org>
+
 	* LyX.py (read, write): add preamble as data member of LyX_Base,
 	remove if from the header.
 
