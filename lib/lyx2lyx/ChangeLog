@@ -1,3 +1,7 @@
+2005-08-30  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* lyx_1_4.py (add_to_preamble): fix invocation of find_token (bug 2004)
+
 2005-08-18  José Matos  <jamatos@lyx.org>
 
 	* lyx_1_4.py (remove_paperpackage): fix bug 2001.

@@ -1045,7 +1045,7 @@ def insert_ert(body, i, status, text):
 # Add text to the preamble if it is not already there.
 # Only the first line is checked!
 def add_to_preamble(file, text):
-    if find_token(file.preamble, text[0]) != -1:
+    if find_token(file.preamble, text[0], 0) != -1:
         return
 
     file.preamble.extend(text)
