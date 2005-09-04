@@ -241,13 +241,13 @@ fi
 test $latex_to_dvi != "none" && latex_to_dvi="$latex_to_dvi \$\$i"
 test $latex_to_pdf != "none" && latex_to_pdf="$latex_to_pdf \$\$i"
 
-SEARCH_PROG([for a TGIF viewer and editor], TGIF_EDITOR, tgif)
+SEARCH_PROG([for a Tgif viewer and editor], TGIF_EDITOR, tgif)
 TGIF_VIEWER="$TGIF_EDITOR"
 
 SEARCH_PROG([for a FIG viewer and editor], FIG_EDITOR, xfig)
 FIG_VIEWER="$FIG_EDITOR"
 
-SEARCH_PROG([for a GRACE viewer and editor], GRACE_EDITOR, xmgrace)
+SEARCH_PROG([for a Grace viewer and editor], GRACE_EDITOR, xmgrace)
 GRACE_VIEWER="$GRACE_EDITOR"
 
 SEARCH_PROG([for a FEN viewer and editor], FEN_EDITOR, "xboard -lpf \$\$i -mode EditPosition")
@@ -268,16 +268,22 @@ literate_to_lyx_command=`echo $literate_to_lyx_command | sed "s,noweb2lyx,noweb2
 # Search something to process a literate document
 SEARCH_PROG([for a Noweb -> LaTeX converter],literate_to_tex_command,"noweave -delay -index \$\$i > \$\$o")
 
-SEARCH_PROG([for a HTML -> Latex converter],html_to_latex_command, "html2latex \$\$i")
+SEARCH_PROG([for an HTML -> LaTeX converter],html_to_latex_command, "html2latex \$\$i")
 
-SEARCH_PROG([for a MSWord -> Latex converter],word_to_latex_command, "wvCleanLatex \$\$i \$\$o" "wvCleanLatex \$\$i \$\$o")
+SEARCH_PROG([for an MS Word -> LaTeX converter],word_to_latex_command, "wvCleanLatex \$\$i \$\$o")
+
+# tex4ht generates HTML output that is well-suited for MS Word
+SEARCH_PROG([for a LaTeX -> MS Word converter],latex_to_word_command, "htlatex")
+test "$latex_to_word_command" = "htlatex" && latex_to_word_command="htlatex \$\$i 'html,word' 'symbol/!' '-cvalidate'"
+
+
 
 SEARCH_PROG([for Image converter],image_command, "convert \$\$i \$\$o")
 
-SEARCH_PROG([for an OpenOffice.org -> Latex converter],sxw_to_latex_command, "w2l -clean \$\$i")
+SEARCH_PROG([for an OpenOffice.org -> LaTeX converter],sxw_to_latex_command, "w2l -clean \$\$i")
 
 # oolatex is the original name, SuSE has oolatex.sh
-SEARCH_PROG([for an Latex -> OpenOffice.org converter],latex_to_sxw_command, "oolatex \$\$i" "oolatex.sh \$\$i")
+SEARCH_PROG([for a LaTeX -> OpenOffice.org converter],latex_to_sxw_command, "oolatex \$\$i" "oolatex.sh \$\$i")
 
 # Search something to preview postscript
 SEARCH_PROG([for a Postscript previewer],PS_VIEWER,gsview32 gv "ghostview -swap" kghostview)
@@ -399,6 +405,7 @@ esac
 LYXRC_VAR(\print_spool_printerprefix, $print_spool_printerprefix)
 
 SEARCH_PROG([for a LaTeX -> HTML converter], latex_to_html_command,dnl
+ "htlatex \$\$i" dnl
  "tth -t -e2 -L\$\$b < \$\$i > \$\$o" dnl
  "latex2html -no_subdir -split 0 -show_section_numbers \$\$i" dnl
  "hevea -s \$\$i")
@@ -566,21 +573,21 @@ cat >$outfile <<EOF
 # override the values given here.
 \\Format asciichess asc    "Plain text (chess output)"  "" ""	"$TEXT_EDITOR"
 \\Format asciiimage asc    "Plain text (image)"         "" ""	"$TEXT_EDITOR"
-\\Format asciixfig  asc    "Plain text (xfig output)"   "" ""	"$TEXT_EDITOR"
-\\Format agr        agr     GRACE                  "" "$GRACE_VIEWER"	"$GRACE_EDITOR"
+\\Format asciixfig  asc    "Plain text (Xfig output)"   "" ""	"$TEXT_EDITOR"
+\\Format agr        agr     Grace                  "" "$GRACE_VIEWER"	"$GRACE_EDITOR"
 \\Format bmp        bmp     BMP                    "" "$RASTERIMAGE_VIEWER"	"$RASTERIMAGE_EDITOR"
 \\Format date       ""     "date command"          "" ""	""
 \\Format dateout    tmp    "date (output)"         "" ""	"$TEXT_EDITOR"
 \\Format docbook    sgml    DocBook                B  ""	"$TEXT_EDITOR"
-\\Format docbook-xml xml   "Docbook (xml)"         "" ""	"$TEXT_EDITOR"
+\\Format docbook-xml xml   "Docbook (XML)"         "" ""	"$TEXT_EDITOR"
 \\Format dvi        dvi     DVI                    D  "$DVI_VIEWER"	""
 \\Format eps        eps     EPS                    "" "$EPS_VIEWER"	""
 \\Format fax        ""      Fax                    "" ""	""
 \\Format fen        fen     FEN                    "" "$FEN_VIEWER"	"$FEN_EDITOR"
-\\Format fig        fig     XFig                   "" "$FIG_VIEWER"	"$FIG_EDITOR"
+\\Format fig        fig     FIG                    "" "$FIG_VIEWER"	"$FIG_EDITOR"
 \\Format gif        gif     GIF                    "" "$RASTERIMAGE_VIEWER"	"$RASTERIMAGE_EDITOR"
 \\Format html       html    HTML                   H  "$HTML_VIEWER"	""
-\\Format jpg        jpg     JPG                    "" "$RASTERIMAGE_VIEWER"	"$RASTERIMAGE_EDITOR"
+\\Format jpg        jpg     JPEG                   "" "$RASTERIMAGE_VIEWER"	"$RASTERIMAGE_EDITOR"
 \\Format latex      tex     LaTeX                  L  ""	"$TEXT_EDITOR"
 \\Format linuxdoc   sgml    LinuxDoc               x  ""	"$TEXT_EDITOR"
 \\Format lyx        lyx     LyX                    "" "lyx"	"lyx"
@@ -597,12 +604,13 @@ cat >$outfile <<EOF
 \\Format program    ""      Program                "" ""	""
 \\Format ps         ps      Postscript             t  "$PS_VIEWER"	""
 \\Format pstex      pstex_t PSTEX                  "" ""	""
-\\Format tgif       obj     TGIF                   "" "$TGIF_VIEWER"	"$TGIF_EDITOR"
+\\Format tgif       obj     Tgif                   "" "$TGIF_VIEWER"	"$TGIF_EDITOR"
 \\Format sxw        sxw    "OpenOffice.Org Writer" O  ""	""
 \\Format text       txt    "Plain text"            a  ""	"$TEXT_EDITOR"
 \\Format textparagraph txt "Plain text (paragraphs)"    "" ""	"$TEXT_EDITOR"
 \\Format tiff       tif     TIFF                   "" "$RASTERIMAGE_VIEWER"	"$RASTERIMAGE_EDITOR"
-\\Format word       doc     Word                   W  ""	""
+\\Format word       doc    "MS Word"               W  ""	""
+\\Format wordhtml   html   "MS Word (HTML)"        "" ""        ""
 \\Format xbm        xbm     XBM                    "" "$RASTERIMAGE_VIEWER"	"$RASTERIMAGE_EDITOR"
 \\Format xpm        xpm     XPM                    "" "$RASTERIMAGE_VIEWER"	"$RASTERIMAGE_EDITOR"
 
@@ -621,6 +629,7 @@ cat >$outfile <<EOF
 \\converter latex      lyx        "$tex_to_lyx_command"	""
 \\converter latex      pdf2       "$latex_to_pdf"	"latex"
 \\converter latex      sxw        "$latex_to_sxw_command"	"latex"
+\\converter latex      wordhtml   "$latex_to_word_command"       ""
 \\converter linuxdoc   dvi        "$linuxdoc_to_dvi_command"	""
 \\converter linuxdoc   html       "$linuxdoc_to_html_command"	""
 \\converter linuxdoc   latex      "$linuxdoc_to_latex_command"	""
@@ -638,7 +647,7 @@ EOF
 ### the graphic converter part with the predefined ones
 #### Search for the nonstandard converting progs
 #
-SEARCH_PROG([for an FIG -> EPS/PPM converter], FIG2DEV, fig2dev)
+SEARCH_PROG([for a FIG -> EPS/PPM/PNG converter], FIG2DEV, fig2dev)
 if test "$FIG2DEV" = "fig2dev"; then
 cat >>$outfile <<EOF
 \\converter fig        eps        "fig2dev -L eps \$\$i \$\$o" ""
@@ -647,14 +656,14 @@ cat >>$outfile <<EOF
 EOF
 fi
 
-SEARCH_PROG([for an TIFF -> PS converter], TIFF2PS, tiff2ps)
+SEARCH_PROG([for a TIFF -> PS converter], TIFF2PS, tiff2ps)
 if test "$TIFF2PS" = "tiff2ps"; then
 cat >>$outfile <<EOF
 \\converter tiff       eps        "tiff2ps \$\$i > \$\$o" ""
 EOF
 fi
 
-SEARCH_PROG([for an TGIF -> EPS/PPM converter], TGIF, tgif)
+SEARCH_PROG([for a Tgif -> EPS/PDF converter], TGIF, tgif)
 if test "$TGIF" = "tgif"; then
 cat >>$outfile <<EOF
 \\converter tgif       eps        "tgif -stdout -print -color -eps \$\$i > \$\$o" ""
