@@ -1,3 +1,7 @@
+2005-08-26  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* text2.C (cursorEnd): check for empty text (fixes bug 1998)
+
 2005-08-19  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* CutAndPaste.C (eraseSelectionHelper): fix bug 1920

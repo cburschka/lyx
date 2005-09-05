@@ -494,6 +494,9 @@ void LyXText::cursorEnd(LCursor & cur)
 	// the final space exept if I have a spanning inset or one string
 	// is so long that we force a break.
 	pos_type end = cur.textRow().endpos();
+	if (end == 0)
+		// empty text, end-1 is no valid position
+		return;
 	bool boundary = false;
 	if (!cur.paragraph().isLineSeparator(end-1) &&
 	    !cur.paragraph().isNewline(end-1))
