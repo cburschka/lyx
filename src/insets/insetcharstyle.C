@@ -38,6 +38,7 @@
 using std::string;
 using std::auto_ptr;
 using std::istringstream;
+using std::max;
 using std::ostream;
 using std::ostringstream;
 
@@ -139,6 +140,21 @@ void InsetCharStyle::metrics(MetricsInfo & mi, Dimension & dim) const
 	mi.base.textwidth -= 2 * TEXT_TO_INSET_OFFSET;
 	InsetText::metrics(mi, dim);
 	mi.base.font = tmpfont;
+	if (has_label_) {
+		// consider width of the inset label
+		LyXFont font(params_.labelfont);
+		font.realize(LyXFont(LyXFont::ALL_SANE));
+		font.decSize();
+		font.decSize();
+		int w = 0;
+		int a = 0;
+		int d = 0;
+		string s(params_.type);
+		if (undefined())
+			s = _("Undef: ") + s;
+		font_metrics::rectText(s, font, w, a, d);
+		dim.wid = max(dim.wid, w);
+	}
 	dim.asc += TEXT_TO_INSET_OFFSET;
 	dim.des += TEXT_TO_INSET_OFFSET;
 	dim.wid += 2 * TEXT_TO_INSET_OFFSET;
@@ -182,7 +198,7 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 		string s(params_.type);
 		if (undefined())
 			s = _("Undef: ") + s;
-		font_metrics::rectText(params_.type, font, w, a, d);
+		font_metrics::rectText(s, font, w, a, d);
 		pi.pain.rectText(x + (dim_.wid - w) / 2, y + desc + a,
 			s, font, LColor::none, LColor::none);
 	}

@@ -1,3 +1,8 @@
+2005-09-05  Michael Gerz  <michael.gerz@teststep.org>
+
+	* insetcharstyle.C (metrics,draw): consider inset label for
+	width computation; fix drawing of labels of undefined char styles
+
 2005-08-07  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* insettabular.C (getStatus): fix Helge's bug that a number of insets
