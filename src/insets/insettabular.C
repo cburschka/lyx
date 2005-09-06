@@ -16,6 +16,7 @@
 #include "bufferparams.h"
 #include "BufferView.h"
 #include "cursor.h"
+#include "CutAndPaste.h"
 #include "coordcache.h"
 #include "debug.h"
 #include "dispatchresult.h"
@@ -44,6 +45,8 @@
 #include <sstream>
 #include <iostream>
 #include <limits>
+
+using lyx::cap::tabularStackDirty;
 
 using lyx::graphics::PreviewLoader;
 
@@ -719,7 +722,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_PASTE:
-		if (hasPasteBuffer()) {
+		if (hasPasteBuffer() && tabularStackDirty()) {
 			recordUndo(cur, Undo::INSERT);
 			pasteSelection(cur);
 			break;
@@ -1719,6 +1722,11 @@ bool InsetTabular::copySelection(LCursor & cur)
 	OutputParams const runparams;
 	paste_tabular->plaintext(cur.buffer(), os, runparams, 0, true, '\t');
 	cur.bv().stuffClipboard(os.str());
+	// mark tabular stack dirty
+	// FIXME: this is a workaround for bug 1919. Should be removed for 1.5, 
+	// when we (hopefully) have a one-for-all paste mechanism.
+	lyx::cap::dirtyTabularStack(true);
+
 	return true;
 }
 

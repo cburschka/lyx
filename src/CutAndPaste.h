@@ -81,6 +81,17 @@ void selDel(LCursor & cur);
 void selClearOrDel(LCursor & cur);
 /// pastes n-th element of cut buffer
 void selPaste(LCursor & cur, size_t n);
+
+/** Tabular has its own paste stack for multiple cells
+ *  but it needs to know whether there is a more recent 
+ *  ordinary paste. Therefore which one is newer.
+ */
+//FIXME: this is a workaround for bug 1919. Replace this by
+//an all-for-one-paste mechanism in 1.5
+/// store whether tabular or ordinary paste stack is newer
+void dirtyTabularStack(bool b);
+/// is the tabular paste stack newer than the ordinary one?
+bool tabularStackDirty();
 } // namespace cap
 } // namespce lyx
 

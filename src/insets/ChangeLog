@@ -1,3 +1,8 @@
+2005-09-06  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* insettabular.C: mark tabular_stack_ (of CutAndPaste) dirty
+	after copying several cells (works around bug 1919).
+
 2005-09-05  Michael Gerz  <michael.gerz@teststep.org>
 
 	* insetcharstyle.C (metrics,draw): consider inset label for

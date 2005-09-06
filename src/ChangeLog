@@ -1,8 +1,16 @@
+2005-09-06  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* CutAndPaste.[Ch]: new methods dirtyTabularStack and 
+	tabularStackDirty to work around bug 1919 (tabular needs
+	to know whether its own cell paste buffer or the one of 
+	texted is newer.
+	* CutAndPaste.C: mark tabular_stack_ clean after copy.
+
 2005-08-26  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* text2.C (cursorEnd): check for empty text (fixes bug 1998)
 
-2005-08-19  Lars Gullik BjÃ¸nnes  <larsbj@gullik.net>
+2005-08-19  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* CutAndPaste.C (eraseSelectionHelper): fix bug 1920
 	use old deleteion algorithm when changetracking is on.

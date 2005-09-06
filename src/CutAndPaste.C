@@ -68,6 +68,11 @@ typedef limited_stack<pair<ParagraphList, textclass_type> > CutStack;
 
 CutStack theCuts(10);
 
+// store whether the tabular stack is newer than the normal copy stack
+// FIXME: this is a workaround for bug 1919. Should be removed for 1.5, 
+// when we (hopefully) have a one-for-all paste mechanism.
+bool dirty_tabular_stack_;
+
 class resetOwnerAndChanges : public std::unary_function<Paragraph, void> {
 public:
 	void operator()(Paragraph & p) const {
@@ -531,6 +536,9 @@ void cutSelection(LCursor & cur, bool doclear, bool realcut)
 		// need a valid cursor. (Lgb)
 		cur.clearSelection();
 		updateCounters(cur.buffer());
+
+		// tell tabular that a recent copy happened
+		dirtyTabularStack(false);
 	}
 
 	if (cur.inMathed()) {
@@ -581,6 +589,8 @@ void copySelection(LCursor & cur)
 		pars.back().insert(0, grabSelection(cur), LyXFont());
 		theCuts.push(make_pair(pars, bp.textclass));
 	}
+	// tell tabular that a recent copy happened
+	dirtyTabularStack(false);
 }
 
 
@@ -776,6 +786,18 @@ string grabSelection(LCursor & cur)
 		data = "unknown selection 2";
 	}
 	return data;
+}
+
+
+void dirtyTabularStack(bool b)
+{
+	dirty_tabular_stack_ = b;
+}
+
+
+bool tabularStackDirty()
+{
+	return dirty_tabular_stack_;
 }
 
 
