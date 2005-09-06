@@ -5,7 +5,7 @@
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
 #
-# author: Michael Schmitt, michael.schmitt@teststep.org
+# author: Michael Gerz, michael.gerz@teststep.org
 #
 # This script performs some consistency checks on po files:
 #
