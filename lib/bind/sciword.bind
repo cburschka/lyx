@@ -105,6 +105,8 @@
 
 \bind "C-u"	"font-underline"
 \bind "C-v"	"paste"
+\bind "C-M-v"	"primary-selection-paste"
+\bind "C-S-v"	"primary-selection-paste paragraph"
 \bind "C-w"	"buffer-close"
 \bind "C-x"	"cut"
 \bind "C-z"	"undo"
