@@ -948,8 +948,8 @@ contributers = [
                  "23 February 2005",
                  u"contribution to the spanish internationalization"),
 
-     contributer(u"Michael Schmitt",
-                 "michael.schmitt () teststep ! org",
+     contributer(u"Michael Gerz",
+                 "michael.gerz () teststep ! org",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110909251110103",
