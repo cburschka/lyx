@@ -24,7 +24,16 @@ COL		= col -b
 CP              = /bin/cp
 DITROFF		= ditroff
 DITROFF		= groff
-EXEEXT		= .exe
+
+# This is a GNU make extension.
+# If you're flavour of make refuses to accept it,
+# then simply hardcode EXEEXT.
+ifeq ($(WINDIR),)
+  EXEEXT =
+else
+  EXEEXT = .exe
+endif
+
 DT2DV		= dt2dv$(EXEEXT)
 DV2DT		= dv2dt$(EXEEXT)
 EXES 		= $(DT2DV) $(DV2DT)
