@@ -53,7 +53,8 @@ void rescanTexStyles()
 	Path p(lyx::package().user_support());
 	Systemcall one;
 	one.startscript(Systemcall::Wait,
-			"sh " + LibFileSearch("scripts", "TeXFiles.sh"));
+			"sh " +
+			QuoteName(LibFileSearch("scripts", "TeXFiles.sh")));
 }
 
 
