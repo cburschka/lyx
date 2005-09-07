@@ -339,7 +339,7 @@ bool findNextChange(BufferView * bv)
 	if (!bv->available())
 		return false;
 
-	DocIterator cur = DocIterator(bv->cursor());
+	DocIterator cur = bv->cursor();
 
 	if (!findChange(cur))
 		return false;

@@ -1,3 +1,11 @@
+2005-08-04  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyxfind.C (findNextChange): tiny cleanup.
+
+	* BufferView_pimpl.C (trackChanges): avoid crash when stopping
+	change tracking with the cursor in an inset; make sure the first
+	change is not skipped.
+
 2005-09-06  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* CutAndPaste.[Ch]: new methods dirtyTabularStack and 

@@ -877,13 +877,13 @@ void BufferView::Pimpl::trackChanges()
 		// We cannot allow undos beyond the freeze point
 		buffer_->undostack().clear();
 	} else {
-		update();
-		bv_->text()->setCursor(cursor_, 0, 0);
-#ifdef WITH_WARNINGS
-#warning changes FIXME
-#endif
+		cursor_.setCursor(doc_iterator_begin(buffer_->inset()));
 		bool const found = lyx::find::findNextChange(bv_);
 		if (found) {
+			// We reset the cursor to the start of the
+			// document, since the Changes Dialog is going
+			// to search for the next change anyway.
+			cursor_.setCursor(doc_iterator_begin(buffer_->inset()));
 			owner_->getDialogs().show("changes");
 			return;
 		}
