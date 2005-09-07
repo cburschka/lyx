@@ -353,6 +353,7 @@ string const subst(string const & a, char oldchar, char newchar)
 string const subst(string const & a,
 		   string const & oldstr, string const & newstr)
 {
+	BOOST_ASSERT(!oldstr.empty());
 	string lstr = a;
 	string::size_type i = 0;
 	string::size_type const olen = oldstr.length();

@@ -1000,7 +1000,7 @@ string const MakeDisplayPath(string const & path, unsigned int threshold)
 	string const home = package().home_dir();
 
 	// replace /home/blah with ~/
-	if (prefixIs(str, home))
+	if (!home.empty() && prefixIs(str, home))
 		str = subst(str, home, "~");
 
 	if (str.length() <= threshold)
