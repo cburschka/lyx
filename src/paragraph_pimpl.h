@@ -55,7 +55,7 @@ public:
 	/// set change at pos
 	void setChange(lyx::pos_type pos, Change::Type type);
 	/// mark as erased
-	void markErased();
+	void markErased(bool);
 	/// accept change
 	void acceptChange(lyx::pos_type start, lyx::pos_type end);
 	/// reject change

@@ -515,7 +515,7 @@ void LyXTabular::appendColumn(BufferParams const & bp, idx_type const cell)
 	}
 	//++column;
 	for (row_type i = 0; i < rows_; ++i) {
-		cell_info[i][column + 1].inset->clear(false);
+		cell_info[i][column + 1].inset->clear();
 		if (bp.tracking_changes)
 			cell_info[i][column + 1].inset->markNew(true);
 	}
@@ -1350,7 +1350,7 @@ void LyXTabular::setMultiColumn(Buffer * buffer, idx_type cell,
 		cellstruct & cs1 = cellinfo_of_cell(cell + i);
 		cs1.multicolumn = CELL_PART_OF_MULTICOLUMN;
 		cs.inset->appendParagraphs(buffer, cs1.inset->paragraphs());
-		cs1.inset->clear(false);
+		cs1.inset->clear();
 	}
 	set_row_column_number_info();
 }

@@ -231,8 +231,8 @@ public:
 	/// reject change
 	void rejectChange(lyx::pos_type start, lyx::pos_type end);
 
-	/// mark whole par as erased
-	void markErased();
+	/// mark whole par as erased or not
+	void markErased(bool erased);
 
 	/// Paragraphs can contain "manual labels", for example, Description
 	/// environment. The text for this user-editable label is stored in

@@ -304,10 +304,10 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 			    || y + d < 0
 			    || y - a > bv->workHeight()) {
 				cell(idx)->draw(nullpi, cx, y);
-				drawCellLines(nop, nx, y, i, idx);
+				drawCellLines(nop, nx, y, i, idx, pi.erased_);
 			} else {
 				cell(idx)->draw(pi, cx, y);
-				drawCellLines(pi.pain, nx, y, i, idx);
+				drawCellLines(pi.pain, nx, y, i, idx, pi.erased_);
 			}
 			nx += tabular.getWidthOfColumn(idx);
 			++idx;
@@ -366,28 +366,35 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 
 
 void InsetTabular::drawCellLines(Painter & pain, int x, int y,
-				 row_type row, idx_type cell) const
+				 row_type row, idx_type cell, bool erased) const
 {
 	int x2 = x + tabular.getWidthOfColumn(cell);
 	bool on_off = false;
+	LColor::color col = LColor::tabularline;
+	LColor::color onoffcol = LColor::tabularonoffline;
+
+	if (erased) {
+		col = LColor::strikeout;
+		onoffcol = LColor::strikeout;
+	}
 
 	if (!tabular.topAlreadyDrawn(cell)) {
 		on_off = !tabular.topLine(cell);
 		pain.line(x, y - tabular.getAscentOfRow(row),
 			  x2, y -  tabular.getAscentOfRow(row),
-			  on_off ? LColor::tabularonoffline : LColor::tabularline,
+			  on_off ? onoffcol : col,
 			  on_off ? Painter::line_onoffdash : Painter::line_solid);
 	}
 	on_off = !tabular.bottomLine(cell);
 	pain.line(x, y + tabular.getDescentOfRow(row),
 		  x2, y + tabular.getDescentOfRow(row),
-		  on_off ? LColor::tabularonoffline : LColor::tabularline,
+		  on_off ? onoffcol : col,
 		  on_off ? Painter::line_onoffdash : Painter::line_solid);
 	if (!tabular.leftAlreadyDrawn(cell)) {
 		on_off = !tabular.leftLine(cell);
 		pain.line(x, y -  tabular.getAscentOfRow(row),
 			  x, y +  tabular.getDescentOfRow(row),
-			  on_off ? LColor::tabularonoffline : LColor::tabularline,
+			  on_off ? onoffcol : col,
 			  on_off ? Painter::line_onoffdash : Painter::line_solid);
 	}
 	on_off = !tabular.rightLine(cell);
@@ -395,7 +402,7 @@ void InsetTabular::drawCellLines(Painter & pain, int x, int y,
 		  y -  tabular.getAscentOfRow(row),
 		  x2 - tabular.getAdditionalWidth(cell),
 		  y +  tabular.getDescentOfRow(row),
-		  on_off ? LColor::tabularonoffline : LColor::tabularline,
+		  on_off ? onoffcol : col,
 		  on_off ? Painter::line_onoffdash : Painter::line_solid);
 }
 
@@ -435,7 +442,7 @@ void InsetTabular::edit(LCursor & cur, bool left)
 
 void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
-	lyxerr << "# InsetTabular::dispatch: cmd: " << cmd << endl;
+	lyxerr << "# InsetTabular::doDispatch: cmd: " << cmd << endl;
 	lyxerr << "  cur:\n" << cur << endl;
 	CursorSlice sl = cur.top();
 	LCursor & bvcur = cur.bv().cursor();
@@ -1770,13 +1777,19 @@ void InsetTabular::cutSelection(LCursor & cur)
 	if (!cur.selection())
 		return;
 
-	bool const track = cur.buffer().params().tracking_changes;
 	row_type rs, re;
 	col_type cs, ce;
 	getSelection(cur, rs, re, cs, ce);
-	for (row_type i = rs; i <= re; ++i)
-		for (col_type j = cs; j <= ce; ++j)
-			cell(tabular.getCellNumber(i, j))->clear(track);
+	for (row_type i = rs; i <= re; ++i) {
+		for (col_type j = cs; j <= ce; ++j) {
+			shared_ptr<InsetText> t
+				= cell(tabular.getCellNumber(i, j));
+			if (cur.buffer().params().tracking_changes)
+				t->markErased(true);
+			else
+				t->clear();
+		}
+	}
 
 	// cursor position might be invalid now
 	cur.pos() = cur.lastpos();
@@ -1821,10 +1834,10 @@ LyXText * InsetTabular::getText(int idx) const
 }
 
 
-void InsetTabular::markErased()
+void InsetTabular::markErased(bool erased)
 {
 	for (idx_type idx = 0; idx < nargs(); ++idx)
-		cell(idx)->markErased();
+		cell(idx)->markErased(erased);
 }
 
 

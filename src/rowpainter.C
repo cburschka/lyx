@@ -101,6 +101,9 @@ private:
 	pit_type const pit_;
 	Paragraph const & par_;
 
+	/// is row erased? (change tracking)
+	bool erased_;
+
 	// Looks ugly - is
 	double const xo_;
 	int const yo_;    // current baseline
@@ -116,6 +119,7 @@ RowPainter::RowPainter(PainterInfo & pi,
 	LyXText const & text, pit_type pit, Row const & row, int x, int y)
 	: bv_(*pi.base.bv), pain_(pi.pain), text_(text), pars_(text.paragraphs()),
 	  row_(row), pit_(pit), par_(text.paragraphs()[pit]),
+	  erased_(pi.erased_),
 	  xo_(x), yo_(y), width_(text_.width())
 {
 	RowMetrics m = text_.computeRowMetrics(pit, row_);
@@ -152,6 +156,7 @@ void RowPainter::paintInset(pos_type const pos, LyXFont const & font)
 	PainterInfo pi(const_cast<BufferView *>(&bv_), pain_);
 	pi.base.font = font;
 	pi.ltr_pos = (text_.bidi.level(pos) % 2 == 0);
+	pi.erased_ = erased_ || isDeletedText(par_, pos);
 	theCoords.insets().add(inset, int(x_), yo_);
 	inset->drawSelection(pi, int(x_), yo_);
 	inset->draw(pi, int(x_), yo_);
@@ -299,9 +304,7 @@ void RowPainter::paintFromPos(pos_type & vpos)
 
 	double const orig_x = x_;
 
-	char const c = par_.getChar(pos);
-
-	if (c == Paragraph::META_INSET) {
+	if (par_.isInset(pos)) {
 		paintInset(pos, orig_font);
 		++vpos;
 		paintForeignMark(orig_x, orig_font);
@@ -309,6 +312,7 @@ void RowPainter::paintFromPos(pos_type & vpos)
 	}
 
 	// usual characters, no insets
+	char const c = par_.getChar(pos);
 
 	// special case languages
 	std::string const & lang = orig_font.language()->lang();

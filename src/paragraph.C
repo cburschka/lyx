@@ -1659,9 +1659,9 @@ void Paragraph::setChange(lyx::pos_type pos, Change::Type type)
 }
 
 
-void Paragraph::markErased()
+void Paragraph::markErased(bool erased)
 {
-	pimpl_->markErased();
+	pimpl_->markErased(erased);
 }
 
 

@@ -40,8 +40,8 @@ public:
 	explicit InsetText(BufferParams const &);
 	///
 	InsetText();
-	/// empty inset to empty par, or just mark as erased
-	void clear(bool just_mark_erased);
+	/// empty inset to empty par
+	void clear();
 	///
 	void read(Buffer const & buf, LyXLex & lex);
 	///
@@ -107,7 +107,8 @@ public:
 	bool getStatus(LCursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 
 	/// mark as erased for change tracking
-	void markErased() { clear(true); }
+	void markErased(bool erased);
+
 	/**
 	 * Mark as new. Used when pasting in tabular, and adding rows
 	 * or columns. Note that pasting will ensure that tracking already

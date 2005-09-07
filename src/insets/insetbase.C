@@ -273,7 +273,7 @@ std::string const & InsetBase::getInsetName() const
 }
 
 
-void InsetBase::markErased()
+void InsetBase::markErased(bool)
 {}
 
 

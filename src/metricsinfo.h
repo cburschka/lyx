@@ -92,6 +92,8 @@ public:
 	Painter & pain;
 	/// Whether the text at this point is right-to-left (for InsetNewline)
 	bool ltr_pos;
+	/// Whether the parent is deleted (change tracking)
+	bool erased_;
 };
 
 class TextMetricsInfo {};

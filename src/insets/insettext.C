@@ -108,14 +108,17 @@ void InsetText::init()
 }
 
 
-void InsetText::clear(bool just_mark_erased)
+void InsetText::markErased(bool erased)
 {
 	ParagraphList & pars = paragraphs();
-	if (just_mark_erased) {
-		for_each(pars.begin(), pars.end(),
-			 bind(&Paragraph::markErased, _1));
-		return;
-	}
+	for_each(pars.begin(), pars.end(),
+		 bind(&Paragraph::markErased, _1, erased));
+}
+
+
+void InsetText::clear()
+{
+	ParagraphList & pars = paragraphs();
 
 	// This is a gross hack...
 	LyXLayout_ptr old_layout = pars.begin()->layout();
@@ -142,7 +145,7 @@ void InsetText::write(Buffer const & buf, ostream & os) const
 
 void InsetText::read(Buffer const & buf, LyXLex & lex)
 {
-	clear(false);
+	clear();
 
 #ifdef WITH_WARNINGS
 #warning John, look here. Doesnt make much sense.
@@ -352,7 +355,7 @@ void InsetText::markNew(bool track_changes)
 
 void InsetText::setText(string const & data, LyXFont const & font)
 {
-	clear(false);
+	clear();
 	Paragraph & first = paragraphs().front();
 	for (unsigned int i = 0; i < data.length(); ++i)
 		first.insertChar(i, data[i], font);

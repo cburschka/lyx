@@ -115,7 +115,7 @@ public:
 	LyXText * getText(int) const;
 
 	///
-	void markErased();
+	void markErased(bool);
 
 	// this should return true if we have a "normal" cell, otherwise true.
 	// "normal" means without width set!
@@ -156,7 +156,7 @@ private:
 
 	///
 	void drawCellLines(Painter &, int x, int y, row_type row,
-	                   idx_type cell) const;
+	                   idx_type cell, bool erased) const;
 	///
 	void setCursorFromCoordinates(LCursor & cur, int x, int y) const;
 

@@ -372,12 +372,12 @@ public:
 	virtual mode_type currentMode() const { return UNDECIDED_MODE; }
 	/// returns whether this inset is allowed in other insets of given mode
 	virtual bool allowedIn(mode_type) const { return true; }
-
 	/// is this inset allowed within a font change?
 	virtual bool noFontChange() const { return false; }
 
-	///
-	virtual void markErased();
+	/// mark the inset as erased or not
+	virtual void markErased(bool erased);
+		
 	/// pretty arbitrary
 	virtual int width() const { return 10; }
 	/// pretty arbitrary

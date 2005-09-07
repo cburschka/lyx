@@ -1,3 +1,32 @@
+2005-08-03  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* text.C (read): remove unused variable.
+	(readParToken): remove static Change variable (never good in
+	recursive settings...); add it as a parameter instead.
+
+	* paragraph_pimpl.C (acceptChange): make debug info conditional.
+
+	* metricsinfo.C (PainterInfo): add new member erased_.
+
+	* rowpainter.C (RowPainter): add erased_ member, initialized from
+	PainterInfo. 
+	(paintInset): pass erased_ to Inset::draw.
+
+	* lyxfunc.C (lookupChange): new function. Tells whether change 
+	tracking is disabled at a given postion.
+	(getStatus): disable some actions when in deleted text with change
+	tracking. 
+
+2005-08-03  John Levon  <levon@movementarian.org>
+	
+	* tabular.C (appendColumn, setMultiColumn): adapt to change to
+	InsetText::clear().
+
+	* paragraph_pimpl.C (markErased): add bool argument and handle it.
+	Also make sure to mark insets recursively.
+	(rejectChange, erase): be recursive
+
+	* paragraph.C (markErased): add bool argument.
 2005-08-04  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyxfind.C (findNextChange): tiny cleanup.

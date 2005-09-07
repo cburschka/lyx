@@ -174,6 +174,28 @@ bool getStatus(LCursor cursor,
 	return res;
 }
 
+
+/** Return the change status at cursor position, taking in account the
+ * status at each level of the document iterator (a table in a deleted
+ * footnote is deleted).
+ * When \param outer is true, the top slice is not looked at.
+ */
+Change::Type lookupChange(DocIterator const & dit, bool outer = false)
+{
+	size_t const depth = dit.depth() - outer ? 1 : 0;
+
+	for (size_t i = 0 ; i < depth ; ++i) {
+		CursorSlice const & slice = dit[i];
+		if (!slice.inset().inMathed() 
+		    && slice.pos() < slice.paragraph().size()) {
+			Change::Type const ch = slice.paragraph().lookupChange(slice.pos());
+			if (ch != Change::UNCHANGED)
+				return ch;
+		}
+	}
+	return Change::UNCHANGED;
+}
+
 }
 
 LyXFunc::LyXFunc(LyXView * lv)
@@ -591,6 +613,15 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	    && !lyxaction.funcHasFlag(cmd.action, LyXAction::ReadOnly)
 	    && !lyxaction.funcHasFlag(cmd.action, LyXAction::NoBuffer)) {
 		flag.message(N_("Document is read-only"));
+		flag.enabled(false);
+	}
+
+	// Are we in a DELETED change-tracking region?
+	if (buf && buf->params().tracking_changes
+	    && lookupChange(cur, true) == Change::DELETED
+	    && !lyxaction.funcHasFlag(cmd.action, LyXAction::ReadOnly)
+	    && !lyxaction.funcHasFlag(cmd.action, LyXAction::NoBuffer)) {
+		flag.message(N_("This portion of the document is deleted."));
 		flag.enabled(false);
 	}
 

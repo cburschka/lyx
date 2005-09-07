@@ -165,15 +165,21 @@ Change const Paragraph::Pimpl::lookupChangeFull(pos_type pos) const
 }
 
 
-void Paragraph::Pimpl::markErased()
+void Paragraph::Pimpl::markErased(bool erased)
 {
 	BOOST_ASSERT(tracking());
 
-	// FIXME: we should actually remove INSERTED chars.
-	// difficult because owning insettexts/tabulars need
-	// to update themselves when rows etc. change
-	changes_->set(Change::DELETED, 0, size());
-	changes_->reset(Change::DELETED);
+	if (erased) {
+		erase(0, size());
+	} else {
+		pos_type i = 0;
+
+		for (pos_type i = 0; i < size(); ++i) {
+			changes_->set(Change::UNCHANGED, i);
+			if (owner_->isInset(i))
+				owner_->getInset(i)->markErased(false);
+		}
+	}
 }
 
 
@@ -187,7 +193,7 @@ void Paragraph::Pimpl::acceptChange(pos_type start, pos_type end)
 		return;
 	}
 
-	lyxerr << "acceptchange" << endl;
+	lyxerr[Debug::CHANGES] << "acceptchange" << endl;
 	pos_type i = start;
 
 	for (; i < end; ++i) {
@@ -208,7 +214,7 @@ void Paragraph::Pimpl::acceptChange(pos_type start, pos_type end)
 		}
 	}
 
-	lyxerr << "endacceptchange" << endl;
+	lyxerr[Debug::CHANGES] << "endacceptchange" << endl;
 	changes_->reset(Change::UNCHANGED);
 }
 
@@ -239,6 +245,8 @@ void Paragraph::Pimpl::rejectChange(pos_type start, pos_type end)
 
 			case Change::DELETED:
 				changes_->set(Change::UNCHANGED, i);
+				if (owner_->isInset(i))
+					owner_->getInset(i)->markErased(false);
 				break;
 		}
 	}
@@ -353,9 +361,8 @@ bool Paragraph::Pimpl::erase(pos_type pos)
 
 		// only allow the actual removal if it was /new/ text
 		if (changetype != Change::INSERTED) {
-			if (owner_->text_[pos] == Paragraph::META_INSET) {
-				owner_->getInset(pos)->markErased();
-			}
+			if (owner_->isInset(pos))
+				owner_->getInset(pos)->markErased(true);
 			return false;
 		}
 	}

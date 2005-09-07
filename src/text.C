@@ -152,10 +152,8 @@ int numberOfHfills(Paragraph const & par, Row const & row)
 
 
 void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
-	string const & token, LyXFont & font)
+	string const & token, LyXFont & font, Change & change)
 {
-	static Change change;
-
 	BufferParams const & bp = buf.params();
 
 	if (token[0] != '\\') {
@@ -346,10 +344,11 @@ void readParagraph(Buffer const & buf, Paragraph & par, LyXLex & lex)
 	lex.nextToken();
 	string token = lex.getString();
 	LyXFont font;
+	Change change;
 
 	while (lex.isOK()) {
 
-		readParToken(buf, par, lex, token, font);
+		readParToken(buf, par, lex, token, font, change);
 
 		lex.nextToken();
 		token = lex.getString();
@@ -1989,8 +1988,6 @@ void LyXText::write(Buffer const & buf, std::ostream & os) const
 
 bool LyXText::read(Buffer const & buf, LyXLex & lex)
 {
-	static Change current_change;
-
 	Paragraph::depth_type depth = 0;
 
 	while (lex.isOK()) {

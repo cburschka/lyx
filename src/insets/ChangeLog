@@ -1,3 +1,20 @@
+2005-08-03  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* insettabular.C (draw): pass PainterInfro::erased_ to
+	drawCellLines
+	(drawCellLines): add an erased bool and handle it.
+
+2005-08-03  John Levon  <levon@movementarian.org>
+	
+	* insettext.C (clear): remove bool argument.
+	(read): adapt to clear() changes.
+
+	* insettabular.C (cutSelection): adapt to MarkErased changes.
+
+	* insettext.C (markErased): 
+	* insettabular.C (markErased): 	
+	* insetbase.C (markErased): add bool argument.
+
 2005-09-06  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* insettabular.C: mark tabular_stack_ (of CutAndPaste) dirty
