@@ -463,7 +463,7 @@ string const subst(string const & a, char oldchar, char newchar)
 string const subst(string const & a,
 		   char const * oldstr, string const & newstr)
 {
-	lyx::Assert(oldstr);
+	lyx::Assert(oldstr && oldstr[0]);
 
 	string lstr(a);
 	string::size_type i = 0;
@@ -480,6 +480,8 @@ string const subst(string const & a,
 string const subst(string const & a,
 		   string const & oldstr, string const & newstr)
 {
+	lyx::Assert(!oldstr.empty());
+
 	string lstr(a);
 	string::size_type i = 0;
 	string::size_type const olen = oldstr.length();

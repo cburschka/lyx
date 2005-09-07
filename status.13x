@@ -44,9 +44,11 @@ What's new
 
 - Enable TeXFiles.sh to run when its path contains spaces.
 
+- Fix crash when trying to display current directory and ${HOME} is empty.
+
 * Configuration/Installation:
 
-- compile without STL compatibilty support, since some systems do that
+- compile without STL compatibility support, since some systems do that
   by default (Slackware, for ex.). [Qt only]
 
 - enable compilation of LyX on DragonFly BSD.

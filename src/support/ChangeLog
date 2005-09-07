@@ -1,3 +1,9 @@
+2005-08-31  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* filetools.C (MakeDisplayPath): fix bug when HOME is empty.
+
+	* lstrings.C (subst): the string to be replaced should not be empty.
+
 2005-07-12  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* package.C (get_default_user_support_dir): for windows and osx
