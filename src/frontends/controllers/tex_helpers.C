@@ -37,6 +37,7 @@ using support::LibFileSearch;
 using support::OnlyFilename;
 using support::package;
 using support::Path;
+using support::QuoteName;
 using support::split;
 using support::Systemcall;
 using support::token;
@@ -51,7 +52,8 @@ void rescanTexStyles()
 	Path p(package().user_support());
 	Systemcall one;
 	one.startscript(Systemcall::Wait,
-			"sh " + LibFileSearch("scripts", "TeXFiles.sh"));
+			"sh " +
+			QuoteName(LibFileSearch("scripts", "TeXFiles.sh")));
 }
 
 

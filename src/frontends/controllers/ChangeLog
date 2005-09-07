@@ -1,3 +1,8 @@
+2005-08-10  Angus Leeming  <leeming@lyx.org>
+
+	* tex_helpers.C (rescanTexStyles): Quote the path to TeXFiles.sh
+	to avoid problems with "paths with spaces".
+
 2005-08-07  Angus Leeming  <leeming@lyx.org>
 
 	* ControlExternal.C (origin_gui_str): ensure that the strings
