@@ -182,7 +182,7 @@ bool getStatus(LCursor cursor,
  */
 Change::Type lookupChange(DocIterator const & dit, bool outer = false)
 {
-	size_t const depth = dit.depth() - outer ? 1 : 0;
+	size_t const depth = dit.depth() - (outer ? 1 : 0);
 
 	for (size_t i = 0 ; i < depth ; ++i) {
 		CursorSlice const & slice = dit[i];

@@ -1,3 +1,8 @@
+2005-09-08  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyxfunc.C (lookupChange): fix code when cursor depth is greater
+	than 2.
+
 2005-09-08  Angus Leeming  <leeming@lyx.org>
 
 	* ispell.C:
