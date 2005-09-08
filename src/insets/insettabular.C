@@ -1419,9 +1419,6 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 		if (len.zero()
 		    && tabular.getAlignment(cur.idx(), true) == LYX_ALIGN_BLOCK)
 			tabularFeatures(cur, LyXTabular::ALIGN_CENTER, string());
-		else if (!len.zero()
-			 && tabular.getAlignment(cur.idx(), true) != LYX_ALIGN_BLOCK)
-			tabularFeatures(cur, LyXTabular::ALIGN_BLOCK, string());
 		break;
 	}
 
