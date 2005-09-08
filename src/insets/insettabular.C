@@ -1930,9 +1930,6 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 		if (vallen.zero()
 		    && tabular->GetAlignment(actcell, true) == LYX_ALIGN_BLOCK)
 			tabularFeatures(bv, LyXTabular::ALIGN_CENTER, string());
-		else if (!vallen.zero()
-			 && tabular->GetAlignment(actcell, true) != LYX_ALIGN_BLOCK)
-			tabularFeatures(bv, LyXTabular::ALIGN_BLOCK, string());
 	}
 	break;
 	case LyXTabular::SET_MPWIDTH:

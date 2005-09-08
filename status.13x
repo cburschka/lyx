@@ -46,6 +46,8 @@ What's new
 
 - Fix crash when trying to display current directory and ${HOME} is empty.
 
+- Don't force alignment to BLOCK when switching to fixed width cell (bug 1840)
+
 * Configuration/Installation:
 
 - compile without STL compatibility support, since some systems do that
