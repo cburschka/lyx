@@ -18,6 +18,7 @@
 #include <map>
 #include <string>
 
+#include "buffer.h"
 
 /// This represents a single counter.
 class Counter {
@@ -78,7 +79,7 @@ public:
 	/// according to the given format
 	std::string counterLabel(std::string const & format);
 	/// A complete label, like 1.a for enumerations
-	std::string enumLabel(std::string const & ctr, std::string const & langtype = "latin");
+	std::string enumLabel(std::string const & ctr, Buffer const & buf);
 private:
 	/// A counter label's single item, 1 for subsection number in
 	/// the 2.1.4 subsubsection number label.

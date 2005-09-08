@@ -22,6 +22,7 @@
 #include "Floating.h"
 #include "FloatList.h"
 #include "gettext.h"
+#include "language.h"
 #include "LaTeX.h"
 #include "lyxtextclass.h"
 #include "paragraph.h"
@@ -437,7 +438,7 @@ void setCounter(Buffer const & buf, ParIterator & it)
 
 		counters.step(enumcounter);
 
-		par.params().labelString(counters.enumLabel(enumcounter));
+		par.params().labelString(counters.enumLabel(enumcounter, buf));
 	} else if (layout->labeltype == LABEL_BIBLIO) {// ale970302
 		counters.step("bibitem");
 		int number = counters.value("bibitem");

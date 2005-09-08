@@ -6694,7 +6694,7 @@ msgstr "i הפסוה"
 
 #: lib/layouts/apa.layout:345 lib/layouts/apa.layout:346
 msgid "(\\alph{enumii})"
-msgstr ""
+msgstr "(\\hebrew{enumii})"
 
 #: lib/layouts/article.layout:18 lib/layouts/mwart.layout:23
 #: lib/layouts/paper.layout:31 lib/layouts/scrartcl.layout:20
@@ -9188,9 +9188,8 @@ msgid "Part \\Roman{part}"
 msgstr ""
 
 #: lib/layouts/numarticle.inc:16
-#, fuzzy
 msgid "\\Alph{section}"
-msgstr "ןוויכ"
+msgstr "\\hebrew{section}"
 
 #: lib/layouts/numarticle.inc:24 lib/layouts/numarticle.inc:25
 msgid "@Section@.\\arabic{subsection}"
@@ -9201,9 +9200,8 @@ msgid "@Subsection@.\\arabic{subsubsection}"
 msgstr ""
 
 #: lib/layouts/numarticle.inc:42 lib/layouts/numarticle.inc:43
-#, fuzzy
 msgid "@Subsubsection@.\\arabic{paragraph}"
-msgstr "הקספ תביבס"
+msgstr ""
 
 #: lib/layouts/numarticle.inc:51 lib/layouts/numarticle.inc:52
 msgid "@Paragraph@.\\arabic{subparagraph}"
@@ -9215,7 +9213,7 @@ msgstr ""
 
 #: lib/layouts/numreport.inc:15
 msgid "Appendix \\Alph{chapter}"
-msgstr ""
+msgstr "Appendix \\hebrew{chapter}"
 
 #: lib/layouts/numreport.inc:21
 msgid "\\arabic{chapter}.\\arabic{section}"
@@ -12113,6 +12111,18 @@ msgstr ""
 #: src/converter.C:596
 msgid "An empty output file was generated."
 msgstr ""
+
+#: src/counters.C:324
+msgid "\\arabic{enumi}."
+msgstr ".\\arabic{enumi}"
+
+#: src/counters.C:332
+msgid "\\roman{enumiii}."
+msgstr ".\\roman{enumiii}"
+
+#: src/counters.C:336
+msgid "\\Alph{enumiv}."
+msgstr ".\\Alph{enumiv}"
 
 #: src/debug.C:43
 msgid "Program initialisation"
