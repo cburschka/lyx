@@ -108,9 +108,9 @@ bool ControlSpellchecker::initialiseParams(std::string const &)
 	bool const success = speller_->error().empty();
 
 	if (!success) {
-		Alert::error(_("Spell-checker error"),
-			     _("The spell-checker could not be started")
-			     + '\n' + speller_->error());
+		Alert::error(_("Spellchecker error"),
+			     _("The spellchecker could not be started\n")
+			     + speller_->error());
 		speller_.reset(0);
 	}
 
@@ -185,7 +185,7 @@ WordLangTuple nextWord(DocIterator & cur, ptrdiff_t & progress,
 
 void ControlSpellchecker::check()
 {
-	lyxerr[Debug::GUI] << "spell check a word" << endl;
+	lyxerr[Debug::GUI] << "Check the spelling of a word" << endl;
 
 	SpellBase::Result res = SpellBase::OK;
 
@@ -262,15 +262,15 @@ bool ControlSpellchecker::checkAlive()
 
 	string message;
 	if (speller_->error().empty())
-		message = _("The spell-checker has died for some reason.\n"
+		message = _("The spellchecker has died for some reason.\n"
 			    "Maybe it has been killed.");
 	else
-		message = _("The spell-checker has failed.") 
-			+ '\n' + speller_->error();
+		message = _("The spellchecker has failed.\n") 
+			+ speller_->error();
 
 	dialog().CancelButton();
 
-	Alert::error(_("Spell-checker error"), message);
+	Alert::error(_("The spellchecker has failed"), message);
 	return false;
 }
 
@@ -289,7 +289,7 @@ void ControlSpellchecker::showSummary()
 		message = _("One word checked.");
 
 	dialog().CancelButton();
-	Alert::information(_("Spell-checking is complete"), message);
+	Alert::information(_("Spelling check completed"), message);
 }
 
 

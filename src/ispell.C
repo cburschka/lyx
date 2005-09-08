@@ -265,7 +265,7 @@ ISpell::ISpell(BufferParams const & params, string const & lang)
 		error_ = buf;
 	} else {
 		// select returned error
-		error_ = _("The spell process returned an error.\nPerhaps "
+		error_ = _("The ispell process returned an error.\nPerhaps "
 				"it has been configured wrongly ?");
 	}
 
@@ -374,7 +374,7 @@ enum ISpell::Result ISpell::check(WordLangTuple const & word)
 	bool error = select(err_read);
 
 	if (error) {
-		error_ = _("Could not communicate with the spell-checker program.");
+		error_ = _("Could not communicate with the ispell spellchecker process.");
 		return UNKNOWN_WORD;
 	}
 

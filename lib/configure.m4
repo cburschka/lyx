@@ -327,7 +327,7 @@ LYXRC_PROG([for ChkTeX], \chktex_command,dnl
    "chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38")
 
 # Search for a spellchecker
-LYXRC_PROG([for a spell-checker], \spell_command, ispell)
+LYXRC_PROG([for a spellchecker], \spell_command, ispell)
 
 # Search for computer algebra systems
 SEARCH_PROG([for Octave],OCTAVE,octave)

@@ -32,7 +32,7 @@ namespace frontend {
 
 GSpellchecker::GSpellchecker(Dialog & parent)
 	: GViewCB<ControlSpellchecker, GViewGladeB>
-		(parent, _("Spell-check document"), false)
+		(parent, _("Spellchecker"), false)
 {}
 
 

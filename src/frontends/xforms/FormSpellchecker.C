@@ -73,7 +73,7 @@ void FormSpellchecker::build()
 	tooltips().init(dialog_->button_accept, str);
 	str = _("Add unknown word to personal dictionary.");
 	tooltips().init(dialog_->button_add, str);
-	str = _("Shows word count and progress on spell check.");
+	str = _("Proportion of document checked.");
 	tooltips().init(dialog_->slider_progress, str);
 }
 

@@ -102,7 +102,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	string const ls = _("Language settings");
 	prefsPS->addCategory(ls);
 	prefsPS->addPanel(languageModule, _("Language"), ls);
-	prefsPS->addPanel(spellcheckerModule, _("Spell-checker"), ls);
+	prefsPS->addPanel(spellcheckerModule, _("Spellchecker"), ls);
 
 	string const op = _("Outputs");
 	prefsPS->addCategory(op);

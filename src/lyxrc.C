@@ -2390,7 +2390,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 
 	case RC_SPELL_COMMAND:
-		str = _("What command runs the spell checker?");
+		str = _("What command runs the spellchecker?");
 		break;
 
 	case RC_TEMPDIRPATH:
@@ -2418,7 +2418,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 
 	case RC_USE_INP_ENC:
-		str = _("Specify whether to pass the -T input encoding option to ispell. Enable this if you can't spellcheck words with international letters in them. This may not work with all dictionaries.");
+		str = _("Specify whether to pass the -T input encoding option to ispell. Enable this if you cannot check the spelling of words containing accented letters. This may not work with all dictionaries.");
 		break;
 
 	case RC_USE_SPELL_LIB:

@@ -70,7 +70,7 @@ AC_DEFUN([LYX_CHECK_SPELL_ENGINES],
     AC_MSG_CHECKING([whether to use ispell])
     if $lyx_use_ispell ; then
       AC_MSG_RESULT(yes)
-      AC_DEFINE(USE_ISPELL, 1, [Define as 1 to use an external ispell process for spell-checking])
+      AC_DEFINE(USE_ISPELL, 1, [Define as 1 to use an external ispell process to check spelling])
       lyx_flags="$lyx_flags use-ispell"
     else
       AC_MSG_RESULT(no)
