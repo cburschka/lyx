@@ -53,16 +53,9 @@ void InsetLine::draw(PainterInfo & pi, int x, int y) const
 
 
 int InsetLine::latex(Buffer const &, ostream & os,
-			OutputParams const &) const
+			OutputParams const & runparams) const
 {
-	os << "\\lyxline{}";
-
-/* was:
-	os << "\\lyxline{\\"
-		 << pit->getFont(bparams, 0, outerFont(pit, paragraphs)).latexSize()
-		 << "}\\vspace{-1\\parskip}";
-*/
-
+	os << "\\lyxline{\\" << runparams.local_font->latexSize() << '}';
 	return 0;
 }
 

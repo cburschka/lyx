@@ -19,7 +19,7 @@
 
 
 class ExportData;
-class Language;
+class LyXFont;
 
 
 class OutputParams {
@@ -48,19 +48,19 @@ public:
 
 	/** moving_arg == true means that the environment in which the inset
 	    is typeset is a moving argument. The inset should take care about
-	    fragile commands by preceding the latex with \protect.
+	    fragile commands by preceding the latex with \\protect.
 	*/
 	bool moving_arg;
 
 	/** intitle == true means that the environment in which the
-	    inset is typeset is part of a title (before a \maketitle).
+	    inset is typeset is part of a title (before a \\maketitle).
 	    Footnotes in such environments have moving arguments.
 	*/
 	bool intitle;
 
-	/** the language at the point where the inset is
+	/** the font at the point where the inset is
 	 */
-	Language const * local_language;
+	LyXFont const * local_font;
 
 	/** Document language babel name
 	 */

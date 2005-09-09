@@ -270,7 +270,7 @@ int InsetQuotes::latex(Buffer const &, ostream & os,
 	string qstr;
 
 	if (language_ == FrenchQ && times_ == DoubleQ
-	    && prefixIs(runparams.local_language->code(), "fr")) {
+	    && prefixIs(runparams.local_font->language()->code(), "fr")) {
 		if (side_ == LeftQ)
 			qstr = "\\og "; //the spaces are important here
 		else

@@ -1013,7 +1013,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 		if (output || running_change != Change::DELETED) {
 			OutputParams rp = runparams;
 			rp.free_spacing = style->free_spacing;
-			rp.local_language = font.language();
+			rp.local_font = &font;
 			rp.intitle = style->intitle;
 			pimpl_->simpleTeXSpecialChars(buf, bparams,
 						os, texrow, rp,

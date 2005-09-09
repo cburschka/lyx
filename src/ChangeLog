@@ -1,3 +1,8 @@
+2005-09-07  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* outputparams.[Ch]: store local_font instead of local_language
+	* paragraph.C (simpleTeXOnePar): adapt to the change above
+
 2005-09-08  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* buffer_funcs.C:

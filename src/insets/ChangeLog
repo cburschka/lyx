@@ -1,3 +1,8 @@
+2005-09-07  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* insetline.C (latex): write the size argument of \lyxline again
+	* insetquotes.C (latex): adapt to OutputParams changes
+
 2005-08-09  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* insettabular.C (tabularFeatures): don't force alignment to BLOCK
