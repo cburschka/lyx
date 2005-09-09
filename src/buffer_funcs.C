@@ -438,7 +438,27 @@ void setCounter(Buffer const & buf, ParIterator & it)
 
 		counters.step(enumcounter);
 
-		par.params().labelString(counters.enumLabel(enumcounter, buf));
+		string format;
+
+		switch (par.itemdepth) {
+		case 0:
+			format = N_("\\arabic{enumi}.");
+			break;
+		case 1:
+			format = N_("(\\alph{enumii})");
+			break;
+		case 2:
+			format = N_("\\roman{enumiii}.");
+			break;
+		case 3:
+			format = N_("\\Alph{enumiv}.");
+			break;
+		default:
+			// not a valid enumdepth...
+			break;
+		}
+
+		par.params().labelString(counters.counterLabel(buf.B_(format)));
 	} else if (layout->labeltype == LABEL_BIBLIO) {// ale970302
 		counters.step("bibitem");
 		int number = counters.value("bibitem");

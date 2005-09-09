@@ -14,7 +14,6 @@
 
 #include "counters.h"
 #include "debug.h"
-#include "gettext.h"
 
 #include "support/lstrings.h"
 #include "support/convert.h"
@@ -313,25 +312,4 @@ string Counters::counterLabel(string const & format)
 	}
 	//lyxerr << "counterLabel: " << format  << " -> "	<< label << endl;
 	return label;
-}
-
-
-string Counters::enumLabel(string const & ctr, Buffer const & buf)
-{
-	string format;
-
-	if (ctr == "enumi") {
-		format = N_("\\arabic{enumi}.");
-	}
- 	else if (ctr == "enumii") {
-		format = N_("(\\alph{enumii})");
-	}
- 	else if (ctr == "enumiii") { 
-		format = N_("\\roman{enumiii}.");
-	}
- 	else if (ctr == "enumiv") {
-		format = N_("\\Alph{enumiv}.");
-	}
-		
-	return counterLabel(buf.B_(format));
 }

@@ -1,3 +1,10 @@
+2005-09-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* buffer_funcs.C (setCounter): put the code to compute enum label
+	here (where it belongs).
+
+	* counters.C (enumLabel): move code to buffer_funcs.C.
+
 2005-09-07  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* outputparams.[Ch]: store local_font instead of local_language
