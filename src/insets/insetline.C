@@ -17,6 +17,7 @@
 #include "lyxtext.h"
 #include "metricsinfo.h"
 #include "LaTeXFeatures.h"
+#include "outputparams.h"
 
 #include "frontends/Painter.h"
 
