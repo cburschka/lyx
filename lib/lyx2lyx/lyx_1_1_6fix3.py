@@ -27,6 +27,7 @@ def bool_table(item):
     return "true"
 
 
+align_vertical = {"0": "top", "1": "bottom", "2": "center"}
 align_table = {"0": "top", "2": "left", "4": "right", "8": "center"}
 use_table = {"0": "none", "1": "parbox"}
 table_meta_re = re.compile(r'<LyXTabular version="?1"? rows="?(\d*)"? columns="?(\d*)"?>')
@@ -95,7 +96,7 @@ def table_update(lines):
         res = cell_re.match(lines[i])
         if res:
             val = res.groups()
-            lines[i] = '<cell multicolumn="%s" alignment="%s" valignment="%s" topline="%s" bottomline="%s" leftline="%s" rightline="%s" rotate="%s" usebox="%s" width="%s" special="%s">' % ( val[0], align_table[val[1]], align_table[val[2]], bool_table(val[3]), bool_table(val[4]), bool_table(val[5]), bool_table(val[6]), bool_table(val[7]), use_table[val[8]], val[9], val[10])
+            lines[i] = '<cell multicolumn="%s" alignment="%s" valignment="%s" topline="%s" bottomline="%s" leftline="%s" rightline="%s" rotate="%s" usebox="%s" width="%s" special="%s">' % ( val[0], align_table[val[1]], align_vertical[val[2]], bool_table(val[3]), bool_table(val[4]), bool_table(val[5]), bool_table(val[6]), bool_table(val[7]), use_table[val[8]], val[9], val[10])
 
         res = row_re.match(lines[i])
         if res:
@@ -110,7 +111,7 @@ def table_update(lines):
         if res:
             val = res.groups()
             col_info[i] = '<column alignment="%s" valignment="%s" leftline="%s" rightline="%s" width="%s" special="%s">' \
-                          % ( align_table[val[0]], align_table[val[1]], bool_table(val[2]), bool_table(val[3]), val[4],val[5])
+                          % ( align_table[val[0]], align_vertical[val[1]], bool_table(val[2]), bool_table(val[3]), val[4],val[5])
 
     return lines[:2] + col_info + lines[2:]
 

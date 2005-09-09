@@ -193,13 +193,6 @@ def header_update(file):
     i = 0
     l = len(lines)
     while i < l:
-        if check_token(lines[i], '\\begin_preamble'):
-            i = find_token(lines, '\\end_preamble', i)
-            if i == -1:
-                file.error('Unfinished preamble')
-            i = i + 1
-            continue
-
         if lines[i][-1:] == ' ':
             lines[i] = lines[i][:-1]
 

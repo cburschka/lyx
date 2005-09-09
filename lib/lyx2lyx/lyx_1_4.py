@@ -907,92 +907,258 @@ def convert_ertbackslash(body, i, ert):
     return i
 
 
-def convert_vspace(file):
+# get all paragraph parameters. They can be all on one line or on several lines.
+# lines[i] must be the first parameter line
+def get_par_params(lines, i):
+    par_params = ('added_space_bottom', 'added_space_top', 'align',
+                 'labelwidthstring', 'line_bottom', 'line_top', 'noindent',
+                 'pagebreak_bottom', 'pagebreak_top', 'paragraph_spacing',
+                 'start_of_appendix')
+    # We cannot check for '\\' only because paragraphs may start e.g.
+    # with '\\backslash'
+    params = ''
+    while lines[i][:1] == '\\' and split(lines[i][1:])[0] in par_params:
+        params = params + ' ' + strip(lines[i])
+	i = i + 1
+    return strip(params)
+
+
+# Change vspace insets, page breaks and lyxlines to paragraph options
+# (if possible) or ERT
+def revert_breaks(file):
 
     # Get default spaceamount
     i = find_token(file.header, '\\defskip', 0)
     if i == -1:
-	defskipamount = 'medskip'
+        defskipamount = 'medskip'
     else:
-	defskipamount = split(file.header[i])[1]
+        defskipamount = split(file.header[i])[1]
+
+    keys = {"\\begin_inset" : "vspace", "\\lyxline" : "lyxline",
+            "\\newpage" : "newpage"}
+    keywords_top = {"vspace" : "\\added_space_top", "lyxline" : "\\line_top",
+                    "newpage" : "\\pagebreak_top"}
+    keywords_bot = {"vspace" : "\\added_space_bottom", "lyxline" : "\\line_bottom",
+                    "newpage" : "\\pagebreak_bottom"}
+    tokens = ["\\begin_inset VSpace", "\\lyxline", "\\newpage"]
 
     # Convert the insets
     i = 0
     while 1:
-        i = find_token(file.body, '\\begin_inset VSpace', i)
+        i = find_tokens(file.body, tokens, i)
         if i == -1:
             return
-	spaceamount = split(file.body[i])[2]
+        lines = list()
+        insets = list()
+        lines.append(split(file.body[i]))
+        insets.append(keys[lines[0][0]])
 
-	# Are we at the beginning or end of a paragraph?
-	paragraph_start = 1
-	start = get_paragraph(file.body, i) + 1
-	for k in range(start, i):
-	    if is_nonempty_line(file.body[k]):
-		paragraph_start = 0
-		break
-	paragraph_end = 1
-	j = find_end_of_inset(file.body, i)
-	if j == -1:
-	    file.warning("Malformed LyX file: Missing '\\end_inset'.")
-	    i = i + 1
-	    continue
-	end = get_next_paragraph(file.body, i)
-	for k in range(j + 1, end):
-	    if is_nonempty_line(file.body[k]):
-		paragraph_end = 0
-		break
+        # Are we at the beginning of a paragraph?
+        paragraph_start = 1
+        start = get_paragraph(file.body, i) + 1
+        params = get_par_params(file.body, start)
+        # Paragraph parameters may be on one or more lines.
+        # Find the start of the real paragraph text.
+        while file.body[start][:1] == '\\' and split(file.body[start])[0] in params:
+            start = start + 1
+        for k in range(start, i):
+            if is_nonempty_line(file.body[k]):
+                paragraph_start = 0
+                break
 
-	# Convert to paragraph formatting if we are at the beginning or end
-	# of a paragraph and the resulting paragraph would not be empty
-	if ((paragraph_start and not paragraph_end) or
-	    (paragraph_end   and not paragraph_start)):
-	    # The order is important: del and insert invalidate some indices
-	    del file.body[j]
-	    del file.body[i]
-	    if paragraph_start:
-		file.body.insert(start, '\\added_space_top ' + spaceamount + ' ')
-	    else:
-		file.body.insert(start, '\\added_space_bottom ' + spaceamount + ' ')
-	    continue
+        # Are we at the end of a paragraph?
+        paragraph_end = 1
+        if insets[0] == "vspace":
+            j = find_end_of_inset(file.body, i)
+            if j == -1:
+                file.warning("Malformed lyx file: Missing '\\end_inset'.")
+                i = i + 1
+                continue
+        else:
+            j = i
+        end = get_next_paragraph(file.body, i)
+        for k in range(j + 1, end):
+            if is_nonempty_line(file.body[k]):
+                paragraph_end = 0
+                break
 
-	# Convert to ERT
-	file.body[i:i+1] = ['\\begin_inset ERT', 'status Collapsed', '',
-	                '\\layout Standard', '', '\\backslash ']
-	i = i + 6
-	if spaceamount[-1] == '*':
-	    spaceamount = spaceamount[:-1]
-	    keep = 1
-	else:
-	    keep = 0
+        # Detect paragraphs created by convert_breaks()
+        before = 0
+        after = 0
+        if paragraph_start:
+            # Make a copy of the paragraph, since we need to strip empty lines
+            paragraph = list()
+            for k in range(start, end):
+                if is_nonempty_line(file.body[k]):
+                    if (len(paragraph) > 0 and
+		        find_token(file.body, "\\end_inset", k) == k):
+                        paragraph[len(paragraph) - 1] = paragraph[len(paragraph) - 1] + ' ' + file.body[k]
+                    else:
+                        paragraph.append(file.body[k])
 
-	# Replace defskip by the actual value
-	if spaceamount == 'defskip':
-	    spaceamount = defskipamount
+            # Do we have a second inset to convert in this paragraph?
+            if ((len(paragraph) == 2 or len(paragraph) == 3) and
+	        find_tokens(paragraph, tokens, 1) == 1):
+                lines.append(split(paragraph[1]))
+                insets.append(keys[lines[1][0]])
+                del paragraph[1]
+                # Do we have a third inset to convert in this paragraph?
+                if (len(paragraph) == 2 and
+		    find_tokens(paragraph, tokens, 1) == 1):
+                    lines.append(split(paragraph[1]))
+                    insets.append(keys[lines[2][0]])
+                    del paragraph[1]
 
-	# LaTeX does not know \\smallskip* etc
-	if keep:
-	    if spaceamount == 'smallskip':
-		spaceamount = '\\smallskipamount'
-	    elif spaceamount == 'medskip':
-		spaceamount = '\\medskipamount'
-	    elif spaceamount == 'bigskip':
-		spaceamount = '\\bigskipamount'
-	    elif spaceamount == 'vfill':
-		spaceamount = '\\fill'
+            if len(paragraph) == 1:
+                # We have only insets that need to be converted in this paragraph
+                if ((len(insets) == 3 and insets[0] == "newpage" and
+		     insets[1] == "vspace" and insets[2] == "lyxline") or
+                    (len(insets) == 2 and
+		     ((insets[0] == "newpage" and insets[1] == "vspace") or
+                      (insets[0] == "newpage" and insets[1] == "lyxline") or
+                      (insets[0] == "vspace"  and insets[1] == "lyxline")))):
+                    # This paragraph has been created before a paragraph by
+                    # convert_breaks()
+                    before = 1
+                    paragraph_start = 1
+                    paragraph_end = 1
+                if ((len(insets) == 3 and insets[0] == "lyxline" and
+		     insets[1] == "vspace" and insets[2] == "newpage") or
+                    (len(insets) == 2 and
+		     ((insets[0] == "lyxline" and insets[1] == "vspace") or
+                      (insets[0] == "lyxline" and insets[1] == "newpage") or
+                      (insets[0] == "vspace"  and insets[1] == "newpage")))):
+                    # This paragraph has been created after a paragraph by
+                    # convert_breaks()
+                    paragraph_start = 1
+                    paragraph_end = 1
+                    after = 1
 
-	# Finally output the LaTeX code
-	if (spaceamount == 'smallskip' or spaceamount == 'medskip' or
-	    spaceamount == 'bigskip'   or spaceamount == 'vfill'):
-	    file.body.insert(i, spaceamount)
-	else :
-	    if keep:
-		file.body.insert(i, 'vspace*{')
-	    else:
-		file.body.insert(i, 'vspace{')
-	    i = convert_ertbackslash(file.body, i, spaceamount)
-            file.body[i] =  file.body[i] + '}'
-        i = i + 1
+        # Determine space amount for vspace insets
+        spaceamount = list()
+        arguments = list()
+        for k in range(len(lines)):
+            if insets[k] == "vspace":
+                spaceamount.append(lines[k][2])
+                arguments.append(' ' + spaceamount[k] + ' ')
+            else:
+                spaceamount.append('')
+                arguments.append(' ')
+
+        if paragraph_start and paragraph_end:
+            # We are in a paragraph of our own.
+            # We must not delete this paragraph if it has parameters
+            if params == '':
+                # First try to merge with the previous paragraph.
+                # We try the previous paragraph first because we would
+                # otherwise need ERT for two subsequent vspaces.
+                prev_par = get_paragraph(file.body, start - 2) + 1
+                if prev_par > 0 and not before:
+                    prev_params = get_par_params(file.body, prev_par + 1)
+                    ert = 0
+                    n = len(insets)
+                    for k in range(n):
+                        if keywords_bot[insets[k]] in prev_params:
+                            ert = 1
+                            break
+                    if not ert:
+                        for k in range(len(insets)):
+                            file.body.insert(prev_par + 1,
+                                             keywords_bot[insets[k]] + arguments[k])
+                        del file.body[start-1+n:end+n]
+                        i = start + n
+                        continue
+                # Then try next paragraph
+                next_par = end
+                if next_par > 0 and not after:
+                    next_params = get_par_params(file.body, next_par + 1)
+                    ert = 0
+                    n = len(insets)
+                    for k in range(n):
+                        if keywords_top[insets[k]] in next_params:
+                            ert = 1
+                            break
+                    if not ert:
+                        for k in range(len(insets)):
+                            file.body.insert(next_par + 1,
+                                             keywords_top[insets[k]] + arguments[k])
+                        del file.body[start-1:end]
+                        i = start
+                        continue
+        else:
+            # Convert to paragraph formatting if we are at the beginning or end
+            # of a paragraph and the resulting paragraph would not be empty
+            # The order is important: del and insert invalidate some indices
+            if paragraph_start:
+                if j != i:
+                    del file.body[j]
+                del file.body[i]
+                file.body.insert(start, keywords_top[insets[0]] + arguments[0])
+                continue
+            elif paragraph_end:
+                if j != i:
+                    del file.body[j]
+                del file.body[i]
+                file.body.insert(start, keywords_bot[insets[0]] + arguments[0])
+                continue
+
+        # Convert the first inset to ERT.
+        # The others are converted in the next loop runs (if they exist)
+        if insets[0] == "vspace":
+            file.body[i:i+1] = ['\\begin_inset ERT', 'status Collapsed', '',
+                                '\\layout Standard', '', '\\backslash ']
+            i = i + 6
+            if spaceamount[0][-1] == '*':
+                spaceamount[0] = spaceamount[0][:-1]
+                keep = 1
+            else:
+                keep = 0
+
+            # Replace defskip by the actual value
+            if spaceamount[0] == 'defskip':
+                spaceamount[0] = defskipamount
+
+            # LaTeX does not know \\smallskip* etc
+            if keep:
+                if spaceamount[0] == 'smallskip':
+                    spaceamount[0] = '\\smallskipamount'
+                elif spaceamount[0] == 'medskip':
+                    spaceamount[0] = '\\medskipamount'
+                elif spaceamount[0] == 'bigskip':
+                    spaceamount[0] = '\\bigskipamount'
+                elif spaceamount[0] == 'vfill':
+                    spaceamount[0] = '\\fill'
+
+            # Finally output the LaTeX code
+            if (spaceamount[0] == 'smallskip' or spaceamount[0] == 'medskip' or
+                spaceamount[0] == 'bigskip'   or spaceamount[0] == 'vfill'):
+                file.body.insert(i, spaceamount[0] + '{}')
+            else :
+                if keep:
+                    file.body.insert(i, 'vspace*{')
+                else:
+                    file.body.insert(i, 'vspace{')
+                i = convert_ertbackslash(file.body, i, spaceamount[0])
+                file.body[i] = file.body[i] + '}'
+            i = i + 1
+        elif insets[0] == "lyxline":
+            file.body[i:i+1] = ['\\begin_inset ERT', 'status Collapsed', '',
+                                '\\layout Standard', '', '\\backslash',
+                                'lyxline{}', '', '\\end_inset', '']
+            i = i + 10
+            # We use \providecommand so that we don't get an error if native
+            # lyxlines are used (LyX writes first its own preamble and then
+            # the user specified one)
+            add_to_preamble(file,
+                            ['% Commands inserted by lyx2lyx for lyxlines',
+                             '\\providecommand{\\lyxline}[1]{',
+                             '  {#1 \\vspace{1ex} \\hrule width \\columnwidth \\vspace{1ex}}'
+                             '}'])
+        elif insets[0] == "newpage":
+            file.body[i:i+1] = ['\\begin_inset ERT', 'status Collapsed', '',
+                                '\\layout Standard', '', '\\backslash',
+                                'newpage{}', '', '\\end_inset', '']
+            i = i + 10
 
 
 # Convert a LyX length into a LaTeX length
@@ -1045,21 +1211,10 @@ def insert_ert(body, i, status, text):
 # Add text to the preamble if it is not already there.
 # Only the first line is checked!
 def add_to_preamble(file, text):
-    i = find_token(file.header, '\\begin_preamble', 0)
-    if i == -1:
-        file.header.extend(['\\begin_preamble'] + text + ['\\end_preamble'])
+    if find_token(file.preamble, text[0], 0) != -1:
         return
 
-    j = find_token(file.header, '\\end_preamble', i)
-    if j == -1:
-        file.warning("Malformed LyX file: Missing '\\end_preamble'.")
-        file.warning("Adding it now and hoping for the best.")
-        file.header.append('\\end_preamble')
-        j = len(file.header)
-
-    if find_token(file.header, text[0], i, j) != -1:
-        return
-    file.header[j:j] = text
+    file.preamble.extend(text)
 
 
 def convert_frameless_box(file):
@@ -1526,9 +1681,9 @@ def convert_paperpackage(file):
     packages = {'default':'none','a4':'none', 'a4wide':'a4', 'widemarginsa4':'a4wide'}
     if len(split(file.header[i])) > 1:
         paperpackage = split(file.header[i])[1]
+        file.header[i] = replace(file.header[i], paperpackage, packages[paperpackage])
     else:
-        paperpackage = "default"
-    file.header[i] = replace(file.header[i], paperpackage, packages[paperpackage])
+        file.header[i] = file.header[i] + ' widemarginsa4'
 
 
 def revert_paperpackage(file):
@@ -1693,7 +1848,7 @@ def use_x_binary(file):
 #
 def normalize_paragraph_params(file):
     body = file.body
-    allowed_parameters = '\\paragraph_spacing', '\\noindent', '\\align', '\\labelwidthstring', "\\start_of_appendix"
+    allowed_parameters = '\\paragraph_spacing', '\\noindent', '\\align', '\\labelwidthstring', "\\start_of_appendix", "\\leftindent"
 
     i = 0
     while 1:
@@ -1874,16 +2029,10 @@ def remove_paperpackage(file):
     paperpackage = split(file.header[i])[1]
 
     if paperpackage in ("a4", "a4wide", "widemarginsa4"):
-        j = find_token(file.header, '\\begin_preamble', 0)
         conv = {"a4":"\\usepackage{a4}","a4wide": "\\usepackage{a4wide}",
                 "widemarginsa4": "\\usepackage[widemargins]{a4}"}
-        if j == -1:
-            # Add preamble
-            j = len(file.header) - 2
-            file.header[j:j]=["\\begin_preamble",
-                              conv[paperpackage],"\\end_preamble"]
-        else:
-            file.header[j+1:j+1] = conv[paperpackage]
+        # for compatibility we ensure it is the first entry in preamble
+        file.preamble[0:0] = [conv[paperpackage]]
 
     del file.header[i]
 
@@ -1896,8 +2045,8 @@ def remove_paperpackage(file):
 # Convertion hub
 #
 
-convert = [[223, [insert_tracking_changes, add_end_header, remove_color_default,
-                  convert_spaces, convert_bibtex, remove_insetparent]],
+convert = [[222, [insert_tracking_changes, add_end_header]],
+           [223, [remove_color_default, convert_spaces, convert_bibtex, remove_insetparent]],
            [224, [convert_external, convert_comment]],
            [225, [add_end_layout, layout2begin_layout, convert_end_document,
                   convert_table_valignment_middle, convert_breaks]],
@@ -1941,10 +2090,10 @@ revert =  [[242, []],
            [226, [revert_box, revert_external_2]],
            [225, [revert_note]],
            [224, [rm_end_layout, begin_layout2layout, revert_end_document,
-                  revert_valignment_middle, convert_vspace, convert_frameless_box]],
+                  revert_valignment_middle, revert_breaks, convert_frameless_box]],
            [223, [revert_external_2, revert_comment, revert_eqref]],
-           [221, [rm_end_header, revert_spaces, revert_bibtex,
-                  rm_tracking_changes, rm_body_changes]]]
+           [222, [revert_spaces, revert_bibtex]],
+           [221, [rm_end_header, rm_tracking_changes, rm_body_changes]]]
 
 
 if __name__ == "__main__":
