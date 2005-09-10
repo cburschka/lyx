@@ -1,3 +1,13 @@
+2005-08-10  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* insetbase.[Ch]: new bool neverIndent() which indicates if
+	an inset does not want paragraph indentation at all.
+	* insetcharstyle.h:
+	* insetert.h:
+	* insetoptarg.h: return true for neverIndent()
+	* insettext.[Ch]: return true for neverIndent() in case
+	of tabular cells (based on a crude guess).
+
 2005-09-09  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* insetline.C: Add forgotten include

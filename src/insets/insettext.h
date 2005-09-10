@@ -139,6 +139,8 @@ public:
 	bool insetAllowed(Code) const { return true; }
 	///
 	bool allowSpellCheck() const { return true; }
+	/// should paragraph indendation be ommitted in any case?
+	bool neverIndent() const;
 	///
 	InsetText(InsetText const &);
 

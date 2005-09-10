@@ -48,6 +48,9 @@ public:
 			  OutputParams const &) const;
 	/// Write out tothe .lyx file
 	void write(Buffer const & buf, std::ostream & os) const;
+
+	/// should paragraph indendation be ommitted in any case?
+	virtual bool neverIndent() const { return true; }
 protected:
 	InsetOptArg(InsetOptArg const &);
 private:

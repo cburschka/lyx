@@ -442,6 +442,15 @@ void InsetText::addPreview(PreviewLoader & loader) const
 }
 
 
+//FIXME: instead of this hack, which only works by chance,
+// cells should have their own insetcell type, which returns CELL_CODE!
+bool InsetText::neverIndent() const
+{
+	// this is only true for tabular cells
+	return !text_.isMainText() && lyxCode() == TEXT_CODE;
+}
+
+
 ParagraphList const & InsetText::paragraphs() const
 {
 	return text_.paragraphs();

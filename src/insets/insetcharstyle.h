@@ -86,6 +86,9 @@ public:
 	///
 	InsetCharStyleParams const & params() const { return params_; }
 
+	/// should paragraph indendation be ommitted in any case?
+	bool neverIndent() const { return true; }
+
 protected:
 	InsetCharStyle(InsetCharStyle const &);
 	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);

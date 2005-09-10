@@ -1,3 +1,9 @@
+2005-08-10  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* text.C (leftMargin): test for insetbase's new neverIndent()
+	bool instead of listing each and every inset that does not
+	wish par indendation.
+
 2005-09-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* buffer_funcs.C (setCounter): put the code to compute enum label

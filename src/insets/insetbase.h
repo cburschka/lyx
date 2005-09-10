@@ -338,6 +338,8 @@ public:
 	virtual bool display() const { return false; }
 	/// should we break lines after this inset?
 	virtual bool isLineSeparator() const { return false; }
+	/// should paragraph indendation be ommitted in any case?
+	virtual bool neverIndent() const { return false; }
 	/// dumps content to lyxerr
 	virtual void dump() const;
 	/// write inset in .lyx format

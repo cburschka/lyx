@@ -591,14 +591,12 @@ int LyXText::leftMargin(pit_type const pit, pos_type const pos) const
 	           && !isFirstInSequence(pit, pars_)))
 	    && align == LYX_ALIGN_BLOCK
 	    && !par.params().noindent()
+	    // in some insets, paragraphs are never indented
+	    && !par.inInset()->neverIndent()
 	    // display style insets are always centered, omit indentation
 	    && !(!par.empty()
 		    && par.isInset(pos)
 		    && par.getInset(pos)->display())
-	    // in charstyles, tabulars and ert paragraphs are never indented!
-	    && ((par.ownerCode() != InsetBase::TEXT_CODE || isMainText())
-	            && par.ownerCode() != InsetBase::ERT_CODE
-		    && par.ownerCode() != InsetBase::CHARSTYLE_CODE)
 	    && (par.layout() != tclass.defaultLayout()
 	        || bv()->buffer()->params().paragraph_separation ==
 	           BufferParams::PARSEP_INDENT))
