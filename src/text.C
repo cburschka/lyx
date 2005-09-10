@@ -592,7 +592,7 @@ int LyXText::leftMargin(pit_type const pit, pos_type const pos) const
 	    && align == LYX_ALIGN_BLOCK
 	    && !par.params().noindent()
 	    // in some insets, paragraphs are never indented
-	    && !par.inInset()->neverIndent()
+	    && !(par.inInset() && par.inInset()->neverIndent())
 	    // display style insets are always centered, omit indentation
 	    && !(!par.empty()
 		    && par.isInset(pos)
