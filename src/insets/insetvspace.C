@@ -102,10 +102,21 @@ void InsetVSpace::write(Buffer const &, ostream & os) const
 }
 
 
+string const InsetVSpace::label() const
+{
+	static string const label = _("Vertical Space");
+	return label + " (" + space_.asGUIName() + ')';
+}
+
+
+namespace {
+int const arrow_size = 4;
+}
+
+
 void InsetVSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	int size = 10;
-	int const arrow_size = 4;
 	int const space_size = space_.inPixels(*mi.base.bv);
 
 	LyXFont font;
@@ -119,7 +130,12 @@ void InsetVSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 
 	dim.asc = size / 2;
 	dim.des = size / 2;
-	dim.wid = 10 + 2 * ADD_TO_VSPACE_WIDTH;
+	int w = 0;
+	int a = 0;
+	int d = 0;
+	font.decSize();
+	font_metrics::rectText(label(), font, w, a, d);
+	dim.wid = ADD_TO_VSPACE_WIDTH + 2 * arrow_size + 5 + w;
 
 	dim_ = dim;
 }
@@ -127,24 +143,19 @@ void InsetVSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetVSpace::draw(PainterInfo & pi, int x, int y) const
 {
-	static std::string const label = _("Vertical Space");
-
 	setPosCache(pi, x, y);
 
 	x += ADD_TO_VSPACE_WIDTH;
 
-	int const arrow_size = 4;
 	int const start = y - dim_.asc;
 	int const end   = y + dim_.des;
 
 	// the label to display (if any)
-	string str;
+	string const str = label();
 	// y-values for top arrow
 	int ty1, ty2;
 	// y-values for bottom arrow
 	int by1, by2;
-
-	str = label + " (" + space_.asGUIName() + ")";
 
 	if (space_.kind() == VSpace::VFILL) {
 		ty1 = ty2 = start;
@@ -171,7 +182,7 @@ void InsetVSpace::draw(PainterInfo & pi, int x, int y) const
 	font.setColor(LColor::added_space);
 	font.decSize();
 	font.decSize();
-	font_metrics::rectText(str, font, w, a, d);
+	font_metrics::rectText(label(), font, w, a, d);
 
 	pi.pain.rectText(x + 2 * arrow_size + 5, y + d,
 		       str, font, LColor::none, LColor::none);
