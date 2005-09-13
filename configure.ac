@@ -31,7 +31,8 @@ done
 AC_PROG_MAKE_SET
 AC_PROG_INSTALL
 
-AC_SUBST(AWK,[gawk])
+AC_PROG_AWK
+test "$AWK" = gawk && AWK="gawk --posix"
 
 #AC_PROG_RANLIB
 AC_CHECK_PROG(KPSEWHICH, kpsewhich, kpsewhich, :)
