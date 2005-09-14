@@ -218,6 +218,9 @@ dnl qt build will fail without moc or uic
 	  if test -z "$UIC"; then
 	    LYX_ERROR([uic binary not found !])
 	  fi
+	  if test -z "$QT_LIB"; then
+	    LYX_ERROR([qt library not found !])
+	  fi
       ;;
     *)
 	  LYX_ERROR(Unknown frontend '$frontend');;
