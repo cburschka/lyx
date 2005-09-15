@@ -1,5 +1,11 @@
 2005-09-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	* BufferView_pimpl.C (setBuffer): when one wants to set the layout
+	combox, it is necessary to search for the topmost paragraph in the
+	cursor stack (bug 1926)
+
+2005-09-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
 	* text2.C (cursorEnd, cursorRight): do not set boundary to true at
 	end of paragraph. (bug 2010)
 

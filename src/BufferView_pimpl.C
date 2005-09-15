@@ -386,8 +386,20 @@ void BufferView::Pimpl::setBuffer(Buffer * b)
 	owner_->updateWindowTitle();
 
 	// This is done after the layout combox has been populated
-	if (buffer_)
-		owner_->setLayout(cursor_.paragraph().layout()->name());
+	if (buffer_) {
+		size_t i = cursor_.depth() - 1;
+		// we know we'll eventually find a paragraph
+		while (true) {
+			CursorSlice const & slice = cursor_[i];
+			if (!slice.inset().inMathed()) {
+				LyXLayout_ptr const layout = slice.paragraph().layout();
+				owner_->setLayout(layout->name());
+				break;
+			}
+			BOOST_ASSERT(i>0);
+			--i;
+		}
+	}	
 
 	if (buffer_ && lyx::graphics::Previews::status() != LyXRC::PREVIEW_OFF)
 		lyx::graphics::Previews::get().generateBufferPreviews(*buffer_);
