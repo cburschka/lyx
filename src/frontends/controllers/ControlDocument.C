@@ -103,32 +103,33 @@ void ControlDocument::dispatchParams()
 	dispatch_bufferparams(kernel(), params(), LFUN_BUFFERPARAMS_APPLY);
 
 	// redo the numbering if necessary
-	if (new_secnumdepth != old_secnumdepth) {
+	if (new_secnumdepth != old_secnumdepth)
 		updateCounters(kernel().buffer());
-		kernel().bufferview()->update();
-	}
 
 	// Generate the colours requested by each new branch.
 	BranchList & branchlist = params().branchlist();
-	if (branchlist.empty())
-		return;
-
-	BranchList::const_iterator it = branchlist.begin();
-	BranchList::const_iterator const end = branchlist.end();
-	for (; it != end; ++it) {
-		string const & current_branch = it->getBranch();
-		Branch const * branch = branchlist.find(current_branch);
-		string x11hexname = branch->getColor();
-		// check that we have a valid color!
-		if (x11hexname.empty() || x11hexname[0] != '#')
-			x11hexname = lcolor.getX11Name(LColor::background);
-		// display the new color
-		string const str = current_branch  + ' ' + x11hexname;
-		kernel().dispatch(FuncRequest(LFUN_SET_COLOR, str));
+	if (!branchlist.empty()) {
+		BranchList::const_iterator it = branchlist.begin();
+		BranchList::const_iterator const end = branchlist.end();
+		for (; it != end; ++it) {
+			string const & current_branch = it->getBranch();
+			Branch const * branch = branchlist.find(current_branch);
+			string x11hexname = branch->getColor();
+			// check that we have a valid color!
+			if (x11hexname.empty() || x11hexname[0] != '#')
+				x11hexname = 
+					lcolor.getX11Name(LColor::background);
+			// display the new color
+			string const str = current_branch  + ' ' + x11hexname;
+			kernel().dispatch(FuncRequest(LFUN_SET_COLOR, str));
+		}
+	
+		// Open insets of selected branches, close deselected ones
+		kernel().dispatch(FuncRequest(LFUN_ALL_INSETS_TOGGLE, 
+			"assign branch"));
 	}
-
-	// Open insets of selected branches, close deselected ones
-	kernel().dispatch(FuncRequest(LFUN_ALL_INSETS_TOGGLE, "assign branch"));
+	// update the bufferview
+	kernel().bufferview()->update();
 }
 
 

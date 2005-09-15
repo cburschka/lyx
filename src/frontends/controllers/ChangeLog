@@ -1,3 +1,8 @@
+2005-09-15  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* ControlDocument.C (dispatchParams): update bufferview at the end
+	(fixes bug 2023).
+
 2005-09-08  Angus Leeming  <leeming@lyx.org>
 
 	* ControlSpellchecker.C: correct grammar describing invocation of the
