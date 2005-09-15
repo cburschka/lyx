@@ -275,8 +275,6 @@ void QCitationDialog::doFind(biblio::Direction dir)
 	// Find the NEXT instance...
 	if (dir == biblio::FORWARD)
 		start += 1;
-	else
-		start -= 1;
 
 	bool const caseSensitive = searchCaseCB->isChecked();
 

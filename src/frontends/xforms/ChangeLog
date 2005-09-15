@@ -1,3 +1,8 @@
+2005-09-15  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* FormCitation.C (findBiblio): correct start iterator when 
+	searching backwards (bug 2002).
+
 2005-07-22  Angus Leeming  <leeming@lyx.org>
 
 	* FormSearch.C (input): do not trim the find and replace strings.

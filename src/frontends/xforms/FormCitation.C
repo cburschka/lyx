@@ -234,7 +234,8 @@ void FormCitation::findBiblio(biblio::Direction const dir)
 		start += sel - 1;
 
 	// Find the NEXT instance...
-	(dir == biblio::FORWARD) ? ++start : --start;
+	if (dir == biblio::FORWARD)
+		start += 1;
 
 
 	vector<string>::const_iterator const cit =

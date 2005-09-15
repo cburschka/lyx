@@ -1,3 +1,8 @@
+2005-09-15  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QCitationDialog.C (find): correct start iterator when searching
+	backwards (bug 2002).
+
 2005-07-22  Angus Leeming  <leeming@lyx.org>
 
 	* QRef.C (update_contents): disable the OK button when the dialog is
