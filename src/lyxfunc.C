@@ -1408,6 +1408,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				    || inset_code == it->lyxCode())
 					it->dispatch(cur, fr);
 			}
+			update = true;
 			break;
 		}
 
