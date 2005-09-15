@@ -1,3 +1,8 @@
+2005-09-15  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QCitationDialog.C (find): correct start iterator when searching
+	backwards (bug 2002).
+
 2005-09-08  Angus Leeming  <leeming@lyx.org>
 
 	* QPrefsDialog.C:

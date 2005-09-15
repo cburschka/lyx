@@ -252,8 +252,6 @@ void QCitationDialog::find(biblio::Direction dir)
 	// Find the NEXT instance...
 	if (dir == biblio::FORWARD)
 		start += 1;
-	else
-		start -= 1;
 
 	bool const casesens = add_->searchCaseCB->isChecked();
 	string const str = fromqstr(add_->searchED->text());
