@@ -631,7 +631,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_CUT:
 		if (tablemode(cur)) {
 			if (copySelection(cur)) {
-				recordUndo(cur, Undo::DELETE);
+				recordUndoInset(cur, Undo::DELETE);
 				cutSelection(cur);
 			}
 		}
@@ -641,9 +641,10 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_BACKSPACE:
 	case LFUN_DELETE:
-		recordUndo(cur, Undo::DELETE);
-		if (tablemode(cur))
+		if (tablemode(cur)) {
+			recordUndoInset(cur, Undo::DELETE);
 			cutSelection(cur);
+		}
 		else
 			cell(cur.idx())->dispatch(cur, cmd);
 		break;
@@ -730,7 +731,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_PASTE:
 		if (hasPasteBuffer() && tabularStackDirty()) {
-			recordUndo(cur, Undo::INSERT);
+			recordUndoInset(cur, Undo::INSERT);
 			pasteSelection(cur);
 			break;
 		}
@@ -1403,7 +1404,7 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 		break;
 	}
 
-	recordUndo(cur, Undo::ATOMIC);
+	recordUndoInset(cur, Undo::ATOMIC);
 
 	getSelection(cur, sel_row_start, sel_row_end, sel_col_start, sel_col_end);
 	row_type const row = tabular.row_of_cell(cur.idx());

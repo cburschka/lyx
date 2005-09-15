@@ -1,9 +1,14 @@
+2005-09-11  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* insettabular.C: use recordUndoInset instead of recordUndo
+	(fixes bug 1937 and 1986).
+
 2005-09-12  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* insetvspace.C (metrics): include label text
 	* insetvspace.[Ch] (label): new, needed for the above
 
-2005-08-10  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+2005-09-10  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* insetbase.[Ch]: new bool neverIndent() which indicates if
 	an inset does not want paragraph indentation at all.
