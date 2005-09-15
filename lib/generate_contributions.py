@@ -812,6 +812,14 @@ contributers = [
                  "25 February 2005",
                  u"Support for kluwer and ijmpd document classes"),
 
+     contributer(u'Bo Peng',
+                 "ben.bob () gmail ! com",
+                 "GPL",
+                 "Re: Python version of configure script (preview version)",
+                 "m=112681895510418",
+                 "15 September 2005",
+                 u"Conversion of lib/configure to Python"),
+
      contributer(u"Joacim Persson",
                  "sp2joap1 () ida ! his ! se",
                  "",
@@ -954,7 +962,7 @@ contributers = [
                  "Re: The LyX licence",
                  "m=110909251110103",
                  "22 February 2005",
-                 u"lots of bug reports and purify runs"),
+                 u"lots of bug reports, German localization, bug fixes"),
 
      contributer(u"Hubert Schreier",
                  "schreier () sc ! edu",
