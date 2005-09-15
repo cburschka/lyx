@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2005-08-21 15:19+0200\n"
+"POT-Creation-Date: 2005-09-15 17:09+0200\n"
 "PO-Revision-Date: 2005-07-18 01:47+0200\n"
 "Last-Translator: Tomasz £uczak <tlu@technodat.com.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -1324,8 +1324,9 @@ msgid "Email address:|#E"
 msgstr "Adres e-mail: |#E"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1114
-msgid "Spell command:|#S"
-msgstr "Polecenie sprawdzania pisowni:|#s"
+#, fuzzy
+msgid "Spellchecker executable:|#S"
+msgstr "Pisownia|S"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1132
 msgid "Alternative language:|#a"
@@ -1971,7 +1972,7 @@ msgstr "Z³am stronê na bie¿±cym wierszu|#Z"
 #: src/frontends/xforms/forms/form_tabular.fd:1638
 #: src/frontends/xforms/forms/form_tabular.fd:1656
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:60
-#: src/frontends/qt2/QDocument.C:166 src/text.C:2213
+#: src/frontends/qt2/QDocument.C:166 src/text.C:2208
 msgid "Double"
 msgstr "Podwójna"
 
@@ -2536,10 +2537,10 @@ msgid "&OK"
 msgstr "&OK"
 
 #: src/frontends/qt2/ui/QAskForTextDialog.ui:139
-#: src/frontends/qt2/ui/QDocumentDialogBase.ui:214 src/buffer_funcs.C:90
-#: src/buffer_funcs.C:116 src/buffer_funcs.C:157 src/bufferlist.C:84
-#: src/bufferlist.C:183 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:619
-#: src/lyxfunc.C:781 src/lyxfunc.C:1791 src/lyxvc.C:168
+#: src/frontends/qt2/ui/QDocumentDialogBase.ui:214 src/buffer_funcs.C:91
+#: src/buffer_funcs.C:117 src/buffer_funcs.C:158 src/bufferlist.C:84
+#: src/bufferlist.C:183 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:650
+#: src/lyxfunc.C:812 src/lyxfunc.C:1822 src/lyxvc.C:168
 msgid "&Cancel"
 msgstr "&Anuluj"
 
@@ -2608,7 +2609,7 @@ msgstr "Wybane bazy BibTeX-a"
 #: src/frontends/qt2/ui/QIndexDialogBase.ui:143
 #: src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/BufferView_pimpl.C:285
 #: src/frontends/gtk/GBC.h:27 src/frontends/qt2/Qt2BC.h:36
-#: src/frontends/xforms/xformsBC.h:29 src/lyxfunc.C:732
+#: src/frontends/xforms/xformsBC.h:29 src/lyxfunc.C:763
 msgid "Cancel"
 msgstr "Anuluj"
 
@@ -3736,7 +3737,7 @@ msgid "QParagraphDialogBase"
 msgstr "Styl akapitu ustawiony"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:48
-#: src/frontends/qt2/QDocument.C:162 src/text.C:2207
+#: src/frontends/qt2/QDocument.C:162 src/text.C:2202
 msgid "Single"
 msgstr "Pojedyñczy"
 
@@ -4240,7 +4241,8 @@ msgid "Hugest:"
 msgstr "Najwiêkszy:"
 
 #: src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:56
-msgid "Spell chec&ker:"
+#, fuzzy
+msgid "Spellchec&ker executable:"
 msgstr "Program sprawdzania &pisowni:"
 
 #: src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:99
@@ -4325,7 +4327,7 @@ msgid "Cursor follows &scrollbar"
 msgstr "Kursor &nad±¿a za suwakiem"
 
 #: src/frontends/qt2/ui/QPrefsDialogBase.ui:110 src/bufferlist.C:84
-#: src/bufferlist.C:183 src/lyxfunc.C:618
+#: src/bufferlist.C:183 src/lyxfunc.C:649
 msgid "&Save"
 msgstr "&Zapisz"
 
@@ -4551,8 +4553,9 @@ msgid "Ignore this word throughout this session"
 msgstr "Akceptuj s³owo na czas tej sesji"
 
 #: src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:152
-msgid "How far spellchecking has got"
-msgstr "Postêp sprawdzania pisowni"
+#, fuzzy
+msgid "Proportion of document checked"
+msgstr "Nieudane drukowanie dokumentu"
 
 #: src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:163
 msgid "Suggestions"
@@ -5398,7 +5401,7 @@ msgstr "Bibliografia"
 #: lib/layouts/aastex.layout:114 lib/layouts/aastex.layout:410
 #: lib/layouts/ijmpd.layout:162 lib/layouts/ijmpd.layout:170
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
-#: src/rowpainter.C:415
+#: src/rowpainter.C:419
 msgid "Appendix"
 msgstr "Dodatek"
 
@@ -6071,6 +6074,7 @@ msgid "Seriate"
 msgstr ""
 
 #: lib/layouts/apa.layout:345 lib/layouts/apa.layout:346
+#: src/buffer_funcs.C:448
 msgid "(\\alph{enumii})"
 msgstr ""
 
@@ -9817,7 +9821,7 @@ msgstr "Wytnij"
 msgid "Copy"
 msgstr "Kopiuj"
 
-#: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:620
+#: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:630
 #: src/mathed/math_nestinset.C:413 src/text3.C:805
 msgid "Paste"
 msgstr "Wklej"
@@ -10099,11 +10103,11 @@ msgstr "Zapisz dokument"
 msgid "Print document"
 msgstr "Drukuj dokument"
 
-#: lib/ui/stdtoolbars.ui:49 src/BufferView_pimpl.C:1076
+#: lib/ui/stdtoolbars.ui:49 src/BufferView_pimpl.C:1088
 msgid "Undo"
 msgstr "Cofnij"
 
-#: lib/ui/stdtoolbars.ui:50 src/BufferView_pimpl.C:1087
+#: lib/ui/stdtoolbars.ui:50 src/BufferView_pimpl.C:1099
 msgid "Redo"
 msgstr "Ponów"
 
@@ -10367,11 +10371,11 @@ msgstr ""
 "\n"
 "Czy chcesz powróciæ do zapisanej wersji?"
 
-#: src/BufferView_pimpl.C:258 src/lyxfunc.C:780
+#: src/BufferView_pimpl.C:258 src/lyxfunc.C:811
 msgid "Revert to saved document?"
 msgstr "Powrót do zapisanego dokumentu?"
 
-#: src/BufferView_pimpl.C:259 src/lyxfunc.C:781 src/lyxvc.C:168
+#: src/BufferView_pimpl.C:259 src/lyxfunc.C:812 src/lyxvc.C:168
 msgid "&Revert"
 msgstr "&Przywróæ"
 
@@ -10402,105 +10406,105 @@ msgstr "&Twórz"
 msgid "Parse"
 msgstr ""
 
-#: src/BufferView_pimpl.C:401
+#: src/BufferView_pimpl.C:413
 msgid "Formatting document..."
 msgstr "Formatowanie dokumentu"
 
-#: src/BufferView_pimpl.C:729
+#: src/BufferView_pimpl.C:741
 #, c-format
 msgid "Saved bookmark %1$d"
 msgstr "Zapisano zak³adkê %1$d"
 
-#: src/BufferView_pimpl.C:762
+#: src/BufferView_pimpl.C:774
 #, c-format
 msgid "Moved to bookmark %1$d"
 msgstr "Przeniesiono do zak³adki %1$d"
 
-#: src/BufferView_pimpl.C:821
+#: src/BufferView_pimpl.C:833
 msgid "Select LyX document to insert"
 msgstr "Wybierz dokument LyX-a do wstawienia"
 
-#: src/BufferView_pimpl.C:823 src/frontends/controllers/ControlBibtex.C:48
+#: src/BufferView_pimpl.C:835 src/frontends/controllers/ControlBibtex.C:48
 #: src/frontends/controllers/ControlBibtex.C:59
 #: src/frontends/controllers/ControlExternal.C:160
 #: src/frontends/controllers/ControlGraphics.C:94
 #: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:133
-#: src/lyxfunc.C:1632 src/lyxfunc.C:1669 src/lyxfunc.C:1744
+#: src/lyxfunc.C:1663 src/lyxfunc.C:1700 src/lyxfunc.C:1775
 msgid "Documents|#o#O"
 msgstr "Dokumenty|#o"
 
-#: src/BufferView_pimpl.C:825 src/lyxfunc.C:1671 src/lyxfunc.C:1746
+#: src/BufferView_pimpl.C:837 src/lyxfunc.C:1702 src/lyxfunc.C:1777
 msgid "Examples|#E#e"
 msgstr "Przyk³ady|#P"
 
-#: src/BufferView_pimpl.C:830 src/lyx_cb.C:141 src/lyxfunc.C:1639
-#: src/lyxfunc.C:1676
+#: src/BufferView_pimpl.C:842 src/lyx_cb.C:141 src/lyxfunc.C:1670
+#: src/lyxfunc.C:1707
 msgid "LyX Documents (*.lyx)"
 msgstr "Dokumenty LyX-a (*.lyx)"
 
-#: src/BufferView_pimpl.C:840 src/lyxfunc.C:1686 src/lyxfunc.C:1764
-#: src/lyxfunc.C:1778 src/lyxfunc.C:1794
+#: src/BufferView_pimpl.C:852 src/lyxfunc.C:1717 src/lyxfunc.C:1795
+#: src/lyxfunc.C:1809 src/lyxfunc.C:1825
 msgid "Canceled."
 msgstr "Zaniechane."
 
-#: src/BufferView_pimpl.C:850
+#: src/BufferView_pimpl.C:862
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Wstawianie dokumentu %1$s"
 
-#: src/BufferView_pimpl.C:861
+#: src/BufferView_pimpl.C:873
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Wstawiono dokument %1$s"
 
-#: src/BufferView_pimpl.C:862
+#: src/BufferView_pimpl.C:874
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Nie mo¿na wstawiæ dokumentu %1$s"
 
-#: src/BufferView_pimpl.C:1079
+#: src/BufferView_pimpl.C:1091
 msgid "No further undo information"
 msgstr "Nie mo¿na ju¿ dalej cofn±æ"
 
-#: src/BufferView_pimpl.C:1090
+#: src/BufferView_pimpl.C:1102
 msgid "No further redo information"
 msgstr "Nie mo¿na ju¿ dalej ponawiaæ"
 
-#: src/BufferView_pimpl.C:1219
+#: src/BufferView_pimpl.C:1231
 msgid "Mark off"
 msgstr "Znacznik wy³±czony"
 
-#: src/BufferView_pimpl.C:1226
+#: src/BufferView_pimpl.C:1238
 msgid "Mark on"
 msgstr "Znacznik w³±czony"
 
-#: src/BufferView_pimpl.C:1233
+#: src/BufferView_pimpl.C:1245
 msgid "Mark removed"
 msgstr "Znacznik usuniêty"
 
-#: src/BufferView_pimpl.C:1236
+#: src/BufferView_pimpl.C:1248
 msgid "Mark set"
 msgstr "Znacznik ustawiony"
 
-#: src/BufferView_pimpl.C:1278
+#: src/BufferView_pimpl.C:1290
 #, c-format
 msgid "%1$d words in selection."
 msgstr "Zaznaczono s³ów: %1$d."
 
-#: src/BufferView_pimpl.C:1281
+#: src/BufferView_pimpl.C:1293
 #, c-format
 msgid "%1$d words in document."
 msgstr "S³ów w dokumencie: %1$d"
 
-#: src/BufferView_pimpl.C:1286
+#: src/BufferView_pimpl.C:1298
 msgid "One word in selection."
 msgstr "Zaznaczono jedno s³owo."
 
-#: src/BufferView_pimpl.C:1288
+#: src/BufferView_pimpl.C:1300
 msgid "One word in document."
 msgstr "Jedno s³owo w dokumencie."
 
-#: src/BufferView_pimpl.C:1291
+#: src/BufferView_pimpl.C:1303
 msgid "Count words"
 msgstr "Policz s³owa"
 
@@ -10513,7 +10517,7 @@ msgstr "Ostrze¿enie ChkTeX: id # %1$d"
 msgid "ChkTeX warning id # "
 msgstr "Ostrze¿enie ChkTeX # "
 
-#: src/CutAndPaste.C:399
+#: src/CutAndPaste.C:404
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -10526,12 +10530,12 @@ msgstr ""
 "z powodu zmiany klasy dokumentu\n"
 "z %3$s na %4$s"
 
-#: src/CutAndPaste.C:403
+#: src/CutAndPaste.C:408
 #, fuzzy
 msgid "Changed Layout"
 msgstr "Uk³ad strony"
 
-#: src/CutAndPaste.C:422
+#: src/CutAndPaste.C:427
 #, fuzzy, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
@@ -10542,7 +10546,7 @@ msgstr ""
 "z powodu zmiany klasy dokumentu\n"
 "z %3$s na %4$s"
 
-#: src/CutAndPaste.C:428
+#: src/CutAndPaste.C:433
 #, fuzzy
 msgid "Undefined character style"
 msgstr "Styl tekstu|t"
@@ -10825,7 +10829,7 @@ msgstr "Nieznana klasa dokumentu"
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr "U¿yto domy¶lnej klasy dokumentu, poniewa¿ klasa %1$s jest nieznana."
 
-#: src/buffer.C:444 src/text.C:338
+#: src/buffer.C:444 src/text.C:336
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Nieznany token %1$s %2$s\n"
@@ -10915,7 +10919,7 @@ msgstr ""
 msgid "Could not run chktex successfully."
 msgstr "Nie mo¿na pomy¶lnie uruchomiæ chktex."
 
-#: src/buffer_funcs.C:71
+#: src/buffer_funcs.C:72
 #, c-format
 msgid ""
 "The specified document\n"
@@ -10925,11 +10929,11 @@ msgstr ""
 "Nie mo¿na wczytaæ dokumentu\n"
 "%1$s"
 
-#: src/buffer_funcs.C:73
+#: src/buffer_funcs.C:74
 msgid "Could not read document"
 msgstr "Nie mo¿na wczytaæ dokumentu"
 
-#: src/buffer_funcs.C:85
+#: src/buffer_funcs.C:86
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -10940,19 +10944,19 @@ msgstr ""
 "\n"
 "Przywróciæ zapisan± kopiê?"
 
-#: src/buffer_funcs.C:88
+#: src/buffer_funcs.C:89
 msgid "Load emergency save?"
 msgstr "Wczytaæ kopiê bezpieczeñstwa?"
 
-#: src/buffer_funcs.C:89
+#: src/buffer_funcs.C:90
 msgid "&Recover"
 msgstr "&Przywróæ"
 
-#: src/buffer_funcs.C:89
+#: src/buffer_funcs.C:90
 msgid "&Load Original"
 msgstr "&Wczytaj orygina³"
 
-#: src/buffer_funcs.C:111
+#: src/buffer_funcs.C:112
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -10960,32 +10964,32 @@ msgid ""
 "Load the backup instead?"
 msgstr ""
 
-#: src/buffer_funcs.C:114
+#: src/buffer_funcs.C:115
 msgid "Load backup?"
 msgstr "Wczytaæ kopiê zapasow±?"
 
-#: src/buffer_funcs.C:115
+#: src/buffer_funcs.C:116
 msgid "&Load backup"
 msgstr "Wczytaj &kopiê"
 
-#: src/buffer_funcs.C:115
+#: src/buffer_funcs.C:116
 msgid "Load &original"
 msgstr "Wczytaj &orygina³"
 
-#: src/buffer_funcs.C:154
+#: src/buffer_funcs.C:155
 #, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "Czy chcesz przywróciæ dokument %1$s z kontroli wersji?"
 
-#: src/buffer_funcs.C:156
+#: src/buffer_funcs.C:157
 msgid "Retrieve from version control?"
 msgstr "Przywróciæ z kontroli wersji?"
 
-#: src/buffer_funcs.C:157
+#: src/buffer_funcs.C:158
 msgid "&Retrieve"
 msgstr "&Przywróæ"
 
-#: src/buffer_funcs.C:189
+#: src/buffer_funcs.C:190
 #, c-format
 msgid ""
 "The specified document template\n"
@@ -10996,11 +11000,25 @@ msgstr ""
 "%1$s\n"
 "nie mo¿na wczytaæ !"
 
-#: src/buffer_funcs.C:190
+#: src/buffer_funcs.C:191
 msgid "Could not read template"
 msgstr "Nie mo¿na wczytaæ szablonu"
 
-#: src/buffer_funcs.C:468
+#: src/buffer_funcs.C:445
+#, fuzzy
+msgid "\\arabic{enumi}."
+msgstr "Podsekcja"
+
+#: src/buffer_funcs.C:451
+msgid "\\roman{enumiii}."
+msgstr ""
+
+#: src/buffer_funcs.C:454
+#, fuzzy
+msgid "\\Alph{enumiv}."
+msgstr "zaznaczenie"
+
+#: src/buffer_funcs.C:489
 #, c-format
 msgid "%1$s #:"
 msgstr "%1$s #:"
@@ -11016,7 +11034,7 @@ msgstr ""
 "\n"
 "Chcesz zapisaæ dokument czy porzuciæ zmiany?"
 
-#: src/bufferlist.C:83 src/bufferlist.C:182 src/lyxfunc.C:617
+#: src/bufferlist.C:83 src/bufferlist.C:182 src/lyxfunc.C:648
 msgid "Save changed document?"
 msgstr "Zapisaæ dokument?"
 
@@ -11249,7 +11267,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Zast±piæ plik?"
 
-#: src/exporter.C:77 src/lyx_cb.C:168 src/lyxfunc.C:1791
+#: src/exporter.C:77 src/lyx_cb.C:168 src/lyxfunc.C:1822
 msgid "&Over-write"
 msgstr "&Zastêpowanie"
 
@@ -11581,18 +11599,19 @@ msgid "PostScript files (*.ps)"
 msgstr ""
 
 #: src/frontends/controllers/ControlSpellchecker.C:111
-#: src/frontends/controllers/ControlSpellchecker.C:273
 #, fuzzy
-msgid "Spell-checker error"
+msgid "Spellchecker error"
 msgstr "Pisownia"
 
 #: src/frontends/controllers/ControlSpellchecker.C:112
-msgid "The spell-checker could not be started"
+#, fuzzy
+msgid "The spellchecker could not be started\n"
 msgstr "Nie mo¿na uruchomiæ sprawdzania pisowni"
 
 #: src/frontends/controllers/ControlSpellchecker.C:265
+#, fuzzy
 msgid ""
-"The spell-checker has died for some reason.\n"
+"The spellchecker has died for some reason.\n"
 "Maybe it has been killed."
 msgstr ""
 "Program sprawdzania pisowni zakoñczy³ dzia³anie z kilku powodów.\n"
@@ -11600,7 +11619,12 @@ msgstr ""
 
 #: src/frontends/controllers/ControlSpellchecker.C:268
 #, fuzzy
-msgid "The spell-checker has failed."
+msgid "The spellchecker has failed.\n"
+msgstr "Nieudane sprawdzanie pisowni"
+
+#: src/frontends/controllers/ControlSpellchecker.C:273
+#, fuzzy
+msgid "The spellchecker has failed"
 msgstr "Nieudane sprawdzanie pisowni"
 
 #: src/frontends/controllers/ControlSpellchecker.C:287
@@ -11613,7 +11637,8 @@ msgid "One word checked."
 msgstr "Sprawdzono jedno s³owo."
 
 #: src/frontends/controllers/ControlSpellchecker.C:292
-msgid "Spell-checking is complete"
+#, fuzzy
+msgid "Spelling check completed"
 msgstr "Zakoñczono sprawdzanie pisowni."
 
 #: src/frontends/controllers/ControlToc.C:46 src/frontends/gtk/GToc.C:33
@@ -11962,9 +11987,12 @@ msgstr "Przeka¿ dokument do polecenia"
 msgid "Show File"
 msgstr "Podgl±d pliku"
 
-#: src/frontends/gtk/GSpellchecker.C:35
-msgid "Spell-check document"
-msgstr "Sprawdzanie pisowni w dokumencie"
+#: src/frontends/gtk/GSpellchecker.C:35 src/frontends/qt2/QPrefsDialog.C:105
+#: src/frontends/qt2/QSpellchecker.C:35
+#: src/frontends/xforms/FormPreferences.C:270
+#: src/frontends/xforms/FormSpellchecker.C:34
+msgid "Spellchecker"
+msgstr "Pisownia"
 
 #: src/frontends/gtk/GSpellchecker.C:136
 msgid "checked"
@@ -12145,7 +12173,7 @@ msgstr "headings"
 msgid "fancy"
 msgstr "fancy"
 
-#: src/frontends/qt2/QDocument.C:164 src/text.C:2210
+#: src/frontends/qt2/QDocument.C:164 src/text.C:2205
 msgid "OneHalf"
 msgstr "Pó³tora"
 
@@ -12384,10 +12412,6 @@ msgstr "Klawiatura"
 msgid "Language settings"
 msgstr "Ustawienia jêzyka"
 
-#: src/frontends/qt2/QPrefsDialog.C:105
-msgid "Spell-checker"
-msgstr "Pisownia"
-
 #: src/frontends/qt2/QPrefsDialog.C:107
 #: src/frontends/xforms/FormPreferences.C:219
 msgid "Outputs"
@@ -12472,11 +12496,6 @@ msgstr "Id¼ do odno¶nika"
 #, fuzzy
 msgid "Send Document to Command"
 msgstr "Przeka¿ dokument do polecenia"
-
-#: src/frontends/qt2/QSpellchecker.C:35
-#: src/frontends/xforms/FormSpellchecker.C:34
-msgid "Spellchecker"
-msgstr "Pisownia"
 
 #: src/frontends/qt2/QTabular.C:41 src/frontends/xforms/FormTabular.C:56
 msgid "Table Settings"
@@ -13131,10 +13150,6 @@ msgstr "Czcionki ekranowe"
 msgid "Formats"
 msgstr "Formaty"
 
-#: src/frontends/xforms/FormPreferences.C:270
-msgid "Spell checker"
-msgstr "Pisownia"
-
 #: src/frontends/xforms/FormPreferences.C:506
 msgid "LyX objects that can be assigned a color."
 msgstr "Obiekty, którym mo¿na przypisaæ kolory."
@@ -13538,8 +13553,9 @@ msgid "Add unknown word to personal dictionary."
 msgstr "Dodaj do osobistego s³ownika"
 
 #: src/frontends/xforms/FormSpellchecker.C:76
-msgid "Shows word count and progress on spell check."
-msgstr "Wy¶wietla licznik s³ów i postêp w sprawdzaniu pisowni"
+#, fuzzy
+msgid "Proportion of document checked."
+msgstr "Nieudane drukowanie dokumentu"
 
 #: src/frontends/xforms/FormTabular.C:136
 msgid "Column/Row"
@@ -13792,11 +13808,11 @@ msgstr "Otwarta wstawka podpisu"
 msgid "Float"
 msgstr "Wstawka"
 
-#: src/insets/insetcharstyle.C:115
+#: src/insets/insetcharstyle.C:116
 msgid "Opened CharStyle Inset"
 msgstr ""
 
-#: src/insets/insetcharstyle.C:184
+#: src/insets/insetcharstyle.C:154 src/insets/insetcharstyle.C:200
 msgid "Undef: "
 msgstr ""
 
@@ -13970,19 +13986,19 @@ msgstr ""
 msgid "PrettyRef: "
 msgstr ""
 
-#: src/insets/insettabular.C:402
+#: src/insets/insettabular.C:412
 msgid "Opened table"
 msgstr "Otwarta tabela"
 
-#: src/insets/insettabular.C:1546
+#: src/insets/insettabular.C:1554
 msgid "Error setting multicolumn"
 msgstr "B³±d ustawienia wielokolumnowej komórki"
 
-#: src/insets/insettabular.C:1547
+#: src/insets/insettabular.C:1555
 msgid "You cannot set multicolumn vertically."
 msgstr "Nie mo¿na ustawiæ wielokolumnowej komórki pionowo"
 
-#: src/insets/insettext.C:225
+#: src/insets/insettext.C:228
 msgid "Opened Text Inset"
 msgstr "Otwarta wstawka tekstowa"
 
@@ -14006,7 +14022,7 @@ msgstr "Url: "
 msgid "HtmlUrl: "
 msgstr "HtmlUrl: "
 
-#: src/insets/insetvspace.C:130
+#: src/insets/insetvspace.C:107
 msgid "Vertical Space"
 msgstr "Odstêp pionowy"
 
@@ -14090,12 +14106,12 @@ msgstr ""
 
 #: src/ispell.C:268
 msgid ""
-"The spell process returned an error.\n"
+"The ispell process returned an error.\n"
 "Perhaps it has been configured wrongly ?"
 msgstr ""
 
 #: src/ispell.C:377
-msgid "Could not communicate with the spell-checker program."
+msgid "Could not communicate with the ispell spellchecker process."
 msgstr ""
 
 #: src/kbsequence.C:160
@@ -14193,11 +14209,11 @@ msgstr "&Zmieñ nazwê"
 msgid "Choose a filename to save document as"
 msgstr "Wprowad¼ nazwê pliku pod jak± dokument ma byæ zapisany"
 
-#: src/lyx_cb.C:135 src/lyxfunc.C:1634
+#: src/lyx_cb.C:135 src/lyxfunc.C:1665
 msgid "Templates|#T#t"
 msgstr "Szablony|#S"
 
-#: src/lyx_cb.C:165 src/lyxfunc.C:1788
+#: src/lyx_cb.C:165 src/lyxfunc.C:1819
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -14208,7 +14224,7 @@ msgstr ""
 "\n"
 "Czy chcesz go zast±piæ?"
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:1790
+#: src/lyx_cb.C:167 src/lyxfunc.C:1821
 msgid "Over-write document?"
 msgstr "Zastapiæ dokument?"
 
@@ -14501,31 +14517,35 @@ msgstr "Jêzyk: %1$s, "
 msgid "  Number %1$s"
 msgstr "  Liczba %1$s"
 
-#: src/lyxfunc.C:291
+#: src/lyxfunc.C:313
 msgid "Unknown function."
 msgstr "Nieznane polecenie"
 
-#: src/lyxfunc.C:327
+#: src/lyxfunc.C:349
 msgid "Nothing to do"
 msgstr "Nic do zrobienia"
 
-#: src/lyxfunc.C:345
+#: src/lyxfunc.C:367
 msgid "Unknown action"
 msgstr "Nieznane polecenie"
 
-#: src/lyxfunc.C:351 src/lyxfunc.C:599
+#: src/lyxfunc.C:373 src/lyxfunc.C:630
 msgid "Command disabled"
 msgstr "Polecenie zablokowane"
 
-#: src/lyxfunc.C:358
+#: src/lyxfunc.C:380
 msgid "Command not allowed without any document open"
 msgstr "Polecenie nie dostêpne bez otwartego dokumentu"
 
-#: src/lyxfunc.C:593
+#: src/lyxfunc.C:615
 msgid "Document is read-only"
 msgstr "Dokument tylko do odczytu"
 
-#: src/lyxfunc.C:614
+#: src/lyxfunc.C:624
+msgid "This portion of the document is deleted."
+msgstr ""
+
+#: src/lyxfunc.C:645
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -14536,18 +14556,18 @@ msgstr ""
 "\n"
 "Czy chcesz zapisaæ dokument?"
 
-#: src/lyxfunc.C:630
+#: src/lyxfunc.C:661
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
 "Check that your printer is set up correctly."
 msgstr ""
 
-#: src/lyxfunc.C:633
+#: src/lyxfunc.C:664
 msgid "Print document failed"
 msgstr "Nieudane drukowanie dokumentu"
 
-#: src/lyxfunc.C:652
+#: src/lyxfunc.C:683
 #, c-format
 msgid ""
 "The document could not be converted\n"
@@ -14556,103 +14576,103 @@ msgstr ""
 "Dokumentu nie mo¿na skonwertowaæ\n"
 "do klasy %1$s."
 
-#: src/lyxfunc.C:655
+#: src/lyxfunc.C:686
 msgid "Could not change class"
 msgstr "Nie mo¿na zmieniæ klasy"
 
-#: src/lyxfunc.C:763
+#: src/lyxfunc.C:794
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Zapisywanie dokumentu %1$s"
 
-#: src/lyxfunc.C:767
+#: src/lyxfunc.C:798
 msgid " done."
 msgstr " gotowe."
 
-#: src/lyxfunc.C:778
+#: src/lyxfunc.C:809
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr ""
 
-#: src/lyxfunc.C:800
+#: src/lyxfunc.C:831
 msgid "Build"
 msgstr ""
 
-#: src/lyxfunc.C:805
+#: src/lyxfunc.C:836
 msgid "ChkTeX"
 msgstr "ChkTeX"
 
-#: src/lyxfunc.C:977 src/text3.C:1249
+#: src/lyxfunc.C:1008 src/text3.C:1249
 msgid "Missing argument"
 msgstr "Brakuje argumentu"
 
-#: src/lyxfunc.C:986
+#: src/lyxfunc.C:1017
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Otwieranie pliku pomocy %1$s"
 
-#: src/lyxfunc.C:1218
+#: src/lyxfunc.C:1249
 msgid "Opening child document "
 msgstr "Otwieranie dokumentu potomnego "
 
-#: src/lyxfunc.C:1297
+#: src/lyxfunc.C:1328
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Sk³adnia: set-color <kolor LyX-a> <kolor X11>"
 
-#: src/lyxfunc.C:1308
+#: src/lyxfunc.C:1339
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Ustawienie koloru %1$s nie powiod³o siê -- kolor nie zosta³ zdefiniowanylub "
 "nie mo¿na go przedefiniowaæ"
 
-#: src/lyxfunc.C:1417
+#: src/lyxfunc.C:1448
 msgid "Document defaults saved in "
 msgstr "Ustawienia domy¶lne dokumentu zapisano w "
 
-#: src/lyxfunc.C:1420
+#: src/lyxfunc.C:1451
 msgid "Unable to save document defaults"
 msgstr "Nie mo¿na zapisaæ ustawieñ domy¶lnych"
 
-#: src/lyxfunc.C:1475
+#: src/lyxfunc.C:1506
 msgid "Converting document to new document class..."
 msgstr "Konwersja dokumentu do nowej klasy"
 
-#: src/lyxfunc.C:1484
+#: src/lyxfunc.C:1515
 msgid "Class switch"
 msgstr ""
 
-#: src/lyxfunc.C:1630
+#: src/lyxfunc.C:1661
 msgid "Select template file"
 msgstr "Wybierz plik szablonu"
 
-#: src/lyxfunc.C:1667
+#: src/lyxfunc.C:1698
 msgid "Select document to open"
 msgstr "Wybierz dokument do otwarcia"
 
-#: src/lyxfunc.C:1708
+#: src/lyxfunc.C:1739
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Otwieranie dokumentu %1$s"
 
-#: src/lyxfunc.C:1712
+#: src/lyxfunc.C:1743
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokument %1$s jest ju¿ otwarty."
 
-#: src/lyxfunc.C:1714
+#: src/lyxfunc.C:1745
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Nie mo¿na otworzyæ dokumentu %1$s"
 
-#: src/lyxfunc.C:1739
+#: src/lyxfunc.C:1770
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Wybierz dokument %1$s do importu"
 
-#: src/lyxfunc.C:1849
+#: src/lyxfunc.C:1880
 msgid "Welcome to LyX!"
 msgstr "Witaj w LyXie!"
 
@@ -15074,7 +15094,8 @@ msgid "De-select if you don't want the startup banner."
 msgstr "Wy³±cz je¶li nie chcesz og³±daæ logo LyX-a po starcie programu."
 
 #: src/lyxrc.C:2393
-msgid "What command runs the spell checker?"
+#, fuzzy
+msgid "What command runs the spellchecker?"
 msgstr "Polecenie uruchamiaj±ce program sprawdzaj±cy pisowniê."
 
 #: src/lyxrc.C:2397
@@ -15102,10 +15123,11 @@ msgstr ""
 "dostêpu, to LyX poszuka pliku w globalnym i osobistym katalogu ui/."
 
 #: src/lyxrc.C:2421
+#, fuzzy
 msgid ""
 "Specify whether to pass the -T input encoding option to ispell. Enable this "
-"if you can't spellcheck words with international letters in them. This may "
-"not work with all dictionaries."
+"if you cannot check the spelling of words containing accented letters. This "
+"may not work with all dictionaries."
 msgstr ""
 "Podaj czy uruchamiaæ ispella z opcja -T i odpowiednim kodowaniem. W³±cz t± "
 "opcjê gdy sprawdzanie pisowni nie dzia³a poprawnie dla s³ów ze znakami "
@@ -15301,84 +15323,84 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Nieznana wstawka"
 
-#: src/text.C:181
+#: src/text.C:179
 msgid "Unknown layout"
 msgstr "Nieznany uk³ad"
 
-#: src/text.C:182
+#: src/text.C:180
 #, c-format
 msgid ""
 "Layout '%1$s' does not exist in textclass '%2$s'\n"
 "Trying to use the default instead.\n"
 msgstr ""
 
-#: src/text.C:213
+#: src/text.C:211
 msgid "Unknown Inset"
 msgstr "Nieznana wstawka"
 
-#: src/text.C:337
+#: src/text.C:335
 msgid "Unknown token"
 msgstr "Nieznany token"
 
-#: src/text.C:1166
+#: src/text.C:1163
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
 msgstr ""
 "Nie mo¿na wstawiæ spacji na pocz±tku akapitu. Przeczytaj, proszê, Samouczek."
 
-#: src/text.C:1178
+#: src/text.C:1175
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Nie mo¿na wstawiæ dwu spacji w ten sposób. Przeczytaj, proszê, Samouczek."
 
-#: src/text.C:2176
+#: src/text.C:2171
 msgid "Change: "
 msgstr "Zmiana: "
 
-#: src/text.C:2180
+#: src/text.C:2175
 msgid " at "
 msgstr " na "
 
-#: src/text.C:2191
+#: src/text.C:2186
 #, c-format
 msgid "Font: %1$s"
 msgstr "Czcionka: %1$s"
 
-#: src/text.C:2198
+#: src/text.C:2193
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", G³êboko¶æ: %1$d"
 
-#: src/text.C:2204
+#: src/text.C:2199
 msgid ", Spacing: "
 msgstr ", Odstêp: "
 
-#: src/text.C:2216
+#: src/text.C:2211
 msgid "Other ("
 msgstr "Inny ("
 
-#: src/text.C:2225
+#: src/text.C:2220
 msgid ", Inset: "
 msgstr ""
 
-#: src/text.C:2226
+#: src/text.C:2221
 msgid ", Paragraph: "
 msgstr ", Akapit: "
 
-#: src/text.C:2227
+#: src/text.C:2222
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/text.C:2228
+#: src/text.C:2223
 msgid ", Position: "
 msgstr ", Pozycja: "
 
-#: src/text.C:2229
+#: src/text.C:2224
 msgid ", Boundary: "
 msgstr ""
 
-#: src/text2.C:528
+#: src/text2.C:532
 msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
@@ -15386,11 +15408,11 @@ msgstr ""
 "Operacja zmiany czcionki nie jest zdefiniowana. Podaj j± w menu Formatowanie/"
 "Czcionki."
 
-#: src/text2.C:570
+#: src/text2.C:574
 msgid "Nothing to index!"
 msgstr "Brak obiektów do indeksowania!"
 
-#: src/text2.C:572
+#: src/text2.C:576
 msgid "Cannot index more than one paragraph!"
 msgstr "Nie mo¿na indeksowaæ wiêcej ni¿ jednego akapitu"
 
@@ -15447,6 +15469,24 @@ msgstr "&Pionowe:"
 #, fuzzy
 msgid "protected"
 msgstr "Twarda spacja|T"
+
+#~ msgid "Spell command:|#S"
+#~ msgstr "Polecenie sprawdzania pisowni:|#s"
+
+#~ msgid "How far spellchecking has got"
+#~ msgstr "Postêp sprawdzania pisowni"
+
+#~ msgid "Spell-check document"
+#~ msgstr "Sprawdzanie pisowni w dokumencie"
+
+#~ msgid "Spell-checker"
+#~ msgstr "Pisownia"
+
+#~ msgid "Spell checker"
+#~ msgstr "Pisownia"
+
+#~ msgid "Shows word count and progress on spell check."
+#~ msgstr "Wy¶wietla licznik s³ów i postêp w sprawdzaniu pisowni"
 
 #, fuzzy
 #~ msgid "The LaTeX preamble"

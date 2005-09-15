@@ -34,7 +34,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2005-08-21 15:19+0200\n"
+"POT-Creation-Date: 2005-09-15 17:09+0200\n"
 "PO-Revision-Date: 2005-07-18 01:46+0200\n"
 "Last-Translator: Vitaly Lipatov <lav@altlinux.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -1592,11 +1592,8 @@ msgstr "Обратный адрес"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1114
 #, fuzzy
-msgid "Spell command:|#S"
-msgstr ""
-"команда\n"
-"помещения\n"
-"в очередь"
+msgid "Spellchecker executable:|#S"
+msgstr "Проверка правописания"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1132
 #, fuzzy
@@ -2397,7 +2394,7 @@ msgstr "Разрыв страницы на текущей строке"
 #: src/frontends/xforms/forms/form_tabular.fd:1638
 #: src/frontends/xforms/forms/form_tabular.fd:1656
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:60
-#: src/frontends/qt2/QDocument.C:166 src/text.C:2213
+#: src/frontends/qt2/QDocument.C:166 src/text.C:2208
 msgid "Double"
 msgstr "Двойной"
 
@@ -3045,10 +3042,10 @@ msgid "&OK"
 msgstr "ОК"
 
 #: src/frontends/qt2/ui/QAskForTextDialog.ui:139
-#: src/frontends/qt2/ui/QDocumentDialogBase.ui:214 src/buffer_funcs.C:90
-#: src/buffer_funcs.C:116 src/buffer_funcs.C:157 src/bufferlist.C:84
-#: src/bufferlist.C:183 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:619
-#: src/lyxfunc.C:781 src/lyxfunc.C:1791 src/lyxvc.C:168
+#: src/frontends/qt2/ui/QDocumentDialogBase.ui:214 src/buffer_funcs.C:91
+#: src/buffer_funcs.C:117 src/buffer_funcs.C:158 src/bufferlist.C:84
+#: src/bufferlist.C:183 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:650
+#: src/lyxfunc.C:812 src/lyxfunc.C:1822 src/lyxvc.C:168
 msgid "&Cancel"
 msgstr "Отмена"
 
@@ -3120,7 +3117,7 @@ msgstr "Выберите базу данных BiBTeX для добавления"
 #: src/frontends/qt2/ui/QIndexDialogBase.ui:143
 #: src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/BufferView_pimpl.C:285
 #: src/frontends/gtk/GBC.h:27 src/frontends/qt2/Qt2BC.h:36
-#: src/frontends/xforms/xformsBC.h:29 src/lyxfunc.C:732
+#: src/frontends/xforms/xformsBC.h:29 src/lyxfunc.C:763
 msgid "Cancel"
 msgstr "Отмена"
 
@@ -4441,7 +4438,7 @@ msgid "QParagraphDialogBase"
 msgstr "Установлено размещение абзаца"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:48
-#: src/frontends/qt2/QDocument.C:162 src/text.C:2207
+#: src/frontends/qt2/QDocument.C:162 src/text.C:2202
 msgid "Single"
 msgstr ""
 "Оди-\n"
@@ -5064,7 +5061,7 @@ msgstr "Огромный"
 
 #: src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:56
 #, fuzzy
-msgid "Spell chec&ker:"
+msgid "Spellchec&ker executable:"
 msgstr "Проверка правописания"
 
 #: src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:99
@@ -5167,7 +5164,7 @@ msgid "Cursor follows &scrollbar"
 msgstr "Курсор следует за полосой прокрутки"
 
 #: src/frontends/qt2/ui/QPrefsDialogBase.ui:110 src/bufferlist.C:84
-#: src/bufferlist.C:183 src/lyxfunc.C:618
+#: src/bufferlist.C:183 src/lyxfunc.C:649
 #, fuzzy
 msgid "&Save"
 msgstr "Сохранить"
@@ -5421,8 +5418,8 @@ msgstr "Пропускать это слово и дальше"
 
 #: src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:152
 #, fuzzy
-msgid "How far spellchecking has got"
-msgstr "Проверить правописание"
+msgid "Proportion of document checked"
+msgstr "Печатать в файл"
 
 #: src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:163
 msgid "Suggestions"
@@ -6357,7 +6354,7 @@ msgstr "Библиография"
 #: lib/layouts/aastex.layout:114 lib/layouts/aastex.layout:410
 #: lib/layouts/ijmpd.layout:162 lib/layouts/ijmpd.layout:170
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
-#: src/rowpainter.C:415
+#: src/rowpainter.C:419
 msgid "Appendix"
 msgstr "Приложение"
 
@@ -7044,6 +7041,7 @@ msgid "Seriate"
 msgstr "Seriate"
 
 #: lib/layouts/apa.layout:345 lib/layouts/apa.layout:346
+#: src/buffer_funcs.C:448
 msgid "(\\alph{enumii})"
 msgstr ""
 
@@ -10982,7 +10980,7 @@ msgstr "Вырезать"
 msgid "Copy"
 msgstr "Скопировать"
 
-#: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:620
+#: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:630
 #: src/mathed/math_nestinset.C:413 src/text3.C:805
 msgid "Paste"
 msgstr "Вставить"
@@ -11311,11 +11309,11 @@ msgstr "Сохранить документ?"
 msgid "Print document"
 msgstr "Импортировать документ"
 
-#: lib/ui/stdtoolbars.ui:49 src/BufferView_pimpl.C:1076
+#: lib/ui/stdtoolbars.ui:49 src/BufferView_pimpl.C:1088
 msgid "Undo"
 msgstr "Отменить последнее действие"
 
-#: lib/ui/stdtoolbars.ui:50 src/BufferView_pimpl.C:1087
+#: lib/ui/stdtoolbars.ui:50 src/BufferView_pimpl.C:1099
 msgid "Redo"
 msgstr "Повторить отменённое действие"
 
@@ -11626,12 +11624,12 @@ msgid ""
 "Do you want to revert to the saved version?"
 msgstr "Документ использует неизвестный класс текста \""
 
-#: src/BufferView_pimpl.C:258 src/lyxfunc.C:780
+#: src/BufferView_pimpl.C:258 src/lyxfunc.C:811
 #, fuzzy
 msgid "Revert to saved document?"
 msgstr "Вернуться к сохранённому"
 
-#: src/BufferView_pimpl.C:259 src/lyxfunc.C:781 src/lyxvc.C:168
+#: src/BufferView_pimpl.C:259 src/lyxfunc.C:812 src/lyxvc.C:168
 #, fuzzy
 msgid "&Revert"
 msgstr "Зарегистрировать"
@@ -11664,108 +11662,108 @@ msgstr "собирать"
 msgid "Parse"
 msgstr "Вставить"
 
-#: src/BufferView_pimpl.C:401
+#: src/BufferView_pimpl.C:413
 msgid "Formatting document..."
 msgstr "Форматирование документа..."
 
-#: src/BufferView_pimpl.C:729
+#: src/BufferView_pimpl.C:741
 #, fuzzy, c-format
 msgid "Saved bookmark %1$d"
 msgstr "Сохранённая закладка"
 
-#: src/BufferView_pimpl.C:762
+#: src/BufferView_pimpl.C:774
 #, fuzzy, c-format
 msgid "Moved to bookmark %1$d"
 msgstr "Перемещены к закладке"
 
-#: src/BufferView_pimpl.C:821
+#: src/BufferView_pimpl.C:833
 msgid "Select LyX document to insert"
 msgstr "Выберите документ LyX для вставки"
 
-#: src/BufferView_pimpl.C:823 src/frontends/controllers/ControlBibtex.C:48
+#: src/BufferView_pimpl.C:835 src/frontends/controllers/ControlBibtex.C:48
 #: src/frontends/controllers/ControlBibtex.C:59
 #: src/frontends/controllers/ControlExternal.C:160
 #: src/frontends/controllers/ControlGraphics.C:94
 #: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:133
-#: src/lyxfunc.C:1632 src/lyxfunc.C:1669 src/lyxfunc.C:1744
+#: src/lyxfunc.C:1663 src/lyxfunc.C:1700 src/lyxfunc.C:1775
 msgid "Documents|#o#O"
 msgstr "Документы"
 
-#: src/BufferView_pimpl.C:825 src/lyxfunc.C:1671 src/lyxfunc.C:1746
+#: src/BufferView_pimpl.C:837 src/lyxfunc.C:1702 src/lyxfunc.C:1777
 msgid "Examples|#E#e"
 msgstr "Примеры"
 
-#: src/BufferView_pimpl.C:830 src/lyx_cb.C:141 src/lyxfunc.C:1639
-#: src/lyxfunc.C:1676
+#: src/BufferView_pimpl.C:842 src/lyx_cb.C:141 src/lyxfunc.C:1670
+#: src/lyxfunc.C:1707
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "*.lyx|Документ LyX (*.lyx)"
 
-#: src/BufferView_pimpl.C:840 src/lyxfunc.C:1686 src/lyxfunc.C:1764
-#: src/lyxfunc.C:1778 src/lyxfunc.C:1794
+#: src/BufferView_pimpl.C:852 src/lyxfunc.C:1717 src/lyxfunc.C:1795
+#: src/lyxfunc.C:1809 src/lyxfunc.C:1825
 msgid "Canceled."
 msgstr "Отменено."
 
-#: src/BufferView_pimpl.C:850
+#: src/BufferView_pimpl.C:862
 #, fuzzy, c-format
 msgid "Inserting document %1$s..."
 msgstr "Документ вставляется"
 
-#: src/BufferView_pimpl.C:861
+#: src/BufferView_pimpl.C:873
 #, fuzzy, c-format
 msgid "Document %1$s inserted."
 msgstr "Документ экспортирован как '"
 
-#: src/BufferView_pimpl.C:862
+#: src/BufferView_pimpl.C:874
 #, fuzzy, c-format
 msgid "Could not insert document %1$s"
 msgstr "Ошибка вставки документа"
 
-#: src/BufferView_pimpl.C:1079
+#: src/BufferView_pimpl.C:1091
 msgid "No further undo information"
 msgstr "Больше нет информации для отмены действия"
 
-#: src/BufferView_pimpl.C:1090
+#: src/BufferView_pimpl.C:1102
 msgid "No further redo information"
 msgstr "Нет дальнейшей информации для повторения отменённого действия"
 
-#: src/BufferView_pimpl.C:1219
+#: src/BufferView_pimpl.C:1231
 msgid "Mark off"
 msgstr "Метка выключена"
 
-#: src/BufferView_pimpl.C:1226
+#: src/BufferView_pimpl.C:1238
 msgid "Mark on"
 msgstr "Метка включена"
 
-#: src/BufferView_pimpl.C:1233
+#: src/BufferView_pimpl.C:1245
 msgid "Mark removed"
 msgstr "Метка удалена"
 
-#: src/BufferView_pimpl.C:1236
+#: src/BufferView_pimpl.C:1248
 msgid "Mark set"
 msgstr "Метка установлена"
 
-#: src/BufferView_pimpl.C:1278
+#: src/BufferView_pimpl.C:1290
 #, fuzzy, c-format
 msgid "%1$d words in selection."
 msgstr "Обнаружена одна ошибка"
 
-#: src/BufferView_pimpl.C:1281
+#: src/BufferView_pimpl.C:1293
 #, fuzzy, c-format
 msgid "%1$d words in document."
 msgstr "Ошибка открытия документа"
 
-#: src/BufferView_pimpl.C:1286
+#: src/BufferView_pimpl.C:1298
 #, fuzzy
 msgid "One word in selection."
 msgstr "Обнаружена одна ошибка"
 
-#: src/BufferView_pimpl.C:1288
+#: src/BufferView_pimpl.C:1300
 #, fuzzy
 msgid "One word in document."
 msgstr "Открываю подчинённый документ "
 
-#: src/BufferView_pimpl.C:1291
+#: src/BufferView_pimpl.C:1303
 #, fuzzy
 msgid "Count words"
 msgstr "Ключевые слова"
@@ -11780,7 +11778,7 @@ msgstr "Предупреждение ChkTeX #"
 msgid "ChkTeX warning id # "
 msgstr "Предупреждение ChkTeX #"
 
-#: src/CutAndPaste.C:399
+#: src/CutAndPaste.C:404
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -11789,19 +11787,19 @@ msgid ""
 "%3$s to %4$s"
 msgstr ""
 
-#: src/CutAndPaste.C:403
+#: src/CutAndPaste.C:408
 #, fuzzy
 msgid "Changed Layout"
 msgstr "Формат абзаца"
 
-#: src/CutAndPaste.C:422
+#: src/CutAndPaste.C:427
 #, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
 "%2$s to %3$s"
 msgstr ""
 
-#: src/CutAndPaste.C:428
+#: src/CutAndPaste.C:433
 #, fuzzy
 msgid "Undefined character style"
 msgstr "Набор символов"
@@ -12098,7 +12096,7 @@ msgstr "в выбранный класс документа"
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 
-#: src/buffer.C:444 src/text.C:338
+#: src/buffer.C:444 src/text.C:336
 #, fuzzy, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Неизвестный токен: "
@@ -12195,7 +12193,7 @@ msgstr ""
 msgid "Could not run chktex successfully."
 msgstr "Chktex закончил работу успешно"
 
-#: src/buffer_funcs.C:71
+#: src/buffer_funcs.C:72
 #, fuzzy, c-format
 msgid ""
 "The specified document\n"
@@ -12203,12 +12201,12 @@ msgid ""
 "could not be read."
 msgstr "Документ не может быть сохранён!"
 
-#: src/buffer_funcs.C:73
+#: src/buffer_funcs.C:74
 #, fuzzy
 msgid "Could not read document"
 msgstr "Ошибка открытия документа"
 
-#: src/buffer_funcs.C:85
+#: src/buffer_funcs.C:86
 #, fuzzy, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -12216,23 +12214,23 @@ msgid ""
 "Recover emergency save?"
 msgstr "Обнаружена аварийная копия этого файла!"
 
-#: src/buffer_funcs.C:88
+#: src/buffer_funcs.C:89
 msgid "Load emergency save?"
 msgstr ""
 
-#: src/buffer_funcs.C:89
+#: src/buffer_funcs.C:90
 #, fuzzy
 msgid "&Recover"
 msgstr "обратный порядок"
 
-#: src/buffer_funcs.C:89
+#: src/buffer_funcs.C:90
 #, fuzzy
 msgid "&Load Original"
 msgstr ""
 "Центр\n"
 "вращения"
 
-#: src/buffer_funcs.C:111
+#: src/buffer_funcs.C:112
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -12240,39 +12238,39 @@ msgid ""
 "Load the backup instead?"
 msgstr ""
 
-#: src/buffer_funcs.C:114
+#: src/buffer_funcs.C:115
 #, fuzzy
 msgid "Load backup?"
 msgstr "Вернуться обратно"
 
-#: src/buffer_funcs.C:115
+#: src/buffer_funcs.C:116
 #, fuzzy
 msgid "&Load backup"
 msgstr "Назад"
 
-#: src/buffer_funcs.C:115
+#: src/buffer_funcs.C:116
 #, fuzzy
 msgid "Load &original"
 msgstr ""
 "Центр\n"
 "вращения"
 
-#: src/buffer_funcs.C:154
+#: src/buffer_funcs.C:155
 #, fuzzy, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "Вы хотите открыть документ с контролем версий?"
 
-#: src/buffer_funcs.C:156
+#: src/buffer_funcs.C:157
 #, fuzzy
 msgid "Retrieve from version control?"
 msgstr "Вы хотите открыть документ с контролем версий?"
 
-#: src/buffer_funcs.C:157
+#: src/buffer_funcs.C:158
 #, fuzzy
 msgid "&Retrieve"
 msgstr "Восстановить"
 
-#: src/buffer_funcs.C:189
+#: src/buffer_funcs.C:190
 #, fuzzy, c-format
 msgid ""
 "The specified document template\n"
@@ -12280,12 +12278,26 @@ msgid ""
 "could not be read."
 msgstr "Документ не может быть сохранён!"
 
-#: src/buffer_funcs.C:190
+#: src/buffer_funcs.C:191
 #, fuzzy
 msgid "Could not read template"
 msgstr "Ошибка запуска с файлом: "
 
-#: src/buffer_funcs.C:468
+#: src/buffer_funcs.C:445
+#, fuzzy
+msgid "\\arabic{enumi}."
+msgstr "Подраздел"
+
+#: src/buffer_funcs.C:451
+msgid "\\roman{enumiii}."
+msgstr ""
+
+#: src/buffer_funcs.C:454
+#, fuzzy
+msgid "\\Alph{enumiv}."
+msgstr "Выделенная область"
+
+#: src/buffer_funcs.C:489
 #, c-format
 msgid "%1$s #:"
 msgstr ""
@@ -12298,7 +12310,7 @@ msgid ""
 "Do you want to save the document or discard the changes?"
 msgstr "Документ использует неизвестный класс текста \""
 
-#: src/bufferlist.C:83 src/bufferlist.C:182 src/lyxfunc.C:617
+#: src/bufferlist.C:83 src/bufferlist.C:182 src/lyxfunc.C:648
 #, fuzzy
 msgid "Save changed document?"
 msgstr "Сохранить документ?"
@@ -12540,7 +12552,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Машинописный"
 
-#: src/exporter.C:77 src/lyx_cb.C:168 src/lyxfunc.C:1791
+#: src/exporter.C:77 src/lyx_cb.C:168 src/lyxfunc.C:1822
 #, fuzzy
 msgid "&Over-write"
 msgstr "Машинописный"
@@ -12909,14 +12921,13 @@ msgid "PostScript files (*.ps)"
 msgstr "Файлы PostScript (*.ps)"
 
 #: src/frontends/controllers/ControlSpellchecker.C:111
-#: src/frontends/controllers/ControlSpellchecker.C:273
 #, fuzzy
-msgid "Spell-checker error"
+msgid "Spellchecker error"
 msgstr "Проверка правописания"
 
 #: src/frontends/controllers/ControlSpellchecker.C:112
 #, fuzzy
-msgid "The spell-checker could not be started"
+msgid "The spellchecker could not be started\n"
 msgstr ""
 "Процесс ispell почему-то умер.\n"
 "Возможно, кто-то его убил."
@@ -12924,7 +12935,7 @@ msgstr ""
 #: src/frontends/controllers/ControlSpellchecker.C:265
 #, fuzzy
 msgid ""
-"The spell-checker has died for some reason.\n"
+"The spellchecker has died for some reason.\n"
 "Maybe it has been killed."
 msgstr ""
 "Процесс ispell почему-то умер.\n"
@@ -12932,7 +12943,14 @@ msgstr ""
 
 #: src/frontends/controllers/ControlSpellchecker.C:268
 #, fuzzy
-msgid "The spell-checker has failed."
+msgid "The spellchecker has failed.\n"
+msgstr ""
+"Процесс ispell почему-то умер.\n"
+"Возможно, кто-то его убил."
+
+#: src/frontends/controllers/ControlSpellchecker.C:273
+#, fuzzy
+msgid "The spellchecker has failed"
 msgstr ""
 "Процесс ispell почему-то умер.\n"
 "Возможно, кто-то его убил."
@@ -12949,7 +12967,7 @@ msgstr "Обнаружена одна ошибка"
 
 #: src/frontends/controllers/ControlSpellchecker.C:292
 #, fuzzy
-msgid "Spell-checking is complete"
+msgid "Spelling check completed"
 msgstr "Проверка правописания окончена"
 
 #: src/frontends/controllers/ControlToc.C:46 src/frontends/gtk/GToc.C:33
@@ -13328,10 +13346,12 @@ msgstr "Переслать документ в команду"
 msgid "Show File"
 msgstr "Показать файл"
 
-#: src/frontends/gtk/GSpellchecker.C:35
-#, fuzzy
-msgid "Spell-check document"
-msgstr "Проверка правописания окончена"
+#: src/frontends/gtk/GSpellchecker.C:35 src/frontends/qt2/QPrefsDialog.C:105
+#: src/frontends/qt2/QSpellchecker.C:35
+#: src/frontends/xforms/FormPreferences.C:270
+#: src/frontends/xforms/FormSpellchecker.C:34
+msgid "Spellchecker"
+msgstr "Проверка правописания"
 
 #: src/frontends/gtk/GSpellchecker.C:136
 #, fuzzy
@@ -13527,7 +13547,7 @@ msgstr "с заголовками"
 msgid "fancy"
 msgstr "красивый"
 
-#: src/frontends/qt2/QDocument.C:164 src/text.C:2210
+#: src/frontends/qt2/QDocument.C:164 src/text.C:2205
 msgid "OneHalf"
 msgstr "Полуторный"
 
@@ -13792,11 +13812,6 @@ msgstr "Клавиатурная раскладка"
 msgid "Language settings"
 msgstr "Настройки языка"
 
-#: src/frontends/qt2/QPrefsDialog.C:105
-#, fuzzy
-msgid "Spell-checker"
-msgstr "Проверка правописания"
-
 #: src/frontends/qt2/QPrefsDialog.C:107
 #: src/frontends/xforms/FormPreferences.C:219
 msgid "Outputs"
@@ -13892,11 +13907,6 @@ msgstr "Перейти к ссылке"
 #, fuzzy
 msgid "Send Document to Command"
 msgstr "Переслать документ в команду"
-
-#: src/frontends/qt2/QSpellchecker.C:35
-#: src/frontends/xforms/FormSpellchecker.C:34
-msgid "Spellchecker"
-msgstr "Проверка правописания"
 
 #: src/frontends/qt2/QTabular.C:41 src/frontends/xforms/FormTabular.C:56
 #, fuzzy
@@ -14626,10 +14636,6 @@ msgstr "Экранные шрифты"
 msgid "Formats"
 msgstr "Форматы"
 
-#: src/frontends/xforms/FormPreferences.C:270
-msgid "Spell checker"
-msgstr "Проверка правописания"
-
 #: src/frontends/xforms/FormPreferences.C:506
 msgid "LyX objects that can be assigned a color."
 msgstr "Объекты LyX, цвет которых может быть изменён."
@@ -15077,8 +15083,9 @@ msgid "Add unknown word to personal dictionary."
 msgstr "Работаю без персонального LyX-каталога."
 
 #: src/frontends/xforms/FormSpellchecker.C:76
-msgid "Shows word count and progress on spell check."
-msgstr ""
+#, fuzzy
+msgid "Proportion of document checked."
+msgstr "Печатать в файл"
 
 #: src/frontends/xforms/FormTabular.C:136
 msgid "Column/Row"
@@ -15351,12 +15358,12 @@ msgstr "Открытая вкладка подписи"
 msgid "Float"
 msgstr "Плавающий объект"
 
-#: src/insets/insetcharstyle.C:115
+#: src/insets/insetcharstyle.C:116
 #, fuzzy
 msgid "Opened CharStyle Inset"
 msgstr "Открытая вкладка примечания"
 
-#: src/insets/insetcharstyle.C:184
+#: src/insets/insetcharstyle.C:154 src/insets/insetcharstyle.C:200
 #, fuzzy
 msgid "Undef: "
 msgstr "Ссылка: "
@@ -15534,21 +15541,21 @@ msgstr "Красивая ссылка"
 msgid "PrettyRef: "
 msgstr "Красивая ссылка: "
 
-#: src/insets/insettabular.C:402
+#: src/insets/insettabular.C:412
 #, fuzzy
 msgid "Opened table"
 msgstr "Открыть файл"
 
-#: src/insets/insettabular.C:1546
+#: src/insets/insettabular.C:1554
 #, fuzzy
 msgid "Error setting multicolumn"
 msgstr "Многоколоночная"
 
-#: src/insets/insettabular.C:1547
+#: src/insets/insettabular.C:1555
 msgid "You cannot set multicolumn vertically."
 msgstr ""
 
-#: src/insets/insettext.C:225
+#: src/insets/insettext.C:228
 msgid "Opened Text Inset"
 msgstr "Открытая текстовая вкладка"
 
@@ -15572,7 +15579,7 @@ msgstr "URL: "
 msgid "HtmlUrl: "
 msgstr "HtmlURL: "
 
-#: src/insets/insetvspace.C:130
+#: src/insets/insetvspace.C:107
 #, fuzzy
 msgid "Vertical Space"
 msgstr "Интервал"
@@ -15667,12 +15674,12 @@ msgstr ""
 
 #: src/ispell.C:268
 msgid ""
-"The spell process returned an error.\n"
+"The ispell process returned an error.\n"
 "Perhaps it has been configured wrongly ?"
 msgstr ""
 
 #: src/ispell.C:377
-msgid "Could not communicate with the spell-checker program."
+msgid "Could not communicate with the ispell spellchecker process."
 msgstr ""
 
 #: src/kbsequence.C:160
@@ -15774,11 +15781,11 @@ msgstr "Название"
 msgid "Choose a filename to save document as"
 msgstr "Выберите название файла, под которым сохранить документ"
 
-#: src/lyx_cb.C:135 src/lyxfunc.C:1634
+#: src/lyx_cb.C:135 src/lyxfunc.C:1665
 msgid "Templates|#T#t"
 msgstr "Шаблоны"
 
-#: src/lyx_cb.C:165 src/lyxfunc.C:1788
+#: src/lyx_cb.C:165 src/lyxfunc.C:1819
 #, fuzzy, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -15786,7 +15793,7 @@ msgid ""
 "Do you want to over-write that document?"
 msgstr "Документ использует неизвестный класс текста \""
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:1790
+#: src/lyx_cb.C:167 src/lyxfunc.C:1821
 #, fuzzy
 msgid "Over-write document?"
 msgstr "Сохранить документ?"
@@ -16090,31 +16097,35 @@ msgstr "Язык:"
 msgid "  Number %1$s"
 msgstr "  Номер "
 
-#: src/lyxfunc.C:291
+#: src/lyxfunc.C:313
 msgid "Unknown function."
 msgstr "Неизвестная функция."
 
-#: src/lyxfunc.C:327
+#: src/lyxfunc.C:349
 msgid "Nothing to do"
 msgstr "Выполнять нечего"
 
-#: src/lyxfunc.C:345
+#: src/lyxfunc.C:367
 msgid "Unknown action"
 msgstr "Неизвестная команда"
 
-#: src/lyxfunc.C:351 src/lyxfunc.C:599
+#: src/lyxfunc.C:373 src/lyxfunc.C:630
 msgid "Command disabled"
 msgstr "Команда отключена"
 
-#: src/lyxfunc.C:358
+#: src/lyxfunc.C:380
 msgid "Command not allowed without any document open"
 msgstr "Команда недопустима без открытых документов"
 
-#: src/lyxfunc.C:593
+#: src/lyxfunc.C:615
 msgid "Document is read-only"
 msgstr "Документ доступен только для чтения"
 
-#: src/lyxfunc.C:614
+#: src/lyxfunc.C:624
+msgid "This portion of the document is deleted."
+msgstr ""
+
+#: src/lyxfunc.C:645
 #, fuzzy, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -16122,128 +16133,128 @@ msgid ""
 "Do you want to save the document?"
 msgstr "Документ использует неизвестный класс текста \""
 
-#: src/lyxfunc.C:630
+#: src/lyxfunc.C:661
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
 "Check that your printer is set up correctly."
 msgstr ""
 
-#: src/lyxfunc.C:633
+#: src/lyxfunc.C:664
 #, fuzzy
 msgid "Print document failed"
 msgstr "Печатать в файл"
 
-#: src/lyxfunc.C:652
+#: src/lyxfunc.C:683
 #, fuzzy, c-format
 msgid ""
 "The document could not be converted\n"
 "into the document class %1$s."
 msgstr "Документ использует неизвестный класс текста \""
 
-#: src/lyxfunc.C:655
+#: src/lyxfunc.C:686
 #, fuzzy
 msgid "Could not change class"
 msgstr "Невозможно преобразовать файл"
 
-#: src/lyxfunc.C:763
+#: src/lyxfunc.C:794
 #, fuzzy, c-format
 msgid "Saving document %1$s..."
 msgstr "Сохраняю документ"
 
-#: src/lyxfunc.C:767
+#: src/lyxfunc.C:798
 #, fuzzy
 msgid " done."
 msgstr "Перейти вниз"
 
-#: src/lyxfunc.C:778
+#: src/lyxfunc.C:809
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr ""
 
-#: src/lyxfunc.C:800
+#: src/lyxfunc.C:831
 #, fuzzy
 msgid "Build"
 msgstr "Создать журнал сообщений"
 
-#: src/lyxfunc.C:805
+#: src/lyxfunc.C:836
 #, fuzzy
 msgid "ChkTeX"
 msgstr "Проверить TeX"
 
-#: src/lyxfunc.C:977 src/text3.C:1249
+#: src/lyxfunc.C:1008 src/text3.C:1249
 msgid "Missing argument"
 msgstr "Отсутствует аргумент"
 
-#: src/lyxfunc.C:986
+#: src/lyxfunc.C:1017
 #, fuzzy, c-format
 msgid "Opening help file %1$s..."
 msgstr "Открываю файл помощи"
 
-#: src/lyxfunc.C:1218
+#: src/lyxfunc.C:1249
 msgid "Opening child document "
 msgstr "Открываю подчинённый документ "
 
-#: src/lyxfunc.C:1297
+#: src/lyxfunc.C:1328
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Синтакс: set-color <lyx_name> <x11_name>"
 
-#: src/lyxfunc.C:1308
+#: src/lyxfunc.C:1339
 #, fuzzy, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr "\" не удалась -- цвет не определён или не может быть переопределён."
 
-#: src/lyxfunc.C:1417
+#: src/lyxfunc.C:1448
 #, fuzzy
 msgid "Document defaults saved in "
 msgstr "Документ не может быть сохранён!"
 
-#: src/lyxfunc.C:1420
+#: src/lyxfunc.C:1451
 #, fuzzy
 msgid "Unable to save document defaults"
 msgstr ""
 "Сохранить как установки\n"
 "по умолчанию для документа"
 
-#: src/lyxfunc.C:1475
+#: src/lyxfunc.C:1506
 msgid "Converting document to new document class..."
 msgstr "Преобразую документ к новому классу документа..."
 
-#: src/lyxfunc.C:1484
+#: src/lyxfunc.C:1515
 msgid "Class switch"
 msgstr ""
 
-#: src/lyxfunc.C:1630
+#: src/lyxfunc.C:1661
 msgid "Select template file"
 msgstr "Выберите файл шаблона"
 
-#: src/lyxfunc.C:1667
+#: src/lyxfunc.C:1698
 msgid "Select document to open"
 msgstr "Выберите документ для открытия"
 
-#: src/lyxfunc.C:1708
+#: src/lyxfunc.C:1739
 #, fuzzy, c-format
 msgid "Opening document %1$s..."
 msgstr "Открываю документ"
 
-#: src/lyxfunc.C:1712
+#: src/lyxfunc.C:1743
 #, fuzzy, c-format
 msgid "Document %1$s opened."
 msgstr "Нет открытых документов!"
 
-#: src/lyxfunc.C:1714
+#: src/lyxfunc.C:1745
 #, fuzzy, c-format
 msgid "Could not open document %1$s"
 msgstr "Ошибка открытия документа"
 
-#: src/lyxfunc.C:1739
+#: src/lyxfunc.C:1770
 #, fuzzy, c-format
 msgid "Select %1$s file to import"
 msgstr "Выберите файл для вставки"
 
-#: src/lyxfunc.C:1849
+#: src/lyxfunc.C:1880
 msgid "Welcome to LyX!"
 msgstr "Добро пожаловать в LyX!"
 
@@ -16690,7 +16701,8 @@ msgid "De-select if you don't want the startup banner."
 msgstr "Снимите отметку, если вы не хотите видеть заставку при запуске."
 
 #: src/lyxrc.C:2393
-msgid "What command runs the spell checker?"
+#, fuzzy
+msgid "What command runs the spellchecker?"
 msgstr "Выберите требуемую программу проверки правописания"
 
 #: src/lyxrc.C:2397
@@ -16721,10 +16733,11 @@ msgstr ""
 "локальных настроек."
 
 #: src/lyxrc.C:2421
+#, fuzzy
 msgid ""
 "Specify whether to pass the -T input encoding option to ispell. Enable this "
-"if you can't spellcheck words with international letters in them. This may "
-"not work with all dictionaries."
+"if you cannot check the spelling of words containing accented letters. This "
+"may not work with all dictionaries."
 msgstr ""
 "Указывает, передавать ли параметр входной кодировки -T в ispell. Отметьте "
 "этот пункт, если вы не можете проверить правописания слов с международными "
@@ -16928,29 +16941,29 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Неизвестный тип списка toc"
 
-#: src/text.C:181
+#: src/text.C:179
 #, fuzzy
 msgid "Unknown layout"
 msgstr "Неизвестная команда"
 
-#: src/text.C:182
+#: src/text.C:180
 #, c-format
 msgid ""
 "Layout '%1$s' does not exist in textclass '%2$s'\n"
 "Trying to use the default instead.\n"
 msgstr ""
 
-#: src/text.C:213
+#: src/text.C:211
 #, fuzzy
 msgid "Unknown Inset"
 msgstr "Неизвестный тип списка toc"
 
-#: src/text.C:337
+#: src/text.C:335
 #, fuzzy
 msgid "Unknown token"
 msgstr " неизвестные токены"
 
-#: src/text.C:1166
+#: src/text.C:1163
 #, fuzzy
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
@@ -16958,63 +16971,63 @@ msgid ""
 msgstr ""
 "Вы не можете вставлять пробел в начале абзаца (см. Помощь|Самоучитель)."
 
-#: src/text.C:1178
+#: src/text.C:1175
 #, fuzzy
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "Вы не можете вводить пробелы таким образом (см. Помощь|Самоучитель)."
 
-#: src/text.C:2176
+#: src/text.C:2171
 #, fuzzy
 msgid "Change: "
 msgstr "Стр. от:"
 
-#: src/text.C:2180
+#: src/text.C:2175
 #, fuzzy
 msgid " at "
 msgstr " в "
 
-#: src/text.C:2191
+#: src/text.C:2186
 #, fuzzy, c-format
 msgid "Font: %1$s"
 msgstr "Шрифт:"
 
-#: src/text.C:2198
+#: src/text.C:2193
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr ", Уровень: "
 
-#: src/text.C:2204
+#: src/text.C:2199
 msgid ", Spacing: "
 msgstr "Промежутки"
 
-#: src/text.C:2216
+#: src/text.C:2211
 msgid "Other ("
 msgstr "Другой ("
 
-#: src/text.C:2225
+#: src/text.C:2220
 #, fuzzy
 msgid ", Inset: "
 msgstr ", Уровень: "
 
-#: src/text.C:2226
+#: src/text.C:2221
 msgid ", Paragraph: "
 msgstr ", Абзацев: "
 
-#: src/text.C:2227
+#: src/text.C:2222
 #, fuzzy
 msgid ", Id: "
 msgstr ", Уровень: "
 
-#: src/text.C:2228
+#: src/text.C:2223
 #, fuzzy
 msgid ", Position: "
 msgstr "Утверждение"
 
-#: src/text.C:2229
+#: src/text.C:2224
 msgid ", Boundary: "
 msgstr ""
 
-#: src/text2.C:528
+#: src/text2.C:532
 msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
@@ -17022,11 +17035,11 @@ msgstr ""
 "Не определён шрифт изменений. Используйте 'Формат->Символы'\n"
 "для определения шрифта изменений"
 
-#: src/text2.C:570
+#: src/text2.C:574
 msgid "Nothing to index!"
 msgstr "Индексировать нечего"
 
-#: src/text2.C:572
+#: src/text2.C:576
 msgid "Cannot index more than one paragraph!"
 msgstr "Невозможно индексировать более чем один абзац!"
 
@@ -17085,6 +17098,28 @@ msgid "protected"
 msgstr ""
 "Горячая\n"
 "клавиша"
+
+#, fuzzy
+#~ msgid "Spell command:|#S"
+#~ msgstr ""
+#~ "команда\n"
+#~ "помещения\n"
+#~ "в очередь"
+
+#, fuzzy
+#~ msgid "How far spellchecking has got"
+#~ msgstr "Проверить правописание"
+
+#, fuzzy
+#~ msgid "Spell-check document"
+#~ msgstr "Проверка правописания окончена"
+
+#, fuzzy
+#~ msgid "Spell-checker"
+#~ msgstr "Проверка правописания"
+
+#~ msgid "Spell checker"
+#~ msgstr "Проверка правописания"
 
 #, fuzzy
 #~ msgid "The LaTeX preamble"

@@ -420,7 +420,7 @@ qt_l10n.pot: $(top_srcdir)/src/frontends/qt2/ui/*.ui
 			gsub(/&amp;/, "\\&", line); \
 			gsub(/&lt;/, "<", line); \
 			gsub(/&gt;/, ">", line); \
-			gsub(/\"/, "\\\"", line); \
+			gsub(/"/, "\\\"", line); \
 			if (length(line) > 0) {\
 				printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n",\
 					fixupfilename(), FNR, line); \
@@ -438,7 +438,7 @@ layouts_l10n.pot: $(top_srcdir)/lib/layouts/*.layout $(top_srcdir)/lib/layouts/*
 		/^Style / { \
 			line=$$0; \
 			sub(/Style /, "", line); \
-			gsub(/\"/, "", line); \
+			gsub(/"/, "", line); \
 			gsub(/_/, " ", line); \
 			printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
 				fixupfilename(), FNR, line); \
@@ -446,8 +446,7 @@ layouts_l10n.pot: $(top_srcdir)/lib/layouts/*.layout $(top_srcdir)/lib/layouts/*
 		/LabelString[A-Za-z]*/ { \
 			line=$$0; \
 			sub(/[[:space:]]*LabelString[A-Za-z]*[[:space:]]*/, "", line); \
-			gsub(/\"/, "", line); \
-			gsub(/\/, "\\\\", line); \
+			gsub(/"/, "", line); \
 			if (line != "") \
 			  printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
 				 fixupfilename(), FNR, line); \
@@ -455,18 +454,19 @@ layouts_l10n.pot: $(top_srcdir)/lib/layouts/*.layout $(top_srcdir)/lib/layouts/*
 		/GuiName/ { \
 			line=$$0; \
 			sub(/[[:space:]]*GuiName[[:space:]]*/, "", line); \
-			gsub(/\"/, "", line); \
+			gsub(/"/, "", line); \
 			printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
 				fixupfilename(), FNR, line); \
 		} \
 		/ListName/ { \
 			line=$$0; \
 			sub(/[[:space:]]*ListName[[:space:]]*/, "", line); \
-			gsub(/\"/, "", line); \
+			gsub(/"/, "", line); \
 			printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
 				fixupfilename(), FNR, line); \
 		}' \
-	${top_srcdir}/lib/layouts/*.layout ${top_srcdir}/lib/layouts/*.inc > $@
+	${top_srcdir}/lib/layouts/*.layout ${top_srcdir}/lib/layouts/*.inc \
+	| sed 's/\\/\\\\/g' > $@
 
 languages_l10n.pot: $(top_srcdir)/lib/languages
 	$(AWK) -v top_srcdir="$(top_srcdir)" ' \
@@ -480,7 +480,7 @@ languages_l10n.pot: $(top_srcdir)/lib/languages
 		{ \
 			match($$0,"\"[^\"]*\""); \
 			lang=substr($$0,RSTART,RLENGTH); \
-			gsub(/\"/, "", lang); \
+			gsub(/"/, "", lang); \
 			printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
 			fixupfilename(), FNR, lang); \
 		}' \

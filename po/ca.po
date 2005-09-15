@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.0pre2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2005-08-21 15:19+0200\n"
+"POT-Creation-Date: 2005-09-15 17:09+0200\n"
 "PO-Revision-Date: 2005-07-18 01:52+0200\n"
 "Last-Translator:  Francesc Burrull i Mestres <>\n"
 "Language-Team: Catalan <ca@li.org>\n"
@@ -1508,8 +1508,8 @@ msgstr "    Petita (1)"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1114
 #, fuzzy
-msgid "Spell command:|#S"
-msgstr "Descriure comana"
+msgid "Spellchecker executable:|#S"
+msgstr "Corrector Ortogràfic"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1132
 #, fuzzy
@@ -2269,7 +2269,7 @@ msgstr "Impossible imprimir"
 #: src/frontends/xforms/forms/form_tabular.fd:1638
 #: src/frontends/xforms/forms/form_tabular.fd:1656
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:60
-#: src/frontends/qt2/QDocument.C:166 src/text.C:2213
+#: src/frontends/qt2/QDocument.C:166 src/text.C:2208
 #, fuzzy
 msgid "Double"
 msgstr "Doble|#D"
@@ -2901,10 +2901,10 @@ msgid "&OK"
 msgstr "D'acord"
 
 #: src/frontends/qt2/ui/QAskForTextDialog.ui:139
-#: src/frontends/qt2/ui/QDocumentDialogBase.ui:214 src/buffer_funcs.C:90
-#: src/buffer_funcs.C:116 src/buffer_funcs.C:157 src/bufferlist.C:84
-#: src/bufferlist.C:183 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:619
-#: src/lyxfunc.C:781 src/lyxfunc.C:1791 src/lyxvc.C:168
+#: src/frontends/qt2/ui/QDocumentDialogBase.ui:214 src/buffer_funcs.C:91
+#: src/buffer_funcs.C:117 src/buffer_funcs.C:158 src/bufferlist.C:84
+#: src/bufferlist.C:183 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:650
+#: src/lyxfunc.C:812 src/lyxfunc.C:1822 src/lyxvc.C:168
 #, fuzzy
 msgid "&Cancel"
 msgstr "Cancel.lar"
@@ -2977,7 +2977,7 @@ msgstr "Base de dades:"
 #: src/frontends/qt2/ui/QIndexDialogBase.ui:143
 #: src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/BufferView_pimpl.C:285
 #: src/frontends/gtk/GBC.h:27 src/frontends/qt2/Qt2BC.h:36
-#: src/frontends/xforms/xformsBC.h:29 src/lyxfunc.C:732
+#: src/frontends/xforms/xformsBC.h:29 src/lyxfunc.C:763
 msgid "Cancel"
 msgstr "Cancel.lar"
 
@@ -4253,7 +4253,7 @@ msgid "QParagraphDialogBase"
 msgstr "Format de paràgraf modificat"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:48
-#: src/frontends/qt2/QDocument.C:162 src/text.C:2207
+#: src/frontends/qt2/QDocument.C:162 src/text.C:2202
 #, fuzzy
 msgid "Single"
 msgstr "Simple|#S"
@@ -4833,7 +4833,7 @@ msgstr " Gran (4)"
 
 #: src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:56
 #, fuzzy
-msgid "Spell chec&ker:"
+msgid "Spellchec&ker executable:"
 msgstr "Corrector Ortogràfic"
 
 #: src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:99
@@ -4929,7 +4929,7 @@ msgid "Cursor follows &scrollbar"
 msgstr "(Des)Activar que el cursor segueixi la barra de scroll"
 
 #: src/frontends/qt2/ui/QPrefsDialogBase.ui:110 src/bufferlist.C:84
-#: src/bufferlist.C:183 src/lyxfunc.C:618
+#: src/bufferlist.C:183 src/lyxfunc.C:649
 #, fuzzy
 msgid "&Save"
 msgstr "Salvar"
@@ -5187,8 +5187,8 @@ msgstr "Acceptar el mot en aquesta sessió|#A"
 
 #: src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:152
 #, fuzzy
-msgid "How far spellchecking has got"
-msgstr "Començar la correcció d'ortogràfica|#S"
+msgid "Proportion of document checked"
+msgstr "Imprimir a"
 
 #: src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:163
 #, fuzzy
@@ -5749,8 +5749,9 @@ msgstr ""
 #: lib/layouts/siamltex.layout:201 lib/layouts/amsmaths-plain.inc:32
 #: lib/layouts/amsmaths-seq.inc:31 lib/layouts/amsmaths.inc:61
 #: lib/layouts/svjour.inc:478
+#, fuzzy
 msgid "Theorem"
-msgstr ""
+msgstr "Matemàtic"
 
 #: lib/layouts/IEEEtran.layout:73
 #, fuzzy
@@ -5767,8 +5768,9 @@ msgid "Lemma"
 msgstr ""
 
 #: lib/layouts/IEEEtran.layout:83
+#, fuzzy
 msgid "Lemma #:"
-msgstr ""
+msgstr "Remarca:|#R"
 
 #: lib/layouts/IEEEtran.layout:90 lib/layouts/amsart-plain.layout:30
 #: lib/layouts/amsart-seq.layout:142 lib/layouts/elsart.layout:325
@@ -5789,8 +5791,9 @@ msgstr ""
 #: lib/layouts/siamltex.layout:230 lib/layouts/amsmaths-plain.inc:62
 #: lib/layouts/amsmaths-seq.inc:55 lib/layouts/amsmaths.inc:146
 #: lib/layouts/svjour.inc:450
+#, fuzzy
 msgid "Proposition"
-msgstr ""
+msgstr "   opcions: "
 
 #: lib/layouts/IEEEtran.layout:103
 #, fuzzy
@@ -5802,12 +5805,14 @@ msgstr "   opcions: "
 #: lib/layouts/llncs.layout:312 lib/layouts/amsmaths-plain.inc:72
 #: lib/layouts/amsmaths-seq.inc:63 lib/layouts/amsmaths.inc:168
 #: lib/layouts/svjour.inc:369
+#, fuzzy
 msgid "Conjecture"
-msgstr ""
+msgstr "Centrar|#n"
 
 #: lib/layouts/IEEEtran.layout:113
+#, fuzzy
 msgid "Conjecture #:"
-msgstr ""
+msgstr "Nota"
 
 #: lib/layouts/IEEEtran.layout:120 lib/layouts/amsart-plain.layout:54
 #: lib/layouts/amsart-seq.layout:166 lib/layouts/elsart.layout:339
@@ -5894,8 +5899,9 @@ msgstr "Doble|#D"
 #: lib/layouts/amsart-seq.layout:214 lib/layouts/llncs.layout:347
 #: lib/layouts/amsmaths-plain.inc:162 lib/layouts/amsmaths-seq.inc:135
 #: lib/layouts/amsmaths.inc:341 lib/layouts/svjour.inc:404
+#, fuzzy
 msgid "Exercise"
-msgstr ""
+msgstr "Joc de caràcters:|#H"
 
 #: lib/layouts/IEEEtran.layout:193
 msgid "Exercise #:"
@@ -5920,12 +5926,14 @@ msgstr "Remarca:|#R"
 #: lib/layouts/heb-article.layout:64 lib/layouts/llncs.layout:305
 #: lib/layouts/amsmaths-plain.inc:182 lib/layouts/amsmaths-seq.inc:151
 #: lib/layouts/amsmaths.inc:395 lib/layouts/svjour.inc:348
+#, fuzzy
 msgid "Claim"
-msgstr ""
+msgstr "Espaiat"
 
 #: lib/layouts/IEEEtran.layout:213
+#, fuzzy
 msgid "Claim #:"
-msgstr ""
+msgstr "Enganxar"
 
 #: lib/layouts/IEEEtran.layout:220 lib/layouts/amsart-plain.layout:120
 #: lib/layouts/amsart-seq.layout:232 lib/layouts/apa.layout:212
@@ -6110,7 +6118,7 @@ msgstr "Entrada bibliogràfica"
 #: lib/layouts/aastex.layout:114 lib/layouts/aastex.layout:410
 #: lib/layouts/ijmpd.layout:162 lib/layouts/ijmpd.layout:170
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
-#: src/rowpainter.C:415
+#: src/rowpainter.C:419
 #, fuzzy
 msgid "Appendix"
 msgstr "inset obert"
@@ -6153,16 +6161,18 @@ msgstr "Marque Activée"
 #: lib/layouts/linuxdoc.layout:176 lib/layouts/manpage.layout:81
 #: lib/layouts/agu_stdlists.inc:12 lib/layouts/db_stdlists.inc:11
 #: lib/layouts/stdlists.inc:10
+#, fuzzy
 msgid "Itemize"
-msgstr ""
+msgstr "Inserir llista d'index"
 
 #: lib/layouts/aa.layout:48 lib/layouts/aapaper.layout:50
 #: lib/layouts/aastex.layout:78 lib/layouts/apa.layout:311
 #: lib/layouts/egs.layout:143 lib/layouts/linuxdoc.layout:160
 #: lib/layouts/manpage.layout:64 lib/layouts/agu_stdlists.inc:20
 #: lib/layouts/db_stdlists.inc:18 lib/layouts/stdlists.inc:28
+#, fuzzy
 msgid "Enumerate"
-msgstr ""
+msgstr "Inserir"
 
 #: lib/layouts/aa.layout:51 lib/layouts/aapaper.layout:53
 #: lib/layouts/aastex.layout:81 lib/layouts/egs.layout:179
@@ -6211,8 +6221,9 @@ msgstr "Fitxer"
 #: lib/layouts/aapaper.layout:77 lib/layouts/kluwer.layout:122
 #: lib/layouts/llncs.layout:122 lib/layouts/svprobth.layout:43
 #: lib/layouts/aapaper.inc:8 lib/layouts/svjour.inc:152
+#, fuzzy
 msgid "Subtitle"
-msgstr ""
+msgstr "Fitxer"
 
 #: lib/layouts/aa.layout:66 lib/layouts/aa.layout:278
 #: lib/layouts/aapaper.layout:80 lib/layouts/aapaper.layout:172
@@ -6229,8 +6240,9 @@ msgstr ""
 #: lib/layouts/agu_stdtitle.inc:166 lib/layouts/amsdefs.inc:80
 #: lib/layouts/db_stdtitle.inc:20 lib/layouts/scrclass.inc:153
 #: lib/layouts/stdtitle.inc:30 lib/layouts/svjour.inc:182
+#, fuzzy
 msgid "Author"
-msgstr ""
+msgstr "Matemàtic"
 
 #: lib/layouts/aa.layout:69 lib/layouts/aa.layout:129
 #: lib/layouts/aapaper.layout:83 lib/layouts/egs.layout:232
@@ -6240,8 +6252,9 @@ msgstr ""
 #: lib/layouts/revtex4.layout:154 lib/layouts/scrlettr.layout:151
 #: lib/layouts/scrlttr2.layout:44 lib/layouts/aapaper.inc:29
 #: lib/layouts/amsdefs.inc:149 lib/layouts/lyxmacros.inc:42
+#, fuzzy
 msgid "Address"
-msgstr ""
+msgstr "Afegir Fila|#p"
 
 #: lib/layouts/aa.layout:72 lib/layouts/aa.layout:146
 #: lib/layouts/aapaper.layout:89 lib/layouts/aapaper.inc:64
@@ -6337,8 +6350,9 @@ msgid "Affiliation"
 msgstr "Cita"
 
 #: lib/layouts/aastex.layout:99 lib/layouts/aastex.layout:348
+#, fuzzy
 msgid "And"
-msgstr ""
+msgstr "Vermell"
 
 #: lib/layouts/aastex.layout:111 lib/layouts/aastex.layout:327
 #: lib/layouts/apa.layout:221 lib/layouts/egs.layout:511
@@ -6364,8 +6378,9 @@ msgid "PlaceFigure"
 msgstr "Figura"
 
 #: lib/layouts/aastex.layout:123 lib/layouts/aastex.layout:389
+#, fuzzy
 msgid "PlaceTable"
-msgstr ""
+msgstr "Figura"
 
 #: lib/layouts/aastex.layout:126 lib/layouts/aastex.layout:510
 #, fuzzy
@@ -6378,12 +6393,14 @@ msgid "TableRefs"
 msgstr "Taula%t"
 
 #: lib/layouts/aastex.layout:135 lib/layouts/aastex.layout:431
+#, fuzzy
 msgid "MathLetters"
-msgstr ""
+msgstr "Esquerra|#e"
 
 #: lib/layouts/aastex.layout:138 lib/layouts/aastex.layout:469
+#, fuzzy
 msgid "NoteToEditor"
-msgstr ""
+msgstr "Res a fer"
 
 #: lib/layouts/aastex.layout:141 lib/layouts/aastex.layout:563
 #, fuzzy
@@ -6482,8 +6499,9 @@ msgstr ""
 #: lib/layouts/amsart-plain.layout:38 lib/layouts/foils.layout:306
 #: lib/layouts/siamltex.layout:276 lib/layouts/amsmaths-plain.inc:54
 #: lib/layouts/amsmaths.inc:138
+#, fuzzy
 msgid "Lemma."
-msgstr ""
+msgstr "Remarca:|#R"
 
 #: lib/layouts/amsart-plain.layout:44 lib/layouts/foils.layout:320
 #: lib/layouts/siamltex.layout:290 lib/layouts/amsmaths-plain.inc:64
@@ -6552,8 +6570,9 @@ msgstr "Doble|#D"
 
 #: lib/layouts/amsart-plain.layout:104 lib/layouts/amsmaths-plain.inc:164
 #: lib/layouts/amsmaths.inc:356
+#, fuzzy
 msgid "Exercise."
-msgstr ""
+msgstr "Joc de caràcters:|#H"
 
 #: lib/layouts/amsart-plain.layout:110 lib/layouts/amsmaths-plain.inc:174
 #: lib/layouts/amsmaths.inc:387
@@ -6614,16 +6633,18 @@ msgid "Conclusion."
 msgstr "Columna"
 
 #: lib/layouts/amsart-seq.layout:138
+#, fuzzy
 msgid "Theorem \\arabic{theorem}."
-msgstr ""
+msgstr "Decoració"
 
 #: lib/layouts/amsart-seq.layout:144
 msgid "Corollary \\arabic{corollary}."
 msgstr ""
 
 #: lib/layouts/amsart-seq.layout:150
+#, fuzzy
 msgid "Lemma \\arabic{lemma}."
-msgstr ""
+msgstr "Decoració"
 
 #: lib/layouts/amsart-seq.layout:156
 msgid "Proposition \\arabic{proposition}."
@@ -6634,68 +6655,79 @@ msgid "Conjecture \\arabic{conjecture}."
 msgstr ""
 
 #: lib/layouts/amsart-seq.layout:168
+#, fuzzy
 msgid "Criterion \\arabic{criterion}."
-msgstr ""
+msgstr "Decoració"
 
 #: lib/layouts/amsart-seq.layout:174
 msgid "Algorithm \\arabic{algorithm}."
 msgstr ""
 
 #: lib/layouts/amsart-seq.layout:180
+#, fuzzy
 msgid "Fact \\arabic{fact}."
-msgstr ""
+msgstr "Decoració"
 
 #: lib/layouts/amsart-seq.layout:186
+#, fuzzy
 msgid "Axiom \\arabic{axiom}."
-msgstr ""
+msgstr "Decoració"
 
 #: lib/layouts/amsart-seq.layout:192
 msgid "Definition \\arabic{definition}."
 msgstr ""
 
 #: lib/layouts/amsart-seq.layout:198
+#, fuzzy
 msgid "Example \\arabic{example}."
-msgstr ""
+msgstr "Decoració"
 
 #: lib/layouts/amsart-seq.layout:204
+#, fuzzy
 msgid "Condition \\arabic{condition}."
-msgstr ""
+msgstr "Decoració"
 
 #: lib/layouts/amsart-seq.layout:210
+#, fuzzy
 msgid "Problem \\arabic{problem}."
-msgstr ""
+msgstr "Decoració"
 
 #: lib/layouts/amsart-seq.layout:216
 msgid "Exercise \\arabic{execise}."
 msgstr ""
 
 #: lib/layouts/amsart-seq.layout:222
+#, fuzzy
 msgid "Remark \\arabic{remark}."
-msgstr ""
+msgstr "Decoració"
 
 #: lib/layouts/amsart-seq.layout:228
+#, fuzzy
 msgid "Claim \\arabic{claim}."
-msgstr ""
+msgstr "Decoració"
 
 #: lib/layouts/amsart-seq.layout:234
+#, fuzzy
 msgid "Note \\arabic{note}."
-msgstr ""
+msgstr "Decoració"
 
 #: lib/layouts/amsart-seq.layout:240
 msgid "Notation \\arabic{notation}."
 msgstr ""
 
 #: lib/layouts/amsart-seq.layout:246
+#, fuzzy
 msgid "Summary \\arabic{summary}."
-msgstr ""
+msgstr "Decoració"
 
 #: lib/layouts/amsart-seq.layout:252
 msgid "Acknowledgement \\arabic{acknowledgement}."
 msgstr ""
 
 #: lib/layouts/amsart-seq.layout:258
+#, fuzzy
 msgid "Case \\arabic{case}."
-msgstr ""
+msgstr "Decoració"
 
 #: lib/layouts/amsart-seq.layout:264
 msgid "Conclusion \\arabic{conclusion}."
@@ -6713,8 +6745,9 @@ msgid "Chapter Exercises"
 msgstr "Joc de caràcters:|#H"
 
 #: lib/layouts/apa.layout:49
+#, fuzzy
 msgid "RightHeader"
-msgstr ""
+msgstr "Capçalera"
 
 #: lib/layouts/apa.layout:58
 #, fuzzy
@@ -6726,8 +6759,9 @@ msgid "Abstract:"
 msgstr ""
 
 #: lib/layouts/apa.layout:91
+#, fuzzy
 msgid "ShortTitle"
-msgstr ""
+msgstr "Fitxer"
 
 #: lib/layouts/apa.layout:99
 #, fuzzy
@@ -6735,16 +6769,19 @@ msgid "Short title:"
 msgstr "Fitxer"
 
 #: lib/layouts/apa.layout:128
+#, fuzzy
 msgid "TwoAuthors"
-msgstr ""
+msgstr "Matemàtic"
 
 #: lib/layouts/apa.layout:135
+#, fuzzy
 msgid "ThreeAuthors"
-msgstr ""
+msgstr "Matemàtic"
 
 #: lib/layouts/apa.layout:142
+#, fuzzy
 msgid "FourAuthors"
-msgstr ""
+msgstr "Matemàtic"
 
 #: lib/layouts/apa.layout:161 lib/layouts/revtex4.layout:144
 #: lib/layouts/agu_stdtitle.inc:130
@@ -6753,16 +6790,19 @@ msgid "Affiliation:"
 msgstr "Cita"
 
 #: lib/layouts/apa.layout:170
+#, fuzzy
 msgid "TwoAffiliations"
-msgstr ""
+msgstr "Cita"
 
 #: lib/layouts/apa.layout:177
+#, fuzzy
 msgid "ThreeAffiliations"
-msgstr ""
+msgstr "Cita"
 
 #: lib/layouts/apa.layout:184
+#, fuzzy
 msgid "FourAffiliations"
-msgstr ""
+msgstr "Cita"
 
 #: lib/layouts/apa.layout:191 lib/layouts/egs.layout:334
 #, fuzzy
@@ -6813,6 +6853,7 @@ msgid "Seriate"
 msgstr "Inserir"
 
 #: lib/layouts/apa.layout:345 lib/layouts/apa.layout:346
+#: src/buffer_funcs.C:448
 msgid "(\\alph{enumii})"
 msgstr ""
 
@@ -6847,16 +6888,18 @@ msgid "ACT"
 msgstr ""
 
 #: lib/layouts/broadway.layout:68
+#, fuzzy
 msgid "ACT \\arabic{act}"
-msgstr ""
+msgstr "Decoració"
 
 #: lib/layouts/broadway.layout:72 lib/layouts/broadway.layout:101
 msgid "SCENE"
 msgstr ""
 
 #: lib/layouts/broadway.layout:85
+#, fuzzy
 msgid "SCENE \\arabic{scene}"
-msgstr ""
+msgstr "Decoració"
 
 #: lib/layouts/broadway.layout:89
 msgid "SCENE*"
@@ -6890,8 +6933,9 @@ msgstr ""
 
 #: lib/layouts/broadway.layout:215 lib/layouts/egs.layout:220
 #: lib/layouts/hollywood.layout:319 lib/layouts/lyxmacros.inc:62
+#, fuzzy
 msgid "Right Address"
-msgstr ""
+msgstr "Afegir Fila|#p"
 
 #: lib/layouts/chess.layout:32
 #, fuzzy
@@ -6972,8 +7016,9 @@ msgid "HideMoves:"
 msgstr ""
 
 #: lib/layouts/chess.layout:123
+#, fuzzy
 msgid "ChessBoard"
-msgstr ""
+msgstr "Paraula clau:|#K"
 
 #: lib/layouts/chess.layout:127
 #, fuzzy
@@ -6986,8 +7031,9 @@ msgid "BoardCentered"
 msgstr "Centrar|#n"
 
 #: lib/layouts/chess.layout:141
+#, fuzzy
 msgid "[centered board]"
-msgstr ""
+msgstr "Paraula clau:|#K"
 
 #: lib/layouts/chess.layout:151
 #, fuzzy
@@ -7056,8 +7102,9 @@ msgstr ""
 
 #: lib/layouts/dinbrief.layout:28 lib/layouts/heb-letter.layout:14
 #: lib/layouts/stdletter.inc:35
+#, fuzzy
 msgid "Send To Address"
-msgstr ""
+msgstr "Comentari:"
 
 #: lib/layouts/dinbrief.layout:33 lib/layouts/g-brief-de.layout:183
 #, fuzzy
@@ -7136,8 +7183,9 @@ msgid "Betreff:"
 msgstr ""
 
 #: lib/layouts/dinbrief.layout:157
+#, fuzzy
 msgid "Stadt"
-msgstr ""
+msgstr "Salvar"
 
 #: lib/layouts/dinbrief.layout:168
 #, fuzzy
@@ -7145,8 +7193,9 @@ msgid "Stadt:"
 msgstr "Salvar"
 
 #: lib/layouts/dinbrief.layout:177 lib/layouts/g-brief-de.layout:187
+#, fuzzy
 msgid "Datum"
-msgstr ""
+msgstr "Enganxar"
 
 #: lib/layouts/dinbrief.layout:188 lib/layouts/g-brief-de.layout:190
 #, fuzzy
@@ -7201,8 +7250,9 @@ msgid "Author:"
 msgstr "Matemàtic"
 
 #: lib/layouts/egs.layout:311
+#, fuzzy
 msgid "Affil"
-msgstr ""
+msgstr "Cita"
 
 #: lib/layouts/egs.layout:325
 #, fuzzy
@@ -7225,8 +7275,9 @@ msgid "MS_number:"
 msgstr "Número"
 
 #: lib/layouts/egs.layout:382
+#, fuzzy
 msgid "FirstAuthor"
-msgstr ""
+msgstr "Matemàtic"
 
 #: lib/layouts/egs.layout:396
 msgid "1st_author_surname:"
@@ -7234,8 +7285,9 @@ msgstr ""
 
 #: lib/layouts/egs.layout:405 lib/layouts/agu_stdtitle.inc:197
 #: lib/layouts/aguplus.inc:107
+#, fuzzy
 msgid "Received"
-msgstr ""
+msgstr "Ref: "
 
 #: lib/layouts/egs.layout:419 lib/layouts/agu_stdtitle.inc:200
 #: lib/layouts/aguplus.inc:111
@@ -7271,12 +7323,14 @@ msgstr ""
 
 #: lib/layouts/egs.layout:654 lib/layouts/db_lyxmacros.inc:17
 #: lib/layouts/lyxmacros.inc:11
+#, fuzzy
 msgid "LyX-Code"
-msgstr ""
+msgstr "Tancar"
 
 #: lib/layouts/elsart.layout:132
+#, fuzzy
 msgid "Author Address"
-msgstr ""
+msgstr "Comentari:"
 
 #: lib/layouts/elsart.layout:141 lib/layouts/g-brief-en.layout:183
 #: lib/layouts/g-brief2.layout:809 lib/layouts/revtex.layout:127
@@ -7309,8 +7363,9 @@ msgstr "Url|#U"
 
 #: lib/layouts/elsart.layout:193 lib/layouts/revtex4.layout:161
 #: lib/layouts/amsdefs.inc:198
+#, fuzzy
 msgid "Thanks"
-msgstr ""
+msgstr "Pàgina: "
 
 #: lib/layouts/elsart.layout:278
 msgid "Theorem \\arabic{theorem}"
@@ -7361,20 +7416,23 @@ msgid "Remark \\arabic{theorem}"
 msgstr ""
 
 #: lib/layouts/elsart.layout:398
+#, fuzzy
 msgid "Note \\arabic{theorem}"
-msgstr ""
+msgstr "Decoració"
 
 #: lib/layouts/elsart.layout:405
 msgid "Claim \\arabic{theorem}"
 msgstr ""
 
 #: lib/layouts/elsart.layout:413
+#, fuzzy
 msgid "Summary \\arabic{summ}"
-msgstr ""
+msgstr "Decoració"
 
 #: lib/layouts/elsart.layout:421
+#, fuzzy
 msgid "Case \\arabic{case}"
-msgstr ""
+msgstr "Decoració"
 
 #: lib/layouts/elsart.layout:433
 msgid "Acknowledgement \\arabic{theorem}"
@@ -7400,28 +7458,32 @@ msgid "Foilhead"
 msgstr "Fitxer"
 
 #: lib/layouts/foils.layout:60
+#, fuzzy
 msgid "ShortFoilhead"
-msgstr ""
+msgstr "Fitxer"
 
 #: lib/layouts/foils.layout:66
+#, fuzzy
 msgid "Rotatefoilhead"
-msgstr ""
+msgstr "Fitxer"
 
 #: lib/layouts/foils.layout:72
 msgid "ShortRotatefoilhead"
 msgstr ""
 
 #: lib/layouts/foils.layout:81
+#, fuzzy
 msgid "TickList"
-msgstr ""
+msgstr "Línies"
 
 #: lib/layouts/foils.layout:96
 msgid "_/"
 msgstr ""
 
 #: lib/layouts/foils.layout:102
+#, fuzzy
 msgid "CrossList"
-msgstr ""
+msgstr "Inserir referència creuada"
 
 #: lib/layouts/foils.layout:117
 msgid "><"
@@ -7475,14 +7537,16 @@ msgstr "Matemàtic"
 #: lib/layouts/foils.layout:250 lib/layouts/heb-article.layout:47
 #: lib/layouts/llncs.layout:357 lib/layouts/siamltex.layout:219
 #: lib/layouts/svjour.inc:418
+#, fuzzy
 msgid "Lemma #."
-msgstr ""
+msgstr "Remarca:|#R"
 
 #: lib/layouts/foils.layout:257 lib/layouts/heb-article.layout:57
 #: lib/layouts/llncs.layout:322 lib/layouts/siamltex.layout:226
 #: lib/layouts/svjour.inc:379
+#, fuzzy
 msgid "Corollary #."
-msgstr ""
+msgstr "   opcions: "
 
 #: lib/layouts/foils.layout:264 lib/layouts/llncs.layout:391
 #: lib/layouts/siamltex.layout:233 lib/layouts/svjour.inc:453
@@ -7505,13 +7569,15 @@ msgstr ""
 
 #: lib/layouts/foils.layout:296 lib/layouts/siamltex.layout:266
 #: lib/layouts/amsmaths.inc:90
+#, fuzzy
 msgid "Theorem*"
-msgstr ""
+msgstr "Matemàtic"
 
 #: lib/layouts/foils.layout:303 lib/layouts/siamltex.layout:273
 #: lib/layouts/amsmaths.inc:135
+#, fuzzy
 msgid "Lemma*"
-msgstr ""
+msgstr "Remarca:|#R"
 
 #: lib/layouts/foils.layout:310 lib/layouts/siamltex.layout:280
 #: lib/layouts/amsmaths.inc:113
@@ -7520,8 +7586,9 @@ msgstr ""
 
 #: lib/layouts/foils.layout:317 lib/layouts/siamltex.layout:287
 #: lib/layouts/amsmaths.inc:157
+#, fuzzy
 msgid "Proposition*"
-msgstr ""
+msgstr "   opcions: "
 
 #: lib/layouts/foils.layout:324 lib/layouts/siamltex.layout:293
 #: lib/layouts/amsmaths.inc:263
@@ -7530,8 +7597,9 @@ msgid "Definition*"
 msgstr "Destí:"
 
 #: lib/layouts/g-brief-de.layout:15
+#, fuzzy
 msgid "Brieftext"
-msgstr ""
+msgstr "Inclinada"
 
 #: lib/layouts/g-brief-de.layout:24
 #, fuzzy
@@ -7539,12 +7607,14 @@ msgid "Text:"
 msgstr "Inclinada"
 
 #: lib/layouts/g-brief-de.layout:52
+#, fuzzy
 msgid "Unterschrift"
-msgstr ""
+msgstr "Decoració"
 
 #: lib/layouts/g-brief-de.layout:59
+#, fuzzy
 msgid "Strasse"
-msgstr ""
+msgstr "Salvar"
 
 #: lib/layouts/g-brief-de.layout:62
 #, fuzzy
@@ -7570,8 +7640,9 @@ msgid "Ort:"
 msgstr "Inserir"
 
 #: lib/layouts/g-brief-de.layout:80
+#, fuzzy
 msgid "Land"
-msgstr ""
+msgstr "Apaisat"
 
 #: lib/layouts/g-brief-de.layout:83
 #, fuzzy
@@ -7579,12 +7650,14 @@ msgid "Land:"
 msgstr "Apaisat"
 
 #: lib/layouts/g-brief-de.layout:87
+#, fuzzy
 msgid "RetourAdresse"
-msgstr ""
+msgstr "Afegir Fila|#p"
 
 #: lib/layouts/g-brief-de.layout:90
+#, fuzzy
 msgid "RetourAdresse:"
-msgstr ""
+msgstr "Afegir Fila|#p"
 
 #: lib/layouts/g-brief-de.layout:94
 #, fuzzy
@@ -7597,8 +7670,9 @@ msgid "MeinZeichen:"
 msgstr "polzades|#n"
 
 #: lib/layouts/g-brief-de.layout:101
+#, fuzzy
 msgid "IhrZeichen"
-msgstr ""
+msgstr "polzades|#n"
 
 #: lib/layouts/g-brief-de.layout:104
 #, fuzzy
@@ -7606,12 +7680,14 @@ msgid "IhrZeichen:"
 msgstr "polzades|#n"
 
 #: lib/layouts/g-brief-de.layout:108
+#, fuzzy
 msgid "IhrSchreiben"
-msgstr ""
+msgstr "polzades|#n"
 
 #: lib/layouts/g-brief-de.layout:111
+#, fuzzy
 msgid "IhrSchreiben:"
-msgstr ""
+msgstr "polzades|#n"
 
 #: lib/layouts/g-brief-de.layout:115
 #, fuzzy
@@ -7624,8 +7700,9 @@ msgid "Telefon:"
 msgstr "Decoració"
 
 #: lib/layouts/g-brief-de.layout:122 lib/layouts/g-brief-en.layout:122
+#, fuzzy
 msgid "Telefax"
-msgstr ""
+msgstr "Inclinada"
 
 #: lib/layouts/g-brief-de.layout:125 lib/layouts/g-brief-en.layout:125
 #, fuzzy
@@ -7643,8 +7720,9 @@ msgid "Telex:"
 msgstr "Inclinada"
 
 #: lib/layouts/g-brief-de.layout:136 lib/layouts/g-brief-en.layout:136
+#, fuzzy
 msgid "EMail"
-msgstr ""
+msgstr "Matriu"
 
 #: lib/layouts/g-brief-de.layout:139 lib/layouts/g-brief-en.layout:139
 #, fuzzy
@@ -7661,8 +7739,9 @@ msgstr ""
 
 #: lib/layouts/g-brief-de.layout:150 lib/layouts/g-brief-en.layout:150
 #: lib/layouts/scrlttr2.layout:220
+#, fuzzy
 msgid "Bank"
-msgstr ""
+msgstr "Bloc|#c"
 
 #: lib/layouts/g-brief-de.layout:153 lib/layouts/g-brief-en.layout:153
 #: lib/layouts/scrlttr2.layout:224
@@ -7679,8 +7758,9 @@ msgid "BLZ:"
 msgstr ""
 
 #: lib/layouts/g-brief-de.layout:164
+#, fuzzy
 msgid "Konto"
-msgstr ""
+msgstr "Comentari:"
 
 #: lib/layouts/g-brief-de.layout:167
 #, fuzzy
@@ -7688,8 +7768,9 @@ msgid "Konto:"
 msgstr "Comentari:"
 
 #: lib/layouts/g-brief-de.layout:171
+#, fuzzy
 msgid "Postvermerk"
-msgstr ""
+msgstr "Centrar|#n"
 
 #: lib/layouts/g-brief-de.layout:174
 #, fuzzy
@@ -7697,8 +7778,9 @@ msgid "Postvermerk:"
 msgstr "Centrar|#n"
 
 #: lib/layouts/g-brief-de.layout:178
+#, fuzzy
 msgid "Adresse"
-msgstr ""
+msgstr "Afegir Fila|#p"
 
 #: lib/layouts/g-brief-de.layout:203
 #, fuzzy
@@ -7711,8 +7793,9 @@ msgid "Anlagen"
 msgstr "Aliniació"
 
 #: lib/layouts/g-brief-de.layout:220
+#, fuzzy
 msgid "Verteiler"
-msgstr ""
+msgstr "Espais verticals"
 
 #: lib/layouts/g-brief-de.layout:229
 msgid "Gruss"
@@ -7737,12 +7820,14 @@ msgid "Signature:"
 msgstr "Figura"
 
 #: lib/layouts/g-brief-en.layout:59
+#, fuzzy
 msgid "Street"
-msgstr ""
+msgstr "Inclinada"
 
 #: lib/layouts/g-brief-en.layout:62
+#, fuzzy
 msgid "Street:"
-msgstr ""
+msgstr "Salvar"
 
 #: lib/layouts/g-brief-en.layout:66
 #, fuzzy
@@ -7775,12 +7860,14 @@ msgid "State:"
 msgstr "Salvar"
 
 #: lib/layouts/g-brief-en.layout:87 lib/layouts/g-brief2.layout:693
+#, fuzzy
 msgid "ReturnAddress"
-msgstr ""
+msgstr "Comentari:"
 
 #: lib/layouts/g-brief-en.layout:90 lib/layouts/g-brief2.layout:703
+#, fuzzy
 msgid "ReturnAddress:"
-msgstr ""
+msgstr "Afegir Fila|#p"
 
 #: lib/layouts/g-brief-en.layout:94 lib/layouts/g-brief2.layout:714
 #, fuzzy
@@ -7793,8 +7880,9 @@ msgid "MyRef:"
 msgstr "Ref: "
 
 #: lib/layouts/g-brief-en.layout:101 lib/layouts/g-brief2.layout:734
+#, fuzzy
 msgid "YourRef"
-msgstr ""
+msgstr "Ref: "
 
 #: lib/layouts/g-brief-en.layout:104 lib/layouts/g-brief2.layout:745
 #, fuzzy
@@ -7802,8 +7890,9 @@ msgid "YourRef:"
 msgstr "Ref: "
 
 #: lib/layouts/g-brief-en.layout:108 lib/layouts/g-brief2.layout:756
+#, fuzzy
 msgid "YourMail"
-msgstr ""
+msgstr "     Normal"
 
 #: lib/layouts/g-brief-en.layout:111 lib/layouts/g-brief2.layout:766
 #, fuzzy
@@ -7821,8 +7910,9 @@ msgid "Phone:"
 msgstr "Llistí Telefònic"
 
 #: lib/layouts/g-brief-en.layout:157
+#, fuzzy
 msgid "BankCode"
-msgstr ""
+msgstr "Tancar"
 
 #: lib/layouts/g-brief-en.layout:160
 #, fuzzy
@@ -7872,8 +7962,9 @@ msgid "Opening:"
 msgstr "Obrir"
 
 #: lib/layouts/g-brief-en.layout:212 lib/layouts/g-brief2.layout:888
+#, fuzzy
 msgid "Encl."
-msgstr ""
+msgstr "Cancel.lar"
 
 #: lib/layouts/g-brief-en.layout:216 lib/layouts/g-brief2.layout:899
 #, fuzzy
@@ -8131,56 +8222,69 @@ msgid "InternetRowF:"
 msgstr ""
 
 #: lib/layouts/g-brief2.layout:575
+#, fuzzy
 msgid "BankRowA"
-msgstr ""
+msgstr "Nom"
 
 #: lib/layouts/g-brief2.layout:586
+#, fuzzy
 msgid "BankRowA:"
-msgstr ""
+msgstr "Bloc|#c"
 
 #: lib/layouts/g-brief2.layout:595
+#, fuzzy
 msgid "BankRowB"
-msgstr ""
+msgstr "Nom"
 
 #: lib/layouts/g-brief2.layout:605
+#, fuzzy
 msgid "BankRowB:"
-msgstr ""
+msgstr "Bloc|#c"
 
 #: lib/layouts/g-brief2.layout:614
+#, fuzzy
 msgid "BankRowC"
-msgstr ""
+msgstr "Nom"
 
 #: lib/layouts/g-brief2.layout:624
+#, fuzzy
 msgid "BankRowC:"
-msgstr ""
+msgstr "Bloc|#c"
 
 #: lib/layouts/g-brief2.layout:633
+#, fuzzy
 msgid "BankRowD"
-msgstr ""
+msgstr "Nom"
 
 #: lib/layouts/g-brief2.layout:643
+#, fuzzy
 msgid "BankRowD:"
-msgstr ""
+msgstr "Bloc|#c"
 
 #: lib/layouts/g-brief2.layout:652
+#, fuzzy
 msgid "BankRowE"
-msgstr ""
+msgstr "Nom"
 
 #: lib/layouts/g-brief2.layout:662
+#, fuzzy
 msgid "BankRowE:"
-msgstr ""
+msgstr "Bloc|#c"
 
 #: lib/layouts/g-brief2.layout:671
+#, fuzzy
 msgid "BankRowF"
-msgstr ""
+msgstr "Nom"
 
 #: lib/layouts/g-brief2.layout:681
+#, fuzzy
 msgid "BankRowF:"
-msgstr ""
+msgstr "Bloc|#c"
 
 #: lib/layouts/heb-article.layout:67
+#, fuzzy
 msgid "Claim #."
-msgstr ""
+msgstr "Enganxar"
 
 #: lib/layouts/heb-article.layout:84
 #, fuzzy
@@ -8245,8 +8349,9 @@ msgid "FADE OUT"
 msgstr ""
 
 #: lib/layouts/hollywood.layout:293
+#, fuzzy
 msgid "General"
-msgstr ""
+msgstr "Centrar|#n"
 
 #: lib/layouts/hollywood.layout:306
 #, fuzzy
@@ -8280,8 +8385,9 @@ msgid "Running title:"
 msgstr "Executant LaTeX..."
 
 #: lib/layouts/kluwer.layout:236
+#, fuzzy
 msgid "RunningAuthor"
-msgstr ""
+msgstr "Acció Desconeguda"
 
 #: lib/layouts/kluwer.layout:244
 #, fuzzy
@@ -8315,8 +8421,9 @@ msgstr ""
 #: lib/layouts/scrbook.layout:15 lib/layouts/agu_stdsections.inc:20
 #: lib/layouts/db_stdsections.inc:19 lib/layouts/numreport.inc:11
 #: lib/layouts/scrclass.inc:52 lib/layouts/stdsections.inc:30
+#, fuzzy
 msgid "Chapter"
-msgstr ""
+msgstr "Enganxar"
 
 #: lib/layouts/llncs.layout:144 lib/layouts/svjour.inc:174
 #, fuzzy
@@ -8334,8 +8441,9 @@ msgid "TOC title:"
 msgstr "[no hi ha fitxer]"
 
 #: lib/layouts/llncs.layout:197 lib/layouts/svjour.inc:203
+#, fuzzy
 msgid "Author Running"
-msgstr ""
+msgstr "Matemàtic"
 
 #: lib/layouts/llncs.layout:201 lib/layouts/svjour.inc:207
 #, fuzzy
@@ -8358,8 +8466,9 @@ msgid "Case #."
 msgstr "Enganxar"
 
 #: lib/layouts/llncs.layout:315 lib/layouts/svjour.inc:372
+#, fuzzy
 msgid "Conjecture #."
-msgstr ""
+msgstr "Nota"
 
 #: lib/layouts/llncs.layout:343 lib/layouts/svjour.inc:400
 #, fuzzy
@@ -8381,8 +8490,9 @@ msgid "Problem #."
 msgstr "Doble|#D"
 
 #: lib/layouts/llncs.layout:381 lib/layouts/svjour.inc:443
+#, fuzzy
 msgid "Property"
-msgstr ""
+msgstr "   opcions: "
 
 #: lib/layouts/llncs.layout:384 lib/layouts/svjour.inc:446
 #, fuzzy
@@ -8415,8 +8525,9 @@ msgid "Solution #."
 msgstr "Rotació"
 
 #: lib/layouts/memoir.layout:74
+#, fuzzy
 msgid "Chapterprecis"
-msgstr ""
+msgstr "Joc de caràcters:|#H"
 
 #: lib/layouts/memoir.layout:95
 #, fuzzy
@@ -8438,8 +8549,9 @@ msgid "Legend"
 msgstr ""
 
 #: lib/layouts/paper.layout:146
+#, fuzzy
 msgid "SubTitle"
-msgstr ""
+msgstr "Fitxer"
 
 #: lib/layouts/paper.layout:157
 #, fuzzy
@@ -8474,8 +8586,9 @@ msgid "PACS number:"
 msgstr "Número"
 
 #: lib/layouts/scrbook.layout:16
+#, fuzzy
 msgid "\\arabic{chapter}"
-msgstr ""
+msgstr "Decoració"
 
 #: lib/layouts/scrbook.layout:17
 msgid "\\Alph{chapter}"
@@ -8517,8 +8630,9 @@ msgstr "Cancel.lar"
 
 #: lib/layouts/scrlettr.layout:158 lib/layouts/scrlttr2.layout:188
 #: lib/layouts/stdletter.inc:134
+#, fuzzy
 msgid "Telephone"
-msgstr ""
+msgstr "Decoració"
 
 #: lib/layouts/scrlettr.layout:161 lib/layouts/stdletter.inc:138
 #, fuzzy
@@ -8536,12 +8650,14 @@ msgid "Place:"
 msgstr "Substituir"
 
 #: lib/layouts/scrlettr.layout:179 lib/layouts/scrlttr2.layout:252
+#, fuzzy
 msgid "Backaddress"
-msgstr ""
+msgstr "Afegir Fila|#p"
 
 #: lib/layouts/scrlettr.layout:182 lib/layouts/scrlttr2.layout:256
+#, fuzzy
 msgid "Backaddress:"
-msgstr ""
+msgstr "Afegir Fila|#p"
 
 #: lib/layouts/scrlettr.layout:186 lib/layouts/scrlttr2.layout:260
 #, fuzzy
@@ -8572,8 +8688,9 @@ msgstr "Fitxer"
 
 #: lib/layouts/scrlettr.layout:207 lib/layouts/scrlttr2.layout:284
 #: lib/layouts/scrclass.inc:167
+#, fuzzy
 msgid "Subject"
-msgstr ""
+msgstr "Decoració"
 
 #: lib/layouts/scrlettr.layout:210 lib/layouts/scrlttr2.layout:288
 #, fuzzy
@@ -8581,8 +8698,9 @@ msgid "Subject:"
 msgstr "Decoració"
 
 #: lib/layouts/scrlettr.layout:214 lib/layouts/scrlttr2.layout:292
+#, fuzzy
 msgid "Yourref"
-msgstr ""
+msgstr "     Normal"
 
 #: lib/layouts/scrlettr.layout:217 lib/layouts/scrlttr2.layout:296
 #, fuzzy
@@ -8595,16 +8713,19 @@ msgid "Yourmail"
 msgstr "     Normal"
 
 #: lib/layouts/scrlettr.layout:231 lib/layouts/scrlttr2.layout:312
+#, fuzzy
 msgid "Your letter of:"
-msgstr ""
+msgstr "     Normal"
 
 #: lib/layouts/scrlettr.layout:235 lib/layouts/scrlttr2.layout:316
+#, fuzzy
 msgid "Myref"
-msgstr ""
+msgstr "Ref: "
 
 #: lib/layouts/scrlettr.layout:238 lib/layouts/scrlttr2.layout:320
+#, fuzzy
 msgid "Our ref.:"
-msgstr ""
+msgstr "     Normal"
 
 #: lib/layouts/scrlettr.layout:242 lib/layouts/scrlttr2.layout:324
 #, fuzzy
@@ -8627,12 +8748,14 @@ msgid "Invoice no.:"
 msgstr "Ignorar"
 
 #: lib/layouts/scrlttr2.layout:73
+#, fuzzy
 msgid "NextAddress"
-msgstr ""
+msgstr "Afegir Fila|#p"
 
 #: lib/layouts/scrlttr2.layout:85
+#, fuzzy
 msgid "Next Address:"
-msgstr ""
+msgstr "Afegir Fila|#p"
 
 #: lib/layouts/scrlttr2.layout:130
 msgid "Post Scriptum:"
@@ -8644,24 +8767,28 @@ msgid "Sender Name:"
 msgstr "Imprimir"
 
 #: lib/layouts/scrlttr2.layout:180
+#, fuzzy
 msgid "SenderAddress"
-msgstr ""
+msgstr "Afegir Fila|#p"
 
 #: lib/layouts/scrlttr2.layout:184
+#, fuzzy
 msgid "Sender Address:"
-msgstr ""
+msgstr "Afegir Fila|#p"
 
 #: lib/layouts/scrlttr2.layout:192
+#, fuzzy
 msgid "Sender Phone:"
-msgstr ""
+msgstr "Imprimir"
 
 #: lib/layouts/scrlttr2.layout:196
 msgid "Fax"
 msgstr ""
 
 #: lib/layouts/scrlttr2.layout:200
+#, fuzzy
 msgid "Sender Fax:"
-msgstr ""
+msgstr "Imprimir"
 
 #: lib/layouts/scrlttr2.layout:204
 #, fuzzy
@@ -8717,8 +8844,9 @@ msgid "Slide*"
 msgstr "Cares"
 
 #: lib/layouts/seminar.layout:77
+#, fuzzy
 msgid "SlideHeading"
-msgstr ""
+msgstr "Mapeig de tecles"
 
 #: lib/layouts/seminar.layout:83
 msgid "SlideSubHeading"
@@ -8745,8 +8873,9 @@ msgid "Slidecontents"
 msgstr "Taula de continguts"
 
 #: lib/layouts/seminar.layout:109
+#, fuzzy
 msgid "ProgressContents"
-msgstr ""
+msgstr "Taula de continguts"
 
 #: lib/layouts/seminar.layout:115
 #, fuzzy
@@ -8811,8 +8940,9 @@ msgid "<Visible Text Follows>"
 msgstr ""
 
 #: lib/layouts/spie.layout:53
+#, fuzzy
 msgid "Authorinfo"
-msgstr ""
+msgstr "Matemàtic"
 
 #: lib/layouts/spie.layout:65
 #, fuzzy
@@ -8881,16 +9011,18 @@ msgid "AGU-volume"
 msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:67
+#, fuzzy
 msgid "AGU-volume:"
-msgstr ""
+msgstr "     Normal"
 
 #: lib/layouts/agu_stdtitle.inc:72
 msgid "AGU-issue"
 msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:75
+#, fuzzy
 msgid "AGU-issue:"
-msgstr ""
+msgstr "Idioma"
 
 #: lib/layouts/agu_stdtitle.inc:83
 #, fuzzy
@@ -9000,8 +9132,9 @@ msgid "Citation:"
 msgstr "Cita"
 
 #: lib/layouts/agu_stdtitle.inc:270
+#, fuzzy
 msgid "Posting-order"
-msgstr ""
+msgstr "Centrar|#n"
 
 #: lib/layouts/agu_stdtitle.inc:273
 #, fuzzy
@@ -9009,8 +9142,9 @@ msgid "Posting-order:"
 msgstr "Centrar|#n"
 
 #: lib/layouts/agu_stdtitle.inc:278
+#, fuzzy
 msgid "AGU-pages"
-msgstr ""
+msgstr "Idioma"
 
 #: lib/layouts/agu_stdtitle.inc:281
 #, fuzzy
@@ -9077,12 +9211,14 @@ msgid "Paper Id:"
 msgstr "Enganxar"
 
 #: lib/layouts/aguplus.inc:152
+#, fuzzy
 msgid "AuthorAddr"
-msgstr ""
+msgstr "Matemàtic"
 
 #: lib/layouts/aguplus.inc:156
+#, fuzzy
 msgid "Author Address:"
-msgstr ""
+msgstr "Afegir Fila|#p"
 
 #: lib/layouts/aguplus.inc:160
 #, fuzzy
@@ -9100,8 +9236,9 @@ msgid "Plate"
 msgstr "Substituir"
 
 #: lib/layouts/aguplus.inc:190
+#, fuzzy
 msgid "Planotable"
-msgstr ""
+msgstr "Substituir"
 
 #: lib/layouts/aguplus.inc:201
 #, fuzzy
@@ -9154,8 +9291,9 @@ msgid "Translator:"
 msgstr "Traduir"
 
 #: lib/layouts/amsdefs.inc:219
+#, fuzzy
 msgid "Subjectclass"
-msgstr ""
+msgstr "Decoració"
 
 #: lib/layouts/amsdefs.inc:222
 msgid "1991 Mathematics Subject Classification:"
@@ -9199,12 +9337,14 @@ msgid "Algorithm @Section@.\\arabic{theorem}."
 msgstr ""
 
 #: lib/layouts/amsmaths.inc:215
+#, fuzzy
 msgid "Fact @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Seleccionar següent paràgraf"
 
 #: lib/layouts/amsmaths.inc:223
+#, fuzzy
 msgid "Fact*"
-msgstr ""
+msgstr "Pare:"
 
 #: lib/layouts/amsmaths.inc:237
 msgid "Axiom @Section@.\\arabic{theorem}."
@@ -9246,8 +9386,9 @@ msgid "Exercise @Section@.\\arabic{theorem}."
 msgstr ""
 
 #: lib/layouts/amsmaths.inc:353
+#, fuzzy
 msgid "Exercise*"
-msgstr ""
+msgstr "Joc de caràcters:|#H"
 
 #: lib/layouts/amsmaths.inc:367
 msgid "Remark @Section@.\\arabic{theorem}."
@@ -9267,8 +9408,9 @@ msgid "Claim*"
 msgstr ""
 
 #: lib/layouts/amsmaths.inc:420
+#, fuzzy
 msgid "Note @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Seleccionar següent paràgraf"
 
 #: lib/layouts/amsmaths.inc:428
 #, fuzzy
@@ -9297,36 +9439,43 @@ msgid "Acknowledgement*"
 msgstr ""
 
 #: lib/layouts/amsmaths.inc:497
+#, fuzzy
 msgid "Case @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Seleccionar següent paràgraf"
 
 #: lib/layouts/amsmaths.inc:508
 msgid "Conclusion @Section@.\\arabic{theorem}."
 msgstr ""
 
 #: lib/layouts/amsmaths.inc:516
+#, fuzzy
 msgid "Conclusion*"
-msgstr ""
+msgstr "Columna"
 
 #: lib/layouts/db_stdlayouts.inc:10
+#, fuzzy
 msgid "Literal"
-msgstr ""
+msgstr "Esquerra|#e"
 
 #: lib/layouts/db_stdstarsections.inc:23 lib/layouts/stdstarsections.inc:20
+#, fuzzy
 msgid "Chapter*"
-msgstr ""
+msgstr "Enganxar"
 
 #: lib/layouts/db_stdstarsections.inc:83 lib/layouts/stdstarsections.inc:65
+#, fuzzy
 msgid "Subparagraph*"
-msgstr ""
+msgstr "Seleccionar següent paràgraf"
 
 #: lib/layouts/db_stdtitle.inc:26
+#, fuzzy
 msgid "Authorgroup"
-msgstr ""
+msgstr "Matemàtic"
 
 #: lib/layouts/db_stdtitle.inc:42
+#, fuzzy
 msgid "RevisionHistory"
-msgstr ""
+msgstr "Destí:"
 
 #: lib/layouts/db_stdtitle.inc:58
 #, fuzzy
@@ -9349,12 +9498,14 @@ msgid "FirstName"
 msgstr "Primera cel.la"
 
 #: lib/layouts/db_stdtitle.inc:100
+#, fuzzy
 msgid "Surname"
-msgstr ""
+msgstr "     Normal"
 
 #: lib/layouts/literate-scrap.inc:11
+#, fuzzy
 msgid "Scrap"
-msgstr ""
+msgstr "   Petita (2)"
 
 #: lib/layouts/numarticle.inc:7
 msgid "Part \\Roman{part}"
@@ -9366,12 +9517,14 @@ msgid "\\Alph{section}"
 msgstr "Decoració"
 
 #: lib/layouts/numarticle.inc:24 lib/layouts/numarticle.inc:25
+#, fuzzy
 msgid "@Section@.\\arabic{subsection}"
-msgstr ""
+msgstr "Decoració"
 
 #: lib/layouts/numarticle.inc:33 lib/layouts/numarticle.inc:34
+#, fuzzy
 msgid "@Subsection@.\\arabic{subsubsection}"
-msgstr ""
+msgstr "Decoració"
 
 #: lib/layouts/numarticle.inc:42 lib/layouts/numarticle.inc:43
 #, fuzzy
@@ -9379,28 +9532,33 @@ msgid "@Subsubsection@.\\arabic{paragraph}"
 msgstr "Seleccionar següent paràgraf"
 
 #: lib/layouts/numarticle.inc:51 lib/layouts/numarticle.inc:52
+#, fuzzy
 msgid "@Paragraph@.\\arabic{subparagraph}"
-msgstr ""
+msgstr "Seleccionar següent paràgraf"
 
 #: lib/layouts/numreport.inc:14
 msgid "Chapter \\arabic{chapter}"
 msgstr ""
 
 #: lib/layouts/numreport.inc:15
+#, fuzzy
 msgid "Appendix \\Alph{chapter}"
-msgstr ""
+msgstr "Decoració"
 
 #: lib/layouts/numreport.inc:21
+#, fuzzy
 msgid "\\arabic{chapter}.\\arabic{section}"
-msgstr ""
+msgstr "Decoració"
 
 #: lib/layouts/numreport.inc:22
+#, fuzzy
 msgid "\\Alph{chapter}.\\arabic{section}"
-msgstr ""
+msgstr "Decoració"
 
 #: lib/layouts/numrevtex.inc:8
+#, fuzzy
 msgid "\\Roman{section}."
-msgstr ""
+msgstr "Decoració"
 
 #: lib/layouts/numrevtex.inc:9
 #, fuzzy
@@ -9438,20 +9596,23 @@ msgid "Addpart"
 msgstr "Afegir a|#t"
 
 #: lib/layouts/scrclass.inc:103
+#, fuzzy
 msgid "Addchap"
-msgstr ""
+msgstr "Afegir a|#t"
 
 #: lib/layouts/scrclass.inc:109
+#, fuzzy
 msgid "Addsec"
-msgstr ""
+msgstr "Afegir a|#t"
 
 #: lib/layouts/scrclass.inc:115
 msgid "Addchap*"
 msgstr ""
 
 #: lib/layouts/scrclass.inc:121
+#, fuzzy
 msgid "Addsec*"
-msgstr ""
+msgstr "Afegir a|#t"
 
 #: lib/layouts/scrclass.inc:127
 #, fuzzy
@@ -9468,16 +9629,18 @@ msgid "Dedication"
 msgstr "Decoració"
 
 #: lib/layouts/scrclass.inc:185
+#, fuzzy
 msgid "Titlehead"
-msgstr ""
+msgstr "Fitxer"
 
 #: lib/layouts/scrclass.inc:196
 msgid "Uppertitleback"
 msgstr ""
 
 #: lib/layouts/scrclass.inc:202
+#, fuzzy
 msgid "Lowertitleback"
-msgstr ""
+msgstr "Retrat"
 
 #: lib/layouts/scrclass.inc:208
 #, fuzzy
@@ -9495,8 +9658,9 @@ msgid "Captionbelow"
 msgstr "Caption|#k"
 
 #: lib/layouts/scrclass.inc:242
+#, fuzzy
 msgid "Dictum"
-msgstr ""
+msgstr "Enganxar"
 
 #: lib/layouts/stdfloats.inc:9 src/frontends/xforms/FormTabular.C:134
 #, fuzzy
@@ -10830,7 +10994,7 @@ msgstr "Tallar"
 msgid "Copy"
 msgstr "Copiar"
 
-#: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:620
+#: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:630
 #: src/mathed/math_nestinset.C:413 src/text3.C:805
 msgid "Paste"
 msgstr "Enganxar"
@@ -11155,11 +11319,11 @@ msgstr "Vols salvar el document?"
 msgid "Print document"
 msgstr "Importar document"
 
-#: lib/ui/stdtoolbars.ui:49 src/BufferView_pimpl.C:1076
+#: lib/ui/stdtoolbars.ui:49 src/BufferView_pimpl.C:1088
 msgid "Undo"
 msgstr "Desfer"
 
-#: lib/ui/stdtoolbars.ui:50 src/BufferView_pimpl.C:1087
+#: lib/ui/stdtoolbars.ui:50 src/BufferView_pimpl.C:1099
 msgid "Redo"
 msgstr "Refer"
 
@@ -11474,12 +11638,12 @@ msgid ""
 "Do you want to revert to the saved version?"
 msgstr ""
 
-#: src/BufferView_pimpl.C:258 src/lyxfunc.C:780
+#: src/BufferView_pimpl.C:258 src/lyxfunc.C:811
 #, fuzzy
 msgid "Revert to saved document?"
 msgstr "Revertir a document salvat"
 
-#: src/BufferView_pimpl.C:259 src/lyxfunc.C:781 src/lyxvc.C:168
+#: src/BufferView_pimpl.C:259 src/lyxfunc.C:812 src/lyxvc.C:168
 #, fuzzy
 msgid "&Revert"
 msgstr "Salvar"
@@ -11512,112 +11676,112 @@ msgstr "Inclinada"
 msgid "Parse"
 msgstr "Enganxar"
 
-#: src/BufferView_pimpl.C:401
+#: src/BufferView_pimpl.C:413
 msgid "Formatting document..."
 msgstr "Donant format al document..."
 
-#: src/BufferView_pimpl.C:729
+#: src/BufferView_pimpl.C:741
 #, fuzzy, c-format
 msgid "Saved bookmark %1$d"
 msgstr "Baix|#B"
 
-#: src/BufferView_pimpl.C:762
+#: src/BufferView_pimpl.C:774
 #, fuzzy, c-format
 msgid "Moved to bookmark %1$d"
 msgstr "Baix|#B"
 
-#: src/BufferView_pimpl.C:821
+#: src/BufferView_pimpl.C:833
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Seleccionar el document a inserir"
 
-#: src/BufferView_pimpl.C:823 src/frontends/controllers/ControlBibtex.C:48
+#: src/BufferView_pimpl.C:835 src/frontends/controllers/ControlBibtex.C:48
 #: src/frontends/controllers/ControlBibtex.C:59
 #: src/frontends/controllers/ControlExternal.C:160
 #: src/frontends/controllers/ControlGraphics.C:94
 #: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:133
-#: src/lyxfunc.C:1632 src/lyxfunc.C:1669 src/lyxfunc.C:1744
+#: src/lyxfunc.C:1663 src/lyxfunc.C:1700 src/lyxfunc.C:1775
 #, fuzzy
 msgid "Documents|#o#O"
 msgstr "Documents"
 
-#: src/BufferView_pimpl.C:825 src/lyxfunc.C:1671 src/lyxfunc.C:1746
+#: src/BufferView_pimpl.C:837 src/lyxfunc.C:1702 src/lyxfunc.C:1777
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Exemples"
 
-#: src/BufferView_pimpl.C:830 src/lyx_cb.C:141 src/lyxfunc.C:1639
-#: src/lyxfunc.C:1676
+#: src/BufferView_pimpl.C:842 src/lyx_cb.C:141 src/lyxfunc.C:1670
+#: src/lyxfunc.C:1707
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "Document"
 
-#: src/BufferView_pimpl.C:840 src/lyxfunc.C:1686 src/lyxfunc.C:1764
-#: src/lyxfunc.C:1778 src/lyxfunc.C:1794
+#: src/BufferView_pimpl.C:852 src/lyxfunc.C:1717 src/lyxfunc.C:1795
+#: src/lyxfunc.C:1809 src/lyxfunc.C:1825
 msgid "Canceled."
 msgstr "Cancel.lat"
 
-#: src/BufferView_pimpl.C:850
+#: src/BufferView_pimpl.C:862
 #, fuzzy, c-format
 msgid "Inserting document %1$s..."
 msgstr "Insertion del document en cours"
 
-#: src/BufferView_pimpl.C:861
+#: src/BufferView_pimpl.C:873
 #, fuzzy, c-format
 msgid "Document %1$s inserted."
 msgstr "Document renombrat com '"
 
-#: src/BufferView_pimpl.C:862
+#: src/BufferView_pimpl.C:874
 #, fuzzy, c-format
 msgid "Could not insert document %1$s"
 msgstr "Impossible inserir el document"
 
-#: src/BufferView_pimpl.C:1079
+#: src/BufferView_pimpl.C:1091
 #, fuzzy
 msgid "No further undo information"
 msgstr "No hi ha més informació per desfer"
 
-#: src/BufferView_pimpl.C:1090
+#: src/BufferView_pimpl.C:1102
 msgid "No further redo information"
 msgstr "No hi ha més informació per Refer"
 
-#: src/BufferView_pimpl.C:1219
+#: src/BufferView_pimpl.C:1231
 msgid "Mark off"
 msgstr "Marque Désactivée"
 
-#: src/BufferView_pimpl.C:1226
+#: src/BufferView_pimpl.C:1238
 msgid "Mark on"
 msgstr "Marque Activée"
 
-#: src/BufferView_pimpl.C:1233
+#: src/BufferView_pimpl.C:1245
 msgid "Mark removed"
 msgstr "Marque enlevée"
 
-#: src/BufferView_pimpl.C:1236
+#: src/BufferView_pimpl.C:1248
 msgid "Mark set"
 msgstr "Marque posée"
 
-#: src/BufferView_pimpl.C:1278
+#: src/BufferView_pimpl.C:1290
 #, fuzzy, c-format
 msgid "%1$d words in selection."
 msgstr "Detectat un error"
 
-#: src/BufferView_pimpl.C:1281
+#: src/BufferView_pimpl.C:1293
 #, fuzzy, c-format
 msgid "%1$d words in document."
 msgstr "Impossible obrir el document"
 
-#: src/BufferView_pimpl.C:1286
+#: src/BufferView_pimpl.C:1298
 #, fuzzy
 msgid "One word in selection."
 msgstr "Detectat un error"
 
-#: src/BufferView_pimpl.C:1288
+#: src/BufferView_pimpl.C:1300
 #, fuzzy
 msgid "One word in document."
 msgstr "Ouverture del document fils"
 
-#: src/BufferView_pimpl.C:1291
+#: src/BufferView_pimpl.C:1303
 #, fuzzy
 msgid "Count words"
 msgstr "Comentari:"
@@ -11632,7 +11796,7 @@ msgstr "Avís de ChkTeX número "
 msgid "ChkTeX warning id # "
 msgstr "Avís de ChkTeX número "
 
-#: src/CutAndPaste.C:399
+#: src/CutAndPaste.C:404
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -11641,19 +11805,19 @@ msgid ""
 "%3$s to %4$s"
 msgstr ""
 
-#: src/CutAndPaste.C:403
+#: src/CutAndPaste.C:408
 #, fuzzy
 msgid "Changed Layout"
 msgstr "Format de paràgrafExtra"
 
-#: src/CutAndPaste.C:422
+#: src/CutAndPaste.C:427
 #, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
 "%2$s to %3$s"
 msgstr ""
 
-#: src/CutAndPaste.C:428
+#: src/CutAndPaste.C:433
 #, fuzzy
 msgid "Undefined character style"
 msgstr "Joc de caràcters:|#H"
@@ -11986,7 +12150,7 @@ msgstr "a la classe escollida"
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 
-#: src/buffer.C:444 src/text.C:338
+#: src/buffer.C:444 src/text.C:336
 #, fuzzy, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Acció Desconeguda"
@@ -12083,7 +12247,7 @@ msgstr ""
 msgid "Could not run chktex successfully."
 msgstr "Chktex no ha trobat cap error"
 
-#: src/buffer_funcs.C:71
+#: src/buffer_funcs.C:72
 #, fuzzy, c-format
 msgid ""
 "The specified document\n"
@@ -12091,12 +12255,12 @@ msgid ""
 "could not be read."
 msgstr "Possibles Formats de Document"
 
-#: src/buffer_funcs.C:73
+#: src/buffer_funcs.C:74
 #, fuzzy
 msgid "Could not read document"
 msgstr "Impossible obrir el document"
 
-#: src/buffer_funcs.C:85
+#: src/buffer_funcs.C:86
 #, fuzzy, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -12104,20 +12268,20 @@ msgid ""
 "Recover emergency save?"
 msgstr "Existeix una còpia de seguretat del document !"
 
-#: src/buffer_funcs.C:88
+#: src/buffer_funcs.C:89
 msgid "Load emergency save?"
 msgstr ""
 
-#: src/buffer_funcs.C:89
+#: src/buffer_funcs.C:90
 #, fuzzy
 msgid "&Recover"
 msgstr "Ordre Invers|#R"
 
-#: src/buffer_funcs.C:89
+#: src/buffer_funcs.C:90
 msgid "&Load Original"
 msgstr ""
 
-#: src/buffer_funcs.C:111
+#: src/buffer_funcs.C:112
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -12125,36 +12289,36 @@ msgid ""
 "Load the backup instead?"
 msgstr ""
 
-#: src/buffer_funcs.C:114
+#: src/buffer_funcs.C:115
 #, fuzzy
 msgid "Load backup?"
 msgstr "Negre"
 
-#: src/buffer_funcs.C:115
+#: src/buffer_funcs.C:116
 #, fuzzy
 msgid "&Load backup"
 msgstr "Negre"
 
-#: src/buffer_funcs.C:115
+#: src/buffer_funcs.C:116
 msgid "Load &original"
 msgstr ""
 
-#: src/buffer_funcs.C:154
+#: src/buffer_funcs.C:155
 #, fuzzy, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "Voleu obrir el fitxer amb control de versió?"
 
-#: src/buffer_funcs.C:156
+#: src/buffer_funcs.C:157
 #, fuzzy
 msgid "Retrieve from version control?"
 msgstr "Voleu obrir el fitxer amb control de versió?"
 
-#: src/buffer_funcs.C:157
+#: src/buffer_funcs.C:158
 #, fuzzy
 msgid "&Retrieve"
 msgstr "Ordre Invers|#R"
 
-#: src/buffer_funcs.C:189
+#: src/buffer_funcs.C:190
 #, fuzzy, c-format
 msgid ""
 "The specified document template\n"
@@ -12162,12 +12326,26 @@ msgid ""
 "could not be read."
 msgstr "Possibles Formats de Document"
 
-#: src/buffer_funcs.C:190
+#: src/buffer_funcs.C:191
 #, fuzzy
 msgid "Could not read template"
 msgstr "Impossible executar amb el fitxer:"
 
-#: src/buffer_funcs.C:468
+#: src/buffer_funcs.C:445
+#, fuzzy
+msgid "\\arabic{enumi}."
+msgstr "Decoració"
+
+#: src/buffer_funcs.C:451
+msgid "\\roman{enumiii}."
+msgstr ""
+
+#: src/buffer_funcs.C:454
+#, fuzzy
+msgid "\\Alph{enumiv}."
+msgstr "Decoració"
+
+#: src/buffer_funcs.C:489
 #, c-format
 msgid "%1$s #:"
 msgstr ""
@@ -12180,7 +12358,7 @@ msgid ""
 "Do you want to save the document or discard the changes?"
 msgstr ""
 
-#: src/bufferlist.C:83 src/bufferlist.C:182 src/lyxfunc.C:617
+#: src/bufferlist.C:83 src/bufferlist.C:182 src/lyxfunc.C:648
 #, fuzzy
 msgid "Save changed document?"
 msgstr "Vols salvar el document?"
@@ -12435,7 +12613,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Màquina d'Escriure"
 
-#: src/exporter.C:77 src/lyx_cb.C:168 src/lyxfunc.C:1791
+#: src/exporter.C:77 src/lyx_cb.C:168 src/lyxfunc.C:1822
 #, fuzzy
 msgid "&Over-write"
 msgstr "Màquina d'Escriure"
@@ -12823,14 +13001,13 @@ msgid "PostScript files (*.ps)"
 msgstr ""
 
 #: src/frontends/controllers/ControlSpellchecker.C:111
-#: src/frontends/controllers/ControlSpellchecker.C:273
 #, fuzzy
-msgid "Spell-checker error"
+msgid "Spellchecker error"
 msgstr "Corrector Ortogràfic"
 
 #: src/frontends/controllers/ControlSpellchecker.C:112
 #, fuzzy
-msgid "The spell-checker could not be started"
+msgid "The spellchecker could not be started\n"
 msgstr ""
 "El procés i-spell ha mort per alguna raó.\n"
 "Potser l'han matat."
@@ -12838,7 +13015,7 @@ msgstr ""
 #: src/frontends/controllers/ControlSpellchecker.C:265
 #, fuzzy
 msgid ""
-"The spell-checker has died for some reason.\n"
+"The spellchecker has died for some reason.\n"
 "Maybe it has been killed."
 msgstr ""
 "El procés i-spell ha mort per alguna raó.\n"
@@ -12846,7 +13023,14 @@ msgstr ""
 
 #: src/frontends/controllers/ControlSpellchecker.C:268
 #, fuzzy
-msgid "The spell-checker has failed."
+msgid "The spellchecker has failed.\n"
+msgstr ""
+"El procés i-spell ha mort per alguna raó.\n"
+"Potser l'han matat."
+
+#: src/frontends/controllers/ControlSpellchecker.C:273
+#, fuzzy
+msgid "The spellchecker has failed"
 msgstr ""
 "El procés i-spell ha mort per alguna raó.\n"
 "Potser l'han matat."
@@ -12863,7 +13047,7 @@ msgstr "Detectat un error"
 
 #: src/frontends/controllers/ControlSpellchecker.C:292
 #, fuzzy
-msgid "Spell-checking is complete"
+msgid "Spelling check completed"
 msgstr "Correcció Ortogràfica Finalitzada"
 
 #: src/frontends/controllers/ControlToc.C:46 src/frontends/gtk/GToc.C:33
@@ -13263,10 +13447,13 @@ msgstr "Enviar document a comanda"
 msgid "Show File"
 msgstr "Fitxer"
 
-#: src/frontends/gtk/GSpellchecker.C:35
+#: src/frontends/gtk/GSpellchecker.C:35 src/frontends/qt2/QPrefsDialog.C:105
+#: src/frontends/qt2/QSpellchecker.C:35
+#: src/frontends/xforms/FormPreferences.C:270
+#: src/frontends/xforms/FormSpellchecker.C:34
 #, fuzzy
-msgid "Spell-check document"
-msgstr "Correcció Ortogràfica Finalitzada"
+msgid "Spellchecker"
+msgstr "Corrector Ortogràfic"
 
 #: src/frontends/gtk/GSpellchecker.C:136
 #, fuzzy
@@ -13473,7 +13660,7 @@ msgstr "Mapeig de tecles"
 msgid "fancy"
 msgstr ""
 
-#: src/frontends/qt2/QDocument.C:164 src/text.C:2210
+#: src/frontends/qt2/QDocument.C:164 src/text.C:2205
 msgid "OneHalf"
 msgstr ""
 
@@ -13737,11 +13924,6 @@ msgstr "Paraula clau:|#K"
 msgid "Language settings"
 msgstr "Minipàgina|#M"
 
-#: src/frontends/qt2/QPrefsDialog.C:105
-#, fuzzy
-msgid "Spell-checker"
-msgstr "Corrector Ortogràfic"
-
 #: src/frontends/qt2/QPrefsDialog.C:107
 #: src/frontends/xforms/FormPreferences.C:219
 #, fuzzy
@@ -13841,12 +14023,6 @@ msgstr "Anar a la Referència||#G"
 #, fuzzy
 msgid "Send Document to Command"
 msgstr "Enviar document a comanda"
-
-#: src/frontends/qt2/QSpellchecker.C:35
-#: src/frontends/xforms/FormSpellchecker.C:34
-#, fuzzy
-msgid "Spellchecker"
-msgstr "Corrector Ortogràfic"
 
 #: src/frontends/qt2/QTabular.C:41 src/frontends/xforms/FormTabular.C:56
 #, fuzzy
@@ -14542,11 +14718,6 @@ msgstr "Opcions de pantalla"
 msgid "Formats"
 msgstr "     Normal"
 
-#: src/frontends/xforms/FormPreferences.C:270
-#, fuzzy
-msgid "Spell checker"
-msgstr "Corrector Ortogràfic"
-
 #: src/frontends/xforms/FormPreferences.C:506
 msgid "LyX objects that can be assigned a color."
 msgstr ""
@@ -14955,8 +15126,9 @@ msgid "Add unknown word to personal dictionary."
 msgstr "Inserir al diccionari personal|#I"
 
 #: src/frontends/xforms/FormSpellchecker.C:76
-msgid "Shows word count and progress on spell check."
-msgstr ""
+#, fuzzy
+msgid "Proportion of document checked."
+msgstr "Imprimir a"
 
 #: src/frontends/xforms/FormTabular.C:136
 #, fuzzy
@@ -15234,12 +15406,12 @@ msgstr "Nota oberta"
 msgid "Float"
 msgstr "Peu de pàg."
 
-#: src/insets/insetcharstyle.C:115
+#: src/insets/insetcharstyle.C:116
 #, fuzzy
 msgid "Opened CharStyle Inset"
 msgstr "Nota oberta"
 
-#: src/insets/insetcharstyle.C:184
+#: src/insets/insetcharstyle.C:154 src/insets/insetcharstyle.C:200
 #, fuzzy
 msgid "Undef: "
 msgstr "Ref: "
@@ -15435,21 +15607,21 @@ msgstr "Ref: "
 msgid "PrettyRef: "
 msgstr "Ref: "
 
-#: src/insets/insettabular.C:402
+#: src/insets/insettabular.C:412
 #, fuzzy
 msgid "Opened table"
 msgstr "Obrint el fitxer d'ajuda"
 
-#: src/insets/insettabular.C:1546
+#: src/insets/insettabular.C:1554
 #, fuzzy
 msgid "Error setting multicolumn"
 msgstr "Multicolumnes|#M"
 
-#: src/insets/insettabular.C:1547
+#: src/insets/insettabular.C:1555
 msgid "You cannot set multicolumn vertically."
 msgstr ""
 
-#: src/insets/insettext.C:225
+#: src/insets/insettext.C:228
 #, fuzzy
 msgid "Opened Text Inset"
 msgstr "inset obert"
@@ -15477,7 +15649,7 @@ msgstr "Url: "
 msgid "HtmlUrl: "
 msgstr "HtmlUrl: "
 
-#: src/insets/insetvspace.C:130
+#: src/insets/insetvspace.C:107
 #, fuzzy
 msgid "Vertical Space"
 msgstr "Espais verticals"
@@ -15576,12 +15748,12 @@ msgstr ""
 
 #: src/ispell.C:268
 msgid ""
-"The spell process returned an error.\n"
+"The ispell process returned an error.\n"
 "Perhaps it has been configured wrongly ?"
 msgstr ""
 
 #: src/ispell.C:377
-msgid "Could not communicate with the spell-checker program."
+msgid "Could not communicate with the ispell spellchecker process."
 msgstr ""
 
 #: src/kbsequence.C:160
@@ -15688,12 +15860,12 @@ msgstr "Nom"
 msgid "Choose a filename to save document as"
 msgstr "Introduiu el nom amb què es guardarà el fitxer"
 
-#: src/lyx_cb.C:135 src/lyxfunc.C:1634
+#: src/lyx_cb.C:135 src/lyxfunc.C:1665
 #, fuzzy
 msgid "Templates|#T#t"
 msgstr "Plantilles"
 
-#: src/lyx_cb.C:165 src/lyxfunc.C:1788
+#: src/lyx_cb.C:165 src/lyxfunc.C:1819
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -15701,7 +15873,7 @@ msgid ""
 "Do you want to over-write that document?"
 msgstr ""
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:1790
+#: src/lyx_cb.C:167 src/lyxfunc.C:1821
 #, fuzzy
 msgid "Over-write document?"
 msgstr "Vols salvar el document?"
@@ -15991,34 +16163,38 @@ msgstr "Idioma:"
 msgid "  Number %1$s"
 msgstr "Número"
 
-#: src/lyxfunc.C:291
+#: src/lyxfunc.C:313
 #, fuzzy
 msgid "Unknown function."
 msgstr "Acció Desconeguda"
 
-#: src/lyxfunc.C:327
+#: src/lyxfunc.C:349
 #, fuzzy
 msgid "Nothing to do"
 msgstr "Res a fer"
 
-#: src/lyxfunc.C:345
+#: src/lyxfunc.C:367
 msgid "Unknown action"
 msgstr "Acció Desconeguda"
 
-#: src/lyxfunc.C:351 src/lyxfunc.C:599
+#: src/lyxfunc.C:373 src/lyxfunc.C:630
 #, fuzzy
 msgid "Command disabled"
 msgstr "Inserir etiqueta"
 
-#: src/lyxfunc.C:358
+#: src/lyxfunc.C:380
 msgid "Command not allowed without any document open"
 msgstr "Commanda no autoritzada sense documents oberts"
 
-#: src/lyxfunc.C:593
+#: src/lyxfunc.C:615
 msgid "Document is read-only"
 msgstr "Document de només lectura"
 
-#: src/lyxfunc.C:614
+#: src/lyxfunc.C:624
+msgid "This portion of the document is deleted."
+msgstr ""
+
+#: src/lyxfunc.C:645
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -16026,128 +16202,128 @@ msgid ""
 "Do you want to save the document?"
 msgstr ""
 
-#: src/lyxfunc.C:630
+#: src/lyxfunc.C:661
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
 "Check that your printer is set up correctly."
 msgstr ""
 
-#: src/lyxfunc.C:633
+#: src/lyxfunc.C:664
 #, fuzzy
 msgid "Print document failed"
 msgstr "Imprimir a"
 
-#: src/lyxfunc.C:652
+#: src/lyxfunc.C:683
 #, c-format
 msgid ""
 "The document could not be converted\n"
 "into the document class %1$s."
 msgstr ""
 
-#: src/lyxfunc.C:655
+#: src/lyxfunc.C:686
 #, fuzzy
 msgid "Could not change class"
 msgstr "Impossible escriure el fitxer"
 
-#: src/lyxfunc.C:763
+#: src/lyxfunc.C:794
 #, fuzzy, c-format
 msgid "Saving document %1$s..."
 msgstr "Salvant el document"
 
-#: src/lyxfunc.C:767
+#: src/lyxfunc.C:798
 #, fuzzy
 msgid " done."
 msgstr "Anar avall"
 
-#: src/lyxfunc.C:778
+#: src/lyxfunc.C:809
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr ""
 
-#: src/lyxfunc.C:800
+#: src/lyxfunc.C:831
 #, fuzzy
 msgid "Build"
 msgstr "Construint programa..."
 
-#: src/lyxfunc.C:805
+#: src/lyxfunc.C:836
 #, fuzzy
 msgid "ChkTeX"
 msgstr "Verificar TeX"
 
-#: src/lyxfunc.C:977 src/text3.C:1249
+#: src/lyxfunc.C:1008 src/text3.C:1249
 msgid "Missing argument"
 msgstr "Argument manquant"
 
-#: src/lyxfunc.C:986
+#: src/lyxfunc.C:1017
 #, fuzzy, c-format
 msgid "Opening help file %1$s..."
 msgstr "Obrint el fitxer d'ajuda"
 
-#: src/lyxfunc.C:1218
+#: src/lyxfunc.C:1249
 msgid "Opening child document "
 msgstr "Ouverture del document fils"
 
-#: src/lyxfunc.C:1297
+#: src/lyxfunc.C:1328
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/lyxfunc.C:1308
+#: src/lyxfunc.C:1339
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/lyxfunc.C:1417
+#: src/lyxfunc.C:1448
 #, fuzzy
 msgid "Document defaults saved in "
 msgstr "Possibles Formats de Document"
 
-#: src/lyxfunc.C:1420
+#: src/lyxfunc.C:1451
 #, fuzzy
 msgid "Unable to save document defaults"
 msgstr "Fixar el format del paper"
 
-#: src/lyxfunc.C:1475
+#: src/lyxfunc.C:1506
 msgid "Converting document to new document class..."
 msgstr "Convertint el document a la nova classe..."
 
-#: src/lyxfunc.C:1484
+#: src/lyxfunc.C:1515
 msgid "Class switch"
 msgstr ""
 
-#: src/lyxfunc.C:1630
+#: src/lyxfunc.C:1661
 #, fuzzy
 msgid "Select template file"
 msgstr "Seleccionar la línia següent"
 
-#: src/lyxfunc.C:1667
+#: src/lyxfunc.C:1698
 #, fuzzy
 msgid "Select document to open"
 msgstr "Seleccioneu el document a obrir"
 
-#: src/lyxfunc.C:1708
+#: src/lyxfunc.C:1739
 #, fuzzy, c-format
 msgid "Opening document %1$s..."
 msgstr "Ouverture del document en cours"
 
-#: src/lyxfunc.C:1712
+#: src/lyxfunc.C:1743
 #, fuzzy, c-format
 msgid "Document %1$s opened."
 msgstr "No hi ha documents oberts!%t"
 
-#: src/lyxfunc.C:1714
+#: src/lyxfunc.C:1745
 #, fuzzy, c-format
 msgid "Could not open document %1$s"
 msgstr "Impossible obrir el document"
 
-#: src/lyxfunc.C:1739
+#: src/lyxfunc.C:1770
 #, fuzzy, c-format
 msgid "Select %1$s file to import"
 msgstr "Seleccionar el document a inserir"
 
-#: src/lyxfunc.C:1849
+#: src/lyxfunc.C:1880
 msgid "Welcome to LyX!"
 msgstr "Benvingut a LyX !"
 
@@ -16515,7 +16691,7 @@ msgid "De-select if you don't want the startup banner."
 msgstr ""
 
 #: src/lyxrc.C:2393
-msgid "What command runs the spell checker?"
+msgid "What command runs the spellchecker?"
 msgstr ""
 
 #: src/lyxrc.C:2397
@@ -16539,8 +16715,8 @@ msgstr ""
 #: src/lyxrc.C:2421
 msgid ""
 "Specify whether to pass the -T input encoding option to ispell. Enable this "
-"if you can't spellcheck words with international letters in them. This may "
-"not work with all dictionaries."
+"if you cannot check the spelling of words containing accented letters. This "
+"may not work with all dictionaries."
 msgstr ""
 
 #: src/lyxrc.C:2428
@@ -16738,104 +16914,104 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Acció Desconeguda"
 
-#: src/text.C:181
+#: src/text.C:179
 #, fuzzy
 msgid "Unknown layout"
 msgstr "Acció Desconeguda"
 
-#: src/text.C:182
+#: src/text.C:180
 #, c-format
 msgid ""
 "Layout '%1$s' does not exist in textclass '%2$s'\n"
 "Trying to use the default instead.\n"
 msgstr ""
 
-#: src/text.C:213
+#: src/text.C:211
 #, fuzzy
 msgid "Unknown Inset"
 msgstr "Acció Desconeguda"
 
-#: src/text.C:337
+#: src/text.C:335
 #, fuzzy
 msgid "Unknown token"
 msgstr "Acció Desconeguda"
 
-#: src/text.C:1166
+#: src/text.C:1163
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
 msgstr ""
 
-#: src/text.C:1178
+#: src/text.C:1175
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 
-#: src/text.C:2176
+#: src/text.C:2171
 #, fuzzy
 msgid "Change: "
 msgstr "Pàgina: "
 
-#: src/text.C:2180
+#: src/text.C:2175
 #, fuzzy
 msgid " at "
 msgstr " de "
 
-#: src/text.C:2191
+#: src/text.C:2186
 #, fuzzy, c-format
 msgid "Font: %1$s"
 msgstr "Comentari:"
 
-#: src/text.C:2198
+#: src/text.C:2193
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr ", Profunditat: "
 
-#: src/text.C:2204
+#: src/text.C:2199
 #, fuzzy
 msgid ", Spacing: "
 msgstr "Espaiat"
 
-#: src/text.C:2216
+#: src/text.C:2211
 #, fuzzy
 msgid "Other ("
 msgstr "Altre...|#O"
 
-#: src/text.C:2225
+#: src/text.C:2220
 #, fuzzy
 msgid ", Inset: "
 msgstr ", Profunditat: "
 
-#: src/text.C:2226
+#: src/text.C:2221
 #, fuzzy
 msgid ", Paragraph: "
 msgstr "Format de paràgraf modificat"
 
-#: src/text.C:2227
+#: src/text.C:2222
 #, fuzzy
 msgid ", Id: "
 msgstr ", Profunditat: "
 
-#: src/text.C:2228
+#: src/text.C:2223
 #, fuzzy
 msgid ", Position: "
 msgstr "   opcions: "
 
-#: src/text.C:2229
+#: src/text.C:2224
 msgid ", Boundary: "
 msgstr ""
 
-#: src/text2.C:528
+#: src/text2.C:532
 msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
 msgstr "Canvi de font no definit. Utilitzeu Format->Caràcter per definir-lo"
 
-#: src/text2.C:570
+#: src/text2.C:574
 #, fuzzy
 msgid "Nothing to index!"
 msgstr "Res a fer"
 
-#: src/text2.C:572
+#: src/text2.C:576
 #, fuzzy
 msgid "Cannot index more than one paragraph!"
 msgstr "Les cel.les d'una taula no poden incloure més d'un paràgraf!"
@@ -16894,6 +17070,26 @@ msgstr "Espais verticals"
 #, fuzzy
 msgid "protected"
 msgstr "Ho sento."
+
+#, fuzzy
+#~ msgid "Spell command:|#S"
+#~ msgstr "Descriure comana"
+
+#, fuzzy
+#~ msgid "How far spellchecking has got"
+#~ msgstr "Començar la correcció d'ortogràfica|#S"
+
+#, fuzzy
+#~ msgid "Spell-check document"
+#~ msgstr "Correcció Ortogràfica Finalitzada"
+
+#, fuzzy
+#~ msgid "Spell-checker"
+#~ msgstr "Corrector Ortogràfic"
+
+#, fuzzy
+#~ msgid "Spell checker"
+#~ msgstr "Corrector Ortogràfic"
 
 #, fuzzy
 #~ msgid "The LaTeX preamble"

@@ -1,3 +1,11 @@
+2005-09-15  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* *.po: remerge.
+	
+	* Makefile.in.in: fix quoting of awk regexp constants. Use sed
+	instead of awk to change single backslashes to double ones in
+	LabelString*, since it is not possible to do this portably in awk.
+
 2005-09-12  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* Makefile.in.in: when invoking awk, use POSIX regexps only. 

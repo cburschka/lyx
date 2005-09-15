@@ -62,7 +62,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2005-08-21 15:19+0200\n"
+"POT-Creation-Date: 2005-09-15 17:09+0200\n"
 "PO-Revision-Date: 2005-07-18 01:50+0200\n"
 "Last-Translator: Pauli Virtanen <pauli.virtanen@hut.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -1423,8 +1423,9 @@ msgid "Email address:|#E"
 msgstr "Palautusosoite"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1114
-msgid "Spell command:|#S"
-msgstr "Oikolukukomento:|#O"
+#, fuzzy
+msgid "Spellchecker executable:|#S"
+msgstr "Oikoluku...|O"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1132
 msgid "Alternative language:|#a"
@@ -2078,7 +2079,7 @@ msgstr "Rivinvaihto nykyisell‰ rivill‰|#R"
 #: src/frontends/xforms/forms/form_tabular.fd:1638
 #: src/frontends/xforms/forms/form_tabular.fd:1656
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:60
-#: src/frontends/qt2/QDocument.C:166 src/text.C:2213
+#: src/frontends/qt2/QDocument.C:166 src/text.C:2208
 msgid "Double"
 msgstr "Kaksink."
 
@@ -2666,10 +2667,10 @@ msgid "&OK"
 msgstr "&OK"
 
 #: src/frontends/qt2/ui/QAskForTextDialog.ui:139
-#: src/frontends/qt2/ui/QDocumentDialogBase.ui:214 src/buffer_funcs.C:90
-#: src/buffer_funcs.C:116 src/buffer_funcs.C:157 src/bufferlist.C:84
-#: src/bufferlist.C:183 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:619
-#: src/lyxfunc.C:781 src/lyxfunc.C:1791 src/lyxvc.C:168
+#: src/frontends/qt2/ui/QDocumentDialogBase.ui:214 src/buffer_funcs.C:91
+#: src/buffer_funcs.C:117 src/buffer_funcs.C:158 src/bufferlist.C:84
+#: src/bufferlist.C:183 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:650
+#: src/lyxfunc.C:812 src/lyxfunc.C:1822 src/lyxvc.C:168
 msgid "&Cancel"
 msgstr "&Peru"
 
@@ -2739,7 +2740,7 @@ msgstr "Valitse lis‰tt‰v‰ BibTeX-tietokanta"
 #: src/frontends/qt2/ui/QIndexDialogBase.ui:143
 #: src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/BufferView_pimpl.C:285
 #: src/frontends/gtk/GBC.h:27 src/frontends/qt2/Qt2BC.h:36
-#: src/frontends/xforms/xformsBC.h:29 src/lyxfunc.C:732
+#: src/frontends/xforms/xformsBC.h:29 src/lyxfunc.C:763
 msgid "Cancel"
 msgstr "Peru"
 
@@ -3916,7 +3917,7 @@ msgid "QParagraphDialogBase"
 msgstr "Kappaletyyli asetettu"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:48
-#: src/frontends/qt2/QDocument.C:162 src/text.C:2207
+#: src/frontends/qt2/QDocument.C:162 src/text.C:2202
 msgid "Single"
 msgstr "Yksink."
 
@@ -4431,7 +4432,7 @@ msgstr "Valtavampi:"
 
 #: src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:56
 #, fuzzy
-msgid "Spell chec&ker:"
+msgid "Spellchec&ker executable:"
 msgstr "Oikoluku"
 
 #: src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:99
@@ -4520,7 +4521,7 @@ msgid "Cursor follows &scrollbar"
 msgstr "Koh&distin seuraa vierityspalkkia"
 
 #: src/frontends/qt2/ui/QPrefsDialogBase.ui:110 src/bufferlist.C:84
-#: src/bufferlist.C:183 src/lyxfunc.C:618
+#: src/bufferlist.C:183 src/lyxfunc.C:649
 msgid "&Save"
 msgstr "Ta&llenna"
 
@@ -4751,8 +4752,9 @@ msgid "Ignore this word throughout this session"
 msgstr "Hyv‰ksy sana t‰ss‰ istunnossa"
 
 #: src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:152
-msgid "How far spellchecking has got"
-msgstr "Kuinka pitk‰ll‰ oikoluku on"
+#, fuzzy
+msgid "Proportion of document checked"
+msgstr "Tulosta tiedostoon"
 
 #: src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:163
 msgid "Suggestions"
@@ -5620,7 +5622,7 @@ msgstr "Viitteet"
 #: lib/layouts/aastex.layout:114 lib/layouts/aastex.layout:410
 #: lib/layouts/ijmpd.layout:162 lib/layouts/ijmpd.layout:170
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
-#: src/rowpainter.C:415
+#: src/rowpainter.C:419
 msgid "Appendix"
 msgstr "Liite"
 
@@ -6308,6 +6310,7 @@ msgid "Seriate"
 msgstr "Luetelma"
 
 #: lib/layouts/apa.layout:345 lib/layouts/apa.layout:346
+#: src/buffer_funcs.C:448
 msgid "(\\alph{enumii})"
 msgstr ""
 
@@ -10193,7 +10196,7 @@ msgstr "Leikkaa"
 msgid "Copy"
 msgstr "Kopioi"
 
-#: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:620
+#: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:630
 #: src/mathed/math_nestinset.C:413 src/text3.C:805
 msgid "Paste"
 msgstr "Liit‰"
@@ -10520,11 +10523,11 @@ msgstr "Haluatko tallentaa asiakirjan?"
 msgid "Print document"
 msgstr "Tuo asiakirja"
 
-#: lib/ui/stdtoolbars.ui:49 src/BufferView_pimpl.C:1076
+#: lib/ui/stdtoolbars.ui:49 src/BufferView_pimpl.C:1088
 msgid "Undo"
 msgstr "Kumoa"
 
-#: lib/ui/stdtoolbars.ui:50 src/BufferView_pimpl.C:1087
+#: lib/ui/stdtoolbars.ui:50 src/BufferView_pimpl.C:1099
 msgid "Redo"
 msgstr "Tee uudelleen"
 
@@ -10833,12 +10836,12 @@ msgid ""
 "Do you want to revert to the saved version?"
 msgstr "Asiakirja k‰ytt‰‰ tuntematonta tekstiluokkaa \"%1$s\"."
 
-#: src/BufferView_pimpl.C:258 src/lyxfunc.C:780
+#: src/BufferView_pimpl.C:258 src/lyxfunc.C:811
 #, fuzzy
 msgid "Revert to saved document?"
 msgstr "Peru kaikki muokkaukset"
 
-#: src/BufferView_pimpl.C:259 src/lyxfunc.C:781 src/lyxvc.C:168
+#: src/BufferView_pimpl.C:259 src/lyxfunc.C:812 src/lyxvc.C:168
 #, fuzzy
 msgid "&Revert"
 msgstr "Hylk‰‰ muutokset|y"
@@ -10871,108 +10874,108 @@ msgstr "J‰&rjest‰"
 msgid "Parse"
 msgstr "Liit‰"
 
-#: src/BufferView_pimpl.C:401
+#: src/BufferView_pimpl.C:413
 msgid "Formatting document..."
 msgstr "Asiakirja muotoutuu..."
 
-#: src/BufferView_pimpl.C:729
+#: src/BufferView_pimpl.C:741
 #, fuzzy, c-format
 msgid "Saved bookmark %1$d"
 msgstr "Tallensi kirjanmerkin %1$d"
 
-#: src/BufferView_pimpl.C:762
+#: src/BufferView_pimpl.C:774
 #, fuzzy, c-format
 msgid "Moved to bookmark %1$d"
 msgstr "Siirtyi kirjanmerkille %1$d"
 
-#: src/BufferView_pimpl.C:821
+#: src/BufferView_pimpl.C:833
 msgid "Select LyX document to insert"
 msgstr "Valitse lis‰tt‰v‰ LyX-asiakirja"
 
-#: src/BufferView_pimpl.C:823 src/frontends/controllers/ControlBibtex.C:48
+#: src/BufferView_pimpl.C:835 src/frontends/controllers/ControlBibtex.C:48
 #: src/frontends/controllers/ControlBibtex.C:59
 #: src/frontends/controllers/ControlExternal.C:160
 #: src/frontends/controllers/ControlGraphics.C:94
 #: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:133
-#: src/lyxfunc.C:1632 src/lyxfunc.C:1669 src/lyxfunc.C:1744
+#: src/lyxfunc.C:1663 src/lyxfunc.C:1700 src/lyxfunc.C:1775
 msgid "Documents|#o#O"
 msgstr "Asiakirjat|#A#a"
 
-#: src/BufferView_pimpl.C:825 src/lyxfunc.C:1671 src/lyxfunc.C:1746
+#: src/BufferView_pimpl.C:837 src/lyxfunc.C:1702 src/lyxfunc.C:1777
 msgid "Examples|#E#e"
 msgstr "Esimerkit|#E#e"
 
-#: src/BufferView_pimpl.C:830 src/lyx_cb.C:141 src/lyxfunc.C:1639
-#: src/lyxfunc.C:1676
+#: src/BufferView_pimpl.C:842 src/lyx_cb.C:141 src/lyxfunc.C:1670
+#: src/lyxfunc.C:1707
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "*.lyx| LyX-asiakirjat (*.lyx)"
 
-#: src/BufferView_pimpl.C:840 src/lyxfunc.C:1686 src/lyxfunc.C:1764
-#: src/lyxfunc.C:1778 src/lyxfunc.C:1794
+#: src/BufferView_pimpl.C:852 src/lyxfunc.C:1717 src/lyxfunc.C:1795
+#: src/lyxfunc.C:1809 src/lyxfunc.C:1825
 msgid "Canceled."
 msgstr "Peruttu."
 
-#: src/BufferView_pimpl.C:850
+#: src/BufferView_pimpl.C:862
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Lis‰t‰‰n asiakirja %1$s..."
 
-#: src/BufferView_pimpl.C:861
+#: src/BufferView_pimpl.C:873
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Asiakirja %1$s lis‰tty."
 
-#: src/BufferView_pimpl.C:862
+#: src/BufferView_pimpl.C:874
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Asiakirjaa %1$s ei voi lis‰t‰"
 
-#: src/BufferView_pimpl.C:1079
+#: src/BufferView_pimpl.C:1091
 msgid "No further undo information"
 msgstr "Ei en‰‰ muuta kumottavaa"
 
-#: src/BufferView_pimpl.C:1090
+#: src/BufferView_pimpl.C:1102
 msgid "No further redo information"
 msgstr "Ei muuta uudelleen teht‰v‰‰"
 
-#: src/BufferView_pimpl.C:1219
+#: src/BufferView_pimpl.C:1231
 msgid "Mark off"
 msgstr "Merkint‰ pois p‰‰lt‰"
 
-#: src/BufferView_pimpl.C:1226
+#: src/BufferView_pimpl.C:1238
 msgid "Mark on"
 msgstr "Merkint‰ p‰‰lle"
 
-#: src/BufferView_pimpl.C:1233
+#: src/BufferView_pimpl.C:1245
 msgid "Mark removed"
 msgstr "Merkint‰ poistettu"
 
-#: src/BufferView_pimpl.C:1236
+#: src/BufferView_pimpl.C:1248
 msgid "Mark set"
 msgstr "Merkint‰ asetettu"
 
-#: src/BufferView_pimpl.C:1278
+#: src/BufferView_pimpl.C:1290
 #, fuzzy, c-format
 msgid "%1$d words in selection."
 msgstr "Yksi sana tarkastettu."
 
-#: src/BufferView_pimpl.C:1281
+#: src/BufferView_pimpl.C:1293
 #, fuzzy, c-format
 msgid "%1$d words in document."
 msgstr "LyXiss‰ k‰ytett‰v‰ avainsana."
 
-#: src/BufferView_pimpl.C:1286
+#: src/BufferView_pimpl.C:1298
 #, fuzzy
 msgid "One word in selection."
 msgstr "Yksi sana tarkastettu."
 
-#: src/BufferView_pimpl.C:1288
+#: src/BufferView_pimpl.C:1300
 #, fuzzy
 msgid "One word in document."
 msgstr "Asiakirja avautuu: "
 
-#: src/BufferView_pimpl.C:1291
+#: src/BufferView_pimpl.C:1303
 #, fuzzy
 msgid "Count words"
 msgstr "Nykyinen sana"
@@ -10986,7 +10989,7 @@ msgstr "ChkTeXin varoitus n:o # %1$d"
 msgid "ChkTeX warning id # "
 msgstr "ChkTeXin varoitus n:o #"
 
-#: src/CutAndPaste.C:399
+#: src/CutAndPaste.C:404
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -10999,12 +11002,12 @@ msgstr ""
 "koska luokka muuttui\n"
 "luokasta %3$s luokaksi %4$s"
 
-#: src/CutAndPaste.C:403
+#: src/CutAndPaste.C:408
 #, fuzzy
 msgid "Changed Layout"
 msgstr "Kappaleen tyyli"
 
-#: src/CutAndPaste.C:422
+#: src/CutAndPaste.C:427
 #, fuzzy, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
@@ -11015,7 +11018,7 @@ msgstr ""
 "koska luokka muuttui\n"
 "luokasta %3$s luokaksi %4$s"
 
-#: src/CutAndPaste.C:428
+#: src/CutAndPaste.C:433
 #, fuzzy
 msgid "Undefined character style"
 msgstr "Merkistˆ"
@@ -11310,7 +11313,7 @@ msgstr "valituksi asiakirjaluokaksi"
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 
-#: src/buffer.C:444 src/text.C:338
+#: src/buffer.C:444 src/text.C:336
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Tuntematon merkint‰: %1$s %2$s\n"
@@ -11407,7 +11410,7 @@ msgstr ""
 msgid "Could not run chktex successfully."
 msgstr "Chktex-ajo onnistui"
 
-#: src/buffer_funcs.C:71
+#: src/buffer_funcs.C:72
 #, fuzzy, c-format
 msgid ""
 "The specified document\n"
@@ -11415,12 +11418,12 @@ msgid ""
 "could not be read."
 msgstr "Asiakirjan tallentaminen ep‰onnistui!"
 
-#: src/buffer_funcs.C:73
+#: src/buffer_funcs.C:74
 #, fuzzy
 msgid "Could not read document"
 msgstr "Asiakirjan avaaminen ep‰onnistui: "
 
-#: src/buffer_funcs.C:85
+#: src/buffer_funcs.C:86
 #, fuzzy, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -11428,21 +11431,21 @@ msgid ""
 "Recover emergency save?"
 msgstr "Asiakirjasta on olemassa h‰t‰tallennusversio!"
 
-#: src/buffer_funcs.C:88
+#: src/buffer_funcs.C:89
 msgid "Load emergency save?"
 msgstr ""
 
-#: src/buffer_funcs.C:89
+#: src/buffer_funcs.C:90
 #, fuzzy
 msgid "&Recover"
 msgstr "&Poista"
 
-#: src/buffer_funcs.C:89
+#: src/buffer_funcs.C:90
 #, fuzzy
 msgid "&Load Original"
 msgstr "K&eskus:"
 
-#: src/buffer_funcs.C:111
+#: src/buffer_funcs.C:112
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -11450,37 +11453,37 @@ msgid ""
 "Load the backup instead?"
 msgstr ""
 
-#: src/buffer_funcs.C:114
+#: src/buffer_funcs.C:115
 #, fuzzy
 msgid "Load backup?"
 msgstr "Palaa"
 
-#: src/buffer_funcs.C:115
+#: src/buffer_funcs.C:116
 #, fuzzy
 msgid "&Load backup"
 msgstr "&Palaa"
 
-#: src/buffer_funcs.C:115
+#: src/buffer_funcs.C:116
 #, fuzzy
 msgid "Load &original"
 msgstr "K&eskus:"
 
-#: src/buffer_funcs.C:154
+#: src/buffer_funcs.C:155
 #, fuzzy, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "Haluatko palauttaa asiakirjan versionhallinnasta?"
 
-#: src/buffer_funcs.C:156
+#: src/buffer_funcs.C:157
 #, fuzzy
 msgid "Retrieve from version control?"
 msgstr "Haluatko palauttaa asiakirjan versionhallinnasta?"
 
-#: src/buffer_funcs.C:157
+#: src/buffer_funcs.C:158
 #, fuzzy
 msgid "&Retrieve"
 msgstr "Pala&uta"
 
-#: src/buffer_funcs.C:189
+#: src/buffer_funcs.C:190
 #, fuzzy, c-format
 msgid ""
 "The specified document template\n"
@@ -11488,12 +11491,26 @@ msgid ""
 "could not be read."
 msgstr "Asiakirjan tallentaminen ep‰onnistui!"
 
-#: src/buffer_funcs.C:190
+#: src/buffer_funcs.C:191
 #, fuzzy
 msgid "Could not read template"
 msgstr "Ohjelma ei voinut k‰sitell‰ tiedostoa:"
 
-#: src/buffer_funcs.C:468
+#: src/buffer_funcs.C:445
+#, fuzzy
+msgid "\\arabic{enumi}."
+msgstr "Alikappale"
+
+#: src/buffer_funcs.C:451
+msgid "\\roman{enumiii}."
+msgstr ""
+
+#: src/buffer_funcs.C:454
+#, fuzzy
+msgid "\\Alph{enumiv}."
+msgstr "valinta"
+
+#: src/buffer_funcs.C:489
 #, c-format
 msgid "%1$s #:"
 msgstr "%1$s #:"
@@ -11506,7 +11523,7 @@ msgid ""
 "Do you want to save the document or discard the changes?"
 msgstr "Asiakirja k‰ytt‰‰ tuntematonta tekstiluokkaa \"%1$s\"."
 
-#: src/bufferlist.C:83 src/bufferlist.C:182 src/lyxfunc.C:617
+#: src/bufferlist.C:83 src/bufferlist.C:182 src/lyxfunc.C:648
 #, fuzzy
 msgid "Save changed document?"
 msgstr "Haluatko tallentaa asiakirjan?"
@@ -11747,7 +11764,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "&Kirjoituskone:"
 
-#: src/exporter.C:77 src/lyx_cb.C:168 src/lyxfunc.C:1791
+#: src/exporter.C:77 src/lyx_cb.C:168 src/lyxfunc.C:1822
 #, fuzzy
 msgid "&Over-write"
 msgstr "&Kirjoituskone:"
@@ -12101,14 +12118,13 @@ msgid "PostScript files (*.ps)"
 msgstr "PostScript-tiedostot (*.ps)"
 
 #: src/frontends/controllers/ControlSpellchecker.C:111
-#: src/frontends/controllers/ControlSpellchecker.C:273
 #, fuzzy
-msgid "Spell-checker error"
+msgid "Spellchecker error"
 msgstr "Oikoluku"
 
 #: src/frontends/controllers/ControlSpellchecker.C:112
 #, fuzzy
-msgid "The spell-checker could not be started"
+msgid "The spellchecker could not be started\n"
 msgstr ""
 "Oikolukimen prosessi sulkeutui jostakin syyst‰.\n"
 "Se saatettiin sulkea v‰kisin."
@@ -12116,7 +12132,7 @@ msgstr ""
 #: src/frontends/controllers/ControlSpellchecker.C:265
 #, fuzzy
 msgid ""
-"The spell-checker has died for some reason.\n"
+"The spellchecker has died for some reason.\n"
 "Maybe it has been killed."
 msgstr ""
 "Oikolukimen prosessi sulkeutui jostakin syyst‰.\n"
@@ -12124,7 +12140,14 @@ msgstr ""
 
 #: src/frontends/controllers/ControlSpellchecker.C:268
 #, fuzzy
-msgid "The spell-checker has failed."
+msgid "The spellchecker has failed.\n"
+msgstr ""
+"Oikolukimen prosessi sulkeutui jostakin syyst‰.\n"
+"Se saatettiin sulkea v‰kisin."
+
+#: src/frontends/controllers/ControlSpellchecker.C:273
+#, fuzzy
+msgid "The spellchecker has failed"
 msgstr ""
 "Oikolukimen prosessi sulkeutui jostakin syyst‰.\n"
 "Se saatettiin sulkea v‰kisin."
@@ -12140,7 +12163,7 @@ msgstr "Yksi sana tarkastettu."
 
 #: src/frontends/controllers/ControlSpellchecker.C:292
 #, fuzzy
-msgid "Spell-checking is complete"
+msgid "Spelling check completed"
 msgstr "Oikoluku valmis! "
 
 #: src/frontends/controllers/ControlToc.C:46 src/frontends/gtk/GToc.C:33
@@ -12513,10 +12536,12 @@ msgstr "L‰het‰ asiakirja komentoon"
 msgid "Show File"
 msgstr "N‰yt‰ tiedosto"
 
-#: src/frontends/gtk/GSpellchecker.C:35
-#, fuzzy
-msgid "Spell-check document"
-msgstr "Oikoluku valmis"
+#: src/frontends/gtk/GSpellchecker.C:35 src/frontends/qt2/QPrefsDialog.C:105
+#: src/frontends/qt2/QSpellchecker.C:35
+#: src/frontends/xforms/FormPreferences.C:270
+#: src/frontends/xforms/FormSpellchecker.C:34
+msgid "Spellchecker"
+msgstr "Oikoluku"
 
 #: src/frontends/gtk/GSpellchecker.C:136
 #, fuzzy
@@ -12710,7 +12735,7 @@ msgstr "yl‰otsikot"
 msgid "fancy"
 msgstr "hienot"
 
-#: src/frontends/qt2/QDocument.C:164 src/text.C:2210
+#: src/frontends/qt2/QDocument.C:164 src/text.C:2205
 msgid "OneHalf"
 msgstr "Puolikas"
 
@@ -12961,11 +12986,6 @@ msgstr "N‰pp‰imistˆ"
 msgid "Language settings"
 msgstr "Kieliasetukset"
 
-#: src/frontends/qt2/QPrefsDialog.C:105
-#, fuzzy
-msgid "Spell-checker"
-msgstr "Oikoluku"
-
 #: src/frontends/qt2/QPrefsDialog.C:107
 #: src/frontends/xforms/FormPreferences.C:219
 msgid "Outputs"
@@ -13055,11 +13075,6 @@ msgstr "Siirry viitteeseen"
 #, fuzzy
 msgid "Send Document to Command"
 msgstr "L‰het‰ asiakirja komentoon"
-
-#: src/frontends/qt2/QSpellchecker.C:35
-#: src/frontends/xforms/FormSpellchecker.C:34
-msgid "Spellchecker"
-msgstr "Oikoluku"
 
 #: src/frontends/qt2/QTabular.C:41 src/frontends/xforms/FormTabular.C:56
 msgid "Table Settings"
@@ -13760,10 +13775,6 @@ msgstr "N‰yttˆkirjasimet"
 msgid "Formats"
 msgstr "Muodot"
 
-#: src/frontends/xforms/FormPreferences.C:270
-msgid "Spell checker"
-msgstr "Oikoluku"
-
 #: src/frontends/xforms/FormPreferences.C:506
 msgid "LyX objects that can be assigned a color."
 msgstr "LyX-osat, joiden v‰ri‰ voi muuttaa."
@@ -14180,8 +14191,9 @@ msgid "Add unknown word to personal dictionary."
 msgstr "Lis‰‰ tuntematon sana omaan sanastoon."
 
 #: src/frontends/xforms/FormSpellchecker.C:76
-msgid "Shows word count and progress on spell check."
-msgstr "N‰yt‰ sanojen m‰‰r‰ ja edistyminen oikolukiessa."
+#, fuzzy
+msgid "Proportion of document checked."
+msgstr "Tulosta tiedostoon"
 
 #: src/frontends/xforms/FormTabular.C:136
 msgid "Column/Row"
@@ -14452,12 +14464,12 @@ msgstr "Kuvatekstiosio avattu"
 msgid "Float"
 msgstr "Irrallinen"
 
-#: src/insets/insetcharstyle.C:115
+#: src/insets/insetcharstyle.C:116
 #, fuzzy
 msgid "Opened CharStyle Inset"
 msgstr "Muistiinpano-osio avattu"
 
-#: src/insets/insetcharstyle.C:184
+#: src/insets/insetcharstyle.C:154 src/insets/insetcharstyle.C:200
 #, fuzzy
 msgid "Undef: "
 msgstr "Viite: "
@@ -14633,21 +14645,21 @@ msgstr "Sanallinen viite"
 msgid "PrettyRef: "
 msgstr "Hieno viite: "
 
-#: src/insets/insettabular.C:402
+#: src/insets/insettabular.C:412
 #, fuzzy
 msgid "Opened table"
 msgstr "Avaa tiedosto"
 
-#: src/insets/insettabular.C:1546
+#: src/insets/insettabular.C:1554
 #, fuzzy
 msgid "Error setting multicolumn"
 msgstr "Erityinen monisarake"
 
-#: src/insets/insettabular.C:1547
+#: src/insets/insettabular.C:1555
 msgid "You cannot set multicolumn vertically."
 msgstr ""
 
-#: src/insets/insettext.C:225
+#: src/insets/insettext.C:228
 msgid "Opened Text Inset"
 msgstr "Tekstiosio avattiin"
 
@@ -14671,7 +14683,7 @@ msgstr "URL: "
 msgid "HtmlUrl: "
 msgstr "HtmlUrl: "
 
-#: src/insets/insetvspace.C:130
+#: src/insets/insetvspace.C:107
 #, fuzzy
 msgid "Vertical Space"
 msgstr "Pystyv‰li:|#P"
@@ -14763,12 +14775,12 @@ msgstr ""
 
 #: src/ispell.C:268
 msgid ""
-"The spell process returned an error.\n"
+"The ispell process returned an error.\n"
 "Perhaps it has been configured wrongly ?"
 msgstr ""
 
 #: src/ispell.C:377
-msgid "Could not communicate with the spell-checker program."
+msgid "Could not communicate with the ispell spellchecker process."
 msgstr ""
 
 #: src/kbsequence.C:160
@@ -14864,11 +14876,11 @@ msgstr "&Poista"
 msgid "Choose a filename to save document as"
 msgstr "Valitse tiedostonimi, joksi asiakirja tallennetaan:"
 
-#: src/lyx_cb.C:135 src/lyxfunc.C:1634
+#: src/lyx_cb.C:135 src/lyxfunc.C:1665
 msgid "Templates|#T#t"
 msgstr "Mallipohjat|#o#O"
 
-#: src/lyx_cb.C:165 src/lyxfunc.C:1788
+#: src/lyx_cb.C:165 src/lyxfunc.C:1819
 #, fuzzy, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -14876,7 +14888,7 @@ msgid ""
 "Do you want to over-write that document?"
 msgstr "Asiakirja k‰ytt‰‰ tuntematonta tekstiluokkaa \"%1$s\"."
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:1790
+#: src/lyx_cb.C:167 src/lyxfunc.C:1821
 #, fuzzy
 msgid "Over-write document?"
 msgstr "Haluatko tallentaa asiakirjan?"
@@ -15178,31 +15190,35 @@ msgstr "Kieli: %1$s, "
 msgid "  Number %1$s"
 msgstr "  Numero %1$s"
 
-#: src/lyxfunc.C:291
+#: src/lyxfunc.C:313
 msgid "Unknown function."
 msgstr "Tuntematon funktio."
 
-#: src/lyxfunc.C:327
+#: src/lyxfunc.C:349
 msgid "Nothing to do"
 msgstr "Ei mit‰‰n teht‰v‰‰"
 
-#: src/lyxfunc.C:345
+#: src/lyxfunc.C:367
 msgid "Unknown action"
 msgstr "Tuntematon toiminto"
 
-#: src/lyxfunc.C:351 src/lyxfunc.C:599
+#: src/lyxfunc.C:373 src/lyxfunc.C:630
 msgid "Command disabled"
 msgstr "Komento ei k‰ytˆss‰"
 
-#: src/lyxfunc.C:358
+#: src/lyxfunc.C:380
 msgid "Command not allowed without any document open"
 msgstr "Komento ei toimi ilman avoinna olevaa asiakirjaa"
 
-#: src/lyxfunc.C:593
+#: src/lyxfunc.C:615
 msgid "Document is read-only"
 msgstr "Asiakirja on kirjoitussuojattu"
 
-#: src/lyxfunc.C:614
+#: src/lyxfunc.C:624
+msgid "This portion of the document is deleted."
+msgstr ""
+
+#: src/lyxfunc.C:645
 #, fuzzy, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -15210,127 +15226,127 @@ msgid ""
 "Do you want to save the document?"
 msgstr "Asiakirja k‰ytt‰‰ tuntematonta tekstiluokkaa \"%1$s\"."
 
-#: src/lyxfunc.C:630
+#: src/lyxfunc.C:661
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
 "Check that your printer is set up correctly."
 msgstr ""
 
-#: src/lyxfunc.C:633
+#: src/lyxfunc.C:664
 #, fuzzy
 msgid "Print document failed"
 msgstr "Tulosta tiedostoon"
 
-#: src/lyxfunc.C:652
+#: src/lyxfunc.C:683
 #, fuzzy, c-format
 msgid ""
 "The document could not be converted\n"
 "into the document class %1$s."
 msgstr "Asiakirja k‰ytt‰‰ tuntematonta tekstiluokkaa \"%1$s\"."
 
-#: src/lyxfunc.C:655
+#: src/lyxfunc.C:686
 #, fuzzy
 msgid "Could not change class"
 msgstr "Tiedoston muuntaminen ep‰onnistui"
 
-#: src/lyxfunc.C:763
+#: src/lyxfunc.C:794
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Asiakirja %1$s tallentuu..."
 
-#: src/lyxfunc.C:767
+#: src/lyxfunc.C:798
 msgid " done."
 msgstr " valmis."
 
-#: src/lyxfunc.C:778
+#: src/lyxfunc.C:809
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr ""
 
-#: src/lyxfunc.C:800
+#: src/lyxfunc.C:831
 #, fuzzy
 msgid "Build"
 msgstr "K‰‰nnˆsloki"
 
-#: src/lyxfunc.C:805
+#: src/lyxfunc.C:836
 #, fuzzy
 msgid "ChkTeX"
 msgstr "Tarkista TeX"
 
-#: src/lyxfunc.C:977 src/text3.C:1249
+#: src/lyxfunc.C:1008 src/text3.C:1249
 msgid "Missing argument"
 msgstr "Argumentti puuttuu"
 
-#: src/lyxfunc.C:986
+#: src/lyxfunc.C:1017
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Ohjetiedosto %1$s avautuu..."
 
-#: src/lyxfunc.C:1218
+#: src/lyxfunc.C:1249
 msgid "Opening child document "
 msgstr "Aliasiakirja avautuu: "
 
-#: src/lyxfunc.C:1297
+#: src/lyxfunc.C:1328
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Syntaksi: set-color <lyx_nimi> <x11_nimi>"
 
-#: src/lyxfunc.C:1308
+#: src/lyxfunc.C:1339
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "V‰rin \"%1$s\" asetus ep‰onnistui: v‰ri on m‰‰rittelem‰tˆn, tai sit‰ ei voi "
 "m‰‰ritell‰ uudelleen."
 
-#: src/lyxfunc.C:1417
+#: src/lyxfunc.C:1448
 #, fuzzy
 msgid "Document defaults saved in "
 msgstr "Asiakirjan tallentaminen ep‰onnistui!"
 
-#: src/lyxfunc.C:1420
+#: src/lyxfunc.C:1451
 #, fuzzy
 msgid "Unable to save document defaults"
 msgstr "Tallenna asiakirjan oletukseksi"
 
-#: src/lyxfunc.C:1475
+#: src/lyxfunc.C:1506
 msgid "Converting document to new document class..."
 msgstr "Asiakirja muuntuu toiseen asiakirjaluokkaan sopivaksi..."
 
-#: src/lyxfunc.C:1484
+#: src/lyxfunc.C:1515
 msgid "Class switch"
 msgstr ""
 
-#: src/lyxfunc.C:1630
+#: src/lyxfunc.C:1661
 msgid "Select template file"
 msgstr "Valitse mallitiedosto"
 
-#: src/lyxfunc.C:1667
+#: src/lyxfunc.C:1698
 msgid "Select document to open"
 msgstr "Valitse avattava asiakirja"
 
-#: src/lyxfunc.C:1708
+#: src/lyxfunc.C:1739
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Asiakirja %1$s avautuu..."
 
-#: src/lyxfunc.C:1712
+#: src/lyxfunc.C:1743
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Asiakirja %1$s avautui."
 
-#: src/lyxfunc.C:1714
+#: src/lyxfunc.C:1745
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Asiakirjan %1$s avaaminen ep‰onnistui"
 
-#: src/lyxfunc.C:1739
+#: src/lyxfunc.C:1770
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Valitse tuotava %1$s-tiedosto"
 
-#: src/lyxfunc.C:1849
+#: src/lyxfunc.C:1880
 msgid "Welcome to LyX!"
 msgstr "Tervetuloa LyXiin!"
 
@@ -15771,7 +15787,8 @@ msgid "De-select if you don't want the startup banner."
 msgstr "Aseta ep‰todeksi, jos et halua avauskuvan ilmestyv‰n."
 
 #: src/lyxrc.C:2393
-msgid "What command runs the spell checker?"
+#, fuzzy
+msgid "What command runs the spellchecker?"
 msgstr "Mit‰ oikolukukomentoa k‰ytet‰‰n?"
 
 #: src/lyxrc.C:2397
@@ -15799,10 +15816,11 @@ msgstr ""
 "sen sek‰ yleisest‰ ett‰ paikallisesta ui/-hakemistosta."
 
 #: src/lyxrc.C:2421
+#, fuzzy
 msgid ""
 "Specify whether to pass the -T input encoding option to ispell. Enable this "
-"if you can't spellcheck words with international letters in them. This may "
-"not work with all dictionaries."
+"if you cannot check the spelling of words containing accented letters. This "
+"may not work with all dictionaries."
 msgstr ""
 "M‰‰rit‰, annetaanko syˆtemerkistˆn valitsin -T ispellille. K‰yt‰ t‰t‰, jos "
 "et voi oikolukea sanoja, joissa on kansainv‰lisi‰ merkkej‰. T‰m‰ ei "
@@ -16007,91 +16025,91 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Tuntematon luettelo sis‰llyksist‰"
 
-#: src/text.C:181
+#: src/text.C:179
 #, fuzzy
 msgid "Unknown layout"
 msgstr "Tuntematon toiminto"
 
-#: src/text.C:182
+#: src/text.C:180
 #, c-format
 msgid ""
 "Layout '%1$s' does not exist in textclass '%2$s'\n"
 "Trying to use the default instead.\n"
 msgstr ""
 
-#: src/text.C:213
+#: src/text.C:211
 #, fuzzy
 msgid "Unknown Inset"
 msgstr "Tuntematon luettelo sis‰llyksist‰"
 
-#: src/text.C:337
+#: src/text.C:335
 #, fuzzy
 msgid "Unknown token"
 msgstr "Tuntematon merkint‰: "
 
-#: src/text.C:1166
+#: src/text.C:1163
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
 msgstr "Kappaleen alkuun ei voi lis‰t‰ v‰lilyˆnti‰. Ks. Opastus."
 
-#: src/text.C:1178
+#: src/text.C:1175
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "Kahta per‰tt‰ist‰ v‰lilyˆnti‰ ei voi lis‰t‰ n‰in. Ks. Opastus."
 
-#: src/text.C:2176
+#: src/text.C:2171
 #, fuzzy
 msgid "Change: "
 msgstr "Sivu:"
 
 # FIXME: Cannot translate properly!
-#: src/text.C:2180
+#: src/text.C:2175
 #, fuzzy
 msgid " at "
 msgstr " -> "
 
-#: src/text.C:2191
+#: src/text.C:2186
 #, c-format
 msgid "Font: %1$s"
 msgstr "Kirjasin: %1$s"
 
-#: src/text.C:2198
+#: src/text.C:2193
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr ", Syvyys: %1$d"
 
-#: src/text.C:2204
+#: src/text.C:2199
 msgid ", Spacing: "
 msgstr ", V‰lit: "
 
-#: src/text.C:2216
+#: src/text.C:2211
 msgid "Other ("
 msgstr "Muu ("
 
-#: src/text.C:2225
+#: src/text.C:2220
 #, fuzzy
 msgid ", Inset: "
 msgstr ", Syvyys: "
 
-#: src/text.C:2226
+#: src/text.C:2221
 msgid ", Paragraph: "
 msgstr ", kappale: "
 
-#: src/text.C:2227
+#: src/text.C:2222
 #, fuzzy
 msgid ", Id: "
 msgstr ", Syvyys: "
 
-#: src/text.C:2228
+#: src/text.C:2223
 #, fuzzy
 msgid ", Position: "
 msgstr "V‰itt‰m‰"
 
-#: src/text.C:2229
+#: src/text.C:2224
 msgid ", Boundary: "
 msgstr ""
 
-#: src/text2.C:528
+#: src/text2.C:532
 msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
@@ -16099,11 +16117,11 @@ msgstr ""
 "Kirjasinlajin muutosta ei m‰‰ritetty. M‰‰rit‰ kirjasinlajin muutos Muotoilu-"
 "valikon Merkki-alivalikon avulla."
 
-#: src/text2.C:570
+#: src/text2.C:574
 msgid "Nothing to index!"
 msgstr "Ei mit‰‰n hakemistossa!"
 
-#: src/text2.C:572
+#: src/text2.C:576
 msgid "Cannot index more than one paragraph!"
 msgstr "Hakemistoon voi lis‰t‰ vain yhden kappaleen!"
 
@@ -16160,6 +16178,26 @@ msgstr "&Pysty:"
 #, fuzzy
 msgid "protected"
 msgstr "P&ikan‰pp‰in:"
+
+#~ msgid "Spell command:|#S"
+#~ msgstr "Oikolukukomento:|#O"
+
+#~ msgid "How far spellchecking has got"
+#~ msgstr "Kuinka pitk‰ll‰ oikoluku on"
+
+#, fuzzy
+#~ msgid "Spell-check document"
+#~ msgstr "Oikoluku valmis"
+
+#, fuzzy
+#~ msgid "Spell-checker"
+#~ msgstr "Oikoluku"
+
+#~ msgid "Spell checker"
+#~ msgstr "Oikoluku"
+
+#~ msgid "Shows word count and progress on spell check."
+#~ msgstr "N‰yt‰ sanojen m‰‰r‰ ja edistyminen oikolukiessa."
 
 #, fuzzy
 #~ msgid "The LaTeX preamble"
