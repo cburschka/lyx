@@ -1,3 +1,8 @@
+2005-09-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* text2.C (cursorEnd, cursorRight): do not set boundary to true at
+	end of paragraph. (bug 2010)
+
 2005-09-10  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* text.C (leftMargin): check for inInset == 0

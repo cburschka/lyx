@@ -498,12 +498,13 @@ void LyXText::cursorEnd(LCursor & cur)
 		// empty text, end-1 is no valid position
 		return;
 	bool boundary = false;
-	if (!cur.paragraph().isLineSeparator(end-1) &&
-	    !cur.paragraph().isNewline(end-1))
-	{
-		boundary = true;
-	} else if (end != cur.lastpos())
-		--end;
+	if (end != cur.lastpos()) {
+		if (!cur.paragraph().isLineSeparator(end-1) 
+			&& !cur.paragraph().isNewline(end-1))
+			boundary = true;
+		else
+			--end;
+	}
 	setCursor(cur, cur.pit(), end, true, boundary);
 }
 
@@ -1020,7 +1021,8 @@ bool LyXText::cursorRight(LCursor & cur)
 	if (cur.pos() != cur.lastpos()) {
 		bool updateNeeded = false;
 		if (!checkAndActivateInset(cur, true)) {
-			if (cur.textRow().endpos() == (cur.pos() + 1) &&
+			if (cur.textRow().endpos() == cur.pos() + 1 &&
+			    cur.textRow().endpos() != cur.lastpos() &&
 			    !cur.paragraph().isLineSeparator(cur.pos()) &&
 			    !cur.paragraph().isNewline(cur.pos()))
 			{
