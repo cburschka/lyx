@@ -245,10 +245,16 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 		int maxDesc = 0;
 		for (col_type j = 0; j < tabular.columns(); ++j) {
 			if (tabular.isPartOfMultiColumn(i, j))
+				// Multicolumn cell, but not first one
 				continue;
 			Dimension dim;
 			MetricsInfo m = mi;
-			LyXLength p_width = tabular.column_info[j].p_width;
+			LyXLength p_width;
+			if (tabular.cell_info[i][j].multicolumn == 
+			    LyXTabular::CELL_BEGIN_OF_MULTICOLUMN)
+				p_width = tabular.cellinfo_of_cell(cell).p_width;
+			else
+				p_width = tabular.column_info[j].p_width;
 			if (!p_width.zero())
 				m.base.textwidth = p_width.inPixels(mi.base.textwidth);
 			tabular.getCellInset(cell)->metrics(m, dim);
