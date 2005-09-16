@@ -1,3 +1,7 @@
+2005-09-16  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* text3.C (dispatch): recordUndo in LFUN_PASTESELECTION (#2011).
+
 2005-09-14  Michael Gerz  <michael.gerz@teststep.org>
 
 	* lyxfunc.C: update display after LFUN_ALL_INSETS_TOGGLE
@@ -17,7 +21,7 @@
 
 	* text.C (leftMargin): check for inInset == 0
 
-2005-08-10  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+2005-09-10  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* text.C (leftMargin): test for insetbase's new neverIndent()
 	bool instead of listing each and every inset that does not

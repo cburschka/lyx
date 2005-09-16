@@ -919,6 +919,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		cur.clearSelection();
 		string const clip = bv->getClipboard();
 		if (!clip.empty()) {
+			recordUndo(cur);
 			if (cmd.argument == "paragraph")
 				insertStringAsParagraphs(cur, clip);
 			else
