@@ -1,3 +1,7 @@
+2005-09-15  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* math_nestinset.C (doDispatch): use cur.normalize() to prevent crash
+	when cutting in math array (bugs 1960, 1981).
 
 2005-08-19  Martin Vermeer  <martin.vermeer@hut.fi>
 

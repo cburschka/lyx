@@ -423,9 +423,10 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_CUT:
-		cur.pos() = 0; // Prevent stale position >= size crash
 		cutSelection(cur, true, true);
 		cur.message(_("Cut"));
+		// Prevent stale position >= size crash
+		cur.normalize();
 		break;
 
 	case LFUN_COPY:
