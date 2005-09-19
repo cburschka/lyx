@@ -1,3 +1,7 @@
+2005-09-19  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* rowpainter.C (paintText): fix RtL space width display bug (2029)
+
 2005-09-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* rowpainter.C (paintFirst): use a 'labeladdon' for TOP_* labels,

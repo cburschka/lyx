@@ -627,7 +627,7 @@ void RowPainter::paintText()
 		}
 
 		const int width_pos =
-			text_.singleWidth(par_, vpos, par_.getChar(vpos), font);
+			text_.singleWidth(par_, pos, par_.getChar(pos), font);
 
 		if (x_ + width_pos < 0) {
 			x_ += width_pos;
