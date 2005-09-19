@@ -1,3 +1,8 @@
+2005-09-19  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* insettabular.C (tabularFeatures): validate cursor after 
+	setAutoBreakRow (SET_[M]PWIDTH) (fixes bug 1945).
+
 2005-09-11  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* insettabular.C: fixes bug 1765: multicol cell width on screen not

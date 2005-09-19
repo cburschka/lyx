@@ -1423,6 +1423,9 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 	case LyXTabular::SET_PWIDTH: {
 		LyXLength const len(value);
 		tabular.setColumnPWidth(cur.idx(), len);
+		// cur position can become invalid after newlines were removed
+		if (cur.pos() > cur.lastpos())
+			cur.pos() = cur.lastpos();
 		if (len.zero()
 		    && tabular.getAlignment(cur.idx(), true) == LYX_ALIGN_BLOCK)
 			tabularFeatures(cur, LyXTabular::ALIGN_CENTER, string());
@@ -1431,6 +1434,9 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 
 	case LyXTabular::SET_MPWIDTH:
 		tabular.setMColumnPWidth(cur.idx(), LyXLength(value));
+		// cur position can become invalid after newlines were removed
+		if (cur.pos() > cur.lastpos())
+			cur.pos() = cur.lastpos();
 		break;
 
 	case LyXTabular::SET_SPECIAL_COLUMN:
