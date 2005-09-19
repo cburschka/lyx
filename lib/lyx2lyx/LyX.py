@@ -420,7 +420,7 @@ class LyX_Base:
 
             k = i + 1
             # skip paragraph parameters
-            while not string.strip(self.body[k]) and string.split(self.body[k])[0] in allowed_parameters:
+            while not string.strip(self.body[k]) or string.split(self.body[k])[0] in allowed_parameters:
                 k = k +1
 
             while k < j:
@@ -471,7 +471,6 @@ class NewFile(LyX_Base):
             "\\graphics default",
             "\\paperfontsize default",
             "\\papersize default",
-            "\\paperpackage none",
             "\\use_geometry false",
             "\\use_amsmath 1",
             "\\cite_engine basic",
