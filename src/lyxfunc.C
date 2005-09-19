@@ -1485,7 +1485,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_TEXTCLASS_APPLY: {
-			recordUndoFullDocument(view());
 			Buffer * buffer = owner->buffer();
 
 			lyx::textclass_type const old_class =
@@ -1505,6 +1504,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				break;
 
 			owner->message(_("Converting document to new document class..."));
+			recordUndoFullDocument(view());
+			buffer->params().textclass = new_class;
 			StableDocIterator backcur(view()->cursor());
 			ErrorList el;
 			lyx::cap::SwitchBetweenClasses(

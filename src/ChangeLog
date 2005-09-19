@@ -1,3 +1,8 @@
+2005-09-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyxfunc.C (dispatch): LFUN_TEXTCLASS_APPLY: actually set the
+	textclass; do not record undo if nothing is changed.
+
 2005-09-16  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* text3.C (dispatch): recordUndo in LFUN_PASTESELECTION (#2011).
