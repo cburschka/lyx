@@ -48,12 +48,14 @@ What's new
 
 - Don't force alignment to BLOCK when switching to fixed width cell (bug 1840).
 
-- Searching backwards in the citation dialog always skipped one result (bug 2002).
-  Fixed now.
+- Searching backwards in the citation dialog always skipped one result
+  (bug 2002). Fixed now.
 
 * Configuration/Installation:
 
-- compile without STL compatibility support, since some systems do that
+- Compile without STL compatibility support, since some systems do that
   by default (Slackware, for ex.). [Qt only]
 
-- enable compilation of LyX on DragonFly BSD.
+- Enable compilation of LyX on DragonFly BSD.
+
+- Add missing cygwin support file in the distribution (bug 2035)
