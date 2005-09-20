@@ -156,19 +156,12 @@ void QGraphics::update_contents()
 	// set the right default unit
 	LyXLength::UNIT unitDefault = LyXLength::CM;
 	switch (lyxrc.default_papersize) {
-		case PAPER_DEFAULT: break;
-
 		case PAPER_USLETTER:
 		case PAPER_USLEGAL:
 		case PAPER_USEXECUTIVE:
 			unitDefault = LyXLength::IN;
 			break;
-
-		case PAPER_A3:
-		case PAPER_A4:
-		case PAPER_A5:
-		case PAPER_B5:
-			unitDefault = LyXLength::CM;
+		default:
 			break;
 	}
 

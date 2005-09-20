@@ -1311,7 +1311,10 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 				os << "a5"; break;
 			case PAPER_B5:
 				os << "b5"; break;
-			case PAPER_DEFAULT: break;
+			case PAPER_DEFAULT: 
+			case PAPER_CUSTOM: 
+			case PAPER_B3:
+			case PAPER_B4: break;
 			}
 			os << "\"\n";
 		}

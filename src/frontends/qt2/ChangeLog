@@ -1,3 +1,7 @@
+2005-09-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QGraphics.C (update_contents): fix compiler warning.
+
 2005-09-15  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* QCitationDialog.C (find): correct start iterator when searching

@@ -667,8 +667,7 @@ bool LyXText::setCursor(LCursor & cur, pit_type par, pos_type pos,
 }
 
 
-void LyXText::setCursor(CursorSlice & cur, pit_type par,
-	pos_type pos, bool boundary)
+void LyXText::setCursor(CursorSlice & cur, pit_type par, pos_type pos)
 {
 	BOOST_ASSERT(par != int(paragraphs().size()));
 	cur.pit() = par;
@@ -696,7 +695,7 @@ void LyXText::setCursorIntern(LCursor & cur,
 	pit_type par, pos_type pos, bool setfont, bool boundary)
 {
 	cur.boundary(boundary);
-	setCursor(cur.top(), par, pos, boundary);
+	setCursor(cur.top(), par, pos);
 	cur.setTargetX();
 	if (setfont)
 		setCurrentFont(cur);

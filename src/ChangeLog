@@ -4,6 +4,15 @@
 
 2005-09-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	* text2.C (setCursor): remove the unused 'boundary' parameter for
+	the CursorSlice version; adapt the LCursor version.
+
+	* lyxrc.C (write): 
+	* paragraph_pimpl.C (markErased): 
+	* cursor.C (bruteFind2, bruteFond3): fix warnings.
+
+2005-09-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
 	* rowpainter.C (paintFirst): use a 'labeladdon' for TOP_* labels,
 	as is already done for "chapter".
 

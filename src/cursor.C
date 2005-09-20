@@ -94,7 +94,7 @@ namespace {
 		it.top().pos() = 0;
 		DocIterator et = c;
 		et.top().pos() = et.top().asMathInset()->cell(et.top().idx()).size();
-		for (int i = 0; ; ++i) {
+		for (size_t i = 0; ; ++i) {
 			int xo;
 			int yo;
 			it.inset().cursorPos(it.top(), c.boundary() && ((i+1) == it.depth()), xo, yo);
@@ -170,7 +170,7 @@ namespace {
 
 // FIXME: bit more work needed to get 'from' and 'to' right.
 		pit_type from = cur.bottom().pit();
-		pit_type to = cur.bottom().pit();
+		//pit_type to = cur.bottom().pit();
 		//lyxerr << "Pit start: " << from << endl;
 
 		//lyxerr << "bruteFind3: x: " << x << " y: " << y

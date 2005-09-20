@@ -172,8 +172,6 @@ void Paragraph::Pimpl::markErased(bool erased)
 	if (erased) {
 		erase(0, size());
 	} else {
-		pos_type i = 0;
-
 		for (pos_type i = 0; i < size(); ++i) {
 			changes_->set(Change::UNCHANGED, i);
 			if (owner_->isInset(i))
