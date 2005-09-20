@@ -91,7 +91,7 @@ def remove_oldfloat(file):
 	while check_token(lines[i2], "\\end_deeper"):
 	    i2 = i2+1
 	if i2 > i+1:
-	    j2 = get_next_paragraph(lines, j+1)
+	    j2 = get_next_paragraph(lines, j + 1, file.format + 1)
 	    lines[j2:j2] = ["\\end_deeper "]*(i2-(i+1))
 
 	new = floats[floattype]+[""]
@@ -116,7 +116,7 @@ def remove_oldfloat(file):
 	# as extra '\foo default' commands are ignored.
 	# In fact, it might be safer to output '\foo default' for all
 	# font attributes.
-	k = get_paragraph(lines, i)
+	k = get_paragraph(lines, i, file.format + 1)
 	flag = 0
 	for token in font_tokens:
 	    if find_token(lines, token, k, i) != -1:
@@ -182,7 +182,7 @@ def remove_pextra(file):
 	    start = ["\\layout Standard"] + start
 
 	j0 = find_token_backwards(lines,"\\layout", i-1)
-	j = get_next_paragraph(lines, i)
+	j = get_next_paragraph(lines, i, file.format + 1)
 
 	count = 0
 	while 1:
@@ -341,7 +341,7 @@ def remove_oldertinset(file):
 	    break
 	j = find_end_of_inset(lines, i)
 	k = find_token(lines, "\\layout", i+1)
-	l = get_paragraph(lines, i)
+	l = get_paragraph(lines, i, file.format + 1)
 	if lines[k] == lines[l]: # same layout
 	    k = k+1
 	new = lines[k:j]
@@ -369,7 +369,7 @@ def combine_ert(file):
 	i = find_token(lines, "\\begin_inset ERT", i)
 	if i == -1:
 	    break
-	j = get_paragraph(lines, i)
+	j = get_paragraph(lines, i, file.format + 1)
 	count = 0
 	text = []
 	while is_ert_paragraph(lines, j):

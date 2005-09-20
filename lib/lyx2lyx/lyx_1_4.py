@@ -506,15 +506,18 @@ def revert_end_document(file):
 #\newpage
 #
 #\lyxline
+#\begin_inset ERT
+#\begin layout Standard
+#\backslash
+#vspace{-1\backslash
+#parskip}
+#\end_layout
+#\end_inset
+#
 #\begin_inset VSpace xxx
 #\end_inset
 #
-#\end_layout
-#\begin_layout Standard
-#
 #0
-#\end_layout
-#\begin_layout Standard
 #
 #\begin_inset VSpace xxx
 #\end_inset
@@ -528,11 +531,16 @@ def convert_breaks(file):
                  'labelwidthstring', 'line_bottom', 'line_top', 'noindent',
                  'pagebreak_bottom', 'pagebreak_top', 'paragraph_spacing',
                  'start_of_appendix')
+    font_attributes = ['\\family', '\\series', '\\shape', '\\emph',
+                       '\\numeric', '\\bar', '\\noun', '\\color', '\\lang']
+    attribute_values = ['default', 'default', 'default', 'default',
+                        'default', 'default', 'default', 'none', file.language]
     i = 0
     while 1:
         i = find_token(file.body, "\\begin_layout", i)
         if i == -1:
             return
+        layout = split(file.body[i])[1]
         i = i + 1
 
         # Merge all paragraph parameters into a single line
@@ -551,6 +559,27 @@ def convert_breaks(file):
 
         if line_top == -1 and line_bot == -1 and pb_bot == -1 and pb_top == -1 and vspace_top == -1 and vspace_bot == -1:
             continue
+
+        # Do we have a nonstandard paragraph? We need to create new paragraphs
+        # if yes to avoid putting lyxline etc. inside of special environments.
+        # This is wrong for itemize and enumerate environments, but it is
+        # impossible to convert these correctly.
+        # We want to avoid new paragraphs if possible becauase we want to
+        # inherit font sizes.
+        nonstandard = 0
+        if (layout != "Standard" or find(file.body[i],"\\align") != -1 or
+            find(file.body[i],"\\labelwidthstring") != -1 or
+            find(file.body[i],"\\noindent") != -1):
+            nonstandard = 1
+
+        # get the font size of the beginning of this paragraph, since we need
+        # it for the lyxline inset
+        j = i + 1
+        while not is_nonempty_line(file.body[j]):
+            j = j + 1
+        size_top = ""
+        if find(file.body[j], "\\size") != -1:
+            size_top = split(file.body[j])[1]
 
         for tag in "\\line_top", "\\line_bottom", "\\pagebreak_top", "\\pagebreak_bottom":
             file.body[i] = replace(file.body[i], tag, "")
@@ -574,11 +603,14 @@ def convert_breaks(file):
         file.body[i] = strip(file.body[i])
         i = i + 1
 
-        #  Create an empty paragraph for line and page break that belong
-        # above the paragraph
+        # Create an empty paragraph or paragraph fragment for line and
+        # page break that belong above the paragraph
         if pb_top !=-1 or line_top != -1 or vspace_top != -1:
 
-            paragraph_above = ['','\\begin_layout Standard','','']
+            paragraph_above = list()
+            if nonstandard:
+                # We need to create an extra paragraph for nonstandard environments
+                paragraph_above = ['\\begin_layout Standard', '']
 
             if pb_top != -1:
                 paragraph_above.extend(['\\newpage ',''])
@@ -587,12 +619,23 @@ def convert_breaks(file):
                 paragraph_above.extend(['\\begin_inset VSpace ' + vspace_top_value,'\\end_inset','',''])
 
             if line_top != -1:
-                paragraph_above.extend(['\\lyxline ',''])
+                if size_top != '':
+                    paragraph_above.extend(['\\size ' + size_top + ' '])
+                # We need an additional vertical space of -\parskip.
+                # We can't use the vspace inset because it does not know \parskip.
+                paragraph_above.extend(['\\lyxline ', '', ''])
+                insert_ert(paragraph_above, len(paragraph_above) - 1, 'Collapsed',
+                           '\\vspace{-1\\parskip}\n', file.format + 1)
+                paragraph_above.extend([''])
 
-            paragraph_above.extend(['\\end_layout',''])
+            if nonstandard:
+                paragraph_above.extend(['\\end_layout ',''])
+                # insert new paragraph above the current paragraph
+                file.body[i-2:i-2] = paragraph_above
+            else:
+                # insert new lines at the beginning of the current paragraph
+                file.body[i:i] = paragraph_above
 
-            #inset new paragraph above the current paragraph
-            file.body[i-2:i-2] = paragraph_above
             i = i + len(paragraph_above)
 
         # Ensure that nested style are converted later.
@@ -603,10 +646,34 @@ def convert_breaks(file):
 
         if pb_bot !=-1 or line_bot != -1 or vspace_bot != -1:
 
-            paragraph_below = ['','\\begin_layout Standard','','']
+            # get the font size of the end of this paragraph
+            size_bot = size_top
+            j = i + 1
+            while j < k:
+                if find(file.body[j], "\\size") != -1:
+                    size_bot = split(file.body[j])[1]
+                    j = j + 1
+                elif find(file.body[j], "\\begin_inset") != -1:
+                    # skip insets
+                    j = find_end_of_inset(file.body, j)
+                else:
+                    j = j + 1
+
+            paragraph_below = list()
+            if nonstandard:
+                # We need to create an extra paragraph for nonstandard environments
+                paragraph_below = ['', '\\begin_layout Standard', '']
+            else:
+                for a in range(len(font_attributes)):
+                    if find_token(file.body, font_attributes[a], i, k) != -1:
+                        paragraph_below.extend([font_attributes[a] + ' ' + attribute_values[a]])
 
             if line_bot != -1:
+                if nonstandard and size_bot != '':
+                    paragraph_below.extend(['\\size ' + size_bot + ' '])
                 paragraph_below.extend(['\\lyxline ',''])
+                if size_bot != '':
+                    paragraph_below.extend(['\\size default '])
 
             if vspace_bot != -1:
                 paragraph_below.extend(['\\begin_inset VSpace ' + vspace_bot_value,'\\end_inset','',''])
@@ -614,10 +681,13 @@ def convert_breaks(file):
             if pb_bot != -1:
                 paragraph_below.extend(['\\newpage ',''])
 
-            paragraph_below.extend(['\\end_layout',''])
-
-            #inset new paragraph above the current paragraph
-            file.body[k + 1: k + 1] = paragraph_below
+            if nonstandard:
+                paragraph_below.extend(['\\end_layout '])
+                # insert new paragraph below the current paragraph
+                file.body[k+1:k+1] = paragraph_below
+            else:
+                # insert new lines at the end of the current paragraph
+                file.body[k:k] = paragraph_below
 
 
 ##
@@ -893,18 +963,49 @@ def convert_minipage(file):
 # -------------------------------------------------------------------------------------------
 # Convert backslashes and '\n' into valid ERT code, append the converted
 # text to body[i] and return the (maybe incremented) line index i
-def convert_ertbackslash(body, i, ert):
+def convert_ertbackslash(body, i, ert, format):
     for c in ert:
 	if c == '\\':
 	    body[i] = body[i] + '\\backslash '
 	    i = i + 1
 	    body.insert(i, '')
 	elif c == '\n':
-	    body[i+1:i+1] = ['\\newline ', '']
-	    i = i + 2
+            if format <= 240:
+                body[i+1:i+1] = ['\\newline ', '']
+                i = i + 2
+            else:
+                body[i+1:i+1] = ['\\end_layout', '', '\\begin_layout Standard', '']
+                i = i + 4
 	else:
 	    body[i] = body[i] + c
     return i
+
+
+# Converts lines in ERT code to LaTeX
+# The surrounding \begin_layout ... \end_layout pair must not be included
+def ert2latex(lines, format):
+    backslash = re.compile(r'\\backslash\s*$')
+    newline = re.compile(r'\\newline\s*$')
+    if format <= 224:
+        begin_layout = re.compile(r'\\layout\s*\S+$')
+    else:
+        begin_layout = re.compile(r'\\begin_layout\s*\S+$')
+    end_layout = re.compile(r'\\end_layout\s*$')
+    ert = ''
+    for i in range(len(lines)):
+        line = backslash.sub('\\\\', lines[i])
+        if format <= 240:
+            if begin_layout.match(line):
+                line = '\n\n'
+            else:
+                line = newline.sub('\n', line)
+        else:
+            if begin_layout.match(line):
+                line = '\n'
+        if format > 224 and end_layout.match(line):
+            line = ''
+        ert = ert + line
+    return ert
 
 
 # get all paragraph parameters. They can be all on one line or on several lines.
@@ -921,6 +1022,17 @@ def get_par_params(lines, i):
         params = params + ' ' + strip(lines[i])
 	i = i + 1
     return strip(params)
+
+
+# convert LyX font size to LaTeX fontsize
+def lyxsize2latexsize(lyxsize):
+    sizes = {"tiny" : "tiny", "scriptsize" : "scriptsize",
+             "footnotesize" : "footnotesize", "small" : "small",
+             "normal" : "normalsize", "large" : "large", "larger" : "Large",
+             "largest" : "LARGE", "huge" : "huge", "giant" : "Huge"}
+    if lyxsize in sizes:
+        return '\\' + sizes[lyxsize]
+    return ''
 
 
 # Change vspace insets, page breaks and lyxlines to paragraph options
@@ -948,102 +1060,130 @@ def revert_breaks(file):
         i = find_tokens(file.body, tokens, i)
         if i == -1:
             return
-        lines = list()
-        insets = list()
-        lines.append(split(file.body[i]))
-        insets.append(keys[lines[0][0]])
 
         # Are we at the beginning of a paragraph?
         paragraph_start = 1
-        start = get_paragraph(file.body, i) + 1
+        this_par = get_paragraph(file.body, i, file.format - 1)
+        start = this_par + 1
         params = get_par_params(file.body, start)
+        size = "normal"
         # Paragraph parameters may be on one or more lines.
         # Find the start of the real paragraph text.
         while file.body[start][:1] == '\\' and split(file.body[start])[0] in params:
             start = start + 1
         for k in range(start, i):
-            if is_nonempty_line(file.body[k]):
+            if find(file.body[k], "\\size") != -1:
+                # store font size
+                size = split(file.body[k])[1]
+            elif is_nonempty_line(file.body[k]):
                 paragraph_start = 0
                 break
+        # Find the end of the real paragraph text.
+        next_par = get_next_paragraph(file.body, i, file.format - 1)
+        if next_par == -1:
+            file.warning("Malformed LyX file: Missing next paragraph.")
+            i = i + 1
+            continue
 
+        # first line of our insets
+        inset_start = i
+        # last line of our insets
+        inset_end = inset_start
         # Are we at the end of a paragraph?
         paragraph_end = 1
-        if insets[0] == "vspace":
-            j = find_end_of_inset(file.body, i)
-            if j == -1:
-                file.warning("Malformed lyx file: Missing '\\end_inset'.")
-                i = i + 1
-                continue
-        else:
-            j = i
-        end = get_next_paragraph(file.body, i)
-        for k in range(j + 1, end):
-            if is_nonempty_line(file.body[k]):
+        # start and end line numbers to delete if we convert this inset
+        del_lines = list()
+        # is this inset a lyxline above a paragraph?
+        top = list()
+        # raw inset information
+        lines = list()
+        # name of this inset
+        insets = list()
+        # font size of this inset
+        sizes = list()
+
+        # Detect subsequent lyxline, vspace and pagebreak insets created by convert_breaks()
+        n = 0
+        k = inset_start
+        while k < next_par:
+            if find_tokens(file.body, tokens, k) == k:
+                # inset to convert
+                lines.append(split(file.body[k]))
+                insets.append(keys[lines[n][0]])
+                del_lines.append([k, k])
+                top.append(0)
+                sizes.append(size)
+                n = n + 1
+                inset_end = k
+            elif find(file.body[k], "\\size") != -1:
+                # store font size
+                size = split(file.body[k])[1]
+            elif find_token(file.body, "\\begin_inset ERT", k) == k:
+                ert_begin = find_token(file.body, "\\layout", k) + 1
+                if ert_begin == 0:
+                    file.warning("Malformed LyX file: Missing '\\layout'.")
+                    continue
+                ert_end = find_end_of_inset(file.body, k)
+                if ert_end == -1:
+                    file.warning("Malformed LyX file: Missing '\\end_inset'.")
+                    continue
+                ert = ert2latex(file.body[ert_begin:ert_end], file.format - 1)
+                if (n > 0 and insets[n - 1] == "lyxline" and
+                    ert == '\\vspace{-1\\parskip}\n'):
+                    # vspace ERT created by convert_breaks() for top lyxline
+                    top[n - 1] = 1
+                    del_lines[n - 1][1] = ert_end
+                    inset_end = ert_end
+                    k = ert_end
+                else:
+                    paragraph_end = 0
+                    break
+            elif (n > 0 and insets[n - 1] == "vspace" and
+                  find_token(file.body, "\\end_inset", k) == k):
+                # ignore end of vspace inset
+                del_lines[n - 1][1] = k
+                inset_end = k
+            elif is_nonempty_line(file.body[k]):
                 paragraph_end = 0
                 break
-
-        # Detect paragraphs created by convert_breaks()
-        before = 0
-        after = 0
-        if paragraph_start:
-            # Make a copy of the paragraph, since we need to strip empty lines
-            paragraph = list()
-            for k in range(start, end):
-                if is_nonempty_line(file.body[k]):
-                    if (len(paragraph) > 0 and
-		        find_token(file.body, "\\end_inset", k) == k):
-                        paragraph[len(paragraph) - 1] = paragraph[len(paragraph) - 1] + ' ' + file.body[k]
-                    else:
-                        paragraph.append(file.body[k])
-
-            # Do we have a second inset to convert in this paragraph?
-            if ((len(paragraph) == 2 or len(paragraph) == 3) and
-	        find_tokens(paragraph, tokens, 1) == 1):
-                lines.append(split(paragraph[1]))
-                insets.append(keys[lines[1][0]])
-                del paragraph[1]
-                # Do we have a third inset to convert in this paragraph?
-                if (len(paragraph) == 2 and
-		    find_tokens(paragraph, tokens, 1) == 1):
-                    lines.append(split(paragraph[1]))
-                    insets.append(keys[lines[2][0]])
-                    del paragraph[1]
-
-            if len(paragraph) == 1:
-                # We have only insets that need to be converted in this paragraph
-                if ((len(insets) == 3 and insets[0] == "newpage" and
-		     insets[1] == "vspace" and insets[2] == "lyxline") or
-                    (len(insets) == 2 and
-		     ((insets[0] == "newpage" and insets[1] == "vspace") or
-                      (insets[0] == "newpage" and insets[1] == "lyxline") or
-                      (insets[0] == "vspace"  and insets[1] == "lyxline")))):
-                    # This paragraph has been created before a paragraph by
-                    # convert_breaks()
-                    before = 1
-                    paragraph_start = 1
-                    paragraph_end = 1
-                if ((len(insets) == 3 and insets[0] == "lyxline" and
-		     insets[1] == "vspace" and insets[2] == "newpage") or
-                    (len(insets) == 2 and
-		     ((insets[0] == "lyxline" and insets[1] == "vspace") or
-                      (insets[0] == "lyxline" and insets[1] == "newpage") or
-                      (insets[0] == "vspace"  and insets[1] == "newpage")))):
-                    # This paragraph has been created after a paragraph by
-                    # convert_breaks()
-                    paragraph_start = 1
-                    paragraph_end = 1
-                    after = 1
+            k = k + 1
 
         # Determine space amount for vspace insets
         spaceamount = list()
         arguments = list()
-        for k in range(len(lines)):
+        for k in range(n):
             if insets[k] == "vspace":
                 spaceamount.append(lines[k][2])
                 arguments.append(' ' + spaceamount[k] + ' ')
             else:
                 spaceamount.append('')
                 arguments.append(' ')
+
+        # Can we convert to top paragraph parameters?
+        before = 0
+        if ((n == 3 and insets[0] == "newpage" and insets[1] == "vspace" and
+             insets[2] == "lyxline" and top[2]) or
+            (n == 2 and
+             ((insets[0] == "newpage" and insets[1] == "vspace") or
+              (insets[0] == "newpage" and insets[1] == "lyxline" and top[1]) or
+              (insets[0] == "vspace"  and insets[1] == "lyxline" and top[1]))) or
+            (n == 1 and insets[0] == "lyxline" and top[0])):
+            # These insets have been created before a paragraph by
+            # convert_breaks()
+            before = 1
+
+        # Can we convert to bottom paragraph parameters?
+        after = 0
+        if ((n == 3 and insets[0] == "lyxline" and not top[0] and
+             insets[1] == "vspace" and insets[2] == "newpage") or
+            (n == 2 and
+             ((insets[0] == "lyxline" and not top[0] and insets[1] == "vspace") or
+              (insets[0] == "lyxline" and not top[0] and insets[1] == "newpage") or
+              (insets[0] == "vspace"  and insets[1] == "newpage"))) or
+            (n == 1 and insets[0] == "lyxline" and not top[0])):
+            # These insets have been created after a paragraph by
+            # convert_breaks()
+            after = 1
 
         if paragraph_start and paragraph_end:
             # We are in a paragraph of our own.
@@ -1052,54 +1192,91 @@ def revert_breaks(file):
                 # First try to merge with the previous paragraph.
                 # We try the previous paragraph first because we would
                 # otherwise need ERT for two subsequent vspaces.
-                prev_par = get_paragraph(file.body, start - 2) + 1
+                prev_par = get_paragraph(file.body, this_par - 1, file.format - 1) + 1
                 if prev_par > 0 and not before:
                     prev_params = get_par_params(file.body, prev_par + 1)
                     ert = 0
-                    n = len(insets)
+                    # determine font size
+                    prev_size = "normal"
+                    k = prev_par + 1
+                    while file.body[k][:1] == '\\' and split(file.body[k])[0] in prev_params:
+                        k = k + 1
+                    while k < this_par:
+                        if find(file.body[k], "\\size") != -1:
+                            prev_size = split(file.body[k])[1]
+                            break
+                        elif find(file.body[k], "\\begin_inset") != -1:
+                            # skip insets
+                            k = find_end_of_inset(file.body, k)
+                        elif is_nonempty_line(file.body[k]):
+                            break
+                        k = k + 1
                     for k in range(n):
-                        if keywords_bot[insets[k]] in prev_params:
+                        if (keywords_bot[insets[k]] in prev_params or
+                            (insets[k] == "lyxline" and sizes[k] != prev_size)):
                             ert = 1
                             break
                     if not ert:
-                        for k in range(len(insets)):
+                        for k in range(n):
                             file.body.insert(prev_par + 1,
                                              keywords_bot[insets[k]] + arguments[k])
-                        del file.body[start-1+n:end+n]
-                        i = start + n
+                        del file.body[this_par+n:next_par-1+n]
+                        i = this_par + n
                         continue
                 # Then try next paragraph
-                next_par = end
                 if next_par > 0 and not after:
                     next_params = get_par_params(file.body, next_par + 1)
                     ert = 0
-                    n = len(insets)
+                    while file.body[k][:1] == '\\' and split(file.body[k])[0] in next_params:
+                        k = k + 1
+                    # determine font size
+                    next_size = "normal"
+                    k = next_par + 1
+                    while k < this_par:
+                        if find(file.body[k], "\\size") != -1:
+                            next_size = split(file.body[k])[1]
+                            break
+                        elif is_nonempty_line(file.body[k]):
+                            break
+                        k = k + 1
                     for k in range(n):
-                        if keywords_top[insets[k]] in next_params:
+                        if (keywords_top[insets[k]] in next_params or
+                            (insets[k] == "lyxline" and sizes[k] != next_size)):
                             ert = 1
                             break
                     if not ert:
-                        for k in range(len(insets)):
+                        for k in range(n):
                             file.body.insert(next_par + 1,
                                              keywords_top[insets[k]] + arguments[k])
-                        del file.body[start-1:end]
-                        i = start
+                        del file.body[this_par:next_par-1]
+                        i = this_par
                         continue
-        else:
+        elif paragraph_start or paragraph_end:
             # Convert to paragraph formatting if we are at the beginning or end
             # of a paragraph and the resulting paragraph would not be empty
             # The order is important: del and insert invalidate some indices
             if paragraph_start:
-                if j != i:
-                    del file.body[j]
-                del file.body[i]
-                file.body.insert(start, keywords_top[insets[0]] + arguments[0])
-                continue
-            elif paragraph_end:
-                if j != i:
-                    del file.body[j]
-                del file.body[i]
-                file.body.insert(start, keywords_bot[insets[0]] + arguments[0])
+                keywords = keywords_top
+            else:
+                keywords = keywords_bot
+            ert = 0
+            for k in range(n):
+                if keywords[insets[k]] in params:
+                    ert = 1
+                    break
+            if not ert:
+                for k in range(n):
+                    file.body.insert(this_par + 1,
+                                     keywords[insets[k]] + arguments[k])
+                    for j in range(k, n):
+                        del_lines[j][0] = del_lines[j][0] + 1
+                        del_lines[j][1] = del_lines[j][1] + 1
+                    del file.body[del_lines[k][0]:del_lines[k][1]+1]
+                    deleted = del_lines[k][1] - del_lines[k][0] + 1
+                    for j in range(k + 1, n):
+                        del_lines[j][0] = del_lines[j][0] - deleted
+                        del_lines[j][1] = del_lines[j][1] - deleted
+                i = this_par
                 continue
 
         # Convert the first inset to ERT.
@@ -1138,14 +1315,18 @@ def revert_breaks(file):
                     file.body.insert(i, 'vspace*{')
                 else:
                     file.body.insert(i, 'vspace{')
-                i = convert_ertbackslash(file.body, i, spaceamount[0])
+                i = convert_ertbackslash(file.body, i, spaceamount[0], file.format - 1)
                 file.body[i] = file.body[i] + '}'
             i = i + 1
         elif insets[0] == "lyxline":
-            file.body[i:i+1] = ['\\begin_inset ERT', 'status Collapsed', '',
-                                '\\layout Standard', '', '\\backslash',
-                                'lyxline{}', '', '\\end_inset', '']
-            i = i + 10
+            file.body[i] = ''
+            latexsize = lyxsize2latexsize(size)
+            if latexsize == '':
+                file.warning("Could not convert LyX fontsize '%s' to LaTeX font size." % size)
+                latexsize = '\\normalsize'
+            i = insert_ert(file.body, i, 'Collapsed',
+                           '\\lyxline{%s}' % latexsize,
+                           file.format - 1)
             # We use \providecommand so that we don't get an error if native
             # lyxlines are used (LyX writes first its own preamble and then
             # the user specified one)
@@ -1155,10 +1336,9 @@ def revert_breaks(file):
                              '  {#1 \\vspace{1ex} \\hrule width \\columnwidth \\vspace{1ex}}'
                              '}'])
         elif insets[0] == "newpage":
-            file.body[i:i+1] = ['\\begin_inset ERT', 'status Collapsed', '',
-                                '\\layout Standard', '', '\\backslash',
-                                'newpage{}', '', '\\end_inset', '']
-            i = i + 10
+            file.body[i] = ''
+            i = insert_ert(file.body, i, 'Collapsed', '\\newpage{}',
+                           file.format - 1)
 
 
 # Convert a LyX length into a LaTeX length
@@ -1182,9 +1362,9 @@ def convert_len(len, special):
 
 # Convert a LyX length into valid ERT code and append it to body[i]
 # Return the (maybe incremented) line index i
-def convert_ertlen(body, i, len, special):
+def convert_ertlen(body, i, len, special, format):
     # Convert backslashes and insert the converted length into body
-    return convert_ertbackslash(body, i, convert_len(len, special))
+    return convert_ertbackslash(body, i, convert_len(len, special), format)
 
 
 # Return the value of len without the unit in numerical form
@@ -1198,11 +1378,18 @@ def len2value(len):
 
 # Convert text to ERT and insert it at body[i]
 # Return the index of the line after the inserted ERT
-def insert_ert(body, i, status, text):
-    body[i:i] = ['\\begin_inset ERT', 'status ' + status, '',
-                 '\\layout Standard', '']
-    i = i + 5
-    i = convert_ertbackslash(body, i, text) + 1
+def insert_ert(body, i, status, text, format):
+    body[i:i] = ['\\begin_inset ERT', 'status ' + status, '']
+    i = i + 3
+    if format <= 224:
+        body[i:i] = ['\\layout Standard', '']
+    else:
+        body[i:i] = ['\\begin_layout Standard', '']
+    i = i + 1       # i points now to the just created empty line
+    i = convert_ertbackslash(body, i, text, format) + 1
+    if format > 224:
+        body[i:i] = ['\\end_layout']
+        i = i + 1
     body[i:i] = ['', '\\end_inset', '']
     i = i + 3
     return i
@@ -1340,7 +1527,7 @@ def convert_frameless_box(file):
             ert = ert + '\\let\\endminipage\\endlyxtolyxminipage%\n'
 
             old_i = i
-            i = insert_ert(file.body, i, 'Collapsed', ert)
+            i = insert_ert(file.body, i, 'Collapsed', ert, file.format + 1)
             j = j + i - old_i - 1
 
             file.body[i:i] = ['\\begin_inset Minipage',
@@ -1361,7 +1548,7 @@ def convert_frameless_box(file):
             ert = '\\let\\minipage\\lyxtolyxrealminipage%\n'
             ert = ert + '\\let\\endminipage\\lyxtolyxrealendminipage%'
             old_i = i
-            i = insert_ert(file.body, i, 'Collapsed', ert)
+            i = insert_ert(file.body, i, 'Collapsed', ert, file.format + 1)
             j = j + i - old_i - 1
 
             # Redefine the minipage end before the inset end.
@@ -1369,7 +1556,7 @@ def convert_frameless_box(file):
             file.body[j:j] = ['\\layout Standard', '', '']
             j = j + 2
             ert = '\\let\\endminipage\\endlyxtolyxminipage'
-            j = insert_ert(file.body, j, 'Collapsed', ert)
+            j = insert_ert(file.body, j, 'Collapsed', ert, file.format + 1)
 	    j = j + 1
             file.body.insert(j, '')
 	    j = j + 1
@@ -1380,7 +1567,7 @@ def convert_frameless_box(file):
                 ert = '}%\n'
             else:
                 ert = '\\end{lyxtolyxrealminipage}%\n'
-            j = insert_ert(file.body, j, 'Collapsed', ert)
+            j = insert_ert(file.body, j, 'Collapsed', ert, file.format + 1)
 
             # We don't need to restore the original minipage after the inset
             # end because the scope of the redefinition is the original box.

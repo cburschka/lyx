@@ -1,3 +1,17 @@
+2005-09-19  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* parser_tools.py (get_paragraph, get_next_paragraph): add format
+	argument and make them work with formats newer than 220
+	* lyx_1_2.py (remove_oldfloat, remove_pextra, remove_oldertinset,
+	combine_ert): adjust to the changes above
+	* lyx_1_4.py (convert_breaks, revert_breaks): better conversion of
+	lyxlines
+	* lyx_1_4.py (convert_ertbackslash, convert_ertlen, insert_ert):
+	add format argument and make it work with formats newer than 240
+	* lyx_1_4.py (convert_frameless_box): adjust to the changes above
+	* lyx_1_4.py (ert2latex): new, convert ERT code to LaTeX
+	* lyx_1_4.py (lyxsize2latexsize): new, convert LyX font size to LaTeX
+
 2005-09-18  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* LyX.py (LyX_Base): fix paragraph parameter check
