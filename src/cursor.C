@@ -376,7 +376,8 @@ void LCursor::getPos(int & x, int & y) const
 
 void LCursor::paste(string const & data)
 {
-	dispatch(FuncRequest(LFUN_PASTE, data));
+	if (!data.empty())
+		dispatch(FuncRequest(LFUN_PASTE, data));
 }
 
 
