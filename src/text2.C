@@ -1013,11 +1013,11 @@ bool LyXText::cursorLeft(LCursor & cur)
 
 bool LyXText::cursorRight(LCursor & cur)
 {
-	if (cur.boundary()) {
-		return setCursor(cur, cur.pit(), cur.pos(), true, false);
-	}
-
 	if (cur.pos() != cur.lastpos()) {
+		if (cur.boundary()) 
+			return setCursor(cur, cur.pit(), cur.pos(), 
+					 true, false);
+
 		bool updateNeeded = false;
 		if (!checkAndActivateInset(cur, true)) {
 			if (cur.textRow().endpos() == cur.pos() + 1 &&

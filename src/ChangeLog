@@ -1,5 +1,10 @@
 2005-09-20  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	* text2.C (cursorRight): do not honor boundary when at the end of
+	a paragraph. (bug 2010 again)
+
+2005-09-20  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
 	* cursor.C (paste): do nothing if `data' is empty. (bug 2033)
 
 2005-09-19  Martin Vermeer  <martin.vermeer@hut.fi>
