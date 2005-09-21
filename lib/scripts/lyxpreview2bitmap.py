@@ -91,9 +91,15 @@ def extract_metrics_info(dvipng_stdout, metrics_file):
         # Calculate the 'ascent fraction'.
         descent = string.atof(match.group(2))
         ascent  = string.atof(match.group(3))
+
         frac = 0.5
-        if abs(ascent + descent) > 0.1:
-            frac = ascent / (ascent + descent)
+        if ascent > 0 and descent > 0:
+            if abs(ascent + descent) > 0.1:
+                frac = ascent / (ascent + descent)
+
+            # Sanity check
+            if frac < 0 or frac > 1:
+                frac = 0.5
 
         metrics.write("Snippet %s %f\n" % (match.group(1), frac))
         pos = match.end(3) + 2

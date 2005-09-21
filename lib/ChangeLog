@@ -1,3 +1,10 @@
+2005-09-21  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* scripts/legacy_lyxpreview2ppm.py:
+	* scripts/lyxpreview2bitmap.py: ensure that the metrics file
+	contains sensible fractional ascent data if the extracted
+	ascent or descent data is zero.
+
 2005-09-18  Angus Leeming  <leeming@lyx.org>
 
 	* configure.py: add Bo Peng's experimental Python script to

@@ -91,14 +91,22 @@ def extract_metrics_info(log_file, metrics_file):
                 error("Unexpected data in %s\n%s" % (log_file, line))
 
             if snippet:
-                ascent  = string.atof(match.group(2)) + tp_ascent
-                descent = string.atof(match.group(3)) - tp_descent
+                ascent  = string.atoi(match.group(2))
+                descent = string.atoi(match.group(3))
 
                 frac = 0.5
-                if abs(ascent + descent) > 0.1:
-                    frac = ascent / (ascent + descent)
+                if ascent > 0 and descent > 0:
+                    ascent = float(ascent) + tp_ascent
+                    descent = float(descent) - tp_descent
 
-                    metrics.write("Snippet %s %f\n" % (match.group(1), frac))
+                    if abs(ascent + descent) > 0.1:
+                        frac = ascent / (ascent + descent)
+
+                    # Sanity check
+                    if frac < 0 or frac > 1:
+                            frac = 0.5
+
+                metrics.write("Snippet %s %f\n" % (match.group(1), frac))
 
             else:
                 tp_descent = string.atof(match.group(2))
