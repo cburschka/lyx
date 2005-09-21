@@ -1,3 +1,8 @@
+2005-09-12  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyxfunc.C (sendDispatchMessage): do not update menubar/toolbar
+	when command is internal. (bug 1941)
+
 2005-09-20  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* text2.C (cursorRight): do not honor boundary when at the end of

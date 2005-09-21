@@ -338,6 +338,9 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	   application can still be accessed without giving focus to
 	   the main window. In this case, we want to disable the menu
 	   entries that are buffer-related.
+
+	   Note that this code is not perfect, as bug 1941 attests:
+	   http://bugzilla.lyx.org/show_bug.cgi?id=1941#c4
 	*/
 	Buffer * buf;
 	if (cmd.origin == FuncRequest::UI && !owner->hasFocus())
@@ -1577,8 +1580,15 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 void LyXFunc::sendDispatchMessage(string const & msg, FuncRequest const & cmd)
 {
-	owner->updateMenubar();
-	owner->updateToolbars();
+	/* When an action did not originate from the UI/kbd, it makes
+	 * sense to avoid updating the GUI. It turns out that this
+	 * fixes bug 1941, for reasons that are described here:
+	 * http://bugzilla.lyx.org/show_bug.cgi?id=1941#c4 
+	 */
+	if (cmd.origin != FuncRequest::INTERNAL) {
+		owner->updateMenubar();
+		owner->updateToolbars();
+	}
 
 	const bool verbose = (cmd.origin == FuncRequest::UI
 			      || cmd.origin == FuncRequest::COMMANDBUFFER);
