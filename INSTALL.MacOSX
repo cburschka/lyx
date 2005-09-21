@@ -20,25 +20,23 @@ convenient directory, cd to the top of the Qt source hierarcy, and:
      make
      rm lib/libqt.la
 
-2. Download the LyX/Mac skeleton from
-<ftp://ftp.lyx.org/pub/lyx/stable/lyx-mac-1.3.5-skeleton.tar.gz> and
-unpack it in /Applications. Change the references to "1.4.0" in
-/Applications/LyX.app/Contents/Info.plist to reflect the current
-version number.
+2. The LyX/Mac application bundle skeleton (LyX.app) can be found in 
+development/MacOSX. This bundle should be moved to some convenient
+place. (These instructions assume it is placed in /Applications and
+named LyX.app.)
 
 3. Using the same terminal session you used to build the Qt library,
 cd to the top of the LyX source hierarchy, and:
 
      export LDFLAGS="-framework Carbon -framework OpenGL -framework AGL -framework QuickTime -lz"
-     ./configure --with-frontend=qt --without-x --datadir=/Applications/LyX.app/Contents/Resources --bindir=/Applications/LyX.app/Contents/MacOS --mandir=/Applications/LyX.app/Contents/Resources/man --enable-maintainer-mode --with-included-gettext --enable-optimization=-Os
-
+     ./configure --with-frontend=qt --without-x --prefix=/Applications/LyX.app --enable-maintainer-mode --with-included-gettext --enable-optimization=-Os --disable-concept-checks
      make
      make install
      rm /Applications/LyX.app/Contents/Resources/LyX/images/lyx.xpm
 
 [Note that removing lyx.xpm -- the point of the last line above -- is
-necessary to use the Mac OS X native icon files included in the
-LyX/Mac skeleton.]
+necessary for the Mac OS X native icon files included in the LyX/Mac 
+skeleton to be used.]
 
 The information on this page is believed to be accurate, has been used
 successfully on many systems and sites, and has benefited from the
