@@ -1,0 +1,18 @@
+
+These fonts were converted from the LaTeX .pfb forms,
+and are under the respective licenses of the sources.
+
+Known bugs:
+
+CIRCLE and APLup in wasy10.ttf do not work properly. Cause
+and fix unknown.
+
+If you're using a locale such as LANG=ru_RU, and some others,
+these fonts will not load in Qt. This is a Qt bug that Troll
+Tech refuse to fix.
+
+The conversions were done by :
+
+Dan Armak <danarmak@gentoo.org>
+Andrew Abyzov <abyzov@bk.ru>
+John Levon <levon@movementarian.org>

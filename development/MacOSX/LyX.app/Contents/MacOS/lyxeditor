@@ -1,0 +1,15 @@
+#!/bin/sh
+# ron@18james.com, 11 Dec 2003
+
+lyxpipe=/Users/$USER/.lyx/.lyxpipe
+if  [ ! -p $lyxpipe.out ]
+  then
+    lyxprefs=`expr "$0" : '\(.*\)MacOS/lyxeditor'`Resources/lyx/preferences
+    lyxpipe=`perl -n -e 'print,exit if s/^.serverpipe\\s+\"(.+)\"/$1/;' ~/.lyx/preferences $lyxprefs`
+fi
+[ -p $lyxpipe.in ] || exit 0
+file=`echo "$1" | sed 's|^/private||'`
+echo LYXCMD:macdvix:server-goto-file-row:$file $2 > $lyxpipe.in || exit
+read < $lyxpipe.out || exit
+
+
