@@ -10,33 +10,42 @@ here builds LyX linked with a static Qt library. If you are using the
 tcsh shell, change the "export VAR=value" statements to
 "setenv VAR value".
 
+At the moment, compiling LyX/Mac requires using gcc version 3.3. You
+can tell OS X to use this compiler by entering the following in the
+terminal:
+
+     sudo gcc_select 3.3
+
 1. Download the GPL-licensed Qt/Mac Free Edition library source code
 from <http://www.trolltech.com/download/qt/mac.html>, untar in a
 convenient directory, cd to the top of the Qt source hierarcy, and:
 
      export QTDIR=`pwd`
-     sudo gcc_select 3.3
-     ./configure -static -no-exceptions   [for Panther, use "./configure -static -no-exceptions -lresolv"]
+     ./configure -static -no-exceptions -lresolv   [for OS X 10.2, use "./configure -static -no-exceptions"]
      make
      rm lib/libqt.la
 
 2. The LyX/Mac application bundle skeleton (LyX.app) can be found in 
-development/MacOSX. This bundle should be moved to some convenient
-place. (These instructions assume it is placed in /Applications and
-named LyX.app.)
+the LyX source hierarchy at development/MacOSX. The default settings
+assume that this bundle has been moved to /Applications and is named
+LyX.app. You can rename it or move it somewhere else, but make sure
+you read the note in step 3.
 
 3. Using the same terminal session you used to build the Qt library,
 cd to the top of the LyX source hierarchy, and:
 
      export LDFLAGS="-framework Carbon -framework OpenGL -framework AGL -framework QuickTime -lz"
-     ./configure --with-frontend=qt --without-x --prefix=/Applications/LyX.app --enable-maintainer-mode --with-included-gettext --enable-optimization=-Os --disable-concept-checks
+     ./configure --with-frontend=qt --without-x --with-included-gettext --enable-optimization=-Os --disable-concept-checks
+
+[Note: If you have moved or renamed the LyX/Mac application bundle
+skeleton, you will need to add "--prefix=/path/to/LyX.app"
+(substituting the appropriate path, of course) to this ./configure
+line. (If you do not specify anything for --prefix, the default is
+--prefix=/Applications/LyX.app.)]
+     
      make
      make install
-     rm /Applications/LyX.app/Contents/Resources/LyX/images/lyx.xpm
 
-[Note that removing lyx.xpm -- the point of the last line above -- is
-necessary for the Mac OS X native icon files included in the LyX/Mac 
-skeleton to be used.]
 
 The information on this page is believed to be accurate, has been used
 successfully on many systems and sites, and has benefited from the
