@@ -67,10 +67,13 @@ QtView::QtView(unsigned int width, unsigned int height)
 	view_state_changed.connect(boost::bind(&QtView::update_view_state, this));
 	connect(&statusbar_timer_, SIGNAL(timeout()), this, SLOT(update_view_state_qt()));
 
-	//  assign an icon to main form
+#ifndef Q_WS_MACX
+	//  assign an icon to main form. We do not do it under Qt/Mac,
+	//  since the icon is provided in the application bundle.
 	string const iconname = LibFileSearch("images", "lyx", "xpm");
 	if (!iconname.empty())
 		setIcon(QPixmap(toqstr(iconname)));
+#endif
 
 	// make sure the buttons are disabled if needed
 	updateToolbars();

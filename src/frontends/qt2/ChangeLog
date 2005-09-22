@@ -1,3 +1,7 @@
+2005-09-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QtView.C (QtView): do not try to se the icon under Qt/Mac.
+
 2005-09-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* QGraphics.C (update_contents): fix compiler warning.
