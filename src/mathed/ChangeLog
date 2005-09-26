@@ -1,5 +1,8 @@
 2005-09-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
+	* math_nestinset.C (doDispatch): record LFUN_CUT in undo stack
+	(fixes bug 2041).
+	
 	* math_data.C (draw): add nested insets to the coord cache
 	(fixes the major part of bug 1918).
 

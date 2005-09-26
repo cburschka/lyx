@@ -423,6 +423,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_CUT:
+		recordUndo(cur);
 		cutSelection(cur, true, true);
 		cur.message(_("Cut"));
 		// Prevent stale position >= size crash
