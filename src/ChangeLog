@@ -1,3 +1,10 @@
+2005-09-23  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* text2.C: 
+	* text.C: 
+	* factory.C:
+	* messages.C: include <boost/current_function.hpp> 
+
 2005-09-12  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyxfunc.C (sendDispatchMessage): do not update menubar/toolbar

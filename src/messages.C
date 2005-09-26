@@ -15,6 +15,7 @@
 #include "support/environment.h"
 #include "support/package.h"
 
+#include <boost/current_function.hpp>
 #include <boost/regex.hpp>
 
 using lyx::support::package;

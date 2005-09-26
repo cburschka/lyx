@@ -70,6 +70,8 @@
 #include "support/textutils.h"
 #include "support/convert.h"
 
+#include <boost/current_function.hpp>
+
 #include <sstream>
 
 using lyx::pit_type;

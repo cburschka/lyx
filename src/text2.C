@@ -53,6 +53,8 @@
 
 #include "support/textutils.h"
 
+#include <boost/current_function.hpp>
+
 #include <sstream>
 
 using lyx::pit_type;
