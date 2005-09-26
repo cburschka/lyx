@@ -26,7 +26,7 @@ SetCompressor lzma
 ; You should need to change only these macros...
 
 !define PRODUCT_NAME "LyX"
-!define PRODUCT_VERSION "1.3.6"
+!define PRODUCT_VERSION "1.3.7"
 !define PRODUCT_LICENSE_FILE "..\..\..\..\COPYING"
 !define PRODUCT_SOURCEDIR "..\..\..\..\build\installprefix"
 !define PRODUCT_EXE "$INSTDIR\bin\lyx.exe"
@@ -35,7 +35,7 @@ SetCompressor lzma
 !define PRODUCT_MIME_TYPE "application/lyx"
 !define PRODUCT_UNINSTALL_EXE "$INSTDIR\uninstall.exe"
 
-!define INSTALLER_EXE "lyx_setup_136.exe"
+!define INSTALLER_EXE "lyx_setup_137.exe"
 !define INSTALLER_ICON "..\icons\lyx_32x32.ico"
 
 ; Replaced by HKLM or HKCU depending on SetShellVarContext.
