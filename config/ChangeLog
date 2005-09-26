@@ -1,3 +1,8 @@
+2005-09-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyxinclude.m4 (LYX_PROG_CXX): do not enable stdlib-debug for
+	prereleases.
+
 2005-09-08  Angus Leeming  <leeming@lyx.org>
 
 	* spell.m4: correct grammar describing invocation of the

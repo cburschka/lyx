@@ -186,7 +186,7 @@ AC_ARG_ENABLE(debug,
 
 AC_ARG_ENABLE(stdlib-debug,
   AC_HELP_STRING([--enable-stdlib-debug],[enable debug mode in the standard library]),,
-  [ if test $lyx_devel_version = yes -o $lyx_prerelease = yes ; then
+  [ if test $lyx_devel_version = yes ; then
       enable_stdlib_debug=yes;
     else
       enable_stdlib_debug=no;
