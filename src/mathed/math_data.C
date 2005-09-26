@@ -310,6 +310,7 @@ void MathArray::draw(PainterInfo & pi, int x, int y) const
 			}
 		}
 #endif
+		theCoords.insets().add(at.nucleus(), x, y);
 		at->drawSelection(pi, x, y);
 		at->draw(pi, x, y);
 		x += at->width();
@@ -385,10 +386,16 @@ MathArray::size_type MathArray::x2pos(int targetx, int glue) const
 		--it;
 	// The below code guarantees that in this slice, the cursor will
 	// never be on the right edge of an inset after a mouse click.
-	if (it != begin())
+#ifdef WITH_WARNINGS
+#warning A better solution has to be found here!
+	// FIXME: this is too brute! The position left to an inset should
+	// be reachable with the mouse in general.
+#endif
+	if (it != begin()) {
 		--it;
-	if (it < end() && (*it)->getChar())
-		++it;
+		if (it < end() && (*it)->getChar())
+			++it;
+	}
 
 	return it - begin();
 }
