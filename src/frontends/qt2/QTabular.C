@@ -248,6 +248,7 @@ void QTabular::update_contents()
 		dialog_->lastfooterBorderBelowCB->setChecked(false);
 		dialog_->lastfooterNoContentsCB->setChecked(false);
 		dialog_->newpageCB->setChecked(false);
+		dialog_->newpageCB->setEnabled(false);
 		return;
 	}
 

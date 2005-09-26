@@ -1,3 +1,7 @@
+2005-09-15  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QTabular.C: disable newpageCB when !longtabular.
+
 2005-09-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* QtView.C (QtView): do not try to se the icon under Qt/Mac.
