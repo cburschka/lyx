@@ -433,12 +433,11 @@ void BufferView::Pimpl::selectionRequested()
 	{
 		bv_->text->xsel_cache = text->selection;
 		sel = text->selectionAsString(bv_->buffer(), false);
+		if (!sel.empty())
+			workarea().putClipboard(sel);
 	} else if (!text->selection.set()) {
 		sel = string();
 		bv_->text->xsel_cache.set(false);
-	}
-	if (!sel.empty()) {
-		workarea().putClipboard(sel);
 	}
 }
 

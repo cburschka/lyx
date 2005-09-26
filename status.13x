@@ -51,6 +51,8 @@ What's new
 - Searching backwards in the citation dialog always skipped one result
   (bug 2002). Fixed now.
 
+- Fix interaction of LyX with external clipboard (e.g. Klipper) (bug 1976).
+
 * Configuration/Installation:
 
 - Compile without STL compatibility support, since some systems do that

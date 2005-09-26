@@ -1,3 +1,8 @@
+2005-09-26  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* BufferView_pimpl.C (selectionRequested): don't stuff redundant
+	information to the clipboard (bug 1976).
+
 2005-07-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* version.C.in: update release date.
