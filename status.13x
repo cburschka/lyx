@@ -24,9 +24,13 @@ What's new
 
 * Document input/output:
 
+- Don't load the wasysym package automatically anymore (bug 1942)
+
 * User Interface:
 
 - Fix wrong path when drag-and-dropping files on Windows. [Qt only] 
+
+- Fix interaction of LyX with external clipboard (e.g. Klipper) (bug 1976).
 
 - Ensure that no dialogs have one shortcut assigned to more than one action.
   Always connect the OK button to the Alt-O shortcut. [Qt only]
@@ -37,23 +41,19 @@ What's new
 - The Return key is no longer bound to the Goto button in the reference
   dialog. [Qt only].
 
+- Searching backwards in the citation dialog always skipped one result
+  (bug 2002). Fixed now.
+
 - Do not trim spaces from either end of the find and replace strings in
   the Edit->Find & Replace... dialog. [XForms only].
-
-- Don't load the wasysym package automatically anymore (bug 1942)
-
-- Enable TeXFiles.sh to run when its path contains spaces.
 
 - Fix crash when trying to display current directory and ${HOME} is empty.
 
 - Don't force alignment to BLOCK when switching to fixed width cell (bug 1840).
 
-- Searching backwards in the citation dialog always skipped one result
-  (bug 2002). Fixed now.
-
-- Fix interaction of LyX with external clipboard (e.g. Klipper) (bug 1976).
-
 * Configuration/Installation:
+
+- Enable TeXFiles.sh to run when its path contains spaces.
 
 - Compile without STL compatibility support, since some systems do that
   by default (Slackware, for ex.). [Qt only]
