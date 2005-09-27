@@ -630,7 +630,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		if (cur.selection())
 			cur.clearSelection();
 		else  {
-			cmd = FuncRequest(LFUN_FINISHED_LEFT);
+			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 			cur.undispatched();
 		}
 		break;

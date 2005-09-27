@@ -1,5 +1,9 @@
 2005-09-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
+	* math_nestinset.C (doDispatch): leave inset to the right when hitting ESC.
+
+2005-09-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
 	* math_nestinset.C (doDispatch): record LFUN_CUT in undo stack
 	(fixes bug 2041).
 	

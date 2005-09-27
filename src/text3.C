@@ -1515,7 +1515,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			cur.selection() = false;
 		} else {
 			cur.undispatched();
-			cmd = FuncRequest(LFUN_FINISHED_LEFT);
+			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 		}
 		break;
 
