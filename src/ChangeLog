@@ -1,6 +1,10 @@
 2005-09-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
-	* text3.C (dispatch): leave inset to the right when hitting ESC.
+	* text.C (redoParagraph): fix calcultation of inset width wrt 
+	leftMargin (bug 1957).
+
+	* text3.C (dispatch): leave inset to the right when hitting ESC 
+	(bug 2034).
 
 2005-09-23  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 

@@ -1694,7 +1694,7 @@ bool LyXText::redoParagraph(pit_type const pit)
 	InsetList::iterator iend = par.insetlist.end();
 	for (; ii != iend; ++ii) {
 		Dimension dim;
-		int const w = maxwidth_ - leftMargin(pit) - rightMargin(par);
+		int const w = maxwidth_ - leftMargin(pit, ii->pos) - rightMargin(par);
 		MetricsInfo mi(bv(), getFont(par, ii->pos), w);
 		ii->inset->metrics(mi, dim);
 	}
