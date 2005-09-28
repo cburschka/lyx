@@ -1,6 +1,13 @@
 LyX file-format changes
 -----------------------
 
+2005-09-24  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* format incremented to 244. Rename '\InsetSpace \,'
+	to '\InsetSpace \thinspace{}', because the comma was
+	not parsed by lyxlex, and '\InsetSpace \space' to
+	'\InsetSpace \space{}' in favour of consistency.
+
 2005-07-18  José Matos  <jamatos@lyx.org>
 
 	* format incremented to 243.

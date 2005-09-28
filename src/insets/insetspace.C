@@ -106,13 +106,13 @@ void InsetSpace::write(Buffer const &, ostream & os) const
 	string command;
 	switch (kind_) {
 	case NORMAL:
-		command = "\\space";
+		command = "\\space{}";
 		break;
 	case PROTECTED:
 		command = "~";
 		break;
 	case THIN:
-		command = "\\,";
+		command = "\\thinspace{}";
 		break;
 	case QUAD:
 		command = "\\quad{}";
@@ -134,17 +134,16 @@ void InsetSpace::write(Buffer const &, ostream & os) const
 }
 
 
-// This function will not be necessary when lyx3
 void InsetSpace::read(Buffer const &, LyXLex & lex)
 {
 	lex.next();
 	string const command = lex.getString();
 
-	if (command == "\\space")
+	if (command == "\\space{}")
 		kind_ = NORMAL;
 	else if (command == "~")
 		kind_ = PROTECTED;
-	else if (command == "\\,")
+	else if (command == "\\thinspace{}")
 		kind_ = THIN;
 	else if (command == "\\quad{}")
 		kind_ = QUAD;

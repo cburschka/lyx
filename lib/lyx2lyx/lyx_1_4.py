@@ -65,8 +65,38 @@ def convert_spaces(file):
 
 
 def revert_spaces(file):
+    regexp = re.compile(r'(.*)(\\InsetSpace\s+)(\S+)')
+    i = 0
+    while 1:
+        i = find_re(file.body, regexp, i)
+        if i == -1:
+            break
+        space = regexp.match(file.body[i]).group(3)
+	prepend = regexp.match(file.body[i]).group(1)
+        if space == '~':
+            file.body[i] = regexp.sub(prepend + '\\SpecialChar ~', file.body[i])
+            i = i + 1
+        else:
+            file.body[i] = regexp.sub(prepend, file.body[i])
+            file.body[i+1:i+1] = ''
+	    if space == "\\space":
+		space = "\\ "
+            i = insert_ert(file.body, i+1, 'Collapsed', space, file.format - 1)
+
+##
+# \InsetSpace \, -> \InsetSpace \thinspace{}
+# \InsetSpace \space -> \InsetSpace \space{}
+#
+def rename_spaces(file):
     for i in range(len(file.body)):
-        file.body[i] = replace(file.body[i],"\\InsetSpace ~", "\\SpecialChar ~")
+        file.body[i] = replace(file.body[i],"\\InsetSpace \\space","\\InsetSpace \\space{}")
+	file.body[i] = replace(file.body[i],"\\InsetSpace \,","\\InsetSpace \\thinspace{}")
+
+
+def revert_space_names(file):
+    for i in range(len(file.body)):
+        file.body[i] = replace(file.body[i],"\\InsetSpace \\space{}","\\InsetSpace \\space")
+	file.body[i] = replace(file.body[i],"\\InsetSpace \\thinspace{}","\\InsetSpace \\,")
 
 
 ##
@@ -2255,9 +2285,11 @@ convert = [[222, [insert_tracking_changes, add_end_header]],
            [240, [convert_output_changes]],
            [241, [convert_ert_paragraphs]],
            [242, [convert_french]],
-           [243, [remove_paperpackage]]]
+           [243, [remove_paperpackage]],
+	   [244, [rename_spaces]]]
 
-revert =  [[242, []],
+revert =  [[243, [revert_space_names]],
+	   [242, []],
            [241, []],
            [240, [revert_ert_paragraphs]],
            [239, [revert_output_changes]],

@@ -1,5 +1,5 @@
 #LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
-\lyxformat 243
+\lyxformat 244
 \begin_document
 \begin_header
 \textclass scrbook
@@ -12401,8 +12401,8 @@ With the corrections, our earlier examples look like this:
 \end_layout
 
 \begin_layout Itemize
-e.\InsetSpace \,
-g.\InsetSpace \space
+e.\InsetSpace \thinspace{}
+g.\InsetSpace \space{}
 this is too much space!
 \end_layout
 
@@ -22015,9 +22015,8 @@ Inter-word Space
 \end_layout
 
 \begin_layout Standard
-Some languages (e.\InsetSpace 
-\InsetSpace \,
-g.\InsetSpace \space
+Some languages (e.\InsetSpace \thinspace{}
+g.\InsetSpace \space{}
 English) have the typographical convention to add extra
  space after an end-of-sentence punctuation mark, and LyX honors those conventio
 ns (see section\InsetSpace ~
@@ -22148,10 +22147,10 @@ protected
 \end_layout
 
 \begin_layout Quote
-D.\InsetSpace \,
+D.\InsetSpace \thinspace{}
 E.
- Knuth has developped our beloved typesetting program, i.\InsetSpace \,
-e.\InsetSpace \space
+ Knuth has developped our beloved typesetting program, i.\InsetSpace \thinspace{}
+e.\InsetSpace \space{}
 TeX.
 \end_layout
 

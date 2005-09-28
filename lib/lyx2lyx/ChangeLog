@@ -1,3 +1,11 @@
+2005-09-28  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* LyX.py: enlarge range to current format (244).
+	* lyx_1_4.py (revert_spaces): fix so that new space insets are reverted
+	to ERT.
+	* lyx_1_4.py (rename_spaces, revert_space_names): some InsetSpace types 
+	had to be renamed; conversion takes place between 243<->244.
+
 2005-09-19  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* parser_tools.py (get_paragraph, get_next_paragraph): add format

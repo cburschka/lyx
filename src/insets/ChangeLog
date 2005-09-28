@@ -1,3 +1,8 @@
+2005-09-28  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* insetspace.C: rename '\,' to '\thinspace{}' (avoid parsing error)
+	and '\space' to '\space{}' (consistency).
+
 2005-09-19  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* insettabular.C (tabularFeatures): validate cursor after 

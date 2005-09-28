@@ -1,5 +1,5 @@
 #LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
-\lyxformat 243
+\lyxformat 244
 \begin_document
 \begin_header
 \textclass book
@@ -2078,8 +2078,8 @@ Alternative Citation Styles
 \end_layout
 
 \begin_layout Standard
-Standard BibTeX uses numbers (e.\InsetSpace \,
-g.\InsetSpace \space
+Standard BibTeX uses numbers (e.\InsetSpace \thinspace{}
+g.\InsetSpace \space{}
 
 \begin_inset Quotes eld
 \end_inset
@@ -2090,8 +2090,8 @@ g.\InsetSpace \space
 
 ) to refer to a cited work.
  However, in many scientific disciplines, other citation styles are in use.
- The most common one is the author-year style (e.\InsetSpace \,
-g.\InsetSpace \space
+ The most common one is the author-year style (e.\InsetSpace \thinspace{}
+g.\InsetSpace \space{}
 
 \begin_inset Quotes eld
 \end_inset
@@ -2287,8 +2287,8 @@ Scientific works
 \begin_inset Quotes erd
 \end_inset
 
-, you first need to create two bibliographic databases, e.\InsetSpace \,
-g.\InsetSpace \space
+, you first need to create two bibliographic databases, e.\InsetSpace \thinspace{}
+g.\InsetSpace \space{}
 
 \family typewriter
 sources.bib
@@ -2412,8 +2412,8 @@ Multiple Bibliographies
 \end_layout
 
 \begin_layout Standard
-Multiple bibliographies, e.\InsetSpace \,
-g.\InsetSpace \space
+Multiple bibliographies, e.\InsetSpace \thinspace{}
+g.\InsetSpace \space{}
 a bibliography for each section or chapter of
  the document, are not supported by BibTeX itself.
  But the 
@@ -2502,7 +2502,7 @@ end{btUnit}
  (those commands have to be inserted as ERT).
  The bibliography will contain all references which have been cited in the
  current btUnit.
- N.\InsetSpace 
+ N.\InsetSpace \thinspace{}
 B.: If you are using this approach, then 
 \emph on
 every
@@ -2543,7 +2543,6 @@ In the
 \emph default
 \bar default
 \noun default
-\color default
 Outputs\SpecialChar \menuseparator
 LaT\SpecialChar \textcompwordmark{}
 eX
@@ -2554,7 +2553,6 @@ eX
 \emph off
 \bar no
 \noun off
-\color none
  section of the preferences dialog, however, you can customize the index
  command, if you prefer an alternative program like 
 \family typewriter
@@ -2564,7 +2562,7 @@ eX
 \emph default
 \bar default
 \noun default
-\color default
+\color none
 xindy
 \family roman
 \series medium
