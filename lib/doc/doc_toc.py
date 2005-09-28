@@ -25,7 +25,7 @@
 import sys
 import os
 
-sys.path.insert(0,"../lyx2lyx")
+sys.path.insert(0, os.path.dirname(sys.argv[0]) + "/../lyx2lyx")
 import parser_tools
 import LyX
 import depend
@@ -105,9 +105,11 @@ def main(argv):
         if lang not in info:
             lang = 'en'
 
+    srcdir = os.path.dirname(sys.argv[0])
+
     # Determine existing translated documents for that language.
     toc_general = []
-    for file in depend.documents(pref):
+    for file in depend.documents(srcdir, pref):
         file = LyX.File(input= file)
         file.convert()
         toc_general.extend(file.get_toc())

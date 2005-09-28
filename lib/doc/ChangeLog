@@ -1,3 +1,13 @@
+2005-09-28  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* de_UserGuide.lyx, it_UserGuide.lyx: repair invalid syntax, maybe
+	caused by a lyx2lyx bug
+	* Makefile.am: generate TOC files automatically
+	* Makefile.am: rework TOC generation rules to work with srcdir != builddir
+	* depend.py: make it work with srcdir != builddir
+	* depend.py: adjust generated TOCs rule to Makefile.am changes
+	* doc_toc.py: make it work with srcdir != builddir
+
 2005-09-28  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* UserGuide.lyx: 

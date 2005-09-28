@@ -31,12 +31,14 @@ from glob import glob
 possible_documents = ("Intro", "FAQ", "Tutorial", "UserGuide", "Extended", "Customization")
 lang_pattern = re.compile('^([a-z]{2})_')
 
-def documents(prefix):
+def documents(srcdir, prefix):
     result = []
     for file in possible_documents:
-        fname = prefix + file + '.lyx'
+        fname = srcdir + '/' + prefix + file + '.lyx'
         if os.access(fname, os.F_OK):
             result.append(fname)
+        else:
+            result.append(srcdir + '/' + file + '.lyx')
     return result
 
 
@@ -50,8 +52,9 @@ def main(argv):
 
     # What are the languages available? And its documents?
     languages = {}
-    for file in glob('*'):
-        lang = lang_pattern.match(file)
+    srcdir = os.path.dirname(argv[0])
+    for file in glob(srcdir + '/*'):
+        lang = lang_pattern.match(os.path.basename(file))
         if lang:
             if lang.group(1) not in languages:
                 languages[lang.group(1)] = [file]
@@ -63,8 +66,8 @@ def main(argv):
     langs.sort()
 
     # The default language is english and doesn't need any prefix
-    print 'TOC.lyx:', '.lyx '.join(possible_documents) + '.lyx'
-    print '\tpython doc_toc.py'
+    print 'TOC.lyx:', ('.lyx ' + srcdir + '/').join(possible_documents) + '.lyx'
+    print '\tpython %s/doc_toc.py' % srcdir
     print
     tocs = ['TOC.lyx']
 
@@ -73,15 +76,17 @@ def main(argv):
         toc_name = lang + '_TOC.lyx'
         tocs.append(toc_name)
 
-        languages[lang].remove(toc_name)
+        if toc_name in languages[lang]:
+            languages[lang].remove(toc_name)
+        if srcdir + '/' + toc_name in languages[lang]:
+            languages[lang].remove(srcdir + '/' + toc_name)
 
         print toc_name + ':', ' '.join(languages[lang])
-        print '\tpython doc_toc.py %s' % lang
+        print '\tpython %s/doc_toc.py %s' % (srcdir, lang)
         print
 
     # Write meta-rule to call all the other rules
-    print 'TOCs:', ' '.join(tocs)
-    print '\t@echo Made TOCs succesfully.'
+    print 'TOCs =', ' '.join(tocs)
 
 
 if __name__ == "__main__":
