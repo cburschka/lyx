@@ -1,5 +1,10 @@
 2005-09-28  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
+	* cursor.C (setSelection): do not open collapsable insets;
+	the insets do by themselves now (autoopen).
+
+2005-09-28  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
 	* buffer.C: format is up to 244.
 
 2005-09-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>

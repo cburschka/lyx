@@ -40,9 +40,16 @@ using std::min;
 using std::ostream;
 
 
+InsetCollapsable::CollapseStatus InsetCollapsable::status() const
+{
+	return (autoOpen_ && status_ != Inlined) ? Open : status_;
+}
+
+
 InsetCollapsable::InsetCollapsable
 		(BufferParams const & bp, CollapseStatus status)
-	: InsetText(bp), label("Label"), status_(status), openinlined_(false)
+	: InsetText(bp), label("Label"), status_(status),
+	  openinlined_(false), autoOpen_(false)
 {
 	setAutoBreakRows(true);
 	setDrawFrame(true);
@@ -122,12 +129,14 @@ Dimension InsetCollapsable::dimensionCollapsed() const
 
 void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	autoOpen_ = mi.base.bv->cursor().isInside(this);
 	mi.base.textwidth -= 2 * TEXT_TO_INSET_OFFSET;
-	if (status_ == Inlined) {
+
+	if (status() == Inlined) {
 		InsetText::metrics(mi, dim);
 	} else {
 		dim = dimensionCollapsed();
-		if (status_ == Open) {
+		if (status() == Open) {
 			InsetText::metrics(mi, textdim_);
 			openinlined_ = (textdim_.wid + dim.wid <= mi.base.textwidth);
 			if (openinlined_) {
@@ -151,7 +160,7 @@ void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 {
 	const int xx = x + TEXT_TO_INSET_OFFSET;
-	if (status_ == Inlined) {
+	if (status() == Inlined) {
 		InsetText::draw(pi, xx, y);
 	} else {
 		Dimension dimc = dimensionCollapsed();
@@ -162,7 +171,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		button_dim.y2 = top + dimc.height();
 
 		pi.pain.buttonText(xx, top + dimc.asc, label, labelfont_);
-		if (status_ == Open) {
+		if (status() == Open) {
 			int textx, texty;
 			if (openinlined_) {
 				textx = xx + dimc.width();
@@ -181,13 +190,13 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 void InsetCollapsable::drawSelection(PainterInfo & pi, int x, int y) const
 {
 	x += TEXT_TO_INSET_OFFSET;
-	if (status_ == Open) {
+	if (status() == Open) {
 		if (openinlined_)
 			x += dimensionCollapsed().wid;
 		else
 			y += dimensionCollapsed().des + textdim_.asc;
 	}
-	if (status_ != Collapsed)
+	if (status() != Collapsed)
 		InsetText::drawSelection(pi, x, y);
 }
 
@@ -195,32 +204,30 @@ void InsetCollapsable::drawSelection(PainterInfo & pi, int x, int y) const
 void InsetCollapsable::cursorPos
 	(CursorSlice const & sl, bool boundary, int & x, int & y) const
 {
-	if (status_ == Collapsed) {
-		x = xo();
-		y = yo();
-	} else {
-		InsetText::cursorPos(sl, boundary, x, y);
-		if (status_ == Open) {
-			if (openinlined_)
-				x += dimensionCollapsed().wid;
-			else
-				y += dimensionCollapsed().height() - ascent()
-					+ TEXT_TO_INSET_OFFSET + textdim_.asc;
-		}
-		x += TEXT_TO_INSET_OFFSET;
+	BOOST_ASSERT(status() != Collapsed);
+	
+	InsetText::cursorPos(sl, boundary, x, y);
+	
+	if (status() == Open) {
+		if (openinlined_)
+			x += dimensionCollapsed().wid;
+		else
+			y += dimensionCollapsed().height() - ascent()
+				+ TEXT_TO_INSET_OFFSET + textdim_.asc;
 	}
+	x += TEXT_TO_INSET_OFFSET;
 }
 
 
 InsetBase::EDITABLE InsetCollapsable::editable() const
 {
-	return status_ != Collapsed ? HIGHLY_EDITABLE : IS_EDITABLE;
+	return status() != Collapsed ? HIGHLY_EDITABLE : IS_EDITABLE;
 }
 
 
 bool InsetCollapsable::descendable() const
 {
-	return status_ != Collapsed;
+	return status() != Collapsed;
 }
 
 
@@ -262,7 +269,7 @@ void InsetCollapsable::edit(LCursor & cur, bool left)
 InsetBase * InsetCollapsable::editXY(LCursor & cur, int x, int y)
 {
 	//lyxerr << "InsetCollapsable: edit xy" << endl;
-	if (status_ == Collapsed)
+	if (status() == Collapsed)
 		return this;
 	cur.push(*this);
 	return InsetText::editXY(cur, x, y);
@@ -276,9 +283,9 @@ void InsetCollapsable::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	switch (cmd.action) {
 	case LFUN_MOUSE_PRESS:
-		if (status_ == Inlined)
+		if (status() == Inlined)
 			InsetText::doDispatch(cur, cmd);
-		else if (status_ == Open && !hitButton(cmd))
+		else if (status() == Open && !hitButton(cmd))
 			InsetText::doDispatch(cur, cmd);
 		else
 			cur.noUpdate();
@@ -289,7 +296,7 @@ void InsetCollapsable::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_MOUSE_TRIPLE:
 		if (status_ == Inlined)
 			InsetText::doDispatch(cur, cmd);
-		else if (status_ == Open && !hitButton(cmd))
+		else if (status() && !hitButton(cmd))
 			InsetText::doDispatch(cur, cmd);
 		else
 			cur.undispatched();
@@ -301,7 +308,7 @@ void InsetCollapsable::doDispatch(LCursor & cur, FuncRequest & cmd)
 			break;
 		}
 
-		switch (status_) {
+		switch (status()) {
 
 		case Collapsed:
 			//lyxerr << "InsetCollapsable::lfunMouseRelease 1" << endl;

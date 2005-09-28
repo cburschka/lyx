@@ -69,7 +69,7 @@ public:
 	///
 	bool inlined() const { return status_ == Inlined; }
 	///
-	CollapseStatus status() const { return status_; }
+	CollapseStatus status() const;
 	///
 	bool allowSpellCheck() const { return true; }
 	///
@@ -107,6 +107,8 @@ private:
 	mutable CollapseStatus status_;
 	/// a substatus of the Open status, determined automatically in metrics
 	mutable bool openinlined_;
+	/// the inset will automatically open when the cursor is inside
+	mutable bool autoOpen_;
 	///
 	mutable Dimension textdim_;
 };

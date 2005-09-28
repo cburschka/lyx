@@ -468,9 +468,6 @@ void LCursor::setSelection(DocIterator const & where, size_t n)
 	selection() = true;
 	anchor_ = where;
 	pos() += n;
-	// Open all collapsed insets
-	for (int i = depth() - 1; i >= 0; --i)
-		operator[](i).inset().setStatus(*this, InsetBase::Open);
 }
 
 

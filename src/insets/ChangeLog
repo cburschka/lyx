@@ -1,5 +1,11 @@
 2005-09-28  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
+	* insetcollapsable.[Ch]: implement Alfredo Braunstein's approach
+	of autoopen, which means that collapsables automatically open
+	whenever the cursor enters (and close again on leave) (fixes bug 1921).
+
+2005-09-28  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
 	* insetspace.C: rename '\,' to '\thinspace{}' (avoid parsing error)
 	and '\space' to '\space{}' (consistency).
 
