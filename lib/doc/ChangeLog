@@ -1,5 +1,9 @@
 2005-09-28  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
+	* doc_toc.py: make it work again with builddir == srcdir
+
+2005-09-28  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
 	* de_UserGuide.lyx, it_UserGuide.lyx: repair invalid syntax, maybe
 	caused by a lyx2lyx bug
 	* Makefile.am: generate TOC files automatically

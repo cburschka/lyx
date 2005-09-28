@@ -284,7 +284,7 @@ class LyX_Base:
         " Set the value of the header parameter."
         i = find_token(self.header, '\\' + param, 0)
         if i == -1:
-            self.warning(3, 'Parameter not found in the header: %s' % param)
+            self.warning('Parameter not found in the header: %s' % param, 3)
             return
         self.header[i] = '\\%s %s' % (param, str(value))
 
@@ -375,7 +375,7 @@ class LyX_Base:
                     steps.append(step[0])
         else:
             mode = "revert"
-            relation_format = format_relation
+            relation_format = format_relation[:]
             relation_format.reverse()
             last_step = None
 
