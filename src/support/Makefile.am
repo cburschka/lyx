@@ -75,10 +75,8 @@ package.lo: ../config.h \
 	$(top_srcdir)/src/gettext.h $(top_srcdir)/src/Lsstream.h \
 	$(top_srcdir)/src/LString.h
 	$(CXXCOMPILE) \
-		-DLYX_DIR=\"$(pkgdatadir)\" \
-		-DTOP_SRCDIR=\"$(top_srcdir)\" \
-		-DLOCALEDIR=\"$(localedir)\" \
+		-DLYX_DIR=\"$(LYX_ABS_INSTALLED_DATADIR)\" \
+		-DTOP_SRCDIR=\"$(LYX_ABS_TOP_SRCDIR)\" \
+		-DLOCALEDIR=\"$(LYX_ABS_INSTALLED_LOCALEDIR)\" \
 		-c $(top_srcdir)/src/support/package.C && \
 	echo "timestamp" > $@
-
-

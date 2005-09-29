@@ -1,3 +1,16 @@
+2005-09-29  Angus Leeming  <leeming@lyx.org>
+
+	* lyxinclude213.m4:
+	* lyxinclude25x.m4: add a new MSYS_AC_CANONICAL_PATH macro that
+	generates a Windows native path on Windows boxes and unix native
+	path on *nix boxes. With thanks to Keith Marshall. Details can
+	be found here: http://thread.gmane.org/gmane.comp.gnu.mingw.msys/2937
+
+	* configure.in:
+	* configure.ac: Use the new MSYS_AC_CANONICAL_PATH to generate
+	path strings that make sense on Windows as well as on Unix boxes.
+	Insert these strings into the generated Makefiles.
+
 2005-07-17  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* qt.m4 (QT_DO_IT_ALL): define QT_NO_STL.

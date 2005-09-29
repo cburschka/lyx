@@ -225,7 +225,7 @@ lyx_SOURCES = \
 
 main.$(OBJEXT): main.C config.h lyx_main.h gettext.h LString.h \
 	support/filetools.h support/os.h
-	$(CXXCOMPILE) -DLOCALEDIR=\"$(localedir)\" -c $(top_srcdir)/src/main.C
+	$(CXXCOMPILE) -DLOCALEDIR=\"$(LYX_ABS_INSTALLED_LOCALEDIR)\" -c $(top_srcdir)/src/main.C
 
 dist-hook:
 	cd $(distdir) ; rm -rf `find cheaders -name \*CVS\*`

@@ -1,3 +1,8 @@
+2005-09-29  Angus Leeming  <leeming@lyx.org>
+
+	* Makefile.am: use the Windows-friendly LYX_ABS_INSTALLED_LOCALEDIR
+	rather than the unix-centric $(localedir) when compiling main.C.
+
 2005-09-26  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* BufferView_pimpl.C (selectionRequested): don't stuff redundant
