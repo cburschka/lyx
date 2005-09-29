@@ -297,9 +297,16 @@ ${FRONTEND_INFO}\
     LyX binary dir:               ${real_bindir}\n\
     LyX files dir:                ${real_datadir}\n"
 
+real_localedir=`eval "echo \`eval \"echo ${datadir}/locale\"\`"`
+MSYS_AC_CANONICAL_PATH(LYX_ABS_TOP_SRCDIR, ${srcdir})
+MSYS_AC_CANONICAL_PATH(LYX_ABS_INSTALLED_LOCALEDIR, ${real_localedir})
+MSYS_AC_CANONICAL_PATH(LYX_ABS_INSTALLED_DATADIR, ${real_datadir})
 
 AC_SUBST(VERSION_INFO)
 AC_SUBST(RPM_FRONTEND)
+AC_SUBST(LYX_ABS_TOP_SRCDIR)
+AC_SUBST(LYX_ABS_INSTALLED_LOCALEDIR)
+AC_SUBST(LYX_ABS_INSTALLED_DATADIR)
 
 ## Some config.h stuff
 
