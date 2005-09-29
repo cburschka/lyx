@@ -1,3 +1,9 @@
+2005-09-29  Angus Leeming  <leeming@lyx.org>
+
+	* Makefile.am: use the Windows-friendly LYX_ABS_INSTALLED_LOCALEDIR
+	et al rather than the unix-centric $(localedir) when compiling
+	package.C.in.
+
 2005-09-10  Angus Leeming  <leeming@lyx.org>
 
 	* Makefile.am (EXTRA_DIST): add os_cygwin.C to the distribution.

@@ -306,7 +306,6 @@ AC_CHECK_FUNCS(fcntl,, [lyx_client_subdir=false])
 AM_CONDITIONAL(BUILD_CLIENT_SUBDIR, $lyx_client_subdir)
 AC_LANG_POP(C)
 
-
 AC_FUNC_SELECT_ARGTYPES
 
 ### Some information on what just happened
@@ -328,6 +327,10 @@ ${FRONTEND_INFO}\
   LyX binary dir:                 ${real_bindir}\n\
   LyX files dir:                  ${real_datadir}\n"
 
+real_localedir=`eval "echo \`eval \"echo ${datadir}/locale\"\`"`
+MSYS_AC_CANONICAL_PATH(LYX_ABS_TOP_SRCDIR, ${srcdir})
+MSYS_AC_CANONICAL_PATH(LYX_ABS_INSTALLED_LOCALEDIR, ${real_localedir})
+MSYS_AC_CANONICAL_PATH(LYX_ABS_INSTALLED_DATADIR, ${real_datadir})
 
 AC_SUBST(VERSION_INFO)
 AC_SUBST(RPM_FRONTEND)
@@ -335,6 +338,9 @@ AC_SUBST(AM_CPPFLAGS)
 AC_SUBST(AM_CXXFLAGS)
 AC_SUBST(AM_CFLAGS)
 AC_SUBST(AM_LDFLAGS)
+AC_SUBST(LYX_ABS_TOP_SRCDIR)
+AC_SUBST(LYX_ABS_INSTALLED_LOCALEDIR)
+AC_SUBST(LYX_ABS_INSTALLED_DATADIR)
 
 ## Some config.h stuff
 

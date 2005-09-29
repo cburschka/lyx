@@ -1,3 +1,9 @@
+2005-09-29  Angus Leeming  <leeming@lyx.org>
+
+	* configure.ac: Use the new MSYS_AC_CANONICAL_PATH to generate
+	path strings that make sense on Windows as well as on Unix boxes.
+	Insert these strings into the generated Makefiles.
+
 2005-09-22  Bennett Helm  <bennett.helm@fandm.edu>
 
 	* INSTALL.MacOSX: update to reflect simplified procedure.
