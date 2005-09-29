@@ -90,7 +90,7 @@ AC_DEFUN([MSYS_AC_CANONICAL_PATH],
     ac_pwd_w="pwd -W" || ac_pwd_w=pwd
  until ac_val=`exec 2>/dev/null; cd "$ac_dir" && $ac_pwd_w`
  do
-   ac_dir=`dirname(["$ac_dir"])`
+   ac_dir=`dirname "$ac_dir"`
  done
  ac_dir=`echo "$ac_dir" | sed 's?^[[./]]*??'`
  ac_val=`echo "$ac_val" | sed 's?/*$[]??'`
