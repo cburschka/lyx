@@ -22,6 +22,10 @@
 #include "support/lstrings.h"
 #include "support/os.h"
 
+#if defined (USE_WINDOWS_PACKAGING)
+# include "support/os_win32.h"
+#endif
+
 #include <boost/tuple/tuple.hpp>
 
 #include <list>
@@ -35,32 +39,7 @@
 
 
 #if defined (USE_WINDOWS_PACKAGING)
-
-/*
- * MinGW's version of winver.h contains this comment:
- *
- * If you need Win32 API features newer the Win95 and WinNT then you must
- * define WINVER before including windows.h or any other method of including
- * the windef.h header.
- *
- * GetLongPathNameA requires WINVER == 0x0500.
- *
- * It doesn't matter if the Windows version is older than this because the
- * function will compile but will fail at run time. See
- * http://msdn.microsoft.com/library/en-us/mslu/winprog/microsoft_layer_for_unicode_apis_with_limited_support.asp
- */
-# if defined(__MINGW32__)
-#  define WINVER 0x0500
-# endif
-
 # include <windows.h>
-# include <shlobj.h>  // SHGetFolderPath
-
-  // Needed for MinGW:
-# ifndef SHGFP_TYPE_CURRENT
-#  define SHGFP_TYPE_CURRENT 0
-# endif
-
 #elif defined (USE_MACOSX_PACKAGING)
 # include <CoreServices/CoreServices.h> // FSFindFolder, FSRefMakePath
 #endif
@@ -187,20 +166,6 @@ string const relative_locale_dir();
 string const relative_system_support_dir();
 
 
-#if defined (USE_WINDOWS_PACKAGING)
-// Given a folder ID, returns the folder name (in unix-style format).
-// Eg CSIDL_PERSONAL -> "C:/Documents and Settings/USERNAME/My Documents"
-string const win32_folder_path(int folder_id)
-{
-	char folder_path[PATH_MAX + 1];
-	if (SUCCEEDED(SHGetFolderPath(0, folder_id, 0,
-				      SHGFP_TYPE_CURRENT, folder_path)))
-		return os::internal_path(folder_path);
-	return string();
-}
-#endif
-
-
 std::pair<string, string> const get_build_dirs(string const & abs_binary)
 {
 	string const check_text = "Checking whether LyX is run in place...";
@@ -259,7 +224,8 @@ string const get_document_dir(string const & home_dir)
 {
 #if defined (USE_WINDOWS_PACKAGING)
 	(void)home_dir; // Silence warning about unused variable.
-	return win32_folder_path(CSIDL_PERSONAL);
+	GetFolderPath win32_folder_path;
+	return win32_folder_path(GetFolderPath::PERSONAL);
 #else // Posix-like.
 	return home_dir;
 #endif
@@ -317,7 +283,6 @@ string const get_temp_dir()
 	// Typical example: C:/TEMP/.
 	char path[PATH_MAX + 1];
 	GetTempPath(PATH_MAX, path);
-	GetLongPathName(path, path, PATH_MAX + 1);
 	return os::internal_path(path);
 #else // Posix-like.
 	return "/tmp";
@@ -325,8 +290,6 @@ string const get_temp_dir()
 }
 
 
-// If we use a 'lazy' lyxerr in the hope of setting the locale before
-// printing any messages, then we should ensure that it is flushed first.
 void bail_out()
 {
 #ifndef CXX_GLOBAL_CSTD
@@ -590,7 +553,8 @@ string const get_default_user_support_dir(string const & home_dir)
 	(void)home_dir; // Silence warning about unused variable.
 
 	string const user_dir = (string(PACKAGE) == "lyx") ? "LyX" : PACKAGE;
-	return AddPath(win32_folder_path(CSIDL_APPDATA), user_dir);
+	GetFolderPath win32_folder_path;
+	return AddPath(win32_folder_path(GetFolderPath::APPDATA), user_dir);
 
 #elif defined (USE_MACOSX_PACKAGING)
 	(void)home_dir; // Silence warning about unused variable.

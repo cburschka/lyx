@@ -5,7 +5,7 @@ noinst_LTLIBRARIES = libsupport.la
 INCLUDES = -I$(srcdir)/.. $(BOOST_INCLUDES)
 
 EXTRA_DIST = lyxstring.C lyxstring.h \
-	     os_cygwin.C os_unix.C os_win32.C os_os2.C
+	     os_cygwin.C os_unix.C os_win32.C os_win32.h os_os2.C
 
 if USE_LYXSTRING
 LYXSTRING = lyxstring.C lyxstring.h
