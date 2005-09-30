@@ -1,5 +1,15 @@
 2005-09-30  Angus Leeming  <leeming@lyx.org>
 
+	* libs/filesystem/src/operations_posix_windows.cpp (exists):
+	add ERROR_ACCESS_DENIED to the list of "recognised" errors. It
+	appears that Win98SE returns such an error from GetFileAttributes
+	if asked to query a path on a drive that doesn't exist.
+
+	The "correct" fix is currently being discussed on the boost-devel
+	list, but this work around will do for us for now.
+
+2005-09-30  Angus Leeming  <leeming-0hXrFu2P2+c@public.gmane.org>
+
 	* libs/filesystem/src/operations_posix_windows.cpp: add a block
 	of preprocessor code to include NewAPIs.h conditioned on the
 	WANT_GETFILEATTRIBUTESEX_WRAPPER macro. Enables runtime support

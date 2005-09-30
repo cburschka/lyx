@@ -66,7 +66,7 @@ namespace fs = boost::filesystem;
     //
     //////////////////////////////////////////////////////////////////////
 #   if defined(WANT_GETFILEATTRIBUTESEX_WRAPPER)
-#     if (defined(__MINGW__) || defined(__CYGWIN__)) && WINVER < 0x040A
+#     if (defined(__MINGW32__) || defined(__CYGWIN__)) && WINVER < 0x040A
         // MinGW/Cygwin's winapi header files and NewAPIs.h do not live
         // well together because NewAPIs.h redefines
         // WIN32_FILE_ATTRIBUTE_DATA and GET_FILEEX_INFO_LEVELS
@@ -369,7 +369,11 @@ namespace boost
       if(::GetFileAttributesA( ph.string().c_str() ) == 0xFFFFFFFF)
       {
          UINT err = ::GetLastError();
-         if((err == ERROR_FILE_NOT_FOUND) || (err == ERROR_INVALID_PARAMETER) || (err == ERROR_PATH_NOT_FOUND) || (err == ERROR_INVALID_NAME))
+         if((err == ERROR_FILE_NOT_FOUND) ||
+	    (err == ERROR_INVALID_PARAMETER) ||
+	    (err == ERROR_PATH_NOT_FOUND) ||
+	    (err == ERROR_INVALID_NAME) ||
+	    (err == ERROR_ACCESS_DENIED))
             return false; // GetFileAttributes failed because the path does not exist
          // for any other error we assume the file does exist and fall through,
          // this may not be the best policy though...  (JM 20040330)
