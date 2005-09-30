@@ -14,14 +14,65 @@
 
 #include <config.h>
 
+/* The GetLongPathNameA function declaration in
+ * <winbase.h> under MinGW or Cygwin is protected
+ * by the WINVER macro which is defined in <windef.h>
+ *
+ * SHGFP_TYPE_CURRENT is defined in <shlobj.h> for __W32API_VERSION >= 3.2
+ * where it is protected by _WIN32_IE.
+ * It is missing in earlier versions of the MinGW w32api headers.
+ */
+#if defined(__MINGW32__)  || defined(__CYGWIN__) || defined(__CYGWIN32__)
+# include <w32api.h>
+# define WINVER 0x0500
+# define _WIN32_IE 0x0500
+#endif
+
 #include "support/os.h"
+#include "support/os_win32.h"
 #include "support/lstrings.h"
 
 #include "debug.h"
 
+#include <boost/assert.hpp>
+
+#include <cstdlib>
+#include <vector>
+
+#include <string>
+
 #include <windows.h>
+
+/* The GetLongPathName macro may be defined on the compiling machine,
+ * but we must use a bit of trickery if the resulting executable is
+ * to run on a Win95 machine.
+ * Fortunately, Microsoft provide the trickery. All we need is the
+ * NewAPIs.h header file, available for download from Microsoft as
+ * part of the Platform SDK.
+ */
+#if defined (HAVE_NEWAPIS_H)
+// This should be defined already to keep Boost.Filesystem happy.
+# if !defined (WANT_GETFILEATTRIBUTESEX_WRAPPER)
+#   error Expected WANT_GETFILEATTRIBUTESEX_WRAPPER to be defined!
+# endif
+# define WANT_GETLONGPATHNAME_WRAPPER 1
+# define COMPILE_NEWAPIS_STUBS
+# include <NewAPIs.h>
+# undef COMPILE_NEWAPIS_STUBS
+# undef WANT_GETLONGPATHNAME_WRAPPER
+#endif
+
 #include <io.h>
 #include <direct.h> // _getdrive
+#include <shlobj.h>  // SHGetFolderPath
+
+// Needed by older versions of MinGW.
+#if defined (__W32API_MAJOR_VERSION) && \
+    defined (__W32API_MINOR_VERSION) && \
+    (__W32API_MAJOR_VERSION < 3 || \
+     __W32API_MAJOR_VERSION == 3 && __W32API_MINOR_VERSION  < 2)
+# define SHGFP_TYPE_CURRENT 0
+#endif
 
 using std::endl;
 using std::string;
@@ -31,7 +82,7 @@ namespace lyx {
 namespace support {
 namespace os {
 
-void os::init(int /* argc */, char * argv[])
+void init(int /* argc */, char * argv[])
 {
 	/* Note from Angus, 17 Jan 2005:
 	 *
@@ -153,13 +204,30 @@ string external_path(string const & p)
 }
 
 
-// (Claus H.) Parsing the latex log file in an Win32 environment all
-// files are mentioned in Win32/DOS syntax. Because LyX uses the dep file
-// entries to check if any file has been changed we must retranslate
-// the Win32/DOS pathnames into Cygwin pathnames.
+namespace {
+
+string const get_long_path(string const & short_path)
+{
+	std::vector<char> long_path(PATH_MAX);
+	DWORD result = GetLongPathName(short_path.c_str(),
+				       &long_path[0], long_path.size());
+
+	if (result > long_path.size()) {
+		long_path.resize(result);
+		result = GetLongPathName(short_path.c_str(),
+					 &long_path[0], long_path.size());
+		BOOST_ASSERT(result <= long_path.size());
+	}
+
+	return (result == 0) ? short_path : &long_path[0];
+}
+
+} // namespace anon
+
+
 string internal_path(string const & p)
 {
-	return subst(p, "\\", "/");
+	return subst(get_long_path(p), "\\", "/");
 }
 
 
@@ -210,6 +278,71 @@ char path_separator()
 
 void cygwin_path_fix(bool)
 {}
+
+
+namespace {
+
+void bail_out()
+{
+#ifndef CXX_GLOBAL_CSTD
+	using std::exit;
+#endif
+	exit(1);
+}
+
+} // namespace anon
+
+
+GetFolderPath::GetFolderPath()
+	: folder_module_(0),
+	  folder_path_func_(0)
+{
+	folder_module_ = LoadLibrary("shfolder.dll");
+	if (!folder_module_) {
+		lyxerr << "Unable to load shfolder.dll\nPlease install."
+		       << std::endl;
+		bail_out();
+	}
+
+	folder_path_func_ = reinterpret_cast<function_pointer>(::GetProcAddress(folder_module_, "SHGetFolderPathA"));
+	if (folder_path_func_ == 0) {
+		lyxerr << "Unable to find SHGetFolderPathA in shfolder.dll\n"
+		          "Don't know how to proceed. Sorry."
+		       << std::endl;
+		bail_out();
+	}
+}
+
+
+GetFolderPath::~GetFolderPath()
+{
+	if (folder_module_)
+		FreeLibrary(folder_module_);
+}
+
+
+// Given a folder ID, returns the folder name (in unix-style format).
+// Eg CSIDL_PERSONAL -> "C:/Documents and Settings/USERNAME/My Documents"
+string const GetFolderPath::operator()(folder_id _id) const
+{
+	char folder_path[PATH_MAX];
+
+	int id = 0;
+	switch (_id) {
+	case PERSONAL:
+		id = CSIDL_PERSONAL;
+		break;
+	case APPDATA:
+		id = CSIDL_APPDATA;
+		break;
+	default:
+		BOOST_ASSERT(false);
+	}
+	HRESULT const result = (folder_path_func_)(0, id, 0,
+						   SHGFP_TYPE_CURRENT,
+						   folder_path);
+	return (result == 0) ? os::internal_path(folder_path) : string();
+}
 
 } // namespace os
 } // namespace support

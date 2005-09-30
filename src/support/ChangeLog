@@ -1,3 +1,14 @@
+2005-09-30  Angus Leeming  <leeming@lyx.org>
+
+	* os_win32.h: new file, providing a public and portable interface
+	to the SHGetFolderPath function for older flavours of Windows.
+	* os_win32.C: tighten up code. Define the ShGetFolder class. Make
+	use of Microsoft's NewAPIs.h if available to provide us with
+	runtime support for Windows 95.
+	(internal_path): always pass the path through GetLongPathName.
+
+	* package.C.in: move lots of stuff out and into os_win32.C.
+
 2005-09-29  Angus Leeming  <leeming@lyx.org>
 
 	* Makefile.am: use the Windows-friendly LYX_ABS_INSTALLED_LOCALEDIR
