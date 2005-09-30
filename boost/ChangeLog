@@ -1,3 +1,13 @@
+2005-09-30  Angus Leeming  <leeming@lyx.org>
+
+	* libs/filesystem/src/operations_posix_windows.cpp: add a block
+	of preprocessor code to include NewAPIs.h conditioned on the
+	WANT_GETFILEATTRIBUTESEX_WRAPPER macro. Enables runtime support
+	for Windows 95.
+	(_is_empty, file_size): replace GetFileAttributesExA with the
+	macro GetFileAttributesEx to enable the stub magic in NewAPIs.h
+	to work.
+
 2005-01-05  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* boost/detail/lwm_win32_nt.h: new file

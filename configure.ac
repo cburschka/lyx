@@ -249,7 +249,7 @@ AC_LANG_POP(C)
 # some standard header files
 AC_HEADER_DIRENT
 AC_HEADER_MAJOR
-AC_CHECK_HEADERS(sys/time.h sys/types.h sys/select.h strings.h locale.h utime.h sys/utime.h io.h process.h)
+AC_CHECK_HEADERS(sys/time.h sys/types.h sys/select.h strings.h locale.h utime.h sys/utime.h io.h process.h NewAPIs.h)
 
 # some standard structures
 AC_HEADER_STAT
@@ -405,6 +405,10 @@ int mkstemp(char*);
 
 #ifdef __CYGWIN__
 #define BOOST_POSIX 1
+#endif
+
+#if defined(HAVE_NEWAPIS_H)
+#define WANT_GETFILEATTRIBUTESEX_WRAPPER 1
 #endif
 
 #endif

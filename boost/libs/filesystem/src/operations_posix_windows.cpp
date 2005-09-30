@@ -46,6 +46,51 @@ namespace fs = boost::filesystem;
 
 # if defined(BOOST_WINDOWS)
 #   include "windows.h"
+
+    //////////////////////////////////////////////////////////////////////
+    //
+    // Enable Boost.Filesystem to run on Win95 using the emulation
+    // of GetFileAttributesEx available in the Microsoft Platform SDK
+    // header file NewAPIs.h.
+    //
+    // The user needs only to define WANT_GETFILEATTRIBUTESEX_WRAPPER
+    // to enable this emulation.
+    //
+    // Please note, however, that this block of preprocessor code enables
+    // the user to compile against the emulation code. To link the
+    // executable the user must also compile the function definitions in
+    // NewAPIs.h. See NewAPIs.h for further details.
+    //
+    // This code should work both with Microsoft's native implementation
+    // of the winapi headers and also with MinGW/Cygwin's version.
+    //
+    //////////////////////////////////////////////////////////////////////
+#   if defined(WANT_GETFILEATTRIBUTESEX_WRAPPER)
+#     if (defined(__MINGW__) || defined(__CYGWIN__)) && WINVER < 0x040A
+        // MinGW/Cygwin's winapi header files and NewAPIs.h do not live
+        // well together because NewAPIs.h redefines
+        // WIN32_FILE_ATTRIBUTE_DATA and GET_FILEEX_INFO_LEVELS
+        // if WINVER < 0x04A.
+#       include <w32api.h>
+#       if __W32API_MAJOR_VERSION < 3 || \
+           __W32API_MAJOR_VERSION == 3 && __W32API_MINOR_VERSION <= 3
+#         define BOOST_FILESYSTEM_WINVER WINVER
+#         undef WINVER
+#         define WINVER 0x040A
+#       endif
+#     endif
+
+#     include <NewAPIs.h>
+
+      // Return macro definitions to their original state.
+#     ifdef BOOST_FILESYSTEM_WINVER
+#       undef WINVER
+#       define WINVER BOOST_FILESYSTEM_WINVER
+#       undef BOOST_FILESYSTEM_WINVER
+#     endif
+#   endif
+    //////////////////////////////////////////////////////////////////////
+
 #   if defined(__BORLANDC__) || defined(__MWERKS__)
 #     if defined(__BORLANDC__)
         using std::time_t;
@@ -391,7 +436,7 @@ namespace boost
         : path_stat.st_size == 0;
 #   else
       WIN32_FILE_ATTRIBUTE_DATA fad;
-      if ( !::GetFileAttributesExA( ph.string().c_str(),
+      if ( !::GetFileAttributesEx( ph.string().c_str(),
         ::GetFileExInfoStandard, &fad ) )
         boost::throw_exception( filesystem_error(
           "boost::filesystem::is_empty",
@@ -538,7 +583,7 @@ namespace boost
 #   else
       // by now, intmax_t is 64-bits on all Windows compilers
       WIN32_FILE_ATTRIBUTE_DATA fad;
-      if ( !::GetFileAttributesExA( ph.string().c_str(),
+      if ( !::GetFileAttributesEx( ph.string().c_str(),
         ::GetFileExInfoStandard, &fad ) )
         boost::throw_exception( filesystem_error(
           "boost::filesystem::file_size",

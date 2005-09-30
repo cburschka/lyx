@@ -1,3 +1,9 @@
+2005-09-30  Angus Leeming  <leeming@lyx.org>
+
+	* configure.ac: check for NewAPIs.h. If found, define the
+	WANT_GETFILEATTRIBUTESEX_WRAPPER to enable runtime support
+	for Windows 95 in Boost.Filesystem.
+
 2005-09-29  Angus Leeming  <leeming@lyx.org>
 
 	* configure.ac: Use the new MSYS_AC_CANONICAL_PATH to generate
