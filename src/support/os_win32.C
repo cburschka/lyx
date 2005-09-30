@@ -3,20 +3,6 @@
 // Various OS specific functions
 #include <config.h>
 
-/* The GetLongPathNameA function declaration in
- * <winbase.h> under MinGW or Cygwin is protected
- * by the WINVER macro which is defined in <windef.h>
- *
- * SHGFP_TYPE_CURRENT is defined in <shlobj.h> for __W32API_VERSION >= 3.2
- * where it is protected by _WIN32_IE.
- * It is missing in earlier versions of the MinGW w32api headers.
- */
-#if defined(__MINGW32__)  || defined(__CYGWIN__) || defined(__CYGWIN32__)
-# include <w32api.h>
-# define WINVER 0x0500
-# define _WIN32_IE 0x0500
-#endif
-
 #include "os.h"
 #include "support/os_win32.h"
 #include "support/filetools.h"
@@ -48,12 +34,13 @@
 #include <direct.h> // _getdrive
 #include <shlobj.h>  // SHGetFolderPath
 
-// Needed by older versions of MinGW.
-#if defined (__W32API_MAJOR_VERSION) && \
-    defined (__W32API_MINOR_VERSION) && \
-    (__W32API_MAJOR_VERSION < 3 || \
-     __W32API_MAJOR_VERSION == 3 && __W32API_MINOR_VERSION  < 2)
-# define SHGFP_TYPE_CURRENT 0
+// Must define SHGFP_TYPE_CURRENT for older versions of MinGW.
+#if defined(__MINGW32__)  || defined(__CYGWIN__) || defined(__CYGWIN32__)
+# include <w32api.h>
+# if __W32API_MAJOR_VERSION < 3 || \
+     __W32API_MAJOR_VERSION == 3 && __W32API_MINOR_VERSION  < 2
+#  define SHGFP_TYPE_CURRENT 0
+# endif
 #endif
 
 string const os::nulldev_ = "nul";
