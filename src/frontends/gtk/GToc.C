@@ -126,7 +126,10 @@ void GToc::updateContents()
 
 	Gtk::TreeModel::iterator it = typecombo_->get_active();
 	vector<string> const & choice = controller().getTypes();
-	string const type = choice[(*it)[listColIndex_]];
+	// Untested:
+	string type;
+	if (!choice.empty())
+		type = choice[(*it)[listColIndex_]];
 	toc::Toc const contents = controller().getContents(type);
 
 	// Check if all elements are the same.

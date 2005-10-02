@@ -80,7 +80,9 @@ void QToc::update_contents()
 void QToc::updateToc(int newdepth)
 {
 	vector<string> const & choice = controller().getTypes();
-	string const & type = choice[dialog_->typeCO->currentItem()];
+	string type;
+	if (!choice.empty())
+		type = choice[dialog_->typeCO->currentItem()];
 
 	toc::Toc const & contents = controller().getContents(type);
 

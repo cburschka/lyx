@@ -100,7 +100,9 @@ void FormToc::updateType()
 void FormToc::updateContents()
 {
 	vector<string> types = controller().getTypes();
-	string const type = types[fl_get_choice(dialog_->choice_toc_type) - 1];
+	string type;
+	if (!types.empty())
+		type = types[fl_get_choice(dialog_->choice_toc_type) - 1];
 	if (type.empty()) {
 		fl_clear_browser(dialog_->browser_toc);
 		fl_add_browser_line(dialog_->browser_toc,
