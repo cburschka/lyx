@@ -38,9 +38,7 @@
 #endif
 
 
-#if defined (USE_WINDOWS_PACKAGING)
-# include <windows.h>
-#elif defined (USE_MACOSX_PACKAGING)
+#if defined (USE_MACOSX_PACKAGING)
 # include <CoreServices/CoreServices.h> // FSFindFolder, FSRefMakePath
 #endif
 
