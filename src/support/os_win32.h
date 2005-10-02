@@ -29,7 +29,7 @@
  * in <windef.h> under MinGW and Cygwin.
  * It is missing in earlier versions of the MinGW w32api headers.
  *
- * We need to #include <windef.h> now to make available the
+ * We need to #include <windows.h> now to make available the
  * DWORD, HMODULE et al. typedefs, so first define WINVER, _WIN32_IE.
  *
  * Note: __CYGWIN__ can be defined here if building in _WIN32 mode.
@@ -42,7 +42,7 @@
 # define _WIN32_IE 0x0500
 #endif
 
-#include <windef.h>
+#include <windows.h>
 
 
 namespace lyx {

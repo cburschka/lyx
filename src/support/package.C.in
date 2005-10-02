@@ -40,9 +40,7 @@
 #error USE_FOO_PACKAGING must be defined for FOO = WINDOWS, MACOSX or POSIX.
 #endif
 
-#if defined (USE_WINDOWS_PACKAGING)
-# include <windows.h>
-#elif defined (USE_MACOSX_PACKAGING)
+#if defined (USE_MACOSX_PACKAGING)
 # include <CoreServices/CoreServices.h> // FSFindFolder, FSRefMakePath
 #endif
 

@@ -27,8 +27,6 @@
 
 #include <string>
 
-#include <windows.h>
-
 /* The GetLongPathName macro may be defined on the compiling machine,
  * but we must use a bit of trickery if the resulting executable is
  * to run on a Win95 machine.
@@ -195,7 +193,7 @@ namespace {
 
 string const get_long_path(string const & short_path)
 {
-	std::vector<char> long_path(PATH_MAX);
+	std::vector<char> long_path(MAX_PATH);
 	DWORD result = GetLongPathName(short_path.c_str(),
 				       &long_path[0], long_path.size());
 
@@ -312,7 +310,7 @@ GetFolderPath::~GetFolderPath()
 // Eg CSIDL_PERSONAL -> "C:/Documents and Settings/USERNAME/My Documents"
 string const GetFolderPath::operator()(folder_id _id) const
 {
-	char folder_path[PATH_MAX];
+	char folder_path[MAX_PATH];
 
 	int id = 0;
 	switch (_id) {
