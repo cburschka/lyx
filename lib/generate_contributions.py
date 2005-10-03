@@ -524,6 +524,14 @@ contributers = [
                  "30 March 2005",
                  u"Bug fixes"),
 
+     contributer(u"Michael Gerz",
+                 "michael.gerz () teststep ! org",
+                 "GPL",
+                 "Re: The LyX licence",
+                 "m=110909251110103",
+                 "22 February 2005",
+                 u"lots of bug reports, German localization, bug fixes"),
+
      contributer(u"Stefano Ghirlanda",
                  "stefano.ghirlanda () unibo ! it",
                  "GPL",
@@ -955,14 +963,6 @@ contributers = [
                  "m=110915313018478",
                  "23 February 2005",
                  u"contribution to the spanish internationalization"),
-
-     contributer(u"Michael Gerz",
-                 "michael.gerz () teststep ! org",
-                 "GPL",
-                 "Re: The LyX licence",
-                 "m=110909251110103",
-                 "22 February 2005",
-                 u"lots of bug reports, German localization, bug fixes"),
 
      contributer(u"Hubert Schreier",
                  "schreier () sc ! edu",
