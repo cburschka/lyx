@@ -1,3 +1,7 @@
+2005-10-02  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* math_kerninset.C (write): write width, not 0 (fixes bug 2050)
+
 2005-10-03  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* math_nestinset.C (doDispatch): use recordUndoInset when deleting whole
