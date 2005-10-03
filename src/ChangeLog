@@ -1,3 +1,8 @@
+2005-10-03  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* text3.C (dispatch): when invoking LFUN_MATH_MACRO with no type
+	argument, use "newcommand".
+
 2005-09-28  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* cursor.C (setSelection): do not open collapsable insets;

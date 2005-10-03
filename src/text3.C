@@ -1254,7 +1254,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			int const nargs = s1.empty() ? 0 : convert<int>(s1);
 			string const s2 = token(s, ' ', 2);
 			string const type = s2.empty() ? "newcommand" : s2;
-			cur.insert(new MathMacroTemplate(token(s, ' ', 0), nargs, s2));
+			cur.insert(new MathMacroTemplate(token(s, ' ', 0), nargs, type));
 			//cur.nextInset()->edit(cur, true);
 		}
 		break;
