@@ -4,6 +4,11 @@
 
 2005-10-03  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	* cursor.C (erase): fix 'clever' UI hack. It was activated for all
+	items, not only large ones (part of bug 2057)
+
+2005-10-03  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
 	* text3.C (dispatch): when invoking LFUN_MATH_MACRO with no type
 	argument, use "newcommand".
 

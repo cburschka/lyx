@@ -782,7 +782,7 @@ bool LCursor::erase()
 	}
 
 	// 'clever' UI hack: only erase large items if previously slected
-	if (pos() != lastpos() && inset().nargs() > 0) {
+	if (pos() != lastpos() && nextAtom()->nargs() > 0) {
 		resetAnchor();
 		selection() = true;
 		++pos();

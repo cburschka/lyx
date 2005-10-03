@@ -626,8 +626,6 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_DELETE:
 		recordUndo(cur);
 		cur.erase();
-		cmd = FuncRequest(LFUN_FINISHED_LEFT);
-		cur.undispatched();
 		break;
 
 	case LFUN_ESCAPE:
