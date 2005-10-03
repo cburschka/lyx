@@ -614,7 +614,11 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_DELETE_WORD_BACKWARD:
 	case LFUN_BACKSPACE:
-		recordUndo(cur, Undo::ATOMIC);
+		if (cur.pos() == 0)
+			// delete whole cell
+			recordUndoInset(cur, Undo::ATOMIC);
+		else
+			recordUndo(cur, Undo::ATOMIC);
 		cur.backspace();
 		break;
 

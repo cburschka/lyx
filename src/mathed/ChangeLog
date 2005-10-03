@@ -1,3 +1,8 @@
+2005-10-03  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* math_nestinset.C (doDispatch): use recordUndoInset when deleting whole
+	cell via LFUN_BACKSPACE (fixes bug 2058).
+
 2005-09-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* math_nestinset.C (doDispatch): leave inset to the right when hitting ESC.
