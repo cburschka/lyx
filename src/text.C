@@ -2127,11 +2127,19 @@ int LyXText::cursorX(CursorSlice const & sl, bool boundary) const
 	
 	// see correction above
 	if (boundary_correction)
-	    	if (getFont(par, ppos).isRightToLeft())
+		if (getFont(par, ppos).isVisibleRightToLeft())
 			x -= singleWidth(par, ppos);
 		else
 			x += singleWidth(par, ppos);
 
+	// Make sure inside an inset we always count from the left
+	// edge (bidi!) -- MV
+	if (sl.pos() < par.size()) {
+		font = getFont(par, sl.pos());
+		if (!boundary && font.isVisibleRightToLeft()
+		  && par.isInset(sl.pos()))
+			x -= par.getInset(sl.pos())->width();
+	}	
 	return int(x);
 }
 
