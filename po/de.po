@@ -2,9 +2,9 @@
 # Copyright (C) 2005, The LyX team.
 # Hartmut Haase <hha4491@atomstromfrei.de>
 # Peter Sütterlin <P.Suetterlin@astro.uu.nl>
-# Michael Schmitt <Michael.Schmitt@teststep.org>
+# Michael Gerz <Michael.Gerz@teststep.org>
 #
-# Ein paar generelle Richtlinien für eine einheitliche Übersetzung (Vorschlag von M. Schmitt):
+# Ein paar generelle Richtlinien für eine einheitliche Übersetzung (Vorschlag von M. Gerz):
 #
 #   add                  -> hinzufügen / anfügen
 #   advanced             -> erweitert(e)
@@ -69,9 +69,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-23 18:03+0200\n"
+"POT-Creation-Date: 2005-10-03 14:40+0200\n"
 "PO-Revision-Date: 2005-07-23 18:33+0100\n"
-"Last-Translator: Michael Schmitt <Michael.Schmitt@teststep.org>\n"
+"Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
@@ -2636,7 +2636,7 @@ msgstr "Text danach:"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:564
 #: src/frontends/qt2/QCitationDialog.C:51
-#: src/frontends/xforms/FormCitation.C:467
+#: src/frontends/xforms/FormCitation.C:468
 msgid "Not yet supported"
 msgstr "Noch nicht unterstützt"
 
@@ -6437,7 +6437,7 @@ msgstr "Arabisch"
 
 #: ../lib/languages:5
 msgid "Austrian"
-msgstr "Österreichisch"
+msgstr "Deutsch (Österreich)"
 
 #: ../lib/languages:6
 msgid "Bahasa"
@@ -7472,29 +7472,29 @@ msgstr "Art der Absatzumgebung festgelegt"
 msgid "Formatting document..."
 msgstr "Formatieren des Dokuments..."
 
-#: src/BufferView_pimpl.C:644
+#: src/BufferView_pimpl.C:643
 #, c-format
 msgid "Saved bookmark %1$d"
 msgstr "Lesezeichen %1$d gespeichert"
 
-#: src/BufferView_pimpl.C:646
+#: src/BufferView_pimpl.C:645
 msgid "Saved bookmark "
 msgstr "Lesezeichen gespeichert: "
 
-#: src/BufferView_pimpl.C:680
+#: src/BufferView_pimpl.C:679
 #, c-format
 msgid "Moved to bookmark %1$d"
 msgstr "Zu Lesezeichen %1$d gewechselt"
 
-#: src/BufferView_pimpl.C:682
+#: src/BufferView_pimpl.C:681
 msgid "Moved to bookmark "
 msgstr "Zu Lesezeichen gewechselt: "
 
-#: src/BufferView_pimpl.C:862
+#: src/BufferView_pimpl.C:861
 msgid "Select LyX document to insert"
 msgstr "Wählen Sie das einzufügende LyX-Dokument"
 
-#: src/BufferView_pimpl.C:864 src/frontends/controllers/ControlBibtex.C:59
+#: src/BufferView_pimpl.C:863 src/frontends/controllers/ControlBibtex.C:59
 #: src/frontends/controllers/ControlBibtex.C:69
 #: src/frontends/controllers/ControlExternal.C:147
 #: src/frontends/controllers/ControlGraphics.C:89
@@ -7503,70 +7503,70 @@ msgstr "Wählen Sie das einzufügende LyX-Dokument"
 msgid "Documents|#o#O"
 msgstr "Dokumente|#k"
 
-#: src/BufferView_pimpl.C:866 src/lyxfunc.C:1684 src/lyxfunc.C:1790
+#: src/BufferView_pimpl.C:865 src/lyxfunc.C:1684 src/lyxfunc.C:1790
 msgid "Examples|#E#e"
 msgstr "Beispiele|#B"
 
-#: src/BufferView_pimpl.C:871 src/lyx_cb.C:127 src/lyxfunc.C:1649
+#: src/BufferView_pimpl.C:870 src/lyx_cb.C:127 src/lyxfunc.C:1649
 #: src/lyxfunc.C:1689
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr "*.lyx| LyX-Dokumente (*.lyx)"
 
-#: src/BufferView_pimpl.C:880 src/lyxfunc.C:1698 src/lyxfunc.C:1718
+#: src/BufferView_pimpl.C:879 src/lyxfunc.C:1698 src/lyxfunc.C:1718
 #: src/lyxfunc.C:1807 src/lyxfunc.C:1834 src/lyxfunc.C:1844
 msgid "Canceled."
 msgstr "Abgebrochen."
 
-#: src/BufferView_pimpl.C:893
+#: src/BufferView_pimpl.C:892
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Füge Dokument %1$s ein..."
 
-#: src/BufferView_pimpl.C:895
+#: src/BufferView_pimpl.C:894
 msgid "Inserting document "
 msgstr "Füge ein Dokument "
 
-#: src/BufferView_pimpl.C:895 src/importer.C:43 src/lyxfunc.C:995
+#: src/BufferView_pimpl.C:894 src/importer.C:43 src/lyxfunc.C:995
 #: src/lyxfunc.C:1156 src/lyxfunc.C:1731
 msgid "..."
 msgstr "..."
 
-#: src/BufferView_pimpl.C:902
+#: src/BufferView_pimpl.C:901
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s ist eingefügt."
 
-#: src/BufferView_pimpl.C:904 src/lyxfunc.C:1743
+#: src/BufferView_pimpl.C:903 src/lyxfunc.C:1743
 msgid "Document "
 msgstr "Dokument "
 
-#: src/BufferView_pimpl.C:904
+#: src/BufferView_pimpl.C:903
 msgid " inserted."
 msgstr " ist eingefügt."
 
-#: src/BufferView_pimpl.C:910
+#: src/BufferView_pimpl.C:909
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Das Dokument %1$s konnte nicht eingefügt werden"
 
-#: src/BufferView_pimpl.C:912
+#: src/BufferView_pimpl.C:911
 msgid "Could not insert document "
 msgstr "Das Dokument konnte nicht eingefügt werden: "
 
-#: src/BufferView_pimpl.C:1094 src/insets/inseterror.C:51
+#: src/BufferView_pimpl.C:1093 src/insets/inseterror.C:51
 #: src/insets/inseterror.C:73
 msgid "Error"
 msgstr "Fehler"
 
-#: src/BufferView_pimpl.C:1095
+#: src/BufferView_pimpl.C:1094
 msgid "Couldn't find this label"
 msgstr "Diese Marke wurde im"
 
-#: src/BufferView_pimpl.C:1096
+#: src/BufferView_pimpl.C:1095
 msgid "in current document."
 msgstr "aktuellen Dokument nicht gefunden."
 
-#: src/BufferView_pimpl.C:1261
+#: src/BufferView_pimpl.C:1260
 msgid "Unknown function!"
 msgstr "Unbekannte Funktion!"
 
@@ -9942,6 +9942,7 @@ msgstr "Der im LyX-Dokument verwendete Schlüssel."
 msgid "Label used for final output."
 msgstr "Die für die endgültige Ausgabe verwendete Marke."
 
+#. set up the tooltips
 #: src/frontends/xforms/FormBibtex.C:67
 msgid ""
 "The database you want to cite from. Insert it without the default extension "
@@ -10286,6 +10287,7 @@ msgstr ""
 msgid "Clip image to the bounding box values."
 msgstr "Schneide das Bild auf die Werte der Begrenzungsbox zu."
 
+#. set up the tooltips for the extra section
 #: src/frontends/xforms/FormGraphics.C:251
 msgid ""
 "Insert the rotation angle in degrees. Positive value rotates anti-clockwise, "
@@ -10816,6 +10818,7 @@ msgstr ""
 "Dieser Befehl wird auf den im ausgewählten Format exportierten Bufferinhalt "
 "angewendet. $$FName wird dabei durch den Namen dieser Datei ersetzt."
 
+#. set up the tooltips
 #: src/frontends/xforms/FormSpellchecker.C:57
 msgid "Type replacement for unknown word or select from suggestions."
 msgstr ""
@@ -10885,6 +10888,7 @@ msgstr "Tabelle einfügen"
 msgid "LaTeX classes|LaTeX styles|BibTeX styles"
 msgstr "LaTeX-Klassen|LaTeX-Stile|BibTeX-Stile"
 
+#. set up the tooltips
 #: src/frontends/xforms/FormTexinfo.C:47
 msgid ""
 "Shows the installed classses and styles for LaTeX/BibTeX; available only if "
@@ -11091,7 +11095,7 @@ msgstr "Zeige Fehlermeldung"
 msgid "Opened ERT Inset"
 msgstr "ERT-Einfügung geöffnet"
 
-#: src/insets/insetert.C:246 src/insets/insettabular.C:2086
+#: src/insets/insetert.C:246 src/insets/insettabular.C:2083
 #: src/insets/insettext.C:1407
 msgid "Impossible operation!"
 msgstr "Diese Operation ist nicht möglich!"
@@ -11101,7 +11105,7 @@ msgid "Not permitted to change font-types inside ERT-insets!"
 msgstr ""
 "Innerhalb einer ERT-Einfügung dürfen Schrifttypen nicht verändert werden!"
 
-#: src/insets/insetert.C:248 src/insets/insettabular.C:2088
+#: src/insets/insetert.C:248 src/insets/insettabular.C:2085
 #: src/insets/insettext.C:1409
 msgid "Sorry."
 msgstr "Sorry."
@@ -11318,7 +11322,7 @@ msgstr "PrettyRef: "
 msgid "Opened Tabular Inset"
 msgstr "Tabellen-Einfügung geöffnet"
 
-#: src/insets/insettabular.C:2087
+#: src/insets/insettabular.C:2084
 msgid "Multicolumns can only be horizontally."
 msgstr "Mehrfachspalten sind nur horizontal möglich."
 
@@ -11392,6 +11396,7 @@ msgstr ""
 "Es konnte kein ispell-Prozess erzeugt werden.\n"
 "Sie haben möglicherweise nicht die passenden Sprachen installiert."
 
+#. select returned error
 #: src/ispell.C:259
 msgid ""
 "The spell process returned an error.\n"
@@ -11890,6 +11895,7 @@ msgstr "Befehl ist deaktiviert"
 msgid "Document is read-only"
 msgstr "Dokument ist schreibgeschützt"
 
+#. no
 #: src/lyxfunc.C:310
 msgid "Command not allowed without any document open"
 msgstr "Dieser Befehl ist nur bei geöffnetem Dokument möglich"
@@ -12678,7 +12684,7 @@ msgstr "Fehler: Verzeichnis konnte nicht erstellt werden:"
 msgid "Could not delete auto-save file!"
 msgstr "Die automatische Sicherungsdatei konnte nicht gelöscht werden!"
 
-#: src/support/package.C:402
+#: src/support/package.C:365
 #, c-format
 msgid ""
 "Unable to determine the path to the LyX binary from the command line %1%"
@@ -12686,13 +12692,13 @@ msgstr ""
 "Der Pfad zur LyX-Applikation kann von der Befehlszeile %1% nicht bestimmt "
 "werden"
 
-#: src/support/package.C:407
+#: src/support/package.C:370
 msgid "Unable to determine the path to the LyX binary from the command line "
 msgstr ""
 "Der Pfad zur LyX-Applikation kann von folgender Befehlszeile nicht bestimmt "
 "werden: "
 
-#: src/support/package.C:533
+#: src/support/package.C:496
 #, c-format
 msgid ""
 "Unable to determine the system directory having searched\n"
@@ -12706,11 +12712,11 @@ msgstr ""
 "oder setzen Sie die Umgebungsvariable LYX_DIR_13x auf das LyX-"
 "Systemverzeichnis, das die Datei 'chkconfig.ltx' enthält."
 
-#: src/support/package.C:543
+#: src/support/package.C:506
 msgid "Unable to determine the system directory having searched\n"
 msgstr "Das Systemverzeichnis kann trotz der Suche in\n"
 
-#: src/support/package.C:546
+#: src/support/package.C:509
 msgid ""
 "Try the '-sysdir' command line parameter or set the environment variable "
 "LYX_DIR_13x to the LyX system directory containing the file `chkconfig.ltx'."
@@ -12719,7 +12725,7 @@ msgstr ""
 "oder setzen Sie die Umgebungsvariable LYX_DIR_13x auf das LyX-"
 "Systemverzeichnis, das die Datei 'chkconfig.ltx' enthält."
 
-#: src/support/package.C:631
+#: src/support/package.C:595
 #, c-format
 msgid ""
 "Invalid %1% switch.\n"
@@ -12728,24 +12734,24 @@ msgstr ""
 "Ungültige Option %1%.\n"
 "Verzeichnis %2% enthält %3% nicht."
 
-#: src/support/package.C:636 src/support/package.C:671
-#: src/support/package.C:699
+#: src/support/package.C:600 src/support/package.C:635
+#: src/support/package.C:663
 msgid "Invalid "
 msgstr "Ungültige Option "
 
-#: src/support/package.C:637
+#: src/support/package.C:601
 msgid " switch.\n"
 msgstr " .\n"
 
-#: src/support/package.C:638 src/support/package.C:673
+#: src/support/package.C:602 src/support/package.C:637
 msgid "Directory "
 msgstr "Verzeichnis "
 
-#: src/support/package.C:639 src/support/package.C:674
+#: src/support/package.C:603 src/support/package.C:638
 msgid " does not contain "
 msgstr " enthält nicht "
 
-#: src/support/package.C:666
+#: src/support/package.C:630
 #, c-format
 msgid ""
 "Invalid %1% environment variable.\n"
@@ -12754,11 +12760,11 @@ msgstr ""
 "Ungültige Umgebungsvariable %1%.\n"
 "Verzeichnis %2% enthält nicht %3%."
 
-#: src/support/package.C:672 src/support/package.C:700
+#: src/support/package.C:636 src/support/package.C:664
 msgid " environment variable.\n"
 msgstr " Umgebungsvariable.\n"
 
-#: src/support/package.C:694
+#: src/support/package.C:658
 #, c-format
 msgid ""
 "Invalid %1% environment variable.\n"
@@ -12767,7 +12773,7 @@ msgstr ""
 "Ungültige Umgebungsvariable %1%.\n"
 "%2% ist kein Verzeichnis."
 
-#: src/support/package.C:701
+#: src/support/package.C:665
 msgid " is not a directory."
 msgstr " ist kein Verzeichnis."
 

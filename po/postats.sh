@@ -5,7 +5,7 @@
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
 #
-# author: Michael Schmitt, michael.schmitt@teststep.org
+# author: Michael Gerz, michael.gerz@teststep.org
 #
 # This script extracts some information from the po file headers (last
 # translator, revision date), generates the corresponding gmo files
@@ -99,7 +99,7 @@ run_msgfmt () {
 	date=`grep 'Revision-Date' $pofile | sed 's/  */ /g' | cut -d ' ' -f 2`
 
 	# Searching for a string of the form
-	# '"Last-Translator: Michael Schmitt <Michael.Schmitt@teststep.org>\n"'
+	# '"Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"'
 	translator=
 	email=
 	input=`grep "Last-Translator" $pofile` && {
@@ -161,7 +161,7 @@ cat <<EOF
 	// What's the short name of the page in the navigation bar?
 	\$item="i18n";
 	// Who is the author?
-	\$author="Michael Schmitt";
+	\$author="Michael Gerz";
 	// Full name of the file (relative path from LyX home page -- i.e., it should
 	// be "foo.php3" or "bar/foo.php3")
 	\$file_full="i18n.php3";
