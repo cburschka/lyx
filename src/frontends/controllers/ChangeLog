@@ -1,3 +1,8 @@
+2005-10-03  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* Dialog.C (checkStatus): update dialog after checkReadOnly has
+	enabled all widgets (fixes bug 1894).
+
 2005-09-15  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* ControlDocument.C (dispatchParams): update bufferview at the end

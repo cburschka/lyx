@@ -187,9 +187,14 @@ void Dialog::checkStatus()
 	}
 
 	// check whether this dialog may be active
-	if (controller().canApply())
-		bc().readOnly(kernel().isBufferReadonly());
-	else
+	if (controller().canApply()) {
+		bool const readonly = kernel().isBufferReadonly();
+		bc().readOnly(readonly);
+		// refreshReadOnly() is too generous in _enabling_ widgets
+		// update dialog to disable disabled widgets again
+		if (!readonly)
+			view().update();
+	} else
 		bc().readOnly(true);
 }
 
