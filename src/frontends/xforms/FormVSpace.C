@@ -213,6 +213,7 @@ void FormVSpace::build()
 	tooltips().init(dialog_->choice_space, str);
 
 	// set default unit for custom length
+	defaultUnit = "cm";
 	switch (lyxrc.default_papersize) {
 	case PAPER_DEFAULT:
 	case PAPER_USLETTER:
@@ -220,11 +221,7 @@ void FormVSpace::build()
 	case PAPER_USEXECUTIVE:
 		defaultUnit = "in";
 		break;
-	case PAPER_A3:
-	case PAPER_A4:
-	case PAPER_A5:
-	case PAPER_B5:
-		defaultUnit = "cm";
+	default:
 		break;
 	}
 }

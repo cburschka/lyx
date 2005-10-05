@@ -1002,7 +1002,8 @@ void LyXText::setHeightOfRow(pit_type const pit, Row & row)
 	if (bv_owner->text() == this) {
 		if (pit == 0 && row.pos() == 0)
 			maxasc += 20;
-		if (pit + 1 == pars_.size() && row.endpos() == par.size())
+		if (pit + 1 == pit_type(pars_.size()) &&
+		    row.endpos() == par.size())
 			maxdesc += 20;
 	}
 

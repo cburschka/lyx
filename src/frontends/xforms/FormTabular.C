@@ -20,6 +20,7 @@
 #include "controllers/ControlTabular.h"
 #include "controllers/helper_funcs.h"
 
+#include "support/convert.h"
 #include "support/lstrings.h"
 
 #include "lyx_forms.h"
@@ -152,7 +153,6 @@ void FormTabular::update()
 	LyXTabular const & tabular = controller().tabular();
 
 	int align;
-	char buf[12];
 	LyXLength pwidth;
 	string special;
 
@@ -164,12 +164,12 @@ void FormTabular::update()
 	fl_activate_object(cell_options_->input_special_multialign);
 	fl_activate_object(column_options_->input_column_width);
 	fl_activate_object(column_options_->choice_value_column_width);
-	sprintf(buf, "%d", column);
-	fl_set_input(dialog_->input_tabular_column, buf);
+	fl_set_input(dialog_->input_tabular_column,
+	             convert<string>(column).c_str());
 	fl_deactivate_object(dialog_->input_tabular_column);
 	LyXTabular::row_type row = tabular.row_of_cell(cell);
-	sprintf(buf, "%d", row + 1);
-	fl_set_input(dialog_->input_tabular_row, buf);
+	fl_set_input(dialog_->input_tabular_row,
+	             convert<string>(row + 1).c_str());
 	fl_deactivate_object(dialog_->input_tabular_row);
 	if (tabular.isMultiColumn(cell)) {
 		fl_set_button(cell_options_->check_multicolumn, 1);

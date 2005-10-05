@@ -1,3 +1,14 @@
+2005-10-05  Angus Leeming  <leeming@lyx.org>
+
+	* FormGraphics.C (build):
+	* FormVSpace.C (build):
+	squash warning about unused values in switch statement.
+
+	* FormParagraph.C (build): remove unused switch statement.
+
+	* FormTabular.C (update): replace "sprintf" with
+	"convert<string>".
+
 2005-10-02  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* FormToc.C: fix bug 2038

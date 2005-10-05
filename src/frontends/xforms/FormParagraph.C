@@ -49,13 +49,6 @@ using support::rtrim;
 
 namespace frontend {
 
-namespace {
-
-string defaultUnit("cm");
-
-} // namespace anon
-
-
 typedef FormController<ControlParagraph, FormView<FD_paragraph> > base_class;
 
 FormParagraph::FormParagraph(Dialog & parent)
@@ -106,22 +99,6 @@ void FormParagraph::build()
 		remove_if(units_vec.begin(), units_vec.end(),
 			  bind(contains<char>, _1, '%'));
 	units_vec.erase(del, units_vec.end());
-
-	// set default unit for custom length
-	switch (lyxrc.default_papersize) {
-		case PAPER_DEFAULT:
-		case PAPER_USLETTER:
-		case PAPER_USLEGAL:
-		case PAPER_USEXECUTIVE:
-			defaultUnit = "in";
-			break;
-		case PAPER_A3:
-		case PAPER_A4:
-		case PAPER_A5:
-		case PAPER_B5:
-			defaultUnit = "cm";
-			break;
-	}
 }
 
 

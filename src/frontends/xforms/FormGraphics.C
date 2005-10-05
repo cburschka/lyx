@@ -285,15 +285,15 @@ void FormGraphics::build()
 			   extra_->form);
 
 	// set the right default unit
+	defaultUnit = "cm";
 	switch (lyxrc.default_papersize) {
-	case PAPER_DEFAULT: break;
 	case PAPER_USLETTER:
 	case PAPER_USLEGAL:
-	case PAPER_USEXECUTIVE: defaultUnit = "in"; break;
-	case PAPER_A3:
-	case PAPER_A4:
-	case PAPER_A5:
-	case PAPER_B5: defaultUnit = "cm"; break;
+	case PAPER_USEXECUTIVE:
+		defaultUnit = "in";
+		break;
+	default:
+		break;
 	}
 }
 

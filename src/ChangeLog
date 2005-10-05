@@ -1,3 +1,11 @@
+2005-10-05  Angus Leeming  <leeming@lyx.org>
+
+	* BufferView_pimpl.C (loadLyXFile): ensure that a pointer is
+	always initialised before use.
+
+	* text.C (setHeightOfRow): squash warning about comparison
+	of signed and unsigned types.
+
 2005-10-03  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* text.C (cursorX): two fixes involving RtL text drawing

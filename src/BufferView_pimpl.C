@@ -268,7 +268,7 @@ bool BufferView::Pimpl::loadLyXFile(string const & filename, bool tolastfiles)
 		// Fall through to new load. (Asger)
 	}
 
-	Buffer * b;
+	Buffer * b = 0;
 
 	if (found) {
 		b = bufferlist.newBuffer(s);
