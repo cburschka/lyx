@@ -48,13 +48,14 @@ def main(argv):
 #
 # First come the rules for each xx_TOC.lyx file. Then comes the
 # TOCs target, which prints all the TOC files.
-""" % argv[0]
+""" % os.path.basename(argv[0])
 
     # What are the languages available? And its documents?
     languages = {}
     srcdir = os.path.dirname(argv[0])
     for file in glob(srcdir + '/*'):
-        lang = lang_pattern.match(os.path.basename(file))
+        file = os.path.basename(file)
+        lang = lang_pattern.match(file)
         if lang:
             if lang.group(1) not in languages:
                 languages[lang.group(1)] = [file]
@@ -66,8 +67,8 @@ def main(argv):
     langs.sort()
 
     # The default language is english and doesn't need any prefix
-    print 'TOC.lyx:', ('.lyx ' + srcdir + '/').join(possible_documents) + '.lyx'
-    print '\tpython %s/doc_toc.py' % srcdir
+    print 'TOC.lyx: $(srcdir)/' + '.lyx $(srcdir)/'.join(possible_documents) + '.lyx'
+    print '\tpython $(srcdir)/doc_toc.py'
     print
     tocs = ['TOC.lyx']
 
@@ -78,15 +79,13 @@ def main(argv):
 
         if toc_name in languages[lang]:
             languages[lang].remove(toc_name)
-        if srcdir + '/' + toc_name in languages[lang]:
-            languages[lang].remove(srcdir + '/' + toc_name)
 
-        print toc_name + ':', ' '.join(languages[lang])
-        print '\tpython %s/doc_toc.py %s' % (srcdir, lang)
+        print toc_name + ': $(srcdir)/' + ' $(srcdir)/'.join(languages[lang])
+        print '\tpython $(srcdir)/doc_toc.py %s' % lang
         print
 
     # Write meta-rule to call all the other rules
-    print 'TOCs =', ' '.join(tocs)
+    print 'tocfiles =', ' '.join(tocs)
 
 
 if __name__ == "__main__":

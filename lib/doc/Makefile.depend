@@ -4,61 +4,61 @@
 # First come the rules for each xx_TOC.lyx file. Then comes the
 # TOCs target, which prints all the TOC files.
 
-TOC.lyx: Intro.lyx FAQ.lyx Tutorial.lyx UserGuide.lyx Extended.lyx Customization.lyx
-	python doc_toc.py
+TOC.lyx: $(srcdir)/Intro.lyx $(srcdir)/FAQ.lyx $(srcdir)/Tutorial.lyx $(srcdir)/UserGuide.lyx $(srcdir)/Extended.lyx $(srcdir)/Customization.lyx
+	python $(srcdir)/doc_toc.py
 
-cs_TOC.lyx: cs_Tutorial.lyx
-	python doc_toc.py cs
+cs_TOC.lyx: $(srcdir)/cs_Tutorial.lyx
+	python $(srcdir)/doc_toc.py cs
 
-da_TOC.lyx: da_Intro.lyx
-	python doc_toc.py da
+da_TOC.lyx: $(srcdir)/da_Intro.lyx
+	python $(srcdir)/doc_toc.py da
 
-de_TOC.lyx: de_Extended.lyx de_UserGuide.lyx de_Intro.lyx de_FAQ.lyx de_Customization.lyx de_Tutorial.lyx
-	python doc_toc.py de
+de_TOC.lyx: $(srcdir)/de_Extended.lyx $(srcdir)/de_UserGuide.lyx $(srcdir)/de_Intro.lyx $(srcdir)/de_FAQ.lyx $(srcdir)/de_Customization.lyx $(srcdir)/de_Tutorial.lyx
+	python $(srcdir)/doc_toc.py de
 
-es_TOC.lyx: es_Tutorial.lyx es_Intro.lyx
-	python doc_toc.py es
+es_TOC.lyx: $(srcdir)/es_Tutorial.lyx $(srcdir)/es_Intro.lyx
+	python $(srcdir)/doc_toc.py es
 
-eu_TOC.lyx: eu_Extended.lyx eu_FAQ.lyx eu_Intro.lyx eu_Customization.lyx eu_UserGuide.lyx eu_Tutorial.lyx
-	python doc_toc.py eu
+eu_TOC.lyx: $(srcdir)/eu_Extended.lyx $(srcdir)/eu_FAQ.lyx $(srcdir)/eu_Intro.lyx $(srcdir)/eu_Customization.lyx $(srcdir)/eu_UserGuide.lyx $(srcdir)/eu_Tutorial.lyx
+	python $(srcdir)/doc_toc.py eu
 
-fr_TOC.lyx: fr_Customization.lyx fr_Intro.lyx fr_UserGuide.lyx fr_FAQ.lyx fr_Tutorial.lyx fr_Extended.lyx
-	python doc_toc.py fr
+fr_TOC.lyx: $(srcdir)/fr_Customization.lyx $(srcdir)/fr_Intro.lyx $(srcdir)/fr_UserGuide.lyx $(srcdir)/fr_FAQ.lyx $(srcdir)/fr_Tutorial.lyx $(srcdir)/fr_Extended.lyx
+	python $(srcdir)/doc_toc.py fr
 
-he_TOC.lyx: he_Tutorial.lyx he_Intro.lyx
-	python doc_toc.py he
+he_TOC.lyx: $(srcdir)/he_Tutorial.lyx $(srcdir)/he_Intro.lyx
+	python $(srcdir)/doc_toc.py he
 
-hu_TOC.lyx: hu_Intro.lyx
-	python doc_toc.py hu
+hu_TOC.lyx: $(srcdir)/hu_Intro.lyx
+	python $(srcdir)/doc_toc.py hu
 
-it_TOC.lyx: it_UserGuide.lyx it_Customization.lyx it_Tutorial.lyx it_Intro.lyx
-	python doc_toc.py it
+it_TOC.lyx: $(srcdir)/it_UserGuide.lyx $(srcdir)/it_Customization.lyx $(srcdir)/it_Tutorial.lyx $(srcdir)/it_Intro.lyx
+	python $(srcdir)/doc_toc.py it
 
-nl_TOC.lyx: nl_Intro.lyx nl_Tutorial.lyx
-	python doc_toc.py nl
+nl_TOC.lyx: $(srcdir)/nl_Intro.lyx $(srcdir)/nl_Tutorial.lyx
+	python $(srcdir)/doc_toc.py nl
 
-no_TOC.lyx: no_Intro.lyx
-	python doc_toc.py no
+no_TOC.lyx: $(srcdir)/no_Intro.lyx
+	python $(srcdir)/doc_toc.py no
 
-pl_TOC.lyx: pl_Extended.lyx pl_Intro.lyx pl_Tutorial.lyx
-	python doc_toc.py pl
+pl_TOC.lyx: $(srcdir)/pl_Extended.lyx $(srcdir)/pl_Intro.lyx $(srcdir)/pl_Tutorial.lyx
+	python $(srcdir)/doc_toc.py pl
 
-pt_TOC.lyx: pt_Intro.lyx pt_Tutorial.lyx
-	python doc_toc.py pt
+pt_TOC.lyx: $(srcdir)/pt_Intro.lyx $(srcdir)/pt_Tutorial.lyx
+	python $(srcdir)/doc_toc.py pt
 
-ro_TOC.lyx: ro_Intro.lyx
-	python doc_toc.py ro
+ro_TOC.lyx: $(srcdir)/ro_Intro.lyx
+	python $(srcdir)/doc_toc.py ro
 
-ru_TOC.lyx: ru_Intro.lyx ru_FAQ.lyx ru_Tutorial.lyx
-	python doc_toc.py ru
+ru_TOC.lyx: $(srcdir)/ru_Intro.lyx $(srcdir)/ru_FAQ.lyx $(srcdir)/ru_Tutorial.lyx
+	python $(srcdir)/doc_toc.py ru
 
-sk_TOC.lyx: sk_Tutorial.lyx sk_UserGuide.lyx
-	python doc_toc.py sk
+sk_TOC.lyx: $(srcdir)/sk_Tutorial.lyx $(srcdir)/sk_UserGuide.lyx
+	python $(srcdir)/doc_toc.py sk
 
-sl_TOC.lyx: sl_Tutorial.lyx sl_Intro.lyx
-	python doc_toc.py sl
+sl_TOC.lyx: $(srcdir)/sl_Tutorial.lyx $(srcdir)/sl_Intro.lyx
+	python $(srcdir)/doc_toc.py sl
 
-sv_TOC.lyx: sv_Tutorial.lyx sv_Intro.lyx
-	python doc_toc.py sv
+sv_TOC.lyx: $(srcdir)/sv_Tutorial.lyx $(srcdir)/sv_Intro.lyx
+	python $(srcdir)/doc_toc.py sv
 
-TOCs = TOC.lyx cs_TOC.lyx da_TOC.lyx de_TOC.lyx es_TOC.lyx eu_TOC.lyx fr_TOC.lyx he_TOC.lyx hu_TOC.lyx it_TOC.lyx nl_TOC.lyx no_TOC.lyx pl_TOC.lyx pt_TOC.lyx ro_TOC.lyx ru_TOC.lyx sk_TOC.lyx sl_TOC.lyx sv_TOC.lyx
+tocfiles = TOC.lyx cs_TOC.lyx da_TOC.lyx de_TOC.lyx es_TOC.lyx eu_TOC.lyx fr_TOC.lyx he_TOC.lyx hu_TOC.lyx it_TOC.lyx nl_TOC.lyx no_TOC.lyx pl_TOC.lyx pt_TOC.lyx ro_TOC.lyx ru_TOC.lyx sk_TOC.lyx sl_TOC.lyx sv_TOC.lyx

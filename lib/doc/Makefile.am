@@ -1,10 +1,10 @@
 include $(top_srcdir)/config/common.am
 
-DISTCLEANFILES += LyXConfig.lyx LaTeXConfig.lyx $(TOCs)
+DISTCLEANFILES += LyXConfig.lyx LaTeXConfig.lyx $(tocfiles)
 
 EXTRA_DIST = depend.py doc_toc.py LyXConfig.lyx.in README.Documentation $(DEPENDFILE) $(docfiles)
 
-docfiles = $(TOCs) \
+docfiles = \
 	cs_Tutorial.lyx \
 	Customization.lyx \
 	da_Intro.lyx \
@@ -70,18 +70,32 @@ doc_DATA = \
 	$(docfiles) \
 	LaTeXConfig.lyx
 
-DEPENDFILE = Makefile.depend
-include $(DEPENDFILE)
+DEPENDFILE = $(srcdir)/Makefile.depend
+# include $(DEPENDFILE) does not work because automake is too limited.
+include $(srcdir)/Makefile.depend
 
-TOCs : $(DEPENDFILE) $(TOCs)
+TOCs : $(DEPENDFILE) $(tocfiles)
 	@echo Made TOCs succesfully.
 
 # Force regeneration of $(DEPENDFILE) when Makefile.am changes because
 # new doc files might have been added
-$(DEPENDFILE): Makefile.am
+$(DEPENDFILE): $(srcdir)/Makefile.am $(srcdir)/depend.py
 	python $(srcdir)/depend.py > $(DEPENDFILE)
 
-# Force generation of the TOC files for 'make dist'
-distdir: TOCs
+# The TOCs are not built for the install and dist targets if they don't exist
+# for some weird reason.
+# Make complains although we have rules for them in $(DEPENDFILE), so we
+# must not include the TOCs in $(docfiles) and have to use the install and
+# dist hooks below.
+dist-hook: $(tocfiles)
+	for i in $(tocfiles); \
+	do \
+		cp -p "$$i" "$(distdir)"; \
+	done
+install-data-hook: $(tocfiles)
+	for i in $(tocfiles); \
+	do \
+		$(docDATA_INSTALL) "$$i" "$(DESTDIR)$(docdir)/$$i"; \
+	done
 
 .PHONY: TOCs
