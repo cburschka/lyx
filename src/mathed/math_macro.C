@@ -46,6 +46,15 @@ string MathMacro::name() const
 }
 
 
+void MathMacro::cursorPos(CursorSlice const & sl, bool boundary, int & x,
+		int & y) const
+{
+	// We may have 0 arguments, but MathNestInset requires at least one.
+	if (nargs() > 0)
+		MathNestInset::cursorPos(sl, boundary, x, y);
+}
+
+
 void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (!MacroTable::globalMacros().has(name())) {
@@ -102,10 +111,27 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 }
 
 
+void MathMacro::drawSelection(PainterInfo & pi, int x, int y) const
+{
+	// We may have 0 arguments, but MathNestInset requires at least one.
+	if (nargs() > 0)
+		MathNestInset::drawSelection(pi, x, y);
+}
+
+
 void MathMacro::validate(LaTeXFeatures & features) const
 {
 	if (name() == "binom" || name() == "mathcircumflex")
 		features.require(name());
+}
+
+
+InsetBase * MathMacro::editXY(LCursor & cur, int x, int y)
+{
+	// We may have 0 arguments, but MathNestInset requires at least one.
+	if (nargs() > 0)
+		return MathNestInset::editXY(cur, x, y);
+	return this;
 }
 
 

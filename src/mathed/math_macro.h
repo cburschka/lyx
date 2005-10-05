@@ -28,8 +28,14 @@ public:
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	void drawExpanded(PainterInfo & pi, int x, int y) const;
+	/// draw selection background
+	void drawSelection(PainterInfo & pi, int x, int y) const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	/// get cursor position
+	void cursorPos(CursorSlice const & sl, bool boundary, int & x, int & y) const;
+	///
+	InsetBase * editXY(LCursor & cur, int x, int y);
 	///
 	std::string name() const;
 	///
@@ -60,7 +66,7 @@ private:
 	std::string name_;
 	/// the unexpanded macro defintition
 	mutable MathArray tmpl_;
-	/// the matcro substituted with our args
+	/// the macro substituted with our args
 	mutable MathArray expanded_;
 };
 

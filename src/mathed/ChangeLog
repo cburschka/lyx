@@ -1,3 +1,11 @@
+2005-10-04  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* math_macro.C (editXY): new, fix crash (bug 2060)
+	* math_macro.C (cursorPos): new, fix potential crash
+	* math_macro.C (drawSelection): new, fix potential crash
+	* math_nestinset.C (doDispatch): fix crash when inserting math macros
+	with 0 arguments
+
 2005-09-30  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* math_nestinset.C (doDispatch): do not leave the inset after
