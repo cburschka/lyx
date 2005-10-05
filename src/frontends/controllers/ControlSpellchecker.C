@@ -166,7 +166,7 @@ WordLangTuple nextWord(DocIterator & cur, ptrdiff_t & progress,
 			}
 		} else { // !isLetter(cur)
 			if (inword)
-				if (!ignoreword)
+				if (!word.empty() && !ignoreword)
 					return WordLangTuple(word, lang_code);
 				else
 					inword = false;
