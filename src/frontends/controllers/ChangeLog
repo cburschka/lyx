@@ -1,3 +1,8 @@
+2005-10-03  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* ControlSpellchecker.C (check): make sure that word at cursor
+	position is checked too. (bug 2063)
+
 2005-10-03  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* Dialog.C (checkStatus): update dialog after checkReadOnly has

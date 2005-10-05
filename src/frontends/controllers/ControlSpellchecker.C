@@ -190,6 +190,9 @@ void ControlSpellchecker::check()
 	SpellBase::Result res = SpellBase::OK;
 
 	DocIterator cur = kernel().bufferview()->cursor();
+	while (cur && cur.pos() && isLetter(cur)) {
+		cur.backwardPos();
+	}
 
 	ptrdiff_t start = 0, total = 0;
 	DocIterator it = DocIterator(kernel().buffer().inset());
@@ -198,9 +201,6 @@ void ControlSpellchecker::check()
 
 	for (total = start; it; it.forwardPos())
 		++total;
-
-	for (; cur && cur.pos() && isLetter(cur); cur.forwardPos())
-		++start;
 
 	BufferParams & bufferparams = kernel().buffer().params();
 	exitEarly_ = false;
