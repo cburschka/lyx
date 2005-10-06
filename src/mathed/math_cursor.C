@@ -292,8 +292,8 @@ bool MathCursor::home(bool sel)
 {
 	dump("home 1");
 	autocorrect_ = false;
-	selHandle(sel);
 	macroModeClose();
+	selHandle(sel);
 	if (!par()->idxHome(idx(), pos()))
 		return popLeft();
 	dump("home 2");
@@ -306,8 +306,8 @@ bool MathCursor::end(bool sel)
 {
 	dump("end 1");
 	autocorrect_ = false;
-	selHandle(sel);
 	macroModeClose();
+	selHandle(sel);
 	if (!par()->idxEnd(idx(), pos()))
 		return popRight();
 	dump("end 2");

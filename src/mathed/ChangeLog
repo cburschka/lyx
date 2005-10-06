@@ -1,3 +1,8 @@
+2005-10-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* math_cursor.C (home, end): close macro before handling selection
+	(bug 2046)
+
 2005-07-25  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* math_factory.C (initSymbols): Don't require wasysym for the wasy

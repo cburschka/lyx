@@ -19,12 +19,15 @@ What's new
 
 ** Updates
 
+- Update German Introduction and Tutorial.
 
 ** Bug fixes
 
 * Document input/output:
 
 - Don't load the wasysym package automatically anymore (bug 1942)
+
+- Fix crash with S-Home while entering a macro name (bug 2046)
 
 * User Interface:
 
