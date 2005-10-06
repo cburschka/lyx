@@ -82,7 +82,8 @@ void QCitationDialog::openFind()
 	if (form_->readOnly())
 		return;
 
-	if (selectedLB->count() == 0 && add_->availableLB->count() != 0){
+	if (isVisible() && selectedLB->count() == 0 
+	    && add_->availableLB->count() != 0){
 		// open the find dialog
 		add();
 		// and let the user press ok after a selection
