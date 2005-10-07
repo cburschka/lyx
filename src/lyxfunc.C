@@ -536,6 +536,12 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 	}
 
+	case LFUN_INSERT_CITATION: {
+		FuncRequest fr(LFUN_INSET_INSERT, "citation");
+		enable = getStatus(fr).enabled();
+		break;
+	}
+
 	// this one is difficult to get right. As a half-baked
 	// solution, we consider only the first action of the sequence
 	case LFUN_SEQUENCE: {
@@ -1245,6 +1251,30 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_DIALOG_DISCONNECT_INSET:
 			owner->getDialogs().disconnect(argument);
 			break;
+
+		
+		case LFUN_INSERT_CITATION: {
+			if (!argument.empty()) {
+				// we can have one optional argument, delimited by '|'
+				// citation-insert <key>|<text_before>
+				// this should be enhanced to also support text_after 
+				// and citation style
+				string arg = argument;
+				string opt1;
+				if (contains(argument, "|")) {
+					arg = token(argument, '|', 0);
+					opt1 = '[' + token(argument, '|', 1) + ']';
+				}
+				std::ostringstream os;
+				os << "citation LatexCommand\n"
+				   << "\\cite" << opt1 << "{" << arg << "}\n"
+				   << "\\end_inset";
+				FuncRequest fr(LFUN_INSET_INSERT, os.str());
+				dispatch(fr);
+			} else
+				dispatch(FuncRequest(LFUN_DIALOG_SHOW, "citation"));
+			break;
+		}
 
 		case LFUN_CHILDOPEN: {
 			string const filename =

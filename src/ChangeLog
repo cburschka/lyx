@@ -1,3 +1,10 @@
+2005-10-07  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* LyXAction.C:
+	* lfuns.h:
+	* lyxfunc.C: reimplement LFUN_INSERT_CITATION, which is needed
+	by bibliography managers (bug 2071).
+
 2005-10-07  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* BufferView_pimpl.C (update): choose arguments to update call so

@@ -188,6 +188,7 @@ void LyXAction::init()
 		{ LFUN_INSERT_LABEL, "label-insert", Noop },
 		{ LFUN_INSET_OPTARG, "optional-insert", Noop },
 		{ LFUN_INSERT_BIBITEM, "bibitem-insert", Noop },
+		{ LFUN_INSERT_CITATION, "citation-insert", Noop },
 		{ LFUN_BIBDB_ADD, "bibtex-database-add", Noop },
 		{ LFUN_BIBDB_DEL, "bibtex-database-del", Noop },
 		{ LFUN_INSERT_LINE, "line-insert", Noop },

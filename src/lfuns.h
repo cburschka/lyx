@@ -357,6 +357,7 @@ enum kb_action {
 	LFUN_OUTPUT_CHANGES,             // jspitzm 20050121
 	LFUN_BIBDB_ADD,
 	LFUN_BIBDB_DEL,
+	LFUN_INSERT_CITATION,
 
 	LFUN_LASTACTION                  // end of the table
 };
