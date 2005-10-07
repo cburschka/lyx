@@ -294,7 +294,15 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	CursorSlice oldTopSlice = cur.top();
 	bool oldBoundary = cur.boundary();
 	bool sel = cur.selection();
-	bool needsUpdate = !lyxaction.funcHasFlag(cmd.action, LyXAction::NoUpdate);
+	// Signals that, even if needsUpdate == false, an update of the
+	// cursor paragraph is required
+	bool singleParUpdate = lyxaction.funcHasFlag(cmd.action,
+		LyXAction::SingleParUpdate);
+	// Signals that a full-screen update is required
+	bool needsUpdate = !(lyxaction.funcHasFlag(cmd.action, 
+		LyXAction::NoUpdate) || singleParUpdate);
+	// Remember the old paragraph metric
+	Dimension olddim = cur.paragraph().dim();
 
 	switch (cmd.action) {
 
@@ -1125,13 +1133,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 		cur.resetAnchor();
 		moveCursor(cur, false);
-
-		needsUpdate = redoParagraph(cur.pit());
-		if (!needsUpdate) {
-			// update only this paragraph
-			cur.bv().update(Update::SinglePar | Update::Force);
-		}
-
 		bv->updateScrollbar();
 		break;
 	}
@@ -1528,6 +1529,14 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 	}
 
+	if (singleParUpdate)
+		// Inserting characters does not change par height
+	   	if (cur.paragraph().dim().asc == olddim.asc
+		 && cur.paragraph().dim().des == olddim.des) {
+			// if so, update _only_ this paragraph
+			cur.bv().update(Update::SinglePar | Update::Force);
+		} else
+			needsUpdate = true;
 	if (!needsUpdate
 	    && &oldTopSlice.inset() == &cur.inset()
 	    && oldTopSlice.idx() == cur.idx()

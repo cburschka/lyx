@@ -666,12 +666,12 @@ void BufferView::Pimpl::update(Update::flags flags)
 		theCoords.startUpdating();
 
 		// First drawing step
-		ViewMetricsInfo vi = metrics();
+		ViewMetricsInfo vi = metrics(flags & Update::SinglePar);
 		bool forceupdate(flags & Update::Force);
 
 		if ((flags & Update::FitCursor) && fitCursor()) {
 			forceupdate = true;
-			vi = metrics(flags & Update::SinglePar);
+			vi = metrics();
 		}
 		if (forceupdate) {
 			// Second drawing step
@@ -1327,23 +1327,22 @@ ViewMetricsInfo BufferView::Pimpl::metrics(bool singlepar)
 	int pit2 = pit;
 	size_t const npit = text->paragraphs().size();
 
-	lyxerr[Debug::DEBUG]
-                << BOOST_CURRENT_FUNCTION
-                << " npit: " << npit
-                << " pit1: " << pit1
-                << " pit2: " << pit2
-                << endl;
+	// Rebreak anchor paragraph. In Single Paragraph mode, rebreak only
+	// the (main text, not inset!) paragraph containing the cursor.
+	// (if this paragraph contains insets etc., rebreaking will 
+	// recursively descend)
+	if (!singlepar || pit == cursor_.bottom().pit())
+		text->redoParagraph(pit);
+	int y0 = text->getPar(pit).ascent() - offset_ref_;
 
-	// Rebreak anchor par
-	text->redoParagraph(pit);
-	int y0 = text->getPar(pit1).ascent() - offset_ref_;
-
-	// Redo paragraphs above cursor if necessary
+	// Redo paragraphs above anchor if necessary; again, in Single Par
+	// mode, only if we encounter the (main text) one having the cursor.
 	int y1 = y0;
-	while (!singlepar && y1 > 0 && pit1 > 0) {
+	while (y1 > 0 && pit1 > 0) {
 		y1 -= text->getPar(pit1).ascent();
 		--pit1;
-		text->redoParagraph(pit1);
+		if (!singlepar || pit1 == cursor_.bottom().pit())
+			text->redoParagraph(pit1);
 		y1 -= text->getPar(pit1).descent();
 	}
 
@@ -1362,12 +1361,14 @@ ViewMetricsInfo BufferView::Pimpl::metrics(bool singlepar)
 		anchor_ref_ = 0;
 	}
 
-	// Redo paragraphs below cursor if necessary
+	// Redo paragraphs below the anchor if necessary. Single par mode:
+	// only the one containing the cursor if encountered.
 	int y2 = y0;
-	while (!singlepar && y2 < bv.workHeight() && pit2 < int(npit) - 1) {
+	while (y2 < bv.workHeight() && pit2 < int(npit) - 1) {
 		y2 += text->getPar(pit2).descent();
 		++pit2;
-		text->redoParagraph(pit2);
+		if (!singlepar || pit2 == cursor_.bottom().pit())
+			text->redoParagraph(pit2);
 		y2 += text->getPar(pit2).ascent();
 	}
 
@@ -1379,13 +1380,28 @@ ViewMetricsInfo BufferView::Pimpl::metrics(bool singlepar)
 	for (lyx::pit_type pit = pit1; pit <= pit2; ++pit) {
 		y += text->getPar(pit).ascent();
 		theCoords.parPos()[text][pit] = Point(0, y);
+		if (singlepar && pit == cursor_.bottom().pit()) {
+			// In Single Paragraph mode, collect here the 
+		    	// y1 and y2 of the (one) paragraph the cursor is in
+			y1 = y - text->getPar(pit).ascent();
+			y2 = y + text->getPar(pit).descent();
+		}
 		y += text->getPar(pit).descent();
 	}
 
+	if (singlepar) { // collect cursor paragraph iter bounds
+		pit1 = cursor_.bottom().pit();
+		pit2 = cursor_.bottom().pit();
+	}
+	
 	lyxerr[Debug::DEBUG]
                 << BOOST_CURRENT_FUNCTION
                 << " y1: " << y1
                 << " y2: " << y2
+                << " pit1: " << pit1
+                << " pit2: " << pit2
+                << " npit: " << npit
+                << " singlepar: " << singlepar
                 << endl;
 
 	return ViewMetricsInfo(pit1, pit2, y1, y2, singlepar);

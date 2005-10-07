@@ -104,7 +104,7 @@ QContentPane::QContentPane(QWorkArea * parent)
 		this, SLOT(scrollBarChanged(int)));
 
 	// Start the timer, one-shot.
-	step_timer_.start(25, true);
+	step_timer_.start(50, true);
 }
 
 

@@ -1,3 +1,16 @@
+2005-10-07  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* BufferView_pimpl.C (update): choose arguments to update call so
+	that single-par update works most times
+	* text3.C (dispatch): carefully tune updating separately for
+	whole-screen and current-paragraph
+	* rowpainter.C (paintText): 1) replace painting by caching for
+	the two extra paragraphs, because we can;
+	2) suppress greying out of areas below/above drawn area in case of
+	single-par refresh
+	* lyxfunc.C (dispatch): remove superfluous update
+	* LyXAction.[Ch]: introduce SingleParUpdate
+
 2005-10-05  Angus Leeming  <leeming@lyx.org>
 
 	* BufferView_pimpl.C (loadLyXFile): ensure that a pointer is

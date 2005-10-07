@@ -51,7 +51,8 @@ public:
 		ReadOnly = 1, //< can be used in RO mode (perhaps this should change)
 		NoBuffer = 2, //< Can be used when there is no document open
 		Argument = 4, //< Requires argument
-		NoUpdate = 8 //< Does not (usually) require update
+		NoUpdate = 8, //< Does not (usually) require update
+		SingleParUpdate = 16 //< Usually only requires this par updated
 	};
 
 	LyXAction();

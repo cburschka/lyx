@@ -769,30 +769,30 @@ void paintText(BufferView const & bv, ViewMetricsInfo const & vi)
 		yy += text->getPar(pit).descent();
 	}
 
-
-	// paint one paragraph above and one below
+	// Cache one paragraph above and one below
 	// Note MV: this cannot be suppressed even for singlepar.
 	// Try viewing the User Guide Mobius figure
+
 	if (vi.p1 > 0) {
 		text->redoParagraph(vi.p1 - 1);
-		paintPar(pi, *bv.text(), vi.p1 - 1, 0,
-			 vi.y1 -  text->getPar(vi.p1 - 1).descent());
+		theCoords.parPos()[bv.text()][vi.p1 - 1] = 
+			Point(0, vi.y1 - text->getPar(vi.p1 - 1).descent());
 	}
 
 	if (vi.p2 < lyx::pit_type(text->paragraphs().size()) - 1) {
 		text->redoParagraph(vi.p2 + 1);
-		paintPar(pi, *bv.text(), vi.p2 + 1, 0,
-			 vi.y2 + text->getPar(vi.p2 + 1).ascent());
+		theCoords.parPos()[bv.text()][vi.p2 + 1] = 
+			Point(0, vi.y2 + text->getPar(vi.p2 + 1).ascent());
 	}
 
 	// and grey out above (should not happen later)
 //	lyxerr << "par ascent: " << text->getPar(vi.p1).ascent() << endl;
-	if (vi.y1 > 0)
+	if (vi.y1 > 0 && !vi.singlepar)
 		pain.fillRectangle(0, 0, bv.workWidth(), vi.y1, LColor::bottomarea);
 
 	// and possibly grey out below
 //	lyxerr << "par descent: " << text->getPar(vi.p1).ascent() << endl;
-	if (vi.y2 < bv.workHeight())
+	if (vi.y2 < bv.workHeight() && !vi.singlepar)
 		pain.fillRectangle(0, vi.y2, bv.workWidth(), bv.workHeight() - vi.y2, LColor::bottomarea);
 }
 
