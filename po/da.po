@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: da\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2005-09-15 17:09+0200\n"
+"POT-Creation-Date: 2005-10-07 18:51+0200\n"
 "PO-Revision-Date: 2005-07-18 01:51+0200\n"
 "Last-Translator: Claus Hindsgaul <claus_h@image.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -1981,7 +1981,7 @@ msgstr "Sideskift på den aktuelle linje|#S"
 #: src/frontends/xforms/forms/form_tabular.fd:1638
 #: src/frontends/xforms/forms/form_tabular.fd:1656
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:60
-#: src/frontends/qt2/QDocument.C:166 src/text.C:2208
+#: src/frontends/qt2/QDocument.C:166 src/text.C:2219
 msgid "Double"
 msgstr "Dobbelt"
 
@@ -2547,8 +2547,8 @@ msgstr "&O.k."
 #: src/frontends/qt2/ui/QAskForTextDialog.ui:139
 #: src/frontends/qt2/ui/QDocumentDialogBase.ui:214 src/buffer_funcs.C:91
 #: src/buffer_funcs.C:117 src/buffer_funcs.C:158 src/bufferlist.C:84
-#: src/bufferlist.C:183 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:650
-#: src/lyxfunc.C:812 src/lyxfunc.C:1822 src/lyxvc.C:168
+#: src/bufferlist.C:183 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:659
+#: src/lyxfunc.C:821 src/lyxfunc.C:1864 src/lyxvc.C:168
 msgid "&Cancel"
 msgstr "&Anullér"
 
@@ -2617,7 +2617,7 @@ msgstr "Valgte BibTeX-database"
 #: src/frontends/qt2/ui/QIndexDialogBase.ui:143
 #: src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/BufferView_pimpl.C:285
 #: src/frontends/gtk/GBC.h:27 src/frontends/qt2/Qt2BC.h:36
-#: src/frontends/xforms/xformsBC.h:29 src/lyxfunc.C:763
+#: src/frontends/xforms/xformsBC.h:29 src/lyxfunc.C:772
 msgid "Cancel"
 msgstr "Annullér"
 
@@ -2757,7 +2757,7 @@ msgstr "&Anvend"
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:100
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:100
 #: src/frontends/qt2/ui/QWrapDialogBase.ui:93 src/frontends/qt2/QTabular.C:184
-#: src/frontends/xforms/FormBox.C:90 src/frontends/xforms/FormParagraph.C:210
+#: src/frontends/xforms/FormBox.C:90 src/frontends/xforms/FormParagraph.C:187
 msgid "Left"
 msgstr "Venstre"
 
@@ -2767,7 +2767,7 @@ msgstr "Venstre"
 #: src/frontends/controllers/ControlExternal.C:228
 #: src/frontends/controllers/ControlGraphics.C:171
 #: src/frontends/qt2/QTabular.C:185 src/frontends/xforms/FormBox.C:91
-#: src/frontends/xforms/FormParagraph.C:203
+#: src/frontends/xforms/FormParagraph.C:180
 msgid "Center"
 msgstr "Midten"
 
@@ -2775,7 +2775,7 @@ msgstr "Midten"
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:106
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:112
 #: src/frontends/qt2/ui/QWrapDialogBase.ui:99 src/frontends/qt2/QTabular.C:186
-#: src/frontends/xforms/FormBox.C:92 src/frontends/xforms/FormParagraph.C:217
+#: src/frontends/xforms/FormBox.C:92 src/frontends/xforms/FormParagraph.C:194
 msgid "Right"
 msgstr "Højre"
 
@@ -3749,7 +3749,7 @@ msgid "QParagraphDialogBase"
 msgstr "Afsnitslayout ændret"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:48
-#: src/frontends/qt2/QDocument.C:162 src/text.C:2202
+#: src/frontends/qt2/QDocument.C:162 src/text.C:2213
 msgid "Single"
 msgstr "Enkelt"
 
@@ -4345,7 +4345,7 @@ msgid "Cursor follows &scrollbar"
 msgstr "&Markør følger rullebjælke"
 
 #: src/frontends/qt2/ui/QPrefsDialogBase.ui:110 src/bufferlist.C:84
-#: src/bufferlist.C:183 src/lyxfunc.C:649
+#: src/bufferlist.C:183 src/lyxfunc.C:658
 msgid "&Save"
 msgstr "&Gem"
 
@@ -4600,7 +4600,7 @@ msgid "&Horizontal alignment:"
 msgstr "&Vandret justering:"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:94
-#: src/frontends/qt2/QTabular.C:188 src/frontends/xforms/FormParagraph.C:196
+#: src/frontends/qt2/QTabular.C:188 src/frontends/xforms/FormParagraph.C:173
 msgid "Block"
 msgstr "Blok"
 
@@ -8747,7 +8747,7 @@ msgstr "Billedtekstunder"
 msgid "Dictum"
 msgstr "Dictum"
 
-#: lib/layouts/stdfloats.inc:9 src/frontends/xforms/FormTabular.C:134
+#: lib/layouts/stdfloats.inc:9 src/frontends/xforms/FormTabular.C:135
 msgid "Table"
 msgstr "Tabel"
 
@@ -9916,17 +9916,17 @@ msgid "Redo|R"
 msgstr "Gendan|G"
 
 #: lib/ui/stdmenus.ui:84 lib/ui/stdtoolbars.ui:51
-#: src/mathed/math_nestinset.C:428 src/text3.C:821
+#: src/mathed/math_nestinset.C:428 src/text3.C:829
 msgid "Cut"
 msgstr "Klip"
 
 #: lib/ui/stdmenus.ui:85 lib/ui/stdtoolbars.ui:52
-#: src/mathed/math_nestinset.C:433 src/text3.C:826
+#: src/mathed/math_nestinset.C:435 src/text3.C:834
 msgid "Copy"
 msgstr "Kopiér"
 
 #: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:630
-#: src/mathed/math_nestinset.C:413 src/text3.C:805
+#: src/mathed/math_nestinset.C:413 src/text3.C:813
 msgid "Paste"
 msgstr "Indsæt"
 
@@ -10486,12 +10486,12 @@ msgstr ""
 "\n"
 "Vil du gå tilbage til den gemte udgave?"
 
-#: src/BufferView_pimpl.C:258 src/lyxfunc.C:811
+#: src/BufferView_pimpl.C:258 src/lyxfunc.C:820
 msgid "Revert to saved document?"
 msgstr "Gendan gemte dokument?"
 
 # , c-format
-#: src/BufferView_pimpl.C:259 src/lyxfunc.C:812 src/lyxvc.C:168
+#: src/BufferView_pimpl.C:259 src/lyxfunc.C:821 src/lyxvc.C:168
 msgid "&Revert"
 msgstr "&Gendan"
 
@@ -10561,21 +10561,21 @@ msgstr "Vælg LyX-dokument at indsætte"
 #: src/frontends/controllers/ControlExternal.C:160
 #: src/frontends/controllers/ControlGraphics.C:94
 #: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:133
-#: src/lyxfunc.C:1663 src/lyxfunc.C:1700 src/lyxfunc.C:1775
+#: src/lyxfunc.C:1705 src/lyxfunc.C:1742 src/lyxfunc.C:1817
 msgid "Documents|#o#O"
 msgstr "Dokumenter|#d#D"
 
-#: src/BufferView_pimpl.C:837 src/lyxfunc.C:1702 src/lyxfunc.C:1777
+#: src/BufferView_pimpl.C:837 src/lyxfunc.C:1744 src/lyxfunc.C:1819
 msgid "Examples|#E#e"
 msgstr "Eksempler|#E#e"
 
-#: src/BufferView_pimpl.C:842 src/lyx_cb.C:141 src/lyxfunc.C:1670
-#: src/lyxfunc.C:1707
+#: src/BufferView_pimpl.C:842 src/lyx_cb.C:141 src/lyxfunc.C:1712
+#: src/lyxfunc.C:1749
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX-dokumenter (*.lyx)"
 
-#: src/BufferView_pimpl.C:852 src/lyxfunc.C:1717 src/lyxfunc.C:1795
-#: src/lyxfunc.C:1809 src/lyxfunc.C:1825
+#: src/BufferView_pimpl.C:852 src/lyxfunc.C:1759 src/lyxfunc.C:1837
+#: src/lyxfunc.C:1851 src/lyxfunc.C:1867
 msgid "Canceled."
 msgstr "Annulleret."
 
@@ -10964,7 +10964,7 @@ msgstr "Ukendt dokumentklasse"
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr "Bruger standard-dokumentklassen, da %1$s-klassen er ukendt."
 
-#: src/buffer.C:444 src/text.C:336
+#: src/buffer.C:444 src/text.C:338
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Ukendt symbol: %1$s %2$s\n"
@@ -11179,7 +11179,7 @@ msgstr ""
 "\n"
 "Ønsker du at gemme dokumentet eller at skrotte ændringerne?"
 
-#: src/bufferlist.C:83 src/bufferlist.C:182 src/lyxfunc.C:648
+#: src/bufferlist.C:83 src/bufferlist.C:182 src/lyxfunc.C:657
 msgid "Save changed document?"
 msgstr "Gem ændret dokument?"
 
@@ -11417,7 +11417,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "&Overskriv"
 
-#: src/exporter.C:77 src/lyx_cb.C:168 src/lyxfunc.C:1822
+#: src/exporter.C:77 src/lyx_cb.C:168 src/lyxfunc.C:1864
 msgid "&Over-write"
 msgstr "&Overskriv"
 
@@ -12126,12 +12126,12 @@ msgid "Note Settings"
 msgstr "Noteindstillinger"
 
 #: src/frontends/gtk/GParagraph.C:44 src/frontends/qt2/QParagraph.C:40
-#: src/frontends/xforms/FormParagraph.C:62
+#: src/frontends/xforms/FormParagraph.C:55
 msgid "Paragraph Settings"
 msgstr "Afsnits-indstillinger"
 
 #: src/frontends/gtk/GParagraph.C:99 src/frontends/qt2/QParagraph.C:120
-#: src/frontends/xforms/FormParagraph.C:188 src/paragraph.C:612
+#: src/frontends/xforms/FormParagraph.C:165 src/paragraph.C:612
 msgid "Senseless with this layout!"
 msgstr "Giver ingen mening med dette layout"
 
@@ -12183,11 +12183,11 @@ msgid "TeX Information"
 msgstr "TeX-oplysninger|X"
 
 #: src/frontends/gtk/GToc.C:122 src/frontends/xforms/FormErrorList.C:83
-#: src/frontends/xforms/FormToc.C:107 src/frontends/xforms/FormToc.C:125
+#: src/frontends/xforms/FormToc.C:109 src/frontends/xforms/FormToc.C:127
 msgid "*** No Lists ***"
 msgstr "*** Ingen lister ***"
 
-#: src/frontends/gtk/GToc.C:142
+#: src/frontends/gtk/GToc.C:145
 #, fuzzy
 msgid "*** No Items ***"
 msgstr "*** Ingen lister ***"
@@ -12347,7 +12347,7 @@ msgstr "hoveder"
 msgid "fancy"
 msgstr "fancy"
 
-#: src/frontends/qt2/QDocument.C:164 src/text.C:2205
+#: src/frontends/qt2/QDocument.C:164 src/text.C:2216
 msgid "OneHalf"
 msgstr "Halvanden"
 
@@ -12412,7 +12412,7 @@ msgstr "TeX-kodeindstillinger...|X"
 msgid "External Material"
 msgstr "Eksternt materiale"
 
-#: src/frontends/qt2/QExternal.C:340 src/frontends/qt2/QGraphics.C:259
+#: src/frontends/qt2/QExternal.C:340 src/frontends/qt2/QGraphics.C:252
 msgid "Scale%"
 msgstr "Skalering%"
 
@@ -12672,7 +12672,7 @@ msgstr "Hop til reference"
 msgid "Send Document to Command"
 msgstr "Send dokumentet til kommando"
 
-#: src/frontends/qt2/QTabular.C:41 src/frontends/xforms/FormTabular.C:56
+#: src/frontends/qt2/QTabular.C:41 src/frontends/xforms/FormTabular.C:57
 msgid "Table Settings"
 msgstr "Tabelindstillinger"
 
@@ -12685,7 +12685,7 @@ msgstr "LyX: Lodrette afstandsindstillinger"
 msgid "Text Wrap Settings"
 msgstr "Tekstombrydnings-indstillinger"
 
-#: src/frontends/qt2/QtView.C:161
+#: src/frontends/qt2/QtView.C:164
 msgid "LyX"
 msgstr "LyX"
 
@@ -13323,14 +13323,14 @@ msgstr "Matematik-afstand"
 msgid "Math Styles & Fonts"
 msgstr "Matematikstilarter og skrifter"
 
-#: src/frontends/xforms/FormParagraph.C:100
+#: src/frontends/xforms/FormParagraph.C:93
 msgid "Default|Single|OneHalf|Double|Custom"
 msgstr "Standard|Enkelt|Halvanden|Dobbelt|Angiv"
 
-#: src/frontends/xforms/FormParagraph.C:198
-#: src/frontends/xforms/FormParagraph.C:205
-#: src/frontends/xforms/FormParagraph.C:212
-#: src/frontends/xforms/FormParagraph.C:219
+#: src/frontends/xforms/FormParagraph.C:175
+#: src/frontends/xforms/FormParagraph.C:182
+#: src/frontends/xforms/FormParagraph.C:189
+#: src/frontends/xforms/FormParagraph.C:196
 msgid " (default)"
 msgstr " (standard)"
 
@@ -13775,15 +13775,15 @@ msgstr "Indsæt ordet i personlig ordliste."
 msgid "Proportion of document checked."
 msgstr "Dokumentudskrift mislykkedes"
 
-#: src/frontends/xforms/FormTabular.C:136
+#: src/frontends/xforms/FormTabular.C:137
 msgid "Column/Row"
 msgstr "Kolonne/række"
 
-#: src/frontends/xforms/FormTabular.C:138
+#: src/frontends/xforms/FormTabular.C:139
 msgid "Cell"
 msgstr "Celle"
 
-#: src/frontends/xforms/FormTabular.C:140
+#: src/frontends/xforms/FormTabular.C:141
 msgid "LongTable"
 msgstr "Lang tabel"
 
@@ -14215,15 +14215,15 @@ msgstr "PrettyRef"
 msgid "PrettyRef: "
 msgstr "PrettyRef: "
 
-#: src/insets/insettabular.C:412
+#: src/insets/insettabular.C:418
 msgid "Opened table"
 msgstr "Åbnede tabel"
 
-#: src/insets/insettabular.C:1554
+#: src/insets/insettabular.C:1566
 msgid "Error setting multicolumn"
 msgstr "Fejl ved aktivere af flerkollonner"
 
-#: src/insets/insettabular.C:1555
+#: src/insets/insettabular.C:1567
 msgid "You cannot set multicolumn vertically."
 msgstr "Du kan ikke bruge flerkollonner lodret."
 
@@ -14445,11 +14445,11 @@ msgstr "&Omdøb"
 msgid "Choose a filename to save document as"
 msgstr "Vælg filnavnet, som dokumentet skal gemmes under"
 
-#: src/lyx_cb.C:135 src/lyxfunc.C:1665
+#: src/lyx_cb.C:135 src/lyxfunc.C:1707
 msgid "Templates|#T#t"
 msgstr "Skabeloner|#S#s"
 
-#: src/lyx_cb.C:165 src/lyxfunc.C:1819
+#: src/lyx_cb.C:165 src/lyxfunc.C:1861
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -14460,7 +14460,7 @@ msgstr ""
 "\n"
 "Vil du overskrive dette dokument?"
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:1821
+#: src/lyx_cb.C:167 src/lyxfunc.C:1863
 msgid "Over-write document?"
 msgstr "Overskriv dokument?"
 
@@ -14768,31 +14768,31 @@ msgstr "  Antal %1$s"
 msgid "Unknown function."
 msgstr "Ukendt funktion."
 
-#: src/lyxfunc.C:349
+#: src/lyxfunc.C:352
 msgid "Nothing to do"
 msgstr "Intet at gøre"
 
-#: src/lyxfunc.C:367
+#: src/lyxfunc.C:370
 msgid "Unknown action"
 msgstr "Ukendt funktion"
 
-#: src/lyxfunc.C:373 src/lyxfunc.C:630
+#: src/lyxfunc.C:376 src/lyxfunc.C:639
 msgid "Command disabled"
 msgstr "Kommando deaktiveret"
 
-#: src/lyxfunc.C:380
+#: src/lyxfunc.C:383
 msgid "Command not allowed without any document open"
 msgstr "Kommandoen er ikke brugbar uden åbne dokumenter"
 
-#: src/lyxfunc.C:615
+#: src/lyxfunc.C:624
 msgid "Document is read-only"
 msgstr "Dokumentet er skrivebeskyttet."
 
-#: src/lyxfunc.C:624
+#: src/lyxfunc.C:633
 msgid "This portion of the document is deleted."
 msgstr ""
 
-#: src/lyxfunc.C:645
+#: src/lyxfunc.C:654
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -14803,7 +14803,7 @@ msgstr ""
 "\n"
 "Vil du gemme dokumentet?"
 
-#: src/lyxfunc.C:661
+#: src/lyxfunc.C:670
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
@@ -14812,11 +14812,11 @@ msgstr ""
 "Kunne ikke udskrive dokumentet %1$s.\n"
 "Tjek at din printer er sat korrekt op."
 
-#: src/lyxfunc.C:664
+#: src/lyxfunc.C:673
 msgid "Print document failed"
 msgstr "Dokumentudskrift mislykkedes"
 
-#: src/lyxfunc.C:683
+#: src/lyxfunc.C:692
 #, c-format
 msgid ""
 "The document could not be converted\n"
@@ -14825,20 +14825,20 @@ msgstr ""
 "Dokumentet kunne ikke konverteres\n"
 "til dokumentklassen %1$s."
 
-#: src/lyxfunc.C:686
+#: src/lyxfunc.C:695
 msgid "Could not change class"
 msgstr "Kunne ikke skifte klasse"
 
-#: src/lyxfunc.C:794
+#: src/lyxfunc.C:803
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Gemmer dokumentet %1$s..."
 
-#: src/lyxfunc.C:798
+#: src/lyxfunc.C:807
 msgid " done."
 msgstr " færdig."
 
-#: src/lyxfunc.C:809
+#: src/lyxfunc.C:818
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -14847,101 +14847,101 @@ msgstr ""
 "Alle ændringer vil gå tabt. Er du sikker på at du vil gendanne den gemte "
 "udgave af dokumentet %1$s?"
 
-#: src/lyxfunc.C:831
+#: src/lyxfunc.C:840
 msgid "Build"
 msgstr "Opbyg"
 
-#: src/lyxfunc.C:836
+#: src/lyxfunc.C:845
 msgid "ChkTeX"
 msgstr "ChkTeX"
 
-#: src/lyxfunc.C:1008 src/text3.C:1249
+#: src/lyxfunc.C:1017 src/text3.C:1251
 msgid "Missing argument"
 msgstr "Mangler parameter"
 
-#: src/lyxfunc.C:1017
+#: src/lyxfunc.C:1026
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Åbner hjælpefilen %1$s..."
 
-#: src/lyxfunc.C:1249
+#: src/lyxfunc.C:1282
 msgid "Opening child document "
 msgstr "Åbner underdokument "
 
-#: src/lyxfunc.C:1328
+#: src/lyxfunc.C:1361
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Syntaks: set-color <lyx_navn> <x11_navn>"
 
-#: src/lyxfunc.C:1339
+#: src/lyxfunc.C:1372
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Angivelse af farven \"%1$s\" mislykkedes - farven er udefineret eller måske "
 "ikke gendefineret"
 
-#: src/lyxfunc.C:1448
+#: src/lyxfunc.C:1482
 #, fuzzy
 msgid "Document defaults saved in "
 msgstr "Dokument ikke gemt"
 
-#: src/lyxfunc.C:1451
+#: src/lyxfunc.C:1485
 #, fuzzy
 msgid "Unable to save document defaults"
 msgstr "Gem som dokumentstandarder"
 
-#: src/lyxfunc.C:1506
+#: src/lyxfunc.C:1539
 msgid "Converting document to new document class..."
 msgstr "Konverterer dokument til ny dokumentklasse..."
 
-#: src/lyxfunc.C:1515
+#: src/lyxfunc.C:1550
 msgid "Class switch"
 msgstr "Klasseskift"
 
-#: src/lyxfunc.C:1661
+#: src/lyxfunc.C:1703
 msgid "Select template file"
 msgstr "Vælg skabelonfil"
 
-#: src/lyxfunc.C:1698
+#: src/lyxfunc.C:1740
 msgid "Select document to open"
 msgstr "Vælg dokument, som skal åbnes"
 
-#: src/lyxfunc.C:1739
+#: src/lyxfunc.C:1781
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Åbner dokument %1$s..."
 
-#: src/lyxfunc.C:1743
+#: src/lyxfunc.C:1785
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokumentet %1$s blev åbnet."
 
-#: src/lyxfunc.C:1745
+#: src/lyxfunc.C:1787
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Kunne ikke åbne dokumentet %1$s"
 
-#: src/lyxfunc.C:1770
+#: src/lyxfunc.C:1812
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Vælg %1$s-fil at importere"
 
-#: src/lyxfunc.C:1880
+#: src/lyxfunc.C:1922
 msgid "Welcome to LyX!"
 msgstr "Velkommen til LyX!"
 
-#: src/lyxrc.C:2066
+#: src/lyxrc.C:2069
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
 msgstr "Betragt sammensatte ord, såsom \"marionetteater\" som gyldige ord?"
 
-#: src/lyxrc.C:2071
+#: src/lyxrc.C:2074
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
 msgstr "Angiv et alternativt sprog. Normalt anvendes dokumentets sprog."
 
-#: src/lyxrc.C:2075
+#: src/lyxrc.C:2078
 #, fuzzy
 msgid ""
 "Use to define an external program to render tables in plain text output. E."
@@ -14952,7 +14952,7 @@ msgstr ""
 "\"groff -t -Tlatin1 $$FName\" hvor $$FName er ind-filen. Hvis du i stedet "
 "skriver teksten \"none\", benyttes en intern rutine."
 
-#: src/lyxrc.C:2079
+#: src/lyxrc.C:2082
 #, fuzzy
 msgid ""
 "This is the maximum line length of an exported text file (LaTeX, SGML or "
@@ -14961,7 +14961,7 @@ msgstr ""
 "Dette er den maksimale linjelængde på en eksporteret tekstfil.(LaTeX, SGML "
 "eller ren tekst)."
 
-#: src/lyxrc.C:2083
+#: src/lyxrc.C:2086
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
@@ -14969,7 +14969,7 @@ msgstr ""
 "Fravælg, hvis du ikke ønsker at det markerede skal erstattes automatisk af "
 "hvad du måtte skrive."
 
-#: src/lyxrc.C:2087
+#: src/lyxrc.C:2090
 msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
@@ -14977,13 +14977,13 @@ msgstr ""
 "Fravælg, hvis du ikke ønsker at klasseindstillingerne bliver nulstillet "
 "efter skift af klasse."
 
-#: src/lyxrc.C:2091
+#: src/lyxrc.C:2094
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Tidsintervallet mellem automatisk gemning (i sekunder). 0 betyder aldrig."
 
-#: src/lyxrc.C:2098
+#: src/lyxrc.C:2101
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
@@ -14991,13 +14991,13 @@ msgstr ""
 "Stien, hvor sikkerhedskopier gemmes. Hvis den er tom, vil LyX gemme dem i "
 "samme mappe, som den originale fil."
 
-#: src/lyxrc.C:2102
+#: src/lyxrc.C:2105
 msgid ""
 "Define the options of bibtex (cf. man bibtex) or select an alternative "
 "compiler (e.g. mlbibtex or bibulus)."
 msgstr ""
 
-#: src/lyxrc.C:2106
+#: src/lyxrc.C:2109
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
@@ -15005,11 +15005,11 @@ msgstr ""
 "Tastaturudlægningsfil. Kan angive en absolut sti. Ellers vil LyX lede i sine "
 "globale og lokale 'bind/'-mapper."
 
-#: src/lyxrc.C:2110
+#: src/lyxrc.C:2113
 msgid "Select to check whether the lastfiles still exist."
 msgstr "Kontrollér om de nylige filer stadig eksisterer."
 
-#: src/lyxrc.C:2114
+#: src/lyxrc.C:2117
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
@@ -15017,7 +15017,7 @@ msgstr ""
 "Angiv, hvordan chktex skal kaldes. F.eks. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -"
 "n25 -n30 -n38\". Der henvises til ChkTeX's dokumentation."
 
-#: src/lyxrc.C:2124
+#: src/lyxrc.C:2127
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
@@ -15025,7 +15025,7 @@ msgstr ""
 "Det påvirker normalt ikke markørpositionen, når du flytter rullebjælken. "
 "Aktivér, hvis du foretrækker altid at have markøren inden for skærmen."
 
-#: src/lyxrc.C:2138
+#: src/lyxrc.C:2141
 #, no-c-format
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
@@ -15034,15 +15034,15 @@ msgstr ""
 "Her accepteres normale strftime-formater. Se 'man strftime' for detaljerne.F."
 "eks.\"%A, %e. %B %Y\"."
 
-#: src/lyxrc.C:2142
+#: src/lyxrc.C:2145
 msgid "New documents will be assigned this language."
 msgstr "Nye dokumenter vil oprettes med dette standardsprog."
 
-#: src/lyxrc.C:2146
+#: src/lyxrc.C:2149
 msgid "Specify the default paper size."
 msgstr "Angiv standard-papirformat."
 
-#: src/lyxrc.C:2150
+#: src/lyxrc.C:2153
 msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
@@ -15050,11 +15050,11 @@ msgstr ""
 "Minimér dialogvinduerne med hovedvinduet (berører kun dialogbokse, der vises "
 "efter at ændringen er gennemført.)."
 
-#: src/lyxrc.C:2154
+#: src/lyxrc.C:2157
 msgid "Select how LyX will display any graphics."
 msgstr "Angiv, hvordan LyX vil vise grafik."
 
-#: src/lyxrc.C:2158
+#: src/lyxrc.C:2161
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
@@ -15062,11 +15062,11 @@ msgstr ""
 "Standardstien til dine dokumenter. En tom værdi vælger den mappe, LyX blev "
 "startet fra."
 
-#: src/lyxrc.C:2163
+#: src/lyxrc.C:2166
 msgid "Specify additional chars that can be part of a word."
 msgstr "Angiv yderligere tegn, der kan være en del af et ord."
 
-#: src/lyxrc.C:2167
+#: src/lyxrc.C:2170
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
@@ -15074,14 +15074,14 @@ msgstr ""
 "Tegnsættet, der bruges i LaTeX2e fontenc-pakken. T1 anbefales for ikke-"
 "engelske sprog."
 
-#: src/lyxrc.C:2174
+#: src/lyxrc.C:2177
 msgid ""
 "Define the options of makeindex (cf. man makeindex) or select an alternative "
 "compiler. E.g., using xindy/make-rules, the command string would be "
 "\"makeindex.sh -m $$lang\"."
 msgstr ""
 
-#: src/lyxrc.C:2183
+#: src/lyxrc.C:2186
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
@@ -15090,23 +15090,23 @@ msgstr ""
 "Kan være nyttigt, hvis du f.eks. vil skrive græske tekster på et dansk "
 "tastatur."
 
-#: src/lyxrc.C:2187
+#: src/lyxrc.C:2190
 msgid "Maximum number of words in the initialization string for a new label"
 msgstr ""
 "Maksimalt antal ord i initialisationsstrengen for et nyt referencemærke"
 
-#: src/lyxrc.C:2191
+#: src/lyxrc.C:2194
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
 msgstr "Vælg, hvis der kræves en sprogskiftekommando i starten af dokumentet."
 
-#: src/lyxrc.C:2195
+#: src/lyxrc.C:2198
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr "Angiv, om der kræves en sprogskiftekommando ved dokumentets slutning."
 
-#: src/lyxrc.C:2199
+#: src/lyxrc.C:2202
 msgid ""
 "The LaTeX command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
@@ -15116,22 +15116,22 @@ msgstr ""
 "sprog. F.eks. \\selectlanguage{$$lang}, hvor $$lang erstattes med navnet på "
 "det andet sprog."
 
-#: src/lyxrc.C:2203
+#: src/lyxrc.C:2206
 msgid "The LaTeX command for changing back to the language of the document."
 msgstr "Den LaTeX-kommando, der skifter tilbage til dokumentets sprog."
 
-#: src/lyxrc.C:2207
+#: src/lyxrc.C:2210
 msgid "The LaTeX command for local changing of the language."
 msgstr "Den LaTeX-kommando, der skifter sprog lokalt."
 
-#: src/lyxrc.C:2211
+#: src/lyxrc.C:2214
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
 msgstr ""
 "Deaktivér, hvis du ikke ønsker sprog brugt som parameter i \\documentclass."
 
-#: src/lyxrc.C:2215
+#: src/lyxrc.C:2218
 msgid ""
 "The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
@@ -15139,7 +15139,7 @@ msgstr ""
 "Den LaTeX-kommando, der henter sprogpakken. F.eks. \"\\usepackage{babel}\", "
 "\"\\usepackage{omega}\"."
 
-#: src/lyxrc.C:2219
+#: src/lyxrc.C:2222
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
@@ -15147,80 +15147,80 @@ msgstr ""
 "Deaktivér, hvis du ikke ønsker, at babel benyttes, hvis dokumentets sprog er "
 "standardsproget."
 
-#: src/lyxrc.C:2223
+#: src/lyxrc.C:2226
 msgid "The file where the last-files information should be stored."
 msgstr "Filen, hvor listen over nylige filer skal gemmes."
 
-#: src/lyxrc.C:2227
+#: src/lyxrc.C:2230
 msgid "De-select if you don't want LyX to create backup files."
 msgstr "Deaktivér, hvis du ikke vil have at LyX skal oprette sikkerhedskopier."
 
-#: src/lyxrc.C:2231
+#: src/lyxrc.C:2234
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
 msgstr "Fremhæv ord med et andet sprog end dokumentets standardsprog."
 
-#: src/lyxrc.C:2235
+#: src/lyxrc.C:2238
 #, fuzzy, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 msgstr "Maksimalt antal nylige filer. Op til 9 kan optræde i filmenuen."
 
-#: src/lyxrc.C:2239
+#: src/lyxrc.C:2242
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
 msgstr ""
 
-#: src/lyxrc.C:2246
+#: src/lyxrc.C:2249
 msgid ""
 "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "Angiv en alternativ personlig ordliste. F.eks. \".ispell_danish\"."
 
-#: src/lyxrc.C:2250
+#: src/lyxrc.C:2253
 msgid "The bold font in the dialogs."
 msgstr "Fed skrifttype i dialogbokse."
 
-#: src/lyxrc.C:2254
+#: src/lyxrc.C:2257
 msgid "The encoding for the menu/popups fonts."
 msgstr "Tegnsættet for menu/dialog-tekst."
 
-#: src/lyxrc.C:2258
+#: src/lyxrc.C:2261
 msgid "The normal font in the dialogs."
 msgstr "Almindelig skrifttype i dialogbokse."
 
-#: src/lyxrc.C:2262
+#: src/lyxrc.C:2265
 msgid "Shows a typeset preview of things such as math"
 msgstr "Viser opsat smugkig af ting som f.eks. formler"
 
-#: src/lyxrc.C:2266
+#: src/lyxrc.C:2269
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr "Formler i smugkig har \"(#)\"-mærker i stedet for nummererede"
 
-#: src/lyxrc.C:2270
+#: src/lyxrc.C:2273
 msgid "Scale the preview size to suit."
 msgstr "Skalér smugkigsstørrelsen til suit."
 
-#: src/lyxrc.C:2274
+#: src/lyxrc.C:2277
 msgid "The option for specifying whether the copies should be collated."
 msgstr "Om flere kopier af hver side skal udskrives samlet"
 
-#: src/lyxrc.C:2278
+#: src/lyxrc.C:2281
 msgid "The option for specifying the number of copies to print."
 msgstr "Antallet af kopier, der skal udskrives."
 
-#: src/lyxrc.C:2282
+#: src/lyxrc.C:2285
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
 msgstr ""
 "Standardprinteren. Hvis ingen angives, vil LyX bruge miljøvariablen PRINTER."
 
-#: src/lyxrc.C:2286
+#: src/lyxrc.C:2289
 msgid "The option to print only even pages."
 msgstr "Om kun lige sider skal udskrives."
 
-#: src/lyxrc.C:2290
+#: src/lyxrc.C:2293
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
@@ -15228,36 +15228,36 @@ msgstr ""
 "Ekstra tilvalg, der gives til udskriftsprogrammet efter alt andet, dog før "
 "filnavnet på DVI-filen."
 
-#: src/lyxrc.C:2294
+#: src/lyxrc.C:2297
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr "Filendelse for udskriftsprogrammets udfil. Normalt \".ps\"."
 
-#: src/lyxrc.C:2298
+#: src/lyxrc.C:2301
 msgid "The option to print out in landscape."
 msgstr "Udskriv i bredformat."
 
-#: src/lyxrc.C:2302
+#: src/lyxrc.C:2305
 msgid "The option to print only odd pages."
 msgstr "Om kun ulige sider skal udskrives."
 
-#: src/lyxrc.C:2306
+#: src/lyxrc.C:2309
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr ""
 "Her kan indsættes en kommasepareret liste af sider, der skal udskrives."
 
-#: src/lyxrc.C:2310
+#: src/lyxrc.C:2313
 msgid "Option to specify the dimensions of the print paper."
 msgstr "Angiv papirets dimensioner."
 
-#: src/lyxrc.C:2314
+#: src/lyxrc.C:2317
 msgid "The option to specify paper type."
 msgstr "Angiv papirformat."
 
-#: src/lyxrc.C:2318
+#: src/lyxrc.C:2321
 msgid "The option to reverse the order of the pages printed."
 msgstr "Udskriver siderne i omvendt rækkefølge."
 
-#: src/lyxrc.C:2322
+#: src/lyxrc.C:2325
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
@@ -15266,7 +15266,7 @@ msgstr ""
 "Udskriv automatisk til en fil og udfør derefter et separat udskriftsprogram "
 "på denne fil med det givne navn og parametre."
 
-#: src/lyxrc.C:2326
+#: src/lyxrc.C:2329
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
@@ -15274,35 +15274,35 @@ msgstr ""
 "Hvis du angiver et printernavn i udskriftdialogen, vil det følgende "
 "parameter blive foranstillet printernavnet efter udskriftskommandoen."
 
-#: src/lyxrc.C:2330
+#: src/lyxrc.C:2333
 msgid "Option to pass to the print program to print to a file."
 msgstr ""
 "Tilvalg, der skal gives til udskriftsprogrammet for at skrive til en fil."
 
-#: src/lyxrc.C:2334
+#: src/lyxrc.C:2337
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr ""
 "Tilvalg, der videregives til udskriftsprogrammet for at skrive til en "
 "bestemt printer."
 
-#: src/lyxrc.C:2338
+#: src/lyxrc.C:2341
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
 msgstr "Få LyX til at give navnet på målprinteren til din udskriftskommando."
 
-#: src/lyxrc.C:2342
+#: src/lyxrc.C:2345
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "Dit favorit-udskrivningsprogram, f.eks.\"dvips\", \"dvilj4\"."
 
-#: src/lyxrc.C:2346
+#: src/lyxrc.C:2349
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "Vælg for at aktivere understøttelse af højre-til-venstre-sprog (f.eks. "
 "hebraisk og arabisk)."
 
-#: src/lyxrc.C:2350
+#: src/lyxrc.C:2353
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
@@ -15310,16 +15310,16 @@ msgstr ""
 "DPI (piksler per tomme) på din skærm bestemmes automatisk af LyX. "
 "Gennemtving en indstilling her, hvis det går galt."
 
-#: src/lyxrc.C:2354
+#: src/lyxrc.C:2357
 msgid "The encoding for the screen fonts."
 msgstr "Tegnsættet for skærmtekst."
 
-#: src/lyxrc.C:2360
+#: src/lyxrc.C:2363
 msgid "The screen fonts used to display the text while editing."
 msgstr ""
 "Skrifttyper, der benyttes til at vise tekst på skærmen under redigering."
 
-#: src/lyxrc.C:2369
+#: src/lyxrc.C:2372
 msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
@@ -15329,12 +15329,12 @@ msgstr ""
 "kan dette få nogle af skrifterne til at se kantede ud i LyX. Ellers vil LyX "
 "bruge den nærmeste bitmap-fontstørrelse fremfor at skalere."
 
-#: src/lyxrc.C:2373
+#: src/lyxrc.C:2376
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr ""
 "Skriftstørrelserne, der benyttes ved beregning af skærmskrifternes størrelse."
 
-#: src/lyxrc.C:2378
+#: src/lyxrc.C:2381
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
@@ -15343,7 +15343,7 @@ msgstr ""
 "Forstørrelse for skærmskrifter. En indstilling på 100% vil give nogenlunde "
 "samme størrelser som på papir."
 
-#: src/lyxrc.C:2382
+#: src/lyxrc.C:2385
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
@@ -15351,16 +15351,16 @@ msgstr ""
 "Dette starter lyxserveren. Datakanaler får påsat filendelsen \".in\" og \"."
 "out\". Kun for avancerede brugere."
 
-#: src/lyxrc.C:2389
+#: src/lyxrc.C:2392
 msgid "De-select if you don't want the startup banner."
 msgstr "Deaktivér, hvis du ikke ønsker opstartsbanneret."
 
-#: src/lyxrc.C:2393
+#: src/lyxrc.C:2396
 #, fuzzy
 msgid "What command runs the spellchecker?"
 msgstr "Kommando for stavekontrollen?"
 
-#: src/lyxrc.C:2397
+#: src/lyxrc.C:2400
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
@@ -15368,7 +15368,7 @@ msgstr ""
 "LyX vil lægge sine midlertidige filer i denne sti. De vil blive slettet, når "
 "du afslutter LyX."
 
-#: src/lyxrc.C:2401
+#: src/lyxrc.C:2404
 msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
@@ -15376,7 +15376,7 @@ msgstr ""
 "Stien, som LyX vi bruge, når den tilbyder at vælge en skabelon. En tom værdi "
 "vælger den mappe, LyX blev startet fra."
 
-#: src/lyxrc.C:2408
+#: src/lyxrc.C:2411
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
@@ -15384,7 +15384,7 @@ msgstr ""
 "Brugergrænseflade-fil. Hvis der ikke angives en absolut sti vil LyX lede i "
 "sine globale og lokale 'ui/'-mapper."
 
-#: src/lyxrc.C:2421
+#: src/lyxrc.C:2424
 #, fuzzy
 msgid ""
 "Specify whether to pass the -T input encoding option to ispell. Enable this "
@@ -15395,13 +15395,13 @@ msgstr ""
 "ikke kan kontrollere ord med fremmede bogstaver i dem. Dette virker ikke med "
 "alle ordbøger."
 
-#: src/lyxrc.C:2428
+#: src/lyxrc.C:2431
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 "Angiv papirkommandoen til DVI-fremviseren (efterlad tom eller brug \"-paper"
 "\")"
 
-#: src/lyxrc.C:2435
+#: src/lyxrc.C:2438
 msgid ""
 "The number of lines that are scrolled by mice with wheels or five button "
 "mice."
@@ -15513,11 +15513,11 @@ msgstr ""
 msgid "Math editor mode"
 msgstr "Matematikredigering"
 
-#: src/mathed/math_nestinset.C:775
+#: src/mathed/math_nestinset.C:779
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/math_nestinset.C:778
+#: src/mathed/math_nestinset.C:782
 #, fuzzy
 msgid "entered math text mode (textrm)"
 msgstr "Normal teksttilstand\t\\textrm"
@@ -15551,13 +15551,13 @@ msgstr "Referencer: "
 msgid "All files (*)"
 msgstr "Alle filer (*)"
 
-#: src/support/package.C.in:464
+#: src/support/package.C.in:424
 #, c-format
 msgid ""
 "Unable to determine the path to the LyX binary from the command line %1$s"
 msgstr ""
 
-#: src/support/package.C.in:585
+#: src/support/package.C.in:545
 #, c-format
 msgid ""
 "Unable to determine the system directory having searched\n"
@@ -15566,21 +15566,21 @@ msgid ""
 "LYX_DIR_14x to the LyX system directory containing the file `chkconfig.ltx'."
 msgstr ""
 
-#: src/support/package.C.in:669
+#: src/support/package.C.in:630
 #, c-format
 msgid ""
 "Invalid %1$s switch.\n"
 "Directory %2$s does not contain %3$s."
 msgstr ""
 
-#: src/support/package.C.in:695
+#: src/support/package.C.in:656
 #, c-format
 msgid ""
 "Invalid %1$s environment variable.\n"
 "Directory %2$s does not contain %3$s."
 msgstr ""
 
-#: src/support/package.C.in:718
+#: src/support/package.C.in:679
 #, c-format
 msgid ""
 "Invalid %1$s environment variable.\n"
@@ -15592,27 +15592,27 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Ukendt indstik"
 
-#: src/text.C:179
+#: src/text.C:181
 #, fuzzy
 msgid "Unknown layout"
 msgstr "Ukendt funktion"
 
-#: src/text.C:180
+#: src/text.C:182
 #, c-format
 msgid ""
 "Layout '%1$s' does not exist in textclass '%2$s'\n"
 "Trying to use the default instead.\n"
 msgstr ""
 
-#: src/text.C:211
+#: src/text.C:213
 msgid "Unknown Inset"
 msgstr "Ukendt indstik"
 
-#: src/text.C:335
+#: src/text.C:337
 msgid "Unknown token"
 msgstr "Ukendt symbol"
 
-#: src/text.C:1163
+#: src/text.C:1166
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
@@ -15620,59 +15620,59 @@ msgstr ""
 "Du kan ikke indsætte et mellemrum i begyndelsen af et afsnit. Læs venligst "
 "Selvstudium."
 
-#: src/text.C:1175
+#: src/text.C:1178
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Du kan ikke indtaste to mellemrum på denne måde. Læs venligst Selvstudium."
 
-#: src/text.C:2171
+#: src/text.C:2182
 msgid "Change: "
 msgstr "Ændring: "
 
-#: src/text.C:2175
+#: src/text.C:2186
 msgid " at "
 msgstr " på "
 
-#: src/text.C:2186
+#: src/text.C:2197
 #, c-format
 msgid "Font: %1$s"
 msgstr "Skrift: %1$s"
 
-#: src/text.C:2193
+#: src/text.C:2204
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr ", Dybde: %1$s"
 
-#: src/text.C:2199
+#: src/text.C:2210
 msgid ", Spacing: "
 msgstr ", mellemrum: "
 
-#: src/text.C:2211
+#: src/text.C:2222
 msgid "Other ("
 msgstr "Andet ("
 
-#: src/text.C:2220
+#: src/text.C:2231
 msgid ", Inset: "
 msgstr ", Indstik: "
 
-#: src/text.C:2221
+#: src/text.C:2232
 msgid ", Paragraph: "
 msgstr ", Afsnit: "
 
-#: src/text.C:2222
+#: src/text.C:2233
 #, fuzzy
 msgid ", Id: "
 msgstr ", Indstik: "
 
-#: src/text.C:2223
+#: src/text.C:2234
 msgid ", Position: "
 msgstr ", Placering: "
 
-#: src/text.C:2224
+#: src/text.C:2235
 msgid ", Boundary: "
 msgstr ""
 
-#: src/text2.C:532
+#: src/text2.C:534
 msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
@@ -15680,35 +15680,35 @@ msgstr ""
 "Ingen skriftændring er defineret. Brug Tegn under Layout-menuen til at "
 "definere skriftændring."
 
-#: src/text2.C:574
+#: src/text2.C:576
 msgid "Nothing to index!"
 msgstr "Intet at indeksere!"
 
-#: src/text2.C:576
+#: src/text2.C:578
 msgid "Cannot index more than one paragraph!"
 msgstr "Kan ikke indeksere flere end ét afsnit!"
 
-#: src/text3.C:720
+#: src/text3.C:728
 msgid "Unknown spacing argument: "
 msgstr "Ukendt linjeafstandsparameter: "
 
-#: src/text3.C:870
+#: src/text3.C:878
 msgid "LyX function 'layout' needs an argument."
 msgstr "LyX-funktionen 'layout' skal bruge et parameter."
 
-#: src/text3.C:888
+#: src/text3.C:896
 msgid "Layout "
 msgstr "Layout "
 
-#: src/text3.C:889
+#: src/text3.C:897
 msgid " not known"
 msgstr " ukendt"
 
-#: src/text3.C:1354 src/text3.C:1366
+#: src/text3.C:1356 src/text3.C:1368
 msgid "Character set"
 msgstr "Tegnsæt"
 
-#: src/text3.C:1499
+#: src/text3.C:1501
 msgid "Paragraph layout set"
 msgstr "Afsnitslayout ændret"
 
