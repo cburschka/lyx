@@ -279,7 +279,7 @@ string const get_temp_dir()
 {
 #if defined (USE_WINDOWS_PACKAGING)
 	// Typical example: C:/TEMP/.
-	char path[PATH_MAX + 1];
+	char path[PATH_MAX];
 	GetTempPath(PATH_MAX, path);
 	return os::internal_path(path);
 #else // Posix-like.
@@ -543,8 +543,8 @@ get_user_support_dir(string const & default_user_support_dir,
 }
 
 
-// $HOME/.lyx on all platforms but Win32 where it will be something like
-// "C:/Documents and Settings/USERNAME/Application Data/lyx"
+// $HOME/.lyx on POSIX but on Win32 it will be something like
+// "C:/Documents and Settings/USERNAME/Application Data/LyX"
 string const get_default_user_support_dir(string const & home_dir)
 {
 #if defined (USE_WINDOWS_PACKAGING)
