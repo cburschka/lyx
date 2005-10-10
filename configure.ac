@@ -1,6 +1,6 @@
 dnl Process with autoconf to generate configure script   -*- sh -*-
 
-AC_INIT(lyx,1.4.0pre2,lyx-devel@lists.lyx.org)
+AC_INIT(lyx,1.4.0cvs,lyx-devel@lists.lyx.org)
 AC_PREREQ(2.52)
 AC_CONFIG_SRCDIR(src/main.C)
 AM_CONFIG_HEADER([src/config.h])
@@ -8,7 +8,7 @@ AM_CONFIG_HEADER([src/config.h])
 AC_CONFIG_AUX_DIR(config)
 
 PACKAGE=lyx${program_suffix}
-VERSION="1.4.0pre2"
+VERSION="1.4.0cvs"
 LYX_CHECK_VERSION
 
 dnl default maintainer mode to true for development versions
