@@ -90,12 +90,22 @@ $(DEPENDFILE): $(srcdir)/Makefile.am $(srcdir)/depend.py
 dist-hook: $(tocfiles)
 	for i in $(tocfiles); \
 	do \
-		cp -p "$$i" "$(distdir)"; \
+		if test -f "$(srcdir)/$$i"; then file="$(srcdir)/$$i"; \
+		else file="$$i"; fi; \
+		cp -p "$$file" "$(distdir)"; \
 	done
 install-data-hook: $(tocfiles)
 	for i in $(tocfiles); \
 	do \
-		$(docDATA_INSTALL) "$$i" "$(DESTDIR)$(docdir)/$$i"; \
+		if test -f "$(srcdir)/$$i"; then file="$(srcdir)/$$i"; \
+		else file="$$i"; fi; \
+		$(docDATA_INSTALL) "$$file" "$(DESTDIR)$(docdir)/$$i"; \
+	done
+
+uninstall-local:
+	for i in $(tocfiles); \
+	do \
+		$(RM) "$(DESTDIR)$(docdir)/$$i" ; \
 	done
 
 .PHONY: TOCs

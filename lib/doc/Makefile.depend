@@ -13,16 +13,16 @@ cs_TOC.lyx: $(srcdir)/cs_Tutorial.lyx
 da_TOC.lyx: $(srcdir)/da_Intro.lyx
 	python $(srcdir)/doc_toc.py da
 
-de_TOC.lyx: $(srcdir)/de_Extended.lyx $(srcdir)/de_UserGuide.lyx $(srcdir)/de_Intro.lyx $(srcdir)/de_FAQ.lyx $(srcdir)/de_Customization.lyx $(srcdir)/de_Tutorial.lyx
+de_TOC.lyx: $(srcdir)/de_Customization.lyx $(srcdir)/de_FAQ.lyx $(srcdir)/de_Extended.lyx $(srcdir)/de_UserGuide.lyx $(srcdir)/de_Tutorial.lyx $(srcdir)/de_Intro.lyx
 	python $(srcdir)/doc_toc.py de
 
-es_TOC.lyx: $(srcdir)/es_Tutorial.lyx $(srcdir)/es_Intro.lyx
+es_TOC.lyx: $(srcdir)/es_Intro.lyx $(srcdir)/es_Tutorial.lyx
 	python $(srcdir)/doc_toc.py es
 
-eu_TOC.lyx: $(srcdir)/eu_Extended.lyx $(srcdir)/eu_FAQ.lyx $(srcdir)/eu_Intro.lyx $(srcdir)/eu_Customization.lyx $(srcdir)/eu_UserGuide.lyx $(srcdir)/eu_Tutorial.lyx
+eu_TOC.lyx: $(srcdir)/eu_FAQ.lyx $(srcdir)/eu_Intro.lyx $(srcdir)/eu_Extended.lyx $(srcdir)/eu_UserGuide.lyx $(srcdir)/eu_Customization.lyx $(srcdir)/eu_Tutorial.lyx
 	python $(srcdir)/doc_toc.py eu
 
-fr_TOC.lyx: $(srcdir)/fr_Customization.lyx $(srcdir)/fr_Intro.lyx $(srcdir)/fr_UserGuide.lyx $(srcdir)/fr_FAQ.lyx $(srcdir)/fr_Tutorial.lyx $(srcdir)/fr_Extended.lyx
+fr_TOC.lyx: $(srcdir)/fr_FAQ.lyx $(srcdir)/fr_Customization.lyx $(srcdir)/fr_Extended.lyx $(srcdir)/fr_Tutorial.lyx $(srcdir)/fr_UserGuide.lyx $(srcdir)/fr_Intro.lyx
 	python $(srcdir)/doc_toc.py fr
 
 he_TOC.lyx: $(srcdir)/he_Tutorial.lyx $(srcdir)/he_Intro.lyx
@@ -31,16 +31,16 @@ he_TOC.lyx: $(srcdir)/he_Tutorial.lyx $(srcdir)/he_Intro.lyx
 hu_TOC.lyx: $(srcdir)/hu_Intro.lyx
 	python $(srcdir)/doc_toc.py hu
 
-it_TOC.lyx: $(srcdir)/it_UserGuide.lyx $(srcdir)/it_Customization.lyx $(srcdir)/it_Tutorial.lyx $(srcdir)/it_Intro.lyx
+it_TOC.lyx: $(srcdir)/it_Tutorial.lyx $(srcdir)/it_Customization.lyx $(srcdir)/it_UserGuide.lyx $(srcdir)/it_Intro.lyx
 	python $(srcdir)/doc_toc.py it
 
-nl_TOC.lyx: $(srcdir)/nl_Intro.lyx $(srcdir)/nl_Tutorial.lyx
+nl_TOC.lyx: $(srcdir)/nl_Tutorial.lyx $(srcdir)/nl_Intro.lyx
 	python $(srcdir)/doc_toc.py nl
 
 no_TOC.lyx: $(srcdir)/no_Intro.lyx
 	python $(srcdir)/doc_toc.py no
 
-pl_TOC.lyx: $(srcdir)/pl_Extended.lyx $(srcdir)/pl_Intro.lyx $(srcdir)/pl_Tutorial.lyx
+pl_TOC.lyx: $(srcdir)/pl_Extended.lyx $(srcdir)/pl_Tutorial.lyx $(srcdir)/pl_Intro.lyx
 	python $(srcdir)/doc_toc.py pl
 
 pt_TOC.lyx: $(srcdir)/pt_Intro.lyx $(srcdir)/pt_Tutorial.lyx
@@ -49,10 +49,10 @@ pt_TOC.lyx: $(srcdir)/pt_Intro.lyx $(srcdir)/pt_Tutorial.lyx
 ro_TOC.lyx: $(srcdir)/ro_Intro.lyx
 	python $(srcdir)/doc_toc.py ro
 
-ru_TOC.lyx: $(srcdir)/ru_Intro.lyx $(srcdir)/ru_FAQ.lyx $(srcdir)/ru_Tutorial.lyx
+ru_TOC.lyx: $(srcdir)/ru_Tutorial.lyx $(srcdir)/ru_FAQ.lyx $(srcdir)/ru_Intro.lyx
 	python $(srcdir)/doc_toc.py ru
 
-sk_TOC.lyx: $(srcdir)/sk_Tutorial.lyx $(srcdir)/sk_UserGuide.lyx
+sk_TOC.lyx: $(srcdir)/sk_UserGuide.lyx $(srcdir)/sk_Tutorial.lyx
 	python $(srcdir)/doc_toc.py sk
 
 sl_TOC.lyx: $(srcdir)/sl_Tutorial.lyx $(srcdir)/sl_Intro.lyx
