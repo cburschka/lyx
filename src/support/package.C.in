@@ -584,15 +584,16 @@ get_user_support_dir(string const & default_user_support_dir,
 }
 
 
-// $HOME/.lyx on all platforms but Win32 where it will be something like
-// "C:/Documents and Settings/USERNAME/Application Data/lyx"
+// $HOME/.lyx on POSIX but on Win32 it will be something like
+// "C:/Documents and Settings/USERNAME/Application Data/LyX"
 string const get_default_user_support_dir(string const & home_dir)
 {
 #if defined (USE_WINDOWS_PACKAGING)
 	(void)home_dir; // Silence warning about unused variable.
 
+	string const user_dir = (string(PACKAGE) == "lyx") ? "LyX" : PACKAGE;
 	os::GetFolderPath win32_folder_path;
-	return AddPath(win32_folder_path(os::GetFolderPath::APPDATA), PACKAGE);
+	return AddPath(win32_folder_path(os::GetFolderPath::APPDATA), user_dir);
 
 #elif defined (USE_MACOSX_PACKAGING)
 	(void)home_dir; // Silence warning about unused variable.
@@ -611,7 +612,8 @@ string const get_default_user_support_dir(string const & home_dir)
 	if (status_code != 0)
 		return string();
 
-	return AddPath(reinterpret_cast<char const *>(store), PACKAGE);
+	string const user_dir = (string(PACKAGE) == "lyx") ? "LyX" : PACKAGE;
+	return AddPath(reinterpret_cast<char const *>(store), user_dir);
 
 #else // USE_POSIX_PACKAGING
 	return AddPath(home_dir, string(".") + PACKAGE);
