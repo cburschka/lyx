@@ -1,11 +1,12 @@
 #!/bin/sh
 # ron@18james.com, 11 Dec 2003
+# With modifications by Bennett Helm
 
-lyxpipe=/Users/$USER/.lyx/.lyxpipe
+lyxpipe=/Users/$USER/Library/Application\ Support/LyX/.lyxpipe
 if  [ ! -p $lyxpipe.out ]
   then
     lyxprefs=`expr "$0" : '\(.*\)MacOS/lyxeditor'`Resources/lyx/preferences
-    lyxpipe=`perl -n -e 'print,exit if s/^.serverpipe\\s+\"(.+)\"/$1/;' ~/.lyx/preferences $lyxprefs`
+    lyxpipe=`perl -n -e 'print,exit if s/^.serverpipe\\s+\"(.+)\"/$1/;' ~/Library/Application\ Support/LyX/preferences $lyxprefs`
 fi
 [ -p $lyxpipe.in ] || exit 0
 file=`echo "$1" | sed 's|^/private||'`
