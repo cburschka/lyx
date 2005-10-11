@@ -1389,7 +1389,8 @@ ViewMetricsInfo BufferView::Pimpl::metrics(bool singlepar)
 		y += text->getPar(pit).descent();
 	}
 
-	if (singlepar) { // collect cursor paragraph iter bounds
+	if (singlepar) {
+		// collect cursor paragraph iter bounds
 		pit1 = cursor_.bottom().pit();
 		pit2 = cursor_.bottom().pit();
 	}
