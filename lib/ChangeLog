@@ -1,12 +1,18 @@
+2005-10-12  Hartmut Haase  <hha4491@atomstromfrei.de>
+
+	* examples/de_splash.lyx: update.
+
+	* example/de_Minipage.lyx: new file.
+
 2005-10-03  Michael Gerz  <michael.gerz@teststep.org>
 
-        * CREDITS: change name & address (Schmitt => Gerz)
+	* CREDITS: change name & address (Schmitt => Gerz)
 
 2005-10-02  Michael Gerz  <michael.gerz@teststep.org>
 
-        * bind/cua.bind:
-        * bind/mac.bind:
-        * bind/sciword.bind: bind "primary-selection-paste (paragraph)"
+	* bind/cua.bind:
+	* bind/mac.bind:
+	* bind/sciword.bind: bind "primary-selection-paste (paragraph)"
 
 2005-10-02  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
@@ -286,7 +292,7 @@
 2004-05-03  José Matos  <jamatos@lyx.org>
 
 	* reLyX/MakePreamble.pm(translate_preamble): use a saner method
-        to translate \usepackage from the preamble, fix #1584.
+	to translate \usepackage from the preamble, fix #1584.
 
 2004-05-03  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 

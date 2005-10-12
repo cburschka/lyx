@@ -6,14 +6,18 @@
 \fontscheme default
 \graphics default
 \paperfontsize default
-\spacing single
+\spacing single 
 \papersize Default
 \paperpackage a4
-\use_geometry 0
+\use_geometry 1
 \use_amsmath 0
 \use_natbib 0
 \use_numerical_citations 0
 \paperorientation portrait
+\leftmargin 2cm
+\topmargin 1cm
+\rightmargin 2cm
+\bottommargin 1cm
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
@@ -27,6 +31,10 @@
 \layout Title
 
 Willkommen bei LyX!
+\layout Date
+
+letzte Änderung: 3.
+ Oktober 2005
 \layout Section*
 
 Die wichtigsten Dinge, wenn Sie LyX verwenden 
@@ -79,27 +87,31 @@ ion erläutert.
 Mit LyX erstellte Texte sehen gut aus.
  Überzeugen Sie sich davon mit 
 \family sans 
-Anzei
+Ans
 \bar under 
-g
+i
 \bar default 
-en\SpecialChar \menuseparator
+cht\SpecialChar \menuseparator
 
 \bar under 
 D
 \bar default 
 VI
 \family default 
+ oder 
+\family sans 
+Strg+D
+\family default 
 .
 \layout Enumerate
 
 Ja, LyX kann (fast) die gesamte Funktionalität von LaTeX umsetzen.
- Und, ja, LyX kann vorhandene LaTeX-Dateien importieren.
+ Und LyX kann auch vorhandene LaTeX-Dateien importieren.
  Erfahrene LaTeX-Nutzer sollten das 
 \emph on 
 Tutorium
 \emph default 
- überfliegen und dann das Kapitel 
+ überfliegen und dann den Abschnitt 
 \begin_inset Quotes gld
 \end_inset 
 
@@ -115,10 +127,18 @@ LyX für LaTeX-Benutzer
 LyX bietet ausführliche Unterstützung für all diejenigen, die eine andere
  Sprache als Englisch lesen und schreiben.
  Darüberhinaus sind Dinge wie Tastaturbelegung, Werkzeugleiste und viele
- weitere Charakteristiken frei konfigurierbar (das meiste durch editieren
- der Datei 
-\family typewriter 
-lyxrc
+ weitere Charakteristiken frei konfigurierbar (das meiste durch 
+\family sans 
+\bar under 
+B
+\bar default 
+earbeiten\SpecialChar \menuseparator
+E
+\bar under 
+i
+\bar default 
+nstellungen\SpecialChar \ldots{}
+
 \family default 
 ).
  Näheres erläutert 
@@ -136,7 +156,7 @@ npassung
 .
 \layout Enumerate
 
-Die Web-Seite von LyX ist auf 
+Die Internet-Seite von LyX hat die Adresse 
 \family typewriter 
 
 \begin_inset LatexCommand \url{http://www.lyx.org/}
