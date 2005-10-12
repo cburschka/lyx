@@ -415,7 +415,8 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		size_t n = 0;
 		istringstream is(cmd.argument);
 		is >> n;
-		pasteSelection(cur, n);
+		string const selection = lyx::cap::getSelection(cur.buffer(), n);
+		cur.niceInsert(selection);
 		cur.clearSelection(); // bug 393
 		cur.bv().switchKeyMap();
 		finishUndo();
@@ -427,6 +428,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		cutSelection(cur, true, true);
 		cur.message(_("Cut"));
 		// Prevent stale position >= size crash
+		// Probably not necessary anymore, see eraseSelection (gb 2005-10-09)
 		cur.normalize();
 		break;
 

@@ -105,6 +105,13 @@ void finishUndo();
  * end' of the range of changed  paragraphs.  So we give an inclusive range.
  * This is called before you make the changes to the paragraph, and it
  * will record the original information of the paragraphs in the undo stack.
+ *
+ * FIXME: We need something to record undo in partial grids for mathed.
+ * Right now we use recordUndoInset if more than one cell is changed,
+ * but that puts the cursor in front of the inset after undo. We would need
+ * something like
+ * recordUndoGrid(LCursor & cur, Undo::undo_kind kind, idx_type from, idx_type to);
+ * and store the cell information in class Undo.
  */
 
 /// The general case: prepare undo for an arbitrary range.

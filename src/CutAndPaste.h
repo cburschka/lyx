@@ -67,7 +67,7 @@ void SwitchBetweenClasses(lyx::textclass_type c1,
 void replaceWord(LCursor & cur, std::string const & replacestring);
 
 ///
-std::string grabSelection(LCursor & cur);
+std::string grabSelection(LCursor const & cur);
 ///
 void eraseSelection(LCursor & cur);
 ///

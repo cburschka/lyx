@@ -1,5 +1,11 @@
 2005-10-09  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
+	* math_gridinset.C (doDispatch): adjust paste to match paste in text
+	and math nest inset
+	* math_nestinset.C (doDispatch): implement paste (bug 2059)
+
+2005-10-09  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
 	* math_nestinset.C (doDispatch): Don't record undo steps when
 	inserting characters of a macro name (see comment)
 

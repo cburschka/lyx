@@ -370,7 +370,6 @@ string grabAndEraseSelection(LCursor & cur)
 		return string();
 	string res = grabSelection(cur);
 	eraseSelection(cur);
-	cur.selection() = false;
 	return res;
 }
 
@@ -473,14 +472,15 @@ std::vector<string> const availableSelections(Buffer const & buffer)
 }
 
 
-int nrOfParagraphs()
-{
-	return theCuts.empty() ? 0 : theCuts[0].first.size();
-}
-
-
 void cutSelection(LCursor & cur, bool doclear, bool realcut)
 {
+	// This doesn't make sense, if there is no selection
+	if (!cur.selection())
+		return;
+
+	// OK, we have a selection. This is always between cur.selBegin()
+	// and cur.selEnd()
+
 	if (cur.inTexted()) {
 		LyXText * text = cur.text();
 		BOOST_ASSERT(text);
@@ -493,13 +493,6 @@ void cutSelection(LCursor & cur, bool doclear, bool realcut)
 		// faster we need to be more clever and probably also have more
 		// calls to stuffClipboard. (Lgb)
 //		cur.bv().stuffClipboard(cur.selectionAsString(true));
-
-		// This doesn't make sense, if there is no selection
-		if (!cur.selection())
-			return;
-
-		// OK, we have a selection. This is always between cur.selBegin()
-		// and cur.selEnd()
 
 		// make sure that the depth behind the selection are restored, too
 		recordUndoSelection(cur);
@@ -542,11 +535,18 @@ void cutSelection(LCursor & cur, bool doclear, bool realcut)
 	}
 
 	if (cur.inMathed()) {
-		lyxerr << "cutSelection in mathed" << endl;
-		LCursor tmp = cur;
-		copySelection(cur);
-		cur.selection() = false;
-		eraseSelection(tmp);
+		if (cur.selBegin().idx() != cur.selEnd().idx()) {
+			// The current selection spans more than one cell.
+			// Record all cells
+			recordUndoInset(cur);
+		} else {
+			// Record only the current cell to avoid a jumping
+			// cursor after undo
+			recordUndo(cur);
+		}
+		if (realcut)
+			copySelection(cur);
+		eraseSelection(cur);
 	}
 }
 
@@ -630,15 +630,13 @@ void pasteSelection(LCursor & cur, size_t sel_index)
 		cur.bv().showErrorList(_("Paste"));
 
 		cur.clearSelection();
-		cur.resetAnchor();
 		text->setCursor(cur, ppp.first, ppp.second);
 		cur.setSelection();
 		updateCounters(cur.buffer());
 	}
 
-	if (cur.inMathed()) {
-		lyxerr << "### should be handled in MathNest/GridInset" << endl;
-	}
+	// mathed is handled in MathNestInset/MathGridInset
+	BOOST_ASSERT(!cur.inMathed());
 }
 
 
@@ -710,6 +708,10 @@ void eraseSelection(LCursor & cur)
 		cur.top() = i1;
 		if (i1.idx() == i2.idx()) {
 			i1.cell().erase(i1.pos(), i2.pos());
+			// We may have deleted i1.cell(cur.pos()).
+			// Make sure that pos is valid.
+			if (cur.pos() > cur.lastpos())
+				cur.pos() = cur.lastpos();
 		} else {
 			MathInset * p = i1.asMathInset();
 			InsetBase::row_type r1, r2;
@@ -721,7 +723,8 @@ void eraseSelection(LCursor & cur)
 			// We've deleted the whole cell. Only pos 0 is valid.
 			cur.pos() = 0;
 		}
-		cur.resetAnchor();
+		// need a valid cursor. (Lgb)
+		cur.clearSelection();
 	} else {
 		lyxerr << "can't erase this selection 1" << endl;
 	}
@@ -732,10 +735,8 @@ void eraseSelection(LCursor & cur)
 void selDel(LCursor & cur)
 {
 	//lyxerr << "LCursor::selDel" << endl;
-	if (cur.selection()) {
+	if (cur.selection())
 		eraseSelection(cur);
-		cur.selection() = false;
-	}
 }
 
 
@@ -749,10 +750,19 @@ void selClearOrDel(LCursor & cur)
 }
 
 
-string grabSelection(LCursor & cur)
+string grabSelection(LCursor const & cur)
 {
 	if (!cur.selection())
 		return string();
+
+	// FIXME: What is wrong with the following?
+#if 0
+	std::ostringstream os;
+	for (DocIterator dit = cur.selectionBegin();
+	     dit != cur.selectionEnd(); dit.forwardPos())
+		os << asString(dit.cell());
+	return os.str();
+#endif
 
 	CursorSlice i1 = cur.selBegin();
 	CursorSlice i2 = cur.selEnd();

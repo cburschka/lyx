@@ -1196,7 +1196,8 @@ void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_PASTE: {
-		lyxerr << "MathGridInset: PASTE: " << cmd << std::endl;
+		cur.message(_("Paste"));
+		lyx::cap::replaceSelection(cur);
 		istringstream is(cmd.argument);
 		int n = 0;
 		is >> n;
@@ -1230,6 +1231,9 @@ void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 				for (col_type c = 0; c < grid.ncols(); ++c)
 					cell(i).append(grid.cell(grid.index(r, c)));
 		}
+		cur.clearSelection(); // bug 393
+		cur.bv().switchKeyMap();
+		finishUndo();
 		break;
 	}
 

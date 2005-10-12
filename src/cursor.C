@@ -1126,9 +1126,9 @@ string LCursor::selectionAsString(bool label) const
 		return result;
 	}
 
-#ifdef WITH_WARNINGS
-#warning and mathed?
-#endif
+	if (inMathed())
+		return lyx::cap::grabSelection(*this);
+
 	return string();
 }
 

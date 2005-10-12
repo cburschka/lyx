@@ -1,5 +1,21 @@
 2005-10-09  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
+	* CutAndPaste.C (nrOfParagraphs): remove (unused)
+	* CutAndPaste.C (cutSelection): Remove debug message
+	* CutAndPaste.C (cutSelection): Use the real cursor in mathed, record
+	undo information and only copy if this is a real cut
+	* CutAndPaste.C (pasteSelection): remove superflous cur.resetAnchor()
+	call
+	* CutAndPaste.C (pasteSelection): remove now superflous mathed warning
+	(bug 2059)
+	* CutAndPaste.C (eraseSelection): prevent cursor corruption
+	* CutAndPaste.C (grabAndEraseSelection, selDel): remove now
+	superflous cur.selection() setting
+	* CutAndPaste.[Ch] (grabSelection): take a const cursor
+	* cursor.C (selectionAsString): implement mathed case ((bug 2059)
+
+2005-10-09  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
 	* text3.C (mathDispatch, dispatch): Dont' record undo steps that don't
 	change anything.
 
