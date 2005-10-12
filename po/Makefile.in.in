@@ -308,7 +308,7 @@ $(srcdir)/default_ui_l10n.pot: $(top_srcdir)/lib/ui/default.ui
             } \
             ' ../lib/ui/default.ui > default_ui_l10n.pot
 
-i18n.php3: $(POFILES)
+i18n.php: $(POFILES)
 	(cd $(srcdir) ; ./postats.sh $(POFILES)) >$@
 
 # Tell versions [3.59,3.63) of GNU make not to export all variables.
