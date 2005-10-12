@@ -516,7 +516,7 @@ ui_l10n.pot: $(top_srcdir)/lib/ui/*.ui
 		}' \
 	${top_srcdir}/lib/ui/*.ui > $@
 
-i18n.php3: $(POFILES)
+i18n.php: $(POFILES)
 	(cd $(srcdir) ; ./postats.sh $(POFILES)) >$@
 
 force:

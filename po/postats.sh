@@ -13,7 +13,7 @@
 # and generates a PHP web page.
 #
 # Invocation:
-#    postats.sh po_files > "pathToWebPages"/i18n.php3
+#    postats.sh po_files > "pathToWebPages"/i18n.php
 
 # modifiy this when you change version
 # Note that an empty lyx_branch variable (ie cvs HEAD)
@@ -163,10 +163,10 @@ cat <<EOF
 	// Who is the author?
 	\$author="Michael Gerz";
 	// Full name of the file (relative path from LyX home page -- i.e., it should
-	// be "foo.php3" or "bar/foo.php3")
-	\$file_full="i18n.php3";
+	// be "foo.php" or "bar/foo.php")
+	\$file_full="devel/i18n.php";
 
-	include("start.php3");
+	include("start.php");
 
 	error_reporting(E_ALL);
 ?>
@@ -307,7 +307,7 @@ while (list(\$foo,\$info) = each(\$podata)) {
 </tbody>
 </table>
 <?
-include("end.php3");
+include("end.php");
 ?>
 EOF
 }
