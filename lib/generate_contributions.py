@@ -916,6 +916,14 @@ contributers = [
                  "22 February 2005",
                  u"provided hollywood and broadway classes for writing screen scripts and plays"),
 
+     contributer(u"Bernhard Reiter",
+                 "ockham () gmx ! net",
+                 "GPL",
+                 "Re: RFC: GThesaurus.C et al.",
+                 "m=112912017013984",
+                 "12 October 2005",
+                 u"Gtk frontend"),
+
      contributer(u"Ruurd Reitsma",
                  "rareitsma () yahoo ! com",
                  "GPL",
