@@ -1,3 +1,8 @@
+2005-10-09  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* math_nestinset.C (doDispatch): Don't record undo steps when
+	inserting characters of a macro name (see comment)
+
 2005-10-04  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* math_macro.C (editXY): new, fix crash (bug 2060)

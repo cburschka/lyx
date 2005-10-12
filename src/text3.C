@@ -136,17 +136,20 @@ namespace {
 
 		if (sel.empty()) {
 			const int old_pos = cur.pos();
-			cur.insert(new MathHullInset);
+			cur.insert(new MathHullInset("simple"));
 			BOOST_ASSERT(old_pos == cur.pos());
 			cur.nextInset()->edit(cur, true);
-			cur.dispatch(FuncRequest(LFUN_MATH_MUTATE, "simple"));
 			// don't do that also for LFUN_MATH_MODE
 			// unless you want end up with always changing
 			// to mathrm when opening an inlined inset --
 			// I really hate "LyXfunc overloading"...
 			if (display)
 				cur.dispatch(FuncRequest(LFUN_MATH_DISPLAY));
-			cur.dispatch(FuncRequest(LFUN_INSERT_MATH, cmd.argument));
+			// Avoid an unnecessary undo step if cmd.argument
+			// is empty
+			if (!cmd.argument.empty())
+				cur.dispatch(FuncRequest(LFUN_INSERT_MATH,
+				                         cmd.argument));
 		} else {
 			// create a macro if we see "\\newcommand"
 			// somewhere, and an ordinary formula
@@ -155,9 +158,8 @@ namespace {
 			if (sel.find("\\newcommand") == string::npos
 			    && sel.find("\\def") == string::npos)
 			{
-				cur.insert(new MathHullInset);
+				cur.insert(new MathHullInset("simple"));
 				cur.dispatch(FuncRequest(LFUN_RIGHT));
-				cur.dispatch(FuncRequest(LFUN_MATH_MUTATE, "simple"));
 				cur.dispatch(FuncRequest(LFUN_INSERT_MATH, sel));
 			} else {
 				istringstream is(sel);
@@ -1271,9 +1273,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_INSERT_MATH:
 	case LFUN_INSERT_MATRIX:
 	case LFUN_MATH_DELIM: {
-		cur.insert(new MathHullInset);
+		cur.insert(new MathHullInset("simple"));
 		cur.dispatch(FuncRequest(LFUN_RIGHT));
-		cur.dispatch(FuncRequest(LFUN_MATH_MUTATE, "simple"));
 		cur.dispatch(cmd);
 		break;
 	}

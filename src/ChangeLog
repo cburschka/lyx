@@ -1,3 +1,8 @@
+2005-10-09  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* text3.C (mathDispatch, dispatch): Dont' record undo steps that don't
+	change anything.
+
 2005-10-11  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* BufferView_pimpl.C: comment layout change

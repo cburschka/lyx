@@ -651,11 +651,22 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_SELFINSERT:
-		recordUndo(cur);
 		if (cmd.argument.size() != 1) {
+			recordUndo(cur);
 			cur.insert(cmd.argument);
 			break;
 		}
+		// Don't record undo steps if we are in macro mode and
+		// cmd.argument is the next character of the macro name.
+		// Otherwise we'll get an invalid cursor if we undo after
+		// the macro was finished and the macro is a known command,
+		// e.g. sqrt. LCursor::macroModeClose replaces in this case
+		// the MathUnknownInset with name "frac" by an empty
+		// MathFracInset -> a pos value > 0 is invalid.
+		// A side effect is that an undo before the macro is finished
+		// undoes the complete macro, not only the last character.
+		if (!cur.inMacroMode())
+			recordUndo(cur);
 		if (!interpret(cur, cmd.argument[0])) {
 			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 			cur.undispatched();
