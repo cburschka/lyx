@@ -9,12 +9,16 @@
 \graphics default
 \paperfontsize default
 \spacing single
-\papersize default
-\use_geometry false
+\papersize a4paper
+\use_geometry true
 \use_amsmath 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
+\leftmargin 2cm
+\topmargin 1cm
+\rightmargin 2cm
+\bottommargin 1cm
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation skip
@@ -31,13 +35,18 @@
 \begin_body
 
 \begin_layout Title
-Einige Beispiele für Minipages in LyX 
+Einige Beispiele für Minipages in LyX
 \end_layout
 
 \begin_layout Author
 von Jürgen Vigna (jug@sad.it)
 \newline
 und Hartmut Haase
+\end_layout
+
+\begin_layout Date
+letzte Änderung: 3.
+ Oktober 2005
 \end_layout
 
 \begin_layout Standard
@@ -686,6 +695,9 @@ Dies ist Tabelle 2
 \end_layout
 
 \begin_layout Subsection*
+
+\series medium
+\size normal
 Ich mache das folgende, wenn ich zweisprachigen Text schreiben muß (Ich
  lebe in einer Gegend in Italien, in der etwa 60% der Menschen deutsch sprechen,
  so daß man Briefe in deutsch und italienisch in zwei Spalten schreiben
