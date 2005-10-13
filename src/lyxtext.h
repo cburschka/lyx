@@ -176,8 +176,8 @@ public:
 	void recUndo(pit_type first, pit_type last) const;
 	///
 	void recUndo(pit_type first) const;
-	///
-	void setCursorFromCoordinates(LCursor & cur, int x, int y);
+	/// returns true if par was empty and was removed
+	bool setCursorFromCoordinates(LCursor & cur, int x, int y);
 	///
 	InsetBase * editXY(LCursor & cur, int x, int y);
 	/// Move cursor one line up.

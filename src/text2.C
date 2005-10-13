@@ -1056,6 +1056,7 @@ bool LyXText::cursorUp(LCursor & cur)
 		int const y = bv_funcs::getPos(cur, cur.boundary()).y_;
 		LCursor old = cur;
 		editXY(cur, x, y - par.rows()[row].ascent() - 1);
+		cur.clearSelection();
 
 		// This happens when you move out of an inset.
 		// And to give the DEPM the possibility of doing
@@ -1101,6 +1102,7 @@ bool LyXText::cursorDown(LCursor & cur)
 		int const y = bv_funcs::getPos(cur, cur.boundary()).y_;
 		LCursor old = cur;
 		editXY(cur, x, y + par.rows()[row].descent() + 1);
+		cur.clearSelection();
 
 		// This happens when you move out of an inset.
 		// And to give the DEPM the possibility of doing

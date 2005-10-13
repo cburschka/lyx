@@ -2315,7 +2315,7 @@ pos_type LyXText::x2pos(pit_type pit, int row, int x) const
 
 // x,y are screen coordinates
 // sets cursor only within this LyXText
-void LyXText::setCursorFromCoordinates(LCursor & cur, int const x, int const y)
+bool LyXText::setCursorFromCoordinates(LCursor & cur, int const x, int const y)
 {
 	pit_type pit = getPitNearY(y);
 	int yy = theCoords.get(this, pit).y_ - pars_[pit].ascent();
@@ -2354,5 +2354,5 @@ void LyXText::setCursorFromCoordinates(LCursor & cur, int const x, int const y)
                 << " pos: " << pos
                 << endl;
         
-	setCursor(cur, pit, pos, true, bound);
+	return setCursor(cur, pit, pos, true, bound);
 }

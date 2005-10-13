@@ -192,8 +192,10 @@ bool LyXText::cursorPrevious(LCursor & cur)
 
 	int x = cur.x_target();
 
-	setCursorFromCoordinates(cur, x, 0);
-	bool updated = cursorUp(cur);
+	bool updated = setCursorFromCoordinates(cur, x, 0);
+	if (updated)
+		cur.bv().update();
+	updated |= cursorUp(cur);
 
 	if (cpar == cur.pit() && cpos == cur.pos()) {
 		// we have a row which is taller than the workarea. The
@@ -213,8 +215,10 @@ bool LyXText::cursorNext(LCursor & cur)
 	lyx::pit_type cpar = cur.pit();
 
 	int x = cur.x_target();
-	setCursorFromCoordinates(cur, x, cur.bv().workHeight() - 1);
-	bool updated = cursorDown(cur);
+	bool updated = setCursorFromCoordinates(cur, x, cur.bv().workHeight() - 1);
+	if (updated)
+		cur.bv().update();
+	updated |= cursorDown(cur);
 
 	if (cpar == cur.pit() && cpos == cur.pos()) {
 		// we have a row which is taller than the workarea. The

@@ -1,3 +1,14 @@
+2005-10-07  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* text.C (setCursorFromCoordinates): return a bool telling whether
+	dEPM triggered.
+
+	* text3.C (cursorPrevious): update if needed after
+	setCursorFromCoordinates (when dEPM triggered).
+
+	* text2.C (cursorDown, cursorUp): make sure to reset the anchor
+	(otherwise the anchor may be completely wrong and make dEPM assert).
+
 2005-10-12  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* buffer.C: version upgrade to 245.
