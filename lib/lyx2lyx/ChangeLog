@@ -1,3 +1,9 @@
+2005-10-12  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* LyX.py: enlarge range to current format (245);
+	do not use \quotes_times anymore on NewFile.
+	* lyx_1_4.py (remove_quotestimes): remove param \quotes_times (bug 2090).
+
 2005-09-28  José Matos  <jamatos@lyx.org>
 
 	* LyX.py: fix relation_format reversion

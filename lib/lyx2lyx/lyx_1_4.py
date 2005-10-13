@@ -2258,6 +2258,13 @@ def remove_paperpackage(file):
         file.header[i] = "\\papersize default"
 
 
+def remove_quotestimes(file):
+    i = find_token(file.header, '\\quotes_times', 0)
+    if i == -1:
+        return
+    del file.header[i]
+
+
 ##
 # Convertion hub
 #
@@ -2286,9 +2293,11 @@ convert = [[222, [insert_tracking_changes, add_end_header]],
            [241, [convert_ert_paragraphs]],
            [242, [convert_french]],
            [243, [remove_paperpackage]],
-	   [244, [rename_spaces]]]
+	   [244, [rename_spaces]],
+	   [245, [remove_quotestimes]]]
 
-revert =  [[243, [revert_space_names]],
+revert =  [[244, []],
+	   [243, [revert_space_names]],
 	   [242, []],
            [241, []],
            [240, [revert_ert_paragraphs]],

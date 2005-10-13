@@ -82,7 +82,6 @@ string h_tocdepth                = "3";
 string h_paragraph_separation    = "indent";
 string h_defskip                 = "medskip";
 string h_quotes_language         = "english";
-string h_quotes_times            = "2";
 string h_papercolumns            = "1";
 string h_papersides              = string();
 string h_paperpagestyle          = "default";
@@ -233,7 +232,7 @@ void handle_package(string const & name, string const & opts)
 void end_preamble(ostream & os, LyXTextClass const & /*textclass*/)
 {
 	os << "#LyX file created by  tex2lyx 0.1.2\n"
-	   << "\\lyxformat 243\n"
+	   << "\\lyxformat 245\n"
 	   << "\\begin_document\n"
 	   << "\\begin_header\n"
 	   << "\\textclass " << h_textclass << "\n"
@@ -257,7 +256,6 @@ void end_preamble(ostream & os, LyXTextClass const & /*textclass*/)
 	   << "\\paragraph_separation " << h_paragraph_separation << "\n"
 	   << "\\defskip " << h_defskip << "\n"
 	   << "\\quotes_language " << h_quotes_language << "\n"
-	   << "\\quotes_times " << h_quotes_times << "\n"
 	   << "\\papercolumns " << h_papercolumns << "\n"
 	   << "\\papersides " << h_papersides << "\n"
 	   << "\\paperpagestyle " << h_paperpagestyle << "\n"

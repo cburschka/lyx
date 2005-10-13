@@ -1,3 +1,10 @@
+2005-10-12  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* buffer.C: version upgrade to 245.
+	* bufferparams.C: remove \quotes_times (bug 2090).
+	* text3.C (doDispatch): LFUN_QUOTE_INSERT has to output double
+	quotation marks as default.
+
 2005-10-09  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* CutAndPaste.C (nrOfParagraphs): remove (unused)

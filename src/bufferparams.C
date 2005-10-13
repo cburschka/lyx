@@ -105,25 +105,6 @@ QuotesLangTranslator const & quoteslangtranslator()
 }
 
 
-// Quote times
-typedef Translator<int, InsetQuotes::quote_times> QuotesTimesTranslator;
-
-
-QuotesTimesTranslator const init_quotestimestranslator()
-{
-	QuotesTimesTranslator translator(1, InsetQuotes::SingleQ);
-	translator.addPair(2, InsetQuotes::DoubleQ);
-	return translator;
-}
-
-
-QuotesTimesTranslator const & quotestimestranslator()
-{
-	static QuotesTimesTranslator translator = init_quotestimestranslator();
-	return translator;
-}
-
-
 // Paper size
 typedef Translator<std::string, PAPER_SIZE> PaperSizeTranslator;
 
@@ -307,7 +288,6 @@ BufferParams::BufferParams()
 {
 	paragraph_separation = PARSEP_INDENT;
 	quotes_language = InsetQuotes::EnglishQ;
-	quotes_times = InsetQuotes::DoubleQ;
 	fontsize = "default";
 
 	/*  PaperLayout */
@@ -460,10 +440,6 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 		string quotes_lang;
 		lex >> quotes_lang;
 		quotes_language = quoteslangtranslator().find(quotes_lang);
-	} else if (token == "\\quotes_times") {
-		int qtimes;
-		lex >> qtimes;
-		quotes_times = quotestimestranslator().find(qtimes);
 	} else if (token == "\\papersize") {
 		string ppsize;
 		lex >> ppsize;
@@ -663,9 +639,7 @@ void BufferParams::writeFile(ostream & os) const
 	   << string_paragraph_separation[paragraph_separation]
 	   << "\n\\defskip " << getDefSkip().asLyXCommand()
 	   << "\n\\quotes_language "
-	   << string_quotes_language[quotes_language] << '\n'
-	   << "\\quotes_times "
-	   << quotestimestranslator().find(quotes_times)
+	   << string_quotes_language[quotes_language]
 	   << "\n\\papercolumns " << columns
 	   << "\n\\papersides " << sides
 	   << "\n\\paperpagestyle " << pagestyle << '\n';

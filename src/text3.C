@@ -960,12 +960,10 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 				cur.insert(new InsetQuotes(c,
 				    bufparams.quotes_language,
 				    InsetQuotes::SingleQ));
-			else if (arg == "double")
+			else
 				cur.insert(new InsetQuotes(c,
 				    bufparams.quotes_language,
 				    InsetQuotes::DoubleQ));
-			else
-				cur.insert(new InsetQuotes(c, bufparams));
 			cur.posRight();
 		}
 		else
