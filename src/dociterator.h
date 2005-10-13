@@ -274,6 +274,12 @@ public:
 	DocIterator asDocIterator(InsetBase * start) const;
 	///
 	size_t size() const { return data_.size(); }
+	/// type for cursor positions within a cell
+	typedef CursorSlice::pos_type pos_type;
+	///  return the position within the paragraph
+	pos_type pos() const { return data_.back().pos(); }
+	///  return the position within the paragraph
+	pos_type & pos() { return data_.back().pos(); }
 	///
 	friend std::ostream &
 	operator<<(std::ostream & os, StableDocIterator const & cur);

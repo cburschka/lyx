@@ -48,6 +48,14 @@ std::ostream & operator<<(std::ostream & os, Undo const & undo)
 }
 
 
+bool samePar(StableDocIterator const & i1, StableDocIterator const & i2)
+{
+	StableDocIterator tmpi2 = i2;
+	tmpi2.pos() = i1.pos();
+	return i1 == tmpi2;
+}
+
+
 void doRecordUndo(Undo::undo_kind kind,
 	DocIterator const & cell,
 	pit_type first_pit, pit_type last_pit,
@@ -77,10 +85,10 @@ void doRecordUndo(Undo::undo_kind kind,
 	if (!undo_finished
 	    && kind != Undo::ATOMIC
 	    && !stack.empty()
-	    && stack.top().cell == undo.cell
-		  && stack.top().kind == undo.kind
-		  && stack.top().from == undo.from
-		  && stack.top().end == undo.end)
+	    && samePar(stack.top().cell, undo.cell)
+	    && stack.top().kind == undo.kind
+	    && stack.top().from == undo.from
+	    && stack.top().end == undo.end)
 		return;
 
 	// fill in the real data to be saved
