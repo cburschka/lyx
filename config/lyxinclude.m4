@@ -28,7 +28,7 @@ dnl Define the option to set a LyX version on installed executables and director
 dnl
 dnl
 AC_DEFUN([LYX_VERSION_SUFFIX],[
-AC_MSG_CHECKING([for install target ... ])
+AC_MSG_CHECKING([for install target])
 RPM_VERSION_SUFFIX='""'
 AC_ARG_WITH(version-suffix,
   [  --with-version-suffix[=<version>]  install lyx files as lyx<version>],
@@ -37,12 +37,11 @@ AC_ARG_WITH(version-suffix,
      withval="-$VERSION"
      ac_configure_args=`echo $ac_configure_args | sed "s,--with-version-suffix,--with-version-suffix=$withval,"`
    fi
-   lyxname="lyx$withval"
+   PACKAGE="$PACKAGE$withval"
    program_suffix=$withval
-   RPM_VERSION_SUFFIX="--with-version-suffix=$withval"],
-  [lyxname=lyx])
+   RPM_VERSION_SUFFIX="--with-version-suffix=$withval"])
 AC_SUBST(RPM_VERSION_SUFFIX)
-AC_MSG_RESULT([$lyxname])
+AC_MSG_RESULT([$PACKAGE])
 ])
 
 
@@ -587,20 +586,21 @@ AC_ARG_WITH(packaging,
 AC_MSG_RESULT($lyx_use_packaging)
 case $lyx_use_packaging in
    macosx) AC_DEFINE(USE_MACOSX_PACKAGING, 1, [Define to 1 if LyX should use a MacOS X application bundle file layout])
-	   test $PACKAGE = "lyx" && PACKAGE=LyX
+	   PACKAGE=LyX
 	   default_prefix="/Applications/LyX.app"
 	   bindir='${prefix}/Contents/MacOS'
 	   libdir='${prefix}/Contents/Resources'
 	   datadir='${prefix}/Contents/Resources'
 	   mandir='${prefix}/Contents/Resources/man' ;;
   windows) AC_DEFINE(USE_WINDOWS_PACKAGING, 1, [Define to 1 if LyX should use a Windows-style file layout])
-	   test $PACKAGE = "lyx" && PACKAGE=LyX
+	   PACKAGE=LyX
 	   default_prefix="C:/Program Files/LyX"
 	   bindir='${prefix}/bin'
 	   libdir='${prefix}/Resources'
 	   datadir='${prefix}/Resources'
 	   mandir='${prefix}/Resources/man' ;;
     posix) AC_DEFINE(USE_POSIX_PACKAGING, 1, [Define to 1 if LyX should use a POSIX-style file layout])
+	   PACKAGE=lyx
 	   default_prefix=$ac_default_prefix ;;
     *) LYX_ERROR([Unknown packaging type $lyx_use_packaging]) ;;
 esac

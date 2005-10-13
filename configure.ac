@@ -7,9 +7,12 @@ AM_CONFIG_HEADER([src/config.h])
 
 AC_CONFIG_AUX_DIR(config)
 
-PACKAGE=lyx${program_suffix}
+# first the version
 VERSION="1.4.0cvs"
 LYX_CHECK_VERSION
+# Check how the files should be packaged
+LYX_USE_PACKAGING
+LYX_VERSION_SUFFIX
 
 dnl default maintainer mode to true for development versions
 if test "${enable_maintainer_mode+set}" != set; then
@@ -18,9 +21,7 @@ fi
 AM_MAINTAINER_MODE
 AC_CANONICAL_TARGET
 
-LYX_VERSION_SUFFIX
-
-AM_INIT_AUTOMAKE($lyxname, $VERSION)
+AM_INIT_AUTOMAKE($PACKAGE, $VERSION)
 
 ### Set the execute permissions of the various scripts correctly
 for file in config/install-sh config/mkinstalldirs lib/configure ; do
@@ -227,8 +228,6 @@ dnl qt build will fail without moc or uic
   esac
 done
 
-### Check how the files should be packaged
-LYX_USE_PACKAGING
 # fix the value of the prefixes.
 test "x$prefix" = xNONE && prefix=$default_prefix
 test "x$exec_prefix" = xNONE && exec_prefix='${prefix}'

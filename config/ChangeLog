@@ -1,3 +1,9 @@
+2005-10-12  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyxinclude.m4 (LYX_USE_PACKAGING): set PACKAGE depending on
+	packaging setting.
+	(LYX_VERSION_SUFFIX): honor PACKAGE value.
+
 2005-09-29  Angus Leeming  <leeming@lyx.org>
 
 	* lyxinclude.m4: add a new MSYS_AC_CANONICAL_PATH macro that
