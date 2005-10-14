@@ -219,7 +219,8 @@ protected:
 	/// returns y offset of cell compared to inset
 	int cellYOffset(idx_type idx) const;
 	/// returns proper 'end of line' code for LaTeX
-	virtual std::string eolString(row_type row, bool fragile = false) const;
+	virtual std::string eolString(row_type row, bool emptyline,
+	                              bool fragile) const;
 	/// returns proper 'end of column' code for LaTeX
 	virtual std::string eocString(col_type col, col_type lastcol) const;
 	/// extract number of columns from alignment string
@@ -227,7 +228,6 @@ protected:
 	/// splits cells and shifts right part to the next cell
 	void splitCell(LCursor & cur);
 
-public:
 	/// row info.
 	/// rowinfo_[nrows()] is a dummy row used only for hlines.
 	std::vector<RowInfo> rowinfo_;

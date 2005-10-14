@@ -56,7 +56,7 @@ public:
 			  std::vector<std::string> & list) const;
 	///
 	void validate(LaTeXFeatures & features) const;
-	/// identifies MatrixInsets
+	/// identifies HullInset
 	MathHullInset const * asHullInset() const { return this; }
 	/// identifies HullInset
 	MathHullInset * asHullInset() { return this; }
@@ -126,7 +126,7 @@ protected:
 	bool getStatus(LCursor & cur, FuncRequest const & cmd,
 		FuncStatus & status) const;
 	///
-	std::string eolString(row_type row, bool fragile) const;
+	std::string eolString(row_type row, bool emptyline, bool fragile) const;
 
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;

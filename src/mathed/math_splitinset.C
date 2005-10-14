@@ -88,6 +88,8 @@ void MathSplitInset::write(WriteStream & ws) const
 	if (ws.fragile())
 		ws << "\\protect";
 	ws << "\\begin{" << name_ << '}';
+	if (name_ == "alignedat")
+		ws << '{' << static_cast<unsigned int>((ncols() + 1)/2) << '}';
 	MathGridInset::write(ws);
 	if (ws.fragile())
 		ws << "\\protect";

@@ -1,3 +1,17 @@
+2005-10-13  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* math_gridinset.[Ch] (eolString, write): Output \\ at the end of the last
+	line if it is empty (fixes bug 2067)
+	* math_hullinset.[Ch] (eolString): Adjust to the changes above
+	* math_hullinset.C (delRow): Allow to delete the last dummy row
+	* math_parser.C (delEmptyLastRow): Delete the last dummy row.
+	The last hline appears in the wrong row otherwise.
+	* math_parser.C (parse1): Call delEmptyLastRow for all matrix like
+	insets. This fixes bug 2067 and avoids data loss on load/save cycles.
+	* math_parser.C (parse1): Ignore the number of columns of alignedat
+	* math_splitinset.C (write): Write the number of column of alignedat.
+	This prevents data loss together with the math parser change above.
+
 2005-10-09  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* math_gridinset.C (doDispatch): adjust paste to match paste in text

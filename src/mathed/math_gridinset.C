@@ -606,7 +606,7 @@ void MathGridInset::drawT(TextPainter & pain, int x, int y) const
 }
 
 
-string MathGridInset::eolString(row_type row, bool fragile) const
+string MathGridInset::eolString(row_type row, bool emptyline, bool fragile) const
 {
 	string eol;
 
@@ -622,7 +622,7 @@ string MathGridInset::eolString(row_type row, bool fragile) const
 	}
 
 	// only add \\ if necessary
-	if (eol.empty() && row + 1 == nrows())
+	if (eol.empty() && row + 1 == nrows() && (nrows() == 1 || !emptyline))
 		return string();
 
 	return (fragile ? "\\protect\\\\" : "\\\\") + eol;
@@ -951,6 +951,7 @@ void MathGridInset::mathmlize(MathMLStream & os) const
 
 void MathGridInset::write(WriteStream & os) const
 {
+	string eol;
 	for (row_type row = 0; row < nrows(); ++row) {
 		os << verboseHLine(rowinfo_[row].lines_);
 		// don't write & and empty cells at end of line
@@ -963,17 +964,21 @@ void MathGridInset::write(WriteStream & os) const
 			}
 		for (col_type col = 0; col < lastcol; ++col)
 			os << cell(index(row, col)) << eocString(col, lastcol);
-		os << eolString(row, os.fragile());
+		eol = eolString(row, emptyline, os.fragile());
+		os << eol;
 		// append newline only if line wasn't completely empty
 		// and this was not the last line in the grid
 		if (!emptyline && row + 1 < nrows())
 			os << "\n";
 	}
 	string const s = verboseHLine(rowinfo_[nrows()].lines_);
-	if (!s.empty() && s != " ") {
-		if (os.fragile())
-			os << "\\protect";
-		os << "\\\\" << s;
+	if (!s.empty()) {
+		if (eol.empty()) {
+			if (os.fragile())
+				os << "\\protect";
+			os << "\\\\";
+		}
+		os << s;
 	}
 }
 

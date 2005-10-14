@@ -181,7 +181,9 @@ void delEmptyLastRow(MathGridInset & grid)
 		if (!grid.cell(grid.index(row, col)).empty())
 			return;
 	}
-	grid.delRow(row);
+	// Remove the dummy row, so that the previous last row (that would
+	// contain the last hline in the example above) becomes the dummy row.
+	grid.delRow(row + 1);
 }
 
 
@@ -935,8 +937,14 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 					      environments_.back() + "}'");
 				else {
 					environments_.pop_back();
-					if (name == "array" ||
-					    name == "subarray")
+					// Delete empty last row in matrix
+					// like insets.
+					// If you abuse MathGridInset for
+					// non-matrix like structures you
+					// probably need to refine this test.
+					// Right now we only have to test for
+					// single line hull insets.
+					if (grid.nrows() > 1)
 						delEmptyLastRow(grid);
 					return;
 				}
@@ -1089,8 +1097,14 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 			}
 
 			else if (name == "split" || name == "cases" ||
-			         name == "gathered" || name == "aligned" ||
-			         name == "alignedat") {
+			         name == "gathered" || name == "aligned") {
+				cell->push_back(createMathInset(name));
+				parse2(cell->back(), FLAG_END, mode, false);
+			}
+
+			else if (name == "alignedat") {
+				// ignore this for a while
+				getArg('{', '}');
 				cell->push_back(createMathInset(name));
 				parse2(cell->back(), FLAG_END, mode, false);
 			}
@@ -1187,6 +1201,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 		}
 
 		else if (t.cs() == "label") {
+			// FIXME: This is swallowed in inline formulas
 			string label = parse_verbatim_item();
 			MathArray ar;
 			asArray(label, ar);

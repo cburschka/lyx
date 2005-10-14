@@ -588,6 +588,10 @@ void MathHullInset::delRow(row_type row)
 	if (nrows() <= 1 || !rowChangeOK())
 		return;
 	MathGridInset::delRow(row);
+	// The last dummy row has no number info nor a label.
+	// Test nrows() + 1 because we have already erased the row.
+	if (row == nrows() + 1)
+		row--;
 	nonum_.erase(nonum_.begin() + row);
 	label_.erase(label_.begin() + row);
 }
@@ -850,7 +854,7 @@ void MathHullInset::mutate(string const & newtype)
 }
 
 
-string MathHullInset::eolString(row_type row, bool fragile) const
+string MathHullInset::eolString(row_type row, bool emptyline, bool fragile) const
 {
 	string res;
 	if (numberedType()) {
@@ -859,7 +863,7 @@ string MathHullInset::eolString(row_type row, bool fragile) const
 		if (nonum_[row] && (type_ != "multline"))
 			res += "\\nonumber ";
 	}
-	return res + MathGridInset::eolString(row, fragile);
+	return res + MathGridInset::eolString(row, emptyline, fragile);
 }
 
 
