@@ -29,6 +29,7 @@ dist_glade_DATA = \
 	tableCreate.glade \
 	texinfo.glade \
 	text.glade \
+	thesaurus.glade \
 	toc.glade \
 	url.glade \
 	vspace.glade

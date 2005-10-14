@@ -89,6 +89,8 @@ libgtk_la_SOURCES = \
 	GTexinfo.h \
 	GText.C \
 	GText.h \
+	GThesaurus.C \
+	GThesaurus.h \
 	GTimeout.C \
 	GTimeout.h \
 	GToc.C \
@@ -148,7 +150,6 @@ xforms_objects = \
 	../xforms/forms_gettext.lo \
 	../xforms/FormTabular.lo \
 	../xforms/FormText.lo \
-	../xforms/FormThesaurus.lo \
 	../xforms/FormWrap.lo \
 	../xforms/freebrowser.lo \
 	../xforms/input_validators.lo \

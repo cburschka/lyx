@@ -1,3 +1,10 @@
+2005-10-12  Bernhard Reiter  <ockham@gmx.net>
+
+	* The Thesaurus dialog
+	* GThesaurus.C, GThesaurus.h, Makefile.am
+	* Dialogs.C: moved BC generation to individual if blocks
+	* glade/thesaurus.glade, glade/Makefile.am
+
 2005-10-02  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* GToc.C: fix bug 2038

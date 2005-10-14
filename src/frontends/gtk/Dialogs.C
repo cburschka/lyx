@@ -100,7 +100,7 @@
 
 #ifdef HAVE_LIBAIKSAURUS
 #include "ControlThesaurus.h"
-#include "FormThesaurus.h"
+#include "GThesaurus.h"
 #endif
 
 #include "xformsBC.h"
@@ -520,8 +520,9 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->bc().bp(new OkCancelPolicy);
 #ifdef HAVE_LIBAIKSAURUS
 	} else if (name == "thesaurus") {
+		dialog->bc().view(new GBC(dialog->bc()));
 		dialog->setController(new ControlThesaurus(*dialog));
-		dialog->setView(new FormThesaurus(*dialog));
+		dialog->setView(new GThesaurus(*dialog));
 		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 #endif
 	} else if (name == "toc") {
