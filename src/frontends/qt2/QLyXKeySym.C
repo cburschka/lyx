@@ -45,20 +45,23 @@ char const encode(string const & encoding, QString const & str)
 
 	EncodingMap::const_iterator cit = encoding_map.find(encoding);
 	if (cit == encoding_map.end()) {
-		if (lyxerr.debugging())
-			lyxerr[Debug::KEY] << "Unrecognised encoding "
-				<< encoding << endl;
+		lyxerr[Debug::KEY] << "Unrecognised encoding '" << encoding
+		                   << "'." << endl;
 		codec = encoding_map.find("")->second;
 	} else {
 		codec = cit->second;
 	}
 
-	if (lyxerr.debugging())
-		lyxerr[Debug::KEY] << "Using codec " << fromqstr(codec->name()) << endl;
+	if (!codec) {
+		lyxerr[Debug::KEY] << "No codec for encoding '" << encoding
+		                   << "' found." << endl;
+		return 0;
+	}
+
+	lyxerr[Debug::KEY] << "Using codec " << fromqstr(codec->name()) << endl;
 
 	if (!codec->canEncode(str)) {
-		if (lyxerr.debugging())
-			lyxerr[Debug::KEY] << "Oof. Can't encode the text !" << endl;
+		lyxerr[Debug::KEY] << "Oof. Can't encode the text !" << endl;
 		return 0;
 	}
 
@@ -84,7 +87,7 @@ void initEncodings()
 				s = "C";
 		}
 	}
-	
+
 	if (s.find("UTF") != string::npos || s.find("utf") != string::npos) 
 	//if (contains(c, "UTF") || contains(c, "utf"))
 		lyxerr << "Warning: this system's locale uses Unicode." << endl;
@@ -112,17 +115,16 @@ void initEncodings()
 	encoding_map["pt154"] = 0;
 
 	// There are lots more codecs in Qt too ...
-	
+
 	// when no document open
 	// use the appropriate encoding for the system language
 	lyxerr << "Language code:" << s << endl;
 	for (Languages::const_iterator it=languages.begin(); it != languages.end(); ++it) {
 		//lyxerr << it->second.code() << ":" << it->second.encodingStr() << ":" << it->second.encoding() << endl;
-		if (it->second.code() == s)
-			{
-				s = it->second.encodingStr();
-				break;
-			}
+		if (it->second.code() == s) {
+			s = it->second.encodingStr();
+			break;
+		}
 	}
 	lyxerr << "Setting new locale for Qt:" << s << endl;
 	QTextCodec * defaultCodec = encoding_map[s];

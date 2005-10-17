@@ -1,3 +1,7 @@
+2005-10-16  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* QLyXKeySym.C (initEncodings): prevent crash when no codec found
+
 2005-10-07  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* QContentPane.C (QContentPane): make times 50 msec instead of 25,
