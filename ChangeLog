@@ -1,3 +1,8 @@
+2005-10-18  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* configure.ac: check for target name as early as possible (fixes
+	bug in change below).
+
 2005-10-12  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* configure.ac: call LYX_USE_PACKAGING early. Sanitize PACKAGE

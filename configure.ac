@@ -10,6 +10,7 @@ AC_CONFIG_AUX_DIR(config)
 # first the version
 VERSION="1.4.0cvs"
 LYX_CHECK_VERSION
+AC_CANONICAL_TARGET
 # Check how the files should be packaged
 LYX_USE_PACKAGING
 LYX_VERSION_SUFFIX
@@ -19,7 +20,6 @@ if test "${enable_maintainer_mode+set}" != set; then
   enable_maintainer_mode=$lyx_devel_version
 fi
 AM_MAINTAINER_MODE
-AC_CANONICAL_TARGET
 
 AM_INIT_AUTOMAKE($PACKAGE, $VERSION)
 
