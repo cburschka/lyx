@@ -18,6 +18,8 @@
 #include <boost/current_function.hpp>
 #include <boost/regex.hpp>
 
+#include <cerrno>
+
 using lyx::support::package;
 using lyx::support::getEnv;
 using lyx::support::setEnv;

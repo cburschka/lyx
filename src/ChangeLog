@@ -1,3 +1,7 @@
+2005-10-18  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* messages.C: do not forget to include <cerrno>.
+
 2005-10-12  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* dociterator.h (StableDocIterator): add access to pos().
