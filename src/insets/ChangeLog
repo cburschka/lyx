@@ -1,3 +1,8 @@
+2005-09-16  Michael Gerz  <michael.gerz@teststep.org>
+
+	* insetvspace.C (metrics): compute ascent and descent in a way that
+	the cursor is placed on the same level as the label text 
+
 2005-09-28  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* insetcollapsable.[Ch]: implement Alfredo Braunstein's approach

@@ -116,27 +116,24 @@ int const arrow_size = 4;
 
 void InsetVSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	int size = 10;
-	int const space_size = space_.inPixels(*mi.base.bv);
+	int height = 3 * arrow_size;
+	if (space_.length().len().value() >= 0.0)
+		height = max(height, space_.inPixels(*mi.base.bv));
 
 	LyXFont font;
 	font.decSize();
-	int const min_size = max(3 * arrow_size, font_metrics::maxHeight(font));
+	font.decSize();
 
-	if (space_.length().len().value() < 0.0)
-		size = min_size;
-	else
-		size = max(min_size, space_size);
-
-	dim.asc = size / 2;
-	dim.des = size / 2;
 	int w = 0;
 	int a = 0;
 	int d = 0;
-	font.decSize();
 	font_metrics::rectText(label(), font, w, a, d);
-	dim.wid = ADD_TO_VSPACE_WIDTH + 2 * arrow_size + 5 + w;
 
+	height = max(height, a + d);
+
+	dim.asc = height / 2 + (a - d) / 2; // align cursor with the
+	dim.des = height - dim.asc;         // label text
+	dim.wid = ADD_TO_VSPACE_WIDTH + 2 * arrow_size + 5 + w;
 	dim_ = dim;
 }
 
@@ -150,8 +147,6 @@ void InsetVSpace::draw(PainterInfo & pi, int x, int y) const
 	int const start = y - dim_.asc;
 	int const end   = y + dim_.des;
 
-	// the label to display (if any)
-	string const str = label();
 	// y-values for top arrow
 	int ty1, ty2;
 	// y-values for bottom arrow
@@ -163,7 +158,7 @@ void InsetVSpace::draw(PainterInfo & pi, int x, int y) const
 	} else {
 		// adding or removing space
 		bool const added = space_.kind() != VSpace::LENGTH ||
-				   space_.length().len().value() > 0.0;
+				   space_.length().len().value() >= 0.0;
 		ty1 = added ? (start + arrow_size) : start;
 		ty2 = added ? start : (start + arrow_size);
 		by1 = added ? (end - arrow_size) : end;
@@ -184,8 +179,9 @@ void InsetVSpace::draw(PainterInfo & pi, int x, int y) const
 	font.decSize();
 	font_metrics::rectText(label(), font, w, a, d);
 
-	pi.pain.rectText(x + 2 * arrow_size + 5, y + d,
-		       str, font, LColor::none, LColor::none);
+	pi.pain.rectText(x + 2 * arrow_size + 5, 
+			 start + (end - start) / 2 + (a - d) / 2,
+			 label(), font, LColor::none, LColor::none);
 
 	// top arrow
 	pi.pain.line(x, ty1, midx, ty2, LColor::added_space);
