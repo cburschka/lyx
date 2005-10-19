@@ -121,12 +121,7 @@ LQApplication::LQApplication(int & argc, char ** argv)
 
 
 LQApplication::~LQApplication()
-{
-#ifdef QT_THREAD_SUPPORT
-	if (locked())
-		unlock();
-#endif
-}
+{}
 
 
 #ifdef Q_OS_MAC

@@ -56,6 +56,9 @@ What's new
 
 - Add key bindings for "primary-selection-paste"
 
+- On exit, don't attempt to unlock a mutex in the Qt library --- it
+  causes undefined behaviour and leads to a crash on NetBSD.
+
 * Configuration/Installation:
 
 - Enable TeXFiles.sh to run when its path contains spaces.
