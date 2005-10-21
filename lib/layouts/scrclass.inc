@@ -7,6 +7,7 @@
 # Guenter Milde <g.milde web.de>
 
 
+Format 2
 SecNumDepth             2
 TocDepth                2
 DefaultStyle            Standard

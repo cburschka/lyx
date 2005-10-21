@@ -22,10 +22,14 @@
 #include "FloatList.h"
 
 #include "support/lstrings.h"
+#include "support/lyxlib.h"
 #include "support/filetools.h"
+
+#include <sstream>
 
 using lyx::support::LibFileSearch;
 using lyx::support::MakeDisplayPath;
+using lyx::support::QuoteName;
 using lyx::support::rtrim;
 using lyx::support::subst;
 
@@ -50,6 +54,37 @@ public:
 private:
 	string name_;
 };
+
+
+int const FORMAT = 2;
+
+
+bool layout2layout(string const & filename, string const & tempfile)
+{
+	string const script = LibFileSearch("scripts", "layout2layout.py");
+	if (script.empty()) {
+		lyxerr << "Could not find layout conversion "
+		          "script layout2layout.py." << endl;
+		return false;
+	}
+
+	std::ostringstream command;
+	command << "python " << QuoteName(script)
+		<< ' ' << QuoteName(filename)
+		<< ' ' << QuoteName(tempfile);
+	string const command_str = command.str();
+
+	lyxerr[Debug::TCLASS] << "Running `" << command_str << '\'' << endl;
+
+	lyx::support::cmd_ret const ret =
+		lyx::support::RunCommand(command_str);
+	if (ret.first != 0) {
+		lyxerr << "Could not run layout conversion "
+		          "script layout2layout.py." << endl;
+		return false;
+	}
+	return true;
+}
 
 } // namespace anon
 
@@ -124,12 +159,20 @@ enum TextClassTags {
 	TC_COUNTER,
 	TC_NOFLOAT,
 	TC_TITLELATEXNAME,
-	TC_TITLELATEXTYPE
+	TC_TITLELATEXTYPE,
+	TC_FORMAT
 };
+
 
 // Reads a textclass structure from file.
 bool LyXTextClass::Read(string const & filename, bool merge)
 {
+	if (!lyx::support::IsFileReadable(filename)) {
+		lyxerr << "Cannot read layout file `" << filename << "'."
+		       << endl;
+		return true;
+	}
+
 	keyword_item textClassTags[] = {
 		{ "charstyle",       TC_CHARSTYLE },
 		{ "classoptions",    TC_CLASSOPTIONS },
@@ -139,6 +182,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 		{ "defaultstyle",    TC_DEFAULTSTYLE },
 		{ "environment",     TC_ENVIRONMENT },
 		{ "float",           TC_FLOAT },
+		{ "format",          TC_FORMAT },
 		{ "input",           TC_INPUT },
 		{ "leftmargin",      TC_LEFTMARGIN },
 		{ "nofloat",         TC_NOFLOAT },
@@ -170,10 +214,12 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 
 	LyXLex lexrc(textClassTags,
 		sizeof(textClassTags) / sizeof(textClassTags[0]));
-	bool error = false;
 
 	lexrc.setFile(filename);
-	if (!lexrc.isOK()) error = true;
+	bool error = !lexrc.isOK();
+
+	// Format of files before the 'Format' tag was introduced
+	int format = 1;
 
 	// parsing
 	while (lexrc.isOK() && !error) {
@@ -193,6 +239,11 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 		}
 
 		switch (static_cast<TextClassTags>(le)) {
+
+		case TC_FORMAT:
+			if (lexrc.next())
+				format = lexrc.getInteger();
+			break;
 
 		case TC_OUTPUTTYPE:   // output type definition
 			readOutputType(lexrc);
@@ -373,6 +424,19 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 			}
 			break;
 		}
+		if (format != FORMAT)
+			break;
+	}
+
+	if (format != FORMAT) {
+		lyxerr[Debug::TCLASS] << "Converting layout file from format "
+		                      << format << " to " << FORMAT << endl;
+		string const tempfile = lyx::support::tempName();
+		error = !layout2layout(filename, tempfile);
+		if (!error)
+			error = Read(tempfile, merge);
+		lyx::support::unlink(tempfile);
+		return error;
 	}
 
 	if (!merge) { // we are at top level here.

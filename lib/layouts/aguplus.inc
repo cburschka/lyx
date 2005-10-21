@@ -6,6 +6,7 @@
 # ftp://ftp.agu.org/journals/latex/journals
 
 
+Format 2
 Input stdclass.inc
 Input numarticle.inc
 

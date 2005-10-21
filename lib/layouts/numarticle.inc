@@ -1,6 +1,7 @@
 # Author : André Pönitz
 # This include file contains label definitions for an article-like numbering.
 
+Format 2
 Style Part
 	LabelType             Counter
 	LabelCounter          part

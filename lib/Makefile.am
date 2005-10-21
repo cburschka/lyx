@@ -848,6 +848,7 @@ dist_scripts_DATA = \
 	scripts/fig2pdftex.sh \
 	scripts/fig2pstex.sh \
 	scripts/fig_copy.sh \
+	scripts/layout2layout.py \
 	scripts/legacy_lyxpreview2ppm.py \
 	scripts/listerrors \
 	scripts/lyxpreview2bitmap.py \

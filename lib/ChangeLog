@@ -1,3 +1,9 @@
+2005-10-21  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* layouts/*.{inc,layout}: Add format information
+	* scripts/layout2layout.py: new layout file converter
+	* Makefile.am: install scripts/layout2layout.py
+
 2005-10-12  Hartmut Haase  <hha4491@atomstromfrei.de>
 
 	* example/de_Minipage.lyx: update.

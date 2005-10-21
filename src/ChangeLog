@@ -1,3 +1,8 @@
+2005-10-20  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* lyxtextclass.C (Read): convert layout file if the format is wrong
+	* lyxtextclass.C (layout2layout): new, needed for the above
+
 2005-10-18  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* messages.C: do not forget to include <cerrno>.

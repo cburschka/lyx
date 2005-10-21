@@ -7,6 +7,7 @@
 # quotations and such.
 
 
+Format 2
 Style Quotation
 	Margin                Static
 	LatexType             Environment

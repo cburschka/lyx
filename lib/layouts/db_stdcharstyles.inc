@@ -2,6 +2,7 @@
 # Author : José Abílio Oliveira Matos <jamatos@lyx.org>
 # Character Styles definition
 
+Format 2
 CharStyle Filename
 	LatexType             Command
 	LatexName             filename

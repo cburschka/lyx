@@ -47,6 +47,7 @@
 # - Fact
 # - Fact*
 
+Format 2
 Preamble
   \theoremstyle{plain}
 	\newtheorem{thm}{Theorem}[section]

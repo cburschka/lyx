@@ -28,6 +28,7 @@
 # - Conclusion
 
 
+Format 2
 Style Theorem
 	Preamble
 	  \theoremstyle{plain}
