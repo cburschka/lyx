@@ -511,24 +511,24 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_RIGHTSEL:
 	case LFUN_RIGHT:
 		cell(cur.idx())->dispatch(cur, cmd);
-		cur.dispatched(); // override the cell's decision
-		if (sl == cur.top())
+		if (!cur.result().dispatched()) {
 			isRightToLeft(cur) ? movePrevCell(cur) : moveNextCell(cur);
-		if (sl == cur.top()) {
-			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
-			cur.undispatched();
+			if (sl == cur.top()) 
+				cmd = FuncRequest(LFUN_FINISHED_RIGHT);
+			else
+				cur.dispatched();
 		}
 		break;
 
 	case LFUN_LEFTSEL:
 	case LFUN_LEFT:
 		cell(cur.idx())->dispatch(cur, cmd);
-		cur.dispatched(); // override the cell's decision
-		if (sl == cur.top())
+		if (!cur.result().dispatched()) {
 			isRightToLeft(cur) ? moveNextCell(cur) : movePrevCell(cur);
-		if (sl == cur.top()) {
-			cmd = FuncRequest(LFUN_FINISHED_LEFT);
-			cur.undispatched();
+			if (sl == cur.top()) 
+				cmd = FuncRequest(LFUN_FINISHED_LEFT);
+			else
+				cur.dispatched();
 		}
 		break;
 
