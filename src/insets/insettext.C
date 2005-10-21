@@ -104,7 +104,6 @@ void InsetText::init()
 {
 	for_each(paragraphs().begin(), paragraphs().end(),
 		 bind(&Paragraph::setInsetOwner, _1, this));
-	old_pit = -1;
 }
 
 
@@ -232,7 +231,6 @@ string const InsetText::editMessage() const
 void InsetText::edit(LCursor & cur, bool left)
 {
 	//lyxerr << "InsetText: edit left/right" << endl;
-	old_pit = -1;
 	setViewCache(&cur.bv());
 	int const pit = left ? 0 : paragraphs().size() - 1;
 	int const pos = left ? 0 : paragraphs().back().size();
@@ -244,7 +242,6 @@ void InsetText::edit(LCursor & cur, bool left)
 
 InsetBase * InsetText::editXY(LCursor & cur, int x, int y)
 {
-	old_pit = -1;
 	return text_.editXY(cur, x, y);
 }
 
