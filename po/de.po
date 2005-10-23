@@ -82,7 +82,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2005-10-22 13:25+0200\n"
+"POT-Creation-Date: 2005-10-23 15:16+0200\n"
 "PO-Revision-Date: 2005-07-21 20:56+0200\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
@@ -2180,7 +2180,9 @@ msgstr "&Abschnittsspezifisches Literaturverzeichnis"
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:186
 #: src/frontends/xforms/FormDocument.C:321
 msgid "Select this if you want to split your bibliography into sections"
-msgstr "Wählen Sie dies, wenn Sie ihr Literaturverzeichnis in Abschnitte aufteilen möchten"
+msgstr ""
+"Wählen Sie dies, wenn Sie ihr Literaturverzeichnis in Abschnitte aufteilen "
+"möchten"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:56
 msgid "A&vailable Branches:"
@@ -4763,7 +4765,8 @@ msgstr "an"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:934
 msgid "Repeat this row as header on every (except the first) page"
-msgstr "Wiederholen Sie diese Zeile als Kopfzeile auf jeder Seite (außer der ersten)"
+msgstr ""
+"Wiederholen Sie diese Zeile als Kopfzeile auf jeder Seite (außer der ersten)"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:949
 msgid "This row is the header of the first page"
@@ -4771,7 +4774,8 @@ msgstr "Diese Zeile ist die Kopfzeile auf der ersten Seite"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:968
 msgid "Repeat this row as footer on every (except the last) page"
-msgstr "Wiederholen Sie diese Zeile als Fußzeile auf jeder Seite (außer der ersten)"
+msgstr ""
+"Wiederholen Sie diese Zeile als Fußzeile auf jeder Seite (außer der ersten)"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:983
 msgid "This row is the footer of the last page"
@@ -4955,7 +4959,8 @@ msgstr "Den Abstand auch nach einem Seitenumbruch einfügen"
 
 #: src/frontends/qt2/ui/QVSpaceDialogBase.ui:113
 msgid "Custom value. Needs spacing type \"Custom\"."
-msgstr "Benutzerdefinierter Wert. Setzt Abstandsart \"Benutzerdefiniert\" voraus."
+msgstr ""
+"Benutzerdefinierter Wert. Setzt Abstandsart \"Benutzerdefiniert\" voraus."
 
 #: src/frontends/qt2/ui/QVSpaceDialogBase.ui:121
 msgid "DefSkip"
@@ -10253,7 +10258,8 @@ msgid ""
 "The document %1$s is already loaded.\n"
 "\n"
 "Do you want to revert to the saved version?"
-msgstr "Das Dokument %1$s ist bereits geladen.\n"
+msgstr ""
+"Das Dokument %1$s ist bereits geladen.\n"
 "\n"
 "Möchten Sie zu der gespeicherten Version zurückkehren?"
 
@@ -10275,7 +10281,8 @@ msgid ""
 "The document %1$s does not yet exist.\n"
 "\n"
 "Do you want to create a new document?"
-msgstr "Das Dokument %1$s existiert noch nicht.\n"
+msgstr ""
+"Das Dokument %1$s existiert noch nicht.\n"
 "\n"
 "Möchten Sie ein neues Dokument erzeugen?"
 
@@ -10706,7 +10713,8 @@ msgstr "Unbekannte Dokumentklasse"
 #: src/buffer.C:392
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
-msgstr "Verwende die Standard-Dokumentenklasse, da die Klasse %1$s unbekannt ist."
+msgstr ""
+"Verwende die Standard-Dokumentenklasse, da die Klasse %1$s unbekannt ist."
 
 #: src/buffer.C:444 src/text.C:338
 #, c-format
@@ -10756,8 +10764,9 @@ msgstr "Die Konvertierung ist fehlgeschlagen"
 msgid ""
 "%1$s is from an earlier version of LyX, but a temporary file for converting "
 "it could not be created."
-msgstr "%1$s stammt von einer früheren LyX-Version, aber eine temporäre "
-"Datei für die Konvertierung konnte nicht erzeugt werden."
+msgstr ""
+"%1$s stammt von einer früheren LyX-Version, aber eine temporäre Datei für "
+"die Konvertierung konnte nicht erzeugt werden."
 
 #: src/buffer.C:643
 msgid "Conversion script not found"
@@ -10768,7 +10777,8 @@ msgstr "Das Konvertierungsskript wurde nicht gefunden"
 msgid ""
 "%1$s is from an earlier version of LyX, but the conversion script lyx2lyx "
 "could not be found."
-msgstr "%1$s stammt von einer früheren LyX-Version, aber das Konvertierungsskript "
+msgstr ""
+"%1$s stammt von einer früheren LyX-Version, aber das Konvertierungsskript "
 "lyx2lyx konnte nicht gefunden werden."
 
 #: src/buffer.C:664
@@ -11137,7 +11147,8 @@ msgid ""
 "The file %1$s already exists.\n"
 "\n"
 "Do you want to over-write that file?"
-msgstr "Die Datei %1$s existiert bereits.\n"
+msgstr ""
+"Die Datei %1$s existiert bereits.\n"
 "\n"
 "Möchten Sie die Datei überschreiben?"
 
@@ -12429,8 +12440,9 @@ msgstr "Ungültiger Dateiname"
 msgid ""
 "LyX does not provide LateX support for file names containing any of these "
 "characters:\n"
-msgstr "LyX bietet keine LaTeX-Unterstützung für Dateinamen, die eines der "
-"folgenden Zeichen einhalten:\n"
+msgstr ""
+"LyX bietet keine LaTeX-Unterstützung für Dateinamen, die eines der folgenden "
+"Zeichen einhalten:\n"
 
 #: src/frontends/xforms/Alert_pimpl.C:79
 msgid "OK|^M"
@@ -13992,7 +14004,8 @@ msgstr ""
 #: src/ispell.C:377
 msgid "Could not communicate with the ispell spellchecker process."
 msgstr ""
-"Der 'ispell'-Prozess für die Rechtschreibprüfung konnte nicht angesprochen werden."
+"Der 'ispell'-Prozess für die Rechtschreibprüfung konnte nicht angesprochen "
+"werden."
 
 #: src/kbsequence.C:160
 msgid "   options: "
@@ -14072,7 +14085,8 @@ msgid ""
 "The document %1$s could not be saved.\n"
 "\n"
 "Do you want to rename the document and try again?"
-msgstr "Das Dokument %1$s konnte nicht gespeichert werden.\n"
+msgstr ""
+"Das Dokument %1$s konnte nicht gespeichert werden.\n"
 "\n"
 "Möchten Sie das Dokument umbenennen und erneut versuchen?"
 
@@ -14098,7 +14112,8 @@ msgid ""
 "The document %1$s already exists.\n"
 "\n"
 "Do you want to over-write that document?"
-msgstr "Das Dokument %1$s existiert bereits.\n"
+msgstr ""
+"Das Dokument %1$s existiert bereits.\n"
 "\n"
 "Möchten Sie das Dokument überschreiben?"
 
@@ -14179,9 +14194,10 @@ msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
 "updated document class specifications."
-msgstr "Das System wurde neu konfiguriert.\n"
-"Sie müssen LyX neu starten, um die aktualisierten "
-"Dokumentklassen-Spezifikationen zu nutzen."
+msgstr ""
+"Das System wurde neu konfiguriert.\n"
+"Sie müssen LyX neu starten, um die aktualisierten Dokumentklassen-"
+"Spezifikationen zu nutzen."
 
 #: src/lyx_main.C:110
 msgid "Could not read configuration file"
@@ -14440,7 +14456,8 @@ msgid ""
 "The document %1$s has unsaved changes.\n"
 "\n"
 "Do you want to save the document?"
-msgstr "Das Dokument %1$s enthält nicht gespeicherte Änderungen.\n"
+msgstr ""
+"Das Dokument %1$s enthält nicht gespeicherte Änderungen.\n"
 "\n"
 "Möchten Sie das Dokument speichern?"
 
@@ -14482,8 +14499,9 @@ msgstr " fertig."
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
-msgstr "Alle Änderungen gehen verloren. Sind Sie sicher, dass Sie zur "
-"gespeicherten Version des Dokuments %1$s zurückkehren möchten?"
+msgstr ""
+"Alle Änderungen gehen verloren. Sind Sie sicher, dass Sie zur gespeicherten "
+"Version des Dokuments %1$s zurückkehren möchten?"
 
 #: src/lyxfunc.C:840
 msgid "Build"
@@ -14570,8 +14588,8 @@ msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
 msgstr ""
-"Sollen zusammengeschriebene Worte wie \"Verzeichnisname\" als korrekt angesehen "
-"werden?"
+"Sollen zusammengeschriebene Worte wie \"Verzeichnisname\" als korrekt "
+"angesehen werden?"
 
 #: src/lyxrc.C:2074
 msgid ""
