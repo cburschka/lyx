@@ -29,7 +29,7 @@ def trim_eol(line):
     " Remove end of line char(s)."
     if line[-2:-1] == '\r':
         return line[:-2]
-    elif line[-1:-1] == '\r' or line[-1:-1] == '\n':
+    elif line[-1:] == '\r' or line[-1:] == '\n':
         return line[:-1]
     else:
         # file with no EOL in last line
