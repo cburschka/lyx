@@ -1,3 +1,13 @@
+2005-10-21  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* text3.C (dispatch): LFUN_NEXT_INSET_TOGGLE: first try to
+	dispatch LFUN_INSET_TOGGLE to inset at cursor, and then to
+	containg inset. If this does not work, the same command will be
+	sent to other insets down the queue by LCursor::dispatch. (bug 2066)
+
+	* lyxfunc.C (dispatch): make sure the cursor is correct when doing
+	a dispatch.
+
 2005-10-20  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* lyxtextclass.C (Read): convert layout file if the format is wrong

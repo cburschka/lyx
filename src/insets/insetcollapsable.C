@@ -341,8 +341,13 @@ void InsetCollapsable::doDispatch(LCursor & cur, FuncRequest & cmd)
 			setStatus(cur, Open);
 		else if (cmd.argument == "close")
 			setStatus(cur, Collapsed);
-		else if (cmd.argument == "toggle" || cmd.argument.empty())
-			setStatus(cur, isOpen() ? Collapsed : Open);
+		else if (cmd.argument == "toggle" || cmd.argument.empty()) 
+			if (isOpen()) {
+				setStatus(cur, Collapsed);
+				cur.forwardPosNoDescend();
+			}
+			else
+				setStatus(cur, Open);
 		else // if assign or anything else
 			cur.undispatched();
 		cur.dispatched();

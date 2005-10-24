@@ -1,3 +1,14 @@
+2005-10-21  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* insettabular.C (doDispatch): get rid of annoying debug message.
+
+	* insetbranch.C (doDispatch): LFUN_INSET_TOGGLE: do not replicate
+	code from InsetCollapsable.
+
+	* insetcollapsable.C (doDispatch): LFUN_INSET_TOGGLE: when the
+	inset is toggled to Closed, move cursor to the right (part of bug
+	2066).
+
 2005-10-21  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* insettext.C: remove obsolete old_pit

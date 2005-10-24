@@ -1438,8 +1438,11 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			InsetIterator const end = inset_iterator_end(inset);
 			for (; it != end; ++it) {
 				if (inset_code == InsetBase::NO_CODE
-				    || inset_code == it->lyxCode())
-					it->dispatch(cur, fr);
+				    || inset_code == it->lyxCode()) {
+					LCursor tmpcur = cur;
+					tmpcur.pushLeft(*it);
+					it->dispatch(tmpcur, fr);
+				}
 			}
 			update = true;
 			break;

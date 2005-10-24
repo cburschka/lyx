@@ -143,16 +143,7 @@ void InsetBranch::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 
 	case LFUN_INSET_TOGGLE:
-		// We assume that this lfun is indeed going to be dispatched.
-		cur.dispatched();
-
-		if (cmd.argument == "open")
-			setStatus(cur, Open);
-		else if (cmd.argument == "close")
-			setStatus(cur, Collapsed);
-		else if (cmd.argument == "toggle")
-			setStatus(cur, isOpen() ? Collapsed : Open);
-		else if (cmd.argument == "assign" || cmd.argument.empty()) {
+		if (cmd.argument == "assign" || cmd.argument.empty()) {
 			// The branch inset uses "assign".
 			BranchList const & branchlist =
 				cur.buffer().params().branchlist();
@@ -168,6 +159,8 @@ void InsetBranch::doDispatch(LCursor & cur, FuncRequest & cmd)
 					cur.undispatched();
 			}
 		}
+		else
+			InsetCollapsable::doDispatch(cur, cmd);
 		break;
 
 	default:

@@ -755,12 +755,23 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_NEXT_INSET_TOGGLE: {
 		InsetBase * inset = cur.nextInset();
+		// this is the real function we want to invoke
+		cmd = FuncRequest(LFUN_INSET_TOGGLE);
+		cur.undispatched();
+		// if there is an inset at cursor, see whether it
+		// wants to toggle.
 		if (inset) {
-			cur.clearSelection();
-			FuncRequest fr = cmd;
-			fr.action = LFUN_INSET_TOGGLE;
-			inset->dispatch(cur, fr);
+			LCursor tmpcur = cur;
+			tmpcur.pushLeft(*inset);
+			inset->dispatch(tmpcur, cmd);
+			if (tmpcur.result().dispatched()) {
+				cur.clearSelection();
+				cur.dispatched();
+			}
 		}
+		// if it did not work, try the underlying inset.
+		if (!cur.result().dispatched())
+			cur.inset().dispatch(cur, cmd);
 		break;
 	}
 
