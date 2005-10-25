@@ -1187,8 +1187,7 @@ void LyXText::insertChar(LCursor & cur, char c)
 
 	current_font = rawtmpfont;
 	real_current_font = realtmpfont;
-	//setCursor(cur, cur.pit(), cur.pos() + 1, false, cur.boundary());
-	setCursor(cur, cur.pit(), cur.pos() + 1, false, true);
+	setCursor(cur, cur.pit(), cur.pos() + 1, false, cur.boundary());
 	charInserted();
 }
 
