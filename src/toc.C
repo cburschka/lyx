@@ -122,7 +122,8 @@ TocList const getTocList(Buffer const & buf)
 
 		/// now the toc entry for the paragraph
 		int const toclevel = pit->layout()->toclevel;
-		if (toclevel >= min_toclevel
+		if (toclevel != LyXLayout::NOT_IN_TOC
+		    && toclevel >= min_toclevel
 		    && toclevel <= bufparams.tocdepth) {
 			// insert this into the table of contents
 			if (tocstring.empty())

@@ -1,5 +1,9 @@
 2005-10-25  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	* toc.C (getTocList): skip paragraphs which toclevel is NOT_IN_TOC.
+
+2005-10-25  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
 	* text.C (insertChar): do not reset boundary (bug 2061)
 
 2005-10-24  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
