@@ -596,8 +596,8 @@ void BufferParams::writeFile(ostream & os) const
 	   << "\n\\paperorientation " << string_orientation[orientation]
 	   << '\n';
 
-	std::list<Branch>::const_iterator it = branchlist().begin();
-	std::list<Branch>::const_iterator end = branchlist().end();
+	BranchList::const_iterator it = branchlist().begin();
+	BranchList::const_iterator end = branchlist().end();
 	for (; it != end; ++it) {
 		os << "\\branch " << it->getBranch()
 		   << "\n\\selected " << it->getSelected()

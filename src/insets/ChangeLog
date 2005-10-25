@@ -1,3 +1,8 @@
+2005-10-25  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* insetbranch.C (isBranchSelected): take a buffer as argument.
+	adapt to work with child documents (bug 2092).
+
 2005-10-21  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* insettabular.C (doDispatch): get rid of annoying debug message.

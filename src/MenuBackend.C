@@ -737,10 +737,10 @@ void expandBranches(Menu & tomenu, LyXView const * view)
 	if (!view || !view->buffer())
 		return;
 
-	BufferParams const & params = view->buffer()->params();
+	BufferParams const & params = view->buffer()->getMasterBuffer()->params();
 
-	std::list<Branch>::const_iterator cit = params.branchlist().begin();
-	std::list<Branch>::const_iterator end = params.branchlist().end();
+	BranchList::const_iterator cit = params.branchlist().begin();
+	BranchList::const_iterator end = params.branchlist().end();
 
 	for (int ii = 1; cit != end; ++cit, ++ii) {
 		string label = cit->getBranch();

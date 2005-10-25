@@ -1,5 +1,14 @@
 2005-10-25  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	* text3.C (getStatus): 
+	* MenuBackend.C (expandBranches): take the branch list from the
+	master document (bug 2092).
+	
+	* MenuBackend.C (expandBranches): 
+	* bufferparams.C (writeFile): use BranchList type.
+
+2005-10-25  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
 	* text3.C (dispatch, getStatus): 
 	* LyXAction.C (init): 
 	* lfuns.h: get rid of LFUN_KEYMAP_TOGGLE

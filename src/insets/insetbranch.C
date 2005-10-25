@@ -145,9 +145,7 @@ void InsetBranch::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_TOGGLE:
 		if (cmd.argument == "assign" || cmd.argument.empty()) {
 			// The branch inset uses "assign".
-			BranchList const & branchlist =
-				cur.buffer().params().branchlist();
-			if (isBranchSelected(branchlist)) {
+			if (isBranchSelected(cur.buffer())) {
 				if (status() != Open)
 					setStatus(cur, Open);
 				else
@@ -185,9 +183,7 @@ bool InsetBranch::getStatus(LCursor & cur, FuncRequest const & cmd,
 			flag.enabled(true);
 		else if (cmd.argument == "assign"
 			   || cmd.argument.empty()) {
-			BranchList const & branchlist =
-				cur.buffer().params().branchlist();
-			if (isBranchSelected(branchlist))
+			if (isBranchSelected(cur.buffer()))
 				flag.enabled(status() != Open);
 			else
 				flag.enabled(status() != Collapsed);
@@ -202,8 +198,10 @@ bool InsetBranch::getStatus(LCursor & cur, FuncRequest const & cmd,
 }
 
 
-bool InsetBranch::isBranchSelected(BranchList const & branchlist) const
+bool InsetBranch::isBranchSelected(Buffer const & buffer) const
 {
+	Buffer const & realbuffer = *buffer.getMasterBuffer();
+	BranchList const & branchlist = realbuffer.params().branchlist();
 	BranchList::const_iterator const end = branchlist.end();
 	BranchList::const_iterator it =
 		std::find_if(branchlist.begin(), end,
@@ -217,7 +215,7 @@ bool InsetBranch::isBranchSelected(BranchList const & branchlist) const
 int InsetBranch::latex(Buffer const & buf, ostream & os,
 		       OutputParams const & runparams) const
 {
-	return isBranchSelected(buf.params().branchlist()) ?
+	return isBranchSelected(buf) ?
 		InsetText::latex(buf, os, runparams) : 0;
 }
 
@@ -225,7 +223,7 @@ int InsetBranch::latex(Buffer const & buf, ostream & os,
 int InsetBranch::linuxdoc(Buffer const & buf, std::ostream & os,
 			  OutputParams const & runparams) const
 {
-	return isBranchSelected(buf.params().branchlist()) ?
+	return isBranchSelected(buf) ?
 		InsetText::linuxdoc(buf, os, runparams) : 0;
 }
 
@@ -233,7 +231,7 @@ int InsetBranch::linuxdoc(Buffer const & buf, std::ostream & os,
 int InsetBranch::docbook(Buffer const & buf, std::ostream & os,
 			 OutputParams const & runparams) const
 {
-	return isBranchSelected(buf.params().branchlist()) ?
+	return isBranchSelected(buf) ?
 		InsetText::docbook(buf, os, runparams) : 0;
 }
 
@@ -241,7 +239,7 @@ int InsetBranch::docbook(Buffer const & buf, std::ostream & os,
 int InsetBranch::plaintext(Buffer const & buf, std::ostream & os,
 			   OutputParams const & runparams) const
 {
-	return isBranchSelected(buf.params().branchlist()) ?
+	return isBranchSelected(buf) ?
 		InsetText::plaintext(buf, os, runparams): 0;
 }
 

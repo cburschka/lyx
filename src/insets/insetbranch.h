@@ -15,7 +15,7 @@
 
 #include "insetcollapsable.h"
 
-class BranchList;
+class Buffer;
 
 
 class InsetBranchParams {
@@ -72,9 +72,9 @@ public:
 	void setParams(InsetBranchParams const & params) { params_ = params; }
 
 	/** \returns true if params_.branch is listed as 'selected' in
-	    \c branchlist.
+	    \c buffer. This handles the case of child documents.
 	 */
-	bool isBranchSelected(BranchList const & branchlist) const;
+	bool isBranchSelected(Buffer const & buffer) const;
 	///
 	bool getStatus(LCursor &, FuncRequest const &, FuncStatus &) const;
 

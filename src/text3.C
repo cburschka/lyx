@@ -1676,7 +1676,7 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 		break;
 	case LFUN_INSERT_BRANCH:
 		code = InsetBase::BRANCH_CODE;
-		if (buf->params().branchlist().empty())
+		if (buf->getMasterBuffer()->params().branchlist().empty())
 			enable = false;
 		break;
 	case LFUN_INSERT_LABEL:
