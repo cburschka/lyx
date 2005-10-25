@@ -775,11 +775,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_KEYMAP_TOGGLE:
-		cur.clearSelection();
-		bv->switchKeyMap();
-		break;
-
 	case LFUN_SPACE_INSERT:
 		if (cur.paragraph().layout()->free_spacing)
 			insertChar(cur, ' ');
@@ -1904,7 +1899,6 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_THESAURUS_ENTRY:
 	case LFUN_PARAGRAPH_APPLY:
 	case LFUN_ESCAPE:
-	case LFUN_KEYMAP_TOGGLE:
 	case LFUN_ENDBUF:
 	case LFUN_BEGINNINGBUF:
 	case LFUN_BEGINNINGBUFSEL:

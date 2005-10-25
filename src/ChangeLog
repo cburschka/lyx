@@ -1,5 +1,11 @@
 2005-10-25  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	* text3.C (dispatch, getStatus): 
+	* LyXAction.C (init): 
+	* lfuns.h: get rid of LFUN_KEYMAP_TOGGLE
+
+2005-10-25  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
 	* toc.C (getTocList): skip paragraphs which toclevel is NOT_IN_TOC.
 
 2005-10-25  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>

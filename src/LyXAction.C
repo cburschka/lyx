@@ -333,7 +333,6 @@ void LyXAction::init()
 		{ LFUN_REPEAT, "repeat", NoBuffer },
 		{ LFUN_WORD_FIND, "word-find", ReadOnly },
 		{ LFUN_WORD_REPLACE, "word-replace", Noop },
-		{ LFUN_KEYMAP_TOGGLE, "keymap-toggle", Noop },
 		{ LFUN_LANGUAGE_BUFFER, "buffer-language", Noop },
 		{ LFUN_TEXTCLASS_APPLY, "textclass-apply", Noop },
 		{ LFUN_TEXTCLASS_LOAD, "textclass-load", Noop },
