@@ -373,7 +373,7 @@ private:
 	void fixCursorAfterDelete(CursorSlice & cur, CursorSlice const & where);
 
 	/// delete double space or empty paragraphs around old cursor
-	bool deleteEmptyParagraphMechanism(LCursor & cur, LCursor const & old);
+	bool deleteEmptyParagraphMechanism(LCursor & cur, LCursor & old);
 
 	///
 	void deleteWordForward(LCursor & cur);

@@ -1119,7 +1119,6 @@ bool LyXText::cursorDown(LCursor & cur)
 			cur = dummy;
 
 		return changed;
-
 	}
 
 	bool updateNeeded = false;
@@ -1181,32 +1180,29 @@ void LyXText::fixCursorAfterDelete(CursorSlice & cur, CursorSlice const & where)
 }
 
 
-bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur, LCursor const & old)
+bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur, LCursor & old)
 {
 	// Would be wrong to delete anything if we have a selection.
 	if (cur.selection())
 		return false;
 
 	//lyxerr[Debug::DEBUG] << "DEPM: cur:\n" << cur << "old:\n" << old << endl;
-	Paragraph const & oldpar = pars_[old.pit()];
+	// old should point to us
+	BOOST_ASSERT(old.text() == this);
+
+	Paragraph & oldpar = old.paragraph();
 
 	// We allow all kinds of "mumbo-jumbo" when freespacing.
 	if (oldpar.isFreeSpacing())
 		return false;
 
 	/* Ok I'll put some comments here about what is missing.
-	   I have fixed BackSpace (and thus Delete) to not delete
-	   double-spaces automagically. I have also changed Cut,
-	   Copy and Paste to hopefully do some sensible things.
 	   There are still some small problems that can lead to
 	   double spaces stored in the document file or space at
 	   the beginning of paragraphs(). This happens if you have
 	   the cursor between to spaces and then save. Or if you
 	   cut and paste and the selection have a space at the
-	   beginning and then save right after the paste. I am
-	   sure none of these are very hard to fix, but I will
-	   put out 1.1.4pre2 with FIX_DOUBLE_SPACE defined so
-	   that I can get some feedback. (Lgb)
+	   beginning and then save right after the paste. (Lgb)
 	*/
 
 	// If old.pos() == 0 and old.pos()(1) == LineSeparator
@@ -1217,9 +1213,12 @@ bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur, LCursor const & old)
 	// delete the LineSeparator.
 	// MISSING
 
-	// If the chars around the old cursor were spaces, delete one of them.
-	if (old.pit() != cur.pit() || old.pos() != cur.pos()) {
+	bool const same_inset = &old.inset() == &cur.inset();
+	bool const same_par = same_inset && old.pit() == cur.pit();
+	bool const same_par_pos = same_par && old.pos() == cur.pos();
 
+	// If the chars around the old cursor were spaces, delete one of them.
+	if (!same_par_pos) {
 		// Only if the cursor has really moved.
 		if (old.pos() > 0
 		    && old.pos() < oldpar.size()
@@ -1228,9 +1227,8 @@ bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur, LCursor const & old)
 		    && oldpar.lookupChange(old.pos() - 1) != Change::DELETED) {
 			// We need to set the text to Change::INSERTED to
 			// get it erased properly
-			pars_[old.pit()].setChange(old.pos() -1,
-						   Change::INSERTED);
-			pars_[old.pit()].erase(old.pos() - 1);
+			oldpar.setChange(old.pos() -1, Change::INSERTED);
+			oldpar.erase(old.pos() - 1);
 #ifdef WITH_WARNINGS
 #warning This will not work anymore when we have multiple views of the same buffer
 // In this case, we will have to correct also the cursors held by
@@ -1238,68 +1236,51 @@ bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur, LCursor const & old)
 // automated way in CursorSlice code. (JMarc 26/09/2001)
 #endif
 			// correct all cursor parts
-			fixCursorAfterDelete(cur.top(), old.top());
-#ifdef WITH_WARNINGS
-#warning DEPM, look here
-#endif
-			//fixCursorAfterDelete(cur.anchor(), old.top());
+			if (same_par) {
+				fixCursorAfterDelete(cur.top(), old.top());
+				cur.resetAnchor();
+			}
 			return true;
 		}
 	}
 
 	// only do our magic if we changed paragraph
-	if (old.pit() == cur.pit())
+	if (same_par)
 		return false;
 
 	// don't delete anything if this is the ONLY paragraph!
-	if (pars_.size() == 1)
+	if (old.lastpit() == 0)
 		return false;
 
 	// Do not delete empty paragraphs with keepempty set.
 	if (oldpar.allowEmpty())
 		return false;
 
-	// record if we have deleted a paragraph
-	// we can't possibly have deleted a paragraph before this point
-	bool deleted = false;
-
 	if (oldpar.empty() || (oldpar.size() == 1 && oldpar.isLineSeparator(0))) {
-		// ok, we will delete something
-		deleted = true;
-
-		bool selection_position_was_oldcursor_position =
-			cur.anchor().pit() == old.pit() && cur.anchor().pos() == old.pos();
-
-		// This is a bit of a overkill. We change the old and the cur par
-		// at max, certainly not everything in between...
-		recUndo(old.pit(), cur.pit());
-
 		// Delete old par.
-		pars_.erase(pars_.begin() + old.pit());
+		recordUndo(old, Undo::ATOMIC, old.pit());
+		ParagraphList & plist = old.text()->paragraphs();
+		plist.erase(plist.begin() + old.pit());
 
-		// Update cursor par offset if necessary.
-		// Some 'iterator registration' would be nice that takes care of
-		// such events. Maybe even signal/slot?
-		if (cur.pit() > old.pit())
-			--cur.pit();
-#ifdef WITH_WARNINGS
-#warning DEPM, look here
-#endif
-//		if (cur.anchor().pit() > old.pit())
-//			--cur.anchor().pit();
-
-		if (selection_position_was_oldcursor_position) {
-			// correct selection
-			cur.resetAnchor();
+		// see #warning above
+		if (cur.depth() >= old.depth()) {
+			CursorSlice & curslice = cur[old.depth() - 1];
+			if (&curslice.inset() == &old.inset() 
+			    && curslice.pit() > old.pit()) {
+				--curslice.pit();
+				// since a paragraph has been deleted, all the
+				// insets after `old' have been copied and
+				// their address has changed. Therefore we
+				// need to `regenerate' cur. (JMarc)
+				cur.updateInsets(&(cur.bottom().inset()));
+				cur.resetAnchor();
+			}
 		}
-	}
-
-	if (deleted) {
-		updateCounters(cur.buffer());
+		updateCounters(old.buffer());
 		return true;
 	}
 
-	if (pars_[old.pit()].stripLeadingSpaces())
+	if (oldpar.stripLeadingSpaces())
 		cur.resetAnchor();
 
 	return false;

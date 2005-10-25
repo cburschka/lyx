@@ -214,6 +214,9 @@ public:
 	void push_back(CursorSlice const & sl) { slices_.push_back(sl); }
 	///
 	void pop_back() { slices_.pop_back(); }
+	/// recompute the inset parts of the cursor from the document data
+	void updateInsets(InsetBase * inset);
+
 private:
 	/**
 	 * When the cursor position is i, is the cursor after the i-th char

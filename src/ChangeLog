@@ -1,3 +1,14 @@
+2005-10-24  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* dociterator.C (updateInsets): new method. Updates the inset_
+	cache of all the slices of the iterator.
+
+	* text2.C (deleteEmptyParagraphMechanism): compare also containing
+	insets when comparing pit/pos; pass the right cursor to
+	recordUndo; when a paragraph has been deleted, compare `old.top()' to
+	the right cursor slice of `cur'; use updateInsets on cur to make
+	sure that the inset caches are correct; general cleanup.
+
 2005-10-21  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* text3.C (dispatch): LFUN_NEXT_INSET_TOGGLE: first try to

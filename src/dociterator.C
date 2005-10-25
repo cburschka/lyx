@@ -490,6 +490,25 @@ bool DocIterator::hasPart(DocIterator const & it) const
 }
 
 
+void DocIterator::updateInsets(InsetBase * inset) 
+{
+	// this function re-creates the cache of inset pointers.
+	// code taken in part from StableDocIterator::asDocIterator.
+	//lyxerr << "converting:\n" << *this << endl;
+	DocIterator dit = DocIterator(*inset);
+	size_t const n = slices_.size();
+	for (size_t i = 0 ; i < n; ++i) {
+		BOOST_ASSERT(inset);
+		dit.push_back(slices_[i]);
+		dit.top().inset_ = inset;
+		if (i + 1 != n)
+			inset = dit.nextInset();
+	}
+	//lyxerr << "converted:\n" << *this << endl;
+	operator=(dit);
+}
+
+
 std::ostream & operator<<(std::ostream & os, DocIterator const & dit)
 {
 	for (size_t i = 0, n = dit.depth(); i != n; ++i)
