@@ -108,8 +108,8 @@ comments in lyx_path_prefix.C:
 
 /* Compile the code with
  *
- * g++ -I/c/Program\ Files/NSIS/Contrib -Wall -shared \
- *    lyx_path_prefix.c -o lyx_path_prefix.dll
+ * g++ -I/c/Program\ Files/NSIS/Contrib -W -Wall -shared \
+ *    lyx_configure.C -o lyx_configure.dll
  *
  * Move resulting .dll to /c/Program\ Files/NSIS/Plugins
  */

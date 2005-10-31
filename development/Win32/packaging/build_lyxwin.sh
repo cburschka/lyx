@@ -1,6 +1,6 @@
 #! /bin/sh
 
-# This script aims to do averything necessary to automate the building
+# This script aims to do everything necessary to automate the building
 # of a LyX/Win package.
 
 # Invocation:
@@ -13,7 +13,7 @@
 # (See the end of the script.)
 
 # Notes:
-# It uses the MinGW/MinSYS environment and compiler.
+# It uses the MSYS environment and MinGW compiler.
 
 # It asks whether the Qt and LyX cvs trees are up to date.
 # It asks whether the Qt library has been compiled.
@@ -22,15 +22,11 @@
 # It compiles the dv2dt and dt2dv utilites.
 # It compiles and installs the Aspell library.
 # It compiles and installs LyX.
-# It copies the dv2dt and dt2dv utilites, the .dlls and
-#   clean_dvi.py to the lyx package.
-# It modifies the Resources/lyx/configure script to
-#   ensure that the generated .dvi file is usable.
 
 # Once all this is done, you're ready to "package" LyX.
 # See the README for details.
 
-# The script compiles the .dll version of the Qt libraries. Linking of lyx
+# The script compiles the .dll version of the Qt libraries. Linking of LyX
 # against this will, therefore, take "some time".
 
 # It compiles the static version of the Aspell libraries because no
