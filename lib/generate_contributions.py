@@ -146,7 +146,7 @@ $author="lyx-devel@lists.lyx.org";
 // Full name of this file (relative path from LyX home page)
 $file_full="about/%s";
 
-include("start.php3");
+include("start.php");
 ?>
 ''' % ( title, file )
 
@@ -154,7 +154,7 @@ include("start.php3");
 def footer():
      return '''
 <?php
-include("end.php3");
+include("end.php");
 ?>
 '''
 
@@ -766,10 +766,10 @@ contributers = [
 
      contributer(u"Tino Meinen",
                  "a.t.meinen () chello ! nl",
-                 "",
-                 "",
-                 "",
-                 "",
+                 "GPL",
+                 "Re: Licensing your contributions to LyX",
+                 "m=113078277722316",
+                 "31 October 2005",
                  u"Dutch translation coordinator"),
 
      contributer(u"Iñaki Larrañaga Murgoitio",
