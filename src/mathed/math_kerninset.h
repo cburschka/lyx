@@ -35,9 +35,14 @@ public:
 	void write(WriteStream & os) const;
 	///
 	void normalize(NormalStream & ns) const;
+	///
+	int width() const;
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 	/// width in em
 	LyXLength wid_;
+	/// in pixels
+	mutable int wid_pix_;
+	
 };
 #endif

@@ -42,9 +42,16 @@ auto_ptr<InsetBase> MathKernInset::doClone() const
 
 void MathKernInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	dim.wid = wid_.inPixels(0, mathed_char_width(mi.base.font, 'M'));
+	wid_pix_ = wid_.inPixels(0, mathed_char_width(mi.base.font, 'M'));
+	dim.wid = wid_pix_;
 	dim.asc = 0;
 	dim.des = 0;
+}
+
+
+int MathKernInset::width() const
+{
+	return wid_pix_;
 }
 
 
