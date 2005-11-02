@@ -95,12 +95,17 @@ void InsetBranch::setButtonLabel()
 	font.decSize();
 
 	string s = _("Branch: ") + params_.branch;
-	setLabel(isOpen() ? s : getNewLabel(s) );
 	font.setColor(LColor::foreground);
-	if (!params_.branch.empty())
-		setBackgroundColor(lcolor.getFromLyXName(params_.branch));
-	else
+	if (!params_.branch.empty()) {
+		LColor_color c = lcolor.getFromLyXName(params_.branch);
+		if (c == LColor::none) {
+			c = LColor::error;
+			s = _("Undef: ") + s;
+		}
+		setBackgroundColor(c);
+	} else
 		setBackgroundColor(LColor::background);
+	setLabel(isOpen() ? s : getNewLabel(s) );
 	setLabelFont(font);
 }
 

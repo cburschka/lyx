@@ -97,7 +97,7 @@ void InsetCharStyle::setUndefined()
 	params_.latexparam.clear();
 	params_.font = LyXFont(LyXFont::ALL_INHERIT);
 	params_.labelfont = LyXFont(LyXFont::ALL_INHERIT);
-	params_.labelfont.setColor(LColor::red);
+	params_.labelfont.setColor(LColor::error);
 }
 
 

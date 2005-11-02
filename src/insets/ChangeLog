@@ -1,3 +1,9 @@
+2005-11-02  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* insetbranch.C: partial fix bug 2092: branches not 
+	propagated to child docs
+	* insetcharstyle.C: Also replace LColor::red by LColor::error
+
 2005-10-25  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* insetbranch.C (isBranchSelected): take a buffer as argument.
