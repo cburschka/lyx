@@ -17,6 +17,7 @@
 
 #include "lyxtext.h"
 
+#include "BranchList.h"
 #include "FloatList.h"
 #include "FuncStatus.h"
 #include "buffer.h"
@@ -1561,8 +1562,10 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 			FuncStatus & flag) const
 {
 	BOOST_ASSERT(cur.text() == this);
+
 	LyXFont const & font = real_current_font;
 	bool enable = true;
+	InsetBase::Code code = InsetBase::NO_CODE;
 
 	switch (cmd.action) {
 
@@ -1574,11 +1577,6 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 		enable = changeDepthAllowed(cur, INC_DEPTH);
 		break;
 
-	case LFUN_INSET_OPTARG:
-		enable = numberOfOptArgs(cur.paragraph())
-			< cur.paragraph().layout()->optionalargs;
-		break;
-
 	case LFUN_APPENDIX:
 		flag.setOnOff(cur.paragraph().params().startOfAppendix());
 		return true;
@@ -1587,10 +1585,6 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 		enable = (cur.paragraph().layout()->labeltype == LABEL_BIBLIO);
 		break;
 
-#if 0
-	// the functions which insert insets
-	InsetBase::Code code = InsetBase::NO_CODE;
-	switch (cmd.action) {
 	case LFUN_DIALOG_SHOW_NEW_INSET:
 		if (cmd.argument == "bibitem")
 			code = InsetBase::BIBITEM_CODE;
@@ -1668,7 +1662,7 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 		break;
 	case LFUN_INSERT_CHARSTYLE:
 		code = InsetBase::CHARSTYLE_CODE;
-		if (buf->params().getLyXTextClass().charstyles().empty())
+		if (cur.buffer().params().getLyXTextClass().charstyles().empty())
 			enable = false;
 		break;
 	case LFUN_INSERT_BOX:
@@ -1676,7 +1670,7 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 		break;
 	case LFUN_INSERT_BRANCH:
 		code = InsetBase::BRANCH_CODE;
-		if (buf->getMasterBuffer()->params().branchlist().empty())
+		if (cur.buffer().getMasterBuffer()->params().branchlist().empty())
 			enable = false;
 		break;
 	case LFUN_INSERT_LABEL:
@@ -1684,6 +1678,8 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 		break;
 	case LFUN_INSET_OPTARG:
 		code = InsetBase::OPTARG_CODE;
+		enable = numberOfOptArgs(cur.paragraph())
+			< cur.paragraph().layout()->optionalargs;
 		break;
 	case LFUN_ENVIRONMENT_INSERT:
 		code = InsetBase::BOX_CODE;
@@ -1718,6 +1714,11 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 		if (cur.inTexted())
 			code = InsetBase::SPACE_CODE;
 		break;
+
+#ifdef WITH_WARNINGS
+#warning This LFUN is not used anymore and should be nuked (JMarc 29/10/2005)
+#endif
+#if 0
 	case LFUN_INSET_DIALOG_SHOW: {
 		InsetBase * inset = cur.nextInset();
 		enable = inset;
@@ -1731,36 +1732,7 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 		}
 		break;
 	}
-	default:
-		break;
-	}
-
-	if (code != InsetBase::NO_CODE
-			&& (cur.empty() || !cur.inset().insetAllowed(code)))
-		enable = false;
-
 #endif
-
-	case LFUN_DIALOG_SHOW_NEW_INSET:
-	case LFUN_INSET_ERT:
-	case LFUN_INSERT_BOX:
-	case LFUN_INSERT_BRANCH:
-	case LFUN_ENVIRONMENT_INSERT:
-	case LFUN_INDEX_INSERT:
-	case LFUN_INDEX_PRINT:
-	case LFUN_TOC_INSERT:
-	case LFUN_HTMLURL:
-	case LFUN_URL:
-	case LFUN_QUOTE:
-	case LFUN_HYPHENATION:
-	case LFUN_LIGATURE_BREAK:
-	case LFUN_HFILL:
-	case LFUN_MENU_SEPARATOR:
-	case LFUN_LDOTS:
-	case LFUN_END_OF_SENTENCE:
-	case LFUN_SPACE_INSERT:
-	case LFUN_INSET_DIALOG_SHOW:
-		break;
 
 	case LFUN_INSET_MODIFY:
 		// We need to disable this, because we may get called for a
@@ -1848,15 +1820,6 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_PASTESELECTION:
 	case LFUN_DATE_INSERT:
 	case LFUN_SELFINSERT:
-	case LFUN_INSERT_LABEL:
-	case LFUN_INSERT_NOTE:
-	case LFUN_INSERT_CHARSTYLE:
-	case LFUN_INSET_FLOAT:
-	case LFUN_INSET_FOOTNOTE:
-	case LFUN_INSET_MARGINAL:
-	case LFUN_INSET_WIDE_FLOAT:
-	case LFUN_INSET_WRAP:
-	case LFUN_TABULAR_INSERT:
 	case LFUN_INSERT_LINE:
 	case LFUN_INSERT_PAGEBREAK:
 	case LFUN_MATH_DISPLAY:
@@ -1893,7 +1856,6 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_HUNG_UMLAUT:
 	case LFUN_CIRCLE:
 	case LFUN_OGONEK:
-	case LFUN_FLOAT_LIST:
 	case LFUN_ACCEPT_CHANGE:
 	case LFUN_REJECT_CHANGE:
 	case LFUN_THESAURUS_ENTRY:
@@ -1910,6 +1872,11 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 	default:
 		return false;
 	}
+
+	if (code != InsetBase::NO_CODE
+	    && (cur.empty() || !cur.inset().insetAllowed(code)))
+		enable = false;
+
 	flag.enabled(enable);
 	return true;
 }

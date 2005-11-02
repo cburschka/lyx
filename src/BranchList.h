@@ -72,7 +72,7 @@ public:
 	BranchList() : separator_("|") {}
 
 	///
-	bool empty() { return list.empty(); }
+	bool empty() const { return list.empty(); }
 	///
 	void clear() { list.clear(); }
 	///

@@ -1,3 +1,9 @@
+2005-10-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* text3.C (getStatus): re-enable disabled code. (bug 2081)
+
+	* BranchList.h (empty): constify.
+
 2005-10-25  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* text3.C (getStatus): 
