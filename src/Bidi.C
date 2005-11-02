@@ -138,7 +138,7 @@ void Bidi::computeTables(Paragraph const & par,
 			log2vis_list_[lpos - start_] = rtl ? 1 : -1;
 		} else if (lev < new_level) {
 			log2vis_list_[lpos - start_] = rtl ? -1 : 1;
-			if (new_level > rtl_par)
+			if (new_level > 0 && !rtl_par)
 				same_direction_ = false;
 		} else
 			log2vis_list_[lpos - start_] = new_rtl ? -1 : 1;

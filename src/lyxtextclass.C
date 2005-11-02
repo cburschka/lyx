@@ -284,7 +284,8 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 					lay.setName(name);
 					if (le == TC_ENVIRONMENT)
 						lay.is_environment = true;
-					if (!(error = do_readStyle(lexrc, lay)))
+					error = do_readStyle(lexrc, lay);
+					if (!error)
 						layoutlist_.push_back(
 							boost::shared_ptr<LyXLayout>(new LyXLayout(lay))
 							);

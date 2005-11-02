@@ -1,3 +1,8 @@
+2005-11-02  Angus Leeming  <leeming@lyx.org>
+
+	* Bidi.C:
+	* lyxtextclass.C: trivial fixes to some MSVS warnings.
+
 2005-10-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* text3.C (getStatus): re-enable disabled code. (bug 2081)

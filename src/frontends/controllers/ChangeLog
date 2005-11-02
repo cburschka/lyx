@@ -1,3 +1,7 @@
+2005-11-02  Angus Leeming  <leeming@lyx.org>
+
+	* helper_funcs.C: trivial fix to a MSVS warning.
+
 2005-10-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* ControlSpellchecker.C (nextWord): do not return empty word

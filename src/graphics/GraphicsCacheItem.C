@@ -384,7 +384,8 @@ void CacheItem::Impl::convertToDisplayFormat()
 
 	// Make a local copy in case we unzip it
 	string filename;
-	if ((zipped_ = zippedFile(filename_))) {
+	zipped_ = zippedFile(filename_);
+	if (zipped_) {
 		unzipped_filename_ = tempName(string(), filename_);
 		if (unzipped_filename_.empty()) {
 			setStatus(ErrorConverting);

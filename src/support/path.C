@@ -29,8 +29,9 @@ Path::Path(string const & path)
 	if (!path.empty()) {
 		pushedDir_ = getcwd();
 
-		if (pushedDir_.empty() || chdir(path))
-			/* FIXME: throw */;
+		if (pushedDir_.empty() || chdir(path)) {
+			/* FIXME: throw */
+		}
 	} else {
 		popped_ = true;
 	}

@@ -15,6 +15,7 @@
 #include "helper_funcs.h"
 
 #include "gettext.h"
+#include "lyxlength.h"
 
 #include "frontends/FileDialog.h"
 
@@ -25,9 +26,6 @@
 using std::pair;
 using std::vector;
 using std::string;
-
-// sorry this is just a temporary hack we should include vspace.h! (Jug)
-extern const char * stringFromUnit(int);
 
 namespace lyx {
 
@@ -106,7 +104,7 @@ string const browseLibFile(string const & dir,
 				       AddName(package().user_support(), dir));
 
 	string const result = browseFile(LibFileSearch(dir, name, ext), title,
-				   filters, false, dir1, dir2);
+					 filters, false, dir1, dir2);
 
 	// remove the extension if it is the default one
 	string noextresult;
@@ -125,9 +123,9 @@ string const browseLibFile(string const & dir,
 
 
 string const browseDir(string const & pathname,
-			string const & title,
-			pair<string,string> const & dir1,
-			pair<string,string> const & dir2)
+		       string const & title,
+		       pair<string,string> const & dir1,
+		       pair<string,string> const & dir2)
 {
 	string lastPath(".");
 	if (!pathname.empty())
@@ -145,9 +143,10 @@ string const browseDir(string const & pathname,
 vector<string> const getLatexUnits()
 {
 	vector<string> units;
-	char const * str;
-	for (int i = 0; (str = stringFromUnit(i)); ++i)
-	    units.push_back(str);
+	int i = 0;
+	char const * str = stringFromUnit(i);
+	for (; str != 0; ++i, str = stringFromUnit(i))
+		units.push_back(str);
 
 	return units;
 }

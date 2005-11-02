@@ -1,3 +1,7 @@
+2005-11-02  Angus Leeming  <leeming@lyx.org>
+
+	* GraphicsCacheItem.C: trivial fix to a MSVS warning.
+
 2005-06-12  Angus Leeming  <leeming@lyx.org>
 
 	* PreviewLoader.C (startLoading): quote the name of the LaTeX file
