@@ -89,8 +89,10 @@ public:
 	Pimpl(string const & l)
 		: lang_(l)
 	{
-		if ( lang_.empty() )
-			lang_ = setlocale(LC_MESSAGES, NULL);
+		if ( lang_.empty() ) {
+			char const * lc_msgs = setlocale(LC_MESSAGES, NULL);
+			lang_ = lc_msgs ? lc_msgs : "";
+		}
 		// strip off any encoding suffix, i.e., assume 8-bit po files
 		string::size_type i = lang_.find(".");
 		lang_ = lang_.substr(0, i);
@@ -117,11 +119,15 @@ public:
 			}
 		}
 		
-		char const * works = setlocale(LC_MESSAGES, lang_.c_str());
-		if (!works)
+		char const * lc_msgs = setlocale(LC_MESSAGES, lang_.c_str());
+#ifndef _WIN32
+		if (!lc_msgs)
 			lyxerr << "Locale " << lang_ << " could not be set" << std::endl;
+#endif
 		// CTYPE controls what getmessage thinks what encoding the po file uses
-		string oldCTYPE = setlocale(LC_CTYPE, NULL);
+		char const * lc_ctype = setlocale(LC_CTYPE, NULL);
+		string oldCTYPE = lc_ctype ? lc_ctype : "";
+
 		setlocale(LC_CTYPE, lang_.c_str());
 		errno = 0;
 		char const * c = bindtextdomain(PACKAGE, package().locale_dir().c_str());
@@ -136,7 +142,7 @@ public:
 		}
 		textdomain(PACKAGE);
 		const char* msg = gettext(m.c_str());
-		string translated(works ? msg : m);
+		string translated(msg ? msg : m);
 		// Some english words have different translations, depending
 		// on context. In these cases the original string is
 		// augmented by context information (e.g.
