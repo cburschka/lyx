@@ -66,9 +66,11 @@ What's new
 - Compile without STL compatibility support, since some systems do that
   by default (Slackware, for ex.). [Qt only]
 
+- fix compilation with Solaris/x86 (bug 992).
+
 - Enable compilation of LyX on DragonFly BSD.
 
-- Add missing cygwin support file in the distribution (bug 2035)
+- Add missing cygwin support file in the distribution (bug 2035).
 
 - Enable Windows boxes to recognize the hard-coded paths needed to run
   LyX from the build tree.

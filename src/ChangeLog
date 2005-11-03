@@ -1,3 +1,7 @@
+2005-11-02  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyxlength.h: undefine macros that clash with solaris/x86 (bug 992)
+
 2005-09-29  Angus Leeming  <leeming@lyx.org>
 
 	* Makefile.am: use the Windows-friendly LYX_ABS_INSTALLED_LOCALEDIR
