@@ -17,6 +17,15 @@
 
 #include <string>
 
+// Solaris/x86 version 9 and earlier define these
+#ifdef PC
+#  undef PC
+#endif
+#ifdef SP
+#  undef SP
+#endif
+
+
 /**
  * LyXLength - Represents latex length measurement
  */
