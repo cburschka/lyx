@@ -1,22 +1,15 @@
 # translation of lyx-1.3.6.po to Basque
-# translation of lyx.1.3.5-2.po to Basque
-# translation of lyx.1.3.4.po to basque
-# translation of lyx.1.3.3.eu.new.po to basque
-# translation of cvs-lyx.eu2.po to basque
-# translation of lyx.eu.po to basque
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 # Arantzazu Azpillaga Landa <azpilla@euskalnet.net>, 2003.
-# Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2003.
-# Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2004.
-# Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2005.
+# Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2003, 2004, 2005.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.3.6\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-07-16 18:08+0200\n"
-"PO-Revision-Date: 2005-03-31 12:21+0200\n"
+"PO-Revision-Date: 2005-11-03 18:21+0200\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
 "MIME-Version: 1.0\n"
@@ -8255,9 +8248,8 @@ msgid "Emphasize"
 msgstr "Enfasia"
 
 #: src/SpellBase.C:48
-#, fuzzy
 msgid "Native OS API not yet supported."
-msgstr "Onartu gabea"
+msgstr "Jatorrizko SEaren APIa ez dago onartuta."
 
 #: src/buffer.C:356
 msgid "Couldn't set the layout for "
@@ -8365,12 +8357,12 @@ msgstr ""
 "LyX egitura zaharreko fitxategia aurkitu da. Irakurtzeko erabili  LyX 0.10.x!"
 
 #: src/buffer.C:1253
-#, fuzzy
 msgid ""
 "The file was created with a newer version of LyX, but the lyx2lyx script "
 "cannot convert it.\n"
 msgstr ""
-"Dokumentua LyX bertsio berriagoarekin sortu da. Horrek arazoak sor ditzake."
+"Fitxategia LyX bertsio berriagoarekin sortu da, baina lyx2lyx scriptak ezin "
+"du bihurtu.\n"
 
 #: src/buffer.C:1299
 msgid "Warning!"
@@ -9226,25 +9218,21 @@ msgid "Yellow"
 msgstr "Horia"
 
 #: src/frontends/controllers/helper_funcs.C:55
-#, fuzzy
 msgid "space"
-msgstr "&Ordeztu"
+msgstr "tartea"
 
 #: src/frontends/controllers/helper_funcs.C:105
-#, fuzzy
 msgid "Invalid filename"
-msgstr "Baliogabea "
+msgstr "Fitxategi-izen baliogabea"
 
 #: src/frontends/controllers/helper_funcs.C:106
 #: src/frontends/controllers/helper_funcs.C:172
-#, fuzzy
 msgid "No LaTeX support for paths containing any of these characters:\n"
-msgstr "Fitxategi-izenak ezin ditu honako karaktere hauek eduki:"
+msgstr "LaTeX-ek ez ditu onartzen honako karaktereak dituzten bide-izenak:\n"
 
 #: src/frontends/controllers/helper_funcs.C:171
-#, fuzzy
 msgid "Invalid directory name"
-msgstr "Matematika-erako ekintza baliogabea!"
+msgstr "Direktorio-izen baliogabea"
 
 #: src/frontends/gnome/GLog.C:51 src/frontends/qt2/QLog.C:52
 msgid "Build log"
@@ -9555,12 +9543,11 @@ msgstr "Lodia\t\\mathbf"
 
 #: src/frontends/qt2/QMathDialog.C:150
 msgid "Bold symbol\t\\boldsymbol"
-msgstr ""
+msgstr "Ikur lodia	\t\\boldsymbol"
 
 #: src/frontends/qt2/QMathDialog.C:151
-#, fuzzy
 msgid "Sans serif\t\\mathsf"
-msgstr "San serif\t\\mathsf"
+msgstr "Sans serif\t\\mathsf"
 
 #: src/frontends/qt2/QMathDialog.C:152
 msgid "Italic\t\\mathit"
@@ -11006,11 +10993,11 @@ msgstr "LyX-en abisua!"
 
 #: src/insets/insetbib.C:269
 msgid "There are spaces in the paths to your BibTeX databases."
-msgstr ""
+msgstr "BibTeX datu-basearen bide-izenean zuriuneak daude."
 
 #: src/insets/insetbib.C:270
 msgid "BibTeX will be unable to find them."
-msgstr ""
+msgstr "BibTeX-ek ezin ditu aurkitu."
 
 #: src/insets/insetcaption.C:63
 msgid "Opened Caption Inset"
