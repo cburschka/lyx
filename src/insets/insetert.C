@@ -365,7 +365,7 @@ bool InsetERT::getStatus(LCursor & cur, FuncRequest const & cmd,
 
 void InsetERT::setButtonLabel()
 {
-	setLabel(status() == Collapsed ? getNewLabel(_("ERT")) : _("ERT"));
+	setLabel(isOpen() ?  _("ERT") : getNewLabel(_("ERT")));
 }
 
 

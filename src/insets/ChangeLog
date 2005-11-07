@@ -1,3 +1,8 @@
+2005-11-07  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* insetert.C (setButtonLabel): use isOpen() to test whether the ert
+	is collapsed.
+
 2005-11-02  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* insetbranch.C: partial fix bug 2092: branches not 
