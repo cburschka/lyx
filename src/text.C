@@ -1775,12 +1775,8 @@ void LyXText::drawSelection(PainterInfo & pi, int x , int) const
 
 	lyxerr << "draw selection at " << x << endl;
 
-	// is there a better way of getting these two iterators?
-	DocIterator beg = cur;
-	DocIterator end = cur;
-
-	beg.top() = cur.selBegin();
-	end.top() = cur.selEnd();
+	DocIterator beg = cur.selectionBegin();
+	DocIterator end = cur.selectionEnd();
 
 	// the selection doesn't touch the visible screen
 	if (bv_funcs::status(pi.base.bv, beg) == bv_funcs::CUR_BELOW
@@ -1848,12 +1844,8 @@ void LyXText::drawSelection(PainterInfo & pi, int x, int) const
                 << "draw selection at " << x
                 << endl;
 
-	// is there a better way of getting these two iterators?
-	DocIterator beg = cur;
-	DocIterator end = cur;
-
-	beg.top() = cur.selBegin();
-	end.top() = cur.selEnd();
+	DocIterator beg = cur.selectionBegin();
+	DocIterator end = cur.selectionEnd();
 
 	// the selection doesn't touch the visible screen
 	if (bv_funcs::status(pi.base.bv, beg) == bv_funcs::CUR_BELOW

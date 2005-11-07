@@ -438,7 +438,9 @@ DocIterator LCursor::selectionBegin() const
 {
 	if (!selection())
 		return *this;
-	return anchor() < top() ? anchor_ : *this;
+	DocIterator di = (anchor() < top() ? anchor_ : *this);
+	di.resize(depth());
+	return di;
 }
 
 
@@ -446,7 +448,12 @@ DocIterator LCursor::selectionEnd() const
 {
 	if (!selection())
 		return *this;
-	return anchor() > top() ? anchor_ : *this;
+	DocIterator di = (anchor() > top() ? anchor_ : *this);
+	if (di.depth() > depth()) {
+		di.resize(depth());
+		++di.pos();
+	}
+	return di;
 }
 
 

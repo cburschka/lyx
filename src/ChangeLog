@@ -1,3 +1,9 @@
+2005-11-07  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* cursor.C (selectionBegin, selectionEnd):
+	* text.C (drawSelection): Fix bug 2115: assertion when anchor and 
+	cursor at different depths
+
 2005-11-03  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* bufferview_funcs.C (coordOffset): do not call cursorPos
