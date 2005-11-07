@@ -1,3 +1,8 @@
+2005-11-03  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* bufferview_funcs.C (coordOffset): do not call cursorPos
+	for collapsed collapsables (fix bug 2094).
+
 2005-11-03  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* paragraph.C (fontSpan): make sure that the FontSpan does not

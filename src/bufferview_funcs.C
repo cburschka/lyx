@@ -163,7 +163,8 @@ Point coordOffset(DocIterator const & dit, bool boundary)
 		CursorSlice const & sl = dit[i];
 		int xx = 0;
 		int yy = 0;
-		sl.inset().cursorPos(sl, boundary && ((i+1) == dit.depth()), xx, yy);
+		if (sl.inset().editable() == InsetBase::HIGHLY_EDITABLE)
+			sl.inset().cursorPos(sl, boundary && ((i+1) == dit.depth()), xx, yy);
 		x += xx;
 		y += yy;
 		//lyxerr << "LCursor::getPos, i: "
