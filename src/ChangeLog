@@ -1,3 +1,8 @@
+2005-11-03  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* paragraph.C (fontSpan): make sure that the FontSpan does not
+	span across beginOfBody (bug 1947).
+
 2005-11-02  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyxlength.h: undefine macros that clash with solaris/x86 (bug 992)

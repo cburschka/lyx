@@ -48,6 +48,7 @@
 #include <boost/tuple/tuple.hpp>
 #include <boost/bind.hpp>
 
+#include <algorithm>
 #include <list>
 #include <stack>
 #include <sstream>
@@ -333,8 +334,15 @@ FontSpan Paragraph::fontSpan(lyx::pos_type pos) const
 	Pimpl::FontList::const_iterator cit = pimpl_->fontlist.begin();
 	Pimpl::FontList::const_iterator end = pimpl_->fontlist.end();
 	for (; cit != end; ++cit) {
-		if (cit->pos() >= pos)
-			return FontSpan(start, cit->pos());
+		if (cit->pos() >= pos) {
+			if (pos >= beginOfBody())
+				return FontSpan(std::max(start, beginOfBody()),
+						cit->pos());
+			else
+				return FontSpan(start, 
+						std::min(beginOfBody() - 1, 
+							 cit->pos()));
+		}
 		start = cit->pos() + 1;
 	}
 
