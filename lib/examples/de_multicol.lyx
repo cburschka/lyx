@@ -1,0 +1,1634 @@
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 243
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{multicol}
+\end_preamble
+\language ngerman
+\inputencoding latin1
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single
+\papersize a4paper
+\use_geometry true
+\use_amsmath 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 2cm
+\topmargin 1cm
+\rightmargin 2cm
+\bottommargin 1cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language german
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes true
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Mehrspaltige Dokumente
+\end_layout
+
+\begin_layout Author
+von 
+\noun on
+Lars Gullik Bjønnes
+\newline
+
+\noun default
+Übersetzung: 
+\noun on
+Hartmut Haase
+\end_layout
+
+\begin_layout Date
+letzte Änderung: 2.
+ November 2005
+\end_layout
+
+\begin_layout Standard
+\begin_inset LatexCommand \tableofcontents{}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Absicht
+\end_layout
+
+\begin_layout Standard
+Das Ziel dieses Abschnittes ist es, Ihnen die Verwendung des LaTeX-Paketes
+ 
+\family typewriter
+multicol
+\family default
+ zu erläutern.
+ Diese Paket wird derzeit von LyX noch nicht direkt unterstützt, deshalb
+ müssen Sie einige Dinge von Hand einfügen.
+ Wenn Sie diesen Abschnitt lesen, sollte Ihnen klarwerden, wie man das macht.
+\end_layout
+
+\begin_layout Standard
+Damit man mehrspaltige Dokumente drucken kann, muß in den LaTeX-Vorspann
+ 
+\family typewriter
+
+\backslash
+usepackage{multicol}
+\family default
+ eingefügt werden.
+\end_layout
+
+\begin_layout Subsection
+Einschränkungen
+\end_layout
+
+\begin_layout Standard
+Das Paket 
+\family typewriter
+multicol
+\family default
+ dient dazu, um auf ein und derselben Seite zwischen ein- und mehrspaltigem
+ Textsatz umzuschalten.
+ Fußnoten werden dabei (größtenteils) richtig behandelt, werden allerdings
+ unten auf der Gesamtseite, und nicht unter der jeweiligen Spalte gesetzt.
+ In der gegenwärtigen Implementierung ist aber der Gleitmechanismus von
+ LaTeX teilweise deaktiviert, aus diesem Grund können in dieser Umgebung
+ nur ganzseitige richtig Gleitobjekte verarbeitet werden.
+ 
+\end_layout
+
+\begin_layout Subsection
+Beispiele
+\end_layout
+
+\begin_layout Subsubsection
+Zwei Spalten
+\end_layout
+
+\begin_layout Standard
+Wenn Sie Text in zwei Spalten setzen wollen, müssen Sie den LaTeX-Modus
+ verwenden und an dem Punkt, an dem der zweispaltige Satz beginnen soll,
+ den Befehl 
+\family typewriter
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="1">
+<features>
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\backslash
+begin{multicols}{2}
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\family default
+ einfügen und am Ende den Befehl 
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="1">
+<features>
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family typewriter
+
+\backslash
+end{multicols}
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+.
+ Zum Beispiel so:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status inlined
+
+\begin_layout Standard
+
+\backslash
+begin{multicols}{2}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\series bold
+\size small
+MOMO
+\series default
+
+\newline
+von 
+\noun on
+Michael Ende
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\SpecialChar \ldots{}
+ Draußen am südlichen Rand dieser großen Stadt, dort, wo schon die ersten
+ Felder beginnen und die Hütten und Häuser immer armseliger werden, liegt,
+ in einem Pinienwäldchen versteckt, die Ruine eines kleinen Amphitheaters.
+ Es war auch in jenen alten Zeiten keines von den prächtigen, es war schon
+ damals sozusagen ein Theater für ärmere Leute.
+ In unseren Tagen, das heißt um jene Zeit, da die Geschichte von Momo ihren
+ Anfang nahm, war die Ruine fast ganz vergessen.
+ Nur ein paar Professoren der Al\SpecialChar \-
+ter\SpecialChar \-
+tums\SpecialChar \-
+wis\SpecialChar \-
+sen\SpecialChar \-
+schaft wußten von ihr, aber
+ sie kümmerten sich nicht weiter um sie, weil es dort nichts mehr zu erforschen
+ gab.
+ Sie war auch keine Sehenswürdigkeit, die sich mit anderen, die es in der
+ großen Stadt gab, messen konnte.
+ So verirr\SpecialChar \-
+ten sich nur ab und zu ein paar Tou\SpecialChar \-
+ri\SpecialChar \-
+sten dort hin, kletterten
+ auf den grasbewachsenen Sitzreihen umher, machten Lärm, knipsten ein Erinnerung
+sfoto und gingen wieder fort.
+ Dann kehrte die Stille in das stei\SpecialChar \-
+ner\SpecialChar \-
+ne Rund zurück, und die Zikaden stimmten
+ die nächste Strophe ihres endlosen Liedes an, die sich übrigens in nichts
+ von der vorigen unterschied.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Eigentlich waren es nur die Leute aus der näheren Umgebung, die das seltsame
+ runde Bauwerk kannten.
+ Sie ließen dort ihre Ziegen weiden, die Kinder benutzten den runden Platz
+ in der Mitte zum Ballspielen, und manchmal trafen sich dort am Abend die
+ Liebespaare\SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status inlined
+
+\begin_layout Standard
+
+\backslash
+end{multicols}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Mehr als zwei Spalten
+\end_layout
+
+\begin_layout Standard
+Dasselbe Schema gilt, wenn Sie mehr als zwei Spalten haben wollen, Sie geben
+ einfach die Anzahl der gewünschten Spalten in der zweiten Klammer an: 
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="1">
+<features>
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family typewriter
+
+\backslash
+begin{multicols}{3}
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status inlined
+
+\begin_layout Standard
+
+\backslash
+begin{multicols}{3}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Aber eines Tages sprach es sich bei den Leuten herum, daß neuerdings jemand
+ in der Ruine wohne.
+ Es sei ein Kind, ein kleines Mädchen vermutlich.
+ So genau könne man das allerdings nicht sagen, weil es ein bißchen merkwürdig
+ angezogen sei.
+ Es hieße Momo oder so ähnlich.
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Momos äußere Erscheinung war in der Tat ein wenig seltsam und konnte auf
+ Menschen, die großen Wert auf Sauberkeit und Ordnung legen, möglicherweise
+ etwas erschreckend wirken.
+ Sie war klein und ziemlich mager, so daß man beim besten Willen nicht erkennen
+ konnte, ob sie erst acht oder schon zwölf Jahre alt war..
+ Sie hatte einen wilden, pechschwarzen Lockenkopf, der so aussah, als ob
+ er noch nie mit einem Kamm oder einer Schere in Berührung gekommen wäre.
+ Sie hatte große, wunderschöne und ebenfalls pechschwarze Augen und Füße
+ von der glei\SpecialChar \-
+chen Farbe, denn sie lief fast immer barfuß.
+ Nur im Winter trug sie manchmal Schuhe, aber es waren zwei verschiedene,
+ die nicht zusammenpaßten und ihr außerdem viel zu groß waren.
+ Das kam daher, daß Momo eben nichts besaß, als was sie irgendwo fand oder
+ geschenkt bekam.
+ Ihr Rock war aus allerlei bunten Flicken zusammengenäht und reichte ihr
+ bis auf die Fußknöchel
+\size small
+\SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status inlined
+
+\begin_layout Standard
+
+\backslash
+end{multicols}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sie können zwar mehr als 3 Spalten verwenden, aber das ist meist für das
+ Auge nicht sehr ansprechend.
+\end_layout
+
+\begin_layout Subsubsection
+Spalten innerhalb einer Spalte
+\end_layout
+
+\begin_layout Standard
+Sie können sogar mehrspaltige Abschnitte innerhalb einer anderen, mehrspaltigen
+ Umgebung verwenden:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status inlined
+
+\begin_layout Standard
+
+\backslash
+begin{multicols}{2}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Darüber trug sie eine alte, viel zu weite Männerjacke, deren Ärmel an den
+ Handgelenken umgekrempelt waren.
+ Abschneiden wollte Momo sie nicht, weil sie vorsorglich daran dachte, daß
+ sie ja noch wachsen würde.
+ Und wer konnte wissen, ob sie jemals wieder eine so schöne und praktische
+ Jacke mit so vielen Taschen finden würde
+\size small
+\SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status inlined
+
+\begin_layout Standard
+
+\backslash
+begin{multicols}{2}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Unter der grasbewachsenen Bühne der Theaterruine gab es ein paar halb eingestürz
+te Kammern, die man durch ein Loch in der Außenmauer betreten konnte.
+ Hier hatte Momo sich häuslich eingerichtet.
+ Eines Mittags kamen einige Männer und Frauen aus der näheren Umgebung zu
+ ihr und versuchen sie auszufragen.
+ Momo stand ihnen gegenüber und guckte sie ängstlich an, weil sie fürchtete,
+ die Leute würden sie wegjagen.
+ Aber sie merkte bald, daß es freundliche Leute waren.
+ Sie waren selber arm und kannten das Leben
+\size small
+\SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status inlined
+
+\begin_layout Standard
+
+\backslash
+end{multicols}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Quotes gld
+\end_inset
+
+So
+\begin_inset Quotes grd
+\end_inset
+
+, sagte einer der Männer, 
+\begin_inset Quotes gld
+\end_inset
+
+hier gefällt es dir also?
+\begin_inset Quotes grd
+\end_inset
+
+
+\newline
+
+\begin_inset Quotes gld
+\end_inset
+
+Ja
+\begin_inset Quotes grd
+\end_inset
+
+, antwortet Momo.
+\newline
+
+\begin_inset Quotes gld
+\end_inset
+
+Und du willst hier bleiben?
+\begin_inset Quotes grd
+\end_inset
+
+
+\newline
+
+\begin_inset Quotes gld
+\end_inset
+
+Ja, gern.
+\begin_inset Quotes grd
+\end_inset
+
+
+\newline
+
+\begin_inset Quotes gld
+\end_inset
+
+Aber wirst du denn nirgendwo erwartet?
+\begin_inset Quotes grd
+\end_inset
+
+
+\newline
+
+\begin_inset Quotes gld
+\end_inset
+
+Nein.
+\begin_inset Quotes grd
+\end_inset
+
+
+\newline
+
+\begin_inset Quotes gld
+\end_inset
+
+Ich meine, mußt du denn nicht wieder nach Hause?
+\begin_inset Quotes grd
+\end_inset
+
+
+\newline
+
+\begin_inset Quotes gld
+\end_inset
+
+Ich bin hier zu Hause
+\begin_inset Quotes grd
+\end_inset
+
+, versicherte Momo schnell.
+\newline
+
+\begin_inset Quotes gld
+\end_inset
+
+Wo kommst du denn her, Kind?
+\begin_inset Quotes grd
+\end_inset
+
+
+\newline
+Momo machte mit der Hand eine unbestimmte Bewegung, die irgendwohin in die
+ Ferne deutete.
+\newline
+
+\begin_inset Quotes gld
+\end_inset
+
+Wer sind denn deine Eltern?
+\begin_inset Quotes grd
+\end_inset
+
+ forschte der Mann weiter.
+\newline
+Das Kind schaute ihn und die anderen Leute ratlos
+ an und hob ein wenig die Schultern.
+ Die Leute tauschten Blicke und seufzten.
+\newline
+
+\begin_inset Quotes gld
+\end_inset
+
+Du brauchst keine Angst zu haben
+\begin_inset Quotes grd
+\end_inset
+
+, fuhr der Mann fort, 
+\begin_inset Quotes gld
+\end_inset
+
+wir wollen dich nicht vertreiben.
+ Wir wollen die helfen.
+\begin_inset Quotes grd
+\end_inset
+
+
+\newline
+Momo nickte stumm, aber noch nicht ganz überzeugt\SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status inlined
+
+\begin_layout Standard
+
+\backslash
+end{multicols}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Fortgeschrittene Beispiele
+\end_layout
+
+\begin_layout Standard
+Wie Sie vielleicht wissen, hat 
+\family typewriter
+multicol
+\family default
+ mehrere Variablen zum Anpassen.
+ Die folgenden Beispiele zeigen, wie sie in LyX benutzt werden können.
+\end_layout
+
+\begin_layout Subsubsection
+Vorwort und Umbruch
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 6cm
+\end_inset
+
+Weil wegen des Abstandes auf der Seite jetzt weniger als 5 cm übrig sind,
+ wird die Seite vor dem nächsten Abschnitt umgebrochen und ein Vorwort über
+ den zwei Spalten eingefügt: 
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="1">
+<features>
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family typewriter
+
+\backslash
+begin{multicols}{2}[
+\family default
+Text
+\family typewriter
+][5cm]
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status inlined
+
+\begin_layout Standard
+
+\backslash
+begin{multicols}{2}[
+\end_layout
+
+\end_inset
+
+Und die Geschichte geht weiter und weiter und weiter und weiter\SpecialChar \ldots{}
+
+\begin_inset ERT
+status inlined
+
+\begin_layout Standard
+][5cm]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Quotes gld
+\end_inset
+
+Du sagst, daß du Momo heißt, nicht wahr?
+\size default
+
+\begin_inset Quotes grd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Quotes gld
+\end_inset
+
+Ja.
+\begin_inset Quotes grd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Quotes gld
+\end_inset
+
+Das ist ein hübscher Name, aber ich hab' ihn noch nie gehört.
+ Wer hat dir denn den Namen gegeben?
+\begin_inset Quotes grd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Quotes gld
+\end_inset
+
+Ich
+\begin_inset Quotes grd
+\end_inset
+
+, sagte Momo.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Quotes gld
+\end_inset
+
+Du hast dich selbst so genannt?
+\begin_inset Quotes grd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Quotes gld
+\end_inset
+
+Ja.
+\begin_inset Quotes grd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Quotes gld
+\end_inset
+
+Wann bist du denn geboren?
+\begin_inset Quotes grd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Momo überlegte und sagte schließlich: 
+\begin_inset Quotes gld
+\end_inset
+
+Soweit ich mich erinnern kann, war ich immer schon da.
+\begin_inset Quotes grd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Quotes gld
+\end_inset
+
+Hast du denn keine Tante, keinen Onkel, keine Großmutter, überhaupt keine
+ Familie, wo du hin kannst?
+\begin_inset Quotes grd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Momo schaute den Mann nur an und schwieg eine Weile.
+ Dann murmelte sie: 
+\begin_inset Quotes gld
+\end_inset
+
+Ich bin hier zu Hause.
+\begin_inset Quotes grd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Quotes gld
+\end_inset
+
+Na ja
+\begin_inset Quotes grd
+\end_inset
+
+, meinte der Mann, 
+\begin_inset Quotes gld
+\end_inset
+
+aber du bist doch ein Kind -- wie alt bist du eigentlich?
+\begin_inset Quotes grd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Quotes gld
+\end_inset
+
+Hundert
+\begin_inset Quotes grd
+\end_inset
+
+, sagte Momo zögernd.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Die Leute lachten, weil sie es für einen Spaß hielten.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Quotes gld
+\end_inset
+
+Hundertzwei
+\begin_inset Quotes grd
+\end_inset
+
+, antwortete Momo, noch ein wenig unsicherer\SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status inlined
+
+\begin_layout Standard
+
+\backslash
+end{multicols}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Vorwort und Abschnitte
+\end_layout
+
+\begin_layout Standard
+Was ist, wenn das Vorwort ein Abschnittsbefehl sein soll? Das geht, aber
+ nur mit LaTeX-Befehlen innerhalb des 
+\family typewriter
+multicols
+\family default
+-Befehls.
+ Deswegen kann der Abschnittsbefehl nicht von LyX geliefert werden LyX:
+\newline
+
+ 
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="1">
+<features>
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family typewriter
+
+\backslash
+begin{multicols}{2}[
+\backslash
+subsubsection{
+\family default
+Text
+\family typewriter
+}][5cm]
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status inlined
+
+\begin_layout Standard
+
+\backslash
+begin{multicols}{2}[
+\backslash
+subsubsection{
+\end_layout
+
+\end_inset
+
+Dies ist ein Abschnittsbefehl als Vorwort
+\begin_inset ERT
+status inlined
+
+\begin_layout Standard
+}][5cm]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Es dauerte eine Weile, bis die Leute merkten, daß das Kind nur ein paar
+ Zahlwörter kannte, die es aufgeschnappt hatte, sich aber nichts Bestimmtes
+ darunter vorstellen konnte, weil niemand es Zählen gelehrt hatte.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Quotes gld
+\end_inset
+
+Hör mal
+\begin_inset Quotes grd
+\end_inset
+
+, sagte der Mann, nachdem er sich mit den anderen beraten hatte, 
+\begin_inset Quotes gld
+\end_inset
+
+wäre es dir recht, wenn wir der Polizei sagen, daß du hier bist? Dann würdest
+ du in ein Haus kommen, wo du zu essen kriegst und ein Bett hast und wo
+ du rechnen und lesen und schreiben und noch viel mehr lernen kannst.
+ Was hältst du davon, eh?
+\size default
+
+\begin_inset Quotes grd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Quotes gld
+\end_inset
+
+Nein
+\begin_inset Quotes grd
+\end_inset
+
+, murmelte sie, 
+\begin_inset Quotes gld
+\end_inset
+
+da will ich nicht hin.
+ Da war ich schon mal.
+ Andere Kinder waren auch da.
+ Da waren Gitter an den Fenstern.
+ Jeden Tag gab's Prügel -- aber ganz ungerecht.
+ Da bin ich nachts über die Mauer und weggelaufen.
+ Da will ich nicht mehr wieder hin.
+\size default
+
+\begin_inset Quotes grd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Quotes gld
+\end_inset
+
+Das kann ich verstehen
+\begin_inset Quotes grd
+\end_inset
+
+, sagte ein alter Mann und nickte.
+ Und die anderen Leute konnten es auch verstehen und nickten.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Quotes gld
+\end_inset
+
+Also gut
+\begin_inset Quotes grd
+\end_inset
+
+, sagte eine Frau, 
+\begin_inset Quotes gld
+\end_inset
+
+aber du bist doch noch klein.
+ Irgendwer muß doch für dich sorgen.
+\begin_inset Quotes grd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Quotes gld
+\end_inset
+
+Ich
+\begin_inset Quotes grd
+\end_inset
+
+, antwortete Momo erleichtert.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Quotes gld
+\end_inset
+
+Kannst du das denn?
+\begin_inset Quotes grd
+\end_inset
+
+ fragte die Frau.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Momo schwieg eine Weile und sagte dann leise: 
+\begin_inset Quotes gld
+\end_inset
+
+Ich brauch' nicht viel\SpecialChar \ldots{}
+
+\begin_inset Quotes grd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status inlined
+
+\begin_layout Standard
+
+\backslash
+end{multicols}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Leerraum
+\end_layout
+
+\begin_layout Standard
+Das 
+\family typewriter
+multicol
+\family default
+-Paket fügt vor und nach dem mehrspaltigen Abschnitt etwas Leerraum ein.
+ Die Befehle zum ändern der Standardeinstellungen müssen unmittelbar vor
+ 
+\family typewriter
+
+\backslash
+begin{multicols}
+\family default
+ eingefügt werden.
+ Das folgende Beispiel fügt 3 cm vor und nach dem  mehrspaltigen Abschnitt
+ ein:
+\newline
+ 
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="1">
+<features>
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family typewriter
+
+\backslash
+setlength{
+\backslash
+multicolsep}{3cm}
+\backslash
+begin{multicols}{2}
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+\backslash
+setlength{
+\backslash
+multicolsep}{3cm}
+\backslash
+begin{multicols}{2}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Wieder wechselten die Leute Blicke, seufzten und nickten.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Quotes gld
+\end_inset
+
+Weißt du, Momo
+\begin_inset Quotes grd
+\end_inset
+
+, ergriff nun wieder der Mann das Wort, der zuerst gesprochen hatte, 
+\begin_inset Quotes gld
+\end_inset
+
+wir meinen, du könntest vielleicht bei einem von uns unterkriechen.
+ Wir haben zwar selber alle nur wenig Platz, und die meisten haben schon
+ einen Haufen Kinder, die gefüttert sein wollen, aber wir meinen, auf eines
+ mehr kommt es dann auch schon nicht mehr an.
+ Was hältst du davon, eh?
+\size default
+
+\begin_inset Quotes grd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Quotes gld
+\end_inset
+
+Danke
+\begin_inset Quotes grd
+\end_inset
+
+, sagte Momo und lächelte zum ersten Mal, 
+\begin_inset Quotes gld
+\end_inset
+
+vielen Dank! Aber könntet ihr mich nicht einfach hier wohnen lassen?
+\begin_inset Quotes grd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Die Leute berieten lange hin und her, und zuletzt waren sie einverstanden.
+ Denn hier, so meinten sie, könne das Kind schließlich genausogut wohnen
+ wie bei einem von ihnen, und sorgen wollten sie alle gemeinsam für Momo,
+ weil es für alle zusammen sowieso einfacher wäre, als für einen allein\SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status inlined
+
+\begin_layout Standard
+
+\backslash
+end{multicols}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Bemerkung: Der mit 
+\family typewriter
+
+\backslash
+setlength 
+\family default
+geänderte Wert muß hinterher wieder zurückgesetzt werden, sonst bleibt er
+ für den Rest des Dokumentes erhalten: 
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="1">
+<features>
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family typewriter
+
+\backslash
+setlength{
+\backslash
+multicolsep}{13pt}
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status inlined
+
+\begin_layout Standard
+
+\backslash
+setlength{
+\backslash
+multicolsep}{13pt}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Spaltenbreite und Trennung
+\end_layout
+
+\begin_layout Standard
+Die Spaltenbreite der 
+\family typewriter
+multicols
+\family default
+-Umgebung wird automatisch berechnet, aber Sie können den Abstand zwischen
+ den Spalten festlegen.
+ Der Abstand zwischen den den folgenden beiden Spalten wird 3 cm betragen:
+\newline
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="1">
+<features>
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family typewriter
+
+\backslash
+setlength{
+\backslash
+columnsep}{3cm}
+\backslash
+begin{multicols}{2}
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status inlined
+
+\begin_layout Standard
+
+\backslash
+setlength{
+\backslash
+columnsep}{3cm}
+\backslash
+begin{multicols}{2}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Sie fingen gleich an, indem sie zunächst einmal die halb eingestürzte steinerne
+ Kammer, in der Momo hauste, aufräumten und instandsetzten, so gut es ging.
+ Einer von ihnen, der Maurer war, baute sogar einen kleinen steinernen Herd.
+ Ein rostiges Ofenrohr wurde auch aufgetrieben.
+ Ein alter Schreinern nagelte aus ein paar Kistenbrettern ein Tischchen
+ und zwei Stühle zusammen.
+ Und schließlich brachten die Frauen noch ein ausgedientes, mit Schnörkeln
+ verziertes Eisenbett, eine Matratze, die nur wenig zerrissen war, und zwei
+ Decken.
+ Aus dem steinernen Loch unter der Bühneder Ruine war ein behagliches kleines
+ Zimmerchen geworden.
+ Der Maurer, der künstlerische Fähigkeiten besaß, malte zuletzt noch ein
+ hübsches Blumenbild an die Wand.
+ Sogar den Rahmen und den Nagel, an dem das Bild hing, malte er dazu\SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status inlined
+
+\begin_layout Standard
+
+\backslash
+end{multicols}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Bemerkung: Der
+\family typewriter
+ 
+\family default
+geänderte Wert muß auch in diesem Fall hinterher wieder zurückgesetzt werden,
+ sonst bleibt er für den Rest des Dokumentes erhalten: 
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="1">
+<features>
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family typewriter
+
+\backslash
+setlength{
+\backslash
+columnsep}{10pt}
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status inlined
+
+\begin_layout Standard
+
+\backslash
+setlength{
+\backslash
+columnsep}{10pt}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Vertikale Linien
+\end_layout
+
+\begin_layout Standard
+Mit 
+\family typewriter
+
+\backslash
+columnseprule
+\family default
+ können Spalten durch Linien getrennt werden.
+ Wird die Breite auf 0 pt gesetzt, wird sie unterdrückt.
+ Im folgenden Beispiel wurde eine Linienbreite von 2 pt gewählt:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="1">
+<features>
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family typewriter
+
+\backslash
+setlength{
+\backslash
+columnseprule}{2pt}
+\backslash
+begin{multicols}{2}
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status inlined
+
+\begin_layout Standard
+
+\backslash
+setlength{
+\backslash
+columnseprule}{2pt}
+\backslash
+begin{multicols}{2}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Und dann kamen die Kinder der Leute und brachten, was man an Essen erübrigen
+ konnte, das eine ein Stückchen Käse, das andere einen kleine Brotwecken,
+ das dritte etwas Obst und so fort.
+ Und da es sehr viele Kinder waren, kam an diesem Abend eine solche Menge
+ zusammen, daß sie alle miteinander im Amphitheater ein richtiges kleines
+ Fest zu Ehren von Momos Einzug feiern konnten.
+ Es war ein so vergnügtes Fest, wie nur arme Leute es zu feiern verstehen.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+So begann die Freundschaft zwischen der kleinen Momo und den Leuten der
+ näheren Umgebung.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status inlined
+
+\begin_layout Standard
+
+\backslash
+end{multicols}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Wie immer setzen wir auch hier den Wert wieder zurück: 
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="1">
+<features>
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family typewriter
+
+\backslash
+setlength{
+\backslash
+columnseprule}{0pt}
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status inlined
+
+\begin_layout Standard
+
+\backslash
+setlength{
+\backslash
+columnseprule}{0pt}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Wenn Sie wissen wollen, wie es weitergeht, müssen Sie sich jetzt das Buch
+ holen.
+\end_layout
+
+\end_body
+\end_document

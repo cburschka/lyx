@@ -64,6 +64,7 @@ dist_examples_DATA = \
 	examples/de_beispiel_gelyxt.lyx \
 	examples/de_beispiel_roh.lyx \
 	examples/de_splash.lyx \
+	examples/de_multicol.lyx \
 	examples/decimal.lyx \
 	examples/docbook_article.lyx \
 	examples/es_ejemplo_con_lyx.lyx \
