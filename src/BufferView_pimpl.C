@@ -141,8 +141,8 @@ T * getInsetByCode(LCursor & cur, InsetBase::Code code)
 
 BufferView::Pimpl::Pimpl(BufferView & bv, LyXView * owner,
 			 int width, int height)
-	: bv_(&bv), owner_(owner), buffer_(0), cursor_timeout(400),
-	  using_xterm_cursor(false), cursor_(bv) ,
+	: bv_(&bv), owner_(owner), buffer_(0), wh_(0), cursor_timeout(400),
+	  using_xterm_cursor(false), cursor_(bv), 
 	  anchor_ref_(0), offset_ref_(0)
 {
 	xsel_cache_.set = false;
@@ -439,8 +439,9 @@ void BufferView::Pimpl::updateScrollbar()
 	}
 
 	LyXText & t = *bv_->text();
-	if (anchor_ref_ >  int(t.paragraphs().size()) - 1) {
-		anchor_ref_ = int(t.paragraphs().size()) - 1;
+	int const parsize = int(t.paragraphs().size() - 1);
+	if (anchor_ref_ >  parsize)  {
+		anchor_ref_ = parsize;
 		offset_ref_ = 0;
 	}
 
@@ -454,21 +455,34 @@ void BufferView::Pimpl::updateScrollbar()
 	// values in [0..1] and divide everything by wh
 
 	// estimated average paragraph height:
-	int const wh = workarea().workHeight() / 4; 
+	if (wh_ == 0)
+		wh_ = workarea().workHeight() / 4; 
 	int h = t.getPar(anchor_ref_).height();
+
 	// Normalize anchor/offset (MV):
-	while (offset_ref_ > h) {
+	while (offset_ref_ > h && anchor_ref_ < parsize) {
 		anchor_ref_++;
 		offset_ref_ -= h;
 		h = t.getPar(anchor_ref_).height();
 	}
+	// Look at paragraph heights on-screen
+	int sumh = 0;
+	int nh = 0;
+	for (lyx::pit_type pit = anchor_ref_; pit <= parsize; ++pit) {
+		if (sumh > workarea().workHeight())
+			break;
+		int const h2 = t.getPar(pit).height(); 
+		sumh += h2;
+		nh++;
+	}
+	int const hav = sumh / nh;
+	// More realistic average paragraph height
+	if (hav > wh_)
+		wh_ = hav;
 	
-	// The "+ 2" makes inoculates doc bottom display against
-	// unrealistic wh values (docs with very large paragraphs) (MV)
-	workarea().setScrollbarParams((t.paragraphs().size() + 2) * wh, 
-		anchor_ref_ * wh + int(offset_ref_ * wh / float(h)), 
-		int(wh * defaultRowHeight() / float(h)));
-//	workarea().setScrollbarParams(t.paragraphs().size(), anchor_ref_, 1);
+	workarea().setScrollbarParams((parsize + 1) * wh_, 
+		anchor_ref_ * wh_ + int(offset_ref_ * wh_ / float(h)), 
+		int(wh_ * defaultRowHeight() / float(h)));
 }
 
 
@@ -482,13 +496,13 @@ void BufferView::Pimpl::scrollDocView(int value)
 
 	screen().hideCursor();
 
-	int const wh = workarea().workHeight() / 4;
-
 	LyXText & t = *bv_->text();
 
-	float const bar = value / float(wh * t.paragraphs().size());
+	float const bar = value / float(wh_ * t.paragraphs().size());
 
 	anchor_ref_ = int(bar * t.paragraphs().size());
+	if (anchor_ref_ >  int(t.paragraphs().size()) - 1)
+		anchor_ref_ = int(t.paragraphs().size()) - 1;
 	t.redoParagraph(anchor_ref_);
 	int const h = t.getPar(anchor_ref_).height();
 	offset_ref_ = int((bar * t.paragraphs().size() - anchor_ref_) * h);

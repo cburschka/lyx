@@ -145,6 +145,8 @@ private:
 	boost::scoped_ptr<LyXScreen> screen_;
 	///
 	boost::scoped_ptr<WorkArea> workarea_;
+	/// Estimated average par height for scrollbar
+	int wh_;
 	///
 	Timeout cursor_timeout;
 	///
