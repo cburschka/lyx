@@ -181,9 +181,11 @@ void delEmptyLastRow(MathGridInset & grid)
 		if (!grid.cell(grid.index(row, col)).empty())
 			return;
 	}
-	// Remove the dummy row, so that the previous last row (that would
-	// contain the last hline in the example above) becomes the dummy row.
-	grid.delRow(row + 1);
+	// Copy the row information of the empty row (which would contain the
+	// last hline in the example above) to the dummy row and delete the
+	// empty row.
+	grid.rowinfo(row + 1) = grid.rowinfo(row);
+	grid.delRow(row);
 }
 
 

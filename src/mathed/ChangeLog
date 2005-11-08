@@ -1,3 +1,8 @@
+2005-11-08  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* math_parser.C (delEmptyLastRow): Don't delete the dummy row, but
+	the last full row, since the dummy row has only rowinfo
+
 2005-11-02  Angus Leeming  <leeming@lyx.org>
 
 	* math_nestinset.C: trivial fix to a MSVS warning.
