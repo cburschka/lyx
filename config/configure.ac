@@ -20,7 +20,7 @@ AM_INIT_AUTOMAKE($lyxname, $VERSION)
 
 # The list of languages known to LyX (actually we only include the languages 
 # that are complete enough to be useful). This is needed by GNU gettext
-ALL_LINGUAS="da de es eu fi fr it nl nn no pl ro ru sk sl tr"
+ALL_LINGUAS="da de es eu fi fr hu it nl nn no pl ro ru sk sl tr"
 
 ### Set the execute permissions of the various scripts correctly
 for file in config/install-sh config/mkinstalldirs lib/configure ; do
