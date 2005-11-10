@@ -57,12 +57,14 @@ dist_examples_DATA = \
 	examples/currency.lyx \
 	examples/cv.lyx \
 	examples/da_splash.lyx \
+	examples/de_ItemizeBullets.lyx \
 	examples/de_Lebenslauf.lyx \
 	examples/de_Minipage.lyx \
 	examples/de_TableExamples.lyx \
 	examples/de_Waehrungen.lyx \
 	examples/de_beispiel_gelyxt.lyx \
 	examples/de_beispiel_roh.lyx \
+	examples/de_decimal.lyx \
 	examples/de_splash.lyx \
 	examples/de_multicol.lyx \
 	examples/decimal.lyx \

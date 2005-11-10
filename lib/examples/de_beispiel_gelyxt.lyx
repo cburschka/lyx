@@ -3,7 +3,7 @@
 \begin_document
 \begin_header
 \textclass article
-\language german
+\language ngerman
 \inputencoding latin1
 \fontscheme default
 \graphics dvips
@@ -31,24 +31,19 @@
 \begin_body
 
 \begin_layout Title
-
 DIES IST DER TITEL DES DOKUMENTS
 \end_layout
 
 \begin_layout Author
-
 von Fee LyX
 \end_layout
 
 \begin_layout Date
-
 12.
  Juni 1972
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \tableofcontents{}
 
 \end_inset
@@ -57,23 +52,19 @@ von Fee LyX
 \end_layout
 
 \begin_layout Section
-
 Grundidee
 \end_layout
 
 \begin_layout Standard
-
 Die Grundidee von LyX ist, daß Sie sich um den Inhalt Ihrer Dokumente kümmern
  sollten, und nicht um das Aussehen.
 \end_layout
 
 \begin_layout Subsection
-
 Wie LyX es macht
 \end_layout
 
 \begin_layout Standard
-
 LyX benutzt LaTeX, ein Textsatzsystem für Dokumente, das 
 \noun on
 Leslie
@@ -110,29 +101,26 @@ Lamport
 \end_layout
 
 \begin_layout Quote
-
 Der Sinn des typographischen Entwurfs ist, daß der Leser die Ideen des Autors
  versteht.
  Damit ein Dokument leicht zu lesen ist, muß die sichtbare Struktur die
  logische widerspiegeln.
  Zitate und Computerprogramme, die logisch unterschiedliche Strukturelemente
- darstellen, sollten auch anders aussehen....
- Weil LaTeX Ihren Text nicht verstehen kann, müssen Sie die logische Struktur
- durch Spezialbefehle kennzeichnen....
+ darstellen, sollten auch anders aussehen\SpecialChar \ldots{}
+ Weil LaTeX Ihren Text nicht verstehen
+ kann, müssen Sie die logische Struktur durch Spezialbefehle kennzeichnen\SpecialChar \ldots{}
+
  Während Sie Ihr Dokument schreiben, sollten Sie sich auf die logische Struktur
  konzentrieren, nicht auf sein Aussehen.
 \end_layout
 
 \begin_layout Subsection
-
 Warum LyX besser ist
 \end_layout
 
 \begin_layout Standard
 
-
 \series bold
-
 \begin_inset LatexCommand \label{sec:lyxbetter}
 
 \end_inset
@@ -144,11 +132,11 @@ LyX kann mehr Menschen nützen als LaTeX.
  ist im Prinzip eine Programmiersprache).
  LyX ist im Prinzip wie andere WYSIWYG-Textverarbeitungen, aber LyX ist
  WYSIWYM 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset
 
 What you see is what you mean
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
 .
@@ -160,18 +148,15 @@ What you see is what you mean
 \end_layout
 
 \begin_layout Section
-
 LyX-Merkmale
 \end_layout
 
 \begin_layout Standard
-
 LyX hat viele Merkmale, die das Schreiben von Dokumenten erleichtern.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-
 Warum sollte man es sonst benutzen?
 \end_layout
 
@@ -179,32 +164,24 @@ Warum sollte man es sonst benutzen?
 
  Ich bin 
 \emph on
-sehr aufgegergt,
+sehr aufgeregt,
 \emph default
  über sie zu sprechen.
  Hier sind ein paar:
 \end_layout
 
 \begin_layout Itemize
-
 LyX kümmert sich für Sie um Ränder und die Numerierung von Fußnoten
 \end_layout
 
 \begin_layout Itemize
-
 LyX erleichtert das Schreiben und Bearbeiten von mathematischen Formeln
 \end_layout
 
 \begin_layout Standard
-
 Für eine mehr philosophische Diskussion, warum LyX besser als viele andere
- Textverarbeitungen ist, lesen Sie bitte Abschnitt 1.2 
-\begin_inset LatexCommand \ref{sec:lyxbetter}
-
-\end_inset
-
- auf Seite 
-\begin_inset LatexCommand \pageref{sec:lyxbetter}
+ Textverarbeitungen ist, lesen Sie bitte Abschnitt  
+\begin_inset LatexCommand \vref{sec:lyxbetter}
 
 \end_inset
 
@@ -212,68 +189,53 @@ Für eine mehr philosophische Diskussion, warum LyX besser als viele andere
 \end_layout
 
 \begin_layout Section
-
 Lahme Versuche mit anderen LyX-Teilen
 \end_layout
 
 \begin_layout Standard
-
 Neulich schrieb ich ein Programm.
  Es sah so aus:
 \end_layout
 
 \begin_layout LyX-Code
-
 5 BEACHTET MEIN TOLLES PROGRAMM
 \end_layout
 
 \begin_layout LyX-Code
-
-10 PRINT 
-\begin_inset Quotes eld
-\end_inset
-
-ICH BIN TOLL !
-\begin_inset Quotes erd
-\end_inset
-
-
+10 PRINT "ICH BIN TOLL !"
 \end_layout
 
 \begin_layout LyX-Code
-
 20 GOTO 10
 \end_layout
 
 \begin_layout Standard
-
 Nach all dem wissenschaftlichen Denken fühlte ich mehr künstlerisch, also
  schrieb ich dies Gedicht:
 \end_layout
 
 \begin_layout Verse
-
 LyX ist eine wirklich großartige
 \newline
 schriftsetzende Textverarbeitung.
 \newline
-Es spart soviel Zeit.
+Es spart
+ soviel Zeit.
 \end_layout
 
 \begin_layout Section
-
 Mathematik
 \end_layout
 
 \begin_layout Standard
-
 Meine Lieblingsformel ist die Lösung einer quadratischen Gleichung.
  Aus 
 \begin_inset Formula $ax^{2}+bx+c=0$
 \end_inset
 
- (Gl.1) folgt 
-\begin_inset Formula $x=\frac{-b\pm \sqrt{b^{2}-4ac}}{2a}$
+ (Gl.
+ 1) folgt 
+\begin_inset Formula $x=\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}$
 \end_inset
 
  (Gl.
@@ -281,9 +243,8 @@ Meine Lieblingsformel ist die Lösung einer quadratischen Gleichung.
 \end_layout
 
 \begin_layout Standard
-
 Eine weitere Lieblingsformel ist die Ableitung: 
-\begin_inset Formula $f'(x)\equiv \lim _{\Delta x\rightarrow 0}\frac{f(x+\Delta x)-f(x)}{\Delta x}$
+\begin_inset Formula $f'(x)\equiv\lim_{\Delta x\rightarrow0}\frac{f(x+\Delta x)-f(x)}{\Delta x}$
 \end_inset
 
  (Gl.
@@ -291,25 +252,21 @@ Eine weitere Lieblingsformel ist die Ableitung:
 \end_layout
 
 \begin_layout Section
-
 Bemerkungen
 \end_layout
 
 \begin_layout Standard
-
 Ein paar Bemerkungen zum LyXifizieren dieser Datei:
 \end_layout
 
 \begin_layout Itemize
-
-Ich konnte die gestrichelten Linien enntfernen.
- Sie waren nur dazu da, den Titel und das Quellenverzeichnis from Rest des
- Dokumentes zu ternnen.
+Ich konnte die gestrichelten Linien entfernen.
+ Sie waren nur dazu da, den Titel und das Quellenverzeichnis vom Rest des
+ Dokumentes zu trennen.
  LyX (LaTeX) weiß genug, um diese Teile mit Zwischenräumen abzusetzen.
 \end_layout
 
 \begin_layout Itemize
-
 Ich kümmerte mich nicht darum, die mathematischen Formeln als abgesetzte
  Formeln zu schreiben.
  Außerdem habe ich nicht die automatische Gleichungsnumerierung von LyX
@@ -321,7 +278,6 @@ beschrieben wurde.
 \end_layout
 
 \begin_layout Itemize
-
 Ich mußte das Wort 
 \begin_inset Quotes gld
 \end_inset
@@ -341,14 +297,14 @@ Referenzen
 
 , abhängig von der Dokumentklasse), wenn man als Umgebung 
 \family sans
-Bibliography 
+Literaturverzeichnis 
 \family default
 wählt.
 \end_layout
 
 \begin_layout Bibliography
-\bibitem {lamport}
 
+\bibitem {lamport}
 Lamport, Leslie.
  
 \emph on
