@@ -192,7 +192,13 @@ public:
 	virtual int docbook(Buffer const &, std::ostream & os,
 		OutputParams const &) const;
 
-	///
+	/** This enum indicates by which means the inset can be modified:
+	- NOT_EDITABLE: the inset's content can not be modified at all 
+	  (e.g. printindex, insetspecialchar)
+	- IS_EDITABLE: content can be edited via dialog (e.g. bibtex, index, url)
+	- HIGHLY_EDITABLE: content can be edited on screen (normally means that
+	  insettext is contained, e.g. collapsables, tabular) */
+	// FIXME: This has not yet been fully implemented to math insets
 	enum EDITABLE {
 		///
 		NOT_EDITABLE = 0,
