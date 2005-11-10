@@ -163,7 +163,10 @@ Point coordOffset(DocIterator const & dit, bool boundary)
 		CursorSlice const & sl = dit[i];
 		int xx = 0;
 		int yy = 0;
-		if (sl.inset().editable() == InsetBase::HIGHLY_EDITABLE)
+		//FIXME: the check for asMathInset() shouldn't be necessary
+		// but math insets do not return a sensible editable() state yet.
+		if (sl.inset().asMathInset() 
+		    || sl.inset().editable() == InsetBase::HIGHLY_EDITABLE)
 			sl.inset().cursorPos(sl, boundary && ((i+1) == dit.depth()), xx, yy);
 		x += xx;
 		y += yy;

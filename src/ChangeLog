@@ -1,3 +1,8 @@
+2005-11-10  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* bufferview_funcs.C (coordOffset): fix the fix for bug 2094, as
+	math insets do not return a proper editable() state yet (bug 2124).
+
 2005-11-07  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* BufferView_pimpl.[Ch]: Fix bug 1814: better scroll behaviour for 
