@@ -82,7 +82,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2005-10-31 22:20+0100\n"
+"POT-Creation-Date: 2005-11-12 14:52+0100\n"
 "PO-Revision-Date: 2005-07-21 20:56+0200\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
@@ -2040,7 +2040,7 @@ msgstr "Seitenumbruch nach der aktuellen Zeile|#S"
 #: src/frontends/xforms/forms/form_tabular.fd:1638
 #: src/frontends/xforms/forms/form_tabular.fd:1656
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:60
-#: src/frontends/qt2/QDocument.C:166 src/text.C:2218
+#: src/frontends/qt2/QDocument.C:166 src/text.C:2210
 msgid "Double"
 msgstr "Doppelt"
 
@@ -3787,7 +3787,7 @@ msgid "QParagraphDialogBase"
 msgstr "UNSINNIGE ÜBERSETZUNG"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:48
-#: src/frontends/qt2/QDocument.C:162 src/text.C:2212
+#: src/frontends/qt2/QDocument.C:162 src/text.C:2204
 msgid "Single"
 msgstr "Einfach"
 
@@ -5902,67 +5902,67 @@ msgstr ""
 
 #: lib/layouts/amsart-seq.layout:175
 msgid "Algorithm \\arabic{algorithm}."
-msgstr ""
+msgstr "Algorithmus \\arabic{algorithm}."
 
 #: lib/layouts/amsart-seq.layout:181
 msgid "Fact \\arabic{fact}."
-msgstr ""
+msgstr "Tatsache \\arabic{fact}."
 
 #: lib/layouts/amsart-seq.layout:187
 msgid "Axiom \\arabic{axiom}."
-msgstr ""
+msgstr "Axiom \\arabic{axiom}."
 
 #: lib/layouts/amsart-seq.layout:193
 msgid "Definition \\arabic{definition}."
-msgstr ""
+msgstr "Definition \\arabic{definition}."
 
 #: lib/layouts/amsart-seq.layout:199
 msgid "Example \\arabic{example}."
-msgstr ""
+msgstr "Beispiel \\arabic{example}."
 
 #: lib/layouts/amsart-seq.layout:205
 msgid "Condition \\arabic{condition}."
-msgstr ""
+msgstr "Bedingung \\arabic{condition}."
 
 #: lib/layouts/amsart-seq.layout:211
 msgid "Problem \\arabic{problem}."
-msgstr ""
+msgstr "Problem \\arabic{problem}."
 
 #: lib/layouts/amsart-seq.layout:217
 msgid "Exercise \\arabic{execise}."
-msgstr ""
+msgstr "Übung \\arabic{exercise}."
 
 #: lib/layouts/amsart-seq.layout:223
 msgid "Remark \\arabic{remark}."
-msgstr ""
+msgstr "Bemerkung \\arabic{remark}."
 
 #: lib/layouts/amsart-seq.layout:229
 msgid "Claim \\arabic{claim}."
-msgstr ""
+msgstr "Behauptung \\arabic{claim}."
 
 #: lib/layouts/amsart-seq.layout:235
 msgid "Note \\arabic{note}."
-msgstr ""
+msgstr "Notiz \\arabic{note}."
 
 #: lib/layouts/amsart-seq.layout:241
 msgid "Notation \\arabic{notation}."
-msgstr ""
+msgstr "Notation \\arabic{notation}."
 
 #: lib/layouts/amsart-seq.layout:247
 msgid "Summary \\arabic{summary}."
-msgstr ""
+msgstr "Zusammenfassung \\arabic{summary}."
 
 #: lib/layouts/amsart-seq.layout:253
 msgid "Acknowledgement \\arabic{acknowledgement}."
-msgstr ""
+msgstr "Danksagung \\arabic{acknowledgement}."
 
 #: lib/layouts/amsart-seq.layout:259
 msgid "Case \\arabic{case}."
-msgstr ""
+msgstr "Fall \\arabic{case}."
 
 #: lib/layouts/amsart-seq.layout:265
 msgid "Conclusion \\arabic{conclusion}."
-msgstr ""
+msgstr "Schlussfolgerung \\arabic{conclusion}."
 
 #: lib/layouts/amsbook.layout:96 lib/layouts/amsbook.layout:97
 #: lib/layouts/numarticle.inc:16
@@ -6068,7 +6068,7 @@ msgstr ""
 #: lib/layouts/apa.layout:346 lib/layouts/apa.layout:347
 #: src/buffer_funcs.C:448
 msgid "(\\alph{enumii})"
-msgstr ""
+msgstr "(\\alph{enumii})"
 
 #: lib/layouts/article.layout:19 lib/layouts/mwart.layout:24
 #: lib/layouts/paper.layout:32 lib/layouts/scrartcl.layout:21
@@ -6099,7 +6099,7 @@ msgstr "AKT"
 
 #: lib/layouts/broadway.layout:69
 msgid "ACT \\arabic{act}"
-msgstr ""
+msgstr "AKT \\arabic{act}"
 
 #: lib/layouts/broadway.layout:73 lib/layouts/broadway.layout:102
 msgid "SCENE"
@@ -6107,7 +6107,7 @@ msgstr "SZENE"
 
 #: lib/layouts/broadway.layout:86
 msgid "SCENE \\arabic{scene}"
-msgstr ""
+msgstr "SZENE \\arabic{scene}"
 
 #: lib/layouts/broadway.layout:90
 msgid "SCENE*"
@@ -6127,11 +6127,11 @@ msgstr "Beiläufig"
 
 #: lib/layouts/broadway.layout:149 lib/layouts/hollywood.layout:178
 msgid "("
-msgstr ""
+msgstr "("
 
 #: lib/layouts/broadway.layout:151 lib/layouts/hollywood.layout:180
 msgid "\tEnd)"
-msgstr ""
+msgstr "\tEnde)"
 
 #: lib/layouts/broadway.layout:162 lib/layouts/broadway.layout:173
 msgid "CURTAIN"
@@ -6220,7 +6220,7 @@ msgstr "Brett zentriert"
 
 #: lib/layouts/chess.layout:142
 msgid "[centered board]"
-msgstr ""
+msgstr "[zentriertes Brett]"
 
 #: lib/layouts/chess.layout:152
 msgid "HighLight"
@@ -6228,7 +6228,7 @@ msgstr "Hervorheben"
 
 #: lib/layouts/chess.layout:157
 msgid "Highlights:"
-msgstr ""
+msgstr "Höhepunkte:"
 
 #: lib/layouts/chess.layout:172
 msgid "Arrow"
@@ -6276,7 +6276,7 @@ msgstr "Absender-Adresse"
 
 #: lib/layouts/dinbrief.layout:17
 msgid "Briefkopf:"
-msgstr ""
+msgstr "Briefkopf:"
 
 #: lib/layouts/dinbrief.layout:29 lib/layouts/heb-letter.layout:15
 #: lib/layouts/stdletter.inc:36
@@ -6434,7 +6434,7 @@ msgstr "Erster Autor"
 
 #: lib/layouts/egs.layout:397
 msgid "1st_author_surname:"
-msgstr ""
+msgstr "1. Autor Nachname:"
 
 #: lib/layouts/egs.layout:406 lib/layouts/agu_stdtitle.inc:198
 #: lib/layouts/aguplus.inc:108
@@ -6511,35 +6511,35 @@ msgstr "Dank"
 
 #: lib/layouts/elsart.layout:279
 msgid "Theorem \\arabic{theorem}"
-msgstr ""
+msgstr "Theorem \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:308
 msgid "PROOF."
-msgstr ""
+msgstr "BEWEIS."
 
 #: lib/layouts/elsart.layout:322
 msgid "Lemma \\arabic{theorem}"
-msgstr ""
+msgstr "Lemma \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:329
 msgid "Corollary \\arabic{theorem}"
-msgstr ""
+msgstr "Korollar \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:336
 msgid "Proposition \\arabic{theorem}"
-msgstr ""
+msgstr "Behauptung \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:343
 msgid "Criterion \\arabic{theorem}"
-msgstr ""
+msgstr "Kriterium \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:350
 msgid "Algorithm \\arabic{theorem}"
-msgstr ""
+msgstr "Algorithmus \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:357
 msgid "Definition \\arabic{theorem}"
-msgstr ""
+msgstr "Definition \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:371
 msgid "Conjecture \\arabic{theorem}"
@@ -6547,31 +6547,31 @@ msgstr ""
 
 #: lib/layouts/elsart.layout:378
 msgid "Example \\arabic{theorem}"
-msgstr ""
+msgstr "Beispiel \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:385
 msgid "Problem \\arabic{theorem}"
-msgstr ""
+msgstr "Problem \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:392
 msgid "Remark \\arabic{theorem}"
-msgstr ""
+msgstr "Bemerkung \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:399
 msgid "Note \\arabic{theorem}"
-msgstr ""
+msgstr "Notiz \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:406
 msgid "Claim \\arabic{theorem}"
-msgstr ""
+msgstr "Behauptung \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:414
 msgid "Summary \\arabic{summ}"
-msgstr ""
+msgstr "Zusammenfassung \\arabic{summ}"
 
 #: lib/layouts/elsart.layout:422
 msgid "Case \\arabic{case}"
-msgstr ""
+msgstr "Fall \\arabic{case}"
 
 #: lib/layouts/elsart.layout:434
 msgid "Acknowledgement \\arabic{theorem}"
@@ -7299,7 +7299,7 @@ msgstr "Mehr"
 
 #: lib/layouts/hollywood.layout:68
 msgid "(MORE)"
-msgstr ""
+msgstr "(MEHR)"
 
 #: lib/layouts/hollywood.layout:81 lib/layouts/hollywood.layout:93
 msgid "FADE IN:"
@@ -7539,11 +7539,11 @@ msgstr "PACS-Nummer:"
 
 #: lib/layouts/scrbook.layout:17
 msgid "\\arabic{chapter}"
-msgstr ""
+msgstr "\\arabic{chapter}"
 
 #: lib/layouts/scrbook.layout:18
 msgid "\\Alph{chapter}"
-msgstr ""
+msgstr "\\Alph{chapter}"
 
 #: lib/layouts/scrlettr.layout:26 lib/layouts/scrlttr2.layout:25
 #: lib/layouts/scrclass.inc:32
@@ -7697,7 +7697,7 @@ msgstr "Absender-Adresse:"
 
 #: lib/layouts/scrlttr2.layout:193
 msgid "Sender Phone:"
-msgstr ""
+msgstr "Absender Telefon:"
 
 #: lib/layouts/scrlttr2.layout:197
 msgid "Fax"
@@ -7705,7 +7705,7 @@ msgstr "Fax"
 
 #: lib/layouts/scrlttr2.layout:201
 msgid "Sender Fax:"
-msgstr ""
+msgstr "Absender Fax:"
 
 #: lib/layouts/scrlttr2.layout:205
 msgid "E-Mail"
@@ -7785,7 +7785,7 @@ msgstr "Fortschritt Inhalte"
 
 #: lib/layouts/siamltex.layout:52
 msgid "\tEnd."
-msgstr ""
+msgstr "\tEnde."
 
 #: lib/layouts/siamltex.layout:102 lib/layouts/aguplus.inc:67
 #: lib/layouts/db_stdstarsections.inc:72 lib/layouts/stdstarsections.inc:57
@@ -7850,7 +7850,7 @@ msgstr "ZUSAMMENFASSUNG"
 
 #: lib/layouts/spie.layout:94
 msgid "ACKNOWLEDGMENTS"
-msgstr ""
+msgstr "DANKSAGUNGEN"
 
 #: lib/layouts/aapaper.inc:56
 msgid "email:"
@@ -7858,7 +7858,7 @@ msgstr "EMail:"
 
 #: lib/layouts/aapaper.inc:118
 msgid "Thesaurus not supported in recent A&A:"
-msgstr ""
+msgstr "Thesaurus nicht unterstützt in neuestem A&A:"
 
 #: lib/layouts/agu_stdsections.inc:79
 msgid "Subsubparagraph"
@@ -8171,7 +8171,7 @@ msgstr ""
 
 #: lib/layouts/amsmaths.inc:216
 msgid "Fact @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Tatsache @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:224
 msgid "Fact*"
@@ -8319,7 +8319,7 @@ msgstr "Ausschuss"
 
 #: lib/layouts/numarticle.inc:8
 msgid "Part \\Roman{part}"
-msgstr ""
+msgstr "Teil \\Roman{part}"
 
 #: lib/layouts/numarticle.inc:17
 msgid "\\Alph{section}"
@@ -8327,39 +8327,39 @@ msgstr "\\Alph{section}"
 
 #: lib/layouts/numarticle.inc:25 lib/layouts/numarticle.inc:26
 msgid "@Section@.\\arabic{subsection}"
-msgstr ""
+msgstr "@Section@.\\arabic{subsection}"
 
 #: lib/layouts/numarticle.inc:34 lib/layouts/numarticle.inc:35
 msgid "@Subsection@.\\arabic{subsubsection}"
-msgstr ""
+msgstr "@Subsection@.\\arabic{subsubsection}"
 
 #: lib/layouts/numarticle.inc:43 lib/layouts/numarticle.inc:44
 msgid "@Subsubsection@.\\arabic{paragraph}"
-msgstr ""
+msgstr "@Subsubsection@.\\arabic{paragraph}"
 
 #: lib/layouts/numarticle.inc:52 lib/layouts/numarticle.inc:53
 msgid "@Paragraph@.\\arabic{subparagraph}"
-msgstr ""
+msgstr "@Paragraph@.\\arabic{subparagraph}"
 
 #: lib/layouts/numreport.inc:15
 msgid "Chapter \\arabic{chapter}"
-msgstr ""
+msgstr "Kapitel \\arabic{chapter}"
 
 #: lib/layouts/numreport.inc:16
 msgid "Appendix \\Alph{chapter}"
-msgstr ""
+msgstr "Anhang \\Alph{chapter}"
 
 #: lib/layouts/numreport.inc:22
 msgid "\\arabic{chapter}.\\arabic{section}"
-msgstr ""
+msgstr "\\arabic{chapter}.\\arabic{section}"
 
 #: lib/layouts/numreport.inc:23
 msgid "\\Alph{chapter}.\\arabic{section}"
-msgstr ""
+msgstr "\\Alph{chapter}.\\arabic{section}"
 
 #: lib/layouts/numrevtex.inc:9
 msgid "\\Roman{section}."
-msgstr ""
+msgstr "\\Roman{section}."
 
 #: lib/layouts/numrevtex.inc:10
 msgid "Appendix \\Alph{section}:"
@@ -9574,18 +9574,18 @@ msgid "Redo|R"
 msgstr "Wiederholen|W"
 
 #: lib/ui/stdmenus.ui:84 lib/ui/stdtoolbars.ui:51
-#: src/mathed/math_nestinset.C:429 src/text3.C:841
+#: src/mathed/math_nestinset.C:429 src/text3.C:842
 msgid "Cut"
 msgstr "Ausschneiden"
 
 #: lib/ui/stdmenus.ui:85 lib/ui/stdtoolbars.ui:52
-#: src/mathed/math_nestinset.C:437 src/text3.C:846
+#: src/mathed/math_nestinset.C:437 src/text3.C:847
 msgid "Copy"
 msgstr "Kopieren"
 
 #: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:630
 #: src/mathed/math_gridinset.C:1204 src/mathed/math_nestinset.C:413
-#: src/text3.C:825
+#: src/text3.C:826
 msgid "Paste"
 msgstr "Einfügen"
 
@@ -9854,11 +9854,11 @@ msgstr "Dokument speichern"
 msgid "Print document"
 msgstr "Dokument drucken"
 
-#: lib/ui/stdtoolbars.ui:49 src/BufferView_pimpl.C:1088
+#: lib/ui/stdtoolbars.ui:49 src/BufferView_pimpl.C:1102
 msgid "Undo"
 msgstr "Rückgängig"
 
-#: lib/ui/stdtoolbars.ui:50 src/BufferView_pimpl.C:1099
+#: lib/ui/stdtoolbars.ui:50 src/BufferView_pimpl.C:1113
 msgid "Redo"
 msgstr "Wiederholen"
 
@@ -10096,7 +10096,7 @@ msgstr "{ } einfügen"
 
 #: lib/ui/stdtoolbars.ui:137
 msgid "Insert cases"
-msgstr ""
+msgstr "Cases-Umgebung einfügen"
 
 #: lib/ui/stdtoolbars.ui:144
 msgid "minibuffer"
@@ -10157,21 +10157,21 @@ msgstr "Parsen"
 msgid "Formatting document..."
 msgstr "Formatieren des Dokuments..."
 
-#: src/BufferView_pimpl.C:741
+#: src/BufferView_pimpl.C:755
 #, c-format
 msgid "Saved bookmark %1$d"
 msgstr "Lesezeichen %1$d gespeichert"
 
-#: src/BufferView_pimpl.C:774
+#: src/BufferView_pimpl.C:788
 #, c-format
 msgid "Moved to bookmark %1$d"
 msgstr "Zu Lesezeichen %1$d gewechselt"
 
-#: src/BufferView_pimpl.C:833
+#: src/BufferView_pimpl.C:847
 msgid "Select LyX document to insert"
 msgstr "Wählen Sie das einzufügende LyX-Dokument"
 
-#: src/BufferView_pimpl.C:835 src/frontends/controllers/ControlBibtex.C:48
+#: src/BufferView_pimpl.C:849 src/frontends/controllers/ControlBibtex.C:48
 #: src/frontends/controllers/ControlBibtex.C:59
 #: src/frontends/controllers/ControlExternal.C:160
 #: src/frontends/controllers/ControlGraphics.C:94
@@ -10180,78 +10180,78 @@ msgstr "Wählen Sie das einzufügende LyX-Dokument"
 msgid "Documents|#o#O"
 msgstr "Dokumente|#k"
 
-#: src/BufferView_pimpl.C:837 src/lyxfunc.C:1747 src/lyxfunc.C:1822
+#: src/BufferView_pimpl.C:851 src/lyxfunc.C:1747 src/lyxfunc.C:1822
 msgid "Examples|#E#e"
 msgstr "Beispiele|#B"
 
-#: src/BufferView_pimpl.C:842 src/lyx_cb.C:141 src/lyxfunc.C:1715
+#: src/BufferView_pimpl.C:856 src/lyx_cb.C:141 src/lyxfunc.C:1715
 #: src/lyxfunc.C:1752
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX-Dokumente (*.lyx)"
 
-#: src/BufferView_pimpl.C:852 src/lyxfunc.C:1762 src/lyxfunc.C:1840
+#: src/BufferView_pimpl.C:866 src/lyxfunc.C:1762 src/lyxfunc.C:1840
 #: src/lyxfunc.C:1854 src/lyxfunc.C:1870
 msgid "Canceled."
 msgstr "Abgebrochen."
 
-#: src/BufferView_pimpl.C:862
+#: src/BufferView_pimpl.C:876
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Füge Dokument %1$s ein..."
 
-#: src/BufferView_pimpl.C:873
+#: src/BufferView_pimpl.C:887
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s ist eingefügt."
 
-#: src/BufferView_pimpl.C:874
+#: src/BufferView_pimpl.C:888
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Das Dokument %1$s konnte nicht eingefügt werden"
 
-#: src/BufferView_pimpl.C:1091
+#: src/BufferView_pimpl.C:1105
 msgid "No further undo information"
 msgstr "Nichts mehr rückgängig zu machen"
 
-#: src/BufferView_pimpl.C:1102
+#: src/BufferView_pimpl.C:1116
 msgid "No further redo information"
 msgstr "Nichts mehr zu wiederholen"
 
-#: src/BufferView_pimpl.C:1231
+#: src/BufferView_pimpl.C:1245
 msgid "Mark off"
 msgstr "Marke aus"
 
-#: src/BufferView_pimpl.C:1238
+#: src/BufferView_pimpl.C:1252
 msgid "Mark on"
 msgstr "Marke ein"
 
-#: src/BufferView_pimpl.C:1245
+#: src/BufferView_pimpl.C:1259
 msgid "Mark removed"
 msgstr "Marke entfernt"
 
-#: src/BufferView_pimpl.C:1248
+#: src/BufferView_pimpl.C:1262
 msgid "Mark set"
 msgstr "Marke gesetzt"
 
-#: src/BufferView_pimpl.C:1290
+#: src/BufferView_pimpl.C:1304
 #, c-format
 msgid "%1$d words in selection."
 msgstr "%1$d Wörter in der Auswahl."
 
-#: src/BufferView_pimpl.C:1293
+#: src/BufferView_pimpl.C:1307
 #, c-format
 msgid "%1$d words in document."
 msgstr "%1$d Wörter im Dokument."
 
-#: src/BufferView_pimpl.C:1298
+#: src/BufferView_pimpl.C:1312
 msgid "One word in selection."
 msgstr "Ein Wort in der Auswahl."
 
-#: src/BufferView_pimpl.C:1300
+#: src/BufferView_pimpl.C:1314
 msgid "One word in document."
 msgstr "Ein Wort im Dokument."
 
-#: src/BufferView_pimpl.C:1303
+#: src/BufferView_pimpl.C:1317
 msgid "Count words"
 msgstr "Wörter zählen"
 
@@ -10646,11 +10646,13 @@ msgid ""
 "%1$s is from an earlier version of LyX, but the lyx2lyx script failed to "
 "convert it."
 msgstr ""
+"%1$s stammt von einer früheren LyX-Version, aber das lyx2lyx-Skript konnte "
+"es nicht konvertieren."
 
 #: src/buffer.C:680
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
-msgstr ""
+msgstr "%1$s endete unerwartet, daher ist es vermutlich beschädigt."
 
 #: src/buffer.C:1137
 msgid "Running chktex..."
@@ -10709,6 +10711,9 @@ msgid ""
 "\n"
 "Load the backup instead?"
 msgstr ""
+"Die Sicherung des Dokuments %1$s ist neuer.\n"
+"\n"
+"Stattdessen die Sicherung laden?"
 
 #: src/buffer_funcs.C:115
 msgid "Load backup?"
@@ -10817,7 +10822,7 @@ msgstr "Die Dokumentklasse ist nicht verfügbar"
 msgid "LyX will not be able to produce output."
 msgstr "LyX wird keine Ausgabe erzeugen können."
 
-#: src/bufferview_funcs.C:297
+#: src/bufferview_funcs.C:301
 msgid "No more insets"
 msgstr "Keine weiteren Einfügungen"
 
@@ -10853,6 +10858,9 @@ msgid ""
 "No information for converting %1$s format files to %2$s.\n"
 "Try defining a convertor in the preferences."
 msgstr ""
+"Keine Information vorhanden, um Dateien im %1$s-Format nach %2$s zu "
+"konvertieren.\n"
+"Versuchen Sie einen Konverter in den Einstellungen zu definieren."
 
 #: src/converter.C:393 src/format.C:256 src/format.C:301
 msgid "Executing command: "
@@ -10875,11 +10883,12 @@ msgstr "Bei der Ausführung von %1$s ist ein Fehler aufgetreten"
 #, c-format
 msgid "Could not move a temporary file from %1$s to %2$s."
 msgstr ""
+"Eine temporäre Datei konnte nicht von %1$s nach %2$s verschoben werden."
 
 #: src/converter.C:503
 #, c-format
 msgid "Could not copy a temporary file from %1$s to %2$s."
-msgstr ""
+msgstr "Eine temporäre Datei konnte nicht von %1$s nach %2$s kopiert werden."
 
 #: src/converter.C:572
 msgid "Running LaTeX..."
@@ -10891,6 +10900,8 @@ msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
 "log %1$s."
 msgstr ""
+"LaTeX wurde nicht erfolgreich ausgeführt. Außerdem konnte LyX die LaTeX-"
+"Protokolldatei %1$s nicht finden."
 
 #: src/converter.C:593
 msgid "LaTeX failed"
@@ -10994,7 +11005,7 @@ msgstr "Änderungsverfolgung"
 
 #: src/debug.C:65
 msgid "External template/inset messages"
-msgstr ""
+msgstr "Externe Vorlagen/Einfügungs-Meldungen"
 
 #: src/exporter.C:72
 #, c-format
@@ -11030,7 +11041,7 @@ msgstr "Die Datei konnte nicht kopiert werden"
 #: src/exporter.C:128
 #, c-format
 msgid "Copying %1$s to %2$s failed."
-msgstr ""
+msgstr "Das Kopieren von %1$s nach %2$s ist fehlgeschlagen."
 
 #: src/exporter.C:158
 msgid "Couldn't export file"
@@ -11361,7 +11372,7 @@ msgstr "Das Rechtschreibprogramm ist fehlgeschlagen.\n"
 
 #: src/frontends/controllers/ControlSpellchecker.C:273
 msgid "The spellchecker has failed"
-msgstr "Die Rechtschreibprogramm ist fehlgeschlagen"
+msgstr "Das Rechtschreibprogramm ist fehlgeschlagen"
 
 #: src/frontends/controllers/ControlSpellchecker.C:287
 #, c-format
@@ -11502,11 +11513,11 @@ msgstr "Magenta"
 msgid "Yellow"
 msgstr "Gelb"
 
-#: src/frontends/controllers/helper_funcs.C:102
+#: src/frontends/controllers/helper_funcs.C:100
 msgid "System files|#S#s"
 msgstr "Systemdateien|#S#s"
 
-#: src/frontends/controllers/helper_funcs.C:105
+#: src/frontends/controllers/helper_funcs.C:103
 msgid "User files|#U#u"
 msgstr "Benutzerdateien|#B#b"
 
@@ -11690,7 +11701,7 @@ msgid "Paragraph Settings"
 msgstr "Absatz-Einstellungen"
 
 #: src/frontends/gtk/GParagraph.C:99 src/frontends/qt2/QParagraph.C:120
-#: src/frontends/xforms/FormParagraph.C:165 src/paragraph.C:612
+#: src/frontends/xforms/FormParagraph.C:165 src/paragraph.C:620
 msgid "Senseless with this layout!"
 msgstr "Für dieses Format nicht relevant!"
 
@@ -11710,7 +11721,7 @@ msgstr "Finden und Ersetzen"
 
 #: src/frontends/gtk/GSendto.C:36
 msgid "Send document to command"
-msgstr "Dokument an Shell-Befehl senden"
+msgstr "Dokument an Befehl senden"
 
 #: src/frontends/gtk/GShowFile.C:32 src/frontends/qt2/QShowFile.C:32
 #: src/frontends/xforms/FormShowFile.C:27
@@ -11740,7 +11751,7 @@ msgstr "TeX-Informationen"
 
 #: src/frontends/gtk/GThesaurus.C:66
 msgid "Synonym"
-msgstr ""
+msgstr "Synonym"
 
 #: src/frontends/gtk/GThesaurus.C:156
 msgid "No synonyms found"
@@ -11910,7 +11921,7 @@ msgstr "mit Überschriften"
 msgid "fancy"
 msgstr "ausgefallen"
 
-#: src/frontends/qt2/QDocument.C:164 src/text.C:2215
+#: src/frontends/qt2/QDocument.C:164 src/text.C:2207
 msgid "OneHalf"
 msgstr "Eineinhalb"
 
@@ -13503,6 +13514,8 @@ msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
 msgstr ""
+"Die Pfade zu Ihren BibTeX-Datenbanken enthalten Leerzeichen.\n"
+"BiBTeX wird die Datenbanken nicht finden."
 
 #: src/insets/insetbox.C:57
 msgid "Boxed"
@@ -13540,6 +13553,11 @@ msgstr "Zweig-Einfügung geöffnet"
 msgid "Branch: "
 msgstr "Zweig: "
 
+#: src/insets/insetbranch.C:103 src/insets/insetcharstyle.C:154
+#: src/insets/insetcharstyle.C:200
+msgid "Undef: "
+msgstr "Undef.: "
+
 #: src/insets/insetcaption.C:77
 msgid "Opened Caption Inset"
 msgstr "Legenden-Einfügung geöffnet"
@@ -13551,10 +13569,6 @@ msgstr "Gleitobjekt"
 #: src/insets/insetcharstyle.C:116
 msgid "Opened CharStyle Inset"
 msgstr "Zeichenstil-Einfügung geöffnet"
-
-#: src/insets/insetcharstyle.C:154 src/insets/insetcharstyle.C:200
-msgid "Undef: "
-msgstr "Undef.: "
 
 #: src/insets/insetenv.C:65
 msgid "Opened Environment Inset: "
@@ -13571,7 +13585,7 @@ msgstr "ERT"
 #: src/insets/insetexternal.C:580
 #, c-format
 msgid "External template %1$s is not installed"
-msgstr ""
+msgstr "Externe Vorlage %1$s ist nicht installiert"
 
 #: src/insets/insetfloat.C:134 src/insets/insetfloat.C:412
 #: src/insets/insetfloat.C:422
@@ -13610,11 +13624,14 @@ msgid ""
 "%1$s\n"
 "into the temporary directory."
 msgstr ""
+"Die Datei\n"
+"%1$s\n"
+"konnte nicht in das temporäre Verzeichnis kopiert werden."
 
 #: src/insets/insetgraphics.C:693
 #, c-format
 msgid "No conversion of %1$s is needed after all"
-msgstr ""
+msgstr "Es ist keine Konvertierung von %1$s notwendig"
 
 #: src/insets/insetgraphics.C:791
 #, c-format
@@ -14361,7 +14378,7 @@ msgstr "Erstellung"
 msgid "ChkTeX"
 msgstr "ChkTeX"
 
-#: src/lyxfunc.C:1017 src/text3.C:1261
+#: src/lyxfunc.C:1017 src/text3.C:1262
 msgid "Missing argument"
 msgstr "Fehlendes Argument"
 
@@ -15051,7 +15068,7 @@ msgstr ""
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_hullinset.C:1273 src/text3.C:169
+#: src/mathed/math_hullinset.C:1273 src/text3.C:170
 msgid "Math editor mode"
 msgstr "Mathe-Editor-Modus"
 
@@ -15178,49 +15195,49 @@ msgstr ""
 "Sie können zwei Leerzeichen nicht auf diese Weise eingeben. Bitte lesen Sie "
 "das Tutorium."
 
-#: src/text.C:2181
+#: src/text.C:2173
 msgid "Change: "
 msgstr "Änderung: "
 
-#: src/text.C:2185
+#: src/text.C:2177
 msgid " at "
 msgstr " am "
 
-#: src/text.C:2196
+#: src/text.C:2188
 #, c-format
 msgid "Font: %1$s"
 msgstr "Schrift: %1$s"
 
-#: src/text.C:2203
+#: src/text.C:2195
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Tiefe: %1$d"
 
-#: src/text.C:2209
+#: src/text.C:2201
 msgid ", Spacing: "
 msgstr ", Abstand: "
 
-#: src/text.C:2221
+#: src/text.C:2213
 msgid "Other ("
 msgstr "Andere ("
 
-#: src/text.C:2230
+#: src/text.C:2222
 msgid ", Inset: "
 msgstr ", Einfügung: "
 
-#: src/text.C:2231
+#: src/text.C:2223
 msgid ", Paragraph: "
 msgstr ", Absatz: "
 
-#: src/text.C:2232
+#: src/text.C:2224
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/text.C:2233
+#: src/text.C:2225
 msgid ", Position: "
 msgstr ", Position: "
 
-#: src/text.C:2234
+#: src/text.C:2226
 msgid ", Boundary: "
 msgstr ""
 
@@ -15240,27 +15257,27 @@ msgstr "Nichts zu indizieren!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Es ist nicht möglich, mehr als einen Absatz zu indizieren!"
 
-#: src/text3.C:734
+#: src/text3.C:735
 msgid "Unknown spacing argument: "
 msgstr "Unbekanntes Abstandsargument: "
 
-#: src/text3.C:890
+#: src/text3.C:891
 msgid "LyX function 'layout' needs an argument."
 msgstr "Die LyX-Funktion 'layout' benötigt ein Argument."
 
-#: src/text3.C:908
+#: src/text3.C:909
 msgid "Layout "
 msgstr "Format "
 
-#: src/text3.C:909
+#: src/text3.C:910
 msgid " not known"
 msgstr " unbekannt"
 
-#: src/text3.C:1365 src/text3.C:1377
+#: src/text3.C:1366 src/text3.C:1378
 msgid "Character set"
 msgstr "Zeichensatz"
 
-#: src/text3.C:1510
+#: src/text3.C:1511
 msgid "Paragraph layout set"
 msgstr "Absatzformat festgelegt"
 
