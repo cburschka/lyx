@@ -1,3 +1,8 @@
+2005-11-07  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* text.C (redoParagraph): Fix bug 1966: cursor doesn't go to next
+	line after typing ctrl-enter
+
 2005-11-10  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* bufferview_funcs.C (coordOffset): fix the fix for bug 2094, as

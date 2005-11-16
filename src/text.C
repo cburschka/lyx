@@ -1716,6 +1716,20 @@ bool LyXText::redoParagraph(pit_type const pit)
 		z = row.endpos();
 	} while (z < par.size());
 
+	// Make sure that if a par ends in newline, there is one more row
+	// under it
+	// FIXME this is a dirty trick. Now the _same_ position in the
+	// paragraph occurs in _two_ different rows, and has two different
+	// display positions, leading to weird behaviour when moving up/down.
+	if (z > 0 && par.isNewline(z - 1)) {
+		Row row(z - 1);
+		row.endpos(z - 1);
+		setRowWidth(pit, row);
+		setHeightOfRow(pit, row);
+		par.rows().push_back(row);
+		dim.des += row.height();
+	}
+	    
 	dim.asc += par.rows()[0].ascent();
 	dim.des -= par.rows()[0].ascent();
 
