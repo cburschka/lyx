@@ -1,3 +1,5 @@
+#include <config.h>
+
 #include "textpainter.h"
 #include "support/LOstream.h"
 

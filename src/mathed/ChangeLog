@@ -1,3 +1,7 @@
+2005-11-17  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* textpainter.C: include <config.h>.
+
 2005-10-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* math_cursor.C (home, end): close macro before handling selection

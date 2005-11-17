@@ -73,3 +73,6 @@
 #if defined(__APPLE__) && defined(__GNUC__) && __GNUC__ == 2
 #define BOOST_REGEX_NARROW_INSTANTIATE
 #endif
+
+// Include the main config file
+#include <config.h>
