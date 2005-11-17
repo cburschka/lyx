@@ -474,8 +474,8 @@ int LyXText::leftMargin(pit_type const pit, pos_type const pos) const
 	l_margin += font_metrics::signedWidth(tclass.leftmargin(), tclass.defaultfont());
 
 	if (par.getDepth() != 0) {
-	// find the next level paragraph
-	pit_type newpar = outerHook(pit, pars_);
+		// find the next level paragraph
+		pit_type newpar = outerHook(pit, pars_);
 		if (newpar != pit_type(pars_.size())) {
 			if (pars_[newpar].layout()->isEnvironment()) {
 				l_margin = leftMargin(newpar);
@@ -488,6 +488,13 @@ int LyXText::leftMargin(pit_type const pit, pos_type const pos) const
 			}
 		}
 	}
+
+	// This happens after sections in standard classes. The 1.3.x
+	// code compared depths too, but it does not seem necessary
+	// (JMarc)
+	if (par.layout() == tclass.defaultLayout()
+	    && pit > 0 && pars_[pit - 1].layout()->nextnoindent)
+		parindent.erase();
 
 	LyXFont const labelfont = getLabelFont(par);
 	switch (layout->margintype) {
