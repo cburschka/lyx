@@ -1,3 +1,10 @@
+2005-11-17  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* lyxfunc.C:
+	* paragraph.C:
+	* text3.C: InsetBase::forceDefaultParagraphs now takes a cell as
+	argument.
+
 2005-11-07  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* text.C (redoParagraph): Fix bug 1966: cursor doesn't go to next

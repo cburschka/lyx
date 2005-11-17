@@ -703,7 +703,7 @@ InsetBibitem * Paragraph::bibitem() const
 
 bool Paragraph::forceDefaultParagraphs() const
 {
-	return inInset() && inInset()->forceDefaultParagraphs(inInset());
+	return inInset() && inInset()->forceDefaultParagraphs(0);
 }
 
 

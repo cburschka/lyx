@@ -67,7 +67,7 @@ public:
 	///
 	void getDrawFont(LyXFont &) const;
 	///
-	bool forceDefaultParagraphs(InsetBase const *) const { return true; }
+	bool forceDefaultParagraphs(idx_type) const { return true; }
 	/// should paragraph indendation be ommitted in any case?
 	bool neverIndent() const { return true; }
 protected:

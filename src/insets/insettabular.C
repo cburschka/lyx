@@ -1851,27 +1851,9 @@ void InsetTabular::markErased(bool erased)
 }
 
 
-bool InsetTabular::forceDefaultParagraphs(InsetBase const *) const
+bool InsetTabular::forceDefaultParagraphs(idx_type cell) const
 {
-#if 0
-	idx_type const cell = tabular.getCellFromInset(in);
-	// FIXME: getCellFromInset() returns now always a valid cell, so
-	// the stuff below can be deleted, and instead we have:
 	return tabular.getPWidth(cell).zero();
-
-	if (cell != npos)
-		return tabular.getPWidth(cell).zero();
-
-	// this is a workaround for a crash (New, Insert->Tabular,
-	// Insert->FootNote)
-	if (!owner())
-		return false;
-
-	// well we didn't obviously find it so maybe our owner knows more
-	BOOST_ASSERT(owner());
-	return owner()->forceDefaultParagraphs(in);
-#endif
-	return false;
 }
 
 

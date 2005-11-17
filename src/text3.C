@@ -1414,8 +1414,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		params2string(cur.paragraph(), data);
 
 		// Will the paragraph accept changes from the dialog?
-		InsetBase & inset = cur.inset();
-		bool const accept = !inset.forceDefaultParagraphs(&inset);
+		bool const accept = !cur.inset().forceDefaultParagraphs(cur.idx());
 
 		data = "update " + convert<string>(accept) + '\n' + data;
 		bv->owner()->getDialogs().update("paragraph", data);

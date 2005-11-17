@@ -1,3 +1,12 @@
+2005-11-17  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* insetbase.h:
+	* insetert.h:
+	* insettabular.h: 
+	change argument of forceDefaultParagraphs from inset to cell.
+
+	* insettabular.C: fix forceDefaultParagraphs (part of bug 1953).
+
 2005-11-10  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* insetbase.h: document the EDITABLE enum.

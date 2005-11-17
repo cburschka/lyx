@@ -430,7 +430,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 
 	case LFUN_LAYOUT:
 	case LFUN_LAYOUT_PARAGRAPH:
-		enable = !cur.inset().forceDefaultParagraphs(&cur.inset());
+		enable = !cur.inset().forceDefaultParagraphs(cur.idx());
 		break;
 
 	case LFUN_VC_REGISTER:

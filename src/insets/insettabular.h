@@ -117,9 +117,10 @@ public:
 	///
 	void markErased(bool);
 
-	// this should return true if we have a "normal" cell, otherwise true.
+	// this should return true if we have a "normal" cell, otherwise false.
 	// "normal" means without width set!
-	bool forceDefaultParagraphs(InsetBase const * in) const;
+	/// should all paragraphs be output with "Standard" layout?
+	bool forceDefaultParagraphs(idx_type cell = 0) const;
 
 	///
 	void addPreview(lyx::graphics::PreviewLoader &) const;

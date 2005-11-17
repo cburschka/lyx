@@ -327,7 +327,7 @@ public:
 	virtual bool insetAllowed(Code) const { return false; }
 	/// if this inset has paragraphs should they be output all as default
 	/// paragraphs with "Standard" layout?
-	virtual bool forceDefaultParagraphs(InsetBase const *) const { return false; }
+	virtual bool forceDefaultParagraphs(idx_type) const { return false; }
 
 	///
 	virtual std::string const & getInsetName() const;
