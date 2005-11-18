@@ -164,7 +164,7 @@ int InsetBibtex::latex(Buffer const & buffer, ostream & os,
 
 			database = FileName(database).mangledFilename();
 			string const out_file = MakeAbsPath(database + ".bib",
-							    buffer.temppath());
+					buffer.getMasterBuffer()->temppath());
 
 			bool const success = copy(in_file, out_file);
 			if (!success) {
