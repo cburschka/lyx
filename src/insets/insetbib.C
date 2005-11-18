@@ -243,7 +243,7 @@ int InsetBibtex::latex(Buffer const * buffer, ostream & os,
 
 			database = mangled_filename(database);
 			string const out_file = MakeAbsPath(database + ".bib",
-							    buffer->tmppath);
+					buffer->getMasterBuffer()->tmppath);
 
 			bool const success = lyx::copy(in_file, out_file);
 			if (!success) {
