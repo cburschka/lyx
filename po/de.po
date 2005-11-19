@@ -82,8 +82,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2005-11-12 14:52+0100\n"
-"PO-Revision-Date: 2005-07-21 20:56+0200\n"
+"POT-Creation-Date: 2005-11-19 10:29+0100\n"
+"PO-Revision-Date: 2005-11-19 20:56+0200\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -291,7 +291,7 @@ msgstr "Spezial"
 
 #: src/frontends/xforms/forms/form_box.fd:224
 msgid "Inner Alignment (Vert.)"
-msgstr ""
+msgstr "Innere Ausrichtung (Vert.)"
 
 #: src/frontends/xforms/forms/form_box.fd:242
 msgid "Horizontal Alignment"
@@ -2040,7 +2040,7 @@ msgstr "Seitenumbruch nach der aktuellen Zeile|#S"
 #: src/frontends/xforms/forms/form_tabular.fd:1638
 #: src/frontends/xforms/forms/form_tabular.fd:1656
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:60
-#: src/frontends/qt2/QDocument.C:166 src/text.C:2210
+#: src/frontends/qt2/QDocument.C:166 src/text.C:2231
 msgid "Double"
 msgstr "Doppelt"
 
@@ -3787,7 +3787,7 @@ msgid "QParagraphDialogBase"
 msgstr "UNSINNIGE ÜBERSETZUNG"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:48
-#: src/frontends/qt2/QDocument.C:162 src/text.C:2204
+#: src/frontends/qt2/QDocument.C:162 src/text.C:2225
 msgid "Single"
 msgstr "Einfach"
 
@@ -3859,7 +3859,7 @@ msgstr "&Ändern..."
 
 #: src/frontends/qt2/ui/QPrefConvertersModule.ui:22
 msgid "QPrefConvertersModule"
-msgstr ""
+msgstr "UNSINNIGE ÜBERSETZUNG"
 
 #: src/frontends/qt2/ui/QPrefConvertersModule.ui:85
 msgid "C&onverter:"
@@ -4020,7 +4020,7 @@ msgstr "&Tastaturtabelle verwenden"
 
 #: src/frontends/qt2/ui/QPrefLanguageModule.ui:22
 msgid "QPrefLanguageModule"
-msgstr ""
+msgstr "UNSINNIGE ÜBERSETZUNG"
 
 #: src/frontends/qt2/ui/QPrefLanguageModule.ui:41
 msgid "Command s&tart:"
@@ -4329,7 +4329,7 @@ msgstr "&Eingabekodierung verwenden"
 
 #: src/frontends/qt2/ui/QPrefUIModule.ui:29
 msgid "QPrefUIModule"
-msgstr ""
+msgstr "UNSINNIGE ÜBERSETZUNG"
 
 #: src/frontends/qt2/ui/QPrefUIModule.ui:63
 msgid "B&rowse..."
@@ -5397,7 +5397,7 @@ msgstr "Stichwörter"
 
 #: lib/layouts/IEEEtran.layout:359
 msgid "Index Terms---"
-msgstr ""
+msgstr "Stichwörter---"
 
 #: lib/layouts/IEEEtran.layout:371 lib/layouts/aa.layout:88
 #: lib/layouts/aa.layout:333 lib/layouts/aapaper.layout:105
@@ -5587,7 +5587,7 @@ msgstr "Sonderdruck-Anfragen an:"
 
 #: lib/layouts/aa.layout:179
 msgid "Correspondence to:"
-msgstr ""
+msgstr "Schriftverkehr an:"
 
 #: lib/layouts/aa.layout:205 lib/layouts/egs.layout:526
 #: lib/layouts/svjour.inc:309
@@ -5691,15 +5691,15 @@ msgstr "Datensatz"
 
 #: lib/layouts/aastex.layout:296
 msgid "Subject headings:"
-msgstr ""
+msgstr "Schlagwörter:"
 
 #: lib/layouts/aastex.layout:339
 msgid "[Acknowledgements]"
-msgstr ""
+msgstr "[Danksagungen]"
 
 #: lib/layouts/aastex.layout:360
 msgid "and"
-msgstr ""
+msgstr "und"
 
 #: lib/layouts/aastex.layout:381
 msgid "Place Figure here:"
@@ -5711,7 +5711,7 @@ msgstr "Tabelle hier platzieren:"
 
 #: lib/layouts/aastex.layout:422
 msgid "[Appendix]"
-msgstr ""
+msgstr "[Anhang]"
 
 #: lib/layouts/aastex.layout:482
 msgid "Note to Editor:"
@@ -5719,7 +5719,7 @@ msgstr "Hinweis für Herausgeber:"
 
 #: lib/layouts/aastex.layout:503
 msgid "References. ---"
-msgstr ""
+msgstr "Referenzen. ---"
 
 #: lib/layouts/aastex.layout:523
 msgid "Note. ---"
@@ -5731,7 +5731,7 @@ msgstr "Abbildungslegende"
 
 #: lib/layouts/aastex.layout:559
 msgid "Fig. ---"
-msgstr ""
+msgstr "Abb. ---"
 
 #: lib/layouts/aastex.layout:576
 msgid "Facility:"
@@ -5739,7 +5739,7 @@ msgstr "Einrichtung:"
 
 #: lib/layouts/aastex.layout:602
 msgid "Obj:"
-msgstr ""
+msgstr "Objekt:"
 
 #: lib/layouts/aastex.layout:629
 msgid "Dataset:"
@@ -5878,7 +5878,7 @@ msgstr "Schlussfolgerung."
 
 #: lib/layouts/amsart-seq.layout:139
 msgid "Theorem \\arabic{theorem}."
-msgstr ""
+msgstr "Theorem \\arabic{theorem}."
 
 #: lib/layouts/amsart-seq.layout:145
 msgid "Corollary \\arabic{corollary}."
@@ -6257,7 +6257,7 @@ msgstr "Thema"
 
 #: lib/layouts/cv.layout:72
 msgid "MMMMM"
-msgstr ""
+msgstr "MMMMM"
 
 #: lib/layouts/cv.layout:98 lib/layouts/foils.layout:190
 #: lib/layouts/aguplus.inc:76
@@ -6389,12 +6389,12 @@ msgstr "Zitat (kurz)"
 #: lib/layouts/egs.layout:140 lib/layouts/scrlettr.layout:39
 #: lib/layouts/scrlttr2.layout:38 lib/layouts/stdlists.inc:82
 msgid "00.00.0000"
-msgstr ""
+msgstr "00.00.0000"
 
 #: lib/layouts/egs.layout:195 lib/layouts/linuxdoc.layout:208
 #: lib/layouts/manpage.layout:115 lib/layouts/stdlists.inc:62
 msgid "MM"
-msgstr ""
+msgstr "MM"
 
 #: lib/layouts/egs.layout:202 lib/layouts/stdlayouts.inc:45
 msgid "Verse"
@@ -6611,7 +6611,7 @@ msgstr "Häkchenliste"
 
 #: lib/layouts/foils.layout:97
 msgid "_/"
-msgstr ""
+msgstr "_/"
 
 #: lib/layouts/foils.layout:103
 msgid "CrossList"
@@ -6619,7 +6619,7 @@ msgstr "Kreuzliste"
 
 #: lib/layouts/foils.layout:118
 msgid "><"
-msgstr ""
+msgstr "><"
 
 #: lib/layouts/foils.layout:164
 msgid "My Logo"
@@ -7303,15 +7303,15 @@ msgstr "(MEHR)"
 
 #: lib/layouts/hollywood.layout:81 lib/layouts/hollywood.layout:93
 msgid "FADE IN:"
-msgstr ""
+msgstr "EINBLENDEN:"
 
 #: lib/layouts/hollywood.layout:102 lib/layouts/hollywood.layout:113
 msgid "INT."
-msgstr ""
+msgstr "INNEN"
 
 #: lib/layouts/hollywood.layout:117 lib/layouts/hollywood.layout:128
 msgid "EXT."
-msgstr ""
+msgstr "AUSSEN"
 
 #: lib/layouts/hollywood.layout:193
 msgid "Continuing"
@@ -7339,7 +7339,7 @@ msgstr ""
 
 #: lib/layouts/hollywood.layout:277 lib/layouts/hollywood.layout:289
 msgid "FADE OUT"
-msgstr ""
+msgstr "AUSBLENDEN"
 
 #: lib/layouts/hollywood.layout:294
 msgid "General"
@@ -7523,7 +7523,7 @@ msgstr "Dank:"
 
 #: lib/layouts/revtex4.layout:173
 msgid "Electronic Address:"
-msgstr ""
+msgstr "Elektronische Adresse:"
 
 #: lib/layouts/revtex4.layout:209
 msgid "acknowledgments"
@@ -7552,11 +7552,11 @@ msgstr ""
 
 #: lib/layouts/scrlettr.layout:59
 msgid "L"
-msgstr ""
+msgstr "L"
 
 #: lib/layouts/scrlettr.layout:72
 msgid "O"
-msgstr ""
+msgstr "O"
 
 #: lib/layouts/scrlettr.layout:91 lib/layouts/scrlttr2.layout:127
 msgid "PS"
@@ -7886,27 +7886,27 @@ msgstr "AGU-Journal:"
 
 #: lib/layouts/agu_stdtitle.inc:56
 msgid "Citation-number"
-msgstr ""
+msgstr "Zitat-Nummer"
 
 #: lib/layouts/agu_stdtitle.inc:59
 msgid "Citation-number:"
-msgstr ""
+msgstr "Zitat-Nummer:"
 
 #: lib/layouts/agu_stdtitle.inc:65
 msgid "AGU-volume"
-msgstr ""
+msgstr "AGU-Band"
 
 #: lib/layouts/agu_stdtitle.inc:68
 msgid "AGU-volume:"
-msgstr ""
+msgstr "AGU-Band:"
 
 #: lib/layouts/agu_stdtitle.inc:73
 msgid "AGU-issue"
-msgstr ""
+msgstr "AGU-Ausgabe"
 
 #: lib/layouts/agu_stdtitle.inc:76
 msgid "AGU-issue:"
-msgstr ""
+msgstr "AGU-Ausgabe:"
 
 #: lib/layouts/agu_stdtitle.inc:84
 msgid "Copyright:"
@@ -7938,11 +7938,11 @@ msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:136
 msgid "Supplementary"
-msgstr ""
+msgstr "Ergänzend"
 
 #: lib/layouts/agu_stdtitle.inc:140
 msgid "Supplementary..."
-msgstr ""
+msgstr "Ergänzend..."
 
 #: lib/layouts/agu_stdtitle.inc:149
 msgid "Supp-note"
@@ -7978,15 +7978,15 @@ msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:230
 msgid "Runhead"
-msgstr ""
+msgstr "Kolumnenkopf"
 
 #: lib/layouts/agu_stdtitle.inc:233
 msgid "Runhead:"
-msgstr ""
+msgstr "Kolumnenkopf:"
 
 #: lib/layouts/agu_stdtitle.inc:241
 msgid "Published-online:"
-msgstr ""
+msgstr "Online veröffentlicht:"
 
 #: lib/layouts/agu_stdtitle.inc:263 src/frontends/qt2/QCitation.C:50
 #: src/frontends/xforms/FormCitation.C:100
@@ -8007,11 +8007,11 @@ msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:279
 msgid "AGU-pages"
-msgstr ""
+msgstr "AGU-Seiten"
 
 #: lib/layouts/agu_stdtitle.inc:282
 msgid "AGU-pages:"
-msgstr ""
+msgstr "AGU-Seiten:"
 
 #: lib/layouts/agu_stdtitle.inc:287
 msgid "Words"
@@ -8051,7 +8051,7 @@ msgstr "CCC"
 
 #: lib/layouts/aguplus.inc:136
 msgid "CCC code:"
-msgstr ""
+msgstr "CCC-Code:"
 
 #: lib/layouts/aguplus.inc:145
 msgid "PaperId"
@@ -8107,7 +8107,7 @@ msgstr "EMail-Adresse:"
 
 #: lib/layouts/amsdefs.inc:195
 msgid "Key words and phrases:"
-msgstr ""
+msgstr "Schlüsselwörter und Ausdrücke:"
 
 #: lib/layouts/amsdefs.inc:206
 msgid "Dedicatory"
@@ -8479,7 +8479,7 @@ msgstr "Kopfnotiz"
 
 #: lib/layouts/svjour.inc:113
 msgid "Headnote (optional):"
-msgstr ""
+msgstr "Kopfnotiz (optional):"
 
 #: lib/layouts/svjour.inc:241
 msgid "Corr Author:"
@@ -11067,7 +11067,7 @@ msgstr "Dokument-Export wurde abgebrochen."
 #: src/exporter.C:227
 #, c-format
 msgid "Document exported as %1$sto file `%2$s'"
-msgstr ""
+msgstr "Dokument als %1$s in die Datei `%2$s' exportiert"
 
 #: src/format.C:229 src/format.C:263
 msgid "Cannot view file"
@@ -11921,7 +11921,7 @@ msgstr "mit Überschriften"
 msgid "fancy"
 msgstr "ausgefallen"
 
-#: src/frontends/qt2/QDocument.C:164 src/text.C:2207
+#: src/frontends/qt2/QDocument.C:164 src/text.C:2228
 msgid "OneHalf"
 msgstr "Eineinhalb"
 
@@ -12335,7 +12335,7 @@ msgstr "LyX: X11-Farbe %1$s ist bereitgestellt"
 #: src/frontends/xforms/ColorHandler.C:158
 #, c-format
 msgid "LyX: Couldn't allocate '%1$s' with (r,g,b)=%2$s.\n"
-msgstr ""
+msgstr "LyX: '%1$s' mit (r,g,b)=%2$s konnte nicht bereitgestellt werden.\n"
 
 #: src/frontends/xforms/ColorHandler.C:162
 #, c-format
@@ -12564,17 +12564,19 @@ msgstr " ``Text'' | ''Text'' | ,,Text`` | ,,Text'' | «Text» | »Text« "
 
 #: src/frontends/xforms/FormDocument.C:314
 msgid " Basic | Natbib author-year | Natbib numerical | Jurabib "
-msgstr ""
+msgstr " Einfach | Natbib Autor-Jahr | Natbib nummerisch | Jurabib "
 
 #: src/frontends/xforms/FormDocument.C:318
 msgid ""
 "Natbib is used often for natural sciences and arts\n"
 "Jurabib is more common in law and humanities"
 msgstr ""
+"Natbib wird oft für Naturwissenschaften und Künste verwendet\n"
+"Jurabib ist in den Rechts- und Humanwissenschaften üblicher"
 
 #: src/frontends/xforms/FormDocument.C:330
 msgid " Never | Automatically | Yes "
-msgstr ""
+msgstr " Nie | Automatisch | Ja "
 
 #: src/frontends/xforms/FormDocument.C:361
 msgid ""
@@ -13443,11 +13445,11 @@ msgstr "Das Verzeichnis existiert nicht."
 #: src/frontends/xforms/xforms_helpers.C:431
 #: src/frontends/xforms/xforms_helpers.C:494
 msgid "Cannot write to this directory."
-msgstr "In diesem Verzeichnis kann nicht geschrieben werden."
+msgstr "In dieses Verzeichnis kann nicht geschrieben werden."
 
 #: src/frontends/xforms/xforms_helpers.C:454
 msgid "Cannot read this directory."
-msgstr "Das Verzeichnis kann nicht gelesen werden."
+msgstr "Dieses Verzeichnis kann nicht gelesen werden."
 
 #: src/frontends/xforms/xforms_helpers.C:472
 #: src/frontends/xforms/xforms_helpers.C:517
@@ -13465,11 +13467,11 @@ msgstr "Es wird eine Datei benötigt, kein Verzeichnis."
 
 #: src/frontends/xforms/xforms_helpers.C:504
 msgid "Cannot write to this file."
-msgstr "Die Datei kann nicht geschrieben werden."
+msgstr "In diese Datei kann nicht geschrieben werden."
 
 #: src/frontends/xforms/xforms_helpers.C:539
 msgid "Cannot read from this directory."
-msgstr "Das Verzeichnis kann nicht gelesen werden."
+msgstr "Aus diesem Verzeichnis kann nicht gelesen werden."
 
 #: src/frontends/xforms/xforms_helpers.C:549
 msgid "File does not exist."
@@ -13477,7 +13479,7 @@ msgstr "Die Datei existiert nicht."
 
 #: src/frontends/xforms/xforms_helpers.C:554
 msgid "Cannot read from this file."
-msgstr "Die Datei kann nicht gelesen werden."
+msgstr "Diese Datei kann nicht gelesen werden."
 
 #: src/importer.C:44
 #, c-format
@@ -13653,6 +13655,9 @@ msgid ""
 "has textclass `%2$s'\n"
 "while parent file has textclass `%3$s'."
 msgstr ""
+"Die eingebundene Datei `%1$s'\n"
+"hat die Textklasse `%2$s'\n"
+"während die Hauptdatei die Textklasse `%3$s' hat."
 
 #: src/insets/insetinclude.C:372
 msgid "Different textclasses"
@@ -13704,7 +13709,7 @@ msgstr "Gleichung"
 
 #: src/insets/insetref.C:143 src/mathed/ref_inset.C:161
 msgid "EqRef: "
-msgstr ""
+msgstr "Gleichung: "
 
 #: src/insets/insetref.C:144 src/mathed/ref_inset.C:162
 msgid "Page Number"
@@ -13845,7 +13850,7 @@ msgstr "Die Vorschau ist fehlgeschlagen"
 #: src/ispell.C:206 src/ispell.C:213 src/ispell.C:222
 msgid "Can't create pipe for spellchecker."
 msgstr ""
-"Es kann keine Weiterleitung für die Rechtschreibprüfung erzeugt werden."
+"Die Weiterleitung für die Rechtschreibprüfung kann nicht erzeugt werden."
 
 #: src/ispell.C:227 src/ispell.C:232 src/ispell.C:237
 msgid "Can't open pipe for spellchecker."
@@ -14077,6 +14082,9 @@ msgid ""
 "%1$s.\n"
 "Please check your installation."
 msgstr ""
+"Fehler beim Lesen der Konfigurationsdatei\n"
+"%1$s.\n"
+"Bitte prüfen Sie Ihre Installation."
 
 #: src/lyx_main.C:124
 msgid "LyX: reconfiguring user directory"
@@ -14334,6 +14342,8 @@ msgid ""
 "Could not print the document %1$s.\n"
 "Check that your printer is set up correctly."
 msgstr ""
+"Das Dokument %1$s konnte nicht gedruckt werden.\n"
+"Prüfen Sie, ob Ihr Drucker korrekt konfiguriert ist."
 
 #: src/lyxfunc.C:673
 msgid "Print document failed"
@@ -14404,11 +14414,11 @@ msgstr ""
 
 #: src/lyxfunc.C:1485
 msgid "Document defaults saved in "
-msgstr ""
+msgstr "Dokument-Standardeinstellungen gespeichert in "
 
 #: src/lyxfunc.C:1488
 msgid "Unable to save document defaults"
-msgstr ""
+msgstr "Die Dokument-Standardeinstellungen können nicht gespeichert werden"
 
 #: src/lyxfunc.C:1542
 msgid "Converting document to new document class..."
@@ -14416,7 +14426,7 @@ msgstr "Das Dokument wird an die neue Dokumentklasse angepasst..."
 
 #: src/lyxfunc.C:1553
 msgid "Class switch"
-msgstr ""
+msgstr "Klassenwechsel"
 
 #: src/lyxfunc.C:1706
 msgid "Select template file"
@@ -14522,6 +14532,8 @@ msgid ""
 "Define the options of bibtex (cf. man bibtex) or select an alternative "
 "compiler (e.g. mlbibtex or bibulus)."
 msgstr ""
+"Definieren Sie die Optionen von BibTeX (vgl. man bibtex) oder wählen Sie "
+"einen alternativen Übersetzer (z.B. mlbibtex oder bibulus)."
 
 #: src/lyxrc.C:2109
 msgid ""
@@ -14612,6 +14624,9 @@ msgid ""
 "compiler. E.g., using xindy/make-rules, the command string would be "
 "\"makeindex.sh -m $$lang\"."
 msgstr ""
+"Definieren Sie die Optionen von makeindex (vgl. man makeindex) oder wählen "
+"Sie einen alternativen Übersetzer. Bei der Verwendung von xindy/make-rules "
+"würde der Befehl z.B. \"makeindex.sh -m $$lang\" lauten."
 
 #: src/lyxrc.C:2186
 msgid ""
@@ -15003,6 +15018,10 @@ msgid ""
 "\n"
 "Do you want to revert to the saved version?"
 msgstr ""
+"Bei der Rückkehr zur gespeicherten Version des Dokuments %1$s gehen alle "
+"aktuellen Änderungen verloren.\n"
+"\n"
+"Möchten Sie zur gespeicherten Version zurückkehren?"
 
 #: src/lyxvc.C:167
 msgid "Revert to stored version of document?"
@@ -15017,12 +15036,12 @@ msgstr " Makro: %1$s: "
 #: src/mathed/math_splitinset.C:73 src/mathed/math_substackinset.C:69
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
-msgstr ""
+msgstr "Es können keine vertikalen Gitterlinien in '%1$s' hinzugefügt werden."
 
 #: src/mathed/math_casesinset.C:93
 #, c-format
 msgid "No vertical grid lines in '%1$s'"
-msgstr ""
+msgstr "Keine vertikalen Gitterlinien in '%1$s'"
 
 #: src/mathed/math_gridinset.C:1300
 msgid "Only one row"
@@ -15034,16 +15053,16 @@ msgstr "Nur eine Spalte"
 
 #: src/mathed/math_gridinset.C:1314
 msgid "No hline to delete"
-msgstr ""
+msgstr "Keine horizontale Linie zu löschen"
 
 #: src/mathed/math_gridinset.C:1323
 msgid "No vline to delete"
-msgstr ""
+msgstr "Keine vertikale Linie zu löschen"
 
 #: src/mathed/math_gridinset.C:1341
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
-msgstr ""
+msgstr "Unbekanntes Tabellenmerkmal '%1$s'"
 
 #: src/mathed/math_hullinset.C:1026 src/mathed/math_hullinset.C:1035
 msgid "No number"
@@ -15056,17 +15075,17 @@ msgstr "Nummer"
 #: src/mathed/math_hullinset.C:1150
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
-msgstr ""
+msgstr "Die Anzahl der Zeilen in '%1$s' kann nicht geändert werden"
 
 #: src/mathed/math_hullinset.C:1160
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
-msgstr ""
+msgstr "Die Anzahl der Spalten in '%1$s' kann nicht geändert werden"
 
 #: src/mathed/math_hullinset.C:1170
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
-msgstr ""
+msgstr "Es können keine horizontalen Gitterlinien in '%1$s' hinzugefügt werden"
 
 #: src/mathed/math_hullinset.C:1273 src/text3.C:170
 msgid "Math editor mode"
@@ -15074,11 +15093,11 @@ msgstr "Mathe-Editor-Modus"
 
 #: src/mathed/math_nestinset.C:792
 msgid "create new math text environment ($...$)"
-msgstr ""
+msgstr "Neue Mathe-Textumgebung erzeugen ($...$)"
 
 #: src/mathed/math_nestinset.C:795
 msgid "entered math text mode (textrm)"
-msgstr ""
+msgstr "Mathe-Textmodus betreten (textrm)"
 
 #: src/output.C:34
 #, c-format
@@ -15172,6 +15191,8 @@ msgid ""
 "Layout '%1$s' does not exist in textclass '%2$s'\n"
 "Trying to use the default instead.\n"
 msgstr ""
+"Das Format '%1$s' existiert in der Textklasse '%2$s' nicht\n"
+"Es wird versucht, stattdessen das Standardformat zu verwenden.\n"
 
 #: src/text.C:213
 msgid "Unknown Inset"
@@ -15181,7 +15202,7 @@ msgstr "Unbekannte Einfügung"
 msgid "Unknown token"
 msgstr "Unbekanntes Token"
 
-#: src/text.C:1166
+#: src/text.C:1173
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
@@ -15189,57 +15210,57 @@ msgstr ""
 "Sie können am Anfang eines Absatzes kein Leerzeichen einfügen. Bitte lesen "
 "Sie das Tutorium."
 
-#: src/text.C:1178
+#: src/text.C:1185
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Sie können zwei Leerzeichen nicht auf diese Weise eingeben. Bitte lesen Sie "
 "das Tutorium."
 
-#: src/text.C:2173
+#: src/text.C:2194
 msgid "Change: "
 msgstr "Änderung: "
 
-#: src/text.C:2177
+#: src/text.C:2198
 msgid " at "
 msgstr " am "
 
-#: src/text.C:2188
+#: src/text.C:2209
 #, c-format
 msgid "Font: %1$s"
 msgstr "Schrift: %1$s"
 
-#: src/text.C:2195
+#: src/text.C:2216
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Tiefe: %1$d"
 
-#: src/text.C:2201
+#: src/text.C:2222
 msgid ", Spacing: "
 msgstr ", Abstand: "
 
-#: src/text.C:2213
+#: src/text.C:2234
 msgid "Other ("
 msgstr "Andere ("
 
-#: src/text.C:2222
+#: src/text.C:2243
 msgid ", Inset: "
 msgstr ", Einfügung: "
 
-#: src/text.C:2223
+#: src/text.C:2244
 msgid ", Paragraph: "
 msgstr ", Absatz: "
 
-#: src/text.C:2224
+#: src/text.C:2245
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/text.C:2225
+#: src/text.C:2246
 msgid ", Position: "
 msgstr ", Position: "
 
-#: src/text.C:2226
+#: src/text.C:2247
 msgid ", Boundary: "
-msgstr ""
+msgstr ", Grenze: "
 
 #: src/text2.C:534
 msgid ""
@@ -15255,7 +15276,7 @@ msgstr "Nichts zu indizieren!"
 
 #: src/text2.C:578
 msgid "Cannot index more than one paragraph!"
-msgstr "Es ist nicht möglich, mehr als einen Absatz zu indizieren!"
+msgstr "Es kann nicht mehr als ein Absatz indiziert werden!"
 
 #: src/text3.C:735
 msgid "Unknown spacing argument: "
@@ -15277,7 +15298,7 @@ msgstr " unbekannt"
 msgid "Character set"
 msgstr "Zeichensatz"
 
-#: src/text3.C:1511
+#: src/text3.C:1510
 msgid "Paragraph layout set"
 msgstr "Absatzformat festgelegt"
 
