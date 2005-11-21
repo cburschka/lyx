@@ -1557,7 +1557,7 @@ def convert_frameless_box(file):
             ert = ert + '\\let\\endminipage\\endlyxtolyxminipage%\n'
 
             old_i = i
-            i = insert_ert(file.body, i, 'Collapsed', ert, file.format + 1)
+            i = insert_ert(file.body, i, 'Collapsed', ert, file.format - 1)
             j = j + i - old_i - 1
 
             file.body[i:i] = ['\\begin_inset Minipage',
@@ -1578,7 +1578,7 @@ def convert_frameless_box(file):
             ert = '\\let\\minipage\\lyxtolyxrealminipage%\n'
             ert = ert + '\\let\\endminipage\\lyxtolyxrealendminipage%'
             old_i = i
-            i = insert_ert(file.body, i, 'Collapsed', ert, file.format + 1)
+            i = insert_ert(file.body, i, 'Collapsed', ert, file.format - 1)
             j = j + i - old_i - 1
 
             # Redefine the minipage end before the inset end.
@@ -1586,7 +1586,7 @@ def convert_frameless_box(file):
             file.body[j:j] = ['\\layout Standard', '', '']
             j = j + 2
             ert = '\\let\\endminipage\\endlyxtolyxminipage'
-            j = insert_ert(file.body, j, 'Collapsed', ert, file.format + 1)
+            j = insert_ert(file.body, j, 'Collapsed', ert, file.format - 1)
 	    j = j + 1
             file.body.insert(j, '')
 	    j = j + 1
@@ -1597,7 +1597,7 @@ def convert_frameless_box(file):
                 ert = '}%\n'
             else:
                 ert = '\\end{lyxtolyxrealminipage}%\n'
-            j = insert_ert(file.body, j, 'Collapsed', ert, file.format + 1)
+            j = insert_ert(file.body, j, 'Collapsed', ert, file.format - 1)
 
             # We don't need to restore the original minipage after the inset
             # end because the scope of the redefinition is the original box.
