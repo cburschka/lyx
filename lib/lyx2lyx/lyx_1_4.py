@@ -1557,7 +1557,7 @@ def convert_frameless_box(file):
             ert = ert + '\\let\\endminipage\\endlyxtolyxminipage%\n'
 
             old_i = i
-            i = insert_ert(file.body, i, 'Collapsed', ert, file.format + 1)
+            i = insert_ert(file.body, i, 'Collapsed', ert, file.format - 1)
             j = j + i - old_i - 1
 
             file.body[i:i] = ['\\begin_inset Minipage',
@@ -1578,7 +1578,7 @@ def convert_frameless_box(file):
             ert = '\\let\\minipage\\lyxtolyxrealminipage%\n'
             ert = ert + '\\let\\endminipage\\lyxtolyxrealendminipage%'
             old_i = i
-            i = insert_ert(file.body, i, 'Collapsed', ert, file.format + 1)
+            i = insert_ert(file.body, i, 'Collapsed', ert, file.format - 1)
             j = j + i - old_i - 1
 
             # Redefine the minipage end before the inset end.
@@ -1586,7 +1586,7 @@ def convert_frameless_box(file):
             file.body[j:j] = ['\\layout Standard', '', '']
             j = j + 2
             ert = '\\let\\endminipage\\endlyxtolyxminipage'
-            j = insert_ert(file.body, j, 'Collapsed', ert, file.format + 1)
+            j = insert_ert(file.body, j, 'Collapsed', ert, file.format - 1)
 	    j = j + 1
             file.body.insert(j, '')
 	    j = j + 1
@@ -1597,7 +1597,7 @@ def convert_frameless_box(file):
                 ert = '}%\n'
             else:
                 ert = '\\end{lyxtolyxrealminipage}%\n'
-            j = insert_ert(file.body, j, 'Collapsed', ert, file.format + 1)
+            j = insert_ert(file.body, j, 'Collapsed', ert, file.format - 1)
 
             # We don't need to restore the original minipage after the inset
             # end because the scope of the redefinition is the original box.
@@ -2258,6 +2258,13 @@ def remove_paperpackage(file):
         file.header[i] = "\\papersize default"
 
 
+def remove_quotestimes(file):
+    i = find_token(file.header, '\\quotes_times', 0)
+    if i == -1:
+        return
+    del file.header[i]
+
+
 ##
 # Convertion hub
 #
@@ -2286,9 +2293,11 @@ convert = [[222, [insert_tracking_changes, add_end_header]],
            [241, [convert_ert_paragraphs]],
            [242, [convert_french]],
            [243, [remove_paperpackage]],
-	   [244, [rename_spaces]]]
+	   [244, [rename_spaces]],
+	   [245, [remove_quotestimes]]]
 
-revert =  [[243, [revert_space_names]],
+revert =  [[244, []],
+	   [243, [revert_space_names]],
 	   [242, []],
            [241, []],
            [240, [revert_ert_paragraphs]],

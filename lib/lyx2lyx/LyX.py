@@ -46,7 +46,7 @@ format_relation = [("0_10",  [210], ["0.10.7","0.10"]),
                    ("1_1_6fix3", [218], ["1.1.6fix3","1.1.6fix4","1.1"]),
                    ("1_2", [220], ["1.2.0","1.2.1","1.2.3","1.2.4","1.2"]),
                    ("1_3", [221], ["1.3.0","1.3.1","1.3.2","1.3.3","1.3.4","1.3.5","1.3.6","1.3"]),
-                   ("1_4", range(222,245), ["1.4.0cvs","1.4"])]
+                   ("1_4", range(222,246), ["1.4.0cvs","1.4"])]
 
 
 def formats_list():
@@ -481,7 +481,6 @@ class NewFile(LyX_Base):
             "\\paragraph_separation indent",
             "\\defskip medskip",
             "\\quotes_language english",
-            "\\quotes_times 2",
             "\\papercolumns 1",
             "\\papersides 1",
             "\\paperpagestyle default",
