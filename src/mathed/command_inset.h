@@ -28,6 +28,8 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
+	InsetBase * editXY(LCursor &, int, int);
+	///
 	void write(WriteStream & os) const;
 	//
 	// void infoize(std::ostream & os) const;

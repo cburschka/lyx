@@ -55,7 +55,10 @@ public:
 	///
 	static std::string const & getName(int type);
 protected:
+	///
 	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
+	///
+	bool getStatus(LCursor &, FuncRequest const &, FuncStatus &) const;
 private:
 	///
 	virtual std::auto_ptr<InsetBase> doClone() const;

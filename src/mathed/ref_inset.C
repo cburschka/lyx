@@ -18,6 +18,7 @@
 #include "cursor.h"
 #include "debug.h"
 #include "funcrequest.h"
+#include "FuncStatus.h"
 #include "gettext.h"
 #include "math_data.h"
 #include "math_factory.h"
@@ -70,6 +71,14 @@ void RefInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		cur.undispatched();
 		break;
 
+	case LFUN_INSET_DIALOG_UPDATE: {
+		string const data = createDialogStr("ref");
+		if (cur.bv().owner()->getDialogs().visible("ref"))
+			cur.bv().owner()->getDialogs().update("ref", data);
+		break;
+	}
+
+	case LFUN_INSET_DIALOG_SHOW:
 	case LFUN_MOUSE_RELEASE:
 		if (cmd.button() == mouse_button::button3) {
 			lyxerr << "trying to goto ref '" << asString(cell(0)) << "'" << endl;
@@ -93,6 +102,25 @@ void RefInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	default:
 		CommandInset::doDispatch(cur, cmd);
 		break;
+	}
+}
+
+
+bool RefInset::getStatus(LCursor & cur, FuncRequest const & cmd,
+                         FuncStatus & status) const
+{
+	switch (cmd.action) {
+	// we handle these
+	case LFUN_INSET_MODIFY:
+	case LFUN_INSET_DIALOG_UPDATE:
+	case LFUN_INSET_DIALOG_SHOW:
+	case LFUN_MOUSE_RELEASE:
+	case LFUN_MOUSE_PRESS:
+	case LFUN_MOUSE_MOTION:
+		status.enabled(true);
+		return true;
+	default:
+		return CommandInset::getStatus(cur, cmd, status);
 	}
 }
 

@@ -1,3 +1,17 @@
+2005-11-15  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* command_inset.[Ch] (editXY): implement, since MathNestInset::editXY
+	loops through the cells and that is not possible here because they are
+	not visible
+	* math_hullinset.C (getStatus): allow reference and label in
+	LFUN_INSET_INSERT
+	* math_hullinset.C (doDispatch): create ref inset in LFUN_INSET_INSERT
+	* math_nestinset.C (doDispatch): allow references
+	* math_nestinset.C (doDispatch): remove never reached code for
+	LFUN_INSET_APPLY
+	* ref_inset.[Ch] (getStatus): implement, otherwise we'll trigger an
+	assertion in LyXFunc::getStatus
+
 2005-11-08  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* math_parser.C (delEmptyLastRow): Don't delete the dummy row, but

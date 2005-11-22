@@ -30,6 +30,7 @@
 #include "math_symbolinset.h"
 #include "math_support.h"
 #include "math_unknowninset.h"
+#include "ref_inset.h"
 
 #include "BufferView.h"
 #include "CutAndPaste.h"
@@ -56,7 +57,6 @@
 using lyx::cap::copySelection;
 using lyx::cap::grabAndEraseSelection;
 using lyx::cap::cutSelection;
-using lyx::cap::pasteSelection;
 using lyx::cap::replaceSelection;
 using lyx::cap::selClearOrDel;
 
@@ -885,31 +885,11 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_DIALOG_SHOW_NEW_INSET: {
 		string const & name = cmd.argument;
 		string data;
-#if 0
 		if (name == "ref") {
 			RefInset tmp(name);
 			data = tmp.createDialogStr(name);
 		}
-#endif
 		cur.bv().owner()->getDialogs().show(name, data, 0);
-		break;
-	}
-
-	case LFUN_INSET_APPLY: {
-		string const name = cmd.getArg(0);
-		InsetBase * base = cur.bv().owner()->getDialogs().getOpenInset(name);
-
-		if (base) {
-			FuncRequest fr(LFUN_INSET_MODIFY, cmd.argument);
-			base->dispatch(cur, fr);
-			break;
-		}
-		MathArray ar;
-		if (createMathInset_fromDialogStr(cmd.argument, ar)) {
-			cur.insert(ar);
-			break;
-		}
-		cur.undispatched();
 		break;
 	}
 

@@ -14,6 +14,7 @@
 #include "math_colorinset.h"
 #include "math_data.h"
 #include "math_extern.h"
+#include "math_factory.h"
 #include "math_hullinset.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
@@ -1075,7 +1076,14 @@ void MathHullInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 				cur.bv().buffer()->changeRefsIfUnique(old, str);
 				label(r, str);
 			}
+			break;
 		}
+		MathArray ar;
+		if (createMathInset_fromDialogStr(cmd.argument, ar)) {
+			recordUndo(cur);
+			cur.insert(ar);
+		} else
+			cur.undispatched();
 		break;
 	}
 
@@ -1138,6 +1146,15 @@ bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_INSERT_LABEL:
 		status.enabled(type_ != "simple");
 		return true;
+	case LFUN_INSET_INSERT: {
+		// Don't test createMathInset_fromDialogStr(), since
+		// getStatus is not called with a valid reference and the
+		// dialog would not be applyable.
+		string const name = cmd.getArg(0);
+		status.enabled(name == "ref" ||
+		               (name == "label" && type_ != "simple"));
+		break;
+	}
 	case LFUN_TABULAR_FEATURE: {
 		istringstream is(cmd.argument);
 		string s;
