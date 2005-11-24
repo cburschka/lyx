@@ -1,3 +1,10 @@
+2005-11-17  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* dociterator.[Ch]: new member realInset() that returns the cell
+	for tabulars and the inset for the rest (bug 1952).
+	* undo.C (textUndoOrRedo): use realInset when resetting insetOwner
+	(bug 1952).
+
 2005-11-15  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* text.C (leftMargin): honor the NextNoIndent tag in layouts.

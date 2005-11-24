@@ -187,10 +187,10 @@ bool textUndoOrRedo(BufferView & bv,
 
 		// this ugly stuff is needed until we get rid of the
 		// inset_owner backpointer
-		ParagraphList::const_iterator pit = undo.pars.begin();
-		ParagraphList::const_iterator end = undo.pars.end();
+		ParagraphList::iterator pit = undo.pars.begin();
+		ParagraphList::iterator const end = undo.pars.end();
 		for (; pit != end; ++pit)
-			const_cast<Paragraph &>(*pit).setInsetOwner(&dit.inset());
+			pit->setInsetOwner(dit.realInset());
 		plist.insert(first, undo.pars.begin(), undo.pars.end());
 	}
 

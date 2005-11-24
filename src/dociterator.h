@@ -164,6 +164,8 @@ public:
 	LyXText * text();
 	///
 	LyXText const * text() const;
+	/// the containing inset or the cell, respectively
+	InsetBase * realInset() const;
 	///
 	InsetBase * innerInsetOfType(int code) const;
 	///

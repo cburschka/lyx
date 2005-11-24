@@ -20,6 +20,7 @@
 
 #include "mathed/math_data.h"
 #include "mathed/math_inset.h"
+#include "insets/insettabular.h"
 
 #include <boost/assert.hpp>
 #include <boost/current_function.hpp>
@@ -87,6 +88,18 @@ InsetBase const * DocIterator::prevInset() const
 	if (inMathed())
 		return prevAtom().nucleus();
 	return paragraph().isInset(pos() - 1) ? paragraph().getInset(pos() - 1) : 0;
+}
+
+
+InsetBase * DocIterator::realInset() const
+{
+	BOOST_ASSERT(inTexted());
+	// if we are in a tabular, we need the cell
+	if (inset().lyxCode() == InsetBase::TABULAR_CODE) {
+		InsetTabular & tabular = static_cast<InsetTabular&>(inset());
+		return tabular.cell(idx()).get();
+	}
+	return &inset();
 }
 
 
