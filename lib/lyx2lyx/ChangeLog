@@ -1,3 +1,8 @@
+2005-11-24  José Matos  <jamatos@lyx.org>
+
+	* lyx_1_0_0.py (obsolete_latex_title): "LaTeX Title" -> "Title"
+	* (update_tabular): update from tabular format 3 to 4 if necessary.
+
 2005-11-20  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* lyx_1_4.py (convert_frameless_box): fix file format argument of
