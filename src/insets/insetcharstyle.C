@@ -316,6 +316,13 @@ int InsetCharStyle::plaintext(Buffer const & buf, ostream & os,
 }
 
 
+int InsetCharStyle::textString(Buffer const & buf, ostream & os,
+		       OutputParams const & op) const
+{
+	return plaintext(buf, os, op);
+}
+
+
 void InsetCharStyle::validate(LaTeXFeatures & features) const
 {
 	// Force inclusion of preamble snippet in layout file

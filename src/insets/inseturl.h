@@ -46,6 +46,9 @@ public:
 	///
 	int docbook(Buffer const &, std::ostream &,
 		    OutputParams const &) const;
+	/// the string that is passed to the TOC
+	virtual int textString(Buffer const &, std::ostream & os,
+		OutputParams const &) const;
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const {
 		return std::auto_ptr<InsetBase>(new InsetUrl(params()));

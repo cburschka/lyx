@@ -1598,7 +1598,7 @@ string const Paragraph::asString(Buffer const & buffer,
 		if (IsPrintable(c))
 			os << c;
 		else if (c == META_INSET)
-			getInset(i)->plaintext(buffer, os, runparams);
+			getInset(i)->textString(buffer, os, runparams);
 	}
 
 	return os.str();

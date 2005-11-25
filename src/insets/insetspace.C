@@ -254,6 +254,13 @@ int InsetSpace::docbook(Buffer const &, ostream & os,
 }
 
 
+int InsetSpace::textString(Buffer const & buf, ostream & os,
+		       OutputParams const & op) const
+{
+	return plaintext(buf, os, op);
+}
+
+
 auto_ptr<InsetBase> InsetSpace::doClone() const
 {
 	return auto_ptr<InsetBase>(new InsetSpace(kind_));

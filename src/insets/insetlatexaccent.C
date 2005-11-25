@@ -601,6 +601,13 @@ int InsetLatexAccent::docbook(Buffer const &, ostream & os,
 }
 
 
+int InsetLatexAccent::textString(Buffer const & buf, ostream & os,
+		       OutputParams const & op) const
+{
+	return plaintext(buf, os, op);
+}
+
+
 bool InsetLatexAccent::directWrite() const
 {
 	return true;

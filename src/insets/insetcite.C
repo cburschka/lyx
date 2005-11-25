@@ -353,6 +353,13 @@ int InsetCitation::docbook(Buffer const &, ostream & os, OutputParams const &) c
 }
 
 
+int InsetCitation::textString(Buffer const & buf, ostream & os,
+		       OutputParams const & op) const
+{
+	return plaintext(buf, os, op);
+}
+
+
 // Have to overwrite the default InsetCommand method in order to check that
 // the \cite command is valid. Eg, the user has natbib enabled, inputs some
 // citations and then changes his mind, turning natbib support off. The output

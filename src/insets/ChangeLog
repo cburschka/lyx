@@ -1,3 +1,15 @@
+2005-11-25  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* insetbase.h: 
+	* insetcharstyle.[Ch]:
+	* insetcite.[Ch]:
+	* insetlatexaccent.[Ch]:
+	* insetquotes.[Ch]:
+	* insetref.[Ch]:
+	* insetspace.[Ch]:
+	* insetspecialchar.[Ch]:
+	* inseturl.[Ch]: new method textString (fix bug 2089)
+
 2005-11-18  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* insetbibtex.C (latex): copy .bib files to the master buffer temp dir

@@ -72,6 +72,9 @@ public:
 	///
 	int docbook(Buffer const &, std::ostream &,
 		    OutputParams const &) const;
+	/// the string that is passed to the TOC
+	virtual int textString(Buffer const &, std::ostream & os,
+		OutputParams const &) const;
 	///
 	InsetBase::Code lyxCode() const { return InsetBase::SPACE_CODE; }
 	/// We don't need \begin_inset and \end_inset

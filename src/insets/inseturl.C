@@ -100,6 +100,13 @@ int InsetUrl::docbook(Buffer const &, ostream & os,
 }
 
 
+int InsetUrl::textString(Buffer const & buf, ostream & os,
+		       OutputParams const & op) const
+{
+	return plaintext(buf, os, op);
+}
+
+
 void InsetUrl::validate(LaTeXFeatures & features) const
 {
 	features.require("url");

@@ -127,6 +127,13 @@ int InsetRef::docbook(Buffer const & buf, ostream & os,
 }
 
 
+int InsetRef::textString(Buffer const & buf, ostream & os,
+		       OutputParams const & op) const
+{
+	return plaintext(buf, os, op);
+}
+
+
 void InsetRef::validate(LaTeXFeatures & features) const
 {
 	if (getCmdName() == "vref" || getCmdName() == "vpageref")

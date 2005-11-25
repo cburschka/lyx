@@ -191,6 +191,9 @@ public:
 	/// docbook output
 	virtual int docbook(Buffer const &, std::ostream & os,
 		OutputParams const &) const;
+	/// the string that is passed to the TOC
+	virtual int textString(Buffer const &, std::ostream &,
+		OutputParams const &) const { return 0; };
 
 	/** This enum indicates by which means the inset can be modified:
 	- NOT_EDITABLE: the inset's content can not be modified at all 

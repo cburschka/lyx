@@ -330,6 +330,13 @@ int InsetQuotes::docbook(Buffer const &, ostream & os,
 }
 
 
+int InsetQuotes::textString(Buffer const & buf, ostream & os,
+		       OutputParams const & op) const
+{
+	return plaintext(buf, os, op);
+}
+
+
 void InsetQuotes::validate(LaTeXFeatures & features) const
 {
 	bool const use_babel = features.useBabel();

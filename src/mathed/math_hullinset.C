@@ -1473,3 +1473,10 @@ int MathHullInset::docbook(Buffer const & buf, ostream & os,
 	ms << ETag(name.c_str());
 	return ms.line() + res;
 }
+
+
+int MathHullInset::textString(Buffer const & buf, ostream & os,
+		       OutputParams const & op) const
+{
+	return plaintext(buf, os, op);
+}

@@ -57,6 +57,9 @@ public:
 	///
 	int docbook(Buffer const &, std::ostream &,
 		    OutputParams const &) const;
+	/// the string that is passed to the TOC
+	virtual int textString(Buffer const &, std::ostream & os,
+		OutputParams const &) const;
 	///
 	bool directWrite() const;
 	///
