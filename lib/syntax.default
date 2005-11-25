@@ -364,6 +364,7 @@ $$
 % support it, but only the "\mbox{" and the "}" need to be in TeX mode.
 
 \abstractname
+\Acrobatmenu{}{}         % from the hyperref package
 \addcontentsline{}{}{translate}
 \address{}
 \addtime{}
@@ -449,6 +450,10 @@ $$
 \href{}{translate}       % from the hyperref package
 \hspace{}
 \hspace*{}
+\hyperdef{}{}{translate} % from the hyperref package
+\hyperlink{}{translate}  % from the hyperref package
+\hyperref{}{}{translate} % from the hyperref package
+\hypertarget{}{translate} % from the hyperref package
 \hyphenation{}
 \iflanguage{}{}{}
 \ifthenelse
@@ -540,6 +545,8 @@ $$
 \part[]{}
 \part*{}
 \partname
+\pdfbookmark[]{}{}       % from the hyperref package
+\pdfstringdef{}{}        % from the hyperref package
 \poptabs
 \prefacename
 \printindex
@@ -618,6 +625,7 @@ $$
 \tableofcontents
 \tabularnewline[]
 \telephone{translate}
+\texorpdfstring{}{}      % from the hyperref package
 \textcircled{translate}
 \textcolor[]{,,}{translate}
 %\textcolor{}{}      % reLyX doesn't care about this version
@@ -687,6 +695,7 @@ titlepage
 \begin{environments}
 bibunit[]{translate}
 psmatrix[]{}
+thebibliography{}
 \end{environments}
 
 % Environments that start math mode.
