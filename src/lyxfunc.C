@@ -411,10 +411,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		enable = cmd.argument == "custom"
 			|| Exporter::IsExportable(*buf, cmd.argument);
 		break;
-	case LFUN_CUT:
-	case LFUN_COPY:
-		enable = cur.selection();
-		break;
 
 	case LFUN_RUNCHKTEX:
 		enable = buf->isLatex() && lyxrc.chktex_command != "none";

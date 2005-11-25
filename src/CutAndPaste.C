@@ -472,6 +472,12 @@ std::vector<string> const availableSelections(Buffer const & buffer)
 }
 
 
+lyx::size_type numberOfSelections()
+{
+	return theCuts.size();
+}
+
+
 void cutSelection(LCursor & cur, bool doclear, bool realcut)
 {
 	// This doesn't make sense, if there is no selection

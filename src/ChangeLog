@@ -1,3 +1,12 @@
+2005-11-24  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* CutAndPaste.C (numberOfSelections): new helper function.
+
+	* lyxfunc.C (getStatus): remove support for LFUN_COPY and LFUN_CUT.
+
+	* text3.C (getStatus): move code for LFUN_CUT and LFUN_COPY from
+	LyXFunc::getStatus; implement LFUN_PASTE.
+
 2005-11-17  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* dociterator.[Ch]: new member realInset() that returns the cell

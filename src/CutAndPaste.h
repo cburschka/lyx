@@ -32,6 +32,8 @@ namespace cap {
 ///
 std::vector<std::string> const availableSelections(Buffer const & buffer);
 ///
+lyx::size_type numberOfSelections();
+///
 std::string getSelection(Buffer const & buffer, size_t sel_index);
 
 ///

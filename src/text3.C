@@ -1765,6 +1765,15 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 		flag.setOnOff(font.family() == LyXFont::TYPEWRITER_FAMILY);
 		return true;
 
+	case LFUN_CUT:
+	case LFUN_COPY:
+		enable = cur.selection();
+		break;
+
+	case LFUN_PASTE:
+		enable = lyx::cap::numberOfSelections() > 0;
+		break;
+
 	case LFUN_DELETE_WORD_FORWARD:
 	case LFUN_DELETE_WORD_BACKWARD:
 	case LFUN_DELETE_LINE_FORWARD:
@@ -1808,9 +1817,6 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_LOWCASE_WORD:
 	case LFUN_CAPITALIZE_WORD:
 	case LFUN_TRANSPOSE_CHARS:
-	case LFUN_PASTE:
-	case LFUN_CUT:
-	case LFUN_COPY:
 	case LFUN_GETXY:
 	case LFUN_SETXY:
 	case LFUN_GETFONT:
