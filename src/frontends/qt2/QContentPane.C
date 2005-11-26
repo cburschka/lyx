@@ -75,6 +75,8 @@ mouse_button::state q_motion_state(Qt::ButtonState state)
 } // namespace anon
 
 
+// This is a 'heartbeat' generating synthetic mouse move events when the
+// cursor is at the top or bottom edge of the viewport. One scroll per 0.2 s
 SyntheticMouseEvent::SyntheticMouseEvent()
 	: timeout(200), restart_timeout(true),
 	  x_old(-1), y_old(-1), scrollbar_value_old(-1.0)
@@ -195,11 +197,18 @@ void QContentPane::mouseReleaseEvent(QMouseEvent * e)
 
 void QContentPane::mouseMoveEvent(QMouseEvent * e)
 {
-	FuncRequest const cmd(LFUN_MOUSE_MOTION, e->x(), e->y(),
+	FuncRequest cmd(LFUN_MOUSE_MOTION, e->x(), e->y(),
 			      q_motion_state(e->state()));
 
 	// If we're above or below the work area...
-	if (e->y() <= 0 || e->y() >= height()) {
+	if (e->y() <= 20 || e->y() >= height() - 20) {
+		// Make sure only a synthetic event can cause a page scroll,
+		// so they come at a steady rate:
+		if (e->y() <= 20)
+			// _Force_ a scroll up:
+			cmd.y = -40;
+		else
+			cmd.y = height();
 		// Store the event, to be handled when the timeout expires.
 		synthetic_mouse_event_.cmd = cmd;
 
