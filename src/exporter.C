@@ -224,7 +224,7 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 			status = copyFile(format, tmp_result_file,
 			                  result_file, result_file,
 			                  status == FORCE);
-			buffer->message(bformat(_("Document exported as %1$s"
+			buffer->message(bformat(_("Document exported as %1$s "
 			                          "to file `%2$s'"),
 			                        formats.prettyName(format),
 			                        MakeDisplayPath(result_file)));
