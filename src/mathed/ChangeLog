@@ -1,3 +1,9 @@
+2005-11-28  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* math_deliminset.h: 
+	* math_scriptinset.h: fix bug 2117, matrix inside delimeters or in
+	sub- or superscript
+
 2005-11-25  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* math_hullinset.[Ch]: new method textString (fix bug 2089)

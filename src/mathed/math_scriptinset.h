@@ -28,6 +28,8 @@ public:
 	/// create inset with single script and given nucleus
 	MathScriptInset(MathAtom const & at, bool up);
 	///
+	mode_type currentMode() const { return MATH_MODE; }
+	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
