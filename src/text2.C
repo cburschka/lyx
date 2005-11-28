@@ -318,11 +318,9 @@ pit_type LyXText::undoSpan(pit_type pit)
 }
 
 
-pit_type LyXText::setLayout(pit_type start, pit_type end, string const & layout)
+void LyXText::setLayout(pit_type start, pit_type end, string const & layout)
 {
 	BOOST_ASSERT(start != end);
-	pit_type undopit = undoSpan(end - 1);
-	recUndo(start, undopit - 1);
 
 	BufferParams const & bufparams = bv()->buffer()->params();
 	LyXLayout_ptr const & lyxlayout = bufparams.getLyXTextClass()[layout];
@@ -333,8 +331,6 @@ pit_type LyXText::setLayout(pit_type start, pit_type end, string const & layout)
 		if (lyxlayout->margintype == MARGIN_MANUAL)
 			pars_[pit].setLabelWidthString(lyxlayout->labelstring());
 	}
-
-	return undopit;
 }
 
 
@@ -361,6 +357,8 @@ void LyXText::setLayout(LCursor & cur, string const & layout)
 
 	pit_type start = cur.selBegin().pit();
 	pit_type end = cur.selEnd().pit() + 1;
+	pit_type undopit = undoSpan(end - 1);
+	recUndo(start, undopit - 1);
 	setLayout(start, end, layout);
 	updateCounters(cur.buffer());
 }

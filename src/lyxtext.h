@@ -75,7 +75,7 @@ public:
 	void breakParagraph(LCursor & cur, bool keep_layout = false);
 
 	/// set layout over selection
-	pit_type setLayout(pit_type start, pit_type end,
+	void setLayout(pit_type start, pit_type end,
 		std::string const & layout);
 	///
 	void setLayout(LCursor & cur, std::string const & layout);

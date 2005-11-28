@@ -21,11 +21,14 @@
 
 #include "buffer.h"
 #include "bufferparams.h"
+#include "BufferView.h"
+#include "cursor.h"
 #include "debug.h"
 #include "LaTeXFeatures.h"
 #include "lyxlex.h"
 #include "outputparams.h"
 #include "paragraph.h"
+#include "paragraph_funcs.h"
 
 #include "insets/insettabular.h"
 
@@ -872,7 +875,36 @@ void LyXTabular::setVAlignment(idx_type cell, VAlignment align,
 }
 
 
-void LyXTabular::setColumnPWidth(idx_type cell, LyXLength const & width)
+namespace {
+
+/**
+ * Allow line and paragraph breaks for fixed width cells or disallow them,
+ * merge cell paragraphs and reset layout to standard for variable width
+ * cells.
+ */
+void toggleFixedWidth(LCursor & cur, InsetText * inset, bool fixedWidth)
+{
+	inset->setAutoBreakRows(fixedWidth);
+	if (fixedWidth)
+		return;
+
+	// merge all paragraphs to one
+	BufferParams const & bp =
+		inset->getText(0)->bv_owner->buffer()->params();
+	while (inset->paragraphs().size() > 1)
+		mergeParagraph(bp, inset->paragraphs(), 0);
+
+	// reset layout
+	cur.push(*inset);
+	inset->getText(0)->setLayout(0, cur.lastpit() + 1, "Standard");
+	cur.pop();
+}
+
+}
+
+
+void LyXTabular::setColumnPWidth(LCursor & cur, idx_type cell,
+		LyXLength const & width)
 {
 	col_type const j = column_of_cell(cell);
 
@@ -880,18 +912,32 @@ void LyXTabular::setColumnPWidth(idx_type cell, LyXLength const & width)
 	for (row_type i = 0; i < rows_; ++i) {
 		idx_type const cell = getCellNumber(i, j);
 		// because of multicolumns
-		getCellInset(cell)->setAutoBreakRows(!getPWidth(cell).zero());
+		toggleFixedWidth(cur, getCellInset(cell).get(),
+		                 !getPWidth(cell).zero());
 	}
+	// cur paragraph can become invalid after paragraphs were merged
+	if (cur.pit() > cur.lastpit())
+		cur.pit() = cur.lastpit();
+	// cur position can become invalid after newlines were removed
+	if (cur.pos() > cur.lastpos())
+		cur.pos() = cur.lastpos();
 }
 
 
-bool LyXTabular::setMColumnPWidth(idx_type cell, LyXLength const & width)
+bool LyXTabular::setMColumnPWidth(LCursor & cur, idx_type cell,
+		LyXLength const & width)
 {
 	if (!isMultiColumn(cell))
 		return false;
 
 	cellinfo_of_cell(cell).p_width = width;
-	getCellInset(cell)->setAutoBreakRows(!width.zero());
+	toggleFixedWidth(cur, getCellInset(cell).get(), !width.zero());
+	// cur paragraph can become invalid after paragraphs were merged
+	if (cur.pit() > cur.lastpit())
+		cur.pit() = cur.lastpit();
+	// cur position can become invalid after newlines were removed
+	if (cur.pos() > cur.lastpos())
+		cur.pos() = cur.lastpos();
 	return true;
 }
 

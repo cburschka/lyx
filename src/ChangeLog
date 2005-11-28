@@ -1,3 +1,11 @@
+2005-11-28  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* text2.C (setLayout): move recUndo call to other setLayout method
+	* tabular.C (toggleFixedWidth): new, handle cell width changes
+	* tabular.C (setColumnPWidth): move some code from insettabular.C here
+	and use toggleFixedWidth
+	* tabular.C (setMColumnPWidth): ditto
+
 2005-11-25  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* paragraph.C (asString): use new inset->textString method (fix bug 2089)

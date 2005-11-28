@@ -24,6 +24,7 @@
 #include <vector>
 
 class InsetTabular;
+class LCursor;
 class OutputParams;
 
 /* The features the text class offers for tables */
@@ -241,9 +242,9 @@ public:
 	void setVAlignment(idx_type cell, VAlignment align,
 			   bool onlycolumn = false);
 	///
-	void setColumnPWidth(idx_type cell, LyXLength const & width);
+	void setColumnPWidth(LCursor &, idx_type, LyXLength const &);
 	///
-	bool setMColumnPWidth(idx_type cell, LyXLength const & width);
+	bool setMColumnPWidth(LCursor &, idx_type, LyXLength const &);
 	///
 	void setAlignSpecial(idx_type cell, std::string const & special,
 	                     Feature what);
