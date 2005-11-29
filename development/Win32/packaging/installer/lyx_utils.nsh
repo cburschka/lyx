@@ -64,6 +64,10 @@
    StrCpy ${LangNme} "Français"
   ${endif}
 
+  ${if} ${LangISOCode} = 1038
+   StrCpy ${LangNme} "Magyar nyelv"
+  ${endif}
+
   ${if} ${LangISOCode} = 1040
    StrCpy ${LangNme} "Italiano"
   ${endif}
@@ -108,6 +112,10 @@
   ${if} ${Name} == "Italiano"
    StrCpy ${LangCde} "it_IT"
   ${endif}
+
+  ${if} ${Name} == "Magyar nyelv"
+   StrCpy ${LangCde} "hu_HU"
+  ${endif}  
 
   ${if} ${Name} == "Nederlands"
    StrCpy ${LangCde} "nl_NL"
