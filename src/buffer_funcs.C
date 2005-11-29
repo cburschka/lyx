@@ -215,13 +215,15 @@ void bufferErrors(Buffer const & buf, TeXErrors const & terr)
 		int id_start = -1;
 		int pos_start = -1;
 		int errorrow = cit->error_in_line;
-		buf.texrow().getIdFromRow(errorrow, id_start, pos_start);
+		bool found = buf.texrow().getIdFromRow(errorrow, id_start,
+		                                       pos_start);
 		int id_end = -1;
 		int pos_end = -1;
 		do {
 			++errorrow;
-			buf.texrow().getIdFromRow(errorrow, id_end, pos_end);
-		} while (id_start == id_end && pos_start == pos_end);
+			found = buf.texrow().getIdFromRow(errorrow, id_end,
+			                                  pos_end);
+		} while (found && id_start == id_end && pos_start == pos_end);
 
 		buf.error(ErrorItem(cit->error_desc, cit->error_text,
 				    id_start, pos_start, pos_end));
