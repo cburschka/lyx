@@ -1,3 +1,22 @@
+2005-11-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	Fix bug 2096.
+	
+	* BufferView_pimpl.C (getStatus): it is only possible to insert a
+	file in a text inset.
+
+	* buffer.C (readDocument): remove pit argument and code releated
+	to it; set the inset owner correctly (unrelated, but useful).
+	(readFile): get rid of pit argument.
+
+	* CutAndPaste.C (pasteSelectionHelper): use a ParagraphList and a
+	textclass instead of a selection index.
+	(pasteParagraphList): new function.
+	(pasteSelection): make it a wrapper around pasteParagraphList.
+
+	* BufferView_pimpl.C (MenuInsertLyXFile): use
+	cap::pasteParagraphList to insert a file.
+
 2005-11-29  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* buffer_funcs.C (bufferErrors): prevent endless loop (bug 2121)
@@ -16,7 +35,8 @@
 
 2005-11-25  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
-	* paragraph.C (asString): use new inset->textString method (fix bug 2089)
+	* paragraph.C (asString): use new inset->textString method (fix
+	bug 2089) 
 
 2005-11-24  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 

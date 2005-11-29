@@ -105,18 +105,19 @@ bool checkPastePossible(int index)
 
 
 pair<PitPosPair, pit_type>
-pasteSelectionHelper(Buffer const & buffer, ParagraphList & pars,
-	pit_type pit, int pos,
-	textclass_type tc, size_t cut_index, ErrorList & errorlist)
+pasteSelectionHelper(Buffer const & buffer, 
+		     ParagraphList & pars, pit_type pit, int pos,
+		     ParagraphList const & parlist, textclass_type textclass, 
+		     ErrorList & errorlist)
 {
-	if (!checkPastePossible(cut_index))
+	if (parlist.empty())
 		return make_pair(PitPosPair(pit, pos), pit);
 
 	BOOST_ASSERT (pos <= pars[pit].size());
 
 	// Make a copy of the CaP paragraphs.
-	ParagraphList insertion = theCuts[cut_index].first;
-	textclass_type const textclass = theCuts[cut_index].second;
+	ParagraphList insertion = parlist;
+	textclass_type const tc = buffer.params().textclass;
 
 	// Now remove all out of the pars which is NOT allowed in the
 	// new environment and set also another font if that is required.
@@ -608,13 +609,9 @@ std::string getSelection(Buffer const & buf, size_t sel_index)
 }
 
 
-void pasteSelection(LCursor & cur, size_t sel_index)
+void pasteParagraphList(LCursor & cur, ParagraphList const & parlist, 
+                        textclass_type textclass)
 {
-	// this does not make sense, if there is nothing to paste
-	lyxerr << "#### pasteSelection " << sel_index << endl;
-	if (!checkPastePossible(sel_index))
-		return;
-
 	if (cur.inTexted()) {
 		LyXText * text = cur.text();
 		BOOST_ASSERT(text);
@@ -623,26 +620,35 @@ void pasteSelection(LCursor & cur, size_t sel_index)
 
 		pit_type endpit;
 		PitPosPair ppp;
-
 		ErrorList el;
 
 		boost::tie(ppp, endpit) =
 			pasteSelectionHelper(cur.buffer(),
                                              text->paragraphs(),
                                              cur.pit(), cur.pos(),
-                                             cur.buffer().params().textclass,
-                                             sel_index, el);
+                                             parlist, textclass,
+                                             el);
 		bufferErrors(cur.buffer(), el);
-		cur.bv().showErrorList(_("Paste"));
-
+		updateCounters(cur.buffer());
 		cur.clearSelection();
 		text->setCursor(cur, ppp.first, ppp.second);
-		cur.setSelection();
-		updateCounters(cur.buffer());
 	}
 
 	// mathed is handled in MathNestInset/MathGridInset
 	BOOST_ASSERT(!cur.inMathed());
+}
+
+
+void pasteSelection(LCursor & cur, size_t sel_index)
+{
+	// this does not make sense, if there is nothing to paste
+	if (!checkPastePossible(sel_index))
+		return;
+
+	pasteParagraphList(cur, theCuts[sel_index].first,
+			   theCuts[sel_index].second);
+	cur.bv().showErrorList(_("Paste"));
+	cur.setSelection();
 }
 
 

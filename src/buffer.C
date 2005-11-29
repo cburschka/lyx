@@ -470,25 +470,23 @@ bool Buffer::readDocument(LyXLex & lex)
 		error(ErrorItem(_("Document header error"), s, -1, 0, 0));
 	}
 
-	if (paragraphs().empty()) {
-		readHeader(lex);
-		if (!params().getLyXTextClass().load()) {
-			string theclass = params().getLyXTextClass().name();
-			Alert::error(_("Can't load document class"), bformat(
-					"Using the default document class, because the "
-					" class %1$s could not be loaded.", theclass));
-			params().textclass = 0;
-		}
-	} else {
-		// We don't want to adopt the parameters from the
-		// document we insert, so read them into a temporary buffer
-		// and then discard it
+	// we are reading in a brand new document
+	BOOST_ASSERT(paragraphs().empty());
 
-		Buffer tmpbuf("", false);
-		tmpbuf.readHeader(lex);
+	readHeader(lex);
+	if (!params().getLyXTextClass().load()) {
+		string theclass = params().getLyXTextClass().name();
+		Alert::error(_("Can't load document class"), bformat(
+				     "Using the default document class, because the "
+				     " class %1$s could not be loaded.", theclass));
+		params().textclass = 0;
 	}
 
-	return text().read(*this, lex);
+	bool const res = text().read(*this, lex);
+	for_each(text().paragraphs().begin(),
+		 text().paragraphs().end(),
+		 bind(&Paragraph::setInsetOwner, _1, &inset()));
+	return res;
 }
 
 
@@ -556,7 +554,9 @@ bool Buffer::readFile(string const & filename)
 
 	// remove dummy empty par
 	paragraphs().clear();
-	bool ret = readFile(filename, paragraphs().size());
+	LyXLex lex(0, 0);
+	lex.setFile(filename);
+	bool ret = readFile(lex, filename);
 
 	// After we have read a file, we must ensure that the buffer
 	// language is set and used in the gui.
@@ -564,14 +564,6 @@ bool Buffer::readFile(string const & filename)
 	updateDocLang(params().language);
 
 	return ret;
-}
-
-
-bool Buffer::readFile(string const & filename, pit_type const pit)
-{
-	LyXLex lex(0, 0);
-	lex.setFile(filename);
-	return readFile(lex, filename, pit);
 }
 
 
@@ -587,7 +579,7 @@ void Buffer::fully_loaded(bool const value)
 }
 
 
-bool Buffer::readFile(LyXLex & lex, string const & filename, pit_type const pit)
+bool Buffer::readFile(LyXLex & lex, string const & filename)
 {
 	BOOST_ASSERT(!filename.empty());
 
@@ -668,7 +660,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename, pit_type const pit)
 					      filename));
 			return false;
 		} else {
-			bool const ret = readFile(tmpfile, pit);
+			bool const ret = readFile(tmpfile);
 			// Do stuff with tmpfile name and buffer name here.
 			return ret;
 		}

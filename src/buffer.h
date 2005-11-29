@@ -93,8 +93,6 @@ public:
 	/// load a new file
 	bool readFile(std::string const & filename);
 
-	bool readFile(std::string const & filename, lyx::pit_type pit);
-
 	/// read the header, returns number of unknown tokens
 	int readHeader(LyXLex & lex);
 
@@ -338,11 +336,9 @@ public:
 
 private:
 	/** Inserts a file into a document
-	    \param par if != 0 insert the file.
 	    \return \c false if method fails.
 	*/
-	bool readFile(LyXLex &, std::string const & filename,
-		      lyx::pit_type pit);
+	bool readFile(LyXLex &, std::string const & filename);
 
 	bool do_writeFile(std::ostream & ofs) const;
 

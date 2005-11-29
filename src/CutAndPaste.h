@@ -56,6 +56,11 @@ void copySelection(LCursor & cur);
 ///
 void pasteSelection(LCursor & cur, size_t sel_index = 0);
 
+///
+void pasteParagraphList(LCursor & cur, ParagraphList const & parlist, 
+                        textclass_type textclass);
+
+
 /** Needed to switch between different classes. This works
  *  for a list of paragraphs beginning with the specified par.
  *  It changes layouts and character styles.

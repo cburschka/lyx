@@ -25,6 +25,7 @@
 #include "bufferparams.h"
 #include "coordcache.h"
 #include "cursor.h"
+#include "CutAndPaste.h"
 #include "debug.h"
 #include "dispatchresult.h"
 #include "factory.h"
@@ -831,6 +832,7 @@ void BufferView::Pimpl::stuffClipboard(string const & content) const
 
 void BufferView::Pimpl::MenuInsertLyXFile(string const & filenm)
 {
+	BOOST_ASSERT(cursor_.inTexted());
 	string filename = filenm;
 
 	if (filename.empty()) {
@@ -875,18 +877,19 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filenm)
 	string const disp_fn = MakeDisplayPath(filename);
 	owner_->message(bformat(_("Inserting document %1$s..."), disp_fn));
 
-	cursor_.clearSelection();
-	bv_->getLyXText()->breakParagraph(cursor_);
+	string res;
+	Buffer buf("", false);
+	buf.error.connect(boost::bind(&BufferView::Pimpl::addError, this, _1));
+	if (::loadLyXFile(&buf, MakeAbsPath(filename))) {
+		lyx::cap::pasteParagraphList(cursor_, buf.paragraphs(), 
+					     buf.params().textclass);
+		res = _("Document %1$s inserted.");
+	} else
+		res = _("Could not insert document %1$s");
 
-	BOOST_ASSERT(cursor_.inTexted());
-
-	string const fname = MakeAbsPath(filename);
-	bool const res = buffer_->readFile(fname, cursor_.pit());
+	owner_->message(bformat(res, disp_fn));
+	bv_->showErrorList(_("Document insertion"));
 	resizeCurrentBuffer();
-
-	string s = res ? _("Document %1$s inserted.")
-	               : _("Could not insert document %1$s");
-	owner_->message(bformat(s, disp_fn));
 }
 
 
@@ -1022,6 +1025,9 @@ FuncStatus BufferView::Pimpl::getStatus(FuncRequest const & cmd)
 	case LFUN_FILE_INSERT:
 	case LFUN_FILE_INSERT_ASCII_PARA:
 	case LFUN_FILE_INSERT_ASCII:
+		// FIXME: Actually, these LFUNS should be moved to LyXText
+		flag.enabled(cursor_.inTexted());
+		break;
 	case LFUN_FONT_STATE:
 	case LFUN_INSERT_LABEL:
 	case LFUN_BOOKMARK_SAVE:
