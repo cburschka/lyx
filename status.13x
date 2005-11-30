@@ -19,6 +19,8 @@ What's new
 
 ** Updates
 
+- update lyx2lyx to handle properly the latest LyX 1.4 format (245).
+
 - New hungarian translation.
 
 - Update German documentation.
@@ -30,6 +32,10 @@ What's new
 - Don't load the wasysym package automatically anymore (bug 1942)
 
 - Fix crash with S-Home while entering a macro name (bug 2046)
+
+- Do not delete selection when entering an index entry.
+
+- Fix LaTeX output when a bibtex inset is used in a child document.
 
 * User Interface:
 
