@@ -1,3 +1,8 @@
+2005-11-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* ControlErrorList.C (goTo): give a better error message when pid
+	is not found.
+
 2005-11-02  Angus Leeming  <leeming@lyx.org>
 
 	* helper_funcs.C: trivial fix to a MSVS warning.

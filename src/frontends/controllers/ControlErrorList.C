@@ -64,7 +64,7 @@ void ControlErrorList::goTo(int item)
 	ParIterator pit = buf.getParFromID(err.par_id);
 
 	if (pit == buf.par_iterator_end()) {
-		lyxerr << "par id not found" << endl;
+		lyxerr << "par id " << err.par_id << " not found" << endl;
 		return;
 	}
 
