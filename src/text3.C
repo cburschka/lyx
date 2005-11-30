@@ -1614,6 +1614,17 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		break;
 	}
 
+	case LFUN_INDEX_INSERT: {
+		Inset * inset = createInset(cmd);
+		if (inset) {
+			BufferView * bv = cmd.view();
+			if (bv->insertInset(inset)) 
+				inset->edit(bv);
+			else
+				delete inset;
+		}
+		break;
+	}
 
 #if 0
 	case LFUN_INSET_LIST:
@@ -1637,7 +1648,6 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_INSERT_URL:
 	case LFUN_INSET_EXTERNAL:
-	case LFUN_INDEX_INSERT:
 		// Just open the inset
 		doInsertInset(this, cmd, true, false);
 		break;

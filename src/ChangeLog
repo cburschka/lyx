@@ -1,3 +1,8 @@
+2005-11-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* text3.C (dispatch): LFUN_INDEX_INSERT: when a selection is set,
+	do not remove it (this inset behaves differently from the others).
+
 2005-11-02  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyxlength.h: undefine macros that clash with solaris/x86 (bug 992)
