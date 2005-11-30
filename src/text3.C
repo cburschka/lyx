@@ -1220,11 +1220,18 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		cur.dispatch(FuncRequest(LFUN_LAYOUT, "Caption"));
 		break;
 
-	case LFUN_INDEX_INSERT:
-		// Just open the inset
-		doInsertInset(cur, this, cmd, true, false);
+	case LFUN_INDEX_INSERT: {
+		InsetBase * inset = createInset(&cur.bv(), cmd);
+		if (!inset)
+			break;
+
+		recordUndo(cur);
+		cur.clearSelection();
+		insertInset(cur, inset);
+		inset->edit(cur, true);
 		cur.posRight();
 		break;
+	}
 
 	case LFUN_INDEX_PRINT:
 	case LFUN_TOC_INSERT:
