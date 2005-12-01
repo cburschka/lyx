@@ -332,6 +332,26 @@ void BufferView::setCursor(DocIterator const & dit)
 }
 
 
+void BufferView::mouseSetCursor(LCursor & cur)
+{
+	BOOST_ASSERT(&cur.bv() == this);
+
+	// Has the cursor just left the inset?
+	if (&cursor().inset() != &cur.inset())
+		cursor().inset().notifyCursorLeaves(cursor());
+
+	// do the dEPM magic if needed
+	if (cursor().inTexted())
+		cursor().text()->deleteEmptyParagraphMechanism(cur, cursor());
+
+	cursor() = cur;
+	cursor().resetAnchor();
+	cursor().setTargetX();
+	finishUndo();
+
+}
+
+
 void BufferView::putSelectionAt(DocIterator const & cur,
 				int length, bool backwards)
 {

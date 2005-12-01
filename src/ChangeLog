@@ -1,4 +1,15 @@
-2005-11-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+2005-11-30  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* BufferView.C (mouseSetCursor): new method. Calls
+	deleteEmptyParagraphMechanism if necessary.
+
+	* lyxtext.h: make deleteEmptyParagraphMechanism public.
+
+	* text3.C (dispatch/LFUN_MOUSE_PRESS): use
+	BufferView::mouseSetCursor (bug 2109).
+	(dispatch/LFUN_PASTE): remove #warning that is now irrelevant.
+
+2005-11-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>	
 
 	* text3.C (dispatch/LFUN_INDEX_INSERT): when a selection is set,
 	do not remove it (this inset behaves differently from the others).

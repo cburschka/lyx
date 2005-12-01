@@ -984,14 +984,14 @@ void MathHullInset::doExtern(LCursor & cur, FuncRequest & func)
 
 void MathHullInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
-	lyxerr << "action: " << cmd.action << endl;
+	//lyxerr << "action: " << cmd.action << endl;
 	switch (cmd.action) {
 
 	case LFUN_FINISHED_LEFT:
 	case LFUN_FINISHED_RIGHT:
 	case LFUN_FINISHED_UP:
 	case LFUN_FINISHED_DOWN:
-		lyxerr << "action: " << cmd.action << endl;
+		//lyxerr << "action: " << cmd.action << endl;
 		MathGridInset::doDispatch(cur, cmd);
 		notifyCursorLeaves(cur);
 		cur.undispatched();

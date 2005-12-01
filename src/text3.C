@@ -825,9 +825,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_PASTE:
 		cur.message(_("Paste"));
 		lyx::cap::replaceSelection(cur);
-#ifdef WITH_WARNINGS
-#warning FIXME Check if the arg is in the domain of available selections.
-#endif
 		if (isStrUnsignedInt(cmd.argument))
 			pasteSelection(cur, convert<unsigned int>(cmd.argument));
 		else
@@ -1028,20 +1025,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			paste_internally = true;
 		}
 
-		// Clear the selection
-		cur.clearSelection();
-
-		setCursorFromCoordinates(cur, cmd.x, cmd.y);
-		cur.resetAnchor();
-		finishUndo();
-		cur.setTargetX();
-
-		// Has the cursor just left the inset?
-		if (bv->cursor().inMathed() && !cur.inMathed())
-			bv->cursor().inset().notifyCursorLeaves(bv->cursor());
-
-		// Set cursor here.
-		bv->cursor() = cur;
+		bv->mouseSetCursor(cur);
 
 		// Insert primary selection with middle mouse
 		// if there is a local selection in the current buffer,

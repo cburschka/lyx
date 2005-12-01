@@ -186,8 +186,11 @@ public:
 	LCursor const & cursor() const;
 	///
 	LyXText * text() const;
-	///
+	/// sets cursor and open all relevant collapsable insets.
 	void setCursor(DocIterator const &);
+	/// sets cursor; this is used when handling LFUN_MOUSE_PRESS.
+	void mouseSetCursor(LCursor & cur);
+
 	/* Sets the selection. When \c backwards == false, set anchor
 	 * to \c cur and cursor to \c cur + \c length. When \c
 	 * backwards == true, set anchor to \c cur and cursor to \c

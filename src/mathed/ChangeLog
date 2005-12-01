@@ -1,3 +1,10 @@
+2005-11-30  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* math_nestinset.C (lfunMousePress): use mouseSetCursor (bug 2109).
+
+	* math_hullinset.C (doDispatch): comment out some annoying debug
+	messages. 
+
 2005-11-28  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* math_deliminset.h: 

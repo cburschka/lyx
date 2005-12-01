@@ -326,6 +326,9 @@ public:
 	///
 	int cursorY(CursorSlice const & cursor, bool boundary) const;
 
+	/// delete double space or empty paragraphs around old cursor
+	bool deleteEmptyParagraphMechanism(LCursor & cur, LCursor & old);
+
 	///
 	friend class LyXScreen;
 
@@ -371,9 +374,6 @@ private:
 	// fix the cursor `cur' after a characters has been deleted at `where'
 	// position. Called by deleteEmptyParagraphMechanism
 	void fixCursorAfterDelete(CursorSlice & cur, CursorSlice const & where);
-
-	/// delete double space or empty paragraphs around old cursor
-	bool deleteEmptyParagraphMechanism(LCursor & cur, LCursor & old);
 
 	///
 	void deleteWordForward(LCursor & cur);

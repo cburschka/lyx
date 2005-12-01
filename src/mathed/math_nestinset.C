@@ -1025,8 +1025,7 @@ void MathNestInset::lfunMousePress(LCursor & cur, FuncRequest & cmd)
 	//lyxerr << "## lfunMousePress: buttons: " << cmd.button() << endl;
 	if (cmd.button() == mouse_button::button1) {
 		//lyxerr << "## lfunMousePress: setting cursor to: " << cur << endl;
-		cur.resetAnchor();
-		cur.bv().cursor() = cur;
+		cur.bv().mouseSetCursor(cur);
 	}
 
 	if (cmd.button() == mouse_button::button2) {
