@@ -113,7 +113,6 @@ Var ImageMagickPath
 Var DownloadImageMagick
 
 Var PDFViewerPath
-Var PDFViewerProg
 
 Var PSViewerPath
 Var PSViewerProg
@@ -664,35 +663,33 @@ FunctionEnd
 
 ;--------------------------------
 
-; Sets the value of the global $PDFViewerPath and $PDFViewerProg variables.
+; Sets the value of the global $PDFViewerPath variable.
 Function SearchPDFViewer
+  ; test if a pdf-viewer is installed, only test for Acrobat, Adobe Reader (AroRD32), and GSview32
   StrCpy $PDFViewerPath ""
-  !insertmacro GetFileExtProg $PDFViewerPath $PDFViewerProg ".pdf" "a"
+  ReadRegStr $PDFViewerPath HKLM "Software\Microsoft\Windows\CurrentVersion\App Paths\Acrobat.exe" "Path"
+  ${if} $PDFVPath == ""
+   ReadRegStr $PDFViewerPath HKLM "Software\Microsoft\Windows\CurrentVersion\App Paths\AcroRd32.exe" "Path"
+  ${endif}
+  ${if} $PDFVPath == ""
+   ReadRegStr $PDFViewerPath HKLM "Software\Microsoft\Windows\CurrentVersion\App Paths\gsview32.exe" "Path"
+  ${endif}
+  StrCpy $0 $PDFViewerPath "" -1 ;remove the "\" at the end
+  ${if} $0 == "\"
+   StrCpy $PDFViewerPath $PDFViewerPath -1
+  ${endif}
 FunctionEnd
 
 ;--------------------------------
 
 Function SearchPSViewer
-  ; This function manipulates the $0 and $1 registers,
-  ; so push their current content onto the stack.
+  ; This function manipulates the $0 register,
+  ; so push its current content onto the stack.
   Push $0
-  Push $1
 
+  ; test if a ps-viewer is installed, only check for GSview32
   StrCpy $PSViewerPath ""
-  StrCpy $0 ""
-  StrCpy $1 ""
-  !insertmacro GetFileExtProg $PSViewerPath $PSViewerProg ".ps" "a"
-  ${if} $PSViewerPath != ""
-    StrCpy $0 $PSViewerPath
-    StrCpy $0 $0 "" -8
-  ${endif}
-  ${if} $0 == "Distillr"
-    !insertmacro GetFileExtProg $0 $1 ".ps" "b"
-    ${if} $1 != ""
-      StrCpy $PSViewerPath $0
-      StrCpy $PSViewerProg $1
-    ${endif}
-  ${endif}
+  ReadRegStr $PSViewerPath HKLM "Software\Microsoft\Windows\CurrentVersion\App Paths\gsview32.exe" "Path"
 
   ; Failed to find anything that way. Try another.
   ${if} $PSViewerPath == ""
@@ -709,8 +706,7 @@ Function SearchPSViewer
     ${StrStrAdv} $PSViewerProg $PSViewerProg "\" "<" ">" "0" "0" "0"
   ${endif}
 
-  ; Return the $0 and $1 registers to their original states
-  Pop $1
+  ; Return the $0 register to its original states
   Pop $0
 FunctionEnd
 
