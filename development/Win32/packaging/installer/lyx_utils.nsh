@@ -64,10 +64,6 @@
    StrCpy ${LangNme} "Français"
   ${endif}
 
-  ${if} ${LangISOCode} = 1038
-   StrCpy ${LangNme} "Magyar nyelv"
-  ${endif}
-
   ${if} ${LangISOCode} = 1040
    StrCpy ${LangNme} "Italiano"
   ${endif}
