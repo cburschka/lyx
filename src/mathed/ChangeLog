@@ -1,3 +1,8 @@
+2005-12-02  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* math_nestinset.C (script): always ensure that the cell we want to go
+	to exists (bug 2139).
+
 2005-11-30  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* math_nestinset.C (lfunMousePress): use mouseSetCursor (bug 2109).

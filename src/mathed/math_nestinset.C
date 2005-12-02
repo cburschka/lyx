@@ -1248,6 +1248,7 @@ bool MathNestInset::script(LCursor & cur, bool up)
 		--cur.pos();
 		MathScriptInset * inset = cur.nextAtom().nucleus()->asScriptInset();
 		cur.push(*inset);
+		inset->ensure(up);
 		cur.idx() = inset->idxOfScript(up);
 		cur.pos() = cur.lastpos();
 	} else {
