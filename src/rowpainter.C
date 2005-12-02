@@ -537,8 +537,9 @@ void RowPainter::paintFirst()
 
 			double x = x_;
 			if (layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT) {
-				x = ((is_rtl ? leftMargin() : x_)
-					 + width_ - text_.rightMargin(par_)) / 2;
+				if (is_rtl)
+					x = leftMargin();
+				x += (width_ - text_.rightMargin(par_) - leftMargin()) / 2;
 				x -= font_metrics::width(str, font) / 2;
 			} else if (is_rtl) {
 				x = width_ - leftMargin() -
