@@ -156,10 +156,9 @@ void InsetBox::setButtonLabel()
 void InsetBox::metrics(MetricsInfo & m, Dimension & dim) const
 {
 	MetricsInfo mi = m;
-	mi.base.textwidth = params_.width.inPixels(m.base.textwidth);
+	if (params_.inner_box || params_.special != "width")
+		mi.base.textwidth = params_.width.inPixels(m.base.textwidth);
 	InsetCollapsable::metrics(mi, dim);
-	//if (params_.inner_box && isOpen())
-	//	dim.wid = mi.base.textwidth;
 	dim_ = dim;
 }
 
