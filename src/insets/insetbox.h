@@ -76,6 +76,10 @@ public:
 	///
 	bool display() const { return false; }
 	///
+	bool forceDefaultParagraphs(idx_type) const;
+	///
+	bool neverIndent() const { return true; }
+	///
 	int latex(Buffer const &, std::ostream &,
 			OutputParams const &) const;
 	///

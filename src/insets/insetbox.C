@@ -163,6 +163,12 @@ void InsetBox::metrics(MetricsInfo & m, Dimension & dim) const
 }
 
 
+bool InsetBox::forceDefaultParagraphs(idx_type) const
+{
+	return !params_.inner_box;
+}
+
+
 bool InsetBox::showInsetDialog(BufferView * bv) const
 {
 	InsetBoxMailer(const_cast<InsetBox &>(*this)).showDialog(bv);
@@ -209,6 +215,13 @@ bool InsetBox::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_INSET_DIALOG_UPDATE:
 		flag.enabled(true);
 		return true;
+	case LFUN_BREAKPARAGRAPH:
+		if (params_.inner_box) {
+			return InsetCollapsable::getStatus(cur, cmd, flag);
+		} else {
+			flag.enabled(false);
+			return true;
+		}
 
 	default:
 		return InsetCollapsable::getStatus(cur, cmd, flag);
