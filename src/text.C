@@ -1154,16 +1154,6 @@ void LyXText::insertChar(LCursor & cur, char c)
 	// difference are the special checks when calculating the row.fill
 	// (blank does not count at the end of a row) and the check here
 
-	// The bug is triggered when we type in a description environment:
-	// The current_font is not changed when we go from label to main text
-	// and it should (along with realtmpfont) when we type the space.
-	// CHECK There is a bug here! (Asger)
-
-	// store the current font.  This is because of the use of cursor
-	// movements. The moving cursor would refresh the current font
-	LyXFont realtmpfont = real_current_font;
-	LyXFont rawtmpfont = current_font;
-
 	// When the free-spacing option is set for the current layout,
 	// disable the double-space checking
 	if (!freeSpacing && IsLineSeparatorChar(c)) {
@@ -1190,10 +1180,7 @@ void LyXText::insertChar(LCursor & cur, char c)
 		}
 	}
 
-	par.insertChar(cur.pos(), c, rawtmpfont);
-
-	current_font = rawtmpfont;
-	real_current_font = realtmpfont;
+	par.insertChar(cur.pos(), c, current_font);
 	setCursor(cur, cur.pit(), cur.pos() + 1, false, cur.boundary());
 	charInserted();
 }

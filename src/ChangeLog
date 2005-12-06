@@ -1,3 +1,14 @@
+2005-12-02  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* text2.C (makeFontEntriesLayoutSpecific): remove.
+	(setLayout): adapt.
+
+	* text.C (insertChar): remove bogus caching of fonts (did not do
+	anything). 
+
+	* text2.C (LyXText): initialize current_font to ALL_INHERIT (was
+	ALL_SANE). (bug 2146)
+
 2005-12-01  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* rowpainter.C (paintFirst): fix centering of

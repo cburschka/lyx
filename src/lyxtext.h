@@ -342,6 +342,8 @@ public:
 	/// the current font
 	LyXFont real_current_font;
 	/// our buffer's default layout font. This is textclass specific
+	/* This is actually never initialized! Should be replaced by a
+	 * defaultfont() method that looks at the textclass (easy). [JMarc]*/
 	LyXFont defaultfont_;
 	///
 	int background_color_;
@@ -364,9 +366,6 @@ private:
 	/// return past-the-last paragraph influenced by a layout
 	/// change on pit
 	pit_type undoSpan(pit_type pit);
-
-	/// used in setlayout
-	void makeFontEntriesLayoutSpecific(BufferParams const &, Paragraph & par);
 
 	/// Calculate and set the height of the row
 	void setHeightOfRow(pit_type, Row & row);

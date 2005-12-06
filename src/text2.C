@@ -68,6 +68,7 @@ using std::min;
 
 LyXText::LyXText(BufferView * bv)
 	: maxwidth_(bv ? bv->workWidth() : 100),
+	  current_font(LyXFont::ALL_INHERIT),
 	  background_color_(LColor::background),
 	  bv_owner(bv),
 	  autoBreakRows_(false)
@@ -277,28 +278,6 @@ void LyXText::setCharFont(pit_type pit, pos_type pos, LyXFont const & fnt)
 }
 
 
-// used in setLayout
-// Asger is not sure we want to do this...
-void LyXText::makeFontEntriesLayoutSpecific(BufferParams const & params,
-					    Paragraph & par)
-{
-	LyXLayout_ptr const & layout = par.layout();
-	pos_type const psize = par.size();
-
-	LyXFont layoutfont;
-	for (pos_type pos = 0; pos < psize; ++pos) {
-		if (pos < par.beginOfBody())
-			layoutfont = layout->labelfont;
-		else
-			layoutfont = layout->font;
-
-		LyXFont tmpfont = par.getFontSettings(params, pos);
-		tmpfont.reduce(layoutfont);
-		par.setFont(pos, tmpfont);
-	}
-}
-
-
 // return past-the-last paragraph influenced by a layout change on pit
 pit_type LyXText::undoSpan(pit_type pit)
 {
@@ -327,7 +306,6 @@ void LyXText::setLayout(pit_type start, pit_type end, string const & layout)
 
 	for (pit_type pit = start; pit != end; ++pit) {
 		pars_[pit].applyLayout(lyxlayout);
-		makeFontEntriesLayoutSpecific(bufparams, pars_[pit]);
 		if (lyxlayout->margintype == MARGIN_MANUAL)
 			pars_[pit].setLabelWidthString(lyxlayout->labelstring());
 	}
