@@ -1,3 +1,8 @@
+2005-12-06  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* exporter.C (Export): Don't try to copy a file if it does not exist
+	(bug 1888)
+
 2005-12-02  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* text2.C (makeFontEntriesLayoutSpecific): remove.

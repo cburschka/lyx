@@ -219,7 +219,7 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 		}
 		if (status == CANCEL) {
 			buffer->message(_("Document export cancelled."));
-		} else {
+		} else if (fs::exists(tmp_result_file)) {
 			// Finally copy the main file
 			status = copyFile(format, tmp_result_file,
 			                  result_file, result_file,
@@ -228,6 +228,10 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 			                          "to file `%2$s'"),
 			                        formats.prettyName(format),
 			                        MakeDisplayPath(result_file)));
+		} else {
+			// This must be a dummy converter like fax (bug 1888)
+			buffer->message(bformat(_("Document exported as %1$s "),
+			                        formats.prettyName(format)));
 		}
 	}
 
