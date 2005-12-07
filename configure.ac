@@ -179,20 +179,8 @@ for frontend in $FRONTENDS ; do
       libXpm version:\t\t${XPM_VERSION}\n\
       libforms version:\t\t${XFORMS_VERSION}\n"
 	  ;;
-  dnl   gnome)
-  dnl     XFORMS_DO_IT_ALL
-  dnl     PKG_CHECK_MODULES(GNOME_FRONTEND, gtkmm-2.0 libglademm-2.0)
-  dnl     AC_SUBST(GNOME_FRONTEND_CFLAGS)
-  dnl     AC_SUBST(GNOME_FRONTEND_LIBS)
-
-  dnl     FRONTEND="xforms gnome"
-  dnl     FRONTEND_GUILIB="gnome/*.lo"
-  dnl     FRONTEND_LDFLAGS="${GNOME_FRONTEND_LIBS}"
-  dnl     FRONTEND_INCLUDES="${GNOME_FRONTEND_CFLAGS}"
-  dnl     FRONTEND_LIBS="@XPM_LIB@ @XFORMS_LIB@ ${GNOME_FRONTEND_LIBS}"
-  dnl	;;
     gtk)
-	  PKG_CHECK_MODULES(GTK_FRONTEND, gtkmm-2.4 libglademm-2.4)
+	  PKG_CHECK_MODULES(GTK_FRONTEND, gtkmm-2.4 libglademm-2.4 xft)
 	  FRONTENDS_PROGS="$FRONTENDS_PROGS lyx-gtk\$(EXEEXT)"
 	  FRONTENDS_SUBDIRS="$FRONTENDS_SUBDIRS gtk"
 	  RPM_FRONTEND="gtk"
