@@ -94,14 +94,7 @@ class LyX_Base:
         error: the name of the error file, if empty use the standard error.
         debug: debug level, O means no debug, as its value increases be more verbose.
         """
-        if input and input != '-':
-            self.input = self.open(input)
-        else:
-            self.input = sys.stdin
-        if output:
-            self.output = open(output, "w")
-        else:
-            self.output = sys.stdout
+        self.choose_io(input, output)
 
         if error:
             self.err = open(error, "w")
@@ -212,16 +205,25 @@ class LyX_Base:
             self.output.write(line+"\n")
 
 
-    def open(self, file):
-        """Transparently deals with compressed files."""
+    def choose_io(self, input, output):
+        """Choose input and output streams, dealing transparently with
+        compressed files."""
 
-        self.dir = os.path.dirname(os.path.abspath(file))
-        try:
-            gzip.open(file).readline()
-            self.output = gzip.GzipFile("","wb",6,self.output)
-            return gzip.open(file)
-        except:
-            return open(file)
+        if output:
+            self.output = open(output, "wb")
+        else:
+            self.output = sys.stdout
+
+        if input and input != '-':
+            self.dir = os.path.dirname(os.path.abspath(input))
+            try:
+                gzip.open(input).readline()
+                self.input = gzip.open(input)
+                self.output = gzip.GzipFile(mode="wb", fileobj=self.output) 
+            except:
+                self.input = open(input)
+        else:
+            self.input = sys.stdin
 
 
     def lyxformat(self, format):
