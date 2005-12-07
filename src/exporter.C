@@ -230,7 +230,7 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 			                        MakeDisplayPath(result_file)));
 		} else {
 			// This must be a dummy converter like fax (bug 1888)
-			buffer->message(bformat(_("Document exported as %1$s "),
+			buffer->message(bformat(_("Document exported as %1$s"),
 			                        formats.prettyName(format)));
 		}
 	}
