@@ -1,3 +1,8 @@
+2005-12-07  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* configure.ac: add to SOCKET_LIBS the libraries required by
+	socket code (useful for solaris).
+
 2005-12-06  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* configure.ac: remove dead gnome stuff

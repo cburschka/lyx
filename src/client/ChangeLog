@@ -1,3 +1,8 @@
+2005-12-07  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* Makefile.am (lyxclient_LDADD): link against SOCKET_LIBS (needed
+	for solaris).
+
 2005-07-17  Michael Schmitt  <michqel.schmitt@teststep.org>
 
 	* debug.C: fix typo

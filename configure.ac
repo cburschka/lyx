@@ -289,7 +289,17 @@ LYX_CHECK_SPELL_ENGINES
 
 lyx_client_subdir=true
 AC_LANG_PUSH(C)
-AC_CHECK_FUNCS(fcntl,, [lyx_client_subdir=false])
+dnl LIBS already contains some X extra libs that may interfere.
+save_LIBS="$LIBS"
+LIBS=
+AC_CHECK_FUNCS(fcntl,
+  [AC_SEARCH_LIBS([gethostbyname], [nsl])
+   AC_SEARCH_LIBS([socket], [socket], [], 
+     [AC_CHECK_LIB([socket], [socket], [LIBS="-lsocket -lnsl $LIBS"],
+                [], [-lnsl])])], 
+  [lyx_client_subdir=false])
+AC_SUBST(SOCKET_LIBS,$LIBS)
+LIBS="$save_LIBS"
 AM_CONDITIONAL(BUILD_CLIENT_SUBDIR, $lyx_client_subdir)
 AC_LANG_POP(C)
 
