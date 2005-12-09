@@ -42,7 +42,7 @@ docfiles = \
 	LaTeXConfig.lyx.in \
 	nl_Intro.lyx \
 	nl_Tutorial.lyx \
-	no_Intro.lyx \
+	nb_Intro.lyx \
 	pl_Extended.lyx \
 	pl_Intro.lyx \
 	pl_Tutorial.lyx \
