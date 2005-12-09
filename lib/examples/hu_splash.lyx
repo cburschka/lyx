@@ -1,12 +1,17 @@
 #LyX 1.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 221
 \textclass article
+\begin_preamble
+
+\usepackage{indentfirst}
+\frenchspacing
+\end_preamble
 \language magyar
 \inputencoding latin2
 \fontscheme default
 \graphics default
 \paperfontsize default
-\spacing single
+\spacing single 
 \papersize a4paper
 \paperpackage a4
 \use_geometry 0
@@ -26,7 +31,7 @@
 
 \layout Title
 
-Üdvözöli a LyX!
+Üdvözli Önt a LyX!
 \layout Section*
 
 Az elsõ N dolog, amit tudnia kell a LyX-rõl
@@ -36,31 +41,67 @@ A LyX rendkívül jól dokumentált.
  Kérjük használja ki ezt! Kezdje a 
 \family sans 
 \bar under 
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+mbox{
+\end_inset 
+
 S
 \bar default 
-úgó\SpecialChar \menuseparator
+egítség\SpecialChar \menuseparator
 
 \bar under 
 B
 \bar default 
 evezetés
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+}
+\end_inset 
+
+
 \family default 
- elolvasásával, ami egy gyors áttekintést ad a dokumentáció használatával
- kapcsolatban.
+ elolvasásával, ami gyors áttekintést ad a dokumentáció használatával kapcsolatb
+an.
  Aztán folytassa a 
 \family sans 
 \bar under 
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+mbox{
+\end_inset 
+
 S
 \bar default 
-úgó\SpecialChar \menuseparator
+egítség\SpecialChar \menuseparator
 
 \bar under 
 T
 \bar default 
 ankönyv
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+}
+\end_inset 
+
+
 \family default 
- olvasásával, aminek segítségével elsajátíthatja a LyX használatával kapcsolatos
- alapvetõ dolgokat.
+ olvasásával, amelynek segítségével elsajátíthatja a LyX használatával kapcsolat
+os alapvetõ dolgokat.
 \layout Enumerate
 
 A LyX az, amit mi 
@@ -72,12 +113,12 @@ szövegszerkesztõnek
 \end_inset 
 
  nevezünk.
- Ez alapvetõen más elveket követ, mint egy átlagos szövegszerkesztõ, és
- ezzel sokkal könnyebbé teszi a dokumentumok szerkesztését.
+ Alapvetõen más elveket követ, mint egy átlagos szövegszerkesztõ, és ezzel
+ sokkal könnyebbé teszi a dokumentumok szerkesztését.
  De ez csak egy kis különbség, szóval ne ijedjen meg.
  A dokumentációból minden világos lesz.
 \begin_inset Foot
-collapsed true
+collapsed false
 
 \layout Standard
 
@@ -88,23 +129,45 @@ Eléggé kihangsúlyoztuk, hogy el kellene olvasni a dokumentációt?
 
 \layout Enumerate
 
-A LyX kimenete nagyon jól mutat! Válassza a 
+A LyX segítségével szép dokumentumokat készíthetünk! Válassza a 
 \family sans 
 \bar under 
-N
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+mbox{
+\end_inset 
+
+
 \bar default 
-ézet\SpecialChar \menuseparator
+Né
+\bar under 
+z
+\bar default 
+et\SpecialChar \menuseparator
 
 \bar under 
 D
 \bar default 
 VI
 \family default 
- menüpontot, így meg is gyõzõdhet róla.
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+}
+\end_inset 
+
+ menüpontot, és ellenõrizze saját maga.
 \layout Enumerate
 
-Igen, a LyX tudja (majdnem) mindazt amit a LaTeX, és importálni is tudja
- a LaTeX fájlokat.
+Igen, a LyX tudja (majdnem) mindazt, amit a LaTeX, valamint képes LaTeX
+ fájlokat importálni is.
  Gyakorlott LaTeX felhasználók ki is hagyhatják a 
 \emph on 
 Tankönyv
@@ -113,22 +176,33 @@ Tankönyv
 \begin_inset Quotes pld
 \end_inset 
 
-LyX a LaTeX felhasználóknak
+LyX LaTeX felhasználóknak
 \begin_inset Quotes prd
 \end_inset 
 
  résszel.
  (A többiek ne essenek kétségbe, nem kell megtanulni a LaTeX használatát
- ahhoz, hogy a LyX-et használják.)
+ ahhoz, hogy a LyX-et használni tudják.)
 \layout Enumerate
 
-A LyX sok hasznos lehetõséggel rendelkezik azok számára is, akik más nyelveken
- is írnak dokumentumokat.
- Például a billentyûzet, a menük és sok egyéb tulajdonság részletesen beállíthat
-ó az ön igényeinek megfelelõen.
+A LyX rengeteg hasznos lehetõséggel rendelkezik mindazok számára, akik az
+ angol-tól eltérõ nyelven készítenek dokumentumokat.
+ A billentyûzet, a menük és sok egyéb jellemz\i \H{o}
+ nagymértékben testreszabható
+ az igényeinek megfelelõen.
  További információkért olvassa el a 
 \family sans 
 \bar under 
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+mbox{
+\end_inset 
+
 S
 \bar default 
 úgó\SpecialChar \menuseparator
@@ -138,24 +212,69 @@ s
 \bar default 
 treszabás
 \family default 
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+}
+\end_inset 
+
  részt.
 \layout Enumerate
 
 A LyX honlapja a következõ címen található meg: 
-\begin_inset LatexCommand \url{http://www.lyx.org/}
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+mbox{
+\end_inset 
+
+
+\begin_inset LatexCommand \htmlurl{http://www.lyx.org/}
 
 \end_inset 
 
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+}
+\end_inset 
+
+.
  Itt további információkat tudhat meg a LyX-rõl, feliratkozhat a levelezõlistákr
 a, stb\SpecialChar \ldots{}
 
-\layout Enumerate
+\newline 
+A LyX magyar honlapja a 
+\begin_inset ERT
+status Collapsed
 
-A LyX magyar honlapja következõ címen található meg: 
-\begin_inset LatexCommand \url{http://k2.jozsef.kando.hu/~zrubi/LyX/}
+\layout Standard
+
+\backslash 
+mbox{
+\end_inset 
+
+
+\begin_inset LatexCommand \htmlurl{http://www.lyx.hu}
 
 \end_inset 
 
- Inen töltheti le a legfrissebb magyar dokumentációs fájlokat, amiket az
- eredeti csomag esetleg még nem tartalmaz.
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+}
+\end_inset 
+
+ címen található meg.
+ Innen letöltheti a legfrissebb magyar dokumentációs fájlokat, amelyeket
+ az eredeti csomag még nem tartalmaz.
 \the_end
