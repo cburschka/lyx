@@ -212,7 +212,7 @@ void QPrefs::apply()
 	rc.auto_reset_options = latexmod->latexAutoresetCB->isChecked();
 	rc.view_dvi_paper_option = fromqstr(latexmod->latexDviPaperED->text());
 	rc.default_papersize =
-		static_cast<PAPER_SIZE>(latexmod->latexPaperSizeCO->currentItem());
+		controller().toPaperSize(latexmod->latexPaperSizeCO->currentItem());
 
 	QPrefDisplayModule * displaymod(dialog_->displayModule);
 
@@ -549,7 +549,8 @@ void QPrefs::update_contents()
 	latexmod->latexIndexED->setText(toqstr(rc.index_command));
 	latexmod->latexAutoresetCB->setChecked(rc.auto_reset_options);
 	latexmod->latexDviPaperED->setText(toqstr(rc.view_dvi_paper_option));
-	latexmod->latexPaperSizeCO->setCurrentItem(rc.default_papersize);
+	latexmod->latexPaperSizeCO->setCurrentItem(
+		controller().fromPaperSize(rc.default_papersize));
 
 
 	QPrefDisplayModule * displaymod(dialog_->displayModule);

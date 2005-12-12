@@ -18,6 +18,7 @@
 #include "bufferlist.h"
 #include "gettext.h"
 #include "funcrequest.h"
+#include "paper.h"
 #include "LColor.h"
 
 #include "support/filefilterlist.h"
@@ -158,6 +159,60 @@ string const ControlPrefs::browsedir(string const & path,
 				     string const & title) const
 {
 	return browseDir(path, title);
+}
+
+
+// We support less paper sizes than the document dialog
+// Therefore this adjustment is needed.
+PAPER_SIZE const ControlPrefs::toPaperSize(int i) const
+{
+	switch (i) {
+	case 0:
+		return PAPER_DEFAULT;
+	case 1:
+		return PAPER_USLETTER;
+	case 2:
+		return PAPER_USLEGAL;
+	case 3:
+		return PAPER_USEXECUTIVE;
+	case 4:
+		return PAPER_A3;
+	case 5:
+		return PAPER_A4;
+	case 6:
+		return PAPER_A5;
+	case 7:
+		return PAPER_B5;
+	default:
+		// should not happen
+		return PAPER_DEFAULT;
+	}
+}
+
+
+int const ControlPrefs::fromPaperSize(PAPER_SIZE papersize) const
+{
+	switch (papersize) {
+	case PAPER_DEFAULT:
+		return 0;
+	case PAPER_USLETTER:
+		return 1;
+	case PAPER_USLEGAL:
+		return 2;
+	case PAPER_USEXECUTIVE:
+		return 3;
+	case PAPER_A3:
+		return 4;
+	case PAPER_A4:
+		return 5;
+	case PAPER_A5:
+		return 6;
+	case PAPER_B5:
+		return 7;
+	default:
+		// should not happen
+		return 0;
+	}
 }
 
 } // namespace frontend

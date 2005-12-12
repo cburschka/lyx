@@ -1,3 +1,9 @@
+2005-12-12  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* lyxrc.C: set default_papersize to PAPER_DEFAULT;
+	handle PAPER_DEFAULT in LyXRC::read and LyXRC::write (bug 2148).
+	* paper.h: dispose dead PAPER_PACKAGES enum.
+
 2005-12-07  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* Makefile.am (OTHERLIBS): add SOCKET_LIBS in case we compile

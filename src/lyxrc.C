@@ -211,7 +211,7 @@ void LyXRC::setDefaults() {
 	document_path.erase();
 	tempdir_path = "/tmp";
 	view_dvi_paper_option.erase();
-	default_papersize = PAPER_USLETTER;
+	default_papersize = PAPER_DEFAULT;
 	custom_export_format = "ps";
 	chktex_command = "chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38";
 	bibtex_command = "bibtex";
@@ -586,6 +586,9 @@ int LyXRC::read(LyXLex & lexrc)
 				else if (size == "b5")
 					default_papersize =
 						PAPER_B5;
+				else if (size == "default")
+					default_papersize =
+						PAPER_DEFAULT;
 			}
 			break;
 
@@ -1297,6 +1300,8 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 			os << "# The default papersize to use.\n"
 			   << "\\default_papersize \"";
 			switch (default_papersize) {
+			case PAPER_DEFAULT:
+				os << "default"; break;
 			case PAPER_USLETTER:
 				os << "usletter"; break;
 			case PAPER_USLEGAL:
@@ -1311,8 +1316,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 				os << "a5"; break;
 			case PAPER_B5:
 				os << "b5"; break;
-			case PAPER_DEFAULT: 
-			case PAPER_CUSTOM: 
+			case PAPER_CUSTOM:
 			case PAPER_B3:
 			case PAPER_B4: break;
 			}

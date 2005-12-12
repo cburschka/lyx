@@ -1,3 +1,9 @@
+2005-12-12  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* ControlPrefs.[Ch]: new helper functions toPaperSize and
+	fromPaperSize that prevent off-by-x errors in the papersize
+	combos (bug 2148).
+
 2005-11-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* ControlErrorList.C (goTo): give a better error message when pid

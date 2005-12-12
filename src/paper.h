@@ -16,18 +16,6 @@
 #define PAPER_H
 
 ///
-enum PAPER_PACKAGES {
-	///
-	PACKAGE_NONE,
-	///
-	PACKAGE_A4,
-	///
-	PACKAGE_A4WIDE,
-	///
-	PACKAGE_WIDEMARGINSA4
-};
-
-///
 enum PAPER_SIZE {
 	///
 	PAPER_DEFAULT,

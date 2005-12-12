@@ -2064,7 +2064,7 @@ void FormPreferences::OutputsMisc::apply(LyXRC & rc) const
 
 	int const choice =
 		fl_get_choice(dialog_->choice_default_papersize) - 1;
-	rc.default_papersize = static_cast<PAPER_SIZE>(choice);
+	rc.default_papersize = parent_.controller().toPaperSize(choice);
 
 	rc.ascii_roff_command = getString(dialog_->input_ascii_roff);
 	rc.chktex_command = getString(dialog_->input_checktex);
@@ -2158,7 +2158,7 @@ void FormPreferences::OutputsMisc::update(LyXRC const & rc)
 	fl_set_input(dialog_->input_tex_encoding,
 		     rc.fontenc.c_str());
 	fl_set_choice(dialog_->choice_default_papersize,
-		      rc.default_papersize + 1);
+		      parent_.controller().fromPaperSize(rc.default_papersize) + 1);
 	fl_set_input(dialog_->input_ascii_roff,
 		     rc.ascii_roff_command.c_str());
 	fl_set_input(dialog_->input_checktex,

@@ -1,3 +1,8 @@
+2005-12-12  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QPrefs.C: fix off-by-x errors in paper size setting
+	by using new helper functions fromPaperSize/toPaperSize (bug 2148).
+
 2005-11-17  Michael Gerz  <michael.gerz@teststep.org>
 
 	* ui/*.ui: remove dummy captions that pollute the po files

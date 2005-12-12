@@ -73,6 +73,11 @@ public:
 	/// update the screen fonts after change
 	void updateScreenFonts();
 
+	/// adjust the prefs paper sizes
+	PAPER_SIZE const toPaperSize(int i) const;
+	/// adjust the prefs paper sizes
+	int const fromPaperSize(PAPER_SIZE papersize) const;
+
 private:
 	/// temporary lyxrc
 	LyXRC rc_;
