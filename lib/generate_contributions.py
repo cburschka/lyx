@@ -514,7 +514,7 @@ contributers = [
                  "Re: [PATCH] BibTeX annotation support",
                  "m=111130799028250",
                  "20 March 2005",
-                 u""),
+                 u"BibTeX annotation support"),
 
      contributer(u"Edscott Wilson Garcia",
                  "edscott () xfce ! org",
@@ -658,7 +658,7 @@ contributers = [
                  "blanket-permission",
                  "m=111054675600338",
                  "11 March 2005",
-                 u""),
+                 u"Gtk reference insertion dialog"),
 
      contributer(u"Michael Koziarski",
                  "koziarski () gmail ! com",
@@ -955,6 +955,14 @@ contributers = [
                  "m=110910933124056",
                  "22 February 2005",
                  u"The driving force behind, and maintainer of, the LyX wiki wiki.\nSwedish translation of the Windows installer"),
+
+     contributer(u"Szõke Sándor",
+                 "alex () lyx ! hu",
+                 "GPL",
+                 "Contribution to LyX",
+                 "m=113449408830523",
+                 "13 December 2005",
+                 u"Hungarian translation"),
 
      contributer(u"Janus Sandsgaard",
                  "janus () janus ! dk",
