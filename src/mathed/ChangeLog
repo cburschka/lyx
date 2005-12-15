@@ -1,3 +1,8 @@
+2005-12-15  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* math_hullinset.C: initialize Math (symbol fonts and parser) if not
+	aleady done. 
+
 2005-12-02  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* math_nestinset.C (script): always ensure that the cell we want to go

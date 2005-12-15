@@ -230,8 +230,6 @@ void LyX::priv_exec(int & argc, char * argv[])
 	if (want_gui)
 		lyx_gui::parse_lyxrc();
 
-	initMath();
-
 	vector<string> files;
 
 	for (int argi = argc - 1; argi >= 1; --argi)

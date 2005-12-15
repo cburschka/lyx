@@ -143,6 +143,7 @@ MathHullInset::MathHullInset()
 	//lyxerr << "sizeof MetricsInfo: " << sizeof(MetricsInfo) << endl;
 	//lyxerr << "sizeof MathCharInset: " << sizeof(MathCharInset) << endl;
 	//lyxerr << "sizeof LyXFont: " << sizeof(LyXFont) << endl;
+	initMath();
 	setDefaults();
 }
 
@@ -151,6 +152,7 @@ MathHullInset::MathHullInset(string const & type)
 	: MathGridInset(getCols(type), 1), type_(type), nonum_(1), label_(1),
 	  preview_(new RenderPreview(this))
 {
+	initMath();
 	setDefaults();
 }
 

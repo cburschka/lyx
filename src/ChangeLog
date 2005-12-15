@@ -1,3 +1,8 @@
+2005-12-15  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* lyx_main.C (priv_exec): don't initialize Math on startup 
+	(initMath() has been moved to math_hullinset).
+
 2005-12-12  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* lyxrc.C: set default_papersize to PAPER_DEFAULT;
