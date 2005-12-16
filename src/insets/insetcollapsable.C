@@ -138,7 +138,10 @@ void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim = dimensionCollapsed();
 		if (status() == Open) {
 			InsetText::metrics(mi, textdim_);
+			bool oldopeninlined = openinlined_;
 			openinlined_ = (textdim_.wid + dim.wid <= mi.base.textwidth);
+			if (openinlined_ != oldopeninlined)
+				InsetText::metrics(mi, textdim_);
 			if (openinlined_) {
 				dim.wid += textdim_.wid;
 				dim.des = max(dim.des - textdim_.asc + dim.asc, textdim_.des);
