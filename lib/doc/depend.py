@@ -79,6 +79,7 @@ def main(argv):
 
         if toc_name in languages[lang]:
             languages[lang].remove(toc_name)
+        languages[lang].sort()
 
         print toc_name + ': $(srcdir)/' + ' $(srcdir)/'.join(languages[lang])
         print '\tpython $(srcdir)/doc_toc.py %s' % lang
