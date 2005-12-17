@@ -383,7 +383,14 @@ public:
 	virtual mode_type currentMode() const { return UNDECIDED_MODE; }
 	/// returns whether this inset is allowed in other insets of given mode
 	virtual bool allowedIn(mode_type) const { return true; }
-	/// is this inset allowed within a font change?
+	/**
+	 * Is this inset allowed within a font change?
+	 *
+	 * FIXME: noFontChange means currently that the font change is closed
+	 * in LaTeX before the inset, and that the contents of the inset
+	 * will be in default font. This should be changed so that the inset
+	 * changes the font again.
+	 */
 	virtual bool noFontChange() const { return false; }
 
 	/// mark the inset as erased or not

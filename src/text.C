@@ -1684,12 +1684,19 @@ bool LyXText::redoParagraph(pit_type const pit)
 	}
 
 	// redo insets
+	// FIXME: We should always use getFont(), see documentation of
+	// noFontChange() in insetbase.h.
+	LyXFont const tclassfont =
+		bv()->buffer()->params().getLyXTextClass().defaultfont();
 	InsetList::iterator ii = par.insetlist.begin();
 	InsetList::iterator iend = par.insetlist.end();
 	for (; ii != iend; ++ii) {
 		Dimension dim;
 		int const w = maxwidth_ - leftMargin(pit, ii->pos) - rightMargin(par);
-		MetricsInfo mi(bv(), getFont(par, ii->pos), w);
+		LyXFont const & font = ii->inset->noFontChange() ?
+			tclassfont :
+			getFont(par, ii->pos);
+		MetricsInfo mi(bv(), font, w);
 		ii->inset->metrics(mi, dim);
 	}
 

@@ -154,7 +154,11 @@ void RowPainter::paintInset(pos_type const pos, LyXFont const & font)
 	InsetBase const * inset = par_.getInset(pos);
 	BOOST_ASSERT(inset);
 	PainterInfo pi(const_cast<BufferView *>(&bv_), pain_);
-	pi.base.font = font;
+	// FIXME: We should always use font, see documentation of
+	// noFontChange() in insetbase.h.
+	pi.base.font = inset->noFontChange() ?
+		bv_.buffer()->params().getLyXTextClass().defaultfont() :
+		font;
 	pi.ltr_pos = (text_.bidi.level(pos) % 2 == 0);
 	pi.erased_ = erased_ || isDeletedText(par_, pos);
 	theCoords.insets().add(inset, int(x_), yo_);

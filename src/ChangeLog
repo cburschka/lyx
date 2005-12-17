@@ -1,3 +1,8 @@
+2005-12-08  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* text.C (redoParagraph): honor inset->noFontChange()
+	* rowpainter.C (paintInset): ditto
+
 2005-12-15  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* lyx_main.C (priv_exec): don't initialize Math on startup 
