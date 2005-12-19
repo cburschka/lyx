@@ -1,3 +1,10 @@
+2005-12-19  Bennett Helm  <bennett.helm@fandm.edu>
+
+	* layouts/paper.layout: the abstract environment should not be
+	indented, should be block, and its main text should be in roman
+	font; however, the label should be sans serif, bold, and not
+	centered.
+
 2005-12-16  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* symbols: avoid use of symbol font if cmsy is available.

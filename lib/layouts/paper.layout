@@ -134,12 +134,18 @@ End
 
 
 Style Abstract
-	Align                 Left
-	AlignPossible         Left
 	Font
 	  Size                Small
-	  Family              Sans
 	EndFont
+	LabelType             Top_Environment
+	LabelFont
+	  Series              Bold
+	  Family              Sans
+	  Size                Small
+	EndFont
+	LeftMargin            ""
+	RightMargin           ""
+	ParIndent             ""
 End
 
 
