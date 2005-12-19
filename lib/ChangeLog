@@ -1,3 +1,8 @@
+2005-12-16  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* symbols: avoid use of symbol font if cmsy is available.
+	Saves 3 seconds in initMath() for me (qt, ~20.000 fonts)
+
 2005-12-12  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* bind/sciword.bind: include math.bind, not maths.bind.

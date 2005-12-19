@@ -811,16 +811,16 @@ iffont msb
 endif
 \def\mathcircumflex{\mbox{\^{}}}
 
-textdegree         lyxsymbol             176 0 mathord  x
-
 iffont cmsy
 # The \sim is placed too high...
 \def\cong{\stackrel{_\sim}{=}}
 lyxsurd               cmsy        112 0 mathord  x
 \def\surd{^\lyxsurd}
+\def\textdegree{\kern-1mu^{\circ}\kern-4mu}
 else
 cong               lyxsymbol             64  0 mathrel  x
 surd               lyxsymbol             214 0 mathord  x
+textdegree         lyxsymbol             176 0 mathord  x
 endif
                          
 #"{\hat{}}
