@@ -1,3 +1,9 @@
+2005-12-19  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* lyxtext.h:
+	* text.C:
+	* text3.C (Delete, backspace): force update when merging paragraphs
+
 2005-12-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* BufferView.C (mouseSetCursor): clear the selection properly (bug

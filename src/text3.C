@@ -621,7 +621,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_DELETE:
 		if (!cur.selection()) {
-			Delete(cur);
+			needsUpdate = Delete(cur);
 			cur.resetAnchor();
 			// It is possible to make it a lot faster still
 			// just comment out the line below...
@@ -649,7 +649,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_BACKSPACE:
 		if (!cur.selection()) {
 			if (bv->owner()->getIntl().getTransManager().backspace()) {
-				backspace(cur);
+				needsUpdate = backspace(cur);
 				cur.resetAnchor();
 				// It is possible to make it a lot faster still
 				// just comment out the line below...

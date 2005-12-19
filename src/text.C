@@ -1534,31 +1534,34 @@ void LyXText::changeCase(LCursor & cur, LyXText::TextCase action)
 }
 
 
-void LyXText::Delete(LCursor & cur)
+bool LyXText::Delete(LCursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
+	bool needsUpdate = false;
 
 	if (cur.pos() != cur.lastpos()) {
 		recordUndo(cur, Undo::DELETE, cur.pit());
 		setCursorIntern(cur, cur.pit(), cur.pos() + 1, false, cur.boundary());
-		backspace(cur);
+		needsUpdate = backspace(cur);
 	} else if (cur.pit() != cur.lastpit()) {
 		LCursor scur = cur;
 
 		setCursorIntern(cur, cur.pit()+1, 0, false, false);
 		if (pars_[cur.pit()].layout() == pars_[scur.pit()].layout()) {
 			recordUndo(scur, Undo::DELETE, scur.pit());
-			backspace(cur);
+			needsUpdate = backspace(cur);
 		} else {
 			setCursorIntern(scur, scur.pit(), scur.pos(), false, scur.boundary());
 		}
 	}
+	return needsUpdate;
 }
 
 
-void LyXText::backspace(LCursor & cur)
+bool LyXText::backspace(LCursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
+	bool needsUpdate = false;
 	if (cur.pos() == 0) {
 		// The cursor is at the beginning of a paragraph, so
 		// the the backspace will collapse two paragraphs into
@@ -1567,7 +1570,7 @@ void LyXText::backspace(LCursor & cur)
 		// but it's not allowed unless it's new
 		Paragraph & par = cur.paragraph();
 		if (par.isChangeEdited(0, par.size()))
-			return;
+			return false;
 
 		// we may paste some paragraphs
 
@@ -1592,7 +1595,7 @@ void LyXText::backspace(LCursor & cur)
                                 }
                                 
 				cursorLeft(cur);
-				return;
+				return true;
 			}
 		}
 
@@ -1626,6 +1629,7 @@ void LyXText::backspace(LCursor & cur)
 		        || pars_[tmppit].layout() == tclass.defaultLayout()))
 		{
 			mergeParagraph(bufparams, pars_, cpit);
+			needsUpdate = true;
 
 			if (cur.pos() != 0 && pars_[cpit].isSeparator(cur.pos() - 1))
 				--cur.pos();
@@ -1651,6 +1655,8 @@ void LyXText::backspace(LCursor & cur)
 		setCurrentFont(cur);
 
 	setCursor(cur, cur.pit(), cur.pos(), false, cur.boundary());
+
+	return needsUpdate;
 }
 
 

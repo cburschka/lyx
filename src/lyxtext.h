@@ -221,9 +221,9 @@ public:
 	///
 	void cursorBottom(LCursor & cur);
 	///
-	void Delete(LCursor & cur);
+	bool Delete(LCursor & cur);
 	///
-	void backspace(LCursor & cur);
+	bool backspace(LCursor & cur);
 	///
 	bool selectWordWhenUnderCursor(LCursor & cur, lyx::word_location);
 	///
