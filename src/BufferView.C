@@ -345,7 +345,7 @@ void BufferView::mouseSetCursor(LCursor & cur)
 		cursor().text()->deleteEmptyParagraphMechanism(cur, cursor());
 
 	cursor() = cur;
-	cursor().resetAnchor();
+	cursor().clearSelection();
 	cursor().setTargetX();
 	finishUndo();
 
