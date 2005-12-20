@@ -1,3 +1,8 @@
+2005-12-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* cursor.C (macroModeClose): set the cursor inside the new math
+	atom if relevant (think \frac{}{}) (bug 2034)
+
 2005-12-19  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* lyxtext.h:

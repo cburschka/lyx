@@ -839,16 +839,19 @@ void LCursor::macroModeClose()
 	if (s == "\\")
 		return;
 
-	string const name = s.substr(1);
-
 	// prevent entering of recursive macros
 	// FIXME: this is only a weak attempt... only prevents immediate
 	// recursion
+	string const name = s.substr(1);
 	InsetBase const * macro = innerInsetOfType(InsetBase::MATHMACRO_CODE);
 	if (macro && macro->getInsetName() == name)
 		lyxerr << "can't enter recursive macro" << endl;
 
-	plainInsert(createMathInset(name));
+	// Going back and forth between LCursor and mathed is a bit
+	// ridiculous, but the alternative was to duplicate the code
+	// in MathNestInset::doDispatch/LFUN_INSERT_MATH (which puts
+	// the cursor in the newly created inset). (JMarc 2005/12/20)
+	dispatch(FuncRequest(LFUN_INSERT_MATH, s));
 }
 
 
