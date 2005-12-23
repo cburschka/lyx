@@ -21,6 +21,7 @@
 \addto\captionsgerman
 {\renewcommand{\indexname}
 {Stichwortverzeichnis}}
+
 % zur darstellung des Euro-zeichens
 \usepackage[official]{eurosym}
 \end_preamble
@@ -89,15 +90,12 @@ status open
 
 \begin_layout Standard
 
-\size small
 \noun on
 HHa
 \noun default
-: 
-\size footnotesize
-Ich habe mich bemüht, dieses Dokument so zu schreiben, daß es mit meinen
- Randeinstellungen, den sehr schmalen Randeinstellungen und als book (koma-scrip
-t) sauber gesetzt wird.
+: Ich habe mich bemüht, dieses Dokument so zu schreiben, daß es mit meinen
+ Randeinstellungen, die sehr schmal sind,  und als book (koma-script) sauber
+ gesetzt wird.
 \end_layout
 
 \end_inset
@@ -106,8 +104,8 @@ t) sauber gesetzt wird.
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 14.
- November 2005
+letzte Änderung: 21.
+ Dzember 2005
 \end_layout
 
 \begin_layout Standard
@@ -804,7 +802,7 @@ status open
 Wenn Sie das vorhaben, sollten Sie sich die Unterstützung für Versionskontrolle
  im Dokument 
 \emph on
-Profi-Tipps
+Handbuchergänzungen
 \emph default
  ansehen.
 \end_layout
@@ -952,8 +950,8 @@ Strg+V
 \bar under
 F
 \bar default
-inden\InsetSpace ~
-&\InsetSpace ~
+inden\InsetSpace \space{}
+&\InsetSpace \space{}
 Ersetzen\SpecialChar \ldots{}
 ,
 \begin_inset LatexCommand \index{Finden \& Ersetzen}
@@ -1040,21 +1038,16 @@ status collapsed
 
 \end_inset
 
-X:\InsetSpace ~
-Finden\InsetSpace ~
-&\InsetSpace ~
+X:\InsetSpace \space{}
+Finden\InsetSpace \space{}
+und\InsetSpace \space{}
 Ersetzen.
-\begin_inset Foot
+\begin_inset Note Note
 status open
 
 \begin_layout Standard
-Die Klammerung Ly{}X in der 
-\family typewriter
-.lyx
-\family default
--Datei verhindert, daß aus L\InsetSpace ~
-y\InsetSpace ~
-X LyX wird, ebenso bei LaTeX, TeX usw.
+Die Klammerung {} verhindert, daß der Sonderbegriff LyX erkannt wird, ebenso
+ bei LaTeX, TeX usw.
 \end_layout
 
 \end_inset
@@ -1062,9 +1055,9 @@ X LyX wird, ebenso bei LaTeX, TeX usw.
  Den zu suchenden Text tragen Sie im Feld 
 \family sans
 \bar under
-S
+F
 \bar default
-uche:
+inden:
 \family default
  ein.
  Mit der Schaltfläche
@@ -1074,14 +1067,18 @@ uche:
 \bar default
 Nächstes
 \family default
+\InsetSpace \space{}
+
+\family sans
+finden
+\family default
  wird der Text gesucht.
  Die Suchrichtung ist normalerweise vorwärts, es sei denn, 
 \family sans
-Rückwärt
 \bar under
-s
+R
 \bar default
-\InsetSpace ~
+ückwärts\InsetSpace \space{}
 suchen
 \family default
  ist aktiviert.
@@ -1108,18 +1105,19 @@ durch:
 \bar under
 A
 \bar default
-lles\InsetSpace ~
+lles\InsetSpace \space{}
 ersetzen
 \family default
  anklicken, werden unabhängig davon, wo der Cursor im Dokument gerade steht,
  wirklich ALLE Suchbegriffe ersetzt.
  Ist das Feld 
 \family sans
+Ersetzen\InsetSpace \space{}
+
 \bar under
-E
+d
 \bar default
-rsetzen\InsetSpace ~
-durch:
+urch:
 \family default
  leer, wird der Suchbegriff gelöscht.
 \end_layout
@@ -1130,7 +1128,7 @@ durch:
 \bar under
 G
 \bar default
-roß-/Kleinschr.\InsetSpace ~
+roß-/Kleinschr.\InsetSpace \space{}
 beachten
 \family default
  können Sie festlegen, ob bei der Suche die Schreibweise berücksichtigt
@@ -1157,12 +1155,13 @@ treffen
 \begin_layout Standard
 Der Umschaltknopf 
 \family sans
-Ganzes\InsetSpace ~
-
+Nur\InsetSpace \space{}
+ganze
 \bar under
+\InsetSpace \space{}
 W
 \bar default
-ort
+örter
 \family default
  schaltet den Modus 
 \begin_inset Quotes gld
@@ -1223,7 +1222,7 @@ iederholen
 
  (
 \family sans
-Umschalt+Strg+Z
+Strg+Umschalt+Z
 \family default
 )
 \end_layout
@@ -6510,7 +6509,7 @@ documentclass
 
 \family sans
 Absatztrennung
-\begin_inset LatexCommand \index{Absatztrennung}
+\begin_inset LatexCommand \index{Absatz!-trennung}
 
 \end_inset
 
@@ -6721,12 +6720,12 @@ Standard
 
 \begin_layout Section
 Absatzeinrückung
-\begin_inset LatexCommand \index{Absatzeinr"uckung}
+\begin_inset LatexCommand \index{Absatz!-einruckung@-einrückung}
 
 \end_inset
 
  und Absatztrennung
-\begin_inset LatexCommand \index{Absatztrennung}
+\begin_inset LatexCommand \index{Absatz!-trennung}
 
 \end_inset
 
@@ -6960,11 +6959,11 @@ einstellen.
 
 \begin_layout Section
 Absatzumgebungen
-\begin_inset LatexCommand \index{Absatzumgebungen}
+\begin_inset LatexCommand \index{Absatz!-umgebungen}
 
 \end_inset
 
- 
+
 \begin_inset LatexCommand \label{sec:par-environments}
 
 \end_inset
@@ -7072,7 +7071,7 @@ sloppypar
 \family default
  weiter (siehe 
 \emph on
-Profi-Tipps
+Handbuchergänzungen
 \emph default
  oder auch 
 \begin_inset LatexCommand \cite{latex-einführung}
@@ -10514,7 +10513,7 @@ latexcompanion
 Das erweiterte LaTeX-Literaturpaket BibTeX wird von LyX auch unterstützt.
  Im Dokument
 \emph on
- Profi-Tipps
+ Handbuchergänzungen
 \emph default
  können Sie nachlesen, wie man es benutzt.
 \end_layout
@@ -14458,11 +14457,11 @@ Nachdem wir nun einige Grundfunktionen von LyX zur Dokumentbearbeitung erläutert
  können.
  Vorher wollen wir Ihnen jedoch einen kurzen Überblick über das geben, was
  sich im Hintergrund abspielt.
- Wir werden dies ausführlicher im 
+ Wir werden dies ausführlicher in 
 \emph on
-Profi-Tipps
+Handbuchergänzungen
 \emph default
--Handbuch behandelt.
+ behandeln.
 \end_layout
 
 \begin_layout Standard
@@ -14679,9 +14678,9 @@ Tip\InsetSpace ~
  können Sie in 
 \family sans
 \bar under
-B
+W
 \bar default
-earbeiten\SpecialChar \menuseparator
+erkzeuge\SpecialChar \menuseparator
 E
 \bar under
 i
@@ -15579,7 +15578,7 @@ X
 \InsetSpace ~
 prüfen, wie es in 
 \emph on
-Profi-Tipps
+Handbuchergänzungen
 \emph default
  beschrieben ist.
 \end_layout
@@ -16221,7 +16220,7 @@ Tricks für Fußnoten und Randnotizen
 
  der 
 \emph on
-Profi-Tipps
+Handbuchergänzungen
 \emph default
  beschrieben -- einige LaTeX-Befehle verwenden.
 \end_layout
@@ -22338,7 +22337,7 @@ Diese Eigenschaft von LyX, Texte in Mathed, die es nicht kennt, so zu lassen
 n und zu benutzen.
  Der zugehörige Befehl muß im LaTeX-Vorspann stehen (siehe 
 \emph on
-Profi-Tipps
+Handbuchergänzungen
 \emph default
 ).
  Wenn Sie dort zum Beispiel schreiben:
@@ -22383,7 +22382,7 @@ benutzen, um
  LaTeX senden (für eine Druckvorschau oder zum Druck).
  Weitere Einzelheiten finden Sie in den 
 \emph on
-Profi-Tipps
+Handbuchergänzungen
 \emph default
 .
 \end_layout
@@ -25976,7 +25975,7 @@ nach unten plazieren will.
 
 \begin_layout Subsection
 Absatzausrichtung
-\begin_inset LatexCommand \index{Absatzausrichtung}
+\begin_inset LatexCommand \index{Absatz!-ausrichtung}
 
 \end_inset
 
@@ -31270,7 +31269,7 @@ ort
 \family default
 : Siehe 
 \emph on
-Profi-Tipps.
+Handbuchergänzungen.
 \end_layout
 
 \begin_layout Enumerate
@@ -31403,7 +31402,7 @@ Siehe Abschnitt
 
  und 
 \emph on
-Profi-Tipps.
+Handbuchergänzungen.
 \end_layout
 
 \begin_layout Enumerate
@@ -31516,7 +31515,7 @@ egistrieren\SpecialChar \ldots{}
 \begin_layout Standard
 Siehe 
 \emph on
-Profi-Tipps.
+Handbuchergänzungen.
 \end_layout
 
 \begin_layout Subsection
@@ -31561,7 +31560,7 @@ oWeb\SpecialChar \ldots{}
 \begin_layout Standard
 Siehe 
 \emph on
-Profi-Tipps.
+Handbuchergänzungen.
 \end_layout
 
 \begin_layout Subsection
@@ -31645,7 +31644,7 @@ xportieren
 \begin_layout Standard
 Siehe 
 \emph on
-Profi-Tipps.
+Handbuchergänzungen.
  
 \emph default
 Welche Typen in der Liste auftauchen, hängt davon ab, welche Pakete zusätzlich
@@ -31787,7 +31786,7 @@ X
 \begin_layout Standard
 Siehe 
 \emph on
-Profi-Tipps.
+Handbuchergänzungen.
 \end_layout
 
 \begin_layout Subsection
@@ -31886,7 +31885,7 @@ ort
 \begin_layout Standard
 Siehe 
 \emph on
-Profi-Tipps.
+Handbuchergänzungen.
 \end_layout
 
 \begin_layout Subsection
@@ -31931,7 +31930,7 @@ Siehe Abschnitt
 
  und 
 \emph on
-Profi-Tipps.
+Handbuchergänzungen.
 \end_layout
 
 \begin_layout Subsection
@@ -31948,7 +31947,7 @@ Box
 \begin_layout Standard
 Siehe 
 \emph on
-Profi-Tipps.
+Handbuchergänzungen.
 \end_layout
 
 \begin_layout Subsection
@@ -32144,7 +32143,7 @@ DF (ps2pdf)
 \begin_layout Standard
 Siehe 
 \emph on
-Profi-Tipps.
+Handbuchergänzungen.
 \end_layout
 
 \begin_layout Subsection
@@ -32236,45 +32235,23 @@ avigieren\SpecialChar \menuseparator
 \begin_layout Subsection
 
 \family sans
-Abbildung
-\begin_inset LatexCommand \index{Abbildung}
+\bar under
+L
+\bar default
+esezeichen
+\begin_inset LatexCommand \index{Lesezeichen}
 
 \end_inset
 
+\SpecialChar \menuseparator
 
 \family default
- und 
-\family sans
-Tabelle
-\begin_inset LatexCommand \index{Tabelle}
-
-\end_inset
-
+ \SpecialChar \ldots{}
 
 \end_layout
 
 \begin_layout Standard
-Damit gelangen Sie direkt zur ausgewählten Abbildung oder Tabelle.
-\end_layout
-
-\begin_layout Subsection
-
-\family sans
-\bar under
-F
-\bar default
-ehler
-\begin_inset LatexCommand \index{Fehler}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Siehe 
-\emph on
-Profi-Tipps.
+Damit können Sie bis zu fünf Lesezeichen setzen und dorthin gehen.
 \end_layout
 
 \begin_layout Subsection
@@ -32283,7 +32260,7 @@ Profi-Tipps.
 \bar under
 N
 \bar default
-otiz
+ächste Notiz
 \begin_inset LatexCommand \index{Notiz}
 
 \end_inset
@@ -32298,15 +32275,7 @@ Damit gelangen Sie von einer Notiz zur nächsten.
 \begin_layout Subsection
 
 \family sans
-\bar under
-R
-\bar default
-eferenzen
-\begin_inset LatexCommand \index{Referenzen}
-
-\end_inset
-
-
+Gehe zur Marke (Strg+>)
 \end_layout
 
 \begin_layout Standard
@@ -32328,35 +32297,17 @@ HHa
 \end_layout
 
 \begin_layout Subsection
-
-\family sans
-\bar under
-L
-\bar default
-esezeichen
-\begin_inset LatexCommand \index{Lesezeichen}
-
-\end_inset
-
-\SpecialChar \menuseparator
-
-\family default
- \SpecialChar \ldots{}
-
-\end_layout
-
-\begin_layout Standard
-Damit können Sie bis zu drei Lesezeichen setzen und dorthin gehen.
+Verzeichnisse
 \end_layout
 
 \begin_layout Section
 
 \family sans
-Do
+D
 \bar under
-k
+o
 \bar default
-umente
+kument
 \begin_inset LatexCommand \index{Dokumente}
 
 \end_inset
@@ -32365,9 +32316,8 @@ umente
 \end_layout
 
 \begin_layout Standard
-Hier ist eine Liste aller geöffneten Dokumente.
- Das gerade bearbeitete ist mit einem Häkchen versehen, und Sie können eines
- der anderen zur Bearbeitung nach vorn holen.
+Hier finden Sie Eigenschaften und andere Einstellmöglichkeiten des geöffneten
+ Dokuments.
 \end_layout
 
 \begin_layout LyX-Code
@@ -32765,7 +32715,6 @@ Addison-Wesley, 1994
 
 \bibitem {latexguide}
 A Guide to LaTeX2e, Kopka and Daly.
- 
 \end_layout
 
 \begin_layout Bibliography
