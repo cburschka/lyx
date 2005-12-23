@@ -83,7 +83,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2005-12-18 13:36+0100\n"
+"POT-Creation-Date: 2005-12-23 18:55+0100\n"
 "PO-Revision-Date: 2005-12-18 15:12+0100\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
@@ -2041,7 +2041,7 @@ msgstr "Seitenumbruch nach der aktuellen Zeile|#S"
 #: src/frontends/xforms/forms/form_tabular.fd:1638
 #: src/frontends/xforms/forms/form_tabular.fd:1656
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:60
-#: src/frontends/qt2/QDocument.C:166 src/text.C:2225
+#: src/frontends/qt2/QDocument.C:166 src/text.C:2231
 msgid "Double"
 msgstr "Doppelt"
 
@@ -2604,7 +2604,7 @@ msgstr "&OK"
 #: src/frontends/qt2/ui/QDocumentDialogBase.ui:214 src/buffer_funcs.C:91
 #: src/buffer_funcs.C:117 src/buffer_funcs.C:158 src/bufferlist.C:84
 #: src/bufferlist.C:183 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:655
-#: src/lyxfunc.C:817 src/lyxfunc.C:1863 src/lyxvc.C:168
+#: src/lyxfunc.C:817 src/lyxfunc.C:1862 src/lyxvc.C:168
 msgid "&Cancel"
 msgstr "&Abbrechen"
 
@@ -3752,7 +3752,7 @@ msgid "Print as grey text"
 msgstr "Als grauen Text drucken"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:48
-#: src/frontends/qt2/QDocument.C:162 src/text.C:2219
+#: src/frontends/qt2/QDocument.C:162 src/text.C:2225
 msgid "Single"
 msgstr "Einfach"
 
@@ -5336,7 +5336,7 @@ msgstr "Zusammenfassung---"
 
 #: lib/layouts/IEEEtran.layout:348 lib/layouts/aastex.layout:109
 #: lib/layouts/aastex.layout:284 lib/layouts/elsart.layout:64
-#: lib/layouts/kluwer.layout:283 lib/layouts/paper.layout:169
+#: lib/layouts/kluwer.layout:283 lib/layouts/paper.layout:175
 #: lib/layouts/revtex4.layout:230 lib/layouts/siamltex.layout:169
 #: lib/layouts/spie.layout:40 lib/layouts/agu_stdtitle.inc:120
 #: lib/layouts/amsdefs.inc:192 lib/layouts/svjour.inc:274
@@ -7326,7 +7326,7 @@ msgstr "Kolumne Autor"
 msgid "Running author:"
 msgstr "Kolumne Autor:"
 
-#: lib/layouts/kluwer.layout:291 lib/layouts/paper.layout:172
+#: lib/layouts/kluwer.layout:291 lib/layouts/paper.layout:178
 #: lib/layouts/revtex4.layout:235 lib/layouts/spie.layout:47
 #: lib/layouts/agu_stdtitle.inc:123
 msgid "Keywords:"
@@ -7453,11 +7453,11 @@ msgstr "Gedichttitel*"
 msgid "Legend"
 msgstr ""
 
-#: lib/layouts/paper.layout:147
+#: lib/layouts/paper.layout:153
 msgid "SubTitle"
 msgstr "Untertitel"
 
-#: lib/layouts/paper.layout:158
+#: lib/layouts/paper.layout:164
 msgid "Institution"
 msgstr "Institution"
 
@@ -10124,21 +10124,21 @@ msgstr "Wählen Sie das einzufügende LyX-Dokument"
 #: src/frontends/controllers/ControlExternal.C:160
 #: src/frontends/controllers/ControlGraphics.C:94
 #: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:133
-#: src/lyxfunc.C:1704 src/lyxfunc.C:1741 src/lyxfunc.C:1816
+#: src/lyxfunc.C:1703 src/lyxfunc.C:1740 src/lyxfunc.C:1815
 msgid "Documents|#o#O"
 msgstr "Dokumente|#k"
 
-#: src/BufferView_pimpl.C:853 src/lyxfunc.C:1743 src/lyxfunc.C:1818
+#: src/BufferView_pimpl.C:853 src/lyxfunc.C:1742 src/lyxfunc.C:1817
 msgid "Examples|#E#e"
 msgstr "Beispiele|#B"
 
-#: src/BufferView_pimpl.C:858 src/lyx_cb.C:141 src/lyxfunc.C:1711
-#: src/lyxfunc.C:1748
+#: src/BufferView_pimpl.C:858 src/lyx_cb.C:141 src/lyxfunc.C:1710
+#: src/lyxfunc.C:1747
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX-Dokumente (*.lyx)"
 
-#: src/BufferView_pimpl.C:868 src/lyxfunc.C:1758 src/lyxfunc.C:1836
-#: src/lyxfunc.C:1850 src/lyxfunc.C:1866
+#: src/BufferView_pimpl.C:868 src/lyxfunc.C:1757 src/lyxfunc.C:1835
+#: src/lyxfunc.C:1849 src/lyxfunc.C:1865
 msgid "Canceled."
 msgstr "Abgebrochen."
 
@@ -10974,7 +10974,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Datei überschreiben?"
 
-#: src/exporter.C:77 src/lyx_cb.C:168 src/lyxfunc.C:1863
+#: src/exporter.C:77 src/lyx_cb.C:168 src/lyxfunc.C:1862
 msgid "&Over-write"
 msgstr "&Überschreiben"
 
@@ -11866,7 +11866,7 @@ msgstr "mit Überschriften"
 msgid "fancy"
 msgstr "ausgefallen"
 
-#: src/frontends/qt2/QDocument.C:164 src/text.C:2222
+#: src/frontends/qt2/QDocument.C:164 src/text.C:2228
 msgid "OneHalf"
 msgstr "Eineinhalb"
 
@@ -13919,11 +13919,11 @@ msgstr "&Umbenennen"
 msgid "Choose a filename to save document as"
 msgstr "Wählen Sie einen Dateinamen für das Dokument"
 
-#: src/lyx_cb.C:135 src/lyxfunc.C:1706
+#: src/lyx_cb.C:135 src/lyxfunc.C:1705
 msgid "Templates|#T#t"
 msgstr "Vorlagen|#V"
 
-#: src/lyx_cb.C:165 src/lyxfunc.C:1860
+#: src/lyx_cb.C:165 src/lyxfunc.C:1859
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -13934,7 +13934,7 @@ msgstr ""
 "\n"
 "Möchten Sie das Dokument überschreiben?"
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:1862
+#: src/lyx_cb.C:167 src/lyxfunc.C:1861
 msgid "Over-write document?"
 msgstr "Dokument überschreiben?"
 
@@ -14044,15 +14044,15 @@ msgstr "Fertig!"
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Falsche Befehlszeilenoption `%1$s'. Das Programm terminiert."
 
-#: src/lyx_main.C:391
+#: src/lyx_main.C:390
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/lyx_main.C:500
+#: src/lyx_main.C:499
 msgid "Could not create temporary directory"
 msgstr "Das temporäre Verzeichnis konnte nicht erstellt werden"
 
-#: src/lyx_main.C:501
+#: src/lyx_main.C:500
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -14063,11 +14063,11 @@ msgstr ""
 "%1$s erstellt werden. Stellen Sie sicher, dass dieser\n"
 "Pfad existiert und beschreibbar ist und versuchen Sie es noch einmal."
 
-#: src/lyx_main.C:643
+#: src/lyx_main.C:642
 msgid "Missing user LyX directory"
 msgstr "Kein LyX-Benutzerverzeichnis"
 
-#: src/lyx_main.C:644
+#: src/lyx_main.C:643
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -14076,37 +14076,37 @@ msgstr ""
 "Sie haben ein nicht vorhandenes LyX-Benutzerverzeichnis angegeben, %1$s.\n"
 "Es wird benötigt, um Ihre persönliche Konfiguration abzulegen."
 
-#: src/lyx_main.C:649
+#: src/lyx_main.C:648
 msgid "&Create directory."
 msgstr "Verzeichnis &erstellen."
 
-#: src/lyx_main.C:650
+#: src/lyx_main.C:649
 msgid "&Exit LyX."
 msgstr "LyX &beenden."
 
-#: src/lyx_main.C:651
+#: src/lyx_main.C:650
 msgid "No user LyX directory. Exiting."
 msgstr "Kein LyX-Benutzerverzeichnis. LyX wird beendet."
 
-#: src/lyx_main.C:655
+#: src/lyx_main.C:654
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Erstellen des Verzeichnisses %1$s"
 
-#: src/lyx_main.C:662
+#: src/lyx_main.C:661
 msgid "Failed to create directory. Exiting."
 msgstr "Das Erstellen des Verzeichnisses ist fehlgeschlagen. LyX wird beendet."
 
-#: src/lyx_main.C:812
+#: src/lyx_main.C:811
 msgid "List of supported debug flags:"
 msgstr "Liste der unterstützten Testoptionen:"
 
-#: src/lyx_main.C:816
+#: src/lyx_main.C:815
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Festlegen des Test-Levels auf %1$s"
 
-#: src/lyx_main.C:827
+#: src/lyx_main.C:826
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -14149,29 +14149,29 @@ msgstr ""
 "\n"
 "Weitere Optionen sind in der Online-Hilfe (man lyx) aufgeführt."
 
-#: src/lyx_main.C:863
+#: src/lyx_main.C:862
 msgid "Missing directory for -sysdir switch"
 msgstr "Die Option -sysdir verlangt die Angabe eines Verzeichnisses"
 
-#: src/lyx_main.C:873
+#: src/lyx_main.C:872
 msgid "Missing directory for -userdir switch"
 msgstr "Die Option -userdir verlangt die Angabe eines Verzeichnisses"
 
-#: src/lyx_main.C:883
+#: src/lyx_main.C:882
 msgid "Missing command string after --execute switch"
 msgstr "Die Option --execute verlangt die Angabe eines Befehls"
 
-#: src/lyx_main.C:893
+#: src/lyx_main.C:892
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr ""
 "Die Option --export verlangt die Angabe eines Dateityps [z.B. latex, ps...]"
 
-#: src/lyx_main.C:905
+#: src/lyx_main.C:904
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr ""
 "Die Option --import verlangt die Angabe eines Dateityps [z.B. latex, ps...]"
 
-#: src/lyx_main.C:910
+#: src/lyx_main.C:909
 msgid "Missing filename for --import"
 msgstr "Die Option --import verlangt die Angabe eines Dateinamens"
 
@@ -14373,35 +14373,35 @@ msgstr "Das Dokument wird an die neue Dokumentklasse angepasst..."
 msgid "Class switch"
 msgstr "Klassenwechsel"
 
-#: src/lyxfunc.C:1702
+#: src/lyxfunc.C:1701
 msgid "Select template file"
 msgstr "Wählen Sie eine Vorlagendatei"
 
-#: src/lyxfunc.C:1739
+#: src/lyxfunc.C:1738
 msgid "Select document to open"
 msgstr "Wählen Sie das zu öffnende Dokument"
 
-#: src/lyxfunc.C:1780
+#: src/lyxfunc.C:1779
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Öffne Dokument %1$s..."
 
-#: src/lyxfunc.C:1784
+#: src/lyxfunc.C:1783
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokument %1$s ist geöffnet."
 
-#: src/lyxfunc.C:1786
+#: src/lyxfunc.C:1785
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Das Dokument %1$s konnte nicht geöffnet werden"
 
-#: src/lyxfunc.C:1811
+#: src/lyxfunc.C:1810
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Wählen Sie die einzufügende %1$s-Datei"
 
-#: src/lyxfunc.C:1921
+#: src/lyxfunc.C:1920
 msgid "Welcome to LyX!"
 msgstr "Willkommen bei LyX!"
 
@@ -15161,49 +15161,49 @@ msgstr ""
 "Sie können zwei Leerzeichen nicht auf diese Weise eingeben. Bitte lesen Sie "
 "das Tutorium."
 
-#: src/text.C:2188
+#: src/text.C:2194
 msgid "Change: "
 msgstr "Änderung: "
 
-#: src/text.C:2192
+#: src/text.C:2198
 msgid " at "
 msgstr " am "
 
-#: src/text.C:2203
+#: src/text.C:2209
 #, c-format
 msgid "Font: %1$s"
 msgstr "Schrift: %1$s"
 
-#: src/text.C:2210
+#: src/text.C:2216
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Tiefe: %1$d"
 
-#: src/text.C:2216
+#: src/text.C:2222
 msgid ", Spacing: "
 msgstr ", Abstand: "
 
-#: src/text.C:2228
+#: src/text.C:2234
 msgid "Other ("
 msgstr "Andere ("
 
-#: src/text.C:2237
+#: src/text.C:2243
 msgid ", Inset: "
 msgstr ", Einfügung: "
 
-#: src/text.C:2238
+#: src/text.C:2244
 msgid ", Paragraph: "
 msgstr ", Absatz: "
 
-#: src/text.C:2239
+#: src/text.C:2245
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/text.C:2240
+#: src/text.C:2246
 msgid ", Position: "
 msgstr ", Position: "
 
-#: src/text.C:2241
+#: src/text.C:2247
 msgid ", Boundary: "
 msgstr ", Grenze: "
 

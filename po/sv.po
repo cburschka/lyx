@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.0.1b\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2005-12-18 13:36+0100\n"
+"POT-Creation-Date: 2005-12-23 18:55+0100\n"
 "PO-Revision-Date: 2005-12-18 15:05+0100\n"
 "Last-Translator: Joacim Persson <>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -2262,7 +2262,7 @@ msgstr "Kan inte skriva ut"
 #: src/frontends/xforms/forms/form_tabular.fd:1638
 #: src/frontends/xforms/forms/form_tabular.fd:1656
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:60
-#: src/frontends/qt2/QDocument.C:166 src/text.C:2225
+#: src/frontends/qt2/QDocument.C:166 src/text.C:2231
 #, fuzzy
 msgid "Double"
 msgstr "Dubbel:|#D"
@@ -2895,7 +2895,7 @@ msgstr "OK"
 #: src/frontends/qt2/ui/QDocumentDialogBase.ui:214 src/buffer_funcs.C:91
 #: src/buffer_funcs.C:117 src/buffer_funcs.C:158 src/bufferlist.C:84
 #: src/bufferlist.C:183 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:655
-#: src/lyxfunc.C:817 src/lyxfunc.C:1863 src/lyxvc.C:168
+#: src/lyxfunc.C:817 src/lyxfunc.C:1862 src/lyxvc.C:168
 #, fuzzy
 msgid "&Cancel"
 msgstr "Avbryt"
@@ -4215,7 +4215,7 @@ msgid "Print as grey text"
 msgstr "Alla sidor|#l"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:48
-#: src/frontends/qt2/QDocument.C:162 src/text.C:2219
+#: src/frontends/qt2/QDocument.C:162 src/text.C:2225
 #, fuzzy
 msgid "Single"
 msgstr "Enkel:|#E"
@@ -6026,7 +6026,7 @@ msgstr ""
 
 #: lib/layouts/IEEEtran.layout:348 lib/layouts/aastex.layout:109
 #: lib/layouts/aastex.layout:284 lib/layouts/elsart.layout:64
-#: lib/layouts/kluwer.layout:283 lib/layouts/paper.layout:169
+#: lib/layouts/kluwer.layout:283 lib/layouts/paper.layout:175
 #: lib/layouts/revtex4.layout:230 lib/layouts/siamltex.layout:169
 #: lib/layouts/spie.layout:40 lib/layouts/agu_stdtitle.inc:120
 #: lib/layouts/amsdefs.inc:192 lib/layouts/svjour.inc:274
@@ -8244,7 +8244,7 @@ msgstr ""
 msgid "Running author:"
 msgstr "Okänd operation"
 
-#: lib/layouts/kluwer.layout:291 lib/layouts/paper.layout:172
+#: lib/layouts/kluwer.layout:291 lib/layouts/paper.layout:178
 #: lib/layouts/revtex4.layout:235 lib/layouts/spie.layout:47
 #: lib/layouts/agu_stdtitle.inc:123
 #, fuzzy
@@ -8392,11 +8392,11 @@ msgstr "Porträtt|#o"
 msgid "Legend"
 msgstr ""
 
-#: lib/layouts/paper.layout:147
+#: lib/layouts/paper.layout:153
 msgid "SubTitle"
 msgstr ""
 
-#: lib/layouts/paper.layout:158
+#: lib/layouts/paper.layout:164
 #, fuzzy
 msgid "Institution"
 msgstr "Lägg in citat"
@@ -11504,24 +11504,24 @@ msgstr "Välj dokument som skall läsas in"
 #: src/frontends/controllers/ControlExternal.C:160
 #: src/frontends/controllers/ControlGraphics.C:94
 #: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:133
-#: src/lyxfunc.C:1704 src/lyxfunc.C:1741 src/lyxfunc.C:1816
+#: src/lyxfunc.C:1703 src/lyxfunc.C:1740 src/lyxfunc.C:1815
 #, fuzzy
 msgid "Documents|#o#O"
 msgstr "Dokument"
 
-#: src/BufferView_pimpl.C:853 src/lyxfunc.C:1743 src/lyxfunc.C:1818
+#: src/BufferView_pimpl.C:853 src/lyxfunc.C:1742 src/lyxfunc.C:1817
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Exempel"
 
-#: src/BufferView_pimpl.C:858 src/lyx_cb.C:141 src/lyxfunc.C:1711
-#: src/lyxfunc.C:1748
+#: src/BufferView_pimpl.C:858 src/lyx_cb.C:141 src/lyxfunc.C:1710
+#: src/lyxfunc.C:1747
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "Dokumentet"
 
-#: src/BufferView_pimpl.C:868 src/lyxfunc.C:1758 src/lyxfunc.C:1836
-#: src/lyxfunc.C:1850 src/lyxfunc.C:1866
+#: src/BufferView_pimpl.C:868 src/lyxfunc.C:1757 src/lyxfunc.C:1835
+#: src/lyxfunc.C:1849 src/lyxfunc.C:1865
 msgid "Canceled."
 msgstr "Avbrutet."
 
@@ -12423,7 +12423,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Skrivmaskin"
 
-#: src/exporter.C:77 src/lyx_cb.C:168 src/lyxfunc.C:1863
+#: src/exporter.C:77 src/lyx_cb.C:168 src/lyxfunc.C:1862
 #, fuzzy
 msgid "&Over-write"
 msgstr "Skrivmaskin"
@@ -13457,7 +13457,7 @@ msgstr "Mappning av tangentbord"
 msgid "fancy"
 msgstr ""
 
-#: src/frontends/qt2/QDocument.C:164 src/text.C:2222
+#: src/frontends/qt2/QDocument.C:164 src/text.C:2228
 msgid "OneHalf"
 msgstr ""
 
@@ -15665,12 +15665,12 @@ msgstr "Namn:|#N"
 msgid "Choose a filename to save document as"
 msgstr "Skriv in filnamnet som dokumentet skall sparas under"
 
-#: src/lyx_cb.C:135 src/lyxfunc.C:1706
+#: src/lyx_cb.C:135 src/lyxfunc.C:1705
 #, fuzzy
 msgid "Templates|#T#t"
 msgstr "Mallar"
 
-#: src/lyx_cb.C:165 src/lyxfunc.C:1860
+#: src/lyx_cb.C:165 src/lyxfunc.C:1859
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -15678,7 +15678,7 @@ msgid ""
 "Do you want to over-write that document?"
 msgstr ""
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:1862
+#: src/lyx_cb.C:167 src/lyxfunc.C:1861
 #, fuzzy
 msgid "Over-write document?"
 msgstr "Spara dokumentet?"
@@ -15785,17 +15785,17 @@ msgstr "Klar!"
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:391
+#: src/lyx_main.C:390
 #, fuzzy
 msgid "LyX: "
 msgstr "Skriv ut"
 
-#: src/lyx_main.C:500
+#: src/lyx_main.C:499
 #, fuzzy
 msgid "Could not create temporary directory"
 msgstr "Fel: Kunde inte skapa temporär katalog:"
 
-#: src/lyx_main.C:501
+#: src/lyx_main.C:500
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -15803,50 +15803,50 @@ msgid ""
 "path exists and is writable and try again."
 msgstr ""
 
-#: src/lyx_main.C:643
+#: src/lyx_main.C:642
 #, fuzzy
 msgid "Missing user LyX directory"
 msgstr "LyX: Skapar katalog "
 
-#: src/lyx_main.C:644
+#: src/lyx_main.C:643
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr ""
 
-#: src/lyx_main.C:649
+#: src/lyx_main.C:648
 #, fuzzy
 msgid "&Create directory."
 msgstr "Fel! Kan inte öppna katalog:"
 
-#: src/lyx_main.C:650
+#: src/lyx_main.C:649
 msgid "&Exit LyX."
 msgstr ""
 
-#: src/lyx_main.C:651
+#: src/lyx_main.C:650
 msgid "No user LyX directory. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:655
+#: src/lyx_main.C:654
 #, fuzzy, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr " och kör \"configure\"..."
 
-#: src/lyx_main.C:662
+#: src/lyx_main.C:661
 msgid "Failed to create directory. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:812
+#: src/lyx_main.C:811
 msgid "List of supported debug flags:"
 msgstr ""
 
-#: src/lyx_main.C:816
+#: src/lyx_main.C:815
 #, fuzzy, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Sätter avlusningsnivå till "
 
-#: src/lyx_main.C:827
+#: src/lyx_main.C:826
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -15868,32 +15868,32 @@ msgid ""
 "Check the LyX man page for more details."
 msgstr ""
 
-#: src/lyx_main.C:863
+#: src/lyx_main.C:862
 #, fuzzy
 msgid "Missing directory for -sysdir switch"
 msgstr "Katalog för -sysdir saknas!"
 
-#: src/lyx_main.C:873
+#: src/lyx_main.C:872
 #, fuzzy
 msgid "Missing directory for -userdir switch"
 msgstr "Katalog för -sysdir saknas!"
 
-#: src/lyx_main.C:883
+#: src/lyx_main.C:882
 #, fuzzy
 msgid "Missing command string after --execute switch"
 msgstr "Nummer för -dbg saknas!"
 
-#: src/lyx_main.C:893
+#: src/lyx_main.C:892
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Välj LaTeX-fil att importera"
 
-#: src/lyx_main.C:905
+#: src/lyx_main.C:904
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Välj LaTeX-fil att importera"
 
-#: src/lyx_main.C:910
+#: src/lyx_main.C:909
 #, fuzzy
 msgid "Missing filename for --import"
 msgstr "Välj LaTeX-fil att importera"
@@ -16099,37 +16099,37 @@ msgstr "Konverterar dokument till ny dokumentklass..."
 msgid "Class switch"
 msgstr ""
 
-#: src/lyxfunc.C:1702
+#: src/lyxfunc.C:1701
 #, fuzzy
 msgid "Select template file"
 msgstr "Markera nästa rad"
 
-#: src/lyxfunc.C:1739
+#: src/lyxfunc.C:1738
 #, fuzzy
 msgid "Select document to open"
 msgstr "Välj dokument som skall öppnas"
 
-#: src/lyxfunc.C:1780
+#: src/lyxfunc.C:1779
 #, fuzzy, c-format
 msgid "Opening document %1$s..."
 msgstr "Vill du öppna dokumentet?"
 
-#: src/lyxfunc.C:1784
+#: src/lyxfunc.C:1783
 #, fuzzy, c-format
 msgid "Document %1$s opened."
 msgstr "Inga dokument öppnade!%t"
 
-#: src/lyxfunc.C:1786
+#: src/lyxfunc.C:1785
 #, fuzzy, c-format
 msgid "Could not open document %1$s"
 msgstr "Kunde inte öppna dokumentet"
 
-#: src/lyxfunc.C:1811
+#: src/lyxfunc.C:1810
 #, fuzzy, c-format
 msgid "Select %1$s file to import"
 msgstr "Välj dokument som skall läsas in"
 
-#: src/lyxfunc.C:1921
+#: src/lyxfunc.C:1920
 msgid "Welcome to LyX!"
 msgstr "Välkommen till LyX!"
 
@@ -16757,57 +16757,57 @@ msgstr ""
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "Du kan inte mata in två mellanslag i rad sådär. Läs Nybörjarkursen."
 
-#: src/text.C:2188
+#: src/text.C:2194
 #, fuzzy
 msgid "Change: "
 msgstr "Sidor:"
 
-#: src/text.C:2192
+#: src/text.C:2198
 #, fuzzy
 msgid " at "
 msgstr " av "
 
-#: src/text.C:2203
+#: src/text.C:2209
 #, fuzzy, c-format
 msgid "Font: %1$s"
 msgstr "Tecken: "
 
-#: src/text.C:2210
+#: src/text.C:2216
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr ", Djup: "
 
-#: src/text.C:2216
+#: src/text.C:2222
 #, fuzzy
 msgid ", Spacing: "
 msgstr "Mellanrum"
 
-#: src/text.C:2228
+#: src/text.C:2234
 #, fuzzy
 msgid "Other ("
 msgstr "Annat...|#A"
 
-#: src/text.C:2237
+#: src/text.C:2243
 #, fuzzy
 msgid ", Inset: "
 msgstr ", Djup: "
 
-#: src/text.C:2238
+#: src/text.C:2244
 #, fuzzy
 msgid ", Paragraph: "
 msgstr "Styckesstil satt"
 
-#: src/text.C:2239
+#: src/text.C:2245
 #, fuzzy
 msgid ", Id: "
 msgstr ", Djup: "
 
-#: src/text.C:2240
+#: src/text.C:2246
 #, fuzzy
 msgid ", Position: "
 msgstr "   val: "
 
-#: src/text.C:2241
+#: src/text.C:2247
 msgid ", Boundary: "
 msgstr ""
 

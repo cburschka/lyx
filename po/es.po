@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.3.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2005-12-18 13:36+0100\n"
+"POT-Creation-Date: 2005-12-23 18:55+0100\n"
 "PO-Revision-Date: 2005-12-18 15:12+0100\n"
 "Last-Translator: Alfredo Braunstein <abraunst@ictp.trieste.it>\n"
 "Language-Team: es <es@li.org>\n"
@@ -2018,7 +2018,7 @@ msgstr "Salto de página"
 #: src/frontends/xforms/forms/form_tabular.fd:1638
 #: src/frontends/xforms/forms/form_tabular.fd:1656
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:60
-#: src/frontends/qt2/QDocument.C:166 src/text.C:2225
+#: src/frontends/qt2/QDocument.C:166 src/text.C:2231
 msgid "Double"
 msgstr "Dos caras"
 
@@ -2605,7 +2605,7 @@ msgstr "&Aceptar"
 #: src/frontends/qt2/ui/QDocumentDialogBase.ui:214 src/buffer_funcs.C:91
 #: src/buffer_funcs.C:117 src/buffer_funcs.C:158 src/bufferlist.C:84
 #: src/bufferlist.C:183 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:655
-#: src/lyxfunc.C:817 src/lyxfunc.C:1863 src/lyxvc.C:168
+#: src/lyxfunc.C:817 src/lyxfunc.C:1862 src/lyxvc.C:168
 msgid "&Cancel"
 msgstr "&Cancelar"
 
@@ -3816,7 +3816,7 @@ msgid "Print as grey text"
 msgstr "Imprimir todas las páginas"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:48
-#: src/frontends/qt2/QDocument.C:162 src/text.C:2219
+#: src/frontends/qt2/QDocument.C:162 src/text.C:2225
 msgid "Single"
 msgstr "Sencillo"
 
@@ -5467,7 +5467,7 @@ msgstr "Abstract"
 
 #: lib/layouts/IEEEtran.layout:348 lib/layouts/aastex.layout:109
 #: lib/layouts/aastex.layout:284 lib/layouts/elsart.layout:64
-#: lib/layouts/kluwer.layout:283 lib/layouts/paper.layout:169
+#: lib/layouts/kluwer.layout:283 lib/layouts/paper.layout:175
 #: lib/layouts/revtex4.layout:230 lib/layouts/siamltex.layout:169
 #: lib/layouts/spie.layout:40 lib/layouts/agu_stdtitle.inc:120
 #: lib/layouts/amsdefs.inc:192 lib/layouts/svjour.inc:274
@@ -7631,7 +7631,7 @@ msgstr ""
 msgid "Running author:"
 msgstr "Acción desconocida"
 
-#: lib/layouts/kluwer.layout:291 lib/layouts/paper.layout:172
+#: lib/layouts/kluwer.layout:291 lib/layouts/paper.layout:178
 #: lib/layouts/revtex4.layout:235 lib/layouts/spie.layout:47
 #: lib/layouts/agu_stdtitle.inc:123
 #, fuzzy
@@ -7781,11 +7781,11 @@ msgstr "TransparenciaRetrato"
 msgid "Legend"
 msgstr ""
 
-#: lib/layouts/paper.layout:147
+#: lib/layouts/paper.layout:153
 msgid "SubTitle"
 msgstr ""
 
-#: lib/layouts/paper.layout:158
+#: lib/layouts/paper.layout:164
 msgid "Institution"
 msgstr ""
 
@@ -10744,22 +10744,22 @@ msgstr "Seleccionar documento LyX a insertar"
 #: src/frontends/controllers/ControlExternal.C:160
 #: src/frontends/controllers/ControlGraphics.C:94
 #: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:133
-#: src/lyxfunc.C:1704 src/lyxfunc.C:1741 src/lyxfunc.C:1816
+#: src/lyxfunc.C:1703 src/lyxfunc.C:1740 src/lyxfunc.C:1815
 msgid "Documents|#o#O"
 msgstr "Documentos|#o"
 
-#: src/BufferView_pimpl.C:853 src/lyxfunc.C:1743 src/lyxfunc.C:1818
+#: src/BufferView_pimpl.C:853 src/lyxfunc.C:1742 src/lyxfunc.C:1817
 msgid "Examples|#E#e"
 msgstr "Ejemplos|#E#e"
 
-#: src/BufferView_pimpl.C:858 src/lyx_cb.C:141 src/lyxfunc.C:1711
-#: src/lyxfunc.C:1748
+#: src/BufferView_pimpl.C:858 src/lyx_cb.C:141 src/lyxfunc.C:1710
+#: src/lyxfunc.C:1747
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "*.lyx| Documentos LyX (*.lyx)"
 
-#: src/BufferView_pimpl.C:868 src/lyxfunc.C:1758 src/lyxfunc.C:1836
-#: src/lyxfunc.C:1850 src/lyxfunc.C:1866
+#: src/BufferView_pimpl.C:868 src/lyxfunc.C:1757 src/lyxfunc.C:1835
+#: src/lyxfunc.C:1849 src/lyxfunc.C:1865
 msgid "Canceled."
 msgstr "Cancelado."
 
@@ -11614,7 +11614,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Tipografía \"de &máquina\":"
 
-#: src/exporter.C:77 src/lyx_cb.C:168 src/lyxfunc.C:1863
+#: src/exporter.C:77 src/lyx_cb.C:168 src/lyxfunc.C:1862
 #, fuzzy
 msgid "&Over-write"
 msgstr "Tipografía \"de &máquina\":"
@@ -12577,7 +12577,7 @@ msgstr "encabezados"
 msgid "fancy"
 msgstr "complejo"
 
-#: src/frontends/qt2/QDocument.C:164 src/text.C:2222
+#: src/frontends/qt2/QDocument.C:164 src/text.C:2228
 msgid "OneHalf"
 msgstr "Uno y medio"
 
@@ -14742,11 +14742,11 @@ msgstr "nombre"
 msgid "Choose a filename to save document as"
 msgstr "Elegir un nombre de archivo para guardar el documento"
 
-#: src/lyx_cb.C:135 src/lyxfunc.C:1706
+#: src/lyx_cb.C:135 src/lyxfunc.C:1705
 msgid "Templates|#T#t"
 msgstr "Plantillas|#t"
 
-#: src/lyx_cb.C:165 src/lyxfunc.C:1860
+#: src/lyx_cb.C:165 src/lyxfunc.C:1859
 #, fuzzy, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -14754,7 +14754,7 @@ msgid ""
 "Do you want to over-write that document?"
 msgstr "El documento usa una clase de texto desconocida \"%1$s\"."
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:1862
+#: src/lyx_cb.C:167 src/lyxfunc.C:1861
 #, fuzzy
 msgid "Over-write document?"
 msgstr "¿Guardar documento?"
@@ -14858,16 +14858,16 @@ msgstr "¡Listo!"
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Opción de la línea de comandos errónea '%1$s'. Terminando."
 
-#: src/lyx_main.C:391
+#: src/lyx_main.C:390
 msgid "LyX: "
 msgstr "LyX:"
 
-#: src/lyx_main.C:500
+#: src/lyx_main.C:499
 #, fuzzy
 msgid "Could not create temporary directory"
 msgstr "¡Error! Imposible crear directorio temporario:"
 
-#: src/lyx_main.C:501
+#: src/lyx_main.C:500
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -14875,51 +14875,51 @@ msgid ""
 "path exists and is writable and try again."
 msgstr ""
 
-#: src/lyx_main.C:643
+#: src/lyx_main.C:642
 #, fuzzy
 msgid "Missing user LyX directory"
 msgstr "LyX: reconfigurando el directorio del usario"
 
-#: src/lyx_main.C:644
+#: src/lyx_main.C:643
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr ""
 
-#: src/lyx_main.C:649
+#: src/lyx_main.C:648
 #, fuzzy
 msgid "&Create directory."
 msgstr "Imposible leer de este directorio."
 
-#: src/lyx_main.C:650
+#: src/lyx_main.C:649
 #, fuzzy
 msgid "&Exit LyX."
 msgstr "Acerca de LyX"
 
-#: src/lyx_main.C:651
+#: src/lyx_main.C:650
 msgid "No user LyX directory. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:655
+#: src/lyx_main.C:654
 #, fuzzy, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Creando directorio %1$s y ejecutando configure..."
 
-#: src/lyx_main.C:662
+#: src/lyx_main.C:661
 msgid "Failed to create directory. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:812
+#: src/lyx_main.C:811
 msgid "List of supported debug flags:"
 msgstr "Lista de opciones de análisis de errores:"
 
-#: src/lyx_main.C:816
+#: src/lyx_main.C:815
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Cambiando el nivel de análisis de errores a %1$s"
 
-#: src/lyx_main.C:827
+#: src/lyx_main.C:826
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -14955,29 +14955,29 @@ msgstr ""
 "  -version       resumen de la versión e información de compilado\n"
 "Lea la página del manual de LyX para más detalles."
 
-#: src/lyx_main.C:863
+#: src/lyx_main.C:862
 msgid "Missing directory for -sysdir switch"
 msgstr "Falta el directorio para la opción -sysdir"
 
-#: src/lyx_main.C:873
+#: src/lyx_main.C:872
 msgid "Missing directory for -userdir switch"
 msgstr "Falta el directorio para la opción -userdir"
 
-#: src/lyx_main.C:883
+#: src/lyx_main.C:882
 msgid "Missing command string after --execute switch"
 msgstr "Falta el comando de lyx luego de la opción --execute"
 
-#: src/lyx_main.C:893
+#: src/lyx_main.C:892
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr ""
 "Falta el tipo de archivo [por ej. latex, ps...] luego de la opción --export"
 
-#: src/lyx_main.C:905
+#: src/lyx_main.C:904
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr ""
 "Falta el tipo de archivo [por ej. latex, ps] luego de la opción --import"
 
-#: src/lyx_main.C:910
+#: src/lyx_main.C:909
 msgid "Missing filename for --import"
 msgstr "Falta el nombre del archivo a importar en la opción --import"
 
@@ -15177,35 +15177,35 @@ msgstr "Convirtiendo el documento a una nueva clase..."
 msgid "Class switch"
 msgstr ""
 
-#: src/lyxfunc.C:1702
+#: src/lyxfunc.C:1701
 msgid "Select template file"
 msgstr "Elegir plantilla"
 
-#: src/lyxfunc.C:1739
+#: src/lyxfunc.C:1738
 msgid "Select document to open"
 msgstr "Elegir documento a abrir"
 
-#: src/lyxfunc.C:1780
+#: src/lyxfunc.C:1779
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Abriendo docuemento %1$s..."
 
-#: src/lyxfunc.C:1784
+#: src/lyxfunc.C:1783
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Documento %1$s abierto."
 
-#: src/lyxfunc.C:1786
+#: src/lyxfunc.C:1785
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Imposible abrir documento %1$s"
 
-#: src/lyxfunc.C:1811
+#: src/lyxfunc.C:1810
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Elegir archivo %1$s a importar"
 
-#: src/lyxfunc.C:1921
+#: src/lyxfunc.C:1920
 msgid "Welcome to LyX!"
 msgstr "¡Bienvenido a LyX!"
 
@@ -15936,54 +15936,54 @@ msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "No se puede introducir dos espacios de esa manera. Por favor lea el Tutorial."
 
-#: src/text.C:2188
+#: src/text.C:2194
 #, fuzzy
 msgid "Change: "
 msgstr "Página:"
 
-#: src/text.C:2192
+#: src/text.C:2198
 #, fuzzy
 msgid " at "
 msgstr " a "
 
-#: src/text.C:2203
+#: src/text.C:2209
 #, c-format
 msgid "Font: %1$s"
 msgstr "Tipografía: %1$s"
 
-#: src/text.C:2210
+#: src/text.C:2216
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr ", Profundidad: %1$d"
 
-#: src/text.C:2216
+#: src/text.C:2222
 msgid ", Spacing: "
 msgstr ", Espaciado: "
 
-#: src/text.C:2228
+#: src/text.C:2234
 msgid "Other ("
 msgstr "Otro ("
 
-#: src/text.C:2237
+#: src/text.C:2243
 #, fuzzy
 msgid ", Inset: "
 msgstr ", Profundidad: "
 
-#: src/text.C:2238
+#: src/text.C:2244
 msgid ", Paragraph: "
 msgstr ", Párrafo: "
 
-#: src/text.C:2239
+#: src/text.C:2245
 #, fuzzy
 msgid ", Id: "
 msgstr ", Profundidad: "
 
-#: src/text.C:2240
+#: src/text.C:2246
 #, fuzzy
 msgid ", Position: "
 msgstr "Proposición"
 
-#: src/text.C:2241
+#: src/text.C:2247
 msgid ", Boundary: "
 msgstr ""
 
