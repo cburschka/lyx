@@ -1,16 +1,16 @@
 dnl Process with autoconf to generate configure script   -*- sh -*-
 
-AC_INIT(lyx,1.4.0cvs,lyx-devel@lists.lyx.org)
+AC_INIT(LyX,1.4.0cvs,[lyx-devel@lists.lyx.org],[lyx])
 AC_PREREQ(2.52)
 AC_CONFIG_SRCDIR(src/main.C)
-AM_CONFIG_HEADER([src/config.h])
+AC_CONFIG_HEADERS([src/config.h])
 
 AC_CONFIG_AUX_DIR(config)
 
-# first the version
-VERSION="1.4.0cvs"
+# First check the version
 LYX_CHECK_VERSION
 AC_CANONICAL_TARGET
+
 # Check how the files should be packaged
 LYX_USE_PACKAGING
 LYX_VERSION_SUFFIX
@@ -21,7 +21,7 @@ if test "${enable_maintainer_mode+set}" != set; then
 fi
 AM_MAINTAINER_MODE
 
-AM_INIT_AUTOMAKE($PACKAGE, $VERSION)
+AM_INIT_AUTOMAKE([foreign dist-bzip2 tar-ustar])
 
 ### Set the execute permissions of the various scripts correctly
 for file in config/install-sh config/mkinstalldirs lib/configure ; do

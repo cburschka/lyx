@@ -1,3 +1,11 @@
+2005-12-23  Lars Gullik Bjonnes  <larsbj@lyx.org>
+
+	* common.am (AUTOMAKE_OPTIONS): deleted, we now setupt am args
+	from configure.ac 
+
+	* lyxinclude.m4: use AC_PACKAGE_VERSION instead of VERSION, use
+	AC_PROGLIB_TOOL instead of AM_PROG_LIBTOOL
+
 2005-10-12  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyxinclude.m4 (LYX_USE_PACKAGING): set PACKAGE depending on

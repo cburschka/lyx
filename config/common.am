@@ -1,5 +1,3 @@
-AUTOMAKE_OPTIONS = foreign dist-bzip2
-
 CLEANFILES = pch.h.gch
 
 DISTCLEANFILES= pch.h.gch.dep *.orig *.rej *~ *.bak core
