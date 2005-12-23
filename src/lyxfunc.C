@@ -1592,10 +1592,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				view()->update(Update::FitCursor);
 
 			// if we executed a mutating lfun, mark the buffer as dirty
-			// FIXME: Why not use flag.enabled() but call getStatus again?
-			if (getStatus(cmd).enabled()
-					&& !lyxaction.funcHasFlag(cmd.action, LyXAction::NoBuffer)
-					&& !lyxaction.funcHasFlag(cmd.action, LyXAction::ReadOnly))
+			if (flag.enabled()
+			    && !lyxaction.funcHasFlag(cmd.action, LyXAction::NoBuffer)
+			    && !lyxaction.funcHasFlag(cmd.action, LyXAction::ReadOnly))
 				view()->buffer()->markDirty();
 		}
 

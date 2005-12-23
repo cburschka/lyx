@@ -1,3 +1,8 @@
+2005-12-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyxfunc.C (dispatch): do not call getStatus again to determine
+	whether a lfun is disabled (bug 2172).
+
 2005-12-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* cursor.C (macroModeClose): set the cursor inside the new math
