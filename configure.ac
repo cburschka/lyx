@@ -21,7 +21,7 @@ if test "${enable_maintainer_mode+set}" != set; then
 fi
 AM_MAINTAINER_MODE
 
-AM_INIT_AUTOMAKE([foreign dist-bzip2 tar-ustar])
+AM_INIT_AUTOMAKE([foreign dist-bzip2 tar-ustar 1.9])
 
 ### Set the execute permissions of the various scripts correctly
 for file in config/install-sh config/mkinstalldirs lib/configure ; do
