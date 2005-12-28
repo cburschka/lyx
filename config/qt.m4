@@ -49,6 +49,13 @@ AC_DEFUN([QT_FIND_UIC],
 	if test -z "$ac_uic" -a "$FATAL" = 1; then
 		AC_MSG_ERROR([uic binary not found in \$PATH or $qt_cv_dir/bin !])
 	fi
+	AC_MSG_CHECKING([whether uic supports -nounload])
+	if $ac_uic --help 2>&1 | grep nounload >/dev/null ; then
+		AC_MSG_RESULT([yes])
+		ac_uic="$ac_uic -nounload"
+	else
+		AC_MSG_RESULT([no])
+	fi
 ])
 
 dnl Find the right moc in path/qt_cv_dir
