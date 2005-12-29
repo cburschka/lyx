@@ -896,7 +896,9 @@ void toggleFixedWidth(LCursor & cur, InsetText * inset, bool fixedWidth)
 
 	// reset layout
 	cur.push(*inset);
-	inset->getText(0)->setLayout(0, cur.lastpit() + 1, "Standard");
+	// undo information has already been recorded
+	inset->getText(0)->setLayout(0, cur.lastpit() + 1,
+			bp.getLyXTextClass().defaultLayoutName());
 	cur.pop();
 }
 

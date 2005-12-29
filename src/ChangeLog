@@ -1,3 +1,8 @@
+2005-12-29  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* tabular.C (toggleFixedWidth): Use default layout of text class
+	instead of hardcoded "Standard"
+
 2005-12-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyxfunc.C (dispatch): do not call getStatus again to determine
