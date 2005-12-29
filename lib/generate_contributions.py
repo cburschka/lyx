@@ -748,6 +748,14 @@ contributers = [
                  "28 March 2005",
                  u"Added native support for \makebox to mathed. Several bug fixes, both to the source code and to the llncs layout file"),
 
+     contributer(u"Tomasz Luczak",
+                 "tlu () technodat ! com ! pl",
+                 "GPL",
+                 "Re: [Cvslog] lyx-devel po/: ChangeLog pl.po lib/: CREDITS",
+                 "m=113580483406067",
+                 "28 December 2005",
+                 u"Polish translation and mw* layouts files"),
+
      contributer(u"José Matos",
                  "jamatos () fc ! up ! pt",
                  "GPL",
