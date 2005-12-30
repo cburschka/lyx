@@ -11,17 +11,20 @@ AC_CONFIG_AUX_DIR(config)
 LYX_CHECK_VERSION
 AC_CANONICAL_TARGET
 
-# Check how the files should be packaged
-LYX_USE_PACKAGING
-LYX_VERSION_SUFFIX
-
 dnl default maintainer mode to true for development versions
 if test "${enable_maintainer_mode+set}" != set; then
   enable_maintainer_mode=$lyx_devel_version
 fi
 AM_MAINTAINER_MODE
 
-AM_INIT_AUTOMAKE([foreign dist-bzip2 tar-ustar 1.9])
+AM_INIT_AUTOMAKE([foreign dist-bzip2 tar-ustar no-define 1.9])
+
+# Check how the files should be packaged
+LYX_USE_PACKAGING
+LYX_VERSION_SUFFIX
+# We need to define these variables here and the no-define option of
+# AM_INIT_AUTOMAKE above because LYX_VERSION_SUFFIX alters $PACKAGE.
+AC_DEFINE_UNQUOTED(PACKAGE, "$PACKAGE", [Name of package])
 
 ### Set the execute permissions of the various scripts correctly
 for file in config/install-sh config/mkinstalldirs lib/configure ; do
