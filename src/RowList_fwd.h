@@ -15,6 +15,7 @@
 #include "lyxrow.h"
 
 #include <vector>
+#include <map>
 
 /**
  * Each paragraph is broken up into a number of rows on the screen.
@@ -22,5 +23,7 @@
  * downwards.
  */
 typedef std::vector<Row> RowList;
+///
+typedef std::map<lyx::size_type, lyx::size_type> RowSignature;
 
 #endif

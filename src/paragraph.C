@@ -81,7 +81,8 @@ Paragraph::Paragraph()
 Paragraph::Paragraph(Paragraph const & par)
 	:	itemdepth(par.itemdepth), insetlist(par.insetlist),
 		dim_(par.dim_),
-		rows_(par.rows_), layout_(par.layout_),
+		rows_(par.rows_), rowSignature_(par.rowSignature_), 
+		layout_(par.layout_),
 		text_(par.text_), begin_of_body_(par.begin_of_body_),
 	  pimpl_(new Paragraph::Pimpl(*par.pimpl_, this))
 {
@@ -107,6 +108,7 @@ Paragraph & Paragraph::operator=(Paragraph const & par)
 
 		rows_ = par.rows_;
 		dim_ = par.dim_;
+		rowSignature_ = par.rowSignature_;
 		layout_ = par.layout();
 		text_ = par.text_;
 		begin_of_body_ = par.begin_of_body_;

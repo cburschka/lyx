@@ -391,7 +391,9 @@ public:
 	RowList & rows() { return rows_; }
 	/// The painter and others use this
 	RowList const & rows() const { return rows_; }
-
+	///
+	RowSignature & rowSignature() const { return rowSignature_; }
+	
 	/// LyXText::redoParagraph updates this
 	Dimension & dim() { return dim_; }
 
@@ -408,6 +410,9 @@ private:
 
 	///
 	mutable RowList rows_;
+	///
+	mutable RowSignature rowSignature_;
+
 	///
 	LyXLayout_ptr layout_;
 	/**

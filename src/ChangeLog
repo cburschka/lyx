@@ -1,3 +1,12 @@
+2005-12-30  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* RowList_fwd.h:
+	* paragraph.C:
+	* paragraph.h:
+	* rowpainter.C: Speed up rendering by only re-painting rows that
+	have changed. When selection or whole-screen update active, all rows
+	are repainted, as are all rows within insets.
+
 2005-12-30  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* version.C.in: Use PACKAGE_VERSION instead of VERSION

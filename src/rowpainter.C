@@ -40,6 +40,8 @@
 
 #include "support/textutils.h"
 
+#include <boost/crc.hpp>
+
 using lyx::pos_type;
 using lyx::pit_type;
 
@@ -716,8 +718,35 @@ void RowPainter::paintText()
 }
 
 
+lyx::size_type calculateRowSignature(Row const & row, Paragraph const & par)
+{
+	boost::crc_32_type crc;
+	for (lyx::pos_type i = row.pos(); i < row.endpos(); ++i) {
+		const unsigned char b[] = { par.getChar(i) };
+		crc.process_bytes(b, 1);
+	}
+	return crc.checksum();
+}
+
+
+bool isCursorInInsetInRow(PainterInfo & pi, RowList::const_iterator rit, 
+		Paragraph const & par)
+{
+	InsetList::const_iterator ii = par.insetlist.begin();
+	InsetList::const_iterator iend = par.insetlist.end();
+	for ( ; ii != iend; ++ii) {
+	    	if (ii->pos >= rit->pos() && ii->pos < rit->endpos()
+		    && ii->inset->isTextInset() 
+		    && pi.base.bv->cursor().isInside(ii->inset))
+	    		return true;
+	}
+	return false;
+}
+
+
 void paintPar
-	(PainterInfo & pi, LyXText const & text, pit_type pit, int x, int y)
+	(PainterInfo & pi, LyXText const & text, pit_type pit, int x, int y,
+	 bool repaintAll)
 {
 //	lyxerr << "  paintPar: pit: " << pit << " at y: " << y << endl;
 	static NullPainter nop;
@@ -731,22 +760,51 @@ void paintPar
 	theCoords.parPos()[&text][pit] = Point(x, y);
 
 	y -= rb->ascent();
-	for (RowList::const_iterator rit = rb; rit != re; ++rit) {
+	lyx::size_type rowno(0);
+	for (RowList::const_iterator rit = rb; rit != re; ++rit, ++rowno) {
 		y += rit->ascent();
-		bool const inside = (y + rit->descent() >= 0
-				       && y - rit->ascent() < ww);
-		RowPainter rp(inside ? pi : nullpi, text, pit, *rit, x, y);
 
+		// Row signature; has row changed since last paint?
+		lyx::size_type const row_sig = calculateRowSignature(*rit, par);
+
+		// The following code figures out if the cursor is inside
+		// an inset _on this row_.
+		bool cur_in_inset_in_row = isCursorInInsetInRow(pi, rit, par);
+
+		// If selection is on, the current row signature differs from
+		// from cache, or cursor is inside an inset _on this row_, 
+		// then paint the row
+		if (repaintAll || par.rowSignature()[rowno] != row_sig 
+			   || cur_in_inset_in_row) {
+			// Add to row signature cache
+			par.rowSignature()[rowno] = row_sig;
+
+			bool const inside = (y + rit->descent() >= 0
+				       && y - rit->ascent() < ww);
+			RowPainter rp(inside ? pi : nullpi, text, pit, *rit, x, y);
+			// Clear background of this row 
+			// (if paragraph background was not cleared)
+			if (!repaintAll) {
+				pi.pain.fillRectangle(x, y - rit->ascent(), 
+				    pi.base.bv->workWidth(), rit->height(),
+				    text.backgroundColor());
+			}
+			
+			// Instrumentation for testing row cache (see also
+			// 12 lines lower):
+			//lyxerr << "#";
+			rp.paintAppendix();
+			rp.paintDepthBar();
+			rp.paintChangeBar();
+			if (rit == rb)
+				rp.paintFirst();
+			if (rit + 1 == re)
+				rp.paintLast();
+			rp.paintText();
+		}
 		y += rit->descent();
-		rp.paintAppendix();
-		rp.paintDepthBar();
-		rp.paintChangeBar();
-		if (rit == rb)
-			rp.paintFirst();
-		if (rit + 1 == re)
-			rp.paintLast();
-		rp.paintText();
 	}
+	//lyxerr << "." << endl;
 }
 
 } // namespace anon
@@ -756,22 +814,25 @@ void paintText(BufferView const & bv, ViewMetricsInfo const & vi)
 {
 	Painter & pain = bv.painter();
 	LyXText * const text = bv.text();
+	bool const select = bv.cursor().selection();
 
-	// clear background
-	pain.fillRectangle(0, vi.y1, bv.workWidth(), vi.y2 - vi.y1,
-			   LColor::background);
-
-	// draw selection
 	PainterInfo pi(const_cast<BufferView *>(&bv), pain);
-
-	text->drawSelection(pi, 0, 0);
+	if (select || !vi.singlepar) {
+		// Clear background (Delegated to rows if no selection)
+		pain.fillRectangle(0, vi.y1, bv.workWidth(), vi.y2 - vi.y1,
+			text->backgroundColor());
+	}
+	if (select) {
+		text->drawSelection(pi, 0, 0);
+	}
 
 	int yy = vi.y1;
 	// draw contents
 	for (pit_type pit = vi.p1; pit <= vi.p2; ++pit) {
-		yy += text->getPar(pit).ascent();
-		paintPar(pi, *bv.text(), pit, 0, yy);
-		yy += text->getPar(pit).descent();
+		Paragraph const & par = text->getPar(pit);
+		yy += par.ascent();
+		paintPar(pi, *bv.text(), pit, 0, yy, select || !vi.singlepar);
+		yy += par.descent();
 	}
 
 	// Cache one paragraph above and one below
@@ -809,7 +870,7 @@ void paintTextInset(LyXText const & text, PainterInfo & pi, int x, int y)
 	y -= text.getPar(0).ascent();
 	for (int pit = 0; pit < int(text.paragraphs().size()); ++pit) {
 		y += text.getPar(pit).ascent();
-		paintPar(pi, text, pit, x, y);
+		paintPar(pi, text, pit, x, y, true);
 		y += text.getPar(pit).descent();
 	}
 }
