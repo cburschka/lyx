@@ -308,8 +308,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	// Signals that a full-screen update is required
 	bool needsUpdate = !(lyxaction.funcHasFlag(cmd.action, 
 		LyXAction::NoUpdate) || singleParUpdate);
-	// Remember the old paragraph metric
-	Dimension olddim = cur.paragraph().dim();
+	// Remember the old paragraph metric (_outer_ paragraph!)
+	Dimension olddim = cur.bottom().paragraph().dim();
 
 	switch (cmd.action) {
 
@@ -1531,8 +1531,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	if (singleParUpdate)
 		// Inserting characters does not change par height
-	   	if (cur.paragraph().dim().asc == olddim.asc
-		 && cur.paragraph().dim().des == olddim.des) {
+	   	if (cur.bottom().paragraph().dim().height() 
+		    == olddim.height()) {
 			// if so, update _only_ this paragraph
 			cur.bv().update(Update::SinglePar | Update::Force);
 		} else

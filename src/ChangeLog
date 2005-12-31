@@ -1,3 +1,8 @@
+2005-12-31  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* text3.C (dispatch): Force refresh if typing into inset changes its
+			      metrics
+
 2005-12-30  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* RowList_fwd.h:
