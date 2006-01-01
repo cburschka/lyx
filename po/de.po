@@ -83,7 +83,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2005-12-23 18:55+0100\n"
+"POT-Creation-Date: 2006-01-01 14:04+0100\n"
 "PO-Revision-Date: 2005-12-18 15:12+0100\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
@@ -2182,7 +2182,7 @@ msgstr "&Abschnittsspezifisches Literaturverzeichnis"
 #: src/frontends/xforms/FormDocument.C:321
 msgid "Select this if you want to split your bibliography into sections"
 msgstr ""
-"Wählen Sie dies, wenn Sie ihr Literaturverzeichnis in Abschnitte aufteilen "
+"Wählen Sie dies, wenn Sie Ihr Literaturverzeichnis in Abschnitte aufteilen "
 "möchten"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:56
@@ -5371,7 +5371,7 @@ msgstr "Literaturverzeichnis"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:411
 #: lib/layouts/ijmpd.layout:163 lib/layouts/ijmpd.layout:171
 #: lib/layouts/kluwer.layout:324 lib/layouts/kluwer.layout:337
-#: src/rowpainter.C:423
+#: src/rowpainter.C:425
 msgid "Appendix"
 msgstr "Anhang"
 
@@ -7451,7 +7451,7 @@ msgstr "Gedichttitel*"
 
 #: lib/layouts/memoir.layout:150
 msgid "Legend"
-msgstr ""
+msgstr "Legende"
 
 #: lib/layouts/paper.layout:153
 msgid "SubTitle"
@@ -7496,7 +7496,7 @@ msgstr "\\Alph{chapter}"
 #: lib/layouts/scrlettr.layout:26 lib/layouts/scrlttr2.layout:25
 #: lib/layouts/scrclass.inc:32
 msgid "Labeling"
-msgstr ""
+msgstr "Labeling"
 
 #: lib/layouts/scrlettr.layout:59
 msgid "L"
@@ -7818,11 +7818,11 @@ msgstr "-- Kopfzeile --"
 
 #: lib/layouts/agu_stdtitle.inc:31
 msgid "Special-section"
-msgstr ""
+msgstr "Spezialabschnitt"
 
 #: lib/layouts/agu_stdtitle.inc:37
 msgid "Special-section:"
-msgstr ""
+msgstr "Spezialabschnitt:"
 
 #: lib/layouts/agu_stdtitle.inc:47
 msgid "AGU-journal"
@@ -11022,9 +11022,9 @@ msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokument als %1$s in die Datei `%2$s' exportiert"
 
 #: src/exporter.C:233
-#, fuzzy, c-format
+#, c-format
 msgid "Document exported as %1$s"
-msgstr "Dokument als %1$s in die Datei `%2$s' exportiert"
+msgstr "Dokument als %1$s exportiert"
 
 #: src/format.C:229 src/format.C:263
 msgid "Cannot view file"
@@ -11548,7 +11548,7 @@ msgstr "unbekanntes Datum"
 
 #: src/frontends/gtk/GChanges.C:122
 msgid "Done merging changes"
-msgstr ""
+msgstr "Änderungen wurden zusammengefasst"
 
 #: src/frontends/gtk/GCharacter.C:40 src/frontends/qt2/QCharacter.C:35
 #: src/frontends/xforms/FormCharacter.C:41
@@ -11646,7 +11646,7 @@ msgid "Paragraph Settings"
 msgstr "Absatz-Einstellungen"
 
 #: src/frontends/gtk/GParagraph.C:99 src/frontends/qt2/QParagraph.C:120
-#: src/frontends/xforms/FormParagraph.C:165 src/paragraph.C:620
+#: src/frontends/xforms/FormParagraph.C:165 src/paragraph.C:622
 msgid "Senseless with this layout!"
 msgstr "Für dieses Format nicht relevant!"
 
@@ -12253,7 +12253,7 @@ msgid ""
 "characters:\n"
 msgstr ""
 "LyX bietet keine LaTeX-Unterstützung für Dateinamen, die eines der folgenden "
-"Zeichen einhalten:\n"
+"Zeichen enthalten:\n"
 
 #: src/frontends/xforms/Alert_pimpl.C:79
 msgid "OK|^M"
@@ -12269,8 +12269,8 @@ msgid ""
 "LyX: Unknown X11 color %1$s\n"
 "     Using black instead, sorry!"
 msgstr ""
-"LyX: Unbekannte X11-Farbe %1$s\n"
-"     Sorry, verwende stattdessen schwarz!"
+"LyX: Unbekannte X11-Farbe %1$s,\n"
+"     verwende stattdessen schwarz!"
 
 #: src/frontends/xforms/ColorHandler.C:115
 #, c-format
