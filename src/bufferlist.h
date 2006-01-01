@@ -69,7 +69,7 @@ public:
 	/// returns a pointer to the buffer with the given number.
 	Buffer * getBuffer(unsigned int);
 	/// returns a pointer to the buffer whose temppath matches the string
-	Buffer * BufferList::getBufferFromTmp(std::string const &);
+	Buffer * getBufferFromTmp(std::string const &);
 
 	/** returns a pointer to the buffer that follows argument in
 	 * buffer list. The buffer following the last in list is the

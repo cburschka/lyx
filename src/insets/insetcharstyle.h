@@ -44,7 +44,7 @@ public:
 class InsetCharStyle : public InsetCollapsable {
 public:
 	/// Construct an undefined character style
-	InsetCharStyle::InsetCharStyle(BufferParams const &, std::string const);
+	InsetCharStyle(BufferParams const &, std::string const);
 	///
 	InsetCharStyle(BufferParams const &, CharStyles::iterator);
 	/// Is this character style defined in the document's textclass?

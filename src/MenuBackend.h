@@ -190,7 +190,7 @@ public:
 	///
 	typedef MenuList::iterator iterator;
 	///
-	MenuBackend::MenuBackend() : specialmenu_(0) {}
+	MenuBackend() : specialmenu_(0) {}
 	///
 	void read(LyXLex &);
 	///

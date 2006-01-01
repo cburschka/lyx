@@ -107,10 +107,10 @@ public:
 	///
 	std::string const asString(Buffer const &, bool label) const;
 	///
-	std::string const Paragraph::asString(Buffer const & buffer,
-					      lyx::pos_type beg,
-					      lyx::pos_type end,
-					      bool label) const;
+	std::string const asString(Buffer const & buffer,
+				   lyx::pos_type beg,
+				   lyx::pos_type end,
+				   bool label) const;
 	///
 	std::string const asString(Buffer const &,
 				   OutputParams const & runparams,

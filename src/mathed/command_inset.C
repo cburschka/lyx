@@ -47,7 +47,7 @@ void CommandInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-InsetBase * CommandInset::editXY(LCursor & cur, int x, int y)
+InsetBase * CommandInset::editXY(LCursor & cur, int /*x*/, int /*y*/)
 {
 	edit(cur, true);
 	return this;
