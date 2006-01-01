@@ -1,3 +1,8 @@
+2006-01-01  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* rowpainter.C (paintPar): always repaint the row with the
+	cursor in it
+
 2006-01-01  Lars Gullik Bjønnes <larsbj@gullik.net>
 
 	* MenuBackend.h: 

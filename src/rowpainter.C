@@ -729,17 +729,14 @@ lyx::size_type calculateRowSignature(Row const & row, Paragraph const & par)
 }
 
 
-bool isCursorInInsetInRow(PainterInfo & pi, RowList::const_iterator rit, 
-		Paragraph const & par)
+bool isCursorOnRow(PainterInfo & pi, pit_type pit, RowList::const_iterator rit)
 {
-	InsetList::const_iterator ii = par.insetlist.begin();
-	InsetList::const_iterator iend = par.insetlist.end();
-	for ( ; ii != iend; ++ii) {
-	    	if (ii->pos >= rit->pos() && ii->pos < rit->endpos()
-		    && ii->inset->isTextInset() 
-		    && pi.base.bv->cursor().isInside(ii->inset))
-	    		return true;
-	}
+	LCursor & cur = pi.base.bv->cursor();
+	for (lyx::size_type d = 0; d < cur.depth(); d++)
+		if (cur[d].pit() == pit
+	  	    && cur[d].pos() >= rit->pos()
+		    && cur[d].pos() < rit->endpos())
+			return true;
 	return false;
 }
 
@@ -767,15 +764,13 @@ void paintPar
 		// Row signature; has row changed since last paint?
 		lyx::size_type const row_sig = calculateRowSignature(*rit, par);
 
-		// The following code figures out if the cursor is inside
-		// an inset _on this row_.
-		bool cur_in_inset_in_row = isCursorInInsetInRow(pi, rit, par);
-
+		bool cursor_on_row = isCursorOnRow(pi, pit, rit);
+		
 		// If selection is on, the current row signature differs from
 		// from cache, or cursor is inside an inset _on this row_, 
 		// then paint the row
-		if (repaintAll || par.rowSignature()[rowno] != row_sig 
-			   || cur_in_inset_in_row) {
+		if (repaintAll || par.rowSignature()[rowno] != row_sig
+			    || cursor_on_row) {
 			// Add to row signature cache
 			par.rowSignature()[rowno] = row_sig;
 
