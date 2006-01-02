@@ -1,5 +1,5 @@
 #LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
-\lyxformat 243
+\lyxformat 245
 \begin_document
 \begin_header
 \textclass book
@@ -26,7 +26,6 @@
 \paragraph_separation indent
 \defskip medskip
 \quotes_language english
-\quotes_times 2
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
@@ -37,12 +36,10 @@
 \begin_body
 
 \begin_layout Title
-
 Personalizzazione di LyX: Caratteristiche per l'utente avanzato
 \end_layout
 
 \begin_layout Author
-
 dal LyX Team
 \begin_inset Foot
 status collapsed
@@ -69,8 +66,6 @@ traduzione italiana a cura di Lino Muoio
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \tableofcontents{}
 
 \end_inset
@@ -79,12 +74,10 @@ traduzione italiana a cura di Lino Muoio
 \end_layout
 
 \begin_layout Chapter
-
 Introduzione
 \end_layout
 
 \begin_layout Standard
-
 Questo manuale illustra le caratteristiche di personalizzazione presenti
  in LyX.
  Verranno di seguito discussi temi come le scorciatoie da tastiera, le opzioni
@@ -99,7 +92,6 @@ Questo manuale illustra le caratteristiche di personalizzazione presenti
 \end_layout
 
 \begin_layout Standard
-
 LyX 1.1.6 introduce una nuova interfaccia utente per le personalizzazioni
  che possono essere richiamate attraverso 
 \family sans
@@ -124,13 +116,10 @@ vostre
 \end_layout
 
 \begin_layout Chapter
-
 File di configurazione di LyX
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{chap:config}
 
 \end_inset
@@ -166,7 +155,6 @@ LyXDir
 
 \begin_layout Section
 
-
 \size larger
 Cosa c'è in 
 \family typewriter
@@ -178,7 +166,6 @@ LyXDir
 \end_layout
 
 \begin_layout Standard
-
 
 \family typewriter
 LyXDir
@@ -217,12 +204,10 @@ ni.
 \end_layout
 
 \begin_layout Subsection
-
 Files generati automaticamente
 \end_layout
 
 \begin_layout Standard
-
 Questi files vengono generati quando configurate LyX.
  Contengono vari valori predefiniti che vengono fissati mediante una procedura
  di ispezione.
@@ -232,7 +217,6 @@ Questi files vengono generati quando configurate LyX.
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 
 \family typewriter
 \series medium
@@ -264,7 +248,6 @@ references
 \begin_layout List
 \labelwidthstring 00.00.0000
 
-
 \family typewriter
 \series medium
 packages.lst
@@ -289,7 +272,6 @@ Configuration.
 \begin_layout List
 \labelwidthstring 00.00.0000
 
-
 \family typewriter
 textclass.lst
 \family default
@@ -303,7 +285,6 @@ layout/
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 
 \family typewriter
 doc/LaTeXConfig.lyx
@@ -345,13 +326,11 @@ foo
 \end_layout
 
 \begin_layout Subsection
-
 Directories 
 \end_layout
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 
 \family typewriter
 \series medium
@@ -391,7 +370,6 @@ $LANG_xxx.bind
 \begin_layout List
 \labelwidthstring 00.00.0000
 
-
 \family typewriter
 \series medium
 clipart/
@@ -403,7 +381,6 @@ clipart/
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 
 \family typewriter
 \series medium
@@ -434,7 +411,6 @@ $LANG_
 \begin_layout List
 \labelwidthstring 00.00.0000
 
-
 \family typewriter
 examples/
 \family default
@@ -448,7 +424,6 @@ per raggiungerlo.
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 
 \family typewriter
 images/
@@ -464,7 +439,6 @@ Document
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 
 \family typewriter
 kdb/
@@ -482,7 +456,6 @@ kdb/
 \begin_layout List
 \labelwidthstring 00.00.0000
 
-
 \family typewriter
 layouts/
 \family default
@@ -497,7 +470,6 @@ layouts/
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 
 \family typewriter
 reLyX/
@@ -515,7 +487,6 @@ buon comportamento
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 
 \family typewriter
 scripts/
@@ -544,7 +515,6 @@ Nota dell'autore: se questo file è incorporato in un altro dei documenti
 \begin_layout List
 \labelwidthstring 00.00.0000
 
-
 \family typewriter
 templates/
 \family default
@@ -560,7 +530,6 @@ templates/
 \begin_layout List
 \labelwidthstring 00.00.0000
 
-
 \family typewriter
 tex/
 \family default
@@ -569,7 +538,6 @@ tex/
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 
 \family typewriter
 ui/
@@ -591,19 +559,16 @@ per i dettagli.
 \end_layout
 
 \begin_layout Subsection
-
 Files che non volete modificare
 \end_layout
 
 \begin_layout Standard
-
 Questi files sono usati internamente da LyX e generalmente non avete bisogno
  di modificarli a meno che non siate sviluppatori.
 \end_layout
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 
 \family typewriter
 \series medium
@@ -627,7 +592,6 @@ dits.
 \begin_layout List
 \labelwidthstring 00.00.0000
 
-
 \family typewriter
 \series medium
 chkconfig.ltx
@@ -640,7 +604,6 @@ chkconfig.ltx
 \begin_layout List
 \labelwidthstring 00.00.0000
 
-
 \family typewriter
 \series medium
 configure
@@ -651,13 +614,11 @@ configure
 \end_layout
 
 \begin_layout Subsection
-
 Altri files che necessitano di una riga o due di spiegazioni...
 \end_layout
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 
 \family typewriter
 encodings
@@ -667,7 +628,6 @@ encodings
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 
 \family typewriter
 external_templates
@@ -697,7 +657,6 @@ aterial
 \begin_layout List
 \labelwidthstring 00.00.0000
 
-
 \family typewriter
 language
 \family default
@@ -707,7 +666,6 @@ language
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 
 \family typewriter
 lyxrc.example
@@ -719,13 +677,11 @@ lyxrc.example
 
 \begin_layout Section
 
-
 \size larger
 La vostra directory di configurazione
 \end_layout
 
 \begin_layout Standard
-
 Anche se si usa LyX come utente non privilegiato, è possibile voler cambiare
  la configurazione per un uso personale.
  La directory 
@@ -774,12 +730,10 @@ LyXDir
 \end_layout
 
 \begin_layout Standard
-
 Per rendere chiare le cose, si forniscono alcuni esempi:
 \end_layout
 
 \begin_layout Itemize
-
 Per personalizzare il comportamento di LyX prima della versione 1.1.6, l'utente
  doveva copiare il file 
 \family typewriter
@@ -819,7 +773,6 @@ lyxrc
 \end_layout
 
 \begin_layout Itemize
-
 Quando si riconfigura attraverso 
 \family sans
 \bar under
@@ -864,7 +817,6 @@ ocument.
 \end_layout
 
 \begin_layout Itemize
-
 Similmente, se avete installato alcune classi di documento LaTeX nella vostra
  home directory, che LaTeX può trovare nel vostro path 
 \family typewriter
@@ -875,7 +827,6 @@ TEXTINPUTS
 status collapsed
 
 \begin_layout Standard
-
 come pure se voi o LyX abbiate un file 
 \family typewriter
 .layout
@@ -890,7 +841,6 @@ come pure se voi o LyX abbiate un file
 \end_layout
 
 \begin_layout Itemize
-
 Se acquisite della documentazione aggiornata dal sito ftp di LyX e non potete
  installarla perchè non avete i permessi di amministratore sul vostro sistema,
  potete semplicemente copiare i files in 
@@ -908,12 +858,10 @@ elp
 \end_layout
 
 \begin_layout Section
-
 Lanciare LyX con configurazioni multiple
 \end_layout
 
 \begin_layout Standard
-
 La libertà di configurazione della relativa directory locale può non essere
  sufficiente se volete avere più di una configurazione a vostra disposizione.
  Ad esempio, vorreste poter usare differenti scorciatoie da tastiera o settaggi
@@ -923,7 +871,6 @@ La libertà di configurazione della relativa directory locale può non essere
 \end_layout
 
 \begin_layout Standard
-
 Richiamando LyX con lo switch da riga di comando 
 \family typewriter
 -userdir
@@ -951,7 +898,6 @@ LYX_USERDIR_11x
 \end_layout
 
 \begin_layout Standard
-
 Avere molte configurazioni richiede anche più manutenzione: se volete aggiungere
  un nuovo layout a 
 \family typewriter
@@ -990,7 +936,6 @@ econfigure
 \end_layout
 
 \begin_layout Chapter
-
 Il popup 
 \family sans
 \bar under
@@ -1005,12 +950,10 @@ references
 \end_layout
 
 \begin_layout Section
-
 Usare il popup per la prima volta
 \end_layout
 
 \begin_layout Standard
-
 Storicamente, è possibile personalizzare il comportamento di LyX attraverso
  la modifica del contenuto del file 
 \family typewriter
@@ -1048,7 +991,6 @@ lyxrc
 \end_layout
 
 \begin_layout Standard
-
 Il nuovo file 
 \family typewriter
 UserDir/preferences 
@@ -1092,7 +1034,6 @@ UserDir/preferences.
 \end_layout
 
 \begin_layout Standard
-
 Speriamo che il menu 
 \family sans
 \bar under
@@ -1119,12 +1060,10 @@ references
 \end_layout
 
 \begin_layout Section
-
 Schermo & Fonts
 \end_layout
 
 \begin_layout Standard
-
 Il carattere usato per visualizzare i vostri documenti sullo schermo di
  LyX è molto importante, dato che leggerete tutti i documenti con questo
  carattere.
@@ -1140,7 +1079,6 @@ Il carattere usato per visualizzare i vostri documenti sullo schermo di
 \end_layout
 
 \begin_layout Standard
-
 Notate che questa sezione tratta solo dei caratteri visibili sullo 
 \emph on
 schermo
@@ -1161,7 +1099,6 @@ Guida dell'utente
 \end_layout
 
 \begin_layout Standard
-
 Di base, i caratteri che appaiono sullo schermo sono di due tipi differenti:
  caratteri scalabili e caratteri bitmap non scalabili.
  La distinzione può sembrare leggermente arbitraria, dato che i font non-scalabi
@@ -1181,7 +1118,6 @@ velocità
 \end_layout
 
 \begin_layout Standard
-
 I caratteri scalabili sono costruiti a partire dai 
 \emph on
 contorni
@@ -1204,7 +1140,6 @@ e un compromesso, con il risultato è che i font scalabili sono più difficili
 \end_layout
 
 \begin_layout Standard
-
 I font bitmap invece sono definiti da grafica bitmap sin dall'inizio, così
  appaiono buoni per ogni dimensione richiesta.
  tuttavia, non scalano bene, perchè per scalare un glifo, ogni pixel è allargato
@@ -1226,7 +1161,6 @@ xv
 \end_layout
 
 \begin_layout Standard
-
 Se ne conclude quindi che i font bitmap sono generalmente i migliori per
  le piccole taglie, dove disponibili, mentre i font scalabili sono da preferire
  per grandi dimensioni.
@@ -1241,7 +1175,6 @@ e.
 \end_layout
 
 \begin_layout Standard
-
 Di default, Lyx usa i font bitmap non-scalabili.
  Per i font serif, è usato 
 \emph on
@@ -1259,25 +1192,21 @@ curier
 \end_layout
 
 \begin_layout Standard
-
 In seguito descriveremo cosa fare se in LyX il testo non ha un bell'aspetto.
  Partiremo con i parametri più importanti: DPI e lo zoom dei fonts.
 \end_layout
 
 \begin_layout Subsection
-
 Settaggi DPI e Zoom di Font 
 \end_layout
 
 \begin_layout Standard
-
 LyX automaticamente prova a scalare i fonts in modo da farli sembrare il
  più possibile uguali a quelli che verranno stampati, a meno del cosiddetto
  fattore di zoom.
 \end_layout
 
 \begin_layout Standard
-
 Per far funzionare su ogni sistema, questo meccanismo sfrutta i settaggi
  dei DPI (dots per inch) dello schermo.
  Il settaggio dei DPI del vostro sistema è rilevato automaticamente da LyX
@@ -1292,7 +1221,6 @@ lyx -dbg 2.
 \end_layout
 
 \begin_layout Standard
-
 Su molti sistemi, X non è settato correttamente, quindi dovrete verificare
  la correttezza dei settaggi manualmente.
  Lanciate 
@@ -1335,7 +1263,6 @@ dimensioni
 \end_layout
 
 \begin_layout Standard
-
 Dopodichè prendete il buon vecchio righello e misurate la larghezza visibile
  dell'immagine su vostro monitor.
  Convertite queste misure in pollici, se usate un righello in centimetri,
@@ -1349,7 +1276,6 @@ minato, dovrete correggere l' X setup, o almeno dire a LyX che il valore
 \end_layout
 
 \begin_layout Standard
-
 Se non potete correggere l'X setup (che sarebbe la soluzione migliore perchè
  ne beneficerebbero altri programmi oltre a LyX), è possibile comunicare
  a LyX il corretto settaggio DPI attraverso il menu 
@@ -1361,7 +1287,6 @@ Preferences.
 \end_layout
 
 \begin_layout Standard
-
 Se il testo è troppo piccolo o troppo grande per il vostro gusto, dovrete
  cercare di rimendiare attraverso lo zoom sul carattere.
  Questo settaggio è usato per scalare la grandezza del punto del testo.
@@ -1377,7 +1302,6 @@ Se il testo è troppo piccolo o troppo grande per il vostro gusto, dovrete
 \end_layout
 
 \begin_layout Standard
-
 Il valore di default dello zoom è 150 dato che un monitor è generalmente
  più grande che un pezzo di carta, ma dovreste comunque provare a modificarlo
  tramite il comando 
@@ -1407,7 +1331,6 @@ ave
 \end_layout
 
 \begin_layout Standard
-
 Mentre è spesso possibile trovare una grandezza adatta al testo sullo schermo,
  questo non necessariamente vuol dire, che i fonts siano i migliori ottenibili
  dal proprio sistema.
@@ -1416,12 +1339,10 @@ Mentre è spesso possibile trovare una grandezza adatta al testo sullo schermo,
 \end_layout
 
 \begin_layout Subsection
-
 Comandi di definizione dei Fonts
 \end_layout
 
 \begin_layout Standard
-
 Come menzionato, LyX usa fonts bitmap non scalabili di default.
  Per i fonts serif, è usato 
 \emph on
@@ -1439,7 +1360,6 @@ courier
 \end_layout
 
 \begin_layout Standard
-
 Potete cambiarli attraverso il menu 
 \family sans
 Preferences
@@ -1530,7 +1450,6 @@ xfontsel
 \end_layout
 
 \begin_layout Standard
-
 Prima che proviate a modificare un font bitmap perchè la larghezza più grande
  sembra 
 \begin_inset Quotes eld
@@ -1589,7 +1508,6 @@ Larger
 \end_layout
 
 \begin_layout Standard
-
 Un'ultima annotazione su questo flag: dovete sapere che non c'è nulla di
  sbagliato nell'usare fonts scalabili e bitmap contemporaneamente per differenti
  scopi.
@@ -1622,7 +1540,6 @@ Usa fonts scalabili
 \end_layout
 
 \begin_layout Standard
-
 Qualche volta gli artefatti introdotti dall'uso del flag possono essere
  eliminate usando il comando fine-detail che definisce a quali grandezze
  di punto corrispondono le differenti grandezze logiche dei caratteri.
@@ -1655,12 +1572,10 @@ sbaglia e riprova
 \end_layout
 
 \begin_layout Subsection
-
 Codifica dei Fonts
 \end_layout
 
 \begin_layout Standard
-
 Di default, LyX userà dei font per scrivere un testo Western European, inclusi
  tutti i tipi di inglese.
  Viene definito attraverso il cosiddetto 
@@ -1715,7 +1630,6 @@ lyxrc
 \end_layout
 
 \begin_layout Standard
-
 Quando settate LyX per l'uso di una codifica differente, dovrete considerare
  i cambiamenti nei fonts della finestra pop-up di LyX.
  Per esempio il menu 
@@ -1735,7 +1649,6 @@ Contents
 \end_layout
 
 \begin_layout Standard
-
 Inoltre potete cambiare questo font con il comando 
 \family typewriter
 
@@ -1747,7 +1660,6 @@ screen_font_emenu
 \end_layout
 
 \begin_layout Standard
-
 Come potete vedere, ci sono alcune opzioni che possono essere usate per
  affinare l'aspetto dei vostri fonts.
  Questo non dovrebbe spaventarvi dal maneggiare coi settaggi, poichè dopo
@@ -1759,7 +1671,6 @@ Come potete vedere, ci sono alcune opzioni che possono essere usate per
 \end_layout
 
 \begin_layout Standard
-
 Nella versione di LyX, proveremo a supportare il font renderer 
 \family typewriter
 T1Lib 
@@ -1780,7 +1691,6 @@ anti-aliased
 \end_layout
 
 \begin_layout Section
-
 Bindings
 \begin_inset LatexCommand \label{sec:bindings}
 
@@ -1790,7 +1700,6 @@ Bindings
 \end_layout
 
 \begin_layout Standard
-
 Le associazioni sono usate per assegnare una funzione ad un tasto.
  Molti file con associazioni precompilate sono disponibili: un set di associazio
 ni CUA (simile ai tipici insiemi di assegnazioni di tastiera PC e CDE),
@@ -1808,7 +1717,6 @@ One True Way
 status collapsed
 
 \begin_layout Standard
-
 Sto scherzando, ovviamente!
 \end_layout
 
@@ -1819,7 +1727,6 @@ Sto scherzando, ovviamente!
 \end_layout
 
 \begin_layout Standard
-
 Se, tuttavia, volete personalizzare le associazioni secondo i vostri specifici
  gusti, allora copiate il file della directory 
 \family typewriter
@@ -1839,7 +1746,6 @@ Preferences
 \end_layout
 
 \begin_layout Standard
-
 LyX supporta l'internazionalizzazione dell'interfaccia utente (vedere il
  Capitolo
 \shape italic
@@ -1884,7 +1790,6 @@ Nota dell'autore: non sono sicuro se è ancora vero ma forse qualcuno che
 \end_layout
 
 \begin_layout Standard
-
 La sintassi dei files 
 \family typewriter
 .bind
@@ -1894,7 +1799,6 @@ La sintassi dei files
 
 \begin_layout Standard
 
-
 \family typewriter
 
 \backslash
@@ -1902,7 +1806,6 @@ bind <key combination> <lyx-function>
 \end_layout
 
 \begin_layout Standard
-
 Sia le combinazioni di tasti che la lyx-function (inclusi gli argomenti)
  devono essere racchiusi tra le 
 \begin_inset Quotes eld
@@ -1919,7 +1822,6 @@ Guida di Riferimento.
 \end_layout
 
 \begin_layout Section
-
 User Interface
 \begin_inset LatexCommand \label{sec:ui}
 
@@ -1929,7 +1831,6 @@ User Interface
 \end_layout
 
 \begin_layout Standard
-
 L'aspetto del menu e della toolbar può essere cambiato attraverso il menu
  
 \family sans
@@ -1959,7 +1860,6 @@ UserDir/ui/
 \end_layout
 
 \begin_layout Standard
-
 La sintassi dei files 
 \family typewriter
 .ui 
@@ -2021,12 +1921,10 @@ submenu
 \end_layout
 
 \begin_layout Section
-
 Convertitori, Formati e Visualizzatori
 \end_layout
 
 \begin_layout Standard
-
 LyX ha un nuovo e potente meccanismo per convertire da e verso ogni formato
  di file utilizzando programmi esterni.
  Prendiamo un paio di formati, ad es.
@@ -2044,18 +1942,15 @@ PDF
 \end_layout
 
 \begin_layout Enumerate
-
 Una conversione diretta, da LaTeX a PDF usando pdflatex
 \end_layout
 
 \begin_layout Enumerate
-
 Una via più contorta attraverso formati e convertitori intermedi: LaTeX
  a DVI (usando latex) a PostScript® (usando dvips) a PDF (usando ps2pdf)
 \end_layout
 
 \begin_layout Standard
-
 LyX sceglierà sempre la via più veloce, così dovrete specificare due differenti
  nomi di Format per i files 
 \family typewriter
@@ -2071,7 +1966,6 @@ Preferences
 \end_layout
 
 \begin_layout Standard
-
 Inoltre, ogni Format può essere visto con un Viewer associato ad esso.
  Ad esempio, potreste voler usare 
 \family typewriter
@@ -2081,7 +1975,6 @@ ghostview
 \end_layout
 
 \begin_layout Standard
-
 [
 \emph on
 Nota dell'autore: Questa sezione probabilmente ha bisogno di essere espansa,
@@ -2096,12 +1989,10 @@ Nota dell'autore: Questa sezione probabilmente ha bisogno di essere espansa,
 \end_layout
 
 \begin_layout Section
-
 Anteprima sullo schermo
 \end_layout
 
 \begin_layout Standard
-
 Oltre alla normale visualizzazione dei documenti attraverso LyX, è possibile
  avere un'anteprima del vostro documento nella forma in cui apparirà sulla
  carta dopo stampato.
@@ -2117,7 +2008,6 @@ dvi
 \end_layout
 
 \begin_layout Standard
-
 LyX può anche usare 
 \family typewriter
 dvips
@@ -2144,7 +2034,6 @@ lyxrc
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 
@@ -2168,7 +2057,6 @@ xdvi
 \end_layout
 
 \begin_layout Description
-
 
 \family typewriter
 \series medium
@@ -2202,7 +2090,6 @@ Script previewer preferito, oppure per passare argomenti a
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 
@@ -2216,7 +2103,6 @@ view_pspic_command
 \end_layout
 
 \begin_layout Description
-
 
 \family typewriter
 \series medium
@@ -2235,7 +2121,6 @@ ps_command
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 
@@ -2250,12 +2135,10 @@ default_papersize
 \end_layout
 
 \begin_layout Section
-
 Opzioni ASCII-Export 
 \end_layout
 
 \begin_layout Standard
-
 Ci sono alcuni comandi che possono essere usati per 
 \begin_inset Quotes eld
 \end_inset
@@ -2272,7 +2155,6 @@ ripulire
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 
 \family typewriter
 
@@ -2293,7 +2175,6 @@ groff/troff/nroff
 \begin_layout List
 \labelwidthstring 00.00.0000
 
-
 \family typewriter
 
 \backslash
@@ -2306,15 +2187,14 @@ t di un file ASCII.
 \end_layout
 
 \begin_layout Standard
-
 Examples:
 \end_layout
 
 \begin_layout LyX-Code
-
 # This let's you generate ASCII tables with latin1
 \newline
-# characters, using the groff formatter
+# characters, using the
+ groff formatter
 \newline
 #
 \newline
@@ -2324,7 +2204,8 @@ ascii_roff_command groff -t -ms -Tlatin1"
 \newline
 
 \newline
-# This let's you generate ASCII tables using the
+# This let's you generate ASCII
+ tables using the
 \newline
 # nroff formatter
 \newline
@@ -2342,12 +2223,10 @@ ascii_linelen 80
 \end_layout
 
 \begin_layout Section
-
 Stampante
 \end_layout
 
 \begin_layout Standard
-
 Ci sono una serie di comandi che vi aiutano a settare il comando della stampante
  da LyX.
  Normalmente si usano solo alcuni di questi, ma vengono riportati tutti
@@ -2355,7 +2234,6 @@ Ci sono una serie di comandi che vi aiutano a settare il comando della stampante
 \end_layout
 
 \begin_layout Description
-
 
 \family typewriter
 \series medium
@@ -2368,7 +2246,6 @@ printer
 \end_layout
 
 \begin_layout Description
-
 
 \family typewriter
 \series medium
@@ -2383,7 +2260,6 @@ print_command
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 
@@ -2397,7 +2273,6 @@ print_evenpage_flag
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 
@@ -2410,7 +2285,6 @@ print_oddpage_flag
 \end_layout
 
 \begin_layout Description
-
 
 \family typewriter
 \series medium
@@ -2426,7 +2300,6 @@ print_reverse_flag
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 
@@ -2440,7 +2313,6 @@ print_landscape_flag
 \end_layout
 
 \begin_layout Description
-
 
 \family typewriter
 \series medium
@@ -2457,7 +2329,6 @@ print_to_printer
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 
@@ -2472,7 +2343,6 @@ print_to_file
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 
@@ -2486,7 +2356,6 @@ print_file_extension
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 
@@ -2499,7 +2368,6 @@ print_extra_options
 \end_layout
 
 \begin_layout Description
-
 
 \family typewriter
 \series medium
@@ -2533,18 +2401,15 @@ print_to_printer
 \end_layout
 
 \begin_layout Standard
-
 Tutto sommato, speriamo che questo vi permetta di stampare i vostri documenti
  senza problemi.
 \end_layout
 
 \begin_layout Subsection
-
 Changing Colors
 \end_layout
 
 \begin_layout Standard
-
 E' possibile cambiare i colori dello schermo usando il nuovo menu 
 \family sans
 Preferences
@@ -2565,21 +2430,16 @@ Guida di Riferimento
 
 \begin_layout Standard
 
-
 \family typewriter
 set-color LyXName X11Color
 \end_layout
 
 \begin_layout Standard
-
 Di seguito è presentata una lista (parziale) delle funzioni e dei colori
  di default:
 \end_layout
 
-
 \begin_layout Standard
-
-
 \begin_inset VSpace 0.3cm
 \end_inset
 
@@ -2588,8 +2448,7 @@ Di seguito è presentata una lista (parziale) delle funzioni e dei colori
 
 \begin_layout Standard
 \align center
-
-\begin_inset  Tabular
+\begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="3">
 <features>
 <column alignment="center" valignment="top" leftline="true" width="0pt">
@@ -2600,7 +2459,6 @@ Di seguito è presentata una lista (parziale) delle funzioni e dei colori
 \begin_inset Text
 
 \begin_layout Standard
-
 
 \lang english
 Nome LyX
@@ -2613,7 +2471,6 @@ Nome LyX
 
 \begin_layout Standard
 
-
 \lang english
 Scopo
 \end_layout
@@ -2624,7 +2481,6 @@ Scopo
 \begin_inset Text
 
 \begin_layout Standard
-
 
 \lang english
 Colore di default (X11)
@@ -2639,7 +2495,6 @@ Colore di default (X11)
 
 \begin_layout Standard
 
-
 \lang english
 background
 \end_layout
@@ -2651,7 +2506,6 @@ background
 
 \begin_layout Standard
 
-
 \lang english
 text background
 \end_layout
@@ -2662,7 +2516,6 @@ text background
 \begin_inset Text
 
 \begin_layout Standard
-
 
 \lang english
 black
@@ -2677,7 +2530,6 @@ black
 
 \begin_layout Standard
 
-
 \lang english
 foreground
 \end_layout
@@ -2689,7 +2541,6 @@ foreground
 
 \begin_layout Standard
 
-
 \lang english
 text foreground
 \end_layout
@@ -2700,7 +2551,6 @@ text foreground
 \begin_inset Text
 
 \begin_layout Standard
-
 
 \lang english
 linen
@@ -2715,7 +2565,6 @@ linen
 
 \begin_layout Standard
 
-
 \lang english
 latex
 \end_layout
@@ -2727,7 +2576,6 @@ latex
 
 \begin_layout Standard
 
-
 \lang english
 LaTeX code
 \end_layout
@@ -2738,7 +2586,6 @@ LaTeX code
 \begin_inset Text
 
 \begin_layout Standard
-
 
 \lang english
 DarkRed
@@ -2753,7 +2600,6 @@ DarkRed
 
 \begin_layout Standard
 
-
 \lang english
 math
 \end_layout
@@ -2765,7 +2611,6 @@ math
 
 \begin_layout Standard
 
-
 \lang english
 Mathed formulae
 \end_layout
@@ -2776,7 +2621,6 @@ Mathed formulae
 \begin_inset Text
 
 \begin_layout Standard
-
 
 \lang english
 DarkBlue
@@ -2791,7 +2635,6 @@ DarkBlue
 
 \begin_layout Standard
 
-
 \lang english
 mathline
 \end_layout
@@ -2803,7 +2646,6 @@ mathline
 
 \begin_layout Standard
 
-
 \lang english
 fraction Lines, brackets, etc.
 \end_layout
@@ -2814,7 +2656,6 @@ fraction Lines, brackets, etc.
 \begin_inset Text
 
 \begin_layout Standard
-
 
 \lang english
 Blue
@@ -2828,7 +2669,6 @@ Blue
 \begin_inset Text
 
 \begin_layout Standard
-
 
 \lang english
 mathbag
@@ -2850,7 +2690,6 @@ mathbag
 
 \begin_layout Standard
 
-
 \lang english
 AntiqueWhite
 \end_layout
@@ -2863,7 +2702,6 @@ AntiqueWhite
 \begin_inset Text
 
 \begin_layout Standard
-
 
 \lang english
 mathframe
@@ -2885,7 +2723,6 @@ mathframe
 
 \begin_layout Standard
 
-
 \lang english
 black
 \end_layout
@@ -2899,7 +2736,6 @@ black
 
 \begin_layout Standard
 
-
 \lang english
 selection
 \end_layout
@@ -2911,7 +2747,6 @@ selection
 
 \begin_layout Standard
 
-
 \lang english
 selection background
 \end_layout
@@ -2922,7 +2757,6 @@ selection background
 \begin_inset Text
 
 \begin_layout Standard
-
 
 \lang english
 LightBlue
@@ -2939,33 +2773,26 @@ LightBlue
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset VSpace 0.3cm
 \end_inset
 
 
 \end_layout
 
-
 \begin_layout Standard
-
 La lista completa si trova correntemente solo nel file sorgente LColor.C
 \end_layout
 
 \begin_layout Section
-
 TeX
 \end_layout
 
 \begin_layout Standard
-
 Alcuni siti
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-
 
 \emph on
 come la mia macchina da ufficio -- Dave johnson
@@ -3016,7 +2843,6 @@ status collapsed
 
 \begin_layout Standard
 
-
 \emph on
 come la mia macchina da ufficio -- Dave johnson
 \end_layout
@@ -3028,13 +2854,11 @@ con la linea:
 
 \begin_layout LyX-Code
 
-
 \backslash
 latex_command latex2e
 \end_layout
 
 \begin_layout Standard
-
 nel vostro file 
 \family typewriter
 lyxrc
@@ -3046,13 +2870,10 @@ e.
 \end_layout
 
 \begin_layout Section
-
 I settaggi autorilevati
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:autodetected}
 
 \end_inset
@@ -3096,7 +2917,6 @@ niente
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 
@@ -3117,7 +2937,6 @@ latex2e
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 
@@ -3133,7 +2952,6 @@ ps_command
 \end_layout
 
 \begin_layout Description
-
 
 \family typewriter
 \series medium
@@ -3161,7 +2979,6 @@ view_pspic_command
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 
@@ -3186,7 +3003,6 @@ tbl
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 
@@ -3202,7 +3018,6 @@ chktex
 \end_layout
 
 \begin_layout Description
-
 
 \family typewriter
 \series medium
@@ -3226,7 +3041,6 @@ o
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 
@@ -3246,7 +3060,6 @@ lpr
 \end_layout
 
 \begin_layout Description
-
 
 \family typewriter
 \series medium
@@ -3271,7 +3084,6 @@ lpr
 \end_layout
 
 \begin_layout Description
-
 
 \family typewriter
 \series medium
@@ -3298,12 +3110,10 @@ dc
 \end_layout
 
 \begin_layout Section
-
 Il resto 
 \end_layout
 
 \begin_layout Standard
-
 Ci sono molti altri comandi 
 \family typewriter
 lyxrc
@@ -3324,17 +3134,14 @@ Guida di RIferimento,
 \end_layout
 
 \begin_layout Chapter
-
 Il Server LyX
 \end_layout
 
 \begin_layout Section
-
 Introduzione
 \end_layout
 
 \begin_layout Standard
-
 Il server LyX è un metodo implementato in LyX che abilita altri programmi
  a parlare con LyX, a chiamare comandi LyX e ad ottenere informazioni sullo
  stato interno di LyX.
@@ -3343,12 +3150,10 @@ Il server LyX è un metodo implementato in LyX che abilita altri programmi
 \end_layout
 
 \begin_layout Section
-
 Iniziare il Server LyX
 \end_layout
 
 \begin_layout Standard
-
 Il server LyX lavora attraverso l'uso di un paio di canali.
  Queste sono di solito locate nella vostra directory home e si chiamano
  
@@ -3394,13 +3199,11 @@ lyxrc
 
 \begin_layout LyX-Code
 
-
 \backslash
 serverpipe "/home/myhome/.lyxpipe"
 \end_layout
 
 \begin_layout Standard
-
 LyX aggiungerà '
 \family typewriter
 .in
@@ -3422,7 +3225,6 @@ lyxrc
 \end_layout
 
 \begin_layout Standard
-
 Se state sviluppando un programma client, potreste trovare utile abilitare
  una modalità di debugging dal server LyX.
  Potete farlo facendo partire LyX con 
@@ -3431,31 +3233,26 @@ lyx -dbg 8192.
 \end_layout
 
 \begin_layout Standard
-
 Attenzione: se LyX va in crash, non può gestire la rimozione dei canali,
  e quindi bisognerà farlo manualmente.
  Se LyX parte e i canali sono già esistenti, non farà partire alcun server.
 \end_layout
 
 \begin_layout Standard
-
 Oltre a questo, ci sono alcuni punti da considerare:
 \end_layout
 
 \begin_layout Itemize
-
 Sia il server che i clients devono girare su macchine UNIX o OS/2.
  Le comunicazioni tra LyX su UNIX e i clients su OS/2 o viceversa non sono
  attualmente possibili.
 \end_layout
 
 \begin_layout Itemize
-
 Su OS/2, solo un client per volta può connettersi al server LyX.
 \end_layout
 
 \begin_layout Itemize
-
 Su OS/2, i clients devono aprire il canale d'ingresso in modalità 
 \family typewriter
 O_WRONLY
@@ -3464,7 +3261,6 @@ O_WRONLY
 \end_layout
 
 \begin_layout Standard
-
 Potete trovare degli esempi completi scritti in C nella distribuzione dei
  codici come 
 \family typewriter
@@ -3474,19 +3270,16 @@ development/server_monitor.c
 \end_layout
 
 \begin_layout Section
-
 Comunicazione normale
 \end_layout
 
 \begin_layout Standard
-
 Per assegnare una chiamata LyX, il client scrive una riga di codice ASCII
  nel canale di input.
  Questa linea ha il seguente formato:
 \end_layout
 
 \begin_layout Quote
-
 LYXCMD:
 \emph on
 clientname
@@ -3501,7 +3294,6 @@ argument
 \end_layout
 
 \begin_layout Standard
-
 In questo caso 
 \emph on
 clientname
@@ -3513,7 +3305,6 @@ clientname
 
 \begin_layout Standard
 
-
 \emph on
 function
 \emph default
@@ -3522,7 +3313,6 @@ function
 \end_layout
 
 \begin_layout Standard
-
 
 \emph on
 argument
@@ -3540,12 +3330,10 @@ auto-inserimento
 \end_layout
 
 \begin_layout Quote
-
 La risposta da LyX arriverà nel canale di output e sarà del tipo
 \end_layout
 
 \begin_layout Quote
-
 INFO:
 \emph on
 clientname
@@ -3560,7 +3348,6 @@ data
 \end_layout
 
 \begin_layout Standard
-
 Dove
 \emph on
  clientname
@@ -3596,12 +3383,10 @@ vuote
 \end_layout
 
 \begin_layout Standard
-
 In caso di errori, la risposta da LyX avrà questa forma
 \end_layout
 
 \begin_layout Quote
-
 ERROR:
 \emph on
 clientname
@@ -3616,7 +3401,6 @@ error message
 \end_layout
 
 \begin_layout Standard
-
 dover l'
 \emph on
 error message
@@ -3625,17 +3409,14 @@ error message
 \end_layout
 
 \begin_layout Standard
-
 Esempi:
 \end_layout
 
 \begin_layout LyX-Code
-
 echo "LYXCMD:test:beginning-of-buffer:" >~/.lyxpipe.in
 \end_layout
 
 \begin_layout LyX-Code
-
 echo "LYXCMD:test:get-xy:" >~/.lyxpipe.in
 \newline
 read a <~/.lyxpipe.out
@@ -3644,12 +3425,10 @@ echo $a
 \end_layout
 
 \begin_layout Section
-
 Notifica
 \end_layout
 
 \begin_layout Standard
-
 LyX può notificare ai clients gli eventi asincroni.
  Correntemente lo farà soltanto se l'utente assegna una sequenza di tasti
  alla funzione 
@@ -3664,12 +3443,10 @@ notifica
 \end_layout
 
 \begin_layout Standard
-
 Il formato della stringa che LyX manda è:
 \end_layout
 
 \begin_layout Quote
-
 
 \family typewriter
 NOTIFY:
@@ -3679,7 +3456,6 @@ key-sequence
 \end_layout
 
 \begin_layout Standard
-
 dove 
 \emph on
 key-sequence
@@ -3688,7 +3464,6 @@ key-sequence
 \end_layout
 
 \begin_layout Standard
-
 Questo meccanismo può essere usato per estendere il set di comandi LyX ed
  implementare macro: assegnare una sequenza di tasti a 
 \begin_inset Quotes eld
@@ -3705,19 +3480,16 @@ notifica
 \end_layout
 
 \begin_layout Section
-
 Il Protocollo Server LyX semplice
 \end_layout
 
 \begin_layout Standard
-
 Lyx implementa un semplice protocollo che può essere usato per la gestione
  delle sessioni.
  Tutti i messaggi sono della forma:
 \end_layout
 
 \begin_layout Quote
-
 LYXSRV:
 \emph on
 clientname
@@ -3728,7 +3500,6 @@ protocol message
 \end_layout
 
 \begin_layout Standard
-
 dove 
 \emph on
 protocol message
@@ -3771,7 +3542,6 @@ bye
 \end_layout
 
 \begin_layout Chapter
-
 Internazionalizzare LyX
 \begin_inset LatexCommand \label{chap:i18n}
 
@@ -3781,7 +3551,6 @@ Internazionalizzare LyX
 \end_layout
 
 \begin_layout Standard
-
 LyX supporta l'uso di interfacce tradotte.
  L'ultima volta che abbiamo controllato, LyX forniva testi in 14 linguaggi
  diversi oltre l'inglese di base.
@@ -3796,7 +3565,6 @@ locale
 \end_layout
 
 \begin_layout Standard
-
 Notate che queste traduzioni funzionano, ma contengono alcuni difetti.
  In particolare, tutti i menu di pop-up sono stati progettati in inglese,
  questo significa che alcune traduzioni potrebbero essere troppo grandi
@@ -3811,12 +3579,10 @@ Notate che queste traduzioni funzionano, ma contengono alcuni difetti.
 \end_layout
 
 \begin_layout Section
-
 Selezionare un linguaggio alternativo per l'interfaccia utente
 \end_layout
 
 \begin_layout Standard
-
 Questa possibilità è disabilitata di default, ciò significa che il testo
  sarà in inglese.
  Per abilitare un linguaggio alternativo bisogna settare la variabile ambientale
@@ -3843,7 +3609,6 @@ no
 \end_layout
 
 \begin_layout Standard
-
 Evidenetemente vorrete mettere la linea appropriata in 
 \family typewriter
 ~/.Xsession
@@ -3869,13 +3634,10 @@ Evidenetemente vorrete mettere la linea appropriata in
 \end_layout
 
 \begin_layout Section
-
 Usare scorciatoie per linguaggi alternativi
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
@@ -3891,7 +3653,6 @@ begin{sloppypar}
 \end_layout
 
 \begin_layout Standard
-
 Una causa principale di inconsistenza nelle versioni tradotte di LyX è il
  fatto che tutte le scorciatoie da tastiera per le funzioni del menu sono
  basate sulla versione inglese del testo Ad esempio, l'entrata nel menu
@@ -3958,8 +3719,6 @@ xx
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
@@ -3975,7 +3734,6 @@ end{sloppypar}
 \end_layout
 
 \begin_layout Standard
-
 Dovete fare attenzione a che le nuove definizioni per le scorciatoie non
  coincidano con altre prima definite.
  Ad esempio, l'associazione 
@@ -3998,7 +3756,6 @@ word-delete-forward
 \end_layout
 
 \begin_layout Standard
-
 Dalla versione 1.0 di LyX, i nomi tradotti per i menu top level (tradotti
  nei files 
 \begin_inset Quotes eld
@@ -4020,17 +3777,14 @@ menus.bind
 \end_layout
 
 \begin_layout Section
-
 Tradurre LyX
 \end_layout
 
 \begin_layout Subsection
-
 Tradurre l'interfaccia grafica utente (messaggi di testo).
 \end_layout
 
 \begin_layout Standard
-
 LyX usa la libreria GNU gettext per gestire l'internazionalizzazione dell'interf
 accia.
  Per far parlare a LyX il vostro linguaggio preferito in tutti i menu e
@@ -4047,8 +3801,6 @@ xx
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
@@ -4064,7 +3816,6 @@ begin{sloppypar}
 \end_layout
 
 \begin_layout Itemize
-
 Copiare 
 \family typewriter
 LYX-SOURCE-DIR/po/lyx.pot
@@ -4089,7 +3840,6 @@ lyx.pot
 \end_layout
 
 \begin_layout Itemize
-
 Editare 
 \family typewriter
 xx.po
@@ -4099,7 +3849,6 @@ xx.po
 status collapsed
 
 \begin_layout Standard
-
 Raccomandiamo di usare Emacs per fare questo, dato che la distribuzione
  gettext include un appropriato supporto.
 \end_layout
@@ -4136,7 +3885,6 @@ LYX-SOURCE-DIR/development/tools/
 \end_layout
 
 \begin_layout Itemize
-
 Create 
 \series bold
 xx
@@ -4165,7 +3913,6 @@ xx
 \end_layout
 
 \begin_layout Itemize
-
 Copiare ilfile mo nella vostra directory locale, precisamente nella dirctory
  dei messaggi dell'applicazione per il linguaggio 
 \series bold
@@ -4192,8 +3939,6 @@ xx
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
@@ -4209,7 +3954,6 @@ end{sloppypar}
 \end_layout
 
 \begin_layout Standard
-
 Aggiungere un nuovo file po alla 
 \emph on
 distribuzion
@@ -4224,7 +3968,6 @@ lyx.pot
 \end_layout
 
 \begin_layout Standard
-
 Se avete scritto un file di traduzione per un linguaggio che attualmente
  LyX non supporta, ritenetevi liberi di introdurlo magari mandando una patch.
  In questo caso vi raccomandiamo di leggere il README della directory 
@@ -4235,12 +3978,10 @@ LYX-SOURCE-DIR/po/
 \end_layout
 
 \begin_layout Subsection
-
 Tradurre la documentazione.
 \end_layout
 
 \begin_layout Standard
-
 La documentazione online (nel menu 
 \family sans
 Help) 
@@ -4251,7 +3992,6 @@ può (e dovrebbe!) essere tradotto.
 status collapsed
 
 \begin_layout Standard
-
 Ad Aprile 1999, quasi tutti i documenti sono stati tradotti in tedesco.
  Il tutorial è stato tradotto in francese, polacco, portoghese e svedese,
  con altre traduzioni in corso.
@@ -4293,7 +4033,6 @@ DocName
 \end_layout
 
 \begin_layout Itemize
-
 Leggere 
 \family typewriter
 DocStyle.lyx
@@ -4303,7 +4042,6 @@ DocStyle.lyx
 \end_layout
 
 \begin_layout Itemize
-
 Controllare la pagina web delle traduzioni 
 \begin_inset LatexCommand \url[The LyX Developer's Web Site]{http://www.devel.lyx.org}
 
@@ -4318,12 +4056,10 @@ Controllare la pagina web delle traduzioni
 \end_layout
 
 \begin_layout Standard
-
 Una volta che iniziate a tradurre ci sono alcune cose che dovete ricordare:
 \end_layout
 
 \begin_layout Itemize
-
 Unirvi al team di documentazione! Ci sono informazioni su come farlo in
  
 \family typewriter
@@ -4345,7 +4081,6 @@ Attenzione! La tipografia da assuefazione!
 \end_layout
 
 \begin_layout Itemize
-
 Fate una copia del documento.
  Questo sarà la vostra copia di lavoro.
  Potrete inoltre usarla come vostra copia personale tradotta mettendola
@@ -4357,7 +4092,6 @@ Fate una copia del documento.
 \end_layout
 
 \begin_layout Itemize
-
 Qualche volta il documento originale (dal team LyX) viene aggiornato.
  Usate lo strumento CVSweb reperibile presso il sito dello sviluppatore
  per vedere i cambiamenti avvenuti
@@ -4365,7 +4099,6 @@ Qualche volta il documento originale (dal team LyX) viene aggiornato.
 status collapsed
 
 \begin_layout Standard
-
 Alternativamente, potete procurarvi una copia dell'ultima versione del documento
  inglese che avete tradotto.
 \end_layout
@@ -4378,19 +4111,16 @@ Alternativamente, potete procurarvi una copia dell'ultima versione del documento
 \end_layout
 
 \begin_layout Itemize
-
 Se per caso trovate un errore nel documento originale, correggetelo e comunicate
  al documentation team i cambiamenti! (non avete dimenticato di unirvi al
  documentation team vero?).
 \end_layout
 
 \begin_layout Section
-
 Supporto Tastiere Internazionali
 \end_layout
 
 \begin_layout Standard
-
 
 \emph on
 Nota dell'editore: la seguente sezione è a cura di Ivan Schreter.
@@ -4400,39 +4130,32 @@ Nota dell'editore: la seguente sezione è a cura di Ivan Schreter.
 \end_layout
 
 \begin_layout Subsection
-
 Definire una propria Mappa della Tastiera: Formato File Keymap
 \end_layout
 
 \begin_layout Standard
-
 Diamo uno sguardo al file di definizione della tastiera più da vicino.
  E' un file di testo ASCII che definisce
 \end_layout
 
 \begin_layout Itemize
-
 key-to-key or key-to-string translations
 \end_layout
 
 \begin_layout Itemize
-
 dead keys
 \end_layout
 
 \begin_layout Itemize
-
 dead keys exceptions
 \end_layout
 
 \begin_layout Standard
-
 Per definire una traduzione tasto a tasto o tasto a stringa, usare questo
  comando:
 \end_layout
 
 \begin_layout Quotation
-
 
 \family typewriter
 
@@ -4451,7 +4174,6 @@ outstring
 \end_layout
 
 \begin_layout Standard
-
 dove 
 \family typewriter
 key
@@ -4465,7 +4187,6 @@ outstring
 \end_layout
 
 \begin_layout Quotation
-
 
 \family typewriter
 
@@ -4482,7 +4203,6 @@ deadkey
 \end_layout
 
 \begin_layout Standard
-
 dove 
 \family typewriter
 key
@@ -4500,7 +4220,6 @@ deadkey
 
 \begin_layout Quotation
 
-
 \emph on
 Name
 \hfill
@@ -4508,21 +4227,18 @@ Example
 \end_layout
 
 \begin_layout Quotation
-
 acute (acu)
 \hfill
 áéíóú
 \end_layout
 
 \begin_layout Quotation
-
 grave (gra)
 \hfill
 àèìòù
 \end_layout
 
 \begin_layout Quotation
-
 macron (mac)
 \hfill
  \i \={o}
@@ -4530,14 +4246,12 @@ macron (mac)
 \end_layout
 
 \begin_layout Quotation
-
 tilde (til)
 \hfill
 ñÑ
 \end_layout
 
 \begin_layout Quotation
-
 underbar (underb)
 \hfill
 
@@ -4556,14 +4270,12 @@ b o
 \end_layout
 
 \begin_layout Quotation
-
 cedilla (ced)
 \hfill
 çÇ
 \end_layout
 
 \begin_layout Quotation
-
 underdot (underd)
 \hfill
 
@@ -4582,14 +4294,12 @@ d o
 \end_layout
 
 \begin_layout Quotation
-
 circumflex (circu)
 \hfill
 âêîôû
 \end_layout
 
 \begin_layout Quotation
-
 circle (circl)
 \hfill
 Å\i \r{u}
@@ -4598,7 +4308,6 @@ circle (circl)
 \end_layout
 
 \begin_layout Quotation
-
 tie (tie)
 \hfill
 
@@ -4607,7 +4316,6 @@ t oo
 \end_layout
 
 \begin_layout Quotation
-
 breve (bre)
 \hfill
 \i \u{a}
@@ -4627,7 +4335,6 @@ u o
 \end_layout
 
 \begin_layout Quotation
-
 caron (car)
 \hfill
 \i \v{c}
@@ -4637,7 +4344,6 @@ caron (car)
 \end_layout
 
 \begin_layout Quotation
-
 hungarian umlaut (hug)
 \hfill
 \i \H{o}
@@ -4646,14 +4352,12 @@ hungarian umlaut (hug)
 \end_layout
 
 \begin_layout Quotation
-
 umlaut (uml)
 \hfill
 äöü
 \end_layout
 
 \begin_layout Quotation
-
 dot (dot)
 \hfill
 \i \.{z}
@@ -4673,13 +4377,11 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
 Dato che in molte tastiere internazionali ci sono delle eccezioni alle funzioni
  di alcuni tasti morti, potete definirli usando
 \end_layout
 
 \begin_layout Quotation
-
 
 \family typewriter
 
@@ -4692,7 +4394,6 @@ deadkey key outstring
 \end_layout
 
 \begin_layout Standard
-
 Ad esempio, sulle tastiere slovacche se immettete 
 \begin_inset Quotes eld
 \end_inset
@@ -4714,7 +4415,6 @@ circumflex-o
 
 \begin_layout Quotation
 
-
 \family typewriter
 
 \backslash
@@ -4728,7 +4428,6 @@ caron o "
 \end_layout
 
 \begin_layout Standard
-
 per farlo funzionare correttamente.
  Inoltre, dovrete definire come eccezione i tasti morti su i e j , per rimuovere
  il punto prima di inserire un accento.
@@ -4736,7 +4435,6 @@ per farlo funzionare correttamente.
 \end_layout
 
 \begin_layout Standard
-
 Circa i caratteri, backslash non è presente, quindi per inserirlo avete
  bisogno del doppio backslash.
  Inoltre virgolette e # hanno differenti significati.
@@ -4762,19 +4460,16 @@ Circa i caratteri, backslash non è presente, quindi per inserirlo avete
 \end_layout
 
 \begin_layout Standard
-
 Se create un file di descrizione della tastiera che va bene per la vostra
  lingua, vi prego di mandarmelo, in modo che io possa includerlo nella prossima
  distribuzione delle mappe di tastiera.
 \end_layout
 
 \begin_layout Standard
-
 Molte parole chiave saranno presenti nelle future distribuzioni come: 
 \end_layout
 
 \begin_layout Itemize
-
 
 \family typewriter
 
@@ -4794,7 +4489,6 @@ include
 
 \begin_layout Itemize
 
-
 \family typewriter
 
 \backslash
@@ -4812,7 +4506,6 @@ define
 \end_layout
 
 \begin_layout Standard
-
 Inoltre dovrebbe apparire nel file 
 \family typewriter
 lyxrc
@@ -4827,7 +4520,6 @@ kinclude
 \end_layout
 
 \begin_layout Section
-
 Materiale sulle tastiere internazionali
 \begin_inset LatexCommand \label{sec:keymap}
 
@@ -4837,7 +4529,6 @@ Materiale sulle tastiere internazionali
 \end_layout
 
 \begin_layout Standard
-
 Le prossime due sezioni descrivono la sintassi dei file 
 \family typewriter
 .kmap
@@ -4852,12 +4543,10 @@ Le prossime due sezioni descrivono la sintassi dei file
 \end_layout
 
 \begin_layout Subsection
-
 Il File .kmap
 \end_layout
 
 \begin_layout Standard
-
 Un file 
 \family sans
 .
@@ -4886,7 +4575,6 @@ kcomb
 \begin_layout List
 \labelwidthstring 00.00.0000
 
-
 \family typewriter
 kmap
 \family default
@@ -4894,7 +4582,6 @@ kmap
 \end_layout
 
 \begin_layout LyX-Code
-
 
 \backslash
 kmap 
@@ -4908,7 +4595,6 @@ string
 \end_layout
 
 \begin_layout Standard
-
 Questo mapperà 
 \emph on
 char 
@@ -4930,7 +4616,6 @@ string
 \end_layout
 
 \begin_layout Standard
-
 Un esempio di 
 \family sans
 kmap
@@ -4948,14 +4633,12 @@ venga generato dal tasto
 
 \begin_layout LyX-Code
 
-
 \backslash
 kmap & /
 \end_layout
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 
 \family typewriter
 kmod
@@ -4964,7 +4647,6 @@ kmod
 \end_layout
 
 \begin_layout LyX-Code
-
 
 \backslash
 kmod
@@ -4975,7 +4657,6 @@ char accent allowed
 \end_layout
 
 \begin_layout Standard
-
 Questo farà sì che il carattere 
 \emph on
 char sia accentato sul carattere ammesso
@@ -4986,7 +4667,6 @@ char sia accentato sul carattere ammesso
 status collapsed
 
 \begin_layout Standard
-
 Il termine tasto morto si riferisce ad un tasto che non produce un carattere
  da solo, ma soltanto quando è seguito da un altro tasto.
  Ad esempio, si può riprodurre un carattere tedesco con un umlaunt come
@@ -5005,7 +4685,6 @@ Il termine tasto morto si riferisce ad un tasto che non produce un carattere
 \end_layout
 
 \begin_layout Standard
-
 Se premete 
 \emph on
 char 
@@ -5035,13 +4714,11 @@ char
 \end_layout
 
 \begin_layout Standard
-
 Il seguente esempio specifica che il carattere ' dovrà essere un accento
  acuto, abilitato sui caratteri a, e, i, o, u, A, E, I, O, e U:
 \end_layout
 
 \begin_layout LyX-Code
-
 
 \backslash
 kmod ' acute aeiouAEIOU
@@ -5049,12 +4726,10 @@ kmod ' acute aeiouAEIOU
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 ksmod Specifica un'eccezione al carattere accentato
 \end_layout
 
 \begin_layout LyX-Code
-
 
 \backslash
 kxmod 
@@ -5066,7 +4741,6 @@ accent char result
 \end_layout
 
 \begin_layout Standard
-
 Questo definisce un'eccezione per l'
 \emph on
 accent 
@@ -5136,13 +4810,11 @@ kmod
 \end_layout
 
 \begin_layout Standard
-
 La seguente procedura di comandi fa in modo che venga generato äi immettendo
  acute-i ('i):
 \end_layout
 
 \begin_layout LyX-Code
-
 
 \backslash
 kxmod acute i "
@@ -5159,7 +4831,6 @@ i}"
 \begin_layout List
 \labelwidthstring 00.00.0000
 
-
 \family sans
 kcomb
 \family default
@@ -5167,7 +4838,6 @@ kcomb
 \end_layout
 
 \begin_layout LyX-Code
-
 
 \backslash
 kcomb 
@@ -5177,7 +4847,6 @@ accent1 accent2 allowed
 \end_layout
 
 \begin_layout Standard
-
 Questo effetto ha qualcosa di esoterico.
  Infatti vi permette di combinare l'effetto di 
 \emph on
@@ -5211,7 +4880,6 @@ kmod
 \end_layout
 
 \begin_layout Standard
-
 Consideriamo questo esempio dal file 
 \family typewriter
 greek.kmap
@@ -5220,7 +4888,6 @@ greek.kmap
 \end_layout
 
 \begin_layout LyX-Code
-
 
 \backslash
 kmod ; acute aeioyvhAEIOYVH 
@@ -5231,7 +4898,6 @@ kcomb acute umlaut iyIY
 \end_layout
 
 \begin_layout Standard
-
 Questo vi permette di premere 
 \family sans
 ;:i
@@ -5259,12 +4925,10 @@ avrete
 \end_layout
 
 \begin_layout Subsection
-
 Il file .cdef
 \end_layout
 
 \begin_layout Standard
-
 Dopo la mappatura fatta con
 \family typewriter
  .kmap,
@@ -5289,7 +4953,6 @@ iso8859-2.cdef
 \end_layout
 
 \begin_layout Standard
-
 In generale il file 
 \family typewriter
 .cdef
@@ -5301,7 +4964,6 @@ In generale il file
 
 \begin_layout LyX-Code
 
-
 \family roman
 \emph on
 char_index_in_set
@@ -5312,7 +4974,6 @@ char_index_in_set
 \end_layout
 
 \begin_layout Standard
-
 Ad esempio, per mappare 
 \family sans
 
@@ -5324,7 +4985,6 @@ Ad esempio, per mappare
 \end_layout
 
 \begin_layout LyX-Code
-
 233 "
 \backslash
 
@@ -5333,7 +4993,6 @@ Ad esempio, per mappare
 \end_layout
 
 \begin_layout Standard
-
 con 
 \family typewriter
 
@@ -5356,7 +5015,6 @@ avete
 \end_layout
 
 \begin_layout LyX-Code
-
 192 "
 \backslash
 
@@ -5383,7 +5041,6 @@ avete
 \end_layout
 
 \begin_layout Standard
-
 Se LyX non trova una mappatura per la stringa prodotta dalla pressione del
  tasto o da una sequenza con tasti morti, controllerà se assomiglia ad un
  carattere accentato e proverà a disegnare un accento sul carattere sullo
@@ -5391,12 +5048,10 @@ Se LyX non trova una mappatura per la stringa prodotta dalla pressione del
 \end_layout
 
 \begin_layout Subsection
-
 Tasti morti
 \end_layout
 
 \begin_layout Standard
-
 C'è un altro modo per aggiungere il supporto a caratteri internazionali,
  ed è quello che usa la tecnica dei cosiddetti tasti morti.
  Un tasto morto lavora in combinazione con una lettera per produrre un carattere
@@ -5406,7 +5061,6 @@ C'è un altro modo per aggiungere il supporto a caratteri internazionali,
 \end_layout
 
 \begin_layout Standard
-
 Supponiamo di avere bisogno di un carattere circonflesso, 
 \begin_inset Quotes eld
 \end_inset
@@ -5462,7 +5116,6 @@ dopo un deadkey produrrà un accento semplice.
 \end_layout
 
 \begin_layout Standard
-
 Un altro modo comune di associare tasti morti è quello di usare 
 \family sans
 Meta-
@@ -5545,7 +5198,6 @@ usldead_cedilla
 status collapsed
 
 \begin_layout Standard
-
 Nota da 
 \noun on
 John Weiss
@@ -5617,13 +5269,10 @@ Manuale di Riferimento
 \end_layout
 
 \begin_layout Subsection
-
 Salvare la vostra configurazione di Linguaggio
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:savlang}
 
 \end_inset
@@ -5642,17 +5291,14 @@ lyxrc
 \end_layout
 
 \begin_layout Itemize
-
 default, primary, and secondary keymaps
 \end_layout
 
 \begin_layout Itemize
-
 character set
 \end_layout
 
 \begin_layout Standard
-
 Guardate il vostro file 
 \family typewriter
 lyxrc
@@ -5663,20 +5309,17 @@ lyxrc
 
 \begin_layout LyX-Code
 
-
 \backslash
 kbmap true
 \end_layout
 
 \begin_layout LyX-Code
 
-
 \backslash
 kbmap_primary german
 \end_layout
 
 \begin_layout LyX-Code
-
 
 \backslash
 kbmap_secondary american 
@@ -5687,7 +5330,6 @@ kbmap_secondary american
 \end_layout
 
 \begin_layout Standard
-
 e una font-mapping (
 \family typewriter
 .cdef
@@ -5697,13 +5339,11 @@ e una font-mapping (
 
 \begin_layout LyX-Code
 
-
 \backslash
 screen_font_encoding iso8859-2
 \end_layout
 
 \begin_layout Chapter
-
 Installare Nuove Classi di Documento, Layouts e Templates 
 \begin_inset LatexCommand \label{chap:textclass}
 
@@ -5713,7 +5353,6 @@ Installare Nuove Classi di Documento, Layouts e Templates
 \end_layout
 
 \begin_layout Standard
-
 In questo capitolo si descrivono le procedure per creare ed installare nuovi
  layouts di LyX e files template, come anche si procederà ad illustrare
  la corretta installazione di nuove classi di documento LaTeX.
@@ -5776,12 +5415,10 @@ textclass
 \end_layout
 
 \begin_layout Section
-
 Installare un nuovo pacchetto LaTeX
 \end_layout
 
 \begin_layout Standard
-
 Alcune installazioni possono non includere un pacchetto LaTeX che vorreste
  usare in LyX.
  Ad esempio, vorreste avere FoilTeX, un pacchetto comune (e molto potente)
@@ -5790,7 +5427,6 @@ Alcune installazioni possono non includere un pacchetto LaTeX che vorreste
 status collapsed
 
 \begin_layout Standard
-
 Vedere il manuale 
 \emph on
 Extended LyX Features
@@ -5806,7 +5442,6 @@ Ecco di seguito tutti i passaggi necessari per avere il pacchetto e lanciarlo
 status collapsed
 
 \begin_layout Standard
-
 Questa procedura è definitivamente valida per la versione v1.0 e tutte le
  versioni beta v0.9.
  Commenti sul funzionamento per le versioni v.04 sono graditi, anche se è
@@ -5819,13 +5454,11 @@ Questa procedura è definitivamente valida per la versione v1.0 e tutte le
 \end_layout
 
 \begin_layout Enumerate
-
 Procurarsi il pacchetto da CTAN o simili.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-
 Vedere il manuale 
 \emph on
 Inventory of your LaTeX configuration
@@ -5840,7 +5473,6 @@ Inventory of your LaTeX configuration
 \end_layout
 
 \begin_layout Enumerate
-
 Leggere il file 
 \family typewriter
 texmf.cnf
@@ -5883,7 +5515,6 @@ texmf.cnf
 
 \begin_deeper
 \begin_layout Enumerate
-
 Settare 
 \family typewriter
 TEXMFLOCAL
@@ -5897,7 +5528,6 @@ TEXMFLOCAL = /usr/local/texmf
 \end_layout
 
 \begin_layout Enumerate
-
 Assicuratevi che
 \family typewriter
  TEXMF
@@ -5913,9 +5543,9 @@ TEXMFLOCAL
 \family typewriter
 TEXMF = {$HOMETEXMF,!!$TEXMFLOCAL,!!$TEXMFMAIN}
 \end_layout
+
 \end_deeper
 \begin_layout Enumerate
-
 Create la vostra directory locale
 \family typewriter
  texmf
@@ -5938,7 +5568,6 @@ Create la vostra directory locale
 \end_layout
 
 \begin_layout Enumerate
-
 Installare il pacchetto.
  Ad esempio, vogliamo scompattare l'archivio FoilTeX e creare
 \family typewriter
@@ -5953,7 +5582,6 @@ foiltex
 \end_layout
 
 \begin_layout Enumerate
-
 Lanciare: 
 \family typewriter
 texhash
@@ -5967,7 +5595,6 @@ tra le altre.
 \end_layout
 
 \begin_layout Enumerate
-
 Dall'interno di LyX, fate: 
 \family sans
 \bar under
@@ -5985,7 +5612,6 @@ econfigure
 \end_layout
 
 \begin_layout Standard
-
 Ora dovreste vedere il vostro nuovo pacchetto--ad esempio 
 \family sans
 slides (FoilTeX)
@@ -6021,12 +5647,10 @@ texmf.cnf
 \end_layout
 
 \begin_layout Section
-
 Layouts
 \end_layout
 
 \begin_layout Standard
-
 Questa sezione descrive come scrivere ed installare i propri files di layout
  di LyX (anche detti textclass), utilizzando la textclass 
 \family typewriter
@@ -6046,7 +5670,6 @@ article
 \end_layout
 
 \begin_layout Standard
-
 Quando programmate di scrivere un nuovo layout, è estremamente utile guardare
  prima i layout di esempio distribuiti con LyX.
  Se usate una classe di documento LaTeX particolarmente bella che può essere
@@ -6056,7 +5679,6 @@ Quando programmate di scrivere un nuovo layout, è estremamente utile guardare
 \end_layout
 
 \begin_layout Standard
-
 Tutte le righe di codice di questo paragrafo sono case-insensitive; ciò
  significa che 
 \family typewriter
@@ -6104,12 +5726,10 @@ float=default
 \end_layout
 
 \begin_layout Subsection
-
 Supportare nuove classi di documento
 \end_layout
 
 \begin_layout Standard
-
 Ci sono tre situazioni che potete incontrare se volete supportare una nuova
  classe di documento LaTeX.
  I due tipi più semplici coinvolgono classe (.cls) e style (.sty) LaTeX2e.
@@ -6121,12 +5741,10 @@ Ci sono tre situazioni che potete incontrare se volete supportare una nuova
 \end_layout
 
 \begin_layout Subsection
-
 File sty LaTex2e
 \end_layout
 
 \begin_layout Standard
-
 Se la vostra nuova classe di documento è sotto forma di style file, usato
  in aggiunta ad uno esistente, la classe di documento supportata, inizia
  copiando il layout della classe esistente nella vostra directory locale.
@@ -6143,12 +5761,10 @@ report.cls
 \end_layout
 
 \begin_layout LyX-Code
-
 cp report.layout ~/.lyx/layouts/myclass.layout
 \end_layout
 
 \begin_layout Standard
-
 Poi editiamo 
 \family typewriter
 myclass.layout
@@ -6158,42 +5774,35 @@ myclass.layout
 
 \begin_layout LyX-Code
 
-
 \backslash
 DeclareLaTeXClass{report}
 \end_layout
 
 \begin_layout Standard
-
 in modo da avere
 \end_layout
 
 \begin_layout LyX-Code
-
 
 \backslash
 DeclareLaTeXClass[report, myclass.sty]{report (myclass)}
 \end_layout
 
 \begin_layout Standard
-
 Poi aggiungiamo:
 \end_layout
 
 \begin_layout LyX-Code
-
 Preamble 
 \backslash
 usepackage{myclass}EndPreamble
 \end_layout
 
 \begin_layout Standard
-
 presso l'inizio del file.
 \end_layout
 
 \begin_layout Standard
-
 Lanciamo LyX e selezioniamo 
 \family sans
 \bar under
@@ -6241,7 +5850,6 @@ status collapsed
 
 \begin_layout Standard
 
-
 \family typewriter
 Report
 \family default
@@ -6255,12 +5863,10 @@ Report
 \end_layout
 
 \begin_layout Subsection
-
 File cls LaTeX2e
 \end_layout
 
 \begin_layout Standard
-
 In questo caso, dovrete 
 \begin_inset Quotes eld
 \end_inset
@@ -6278,12 +5884,10 @@ vedervela da soli
 \end_layout
 
 \begin_layout Subsection
-
 File sty LaTeX 2.09
 \end_layout
 
 \begin_layout Standard
-
 Se il file 
 \family typewriter
 .sty
@@ -6293,7 +5897,6 @@ Se il file
 \end_layout
 
 \begin_layout Enumerate
-
 Un file di esempio o la documentazione nel file 
 \family sans
 sty
@@ -6314,7 +5917,6 @@ documentclass
 \end_layout
 
 \begin_layout Enumerate
-
 Lanciare LaTeX su un file di esempio produrra un banner con l'avvertimento
  che si sta entrando nel 
 \begin_inset Quotes eld
@@ -6328,7 +5930,6 @@ compatibility mode
 \end_layout
 
 \begin_layout Standard
-
 LyX tecnicamente supporta solo documenti LaTeX2e.
  Ma non mollate ancora! Dove c'è volontà c'è un modo ( oppure 
 \begin_inset Quotes eld
@@ -6350,17 +5951,14 @@ myclass.sty
 \end_layout
 
 \begin_layout Standard
-
 Bene, ecco cosa dovete fare:
 \end_layout
 
 \begin_layout LyX-Code
-
 cp LyXDir/tex/revtex.cls ~/tex/myclass.cls
 \end_layout
 
 \begin_layout Standard
-
 oppure dove avete i vostri files locali TeX.
  Ora editate 
 \family typewriter
@@ -6394,20 +5992,17 @@ nel file non sono rilevanti per il vostro file di stile, ma non ci interessano
 \end_layout
 
 \begin_layout Standard
-
 Il prossimo passo è quello di ripetere il processo di creazione del file
  di layout myclass.layout di prima; solo per questa volta usate:
 \end_layout
 
 \begin_layout LyX-Code
 
-
 \backslash
 DeclareLaTeXClass{myclass}
 \end_layout
 
 \begin_layout Standard
-
 e non dovreste aver bisogno di definizioni di tipo 
 \family typewriter
 Preamble
@@ -6425,7 +6020,6 @@ o.
 \end_layout
 
 \begin_layout Standard
-
 Avrete inoltre bisogno di controllare che avete tutte le variabili d'ambiente
  da 
 \family typewriter
@@ -6442,27 +6036,22 @@ myclass.layout
 \end_layout
 
 \begin_layout LyX-Code
-
 Style MissingStyle
 \end_layout
 
 \begin_layout LyX-Code
-
     CopyStyle SimilarStyle
 \end_layout
 
 \begin_layout LyX-Code
-
     # whatever is different you now redefine
 \end_layout
 
 \begin_layout LyX-Code
-
 End
 \end_layout
 
 \begin_layout Standard
-
 Guardare in seguito per i dettagli circa quello che fa ogni elemento nel
  file 
 \family typewriter
@@ -6472,7 +6061,6 @@ Guardare in seguito per i dettagli circa quello che fa ogni elemento nel
 \end_layout
 
 \begin_layout Standard
-
 Dovrebbe essere abbastanza per mettervi sulla giusta strada.
  Fate riferimento alle successive sezioni per i dettagli sui contenuti attuali
  dei files layout e ricordate che se ci sono problemi potete chiedere aiuto
@@ -6481,12 +6069,10 @@ Dovrebbe essere abbastanza per mettervi sulla giusta strada.
 \end_layout
 
 \begin_layout Section
-
 Dichiarare una nuova textclass
 \end_layout
 
 \begin_layout Standard
-
 Quando è finalmente giunta l'ora di sporcarvi le mani e creare un vostro
  personale file di layout, la seguente sezione descrive a cosa andrete incontro.
  Il nostro consiglio è di procedere piano, salvare e testare spesso, ascoltare
@@ -6498,12 +6084,10 @@ Quando è finalmente giunta l'ora di sporcarvi le mani e creare un vostro
 \end_layout
 
 \begin_layout Standard
-
 Andiamo!
 \end_layout
 
 \begin_layout Standard
-
 Le linee in un file di layout che iniziano con # sono commenti.
  C'è una eccezione a questa regola: tutti i layouts dovrebbero iniziare
  con queste linee:
@@ -6511,13 +6095,11 @@ Le linee in un file di layout che iniziano con # sono commenti.
 
 \begin_layout LyX-Code
 
-
 \size small
 #% Do not delete the line below; configure depends on this 
 \end_layout
 
 \begin_layout LyX-Code
-
 
 \size small
 #  
@@ -6526,7 +6108,6 @@ DeclareLaTeXClass{article}
 \end_layout
 
 \begin_layout Standard
-
 La seconda linea è usata quando configurate LyX.
  Il file di layout è letto dallo script LaTeX
 \family typewriter
@@ -6570,7 +6151,6 @@ ocument .
 \end_layout
 
 \begin_layout Standard
-
 Assumiamo che scrivete la vostra texclass utilizzando la classe di documento
  
 \family typewriter
@@ -6586,13 +6166,11 @@ myarticle.layout
 
 \begin_layout LyX-Code
 
-
 \size small
 #% Do not delete the line below; configure depends on this 
 \end_layout
 
 \begin_layout LyX-Code
-
 
 \size small
 #  
@@ -6601,7 +6179,6 @@ DeclareLaTeXClass[article]{article (with my own headings)}
 \end_layout
 
 \begin_layout Standard
-
 Questi dichiarano una textclass 
 \family typewriter
 myarticle
@@ -6624,13 +6201,11 @@ article (con le vostre intestazioni)
 
 \begin_layout LyX-Code
 
-
 \size small
 #% Do not delete the line below; configure depends on this 
 \end_layout
 
 \begin_layout LyX-Code
-
 
 \size small
 #  
@@ -6639,7 +6214,6 @@ DeclareLaTeXClass[article,foo.sty]{article (with my own headings)}
 \end_layout
 
 \begin_layout Standard
-
 Queste indicano che la vostra textclass usa il pacchetto foo.sty.
  Infine è anche possibile dichiarare classi per codice SGML e DocBook.
  Le dichiarazioni tipiche avranno questa forma:
@@ -6647,13 +6221,11 @@ Queste indicano che la vostra textclass usa il pacchetto foo.sty.
 
 \begin_layout LyX-Code
 
-
 \size small
 #% Do not delete the line below; configure depends on this 
 \end_layout
 
 \begin_layout LyX-Code
-
 
 \size small
 # 
@@ -6662,35 +6234,29 @@ DeclareSGMLClass{SGML (LinuxDoc)}
 \end_layout
 
 \begin_layout Standard
-
 oppure
 \end_layout
 
 \begin_layout LyX-Code
-
 #% Do not delete the line below; configure depends on this 
 \end_layout
 
 \begin_layout LyX-Code
-
  
 \end_layout
 
 \begin_layout LyX-Code
-
 # 
 \backslash
 DeclareDocBookClass[article]{SGML (DocBook article)}
 \end_layout
 
 \begin_layout Standard
-
 Notate che a queste dichiarazioni può essere anche dato come parametro opzionale
  che dichiara il nome della classe di documento (ma non una lista).
 \end_layout
 
 \begin_layout Standard
-
 Quando la textclass è stata modificata secondo i vostri gusti, tutto quello
  che dovete fare è copiarla in 
 \family typewriter
@@ -6718,19 +6284,15 @@ econfigure.
 \end_layout
 
 \begin_layout Subsection
-
 Parametri generali di textclass
 \end_layout
 
 \begin_layout Standard
-
 Questi sono i parametri generali che descrivono la struttura dell'intero
  documento:
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
@@ -6746,7 +6308,6 @@ begin{sloppypar}
 \end_layout
 
 \begin_layout Description
-
 
 \family typewriter
 \series medium
@@ -6806,7 +6367,6 @@ ocument.
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 Sides
@@ -6842,7 +6402,6 @@ ocument
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 PageStyle
@@ -6872,7 +6431,6 @@ ocument.
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 MaxCounter
@@ -6888,7 +6446,8 @@ Counter_Chapter
 \newline
 Counter_Subparagraph, Counter_EnumI, Counter_EnumII, 
 \newline
-Counter_EnumIII, Counter_EnumIV
+Counter_EnumIII, Counter_E
+numIV
 \family default
 ] Il più alto livello di enumerazione automatica.
  Valori utili sono 
@@ -6915,7 +6474,6 @@ Counter_EnumI
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 ClassOptions\SpecialChar \ldots{}
@@ -6934,7 +6492,6 @@ End
 \end_layout
 
 \begin_layout Description
-
 
 \family typewriter
 \series medium
@@ -6966,7 +6523,6 @@ amsbook
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 ProvidesMakeidx
@@ -6997,7 +6553,6 @@ amsbook
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 ProvidesUrl
@@ -7024,7 +6579,6 @@ AASTeX
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 DefaultFont
@@ -7042,7 +6596,6 @@ DefaultFont
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 Preamble\SpecialChar \ldots{}
@@ -7054,7 +6607,6 @@ EndPreamble
 \end_layout
 
 \begin_layout Description
-
 
 \family typewriter
 \series medium
@@ -7072,7 +6624,6 @@ stdclass.inc
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 NoStyle
@@ -7084,8 +6635,6 @@ NoStyle
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
@@ -7101,15 +6650,12 @@ end{sloppypar}
 \end_layout
 
 \begin_layout Subsection
-
 Sezione 
 \family typewriter
 ClassOption
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:classoptions}
 
 \end_inset
@@ -7122,7 +6668,6 @@ ClassOption
 \end_layout
 
 \begin_layout Description
-
 
 \family typewriter
 \series medium
@@ -7151,7 +6696,6 @@ string="10|11|12"
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 PageStyle
@@ -7178,7 +6722,6 @@ string="empty|plain|headings|fancy"
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 Other
@@ -7199,18 +6742,15 @@ documentclass
 \end_layout
 
 \begin_layout Subsection
-
 Layouts specifici di paragrafo
 \end_layout
 
 \begin_layout Standard
-
 La descrizione di un layout description è di questo tipo
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-
 Notate che questo può definire un nuovo layout o modificarne uno esistente.
 \end_layout
 
@@ -7220,7 +6760,6 @@ Notate che questo può definire un nuovo layout o modificarne uno esistente.
 \end_layout
 
 \begin_layout LyX-Code
-
 Style 
 \family roman
 \emph on
@@ -7229,24 +6768,19 @@ name
 
 \begin_layout LyX-Code
 
-
 \noun on
 ...
 \end_layout
 
 \begin_layout LyX-Code
-
 End
 \end_layout
 
 \begin_layout Standard
-
 dove sono consentiti i seguenti comandi:
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
@@ -7263,7 +6797,6 @@ begin{sloppypar}
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 CopyStyle
@@ -7275,7 +6808,6 @@ CopyStyle
 \end_layout
 
 \begin_layout Description
-
 
 \family typewriter
 \series medium
@@ -7384,7 +6916,6 @@ aragraph.
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 InTitle
@@ -7403,7 +6934,6 @@ maketitle
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 LatexName
@@ -7414,7 +6944,6 @@ LatexName
 \end_layout
 
 \begin_layout Description
-
 
 \family typewriter
 \series medium
@@ -7430,7 +6959,6 @@ LatexName
 \end_layout
 
 \begin_layout Description
-
 
 \family typewriter
 \series medium
@@ -7527,7 +7055,6 @@ Right_Address_Box
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 NextNoIndent
@@ -7545,7 +7072,6 @@ NextNoIndent
 \end_layout
 
 \begin_layout Description
-
 
 \family typewriter
 \series medium
@@ -7593,7 +7119,6 @@ NextNoIndent
 \end_layout
 
 \begin_layout Description
-
 
 \family typewriter
 \series medium
@@ -7662,7 +7187,6 @@ DefaultHeight()
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 TopSep
@@ -7679,7 +7203,6 @@ float=0
 \end_layout
 
 \begin_layout Description
-
 
 \family typewriter
 \series medium
@@ -7699,7 +7222,6 @@ TopSep
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 Parsep
@@ -7713,7 +7235,6 @@ float=0
 \end_layout
 
 \begin_layout Description
-
 
 \family typewriter
 \series medium
@@ -7741,7 +7262,6 @@ Itemsep
 \end_layout
 
 \begin_layout Description
-
 
 \family typewriter
 \series medium
@@ -7778,7 +7298,6 @@ ParIndent
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 RightMargin
@@ -7797,7 +7316,6 @@ string=""
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 Labeltype
@@ -7810,9 +7328,11 @@ No_Label
 \emph default
 , Manual, Static, Top_Environment, 
 \newline
-Centered_Top_Environment, Sensitive, Counter_Chapter, 
+Centered_Top_Environment, Sensitive,
+ Counter_Chapter, 
 \newline
-Counter_Section, Counter_Subsection, Counter_Subsubsection, 
+Counter_Section, Counter_Subsection, Counter_Subsubsection,
+ 
 \newline
 Counter_Paragraph, Counter_Subparagraph, Counter_EnumI,
 \family default
@@ -7906,7 +7426,6 @@ Counter_xxx
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 Labelsep
@@ -7921,7 +7440,6 @@ string=""
 \end_layout
 
 \begin_layout Description
-
 
 \family typewriter
 \series medium
@@ -7941,7 +7459,6 @@ Centered_Top_Environment
 \end_layout
 
 \begin_layout Description
-
 
 \family typewriter
 \series medium
@@ -7983,7 +7500,6 @@ aragraph
 
 \begin_layout Description
 
-
 \series medium
 Align
 \series default
@@ -7995,7 +7511,6 @@ block
 \end_layout
 
 \begin_layout Description
-
 
 \family typewriter
 \series medium
@@ -8020,7 +7535,6 @@ liste
 \end_layout
 
 \begin_layout Description
-
 
 \family typewriter
 \series medium
@@ -8060,7 +7574,6 @@ status collapsed
 
 \begin_layout Standard
 
-
 \emph on
 Nota di Jean-Marc:
 \emph default
@@ -8074,7 +7587,6 @@ Nota di Jean-Marc:
 \end_layout
 
 \begin_layout Description
-
 
 \family typewriter
 \series medium
@@ -8096,7 +7608,6 @@ Fill_Top
 \end_layout
 
 \begin_layout Description
-
 
 \family typewriter
 \series medium
@@ -8121,7 +7632,6 @@ protetti
 \end_layout
 
 \begin_layout Description
-
 
 \family typewriter
 \series medium
@@ -8151,7 +7661,6 @@ Newline
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 FreeSpacing
@@ -8180,7 +7689,6 @@ FreeSpacing
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 KeepEmpty
@@ -8202,7 +7710,6 @@ KeepEmpty
 \end_layout
 
 \begin_layout Description
-
 
 \family typewriter
 \series medium
@@ -8252,7 +7759,6 @@ setspace.sty
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 Font
@@ -8282,7 +7788,6 @@ allo stesso valore.
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 TextFont
@@ -8299,7 +7804,6 @@ TextFont
 \end_layout
 
 \begin_layout Description
-
 
 \family typewriter
 \series medium
@@ -8318,7 +7822,6 @@ LabelFont
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 Preamble\SpecialChar \ldots{}
@@ -8332,8 +7835,6 @@ EndPreamble
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
@@ -8349,13 +7850,10 @@ end{sloppypar}
 \end_layout
 
 \begin_layout Subsection
-
 Descrizione dei Font
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:fonts}
 
 \end_inset
@@ -8364,7 +7862,6 @@ Una descrizione di un font appare così:
 \end_layout
 
 \begin_layout LyX-Code
-
 Font
 \family roman
 \emph on
@@ -8375,22 +7872,18 @@ LabelFont
 \end_layout
 
 \begin_layout LyX-Code
-
  
 \end_layout
 
 \begin_layout LyX-Code
-
 EndFont
 \end_layout
 
 \begin_layout Standard
-
 e i seguenti comandi sono disponibili:
 \end_layout
 
 \begin_layout Description
-
 
 \family typewriter
 \series medium
@@ -8409,7 +7902,6 @@ Roman
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 Series
@@ -8427,7 +7919,6 @@ Medium
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 Shape
@@ -8444,7 +7935,6 @@ Up
 \end_layout
 
 \begin_layout Description
-
 
 \family typewriter
 \series medium
@@ -8464,7 +7954,6 @@ normal
 
 \begin_layout Description
 
-
 \family typewriter
 \series medium
 Color
@@ -8482,7 +7971,6 @@ none
 \end_layout
 
 \begin_layout Description
-
 
 \family typewriter
 \series medium
@@ -8509,7 +7997,6 @@ Latex
 \end_layout
 
 \begin_layout Section
-
 Creare Templates
 \begin_inset LatexCommand \label{sec:templates}
 
@@ -8519,7 +8006,6 @@ Creare Templates
 \end_layout
 
 \begin_layout Standard
-
 I templates vengono creati come normali documenti.
  L'unica differenza è che i documenti normali contengono tutti i possibili
  settaggi, inclusi schemi di font e dimensioni della carta.
@@ -8551,7 +8037,6 @@ xedit
 \end_layout
 
 \begin_layout Standard
-
 Mettete il template editato che avete creato in 
 \family typewriter
 $UserDir/templates/
@@ -8574,7 +8059,6 @@ template_path
 \end_layout
 
 \begin_layout Chapter
-
 Un Tutorial sulla Stampante
 \begin_inset LatexCommand \label{chap:printer}
 
@@ -8584,12 +8068,10 @@ Un Tutorial sulla Stampante
 \end_layout
 
 \begin_layout Section
-
 Introduzione
 \end_layout
 
 \begin_layout Standard
-
 Questo capitolo descrive come sia possibile fare il setup di una stampante
  sotto Unix, in modo da poterla usare in LyX.
  Se avete un sistema Linux, e avete bisogno di settare la vostra stampante,
@@ -8611,7 +8093,6 @@ Printing-HOWTO
 \end_layout
 
 \begin_layout Standard
-
 Alcune distribuzioni Linux attualmente hanno i cosiddetti 
 \begin_inset Quotes eld
 \end_inset
@@ -8634,25 +8115,21 @@ Printing-HOWTO
 \end_layout
 
 \begin_layout Standard
-
 Così, se vi sentite avventurosi, o non avete altra scelta, continuate a
  leggere!
 \end_layout
 
 \begin_layout Section
-
 Il file 
 \family typewriter
 /etc/printcap
 \end_layout
 
 \begin_layout Subsection
-
 Descrizione
 \end_layout
 
 \begin_layout Standard
-
 Il file 
 \family typewriter
 /etc/printcap
@@ -8674,7 +8151,6 @@ stampanti
 status collapsed
 
 \begin_layout Standard
-
 Nota di
 \noun on
  John Weiss
@@ -8701,7 +8177,6 @@ draft
 \end_layout
 
 \begin_layout Standard
-
 Ecco un esempio 
 \family typewriter
 /etc/printcap
@@ -8710,174 +8185,147 @@ Ecco un esempio
 \end_layout
 
 \begin_layout LyX-Code
-
 lp|Text on an Epson:
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 :lp=/dev/lp1:
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 :sd=/var/spool/lpd/lp:
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 :lf=/var/spool/lpd/lp/errs:
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 :mx#0:
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 :sh:
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 :sf:
 \newline
 
 \end_layout
 
 \begin_layout LyX-Code
-
 draft|Postscript on an Epson Stylus Color IIs, 180dpi:
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 :lp=/dev/lp1:
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 :sd=/var/spool/lpd/draft:
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 :lf=/var/spool/lpd/draft/errs:
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 :if=/var/spool/lpd/draft/draft.filter:
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 :mx#0:
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 :sh:
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 :sf:
 \newline
 
 \end_layout
 
 \begin_layout LyX-Code
-
 ps|Postscript on an Epson Stylus Color IIs, 360dpi:
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 :lp=/dev/lp1:
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 :sd=/var/spool/lpd/ps:
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 :lf=/var/spool/lpd/ps/errs:
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 :if=/var/spool/lpd/ps/ps.filter:
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 :mx#0:
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 :sh:
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 :sf:
 \end_layout
 
 \begin_layout Standard
-
 Prima di avventurarci nella spiegazione di questi geroglifici, abbiamo un
  messaggio importante:
 \end_layout
 
-
 \begin_layout Standard
-
-
 \begin_inset VSpace 0.51cm
 \end_inset
 
@@ -8900,17 +8348,13 @@ Assicuratevi che la linea fra le entrate sia COMPLETAMENTE BIANCA!!!
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset VSpace 0.51cm
 \end_inset
 
 
 \end_layout
 
-
 \begin_layout Standard
-
 Anche se lasciate uno spazio bianco tra le entrate, possono accadere cose
  strane, ed il sistema non interpreterà correttamente il file 
 \family typewriter
@@ -8920,7 +8364,6 @@ Anche se lasciate uno spazio bianco tra le entrate, possono accadere cose
 \end_layout
 
 \begin_layout Standard
-
 Date uno sguardo ad una delle entrate dell'esempio precedente.
  Ogni parte dell'entrata è seguita da un carattere 
 \begin_inset Quotes eld
@@ -8996,7 +8439,6 @@ a.
 \end_layout
 
 \begin_layout Standard
-
 Se scegliete di interrompere un'entrata di 
 \family typewriter
 printcap
@@ -9023,12 +8465,10 @@ testo
 \end_layout
 
 \begin_layout LyX-Code
-
 lp|Text:lp=/dev/lp1:sd=/var/spool/lpd/lp:lf=/var/spool/lpd/lp/errs:
 \end_layout
 
 \begin_layout Standard
-
 Notate che c'è un solo 
 \begin_inset Quotes eld
 \end_inset
@@ -9046,19 +8486,16 @@ Notate che c'è un solo
 \end_layout
 
 \begin_layout LyX-Code
-
 lp|Text:lp=/dev/lp1:sd=/var/spool/lpd/lp:
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 :lf=/var/spool/lpd/lp/errs:
 \end_layout
 
 \begin_layout Standard
-
 Abbiamo interrotto la linea al punto 
 \begin_inset Quotes eld
 \end_inset
@@ -9103,7 +8540,6 @@ Abbiamo interrotto la linea al punto
 \end_layout
 
 \begin_layout Standard
-
 Andremo ora a spiegare ogni parte di un'entrata di 
 \family typewriter
 /etc/printcap
@@ -9119,12 +8555,10 @@ printcap
 \end_layout
 
 \begin_layout Subsection
-
 Il Nome della Stampante
 \end_layout
 
 \begin_layout Standard
-
 La prima linea di un'entrata di 
 \family typewriter
 printcap
@@ -9160,14 +8594,12 @@ printcap
 \end_layout
 
 \begin_layout LyX-Code
-
 draft|OurPrinter in Draft Mode:
 \backslash
 
 \end_layout
 
 \begin_layout Standard
-
 è una stampante chiamata 
 \begin_inset Quotes eld
 \end_inset
@@ -9220,7 +8652,6 @@ lpr
 \end_layout
 
 \begin_layout Standard
-
 Di solito si usa chiamare la vostra stampante principale PostScript® come
  
 \begin_inset Quotes eld
@@ -9250,12 +8681,10 @@ lp
 \end_layout
 
 \begin_layout Subsection
-
 Il Dispositivo di Stampa
 \end_layout
 
 \begin_layout Standard
-
 La prossima parte del nostro esempio di entrate 
 \family typewriter
 printcap
@@ -9265,14 +8694,12 @@ printcap
 \end_layout
 
 \begin_layout LyX-Code
-
 :lp=/dev/lp1:
 \backslash
 
 \end_layout
 
 \begin_layout Standard
-
 [Ancora, notate che 
 \begin_inset Quotes eld
 \end_inset
@@ -9303,7 +8730,6 @@ printcap
 \end_layout
 
 \begin_layout Standard
-
 Il tag 
 \begin_inset Quotes eld
 \end_inset
@@ -9346,7 +8772,6 @@ printcap
 \end_layout
 
 \begin_layout Standard
-
 Molte stampanti, tuttavia, usano la porta parallela.
  In aggiunta, la porta stampante sulla 
 \emph on
@@ -9362,7 +8787,6 @@ maggior parte
 status collapsed
 
 \begin_layout Standard
-
 Perchè è 
 \family typewriter
 /dev/lp1
@@ -9414,7 +8838,6 @@ non
 \end_layout
 
 \begin_layout Standard
-
 Se avete più di una porta parallela, la situazione cambia.
  Inoltre se alterate l'indirizzo I/O della porta per qualsiasi motivo, poi
  uno degli altri dispositivi 
@@ -9448,12 +8871,10 @@ lp
 \end_layout
 
 \begin_layout Subsection
-
 La Directory Spool e il File Log
 \end_layout
 
 \begin_layout Standard
-
 Oltre a dare un nome alla vostra stampante e a dire a Linux quale dispositivo
  è, avete ancora bisogno di una directory per il print spooling.
  la sigla 
@@ -9486,7 +8907,6 @@ lf=
 \end_layout
 
 \begin_layout Standard
-
 Molti sistemi mettono tutte le code di stampa nella directory 
 \family typewriter
 /var/spool/lpd
@@ -9536,7 +8956,6 @@ dirname
 \end_layout
 
 \begin_layout Standard
-
 Ad esempio, guardiamo l'entrata per la stampante 
 \begin_inset Quotes eld
 \end_inset
@@ -9554,21 +8973,18 @@ ps
 \end_layout
 
 \begin_layout LyX-Code
-
 :sd=/var/spool/lpd/ps:
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 :lf=/var/spool/lpd/ps/errs:
 \backslash
 
 \end_layout
 
 \begin_layout Standard
-
 Questo indica che la directory di spool è 
 \family typewriter
 /var/spool/lpd/ps
@@ -9602,7 +9018,6 @@ touch errs
 \end_layout
 
 \begin_layout Standard
-
 Similmente, l'entrata per la stampante 
 \begin_inset Quotes eld
 \end_inset
@@ -9619,21 +9034,18 @@ lp
 \end_layout
 
 \begin_layout LyX-Code
-
 :sd=/var/spool/lpd/lp:
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 :lf=/var/spool/lpd/lp/errs:
 \backslash
 
 \end_layout
 
 \begin_layout Standard
-
 Ancora, la spool directory è 
 \family typewriter
 /var/spool/lpd/lp
@@ -9647,12 +9059,10 @@ Ancora, la spool directory è
 \end_layout
 
 \begin_layout Subsection
-
 Il Filter File
 \end_layout
 
 \begin_layout Standard
-
 A differenza di 
 \begin_inset Quotes eld
 \end_inset
@@ -9719,7 +9129,6 @@ ilter, significa l'input dello spool].
 \end_layout
 
 \begin_layout Standard
-
 Ci sono generalmente molte righe per i programmi filtro, che permettono
  di specificare un filtro differente per diversi scopi.
  Potete selezionare i filtri come opzioni a 
@@ -9730,7 +9139,6 @@ lpr
 \end_layout
 
 \begin_layout Standard
-
 Diamo un'occhiata alle righe per la stampante 
 \begin_inset Quotes eld
 \end_inset
@@ -9747,14 +9155,12 @@ ps
 \end_layout
 
 \begin_layout LyX-Code
-
 :if=/var/spool/lpd/ps/ps.filter:
 \backslash
 
 \end_layout
 
 \begin_layout Standard
-
 Il file 
 \begin_inset Quotes eld
 \end_inset
@@ -9787,7 +9193,6 @@ ps
 \end_layout
 
 \begin_layout Standard
-
 Tutti i filtri, sia programmi o script di shell, dovrebbero prendere l'input
  da 
 \family typewriter
@@ -9801,12 +9206,10 @@ stdout
 \end_layout
 
 \begin_layout Subsection
-
 Entrate Addizionali
 \end_layout
 
 \begin_layout Standard
-
 Ci sono tre cose addizionali che dovete mettere nel vostro 
 \family typewriter
 printcap
@@ -9816,26 +9219,22 @@ printcap
 \end_layout
 
 \begin_layout LyX-Code
-
 :mx#0:
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 :sh:
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 :sf:
 \end_layout
 
 \begin_layout Standard
-
 Il 
 \begin_inset Quotes eld
 \end_inset
@@ -9890,17 +9289,14 @@ printcap
 \end_layout
 
 \begin_layout Section
-
 Creare un Filtro di Stampa
 \end_layout
 
 \begin_layout Subsection
-
 Stampare Files PostScript® Usando Ghostscript
 \end_layout
 
 \begin_layout Standard
-
 Il modo più semplice per far capire alla vostra stampante il PostScript®
  è quello di usare il programma Ghostscript come filtro di stampa.
  Ci sono probabilmente altri modi, ma questo è quello più comune.
@@ -9913,7 +9309,6 @@ Printing-HOWTO
 \end_layout
 
 \begin_layout Standard
-
 La prima cosa che dovete fare è installare Ghostscript.
  C'è almeno una versione in ogni distribuzione Linux.
  se non c'è la potete ottenereThe first thing you should do is install Ghostscri
@@ -9928,12 +9323,10 @@ sunsite.unc.edu
 \end_layout
 
 \begin_layout LyX-Code
-
 gs -h | more
 \end_layout
 
 \begin_layout Standard
-
 dalla linea di comando.
  Questo farà una lista dei dispositivi di stampa disponibili con relativi
  formati.
@@ -9942,59 +9335,50 @@ dalla linea di comando.
 \end_layout
 
 \begin_layout Itemize
-
 Stampanti Apple:
 \end_layout
 
 \begin_deeper
 \begin_layout Description
-
 appledmp Apple dot matrix printers
 \end_layout
 
 \begin_layout Description
-
 iwhi Imagewriter in high-res mode
 \end_layout
 
 \begin_layout Description
-
 iwlo Imagewriter in low-res mode
 \end_layout
 
 \begin_layout Description
-
 iwlq Imagewriter LQ in 
 \begin_inset Formula $320\times216$
 \end_inset
 
  dpi mode
 \end_layout
+
 \end_deeper
 \begin_layout Itemize
-
 Stampanti Canon:
 \end_layout
 
 \begin_deeper
 \begin_layout Description
-
 bj10e BubbleJet BJ-10e
 \end_layout
 
 \begin_layout Description
-
 bj200 BubbleJet BJ-200
 \end_layout
 
 \begin_layout Description
-
 bjc600 Color BubbleJet BJC-600, BJC-4000 and BJC-70.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-
 Buona anche per alcune Apple come la StyleWriter 2x00
 \end_layout
 
@@ -10004,79 +9388,66 @@ Buona anche per alcune Apple come la StyleWriter 2x00
 \end_layout
 
 \begin_layout Description
-
 bjc800 Color BubbleJet BJC-800
 \end_layout
 
 \begin_layout Description
-
 lbp8 LBP-II8 laser printer
 \end_layout
 
 \begin_layout Description
-
 lips3 LIPS-III laser printer in CaPSL mode
 \end_layout
+
 \end_deeper
 \begin_layout Itemize
-
 Stampanti DEC:
 \end_layout
 
 \begin_deeper
 \begin_layout Description
-
 la50 LA50
 \end_layout
 
 \begin_layout Description
-
 la70 LA70
 \end_layout
 
 \begin_layout Description
-
 la70t LA70 with low-res text enhancement
 \end_layout
 
 \begin_layout Description
-
 la75 LA75
 \end_layout
 
 \begin_layout Description
-
 la75plus LA75 Plus
 \end_layout
 
 \begin_layout Description
-
 ln03 LN03
 \end_layout
 
 \begin_layout Description
-
 lj250 LJ250 color printer
 \end_layout
 
 \begin_layout Description
-
 declj250 Alternate LJ250 driver0
 \end_layout
+
 \end_deeper
 \begin_layout Itemize
-
 Stampanti Epson:
 \end_layout
 
 \begin_deeper
 \begin_layout Description
-
 ap3250 ActionPrinter AP3250 [ed ogni stampante che usa il linguaggio ESC/P2]
 \end_layout
 
 \begin_layout Description
-
 escp2 Tutte le stampantil Epson che usano i comandi ESC/P2 [questo driver
  non è più disponibile, usare 
 \series bold
@@ -10086,254 +9457,209 @@ ap3250
 \end_layout
 
 \begin_layout Description
-
 epson All 9- and 24-pin dot matrix printers [e compatibili]
 \end_layout
 
 \begin_layout Description
-
 eps9mid All 9-pin dot matrix printers [e compatibili] in intermediate resolution
 \end_layout
 
 \begin_layout Description
-
 eps9hi All 9-pin dot matrix printers [e compatibili] in triple resolution
 \end_layout
 
 \begin_layout Description
-
 epsonc LQ-2550 color printer [buono anche per Fujitsu 1200, 2400, e3400]
 \end_layout
 
 \begin_layout Description
-
 st800 Stylus 800 inkjet
 \end_layout
 
 \begin_layout Description
-
 stcolor the Stylus Color, Stylus Color Pro, Stylus Color II and IIs color
  inkjet printers
 \end_layout
+
 \end_deeper
 \begin_layout Itemize
-
 Stampanti Hewlet Packard [HP]:
 \end_layout
 
 \begin_deeper
 \begin_layout Description
-
 lp2563 2563B line printer
 \end_layout
 
 \begin_layout Description
-
 cdeskjet DeskJet 500C with 1 bpp color
 \end_layout
 
 \begin_layout Description
-
 cdjcolor DeskJet 500C [and 540C] with 24 bpp color and Floyd-Steinberg dithering
 \end_layout
 
 \begin_layout Description
-
 cdjmono DeskJet 500C [and 510C, 520C, 540C], monochrome only.
 \end_layout
 
 \begin_layout Description
-
 cdj500 same as 
 \series bold
 cdjcolor
 \end_layout
 
 \begin_layout Description
-
 cdj550 DeskJet 550C and 560C
 \end_layout
 
 \begin_layout Description
-
 deskjet DeskJet and DeskJet Plus
 \end_layout
 
 \begin_layout Description
-
 djet500 DeskJet 500
 \end_layout
 
 \begin_layout Description
-
 djet500c Alternate DeskJet 500C driver [does not work with the 550C or the
  560C]
 \end_layout
 
 \begin_layout Description
-
 dnj650c DesignJet 650C
 \end_layout
 
 \begin_layout Description
-
 ljet2p LaserJet IId, LaserJet IIp, and LaserJet III* with TIFF compression
 \end_layout
 
 \begin_layout Description
-
 ljet3 LaserJet III* with Delta Row compression
 \end_layout
 
 \begin_layout Description
-
 ljet3d LaserJet IIID with duplex capability
 \end_layout
 
 \begin_layout Description
-
 ljet4 LaserJet 4 [default res=600dpi]
 \end_layout
 
 \begin_layout Description
-
 lj4dith LaserJet 4 with Floyd-Steinberg dithering
 \end_layout
 
 \begin_layout Description
-
 ljetplus LaserJet Plus
 \end_layout
 
 \begin_layout Description
-
 pj PaintJet XL
 \end_layout
 
 \begin_layout Description
-
 pjetxl Alternate PaintJet XL driver
 \end_layout
 
 \begin_layout Description
-
 pjxl PaintJet XL color
 \end_layout
 
 \begin_layout Description
-
 pjxl300 PaintJet XL300 color [and 1200C]
 \end_layout
 
 \begin_layout Description
-
 paintjet Alternate PaintJet color driver
 \end_layout
+
 \end_deeper
 \begin_layout Itemize
-
 Stampanti Tektronix:
 \end_layout
 
 \begin_deeper
 \begin_layout Description
-
 t4693d2 4693d color printer with 2 bits/RGB component [=6 bpp]
 \end_layout
 
 \begin_layout Description
-
 t4693d4 4693d color printer with 4 bits/RGB component [=12 bpp]
 \end_layout
 
 \begin_layout Description
-
 t4693d8 4693d color printer with 8 bits/RGB component [=24 bpp]
 \end_layout
 
 \begin_layout Description
-
 tek4696 4695 and 4696 inkjet plotters
 \end_layout
+
 \end_deeper
 \begin_layout Itemize
-
 Stampanti varie:
 \end_layout
 
 \begin_deeper
 \begin_layout Description
-
 cp50 Mitsubishi CP50 color printer
 \end_layout
 
 \begin_layout Description
-
 ibmpro IBM 9-pin Proprinter
 \end_layout
 
 \begin_layout Description
-
 imagen Imagen ImPress printers
 \end_layout
 
 \begin_layout Description
-
 jetp3852 IBM Jetprinter ink-jet color printer (Model #3852)
 \end_layout
 
 \begin_layout Description
-
 m8510 C.Itoh M8510 printer
 \end_layout
 
 \begin_layout Description
-
 necp6 NEC P6/P6+/P60 printers at 360 dpi 
 \end_layout
 
 \begin_layout Description
-
 nwp533 Sony Microsystems NWP533 laser printer [Sony only]
 \end_layout
 
 \begin_layout Description
-
 oce9050 OCE 9050 printer
 \end_layout
 
 \begin_layout Description
-
 oki182 Okidata MicroLine 182
 \end_layout
 
 \begin_layout Description
-
 okiibm Okidata MicroLine IBM-compatible printers
 \end_layout
 
 \begin_layout Description
-
 r4081 Ricoh 4081 laser printer
 \end_layout
 
 \begin_layout Description
-
 sj48 StarJet 48 inkjet printer
 \end_layout
 
 \begin_layout Description
-
 sparc SPARCprinter
 \end_layout
 
 \begin_layout Description
-
 xes Xerox XES printers (2700, 3700, 4045, etc.)
 \end_layout
+
 \end_deeper
 \begin_layout Standard
-
 Se il pacchetto Ghostscript che avete nella vostra distribuzione non include
  la vostra stampante potete sempre scaricarvi il codice e compilarvelo da
  soli.
@@ -10345,7 +9671,6 @@ direttamente
 \end_layout
 
 \begin_layout Standard
-
 Notate che alcune stampanti richiedono comandi speciali.
  Ad esempio il driver 
 \family typewriter
@@ -10360,7 +9685,6 @@ stcolor.ps
 \end_layout
 
 \begin_layout Standard
-
 Poi, create il filtro.
  Suggeriamo di dargli il nome 
 \begin_inset Quotes eld
@@ -10400,12 +9724,10 @@ printcap
 \end_layout
 
 \begin_layout LyX-Code
-
 #!/bin/sh
 \end_layout
 
 \begin_layout LyX-Code
-
 /usr/bin/gs -q -dSAFER  -dNOPAUSE -sDEVICE=
 \family roman
 \emph on
@@ -10418,7 +9740,6 @@ devname
 \end_layout
 
 \begin_layout LyX-Code
-
 [-r
 \family roman
 \emph on
@@ -10441,7 +9762,6 @@ precmd
 \end_layout
 
 \begin_layout Standard
-
 dove 
 \emph on
 devname
@@ -10498,7 +9818,6 @@ stcolor
 \end_layout
 
 \begin_layout Standard
-
 Notate che gli esempi fatti assumono che 
 \family typewriter
 gs
@@ -10512,7 +9831,6 @@ gs
 \end_layout
 
 \begin_layout Standard
-
 Differenti drivers Ghostscript trattano l'argomento 
 \begin_inset Quotes eld
 \end_inset
@@ -10558,7 +9876,6 @@ Differenti drivers Ghostscript trattano l'argomento
 \end_layout
 
 \begin_layout Standard
-
 Dopo che avete creato il printer filter, usate 
 \begin_inset Quotes eld
 \end_inset
@@ -10576,7 +9893,6 @@ chmod a+x
 \end_layout
 
 \begin_layout Standard
-
 Ecco un esempio print file Ghostscript, usato da 
 \noun on
 John Weiss
@@ -10585,45 +9901,38 @@ John Weiss
 \end_layout
 
 \begin_layout LyX-Code
-
 #!/bin/sh
 \end_layout
 
 \begin_layout LyX-Code
-
 /usr/bin/gs -q -dSAFER -sDEVICE=stcolor 
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 -r360x360 -sDithering=fsmono 
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 -dNOPAUSE -dnoWeave 
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 -sOutputFile=- stcolor.ps -
 \end_layout
 
 \begin_layout Standard
-
 Questo filtro genera un output monocromatico a 360dpi su una Epson Stylus
  Color IIs.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-
 Nota da 
 \noun on
 John Weiss
@@ -10655,13 +9964,11 @@ color
 \end_layout
 
 \begin_layout Subsection
-
 Se Già avete una Stampante PostScript®\SpecialChar \ldots{}
 
 \end_layout
 
 \begin_layout Standard
-
 Molte stampanti laser moderne oggi hanno il supporto per PostScript®.
  Su alcune stampanti laser, PostScript® è attualmente il linguaggio nativo
  della stampante.
@@ -10672,7 +9979,6 @@ Molte stampanti laser moderne oggi hanno il supporto per PostScript®.
 \end_layout
 
 \begin_layout Standard
-
 Siamo a conoscenza di tre programmi che traducono il testo ASCII in PostScript®:
  
 \family typewriter
@@ -10711,14 +10017,12 @@ Printing-HOWTO
 \end_layout
 
 \begin_layout Section
-
 Il Demone Print Spool, 
 \family typewriter
 lpd
 \end_layout
 
 \begin_layout Standard
-
 Il programma che generalmente fa lo spooling e la stampa dei files è 
 \family typewriter
 lpd
@@ -10734,7 +10038,6 @@ lpd
 status collapsed
 
 \begin_layout Standard
-
 Alcune macchine tengono i loro scripts di bootup nella directory 
 \family typewriter
 /etc/rc.d
@@ -10764,7 +10067,6 @@ lpd
 \end_layout
 
 \begin_layout Standard
-
 Una volta che
 \family typewriter
  lpd
@@ -10779,12 +10081,10 @@ lpc
 \end_layout
 
 \begin_layout Section
-
 Assemblando il Tutto
 \end_layout
 
 \begin_layout Standard
-
 Concluderemo questo mini-HOWTO con i passaggi che dovete seguire per avere
  un setup minimale.
  Quando avrete finito, avrete due stampanti, una chiamata 
@@ -10830,7 +10130,6 @@ ps
 \end_layout
 
 \begin_layout Enumerate
-
 Entrate come 
 \begin_inset Quotes eld
 \end_inset
@@ -10856,20 +10155,17 @@ su root
 \end_layout
 
 \begin_layout Enumerate
-
 Eseguite i seguenti comandi:
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
 
-
 \family typewriter
 cd /var/spool
 \end_layout
 
 \begin_layout Enumerate
-
 
 \family typewriter
 mkdir lpd
@@ -10879,12 +10175,11 @@ mkdir lpd
 
 \begin_deeper
 \begin_layout Standard
-
 [se non esiste già]
 \end_layout
+
 \end_deeper
 \begin_layout Enumerate
-
 
 \family typewriter
 chgrp lp lpd
@@ -10892,7 +10187,6 @@ chgrp lp lpd
 
 \begin_deeper
 \begin_layout Standard
-
 [potreste dover usare 
 \begin_inset Quotes eld
 \end_inset
@@ -10919,9 +10213,9 @@ lp
 
 ]
 \end_layout
+
 \end_deeper
 \begin_layout Enumerate
-
 
 \family typewriter
 cd lpd
@@ -10929,19 +10223,17 @@ cd lpd
 
 \begin_layout Enumerate
 
-
 \family typewriter
 mkdir lp ps
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-
 [fatelo solo se queste directory non esistono già]
 \end_layout
+
 \end_deeper
 \begin_layout Enumerate
-
 
 \family typewriter
 touch lp/errs ps/errs
@@ -10949,13 +10241,12 @@ touch lp/errs ps/errs
 
 \begin_layout Enumerate
 
-
 \family typewriter
 chgrp daemon lp ps lp/errs ps/errs
 \end_layout
+
 \end_deeper
 \begin_layout Enumerate
-
 Ora editate il file 
 \family typewriter
 /etc/printcap
@@ -10963,14 +10254,12 @@ Ora editate il file
 
 \begin_deeper
 \begin_layout Enumerate
-
 Se il file esiste, quindi\SpecialChar \ldots{}
 
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-
 \SpecialChar \ldots{}
 rinominate la vecchia versione in qualcosa tipo 
 \begin_inset Quotes eld
@@ -10988,7 +10277,6 @@ rinominate la vecchia versione in qualcosa tipo
 \end_layout
 
 \begin_layout Enumerate
-
 \SpecialChar \ldots{}
 oppure, commentate tutto il file mettendo 
 \begin_inset Quotes eld
@@ -11004,9 +10292,9 @@ oppure, commentate tutto il file mettendo
 
  all'inizio di ogni riga.
 \end_layout
+
 \end_deeper
 \begin_layout Enumerate
-
 Mettete quanto segue in 
 \family typewriter
 /etc/printcap
@@ -11016,94 +10304,81 @@ Mettete quanto segue in
 
 \begin_deeper
 \begin_layout LyX-Code
-
 lp|Text printer:
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 :lp=/dev/lp1:
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 :sd=/var/spool/lpd/lp:
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 :lf=/var/spool/lpd/lp/errs:
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 :mx#0:sh:sf:
 \newline
 
 \end_layout
 
 \begin_layout LyX-Code
-
 ps|Postscript printer:
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 :lp=/dev/lp1:
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 :sd=/var/spool/lpd/ps:
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 :lf=/var/spool/lpd/ps/errs:
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 :if=/var/spool/lpd/ps/ps.filter:
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 :mx#0:sh:sf:
 \end_layout
+
 \end_deeper
 \begin_layout Enumerate
-
 ASSICURATEVI CHE:
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-
 le linee bianche tra due entrate non abbiano nulla al loro interno, nemmeno
  spazi bianchi.
 \end_layout
 
 \begin_layout Enumerate
-
 niente segue il carattere 
 \begin_inset Quotes eld
 \end_inset
@@ -11120,10 +10395,10 @@ niente segue il carattere
 
  alla fine di ogni linea.
 \end_layout
+
 \end_deeper
 \end_deeper
 \begin_layout Enumerate
-
 Poi, create lo script filtro per la stampante 
 \begin_inset Quotes eld
 \end_inset
@@ -11141,7 +10416,6 @@ ps
 
 \begin_deeper
 \begin_layout Enumerate
-
 Mettete quanto segue nel file 
 \family typewriter
 /var/spool/lpd/ps/ps.filter
@@ -11151,24 +10425,20 @@ Mettete quanto segue nel file
 
 \begin_deeper
 \begin_layout LyX-Code
-
 #!/bin/sh
 \end_layout
 
 \begin_layout LyX-Code
-
 /usr/bin/gs -q -dSAFER -dNOPAUSE 
 \backslash
 
 \end_layout
 
 \begin_layout LyX-Code
-
 -sDEVICE=epson -sOutputFile=- -
 \end_layout
 
 \begin_layout Standard
-
 [Se non avete una stampantedot-matrix compatibile Epson, rimpiazzate 
 \begin_inset Quotes eld
 \end_inset
@@ -11192,15 +10462,14 @@ gs
 \family default
 , mettete l'indirizzo corretto.]
 \end_layout
+
 \end_deeper
 \begin_layout Enumerate
-
 Eseguite questi comandi:
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-
 
 \family typewriter
 chmod a+x /var/spool/lpd/ps/ps.filter
@@ -11208,14 +10477,13 @@ chmod a+x /var/spool/lpd/ps/ps.filter
 
 \begin_layout Enumerate
 
-
 \family typewriter
 chgrp daemon /var/spool/lpd/ps/ps.filter
 \end_layout
+
 \end_deeper
 \end_deeper
 \begin_layout Enumerate
-
 Infine, lanciate il demone della stampante, 
 \family typewriter
 lpd
@@ -11225,7 +10493,6 @@ lpd
 
 \begin_deeper
 \begin_layout Enumerate
-
 Se non è già in uso, usate 
 \begin_inset Quotes eld
 \end_inset
@@ -11242,7 +10509,6 @@ lpd &
 \end_layout
 
 \begin_layout Enumerate
-
 Se è già in esecuzione, eseguite 
 \begin_inset Quotes eld
 \end_inset
@@ -11305,7 +10571,6 @@ lpc
 \end_layout
 
 \begin_layout Enumerate
-
 Assicuratevi di aggiungere il comando appropriato ai vostri scripts di bootup
  in modo che 
 \family typewriter
@@ -11313,9 +10578,9 @@ lpd
 \family default
  sia eseguito ad ogni avvio del sistema.
 \end_layout
+
 \end_deeper
 \begin_layout Enumerate
-
 Potete ora uscire da root e testare le vostre nuove stampanti per assicurarvi
  che funzionino.
  Date il comando 
@@ -11374,7 +10639,6 @@ ps
 \end_layout
 
 \begin_layout Standard
-
 Un avvertimento: quando testate 
 \begin_inset Quotes eld
 \end_inset
@@ -11402,7 +10666,6 @@ lprm
 \end_layout
 
 \begin_layout Standard
-
 Se nessuna di queste stampanti funziona, controllate di nuovo tutto, consultate
  le pagine 
 \family typewriter
@@ -11424,22 +10687,18 @@ Printing-HOWTO
 \end_layout
 
 \begin_layout Standard
-
 Se tutto funziona, congratulazioni!
 \end_layout
 
 \begin_layout Chapter
-
 Il materiale esterno
 \end_layout
 
 \begin_layout Section
-
 Background
 \end_layout
 
 \begin_layout Standard
-
 Una caratteristica spesso richiesta dagli utenti LyX è quella di interfacciare
  LyX con Xfig, Dia, o altre applicazioni specializzate nella produzioni
  di un certo tipo di diagrammi, figure, schemi e simili cose che possono
@@ -11450,37 +10709,31 @@ Una caratteristica spesso richiesta dagli utenti LyX è quella di interfacciare
 \end_layout
 
 \begin_layout Itemize
-
 Se volete cambiare la figura, dovete richiamare manualmente un programma
  esterno
 \end_layout
 
 \begin_layout Itemize
-
 LyX non notifica i cambiamenti ai riferimenti dei files, così quello che
  è visualizzato sullo schermo può rapidamente diventare obsoleto, e questo
  è aggravato da una media di aggiornamenti dello schermo
 \end_layout
 
 \begin_layout Itemize
-
 L'insieme delle figure supporta solo materiale PostScript
 \end_layout
 
 \begin_layout Itemize
-
 L'insieme delle figure non fornisce nessun meccanismo per copiare con differenti
  formati esportati come DocBook, HTML, o raw Ascii
 \end_layout
 
 \begin_layout Standard
-
 L'insieme del materiale esterno prova a risolvere tutti questi problemi
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-
 Anche se l'insieme delle figure non può risolvere tutti i problemi, è ancora
  valutabile perchè fornisce un'anteprima in linea della figura, e supporta
  trasformazioni geometriche avanzate con una semplice interfaccia utente.
@@ -11505,12 +10758,10 @@ i esterne.
 \end_layout
 
 \begin_layout Section
-
 Come funziona?
 \end_layout
 
 \begin_layout Standard
-
 L'insieme esterno è basato sul concetto di 
 \emph on
 template
@@ -11535,7 +10786,6 @@ Inoltre, è possibile adattare i vostri personali template per supportare
 \end_layout
 
 \begin_layout Standard
-
 Un'altra idea di base dell'insieme esterno è di distinguere tra il file
  originale che serve come base per il materiale finale e il file prodotto
  che è incluso nel vostro documento esportato o stampato.
@@ -11566,7 +10816,6 @@ transfig
 \end_layout
 
 \begin_layout Standard
-
 Questa distinzione è importante al fine di effettuare l'aggiornamento del
  materiale mentre si è in fase di scrittura del documento.
  Inoltre, ci fornisce quella flessibilità che è necessaria per supportare
@@ -11580,7 +10829,6 @@ Questa distinzione è importante al fine di effettuare l'aggiornamento del
 \end_layout
 
 \begin_layout Standard
-
 Oltre a supportare la produzione di differenti prodotti in relazione al
  formato esportato, l'insieme esterno supporta una stretta integrazione
  con le applicazioni di editing e di visualizzazione.
@@ -11595,7 +10843,6 @@ oni che risultano rilevanti nella scrittura di un documento, al fine di
 \end_layout
 
 \begin_layout Standard
-
 Quindi, in definitiva, LyX ha informazioni circa un numero di programmi
  differenti da usare dietro le quinte per realizzare tutto questo marchingegno.
  Questa informazione, infatti, è esattamente ciò che è contenuto nei templates.
@@ -11610,7 +10857,6 @@ Quindi, in definitiva, LyX ha informazioni circa un numero di programmi
 \end_layout
 
 \begin_layout Standard
-
 Ma prima che gli alberi diventino grattacieli, dobbiamo ammettere che abbiamo
  fatto alcuni piccole scorciatoie.
  Siccome il set esterno può produrre molti tipi di files prodotti per i
@@ -11634,12 +10880,10 @@ ima di quello che sarà il risultato principale.
 \end_layout
 
 \begin_layout Section
-
 La finestra di dialogo Materiale Esterno
 \end_layout
 
 \begin_layout Standard
-
 Inserite un insieme esterno dal menu 
 \family sans
 Insert
@@ -11654,7 +10898,6 @@ Insert
 \end_layout
 
 \begin_layout Standard
-
 In cima a questa finestra, c'è una lista a cascata dove è possibile scegliere
  quale template l'insieme deve usare.
  Immediatamente sotto troviamo un'area di testo con una descrizione del
@@ -11669,7 +10912,6 @@ In cima a questa finestra, c'è una lista a cascata dove è possibile scegliere
 \end_layout
 
 \begin_layout Standard
-
 In basso alla finestra di dialogo troverete una casella di immissione chiamata
  
 \family sans
@@ -11683,7 +10925,6 @@ e e aiuto associata al template, ma in genere permette tipicamente di definire
 \end_layout
 
 \begin_layout Standard
-
 Nella parte destra della finestra ci sono tre bottoni: 
 \family sans
 Edit file
@@ -11738,7 +10979,6 @@ Update all external inset
 \end_layout
 
 \begin_layout Standard
-
 In basso alla finestra di dialogo troverete i soliti bottoni 
 \family sans
 OK
@@ -11775,54 +11015,44 @@ cancel
 \end_layout
 
 \begin_layout Section
-
 Esempi
 \end_layout
 
 \begin_layout Standard
-
 In questa sezione, dovremmo includere alcuni esempi circa l'uso dell'insieme
  del materiale esterno.
  Questi esempi potrebbero includere:
 \end_layout
 
 \begin_layout Itemize
-
 Immagini raster esterne
 \end_layout
 
 \begin_layout Itemize
-
 figure esterne XFig
 \end_layout
 
 \begin_layout Itemize
-
 Diagrammi a scacchi
 \end_layout
 
 \begin_layout Itemize
-
 Campioni di suoni
 \end_layout
 
 \begin_layout Itemize
-
 Uso dei makefiles
 \end_layout
 
 \begin_layout Itemize
-
 Templates LyX esterni ricorsivi
 \end_layout
 
 \begin_layout Section
-
 Il file di configurazione external template
 \end_layout
 
 \begin_layout Standard
-
 E' relativamente semplice aggiungere definizioni di template esterni a LyX.
  Tuttavia state attenti poichè fare queste cose in maniera approssimativa
  
@@ -11834,13 +11064,11 @@ potrebbe
 \end_layout
 
 \begin_layout Standard
-
 Dopo aver detto queste cose, vi incoraggiamo a farci pervenire ogni template
  interessante che create.
 \end_layout
 
 \begin_layout Standard
-
 I templates sono definiti nel file 
 \family typewriter
 lib/external_template
@@ -11851,12 +11079,10 @@ lib/external_template
 \end_layout
 
 \begin_layout Section
-
 Il meccanismo di sostituzione
 \end_layout
 
 \begin_layout Standard
-
 Quando l'insieme del materiale esterno richiama un programma esterno, è
  fatto sulla base di un comando definito nel file di configurazione del
  template.
@@ -11866,35 +11092,29 @@ Quando l'insieme del materiale esterno richiama un programma esterno, è
 \end_layout
 
 \begin_layout Standard
-
 Inoltre, ogni volta che viene visualizzato un insieme esterno, il nome sarà
  prodotto dal meccanismo di sostituzione.
 \end_layout
 
 \begin_layout Standard
-
 Le macro disponibili sono le seguenti:
 \end_layout
 
 \begin_layout Description
-
 $$FName Il nome del file specificato nella finestra dell'insieme esterno.
 \end_layout
 
 \begin_layout Description
-
 $$Basename Il nome del file senza estensione.
 \end_layout
 
 \begin_layout Description
-
 $$Tempname Un nome e un indirizzo completo di un file temporaneo che sarà
  automaticamente cancellato quando si chiude il documento contenuto, oppure
  quando è cancellato l'insieme esterno.
 \end_layout
 
 \begin_layout Description
-
 $$Contents("filename.ext") Questa macro espanderà il contenuto del file col
  nome 
 \family typewriter
@@ -11904,7 +11124,6 @@ filename.ext
 \end_layout
 
 \begin_layout Description
-
 $$Sysdir Questa macro espanderà all'indirizzo assoluto della directory di
  sistema.
  E' tipicamente usato per puntare i vari script di aiuto che sono inseriti
@@ -11912,7 +11131,6 @@ $$Sysdir Questa macro espanderà all'indirizzo assoluto della directory di
 \end_layout
 
 \begin_layout Standard
-
 In aggiunta a questi gli strumenti espanderanno le variabili d'ambiente
  generali con una sintassi del tipo 
 \family typewriter
@@ -11922,12 +11140,10 @@ ${PATH}
 \end_layout
 
 \begin_layout Section
-
 Discussione sulla sicurezza
 \end_layout
 
 \begin_layout Standard
-
 L'insieme del materiale esterno si interfaccia con molti programmi esterni
  e lo fa automaticamente, per questo vanno considerate le implicazioni di
  sicurezza di questo.
@@ -11939,7 +11155,6 @@ L'insieme del materiale esterno si interfaccia con molti programmi esterni
 \end_layout
 
 \begin_layout Standard
-
 Tuttavia, dato che i comandi dei programmi esterni sono specificati solo
  nel file di configurazione del template, non ci sono problemi di sicurezza
  se LyX è configurato bene solo con templates sicuri.
@@ -11957,7 +11172,6 @@ system
 \end_layout
 
 \begin_layout Standard
-
 Tutto ciò implica che siete limitati nelle stringhe di comando che potete
  usare nei template dei materiali esterni, In particolare canali e redirection
  non sono subito disponibili.
@@ -11986,7 +11200,6 @@ pic2ascii.py
 \end_layout
 
 \begin_layout Standard
-
 E' possibile progettare un template che interagisce direttamente con la
  shell, ma dato che questo potrebbe permettere ad un utente con cattive
  intenzioni di eseguire comandi arbitrari scivendo intelligenti filename
@@ -12011,7 +11224,6 @@ andrete a creare
 \end_layout
 
 \begin_layout Standard
-
 L'insieme del materiale esterno fornisce molta potenza, perciò dovete stare
  attenti a non introdurre elementi di azzardo sulla sicurezza a questa potenza.
  Un lieve errore in una singola riga di un semplice script può creare grandi
@@ -12024,12 +11236,10 @@ L'insieme del materiale esterno fornisce molta potenza, perciò dovete stare
 \end_layout
 
 \begin_layout Section
-
 Il futuro dell'insieme esterno
 \end_layout
 
 \begin_layout Standard
-
 La corrente implementazione dell'insieme esterno èun costrutto potente e
  stabile che fornisce un accesso diretto alle parti più interne di LyX,
  ma come ogni caratteristca di LyX, dovrebbe essere sempre considerata un
@@ -12039,19 +11249,16 @@ La corrente implementazione dell'insieme esterno èun costrutto potente e
 \end_layout
 
 \begin_layout Itemize
-
 Supportare l'anteprima in linea in vari formati, piuttosto che il bottone
  di testo a cui si è obbligati attualmente.
 \end_layout
 
 \begin_layout Itemize
-
 Supportare l'editing in linea attraverso l'uso di OpenParts o altri protocolli
  rilevanti.
 \end_layout
 
 \begin_layout Itemize
-
 Estendere l'informazioni dinamica per avere campi di parametri opzionali
  per i comandi di conversione in tutti i formati di export, ed avere campi
  di parametri opzionali per ciò che è prodotto all'interno di tutti i differenti
@@ -12063,7 +11270,6 @@ Estendere l'informazioni dinamica per avere campi di parametri opzionali
 \end_layout
 
 \begin_layout Itemize
-
 Estendere l'area di lavoro per fornire delle opzioni di personalizzazione
  più intelligenti in aggiunta alla piuttosto semplicistica stringa di parametri.
  Con un linguaggio di script adatto, sarà possibile implementare versioni

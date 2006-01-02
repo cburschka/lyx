@@ -1,5 +1,5 @@
 #LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
-\lyxformat 243
+\lyxformat 245
 \begin_document
 \begin_header
 \textclass article
@@ -20,7 +20,6 @@
 \paragraph_separation indent
 \defskip medskip
 \quotes_language swedish
-\quotes_times 2
 \papercolumns 1
 \papersides 1
 \paperpagestyle plain
@@ -31,7 +30,6 @@
 \begin_body
 
 \begin_layout Title
-
 Introduktion till LyX
 \newline
 eller
@@ -40,7 +38,6 @@ Hur använda dessa manualer!
 \end_layout
 
 \begin_layout Author
-
 av John Weiss och dokumentationsgruppen för LyX
 \newline
 
@@ -54,17 +51,14 @@ Joacim Persson
 \end_layout
 
 \begin_layout Section
-
 Att navigera runt i dokumentationen
 \end_layout
 
 \begin_layout Standard
-
 Välkommen till LyX!
 \end_layout
 
 \begin_layout Standard
-
 För att det skall bli lättare att hitta svar på dina frågor och beskriva
  alla funktioner i LyX har dokumentationen delats upp i flera filer.
  Varje fil har sitt eget syfte.
@@ -73,10 +67,7 @@ För att det skall bli lättare att hitta svar på dina frågor och beskriva
  kan spara dig lite tid.
 \end_layout
 
-
 \begin_layout Standard
-
-
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -89,17 +80,13 @@ VARNING!!
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset VSpace medskip
 \end_inset
 
 
 \end_layout
 
-
 \begin_layout Standard
-
 Dokumentationen är till stor del ofullständig i nuläget! Som programmet,
  är manualerna fortfarande i beta-stadiet.
  Allt blir färdigt till version 1.0
@@ -107,7 +94,6 @@ Dokumentationen är till stor del ofullständig i nuläget! Som programmet,
 status collapsed
 
 \begin_layout Standard
-
 Den engelska då förstås.
  (ö.anm)
 \end_layout
@@ -118,7 +104,6 @@ Den engelska då förstås.
 \end_layout
 
 \begin_layout Standard
-
 Gör oss alla en tjänst -- om något i dokumentationen verkar förvirrande,
  är oklart, eller fel, tveka inte att tala om det för oss! Du kan nå LyX-folket
  på utvecklarnas epostlista 
@@ -128,7 +113,6 @@ lyx-docs@lists.lyx.org
 status collapsed
 
 \begin_layout Standard
-
 På listan talas engelska.
  Felaktigheter i de engelska orginalversionerna slår troligen igenom i den
  svenska.
@@ -145,12 +129,10 @@ På listan talas engelska.
 \end_layout
 
 \begin_layout Section
-
 Formen på manualerna
 \end_layout
 
 \begin_layout Standard
-
 Några av er har kanske skrivit ut manualen.
  Andra kanske läser den på skärmen med LyX.
  För er som läser den på skärmen bör kanske nämnas att det skiljer sig något
@@ -181,7 +163,6 @@ Redigera
 status collapsed
 
 \begin_layout Standard
-
 Hej på dej du!
 \end_layout
 
@@ -191,14 +172,12 @@ Hej på dej du!
 \end_layout
 
 \begin_layout Standard
-
 Nu när vi klarat ut några av skillnaderna mellan den tryckta versionen och
  den på skärmen kan vi gå över till formatet på detta dokument.
  Emellanåt finner du text olika teckenstilar:
 \end_layout
 
 \begin_layout Itemize
-
 
 \emph on
 Betonad stil
@@ -209,7 +188,6 @@ Betonad stil
 
 \begin_layout Itemize
 
-
 \family typewriter
 Skrivmaskinsstil
 \family default
@@ -217,7 +195,6 @@ Skrivmaskinsstil
 \end_layout
 
 \begin_layout Itemize
-
 
 \family sans
 Linjärer
@@ -228,7 +205,6 @@ Linjärer
 
 \begin_layout Itemize
 
-
 \noun on
 Namnstil
 \noun default
@@ -236,7 +212,6 @@ Namnstil
 \end_layout
 
 \begin_layout Standard
-
 För tangenter och deras bindningar till funktioner kommer du troligtvis
  att hänvisas till 
 \emph on
@@ -259,8 +234,6 @@ Referensmanualen
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset Quotes sld
 \end_inset
 
@@ -278,8 +251,6 @@ Control.
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset Quotes sld
 \end_inset
 
@@ -299,8 +270,6 @@ Shift
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset Quotes sld
 \end_inset
 
@@ -324,8 +293,6 @@ Alt
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset Quotes sld
 \end_inset
 
@@ -354,8 +321,6 @@ F12
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset Quotes sld
 \end_inset
 
@@ -373,8 +338,6 @@ Escape.
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset Quotes sld
 \end_inset
 
@@ -426,8 +389,6 @@ Ned
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset Quotes sld
 \end_inset
 
@@ -554,7 +515,6 @@ Next
 
 \begin_layout Itemize
 
-
 \family sans
 Retur
 \family default
@@ -596,7 +556,6 @@ Enter
 \end_layout
 
 \begin_layout Standard
-
 Du lär också se något i stil med 
 \begin_inset Quotes sld
 \end_inset
@@ -626,17 +585,14 @@ Referensmanualen
 \end_layout
 
 \begin_layout Section
-
 Manualerna
 \end_layout
 
 \begin_layout Standard
-
 Följande lista beskriver innehållet i var och en av filerna i dokumentationen:
 \end_layout
 
 \begin_layout Description
-
 
 \emph on
 Introduktion 
@@ -646,7 +602,6 @@ Denna fil.
 
 \begin_layout Description
 
-
 \emph on
 Nybörjarkurs 
 \emph default
@@ -655,7 +610,6 @@ Om du är nybörjare med LyX, och aldrig har använt LaTeX förut, eller aldrig
 \end_layout
 
 \begin_layout Description
-
 
 \emph on
 Handboken 
@@ -674,7 +628,6 @@ Nybörjarkursen.
 
 \begin_layout Description
 
-
 \emph on
 Avancerad\InsetSpace ~
 redigering 
@@ -689,7 +642,6 @@ som behandlar fler dokumenttyper och särskild redigering, bland annat några
 
 \begin_layout Description
 
-
 \emph on
 Anpassning 
 \emph default
@@ -698,7 +650,6 @@ En beskrivning till hur man skräddarsyr tangentbindningar, verktygspanelen
 \end_layout
 
 \begin_layout Description
-
 
 \emph on
 Referensmanualen 
@@ -715,7 +666,6 @@ En fil som täcker alla specialverktyg och avancerade företeelser, bland
 
 \begin_layout Description
 
-
 \emph on
 Kända\InsetSpace ~
 fel 
@@ -725,7 +675,6 @@ Denna fil innehåller en lista av fel i programmet LyX, och ger instruktioner
 \end_layout
 
 \begin_layout Description
-
 
 \emph on
 LaTeX-konfiguration 
@@ -737,7 +686,6 @@ allation.
 \end_layout
 
 \begin_layout Standard
-
 Dessa filer kommer att hänvisa till varandra när så är nödvändigt.
  Till exempel innehåller 
 \emph on
@@ -755,14 +703,10 @@ Anpassning
 \end_layout
 
 \begin_layout Standard
-
 Vi vill åter igen betona en viktig sak:
 \end_layout
 
-
 \begin_layout Standard
-
-
 \begin_inset VSpace 0.51cm
 \end_inset
 
@@ -779,32 +723,25 @@ Nybörjarkursen
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset VSpace 0.51cm
 \end_inset
 
 
 \end_layout
 
-
 \begin_layout Standard
-
 LyX kan annars kanske förfalla konstig och oanvändbar för dig.
 \end_layout
 
 \begin_layout Section
-
 Att bidra till dokumentationsprojektet
 \end_layout
 
 \begin_layout Subsection
-
 Rapportera fel
 \end_layout
 
 \begin_layout Standard
-
 Det är enkelt.
  Skicka bara ett meddelande antingen till utvecklarnas epostlista eller
  till användarnas epostlista.
@@ -821,7 +758,6 @@ Doc Error
 status collapsed
 
 \begin_layout Standard
-
 Nu finns det förstås ännu ingen särskild epostlista för den svenska versionen
  
 \emph on
@@ -833,10 +769,7 @@ Nu finns det förstås ännu ingen särskild epostlista för den svenska versionen
 
 \end_layout
 
-
 \begin_layout Standard
-
-
 \begin_inset VSpace 1.06cm
 \end_inset
 
@@ -852,28 +785,22 @@ Nu finns det förstås ännu ingen särskild epostlista för den svenska versionen
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset VSpace 1.06cm
 \end_inset
 
 
 \end_layout
 
-
 \begin_layout Standard
-
 Sådana ändringar hamnar ändå inte i dokumentationen, eftersom dokumentationsgrup
 pen har orginalen i CVS-trädet.
 \end_layout
 
 \begin_layout Subsection
-
 Att sätta igång
 \end_layout
 
 \begin_layout Standard
-
 Dokumentationsprojektet kan, som allt annat i LyX-projektet, alltid behöva
  hjälp! Om du är sugen på att bidra till projektet så bör du 
 \emph on
@@ -883,7 +810,6 @@ först
 \end_layout
 
 \begin_layout Enumerate
-
 Skaffa den senaste versionen av källkoden till LyX.
  I filträdet hittar du en katalog som heter 
 \family typewriter
@@ -899,7 +825,6 @@ DocStyle.lyx
 \end_layout
 
 \begin_layout Enumerate
-
 Läs 
 \family typewriter
 DocStyle.lyx
@@ -908,7 +833,6 @@ DocStyle.lyx
 \end_layout
 
 \begin_layout Enumerate
-
 Läs sedan 
 \emph on
 Handboken
@@ -920,7 +844,6 @@ Handboken
 
 \begin_deeper
 \begin_layout Standard
-
 Vitsen med det är att ge dig idéer.
  
 \emph on
@@ -930,15 +853,14 @@ Handboken
  Där bör du få en uppfattning om hur vi vill att manualerna skall skrivas
  och se ut.
 \end_layout
+
 \end_deeper
 \begin_layout Enumerate
-
 Kontakta slutligen utvecklingsgruppen på: 
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-
 
 \family typewriter
 lyx@via.ecp.fr
@@ -947,7 +869,6 @@ lyx@via.ecp.fr
 \end_layout
 
 \begin_layout Standard
-
 Vi vill försäkra oss om att du förstår stilen som beskrivs i 
 \family typewriter
 DocStyle.lyx
@@ -958,9 +879,9 @@ DocStyle.lyx
  du börjar skriva.
  Annars kommer vi att be dig skriva om dina bidrag.
 \end_layout
+
 \end_deeper
 \begin_layout Standard
-
 
 \emph on
 Fundera
@@ -971,24 +892,20 @@ Fundera
 \end_layout
 
 \begin_layout Section
-
 Svenska
 \end_layout
 
 \begin_layout Standard
-
 
 \emph on
 (Tillägg till den svenska översättningen)
 \end_layout
 
 \begin_layout Subsection
-
 Svenska typografiska fackord
 \end_layout
 
 \begin_layout Standard
-
 I översättningarna av både denna 
 \emph on
 Introduktion, Handboken, 
@@ -998,7 +915,6 @@ och lokaliseringen
 status collapsed
 
 \begin_layout Description
-
 Lokalisering Översättning av meddelanden i ett program.
 \end_layout
 
@@ -1011,7 +927,6 @@ r.
 \end_layout
 
 \begin_layout Description
-
 Antikva kallas i engelska texter för 
 \emph on
 Roman
@@ -1021,17 +936,14 @@ Roman
 \end_layout
 
 \begin_layout Description
-
 Bomber dekorationer som används för att markera element i en uppställning.
 \end_layout
 
 \begin_layout Description
-
 Brödtext den teckenstil som används för löpande text i ett visst dokument.
 \end_layout
 
 \begin_layout Description
-
 Kapitäler 
 \shape smallcaps
 Snitt som ser ut så här.
@@ -1052,7 +964,6 @@ små versaler
 \end_layout
 
 \begin_layout Description
-
 Kägel höjd på typen inklusive kött.
  Här använt som synonym för radavstånd.
  Observera att LaTeX kan variera radavståndet på varje sida för att fördela
@@ -1070,7 +981,6 @@ t.
 \end_layout
 
 \begin_layout Description
-
 Kött 
 \begin_inset Quotes sld
 \end_inset
@@ -1083,14 +993,12 @@ luft
 \end_layout
 
 \begin_layout Description
-
 Linjärer 
 \family sans
 Teckensnitt utan seriffer, som denna.
 \end_layout
 
 \begin_layout Standard
-
 Jag rekommenderar att läsaren dessutom läser någon svensk bok i ämnet.
  Nu är jag programmerare och inte typograf, så det kan tänkas att jag misstagit
  mig på betydelserna här och där.
@@ -1101,12 +1009,10 @@ sp2joap1@ida.his.se
 \end_layout
 
 \begin_layout Subsection
-
 Svensk typografi
 \end_layout
 
 \begin_layout Standard
-
 Typografiska traditioner och konventioner skiljer sig från land till land.
  Eftersom traditionerna skiljer sig åt, och läsarna kan förväntas vara tränade
  på sin egen typografiska tradition torde det i lättläslighetens namn det
@@ -1129,7 +1035,6 @@ de! Jag skall här bara kort nämna några särdrag för svensk typografi gentemot
 \end_layout
 
 \begin_layout Itemize
-
 Citat skrivs 
 \begin_inset Quotes sld
 \end_inset
@@ -1167,7 +1072,6 @@ citat
 \end_layout
 
 \begin_layout Itemize
-
 --- (helfyrkants talstreck) används inte i svensk typografi.
  Använd -- (
 \begin_inset Quotes sld
@@ -1182,7 +1086,6 @@ pratminus
 \end_layout
 
 \begin_layout Itemize
-
 Vi har mindre avstånd mellan meningar än engelsktalande.
  (I handböckerna nämns ibland situationer där användaren försöker 
 \begin_inset Quotes sld
@@ -1209,7 +1112,6 @@ Stil->Dokument
 \end_layout
 
 \begin_layout Itemize
-
 I utombrittisk europeisk typografi används 
 \emph on
 didot
@@ -1237,7 +1139,6 @@ mm.
 status collapsed
 
 \begin_layout Standard
-
 \SpecialChar \ldots{}
 tror jag
 \end_layout
@@ -1273,7 +1174,6 @@ osv.).
 \end_layout
 
 \begin_layout Itemize
-
 Vi använder kommatecken som decimaltecken, och punkt för att markera tusental:
  
 \begin_inset Quotes sld
@@ -1295,7 +1195,6 @@ Vi använder kommatecken som decimaltecken, och punkt för att markera tusental:
 \end_layout
 
 \begin_layout Standard
-
 Nu är det förstås din ensak hur du skriver dina dokument, och det är alltid
  
 \emph on

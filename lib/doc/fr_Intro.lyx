@@ -1,5 +1,5 @@
 #LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
-\lyxformat 243
+\lyxformat 245
 \begin_document
 \begin_header
 \textclass book
@@ -20,7 +20,6 @@
 \paragraph_separation indent
 \defskip medskip
 \quotes_language french
-\quotes_times 2
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
@@ -31,23 +30,19 @@
 \begin_body
 
 \begin_layout Title
-
 Introduction à LyX
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Standard
-
 Informations de révision :
 \end_layout
 
 \begin_layout Standard
-
 Traduction : Mise à jour OK, Date : 30/06/2003
 \end_layout
 
 \begin_layout Standard
-
 Original : Révision: 1.29, Date : 16/03/2003
 \end_layout
 
@@ -57,13 +52,11 @@ Original : Révision: 1.29, Date : 16/03/2003
 \end_layout
 
 \begin_layout Author
-
 par l'Équipe LyX
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-
 Le principal responsable de la rédaction de ce fichier est 
 \noun on
 John Weiss
@@ -129,8 +122,6 @@ Rebollo
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \tableofcontents{}
 
 \end_inset
@@ -139,17 +130,14 @@ Rebollo
 \end_layout
 
 \begin_layout Chapter
-
 La philosophie de LyX
 \end_layout
 
 \begin_layout Section
-
 Qu'est-ce que LyX ?
 \end_layout
 
 \begin_layout Standard
-
 LyX est un système de préparation de documents.
  Il est excellent si vous voulez écrire des articles scientifiques et techniques
  complexes avec des mathématiques, des références croisées, des bibliographies,
@@ -174,7 +162,6 @@ LyX est un système de préparation de documents.
 \end_layout
 
 \begin_layout Standard
-
 LyX est un programme qui offre une approche moderne de l'écriture de documents
  par ordinateur, inspirée des langages à balises, une approche qui rompt
  avec la tradition périmée héritée de la machine à écrire.
@@ -186,7 +173,6 @@ l avec le minimum d'effort sans devenir des spécialistes en typographie.
 \end_layout
 
 \begin_layout Standard
-
 Pour faire le choix d'utiliser LyX, il faut avant tout changer d'état d'esprit.
  À une époque, pour créer des documents il n'y avait que les machines à
  écrire, et nous avons donc tous appris certains trucs pour contourner leurs
@@ -210,7 +196,6 @@ _
 status collapsed
 
 \begin_layout Standard
-
 NdT : Pour conserver une bonne lisibilité dans la fenêtre LyX, l'o e dans
  l'o a volontairement été évité.
  Il faut savoir qu'il s'écrit 
@@ -246,7 +231,6 @@ d'Apprentissage
 \end_layout
 
 \begin_layout Standard
-
 En d'autres termes, nous avons tous été habitués à nous soucier de l'emplacement
  précis de chaque caractère.
  La plupart des traitements de texte ont par conséquent conservé la même
@@ -269,7 +253,6 @@ What You See Is What You Get
 status collapsed
 
 \begin_layout Standard
-
 NdT : 
 \begin_inset Quotes fld
 \end_inset
@@ -297,7 +280,6 @@ What You See Is All You Get
 status collapsed
 
 \begin_layout Standard
-
 NdT : 
 \begin_inset Quotes fld
 \end_inset
@@ -315,7 +297,6 @@ Vous n'obtenez que ce que vous voyez.
 \end_layout
 
 \begin_layout Standard
-
 C'est là-dessus que LyX diffère d'un traitement de texte ordinaire.
  Vous ne vous souciez pas de savoir où sera placé tel ou tel caractère.
  Vous dites à LyX 
@@ -331,7 +312,6 @@ style
 status collapsed
 
 \begin_layout Standard
-
 Pour être honnête, la plupart des versions récentes des suites bureautiques
  les plus populaires ont aujourd'hui des sortes de feuilles de style qui
  présentent une approche semblable.
@@ -346,7 +326,6 @@ Pour être honnête, la plupart des versions récentes des suites bureautiques
 \end_layout
 
 \begin_layout Standard
-
 Supposons que vous tapez un rapport.
  Pour commencer, vous voulez une section appelée 
 \begin_inset Quotes fld
@@ -377,7 +356,6 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-
 Avec LyX, vous allez sur le menu déroulant tout à fait à gauche de la barre
  d'outils, sélectionnez 
 \family sans
@@ -395,7 +373,6 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-
 Eh oui, c'est tout.
  Si vous coupez-collez la section, la numérotation sera automatiquement
  remise à jour -- partout.
@@ -406,7 +383,6 @@ Eh oui, c'est tout.
 \end_layout
 
 \begin_layout Standard
-
 Vient ensuite le problème de la cohérence.
  Cinq jours plus tard, vous ouvrez votre rapport et commencez la Section\InsetSpace ~
 4.
@@ -421,7 +397,6 @@ e de celle de la Section\InsetSpace ~
 \end_layout
 
 \begin_layout Standard
-
 Voici un autre exemple.
  Supposons que vous écrivez une liste.
  Avec d'autres traitements de texte, une liste est juste un ensemble de
@@ -435,7 +410,6 @@ Voici un autre exemple.
 \end_layout
 
 \begin_layout Standard
-
 Ainsi, l'idée maîtresse avec LyX est la suivante : dites ce que vous faites,
  et non pas comment le faire.
  À la place de 
@@ -447,7 +421,6 @@ What You See Is What You Get
 status collapsed
 
 \begin_layout Standard
-
 NdT : Vous voyez ce que vous obtenez.
 \end_layout
 
@@ -468,7 +441,6 @@ Mean
 status collapsed
 
 \begin_layout Standard
-
 NdT : Vous voyez ce que vous 
 \emph on
 voulez dire.
@@ -508,13 +480,11 @@ elles comme des paragraphes, des sections, etc\SpecialChar \ldots{}
 \end_layout
 
 \begin_layout Section
-
 Différences entre LyX et les autres traitements de texte
 \begin_inset OptArg
 status collapsed
 
 \begin_layout Standard
-
 LyX et les autres traitements de texte
 \end_layout
 
@@ -525,7 +495,6 @@ LyX et les autres traitements de texte
 status collapsed
 
 \begin_layout Standard
-
 Non, nous ne cherchons pas ici à déclarer (ou à gagner) la guerre sainte
  des traitements de texte.
  Mais nous pensons vraiment qu'il est important de décrire les possibilités
@@ -541,22 +510,18 @@ Non, nous ne cherchons pas ici à déclarer (ou à gagner) la guerre sainte
 \end_layout
 
 \begin_layout Standard
-
 Voici une liste de choses que vous ne trouverez pas dans LyX :
 \end_layout
 
 \begin_layout Itemize
-
 la règle ;
 \end_layout
 
 \begin_layout Itemize
-
 des taquets de tabulation ;
 \end_layout
 
 \begin_layout Itemize
-
 des espaces superflues (c'est-à-dire taper 
 \family sans
 Entrée
@@ -569,7 +534,6 @@ Espace
 \end_layout
 
 \begin_layout Standard
-
 Les taquets de tabulation, au même titre que la règle qui vous indique la
  position des éléments dans la page, n'ont aucune utilité avec LyX.
  Le programme s'occupe de placer les éléments dans la page, pas vous.
@@ -581,45 +545,37 @@ Les taquets de tabulation, au même titre que la règle qui vous indique la
 \end_layout
 
 \begin_layout Standard
-
 Voilà quelques notions qui existent avec LyX, mais ne sont pas utilisées
  comme vous pourriez le penser :
 \end_layout
 
 \begin_layout Itemize
-
 contrôle de l'indentation ;
 \end_layout
 
 \begin_layout Itemize
-
 sauts de page ;
 \end_layout
 
 \begin_layout Itemize
-
 interligne (simple, double, etc\SpecialChar \ldots{}
 ) ;
 \end_layout
 
 \begin_layout Itemize
-
 espacement, horizontal et vertical ;
 \end_layout
 
 \begin_layout Itemize
-
 polices et tailles de police ;
 \end_layout
 
 \begin_layout Itemize
-
 types de caractère (gras, italique, souligné, etc\SpecialChar \ldots{}
 ).
 \end_layout
 
 \begin_layout Standard
-
 Même si elles existent dans LyX, vous n'en aurez généralement pas besoin.
  LyX prendra en charge tout cela pour vous, en fonction de ce que vous écrivez.
  Les différentes parties du document sont automatiquement imprimées avec
@@ -633,7 +589,6 @@ Même si elles existent dans LyX, vous n'en aurez généralement pas besoin.
 status collapsed
 
 \begin_layout Standard
-
 Il y a des façons d'ajuster manuellement toutes ces propriétés (et seules
  quelques-unes nécessitent des connaissances en LaTeX), que ce soit pour
  l'ensemble du document ou seulement pour une partie.
@@ -657,38 +612,31 @@ Avancées
 \end_layout
 
 \begin_layout Standard
-
 Enfin, il y a quelques domaines où nous pensons que LyX (et LaTeX) surpasse
  quantité d'autres traitements de texte :
 \end_layout
 
 \begin_layout Itemize
-
 césure ;
 \end_layout
 
 \begin_layout Itemize
-
 listes de tous types ;
 \end_layout
 
 \begin_layout Itemize
-
 mathématiques ;
 \end_layout
 
 \begin_layout Itemize
-
 tables ;
 \end_layout
 
 \begin_layout Itemize
-
 références croisées.
 \end_layout
 
 \begin_layout Standard
-
 D'accord, un certain nombre de traitements de texte modernes peuvent gérer
  les symboles mathématiques, les tableaux et les césures, et beaucoup ont
  adopté des définitions de style et ont évolué en direction du concept WYSIWYM.
@@ -700,19 +648,16 @@ fonctionne.
 \end_layout
 
 \begin_layout Section
-
 Qu'est-ce donc que LaTeX (et en quoi ça me concerne) ?
 \end_layout
 
 \begin_layout Standard
-
 LaTeX est un système de préparation de document conçu par Leslie Lamport
  en 1985
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-
 La source des informations de cette section est 
 \begin_inset Quotes fld
 \end_inset
@@ -758,7 +703,6 @@ berq !
 status collapsed
 
 \begin_layout Standard
-
 NdT : onomatopée originale : 
 \begin_inset Quotes fld
 \end_inset
@@ -801,7 +745,6 @@ device independent
 status collapsed
 
 \begin_layout Standard
-
 NdT : 
 \begin_inset Quotes fld
 \end_inset
@@ -837,7 +780,6 @@ dvi
 \end_layout
 
 \begin_layout Standard
-
 TeX ne serait qu'un moteur de rendu typographique s'il n'avait pas une capacité
  supplémentaire.
  En effet, TeX permet également de définir des macros.
@@ -845,7 +787,6 @@ TeX ne serait qu'un moteur de rendu typographique s'il n'avait pas une capacité
 \end_layout
 
 \begin_layout Standard
-
 La plupart de ceux qui utilisent TeX utilisent en fait un paquetage de macros
  que Donald Knuth créa pour masquer nombre de détails typographiques.
  C'est ce à quoi la plupart des gens pensent quand ils pensent à TeX.
@@ -861,7 +802,6 @@ La plupart de ceux qui utilisent TeX utilisent en fait un paquetage de macros
 \end_layout
 
 \begin_layout Standard
-
 Parallèlement au développement et au déploiement de LaTeX, d'autres personnes
  créèrent leurs propres paquetages de macros pour TeX, certains pour faire
  des transparents, d'autres pour des articles de journaux mathématiques
@@ -880,7 +820,6 @@ Parallèlement au développement et au déploiement de LaTeX, d'autres personnes
 \end_layout
 
 \begin_layout Standard
-
 Il y a deux façons d'étendre LaTeX : les classes et les styles.
  Une 
 \shape slanted
@@ -911,20 +850,17 @@ comportement
 \end_layout
 
 \begin_layout Standard
-
 Voici un résumé :
 \end_layout
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 TeX\InsetSpace ~
 : Langage de composition avec possibilité de macros.
 \end_layout
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 LaTeX\InsetSpace ~
 : Paquetage de macros basé sur TeX\SpecialChar \@.
 
@@ -932,7 +868,6 @@ LaTeX\InsetSpace ~
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 classes\InsetSpace ~
 : Définitions d'un type de document, utilisant LaTeX\SpecialChar \@.
 
@@ -940,21 +875,18 @@ classes\InsetSpace ~
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 styles\InsetSpace ~
 : Modifient le comportement par défaut de LaTeX d'une façon donnée.
 \end_layout
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 LyX\InsetSpace ~
 : Traitement de texte visuel, WYSIWYM, qui à l'impression utilise LaTeX
  dans toute sa splendeur.
 \end_layout
 
 \begin_layout Standard
-
 Le but de cette section était d'expliquer 
 \shape italic
 pourquoi 
@@ -975,7 +907,6 @@ comment
 \end_layout
 
 \begin_layout Standard
-
 Oh -- une dernière chose.
  LaTeX se prononce comme TeX.
  Il rime avec 
@@ -987,7 +918,6 @@ hey blech
 status collapsed
 
 \begin_layout Standard
-
 ou 
 \begin_inset Quotes fld
 \end_inset
@@ -1081,12 +1011,10 @@ word
 \end_layout
 
 \begin_layout Chapter
-
 Naviguer dans la documentation
 \end_layout
 
 \begin_layout Standard
-
 Pour répondre plus facilement à vos questions tout en décrivant toutes les
  fonctionnalités de LyX, la documentation a été répartie sur plusieurs fichiers.
  Ils ont chacun leur rôle, comme indiqué un peu plus loin.
@@ -1096,7 +1024,6 @@ Pour répondre plus facilement à vos questions tout en décrivant toutes les
 \end_layout
 
 \begin_layout Standard
-
 Bien que LyX ait maintenant bien dépassé la version 1.0, certains documents
  seront peut-être incomplets ou un peu en retard dans la mise à jour, même
  si nous travaillons dur pour suivre les évolutions.
@@ -1122,7 +1049,6 @@ vrai
 \end_layout
 
 \begin_layout Standard
-
 D'autre part, faites-nous une faveur -- s'il arrivait que dans cette documentati
 on quelque chose vous embrouille, ne soit pas bien clair, ou carrément faux,
  faites-le nous savoir ! Vous pouvez contacter les préposés à la mise à
@@ -1141,12 +1067,10 @@ lyx-users@lists.lyx.org
 \end_layout
 
 \begin_layout Section
-
 Le Format des Manuels
 \end_layout
 
 \begin_layout Standard
-
 Si certains d'entre vous ont imprimé les manuels, d'autres les lisent en
  ligne.
  Il y a quelques différences de format entre les deux.
@@ -1159,12 +1083,10 @@ Si certains d'entre vous ont imprimé les manuels, d'autres les lisent en
 status collapsed
 
 \begin_layout Standard
-
 Veuillez agréer nos hommages les plus respectueux ! 
 \end_layout
 
 \begin_layout Standard
-
 Pour refermer cette note, cliquez sur la boîte grise en haut à gauche, celle
  qui contient le mot 
 \begin_inset Quotes fld
@@ -1190,7 +1112,6 @@ Naviguer
 \end_layout
 
 \begin_layout Standard
-
 Sur la version papier, les références croisées sont affichées avec les bons
  numéros de page, de section ou de sous-section.
  En ligne, à l'inverse, elles apparaissent comme des boîtes grises ainsi
@@ -1239,14 +1160,12 @@ C-<
 \end_layout
 
 \begin_layout Standard
-
 Maintenant que nous avons décrit les différences entre les versions papier
  et en ligne, voyons le format de ce document.
  Vous pourrez trouver des textes en différentes polices :
 \end_layout
 
 \begin_layout Itemize
-
 Le style 
 \emph on
 En Évidence
@@ -1257,7 +1176,6 @@ En Évidence
 \end_layout
 
 \begin_layout Itemize
-
 La police à 
 \family typewriter
 Chasse fixe
@@ -1267,7 +1185,6 @@ Chasse fixe
 \end_layout
 
 \begin_layout Itemize
-
 La police 
 \family sans
 Sans Empattement
@@ -1277,7 +1194,6 @@ Sans Empattement
 \end_layout
 
 \begin_layout Itemize
-
 Le style 
 \noun on
 Nom Propre
@@ -1286,7 +1202,6 @@ Nom Propre
 \end_layout
 
 \begin_layout Standard
-
 Pour les accélérateurs de menus et d'autres raccourcis clavier plus obscurs,
  consultez la section 
 \emph on
@@ -1306,8 +1221,6 @@ fr_Extended.lyx
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset Quotes fld
 \end_inset
 
@@ -1329,8 +1242,6 @@ ou
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset Quotes fld
 \end_inset
 
@@ -1360,8 +1271,6 @@ Majuscule- ;
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset Quotes fld
 \end_inset
 
@@ -1385,8 +1294,6 @@ Alt-
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset Quotes fld
 \end_inset
 
@@ -1415,8 +1322,6 @@ F12
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset Quotes fld
 \end_inset
 
@@ -1436,8 +1341,6 @@ Esc
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset Quotes fld
 \end_inset
 
@@ -1489,8 +1392,6 @@ Basse
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset Quotes fld
 \end_inset
 
@@ -1618,9 +1519,7 @@ Next
 
 \begin_layout Itemize
 
-
 \family sans
-
 \begin_inset Quotes fld
 \end_inset
 
@@ -1725,7 +1624,6 @@ Entrée
 \end_layout
 
 \begin_layout Standard
-
 Vous pourrez rencontrer des phrases du genre 
 \begin_inset Quotes fld
 \end_inset
@@ -1773,18 +1671,15 @@ Emacs
 \end_layout
 
 \begin_layout Section
-
 Les Manuels
 \end_layout
 
 \begin_layout Standard
-
 La liste suivante décrit le contenu de chaque fichier de la documentation
  :
 \end_layout
 
 \begin_layout Description
-
 
 \emph on
 Introduction
@@ -1792,12 +1687,11 @@ Introduction
 
 \begin_deeper
 \begin_layout Standard
-
 Ce fichier.
 \end_layout
+
 \end_deeper
 \begin_layout Description
-
 
 \emph on
 Manuel\InsetSpace ~
@@ -1806,7 +1700,6 @@ d'Apprentissage
 
 \begin_deeper
 \begin_layout Standard
-
 Si vous commencez avec LyX, et n'avez jamais touché à LaTeX, vous devriez
  commencer par là.
  Si vous pensez que le LaTeX est ce qui sert à faire les préservatifs, c'est
@@ -1827,7 +1720,6 @@ comment utiliser LyX.
 \end_layout
 
 \begin_layout Standard
-
 Si vous connaissez déjà LaTeX, vous devriez lire au moins la section 
 \begin_inset Quotes fld
 \end_inset
@@ -1840,7 +1732,6 @@ LyX pour les connaisseurs de LaTeX
 \end_layout
 
 \begin_layout Standard
-
 Et lorsque vous vous sentez un peu perdu avec LyX, essayez de lire attentivement
  le 
 \emph on
@@ -1850,9 +1741,9 @@ d'Apprentissage
 avant de consulter les autres manuels.
  C'est un bon tremplin.
 \end_layout
+
 \end_deeper
 \begin_layout Description
-
 
 \emph on
 Guide\InsetSpace ~
@@ -1867,7 +1758,6 @@ tilisateur
 
 \begin_deeper
 \begin_layout Standard
-
 Le document de base.
  Il couvre la
 \emph on
@@ -1880,9 +1770,9 @@ Manuel\InsetSpace ~
 d'Apprentissage\SpecialChar \@.
 
 \end_layout
+
 \end_deeper
 \begin_layout Description
-
 
 \emph on
 Options\InsetSpace ~
@@ -1891,7 +1781,6 @@ Avancées
 
 \begin_deeper
 \begin_layout Standard
-
 Extension du 
 \emph on
 Guide\InsetSpace ~
@@ -1905,9 +1794,9 @@ l'Utilisateur
 \newline
 
 \end_layout
+
 \end_deeper
 \begin_layout Description
-
 
 \emph on
 Personnalisation
@@ -1915,7 +1804,6 @@ Personnalisation
 
 \begin_deeper
 \begin_layout Standard
-
 C'est une description de certaines fonctions avancées de LyX, notamment
  la façon de personnaliser son comportement général.
  Y sont abordés la configuration du clavier (raccourcis), l'internationalisation
@@ -1927,9 +1815,9 @@ d'Apprentissage
 \emph default
 .
 \end_layout
+
 \end_deeper
 \begin_layout Description
-
 
 \emph on
 Configuration\InsetSpace ~
@@ -1938,15 +1826,14 @@ LaTeX
 
 \begin_deeper
 \begin_layout Standard
-
 Pendant son installation, LyX analyse votre système.
  Les informations qu'il découvre sont consignées dans ce document.
  Vous pouvez le consulter s'il manquait à LyX quelque chose qu'il est censé
  délivrer.
 \end_layout
+
 \end_deeper
 \begin_layout Standard
-
 Tous ces fichiers se référencent les uns les autres quand c'est nécessaire.
  Le 
 \emph on
@@ -1971,14 +1858,10 @@ de
 \end_layout
 
 \begin_layout Standard
-
 Répétons un point important :
 \end_layout
 
-
 \begin_layout Standard
-
-
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -1997,25 +1880,19 @@ d'Apprentissage
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset VSpace bigskip
 \end_inset
 
 
 \end_layout
 
-
 \begin_layout Standard
-
 Sinon, vous vous poserez des problèmes inutilement.
  LyX sait faire tout ce vous attendez d'un traitement de texte, mais avec
  une approche différente.
 \end_layout
 
 \begin_layout Chapter
-
-
 \begin_inset LatexCommand \label{sec:Contrib}
 
 \end_inset
@@ -2024,12 +1901,10 @@ Contribuer au projet LyX
 \end_layout
 
 \begin_layout Section
-
 Contribuer à LyX
 \end_layout
 
 \begin_layout Standard
-
 LyX est pour l'essentiel écrit en C++ (l'importation LaTeX est écrite en
  Perl).
  C'est un vaste projet, il n'est donc pas exempt de bogues, et des améliorations
@@ -2037,12 +1912,10 @@ LyX est pour l'essentiel écrit en C++ (l'importation LaTeX est écrite en
 \end_layout
 
 \begin_layout Subsection
-
 Signaler un bogue
 \end_layout
 
 \begin_layout Standard
-
 Lors de votre utilisation de LyX, vous pouvez rencontrer un comportement
  que vous considérez comme un bogue.
  Les plantages sont rares, mais ça peut arriver.
@@ -2052,7 +1925,6 @@ Lors de votre utilisation de LyX, vous pouvez rencontrer un comportement
 \end_layout
 
 \begin_layout Standard
-
 LyX a un système de recensement de bogues, que vous trouverez sur le
 \family typewriter
  
@@ -2087,7 +1959,6 @@ lyx-devel@lists.lyx.org
 \end_layout
 
 \begin_layout Standard
-
 Un bon rapport de bogue doit au minimum comprendre la version de LyX avec
  laquelle vous avez rencontré le problème.
  Envoyez les descriptions les plus exactes et détaillées possibles : plus
@@ -2106,14 +1977,12 @@ config.log
 \end_layout
 
 \begin_layout Standard
-
 Si vous arrivez à faire planter LyX, veuillez prendre le temps de produire
  un backtrace
 \begin_inset Foot
 status open
 
 \begin_layout Standard
-
 NdT : Terme utilisé dans 
 \family typewriter
 gdb
@@ -2128,7 +1997,6 @@ gdb
 status open
 
 \begin_layout Standard
-
 NdT : et donc traçable (original : 
 \begin_inset Quotes fld
 \end_inset
@@ -2188,7 +2056,6 @@ bt
 status open
 
 \begin_layout Standard
-
 Si vous voulez être exhaustif, utilisez les commandes 
 \family typewriter
 
@@ -2229,12 +2096,10 @@ able, car c'est peut-être la seule chose dont nous disposerons.
 \end_layout
 
 \begin_layout Subsection
-
 Offrir des corrections et de nouvelles fonctions
 \end_layout
 
 \begin_layout Standard
-
 Si vous avez fait des changements au code source de LyX et que vous pensez
  qu'ils devraient faire partie de la distribution, envoyez vos changements
  sous la forme d'un fichier diff (au format unifié) à la liste des développeurs
@@ -2250,12 +2115,10 @@ change log
 \end_layout
 
 \begin_layout Section
-
 Contribuer à la Documentation
 \end_layout
 
 \begin_layout Standard
-
 La documentation de LyX est assez exhaustive ; cependant LyX est en constant
  développement, et chaque nouvelle version ajoute de nouvelles fonctions.
  Vous pouvez trouver qu'une partie de la documentation nécessite des amélioratio
@@ -2265,12 +2128,10 @@ ns.
 \end_layout
 
 \begin_layout Subsection
-
 Rapporter les erreurs dans les Manuels
 \end_layout
 
 \begin_layout Standard
-
 Si vous trouvez un problème dans la documentation, envoyez un message à
  la liste de diffusion 
 \family typewriter
@@ -2281,12 +2142,10 @@ lyx-docs@lists.lyx.org
 \end_layout
 
 \begin_layout Subsection
-
 Se joindre à l'Équipe de Documentation
 \end_layout
 
 \begin_layout Standard
-
 Comme pour l'ensemble du projet LyX, toute aide est bienvenue pour la documentat
 ion de LyX ! Si vous êtes volontaire, merci de respecter 
 \shape italic
@@ -2296,14 +2155,12 @@ avant tout
 \end_layout
 
 \begin_layout Enumerate
-
 Récupérez le code source de LyX le plus récent.
  Désarchivez-le
 \begin_inset Foot
 status open
 
 \begin_layout Standard
-
 Les plus aventureux peuvent récupérer les sources les plus récentes sur
  le site d'archivage CVS de LyX - elles sont contenues dans le module 
 \family typewriter
@@ -2329,7 +2186,6 @@ DocStyle.lyx
 \end_layout
 
 \begin_layout Enumerate
-
 Ensuite, lisez le 
 \shape italic
 Guide\InsetSpace ~
@@ -2347,7 +2203,6 @@ d'Apprentissage
 
 \begin_deeper
 \begin_layout Standard
-
 Le but de cet exercice est de vous donner des idées.
  Le 
 \emph on
@@ -2365,39 +2220,35 @@ l'Utilisateur
  que nous souhaitons avoir pour notre documentation.
  
 \end_layout
+
 \end_deeper
 \begin_layout Enumerate
-
 Contactez l'équipe de documentation à l'adresse suivante : 
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
 
-
 \family typewriter
 lyx-docs@lists.lyx.org
 \end_layout
 
 \begin_layout Standard
-
 pour discuter des changements que vous envisagez, et avoir l'avis des autres.
 \end_layout
+
 \end_deeper
 \begin_layout Standard
-
 Les changements que vous voudrez apporter peuvent aller du simple éclaircissemen
 t à une restructuration majeure de la documentation.
  Toute amélioration sera la bienvenue.
 \end_layout
 
 \begin_layout Subsection
-
 Contribuer à la Traduction
 \end_layout
 
 \begin_layout Standard
-
 Pour participer à la traduction, le principe est le même que pour modifier
  la version originale.
  Il existe une liste de diffusion pour les traducteurs et les utilisateurs
@@ -2418,7 +2269,6 @@ Pour participer à la traduction, le principe est le même que pour modifier
 \end_layout
 
 \begin_layout Standard
-
 D'autre part il faut prendre garde à ne modifier que la dernière version
  de la traduction.
  C'est toujours celle qui est sur le serveur CVS.

@@ -1,5 +1,5 @@
 #LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
-\lyxformat 243
+\lyxformat 245
 \begin_document
 \begin_header
 \textclass book
@@ -20,7 +20,6 @@
 \paragraph_separation indent
 \defskip medskip
 \quotes_language german
-\quotes_times 2
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
@@ -31,12 +30,10 @@
 \begin_body
 
 \begin_layout Title
-
 Uèbenik LyXa
 \end_layout
 
 \begin_layout Author
-
 
 \noun on
 Amir Karger
@@ -54,13 +51,11 @@ Roman Maurer
 status collapsed
 
 \begin_layout Standard
-
 18.
  junija 2000 dopolnjeno s pripombami lektorice
 \end_layout
 
 \begin_layout Standard
-
 Dore Mali.
 \end_layout
 
@@ -70,14 +65,11 @@ Dore Mali.
 \end_layout
 
 \begin_layout Date
-
 26.
  maj 1999
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \tableofcontents{}
 
 \end_inset
@@ -86,17 +78,14 @@ Dore Mali.
 \end_layout
 
 \begin_layout Chapter
-
 Uvod
 \end_layout
 
 \begin_layout Section
-
 Dobrodo¹li v LyX!
 \end_layout
 
 \begin_layout Standard
-
 Ta datoteka je namenjena vsem vam, ki niste ¹e nikoli sli¹ali za LaTeX ali
  pa ga ne znate prav dobro uporabljati.
  No, le brez panike -- za to, da bi lahko uporabljali LyX, se vam ne bo
@@ -106,7 +95,6 @@ Ta datoteka je namenjena vsem vam, ki niste ¹e nikoli sli¹ali za LaTeX ali
 status collapsed
 
 \begin_layout Standard
-
 What You See Is What You Get -- 
 \begin_inset Quotes gld
 \end_inset
@@ -126,7 +114,6 @@ to kar vidi¹, to dobi¹
 \end_layout
 
 \begin_layout Standard
-
 Nekateri ste verjetno naleteli na tale spis, ker ste posku¹ali vstaviti
  dva presledka za piko ali tri prazne vrstice med odstavkoma.
  Kar precej ¾ivcev vas je stalo, preden ste ugotovili, da tega ne morete
@@ -141,13 +128,11 @@ Nekateri ste verjetno naleteli na tale spis, ker ste posku¹ali vstaviti
 \end_layout
 
 \begin_layout Standard
-
 Zato ostanite z nami in berite naprej.
  Èasa, ki ga boste porabili za branje tega uèbenika, ne boste ob¾alovali.
 \end_layout
 
 \begin_layout Section
-
 Kaj 
 \emph on
 je
@@ -158,7 +143,6 @@ ni
 \end_layout
 
 \begin_layout Standard
-
 Preden zaènemo ta razdelek, ¾elimo na hitro na nekaj opozoriti.
  
 \emph on
@@ -178,7 +162,6 @@ Uvod
 \end_layout
 
 \begin_layout Standard
-
 Zdaj, ko poznate pomen posameznih pisav, ¾elimo spregovoriti ¹e o namenu
  tega 
 \emph on
@@ -188,12 +171,10 @@ Uèbenika
 \end_layout
 
 \begin_layout Subsection
-
 Kar najbolj izkoristite Uèbenik
 \end_layout
 
 \begin_layout Standard
-
 Uèbenik sestavljajo zgledi in naloge.
  Èe ¾elite ta spis kar najbolj izkoristiti, ob branju vtipkavajte vse tiste
  nesmisle, za katere vam reèemo, da jih morate in preizkusite vse naloge,
@@ -203,7 +184,6 @@ Uèbenik sestavljajo zgledi in naloge.
 \end_layout
 
 \begin_layout Standard
-
 Èe imate LaTeX v malem prstu, boste verjetno sposobni prebrati 
 \emph on
 Uèbenik
@@ -214,7 +194,6 @@ Uèbenik
 status collapsed
 
 \begin_layout Standard
-
 ali, bolj optimistièno, 
 \begin_inset Quotes gld
 \end_inset
@@ -242,7 +221,6 @@ Uèbenika
 \end_layout
 
 \begin_layout Standard
-
 Razdelek 
 \begin_inset LatexCommand \ref{sec:what-is-lyx}
 
@@ -261,7 +239,6 @@ daljnji
 \end_layout
 
 \begin_layout Subsection
-
 Naslednjega 
 \emph on
 ne boste
@@ -270,20 +247,17 @@ ne boste
 \end_layout
 
 \begin_layout Itemize
-
 Krmljenja po ¾lièki in drugega poneumljanja.
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-
 Dandanes se zdi, da se v raèunalni¹ki literaturi za samopomoè predpostavlja,
  da ima uporabnik IQ krompirja.
  Mi tega ne poènemo.
 \end_layout
 
 \begin_layout Standard
-
 Na drugi strani pa se zavedamo, da se veèina uporabnikov zateèe k priroèniku,
  posebej k uèbeniku, ko se zgubijo.
  Vemo torej, da 
@@ -292,15 +266,14 @@ niste
 \emph default
  neumni, razumemo pa, da vam ni niè jasno ali da vas vse skupaj silno bega.
 \end_layout
+
 \end_deeper
 \begin_layout Itemize
-
 Navodil o uporabi mi¹ke ali tipkovnice.
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-
 Èe do zdaj niste ugotovili, kako se uporablja raèunalnik, vam ne moremo
  pomagati; to sodi onkraj dometa priroènikov za LyX.
  
@@ -308,7 +281,6 @@ Navodil o uporabi mi¹ke ali tipkovnice.
 status collapsed
 
 \begin_layout Standard
-
 Poleg tega imate verjetno v glavi veè kot polovico mo¾gan, sodeè po tem,
  da ste se sploh sklenili nauèiti LyX.
 \end_layout
@@ -317,15 +289,14 @@ Poleg tega imate verjetno v glavi veè kot polovico mo¾gan, sodeè po tem,
 
 
 \end_layout
+
 \end_deeper
 \begin_layout Itemize
-
 Podrobnih razlag vseh mogoèih odlik LyXa.
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-
 Saj ne ¾elite dveh 
 \emph on
 Uporabni¹kih vodnikov
@@ -334,7 +305,6 @@ Uporabni¹kih vodnikov
 \end_layout
 
 \begin_layout Standard
-
 ©alo na stran, tukaj smo zato, da vas usposobimo za delo, tako da boste
  potrebovali le ¹e 
 \emph on
@@ -361,15 +331,14 @@ Uporabni¹ki vodnik
 
 .
 \end_layout
+
 \end_deeper
 \begin_layout Itemize
-
 Podrobnih razlag LaTeXa.
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-
 So nepotrebne.
  Èe ste radovedni in bi se radi nauèili zanimivih trikov, ki so na voljo
  v LaTeXu, lahko ¹e vedno vzamete v roke knjigo o LaTeXu.
@@ -377,9 +346,9 @@ So nepotrebne.
  Res ni nobene potrebe, da bi izumljali toplo vodo \SpecialChar \ldots{}
 
 \end_layout
+
 \end_deeper
 \begin_layout Standard
-
 Tako, junaki, èas je za premik naprej.
  Privo¹èite si lahko kratek izlet po naslednjem razdelku ali pa kar takoj
  krenite k razdelku 
@@ -391,7 +360,6 @@ Tako, junaki, èas je za premik naprej.
 \end_layout
 
 \begin_layout Section
-
 Kaj je LyX?
 \begin_inset LatexCommand \label{sec:what-is-lyx}
 
@@ -401,12 +369,10 @@ Kaj je LyX?
 \end_layout
 
 \begin_layout Subsection
-
 Pregled
 \end_layout
 
 \begin_layout Standard
-
 Del uvodnega izziva pri uporabi LyXa je tudi sprememba naèina va¹ega, tj.
  uporabnikovega, mi¹ljenja.
  Vèasih smo spise pisali s pisalnimi stroji, zato smo vsi poznali doloèene
@@ -428,13 +394,11 @@ _
 \end_layout
 
 \begin_layout Standard
-
 Z drugimi besedami, izurili so nas, da smo se ubadali s podrobnostmi o tem,
  kateri znak gre kam.
 \end_layout
 
 \begin_layout Standard
-
 Skoraj vsi urejevalniki besedil ohranjajo to tradicijo.
  ©e vedno uporabljajo tabulatorje za dodajanje presledkov.
  ©e vedno vas mora skrbeti natanèen polo¾aj stvari na strani.
@@ -444,7 +408,6 @@ Skoraj vsi urejevalniki besedil ohranjajo to tradicijo.
 \end_layout
 
 \begin_layout Standard
-
 Tu se LyX razlikuje od navadnih urejevalnikov besedil.
  V LyXu se ne utrujate s polo¾ajem posameznih znakov.
  LyXu poveste 
@@ -460,7 +423,6 @@ slog
 \end_layout
 
 \begin_layout Standard
-
 Denimo, da pi¹ete poroèilo.
  Na zaèetku poroèila ¾elite imeti razdelek, imenovan 
 \begin_inset Quotes gld
@@ -491,7 +453,6 @@ Uvod
 \end_layout
 
 \begin_layout Standard
-
 V LyXu na padajoèem menuju skrajno levo v orodni vrstici izberete 
 \family sans
 Section
@@ -508,7 +469,6 @@ Uvod
 \end_layout
 
 \begin_layout Standard
-
 Da, to je vse.
  Èe izre¾ete in prilepite razdelek, se bo samodejno pre¹tevilèil -- kjerkoli.
  Mogoèe je, da LyX celo samodejno osve¾i vsa sklicevanja v datoteki na ta
@@ -517,7 +477,6 @@ Da, to je vse.
 \end_layout
 
 \begin_layout Standard
-
 Zdaj pa si oglejmo, kako je s konsistentnostjo.
  Èez pet dni spet odprete svoje poroèilo in zaènete pisati razdelek 4.
  Vendar ste pozabili, da ste uporabljali pisavo velikosti 18\InsetSpace ~
@@ -530,7 +489,6 @@ pik, zato napi¹ete naslov razdelka 4 z drugo pisavo, kot razdelek 1.
 \end_layout
 
 \begin_layout Standard
-
 Tukaj je ¹e en zgled.
  Denimo, da sestavljate seznam.
  V drugih urejevalnikih besedil je seznam le skupek tabulatorjev in znakov
@@ -544,7 +502,6 @@ a in tako naprej.
 \end_layout
 
 \begin_layout Standard
-
 Torej je osnovna zamisel, na kateri temelji LyX: doloèite, kaj poènete,
  ne, kako tisto poènete.
  Namesto modela 
@@ -573,13 +530,11 @@ misli¹
 \end_layout
 
 \begin_layout Subsection
-
 Razlike med LyXom in urejevalniki besedil
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-
 Ne, tu ne posku¹amo zanetiti (ali dobiti) svete vojne med urejevalniki besedil.
  Vendar mislimo, da je pomembno opisati odlike LyXa.
  In ena od poglavitnih, WYSIWYM, je pojem, ki se povsem razlikuje od mnenja,
@@ -593,22 +548,18 @@ Ne, tu ne posku¹amo zanetiti (ali dobiti) svete vojne med urejevalniki besedil.
 \end_layout
 
 \begin_layout Standard
-
 Tu je na¹teto, èesa vse ne boste na¹li v LyXu:
 \end_layout
 
 \begin_layout Itemize
-
 ravnila za spis,
 \end_layout
 
 \begin_layout Itemize
-
 tabulatorjev,
 \end_layout
 
 \begin_layout Itemize
-
 dodatnega presledka (tj.
  pritiska na 
 \family sans
@@ -622,7 +573,6 @@ Space
 \end_layout
 
 \begin_layout Standard
-
 Tabulatorji, ki vam skupaj z ravnilom prikazujejo polo¾aj posameznih stvari
  na strani, so v LyXu neuporabni.
  Program skrbi za postavitev stvari na stran, ne vi.
@@ -633,44 +583,36 @@ Tabulatorji, ki vam skupaj z ravnilom prikazujejo polo¾aj posameznih stvari
 \end_layout
 
 \begin_layout Standard
-
 Tu pa so nekatere mo¾nosti, ki so na voljo v LyXu, a se jih morda ne uporablja
  tako, kot mislite:
 \end_layout
 
 \begin_layout Itemize
-
 nadzor zamikanja,
 \end_layout
 
 \begin_layout Itemize
-
 prelomi strani,
 \end_layout
 
 \begin_layout Itemize
-
 presledki med vrsticami (tj.
  enojni presledek, dvojni presledek itd.),
 \end_layout
 
 \begin_layout Itemize
-
 presledek, vodoravni in navpièni,
 \end_layout
 
 \begin_layout Itemize
-
 pisave in velikosti pisav,
 \end_layout
 
 \begin_layout Itemize
-
 videz pisav (polkrepki, kurzivni, podèrtani itd.).
 \end_layout
 
 \begin_layout Standard
-
 Èeprav je vse to v LyXu na voljo, tega na splo¹no ne boste potrebovali.
  LyX bo skrbel za to namesto vas, glede na to, kaj poènete.
  Razlièni deli spisa so samodejno postavljeni v razliènem videzu in velikosti
@@ -684,7 +626,6 @@ ka, ki jo nastavi LyX.
 status collapsed
 
 \begin_layout Standard
-
 Te vrednosti se da spremeniti (le za nekatere med njimi je treba znati LaTeX)
  za celoten spis ali za doloèeni del spisa.
  Glej 
@@ -700,38 +641,31 @@ Uporabni¹ki vodnik
 \end_layout
 
 \begin_layout Standard
-
 Za konec na¹tejmo ¹e tisto, po èemer LyX (in LaTeX) preka¹a ¹tevilne urejevalnik
 e besedil:
 \end_layout
 
 \begin_layout Itemize
-
 deljenje besed,
 \end_layout
 
 \begin_layout Itemize
-
 taki in drugaèni seznami,
 \end_layout
 
 \begin_layout Itemize
-
 matematièni izrazi,
 \end_layout
 
 \begin_layout Itemize
-
 tabele,
 \end_layout
 
 \begin_layout Itemize
-
 navzkri¾no sklicevanje.
 \end_layout
 
 \begin_layout Standard
-
 ©tevilni sodobni urejevalniki besedil zmorejo staviti matematiène simbole,
  tabele in deljenje besed, in nekateri se celo premikajo proti definicijam
  sloga in zasnovi WYSIWYM.
@@ -747,7 +681,6 @@ deluje
 status collapsed
 
 \begin_layout Standard
-
 Prav, vemo, da ni niè popolno, vendar je LaTeX tako blizu raèunalni¹kemu
  programu brez hro¹èev, kot je le mogoèe.
 \end_layout
@@ -758,7 +691,6 @@ Prav, vemo, da ni niè popolno, vendar je LaTeX tako blizu raèunalni¹kemu
 \end_layout
 
 \begin_layout Standard
-
 Konèna in najpomembnej¹a razlika med LyXom in drugimi urejevalniki besedil
  je stabilnost.
  Za razliko od doloèenih komercialnih urejevalnikov besedil LyX 
@@ -800,12 +732,10 @@ modri zaslon smrti
 \end_layout
 
 \begin_layout Standard
-
 Nak.
 \end_layout
 
 \begin_layout Standard
-
 Ko se LyX sesuje, pred smrtjo izpi¹e vse spise iz pomnilnika v re¹ilno datoteko.
  Ob vnoviènem zagonu bo LyX te re¹ilne izvode opazil, ¹e posebej, èe boste
  poskusili nalo¾iti prizadeto(e) datoteko(e).
@@ -817,7 +747,6 @@ Ko se LyX sesuje, pred smrtjo izpi¹e vse spise iz pomnilnika v re¹ilno datoteko.
 \end_layout
 
 \begin_layout Subsection
-
 Kaj, zaboga, 
 \emph on
 je
@@ -826,14 +755,12 @@ je
 \end_layout
 
 \begin_layout Standard
-
 LaTeX je sistem za pripravljanje dokumentov, ki ga je leta 1985 zasnoval
  Leslie Lamport.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-
 Vir informacij v tem razdelku je knjiga 
 \begin_inset Quotes gld
 \end_inset
@@ -907,14 +834,12 @@ dvi
 \end_layout
 
 \begin_layout Standard
-
 Èe TeX ne bi imel neke posebej uporabne odlike, bi bil le stavni stroj.
  Vendar vam dovoljuje tudi definirati makroukaze.
  Tu stvari postanejo zanimive.
 \end_layout
 
 \begin_layout Standard
-
 Veèina ljudi, ki uporablja TeX, pravzaprav uporablja paket makroukazov,
  s katerim je Knuth prikril precej stavnih podrobnosti.
  To je tisto, na kar misli veèina ljudi, ko misli na TeX.
@@ -929,7 +854,6 @@ Veèina ljudi, ki uporablja TeX, pravzaprav uporablja paket makroukazov,
 \end_layout
 
 \begin_layout Standard
-
 Vzporedno z razvojem in rastjo LaTeXa so razlièni ljudje ustvarjali lastne
  pakete makroukazov za TeX, tak¹ne za izdelovanje prosojnic ali èlankov
  za matematiène revije in tako naprej.
@@ -945,7 +869,6 @@ Vzporedno z razvojem in rastjo LaTeXa so razlièni ljudje ustvarjali lastne
 \end_layout
 
 \begin_layout Standard
-
 LaTeX je mogoèe raz¹iriti na dva naèina: z razredi in slogi.
  
 \emph on
@@ -976,43 +899,36 @@ e posebnih glav strani, prilagoditev bibliografij, spremembo mesta in videza
 \end_layout
 
 \begin_layout Standard
-
 Tule je povzetek:
 \end_layout
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 TeX: Stavni jezik z mo¾nostjo makroukazov.
 \end_layout
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 LaTeX: Paket makroukazov, temeljeè na TeXu.
 \end_layout
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 razredi: Opisi zvrsti spisa z uporabo LaTeXa.
 \end_layout
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 slogi: Nekako spremenijo privzeto vedenje LaTeXa.
 \end_layout
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 LyX: Vizualni urejevalnik besedil vrste WYSIWYM, ki za tiskanje uporablja
  LaTeX v vsej njegovi slavi.
 \end_layout
 
 \begin_layout Standard
-
 Namen tega razdelka je bil pojasniti, 
 \emph on
 zakaj
@@ -1029,7 +945,6 @@ kaj
 \end_layout
 
 \begin_layout Standard
-
 In ¹e zadnje.
  LaTeX izgovarjamo podobno kot TeX: 
 \begin_inset Quotes gld
@@ -1095,18 +1010,14 @@ luks
 \end_layout
 
 \begin_layout Chapter
-
 Prvi koraki v LyXu
 \end_layout
 
 \begin_layout Section
-
 Va¹ prvi sestavek v LyXu
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:first-doc-ex}
 
 \end_inset
@@ -1121,7 +1032,6 @@ Uèbenik
 \end_layout
 
 \begin_layout Standard
-
 Ker vam marsièesa ne bomo povedali, 
 \emph on
 najprej
@@ -1148,7 +1058,6 @@ Uèbenik
 status collapsed
 
 \begin_layout Standard
-
 Rabita vam lahko tudi kot dobra zgleda o tem, kako uporabljati ¹tevilne
  odlike LyXa.
 \end_layout
@@ -1175,7 +1084,6 @@ Uèbenik
 \end_layout
 
 \begin_layout Standard
-
 V tem 
 \emph on
 Uèbeniku
@@ -1198,7 +1106,6 @@ dvips
 \end_layout
 
 \begin_layout Standard
-
 Konèno, napisali smo datoteko, ki vam omogoèa uèenje ve¹èin LyXa.
  Imenuje se 
 \family typewriter
@@ -1231,12 +1138,10 @@ sl_primer_lyxan.lyx
 \end_layout
 
 \begin_layout Subsection
-
 Tipkanje, pregledovanje in tiskanje
 \end_layout
 
 \begin_layout Itemize
-
 Z ukazom 
 \family sans
 \bar under
@@ -1254,7 +1159,6 @@ ova
 \end_layout
 
 \begin_layout Itemize
-
 Napi¹ite kaj podobnega: 
 \family typewriter
 To je moj prvi spis v LyXu!
@@ -1262,7 +1166,6 @@ To je moj prvi spis v LyXu!
 status collapsed
 
 \begin_layout Standard
-
 No, prav.
  Pravzaprav lahko napi¹ete, karkoli ¾elite.
  V bistvu je vseeno.
@@ -1276,7 +1179,6 @@ No, prav.
 \end_layout
 
 \begin_layout Itemize
-
 Posnemite svoj spis z ukazom 
 \family sans
 \bar under
@@ -1293,7 +1195,6 @@ ot\SpecialChar \@.
 \end_layout
 
 \begin_layout Itemize
-
 Z ukazom 
 \family sans
 \bar under
@@ -1330,7 +1231,6 @@ dvi
 status collapsed
 
 \begin_layout Standard
-
 Èe pustite, da 
 \family typewriter
 xdvi
@@ -1359,7 +1259,6 @@ xdvi
 \end_layout
 
 \begin_layout Itemize
-
 Spis natisnite z ukazom 
 \family sans
 \bar under
@@ -1380,7 +1279,6 @@ redu\SpecialChar \@.
 \end_layout
 
 \begin_layout Standard
-
 Èestitamo! Napisali in natisnili ste svoj prvi spis v LyXu.
  Vse drugo so le podrobnosti, obdelane v preostanku 
 \emph on
@@ -1398,12 +1296,10 @@ Referenènem priroèniku
 \end_layout
 
 \begin_layout Subsection
-
 Preproste operacije
 \end_layout
 
 \begin_layout Standard
-
 LyX lahko seveda postori veèino tistega, kar ste vajeni uporabljati v urejevalni
 ku besedil.
  Samodejno poravnava besede in zamika odstavke.
@@ -1412,7 +1308,6 @@ ku besedil.
 status collapsed
 
 \begin_layout Standard
-
 Èe ste tak¹ni kot ¹tevilni uporabniki Unixa, ste to ¾e storili, ¹e preden
  ste sploh zaèeli brati 
 \emph on
@@ -1438,7 +1333,6 @@ prièakovano ime, da so v menuju, v katerem bi jih prièakovali, in da tudi
 \end_layout
 
 \begin_layout Description
-
 Razveljavi LyX ima 
 \emph on
 mo¾nost
@@ -1479,15 +1373,14 @@ in vzpostavili boste prej¹nje stanje.
 
 \begin_deeper
 \begin_layout Standard
-
 [Trenutno je raven razveljavitev pravzaprav omejena na 100 korakov, dokler
  ni razveljavitveni mehanizem podrobno preizku¹en.
  Razveljavitev tudi ne deluje vselej; pri sprememinjanju videza spisa ¾e
  ne.]
 \end_layout
+
 \end_deeper
 \begin_layout Description
-
 Izre¾i/Prilepi/Prepi¹i Uporabite 
 \family sans
 Ur
@@ -1532,7 +1425,6 @@ srednjim gumbom
 \end_layout
 
 \begin_layout Description
-
 Poi¹èi/Nadomesti Uporabite 
 \family sans
 Ur
@@ -1555,7 +1447,6 @@ Nadomesti
 status collapsed
 
 \begin_layout Standard
-
 Zaprite okno, ko konèate.
  Ali pa ga pustite odprtega, èe se vam zdi tako bolj pripravno.
  Veèino dvi¾nih oken v LyXu -- v¹tev¹i z okni 
@@ -1595,7 +1486,6 @@ dpri
 \end_layout
 
 \begin_layout Description
-
 Oblikovanje\InsetSpace ~
 znakov Besedilo lahko 
 \emph on
@@ -1618,7 +1508,6 @@ Videz
 \end_layout
 
 \begin_layout Description
-
 Orodna\InsetSpace ~
 vrstica Gumbi v orodni vrstici (prav pod menuji) omogoèajo nekatere
  pogostej¹e funkcije, kot sta 
@@ -1635,19 +1524,15 @@ Tiskaj
 \end_layout
 
 \begin_layout Standard
-
 Seveda ¹e niste napisali dovolj, da bi lahko uporabili veèino teh funkcij.
  Ko boste napisali veè, pa le posku¹ajte razveljavljati, lepiti itd.
 \end_layout
 
 \begin_layout Subsection
-
 WYSIWYM: Nevidni znaki v LyXu
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:whitespace}
 
 \end_inset
@@ -1679,7 +1564,6 @@ ni
 \end_layout
 
 \begin_layout Standard
-
 ©tevilni komercialni urejevalniki besedil temeljijo na naèelu WYSIWYG: 
 \begin_inset Quotes gld
 \end_inset
@@ -1741,7 +1625,6 @@ obliko
 \end_layout
 
 \begin_layout Standard
-
 LyX zna opraviti (¹tevilne) drobne popravke oblike va¹ega spisa.
  Konec koncev LyX morda ne bo stavil 
 \emph on
@@ -1767,12 +1650,10 @@ e in navpiène razmike -- ki so moènej¹i in izrecnej¹i od veè presledkov
 \end_layout
 
 \begin_layout Section
-
 Okolja
 \end_layout
 
 \begin_layout Standard
-
 Razlièni deli spisa imajo razliène namene; te dele imenujemo 
 \emph on
 okolja
@@ -1788,7 +1669,6 @@ okolja
 \end_layout
 
 \begin_layout Standard
-
 Okolja so veèji del filozofije 
 \begin_inset Quotes gld
 \end_inset
@@ -1811,7 +1691,6 @@ to, kar vidi¹, tudi misli¹
 \end_layout
 
 \begin_layout Standard
-
 ©katla 
 \family sans
 Okolje
@@ -1853,12 +1732,10 @@ Okolje
 \end_layout
 
 \begin_layout Subsection
-
 Razdelki in podrazdelki
 \end_layout
 
 \begin_layout Standard
-
 V prvo vrstico datoteke v LyXu vpi¹ite besedo 
 \family typewriter
 Uvod
@@ -1879,7 +1756,6 @@ Okolje
 status collapsed
 
 \begin_layout Standard
-
 Ni vam treba 
 \emph on
 izbrati
@@ -1956,7 +1832,6 @@ Return
 status collapsed
 
 \begin_layout Standard
-
 Glejte 
 \emph on
 Uporabni¹ki vodnik
@@ -1986,12 +1861,10 @@ Okolje
 \end_layout
 
 \begin_layout LyX-Code
-
 To je uvod v moj prvi spis v LyXu.
 \end_layout
 
 \begin_layout Standard
-
 Spet pritisnite 
 \family sans
 Return
@@ -2022,7 +1895,6 @@ Veè stvari
 \end_layout
 
 \begin_layout Standard
-
 Èedalje bolje nam gre.
  Pojdite spet na konec prvega razdelka (po 
 \begin_inset Quotes gld
@@ -2073,7 +1945,6 @@ Veè stvari
 \end_layout
 
 \begin_layout Standard
-
 Pritisnite 
 \family sans
 Return
@@ -2086,32 +1957,26 @@ Standard
 \end_layout
 
 \begin_layout LyX-Code
-
 Razdelki in podrazdelki so opisani spodaj.
 \end_layout
 
 \begin_layout LyX-Code
-
 Opis razdelkov
 \end_layout
 
 \begin_layout LyX-Code
-
 Razdelki so veèji od podrazdelkov.
 \end_layout
 
 \begin_layout LyX-Code
-
 Opis podrazdelkov
 \end_layout
 
 \begin_layout LyX-Code
-
 Podrazdelki so manj¹i od razdelkov.
 \end_layout
 
 \begin_layout Standard
-
 Kliknite drugo vrstico in z menuja 
 \family sans
 Okolje
@@ -2166,7 +2031,6 @@ Subsection
 \end_layout
 
 \begin_layout Standard
-
 Nadaljnje ravni razdelkov obsegajo podpodrazdelke (
 \family sans
 Subsubsection
@@ -2206,7 +2070,6 @@ Section
 \end_layout
 
 \begin_layout Standard
-
 Nazadnje boste morda ¾eleli imeti neo¹tevilèene razdelke ali podrazdelke.
  Imamo tudi okolja za to.
  Èe spremenite eno od glav va¹ih razdelkov v okolje 
@@ -2241,7 +2104,6 @@ Subsubsection
 \end_layout
 
 \begin_layout Standard
-
 
 \series bold
 Vaja
@@ -2291,12 +2153,10 @@ ot
 \end_layout
 
 \begin_layout Subsection
-
 Seznami in podseznami
 \end_layout
 
 \begin_layout Standard
-
 LyX pozna veè razliènih okolij za stavljenje seznamov.
  Raznovrstna okolja seznamov vas osvobodijo tega, da bi morali milijonkrat
  pritisniti 
@@ -2310,7 +2170,6 @@ Tab
 status collapsed
 
 \begin_layout Standard
-
 Da, to dejstvo v 
 \emph on
 Uèbeniku
@@ -2329,7 +2188,6 @@ je
 \end_layout
 
 \begin_layout Itemize
-
 predstavitev na prosojnicah lahko uporablja seznam s krogci okolja 
 \family sans
 Itemize
@@ -2338,7 +2196,6 @@ Itemize
 \end_layout
 
 \begin_layout Itemize
-
 izvleèek bi lahko uporabljal o¹tevilèene sezname (in èrkovne podsezname)
  okolja 
 \family sans
@@ -2348,7 +2205,6 @@ Enumerate
 \end_layout
 
 \begin_layout Itemize
-
 spis, ki opisuje razliène programske pakete, bi lahko uporabljal opisno
  okolje 
 \family sans
@@ -2358,7 +2214,6 @@ Description
 \end_layout
 
 \begin_layout Itemize
-
 okolje 
 \family sans
 List
@@ -2371,7 +2226,6 @@ Description
 \end_layout
 
 \begin_layout Standard
-
 Napi¹imo seznam razlogov, zaradi katerih je LyX bolj¹i od drugih urejevalnikov
  besedil.
  Nekje v svojem spisu napi¹ite:
@@ -2379,13 +2233,11 @@ Napi¹imo seznam razlogov, zaradi katerih je LyX bolj¹i od drugih urejevalnikov
 
 \begin_layout Standard
 
-
 \family typewriter
 LyX je bolj¹i od drugih urejevalnikov besedil, ker:
 \end_layout
 
 \begin_layout Standard
-
 in pritisnite 
 \family sans
 Return
@@ -2414,22 +2266,18 @@ krogec
 \end_layout
 
 \begin_layout LyX-Code
-
 Stavi besedilo namesto vas.
 \end_layout
 
 \begin_layout LyX-Code
-
 Matematika je WYSIWYG.
 \end_layout
 
 \begin_layout LyX-Code
-
 Zelo lahko je ustvariti sezname!
 \end_layout
 
 \begin_layout Standard
-
 Seznamska okolja se, za razliko od glav, ne konèajo, ko pritisnete 
 \family sans
 Return
@@ -2464,7 +2312,6 @@ s
 \end_layout
 
 \begin_layout Standard
-
 Dobili ste èudovit seznam postavk.
  Morda boste ¾eleli pognati LaTeX in si pogledati, kak¹en je videti natisnjeni
  seznam.
@@ -2473,7 +2320,6 @@ Dobili ste èudovit seznam postavk.
 status collapsed
 
 \begin_layout Standard
-
 LyX vam ne bo pustil izbrati prvega krogca, èe ne boste izbrali tudi odstavka
  
 \emph on
@@ -2500,7 +2346,6 @@ Enumerate
 \end_layout
 
 \begin_layout Standard
-
 Ko je seznam ¹e vedno izbran, ga lahko spremenite v drugi dve seznamski
  okolji, 
 \family sans
@@ -2535,7 +2380,6 @@ Tab
 status collapsed
 
 \begin_layout Standard
-
 Vendar s stavnim znakom 
 \begin_inset Quotes gld
 \end_inset
@@ -2581,7 +2425,6 @@ u
 
 \begin_layout Standard
 
-
 \series bold
 Vaja
 \series default
@@ -2591,7 +2434,6 @@ sl_primer_surov.lyx
 \end_layout
 
 \begin_layout Standard
-
 Sezname lahko gnezdite drugega v drugega na najrazliènej¹e naèine.
  Oèitni zgled bi bilo pisanje izvleèkov.
  O¹tevilèeni in krogèasti seznami bodo imeli razliène sheme ¹tevilèenja
@@ -2608,12 +2450,10 @@ Uporabni¹kem vodniku
 \end_layout
 
 \begin_layout Subsection
-
 Druga okolja: verzi, citati in ¹e veè
 \end_layout
 
 \begin_layout Standard
-
 Za loèevanje citatov od preostalega besedila sta na voljo dve okolji: 
 \family sans
 Quote
@@ -2650,7 +2490,6 @@ Verse
 status collapsed
 
 \begin_layout Standard
-
 \SpecialChar \ldots{}
  ob predpostavki, da ste sploh dovolj ustvarjalni, da se domislite kak¹ne
  pesmi.
@@ -2675,7 +2514,6 @@ Uporabni¹kem vodniku
 \end_layout
 
 \begin_layout Standard
-
 
 \series bold
 Vaja
@@ -2704,12 +2542,10 @@ sl_primer_surov.lyx
 \end_layout
 
 \begin_layout Chapter
-
 Pisanje spisov
 \end_layout
 
 \begin_layout Standard
-
 V prej¹njem poglavju naj bi se privadili pisanja v LyXu.
  Uvedlo naj bi vas v osnovne urejevalne operacije v LyXu ter v zmogljive
  metode pisanja z okolji.
@@ -2725,13 +2561,10 @@ V prej¹njem poglavju naj bi se privadili pisanja v LyXu.
 \end_layout
 
 \begin_layout Section
-
 Razredi besedil in vzorci: pisanje pisem
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:textclasses}
 
 \end_inset
@@ -2749,7 +2582,6 @@ Razred besedil
 status collapsed
 
 \begin_layout Standard
-
 Uporabniki LaTeXa: to je ekvivalent razredu spisa v LaTeXu (angl.
  documentclass).
 \end_layout
@@ -2774,7 +2606,6 @@ Book
 \end_layout
 
 \begin_layout Standard
-
 Va¹ spis verjetno nastaja v razredu besedil 
 \family sans
 Article
@@ -2782,7 +2613,6 @@ Article
 status collapsed
 
 \begin_layout Standard
-
 To je navadno privzet razred besedil, èeprav ga lahko spremenite v svoji
  datoteki 
 \family typewriter
@@ -2826,7 +2656,6 @@ Okolje
 \end_layout
 
 \begin_layout Standard
-
 Velikost pisave, tisk v enem ali dveh stolpcih in glave strani so le nekateri
  od naèinov, po katerih se razlikujejo stavljenja v razliènih revijah.
  Revije sprejemajo elektronske prispevke in imajo svoje 
@@ -2849,7 +2678,6 @@ Article\InsetSpace ~
 \end_layout
 
 \begin_layout Standard
-
 Tu so zelo na kratko na¹teti nekateri razredi.
  Kot ponavadi podrobnosti tudi tokrat poi¹èite v 
 \emph on
@@ -2858,10 +2686,7 @@ Uporabni¹kem vodniku
 .
 \end_layout
 
-
 \begin_layout Standard
-
-
 \begin_inset VSpace 0.3cm
 \end_inset
 
@@ -2870,8 +2695,7 @@ Uporabni¹kem vodniku
 
 \begin_layout Standard
 \align center
-
-\begin_inset  Tabular
+\begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
 <features>
 <column alignment="center" valignment="top" leftline="true" width="0pt">
@@ -2881,7 +2705,6 @@ Uporabni¹kem vodniku
 \begin_inset Text
 
 \begin_layout Standard
-
 Ime
 \end_layout
 
@@ -2891,7 +2714,6 @@ Ime
 \begin_inset Text
 
 \begin_layout Standard
-
 Opombe
 \end_layout
 
@@ -2903,7 +2725,6 @@ Opombe
 \begin_inset Text
 
 \begin_layout Standard
-
 article
 \end_layout
 
@@ -2913,7 +2734,6 @@ article
 \begin_inset Text
 
 \begin_layout Standard
-
 èlanek, enostranski, brez poglavij
 \end_layout
 
@@ -2925,7 +2745,6 @@ article
 \begin_inset Text
 
 \begin_layout Standard
-
 article (AMS)
 \end_layout
 
@@ -2935,7 +2754,6 @@ article (AMS)
 \begin_inset Text
 
 \begin_layout Standard
-
 videz in okolja za American Math Society
 \end_layout
 
@@ -2947,7 +2765,6 @@ videz in okolja za American Math Society
 \begin_inset Text
 
 \begin_layout Standard
-
 report
 \end_layout
 
@@ -2957,7 +2774,6 @@ report
 \begin_inset Text
 
 \begin_layout Standard
-
 poroèilo, dalj¹e od èlanka, obe strani
 \end_layout
 
@@ -2969,7 +2785,6 @@ poroèilo, dalj¹e od èlanka, obe strani
 \begin_inset Text
 
 \begin_layout Standard
-
 book
 \end_layout
 
@@ -2979,7 +2794,6 @@ book
 \begin_inset Text
 
 \begin_layout Standard
-
 report + zadeve spredaj in zadaj
 \end_layout
 
@@ -2991,7 +2805,6 @@ report + zadeve spredaj in zadaj
 \begin_inset Text
 
 \begin_layout Standard
-
 slides
 \end_layout
 
@@ -3001,7 +2814,6 @@ slides
 \begin_inset Text
 
 \begin_layout Standard
-
 prosojnice (tudi FoilTeX)
 \end_layout
 
@@ -3013,7 +2825,6 @@ prosojnice (tudi FoilTeX)
 \begin_inset Text
 
 \begin_layout Standard
-
 letter
 \end_layout
 
@@ -3023,7 +2834,6 @@ letter
 \begin_inset Text
 
 \begin_layout Standard
-
 ¹tevilna dodatna okolja za naslov, podpis\SpecialChar \ldots{}
 
 \end_layout
@@ -3039,22 +2849,17 @@ letter
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset VSpace 0.3cm
 \end_inset
 
 
 \end_layout
 
-
 \begin_layout Section
-
 Vzorci: pisanje pisma
 \end_layout
 
 \begin_layout Standard
-
 Eden izmed najbolj priljubljenih razredov spisa je 
 \family sans
 Letter
@@ -3097,7 +2902,6 @@ vzorec
 \end_layout
 
 \begin_layout Standard
-
 Odprite novo datoteko z izbiro 
 \family sans
 \bar under
@@ -3128,7 +2932,6 @@ letter.lyx
 \end_layout
 
 \begin_layout Standard
-
 Ko boste pogledali v vsebino menuja 
 \family sans
 Okolje
@@ -3178,7 +2981,6 @@ Signature
 \end_layout
 
 \begin_layout Standard
-
 Vzorec je le obièajna datoteka za LyX.
  To pomeni, da jo lahko izpolnite s svojim naslovom in podpisom ter shranite
  datoteko kot nov vzorec.
@@ -3197,7 +2999,6 @@ vaje
 status collapsed
 
 \begin_layout Standard
-
 Opozorilo, èe pi¹ete po vzorcu.
  Èe zbri¹ete vse besedilo v okolju -- èe, denimo, zbri¹ete celotno polje
 \family sans
@@ -3220,18 +3021,15 @@ Okolje
 \end_layout
 
 \begin_layout Section
-
 Naslovi spisov
 \end_layout
 
 \begin_layout Standard
-
 LyX (kot LaTeX) upo¹teva naslov -- ki lahko vsebuje pravi naslov, ime avtorja,
  datum in celo povzetek èlanka -- kot loèeni del spisa.
 \end_layout
 
 \begin_layout Standard
-
 Vrnite se v va¹ spis 
 \family typewriter
 newfile.lyx 
@@ -3245,7 +3043,6 @@ Article
 status collapsed
 
 \begin_layout Standard
-
 Niè veè ne bi smeli uporabljati razreda besedila 
 \family sans
 Letter
@@ -3282,7 +3079,6 @@ Abstract
 
 \begin_layout Standard
 
-
 \series bold
 Vaja
 \series default
@@ -3292,13 +3088,10 @@ sl_primer_surov.lyx
 \end_layout
 
 \begin_layout Section
-
 Oznake in navzkri¾na sklicevanja
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:labels}
 
 \end_inset
@@ -3315,12 +3108,10 @@ V svojem spisu lahko oznaèite razdelek (ali podrazdelek ali, redkeje, le
 \end_layout
 
 \begin_layout Subsection*
-
 Va¹a prva oznaka
 \end_layout
 
 \begin_layout Standard
-
 Oznaèimo na¹ drugi razdelek z naslovom 
 \begin_inset Quotes gld
 \end_inset
@@ -3350,7 +3141,6 @@ sec:aboutdocument
 status collapsed
 
 \begin_layout Standard
-
 Pi¹emo 
 \begin_inset Quotes gld
 \end_inset
@@ -3373,7 +3163,6 @@ redu
 \end_layout
 
 \begin_layout Standard
-
 Mimogrede, oznako bi lahko postavili tudi kamorkoli drugam v razdelek; sklici
  na razdelek nosijo ¹tevilko zadnjega razdelka ali podrazdelka pred oznako.
  Èe oznako postavite v isto vrstico kot naslov razdelka (ali morda v prvo
@@ -3382,7 +3171,6 @@ Mimogrede, oznako bi lahko postavili tudi kamorkoli drugam v razdelek; sklici
 \end_layout
 
 \begin_layout Standard
-
 Zaenkrat niste naredili ¹e nièesar -- datoteka 
 \family typewriter
 dvi
@@ -3394,25 +3182,22 @@ dvi
 \end_layout
 
 \begin_layout Subsection*
-
 Va¹i prvi navzkri¾ni sklici
 \end_layout
 
 \begin_layout Standard
-
 Postavite kazalec nekje v razdelek 2 va¹ega spisa.
  Napi¹ite:
 \end_layout
 
 \begin_layout LyX-Code
-
 Èe ¾elite izvedeti veè o tem spisu, poglejte 
 \newline
-razdelek , ki ga najdete na strani .
+razdelek , ki ga najdete na
+ strani .
 \end_layout
 
 \begin_layout Standard
-
 Zdaj -- s kazalcem za besedo 
 \begin_inset Quotes gld
 \end_inset
@@ -3479,7 +3264,6 @@ strani
 \end_layout
 
 \begin_layout Standard
-
 LyX postavi sklic v ¹katlo natanko tam, kjer je bil kazalec.
  V natisnjenem spisu se bo oznaka sklica nadomestila bodisi s ¹tevilko strani
  bodisi s ¹tevilko razdelka (odvisno od tega, kaj ste izbrali z menuja 
@@ -3523,12 +3307,10 @@ stran 1
 \end_layout
 
 \begin_layout Subsection*
-
 ©e veè zabave z oznakami
 \end_layout
 
 \begin_layout Standard
-
 Povedali smo vam, da LyX skrbi za ¹tevilèenje navzkri¾nih sklicev; zdaj
  lahko to preverite.
  Za razdelkom 2 dodajte nov razdelek.
@@ -3548,7 +3330,6 @@ O tem spisu
 \end_layout
 
 \begin_layout Standard
-
 Èe ¾elite veè vaditi z oznakami, poskusite vstaviti oznako 
 \begin_inset Quotes gld
 \end_inset
@@ -3569,7 +3350,6 @@ referenco
 \end_layout
 
 \begin_layout Standard
-
 Èe se ¾elite preprièati, ali navzkri¾no sklicevanje deluje tudi z velikimi
  spisi, prepi¹ite (s 
 \family sans
@@ -3588,7 +3368,6 @@ Prilepi
 status collapsed
 
 \begin_layout Standard
-
 Mimogrede, prepisovanje naslova poglavja lahko povzroèi napako v LyXu, saj
  poglavja niso dovoljena v razredu besedila za pisanje èlankov.
  Èe se to zgodi, le izbri¹ite naslov poglavja.
@@ -3608,7 +3387,6 @@ Mimogrede, prepisovanje naslova poglavja lahko povzroèi napako v LyXu, saj
 
 \begin_layout Standard
 
-
 \series bold
 Vaja
 \series default
@@ -3618,12 +3396,10 @@ sl_primer_surov.lyx
 \end_layout
 
 \begin_layout Section
-
 Opombe v nogi in na robu
 \end_layout
 
 \begin_layout Standard
-
 Opombe v nogi lahko vstavljate z gumbom 
 \family sans
 Vstavi\InsetSpace ~
@@ -3636,7 +3412,6 @@ nogi
 status collapsed
 
 \begin_layout Standard
-
 Gumb prikazuje pu¹èico, ki ka¾e na besedilo v nogi.
 \end_layout
 
@@ -3691,12 +3466,10 @@ noga
 \end_layout
 
 \begin_layout LyX-Code
-
 LyX je stavni urejevalnik besedil.
 \end_layout
 
 \begin_layout Standard
-
 Zdaj kliknite besedo 
 \begin_inset Quotes gld
 \end_inset
@@ -3737,7 +3510,6 @@ foot
 \end_layout
 
 \begin_layout Standard
-
 Morda se spra¹ujete, zakaj je oznaka za opombo v nogi beseda namesto ¹tevilke.
  Odgovor: LyX namesto vas skrbi za ¹tevilèenje opomb v nogi.
  O tem se lahko preprièate, èe pogledate datoteko 
@@ -3751,14 +3523,12 @@ dvi
 \end_layout
 
 \begin_layout Standard
-
 Opombo v nogi lahko izre¾ete in prilepite kot navadno besedilo.
  Kar poskusite! Samo izberete oznako opombe v nogi
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-
 Morda jo boste la¾je izbrali s tipkovnico.
  Èe posku¹ate oznaèiti opombo v nogi z mi¹ko, jo lahko po pomoti odprete.
 \end_layout
@@ -3796,7 +3566,6 @@ nogi
 \end_layout
 
 \begin_layout Standard
-
 Opombe na robu lahko dodaste z gumbom Vstavi\InsetSpace ~
 opombo\InsetSpace ~
 na\InsetSpace ~
@@ -3805,7 +3574,6 @@ robu
 status collapsed
 
 \begin_layout Standard
-
 Gumb prikazuje pu¹èico, ki ka¾e na besedilo nad njo na robu in bi moral
  biti poleg gumba 
 \family sans
@@ -3834,7 +3602,6 @@ robu
 \end_layout
 
 \begin_layout Itemize
-
 zaslonska oznaka pravi 
 \begin_inset Quotes gld
 \end_inset
@@ -3856,30 +3623,25 @@ foot
 \end_layout
 
 \begin_layout Itemize
-
 so opombe postavljene ob rob besedila, ne podenj;
 \end_layout
 
 \begin_layout Itemize
-
 opombe na robu niso o¹tevilèene;
 \end_layout
 
 \begin_layout Itemize
-
 ko opombo zvijete, bo poleg na robu postavljen klicaj.
  Ta klicaj se ne bo prikazal v stavljenem besedilu.
 \end_layout
 
 \begin_layout Standard
-
 Spremenite svojo opombo v nogi v besedilo, jo izberite in spremenite v opombo
  na robu.
  Spet po¾enite LaTeX in poglejte, kako je videti opomba na robu.
 \end_layout
 
 \begin_layout Standard
-
 
 \series bold
 Vaja
@@ -3890,13 +3652,10 @@ sl_primer_surov.lyx
 \end_layout
 
 \begin_layout Section
-
 Bibliografije
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:bibliographies}
 
 \end_inset
@@ -3917,7 +3676,6 @@ Literatura
 \end_layout
 
 \begin_layout Standard
-
 Pojdite na konec spisa in vklopite okolje 
 \family sans
 Bibliography
@@ -3958,7 +3716,6 @@ lyxtutorial
 \end_layout
 
 \begin_layout Standard
-
 Zdaj izberite mesto v spisu, kamor bi radi vstavili sklic.
  To storite z ukazom 
 \family sans
@@ -3982,7 +3739,6 @@ Kljuè
 status collapsed
 
 \begin_layout Standard
-
 Zato je pametno, da kljuèe poimenujete z enkratnimi in logiènimi imeni,
  namesto da pustite v polju 
 \family sans
@@ -4012,7 +3768,6 @@ lyxtutorial
 \end_layout
 
 \begin_layout Standard
-
 Kako se uporabljajo druga polja? Polje 
 \family sans
 Opomba
@@ -4051,7 +3806,6 @@ Uporabni¹kem vodniku
 
 \begin_layout Standard
 
-
 \series bold
 Vaja: 
 \series default
@@ -4061,12 +3815,10 @@ sl_primer_surov.lyx
 \end_layout
 
 \begin_layout Section
-
 Kazalo vsebine
 \end_layout
 
 \begin_layout Standard
-
 Na zaèetek spisa boste morda ¾eleli vkljuèiti vsebinsko kazalo.
  Z LyXom je to zelo preprosto.
  Med naslovom spisa in prvim naslovom razdelka pritisnite 
@@ -4076,7 +3828,6 @@ Return
 status collapsed
 
 \begin_layout Standard
-
 Ne parajte si ¾ivcev s klikanjem ali brisanjem pred ¹tevilko razdelka.
  Ne bo delovalo.
  Tako ali tako ne morete urediti ¹tevilke razdelka, saj LyX sam skrbi za
@@ -4114,7 +3865,6 @@ Vsebinsko kazalo
 \end_layout
 
 \begin_layout Standard
-
 Morda se to ne zdi preveè uporabno.
  Èe pa si boste ogledali svojo datoteko 
 \family typewriter
@@ -4131,7 +3881,6 @@ dvi
 \end_layout
 
 \begin_layout Standard
-
 Vsebinsko kazalo se ne prika¾e v zaslonski razlièici spisa, saj ga tako
  ali tako ne morete neposredno urediti.
  Vendar lahko prika¾ete kazalo v posebnem oknu tako, da kliknete vstavek
@@ -4151,7 +3900,6 @@ vsebine
 status collapsed
 
 \begin_layout Standard
-
 Ukaz prek menuja bo deloval tudi, èe ¹e nimate vstavka s kazalom vsebine.
 \end_layout
 
@@ -4171,13 +3919,11 @@ kazalo
 \end_layout
 
 \begin_layout Standard
-
 Vsebinskega kazala se znebite tako, da zbri¹ete njegovo oznako kot katerikoli
  drug znak.
 \end_layout
 
 \begin_layout Standard
-
 
 \series bold
 Vaja
@@ -4188,12 +3934,10 @@ sl_primer_surov.lyx
 \end_layout
 
 \begin_layout Chapter
-
 Uporaba matematike
 \end_layout
 
 \begin_layout Standard
-
 LaTeX uporabljajo ¹tevilni znanstveniki za pisanje èudovitih enaèb brez
  krmilnih znakov, ki jih uporabljajo urejevalniki besedil in njihovi urejevalnik
 i enaèb.
@@ -4212,7 +3956,6 @@ plo¹èa
 status collapsed
 
 \begin_layout Standard
-
 LyX pa ne more preveriti, ali je tisto, kar pi¹ete tudi 
 \emph on
 pravilno
@@ -4227,24 +3970,20 @@ pravilno
 \end_layout
 
 \begin_layout Section
-
 Matematièni naèin
 \end_layout
 
 \begin_layout Standard
-
 Nekam v svoj spis za LyX napi¹ite:
 \end_layout
 
 \begin_layout LyX-Code
-
 V¹eè mi je Einsteinov izrek E=mc^2,
 \newline
 ker je tako preprost.
 \end_layout
 
 \begin_layout Standard
-
 No, enaèba ni videti prav lepo, niti v datoteki 
 \family typewriter
 dvi
@@ -4263,7 +4002,6 @@ dvi
 \end_layout
 
 \begin_layout Standard
-
 Za matematiène zapise lahko uporabljate naèin Mathed, sicer znan kot matematièni
  naèin.
  Vanj vstopite s klikom gumba v orodni vrstici, na katerem v modrem pi¹e
@@ -4305,7 +4043,6 @@ ne boste
 \end_layout
 
 \begin_layout Standard
-
 Po¾enite LaTeX in poglejte datoteko 
 \family typewriter
 dvi
@@ -4327,7 +4064,6 @@ dvi
 \end_layout
 
 \begin_layout Standard
-
 Mathed je ¹e en zgled filozofije WYSIWYM.
  V LaTeXu lahko napi¹ete matematièni izraz kot besedilo in ukaze kot je
  
@@ -4360,12 +4096,10 @@ vsebino
 \end_layout
 
 \begin_layout Section
-
 Plovba po enaèbi
 \end_layout
 
 \begin_layout Standard
-
 Zdaj spremenimo 
 \begin_inset Formula $E=mc^{2}$
 \end_inset
@@ -4405,7 +4139,6 @@ Esc
 \end_layout
 
 \begin_layout Standard
-
 Razen pri posebnih tipkah, opisanih zgoraj, je tipkanje v matematiènem naèinu
  podobno urejanju navadnega besedila.
  Za brisanje uporabljajte 
@@ -4445,7 +4178,6 @@ Razveljavi
 \end_layout
 
 \begin_layout Standard
-
 Kaj pa, èe ¾elite spremeniti 
 \begin_inset Formula $E=mc^{2}$
 \end_inset
@@ -4519,7 +4251,6 @@ za
 \end_layout
 
 \begin_layout Standard
-
 Med plovbo po izrazu lahko uporabljate tudi 
 \family sans
 Space
@@ -4577,7 +4308,6 @@ status collapsed
 
 \begin_layout Standard
 
-
 \family sans
 Space
 \family default
@@ -4611,7 +4341,6 @@ Uporabni¹kem vodniku
 \end_layout
 
 \begin_layout Standard
-
 Vedite, da za matematiènim izrazom ne bo presledka, èe ga zapustite s pritiskom
  
 \family sans
@@ -4662,12 +4391,10 @@ je moja najljub¹a enaèba
 \end_layout
 
 \begin_layout Section
-
 Eksponenti in indeksi
 \end_layout
 
 \begin_layout Standard
-
 Eksponent lahko vnesete na menuju 
 \family sans
 \bar under
@@ -4699,7 +4426,6 @@ Esc
 \end_layout
 
 \begin_layout Standard
-
 Tudi pisanje indeksov je enako preprosto -- pisanje pod ravnijo zaènete
  s pritiskom na podèrtaj, 
 \begin_inset Quotes gld
@@ -4721,7 +4447,6 @@ _
 
 \begin_layout Standard
 
-
 \series bold
 Vaja
 \series default
@@ -4734,13 +4459,11 @@ sl_primer_surov.lyx
 
 \begin_layout Section
 
-
 \family sans
 Matematièna plo¹èa
 \end_layout
 
 \begin_layout Standard
-
 
 \family sans
 Matematièna\InsetSpace ~
@@ -4773,12 +4496,10 @@ plo¹èo
 \end_layout
 
 \begin_layout Subsection
-
 Gr¹ke èrke in simboli
 \end_layout
 
 \begin_layout Standard
-
 Èe kliknete gumb z oznako 
 \begin_inset Quotes gld
 \end_inset
@@ -4803,7 +4524,6 @@ plo¹èe
 \end_layout
 
 \begin_layout Standard
-
 ©tirje drugi gumbi na dnu 
 \family sans
 Matematiène\InsetSpace ~
@@ -4831,12 +4551,10 @@ Nothing you can do that can't be done\SpecialChar \ldots{}
 \end_layout
 
 \begin_layout Subsection
-
 Kvadratni koreni, poudarki in oklepaji
 \end_layout
 
 \begin_layout Standard
-
 Kvadratni koren napi¹ete s klikom gumba z znakom kvadratnega korena.
  Prika¾e se kvadratni koren in kazalec je na novem mestu vstavljanja pod
  kvadratnim korenom.
@@ -4846,7 +4564,6 @@ Kvadratni koren napi¹ete s klikom gumba z znakom kvadratnega korena.
 \end_layout
 
 \begin_layout Standard
-
 Podobno izvedete poudarjanje znaka (
 \begin_inset Formula $\overrightarrow{v}$
 \end_inset
@@ -4885,7 +4602,6 @@ zapustite
 \end_layout
 
 \begin_layout Standard
-
 Oklepaji, kot so okrogli, oglati in zaviti, delujejo podobno, a so malce
  bolj zapleteni.
  Pritisnite gumb 
@@ -4947,7 +4663,6 @@ levim gumbom mi¹ke
 \end_layout
 
 \begin_layout Standard
-
 Ko izberete svoje oklepaje, kliknite 
 \family sans
 V\InsetSpace ~
@@ -4974,7 +4689,6 @@ Oklepaji
 \end_layout
 
 \begin_layout Standard
-
 Oklepaje ali znake za kvadratni koren lahko postavljate tudi na ¾e obstojeèe
  besedilo.
  Izberite del obrazca, ki ga ¾elite prilagoditi, in potem kliknite na ¾eleni
@@ -4999,12 +4713,10 @@ plo¹èi
 \end_layout
 
 \begin_layout Subsection
-
 Ulomki
 \end_layout
 
 \begin_layout Standard
-
 V Mathedu je preprosto pisati ulomke.
  Samo gumb z ulomkom na 
 \family sans
@@ -5045,7 +4757,6 @@ Dol
 
 \begin_layout Standard
 
-
 \series bold
 Vaja
 \series default
@@ -5057,12 +4768,10 @@ sl_primer_surov.lyx
 \end_layout
 
 \begin_layout Subsection
-
 Naèin TeX: Limite, log, sin in drugi
 \end_layout
 
 \begin_layout Standard
-
 Èrke v matematiènem naèinu veljajo za spremenljivke, zato LyX misli, da
  hoèete z vnosom 
 \begin_inset Quotes gld
@@ -5144,7 +4853,6 @@ Space
 \end_layout
 
 \begin_layout Standard
-
 Kliknite 
 \begin_inset Quotes gld
 \end_inset
@@ -5199,7 +4907,6 @@ dvi
 \end_layout
 
 \begin_layout Standard
-
 Drugi ukazi, ki jih morate vnesti v naèinu TeX z uporabo opisne ¹katle 
 \family sans
 Funkcije
@@ -5236,7 +4943,6 @@ Funkcije
 
 \begin_layout Standard
 
-
 \series bold
 Vaja
 \series default
@@ -5248,13 +4954,10 @@ sl_primer_surov.lyx
 \end_layout
 
 \begin_layout Subsection
-
 Matrike
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:matrices}
 
 \end_inset
@@ -5296,7 +4999,6 @@ redu
 \end_layout
 
 \begin_layout Standard
-
 Za vodoravno premikanje iz enega stolpca matrike v drugega lahko uporabljate
  tipko 
 \family sans
@@ -5314,7 +5016,6 @@ Dol
 \end_layout
 
 \begin_layout Standard
-
 Veè o tem, kako spremeniti vodoravno poravnavo vsakega stolpca in kako spremenit
 i navpièni polo¾aj celotne matrike, najdete v 
 \emph on
@@ -5327,12 +5028,10 @@ Uporabni¹kem vodniku
 \end_layout
 
 \begin_layout Subsection
-
 Prikazni naèin
 \end_layout
 
 \begin_layout Standard
-
 Vsi izrazi, ki smo jih napisali doslej, so bili v isti vrstici kot besedilo
  pred njimi in za njimi -- tak¹ni izrazi so znani kot 
 \begin_inset Quotes gld
@@ -5359,7 +5058,6 @@ Uporabni¹ki vodnik
 \end_layout
 
 \begin_layout Standard
-
 Na 
 \family sans
 Matematièni\InsetSpace ~
@@ -5383,12 +5081,10 @@ Prikaz
 \end_layout
 
 \begin_layout Standard
-
 Prikazni naèin se malce razlikuje od navadnega Matheda:
 \end_layout
 
 \begin_layout Itemize
-
 privzeta pisava je za nekatere simbole, kot sta 
 \begin_inset Formula $\sum$
 \end_inset
@@ -5401,23 +5097,19 @@ privzeta pisava je za nekatere simbole, kot sta
 \end_layout
 
 \begin_layout Itemize
-
 indeksi in eksponenti za limite in vsote (vendar ne tudi za integrale) so
  izpisani pod simbolom namesto poleg njega;
 \end_layout
 
 \begin_layout Itemize
-
 besedilo je usredinjeno.
 \end_layout
 
 \begin_layout Standard
-
 Razen teh razlik pa so si prikazani in zajeti izrazi zelo podobni.
 \end_layout
 
 \begin_layout Standard
-
 ©e zadnji napotek o stavljenju prikazanih enaèb: bodite previdni pri tem,
  ali vstavljate svojo enaèbo v nov odstavek ali ne.
  Èe va¹a enaèba nastopa sredi stavka ali odstavka, ne pritisnite 
@@ -5434,7 +5126,6 @@ za
 
 \begin_layout Standard
 
-
 \series bold
 Vaja
 \series default
@@ -5446,7 +5137,6 @@ sl_primer_surov.lyx
 \end_layout
 
 \begin_layout Standard
-
 
 \series bold
 Vaja
@@ -5465,13 +5155,10 @@ f(x)=\left\{ \begin{array}{cc}
 \end_layout
 
 \begin_layout Section
-
 Veèvrstiène enaèbe
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:multiline}
 
 \end_inset
@@ -5485,8 +5172,6 @@ dvi
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset Formula \[
 x=y+y+y+y+y\]
 
@@ -5496,8 +5181,6 @@ x=y+y+y+y+y\]
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset Formula \[
 =5y\]
 
@@ -5507,7 +5190,6 @@ x=y+y+y+y+y\]
 \end_layout
 
 \begin_layout Standard
-
 To sploh ni videti dobro! Èe napi¹ete dve ali veè enaèb zapored, so videti
  veliko bolje, èe so njihovi enaèaji poravnani; to ¹e posebej dr¾i, èe druga
  enaèba nima leve strani.
@@ -5516,8 +5198,6 @@ To sploh ni videti dobro! Èe napi¹ete dve ali veè enaèb zapored, so videti
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset Formula \begin{eqnarray*}
 x & = & y+y+y+y+y\\
  & = & 5y\end{eqnarray*}
@@ -5528,7 +5208,6 @@ x & = & y+y+y+y+y\\
 \end_layout
 
 \begin_layout Standard
-
 To je videti 
 \emph on
 precej
@@ -5537,7 +5216,6 @@ precej
 \end_layout
 
 \begin_layout Standard
-
 Za zaèetek pisanja veèvrstiène enaèbe odprite prikazni naèin Matheda in
  pritisnite 
 \family sans
@@ -5558,8 +5236,6 @@ Tab
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset Formula \begin{eqnarray*}
 x & = & a+b+c+d\\
  &  & +e+f+g\end{eqnarray*}
@@ -5570,7 +5246,6 @@ x & = & a+b+c+d\\
 \end_layout
 
 \begin_layout Standard
-
 LyX bo poravnal drugo (sredi¹èno) polje vsake vrstice, zato boste navadno
  v to polje postavili enaèaje ali druge relacijske simbole, èeprav lahko
  tja postavite, karkoli ¾elite.
@@ -5584,7 +5259,6 @@ LyX bo poravnal drugo (sredi¹èno) polje vsake vrstice, zato boste navadno
 \end_layout
 
 \begin_layout Standard
-
 Èe ¾elite ¹e veè enaèb, uporabite 
 \family sans
 C-Return
@@ -5622,7 +5296,6 @@ E & = & mc^{2}\\
 \end_layout
 
 \begin_layout Standard
-
 Èe napi¹ete preveè vrstic, postavite kazalec na konec vrstice in uporabite
  
 \family sans
@@ -5642,12 +5315,10 @@ k
 \end_layout
 
 \begin_layout Section
-
 ©e veè matematike
 \end_layout
 
 \begin_layout Standard
-
 Mathed zmore ¹e veliko veè.
  Do zdaj ste se ¾e udomaèili v osnovah, zato le poglejte v 
 \emph on
@@ -5657,12 +5328,10 @@ Uporabni¹ki vodnik
 \end_layout
 
 \begin_layout Itemize
-
 oznaèevati in ¹tevilèiti izraze;
 \end_layout
 
 \begin_layout Itemize
-
 spreminjati vrsto in obliko pisav, npr., v izrazu uporabiti polkrepko besedilo.
  Tu bomo zapisali, da klik gumba 
 \family sans
@@ -5674,13 +5343,11 @@ naèin
 \end_layout
 
 \begin_layout Itemize
-
 na fino urediti velikost pisav in presledkov v izrazu (ne skrbite za to
  pred dokonèno predrazlièico!);
 \end_layout
 
 \begin_layout Itemize
-
 pisati makroukaze.
  Ti so zelo moèno orodje, saj jih lahko definirate enkrat na vrhu spisa
  in uporabljate v vsem spisu.
@@ -5690,7 +5357,6 @@ pisati makroukaze.
 \end_layout
 
 \begin_layout Itemize
-
 poèeti ¹tevilne druge stvari, ki jih v tem 
 \emph on
 Uèbeniku
@@ -5699,17 +5365,14 @@ Uèbeniku
 \end_layout
 
 \begin_layout Chapter
-
 Razno
 \end_layout
 
 \begin_layout Section
-
 Druge poglavitne odlike LyXa
 \end_layout
 
 \begin_layout Standard
-
 Nismo na¹teli vseh ukazov LyXa in tega tudi ne nameravamo.
  Èe vas zanima kaj veè, kot po navadi poglejte v 
 \emph on
@@ -5726,7 +5389,6 @@ Referenènem priroèniku
 \end_layout
 
 \begin_layout Itemize
-
 LyX ima podporo WYSIWYG za tabele.
  Uporabite 
 \family sans
@@ -5754,7 +5416,6 @@ tabele
 \end_layout
 
 \begin_layout Itemize
-
 LyX podpira tudi vstavljanje slik v postscriptu (ali surovem LaTeXu) v spise.
  (Uganili ste: 
 \family sans
@@ -5771,7 +5432,6 @@ Slika
 \end_layout
 
 \begin_layout Itemize
-
 Podprt je nadzor razlièic spisov z uporabo sistema RCS (podrobnosti v 
 \family typewriter
 man rcsintro
@@ -5780,7 +5440,6 @@ man rcsintro
 \end_layout
 
 \begin_layout Itemize
-
 LyX je zelo nastavljiv.
  Na ¹tevilne naèine je mogoèe nastaviti vse, od videza okna z LyXom do videza
  izhoda.
@@ -5796,7 +5455,6 @@ Prilagoditev
 \end_layout
 
 \begin_layout Itemize
-
 LyX razvija skupina programerjev s petih celin.
  Zato ima LyX bolj¹o podporo neangle¹kim jezikom (sloven¹èini, nizozem¹èini,
  nem¹èini, gr¹èini, èe¹èini, tur¹èini\SpecialChar \ldots{}
@@ -5807,7 +5465,6 @@ LyX razvija skupina programerjev s petih celin.
 \end_layout
 
 \begin_layout Itemize
-
 LyX lahko bere spise, pisane v LaTeXu.
  Glej razdelek 
 \begin_inset LatexCommand \ref{sec:relyx}
@@ -5818,7 +5475,6 @@ LyX lahko bere spise, pisane v LaTeXu.
 \end_layout
 
 \begin_layout Itemize
-
 Pravopisne napake v spisu preverite z 
 \family sans
 \bar under
@@ -5833,7 +5489,6 @@ redi\SpecialChar \menuseparator
 status collapsed
 
 \begin_layout Standard
-
 Vedite, da èrkovalnik preveri spis le od kazalca do konca spisa.
 \end_layout
 
@@ -5843,13 +5498,10 @@ Vedite, da èrkovalnik preveri spis le od kazalca do konca spisa.
 \end_layout
 
 \begin_layout Section
-
 LyX za uporabnike LaTeXa
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:latexusers}
 
 \end_inset
@@ -5870,7 +5522,6 @@ nauèiti
 \end_layout
 
 \begin_layout Standard
-
 Ker je to le uèbenik, bomo omenili le tisto, kar bo zanimalo najveè novih
  uporabnikov LyXa.
  Da bi ohranili kratkost 
@@ -5887,12 +5538,10 @@ Uporabni¹kem vodniku
 \end_layout
 
 \begin_layout Subsection
-
 Naèin TeX
 \end_layout
 
 \begin_layout Standard
-
 Vse, kar vnesete v naèinu TeX, se dobesedno prenese LaTeXu in je na zaslonu
  vidno v rdeèi barvi.
  V naèin TeX vstopite z izbiro 
@@ -5905,7 +5554,6 @@ TeXa
 \end_layout
 
 \begin_layout Standard
-
 V Mathedu se naèin TeX obravnava malce drugaèe.
  Vanj vstopite tako, da pritisnete nagibnico.
  Nagibnica se ne izpi¹e, a vse, kar boste vpisali po tem, se prika¾e v rdeèi
@@ -5965,7 +5613,6 @@ plo¹èe
 \end_layout
 
 \begin_layout Standard
-
 Kot poseben primer, èe v matematiènem naèinu TeX vpi¹ete zaviti oklepaj,
  bo Mathed izpisal rdeèi zaviti oklepaj 
 \emph on
@@ -5981,7 +5628,6 @@ iz
 \end_layout
 
 \begin_layout Standard
-
 LyX (¹e?) ne zmore èisto vsega, kar zmore LaTeX.
  Nekatere eksotiène funkcije sploh niso podprte, medtem ko druge delujejo,
  a rezultati niso vidni v obliki WYSIWYG.
@@ -6005,15 +5651,12 @@ usepackage{foo}
 \end_layout
 
 \begin_layout Subsection
-
 Uvoz spisov v LaTeXu -- 
 \family typewriter
 reLyX
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:relyx}
 
 \end_inset
@@ -6054,7 +5697,6 @@ reLyX
 status collapsed
 
 \begin_layout Standard
-
 Ob namestitvi LyXa se v isti imenik kot program 
 \family typewriter
 lyx
@@ -6083,7 +5725,6 @@ reLyX
 
 \begin_layout Standard
 
-
 \family typewriter
 ReLyX
 \family default
@@ -6098,7 +5739,6 @@ om na¹li rdeèe besedilo in ga roèno popravili, da bo videti prav.
 
 \begin_layout Standard
 
-
 \family typewriter
 ReLyX
 \family default
@@ -6109,12 +5749,10 @@ u je posveèena posebna stran referenènega priroènika.
 \end_layout
 
 \begin_layout Subsection
-
 Prevajanje spisov v LyXa v LaTeX
 \end_layout
 
 \begin_layout Standard
-
 Morda boste ¾eleli preoblikovati spis v LyXu v datoteko za LaTeX.
  Denimo, da bi jo sodelavec ali soavtor, ki nima LyXa, ¾elel prebrati.
  Z LyXom je to zelo preprosto.
@@ -6147,17 +5785,14 @@ karkoli.lyx
 \end_layout
 
 \begin_layout Subsection
-
 Vzglavje LaTeXa
 \end_layout
 
 \begin_layout Subsubsection
-
 Razred spisa
 \end_layout
 
 \begin_layout Standard
-
 Menu 
 \family sans
 Videz\SpecialChar \menuseparator
@@ -6186,13 +5821,10 @@ izbire
 \end_layout
 
 \begin_layout Subsubsection
-
 Drugo v vzglavju
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:preamble}
 
 \end_inset
@@ -6211,12 +5843,10 @@ LaTeX
 \end_layout
 
 \begin_layout Subsection
-
 BibTeX
 \end_layout
 
 \begin_layout Standard
-
 LyX ima dobro, a ne polno podporo BibTeXu.
  Ta vam omogoèa gradnjo baz podatkov literarnih sklicev, ki jih lahko uporabljat
 e v razliènih spisih.
@@ -6262,7 +5892,6 @@ bibliography{}
 status collapsed
 
 \begin_layout Standard
-
 Kot v navadnem LaTeXu morajo biti razlièni viri loèeni z vejicami brez nevidnih
  znakov (presledkov in predelènikov).
 \end_layout
@@ -6284,7 +5913,6 @@ bibliographystyle{}
 \end_layout
 
 \begin_layout Standard
-
 Ko ste to storili, lahko uporabljate sklice na katerikoli zajeti vir z ukazom
  
 \family sans
@@ -6325,12 +5953,10 @@ Citiranje
 \end_layout
 
 \begin_layout Subsection
-
 Razno
 \end_layout
 
 \begin_layout Standard
-
 Za¹èiteni presledek vstavite s kombinacijo 
 \family sans
 C-space
@@ -6364,12 +5990,10 @@ znak
 \end_layout
 
 \begin_layout Section
-
 Napake!
 \end_layout
 
 \begin_layout Standard
-
 Vèasih, ko boste LaTeXali spis, bodo nastale napake, ki jih ne razumeta
  niti LyX niti LaTeX.
  Ko se to zgodi, bo LyX ustvaril ¹katlo z obvestilom o napaki (okno, v katerem

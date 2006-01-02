@@ -1,5 +1,5 @@
 #LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
-\lyxformat 243
+\lyxformat 245
 \begin_document
 \begin_header
 \textclass book
@@ -20,7 +20,6 @@
 \paragraph_separation indent
 \defskip medskip
 \quotes_language english
-\quotes_times 2
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
@@ -31,18 +30,14 @@
 \begin_body
 
 \begin_layout Title
-
 De LyX Tutorial
 \end_layout
 
 \begin_layout Author
-
 door Amir Karger en het LyX Team
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \tableofcontents{}
 
 \end_inset
@@ -51,17 +46,14 @@ door Amir Karger en het LyX Team
 \end_layout
 
 \begin_layout Chapter
-
 Inleiding
 \end_layout
 
 \begin_layout Section
-
 Welkom bij LyX!
 \end_layout
 
 \begin_layout Standard
-
 Dit document is bedoeld voor een ieder die nog nooit van LaTeX heeft gehoord
  of er weinig van weet.
  Wees niet bezorgd! Je hoeft geen LaTeX te kennen om LyX te kunnen gebruiken.
@@ -72,7 +64,6 @@ Dit document is bedoeld voor een ieder die nog nooit van LaTeX heeft gehoord
 \end_layout
 
 \begin_layout Standard
-
 Waarschijnlijk heb je deze tutorial opgezocht omdat je probeerde twee spaties
  achter een 
 \begin_inset Quotes eld
@@ -97,13 +88,11 @@ Waarschijnlijk heb je deze tutorial opgezocht omdat je probeerde twee spaties
 \end_layout
 
 \begin_layout Standard
-
 Wees dus geduldig en lees verder.
  Het lezen van deze tutorial is echt de moeite waard.
 \end_layout
 
 \begin_layout Section
-
 Wat deze Tutorial 
 \emph on
 wel
@@ -116,7 +105,6 @@ niet
 \end_layout
 
 \begin_layout Standard
-
 Voordat we met dit onderdeel beginnen hebben we nog een kleine aanwijzing.
  De  
 \emph on
@@ -136,7 +124,6 @@ Introductie
 \end_layout
 
 \begin_layout Standard
-
 En nu je weet wat de verschillende fonts betekenen, kunnen we iets uitleggen
  over wat de bedoeling is bij deze
 \emph on
@@ -146,12 +133,10 @@ En nu je weet wat de verschillende fonts betekenen, kunnen we iets uitleggen
 \end_layout
 
 \begin_layout Subsection
-
 Hoe je het maximale uit deze Tutorial kunt halen.
 \end_layout
 
 \begin_layout Standard
-
 Deze tutorial bestaat uit voorbeelden en oefeningen.
  Om het maximale uit dit document te halen zul je, al lezend, alle stomme
  kleine dingen moeten typen die we je opdragen, en alle oefeningen moeten
@@ -160,7 +145,6 @@ Deze tutorial bestaat uit voorbeelden en oefeningen.
 \end_layout
 
 \begin_layout Standard
-
 Als je al vertrouwd bent met LaTeX, zul je deze 
 \emph on
 Tutorial
@@ -172,7 +156,6 @@ Tutorial
 status collapsed
 
 \begin_layout Standard
-
 anders gezegd , 
 \begin_inset Quotes eld
 \end_inset
@@ -200,7 +183,6 @@ Tutorial
 \end_layout
 
 \begin_layout Standard
-
 Sectie 
 \begin_inset LatexCommand \ref{sec:wat-is-lyx}
 
@@ -216,7 +198,6 @@ en is een beetje pittige kost.
 \end_layout
 
 \begin_layout Subsection
-
 Wat je 
 \emph on
 niet
@@ -225,19 +206,16 @@ niet
 \end_layout
 
 \begin_layout Itemize
-
 Oplepelen van informatie of denken dat de lezers achterlijk zijn.
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-
 De trend in doe-het-zelf literatuur voor computers vandaag de dag
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-
 Notitie van 
 \noun on
 John 
@@ -262,21 +240,19 @@ Neem aan dat de gebruiker het IQ van een garnaal heeft.
 \end_layout
 
 \begin_layout Standard
-
 Aan de andere kant begrijpen we dat de meeste gebruikers een handleiding
  opzoeken, en speciaal een tutorial, als ze de weg kwijt zijn.
  Hoewel we dus zullen aannemen dat u, de gebruiker, niet stom bent, begrijpen
  we dat u een beetje verward bent.
 \end_layout
+
 \end_deeper
 \begin_layout Itemize
-
 Instructies hoe je je muis of je toetsenbord moet gebruiken.
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-
 Als je er nu nog niet achter bent hoe je je computer moet gebruiken, kunnen
  wij je niet helpen.
  Zulke dingen vallen buiten het bereik van de LyX handleidingen
@@ -284,7 +260,6 @@ Als je er nu nog niet achter bent hoe je je computer moet gebruiken, kunnen
 status collapsed
 
 \begin_layout Standard
-
 Afgezien daarvan, als je LyX al gebruikt zal je waarschijnlijk wel slimmer
  zijn de gemiddelde mens.
  
@@ -294,20 +269,18 @@ Afgezien daarvan, als je LyX al gebruikt zal je waarschijnlijk wel slimmer
 
 .
 \end_layout
+
 \end_deeper
 \begin_layout Itemize
-
 Gedetailleerde beschrijvingen van alle eigenschappen van LyX.
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-
 Wat! je wilt twee versies van de gebruikshandleiding?
 \end_layout
 
 \begin_layout Standard
-
 Zonder gekheid, de bedoeling is om je een goede start te geven zodat je
  alleen nog maar de gebruikshandleiding nodig hebt.
  Als we zouden proberen alle informatie over alle eigenschappen van LyX
@@ -324,15 +297,14 @@ zie de gebruikshandleiding
 
  staat.
 \end_layout
+
 \end_deeper
 \begin_layout Itemize
-
 Gedetailleerde beschrijvingen van LaTeX.
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-
 Onnodig.
  Als je echt nieuwsgierig bent naar gave trucjes die je met LaTeX kunt uithalen,
  kan je altijd een LaTeX boek halen.
@@ -340,9 +312,9 @@ Onnodig.
  Geen noodzaak om het wiel opnieuw uit te vinden\SpecialChar \ldots{}
 
 \end_layout
+
 \end_deeper
 \begin_layout Standard
-
 Zo, dappere lezer, het is tijd om verder te gaan.
  Je kunt een korte excursie door de volgende sectie nemen, of je kunt doorgaan
  naar sectie 
@@ -354,7 +326,6 @@ Zo, dappere lezer, het is tijd om verder te gaan.
 \end_layout
 
 \begin_layout Section
-
 Wat is LyX?
 \begin_inset LatexCommand \label{sec:wat-is-lyx}
 
@@ -364,12 +335,10 @@ Wat is LyX?
 \end_layout
 
 \begin_layout Subsection
-
 Overzicht
 \end_layout
 
 \begin_layout Standard
-
 De aanvankelijke uitdaging van het gebruik van LyX ligt deels in het omschakelen
  in denken dat jij, de gebruiker, moet maken.
  Vroeger waren typemachines het enige hulpmiddel om documenten te maken
@@ -391,13 +360,11 @@ _
 \end_layout
 
 \begin_layout Standard
-
 Met andere woorden, we waren allemaal getraind om na te denken over kleine
  details als: welk teken moet waar staan.
 \end_layout
 
 \begin_layout Standard
-
 Als gevolg van hiervan hebben bijna alle tekstverwerkers deze gedachtegang.
  Ze gebruiken nog steeds tabs om witruimte toe te voegen.
  Je moet nog steeds nadenken over waar precies iets op het papier moet komen.
@@ -407,7 +374,6 @@ Als gevolg van hiervan hebben bijna alle tekstverwerkers deze gedachtegang.
 \end_layout
 
 \begin_layout Standard
-
 Hier verschilt LyX van een gewone tekstverwerker.
  Je houdt je niet bezig met welk teken waar moet komen.
  Je vertelt LyX wat je aan het doen bent en LyX doet de rest, volgens een
@@ -416,7 +382,6 @@ Hier verschilt LyX van een gewone tekstverwerker.
 \end_layout
 
 \begin_layout Standard
-
 Stel, je schrijft een rapport.
  Aan het begin van je rapport wil je een sectie genaamd 
 \begin_inset Quotes eld
@@ -453,7 +418,6 @@ Introductie
 \end_layout
 
 \begin_layout Standard
-
 In LyX ga je naar het menu helemaal links op de knoppenbalk, je selecteert
  Sectie en typt 
 \begin_inset Quotes eld
@@ -467,7 +431,6 @@ Introductie
 \end_layout
 
 \begin_layout Standard
-
 Dat is alles.
  Als je de sectie verplaatst zal het automatisch hernummerd worden--- overal.
  Er is zelfs een manier om automatisch elke referentie in het document naar
@@ -475,7 +438,6 @@ Dat is alles.
 \end_layout
 
 \begin_layout Standard
-
 Laten we vervolgens eens naar het probleem van consistentie kijken.
  Vijf dagen later heropen je je rapport en je begint te typen bij sectie
  4.
@@ -489,7 +451,6 @@ Laten we vervolgens eens naar het probleem van consistentie kijken.
 \end_layout
 
 \begin_layout Standard
-
 Nog een voorbeeld.
  Stel, je bent een lijst aan het maken.
  In andere tekstverwerkers is een lijst niet anders dan een stel tabs en
@@ -502,7 +463,6 @@ Nog een voorbeeld.
 \end_layout
 
 \begin_layout Standard
-
 Het basisidee achter LyX is dus: zeg 
 \emph on
 wat
@@ -548,13 +508,11 @@ WYSIWYM
 \end_layout
 
 \begin_layout Subsection
-
 Verschillen tussen LyX en Tekstverwerkers
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-
 Nee, we proberen hier niet een heilige oorlog over tekstverwerkers te starten
  (of te winnen).
  Maar we zijn wel van mening dat het belangrijk is om de eigenschappen van
@@ -569,22 +527,18 @@ Nee, we proberen hier niet een heilige oorlog over tekstverwerkers te starten
 \end_layout
 
 \begin_layout Standard
-
 Hier is een lijst van zaken die je niet in LyX zult vinden:
 \end_layout
 
 \begin_layout Itemize
-
 De liniaal
 \end_layout
 
 \begin_layout Itemize
-
 Tabs
 \end_layout
 
 \begin_layout Itemize
-
 Extra witruimte (d.w.z.
  twee of meer keren achter elkaar op 
 \family sans
@@ -598,7 +552,6 @@ drukken)
 \end_layout
 
 \begin_layout Standard
-
 Tabs, en een liniaal die de positie van objecten op een pagina aangeeft,
  zijn zinloos in LyX.
  Het programma zoekt uit waar dingen op het papier komen, niet jij.
@@ -610,44 +563,36 @@ Tabs, en een liniaal die de positie van objecten op een pagina aangeeft,
 \end_layout
 
 \begin_layout Standard
-
 Hier zijn aan aantal dingen die wel in LyX bestaan, maar die op een andere
  manier worden gebruikt als je zou denken:
 \end_layout
 
 \begin_layout Itemize
-
 Regels voor het inspringen
 \end_layout
 
 \begin_layout Itemize
-
 Het afbreken van paginas
 \end_layout
 
 \begin_layout Itemize
-
 Ruimte tussen regels (d.w.z.
  enkele regelafstand, dubbele regelafstand, enz.)
 \end_layout
 
 \begin_layout Itemize
-
 Witruimte, zowel horizontaal als verticaal
 \end_layout
 
 \begin_layout Itemize
-
 Lettertypen en groottes
 \end_layout
 
 \begin_layout Itemize
-
 Typefaces (vet, cursief, onderstreept, etc.)
 \end_layout
 
 \begin_layout Standard
-
 Hoewel ze in LyX bestaan, heb je ze in het algemeen niet nodig.
  LyX zal deze dingen voor je verzorgen, afhankelijk van wat je aan het doen
  bent.
@@ -662,7 +607,6 @@ n variabel, en worden deze gezet door LyX.
 status collapsed
 
 \begin_layout Standard
-
 Er zijn manieren of al deze dingen zelf aan te passen [slechts enkele behoeven
  kennis van LaTeX], ofwel voor een heel document, ofwel voor een specifieke
  plaats in een document.
@@ -679,38 +623,31 @@ Gebruikshandleiding
 \end_layout
 
 \begin_layout Standard
-
 Tenslotte zijn er een aantal dingen waar LyX (en LaTeX) veel tekstverwerkers
  voorbijstreeft: 
 \end_layout
 
 \begin_layout Itemize
-
 Woordafbreking
 \end_layout
 
 \begin_layout Itemize
-
 Lijsten in elk type
 \end_layout
 
 \begin_layout Itemize
-
 Wiskunde
 \end_layout
 
 \begin_layout Itemize
-
 Tabellen
 \end_layout
 
 \begin_layout Itemize
-
 Verwijzingen
 \end_layout
 
 \begin_layout Standard
-
 Toegegeven, veel moderne tekstverwerkers kunnen overweg met wiskundige symbolen,
  tabellen, en woordafbreking en sommigen hebben zelfs stijldefinities en
  gaan meer richting het WYSIWYM concept.
@@ -726,7 +663,6 @@ werkt
 status collapsed
 
 \begin_layout Standard
-
 OK, niets is perfect, maar LaTeX is zo foutvrij als een computerprogramma
  maar kan zijn.
 \end_layout
@@ -737,7 +673,6 @@ OK, niets is perfect, maar LaTeX is zo foutvrij als een computerprogramma
 \end_layout
 
 \begin_layout Standard
-
 Een laatste, en meest belangrijk, verschil tussen LyX en andere tekstverwerkers
  is stabiliteit.
  Anders dan bepaalde commerciële tekstverwerkers claimt LyX niet stabiel
@@ -761,12 +696,10 @@ programma-eigenschappen
 \end_layout
 
 \begin_layout Standard
-
 Neeheej.
 \end_layout
 
 \begin_layout Standard
-
 Mocht LyX crashen, dan bewaart het, voordat het afgesloten wordt, eerst
  elk document dat in het geheugen zit in een noodbestand.
  Bij een herstart, zal LyX deze noodbestanden opmerken, in het bijzonder
@@ -779,7 +712,6 @@ Mocht LyX crashen, dan bewaart het, voordat het afgesloten wordt, eerst
 \end_layout
 
 \begin_layout Subsection
-
 Wat 
 \emph on
 is
@@ -788,13 +720,11 @@ is
 \end_layout
 
 \begin_layout Standard
-
 LaTeX is een document-opmaak-systeem ontworpen door Leslie Lamport in 1985
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-
 De bron voor de info in deze paragraaf is 
 \begin_inset Quotes eld
 \end_inset
@@ -873,7 +803,6 @@ dvi
 \end_layout
 
 \begin_layout Standard
-
 Zou het niet voor één andere programma-eigenschap zijn, dan was TeX niets
  anders geweest dan een opmaakmotor.
  TeX laat je echter ook macros definieren.
@@ -881,7 +810,6 @@ Zou het niet voor één andere programma-eigenschap zijn, dan was TeX niets
 \end_layout
 
 \begin_layout Standard
-
 De meeste mensen die TeX gebruiken, gebruiken in feite een door Knuth gemaakt
  macropakket om een hoop van het opmaakwerk te verbergen.
  Het is dit waar mensen aan denken bij TeX.
@@ -896,7 +824,6 @@ De meeste mensen die TeX gebruiken, gebruiken in feite een door Knuth gemaakt
 \end_layout
 
 \begin_layout Standard
-
 Tegelijkertijd met de ontwikkeling en groei van LaTeX waren anderen bezig
  hun eigen macropaketten voor TeX te maken; voor transparanten of artikelen
  voor wiskunde tijdschriften enzovoort.
@@ -913,7 +840,6 @@ de codes van TeX (ken je TeX nog?) vergemakkelijkt, behulpzaam is in het
 \end_layout
 
 \begin_layout Standard
-
 Er zijn twee manieren om LaTeX uit te breiden: middels klassen en stijlen.
  Een 
 \emph on
@@ -939,45 +865,38 @@ klasse
 \end_layout
 
 \begin_layout Standard
-
 Hier is een overzicht:
 \end_layout
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 TeX: Opmaaktaal met gebruik van macro's.
 \end_layout
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 LaTeX: Macropakket gebaseerd op TeX\SpecialChar \@.
 
 \end_layout
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 klassen: Beschrijving van een type document, gebruik makend van LaTeX\SpecialChar \@.
 
 \end_layout
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 stijlen: Verandert op een bepaalde manier het standaard gedrag van LaTeX.
 \end_layout
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 LyX: Visuele, WYSIWYM tekstverwerker dat LaTeX in al zijn glorie gebruikt
  om het printwerk te doen.
 \end_layout
 
 \begin_layout Standard
-
 Het idee van deze sectie was proberen te verklaren 
 \emph on
 waarom
@@ -993,7 +912,6 @@ wat
 \end_layout
 
 \begin_layout Standard
-
 Oja --- nog een laatste opmerking.
  LaTeX wordt net zo uitgesproken als TeX.
  Het rijmt op 
@@ -1045,18 +963,14 @@ loeks
 \end_layout
 
 \begin_layout Chapter
-
 Beginnen met LyX
 \end_layout
 
 \begin_layout Section
-
 Je Eerste LyX Document.
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:eerste-doc}
 
 \end_inset
@@ -1068,7 +982,6 @@ Je Eerste LyX Document.
 \end_layout
 
 \begin_layout Standard
-
 Omdat er veel informatie is die we je niet hier zullen geven, is het van
  belang dat je weet hoe je de andere hulpbestanden moet vinden.
  Dit is gelukkig erg eenvoudig.
@@ -1096,7 +1009,6 @@ Tutorial
 status collapsed
 
 \begin_layout Standard
-
 Ze dienen tevens als goede voorbeelden van de vele mogelijkheden van LyX
  .
 \end_layout
@@ -1128,7 +1040,6 @@ Tutorial
 \end_layout
 
 \begin_layout Standard
-
 In de 
 \emph on
 Tutorial
@@ -1158,7 +1069,6 @@ dvi
 \end_layout
 
 \begin_layout Standard
-
 Tenslotte hebben we een bestand gemaakt waarmee je je LyX-vaardigheden kunt
  oefenen.
  Het heet 
@@ -1175,7 +1085,6 @@ eden van LyX af weet.
 status collapsed
 
 \begin_layout Standard
-
 De aanwijzingen bevinden zich in gele 
 \begin_inset Quotes eld
 \end_inset
@@ -1200,7 +1109,6 @@ nl_voorbeeld_verlyxt.lyx
 \end_layout
 
 \begin_layout Standard
-
 De voorbeeldbestanden kunnen worden gevonden in de map 
 \family typewriter
 examples/
@@ -1241,7 +1149,6 @@ s
 \end_layout
 
 \begin_layout Standard
-
 Tussen twee haakjes, de map 
 \family typewriter
 examples/
@@ -1259,12 +1166,10 @@ Tutorial
 \end_layout
 
 \begin_layout Subsection
-
 Schrijven, Bekijken, en Printen
 \end_layout
 
 \begin_layout Itemize
-
 Open een nieuw bestand met 
 \family sans
 \bar under
@@ -1279,7 +1184,6 @@ ew
 \end_layout
 
 \begin_layout Itemize
-
 Typ een zin als: 
 \family typewriter
 Dit is mijn eerste LyX document!
@@ -1287,7 +1191,6 @@ Dit is mijn eerste LyX document!
 status collapsed
 
 \begin_layout Standard
-
 Toegegeven.
  Je zou in feite alles kunnen typen wat je wilt.
  Het maakt in weze niet uit.
@@ -1301,7 +1204,6 @@ Toegegeven.
 \end_layout
 
 \begin_layout Itemize
-
 Bewaar je document met 
 \family sans
 \bar under
@@ -1318,7 +1220,6 @@ s\SpecialChar \@.
 \end_layout
 
 \begin_layout Itemize
-
 Met 
 \family sans
 \bar under
@@ -1354,7 +1255,6 @@ dvi
 status collapsed
 
 \begin_layout Standard
-
 Je kunt tijd besparen door 
 \family typewriter
 xdvi
@@ -1390,7 +1290,6 @@ xdvi
 \end_layout
 
 \begin_layout Itemize
-
 Print met 
 \family sans
 \bar under
@@ -1412,7 +1311,6 @@ OK
 \end_layout
 
 \begin_layout Standard
-
 Gefeliciteerd! Je hebt je eerste LyX document geschreven en geprint.
  De rest is slechts detail, welke in het vervolg van de 
 \emph on
@@ -1430,12 +1328,10 @@ Referentiehandleiding
 \end_layout
 
 \begin_layout Subsection
-
 Eenvoudige Bewerkingen
 \end_layout
 
 \begin_layout Standard
-
 De meeste dingen die je met een tekstverwerker gewend bent te doen, kun
  je natuurlijk ook met LyX doen.
  Het uitlijnen van woorden en het inspringen van paragrafen, gebeurt automatisch.
@@ -1444,7 +1340,6 @@ De meeste dingen die je met een tekstverwerker gewend bent te doen, kun
 status collapsed
 
 \begin_layout Standard
-
 Als je bent zoals je meeste 
 \noun on
 unix
@@ -1496,7 +1391,6 @@ rint
 \end_layout
 
 \begin_layout Description
-
 Herstel LyX heeft de 
 \emph on
 mogelijkheid
@@ -1540,7 +1434,6 @@ edo
 
 \begin_deeper
 \begin_layout Standard
-
 (Momenteel is herstel beperkt tot 100 stappen.
  Ook werkt herstellen niet voor 
 \emph on
@@ -1548,9 +1441,9 @@ alles
 \emph default
 , bijvoorbeeld niet voor veranderingen in de opmaak van het document.)
 \end_layout
+
 \end_deeper
 \begin_layout Description
-
 Knippen/Plakken/Kopiëren Met 
 \family sans
 \bar under
@@ -1596,7 +1489,6 @@ middelste muisknop
 \end_layout
 
 \begin_layout Description
-
 Zoeken/Vervangen Gebruik 
 \family sans
 \bar under
@@ -1626,7 +1518,6 @@ eplace
 status collapsed
 
 \begin_layout Standard
-
 Sluit het zoekscherm als je klaar bent.
  Of laat het staan als je dat makkelijker vindt.
  De meeste popup-schermen in LyX --- inclusief de 
@@ -1672,7 +1563,6 @@ de tekstinvoer in het hoofdscherm van LyX totdat je het popup-scherm hebt
 \end_layout
 
 \begin_layout Description
-
 Tekenopmaak Je kunt tekst 
 \emph on
 nadruk
@@ -1697,7 +1587,6 @@ ayout
 \end_layout
 
 \begin_layout Description
-
 Knoppenbalk Er staan op de knoppenbalk (vlak onder de menus) enkele knoppen
  die veelgebruikte functies zoals 
 \family sans
@@ -1714,7 +1603,6 @@ Printen
 \end_layout
 
 \begin_layout Description
-
 Minibuffer De grijze regel, helemaal onderaan het LyX scherm word de minibuffer
  genoemd.
  Deze laat allerlei handige informatie zien.
@@ -1732,7 +1620,6 @@ typen
 \end_layout
 
 \begin_layout Standard
-
 Uiteraard heb je nu nog niet genoeg in LyX geschreven om het merendeel van
  deze functies nuttig te kunnen gebruiken.
  Probeer echter terwijl je schrijft, te knippen en plakken, herstellen,
@@ -1740,13 +1627,10 @@ Uiteraard heb je nu nog niet genoeg in LyX geschreven om het merendeel van
 \end_layout
 
 \begin_layout Subsection
-
 WYSIWYM: Witruimte in LyX
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:witruimte}
 
 \end_inset
@@ -1773,7 +1657,6 @@ zijn
 \end_layout
 
 \begin_layout Standard
-
 Veel commerciële tekstverwerkers zijn gebaseerd op het WYSIWYG principe:
 \begin_inset Quotes eld
 \end_inset
@@ -1832,7 +1715,6 @@ Tab
 \end_layout
 
 \begin_layout Standard
-
 LyX heeft wel degelijk (vele) manieren om de opmaak van je document te aan
  te passen.
  Per slot van rekening zou LyX de opmaak anders kunnen doen dan je voor
@@ -1854,12 +1736,10 @@ Gebruikersgids
 \end_layout
 
 \begin_layout Section
-
 Omgevingen
 \end_layout
 
 \begin_layout Standard
-
 Verschillende onderdelen van een document hebben verschillende bedoelingen;
  we zullen deze onderdelen 
 \emph on
@@ -1876,7 +1756,6 @@ omgevingen
 \end_layout
 
 \begin_layout Standard
-
 Omgevingen zijn een belangrijk bestanddeel van de 
 \begin_inset Quotes eld
 \end_inset
@@ -1899,7 +1778,6 @@ stand, regelafstand en meer.
 \end_layout
 
 \begin_layout Standard
-
 De 
 \family sans
 Omgeving
@@ -1937,12 +1815,10 @@ Omgeving
 \end_layout
 
 \begin_layout Subsection
-
 Secties en Subsecties
 \end_layout
 
 \begin_layout Standard
-
 Typ het woord 
 \family typewriter
 Inleiding
@@ -1960,7 +1836,6 @@ Section
 status collapsed
 
 \begin_layout Standard
-
 Je hoeft de regel niet vooraf te selecteren.
  Als er niets geselecteerd is zal LyX de paragraaf waarin je op dat moment
  aan het werken bent veranderen in de geselecteerde omgeving.
@@ -2016,7 +1891,6 @@ Return
 status collapsed
 
 \begin_layout Standard
-
 Zie de 
 \emph on
 Gebruikshandleiding
@@ -2047,12 +1921,10 @@ Return
 \end_layout
 
 \begin_layout LyX-Code
-
 Dit is een inleiding voor mijn eerste LyX document.
 \end_layout
 
 \begin_layout Standard
-
 Geef opnieuw een 
 \family sans
 Return
@@ -2083,7 +1955,6 @@ En Dan Nog Iets
 \end_layout
 
 \begin_layout Standard
-
 Het wordt al leuker.
  Ga naar het einde van sectie 1 (na 
 \begin_inset Quotes eld
@@ -2134,7 +2005,6 @@ En Dan Nog Iets
 \end_layout
 
 \begin_layout Standard
-
 Geef een 
 \family sans
 Return
@@ -2147,28 +2017,23 @@ Standard
 \end_layout
 
 \begin_layout LyX-Code
-
 Secties en subsecties worden hieronder beschreven.
  Beschrijving van Sectie
 \end_layout
 
 \begin_layout LyX-Code
-
 Secties zijn groter dan subsecties.
 \end_layout
 
 \begin_layout LyX-Code
-
 Beschrijving van Subsectie
 \end_layout
 
 \begin_layout LyX-Code
-
 Subsecties zijn kleiner dan secties.
 \end_layout
 
 \begin_layout Standard
-
 Klik op de tweede regel en selecteer 
 \family sans
 Subsection
@@ -2219,7 +2084,6 @@ Environment
 \end_layout
 
 \begin_layout Standard
-
 Andere sectieniveaus zijn 
 \family sans
 Subsubsection
@@ -2267,7 +2131,6 @@ Section
 \end_layout
 
 \begin_layout Standard
-
 Maar misschien wil je helemaal niet dat de paragrafen en secties genummerd
  worden! Gelukkig zijn ook hiervoor enige omgevingstypen beschikbaar.
  Verander bijvoorbeeld eens een van de sectiekoppen in 
@@ -2300,7 +2163,6 @@ Subsubsection
 
 \begin_layout Standard
 
-
 \series bold
 Oefening
 \series default
@@ -2312,12 +2174,10 @@ nl_voorbeeld_ruw.lyx
 \end_layout
 
 \begin_layout Subsection
-
 Lijsten en Deel-lijsten
 \end_layout
 
 \begin_layout Standard
-
 LyX heeft verschillende omgevingen om lijsten op te maken.
  Deze omgevingen bevrijden je van het duizendmaal op de tab-toets drukken
  om een overzicht uit te lijnen, of het hernummeren van een lijst wanneer
@@ -2327,7 +2187,6 @@ LyX heeft verschillende omgevingen om lijsten op te maken.
 status collapsed
 
 \begin_layout Standard
-
 Ja , we leggen te veel nadruk op dit punt in de 
 \emph on
 Tutorial
@@ -2347,7 +2206,6 @@ is
 \end_layout
 
 \begin_layout Itemize
-
 Een presentatie met overheadsheets zou een lijst kunnen bevatten met opsommingst
 ekens om verschillende punten te beschrijven.
  Gebruik hiervoor de 
@@ -2358,7 +2216,6 @@ omgeving.
 \end_layout
 
 \begin_layout Itemize
-
 Een overzicht zal eerder de 
 \family sans
 Enumerate
@@ -2367,7 +2224,6 @@ Enumerate
 \end_layout
 
 \begin_layout Itemize
-
 Een document dat bijvoorbeeld verschillende softwarepakketten beschrijft
  zou de 
 \family sans
@@ -2378,7 +2234,6 @@ Description
 \end_layout
 
 \begin_layout Itemize
-
 Het omgevingstype 
 \family sans
 List
@@ -2392,7 +2247,6 @@ Description
 \end_layout
 
 \begin_layout Standard
-
 Laten we eens een lijst opstellen met de redenen waarom LyX beter is dan
  andere tekstverwerkers.
  Typ de volgende regel ergens in je document:
@@ -2400,13 +2254,11 @@ Laten we eens een lijst opstellen met de redenen waarom LyX beter is dan
 
 \begin_layout Standard
 
-
 \family typewriter
 LyX is beter dan andere tekstverwerkers omdat: 
 \end_layout
 
 \begin_layout Standard
-
 en geef een 
 \family sans
 Return
@@ -2427,22 +2279,18 @@ Environment.
 \end_layout
 
 \begin_layout LyX-Code
-
 Het zetwerk wordt voor je gedaan.
 \end_layout
 
 \begin_layout LyX-Code
-
 Wiskunde is WYSIWYG
 \end_layout
 
 \begin_layout LyX-Code
-
 Lijsten zijn heel makkelijk te maken!
 \end_layout
 
 \begin_layout Standard
-
 Lijstomgevingen, anders dan koppen, eindigen niet als je een 
 \family sans
 Return
@@ -2481,7 +2329,6 @@ s
 \end_layout
 
 \begin_layout Standard
-
 Je hebt nu een prachtige lijst met items.
  Je zou het resultaat op papier kunnen bekijken door LaTeX te runnen.
  Maar wat nu als je de items wilt nummeren? Heel makkelijk: selecteer de
@@ -2490,7 +2337,6 @@ Je hebt nu een prachtige lijst met items.
 status collapsed
 
 \begin_layout Standard
-
 LyX staat het niet toe het eerste opsommingsteken te selecteren tenzij je
  ook de paragraaf 
 \emph on
@@ -2517,7 +2363,6 @@ Environment
 \end_layout
 
 \begin_layout Standard
-
 Je kunt de lijst, zolang deze nog geselecteerd is, veranderen in nog twee
  andere lijsttypen: 
 \family sans
@@ -2552,7 +2397,6 @@ Tab
 status collapsed
 
 \begin_layout Standard
-
 Een tab van een zetter wel te verstaan, welke zich aanpast aan de lengte
  van de grootste term, niet een zielige, stijve, onveranderlijke 
 \family sans
@@ -2592,7 +2436,6 @@ s.
 
 \begin_layout Standard
 
-
 \series bold
 Oefening
 \series default
@@ -2602,7 +2445,6 @@ nl_voorbeeld_ruw.lyx
 \end_layout
 
 \begin_layout Standard
-
 Je kunt op allerlei interessante manieren lijsten binnen elkaar inbedden.
  Een voor de hand liggend voorbeeld is bij het schrijven van schetsen.
  Genummerde lijsten, en lijsten met opsommingstekens hebben verschillende
@@ -2620,12 +2462,10 @@ veel
 \end_layout
 
 \begin_layout Subsection
-
 Andere Omgevingen: Poëzie, Citaten en Meer
 \end_layout
 
 \begin_layout Standard
-
 Er zijn twee omgevingen om citaten van omringende tekst te scheiden: 
 \family sans
 Quote
@@ -2655,7 +2495,6 @@ typemachine
 status collapsed
 
 \begin_layout Standard
-
 \SpecialChar \ldots{}
 aangenomen dat je überhaupt creatief genoeg bent om poëzie te schrijven.
 \end_layout
@@ -2685,7 +2524,6 @@ Gebruikshandleiding
 
 \begin_layout Standard
 
-
 \series bold
 Oefening
 \series default
@@ -2705,12 +2543,10 @@ Verse
 \end_layout
 
 \begin_layout Chapter
-
 Documenten Schrijven
 \end_layout
 
 \begin_layout Standard
-
 Het vorige hoofdstuk heeft je hopelijk doen wennen aan het schrijven in
  LyX.
  Het heeft je de basis opmaak-handelingen van LyX laten zien alsmede de
@@ -2727,13 +2563,10 @@ zingen, bibliografieën en inhoudsopgaven; de dingen die een stukje tekst
 \end_layout
 
 \begin_layout Section
-
 Tekstklassen en Sjablonen: Brieven Schrijven
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:tekstklassen}
 
 \end_inset
@@ -2754,7 +2587,6 @@ tekstklasse
 status collapsed
 
 \begin_layout Standard
-
 LaTeX gebruikers: dit is hetzelfde als de documentklasse in LaTeX
 \end_layout
 
@@ -2776,7 +2608,6 @@ Book
 \end_layout
 
 \begin_layout Standard
-
 Jouw document wordt waarschijnlijk in de tekstklasse 
 \family sans
 Article
@@ -2786,7 +2617,6 @@ Article
 status collapsed
 
 \begin_layout Standard
-
 Dat is gewoonlijk de tekstklasse die standaard aan een nieuw document wordt
  toegewezen.
  Je kunt dit veranderen in je 
@@ -2844,7 +2674,6 @@ Environment
 \end_layout
 
 \begin_layout Standard
-
 De grootte van het lettertype, paginakoppen en het afdrukken in een of twee
  kolommen, zijn slechts een paar dingen waarmee tijdschriften in hun opmaak
  van elkaar kunnen verschillen.
@@ -2871,7 +2700,6 @@ Article\InsetSpace ~
 \end_layout
 
 \begin_layout Standard
-
 Hier is een zeer kort overzicht van sommige tekstklassen.
  Zoals gewoonlijk: zie de 
 \emph on
@@ -2880,10 +2708,7 @@ Gebruikshandleiding
  voor details.
 \end_layout
 
-
 \begin_layout Standard
-
-
 \begin_inset VSpace 0.3cm
 \end_inset
 
@@ -2892,8 +2717,7 @@ Gebruikshandleiding
 
 \begin_layout Standard
 \align center
-
-\begin_inset  Tabular
+\begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
 <features>
 <column alignment="center" valignment="top" leftline="true" width="0pt">
@@ -2903,7 +2727,6 @@ Gebruikshandleiding
 \begin_inset Text
 
 \begin_layout Standard
-
 
 \family roman
 \series medium
@@ -2922,7 +2745,6 @@ Naam
 \begin_inset Text
 
 \begin_layout Standard
-
 Opmerkingen
 \end_layout
 
@@ -2934,7 +2756,6 @@ Opmerkingen
 \begin_inset Text
 
 \begin_layout Standard
-
 
 \family roman
 \series medium
@@ -2953,7 +2774,6 @@ article
 \begin_inset Text
 
 \begin_layout Standard
-
 
 \family roman
 \series medium
@@ -2975,7 +2795,6 @@ enkelzijdig, geen hoofdstukken
 
 \begin_layout Standard
 
-
 \family roman
 \series medium
 \shape up
@@ -2994,7 +2813,6 @@ article (AMS)
 
 \begin_layout Standard
 
-
 \family roman
 \series medium
 \shape up
@@ -3011,7 +2829,7 @@ opmaak &
 \emph default
 \bar default
 \noun default
-\color inherit
+\color default
  
 \family roman
 \series medium
@@ -3033,7 +2851,6 @@ omgevingen voor American Mathematics Society
 
 \begin_layout Standard
 
-
 \family roman
 \series medium
 \shape up
@@ -3051,7 +2868,6 @@ report
 \begin_inset Text
 
 \begin_layout Standard
-
 
 \family roman
 \series medium
@@ -3073,7 +2889,6 @@ langer dan article, dubbelzijdig
 
 \begin_layout Standard
 
-
 \family roman
 \series medium
 \shape up
@@ -3092,7 +2907,6 @@ book
 
 \begin_layout Standard
 
-
 \family roman
 \series medium
 \shape up
@@ -3109,7 +2923,7 @@ report + voor en achterzijde
 \emph default
 \bar default
 \noun default
-\color inherit
+\color default
 gedoe
 \end_layout
 
@@ -3121,7 +2935,6 @@ gedoe
 \begin_inset Text
 
 \begin_layout Standard
-
 
 \family roman
 \series medium
@@ -3140,7 +2953,6 @@ slides
 \begin_inset Text
 
 \begin_layout Standard
-
 
 \family roman
 \series medium
@@ -3162,7 +2974,6 @@ transparanten (inclusief FoilTeX)
 
 \begin_layout Standard
 
-
 \family roman
 \series medium
 \shape up
@@ -3180,7 +2991,6 @@ letter
 \begin_inset Text
 
 \begin_layout Standard
-
 
 \family roman
 \series medium
@@ -3205,22 +3015,17 @@ veel extra omgevingen voor adressen, handtekeningen\SpecialChar \ldots{}
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset VSpace 0.3cm
 \end_inset
 
 
 \end_layout
 
-
 \begin_layout Section
-
 Sjablonen: Een Brief Schrijven
 \end_layout
 
 \begin_layout Standard
-
 Een van de meest populaire tekstklassen is 
 \family sans
 Letter
@@ -3265,7 +3070,6 @@ sjabloon
 \end_layout
 
 \begin_layout Standard
-
 Open een nieuw bestand met 
 \family sans
 \bar under
@@ -3296,7 +3100,6 @@ Template
 \end_layout
 
 \begin_layout Standard
-
 Als je naar het 
 \family sans
 Environment
@@ -3348,7 +3151,6 @@ ng aan het einde moet staan.
 \end_layout
 
 \begin_layout Standard
-
 Een sjabloon is gewoon een normaal LyX bestand.
  Dit betekent dat je je adres kunt invullen en je handtekening, en het bestand
  vervolgens kunt bewaren als een nieuw sjabloon.
@@ -3367,7 +3169,6 @@ oefening
 status collapsed
 
 \begin_layout Standard
-
 Een waarschuwing als je een vanaf een sjabloon schrijft: als je alle tekst
  in een omgeving verwijdert--- bijvoorbeeld als je het gehele 
 \family sans
@@ -3392,7 +3193,6 @@ Environment
 \end_layout
 
 \begin_layout Standard
-
 Sjablonen kunnen enorm veel tijd besparen en we moedigen je dan ook aan
  om ze zo vaak mogelijk te gebruiken.
  Daarnaast kunnen ze iemand helpen gebruik te leren maken van enkele van
@@ -3405,19 +3205,16 @@ Sjablonen kunnen enorm veel tijd besparen en we moedigen je dan ook aan
 \end_layout
 
 \begin_layout Section
-
 Document titels
 \end_layout
 
 \begin_layout Standard
-
 LyX (net als LaTeX) beschouwt de titel --- die de feitelijke titel, de auteur,
  de datum, en zelfs een samenvatting van een artikel kan bevatten--- als
  een apart gedeelte van het document.
 \end_layout
 
 \begin_layout Standard
-
 Ga terug naar je 
 \family typewriter
 newfile.lyx 
@@ -3431,7 +3228,6 @@ Article
 status collapsed
 
 \begin_layout Standard
-
 Je moet de brief niet langer gebruiken, omdat de tekstklasse 
 \family sans
 Letter
@@ -3467,7 +3263,6 @@ Abstract
 
 \begin_layout Standard
 
-
 \series bold
 Oefening
 \series default
@@ -3477,13 +3272,10 @@ nl_voorbeeld_ruw.lyx
 \end_layout
 
 \begin_layout Section
-
 Labels en Kruisverwijzingen
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:labels}
 
 \end_inset
@@ -3500,12 +3292,10 @@ Je kunt een label toewijzen aan een sectie (of een subsubsectie of wat minder
 \end_layout
 
 \begin_layout Subsection*
-
 Je eerste label
 \end_layout
 
 \begin_layout Standard
-
 Laten we onze tweede sectie, met de titel 
 \begin_inset Quotes eld
 \end_inset
@@ -3539,7 +3329,6 @@ sec:overdocument
 status collapsed
 
 \begin_layout Standard
-
 We schrijven 
 \begin_inset Quotes eld
 \end_inset
@@ -3562,7 +3351,6 @@ OK
 \end_layout
 
 \begin_layout Standard
-
 Tussen twee haakjes, je zou de label ook ergens anders in de sectie kunnen
  plaatsen; referenties naar secties zullen altijd refereren naar de sectie
  waar de label zich in bevind.
@@ -3576,7 +3364,6 @@ paginanummers,
 \end_layout
 
 \begin_layout Standard
-
 Tot nu toe heb je nog niets gedaan; het 
 \family typewriter
 dvi
@@ -3589,24 +3376,21 @@ dvi
 \end_layout
 
 \begin_layout Subsection*
-
 Je eerste kruisverwijzingen
 \end_layout
 
 \begin_layout Standard
-
 Zet de cursor ergens in sectie 2 van je document en typ: 
 \end_layout
 
 \begin_layout LyX-Code
-
 als je meer over dit document wilt weten, zie dan sectie 
 \newline
-dat je vindt op pagina .
+dat je vindt op
+ pagina .
 \end_layout
 
 \begin_layout Standard
-
 Zet nu de cursor na het woord 
 \begin_inset Quotes eld
 \end_inset
@@ -3681,7 +3465,6 @@ Reference
 \end_layout
 
 \begin_layout Standard
-
 LyX zet de referenties in een rechthoek daar waar de cursor zich bevond.
  In de uitgeprinte versie zal de referentiemarkering vervangen worden door
  ofwel een paginanummer of een sectienummer (dit hangt af wat je in het
@@ -3749,12 +3532,10 @@ pagina 1
 \end_layout
 
 \begin_layout Subsection*
-
 Leuke dingen met labels
 \end_layout
 
 \begin_layout Standard
-
 We vertelden je dat LyX het nummeren van kruisverwijzingen regelt; je kunt
  dit nu uitproberen.
  Voeg een nieuwe sectie toe voor Sectie\InsetSpace ~
@@ -3778,7 +3559,6 @@ Over dit document
 \end_layout
 
 \begin_layout Standard
-
 Als je nog wat meer wilt oefenen met labels, probeer dan eens een label
  
 \begin_inset Quotes eld
@@ -3800,7 +3580,6 @@ Reference
 \end_layout
 
 \begin_layout Standard
-
 Als je zeker wilt weten dat de paginaverwijzingen ook voor grote documenten
  goed werken, kopieer dan een aantal pagina's tekst van de 
 \emph on
@@ -3811,7 +3590,6 @@ Gebruikshandleiding
 status collapsed
 
 \begin_layout Standard
-
 Tussen twee haakjes, het kopiëren van een hoofdstuk-titel kan resulteren
  in een foutmelding van LyX omdat hoofdstukken niet toegestaan zijn in de
  klasse article.
@@ -3832,7 +3610,6 @@ Tussen twee haakjes, het kopiëren van een hoofdstuk-titel kan resulteren
 
 \begin_layout Standard
 
-
 \series bold
 Oefening
 \series default
@@ -3842,12 +3619,10 @@ nl_voorbeeld_ruw.lyx
 \end_layout
 
 \begin_layout Section
-
 Voetnoten en Margenoten
 \end_layout
 
 \begin_layout Standard
-
 Voetnoten kunnen worden toegevoegd met de 
 \family sans
 Insert\InsetSpace ~
@@ -3858,7 +3633,6 @@ Footnote
 status collapsed
 
 \begin_layout Standard
-
 De knop laat een pijl naar rode tekst zien welke net onder wat zwarte tekst
  staat.
 \end_layout
@@ -3910,12 +3684,10 @@ foot
 \end_layout
 
 \begin_layout LyX-Code
-
 LyX is tekstverwerker die tekst opmaakt.
 \end_layout
 
 \begin_layout Standard
-
 Klik nu op het woord 
 \begin_inset Quotes eld
 \end_inset
@@ -3956,7 +3728,6 @@ foot
 \end_layout
 
 \begin_layout Standard
-
 Je zult je misschien afvragen waarom de voetnootmarkering een woord is in
  plaats van een nummer.
  Het antwoord is dat LyX de nummering van voetnoten voor zijn rekening neemt.
@@ -3972,7 +3743,6 @@ dvi
 \end_layout
 
 \begin_layout Standard
-
 Een voetnoot kan net als gewone tekst worden geknipt en geplakt.
  Probeer het maar! Het enige wat je hoeft te doen is het selecteren van
  de voetnootmarkering en deze te knippen en te plakken met 
@@ -4006,7 +3776,6 @@ Footnote
 \end_layout
 
 \begin_layout Standard
-
 Margenoten (aantekeningen in de kantlijn) kunnen worden toegevoegd met behulp
  van de 
 \family sans
@@ -4019,7 +3788,6 @@ Note
 status collapsed
 
 \begin_layout Standard
-
 De knop laat een pijl zien die naar rode tekst wijst welke naast (d.w.z.
  in de kantlijn staat van) zwarte tekst.
  De knop zou naast de 
@@ -4050,7 +3818,6 @@ Note
 \end_layout
 
 \begin_layout Itemize
-
 Je op het scherm 
 \begin_inset Quotes eld
 \end_inset
@@ -4071,33 +3838,28 @@ foot
 \end_layout
 
 \begin_layout Itemize
-
 De aantekeningen in de kantlijn worden geplaatst in plaats van onderaan
  de pagina.
 \end_layout
 
 \begin_layout Itemize
-
 Margenoten niet genummerd worden.
  
 \end_layout
 
 \begin_layout Itemize
-
 Als een aantekening wordt opgevouwen wordt een uitroepteken in de kantlijn
  geplaatst.
  Dit uitroepteken zal niet in de uitgeprinte versie te zien zijn.
 \end_layout
 
 \begin_layout Standard
-
 Verander jouw LyX voetnoot in gewone tekst, en verander het dan vervolgens
  in een kantlijnaantekening.
  Bekijk het resultaat.
 \end_layout
 
 \begin_layout Standard
-
 
 \series bold
 Oefening
@@ -4108,13 +3870,10 @@ nl_voorbeeld_ruw.lyx
 \end_layout
 
 \begin_layout Section
-
 Bibliografieën
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:bibliografieën}
 
 \end_inset
@@ -4128,7 +3887,6 @@ h de items in de bibliografie te nummeren en de citaten te veranderen als
 \end_layout
 
 \begin_layout Standard
-
 Ga naar het einde van het document en ga in de 
 \family sans
 Bibliography
@@ -4166,7 +3924,6 @@ lyxtutorial
 \end_layout
 
 \begin_layout Standard
-
 Kies nu een plek in je document waar je een referentie wilt invoegen.
  Doe dit met 
 \family sans
@@ -4197,7 +3954,6 @@ Key
 status collapsed
 
 \begin_layout Standard
-
 Dit is waarom het een goed idee is om de sleutels unieke en logische namen
  te geven, in plaats van de standaard nummers te gebruiken in het 
 \family sans
@@ -4228,7 +3984,6 @@ lyxtutorial
 \end_layout
 
 \begin_layout Standard
-
 Hoe worden de andere velden gebruikt? Het 
 \family sans
 \bar under
@@ -4272,7 +4027,6 @@ Gebruikshandleiding
 
 \begin_layout Standard
 
-
 \series bold
 Oefening: 
 \series default
@@ -4282,12 +4036,10 @@ nl_voorbeeld_ruw.lyx
 \end_layout
 
 \begin_layout Section
-
 Inhoudsopgave
 \end_layout
 
 \begin_layout Standard
-
 Misschien wil je een inhoudsopgave aan het begin van je document.
  Met LyX is dit heel eenvoudig te realiseren.
  Geef een 
@@ -4299,7 +4051,6 @@ Return
 status collapsed
 
 \begin_layout Standard
-
 Raak niet gefrustreerd door te trachten met de backspace toets, of met muisklikk
 en voor het sectienummer te komen.
  Dit zal nooit lukken.
@@ -4344,7 +4095,6 @@ Table of Contents
 \end_layout
 
 \begin_layout Standard
-
 Dit lijkt niet erg nuttig te zijn.
  Als je echter naar je 
 \family typewriter
@@ -4361,7 +4111,6 @@ dvi
 \end_layout
 
 \begin_layout Standard
-
 De inhoudsopgave wordt in LyX niet afgebeeld op het scherm omdat je het
  toch niet kunt bewerken.
  Je kunt echter wel de inhoudsopgave in een apart venster afbeelden door
@@ -4390,7 +4139,6 @@ Contents
 status collapsed
 
 \begin_layout Standard
-
 Het menucommando werkt zelfs als je geen 
 \begin_inset Quotes eld
 \end_inset
@@ -4426,7 +4174,6 @@ Contents
 \end_layout
 
 \begin_layout Standard
-
 Om de inhoudsopgave te verwijderen kun je de 
 \begin_inset Quotes eld
 \end_inset
@@ -4441,7 +4188,6 @@ table of contents
 
 \begin_layout Standard
 
-
 \series bold
 Oefening
 \series default
@@ -4451,12 +4197,10 @@ nl_voorbeeld_ruw.lyx
 \end_layout
 
 \begin_layout Chapter
-
 Wiskundige Uitdrukkingen Gebruiken
 \end_layout
 
 \begin_layout Standard
-
 LaTeX wordt door menig wetenschapper gebruikt omdat de vergelijkingen er
  in de uitvoer fantastisch uitzien en omdat je ze kunt maken zonder gebruik
  te hoeven maken van de toetscombinaties die je bij veel tekstverwerkers
@@ -4480,7 +4224,6 @@ Math Panel
 status collapsed
 
 \begin_layout Standard
-
 Lyx kan niet controleren of de vergelijking die je invoert 
 \emph on
 correct
@@ -4495,22 +4238,18 @@ correct
 \end_layout
 
 \begin_layout Section
-
 Math Modus
 \end_layout
 
 \begin_layout Standard
-
 Typ ergens in je LyX document:
 \end_layout
 
 \begin_layout LyX-Code
-
 Ik hou van wat Einstein zei, E=mc^2, omdat het zo eenvoudig is.
 \end_layout
 
 \begin_layout Standard
-
 Zelfs in het 
 \family typewriter
 dvi
@@ -4531,7 +4270,6 @@ dvi
 \end_layout
 
 \begin_layout Standard
-
 Wiskundige uitdrukkingen worden geschreven in Mathed, ook gekend als Math
  modus.
  Om de math modus te starten, klik je simpelweg op de knop in de werkbalk
@@ -4572,7 +4310,6 @@ ng.
 \end_layout
 
 \begin_layout Standard
-
 Bekijk nu het 
 \family typewriter
 dvi
@@ -4599,7 +4336,6 @@ dvi
 \end_layout
 
 \begin_layout Standard
-
 Mathed is nogmaals een voorbeeld van de WYSIWYM filosofie.
  In LaTeX schrijf je een wiskundige uitdrukking door gebruik te maken van
  tekst en codes zoals 
@@ -4627,12 +4363,10 @@ te of spatiëring.
 \end_layout
 
 \begin_layout Section
-
 Navigeren in een Vergelijking
 \end_layout
 
 \begin_layout Standard
-
 Laten we nu een keer 
 \begin_inset Formula $E=mc^{2}$
 \end_inset
@@ -4673,7 +4407,6 @@ Esc
 \end_layout
 
 \begin_layout Standard
-
 Buiten de hieronder beschreven speciale toetsen, is het typen in de math
  modus hetzelfde als het bewerken van gewone tekst.
  Gebruik 
@@ -4721,7 +4454,6 @@ Undo
 \end_layout
 
 \begin_layout Standard
-
 Wat gedaan als je 
 \begin_inset Formula $E=mc^{2}$
 \end_inset
@@ -4792,7 +4524,6 @@ Omlaag
 \end_layout
 
 \begin_layout Standard
-
 Je kunt ook 
 \family sans
 Spatie
@@ -4857,7 +4588,6 @@ status collapsed
 
 \begin_layout Standard
 
-
 \family sans
 Spatie
 \family default
@@ -4885,7 +4615,6 @@ Gebruikshandleiding
 \end_layout
 
 \begin_layout Standard
-
 Merk op dat wanneer je een uitdrukking invoert en die daarna weer verlaat
  met
 \family sans
@@ -4940,12 +4669,10 @@ is mijn favoriete uitdrukking
 \end_layout
 
 \begin_layout Section
-
 Exponenten en Indices
 \end_layout
 
 \begin_layout Standard
-
 Een exponent kan worden ingevoegd vanuit het 
 \family sans
 \bar under
@@ -4978,7 +4705,6 @@ een Esc
 \end_layout
 
 \begin_layout Standard
-
 Een subscript (index) is net zo eenvoudig; begin met het typen van een underscor
 e, 
 \begin_inset Quotes eld
@@ -4999,7 +4725,6 @@ _
 
 \begin_layout Standard
 
-
 \series bold
 Oefening:
 \series default
@@ -5011,14 +4736,12 @@ nl_voorbeeld_ruw.lyx
 \end_layout
 
 \begin_layout Section
-
 Het 
 \family sans
 Math Panel
 \end_layout
 
 \begin_layout Standard
-
 Het 
 \family sans
 Math Panel
@@ -5049,12 +4772,10 @@ Math Panel
 \end_layout
 
 \begin_layout Subsection
-
 Griekse Symbolen
 \end_layout
 
 \begin_layout Standard
-
 Als je klikt op de knop met het opschrift 
 \begin_inset Quotes eld
 \end_inset
@@ -5080,7 +4801,6 @@ Math Panel
 \end_layout
 
 \begin_layout Standard
-
 Vier andere knoppen aan de onderkant van het Math Panel geven je toegang
  tot een ruim assortiment aan symbolen die in de wiskunde gebruikt worden:
  verschillende pijlen, relaties, operatoren, en sommen en integralen.
@@ -5112,12 +4832,10 @@ All you need is
 \end_layout
 
 \begin_layout Subsection
-
 Vierkantswortels, accenten en afbakeningen
 \end_layout
 
 \begin_layout Standard
-
 Om een vierkantswortel in te voeren, klik je simpelweg op de knop met een
  vierkantswortel erop afgebeeld.
  De vierkantswortel verschijnt, en de cursor bevindt zich in een nieuw invoegpun
@@ -5129,7 +4847,6 @@ tels, breuken enz.
 \end_layout
 
 \begin_layout Standard
-
 Een accent plaatsen boven een enkel karakter (
 \begin_inset Formula $\overrightarrow{v}$
 \end_inset
@@ -5169,7 +4886,6 @@ verlaten
 \end_layout
 
 \begin_layout Standard
-
 Afbakeningen zoals ronde haakjes, vierkante haakjes en accolades werken
  op een gelijkaardige manier maar zijn iets ingewikkelder.
  Druk op de 
@@ -5228,7 +4944,6 @@ linker muisknop
 \end_layout
 
 \begin_layout Standard
-
 Wanneer je de afbakening gekozen hebt, klik dan op 
 \family sans
 OK
@@ -5256,7 +4971,6 @@ Afbakenings
 \end_layout
 
 \begin_layout Standard
-
 Je kunt ook afbakeningen, vierkantswortels of decoraties plaatsen op al
  bestaande tekst.
  Selecteer het deel van de formule dat je wilt aanpassen, en klik dan op
@@ -5281,12 +4995,10 @@ Math Panel
 \end_layout
 
 \begin_layout Subsection
-
 Breuken
 \end_layout
 
 \begin_layout Standard
-
 Breuken zijn heel makkelijk in Mathed.
  Klik simpelweg op de 
 \family sans
@@ -5326,7 +5038,6 @@ Omlaag
 
 \begin_layout Standard
 
-
 \series bold
 Oefening:
 \series default
@@ -5338,12 +5049,10 @@ nl_voorbeeld_ruw.lyx
 \end_layout
 
 \begin_layout Subsection
-
 TeX modus: Limieten, log, sin, en andere
 \end_layout
 
 \begin_layout Standard
-
 Aangezien letters in math modus gezien worden als variabelen, denkt LyX
  dat je een product van drie variabelen: 
 \emph on
@@ -5420,7 +5129,6 @@ x
 \end_layout
 
 \begin_layout Standard
-
 Klik op 
 \begin_inset Quotes eld
 \end_inset
@@ -5484,7 +5192,6 @@ bestand is de letterzetting van de uitdrukking correct.
 \end_layout
 
 \begin_layout Standard
-
 Andere codes die je in TeX modus moet invoeren, gebruik makend van de 
 \family sans
 Functies
@@ -5521,7 +5228,6 @@ che functies, logaritmen, limieten en een heleboel andere.
 
 \begin_layout Standard
 
-
 \series bold
 Oefening:
 \series default
@@ -5533,7 +5239,6 @@ nl_voorbeeld_ruw.lyx
 \end_layout
 
 \begin_layout Subsection
-
 Matrices
 \begin_inset LatexCommand \label{Matrices}
 
@@ -5543,7 +5248,6 @@ Matrices
 \end_layout
 
 \begin_layout Standard
-
 Klik op de 
 \family sans
 matrix
@@ -5576,7 +5280,6 @@ l, een andere matrix, etc.) plaatsen in elk invoegpunt.
 
 \begin_layout Standard
 
-
 \family sans
 Tab
 \family default
@@ -5593,7 +5296,6 @@ Rechts
 \end_layout
 
 \begin_layout Standard
-
 Raadpleeg de 
 \emph on
 Gebruikshandleiding
@@ -5607,12 +5309,10 @@ Gebruikshandleiding
 \end_layout
 
 \begin_layout Subsection
-
 Weergave Modus
 \end_layout
 
 \begin_layout Standard
-
 Alle uitdrukkingen die we tot nu toe gemaakt hebben, bevonden zich op dezelfde
  regel als de tekst die ervoor en erachter stond, ook gekend als inline
  uitdrukkingen.
@@ -5634,7 +5334,6 @@ Gebruikshandleiding
 \end_layout
 
 \begin_layout Standard
-
 Klik op de 
 \family sans
 weergave
@@ -5653,12 +5352,10 @@ Math Panel
 \end_layout
 
 \begin_layout Standard
-
 Weergave modus verschilt hier en daar van de gewone Mathed:
 \end_layout
 
 \begin_layout Itemize
-
 Het standaard font is groter voor enkele symbolen zoals 
 \begin_inset Formula $\sum$
 \end_inset
@@ -5671,24 +5368,20 @@ Het standaard font is groter voor enkele symbolen zoals
 \end_layout
 
 \begin_layout Itemize
-
 Sub- en superscripts voor limieten en sommen (maar niet voor integralen)
  worden onder in plaats van naast de symbolen geplaatst
 \end_layout
 
 \begin_layout Itemize
-
 Tekst is gecentreerd
 \end_layout
 
 \begin_layout Standard
-
 Buiten deze verschillen echter komen uitdrukkingen in weergave modus en
  inline uitdrukkingen grotendeels overeen.
 \end_layout
 
 \begin_layout Standard
-
 Een laatste opmerking over de letterzetting van een vergelijking in weergave
  modus: let op of je je vergelijking wel in een nieuwe paragraaf wilt plaatsen
  of niet.
@@ -5705,7 +5398,6 @@ Return
 
 \begin_layout Standard
 
-
 \series bold
 Oefening:
 \series default
@@ -5717,7 +5409,6 @@ nl_voorbeeld_ruw.lyx
 \end_layout
 
 \begin_layout Standard
-
 
 \series bold
 Oefening:
@@ -5737,7 +5428,6 @@ f(x)=\left\{ \begin{array}{cc}
 \end_layout
 
 \begin_layout Section
-
 Multi-lijn vergelijkingen
 \begin_inset LatexCommand \label{multi-lijn verg}
 
@@ -5747,7 +5437,6 @@ Multi-lijn vergelijkingen
 \end_layout
 
 \begin_layout Standard
-
 Probeer de volgende vergelijking te construeren en kijk dan naar het resultaat
  in het 
 \family sans
@@ -5764,8 +5453,6 @@ x=y+y+y+y+y\]
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset Formula \[
 =5y\]
 
@@ -5775,7 +5462,6 @@ x=y+y+y+y+y\]
 \end_layout
 
 \begin_layout Standard
-
 Dit lijkt nergens op! Als je twee of meer opeenvolgende vergelijkingen schrijft,
  zouden ze er veel beter uitzien als de gelijkheidstekens gealigneerd waren;
  vooral wanneer de tweede vergelijking geen linker lid heeft.
@@ -5784,8 +5470,6 @@ Dit lijkt nergens op! Als je twee of meer opeenvolgende vergelijkingen schrijft,
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset Formula \begin{eqnarray*}
 x & = & y+y+y+y+y\\
  & = & 5y\end{eqnarray*}
@@ -5796,7 +5480,6 @@ x & = & y+y+y+y+y\\
 \end_layout
 
 \begin_layout Standard
-
 Dit zit er 
 \emph on
 veel
@@ -5806,7 +5489,6 @@ veel
 \end_layout
 
 \begin_layout Standard
-
 Om een multi-lijn vergelijking te beginnen open je een Mathed uitdrukking
  in weergave modus en druk 
 \family sans
@@ -5831,7 +5513,6 @@ x & = & a+b+c+d\\
 \end_layout
 
 \begin_layout Standard
-
 LyX aligneert het tweede (centrale) veld van elke regel, dus meestal plaats
  je daar gelijkheidstekens of andere relationele operatoren, maar je kunt
  er in principe van alles neerzetten.
@@ -5845,7 +5526,6 @@ LyX aligneert het tweede (centrale) veld van elke regel, dus meestal plaats
 \end_layout
 
 \begin_layout Standard
-
 Als je nog een langere set van vergelijkingen wil, gebruik dan 
 \family sans
 C-Return
@@ -5885,7 +5565,6 @@ E & = & mc^{2}\\
 \end_layout
 
 \begin_layout Standard
-
 Als je teveel regels geschreven hebt, plaats de cursor dan op het einde
  van een regel en gebruik 
 \family sans
@@ -5905,12 +5584,10 @@ M-e k
 \end_layout
 
 \begin_layout Section
-
 Meer Wiskundige Dingen
 \end_layout
 
 \begin_layout Standard
-
 Mathed kan nog veel meer.
  Ondertussen ben je vertrouwd met de basis dus we verwijzen je naar de
 \emph on
@@ -5920,12 +5597,10 @@ Mathed kan nog veel meer.
 \end_layout
 
 \begin_layout Itemize
-
 Uitdrukkingen kunt voorzien van een label en een nummering
 \end_layout
 
 \begin_layout Itemize
-
 Lettertypes kunt veranderen, bv.
  vette tekst in een uitdrukking plaatsen.
  Merk op dat het drukken op de 
@@ -5938,13 +5613,11 @@ math
 \end_layout
 
 \begin_layout Itemize
-
 Fontgroottes en spatiëring naar je hand kunt zetten binnen een uitdrukking.
  (Doe dit soort dingen echter pas bij de laatste kladversie!)
 \end_layout
 
 \begin_layout Itemize
-
 Macros kunt schrijven.
  Deze zijn zeer krachtig, omdat je ze slechts één keer hoeft te definieren
  aan het begin van je document, en je ze daarna overal kunt gebruiken in
@@ -5955,7 +5628,6 @@ Macros kunt schrijven.
 \end_layout
 
 \begin_layout Itemize
-
 Nog veel meer dingen kunt doen waarvoor we de tijd niet hadden om ze te
  vermelden in deze 
 \emph on
@@ -5965,17 +5637,14 @@ Tutorial
 \end_layout
 
 \begin_layout Chapter
-
 Overige
 \end_layout
 
 \begin_layout Section
-
 Andere belangrijke mogelijkheden van LyX
 \end_layout
 
 \begin_layout Standard
-
 We hebben nog niet alle mogelijkheden van LyX behandeld en we zullen dat
  hier ook niet doen.
  Zie zoals gewoonlijk de 
@@ -5993,7 +5662,6 @@ Gebruikshandleiding
 \end_layout
 
 \begin_layout Itemize
-
 LyX heeft WYSIWYG ondersteuning voor tabellen.
  Gebruik 
 \family sans
@@ -6021,7 +5689,6 @@ Layout
 \end_layout
 
 \begin_layout Itemize
-
 LyX ondersteunt het invoegen van figuren in PostScript® formaat (of ruwe
  LaTeX) binnen documenten.
  (Je raadt het al: 
@@ -6043,7 +5710,6 @@ ure
 \end_layout
 
 \begin_layout Itemize
-
 Versiecontrole wordt ondersteund via RCS (doe 
 \family typewriter
 man rcsintro
@@ -6052,7 +5718,6 @@ man rcsintro
 \end_layout
 
 \begin_layout Itemize
-
 LyX is zwaar configureerbaar.
  Alles, van hoe het LyX venster er uit ziet tot hoe de uitvoer er uit ziet,
  kan op verschillende wijzen worden geconfigureerd.
@@ -6065,7 +5730,6 @@ lyxrc
 status collapsed
 
 \begin_layout Standard
-
 Momenteel moet je het 
 \family typewriter
 lyxrc
@@ -6095,7 +5759,6 @@ ustomization
 \end_layout
 
 \begin_layout Itemize
-
 LyX wordt door een team van programmeurs in vijf continenten ontwikkeld.
  Daarom heeft LyX een betere ondersteuning voor niet-Engelse talen (zoals
  Nederlands, Duits, Grieks, Tsjechisch, Turks\SpecialChar \ldots{}
@@ -6105,7 +5768,6 @@ en dat het de menu's en foutmeldingen weergeeft in een andere taal.
 \end_layout
 
 \begin_layout Itemize
-
 De menus van LyX ondersteunen toetscombinaties.
  Dat betekent dat je een bestand kunt openen via 
 \family sans
@@ -6145,7 +5807,6 @@ ustomization\SpecialChar \@.
 \end_layout
 
 \begin_layout Itemize
-
 LyX kan LaTeX documenten inlezen.
  Zie sectie 
 \begin_inset LatexCommand \ref{sec:relyx}
@@ -6156,7 +5817,6 @@ LyX kan LaTeX documenten inlezen.
 \end_layout
 
 \begin_layout Itemize
-
 Controleer de spelling van je document met 
 \family sans
 \bar under
@@ -6174,7 +5834,6 @@ pellchecker
 status collapsed
 
 \begin_layout Standard
-
 Merk op dat de spellingscontrole werkt vanaf het punt waar de cursor zich
  op dat moment bevindt tot aan het einde van het document.
 \end_layout
@@ -6185,13 +5844,10 @@ Merk op dat de spellingscontrole werkt vanaf het punt waar de cursor zich
 \end_layout
 
 \begin_layout Section
-
 LyX voor LaTeX Gebruikers
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:latexgebruikers}
 
 \end_inset
@@ -6212,7 +5868,6 @@ leren
 \end_layout
 
 \begin_layout Standard
-
 Omdat dit slechts een tutorial is zullen we alleen dingen bespreken die
  nieuwe LyX gebruikers interessant zullen vinden.
  Omdat we de 
@@ -6229,12 +5884,10 @@ Gebruikshandleiding
 \end_layout
 
 \begin_layout Subsection
-
 TeX Modus 
 \end_layout
 
 \begin_layout Standard
-
 Alles wat je in TeX-modus kunt invoeren zal rechtstreeks naar LaTeX worden
  gevoerd en zal in rood op het scherm verschijnen.
  Je komt in de TeX-modus via 
@@ -6253,7 +5906,6 @@ X
 \end_layout
 
 \begin_layout Standard
-
 In Mathed, wordt TeX-modus op een iets andere manier behandeld.
  Je komt in TeX-modus door een backslash te typen.
  Deze wordt dan niet getoond, maar alles wat je hierna typt is rood van
@@ -6306,7 +5958,6 @@ Panel
 \end_layout
 
 \begin_layout Standard
-
 Als speciaal geval, indien je een haakje in Mathed's TeX-modus typt zal
  Mathed het beginhaakje 
 \emph on
@@ -6319,7 +5970,6 @@ en
 \end_layout
 
 \begin_layout Standard
-
 LyX kan (nog?) niet alles doen wat LaTeX kan.
  Sommige bijzondere functies worden in het geheel niet ondersteund, terwijl
  andere wel werken maar niet WYSIWYM zijn.
@@ -6343,15 +5993,12 @@ usepackage{foo}
 \end_layout
 
 \begin_layout Subsection
-
 LaTeX Documenten Importeren--- 
 \family typewriter
 reLyX
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:relyx}
 
 \end_inset
@@ -6393,7 +6040,6 @@ reLyX
 status collapsed
 
 \begin_layout Standard
-
 Als LyX geïnstalleerd is, zal een apart programma genaamd 
 \family typewriter
 reLyX
@@ -6418,7 +6064,6 @@ reLyX
 
 \begin_layout Standard
 
-
 \family typewriter
 reLyX
 \family default
@@ -6434,7 +6079,6 @@ reLyX
 
 \begin_layout Standard
 
-
 \family typewriter
 reLyX
 \family default
@@ -6445,12 +6089,10 @@ reLyX
 \end_layout
 
 \begin_layout Subsection
-
 LyX Documenten naar LaTeX Converteren.
 \end_layout
 
 \begin_layout Standard
-
 Mogelijk zou je een LyX document naar een LaTeX bestand willen omzetten.
  Bijvoorbeeld: een medewerker, of mede-auteur, die LyX niet heeft, zou het
  willen lezen.
@@ -6484,17 +6126,14 @@ watdanook.tex
 \end_layout
 
 \begin_layout Subsection
-
 LaTeX Preambule
 \end_layout
 
 \begin_layout Subsubsection
-
 Document klasse
 \end_layout
 
 \begin_layout Standard
-
 Het 
 \family sans
 \bar under
@@ -6534,13 +6173,10 @@ Options
 \end_layout
 
 \begin_layout Subsubsection
-
 Extra Preambule Codes
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:preambule}
 
 \end_inset
@@ -6566,12 +6202,10 @@ Preamble
 \end_layout
 
 \begin_layout Subsection
-
 BibTeX
 \end_layout
 
 \begin_layout Standard
-
 LyX ondersteunt BibTeX.
  BibTeX staat je toe een database te maken van de bibliografische referenties
  die je in meerdere bestanden kunt gebruiken.
@@ -6628,7 +6262,6 @@ commando zou typen
 status collapsed
 
 \begin_layout Standard
-
 Net als in LaTeX moeten meervoudige bibliografieën door kommas gescheiden
  zijn, zonder spatiëring.
 \end_layout
@@ -6650,7 +6283,6 @@ commando zou typen.
 \end_layout
 
 \begin_layout Standard
-
 Nadat je dit gedaan hebt kun je de citaten van elke bibliografie die je
  via 
 \family sans
@@ -6685,12 +6317,10 @@ bib
 \end_layout
 
 \begin_layout Subsection
-
 Overige
 \end_layout
 
 \begin_layout Standard
-
 Invoegen van een beveiligde spatie gebeurt met 
 \family sans
 C-space
@@ -6728,12 +6358,10 @@ Character
 \end_layout
 
 \begin_layout Section
-
 Fouten!
 \end_layout
 
 \begin_layout Standard
-
 Soms als je een document LaTeX't zijn er foutmeldingen: LyX of LaTeX begrijpt
  iets niet.
  Als dit gebeurt zal LyX een foutknop maken (een rechthoek met het woord

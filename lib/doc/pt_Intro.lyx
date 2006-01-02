@@ -1,5 +1,5 @@
 #LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
-\lyxformat 243
+\lyxformat 245
 \begin_document
 \begin_header
 \textclass article
@@ -20,7 +20,6 @@
 \paragraph_separation indent
 \defskip medskip
 \quotes_language english
-\quotes_times 2
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -31,7 +30,6 @@
 \begin_body
 
 \begin_layout Title
-
 Introdução ao LyX
 \newline
 ou
@@ -40,28 +38,25 @@ Como Usar estes Arquivos !
 \end_layout
 
 \begin_layout Author
-
 por John Weiss e o LyX Team 
 \newline
 
 \size normal
 tradução: Roberto Mello <mello@internext.com.br>
 \newline
-revisão: Hélio Nunes <dedalu@linuxbr.com.br>
+revisão: Hélio Nunes <dedalu@linux
+br.com.br>
 \end_layout
 
 \begin_layout Section
-
 Navegando pela documentação
 \end_layout
 
 \begin_layout Standard
-
 Bem-Vindo ao  LyX!
 \end_layout
 
 \begin_layout Standard
-
 Para responder mais fácil às suas perguntas e para descrever todas as funções
  do LyX, a documentação foi dividida em vários arquivos diferentes.
  Cada qual com um propósito, como descrito abaixo.
@@ -70,10 +65,7 @@ Para responder mais fácil às suas perguntas e para descrever todas as funções
  poupar muito tempo.
 \end_layout
 
-
 \begin_layout Standard
-
-
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -91,17 +83,13 @@ Perigo, Will Robinson, Perigo!
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset VSpace bigskip
 \end_inset
 
 
 \end_layout
 
-
 \begin_layout Standard
-
 Apesar do LyX ter uma versão de número 1.0 [ou maior], parte da documentação
  pode estar incompleta ou ultrapassada.
  Como o resto do LyX, os manuais são o trabalho de um grupo de voluntários
@@ -126,7 +114,6 @@ ocupações reais
 \end_layout
 
 \begin_layout Standard
-
 Faça-nos um favor, também --- Se qualquer coisa nesses manuais lhe confundir,
  não estiver claro, ou se estiver errado, não hesite em nos fazer saber!
  Você pode contatar os  atuais responsáveis pela documentação enviando um
@@ -142,12 +129,10 @@ e-mail
 \end_layout
 
 \begin_layout Section
-
 O Formato dos Manuais
 \end_layout
 
 \begin_layout Standard
-
 Alguns podem ter imprimido os manuais.
  Outros podem estar lendo 
 \emph on
@@ -176,7 +161,6 @@ Editar
 status collapsed
 
 \begin_layout Standard
-
 Oi!
 \end_layout
 
@@ -190,7 +174,6 @@ mouse
 \end_layout
 
 \begin_layout Standard
-
 No manual impresso, todas as referências cruzadas mostram os números corresponde
 ntes ao capítulo, seção, subseção etc., referenciados.
  Na versão 
@@ -231,7 +214,6 @@ C-<
 \end_layout
 
 \begin_layout Standard
-
 Agora que já esclarecemos algumas diferenças entre a versão impressa e a
  
 \emph on
@@ -244,7 +226,6 @@ online
 \begin_layout List
 \labelwidthstring MMMMMMMM
 
-
 \emph on
 Enfatizado 
 \emph default
@@ -254,7 +235,6 @@ Enfatizado
 status collapsed
 
 \begin_layout Standard
-
 N.T.: Esse estilo é usado também para indicar palavras em inglês utilizadas
  no jargão de informática do Brasil; que podem não corresponder às utilizadas
  em outros países de língua portuguesa (como Portugal, é claro).
@@ -268,7 +248,6 @@ N.T.: Esse estilo é usado também para indicar palavras em inglês utilizadas
 \begin_layout List
 \labelwidthstring MMMMMMMM
 
-
 \family typewriter
 Fonte\InsetSpace ~
 Fixa
@@ -280,7 +259,6 @@ Fixa
 \begin_layout List
 \labelwidthstring MMMMMMMM
 
-
 \family sans
 Sem\InsetSpace ~
 Serifa
@@ -291,7 +269,6 @@ Serifa
 \begin_layout List
 \labelwidthstring MMMMMMMM
 
-
 \noun on
 Caixa\InsetSpace ~
 Alta
@@ -300,7 +277,6 @@ Alta
 \end_layout
 
 \begin_layout Standard
-
 Para teclas e composições, você provavelmente será referido à seção 
 \begin_inset Quotes eld
 \end_inset
@@ -335,8 +311,6 @@ Reference.lyx
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset Quotes eld
 \end_inset
 
@@ -356,8 +330,6 @@ C-
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset Quotes eld
 \end_inset
 
@@ -377,8 +349,6 @@ S-
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset Quotes eld
 \end_inset
 
@@ -402,8 +372,6 @@ Alt
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset Quotes eld
 \end_inset
 
@@ -432,8 +400,6 @@ F12
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset Quotes eld
 \end_inset
 
@@ -449,8 +415,6 @@ Esc
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset Quotes eld
 \end_inset
 
@@ -503,9 +467,7 @@ Down
 
 \begin_layout Itemize
 
-
 \family sans
-
 \begin_inset Quotes eld
 \end_inset
 
@@ -612,8 +574,6 @@ Next
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset Quotes eld
 \end_inset
 
@@ -675,7 +635,6 @@ Return
 \end_layout
 
 \begin_layout Standard
-
 Você também verá algo como 
 \begin_inset Quotes eld
 \end_inset
@@ -715,17 +674,14 @@ de Referência
 \end_layout
 
 \begin_layout Section
-
 Os Manuais
 \end_layout
 
 \begin_layout Standard
-
 A seguinte lista descreve o conteúdo de cada arquivo da documentação:
 \end_layout
 
 \begin_layout Description
-
 
 \emph on
 Introdução \InsetSpace ~
@@ -737,7 +693,6 @@ Este arquivo.
 \end_layout
 
 \begin_layout Description
-
 
 \emph on
 Tutorial \InsetSpace ~
@@ -768,7 +723,6 @@ LyX para usuários LaTeX
 
 \begin_layout Description
 
-
 \emph on
 Guia\InsetSpace ~
 
@@ -794,7 +748,6 @@ Tutorial.
 \end_layout
 
 \begin_layout Description
-
 
 \emph on
 Funções\InsetSpace ~
@@ -829,7 +782,6 @@ layouts
 
 \begin_layout Description
 
-
 \emph on
 Personalização \InsetSpace ~
 
@@ -843,7 +795,6 @@ Uma descrição das funções avançadas do LyX, inclusive como personalizar
 \end_layout
 
 \begin_layout Description
-
 
 \emph on
 Manual\InsetSpace ~
@@ -875,7 +826,6 @@ Guia do Usuário
 
 \begin_layout Description
 
-
 \emph on
 Bugs\InsetSpace ~
 conhecidos \InsetSpace ~
@@ -898,7 +848,6 @@ bug
 
 \begin_layout Description
 
-
 \emph on
 Configuração\InsetSpace ~
 do\InsetSpace ~
@@ -913,7 +862,6 @@ O LyX pesquisa seu sistema durante a instalação.
 \end_layout
 
 \begin_layout Standard
-
 Estes arquivos fazem referência uns aos outros quando necessário.
  Por exemplo, o
 \emph on
@@ -952,14 +900,10 @@ Manual de Personalização
 \end_layout
 
 \begin_layout Standard
-
 Vamos colocar novamente um ponto importante:
 \end_layout
 
-
 \begin_layout Standard
-
-
 \begin_inset VSpace 0.51cm
 \end_inset
 
@@ -993,25 +937,19 @@ antes de mais nada
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset VSpace 0.51cm
 \end_inset
 
 
 \end_layout
 
-
 \begin_layout Standard
-
 De outra forma, o LyX parecerá bizarro e sem utilidade para você.
  O LyX faz tudo que você espera de um processador de textos, mas usando
  uma abordagem diferente.
 \end_layout
 
 \begin_layout Section
-
-
 \begin_inset LatexCommand \label{sec:Contrib}
 
 \end_inset
@@ -1020,12 +958,10 @@ Contribuindo para o Projeto de documentação
 \end_layout
 
 \begin_layout Subsection
-
 Reportando Erros no Manual
 \end_layout
 
 \begin_layout Standard
-
 Isso é bem fácil de fazer.
  Você pode postar uma mensagem tanto para a lista dos Desenvolvedores ou
  para a Lista de Usuários.
@@ -1040,10 +976,7 @@ lyx-docs@lists.lyx.org
  um tempo antes de fazer qualquer coisa.
 \end_layout
 
-
 \begin_layout Standard
-
-
 \begin_inset VSpace 1.06cm
 \end_inset
 
@@ -1058,28 +991,22 @@ Nunca mude algo nos manuais sem o consentimento prévio do Time de Documentação!
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset VSpace 1.06cm
 \end_inset
 
 
 \end_layout
 
-
 \begin_layout Standard
-
 Quaisquer mudanças aleatórias não chegarão à documentação de qualquer forma,
  já que o Time de Documentação mantém as cópias mestre via árvore CVS.
 \end_layout
 
 \begin_layout Subsection
-
 Juntando-se ao Time de documentação.
 \end_layout
 
 \begin_layout Standard
-
 O Projeto de documentação do LyX, como qualquer coisa no Projeto LyX, sempre
  pode ser auxiliado! Se você estiver interessado em contribuir para o Projeto
  de documentação, faça as seguintes tarefas
@@ -1090,7 +1017,6 @@ O Projeto de documentação do LyX, como qualquer coisa no Projeto LyX, sempre
 \end_layout
 
 \begin_layout Enumerate
-
 Pegar o último código fonte do LyX e descompactar.
  Você encontrará um diretório dentro da árvore principal chamado 
 \family typewriter
@@ -1106,7 +1032,6 @@ DocStyle.lyx
 \end_layout
 
 \begin_layout Enumerate
-
 Faça uma pausa de um dia ou dois então leia 
 \family typewriter
 DocStyle.lyx
@@ -1115,7 +1040,6 @@ DocStyle.lyx
 \end_layout
 
 \begin_layout Enumerate
-
 Depois leia o 
 \emph on
 Guia do Usuários
@@ -1130,7 +1054,6 @@ Tutorial
 
 \begin_deeper
 \begin_layout Standard
-
 A razão deste exercício é lhe dar idéias.
  O 
 \emph on
@@ -1143,9 +1066,9 @@ Guia do Usuário
  sempre terão a documentação mais atualizada.
  Você poderá sentir como queremos que os manuais se pareçam e sejam lidos.
 \end_layout
+
 \end_deeper
 \begin_layout Enumerate
-
 Leia 
 \family typewriter
 DocStyle.lyx
@@ -1154,20 +1077,17 @@ DocStyle.lyx
 \end_layout
 
 \begin_layout Enumerate
-
 Por último, contate o time em: 
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
 
-
 \family typewriter
 lyx-docs@lists.lyx.org
 \end_layout
 
 \begin_layout Standard
-
 Queremos ter certeza que você compreenda a folha estilo 
 \emph on
 antes 
@@ -1175,9 +1095,9 @@ antes
  que você comece a escrever.
  De outra forma, vamos lhe fazer reescrever o que você enviou.
 \end_layout
+
 \end_deeper
 \begin_layout Standard
-
 
 \emph on
 Nem pense

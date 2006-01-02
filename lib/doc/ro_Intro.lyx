@@ -1,5 +1,5 @@
 #LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
-\lyxformat 243
+\lyxformat 245
 \begin_document
 \begin_header
 \textclass article
@@ -20,7 +20,6 @@
 \paragraph_separation indent
 \defskip medskip
 \quotes_language english
-\quotes_times 2
 \papercolumns 0
 \papersides 1
 \paperpagestyle plain
@@ -31,18 +30,15 @@
 \begin_body
 
 \begin_layout Title
-
 Introducere în LyX sau cum sã utilizaþi acest document
 \end_layout
 
 \begin_layout Author
-
 de John Weiss ºi echipa LyX
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-
 traducere Gabriel Cristache <cristache@adcomm.pub.ro>
 \end_layout
 
@@ -52,17 +48,14 @@ traducere Gabriel Cristache <cristache@adcomm.pub.ro>
 \end_layout
 
 \begin_layout Section
-
 Navigarea prin documentaþie
 \end_layout
 
 \begin_layout Standard
-
 Bine aþi venit în lumea LyX !
 \end_layout
 
 \begin_layout Standard
-
 Pentru a uºura rãspunsul la întrebãrile dumneavoastrã ºi pentru a descrie
  caracteristicile LyX-ului, documentaþia a fost împãrþitã în mai multe 
  fiºiere.
@@ -74,10 +67,7 @@ Pentru a uºura rãspunsul la întrebãrile dumneavoastrã ºi pentru a descrie
  
 \end_layout
 
-
 \begin_layout Standard
-
-
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -90,14 +80,12 @@ ATENÞIE!!!!!ATENÞIE!!!!!!ATENÞIE!!!!!
 \end_layout
 
 \begin_layout Standard
-
 Documentaþia, ca un întreg, nu este completã în acest moment! Ca ºi programul,
  ea poate fi consideratã în faza beta.
  Puteþi fi siguri cã totul va fi complet odatã cu versiunea 1.0.
 \end_layout
 
 \begin_layout Standard
-
 Dacã în lectura acestui manual întâlniþi neclaritãþi sau vi se pare ceva
  confuz, puteþi contacta echipa LyX: 
 \begin_inset Quotes eld
@@ -142,12 +130,10 @@ cristache@ADComm.pub.ro
 \end_layout
 
 \begin_layout Subsection
-
 Formatul manualelor
 \end_layout
 
 \begin_layout Standard
-
 Unii dintre cititorii acestui articol vor tipãri aceastã documentaþie.
  Alþii o vor citi 
 \emph on
@@ -180,7 +166,6 @@ Editare
 status collapsed
 
 \begin_layout Standard
-
 Salut!
 \end_layout
 
@@ -190,7 +175,6 @@ Salut!
 \end_layout
 
 \begin_layout Standard
-
 Acum, dupa ce am clarificat câteva dintre diferenþele dintre versiunea tipãritã
  ºi cea 
 \emph on
@@ -202,7 +186,6 @@ online
 
 \begin_layout Itemize
 
-
 \emph on
 Stilul evidenþiat 
 \emph default
@@ -212,7 +195,6 @@ este folosit pentru accentuãri generale, argumente generice, titluri de
 
 \begin_layout Itemize
 
-
 \family typewriter
 Maºinã de scris
 \family default
@@ -221,7 +203,6 @@ Maºinã de scris
 \end_layout
 
 \begin_layout Itemize
-
 
 \family sans
 Sans Serif
@@ -235,7 +216,6 @@ Sans Serif
 
 \begin_layout Itemize
 
-
 \noun on
 Stilul substantiv
 \noun default
@@ -243,7 +223,6 @@ Stilul substantiv
 \end_layout
 
 \begin_layout Standard
-
 Pentru a afla diferitele asocieri dintre taste ºi comenzi ar trebui sã citiþi
  secþiunea 
 \emph on
@@ -276,8 +255,6 @@ LyX].
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset Quotes eld
 \end_inset
 
@@ -295,8 +272,6 @@ C-
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset Quotes eld
 \end_inset
 
@@ -314,8 +289,6 @@ Shift.
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset Quotes eld
 \end_inset
 
@@ -339,8 +312,6 @@ Alt
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset Quotes eld
 \end_inset
 
@@ -369,8 +340,6 @@ F12
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset Quotes eld
 \end_inset
 
@@ -386,8 +355,6 @@ Esc
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset Quotes eld
 \end_inset
 
@@ -440,9 +407,7 @@ Down
 
 \begin_layout Itemize
 
-
 \family sans
-
 \begin_inset Quotes eld
 \end_inset
 
@@ -567,7 +532,6 @@ Next
 
 \begin_layout Itemize
 
-
 \family sans
 Return
 \family default
@@ -602,7 +566,6 @@ Enter,
 \end_layout
 
 \begin_layout Standard
-
 Veþi vedea texte ca 
 \begin_inset Quotes eld
 \end_inset
@@ -641,17 +604,14 @@ Manualul de referinþã
 \end_layout
 
 \begin_layout Section
-
 Manualele
 \end_layout
 
 \begin_layout Standard
-
 Urmãtoarea listã descrie conþinutul fiecãrui fiºier din documentaþie:
 \end_layout
 
 \begin_layout Description
-
 
 \emph on
 Introducere
@@ -663,7 +623,6 @@ Acest fiºier.
 
 \begin_layout Description
 
-
 \emph on
 Tutorial
 \emph default
@@ -673,7 +632,6 @@ Tutorial
 \end_layout
 
 \begin_layout Description
-
 
 \emph on
 Cum\InsetSpace ~
@@ -700,7 +658,6 @@ sau va fi, la timpul potrivit
 
 \begin_layout Description
 
-
 \emph on
 Ghidul\InsetSpace ~
 utilizatorului
@@ -725,7 +682,6 @@ elementele
 
 \begin_layout Description
 
-
 \emph on
 Editare\InsetSpace ~
 avansatã
@@ -744,7 +700,6 @@ Ghidului utilizatorului
 
 \begin_layout Description
 
-
 \emph on
 Personalizare 
 \emph default
@@ -755,7 +710,6 @@ O descriere avansatã a caracteristicilor LyX-ului, incluzând informaþii
 \end_layout
 
 \begin_layout Description
-
 
 \emph on
 Manualul\InsetSpace ~
@@ -774,7 +728,6 @@ referinþã
 
 \begin_layout Description
 
-
 \emph on
 Erori\InsetSpace ~
 cunoscute
@@ -788,7 +741,6 @@ Acest fiºier conþine o listã a erorilor cunoscute în LyX ºi informaþii despre
 
 \begin_layout Description
 
-
 \emph on
 Configuraþia\InsetSpace ~
 LaTeX 
@@ -799,7 +751,6 @@ Acest fiºier conþine informaþii pe care LyX-ul le-a aflat despre instalarea
 \end_layout
 
 \begin_layout Standard
-
 Aceste fiºiere fac referire unul la celãlalt.
  De exemplu, 
 \emph on
@@ -818,14 +769,10 @@ Personalizare
 \end_layout
 
 \begin_layout Standard
-
 Reamintim un lucru foarte important:
 \end_layout
 
-
 \begin_layout Standard
-
-
 \begin_inset VSpace 0.51cm
 \end_inset
 
@@ -840,32 +787,25 @@ Dacã nu aþi utilizat LaTeX înainte citiþi
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset VSpace 0.51cm
 \end_inset
 
 
 \end_layout
 
-
 \begin_layout Standard
-
 Altfel, LyX-ul vi se va pãrea bizar ºi greu de utilizat.
 \end_layout
 
 \begin_layout Section
-
 Contribuþii la proiectul de documentare 
 \end_layout
 
 \begin_layout Subsection
-
 Raportarea erorilor
 \end_layout
 
 \begin_layout Standard
-
 Destul de uºor de fãcut.
  Va trebui sã trimiteþi un mesaj pe Developer's Mailing List sau pe User's
  Mailing List.
@@ -880,10 +820,7 @@ Doc Error
  sau ceva în genul acesta, ne va ajuta foarte mult sã o gãsim
 \end_layout
 
-
 \begin_layout Standard
-
-
 \begin_inset VSpace 1.06cm
 \end_inset
 
@@ -899,35 +836,28 @@ Nu faceþi nici o modificare în aceste manuale fãrã un acord prealabil al
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset VSpace 1.06cm
 \end_inset
 
 
 \end_layout
 
-
 \begin_layout Standard
-
 Orice modificare aleatoare a acestor manuale ar fi fãrã rost pentru cã,
  oricum, echipa de documentare deþine originalul.
 \end_layout
 
 \begin_layout Subsection
-
 Cum sã începeþie
 \end_layout
 
 \begin_layout Standard
-
 Proiectul de documentare al LyX, ca ºi orice alt proiect LyX, poate fi susþinut!
  Dacã sunteþi interesat sã contribuiþi la Proiectul de documentare al LyX,
  va trebui sã urmaþi aceste etape :
 \end_layout
 
 \begin_layout Enumerate
-
 Obþineþi ultimul cod sursã LyX.
  Dezarhivaþi-l.
  Veþi gãsi un director în calea principalã numit 
@@ -949,7 +879,6 @@ stylesheet
 \end_layout
 
 \begin_layout Enumerate
-
 Citiþi 
 \family typewriter
 DocStyle.lyx
@@ -958,7 +887,6 @@ DocStyle.lyx
 \end_layout
 
 \begin_layout Enumerate
-
 Apoi, citiþi, 
 \emph on
 Ghidul utilizatorului
@@ -969,7 +897,6 @@ Ghidul utilizatorului
 
 \begin_deeper
 \begin_layout Standard
-
 Scopul acestui exerciþiu este sa vã dãm câteva idei.
  
 \emph on
@@ -979,22 +906,21 @@ Ghidul utilizatorului
  Va trebui sa vã însuºiþi câteva idei referitoare la modul în care se citeºte
  sau aratã acest manual.
 \end_layout
+
 \end_deeper
 \begin_layout Enumerate
-
 În cele din urmã, contactaþi echipa LyX : 
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
 
-
 \family typewriter
 LyX@via.ecp.fr
 \end_layout
+
 \end_deeper
 \begin_layout Standard
-
 Vrem sã fim siguri cã aþi înþeles 
 \emph on
 stylesheet

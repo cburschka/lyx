@@ -1,5 +1,5 @@
 #LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
-\lyxformat 243
+\lyxformat 245
 \begin_document
 \begin_header
 \textclass book
@@ -36,7 +36,6 @@
 \paragraph_separation indent
 \defskip medskip
 \quotes_language english
-\quotes_times 2
 \papercolumns 1
 \papersides 2
 \paperpagestyle fancy
@@ -47,18 +46,15 @@
 \begin_body
 
 \begin_layout Title
-
 שעור מודרך
 \end_layout
 
 \begin_layout Author
-
 עמיר קרגר וצוות ליקס
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-
 תורגם על ידי גדי קוזמא, 
 \numeric on
 2002
@@ -72,8 +68,6 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \tableofcontents{}
 
 \end_inset
@@ -82,12 +76,10 @@ status collapsed
 \end_layout
 
 \begin_layout Chapter
-
 מבוא
 \end_layout
 
 \begin_layout Standard
-
 
 \lang english
 If you cannot see anything in this document except for this paragraph, do
@@ -102,12 +94,10 @@ If you cannot see anything in this document except for this paragraph, do
 \end_layout
 
 \begin_layout Section
-
 ברוך הבא לליקס
 \end_layout
 
 \begin_layout Standard
-
 הקובץ הזה מיועד לכל מי שלא שמעו אף פעם על 
 \lang english
 LaTeX
@@ -131,13 +121,11 @@ LaTeX
 \end_layout
 
 \begin_layout Standard
-
 יכול להיות שהגעת לפה כי ניסית לשים שני רווחים אחרי הנקודה בסוף המשפט
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-
 מנהג מקובל באנגלית 
 \lang english
 ---
@@ -161,18 +149,15 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
 אז התאזר בסבלנות.
  קריאת המסמך הזה בהחלט שווה את הזמן שלך.
 \end_layout
 
 \begin_layout Section
-
 מה המסמך הזה, ומה הוא לא
 \end_layout
 
 \begin_layout Standard
-
 רק הערה קטנה.
  השעור המודרך משתמש בסימון שהוסבר בהקדמה.
  אם הגעת למסמך הזה קודם, לך תקרא את ההקדמה.
@@ -180,25 +165,21 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
 עכשיו, כשאתה יודע מה המשמעות של כל פונט, אנחנו רוצים לדבר קצת על מה המסמך
  הזה כן.
 \end_layout
 
 \begin_layout Subsection
-
 להוציא את המירב מהשעור המודרך
 \end_layout
 
 \begin_layout Standard
-
 מסמך זה הוא אוסף של תרגילים ודוגמאות.
  לתוצאה מירבית עדיף שממש תקליד את כל השטויות ושתנסה את כל התרגילים לראות
  אם הם מצליחים לך.
 \end_layout
 
 \begin_layout Standard
-
 אם אתה כבר מכיר את 
 \lang english
 LaTeX
@@ -222,18 +203,15 @@ LaTeX
 \end_layout
 
 \begin_layout Subsection
-
 מה לא תמצא פה
 \end_layout
 
 \begin_layout Itemize
-
 האכלה בכפית.
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-
 המגמה המסתמנת היום בספרות מחשבים ו- 
 \lang english
 do it yourself
@@ -243,7 +221,6 @@ do it yourself
 \end_layout
 
 \begin_layout Standard
-
 עם זאת, אנחנו מבינים שאם הגעת לתעוד 
 \lang english
 ---
@@ -256,22 +233,20 @@ do it yourself
  לא טיפש.
  רק אבוד.
 \end_layout
+
 \end_deeper
 \begin_layout Itemize
-
 הוראות איך להשתמש בעכבר ובמקלדת.
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-
 אם בשלב הנוכחי אתה לא יודע איך להשתמש במחשב, אנחנו לא יכולים לעזור לך.
  הנושאים האלה הינם מחוץ למסגרת התעוד של ליקס
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-
 מה גם שליקס מטבעו מיועד למשתמשים שיש להם קורטוב שכל בראש.
 \end_layout
 
@@ -279,20 +254,18 @@ status collapsed
 
 .
 \end_layout
+
 \end_deeper
 \begin_layout Itemize
-
 הסברים מפורטים על כל תכונה ותכונה של ליקס.
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-
 מה, אתה רוצה את המדריך למשתמש פעמיים?
 \end_layout
 
 \begin_layout Standard
-
 אבל ברצינות, המטרה שלנו היא להעמיד אותך על הרגליים כדי שתוכל לקרוא את המדריך
  למשתמש.
  אם היינו מפרטים כאן אודות כל תכונה של ליקס, השעור המודרך היה ארוך מדי,
@@ -300,9 +273,9 @@ status collapsed
  זו בעצם הקדמה )שניה(.
  העמד פנים שיש "ראה במדריך למשתמש" בסוף כל חלק.
 \end_layout
+
 \end_deeper
 \begin_layout Itemize
-
 הסברים מפורטים על 
 \lang english
 LaTeX
@@ -312,7 +285,6 @@ LaTeX
 
 \begin_deeper
 \begin_layout Standard
-
 זה פשוט מיותר.
  אם מה שאתה מחפש זה כל הדברים המגניבים שאפשר לעשות ב-
 \lang english
@@ -322,24 +294,21 @@ LaTeX
  יש כמה ספרים מצוינים בשוק.
  אחרי הכל, לא צריך להמציא את הגלגל מחדש כל פעם.
 \end_layout
+
 \end_deeper
 \begin_layout Standard
-
 ואם כך, באומץ למסמך הראשון.
 \end_layout
 
 \begin_layout Chapter
-
 ההתחלה
 \end_layout
 
 \begin_layout Section
-
 המסמך הראשון שלך עם ליקס
 \end_layout
 
 \begin_layout Standard
-
 נו, עוד הסבר אחד קצרצר לפני שממש מתחילים בפועל.
  בגלל שרוב המידע אינו פה, הדבר הראשון שאתה צריך לעשות הוא למצוא את קבצי
  העזרה האחרים.
@@ -377,7 +346,6 @@ elp
 status collapsed
 
 \begin_layout Standard
-
 חוץ מהתוכן, הקבצים האלה גם יכולים לשמש כדוגמא איך להשתמש בתכונות של ליקס.
 \end_layout
 
@@ -405,7 +373,6 @@ ocuments
 \end_layout
 
 \begin_layout Standard
-
 במסמך הזה אנחנו מניחים שיש לך התקנה מלאה של ליקס, 
 \lang english
 LaTeX
@@ -441,7 +408,6 @@ dvi
 status collapsed
 
 \begin_layout Standard
-
 אפשר להתחיל מפרק 
 \numeric on
 2
@@ -476,7 +442,6 @@ User's Guide
 \end_layout
 
 \begin_layout Standard
-
 לקינוח, כתבנו קובץ שיאפשר לך להתאמן על כישורי הליקס שלך.
  הוא נקרא 
 \family typewriter
@@ -499,7 +464,6 @@ example_raw.lyx
 status collapsed
 
 \begin_layout Standard
-
 הרמזים מופיעים כקוביות עם המילה 
 \lang english
 note
@@ -522,7 +486,6 @@ example_lyxified.lyx
 status collapsed
 
 \begin_layout Standard
-
 בעברית אנחנו מציעים לך שתי אופציות אטרקטיביות: או הקובץ 
 \family typewriter
 \lang english
@@ -567,7 +530,6 @@ example_lyxified.lyx
 \end_layout
 
 \begin_layout Standard
-
 את הדוגמאות האלה תמצא בספריה 
 \family typewriter
 \lang english
@@ -635,7 +597,6 @@ dvi
 \end_layout
 
 \begin_layout Standard
-
 ומענין לענין באותו בנין: הספריה 
 \family typewriter
 \lang english
@@ -648,13 +609,11 @@ examples/
 \end_layout
 
 \begin_layout Subsection
-
 הקלדה, צפייה, הדפסה
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-
 בחלק זה, ובתעוד בכלל, לא נסביר איך לעבוד עם עברית בליקס.
  הסברים בנושא זה נמצאים באתר של דקל צור שהפנייה אליו נמצאת בראש המסמך.
  לא, אל תלך לשם עכשיו.
@@ -675,7 +634,6 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-
 פתח קובץ חדש בעזרת 
 \family sans
 קובץ:חדש
@@ -698,7 +656,6 @@ ew
 \end_layout
 
 \begin_layout Itemize
-
 הקלד משפט כמו 
 \family typewriter
 \lang english
@@ -709,7 +666,6 @@ This is my first LyX document!
 status collapsed
 
 \begin_layout Standard
-
 בסדר, בסדר, מצדנו תדפיס את דעתך על מצב החסה בשטחים.
  זה לא משנה.
  ואנחנו מתנצלים מראש על האויליות של משפט הדוגמא הזה וכל דבר אחר שנבקש ממך
@@ -722,7 +678,6 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-
 שמור את המסמך עם 
 \family sans
 קובץ:שמירה בשם
@@ -746,7 +701,6 @@ s
 \end_layout
 
 \begin_layout Itemize
-
 הרץ את 
 \lang english
 LaTeX
@@ -797,7 +751,6 @@ dvi
 status collapsed
 
 \begin_layout Standard
-
 אפשר לחסוך זמן בפעמים הבאות שאתה מבצע את הפעולה.
  השאר את החלון של 
 \family typewriter
@@ -846,7 +799,6 @@ xdvi
 \end_layout
 
 \begin_layout Itemize
-
 הדפס בעזרת 
 \family sans
 קובץ:הדפס
@@ -875,7 +827,6 @@ OK
 \end_layout
 
 \begin_layout Standard
-
 מזל טוב! כתבת והדפסת את מסמך הליקס הראשון שלך.
  כל השאר זה רק פרטים 
 \lang english
@@ -885,12 +836,10 @@ OK
 \end_layout
 
 \begin_layout Subsection
-
 פעולות פשוטות
 \end_layout
 
 \begin_layout Standard
-
 ליקס יכול לעשות את רוב מה שאתה רגיל לעשות עם מעבדי תמלילים.
  הוא ישבור שורות ויישר פסקאות באופן אוטומטי.
  תציץ בתפריטים ותראה
@@ -898,7 +847,6 @@ OK
 status collapsed
 
 \begin_layout Standard
-
 זה לא שאנחנו לא יודעים שעשית את זה הרבה לפני שפתחת את המסמך הזה.
 \end_layout
 
@@ -921,7 +869,6 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
 ביטול לליקס יש את היכולת לביטול "אינסופי", כלומר אתה יכול לבטל את כל השינויים
  שעשית מאז שהעלת את המסמך בעזרת בחירת 
 \family sans
@@ -965,7 +912,6 @@ edo
 
 \begin_deeper
 \begin_layout Standard
-
 ]כרגע, ביטול מוגבל ל- 
 \numeric on
 100
@@ -977,9 +923,9 @@ edo
 \lang hebrew
  לדוגמא החלפת מחלקת המסמך )ראה בהמשך([
 \end_layout
+
 \end_deeper
 \begin_layout Description
-
 גזור/הדבק/העתק השתמש ב- 
 \family sans
 עריכה:גזור
@@ -1040,7 +986,6 @@ py
 \end_layout
 
 \begin_layout Description
-
 חפש/החלף השתמש ב- 
 \family sans
 עריכה:חפש\InsetSpace ~
@@ -1081,7 +1026,6 @@ eplace
 status collapsed
 
 \begin_layout Standard
-
 סגור את החלון כשאתה גומר.
  או השאר אותו פתוח.
  רוב תבות הדיאלוג בליקס, כולל חלון החיפוש, חלון 
@@ -1109,7 +1053,6 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
 פורמט\InsetSpace ~
 תו אפשר להדגיש טקסט )באנגלית זה נקרא 
 \emph on
@@ -1165,7 +1108,6 @@ ayout
 status collapsed
 
 \begin_layout Standard
-
 אף אחד מאלה לא עובד כמו שצריך בעברית, בהתקנה הבסיסית של 
 \lang english
 LaTeX
@@ -1185,7 +1127,6 @@ LaTeX
 \end_layout
 
 \begin_layout Description
-
 לוח\InsetSpace ~
 הכלים שנמצא בדיוק מתחת לתפריטים נותן קיצורים לכמה פונקציות נפוצות, כמו
  הדבק או הדפס.
@@ -1194,7 +1135,6 @@ LaTeX
 \end_layout
 
 \begin_layout Description
-
 שורת\InsetSpace ~
 מידע הפס האפור בתחתית החלון נקרא שורת המידע )
 \lang english
@@ -1209,22 +1149,18 @@ minibuffer
 \end_layout
 
 \begin_layout Standard
-
 ברור שחמש המילים שהקלדת עד עכשיו לא מאפשרות יותר מדי משחקים מעניינים עם
  האופציות האלה.
  ככל שהמסמך יתקדם, המצב ישתפר מבחינה זו.
 \end_layout
 
 \begin_layout Subsection
-
 רווחים בליקס: 
 \lang english
 WYSIWYM
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:whitespace}
 
 \end_inset
@@ -1264,7 +1200,6 @@ Tab
 \end_layout
 
 \begin_layout Standard
-
 רוב מעבדי התמלילים המסחריים מבוססים על קונצפט ה- 
 \lang english
 WYSIWYG
@@ -1338,7 +1273,6 @@ WYSIWYM
 \end_layout
 
 \begin_layout Standard
-
 יש, כמובן, דרכים )רבות( לכוונן את פורמט המסמך שלך בליקס.
  בסופו של דבר, אי אפשר לצפות שליקס תנחש כל פעם בדיוק למה אתה מתכוון.
  המדריך למשתמש )
@@ -1361,7 +1295,6 @@ HFill
 \end_layout
 
 \begin_layout Standard
-
 סוג נוסף של רווח הוא הרווח המוגן )
 \family sans
 \lang english
@@ -1415,7 +1348,6 @@ u
 status collapsed
 
 \begin_layout Standard
-
 אם אתה קורא את המסמך במחשב, מן הסתם כבר ראית אותם ותהית לגבי משמעותם.
 \end_layout
 
@@ -1452,7 +1384,6 @@ LaTeX
 status collapsed
 
 \begin_layout Standard
-
 במסמך הזה אנחנו משתמשים בהם כדי לתאר שמות של תפריטים, קיצורים, ותוים מיוחדים,
  כמו למשל 
 \family sans
@@ -1468,12 +1399,10 @@ status collapsed
 \end_layout
 
 \begin_layout Section
-
 סביבות
 \end_layout
 
 \begin_layout Standard
-
 לחלקים שונים של המסמך יש מטרה שונה.
  אנחנו קוראים ל"סוג" הטקסט הסביבה )
 \lang english
@@ -1489,7 +1418,6 @@ environment
 \end_layout
 
 \begin_layout Standard
-
 סביבות הם חלק מהותי מפילוסופית ה-
 \lang english
 WYSIWYM
@@ -1511,7 +1439,6 @@ WYSIWYM
 \end_layout
 
 \begin_layout Standard
-
 תיבת ה
 \family sans
 סביבה
@@ -1533,12 +1460,10 @@ Standard
 \end_layout
 
 \begin_layout Subsection
-
 סעיפים ותתי-סעיפים
 \end_layout
 
 \begin_layout Standard
-
 הקלד את המילה 
 \family typewriter
 \lang english
@@ -1556,7 +1481,6 @@ Section
 status collapsed
 
 \begin_layout Standard
-
 אתה לא צריך לבחור את השורה בשביל זה.
  אם ברגע נתון לא בחרת שום טקסט, ליקס תשנה את הפסקה הנוכחית לסביבה החדשה.
  לחילופין, כדי לשנות כמה פסקאות לסביבה חדשה בבת אחת, בחר אותן ואז בחר את
@@ -1606,7 +1530,6 @@ Return
 status collapsed
 
 \begin_layout Standard
-
 ראה במדריך למשתמש )
 \emph on
 \lang english
@@ -1641,20 +1564,17 @@ Return
 
 \begin_layout LyX-Code
 
-
 \lang english
 This is an introduction to my first LyX 
 \end_layout
 
 \begin_layout LyX-Code
 
-
 \lang english
 document.
 \end_layout
 
 \begin_layout Standard
-
 הקש 
 \family sans
 \lang english
@@ -1684,7 +1604,6 @@ More Stuff
 \end_layout
 
 \begin_layout Standard
-
 זה עוד לא הסוף! לך לסוף של סעיף 
 \numeric on
 1
@@ -1740,7 +1659,6 @@ WYSIWYM
 \end_layout
 
 \begin_layout Standard
-
 הקש 
 \family sans
 \lang english
@@ -1762,13 +1680,11 @@ Standard
 
 \begin_layout LyX-Code
 
-
 \lang english
 Sections and subsections are described below.
 \end_layout
 
 \begin_layout LyX-Code
-
 
 \lang english
 Section Description
@@ -1776,13 +1692,11 @@ Section Description
 
 \begin_layout LyX-Code
 
-
 \lang english
 Sections are bigger than subsections.
 \end_layout
 
 \begin_layout LyX-Code
-
 
 \lang english
 Subsection description
@@ -1790,13 +1704,11 @@ Subsection description
 
 \begin_layout LyX-Code
 
-
 \lang english
 Subsections are smaller than sections.
 \end_layout
 
 \begin_layout Standard
-
 לחץ על השורה השניה ובחר 
 \family sans
 \lang english
@@ -1839,7 +1751,6 @@ Subsection
 \end_layout
 
 \begin_layout Standard
-
 הרמות הבאות של סיעוף נקראות 
 \family sans
 \lang english
@@ -1890,7 +1801,6 @@ Section
 \end_layout
 
 \begin_layout Standard
-
 לסיום, במקרים מסוימים תצטרך סעיפים שאינם ממוספרים.
  גם עבורם קימות סביבות מוכנות.
  אם תשתמש בסביבה 
@@ -1925,7 +1835,6 @@ Subsubsection
 \end_layout
 
 \begin_layout Standard
-
 תרגיל: תקן את כותרות הסעיפים בקובץ 
 \family typewriter
 \lang english
@@ -1935,12 +1844,10 @@ he_example_raw.lyx
 \end_layout
 
 \begin_layout Subsection
-
 רשימות ורשימות משנה
 \end_layout
 
 \begin_layout Standard
-
 לליקס יש כמה וכמה סביבות כדי ליצר רשימות.
  כך תשתחרר מהצורך המעיק ללחוץ על 
 \lang english
@@ -1951,7 +1858,6 @@ Tab
 status collapsed
 
 \begin_layout Standard
-
 הכוונה כאן למסמך מהסוג שבו הרבה מאוד מספרי סעיפים וסעיפי משנה ומעט מאוד
  תוכן 
 \lang english
@@ -1972,7 +1878,6 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-
 כן, אולי הגזמנו קצת עם הנקודה הזו, אבל זו הנקודה העיקרית בפילוסופיה של ליקס,
  אז סלח לנו, בבקשה.
 \end_layout
@@ -1984,7 +1889,6 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-
 הסביבה 
 \family sans
 \lang english
@@ -1999,7 +1903,6 @@ Itemize
 \end_layout
 
 \begin_layout Itemize
-
 הסביבה 
 \family sans
 \lang english
@@ -2011,7 +1914,6 @@ Enumerate
 \end_layout
 
 \begin_layout Itemize
-
 הסביבה 
 \family sans
 \lang english
@@ -2027,7 +1929,6 @@ bold
 \end_layout
 
 \begin_layout Itemize
-
 הסביבה 
 \family sans
 \lang english
@@ -2048,20 +1949,17 @@ Description
 \end_layout
 
 \begin_layout Standard
-
 בואו נכין רשימה של סיבות למה ליקס עדיפה על מעבדי תמלילים אחרים.
  במקום כלשהו במסמך, רשום
 \end_layout
 
 \begin_layout LyX-Code
 
-
 \lang english
 LyX is better than other word processors because:
 \end_layout
 
 \begin_layout Standard
-
 והקש 
 \family sans
 \lang english
@@ -2086,13 +1984,11 @@ Itemize
 
 \begin_layout LyX-Code
 
-
 \lang english
 Typesetting is done for you
 \end_layout
 
 \begin_layout LyX-Code
-
 
 \lang english
 Math is WYSIWYG
@@ -2100,13 +1996,11 @@ Math is WYSIWYG
 
 \begin_layout LyX-Code
 
-
 \lang english
 Lists are very easy to create!
 \end_layout
 
 \begin_layout Standard
-
 סביבות רשימה, בניגוד לכותרות, לא נגמרות אחרי כל שורה חדשה.
  כשאתה מקיש 
 \family sans
@@ -2148,7 +2042,6 @@ M-p s
 \end_layout
 
 \begin_layout Standard
-
 יש לך רשימה יפיפיה, אתה יכול גם להריץ את 
 \lang english
 LaTeX
@@ -2159,7 +2052,6 @@ LaTeX
 status collapsed
 
 \begin_layout Standard
-
 אתה לא יכול לבחור את הכוכבית הראשונה.
  היא תסומן )בתכלת( רק אם הבחירה שלך כוללת חלקים מהפסקה הקודמת, שזה מן הסתם
  לא מה שאתה רוצה.
@@ -2180,7 +2072,6 @@ Enumerate
 \end_layout
 
 \begin_layout Standard
-
 הרשימה עדיין מסומנת? למה שלא תשנה אותה לשני הסוגים הבאים, 
 \family sans
 \lang english
@@ -2197,7 +2088,6 @@ List
 status collapsed
 
 \begin_layout Standard
-
 הסביבה 
 \family sans
 \lang english
@@ -2251,7 +2141,6 @@ tab
 status collapsed
 
 \begin_layout Standard
-
 מדובר ב- 
 \lang english
 tab
@@ -2277,7 +2166,6 @@ List
 \end_layout
 
 \begin_layout Standard
-
 תרגיל: תקן את הרשימה ב- 
 \family typewriter
 \lang english
@@ -2288,7 +2176,6 @@ he_example_raw.lyx
 \end_layout
 
 \begin_layout Standard
-
 אפשר לקנן רשימות בתוך רשימות אחרות.
  דוגמא מתבקשת היא יצירת מתווים.
  רשימות ממוספרות ואחרות יראו אחרת אם תקנן אותן בתוך רשימות אחרות.
@@ -2302,12 +2189,10 @@ User's Guide
 \end_layout
 
 \begin_layout Subsection
-
 סביבות אחרות: שירה, ציטטות ועוד.
 \end_layout
 
 \begin_layout Standard
-
 כאשר צריך להבחין בין ציטטות לבין הטקסט המקיף אותן, אפשר להשתמש באחת משתי
  הסביבות הבאות: 
 \family sans
@@ -2344,7 +2229,6 @@ typewriter
 status collapsed
 
 \begin_layout Standard
-
 הכוונה כאן היא למה שידוע בד"כ כ- 
 \family typewriter
 \lang english
@@ -2398,7 +2282,6 @@ User's Guide
 \end_layout
 
 \begin_layout Standard
-
 תרגיל: תקן את 
 \family typewriter
 \lang english
@@ -2427,12 +2310,10 @@ Verse
 \end_layout
 
 \begin_layout Chapter
-
 כתיבת מסמכים
 \end_layout
 
 \begin_layout Standard
-
 בפרק הקודם למדת איך לכתוב טקסט בליקס, פעולות פשוטות ו
 \family sans
 סביבות
@@ -2452,13 +2333,10 @@ Verse
 \end_layout
 
 \begin_layout Section
-
 מחלקות
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:textclasses}
 
 \end_inset
@@ -2469,7 +2347,6 @@ Verse
 status collapsed
 
 \begin_layout Standard
-
 הכוונה כאן למגוון של הבדלים קטנים בין דפים זוגיים ואי-זוגיים, כמו למשל גודל
  השוליים, מיקום מספרי הדפים, מיקום הערות צד, ולעיתים חוקים כמו "פרק חייב
  להתחיל בדף אי-זוגי", כמו במסמך זה, לדוגמא 
@@ -2503,7 +2380,6 @@ Class
 status collapsed
 
 \begin_layout Standard
-
 משתמשי 
 \lang english
 LaTeX
@@ -2533,7 +2409,6 @@ WYSIWYM
 \end_layout
 
 \begin_layout Standard
-
 המסמך שלך הוא מן הסתם במחלקה 
 \family sans
 \lang english
@@ -2544,7 +2419,6 @@ article
 status collapsed
 
 \begin_layout Standard
-
 זו בדרך כלל ברירת המחדל, אם כי אפשר לשנות את זה מקובץ הקונפיגורציה 
 \family typewriter
 \lang english
@@ -2614,7 +2488,6 @@ Chapter
 \end_layout
 
 \begin_layout Standard
-
 כתבי עת שונים זה מזה בגודל הפונט, מספר הטורים )
 \numeric on
 2
@@ -2646,7 +2519,6 @@ article\InsetSpace ~
 \end_layout
 
 \begin_layout Standard
-
 להלן תקציר זריז של המחלקות החשובות יותר.
  ראה במדריך למשתמש )
 \emph on
@@ -2669,10 +2541,7 @@ Special Document Classes
 .
 \end_layout
 
-
 \begin_layout Standard
-
-
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -2681,8 +2550,7 @@ Special Document Classes
 
 \begin_layout Standard
 \align center
-
-\begin_inset  Tabular
+\begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
 <features>
 <column alignment="center" valignment="top" leftline="true" width="0pt">
@@ -2692,7 +2560,6 @@ Special Document Classes
 \begin_inset Text
 
 \begin_layout Standard
-
 הערות
 \end_layout
 
@@ -2702,7 +2569,6 @@ Special Document Classes
 \begin_inset Text
 
 \begin_layout Standard
-
 שם
 \end_layout
 
@@ -2714,7 +2580,6 @@ Special Document Classes
 \begin_inset Text
 
 \begin_layout Standard
-
 צד אחד, אין פרקים )
 \family sans
 \lang english
@@ -2731,7 +2596,6 @@ Chapter
 
 \begin_layout Standard
 
-
 \family sans
 \lang english
 article
@@ -2745,7 +2609,6 @@ article
 \begin_inset Text
 
 \begin_layout Standard
-
 מחלקה וסביבות עבור האגודה המתמטית האמריקאית
 \end_layout
 
@@ -2755,7 +2618,6 @@ article
 \begin_inset Text
 
 \begin_layout Standard
-
 
 \family sans
 \lang english
@@ -2770,7 +2632,6 @@ article (AMS)
 \begin_inset Text
 
 \begin_layout Standard
-
 ארוך יותר מ- 
 \family sans
 \lang english
@@ -2787,7 +2648,6 @@ article
 
 \begin_layout Standard
 
-
 \family sans
 \lang english
 report
@@ -2801,7 +2661,6 @@ report
 \begin_inset Text
 
 \begin_layout Standard
-
 דו"ח )
 \family sans
 \lang english
@@ -2818,7 +2677,6 @@ report
 
 \begin_layout Standard
 
-
 \family sans
 \lang english
 book
@@ -2832,7 +2690,6 @@ book
 \begin_inset Text
 
 \begin_layout Standard
-
 שקפים )עם תמיכה ב- 
 \family typewriter
 \lang english
@@ -2849,7 +2706,6 @@ FoilTeX
 
 \begin_layout Standard
 
-
 \family sans
 \lang english
 slides
@@ -2863,7 +2719,6 @@ slides
 \begin_inset Text
 
 \begin_layout Standard
-
 הרבה סביבות יחודיות, עבור כתובת, חתימה...
 \end_layout
 
@@ -2873,7 +2728,6 @@ slides
 \begin_inset Text
 
 \begin_layout Standard
-
 
 \family sans
 \lang english
@@ -2891,22 +2745,17 @@ letter
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset VSpace bigskip
 \end_inset
 
 
 \end_layout
 
-
 \begin_layout Section
-
 תבניות: מכתב
 \end_layout
 
 \begin_layout Standard
-
 אחת מהמחלקות הפופלריות ביותר היא 
 \family sans
 \lang english
@@ -2963,7 +2812,6 @@ ocument
 \end_layout
 
 \begin_layout Standard
-
 פתחי קובץ חדש בעזרת 
 \family sans
 קובץ:חדש\InsetSpace ~
@@ -3004,7 +2852,6 @@ Template
 \end_layout
 
 \begin_layout Standard
-
 כשתסתכלי בתפריט הסביבה, תראי כמה וכמה סביבות, כמו 
 \family sans
 \lang english
@@ -3060,7 +2907,6 @@ WYSIWYM
 \end_layout
 
 \begin_layout Standard
-
 תבנית היא פשוט קובץ ליקס רגיל.
  במילים אחרות, את יכולה למלא את הכתובת והחתימה שלך, ולשמור את הקובץ כתבנית
  חדשה.
@@ -3071,7 +2917,6 @@ WYSIWYM
 status collapsed
 
 \begin_layout Standard
-
 אזהרה אחת, אם את כותבת תבנית חדשה.
  אם את מוחקת את כל הטקסט בסביבה נתונה 
 \lang english
@@ -3099,7 +2944,6 @@ Address
 \end_layout
 
 \begin_layout Standard
-
 תבניות יכולות לחסוך המון זמן, ואנחנו ממליצים לך להשתמש בהן בכל הזדמנות.
  בנוסף, הן יכולות לעזור ללמוד מחלקות מסמכים מורכבות יותר.
  לקינוח, הן יכולות להעיל למי שמתקין את ליקס עבור משתמשים פחות מנוסים.
@@ -3108,12 +2952,10 @@ Address
 \end_layout
 
 \begin_layout Section
-
 שער המסמך
 \end_layout
 
 \begin_layout Standard
-
 ליקס )כמו 
 \lang english
 LaTeX
@@ -3130,7 +2972,6 @@ LaTeX
 \end_layout
 
 \begin_layout Standard
-
 חזור לקובץ 
 \family typewriter
 \lang english
@@ -3151,7 +2992,6 @@ article
 status collapsed
 
 \begin_layout Standard
-
 אל תשתמש יותר ב- 
 \lang english
 letter
@@ -3196,7 +3036,6 @@ Abstract
 \end_layout
 
 \begin_layout Standard
-
 תרגיל: תקן את שער המסמך 
 \family typewriter
 \lang english
@@ -3207,13 +3046,10 @@ he_example_raw.lyx
 \end_layout
 
 \begin_layout Section
-
 תויות והפניות
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:labels}
 
 \end_inset
@@ -3239,12 +3075,10 @@ LaTeX
 \end_layout
 
 \begin_layout Subsection*
-
 התוית הראשונה שלך
 \end_layout
 
 \begin_layout Standard
-
 בוא נתייג, לדוגמא, את הסעיף השני של המסמך, שכותרתו היא "
 \lang english
 About this document
@@ -3284,7 +3118,6 @@ sec:aboutdocument
 status collapsed
 
 \begin_layout Standard
-
 אפשר להשתמש בטקסט בעברית בתוית בלי בעיה 
 \lang english
 ---
@@ -3305,7 +3138,6 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-
 אנחנו כתובים 
 \family typewriter
 \lang english
@@ -3338,14 +3170,12 @@ OK
 \end_layout
 
 \begin_layout Standard
-
 דרך אגב, היית יכול לשים את התוית בכל מקום בתוך הסעיף.
  ההפניה מתיחסת למספר הסעיף האחרון שהיה לפניה
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-
 זה לא ממש נכון 
 \lang english
 ---
@@ -3370,7 +3200,6 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
 עד עכשיו לא עשינו כלום 
 \lang english
 ---
@@ -3386,12 +3215,10 @@ dvi
 \end_layout
 
 \begin_layout Subsection*
-
 ההפניה הראשונה שלך
 \end_layout
 
 \begin_layout Standard
-
 שים את הסמן במקום כלשהו בחלק 
 \numeric on
 2
@@ -3402,15 +3229,14 @@ dvi
 
 \begin_layout LyX-Code
 
-
 \lang english
 If you want to know more about this document, then see
 \newline
-Section , which can be found on page .
+Section , which can
+ be found on page .
 \end_layout
 
 \begin_layout Standard
-
 שים את הסמן אחרי המילה 
 \lang english
 Section
@@ -3532,7 +3358,6 @@ Section
 \end_layout
 
 \begin_layout Standard
-
 במקום שבו היה הסמן, יופיע עכשיו מסמן )קוביה אפורה עם שם ההפניה(.
  במסמך המודפס יופיע מספר החלק או העמוד, לפי מה שבחרת בתיבת ההפניות.
  בחר 
@@ -3602,12 +3427,10 @@ C-<
 \end_layout
 
 \begin_layout Subsection*
-
 שעשועי תויות נוספים
 \end_layout
 
 \begin_layout Standard
-
 קטני אמונה ודאי ירצו לראות את מנגנון המספור של ליקס בפעולה.
  לשם כך, הכנס סעיף חדש לפני סעיף 
 \numeric on
@@ -3650,7 +3473,6 @@ Subsection
 \end_layout
 
 \begin_layout Standard
-
 אם אתה רוצה אימון נוסף בתויות, שים תוית חדשה "
 \family typewriter
 \lang english
@@ -3667,7 +3489,6 @@ sec:myfirstlabel
 \end_layout
 
 \begin_layout Standard
-
 אם אתה עדין לא מאמין שזה עובד גם עבור מסמכים גדולים יותר, 
 \family sans
 העתק
@@ -3681,7 +3502,6 @@ sec:myfirstlabel
 status collapsed
 
 \begin_layout Standard
-
 אגב, אם העתקת גם כותרת של פרק, אתה עלול לקבל הודעת שגיאה, כי פרקים אסורים
  ב
 \family sans
@@ -3710,7 +3530,6 @@ class
 \end_layout
 
 \begin_layout Standard
-
 תרגיל: תקן את ההפניות ב- 
 \family typewriter
 \lang english
@@ -3721,12 +3540,10 @@ he_example_raw.lyx
 \end_layout
 
 \begin_layout Section
-
 הערות שוליים וצד
 \end_layout
 
 \begin_layout Standard
-
 כדי להכניס הערת שוליים, ניתן להשתמש בכפתור 
 \family sans
 הוסף\InsetSpace ~
@@ -3738,7 +3555,6 @@ he_example_raw.lyx
 status collapsed
 
 \begin_layout Standard
-
 זה הכפתור שנראה כמו חץ שמצביע על שני פסים אדומים, שמעליהם כמה פסים שחורים.
 \end_layout
 
@@ -3786,13 +3602,11 @@ foot
 
 \begin_layout LyX-Code
 
-
 \lang english
 Lyx is a typesetting word processor
 \end_layout
 
 \begin_layout Standard
-
 כעת לחץ על המילה 
 \lang english
 foot
@@ -3820,7 +3634,6 @@ foot
 \end_layout
 
 \begin_layout Standard
-
 אם אתה תוהה למה המסמן לא מכיל את מספר הערת השוליים, התשובה היא שמספור הערות
  השוליים הוא עניינה של ליקס, לא שלך.
  אם אתה רוצה לדעת מה הוא יצא, בדוק בפלט ה-
@@ -3841,14 +3654,12 @@ LaTeX
 \end_layout
 
 \begin_layout Standard
-
 הערות שוליים אפשר לחתוך ולהדביק כמו טקסט רגיל.
  נסה ותראה! כל מה שאתה צריך לעשות הוא לבחור את מסמן ההערה
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-
 לפעמים יכול להיות קשה לבחור את הערת השוליים בלי לפתוח אותה בטעות.
  במקרים כאלה, פשוט בחר בעזרת החצים.
 \end_layout
@@ -3873,7 +3684,6 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
 הערות צד אפשר להכניס בעזרת הכפתור 
 \family sans
 הכנס\InsetSpace ~
@@ -3883,7 +3693,6 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-
 הכפתור הזה מראה חץ מצביע על שלושה קוים אדומים ליד כמה קוים שחורים.
  הוא אמור להיות ממש ליד הפתור 
 \family sans
@@ -3923,7 +3732,6 @@ Note
 \end_layout
 
 \begin_layout Itemize
-
 המסמן על המסך אומר 
 \lang english
 margin
@@ -3936,17 +3744,14 @@ foot
 \end_layout
 
 \begin_layout Itemize
-
 בפלט הן מופיעות לצד הטקסט, ולא בתחתית העמוד.
 \end_layout
 
 \begin_layout Itemize
-
 הערות צד אינן ממוספרות.
 \end_layout
 
 \begin_layout Standard
-
 שנה הערת שוליים אחת לטקסט רגיל, בחר את הטקסט והפוך אותו להערת צד.
  הרץ את 
 \lang english
@@ -3956,7 +3761,6 @@ LaTeX
 \end_layout
 
 \begin_layout Standard
-
 תרגיל: תקן את הערת השולים ב-
 \family typewriter
 \lang english
@@ -3967,13 +3771,10 @@ he_example_raw.lyx
 \end_layout
 
 \begin_layout Section
-
 ביבליוגרפיה
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:bibliographies}
 
 \end_inset
@@ -3988,7 +3789,6 @@ he_example_raw.lyx
 status collapsed
 
 \begin_layout Standard
-
 כדי לקבל הפניות ביבליוגרפיות בצורה המקובלת במדעי החברה והרוח, תצטרך להשתמש
  בטכניקות של סעיף זה, בהערות שוליים, ובקצת יצירתיות.
 \end_layout
@@ -4007,7 +3807,6 @@ LaTeX
 \end_layout
 
 \begin_layout Standard
-
 לך לסוף המסמך שלך, ועבור לסביבה 
 \family sans
 \lang english
@@ -4027,13 +3826,11 @@ Return
 
 \begin_layout LyX-Code
 
-
 \lang english
 The LyX Tutorial, by the LyX DocTeam
 \end_layout
 
 \begin_layout Standard
-
 שים לב שליקס שמה מספר בקוביה האפורה לפני כל הפניה באופן אוטומטי.
  לחץ על המספר בקוביה ותופיע תיבת הדיאלוג 
 \family sans
@@ -4058,7 +3855,6 @@ lyxtutorial
 \end_layout
 
 \begin_layout Standard
-
 כעת בחר מקום במסמך שבו אתה רוצה לצטט את המסמך דנן.
  בחר 
 \family sans
@@ -4102,7 +3898,6 @@ keys
 status collapsed
 
 \begin_layout Standard
-
 זו הסיבה שעדיף לבחור שמות שיקלו על הזכרון, ולא להשאיר את המספר שמופיע באופן
  אוטומטי.
 \end_layout
@@ -4136,7 +3931,6 @@ LaTeX
 \end_layout
 
 \begin_layout Standard
-
 מה עם השדות שלא דיברנו עליהם? השדה 
 \family sans
 \lang english
@@ -4180,7 +3974,6 @@ abel
 \end_layout
 
 \begin_layout Standard
-
 תרגיל: תקן את הביבליוגרפיה וההפניות אליה ב-
 \family typewriter
 \lang english
@@ -4191,12 +3984,10 @@ he_example_raw.lyx
 \end_layout
 
 \begin_layout Section
-
 תוכן העניינים
 \end_layout
 
 \begin_layout Standard
-
 יכול להיות שאתה רוצה תוכן ענינים בהתחלת המסמך שלך.
  עם ליקס, כל מה שאתה צריך לעשות הוא כדלקמן: הקש 
 \family sans
@@ -4209,7 +4000,6 @@ Return
 status collapsed
 
 \begin_layout Standard
-
 אין טעם ליאש את עצמך בנסיון ללחוץ או למחוק לפני מספר הסעיף.
  זה לא יעבוד.
  אתה לא יכול לשנות את מספר הסעיף כי ליקס קובעת אותו אוטומטית.
@@ -4262,7 +4052,6 @@ inset
 \end_layout
 
 \begin_layout Standard
-
 כדי להתרשם מהשנוי צריך להסתכל בקובץ ה-
 \lang english
 dvi
@@ -4278,7 +4067,6 @@ dvi
 \end_layout
 
 \begin_layout Standard
-
 תוכן העניינים לא מופיע על המסך כי ממילא אתה לא יכול לשנות אותו ישירות.
  לעומת זאת אתה יכול לראות אותו בחלון נפרד אם תלחץ על המסגרת של תוכן העניינים,
  או בעזרת 
@@ -4307,7 +4095,6 @@ Contents
 status collapsed
 
 \begin_layout Standard
-
 פקודת התפריט תעבוד גם אם לא הכנסת תוכן עניינים למסמך.
 \end_layout
 
@@ -4323,7 +4110,6 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-
 לא פחות נוח להשתמש בתפריט ה
 \family sans
 ניווט
@@ -4345,12 +4131,10 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
 כדי להפטר מתוכן העניינים, מחק את המסמן שלו כמו כל תו אחר.
 \end_layout
 
 \begin_layout Standard
-
 תרגיל: תקן את תוכן העניינים בקובץ 
 \family typewriter
 \lang english
@@ -4361,12 +4145,10 @@ he_example_raw.lyx
 \end_layout
 
 \begin_layout Chapter
-
 מתמטיקה
 \end_layout
 
 \begin_layout Standard
-
 מדענים מעדיפים להשתמש ב-
 \lang english
 LaTeX
@@ -4404,7 +4186,6 @@ Panel
 status collapsed
 
 \begin_layout Standard
-
 ליקס )עדיין( לא בודקת אם המתמטיקה שלך נכונה.
  עמך הסליחה.
 \end_layout
@@ -4415,24 +4196,20 @@ status collapsed
 \end_layout
 
 \begin_layout Section
-
 מצב מתמטיקה
 \end_layout
 
 \begin_layout Standard
-
 במקום כלשהו במסמך שלך, רשום 
 \end_layout
 
 \begin_layout LyX-Code
-
 
 \lang english
 I like what Einstein said, E=mc^2, because it's so simple.
 \end_layout
 
 \begin_layout Standard
-
 נו, הנוסחא הזו לא נראת מי-יודע-מה, גם בקובץ ה-
 \lang english
 dvi
@@ -4448,7 +4225,6 @@ dvi
 \end_layout
 
 \begin_layout Standard
-
 מתמטיקה עורכים במוד מתמטי )ידוע גם כ"מצב מתמטיקה", "מצב נוסחאות", 
 \lang english
 Mathed
@@ -4486,7 +4262,6 @@ Esc
 \end_layout
 
 \begin_layout Standard
-
 הרץ את 
 \lang english
 LaTeX
@@ -4503,7 +4278,6 @@ dvi
 \end_layout
 
 \begin_layout Standard
-
 מתמטיקה היא דוגמא נוספת לפילוסופית ה-
 \lang english
 WYSIWYM
@@ -4550,12 +4324,10 @@ LaTeX
 \end_layout
 
 \begin_layout Section
-
 ניווט במשוואה
 \end_layout
 
 \begin_layout Standard
-
 בוא נשנה את 
 \begin_inset Formula $E=mc^{2}$
 \end_inset
@@ -4586,7 +4358,6 @@ Esc
 \end_layout
 
 \begin_layout Standard
-
 חוץ מהכפתורים המיוחדים שיתוארו לעיל, הקלדה במצב מתמטיקה היא כמו הקלדה רגילה.
  אתה יכול להשתמש ב-
 \lang english
@@ -4621,7 +4392,6 @@ Delete
 \end_layout
 
 \begin_layout Standard
-
 בוא נניח שאתה רוצה לשנות את 
 \begin_inset Formula $E=mc^{2}$
 \end_inset
@@ -4667,7 +4437,6 @@ Delete
 \end_layout
 
 \begin_layout Standard
-
 עוד דרך חשובה לנווט במשוואה היא מקש ה
 \family sans
 רווח
@@ -4701,7 +4470,6 @@ Delete
 status collapsed
 
 \begin_layout Standard
-
 אתה לא יכול להשתמש ב
 \family sans
 רווח
@@ -4734,7 +4502,6 @@ LaTeX
 \end_layout
 
 \begin_layout Standard
-
 שים לב: אם הקלדת ביטוי מתמטי ויצאת עם 
 \family sans
 \lang english
@@ -4765,12 +4532,10 @@ Esc
 \end_layout
 
 \begin_layout Section
-
 חזקות ואינדקסים
 \end_layout
 
 \begin_layout Standard
-
 אפשר, אמנם, להכניס חזקה בעזרת 
 \family sans
 פאנל הנוסחאות
@@ -4791,7 +4556,6 @@ Esc
 \end_layout
 
 \begin_layout Standard
-
 טקסט מונמך )או אינדקס( הוא פשוט באותה מידה.
  הקש על קו תחתי "_".
  אפשר להמשיך ולשים טקסטים מוגבהים ברמות שונות על ידי שימוש חוזר בשיטה זו.
@@ -4803,7 +4567,6 @@ Esc
 \end_layout
 
 \begin_layout Standard
-
 תרגיל: שים את משוואה 
 \numeric on
 1
@@ -4818,12 +4581,10 @@ he_example_raw.lyx
 \end_layout
 
 \begin_layout Section
-
 פאנל הנוסחאות
 \end_layout
 
 \begin_layout Standard
-
 
 \family sans
 פאנל הנוסחאות
@@ -4863,12 +4624,10 @@ l
 \end_layout
 
 \begin_layout Subsection
-
 יוונית ועוד
 \end_layout
 
 \begin_layout Standard
-
 הכפתור "
 \begin_inset Formula $\Gamma\rho\epsilon\epsilon\kappa$
 \end_inset
@@ -4905,7 +4664,6 @@ l
 \end_layout
 
 \begin_layout Standard
-
 החלק התחתון של 
 \family sans
 פאנל הנוסחאות
@@ -4920,7 +4678,6 @@ l
 status collapsed
 
 \begin_layout Standard
-
 הכפתורים השחורים נותנים לך את הסימנים הרגילים של 
 \lang english
 LaTeX
@@ -4949,12 +4706,10 @@ LaTeX
 \end_layout
 
 \begin_layout Subsection
-
 שורשים, כובעים וסוגריים
 \end_layout
 
 \begin_layout Standard
-
 כדי לקבל שורש, פשוט לחץ על הכפתור עם הציור של שורש.
  יופיע סימן השורש הריבועי, והסמן יעבור לנקודת הקלדה חדשה, בתוך השורש.
  אתה יכול להקליד משתנים, מספרים, עוד שורשים, שברים, כל דבר שהוא.
@@ -4963,7 +4718,6 @@ LaTeX
 \end_layout
 
 \begin_layout Standard
-
 קישוט תו )
 \begin_inset Formula $\overrightarrow{v}$
 \end_inset
@@ -4990,7 +4744,6 @@ LaTeX
 \end_layout
 
 \begin_layout Standard
-
 סוגריים עגולים, מרובעים ומסולסלים עובדים בצורה דומה, רק קצת יותר מסובכת.
  לחץ על הכפתור 
 \family sans
@@ -5040,7 +4793,6 @@ oth
 \end_layout
 
 \begin_layout Standard
-
 אחרי שבחרת את הסוגריים, לחץ על 
 \family sans
 \lang english
@@ -5073,7 +4825,6 @@ Apply
 \end_layout
 
 \begin_layout Standard
-
 בנוסף, אפשר לשים סוגריים, שורש או קישוט על טקסט קיים.
  בחר את החלק של הנוסחא שאתה רוצה לשנות, ולחץ על הכפתור המתאים מ
 \family sans
@@ -5093,12 +4844,10 @@ Apply
 \end_layout
 
 \begin_layout Subsection
-
 שברים
 \end_layout
 
 \begin_layout Standard
-
 אין דבר פשוט משברים במצב מתמטיקה.
  לחץ על כפתור ה
 \family sans
@@ -5130,7 +4879,6 @@ Apply
 \end_layout
 
 \begin_layout Standard
-
 תרגיל: תקן את משוואה 
 \numeric on
 2
@@ -5145,7 +4893,6 @@ he_example_raw.lyx
 \end_layout
 
 \begin_layout Subsection
-
 מצב 
 \lang english
 TeX
@@ -5154,7 +4901,6 @@ TeX
 \end_layout
 
 \begin_layout Standard
-
 מכיוון שאותיות במצב מתמטיקה נחשבות למשתנים, אם תקליד 
 \lang english
 log
@@ -5194,7 +4940,6 @@ log
 \end_layout
 
 \begin_layout Standard
-
 לחץ על 
 \lang english
 log
@@ -5236,7 +4981,6 @@ dvi
 \end_layout
 
 \begin_layout Standard
-
 פונקציות נוספות שאפשר להכניס במוד 
 \lang english
 TeX
@@ -5256,7 +5000,6 @@ TeX
 \end_layout
 
 \begin_layout Standard
-
 תרגיל: שים את נוסחא 
 \numeric on
 3
@@ -5271,13 +5014,10 @@ he_example_raw.lyx
 \end_layout
 
 \begin_layout Subsection
-
 מטריצות
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:matrices}
 
 \end_inset
@@ -5358,7 +5098,6 @@ OK
 \end_layout
 
 \begin_layout Standard
-
 המקש 
 \family sans
 \lang english
@@ -5379,7 +5118,6 @@ Tab
 \end_layout
 
 \begin_layout Standard
-
 המטריצה קטנה עליך? 
 \family sans
 עריכה:מתמטיקה:הוספת\InsetSpace ~
@@ -5429,7 +5167,6 @@ Column
 \end_layout
 
 \begin_layout Standard
-
 ראה במדריך למשתמש איך לשנות את הישור האופקי של כל טור, איך לשנות את הישור
  האנכי של של המטריצה כולה, ועוד.
  שים לב שאם מה שאתה צריך זה טבלה של טקסט, לליקס יש תמיכה מעולה בטבלאות,
@@ -5437,12 +5174,10 @@ Column
 \end_layout
 
 \begin_layout Subsection
-
 נוסחאות ממורכזות
 \end_layout
 
 \begin_layout Standard
-
 כל הנוסחאות שרשמנו עד עכשיו הופיעו באמצע השורה.
  נוסחאות כאלה נקראות 
 \lang english
@@ -5461,7 +5196,6 @@ inline
 \end_layout
 
 \begin_layout Standard
-
 לחץ על הכפתור 
 \family sans
 ממורכז
@@ -5481,12 +5215,10 @@ inline
 \end_layout
 
 \begin_layout Standard
-
 למצב ממורכז יש כמה הבדלים ממצב מתמטי רגיל:
 \end_layout
 
 \begin_layout Itemize
-
 כמה סימנים יופיעו בפונט גדול יותר כמו 
 \begin_inset Formula $\sum$
 \end_inset
@@ -5499,23 +5231,19 @@ inline
 \end_layout
 
 \begin_layout Itemize
-
 טקסט מוגבה ומונמך על גבולות וסכומים )אבל לא על אינטגרלים( נכתב מתחת ומעל
  לסכום, ולא בצדדיו.
 \end_layout
 
 \begin_layout Itemize
-
 הטקסט ממורכז.
 \end_layout
 
 \begin_layout Standard
-
 חוץ מאלה, מדובר במודים דומים מאוד.
 \end_layout
 
 \begin_layout Standard
-
 הערה אחרונה וחשובה: שים לב האם אתה שם את הנוסחה הממורכזת שלך בפסקה חדשה
  או לא.
  אם הנוסחה היא באמצע משפט או פסקה, אל תקיש 
@@ -5530,7 +5258,6 @@ Return
 \end_layout
 
 \begin_layout Standard
-
 תרגיל: הפוך את כל הנוסחאות ב-
 \family typewriter
 \lang english
@@ -5541,13 +5268,11 @@ he_example_raw.lyx
 \end_layout
 
 \begin_layout Standard
-
 תרגיל: עם כל מה שלמדת בסעיף הזה, אתה כבר צריך להיות מסוגל לרשום נוסחה כמו
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-
 ואחרי שעשית את זה בדרך הקשה, למה שלא תנסה את 
 \family sans
 הוספה:מתמטיקה:
@@ -5592,13 +5317,10 @@ f(x)=\left\{ \begin{array}{cc}
 \end_layout
 
 \begin_layout Section
-
 נוסחאות על כמה שורות
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:multiline}
 
 \end_inset
@@ -5624,7 +5346,6 @@ x=y+y+y+y+y\]
 \end_layout
 
 \begin_layout Standard
-
 זה לא נראה משהו בכלל! שתי נוסחאות אחת אחרי השניה נראות הרבה יותר טוב אם
  סימני השווה שלהן אחד מעל השני, במיוחד אם לנוסחא השניה אין צד שמאל.
  ליקס מאפשרת לך לכתוב נוסחאות של כמה שורות ונותנת שליטה מסוימת ביישור שלהן.
@@ -5638,12 +5359,10 @@ x & = & y+y+y+y+y\\
 \end_layout
 
 \begin_layout Standard
-
 זה הרבה יותר טוב! סימני השווה מסודרים, ויש פחות רווח בין שתי הנוסחאות.
 \end_layout
 
 \begin_layout Standard
-
 כדי להתחיל משוואה מרובת שורות, פתחי משוואה ממורכזת, והקישי 
 \family sans
 \lang english
@@ -5719,7 +5438,6 @@ Tab
 status collapsed
 
 \begin_layout Standard
-
 שימי לב שהרווח אחרי הפלוס הראשון בשורה השני קצר מדי.
  זה אחד מהמקרים הנדירים ש-
 \lang english
@@ -5742,7 +5460,6 @@ x & = & a+b+c+d\\
 \end_layout
 
 \begin_layout Standard
-
 ליקס מיישרת את השדות השניים )אמצעיים( בכל שורה, כך שהרגיל יהיה לשים שם סימן
  שווה או סימני השוואה אחרים.
  את יכולה לשים שם כל דבר, אבל אל תשתמשי במשוואות מרובות שורות בשביל ליצר
@@ -5755,7 +5472,6 @@ x & = & a+b+c+d\\
 \end_layout
 
 \begin_layout Standard
-
 אם את רוצה שרשרת ארוכה אפילו יותר של משוואות, הקישי 
 \family sans
 \lang english
@@ -5800,7 +5516,6 @@ E & = & mc^{2}\\
 \end_layout
 
 \begin_layout Standard
-
 אם פתחת יותר מדי שורות, הפתרון הוא 
 \family sans
 עריכה:מתמטיקה:מחק\InsetSpace ~
@@ -5855,7 +5570,6 @@ C-k
 \end_layout
 
 \begin_layout Standard
-
 הערה אחרונה: לא התחלנו אפילו לכסות את נושא המשוואות מרובות השורות.
  מה, למשל, אומרות כל האופציות המיסתוריות ב
 \family sans
@@ -5874,35 +5588,29 @@ AMS
 \end_layout
 
 \begin_layout Section
-
 עוד על מתמטיקה
 \end_layout
 
 \begin_layout Standard
-
 כן יש עוד, עוד הרבה.
  אבל פה כבר הגיע הזמן להפנות אותך למדריך למשתמש, שם תמצא טיפים איך:
 \end_layout
 
 \begin_layout Itemize
-
 למספר נוסחאות ולשים עליהן תויות.
 \end_layout
 
 \begin_layout Itemize
-
 לשנות פונטים, למשל לשים אותיות מובלטות, גוטיות או כפולות בתוך נוסחה.
  נעיר רק שאם תלחץ על כפתור המתמטיקה בלוח הכלים באמצע נוסחא, תוכל להקליד
  טקסט רגיל עד שתלחץ עליו שוב.
 \end_layout
 
 \begin_layout Itemize
-
 שינוי גדלי פונטים ורווחים בתוך נוסחא )תתחיל לדאוג לזה רק אחרי הטיוטה האחרונה!(
 \end_layout
 
 \begin_layout Itemize
-
 כיצד לכתוב מקרו.
  מדובר בכלי חזק ביותר, אתה מגדיר אותו פעם אחת בתחילת המסמך ומשם ואילך אתה
  יכול להשתמש בו בכל מקום במסמך, ואם תשנה את ההגדרה הוא ישתנה בכל מקום.
@@ -5910,29 +5618,24 @@ AMS
 \end_layout
 
 \begin_layout Itemize
-
 ועוד הרבה דברים שלא היה לנו זמן להזכיר כאן.
 \end_layout
 
 \begin_layout Chapter
-
 שונות
 \end_layout
 
 \begin_layout Section
-
 תכונות מרכזיות אחרות של ליקס
 \end_layout
 
 \begin_layout Standard
-
 לא עברנו דרך כל הפקודות של ליקס וגם לא תכננו לעשות את זה.
  כרגיל, מידע מלא נמצא במדריך למשתמש.
  בסעיף הזה יש רק רשימה קצרה של נושאים מהותיים שנאלצנו להשמיט
 \end_layout
 
 \begin_layout Itemize
-
 ליקס תומכת 
 \lang english
 WYSIWYM
@@ -5982,7 +5685,6 @@ LaTeX
 \end_layout
 
 \begin_layout Itemize
-
 ליקס תומכת בתמונות במגוון פורמטים )כולל 
 \lang english
 jpg
@@ -6024,7 +5726,6 @@ raphics
 \end_layout
 
 \begin_layout Itemize
-
 ליקס תומכת בניהול גרסאות )
 \lang english
 version control
@@ -6044,7 +5745,6 @@ man rcsintro
 \end_layout
 
 \begin_layout Itemize
-
 יש לך שליטה בלתי רגילה בהתנהגות של ליקס.
  כל דבר 
 \lang english
@@ -6097,7 +5797,6 @@ ustomization
 \end_layout
 
 \begin_layout Itemize
-
 המפתחים של ליקס מפוזרים על חמש יבשות ולליקס יש תמיכה מעולה בשפות שאינן אנגלית
  )הולנדית, גרמנית, יונית, צ'כית, טורקית\SpecialChar \ldots{}
 ( אתה יכול לכתוב מסמכים בשפות האלה,
@@ -6119,7 +5818,6 @@ LaTeX
 \end_layout
 
 \begin_layout Itemize
-
 מקשי פקודה מופיעים בתפריטים.
  כך אתה יכול לבצע את 
 \family sans
@@ -6151,7 +5849,6 @@ O
 status collapsed
 
 \begin_layout Standard
-
 בעברית מקשי הפקודה לא מודגשים באלגנטיות בקו תחתי אלא מופיעים משמאל לפקודה,
  לפעמים עם קו תחתי ולפעמים בלי )אם יש חוקיות, אני לא גיליתי אותה( 
 \lang english
@@ -6180,7 +5877,6 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-
 ליקס יכול לקרוא קבצי 
 \lang english
 LaTeX
@@ -6195,13 +5891,11 @@ LaTeX
 \end_layout
 
 \begin_layout Itemize
-
 בדוק איות
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-
 לא עובד בעברית.
  בנוסף, הוא מתייחס רק לשפת המסמך ומתעלם מהעובדה שניתן לשנות שפה מקומית )בעזרת
  
@@ -6241,7 +5935,6 @@ pellchecker
 status collapsed
 
 \begin_layout Standard
-
 שים לב שהוא בודק רק מהסמן ועד סוף המסמך.
 \end_layout
 
@@ -6251,15 +5944,12 @@ status collapsed
 \end_layout
 
 \begin_layout Section
-
 ליקס למשתמשי 
 \lang english
 LaTeX
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:latexusers}
 
 \end_inset
@@ -6297,7 +5987,6 @@ LaTeX
 \end_layout
 
 \begin_layout Standard
-
 מכיוון שזה רק שעור מודרך, ואנחנו רוצים לשמור את האורך שלו סביר, נשים פה
  רק מידע מינימלי, מכוון בעיקר למה שמשתמשים חדשים יכולים לרצות.
  המדריך למשתמש והקובץ "תכונות נוספות" מלאים במידע על ההבדלים בין ליקס ו-
@@ -6312,14 +6001,12 @@ LaTeX
 \end_layout
 
 \begin_layout Subsection
-
 מוד 
 \lang english
 TeX
 \end_layout
 
 \begin_layout Standard
-
 כל מה שאתה מקליד ב"מוד 
 \lang english
 TeX
@@ -6367,7 +6054,6 @@ LaTeX
 \end_layout
 
 \begin_layout Standard
-
 במצב מתמטיקה, מוד 
 \lang english
 TeX
@@ -6444,7 +6130,6 @@ LaTeX
 \end_layout
 
 \begin_layout Standard
-
 עוד מקרה מיוחד הוא הסוגריים המסולסלים: אם תקליד אחד מהם במוד 
 \lang english
 TeX
@@ -6458,7 +6143,6 @@ TeX
 \end_layout
 
 \begin_layout Standard
-
 ליקס לא תומכת )עדיין( בכל פקודה של 
 \lang english
 LaTeX
@@ -6512,7 +6196,6 @@ WYSIWYM
 \end_layout
 
 \begin_layout Subsection
-
 יבוא מסמכי 
 \lang english
 LaTeX
@@ -6524,8 +6207,6 @@ reLyX
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:relyx}
 
 \end_inset
@@ -6590,7 +6271,6 @@ reLyX
 status collapsed
 
 \begin_layout Standard
-
 כאשר ליקס מותקנת, הקובץ 
 \family typewriter
 \lang english
@@ -6623,8 +6303,6 @@ reLyX
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset Note Note
 status collapsed
 
@@ -6654,7 +6332,6 @@ TeX
 \end_layout
 
 \begin_layout Standard
-
 ל-
 \lang english
 reLyX
@@ -6669,14 +6346,12 @@ manpage
 \end_layout
 
 \begin_layout Subsection
-
 תרגום מסמכי ליקס ל-
 \lang english
 LaTeX
 \end_layout
 
 \begin_layout Standard
-
 במקרים רבים תרצה לתרגם את קובץ הליקס שלך לקובץ 
 \lang english
 LaTeX
@@ -6731,14 +6406,12 @@ LaTeX
 \end_layout
 
 \begin_layout Subsection
-
 הקדמת 
 \lang english
 LaTeX
 \end_layout
 
 \begin_layout Standard
-
 החלק של קובץ 
 \lang english
 LaTeX
@@ -6751,12 +6424,10 @@ preamble
 \end_layout
 
 \begin_layout Subsubsection
-
 מחלקת המסמך
 \end_layout
 
 \begin_layout Standard
-
 תיבת הדיאלוג 
 \family sans
 מבנה:מסמך
@@ -6812,13 +6483,10 @@ Options
 \end_layout
 
 \begin_layout Subsubsection
-
 פקודות הקדמה אחרות
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:preamble}
 
 \end_inset
@@ -6859,8 +6527,6 @@ LaTeX
 \end_layout
 
 \begin_layout Subsection
-
-
 \begin_inset Note Note
 status collapsed
 
@@ -6876,7 +6542,6 @@ BibTeX
 \end_layout
 
 \begin_layout Standard
-
 ליקס תומכת ב-
 \lang english
 BibTeX
@@ -6954,7 +6619,6 @@ bibliography
 status collapsed
 
 \begin_layout Standard
-
 כמו ב-
 \lang english
 LaTeX
@@ -6985,7 +6649,6 @@ bibliographystyle{}
 \end_layout
 
 \begin_layout Standard
-
 מרגע שעשית את זה, אתה יכול לצטט מתוך הביבליוגרפיות שהכנסת בעזרת 
 \family sans
 הוספה:הפניית\InsetSpace ~
@@ -7031,12 +6694,10 @@ bib
 \end_layout
 
 \begin_layout Subsection
-
 שונות
 \end_layout
 
 \begin_layout Standard
-
 ראה תחת 
 \family sans
 הוספה:תו\InsetSpace ~
@@ -7065,12 +6726,10 @@ hyphenation
 \end_layout
 
 \begin_layout Section
-
 שגיאות!
 \end_layout
 
 \begin_layout Standard
-
 יקרה שהרצת 
 \lang english
 LaTeX

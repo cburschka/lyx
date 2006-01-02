@@ -1,5 +1,5 @@
 #LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
-\lyxformat 243
+\lyxformat 245
 \begin_document
 \begin_header
 \textclass scrbook
@@ -23,7 +23,6 @@
 \paragraph_separation indent
 \defskip medskip
 \quotes_language english
-\quotes_times 2
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
@@ -35,19 +34,16 @@
 
 \begin_layout Title
 
-
 \noun on
 LyX Tutoretza
 \end_layout
 
 \begin_layout Author
-
 egilea: LyX taldea.
 \begin_inset Foot
 status open
 
 \begin_layout Standard
-
  Fitxategi honen arduradun nagusia 
 \family typewriter
 John Weiss
@@ -60,7 +56,8 @@ John Weiss
 Itzulpena: Iñaki Larrañaga Murgoitio (dooteo@euskalgnu.org) eta Sara Elorza,
  2004.
 \newline
-Zuzenketak: Hizkuntza Politikarako Sailburuordetza <hizpol@ej-gv.es>, 2004.
+Zuzenketak: Hizkuntza Politikarako Sailburuordetza <hizpol@ej-gv.es>,
+ 2004.
 \end_layout
 
 \end_inset
@@ -69,8 +66,6 @@ Zuzenketak: Hizkuntza Politikarako Sailburuordetza <hizpol@ej-gv.es>, 2004.
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \tableofcontents{}
 
 \end_inset
@@ -79,17 +74,14 @@ Zuzenketak: Hizkuntza Politikarako Sailburuordetza <hizpol@ej-gv.es>, 2004.
 \end_layout
 
 \begin_layout Chapter
-
 Sarrera
 \end_layout
 
 \begin_layout Section
-
 Ongi etorri LyX-era! 
 \end_layout
 
 \begin_layout Standard
-
 Fitxategi hau LaTeX inoiz entzun barik edo ongi ezagutzen ez duten neska-mutilen
 tzat egina dago.
  Lasai, ordea, LyX erabiltzeko LaTeX-i buruz ezer jakin beharrik ez daukazu.
@@ -102,7 +94,6 @@ What You See Is What You Get
 \end_layout
 
 \begin_layout Standard
-
 Ziurrenik, bi paragrafo artean hiru lerro zuri edo puntu "." baten ondoren
  bi hutsune ezartzen saiatzeagatik eskuliburu hau irakurtzen ari zara.
  Hainbat buruhauste izan eta gero, ezinezkoa dela ohartuko zinen.
@@ -110,7 +101,6 @@ Ziurrenik, bi paragrafo artean hiru lerro zuri edo puntu "." baten ondoren
 \end_layout
 
 \begin_layout Standard
-
 Gertatzen dena hau da: bestelako testu prozesadoreetako zenbait trikimailu
  LyX-en ez direla erabilgarriak.
  Hau da, erabili izan dituzun testu-prozesadore gehienetan tabulazioak,
@@ -123,18 +113,15 @@ a zuri utziz: dokumentuaren edukia idaztea.
 \end_layout
 
 \begin_layout Standard
-
 Beraz, zatoz gurekin eta jarraitu irakurtzen.
  Tutoretza hau irakurrita denborari etekina aterako diozu.
 \end_layout
 
 \begin_layout Section
-
 Tutoretza hau zer da eta zer ez da.
 \end_layout
 
 \begin_layout Standard
-
 Atal honekin serioski hasi baino lehen, gauza bat argitu nahiko genuke.
  Tutoretza honek 
 \emph on
@@ -150,24 +137,20 @@ Sarrera
 \end_layout
 
 \begin_layout Standard
-
 Orain letra-tipo bakoitzaren esanahia dakizunez, tutoretza honen helburuez
  zertxobait azaldu nahi dugu.
 \end_layout
 
 \begin_layout Subsection
-
 Tutoretza erabilgarria izan dadin.
 \end_layout
 
 \begin_layout Standard
-
 Tutoretza hau adibide eta ariketekin osatua dago.
  
 \end_layout
 
 \begin_layout Standard
-
 Dokumentu honi zuku handiena ateratzeko irakurtzerakoan zenbait ariketa
  idazteko esango dizugu, gauza guztiak ongi ulertu dituzula ziurtatzeko.
  Berdin digu errazak badira ere (lehengusinari ez esan zure ordez idazteko,
@@ -179,7 +162,6 @@ Dokumentu honi zuku handiena ateratzeko irakurtzerakoan zenbait ariketa
 \end_layout
 
 \begin_layout Standard
-
 LaTeX ezagutzen baduzu, tutoretza hau azkarrago irakur dezakezu, LyX-eko
  burutazio ugari LaTeX-ekoak baitira.
  Nola nahi ere, Lyx-ek ikasi beharreko halako jokaerak
@@ -187,7 +169,6 @@ LaTeX ezagutzen baduzu, tutoretza hau azkarrago irakur dezakezu, LyX-eko
 status open
 
 \begin_layout Standard
-
 edo, era dotoreago batean,"ezaugarriak"
 \end_layout
 
@@ -203,7 +184,6 @@ edo, era dotoreago batean,"ezaugarriak"
 \end_layout
 
 \begin_layout Subsection
-
 Aurkituko 
 \emph on
 ez
@@ -212,13 +192,11 @@ ez
 \end_layout
 
 \begin_layout Itemize
-
 LyX-en ezaugarri guztien azalpen zehatzak.
  
 \end_layout
 
 \begin_layout Itemize
-
 Zer? 
 \emph on
 Erabiltzailearen Gida
@@ -227,7 +205,6 @@ Erabiltzailearen Gida
 \end_layout
 
 \begin_layout Itemize
-
 Serioski mintzatuz, zu ernatu eta tresna honekin idazten jartzea nahi dugu,
  
 \emph on
@@ -244,7 +221,6 @@ Tutoretza
 
 \begin_deeper
 \begin_layout Standard
-
 Alferrikako lan errepikakor eta aspergarria izango litzateke 
 \emph on
 Erabiltzailearen Gida
@@ -257,15 +233,14 @@ Erabiltzailearen Gida
 \emph default
  ikusi" bezalako esaldia agertuko dela.
 \end_layout
+
 \end_deeper
 \begin_layout Itemize
-
 LaTeX-en azalpen zehatza.
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-
 Premiagabekoak.
  LaTeX-ekin egin daitezkeen trikimailu batzuk ikasteko gogoa edukiz gero,
  berorri buruzko liburu bat lor dezakezu.
@@ -274,27 +249,23 @@ Premiagabekoak.
  Azken finean, zertarako gurpila berriz asmatu\SpecialChar \ldots{}
 
 \end_layout
+
 \end_deeper
 \begin_layout Standard
-
 Beraz, gora bihotz ausartak, aurrera jarraitzeko ordua iritsi zaigu eta.
  Zure lehenbiziko dokumentua egiteko unea da\SpecialChar \ldots{}
 
 \end_layout
 
 \begin_layout Chapter
-
 LyX-ekin hastea
 \end_layout
 
 \begin_layout Section
-
 Lehenbiziko LyX dokumentua
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{atal:lyxlehenidazkia}
 
 \end_inset
@@ -306,7 +277,6 @@ Lehenbiziko LyX dokumentua
 \end_layout
 
 \begin_layout Standard
-
 Dagoen informazio asko hemen azalduko ez dugunez, laguntzako beste fitxategi
  batzuk bilatu beharrean egongo zara.
  Zorionez, erraza da.
@@ -346,7 +316,6 @@ Tutoretza
 \end_layout
 
 \begin_layout Standard
-
 Tutoretza-n programa hauek instalatuta dauzkazula onartuko dugu: ongi baino
  hobekiago darabilen LyX-eko bertsio bat, LaTeX, 
 \family typewriter
@@ -364,7 +333,6 @@ dvips
 \end_layout
 
 \begin_layout Standard
-
 Azkenik, zure trebezia lantzeko asmoz LyX-en fitxategi bat prestatu dugu.
  Beraren izena 
 \family typewriter
@@ -382,7 +350,6 @@ eu_adibide_gordina.lyx
 status open
 
 \begin_layout Standard
-
 Trikimailuak hori koloredun "oharretan" agertzen dira.
  Horien gainean saguarekin klikatuz irakur ditzakezu.
  
@@ -400,7 +367,6 @@ eu_adibide_lyx-atua.lyx
 \end_layout
 
 \begin_layout Standard
-
 Adibide-fitxategiak 
 \family typewriter
 examples/
@@ -442,7 +408,6 @@ honela
 \end_layout
 
 \begin_layout Standard
-
 Gainera, 
 \family typewriter
 examples/
@@ -456,12 +421,10 @@ examples/
 \end_layout
 
 \begin_layout Subsection
-
 Idaztea, ikustea eta inprimatzea
 \end_layout
 
 \begin_layout Itemize
-
 Ireki fitxategi berria 
 \family sans
 \bar under
@@ -479,12 +442,10 @@ erria
 \end_layout
 
 \begin_layout Itemize
-
 Idatzi honelako esaldi bat: Nere LyX lehen idazkia!.
 \end_layout
 
 \begin_layout Itemize
-
 Gorde dokumentua (
 \family sans
 \bar under
@@ -499,7 +460,6 @@ honela
 \end_layout
 
 \begin_layout Itemize
-
 Exekutatu LaTeX 
 \family typewriter
 dvi
@@ -527,7 +487,6 @@ VI
 status open
 
 \begin_layout Standard
-
 xdvi atzeko planoan exekutatzen utziz denbora aurrez dezakezu.
  Ondoren, 
 \family sans
@@ -559,7 +518,6 @@ xdvi
 \end_layout
 
 \begin_layout Itemize
-
 Inprimatzeko 
 \family sans
 \bar under
@@ -581,7 +539,6 @@ Inprimatu
 \end_layout
 
 \begin_layout Standard
-
 Zorionak! Zure lehenbiziko LyX dokumentua idatzi eta inprimatu duzu.
  Beste guztia huskeriak bakarrik dira, 
 \emph on
@@ -599,19 +556,16 @@ Ezaugarri hedatuak
 \end_layout
 
 \begin_layout Subsection
-
 Eragiketa bakunak
 \end_layout
 
 \begin_layout Standard
-
 LyX-ek testu-prozesadore batekin egin ditzakezun gauza gehienak egin ditzake.
  Automatikoki hitzak banandu eta paragrafoak koska ditzake.
  Ondoren, ekintza sinple batzuen azalpen laburrak dauzkazu.
 \end_layout
 
 \begin_layout Description
-
 Desegin LyX-ek hainbat desegite-maila ditu, uneko dokumentua editatzen hasi
  eta orain arteko guztiak desegin ditzakezu 
 \family sans
@@ -644,15 +598,14 @@ erregin
 
 \begin_deeper
 \begin_layout Standard
-
 Gaur egun, desegin komandoa 100 urratsetara mugatua dago.
  Gauza guztientzako ez da erabilgarria (adibidez, dokumentuaren diseinuaren
  aldaketan).
  Horietariko bakoitza LyX errorea bezala onartuta dago.
 \end_layout
+
 \end_deeper
 \begin_layout Description
-
 Ebaki/Itsatsi/Kopiatu Erabili 
 \family sans
 \bar under
@@ -695,7 +648,6 @@ opiatu
 \end_layout
 
 \begin_layout Description
-
 Bilatu/Ordeztu Erabili 
 \family sans
 \bar under
@@ -720,7 +672,6 @@ rdeztu
 status open
 
 \begin_layout Standard
-
 Amaitzean leihotxoa itxi.
  Edo irekita utzi lagungarriagoa dela baderitzozu.
  LyX-eko elkarrizketa-koadro gehienak (
@@ -763,7 +714,6 @@ reki...
 \end_layout
 
 \begin_layout Description
-
 Karaktereak\InsetSpace ~
 formateatzea Testua 
 \emph on
@@ -794,7 +744,6 @@ arakterea
 \end_layout
 
 \begin_layout Description
-
 Tresna-barra Ekintza erabilgarrienak lantzeko botoiak dauzka (menuen azpian
  dago), adibidez, 
 \family sans
@@ -808,7 +757,6 @@ Inprimatu
 \end_layout
 
 \begin_layout Standard
-
 Noski, oraindik ez duzu nahikoa idatzi funtzio hauen erabilgarritasuna aztertzek
 o.
  Gehiago idaztean desegin, itsatsi, kopiatu e.a.
@@ -816,13 +764,10 @@ o.
 \end_layout
 
 \begin_layout Subsection
-
 WYSIWYM: zuriuneak LyX-en
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{atal:zuriuneak}
 
 \end_inset
@@ -858,7 +803,6 @@ Tabuladoreak
 \end_layout
 
 \begin_layout Standard
-
 Testu-prozesadore komertzial asko WYSIWYG izakeran oinarritzen dira: "ikusten
  duzuna lortzen duzu".
  LyX-ek, ordea, "Ikusten duzuna 
@@ -892,7 +836,6 @@ Sarrera
 \end_layout
 
 \begin_layout Standard
-
 LyX-ek dokumentuaren egitura fintzeko lantzeko aukera (asko) eskaintzen
  dizkizu.
  Agian esan nahi zenuena ez du inprimatuko behar bezala.
@@ -908,12 +851,10 @@ LyX-ek dokumentuaren egitura fintzeko lantzeko aukera (asko) eskaintzen
 \end_layout
 
 \begin_layout Section
-
 Inguruneak
 \end_layout
 
 \begin_layout Standard
-
 Dokumentu bateko zati ezberdinek xede ezberdinak dituzte: zati horiei 
 \emph on
 inguruneak
@@ -929,7 +870,6 @@ inguruneak
 \end_layout
 
 \begin_layout Standard
-
 Inguruneak LyX-en oinarrizko "Ikusten duzuna esan nahi duzu" filosofiaren
  zati nagusiak dira.
  Ingurune zehatz batek letra-tipo, letra-tamaina, koskatze, lerro-tarte
@@ -943,7 +883,6 @@ Inguruneak LyX-en oinarrizko "Ikusten duzuna esan nahi duzu" filosofiaren
 \end_layout
 
 \begin_layout Standard
-
 
 \family sans
 Ingurunea
@@ -964,12 +903,10 @@ itxategia
 \end_layout
 
 \begin_layout Subsection
-
 Atalak eta azpiatalak
 \end_layout
 
 \begin_layout Standard
-
 Idatzi 
 \family typewriter
 Sarrera
@@ -983,7 +920,6 @@ Ingurunea
 status open
 
 \begin_layout Standard
-
 Ez daukazu lerro osoa hautatu beharrik.
  Ezer ez baduzu hautatzen, LyX-ek unean dagoen paragrafoa hautatutako ingurunera
  aldatuko du.
@@ -1022,17 +958,14 @@ Ingurunea
 \end_layout
 
 \begin_layout Standard
-
 Idatzi dokumentuaren sarrera:
 \end_layout
 
 \begin_layout LyX-Code
-
 Hau nire LyX-eko lehen dokumentuaren sarrera bat da.
 \end_layout
 
 \begin_layout Standard
-
 Sakatu 
 \family sans
 Lerro-itzulera
@@ -1059,7 +992,6 @@ gauza gehiago
 \end_layout
 
 \begin_layout Standard
-
 Gauzak hobetuz doaz.
  Joan 1.
  atalaren amaierara ("nire LyX-eko lehen" paragrafoaren atzera), sakatu
@@ -1082,38 +1014,31 @@ Dokumentu honi buruz
 \end_layout
 
 \begin_layout Standard
-
 Lerro itzulera sakatu, Estandarra ingurunera itzultzeko, eta datozen bost
  lerroak idatzi:
 \end_layout
 
 \begin_layout LyX-Code
-
 Atalak eta azpiatalak beherago azaltzen dira.
 \end_layout
 
 \begin_layout LyX-Code
-
 Atalaren azalpena
 \end_layout
 
 \begin_layout LyX-Code
-
 Atalak azpiatalen baino handiagoak dira.
 \end_layout
 
 \begin_layout LyX-Code
-
 Azpiatalaren azalpena
 \end_layout
 
 \begin_layout LyX-Code
-
 Azpiatalak atalak baino txikiagoak dira.
 \end_layout
 
 \begin_layout Standard
-
 Bigarren lerroan kurtsorea kokatu eta Ingurunea menuan 
 \family sans
 Azpiatala
@@ -1133,7 +1058,6 @@ Azpiatala
 \end_layout
 
 \begin_layout Standard
-
 Zatitzeko maila sakonagoak 
 \family sans
 Azpiazpiatala
@@ -1172,7 +1096,6 @@ Atala
 \end_layout
 
 \begin_layout Standard
-
 Azkenik, baliteke zenbatu gabeko atal eta azpiatalak nahi izatea.
  Horretarako ere badaude beste gune batzuk.
  Atalen izenburuak 
@@ -1196,7 +1119,6 @@ Azpiazpiatala
 \end_layout
 
 \begin_layout Description
-
 Ariketa: konpondu 
 \family typewriter
 eu_adibide_gordina.lyx
@@ -1205,12 +1127,10 @@ eu_adibide_gordina.lyx
 \end_layout
 
 \begin_layout Subsection
-
 Zerrendak eta azpizerrendak
 \end_layout
 
 \begin_layout Standard
-
 LyX-ek zerrendak osatzeko zenbait ingurune ditu.
  Zerrenden hainbat ingurunek eskema bat idaztean, 
 \family sans
@@ -1223,7 +1143,6 @@ Tabuladoreari
 status collapsed
 
 \begin_layout Standard
-
 Bai, badakigu hau 
 \emph on
 Tutoretza
@@ -1238,7 +1157,6 @@ Tutoretza
 \end_layout
 
 \begin_layout Itemize
-
 Diapositiben aurkezpeneko puntu ezberdinak deskribatzeko 
 \family sans
 Elementua
@@ -1248,7 +1166,6 @@ Elementua
 status collapsed
 
 \begin_layout Standard
-
 
 \series bold
 Bulet
@@ -1263,7 +1180,6 @@ Bulet
 \end_layout
 
 \begin_layout Itemize
-
 Eskema batek 
 \family sans
 Zenbatuta
@@ -1273,7 +1189,6 @@ Zenbatuta
 \end_layout
 
 \begin_layout Itemize
-
 Hainbat softwaretako paketeak azaltzen dituen dokumentu batek 
 \family sans
 Azalpena
@@ -1284,7 +1199,6 @@ Azalpena
 \end_layout
 
 \begin_layout Itemize
-
 
 \family sans
 Zerrenda
@@ -1297,19 +1211,16 @@ Azalpena
 \end_layout
 
 \begin_layout Standard
-
 LyX beste testu-prozesadoreak baino hobeago izatearen arrazoiei buruzko
  zerrenda bat idatziko dugu.
  Idatzi hau zure dokumentuaren leku batean:
 \end_layout
 
 \begin_layout LyX-Code
-
 LyX beste testu-prozesadoreak baino hobeagoa da zeren eta:
 \end_layout
 
 \begin_layout Standard
-
 eta sakatu lerro-itzulera.
  Orain 
 \family sans
@@ -1326,22 +1237,18 @@ Elementua
 \end_layout
 
 \begin_layout LyX-Code
-
 Konposaketa-lana zure ordez egiten du.
 \end_layout
 
 \begin_layout LyX-Code
-
 Matematikak WYSIWYG dira.
 \end_layout
 
 \begin_layout LyX-Code
-
 Oso erraza da zerrendak sortzea!
 \end_layout
 
 \begin_layout Standard
-
 Zerrenda-motako inguruneak, izenburuen ez bezala, 
 \family sans
 lerro-itzulera
@@ -1368,7 +1275,6 @@ M-p s
 \end_layout
 
 \begin_layout Standard
-
 Zerrenda polita lortu duzu.
  Inprimatzean zein itxura edukiko duen ikusteko, exekutatu LaTeX.
  Baina, zer gertatzen da arrazoiak zenbatuta eduki nahi badituzu? Hautatu
@@ -1377,7 +1283,6 @@ Zerrenda polita lortu duzu.
 status open
 
 \begin_layout Standard
-
 LyX-ek ez dizu lehenbiziko buleta aukeratzen utziko, zerrendaren aurreko
  paragrafoa ez baduzu aukeratzen, bederen, eta ziurrenik ez duzu hori egin
  nahiko.
@@ -1397,7 +1302,6 @@ Zenbatuta
 \end_layout
 
 \begin_layout Standard
-
 Zerrenda hautatuta dagoen bitartean, beste bi zerrenda-ingurunetara alda
  dezakezu, 
 \family sans
@@ -1415,7 +1319,6 @@ Zerrenda
 \end_layout
 
 \begin_layout Standard
-
 Lehen terminoa letra lodiz (
 \family sans
 Azalpena
@@ -1425,7 +1328,6 @@ Azalpena
 status open
 
 \begin_layout Standard
-
 Konposaketako tabuladorea da, ordea, eta zerrendako "termino" handienaren
  neurrira moldatzeko aldatuko da, idazmakina bateko tabuladore lehor, goibel
  eta aldagaitz bat ez bezala.
@@ -1447,7 +1349,6 @@ C-Zuriunea
 \end_layout
 
 \begin_layout Description
-
 Ariketa: zuzendu 
 \family typewriter
 eu_adibide_gordina.lyx
@@ -1456,7 +1357,6 @@ eu_adibide_gordina.lyx
 \end_layout
 
 \begin_layout Standard
-
 Itxura erakargarriak osatuz, zerrenda batzuk beste batzuen barnean sar ditzakezu.
  Adibide gisa, eskemak.
  Zerrenda sinplea eta zenbatuak azpizerrendetan buleta eta zenbatze-mota
@@ -1471,12 +1371,10 @@ Erabiltzailearen Gida
 \end_layout
 
 \begin_layout Subsection
-
 Beste inguruneak: Bertsoa, Zitazioa eta beste batzuk
 \end_layout
 
 \begin_layout Standard
-
 Zitak ezartzeko bi ingurune daude: 
 \family sans
 Zita
@@ -1514,7 +1412,6 @@ Erabiltzailearen Gida
 \end_layout
 
 \begin_layout Description
-
 Ariketa: 
 \family sans
 Zita
@@ -1545,12 +1442,10 @@ eu_adibide_gordina.lyx
 \end_layout
 
 \begin_layout Chapter
-
 Dokumentuak idaztea
 \end_layout
 
 \begin_layout Standard
-
 Aurreko kapitulua LyX-ekin idazten ohitzeko lagunduko zizulakoan gaude.
  Oinarrizko editatze-eragiketaz gain inguruneen ahalmenekin idaztea ere
  erakutsi dizugu.
@@ -1565,13 +1460,10 @@ i eta gaien aurkibideak.
 \end_layout
 
 \begin_layout Section
-
 Testu-klaseak
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{atal:testuklaseak}
 
 \end_inset
@@ -1591,7 +1483,6 @@ testu-klaseak
 status open
 
 \begin_layout Standard
-
 LaTeX-eko erabiltzaileentzat: hau LaTeX-eko dokumentu-klasearen (documentclass)
  antzekoa da
 \end_layout
@@ -1610,7 +1501,6 @@ liburua
 \end_layout
 
 \begin_layout Standard
-
 Litekeena da zure dokumentua 
 \family sans
 Artikulua
@@ -1620,7 +1510,6 @@ Artikulua
 status open
 
 \begin_layout Standard
-
 Testu-klase lehenetsia izan ohi da.
 \end_layout
 
@@ -1659,7 +1548,6 @@ Ingurunea
 \end_layout
 
 \begin_layout Standard
-
 Egunkariek konposaketa-mota propioa eduki ohi dute: letra-tamainak, zutabe
  bateko (edo biko) inprimaketa, edo orriaren izenburuak bezala.
  Garai digital honetan, hauek artikulu elektronikoak onartzen hasi dira,
@@ -1676,7 +1564,6 @@ Article\InsetSpace ~
 \end_layout
 
 \begin_layout Standard
-
 Jarraian zenbait testu-motari buruzko erreferentzia laburra azaltzen da.
  Xehetasun gehiagorako, ikus E
 \emph on
@@ -1690,9 +1577,7 @@ Dokumentu-klase bereziak
 \end_layout
 
 \begin_layout Standard
-
-
-\begin_inset  Tabular
+\begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
 <features>
 <column alignment="center" valignment="top" leftline="true" width="0pt">
@@ -1702,7 +1587,6 @@ Dokumentu-klase bereziak
 \begin_inset Text
 
 \begin_layout Standard
-
 Izena
 \end_layout
 
@@ -1712,7 +1596,6 @@ Izena
 \begin_inset Text
 
 \begin_layout Standard
-
 Azalpena
 \end_layout
 
@@ -1724,7 +1607,6 @@ Azalpena
 \begin_inset Text
 
 \begin_layout Standard
-
 article
 \end_layout
 
@@ -1734,7 +1616,6 @@ article
 \begin_inset Text
 
 \begin_layout Standard
-
 orrialde bakarrekoa, kapitulurik gabe
 \end_layout
 
@@ -1746,7 +1627,6 @@ orrialde bakarrekoa, kapitulurik gabe
 \begin_inset Text
 
 \begin_layout Standard
-
 article (AMS)
 \end_layout
 
@@ -1756,7 +1636,6 @@ article (AMS)
 \begin_inset Text
 
 \begin_layout Standard
-
 Amerikar Matematika Elkarteko diseinu eta inguruneak
 \end_layout
 
@@ -1768,7 +1647,6 @@ Amerikar Matematika Elkarteko diseinu eta inguruneak
 \begin_inset Text
 
 \begin_layout Standard
-
 report
 \end_layout
 
@@ -1778,7 +1656,6 @@ report
 \begin_inset Text
 
 \begin_layout Standard
-
 artikulua baino luzeagoa, bi orrialdetatik
 \end_layout
 
@@ -1790,7 +1667,6 @@ artikulua baino luzeagoa, bi orrialdetatik
 \begin_inset Text
 
 \begin_layout Standard
-
 book
 \end_layout
 
@@ -1800,7 +1676,6 @@ book
 \begin_inset Text
 
 \begin_layout Standard
-
 txostena + azala + kontrazala
 \end_layout
 
@@ -1812,7 +1687,6 @@ txostena + azala + kontrazala
 \begin_inset Text
 
 \begin_layout Standard
-
 slides
 \end_layout
 
@@ -1822,7 +1696,6 @@ slides
 \begin_inset Text
 
 \begin_layout Standard
-
 gardenkiak (FoilTeX dauka)
 \end_layout
 
@@ -1834,7 +1707,6 @@ gardenkiak (FoilTeX dauka)
 \begin_inset Text
 
 \begin_layout Standard
-
 letter
 \end_layout
 
@@ -1844,7 +1716,6 @@ letter
 \begin_inset Text
 
 \begin_layout Standard
-
 helbide, sinadura eta bestelako inguruneak dauzka
 \end_layout
 
@@ -1859,12 +1730,10 @@ helbide, sinadura eta bestelako inguruneak dauzka
 \end_layout
 
 \begin_layout Section
-
 Txantiloiak: eskutitza idaztea
 \end_layout
 
 \begin_layout Standard
-
 Testu-klase ospetsuena 
 \family sans
 Letter
@@ -1903,7 +1772,6 @@ Letter
 \end_layout
 
 \begin_layout Standard
-
 Ireki fitxategi berri bat 
 \family sans
 \bar under
@@ -1924,7 +1792,6 @@ letter.lyx
 \end_layout
 
 \begin_layout Standard
-
 
 \family sans
 Ingurunea
@@ -1972,7 +1839,6 @@ Signature
 \end_layout
 
 \begin_layout Standard
-
 Txantiloi bat LyX fitxategi arrunt bat besterik ez da.
  Hots, zure helbide eta sinadurekin bete eta txantiloi berri bat bezala
  gorde dezakezu.
@@ -1984,7 +1850,6 @@ Txantiloi bat LyX fitxategi arrunt bat besterik ez da.
 status open
 
 \begin_layout Standard
-
 Abisu bat, txantiloitik idazten duzun kasurako.
  Ingurune bateko testua ezabatuz (zure helbidea sartzeko 
 \family sans
@@ -2003,7 +1868,6 @@ helbidea
 \end_layout
 
 \begin_layout Standard
-
 Txantiloiek denbora asko aurrera dezaketenez, ahal duzun guztietan erabiltzea
  aholkatzen dizugu.
  Gainera, testu-klase dotore batzuk nola erabiltzen diren erakusten dute.
@@ -2014,12 +1878,10 @@ Txantiloiek denbora asko aurrera dezaketenez, ahal duzun guztietan erabiltzea
 \end_layout
 
 \begin_layout Section
-
 Dokumentuen tituluak
 \end_layout
 
 \begin_layout Standard
-
 LyX-ek (LaTeX-ek bezala) titulua --- uneko izenburua, egilea, data eta laburpena
  ere barne eduki ditzake --- dokumentutik bereizitako zati bezala hartzen
  du.
@@ -2036,7 +1898,6 @@ Article
 status open
 
 \begin_layout Standard
-
 Gutun mota ez darabilzula, 
 \family sans
 Letter
@@ -2072,12 +1933,10 @@ Laburpena
 \end_layout
 
 \begin_layout Standard
-
 Orain, ikusi emaitza nola inprimatuko den.
 \end_layout
 
 \begin_layout Description
-
 Ariketa: Zuzendu titulua, egilea eta data 
 \family typewriter
 eu_adibide_gordina.lyx
@@ -2086,13 +1945,10 @@ eu_adibide_gordina.lyx
 \end_layout
 
 \begin_layout Section
-
 Etiketa eta erreferentzia gurutzatuak
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{atal:etiketak}
 
 \end_inset
@@ -2110,12 +1966,10 @@ eekin konparatuz.
 \end_layout
 
 \begin_layout Subsection*
-
 Zure aurreneko etiketa
 \end_layout
 
 \begin_layout Standard
-
 Gure bigarren atala, "Dokumentu honi buruz" izenburua duena, markatuko dugu.
  Klikatu ataleko izenburuaren amaieran eta hautatu 
 \family sans
@@ -2138,7 +1992,6 @@ k egingo dizkizu.
 \end_layout
 
 \begin_layout Standard
-
 Ahaztu baino lehenago, etiketa ataleko edozein lekutan koka dezakezu; ataleko
  erreferentziak etiketaren aurretik dagoen azken atal edo azpiataleko izenburura
  zuzendua dago.
@@ -2147,7 +2000,6 @@ Ahaztu baino lehenago, etiketa ataleko edozein lekutan koka dezakezu; ataleko
 \end_layout
 
 \begin_layout Standard
-
 Orain arte ez dugu gauza askorik egin (
 \family typewriter
 dvi
@@ -2160,26 +2012,23 @@ dvi
 \end_layout
 
 \begin_layout Subsection*
-
 Zure lehen erreferentzia gurutzatua
 \end_layout
 
 \begin_layout Standard
-
 Kokatu kurtsorea zure dokumentuko 2.
  ataleko lekuren batean.
  Idatzi hau
 \end_layout
 
 \begin_layout LyX-Code
-
 Dokumentu honi buruz gehiago jakiteko asmoz, 
 \newline
-ikus atala , orrialdean aurki dezakezu.
+ikus atala , orrialdean aurki
+ dezakezu.
 \end_layout
 
 \begin_layout Standard
-
 Orain, kokatu kurtsorea "atala" hitzaren aurrean eta hautatu 
 \family sans
 \bar under
@@ -2224,7 +2073,6 @@ babestu
 \end_layout
 
 \begin_layout Standard
-
 LyX-ek erreferentzia-kutxa batean jartzen du, kurtsorea dagoen lekuan.
  Inprimatutako dokumentuan erreferentzia markatzen duen kutxa hau orrialde
  edo atal zenbakiagatik (
@@ -2254,7 +2102,6 @@ vi
 \end_layout
 
 \begin_layout Standard
-
 Era probetxugarri batean, LyX-ekin dokumentua editatzen duzunean, gurutzatutako
  erreferentzia batek hiperesteka gisa dihardu; horren gainean klikatuta,
  
@@ -2266,12 +2113,10 @@ Erreferentzia gurutzatua
 \end_layout
 
 \begin_layout Subsection*
-
 Etiketekin jolastea
 \end_layout
 
 \begin_layout Standard
-
 Esan dizugu erreferentzia gurutzatuak zenbatzeaz LyX arduratzen dela; egiaztatze
 ko unea heldu zaizu.
  Gehitu atal berri bat 2.
@@ -2288,7 +2133,6 @@ la bezala aipatuko du.
 \end_layout
 
 \begin_layout Standard
-
 Etiketekin aritzeko, sartu etiketa berri bat lehenbiziko erreferentzia gurutzatu
 a zegoen lekuan, eta aipatu dokumentuko edozein lekutik.
  Erreferentzia gurutzatu ugari txertatzen ibiltzen bazara (egunkarirako
@@ -2300,7 +2144,6 @@ Erreferentzia gurutzatua
 \end_layout
 
 \begin_layout Standard
-
 Erreferentzia gurutzatuak dokumentu handietan ere ongi dabiltzala ziurtatu
  nahi baduzu, kopiatu 
 \emph on
@@ -2311,7 +2154,6 @@ Erabiltzailearen Gida
 status open
 
 \begin_layout Standard
-
 Gauza bat, kapitulu baten izenburua kopiatzeak errore bat sor dezake, zeren
  eta artikulu testu-klaseak kapitulurik ez baitu onartzen.
  Hori gertatzen bada, ezabatu kapituluaren izenburua.
@@ -2329,7 +2171,6 @@ Gauza bat, kapitulu baten izenburua kopiatzeak errore bat sor dezake, zeren
 \end_layout
 
 \begin_layout Description
-
 Ariketa: zuzendu erreferentziak 
 \family typewriter
 eu_adibide_gordina.lyx 
@@ -2338,12 +2179,10 @@ fitxategian.
 \end_layout
 
 \begin_layout Section
-
 Oin-oharrak eta albokoak
 \end_layout
 
 \begin_layout Standard
-
 Oin-oharrak gehitzeko, tresna-barrako 
 \family sans
 Txertatu\InsetSpace ~
@@ -2354,7 +2193,6 @@ oin-oharra
 status collapsed
 
 \begin_layout Standard
-
 Botoiak beltz koloreko testuaren azpian dagoen testu gorri batera zuzendutako
  gezia irudikatzen du.
 \end_layout
@@ -2391,12 +2229,10 @@ oin-oharra
 \end_layout
 
 \begin_layout LyX-Code
-
 LyX konposaketarako testu-prozesadorea da.
 \end_layout
 
 \begin_layout Standard
-
 Orain klikatu "oina" etiketadun botoia.
  Oin-oharraren kutxa desagertuko da, oin-oharraren marka inprimatuko den
  testuaren kokalekua erakusteko botoia utziko du.
@@ -2406,7 +2242,6 @@ Orain klikatu "oina" etiketadun botoia.
 \end_layout
 
 \begin_layout Standard
-
 Oin-oharraren izendatzailea zenbaki bat izan beharrean hitz bat izatearen
  zergatia galdetzen baduzu, erantzuna zera da: inprimatuko den testuan oin-orrie
 n zenbaketa egiteaz LyX arduratzen dela.
@@ -2418,14 +2253,12 @@ n zenbaketa egiteaz LyX arduratzen dela.
 \end_layout
 
 \begin_layout Standard
-
 Oin-oharrak testu arrunt bezala ebaki eta itsats daitezke.
  Saia zaitez beldurrik gabe! Hautatu oin-ohar botoi bat
 \begin_inset Foot
 status open
 
 \begin_layout Standard
-
 Teklatuaren bitartez errazago hautatuko duzu.
  Saguarekin saiatzean oin-oharraren kutxa irekitzeko arriskua baitaukazu.
 \end_layout
@@ -2467,7 +2300,6 @@ Txertatu oin-oharra
 \end_layout
 
 \begin_layout Standard
-
 Albo-oharrak gehitzeko, erabili 
 \family sans
 Txertatu\InsetSpace ~
@@ -2486,17 +2318,14 @@ Albo-oharra
 \end_layout
 
 \begin_layout Itemize
-
 Pantailan kutxek "oina" eduki beharrean "albo" daukate.
 \end_layout
 
 \begin_layout Itemize
-
 Oharrak alboetan kokatzen dira, testuaren behealdean ordez.
 \end_layout
 
 \begin_layout Itemize
-
 Ez dira zenbatzen.
  Aldatu LyX-eko oin-ohar bat testu arrunt egoerara, ondoren hautatu testu
  hori eta bihurtu ezazu albo-oharrera.
@@ -2504,7 +2333,6 @@ Ez dira zenbatzen.
 \end_layout
 
 \begin_layout Description
-
 Ariketa: zuzendu oin-oharrak 
 \family typewriter
 eu_adibide_gordina.lyx
@@ -2513,13 +2341,10 @@ eu_adibide_gordina.lyx
 \end_layout
 
 \begin_layout Section
-
 Bibliografiak
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{atal:bibliografiak}
 
 \end_inset
@@ -2533,7 +2358,6 @@ Bibliografiak erreferentzia gurutzatuak bezalakoak dira.
 \end_layout
 
 \begin_layout Standard
-
 Joan dokumentu-amaierara eta aldatu 
 \family sans
 Bibliografia
@@ -2574,7 +2398,6 @@ lyxtutoretza
 \end_layout
 
 \begin_layout Standard
-
 Orain, kokatu kurtsorea dokumentuko leku batean, erreferentzia txertatu
  nahi duzun kokalekua hain zuzen.
  Hautatu 
@@ -2612,7 +2435,6 @@ lyxtutoretza
 \end_layout
 
 \begin_layout Standard
-
 Nola erabiltzen dira beste eremuak? Zitazioa elkarrizketa-koadroko 
 \family sans
 Testua\InsetSpace ~
@@ -2641,7 +2463,6 @@ Erabiltzailearen Gida
 \end_layout
 
 \begin_layout Description
-
 Ariketa: zuzendu bibliografia eta zitazioak 
 \family typewriter
 eu_adibide_gordina.lyx
@@ -2650,12 +2471,10 @@ eu_adibide_gordina.lyx
 \end_layout
 
 \begin_layout Section
-
 Gaien aurkibidea
 \end_layout
 
 \begin_layout Standard
-
 Dokumentu-hasieran gaien aurkibidea jartzeko burutazioa izango zenuen, ez?
  LyX-ekin erraz egingo duzu.
  Dokumentuko tituluaren ondoren eta testuaren aurretik lerro-itzulera sakatu
@@ -2688,7 +2507,6 @@ Gaien aurkibidea
 \end_layout
 
 \begin_layout Standard
-
 Ez dirudi oso erabilkorra denik.
  Hala ere, 
 \family typewriter
@@ -2705,7 +2523,6 @@ dvi
 \end_layout
 
 \begin_layout Standard
-
 Dokumentua pantailan editatzerakoan, ez da gaien aurkibidea testu gisa azaltzen,
  ezinezkoa baita editatzea.
  Gaien aurkibideari dagokion botoian, edo 
@@ -2753,13 +2570,11 @@ ki agertuko da.
 \end_layout
 
 \begin_layout Standard
-
 Aurkibidea kentzeko dagokion botoia, beste edozein testu bezala, ezabatzearekin
  nahikoa da.
 \end_layout
 
 \begin_layout Description
-
 Ariketa: jarri gaien aurkibidea 
 \family typewriter
 eu_adibide_gordina.lyx
@@ -2768,12 +2583,10 @@ eu_adibide_gordina.lyx
 \end_layout
 
 \begin_layout Chapter
-
 Matematika erabiltzea
 \end_layout
 
 \begin_layout Standard
-
 Zientzialari askok LaTeX erabiltzen dute zeren eta ekuazioak era dotorre
  batean kaleratzen baititu, testu prozesadoreek eta beraien ekuazio editoreak
  erabiltzen duten kontrol karaktereak sahietsiz.
@@ -2792,7 +2605,6 @@ rekin bide azkar eta erosoan profesional-itxurako adierazpen matematikoak
 status open
 
 \begin_layout Standard
-
 LyX-ek ezin du egiaztatu idazten dituzun ekuazioak zuzenak al diren edo
  ez.
  Sentitzen da.
@@ -2804,22 +2616,18 @@ LyX-ek ezin du egiaztatu idazten dituzun ekuazioak zuzenak al diren edo
 \end_layout
 
 \begin_layout Section
-
 Matematika-era
 \end_layout
 
 \begin_layout Standard
-
 Dokumentuko lekuren batean ondorengoa idatzi:
 \end_layout
 
 \begin_layout LyX-Code
-
 Gogoko dut Einstein-ek esandakoa, E=mc^2, hain bakuna da.
 \end_layout
 
 \begin_layout Standard
-
 Ekuazioak, 
 \family typewriter
 dvi
@@ -2833,7 +2641,6 @@ dvi
 \end_layout
 
 \begin_layout Standard
-
 Horren ordez, egokiro konposatua izan dadin formula bat sortu dugu.
  Ekuazio bat sortzeko, klikatu tresna-barrako kolore urdineko
 \begin_inset Formula $\frac{a+b}{c}$
@@ -2862,7 +2669,6 @@ Esc
 \end_layout
 
 \begin_layout Standard
-
 Exekutatu LaTeX eta begiratu 
 \family typewriter
 dvi
@@ -2877,7 +2683,6 @@ dvi
 \end_layout
 
 \begin_layout Standard
-
 Matematika editatzeko era berri hau WYSIWYM filosofiaren beste adibide bat
  da.
  LaTeX-en, matematika espresioak testuaren eta 
@@ -2899,12 +2704,10 @@ n edukiko duen ia itxura berdina bistaratzen du.
 \end_layout
 
 \begin_layout Section
-
 Ekuazioetan murgiltzea
 \end_layout
 
 \begin_layout Standard
-
 Orain 
 \begin_inset Formula $E=mc^{2}$
 \end_inset
@@ -2936,7 +2739,6 @@ Ihes
 \end_layout
 
 \begin_layout Standard
-
 Matematika-eran idaztea testu normal bat editatzea bezala da, aurrerago
  azalduko dizkizugun tekla bereziak kontutan hartzen ez baditugu bederen.
  Ezabatzeko, erabili 
@@ -2980,7 +2782,6 @@ Desegin
 \end_layout
 
 \begin_layout Standard
-
 Eta 
 \begin_inset Formula $E=mc^{2}$
 \end_inset
@@ -3013,12 +2814,10 @@ Zuriunea
 \end_layout
 
 \begin_layout Section
-
 Berretzaile eta indizeak
 \end_layout
 
 \begin_layout Standard
-
 Berretzaile bat 
 \family sans
 Matematikako\InsetSpace ~
@@ -3040,7 +2839,6 @@ Ihes
 \end_layout
 
 \begin_layout Standard
-
 Azpindizea idazteko bidea ere erraza da: 
 \family sans
 Azpimarra
@@ -3055,7 +2853,6 @@ k idazten:
 \end_layout
 
 \begin_layout Description
-
 Ariketa: ipini 
 \family typewriter
 eu_adibide_gordina.lyx
@@ -3065,12 +2862,10 @@ eu_adibide_gordina.lyx
 \end_layout
 
 \begin_layout Section
-
 Matematikako panela
 \end_layout
 
 \begin_layout Standard
-
 Matematikako ikur eta funtzio osatuagoak sartzeko Matematikako panela erabiltzea
  komenigarria izaten da.
  Funtzio hauetariko asko tuarekin, 
@@ -3114,12 +2909,10 @@ panela
 \end_layout
 
 \begin_layout Subsection
-
 Grekera eta ikurrak
 \end_layout
 
 \begin_layout Standard
-
 Matematika panela-ak matematikako ikur multzo handia aukeratzen uzten dizu:
  hainbat gezi, erlazio, eragile, batura eta integral.
  Jakin ezazu goi-indizeek eta azpindizeek batura eta integralen limitea
@@ -3127,7 +2920,6 @@ Matematika panela-ak matematikako ikur multzo handia aukeratzen uzten dizu:
 \end_layout
 
 \begin_layout Standard
-
 " Ez dago egin ezin dezakezunik...
  behar duzun guztia 
 \begin_inset Formula $\heartsuit$
@@ -3137,12 +2929,10 @@ Matematika panela-ak matematikako ikur multzo handia aukeratzen uzten dizu:
 \end_layout
 
 \begin_layout Subsection
-
 Erroketa, tilet eta mugatzaileak
 \end_layout
 
 \begin_layout Standard
-
 Erroketa bat idazteko, klikatu erroketa-ikurra daukan botoia.
  Erro ikurra agertuko da, eta kurtsorea bere barnean kokatuko da.
  Orain idatzi aldagaiak, zenbakiak, beste erroketak, zatiketak edota nahi
@@ -3151,7 +2941,6 @@ Erroketa bat idazteko, klikatu erroketa-ikurra daukan botoia.
 \end_layout
 
 \begin_layout Standard
-
 Karaktere (
 \begin_inset Formula $\overrightarrow{v}$
 \end_inset
@@ -3168,7 +2957,6 @@ une
 status collapsed
 
 \begin_layout Standard
-
 
 \emph on
 Itzultzailearen oharra
@@ -3187,7 +2975,6 @@ Itzultzailearen oharra
 \end_layout
 
 \begin_layout Standard
-
 Parentesiak, giltzak edota kortxeteak bezalako mugatzaileak antzera erabili
  arren pitin bat zailtxoagoak dira erabiltzen.
  Sakatu 
@@ -3203,7 +2990,6 @@ Mugatzaileak
 \end_layout
 
 \begin_layout Standard
-
 Parentesi-bikotea egoten da lehenetsi gisa, hautatu zuk nahi dituzun kortxete-bi
 koteak, kortxete eta parentesiak, edo botoi hutsa "
 \begin_inset Formula $a=\left\langle 7\right.$
@@ -3214,7 +3000,6 @@ koteak, kortxete eta parentesiak, edo botoi hutsa "
 \end_layout
 
 \begin_layout Standard
-
 Alferra bazara, matematika-eran oraingo parentesiak idatz ditzakezu 
 \family sans
 Mugatzailea
@@ -3228,7 +3013,6 @@ Mugatzailea
 \end_layout
 
 \begin_layout Standard
-
 Existitzen den testu batean mugatzaileak, erroketak edo apaingarriak txerta
  ditzakezu.
  Hautatu egokitu nahi duzun ekuazioa, ondoren klikatu 
@@ -3254,12 +3038,10 @@ Newton
 \end_layout
 
 \begin_layout Subsection
-
 Zatikiak
 \end_layout
 
 \begin_layout Standard
-
 Matematika-eran zatikiak idaztea oso erraza da.
  Klikatu 
 \family sans
@@ -3284,14 +3066,12 @@ Behera
 \end_layout
 
 \begin_layout Standard
-
 Jakingo duzunez, bi txertatze-gunetan nahi duzuna idazteko aukera daukazu:
  berretzaileak dituzten aldagaiak, erro karratuak, beste zatiki batzuk,
  integralak edo bururatzen zaizun beste edozer.
 \end_layout
 
 \begin_layout Description
-
 Ariketa: jarri 
 \family typewriter
 eu_adibide_gordina.lyx
@@ -3301,12 +3081,10 @@ eu_adibide_gordina.lyx
 \end_layout
 
 \begin_layout Subsection
-
 TeX era: limiteak, log, sinu eta bestelakoak
 \end_layout
 
 \begin_layout Standard
-
 Matematika-eran hizkiak aldagaitzat hartzen direnez, matematika-eran "sin"
  idazten baduzu LyX-ek hiru aldagaien arteko biderkaketa (
 \begin_inset Formula $s$
@@ -3353,7 +3131,6 @@ rekin idatzi nahiko zenuen.
 \end_layout
 
 \begin_layout Standard
-
 Hautatu klik bikoitzarekin "sin" 
 \family sans
 Matematikako panela
@@ -3376,7 +3153,6 @@ Atzera-tekla
 \end_layout
 
 \begin_layout Standard
-
 TeX eran idazteko behar dituzun komando gehiago 
 \family sans
 Funtzioak
@@ -3411,7 +3187,6 @@ Funtzioak
 \end_layout
 
 \begin_layout Description
-
 Ariketa: jarri 
 \family typewriter
 eu_adibide_gordina.lyx
@@ -3421,13 +3196,10 @@ eu_adibide_gordina.lyx
 \end_layout
 
 \begin_layout Subsection
-
 Matrizeak
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{atal:matrizeak}
 
 \end_inset
@@ -3456,7 +3228,6 @@ Ados
 \end_layout
 
 \begin_layout Standard
-
 LyX-ek 
 \begin_inset Formula $2\times3$
 \end_inset
@@ -3469,7 +3240,6 @@ LyX-ek
 \end_layout
 
 \begin_layout Standard
-
 Matrize bateko zutabeetan zehar mugitzeko 
 \family sans
 Tabuladorea
@@ -3487,7 +3257,6 @@ Behera
 \end_layout
 
 \begin_layout Standard
-
 Bat-batean errenkada edo zutabe gehiago behar badituzu, erabili 
 \family sans
 \bar under
@@ -3526,7 +3295,6 @@ zutabea
 \end_layout
 
 \begin_layout Standard
-
 Ikus 
 \emph on
 Erabiltzailearen Gida
@@ -3539,12 +3307,10 @@ Erabiltzailearen Gida
 \end_layout
 
 \begin_layout Subsection
-
 Adierazpen-era
 \end_layout
 
 \begin_layout Standard
-
 Orain arte idatzi ditugun ekuazioak, inguratzen zituzten testuaren lerro
  berdinean zeuden, lerroko edo barneko ekuazioak bezala ere ezagutzen dira.
  Ekuazio labur eta soilentzat ongi doa, baina gauza handiagoentzat, edo
@@ -3559,7 +3325,6 @@ Erabiltzailearen Gida
 \end_layout
 
 \begin_layout Standard
-
 Klikatu 
 \family sans
 Matematikako\InsetSpace ~
@@ -3586,7 +3351,6 @@ era
 \end_layout
 
 \begin_layout Itemize
-
 Letra-tamaina lehenetsia handiagoa da, 
 \begin_inset Formula $\sum$
 \end_inset
@@ -3599,24 +3363,20 @@ Letra-tamaina lehenetsia handiagoa da,
 \end_layout
 
 \begin_layout Itemize
-
 Batura eta limiteetan (integraletan ez) goi-indizeak eta azpindizeak ikurren
  azpira gehiago hurbiltzen dira alboetara baino.
 \end_layout
 
 \begin_layout Itemize
-
 Testua zentratuta dago.
 \end_layout
 
 \begin_layout Standard
-
 Ezberdintasun hauek alde batera utziz, barneko eta adierazpen erako ekuazioak
  oso antzekoak dira.
 \end_layout
 
 \begin_layout Standard
-
 Azken ohar bat adierazpen era konposatzeari buruz: argi ibili ekuazioa paragrafo
  berri batean edo ez idazten duzunean.
  Ekuazioa sententzi edo paragrafo baten erdian idazten baduzu, ez sakatu
@@ -3626,7 +3386,6 @@ Azken ohar bat adierazpen era konposatzeari buruz: argi ibili ekuazioa paragrafo
 \end_layout
 
 \begin_layout Description
-
 Ariketa: jarri 
 \family typewriter
 eu_adibide_gordina.lyx
@@ -3636,14 +3395,12 @@ eu_adibide_gordina.lyx
 \end_layout
 
 \begin_layout Description
-
 Ariketa: atal honetan ikasitako zenbait tresnarekin, Hurrengo ekuazioa bezalako
  bat idazteko gai izan beharko zenuke
 \begin_inset Foot
 status open
 
 \begin_layout Standard
-
 Bide zailenetik aritu ondoren, zergatik ez zara 
 \family sans
 \bar under
@@ -3667,8 +3424,6 @@ ingurunea
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset Formula \[
 f(x)=\left\{ \begin{array}{cc}
 \log_{8}x & x>0\\
@@ -3681,12 +3436,10 @@ f(x)=\left\{ \begin{array}{cc}
 \end_layout
 
 \begin_layout Section
-
 Matematikari buruzko gauza gehiago
 \end_layout
 
 \begin_layout Standard
-
 Matematika-eran gauza gehiago egin daiteke.
  Oraindaino oinarrizkoa bakarrik ezagutu duzu, irakurri 
 \emph on
@@ -3696,28 +3449,23 @@ Erabiltzailearen Gida
 \end_layout
 
 \begin_layout Itemize
-
 Ekuazioak etiketatu eta zenbatzea.
 \end_layout
 
 \begin_layout Itemize
-
 Lerro anitzeko ekuazioak.
 \end_layout
 
 \begin_layout Itemize
-
 Letra-tipoak aldatzea, adibidez, adierazpen bat letra lodiz idaztea.
 \end_layout
 
 \begin_layout Itemize
-
 Ekuazio bateko letra-tipoa eta barruko tartea zehaztea (ez zaitez kezkatu
  honelakoengatik amaierako ziriborroa arte).
 \end_layout
 
 \begin_layout Itemize
-
 Makroak idaztea.
  Oso baliagarriak dira, dokumentu baten hasieran definitu eta dokumentuan
  zehar erabili ahal izango dituzu.
@@ -3727,23 +3475,19 @@ Makroak idaztea.
 \end_layout
 
 \begin_layout Itemize
-
 Denboraz larri gabiltzanez, tutoretza honetan azaldu ezin dizugun beste
  gauza pila bat.
 \end_layout
 
 \begin_layout Chapter
-
 Hainbat
 \end_layout
 
 \begin_layout Section
-
 LyX-en beste ezaugarri garrantzitsu batzuk
 \end_layout
 
 \begin_layout Standard
-
 Ez ditugu aipatu LyX-ekin erabil daitezken komando guztiak, eta ez daukagu
  asmorik.
  Informazio gehiagorako irakur ezazu 
@@ -3755,7 +3499,6 @@ Erabiltzailearen Gida
 \end_layout
 
 \begin_layout Itemize
-
 LyX-ek taulentzako WYSIWYG euskarria dauka.
  Taula bat lortzeko, erabili 
 \family sans
@@ -3780,7 +3523,6 @@ taula
 \end_layout
 
 \begin_layout Itemize
-
 LyX-ek hainbat formatudun irudiak (JPEG eta bestelako bitmap formatuak,
  PostScript® eta LaTeX gordina bezalakoak barne) txertatzeko euskarria dauka.
  Asmatu duzu: 
@@ -3801,13 +3543,11 @@ rudia
 \end_layout
 
 \begin_layout Itemize
-
 Bai taulek bai irudiek epigrafeak eduki ditzakete, eta LyX-ek automatikoki
  irudi edota taulen zerrenda sortuko du.
 \end_layout
 
 \begin_layout Itemize
-
 Bertsio-kontrolaren euskarria dauka, RCS erabiliz (exekutatu 
 \family typewriter
 man rcsintro
@@ -3816,7 +3556,6 @@ man rcsintro
 \end_layout
 
 \begin_layout Itemize
-
 LyX oso konfigurakorra da.
  Gauza guztiak, LyX leihoen itxuratik hasita inprimatzeko irteera emaitza
  arte, hainbat eratan konfigura daitezke.
@@ -3852,7 +3591,6 @@ ertsonalizazioa
 \end_layout
 
 \begin_layout Itemize
-
 LyX bost kontinenteetako programatzaile-talde baten eskutik garatzen ari
  da.
  Horregatik, hainbat testu- prozesadorerekin konparatuz, ingeles hizkuntzak
@@ -3865,7 +3603,6 @@ LyX bost kontinenteetako programatzaile-talde baten eskutik garatzen ari
 \end_layout
 
 \begin_layout Itemize
-
 LyX-eko menuek laster- k erabiltzen dituzte.
  Hots, 
 \family sans
@@ -3909,7 +3646,6 @@ ertsonalizazioa
 \end_layout
 
 \begin_layout Itemize
-
 LyX-ek LaTeX formatuko dokumentuak irakur ditzake.
  Ikus 
 \begin_inset LatexCommand \ref{atal:relyx}
@@ -3920,12 +3656,10 @@ LyX-ek LaTeX formatuko dokumentuak irakur ditzake.
 \end_layout
 
 \begin_layout Itemize
-
 Zuzentzaile ortografiko eta tesaurus-a erabilgarri daude.
 \end_layout
 
 \begin_layout Itemize
-
 LyX leiho nagusiaren behealdean dagoen testu-kutxari bufertxoa deitzen zaio
  (emacs programak ere pareko ezaugarria dauka).
  Erabilgarritasun handiko ezarpen zabala lantzeko aukera eskaintzen dizu,
@@ -3935,13 +3669,10 @@ LyX leiho nagusiaren behealdean dagoen testu-kutxari bufertxoa deitzen zaio
 \end_layout
 
 \begin_layout Section
-
 LyX LaTeX-eko erabiltzaileentzat
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{atal:latexerabiltzaileak}
 
 \end_inset
@@ -3953,7 +3684,6 @@ LaTeX-i buruz ezer ez badakizu, atal hau irakurri beharrik ez daukazu.
 \end_layout
 
 \begin_layout Standard
-
 LyX erabiltzen hasten den askori LaTeX ezaguna egingo zaio.
  Horietariko bat bazara, galde dezakezu ea LyX-ek LaTeX-ekin egin daitekeen
  gauza guztiak egiteko ahalmena al daukan.
@@ -3966,7 +3696,6 @@ LyX erabiltzen hasten den askori LaTeX ezaguna egingo zaio.
 \end_layout
 
 \begin_layout Standard
-
 Hau tutoretza bat bakarrik denez, LyX-eko erabiltzaile berriek interesa
  eduki dezaketen zenbait gauza aipatuko ditugu.
  Tutoretza hori labur gordetzearren, azalpen xumeak izango dira.
@@ -3983,12 +3712,10 @@ LaTeX adituen sekretuak
 \end_layout
 
 \begin_layout Subsection
-
 TeX era
 \end_layout
 
 \begin_layout Standard
-
 TeX eran idatzitako guztia pantailan gorriz agertuko da, eta zuzenean LaTeX-i
  bidaliko zaio.
  TeX komandoak LyX-en erabil ditzakezu 
@@ -4005,7 +3732,6 @@ ex
 \end_layout
 
 \begin_layout Standard
-
 TeX-ek matematika-era zertxobait ezberdin erabiltzen du.
  Sartu TeX eran alderantzizko barra, ("
 \backslash
@@ -4049,7 +3775,6 @@ panela
 \end_layout
 
 \begin_layout Standard
-
 Bitxikeri bat, TeX eran kortxete bat idazten baduzu, hasiera eta amaierako
  kortxeteak gorriz txertatuko dira, TeX eratik aterako zaitu eta kurtsorea
  kortxete artean kokatuko du.
@@ -4058,7 +3783,6 @@ Bitxikeri bat, TeX eran kortxete bat idazten baduzu, hasiera eta amaierako
 \end_layout
 
 \begin_layout Standard
-
 LyX-ek ezin ditu egin LaTeX-ekin egiten diren gauza guztiak (oraindik ez?).
  Zenbait landutako funtzio ez dira erabat onartzen, beste batzuk erabilgarriak
  dira baina ez dira WYSIWYM.
@@ -4070,7 +3794,6 @@ LyX-ek ezin ditu egin LaTeX-ekin egiten diren gauza guztiak (oraindik ez?).
 \end_layout
 
 \begin_layout Standard
-
 Hitzaurrean 
 \family typewriter
 
@@ -4088,13 +3811,10 @@ atala), nahi dituzun pakete guztiak erabiltzeko gaitasuna izango duzu (kontutan
 \end_layout
 
 \begin_layout Subsection
-
 LaTeX dokumentuak inportatzea: reLyX
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{atal:relyx}
 
 \end_inset
@@ -4131,7 +3851,6 @@ fitx.lyx
 status open
 
 \begin_layout Standard
-
 LyX instalatzen denean 
 \family typewriter
 lyx
@@ -4165,7 +3884,6 @@ reLyX
 
 \begin_layout Standard
 
-
 \family typewriter
 reLyX
 \family default
@@ -4178,7 +3896,6 @@ reLyX
 
 \begin_layout Standard
 
-
 \family typewriter
 reLyX
 \family default
@@ -4189,12 +3906,10 @@ reLyX
 \end_layout
 
 \begin_layout Subsection
-
 LyX dokumentua LaTeX-era bihurtu
 \end_layout
 
 \begin_layout Standard
-
 LyX dokumentu bat LaTeX formatura bihurtzea nahi izango duzu.
  Adibidez, lankide edo eginkide batek LyX programa ez eduki arren dokumentuareki
 n lan egin behar du.
@@ -4227,17 +3942,14 @@ fitxa_izena.tex
 \end_layout
 
 \begin_layout Subsection
-
 LaTeX hitzaurrea
 \end_layout
 
 \begin_layout Subsubsection
-
 Dokumentu-klasea
 \end_layout
 
 \begin_layout Standard
-
 
 \family sans
 \bar under
@@ -4273,13 +3985,10 @@ hitzaurrea
 \end_layout
 
 \begin_layout Subsubsection
-
 Hitzaurreko beste alderdi batzuk
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{atal:hitzaurrea}
 
 \end_inset
@@ -4296,7 +4005,6 @@ Hitzaurrea
 status collapsed
 
 \begin_layout Standard
-
 
 \emph on
 Itzultzailearen oharra
@@ -4321,12 +4029,10 @@ Dokumentua
 \end_layout
 
 \begin_layout Subsection
-
 BibTeX
 \end_layout
 
 \begin_layout Standard
-
 LyX-ek BibTeX euskarria du, honekin erreferentzia bibliografikoen datu-baseak
  sortu eta hainbat dokumentutan erabiltzeko aukera izango duzu.
  Hautatu 
@@ -4377,7 +4083,6 @@ bibliography{}
 status open
 
 \begin_layout Standard
-
 LaTeX arruntean bezala, bereiztu bi bibliografia edo gehiago komaz, eta
  zuriunerik gabe.
 \end_layout
@@ -4395,7 +4100,6 @@ bibliographystyle{}
 \end_layout
 
 \begin_layout Standard
-
 Hori egindakoan, edozein bibliografia-sarreraren aipamenak egin ditzakezu
  Txertatu\SpecialChar \menuseparator
 Zitazio\InsetSpace ~
@@ -4416,12 +4120,10 @@ BibTeX
 \end_layout
 
 \begin_layout Section
-
 Erroreak!
 \end_layout
 
 \begin_layout Standard
-
 Batzuetan dokumentu bat LaTeX formatura bihurtzerakoan erroreak gerta daiteke,
  LyX-ek edo LaTeX-ek ulertzen ez dituzten gauzengatik.
  Hori gertatzen bada, LyX-ek errore-kutxak ("errorea" hitzarekin) sortzen

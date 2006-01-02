@@ -1,5 +1,5 @@
 #LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
-\lyxformat 243
+\lyxformat 245
 \begin_document
 \begin_header
 \textclass article
@@ -20,7 +20,6 @@
 \paragraph_separation indent
 \defskip medskip
 \quotes_language french
-\quotes_times 2
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -31,14 +30,12 @@
 \begin_body
 
 \begin_layout Title
-
 LyX.
  Часто задаваемые вопросы с ответами.
  
 \end_layout
 
 \begin_layout Author
-
 от команды разработчиков LyX 
 \begin_inset Foot
 status open
@@ -49,7 +46,6 @@ status open
 \end_layout
 
 \begin_layout Standard
-
 По русскому переводу замечания ожидаются Vitaly Lipatov по адресу <lav@altlinux.r
 u>
 \end_layout
@@ -65,7 +61,6 @@ u>
 \end_layout
 
 \begin_layout Abstract
-
 Здесь приводится список часто задаваемых вопросов для LyX, текстового процессора
  с открытым исходным кодом, который обеспечивает среду What-You-See-Is-What-You-
 Mean (Вы видите то, что вы имели в виду) для создания документов высокого
@@ -86,8 +81,6 @@ lyx-users@lists.lyx.org
 \end_layout
 
 \begin_layout Abstract
-
-
 \begin_inset LatexCommand \tableofcontents{}
 
 \end_inset
@@ -96,17 +89,14 @@ lyx-users@lists.lyx.org
 \end_layout
 
 \begin_layout Section
-
 Введение и общая информация 
 \end_layout
 
 \begin_layout Subsection
-
 Что такое LyX? 
 \end_layout
 
 \begin_layout Standard
-
 LyX -- это программа, обеспечивающая современный подход к созданию документов
  с помощью компьютера, подход, где покончено с устаревшей традицией 
 \begin_inset Quotes fld
@@ -126,7 +116,6 @@ LyX -- это программа, обеспечивающая современный подход к созданию документов
 \end_layout
 
 \begin_layout Standard
-
 LyX обеспечивает 
 \begin_inset Quotes fld
 \end_inset
@@ -156,7 +145,6 @@ LyX обеспечивает
 \end_layout
 
 \begin_layout Standard
-
 Таким образом расстановка переходов на новую строку или страницу теперь
  не ваша проблема.
  Помнить, какой номер будет у следующего подраздела теперь совсем не обязательно.
@@ -178,34 +166,28 @@ LyX обеспечивает
 \end_layout
 
 \begin_layout Subsection
-
 Это всё конечно здорово, но применяется ли на практике?
 \end_layout
 
 \begin_layout Standard
-
 Конечно LyX используется на практике.
  Следующие документы в разное время создавались с помощью LyX:
 \end_layout
 
 \begin_layout Itemize
-
 Мемуары;
 \end_layout
 
 \begin_layout Itemize
-
 Письма;
 \end_layout
 
 \begin_layout Itemize
-
 Диссертации (260 страниц в одном документе, не учитывая вложений)
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-
 например, 
 \begin_inset LatexCommand \url{http://www.fee.uva.nl/scholar/mdw/leuven/thesis.pdf}
 
@@ -213,38 +195,33 @@ LyX обеспечивает
 
 
 \end_layout
+
 \end_deeper
 \begin_layout Itemize
-
 Лекции (133 страницы, 27 иллюстраций на компьютере 33 MHz 486 !) ;
 \end_layout
 
 \begin_layout Itemize
-
 Конспекты семинара (более 500 страниц);
 \end_layout
 
 \begin_layout Itemize
-
 Материалы конференций (Материалы Второй Континентальной Встречи по проблемам
  строения Земли в Европе, (Доклад Финского Геодезического института 98:4),
  292 страницы);
 \end_layout
 
 \begin_layout Itemize
-
 Документация по программному обеспечению (Руководство пользователя LyX составляе
 т более 120 страниц);
 \end_layout
 
 \begin_layout Itemize
-
 Книги 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-
 например, книга о PostgreSQL, см.
  
 \begin_inset LatexCommand \url{http://www.postgresql.org/docs/awbook.html}
@@ -255,26 +232,23 @@ LyX обеспечивает
 \end_layout
 
 \begin_layout Itemize
-
 Donnay, J-P., Barnsley, M.J., and Longley, P.A., eds., 2001, Remote Sensing and
  Urban Analysis (Taylor and Francis: London).
 \end_layout
 
 \begin_layout Itemize
-
 Herbert Voss: Praktische Kryptologie mit Java 286 pages, lots of equations,
  tables, figures.
  ISBN 3-8311-1458-7
 \end_layout
+
 \end_deeper
 \begin_layout Itemize
-
 Статьи, опубликованные в следующих реферируемых журналах:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-
 Астрономия и Астрофизика (Suetterlin, P.
  1998, A&A, 333, 305; Suetterlin, P.
  & Wiehr, E.
@@ -282,36 +256,31 @@ Herbert Voss: Praktische Kryptologie mit Java 286 pages, lots of equations,
 \end_layout
 
 \begin_layout Itemize
-
 Астрономический журнал (Ressler, M.
  E.
  & Barsony, M.
  2001, AJ, 121, 1098)
 \end_layout
+
 \end_deeper
 \begin_layout Itemize
-
 Новеллы (более 400 страниц должно выйти в сентябре 2000; повесть на 836
  страниц в настоящее время находится у агента);
 \end_layout
 
 \begin_layout Itemize
-
 Сценарии для пьес и кино;
 \end_layout
 
 \begin_layout Itemize
-
 Деловые предложения на сумму более чем один миллион долларов.
 \end_layout
 
 \begin_layout Subsection
-
 С чего начать? 
 \end_layout
 
 \begin_layout Standard
-
 Сайт 
 \begin_inset LatexCommand \url{www.lyx.org}
 
@@ -331,7 +300,6 @@ Herbert Voss: Praktische Kryptologie mit Java 286 pages, lots of equations,
 \end_layout
 
 \begin_layout Standard
-
 Другое основательное руководство для начинающего можно найти по адресу 
 \begin_inset LatexCommand \url{www.bilkent.edu.tr/~robin/lyxguide.pdf}
 
@@ -341,12 +309,10 @@ Herbert Voss: Praktische Kryptologie mit Java 286 pages, lots of equations,
 \end_layout
 
 \begin_layout Subsection
-
 Будет ли LyX работать на моём компьютере?
 \end_layout
 
 \begin_layout Standard
-
 В настоящее время для работы LyX требуется система с X Window.
  OS/2 и Win32-версии существуют, но необходим установленный и работающий
  на этих системах X-сервер.
@@ -355,13 +321,11 @@ Herbert Voss: Praktische Kryptologie mit Java 286 pages, lots of equations,
 \end_layout
 
 \begin_layout Itemize
-
 Linux: RedHat 4.2, 5.0, 5.1, 6.0, 6.1, SUSE 5.x, Mandrake 7.0, 7.2
 \begin_inset Foot
 status open
 
 \begin_layout Standard
-
 и конечно, ALTLinux.
  --- прим.
  лит.
@@ -374,37 +338,30 @@ status open
 \end_layout
 
 \begin_layout Itemize
-
 SparcLinux: RedHat 6.0
 \end_layout
 
 \begin_layout Itemize
-
 Sun Solaris 2.6, 2.7
 \end_layout
 
 \begin_layout Itemize
-
 Tru64 Unix 4.0f
 \end_layout
 
 \begin_layout Itemize
-
 HP-UX
 \end_layout
 
 \begin_layout Itemize
-
 OSF1 flore V4.0 1091 alpha
 \end_layout
 
 \begin_layout Subsection
-
 Сколько дискового пространства нужно для LyX? 
 \end_layout
 
 \begin_layout Standard
-
 На моей системе двоичные пакеты LyX занимают 2,0 Мб дискового пространства,
  тогда как необходимые ему файлы занимают ещё около 6,5 Мб (4,7 Мб которых
  -- документация! Вы можете удалить ненужные языки, чтобы сэкономить какое-то
@@ -414,12 +371,10 @@ OSF1 flore V4.0 1091 alpha
 \end_layout
 
 \begin_layout Subsection
-
 Действительно ли LyX является свободно распространяемым? 
 \end_layout
 
 \begin_layout Standard
-
 Да.
  Некоторые могут возразить, что так как свободно доступный набор средств
  Х, которые использует LyX -- xforms, по прежнему закрыты, то и LyX не столь
@@ -434,18 +389,14 @@ OSF1 flore V4.0 1091 alpha
 \end_layout
 
 \begin_layout Section
-
 Ресурсы Интернет
 \end_layout
 
 \begin_layout Subsection
-
 Где в сети Интернет искать что-либо о LyX? 
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset LatexCommand \url{www.lyx.org}
 
 \end_inset
@@ -454,8 +405,6 @@ OSF1 flore V4.0 1091 alpha
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset LatexCommand \url{www.devel.lyx.org}
 
 \end_inset
@@ -464,14 +413,11 @@ OSF1 flore V4.0 1091 alpha
 \end_layout
 
 \begin_layout Itemize
-
 Известные доступные зеркала:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-
-
 \begin_inset LatexCommand \url{www.mx.lyx.org}
 
 \end_inset
@@ -480,8 +426,6 @@ OSF1 flore V4.0 1091 alpha
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset LatexCommand \url{www.no.lyx.org}
 
 \end_inset
@@ -490,52 +434,43 @@ OSF1 flore V4.0 1091 alpha
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset LatexCommand \url{www.it.lyx.org}
 
 \end_inset
 
 
 \end_layout
+
 \end_deeper
 \begin_layout Subsection
-
 Где я могу получить материалы по LyX через FTP? 
 \end_layout
 
 \begin_layout Itemize
-
 ftp.lyx.org in /pub/lyx (также известный,как ftp.via.ecp.fr)
 \end_layout
 
 \begin_layout Subsection
-
 Какие есть списки рассылки? 
 \end_layout
 
 \begin_layout Itemize
-
 lyx-announce@lists.lyx.org (очень невелик), объявления, касающиеся LyX;
 \end_layout
 
 \begin_layout Itemize
-
 lyx-users@lists.lyx.org (средний по величине), по основным вопросам использования;
 \end_layout
 
 \begin_layout Itemize
-
 lyx-devel@lists.lyx.org (большой), для разработчиков и освещения правки ошибок;
 \end_layout
 
 \begin_layout Itemize
-
 lyx-docs@lists.lyx.org (очень маленький), освещение документации;
 \end_layout
 
 \begin_layout Standard
-
 В общем, вам надо написать по адресу lyx-foo-subscribe@lists.lyx.org, чтобы
  подписаться или по адресу lyx-foo-unsubscribe@lists.lyx.org, чтобы отказаться
  от рассылки, где 
@@ -587,23 +522,19 @@ docs
 \end_layout
 
 \begin_layout Subsection
-
 Есть ли где-либо архивы рассылки? 
 \end_layout
 
 \begin_layout Standard
-
 Да.
  :-)
 \end_layout
 
 \begin_layout Subsection
-
 Хорошо, умники! Где они?
 \end_layout
 
 \begin_layout Itemize
-
 Объявления: 
 \begin_inset LatexCommand \url{http://www.mail-archive.com/lyx-announce@lists.lyx.org/}
 
@@ -613,7 +544,6 @@ docs
 \end_layout
 
 \begin_layout Itemize
-
 Пользователи: 
 \begin_inset LatexCommand \url{http://www.mail-archive.com/lyx-users@lists.lyx.org/}
 
@@ -623,7 +553,6 @@ docs
 \end_layout
 
 \begin_layout Itemize
-
 Разработчики: 
 \begin_inset LatexCommand \url{http://www.mail-archive.com/lyx-devel@lists.lyx.org/}
 
@@ -633,17 +562,14 @@ docs
 \end_layout
 
 \begin_layout Section
-
 Совместимость с другими текстовыми редакторами/процессорами
 \end_layout
 
 \begin_layout Subsection
-
 Могу я читать/писать файлы LaTeX?
 \end_layout
 
 \begin_layout Standard
-
 Да.
  LyX выводит файлы LaTeX, которые могут быть дружественны как машине, так
  и человеку.
@@ -653,12 +579,10 @@ docs
 \end_layout
 
 \begin_layout Subsection
-
 Можно ли читать/создавать файлы Word?
 \end_layout
 
 \begin_layout Standard
-
 Не совсем.
  Многим удавалось добиться успеха по следующей схеме: LyX
 \begin_inset Formula $\rightarrow$
@@ -679,12 +603,10 @@ Word, и т.д.
 \end_layout
 
 \begin_layout Standard
-
 Тем не менее, вот некоторые из присланных предложений:
 \end_layout
 
 \begin_layout Description
-
 word2x на выходе создаёт форматы LaTeX, Html и простой текст.
  В принципе, можно преобразовывать в LaTeX, но я чаще предпочитаю получить
  простой текст, и добавлять форматирование в него.
@@ -693,7 +615,6 @@ word2x на выходе создаёт форматы LaTeX, Html и простой текст.
 \end_layout
 
 \begin_layout Description
-
 wvware (может быть найдено на www.wvware.com, или можно получить последнюю
  версию из репозитария CVS abisource).
  Ранее эта программа называлась msWordView.
@@ -704,7 +625,6 @@ wvware (может быть найдено на www.wvware.com, или можно получить последнюю
 \end_layout
 
 \begin_layout Description
-
 Ted Используйте этот редактор, когда вам посылают файл RTF, созданный в
  Word.
  Прекрасный продукт.
@@ -713,7 +633,6 @@ Ted Используйте этот редактор, когда вам посылают файл RTF, созданный в
 \end_layout
 
 \begin_layout Standard
-
 И наконец, если у вас ничего не вышло, используйте любой текстовый процессор
  (WordPerfect, StarOffice, ...), понимающий Word.
  Затем экспортируйте файл в простой текст и вручную отформатируйте в LyX.
@@ -723,12 +642,10 @@ Ted Используйте этот редактор, когда вам посылают файл RTF, созданный в
 \end_layout
 
 \begin_layout Subsection
-
 Можно ли читать/создавать файлы HTML?
 \end_layout
 
 \begin_layout Standard
-
 Вы можете получить файлы HTML, используя программу для преобразования 
 \begin_inset Quotes fld
 \end_inset
@@ -746,32 +663,26 @@ LaTeX, позволяющие преобразовывать в обратном направлении.
 \end_layout
 
 \begin_layout Section
-
 Установка и компиляция LyX 
 \end_layout
 
 \begin_layout Subsection
-
 Что необходимо?
 \end_layout
 
 \begin_layout Itemize
-
 Исходный код LyX: lyx-1.x.x.tar.gz
 \end_layout
 
 \begin_layout Itemize
-
 Библиотека XForms: xforms-0.88 или новее
 \end_layout
 
 \begin_layout Itemize
-
 Установленный LaTeX: мы настоятельно рекомендуем версию teTeX-1.0 или выше
 \end_layout
 
 \begin_layout Itemize
-
 Интерпретатор PostScript
 \begin_inset ERT
 status collapsed
@@ -788,19 +699,16 @@ textregistered
 \end_layout
 
 \begin_layout Itemize
-
 Относительно новый компилятор C++ compiler.
  gcc-2.7.2.3 работает у меня под Solaris 2.6 с lyx-1.1.4, но lyx-1.1.5 однозначно
  потребует gcc-2.8.1 или egcs 2.95.x или выше (DEC cxx 6.1 для машин OSF).
 \end_layout
 
 \begin_layout Subsection
-
 Как компилировать?
 \end_layout
 
 \begin_layout Itemize
-
 
 \family typewriter
 ./configure
@@ -808,13 +716,11 @@ textregistered
 
 \begin_layout Itemize
 
-
 \family typewriter
 make
 \end_layout
 
 \begin_layout Itemize
-
 
 \family typewriter
 make install
@@ -824,19 +730,16 @@ make install
 \end_layout
 
 \begin_layout Standard
-
 См.
  файл INSTALL для более подробного описания.
 \end_layout
 
 \begin_layout Subsection
-
 Терпеть не могу компилировать.
  Где взять уже откомпилированные двоичные пакеты?
 \end_layout
 
 \begin_layout Standard
-
 Большинство из необходимых пакетов существует в двоичном виде для многих
  систем Linux, впрочем и для многих других систем тоже.
  Двоичные пакеты LyX существуют в форме RPMS и нескольких других форматах
@@ -849,7 +752,6 @@ make install
 \end_layout
 
 \begin_layout Standard
-
 Вариант для Windows доступен по адресу 
 \begin_inset LatexCommand \url{http://www.fh-hannover.de/mbau/tim/hentschel/lyx/index.html}
 
@@ -859,12 +761,10 @@ make install
 \end_layout
 
 \begin_layout Section
-
 Что это за неприятный красный текст? (ВАЖНО!)
 \end_layout
 
 \begin_layout Standard
-
 ERT (Неприятный Красный Текст) позволяет выделять команды LaTeX, которые
  вставлены в ваш документ LyX.
  Некоторые троглодиты из группы разработки настояли на нём, оправдав неприятный
@@ -885,17 +785,14 @@ ERT (Неприятный Красный Текст) позволяет выделять команды LaTeX, которые
 \end_layout
 
 \begin_layout Enumerate
-
 Наберите команду, как она написана.
 \end_layout
 
 \begin_layout Enumerate
-
 Выделите её.
 \end_layout
 
 \begin_layout Enumerate
-
 Нажмите на кнопку TeX на панели меню или выберите 
 \family sans
 Вставить\SpecialChar \menuseparator
@@ -905,14 +802,12 @@ ERT (Неприятный Красный Текст) позволяет выделять команды LaTeX, которые
 \end_layout
 
 \begin_layout Standard
-
 Теперь команда будет выделена красным и будет расцениваться, как вставленная
  команда LaTeX.
  
 \end_layout
 
 \begin_layout Standard
-
 Команды LaTeX могут также быть вставлены в преамбуле LaTeX (меню 
 \family sans
 Формат
@@ -923,12 +818,10 @@ ERT (Неприятный Красный Текст) позволяет выделять команды LaTeX, которые
 \end_layout
 
 \begin_layout Section
-
 Вопросы, относящиеся к использованию LyX
 \end_layout
 
 \begin_layout Standard
-
 В этой главе мы собрали наиболее часто задаваемые вопросов.
  Для широкого круга не столь часто встречающихся вопросов, обратитесь к
  обширной коллекции Герберта Восса (Herbert Voss) по адресу 
@@ -949,12 +842,10 @@ ERT (Неприятный Красный Текст) позволяет выделять команды LaTeX, которые
 \end_layout
 
 \begin_layout Subsection
-
 Основные вопросы
 \end_layout
 
 \begin_layout Subsubsection
-
 Как могу я изменить промежутки в окружениях списков Перечисление/\SpecialChar \-
 Нумерация/\SpecialChar \-
 Описа
@@ -962,13 +853,11 @@ ERT (Неприятный Красный Текст) позволяет выделять команды LaTeX, которые
 \end_layout
 
 \begin_layout Standard
-
 Необходимо сделать это вручную: например, для одного конкретного списка
  вы можете добавить следующий код LaTeX в начале списка: 
 \end_layout
 
 \begin_layout Standard
-
 
 \family typewriter
 
@@ -979,24 +868,20 @@ itemsep}{0mm}
 \end_layout
 
 \begin_layout Subsubsection
-
 Как пронумеровать уравнения по разделам?
 \end_layout
 
 \begin_layout Standard
-
 Добавьте следующие две строки в преамбулу LaTeX:
 \end_layout
 
 \begin_layout LyX-Code
-
 
 \backslash
 @addtoreset{equation}{section} 
 \end_layout
 
 \begin_layout LyX-Code
-
 
 \backslash
 renewcommand{
@@ -1009,12 +894,10 @@ arabic{equation}}
 \end_layout
 
 \begin_layout Subsubsection
-
 Возможно ли сделать это же для изображений и таблиц?
 \end_layout
 
 \begin_layout Standard
-
 Замените фразу 
 \family typewriter
 
@@ -1056,12 +939,10 @@ figure
 \end_layout
 
 \begin_layout Subsubsection
-
 Как заменить номера сносок на символы (звёздочки и т.д.)?
 \end_layout
 
 \begin_layout Standard
-
 Добавьте 
 \family typewriter
 
@@ -1076,12 +957,10 @@ fnsymbol{footnote}}
 \end_layout
 
 \begin_layout Subsubsection
-
 Как запретить появление висячих строк?
 \end_layout
 
 \begin_layout Standard
-
 Чтобы убрать висячие строки (одну первую строчку абзаца внизу страницы или
  одну последнюю строчку абзаца вверху страницы), добавьте следующее в преамбулу
  LaTeX:
@@ -1089,25 +968,21 @@ fnsymbol{footnote}}
 
 \begin_layout LyX-Code
 
-
 \backslash
 widowpenalty=10000 
 \end_layout
 
 \begin_layout LyX-Code
 
-
 \backslash
 clubpenalty=10000 
 \end_layout
 
 \begin_layout Standard
-
 и, возможно,
 \end_layout
 
 \begin_layout LyX-Code
-
 
 \backslash
 raggedbottom
@@ -1118,60 +993,49 @@ raggedbottom
 \end_layout
 
 \begin_layout Subsubsection
-
 Как получить форматированный список, начинающийся, к примеру, с 1.
  a?
 \end_layout
 
 \begin_layout Standard
-
 Если вы хотите получить список следующего вида
 \end_layout
 
 \begin_layout LyX-Code
-
 1.
  a) First alternative 
 \end_layout
 
 \begin_layout LyX-Code
-
    b) Second alternative 
 \end_layout
 
 \begin_layout LyX-Code
-
    c) Third alternative
 \end_layout
 
 \begin_layout Standard
-
 попробуйте следующее
 \end_layout
 
 \begin_layout LyX-Code
-
 1.
  {} 
 \end_layout
 
 \begin_layout LyX-Code
-
    a) First alternative 
 \end_layout
 
 \begin_layout LyX-Code
-
    b) Second alternative 
 \end_layout
 
 \begin_layout LyX-Code
-
    c) Third
 \end_layout
 
 \begin_layout Standard
-
 где {} в ERT (т.е.
  скобки не генерируют вывод.
  Отдельно установите стиль абзацев на 
@@ -1187,12 +1051,10 @@ raggedbottom
 \end_layout
 
 \begin_layout Subsubsection
-
 Как сосчитать слова в LyX?
 \end_layout
 
 \begin_layout Standard
-
 Запустите проверку правописания; она отразит общее количество проверенных
  слов.
  Убедитесь , что курсор находится наверху документа, чтобы при включении
@@ -1200,12 +1062,10 @@ raggedbottom
 \end_layout
 
 \begin_layout Subsubsection
-
 Как вставить определённое количество горизонтального пространства?
 \end_layout
 
 \begin_layout Standard
-
 Для этого используются различные команды LaTeX: 
 \family typewriter
 
@@ -1327,13 +1187,11 @@ hspace{2.5em}
 \end_layout
 
 \begin_layout Subsubsection
-
 Как заставить цитаты показываться, как [1,2,3,6] или [1-3,6] вместо [1][2][3][6]
 ?
 \end_layout
 
 \begin_layout Standard
-
 Вставьтеt 
 \family typewriter
 
@@ -1348,12 +1206,10 @@ usepackage{cite}
 \end_layout
 
 \begin_layout Subsection
-
 Вопросы относительно изображений
 \end_layout
 
 \begin_layout Subsubsection
-
 Чем отличается 
 \begin_inset Quotes fld
 \end_inset
@@ -1374,7 +1230,6 @@ usepackage{cite}
 \end_layout
 
 \begin_layout Standard
-
 Вот пример менее чем идеальной терминологии.
  
 \begin_inset Quotes fld
@@ -1408,18 +1263,15 @@ usepackage{cite}
 \end_layout
 
 \begin_layout Standard
-
 То же относится и к таблицам.
  Сначала создайте плавающую таблицу, затем разместите в неё саму таблицу.
 \end_layout
 
 \begin_layout Subsubsection
-
 Как с помощью LyX разместить изображение там, где я хочу?
 \end_layout
 
 \begin_layout Standard
-
 Выберите 
 \family sans
 Формат\SpecialChar \menuseparator
@@ -1446,7 +1298,6 @@ usepackage{cite}
 \end_layout
 
 \begin_layout Standard
-
 Если Вы хотите управлять поведением каждого изображения, оставьте место
  пустым, но вставьте символы 
 \begin_inset Quotes fld
@@ -1472,7 +1323,6 @@ begin{figure}[!htp]
 \end_layout
 
 \begin_layout Subsubsection
-
 Что означает 
 \begin_inset Quotes fld
 \end_inset
@@ -1485,7 +1335,6 @@ begin{figure}[!htp]
 \end_layout
 
 \begin_layout Standard
-
 LaTeX может обрабатывать только ограниченное количество плавающих объектов
  в определённый промежуток времени.
  Например, если изображение 4 не может быть размещено в необходимом положении
@@ -1510,7 +1359,6 @@ LaTeX может обрабатывать только ограниченное количество плавающих объектов
 \end_layout
 
 \begin_layout Standard
-
 Самый простой способ -- это вставить команду 
 \family typewriter
 
@@ -1536,17 +1384,14 @@ clearpages, чтобы привести всё в равновесие
 \end_layout
 
 \begin_layout Subsection
-
 Вопросы относительно математики
 \end_layout
 
 \begin_layout Subsubsection
-
 Как вставить простой текст внутри математического уравнения?
 \end_layout
 
 \begin_layout Standard
-
 Наберите 
 \begin_inset Quotes fld
 \end_inset
@@ -1571,12 +1416,10 @@ math text mode
 \end_layout
 
 \begin_layout Subsubsection
-
 Как извлечь кубический корень и (выше)?
 \end_layout
 
 \begin_layout Standard
-
 Наберите 
 \begin_inset Quotes fld
 \end_inset
@@ -1610,33 +1453,27 @@ M-m r
 \end_layout
 
 \begin_layout Section
-
 Вопросы по использованию LyX
 \end_layout
 
 \begin_layout Subsection
-
 Как преобразовывать файлы LyX в LaTeX из командной строки?
 \end_layout
 
 \begin_layout Standard
-
 Экспорт файлов значительно усовершенствован в версии 1.1.6.
  Просто введите в командной строке
 \end_layout
 
 \begin_layout LyX-Code
-
 lyx --export latex <yourfile>.lyx
 \end_layout
 
 \begin_layout Standard
-
 и это всё, что вам нужно.
 \end_layout
 
 \begin_layout Standard
-
 Если у вас более ранняя версия LyX, можете использовать тот же синтаксис,
  если вы работаете с Х-сервером, ибо это заставит появиться окно LyX на
  Вашем экране.
@@ -1650,7 +1487,6 @@ bash
 
 \begin_layout Standard
 
-
 \family typewriter
 (Xvfb :1 -once -terminate &); rm <file>.tex; lyx -display :1 --export latex
  <file>.lyx
@@ -1662,7 +1498,6 @@ bash
 \end_layout
 
 \begin_layout Standard
-
 
 \family typewriter
 Xvfb :1 -once -terminate &; rm <file>.tex; lyx -display :1 --export latex
@@ -1676,41 +1511,33 @@ Xvfb :1 -once -terminate &; rm <file>.tex; lyx -display :1 --export latex
 \end_layout
 
 \begin_layout Subsection
-
 Как преобразовать мой документ в файл PDF?
 \end_layout
 
 \begin_layout Standard
-
 Прочтите раздел 5.3.6 Дополнительных возможностей.
 \end_layout
 
 \begin_layout Subsection
-
 Почему шрифт в моём документе выглядит так ужасно в Acrobat Reader?
 \end_layout
 
 \begin_layout Standard
-
 Описание этой проблемы и её решение находятся там же, в главе 5.3.6.
 \end_layout
 
 \begin_layout Subsection
-
 Почему моя лучшая и последняя версия Ghostscript не отображает корректно
  внутренние изображения в формате EPS?
 \end_layout
 
 \begin_layout Standard
-
 Несколько пользователей заявили, что не могут заставить последние версии
  Ghostscript отображать внутренние изображения в LyX.
  Скорее всего это ошибка Ghostscript:
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \url{http://sourceforge.net/bugs/?func=detailbug&bug_id=124957&group_id=1897}
 
 \end_inset
@@ -1726,17 +1553,14 @@ Xvfb :1 -once -terminate &; rm <file>.tex; lyx -display :1 --export latex
 \end_layout
 
 \begin_layout Section
-
 Вопросы по использованию LyX под Windows
 \end_layout
 
 \begin_layout Subsection
-
 Почему меню и панель инструментов мерцают ?
 \end_layout
 
 \begin_layout Standard
-
 Скорее всего Вы используете Х-сервер XWin32.
  Это ошибка в XWin32: вы можете решить проблему, отключив параметр 
 \begin_inset Quotes fld
@@ -1750,23 +1574,19 @@ Xvfb :1 -once -terminate &; rm <file>.tex; lyx -display :1 --export latex
 \end_layout
 
 \begin_layout Section
-
 Как получить дальнейшую помощь
 \end_layout
 
 \begin_layout Subsection
-
 Я пока не получил ответы на мои вопросы! 
 \end_layout
 
 \begin_layout Standard
-
 Тогда RTFM
 \begin_inset Foot
 status open
 
 \begin_layout Standard
-
  читайте документацию --- прим.
  лит.
  редактора
@@ -1794,31 +1614,26 @@ status open
 \end_layout
 
 \begin_layout Subsection
-
 Я хочу поделиться своими проблемами.
  
 \end_layout
 
 \begin_layout Standard
-
 Напишите в список рассылки пользователей LyX по адресу lyx-users@lists.lyx.org.
  Если LyX действительно не работает, напишите разработчикам по адресу lyx-devel@
 lists.lyx.org.
 \end_layout
 
 \begin_layout Subsection
-
 Что необходимо сообщить, обращаясь за помощью.
 \end_layout
 
 \begin_layout Standard
-
 Сообщите Вашу версию LyX и описание того, что вы пытаетесь делать, причём
  чтоб было понятно, что вы уже прочли документацию.
 \end_layout
 
 \begin_layout Standard
-
 Если LyX отказал, сообщите версию, операционную систему, версию xforms (если
  вам кажется, что это проблема прорисовки экрана), и точное описание того,
  что привело к отказу (зависанию).
@@ -1831,18 +1646,15 @@ lists.lyx.org.
 \end_layout
 
 \begin_layout Section
-
 Административная информация
 \end_layout
 
 \begin_layout Subsection
-
 Обратная связь приветствуется.
  
 \end_layout
 
 \begin_layout Standard
-
 Присылайте комментарии, предлагайте дополнения, образцы созданных документов
  по адресу 
 \emph on
@@ -1850,13 +1662,11 @@ lyx-docs@lists.lyx.org.
 \end_layout
 
 \begin_layout Subsection
-
 Форматы, в которых распространяется данный документ.
  
 \end_layout
 
 \begin_layout Standard
-
 Прежде всего оригинал доступен в формате LyX, версии, преобразованные в
  форматы HTML и ASCII скоро будут выложены на сайте.
  С программой также доступна немецкая версия
@@ -1864,7 +1674,6 @@ lyx-docs@lists.lyx.org.
 status open
 
 \begin_layout Standard
-
 а теперь и русская.
  --- прим.
  лит.
@@ -1877,12 +1686,10 @@ status open
 \end_layout
 
 \begin_layout Subsection
-
 Авторство и благодарности.
 \end_layout
 
 \begin_layout Standard
-
 Bernhard Iselborn, David Johnson, и Paul Evans отвечали за этот документ,
  начиная с версии 0.2.2, вошедшей в LyX-0.10.7.
  FAQ версии 0.3.0 был написан заново и вошёл в LyX-1.0 и старше.
@@ -1891,13 +1698,11 @@ Bernhard Iselborn, David Johnson, и Paul Evans отвечали за этот документ,
 \end_layout
 
 \begin_layout Subsection
-
 Disclaimer and Copyright.
  
 \end_layout
 
 \begin_layout Standard
-
 Я не утверждаю, что что-либо в этом документе является верным с точностью
  до 
 \begin_inset Formula $\pi$

@@ -1,8 +1,11 @@
 #LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
-\lyxformat 243
+\lyxformat 245
 \begin_document
 \begin_header
 \textclass book
+\begin_preamble
+\usepackage{a4wide}
+\end_preamble
 \language russian
 \inputencoding koi8-r
 \fontscheme default
@@ -20,26 +23,20 @@
 \paragraph_separation indent
 \defskip medskip
 \quotes_language english
-\quotes_times 2
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
 \tracking_changes false
-\begin_preamble
-\usepackage{a4wide}
-\end_preamble
 \output_changes true
 \end_header
 
 \begin_body
 
 \begin_layout Title
-
 Самоучитель по LyX
 \end_layout
 
 \begin_layout Author
-
 автор: Amir Karger и команда разработки LyX
 \newline
 перевод: Максим Дзюманенко
@@ -49,8 +46,6 @@
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \tableofcontents{}
 
 \end_inset
@@ -59,17 +54,14 @@
 \end_layout
 
 \begin_layout Chapter
-
 Введение
 \end_layout
 
 \begin_layout Section
-
 Добро пожаловать в LyX!
 \end_layout
 
 \begin_layout Standard
-
 Этот файл предназначен для тех, кто никогда не слышал о LaTeX, или знаком
  с ним поверхностно.
  Не волнуйтесь, вам не придётся изучать LaTeX для работы с LyX, ведь всё-таки
@@ -79,7 +71,6 @@
 \end_layout
 
 \begin_layout Standard
-
 Некоторые из вас, вероятно, обратились к этому документу после того как
  попытались вставить два пробела после 
 \begin_inset Quotes fld
@@ -104,13 +95,11 @@
 \end_layout
 
 \begin_layout Standard
-
 Поэтому наберитесь терпения и читайте.
  Чтение этого учебника определённо стоит потраченного времени.
 \end_layout
 
 \begin_layout Section
-
 Чем 
 \emph on
 является
@@ -121,7 +110,6 @@
 \end_layout
 
 \begin_layout Standard
-
 Перед тем как начать этот раздел, мы хотели бы кое-что пояснить.
  
 \emph on
@@ -141,7 +129,6 @@
 \end_layout
 
 \begin_layout Standard
-
 Теперь, когда вы знаете, какой шрифт что означает, мы бы хотели немного
  поговорить о предназначении этого
 \emph on
@@ -151,12 +138,10 @@
 \end_layout
 
 \begin_layout Subsection
-
 Общее представление о Самоучителе
 \end_layout
 
 \begin_layout Standard
-
 Самоучитель состоит из примеров и упражнений.
  Чтобы получить общее представление о этом документе, вы должны прочесть
  весь документ, набирая все те небольшие примеры, которые мы будем просить
@@ -178,7 +163,6 @@ textregistered
 \end_layout
 
 \begin_layout Standard
-
 Если вы знакомы с LaTeX, вероятно вы сможете прочесть 
 \emph on
 Самоучитель
@@ -190,7 +174,6 @@ textregistered
 status collapsed
 
 \begin_layout Standard
-
 или, более оптимистично, 
 \begin_inset Quotes fld
 \end_inset
@@ -219,7 +202,6 @@ status collapsed
 \end_layout
 
 \begin_layout Subsection
-
 Что вы 
 \emph on
 не
@@ -228,19 +210,16 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-
 Постоянную опеку или прочие бестолковые объяснения.
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-
 В компьютерной литературе в настоящее время сложилась такая тенденция
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-
 Заметка 
 \shape smallcaps
 \noun on
@@ -270,7 +249,6 @@ Weiss
 \end_layout
 
 \begin_layout Standard
-
 С другой стороны, мы понимаем, что большинство пользователей читают руководства,
  особенно учебники, только тогда, когда они не знают, что же делать дальше.
  Так что хотя мы сознаем что вы, пользователь, 
@@ -279,22 +257,20 @@ Weiss
 \emph default
  глупы, мы понимаем, что вы можете быть несведущи или сбиты с толку.
 \end_layout
+
 \end_deeper
 \begin_layout Itemize
-
 Инструкций по использованию мышью и клавиатурой.
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-
 Если вы не можете разобраться с тем, как использовать компьютер, мы не сможем
  вам помочь, так как это выходит за рамки руководств по LyX.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-
 Более того, если вы начинаете с использования LyX, у вас наверно большая
  часть головы заполнена мозгами.
 \end_layout
@@ -303,15 +279,14 @@ status collapsed
 
 
 \end_layout
+
 \end_deeper
 \begin_layout Itemize
-
 Подробного объяснения всех возможностей LyX.
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-
 Ведь нам же не нужны два 
 \emph on
 Руководства пользователя
@@ -320,7 +295,6 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
 Если серьёзно, мы сделали этот документ только для того, чтобы дать вам
  начальный толчок, поскольку всё, что вам реально необходимо --- это 
 \emph on
@@ -348,15 +322,14 @@ status collapsed
 
 .
 \end_layout
+
 \end_deeper
 \begin_layout Itemize
-
 Детального объяснения LaTeX.
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-
 Это излишне.
  Если вам действительно интересно изучить некоторые искусные приёмы работы
  с LaTeX, вы всегда можете обратиться к книге по LaTeX.
@@ -364,27 +337,23 @@ status collapsed
  Всё-таки ни к чему изобретать колесо\SpecialChar \ldots{}
 
 \end_layout
+
 \end_deeper
 \begin_layout Standard
-
 Итак, отважный человек, время двигаться вперёд.
  Настало время создать ваш первый документ в LyX\SpecialChar \ldots{}
 
 \end_layout
 
 \begin_layout Chapter
-
 Начинаем работать с LyX
 \end_layout
 
 \begin_layout Section
-
 Ваш первый LyX документ
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:first-doc-ex}
 
 \end_inset
@@ -399,7 +368,6 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
 Так как здесь приводится далеко не вся информация, 
 \emph on
 первое
@@ -439,7 +407,6 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-
 Они также могут служить хорошим примером использования многих возможностей
  LyX'а.
 \end_layout
@@ -470,7 +437,6 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
 В этом 
 \emph on
 Самоучителе
@@ -507,7 +473,6 @@ textregistered
 \end_layout
 
 \begin_layout Standard
-
 Мы написали файл, который позволит вам поупражняться в мастерстве владения
  LyX.
  Он называется 
@@ -536,7 +501,6 @@ example_raw.lyx
 status collapsed
 
 \begin_layout Standard
-
 Эти намёки размещены в жёлтых 
 \begin_inset Quotes fld
 \end_inset
@@ -561,7 +525,6 @@ example_lyxified.lyx,
 \end_layout
 
 \begin_layout Standard
-
 Файлы с примерами можно найти в каталоге 
 \family typewriter
 examples/
@@ -605,7 +568,6 @@ dvi
 \end_layout
 
 \begin_layout Standard
-
 Кстати, каталог 
 \family typewriter
 examples/
@@ -623,12 +585,10 @@ examples/
 \end_layout
 
 \begin_layout Subsection
-
 Набор, просмотр и печать
 \end_layout
 
 \begin_layout Itemize
-
 Создайте новый файл с помощью меню 
 \family sans
 Файл\SpecialChar \menuseparator
@@ -636,7 +596,6 @@ examples/
 \end_layout
 
 \begin_layout Itemize
-
 Наберите такое предложение: 
 \family typewriter
 
@@ -652,7 +611,6 @@ examples/
 status collapsed
 
 \begin_layout Standard
-
 Всё верно.
  Вы действительно можете набрать всё, что захотите.
  Это не имеет значения.
@@ -666,7 +624,6 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-
 Сохраните документ с помощью 
 \family sans
 Файл\SpecialChar \menuseparator
@@ -676,7 +633,6 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-
 Запустите LaTeX для создания файла 
 \family typewriter
 dvi
@@ -707,7 +663,6 @@ dvi
 status collapsed
 
 \begin_layout Standard
-
 Вы можете сэкономить время, оставив 
 \family typewriter
 xdvi
@@ -736,7 +691,6 @@ xdvi
 \end_layout
 
 \begin_layout Itemize
-
 Напечатайте файл через меню 
 \family sans
 Файл\SpecialChar \menuseparator
@@ -749,7 +703,6 @@ OK\SpecialChar \@.
 \end_layout
 
 \begin_layout Standard
-
 Наши поздравления! Вы написали и напечатали ваш первый документ LyX.
  Всё остальное просто детали, которые раскрываются в оставшейся части 
 \emph on
@@ -767,12 +720,10 @@ OK\SpecialChar \@.
 \end_layout
 
 \begin_layout Subsection
-
 Простые операции
 \end_layout
 
 \begin_layout Standard
-
 Конечно же, LyX может выполнять большинство операций, которые доступны в
  других текстовых процессорах.
  Он будет автоматически переносить слова и выравнивать абзацы.
@@ -781,7 +732,6 @@ OK\SpecialChar \@.
 status collapsed
 
 \begin_layout Standard
-
 Если вы похожи на многих других пользователей 
 \noun on
 unix
@@ -808,7 +758,6 @@ unix
 \end_layout
 
 \begin_layout Description
-
 Отмена.
  В LyX есть 
 \emph on
@@ -845,7 +794,6 @@ unix
 
 \begin_deeper
 \begin_layout Standard
-
 [На данный момент, отмена ограничена 100 шагами.
  Отмена работает не для 
 \emph on
@@ -853,9 +801,9 @@ unix
 \emph default
 , например, нельзя отменить изменения в формате документа.]
 \end_layout
+
 \end_deeper
 \begin_layout Description
-
 Вырезка/Вставка/Копирование.
  Для вырезки, вставки и копирования используйте 
 \family sans
@@ -881,7 +829,6 @@ unix
 \end_layout
 
 \begin_layout Description
-
 Поиск/Замена.
  Для поиска используйте 
 \family sans
@@ -909,7 +856,6 @@ unix
 status collapsed
 
 \begin_layout Standard
-
 Когда закончите, закройте окно.
  Либо оставьте его открытым, если вам так удобнее.
  Большинство диалоговых окон в LyX --- включая 
@@ -942,7 +888,6 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
 Форматирование\InsetSpace ~
 символов.
  Вы можете 
@@ -967,7 +912,6 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
 Панель\InsetSpace ~
 инструментов.
  Кнопки на панели инструментов (прямо под меню) позволяют вам выполнять
@@ -985,7 +929,6 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
 Мини-буфер.
  Серая строка в самом низу окна LyX называется мини-буфер.
  Эта строка показывает различную полезную информацию.
@@ -1004,20 +947,16 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
 Конечно, вы ещё недостаточно много написали для использования большинства
  этих функций, но когда вы напишете больше, всё-таки попробуйте отмену,
  вставку и т.п.
 \end_layout
 
 \begin_layout Subsection
-
 WYSIWYM: Пробельное пространство в LyX
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:whitespace}
 
 \end_inset
@@ -1047,7 +986,6 @@ Tab
 \end_layout
 
 \begin_layout Standard
-
 Многие коммерческие текстовые процессоры построены на принципе WYSIWYG:
  
 \begin_inset Quotes fld
@@ -1128,7 +1066,6 @@ Tab
 \end_layout
 
 \begin_layout Standard
-
 В LyX есть (в большом количестве) инструменты точной настройки форматирования
  вашего документа.
  Ведь всё-таки LyX не может оформлять текст 
@@ -1152,7 +1089,6 @@ Tab
 \end_layout
 
 \begin_layout Standard
-
 Ещё один специальный тип пустого пространства --- 
 \family sans
 Неразрывный\InsetSpace ~
@@ -1183,7 +1119,6 @@ u
 status collapsed
 
 \begin_layout Standard
-
 Если вы читаете это руководство с экрана, вы вероятно уже заметили это и
  были удивлены.
 \end_layout
@@ -1232,7 +1167,6 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-
 Мы также используем его в 
 \emph on
 Самоучителе 
@@ -1250,12 +1184,10 @@ status collapsed
 \end_layout
 
 \begin_layout Section
-
 Окружения
 \end_layout
 
 \begin_layout Standard
-
 Различные части документа служат различным целям; мы называем эти части
  
 \emph on
@@ -1272,7 +1204,6 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
 Окружения --- значительная часть философии LyX 
 \begin_inset Quotes fld
 \end_inset
@@ -1294,7 +1225,6 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
 Окно
 \family sans
  Окружение
@@ -1336,12 +1266,10 @@ status collapsed
 \end_layout
 
 \begin_layout Subsection
-
 Разделы и подразделы
 \end_layout
 
 \begin_layout Standard
-
 Наберите слово
 \family typewriter
  
@@ -1365,7 +1293,6 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-
 Не обязательно
 \emph on
  выделять
@@ -1432,7 +1359,6 @@ Enter
 status collapsed
 
 \begin_layout Standard
-
 О том, как набирать заголовки из двух или более строк см.
  
 \emph on
@@ -1462,12 +1388,10 @@ Return
 \end_layout
 
 \begin_layout LyX-Code
-
 Это вступительная часть моего первого  документа LyX.
 \end_layout
 
 \begin_layout Standard
-
 Нажмите 
 \family sans
 Enter
@@ -1498,7 +1422,6 @@ Enter
 \end_layout
 
 \begin_layout Standard
-
 Выглядит лучше.
  Снова перейдите к концу Раздела\InsetSpace ~
 1 (после текста 
@@ -1560,7 +1483,6 @@ Enter
 \end_layout
 
 \begin_layout Standard
-
 Нажмите 
 \family sans
 Enter
@@ -1573,32 +1495,26 @@ Enter
 \end_layout
 
 \begin_layout LyX-Code
-
 Разделы и подразделы описаны ниже.
 \end_layout
 
 \begin_layout LyX-Code
-
 Описание Раздела
 \end_layout
 
 \begin_layout LyX-Code
-
 Разделы больше, чем подразделы.
 \end_layout
 
 \begin_layout LyX-Code
-
 Описание подраздела
 \end_layout
 
 \begin_layout LyX-Code
-
 Подразделы меньше, чем разделы.
 \end_layout
 
 \begin_layout Standard
-
 Нажмите на второй строке и выберите 
 \family sans
 Подраздел
@@ -1657,7 +1573,6 @@ Enter
 \end_layout
 
 \begin_layout Standard
-
 Четыре уровня секционирования включают Подподраздел, Параграф, и Подпараграф.
  Поиграйте с ними по вашему усмотрению.
  Вы можете заметить, что заголовки параграфов и подпараграфов по умолчанию
@@ -1687,7 +1602,6 @@ Enter
 \end_layout
 
 \begin_layout Standard
-
 И наконец вам может понадобиться, чтобы разделы и подразделы не нумеровались.
  Есть окружения и для этого.
  Если вы измените окружение одного из заголовков на
@@ -1715,7 +1629,6 @@ Enter
 
 \begin_layout Standard
 
-
 \series bold
 Упражнение
 \series default
@@ -1728,12 +1641,10 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Subsection
-
 Списки и подсписки
 \end_layout
 
 \begin_layout Standard
-
 LyX поддерживает несколько различных окружений для оформления списков.
  Различные виды списков освобождают вас от нажатий клавиши 
 \family sans
@@ -1746,7 +1657,6 @@ Tab
 status collapsed
 
 \begin_layout Standard
-
 Да, мы подчёркиваем это на протяжении всего 
 \emph on
 Самоучителя
@@ -1765,7 +1675,6 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-
 Слайды презентации могут использовать окружение точечного списка 
 \family sans
 Перечисление
@@ -1775,7 +1684,6 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-
 Планы и структуры могут использовать окружение
 \family sans
  Нумерация
@@ -1785,7 +1693,6 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-
 Документ, описывающий несколько программных пакетов, мог бы использовать
  окружение 
 \family sans
@@ -1795,7 +1702,6 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-
 Окружение 
 \family sans
 Список,
@@ -1808,20 +1714,17 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
 Давайте напишем список причин, по которым LyX лучше других текстовых процессоров.
  Где-нибудь в вашем документе наберите:
 \end_layout
 
 \begin_layout Standard
 
-
 \family typewriter
 Lyx лучше любого текстового процессора потому, что: 
 \end_layout
 
 \begin_layout Standard
-
 и нажмите 
 \family sans
 Enter
@@ -1850,22 +1753,18 @@ Enter
 \end_layout
 
 \begin_layout LyX-Code
-
 Оформление делается за вас.
 \end_layout
 
 \begin_layout LyX-Code
-
 Математика --- WYSIWYG
 \end_layout
 
 \begin_layout LyX-Code
-
 Очень просто создавать списки!
 \end_layout
 
 \begin_layout Standard
-
 Окружения списков, в отличие от заголовков, не завершаются по нажатию 
 \family sans
 Enter
@@ -1901,7 +1800,6 @@ s
 \end_layout
 
 \begin_layout Standard
-
 Вы получили красивый ненумерованный список.
  Вы можете запустить LaTeX, чтобы посмотреть, как он будет выглядеть при
  печати.
@@ -1911,7 +1809,6 @@ s
 status collapsed
 
 \begin_layout Standard
-
 LyX не позволит вам выделить первую метку, пока вы не выберете абзац 
 \emph on
 перед 
@@ -1933,7 +1830,6 @@ LyX не позволит вам выделить первую метку, пока вы не выберете абзац
 \end_layout
 
 \begin_layout Standard
-
 Пока список отмечен, вы можете попробовать другие два окружения списков,
  
 \family sans
@@ -1968,7 +1864,6 @@ Enter
 status collapsed
 
 \begin_layout Standard
-
 Но отступ оформления, который будет изменяться, чтобы вместить наибольший
  из терминов, --- не печальный, жёсткий, неизменяемый табулятор в печатающей
  машинке.
@@ -1992,7 +1887,6 @@ status collapsed
 
 \begin_layout Standard
 
-
 \series bold
 Упражнение
 \series default
@@ -2002,7 +1896,6 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Standard
-
 Вы можете вкладывать списки друг в друга самыми различными комбинациями.
  Очевидным примером было бы написание структурированного плана.
  Нумерованные и не нумерованные списки будут иметь различные схемы нумерации
@@ -2016,12 +1909,10 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Subsection
-
 Другие окружения: стихи, цитаты и прочее
 \end_layout
 
 \begin_layout Standard
-
 Есть два окружения для оформления цитат отдельно от окружающего текста:
  
 \family sans
@@ -2052,7 +1943,6 @@ LyX-
 status collapsed
 
 \begin_layout Standard
-
 \SpecialChar \ldots{}
 предполагается вы достаточно творческий человек, чтобы поэзия была у вас
  на первом месте.
@@ -2079,7 +1969,6 @@ C-Enter
 
 \begin_layout Standard
 
-
 \series bold
 Упражнение
 \series default
@@ -2097,12 +1986,10 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Chapter
-
 Написание документов
 \end_layout
 
 \begin_layout Standard
-
 Будем надеяться, предыдущая глава позволила вам привыкнуть к написанию в
  LyX.
  Вам были представлены основные операции редактирования в LyX, а также мощные
@@ -2118,13 +2005,10 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Section
-
 Классы текста и шаблоны: Написание писем
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:textclasses}
 
 \end_inset
@@ -2143,7 +2027,6 @@ example_raw.lyx
 status collapsed
 
 \begin_layout Standard
-
 для пользователей LaTeX'а: это эквивалентно классу документа в LaTeX'е
 \end_layout
 
@@ -2164,7 +2047,6 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
 Скорее всего ваш документ написан в классе текста 
 \family sans
 Article
@@ -2174,7 +2056,6 @@ Article
 status collapsed
 
 \begin_layout Standard
-
 Обычно он является классом по умолчанию, однако вы можете изменить это в
  вашем файле 
 \family typewriter
@@ -2219,7 +2100,6 @@ Book
 \end_layout
 
 \begin_layout Standard
-
 Размеры шрифтов, печать в одну или две колонки, и оформление заголовков
  станиц --- просто некоторые способы отличий типографского оформления одного
  журнала от другого.
@@ -2244,7 +2124,6 @@ Article\InsetSpace ~
 \end_layout
 
 \begin_layout Standard
-
 Вот небольшой справочник классов текста.
  Для получение большей информации обратитесь к разделу 
 \emph on
@@ -2256,10 +2135,7 @@ Article\InsetSpace ~
  
 \end_layout
 
-
 \begin_layout Standard
-
-
 \begin_inset VSpace 0.3cm
 \end_inset
 
@@ -2268,8 +2144,7 @@ Article\InsetSpace ~
 
 \begin_layout Standard
 \align center
-
-\begin_inset  Tabular
+\begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
 <features>
 <column alignment="center" valignment="top" leftline="true" width="0pt">
@@ -2279,7 +2154,6 @@ Article\InsetSpace ~
 \begin_inset Text
 
 \begin_layout Standard
-
 Имя
 \end_layout
 
@@ -2289,7 +2163,6 @@ Article\InsetSpace ~
 \begin_inset Text
 
 \begin_layout Standard
-
 Заметки
 \end_layout
 
@@ -2302,7 +2175,6 @@ Article\InsetSpace ~
 
 \begin_layout Standard
 
-
 \lang english
 article
 \end_layout
@@ -2313,7 +2185,6 @@ article
 \begin_inset Text
 
 \begin_layout Standard
-
 печать с одной стороны, без глав
 \end_layout
 
@@ -2326,7 +2197,6 @@ article
 
 \begin_layout Standard
 
-
 \lang english
 article (AMS)
 \end_layout
@@ -2337,7 +2207,6 @@ article (AMS)
 \begin_inset Text
 
 \begin_layout Standard
-
 форматы и окружения для Американского Математического Oбщества
 \end_layout
 
@@ -2350,7 +2219,6 @@ article (AMS)
 
 \begin_layout Standard
 
-
 \lang english
 report
 \end_layout
@@ -2361,7 +2229,6 @@ report
 \begin_inset Text
 
 \begin_layout Standard
-
 больше чем article, печать с двух сторон
 \end_layout
 
@@ -2374,7 +2241,6 @@ report
 
 \begin_layout Standard
 
-
 \lang english
 book
 \end_layout
@@ -2385,7 +2251,6 @@ book
 \begin_inset Text
 
 \begin_layout Standard
-
 отчёты и книги
 \end_layout
 
@@ -2398,7 +2263,6 @@ book
 
 \begin_layout Standard
 
-
 \lang english
 slides
 \end_layout
@@ -2409,7 +2273,6 @@ slides
 \begin_inset Text
 
 \begin_layout Standard
-
 прозрачные плёнки, также включает FoilTeX
 \end_layout
 
@@ -2422,7 +2285,6 @@ slides
 
 \begin_layout Standard
 
-
 \lang english
 letter
 \end_layout
@@ -2433,7 +2295,6 @@ letter
 \begin_inset Text
 
 \begin_layout Standard
-
 множество дополнительных окружений: адреса, подписи
 \end_layout
 
@@ -2448,22 +2309,17 @@ letter
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset VSpace 0.3cm
 \end_inset
 
 
 \end_layout
 
-
 \begin_layout Section
-
 Шаблоны: Написание письма
 \end_layout
 
 \begin_layout Standard
-
 Один из наиболее популярных классов --- 
 \family sans
 Letter
@@ -2501,7 +2357,6 @@ Letter
 \end_layout
 
 \begin_layout Standard
-
 Создайте новый файл с помощью 
 \family sans
 Файл\SpecialChar \menuseparator
@@ -2525,7 +2380,6 @@ letter.lyx
 \end_layout
 
 \begin_layout Standard
-
 Когда вы взглянете на меню 
 \family sans
 Окружение
@@ -2575,7 +2429,6 @@ Signature:
 \end_layout
 
 \begin_layout Standard
-
 Шаблон --- обычный LyX-файл.
  Это значит, что вы можете заполнить поля с указанием вашего адреса и подписи
  и сохранить его в файл как новый шаблон.
@@ -2594,7 +2447,6 @@ Signature:
 status collapsed
 
 \begin_layout Standard
-
 Одно замечание, если вы пишете на основе шаблона.
  Если вы удалите весь текст в каком-либо окружении --- например, очистив
  всё поле 
@@ -2619,7 +2471,6 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
 Шаблоны могут сэкономить массу времени, и мы рекомендуем использовать их
  при всякой возможности.
  К тому же, они могут помочь некоторым людям изучить способы использования
@@ -2632,19 +2483,16 @@ status collapsed
 \end_layout
 
 \begin_layout Section
-
 Заголовки документов
 \end_layout
 
 \begin_layout Standard
-
 LyX (подобно LaTeX) рассматривает заголовок --- который может содержать
  фактический заголовок, имя автора, дату и даже резюме документа --- как
  отдельную часть документа.
 \end_layout
 
 \begin_layout Standard
-
 Вернитесь к началу вашего 
 \family typewriter
 newfile.lyx 
@@ -2658,7 +2506,6 @@ Article
 status collapsed
 
 \begin_layout Standard
-
 Вы больше не должны использовать класс текста
 \family sans
  Letter
@@ -2694,7 +2541,6 @@ status collapsed
 
 \begin_layout Standard
 
-
 \series bold
 Упражнение
 \series default
@@ -2704,7 +2550,6 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Section
-
 Метки и перекрёстные ссылки
 \begin_inset LatexCommand \label{sec:Метки-и-перекрёстные}
 
@@ -2714,8 +2559,6 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:labels}
 
 \end_inset
@@ -2732,12 +2575,10 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Subsection*
-
 Ваша первая метка
 \end_layout
 
 \begin_layout Standard
-
 Давайте отметим наш второй раздел, с заголовком 
 \begin_inset Quotes fld
 \end_inset
@@ -2768,7 +2609,6 @@ example_raw.lyx
 status collapsed
 
 \begin_layout Standard
-
 Возможно, у вас будут проблемы с названиями меток по-русски и вам придётся
  называть метки только латинскими буквами.
  --- 
@@ -2786,7 +2626,6 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-
 Мы написали 
 \begin_inset Quotes fld
 \end_inset
@@ -2811,7 +2650,6 @@ OK
 \end_layout
 
 \begin_layout Standard
-
 Аналогичным образом вы можете вставлять метки в любом месте раздела; ссылка
  на раздел будет указывать на последний раздел или подраздел, заголовок
  которого встретится перед меткой.
@@ -2821,7 +2659,6 @@ OK
 \end_layout
 
 \begin_layout Standard
-
 Поскольку вы ещё ничего другого не сделали, файл 
 \family typewriter
 dvi
@@ -2833,26 +2670,23 @@ dvi
 \end_layout
 
 \begin_layout Subsection*
-
 Ваша первая перекрёстная ссылка
 \end_layout
 
 \begin_layout Standard
-
 Поставьте курсор где-нибудь в Разделе\InsetSpace ~
 2 вашего документа.
  Наберите 
 \end_layout
 
 \begin_layout LyX-Code
-
 Если вы хотите больше узнать об этом документе, смотрите 
 \newline
-Раздел, который можно найти на странице .
+Раздел, который
+ можно найти на странице .
 \end_layout
 
 \begin_layout Standard
-
 Теперь поставьте курсор после слова 
 \begin_inset Quotes fld
 \end_inset
@@ -2943,7 +2777,6 @@ dvi
 \end_layout
 
 \begin_layout Standard
-
 LyX вставляет ссылки в виде серого прямоугольника прямо в то место, где
  находился курсор.
  В печатном документе, этот маркер ссылки будет заменён либо на номер страницы,
@@ -3004,12 +2837,10 @@ VI
 \end_layout
 
 \begin_layout Subsection*
-
 Более интересная информация о метках
 \end_layout
 
 \begin_layout Standard
-
 Мы говорили вам, что LyX заботится о нумерации перекрёстных ссылок, теперь
  вы сможете это проверить.
  Добавьте новый раздел перед Разделом\InsetSpace ~
@@ -3040,7 +2871,6 @@ VI
 \end_layout
 
 \begin_layout Standard
-
 Если вы хотите ещё немного попрактиковаться с метками, попробуйте вставить
  метку, 
 \begin_inset Quotes fld
@@ -3062,7 +2892,6 @@ VI
 \end_layout
 
 \begin_layout Standard
-
 Если вы хотите проверить, что перекрёстные ссылки правильно работают даже
  на больших документах, 
 \family sans
@@ -3081,7 +2910,6 @@ VI
 status collapsed
 
 \begin_layout Standard
-
 Кстати, копирование заголовка главы может вызвать ошибку, так как использование
  глав поддерживается в классе текста 
 \family sans
@@ -3106,7 +2934,6 @@ Article
 
 \begin_layout Standard
 
-
 \series bold
 Упражнение
 \series default
@@ -3116,12 +2943,10 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Section
-
 Сноски и примечания на полях
 \end_layout
 
 \begin_layout Standard
-
 Сноски можно добавить используя кнопку 
 \family sans
 Вставить\InsetSpace ~
@@ -3132,7 +2957,6 @@ example_raw.lyx
 status collapsed
 
 \begin_layout Standard
-
 Кнопка выглядит в виде стрелки, указывающей на красный текст, прямо под
  строками с чёрным текстом.
 \end_layout
@@ -3177,12 +3001,10 @@ LyX
 \end_layout
 
 \begin_layout LyX-Code
-
 LyX --- мощный текстовый процессор.
 \end_layout
 
 \begin_layout Standard
-
 Теперь нажмите на слове 
 \begin_inset Quotes fld
 \end_inset
@@ -3215,7 +3037,6 @@ LyX --- мощный текстовый процессор.
 \end_layout
 
 \begin_layout Standard
-
 Вас может удивить, что маркер сноски --- слово, а не цифра.
  Разгадка в том, что сам LyX заботится о нумерации сносок при печати текста.
  Вы сами сможете это увидеть, просмотрев файл 
@@ -3229,14 +3050,12 @@ dvi
 \end_layout
 
 \begin_layout Standard
-
 Сноску можно вырезать и вставлять, как и обычный текст.
  Давайте, попробуйте! Всё, что вам нужно --- это выделить маркер сноски
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-
 Это проще сделать с клавиатуры.
  Если вы попытаетесь выделить маркер мышкой, вы можете случайно развернуть
  сноску.
@@ -3268,7 +3087,6 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
 Примечания на полях можно добавить, нажав кнопку 
 \family sans
 Вставить\InsetSpace ~
@@ -3279,7 +3097,6 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-
 Кнопка выглядит в виде стрелки указывающей на красный текст следующий за
  (т.е., в полях) чёрным текстом, и обычно располагается за кнопкой 
 \family sans
@@ -3305,7 +3122,6 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-
 экранный маркер называется 
 \begin_inset Quotes fld
 \end_inset
@@ -3326,24 +3142,20 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-
 текст будет помещён на полях, а не внизу страницы;
 \end_layout
 
 \begin_layout Itemize
-
 примечания на полях не нумеруются;
 \end_layout
 
 \begin_layout Standard
-
 Превратите вашу LyX сноску в обычный текст, затем выделите его и преобразуйте
  в примечание на полях.
  Запустите снова LaTeX и посмотрите, как выглядит примечание на полях.
 \end_layout
 
 \begin_layout Standard
-
 
 \series bold
 Упражнение
@@ -3354,13 +3166,10 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Section
-
 Библиографии
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:bibliographies}
 
 \end_inset
@@ -3370,7 +3179,6 @@ example_raw.lyx
 status open
 
 \begin_layout Standard
-
 Чтобы получить гуманитарный стиль библиографий, творчески совместите методику
  из этого раздела с использованием сносок.
 \end_layout
@@ -3386,7 +3194,6 @@ status open
 \end_layout
 
 \begin_layout Standard
-
 Перейдите к концу документа и выберите окружение 
 \family sans
 Библиография
@@ -3438,7 +3245,6 @@ lyxtutorial
 status collapsed
 
 \begin_layout Standard
-
 Кириллические символы вызовут ошибку при вызове LaTeX.
  --- 
 \emph on
@@ -3452,7 +3258,6 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
 Теперь нажмите в том месте вашего документа, где вы хотите вставить ссылку.
  Теперь вставьте ссылку с помощью меню 
 \family sans
@@ -3475,7 +3280,6 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-
 Рекомендуется в поле 
 \family sans
 Ссылка
@@ -3508,7 +3312,6 @@ lyxtutorial
 \end_layout
 
 \begin_layout Standard
-
 Как использовать остальные поля? Поле 
 \family sans
 После
@@ -3548,7 +3351,6 @@ lyxtutorial
 
 \begin_layout Standard
 
-
 \series bold
 Упражнение: 
 \series default
@@ -3558,12 +3360,10 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Section
-
 Содержание
 \end_layout
 
 \begin_layout Standard
-
 В начале вашего документа вы можете вставить содержание.
  В LyX это делается очень просто.
  Просто нажмите 
@@ -3575,7 +3375,6 @@ Enter
 status collapsed
 
 \begin_layout Standard
-
 Не пытайтесь установить курсор перед номером раздела.
  Это не сработает.
  Вы всё равно не сможете отредактировать номер раздела, так как о нумерации
@@ -3606,7 +3405,6 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
 Оно не кажется слишком полезным.
  Однако, если вы посмотрите в ваш файл 
 \family typewriter
@@ -3624,7 +3422,6 @@ dvi
 \end_layout
 
 \begin_layout Standard
-
 Содержание не выводится в экранной версии документа, так как вы всё равно
  не можете его редактировать.
  Однако, вы можете отобразить его в отдельном окне, нажав на вкладке, или
@@ -3636,7 +3433,6 @@ dvi
 status collapsed
 
 \begin_layout Standard
-
 Команда меню будет работать, даже если в вашем документе нет вкладки 
 \begin_inset Quotes fld
 \end_inset
@@ -3684,13 +3480,11 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
 Чтобы избавиться от Содержания, вы можете удалить маркер таблицы содержания
  так же, как и любой другой символ.
 \end_layout
 
 \begin_layout Standard
-
 
 \series bold
 Упражнение
@@ -3701,12 +3495,10 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Chapter
-
 Использование математики
 \end_layout
 
 \begin_layout Standard
-
 LaTeX используется многими учёными, так как он прекрасно отображает формулы,
  избегая управляющих символов, используемых другими текстовыми процессорами
  и их редакторами формул.
@@ -3725,7 +3517,6 @@ LaTeX используется многими учёными, так как он прекрасно отображает формулы,
 status collapsed
 
 \begin_layout Standard
-
 Извините, но LyX не может проверять 
 \emph on
 корректность
@@ -3739,22 +3530,18 @@ status collapsed
 \end_layout
 
 \begin_layout Section
-
 Математический режим
 \end_layout
 
 \begin_layout Standard
-
 Где-то в вашем LyX документе наберите:
 \end_layout
 
 \begin_layout LyX-Code
-
 Мне нравится высказывание Эйнштейна, E=mc^2, так как это просто.
 \end_layout
 
 \begin_layout Standard
-
 Итак, эта формула выглядит не очень хорошо, даже в файле
 \family typewriter
  dvi
@@ -3775,7 +3562,6 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
 Математические формулы пишутся в математическом редакторе (ещё известном
  как математический режим).
  Чтобы войти в математический режим, просто нажмите на кнопку панели инструменто
@@ -3817,7 +3603,6 @@ Esc
 \end_layout
 
 \begin_layout Standard
-
 Запустите LaTeX и просмотрите файл
 \family typewriter
  dvi
@@ -3839,7 +3624,6 @@ Esc
 \end_layout
 
 \begin_layout Standard
-
 Математический редактор --- ещё один пример философии WYSIWYM.
  В LaTeX, вы набираете математическое выражение, используя текст и такие
  команды как 
@@ -3873,12 +3657,10 @@ sqrt
 \end_layout
 
 \begin_layout Section
-
 Навигация по формулам
 \end_layout
 
 \begin_layout Standard
-
 Теперь изменим 
 \begin_inset Formula $E=mc^{2}$
 \end_inset
@@ -3919,7 +3701,6 @@ Esc
 \end_layout
 
 \begin_layout Standard
-
 Кроме специальных клавиш, описанных ниже, набор в математическом режиме
  подобен редактированию обычного текста.
  Используйте 
@@ -3960,7 +3741,6 @@ Backspace
 \end_layout
 
 \begin_layout Standard
-
 Что, если вы хотите изменить 
 \begin_inset Formula $E=mc^{2}$
 \end_inset
@@ -4035,7 +3815,6 @@ c
 \end_layout
 
 \begin_layout Standard
-
 Также при навигации по выражению вы можете использовать клавишу 
 \family sans
 Пробел
@@ -4094,7 +3873,6 @@ status collapsed
 
 \begin_layout Standard
 
-
 \family sans
 Пробел
 \family default
@@ -4128,7 +3906,6 @@ Tab
 \end_layout
 
 \begin_layout Standard
-
 Обратите внимание, если вы набираете ваше выражение и выходите с помощью
  
 \family sans
@@ -4176,12 +3953,10 @@ Esc
 \end_layout
 
 \begin_layout Section
-
 Показатели степени и индексы
 \end_layout
 
 \begin_layout Standard
-
 Показатель степени можно ввести через 
 \family sans
 Математическую\InsetSpace ~
@@ -4212,7 +3987,6 @@ Esc
 \end_layout
 
 \begin_layout Standard
-
 Создание нижнего индекса так же просто: начните набор с клавиши подчёркивания
  
 \begin_inset Quotes fld
@@ -4234,7 +4008,6 @@ _
 
 \begin_layout Standard
 
-
 \series bold
 Упражнение
 \series default
@@ -4246,12 +4019,10 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Section
-
 Математическая панель
 \end_layout
 
 \begin_layout Standard
-
 
 \family sans
 Математическая\InsetSpace ~
@@ -4313,12 +4084,10 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Subsection
-
 Греческий алфавит и значки
 \end_layout
 
 \begin_layout Standard
-
 Если вы нажмёте на кнопку, помеченную 
 \begin_inset Quotes fld
 \end_inset
@@ -4344,7 +4113,6 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Standard
-
 Внизу 
 \family sans
 Математической\InsetSpace ~
@@ -4357,7 +4125,6 @@ example_raw.lyx
 status collapsed
 
 \begin_layout Standard
-
 Чёрные кнопки для обычных символов LaTeX и синие кнопки для более специализирова
 нных символов, предоставляемых Американским Математическим Сообществом.
  Но я забегаю вперёд.
@@ -4386,7 +4153,6 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
 Четыре нижние кнопки 
 \family sans
 Математической\InsetSpace ~
@@ -4415,12 +4181,10 @@ status collapsed
 \end_layout
 
 \begin_layout Subsection
-
 Квадратные корни, диакритические знаки, и ограничители 
 \end_layout
 
 \begin_layout Standard
-
 Для ввода квадратного корня просто нажмите на кнопке со значком квадратного
  корня.
  Появится квадратный корень, и курсор будет в новой точке ввода внутри квадратно
@@ -4432,7 +4196,6 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
 Надчёркивание символа (
 \begin_inset Formula $\overrightarrow{v}$
 \end_inset
@@ -4468,7 +4231,6 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
 Такие ограничители, как круглые, квадратные и фигурные скобки, работают
  подобным образом, но чуть более сложно.
  Для появления окна 
@@ -4536,7 +4298,6 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
 Как только вы выбрали ограничители, вставить их в выражение можно нажатием
  на 
 \family sans
@@ -4564,7 +4325,6 @@ OK
 \end_layout
 
 \begin_layout Standard
-
 Также вы можете вставить ограничители, знак корня или декорацию в уже существующ
 ий текст.
  Выберите желаемую часть формулы и нажмите кнопку мыши на нужной кнопке
@@ -4589,12 +4349,10 @@ OK
 \end_layout
 
 \begin_layout Subsection
-
 Дроби
 \end_layout
 
 \begin_layout Standard
-
 Использовать дробь в математическом редакторе очень просто.
  Нажмите на кнопку 
 \family sans
@@ -4638,7 +4396,6 @@ OK
 
 \begin_layout Standard
 
-
 \series bold
 Упражнение
 \series default
@@ -4650,12 +4407,10 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Subsection
-
 Режим LaTeX: Пределы, логарифмы, синусы и прочее
 \end_layout
 
 \begin_layout Standard
-
 Так как символы в математическом режиме рассматриваются как переменные,
  если в математическом режиме вы набираете 
 \begin_inset Quotes fld
@@ -4737,7 +4492,6 @@ x
 \end_layout
 
 \begin_layout Standard
-
 Нажмите на 
 \begin_inset Quotes fld
 \end_inset
@@ -4788,7 +4542,6 @@ x
 \end_layout
 
 \begin_layout Standard
-
 Прочие команды, вводимые в режиме LaTeX с помощью списка 
 \family sans
 Функций
@@ -4825,7 +4578,6 @@ x
 
 \begin_layout Standard
 
-
 \series bold
 Упражнение
 \series default
@@ -4837,13 +4589,10 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Subsection
-
 Матрицы
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:matrices}
 
 \end_inset
@@ -4880,7 +4629,6 @@ OK
 \end_layout
 
 \begin_layout Standard
-
 Для передвижения по горизонтали между столбцами матрицы используется клавиша
  
 \family sans
@@ -4899,7 +4647,6 @@ Tab
 \end_layout
 
 \begin_layout Standard
-
 Если вам вдруг потребуется больше колонок или столбцов, используйте пункты
  
 \family sans
@@ -4945,7 +4692,6 @@ Tab
 \end_layout
 
 \begin_layout Standard
-
 Способы изменения горизонтального выравнивания каждого столбца, а также
  изменения вертикальной позиции всей матрицы смотрите в 
 \emph on
@@ -4959,13 +4705,11 @@ Tab
 \end_layout
 
 \begin_layout Subsection
-
 Режим отображения.
  Выключные формулы
 \end_layout
 
 \begin_layout Standard
-
 Всё написанные нами до сих пор выражения были на одном уровне с предыдущим
  и последующим текстом.
  Это подходит для коротких, простых выражений, но если вы хотите писать
@@ -4986,7 +4730,6 @@ Tab
 \end_layout
 
 \begin_layout Standard
-
 Нажмите на кнопке 
 \family sans
 Выключной режим
@@ -5010,12 +4753,10 @@ Tab
 \end_layout
 
 \begin_layout Standard
-
 Выключной режим имеет несколько отличий от обычного математического режима:
 \end_layout
 
 \begin_layout Itemize
-
 Для некоторых символов, например 
 \begin_inset Formula $\sum$
 \end_inset
@@ -5028,23 +4769,19 @@ Tab
 \end_layout
 
 \begin_layout Itemize
-
 Верхний и нижний индексы пределов и сумм (но не интегралов) пишутся под
  символом, а не за ним;
 \end_layout
 
 \begin_layout Itemize
-
 Текст выравнивается по середине.
 \end_layout
 
 \begin_layout Standard
-
 За исключением этих отличий выключные выражения и выражения в строке одинаковы.
 \end_layout
 
 \begin_layout Standard
-
 Ещё одна заключительная заметка о способе оформления выключных формул: будьте
  внимательны с тем, вставляете ли вы вашу формулу в новый абзац или нет.
  Если ваша формула в середине предложения или абзаца, не нажимайте 
@@ -5062,7 +4799,6 @@ Enter
 
 \begin_layout Standard
 
-
 \series bold
 Упражнение
 \series default
@@ -5075,7 +4811,6 @@ example_raw.lyx
 
 \begin_layout Standard
 
-
 \series bold
 Упражнение
 \series default
@@ -5085,7 +4820,6 @@ example_raw.lyx
 status collapsed
 
 \begin_layout Standard
-
 После того, как вы сделаете это самым сложным способом, почему бы вам не
  попробовать меню 
 \family sans
@@ -5120,13 +4854,10 @@ f(x)=\left\{ \begin{array}{cc}
 \end_layout
 
 \begin_layout Section
-
 Многострочные формулы
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:multiline}
 
 \end_inset
@@ -5141,8 +4872,6 @@ dvi
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset Formula \[
 x=y+y+y+y+y\]
 
@@ -5152,8 +4881,6 @@ x=y+y+y+y+y\]
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset Formula \[
 =5y\]
 
@@ -5163,7 +4890,6 @@ x=y+y+y+y+y\]
 \end_layout
 
 \begin_layout Standard
-
 Это совсем не хорошо выглядит! Если вы последовательно набираете две или
  более формулы, они намного лучше выглядят, если выравнены их знаки равенства;
  особенно если вторая формула без левой части.
@@ -5180,7 +4906,6 @@ x & = & y+y+y+y+y\\
 \end_layout
 
 \begin_layout Standard
-
 Выглядит 
 \emph on
 намного
@@ -5189,7 +4914,6 @@ x & = & y+y+y+y+y\\
 \end_layout
 
 \begin_layout Standard
-
 Чтобы начать ввод многострочной формулы, откройте выключное математическое
  выражение и нажмите 
 \family sans
@@ -5226,7 +4950,6 @@ C-Enter
 status collapsed
 
 \begin_layout Standard
-
 Заметьте, что промежуток после первого плюса во второй строке очень мал.
  Это один из редких случаев когда LaTeX терпит неудачу и вы должны позаботиться
  о промежутке самостоятельно.
@@ -5251,7 +4974,6 @@ x & = & a+b+c+d\\
 \end_layout
 
 \begin_layout Standard
-
 LyX выровняет второе (среднее) поле каждой строки, поэтому в этом поле обычно
  вводятся знаки равенства или другие операторы сравнения; хотя фактически
  вы можете вводить там всё, что угодно.
@@ -5266,7 +4988,6 @@ LyX выровняет второе (среднее) поле каждой строки, поэтому в этом поле обычно
 \end_layout
 
 \begin_layout Standard
-
 Если вы хотите выравнять длинный набор формул, используйте 
 \family sans
 C-Enter
@@ -5305,7 +5026,6 @@ E & = & mc^{2}\\
 \end_layout
 
 \begin_layout Standard
-
 Если вы написали слишком много строк, используйте меню 
 \family sans
 Правка\SpecialChar \menuseparator
@@ -5336,7 +5056,6 @@ C-k
 \end_layout
 
 \begin_layout Standard
-
 И напоследок: существует гораздо больше видов многострочных уравнений.
  Но мы не можем подробностях объяснить все эти загадочные пункты в меню
  
@@ -5356,12 +5075,10 @@ C-k
 \end_layout
 
 \begin_layout Section
-
 Дополнительные математические возможности
 \end_layout
 
 \begin_layout Standard
-
 Математический редактор может делать намного больше.
  Теперь, когда вы ознакомились с основами, обратитесь к 
 \emph on
@@ -5371,12 +5088,10 @@ C-k
 \end_layout
 
 \begin_layout Itemize
-
 Пометок и нумерации выражений;
 \end_layout
 
 \begin_layout Itemize
-
 Изменений гарнитур, например, чтобы написать в выражении текст жирным шрифтом.
  Мы должны заметить, что нажатие кнопки 
 \family sans
@@ -5389,13 +5104,11 @@ C-k
 \end_layout
 
 \begin_layout Itemize
-
 Точной подстройки размеров шрифтов или пробелов в выражении.
  (Принимайтесь за это только в конце работы над документом)
 \end_layout
 
 \begin_layout Itemize
-
 Написания макросов.
  Это очень мощный инструмент, так как вы просто определяете макрос единожды
  в начале вашего документа и можете его использовать на протяжении всего
@@ -5406,7 +5119,6 @@ C-k
 \end_layout
 
 \begin_layout Itemize
-
 Выполнения многих других вещей, рассмотреть которые у нас не хватило времени
  в этом 
 \emph on
@@ -5416,17 +5128,14 @@ C-k
 \end_layout
 
 \begin_layout Chapter
-
 Разное
 \end_layout
 
 \begin_layout Section
-
 Прочие важные свойства LyX
 \end_layout
 
 \begin_layout Standard
-
 Мы не рассмотрели все возможные команды LyX, но мы это и не планировали.
  Как обычно, более подробную информацию ищите в 
 \emph on
@@ -5444,7 +5153,6 @@ C-k
 \end_layout
 
 \begin_layout Itemize
-
 В LyX есть WYSIWYM-поддержка таблиц.
  Для вставки таблицы используйте 
 \family sans
@@ -5457,7 +5165,6 @@ C-k
 status collapsed
 
 \begin_layout Standard
-
 Убрано в русском переводе: (Мы предпочитаем использовать соглашение LaTeX'а:
  tabular и table --- чтобы отличить содержимое таблицы от плавающей таблицы,
  которая включает содержимое таблицы, заголовок и т.д.) --- 
@@ -5481,7 +5188,6 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-
 LyX также поддерживает включение рисунков в различных форматах (включая
  JPEG или другие растровые форматы, PostScript
 \begin_inset ERT
@@ -5508,7 +5214,6 @@ textregistered{}
 \end_layout
 
 \begin_layout Itemize
-
 Поддерживается контроль версий с помощью RCS (более подробно об этом
 \family typewriter
  
@@ -5520,7 +5225,6 @@ man rcsintro
 \end_layout
 
 \begin_layout Itemize
-
 LyX гибко настраивается.
  Всё, от внешнего вида окна LyX до способов вывода, может быть настроено
  множеством способов.
@@ -5540,7 +5244,6 @@ LyX гибко настраивается.
 \end_layout
 
 \begin_layout Itemize
-
 LyX разрабатывается командой программистов с пяти континентов.
  Поэтому, по сравнению с другими текстовыми процессорами, LyX лучше всех
  поддерживает многие европейские языки (такие как Датский, Немецкий, Французский
@@ -5551,13 +5254,11 @@ LyX разрабатывается командой программистов с пяти континентов.
 \end_layout
 
 \begin_layout Itemize
-
 Меню LyX имеют соответствующие клавишные комбинации.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-
 В русском варианте локализации клавишные комбинации (пока?) не реализованы.
  --- 
 \emph on
@@ -5603,7 +5304,6 @@ C-O
 \end_layout
 
 \begin_layout Itemize
-
 LyX может читать документы в формате LaTeX.
  Смотрите Раздел\InsetSpace ~
 
@@ -5615,7 +5315,6 @@ LyX может читать документы в формате LaTeX.
 \end_layout
 
 \begin_layout Itemize
-
 Можно выполнять проверку орфографии с помощью 
 \family sans
 Правка\SpecialChar \menuseparator
@@ -5627,7 +5326,6 @@ LyX может читать документы в формате LaTeX.
 status collapsed
 
 \begin_layout Standard
-
 Обратите внимание, что проверка орфографии производится только от позиции
  курсора до конца документа.
 \end_layout
@@ -5638,13 +5336,10 @@ status collapsed
 \end_layout
 
 \begin_layout Section
-
 LyX для пользователей LaTeX
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:latexusers}
 
 \end_inset
@@ -5666,7 +5361,6 @@ LyX для пользователей LaTeX
 \end_layout
 
 \begin_layout Standard
-
 Так как это лишь самоучитель, мы только упомянем некоторые вещи, наиболее
  интересные новым пользователям LyX.
  Так как в наших интересах держать 
@@ -5691,12 +5385,10 @@ LyX для пользователей LaTeX
 \end_layout
 
 \begin_layout Subsection
-
 Режим LaTeX
 \end_layout
 
 \begin_layout Standard
-
 Всё, что вы введёте в режиме LaTeX, будет в том же виде, без изменений,
  передано LaTeX, а на экране будет отображено красным цветом.
  Вы можете использовать команды LaTeX в LyX, выбрав
@@ -5711,7 +5403,6 @@ LaTeX
 \end_layout
 
 \begin_layout Standard
-
 В математическом редакторе режим LaTeX обрабатывается немного по-другому.
  Войдите в режим LaTeX, нажав на обратный слэш.
  Обратный слэш не отображается, но всё, что вы введёте, отобразится в красном
@@ -5774,7 +5465,6 @@ gamma
 \end_layout
 
 \begin_layout Standard
-
 Как специальный случай, если вы набираете фигурную скобку в математическом
  редакторе в режиме LaTeX, то математический редактор оформит открывающую
  
@@ -5791,7 +5481,6 @@ gamma
 \end_layout
 
 \begin_layout Standard
-
 LyX не может делать абсолютно всё, что может LaTeX (пока?).
  Некоторые интересные функции вовсе не поддерживаются, некоторые --- работают,
  но не отображаются в режиме WYSIWYM.
@@ -5816,15 +5505,12 @@ usepackage{foo}
 \end_layout
 
 \begin_layout Subsection
-
 Импортирование документов LaTeX --- 
 \family typewriter
 reLyX
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:relyx}
 
 \end_inset
@@ -5859,7 +5545,6 @@ reLyX
 status collapsed
 
 \begin_layout Standard
-
 Если LyX установлен, отдельный исполняемый файл с именем 
 \family typewriter
 reLyX
@@ -5887,7 +5572,6 @@ lyx
 
 \begin_layout Standard
 
-
 \family typewriter
 reLyX
 \family default
@@ -5902,7 +5586,6 @@ reLyX
 \end_layout
 
 \begin_layout Standard
-
 У 
 \family typewriter
 reLyX
@@ -5914,12 +5597,10 @@ reLyX
 \end_layout
 
 \begin_layout Subsection
-
 Преобразование документов LyX в формат LaTeX
 \end_layout
 
 \begin_layout Standard
-
 Возможно, вы пожелаете преобразовать документ LyX в файл LaTeX.
  Например, его захочет прочесть ваш сотрудник или соавтор, кто не знаком
  с LyX.
@@ -5946,17 +5627,14 @@ whatever.lyx
 \end_layout
 
 \begin_layout Subsection
-
 Преамбула LaTeX 
 \end_layout
 
 \begin_layout Subsubsection
-
 Класс документа
 \end_layout
 
 \begin_layout Standard
-
 В диалоговом окне 
 \family sans
 Формат\SpecialChar \menuseparator
@@ -5986,13 +5664,10 @@ documentclass
 \end_layout
 
 \begin_layout Subsubsection
-
 Другие вопросы относительно преамбулы
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:preamble}
 
 \end_inset
@@ -6011,12 +5686,10 @@ LaTeX
 \end_layout
 
 \begin_layout Subsection
-
 BibTeX
 \end_layout
 
 \begin_layout Standard
-
 В LyX есть поддержка BibTeX, что позволяет вам создавать базы данных библиографи
 ческих ссылок, используемых во многих документах.
  Для включения 
@@ -6054,7 +5727,6 @@ bibliography{}
 status collapsed
 
 \begin_layout Standard
-
 Как и в обычном LaTeX, множественные библиографии разделяются запятыми без
  пробелов.
 \end_layout
@@ -6078,7 +5750,6 @@ bibliographystyle{}
 \end_layout
 
 \begin_layout Standard
-
 Как только вы это сделали --- можете использовать цитаты из любой включенной
  библиографии с помощью 
 \family sans
@@ -6110,12 +5781,10 @@ bib
 \end_layout
 
 \begin_layout Subsection
-
 Разное
 \end_layout
 
 \begin_layout Standard
-
 Для вставки других специальных символов, включая эллипсы, разрывы строк,
  точки переносов, смотрите меню 
 \family sans
@@ -6127,12 +5796,10 @@ bib
 \end_layout
 
 \begin_layout Section
-
 Ошибки!
 \end_layout
 
 \begin_layout Standard
-
 Иногда при преобразовании документов LaTeX, случаются ошибки, т.е.
  места, непонятные для LyX или LaTeX.
  Когда это происходит, LyX создаёт прямоугольник ошибки (прямоугольник с

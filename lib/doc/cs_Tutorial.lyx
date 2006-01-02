@@ -1,5 +1,5 @@
 #LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
-\lyxformat 243
+\lyxformat 245
 \begin_document
 \begin_header
 \textclass article
@@ -20,7 +20,6 @@
 \paragraph_separation indent
 \defskip medskip
 \quotes_language german
-\quotes_times 2
 \papercolumns 1
 \papersides 1
 \paperpagestyle plain
@@ -31,18 +30,14 @@
 \begin_body
 
 \begin_layout Title
-
 Prùvodce programem LyX 
 \end_layout
 
 \begin_layout Author
-
 napsal Amir Karger a LyX Team
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \tableofcontents{}
 
 \end_inset
@@ -51,17 +46,14 @@ napsal Amir Karger a LyX Team
 \end_layout
 
 \begin_layout Part
-
 Úvod
 \end_layout
 
 \begin_layout Section
-
 Vítejte v LyXu!
 \end_layout
 
 \begin_layout Standard
-
 Tento soubor je urèen v¹em, kteøí dopusud nesly¹eli o LaTeXu èi jej dobøe
  neznají.
  Ale teï není tøeba panikaøit - pro pou¾ívání LyXu se nemusíte uèit LaTeX.
@@ -71,7 +63,6 @@ Tento soubor je urèen v¹em, kteøí dopusud nesly¹eli o LaTeXu èi jej dobøe
 \end_layout
 
 \begin_layout Standard
-
 Nìkteøí z vás si mo¾ná otevøeli tento dokument poté, co jste napsali dvì
  mezery za teèkou, èi se sna¾ili vlo¾it tøi prázdné øádky na oddìlení odstavcù.
  Po nìkolika pokusech jste pravdìpodobnì zjistili, ¾e to nejde.
@@ -85,18 +76,15 @@ Nìkteøí z vás si mo¾ná otevøeli tento dokument poté, co jste napsali dvì
 \end_layout
 
 \begin_layout Standard
-
 Pokraèujte ve ètení.
  Rozhodnì to stojí za to.
 \end_layout
 
 \begin_layout Section
-
 O tomto dokumentu
 \end_layout
 
 \begin_layout Standard
-
 Ne¾ zaèneme, rádi bychom øekli nìco o tomto dokumentu.
  Na rozdíl od jiných manuálù my pøedpokládáme, ¾e vy, jako u¾ivatel, 
 \series bold
@@ -112,7 +100,6 @@ NEJSTE
 \end_layout
 
 \begin_layout Standard
-
 
 \emph on
 Prùvodce
@@ -131,7 +118,6 @@ Prùvodce
 \end_layout
 
 \begin_layout Standard
-
 Teï, kdy¾ víte, co znamená který font, rádi bychom vám øekli nìco o úèelu
  
 \emph on
@@ -141,7 +127,6 @@ Prùvodce
 \end_layout
 
 \begin_layout Section
-
 O èem prùvodce 
 \emph on
 je
@@ -152,12 +137,10 @@ není
 \end_layout
 
 \begin_layout Subsection
-
 Jak èíst prùvodce
 \end_layout
 
 \begin_layout Standard
-
 Tento prùvodce sestává z pøíkladù a cvièení.
  Abyste správnì porozumìli a získali pøi ètení maximum informací, je tøeba
  abyste pøeèetli celý dokument, napsali v¹echna cvièení, která po vás chceme,
@@ -166,7 +149,6 @@ Tento prùvodce sestává z pøíkladù a cvièení.
 \end_layout
 
 \begin_layout Standard
-
 Jestli¾e ovládáte LaTeX, pravdìpodobnì budete schopen pøeèíst 
 \emph on
 Prùvodce
@@ -177,7 +159,6 @@ Prùvodce
 status collapsed
 
 \begin_layout Standard
-
 nebo optimistiètìji 
 \begin_inset Quotes eld
 \end_inset
@@ -205,7 +186,6 @@ Prùvodce
 \end_layout
 
 \begin_layout Standard
-
 Sekce 
 \begin_inset LatexCommand \ref{sec:what-is-lyx}
 
@@ -224,7 +204,6 @@ psaný z povzdálí
 \end_layout
 
 \begin_layout Subsection
-
 Co zde 
 \emph on
 ne
@@ -233,13 +212,11 @@ najdete
 \end_layout
 
 \begin_layout Itemize
-
 Instrukce, jak pou¾ívat my¹ a klávesnici.
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-
 Jestli¾e s tìmito vìcmi nemáte zku¹enosti, neumíme vám pomoci.
  Pøedpokládáme, ¾e vy, u¾ivatel, 
 \series bold
@@ -250,15 +227,14 @@ NEJSTE
 hlupák.
  Mo¾ná ztracený èi zmatený, ale ne hloupý.
 \end_layout
+
 \end_deeper
 \begin_layout Itemize
-
 Detailní popis v¹ech vlastností LyXu.
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-
 Vy snad chcete mít 
 \emph on
 U¾ivatelskou pøíruèku
@@ -267,7 +243,6 @@ U¾ivatelskou pøíruèku
 \end_layout
 
 \begin_layout Standard
-
 Teï vá¾nì, jsme tu proto, abychom vás nastartovali a umo¾nili vám pokraèovat,
  tak¾e posléze ji¾ budete potøebovat jen 
 \emph on
@@ -285,23 +260,22 @@ U¾ivatelskou pøíruèku
 \emph default
 na konci ka¾dé sekce.
 \end_layout
+
 \end_deeper
 \begin_layout Itemize
-
 Detailní výklad LaTeXu.
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-
 Není nutný.
  Jestli vás to skuteènì zajímá a chcete se nauèit mo¾nosti programu LaTeX,
  kupte si nìm kní¾ku.
  Na trhu jich je nìkolik velice dobrých.
 \end_layout
+
 \end_deeper
 \begin_layout Standard
-
 No a teï je èas trochu pokroèit.
  Mù¾ete si projít malou exkurzí v následující sekci nebo pou¾ít odkaz na
  sekci 
@@ -313,7 +287,6 @@ No a teï je èas trochu pokroèit.
 \end_layout
 
 \begin_layout Section
-
 Co je LyX?
 \begin_inset LatexCommand \label{sec:what-is-lyx}
 
@@ -323,12 +296,10 @@ Co je LyX?
 \end_layout
 
 \begin_layout Subsection
-
 Úvodem
 \end_layout
 
 \begin_layout Standard
-
 Jeden z podnìtù pro pou¾ívání LyXu vychází ze zmìny, kterou vy jako u¾ivatel
  musíte projít.
  Kdysi dávno, kdy¾ jsme v¹e psali na psacím stroji, v¹ichni jsme se nauèili,
@@ -341,13 +312,11 @@ Jeden z podnìtù pro pou¾ívání LyXu vychází ze zmìny, kterou vy jako u¾ivatel
 \end_layout
 
 \begin_layout Standard
-
 Jinými slovy, v¹ichni jsme byli nauèeni starat se o tyto malé detaily, jako
  napøíklad který znak pøijde kam.
 \end_layout
 
 \begin_layout Standard
-
 Logicky témìø v¹echny textové procesory pøevzaly tuto mentalitu.
  Stále pou¾ívají tabelátory pro vkládání mezer.
  Musíte se starat o to, kde se co na stránce objeví.
@@ -357,7 +326,6 @@ Logicky témìø v¹echny textové procesory pøevzaly tuto mentalitu.
 \end_layout
 
 \begin_layout Standard
-
 A právì tady se LyX li¹í od bì¾ných textových procesorù.
  Nestaráte se o to, kam který znak napsat.
  Øíkáte LyXu 
@@ -373,7 +341,6 @@ styl
 \end_layout
 
 \begin_layout Standard
-
 Pøedpokládejme, ¾e pí¹ete zprávu.
  Na zaèátek chcete umístit sekci zvanou Úvod.
  Tak¾e si otevøete menu a zmìníte velikost fontu.
@@ -394,7 +361,6 @@ Pøedpokládejme, ¾e pí¹ete zprávu.
 \end_layout
 
 \begin_layout Standard
-
 V LyXu, otevøete nabídku vlevo, vyberete 
 \family sans
 Section
@@ -412,7 +378,6 @@ Section
 \end_layout
 
 \begin_layout Standard
-
 Ano, to je v¹e.
  Jestli¾e pøesunete sekci pomocí funkcí vystøihni a vlo¾, èíslování bude
  automaticky zmìnìno - a to kdekoli v textu.
@@ -421,7 +386,6 @@ Ano, to je v¹e.
 \end_layout
 
 \begin_layout Standard
-
 Také je zde problém s konzistencí.
  Po pìti dnech, kdy¾ znovu otevøete svoji zprávu zaènete psát sekci 4.
  Zapomenete ov¹em, ¾e jste pou¾ili tuèné písmo o velikost 18 bodù místo
@@ -433,7 +397,6 @@ Také je zde problém s konzistencí.
 \end_layout
 
 \begin_layout Standard
-
 Tady je dal¹í pøíklad.
  Pøedpokládejme, ¾e dìláte seznam.
  V textovém procesoru je seznam vlastnì hromada znakù nový øádek a tabelátor.
@@ -445,7 +408,6 @@ Tady je dal¹í pøíklad.
 \end_layout
 
 \begin_layout Standard
-
 Tak¾e, základní my¹lenkou LyXu je: øíkej mi co dìlá¹ a nikoli jak je to
  tøeba udìlat.
  Místo modelu 
@@ -461,7 +423,6 @@ what you see is what you get,
 status collapsed
 
 \begin_layout Standard
-
 co vidí¹ to dostane¹
 \end_layout
 
@@ -484,7 +445,6 @@ mean
 status collapsed
 
 \begin_layout Standard
-
 vidí¹ to, co jsi myslel
 \end_layout
 
@@ -494,13 +454,11 @@ vidí¹ to, co jsi myslel
 \end_layout
 
 \begin_layout Subsection
-
 Rozdíly mezi LyXem a jinými textovými procesory
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-
 Ne, my nechceme zaèít (nebo vyhrát) svatou válku o textové procesory.
  Ale domníváme se, ¾e je dùle¾ité popsat mo¾nosti a vlastnosti LyXu.
  A jedna z jeho vlastností, WYSIWYM, je od základù jiný koncept ne¾ zná
@@ -513,22 +471,18 @@ Ne, my nechceme zaèít (nebo vyhrát) svatou válku o textové procesory.
 \end_layout
 
 \begin_layout Standard
-
 Zde je seznam toho, co v LyXu nenajdete:
 \end_layout
 
 \begin_layout Itemize
-
 Pravítko nad stránkou dokumentu
 \end_layout
 
 \begin_layout Itemize
-
 Zará¾ky tabelátoru
 \end_layout
 
 \begin_layout Itemize
-
 Mezery navíc [t.j.
  znaky 
 \family sans
@@ -542,7 +496,6 @@ vícekrát za sebou]
 \end_layout
 
 \begin_layout Standard
-
 Jak zará¾ky tabelátoru, tak i pravítko, podle kterého poznáte svoji polohu
  na stránce jsou v LyXu zbyteèné.To je starostí programu, kam které vìci
  vytisknout, ne va¹í.
@@ -553,43 +506,35 @@ Jak zará¾ky tabelátoru, tak i pravítko, podle kterého poznáte svoji polohu
 \end_layout
 
 \begin_layout Standard
-
 Zde je nìkolik termínù, jejich¾ pou¾ití v LyXu se li¹í od tzv.
  obvyklého:
 \end_layout
 
 \begin_layout Itemize
-
 Øízení odsazení
 \end_layout
 
 \begin_layout Itemize
-
 Pøechod na novou stránku
 \end_layout
 
 \begin_layout Itemize
-
 Vý¹ka øádku [øádkování jednoduché, dvojité atd.]
 \end_layout
 
 \begin_layout Itemize
-
 Mezera, vodorovná a svislá
 \end_layout
 
 \begin_layout Itemize
-
 Písmo a velikost písma
 \end_layout
 
 \begin_layout Itemize
-
 Poloøezy [tuèné, kurzíva, podtr¾ené atd..]
 \end_layout
 
 \begin_layout Standard
-
 Aèkoli tyto parametry lze v LyXu nastavit, ve skuteènosti je nepotøebujete.
  LyX si pøebírá starost o jejich správné nastavení na sebe, pøièem¾ se rozhoduje
  podle toho, co zrovna dìláte.
@@ -604,7 +549,6 @@ Aèkoli tyto parametry lze v LyXu nastavit, ve skuteènosti je nepotøebujete.
 status collapsed
 
 \begin_layout Standard
-
 Jsou zde cesty jak tyto hodnoty nastavit (zde je tøeba mít men¹í znalost
  LaTeXu), a to jak pro celý dokument, tak i pro jeho specifickou èást.
  Viz 
@@ -618,38 +562,31 @@ U¾ivatelská pøíruèka.
 \end_layout
 
 \begin_layout Standard
-
 Nakonec nìkolik oblastí, v nich¾ je LyX [a LaTeX] lep¹í ne¾ vìt¹ina textových
  procesorù:
 \end_layout
 
 \begin_layout Itemize
-
 Rozdìlování slov
 \end_layout
 
 \begin_layout Itemize
-
 Seznamy
 \end_layout
 
 \begin_layout Itemize
-
 Matematika
 \end_layout
 
 \begin_layout Itemize
-
 Tabulky
 \end_layout
 
 \begin_layout Itemize
-
 Køí¾ové odkazy
 \end_layout
 
 \begin_layout Standard
-
 Je pravda, ¾e mnoho moderních textových procesorù umo¾òuje pracovat s matematick
 ými symboly, tabulkami, dìlením slov, nìkteré dokonce zvládají styly a koncept
  WYSIWYM.
@@ -665,7 +602,6 @@ funguje
 status collapsed
 
 \begin_layout Standard
-
 OK, víme, ¾e v¹e není perfektní, ale LaTeX má jen tak málo chyb, kolik jen
  poèítaèový program mù¾e mít.
 \end_layout
@@ -676,7 +612,6 @@ OK, víme, ¾e v¹e není perfektní, ale LaTeX má jen tak málo chyb, kolik jen
 \end_layout
 
 \begin_layout Subsection
-
 Co to 
 \emph on
 je
@@ -685,14 +620,12 @@ je
 \end_layout
 
 \begin_layout Standard
-
 LaTeX je systém pro pøípravu dokumentù navr¾ený Leslie Lamportem v roce
  1985.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-
 Zdroj této informace pochází ze sekce 
 \begin_inset Quotes eld
 \end_inset
@@ -760,7 +693,6 @@ dvi
 \end_layout
 
 \begin_layout Standard
-
 Kdyby neumìl TeX více, byl by jen procesorem na sázení textu.
  TeX v¹ak umo¾òuje definovat makra.
  A zde celá akce zaèíná.
@@ -768,7 +700,6 @@ Kdyby neumìl TeX více, byl by jen procesorem na sázení textu.
 \end_layout
 
 \begin_layout Standard
-
 Vìt¹ina u¾ivatelù TeXu ve skuteènosti pou¾ívá sady maker, které napsal Knuth
  pro ukrytí mnoha detailù sázení.
  O tom mluví u¾ivatelé, kdy¾ mluví o TeXu.
@@ -782,7 +713,6 @@ Vìt¹ina u¾ivatelù TeXu ve skuteènosti pou¾ívá sady maker, které napsal Knuth
 \end_layout
 
 \begin_layout Standard
-
 Nyní, soubì¾nì s vývojem a roz¹iøováním LaTeXu vytváøejí jiní lidé pro svoje
  vlastní potøeby balíèky pro TeX.
  Nìkteré pou¾ívali èistý TeX, jiné modifikovali LaTeX.
@@ -795,7 +725,6 @@ Nyní, soubì¾nì s vývojem a roz¹iøováním LaTeXu vytváøejí jiní lidé pro svoje
 \end_layout
 
 \begin_layout Standard
-
 Jsou dvì cesty, jak roz¹íøit LaTeX: tøídy a styly.
  
 \emph on
@@ -824,45 +753,38 @@ vzhledu
 \end_layout
 
 \begin_layout Standard
-
 Zde je seznam:
 \end_layout
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 TeX: Jazyk pro sazbu s mo¾ností roz¹íøení makry.
 \end_layout
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 LaTeX: Balíèek maker nad TeXem\SpecialChar \@.
 
 \end_layout
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 tøídy: Popis typù dokumentù pomocí LaTeXu\SpecialChar \@.
 
 \end_layout
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 styly: Zmìna chování LaTeXu v nìkterém smìru.
 \end_layout
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 LyX: Vizuální, WYSIWYM textový procesor pou¾ívající LaTeX v celé jeho kráse
  pro tisk.
 \end_layout
 
 \begin_layout Standard
-
 My¹lenkou této sekce je pokus vysvìtlit, 
 \emph on
 proè
@@ -878,7 +800,6 @@ co
 \end_layout
 
 \begin_layout Standard
-
 Oh --- je¹tì jedna vìc.
  LaTeX se vyslovuje stejnì jako TeX.
  Rýmuje se to a 
@@ -894,7 +815,6 @@ lej tech.
 status collapsed
 
 \begin_layout Standard
-
 nebo 
 \begin_inset Quotes gld
 \end_inset
@@ -913,18 +833,14 @@ la tech
 \end_layout
 
 \begin_layout Part
-
 Zaèínáme s LyXem
 \end_layout
 
 \begin_layout Section
-
 Vá¹ první dokument v LyXu
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:first-doc-ex}
 
 \end_inset
@@ -941,7 +857,6 @@ Prùvodci
 \end_layout
 
 \begin_layout Standard
-
 Proto¾e zde zámìrnì neuvádíme v¹echny informace, 
 \series bold
 nejprve 
@@ -971,7 +886,6 @@ N
 status collapsed
 
 \begin_layout Standard
-
 Toto také dává pìknou ukázku jak pou¾ívat LyX.
 \end_layout
 
@@ -1006,7 +920,6 @@ Také vás to nauèí pou¾ívat jiné manuály, co¾ vám --- v del¹ím èasovém horizontu
 \end_layout
 
 \begin_layout Standard
-
 V tomto 
 \emph on
 Prùvodci,
@@ -1032,7 +945,6 @@ dvi
 \end_layout
 
 \begin_layout Standard
-
 A v neposlední øadì, napsali jsme pro vás soubor na vyzkou¹ení va¹í znalosti
  LyXu.
  Jmenuje se 
@@ -1052,12 +964,10 @@ example_lyxified.lyx
 \end_layout
 
 \begin_layout Subsection
-
 Psaní, prohlí¾ení a tisk
 \end_layout
 
 \begin_layout Itemize
-
 Otevøete nový soubor pomocí 
 \family sans
 \bar under
@@ -1071,7 +981,6 @@ ový
 \end_layout
 
 \begin_layout Itemize
-
 Napi¹te vìtu jako: 
 \family typewriter
 Toto je mùj první dokument v LyXu!
@@ -1079,7 +988,6 @@ Toto je mùj první dokument v LyXu!
 status collapsed
 
 \begin_layout Standard
-
 Dobøe.
  V skuteènosti mù¾ete napsat cokoli chcete.
  Na tom opravdu nezále¾í.
@@ -1094,7 +1002,6 @@ Dobøe.
 \end_layout
 
 \begin_layout Itemize
-
 Ulo¾te vá¹ dokument pøíkazem 
 \family sans
 \bar under
@@ -1106,7 +1013,6 @@ jako\SpecialChar \@.
 \end_layout
 
 \begin_layout Itemize
-
 Spus»te LaTeX pro vytvoøení souboru 
 \family typewriter
 dvi
@@ -1135,7 +1041,6 @@ dvi
 status collapsed
 
 \begin_layout Standard
-
 Mù¾ete u¹etøit èas spu¹tìním pøíkazu 
 \family typewriter
 xdvi
@@ -1163,7 +1068,6 @@ xdvi
 \end_layout
 
 \begin_layout Itemize
-
 Soubor vytisknete pøíkazem 
 \family sans
 \bar under
@@ -1182,7 +1086,6 @@ OK\SpecialChar \@.
 \end_layout
 
 \begin_layout Standard
-
 Gratulujeme! Napsali a vytiskli jste svùj první dokument v LyXu.
  V¹e ostatní jsou jen detaily, které jsou popsány ve zbytku 
 \emph on
@@ -1198,12 +1101,10 @@ Referenèní pøíruèce.
 \end_layout
 
 \begin_layout Subsection
-
 Jednoduché operace
 \end_layout
 
 \begin_layout Standard
-
 LyX samozøejmì zvládá vìt¹inu vìcí, které jste zvyklí dìlat s textovými
  procesory.
  Bude pøesouvat slova mezi øádky a automaticky odsazovat odstavce.
@@ -1212,7 +1113,6 @@ LyX samozøejmì zvládá vìt¹inu vìcí, které jste zvyklí dìlat s textovými
 status collapsed
 
 \begin_layout Standard
-
 Jestli jste jako vìt¹ina u¾ivatelù 
 \noun on
 unixu
@@ -1243,7 +1143,6 @@ isk)
 \end_layout
 
 \begin_layout Description
-
 Zpìt LyX má
 \emph on
  schopnost
@@ -1287,7 +1186,6 @@ v¹echny akce
 \end_layout
 
 \begin_layout Description
-
 Vystøihni/Vlo¾/Kopíruj Pou¾ijte 
 \family sans
 Úpravy->Vystøihni
@@ -1307,7 +1205,6 @@ prostøedního tlaèítka my¹i.
 \end_layout
 
 \begin_layout Description
-
 Hledej/Nahraï Pou¾ijte 
 \family sans
 Úpravy->Hledání\InsetSpace ~
@@ -1328,7 +1225,6 @@ ahraï
 status collapsed
 
 \begin_layout Standard
-
 Zavøete dialog po ukonèení hledání.
  Nebo jej nechte otevøené, vyhovuje-li vám to více.
  Vìt¹ina dialogù v LyXu --- vèetnì 
@@ -1367,7 +1263,6 @@ tevøít
 \end_layout
 
 \begin_layout Description
-
 Formátování\InsetSpace ~
 znakù Znaky mù¾ete 
 \emph on
@@ -1393,7 +1288,6 @@ ormát
 \end_layout
 
 \begin_layout Description
-
 Li¹ta Tlaèítka na li¹tì (tìsnì pod nabídkou) vám zpøístupòují nìkteré bì¾né
  funkce jako 
 \family sans
@@ -1409,20 +1303,16 @@ Tiskni
 \end_layout
 
 \begin_layout Standard
-
 Samozøejmì jste zatím nenapsali dost, abyste docenili význam tìchto funkcí.
  A¾ napí¹ete více, vyzkou¹ejte si funkce zpìt, vkládání atd.
  
 \end_layout
 
 \begin_layout Subsection
-
 WYSIWYM: Mezery v LyXu
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:whitespace}
 
 \end_inset
@@ -1452,7 +1342,6 @@ nejsou
 \end_layout
 
 \begin_layout Standard
-
 Mnoho komerèních textových procesorù je zalo¾eno na principu WYSIWYG: 
 \begin_inset Quotes gld
 \end_inset
@@ -1508,7 +1397,6 @@ formát.
 \end_layout
 
 \begin_layout Standard
-
 LyX má mnoho cest jak jemnì doladit vzhled va¹eho dokumentu.
  Konec koncù, LyX nemusí vysázet 
 \emph on
@@ -1537,12 +1425,10 @@ s a o svislých mezerách --- které jsou mnohem univerzálnìj¹í ne¾ nìkolik
 \end_layout
 
 \begin_layout Section
-
 Styl
 \end_layout
 
 \begin_layout Standard
-
 Rùzné èásti dokumentu mají rùzná urèení, my tyto èásti nazýváme 
 \emph on
 prostøedí.
@@ -1558,7 +1444,6 @@ prostøedí.
 \end_layout
 
 \begin_layout Standard
-
 Styly jsou nejvýznamnìj¹í èástí filozofie 
 \begin_inset Quotes gld
 \end_inset
@@ -1578,7 +1463,6 @@ What You See Is What You Mean
 \end_layout
 
 \begin_layout Standard
-
 Indikátor souèasného 
 \family sans
 Stylu
@@ -1604,12 +1488,10 @@ Styl
 \end_layout
 
 \begin_layout Subsection
-
 Oddíly a kapitoly
 \end_layout
 
 \begin_layout Standard
-
 Napi¹te slovo 
 \family typewriter
 Úvod
@@ -1625,7 +1507,6 @@ Styl
 status collapsed
 
 \begin_layout Standard
-
 Není tøeba 
 \emph on
 zvýrazòovat 
@@ -1665,7 +1546,6 @@ status collapsed
 
 \begin_layout Standard
 
-
 \emph on
 U¾ivatelská pøíruèka
 \emph default
@@ -1690,12 +1570,10 @@ Stylu
 \end_layout
 
 \begin_layout LyX-Code
-
 Toto je úvod do mého prvního dokumentu v LyXu.
 \end_layout
 
 \begin_layout Standard
-
 Znovu stisknìte 
 \family sans
 Return
@@ -1726,7 +1604,6 @@ Section
 \end_layout
 
 \begin_layout Standard
-
 Teï to bude lep¹í.
  Pøejdìte na konec první kapitoly (za mùj první dokument v LyXu) a stisknìte
  znovu 
@@ -1770,7 +1647,6 @@ Dal¹í text
 \end_layout
 
 \begin_layout Standard
-
 Stisknìte 
 \family sans
 Return, 
@@ -1783,32 +1659,26 @@ Standard
 \end_layout
 
 \begin_layout LyX-Code
-
 Oddíly a kapitoly jsou popsány ní¾e.
 \end_layout
 
 \begin_layout LyX-Code
-
 Popis oddílu
 \end_layout
 
 \begin_layout LyX-Code
-
 Oddíly jsou vìt¹í ne¾ kapitoly.
 \end_layout
 
 \begin_layout LyX-Code
-
 Popis kapitoly
 \end_layout
 
 \begin_layout LyX-Code
-
 Kapitoly jsou men¹í ne¾ oddíly.
 \end_layout
 
 \begin_layout Standard
-
 Kliknìte na druhou øádku a zvolte 
 \family sans
 Subsection
@@ -1831,7 +1701,6 @@ Subsection
 \end_layout
 
 \begin_layout Standard
-
 Dal¹í úrovnì èlenìní textu jsou 
 \family sans
 Subsubsection
@@ -1867,7 +1736,6 @@ Chapter
 \end_layout
 
 \begin_layout Standard
-
 Mù¾ete po¾adovat, aby se názvy oddílù a pododdílù neèíslovali.
  Také na to jsou zde styly.
  Jestli¾e zmìníte styl jednoho z nadpisù oddílu na 
@@ -1890,7 +1758,6 @@ e si, jaký to má vliv na èíslování.
 \end_layout
 
 \begin_layout Standard
-
 
 \series bold
 Cvièení
@@ -1931,12 +1798,10 @@ oubor->Ulo¾it jako
 \end_layout
 
 \begin_layout Subsection
-
 Seznamy a podseznamy
 \end_layout
 
 \begin_layout Standard
-
 LyX má nìkolik rùzných stylù pro sázení seznamù.
  Toto vám u¹etøí asi tak milion stiskù klávesy 
 \family sans
@@ -1948,7 +1813,6 @@ Tab
 status collapsed
 
 \begin_layout Standard
-
 Ano toto zdùrazòujeme v celém 
 \emph on
 Prùvodci
@@ -1967,7 +1831,6 @@ je
 \end_layout
 
 \begin_layout Itemize
-
 Prezentace na slidy mù¾e pou¾ívat styl 
 \family sans
 Itemize
@@ -1977,7 +1840,6 @@ Itemize
 \end_layout
 
 \begin_layout Itemize
-
 Vnoøené èíslované (èísly i písmeny) seznamy vznikají stylem 
 \family sans
 Enumerate
@@ -1987,7 +1849,6 @@ Enumerate
 \end_layout
 
 \begin_layout Itemize
-
 Dokument popisující nìkolik balíèkù programù mù¾e pou¾ít styl 
 \family sans
 Description
@@ -1997,7 +1858,6 @@ Description
 \end_layout
 
 \begin_layout Itemize
-
 Styl 
 \family sans
 List
@@ -2010,20 +1870,17 @@ Description
 \end_layout
 
 \begin_layout Standard
-
 Zkusme tedy napsat seznam dùvodù, proè je LyX lep¹í ne¾ jiné textové procesory.
  Nìkde ve va¹em dokumentu napi¹te:
 \end_layout
 
 \begin_layout Standard
 
-
 \family typewriter
 Lyx je lep¹í ne¾ jiné textové procesory, proto¾e: 
 \end_layout
 
 \begin_layout Standard
-
 a stisknìte 
 \family sans
 Return
@@ -2052,22 +1909,18 @@ kouli
 \end_layout
 
 \begin_layout LyX-Code
-
 Sázení je udìláno za vás.
 \end_layout
 
 \begin_layout LyX-Code
-
 Matematika je WYSIWYG.
 \end_layout
 
 \begin_layout LyX-Code
-
 Seznamy se pí¹í tak jednodu¹e!
 \end_layout
 
 \begin_layout Standard
-
 Styly seznamù, na rozdíl od nadpisù, nekonèí znakem 
 \family sans
 Return
@@ -2100,7 +1953,6 @@ s
 \end_layout
 
 \begin_layout Standard
-
 Získali jste pìknì vysázený seznam.
  Nyní si prohlédnìte, jak bude vypadat vyti¹tìný.
  Chcete si polo¾ky oèíslovat? Oznaète si celý seznam
@@ -2108,7 +1960,6 @@ Získali jste pìknì vysázený seznam.
 status collapsed
 
 \begin_layout Standard
-
 LyX vám nedovolí oznaèit první kulièku pokud souèasnì neoznaèíte odstavec
  
 \emph on
@@ -2131,7 +1982,6 @@ Enumerate
 \end_layout
 
 \begin_layout Standard
-
 Kdy¾ u¾ máte celý seznam oznaèený, prohlédnìte si také, jak vypadají ostatní
  dva styly pro seznam, 
 \family sans
@@ -2157,7 +2007,6 @@ Description
 status collapsed
 
 \begin_layout Standard
-
 Tohle je sázecí zará¾ka, která mìní svou velikost podle nejdel¹ího termínu,
  nikoli nemìnná a pevnì pøeddefinovaná jako na psacím stroji.
 \end_layout
@@ -2184,7 +2033,6 @@ C-Mezera,
 
 \begin_layout Standard
 
-
 \series bold
 Cvièení
 \series default
@@ -2194,7 +2042,6 @@ example_raw.lyx.
 \end_layout
 
 \begin_layout Standard
-
 Seznamy mù¾ete libovolnì vnoøovat.
  Lze vnoøovat a kombinovat rùzné typy èíslovaných i neèíslovaných seznamù.
  V 
@@ -2209,12 +2056,10 @@ mnoha
 \end_layout
 
 \begin_layout Subsection
-
 Ostatní styly: Ver¹e, citace, a jiné
 \end_layout
 
 \begin_layout Standard
-
 LyX pøeddefinovává dva styly pro odli¹ení citace od okolního textu: 
 \family sans
 Quote
@@ -2243,7 +2088,6 @@ psacího stroje
 status collapsed
 
 \begin_layout Standard
-
 \SpecialChar \ldots{}
 pøedpokládáme, ¾e jste tak dobrý básník, ¾e pí¹ete poezii zpatra.
 \end_layout
@@ -2272,7 +2116,6 @@ U¾ivatelská pøíruèka
 
 \begin_layout Standard
 
-
 \series bold
 Cvièení
 \series default
@@ -2290,12 +2133,10 @@ Verse
 \end_layout
 
 \begin_layout Part
-
 Psaní dokumentù
 \end_layout
 
 \begin_layout Standard
-
 Pøedchozí èást vám umo¾nila získat první zku¹enosti s psaním v LyXu.
  Popsala vám základní úkony pøi zpracování textu, stejnì tak jako vás seznámila
  s problematikou stylù.
@@ -2309,13 +2150,10 @@ Pøedchozí èást vám umo¾nila získat první zku¹enosti s psaním v LyXu.
 \end_layout
 
 \begin_layout Section
-
 Textové tøídy a ¹ablony: psaní dopisù
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:textclasses}
 
 \end_inset
@@ -2333,7 +2171,6 @@ Textové tøídy
 status collapsed
 
 \begin_layout Standard
-
 Pro u¾ivatele LaTeXu: toto je toté¾ jako v LaTeXu documentclass.
 \end_layout
 
@@ -2352,7 +2189,6 @@ Book
 \end_layout
 
 \begin_layout Standard
-
 Vá¹ dokument je pravdìpodobnì napsán v textové tøídì 
 \family sans
 Article
@@ -2360,7 +2196,6 @@ Article
 status collapsed
 
 \begin_layout Standard
-
 Toto je obvykle implicitní textová tøída, lze ji pøednastavit ve va¹em souboru
  
 \family typewriter
@@ -2413,7 +2248,6 @@ Environment
 \end_layout
 
 \begin_layout Standard
-
 Velikost písma, jedno èi dvousloupcový tisk a hlavièky stránek jsou právì
  ty rozdíly, kterými se jeden èasopis li¹í od jiného.
  A tak jak postupuje poèítaèový vìk, èasopisy vám dovolují posílat va¹e
@@ -2429,17 +2263,13 @@ Velikost písma, jedno èi dvousloupcový tisk a hlavièky stránek jsou právì
 \end_layout
 
 \begin_layout Standard
-
 Zde je rychlá reference pro jednotlivé styly.
  Jako obvykle, detaily najdete v 
 \emph on
 U¾ivatelské pøíruèce.
 \end_layout
 
-
 \begin_layout Standard
-
-
 \begin_inset VSpace 0.3cm
 \end_inset
 
@@ -2448,8 +2278,7 @@ U¾ivatelské pøíruèce.
 
 \begin_layout Standard
 \align center
-
-\begin_inset  Tabular
+\begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
 <features>
 <column alignment="center" valignment="top" leftline="true" width="0pt">
@@ -2459,7 +2288,6 @@ U¾ivatelské pøíruèce.
 \begin_inset Text
 
 \begin_layout Standard
-
 Jméno
 \end_layout
 
@@ -2469,7 +2297,6 @@ Jméno
 \begin_inset Text
 
 \begin_layout Standard
-
 Poznámka
 \end_layout
 
@@ -2481,7 +2308,6 @@ Poznámka
 \begin_inset Text
 
 \begin_layout Standard
-
 article
 \end_layout
 
@@ -2491,7 +2317,6 @@ article
 \begin_inset Text
 
 \begin_layout Standard
-
 jednostrannì, nemá kapitoly
 \end_layout
 
@@ -2503,7 +2328,6 @@ jednostrannì, nemá kapitoly
 \begin_inset Text
 
 \begin_layout Standard
-
 article (AMS)
 \end_layout
 
@@ -2513,7 +2337,6 @@ article (AMS)
 \begin_inset Text
 
 \begin_layout Standard
-
 vzhled & styly pro American Math Society
 \end_layout
 
@@ -2525,7 +2348,6 @@ vzhled & styly pro American Math Society
 \begin_inset Text
 
 \begin_layout Standard
-
 report
 \end_layout
 
@@ -2535,7 +2357,6 @@ report
 \begin_inset Text
 
 \begin_layout Standard
-
 del¹í ne¾ èlánek, oboustranný
 \end_layout
 
@@ -2547,7 +2368,6 @@ del¹í ne¾ èlánek, oboustranný
 \begin_inset Text
 
 \begin_layout Standard
-
 book
 \end_layout
 
@@ -2557,7 +2377,6 @@ book
 \begin_inset Text
 
 \begin_layout Standard
-
 zpráva + pøední a zadní obálka
 \end_layout
 
@@ -2569,7 +2388,6 @@ zpráva + pøední a zadní obálka
 \begin_inset Text
 
 \begin_layout Standard
-
 slides
 \end_layout
 
@@ -2579,7 +2397,6 @@ slides
 \begin_inset Text
 
 \begin_layout Standard
-
 prùhlednost (vèetnì FoilTeX)
 \end_layout
 
@@ -2591,7 +2408,6 @@ prùhlednost (vèetnì FoilTeX)
 \begin_inset Text
 
 \begin_layout Standard
-
 letter
 \end_layout
 
@@ -2601,7 +2417,6 @@ letter
 \begin_inset Text
 
 \begin_layout Standard
-
 mnoho speciálních stylù pro adresu, podpis\SpecialChar \ldots{}
 
 \end_layout
@@ -2617,22 +2432,17 @@ mnoho speciálních stylù pro adresu, podpis\SpecialChar \ldots{}
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset VSpace 0.3cm
 \end_inset
 
 
 \end_layout
 
-
 \begin_layout Section
-
 ©ablony: psaní dopisu
 \end_layout
 
 \begin_layout Standard
-
 Jednou z nejpopulárnìj¹ích textových tøíd je 
 \family sans
 Letter
@@ -2680,7 +2490,6 @@ okument
 \end_layout
 
 \begin_layout Standard
-
 Otevøete nový soubor z nabídky 
 \family sans
 \bar under
@@ -2704,7 +2513,6 @@ latex_letter.lyx
 \end_layout
 
 \begin_layout Standard
-
 Kdy¾ se podíváte na nabídku 
 \family sans
 Environment
@@ -2746,7 +2554,6 @@ Signature:
 \end_layout
 
 \begin_layout Standard
-
 ©ablona je obyèejný dokument v LyXu.
  To znamená, ¾e mù¾ete ulo¾it svou adresu a podpis do nové ¹ablony.
  A od teï, chcete-li psát dopis, mù¾ete pro úsporu èasu pou¾ít svou novou
@@ -2757,7 +2564,6 @@ Signature:
 status collapsed
 
 \begin_layout Standard
-
 Jedno varování, pokud mìníte ¹ablonu.
  Jestli¾e sma¾ete celý text dokumentu --- napøíklad, sma¾ete-li celé pole
  
@@ -2781,18 +2587,15 @@ Environment
 \end_layout
 
 \begin_layout Section
-
 Nadpisy dokumentu
 \end_layout
 
 \begin_layout Standard
-
 LyX (stejnì jako LaTeX) oddìluje titulek --- který mù¾e obsahovat nadpis,
  autora, datum a dokonce shrnutí obsahu --- a vlastní text dokumentu.
 \end_layout
 
 \begin_layout Standard
-
 Vra»te se zpìt k va¹emu dokumentu 
 \family typewriter
 newfile.lyx 
@@ -2806,7 +2609,6 @@ Article
 status collapsed
 
 \begin_layout Standard
-
 Zde byste ji¾ nemìli pou¾ívat tøídu 
 \family sans
 Letter
@@ -2842,7 +2644,6 @@ Abstract
 
 \begin_layout Standard
 
-
 \series bold
 Cvièení
 \series default
@@ -2852,13 +2653,10 @@ example_raw.lyx.
 \end_layout
 
 \begin_layout Section
-
 Znaèky a odkazy
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:labels}
 
 \end_inset
@@ -2874,12 +2672,10 @@ Máte mo¾nost oznaèit znaèkou jakoukoli sekci va¹eho dokumentu (v podstatì
 \end_layout
 
 \begin_layout Subsection*
-
 Va¹e první znaèka
 \end_layout
 
 \begin_layout Standard
-
 Oznaème si druhou èást tohoto dokumentu (jmenuje se O tomto dokumentu).
  Kliknìte na konec øádky s titulkem a zvolte 
 \family sans
@@ -2904,7 +2700,6 @@ sec:aboutdocument
 status collapsed
 
 \begin_layout Standard
-
 Pí¹eme 
 \begin_inset Quotes gld
 \end_inset
@@ -2926,7 +2721,6 @@ OK
 \end_layout
 
 \begin_layout Standard
-
 Mimochodem, znaèku mù¾ete umístit kdekoli uvnitø sekce, odkazy pak budou
  míøit na nejbli¾¹í pøedcházející titulek sekce nebo podsekce pøed znaèkou.
  Ale jestli¾e zadáte znaèku do titulku (èi na první øádku textu pod titulkem),
@@ -2934,7 +2728,6 @@ Mimochodem, znaèku mù¾ete umístit kdekoli uvnitø sekce, odkazy pak budou
 \end_layout
 
 \begin_layout Standard
-
 Zatím jste v¹ak nevytvoøili nic --- soubor 
 \family typewriter
 dvi
@@ -2946,24 +2739,20 @@ dvi
 \end_layout
 
 \begin_layout Subsection*
-
 Va¹e první odkazy
 \end_layout
 
 \begin_layout Standard
-
 Umístìte kurzor nìkam do sekce 2 ve va¹em dokumentu.
  Napi¹te 
 \end_layout
 
 \begin_layout LyX-Code
-
 Jestli¾e chcete vìdìt více o tomto dokumentu, tak se podívejte na sekci,
  která je na stranì .
 \end_layout
 
 \begin_layout Standard
-
 Nyní --- s kurzorem za slovem 
 \begin_inset Quotes gld
 \end_inset
@@ -3011,7 +2800,6 @@ strany
 \end_layout
 
 \begin_layout Standard
-
 LyX umístí odkazovací obdélníèek na místo, kde byl kurzor.
  Pøi tisku se odkaz zmìní na skuteèné èíslo sekce èi jeho stranu (podle
  toho, co jste zvolili v dialogu).
@@ -3034,12 +2822,10 @@ dvi
 \end_layout
 
 \begin_layout Subsection*
-
 Dal¹í mo¾nosti znaèek
 \end_layout
 
 \begin_layout Standard
-
 Ji¾ jsme øekli, ¾e LyX se stará o èíslování odkazù; vyzkou¹ejme si to.
  Pøidejte novou sekci pøed sekci 2.
  Nyní nechte probìhnout LaTeX, a --- kupodivu --- èíslo sekce se zmìnilo
@@ -3050,7 +2836,6 @@ Ji¾ jsme øekli, ¾e LyX se stará o èíslování odkazù; vyzkou¹ejme si to.
 \end_layout
 
 \begin_layout Standard
-
 Jestli si chcete znaèky procvièit více, tak zkuste vlo¾it znaèku sec:myfirstlabe
 l na místo, kde byl vá¹ odkaz, a odka¾te se na nìj odjinud z dokumentu.
  Jestli¾e bude vkládat odkazy èasto (napøíklad, pí¹ete-li èlánek do èasopisu),
@@ -3058,7 +2843,6 @@ l na místo, kde byl vá¹ odkaz, a odka¾te se na nìj odjinud z dokumentu.
 \end_layout
 
 \begin_layout Standard
-
 Jestli¾e si chcete být jist, ¾e èísla stránek v odkazech budou správnì i
  ve velkém dokumentu, 
 \family sans
@@ -3083,7 +2867,6 @@ lo¾te
 status collapsed
 
 \begin_layout Standard
-
 Mimochodem, kopírování nadpisu kapitoly mù¾e zpùsobit chybu v LyXu, proto¾e
  názvy kapitol nejsou povoleny pro èlánky.
  Jestli¾e se to stalo, pak prostì onen nadpis vyma¾te.
@@ -3103,7 +2886,6 @@ Mimochodem, kopírování nadpisu kapitoly mù¾e zpùsobit chybu v LyXu, proto¾e
 
 \begin_layout Standard
 
-
 \series bold
 Cvièení
 \series default
@@ -3113,19 +2895,16 @@ example_raw.lyx.
 \end_layout
 
 \begin_layout Section
-
 Poznámky pod èarou a poznámky na okraji
 \end_layout
 
 \begin_layout Standard
-
 Poznámky pod èarou mù¾ete vkládat pomocí tlaèítka vlo¾te poznámku pod èarou
  na li¹tì
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-
 Tlaèítko má na sobì ¹ipku, ukazující na èervený text pod èerným textem.
 \end_layout
 
@@ -3155,12 +2934,10 @@ pod\InsetSpace ~
 \end_layout
 
 \begin_layout LyX-Code
-
 LyX je textový procesor.
 \end_layout
 
 \begin_layout Standard
-
 Nyní kliknìte na slovo foot.
  Øádka s poznámkou byla nahrazena slovem foot, napsaným èervenì v horním
  indexu na místì, kde se bude na poznámku odkazovat; toto se nazývá zabalením
@@ -3170,7 +2947,6 @@ Nyní kliknìte na slovo foot.
 \end_layout
 
 \begin_layout Standard
-
 Mo¾ná se ptáte, proè LyX ukazuje slovo místo èísla.
  Odpovìï je jednoduchá, proto¾e èíslování poznámek se dìje a¾ pøi tisku
  LaTeXem, co¾ mù¾ete vidìt v souboru 
@@ -3181,7 +2957,6 @@ dvi
 \end_layout
 
 \begin_layout Standard
-
 Poznámku lze vystøihnout a vlo¾it tak, jako normální text.
  Zkuste si to.
  V¹e, co tøeba, je oznaèit znaèku pro poznámku
@@ -3189,7 +2964,6 @@ Poznámku lze vystøihnout a vlo¾it tak, jako normální text.
 status collapsed
 
 \begin_layout Standard
-
 Mo¾ná je jednodu¹¹í oznaèit ji pomocí klávesnice.
  Mù¾ete toti¾ poznámku rozbalit místo jejího oznaèení jestli¾e se nestrefíte
  pøesnì.
@@ -3227,7 +3001,6 @@ poznámku
 \end_layout
 
 \begin_layout Standard
-
 Poznámky po stranì lze vkládat pomocí tlaèítka
 \family sans
  Vlo¾te\InsetSpace ~
@@ -3238,7 +3011,6 @@ stranì
 status collapsed
 
 \begin_layout Standard
-
 Tlaèítko ukazuje ¹ipku ukazující na èervený text po stranì od èerného.
 \end_layout
 
@@ -3257,34 +3029,28 @@ okraji
 \end_layout
 
 \begin_layout Itemize
-
 na obrazovce se objeví margin místo foot
 \end_layout
 
 \begin_layout Itemize
-
 poznámky se objeví po stranì místo pod textem 
 \end_layout
 
 \begin_layout Itemize
-
 poznámky po stranì nejsou èíslovány
 \end_layout
 
 \begin_layout Itemize
-
 kdy¾ je poznámka zabalená, zobrazí se po stranì vykøièník.
  Tento vykøièník se netiskne.
 \end_layout
 
 \begin_layout Standard
-
 Zmìòte va¹i poznámku pod èarou na text a pak na poznámku po stranì.
  Prohlédnìte si výstup z LaTeXu.
 \end_layout
 
 \begin_layout Standard
-
 
 \series bold
 Cvièení
@@ -3295,13 +3061,10 @@ example_raw.lyx.
 \end_layout
 
 \begin_layout Section
-
 Citace
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:bibliographies}
 
 \end_inset
@@ -3314,7 +3077,6 @@ Citace jsou podobné odkazùm.
 \end_layout
 
 \begin_layout Standard
-
 Jdìte na konec dokumentu a pøepnìte se 
 \family sans
 na styl Bibliography
@@ -3343,7 +3105,6 @@ Key
 \end_layout
 
 \begin_layout Standard
-
 Nyní zvolte místo ve va¹em dokumentu, kam chcete vlo¾it citaci.
  To se provede pomocí 
 \family sans
@@ -3361,7 +3122,6 @@ Key
 status collapsed
 
 \begin_layout Standard
-
 Zde je vidìt, proè je vhodné pojmenovávat citace namísto jejich automatického
  èíslování.
 \end_layout
@@ -3375,7 +3135,6 @@ Zde je vidìt, proè je vhodné pojmenovávat citace namísto jejich automatického
 \end_layout
 
 \begin_layout Standard
-
 Jak se pou¾ívají ostatní pole? 
 \family sans
 \bar under
@@ -3401,7 +3160,6 @@ U¾ivatelské pøíruèce.
 
 \begin_layout Standard
 
-
 \series bold
 Cvièení: 
 \series default
@@ -3411,12 +3169,10 @@ example_raw.lyx.
 \end_layout
 
 \begin_layout Section
-
 Obsah
 \end_layout
 
 \begin_layout Standard
-
 Mo¾ná chcete vlo¾it obsah na zaèátek dokumentu.
  LyX tento po¾adavek hravì splní.
  Staèí stisknout 
@@ -3428,7 +3184,6 @@ Return
 status collapsed
 
 \begin_layout Standard
-
 Nezkou¹ejte mazat èíslo sekce.
  Nepùjde to.
  LyX toti¾ èísluje za vás.
@@ -3451,7 +3206,6 @@ Obsah->Obsah
 \end_layout
 
 \begin_layout Standard
-
 Toto nemusí být velmi úèelné.
  Podíváte-li se v¹ak na vá¹ soubor 
 \family typewriter
@@ -3464,7 +3218,6 @@ dvi.
 \end_layout
 
 \begin_layout Standard
-
 Obsah není zobrazen na obrazovce, proto¾e jej stejnì nemù¾ete upravovat.
  Na druhé stranì mù¾ete zobrazit dialog s obsahem pomocí nabídky 
 \family sans
@@ -3488,12 +3241,10 @@ bsah
 \end_layout
 
 \begin_layout Standard
-
 Obsah lze vymazat jako jakýkoli jiný (obyèejný) znak.
 \end_layout
 
 \begin_layout Standard
-
 
 \series bold
 Cvièení
@@ -3504,12 +3255,10 @@ example_raw.lyx.
 \end_layout
 
 \begin_layout Part
-
 Pou¾ití matematického re¾imu
 \end_layout
 
 \begin_layout Standard
-
 LaTeX je pou¾íván mnoha vìdci, proto¾e umí tisknout velmi dobøe vypadající
  rovnice bez nutností pou¾ívat speciální øídící znaky textových procesorù
  a jejich editorù rovnic.
@@ -3528,7 +3277,6 @@ Panel
 status collapsed
 
 \begin_layout Standard
-
 LyX pochopitelnì neumí kontrolovat, zda to, co jste napsali, je 
 \emph on
 dobøe
@@ -3543,23 +3291,19 @@ dobøe
 \end_layout
 
 \begin_layout Section
-
 Matematický re¾im
 \end_layout
 
 \begin_layout Standard
-
 Nìkde ve va¹em dokumentu napi¹te:
 \end_layout
 
 \begin_layout LyX-Code
-
 Líbí se mi to Einsteinovo E=mc^2, proto¾e je to jednoduché.
  
 \end_layout
 
 \begin_layout Standard
-
 Tohle nevypadá nejlépe, dokonce i v 
 \family typewriter
 dvi
@@ -3571,7 +3315,6 @@ dvi
 \end_layout
 
 \begin_layout Standard
-
 Matematika se pí¹e v Mathedu, jinak té¾ v matematickém re¾imu.
  Pro vstup do tohoto re¾imu, stisknìte modré tlaèítko oznaèené 
 \begin_inset Formula $\frac{a+b}{c}$
@@ -3610,7 +3353,6 @@ opu¹tìní
 \end_layout
 
 \begin_layout Standard
-
 Spus»te LaTeX a prohlédnìte si soubor 
 \family typewriter
 dvi
@@ -3623,7 +3365,6 @@ dvi
 \end_layout
 
 \begin_layout Standard
-
 Mathed je dal¹ím pøíkladem filozofie WYSIWYM.
  V LaTeXu pí¹ete matematický výraz pomocí textu a pøíkazù jako 
 \family typewriter
@@ -3645,12 +3386,10 @@ obsah
 \end_layout
 
 \begin_layout Section
-
 Pohyb kurzoru v rovnici
 \end_layout
 
 \begin_layout Standard
-
 Nyní zmìòme 
 \begin_inset Formula $E=mc^{2}$
 \end_inset
@@ -3682,7 +3421,6 @@ Esc
 \end_layout
 
 \begin_layout Standard
-
 S výjimkou speciálních kláves popsaných ní¾e, je psaní v Mathedu podobné
  jako psaní normálního textu.
  Pou¾ijte 
@@ -3721,7 +3459,6 @@ Undo
 \end_layout
 
 \begin_layout Standard
-
 Co kdy¾ chcete zmìnit 
 \begin_inset Formula $E=mc^{2}$
 \end_inset
@@ -3750,7 +3487,6 @@ za
 \end_layout
 
 \begin_layout Standard
-
 K pohybu po výrazu také mù¾ete pou¾ít 
 \family sans
 Mezeru.
@@ -3786,7 +3522,6 @@ status collapsed
 
 \begin_layout Standard
 
-
 \family sans
 Space
 \family default
@@ -3820,7 +3555,6 @@ U¾ivatelské pøíruèce
 \end_layout
 
 \begin_layout Standard
-
 Pov¹imnìte si, ¾e pokud ukonèíte výraz stiskem 
 \family sans
 Esc
@@ -3864,12 +3598,10 @@ je moje oblíbená rovnice
 \end_layout
 
 \begin_layout Section
-
 Exponenty a indexy
 \end_layout
 
 \begin_layout Standard
-
 Exponent lze vlo¾it z nabídky 
 \family sans
 \bar under
@@ -3916,7 +3648,6 @@ _
 
 \begin_layout Standard
 
-
 \series bold
 Cvièení
 \series default
@@ -3929,7 +3660,6 @@ example_raw.lyx
 
 \begin_layout Section
 
-
 \family sans
 Panel Math
 \family default
@@ -3937,7 +3667,6 @@ Panel Math
 \end_layout
 
 \begin_layout Standard
-
 
 \family sans
 Math\InsetSpace ~
@@ -3969,12 +3698,10 @@ Panel
 \end_layout
 
 \begin_layout Subsection
-
 Øecká písmena a symboly
 \end_layout
 
 \begin_layout Standard
-
 Jestli¾e kliknete na tlaèítko oznaèené 
 \begin_inset Quotes gld
 \end_inset
@@ -4000,7 +3727,6 @@ Panelu
 \end_layout
 
 \begin_layout Standard
-
 Dal¹í ètyøi tlaèítka na 
 \family sans
 Math\InsetSpace ~
@@ -4027,12 +3753,10 @@ Nic není nemo¾né\SpecialChar \ldots{}
 \end_layout
 
 \begin_layout Subsection
-
 Mocniny, zvýraznìní a oddìlovaèe
 \end_layout
 
 \begin_layout Standard
-
 Pro napsání odmocniny staèí kliknout na symbol odmocniny.
  Objeví se odmocnina a vkládací bod se pøesune dovnitø, kam mù¾ete psát
  promìnné, èísla, jiné odmocniny, zlomky, prostì cokoli chcete.
@@ -4040,7 +3764,6 @@ Pro napsání odmocniny staèí kliknout na symbol odmocniny.
 \end_layout
 
 \begin_layout Standard
-
 Akcentování znaku (
 \begin_inset Formula $\overrightarrow{v}$
 \end_inset
@@ -4062,7 +3785,6 @@ Mezeru
 \end_layout
 
 \begin_layout Standard
-
 Oddìlovaèe jako závorky v¹ech tvarù fungují podobnì, ale trochu slo¾itìji.
  Stisknìte tlaèítko s oddìlovaèi, co¾ je modrý obdélníèek s hranatými závorkami
  kolem, a objeví se dialog s oddìlovaèi.
@@ -4079,7 +3801,6 @@ pravým tlaèítkem my¹i
 \end_layout
 
 \begin_layout Standard
-
 (Alternativnì lze pou¾ít tlaèítka 
 \begin_inset Quotes gld
 \end_inset
@@ -4128,7 +3849,6 @@ levým tlaèítkem my¹i.
 \end_layout
 
 \begin_layout Standard
-
 Jakmile jednou vyberete va¹e oddìlovaèe, kliknìte na 
 \family sans
 OK, 
@@ -4151,7 +3871,6 @@ Oddìlovaèe
 \end_layout
 
 \begin_layout Standard
-
 Také mù¾ete vlo¾it oddìlovaèe kolem textu, který je ji¾ napsán.
  Oznaète jej a kliknìte na oddìlovaèe, které si pøejete vlo¾it.
  Zkuste zmìnit Newtonùv druhý zákon ze skalárního na vektorový tvar (z 
@@ -4168,12 +3887,10 @@ Také mù¾ete vlo¾it oddìlovaèe kolem textu, který je ji¾ napsán.
 \end_layout
 
 \begin_layout Subsection
-
 Zlomky
 \end_layout
 
 \begin_layout Standard
-
 Zlomky jsou v mathedu jednoduché.
  Kliknìte na tlaèítko 
 \family sans
@@ -4216,7 +3933,6 @@ Dolù
 
 \begin_layout Standard
 
-
 \series bold
 Cvièení
 \series default
@@ -4228,12 +3944,10 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Subsection
-
 Re¾im TeX : Limity, log, sin a jiné
 \end_layout
 
 \begin_layout Standard
-
 Proto¾e jsou písmena v matematickém re¾imu pova¾ována za promìnné, napí¹ete-li
  
 \begin_inset Quotes gld
@@ -4315,7 +4029,6 @@ namísto
 \end_layout
 
 \begin_layout Standard
-
 Kliknìte na 
 \begin_inset Quotes gld
 \end_inset
@@ -4367,7 +4080,6 @@ dvi
 \end_layout
 
 \begin_layout Standard
-
 Mezi dal¹ími pøíkazy, které pí¹ete v TeXu pomocí nabídky 
 \family sans
 Funkce
@@ -4403,7 +4115,6 @@ Funkce
 
 \begin_layout Standard
 
-
 \series bold
 Cvièení
 \series default
@@ -4415,13 +4126,10 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Subsection
-
 Matice
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:matrices}
 
 \end_inset
@@ -4458,7 +4166,6 @@ OK
 
 \begin_layout Standard
 
-
 \family sans
 Tab
 \family default
@@ -4475,7 +4182,6 @@ Dolù
 \end_layout
 
 \begin_layout Standard
-
 Viz 
 \emph on
 U¾ivatelská pøíruèka
@@ -4487,12 +4193,10 @@ U¾ivatelská pøíruèka
 \end_layout
 
 \begin_layout Subsection
-
 Re¾im zobrazení
 \end_layout
 
 \begin_layout Standard
-
 V¹echny výrazy, které jsme doposud napsali se nacházeli na jedné øádce spolu
  s textem, který je obklopoval.
  Tohle je výhodné pro jednoduché výrazy, ale jestli¾e chcete psát komplikovanìj¹
@@ -4511,7 +4215,6 @@ U¾ivatelská pøíruèka
 \end_layout
 
 \begin_layout Standard
-
 Kliknìte na tlaèítko 
 \family sans
 zobrazení 
@@ -4533,12 +4236,10 @@ je ve skuteènosti pøepínaè; zkuste ho pou¾ít na pøepnutí nìkolika výrazù
 \end_layout
 
 \begin_layout Standard
-
 Tento re¾im má nìkolik rozdílù oproti regulérnímu Mathedu:
 \end_layout
 
 \begin_layout Itemize
-
 Nìkteré symboly mají trochu men¹í velikost, napøíklad 
 \begin_inset Formula $\sum$
 \end_inset
@@ -4551,23 +4252,19 @@ Nìkteré symboly mají trochu men¹í velikost, napøíklad
 \end_layout
 
 \begin_layout Itemize
-
 Exponenty a indexy pro limity a sumy (nikoli pro integrály) se vysadí pod
  a nad operaci, ne a¾ za ní.
 \end_layout
 
 \begin_layout Itemize
-
 Text je vystøedìn
 \end_layout
 
 \begin_layout Standard
-
 A¾ na tyto drobnosti jsou oba re¾imy zobrazení velice podobné.
 \end_layout
 
 \begin_layout Standard
-
 Jedna poznámka nakonec: dávejte si pozor, zda je vá¹ výraz na novém øádku
  nebo ne.
  Jestli¾e se vá¹ výraz nachází uprostøed vìty (nebo odstavce), neukonèujte
@@ -4585,7 +4282,6 @@ za
 
 \begin_layout Standard
 
-
 \series bold
 Cvièení
 \series default
@@ -4597,7 +4293,6 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Standard
-
 
 \series bold
 Cvièení
@@ -4616,13 +4311,10 @@ f(x)=\left\{ \begin{array}{cc}
 \end_layout
 
 \begin_layout Section
-
 Víceøádkové rovnice
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:multiline}
 
 \end_inset
@@ -4636,8 +4328,6 @@ dvi
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset Formula \[
 x=y+y+y+y+y\]
 
@@ -4647,8 +4337,6 @@ x=y+y+y+y+y\]
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset Formula \[
 =5y\]
 
@@ -4658,7 +4346,6 @@ x=y+y+y+y+y\]
 \end_layout
 
 \begin_layout Standard
-
 To vùbec nevypadá dobøe.
  Jestli¾e pí¹ete dvì a více rovnic pod sebou, vypadají podstatnì lépe, jsou-li
  rovnítka zarovnána pod sebou; zvlá¹», nemá-li druhá rovnice levou stranu.
@@ -4673,7 +4360,6 @@ x & = & y+y+y+y+y\\
 \end_layout
 
 \begin_layout Standard
-
 Tohle vypadá 
 \emph on
 daleko
@@ -4683,7 +4369,6 @@ daleko
 \end_layout
 
 \begin_layout Standard
-
 Víceøádkovou rovnici napí¹ete pomocí mathedu v re¾imu zobrazení, kdy¾ stisknete
  
 \family sans
@@ -4711,7 +4396,6 @@ x & = & a+b+c+d\\
 \end_layout
 
 \begin_layout Standard
-
 LyX zarovná druhé (støední) pole na ka¾dé øádce, tak¾e obvykle toto pole
  obsahuje rovnítko èi jiný relaèní operátor, i kdy¾ tam mù¾ete napsat jakýkoli
  výraz.
@@ -4725,7 +4409,6 @@ LyX zarovná druhé (støední) pole na ka¾dé øádce, tak¾e obvykle toto pole
 \end_layout
 
 \begin_layout Standard
-
 Jestli¾e chcete napsat del¹í sadu rovnic, stisknìte znovu 
 \family sans
 C-Return
@@ -4763,7 +4446,6 @@ E & = & mc^{2}\\
 \end_layout
 
 \begin_layout Standard
-
 Jestli¾e jste napsali pøíli¹ mnoho øádek, posuòte kurzor na konec øádky
  a pou¾ijte 
 \family sans
@@ -4783,12 +4465,10 @@ k
 \end_layout
 
 \begin_layout Section
-
 Více matematiky
 \end_layout
 
 \begin_layout Standard
-
 Mathed umí je¹tì mnohem více.
  Nyní, kdy¾ jsme se seznámili se základy, se podívejte do 
 \emph on
@@ -4798,12 +4478,10 @@ U¾ivatelské pøíruèky
 \end_layout
 
 \begin_layout Itemize
-
 Oznaèování a èíslování výrazù
 \end_layout
 
 \begin_layout Itemize
-
 Zmìny poloøezu, tj.
  ztuèòování.
  Poznamenejme, ¾e kliknutí na tlaèítko 
@@ -4814,12 +4492,10 @@ matematika
 \end_layout
 
 \begin_layout Itemize
-
 Jemné doladìní velikostí znakù a mezer (tohle a¾ pøi finalizaci dokumentu)
 \end_layout
 
 \begin_layout Itemize
-
 Psaní maker.
  Toto je velmi silná technika, proto¾e je jednou napí¹ete na zaèátku dokumentu
  a mù¾ete jej pak pou¾ít kdekoli v nìm.
@@ -4828,7 +4504,6 @@ Psaní maker.
 \end_layout
 
 \begin_layout Itemize
-
 Mnoho dal¹ích vìcí, na které v tomhle 
 \emph on
 Prùvodci
@@ -4837,17 +4512,14 @@ Prùvodci
 \end_layout
 
 \begin_layout Part
-
 Rùzné
 \end_layout
 
 \begin_layout Section
-
 Dal¹í významné mo¾nosti LyXu
 \end_layout
 
 \begin_layout Standard
-
 Nepro¹li jsme v¹echny mo¾né pøíkazy v LyXu, co¾ jsme ani neplánovali.
  Jako obvykle vás odkazujeme na 
 \emph on
@@ -4864,7 +4536,6 @@ Zde chceme jen zmínit nìkteré dùle¾itìj¹í schopnosti LyXu\SpecialChar \ldots{}
 \end_layout
 
 \begin_layout Itemize
-
 LyX má WYSIWYG podporu pro tabulky.
  Pou¾ijte 
 \family sans
@@ -4891,7 +4562,6 @@ který má ¹iroké mo¾nosti zmìny vzhledu a chování tabulky.
 \end_layout
 
 \begin_layout Itemize
-
 LyX také podporuje vkládání PostScriptových (a LaTeXových) obrázkù.
  (Jak jste asi odhadli: 
 \family sans
@@ -4907,7 +4577,6 @@ Pak kliknìte na obrázek, který chcete vlo¾it, mù¾ete jej otoèit, zmen¹it
 \end_layout
 
 \begin_layout Itemize
-
 LyX podporuje program pro správu verzí RCS (
 \family typewriter
 man rcsintro
@@ -4916,7 +4585,6 @@ man rcsintro
 \end_layout
 
 \begin_layout Itemize
-
 LyX je velmi konfigurovatelný.
  V¹e od vzhledu oken LyXu po výstup lze mnoha zpùsoby mìnit.
  Pro informaci kliknìte na 
@@ -4933,7 +4601,6 @@ onfigurace\SpecialChar \@.
 \end_layout
 
 \begin_layout Itemize
-
 LyX je vyvíjen týmem programátorù na pìti kontinentech.
  Proto má LyX lep¹í podporu pro neanglické (Holanïany, Nìmce, Øeky, Èechy,
  Turky, \SpecialChar \ldots{}
@@ -4942,7 +4609,6 @@ LyX je vyvíjen týmem programátorù na pìti kontinentech.
 \end_layout
 
 \begin_layout Itemize
-
 LyX umí èíst dokumenty v LaTeXu.
  Viz kapitola 
 \begin_inset LatexCommand \ref{sec:relyx}
@@ -4953,7 +4619,6 @@ LyX umí èíst dokumenty v LaTeXu.
 \end_layout
 
 \begin_layout Itemize
-
 Pravopis lze kontrolovat pomocí 
 \family sans
 Úpravy->Kontrola\InsetSpace ~
@@ -4965,7 +4630,6 @@ pravopisu
 status collapsed
 
 \begin_layout Standard
-
 Kontrola se dìje v¾dy od pozice kurzoru do konce dokumentu.
 \end_layout
 
@@ -4975,13 +4639,10 @@ Kontrola se dìje v¾dy od pozice kurzoru do konce dokumentu.
 \end_layout
 
 \begin_layout Section
-
 LyX pro u¾ivatele LaTeXu
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:latexusers}
 
 \end_inset
@@ -5003,7 +4664,6 @@ Jestli¾e nevíte nic o LaTeXu, nemusíte èíst tento oddíl.
 \end_layout
 
 \begin_layout Standard
-
 Proto¾e toto je 
 \emph on
 Prùvodce
@@ -5020,12 +4680,10 @@ obsahuje mnoho informací o rozdílech LyXu a LaTeXu, a také tipy, jak pou¾ít
 \end_layout
 
 \begin_layout Subsection
-
 Re¾im TeX  
 \end_layout
 
 \begin_layout Standard
-
 Cokoli napí¹ete v re¾imu TeX, bude zasláno pøímo do LaTeXu, a bude zobrazeno
  na obrazovce èervenì.
  Do re¾imu TeX se dostanete pomocí nabídky 
@@ -5043,7 +4701,6 @@ ex
 \end_layout
 
 \begin_layout Standard
-
 V mathedu je TeX pou¾it trochu jinak.
  Do re¾imu TeX se dostanete stiskem zpìtného lomítka.
  To se nezobrazí, ale v¹e, co pí¹ete, se zobrazí èervenì.
@@ -5086,7 +4743,6 @@ Panelu
 \end_layout
 
 \begin_layout Standard
-
 Jako zvlá¹tní pøípad, napí¹ete-li závorku v re¾imu TeX, mathed napí¹e otevírací
  
 \emph on
@@ -5098,7 +4754,6 @@ i
 \end_layout
 
 \begin_layout Standard
-
 LyX neumí absolutnì v¹echno, co LaTeX (zatím?).
  Nìkteré funkce nejsou podporovány vùbec, nìkteré fungují, ale nejsou WYSIWYG.
  Re¾im TeX dává u¾ivateli plnou flexibilitu LaTeXu a pøitom zachovává pøednosti
@@ -5119,15 +4774,12 @@ usepackage{foo}
 \end_layout
 
 \begin_layout Subsection
-
 Import dokumentù v LaTeXu--- 
 \family typewriter
 reLyX
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:relyx}
 
 \end_inset
@@ -5162,7 +4814,6 @@ reLyX
 status collapsed
 
 \begin_layout Standard
-
 Kdy¾ je LyX instalován, do tého¾ adresáøe jako je program 
 \family typewriter
 lyx
@@ -5190,7 +4841,6 @@ reLyX
 
 \begin_layout Standard
 
-
 \family typewriter
 reLyX
 \family default
@@ -5204,7 +4854,6 @@ reLyX
 
 \begin_layout Standard
 
-
 \family typewriter
 reLyX
 \family default
@@ -5213,12 +4862,10 @@ reLyX
 \end_layout
 
 \begin_layout Subsection
-
 Konverze dokumentù v LyXu do LaTeXu
 \end_layout
 
 \begin_layout Standard
-
 Mù¾ete také po¾adovat konverzi z LyXu do LaTeXu.
  Napøíklad, vá¹ kolega, který nemá LyX mù¾e chtít èíst vá¹ dokument.
  To je velmi jednoduché.
@@ -5245,17 +4892,14 @@ cokoli.lyx
 \end_layout
 
 \begin_layout Subsection
-
 Preambule LaTeX 
 \end_layout
 
 \begin_layout Subsubsection
-
 Tøída Document
 \end_layout
 
 \begin_layout Standard
-
 Dialog 
 \family sans
 \bar under
@@ -5290,13 +4934,10 @@ volby
 \end_layout
 
 \begin_layout Subsubsection
-
 Více o preambuli
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \label{sec:preamble}
 
 \end_inset
@@ -5316,12 +4957,10 @@ LaTeXu
 \end_layout
 
 \begin_layout Subsection
-
 BibTeX
 \end_layout
 
 \begin_layout Standard
-
 LyX má dobrou, i kdy¾ ne úplnou podporu, pro BibTeX, který umo¾òuje budovat
  databázi bibliografických odkazù pro pou¾ití v mnoha dokumentech.
  Zvolte 
@@ -5362,7 +5001,6 @@ bibliography{}
 status collapsed
 
 \begin_layout Standard
-
 Jako v obyèejném LaTeX, vícenásobné odkazy budou oddìleny èárkami bez mezer.
 \end_layout
 
@@ -5383,7 +5021,6 @@ bibliographystyle{}
 \end_layout
 
 \begin_layout Standard
-
 Poté mù¾ete pou¾ívat citace z jakékoli bibliografie pomocí 
 \family sans
 Vlo¾ení->Citace
@@ -5408,12 +5045,10 @@ Citace
 \end_layout
 
 \begin_layout Subsection
-
 Rùzné
 \end_layout
 
 \begin_layout Standard
-
 Pevnou mezeru vlo¾íte kombinací 
 \family sans
 C-mezera
@@ -5442,12 +5077,10 @@ znak
 \end_layout
 
 \begin_layout Section
-
 Chyby!
 \end_layout
 
 \begin_layout Standard
-
 Nìkdy pøi spu¹tìní LaTeXu se objeví chyby, vìci, kterým LyX nebo LaTeX nerozumí.
  Kdy¾ se to stane, LyX vytvoøí chybový obdélníèek (uvnitø se slovem error).
  Kliknutím na nìj se objeví okénko s vysvìtlením chyby.

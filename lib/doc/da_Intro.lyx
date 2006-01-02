@@ -1,5 +1,5 @@
 #LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
-\lyxformat 243
+\lyxformat 245
 \begin_document
 \begin_header
 \textclass book
@@ -20,7 +20,6 @@
 \paragraph_separation indent
 \defskip medskip
 \quotes_language swedish
-\quotes_times 2
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
@@ -31,18 +30,14 @@
 \begin_body
 
 \begin_layout Title
-
 Introduktion til LyX
 \end_layout
 
 \begin_layout Author
-
 af John Weiss og LyX-holdet
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand \tableofcontents{}
 
 \end_inset
@@ -51,17 +46,14 @@ af John Weiss og LyX-holdet
 \end_layout
 
 \begin_layout Chapter
-
 LyX-filosofien
 \end_layout
 
 \begin_layout Section
-
 Hvad er LyX?
 \end_layout
 
 \begin_layout Standard
-
 LyX er et system til at udfærdige dokumenter\SpecialChar \@.
  Det udmærker sig ved at kunne
  lave komplekse tekniske og videnskabelige artikler med formler, krydshenvisning
@@ -85,7 +77,6 @@ er, litteraturhenvisninger, indekser m.m\SpecialChar \@.
 \end_layout
 
 \begin_layout Standard
-
 LyX er et program, der har en moderne tilgang til dokumentskrivning på computer
  med et markeringsparadigme, en tilgang, der bryder med det gammeldags 
 \begin_inset Quotes sld
@@ -105,7 +96,6 @@ ng\SpecialChar \@.
 \end_layout
 
 \begin_layout Standard
-
 En af de udfordringer du kommer ud for, når du tager LyX i brug, er den
  anderledes tænkemåde, du er nødt til at lægge for dagen\SpecialChar \@.
  Engang for længe
@@ -132,7 +122,6 @@ _
 \end_layout
 
 \begin_layout Standard
-
 Med andre ord er blev vi alle trænet op til at bekymre os om små detaljer
  om, hvilket tegn der skulle placeres hvor\SpecialChar \@.
  Derfor har alle tekstbehandlingsprogr
@@ -166,7 +155,6 @@ Du får ikke mere end det, du ser
 \end_layout
 
 \begin_layout Standard
-
 Det er her, LyX afviger fra almindelig tekstbehandling\SpecialChar \@.
  Du skal ikke bekymre
  dig om, hvor tegnene placeres på arket\SpecialChar \@.
@@ -183,7 +171,6 @@ stil
 status open
 
 \begin_layout Standard
-
 Retfærdigvis skal det siges, at de nyeste udgaver af de mest populære kontorprog
 rammer har fået en slags stilark, som kan marker teksten på en lignende
  måde\SpecialChar \@.
@@ -198,7 +185,6 @@ rammer har fået en slags stilark, som kan marker teksten på en lignende
 \end_layout
 
 \begin_layout Standard
-
 Du er ved at skrive en rapport\SpecialChar \@.
  I begyndelsen af rapporten vil du have et
  afsnit kaldet 
@@ -231,7 +217,6 @@ lsen\SpecialChar \@.
 \end_layout
 
 \begin_layout Standard
-
 I LyX vælger du 
 \family sans
 Sektion
@@ -249,7 +234,6 @@ Introduktion
 \end_layout
 
 \begin_layout Standard
-
 Det er det hele\SpecialChar \@.
  Hvis du flytter rundt på afsnittene vil de automatisk få
  nye numre --- overalt\SpecialChar \@.
@@ -260,7 +244,6 @@ Det er det hele\SpecialChar \@.
 \end_layout
 
 \begin_layout Standard
-
 Lad os kigge på problematikken omkring konsistens\SpecialChar \@.
  Fem dage senere åbner
  du igen rapporten og begynder at skrive sektion\InsetSpace ~
@@ -280,7 +263,6 @@ Lad os kigge på problematikken omkring konsistens\SpecialChar \@.
 \end_layout
 
 \begin_layout Standard
-
 Endnu et eksempel: Du laver en liste\SpecialChar \@.
  I andre tekstbehandlingsprogrammer
  er en liste blot en masse tabulatorstop og linjeskift\SpecialChar \@.
@@ -295,7 +277,6 @@ Endnu et eksempel: Du laver en liste\SpecialChar \@.
 \end_layout
 
 \begin_layout Standard
-
 Så den grundlæggende idé bag LyX er: angiv 
 \emph on
 hvad
@@ -343,14 +324,12 @@ gerne
 \end_layout
 
 \begin_layout Section
-
 Forskelle mellem LyX og anden tekst\SpecialChar \-
 behandling
 \begin_inset Foot
 status open
 
 \begin_layout Standard
-
 Nej, vi prøver ikke på at starte (eller vinde) en fundamentalistisk tekstbehandl
 ingskrig, men vi mener at det er vigtigt at beskrive LyX's egenskaber\SpecialChar \@.
  Og
@@ -365,22 +344,18 @@ ingskrig, men vi mener at det er vigtigt at beskrive LyX's egenskaber\SpecialCha
 \end_layout
 
 \begin_layout Standard
-
 Dette finder du ikke i LyX:
 \end_layout
 
 \begin_layout Itemize
-
 Linealen
 \end_layout
 
 \begin_layout Itemize
-
 Tabulatorstop
 \end_layout
 
 \begin_layout Itemize
-
 Ekstra mellemrum (f.eks.
  at indsætte 
 \family sans
@@ -394,7 +369,6 @@ Space
 \end_layout
 
 \begin_layout Standard
-
 Tabulatorstop er sammen med linealen, der viser hvor ting er placeret på
  siden, ubrugelige i LyX\SpecialChar \@.
  Programmet tager sig selv af, hvor på siden tingene
@@ -408,44 +382,36 @@ Tabulatorstop er sammen med linealen, der viser hvor ting er placeret på
 \end_layout
 
 \begin_layout Standard
-
 Her er nogle ting, der findes i LyX, men bruges på en anden måde, end man
  skulle tro:
 \end_layout
 
 \begin_layout Itemize
-
 Indrykningsstyring
 \end_layout
 
 \begin_layout Itemize
-
 Sideskift
 \end_layout
 
 \begin_layout Itemize
-
 Linjeafstand (f.eks.
  enkelt, dobbelt o.s.v.)
 \end_layout
 
 \begin_layout Itemize
-
 Afstand, vandret og lodret
 \end_layout
 
 \begin_layout Itemize
-
 Skrifttyper og -størrelser
 \end_layout
 
 \begin_layout Itemize
-
 Skriftjustering (fed, skråtstillet, understreget o.s.v.)
 \end_layout
 
 \begin_layout Standard
-
 Selvom de findes i LyX, har du normalt ikke brug for dem\SpecialChar \@.
  LyX tager sig af
  disse ting for dig afhængigt af, hvad du er i gang med\SpecialChar \@.
@@ -462,7 +428,6 @@ drykning afhænger af konteksten; forskellige afsnitstyper indrykkes forskelligt\
 status open
 
 \begin_layout Standard
-
 Det er muligt selv at finjustere disse (hvoraf enkelte kræver kendskab til
  LaTeX), i hele dokumentet eller dele heraf\SpecialChar \@.
  Se detaljerne i manualen 
@@ -483,38 +448,31 @@ Udvidede funktioner
 \end_layout
 
 \begin_layout Standard
-
 Til sidste er der nogle områder, hvor vi mener at LyX (og LaTeX) overgår
  mange tekstbehandlingsprogrammer:
 \end_layout
 
 \begin_layout Itemize
-
 Orddeling
 \end_layout
 
 \begin_layout Itemize
-
 Alle former for lister
 \end_layout
 
 \begin_layout Itemize
-
 Matematik
 \end_layout
 
 \begin_layout Itemize
-
 Tabeller
 \end_layout
 
 \begin_layout Itemize
-
 Krydsreferencer
 \end_layout
 
 \begin_layout Standard
-
 Godt nok kan mange nyere tekstbehandlingsprogrammer håndtere matematiske
  symboler, tabeller og orddeling --- og mange har bevæget sig mod stildefinition
 er og WYSIWYM-filosofien.
@@ -530,7 +488,6 @@ virker
 status open
 
 \begin_layout Standard
-
 Okay, vi ved godt at intet er helt perfekt, men LaTeX er så tæt på at være
  fejlfrit, som et program kan komme\SpecialChar \@.
 
@@ -543,7 +500,6 @@ Okay, vi ved godt at intet er helt perfekt, men LaTeX er så tæt på at være
 \end_layout
 
 \begin_layout Section
-
 Hvad 
 \emph on
 er
@@ -552,14 +508,12 @@ er
 \end_layout
 
 \begin_layout Standard
-
 LaTeX er et dokumentudviklingssystem, der blev lavet af Leslie Lamport tilbage
  i 1985
 \begin_inset Foot
 status open
 
 \begin_layout Standard
-
 Oplysningerne i dette afsnit kommer fra 
 \emph on
 
@@ -633,7 +587,6 @@ dvi
 \end_layout
 
 \begin_layout Standard
-
 Hvis ikke det var for én yderligere funktion, ville TeX kun være et program
  til opsætning af tekst\SpecialChar \@.
  TeX giver imidlertid mulighed for at definere makroer\SpecialChar \@.
@@ -643,7 +596,6 @@ Hvis ikke det var for én yderligere funktion, ville TeX kun være et program
 \end_layout
 
 \begin_layout Standard
-
 De fleste brugere at TeX bruger i virkeligheden en makropakke, som Knuth
  lavede for at skjule en del af detaljerne omkring opsætningen af tekst\SpecialChar \@.
 
@@ -666,7 +618,6 @@ orienteret\SpecialChar \@.
 \end_layout
 
 \begin_layout Standard
-
 Sideløbende med udviklingen af LaTeX lavede andre deres egne makropakker
  til TeX til at lave slides eller artikler til matematik-tidsskrifter o.s.v\SpecialChar \@.
 
@@ -684,7 +635,6 @@ Sideløbende med udviklingen af LaTeX lavede andre deres egne makropakker
 \end_layout
 
 \begin_layout Standard
-
 Der er to måder at udvide LaTeX: klasser og stile\SpecialChar \@.
  En 
 \emph on
@@ -716,44 +666,37 @@ d med to LaTeX stil-filer\SpecialChar \@.
 \end_layout
 
 \begin_layout Standard
-
 Her er en opsummering:
 \end_layout
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 TeX: Skriftopsætningssprog med makrofunktionalitet.
 \end_layout
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 LaTeX: Makropakke, der bygger på TeX\SpecialChar \@.
 
 \end_layout
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 klasser: Beskrivelser af en dokumenttype ved brug af LaTeX\SpecialChar \@.
 
 \end_layout
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 stile: Ændrer LaTeX's standardopførsel på en eller anden måde.
 \end_layout
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-
 LyX: Visuel, WYSIWYM-tekstbehandling, der bruger LaTeX-systemet til udskrifterne.
 \end_layout
 
 \begin_layout Standard
-
 Formålet med dette afsnit var at prøve at forklare 
 \emph on
 hvorfor
@@ -775,12 +718,10 @@ det skal se ud.
 \end_layout
 
 \begin_layout Chapter
-
 Dokumentationen
 \end_layout
 
 \begin_layout Standard
-
 For at gøre det nemmere at svare på dine spørgsmål og beskrive alle LyX's
  funktioner, er dokumentationen delt op i flere filer\SpecialChar \@.
  De tjener hvert sit
@@ -793,7 +734,6 @@ For at gøre det nemmere at svare på dine spørgsmål og beskrive alle LyX's
 \end_layout
 
 \begin_layout Standard
-
 Noget af dokumentationen kan være mangelfuld eller forældet, selvom vi forsøger
  hårdt på at følge med\SpecialChar \@.
  Som resten af LyX er manualerne udarbejdet af frivillige,
@@ -821,7 +761,6 @@ virkelige job
 \end_layout
 
 \begin_layout Standard
-
 Gør os i øvrigt en tjeneste --- hvis der er noget i manualerne, der forvirrer
  dig, er uklart eller forkert, må du endelig lade os det vide! Du kan kontakte
  de nuværende vedligeholdere af manualerne ved at skrive på engelsk til
@@ -840,12 +779,10 @@ lyx-users@lists.lyx.org
 \end_layout
 
 \begin_layout Section
-
 Formatet
 \end_layout
 
 \begin_layout Standard
-
 Nogen trykker manualerne, mens andre læser dem på skærmen med LyX\SpecialChar \@.
  Fremtoningen
  på skærmen afviger på flere punkter fra den trykte version\SpecialChar \@.
@@ -859,12 +796,10 @@ Nogen trykker manualerne, mens andre læser dem på skærmen med LyX\SpecialChar \@
 status open
 
 \begin_layout Standard
-
 Hej!
 \end_layout
 
 \begin_layout Standard
-
 Klik på den grå firkant til venstre ovenpå denne boks\SpecialChar \@.
  Den der står 
 \begin_inset Quotes sld
@@ -892,7 +827,6 @@ Navigér
 \end_layout
 
 \begin_layout Standard
-
 I de trykte manualer optræder alle krydsreferencer som kapitelnumre, sektionsnum
 mer, undersektionsnumre o.s.v\SpecialChar \@.
  På skærmen vil krydsreferencer derimod være
@@ -954,7 +888,6 @@ C-<
 \end_layout
 
 \begin_layout Standard
-
 Nu, hvor vi har afklaret nogle af forskellene mellem den udskrevne version
  og den på skærmen, kan vi starte med at se på dette dokuments format\SpecialChar \@.
  Du
@@ -962,7 +895,6 @@ Nu, hvor vi har afklaret nogle af forskellene mellem den udskrevne version
 \end_layout
 
 \begin_layout Itemize
-
 
 \emph on
 Fremhævet stil
@@ -974,7 +906,6 @@ Fremhævet stil
 
 \begin_layout Itemize
 
-
 \family typewriter
 Skrivemaskine
 \family default
@@ -982,7 +913,6 @@ Skrivemaskine
 \end_layout
 
 \begin_layout Itemize
-
 
 \family sans
 Grotesk
@@ -992,7 +922,6 @@ Grotesk
 
 \begin_layout Itemize
 
-
 \noun on
 Kapitæler
 \noun default
@@ -1000,7 +929,6 @@ Kapitæler
 \end_layout
 
 \begin_layout Standard
-
 For genvejstaster henvises du nok til afsnittet 
 \emph on
 Key Bindings
@@ -1027,9 +955,7 @@ Extended.lyx
 
 \begin_layout Itemize
 
-
 \family sans
-
 \begin_inset Quotes sld
 \end_inset
 
@@ -1048,9 +974,7 @@ Control-
 
 \begin_layout Itemize
 
-
 \family sans
-
 \begin_inset Quotes sld
 \end_inset
 
@@ -1068,8 +992,6 @@ Skifte-
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset Quotes sld
 \end_inset
 
@@ -1094,9 +1016,7 @@ Alt-
 
 \begin_layout Itemize
 
-
 \family sans
-
 \begin_inset Quotes sld
 \end_inset
 
@@ -1124,9 +1044,7 @@ F12
 
 \begin_layout Itemize
 
-
 \family sans
-
 \begin_inset Quotes sld
 \end_inset
 
@@ -1141,9 +1059,7 @@ Esc
 
 \begin_layout Itemize
 
-
 \family sans
-
 \begin_inset Quotes sld
 \end_inset
 
@@ -1194,9 +1110,7 @@ Ned
 
 \begin_layout Itemize
 
-
 \family sans
-
 \begin_inset Quotes sld
 \end_inset
 
@@ -1321,7 +1235,6 @@ Next
 
 \begin_layout Itemize
 
-
 \family sans
 Retur
 \family default
@@ -1363,7 +1276,6 @@ Enter
 \end_layout
 
 \begin_layout Standard
-
 Du kan også støde på fraser som 
 \begin_inset Quotes sld
 \end_inset
@@ -1426,12 +1338,10 @@ voksede op
 \end_layout
 
 \begin_layout Section
-
 Manualerne
 \end_layout
 
 \begin_layout Standard
-
 Den følgende liste beskriver indholdet af dokumentationens filer\SpecialChar \@.
  Bemærk,
  at ikke alle er oversat til dansk:
@@ -1439,19 +1349,17 @@ Den følgende liste beskriver indholdet af dokumentationens filer\SpecialChar \@.
 
 \begin_layout Description
 
-
 \emph on
 Introduktion
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-
 Denne fil.
 \end_layout
+
 \end_deeper
 \begin_layout Description
-
 
 \emph on
 Selvstudium (Tutorial) 
@@ -1459,7 +1367,6 @@ Selvstudium (Tutorial)
 
 \begin_deeper
 \begin_layout Standard
-
 Hvis du ikke kender LyX i forvejen og ikke har brugt LaTeX, bør du starte
  her\SpecialChar \@.
  Hvis du tror, at LaTeX er et fleksibelt plastikmateriale, skal du helt
@@ -1478,7 +1385,6 @@ Selvstudium
 \end_layout
 
 \begin_layout Standard
-
 Hvis du 
 \emph on
 har
@@ -1500,7 +1406,6 @@ LyX for LaTeX-brugere
 \end_layout
 
 \begin_layout Standard
-
 Hvis du på noget tidspunkt føler dig på dybt vand, bør du tjekke 
 \emph on
 Selvstudium
@@ -1509,9 +1414,9 @@ Selvstudium
  Den er et godt springbrædt\SpecialChar \@.
 
 \end_layout
+
 \end_deeper
 \begin_layout Description
-
 
 \emph on
 Brugermanual (User's\InsetSpace ~
@@ -1520,7 +1425,6 @@ Guide)
 
 \begin_deeper
 \begin_layout Standard
-
 Den primære dokumentation\SpecialChar \@.
  Vi vil dække 
 \emph on
@@ -1535,9 +1439,9 @@ Selvstudium
 \SpecialChar \@.
 
 \end_layout
+
 \end_deeper
 \begin_layout Description
-
 
 \emph on
 Avancerede\InsetSpace ~
@@ -1547,7 +1451,6 @@ Features)
 
 \begin_deeper
 \begin_layout Standard
-
 En udvidelse af 
 \emph on
 Brugermanual
@@ -1558,9 +1461,9 @@ Brugermanual
  bizarre men snedige) trick, LaTeX-kendere har adgang til\SpecialChar \@.
 
 \end_layout
+
 \end_deeper
 \begin_layout Description
-
 
 \emph on
 Tilpasning (Customization)
@@ -1568,7 +1471,6 @@ Tilpasning (Customization)
 
 \begin_deeper
 \begin_layout Standard
-
 En beskrivelse af avancerede LyX-funktioner, herunder hvordan du tilpasser
  LyX's generelle opførsel til dine behov\SpecialChar \@.
  Det omfatter tastaturudlægninger,
@@ -1581,9 +1483,9 @@ Selvstudium
 \SpecialChar \@.
 
 \end_layout
+
 \end_deeper
 \begin_layout Description
-
 
 \emph on
 LaTeX-konfiguration (LaTeX\InsetSpace ~
@@ -1592,7 +1494,6 @@ configuration)
 
 \begin_deeper
 \begin_layout Standard
-
 LyX undersøger dit system ved installationen\SpecialChar \@.
  Denne fil indeholder de oplysninger
 , LyX fandt frem til om dit system\SpecialChar \@.
@@ -1600,9 +1501,9 @@ LyX undersøger dit system ved installationen\SpecialChar \@.
  du muligvis gerne ville have\SpecialChar \@.
 
 \end_layout
+
 \end_deeper
 \begin_layout Standard
-
 Disse filer vil referere til hinanden, når det er nødvendigt\SpecialChar \@.
  For eksempel
  indeholder 
@@ -1619,14 +1520,10 @@ Tilpasning
 \end_layout
 
 \begin_layout Standard
-
 Vi vil lige gentage en vigtigt pointe:
 \end_layout
 
-
 \begin_layout Standard
-
-
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -1644,17 +1541,13 @@ Selvstudium
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset VSpace bigskip
 \end_inset
 
 
 \end_layout
 
-
 \begin_layout Standard
-
 Ellers vil du frustrere dig selv unødigt\SpecialChar \@.
  LyX kan rigtigt meget, men kræver
  en anden angrebsvinkel\SpecialChar \@.
@@ -1662,8 +1555,6 @@ Ellers vil du frustrere dig selv unødigt\SpecialChar \@.
 \end_layout
 
 \begin_layout Chapter
-
-
 \begin_inset LatexCommand \label{kap:Bidrag}
 
 \end_inset
@@ -1672,24 +1563,20 @@ Bidrag til LyX-projektet
 \end_layout
 
 \begin_layout Section
-
 At bidrage til LyX
 \end_layout
 
 \begin_layout Standard
-
 LyX er hovedsageligt skrevet i C++ (LaTeX-indlæseren er skrevet i Perl).
  Det er et stort projekt og er derfor ikke uden fejl eller behov for forbedringe
 r i kildeteksten.
 \end_layout
 
 \begin_layout Subsection
-
 Rapportér fejl
 \end_layout
 
 \begin_layout Standard
-
 Under brugen af LyX kan det ske at du finder noget, du anser for at være
  en fejl\SpecialChar \@.
  Nedbrud, om end de er sjældne, kan forekomme\SpecialChar \@.
@@ -1701,7 +1588,6 @@ Under brugen af LyX kan det ske at du finder noget, du anser for at være
 \end_layout
 
 \begin_layout Standard
-
 LyX har et fejlsporingssystem, som du finde på 
 \family typewriter
 
@@ -1734,7 +1620,6 @@ lyx-devel@lists.lyx.org
 \end_layout
 
 \begin_layout Standard
-
 En god (brugbar) fejlrapport fortæller som minimum hvilken udgave af LyX,
  du har problemer med\SpecialChar \@.
  Nøjagtige, detaljerede beskrivelser foretrækkes ---
@@ -1755,7 +1640,6 @@ En god (brugbar) fejlrapport fortæller som minimum hvilken udgave af LyX,
 \end_layout
 
 \begin_layout Standard
-
 Hvis du får LyX til at bryde ned, vil vi bede dig om at tage dig tid til
  at spore fejlen med gdb\SpecialChar \@.
  Kun LyX fra gdb ved for eksempel at skrive 
@@ -1816,7 +1700,6 @@ backtrace
 status open
 
 \begin_layout Standard
-
 hvis du vil være grundig, kan du bruge kommandoerne 
 \family typewriter
 
@@ -1871,12 +1754,10 @@ backtrace
 \end_layout
 
 \begin_layout Subsection
-
 Bidrag med fejlrettelser og nye funktioner
 \end_layout
 
 \begin_layout Standard
-
 Hvis du har lavet ændringer i LyX's kildetekst, som du synes bør indføres
  i LyX, kan du sende dine ændringer som en diff-fil (i 'unified' format)
  til udviklingslisten, der blev nævnt ovenfor, sammen med en beskrivelse
@@ -1884,12 +1765,10 @@ Hvis du har lavet ændringer i LyX's kildetekst, som du synes bør indføres
 \end_layout
 
 \begin_layout Section
-
 Bidrag til dokumentationen
 \end_layout
 
 \begin_layout Standard
-
 LyX's dokumentation er omfattende\SpecialChar \@.
  Alligevel er LyX under konstant udvikling,
  og hver ny udgave tilføjer nye funktioner\SpecialChar \@.
@@ -1901,12 +1780,10 @@ nen.
 \end_layout
 
 \begin_layout Subsection
-
 Rapportér fejl i manualerne
 \end_layout
 
 \begin_layout Standard
-
 Send et engelsksproget brev til postlisten 
 \family typewriter
 lyx-docs@lists.lyx.org
@@ -1918,12 +1795,10 @@ lyx-docs@lists.lyx.org
 \end_layout
 
 \begin_layout Subsection
-
 Deltag i dokumentationsholdet.
 \end_layout
 
 \begin_layout Standard
-
 Ligesom alt andet i LyX-projektet, kan LyX's dokumentationsprojekt altid
  bruge hjælp! Hvis du er interesseret i at bidrage til dokumentationsprojektet,
  skal du 
@@ -1934,14 +1809,12 @@ først
 \end_layout
 
 \begin_layout Enumerate
-
 Hent den seneste kildetekst til LyX\SpecialChar \@.
  Udpak den
 \begin_inset Foot
 status open
 
 \begin_layout Standard
-
 De mere eventyrlystne kan hente den seneste kildtekst fra LyX's CVS-arkiv
  --- den ligger i modulet 
 \family typewriter
@@ -1968,7 +1841,6 @@ DocStyle.lyx
 \end_layout
 
 \begin_layout Enumerate
-
 Tag et par dages pause og læs derefter 
 \family typewriter
 DocStyle.lyx
@@ -1978,7 +1850,6 @@ DocStyle.lyx
 \end_layout
 
 \begin_layout Enumerate
-
 Læs derefter 
 \emph on
 Brugermanual
@@ -1993,7 +1864,6 @@ Selvstudium
 
 \begin_deeper
 \begin_layout Standard
-
 Meningen med denne øvelse er, at give dig idéer\SpecialChar \@.
  
 \emph on
@@ -2008,28 +1878,26 @@ Brugermanualen
  få et godt indtryk af, hvordan vi vil have manualerne til at se ud og virke\SpecialChar \@.
 
 \end_layout
+
 \end_deeper
 \begin_layout Enumerate
-
 Kontakt holdet på engelsk på: 
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
 
-
 \family typewriter
 lyx-docs@lists.lyx.org
 \end_layout
 
 \begin_layout Standard
-
 og beskriv de ændringer, du foreslår og gå noget respons på dem\SpecialChar \@.
 
 \end_layout
+
 \end_deeper
 \begin_layout Standard
-
 De ændringer, du kan foreslå at lave kan være alt lige fra at øge forståelighede
 n af teksten til at lave større omstruktureringer af dokumentationen.
  Alle forbedringer modtages med tak\SpecialChar \@.

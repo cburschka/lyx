@@ -1,5 +1,5 @@
 #LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
-\lyxformat 243
+\lyxformat 245
 \begin_document
 \begin_header
 \textclass article
@@ -20,7 +20,6 @@
 \paragraph_separation indent
 \defskip medskip
 \quotes_language german
-\quotes_times 2
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -31,7 +30,6 @@
 \begin_body
 
 \begin_layout Title
-
 Uvod v LyX
 \newline
 ali
@@ -40,7 +38,6 @@ Kako uporabljati dokumentacijo!
 \end_layout
 
 \begin_layout Author
-
 John Weiss in skupina LyX Team
 \newline
 
@@ -50,7 +47,6 @@ Prevod: Roman Maurer
 status collapsed
 
 \begin_layout Standard
-
 Jezikovni pregled: Dora Mali
 \end_layout
 
@@ -60,23 +56,19 @@ Jezikovni pregled: Dora Mali
 \end_layout
 
 \begin_layout Date
-
 11.
  marec 1999
 \end_layout
 
 \begin_layout Section
-
 Pot po dokumentaciji
 \end_layout
 
 \begin_layout Standard
-
 Dobrodo¹li v LyX!
 \end_layout
 
 \begin_layout Standard
-
 Dokumentacija je razdeljena na veè razliènih datotek, da bi la¾je na¹li
  odgovore na vpra¹anja, ki se vam zastavljajo, in spoznali vse odlike LyXa.
  Vsak od teh spisov ima poseben namen, kot je opisano spodaj.
@@ -85,10 +77,7 @@ Dokumentacija je razdeljena na veè razliènih datotek, da bi la¾je na¹li
  prihranili precej èasa.
 \end_layout
 
-
 \begin_layout Standard
-
-
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -106,17 +95,13 @@ Nevarnost, nevarnost!
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset VSpace bigskip
 \end_inset
 
 
 \end_layout
 
-
 \begin_layout Standard
-
 Èeprav ima razlièica LyXa zdaj ¹tevilko 1.0 (in veè), je morda nekaj dokumentacij
 e nepopolne ali pa se nana¹a na starej¹e razlièice.
  Tako kot preostanek LyXa so tudi priroèniki delo skupine prostovoljcev
@@ -142,7 +127,6 @@ pravimi slu¾bami
 \end_layout
 
 \begin_layout Standard
-
 In ¹e nekaj vas prosimo -- èe vas karkoli v teh priroènikih zmede, ker je
  nejasno ali napaèno, ne oklevajte in nam sporoèite! S trenutnimi vzdr¾evalci
  spisov lahko stopite v stik tudi po elektronski po¹ti na naslov 
@@ -153,12 +137,10 @@ lyx-docs@lists.lyx.org
 \end_layout
 
 \begin_layout Section
-
 Oblika priroènikov
 \end_layout
 
 \begin_layout Standard
-
 Nekateri ste priroènik(e) za LyX ¾e natisnili.
  Drugi jih morda prebirate na zvezi, kot datoteko v LyXu.
  Za tiste, ki jih berete na zvezi, je priroènik videti malce drugaèen od
@@ -182,12 +164,10 @@ vsebine
 status collapsed
 
 \begin_layout Standard
-
 Zdravo!
 \end_layout
 
 \begin_layout Standard
-
 Zaprete me lahko s klikom sive ¹katle z napisom 
 \begin_inset Quotes gld
 \end_inset
@@ -205,7 +185,6 @@ foot
 \end_layout
 
 \begin_layout Standard
-
 V tiskanih priroènikih so vsa navzkri¾na sklicevanja vidna kot prave ¹tevilke
  poglavja, razdelka, podrazdelka in tako naprej.
  Na zvezi pa so vsa navzkri¾na sklicevanja videti kot siva ¹katla, podobna
@@ -238,14 +217,12 @@ C-<
 \end_layout
 
 \begin_layout Standard
-
 Zdaj, ko smo pojasnili nekatere razlike med tiskanimi in elektronskimi izvodi
  te datoteke, si lahko zaènemo ogledovati obliko tega spisa.
  Tu in tam boste opazili razliène pisave:
 \end_layout
 
 \begin_layout Itemize
-
 
 \emph on
 Poudarjeni slog
@@ -256,7 +233,6 @@ Poudarjeni slog
 
 \begin_layout Itemize
 
-
 \family typewriter
 Pisava pisalnega stroja
 \family default
@@ -265,7 +241,6 @@ Pisava pisalnega stroja
 \end_layout
 
 \begin_layout Itemize
-
 
 \family sans
 Neserifna pisava 
@@ -276,7 +251,6 @@ se uporablja za imena menujev, gumbov ali menujskih postavk ter imena tipk
 
 \begin_layout Itemize
 
-
 \noun on
 Velike èrke 
 \noun default
@@ -284,7 +258,6 @@ se uporabljajo za imena ljudi.
 \end_layout
 
 \begin_layout Standard
-
 Kar zadeva tipke in tipkovne povezave, vas bomo verjetno napotili k razdelku
  
 \emph on
@@ -312,8 +285,6 @@ Reference.lyx
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset Quotes gld
 \end_inset
 
@@ -333,8 +304,6 @@ Control-
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset Quotes gld
 \end_inset
 
@@ -354,8 +323,6 @@ Shift-
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset Quotes gld
 \end_inset
 
@@ -379,8 +346,6 @@ Alt-
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset Quotes gld
 \end_inset
 
@@ -409,8 +374,6 @@ F12
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset Quotes gld
 \end_inset
 
@@ -426,8 +389,6 @@ Esc
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset Quotes gld
 \end_inset
 
@@ -480,9 +441,7 @@ Dol
 
 \begin_layout Itemize
 
-
 \family sans
-
 \begin_inset Quotes gld
 \end_inset
 
@@ -607,7 +566,6 @@ Next
 
 \begin_layout Itemize
 
-
 \family sans
 Return
 \family default
@@ -649,7 +607,6 @@ Enter
 \end_layout
 
 \begin_layout Standard
-
 Vèasih boste videli tudi kaj podobnega temu: 
 \begin_inset Quotes gld
 \end_inset
@@ -679,17 +636,14 @@ Referenènem priroèniku
 \end_layout
 
 \begin_layout Section
-
 Priroèniki
 \end_layout
 
 \begin_layout Standard
-
 Na naslednjem seznamu je opisana vsebina vseh datotek v dokumentaciji:
 \end_layout
 
 \begin_layout Description
-
 
 \emph on
 Uvod \InsetSpace ~
@@ -701,7 +655,6 @@ Ta datoteka.
 \end_layout
 
 \begin_layout Description
-
 
 \emph on
 Uèbenik \InsetSpace ~
@@ -728,7 +681,6 @@ boste
 
 \begin_deeper
 \begin_layout Standard
-
 Tudi, èe 
 \emph on
 ste 
@@ -749,7 +701,6 @@ LyX za uporabnike LaTeXa
 \end_layout
 
 \begin_layout Standard
-
 Èe kdaj ostanete brez navdiha v zvezi z LyXom, najprej vzemite v roke 
 \emph on
 Uèbenik
@@ -757,9 +708,9 @@ Uèbenik
 , ¹ele potem se poglobite v druge priroènike.
  Uèbenik je dobra odskoèna deska.
 \end_layout
+
 \end_deeper
 \begin_layout Description
-
 
 \emph on
 Uporabni¹ki\InsetSpace ~
@@ -781,7 +732,6 @@ Uèbenik
 status collapsed
 
 \begin_layout Standard
-
 \SpecialChar \ldots{}
  ali pa vsaj be¾no poznate LaTeX.
 \end_layout
@@ -792,7 +742,6 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
 
 \emph on
 Raz¹irjene\InsetSpace ~
@@ -812,7 +761,6 @@ Uporabni¹kega vodnika
 
 \begin_layout Description
 
-
 \emph on
 Prilagoditev \InsetSpace ~
 
@@ -831,7 +779,6 @@ Uèbenika
 \end_layout
 
 \begin_layout Description
-
 
 \emph on
 Referenèni\InsetSpace ~
@@ -854,7 +801,6 @@ Uèbenik
 
 \begin_layout Description
 
-
 \emph on
 Znani\InsetSpace ~
 hro¹èi \InsetSpace ~
@@ -867,7 +813,6 @@ V tej datoteki je seznam znanih hro¹èev v LyXu in napotki, kaj storiti,
 \end_layout
 
 \begin_layout Description
-
 
 \emph on
 Nastavitev\InsetSpace ~
@@ -883,7 +828,6 @@ LyX takoj po namestitvi prei¹èe sistem.
 \end_layout
 
 \begin_layout Standard
-
 Te datoteke se bodo po potrebi sklicevale druga na drugo.
  V 
 \emph on
@@ -901,14 +845,10 @@ Prilagoditvenem priroèniku
 \end_layout
 
 \begin_layout Standard
-
 ©e enkrat bomo zapisali pomemben nasvet:
 \end_layout
 
-
 \begin_layout Standard
-
-
 \begin_inset VSpace 0.51cm
 \end_inset
 
@@ -926,23 +866,17 @@ Uèbenik
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset VSpace 0.51cm
 \end_inset
 
 
 \end_layout
 
-
 \begin_layout Standard
-
 Drugaèe se boste po nepotrebnem jezili.
 \end_layout
 
 \begin_layout Section
-
-
 \begin_inset LatexCommand \label{sec:Contrib}
 
 \end_inset
@@ -951,12 +885,10 @@ Prispevki k dokumentacijskem projektu
 \end_layout
 
 \begin_layout Subsection
-
 Poroèanje o napakah v priroènikih
 \end_layout
 
 \begin_layout Standard
-
 To je zelo preprosto.
  Sporoèilo lahko po¹ljete na dopisni seznam za razvijalce ali za uporabnike
  LyXa.
@@ -970,10 +902,7 @@ lyx-docs@lists.lyx.org
  in se, preden karkoli ukrenete, nekaj èasa pogovarjate z nami.
 \end_layout
 
-
 \begin_layout Standard
-
-
 \begin_inset VSpace 1.06cm
 \end_inset
 
@@ -989,24 +918,19 @@ ijske skupine!
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset VSpace 1.06cm
 \end_inset
 
 
 \end_layout
 
-
 \begin_layout Standard
-
 Tak¹ne nakljuène spremembe ne bodo pri¹le v dokumentacijo, saj dokumentacijska
  skupina vzdr¾uje osrednje izvode v drevesu CVS
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-
 CVS je sistem za nadzorovanje razlièic datotek prek omre¾ja.
 \end_layout
 
@@ -1016,12 +940,10 @@ CVS je sistem za nadzorovanje razlièic datotek prek omre¾ja.
 \end_layout
 
 \begin_layout Subsection
-
 Pridru¾itev dokumentacijski skupini
 \end_layout
 
 \begin_layout Standard
-
 Dokumentacijskemu projektu za LyX, tako kot vsemu pri projektu LyX, vedno
  prav pride pomoè! Èe bi radi prispevali k Dokumentacijskem projektu, 
 \emph on
@@ -1031,14 +953,12 @@ najprej
 \end_layout
 
 \begin_layout Enumerate
-
 Pridobite zadnjo izvorno kodo LyXa.
  Odtarajte jo
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-
 Bolj pustolovske du¹e med vami bodo anonimno pobrale zadnjo izvorno kodo
  iz arhiva CVS za LyX.
 \end_layout
@@ -1060,7 +980,6 @@ DocStyle.lyx
 \end_layout
 
 \begin_layout Enumerate
-
 Vzemite si dan ali dva oddiha, potem pa ¹e enkrat preberite 
 \family typewriter
 DocStyle.lyx
@@ -1069,7 +988,6 @@ DocStyle.lyx
 \end_layout
 
 \begin_layout Enumerate
-
 Zatem preberite 
 \emph on
 Uporabni¹ki vodnik
@@ -1084,7 +1002,6 @@ Uèbenik
 
 \begin_deeper
 \begin_layout Standard
-
 Smisel te naloge je, da si ustvarite predstavo in da se vam utrnejo zamisli.
  
 \emph on
@@ -1098,9 +1015,9 @@ Uporabni¹ki vodnik
  Pri ogledu bi morali spoznati, kako naj bi brali priroènike in kako naj
  bi bili le-ti videti.
 \end_layout
+
 \end_deeper
 \begin_layout Enumerate
-
 Spet preberite 
 \family typewriter
 DocStyle.lyx
@@ -1109,20 +1026,17 @@ DocStyle.lyx
 \end_layout
 
 \begin_layout Enumerate
-
 Zdaj stopite v stik s skupino na naslovu:
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
 
-
 \family typewriter
 lyx-docs@lists.lyx.org
 \end_layout
 
 \begin_layout Standard
-
 Radi bi dosegli, da bi razumeli 
 \emph on
 slog
@@ -1130,9 +1044,9 @@ slog
 , preden bi zaèeli pisati.
  Drugaèe boste morali svoje prispevke vnoviè napisati.
 \end_layout
+
 \end_deeper
 \begin_layout Standard
-
 Naj vam ne pride na misel, da bi se lotili pisanja, dokler ne poklepetamo
  po e-po¹ti.
  Trenutno stanje v dokumentaciji si boste lahko ogledali na spletni strani
