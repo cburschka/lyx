@@ -3,7 +3,7 @@
 # Dansk oversættelse af LyX
 # Copyright (C) 1997-2003 LyX Team
 # Asger Alstrup <alstrup@diku.dk>, 1997-1999.
-# Claus Hindsgaul <claus_h@image.dk>, 2000-2005.
+# Claus Hindsgaul <claus_h@image.dk>, 2000-2005, 2006.
 # Reviewed by Ole Laursen <olau@hardworking.dk>, 2002.
 #
 msgid ""
@@ -11,13 +11,13 @@ msgstr ""
 "Project-Id-Version: da\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-01-03 15:37+0100\n"
-"PO-Revision-Date: 2005-04-10 13:46+0200\n"
+"PO-Revision-Date: 2006-01-03 16:49+0100\n"
 "Last-Translator: Claus Hindsgaul <claus_h@image.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.9.1\n"
+"X-Generator: KBabel 1.10.2\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: ../src/frontends/xforms/forms/form_aboutlyx.fd:44
@@ -2659,7 +2659,6 @@ msgid "Show ERT button only"
 msgstr "Vis kun ERT-knap"
 
 #: ../src/frontends/qt2/ui/QERTDialogBase.ui:94
-#, fuzzy
 msgid "O&pen"
 msgstr "Å&bn"
 
@@ -2908,7 +2907,6 @@ msgid "Angle to rotate image by"
 msgstr "Vinkel at rotere billedet med"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:552
-#, fuzzy
 msgid "Or&igin:"
 msgstr "&Centrum:"
 
@@ -3476,8 +3474,7 @@ msgstr "&roff-kommando:"
 
 #: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:90
 msgid "Max. line length of exported ASCII/LaTeX/ SGML files"
-msgstr ""
-"Dette er den maksimale linjelængde på eksporterede tekst/LaTeX/SGML-filer"
+msgstr "Dette er den maksimale linjelængde på eksporterede tekst/LaTeX/SGML-filer"
 
 #: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:124
 msgid "Output &line length:"
@@ -3528,9 +3525,8 @@ msgid "&To:"
 msgstr "&Til:"
 
 #: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:227
-#, fuzzy
 msgid "&From:"
-msgstr "F&rom:"
+msgstr "F&ra:"
 
 #: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:249
 msgid "E&xtra flag:"
@@ -3559,7 +3555,7 @@ msgid ""
 msgstr ""
 "Vælg dette hvis LyX skal angive stier på Cygwin-formen frem for Windows-"
 "formen. Dette er nyttigt hvis du bruger Cygwins teTeX i stedet for Windows-"
-"udgaven MikTeX. Bemærk dog at du så skal skrive skalskript-omslag (\"wrappers"
+"udgaven MikTeX. Bemærk dog at du så skal skrive skalscript-omslag (\"wrappers"
 "\") til alle dine konvertere."
 
 #: ../src/frontends/qt2/ui/QPrefDateModule.ui:22
@@ -3666,7 +3662,6 @@ msgid "Auto &begin"
 msgstr "Autost&art"
 
 #: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:140
-#, fuzzy
 msgid "Use b&abel"
 msgstr "Benyt &babel"
 
@@ -3973,9 +3968,8 @@ msgid "W&heel mouse scroll:"
 msgstr "Muse&hjulsskridt:"
 
 #: ../src/frontends/qt2/ui/QPrefUIModule.ui:201
-#, fuzzy
 msgid "Cursor follows &scrollbar"
-msgstr "&Markør følger rullebjælke"
+msgstr "Markør følger &rullebjælke"
 
 #: ../src/frontends/qt2/ui/QPrefUIModule.ui:214
 msgid "Documents"
@@ -4339,7 +4333,6 @@ msgid "Append row (below)"
 msgstr "Tilføj række (nedenunder)"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:265
-#, fuzzy
 msgid "Del&ete"
 msgstr "&Slet"
 
@@ -4547,8 +4540,7 @@ msgid "&View"
 msgstr "V&is"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
+msgid "Show contents of marked file. Only possible when files are shown with path"
 msgstr "Vis indhold af markeret fil. Kun mulig når filerne er vist i stien"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:256
@@ -8277,9 +8269,8 @@ msgid "Emphasize"
 msgstr "Fremhævet"
 
 #: src/SpellBase.C:48
-#, fuzzy
 msgid "Native OS API not yet supported."
-msgstr "Understøttes endnu ikke"
+msgstr "Understøtter ikke styresystemets egen API."
 
 #: src/buffer.C:356
 msgid "Couldn't set the layout for "
@@ -8375,24 +8366,23 @@ msgstr "FEJL!"
 
 #: src/buffer.C:1214
 msgid "Can't find conversion script."
-msgstr "Kan ikke finde konverteringsskript."
+msgstr "Kan ikke finde konverteringsscript."
 
 #: src/buffer.C:1229 src/buffer.C:1274
 msgid "An error occured while running the conversion script."
-msgstr "Der skete en fejl under kørslen af konverteringsskriptet."
+msgstr "Der skete en fejl under kørslen af konverteringsscriptet."
 
 #: src/buffer.C:1246
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
 msgstr "Gammelt LyX-filformat fundet. Brug LyX 0.10.x for at læse dette!"
 
 #: src/buffer.C:1253
-#, fuzzy
 msgid ""
 "The file was created with a newer version of LyX, but the lyx2lyx script "
 "cannot convert it.\n"
 msgstr ""
-"Filen er oprettet med en nyere udgave af LyX. Det vil sandsynligvis give dig "
-"problemer."
+"Filen er oprettet med en nyere udgave af LyX, men lyx2lyx-scriptet kan "
+"ikke konvertere det.\n"
 
 #: src/buffer.C:1299
 msgid "Warning!"
@@ -9246,25 +9236,21 @@ msgid "Yellow"
 msgstr "Gul"
 
 #: src/frontends/controllers/helper_funcs.C:55
-#, fuzzy
 msgid "space"
-msgstr "E&rstat"
+msgstr "mellemrum"
 
 #: src/frontends/controllers/helper_funcs.C:105
-#, fuzzy
 msgid "Invalid filename"
-msgstr "Ugyldig "
+msgstr "Ugyldig filnavn"
 
 #: src/frontends/controllers/helper_funcs.C:106
 #: src/frontends/controllers/helper_funcs.C:172
-#, fuzzy
 msgid "No LaTeX support for paths containing any of these characters:\n"
-msgstr "Filnavn må ikke indeholde nogen af disse tegn:"
+msgstr "LaTeX understøtter ikke filstier med følgende tegn:\n"
 
 #: src/frontends/controllers/helper_funcs.C:171
-#, fuzzy
 msgid "Invalid directory name"
-msgstr "Ugyldig handling i matematik!"
+msgstr "Ugyldigt mappenavn"
 
 #: src/frontends/gnome/GLog.C:51 src/frontends/qt2/QLog.C:52
 msgid "Build log"
@@ -9575,10 +9561,9 @@ msgstr "Fed\t\\mathbf"
 
 #: src/frontends/qt2/QMathDialog.C:150
 msgid "Bold symbol\t\\boldsymbol"
-msgstr ""
+msgstr "Fedt symbol\t\\boldsymbol"
 
 #: src/frontends/qt2/QMathDialog.C:151
-#, fuzzy
 msgid "Sans serif\t\\mathsf"
 msgstr "Grotesk\t\\mathsf"
 
@@ -9996,13 +9981,11 @@ msgstr ""
 
 #: src/frontends/xforms/FormCitation.C:204
 msgid "Optional text which appears before the citation, e.g. \"see <Ref>\""
-msgstr ""
-"Valgfri tekst, der indsættes før litteraturhenvisningen, f.eks. \"se <Ref>\""
+msgstr "Valgfri tekst, der indsættes før litteraturhenvisningen, f.eks. \"se <Ref>\""
 
 #: src/frontends/xforms/FormCitation.C:207
 msgid "Optional text which appears after the citation, e.g. \"pp. 12\""
-msgstr ""
-"Valgfri tekst, der indsættes efter litteraturhenvisningen, f.eks. \"s. 12\""
+msgstr "Valgfri tekst, der indsættes efter litteraturhenvisningen, f.eks. \"s. 12\""
 
 #: src/frontends/xforms/FormCitation.C:210
 msgid "Search your database (all fields will be searched)."
@@ -10042,8 +10025,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormDocument.C:236
 msgid " None | Small Margins | Very small Margins | Very wide Margins "
-msgstr ""
-" Ingen | smalle marginer | ekstra smalle marginer | ekstra brede marginer "
+msgstr " Ingen | smalle marginer | ekstra smalle marginer | ekstra brede marginer "
 
 #: src/frontends/xforms/FormDocument.C:286
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | <<text>> | >>text<< "
@@ -10439,10 +10421,8 @@ msgid "LyX objects that can be assigned a color."
 msgstr "LyX-objekter, der kan få tilknyttet en farve."
 
 #: src/frontends/xforms/FormPreferences.C:539
-msgid ""
-"Modify the LyX object's color. Note: you must then \"Apply\" the change."
-msgstr ""
-"Ændr farven på LyX-objekt. Bemærk: du skal trykke \"Anvend\" for at gemme."
+msgid "Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgstr "Ændr farven på LyX-objekt. Bemærk: du skal trykke \"Anvend\" for at gemme."
 
 #: src/frontends/xforms/FormPreferences.C:547
 msgid "Find a new color."
@@ -10756,8 +10736,7 @@ msgstr "Søg baglæns."
 
 #. Set up the tooltip mechanism
 #: src/frontends/xforms/FormSendto.C:45
-msgid ""
-"Export the buffer to this format before running the command below on it."
+msgid "Export the buffer to this format before running the command below on it."
 msgstr ""
 "Eksportér dokumentet i dette format, før nedenstående kommando udføres på "
 "den."
@@ -10852,7 +10831,7 @@ msgstr "Vis fulde sti eller blot filnavn."
 
 #: src/frontends/xforms/FormTexinfo.C:54
 msgid "Runs the script \"TexFiles.sh\" to rebuild the file lists."
-msgstr "Kører skriptet \"TexFiles.sh\" for at opbygge nye fillisterne."
+msgstr "Kører scriptet \"TexFiles.sh\" for at opbygge nye fillisterne."
 
 #: src/frontends/xforms/FormTexinfo.C:57
 msgid "Double click to view contents of file."
@@ -10864,7 +10843,7 @@ msgid ""
 "install a new TeX class or style. You need write permissions for the TeX-"
 "dirs, often /var/lib/texmf and others."
 msgstr ""
-"Kører skriptet \"texhash\", der opbygger et nyt LaTeX-træ. Kræves hvis du "
+"Kører scriptet \"texhash\", der opbygger et nyt LaTeX-træ. Kræves hvis du "
 "installerer en ny TeX-klasse eller -stil. For at udføre det, skal du have "
 "skriveadgang til tex-mapperne. Det er normalt /var/lib/texmf m.fl."
 
@@ -11026,11 +11005,11 @@ msgstr "LyX-advarsel!"
 
 #: src/insets/insetbib.C:269
 msgid "There are spaces in the paths to your BibTeX databases."
-msgstr ""
+msgstr "Der er mellemrum i stierne til dine BibTeX-databaser."
 
 #: src/insets/insetbib.C:270
 msgid "BibTeX will be unable to find them."
-msgstr ""
+msgstr "BibTeX vil ikke kunne finde dem."
 
 #: src/insets/insetcaption.C:63
 msgid "Opened Caption Inset"
@@ -11992,8 +11971,7 @@ msgstr ""
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
-msgstr ""
-"Standardprinteren. Hvis ingen angives, vil LyX bruge miljøvariablen PRINTER."
+msgstr "Standardprinteren. Hvis ingen angives, vil LyX bruge miljøvariablen PRINTER."
 
 #: src/lyxrc.C:1890
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
@@ -12009,8 +11987,7 @@ msgstr "Om kun ulige sider skal udskrives."
 
 #: src/lyxrc.C:1902
 msgid "The option for specifying a comma-separated list of pages to print."
-msgstr ""
-"Her kan indsættes en kommasepareret liste af sider, der skal udskrives."
+msgstr "Her kan indsættes en kommasepareret liste af sider, der skal udskrives."
 
 #: src/lyxrc.C:1906
 msgid "The option for specifying the number of copies to print."
@@ -12050,8 +12027,7 @@ msgstr "Få LyX til at give navnet på målprinteren til din udskriftskommando."
 
 #: src/lyxrc.C:1938
 msgid "Option to pass to the print program to print to a file."
-msgstr ""
-"Tilvalg, der skal gives til udskriftsprogrammet for at skrive til en fil."
+msgstr "Tilvalg, der skal gives til udskriftsprogrammet for at skrive til en fil."
 
 #: src/lyxrc.C:1942
 msgid "Extension of printer program output file. Usually \".ps\"."
@@ -12101,13 +12077,11 @@ msgstr ""
 
 #: src/lyxrc.C:1967
 msgid "The font sizes used for calculating the scaling of the screen fonts."
-msgstr ""
-"Skriftstørrelserne, der benyttes ved beregning af skærmskrifternes størrelse."
+msgstr "Skriftstørrelserne, der benyttes ved beregning af skærmskrifternes størrelse."
 
 #: src/lyxrc.C:1973
 msgid "The screen fonts used to display the text while editing."
-msgstr ""
-"Skrifttyper, der benyttes til at vise tekst på skærmen under redigering."
+msgstr "Skrifttyper, der benyttes til at vise tekst på skærmen under redigering."
 
 #: src/lyxrc.C:1977
 msgid "The bold font in the dialogs."
@@ -12126,10 +12100,8 @@ msgid "The encoding for the menu/popups fonts."
 msgstr "Tegnsættet for menu/dialog-tekst."
 
 #: src/lyxrc.C:1996
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
-msgstr ""
-"Tidsintervallet mellem automatisk gemning (i sekunder). 0 betyder aldrig."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgstr "Tidsintervallet mellem automatisk gemning (i sekunder). 0 betyder aldrig."
 
 #: src/lyxrc.C:2000
 msgid ""
@@ -12279,8 +12251,7 @@ msgid ""
 msgstr "Angiv et alternativt sprog. Normalt anvendes dokumentets sprog."
 
 #: src/lyxrc.C:2091
-msgid ""
-"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "Angiv en alternativ personlig ordliste. F.eks. \".ispell_danish\"."
 
 #: src/lyxrc.C:2096
@@ -12338,8 +12309,7 @@ msgstr ""
 "samme mappe, som den originale fil."
 
 #: src/lyxrc.C:2128
-msgid ""
-"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "Vælg for at aktivere understøttelse af højre-til-venstre-sprog (f.eks. "
 "hebraisk og arabisk)."
@@ -12362,8 +12332,7 @@ msgstr ""
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
-msgstr ""
-"Deaktivér, hvis du ikke ønsker sprog brugt som parameter i \\documentclass."
+msgstr "Deaktivér, hvis du ikke ønsker sprog brugt som parameter i \\documentclass."
 
 #: src/lyxrc.C:2144
 msgid ""
@@ -12380,8 +12349,7 @@ msgid ""
 msgstr "Vælg, hvis der kræves en sprogskiftekommando i starten af dokumentet."
 
 #: src/lyxrc.C:2152
-msgid ""
-"Select if a language switching command is needed at the end of the document."
+msgid "Select if a language switching command is needed at the end of the document."
 msgstr "Angiv, om der kræves en sprogskiftekommando ved dokumentets slutning."
 
 #: src/lyxrc.C:2156
@@ -12427,8 +12395,7 @@ msgstr "Nye dokumenter vil oprettes med dette standardsprog."
 
 #: src/lyxrc.C:2194
 msgid "Maximum number of words in the initialization string for a new label"
-msgstr ""
-"Maksimalt antal ord i initialisationsstrengen for et nyt referencemærke"
+msgstr "Maksimalt antal ord i initialisationsstrengen for et nyt referencemærke"
 
 #: src/lyxrc.C:2198
 msgid "Shows a typeset preview of things such as math"
@@ -12580,8 +12547,7 @@ msgstr "Kunne ikke slette automatisk gemt fil!"
 
 #: src/support/package.C:363
 #, c-format
-msgid ""
-"Unable to determine the path to the LyX binary from the command line %1%"
+msgid "Unable to determine the path to the LyX binary from the command line %1%"
 msgstr "Kunne ikke afgøre stien til LyX-programmet fra kommandolinjen %1%"
 
 #: src/support/package.C:368
@@ -12687,8 +12653,7 @@ msgstr ""
 
 #: src/text.C:1926
 msgid "You cannot type two spaces this way. Please read the Tutorial."
-msgstr ""
-"Du kan ikke indtaste to mellemrum på denne måde. Læs venligst Selvstudium."
+msgstr "Du kan ikke indtaste to mellemrum på denne måde. Læs venligst Selvstudium."
 
 #: src/text.C:3348
 msgid "Page Break (top)"
@@ -13485,3 +13450,4 @@ msgstr "LyX-funktionen 'layout' skal bruge et parameter."
 
 #~ msgid "Canceled"
 #~ msgstr "Annulleret"
+
