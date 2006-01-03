@@ -203,7 +203,7 @@ cat <<EOF
 	'it' => 'Italian',
 	'nl' => 'Dutch',
 	'nn' => 'Nynorsk',
-	'no' => 'Norwegian',
+	'nb' => 'Norwegian',
 	'pl' => 'Polish',
 	'pt' => 'Portuguese',
 	'ro' => 'Romanian',
