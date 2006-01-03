@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.3.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-16 18:08+0200\n"
+"POT-Creation-Date: 2006-01-03 15:37+0100\n"
 "PO-Revision-Date: 2005-11-03 18:21+0200\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -66,12 +66,6 @@ msgstr "Gakoa:|#G"
 #: ../src/frontends/xforms/forms/form_url.fd:116
 #: ../src/frontends/xforms/forms/form_wrap.fd:242
 #: ../src/frontends/qt2/ui/QAskForTextDialog.ui:124
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:260
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:92
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:147
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1138
-#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:128
-#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:90
 msgid "OK"
 msgstr "Ados"
 
@@ -2167,9 +2161,7 @@ msgstr "Copyright"
 
 #: ../src/frontends/qt2/ui/QAboutDialogBase.ui:213
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:204
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:516
 #: ../src/frontends/qt2/ui/QDelimiterDialogBase.ui:414
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:162
 #: ../src/frontends/qt2/ui/QErrorDialogBase.ui:92
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:141
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:318
@@ -2232,16 +2224,22 @@ msgid "The label as it appears in the document"
 msgstr "Etiketa dokumentuan agertzen den bezala"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:189
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:260
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:486
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:92
 #: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:99
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:151
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:111
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:292
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1138
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:356
+#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:128
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:250
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:278
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:708
 #: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:111
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:293
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:90
 #: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:280
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:156
 #: ../src/frontends/qt2/ui/QWrapDialogBase.ui:280
@@ -2441,6 +2439,17 @@ msgstr "Aplikatu automatikoki aldaketa guztiak"
 msgid "&Apply"
 msgstr "&Aplikatu"
 
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:516
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:166
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1190
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:261
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:366
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:291
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1334 src/LyXAction.C:125
+#: src/frontends/controllers/ButtonController.h:73
+msgid "Close"
+msgstr "Itxi"
+
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:22
 #: src/frontends/qt2/QCitation.C:44 src/frontends/xforms/FormCitation.C:93
 msgid "Citation"
@@ -2560,7 +2569,7 @@ msgstr "Testua ondoren:"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:564
 #: src/frontends/qt2/QCitationDialog.C:51
-#: src/frontends/xforms/FormCitation.C:467
+#: src/frontends/xforms/FormCitation.C:468
 msgid "Not yet supported"
 msgstr "Onartu gabea"
 
@@ -2649,10 +2658,11 @@ msgid "Show ERT button only"
 msgstr "Erakutsi ERT botoia soilik"
 
 #: ../src/frontends/qt2/ui/QERTDialogBase.ui:94
-msgid "&Open"
+#, fuzzy
+msgid "O&pen"
 msgstr "&Ireki"
 
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:98
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:102
 msgid "Show ERT contents"
 msgstr "Erakutsi ERT edukiak"
 
@@ -2897,7 +2907,8 @@ msgid "Angle to rotate image by"
 msgstr "Irudia biratzeko angelua"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:552
-msgid "&Origin:"
+#, fuzzy
+msgid "Or&igin:"
 msgstr "&Jatorria:"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:560
@@ -2988,15 +2999,6 @@ msgstr "&Epigrafea:"
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1048
 msgid "The caption for the sub-figure"
 msgstr "Azpirudiaren epigrafea"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1190
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:261
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:366
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:291
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1334 src/LyXAction.C:125
-#: src/frontends/controllers/ButtonController.h:73
-msgid "Close"
-msgstr "Itxi"
 
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:22
 msgid "Include File"
@@ -3524,7 +3526,8 @@ msgid "&To:"
 msgstr "&Nora:"
 
 #: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:227
-msgid "F&rom:"
+#, fuzzy
+msgid "&From:"
 msgstr "N&ondik:"
 
 #: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:249
@@ -3662,7 +3665,8 @@ msgid "Auto &begin"
 msgstr "Automatikoki &hasi"
 
 #: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:140
-msgid "Use &babel"
+#, fuzzy
+msgid "Use b&abel"
 msgstr "Erabili &babel"
 
 #: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:172
@@ -3969,7 +3973,8 @@ msgid "W&heel mouse scroll:"
 msgstr "S&agu-gurpilaren jauzia:"
 
 #: ../src/frontends/qt2/ui/QPrefUIModule.ui:201
-msgid "Cursor follo&ws scrollbar"
+#, fuzzy
+msgid "Cursor follows &scrollbar"
 msgstr "Kurtsoreak korritze-ba&rrari jarraitu"
 
 #: ../src/frontends/qt2/ui/QPrefUIModule.ui:214
@@ -4094,7 +4099,7 @@ msgstr "Erreferentzia gurutzatua"
 msgid "Update the label list"
 msgstr "Eguneratu etiketa-zerrenda"
 
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:89 src/frontends/qt2/QRef.C:125
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:89 src/frontends/qt2/QRef.C:127
 msgid "&Goto"
 msgstr "&Joan"
 
@@ -4335,7 +4340,8 @@ msgid "Append row (below)"
 msgstr "Gehitu errenkada (azpian)"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:265
-msgid "Dele&te"
+#, fuzzy
+msgid "Del&ete"
 msgstr "Eza&batu"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:273
@@ -7397,29 +7403,29 @@ msgstr "Paragrafoaren ingurune-mota ezarrita"
 msgid "Formatting document..."
 msgstr "Dokumentua formateatzen..."
 
-#: src/BufferView_pimpl.C:644
+#: src/BufferView_pimpl.C:643
 #, c-format
 msgid "Saved bookmark %1$d"
 msgstr "%1$d liburu-marka gordeta"
 
-#: src/BufferView_pimpl.C:646
+#: src/BufferView_pimpl.C:645
 msgid "Saved bookmark "
 msgstr "Liburu-marka gorde da "
 
-#: src/BufferView_pimpl.C:680
+#: src/BufferView_pimpl.C:679
 #, c-format
 msgid "Moved to bookmark %1$d"
 msgstr "Mugitu %1$d liburu-markara"
 
-#: src/BufferView_pimpl.C:682
+#: src/BufferView_pimpl.C:681
 msgid "Moved to bookmark "
 msgstr "Mugitu liburu-markara "
 
-#: src/BufferView_pimpl.C:862
+#: src/BufferView_pimpl.C:861
 msgid "Select LyX document to insert"
 msgstr "Hautatu txertatzeko LyX dokumentua"
 
-#: src/BufferView_pimpl.C:864 src/frontends/controllers/ControlBibtex.C:59
+#: src/BufferView_pimpl.C:863 src/frontends/controllers/ControlBibtex.C:59
 #: src/frontends/controllers/ControlBibtex.C:69
 #: src/frontends/controllers/ControlExternal.C:147
 #: src/frontends/controllers/ControlGraphics.C:89
@@ -7428,70 +7434,70 @@ msgstr "Hautatu txertatzeko LyX dokumentua"
 msgid "Documents|#o#O"
 msgstr "Dokumentuak|#d#D"
 
-#: src/BufferView_pimpl.C:866 src/lyxfunc.C:1684 src/lyxfunc.C:1790
+#: src/BufferView_pimpl.C:865 src/lyxfunc.C:1684 src/lyxfunc.C:1790
 msgid "Examples|#E#e"
 msgstr "Adibideak|#A#a"
 
-#: src/BufferView_pimpl.C:871 src/lyx_cb.C:127 src/lyxfunc.C:1649
+#: src/BufferView_pimpl.C:870 src/lyx_cb.C:127 src/lyxfunc.C:1649
 #: src/lyxfunc.C:1689
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr "*.lyx| LyX dokumentuak (*.lyx)"
 
-#: src/BufferView_pimpl.C:880 src/lyxfunc.C:1698 src/lyxfunc.C:1718
+#: src/BufferView_pimpl.C:879 src/lyxfunc.C:1698 src/lyxfunc.C:1718
 #: src/lyxfunc.C:1807 src/lyxfunc.C:1834 src/lyxfunc.C:1844
 msgid "Canceled."
 msgstr "Bertan behera utzita."
 
-#: src/BufferView_pimpl.C:893
+#: src/BufferView_pimpl.C:892
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "%1$s dokumentua txertatzen..."
 
-#: src/BufferView_pimpl.C:895
+#: src/BufferView_pimpl.C:894
 msgid "Inserting document "
 msgstr "Dokumentua txertatzen "
 
-#: src/BufferView_pimpl.C:895 src/importer.C:43 src/lyxfunc.C:995
+#: src/BufferView_pimpl.C:894 src/importer.C:43 src/lyxfunc.C:995
 #: src/lyxfunc.C:1156 src/lyxfunc.C:1731
 msgid "..."
 msgstr "..."
 
-#: src/BufferView_pimpl.C:902
+#: src/BufferView_pimpl.C:901
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "%1$s dokumentua txertatuta."
 
-#: src/BufferView_pimpl.C:904 src/lyxfunc.C:1743
+#: src/BufferView_pimpl.C:903 src/lyxfunc.C:1743
 msgid "Document "
 msgstr "Dokumentua "
 
-#: src/BufferView_pimpl.C:904
+#: src/BufferView_pimpl.C:903
 msgid " inserted."
 msgstr " txertatuta."
 
-#: src/BufferView_pimpl.C:910
+#: src/BufferView_pimpl.C:909
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Ezin izan da %1$s dokumentua txertatu"
 
-#: src/BufferView_pimpl.C:912
+#: src/BufferView_pimpl.C:911
 msgid "Could not insert document "
 msgstr "Ezin izan da dokumentua txertatu "
 
-#: src/BufferView_pimpl.C:1094 src/insets/inseterror.C:51
+#: src/BufferView_pimpl.C:1093 src/insets/inseterror.C:51
 #: src/insets/inseterror.C:73
 msgid "Error"
 msgstr "Errorea"
 
-#: src/BufferView_pimpl.C:1095
+#: src/BufferView_pimpl.C:1094
 msgid "Couldn't find this label"
 msgstr "Ezin izan da aurkitu etiketa"
 
-#: src/BufferView_pimpl.C:1096
+#: src/BufferView_pimpl.C:1095
 msgid "in current document."
 msgstr "oraingo dokumentuan."
 
-#: src/BufferView_pimpl.C:1261
+#: src/BufferView_pimpl.C:1260
 msgid "Unknown function!"
 msgstr "Funtzio ezezaguna!"
 
@@ -9543,7 +9549,7 @@ msgstr "Lodia\t\\mathbf"
 
 #: src/frontends/qt2/QMathDialog.C:150
 msgid "Bold symbol\t\\boldsymbol"
-msgstr "Ikur lodia	\t\\boldsymbol"
+msgstr "Ikur lodia\t\t\\boldsymbol"
 
 #: src/frontends/qt2/QMathDialog.C:151
 msgid "Sans serif\t\\mathsf"
@@ -9662,19 +9668,19 @@ msgstr "Hautatu dokumentu-direktorioa"
 msgid "Give a filename for the LyX server pipe"
 msgstr "Eman izena LyX zerbitzari kanalizazioari"
 
-#: src/frontends/qt2/QRef.C:117
+#: src/frontends/qt2/QRef.C:119
 msgid "&Go back"
 msgstr "&Joan atzerantz"
 
-#: src/frontends/qt2/QRef.C:119 src/frontends/xforms/FormRef.C:275
+#: src/frontends/qt2/QRef.C:121 src/frontends/xforms/FormRef.C:275
 msgid "Go back"
 msgstr "Joan atzerantz"
 
-#: src/frontends/qt2/QRef.C:127
+#: src/frontends/qt2/QRef.C:129
 msgid "Go to label"
 msgstr "Joan etiketara"
 
-#: src/frontends/qt2/QSearch.C:30 src/frontends/xforms/FormSearch.C:25
+#: src/frontends/qt2/QSearch.C:30 src/frontends/xforms/FormSearch.C:24
 msgid "Find and Replace"
 msgstr "Bilatu eta ordeztu"
 
@@ -10690,35 +10696,35 @@ msgid "Go to"
 msgstr "Joan"
 
 #. set up the tooltips
-#: src/frontends/xforms/FormSearch.C:42
+#: src/frontends/xforms/FormSearch.C:41
 msgid "Enter the string you want to find."
 msgstr "Sartu bilatu nahi den katea."
 
-#: src/frontends/xforms/FormSearch.C:44
+#: src/frontends/xforms/FormSearch.C:43
 msgid "Enter the replacement string."
 msgstr "Sartu ordeztu nahi den katea."
 
-#: src/frontends/xforms/FormSearch.C:46
+#: src/frontends/xforms/FormSearch.C:45
 msgid "Continue to next search result."
 msgstr "Jarraitu bilaketaren hurrengo emaitzarekin."
 
-#: src/frontends/xforms/FormSearch.C:48
+#: src/frontends/xforms/FormSearch.C:47
 msgid "Replace search result by replacement string."
 msgstr "Ordeztu bilaketaren emaitza emandako katearekin."
 
-#: src/frontends/xforms/FormSearch.C:50
+#: src/frontends/xforms/FormSearch.C:49
 msgid "Replace all by replacement string."
 msgstr "Ordeztu guztiak, emandako katearekin."
 
-#: src/frontends/xforms/FormSearch.C:52
+#: src/frontends/xforms/FormSearch.C:51
 msgid "Do case sensitive search."
 msgstr "Bereiztu maiuskulak/minuskulak."
 
-#: src/frontends/xforms/FormSearch.C:54
+#: src/frontends/xforms/FormSearch.C:53
 msgid "Search only matching words."
 msgstr "Bilatu hitz osoak soilik."
 
-#: src/frontends/xforms/FormSearch.C:56
+#: src/frontends/xforms/FormSearch.C:55
 msgid "Search backwards."
 msgstr "Bilatu gorantz."
 
@@ -11015,7 +11021,7 @@ msgstr "Irekitako errorea"
 msgid "Opened ERT Inset"
 msgstr "ERT barnekoa irekita"
 
-#: src/insets/insetert.C:246 src/insets/insettabular.C:2086
+#: src/insets/insetert.C:246 src/insets/insettabular.C:2083
 #: src/insets/insettext.C:1407
 msgid "Impossible operation!"
 msgstr "Ezinezko eragiketa!"
@@ -11024,7 +11030,7 @@ msgstr "Ezinezko eragiketa!"
 msgid "Not permitted to change font-types inside ERT-insets!"
 msgstr "Ezin da ERT barneko letra-tipoa aldatu!"
 
-#: src/insets/insetert.C:248 src/insets/insettabular.C:2088
+#: src/insets/insetert.C:248 src/insets/insettabular.C:2085
 #: src/insets/insettext.C:1409
 msgid "Sorry."
 msgstr "Barkatu."
@@ -11241,7 +11247,7 @@ msgstr "ErrefGisakoa: "
 msgid "Opened Tabular Inset"
 msgstr "Taulen barnekoa irekita"
 
-#: src/insets/insettabular.C:2087
+#: src/insets/insettabular.C:2084
 msgid "Multicolumns can only be horizontally."
 msgstr "Zutabe anitzak horizontalki soilik."
 
@@ -12567,19 +12573,19 @@ msgstr "Abisua! Ezin izan da direktorioa sortu:"
 msgid "Could not delete auto-save file!"
 msgstr "Ezin izan da autogordetako fitxategia ezabatu!"
 
-#: src/support/package.C:402
+#: src/support/package.C:363
 #, c-format
 msgid ""
 "Unable to determine the path to the LyX binary from the command line %1%"
 msgstr ""
 "Ezin izan da LyX liburutegien bide-izena zehaztu (%1% komando lerrotik)"
 
-#: src/support/package.C:407
+#: src/support/package.C:368
 msgid "Unable to determine the path to the LyX binary from the command line "
 msgstr ""
 "Ezin izan da LyX liburutegien bide-izena zehaztu komando lerro honetatik "
 
-#: src/support/package.C:533
+#: src/support/package.C:494
 #, c-format
 msgid ""
 "Unable to determine the system directory having searched\n"
@@ -12593,11 +12599,11 @@ msgstr ""
 "LYX_DIR_13x aldagaia LyX sistemako direktorioarekin ('chkconfig.ltx' "
 "fitxategia duena)."
 
-#: src/support/package.C:543
+#: src/support/package.C:504
 msgid "Unable to determine the system directory having searched\n"
 msgstr "Ezin izan da egin den bilaketako sistemako direktorioa zehaztu\n"
 
-#: src/support/package.C:546
+#: src/support/package.C:507
 msgid ""
 "Try the '-sysdir' command line parameter or set the environment variable "
 "LYX_DIR_13x to the LyX system directory containing the file `chkconfig.ltx'."
@@ -12606,7 +12612,7 @@ msgstr ""
 "LYX_DIR_13x aldagaia LyX sistemako direktorioarekin ('chkconfig.ltx' "
 "fitxategia duena)."
 
-#: src/support/package.C:631
+#: src/support/package.C:593
 #, c-format
 msgid ""
 "Invalid %1% switch.\n"
@@ -12615,24 +12621,24 @@ msgstr ""
 "%1% aldatzaile baliogabea.\n"
 "%2% direktorioak ez dauka %3%."
 
-#: src/support/package.C:636 src/support/package.C:671
-#: src/support/package.C:699
+#: src/support/package.C:598 src/support/package.C:633
+#: src/support/package.C:661
 msgid "Invalid "
 msgstr "Baliogabea "
 
-#: src/support/package.C:637
+#: src/support/package.C:599
 msgid " switch.\n"
 msgstr " aldatzailea.\n"
 
-#: src/support/package.C:638 src/support/package.C:673
+#: src/support/package.C:600 src/support/package.C:635
 msgid "Directory "
 msgstr "Direktorioa "
 
-#: src/support/package.C:639 src/support/package.C:674
+#: src/support/package.C:601 src/support/package.C:636
 msgid " does not contain "
 msgstr " ez dauka "
 
-#: src/support/package.C:666
+#: src/support/package.C:628
 #, c-format
 msgid ""
 "Invalid %1% environment variable.\n"
@@ -12641,11 +12647,11 @@ msgstr ""
 "Inguruneko %1% aldagi baliogabea.\n"
 "%2% direktorioak ez dauka %3%."
 
-#: src/support/package.C:672 src/support/package.C:700
+#: src/support/package.C:634 src/support/package.C:662
 msgid " environment variable.\n"
 msgstr " inguruneko aldagaia.\n"
 
-#: src/support/package.C:694
+#: src/support/package.C:656
 #, c-format
 msgid ""
 "Invalid %1% environment variable.\n"
@@ -12654,7 +12660,7 @@ msgstr ""
 "Inguruneko %1% aldagaia baliogabea da.\n"
 "%2% ez da direktorioa."
 
-#: src/support/package.C:701
+#: src/support/package.C:663
 msgid " is not a directory."
 msgstr " ez da direktorioa."
 

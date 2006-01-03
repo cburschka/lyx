@@ -3,7 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX v1.3.7cvs-2006.01.02\n"
-"POT-Creation-Date: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-01-03 15:37+0100\n"
 "PO-Revision-Date: 2006-01-02 15:02+0100\n"
 "Last-Translator: Szõke Sándor <alex@lyx.hu>\n"
 "Language-Team: Magyar <magyar@lists.linux.hu>\n"
@@ -93,8 +94,7 @@ msgstr "Címke:|#C"
 #: ../src/frontends/xforms/forms/form_tabular_create.fd:80
 #: ../src/frontends/xforms/forms/form_url.fd:98
 #: ../src/frontends/xforms/forms/form_wrap.fd:206
-#: src/frontends/xforms/Alert_pimpl.C:43
-#: src/frontends/xforms/Alert_pimpl.C:47
+#: src/frontends/xforms/Alert_pimpl.C:43 src/frontends/xforms/Alert_pimpl.C:47
 #: src/frontends/xforms/Alert_pimpl.C:53
 msgid "Cancel|^["
 msgstr "Mégse|^["
@@ -983,8 +983,7 @@ msgstr "Sorkizárt|#z"
 msgid "Centered|#C"
 msgstr "Középre|#K"
 
-#: ../src/frontends/xforms/forms/form_preferences.fd:80
-#: src/LyXAction.C:145
+#: ../src/frontends/xforms/forms/form_preferences.fd:80 src/LyXAction.C:145
 msgid "Save"
 msgstr "Mentés"
 
@@ -1779,8 +1778,7 @@ msgstr "Használj minilapot|#m"
 #: ../src/frontends/xforms/forms/form_tabular.fd:1368
 #: ../src/frontends/xforms/forms/form_tabular.fd:1386
 #: ../src/frontends/xforms/forms/form_tabular.fd:1404
-#: ../src/frontends/xforms/forms/form_tabular.fd:1422
-#: src/lyxfont.C:57
+#: ../src/frontends/xforms/forms/form_tabular.fd:1422 src/lyxfont.C:57
 msgid "On"
 msgstr "Be"
 
@@ -1797,8 +1795,7 @@ msgstr "Laptörés az aktuális sorban|#L"
 #: ../src/frontends/xforms/forms/form_tabular.fd:1638
 #: ../src/frontends/xforms/forms/form_tabular.fd:1656
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:131
-#: src/bufferview_funcs.C:190
-#: src/frontends/qt2/QDocument.C:148
+#: src/bufferview_funcs.C:190 src/frontends/qt2/QDocument.C:148
 msgid "Double"
 msgstr "Kétszeres"
 
@@ -1917,8 +1914,7 @@ msgstr "Felsorolásjelek"
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:104
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:121
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:251
-#: src/frontends/qt2/QDocument.C:127
-#: src/frontends/qt2/QDocument.C:137
+#: src/frontends/qt2/QDocument.C:127 src/frontends/qt2/QDocument.C:137
 msgid "default"
 msgstr "alapérték"
 
@@ -1931,62 +1927,52 @@ msgid "&Size:"
 msgstr "&Méret:"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:257
-#: src/frontends/controllers/character.C:121
-#: src/lyxfont.C:52
+#: src/frontends/controllers/character.C:121 src/lyxfont.C:52
 msgid "Tiny"
 msgstr "Legkisebb"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:263
-#: src/frontends/controllers/character.C:125
-#: src/lyxfont.C:52
+#: src/frontends/controllers/character.C:125 src/lyxfont.C:52
 msgid "Smallest"
 msgstr "Mégkisebb"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:269
-#: src/frontends/controllers/character.C:129
-#: src/lyxfont.C:52
+#: src/frontends/controllers/character.C:129 src/lyxfont.C:52
 msgid "Smaller"
 msgstr "Kisebb"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:275
-#: src/frontends/controllers/character.C:133
-#: src/lyxfont.C:52
+#: src/frontends/controllers/character.C:133 src/lyxfont.C:52
 msgid "Small"
 msgstr "Kicsi"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:281
-#: src/frontends/controllers/character.C:137
-#: src/lyxfont.C:52
+#: src/frontends/controllers/character.C:137 src/lyxfont.C:52
 msgid "Normal"
 msgstr "Normál"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:287
-#: src/frontends/controllers/character.C:141
-#: src/lyxfont.C:52
+#: src/frontends/controllers/character.C:141 src/lyxfont.C:52
 msgid "Large"
 msgstr "Nagy"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:293
-#: src/frontends/controllers/character.C:145
-#: src/lyxfont.C:53
+#: src/frontends/controllers/character.C:145 src/lyxfont.C:53
 msgid "Larger"
 msgstr "Nagyobb"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:299
-#: src/frontends/controllers/character.C:149
-#: src/lyxfont.C:53
+#: src/frontends/controllers/character.C:149 src/lyxfont.C:53
 msgid "Largest"
 msgstr "Mégnagyobb"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:305
-#: src/frontends/controllers/character.C:153
-#: src/lyxfont.C:53
+#: src/frontends/controllers/character.C:153 src/lyxfont.C:53
 msgid "Huge"
 msgstr "Óriás"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:311
-#: src/frontends/controllers/character.C:157
-#: src/lyxfont.C:53
+#: src/frontends/controllers/character.C:157 src/lyxfont.C:53
 msgid "Huger"
 msgstr "Legnagyobb"
 
@@ -2146,8 +2132,7 @@ msgid "&Landscape"
 msgstr "&Fekvõ"
 
 #: ../src/frontends/qt2/ui/QAboutDialogBase.ui:22
-#: src/frontends/qt2/QAbout.C:36
-#: src/frontends/xforms/FormAboutlyx.C:40
+#: src/frontends/qt2/QAbout.C:36 src/frontends/xforms/FormAboutlyx.C:40
 msgid "About LyX"
 msgstr "LyX névjegy"
 
@@ -2212,8 +2197,7 @@ msgid "&Cancel"
 msgstr "&Mégsem"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:22
-#: src/frontends/qt2/QBibitem.C:30
-#: src/frontends/xforms/FormBibitem.C:25
+#: src/frontends/qt2/QBibitem.C:30 src/frontends/xforms/FormBibitem.C:25
 msgid "Bibliography Entry"
 msgstr "Irodalomjegyzék bejegyzés"
 
@@ -2260,8 +2244,7 @@ msgid "&OK"
 msgstr "&OK"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:22
-#: src/frontends/qt2/QBibtex.C:39
-#: src/frontends/xforms/FormBibtex.C:37
+#: src/frontends/qt2/QBibtex.C:39 src/frontends/xforms/FormBibtex.C:37
 msgid "BibTeX Bibliography"
 msgstr "BibTeX irodalomjegyzék"
 
@@ -2333,10 +2316,8 @@ msgstr "Stílusfájl kiválasztása"
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:279
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:122
 #: ../src/frontends/qt2/ui/QIndexDialogBase.ui:143
-#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:120
-#: src/LyXAction.C:148
-#: src/frontends/controllers/ButtonController.h:72
-#: src/lyxfunc.C:950
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/LyXAction.C:148
+#: src/frontends/controllers/ButtonController.h:72 src/lyxfunc.C:950
 msgid "Cancel"
 msgstr "Mégse"
 
@@ -2374,8 +2355,7 @@ msgstr "Betûtestesség"
 #. language settings
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:152
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:238
-#: src/frontends/qt2/QDocumentDialog.C:65
-#: src/frontends/qt2/QPrefsDialog.C:125
+#: src/frontends/qt2/QDocumentDialog.C:65 src/frontends/qt2/QPrefsDialog.C:125
 #: src/frontends/xforms/FormDocument.C:356
 #: src/frontends/xforms/FormPreferences.C:268
 msgid "Language"
@@ -2462,15 +2442,13 @@ msgstr "&Alkalmaz"
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:261
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:366
 #: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:291
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1334
-#: src/LyXAction.C:125
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1334 src/LyXAction.C:125
 #: src/frontends/controllers/ButtonController.h:73
 msgid "Close"
 msgstr "Bezár"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:22
-#: src/frontends/qt2/QCitation.C:44
-#: src/frontends/xforms/FormCitation.C:93
+#: src/frontends/qt2/QCitation.C:44 src/frontends/xforms/FormCitation.C:93
 msgid "Citation"
 msgstr "Idézet"
 
@@ -2554,8 +2532,7 @@ msgstr "Kiválasztott idézetek"
 msgid "Selected"
 msgstr "Kiválasztott"
 
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:422
-#: src/lyxvc.C:133
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:422 src/lyxvc.C:133
 msgid "Info"
 msgstr "Információ"
 
@@ -2686,8 +2663,7 @@ msgid "Show ERT contents"
 msgstr "Mutatja az ERT tartalmát"
 
 #: ../src/frontends/qt2/ui/QErrorDialogBase.ui:22
-#: src/frontends/qt2/QError.C:27
-#: src/frontends/xforms/FormError.C:23
+#: src/frontends/qt2/QError.C:27 src/frontends/xforms/FormError.C:23
 msgid "LaTeX Error"
 msgstr "LaTeX hiba"
 
@@ -2860,8 +2836,7 @@ msgstr "A megjelenítés módja"
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:113
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:68
 #: src/frontends/controllers/ControlGraphics.C:152
-#: src/frontends/qt2/QDocument.C:99
-#: src/frontends/qt2/QDocumentDialog.C:343
+#: src/frontends/qt2/QDocument.C:99 src/frontends/qt2/QDocumentDialog.C:343
 #: src/lyxfont.C:549
 msgid "Default"
 msgstr "Alapérték"
@@ -3042,14 +3017,12 @@ msgid "Input"
 msgstr "Input"
 
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:140
-#: src/frontends/qt2/QInclude.C:31
-#: src/insets/insetinclude.C:226
+#: src/frontends/qt2/QInclude.C:31 src/insets/insetinclude.C:226
 msgid "Include"
 msgstr "Include"
 
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:146
-#: ../lib/layouts/linuxdoc.layout:251
-#: ../lib/layouts/manpage.layout:128
+#: ../lib/layouts/linuxdoc.layout:251 ../lib/layouts/manpage.layout:128
 msgid "Verbatim"
 msgstr "Verbatim"
 
@@ -3078,8 +3051,7 @@ msgid "Show LaTeX preview"
 msgstr "Mutasd meg a LaTeX elõnézetet"
 
 #: ../src/frontends/qt2/ui/QIndexDialogBase.ui:22
-#: src/frontends/qt2/QIndex.C:26
-#: src/frontends/xforms/FormIndex.C:25
+#: src/frontends/qt2/QIndex.C:26 src/frontends/xforms/FormIndex.C:25
 #: src/insets/insetindex.C:66
 msgid "Index"
 msgstr "Tárgymutató"
@@ -3179,8 +3151,7 @@ msgstr "Globális mûveletek"
 msgid "Relations"
 msgstr "Relációs jelek"
 
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:511
-#: ../lib/languages:32
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:511 ../lib/languages:32
 #: src/frontends/xforms/FormMathsPanel.C:148
 msgid "Greek"
 msgstr "Görög"
@@ -3270,8 +3241,7 @@ msgstr "Fel"
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:121
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:383
 #: src/frontends/controllers/ControlGraphics.C:154
-#: src/frontends/qt2/QTabular.C:176
-#: src/frontends/xforms/FormParagraph.C:298
+#: src/frontends/qt2/QTabular.C:176 src/frontends/xforms/FormParagraph.C:298
 msgid "Center"
 msgstr "Középre"
 
@@ -3337,22 +3307,19 @@ msgstr "Sorkizárt"
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:77
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:115
 #: ../src/frontends/qt2/ui/QWrapDialogBase.ui:93
-#: src/frontends/qt2/QTabular.C:175
-#: src/frontends/xforms/FormParagraph.C:305
+#: src/frontends/qt2/QTabular.C:175 src/frontends/xforms/FormParagraph.C:305
 msgid "Left"
 msgstr "Balra"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:83
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:127
 #: ../src/frontends/qt2/ui/QWrapDialogBase.ui:99
-#: src/frontends/qt2/QTabular.C:177
-#: src/frontends/xforms/FormParagraph.C:312
+#: src/frontends/qt2/QTabular.C:177 src/frontends/xforms/FormParagraph.C:312
 msgid "Right"
 msgstr "Jobbra"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:119
-#: src/bufferview_funcs.C:184
-#: src/frontends/qt2/QDocument.C:144
+#: src/bufferview_funcs.C:184 src/frontends/qt2/QDocument.C:144
 msgid "Single"
 msgstr "Egyszeres"
 
@@ -3363,8 +3330,7 @@ msgstr "Másfélszeres"
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:137
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:326
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:375
-#: src/frontends/qt2/QDocument.C:100
-#: src/frontends/qt2/QDocument.C:150
+#: src/frontends/qt2/QDocument.C:100 src/frontends/qt2/QDocument.C:150
 #: src/frontends/qt2/QDocumentDialog.C:344
 msgid "Custom"
 msgstr "Egyéb"
@@ -3577,8 +3543,16 @@ msgstr "Cygwin stílusú elérési utat használjon"
 
 #: ../src/frontends/qt2/ui/QPrefCygwinPathModule.ui:74
 #: src/frontends/xforms/FormPreferences.C:2016
-msgid "Select if LyX should output Cygwin-style paths rather than Windows-style paths. Useful if you're using the Cygwin teTeX rather than a native Windows MikTeX. Note, however, that you'll need to write shell script wrappers for all your converters."
-msgstr "Válassza, amennyiben a LyX-nek Cygwin stílusú elérési utat kell generálnia Windows stílusú helyett. Ez akkor jó, ha nem Windowsra készült MikTeX-et használ, hanem Cygwin-féle teTeX-et. Megjegyzem, ebben az esetben minden átalakítóhoz segédparancsfájlt kell írnia (wrapper)."
+msgid ""
+"Select if LyX should output Cygwin-style paths rather than Windows-style "
+"paths. Useful if you're using the Cygwin teTeX rather than a native Windows "
+"MikTeX. Note, however, that you'll need to write shell script wrappers for "
+"all your converters."
+msgstr ""
+"Válassza, amennyiben a LyX-nek Cygwin stílusú elérési utat kell generálnia "
+"Windows stílusú helyett. Ez akkor jó, ha nem Windowsra készült MikTeX-et "
+"használ, hanem Cygwin-féle teTeX-et. Megjegyzem, ebben az esetben minden "
+"átalakítóhoz segédparancsfájlt kell írnia (wrapper)."
 
 #: ../src/frontends/qt2/ui/QPrefDateModule.ui:22
 msgid "Date Format"
@@ -3753,7 +3727,8 @@ msgstr "Visszaállítás alapértelmezésre &osztályváltozás esetén"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:192
 msgid "Set class options to default on class change"
-msgstr "Osztály megváltoztatáskor, visszaállítja a paramétereket az alapértelmezettre"
+msgstr ""
+"Osztály megváltoztatáskor, visszaállítja a paramétereket az alapértelmezettre"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:203
 msgid "External Applications"
@@ -4015,8 +3990,7 @@ msgstr "&Utoljára használt fájlok száma:"
 
 #: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:29
 #: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:178
-#: src/frontends/qt2/QPrefs.C:67
-#: src/frontends/xforms/FormPreferences.C:98
+#: src/frontends/qt2/QPrefs.C:67 src/frontends/xforms/FormPreferences.C:98
 msgid "Preferences"
 msgstr "Beállítások"
 
@@ -4024,10 +3998,8 @@ msgstr "Beállítások"
 msgid "&Save"
 msgstr "Menté&s"
 
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:22
-#: src/LyXAction.C:136
-#: src/frontends/qt2/QPrint.C:35
-#: src/frontends/xforms/FormPrint.C:32
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:22 src/LyXAction.C:136
+#: src/frontends/qt2/QPrint.C:35 src/frontends/xforms/FormPrint.C:32
 msgid "Print"
 msgstr "Nyomtatás"
 
@@ -4109,8 +4081,7 @@ msgstr "Ezt a nyomtatót használjuk"
 msgid "Send output to a file"
 msgstr "Fájlba nyomtat"
 
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:22
-#: src/frontends/qt2/QRef.C:41
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:22 src/frontends/qt2/QRef.C:41
 #: src/frontends/xforms/FormRef.C:33
 msgid "Cross Reference"
 msgstr "Kereszthivatkozás"
@@ -4119,8 +4090,7 @@ msgstr "Kereszthivatkozás"
 msgid "Update the label list"
 msgstr "Címlista frissítése"
 
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:89
-#: src/frontends/qt2/QRef.C:127
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:89 src/frontends/qt2/QRef.C:127
 msgid "&Goto"
 msgstr "U&grás"
 
@@ -4233,7 +4203,8 @@ msgstr "&Export formátumok:"
 
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:168
 msgid "Process the converted file with this command ($$FName = file name)"
-msgstr "Az átalakított fájl feldolgozása a következõ paranccsal ($$FName = fájlnév)"
+msgstr ""
+"Az átalakított fájl feldolgozása a következõ paranccsal ($$FName = fájlnév)"
 
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:192
 msgid "Available export converters"
@@ -4244,8 +4215,7 @@ msgid "File:"
 msgstr "Fájl:"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:22
-#: src/frontends/qt2/QPrefsDialog.C:127
-#: src/frontends/qt2/QSpellchecker.C:31
+#: src/frontends/qt2/QPrefsDialog.C:127 src/frontends/qt2/QSpellchecker.C:31
 #: src/frontends/xforms/FormSpellchecker.C:30
 msgid "Spellchecker"
 msgstr "Helyesírás-ellenõrzõ"
@@ -4324,8 +4294,7 @@ msgid "Merge cells"
 msgstr "Szomszédos cellák egyesítése"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:109
-#: src/frontends/qt2/QTabular.C:179
-#: src/frontends/xforms/FormParagraph.C:291
+#: src/frontends/qt2/QTabular.C:179 src/frontends/xforms/FormParagraph.C:291
 #, fuzzy
 msgid "Block"
 msgstr "Blokk"
@@ -4570,18 +4539,19 @@ msgid "&View"
 msgstr "&Nézet"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
-msgid "Show contents of marked file. Only possible when files are shown with path"
-msgstr "A jelölt fájl tartalmának megjelenítése. Csak akkor lehetséges, ha az elérési út is látható."
+msgid ""
+"Show contents of marked file. Only possible when files are shown with path"
+msgstr ""
+"A jelölt fájl tartalmának megjelenítése. Csak akkor lehetséges, ha az "
+"elérési út is látható."
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:256
 msgid "Close this dialog"
 msgstr "Ablak bezárása"
 
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:22
-#: ../lib/layouts/aapaper.layout:77
-#: ../lib/layouts/aapaper.inc:113
-#: src/frontends/qt2/QThesaurus.C:27
-#: src/frontends/xforms/FormThesaurus.C:35
+#: ../lib/layouts/aapaper.layout:77 ../lib/layouts/aapaper.inc:113
+#: src/frontends/qt2/QThesaurus.C:27 src/frontends/xforms/FormThesaurus.C:35
 msgid "Thesaurus"
 msgstr "Szótár"
 
@@ -4628,10 +4598,8 @@ msgstr "&URL:"
 
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:53
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:94
-#: ../lib/layouts/scrlttr2.layout:219
-#: ../lib/layouts/amsdefs.inc:223
-#: src/frontends/qt2/QURL.C:29
-#: src/frontends/xforms/FormUrl.C:23
+#: ../lib/layouts/scrlttr2.layout:219 ../lib/layouts/amsdefs.inc:223
+#: src/frontends/qt2/QURL.C:29 src/frontends/xforms/FormUrl.C:23
 msgid "URL"
 msgstr "URL"
 
@@ -4652,8 +4620,7 @@ msgstr "A kimenetben létrehozza a hivatkozást?"
 msgid "Version control log"
 msgstr "Verziókövetõ napló"
 
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:23
-#: src/frontends/qt2/QWrap.C:32
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:23 src/frontends/qt2/QWrap.C:32
 #: src/frontends/xforms/FormWrap.C:29
 msgid "Wrap Options"
 msgstr "Körbefuttatás beállításai"
@@ -4670,40 +4637,23 @@ msgstr "Külsõ"
 msgid "&Placement:"
 msgstr "&Elhelyezés:"
 
-#: ../lib/layouts/IEEEtran.layout:38
-#: ../lib/layouts/aa.layout:30
-#: ../lib/layouts/aapaper.layout:33
-#: ../lib/layouts/aastex.layout:55
-#: ../lib/layouts/amsart.layout:23
-#: ../lib/layouts/amsbook.layout:23
-#: ../lib/layouts/apa.layout:31
-#: ../lib/layouts/broadway.layout:179
-#: ../lib/layouts/chess.layout:30
-#: ../lib/layouts/cl2emult.layout:127
-#: ../lib/layouts/cv.layout:14
-#: ../lib/layouts/dtk.layout:30
-#: ../lib/layouts/egs.layout:17
-#: ../lib/layouts/elsart.layout:48
-#: ../lib/layouts/foils.layout:28
-#: ../lib/layouts/hollywood.layout:350
-#: ../lib/layouts/kluwer.layout:35
-#: ../lib/layouts/linuxdoc.layout:17
-#: ../lib/layouts/llncs.layout:23
-#: ../lib/layouts/ltugboat.layout:30
-#: ../lib/layouts/manpage.layout:17
-#: ../lib/layouts/paper.layout:15
-#: ../lib/layouts/revtex.layout:24
-#: ../lib/layouts/revtex4.layout:26
-#: ../lib/layouts/scrlettr.layout:7
-#: ../lib/layouts/scrlttr2.layout:7
-#: ../lib/layouts/siamltex.layout:18
-#: ../lib/layouts/slides.layout:72
-#: ../lib/layouts/db_stdclass.inc:28
-#: ../lib/layouts/scrclass.inc:13
-#: ../lib/layouts/stdclass.inc:27
-#: ../lib/layouts/stdletter.inc:21
-#: ../lib/layouts/svjour.inc:27
-#: src/insets/insetref.C:114
+#: ../lib/layouts/IEEEtran.layout:38 ../lib/layouts/aa.layout:30
+#: ../lib/layouts/aapaper.layout:33 ../lib/layouts/aastex.layout:55
+#: ../lib/layouts/amsart.layout:23 ../lib/layouts/amsbook.layout:23
+#: ../lib/layouts/apa.layout:31 ../lib/layouts/broadway.layout:179
+#: ../lib/layouts/chess.layout:30 ../lib/layouts/cl2emult.layout:127
+#: ../lib/layouts/cv.layout:14 ../lib/layouts/dtk.layout:30
+#: ../lib/layouts/egs.layout:17 ../lib/layouts/elsart.layout:48
+#: ../lib/layouts/foils.layout:28 ../lib/layouts/hollywood.layout:350
+#: ../lib/layouts/kluwer.layout:35 ../lib/layouts/linuxdoc.layout:17
+#: ../lib/layouts/llncs.layout:23 ../lib/layouts/ltugboat.layout:30
+#: ../lib/layouts/manpage.layout:17 ../lib/layouts/paper.layout:15
+#: ../lib/layouts/revtex.layout:24 ../lib/layouts/revtex4.layout:26
+#: ../lib/layouts/scrlettr.layout:7 ../lib/layouts/scrlttr2.layout:7
+#: ../lib/layouts/siamltex.layout:18 ../lib/layouts/slides.layout:72
+#: ../lib/layouts/db_stdclass.inc:28 ../lib/layouts/scrclass.inc:13
+#: ../lib/layouts/stdclass.inc:27 ../lib/layouts/stdletter.inc:21
+#: ../lib/layouts/svjour.inc:27 src/insets/insetref.C:114
 #: src/mathed/ref_inset.C:123
 msgid "Standard"
 msgstr "Normál szöveg"
@@ -4712,371 +4662,237 @@ msgstr "Normál szöveg"
 msgid "TheoremTemplate"
 msgstr "Tétel-sablon"
 
-#: ../lib/layouts/IEEEtran.layout:82
-#: ../lib/layouts/elsart.layout:298
-#: ../lib/layouts/foils.layout:301
-#: ../lib/layouts/heb-article.layout:97
-#: ../lib/layouts/ijmpd.layout:141
-#: ../lib/layouts/llncs.layout:405
-#: ../lib/layouts/siamltex.layout:234
-#: ../lib/layouts/amsdefs.inc:27
+#: ../lib/layouts/IEEEtran.layout:82 ../lib/layouts/elsart.layout:298
+#: ../lib/layouts/foils.layout:301 ../lib/layouts/heb-article.layout:97
+#: ../lib/layouts/ijmpd.layout:141 ../lib/layouts/llncs.layout:405
+#: ../lib/layouts/siamltex.layout:234 ../lib/layouts/amsdefs.inc:27
 #: ../lib/layouts/svjour.inc:473
 msgid "Proof"
 msgstr ""
 
-#: ../lib/layouts/IEEEtran.layout:90
-#: ../lib/layouts/elsart.layout:265
-#: ../lib/layouts/foils.layout:232
-#: ../lib/layouts/heb-article.layout:24
-#: ../lib/layouts/ijmpd.layout:125
-#: ../lib/layouts/llncs.layout:441
-#: ../lib/layouts/siamltex.layout:189
-#: ../lib/layouts/amsmaths-plain.inc:32
-#: ../lib/layouts/amsmaths-seq.inc:32
-#: ../lib/layouts/amsmaths.inc:59
+#: ../lib/layouts/IEEEtran.layout:90 ../lib/layouts/elsart.layout:265
+#: ../lib/layouts/foils.layout:232 ../lib/layouts/heb-article.layout:24
+#: ../lib/layouts/ijmpd.layout:125 ../lib/layouts/llncs.layout:441
+#: ../lib/layouts/siamltex.layout:189 ../lib/layouts/amsmaths-plain.inc:32
+#: ../lib/layouts/amsmaths-seq.inc:32 ../lib/layouts/amsmaths.inc:59
 #: ../lib/layouts/svjour.inc:509
 msgid "Theorem"
 msgstr "Tétel"
 
-#: ../lib/layouts/IEEEtran.layout:101
-#: ../lib/layouts/elsart.layout:330
-#: ../lib/layouts/foils.layout:262
-#: ../lib/layouts/heb-article.layout:52
-#: ../lib/layouts/llncs.layout:387
-#: ../lib/layouts/siamltex.layout:203
-#: ../lib/layouts/amsmaths-plain.inc:54
-#: ../lib/layouts/amsmaths-seq.inc:48
-#: ../lib/layouts/amsmaths.inc:128
-#: ../lib/layouts/svjour.inc:455
+#: ../lib/layouts/IEEEtran.layout:101 ../lib/layouts/elsart.layout:330
+#: ../lib/layouts/foils.layout:262 ../lib/layouts/heb-article.layout:52
+#: ../lib/layouts/llncs.layout:387 ../lib/layouts/siamltex.layout:203
+#: ../lib/layouts/amsmaths-plain.inc:54 ../lib/layouts/amsmaths-seq.inc:48
+#: ../lib/layouts/amsmaths.inc:128 ../lib/layouts/svjour.inc:455
 msgid "Lemma"
 msgstr "Segédtétel"
 
-#: ../lib/layouts/IEEEtran.layout:112
-#: ../lib/layouts/elsart.layout:342
-#: ../lib/layouts/foils.layout:269
-#: ../lib/layouts/heb-article.layout:61
-#: ../lib/layouts/llncs.layout:352
-#: ../lib/layouts/siamltex.layout:209
-#: ../lib/layouts/amsmaths-plain.inc:43
-#: ../lib/layouts/amsmaths-seq.inc:40
-#: ../lib/layouts/amsmaths.inc:105
-#: ../lib/layouts/svjour.inc:412
+#: ../lib/layouts/IEEEtran.layout:112 ../lib/layouts/elsart.layout:342
+#: ../lib/layouts/foils.layout:269 ../lib/layouts/heb-article.layout:61
+#: ../lib/layouts/llncs.layout:352 ../lib/layouts/siamltex.layout:209
+#: ../lib/layouts/amsmaths-plain.inc:43 ../lib/layouts/amsmaths-seq.inc:40
+#: ../lib/layouts/amsmaths.inc:105 ../lib/layouts/svjour.inc:412
 msgid "Corollary"
 msgstr "Folyomány"
 
-#: ../lib/layouts/IEEEtran.layout:123
-#: ../lib/layouts/elsart.layout:354
-#: ../lib/layouts/foils.layout:276
-#: ../lib/layouts/llncs.layout:417
-#: ../lib/layouts/siamltex.layout:215
-#: ../lib/layouts/amsmaths-plain.inc:65
-#: ../lib/layouts/amsmaths-seq.inc:56
-#: ../lib/layouts/amsmaths.inc:152
+#: ../lib/layouts/IEEEtran.layout:123 ../lib/layouts/elsart.layout:354
+#: ../lib/layouts/foils.layout:276 ../lib/layouts/llncs.layout:417
+#: ../lib/layouts/siamltex.layout:215 ../lib/layouts/amsmaths-plain.inc:65
+#: ../lib/layouts/amsmaths-seq.inc:56 ../lib/layouts/amsmaths.inc:152
 #: ../lib/layouts/svjour.inc:485
 msgid "Proposition"
 msgstr ""
 
-#: ../lib/layouts/IEEEtran.layout:134
-#: ../lib/layouts/elsart.layout:413
-#: ../lib/layouts/llncs.layout:346
-#: ../lib/layouts/amsmaths-plain.inc:76
-#: ../lib/layouts/amsmaths-seq.inc:64
-#: ../lib/layouts/amsmaths.inc:176
+#: ../lib/layouts/IEEEtran.layout:134 ../lib/layouts/elsart.layout:413
+#: ../lib/layouts/llncs.layout:346 ../lib/layouts/amsmaths-plain.inc:76
+#: ../lib/layouts/amsmaths-seq.inc:64 ../lib/layouts/amsmaths.inc:176
 #: ../lib/layouts/svjour.inc:406
 msgid "Conjecture"
 msgstr "Feltevés"
 
-#: ../lib/layouts/IEEEtran.layout:145
-#: ../lib/layouts/elsart.layout:366
-#: ../lib/layouts/amsmaths-plain.inc:87
-#: ../lib/layouts/amsmaths-seq.inc:72
+#: ../lib/layouts/IEEEtran.layout:145 ../lib/layouts/elsart.layout:366
+#: ../lib/layouts/amsmaths-plain.inc:87 ../lib/layouts/amsmaths-seq.inc:72
 #: ../lib/layouts/amsmaths.inc:200
 msgid "Criterion"
 msgstr ""
 
-#: ../lib/layouts/IEEEtran.layout:156
-#: ../lib/layouts/amsmaths-plain.inc:109
-#: ../lib/layouts/amsmaths-seq.inc:88
-#: ../lib/layouts/amsmaths.inc:224
+#: ../lib/layouts/IEEEtran.layout:156 ../lib/layouts/amsmaths-plain.inc:109
+#: ../lib/layouts/amsmaths-seq.inc:88 ../lib/layouts/amsmaths.inc:224
 msgid "Fact"
 msgstr "Tény"
 
-#: ../lib/layouts/IEEEtran.layout:167
-#: ../lib/layouts/amsmaths-plain.inc:120
-#: ../lib/layouts/amsmaths-seq.inc:96
-#: ../lib/layouts/amsmaths.inc:248
+#: ../lib/layouts/IEEEtran.layout:167 ../lib/layouts/amsmaths-plain.inc:120
+#: ../lib/layouts/amsmaths-seq.inc:96 ../lib/layouts/amsmaths.inc:248
 msgid "Axiom"
 msgstr "Axióma"
 
-#: ../lib/layouts/IEEEtran.layout:178
-#: ../lib/layouts/elsart.layout:390
-#: ../lib/layouts/foils.layout:283
-#: ../lib/layouts/heb-article.layout:79
-#: ../lib/layouts/llncs.layout:369
-#: ../lib/layouts/siamltex.layout:221
-#: ../lib/layouts/amsmaths-plain.inc:131
-#: ../lib/layouts/amsmaths-seq.inc:104
-#: ../lib/layouts/amsmaths.inc:260
-#: ../lib/layouts/svjour.inc:429
+#: ../lib/layouts/IEEEtran.layout:178 ../lib/layouts/elsart.layout:390
+#: ../lib/layouts/foils.layout:283 ../lib/layouts/heb-article.layout:79
+#: ../lib/layouts/llncs.layout:369 ../lib/layouts/siamltex.layout:221
+#: ../lib/layouts/amsmaths-plain.inc:131 ../lib/layouts/amsmaths-seq.inc:104
+#: ../lib/layouts/amsmaths.inc:260 ../lib/layouts/svjour.inc:429
 msgid "Definition"
 msgstr "Definíció"
 
-#: ../lib/layouts/IEEEtran.layout:189
-#: ../lib/layouts/elsart.layout:425
-#: ../lib/layouts/llncs.layout:375
-#: ../lib/layouts/amsmaths-plain.inc:142
-#: ../lib/layouts/amsmaths-seq.inc:112
-#: ../lib/layouts/amsmaths.inc:294
+#: ../lib/layouts/IEEEtran.layout:189 ../lib/layouts/elsart.layout:425
+#: ../lib/layouts/llncs.layout:375 ../lib/layouts/amsmaths-plain.inc:142
+#: ../lib/layouts/amsmaths-seq.inc:112 ../lib/layouts/amsmaths.inc:294
 #: ../lib/layouts/svjour.inc:435
 msgid "Example"
 msgstr "Példa"
 
-#: ../lib/layouts/IEEEtran.layout:200
-#: ../lib/layouts/amsmaths-plain.inc:153
-#: ../lib/layouts/amsmaths-seq.inc:120
-#: ../lib/layouts/amsmaths.inc:318
+#: ../lib/layouts/IEEEtran.layout:200 ../lib/layouts/amsmaths-plain.inc:153
+#: ../lib/layouts/amsmaths-seq.inc:120 ../lib/layouts/amsmaths.inc:318
 msgid "Condition"
 msgstr "Feltétel"
 
-#: ../lib/layouts/IEEEtran.layout:211
-#: ../lib/layouts/elsart.layout:437
-#: ../lib/layouts/llncs.layout:399
-#: ../lib/layouts/amsmaths-plain.inc:164
-#: ../lib/layouts/amsmaths-seq.inc:128
-#: ../lib/layouts/amsmaths.inc:330
+#: ../lib/layouts/IEEEtran.layout:211 ../lib/layouts/elsart.layout:437
+#: ../lib/layouts/llncs.layout:399 ../lib/layouts/amsmaths-plain.inc:164
+#: ../lib/layouts/amsmaths-seq.inc:128 ../lib/layouts/amsmaths.inc:330
 #: ../lib/layouts/svjour.inc:467
 msgid "Problem"
 msgstr "Probléma"
 
-#: ../lib/layouts/IEEEtran.layout:222
-#: ../lib/layouts/llncs.layout:381
-#: ../lib/layouts/amsmaths-plain.inc:175
-#: ../lib/layouts/amsmaths-seq.inc:136
-#: ../lib/layouts/amsmaths.inc:342
-#: ../lib/layouts/svjour.inc:441
+#: ../lib/layouts/IEEEtran.layout:222 ../lib/layouts/llncs.layout:381
+#: ../lib/layouts/amsmaths-plain.inc:175 ../lib/layouts/amsmaths-seq.inc:136
+#: ../lib/layouts/amsmaths.inc:342 ../lib/layouts/svjour.inc:441
 msgid "Exercise"
 msgstr "gyakorlat"
 
-#: ../lib/layouts/IEEEtran.layout:233
-#: ../lib/layouts/elsart.layout:449
-#: ../lib/layouts/llncs.layout:429
-#: ../lib/layouts/amsmaths-plain.inc:186
-#: ../lib/layouts/amsmaths-seq.inc:144
-#: ../lib/layouts/amsmaths.inc:354
+#: ../lib/layouts/IEEEtran.layout:233 ../lib/layouts/elsart.layout:449
+#: ../lib/layouts/llncs.layout:429 ../lib/layouts/amsmaths-plain.inc:186
+#: ../lib/layouts/amsmaths-seq.inc:144 ../lib/layouts/amsmaths.inc:354
 #: ../lib/layouts/svjour.inc:497
 msgid "Remark"
 msgstr "Észrevétel"
 
-#: ../lib/layouts/IEEEtran.layout:244
-#: ../lib/layouts/elsart.layout:465
-#: ../lib/layouts/heb-article.layout:70
-#: ../lib/layouts/llncs.layout:340
-#: ../lib/layouts/amsmaths-plain.inc:197
-#: ../lib/layouts/amsmaths-seq.inc:152
-#: ../lib/layouts/amsmaths.inc:389
-#: ../lib/layouts/svjour.inc:382
+#: ../lib/layouts/IEEEtran.layout:244 ../lib/layouts/elsart.layout:465
+#: ../lib/layouts/heb-article.layout:70 ../lib/layouts/llncs.layout:340
+#: ../lib/layouts/amsmaths-plain.inc:197 ../lib/layouts/amsmaths-seq.inc:152
+#: ../lib/layouts/amsmaths.inc:389 ../lib/layouts/svjour.inc:382
 msgid "Claim"
 msgstr ""
 
-#: ../lib/layouts/IEEEtran.layout:255
-#: ../lib/layouts/apa.layout:204
-#: ../lib/layouts/elsart.layout:457
-#: ../lib/layouts/llncs.layout:393
-#: ../lib/layouts/slides.layout:173
-#: ../lib/layouts/amsmaths-plain.inc:208
-#: ../lib/layouts/amsmaths-seq.inc:160
-#: ../lib/layouts/amsmaths.inc:413
+#: ../lib/layouts/IEEEtran.layout:255 ../lib/layouts/apa.layout:204
+#: ../lib/layouts/elsart.layout:457 ../lib/layouts/llncs.layout:393
+#: ../lib/layouts/slides.layout:173 ../lib/layouts/amsmaths-plain.inc:208
+#: ../lib/layouts/amsmaths-seq.inc:160 ../lib/layouts/amsmaths.inc:413
 #: ../lib/layouts/svjour.inc:461
 msgid "Note"
 msgstr "Megjegyzés"
 
-#: ../lib/layouts/IEEEtran.layout:266
-#: ../lib/layouts/amsmaths-plain.inc:219
-#: ../lib/layouts/amsmaths-seq.inc:168
-#: ../lib/layouts/amsmaths.inc:438
+#: ../lib/layouts/IEEEtran.layout:266 ../lib/layouts/amsmaths-plain.inc:219
+#: ../lib/layouts/amsmaths-seq.inc:168 ../lib/layouts/amsmaths.inc:438
 msgid "Notation"
 msgstr "Jelölés"
 
-#: ../lib/layouts/IEEEtran.layout:277
-#: ../lib/layouts/elsart.layout:481
-#: ../lib/layouts/llncs.layout:316
-#: ../lib/layouts/amsmaths-plain.inc:255
-#: ../lib/layouts/amsmaths-seq.inc:192
-#: ../lib/layouts/amsmaths.inc:485
+#: ../lib/layouts/IEEEtran.layout:277 ../lib/layouts/elsart.layout:481
+#: ../lib/layouts/llncs.layout:316 ../lib/layouts/amsmaths-plain.inc:255
+#: ../lib/layouts/amsmaths-seq.inc:192 ../lib/layouts/amsmaths.inc:485
 msgid "Case"
 msgstr ""
 
-#: ../lib/layouts/IEEEtran.layout:302
-#: ../lib/layouts/aa.layout:44
-#: ../lib/layouts/aa.layout:239
-#: ../lib/layouts/aapaper.layout:59
-#: ../lib/layouts/aapaper.layout:115
-#: ../lib/layouts/aastex.layout:69
-#: ../lib/layouts/aastex.layout:148
-#: ../lib/layouts/amsart.layout:40
-#: ../lib/layouts/amsbook.layout:41
-#: ../lib/layouts/cv.layout:26
-#: ../lib/layouts/egs.layout:29
-#: ../lib/layouts/ijmpd.layout:86
-#: ../lib/layouts/kluwer.layout:55
-#: ../lib/layouts/latex8.layout:39
-#: ../lib/layouts/linuxdoc.layout:68
-#: ../lib/layouts/llncs.layout:44
-#: ../lib/layouts/ltugboat.layout:46
-#: ../lib/layouts/manpage.layout:41
-#: ../lib/layouts/paper.layout:46
-#: ../lib/layouts/revtex.layout:42
-#: ../lib/layouts/revtex4.layout:47
-#: ../lib/layouts/siamltex.layout:38
-#: ../lib/layouts/spie.layout:23
-#: ../lib/layouts/aguplus.inc:23
-#: ../lib/layouts/db_stdsections.inc:25
-#: ../lib/layouts/scrclass.inc:70
-#: ../lib/layouts/stdsections.inc:63
-#: ../lib/layouts/svjour.inc:42
+#: ../lib/layouts/IEEEtran.layout:302 ../lib/layouts/aa.layout:44
+#: ../lib/layouts/aa.layout:239 ../lib/layouts/aapaper.layout:59
+#: ../lib/layouts/aapaper.layout:115 ../lib/layouts/aastex.layout:69
+#: ../lib/layouts/aastex.layout:148 ../lib/layouts/amsart.layout:40
+#: ../lib/layouts/amsbook.layout:41 ../lib/layouts/cv.layout:26
+#: ../lib/layouts/egs.layout:29 ../lib/layouts/ijmpd.layout:86
+#: ../lib/layouts/kluwer.layout:55 ../lib/layouts/latex8.layout:39
+#: ../lib/layouts/linuxdoc.layout:68 ../lib/layouts/llncs.layout:44
+#: ../lib/layouts/ltugboat.layout:46 ../lib/layouts/manpage.layout:41
+#: ../lib/layouts/paper.layout:46 ../lib/layouts/revtex.layout:42
+#: ../lib/layouts/revtex4.layout:47 ../lib/layouts/siamltex.layout:38
+#: ../lib/layouts/spie.layout:23 ../lib/layouts/aguplus.inc:23
+#: ../lib/layouts/db_stdsections.inc:25 ../lib/layouts/scrclass.inc:70
+#: ../lib/layouts/stdsections.inc:63 ../lib/layouts/svjour.inc:42
 msgid "Section"
 msgstr "Szakasz"
 
-#: ../lib/layouts/IEEEtran.layout:313
-#: ../lib/layouts/aa.layout:46
-#: ../lib/layouts/aa.layout:249
-#: ../lib/layouts/aapaper.layout:61
-#: ../lib/layouts/aapaper.layout:124
-#: ../lib/layouts/aastex.layout:71
-#: ../lib/layouts/aastex.layout:161
-#: ../lib/layouts/amsart.layout:53
-#: ../lib/layouts/amsbook.layout:54
-#: ../lib/layouts/cv.layout:49
-#: ../lib/layouts/egs.layout:55
-#: ../lib/layouts/ijmpd.layout:104
-#: ../lib/layouts/kluwer.layout:64
-#: ../lib/layouts/latex8.layout:46
-#: ../lib/layouts/linuxdoc.layout:94
-#: ../lib/layouts/llncs.layout:57
-#: ../lib/layouts/ltugboat.layout:70
-#: ../lib/layouts/paper.layout:54
-#: ../lib/layouts/revtex.layout:55
-#: ../lib/layouts/revtex4.layout:60
-#: ../lib/layouts/siamltex.layout:56
-#: ../lib/layouts/aguplus.inc:35
-#: ../lib/layouts/db_stdsections.inc:32
-#: ../lib/layouts/scrclass.inc:77
-#: ../lib/layouts/stdsections.inc:88
-#: ../lib/layouts/svjour.inc:52
+#: ../lib/layouts/IEEEtran.layout:313 ../lib/layouts/aa.layout:46
+#: ../lib/layouts/aa.layout:249 ../lib/layouts/aapaper.layout:61
+#: ../lib/layouts/aapaper.layout:124 ../lib/layouts/aastex.layout:71
+#: ../lib/layouts/aastex.layout:161 ../lib/layouts/amsart.layout:53
+#: ../lib/layouts/amsbook.layout:54 ../lib/layouts/cv.layout:49
+#: ../lib/layouts/egs.layout:55 ../lib/layouts/ijmpd.layout:104
+#: ../lib/layouts/kluwer.layout:64 ../lib/layouts/latex8.layout:46
+#: ../lib/layouts/linuxdoc.layout:94 ../lib/layouts/llncs.layout:57
+#: ../lib/layouts/ltugboat.layout:70 ../lib/layouts/paper.layout:54
+#: ../lib/layouts/revtex.layout:55 ../lib/layouts/revtex4.layout:60
+#: ../lib/layouts/siamltex.layout:56 ../lib/layouts/aguplus.inc:35
+#: ../lib/layouts/db_stdsections.inc:32 ../lib/layouts/scrclass.inc:77
+#: ../lib/layouts/stdsections.inc:88 ../lib/layouts/svjour.inc:52
 msgid "Subsection"
 msgstr "Alszakasz"
 
-#: ../lib/layouts/IEEEtran.layout:320
-#: ../lib/layouts/aa.layout:48
-#: ../lib/layouts/aa.layout:261
-#: ../lib/layouts/aapaper.layout:63
-#: ../lib/layouts/aapaper.layout:135
-#: ../lib/layouts/aastex.layout:73
-#: ../lib/layouts/aastex.layout:174
-#: ../lib/layouts/amsart.layout:62
-#: ../lib/layouts/amsbook.layout:63
-#: ../lib/layouts/ijmpd.layout:114
-#: ../lib/layouts/kluwer.layout:73
-#: ../lib/layouts/linuxdoc.layout:121
-#: ../lib/layouts/llncs.layout:66
-#: ../lib/layouts/ltugboat.layout:93
-#: ../lib/layouts/paper.layout:62
-#: ../lib/layouts/revtex.layout:64
-#: ../lib/layouts/revtex4.layout:69
-#: ../lib/layouts/siamltex.layout:62
-#: ../lib/layouts/db_stdsections.inc:39
-#: ../lib/layouts/scrclass.inc:84
-#: ../lib/layouts/stdsections.inc:113
-#: ../lib/layouts/svjour.inc:61
+#: ../lib/layouts/IEEEtran.layout:320 ../lib/layouts/aa.layout:48
+#: ../lib/layouts/aa.layout:261 ../lib/layouts/aapaper.layout:63
+#: ../lib/layouts/aapaper.layout:135 ../lib/layouts/aastex.layout:73
+#: ../lib/layouts/aastex.layout:174 ../lib/layouts/amsart.layout:62
+#: ../lib/layouts/amsbook.layout:63 ../lib/layouts/ijmpd.layout:114
+#: ../lib/layouts/kluwer.layout:73 ../lib/layouts/linuxdoc.layout:121
+#: ../lib/layouts/llncs.layout:66 ../lib/layouts/ltugboat.layout:93
+#: ../lib/layouts/paper.layout:62 ../lib/layouts/revtex.layout:64
+#: ../lib/layouts/revtex4.layout:69 ../lib/layouts/siamltex.layout:62
+#: ../lib/layouts/db_stdsections.inc:39 ../lib/layouts/scrclass.inc:84
+#: ../lib/layouts/stdsections.inc:113 ../lib/layouts/svjour.inc:61
 msgid "Subsubsection"
 msgstr "Alalszakasz"
 
-#: ../lib/layouts/IEEEtran.layout:327
-#: ../lib/layouts/egs.layout:686
-#: ../lib/layouts/ijmpd.layout:95
-#: ../lib/layouts/siamltex.layout:78
-#: ../lib/layouts/spie.layout:33
-#: ../lib/layouts/aguplus.inc:29
+#: ../lib/layouts/IEEEtran.layout:327 ../lib/layouts/egs.layout:686
+#: ../lib/layouts/ijmpd.layout:95 ../lib/layouts/siamltex.layout:78
+#: ../lib/layouts/spie.layout:33 ../lib/layouts/aguplus.inc:29
 #: ../lib/layouts/stdstarsections.inc:29
 msgid "Section*"
 msgstr "Szakasz*"
 
-#: ../lib/layouts/IEEEtran.layout:338
-#: ../lib/layouts/egs.layout:709
-#: ../lib/layouts/siamltex.layout:84
-#: ../lib/layouts/aguplus.inc:41
+#: ../lib/layouts/IEEEtran.layout:338 ../lib/layouts/egs.layout:709
+#: ../lib/layouts/siamltex.layout:84 ../lib/layouts/aguplus.inc:41
 #: ../lib/layouts/stdstarsections.inc:38
 msgid "Subsection*"
 msgstr "Alszakasz*"
 
-#: ../lib/layouts/IEEEtran.layout:345
-#: ../lib/layouts/siamltex.layout:90
+#: ../lib/layouts/IEEEtran.layout:345 ../lib/layouts/siamltex.layout:90
 #: ../lib/layouts/stdstarsections.inc:47
 msgid "Subsubsection*"
 msgstr "Alalszakasz*"
 
-#: ../lib/layouts/IEEEtran.layout:358
-#: ../lib/layouts/apa.layout:74
-#: ../lib/layouts/cl2emult.layout:82
-#: ../lib/layouts/foils.layout:160
-#: ../lib/layouts/heb-article.layout:20
-#: ../lib/layouts/ijmpd.layout:75
-#: ../lib/layouts/linuxdoc.layout:346
-#: ../lib/layouts/paper.layout:132
-#: ../lib/layouts/siamltex.layout:134
-#: ../lib/layouts/spie.layout:74
-#: ../lib/layouts/db_stdstruct.inc:11
-#: ../lib/layouts/scrclass.inc:230
+#: ../lib/layouts/IEEEtran.layout:358 ../lib/layouts/apa.layout:74
+#: ../lib/layouts/cl2emult.layout:82 ../lib/layouts/foils.layout:160
+#: ../lib/layouts/heb-article.layout:20 ../lib/layouts/ijmpd.layout:75
+#: ../lib/layouts/linuxdoc.layout:346 ../lib/layouts/paper.layout:132
+#: ../lib/layouts/siamltex.layout:134 ../lib/layouts/spie.layout:74
+#: ../lib/layouts/db_stdstruct.inc:11 ../lib/layouts/scrclass.inc:230
 #: src/buffer.C:1565
 msgid "Abstract"
 msgstr "Kivonat"
 
-#: ../lib/layouts/IEEEtran.layout:381
-#: ../lib/layouts/aastex.layout:99
-#: ../lib/layouts/aastex.layout:263
-#: ../lib/layouts/elsart.layout:63
-#: ../lib/layouts/kluwer.layout:283
-#: ../lib/layouts/paper.layout:165
-#: ../lib/layouts/revtex4.layout:245
-#: ../lib/layouts/siamltex.layout:159
-#: ../lib/layouts/spie.layout:42
-#: ../lib/layouts/amsdefs.inc:241
+#: ../lib/layouts/IEEEtran.layout:381 ../lib/layouts/aastex.layout:99
+#: ../lib/layouts/aastex.layout:263 ../lib/layouts/elsart.layout:63
+#: ../lib/layouts/kluwer.layout:283 ../lib/layouts/paper.layout:165
+#: ../lib/layouts/revtex4.layout:245 ../lib/layouts/siamltex.layout:159
+#: ../lib/layouts/spie.layout:42 ../lib/layouts/amsdefs.inc:241
 msgid "Keywords"
 msgstr "Kulcsszavak"
 
-#: ../lib/layouts/IEEEtran.layout:405
-#: ../lib/layouts/aa.layout:78
-#: ../lib/layouts/aa.layout:338
-#: ../lib/layouts/aapaper.layout:85
-#: ../lib/layouts/aapaper.layout:195
-#: ../lib/layouts/book.layout:19
-#: ../lib/layouts/cl2emult.layout:105
-#: ../lib/layouts/cv.layout:154
-#: ../lib/layouts/egs.layout:643
-#: ../lib/layouts/foils.layout:224
-#: ../lib/layouts/ijmpd.layout:157
-#: ../lib/layouts/latex8.layout:121
-#: ../lib/layouts/llncs.layout:290
-#: ../lib/layouts/memoir.layout:21
-#: ../lib/layouts/mwbk.layout:23
-#: ../lib/layouts/mwrep.layout:12
-#: ../lib/layouts/report.layout:12
-#: ../lib/layouts/scrbook.layout:13
-#: ../lib/layouts/scrreprt.layout:10
-#: ../lib/layouts/siamltex.layout:171
-#: ../lib/layouts/aguplus.inc:163
-#: ../lib/layouts/amsdefs.inc:338
-#: ../lib/layouts/scrclass.inc:237
-#: ../lib/layouts/stdstruct.inc:43
-#: ../lib/layouts/svjour.inc:356
-#: src/frontends/qt2/QDocumentDialog.C:68
+#: ../lib/layouts/IEEEtran.layout:405 ../lib/layouts/aa.layout:78
+#: ../lib/layouts/aa.layout:338 ../lib/layouts/aapaper.layout:85
+#: ../lib/layouts/aapaper.layout:195 ../lib/layouts/book.layout:19
+#: ../lib/layouts/cl2emult.layout:105 ../lib/layouts/cv.layout:154
+#: ../lib/layouts/egs.layout:643 ../lib/layouts/foils.layout:224
+#: ../lib/layouts/ijmpd.layout:157 ../lib/layouts/latex8.layout:121
+#: ../lib/layouts/llncs.layout:290 ../lib/layouts/memoir.layout:21
+#: ../lib/layouts/mwbk.layout:23 ../lib/layouts/mwrep.layout:12
+#: ../lib/layouts/report.layout:12 ../lib/layouts/scrbook.layout:13
+#: ../lib/layouts/scrreprt.layout:10 ../lib/layouts/siamltex.layout:171
+#: ../lib/layouts/aguplus.inc:163 ../lib/layouts/amsdefs.inc:338
+#: ../lib/layouts/scrclass.inc:237 ../lib/layouts/stdstruct.inc:43
+#: ../lib/layouts/svjour.inc:356 src/frontends/qt2/QDocumentDialog.C:68
 msgid "Bibliography"
 msgstr "Irodalomjegyzék"
 
-#: ../lib/layouts/IEEEtran.layout:414
-#: ../lib/layouts/aastex.layout:103
-#: ../lib/layouts/aastex.layout:389
-#: ../lib/layouts/ijmpd.layout:166
+#: ../lib/layouts/IEEEtran.layout:414 ../lib/layouts/aastex.layout:103
+#: ../lib/layouts/aastex.layout:389 ../lib/layouts/ijmpd.layout:166
 #: ../lib/layouts/kluwer.layout:324
 msgid "Appendix"
 msgstr "Függelék"
@@ -5089,16 +4905,11 @@ msgstr "Függelékek"
 msgid "Biography"
 msgstr "Életrajz"
 
-#: ../lib/layouts/IEEEtran.layout:475
-#: ../lib/layouts/aa.layout:58
-#: ../lib/layouts/aa.layout:218
-#: ../lib/layouts/aapaper.layout:55
-#: ../lib/layouts/aastex.layout:115
-#: ../lib/layouts/aastex.layout:506
-#: ../lib/layouts/egs.layout:667
-#: ../lib/layouts/latex8.layout:115
-#: ../lib/layouts/db_stdlayouts.inc:45
-#: ../lib/layouts/stdlayouts.inc:84
+#: ../lib/layouts/IEEEtran.layout:475 ../lib/layouts/aa.layout:58
+#: ../lib/layouts/aa.layout:218 ../lib/layouts/aapaper.layout:55
+#: ../lib/layouts/aastex.layout:115 ../lib/layouts/aastex.layout:506
+#: ../lib/layouts/egs.layout:667 ../lib/layouts/latex8.layout:115
+#: ../lib/layouts/db_stdlayouts.inc:45 ../lib/layouts/stdlayouts.inc:84
 msgid "Caption"
 msgstr "Felirat"
 
@@ -5110,338 +4921,218 @@ msgstr "Lábjegyzet"
 msgid "MarkBoth"
 msgstr ""
 
-#: ../lib/layouts/aa.layout:50
-#: ../lib/layouts/aapaper.layout:47
-#: ../lib/layouts/aastex.layout:77
-#: ../lib/layouts/apa.layout:281
-#: ../lib/layouts/cv.layout:86
-#: ../lib/layouts/egs.layout:200
-#: ../lib/layouts/linuxdoc.layout:211
-#: ../lib/layouts/manpage.layout:86
-#: ../lib/layouts/db_stdlists.inc:11
-#: ../lib/layouts/stdlists.inc:9
+#: ../lib/layouts/aa.layout:50 ../lib/layouts/aapaper.layout:47
+#: ../lib/layouts/aastex.layout:77 ../lib/layouts/apa.layout:281
+#: ../lib/layouts/cv.layout:86 ../lib/layouts/egs.layout:200
+#: ../lib/layouts/linuxdoc.layout:211 ../lib/layouts/manpage.layout:86
+#: ../lib/layouts/db_stdlists.inc:11 ../lib/layouts/stdlists.inc:9
 msgid "Itemize"
 msgstr "Felsorolás"
 
-#: ../lib/layouts/aa.layout:52
-#: ../lib/layouts/aapaper.layout:49
-#: ../lib/layouts/aastex.layout:79
-#: ../lib/layouts/apa.layout:299
-#: ../lib/layouts/egs.layout:182
-#: ../lib/layouts/linuxdoc.layout:195
-#: ../lib/layouts/manpage.layout:69
-#: ../lib/layouts/db_stdlists.inc:17
+#: ../lib/layouts/aa.layout:52 ../lib/layouts/aapaper.layout:49
+#: ../lib/layouts/aastex.layout:79 ../lib/layouts/apa.layout:299
+#: ../lib/layouts/egs.layout:182 ../lib/layouts/linuxdoc.layout:195
+#: ../lib/layouts/manpage.layout:69 ../lib/layouts/db_stdlists.inc:17
 #: ../lib/layouts/stdlists.inc:27
 msgid "Enumerate"
 msgstr "Számozott lista"
 
-#: ../lib/layouts/aa.layout:54
-#: ../lib/layouts/aapaper.layout:51
-#: ../lib/layouts/aastex.layout:81
-#: ../lib/layouts/egs.layout:218
-#: ../lib/layouts/hollywood.layout:131
-#: ../lib/layouts/linuxdoc.layout:228
-#: ../lib/layouts/manpage.layout:104
-#: ../lib/layouts/paper.layout:102
-#: ../lib/layouts/scrlettr.layout:16
-#: ../lib/layouts/scrlttr2.layout:16
-#: ../lib/layouts/db_stdlists.inc:23
-#: ../lib/layouts/scrclass.inc:25
+#: ../lib/layouts/aa.layout:54 ../lib/layouts/aapaper.layout:51
+#: ../lib/layouts/aastex.layout:81 ../lib/layouts/egs.layout:218
+#: ../lib/layouts/hollywood.layout:131 ../lib/layouts/linuxdoc.layout:228
+#: ../lib/layouts/manpage.layout:104 ../lib/layouts/paper.layout:102
+#: ../lib/layouts/scrlettr.layout:16 ../lib/layouts/scrlttr2.layout:16
+#: ../lib/layouts/db_stdlists.inc:23 ../lib/layouts/scrclass.inc:25
 #: ../lib/layouts/stdlists.inc:45
 msgid "Description"
 msgstr "Leírás"
 
-#: ../lib/layouts/aa.layout:56
-#: ../lib/layouts/aapaper.layout:53
-#: ../lib/layouts/aastex.layout:83
-#: ../lib/layouts/egs.layout:165
-#: ../lib/layouts/scrmacros.inc:6
-#: ../lib/layouts/stdlists.inc:69
+#: ../lib/layouts/aa.layout:56 ../lib/layouts/aapaper.layout:53
+#: ../lib/layouts/aastex.layout:83 ../lib/layouts/egs.layout:165
+#: ../lib/layouts/scrmacros.inc:6 ../lib/layouts/stdlists.inc:69
 msgid "List"
 msgstr "Lista"
 
-#: ../lib/layouts/aa.layout:60
-#: ../lib/layouts/aa.layout:271
-#: ../lib/layouts/aapaper.layout:65
-#: ../lib/layouts/aapaper.layout:145
-#: ../lib/layouts/aastex.layout:85
-#: ../lib/layouts/aastex.layout:188
-#: ../lib/layouts/apa.layout:45
-#: ../lib/layouts/broadway.layout:190
-#: ../lib/layouts/cl2emult.layout:42
-#: ../lib/layouts/cv.layout:130
+#: ../lib/layouts/aa.layout:60 ../lib/layouts/aa.layout:271
+#: ../lib/layouts/aapaper.layout:65 ../lib/layouts/aapaper.layout:145
+#: ../lib/layouts/aastex.layout:85 ../lib/layouts/aastex.layout:188
+#: ../lib/layouts/apa.layout:45 ../lib/layouts/broadway.layout:190
+#: ../lib/layouts/cl2emult.layout:42 ../lib/layouts/cv.layout:130
 #: ../lib/layouts/docbook-book.layout:13
 #: ../lib/layouts/docbook-chapter.layout:12
-#: ../lib/layouts/docbook-section.layout:12
-#: ../lib/layouts/egs.layout:286
-#: ../lib/layouts/elsart.layout:94
-#: ../lib/layouts/entcs.layout:13
-#: ../lib/layouts/foils.layout:138
-#: ../lib/layouts/hollywood.layout:336
-#: ../lib/layouts/ijmpd.layout:39
-#: ../lib/layouts/kluwer.layout:105
-#: ../lib/layouts/latex8.layout:32
-#: ../lib/layouts/linuxdoc.layout:40
-#: ../lib/layouts/llncs.layout:107
-#: ../lib/layouts/ltugboat.layout:151
-#: ../lib/layouts/paper.layout:110
-#: ../lib/layouts/revtex.layout:104
-#: ../lib/layouts/revtex4.layout:122
-#: ../lib/layouts/scrlettr.layout:206
-#: ../lib/layouts/scrlttr2.layout:283
-#: ../lib/layouts/siamltex.layout:103
-#: ../lib/layouts/svprobth.layout:37
-#: ../lib/layouts/amsdefs.inc:65
-#: ../lib/layouts/db_stdtitle.inc:11
-#: ../lib/layouts/scrclass.inc:158
-#: ../lib/layouts/stdtitle.inc:11
-#: ../lib/layouts/svjour.inc:141
+#: ../lib/layouts/docbook-section.layout:12 ../lib/layouts/egs.layout:286
+#: ../lib/layouts/elsart.layout:94 ../lib/layouts/entcs.layout:13
+#: ../lib/layouts/foils.layout:138 ../lib/layouts/hollywood.layout:336
+#: ../lib/layouts/ijmpd.layout:39 ../lib/layouts/kluwer.layout:105
+#: ../lib/layouts/latex8.layout:32 ../lib/layouts/linuxdoc.layout:40
+#: ../lib/layouts/llncs.layout:107 ../lib/layouts/ltugboat.layout:151
+#: ../lib/layouts/paper.layout:110 ../lib/layouts/revtex.layout:104
+#: ../lib/layouts/revtex4.layout:122 ../lib/layouts/scrlettr.layout:206
+#: ../lib/layouts/scrlttr2.layout:283 ../lib/layouts/siamltex.layout:103
+#: ../lib/layouts/svprobth.layout:37 ../lib/layouts/amsdefs.inc:65
+#: ../lib/layouts/db_stdtitle.inc:11 ../lib/layouts/scrclass.inc:158
+#: ../lib/layouts/stdtitle.inc:11 ../lib/layouts/svjour.inc:141
 msgid "Title"
 msgstr "Cím"
 
-#: ../lib/layouts/aa.layout:62
-#: ../lib/layouts/aa.layout:101
-#: ../lib/layouts/aapaper.layout:67
-#: ../lib/layouts/kluwer.layout:123
-#: ../lib/layouts/llncs.layout:133
-#: ../lib/layouts/svprobth.layout:47
-#: ../lib/layouts/aapaper.inc:8
-#: ../lib/layouts/svjour.inc:167
+#: ../lib/layouts/aa.layout:62 ../lib/layouts/aa.layout:101
+#: ../lib/layouts/aapaper.layout:67 ../lib/layouts/kluwer.layout:123
+#: ../lib/layouts/llncs.layout:133 ../lib/layouts/svprobth.layout:47
+#: ../lib/layouts/aapaper.inc:8 ../lib/layouts/svjour.inc:167
 msgid "Subtitle"
 msgstr "Felirat"
 
-#: ../lib/layouts/aa.layout:64
-#: ../lib/layouts/aa.layout:283
-#: ../lib/layouts/aapaper.layout:69
-#: ../lib/layouts/aapaper.layout:156
-#: ../lib/layouts/aastex.layout:87
-#: ../lib/layouts/aastex.layout:201
-#: ../lib/layouts/apa.layout:116
-#: ../lib/layouts/broadway.layout:203
-#: ../lib/layouts/cl2emult.layout:59
-#: ../lib/layouts/egs.layout:336
-#: ../lib/layouts/elsart.layout:115
-#: ../lib/layouts/entcs.layout:22
-#: ../lib/layouts/foils.layout:146
-#: ../lib/layouts/hollywood.layout:323
-#: ../lib/layouts/ijmpd.layout:48
-#: ../lib/layouts/kluwer.layout:161
-#: ../lib/layouts/linuxdoc.layout:296
-#: ../lib/layouts/llncs.layout:193
-#: ../lib/layouts/ltugboat.layout:172
-#: ../lib/layouts/paper.layout:121
-#: ../lib/layouts/revtex.layout:114
-#: ../lib/layouts/revtex4.layout:132
-#: ../lib/layouts/siamltex.layout:119
-#: ../lib/layouts/svprobth.layout:57
-#: ../lib/layouts/amsdefs.inc:88
-#: ../lib/layouts/db_stdtitle.inc:18
-#: ../lib/layouts/scrclass.inc:166
-#: ../lib/layouts/stdtitle.inc:33
+#: ../lib/layouts/aa.layout:64 ../lib/layouts/aa.layout:283
+#: ../lib/layouts/aapaper.layout:69 ../lib/layouts/aapaper.layout:156
+#: ../lib/layouts/aastex.layout:87 ../lib/layouts/aastex.layout:201
+#: ../lib/layouts/apa.layout:116 ../lib/layouts/broadway.layout:203
+#: ../lib/layouts/cl2emult.layout:59 ../lib/layouts/egs.layout:336
+#: ../lib/layouts/elsart.layout:115 ../lib/layouts/entcs.layout:22
+#: ../lib/layouts/foils.layout:146 ../lib/layouts/hollywood.layout:323
+#: ../lib/layouts/ijmpd.layout:48 ../lib/layouts/kluwer.layout:161
+#: ../lib/layouts/linuxdoc.layout:296 ../lib/layouts/llncs.layout:193
+#: ../lib/layouts/ltugboat.layout:172 ../lib/layouts/paper.layout:121
+#: ../lib/layouts/revtex.layout:114 ../lib/layouts/revtex4.layout:132
+#: ../lib/layouts/siamltex.layout:119 ../lib/layouts/svprobth.layout:57
+#: ../lib/layouts/amsdefs.inc:88 ../lib/layouts/db_stdtitle.inc:18
+#: ../lib/layouts/scrclass.inc:166 ../lib/layouts/stdtitle.inc:33
 #: ../lib/layouts/svjour.inc:200
 msgid "Author"
 msgstr "Szerzõ"
 
-#: ../lib/layouts/aa.layout:66
-#: ../lib/layouts/aa.layout:124
-#: ../lib/layouts/aapaper.layout:71
-#: ../lib/layouts/egs.layout:273
-#: ../lib/layouts/entcs.layout:31
-#: ../lib/layouts/g-brief-en.layout:452
-#: ../lib/layouts/g-brief2.layout:798
-#: ../lib/layouts/ijmpd.layout:58
-#: ../lib/layouts/kluwer.layout:179
-#: ../lib/layouts/revtex.layout:135
-#: ../lib/layouts/revtex4.layout:172
-#: ../lib/layouts/scrlettr.layout:157
-#: ../lib/layouts/scrlttr2.layout:50
-#: ../lib/layouts/aapaper.inc:31
-#: ../lib/layouts/amsdefs.inc:167
-#: ../lib/layouts/lyxmacros.inc:78
+#: ../lib/layouts/aa.layout:66 ../lib/layouts/aa.layout:124
+#: ../lib/layouts/aapaper.layout:71 ../lib/layouts/egs.layout:273
+#: ../lib/layouts/entcs.layout:31 ../lib/layouts/g-brief-en.layout:452
+#: ../lib/layouts/g-brief2.layout:798 ../lib/layouts/ijmpd.layout:58
+#: ../lib/layouts/kluwer.layout:179 ../lib/layouts/revtex.layout:135
+#: ../lib/layouts/revtex4.layout:172 ../lib/layouts/scrlettr.layout:157
+#: ../lib/layouts/scrlttr2.layout:50 ../lib/layouts/aapaper.inc:31
+#: ../lib/layouts/amsdefs.inc:167 ../lib/layouts/lyxmacros.inc:78
 msgid "Address"
 msgstr "Cím"
 
-#: ../lib/layouts/aa.layout:68
-#: ../lib/layouts/aa.layout:142
-#: ../lib/layouts/aapaper.layout:75
-#: ../lib/layouts/aapaper.inc:68
+#: ../lib/layouts/aa.layout:68 ../lib/layouts/aa.layout:142
+#: ../lib/layouts/aapaper.layout:75 ../lib/layouts/aapaper.inc:68
 msgid "Offprint"
 msgstr ""
 
-#: ../lib/layouts/aa.layout:70
-#: ../lib/layouts/aa.layout:166
+#: ../lib/layouts/aa.layout:70 ../lib/layouts/aa.layout:166
 #: ../lib/layouts/svjour.inc:260
 msgid "Mail"
 msgstr "Levél"
 
-#: ../lib/layouts/aa.layout:72
-#: ../lib/layouts/aa.layout:295
-#: ../lib/layouts/aapaper.layout:79
-#: ../lib/layouts/aapaper.layout:167
-#: ../lib/layouts/aastex.layout:95
-#: ../lib/layouts/aastex.layout:214
-#: ../lib/layouts/egs.layout:548
-#: ../lib/layouts/foils.layout:153
-#: ../lib/layouts/g-brief-en.layout:474
-#: ../lib/layouts/g-brief2.layout:820
-#: ../lib/layouts/kluwer.layout:144
-#: ../lib/layouts/linuxdoc.layout:321
-#: ../lib/layouts/revtex.layout:123
-#: ../lib/layouts/revtex4.layout:141
-#: ../lib/layouts/scrlettr.layout:178
-#: ../lib/layouts/scrlttr2.layout:251
-#: ../lib/layouts/siamltex.layout:129
-#: ../lib/layouts/amsdefs.inc:111
-#: ../lib/layouts/db_stdtitle.inc:57
-#: ../lib/layouts/scrclass.inc:173
-#: ../lib/layouts/stdtitle.inc:55
-#: ../lib/layouts/svjour.inc:253
+#: ../lib/layouts/aa.layout:72 ../lib/layouts/aa.layout:295
+#: ../lib/layouts/aapaper.layout:79 ../lib/layouts/aapaper.layout:167
+#: ../lib/layouts/aastex.layout:95 ../lib/layouts/aastex.layout:214
+#: ../lib/layouts/egs.layout:548 ../lib/layouts/foils.layout:153
+#: ../lib/layouts/g-brief-en.layout:474 ../lib/layouts/g-brief2.layout:820
+#: ../lib/layouts/kluwer.layout:144 ../lib/layouts/linuxdoc.layout:321
+#: ../lib/layouts/revtex.layout:123 ../lib/layouts/revtex4.layout:141
+#: ../lib/layouts/scrlettr.layout:178 ../lib/layouts/scrlttr2.layout:251
+#: ../lib/layouts/siamltex.layout:129 ../lib/layouts/amsdefs.inc:111
+#: ../lib/layouts/db_stdtitle.inc:57 ../lib/layouts/scrclass.inc:173
+#: ../lib/layouts/stdtitle.inc:55 ../lib/layouts/svjour.inc:253
 msgid "Date"
 msgstr "Dátum"
 
-#: ../lib/layouts/aa.layout:74
-#: ../lib/layouts/aa.layout:307
-#: ../lib/layouts/aapaper.layout:81
-#: ../lib/layouts/aapaper.layout:178
-#: ../lib/layouts/aastex.layout:97
-#: ../lib/layouts/aastex.layout:226
-#: ../lib/layouts/egs.layout:565
-#: ../lib/layouts/elsart.layout:205
-#: ../lib/layouts/entcs.layout:56
-#: ../lib/layouts/kluwer.layout:259
-#: ../lib/layouts/latex8.layout:98
-#: ../lib/layouts/llncs.layout:265
-#: ../lib/layouts/ltugboat.layout:190
-#: ../lib/layouts/revtex.layout:154
-#: ../lib/layouts/revtex4.layout:207
-#: ../lib/layouts/svglobal.layout:28
-#: ../lib/layouts/svjog.layout:32
-#: ../lib/layouts/amsdefs.inc:138
-#: ../lib/layouts/stdstruct.inc:12
-#: ../lib/layouts/svjour.inc:275
+#: ../lib/layouts/aa.layout:74 ../lib/layouts/aa.layout:307
+#: ../lib/layouts/aapaper.layout:81 ../lib/layouts/aapaper.layout:178
+#: ../lib/layouts/aastex.layout:97 ../lib/layouts/aastex.layout:226
+#: ../lib/layouts/egs.layout:565 ../lib/layouts/elsart.layout:205
+#: ../lib/layouts/entcs.layout:56 ../lib/layouts/kluwer.layout:259
+#: ../lib/layouts/latex8.layout:98 ../lib/layouts/llncs.layout:265
+#: ../lib/layouts/ltugboat.layout:190 ../lib/layouts/revtex.layout:154
+#: ../lib/layouts/revtex4.layout:207 ../lib/layouts/svglobal.layout:28
+#: ../lib/layouts/svjog.layout:32 ../lib/layouts/amsdefs.inc:138
+#: ../lib/layouts/stdstruct.inc:12 ../lib/layouts/svjour.inc:275
 msgid "Abstract "
 msgstr "Kivonat"
 
-#: ../lib/layouts/aa.layout:76
-#: ../lib/layouts/aa.layout:191
-#: ../lib/layouts/aapaper.layout:83
-#: ../lib/layouts/egs.layout:615
-#: ../lib/layouts/elsart.layout:501
-#: ../lib/layouts/aapaper.inc:87
-#: ../lib/layouts/amsmaths-plain.inc:243
-#: ../lib/layouts/amsmaths-seq.inc:184
-#: ../lib/layouts/amsmaths.inc:462
-#: ../lib/layouts/svjour.inc:348
+#: ../lib/layouts/aa.layout:76 ../lib/layouts/aa.layout:191
+#: ../lib/layouts/aapaper.layout:83 ../lib/layouts/egs.layout:615
+#: ../lib/layouts/elsart.layout:501 ../lib/layouts/aapaper.inc:87
+#: ../lib/layouts/amsmaths-plain.inc:243 ../lib/layouts/amsmaths-seq.inc:184
+#: ../lib/layouts/amsmaths.inc:462 ../lib/layouts/svjour.inc:348
 msgid "Acknowledgement"
 msgstr "Köszönetnyilvánítás"
 
-#: ../lib/layouts/aapaper.layout:57
-#: ../lib/layouts/egs.layout:726
-#: ../lib/layouts/obsolete.inc:14
-#: src/frontends/qt2/QPrefsDialog.C:151
+#: ../lib/layouts/aapaper.layout:57 ../lib/layouts/egs.layout:726
+#: ../lib/layouts/obsolete.inc:14 src/frontends/qt2/QPrefsDialog.C:151
 msgid "LaTeX"
 msgstr "LaTeX"
 
-#: ../lib/layouts/aapaper.layout:73
-#: ../lib/layouts/aastex.layout:91
-#: ../lib/layouts/aastex.layout:289
-#: ../lib/layouts/latex8.layout:53
-#: ../lib/layouts/llncs.layout:257
-#: ../lib/layouts/aapaper.inc:49
+#: ../lib/layouts/aapaper.layout:73 ../lib/layouts/aastex.layout:91
+#: ../lib/layouts/aastex.layout:289 ../lib/layouts/latex8.layout:53
+#: ../lib/layouts/llncs.layout:257 ../lib/layouts/aapaper.inc:49
 #: ../lib/layouts/amsdefs.inc:205
 msgid "Email"
 msgstr "E-mail"
 
-#: ../lib/layouts/aastex.layout:75
-#: ../lib/layouts/egs.layout:76
-#: ../lib/layouts/kluwer.layout:82
-#: ../lib/layouts/linuxdoc.layout:146
-#: ../lib/layouts/llncs.layout:75
-#: ../lib/layouts/ltugboat.layout:117
-#: ../lib/layouts/paper.layout:70
-#: ../lib/layouts/revtex.layout:73
-#: ../lib/layouts/revtex4.layout:78
-#: ../lib/layouts/siamltex.layout:68
-#: ../lib/layouts/aguplus.inc:48
-#: ../lib/layouts/db_stdsections.inc:46
-#: ../lib/layouts/scrclass.inc:91
-#: ../lib/layouts/stdsections.inc:138
+#: ../lib/layouts/aastex.layout:75 ../lib/layouts/egs.layout:76
+#: ../lib/layouts/kluwer.layout:82 ../lib/layouts/linuxdoc.layout:146
+#: ../lib/layouts/llncs.layout:75 ../lib/layouts/ltugboat.layout:117
+#: ../lib/layouts/paper.layout:70 ../lib/layouts/revtex.layout:73
+#: ../lib/layouts/revtex4.layout:78 ../lib/layouts/siamltex.layout:68
+#: ../lib/layouts/aguplus.inc:48 ../lib/layouts/db_stdsections.inc:46
+#: ../lib/layouts/scrclass.inc:91 ../lib/layouts/stdsections.inc:138
 #: ../lib/layouts/svjour.inc:71
 msgid "Paragraph"
 msgstr "Bekezdés"
 
-#: ../lib/layouts/aastex.layout:89
-#: ../lib/layouts/aastex.layout:245
-#: ../lib/layouts/apa.layout:148
-#: ../lib/layouts/latex8.layout:78
-#: ../lib/layouts/revtex4.layout:152
-#: ../lib/layouts/aguplus.inc:52
+#: ../lib/layouts/aastex.layout:89 ../lib/layouts/aastex.layout:245
+#: ../lib/layouts/apa.layout:148 ../lib/layouts/latex8.layout:78
+#: ../lib/layouts/revtex4.layout:152 ../lib/layouts/aguplus.inc:52
 msgid "Affiliation"
 msgstr "Kapcsolat"
 
-#: ../lib/layouts/aastex.layout:93
-#: ../lib/layouts/aastex.layout:329
+#: ../lib/layouts/aastex.layout:93 ../lib/layouts/aastex.layout:329
 msgid "And"
 msgstr "És"
 
-#: ../lib/layouts/aastex.layout:101
-#: ../lib/layouts/aastex.layout:307
-#: ../lib/layouts/apa.layout:212
-#: ../lib/layouts/egs.layout:588
-#: ../lib/layouts/kluwer.layout:303
-#: ../lib/layouts/svjour.inc:321
+#: ../lib/layouts/aastex.layout:101 ../lib/layouts/aastex.layout:307
+#: ../lib/layouts/apa.layout:212 ../lib/layouts/egs.layout:588
+#: ../lib/layouts/kluwer.layout:303 ../lib/layouts/svjour.inc:321
 msgid "Acknowledgements"
 msgstr "Köszönetnyilvánítások"
 
-#: ../lib/layouts/aastex.layout:105
-#: ../lib/layouts/aastex.layout:422
-#: ../lib/layouts/kluwer.layout:345
-#: src/buffer.C:1576
+#: ../lib/layouts/aastex.layout:105 ../lib/layouts/aastex.layout:422
+#: ../lib/layouts/kluwer.layout:345 src/buffer.C:1576
 msgid "References"
 msgstr "Hivatkozások"
 
-#: ../lib/layouts/aastex.layout:107
-#: ../lib/layouts/aastex.layout:349
+#: ../lib/layouts/aastex.layout:107 ../lib/layouts/aastex.layout:349
 msgid "PlaceFigure"
 msgstr ""
 
-#: ../lib/layouts/aastex.layout:109
-#: ../lib/layouts/aastex.layout:369
+#: ../lib/layouts/aastex.layout:109 ../lib/layouts/aastex.layout:369
 msgid "PlaceTable"
 msgstr ""
 
-#: ../lib/layouts/aastex.layout:111
-#: ../lib/layouts/aastex.layout:487
+#: ../lib/layouts/aastex.layout:111 ../lib/layouts/aastex.layout:487
 msgid "TableComments"
 msgstr ""
 
-#: ../lib/layouts/aastex.layout:113
-#: ../lib/layouts/aastex.layout:468
+#: ../lib/layouts/aastex.layout:113 ../lib/layouts/aastex.layout:468
 msgid "TableRefs"
 msgstr ""
 
-#: ../lib/layouts/aastex.layout:117
-#: ../lib/layouts/aastex.layout:410
+#: ../lib/layouts/aastex.layout:117 ../lib/layouts/aastex.layout:410
 msgid "MathLetters"
 msgstr ""
 
-#: ../lib/layouts/aastex.layout:119
-#: ../lib/layouts/aastex.layout:448
+#: ../lib/layouts/aastex.layout:119 ../lib/layouts/aastex.layout:448
 msgid "NoteToEditor"
 msgstr "Megjegyzés a szerkesztõnek"
 
-#: ../lib/layouts/aastex.layout:121
-#: ../lib/layouts/aastex.layout:541
+#: ../lib/layouts/aastex.layout:121 ../lib/layouts/aastex.layout:541
 msgid "Facility"
 msgstr ""
 
-#: ../lib/layouts/aastex.layout:123
-#: ../lib/layouts/aastex.layout:567
+#: ../lib/layouts/aastex.layout:123 ../lib/layouts/aastex.layout:567
 msgid "Objectname"
 msgstr ""
 
-#: ../lib/layouts/aastex.layout:125
-#: ../lib/layouts/aastex.layout:594
+#: ../lib/layouts/aastex.layout:125 ../lib/layouts/aastex.layout:594
 msgid "Dataset"
 msgstr ""
 
@@ -5485,8 +5176,7 @@ msgstr "Három kapcsolat"
 msgid "FourAffiliations"
 msgstr "Négy kapcsolat"
 
-#: ../lib/layouts/apa.layout:186
-#: ../lib/layouts/egs.layout:388
+#: ../lib/layouts/apa.layout:186 ../lib/layouts/egs.layout:388
 msgid "Journal"
 msgstr "Folyóirat"
 
@@ -5494,8 +5184,7 @@ msgstr "Folyóirat"
 msgid "CopNum"
 msgstr ""
 
-#: ../lib/layouts/apa.layout:232
-#: ../lib/layouts/revtex4.layout:217
+#: ../lib/layouts/apa.layout:232 ../lib/layouts/revtex4.layout:217
 #: ../lib/layouts/spie.layout:88
 msgid "Acknowledgments"
 msgstr "Köszönetnyilvánítások"
@@ -5520,32 +5209,24 @@ msgstr ""
 msgid "Seriate"
 msgstr ""
 
-#: ../lib/layouts/article.layout:20
-#: ../lib/layouts/mwart.layout:25
-#: ../lib/layouts/paper.layout:33
-#: ../lib/layouts/scrartcl.layout:19
-#: ../lib/layouts/seminar.layout:26
-#: ../lib/layouts/db_stdsections.inc:11
-#: ../lib/layouts/scrclass.inc:54
-#: ../lib/layouts/stdsections.inc:11
+#: ../lib/layouts/article.layout:20 ../lib/layouts/mwart.layout:25
+#: ../lib/layouts/paper.layout:33 ../lib/layouts/scrartcl.layout:19
+#: ../lib/layouts/seminar.layout:26 ../lib/layouts/db_stdsections.inc:11
+#: ../lib/layouts/scrclass.inc:54 ../lib/layouts/stdsections.inc:11
 msgid "Part"
 msgstr "Rész"
 
-#: ../lib/layouts/article.layout:31
-#: ../lib/layouts/mwart.layout:36
-#: ../lib/layouts/scrartcl.layout:31
-#: ../lib/layouts/seminar.layout:37
+#: ../lib/layouts/article.layout:31 ../lib/layouts/mwart.layout:36
+#: ../lib/layouts/scrartcl.layout:31 ../lib/layouts/seminar.layout:37
 #: ../lib/layouts/stdstarsections.inc:12
 msgid "Part*"
 msgstr "Rész*"
 
-#: ../lib/layouts/broadway.layout:26
-#: ../lib/layouts/hollywood.layout:40
+#: ../lib/layouts/broadway.layout:26 ../lib/layouts/hollywood.layout:40
 msgid "Dialogue"
 msgstr "Párbeszéd"
 
-#: ../lib/layouts/broadway.layout:40
-#: ../lib/layouts/hollywood.layout:214
+#: ../lib/layouts/broadway.layout:40 ../lib/layouts/hollywood.layout:214
 msgid "Narrative"
 msgstr "Elbeszélés"
 
@@ -5565,13 +5246,11 @@ msgstr ""
 msgid "AT RISE:"
 msgstr ""
 
-#: ../lib/layouts/broadway.layout:117
-#: ../lib/layouts/hollywood.layout:146
+#: ../lib/layouts/broadway.layout:117 ../lib/layouts/hollywood.layout:146
 msgid "Speaker"
 msgstr "Beszélõ"
 
-#: ../lib/layouts/broadway.layout:130
-#: ../lib/layouts/hollywood.layout:161
+#: ../lib/layouts/broadway.layout:130 ../lib/layouts/hollywood.layout:161
 msgid "Parenthetical"
 msgstr ""
 
@@ -5579,10 +5258,8 @@ msgstr ""
 msgid "CURTAIN"
 msgstr "FÜGGÖNY"
 
-#: ../lib/layouts/broadway.layout:216
-#: ../lib/layouts/egs.layout:261
-#: ../lib/layouts/hollywood.layout:311
-#: ../lib/layouts/lyxmacros.inc:101
+#: ../lib/layouts/broadway.layout:216 ../lib/layouts/egs.layout:261
+#: ../lib/layouts/hollywood.layout:311 ../lib/layouts/lyxmacros.inc:101
 msgid "Right Address"
 msgstr ""
 
@@ -5638,8 +5315,7 @@ msgstr "Nyíl"
 msgid "KnightMove"
 msgstr ""
 
-#: ../lib/layouts/cl2emult.layout:71
-#: ../lib/layouts/llncs.layout:233
+#: ../lib/layouts/cl2emult.layout:71 ../lib/layouts/llncs.layout:233
 #: ../lib/layouts/svjour.inc:232
 msgid "Institute"
 msgstr "Intézet"
@@ -5652,62 +5328,48 @@ msgstr "Alszakasz"
 msgid "Topic"
 msgstr "Téma"
 
-#: ../lib/layouts/cv.layout:104
-#: ../lib/layouts/foils.layout:200
+#: ../lib/layouts/cv.layout:104 ../lib/layouts/foils.layout:200
 #: ../lib/layouts/aguplus.inc:73
 msgid "Left Header"
 msgstr "Bal fejléc"
 
-#: ../lib/layouts/cv.layout:123
-#: ../lib/layouts/foils.layout:208
+#: ../lib/layouts/cv.layout:123 ../lib/layouts/foils.layout:208
 #: ../lib/layouts/aguplus.inc:99
 msgid "Right Header"
 msgstr "Jobb fejléc"
 
-#: ../lib/layouts/dinbrief.layout:15
-#: ../lib/layouts/heb-letter.layout:8
+#: ../lib/layouts/dinbrief.layout:15 ../lib/layouts/heb-letter.layout:8
 #: ../lib/layouts/stdletter.inc:33
 msgid "My Address"
 msgstr "Címem"
 
-#: ../lib/layouts/dinbrief.layout:31
-#: ../lib/layouts/heb-letter.layout:12
+#: ../lib/layouts/dinbrief.layout:31 ../lib/layouts/heb-letter.layout:12
 #: ../lib/layouts/stdletter.inc:45
 msgid "Send To Address"
 msgstr "Címzett"
 
-#: ../lib/layouts/dinbrief.layout:48
-#: ../lib/layouts/g-brief-en.layout:517
-#: ../lib/layouts/g-brief2.layout:863
-#: ../lib/layouts/heb-letter.layout:16
-#: ../lib/layouts/scrlettr.layout:72
-#: ../lib/layouts/scrlttr2.layout:102
+#: ../lib/layouts/dinbrief.layout:48 ../lib/layouts/g-brief-en.layout:517
+#: ../lib/layouts/g-brief2.layout:863 ../lib/layouts/heb-letter.layout:16
+#: ../lib/layouts/scrlettr.layout:72 ../lib/layouts/scrlttr2.layout:102
 #: ../lib/layouts/stdletter.inc:59
 msgid "Opening"
 msgstr ""
 
-#: ../lib/layouts/dinbrief.layout:61
-#: ../lib/layouts/g-brief-en.layout:73
-#: ../lib/layouts/g-brief2.layout:211
-#: ../lib/layouts/heb-letter.layout:24
-#: ../lib/layouts/scrlettr.layout:150
-#: ../lib/layouts/scrlttr2.layout:178
+#: ../lib/layouts/dinbrief.layout:61 ../lib/layouts/g-brief-en.layout:73
+#: ../lib/layouts/g-brief2.layout:211 ../lib/layouts/heb-letter.layout:24
+#: ../lib/layouts/scrlettr.layout:150 ../lib/layouts/scrlttr2.layout:178
 #: ../lib/layouts/stdletter.inc:83
 msgid "Signature"
 msgstr "Aláírás"
 
-#: ../lib/layouts/dinbrief.layout:74
-#: ../lib/layouts/g-brief-en.layout:591
-#: ../lib/layouts/g-brief2.layout:933
-#: ../lib/layouts/heb-letter.layout:20
-#: ../lib/layouts/scrlettr.layout:83
-#: ../lib/layouts/scrlttr2.layout:124
+#: ../lib/layouts/dinbrief.layout:74 ../lib/layouts/g-brief-en.layout:591
+#: ../lib/layouts/g-brief2.layout:933 ../lib/layouts/heb-letter.layout:20
+#: ../lib/layouts/scrlettr.layout:83 ../lib/layouts/scrlttr2.layout:124
 #: ../lib/layouts/stdletter.inc:106
 msgid "Closing"
 msgstr "Zárszó"
 
-#: ../lib/layouts/dinbrief.layout:87
-#: ../lib/layouts/stdletter.inc:145
+#: ../lib/layouts/dinbrief.layout:87 ../lib/layouts/stdletter.inc:145
 msgid "encl"
 msgstr ""
 
@@ -5715,16 +5377,13 @@ msgstr ""
 msgid "ps"
 msgstr ""
 
-#: ../lib/layouts/dinbrief.layout:122
-#: ../lib/layouts/g-brief-en.layout:566
-#: ../lib/layouts/g-brief2.layout:911
-#: ../lib/layouts/stdletter.inc:129
+#: ../lib/layouts/dinbrief.layout:122 ../lib/layouts/g-brief-en.layout:566
+#: ../lib/layouts/g-brief2.layout:911 ../lib/layouts/stdletter.inc:129
 #: src/lengthcommon.C:35
 msgid "cc"
 msgstr ""
 
-#: ../lib/layouts/dinbrief.layout:135
-#: ../lib/layouts/g-brief-de.layout:487
+#: ../lib/layouts/dinbrief.layout:135 ../lib/layouts/g-brief-de.layout:487
 msgid "Betreff"
 msgstr ""
 
@@ -5732,43 +5391,33 @@ msgstr ""
 msgid "Stadt"
 msgstr "Város"
 
-#: ../lib/layouts/dinbrief.layout:180
-#: ../lib/layouts/g-brief-de.layout:467
+#: ../lib/layouts/dinbrief.layout:180 ../lib/layouts/g-brief-de.layout:467
 msgid "Datum"
 msgstr "Dátum"
 
-#: ../lib/layouts/egs.layout:103
-#: ../lib/layouts/kluwer.layout:91
-#: ../lib/layouts/linuxdoc.layout:170
-#: ../lib/layouts/llncs.layout:85
-#: ../lib/layouts/paper.layout:78
-#: ../lib/layouts/db_stdsections.inc:53
-#: ../lib/layouts/scrclass.inc:98
-#: ../lib/layouts/stdsections.inc:163
+#: ../lib/layouts/egs.layout:103 ../lib/layouts/kluwer.layout:91
+#: ../lib/layouts/linuxdoc.layout:170 ../lib/layouts/llncs.layout:85
+#: ../lib/layouts/paper.layout:78 ../lib/layouts/db_stdsections.inc:53
+#: ../lib/layouts/scrclass.inc:98 ../lib/layouts/stdsections.inc:163
 #: ../lib/layouts/svjour.inc:81
 msgid "Subparagraph"
 msgstr "Albekezdés"
 
-#: ../lib/layouts/egs.layout:131
-#: ../lib/layouts/db_stdlayouts.inc:34
+#: ../lib/layouts/egs.layout:131 ../lib/layouts/db_stdlayouts.inc:34
 #: ../lib/layouts/stdlayouts.inc:31
 msgid "Quotation"
 msgstr ""
 
-#: ../lib/layouts/egs.layout:149
-#: ../lib/layouts/linuxdoc.layout:28
-#: ../lib/layouts/manpage.layout:29
-#: ../lib/layouts/stdlayouts.inc:49
+#: ../lib/layouts/egs.layout:149 ../lib/layouts/linuxdoc.layout:28
+#: ../lib/layouts/manpage.layout:29 ../lib/layouts/stdlayouts.inc:49
 msgid "Quote"
 msgstr ""
 
-#: ../lib/layouts/egs.layout:242
-#: ../lib/layouts/stdlayouts.inc:65
+#: ../lib/layouts/egs.layout:242 ../lib/layouts/stdlayouts.inc:65
 msgid "Verse"
 msgstr ""
 
-#: ../lib/layouts/egs.layout:312
-#: ../lib/layouts/obsolete.inc:10
+#: ../lib/layouts/egs.layout:312 ../lib/layouts/obsolete.inc:10
 msgid "LaTeX Title"
 msgstr "LaTeX fõcím"
 
@@ -5784,13 +5433,11 @@ msgstr ""
 msgid "FirstAuthor"
 msgstr "Elsõ szerzõ"
 
-#: ../lib/layouts/egs.layout:468
-#: ../lib/layouts/aguplus.inc:106
+#: ../lib/layouts/egs.layout:468 ../lib/layouts/aguplus.inc:106
 msgid "Received"
 msgstr ""
 
-#: ../lib/layouts/egs.layout:494
-#: ../lib/layouts/aguplus.inc:120
+#: ../lib/layouts/egs.layout:494 ../lib/layouts/aguplus.inc:120
 msgid "Accepted"
 msgstr "Elfogadott"
 
@@ -5798,8 +5445,7 @@ msgstr "Elfogadott"
 msgid "Offsets"
 msgstr ""
 
-#: ../lib/layouts/egs.layout:749
-#: ../lib/layouts/db_lyxmacros.inc:25
+#: ../lib/layouts/egs.layout:749 ../lib/layouts/db_lyxmacros.inc:25
 #: ../lib/layouts/lyxmacros.inc:11
 msgid "LyX-Code"
 msgstr "LyX-kód"
@@ -5808,34 +5454,27 @@ msgstr "LyX-kód"
 msgid "Author Address"
 msgstr "Szerzõ cím"
 
-#: ../lib/layouts/elsart.layout:151
-#: ../lib/layouts/revtex4.layout:184
+#: ../lib/layouts/elsart.layout:151 ../lib/layouts/revtex4.layout:184
 msgid "Author Email"
 msgstr "Szerzõ e-mail"
 
-#: ../lib/layouts/elsart.layout:170
-#: ../lib/layouts/revtex4.layout:199
+#: ../lib/layouts/elsart.layout:170 ../lib/layouts/revtex4.layout:199
 msgid "Author URL"
 msgstr "Szerzõ URL"
 
-#: ../lib/layouts/elsart.layout:191
-#: ../lib/layouts/revtex4.layout:178
+#: ../lib/layouts/elsart.layout:191 ../lib/layouts/revtex4.layout:178
 #: ../lib/layouts/amsdefs.inc:260
 msgid "Thanks"
 msgstr "Köszönet"
 
-#: ../lib/layouts/elsart.layout:378
-#: ../lib/layouts/amsmaths-plain.inc:98
-#: ../lib/layouts/amsmaths-seq.inc:80
-#: ../lib/layouts/amsmaths.inc:212
+#: ../lib/layouts/elsart.layout:378 ../lib/layouts/amsmaths-plain.inc:98
+#: ../lib/layouts/amsmaths-seq.inc:80 ../lib/layouts/amsmaths.inc:212
 #: ../lib/layouts/stdfloats.inc:31
 msgid "Algorithm"
 msgstr "Algoritmus"
 
-#: ../lib/layouts/elsart.layout:473
-#: ../lib/layouts/amsmaths-plain.inc:231
-#: ../lib/layouts/amsmaths-seq.inc:176
-#: ../lib/layouts/amsmaths.inc:450
+#: ../lib/layouts/elsart.layout:473 ../lib/layouts/amsmaths-plain.inc:231
+#: ../lib/layouts/amsmaths-seq.inc:176 ../lib/layouts/amsmaths.inc:450
 msgid "Summary"
 msgstr "Összegzés"
 
@@ -5883,32 +5522,27 @@ msgstr ""
 msgid "Right Footer"
 msgstr "Jobb lábjegyzet"
 
-#: ../lib/layouts/foils.layout:320
-#: ../lib/layouts/siamltex.layout:249
+#: ../lib/layouts/foils.layout:320 ../lib/layouts/siamltex.layout:249
 #: ../lib/layouts/amsmaths.inc:93
 msgid "Theorem*"
 msgstr "Tétel*"
 
-#: ../lib/layouts/foils.layout:327
-#: ../lib/layouts/siamltex.layout:255
+#: ../lib/layouts/foils.layout:327 ../lib/layouts/siamltex.layout:255
 #: ../lib/layouts/amsmaths.inc:140
 msgid "Lemma*"
 msgstr "Segédtétel*"
 
-#: ../lib/layouts/foils.layout:334
-#: ../lib/layouts/siamltex.layout:261
+#: ../lib/layouts/foils.layout:334 ../lib/layouts/siamltex.layout:261
 #: ../lib/layouts/amsmaths.inc:116
 msgid "Corollary*"
 msgstr "Folyomány*"
 
-#: ../lib/layouts/foils.layout:341
-#: ../lib/layouts/siamltex.layout:267
+#: ../lib/layouts/foils.layout:341 ../lib/layouts/siamltex.layout:267
 #: ../lib/layouts/amsmaths.inc:164
 msgid "Proposition*"
 msgstr ""
 
-#: ../lib/layouts/foils.layout:348
-#: ../lib/layouts/siamltex.layout:273
+#: ../lib/layouts/foils.layout:348 ../lib/layouts/siamltex.layout:273
 #: ../lib/layouts/amsmaths.inc:282
 msgid "Definition*"
 msgstr "Definíció*"
@@ -5917,10 +5551,8 @@ msgstr "Definíció*"
 msgid "Brieftext"
 msgstr ""
 
-#: ../lib/layouts/g-brief-de.layout:53
-#: ../lib/layouts/g-brief-en.layout:53
-#: ../lib/layouts/g-brief2.layout:55
-#: ../lib/layouts/scrlettr.layout:128
+#: ../lib/layouts/g-brief-de.layout:53 ../lib/layouts/g-brief-en.layout:53
+#: ../lib/layouts/g-brief2.layout:55 ../lib/layouts/scrlettr.layout:128
 #: ../lib/layouts/scrlttr2.layout:155
 msgid "Name"
 msgstr "Név"
@@ -5965,28 +5597,23 @@ msgstr ""
 msgid "Telefon"
 msgstr "Telefon"
 
-#: ../lib/layouts/g-brief-de.layout:282
-#: ../lib/layouts/g-brief-en.layout:282
+#: ../lib/layouts/g-brief-de.layout:282 ../lib/layouts/g-brief-en.layout:282
 msgid "Telefax"
 msgstr "Telefax"
 
-#: ../lib/layouts/g-brief-de.layout:302
-#: ../lib/layouts/g-brief-en.layout:302
+#: ../lib/layouts/g-brief-de.layout:302 ../lib/layouts/g-brief-en.layout:302
 msgid "Telex"
 msgstr "Telex"
 
-#: ../lib/layouts/g-brief-de.layout:323
-#: ../lib/layouts/g-brief-en.layout:323
+#: ../lib/layouts/g-brief-de.layout:323 ../lib/layouts/g-brief-en.layout:323
 msgid "EMail"
 msgstr "E-mail"
 
-#: ../lib/layouts/g-brief-de.layout:343
-#: ../lib/layouts/g-brief-en.layout:343
+#: ../lib/layouts/g-brief-de.layout:343 ../lib/layouts/g-brief-en.layout:343
 msgid "HTTP"
 msgstr "HTTP"
 
-#: ../lib/layouts/g-brief-de.layout:363
-#: ../lib/layouts/g-brief-en.layout:363
+#: ../lib/layouts/g-brief-de.layout:363 ../lib/layouts/g-brief-en.layout:363
 #: ../lib/layouts/scrlttr2.layout:227
 msgid "Bank"
 msgstr "Bank"
@@ -6023,8 +5650,7 @@ msgstr ""
 msgid "Gruss"
 msgstr ""
 
-#: ../lib/layouts/g-brief-en.layout:31
-#: ../lib/layouts/g-brief2.layout:33
+#: ../lib/layouts/g-brief-en.layout:31 ../lib/layouts/g-brief2.layout:33
 #: ../lib/layouts/scrlettr.layout:50
 msgid "Letter"
 msgstr "Levél"
@@ -6045,23 +5671,19 @@ msgstr "Város"
 msgid "State"
 msgstr "Állam"
 
-#: ../lib/layouts/g-brief-en.layout:173
-#: ../lib/layouts/g-brief2.layout:693
+#: ../lib/layouts/g-brief-en.layout:173 ../lib/layouts/g-brief2.layout:693
 msgid "ReturnAddress"
 msgstr ""
 
-#: ../lib/layouts/g-brief-en.layout:194
-#: ../lib/layouts/g-brief2.layout:714
+#: ../lib/layouts/g-brief-en.layout:194 ../lib/layouts/g-brief2.layout:714
 msgid "MyRef"
 msgstr ""
 
-#: ../lib/layouts/g-brief-en.layout:214
-#: ../lib/layouts/g-brief2.layout:734
+#: ../lib/layouts/g-brief-en.layout:214 ../lib/layouts/g-brief2.layout:734
 msgid "YourRef"
 msgstr ""
 
-#: ../lib/layouts/g-brief-en.layout:236
-#: ../lib/layouts/g-brief2.layout:756
+#: ../lib/layouts/g-brief-en.layout:236 ../lib/layouts/g-brief2.layout:756
 msgid "YourMail"
 msgstr ""
 
@@ -6077,8 +5699,7 @@ msgstr "Bankkód"
 msgid "BankAccount"
 msgstr "Bankszámlaszám"
 
-#: ../lib/layouts/g-brief-en.layout:424
-#: ../lib/layouts/g-brief2.layout:777
+#: ../lib/layouts/g-brief-en.layout:424 ../lib/layouts/g-brief2.layout:777
 msgid "PostalComment"
 msgstr ""
 
@@ -6086,13 +5707,11 @@ msgstr ""
 msgid "PostalCommend"
 msgstr ""
 
-#: ../lib/layouts/g-brief-en.layout:494
-#: ../lib/layouts/g-brief2.layout:840
+#: ../lib/layouts/g-brief-en.layout:494 ../lib/layouts/g-brief2.layout:840
 msgid "Reference"
 msgstr "Hivatkozások"
 
-#: ../lib/layouts/g-brief-en.layout:543
-#: ../lib/layouts/g-brief2.layout:888
+#: ../lib/layouts/g-brief-en.layout:543 ../lib/layouts/g-brief2.layout:888
 msgid "Encl."
 msgstr ""
 
@@ -6220,10 +5839,8 @@ msgstr "BankSorE"
 msgid "BankRowF"
 msgstr "BankSorF"
 
-#: ../lib/layouts/heb-article.layout:16
-#: ../lib/layouts/scrlttr2.layout:347
-#: ../lib/layouts/db_lyxmacros.inc:20
-#: ../lib/layouts/lyxmacros.inc:47
+#: ../lib/layouts/heb-article.layout:16 ../lib/layouts/scrlttr2.layout:347
+#: ../lib/layouts/db_lyxmacros.inc:20 ../lib/layouts/lyxmacros.inc:47
 msgid "Comment"
 msgstr "Megjegyzés"
 
@@ -6231,8 +5848,7 @@ msgstr "Megjegyzés"
 msgid "Remarks"
 msgstr "Megjegyzések"
 
-#: ../lib/layouts/hollywood.layout:55
-#: src/frontends/xforms/Menubar_pimpl.C:256
+#: ../lib/layouts/hollywood.layout:55 src/frontends/xforms/Menubar_pimpl.C:256
 msgid "More"
 msgstr ""
 
@@ -6292,27 +5908,22 @@ msgstr "Futó cím"
 msgid "RunningAuthor"
 msgstr "Futó szerzõ"
 
-#: ../lib/layouts/linuxdoc.layout:278
-#: ../lib/layouts/manpage.layout:155
+#: ../lib/layouts/linuxdoc.layout:278 ../lib/layouts/manpage.layout:155
 #: ../lib/layouts/db_lyxmacros.inc:11
 msgid "Code"
 msgstr "Kód"
 
-#: ../lib/layouts/linuxdoc.layout:372
-#: ../lib/layouts/manpage.layout:173
+#: ../lib/layouts/linuxdoc.layout:372 ../lib/layouts/manpage.layout:173
 #: ../lib/layouts/db_stdlayouts.inc:11
 msgid "SGML"
 msgstr "SGML"
 
-#: ../lib/layouts/llncs.layout:38
-#: ../lib/layouts/db_stdsections.inc:18
-#: ../lib/layouts/scrclass.inc:61
-#: ../lib/layouts/stdsections.inc:37
+#: ../lib/layouts/llncs.layout:38 ../lib/layouts/db_stdsections.inc:18
+#: ../lib/layouts/scrclass.inc:61 ../lib/layouts/stdsections.inc:37
 msgid "Chapter"
 msgstr "Fejezet"
 
-#: ../lib/layouts/llncs.layout:158
-#: ../lib/layouts/svjour.inc:192
+#: ../lib/layouts/llncs.layout:158 ../lib/layouts/svjour.inc:192
 msgid "Running LaTeX Title"
 msgstr "Futó LaTeX cím"
 
@@ -6320,8 +5931,7 @@ msgstr "Futó LaTeX cím"
 msgid "TOC Title"
 msgstr "Tartalomjegyzék cím"
 
-#: ../lib/layouts/llncs.layout:217
-#: ../lib/layouts/svjour.inc:224
+#: ../lib/layouts/llncs.layout:217 ../lib/layouts/svjour.inc:224
 msgid "Author Running"
 msgstr ""
 
@@ -6329,18 +5939,15 @@ msgstr ""
 msgid "TOC Author"
 msgstr "Tartalomjegyzék szerzõ"
 
-#: ../lib/layouts/llncs.layout:411
-#: ../lib/layouts/svjour.inc:479
+#: ../lib/layouts/llncs.layout:411 ../lib/layouts/svjour.inc:479
 msgid "Property"
 msgstr "Tulajdonság"
 
-#: ../lib/layouts/llncs.layout:423
-#: ../lib/layouts/svjour.inc:491
+#: ../lib/layouts/llncs.layout:423 ../lib/layouts/svjour.inc:491
 msgid "Question"
 msgstr "Kérdés"
 
-#: ../lib/layouts/llncs.layout:435
-#: ../lib/layouts/svjour.inc:503
+#: ../lib/layouts/llncs.layout:435 ../lib/layouts/svjour.inc:503
 msgid "Solution"
 msgstr "Megoldás"
 
@@ -6368,8 +5975,7 @@ msgstr "Alcím"
 msgid "Institution"
 msgstr "Intézet"
 
-#: ../lib/layouts/revtex.layout:175
-#: ../lib/layouts/revtex4.layout:258
+#: ../lib/layouts/revtex.layout:175 ../lib/layouts/revtex4.layout:258
 msgid "REVTEX Title"
 msgstr ""
 
@@ -6381,82 +5987,67 @@ msgstr ""
 msgid "PACS"
 msgstr ""
 
-#: ../lib/layouts/scrlettr.layout:28
-#: ../lib/layouts/scrlttr2.layout:28
+#: ../lib/layouts/scrlettr.layout:28 ../lib/layouts/scrlttr2.layout:28
 #: ../lib/layouts/scrclass.inc:35
 msgid "Labeling"
 msgstr ""
 
-#: ../lib/layouts/scrlettr.layout:95
-#: ../lib/layouts/scrlttr2.layout:132
+#: ../lib/layouts/scrlettr.layout:95 ../lib/layouts/scrlttr2.layout:132
 msgid "PS"
 msgstr "UI"
 
-#: ../lib/layouts/scrlettr.layout:106
-#: ../lib/layouts/scrlttr2.layout:140
+#: ../lib/layouts/scrlettr.layout:106 ../lib/layouts/scrlttr2.layout:140
 msgid "CC"
 msgstr ""
 
-#: ../lib/layouts/scrlettr.layout:121
-#: ../lib/layouts/scrlttr2.layout:148
+#: ../lib/layouts/scrlettr.layout:121 ../lib/layouts/scrlttr2.layout:148
 msgid "Encl"
 msgstr ""
 
-#: ../lib/layouts/scrlettr.layout:164
-#: ../lib/layouts/scrlttr2.layout:194
+#: ../lib/layouts/scrlettr.layout:164 ../lib/layouts/scrlttr2.layout:194
 #: ../lib/layouts/stdletter.inc:179
 msgid "Telephone"
 msgstr "Telefon"
 
-#: ../lib/layouts/scrlettr.layout:171
-#: ../lib/layouts/scrlttr2.layout:243
+#: ../lib/layouts/scrlettr.layout:171 ../lib/layouts/scrlttr2.layout:243
 msgid "Place"
 msgstr "Hely"
 
-#: ../lib/layouts/scrlettr.layout:185
-#: ../lib/layouts/scrlttr2.layout:259
+#: ../lib/layouts/scrlettr.layout:185 ../lib/layouts/scrlttr2.layout:259
 msgid "Backaddress"
 msgstr ""
 
-#: ../lib/layouts/scrlettr.layout:192
-#: ../lib/layouts/scrlttr2.layout:267
+#: ../lib/layouts/scrlettr.layout:192 ../lib/layouts/scrlttr2.layout:267
 msgid "Specialmail"
 msgstr ""
 
-#: ../lib/layouts/scrlettr.layout:199
-#: ../lib/layouts/scrlttr2.layout:275
+#: ../lib/layouts/scrlettr.layout:199 ../lib/layouts/scrlttr2.layout:275
 #: ../lib/layouts/stdletter.inc:162
 msgid "Location"
 msgstr "Hely"
 
-#: ../lib/layouts/scrlettr.layout:213
-#: ../lib/layouts/scrlttr2.layout:291
+#: ../lib/layouts/scrlettr.layout:213 ../lib/layouts/scrlttr2.layout:291
 #: ../lib/layouts/scrclass.inc:180
 msgid "Subject"
 msgstr "Tárgy"
 
-#: ../lib/layouts/scrlettr.layout:220
-#: ../lib/layouts/scrlttr2.layout:299
+#: ../lib/layouts/scrlettr.layout:220 ../lib/layouts/scrlttr2.layout:299
 msgid "Yourref"
 msgstr ""
 
-#: ../lib/layouts/scrlettr.layout:235
-#: ../lib/layouts/scrlttr2.layout:315
+#: ../lib/layouts/scrlettr.layout:235 ../lib/layouts/scrlttr2.layout:315
 msgid "Yourmail"
 msgstr ""
 
-#: ../lib/layouts/scrlettr.layout:242
-#: ../lib/layouts/scrlttr2.layout:323
+#: ../lib/layouts/scrlettr.layout:242 ../lib/layouts/scrlttr2.layout:323
 msgid "Myref"
 msgstr ""
 
-#: ../lib/layouts/scrlettr.layout:249
-#: ../lib/layouts/scrlttr2.layout:331
+#: ../lib/layouts/scrlettr.layout:249 ../lib/layouts/scrlttr2.layout:331
 msgid "Customer"
 msgstr "Vásárló"
 
-#: ../lib/layouts/scrlettr.layout:256
-#: ../lib/layouts/scrlttr2.layout:339
+#: ../lib/layouts/scrlettr.layout:256 ../lib/layouts/scrlttr2.layout:339
 msgid "Invoice"
 msgstr "Számla"
 
@@ -6488,8 +6079,7 @@ msgstr "Fekvõfólia"
 msgid "PortraitSlide"
 msgstr "Állófólia"
 
-#: ../lib/layouts/seminar.layout:68
-#: ../lib/layouts/slides.layout:92
+#: ../lib/layouts/seminar.layout:68 ../lib/layouts/slides.layout:92
 msgid "Slide"
 msgstr "Fólia"
 
@@ -6517,8 +6107,7 @@ msgstr "Fólia tartalma"
 msgid "ProgressContents"
 msgstr ""
 
-#: ../lib/layouts/siamltex.layout:96
-#: ../lib/layouts/aguplus.inc:59
+#: ../lib/layouts/siamltex.layout:96 ../lib/layouts/aguplus.inc:59
 #: ../lib/layouts/stdstarsections.inc:56
 msgid "Paragraph*"
 msgstr "Bekezdés*"
@@ -6595,8 +6184,7 @@ msgstr "Fordító"
 msgid "Subjectclass"
 msgstr ""
 
-#: ../lib/layouts/amsmaths-plain.inc:267
-#: ../lib/layouts/amsmaths-seq.inc:200
+#: ../lib/layouts/amsmaths-plain.inc:267 ../lib/layouts/amsmaths-seq.inc:200
 #: ../lib/layouts/amsmaths.inc:497
 msgid "Conclusion"
 msgstr "Következtetés"
@@ -6697,8 +6285,7 @@ msgstr ""
 msgid "Publishers"
 msgstr "Kiadók"
 
-#: ../lib/layouts/scrclass.inc:192
-#: ../lib/layouts/svjour.inc:133
+#: ../lib/layouts/scrclass.inc:192 ../lib/layouts/svjour.inc:133
 msgid "Dedication"
 msgstr ""
 
@@ -6832,8 +6419,7 @@ msgstr "Dán"
 msgid "Dutch"
 msgstr "Holland"
 
-#: ../lib/languages:20
-#: src/language.C:37
+#: ../lib/languages:20 src/language.C:37
 msgid "English"
 msgstr "Angol"
 
@@ -6982,13 +6568,11 @@ msgstr "Usorbian"
 msgid "Welsh"
 msgstr "Walesi"
 
-#: ../lib/ui/default.ui:7
-#: src/MenuBackend.C:680
+#: ../lib/ui/default.ui:7 src/MenuBackend.C:680
 msgid "File|F"
 msgstr "Fájl|F"
 
-#: ../lib/ui/default.ui:8
-#: src/MenuBackend.C:681
+#: ../lib/ui/default.ui:8 src/MenuBackend.C:681
 msgid "Edit|E"
 msgstr "Szerkesztés|e"
 
@@ -7008,8 +6592,7 @@ msgstr "Nézet|z"
 msgid "Navigate|N"
 msgstr "Navigáció|N"
 
-#: ../lib/ui/default.ui:13
-#: src/MenuBackend.C:683
+#: ../lib/ui/default.ui:13 src/MenuBackend.C:683
 msgid "Documents|D"
 msgstr "Dokumentumok|D"
 
@@ -7025,8 +6608,7 @@ msgstr "Új|j"
 msgid "New from Template...|T"
 msgstr "Új, sablon alapján ...|l"
 
-#: ../lib/ui/default.ui:24
-#: src/MenuBackend.C:653
+#: ../lib/ui/default.ui:24 src/MenuBackend.C:653
 msgid "Open...|O"
 msgstr "Megnyitás ...|n"
 
@@ -7050,8 +6632,7 @@ msgstr "Visszatér|r"
 msgid "Version Control|V"
 msgstr "Verziókövetés|V"
 
-#: ../lib/ui/default.ui:32
-#: src/MenuBackend.C:654
+#: ../lib/ui/default.ui:32 src/MenuBackend.C:654
 msgid "Import|I"
 msgstr "Importálás|I"
 
@@ -7195,8 +6776,7 @@ msgstr "Jobb oldali vonal|b"
 msgid "Align Left|e"
 msgstr "Balra igazít|g"
 
-#: ../lib/ui/default.ui:102
-#: ../lib/ui/default.ui:183
+#: ../lib/ui/default.ui:102 ../lib/ui/default.ui:183
 msgid "Align Center|C"
 msgstr "Középre igazít|K"
 
@@ -7224,13 +6804,11 @@ msgstr "Sor hozzáadása|a"
 msgid "Delete Row|w"
 msgstr "Sor törlése|o"
 
-#: ../lib/ui/default.ui:111
-#: ../lib/ui/default.ui:142
+#: ../lib/ui/default.ui:111 ../lib/ui/default.ui:142
 msgid "Copy Row"
 msgstr "Sor másolása"
 
-#: ../lib/ui/default.ui:112
-#: ../lib/ui/default.ui:143
+#: ../lib/ui/default.ui:112 ../lib/ui/default.ui:143
 msgid "Swap Rows"
 msgstr "Sorok cseréje"
 
@@ -7242,13 +6820,11 @@ msgstr "Oszlop hozzáadása|h"
 msgid "Delete Column|D"
 msgstr "Oszlop törlése|p"
 
-#: ../lib/ui/default.ui:116
-#: ../lib/ui/default.ui:147
+#: ../lib/ui/default.ui:116 ../lib/ui/default.ui:147
 msgid "Copy Column"
 msgstr "Oszlop másolása"
 
-#: ../lib/ui/default.ui:117
-#: ../lib/ui/default.ui:148
+#: ../lib/ui/default.ui:117 ../lib/ui/default.ui:148
 msgid "Swap Columns"
 msgstr "Oszlopok cseréje"
 
@@ -7332,8 +6908,7 @@ msgstr ""
 msgid "Maple, evalf"
 msgstr ""
 
-#: ../lib/ui/default.ui:169
-#: ../lib/ui/default.ui:234
+#: ../lib/ui/default.ui:169 ../lib/ui/default.ui:234
 msgid "Inline Formula|I"
 msgstr "Beszúrt képlet|z"
 
@@ -7425,8 +7000,7 @@ msgstr "Tárgymutató-bejegyzés ...|y"
 msgid "URL...|U"
 msgstr "URL ...|U"
 
-#: ../lib/ui/default.ui:205
-#: ../lib/ui/default.ui:340
+#: ../lib/ui/default.ui:205 ../lib/ui/default.ui:340
 msgid "Note|N"
 msgstr "Megjegyzés|z"
 
@@ -7786,9 +7360,7 @@ msgstr "LaTeX információ|L"
 msgid "About LyX|X"
 msgstr "LyX névjegy|X"
 
-#: src/BufferView.C:298
-#: src/bufferlist.C:400
-#: src/bufferlist.C:512
+#: src/BufferView.C:298 src/bufferlist.C:400 src/bufferlist.C:512
 #: src/lyx_cb.C:222
 msgid "Error!"
 msgstr "Hiba!"
@@ -7797,13 +7369,11 @@ msgstr "Hiba!"
 msgid "Specified file is unreadable: "
 msgstr "A megadott fájl olvashatatlan: "
 
-#: src/BufferView.C:308
-#: src/lyx_cb.C:455
+#: src/BufferView.C:308 src/lyx_cb.C:455
 msgid "Error! Cannot open specified file:"
 msgstr "Hiba! A megadott fájl nem nyitható meg:"
 
-#: src/BufferView.C:568
-#: src/LyXAction.C:373
+#: src/BufferView.C:568 src/LyXAction.C:373
 msgid "Undo"
 msgstr "Visszavonás"
 
@@ -7811,8 +7381,7 @@ msgstr "Visszavonás"
 msgid "No further undo information"
 msgstr "Nincs több visszavonás"
 
-#: src/BufferView.C:585
-#: src/LyXAction.C:330
+#: src/BufferView.C:585 src/LyXAction.C:330
 msgid "Redo"
 msgstr "Mégis"
 
@@ -7854,38 +7423,26 @@ msgstr "Ugrás könyvjelzõre: "
 msgid "Select LyX document to insert"
 msgstr "Válassza ki a beszúrandó LyX dokumentumot"
 
-#: src/BufferView_pimpl.C:863
-#: src/frontends/controllers/ControlBibtex.C:59
+#: src/BufferView_pimpl.C:863 src/frontends/controllers/ControlBibtex.C:59
 #: src/frontends/controllers/ControlBibtex.C:69
 #: src/frontends/controllers/ControlExternal.C:147
 #: src/frontends/controllers/ControlGraphics.C:89
-#: src/frontends/controllers/ControlInclude.C:66
-#: src/lyx_cb.C:117
-#: src/lyxfunc.C:1642
-#: src/lyxfunc.C:1682
-#: src/lyxfunc.C:1788
+#: src/frontends/controllers/ControlInclude.C:66 src/lyx_cb.C:117
+#: src/lyxfunc.C:1642 src/lyxfunc.C:1682 src/lyxfunc.C:1788
 msgid "Documents|#o#O"
 msgstr "Dokumentumok|#o#O"
 
-#: src/BufferView_pimpl.C:865
-#: src/lyxfunc.C:1684
-#: src/lyxfunc.C:1790
+#: src/BufferView_pimpl.C:865 src/lyxfunc.C:1684 src/lyxfunc.C:1790
 msgid "Examples|#E#e"
 msgstr "Példák|#P#p"
 
-#: src/BufferView_pimpl.C:870
-#: src/lyx_cb.C:127
-#: src/lyxfunc.C:1649
+#: src/BufferView_pimpl.C:870 src/lyx_cb.C:127 src/lyxfunc.C:1649
 #: src/lyxfunc.C:1689
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr "*.lyx| LyX dokumentumok (*.lyx)"
 
-#: src/BufferView_pimpl.C:879
-#: src/lyxfunc.C:1698
-#: src/lyxfunc.C:1718
-#: src/lyxfunc.C:1807
-#: src/lyxfunc.C:1834
-#: src/lyxfunc.C:1844
+#: src/BufferView_pimpl.C:879 src/lyxfunc.C:1698 src/lyxfunc.C:1718
+#: src/lyxfunc.C:1807 src/lyxfunc.C:1834 src/lyxfunc.C:1844
 msgid "Canceled."
 msgstr "Törölve."
 
@@ -7898,11 +7455,8 @@ msgstr "Dokumentum beszúrása %1$s ..."
 msgid "Inserting document "
 msgstr "Dokumentum beszúrása "
 
-#: src/BufferView_pimpl.C:894
-#: src/importer.C:43
-#: src/lyxfunc.C:995
-#: src/lyxfunc.C:1156
-#: src/lyxfunc.C:1731
+#: src/BufferView_pimpl.C:894 src/importer.C:43 src/lyxfunc.C:995
+#: src/lyxfunc.C:1156 src/lyxfunc.C:1731
 msgid "..."
 msgstr "..."
 
@@ -7911,8 +7465,7 @@ msgstr "..."
 msgid "Document %1$s inserted."
 msgstr "Dokumentum: %1$s beszúrása megtörtént."
 
-#: src/BufferView_pimpl.C:903
-#: src/lyxfunc.C:1743
+#: src/BufferView_pimpl.C:903 src/lyxfunc.C:1743
 msgid "Document "
 msgstr "Dokumentum: "
 
@@ -7929,8 +7482,7 @@ msgstr "Nem tudom beszúrni a dokumentumot %1$s"
 msgid "Could not insert document "
 msgstr "Nem tudom beszúrni a dokumentumot"
 
-#: src/BufferView_pimpl.C:1093
-#: src/insets/inseterror.C:51
+#: src/BufferView_pimpl.C:1093 src/insets/inseterror.C:51
 #: src/insets/inseterror.C:73
 msgid "Error"
 msgstr "Hiba"
@@ -7973,8 +7525,7 @@ msgstr ""
 msgid "Layout had to be changed from\n"
 msgstr "A formátum meg fog változni errõl:\n"
 
-#: src/CutAndPaste.C:443
-#: src/CutAndPaste.C:446
+#: src/CutAndPaste.C:443 src/CutAndPaste.C:446
 msgid " to "
 msgstr ", erre: "
 
@@ -8046,8 +7597,7 @@ msgstr "LaTeX szöveg"
 msgid "previewed snippet"
 msgstr "elõnézet rész"
 
-#: src/LColor.C:60
-#: src/insets/insetnote.C:36
+#: src/LColor.C:60 src/insets/insetnote.C:36
 msgid "note"
 msgstr "megjegyzés"
 
@@ -8191,21 +7741,16 @@ msgstr "örökölt"
 msgid "ignore"
 msgstr "mellõz"
 
-#: src/LaTeX.C:208
-#: src/LaTeX.C:297
-#: src/LaTeX.C:358
+#: src/LaTeX.C:208 src/LaTeX.C:297 src/LaTeX.C:358
 #, c-format
 msgid "LaTeX run number %1$d"
 msgstr "LaTeX futtatási szám %1$d"
 
-#: src/LaTeX.C:210
-#: src/LaTeX.C:299
-#: src/LaTeX.C:360
+#: src/LaTeX.C:210 src/LaTeX.C:299 src/LaTeX.C:360
 msgid "LaTeX run number "
 msgstr "LaTeX futtatási szám "
 
-#: src/LaTeX.C:248
-#: src/LaTeX.C:332
+#: src/LaTeX.C:248 src/LaTeX.C:332
 msgid "Running MakeIndex."
 msgstr "MakeIndex futtatása."
 
@@ -8313,15 +7858,11 @@ msgstr "Idézet beszúrása"
 msgid "Execute command"
 msgstr "Parancs végrehajtása"
 
-#: src/LyXAction.C:161
-#: src/MenuBackend.C:671
-#: src/text3.C:1053
+#: src/LyXAction.C:161 src/MenuBackend.C:671 src/text3.C:1053
 msgid "Copy"
 msgstr "Másolás"
 
-#: src/LyXAction.C:162
-#: src/MenuBackend.C:670
-#: src/text3.C:1048
+#: src/LyXAction.C:162 src/MenuBackend.C:670 src/text3.C:1048
 msgid "Cut"
 msgstr "Kivágás"
 
@@ -8597,9 +8138,7 @@ msgstr "Menj egy bekezdéssel fel"
 msgid "Select previous paragraph"
 msgstr "Elõzõ bekezdés kijelölése"
 
-#: src/LyXAction.C:319
-#: src/MenuBackend.C:672
-#: src/text3.C:1030
+#: src/LyXAction.C:319 src/MenuBackend.C:672 src/text3.C:1030
 msgid "Paste"
 msgstr "Beillesztés"
 
@@ -8675,11 +8214,8 @@ msgstr "Információ megjelenítése a TeX telepítésrõl"
 msgid "No description available!"
 msgstr "Leírás nem érhetõ el!"
 
-#: src/MenuBackend.C:310
-#: src/MenuBackend.C:333
-#: src/MenuBackend.C:392
-#: src/MenuBackend.C:413
-#: src/MenuBackend.C:483
+#: src/MenuBackend.C:310 src/MenuBackend.C:333 src/MenuBackend.C:392
+#: src/MenuBackend.C:413 src/MenuBackend.C:483
 msgid "No Documents Open!"
 msgstr "Nincs nyitott dokumentum!"
 
@@ -8731,23 +8267,17 @@ msgstr "egy bekezdésre."
 msgid " paragraphs"
 msgstr " bekezdésekre"
 
-#: src/buffer.C:364
-#: src/buffer.C:367
-#: src/buffer.C:381
-#: src/buffer.C:384
-#: src/buffer.C:641
-#: src/buffer.C:646
+#: src/buffer.C:364 src/buffer.C:367 src/buffer.C:381 src/buffer.C:384
+#: src/buffer.C:641 src/buffer.C:646
 msgid "Textclass Loading Error!"
 msgstr "Szövegosztály betöltési hiba!"
 
-#: src/buffer.C:365
-#: src/buffer.C:382
+#: src/buffer.C:365 src/buffer.C:382
 #, c-format
 msgid "When reading %1$s"
 msgstr "Beolvasás közben: %1$s,"
 
-#: src/buffer.C:368
-#: src/buffer.C:385
+#: src/buffer.C:368 src/buffer.C:385
 msgid "When reading "
 msgstr "Beolvasás közben: "
 
@@ -8763,10 +8293,7 @@ msgstr "egy ismeretlen szimbólumot"
 msgid " unknown tokens"
 msgstr " ismeretlen szimbólumokat"
 
-#: src/buffer.C:622
-#: src/buffer.C:627
-#: src/buffer.C:655
-#: src/buffer.C:660
+#: src/buffer.C:622 src/buffer.C:627 src/buffer.C:655 src/buffer.C:660
 msgid "Textclass error"
 msgstr "Szövegosztály hiba"
 
@@ -8775,10 +8302,7 @@ msgstr "Szövegosztály hiba"
 msgid "The document uses an unknown textclass \"%1$s\"."
 msgstr "A dokumentum egy ismeretlen szövegosztályt: \"%1$s\" használ."
 
-#: src/buffer.C:624
-#: src/buffer.C:630
-#: src/buffer.C:644
-#: src/buffer.C:649
+#: src/buffer.C:624 src/buffer.C:630 src/buffer.C:644 src/buffer.C:649
 msgid "-- substituting default."
 msgstr "-- alapérték helyettesítése."
 
@@ -8800,8 +8324,7 @@ msgstr "Szövegosztály nem tölthetõ be: "
 msgid "The document uses a missing TeX class \"%1$s\"."
 msgstr "A dokumentum egy hiányzó TeX osztályt használ: \"%1$s\"."
 
-#: src/buffer.C:657
-#: src/buffer.C:663
+#: src/buffer.C:657 src/buffer.C:663
 msgid "LyX will not be able to produce output."
 msgstr "LyX nem tudja  elkészíteni a kimenetet."
 
@@ -8819,13 +8342,8 @@ msgid "Unknown token: "
 msgstr "Ismeretlen szimbólum: "
 
 #. "\\lyxformat" not found
-#: src/buffer.C:1213
-#: src/buffer.C:1228
-#: src/buffer.C:1245
-#: src/buffer.C:1252
-#: src/buffer.C:1273
-#: src/buffer.C:1305
-#: src/buffer.C:1308
+#: src/buffer.C:1213 src/buffer.C:1228 src/buffer.C:1245 src/buffer.C:1252
+#: src/buffer.C:1273 src/buffer.C:1305 src/buffer.C:1308
 msgid "ERROR!"
 msgstr "HIBA!"
 
@@ -8833,18 +8351,22 @@ msgstr "HIBA!"
 msgid "Can't find conversion script."
 msgstr "Nem találom az átalakító parancsfájlt."
 
-#: src/buffer.C:1229
-#: src/buffer.C:1274
+#: src/buffer.C:1229 src/buffer.C:1274
 msgid "An error occured while running the conversion script."
 msgstr "Hiba történt az átalakító parancsfájl futása közben."
 
 #: src/buffer.C:1246
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
-msgstr "Régi LyX fájlformátumot találtam. Használja a LyX 0.10.x-et, a beolvasáshoz!"
+msgstr ""
+"Régi LyX fájlformátumot találtam. Használja a LyX 0.10.x-et, a beolvasáshoz!"
 
 #: src/buffer.C:1253
-msgid "The file was created with a newer version of LyX, but the lyx2lyx script cannot convert it.\n"
-msgstr "Ez a fájl újabb LyX verzióval készült, és a lyx2lyx parancsfájl nem tudja átalakítani.\n"
+msgid ""
+"The file was created with a newer version of LyX, but the lyx2lyx script "
+"cannot convert it.\n"
+msgstr ""
+"Ez a fájl újabb LyX verzióval készült, és a lyx2lyx parancsfájl nem tudja "
+"átalakítani.\n"
 
 #: src/buffer.C:1299
 msgid "Warning!"
@@ -8882,18 +8404,15 @@ msgstr "Hiba: A fájl nem írható:"
 msgid "Error: Cannot open file: "
 msgstr "Hiba: Nem tudom megnyitni a fájlt: "
 
-#: src/buffer.C:2339
-#: src/buffer.C:2794
+#: src/buffer.C:2339 src/buffer.C:2794
 msgid "LYX_ERROR:"
 msgstr "LYX_HIBA:"
 
-#: src/buffer.C:2339
-#: src/buffer.C:2794
+#: src/buffer.C:2339 src/buffer.C:2794
 msgid "Cannot write file"
 msgstr "A fájl nem írható:"
 
-#: src/buffer.C:2427
-#: src/buffer.C:2900
+#: src/buffer.C:2427 src/buffer.C:2900
 msgid "Error: Wrong depth for LatexType Command.\n"
 msgstr "Hiba: Rossz mélység a LatexType parancshoz.\n"
 
@@ -8910,16 +8429,12 @@ msgstr "chktex nem mûködött!"
 msgid "Could not run with file:"
 msgstr "Nem tudja futtatni a fájlt:"
 
-#: src/bufferlist.C:110
-#: src/bufferlist.C:195
-#: src/lyxvc.C:114
-#: src/lyxvc.C:146
+#: src/bufferlist.C:110 src/bufferlist.C:195 src/lyxvc.C:114 src/lyxvc.C:146
 #: src/lyxvc.C:175
 msgid "Changes in document:"
 msgstr "A dokumentum megváltozott:"
 
-#: src/bufferlist.C:112
-#: src/bufferlist.C:197
+#: src/bufferlist.C:112 src/bufferlist.C:197
 msgid "Save document?"
 msgstr "Mentsem a dokumentumot?"
 
@@ -8932,14 +8447,11 @@ msgstr "LyX: Megpróbálja menteni a dokumentumot: %1$s"
 msgid "LyX: Attempting to save document "
 msgstr "LyX: Megpróbálja menteni a dokumentumot: "
 
-#: src/bufferlist.C:356
-#: src/bufferlist.C:369
-#: src/bufferlist.C:383
+#: src/bufferlist.C:356 src/bufferlist.C:369 src/bufferlist.C:383
 msgid "  Save seems successful. Phew."
 msgstr "  A mentés úgy tûnik sikeres. Huh."
 
-#: src/bufferlist.C:359
-#: src/bufferlist.C:373
+#: src/bufferlist.C:359 src/bufferlist.C:373
 msgid "  Save failed! Trying..."
 msgstr "  Sikertelen mentés! Próbálkozok ..."
 
@@ -8971,8 +8483,7 @@ msgstr "Azt töltsem be inkább?"
 msgid "Unable to open template"
 msgstr "Sablon nem nyitható meg"
 
-#: src/bufferlist.C:545
-#: src/lyxfunc.C:1820
+#: src/bufferlist.C:545 src/lyxfunc.C:1820
 msgid "Document is already open:"
 msgstr "A dokumentum már meg van nyitva:"
 
@@ -9020,8 +8531,7 @@ msgstr ", mélység: "
 msgid ", Spacing: "
 msgstr ", köz: "
 
-#: src/bufferview_funcs.C:187
-#: src/frontends/qt2/QDocument.C:146
+#: src/bufferview_funcs.C:187 src/frontends/qt2/QDocument.C:146
 msgid "OneHalf"
 msgstr "Másfél"
 
@@ -9033,9 +8543,7 @@ msgstr "Egyéb ("
 msgid ", Paragraph: "
 msgstr ", Bekezdés: "
 
-#: src/converter.C:177
-#: src/converter.C:181
-#: src/converter.C:217
+#: src/converter.C:177 src/converter.C:181 src/converter.C:217
 msgid "Cannot view file"
 msgstr "A fájl nem nézhetõ meg"
 
@@ -9048,13 +8556,11 @@ msgstr "Nincs információ a %1$s nézetéhez "
 msgid "No information for viewing "
 msgstr "Nincs információ a fájl nézetéhez "
 
-#: src/converter.C:210
-#: src/converter.C:668
+#: src/converter.C:210 src/converter.C:668
 msgid "Executing command:"
 msgstr "Parancs végrehajtása:"
 
-#: src/converter.C:218
-#: src/converter.C:710
+#: src/converter.C:218 src/converter.C:710
 msgid "Error while executing"
 msgstr "Hiba végrehajtás közben"
 
@@ -9062,9 +8568,7 @@ msgstr "Hiba végrehajtás közben"
 msgid "There were errors during the Build process."
 msgstr "Hibák léptek fel a dokumentum fordítása során."
 
-#: src/converter.C:707
-#: src/converter.C:864
-#: src/converter.C:932
+#: src/converter.C:707 src/converter.C:864 src/converter.C:932
 msgid "You should try to fix them."
 msgstr "Ki kell javítania õket."
 
@@ -9072,39 +8576,32 @@ msgstr "Ki kell javítania õket."
 msgid "Cannot convert file"
 msgstr "A fájl nem alakítható át"
 
-#: src/converter.C:733
-#: src/converter.C:736
+#: src/converter.C:733 src/converter.C:736
 msgid "Error while trying to move directory:"
 msgstr "Hiba a könyvtár mozgatása során:"
 
-#: src/converter.C:734
-#: src/converter.C:776
+#: src/converter.C:734 src/converter.C:776
 #, c-format
 msgid "to %1$s"
 msgstr "forrás %1$s"
 
-#: src/converter.C:737
-#: src/converter.C:779
+#: src/converter.C:737 src/converter.C:779
 msgid "to "
 msgstr "cél "
 
-#: src/converter.C:775
-#: src/converter.C:778
+#: src/converter.C:775 src/converter.C:778
 msgid "Error while trying to move file:"
 msgstr "Hiba a fájl áthelyezése közben:"
 
-#: src/converter.C:859
-#: src/converter.C:927
+#: src/converter.C:859 src/converter.C:927
 msgid "One error detected"
 msgstr "Egy hibát találtam"
 
-#: src/converter.C:860
-#: src/converter.C:928
+#: src/converter.C:860 src/converter.C:928
 msgid "You should try to fix it."
 msgstr "Ki kell javítania."
 
-#: src/converter.C:863
-#: src/converter.C:931
+#: src/converter.C:863 src/converter.C:931
 msgid " errors detected."
 msgstr " hibát találtam."
 
@@ -9117,18 +8614,15 @@ msgstr "Hiba lépett fel %1$s futtatása során"
 msgid "There were errors during running of "
 msgstr "Hiba lépett fel a következõ futtatása során: "
 
-#: src/converter.C:877
-#: src/converter.C:937
+#: src/converter.C:877 src/converter.C:937
 msgid "The operation resulted in"
 msgstr "A mûvelet eredménye"
 
-#: src/converter.C:878
-#: src/converter.C:938
+#: src/converter.C:878 src/converter.C:938
 msgid "an empty file."
 msgstr "egy üres fájl."
 
-#: src/converter.C:879
-#: src/converter.C:939
+#: src/converter.C:879 src/converter.C:939
 msgid "Resulting file is empty"
 msgstr "Az eredményfájl üres"
 
@@ -9306,18 +8800,32 @@ msgstr ""
 "1995-2001 LyX Team"
 
 #: src/frontends/controllers/ControlAboutlyx.C:63
-msgid "This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version."
-msgstr "Ez egy szabad program; terjesztheti és/vagy módosíthatja a GNU General Public License 2. és az utáni verzió szabályainak megfelelõen."
+msgid ""
+"This program is free software; you can redistribute it and/or modify it "
+"under the terms of the GNU General Public License as published by the Free "
+"Software Foundation; either version 2 of the License, or (at your option) "
+"any later version."
+msgstr ""
+"Ez egy szabad program; terjesztheti és/vagy módosíthatja a GNU General "
+"Public License 2. és az utáni verzió szabályainak megfelelõen."
 
 #: src/frontends/controllers/ControlAboutlyx.C:69
 msgid ""
-"LyX is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"
+"LyX is distributed in the hope that it will be useful, but WITHOUT ANY "
+"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
+"FOR A PARTICULAR PURPOSE.\n"
 "See the GNU General Public License for more details.\n"
-"You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA."
+"You should have received a copy of the GNU General Public License along with "
+"this program; if not, write to the Free Software Foundation, Inc., 675 Mass "
+"Ave, Cambridge, MA 02139, USA."
 msgstr ""
-"A LyX-et abban reményben terjesztjük, hogy valakinek hasznos lehet, de MINDEN JÓTÁLLÁS NÉLKÜL; illetve a SPECIÁLIS CÉLRA VONATKOZÓ ALKALMASSÁG nélkül.\n"
+"A LyX-et abban reményben terjesztjük, hogy valakinek hasznos lehet, de "
+"MINDEN JÓTÁLLÁS NÉLKÜL; illetve a SPECIÁLIS CÉLRA VONATKOZÓ ALKALMASSÁG "
+"nélkül.\n"
 "Lásd a GNU General Public License-et a további részletekért.\n"
-"Meg kellett kapnia a GNU General Public License-et ezzel a programmal; ha mégsem, írjon a Free Software Foundation-nek, 675 Mass Ave, Cambridge, MA 02139, USA."
+"Meg kellett kapnia a GNU General Public License-et ezzel a programmal; ha "
+"mégsem, írjon a Free Software Foundation-nek, 675 Mass Ave, Cambridge, MA "
+"02139, USA."
 
 #: src/frontends/controllers/ControlAboutlyx.C:78
 msgid "LyX Version "
@@ -9619,43 +9127,35 @@ msgid "No change"
 msgstr "Nincs változás"
 
 #. default & error
-#: src/frontends/controllers/character.C:31
-#: src/lyxfont.C:40
+#: src/frontends/controllers/character.C:31 src/lyxfont.C:40
 msgid "Roman"
 msgstr "Roman"
 
-#: src/frontends/controllers/character.C:35
-#: src/lyxfont.C:40
+#: src/frontends/controllers/character.C:35 src/lyxfont.C:40
 msgid "Sans Serif"
 msgstr "Sans Serif"
 
-#: src/frontends/controllers/character.C:39
-#: src/lyxfont.C:40
+#: src/frontends/controllers/character.C:39 src/lyxfont.C:40
 msgid "Typewriter"
 msgstr "Írógép"
 
-#: src/frontends/controllers/character.C:61
-#: src/lyxfont.C:45
+#: src/frontends/controllers/character.C:61 src/lyxfont.C:45
 msgid "Medium"
 msgstr "Normál"
 
-#: src/frontends/controllers/character.C:65
-#: src/lyxfont.C:45
+#: src/frontends/controllers/character.C:65 src/lyxfont.C:45
 msgid "Bold"
 msgstr "Félkövér"
 
-#: src/frontends/controllers/character.C:87
-#: src/lyxfont.C:48
+#: src/frontends/controllers/character.C:87 src/lyxfont.C:48
 msgid "Upright"
 msgstr "Álló"
 
-#: src/frontends/controllers/character.C:91
-#: src/lyxfont.C:48
+#: src/frontends/controllers/character.C:91 src/lyxfont.C:48
 msgid "Italic"
 msgstr "Dõlt"
 
-#: src/frontends/controllers/character.C:95
-#: src/lyxfont.C:48
+#: src/frontends/controllers/character.C:95 src/lyxfont.C:48
 msgid "Slanted"
 msgstr "Döntött"
 
@@ -9663,13 +9163,11 @@ msgstr "Döntött"
 msgid "Small Caps"
 msgstr "Kiskapitális"
 
-#: src/frontends/controllers/character.C:161
-#: src/lyxfont.C:53
+#: src/frontends/controllers/character.C:161 src/lyxfont.C:53
 msgid "Increase"
 msgstr "Növel"
 
-#: src/frontends/controllers/character.C:165
-#: src/lyxfont.C:53
+#: src/frontends/controllers/character.C:165 src/lyxfont.C:53
 msgid "Decrease"
 msgstr "Csökkent"
 
@@ -9738,34 +9236,28 @@ msgstr "Nincs LaTeX támogatás a következõ jelekre:\n"
 msgid "Invalid directory name"
 msgstr "Érvénytelen könyvtárnév"
 
-#: src/frontends/gnome/GLog.C:51
-#: src/frontends/qt2/QLog.C:52
+#: src/frontends/gnome/GLog.C:51 src/frontends/qt2/QLog.C:52
 msgid "Build log"
 msgstr "Fordítási napló"
 
-#: src/frontends/gnome/GLog.C:53
-#: src/frontends/qt2/QLog.C:54
+#: src/frontends/gnome/GLog.C:53 src/frontends/qt2/QLog.C:54
 msgid "LaTeX log"
 msgstr "LaTeX napló"
 
-#: src/frontends/gnome/GLog.C:60
-#: src/frontends/qt2/QLog.C:61
+#: src/frontends/gnome/GLog.C:60 src/frontends/qt2/QLog.C:61
 msgid "No build log file found."
 msgstr "Nem találtam fordítási naplófájlt."
 
-#: src/frontends/gnome/GLog.C:62
-#: src/frontends/qt2/QLog.C:63
+#: src/frontends/gnome/GLog.C:62 src/frontends/qt2/QLog.C:63
 #: src/frontends/xforms/FormLog.C:39
 msgid "No LaTeX log file found."
 msgstr "Nem találtam LaTeX naplófájlt."
 
-#: src/frontends/qt2/Alert_pimpl.C:42
-#: src/frontends/qt2/Alert_pimpl.C:49
+#: src/frontends/qt2/Alert_pimpl.C:42 src/frontends/qt2/Alert_pimpl.C:49
 msgid "&Yes"
 msgstr "&Igen"
 
-#: src/frontends/qt2/Alert_pimpl.C:42
-#: src/frontends/qt2/Alert_pimpl.C:49
+#: src/frontends/qt2/Alert_pimpl.C:42 src/frontends/qt2/Alert_pimpl.C:49
 msgid "&No"
 msgstr "&Nem"
 
@@ -9778,8 +9270,7 @@ msgstr "LyX: %1$s"
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/frontends/qt2/FileDialog.C:57
-#: src/frontends/qt2/FileDialog.C:87
+#: src/frontends/qt2/FileDialog.C:57 src/frontends/qt2/FileDialog.C:87
 msgid "All files (*)"
 msgstr "Minden fájl (*)"
 
@@ -9787,8 +9278,7 @@ msgstr "Minden fájl (*)"
 msgid "Directories"
 msgstr "Könyvtárak"
 
-#: src/frontends/qt2/QCharacter.C:35
-#: src/frontends/xforms/FormCharacter.C:38
+#: src/frontends/qt2/QCharacter.C:35 src/frontends/xforms/FormCharacter.C:38
 msgid "Character Layout"
 msgstr "Betû kinézet"
 
@@ -9952,13 +9442,11 @@ msgstr "Nagyon kis margók"
 msgid "Very wide margins"
 msgstr "Nagyon széles margók"
 
-#: src/frontends/qt2/QERT.C:27
-#: src/frontends/xforms/FormERT.C:25
+#: src/frontends/qt2/QERT.C:27 src/frontends/xforms/FormERT.C:25
 msgid "LaTeX ERT"
 msgstr "LaTeX ERT"
 
-#: src/frontends/qt2/QExternal.C:31
-#: src/insets/insetexternal.C:217
+#: src/frontends/qt2/QExternal.C:31 src/insets/insetexternal.C:217
 msgid "External"
 msgstr "Külsõ"
 
@@ -9966,8 +9454,7 @@ msgstr "Külsõ"
 msgid "Float Settings"
 msgstr "Úsztatási beállítások"
 
-#: src/frontends/qt2/QGraphics.C:48
-#: src/frontends/qt2/QPrefsDialog.C:140
+#: src/frontends/qt2/QGraphics.C:48 src/frontends/qt2/QPrefsDialog.C:140
 #: src/frontends/xforms/FormGraphics.C:66
 msgid "Graphics"
 msgstr "Grafika"
@@ -9976,8 +9463,7 @@ msgstr "Grafika"
 msgid "Scale%"
 msgstr "%Méretarány"
 
-#: src/frontends/qt2/QLog.C:33
-#: src/frontends/xforms/FormLog.C:21
+#: src/frontends/qt2/QLog.C:33 src/frontends/xforms/FormLog.C:21
 msgid "LaTeX Log"
 msgstr "LaTeX napló"
 
@@ -10097,13 +9583,11 @@ msgstr "LyX: Mátrix beszúrása"
 msgid "Minipage"
 msgstr "Minilap"
 
-#: src/frontends/qt2/QParagraph.C:45
-#: src/frontends/xforms/FormParagraph.C:66
+#: src/frontends/qt2/QParagraph.C:45 src/frontends/xforms/FormParagraph.C:66
 msgid "Paragraph Layout"
 msgstr "Bekezdés formátum"
 
-#: src/frontends/qt2/QParagraph.C:300
-#: src/frontends/xforms/FormParagraph.C:283
+#: src/frontends/qt2/QParagraph.C:300 src/frontends/xforms/FormParagraph.C:283
 #: src/paragraph.C:814
 msgid "Senseless with this layout!"
 msgstr "Értelmetlen ezzel a formátummal!"
@@ -10137,8 +9621,7 @@ msgstr "ASCII"
 msgid "Date format"
 msgstr "Dátumforma"
 
-#: src/frontends/qt2/QPrefsDialog.C:154
-#: src/frontends/qt2/QPrefsDialog.C:160
+#: src/frontends/qt2/QPrefsDialog.C:154 src/frontends/qt2/QPrefsDialog.C:160
 #: src/frontends/xforms/FormPreferences.C:249
 msgid "Paths"
 msgstr "Élérési útvonalak"
@@ -10157,8 +9640,7 @@ msgstr "Átalakítók"
 msgid "File formats"
 msgstr "Fájlformátumok"
 
-#: src/frontends/qt2/QPrefsDialog.C:476
-#: src/frontends/qt2/QPrefsDialog.C:479
+#: src/frontends/qt2/QPrefsDialog.C:476 src/frontends/qt2/QPrefsDialog.C:479
 msgid "New"
 msgstr "Új"
 
@@ -10186,8 +9668,7 @@ msgstr "Adja meg a fájlnevet a LyX szerver csõhöz"
 msgid "&Go back"
 msgstr "Visszau&grás"
 
-#: src/frontends/qt2/QRef.C:121
-#: src/frontends/xforms/FormRef.C:275
+#: src/frontends/qt2/QRef.C:121 src/frontends/xforms/FormRef.C:275
 msgid "Go back"
 msgstr "Kurzor vissza a kiindulópontra"
 
@@ -10195,18 +9676,15 @@ msgstr "Kurzor vissza a kiindulópontra"
 msgid "Go to label"
 msgstr "Címkére ugrás"
 
-#: src/frontends/qt2/QSearch.C:30
-#: src/frontends/xforms/FormSearch.C:24
+#: src/frontends/qt2/QSearch.C:30 src/frontends/xforms/FormSearch.C:24
 msgid "Find and Replace"
 msgstr "Keres és cserél"
 
-#: src/frontends/qt2/QSendto.C:33
-#: src/frontends/xforms/FormSendto.C:28
+#: src/frontends/qt2/QSendto.C:33 src/frontends/xforms/FormSendto.C:28
 msgid "Send document to command"
 msgstr "Parancs alkalmazása dokumentumra"
 
-#: src/frontends/qt2/QShowFile.C:27
-#: src/frontends/xforms/FormShowFile.C:22
+#: src/frontends/qt2/QShowFile.C:27 src/frontends/xforms/FormShowFile.C:22
 msgid "Show File"
 msgstr "Fájl megjelenítése"
 
@@ -10214,19 +9692,16 @@ msgstr "Fájl megjelenítése"
 msgid "LyX: Edit Table"
 msgstr "LyX: táblázat szerkesztése"
 
-#: src/frontends/qt2/QTexinfo.C:32
-#: src/frontends/xforms/FormTexinfo.C:30
+#: src/frontends/qt2/QTexinfo.C:32 src/frontends/xforms/FormTexinfo.C:30
 msgid "LaTeX Information"
 msgstr "LaTeX Információ"
 
-#: src/frontends/qt2/QToc.C:38
-#: src/frontends/xforms/FormToc.C:32
+#: src/frontends/qt2/QToc.C:38 src/frontends/xforms/FormToc.C:32
 #: src/insets/insettoc.C:29
 msgid "Table of Contents"
 msgstr "Tartalomjegyzék"
 
-#: src/frontends/qt2/QVCLog.C:31
-#: src/frontends/xforms/FormVCLog.C:23
+#: src/frontends/qt2/QVCLog.C:31 src/frontends/xforms/FormVCLog.C:23
 msgid "Version Control Log"
 msgstr "Verziókövetés naplója"
 
@@ -10251,14 +9726,12 @@ msgstr "Válasszon egy mértéket vagy relatív hosszt"
 msgid "Dismiss"
 msgstr "Mégse"
 
-#: src/frontends/xforms/Alert_pimpl.C:33
-#: src/frontends/xforms/Alert_pimpl.C:41
+#: src/frontends/xforms/Alert_pimpl.C:33 src/frontends/xforms/Alert_pimpl.C:41
 #: src/frontends/xforms/Alert_pimpl.C:45
 msgid "Yes|Yy#y"
 msgstr "Igen|Ii#i"
 
-#: src/frontends/xforms/Alert_pimpl.C:34
-#: src/frontends/xforms/Alert_pimpl.C:42
+#: src/frontends/xforms/Alert_pimpl.C:34 src/frontends/xforms/Alert_pimpl.C:42
 #: src/frontends/xforms/Alert_pimpl.C:46
 msgid "No|Nn#n"
 msgstr "Nem|Nn#n"
@@ -10390,28 +9863,42 @@ msgstr "A kimenetben használt címke."
 
 #. set up the tooltips
 #: src/frontends/xforms/FormBibtex.C:67
-msgid "The database you want to cite from. Insert it without the default extension \".bib\". Use comma to separate databases."
-msgstr "Az adatbázis amibõl idézni akarunk. Adja meg a nevét kiterjesztés nélkül \".bib\". Megadhat többet is, ekkor vesszõvel válassza el õket egymástól."
+msgid ""
+"The database you want to cite from. Insert it without the default extension "
+"\".bib\". Use comma to separate databases."
+msgstr ""
+"Az adatbázis amibõl idézni akarunk. Adja meg a nevét kiterjesztés nélkül \"."
+"bib\". Megadhat többet is, ekkor vesszõvel válassza el õket egymástól."
 
 #: src/frontends/xforms/FormBibtex.C:72
 msgid "Browse directory for BibTeX stylefiles"
 msgstr "Válasszon egy BibTeX stílust fájlt."
 
 #: src/frontends/xforms/FormBibtex.C:75
-msgid "The BibTeX style to use (only one allowed). Insert it without the default extension \".bst\" and without path."
-msgstr "A használandó BibTeX stílusfájl (egyszerre csak egy használható). Adja meg a nevét a \".bst\" kiterjesztés elérési út nélkül."
+msgid ""
+"The BibTeX style to use (only one allowed). Insert it without the default "
+"extension \".bst\" and without path."
+msgstr ""
+"A használandó BibTeX stílusfájl (egyszerre csak egy használható). Adja meg a "
+"nevét a \".bst\" kiterjesztés elérési út nélkül."
 
 #: src/frontends/xforms/FormBibtex.C:79
 msgid "Select if the bibliography should appear in the Table of Contents"
-msgstr "Válassza ki amennyiben azt szeretné, hogy megjelenjen az irodalomjegyzék a tartalomjegyzékben."
+msgstr ""
+"Válassza ki amennyiben azt szeretné, hogy megjelenjen az irodalomjegyzék a "
+"tartalomjegyzékben."
 
 #: src/frontends/xforms/FormBibtex.C:83
 msgid "Choose a BibTeX style from the list."
 msgstr "Válasszon BibTeX stílust a listáról."
 
 #: src/frontends/xforms/FormBibtex.C:91
-msgid "Updates your TeX system for a new bibstyle list. Only the styles which are in directories where TeX finds them are listed!"
-msgstr "A TeX által megtalálható BibTeX stylusfájlok listáját frissíti. Csak azokat listázza amiket a TeX használni tud."
+msgid ""
+"Updates your TeX system for a new bibstyle list. Only the styles which are "
+"in directories where TeX finds them are listed!"
+msgstr ""
+"A TeX által megtalálható BibTeX stylusfájlok listáját frissíti. Csak azokat "
+"listázza amiket a TeX használni tud."
 
 #. set up the tooltip mechanism
 #: src/frontends/xforms/FormCitation.C:162
@@ -10431,28 +9918,53 @@ msgid "Move the selected entry downwards (in the current list)."
 msgstr "A kiválasztott bejegyzés lefelé mozgatása (az aktuális listában)."
 
 #: src/frontends/xforms/FormCitation.C:174
-msgid "The entries which will be cited. Select them with the arrow buttons from the right browser window."
-msgstr "Az irodalomjegyzék bejegyzések, amiket használni fogunk. A jobb oldali ablakból válogathatjuk ki a nyilak segítségével a használni kívánt bejegyzéseket."
+msgid ""
+"The entries which will be cited. Select them with the arrow buttons from the "
+"right browser window."
+msgstr ""
+"Az irodalomjegyzék bejegyzések, amiket használni fogunk. A jobb oldali "
+"ablakból válogathatjuk ki a nyilak segítségével a használni kívánt "
+"bejegyzéseket."
 
 #: src/frontends/xforms/FormCitation.C:181
-msgid "All entries in the database you have loaded (via \"Insert->Lists&TOC->BibTeX Bibliography\"). Move the ones you want to cite with the arrow buttons into the left browser window."
-msgstr "Minden bejegyzés amit az adatbázisba betöltött (a \"Beszúrás->Listák és taralomjegyzék->BibTeX irodalomjegyzék\"-vel)."
+msgid ""
+"All entries in the database you have loaded (via \"Insert->Lists&TOC->BibTeX "
+"Bibliography\"). Move the ones you want to cite with the arrow buttons into "
+"the left browser window."
+msgstr ""
+"Minden bejegyzés amit az adatbázisba betöltött (a \"Beszúrás->Listák és "
+"taralomjegyzék->BibTeX irodalomjegyzék\"-vel)."
 
 #: src/frontends/xforms/FormCitation.C:188
 msgid "Information about the selected bibliography entry"
 msgstr "Információ a kiválasztott irodalomjegyzék bejegyzésrõl"
 
 #: src/frontends/xforms/FormCitation.C:195
-msgid "Here you may select how the citation label should look inside the text (Natbib)."
-msgstr "Itt tudja kiválasztani, hogyan nézzen ki az idézet címkéje a szövegben (Natbib)."
+msgid ""
+"Here you may select how the citation label should look inside the text "
+"(Natbib)."
+msgstr ""
+"Itt tudja kiválasztani, hogyan nézzen ki az idézet címkéje a szövegben "
+"(Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:198
-msgid "Activate if you want to print all authors in a citation with more than three authors, and not \"<First Author> et al.\" (Natbib)."
-msgstr "Válassza ki, amennyiben a kimenetben meg szeretné jeleníteni az összes szerzõt, mikor több mint három létezik, és nem csak a \"<Elsõ Szerzõ>\"-t (Natbib)."
+msgid ""
+"Activate if you want to print all authors in a citation with more than three "
+"authors, and not \"<First Author> et al.\" (Natbib)."
+msgstr ""
+"Válassza ki, amennyiben a kimenetben meg szeretné jeleníteni az összes "
+"szerzõt, mikor több mint három létezik, és nem csak a \"<Elsõ Szerzõ>\"-t "
+"(Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:201
-msgid "Activate if you want to print the first character of the author name as uppercase (\"Van Gogh\", not \"van Gogh\"). Useful at the beginning of sentences (Natbib)."
-msgstr "Válassza ki, amennyiben a szerzõ nevének elsõ betûit nagybetûvel szeretné megjeleníteni (\"Van Gogh\", nem pedig \"van Gogh\"). Hasznos mondatkezdéshez (Natbib)."
+msgid ""
+"Activate if you want to print the first character of the author name as "
+"uppercase (\"Van Gogh\", not \"van Gogh\"). Useful at the beginning of "
+"sentences (Natbib)."
+msgstr ""
+"Válassza ki, amennyiben a szerzõ nevének elsõ betûit nagybetûvel szeretné "
+"megjeleníteni (\"Van Gogh\", nem pedig \"van Gogh\"). Hasznos "
+"mondatkezdéshez (Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:204
 msgid "Optional text which appears before the citation, e.g. \"see <Ref>\""
@@ -10467,8 +9979,12 @@ msgid "Search your database (all fields will be searched)."
 msgstr "Keresés az adatbázisban (minden mezõben keres)"
 
 #: src/frontends/xforms/FormCitation.C:213
-msgid "Activate if you want to have case sensitive search: \"bibtex\" finds \"bibtex\", but not \"BibTeX\"."
-msgstr "Válassza ki, amennyiben kis- és nagybetû érzékeny keresést szeretne, pl. \"bibtex\" megtalálja \"bibtex\"-et, de nem találja \"BibTeX\"-et!"
+msgid ""
+"Activate if you want to have case sensitive search: \"bibtex\" finds \"bibtex"
+"\", but not \"BibTeX\"."
+msgstr ""
+"Válassza ki, amennyiben kis- és nagybetû érzékeny keresést szeretne, pl. "
+"\"bibtex\" megtalálja \"bibtex\"-et, de nem találja \"BibTeX\"-et!"
 
 #: src/frontends/xforms/FormCitation.C:216
 msgid "Activate if you want to enter Regular Expressions."
@@ -10487,8 +10003,12 @@ msgid " SmallSkip | MedSkip | BigSkip | Length "
 msgstr " Kis kihagyás | Közepes kihagyás | Nagy kihagyás | Megadott "
 
 #: src/frontends/xforms/FormDocument.C:233
-msgid " Default | Custom | US letter | US legal | US executive | A3 | A4 | A5 | B3 | B4 | B5 "
-msgstr " alapérték | egyéb | US letter | US legal | US executive | A3 | A4 | A5 | B3 | B4 | B5 "
+msgid ""
+" Default | Custom | US letter | US legal | US executive | A3 | A4 | A5 | B3 "
+"| B4 | B5 "
+msgstr ""
+" alapérték | egyéb | US letter | US legal | US executive | A3 | A4 | A5 | B3 "
+"| B4 | B5 "
 
 #: src/frontends/xforms/FormDocument.C:236
 msgid " None | Small Margins | Very small Margins | Very wide Margins "
@@ -10496,15 +10016,20 @@ msgstr " Nincs | Kis margók | Nagyon kis margók | Nagyon széles margók "
 
 #: src/frontends/xforms/FormDocument.C:286
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | <<text>> | >>text<< "
-msgstr " ``szöveg'' | ''szöveg'' | ,,szöveg`` | ,,szöveg'' | <<szöveg>> | >>szöveg<< "
+msgstr ""
+" ``szöveg'' | ''szöveg'' | ,,szöveg`` | ,,szöveg'' | <<szöveg>> | >>szöveg<< "
 
 #: src/frontends/xforms/FormDocument.C:311
 msgid " Author-year | Numerical "
 msgstr "Szerzõ-év | Numerikus"
 
 #: src/frontends/xforms/FormDocument.C:337
-msgid " Default | Tiny | Smallest | Smaller | Small | Normal | Large | Larger | Largest | Huge | Huger "
-msgstr " Alapérték | Legkisebb | Mégkisebb | Kisebb | Kicsi | Normál | Nagy | Nagyobb | Mégnagyobb | Óriás | Legnagyobb "
+msgid ""
+" Default | Tiny | Smallest | Smaller | Small | Normal | Large | Larger | "
+"Largest | Huge | Huger "
+msgstr ""
+" Alapérték | Legkisebb | Mégkisebb | Kisebb | Kicsi | Normál | Nagy | "
+"Nagyobb | Mégnagyobb | Óriás | Legnagyobb "
 
 #. Stack tabs
 #: src/frontends/xforms/FormDocument.C:352
@@ -10616,7 +10141,8 @@ msgstr "Beállítja a kép szélességét a megadott értékre."
 #: src/frontends/xforms/FormGraphics.C:152
 #, no-c-format
 msgid "Select unit for width; Scale% for scaling whole image."
-msgstr "Megadja a szélesség mértékegységét; Scale% a teljes kép méretarányához."
+msgstr ""
+"Megadja a szélesség mértékegységét; Scale% a teljes kép méretarányához."
 
 #: src/frontends/xforms/FormGraphics.C:154
 msgid "Set the image height to the inserted value."
@@ -10627,12 +10153,22 @@ msgid "Select unit for height."
 msgstr "Megadja a magasság mértékegységét."
 
 #: src/frontends/xforms/FormGraphics.C:158
-msgid "Do not distort the image. Keep image within \"width\" by \"height\" and obey aspect ratio."
-msgstr "Ne torzítsa el a képet. Tartsa a képet a megadott \"Szélesség\" és \"Magasság\" között, de a méretaránynak megfelelõen."
+msgid ""
+"Do not distort the image. Keep image within \"width\" by \"height\" and obey "
+"aspect ratio."
+msgstr ""
+"Ne torzítsa el a képet. Tartsa a képet a megadott \"Szélesség\" és \"Magasság"
+"\" között, de a méretaránynak megfelelõen."
 
 #: src/frontends/xforms/FormGraphics.C:162
-msgid "Pass a filename like \"file.eps.gz\" to the LaTeX output. Useful when LaTeX should unzip the file. Needs an additional file like \"file.eps.bb\" which holds the values for the bounding box."
-msgstr "A fájlnevet úgy adja át a LaTeXnek, mint \"file.eps.gz\". Hasznos, ha a LaTeX-nek kell kitömöríteni a képet. Ekkor, kell egy további \"file.eps.bb\" fájlra is szüksége lesz, ami a befoglaló méretet tartalmazza."
+msgid ""
+"Pass a filename like \"file.eps.gz\" to the LaTeX output. Useful when LaTeX "
+"should unzip the file. Needs an additional file like \"file.eps.bb\" which "
+"holds the values for the bounding box."
+msgstr ""
+"A fájlnevet úgy adja át a LaTeXnek, mint \"file.eps.gz\". Hasznos, ha a "
+"LaTeX-nek kell kitömöríteni a képet. Ekkor, kell egy további \"file.eps.bb\" "
+"fájlra is szüksége lesz, ami a befoglaló méretet tartalmazza."
 
 #: src/frontends/xforms/FormGraphics.C:167
 msgid "Show image only as a rectangle of the original size."
@@ -10648,8 +10184,12 @@ msgid "The lower left y-value of the bounding box."
 msgstr "A keret bal alsó y-koordinátája."
 
 #: src/frontends/xforms/FormGraphics.C:204
-msgid "The upper right x-value of the bounding box; only this input field allows length + unit, e.g. 5cm and sets the unit for the other input fields."
-msgstr "A keret jobb felsõ x-koordinátája; csak ehhez a mezõhöz adhatunk meg egységet és méretet, pl. 5cm és megadja az egységet a többi mezõhöz."
+msgid ""
+"The upper right x-value of the bounding box; only this input field allows "
+"length + unit, e.g. 5cm and sets the unit for the other input fields."
+msgstr ""
+"A keret jobb felsõ x-koordinátája; csak ehhez a mezõhöz adhatunk meg "
+"egységet és méretet, pl. 5cm és megadja az egységet a többi mezõhöz."
 
 #: src/frontends/xforms/FormGraphics.C:208
 msgid "The upper right y-value of the bounding box."
@@ -10660,8 +10200,14 @@ msgid "Select unit for the bounding box values."
 msgstr "Válasszon mértékegységet a keret értékeihez."
 
 #: src/frontends/xforms/FormGraphics.C:213
-msgid "Read the image coordinates new from file. For (e)ps-file the bounding box is read, otherwise the imagesize in pixels. Default unit is \"bp\", the PostScript's b(ig) p(oint)."
-msgstr "A méretek olvasása fájlból. Konkrétan (e)ps fájlhoz, egyébként a kép méretét adja meg képpontokban. Alap mértékegység a \"bp\", a PostScript nagy pont [b(ig) p(oint)]."
+msgid ""
+"Read the image coordinates new from file. For (e)ps-file the bounding box is "
+"read, otherwise the imagesize in pixels. Default unit is \"bp\", the "
+"PostScript's b(ig) p(oint)."
+msgstr ""
+"A méretek olvasása fájlból. Konkrétan (e)ps fájlhoz, egyébként a kép méretét "
+"adja meg képpontokban. Alap mértékegység a \"bp\", a PostScript nagy pont [b"
+"(ig) p(oint)]."
 
 #: src/frontends/xforms/FormGraphics.C:218
 msgid "Clip image to the bounding box values."
@@ -10669,8 +10215,12 @@ msgstr "A képet a megadott keret méretére fogja vágni."
 
 #. set up the tooltips for the extra section
 #: src/frontends/xforms/FormGraphics.C:251
-msgid "Insert the rotation angle in degrees. Positive value rotates anti-clockwise, negative value clockwise."
-msgstr "Adja meg az elforgatás szögét fokokban. Pozitív érték óramutatójárásával ellentétes irányt jelez, a negatív megegyezõt."
+msgid ""
+"Insert the rotation angle in degrees. Positive value rotates anti-clockwise, "
+"negative value clockwise."
+msgstr ""
+"Adja meg az elforgatás szögét fokokban. Pozitív érték óramutatójárásával "
+"ellentétes irányt jelez, a negatív megegyezõt."
 
 #: src/frontends/xforms/FormGraphics.C:255
 msgid "Insert the point of origin for rotation."
@@ -10685,8 +10235,12 @@ msgid "Insert the optional subfigure caption."
 msgstr "Adjon meg a részábra címét."
 
 #: src/frontends/xforms/FormGraphics.C:261
-msgid "Add any additional LaTeX option, which is defined in the graphicx-package and not mentioned in the gui's tabfolders."
-msgstr "Itt megadhat további LaTeX opciókat, bármit használhat amit a graphicx-csomag megért és nem találta meg itt a beállításokban."
+msgid ""
+"Add any additional LaTeX option, which is defined in the graphicx-package "
+"and not mentioned in the gui's tabfolders."
+msgstr ""
+"Itt megadhat további LaTeX opciókat, bármit használhat amit a graphicx-"
+"csomag megért és nem találta meg itt a beállításokban."
 
 #. Stack tabs
 #: src/frontends/xforms/FormGraphics.C:270
@@ -10783,7 +10337,9 @@ msgstr "Érvénytelen hosszúság!"
 
 #: src/frontends/xforms/FormParagraph.C:128
 msgid "None|DefSkip|SmallSkip|MedSkip|BigSkip|VFill|Length"
-msgstr "Nincs|Alapkihagyás|Kiskihagyás|Közepeskihagyás|Nagykihagyás|Függõlegeskitöltés|Megadott"
+msgstr ""
+"Nincs|Alapkihagyás|Kiskihagyás|Közepeskihagyás|Nagykihagyás|"
+"Függõlegeskitöltés|Megadott"
 
 #: src/frontends/xforms/FormParagraph.C:132
 msgid "Default|Single|OneHalf|Double|Custom"
@@ -10854,8 +10410,11 @@ msgid "LyX objects that can be assigned a color."
 msgstr "A LyX elemi részeihez különbözõ színeket rendelhet."
 
 #: src/frontends/xforms/FormPreferences.C:539
-msgid "Modify the LyX object's color. Note: you must then \"Apply\" the change."
-msgstr "Módosítsa a LyX elemi részeinek színét. De utána meg kell nyomnia az \"Alkalmaz\"-t az életbelépéshez!"
+msgid ""
+"Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgstr ""
+"Módosítsa a LyX elemi részeinek színét. De utána meg kell nyomnia az "
+"\"Alkalmaz\"-t az életbelépéshez!"
 
 #: src/frontends/xforms/FormPreferences.C:547
 msgid "Find a new color."
@@ -10894,16 +10453,30 @@ msgid "Convert \"to\" this format"
 msgstr "Átalakítás \"Mire:\" fomrátumra"
 
 #: src/frontends/xforms/FormPreferences.C:995
-msgid "The conversion command. $$i is the input file name, $$b is the file name without its extension and $$o is the name of the output file. $$s can be used as the path to LyX's support directory."
-msgstr "Az átalakító parancs. Használja a $$i-t a kiinduló fomrátumhoz, $$b-t kiterjesztés nélkül, és $$o a kimeneti fájl neve. Használja a $$s-t a lyx segédkönyvtár elérési útjaként."
+msgid ""
+"The conversion command. $$i is the input file name, $$b is the file name "
+"without its extension and $$o is the name of the output file. $$s can be "
+"used as the path to LyX's support directory."
+msgstr ""
+"Az átalakító parancs. Használja a $$i-t a kiinduló fomrátumhoz, $$b-t "
+"kiterjesztés nélkül, és $$o a kimeneti fájl neve. Használja a $$s-t a lyx "
+"segédkönyvtár elérési útjaként."
 
 #: src/frontends/xforms/FormPreferences.C:1001
-msgid "Extra information for the Converter class, whether and how to parse the result, and various other things."
-msgstr "További információ az átalakító osztályról, miként dolgozza fel az eredményt, valamint egyéb dolgok."
+msgid ""
+"Extra information for the Converter class, whether and how to parse the "
+"result, and various other things."
+msgstr ""
+"További információ az átalakító osztályról, miként dolgozza fel az "
+"eredményt, valamint egyéb dolgok."
 
 #: src/frontends/xforms/FormPreferences.C:1005
-msgid "Remove the current converter from the list of available converters. Note: you must then \"Apply\" the change."
-msgstr "Az aktuális átalakító törlése. Megjegyzés: meg kell nyomnia az \"Alkalmaz\"-t az érvényesítéshez."
+msgid ""
+"Remove the current converter from the list of available converters. Note: "
+"you must then \"Apply\" the change."
+msgstr ""
+"Az aktuális átalakító törlése. Megjegyzés: meg kell nyomnia az \"Alkalmaz\"-"
+"t az érvényesítéshez."
 
 #: src/frontends/xforms/FormPreferences.C:1009
 #: src/frontends/xforms/FormPreferences.C:1281
@@ -10911,12 +10484,20 @@ msgid "Add"
 msgstr ""
 
 #: src/frontends/xforms/FormPreferences.C:1010
-msgid "Add the current converter to the list of available converters. Note: you must then \"Apply\" the change."
-msgstr "Az aktuális átalakító hozzáadása a listához. Megjegyzés: meg kell nyomnia az \"Alkalmaz\"-t az érvényesítéshez."
+msgid ""
+"Add the current converter to the list of available converters. Note: you "
+"must then \"Apply\" the change."
+msgstr ""
+"Az aktuális átalakító hozzáadása a listához. Megjegyzés: meg kell nyomnia az "
+"\"Alkalmaz\"-t az érvényesítéshez."
 
 #: src/frontends/xforms/FormPreferences.C:1013
-msgid "Modify the contents of the current converter. Note: you must then \"Apply\" the change."
-msgstr "Aktuális átalakító módosítása. Megjegyzés: meg kell nyomnia az \"Alkalmaz\"-t az érvényesítéshez."
+msgid ""
+"Modify the contents of the current converter. Note: you must then \"Apply\" "
+"the change."
+msgstr ""
+"Aktuális átalakító módosítása. Megjegyzés: meg kell nyomnia az \"Alkalmaz\"-"
+"t az érvényesítéshez."
 
 #: src/frontends/xforms/FormPreferences.C:1258
 msgid "All the currently defined formats known to LyX."
@@ -10932,7 +10513,9 @@ msgstr "A formátum neve, ahogy megjelenik a menükben."
 
 #: src/frontends/xforms/FormPreferences.C:1267
 msgid "The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
-msgstr "A billentyûzet gyorsítóhoz tartozó betû (a formátumnévbõl). Kis- és nagybetûérzékeny."
+msgstr ""
+"A billentyûzet gyorsítóhoz tartozó betû (a formátumnévbõl). Kis- és "
+"nagybetûérzékeny."
 
 #: src/frontends/xforms/FormPreferences.C:1271
 msgid "Used to recognize the file. E.g., ps, pdf, tex."
@@ -10943,20 +10526,34 @@ msgid "The command used to launch the viewer application."
 msgstr "A megjelenító program indításához használt parancs."
 
 #: src/frontends/xforms/FormPreferences.C:1277
-msgid "Remove the current format from the list of available formats. Note: you must then \"Apply\" the change."
-msgstr "Az aktuális formátum törlése a listáról. Megjegyzés: meg kell nyomnia az \"Alkalmaz\"-t az érvényesítéshez."
+msgid ""
+"Remove the current format from the list of available formats. Note: you must "
+"then \"Apply\" the change."
+msgstr ""
+"Az aktuális formátum törlése a listáról. Megjegyzés: meg kell nyomnia az "
+"\"Alkalmaz\"-t az érvényesítéshez."
 
 #: src/frontends/xforms/FormPreferences.C:1282
-msgid "Add the current format to the list of available formats. Note: you must then \"Apply\" the change."
-msgstr "Az aktuális formátum hozzáadása az elérhetõk listájához. Megjegyzés: meg kell nyomnia az \"Alkalmaz\"-t az érvényesítéshez."
+msgid ""
+"Add the current format to the list of available formats. Note: you must then "
+"\"Apply\" the change."
+msgstr ""
+"Az aktuális formátum hozzáadása az elérhetõk listájához. Megjegyzés: meg "
+"kell nyomnia az \"Alkalmaz\"-t az érvényesítéshez."
 
 #: src/frontends/xforms/FormPreferences.C:1285
-msgid "Modify the contents of the current format. Note: you must then \"Apply\" the change."
-msgstr "Az aktuális formátum módosítása. Megjegyzés: meg kell nyomnia az \"Alkalmaz\"-t az érvényesítéshez."
+msgid ""
+"Modify the contents of the current format. Note: you must then \"Apply\" the "
+"change."
+msgstr ""
+"Az aktuális formátum módosítása. Megjegyzés: meg kell nyomnia az \"Alkalmaz"
+"\"-t az érvényesítéshez."
 
 #: src/frontends/xforms/FormPreferences.C:1400
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
-msgstr "A formátumot nem lehet eltávolítani, mert használja egy átalakító. Törölje elõször az átalakítót."
+msgstr ""
+"A formátumot nem lehet eltávolítani, mert használja egy átalakító. Törölje "
+"elõször az átalakítót."
 
 #: src/frontends/xforms/FormPreferences.C:1883
 msgid "Monochrome|Grayscale|Color|Do not display"
@@ -10995,7 +10592,9 @@ msgid "Fonts must be positive!"
 msgstr "A betûméretnek pozitívnak kell lennie!"
 
 #: src/frontends/xforms/FormPreferences.C:2748
-msgid "Fonts must be input in the order Tiny > Smallest > Smaller > Small > Normal > Large > Larger > Largest > Huge > Huger."
+msgid ""
+"Fonts must be input in the order Tiny > Smallest > Smaller > Small > Normal "
+"> Large > Larger > Largest > Huge > Huger."
 msgstr "A megadott betûméreteknek, nagyság szerinti sorrendben kell lenniük!"
 
 #: src/frontends/xforms/FormPreferences.C:2877
@@ -11070,8 +10669,7 @@ msgstr "Címkék dokumentumának kiválasztása"
 msgid "Sort the labels alphabetically."
 msgstr "Címkék rendezése abc-szerint"
 
-#: src/frontends/xforms/FormRef.C:70
-#: src/frontends/xforms/FormRef.C:279
+#: src/frontends/xforms/FormRef.C:70 src/frontends/xforms/FormRef.C:279
 msgid "Go to selected label."
 msgstr "Ugrás kiválasztott címkére"
 
@@ -11130,17 +10728,26 @@ msgstr "Keresés íránya: a szöveg eleje felé tart"
 
 #. Set up the tooltip mechanism
 #: src/frontends/xforms/FormSendto.C:45
-msgid "Export the buffer to this format before running the command below on it."
-msgstr "Exportálja a puffer tartalmát ebbe a formátumba, mielõtt futtatná a leni parancsot."
+msgid ""
+"Export the buffer to this format before running the command below on it."
+msgstr ""
+"Exportálja a puffer tartalmát ebbe a formátumba, mielõtt futtatná a leni "
+"parancsot."
 
 #: src/frontends/xforms/FormSendto.C:48
-msgid "Run this command on the buffer exported to the chosen format. $$FName will be replaced by the name of this file."
-msgstr "Futassa ezt a parancsot a kiválasztott exportált formátumon. $$FName jelenti a fájl nevét."
+msgid ""
+"Run this command on the buffer exported to the chosen format. $$FName will "
+"be replaced by the name of this file."
+msgstr ""
+"Futassa ezt a parancsot a kiválasztott exportált formátumon. $$FName jelenti "
+"a fájl nevét."
 
 #. set up the tooltips
 #: src/frontends/xforms/FormSpellchecker.C:57
 msgid "Type replacement for unknown word or select from suggestions."
-msgstr "Ismeretlen szó esetén ide írja be mire cserélje ki a szót, vagy válassza ki a megfelelõ szót a javaslatok listájáról."
+msgstr ""
+"Ismeretlen szó esetén ide írja be mire cserélje ki a szót, vagy válassza ki "
+"a megfelelõ szót a javaslatok listájáról."
 
 #: src/frontends/xforms/FormSpellchecker.C:60
 msgid "List of replacement suggestions from dictionary."
@@ -11206,8 +10813,12 @@ msgstr "LaTeX osztályok|LaTeX stílusok|BibTeX stílusok"
 
 #. set up the tooltips
 #: src/frontends/xforms/FormTexinfo.C:47
-msgid "Shows the installed classses and styles for LaTeX/BibTeX; available only if the corresponding LyX layout file exists."
-msgstr "Megmutatj a telepített LaTeX és BibTeX osztály és stílusfájlokat; amennyiben a kapcsolódó LyX layout fájl létezik."
+msgid ""
+"Shows the installed classses and styles for LaTeX/BibTeX; available only if "
+"the corresponding LyX layout file exists."
+msgstr ""
+"Megmutatj a telepített LaTeX és BibTeX osztály és stílusfájlokat; amennyiben "
+"a kapcsolódó LyX layout fájl létezik."
 
 #: src/frontends/xforms/FormTexinfo.C:51
 msgid "Show full path or only file name."
@@ -11222,11 +10833,16 @@ msgid "Double click to view contents of file."
 msgstr "A fájl tartalmának megtekintéséhez kattintson duplán."
 
 #: src/frontends/xforms/FormTexinfo.C:64
-msgid "Runs the script \"texhash\" which builds a new LaTeX tree. Needed if you install a new TeX class or style. You need write permissions for the TeX-dirs, often /var/lib/texmf and others."
-msgstr "Futtatja a \"texhash\" parancsot, ami elkészíti a LaTeX fájlnév adatbázist. Szükséges, amennyiben új TeX osztályt vagy stílust telepít. Írás jog kell a TeX könyvtárakhoz, rendszerint a /var/lib/texmf és a többihez."
+msgid ""
+"Runs the script \"texhash\" which builds a new LaTeX tree. Needed if you "
+"install a new TeX class or style. You need write permissions for the TeX-"
+"dirs, often /var/lib/texmf and others."
+msgstr ""
+"Futtatja a \"texhash\" parancsot, ami elkészíti a LaTeX fájlnév adatbázist. "
+"Szükséges, amennyiben új TeX osztályt vagy stílust telepít. Írás jog kell a "
+"TeX könyvtárakhoz, rendszerint a /var/lib/texmf és a többihez."
 
-#: src/frontends/xforms/FormToc.C:99
-#: src/frontends/xforms/FormToc.C:117
+#: src/frontends/xforms/FormToc.C:99 src/frontends/xforms/FormToc.C:117
 msgid "*** No Lists ***"
 msgstr "*** Nincsenek listák ***"
 
@@ -11236,12 +10852,20 @@ msgid "Enter width for the float."
 msgstr "Adja meg az úsztatás szélességét"
 
 #: src/frontends/xforms/FormWrap.C:67
-msgid "Forces float to the right in a paragraph if the page number is odd, and to the left if page number is even."
-msgstr "Amennyiben az oldalszám páratlan, az úsztatás kerüljön a jobb oldalra! Amennyiben páros, a bal oldalra kerüljön!"
+msgid ""
+"Forces float to the right in a paragraph if the page number is odd, and to "
+"the left if page number is even."
+msgstr ""
+"Amennyiben az oldalszám páratlan, az úsztatás kerüljön a jobb oldalra! "
+"Amennyiben páros, a bal oldalra kerüljön!"
 
 #: src/frontends/xforms/FormWrap.C:70
-msgid "Forces float to the left in a paragraph if the pagenumber is odd, and to the right if page number is even."
-msgstr "Amennyiben az oldalszám páratlan, az úsztatás kerüljön a bal oldalra! Amennyiben páros, a jobb oldalra kerüljön!"
+msgid ""
+"Forces float to the left in a paragraph if the pagenumber is odd, and to the "
+"right if page number is even."
+msgstr ""
+"Amennyiben az oldalszám páratlan, az úsztatás kerüljön a bal oldalra! "
+"Amennyiben páros, a jobb oldalra kerüljön!"
 
 #: src/frontends/xforms/FormWrap.C:73
 msgid "Forces float to the left in the paragraph."
@@ -11342,8 +10966,7 @@ msgstr "Importálás %1$s ..."
 msgid "Importing "
 msgstr "Importálás "
 
-#: src/importer.C:64
-#: src/importer.C:68
+#: src/importer.C:64 src/importer.C:68
 msgid "Cannot import file"
 msgstr "A fájl nem importálható"
 
@@ -11369,9 +10992,7 @@ msgstr "Betét kinyitva"
 msgid "BibTeX Generated Bibliography"
 msgstr "BibTeX által készített irodalomjegyzék"
 
-#: src/insets/insetbib.C:268
-#: src/lyx_main.C:576
-#: src/lyx_main.C:580
+#: src/insets/insetbib.C:268 src/lyx_main.C:576 src/lyx_main.C:580
 msgid "LyX Warning!"
 msgstr "LyX figyelmeztetés!"
 
@@ -11399,8 +11020,7 @@ msgstr "Hibajelölõ kinyitva"
 msgid "Opened ERT Inset"
 msgstr "ERT-betét kinyitva"
 
-#: src/insets/insetert.C:246
-#: src/insets/insettabular.C:2083
+#: src/insets/insetert.C:246 src/insets/insettabular.C:2083
 #: src/insets/insettext.C:1407
 msgid "Impossible operation!"
 msgstr "Lehetetlen mûvelet!"
@@ -11409,14 +11029,12 @@ msgstr "Lehetetlen mûvelet!"
 msgid "Not permitted to change font-types inside ERT-insets!"
 msgstr "ERT betétekben nem lehet betûtípust váltani!"
 
-#: src/insets/insetert.C:248
-#: src/insets/insettabular.C:2085
+#: src/insets/insetert.C:248 src/insets/insettabular.C:2085
 #: src/insets/insettext.C:1409
 msgid "Sorry."
 msgstr "Sajnálom."
 
-#: src/insets/insetert.C:505
-#: src/insets/insetert.C:516
+#: src/insets/insetert.C:505 src/insets/insetert.C:516
 msgid "ERT"
 msgstr "ERT"
 
@@ -11445,8 +11063,7 @@ msgstr "%1$s listája"
 msgid "List of "
 msgstr "Listája"
 
-#: src/insets/insetfoot.C:35
-#: src/insets/insetfoot.C:43
+#: src/insets/insetfoot.C:35 src/insets/insetfoot.C:43
 msgid "foot"
 msgstr "lábjegyzet"
 
@@ -11506,8 +11123,7 @@ msgstr "A fájl nem másolható"
 msgid "into tempdir"
 msgstr "ideiglenes könyvtárba"
 
-#: src/insets/insetgraphics.C:676
-#: src/insets/insetgraphics.C:680
+#: src/insets/insetgraphics.C:676 src/insets/insetgraphics.C:680
 msgid "Cannot convert Image (not existing file?)"
 msgstr "A kép nem alakítható át (a fájl nem létezik?)"
 
@@ -11541,8 +11157,7 @@ msgstr "Szó szerinti bevitel*"
 msgid "Idx"
 msgstr "Tárgyszó"
 
-#: src/insets/insetlabel.C:43
-#: src/mathed/math_hullinset.C:815
+#: src/insets/insetlabel.C:43 src/mathed/math_hullinset.C:815
 msgid "Enter label:"
 msgstr "Adja meg a címkét:"
 
@@ -11554,8 +11169,7 @@ msgstr "lista"
 msgid "Opened List Inset"
 msgstr "Felsorolásbetét kinyitva"
 
-#: src/insets/insetmarginal.C:30
-#: src/insets/insetmarginal.C:38
+#: src/insets/insetmarginal.C:30 src/insets/insetmarginal.C:38
 msgid "margin"
 msgstr "széljegyzet"
 
@@ -11575,8 +11189,7 @@ msgstr "Minilapbetét kinyitva"
 msgid "Opened Note Inset"
 msgstr "Megjegyzésbetét kinyitva"
 
-#: src/insets/insetoptarg.C:35
-#: src/insets/insetoptarg.C:45
+#: src/insets/insetoptarg.C:35 src/insets/insetoptarg.C:45
 msgid "opt"
 msgstr "rövid cím"
 
@@ -11593,48 +11206,39 @@ msgstr "Szülõ: %s"
 msgid "Parent: "
 msgstr "Szülõ: "
 
-#: src/insets/insetref.C:114
-#: src/mathed/ref_inset.C:123
+#: src/insets/insetref.C:114 src/mathed/ref_inset.C:123
 msgid "Ref: "
 msgstr "Hiv:"
 
-#: src/insets/insetref.C:115
-#: src/mathed/ref_inset.C:124
+#: src/insets/insetref.C:115 src/mathed/ref_inset.C:124
 msgid "Page Number"
 msgstr "Oldalszám"
 
-#: src/insets/insetref.C:115
-#: src/mathed/ref_inset.C:124
+#: src/insets/insetref.C:115 src/mathed/ref_inset.C:124
 msgid "Page: "
 msgstr "Oldal: "
 
-#: src/insets/insetref.C:116
-#: src/mathed/ref_inset.C:125
+#: src/insets/insetref.C:116 src/mathed/ref_inset.C:125
 msgid "Textual Page Number"
 msgstr "Szöveges oldalszám"
 
-#: src/insets/insetref.C:116
-#: src/mathed/ref_inset.C:125
+#: src/insets/insetref.C:116 src/mathed/ref_inset.C:125
 msgid "TextPage: "
 msgstr "Szövegoldal:"
 
-#: src/insets/insetref.C:117
-#: src/mathed/ref_inset.C:126
+#: src/insets/insetref.C:117 src/mathed/ref_inset.C:126
 msgid "Standard+Textual Page"
 msgstr "Szokásos+szöveges oldal"
 
-#: src/insets/insetref.C:117
-#: src/mathed/ref_inset.C:126
+#: src/insets/insetref.C:117 src/mathed/ref_inset.C:126
 msgid "Ref+Text: "
 msgstr "Hiv+szöveg:"
 
-#: src/insets/insetref.C:118
-#: src/mathed/ref_inset.C:127
+#: src/insets/insetref.C:118 src/mathed/ref_inset.C:127
 msgid "PrettyRef"
 msgstr "PrettyRef"
 
-#: src/insets/insetref.C:118
-#: src/mathed/ref_inset.C:127
+#: src/insets/insetref.C:118 src/mathed/ref_inset.C:127
 msgid "PrettyRef: "
 msgstr "PrettyRef: "
 
@@ -11654,18 +11258,15 @@ msgstr "Szövegbetét kinyitva"
 msgid "Cannot include more than one paragraph!"
 msgstr "Nem tudok csatolni egynél több bekezdést!"
 
-#: src/insets/insettext.C:1483
-#: src/text3.C:1130
+#: src/insets/insettext.C:1483 src/text3.C:1130
 msgid "Layout "
 msgstr "Elrendezés "
 
-#: src/insets/insettext.C:1483
-#: src/text3.C:1131
+#: src/insets/insettext.C:1483 src/text3.C:1131
 msgid " not known"
 msgstr " ismeretlen"
 
-#: src/insets/insettext.C:1536
-#: src/text3.C:912
+#: src/insets/insettext.C:1536 src/text3.C:912
 msgid "Unknown spacing argument: "
 msgstr "Ismeretlen térköz paraméter: "
 
@@ -11701,15 +11302,11 @@ msgstr "körbefuttatott: "
 msgid "Opened Wrap Inset"
 msgstr "Körbefuttatott-betét nyitva"
 
-#: src/ispell.C:197
-#: src/ispell.C:204
-#: src/ispell.C:213
+#: src/ispell.C:197 src/ispell.C:204 src/ispell.C:213
 msgid "Can't create pipe for spellchecker."
 msgstr "Nem tudok létrehozni csövet a helyesírás-ellenõrzõhöz."
 
-#: src/ispell.C:218
-#: src/ispell.C:223
-#: src/ispell.C:228
+#: src/ispell.C:218 src/ispell.C:223 src/ispell.C:228
 msgid "Can't open pipe for spellchecker."
 msgstr "Nem tudom megnyitni a csövet a helyesírás-ellenõrzõhöz."
 
@@ -11818,8 +11415,7 @@ msgstr "(Nem esetén a dokumentum nem lesz mentve.)"
 msgid "Choose a filename to save document as"
 msgstr "Mentés másként ..."
 
-#: src/lyx_cb.C:119
-#: src/lyxfunc.C:1644
+#: src/lyx_cb.C:119 src/lyxfunc.C:1644
 msgid "Templates|#T#t"
 msgstr "Sablonok|#A#a"
 
@@ -11920,8 +11516,7 @@ msgstr "Válassza ki a beszúrandó fájlt"
 msgid "Error! Specified file is unreadable: "
 msgstr "Hiba! A megadott fájl olvashatatlan:"
 
-#: src/lyx_cb.C:519
-#: src/mathed/math_hullinset.C:814
+#: src/lyx_cb.C:519 src/mathed/math_hullinset.C:814
 msgid "Enter new label to insert:"
 msgstr "Adja meg a beszúrandó címkét:"
 
@@ -12028,8 +11623,7 @@ msgstr "Nem sikerült létrehozni a könyvtárat. Kilépek."
 msgid "Error while reading %1$s."
 msgstr "Hiba olvasás közben: %1$s."
 
-#: src/lyx_main.C:578
-#: src/lyx_main.C:582
+#: src/lyx_main.C:578 src/lyx_main.C:582
 msgid "Using built-in defaults."
 msgstr "A beépített alapértékek használata."
 
@@ -12126,18 +11720,12 @@ msgstr "Nem tudja kicserélni a szimpla szóközt, sem az üres betût."
 msgid "Symbol"
 msgstr "Szimbólum"
 
-#: src/lyxfont.C:42
-#: src/lyxfont.C:45
-#: src/lyxfont.C:48
-#: src/lyxfont.C:54
+#: src/lyxfont.C:42 src/lyxfont.C:45 src/lyxfont.C:48 src/lyxfont.C:54
 #: src/lyxfont.C:57
 msgid "Inherit"
 msgstr "Öröklés"
 
-#: src/lyxfont.C:42
-#: src/lyxfont.C:45
-#: src/lyxfont.C:49
-#: src/lyxfont.C:54
+#: src/lyxfont.C:42 src/lyxfont.C:45 src/lyxfont.C:49 src/lyxfont.C:54
 #: src/lyxfont.C:57
 msgid "Ignore"
 msgstr "Mellõz"
@@ -12248,8 +11836,7 @@ msgstr "Dokumentum mentése: "
 msgid " done."
 msgstr " kész."
 
-#: src/lyxfunc.C:1139
-#: src/mathed/formulabase.C:1032
+#: src/lyxfunc.C:1139 src/mathed/formulabase.C:1032
 msgid "Missing argument"
 msgstr "Hiányzó paraméter"
 
@@ -12277,7 +11864,9 @@ msgstr "Szintaxis: set-color <lyx_name> <x11_name>"
 #: src/lyxfunc.C:1499
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
-msgstr "Set-color \"%1$s\" sikertelen - a szín nincs meghatározva vagy nem lehet újradefiniálni"
+msgstr ""
+"Set-color \"%1$s\" sikertelen - a szín nincs meghatározva vagy nem lehet "
+"újradefiniálni"
 
 #: src/lyxfunc.C:1504
 msgid "Set-color "
@@ -12364,12 +11953,20 @@ msgid "Welcome to LyX!"
 msgstr "Üdvözlöm a LyX-ben!"
 
 #: src/lyxrc.C:1882
-msgid "The font encoding used for the LaTeX2e fontenc package. T1 is highly recommended for non-English languages."
-msgstr "A betûkészlet kódolása, amit a LaTeX2e csomaghoz használ. A T1 kódolás használata javasolt nem angol jellegû nyelvekhez."
+msgid ""
+"The font encoding used for the LaTeX2e fontenc package. T1 is highly "
+"recommended for non-English languages."
+msgstr ""
+"A betûkészlet kódolása, amit a LaTeX2e csomaghoz használ. A T1 kódolás "
+"használata javasolt nem angol jellegû nyelvekhez."
 
 #: src/lyxrc.C:1886
-msgid "The default printer to print on. If none is specified, LyX will use the environment variable PRINTER."
-msgstr "Az alapértelmezett nyomtató. Ha nincs ilyen megadva, a LyX a PRINTER környezeti változót használja."
+msgid ""
+"The default printer to print on. If none is specified, LyX will use the "
+"environment variable PRINTER."
+msgstr ""
+"Az alapértelmezett nyomtató. Ha nincs ilyen megadva, a LyX a PRINTER "
+"környezeti változót használja."
 
 #: src/lyxrc.C:1890
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
@@ -12416,8 +12013,11 @@ msgid "Option to pass to the print program to print on a specific printer."
 msgstr "Adott nyomtatón való nyomtatás kapcsolója."
 
 #: src/lyxrc.C:1934
-msgid "Select for LyX to pass the name of the destination printer to your print command."
-msgstr "Válassza, hogy megadhassa a nyomtatási parancsban használandó nyomtató nevét."
+msgid ""
+"Select for LyX to pass the name of the destination printer to your print "
+"command."
+msgstr ""
+"Válassza, hogy megadhassa a nyomtatási parancsban használandó nyomtató nevét."
 
 #: src/lyxrc.C:1938
 msgid "Option to pass to the print program to print to a file."
@@ -12428,29 +12028,52 @@ msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr "A fájlba nyomtatáshoz a fájl kiterjesztése. Rendszerint \".ps\"."
 
 #: src/lyxrc.C:1946
-msgid "Extra options to pass to printing program after everything else, but before the filename of the DVI file to be printed."
-msgstr "Extra opciók, amiket meg kell adni a nyomtatóprogramnak, mielõtt megadjuk a DVI fájl nevét, amibe nyomtatunk."
+msgid ""
+"Extra options to pass to printing program after everything else, but before "
+"the filename of the DVI file to be printed."
+msgstr ""
+"Extra opciók, amiket meg kell adni a nyomtatóprogramnak, mielõtt megadjuk a "
+"DVI fájl nevét, amibe nyomtatunk."
 
 #: src/lyxrc.C:1950
-msgid "When set, this printer option automatically prints to a file and then calls a separate print spooling program on that file with the given name and arguments."
-msgstr "Amikor ez be van állítva, automatikusan fájlba nyomtat, azután meghív egy másik nyomtatóprogramot ezzel a fájlal, a megadott névvel és a beállított paraméterekkel."
+msgid ""
+"When set, this printer option automatically prints to a file and then calls "
+"a separate print spooling program on that file with the given name and "
+"arguments."
+msgstr ""
+"Amikor ez be van állítva, automatikusan fájlba nyomtat, azután meghív egy "
+"másik nyomtatóprogramot ezzel a fájlal, a megadott névvel és a beállított "
+"paraméterekkel."
 
 #: src/lyxrc.C:1954
-msgid "If you specify a printer name in the print dialog, the following argument is prepended along with the printer name after the spool command."
-msgstr "Ha megadja a nyomtató nevét az ablakban, a következõ paramétert hozzácsatolja a nyomtató nevével a nyomtatási parancs után."
+msgid ""
+"If you specify a printer name in the print dialog, the following argument is "
+"prepended along with the printer name after the spool command."
+msgstr ""
+"Ha megadja a nyomtató nevét az ablakban, a következõ paramétert "
+"hozzácsatolja a nyomtató nevével a nyomtatási parancs után."
 
 #: src/lyxrc.C:1958
-msgid "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes wrong, override the setting here."
-msgstr "A monitor felbontását (DPI = 2,54 cm-re esõ pontok száma) a LyX automatikusan felismeri. Hibás esetben itt felülírhatja ezt."
+msgid ""
+"DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
+"wrong, override the setting here."
+msgstr ""
+"A monitor felbontását (DPI = 2,54 cm-re esõ pontok száma) a LyX "
+"automatikusan felismeri. Hibás esetben itt felülírhatja ezt."
 
 #: src/lyxrc.C:1963
 #, no-c-format
-msgid "The zoom percentage for screen fonts. A setting of 100% will make the fonts roughly the same size as on paper."
-msgstr "A képernyõn megjelenõ betûkészletek nagyítása. 100% beállítása esetén nagyjából ugyanaz a méret jelenik meg a képernyõn, mint papíron."
+msgid ""
+"The zoom percentage for screen fonts. A setting of 100% will make the fonts "
+"roughly the same size as on paper."
+msgstr ""
+"A képernyõn megjelenõ betûkészletek nagyítása. 100% beállítása esetén "
+"nagyjából ugyanaz a méret jelenik meg a képernyõn, mint papíron."
 
 #: src/lyxrc.C:1967
 msgid "The font sizes used for calculating the scaling of the screen fonts."
-msgstr "A képernyõn megjelenõ betûkészletek méretarányaihoz használt betûméretek."
+msgstr ""
+"A képernyõn megjelenõ betûkészletek méretarányaihoz használt betûméretek."
 
 #: src/lyxrc.C:1973
 msgid "The screen fonts used to display the text while editing."
@@ -12473,64 +12096,119 @@ msgid "The encoding for the menu/popups fonts."
 msgstr "A menük és felbukkanó ablakok betûkészletének kódolása."
 
 #: src/lyxrc.C:1996
-msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
-msgstr "A biztonsági mentések között eltelt idõ (másodpercben). 0 esetén nincs biztonsági mentés."
+msgid ""
+"The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgstr ""
+"A biztonsági mentések között eltelt idõ (másodpercben). 0 esetén nincs "
+"biztonsági mentés."
 
 #: src/lyxrc.C:2000
-msgid "The default path for your documents. An empty value selects the directory LyX was started from."
-msgstr "A dokumentumainak alapértelmezett helye. Üres érték esetén, a LyX indítási könyvtára."
+msgid ""
+"The default path for your documents. An empty value selects the directory "
+"LyX was started from."
+msgstr ""
+"A dokumentumainak alapértelmezett helye. Üres érték esetén, a LyX indítási "
+"könyvtára."
 
 #: src/lyxrc.C:2004
-msgid "The path that LyX will set when offering to choose a template. An empty value selects the directory LyX was started from."
-msgstr "A LyX által felajánlott elérési út sablonválasztáshoz. Az üres érték a LyX indítási könyvtárát jelenti."
+msgid ""
+"The path that LyX will set when offering to choose a template. An empty "
+"value selects the directory LyX was started from."
+msgstr ""
+"A LyX által felajánlott elérési út sablonválasztáshoz. Az üres érték a LyX "
+"indítási könyvtárát jelenti."
 
 #: src/lyxrc.C:2008
-msgid "LyX will place its temporary directories in this path. They will be deleted when you quit LyX."
-msgstr "A LyX által használt ideiglenes fájlok helye. A programból való kilépés után letörlõdnek."
+msgid ""
+"LyX will place its temporary directories in this path. They will be deleted "
+"when you quit LyX."
+msgstr ""
+"A LyX által használt ideiglenes fájlok helye. A programból való kilépés után "
+"letörlõdnek."
 
 #: src/lyxrc.C:2012
-msgid "Select if you wish to use a temporary directory structure to store temporary TeX output."
-msgstr "Válassza ki, ha használni szeretne ideigleneskönyvtár-hierarchiát a TeX kimenet tárolásához."
+msgid ""
+"Select if you wish to use a temporary directory structure to store temporary "
+"TeX output."
+msgstr ""
+"Válassza ki, ha használni szeretne ideigleneskönyvtár-hierarchiát a TeX "
+"kimenet tárolásához."
 
 #: src/lyxrc.C:2016
 msgid "The file where the last-files information should be stored."
 msgstr "A fájl, ahol az utoljára használt fájlok neveit tárolja."
 
 #: src/lyxrc.C:2020
-msgid "De-select if you don't want the current selection to be replaced automatically by what you type."
-msgstr "Törölje, ha nem akarja, hogy az aktuális kijelölés automatikusan cserélõdjön azzal, amit gépel."
+msgid ""
+"De-select if you don't want the current selection to be replaced "
+"automatically by what you type."
+msgstr ""
+"Törölje, ha nem akarja, hogy az aktuális kijelölés automatikusan cserélõdjön "
+"azzal, amit gépel."
 
 #: src/lyxrc.C:2024
-msgid "De-select if you don't want the class options to be reset to defaults after class change."
-msgstr "Törölje, ha nem akarja az osztálybeállításokat alapállapotba hozni osztályváltozás után."
+msgid ""
+"De-select if you don't want the class options to be reset to defaults after "
+"class change."
+msgstr ""
+"Törölje, ha nem akarja az osztálybeállításokat alapállapotba hozni "
+"osztályváltozás után."
 
 #: src/lyxrc.C:2028
-msgid "This starts the lyxserver. The pipes get an additional extension \".in\" and \".out\". Only for advanced users."
-msgstr "Ez elindítja a lyxservert. A csõ kap egy további kiterjesztést \".in\" és \".out\". Csak gyakorlott felhasználóknak."
+msgid ""
+"This starts the lyxserver. The pipes get an additional extension \".in\" and "
+"\".out\". Only for advanced users."
+msgstr ""
+"Ez elindítja a lyxservert. A csõ kap egy további kiterjesztést \".in\" és \"."
+"out\". Csak gyakorlott felhasználóknak."
 
 #: src/lyxrc.C:2032
-msgid "Keybindings file. Can either specify an absolute path, or LyX will look in its global and local bind/ directories."
-msgstr "Billentyûkiosztás-fájl. Megadhat teljes elérési utat is, vagy a LyX a globális és helyi bind/ könyvtárban keres."
+msgid ""
+"Keybindings file. Can either specify an absolute path, or LyX will look in "
+"its global and local bind/ directories."
+msgstr ""
+"Billentyûkiosztás-fájl. Megadhat teljes elérési utat is, vagy a LyX a "
+"globális és helyi bind/ könyvtárban keres."
 
 #: src/lyxrc.C:2036
-msgid "The UI (user interface) file. Can either specify an absolute path, or LyX will look in its global and local ui/ directories."
-msgstr "Az UI (felhasználói felület) fájl. Megadhat egy abszolút útvonalat, vagy a LyX a globális és lokális ui/ könyvtáraiban fog keresni."
+msgid ""
+"The UI (user interface) file. Can either specify an absolute path, or LyX "
+"will look in its global and local ui/ directories."
+msgstr ""
+"Az UI (felhasználói felület) fájl. Megadhat egy abszolút útvonalat, vagy a "
+"LyX a globális és lokális ui/ könyvtáraiban fog keresni."
 
 #: src/lyxrc.C:2042
-msgid "Use this to set the correct mapping file for your keyboard. You'll need this if you for instance want to type German documents on an American keyboard."
-msgstr "Használja a megfelelõ billentyûzetkiosztás beállításához. Szüksége lesz erre, ha például németül szeretne gépeli egy angol billentyûzeten."
+msgid ""
+"Use this to set the correct mapping file for your keyboard. You'll need this "
+"if you for instance want to type German documents on an American keyboard."
+msgstr ""
+"Használja a megfelelõ billentyûzetkiosztás beállításához. Szüksége lesz "
+"erre, ha például németül szeretne gépeli egy angol billentyûzeten."
 
 #: src/lyxrc.C:2046
-msgid "Use to define an external program to render tables in the ASCII output. E.g. \"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"none\" is specified, an internal routine is used."
-msgstr "Itt megadhatja azt a külsõ programot, amivel táblázatot formázhat ASCII kimenetûre. Pl. \"groff -t -Tlatin1 $$FName\" ahol $$FName a bemeneti fájl neve. Ha \"none\"-t adja meg, a beépített programot fogja használni."
+msgid ""
+"Use to define an external program to render tables in the ASCII output. E.g. "
+"\"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"none\" "
+"is specified, an internal routine is used."
+msgstr ""
+"Itt megadhatja azt a külsõ programot, amivel táblázatot formázhat ASCII "
+"kimenetûre. Pl. \"groff -t -Tlatin1 $$FName\" ahol $$FName a bemeneti fájl "
+"neve. Ha \"none\"-t adja meg, a beépített programot fogja használni."
 
 #: src/lyxrc.C:2050
-msgid "This is the maximum line length of an exported ASCII file (LaTeX, SGML or plain text)."
-msgstr "Ez a maximális sorhossza az exportált ASCII fájlnak (LaTeX, SGML vagy sima szöveg)."
+msgid ""
+"This is the maximum line length of an exported ASCII file (LaTeX, SGML or "
+"plain text)."
+msgstr ""
+"Ez a maximális sorhossza az exportált ASCII fájlnak (LaTeX, SGML vagy sima "
+"szöveg)."
 
 #: src/lyxrc.C:2054
 msgid "Maximal number of lastfiles. Up to 9 can appear in the file menu."
-msgstr "Az utoljára használt fájlok max. száma. Legfeljebb 9 jelenhet meg a fájl menüben."
+msgstr ""
+"Az utoljára használt fájlok max. száma. Legfeljebb 9 jelenhet meg a fájl "
+"menüben."
 
 #: src/lyxrc.C:2058
 msgid "Select to check whether the lastfiles still exist."
@@ -12538,51 +12216,89 @@ msgstr "Válassza ki, az utoljára használt fájlok tárolásához használt fájlt."
 
 #: src/lyxrc.C:2062
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
-msgstr "Adja meg a papír parancsát a DVI-nézõhöz (hagyja üresen vagy használja a \"-paper\"-t)"
+msgstr ""
+"Adja meg a papír parancsát a DVI-nézõhöz (hagyja üresen vagy használja a \"-"
+"paper\"-t)"
 
 #: src/lyxrc.C:2066
 msgid "Specify the default paper size."
 msgstr "Adja meg az alapértelmezett papírméretet!"
 
 #: src/lyxrc.C:2073
-msgid "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as legal words?"
-msgstr "Vegye figyelembe az összetett szavakat, mint pl. \"lemezmeghajtó\" ahelyett, hogy \"lemez meghajtó\", mint helyes szavak?"
+msgid ""
+"Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
+"legal words?"
+msgstr ""
+"Vegye figyelembe az összetett szavakat, mint pl. \"lemezmeghajtó\" ahelyett, "
+"hogy \"lemez meghajtó\", mint helyes szavak?"
 
 #: src/lyxrc.C:2077
 msgid "What command runs the spell checker?"
 msgstr "Melyik parancs indítja a helyesírás-ellenõrzõt?"
 
 #: src/lyxrc.C:2081
-msgid "Specify whether to pass the -T input encoding option to ispell. Enable this if you can't spellcheck words with international letters in them. This may not work with all dictionaries."
-msgstr "Adja meg, hogy a -T kódolási opciót át akarja-e adni az ispell-nek. Engedélyezze, amennyiben nem tud helyesírást ellenõrizni bizonyos betûkkel. Ez nem biztos, hogy minden szótárral mûködni fog."
+msgid ""
+"Specify whether to pass the -T input encoding option to ispell. Enable this "
+"if you can't spellcheck words with international letters in them. This may "
+"not work with all dictionaries."
+msgstr ""
+"Adja meg, hogy a -T kódolási opciót át akarja-e adni az ispell-nek. "
+"Engedélyezze, amennyiben nem tud helyesírást ellenõrizni bizonyos betûkkel. "
+"Ez nem biztos, hogy minden szótárral mûködni fog."
 
 #: src/lyxrc.C:2086
-msgid "Specify an alternate language. The default is to use the language of the document."
-msgstr "Adjon meg egy alternatív nyelvet! Az alapértelmezett nyelv a dokumentum nyelve."
+msgid ""
+"Specify an alternate language. The default is to use the language of the "
+"document."
+msgstr ""
+"Adjon meg egy alternatív nyelvet! Az alapértelmezett nyelv a dokumentum "
+"nyelve."
 
 #: src/lyxrc.C:2091
-msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid ""
+"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "Adjon meg egy alternatív személyes szótárfájlt. Pl. \"ispell_magyar\"."
 
 #: src/lyxrc.C:2096
 msgid "Specify additional chars that can be part of a word."
-msgstr "Adjon meg további karaktereket (betûk, jelek), amelyek egy szó részei lehetnek."
+msgstr ""
+"Adjon meg további karaktereket (betûk, jelek), amelyek egy szó részei "
+"lehetnek."
 
 #: src/lyxrc.C:2100
-msgid "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting this option may make some fonts look blocky in LyX. Deselecting this option makes LyX use the nearest bitmap font size available, instead of scaling."
-msgstr "Átméretezhetõ bitmap betûkészletek engedélyezése. Ha bitmap betûkészletet használ, ezt kiválasztva néhány betûkészlet csúnyán jelenhet meg a LyX-ben. Törölve ezt az opciót, a LyX ki fogja választani a legközelebbi bitmap betûkészletet az átméretezés helyett."
+msgid ""
+"Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
+"this option may make some fonts look blocky in LyX. Deselecting this option "
+"makes LyX use the nearest bitmap font size available, instead of scaling."
+msgstr ""
+"Átméretezhetõ bitmap betûkészletek engedélyezése. Ha bitmap betûkészletet "
+"használ, ezt kiválasztva néhány betûkészlet csúnyán jelenhet meg a LyX-ben. "
+"Törölve ezt az opciót, a LyX ki fogja választani a legközelebbi bitmap "
+"betûkészletet az átméretezés helyett."
 
 #: src/lyxrc.C:2104
-msgid "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -n38\" Refer to the ChkTeX documentation."
-msgstr "Adja meg, hogyan futtassa a chktex-et. Pl. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -n38\". Nézze meg a ChkTeX dokumentációját."
+msgid ""
+"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
+"n38\" Refer to the ChkTeX documentation."
+msgstr ""
+"Adja meg, hogyan futtassa a chktex-et. Pl. \"chktex -n11 -n1 -n3 -n6 -n9 -22 "
+"-n25 -n30 -n38\". Nézze meg a ChkTeX dokumentációját."
 
 #: src/lyxrc.C:2108
-msgid "LyX normally doesn't update the cursor position if you move the scrollbar. Set to true if you'd prefer to always have the cursor on screen."
-msgstr "A LyX nem módosítja a kurzor pozícióját a görgetõsáv mozgatásakor. Állítsa igazra, ha azt szeretné, hogy a kurzor mindig a képernyõn legyen."
+msgid ""
+"LyX normally doesn't update the cursor position if you move the scrollbar. "
+"Set to true if you'd prefer to always have the cursor on screen."
+msgstr ""
+"A LyX nem módosítja a kurzor pozícióját a görgetõsáv mozgatásakor. Állítsa "
+"igazra, ha azt szeretné, hogy a kurzor mindig a képernyõn legyen."
 
 #: src/lyxrc.C:2112
-msgid "Iconify the dialogs when the main window is iconified. (Affects only dialogs shown after the change has been made.)"
-msgstr "Ikonizálja a dialógusablakokat, amikor a fõablak is ikonizálva van. (Csak a változás után mutatott dialógusablakokra van hatása.)"
+msgid ""
+"Iconify the dialogs when the main window is iconified. (Affects only dialogs "
+"shown after the change has been made.)"
+msgstr ""
+"Ikonizálja a dialógusablakokat, amikor a fõablak is ikonizálva van. (Csak a "
+"változás után mutatott dialógusablakokra van hatása.)"
 
 #: src/lyxrc.C:2116
 msgid "Select how LyX will display any graphics."
@@ -12593,40 +12309,71 @@ msgid "De-select if you don't want LyX to create backup files."
 msgstr "Törölje, amennyiben nem szeretne biztonsági mentés funkciót használni."
 
 #: src/lyxrc.C:2124
-msgid "The path for storing backup files. If it is an empty string, LyX will store the backup file in the same directory as the original file."
-msgstr "Elérési út biztonsági másolatok tárolásához. Ha nincs semmi megadva, a LyX az eredeti fájl mellé készít biztonsági mentést."
+msgid ""
+"The path for storing backup files. If it is an empty string, LyX will store "
+"the backup file in the same directory as the original file."
+msgstr ""
+"Elérési út biztonsági másolatok tárolásához. Ha nincs semmi megadva, a LyX "
+"az eredeti fájl mellé készít biztonsági mentést."
 
 #: src/lyxrc.C:2128
-msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
-msgstr "Válassza ki a jobbról-balra író nyelvek támogatásához (pl. héber, arab)."
+msgid ""
+"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgstr ""
+"Válassza ki a jobbról-balra író nyelvek támogatásához (pl. héber, arab)."
 
 #: src/lyxrc.C:2132
-msgid "Select to control the highlighting of words with a language foreign to that of the document."
-msgstr "Válassza ki a dokumentumétól eltérõ nyelvi környezetek szavainak kiemeléséhez."
+msgid ""
+"Select to control the highlighting of words with a language foreign to that "
+"of the document."
+msgstr ""
+"Válassza ki a dokumentumétól eltérõ nyelvi környezetek szavainak "
+"kiemeléséhez."
 
 #: src/lyxrc.C:2136
-msgid "The LaTeX command for loading the language package. E.g. \"\\usepackage{babel}\", \"\\usepackage{omega}\"."
-msgstr "A nyelvi csomagok betöltéséhez használt LaTeX parancs. Pl. \"\\usepackage{babel}\", \"\\usepackage{omega}\"."
+msgid ""
+"The LaTeX command for loading the language package. E.g. \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
+msgstr ""
+"A nyelvi csomagok betöltéséhez használt LaTeX parancs. Pl. \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
 
 #: src/lyxrc.C:2140
-msgid "De-select if you don't want the language(s) used as an argument to \\documentclass."
-msgstr "Törölje, ha nem akarja a nyelv(ek)et a \\documentclass paramétereként használni."
+msgid ""
+"De-select if you don't want the language(s) used as an argument to "
+"\\documentclass."
+msgstr ""
+"Törölje, ha nem akarja a nyelv(ek)et a \\documentclass paramétereként "
+"használni."
 
 #: src/lyxrc.C:2144
-msgid "De-select if you don't want babel to be used when the language of the document is the default language."
-msgstr "Törölje, ha nem akarja használni a babel-t, amikor a dokumentum nyelve az alapértelmezett nyelv."
+msgid ""
+"De-select if you don't want babel to be used when the language of the "
+"document is the default language."
+msgstr ""
+"Törölje, ha nem akarja használni a babel-t, amikor a dokumentum nyelve az "
+"alapértelmezett nyelv."
 
 #: src/lyxrc.C:2148
-msgid "Select if a language switching command is needed at the beginning of the document."
+msgid ""
+"Select if a language switching command is needed at the beginning of the "
+"document."
 msgstr "Válassza ki, ha nyelvváltó parancs szükséges a dokumentum elején."
 
 #: src/lyxrc.C:2152
-msgid "Select if a language switching command is needed at the end of the document."
+msgid ""
+"Select if a language switching command is needed at the end of the document."
 msgstr "Válassza ki, ha nyelvváltó parancs szükséges a dokumentum végén."
 
 #: src/lyxrc.C:2156
-msgid "The LaTeX command for changing from the language of the document to another language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the name of the second language."
-msgstr "A nyelvváltás LaTeX parancsa, hogy az aktuálisat másikra cserélje. Pl. \\selectlanguage{$$lang}, ahol a $$lang helyére kerül a második nyelv nevével."
+msgid ""
+"The LaTeX command for changing from the language of the document to another "
+"language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
+"name of the second language."
+msgstr ""
+"A nyelvváltás LaTeX parancsa, hogy az aktuálisat másikra cserélje. Pl. "
+"\\selectlanguage{$$lang}, ahol a $$lang helyére kerül a második nyelv "
+"nevével."
 
 #: src/lyxrc.C:2160
 msgid "The LaTeX command for changing back to the language of the document."
@@ -12638,15 +12385,21 @@ msgstr "A helyi nyelvváltó LaTeX parancs."
 
 #: src/lyxrc.C:2169
 #, no-c-format
-msgid "This accepts the normal strftime formats; see man strftime for full details. E.g.\"%A, %e. %B %Y\"."
-msgstr "Elfogadja a szokásos strftime formát; lásd az strftime kézikönyvet a részletekért. Pl. \"%A, %e. %B %Y\"."
+msgid ""
+"This accepts the normal strftime formats; see man strftime for full details. "
+"E.g.\"%A, %e. %B %Y\"."
+msgstr ""
+"Elfogadja a szokásos strftime formát; lásd az strftime kézikönyvet a "
+"részletekért. Pl. \"%A, %e. %B %Y\"."
 
 #: src/lyxrc.C:2173
 msgid "De-select if you don't want the startup banner."
 msgstr "Törölje, ha nem akarja látni a kezdõképet."
 
 #: src/lyxrc.C:2177
-msgid "The number of lines that are scrolled by mice with wheels or five button mice."
+msgid ""
+"The number of lines that are scrolled by mice with wheels or five button "
+"mice."
 msgstr "Az egérgörgõvel vagy ötödik gombbal görgetett sorok száma."
 
 #: src/lyxrc.C:2190
@@ -12670,8 +12423,12 @@ msgid "Scale the preview size to suit."
 msgstr "Állítsa be az elõnézet méretarányát megfelelõen."
 
 #: src/lyxrc.C:2210
-msgid "Specify those directories which should be prepended to the PATH environment variable. Use the OS native format."
-msgstr "Adja meg azokat a könyvtárakat, amiket a PATH környezeti változóba kell rakni. Használja rendszerének formátumát."
+msgid ""
+"Specify those directories which should be prepended to the PATH environment "
+"variable. Use the OS native format."
+msgstr ""
+"Adja meg azokat a könyvtárakat, amiket a PATH környezeti változóba kell "
+"rakni. Használja rendszerének formátumát."
 
 #: src/lyxtextclasslist.C:88
 msgid "LyX wasn't able to find its layout descriptions!"
@@ -12709,8 +12466,7 @@ msgstr "El kell mentenie a fájlt"
 msgid "before it can be registered."
 msgstr "mielõtt regisztrálja."
 
-#: src/lyxvc.C:116
-#: src/lyxvc.C:148
+#: src/lyxvc.C:116 src/lyxvc.C:148
 msgid "Save document and proceed?"
 msgstr "Mentsem a dokumentumot és folytassam?"
 
@@ -12736,7 +12492,8 @@ msgstr "(nincs naplóbejegyzés)"
 
 #: src/lyxvc.C:177
 msgid "Ignore changes and proceed with check out?"
-msgstr "Hagyja figyelmen kívül a változásokat és folytassam a kitárolást (check-out)?"
+msgstr ""
+"Hagyja figyelmen kívül a változásokat és folytassam a kitárolást (check-out)?"
 
 #. Here we should check if the buffer is dirty. And if it is
 #. we should warn the user that reverting will discard all
@@ -12753,8 +12510,7 @@ msgstr "betárolás utáni módosításokat az aktuális dokumentumban."
 msgid "Do you still want to do it?"
 msgstr "Biztos meg akarja csinálni?"
 
-#: src/mathed/formulabase.C:169
-#: src/mathed/formulabase.C:1006
+#: src/mathed/formulabase.C:169 src/mathed/formulabase.C:1006
 msgid "Math editor mode"
 msgstr "Képletszerkesztõ mód"
 
@@ -12779,8 +12535,7 @@ msgstr "Hiba! A könyvtár nem elérhetõ:"
 msgid "Error! Could not remove file:"
 msgstr "Hiba! A fájl nem törölhetõ:"
 
-#: src/support/filetools.C:595
-#: src/support/filetools.C:633
+#: src/support/filetools.C:595 src/support/filetools.C:633
 msgid "Error! Couldn't create temporary directory:"
 msgstr "Hiba! Az ideiglenes könyvtár nem hozható létre:"
 
@@ -12806,30 +12561,43 @@ msgstr "Az automatikusan mentett fájl nem törölhetõ!"
 
 #: src/support/package.C:363
 #, c-format
-msgid "Unable to determine the path to the LyX binary from the command line %1%"
-msgstr "Nem tudom meghatározni az elérési útvonalat a LyX programhoz a parancssorból: %1%"
+msgid ""
+"Unable to determine the path to the LyX binary from the command line %1%"
+msgstr ""
+"Nem tudom meghatározni az elérési útvonalat a LyX programhoz a "
+"parancssorból: %1%"
 
 #: src/support/package.C:368
 msgid "Unable to determine the path to the LyX binary from the command line "
-msgstr "Nem tudom meghatározni az elérési útvonalat a LyX programhoz a parancssorból: "
+msgstr ""
+"Nem tudom meghatározni az elérési útvonalat a LyX programhoz a "
+"parancssorból: "
 
 #: src/support/package.C:494
 #, c-format
 msgid ""
 "Unable to determine the system directory having searched\n"
 "\t%1%\n"
-"Try the '-sysdir' command line parameter or set the environment variable LYX_DIR_13x to the LyX system directory containing the file `chkconfig.ltx'."
+"Try the '-sysdir' command line parameter or set the environment variable "
+"LYX_DIR_13x to the LyX system directory containing the file `chkconfig.ltx'."
 msgstr ""
 "Nem tudom meghatározni a rendszerkönyvtárat, kerestem a \t%1%-ban\n"
-"Próbálja a '-sysdir' parancssori paramétert vagy készítsen egy környezeti változót LYX_DIR_13x néven a LyX rendszerkönyvtárhoz, ahol a  `chkconfig.ltx' fájl van."
+"Próbálja a '-sysdir' parancssori paramétert vagy készítsen egy környezeti "
+"változót LYX_DIR_13x néven a LyX rendszerkönyvtárhoz, ahol a  `chkconfig."
+"ltx' fájl van."
 
 #: src/support/package.C:504
 msgid "Unable to determine the system directory having searched\n"
 msgstr "Nem tudom meghatározni a rendszerkönyvtárat, kerestem a \n"
 
 #: src/support/package.C:507
-msgid "Try the '-sysdir' command line parameter or set the environment variable LYX_DIR_13x to the LyX system directory containing the file `chkconfig.ltx'."
-msgstr "Próbálja a '-sysdir' parancssori paramétert vagy készítsen egy környezeti változót LYX_DIR_13x néven a LyX rendszer könyvtárhoz, ahol a  `chkconfig.ltx' fájl van."
+msgid ""
+"Try the '-sysdir' command line parameter or set the environment variable "
+"LYX_DIR_13x to the LyX system directory containing the file `chkconfig.ltx'."
+msgstr ""
+"Próbálja a '-sysdir' parancssori paramétert vagy készítsen egy környezeti "
+"változót LYX_DIR_13x néven a LyX rendszer könyvtárhoz, ahol a  `chkconfig."
+"ltx' fájl van."
 
 #: src/support/package.C:593
 #, c-format
@@ -12840,8 +12608,7 @@ msgstr ""
 "Érvénytelen %1% kapcsoló.\n"
 "A %2% könyvtár nem tartalmaz %3%-at."
 
-#: src/support/package.C:598
-#: src/support/package.C:633
+#: src/support/package.C:598 src/support/package.C:633
 #: src/support/package.C:661
 msgid "Invalid "
 msgstr "Érvénytelen "
@@ -12850,13 +12617,11 @@ msgstr "Érvénytelen "
 msgid " switch.\n"
 msgstr " kapcsoló.\n"
 
-#: src/support/package.C:600
-#: src/support/package.C:635
+#: src/support/package.C:600 src/support/package.C:635
 msgid "Directory "
 msgstr "Könyvtár "
 
-#: src/support/package.C:601
-#: src/support/package.C:636
+#: src/support/package.C:601 src/support/package.C:636
 msgid " does not contain "
 msgstr " nem tartalmaz "
 
@@ -12869,8 +12634,7 @@ msgstr ""
 "Érvénytelen %1% környezeti változó.\n"
 "%2% könyvtár nem tartalmazza %3%-at."
 
-#: src/support/package.C:634
-#: src/support/package.C:662
+#: src/support/package.C:634 src/support/package.C:662
 msgid " environment variable.\n"
 msgstr " környezeti változó.\n"
 
@@ -12900,12 +12664,15 @@ msgid "Get an older version of LyX (< 1.1.x) for conversion!"
 msgstr "Használjon régebbi verziójú LyX-et (<1.1x) a konverzióhoz."
 
 #: src/text.C:1924
-msgid "You cannot insert a space at the beginning of a paragraph. Please read the Tutorial."
+msgid ""
+"You cannot insert a space at the beginning of a paragraph. Please read the "
+"Tutorial."
 msgstr "Bekezdés nem kezdõdhet szóközzel. Kérem, olvassa el a Tankönyvet."
 
 #: src/text.C:1926
 msgid "You cannot type two spaces this way. Please read the Tutorial."
-msgstr "Két szóközt így nem üthet egymás mellé. Kérem, olvassa el a Tankönyvet."
+msgstr ""
+"Két szóközt így nem üthet egymás mellé. Kérem, olvassa el a Tankönyvet."
 
 #: src/text.C:3348
 msgid "Page Break (top)"
@@ -12926,8 +12693,12 @@ msgstr "Kihagyás alatta"
 
 #. Could only happen with user style
 #: src/text2.C:1008
-msgid "No font change defined. Use Character under the Layout menu to define font change."
-msgstr "Nincs betûváltás definiálva. Használja a Formátum menü Betû parancsát a betûkészletváltás definiálásához."
+msgid ""
+"No font change defined. Use Character under the Layout menu to define font "
+"change."
+msgstr ""
+"Nincs betûváltás definiálva. Használja a Formátum menü Betû parancsát a "
+"betûkészletváltás definiálásához."
 
 #: src/text2.C:1046
 msgid "Nothing to index!"
@@ -12948,8 +12719,7 @@ msgstr "%1$s #:"
 msgid "Senseless: "
 msgstr "Értelmetlen: "
 
-#: src/text3.C:225
-#: src/text3.C:228
+#: src/text3.C:225 src/text3.C:228
 msgid "No more insets"
 msgstr "Nincs több betét"
 
@@ -12972,4 +12742,3 @@ msgstr "Jel beállítva"
 #: src/text3.C:1112
 msgid "LyX function 'layout' needs an argument."
 msgstr "A 'layout' LyX funkciónak szüksége van egy paraméterre."
-

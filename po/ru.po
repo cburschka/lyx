@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-16 18:08+0200\n"
+"POT-Creation-Date: 2006-01-03 15:37+0100\n"
 "PO-Revision-Date: 2005-04-01 13:42MSK\n"
 "Last-Translator: Vitaly Lipatov <lav@altlinux.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -63,12 +63,6 @@ msgstr "Ссылка:|#к"
 #: ../src/frontends/xforms/forms/form_url.fd:116
 #: ../src/frontends/xforms/forms/form_wrap.fd:242
 #: ../src/frontends/qt2/ui/QAskForTextDialog.ui:124
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:260
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:92
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:147
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1138
-#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:128
-#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:90
 msgid "OK"
 msgstr "OK"
 
@@ -2186,9 +2180,7 @@ msgstr "Авторское право"
 
 #: ../src/frontends/qt2/ui/QAboutDialogBase.ui:213
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:204
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:516
 #: ../src/frontends/qt2/ui/QDelimiterDialogBase.ui:414
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:162
 #: ../src/frontends/qt2/ui/QErrorDialogBase.ui:92
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:141
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:318
@@ -2251,16 +2243,22 @@ msgid "The label as it appears in the document"
 msgstr "Метка, как она будет показываться в документе"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:189
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:260
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:486
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:92
 #: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:99
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:151
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:111
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:292
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1138
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:356
+#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:128
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:250
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:278
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:708
 #: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:111
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:293
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:90
 #: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:280
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:156
 #: ../src/frontends/qt2/ui/QWrapDialogBase.ui:280
@@ -2460,6 +2458,17 @@ msgstr "Применять каждое изменение автоматически"
 msgid "&Apply"
 msgstr "&Применить"
 
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:516
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:166
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1190
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:261
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:366
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:291
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1334 src/LyXAction.C:125
+#: src/frontends/controllers/ButtonController.h:73
+msgid "Close"
+msgstr "Закрыть"
+
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:22
 #: src/frontends/qt2/QCitation.C:44 src/frontends/xforms/FormCitation.C:93
 msgid "Citation"
@@ -2579,7 +2588,7 @@ msgstr "Текст после:"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:564
 #: src/frontends/qt2/QCitationDialog.C:51
-#: src/frontends/xforms/FormCitation.C:467
+#: src/frontends/xforms/FormCitation.C:468
 msgid "Not yet supported"
 msgstr "Ещё не поддерживается"
 
@@ -2668,10 +2677,11 @@ msgid "Show ERT button only"
 msgstr "Показывать только кнопку ERT"
 
 #: ../src/frontends/qt2/ui/QERTDialogBase.ui:94
-msgid "&Open"
+#, fuzzy
+msgid "O&pen"
 msgstr "&Раскрытое"
 
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:98
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:102
 msgid "Show ERT contents"
 msgstr "Показывать содержимое ERT"
 
@@ -2916,7 +2926,8 @@ msgid "Angle to rotate image by"
 msgstr "Угол поворота изображения"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:552
-msgid "&Origin:"
+#, fuzzy
+msgid "Or&igin:"
 msgstr "&Центр:"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:560
@@ -3007,15 +3018,6 @@ msgstr "По&дпись:"
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1048
 msgid "The caption for the sub-figure"
 msgstr "Подпись для вложенного изображения"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1190
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:261
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:366
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:291
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1334 src/LyXAction.C:125
-#: src/frontends/controllers/ButtonController.h:73
-msgid "Close"
-msgstr "Закрыть"
 
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:22
 msgid "Include File"
@@ -3543,7 +3545,8 @@ msgid "&To:"
 msgstr "&По:"
 
 #: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:227
-msgid "F&rom:"
+#, fuzzy
+msgid "&From:"
 msgstr "&С:"
 
 #: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:249
@@ -3680,7 +3683,8 @@ msgid "Auto &begin"
 msgstr "Автоматически &начинать"
 
 #: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:140
-msgid "Use &babel"
+#, fuzzy
+msgid "Use b&abel"
 msgstr "Использовать &babel"
 
 #: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:172
@@ -3987,7 +3991,8 @@ msgid "W&heel mouse scroll:"
 msgstr "П&рокрутка колёсика мыши:"
 
 #: ../src/frontends/qt2/ui/QPrefUIModule.ui:201
-msgid "Cursor follo&ws scrollbar"
+#, fuzzy
+msgid "Cursor follows &scrollbar"
 msgstr "&Перемещать курсор при прокрутке"
 
 #: ../src/frontends/qt2/ui/QPrefUIModule.ui:214
@@ -4112,7 +4117,7 @@ msgstr "Перекрёстная ссылка"
 msgid "Update the label list"
 msgstr "Обновить список меток"
 
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:89 src/frontends/qt2/QRef.C:125
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:89 src/frontends/qt2/QRef.C:127
 msgid "&Goto"
 msgstr "&Перейти"
 
@@ -4353,7 +4358,8 @@ msgid "Append row (below)"
 msgstr "Добавить строку (ниже)"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:265
-msgid "Dele&te"
+#, fuzzy
+msgid "Del&ete"
 msgstr "Уда&лить"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:273
@@ -7441,29 +7447,29 @@ msgid "Formatting document..."
 msgstr "Форматируется документ..."
 
 # c-format
-#: src/BufferView_pimpl.C:644
+#: src/BufferView_pimpl.C:643
 #, c-format
 msgid "Saved bookmark %1$d"
 msgstr "Сохранённая закладка %1$d"
 
-#: src/BufferView_pimpl.C:646
+#: src/BufferView_pimpl.C:645
 msgid "Saved bookmark "
 msgstr "Сохранённая закладка "
 
-#: src/BufferView_pimpl.C:680
+#: src/BufferView_pimpl.C:679
 #, c-format
 msgid "Moved to bookmark %1$d"
 msgstr "Перейти к закладке %1$d"
 
-#: src/BufferView_pimpl.C:682
+#: src/BufferView_pimpl.C:681
 msgid "Moved to bookmark "
 msgstr "Перейти к закладке "
 
-#: src/BufferView_pimpl.C:862
+#: src/BufferView_pimpl.C:861
 msgid "Select LyX document to insert"
 msgstr "Выберите документ LyX для вставки"
 
-#: src/BufferView_pimpl.C:864 src/frontends/controllers/ControlBibtex.C:59
+#: src/BufferView_pimpl.C:863 src/frontends/controllers/ControlBibtex.C:59
 #: src/frontends/controllers/ControlBibtex.C:69
 #: src/frontends/controllers/ControlExternal.C:147
 #: src/frontends/controllers/ControlGraphics.C:89
@@ -7472,74 +7478,74 @@ msgstr "Выберите документ LyX для вставки"
 msgid "Documents|#o#O"
 msgstr "Документы|#o#O"
 
-#: src/BufferView_pimpl.C:866 src/lyxfunc.C:1684 src/lyxfunc.C:1790
+#: src/BufferView_pimpl.C:865 src/lyxfunc.C:1684 src/lyxfunc.C:1790
 msgid "Examples|#E#e"
 msgstr "Примеры|#E#e"
 
-#: src/BufferView_pimpl.C:871 src/lyx_cb.C:127 src/lyxfunc.C:1649
+#: src/BufferView_pimpl.C:870 src/lyx_cb.C:127 src/lyxfunc.C:1649
 #: src/lyxfunc.C:1689
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr "*.lyx| Документы LyX (*.lyx)"
 
-#: src/BufferView_pimpl.C:880 src/lyxfunc.C:1698 src/lyxfunc.C:1718
+#: src/BufferView_pimpl.C:879 src/lyxfunc.C:1698 src/lyxfunc.C:1718
 #: src/lyxfunc.C:1807 src/lyxfunc.C:1834 src/lyxfunc.C:1844
 msgid "Canceled."
 msgstr "Отменено."
 
 # c-format
-#: src/BufferView_pimpl.C:893
+#: src/BufferView_pimpl.C:892
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Документ вставляется %1$s..."
 
-#: src/BufferView_pimpl.C:895
+#: src/BufferView_pimpl.C:894
 msgid "Inserting document "
 msgstr "Документ вставляется "
 
-#: src/BufferView_pimpl.C:895 src/importer.C:43 src/lyxfunc.C:995
+#: src/BufferView_pimpl.C:894 src/importer.C:43 src/lyxfunc.C:995
 #: src/lyxfunc.C:1156 src/lyxfunc.C:1731
 msgid "..."
 msgstr "..."
 
-#: src/BufferView_pimpl.C:902
+#: src/BufferView_pimpl.C:901
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Документ %1$s вставлен."
 
 #
-#: src/BufferView_pimpl.C:904 src/lyxfunc.C:1743
+#: src/BufferView_pimpl.C:903 src/lyxfunc.C:1743
 msgid "Document "
 msgstr "Документ "
 
 #
-#: src/BufferView_pimpl.C:904
+#: src/BufferView_pimpl.C:903
 msgid " inserted."
 msgstr " вставлен."
 
 # c-format
-#: src/BufferView_pimpl.C:910
+#: src/BufferView_pimpl.C:909
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Невозможно вставить документ %1$s"
 
-#: src/BufferView_pimpl.C:912
+#: src/BufferView_pimpl.C:911
 msgid "Could not insert document "
 msgstr "Невозможно вставить документ "
 
-#: src/BufferView_pimpl.C:1094 src/insets/inseterror.C:51
+#: src/BufferView_pimpl.C:1093 src/insets/inseterror.C:51
 #: src/insets/inseterror.C:73
 msgid "Error"
 msgstr "Ошибка"
 
-#: src/BufferView_pimpl.C:1095
+#: src/BufferView_pimpl.C:1094
 msgid "Couldn't find this label"
 msgstr "Невозможно найти указанную метку"
 
-#: src/BufferView_pimpl.C:1096
+#: src/BufferView_pimpl.C:1095
 msgid "in current document."
 msgstr "в текущем документе."
 
-#: src/BufferView_pimpl.C:1261
+#: src/BufferView_pimpl.C:1260
 msgid "Unknown function!"
 msgstr "Неизвестная функция!"
 
@@ -9714,19 +9720,19 @@ msgstr "Выберите каталог для документов"
 msgid "Give a filename for the LyX server pipe"
 msgstr "Укажите название файла для канала LyX-сервера"
 
-#: src/frontends/qt2/QRef.C:117
+#: src/frontends/qt2/QRef.C:119
 msgid "&Go back"
 msgstr "&Назад"
 
-#: src/frontends/qt2/QRef.C:119 src/frontends/xforms/FormRef.C:275
+#: src/frontends/qt2/QRef.C:121 src/frontends/xforms/FormRef.C:275
 msgid "Go back"
 msgstr "Вернуться обратно"
 
-#: src/frontends/qt2/QRef.C:127
+#: src/frontends/qt2/QRef.C:129
 msgid "Go to label"
 msgstr "Перейти к метке"
 
-#: src/frontends/qt2/QSearch.C:30 src/frontends/xforms/FormSearch.C:25
+#: src/frontends/qt2/QSearch.C:30 src/frontends/xforms/FormSearch.C:24
 msgid "Find and Replace"
 msgstr "Найти и заменить"
 
@@ -10749,35 +10755,35 @@ msgid "Go to"
 msgstr "Перейти"
 
 #. set up the tooltips
-#: src/frontends/xforms/FormSearch.C:42
+#: src/frontends/xforms/FormSearch.C:41
 msgid "Enter the string you want to find."
 msgstr "Введите строку, которую вы хотите найти."
 
-#: src/frontends/xforms/FormSearch.C:44
+#: src/frontends/xforms/FormSearch.C:43
 msgid "Enter the replacement string."
 msgstr "Ввести строку для замены."
 
-#: src/frontends/xforms/FormSearch.C:46
+#: src/frontends/xforms/FormSearch.C:45
 msgid "Continue to next search result."
 msgstr "Продолжить до следующего найденного слова."
 
-#: src/frontends/xforms/FormSearch.C:48
+#: src/frontends/xforms/FormSearch.C:47
 msgid "Replace search result by replacement string."
 msgstr "Заменить результат поиска на строку замены."
 
-#: src/frontends/xforms/FormSearch.C:50
+#: src/frontends/xforms/FormSearch.C:49
 msgid "Replace all by replacement string."
 msgstr "Заменить всё строкой замены."
 
-#: src/frontends/xforms/FormSearch.C:52
+#: src/frontends/xforms/FormSearch.C:51
 msgid "Do case sensitive search."
 msgstr "Учитывать регистр."
 
-#: src/frontends/xforms/FormSearch.C:54
+#: src/frontends/xforms/FormSearch.C:53
 msgid "Search only matching words."
 msgstr "Искать только слова целиком."
 
-#: src/frontends/xforms/FormSearch.C:56
+#: src/frontends/xforms/FormSearch.C:55
 msgid "Search backwards."
 msgstr "Искать в обратном направлении."
 
@@ -11072,7 +11078,7 @@ msgstr "Ошибка открытия"
 msgid "Opened ERT Inset"
 msgstr "Открытая вкладка режима LaTeX"
 
-#: src/insets/insetert.C:246 src/insets/insettabular.C:2086
+#: src/insets/insetert.C:246 src/insets/insettabular.C:2083
 #: src/insets/insettext.C:1407
 msgid "Impossible operation!"
 msgstr "Недопустимая операция!"
@@ -11081,7 +11087,7 @@ msgstr "Недопустимая операция!"
 msgid "Not permitted to change font-types inside ERT-insets!"
 msgstr "Не разрешено изменять тип шрифта внутри вкладки режима LaTeX!"
 
-#: src/insets/insetert.C:248 src/insets/insettabular.C:2088
+#: src/insets/insetert.C:248 src/insets/insettabular.C:2085
 #: src/insets/insettext.C:1409
 msgid "Sorry."
 msgstr "Извините."
@@ -11298,7 +11304,7 @@ msgstr "Красивая ссылка: "
 msgid "Opened Tabular Inset"
 msgstr "Открытая табличная вкладка"
 
-#: src/insets/insettabular.C:2087
+#: src/insets/insettabular.C:2084
 msgid "Multicolumns can only be horizontally."
 msgstr "Многоколоночность может быть только горизонтальной."
 
@@ -12617,17 +12623,17 @@ msgstr "Ошибка создания каталога:"
 msgid "Could not delete auto-save file!"
 msgstr "Ошибка удаления файла автосохранения!"
 
-#: src/support/package.C:402
+#: src/support/package.C:363
 #, c-format
 msgid ""
 "Unable to determine the path to the LyX binary from the command line %1%"
 msgstr "Невозможно определить путь к программе LyX из командной строки %1%"
 
-#: src/support/package.C:407
+#: src/support/package.C:368
 msgid "Unable to determine the path to the LyX binary from the command line "
 msgstr "Невозможно определить путь к программе LyX из командной строки "
 
-#: src/support/package.C:533
+#: src/support/package.C:494
 #, c-format
 msgid ""
 "Unable to determine the system directory having searched\n"
@@ -12636,17 +12642,17 @@ msgid ""
 "LYX_DIR_13x to the LyX system directory containing the file `chkconfig.ltx'."
 msgstr ""
 
-#: src/support/package.C:543
+#: src/support/package.C:504
 msgid "Unable to determine the system directory having searched\n"
 msgstr ""
 
-#: src/support/package.C:546
+#: src/support/package.C:507
 msgid ""
 "Try the '-sysdir' command line parameter or set the environment variable "
 "LYX_DIR_13x to the LyX system directory containing the file `chkconfig.ltx'."
 msgstr ""
 
-#: src/support/package.C:631
+#: src/support/package.C:593
 #, c-format
 msgid ""
 "Invalid %1% switch.\n"
@@ -12655,24 +12661,24 @@ msgstr ""
 "Неверный ключ %1%.\n"
 "Каталог %2% не содержит %3%."
 
-#: src/support/package.C:636 src/support/package.C:671
-#: src/support/package.C:699
+#: src/support/package.C:598 src/support/package.C:633
+#: src/support/package.C:661
 msgid "Invalid "
 msgstr "Неверный "
 
-#: src/support/package.C:637
+#: src/support/package.C:599
 msgid " switch.\n"
 msgstr " ключ.\n"
 
-#: src/support/package.C:638 src/support/package.C:673
+#: src/support/package.C:600 src/support/package.C:635
 msgid "Directory "
 msgstr "Каталог "
 
-#: src/support/package.C:639 src/support/package.C:674
+#: src/support/package.C:601 src/support/package.C:636
 msgid " does not contain "
 msgstr " не содержит "
 
-#: src/support/package.C:666
+#: src/support/package.C:628
 #, c-format
 msgid ""
 "Invalid %1% environment variable.\n"
@@ -12681,11 +12687,11 @@ msgstr ""
 "Неверная переменная окружения %1%.\n"
 "Каталог %2% не содержит %3%."
 
-#: src/support/package.C:672 src/support/package.C:700
+#: src/support/package.C:634 src/support/package.C:662
 msgid " environment variable.\n"
 msgstr " переменная окружения.\n"
 
-#: src/support/package.C:694
+#: src/support/package.C:656
 #, c-format
 msgid ""
 "Invalid %1% environment variable.\n"
@@ -12694,7 +12700,7 @@ msgstr ""
 "Неверная переменная окружения %1%.\n"
 "%2% не является каталогом."
 
-#: src/support/package.C:701
+#: src/support/package.C:663
 msgid " is not a directory."
 msgstr " не является каталогом."
 
