@@ -157,14 +157,14 @@ dump_head () {
 cat <<EOF
 <?
 	// What's the title of the page?
-	\$title = "LyX i18n";
+	\$title = "LyX i18n (1.3.x)";
 	// What's the short name of the page in the navigation bar?
-	\$item="i18n";
+	\$item="i18n (13x)";
 	// Who is the author?
 	\$author="Michael Gerz";
 	// Full name of the file (relative path from LyX home page -- i.e., it should
 	// be "foo.php" or "bar/foo.php")
-	\$file_full="devel/i18n.php";
+	\$file_full="devel/i18n-13x.php";
 
 	include("start.php");
 
