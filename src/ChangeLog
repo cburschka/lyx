@@ -1,3 +1,8 @@
+2006-01-04  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* text2.C (deleteEmptyParagraphMechanism): since we delete a
+	paragraph, recordUndo should span two paragraphs (bug 2155).
+
 2006-01-01  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* rowpainter.C (paintPar): always repaint the row with the
