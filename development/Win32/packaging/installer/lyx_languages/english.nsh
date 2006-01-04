@@ -21,7 +21,7 @@ LangString ModifyingConfigureFailed "${LYX_LANG}" "Failed attempting to set 'pat
 LangString CreateCmdFilesFailed "${LYX_LANG}" "Failed atempting to create lyx.cmd and reLyX.cmd"
 LangString RunConfigureFailed "${LYX_LANG}" "Failed attempting to execute the configure script"
 
-LangString FinishPageMessage "${LYX_LANG}" "Congratulations! LyX has been installed successfully."
+LangString FinishPageMessage "${LYX_LANG}" "LyX should now be installed. However, some of our users report that the configure script fails to run and, as a result, LyX fails to start, reporting a missing textclass.lst file. To fix, run the command: 'sh configure' from the LyX/Resources/lyx directory."
 LangString FinishPageRun "${LYX_LANG}" "Launch LyX"
 
 LangString DownloadPageField2 "${LYX_LANG}" "&Do not install"

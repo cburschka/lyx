@@ -1,10 +1,11 @@
+// -*- C++ -*-
 /*
  * \file lyx_configure.C
  * This file is part of LyX, the document processor.
  * http://www.lyx.org/
  * Licence details can be found in the file COPYING or copy at
- * http://www.lyx.org/about/license.php3
-
+ * http://www.lyx.org/about/license.php
+ *
  * \author Angus Leeming
  * Full author contact details are available in file CREDITS or copy at
  * http://www.lyx.org/about/credits.php
@@ -16,7 +17,7 @@
  * run_configure [ configure_file, path_prefix ]
  * set_env [ var_name, var_value ]
  *
- * The quantities in [ ... ] are the variables that the functions exxpect
+ * The quantities in [ ... ] are the variables that the functions expect
  * to find on the stack. They push "-1" onto the stack on failure and "0"
  * onto the stack on success.
  *
@@ -35,6 +36,7 @@
 #include <list>
 #include <sstream>
 #include <string>
+#include <vector>
 
 #include <windows.h>
 #include "ExDLL/exdll.h"
@@ -59,7 +61,8 @@ std::string const subst(std::string const & a,
 
 std::string const basename(std::string const & path)
 {
-	std::string::size_type const final_slash = path.find_last_of('\\');
+	// Windows recognizes both '/' and '\' as directory separators.
+	std::string::size_type const final_slash = path.find_last_of("/\\");
 	return (final_slash == std::string::npos) ?
 		path :
 		path.substr(final_slash+1);
@@ -68,7 +71,8 @@ std::string const basename(std::string const & path)
 
 std::string const dirname(std::string const & path)
 {
-	std::string::size_type const final_slash = path.find_last_of('\\');
+	// Windows recognizes both '/' and '\' as directory separators.
+	std::string::size_type const final_slash = path.find_last_of("/\\");
 	return (final_slash == std::string::npos) ?
 		std::string() :
 		path.substr(0, final_slash);
@@ -78,12 +82,11 @@ std::string const dirname(std::string const & path)
 std::string const pop_from_stack()
 {
 	char data[10*MAX_PATH];
-	popstring(data);
-	return data;
+	return (popstring(data) == 0) ? data : std::string();
 }
 
 
-void push_to_stack(int data)
+void push_to_stack(int const data)
 {
 	std::ostringstream os;
 	os << data;
@@ -91,18 +94,19 @@ void push_to_stack(int data)
 }
 
 
-std::list<std::string> const tokenize(std::string data,
+std::list<std::string> const tokenize(std::string const & data,
 				      char const separator)
 {
 	std::list<std::string> result;
+	std::string::size_type index = 0;
 	while (true) {
-		std::string::size_type const end = data.find(separator);
+		std::string::size_type const end = data.find(separator, index);
 		if (end == std::string::npos) {
 			result.push_back(data);
 			break;
 		}
 		result.push_back(data.substr(0, end));
-		data = data.substr(end+1);
+		index = (end+1 == data.size()) ? std::string::npos : end + 1;
 	}
 	return result;
 }
@@ -141,18 +145,55 @@ std::string concatenate(std::list<std::string> const & data,
 }
 
 
-std::string const sanitize_path(std::string const & in)
+std::string const sanitize_win32_path(std::string const & in)
 {
-	// Replace multiple, adjacent directory separators.
-	std::string out = subst(in, "\\\\", "\\");
-	std::list<std::string> out_list = tokenize(out, ';');
-	remove_duplicates(out_list);
-	return concatenate(out_list, ';');
+	std::string out = subst(in, "/", "\\");
+	// Replace multiple adjacent directory separators with a single one
+	typedef std::string::size_type size_type;
+	size_type offset = 0;
+	while (offset != std::string::npos) {
+		size_type const slash = out.find_first_of('\\', offset);
+		if (slash == std::string::npos)
+			break;
+		size_type const slash_end = out.find_first_not_of('\\', slash);
+
+		if (slash_end == std::string::npos) {
+			// Remove all trailing '\' characters
+			out = out.substr(0, slash);
+			break;
+
+		} else {
+			size_type const count = slash_end - (slash + 1);
+			if (count > 0)
+				out.erase(slash + 1, count);
+		}
+		offset = slash + 1;
+	}
+
+	return out;
+}
+
+
+std::string const sanitize_path_envvar(std::string const & in)
+{
+	// A Windows PATH environment variable has elements separated
+	// by a ';' character.
+	typedef std::list<std::string> string_list;
+	string_list envvar = tokenize(in, ';');
+
+	// Ensure that each PATH element uses '\' directory separators
+	// and doesn't end in a '\'.
+	string_list::iterator const end = envvar.end();
+	for (string_list::iterator it = envvar.begin(); it != end; ++it)
+		*it = sanitize_win32_path(*it);
+
+	remove_duplicates(envvar);
+	return concatenate(envvar, ';');
 }
 
 
 bool replace_path_prefix(std::string & data,
-			 std::string::size_type prefix_pos,
+			 std::string::size_type const prefix_pos,
 			 std::string const & path_prefix)
 {
 	std::string::size_type start_prefix =
@@ -173,8 +214,11 @@ bool replace_path_prefix(std::string & data,
 
 	std::string::size_type const count = end_prefix - start_prefix;
 	std::string const old_prefix = data.substr(start_prefix, count);
+	// The configure script needs to see '\\' for each '\' directory
+	// separator.
 	std::string const prefix =
-		subst(sanitize_path(path_prefix + ';' + old_prefix), "\\", "\\\\");
+		subst(sanitize_path_envvar(path_prefix + ';' + old_prefix),
+		      "\\", "\\\\");
 
 	data.erase(start_prefix, count);
 	data.insert(start_prefix, prefix);
@@ -184,7 +228,7 @@ bool replace_path_prefix(std::string & data,
 
 
 bool insert_path_prefix(std::string & data,
-			std::string::size_type xfonts_pos,
+			std::string::size_type const xfonts_pos,
 			std::string const & path_prefix)
 {
 	std::string::size_type const xfonts_start =
@@ -193,7 +237,11 @@ bool insert_path_prefix(std::string & data,
 	if (xfonts_start == std::string::npos)
 		return false;
 
-	std::string const prefix = subst(sanitize_path(path_prefix), "\\", "\\\\");
+	// The configure script needs to see '\\' for each '\' directory
+	// separator.
+	std::string const prefix =
+		subst(sanitize_path_envvar(path_prefix), "\\", "\\\\");
+
 	std::ostringstream ss;
 	ss << data.substr(0, xfonts_start)
 	   << "\n"
@@ -291,30 +339,65 @@ int create_bat_files(std::string const & bin_dir, std::string const & lang)
 }
 
 
+// A wrapper for GetEnvironmentVariable
+bool get_environment_variable(std::string const & var, std::string & val)
+{
+	if (var.empty())
+		return false;
+
+	std::vector<char> cval(MAX_PATH, '\0');
+	DWORD size = GetEnvironmentVariable(var.c_str(),
+					    &*cval.begin(),
+					    cval.size());
+
+	if (size == 0)
+		// The specified variable was not found.
+		return false;
+
+	if (size > cval.size()) {
+		// Insufficient size in the buffer to store the var
+		// so resize to the required size.
+		cval.resize(size, '\0');
+		size = GetEnvironmentVariable(var.c_str(),
+					      &*cval.begin(),
+					      cval.size());
+		if (size == 0 || size > cval.size())
+			// Give up
+			return false;
+	}
+
+	val.assign(cval.begin(), cval.begin() + size);
+	return true;
+}
+
+
 // Runs "sh configure" to generate things like lyxrc.defaults.
 // \returns 0 on success, -1 on failure
-int run_configure(std::string const & abs_configure_file,
+int run_configure(std::string const & abs_configure_file_in,
 		  std::string const & path_prefix)
 {
+	std::string const abs_configure_file =
+		sanitize_win32_path(abs_configure_file_in);
 	std::string const configure_dir = dirname(abs_configure_file);
 	std::string const configure_file = basename(abs_configure_file);
 
-	if (configure_dir.empty())
+	if (configure_file.empty() || configure_dir.empty())
 		return -1;
 
 	if (SetCurrentDirectory(configure_dir.c_str()) == 0)
 		return -1;
 
-	char path_orig[10*MAX_PATH];
-	if (GetEnvironmentVariable("PATH", path_orig, 10*MAX_PATH) == 0)
+	std::string path;
+	if (!get_environment_variable("PATH", path))
 		return -1;
-
-	std::string const path = path_prefix + ';' + path_orig;
+	path = sanitize_path_envvar(path_prefix + ';' + path);
 	if (SetEnvironmentVariable("PATH", path.c_str()) == 0)
 		return -1;
 
 	// Even "start /WAIT /B sh.exe configure" returns
 	// before the script is done, so just invoke "sh" directly.
+
+	// Assumes that configure_file does not need quoting.
 	std::string const command = std::string("sh.exe ") + configure_file;
 	if (system(command.c_str()) != 0)
 		return -1;
@@ -330,9 +413,9 @@ int run_configure(std::string const & abs_configure_file,
 //                                           //
 //===========================================//
 
-BOOL WINAPI DllMain(HANDLE hInst,
-		    ULONG ul_reason_for_call,
-		    LPVOID lpReserved)
+BOOL WINAPI DllMain(HANDLE /*hInst*/,
+		    ULONG /*ul_reason_for_call*/,
+		    LPVOID /*lpReserved*/)
 {
 	return TRUE;
 }
@@ -340,15 +423,19 @@ BOOL WINAPI DllMain(HANDLE hInst,
 
 // Inserts code into "configure" to output "path_prefix" to lyxrc.defaults.
 extern "C"
-void __declspec(dllexport) set_path_prefix(HWND hwndParent,
-					   int string_size,
-					   char * variables,
-					   stack_t ** stacktop)
+void __declspec(dllexport) set_path_prefix(HWND const /*hwndParent*/,
+					   int const string_size,
+					   char * const variables,
+					   stack_t ** const stacktop)
 {
 	EXDLL_INIT();
 
 	std::string const configure_file = pop_from_stack();
 	std::string const path_prefix = pop_from_stack();
+	if (configure_file.empty() || path_prefix.empty()) {
+		push_to_stack(-1);
+		return;
+	}
 
 	int const result = set_path_prefix(configure_file, path_prefix);
 	push_to_stack(result);
@@ -357,15 +444,19 @@ void __declspec(dllexport) set_path_prefix(HWND hwndParent,
 
 // Creates the files lyx.bat and reLyX.bat in the LyX\bin folder.
 extern "C"
-void __declspec(dllexport) create_bat_files(HWND hwndParent,
-					    int string_size,
-					    char * variables,
-					    stack_t ** stacktop)
+void __declspec(dllexport) create_bat_files(HWND const /*hwndParent*/,
+					    int const string_size,
+					    char * const variables,
+					    stack_t ** const stacktop)
 {
 	EXDLL_INIT();
 
 	std::string const bin_dir = pop_from_stack();
 	std::string const lang = pop_from_stack();
+	if (bin_dir.empty() || lang.empty()) {
+		push_to_stack(-1);
+		return;
+	}
 
 	int const result = create_bat_files(bin_dir, lang);
 	push_to_stack(result);
@@ -374,32 +465,40 @@ void __declspec(dllexport) create_bat_files(HWND hwndParent,
 
 // Runs "sh configure" to generate things like lyxrc.defaults.
 extern "C"
-void __declspec(dllexport) run_configure(HWND hwndParent,
-					 int string_size,
-					 char * variables,
-					 stack_t ** stacktop)
+void __declspec(dllexport) run_configure(HWND const /*hwndParent*/,
+					 int const string_size,
+					 char * const variables,
+					 stack_t ** const stacktop)
 {
 	EXDLL_INIT();
 
 	std::string const configure_file = pop_from_stack();
 	std::string const path_prefix = pop_from_stack();
+	if (configure_file.empty() || path_prefix.empty()) {
+		push_to_stack(-1);
+		return;
+	}
 
 	int const result = run_configure(configure_file, path_prefix);
 	push_to_stack(result);
 }
 
 
-// Set an environment variable
+// Set an environment variable.
 extern "C"
-void __declspec(dllexport) set_env(HWND hwndParent,
-				   int string_size,
-				   char * variables,
-				   stack_t ** stacktop)
+void __declspec(dllexport) set_env(HWND const /*hwndParent*/,
+				   int const string_size,
+				   char * const variables,
+				   stack_t ** const stacktop)
 {
 	EXDLL_INIT();
 
 	std::string const var_name = pop_from_stack();
 	std::string const var_value = pop_from_stack();
+	if (var_name.empty() || var_value.empty()) {
+		push_to_stack(-1);
+		return;
+	}
 
 	// Function returns a nonzero value on success.
 	int const result =

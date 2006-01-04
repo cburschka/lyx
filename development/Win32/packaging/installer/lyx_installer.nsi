@@ -190,6 +190,7 @@ Page custom SelectMenuLanguage SelectMenuLanguage_LeaveFunction
 !insertmacro MUI_LANGUAGE "French"
 !insertmacro MUI_LANGUAGE "Italian"
 !insertmacro MUI_LANGUAGE "Dutch"
+!insertmacro MUI_LANGUAGE "Polish"
 !insertmacro MUI_LANGUAGE "Swedish"
 
 !include "lyx_languages\english.nsh"
@@ -198,6 +199,7 @@ Page custom SelectMenuLanguage SelectMenuLanguage_LeaveFunction
 !include "lyx_languages\french.nsh"
 !include "lyx_languages\german.nsh"
 !include "lyx_languages\italian.nsh"
+!include "lyx_languages\polish.nsh"
 !include "lyx_languages\spanish.nsh"
 !include "lyx_languages\swedish.nsh"
 
@@ -668,10 +670,10 @@ Function SearchPDFViewer
   ; test if a pdf-viewer is installed, only test for Acrobat, Adobe Reader (AroRD32), and GSview32
   StrCpy $PDFViewerPath ""
   ReadRegStr $PDFViewerPath HKLM "Software\Microsoft\Windows\CurrentVersion\App Paths\Acrobat.exe" "Path"
-  ${if} $PDFVPath == ""
+  ${if} $PDFViewerPath == ""
    ReadRegStr $PDFViewerPath HKLM "Software\Microsoft\Windows\CurrentVersion\App Paths\AcroRd32.exe" "Path"
   ${endif}
-  ${if} $PDFVPath == ""
+  ${if} $PDFViewerPath == ""
    ReadRegStr $PDFViewerPath HKLM "Software\Microsoft\Windows\CurrentVersion\App Paths\gsview32.exe" "Path"
   ${endif}
   StrCpy $0 $PDFViewerPath "" -1 ;remove the "\" at the end
