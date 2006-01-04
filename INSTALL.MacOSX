@@ -10,15 +10,26 @@ here builds LyX linked with a static Qt library. If you are using the
 tcsh shell, change the "export VAR=value" statements to
 "setenv VAR value".
 
-At the moment, compiling LyX/Mac requires using gcc version 3.3. You
-can tell OS X to use this compiler by entering the following in the
-terminal:
+PREREQUISITES
 
-     sudo gcc_select 3.3
+1. Qt/Mac Free Edition, version 3.3. This library is GPL-licensed
+and can be downloaded from
+<http://www.trolltech.com/download/qt/mac.html>. You will need to 
+compile it yourself (as described below).
 
-1. Download the GPL-licensed Qt/Mac Free Edition library source code
-from <http://www.trolltech.com/download/qt/mac.html>, untar in a
-convenient directory, cd to the top of the Qt source hierarcy, and:
+2. automake, version 1.9 or higher. The easiest way to get this is
+to use FinkCommander, which can be downloaded from
+<http://finkcommander.sourceforge.net/>.
+
+BUILD INSTRUCTIONS
+
+Note that building LyX/Mac requires gcc version 3.3 or higher. (You
+can check your version  by entering "gcc -v" in the Terminal; you
+can change your gcc version to version 3.3, for example, by entering
+"sudo gcc_select 3.3".)
+
+1. Decompress Qt/Mac in a convenient directory, cd to the top of the
+Qt source hierarcy, and:
 
      export QTDIR=`pwd`
      ./configure -static -no-exceptions -lresolv   [for OS X 10.2, use "./configure -static -no-exceptions"]
@@ -35,6 +46,7 @@ you read the note in step 3.
 cd to the top of the LyX source hierarchy, and:
 
      export LDFLAGS="-framework Carbon -framework OpenGL -framework AGL -framework QuickTime -lz"
+     ./autogen.sh
      ./configure --with-frontend=qt --without-x --with-included-gettext --enable-optimization=-Os --disable-concept-checks
 
 [Note: If you have moved or renamed the LyX/Mac application bundle
