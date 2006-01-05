@@ -69,6 +69,9 @@ What's new
 - On exit, don't attempt to unlock a mutex in the Qt library --- it
   causes undefined behaviour and leads to a crash on NetBSD.
 
+- Enable Instant Preview to work if the path to the external GhostScript
+  executable contains spaces. (bug 2193).
+
 * Configuration/Installation:
 
 - Enable TeXFiles.sh to run when its path contains spaces.
