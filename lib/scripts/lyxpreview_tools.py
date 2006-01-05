@@ -52,7 +52,11 @@ def find_exe(candidates, path):
                 full_path = os.path.join(directory, prog)
 
             if os.access(full_path, os.X_OK):
-                return full_path
+                # The thing is in the PATH already (or we wouldn't
+                # have found it). Return just the basename to avoid
+                # problems when the path to the executable contains
+                # spaces.
+                return os.path.basename(full_path)
 
     return None
 
