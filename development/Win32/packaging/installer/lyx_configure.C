@@ -26,7 +26,11 @@
  * g++ -I/c/Program\ Files/NSIS/Contrib -Wall -shared \
  *    lyx_configure.C -o lyx_configure.dll
  *
- * Move resulting .dll to /c/Program\ Files/NSIS/Plugins
+ * Compilation requires the exdll.h header file to be installed (here at
+ * C:\Program Files\NSIS\Contrib\ExDLL\exdll.h). The file can be obtained
+ * from http://cvs.sourceforge.net/viewcvs.py/nsis/NSIS/Contrib/ExDLL/ 
+ *
+ * Move the resulting lyx_configure.dll to /c/Program\ Files/NSIS/Plugins
  */
 
 #include <cstdio>
