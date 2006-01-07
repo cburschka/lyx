@@ -254,18 +254,22 @@ literate_to_lyx_command=`echo $literate_to_lyx_command | sed "s,noweb2lyx,noweb2
 SEARCH_PROG([for a Noweb -> LaTeX converter],literate_to_tex_command,noweave)
 test $literate_to_tex_command = "noweave" && literate_to_tex_command="noweave -delay -index \$\$i > \$\$o"
 
-SEARCH_PROG([for a HTML -> Latex converter],html_to_latex_command,html2latex)
+SEARCH_PROG([for an HTML -> LaTeX converter],html_to_latex_command,html2latex)
 test $html_to_latex_command = "html2latex" && html_to_latex_command="html2latex \$\$i"
 
-SEARCH_PROG([for a MSWord -> Latex converter],word_to_latex_command,wvCleanLatex word2x)
+SEARCH_PROG([for an MS Word -> LaTeX converter],word_to_latex_command,wvCleanLatex word2x)
 test "$word_to_latex_command" = "wvCleanLatex" && word_to_latex_command="wvCleanLatex \$\$i \$\$o"
 test "$word_to_latex_command" = "word2x" && word_to_latex_command="word2x -f latex \$\$i"
+
+# tex4ht generates HTML output that is well-suited for MS Word
+SEARCH_PROG([for a LaTeX -> MS Word converter],latex_to_word_command,htlatex)
+test "$latex_to_word_command" = "htlatex" && latex_to_word_command="htlatex \$\$i 'html,word' 'symbol/!' '-cvalidate'"
 
 SEARCH_PROG([for Image converter],image_command,convert)
 test $image_command = "convert" && image_command="convert \$\$i \$\$o"
 
 # Search something to preview postscript
-SEARCH_PROG([for a Postscript previewer],GHOSTVIEW,gsview32 gv ghostview)
+SEARCH_PROG([for a Postscript previewer],GHOSTVIEW,gsview32 gv ghostview kghostview)
 case $GHOSTVIEW in
   ghostview) PS_VIEWER="$GHOSTVIEW -swap" ;;
   *) PS_VIEWER="$GHOSTVIEW";;
@@ -273,13 +277,13 @@ esac
 EPS_VIEWER=$GHOSTVIEW
 
 # Search for a program to preview pdf
-SEARCH_PROG([for a PDF preview],PDF_VIEWER, acrobat acrord32 gsview32 acroread gv ghostview xpdf)
+SEARCH_PROG([for a PDF previewer],PDF_VIEWER, acrobat acrord32 gsview32 acroread gv ghostview xpdf kpdf kghostview)
 
 # Search something to preview dvi
-SEARCH_PROG([for a DVI previewer],DVI_VIEWER, xdvi windvi yap)
+SEARCH_PROG([for a DVI previewer],DVI_VIEWER, xdvi windvi yap kdvi)
 
 # Search something to preview html
-SEARCH_PROG([for a HTML previewer],HTML_VIEWER, "mozilla file://\$\$p\$\$i" netscape)
+SEARCH_PROG([for an HTML previewer],HTML_VIEWER, "mozilla file://\$\$p\$\$i" netscape)
 
 # Search for a program to convert ps to pdf
 SEARCH_PROG([for a PS to PDF converter],ps_to_pdf_command, "ps2pdf13 \$\$i")
@@ -305,7 +309,7 @@ LYXRC_PROG([for ChkTeX], \chktex_command,dnl
    "chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38")
 
 # Search for a spellchecker
-LYXRC_PROG([for a spell-checker], \spell_command, ispell)
+LYXRC_PROG([for a spellchecker], \spell_command, ispell)
 
 # Search for computer algebra systems
 SEARCH_PROG([for Octave],OCTAVE,octave)
@@ -383,9 +387,10 @@ case $prog in
 esac
 LYXRC_VAR(\print_spool_printerprefix, $print_spool_printerprefix)
 
-SEARCH_PROG([for a LaTeX -> HTML converter], TOHTML, tth latex2html hevea)
+SEARCH_PROG([for a LaTeX -> HTML converter], TOHTML, htlatex tth latex2html hevea)
 latex_to_html_command=$TOHTML
 case $TOHTML in
+    htlatex) latex_to_html_command="htlatex \$\$i";;
 	tth) latex_to_html_command="tth -t -e2 -L\$\$b < \$\$i > \$\$o";;
  latex2html) latex_to_html_command="latex2html -no_subdir -split 0 -show_section_numbers \$\$i";;
       hevea) latex_to_html_command="hevea -s \$\$i";;
@@ -559,16 +564,16 @@ cat >$outfile <<EOF
 \\Format dvi	  dvi	DVI		D
 \\Format eps	  eps	EPS		""
 \\Format fax	  ""	Fax		""
-\\Format fig	  fig	XFig		""
-\\Format agr      agr	GRACE		""
+\\Format fig	  fig	FIG		""
+\\Format agr      agr	Grace		""
 \\Format html	  html	HTML		H
 \\Format gif	  gif	GIF		""
-\\Format jpg	  jpg	JPG		""
+\\Format jpg	  jpg	JPEG		""
 \\Format latex	  tex	LaTeX		L
 \\Format linuxdoc sgml	LinuxDoc	x
 \\Format lyx      lyx	LyX		""
 \\Format literate nw	NoWeb		N
-\\Format pdf	  pdf	PDF		P
+\\Format pdf	  pdf  "PDF (ps2pdf)"	P
 \\Format pdf2	  pdf  "PDF (pdflatex)"	F
 \\Format pdf3	  pdf  "PDF (dvipdfm)"	m
 \\Format png	  png	PNG		""
@@ -577,9 +582,10 @@ cat >$outfile <<EOF
 \\Format pbm	  pbm	PBM		""
 \\Format ps	  ps	Postscript	t
 \\Format program  ""	Program		""
-\\Format tgif     obj	TGIF		""
+\\Format tgif     obj	Tgif		""
 \\Format tiff     tif	TIFF		""
-\\Format word	  doc	Word		W
+\\Format word	  doc  "MS Word"	W
+\\Format wordhtml html "MS Word (HTML)" ""
 \\Format xbm	  xbm	XBM		""
 \\Format xpm	  xpm	XPM		""
 \\Format lyxpreview	lyxpreview	"LyX Preview"		""
@@ -587,6 +593,7 @@ cat >$outfile <<EOF
 \\converter latex dvi "$latex_to_dvi" "latex"
 \\converter latex pdf2 "$latex_to_pdf" "latex"
 \\converter latex html "$latex_to_html_command" "originaldir,needaux"
+\\converter latex wordhtml "$latex_to_word_command" ""
 \\converter literate latex "$literate_to_tex_command" ""
 \\converter dvi pdf3 "$dvi_to_pdf_command" ""
 \\converter dvi ps "$dvi_to_ps_command" ""
@@ -624,28 +631,30 @@ then
 fi
 
 ### the graphic converter part with the predefined ones
-#### Search for tne nonstandard converting progs
+#### Search for the nonstandard converting progs
 #
-SEARCH_PROG([for an FIG -> EPS/PPM converter], FIG2DEV, fig2dev)
+SEARCH_PROG([for a FIG -> EPS/PPM/PNG converter], FIG2DEV, fig2dev)
 if test "$FIG2DEV" = "fig2dev"; then
 cat >>$outfile <<EOF
 \\converter fig eps "fig2dev -L eps \$\$i \$\$o" ""
 \\converter fig ppm "fig2dev -L ppm \$\$i \$\$o" ""
+\\converter fig png "fig2dev -L png \$\$i \$\$o" ""
 EOF
 fi
 
-SEARCH_PROG([for an TIFF -> PS converter], TIFF2PS, tiff2ps)
+SEARCH_PROG([for a TIFF -> PS converter], TIFF2PS, tiff2ps)
 if test "$TIFF2PS" = "tiff2ps"; then
 cat >>$outfile <<EOF
 \\converter tiff eps "tiff2ps \$\$i > \$\$o" ""
 EOF
 fi
 
-SEARCH_PROG([for an TGIF -> EPS/PPM converter], TGIF, tgif)
+SEARCH_PROG([for a Tgif -> EPS/PNG/PDF converter], TGIF, tgif)
 if test "$TGIF" = "tgif"; then
 cat >>$outfile <<EOF
 \\converter tgif eps "tgif -stdout -print -color -eps \$\$i > \$\$o" ""
 \\converter tgif png "tgif -stdout -print -color -xpm \$\$i | xpmtoppm | pnmtopng > \$\$o" ""
+\\converter tgif pdf "tgif -stdout -print -color -pdf \$\$i > \$\$o" ""
 EOF
 fi
 
