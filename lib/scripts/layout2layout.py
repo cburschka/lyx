@@ -62,9 +62,16 @@ def convert(lines):
     re_EndPreamble = re.compile(r'^(\s*)EndPreamble', re.IGNORECASE)
     re_MaxCounter = re.compile(r'^\s*MaxCounter', re.IGNORECASE)
     re_LabelType = re.compile(r'^(\s*)(LabelType)(\s+)(\S+)', re.IGNORECASE)
+    re_LatexType = re.compile(r'^(\s*)(LatexType)(\s+)(\S+)', re.IGNORECASE)
+    re_Style = re.compile(r'^(\s*)(Style)(\s+)(\S+)', re.IGNORECASE)
+    re_End = re.compile(r'^(\s*)(End)(\s*)$', re.IGNORECASE)
 
     i = 0
     only_comment = 1
+    label = ""
+    space1 = ""
+    latextype = ""
+    style = ""
     while i < len(lines):
 
         # Skip comments and empty lines
@@ -110,12 +117,29 @@ def convert(lines):
         match = re_LabelType.match(lines[i])
         if match:
             label = match.group(4)
+            space1 = match.group(1)
             if string.lower(label[:8]) == "counter_":
                 counter = label[8:]
                 lines[i] = re_LabelType.sub(r'\1\2\3Counter', lines[i])
                 # use the same indentation
-                space1 = match.group(1)
                 lines.insert(i + 1, "%sLabelCounter %s" % (space1, counter))
+
+        # Add a line "LatexType Bib_Environment" if LabelType is Bibliography
+        # (or change the existing LatexType)
+        match = re_LatexType.match(lines[i])
+        if match:
+            latextype = match.group(4)
+            lines[i] = re_LatexType.sub(r'\1\2\3Bib_Environment', lines[i])
+        match = re_Style.match(lines[i])
+        if match:
+            style = match.group(4)
+            label = ""
+            space1 = ""
+            latextype = ""
+        if re_End.match(lines[i]) and string.lower(label) == "bibliography":
+            if (latextype == ""):
+                lines.insert(i, "%sLatexType Bib_Environment" % space1)
+                i = i + 1
 
         i = i + 1
 

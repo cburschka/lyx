@@ -1,3 +1,11 @@
+2006-01-08  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* scripts/layout2layout.py: add "LatexType Bib_Environment" to style
+	if LabelType is Bibliography.
+	* layouts/aastex.layout:
+	* layouts/kluwer.layout: Change LatexType of Bibliography style to
+	Bib_Environment. 
+
 2006-01-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* layouts/cv.layout (Bibliography): change latextype to
