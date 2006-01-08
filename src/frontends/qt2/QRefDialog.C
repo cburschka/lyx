@@ -44,8 +44,7 @@ void QRefDialog::show()
 
 void QRefDialog::changed_adaptor()
 {
-	if (!referenceED->text().isEmpty())
-		form_->changed();
+	form_->changed();
 }
 
 
@@ -82,7 +81,12 @@ void QRefDialog::refSelected(const QString & sel)
 	if (form_->readOnly())
 		return;
 
-	referenceED->setText(sel);
+	int const cur_item = refsLB->currentItem();
+	bool const cur_item_selected = cur_item >= 0 ?
+		refsLB->isSelected(cur_item) : false;
+
+	if (cur_item_selected)
+		referenceED->setText(sel);
 	// <enter> or double click, inserts ref and closes dialog
 	form_->slotOK();
 }

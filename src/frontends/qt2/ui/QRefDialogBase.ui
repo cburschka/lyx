@@ -410,6 +410,12 @@
         <slot>refHighlighted(const QString&amp;)</slot>
     </connection>
     <connection>
+        <sender>refsLB</sender>
+        <signal>selected(const QString&amp;)</signal>
+        <receiver>QRefDialogBase</receiver>
+        <slot>refSelected(const QString&amp;)</slot>
+    </connection>
+    <connection>
         <sender>sortCB</sender>
         <signal>toggled(bool)</signal>
         <receiver>QRefDialogBase</receiver>

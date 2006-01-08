@@ -100,7 +100,7 @@ void QRef::update_contents()
 		dialog_->bufferCO->setCurrentItem(controller().getBufferNum());
 
 	updateRefs();
-	bc().valid(false);
+	bc().valid(isValid());
 }
 
 
@@ -192,13 +192,15 @@ void QRef::redoRefs()
 	dialog_->referenceED->setText(tmp);
 
 	// restore the last selection for new insets
+	// but do not highlight it
 	if (tmp.isEmpty() && lastref != -1
-	    && lastref < int(dialog_->refsLB->count()))
+	    && lastref < int(dialog_->refsLB->count())) {
 		dialog_->refsLB->setCurrentItem(lastref);
-	else
+		dialog_->refsLB->clearSelection();
+	} else
 		for (unsigned int i = 0; i < dialog_->refsLB->count(); ++i) {
 			if (tmp == dialog_->refsLB->text(i))
-				dialog_->refsLB->setCurrentItem(i);
+				dialog_->refsLB->setSelected(i, true);
 		}
 
 	dialog_->refsLB->setAutoUpdate(true);
@@ -221,6 +223,12 @@ void QRef::updateRefs()
 	dialog_->refsLB->setEnabled(!refs_.empty());
 	dialog_->gotoPB->setEnabled(!refs_.empty());
 	redoRefs();
+}
+
+
+bool QRef::isValid()
+{
+	return !dialog_->referenceED->text().isEmpty();
 }
 
 } // namespace frontend
