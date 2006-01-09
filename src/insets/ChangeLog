@@ -1,3 +1,16 @@
+2006-01-07  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* ExternalSupport.[Ch] (updateExternal): add external_in_comment flag
+	* insetexternal.C (latex, linuxdoc, docbook, plaintext): Don't copy
+	files inside comments
+	* insetbibtex.C (latex): ditto
+	* insetinclude.C (latex, linuxdoc, docbook, plaintext): ditto
+	* insetnote.C (latex): set inComment flag in runparams and ignore
+	exported files for comment insets
+	* insetnote.C (linuxdoc): ditto
+	* insetnote.C (docbook): ditto
+	* insetnote.C (plaintext): ditto
+
 2006-01-01    <larsbj@gullik.net>
 
 	* insetcharstyle.h: fix syntax error

@@ -65,7 +65,8 @@ int writeExternal(InsetExternalParams const &,
 		  Buffer const &,
 		  std::ostream &,
 		  ExportData &,
-		  bool external_in_tmpdir = false);
+                  bool external_in_tmpdir,
+                  bool external_in_comment);
 
 } // namespace external
 } // namespace lyx

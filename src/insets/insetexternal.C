@@ -18,7 +18,6 @@
 #include "insets/render_preview.h"
 
 #include "buffer.h"
-#include "BufferView.h"
 #include "cursor.h"
 #include "debug.h"
 #include "dispatchresult.h"
@@ -706,11 +705,13 @@ int InsetExternal::latex(Buffer const & buf, ostream & os,
 			return external::writeExternal(params_, "PDFLaTeX",
 			                               buf, os,
 			                               *(runparams.exportdata),
-			                               external_in_tmpdir);
+			                               external_in_tmpdir,
+			                               runparams.inComment);
 	}
 	return external::writeExternal(params_, "LaTeX", buf, os,
 	                               *(runparams.exportdata),
-	                               external_in_tmpdir);
+	                               external_in_tmpdir,
+	                               runparams.inComment);
 }
 
 
@@ -718,7 +719,8 @@ int InsetExternal::plaintext(Buffer const & buf, ostream & os,
 			 OutputParams const & runparams) const
 {
 	return external::writeExternal(params_, "Ascii", buf, os,
-	                               *(runparams.exportdata));
+	                               *(runparams.exportdata), false,
+	                               runparams.inComment);
 }
 
 
@@ -726,7 +728,8 @@ int InsetExternal::linuxdoc(Buffer const & buf, ostream & os,
 			    OutputParams const & runparams) const
 {
 	return external::writeExternal(params_, "LinuxDoc", buf, os,
-	                               *(runparams.exportdata));
+	                               *(runparams.exportdata), false,
+	                               runparams.inComment);
 }
 
 
@@ -734,7 +737,8 @@ int InsetExternal::docbook(Buffer const & buf, ostream & os,
 			   OutputParams const & runparams) const
 {
 	return external::writeExternal(params_, "DocBook", buf, os,
-	                               *(runparams.exportdata));
+	                               *(runparams.exportdata), false,
+	                               runparams.inComment);
 }
 
 

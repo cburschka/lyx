@@ -160,7 +160,8 @@ int InsetBibtex::latex(Buffer const & buffer, ostream & os,
 			normalize_name(buffer, runparams, input, ".bib");
 		string const in_file = database + ".bib";
 
-		if (!runparams.nice && IsFileReadable(in_file)) {
+		if (!runparams.inComment && !runparams.nice &&
+		    IsFileReadable(in_file)) {
 
 			database = FileName(database).mangledFilename();
 			string const out_file = MakeAbsPath(database + ".bib",

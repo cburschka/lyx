@@ -333,7 +333,8 @@ int writeExternal(InsetExternalParams const & params,
 		  string const & format,
 		  Buffer const & buffer, ostream & os,
                   ExportData & exportdata,
-		  bool external_in_tmpdir)
+                  bool external_in_tmpdir,
+                  bool external_in_comment)
 {
 	Template const * const et_ptr = getTemplatePtr(params);
 	if (!et_ptr)
@@ -349,7 +350,9 @@ int writeExternal(InsetExternalParams const & params,
 		return 0;
 	}
 
-	updateExternal(params, format, buffer, exportdata, external_in_tmpdir);
+	if (!external_in_comment)
+		updateExternal(params, format, buffer, exportdata,
+		               external_in_tmpdir);
 
 	bool const use_latex_path = format == "LaTeX";
 	string str = doSubstitution(params, buffer, cit->second.product,

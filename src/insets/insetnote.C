@@ -18,6 +18,7 @@
 #include "cursor.h"
 #include "debug.h"
 #include "dispatchresult.h"
+#include "exporter.h"
 #include "funcrequest.h"
 #include "FuncStatus.h"
 #include "gettext.h"
@@ -25,6 +26,7 @@
 #include "LColor.h"
 #include "lyxlex.h"
 #include "metricsinfo.h"
+#include "outputparams.h"
 #include "paragraph.h"
 
 #include "support/lyxalgo.h"
@@ -229,15 +231,19 @@ bool InsetNote::getStatus(LCursor & cur, FuncRequest const & cmd,
 
 
 int InsetNote::latex(Buffer const & buf, ostream & os,
-		     OutputParams const & runparams) const
+                     OutputParams const & runparams_in) const
 {
 	if (params_.type == InsetNoteParams::Note)
 		return 0;
 
+	OutputParams runparams(runparams_in);
 	string type;
-	if (params_.type == InsetNoteParams::Comment)
+	if (params_.type == InsetNoteParams::Comment) {
 		type = "comment";
-	else if (params_.type == InsetNoteParams::Greyedout)
+		runparams.inComment = true;
+		// Ignore files that are exported inside a comment
+		runparams.exportdata.reset(new ExportData);
+	} else if (params_.type == InsetNoteParams::Greyedout)
 		type = "lyxgreyedout";
 
 	ostringstream ss;
@@ -253,14 +259,19 @@ int InsetNote::latex(Buffer const & buf, ostream & os,
 
 
 int InsetNote::linuxdoc(Buffer const & buf, std::ostream & os,
-			OutputParams const & runparams) const
+                        OutputParams const & runparams_in) const
 {
 	if (params_.type == InsetNoteParams::Note)
 		return 0;
 
+	OutputParams runparams(runparams_in);
 	ostringstream ss;
-	if (params_.type == InsetNoteParams::Comment)
+	if (params_.type == InsetNoteParams::Comment) {
 		ss << "<comment>\n";
+		runparams.inComment = true;
+		// Ignore files that are exported inside a comment
+		runparams.exportdata.reset(new ExportData);
+	}
 
 	InsetText::linuxdoc(buf, ss, runparams);
 
@@ -275,14 +286,19 @@ int InsetNote::linuxdoc(Buffer const & buf, std::ostream & os,
 
 
 int InsetNote::docbook(Buffer const & buf, std::ostream & os,
-		       OutputParams const & runparams) const
+                       OutputParams const & runparams_in) const
 {
 	if (params_.type == InsetNoteParams::Note)
 		return 0;
 
+	OutputParams runparams(runparams_in);
 	ostringstream ss;
-	if (params_.type == InsetNoteParams::Comment)
+	if (params_.type == InsetNoteParams::Comment) {
 		ss << "<remark>\n";
+		runparams.inComment = true;
+		// Ignore files that are exported inside a comment
+		runparams.exportdata.reset(new ExportData);
+	}
 
 	InsetText::docbook(buf, ss, runparams);
 
@@ -297,11 +313,17 @@ int InsetNote::docbook(Buffer const & buf, std::ostream & os,
 
 
 int InsetNote::plaintext(Buffer const & buf, std::ostream & os,
-		     OutputParams const & runparams) const
+                         OutputParams const & runparams_in) const
 {
 	if (params_.type == InsetNoteParams::Note)
 		return 0;
 
+	OutputParams runparams(runparams_in);
+	if (params_.type == InsetNoteParams::Comment) {
+		runparams.inComment = true;
+		// Ignore files that are exported inside a comment
+		runparams.exportdata.reset(new ExportData);
+	}
 	ostringstream ss;
 	ss << "[";
 	InsetText::plaintext(buf, ss, runparams);

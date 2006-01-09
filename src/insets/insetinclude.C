@@ -359,7 +359,10 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 	lyxerr[Debug::LATEX] << "exportfile:" << exportfile << endl;
 	lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
 
-	if (loadIfNeeded(buffer, params_)) {
+	if (runparams.inComment)
+		// Don't try to load or copy the file
+		;
+	else if (loadIfNeeded(buffer, params_)) {
 		Buffer * tmp = bufferlist.getBuffer(included_file);
 
 		if (tmp->params().textclass != m_buffer->params().textclass) {
@@ -376,6 +379,7 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 		tmp->markDepClean(m_buffer->temppath());
 
 #ifdef WITH_WARNINGS
+#warning handle non existing files
 #warning Second argument is irrelevant!
 // since only_body is true, makeLaTeXFile will not look at second
 // argument. Should we set it to string(), or should makeLaTeXFile

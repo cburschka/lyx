@@ -578,10 +578,11 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	// of include files
 	Buffer const * m_buffer = buf.getMasterBuffer();
 
-	// Return the output name if the file does not exist.
+	// Return the output name if we are inside a comment or the file does
+	// not exist.
 	// We are not going to change the extension or using the name of the
 	// temporary file, the code is already complicated enough.
-	if (!IsFileReadable(orig_file))
+	if (runparams.inComment || !IsFileReadable(orig_file))
 		return params().filename.outputFilename(m_buffer->filePath());
 
 	// We place all temporary files in the master buffer's temp dir.
