@@ -36,8 +36,7 @@ QRefDialog::QRefDialog(QRef * form)
 
 void QRefDialog::changed_adaptor()
 {
-	if (!referenceED->text().isEmpty())
-		form_->changed();
+	form_->changed();
 }
 
 
@@ -69,9 +68,19 @@ void QRefDialog::refHighlighted(const QString & sel)
 }
 
 
-void QRefDialog::refSelected(const QString &)
+void QRefDialog::refSelected(const QString & sel)
 {
-	form_->gotoRef();
+	if (form_->readOnly())
+		return;
+
+	int const cur_item = refsLB->currentItem();
+	bool const cur_item_selected = cur_item >= 0 ?
+		refsLB->isSelected(cur_item) : false;
+
+	if (cur_item_selected)
+		referenceED->setText(sel);
+	// <enter> or double click, inserts ref and closes dialog
+	form_->slotOK();
 }
 
 

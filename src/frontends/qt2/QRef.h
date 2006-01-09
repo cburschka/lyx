@@ -27,6 +27,8 @@ public:
 	friend class QRefDialog;
 
 	QRef();
+protected:
+	virtual bool isValid();
 private:
 	/// apply changes
 	virtual void apply();

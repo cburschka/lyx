@@ -86,7 +86,7 @@ void QRef::update_contents()
 
 	updateRefs();
 
-	bc().invalid();
+	bc().valid(isValid());
 }
 
 
@@ -154,6 +154,8 @@ void QRef::redoRefs()
 	dialog_->refsLB->blockSignals(true);
 	dialog_->referenceED->blockSignals(true);
 
+	int lastref = dialog_->refsLB->currentItem();
+
 	dialog_->refsLB->setAutoUpdate(false);
 	dialog_->refsLB->clear();
 
@@ -171,10 +173,17 @@ void QRef::redoRefs()
 
 	dialog_->referenceED->setText(tmp);
 
-	for (unsigned int i = 0; i < dialog_->refsLB->count(); ++i) {
-		if (tmp == dialog_->refsLB->text(i))
-			dialog_->refsLB->setCurrentItem(i);
-	}
+	// restore the last selection for new insets
+	// but do not highlight it
+	if (tmp.isEmpty() && lastref != -1
+	    && lastref < int(dialog_->refsLB->count())) {
+		dialog_->refsLB->setCurrentItem(lastref);
+		dialog_->refsLB->clearSelection();
+	} else
+		for (unsigned int i = 0; i < dialog_->refsLB->count(); ++i) {
+			if (tmp == dialog_->refsLB->text(i))
+				dialog_->refsLB->setSelected(i, true);
+		}
 
 	dialog_->refsLB->setAutoUpdate(true);
 	dialog_->refsLB->update();
@@ -196,4 +205,10 @@ void QRef::updateRefs()
 	dialog_->sortCB->setEnabled(!refs_.empty());
 	dialog_->refsLB->setEnabled(!refs_.empty());
 	redoRefs();
+}
+
+
+bool QRef::isValid()
+{
+	return !dialog_->referenceED->text().isEmpty();
 }
