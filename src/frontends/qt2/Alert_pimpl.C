@@ -10,6 +10,7 @@
 
 #include <config.h>
 
+#include <qapplication.h>
 #include <qmessagebox.h>
 #include <qlabel.h>
 #include <qlineedit.h>
@@ -31,21 +32,30 @@ using std::make_pair;
 
 void alert_pimpl(string const & s1, string const & s2, string const & s3)
 {
-	QMessageBox::warning(0, "LyX",
+	QWidget * const parent = qApp->focusWidget() ?
+		qApp->focusWidget() : qApp->mainWidget();
+
+	QMessageBox::warning(parent, "LyX",
 			     toqstr(s1 + '\n' + '\n' + s2 + '\n' + s3));
 }
 
 
 bool askQuestion_pimpl(string const & s1, string const & s2, string const & s3)
 {
-	return !(QMessageBox::information(0, "LyX", toqstr(s1 + '\n' + s2 + '\n' + s3),
+	QWidget * const parent = qApp->focusWidget() ?
+		qApp->focusWidget() : qApp->mainWidget();
+
+	return !(QMessageBox::information(parent, "LyX", toqstr(s1 + '\n' + s2 + '\n' + s3),
 		qt_("&Yes"), qt_("&No"), 0, 1));
 }
 
 
 int askConfirmation_pimpl(string const & s1, string const & s2, string const & s3)
 {
-	return (QMessageBox::information(0, "LyX", toqstr(s1 + '\n' + s2 + '\n' + s3),
+	QWidget * const parent = qApp->focusWidget() ?
+		qApp->focusWidget() : qApp->mainWidget();
+
+	return (QMessageBox::information(parent, "LyX", toqstr(s1 + '\n' + s2 + '\n' + s3),
 		qt_("&Yes"), qt_("&No"), qt_("&Cancel"), 0, 2)) + 1;
 }
 

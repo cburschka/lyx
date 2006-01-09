@@ -79,6 +79,9 @@ What's new
 - Enable Instant Preview to work if the path to the external GhostScript
   executable contains spaces. (bug 2193).
 
+- The error/warning/confirmation dialogs aren't hidden behind the main
+  window anymore [Qt only] (bug 1977).
+
 * Configuration/Installation:
 
 - Enable TeXFiles.sh to run when its path contains spaces.
