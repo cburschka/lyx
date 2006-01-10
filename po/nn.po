@@ -1,27 +1,23 @@
-# translation of nn1.1.2.22.po to Nynorsk
-# translation of frå_cvs_1.1.2.15.po to Nynorsk
-# translation of nn_110104.po to Nynorsk
-# translation of nn_1.3.x.po to Nynorsk
-# translation of nn.po to Nynorsk
-# translation of nn_ny.po to Nynorsk
-# translation of no.po to Nynorsk
+# translation of nn_1.3.7.po to
+# translation of nn.po to
 # Norske oversettelser for LyX
 # Copyright (C) 1997-1999 LyX Team
+#
 # Lars Gullik Bjønnes <larsbj@lyx.org>, 1999.
 # Ingar Pareliussen <ingar.pareliussen@chembio.ntnu.no>, 2003, 2005.
-#
+# Ingar Pareliussen <ingar_ved_samfundet.no>, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: nn1.1.2.22\n"
+"Project-Id-Version: nn_1.3.7\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-01-03 15:37+0100\n"
-"PO-Revision-Date: 2005-04-17 19:47+0200\n"
-"Last-Translator: Ingar Pareliussen <ingar.pareliussen@chembio.ntnu.no>\n"
-"Language-Team: Nynorsk\n"
+"PO-Revision-Date: 2006-01-04 20:19+0100\n"
+"Last-Translator: Ingar Pareliussen <ingar_ved_samfundet.no>\n"
+"Language-Team:  <nn@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.10\n"
+"X-Generator: KBabel 1.11\n"
 
 #: ../src/frontends/xforms/forms/form_aboutlyx.fd:44
 #: ../src/frontends/xforms/forms/form_error.fd:61
@@ -2664,9 +2660,8 @@ msgid "Show ERT button only"
 msgstr "Vis berre ERT knapp "
 
 #: ../src/frontends/qt2/ui/QERTDialogBase.ui:94
-#, fuzzy
 msgid "O&pen"
-msgstr "&Opna"
+msgstr "O&pna"
 
 #: ../src/frontends/qt2/ui/QERTDialogBase.ui:102
 msgid "Show ERT contents"
@@ -2913,9 +2908,8 @@ msgid "Angle to rotate image by"
 msgstr "Roter bilete etter vinkelen"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:552
-#, fuzzy
 msgid "Or&igin:"
-msgstr "&Origo:"
+msgstr "Or&igo:"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:560
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:571
@@ -2970,8 +2964,7 @@ msgstr "&Delfigur"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:891
 msgid "Is this just one part of a figure float ?"
-msgstr ""
-"Er dette berre ein del av delane til ein figurflytar med mange figurar?"
+msgstr "Er dette berre ein del av delane til ein figurflytar med mange figurar?"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:902
 msgid "Don't un&zip on export"
@@ -3533,9 +3526,8 @@ msgid "&To:"
 msgstr "&Til:"
 
 #: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:227
-#, fuzzy
 msgid "&From:"
-msgstr "F&rå:"
+msgstr "&Frå:"
 
 #: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:249
 msgid "E&xtra flag:"
@@ -3670,9 +3662,8 @@ msgid "Auto &begin"
 msgstr "Start aut&omatisk"
 
 #: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:140
-#, fuzzy
 msgid "Use b&abel"
-msgstr "Bruk &babel"
+msgstr "Bruk b&abel"
 
 #: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:172
 msgid "&Global"
@@ -3977,7 +3968,6 @@ msgid "W&heel mouse scroll:"
 msgstr "Farta til muse&hjulet:"
 
 #: ../src/frontends/qt2/ui/QPrefUIModule.ui:201
-#, fuzzy
 msgid "Cursor follows &scrollbar"
 msgstr "Skriv&emerke følgjer rullefelt:"
 
@@ -4216,8 +4206,7 @@ msgstr "&Eksportformat:"
 
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:168
 msgid "Process the converted file with this command ($$FName = file name)"
-msgstr ""
-"Bruk dette programmet for å eksportere dokumentet  ($$FNamn = fil namn)"
+msgstr "Bruk dette programmet for å eksportere dokumentet  ($$FNamn = fil namn)"
 
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:192
 msgid "Available export converters"
@@ -4321,7 +4310,7 @@ msgstr "Kolonne"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:187
 msgid "A&dd"
-msgstr "&Legg til"
+msgstr "Le&gg til"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:195
 msgid "Append column (right)"
@@ -4344,9 +4333,8 @@ msgid "Append row (below)"
 msgstr "Legg til rad (under)"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:265
-#, fuzzy
 msgid "Del&ete"
-msgstr "Sle&tt"
+msgstr "Sl&ett"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:273
 msgid "Delete this row"
@@ -4552,8 +4540,7 @@ msgid "&View"
 msgstr "Vi&s"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
+msgid "Show contents of marked file. Only possible when files are shown with path"
 msgstr "Vis innhaldet i fila (Kan berre nyttast når stigar er vist)"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:256
@@ -8256,9 +8243,8 @@ msgid "Emphasize"
 msgstr "Utheva"
 
 #: src/SpellBase.C:48
-#, fuzzy
 msgid "Native OS API not yet supported."
-msgstr "Ikkje støtta endå"
+msgstr "Dessverre er ikkje stavekontroll for ditt operativsystem støtta enno."
 
 #: src/buffer.C:356
 msgid "Couldn't set the layout for "
@@ -8365,13 +8351,10 @@ msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
 msgstr "Fila er for gammal. Bruk LyX 0.10.x for å lese ho."
 
 #: src/buffer.C:1253
-#, fuzzy
 msgid ""
 "The file was created with a newer version of LyX, but the lyx2lyx script "
 "cannot convert it.\n"
-msgstr ""
-"%1$s vart laga i ein gammal LyX versjon. men programmet for å fornye "
-"dokumentet \"lyx2lyx\" klarte ikkje å fornye det."
+msgstr "Fila vart laga i ein ny LyX versjon. men programmet \"lyx2lyx\" klarte ikkje å konvertere det til denne versjonen.\n"
 
 #: src/buffer.C:1299
 msgid "Warning!"
@@ -9218,9 +9201,8 @@ msgid "Yellow"
 msgstr "Gul"
 
 #: src/frontends/controllers/helper_funcs.C:55
-#, fuzzy
 msgid "space"
-msgstr "Byt ut"
+msgstr "mellomrom"
 
 #: src/frontends/controllers/helper_funcs.C:105
 msgid "Invalid filename"
@@ -9228,14 +9210,12 @@ msgstr "Ugyldig filnamn"
 
 #: src/frontends/controllers/helper_funcs.C:106
 #: src/frontends/controllers/helper_funcs.C:172
-#, fuzzy
 msgid "No LaTeX support for paths containing any of these characters:\n"
-msgstr "Desse bokstavane kan ikkje vere i fil-namn:"
+msgstr "Dessverre støttar ikkje LaTeX stiar med bokstavane:\n"
 
 #: src/frontends/controllers/helper_funcs.C:171
-#, fuzzy
 msgid "Invalid directory name"
-msgstr "Ugyldig filnamn"
+msgstr "Ugyldig stignamn"
 
 #: src/frontends/gnome/GLog.C:51 src/frontends/qt2/QLog.C:52
 msgid "Build log"
@@ -9546,10 +9526,9 @@ msgstr "Feit\t\\mathbf"
 
 #: src/frontends/qt2/QMathDialog.C:150
 msgid "Bold symbol\t\\boldsymbol"
-msgstr ""
+msgstr "Feitsymbol\t\\boldsymbol"
 
 #: src/frontends/qt2/QMathDialog.C:151
-#, fuzzy
 msgid "Sans serif\t\\mathsf"
 msgstr "Sans serif\t\\mathsf"
 
@@ -9921,8 +9900,7 @@ msgstr "Flytt det valde elementet nedover (i den gjeldande lista)"
 msgid ""
 "The entries which will be cited. Select them with the arrow buttons from the "
 "right browser window."
-msgstr ""
-"Elementa som vil bli sitert. Vel element frå det høgre feltet med piltastane."
+msgstr "Elementa som vil bli sitert. Vel element frå det høgre feltet med piltastane."
 
 #: src/frontends/xforms/FormCitation.C:181
 msgid ""
@@ -9942,8 +9920,7 @@ msgstr "Informasjon om det valde litteraturelementet."
 msgid ""
 "Here you may select how the citation label should look inside the text "
 "(Natbib)."
-msgstr ""
-"Her kan du velje korleis litteraturreferansen skal sjå ut i teksten.(Natbib)."
+msgstr "Her kan du velje korleis litteraturreferansen skal sjå ut i teksten.(Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:198
 msgid ""
@@ -10399,10 +10376,8 @@ msgid "LyX objects that can be assigned a color."
 msgstr "LyX objekt som ein kan tilegne fargar."
 
 #: src/frontends/xforms/FormPreferences.C:539
-msgid ""
-"Modify the LyX object's color. Note: you must then \"Apply\" the change."
-msgstr ""
-"Endra farge på LyX objekt. Merk ! Du må trykkje på \"Bruk\" etter endringa."
+msgid "Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgstr "Endra farge på LyX objekt. Merk ! Du må trykkje på \"Bruk\" etter endringa."
 
 #: src/frontends/xforms/FormPreferences.C:547
 msgid "Find a new color."
@@ -10717,8 +10692,7 @@ msgstr "Søk heilt bakover."
 
 #. Set up the tooltip mechanism
 #: src/frontends/xforms/FormSendto.C:45
-msgid ""
-"Export the buffer to this format before running the command below on it."
+msgid "Export the buffer to this format before running the command below on it."
 msgstr "Eksporter til dette formatet før vi køyrar kommandoen under."
 
 #: src/frontends/xforms/FormSendto.C:48
@@ -10983,11 +10957,11 @@ msgstr "LyX-åtvaring!"
 
 #: src/insets/insetbib.C:269
 msgid "There are spaces in the paths to your BibTeX databases."
-msgstr ""
+msgstr "Det er mellomrom i stignamna til BibTeX databasane dine"
 
 #: src/insets/insetbib.C:270
 msgid "BibTeX will be unable to find them."
-msgstr ""
+msgstr "BibTeX vil ikkje kunne finne dei."
 
 #: src/insets/insetcaption.C:63
 msgid "Opened Caption Inset"
@@ -11699,8 +11673,7 @@ msgstr "Orsak!"
 
 #: src/lyxfind.C:45
 msgid "You cannot replace a single space, nor an empty character."
-msgstr ""
-"Du kan ikkje byta ut eit enkelt mellomrom, ikkje ein tom bokstav heller."
+msgstr "Du kan ikkje byta ut eit enkelt mellomrom, ikkje ein tom bokstav heller."
 
 #: src/lyxfont.C:40
 msgid "Symbol"
@@ -11850,8 +11823,7 @@ msgstr "Syntaks: set-color <lyx_name> <x11_name>"
 #: src/lyxfunc.C:1499
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
-msgstr ""
-"Kan ikkje sette fargen  \"%1$s\", den finst ikkje eller kan ikkje bli endra."
+msgstr "Kan ikkje sette fargen  \"%1$s\", den finst ikkje eller kan ikkje bli endra."
 
 #: src/lyxfunc.C:1504
 msgid "Set-color "
@@ -11941,8 +11913,7 @@ msgstr "Velkomen til LyX!"
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
-msgstr ""
-"Kodinga av skrifttyper i LaTeX2e (fontenc). T1 er best for dei fleste språk."
+msgstr "Kodinga av skrifttyper i LaTeX2e (fontenc). T1 er best for dei fleste språk."
 
 #: src/lyxrc.C:1886
 msgid ""
@@ -12031,8 +12002,7 @@ msgstr ""
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
-msgstr ""
-"Prefiks som blir lagt til skrivarar som blir spesifisert i skrivar-dialogen."
+msgstr "Prefiks som blir lagt til skrivarar som blir spesifisert i skrivar-dialogen."
 
 #: src/lyxrc.C:1958
 msgid ""
@@ -12047,8 +12017,7 @@ msgstr ""
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
 "roughly the same size as on paper."
-msgstr ""
-"Forstørring for skjermskrifttypar. 100% er om lag like stort som på arket."
+msgstr "Forstørring for skjermskrifttypar. 100% er om lag like stort som på arket."
 
 #: src/lyxrc.C:1967
 msgid "The font sizes used for calculating the scaling of the screen fonts."
@@ -12077,8 +12046,7 @@ msgid "The encoding for the menu/popups fonts."
 msgstr "Koding for menyar/oppsprett skrifttypar."
 
 #: src/lyxrc.C:1996
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Kor lang tid  mellom kvar automatiske lagring (i sekund). 0 skrur av "
 "automatisk lagring."
@@ -12181,8 +12149,7 @@ msgstr "Maksimal linjelengd for ASCII-filer (LaTeX, SGML eller rein tekst)."
 
 #: src/lyxrc.C:2054
 msgid "Maximal number of lastfiles. Up to 9 can appear in the file menu."
-msgstr ""
-"Kor mange sist opna filer skal vere tilgjengeleg i filmenyen (opp til 9)."
+msgstr "Kor mange sist opna filer skal vere tilgjengeleg i filmenyen (opp til 9)."
 
 #: src/lyxrc.C:2058
 msgid "Select to check whether the lastfiles still exist."
@@ -12190,8 +12157,7 @@ msgstr "Sjekk at dei sist opna filene finst enno."
 
 #: src/lyxrc.C:2062
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
-msgstr ""
-"Papir meldinga til DVI-framsynar (La den vere tom eller bruk \"-paper\")"
+msgstr "Papir meldinga til DVI-framsynar (La den vere tom eller bruk \"-paper\")"
 
 #: src/lyxrc.C:2066
 msgid "Specify the default paper size."
@@ -12201,8 +12167,7 @@ msgstr "Vel standard papirstorleik."
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
-msgstr ""
-"La samanskrivne ord slik som \"helikoptersjøførsertifikat\"vere korrekt?"
+msgstr "La samanskrivne ord slik som \"helikoptersjøførsertifikat\"vere korrekt?"
 
 #: src/lyxrc.C:2077
 msgid "What command runs the spell checker?"
@@ -12225,8 +12190,7 @@ msgid ""
 msgstr "Vel eit alternativt språk. Standarden er å bruke språket i dokumentet."
 
 #: src/lyxrc.C:2091
-msgid ""
-"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "Vel ei alternativ personleg ordbok. T.d.: \"ispell_engelsk\"."
 
 #: src/lyxrc.C:2096
@@ -12284,17 +12248,14 @@ msgstr ""
 "lagt i den same katalogen som original fila."
 
 #: src/lyxrc.C:2128
-msgid ""
-"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
-msgstr ""
-"Skriv frå høgre til venstre (t.d. for språk som Hebraisk eller Arabisk)."
+msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgstr "Skriv frå høgre til venstre (t.d. for språk som Hebraisk eller Arabisk)."
 
 #: src/lyxrc.C:2132
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
-msgstr ""
-"Gje ord på eit anna språk enn standard språket i dokumentet  ein annan farge."
+msgstr "Gje ord på eit anna språk enn standard språket i dokumentet  ein annan farge."
 
 #: src/lyxrc.C:2136
 msgid ""
@@ -12323,8 +12284,7 @@ msgid ""
 msgstr "Trengs det ein språk endring først i dokumentet?"
 
 #: src/lyxrc.C:2152
-msgid ""
-"Select if a language switching command is needed at the end of the document."
+msgid "Select if a language switching command is needed at the end of the document."
 msgstr "Trengs det ein språk endring sist i dokumentet?"
 
 #: src/lyxrc.C:2156
@@ -12362,8 +12322,7 @@ msgstr "Vis startopp bilete."
 msgid ""
 "The number of lines that are scrolled by mice with wheels or five button "
 "mice."
-msgstr ""
-"Kor mange linjer skal flyttast med mus med rulleknapp eller fem knappar?"
+msgstr "Kor mange linjer skal flyttast med mus med rulleknapp eller fem knappar?"
 
 #: src/lyxrc.C:2190
 msgid "New documents will be assigned this language."
@@ -12379,8 +12338,7 @@ msgstr "Vis førehandsvising av typesettet av slike ting som matte."
 
 #: src/lyxrc.C:2202
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
-msgstr ""
-"Førehandsvising av likningar vil ha \"(#)\"-merke istaden for nummererte."
+msgstr "Førehandsvising av likningar vil ha \"(#)\"-merke istaden for nummererte."
 
 #: src/lyxrc.C:2206
 msgid "Scale the preview size to suit."
@@ -12524,8 +12482,7 @@ msgstr "Klarte ikkje automatisk å lagra fila!"
 
 #: src/support/package.C:363
 #, c-format
-msgid ""
-"Unable to determine the path to the LyX binary from the command line %1%"
+msgid "Unable to determine the path to the LyX binary from the command line %1%"
 msgstr "Klarte ikkje å finne LyX-programmet frå kommandolinja %1%"
 
 #: src/support/package.C:368
@@ -12704,2848 +12661,3 @@ msgstr "Merke sett"
 msgid "LyX function 'layout' needs an argument."
 msgstr "LyX funksjonen «Stil» treng eit argument"
 
-#~ msgid "Dele&te"
-#~ msgstr "S&lett"
-
-#~ msgid ""
-#~ "The file was created with a newer version of LyX. This is likely to cause "
-#~ "problems."
-#~ msgstr "Fila er laga av ei nyare utgåve av LyX. Dette kan skapa problem."
-
-#~ msgid "space, '#', '~', '$' or '%'."
-#~ msgstr "mellomrom, '#', '~', '$' or '%'."
-
-#~ msgid "directory name can't contain any of these characters:"
-#~ msgstr "Desse bokstavane kan ikkje vere i katalognamn:"
-
-#~ msgid "BibTeX style files (*.bst)"
-#~ msgstr "BibTeX stil filer (*.bst)"
-
-#~ msgid "BibTeX database files (*.bib)"
-#~ msgstr "BibTeX database filer (*.bib)"
-
-#~ msgid "External material (*)"
-#~ msgstr "Materiale utanfrå (*)"
-
-#~ msgid "Select external material"
-#~ msgstr "Vel materiale utanfrå"
-
-#~ msgid "PostScript files (*.ps)"
-#~ msgstr "PostScript filer (*.ps)"
-
-#~ msgid "Select a file to print to"
-#~ msgstr "Vel ei fil for utskrift"
-
-#~ msgid "Select Database"
-#~ msgstr "Vel database"
-
-#~ msgid "*.bib| BibTeX Databases (*.bib)"
-#~ msgstr "*.bib| BibTeX Databasar (*.bib)"
-
-#~ msgid "Select BibTeX-Style"
-#~ msgstr "Vel BibTeX stil"
-
-#~ msgid "*.bst| BibTeX Styles (*.bst)"
-#~ msgstr "*.bst| BibTeX stil filer (*.bst)"
-
-#~ msgid "Forked child processes:|#F"
-#~ msgstr "Avspalta barneprosessar|#A"
-
-#~ msgid "Kill processes:|#K"
-#~ msgstr "Stans prosessar:|#S"
-
-#~ msgid "All ->"
-#~ msgstr "Alle ->"
-
-#~ msgid "@->"
-#~ msgstr "@->"
-
-#~ msgid "Reference:|#e"
-#~ msgstr "Referanse"
-
-#~ msgid "Cite &Style:"
-#~ msgstr "Referanse &stil:"
-
-#~ msgid "The citation key"
-#~ msgstr "Litteratur-nøkklen"
-
-#~ msgid "Bibtex"
-#~ msgstr "BibTeX"
-
-#~ msgid "Search the available citations"
-#~ msgstr "Leit blant litteraturen"
-
-#~ msgid "Available citation keys"
-#~ msgstr "Vel mellom litteraturen:"
-
-#~ msgid "Add the selected citation"
-#~ msgstr "Legg til den valde litteraturen"
-
-#~ msgid "Remove the selected citation"
-#~ msgstr "Fjern den valde litteraturen"
-
-#~ msgid "Citation entry"
-#~ msgstr "Litteratur elementet"
-
-#~ msgid "&File"
-#~ msgstr "&Fil"
-
-#~ msgid "Update the reference list"
-#~ msgstr "Oppdater referanselista"
-
-#~ msgid "&Reference:"
-#~ msgstr "&Referansen:"
-
-#~ msgid "Available references"
-#~ msgstr "Tilgjengelege referansar"
-
-#~ msgid "&Type"
-#~ msgstr "&Sort"
-
-#~ msgid "&Name"
-#~ msgstr "&Namn"
-
-#~ msgid "Citation Reference...|C"
-#~ msgstr "Litteratur referansar...|L"
-
-#~ msgid "BibTeX Reference...|B"
-#~ msgstr "BibTeX Referanse...|B"
-
-#~ msgid "Child Processes|C"
-#~ msgstr "Barneprosessar|B"
-
-#~ msgid "Show the processes forked by LyX"
-#~ msgstr "Vis barneprosessane til LyX"
-
-#~ msgid "Kill the forked process with this PID"
-#~ msgstr "Drep barneprosessen med dette PID"
-
-#~ msgid "Bibliography Item"
-#~ msgstr "Bibliografi objekt"
-
-#~ msgid "BibTeX"
-#~ msgstr "BibTeX"
-
-#~ msgid "LyX: Preferences"
-#~ msgstr "LyX innstillingar"
-
-#~ msgid "Go to reference"
-#~ msgstr "Gå til referanse"
-
-#~ msgid "ShowFile"
-#~ msgstr "Vis fil"
-
-#~ msgid "Table of contents"
-#~ msgstr "Innhaldsliste"
-
-#~ msgid "VCLog"
-#~ msgstr "VKLogg"
-
-#~ msgid "BibTeX Database"
-#~ msgstr "BibTeX Database"
-
-#~ msgid "Add the selected entry to the current citation reference."
-#~ msgstr "Legg til den valde litteraturen til litteraturlista."
-
-#~ msgid "Delete the selected entry from the current citation reference."
-#~ msgstr "Slett den valde litterauren frå litteraturlista."
-
-#~ msgid "ERT Options"
-#~ msgstr "ERT Val"
-
-#~ msgid "Child processes"
-#~ msgstr "Barneprosessar"
-
-#~ msgid "All currently running child processes forked by LyX."
-#~ msgstr "Alle barneprosessane til LyX."
-
-#~ msgid "A list of all child processes to kill."
-#~ msgstr "Lista over barneprosessar ein skal drepe."
-
-#~ msgid "Add all processes to the list of processes to kill."
-#~ msgstr "Legg prosessen til prosessar som skal drepast."
-
-#~ msgid ""
-#~ "Add the currently selected child process to the list of processes to kill."
-#~ msgstr ""
-#~ "Legg dei valte prosessane til lista over prosessar som skal drepast."
-
-#~ msgid ""
-#~ "Remove the currently selected item from the list of processes to kill."
-#~ msgstr ""
-#~ "Fjern dei valte prosessane frå lista over prosessar som skal drepast."
-
-#~ msgid "LaTeX preamble"
-#~ msgstr "LaTeX fortekst"
-
-#~ msgid "Url"
-#~ msgstr "URL"
-
-#~ msgid "Warning: could not determine path of binary."
-#~ msgstr "Åtvaring.Kan ikkje finne stigen til binærfila."
-
-#~ msgid "If you have problems, try starting LyX with an absolute path."
-#~ msgstr "Prøv å starta LyX med heile stigen."
-
-#~ msgid "System directory set to: "
-#~ msgstr "System stigen er sett til: "
-
-#~ msgid "LyX Warning! Couldn't determine system directory. "
-#~ msgstr "LyX åtvaring: Kan ikkje bruke system stigen."
-
-#~ msgid "Try the '-sysdir' command line parameter or "
-#~ msgstr "Prøv med '-sysdir' som kommandolinje val eller "
-
-#~ msgid "containing the file `chkconfig.ltx'."
-#~ msgstr "som innheld fila `chkconfig.ltx'."
-
-#~ msgid "Using built-in default %1$s but expect problems."
-#~ msgstr "Brukar standard val: %1$s men du kan få problem."
-
-#~ msgid "Using built-in default "
-#~ msgstr "Brukar standard val "
-
-#~ msgid " but expect problems."
-#~ msgstr " men du kan få problem."
-
-#~ msgid "Expect problems."
-#~ msgstr "Ver budd på problem."
-
-#~ msgid "Running without personal LyX directory."
-#~ msgstr "Køyrer utan personleg LyX katalog."
-
-#~ msgid "LyX: Creating directory %1$s and running configure..."
-#~ msgstr "LyX: Lagar katalog %1$s og held fram med innstillingane..."
-
-#~ msgid " and running configure..."
-#~ msgstr " og held fram med innstillingane..."
-
-#~ msgid "Failed. Will use %1$s instead."
-#~ msgstr "Mislukka. Vil bruke  %1$s istaden."
-
-#~ msgid "Failed. Will use "
-#~ msgstr "Mislukka. Vil bruke "
-
-#~ msgid " instead."
-#~ msgstr " istaden."
-
-#~ msgid "NameZeileA"
-#~ msgstr "NamneLinjeA"
-
-#~ msgid "NameZeileB"
-#~ msgstr "NamneLinjeB"
-
-#~ msgid "NameZeileC"
-#~ msgstr "NamneLinjeC"
-
-#~ msgid "NameZeileD"
-#~ msgstr "NamneLinjeD"
-
-#~ msgid "NameZeileE"
-#~ msgstr "NamneLinjeE"
-
-#~ msgid "NameZeileF"
-#~ msgstr "NamneLinjeF"
-
-#~ msgid "NameZeileG"
-#~ msgstr "NamneLinjeG"
-
-#~ msgid "AdressZeileA"
-#~ msgstr "AdresseLinjeA"
-
-#~ msgid "AdressZeileB"
-#~ msgstr "AdresseLinjeB"
-
-#~ msgid "AdressZeileC"
-#~ msgstr "AdresseLinjeC"
-
-#~ msgid "AdressZeileD"
-#~ msgstr "AdresseLinjeD"
-
-#~ msgid "AdressZeileE"
-#~ msgstr "AdresseLinjeE"
-
-#~ msgid "AdressZeileF"
-#~ msgstr "AdresseLinjeF"
-
-#~ msgid "TelefonZeileA"
-#~ msgstr "TelefonLinjeA"
-
-#~ msgid "TelefonZeileB"
-#~ msgstr "TelefonLinjeB"
-
-#~ msgid "TelefonZeileC"
-#~ msgstr "TelefonLinjeC"
-
-#~ msgid "TelefonZeileD"
-#~ msgstr "TelefonLinjeD"
-
-#~ msgid "TelefonZeileE"
-#~ msgstr "TelefonLinjeE"
-
-#~ msgid "TelefonZeileF"
-#~ msgstr "TelefonLinjeF"
-
-#~ msgid "InternetZeileA"
-#~ msgstr "InternettLinjeA"
-
-#~ msgid "InternetZeileB"
-#~ msgstr "InternettLinjeB"
-
-#~ msgid "InternetZeileC"
-#~ msgstr "InternettLinjeC"
-
-#~ msgid "InternetZeileD"
-#~ msgstr "InternettLinjeD"
-
-#~ msgid "InternetZeileE"
-#~ msgstr "InternettLinjeE"
-
-#~ msgid "InternetZeileF"
-#~ msgstr "InternettLinjeF"
-
-#~ msgid "BankZeileA"
-#~ msgstr "BankLinjeA"
-
-#~ msgid "BankZeileB"
-#~ msgstr "BankLinjeB"
-
-#~ msgid "BankZeileC"
-#~ msgstr "BankLinjeC"
-
-#~ msgid "BankZeileD"
-#~ msgstr "BankLinjeD"
-
-#~ msgid "BankZeileE"
-#~ msgstr "BankLinjeE"
-
-#~ msgid "BankZeileF"
-#~ msgstr "BankLinjeF"
-
-#~ msgid "Portuguese"
-#~ msgstr "Portugisisk"
-
-#~ msgid "Box Type|#T"
-#~ msgstr "Ramme type|#t"
-
-#~ msgid "Has Inner Box"
-#~ msgstr "Har indre ramme"
-
-#~ msgid "Vertical Position"
-#~ msgstr "Loddrett plassering"
-
-#~ msgid "Width Unit"
-#~ msgstr "Breiddeining"
-
-#~ msgid "Special"
-#~ msgstr "Spesiell"
-
-#~ msgid "Parbox"
-#~ msgstr "Avsnittramme"
-
-#~ msgid "Inner Position (Vert.)"
-#~ msgstr "Indre plassering (Vassrett)"
-
-#~ msgid "Horizontal Position"
-#~ msgstr "Vassrett plassering"
-
-#~ msgid "Height"
-#~ msgstr "Høgd"
-
-#~ msgid "Height Unit"
-#~ msgstr "Høgde-eining"
-
-#~ msgid "Branch:|#B"
-#~ msgstr "Grein:|#G"
-
-#~ msgid "Reject change|#R"
-#~ msgstr "Avvis endring|#A"
-
-#~ msgid "Next change|#N"
-#~ msgstr "Neste endring|#N"
-
-#~ msgid "Accept change|#A"
-#~ msgstr "Godta endring|#G"
-
-#~ msgid "Changed by:"
-#~ msgstr "Endra av"
-
-#~ msgid "author"
-#~ msgstr "Forfattar"
-
-#~ msgid "date"
-#~ msgstr "dato"
-
-#~ msgid "on:"
-#~ msgstr "på:"
-
-#~ msgid "tabbed folder"
-#~ msgstr "Katalogfaner"
-
-#~ msgid "New Branch:|#N"
-#~ msgstr "Ny Grein:|#N"
-
-#~ msgid "Remove|#e"
-#~ msgstr "Fjern|#e"
-
-#~ msgid "Activated Branches:"
-#~ msgstr "Aktive greiner:"
-
-#~ msgid "@5->"
-#~ msgstr "@5->"
-
-#~ msgid "Display Background:"
-#~ msgstr "Vis bakgrunn:"
-
-#~ msgid "Modify"
-#~ msgstr "Endra"
-
-#~ msgid "Output options"
-#~ msgstr "Innstillingar for eksport"
-
-#~ msgid "Option|#O"
-#~ msgstr "Innstillingar|#I"
-
-#~ msgid "Format|#t"
-#~ msgstr "Filtype:|#F"
-
-#~ msgid "Note Type|#T"
-#~ msgstr "Notat type|#t"
-
-#~ msgid "Real name : |#R"
-#~ msgstr "Namn:|#N"
-
-#~ msgid "Email address : |#E"
-#~ msgstr "E-postadresse:|#E"
-
-#~ msgid "Middle|#M"
-#~ msgstr "Midtstill|#S"
-
-#~ msgid "Use the LaTeX natbib package"
-#~ msgstr "Bruk \"natbib\" pakken til LaTeX"
-
-#~ msgid "A&vailable Branches:"
-#~ msgstr "Til&gjengelege Greiner:"
-
-#~ msgid "Activated"
-#~ msgstr "Aktivert"
-
-#~ msgid "(&De)activate"
-#~ msgstr "(&Passiviser)"
-
-#~ msgid "Toggle the selected branch"
-#~ msgstr "Skru av/på den valde greina"
-
-#~ msgid "Alter Co&lor..."
-#~ msgstr "En&dra farge..."
-
-#~ msgid "Define or change background color"
-#~ msgstr "Definere eller endre fargen på bakgrunnen."
-
-#~ msgid "&New:"
-#~ msgstr "&Ny:"
-
-#~ msgid "Add a new branch to the list"
-#~ msgstr "Legg til ei ny grein til lista"
-
-#~ msgid "&First level"
-#~ msgstr "&Første nivå"
-
-#~ msgid "Size:"
-#~ msgstr "Storleik:"
-
-#~ msgid "&Second level"
-#~ msgstr "&Andre nivå"
-
-#~ msgid "&Third level"
-#~ msgstr "&Tredje nivå"
-
-#~ msgid "Fou&rth level"
-#~ msgstr "Fjer&de nivå"
-
-#~ msgid "Class Settings"
-#~ msgstr "Klasse innstillingar"
-
-#~ msgid "&Use language's default encoding"
-#~ msgstr "&Bruk standard vala til språket"
-
-#~ msgid "&Use AMS math package automatically"
-#~ msgstr "&Bruk AMS-Matte automatisk"
-
-#~ msgid "&List in Table of Contents"
-#~ msgstr "&Innhaldsliste"
-
-#~ msgid "Numbered"
-#~ msgstr "Nummerering"
-
-#~ msgid "Appears in TOC"
-#~ msgstr "Kjem i innhaldslista"
-
-#~ msgid "Example numbering and table of contents"
-#~ msgstr "Eksempel på nummerering og innhaldsliste"
-
-#~ msgid "Choose a particular paper size, or set your own with \"Custom\""
-#~ msgstr "Vel ein papirstorleik eller lag din eigen med \"Tilpassa\""
-
-#~ msgid "Style used for the page header and footer"
-#~ msgstr "Topp og botntekst stil."
-
-#~ msgid "Lay out the page for double-sided printing"
-#~ msgstr "Bruk to spaltar"
-
-#~ msgid "LyX: Add BibTeX Database"
-#~ msgstr "LyX: Legg til BibTeX Database"
-
-#~ msgid "Selected BibTeX databases"
-#~ msgstr "Valde BibTeX databasar"
-
-#~ msgid "&Add..."
-#~ msgstr "&Legg til..."
-
-#~ msgid "Chose a style file"
-#~ msgstr "Vel ein stil"
-
-#~ msgid "Branch Settings"
-#~ msgstr "Grein innstillingar"
-
-#~ msgid "Select your branch"
-#~ msgstr "Vel greina di"
-
-#~ msgid "Changes"
-#~ msgstr "Endringar"
-
-#~ msgid "Change :"
-#~ msgstr "Endring:"
-
-#~ msgid "Details of the change"
-#~ msgstr "Detaljar i endringa"
-
-#~ msgid "&Accept"
-#~ msgstr "&Godta"
-
-#~ msgid "Accept this change"
-#~ msgstr "Godta endringa"
-
-#~ msgid "&Reject"
-#~ msgstr "&Forkast"
-
-#~ msgid "Reject this change"
-#~ msgstr "Forkast endringa"
-
-#~ msgid "&Next change"
-#~ msgstr "&Neste endring"
-
-#~ msgid "Apply changes immediately"
-#~ msgstr "Bruk endringane med det same"
-
-#~ msgid "&Citations:"
-#~ msgstr "&Litteratur"
-
-#~ msgid "A&pply"
-#~ msgstr "&Bruk"
-
-#~ msgid "LyX: Add Citation"
-#~ msgstr "LyX: Legg til Litteratur-referanse"
-
-#~ msgid "Sca&le:"
-#~ msgstr "&Forstørring:"
-
-#~ msgid "&Display:"
-#~ msgstr "&Vis:"
-
-#~ msgid "Preview"
-#~ msgstr "Førehandsvising"
-
-#~ msgid "Output Options"
-#~ msgstr "Eksporter innstillingar"
-
-#~ msgid "Forma&t:"
-#~ msgstr "Forma&t:"
-
-#~ msgid "O&ption:"
-#~ msgstr "&Innstillingar:"
-
-#~ msgid "Note Settings"
-#~ msgstr "Notat innstillingar"
-
-#~ msgid "Type"
-#~ msgstr "Type"
-
-#~ msgid "LyX &Note"
-#~ msgstr "LyX &Notat"
-
-#~ msgid "LyX internal only"
-#~ msgstr "Berre for LyX internt "
-
-#~ msgid "C&omment"
-#~ msgstr "K&ommentar"
-
-#~ msgid "Export to LaTeX/Docbook but don't print"
-#~ msgstr "Eksporter til LaTeX/Docbook men skriv ikkje ut"
-
-#~ msgid "&Greyed out"
-#~ msgstr "&Grå-tekst"
-
-#~ msgid "Print as grey text"
-#~ msgstr "Skriv ut som grå tekst"
-
-#~ msgid "In&dent paragraph"
-#~ msgstr "In&nrykk på avsnitt"
-
-#~ msgid "This text defines the width of the paragraph label"
-#~ msgstr "Teksten her avgjer kor brei overskrifta til avsnittet blir"
-
-#~ msgid "Include space even at the top/bottom of the page"
-#~ msgstr "Ekstra mellomrom og på toppen/botnen av sida"
-
-#~ msgid "Include this space even at the top of a page"
-#~ msgstr "Ekstra mellomrom og på toppen av sida"
-
-#~ msgid "Include this space even at the bottom of a page"
-#~ msgstr "Ekstra mellomrom og på botnen av sida"
-
-#~ msgid "Identity"
-#~ msgstr "Identitet"
-
-#~ msgid "&E-mail:"
-#~ msgstr "&E-post"
-
-#~ msgid "Your name"
-#~ msgstr "Ditt namn"
-
-#~ msgid "Your E-mail address"
-#~ msgstr "Di E-post adresse"
-
-#~ msgid "Spell chec&ker:"
-#~ msgstr "Stave&kontroll"
-
-#~ msgid "Override the language used for the spellchecker"
-#~ msgstr "Ikkje bruk språket til stavekontrollen"
-
-#~ msgid "Specify a personal dictionary file other than the default"
-#~ msgstr "Vel ein annan personleg-katalog enn standard-katalogen"
-
-#~ msgid "Accept words such as \"diskdrive\""
-#~ msgstr "Akssepter ord som \"helikoptersjøførsertifikat\""
-
-#~ msgid "Jump to the reference"
-#~ msgstr "Gå til referanse"
-
-#~ msgid "(<reference>)"
-#~ msgstr "(<referanse>)"
-
-#~ msgid "R&eferences in:"
-#~ msgstr "R&eferansar i: "
-
-#~ msgid "Ignore this word throughout this session"
-#~ msgstr "Godta ordet for denne gongen"
-
-#~ msgid "&Rotate table 90 degrees"
-#~ msgstr "&Roter tabell 90 grader"
-
-#~ msgid "Rotate &cell 90 degrees"
-#~ msgstr "Roter &cella 90 grader"
-
-#~ msgid "&Font:"
-#~ msgstr "Skri&fttypar:"
-
-#~ msgid "Separate Paragraphs With"
-#~ msgstr "Ulik breidd på avsnitta"
-
-#~ msgid "&Indentation"
-#~ msgstr "&Innrykk"
-
-#~ msgid "Indent consecutive paragraphs"
-#~ msgstr "Innrykk på avsnitt som kjem etterkvarandre"
-
-#~ msgid "&Vertical space"
-#~ msgstr "&Loddrett avstand"
-
-#~ msgid "Format text into two columns"
-#~ msgstr "Gjer dokumentet om til to spaltar"
-
-#~ msgid "                  SubVariation3"
-#~ msgstr "                  Under_Variasjon3"
-
-#~ msgid "Legend"
-#~ msgstr "Figur_forklaring"
-
-#~ msgid "Definition********"
-#~ msgstr "Definisjon********"
-
-#~ msgid "Condition*"
-#~ msgstr "Vilkår*"
-
-#~ msgid "Problem*"
-#~ msgstr "Problem*"
-
-#~ msgid "Exercise*"
-#~ msgstr "Øving*"
-
-#~ msgid "Notation*"
-#~ msgstr "Notasjon*"
-
-#~ msgid "Change Tracking|g"
-#~ msgstr "Endra sporing|g"
-
-#~ msgid "Alignment|i"
-#~ msgstr "Justering|J"
-
-#~ msgid "Left|L"
-#~ msgstr "Venstre|V"
-
-#~ msgid "Center|C"
-#~ msgstr "Sentrum|S"
-
-#~ msgid "Right|R"
-#~ msgstr "Høgre|H"
-
-#~ msgid "Top|T"
-#~ msgstr "Topp|T"
-
-#~ msgid "Middle|M"
-#~ msgstr "Midten|M"
-
-#~ msgid "Bottom|B"
-#~ msgstr "Nedst|N"
-
-#~ msgid "Inter-word Space|w"
-#~ msgstr "Mellom bokstav mellomrom|M"
-
-#~ msgid "Thin Space|T"
-#~ msgstr "Lite mellomrom|t"
-
-#~ msgid "Horizontal Line"
-#~ msgstr "Vassrett linje"
-
-#~ msgid "AMS align Environment|a"
-#~ msgstr "AMS ved sida avmiljø|A"
-
-#~ msgid "Split Environment|S"
-#~ msgstr "Delt miljø|V"
-
-#~ msgid "Track Changes|T"
-#~ msgstr "Registrer endringar...|e"
-
-#~ msgid "Merge Changes...|M"
-#~ msgstr "Flett endringar...|e"
-
-#~ msgid "Accept All Changes|A"
-#~ msgstr "Akssepter alle endringar|A"
-
-#~ msgid "Reject All Changes|R"
-#~ msgstr "Forkast alle endringar|F"
-
-#~ msgid "Toolbars"
-#~ msgstr "Verktyliner"
-
-#~ msgid "Document|D"
-#~ msgstr "Dokument|D"
-
-#~ msgid "Tools|T"
-#~ msgstr "Verktøytips|V"
-
-#~ msgid "New from Template...|m"
-#~ msgstr "Ny frå Mal...|M"
-
-#~ msgid "Open recent|t"
-#~ msgstr "Opna nylege|y"
-
-#~ msgid "Redo|R"
-#~ msgstr "Gjer om|G"
-
-#~ msgid "Paste Recent"
-#~ msgstr "Lim inn nyleg"
-
-#~ msgid "Text Style...|S"
-#~ msgstr "Tekststil...|s"
-
-#~ msgid "Paragraph Settings...|P"
-#~ msgstr "Avsnitt innstillinger...|A"
-
-#~ msgid "Table|T"
-#~ msgstr "Tabell|T"
-
-#~ msgid "Increase List Depth|I"
-#~ msgstr "Auk miljø djupna|u"
-
-#~ msgid "Decrease List Depth|D"
-#~ msgstr "Mink miljø djupna|ø"
-
-#~ msgid "TeX Code Settings...|C"
-#~ msgstr "LaTeX tekst val...|X"
-
-#~ msgid "Float Settings...|a"
-#~ msgstr "Flytar innstillingar...|a"
-
-#~ msgid "Text Wrap Settings...|W"
-#~ msgstr "Tekst brekking innstillingar...|b"
-
-#~ msgid "Note Settings...|N"
-#~ msgstr "Notat innstillingar...|N"
-
-#~ msgid "Branch Settings...|B"
-#~ msgstr "Grein innstillingar|G"
-
-#~ msgid "Box Settings...|x"
-#~ msgstr "Ramme innstillingar...|R"
-
-#~ msgid "Table Settings...|a"
-#~ msgstr "Tabell innstillingar...|a"
-
-#~ msgid "Top Line|T"
-#~ msgstr "Topplinje|#T"
-
-#~ msgid "Bottom Line|B"
-#~ msgstr "Botnlinje|B"
-
-#~ msgid "Left Line|L"
-#~ msgstr "Venstrelinje|V"
-
-#~ msgid "Right Line|R"
-#~ msgstr "Høgrelinje|H"
-
-#~ msgid "AMS gather Environment|g"
-#~ msgstr "AMS samla miljø|s"
-
-#~ msgid "AMS multline Environment|m"
-#~ msgstr "AMS multilinje miljø|A"
-
-#~ msgid "Display Tooltips|i"
-#~ msgstr "Verktøytips|V"
-
-#~ msgid "Special Formatting|o"
-#~ msgstr "Spesiell formatering|"
-
-#~ msgid "List / TOC|i"
-#~ msgstr "Ulike Lister|l"
-
-#~ msgid "Float|a"
-#~ msgstr "Flytar|y"
-
-#~ msgid "Box"
-#~ msgstr "Ramme"
-
-#~ msgid "Branch|B"
-#~ msgstr "Grein|G"
-
-#~ msgid "Character Style"
-#~ msgstr "Teiknsett"
-
-#~ msgid "File|e"
-#~ msgstr "Fil|F"
-
-#~ msgid "Index Entry|d"
-#~ msgstr "Indeksnøkkel|d"
-
-#~ msgid "Table...|T"
-#~ msgstr "Tabell...|T"
-
-#~ msgid "TeX|X"
-#~ msgstr "TeX|X"
-
-#~ msgid "Horizontal Fill|H"
-#~ msgstr "Vassrett fyll|#a"
-
-#~ msgid "Line Break|L"
-#~ msgstr "Ny linje|L"
-
-#~ msgid "Math Panel|P"
-#~ msgstr "Matte dialog|d"
-
-#~ msgid "Text Wrap Float|W"
-#~ msgstr "Set inn ein tekstbrekking flytar"
-
-#~ msgid "External Material..."
-#~ msgstr "Eksternt materiale..."
-
-#~ msgid "Child Document...|d"
-#~ msgstr "Barnedokument dokument..."
-
-#~ msgid "LyX Note|N"
-#~ msgstr "LyX notat|N"
-
-#~ msgid "Comment|C"
-#~ msgstr "Kommentar|K"
-
-#~ msgid "Greyed Out|G"
-#~ msgstr "Grå-tekst|G"
-
-#~ msgid "Frameless|F"
-#~ msgstr "Utan ramme|U"
-
-#~ msgid "Boxed|B"
-#~ msgstr "Innramma|I"
-
-#~ msgid "Oval Box|O"
-#~ msgstr "Oval ramme|O"
-
-#~ msgid "Oval Box, Thick|T"
-#~ msgstr "Tjukk Oval ramme|T"
-
-#~ msgid "Shadow Box|S"
-#~ msgstr "Skuggelagd ramme|S"
-
-#~ msgid "Double Box|D"
-#~ msgstr "Dobbel ramme|#D"
-
-#~ msgid "Change Tracking|C"
-#~ msgstr "Endra sporing|E"
-
-#~ msgid "LaTeX Log File...|L"
-#~ msgstr "LaTeX loggfil...|L"
-
-#~ msgid "Table of Contents...|T"
-#~ msgstr "Innhaldsliste...|I"
-
-#~ msgid "LaTeX Preamble...|P"
-#~ msgstr "LaTeX fortekst...|f"
-
-#~ msgid "Start Appendix Here|A"
-#~ msgstr "Start vedlegga her|S"
-
-#~ msgid "Settings...|S"
-#~ msgstr "Innstillingar...|I"
-
-#~ msgid "Go to Bookmark 1|1"
-#~ msgstr "Gå til  bokmerke 1|1"
-
-#~ msgid "Go to Bookmark 2|2"
-#~ msgstr "Gå til  bokmerke 2|2"
-
-#~ msgid "Go to Bookmark 3|3"
-#~ msgstr "Gå til bokmerke 3|3"
-
-#~ msgid "Thesaurus...|T"
-#~ msgstr "Synonymordbok...|S"
-
-#~ msgid "View Child Processes...|C"
-#~ msgstr "Vis barneprosessar|b"
-
-#~ msgid "TeX Information...|I"
-#~ msgstr "TeX informasjon...|T"
-
-#~ msgid "About LyX...|X"
-#~ msgstr "Om LyX...|X"
-
-#~ msgid "Find and replace"
-#~ msgstr "Søk og erstatt"
-
-#~ msgid "Toggle user style"
-#~ msgstr "Skru av/på storbokstav-stil"
-
-#~ msgid "Insert math"
-#~ msgstr "Set inn matte"
-
-#~ msgid "Numbered list"
-#~ msgstr "Nummerert liste "
-
-#~ msgid "Itemized list"
-#~ msgstr "Punktliste"
-
-#~ msgid "Increase depth"
-#~ msgstr "Auk djupna"
-
-#~ msgid "Decrease depth"
-#~ msgstr "Minsk djupna"
-
-#~ msgid "Insert figure float"
-#~ msgstr "Set inn ein figur flytar"
-
-#~ msgid "Insert index entry"
-#~ msgstr "Set inn eit indekspunkt"
-
-#~ msgid "Text style"
-#~ msgstr "LaTeX stiler"
-
-#~ msgid "Paragraph settings"
-#~ msgstr "avsnitt innstillingar"
-
-#~ msgid "Check spelling"
-#~ msgstr "Sjekk rettskriving"
-
-#~ msgid "Add row"
-#~ msgstr "Legg til rad"
-
-#~ msgid "Add column"
-#~ msgstr "Legg til kolonne"
-
-#~ msgid "Delete row"
-#~ msgstr "Fjern rad"
-
-#~ msgid "Delete column"
-#~ msgstr "Fjern kolonne"
-
-#~ msgid "Set top line"
-#~ msgstr "Lag topplinje"
-
-#~ msgid "Set bottom line"
-#~ msgstr "Lag botnlinje"
-
-#~ msgid "Set right line"
-#~ msgstr "Lag høgrelinje"
-
-#~ msgid "Set all lines"
-#~ msgstr "Lag kantlinjer"
-
-#~ msgid "Unset all lines"
-#~ msgstr "Fjern kantlinjer"
-
-#~ msgid "Align left"
-#~ msgstr "Venstrejuster"
-
-#~ msgid "Align center"
-#~ msgstr "Set i sentrum"
-
-#~ msgid "Align right"
-#~ msgstr "Høgrejuster"
-
-#~ msgid "Align top"
-#~ msgstr "Toppjuster"
-
-#~ msgid "Align middle"
-#~ msgstr "Midtstill"
-
-#~ msgid "Align bottom"
-#~ msgstr "Botnjuster"
-
-#~ msgid "Set multi-column"
-#~ msgstr "Spesiell multikolonne"
-
-#~ msgid "Math"
-#~ msgstr "Matte"
-
-#~ msgid "Show math panel"
-#~ msgstr "Vis matte dialog"
-
-#~ msgid "Set display mode"
-#~ msgstr "Byt matte modus"
-
-#~ msgid "Insert square root"
-#~ msgstr "Set inn rotteikn"
-
-#~ msgid "Insert sum"
-#~ msgstr "Set inn sum"
-
-#~ msgid "Insert integral"
-#~ msgstr "Set inn integral"
-
-#~ msgid "Insert product"
-#~ msgstr "Set produkt"
-
-#~ msgid "Insert ( )"
-#~ msgstr "Set inn ( )"
-
-#~ msgid "Insert [ ]"
-#~ msgstr "Set inn [ ]"
-
-#~ msgid "Insert { }"
-#~ msgstr "Set inn { }"
-
-#~ msgid "Insert cases"
-#~ msgstr "Set inn alternativløysingar"
-
-#~ msgid "Command Buffer"
-#~ msgstr "Kommando buffer"
-
-#~ msgid "LyX: %1$s errors (%2$s)"
-#~ msgstr "LyX: %1$s feil (%2$s)"
-
-#~ msgid ""
-#~ "The document %1$s is already loaded.\n"
-#~ "\n"
-#~ "Do you want to revert to the saved version?"
-#~ msgstr ""
-#~ "Dokumentet %1$s er lasta frå før\n"
-#~ "\n"
-#~ "Vil du gå tilbake til den siste lagra versjonen?"
-
-#~ msgid "Revert to saved document?"
-#~ msgstr "Gå tilbake til sist lagra"
-
-#~ msgid "&Revert"
-#~ msgstr "&Tilbake til sist lagra"
-
-#~ msgid ""
-#~ "The document %1$s does not yet exist.\n"
-#~ "\n"
-#~ "Do you want to create a new document?"
-#~ msgstr ""
-#~ "Dokumentet %1$s finst ikkje.\n"
-#~ "\n"
-#~ "Vil du laga eit nytt dokument?"
-
-#~ msgid "Create new document?"
-#~ msgstr "Vil du lagre eit nytt dokument?"
-
-#~ msgid "&Create"
-#~ msgstr "&Laga"
-
-#~ msgid "Parse"
-#~ msgstr "Tolk"
-
-#~ msgid "comment"
-#~ msgstr "Kommentar"
-
-#~ msgid "comment background"
-#~ msgstr "Bakgrunnen til kommandoar"
-
-#~ msgid "greyedout inset"
-#~ msgstr "gråfarga innskot"
-
-#~ msgid "greyedout inset background"
-#~ msgstr "Bakgrunnen til gråfarga innskot"
-
-#~ msgid "change bar"
-#~ msgstr "Linje for endring"
-
-#~ msgid "Deleted text"
-#~ msgstr "Sletta tekst"
-
-#~ msgid "Added text"
-#~ msgstr "Lagt til tekst"
-
-#~ msgid "Waiting for LaTeX run number %1$s"
-#~ msgstr "Ventar: LaTeX køyring nummer %1$d"
-
-#~ msgid "Could not remove the temporary directory %1$s"
-#~ msgstr "Klarte ikkje å fjerna den mellombelse katalogen %1$s"
-
-#~ msgid "Using the default document class, because the class %1$s is unknown."
-#~ msgstr "Brukar standard dokumentklasse sidan dokumentklassa %1$s er ukjent"
-
-#~ msgid "Header error"
-#~ msgstr "Filhovud-feil"
-
-#~ msgid "Can't load document class"
-#~ msgstr "Kan ikkje lese tekstklassa"
-
-#~ msgid "%1$s could not be read."
-#~ msgstr "Kunne ikkje lese %1$s"
-
-#~ msgid "Document format failure"
-#~ msgstr "Dokumentstil feil"
-
-#~ msgid "%1$s is not a LyX document."
-#~ msgstr "%1$s er ikkje eit LyX dokumentet"
-
-#~ msgid "Conversion script not found"
-#~ msgstr "Fann ikkje eksport programmet"
-
-#~ msgid ""
-#~ "%1$s is from an earlier version of LyX, but the conversion script lyx2lyx "
-#~ "could not be found."
-#~ msgstr ""
-#~ "%1$s vart laga i ein gammal LyX versjon. men programmet for å fornye "
-#~ "dokumentet \"lyx2lyx\" vart ikkje funne."
-
-#~ msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
-#~ msgstr "%1$s slutta før tida, noko som truleg tyder at det er øydelagd."
-
-#~ msgid "chktex failure"
-#~ msgstr "ChkTeX feil"
-
-#~ msgid ""
-#~ "The specified document\n"
-#~ "%1$s\n"
-#~ "could not be read."
-#~ msgstr ""
-#~ "Dokumentet\n"
-#~ "%1$s\n"
-#~ "kunne ikkje bli lest."
-
-#~ msgid "Could not read document"
-#~ msgstr "Kunne ikkje lese dokumentet"
-
-#~ msgid "Load emergency save?"
-#~ msgstr "Last nødkopien av dokumentet?"
-
-#~ msgid "&Recover"
-#~ msgstr "&Gå tilbake"
-
-#~ msgid "&Load Original"
-#~ msgstr "&Last Original"
-
-#~ msgid ""
-#~ "The backup of the document %1$s is newer.\n"
-#~ "\n"
-#~ "Load the backup instead?"
-#~ msgstr ""
-#~ "Reservekopien av dokumentet %1$s er nyare.\n"
-#~ "\n"
-#~ "Skal vi opna det istaden?"
-
-#~ msgid "Load backup?"
-#~ msgstr "Gå tilbake til reservekopi?"
-
-#~ msgid "&Load backup"
-#~ msgstr "L&ast reservekopi"
-
-#~ msgid "Load &original"
-#~ msgstr "Last &original"
-
-#~ msgid "Retrieve from version control?"
-#~ msgstr "Vil du laste inn frå versjonkontroll?"
-
-#~ msgid "&Retrieve"
-#~ msgstr "Gjenopp&rett"
-
-#~ msgid ""
-#~ "The specified document template\n"
-#~ "%1$s\n"
-#~ "could not be read."
-#~ msgstr ""
-#~ "Dokumentmalen\n"
-#~ "%1$s\n"
-#~ "kunne ikkje bli lest."
-
-#~ msgid "Could not read template"
-#~ msgstr "Kan ikkje lese malen"
-
-#~ msgid ""
-#~ "The document %1$s has unsaved changes.\n"
-#~ "\n"
-#~ "Do you want to save the document or discard the changes?"
-#~ msgstr ""
-#~ "Dokumentet %1$s har endingar som ikkje er lagra.\n"
-#~ "\n"
-#~ "Vil du lagra dokumentet eller forkaste endringane?"
-
-#~ msgid "Save changed document?"
-#~ msgstr "Vil du lagre dokumentet?"
-
-#~ msgid "&Discard"
-#~ msgstr "&Forkast"
-
-#~ msgid "Document class not available"
-#~ msgstr "Dokumentklassa er ikkje tilgjengeleg"
-
-#~ msgid "Change: "
-#~ msgstr "Endring:"
-
-#~ msgid " at "
-#~ msgstr " til "
-
-#~ msgid ", Position: "
-#~ msgstr ", plass: "
-
-#~ msgid ", Row b:%1$d e:%2$d"
-#~ msgstr ", Rad b:%1$d e:%2$d"
-
-#~ msgid ", Inset: "
-#~ msgstr ", Innskot: "
-
-#~ msgid "Build errors"
-#~ msgstr "Byggjefeil"
-
-#~ msgid "Could not move a temporary file from %1$s to %2$s."
-#~ msgstr "Kunne ikkje flytte ei mellombels fil frå %1$s til %2$s."
-
-#~ msgid ""
-#~ "LaTeX did not run successfully. Additionally, LyX could not locate the "
-#~ "LaTeX log %1$s."
-#~ msgstr ""
-#~ "Køyringa av LaTeX gjekk gale. Og i tillegg klarar ikkje LyX å finne LaTeX "
-#~ "loggen %1$s."
-
-#~ msgid "LaTeX failed"
-#~ msgstr "Feil ved LaTeX køyring"
-
-#~ msgid "Output is empty"
-#~ msgstr "Ingenting kom ut av konverteringa"
-
-#~ msgid "An empty output file was generated."
-#~ msgstr "Det vart berre laga ei tom fil."
-
-#~ msgid "Change tracking"
-#~ msgstr "Endra sporing"
-
-#~ msgid "External template/inset messages"
-#~ msgstr "Eksterne mal/innskot meldingar"
-
-#~ msgid "Couldn't export file"
-#~ msgstr "Kan ikkje eksportere dokumentet"
-
-#~ msgid "No information for exporting the format %1$s."
-#~ msgstr "Veit ikkje korleis ein importerer %1$s"
-
-#~ msgid "File name error"
-#~ msgstr "Feil på filnamn"
-
-#~ msgid "No frame drawn"
-#~ msgstr "Inga ramme vart teikna"
-
-#~ msgid "Rectangular box"
-#~ msgstr "Rektangulær ramme"
-
-#~ msgid "Oval box, thin"
-#~ msgstr "Tynn, oval ramme"
-
-#~ msgid "Oval box, thick"
-#~ msgstr "Tjukk oval ramme"
-
-#~ msgid "Shadow box"
-#~ msgstr "Skuggelagd ramme"
-
-#~ msgid "Double box"
-#~ msgstr "Dobbel ramme"
-
-#~ msgid "Depth"
-#~ msgstr "Djupn"
-
-#~ msgid "Total Height"
-#~ msgstr "Heile høgda"
-
-#~ msgid ""
-#~ "The document could not be converted\n"
-#~ "into the document class %1$s."
-#~ msgstr ""
-#~ "Dokumentet kunne ikkje bli konvertert\n"
-#~ "til dokumentklassa %1$s."
-
-#~ msgid "Could not change class"
-#~ msgstr "Kan ikkje endra klassa"
-
-#~ msgid "Baseline left"
-#~ msgstr "Venstre grunnlinje"
-
-#~ msgid "Baseline center"
-#~ msgstr "Midt på grunnlina"
-
-#~ msgid "Baseline right"
-#~ msgstr "Høgre grunnlinje"
-
-#~ msgid "LyX Note"
-#~ msgstr "LyX-Notat"
-
-#~ msgid "Greyed Out"
-#~ msgstr "Grå-tekst"
-
-#~ msgid ""
-#~ "Could not print the document %1$s.\n"
-#~ "Check that your printer is set up correctly."
-#~ msgstr ""
-#~ "Kunne ikkje skrive ut dokumentet %1$s.\n"
-#~ "Sjekk at skrivaren har dei rette innstillingane."
-
-#~ msgid "Print document failed"
-#~ msgstr "Kan ikkje skrive ut"
-
-#~ msgid ""
-#~ "Filename can't contain any of these characters:\n"
-#~ "space, '#', '~', '$' or '%'."
-#~ msgstr ""
-#~ "Filnamn kan ikkje ha desse teikna:\n"
-#~ "mellomrom, '#', '~', '$' eller '%'."
-
-#~ msgid "Label"
-#~ msgstr "Etikett"
-
-#~ msgid "&Standard"
-#~ msgstr "&Standard"
-
-#~ msgid "&Maths"
-#~ msgstr "&Matte"
-
-#~ msgid "Dings &1"
-#~ msgstr "Dings &1"
-
-#~ msgid "Dings &2"
-#~ msgstr "Ding &2"
-
-#~ msgid "Dings &3"
-#~ msgstr "Ding &3"
-
-#~ msgid "Dings &4"
-#~ msgstr "Ding &4"
-
-#~ msgid "&Custom..."
-#~ msgstr "&Tilpassa..."
-
-#~ msgid "Enter a custom bullet"
-#~ msgstr "Legg til eit tilpassa punkt"
-
-#~ msgid "LyX: Index Entry"
-#~ msgstr "LyX Indeksnøkkel"
-
-#~ msgid "LyX: Label"
-#~ msgstr "LyX: Etikett"
-
-#~ msgid "LyX: Branch Settings"
-#~ msgstr "LyX: Grein innstillingar"
-
-#~ msgid "LyX: Merge Changes"
-#~ msgstr "LyX: Innstillingar for fletting av endringar"
-
-#~ msgid "LyX: Change Text Style"
-#~ msgstr "LyX: Vel tekststil"
-
-#~ msgid "LyX: Citation Reference"
-#~ msgstr "LyX: Litteratur referansar"
-
-#~ msgid "LyX: Document Settings"
-#~ msgstr "LyX: Dokumentinnstillingar"
-
-#~ msgid "Unavailable: %1$s"
-#~ msgstr "Utilgjengeleg %1$s"
-
-#~ msgid "Document Class"
-#~ msgstr "Dokumentklasse"
-
-#~ msgid "Text Layout"
-#~ msgstr "Tekststil"
-
-#~ msgid "Page Layout"
-#~ msgstr "Avsnittstil"
-
-#~ msgid "Page Margins"
-#~ msgstr "Sidemargar"
-
-#~ msgid "Numbering & TOC"
-#~ msgstr "Nummerering og innhaldsliste"
-
-#~ msgid "Math options"
-#~ msgstr "Matte val"
-
-#~ msgid "Float Placement"
-#~ msgstr "Flytar plassering"
-
-#~ msgid "Branches"
-#~ msgstr "Greiner"
-
-#~ msgid "LyX: TeX Code Settings"
-#~ msgstr "LyX: TeX-kode val"
-
-#~ msgid "LyX: External Material"
-#~ msgstr "LyX: Eksternt materiale"
-
-#~ msgid "LyX: Float Settings"
-#~ msgstr "LyX: Flytar innstillingar"
-
-#~ msgid "LyX: Graphics"
-#~ msgstr "LyX: Grafikk"
-
-#~ msgid "LyX: Child Document"
-#~ msgstr "LyX: Barne-dokument"
-
-#~ msgid "LyX: Insert Delimiter"
-#~ msgstr "LyX: Set inn skiljeteikn"
-
-#~ msgid "LyX: Minipage Settings"
-#~ msgstr "LyX: Val for minisida"
-
-#~ msgid "LyX: Note Settings"
-#~ msgstr "LyX: Notat innstillingar"
-
-#~ msgid "LyX: Paragraph Settings"
-#~ msgstr "LyX: Oppsett av avsnitt "
-
-#~ msgid "pspell (library)"
-#~ msgstr "psspell (bibliotek )"
-
-#~ msgid "aspell (library)"
-#~ msgstr "aspell (bibliotek )"
-
-#~ msgid "Spell-checker"
-#~ msgstr "Stavekontroll"
-
-#~ msgid "LyX: Print Document"
-#~ msgstr "LyX: Skriv ut dokument"
-
-#~ msgid "LyX: Cross-reference"
-#~ msgstr "LyX: Kryssreferanse"
-
-#~ msgid "&Go Back"
-#~ msgstr "&Gå tilbake"
-
-#~ msgid "Jump back"
-#~ msgstr "Hopp tilbake"
-
-#~ msgid "Jump to reference"
-#~ msgstr "Gå til referanse"
-
-#~ msgid "LyX: Find and Replace"
-#~ msgstr "LyX: Søk og erstatt"
-
-#~ msgid "LyX: Send Document to Command"
-#~ msgstr "LyX: Sender dokumentet til kommando"
-
-#~ msgid "LyX: Show File"
-#~ msgstr "LyX: Vis fila"
-
-#~ msgid "LyX: Spell-check Document"
-#~ msgstr "LyX: Stavekontroll"
-
-#~ msgid "LyX: Table Settings"
-#~ msgstr "LyX: Tabell innstillingar"
-
-#~ msgid "LyX: Insert Table"
-#~ msgstr "LyX: Set inn tabell"
-
-#~ msgid "LyX: LaTeX Information"
-#~ msgstr "LyX: LaTeX informasjon"
-
-#~ msgid "LyX: Thesaurus"
-#~ msgstr "LyX: Synonymordbok"
-
-#~ msgid "LyX: Table of Contents"
-#~ msgstr "LyX: Innhaldsliste"
-
-#~ msgid "LyX: URL"
-#~ msgstr "LyX: URL"
-
-#~ msgid "LyX: Version Control Log"
-#~ msgstr "LyX: Loggen til versjonkontrollen"
-
-#~ msgid "LyX: Text Wrap Settings"
-#~ msgstr "LyX: Tekstbrekking innstillingar "
-
-#~ msgid "OK|^M"
-#~ msgstr "OK|#O"
-
-#~ msgid "LyX: Unknown X11 color %1$s for %2$s\n"
-#~ msgstr "LyX: Ukjent X11 farge  %1$s for %2$s\n"
-
-#~ msgid ""
-#~ "Frameless: No border\n"
-#~ "Boxed: Rectangular\n"
-#~ "ovalbox: Oval, thin border\n"
-#~ "Ovalbox: Oval, thick border\n"
-#~ "Shadowbox: Box casting shadow\n"
-#~ "Doublebox: Double line border"
-#~ msgstr ""
-#~ "Utan ramme: utan ramme\n"
-#~ "Ramme: Rektangulær\n"
-#~ "oval ramme: Oval, tynne kantar\n"
-#~ "Oval ramme: Oval, tjukke kantar\n"
-#~ "Skuggelagd ramme: Ramme med skugge\n"
-#~ "Dobbelramme: Doble linjer i ramma"
-
-#~ msgid ""
-#~ "The inner box may be a parbox or a minipage,\n"
-#~ "with appropriate arguments from this dialog."
-#~ msgstr ""
-#~ "Den indre ramma kan vere ei avsnitt ramme eller miniside,\n"
-#~ "med passande val gjort i denne dialogen."
-
-#~ msgid "top"
-#~ msgstr "topp "
-
-#~ msgid "middle"
-#~ msgstr "Midten"
-
-#~ msgid "bottom"
-#~ msgstr "Botn"
-
-#~ msgid "stretch"
-#~ msgstr "Strekk"
-
-#~ msgid "left"
-#~ msgstr "Venstre"
-
-#~ msgid "center"
-#~ msgstr "Midten"
-
-#~ msgid "right"
-#~ msgstr "Høgre"
-
-#~ msgid "Branch"
-#~ msgstr "Grein"
-
-#~ msgid "Merge Changes"
-#~ msgstr "Slå saman endringar"
-
-#~ msgid "Text Style"
-#~ msgstr "Tekststil"
-
-#~ msgid "Select Color"
-#~ msgstr "Vel farge"
-
-#~ msgid "Never | Automatically | Yes "
-#~ msgstr "Aldri | Automatisk | Ja "
-
-#~ msgid "Enter the name of a new branch."
-#~ msgstr "Skriv inn namnet på greina"
-
-#~ msgid "Add a new branch to the document."
-#~ msgstr "Legg til ei grein på dokumentet"
-
-#~ msgid "Remove the selected branch from the document."
-#~ msgstr "Fjern den valde greina frå dokumentet"
-
-#~ msgid "Activate the selected branch for output."
-#~ msgstr "Aktiver greina for bruk."
-
-#~ msgid "Deactivate the selected activated branch."
-#~ msgstr "Gjer den aktive greina passiv."
-
-#~ msgid "Activated branches. Content will occur in the document's output"
-#~ msgstr "Aktiverte greiner. Innhaldet i desse vil bli tatt med."
-
-#~ msgid "Modify background color of branch inset"
-#~ msgstr "Endre på bakgrunnsfargen i eit greininnskot."
-
-#~ msgid "Background color of branch inset"
-#~ msgstr "Bakgrunnsfargen til greininnskot"
-
-#~ msgid "TeX Settings"
-#~ msgstr "TeX innstillingar"
-
-#~ msgid "Default|Monochrome|Grayscale|Color|Preview|Do not display"
-#~ msgstr "Standard|svart/kvit|Gråskala|Farge|Førehandsvising|Ikkje vis"
-
-#~ msgid "Child Processes"
-#~ msgstr "Barneprosessar"
-
-#~ msgid "Child Document"
-#~ msgstr "Barnedokumentet"
-
-#~ msgid "File name to include."
-#~ msgstr "Namnet på fila"
-
-#~ msgid "Use LaTeX \\input."
-#~ msgstr "Bruk LaTeX \\input"
-
-#~ msgid "Use LaTeX \\include."
-#~ msgstr "Bruk LaTeX \\include"
-
-#~ msgid "Use LaTeX \\verbatiminput."
-#~ msgstr "Bruk LaTeX  \\verbatiminput."
-
-#~ msgid "Underline spaces in generated output."
-#~ msgstr "Strek under mellomrom i det ferdige dokumentet"
-
-#~ msgid "Show LaTeX preview."
-#~ msgstr "Bruk LaTeX førehandsvising"
-
-#~ msgid "Load the file."
-#~ msgstr "Last fila"
-
-#~ msgid "Minipage Settings"
-#~ msgstr "Miniside innstillinger"
-
-#~ msgid ""
-#~ "Lyx Note: LyX internal only\n"
-#~ "Comment: Export to LaTeX but don't print\n"
-#~ "Greyed Out: Print as grey text"
-#~ msgstr ""
-#~ "LyX Notat: Berre i LyX\n"
-#~ "Kommentar: Blir gitt til LaTeX, men ikkje skreve ut\n"
-#~ "Gråtekst: skreve ut som grå tekst"
-
-#~ msgid "Paragraph Settings"
-#~ msgstr "Innstillinger for avsnitt"
-
-#~ msgid "All explicitly defined converters for LyX"
-#~ msgstr "Alle direkte definerte eksportprogram for LyX"
-
-#~ msgid "Print Document"
-#~ msgstr "Skriv ut dokumentet"
-
-#~ msgid "Spell-check Document"
-#~ msgstr "Køyr stavekontroll"
-
-#~ msgid "Number of columns in the tabular."
-#~ msgstr "Kor mange kolonnar i tabellen."
-
-#~ msgid "Number of rows in the tabular."
-#~ msgstr "Kor mange radar i tabellen."
-
-#~ msgid "Text Wrap Settings"
-#~ msgstr "Tekst brekking innstillingar"
-
-#~ msgid "Couldn't import file"
-#~ msgstr "Kan ikkje importere fila"
-
-#~ msgid "No information for importing the format %1$s."
-#~ msgstr "Veit ikkje korleis ein importerer %1$s"
-
-#~ msgid "Boxed"
-#~ msgstr "Innramma"
-
-#~ msgid "Frameless"
-#~ msgstr "Utan ramme"
-
-#~ msgid "ovalbox"
-#~ msgstr "oval ramme"
-
-#~ msgid "Ovalbox"
-#~ msgstr "Oval ramme"
-
-#~ msgid "Shadowbox"
-#~ msgstr "Skuggelagdramme"
-
-#~ msgid "Doublebox"
-#~ msgstr "Dobbelramme"
-
-#~ msgid "Opened Box Inset"
-#~ msgstr "Opna ramme innskot"
-
-#~ msgid "Opened Branch Inset"
-#~ msgstr "Opna Grein innskot:"
-
-#~ msgid "Opened CharStyle Inset"
-#~ msgstr "Opna bokstav innskot"
-
-#~ msgid "Opened Environment Inset: "
-#~ msgstr "Opna miljø innskot"
-
-#~ msgid "Cannot change font"
-#~ msgstr "Kan ikkje endra skriftstil"
-
-#~ msgid "You cannot change font settings inside TeX code."
-#~ msgstr "Du kan ikkje endre skrifttype for TeX-kode."
-
-#~ msgid "External template %1$s is not installed"
-#~ msgstr "Ekstern mal %1$s er ikkje installert."
-
-#~ msgid ""
-#~ "Could not copy the file\n"
-#~ "%1$s\n"
-#~ "into the temporary directory."
-#~ msgstr ""
-#~ "Kan ikkje kopiere fila\n"
-#~ "%1$s\n"
-#~ "til den mellombelse katalogen."
-
-#~ msgid "No conversion of %1$s is needed after all"
-#~ msgstr "Ingen konvertering av %1$s var naudsynt likvel."
-
-#~ msgid ""
-#~ "No information for converting %1$s format files to %2$s.\n"
-#~ "Try defining a convertor in the preferences."
-#~ msgstr ""
-#~ "Ingen informasjon om korleis ein konverterer %1$s formatet til %2$s.\n"
-#~ "Prøv å sett det opp sjølv i Innstillingar."
-
-#~ msgid "Could not convert image"
-#~ msgstr "Kan ikkje konvertere fila"
-
-#~ msgid "Equation"
-#~ msgstr "Likninga"
-
-#~ msgid "EqRef: "
-#~ msgstr "LiknRef: "
-
-#~ msgid "Opened table"
-#~ msgstr "Opna Tabell"
-
-#~ msgid "Error setting multicolumn"
-#~ msgstr "Feil ved multikolonne"
-
-#~ msgid "You cannot set multicolumn vertically."
-#~ msgstr "Du kan ikkje bruke multikolonne loddrett."
-
-#~ msgid "Preview loading"
-#~ msgstr "Lasting av førehandvising."
-
-#~ msgid "Preview ready"
-#~ msgstr "Førehandsvising klar"
-
-#~ msgid "Preview failed"
-#~ msgstr "Feil ved førehandsvising"
-
-#~ msgid ""
-#~ "The document %1$s could not be saved.\n"
-#~ "\n"
-#~ "Do you want to rename the document and try again?"
-#~ msgstr ""
-#~ "Dokumentet %1$s kunne ikkje bli lagra.\n"
-#~ "\n"
-#~ "Vil du prøve å gi dokumentet eit nytt namn?"
-
-#~ msgid "Rename and save?"
-#~ msgstr "Gje nytt namn og lagra?"
-
-#~ msgid "&Rename"
-#~ msgstr "End&ra namn"
-
-#~ msgid ""
-#~ "The document %1$s already exists.\n"
-#~ "\n"
-#~ "Do you want to over-write that document?"
-#~ msgstr ""
-#~ "Dokumentet %1$s finst frå før.\n"
-#~ "\n"
-#~ "Vil du skriva over dokumentet?"
-
-#~ msgid "Over-write document?"
-#~ msgstr "Skriv over dokumentet?"
-
-#~ msgid "&Over-write"
-#~ msgstr "S&krivover"
-
-#~ msgid ""
-#~ "Could not read the specified document\n"
-#~ "%1$s\n"
-#~ "due to the error: %2$s"
-#~ msgstr ""
-#~ "Kan ikkje lese det valde dokumentet\n"
-#~ "%1$s\n"
-#~ "på grunn av feilen: %2$s"
-
-#~ msgid "Could not read file"
-#~ msgstr "Kan ikkje lese fila"
-
-#~ msgid ""
-#~ "Could not open the specified document\n"
-#~ "%1$s\n"
-#~ "due to the error: %2$s"
-#~ msgstr ""
-#~ "Kan ikkje opna det valde dokumentet\n"
-#~ "%1$s\n"
-#~ "på grunn av feilen: %2$s"
-
-#~ msgid ""
-#~ "The system has been reconfigured.\n"
-#~ "You need to restart LyX to make use of any \n"
-#~ "updated document class specifications."
-#~ msgstr ""
-#~ "Systemet har blitt sett opp på nytt.\n"
-#~ "Du må starte LyX på nytt for å\n"
-#~ "kunne bruke endringane."
-
-#~ msgid "Could not read configuration file"
-#~ msgstr "Kan ikkje lese innstilling-fila"
-
-#~ msgid ""
-#~ "Error while reading the configuration file\n"
-#~ "%1$s.\n"
-#~ "Please check your installation."
-#~ msgstr ""
-#~ "Klarte ikkje å lese innstilling-fila.\n"
-#~ "%1$s.\n"
-#~ "Sjekk LyX installasjonen din."
-
-#~ msgid "Search error"
-#~ msgstr "Søk feil"
-
-#~ msgid ""
-#~ "The document %1$s has unsaved changes.\n"
-#~ "\n"
-#~ "Do you want to save the document?"
-#~ msgstr ""
-#~ "Dokumentet %1$s har endringar som ikkje er lagra\n"
-#~ "\n"
-#~ "Vil du lagra dokumentet?"
-
-#~ msgid ""
-#~ "Any changes will be lost. Are you sure you want to revert to the saved "
-#~ "version of the document %1$s?"
-#~ msgstr ""
-#~ "Alle endingar vil forsvinne. Er du sikker at du vil gå tilbake til siste "
-#~ "lagra versjon av dokumentet %1$s?"
-
-#~ msgid "Build"
-#~ msgstr "Bygg"
-
-#~ msgid "ChkTeX"
-#~ msgstr "ChkTeX"
-
-#~ msgid "email address unknown"
-#~ msgstr "Ukjent e.postadresse"
-
-#~ msgid "Document not saved"
-#~ msgstr "Dokumentet er ikkje lagra!"
-
-#~ msgid ""
-#~ "Reverting to the stored version of the document %1$s will lose all "
-#~ "current changes.\n"
-#~ "\n"
-#~ "Do you want to revert to the saved version?"
-#~ msgstr ""
-#~ "Dersom du går tilbake til det sist lagra versjon av dokumentet %1$s, vil "
-#~ "alle endringane gå tapt\n"
-#~ "\n"
-#~ "Vil du gå tilbake til den siste lagra versjonen?"
-
-#~ msgid "Revert to stored version of document?"
-#~ msgstr "Gå tilbake til den siste lagra versjonen av dokumentet?"
-
-#~ msgid ""
-#~ "Could not open the specified document\n"
-#~ "%1$s."
-#~ msgstr ""
-#~ "Klarte ikkje opna dokumentet\n"
-#~ "%1$s."
-
-#~ msgid "Unknown Inset"
-#~ msgstr "Ukjend innskot"
-
-#~ msgid "Start|#S"
-#~ msgstr "Start|#S"
-
-#~ msgid "Label width"
-#~ msgstr "Etikett breidd:"
-
-#~ msgid "&Start..."
-#~ msgstr "&Start..."
-
-#~ msgid "Start spellcheck"
-#~ msgstr "Start stavekontroll"
-
-#~ msgid "Files (*)"
-#~ msgstr "Filer (*)"
-
-#~ msgid "Stop|#S"
-#~ msgstr "Stopp|#S"
-
-#~ msgid "tiny"
-#~ msgstr "Svært liten"
-
-#~ msgid "script"
-#~ msgstr "skript"
-
-#~ msgid "footnote"
-#~ msgstr "fotnote"
-
-#~ msgid "small"
-#~ msgstr "liten"
-
-#~ msgid "normal"
-#~ msgstr "normal"
-
-#~ msgid "large"
-#~ msgstr "stor"
-
-#~ msgid "LARGE"
-#~ msgstr "STOR"
-
-#~ msgid "huge"
-#~ msgstr "enorm"
-
-#~ msgid "Waiting for draw request to start loading..."
-#~ msgstr "Ventar på teikne-etterspurnaden skal starta å laste..."
-
-#~ msgid "LyX file format is newer that what"
-#~ msgstr "LyX-fila sitt format er nyare enn det"
-
-#~ msgid "is supported in this LyX version. Expect some problems."
-#~ msgstr "er støtta av denne versjonen av LyX. Det kan oppstå problem."
-
-#~ msgid "Error! Document is read-only: "
-#~ msgstr "Det har vorte ein feil. Dokumentet er verna mot skriving: "
-
-#~ msgid "Error! Cannot write file: "
-#~ msgstr "Det har vorte ein feil. Kan ikkje skrive til fila: "
-
-#~ msgid "Error! Cannot open file: "
-#~ msgstr "Det har vorte ein feil. Kan ikkje opna fila: "
-
-#~ msgid "Some documents were not saved:"
-#~ msgstr "Nokre av dokumenta er ikkje lagra:"
-
-#~ msgid "Exit anyway?"
-#~ msgstr "Vil du slutte likevel?"
-
-#~ msgid "Cannot open specified file: "
-#~ msgstr "Kan ikkje opne denne fila: "
-
-#~ msgid "Redo not yet supported in math mode"
-#~ msgstr "\"Gjer om\" er enno ikkje støtta i matte modus"
-
-#~ msgid "Changed environment depth (in possible range, maybe not)"
-#~ msgstr "Endra miljø djupn (kanskje innanfor grensa)"
-
-#~ msgid "Onehalf"
-#~ msgstr "Halvanna"
-
-#~ msgid "Word `"
-#~ msgstr "Ord `"
-
-#~ msgid "' indexed."
-#~ msgstr " indeksert."
-
-#~ msgid "Pixel ["
-#~ msgstr "Punkt ["
-
-#~ msgid "List of Figures"
-#~ msgstr "Figurliste"
-
-#~ msgid "List of Algorithms"
-#~ msgstr "Algoritme-liste"
-
-#~ msgid "Loading font into X-Server..."
-#~ msgstr "Lastar skriftyper til X-tenar."
-
-#~ msgid "left top"
-#~ msgstr "venstre topp"
-
-#~ msgid "left bottom"
-#~ msgstr "venstre botn"
-
-#~ msgid "center top"
-#~ msgstr "sentrert topp"
-
-#~ msgid "center bottom"
-#~ msgstr "sentrert botn"
-
-#~ msgid "right top"
-#~ msgstr "høgre topp"
-
-#~ msgid "right bottom"
-#~ msgstr "høgre born"
-
-#~ msgid "On some systems, with this options only relative path names"
-#~ msgstr ""
-#~ "Med dette valet kan berre relative katalog-namn bli nytta på enkelte "
-#~ "system."
-
-#~ msgid "inside the master file dir are allowed. You might get a LaTeX error!"
-#~ msgstr "nyttast i hovudfil-katalogen. Det kan oppstå ein LaTeX feil."
-
-#~ msgid "Specified file doesn't exist"
-#~ msgstr "Denne fila finst ikkje"
-
-#~ msgid "Missing filelist. try Rescan"
-#~ msgstr "Manglar filliste. Prøv «frisk opp»"
-
-#~ msgid "*|All files"
-#~ msgstr "*|Alle filer"
-
-#~ msgid "%p"
-#~ msgstr "%p"
-
-#~ msgid "%c"
-#~ msgstr "%c"
-
-#~ msgid "%l"
-#~ msgstr "%l"
-
-#~ msgid "FIXME - describe the units."
-#~ msgstr "Fiks meg!, Omtale av einingane..."
-
-#~ msgid "Other ..."
-#~ msgstr "Anna ..."
-
-#~ msgid "A4 small Margins (only portrait)"
-#~ msgstr "A4 tynne margar (berre ståande format)"
-
-#~ msgid "A4 very small Margins (only portrait)"
-#~ msgstr "A4 veldig tynne Margar (Berre ståande format)"
-
-#~ msgid "Smallskip"
-#~ msgstr "Lite operom"
-
-#~ msgid "Medskip"
-#~ msgstr "Medium operom"
-
-#~ msgid "Bigskip"
-#~ msgstr "Stort operom"
-
-#~ msgid "auto"
-#~ msgstr "auto"
-
-#~ msgid "latin1"
-#~ msgstr "latin1"
-
-#~ msgid "latin2"
-#~ msgstr "latin2"
-
-#~ msgid "latin3"
-#~ msgstr "latin3"
-
-#~ msgid "latin4"
-#~ msgstr "latin4"
-
-#~ msgid "latin5"
-#~ msgstr "latin5"
-
-#~ msgid "latin9"
-#~ msgstr "latin9"
-
-#~ msgid "koi8-r"
-#~ msgstr "koi8-r"
-
-#~ msgid "koi8-u"
-#~ msgstr "koi8-u"
-
-#~ msgid "cp866"
-#~ msgstr "cp866"
-
-#~ msgid "cp1251"
-#~ msgstr "cp1251"
-
-#~ msgid "iso88595"
-#~ msgstr "iso88595"
-
-#~ msgid "Document layout set"
-#~ msgstr "Dokument stil sett"
-
-#~ msgid "Should I set some parameters to"
-#~ msgstr "Skal eg sette enkelte parameter til"
-
-#~ msgid "Unable to switch to new document class."
-#~ msgstr "Kan ikkje byte til ny tekstklasse."
-
-#~ msgid "Enter editor program"
-#~ msgstr "Fyll inn skriveprogram"
-
-#~ msgid "Editor"
-#~ msgstr "Skriveprogram"
-
-#~ msgid "Copyright and Version"
-#~ msgstr "Opphavsrett og versjon"
-
-#~ msgid "License and Warranty"
-#~ msgstr "Lisens og garanti"
-
-#~ msgid ""
-#~ "The BibTeX style to use (only one allowed). Insert it without the default "
-#~ "extension \".bst\" and without path. Most of the bibstyles are stored in "
-#~ "$TEXMF/bibtex/bst. $TEXMF is the root dir of the local TeX tree. In "
-#~ "\"View->TeX Information\" you can list all installed styles."
-#~ msgstr ""
-#~ "Den BibTeX stil fila du ønskjer å nytte (Berre ei). Legg til databasane "
-#~ "utan den vanlege endinga \".bst\" og utan stig. Dei fleste bib-stiler  "
-#~ "ligg i $TEXMF/bibtex/bst. $TEXMF er rot katalogen for det lokale TeX "
-#~ "treet. Du kan sjå alle installerte stiler i \"Vis->TeX Informasjon\"."
-
-#~ msgid ""
-#~ "Activate this option if you want the bibliography to appear in the Table "
-#~ "of Contents (which doesn't happen by default)."
-#~ msgstr ""
-#~ "Vel denne om du vil at Bibliografien skal vera med i innhaldlista. (Noko "
-#~ "den vanlegvis ikkje gjer)"
-
-#~ msgid "Cancel|#N"
-#~ msgstr "Avbryt|#A"
-
-#~ msgid "#&D"
-#~ msgstr "#&D"
-
-#~ msgid "#X"
-#~ msgstr "#X"
-
-#~ msgid "#&A"
-#~ msgstr "#&A"
-
-#~ msgid "#&B"
-#~ msgstr "#&B"
-
-#~ msgid "Upper case|#U"
-#~ msgstr "Store bokstavar|#S"
-
-#~ msgid "Optional text"
-#~ msgstr "Valfri tekst"
-
-#~ msgid "Before:|#B"
-#~ msgstr "Før:|#ø"
-
-#~ msgid "After:|#e"
-#~ msgstr "Etter|#E"
-
-#~ msgid "Paper size:|#P"
-#~ msgstr "Papir storleik:|#P"
-
-#~ msgid "Quote Style    "
-#~ msgstr "Sitatteikn"
-
-#~ msgid "Encoding:|#D"
-#~ msgstr "Teiknkoding:|#T"
-
-#~ msgid "Section number depth"
-#~ msgstr "Kor djupt skal talet på delane gå"
-
-#~ msgid "Table of contents depth"
-#~ msgstr "Kor djupt skal tala i innhaldslista gå"
-
-#~ msgid "Cancel|#C^["
-#~ msgstr "Avbryt|#C^["
-
-#~ msgid "Rescan|#R#r"
-#~ msgstr "Frisk opp|#F#f"
-
-#~ msgid "Ok"
-#~ msgstr "Ok"
-
-#~ msgid "Title|#T"
-#~ msgstr "Tittel|#T"
-
-#~ msgid "Rotate|#R"
-#~ msgstr "Roter|#R"
-
-#~ msgid "Output size"
-#~ msgstr "Ut storleik"
-
-#~ msgid "Original size|#O"
-#~ msgstr "Original storleik|#O"
-
-#~ msgid "Custom|#C"
-#~ msgstr "Tilpassa|#T"
-
-#~ msgid "Value|#V"
-#~ msgstr "Verdi|#V"
-
-#~ msgid "Width|#W"
-#~ msgstr "Breidd|#B"
-
-#~ msgid "Height|#H"
-#~ msgstr "Høgd|#H"
-
-#~ msgid "Get LyX size|#L"
-#~ msgstr "Bruk LyX storleik|#L"
-
-#~ msgid "Corner coordinates (X, Y)"
-#~ msgstr "Hjørnekoordinat (X, Y)"
-
-#~ msgid ", "
-#~ msgstr ", "
-
-#~ msgid "Top right  ( |#T"
-#~ msgstr "Øvst til høgre ( |#Ø"
-
-#~ msgid " )"
-#~ msgstr " )"
-
-#~ msgid "Screen size"
-#~ msgstr "Skjerm storleik"
-
-#~ msgid "Custom|#u"
-#~ msgstr "Tilpassa|#T"
-
-#~ msgid "Monochrome|#M"
-#~ msgstr "Svart/kvit|#S"
-
-#~ msgid "Grayscale|#G"
-#~ msgstr "Gråtonar|#G"
-
-#~ msgid "Color|#C"
-#~ msgstr "Farge|#F"
-
-#~ msgid "Get LaTeX size|#L"
-#~ msgstr "Bruk LaTeX storleik|#L"
-
-#~ msgid "LaTeX Size"
-#~ msgstr "LaTeX storleik"
-
-#~ msgid "Extras"
-#~ msgstr "Ekstra"
-
-#~ msgid "No %-units are allowed here."
-#~ msgstr "Ingen % einingar er tillatne."
-
-#~ msgid "Cannot use the values from LaTeX size!"
-#~ msgstr "Kan ikkje nytta LaTeX storleiken!"
-
-#~ msgid "Don't typeset|#D"
-#~ msgstr "Ikkje typesett|#I"
-
-#~ msgid "OK  "
-#~ msgstr "Ok  "
-
-#~ msgid "Close "
-#~ msgstr "Lukk"
-
-#~ msgid "Left|#f"
-#~ msgstr "Venstre|#V"
-
-#~ msgid "Above|#b"
-#~ msgstr "Over|#v"
-
-#~ msgid "Below|#E"
-#~ msgstr "Under"
-
-#~ msgid "Above|#o"
-#~ msgstr "Over|#O"
-
-#~ msgid "Below|#l"
-#~ msgstr "Under|#U"
-
-#~ msgid "Above:|#v"
-#~ msgstr "Over|#e"
-
-#~ msgid "Below:|#w"
-#~ msgstr "Under|#r"
-
-#~ msgid "Spacing:|#S"
-#~ msgstr "Mellomrom:|#M"
-
-#~ msgid "Cannot apply paragraph settings to this inset!"
-#~ msgstr "Kan ikkje nytte avsnitt-innstillingane til dette innskotet!"
-
-#~ msgid "smallest"
-#~ msgstr "minst"
-
-#~ msgid "smaller"
-#~ msgstr "mindre"
-
-#~ msgid "larger"
-#~ msgstr "større"
-
-#~ msgid "largest"
-#~ msgstr "størst"
-
-#~ msgid "huger"
-#~ msgstr "gigantisk"
-
-#~ msgid "Dead Keys"
-#~ msgstr "\"Spesial teikn\""
-
-#~ msgid "Override X Window dead-keys|#O"
-#~ msgstr "Overstyr \"X-Windows dead-keys\"|#O"
-
-#~ msgid "Show banner|#S"
-#~ msgstr "Vis startopp biletet|#s"
-
-#~ msgid "Exit confirmation|#E"
-#~ msgstr "Stadfest når LyX avsluttar.|#L"
-
-#~ msgid "Display keyboard shortcuts|#k"
-#~ msgstr "Vis snøggtastar.|#s"
-
-#~ msgid "File->New asks for name|#N"
-#~ msgstr "Fil->Ny spør etter namn|#N"
-
-#~ msgid "in Monochrome|#M"
-#~ msgstr "i Svart/kvit|#S"
-
-#~ msgid "in Grayscale|#G"
-#~ msgstr "i Gråtonar|#G"
-
-#~ msgid "in Color|#C"
-#~ msgstr "i Farge|#F"
-
-#~ msgid "To|#T"
-#~ msgstr "Til|#T"
-
-#~ msgid "copies"
-#~ msgstr "kopier"
-
-#~ msgid "landscape"
-#~ msgstr "liggjande"
-
-#~ msgid "paper size"
-#~ msgstr "Papirstorleik"
-
-#~ msgid "ascii roff|#r"
-#~ msgstr "ascii roff|#r"
-
-#~ msgid "UI file"
-#~ msgstr "UI-fil"
-
-#~ msgid "User|#U#u"
-#~ msgstr "Brukar|#B#b"
-
-#~ msgid "All Pages|#G"
-#~ msgstr "Alle Sider|#l"
-
-#~ msgid "Only Odd Pages|#O"
-#~ msgstr "Berre oddetalsider|#O"
-
-#~ msgid "Normal Order|#N"
-#~ msgstr "Normal Rekkjefølgje|#N"
-
-#~ msgid "Pages:"
-#~ msgstr "Sider:"
-
-#~ msgid "Count:"
-#~ msgstr "Tal:"
-
-#~ msgid "Collated|#C"
-#~ msgstr "Sortert|#S"
-
-#~ msgid "Order"
-#~ msgstr "Rekkjefølgje"
-
-#~ msgid "Print to"
-#~ msgstr "Skriv ut til"
-
-#~ msgid "Buffer|#B"
-#~ msgstr "Buffer|#B"
-
-#~ msgid "Ref:"
-#~ msgstr "Ref:"
-
-#~ msgid "Reference type|#R"
-#~ msgstr "Referanse type|#R"
-
-#~ msgid "Goto reference|#G"
-#~ msgstr "Gå til referanse|#G"
-
-#~ msgid "Forwards >|#F^s"
-#~ msgstr "Framover >|#F^s"
-
-#~ msgid " < Backwards|#B^r"
-#~ msgstr "< Bakover|#B^r"
-
-#~ msgid "Case sensitive|#s#S"
-#~ msgstr "Forskjell på små/store bokstavar|#s#S"
-
-#~ msgid "Spellchecker Options...|#O"
-#~ msgstr "Stavekontroll innstillingar...|#i"
-
-#~ msgid "Start spellchecking|#S"
-#~ msgstr "Start stavekontroll|#S"
-
-#~ msgid "Insert in personal dictionary|#I"
-#~ msgstr "Set inn i personleg ordbok|#p"
-
-#~ msgid "Stop spellchecking|#T"
-#~ msgstr "Stopp stavekontroll|#t"
-
-#~ msgid "Close Spellchecker|#C^["
-#~ msgstr "Lukk stavekontroll|#L^["
-
-#~ msgid "100 %"
-#~ msgstr "100 %"
-
-#~ msgid "Bottom|#b"
-#~ msgstr "Botn|#B"
-
-#~ msgid "Left|#l"
-#~ msgstr "Venstre|#V"
-
-#~ msgid "Tabular Layout"
-#~ msgstr "Tabell stil"
-
-#~ msgid "LaTeX Classes|#C"
-#~ msgstr "LaTeX Klassar|#K"
-
-#~ msgid "LaTeX Styles|#S"
-#~ msgstr "LaTeX stiler|#s"
-
-#~ msgid "BibTeX Styles|#B"
-#~ msgstr "BibTeX Stiler|#B"
-
-#~ msgid "View|#V"
-#~ msgstr "Vis|#V"
-
-#~ msgid ""
-#~ "Shows the contents of the marked file. Only possible in full path mode."
-#~ msgstr ""
-#~ "Vis innhaldet i dei merka filene. Berre mogleg med heile stigen til "
-#~ "filene."
-
-#~ msgid ""
-#~ "View full path or only file name. Full path is needed to view the "
-#~ "contents of a file."
-#~ msgstr ""
-#~ "Vis heile stigen eller berre filnamnet. Vis heile stigen for å sjå "
-#~ "innhaldet av filene."
-
-#~ msgid ""
-#~ "Shows the installed LaTeX style files, which are available in LyX by "
-#~ "default, like \"babel\" or through \\usepackage{<the stylefile>} in LaTeX "
-#~ "preamble."
-#~ msgstr ""
-#~ "Viser dei innstallerte LaTeX stil filer, som er tilgjengeleg til LyX som "
-#~ "standard. Slik som \"babel \"  eller igjennom  \\usepackage{<stilfila>} "
-#~ "in LaTeX forteksten."
-
-#~ msgid ""
-#~ "Shows the installed style files for BibTeX. They can be loaded through "
-#~ "insert->Lists&Toc->BibTeX Reference->Style."
-#~ msgstr ""
-#~ "Vis BibTeX-stil-filene tilgjengeleg for LyX. Fleire kan bli lagt til i "
-#~ "set inn->Ulike lister->BibTeX-referanse->Stil"
-
-#~ msgid "Close|^C"
-#~ msgstr "Lukk|^C"
-
-#~ msgid "Entry : "
-#~ msgstr "Start : "
-
-#~ msgid "Meanings|#M"
-#~ msgstr "Tydar|#T"
-
-#~ msgid "Name|#N"
-#~ msgstr "Namn|#n"
-
-#~ msgid "Impossible Operation!"
-#~ msgstr "Umogeleg!"
-
-#~ msgid "Loaded but not displaying"
-#~ msgstr "Lest men ikkje vist"
-
-#~ msgid "Get the printer parameters"
-#~ msgstr "Hent innstillinger frå skrivaren"
-
-#~ msgid "Insert a new Tabular Inset"
-#~ msgstr "Set inn eit ny tabell innskot"
-
-#~ msgid "Push old message and show this one in minibuffer"
-#~ msgstr "Skubb den gamle meldinga og vis denne i minibufferet"
-
-#~ msgid "Pop old message and show it in the minibuffer"
-#~ msgstr "Dra den gamle meldinga og vis den i minibufferet"
-
-#~ msgid "*.lyx|LyX Documents (*.lyx)"
-#~ msgstr "*.lyx|LyX Dokument (*.lyx)"
-
-#~ msgid "Push-toolbar needs argument > 0"
-#~ msgstr "Skubb-verktylina treng val >0"
-
-#~ msgid "Usage: toolbar-add-to <LyX command>"
-#~ msgstr "Slik: toolbar-add-to <LyX kommando>"
-
-#~ msgid "newfile"
-#~ msgstr "ny fil"
-
-#~ msgid "File already exists:"
-#~ msgstr "Fil finst frå før:"
-
-#~ msgid "Canceled"
-#~ msgstr "Avbroten"
-
-#~ msgid "* No document open *"
-#~ msgstr "* Ingen dokument er opna * "
-
-#~ msgid "Missing type [eg latex, ps...] after "
-#~ msgstr "Manglar type (t.d. latex,ps...) etter "
-
-#~ msgid ""
-#~ "Select if LyX is to take over the handling of the dead keys (a.k.a. "
-#~ "accent keys) that may be defined for your keyboard."
-#~ msgstr ""
-#~ "Skal LyX handtere spesial teikn (mao \"dead keys\" slik som aksentar) som "
-#~ "er definert i tastatur-utlegget."
-
-#~ msgid ""
-#~ "Sets whether LyX asks for a second confirmation to exit when you have "
-#~ "changed documents. (LyX will still ask to save changed documents.)"
-#~ msgstr ""
-#~ "Skal vi plage deg med ei ekstra åtvaring når du sluttar av LyX med opne "
-#~ "ulagra dokument? (LyX vil framleis spør deg om du vil lagre.)"
-
-#~ msgid ""
-#~ "LyX continously displays names of last command executed, along with a "
-#~ "list of defined short-cuts for it in the minibuffer. Set to false if LyX "
-#~ "seems slow."
-#~ msgstr ""
-#~ "La LyX vise namna på dei siste utførte kommandoane, saman med ei liste av "
-#~ "snøggtastar i minibufferen. Skru av dersom LyX reagerer seint."
-
-#~ msgid ""
-#~ "This sets the behaviour if you want to be asked for a filename when "
-#~ "creating a new document or wait until you save it and be asked then."
-#~ msgstr ""
-#~ "Vil du bli spurt om filnamn på nye dokument når du opprettar det eller "
-#~ "vil du vente til første gang du lagrar dokumentet."
-
-#~ msgid "No number"
-#~ msgstr "Ingen nummer"
-
-#~ msgid " (wide)"
-#~ msgstr " (brei)"
-
-#~ msgid "unknown"
-#~ msgstr "ukjend"
-
-#~ msgid "Read Only"
-#~ msgstr "Berre lesing"
-
-#~ msgid "Make eqnarray|e"
-#~ msgstr "Lag eit sett med likningar|e"
-
-#~ msgid "Make multline|m"
-#~ msgstr "Lag multilinje|m"
-
-#~ msgid "Make align 1 column|1"
-#~ msgstr "Lag juster 1 spaltar|1"
-
-#~ msgid "Make align 2 columns|2"
-#~ msgstr "Lag juster 2 spaltar|2"
-
-#~ msgid "Make align 3 columns|3"
-#~ msgstr "Lag juster 3 kolonner|3"
-
-#~ msgid "Make alignat 2 columns|2"
-#~ msgstr "Lag ved sidan av miljø 2 spalte|2"
-
-#~ msgid "Make alignat 3 columns|3"
-#~ msgstr "Lag ved sidan av miljø 3 spalte|3"
-
-#~ msgid "Toggle limits|l"
-#~ msgstr "Byt grenser|g"
-
-#~ msgid "Inline formula|I"
-#~ msgstr "Tekst formel|I"
-
-#~ msgid "Index Entry of Preceding Word|W"
-#~ msgstr "Indekser det førre ordet|o"
-
-#~ msgid "AMS xalignat environment|x"
-#~ msgstr "AMS xalignat miljøet|x"
-
-#~ msgid "Reference Manual|R"
-#~ msgstr "Referanse Manual|R"
-
-#~ msgid "Trans_Keywords"
-#~ msgstr "Omsette nøkkelord"
-
-#~ msgid "TranslatedAbstract"
-#~ msgstr "Omsette samandrag"
-
-#~ msgid "Translated_Title"
-#~ msgstr "Omset tittel"
-
-#~ msgid "unsrt"
-#~ msgstr "unsrt"
-
-#~ msgid "alpha"
-#~ msgstr "alfa"
-
-#~ msgid "abbrv"
-#~ msgstr "forkort."
-
-#~ msgid "FIXME !"
-#~ msgstr "Fiks meg !"
-
-#~ msgid "The name of the style to use"
-#~ msgstr "Namnet til stilen du vil bruke"
-
-#~ msgid "&Browse"
-#~ msgstr "&Leit igjennom"
-
-#~ msgid "Defa&ult Skip:"
-#~ msgstr "Standard operom:"
-
-#~ msgid "&Class:"
-#~ msgstr "Klasse:"
-
-#~ msgid "smallskip"
-#~ msgstr "Lite operom"
-
-#~ msgid "medskip"
-#~ msgstr "medium operom"
-
-#~ msgid "bigskip"
-#~ msgstr "stort operom"
-
-#~ msgid "length"
-#~ msgstr "lengd"
-
-#~ msgid "O&ne"
-#~ msgstr "E&in"
-
-#~ msgid "&Two"
-#~ msgstr "&To"
-
-#~ msgid "On&e"
-#~ msgstr "Ei&n"
-
-#~ msgid "T&wo"
-#~ msgstr "&To"
-
-#~ msgid "&Papersize:"
-#~ msgstr "&Papirstorleik:"
-
-#~ msgid "&Use Geometry Package"
-#~ msgstr "Br&uk Geometripakken"
-
-#~ msgid "&Right:"
-#~ msgstr "&Høgre:"
-
-#~ msgid "L&eft:"
-#~ msgstr "V&enstre:"
-
-#~ msgid "Custom Papersize"
-#~ msgstr "Tilpassa papirstorleik"
-
-#~ msgid "Foot/Head Margins"
-#~ msgstr "Topp og botn margar"
-
-#~ msgid "P&S Driver:"
-#~ msgstr "PS Drivar:"
-
-#~ msgid "Si&ze"
-#~ msgstr "&Storleik"
-
-#~ msgid "&1"
-#~ msgstr "&1"
-
-#~ msgid "&2"
-#~ msgstr "&2"
-
-#~ msgid "&3"
-#~ msgstr "&3"
-
-#~ msgid "&4"
-#~ msgstr "&4"
-
-#~ msgid "&LaTeX"
-#~ msgstr "&LaTeX"
-
-#~ msgid "Screen Options"
-#~ msgstr "Skjerm-innstillingar"
-
-#~ msgid "S&how:"
-#~ msgstr "&Vis:"
-
-#~ msgid "draft mode"
-#~ msgstr "Kladd"
-
-#~ msgid "&Custom"
-#~ msgstr "&Tilpassa"
-
-#~ msgid "EPS Options"
-#~ msgstr "EPS-val"
-
-#~ msgid "Bounding box"
-#~ msgstr "Ramme"
-
-#~ msgid "&Get"
-#~ msgstr "&Hent"
-
-#~ msgid "clip to bounding box"
-#~ msgstr "Klipp etter ramma"
-
-#~ msgid "leftTop"
-#~ msgstr "Øvst til venstre"
-
-#~ msgid "leftBottom"
-#~ msgstr "Nedst til venstre"
-
-#~ msgid "centerTop"
-#~ msgstr "Øvst på midten"
-
-#~ msgid "centerBottom"
-#~ msgstr "Midt på nedst"
-
-#~ msgid "centerBaseline"
-#~ msgstr "Midt på grunnlinja"
-
-#~ msgid "rightTop"
-#~ msgstr "Øvst til høgre"
-
-#~ msgid "rightBottom"
-#~ msgstr "Nedst til høgre"
-
-#~ msgid "referencePoint"
-#~ msgstr "Referansepunkt"
-
-#~ msgid "&Include"
-#~ msgstr "&Inkluder"
-
-#~ msgid "FIXME"
-#~ msgstr "Fiks meg"
-
-#~ msgid "I&nput"
-#~ msgstr "I&nput"
-
-#~ msgid "&Verbatim"
-#~ msgstr "&Verbatim"
-
-#~ msgid "&Don't typeset"
-#~ msgstr "&Ikkje typesett"
-
-#~ msgid "Visible &Space"
-#~ msgstr "&Synleg rom"
-
-#~ msgid "&Filename:"
-#~ msgstr "&Filnamn:"
-
-#~ msgid "&Alignment and Spacing"
-#~ msgstr "&Justering og mellomrom"
-
-#~ msgid "Centimetres"
-#~ msgstr "Centimeter"
-
-#~ msgid "Points"
-#~ msgstr "Punkt"
-
-#~ msgid "Millimetres"
-#~ msgstr "Millimeter"
-
-#~ msgid "Picas"
-#~ msgstr "Picas"
-
-#~ msgid "ex Units"
-#~ msgstr "ex Einingar"
-
-#~ msgid "em Units"
-#~ msgstr "em einingar"
-
-#~ msgid "Scaled Points"
-#~ msgstr "Skalerte punkt"
-
-#~ msgid "Big/PS Points"
-#~ msgstr "Store/PS-punkter"
-
-#~ msgid "Didot Points"
-#~ msgstr "Didot Punkt"
-
-#~ msgid "Cicero Points"
-#~ msgstr "Cicero Punkt"
-
-#~ msgid "Units:"
-#~ msgstr "Einingar:"
-
-#~ msgid "Unit of Size, Stretch and Slink"
-#~ msgstr "Eininga til storleik, strekk og \"Slink\""
-
-#~ msgid "Amount of spacing"
-#~ msgstr "Kor mykje operom"
-
-#~ msgid "Margin by which paragraph is allowed to increase"
-#~ msgstr "Grensa for kor mykje eit avsnitt kan auke."
-
-#~ msgid "Shrink:"
-#~ msgstr "\"Shrink\":"
-
-#~ msgid "Margin by which paragraph is allowed to decrease"
-#~ msgstr "Grensa for kor mykje eit avsnitt kan minke."
-
-#~ msgid "Label width in list environment"
-#~ msgstr "Breidd på etikettar i listemiljø."
-
-#~ msgid "Unit:"
-#~ msgstr "Eining:"
-
-#~ msgid "Wrap text around floats"
-#~ msgstr "Brekk tekst rundt flytar"
-
-#~ msgid "Width:"
-#~ msgstr "Breidd:"
-
-#~ msgid "Minipage options"
-#~ msgstr "Miniside val"
-
-#~ msgid "Start new minipage"
-#~ msgstr "Start ny miniside"
-
-#~ msgid "HFill between minipage paragraphs"
-#~ msgstr "Loddrett mellomrom mellom miniside-avsnitt"
-
-#~ msgid "Vertical Alignment:"
-#~ msgstr "Loddrett Justering:"
-
-#~ msgid "&Odd"
-#~ msgstr "&Oddetal"
-
-#~ msgid "&Even"
-#~ msgstr "&Partal"
-
-#~ msgid "Ran&ge"
-#~ msgstr "Om&råde"
-
-#~ msgid "Set a range of pages to print"
-#~ msgstr "Skriv ut eit utval av sider."
-
-#~ msgid "&Starting range:"
-#~ msgstr "&Start:"
-
-#~ msgid "Page number"
-#~ msgstr "Sidenummer"
-
-#~ msgid "Ref on page xxx"
-#~ msgstr "Ref på side xxx"
-
-#~ msgid "On page xxx"
-#~ msgstr "På side xxx"
-
-#~ msgid "&Options..."
-#~ msgstr "&Val ..."
-
-#~ msgid "The units text%, page%, col% and line% are not allowed here."
-#~ msgstr "Einingane tekst%, Side% , spalte% linje% kan ikkje nyttast her."
-
-#~ msgid "Citta"
-#~ msgstr "Citta"
-
-#~ msgid "Data"
-#~ msgstr "Data"
-
-#~ msgid "Oggetto"
-#~ msgstr "Oggetto"
