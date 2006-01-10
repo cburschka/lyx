@@ -1046,8 +1046,10 @@ void MathHullInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		string old_label = label(r);
 		string const default_label =
 			(lyxrc.label_init_length >= 0) ? "eq:" : "";
+		if (old_label.empty())
+			old_label = default_label;
 		string const contents = cmd.argument.empty() ?
-			label(r) : cmd.argument;
+			old_label : cmd.argument;
 
 		InsetCommandParams p("label", contents);
 		string const data = InsetCommandMailer::params2string("label", p);
