@@ -1,3 +1,10 @@
+2006-01-11  Bennett Helm  <bennett.helm@fandm.edu>
+
+	* QWorkArea.C:
+	* lyx_gui.C:
+	* qfont_loader.C: define __METADATA_METADATA__ under OSX to fix
+	compilation with gcc 2.95.
+
 2006-01-09  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* Alert_pimpl.C: Make alert dialogs modular, thus preventing that

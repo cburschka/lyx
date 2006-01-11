@@ -21,9 +21,14 @@ convenient directory, cd to the top of the Qt source hierarcy, and:
 
      export QTDIR=`pwd` 
      sudo gcc_select 2
-     ./configure -static -no-exceptions   [for Panther, use "./configure -static -no-exceptions -lresolv"]
+     ./configure -static -no-exceptions   [for 10.3 or higher, use "./configure -static -no-exceptions -lresolv"]
      make 
      rm lib/libqt.la
+
+[Note: LyX-1.3.x requires gcc-2.95 to compile (hence the 'sudo 
+gcc_select 2' line above). In Mac OS X 10.4, gcc-2.95 is not 
+installed by default, though it is included with the Xcode Tools
+installer (under Cross-Development).]
 
 3. Configure LyX for compilation as follows.
 
@@ -36,7 +41,8 @@ cd to the top of the LyX source hierarchy, and enter:
 [Note #1: Adjust the --prefix setting to point to where you have
 copied LyX.app from step (1), if necessary.]
 
-[Note #2: to make a build that works with both 10.2 and 10.3, include 
+[Note #2: to make a build that works with Mac OS X 10.2 and higher,
+include
 "am_cv_func_iconv=no ac_cv_func_tsearch=no ac_cv_working_alloca_h=no ac_cv_header_dlfcn_h=no ac_cv_func_feof_unlocked=no ac_cv_header_nl_types_h=no am_cv_langinfo_codeset=no ac_cv_func_stpcpy=no" 
 in the configure line.]
 

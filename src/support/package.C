@@ -39,6 +39,7 @@
 
 
 #if defined (USE_MACOSX_PACKAGING)
+#define __METADATA_METADATA__ 1
 # include <CoreServices/CoreServices.h> // FSFindFolder, FSRefMakePath
 #endif
 

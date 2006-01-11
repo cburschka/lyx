@@ -19,9 +19,9 @@ What's new
 
 ** Updates
 
-- update lyx2lyx to handle properly the latest LyX 1.4 format (245).
+- Update lyx2lyx to handle properly the latest LyX 1.4 format (245).
 
-- New hungarian translation.
+- New hungarian translation. Update Spanish translation.
 
 - Update German documentation.
 
@@ -89,7 +89,10 @@ What's new
 - Compile without STL compatibility support, since some systems do that
   by default (Slackware, for ex.). [Qt only]
 
-- fix compilation with Solaris/x86 (bug 992).
+- Fix compilation with gcc 2.95 under OSX 10.4. This is useful because
+  LyX crashes on startup when compiled with gcc3.
+
+- Fix compilation with Solaris/x86 (bug 992).
 
 - Enable compilation of LyX on DragonFly BSD.
 

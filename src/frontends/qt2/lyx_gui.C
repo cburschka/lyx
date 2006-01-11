@@ -43,6 +43,7 @@
 #include "io_callback.h"
 
 #ifdef Q_OS_MAC
+#define __METADATA_METADATA__ 1
 #include <Carbon/Carbon.h>
 #endif
 

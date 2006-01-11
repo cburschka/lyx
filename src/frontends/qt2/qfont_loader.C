@@ -40,6 +40,7 @@ using std::pair;
 using std::make_pair;
 
 #ifdef Q_WS_MACX
+#define __METADATA_METADATA__ 1
 #include <ApplicationServices/ApplicationServices.h>
 #endif
 
