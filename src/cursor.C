@@ -825,10 +825,10 @@ bool LCursor::down()
 }
 
 
-void LCursor::macroModeClose()
+bool LCursor::macroModeClose()
 {
 	if (!inMacroMode())
-		return;
+		return false;
 	MathUnknownInset * p = activeMacro();
 	p->finalize();
 	string const s = p->name();
@@ -837,7 +837,7 @@ void LCursor::macroModeClose()
 
 	// do nothing if the macro name is empty
 	if (s == "\\")
-		return;
+		return false;
 
 	// prevent entering of recursive macros
 	// FIXME: this is only a weak attempt... only prevents immediate
@@ -847,11 +847,8 @@ void LCursor::macroModeClose()
 	if (macro && macro->getInsetName() == name)
 		lyxerr << "can't enter recursive macro" << endl;
 
-	// Going back and forth between LCursor and mathed is a bit
-	// ridiculous, but the alternative was to duplicate the code
-	// in MathNestInset::doDispatch/LFUN_INSERT_MATH (which puts
-	// the cursor in the newly created inset). (JMarc 2005/12/20)
-	dispatch(FuncRequest(LFUN_INSERT_MATH, s));
+	plainInsert(createMathInset(name));
+	return true;
 }
 
 

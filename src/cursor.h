@@ -256,8 +256,10 @@ public:
 	/// in pixels from top of screen
 	void setScreenPos(int x, int y);
 	/// current offset in the top cell
-	/// interpret name a name of a macro
-	void macroModeClose();
+
+	/// interpret name a name of a macro. Returns true if
+	/// something got inserted.
+	bool macroModeClose();
 	/// are we currently typing the name of a macro?
 	bool inMacroMode() const;
 	/// get access to the macro we are currently typing

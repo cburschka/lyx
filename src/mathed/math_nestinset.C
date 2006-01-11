@@ -340,7 +340,7 @@ int MathNestInset::latex(Buffer const &, std::ostream & os,
 }
 
 
-void MathNestInset::notifyCursorLeaves(LCursor & /*cur*/)
+void MathNestInset::notifyCursorLeaves(LCursor & cur)
 {
 #ifdef WITH_WARNINGS
 #warning look here
@@ -669,7 +669,19 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		// undoes the complete macro, not only the last character.
 		if (!cur.inMacroMode())
 			recordUndo(cur);
-		if (!interpret(cur, cmd.argument[0])) {
+
+		// spacial handling of space. If we insert an inset
+		// via macro mode, we want to put the cursor inside it
+		// if relevant. Think typing "\frac<space>".
+		if (cmd.argument[0] == ' ' 
+		    && cur.inMacroMode() && cur.macroName() != "\\"
+		    && cur.macroModeClose()) {
+			MathAtom const atom = cur.prevAtom();
+			if (atom->asNestInset() && atom->nargs() > 0) {
+				cur.posLeft();
+				cur.pushLeft(*cur.nextInset());
+			}
+		} else if (!interpret(cur, cmd.argument[0])) {
 			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 			cur.undispatched();
 		}

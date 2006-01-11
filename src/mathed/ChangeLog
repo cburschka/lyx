@@ -1,8 +1,14 @@
+2006-01-11  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* math_nestinset.C (doDispatch/LFUN_SELFINSERT): when inserting a
+	space and macromode is on, try to put the cursor inside the newly
+	created inset (bug 2034).
+
 2006-01-10  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* math_hullinset (doDispatch): fix default label setting (eq:)
 
-2006-01-01    <larsbj@gullik.net>
+2006-01-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* command_inset.C (editXY): unused parameters
 
@@ -62,8 +68,8 @@
 
 2005-10-13  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
-	* math_gridinset.[Ch] (eolString, write): Output \\ at the end of the last
-	line if it is empty (fixes bug 2067)
+	* math_gridinset.[Ch] (eolString, write): Output \\ at the end of
+	the last line if it is empty (fixes bug 2067)
 	* math_hullinset.[Ch] (eolString): Adjust to the changes above
 	* math_hullinset.C (delRow): Allow to delete the last dummy row
 	* math_parser.C (delEmptyLastRow): Delete the last dummy row.
