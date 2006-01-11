@@ -2607,15 +2607,6 @@ void LyXTabular::validate(LaTeXFeatures & features) const
 }
 
 
-void LyXTabular::getLabelList(Buffer const & buffer,
-			      std::vector<string> & list) const
-{
-	for (row_type i = 0; i < rows_; ++i)
-		for (col_type j = 0; j < columns_; ++j)
-			getCellInset(i, j)->getLabelList(buffer, list);
-}
-
-
 LyXTabular::BoxType LyXTabular::useParbox(idx_type cell) const
 {
 	ParagraphList const & parlist = getCellInset(cell)->paragraphs();

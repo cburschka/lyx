@@ -1689,13 +1689,6 @@ void InsetTabular::openLayoutDialog(BufferView * bv) const
 }
 
 
-void InsetTabular::getLabelList(Buffer const & buffer,
-				vector<string> & list) const
-{
-	tabular.getLabelList(buffer, list);
-}
-
-
 bool InsetTabular::copySelection(LCursor & cur)
 {
 	if (!cur.selection())

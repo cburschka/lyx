@@ -103,8 +103,6 @@ public:
 	void openLayoutDialog(BufferView *) const;
 	///
 	bool showInsetDialog(BufferView *) const;
-	/// Appends \c list with all labels found within this inset.
-	void getLabelList(Buffer const &, std::vector<std::string> & list) const;
 	/// number of cells
 	size_t nargs() const { return tabular.getNumberOfCells(); }
 	///

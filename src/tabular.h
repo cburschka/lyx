@@ -397,8 +397,6 @@ public:
 	col_type columns() const { return columns_;}
 	///
 	void validate(LaTeXFeatures &) const;
-	/// Appends \c list with all labels found within this inset.
-	void getLabelList(Buffer const &, std::vector<std::string> & list) const;
 	///
 //private:
 	///

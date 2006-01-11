@@ -323,20 +323,6 @@ bool InsetText::showInsetDialog(BufferView *) const
 }
 
 
-void InsetText::getLabelList(Buffer const & buffer,
-			     std::vector<string> & list) const
-{
-	ParagraphList::const_iterator pit = paragraphs().begin();
-	ParagraphList::const_iterator pend = paragraphs().end();
-	for (; pit != pend; ++pit) {
-		InsetList::const_iterator beg = pit->insetlist.begin();
-		InsetList::const_iterator end = pit->insetlist.end();
-		for (; beg != end; ++beg)
-			beg->inset->getLabelList(buffer, list);
-	}
-}
-
-
 void InsetText::markNew(bool track_changes)
 {
 	ParagraphList::iterator pit = paragraphs().begin();
