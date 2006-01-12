@@ -290,6 +290,8 @@ def main(argv, contributers):
                         .encode("latin1", "xmlcharrefreplace")
      # This is a fudge to give a 'reasonable' spelling of Matej's name.
      txt_credits_data = txt_credits_data.replace('&#283;', 'e')
+     # This is a fudge to give a 'reasonable' spelling of Tomasz' name.
+     txt_credits_data = txt_credits_data.replace('&#321;', 'L')
      txt_credits = open(argv[1], "w")
      txt_credits.write(txt_credits_data)
 
@@ -748,7 +750,7 @@ contributers = [
                  "28 March 2005",
                  u"Added native support for \makebox to mathed. Several bug fixes, both to the source code and to the llncs layout file"),
 
-     contributer(u"Tomasz Luczak",
+     contributer(u"Tomasz Łuczak",
                  "tlu () technodat ! com ! pl",
                  "GPL",
                  "Re: [Cvslog] lyx-devel po/: ChangeLog pl.po lib/: CREDITS",
