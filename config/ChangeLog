@@ -1,3 +1,8 @@
+2006-01-12  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* Makefile.am (EXTRA_DIST): add configure.ac and configure.in,
+	since automake 1.9 does not distribute them
+
 2005-11-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* configure.in (ALL_LINGUAS): 

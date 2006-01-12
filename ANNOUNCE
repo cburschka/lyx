@@ -1,26 +1,18 @@
-Public release of LyX version 1.3.6
+Public release of LyX version 1.3.7
 ===================================
 
-We are pleased to announce the release of LyX 1.3.6.
+We are pleased to announce the release of LyX 1.3.7.
 
-Unix and MacOSX users should consider this to be a bugfix release.
+This is hopefully the last release of the 1.3.x series. Besides many
+bug fixes, the following improvements are worth noting:
 
-To Windows users, however, LyX 1.3.6 is the first version of LyX
-to support the platform officially. This means that we've put a huge
-effort into squashing those bugs that were present in Ruurd Reitsma's
-unofficial ports to Windows. Large chunks of the code base have been
-touched in an attempt to resolve these problems so whilst we're
-confident that LyX/Win 1.3.6 will be the best ever version of LyX on
-Windows, we cannot say that it's bug free.
+- LyX 1.3.7 is able to read files with format 245, the format that
+  should be used by the forthcoming 1.4.0 version. 
 
-We would like to highlight three fixes in particular:
-  * It is now possible to typeset files which reside in a directory with
-    spaces in its name; this requires a modern TeX implementation (such
-    as teTeX 3.0).
-  * It is possible to use Ctrl-PageDown and Control-PageUp (<cmd>-tab
-    and <cmd>-backtab with Qt/Mac) to switch between the open documents.
-  * LaTeX-type accents, ligature breaks and hyphenation marks are now
-    considered as part of words 
+- The windows version has received some polish, in particular in the
+  installer and the handling of file names.
+
+All current 1.3.x users are encourged to upgrade to this version.
 
 The complete list of improvements and fixes can be found at the end of
 this message.
@@ -28,46 +20,58 @@ this message.
 In case you are wondering what LyX is, here is what
 http://www.lyx.org/ has to say on the subject:
 
-   LyX is an advanced open source document processor that encourages
-   an approach to writing based on the structure of your documents,
-   not their appearance. LyX lets you concentrate on writing, leaving
-   details of visual layout to the software.
+   LyX is a document processor that encourages an approach to writing
+   based on the structure of your documents, not their appearance. It
+   is released under a Free Software / Open Source license.
 
-   LyX was originally a Unix application, but now runs natively on
-   Windows and Mac OS X as well, thanks largely to the cross-platform Qt
-   toolkit.
+   LyX is for people that write and want their writing to look great,
+   right out of the box. No more endless tinkering with formatting
+   details, 'finger painting' font attributes or futzing around with page
+   boundaries. You just write. In the background, Prof. Knuth's legendary
+   TeX typesetting engine makes you look good.
 
-You can download LyX 1.3.6 here (the .bz2 are compressed with bzip2,
+   On screen, LyX looks like any word processor; its printed output -- or
+   richly cross-referenced PDF, just as readily produced -- looks like
+   nothing else. Gone are the days of industrially bland .docs, all
+   looking similarly not-quite-right, yet coming out unpredictably
+   different on different printer drivers. Gone are the crashes 'eating'
+   your dissertation the evening before going to press.
+
+   LyX is stable and fully featured. It is a multi-platform, fully
+   internationalized application running natively on Unix/Linux and the
+   Macintosh and modern Windows platforms. 
+
+You can download LyX 1.3.7 here (the .bz2 are compressed with bzip2,
 which yields smaller files):
 
-	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.3.6.tar.gz
-	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.3.6.tar.bz2
-	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.3.6.tar.gz
-	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.3.6.tar.bz2
+	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.3.7.tar.gz
+	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.3.7.tar.bz2
+	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.3.7.tar.gz
+	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.3.7.tar.bz2
 
 and it should propagate shortly to the following mirrors (which will also host
 the .bz2 versions):
 
-        http://lyx.mirror.fr/stable/lyx-1.3.6.tar.gz
-        ftp://ftp.sdsc.edu/pub/other/lyx/stable/lyx-1.3.6.tar.gz
-        ftp://ftp.lip6.fr/pub/lyx/stable/lyx-1.3.6.tar.gz
-        ftp://gd.tuwien.ac.at/publishing/tex/lyx/stable/lyx-1.3.6.tar.gz
-        ftp://ftp.ntua.gr/pub/X11/LyX/stable/lyx-1.3.6.tar.gz
+        http://lyx.mirror.fr/stable/lyx-1.3.7.tar.gz
+        ftp://ftp.sdsc.edu/pub/other/lyx/stable/lyx-1.3.7.tar.gz
+        ftp://ftp.lip6.fr/pub/lyx/stable/lyx-1.3.7.tar.gz
+        ftp://gd.tuwien.ac.at/publishing/tex/lyx/stable/lyx-1.3.7.tar.gz
+        ftp://ftp.ntua.gr/pub/X11/LyX/stable/lyx-1.3.7.tar.gz
 
 
-Prebuilt binaries (mainly rpms for linux distributions) should soon be
-available at
-	ftp://ftp.lyx.org/pub/lyx/bin/1.3.6/
+Prebuilt binaries (rpms for linux distributions, Mac OS X and Windows
+installers) should soon be available at
+	ftp://ftp.lyx.org/pub/lyx/bin/1.3.7/
 
-If you already have the LyX 1.3.5 sources, you may want to apply one
+If you already have the LyX 1.3.6 sources, you may want to apply one
 of the following patches instead
-	ftp://ftp.lyx.org/pub/lyx/stable/patch-1.3.6.gz
-	ftp://ftp.lyx.org/pub/lyx/stable/patch-1.3.6.bz2
+	ftp://ftp.lyx.org/pub/lyx/stable/patch-1.3.7.gz
+	ftp://ftp.lyx.org/pub/lyx/stable/patch-1.3.7.bz2
 
 Note that this patch will not produce valid LyX/Win sources, since
 some binary files have been added for this release.
 
-If you find what you think is a bug in LyX 1.3.6, you may either
+If you find what you think is a bug in LyX 1.3.7, you may either
 e-mail the LyX developers' mailing list (lyx-devel @ lists.lyx.org), or open
 a bug report at http://bugzilla.lyx.org
 
@@ -85,189 +89,84 @@ What's new
 
 ** Updates
 
-- It is now possible to typeset files which reside in a directory with
-  spaces in its name; this requires a modern TeX implementation (such
-  as teTeX 3.0).
+- Update lyx2lyx to handle properly the latest LyX 1.4 format (245).
 
-- Implement new functions buffer-next and buffer-previous that allow
-  to cycle through open buffers; they are respectively bound to
-  Ctrl-PageDown and Control-PageUp (except with mac bindings, where
-  <cmd>-tab and <cmd>-backtab are used). [bugs 515 and 1639]
+- New hungarian translation. Update Spanish translation.
 
-- LaTeX-type accents (which are used when converting from 7bit latex
-  documents or when a given accented letter does not exist in the
-  document encoding) are now considered as part of words; the same
-  holds for ligature breaks and hyphenation marks. This impacts word
-  level operation like selection by double-click or index entry
-  defaults.
-
-- The converters defined in the lyxrc.defaults and preferences files
-  can now use a "$$s" placeholder to tell LyX to look for the
-  converter in its support directories. A typical example is:
-
-  \converter lyxpreview ppm "python $$s/scripts/lyxpreview2ppm.py" ""
-
-- The ``annote'' field of BibTeX entries is now shown in citation preview.
-
-- it is now possible to change current font to boldsymbol through the math
-  panel. [Qt only]
-
-- update the aastex textclass to AASTeX 5.2
-
-- new Turkish translation.
-
-- Files from the 1.4 development branch of LyX and tex2lyx can now be
-  converted by lyx2lyx. The conversion is not perfect for all new features,
-  but files containing only features supported by LyX 1.3.x can be converted
-  back and forth without problems.
+- Update German documentation.
 
 ** Bug fixes
 
 * Document input/output:
 
-- Fix LaTeX output of percentage length values <10%. [bug 1523]
+- Don't load the wasysym package automatically anymore (bug 1942)
 
-- Fix crash when reading equations containing more columns than
-  allowed. [bug 1542]
+- Fix crash with S-Home while entering a macro name (bug 2046)
 
-- Allow reading math arrays with their options on a separate line
-  (Scientific Word does that).
+- Do not delete selection when entering an index entry.
 
-- Fix crash when inserting invalid length data. [bug 1682]
+- Fix LaTeX output when a bibtex inset is used in a child document.
 
-- Store typed '&' characters in math as '\&'. [bug 1542]
+- Support tex4ht for Tex -> MS Word conversion 
 
-- Make sure that the amsmath package is used in LaTeX output when
-  using the AMS-specific array environments, over/under arrows or the
-  \text command in equations.
-
-- Make sure that the wasysym package is used in LaTeX output when
-  using symbols from the wasy font.
-
-- Fix export via commandline of symbols using AMS or wasy fonts. [bug 1665]
-
-- Make sure that the natbib and url packages are not loaded with
-  REVTeX 4, since the functionality is already provided by the class.
-
-- Fix output of mathbb and mathcal symbols via the math panel
-  (XForms only). [bug 1214]
-
-- Fix output of footnotes on the titlepage, which did not work with
-  the memoir class. [bug 1677]
-
-- Fix the LaTeX output of Short Titles (aka optional inset) that did
-  not get \protect added when needed. [bug 1739]
-
-- When reading an equation, don't parse \| following a \left or \right as |.
-
-- Enable LaTeXConfig.lyx to be generated on Windows by fixing the line
-  endings of the generated chkconfig.sed script.
-
-- Fix positioning of error insets after graphics and external insets.
-
-- When generating PDF, handle properly pdfTeX warnings. [bug 1824]
-
-- Fix lyxpreview2ppm.py to work with python versions older than 2.1.
-
-- Fix version control on files which name contains some special
-  characters.
-
-- Make lib/configure more portable, allowing it to run on Solaris.
-
-- Remove detection of a PS interpreter in lib/configure, since we do
-  not use it.
-
-- Use ps2pdf13 to convert from PS to PDF (more portable).
-
-- Remove from convertDefault.sh the test that "convert" really succeeded
-  as it reported failures on Windows that were actually successes.
-  See, eg, http://marc.theaimsgroup.com/?l=lyx-users&m=110561697803860&w=2
-
-- No longer quote the name of the external executable in lyxpreview2ppm.py.
-  Windows didn't like that.
-
-- Windows users are now able to define and use their own graphics converters
-  because the command is now quoted correctly.
-
-- Given a Windows-style path, don't forget to mangle the drive letter too when
-  generating a unique temporary file name.
-
-- LyX now passes all external scripts to the relevant interpreter explicitly.
-  This means that Windows can now run the script even when it doesn't have
-  a "recognized" file extension.
-
-- Enable the file browser to return a "file name with spaces" to the
-  appropriate dialog if LaTeX can handle such files.
-
-- Squash the "Mutex destroy failure" warning when shutting down LyX [Qt only].
-  Prevents a core dump on NetBSD.
+- Support the previewers kdvi, kpdf, and kghostview
 
 * User Interface:
 
-- Fix crash when using math-mutate with invalid argument.
+- Fix wrong path when drag-and-dropping files on Windows. [Qt only] 
 
-- Implement support for qt-immodule. This fixes the dead key problems
-  with some newer qt/x11 versions. [bug 1830]
+- Fix interaction of LyX with external clipboard (e.g. Klipper) (bug 1976).
 
-- Fix math fonts display in LyX/Mac.
+- Ensure that no dialogs have one shortcut assigned to more than one action.
+  Always connect the OK button to the Alt-O shortcut. [Qt only]
 
-- Avoid automatic startup of the spellchecker when switching from one
-  document to another. [bug 1451]
+- Ensure that the user cannot create a reference without first selecting
+  one in the reference dialog. [Qt only].
 
-- fix wrong selection when opening the list of tables/figures dialog.
-  [bug 1870] 
+- The Return key is no longer bound to the Goto button in the reference
+  dialog. [Qt only].
 
-- Make LyX behave normally when a file has been opened from the
-  Explorer. [Windows only]
+- Double clicking in the reference dialog now inserts a reference
+  (bug 2187) [Qt only].
 
-- Windows users will find that graphics files are now converted to a
-  "loadable" format asynchronously. That is, LyX will not block
-  execution whilst graphics files are displayed on screen.
+- Searching backwards in the citation dialog always skipped one result
+  (bug 2002). Fixed now.
 
-- Fix font metrics problems with Qt/Win 3.2.1.
+- Do not trim spaces from either end of the find and replace strings in
+  the Edit->Find & Replace... dialog. [XForms only].
 
-- Fix bindings for depth-increment/decrement for LyX/Mac.
+- Fix crash when trying to display current directory and ${HOME} is empty.
 
-- Do not use the -swap option when viewing a Postscript file with gv,
-  since newer versions do not support it. Users that see landscape
-  documents upside-down should select 'swap landscape' in gv options.
+- Don't force alignment to BLOCK when switching to fixed width cell (bug 1840).
 
-- Semantic improvements in the Insert>Cross reference dialog.
+- Add key bindings for "primary-selection-paste".
 
-- When showing a preview of a BibTeX entry in the Insert>Citation
-  Reference dialog, handle \% correctly.
+- Fix some math key sequences for sciword.bind.
 
-- The file browsers of the Qt versions of the External, BibTeX and
-  Print dialogs now return a relative path if appropriate. [bug 1272]
+- On exit, don't attempt to unlock a mutex in the Qt library --- it
+  causes undefined behaviour and leads to a crash on NetBSD.
 
-- Fix display of citations when using 'et al.'
+- Enable Instant Preview to work if the path to the external GhostScript
+  executable contains spaces. (bug 2193).
 
-- fix translation of layout names with a space in their name.
-
-- Fix left margins in various text classes.
-
-- Fix server function server-get-tip. [bug 1781]
-
-- Fix binding of Shift-Tab, which was broken on some systems.
-
-- Enable the display of accented characters in the Help->About dialog.
-
-- Fix "longtable" user interface in the tabular dialog. [bug 1061, Qt only]
-
-- Remove the "child process" dialog, with which a user could kill child
-  processes spawned by LyX. It was decided that this functionality belonged
-  with the OS.
-
-- Post convertDefault.sh's error messages to STDERR.
+- The error/warning/confirmation dialogs aren't hidden behind the main
+  window anymore [Qt only] (bug 1977).
 
 * Configuration/Installation:
 
-- Enable XForms frontend to build with picky versions of 'make'.
+- Enable TeXFiles.sh to run when its path contains spaces.
 
-- Fix link error with some compiler/OS combinations. [bug 1702]
+- Compile without STL compatibility support, since some systems do that
+  by default (Slackware, for ex.). [Qt only]
 
-- Fix link error with Cygwin.
+- Fix compilation with gcc 2.95 under OSX 10.4. This is useful because
+  LyX crashes on startup when compiled with gcc3.
 
-- Fix warnings with recent versions of automake.
+- Fix compilation with Solaris/x86 (bug 992).
 
-- Remove GNU-make specific construct in Makefile
+- Enable compilation of LyX on DragonFly BSD.
+
+- Add missing cygwin support file in the distribution (bug 2035).
+
+- Enable Windows boxes to recognize the hard-coded paths needed to run
+  LyX from the build tree.
