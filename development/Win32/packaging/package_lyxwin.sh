@@ -22,16 +22,18 @@
 #   lyxrc.defaults
 #   packages.lst
 #   textclass.lst
-
 # The installee should regenerate them by running configure on his machine.
 
-QT_DLL="$HOME/qt3/bin/qt-mt3.dll"
+# Finally it copies the documentation into the install tree.
+
+QT_DLL="$HOME/Qt/3x-msys/bin/qt-mt3.dll"
 LIBICONV_DLL="/j/MinGW/bin/libiconv-2.dll"
 MINGW_DLL="/j/MinGW/bin/mingwm10.dll"
 CLEAN_DVI_PY="clean_dvi.py"
 DTL_DIR=dtl
 DT2DV="$DTL_DIR/dt2dv.exe"
 DV2DT="$DTL_DIR/dv2dt.exe"
+DOC_DIR="$HOME/LyX/13xdoc"
 
 LYX_INSTALL_DIR="../../../build/installprefix"
 
@@ -105,7 +107,27 @@ a\
     )
 }
 
+install_docs()
+{
+    # Install the documentation
+    (
+	cd "${LYX_INSTALL_DIR}/Resources/lyx"
+	test -r doc || mkdir doc || {
+	    echo "Unable to create the doc directory in ${LYX_INSTALL_DIR}/Resources/lyx" >&2
+	    return
+	}
+	cd doc
+	test -d "$DOC_DIR" || {
+	    echo "Unable to find the documentation directory $DOC_DIR" >&2
+	    return
+	}
+	'cp' -r "$DOC_DIR"/* .
+	rm -rf `find . -name CVS`
+    )
+}
+
 
 windows_packaging || exit 1
+install_docs
 
 # The end
