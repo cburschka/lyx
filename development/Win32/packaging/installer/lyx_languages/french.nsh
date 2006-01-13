@@ -75,6 +75,7 @@ LangString SummaryPathPrefix "${LYX_LANG}" "Durant l'installation, une chaîne de
 
 LangString UILangageTitle "${LYX_LANG}" "The language of LyX's interface"
 LangString UILangageDescription "${LYX_LANG}" "As used for menus, messages, etc."
+LangString UILanguageAvailableLanguages "${LYX_LANG}" " Available Languages "
 
 LangString UnNotInRegistryLabel "${LYX_LANG}" "$(^Name) introuvable dans le base des registres. $\r$\nLes raccourcis sur le bureau et dans le menu de démarrage ne seront pas supprimés."
 LangString UnNotAdminLabel "${LYX_LANG}" "Désolé ! Vous devez avoir les droits d'administration$\r$\npour installer$(^Name)."

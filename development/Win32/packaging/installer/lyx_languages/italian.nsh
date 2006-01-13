@@ -21,7 +21,8 @@ LangString ModifyingConfigureFailed "${LYX_LANG}" "Fallito tentativo di aggiorna
 LangString CreateCmdFilesFailed "${LYX_LANG}" "Failed atempting to create lyx.cmd and reLyX.cmd"
 LangString RunConfigureFailed "${LYX_LANG}" "Fallito tentativo di eseguire lo script di configurazione"
 
-LangString FinishPageMessage "${LYX_LANG}" "Congratulazioni! LyX è stato installato con successo."
+LangString FinishPageMessage "${LYX_LANG}" "LyX è stato installato. Però, se l$\'installer non è riuscito a lanciare lo script di configurazione, non sarete in grado di usare LyX a causa della mancata generazione del file textclass.lst. In tal caso, il rimedio consiste nell'eseguire il comando 'sh configure' nella directory $\'<LyX>/Resources/lyx$\'."
+
 LangString FinishPageRun "${LYX_LANG}" "Lancia LyX"
 
 LangString DownloadPageField2 "${LYX_LANG}" "&Non installare"
@@ -74,6 +75,7 @@ LangString SummaryPathPrefix "${LYX_LANG}" "Verrà aggiunta una stringa 'path_pre
 
 LangString UILangageTitle "${LYX_LANG}" "The language of LyX's interface"
 LangString UILangageDescription "${LYX_LANG}" "As used for menus, messages, etc."
+LangString UILanguageAvailableLanguages "${LYX_LANG}" " Available Languages "
 
 LangString UnNotInRegistryLabel "${LYX_LANG}" "Non riesco a trovare $(^Name) nel registro$\r$\nI collegamenti sul desktop e nel menu Start non saranno rimossi."
 LangString UnNotAdminLabel "${LYX_LANG}" "Spiacente! Occorrono privilegi da amministratore$\r$\nper disinstallare $(^Name)."

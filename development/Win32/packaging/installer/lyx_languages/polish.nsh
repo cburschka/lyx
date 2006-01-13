@@ -21,7 +21,7 @@ LangString ModifyingConfigureFailed "${LYX_LANG}" "Nieudana próba ustawienia zmi
 LangString CreateCmdFilesFailed "${LYX_LANG}" "Niedana próba utworzenia plików lyx.cmd i reLyX.cmd"
 LangString RunConfigureFailed "${LYX_LANG}" "Niedana próba wykonania skryptu konfiguracyjnego"
 
-LangString FinishPageMessage "${LYX_LANG}" "Gratulacje! LyX zosta³ pomyœlnie zainstalowany."
+LangString FinishPageMessage "${LYX_LANG}" "LyX powinien byæ ju¿ teraz zainstalowany. Jednak niektórzy u¿ytkownicy raportuj¹, ¿e skrypt konfiguracyjny nie wykonuje siê. W efekcie LyX nie uruchamia siê zg³aszaj¹c brak pliku textclass.lst. Dla naprawy instalacji LyX-a uruchom polecenie 'sh configure' w katalogu $\'<LyX>/Resources/lyx$\'."
 LangString FinishPageRun "${LYX_LANG}" "Uruchom LyX"
 
 LangString DownloadPageField2 "${LYX_LANG}" "&Nie instaluj"
@@ -74,6 +74,7 @@ LangString SummaryPathPrefix "${LYX_LANG}" "Do zmiennej 'path_prefix' w pliku 'l
 
 LangString UILangageTitle "${LYX_LANG}" "Jêzyk interfejsu LyX-a"
 LangString UILangageDescription "${LYX_LANG}" "Który bêdzie u¿yty w menu, komunikatach itp."
+LangString UILanguageAvailableLanguages "${LYX_LANG}" " Available Languages "
 
 LangString UnNotInRegistryLabel "${LYX_LANG}" "Nie mo¿na znaleŸæ $(^Name) w rejestrze$\r$\nSkróty na pulpicie i w menu Start nie zostan¹ usuniête."
 LangString UnNotAdminLabel "${LYX_LANG}" "Musisz posiadaæ prawa administratora$\r$\ndo deinstalacji programu $(^Name)."

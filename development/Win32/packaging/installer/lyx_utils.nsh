@@ -72,6 +72,10 @@
    StrCpy ${LangNme} "Nederlands"
   ${endif}
 
+  ${if} ${LangISOCode} = 1045
+   StrCpy ${LangNme} "Polski"
+  ${endif}
+
   ${if} ${LangISOCode} = 1053
    StrCpy ${LangNme} "Svenska"
   ${endif}

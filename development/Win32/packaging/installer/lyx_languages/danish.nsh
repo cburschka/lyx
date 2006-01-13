@@ -74,6 +74,7 @@ LangString SummaryPathPrefix "${LYX_LANG}" "Jeg tilføjer en 'path_prefix' streng
 
 LangString UILangageTitle "${LYX_LANG}" "The language of LyX's interface"
 LangString UILangageDescription "${LYX_LANG}" "As used for menus, messages, etc."
+LangString UILanguageAvailableLanguages "${LYX_LANG}" " Available Languages "
 
 LangString UnNotInRegistryLabel "${LYX_LANG}" "Kunne ikke finde $(^Name) i registreringsdatabsen$\r$\nGenvejene på skrivebordet og i Start-menuen bliver ikke fjernet"
 LangString UnNotAdminLabel "${LYX_LANG}" "Beklager! Du skal have administrator-rettigheder$\r$\nfor at afinstallere$(^Name)."

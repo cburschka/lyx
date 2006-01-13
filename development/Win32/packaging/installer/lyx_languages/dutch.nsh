@@ -74,6 +74,7 @@ LangString SummaryPathPrefix "${LYX_LANG}" "Ik voeg een 'path_prefix' tekst aan 
 
 LangString UILangageTitle "${LYX_LANG}" "The language of LyX's interface"
 LangString UILangageDescription "${LYX_LANG}" "As used for menus, messages, etc."
+LangString UILanguageAvailableLanguages "${LYX_LANG}" " Available Languages "
 
 LangString UnNotInRegistryLabel "${LYX_LANG}" "$(^Name) is niet gevonden in het Windows register$\r$\nSnelkoppelingen op het Bureaublad en in het Start Menu worden niet verwijderd."
 LangString UnNotAdminLabel "${LYX_LANG}" "Sorry! U heeft systeembeheer rechten nodig$\r$\nom $(^Name) te verwijderen."

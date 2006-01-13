@@ -20,7 +20,7 @@
 CRCCheck force
 
 ; Make the installer as small as possible.
-SetCompressor lzma
+;SetCompressor lzma
 
 ;--------------------------------
 ; You should need to change only these macros...
@@ -172,6 +172,7 @@ Page custom SelectMenuLanguage SelectMenuLanguage_LeaveFunction
 !insertmacro MUI_PAGE_INSTFILES
 
 !define MUI_FINISHPAGE_RUN
+!define MUI_FINISHPAGE_TEXT_LARGE
 !define MUI_FINISHPAGE_TEXT "$(FinishPageMessage)"
 !define MUI_FINISHPAGE_RUN_TEXT "$(FinishPageRun)"
 !define MUI_FINISHPAGE_RUN_FUNCTION "LaunchProduct"
@@ -771,6 +772,7 @@ Function SelectMenuLanguage
   ;tranlate NSIS's language code to the language name; macro from lyx_utils.nsh
   !insertmacro TranslateLangCode $LangName $Language
 
+  !insertmacro MUI_INSTALLOPTIONS_WRITE "io_ui_language.ini" "Field 1" "State" "$(UILanguageAvailableLanguages)"
   !insertmacro MUI_INSTALLOPTIONS_WRITE "io_ui_language.ini" "Field 2" "State" "$LangName"
 
   !insertmacro MUI_HEADER_TEXT "$(UILangageTitle)" "$(UILangageDescription)"
