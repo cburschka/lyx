@@ -470,6 +470,14 @@ contributers = [
                  "22 February 2005",
                  u"Qt2 port"),
 
+     contributer(u"Anders Ekberg",
+                 "anek () chalmers ! se",
+                 "GPL",
+                 "License agreement",
+                 "m=113725822602516",
+                 "14 January 2006",
+                 u"Improvements to the Swedish translation of the Windows Installer"),
+
      contributer(u"Matthias Ettrich",
                  "ettrich () trolltech ! com",
                  "GPL",
