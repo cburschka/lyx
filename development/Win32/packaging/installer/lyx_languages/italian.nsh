@@ -18,7 +18,7 @@ LangString SecFileAssocDescription "${LYX_LANG}" "Crea le associazioni tra il pr
 LangString SecDesktopDescription "${LYX_LANG}" "Icona ${PRODUCT_NAME} sul desktop."
 
 LangString ModifyingConfigureFailed "${LYX_LANG}" "Fallito tentativo di aggiornare 'path_prefix' nello script di configurazione"
-LangString CreateCmdFilesFailed "${LYX_LANG}" "Failed atempting to create lyx.cmd and reLyX.cmd"
+LangString CreateCmdFilesFailed "${LYX_LANG}" "Fallito tentativo di creare lyx.cmd e reLyX.cmd"
 LangString RunConfigureFailed "${LYX_LANG}" "Fallito tentativo di eseguire lo script di configurazione"
 
 LangString FinishPageMessage "${LYX_LANG}" "LyX è stato installato. Però, se l$\'installer non è riuscito a lanciare lo script di configurazione, non sarete in grado di usare LyX a causa della mancata generazione del file textclass.lst. In tal caso, il rimedio consiste nell'eseguire il comando 'sh configure' nella directory $\'<LyX>/Resources/lyx$\'."
@@ -73,9 +73,9 @@ LangString SummaryTitle "${LYX_LANG}" "Sommario del software"
 LangString SummaryPleaseInstall "${LYX_LANG}" "Siete pregati di installare i pacchetti scaricati e quindi lanciare nuovamente l'installazione di LyX."
 LangString SummaryPathPrefix "${LYX_LANG}" "Verrà aggiunta una stringa 'path_prefix' al file 'lyxrc.defaults' contenente:"
 
-LangString UILangageTitle "${LYX_LANG}" "The language of LyX's interface"
-LangString UILangageDescription "${LYX_LANG}" "As used for menus, messages, etc."
-LangString UILanguageAvailableLanguages "${LYX_LANG}" " Available Languages "
+LangString UILangageTitle "${LYX_LANG}" "La lingua dell'interfaccia di LyX"
+LangString UILangageDescription "${LYX_LANG}" "Usata per menu, messaggi, ecc."
+LangString UILanguageAvailableLanguages "${LYX_LANG}" " Lingue Disponibili "
 
 LangString UnNotInRegistryLabel "${LYX_LANG}" "Non riesco a trovare $(^Name) nel registro$\r$\nI collegamenti sul desktop e nel menu Start non saranno rimossi."
 LangString UnNotAdminLabel "${LYX_LANG}" "Spiacente! Occorrono privilegi da amministratore$\r$\nper disinstallare $(^Name)."

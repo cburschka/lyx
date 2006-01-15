@@ -74,7 +74,7 @@ LangString SummaryPathPrefix "${LYX_LANG}" "Do zmiennej 'path_prefix' w pliku 'l
 
 LangString UILangageTitle "${LYX_LANG}" "Jêzyk interfejsu LyX-a"
 LangString UILangageDescription "${LYX_LANG}" "Który bêdzie u¿yty w menu, komunikatach itp."
-LangString UILanguageAvailableLanguages "${LYX_LANG}" " Available Languages "
+LangString UILanguageAvailableLanguages "${LYX_LANG}" " Dostêpne jêzyki "
 
 LangString UnNotInRegistryLabel "${LYX_LANG}" "Nie mo¿na znaleŸæ $(^Name) w rejestrze$\r$\nSkróty na pulpicie i w menu Start nie zostan¹ usuniête."
 LangString UnNotAdminLabel "${LYX_LANG}" "Musisz posiadaæ prawa administratora$\r$\ndo deinstalacji programu $(^Name)."

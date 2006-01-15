@@ -74,7 +74,7 @@ LangString SummaryPathPrefix "${LYX_LANG}" "Die Liste mit den Programmpfaden, de
 
 LangString UILangageTitle "${LYX_LANG}" "Die Sprache von LyXs Benutzeroberfläche"
 LangString UILangageDescription "${LYX_LANG}" "Wird für die Menüs, Mitteilungen, usw. verwendet"
-LangString UILanguageAvailableLanguages "${LYX_LANG}" " Available Languages "
+LangString UILanguageAvailableLanguages "${LYX_LANG}" " Verfügbare Sprachen "
 
 LangString UnNotInRegistryLabel "${LYX_LANG}" "Kann $(^Name) nicht in der Registry finden. $\r$\n Desktopsymbole und Einträge im Startmenü können nicht entfernt werden."
 LangString UnNotAdminLabel "${LYX_LANG}" "Sie benötigen Administratorrechte $\r$\n um $(^Name) zu deinstallieren."

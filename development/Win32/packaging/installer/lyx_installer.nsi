@@ -20,7 +20,7 @@
 CRCCheck force
 
 ; Make the installer as small as possible.
-;SetCompressor lzma
+SetCompressor lzma
 
 ;--------------------------------
 ; You should need to change only these macros...
