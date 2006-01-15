@@ -837,11 +837,15 @@ Section Uninstall
 
   Delete "$DESKTOP\${PRODUCT_NAME}.lnk"
 
-  DeleteRegKey "HKCU" "${PRODUCT_UNINST_KEY}\Installer Language"
+  DeleteRegKey "HKCU" "${PRODUCT_UNINST_KEY}"
   DeleteRegKey ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}"
   DeleteRegKey HKLM "${PRODUCT_DIR_REGKEY}"
+  DeleteRegKey HKCR "Applications\lyx.exe"
+  DeleteRegKey HKCR "Applications\lyx.bat"
 
+  ; remove extension .lyx
   ${RemoveFileAssociation} "${PRODUCT_EXT}" "${PRODUCT_NAME}"
+  DeleteRegKey HKCR "${PRODUCT_NAME}"
 
   SetAutoClose true
 SectionEnd
