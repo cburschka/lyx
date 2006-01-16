@@ -16,6 +16,7 @@
 # MISC SECTION ######################################
 #
 
+\path_prefix "/usr/bin:/usr/local/bin:/usr/local/teTeX/bin/powerpc-apple-darwin-current:/usr/X11R6/bin:/sw/bin:/opt/local/teTeX/bin"
 \serverpipe "~/Library/Application Support/LyX/.lyxpipe"
 \preview true
 
@@ -84,6 +85,11 @@
 \viewer "html" "open"
 \viewer "pdf" "open"
 \viewer "ps" "open"
+\viewer "text" "open"
+\viewer "latex" "open"
+\viewer "word" "open"
+\viewer "oo" "open"
+\viewer "rtf" "open"
 
 #
 # CONVERTERS SECTION ##########################

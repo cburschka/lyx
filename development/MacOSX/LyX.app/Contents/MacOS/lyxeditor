@@ -5,7 +5,7 @@
 lyxpipe=/Users/$USER/Library/Application\ Support/LyX/.lyxpipe
 if  [ ! -p $lyxpipe.out ]
   then
-    lyxprefs=`expr "$0" : '\(.*\)MacOS/lyxeditor'`Resources/lyx/preferences
+    lyxprefs=`expr "$0" : '\(.*\)MacOS/lyxeditor'`Resources/LyX/preferences
     lyxpipe=`perl -n -e 'print,exit if s/^.serverpipe\\s+\"(.+)\"/$1/;' ~/Library/Application\ Support/LyX/preferences $lyxprefs`
 fi
 [ -p $lyxpipe.in ] || exit 0
