@@ -1,21 +1,25 @@
+# translation of pl.po to Polski
+# translation of pl.po to Polish
 # Polskie teksty dla LyX-a (2001).
 # Polish messages for LyX (2001).
-# Copyright (C) 2000 Free Software Foundation, Inc.
+# Copyright (C) 2000, 2006 Free Software Foundation, Inc.
 # Pawe³ Dziekoñski <p.dziekonski@mml.ch.pwr.wroc.pl>
 # Tomasz £uczak <tlu@technodat.com.pl>
 # Arkadiusz Lipiec <alipiec@elka.pw.edu.pl>
+# Tomasz £uczak <tlu@technodat.com.pl>, 2005, 2006.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: lyx-1.3.2\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: pl\n"
+"Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2006-01-03 15:37+0100\n"
-"PO-Revision-Date: 2003-04-05 22:47+0100\n"
+"PO-Revision-Date: 2006-01-12 23:13+0100\n"
 "Last-Translator: Tomasz £uczak <tlu@technodat.com.pl>\n"
-"Language-Team: polish <pl@li.org>\n"
+"Language-Team: Polski <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-2\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.10.2\n"
 
 #: ../src/frontends/xforms/forms/form_aboutlyx.fd:44
 #: ../src/frontends/xforms/forms/form_error.fd:61
@@ -122,7 +126,7 @@ msgstr "Styl:|#S"
 #: ../src/frontends/xforms/forms/form_preferences.fd:1385
 #: ../src/frontends/xforms/forms/form_print.fd:206
 msgid "Browse...|#B"
-msgstr "Przegl±daj|#B"
+msgstr "Przegl±daj|#P"
 
 #: ../src/frontends/xforms/forms/form_bibtex.fd:152
 msgid "Add bibliography to TOC|#T"
@@ -242,19 +246,19 @@ msgstr "Informacja:"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:116
 msgid "@4->"
-msgstr ""
+msgstr "@4->"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:134
 msgid "@9+"
-msgstr ""
+msgstr "@9+"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:152
 msgid "@8->"
-msgstr ""
+msgstr "@8->"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:170
 msgid "@2->"
-msgstr ""
+msgstr "@2->"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:188
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:209
@@ -530,19 +534,19 @@ msgstr "Maths|#M"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1777
 msgid "Ding 1|#D"
-msgstr ""
+msgstr "Ding 1|#D"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1795
 msgid "Ding 2|#i"
-msgstr ""
+msgstr "Ding 2|#i"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1813
 msgid "Ding 3|#n"
-msgstr ""
+msgstr "Ding 3|#n"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1831
 msgid "Ding 4|#g"
-msgstr ""
+msgstr "Ding 4|#g"
 
 #: ../src/frontends/xforms/forms/form_ert.fd:43
 #: ../src/frontends/xforms/forms/form_tabular.fd:1764
@@ -668,7 +672,6 @@ msgid "LyX View"
 msgstr "Widok w LyX-ie"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:230
-#, fuzzy
 msgid "Draft mode|#o"
 msgstr "Tryb szkicowy|#s"
 
@@ -884,7 +887,7 @@ msgstr "Od¶wie¿"
 
 #: ../src/frontends/xforms/forms/form_maths_style.fd:152
 msgid "textrm"
-msgstr ""
+msgstr "textrm"
 
 #: ../src/frontends/xforms/forms/form_minipage.fd:43
 msgid "Width"
@@ -1114,35 +1117,35 @@ msgstr "Obiekty LyX-a:|#L"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:833
 msgid "H|#H"
-msgstr ""
+msgstr "H|#H"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:851
 msgid "S|#S"
-msgstr ""
+msgstr "S|#S"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:870
 msgid "V|#V"
-msgstr ""
+msgstr "V|#V"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:889
 msgid "R|#R"
-msgstr ""
+msgstr "R|#R"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:908
 msgid "G|#G"
-msgstr ""
+msgstr "G|#G"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:927
 msgid "B|#B"
-msgstr ""
+msgstr "B|#B"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:964
 msgid "HSV"
-msgstr ""
+msgstr "HSV"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:982
 msgid "RGB"
-msgstr ""
+msgstr "RGB"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1055
 #: src/frontends/xforms/FormPreferences.C:1105
@@ -1178,7 +1181,7 @@ msgstr "Interwa³ automatycznego zapisu:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1198
 msgid "Instant Preview|#P"
-msgstr ""
+msgstr "Natychmiastowy podgl±d|#P"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1217
 msgid "Graphics display:|#G"
@@ -1384,9 +1387,8 @@ msgid "LyXServer pipe:|#S"
 msgstr "Potok serwera LyX-a:|#P"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2496
-#, fuzzy
 msgid "PATH prefix:|#T"
-msgstr "Typ:|#T"
+msgstr "Prefiks ¶cie¿ki:|#P"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2538
 msgid "Date format:|#f"
@@ -1502,7 +1504,7 @@ msgstr "Przy zmianie klasy automatycznie zeruj opcje|#z"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3130
 msgid "Use Cygwin Paths|#s"
-msgstr ""
+msgstr "U¿yj ¶cie¿ek Cygwina#c"
 
 #: ../src/frontends/xforms/forms/form_print.fd:44
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:45
@@ -1564,9 +1566,8 @@ msgid "Name:|#N"
 msgstr "Nazwa:|#N"
 
 #: ../src/frontends/xforms/forms/form_ref.fd:207
-#, fuzzy
 msgid "Label:|#e"
-msgstr "Etykieta:|#L"
+msgstr "Etykieta:|#E"
 
 #: ../src/frontends/xforms/forms/form_ref.fd:243
 msgid "Go to|#G"
@@ -1635,7 +1636,6 @@ msgid "Ignore|#I"
 msgstr "Ignoruj|#I"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:170
-#, fuzzy
 msgid "Ignore All|#g"
 msgstr "Ignoruj|#I"
 
@@ -1673,7 +1673,6 @@ msgstr "D³uga tabela|#t"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:284
 #: ../src/frontends/xforms/forms/form_tabular.fd:1200
-#, fuzzy
 msgid "Rotate 90 deg|#9"
 msgstr "Obróæ o 90°|#9"
 
@@ -1703,7 +1702,7 @@ msgstr "Specjalna kolumna"
 #: ../src/frontends/xforms/forms/form_tabular.fd:416
 #: ../src/frontends/xforms/forms/form_tabular.fd:1128
 msgid " |#W"
-msgstr ""
+msgstr " |#W"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:434
 #: ../src/frontends/xforms/forms/form_tabular.fd:874
@@ -1754,7 +1753,7 @@ msgstr "Argument LaTeX-a|#A:"
 #: ../src/frontends/xforms/forms/form_tabular.fd:706
 #: ../src/frontends/xforms/forms/form_tabular.fd:1218
 msgid " |#L"
-msgstr ""
+msgstr " |#L"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:724
 #: ../src/frontends/xforms/forms/form_tabular.fd:1236
@@ -1862,7 +1861,7 @@ msgstr "Zaznaczenie:|#Z"
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:116
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:110
 msgid "Thesaurus entries:"
-msgstr ""
+msgstr "Synonimy:"
 
 #: ../src/frontends/xforms/forms/form_url.fd:44
 msgid "URL:|#U"
@@ -1906,9 +1905,8 @@ msgid "Use &NatBib"
 msgstr "U¿yj &NatBib"
 
 #: ../src/frontends/qt2/ui/BiblioModuleBase.ui:82
-#, fuzzy
 msgid "Citation &Style:"
-msgstr "Styl cytowania:"
+msgstr "&Styl cytowania:"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:38
 #: src/frontends/qt2/QDocumentDialog.C:66
@@ -2161,7 +2159,7 @@ msgstr "Autorzy"
 #: ../src/frontends/qt2/ui/QAboutDialogBase.ui:141
 #: ../lib/layouts/apa.layout:192
 msgid "Copyright"
-msgstr ""
+msgstr "Copyright"
 
 #: ../src/frontends/qt2/ui/QAboutDialogBase.ui:213
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:204
@@ -2209,21 +2207,18 @@ msgid "Bibliography Entry"
 msgstr "Pozycja bibliografii"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:60
-#, fuzzy
 msgid "&Key:"
-msgstr "&Klucz"
+msgstr "&Klucz:"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:68
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:86
-#, fuzzy
 msgid "The bibliography key"
-msgstr "Klucze bibliografii:|#K"
+msgstr "Klucz bibliografii"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:114
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:176
-#, fuzzy
 msgid "&Label:"
-msgstr "&Etykieta"
+msgstr "&Etykieta:"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:122
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:140
@@ -2255,9 +2250,8 @@ msgstr "&OK"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:22
 #: src/frontends/qt2/QBibtex.C:39 src/frontends/xforms/FormBibtex.C:37
-#, fuzzy
 msgid "BibTeX Bibliography"
-msgstr "Bibliografia"
+msgstr "Bibliografia BibTeX"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:45
 msgid "Databa&ses"
@@ -2476,7 +2470,7 @@ msgstr "&Przywróæ"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:146
 msgid "Browse the available bibliography entries"
-msgstr ""
+msgstr "Przegl±daj dostêpne wpisy bibliografii"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:157
 msgid "Regular E&xpression"
@@ -2512,19 +2506,16 @@ msgid "New Item"
 msgstr "Nowy wpis"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:226
-#, fuzzy
 msgid "Available bibliography entries"
-msgstr "Ustawienia bibliografii"
+msgstr "Dostêpne wpisy bibliografii"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:267
-#, fuzzy
 msgid "Add citation of the selected bibliography entry"
-msgstr "Informacja na temat wybranej pozycji"
+msgstr "Dodaj cytowanie wybranej pozycji bibliografii"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:293
-#, fuzzy
 msgid "Remove citation of the selected bibliography entry"
-msgstr "Informacja na temat wybranej pozycji"
+msgstr "Usuñ cytowanie wybranej pozycji bibliografii"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:319
 msgid "Move the selected citation up"
@@ -2551,7 +2542,6 @@ msgid "Info"
 msgstr "Informacja"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:445
-#, fuzzy
 msgid "Bibliography entry"
 msgstr "Pozycja bibliografii"
 
@@ -2670,7 +2660,6 @@ msgid "Show ERT button only"
 msgstr "Poka¿ tylko przycisk wstawki ERT"
 
 #: ../src/frontends/qt2/ui/QERTDialogBase.ui:94
-#, fuzzy
 msgid "O&pen"
 msgstr "&Otwórz"
 
@@ -2812,7 +2801,7 @@ msgstr "&Ca³a szeroko¶æ"
 
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:230
 msgid "Span columns in multi-column documents"
-msgstr ""
+msgstr "Ca³a szeroko¶æ w dokumencie wielokolumnowym"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:55
 msgid "&Graphics"
@@ -2879,7 +2868,7 @@ msgstr "Skala:"
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:232
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:273
 msgid "Percentage to scale by in LyX"
-msgstr ""
+msgstr "Skala wzglêdna w LyXie"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:339
 msgid "Height of image in output"
@@ -2919,7 +2908,6 @@ msgid "Angle to rotate image by"
 msgstr "K±t obrotu rysunku"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:552
-#, fuzzy
 msgid "Or&igin:"
 msgstr "Punkt &obrotu:"
 
@@ -2976,7 +2964,7 @@ msgstr "&Podrysunek"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:891
 msgid "Is this just one part of a figure float ?"
-msgstr ""
+msgstr "Czy to jest czê¶æ wstawki?"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:902
 msgid "Don't un&zip on export"
@@ -3120,7 +3108,6 @@ msgid "Set math font"
 msgstr "Ustaw czcionkê matematyczn±"
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:213
-#, fuzzy
 msgid "Insert fraction"
 msgstr "Wstaw u³amek"
 
@@ -3209,7 +3196,7 @@ msgstr "Inne AMS"
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:581
 msgid "Select a page of symbols"
-msgstr ""
+msgstr "Wybór strony symboli"
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:655
 msgid "&Detach panel"
@@ -3280,13 +3267,12 @@ msgid "&Vertical:"
 msgstr "&Pionowe:"
 
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:380
-#, fuzzy
 msgid "Horizontal alignment per column (l,c,r)"
-msgstr "Poziome wyrównanie dla kolumny (t,c,b)"
+msgstr "Poziome wyrównanie dla kolumny (l,c,r)"
 
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:399
 msgid "&Horizontal:"
-msgstr "P&oziome:"
+msgstr "P&oziomo:"
 
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:23
 msgid "Minipage settings"
@@ -3363,7 +3349,6 @@ msgid "Alig&nment:"
 msgstr "&Justowanie:"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:183
-#, fuzzy
 msgid "&Don't indent"
 msgstr "&Bez wciêcia"
 
@@ -3433,12 +3418,10 @@ msgid "&Lines && Pagebreaks"
 msgstr "&Linie i ³amanie stron"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:521
-#, fuzzy
 msgid "Label Width"
 msgstr "Szeroko¶æ etykiety"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:540
-#, fuzzy
 msgid "Lo&ngest label"
 msgstr "&Najd³u¿sza etykieta"
 
@@ -3543,7 +3526,6 @@ msgid "&To:"
 msgstr "&Do:"
 
 #: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:227
-#, fuzzy
 msgid "&From:"
 msgstr "&Z:"
 
@@ -3558,11 +3540,11 @@ msgstr "&Zmieñ"
 
 #: ../src/frontends/qt2/ui/QPrefCygwinPathModule.ui:22
 msgid "Cygwin Paths"
-msgstr ""
+msgstr "¦cie¿ka Cygwina"
 
 #: ../src/frontends/qt2/ui/QPrefCygwinPathModule.ui:66
 msgid "&Use Cygwin-style paths"
-msgstr ""
+msgstr "&U¿yj stylu ¶cie¿ek Cygwina"
 
 #: ../src/frontends/qt2/ui/QPrefCygwinPathModule.ui:74
 #: src/frontends/xforms/FormPreferences.C:2016
@@ -3599,7 +3581,7 @@ msgstr "Wy¶wietlanie &grafiki:"
 
 #: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:104
 msgid "Instant &preview"
-msgstr ""
+msgstr "Natychmiastowy &podgl±d"
 
 #: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:22
 msgid "File Formats"
@@ -3681,7 +3663,6 @@ msgid "Auto &begin"
 msgstr "W³±cz na &pocz±tku"
 
 #: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:140
-#, fuzzy
 msgid "Use b&abel"
 msgstr "U¿yj &babel"
 
@@ -3795,7 +3776,7 @@ msgstr "Potoki serwera Ly&X:"
 
 #: ../src/frontends/qt2/ui/QPrefPathsModule.ui:250
 msgid "&PATH prefix:"
-msgstr ""
+msgstr "&Prefiks ¶cie¿ki:"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:22
 msgid "Printer settings"
@@ -3936,9 +3917,8 @@ msgid "Al&ternative language:"
 msgstr "U¿yj s³ownika &innego jêzyka:"
 
 #: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:132
-#, fuzzy
 msgid "Escape cha&racters:"
-msgstr "&Akceptuj znaki specjalne:"
+msgstr "&Akceptuj znaki:"
 
 #: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:175
 msgid "Personal &dictionary:"
@@ -3953,9 +3933,8 @@ msgid "aspell"
 msgstr "aspell"
 
 #: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:199
-#, fuzzy
 msgid "hspell"
-msgstr "ispell"
+msgstr "hspell"
 
 #: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:238
 msgid "Accept compound &words"
@@ -3967,7 +3946,7 @@ msgstr "&U¿yj kodowania"
 
 #: ../src/frontends/qt2/ui/QPrefUIModule.ui:22
 msgid "UI"
-msgstr ""
+msgstr "UI"
 
 #: ../src/frontends/qt2/ui/QPrefUIModule.ui:56
 msgid "B&rowse..."
@@ -3990,7 +3969,6 @@ msgid "W&heel mouse scroll:"
 msgstr "Skok rolki &myszy:"
 
 #: ../src/frontends/qt2/ui/QPrefUIModule.ui:201
-#, fuzzy
 msgid "Cursor follows &scrollbar"
 msgstr "Kursor &nad±¿a za suwakiem"
 
@@ -4091,9 +4069,8 @@ msgid "Print Destination"
 msgstr "Przeznaczenie"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:409
-#, fuzzy
 msgid "P&rinter:"
-msgstr "&Drukarka"
+msgstr "&Drukarka:"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:417
 msgid "Send output to the printer"
@@ -4114,27 +4091,24 @@ msgid "Cross Reference"
 msgstr "Odno¶nik wewnêtrzny"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:71
-#, fuzzy
 msgid "Update the label list"
-msgstr "Aktualizuj listê sylów"
+msgstr "Aktualizacja listy etykiet"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:89 src/frontends/qt2/QRef.C:127
 msgid "&Goto"
 msgstr "Id¼ &do"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:93
-#, fuzzy
 msgid "Move the document cursor to label"
-msgstr "Przenosi kursor do miejsca odno¶nika w dokumencie"
+msgstr "Przenosi kursor do etykiety"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:106
 msgid "Sort"
 msgstr "Sortuj"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:110
-#, fuzzy
 msgid "Sort labels in alphabetical order"
-msgstr "Sortuj odno¶niki alfabetycznie"
+msgstr "Sortuj etykiety alfabetycznie"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:125
 msgid "<reference>"
@@ -4157,7 +4131,6 @@ msgid "Formatted reference"
 msgstr "Fromatowane odno¶niki"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:165
-#, fuzzy
 msgid "Cross reference as it appears in output"
 msgstr "Odno¶nik jaki pojawi siê na wydruku"
 
@@ -4171,14 +4144,12 @@ msgid "&Name:"
 msgstr "&Nazwa:"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:321
-#, fuzzy
 msgid "Available labels in selected document:"
-msgstr "Dostêpne odno¶niki w wybranym dokumencie:"
+msgstr "Dostêpne etykiety w wybranym dokumencie:"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:343
-#, fuzzy
 msgid "Available labels"
-msgstr "Dostêpne szablony"
+msgstr "Dostêpne etykiety"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:354
 msgid "&Document:"
@@ -4273,9 +4244,8 @@ msgid "Ignore this word"
 msgstr "Ignoruj s³owo"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:105
-#, fuzzy
 msgid "I&gnore All"
-msgstr "Ignoruj"
+msgstr "I&gnoruj wszystko"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:109
 msgid "Accept word for this session"
@@ -4294,9 +4264,8 @@ msgid "Current word"
 msgstr "Bie¿±ce s³owo"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:221
-#, fuzzy
 msgid "Unknown word:"
-msgstr "Nieznany:"
+msgstr "Nieznane s³owo:"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:263
 msgid "Replace with selected word"
@@ -4365,7 +4334,6 @@ msgid "Append row (below)"
 msgstr "Do³±cz wiersz (poni¿ej)"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:265
-#, fuzzy
 msgid "Del&ete"
 msgstr "&Usuñ"
 
@@ -4386,7 +4354,6 @@ msgid "Width unit"
 msgstr "Jednostka szeroko¶ci"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:354
-#, fuzzy
 msgid "Fixed width of the column"
 msgstr "Sta³a szeroko¶æ kolumny"
 
@@ -4395,7 +4362,6 @@ msgid "Vertical alignment for fixed width columns"
 msgstr "Pionowe wyrównanie dla kolumn o sta³ej szeroko¶ci"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:411
-#, fuzzy
 msgid "Rotate 90 deg"
 msgstr "Obróæ o 90°"
 
@@ -4404,7 +4370,6 @@ msgid "&Rotate Table"
 msgstr "&Obrót tabeli"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:438
-#, fuzzy
 msgid "Rotate the table by 90 deg"
 msgstr "Obraca tabelê o 90°"
 
@@ -4413,7 +4378,6 @@ msgid "Rotate &Cell"
 msgstr "Obrót &komórki"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:453
-#, fuzzy
 msgid "Rotate this cell by 90 deg"
 msgstr "Obraca komórkê o 90°"
 
@@ -4463,7 +4427,7 @@ msgstr "Zastosuj &d³uga tabelê"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:922
 msgid "Select for tables that span multiple pages"
-msgstr ""
+msgstr "Zaznacz dla d³ugiej wielostronicowej tabeli"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:937
 msgid "Settings"
@@ -4569,17 +4533,15 @@ msgid "&Rescan"
 msgstr "&Od¶wie¿"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:184
-#, fuzzy
 msgid "Rebuild the file lists"
-msgstr "Tworzy nowe pliki spisu"
+msgstr "Od¶wie¿a listê plików"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:199
 msgid "&View"
 msgstr "&Podgl±d"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
+msgid "Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 "Wy¶wietla zawarto¶æ wybranego pliku. Mo¿liwe tylko gdy pliki s± wy¶wietlone "
 "ze ¶cie¿k±"
@@ -4592,7 +4554,7 @@ msgstr "Zamyka okno"
 #: ../lib/layouts/aapaper.layout:77 ../lib/layouts/aapaper.inc:113
 #: src/frontends/qt2/QThesaurus.C:27 src/frontends/xforms/FormThesaurus.C:35
 msgid "Thesaurus"
-msgstr ""
+msgstr "S³ownik synonimów"
 
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:60
 msgid "&Keyword:"
@@ -4604,7 +4566,7 @@ msgstr "Wpis"
 
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:131
 msgid "Select a related word"
-msgstr ""
+msgstr "Wybierz odpowiednie slowo"
 
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:157
 msgid "&Selection:"
@@ -4632,9 +4594,8 @@ msgid "Insert URL"
 msgstr "Wstaw adres URL"
 
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:45
-#, fuzzy
 msgid "&URL:"
-msgstr "&URL"
+msgstr "&URL:"
 
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:53
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:94
@@ -4650,11 +4611,11 @@ msgstr "Nazwa zwi±zana z adresem URL"
 
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:120
 msgid "&Generate hyperlink"
-msgstr ""
+msgstr "&Generuj hyperlink"
 
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:124
 msgid "Output as a hyperlink ?"
-msgstr ""
+msgstr "Wyj¶cie jako hyperlink?"
 
 #: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:22
 msgid "Version control log"
@@ -4939,7 +4900,7 @@ msgstr "Dodatek"
 
 #: ../lib/layouts/IEEEtran.layout:437
 msgid "Appendices"
-msgstr ""
+msgstr "Dodatki"
 
 #: ../lib/layouts/IEEEtran.layout:460
 msgid "Biography"
@@ -5059,7 +5020,7 @@ msgstr ""
 #: ../lib/layouts/aa.layout:70 ../lib/layouts/aa.layout:166
 #: ../lib/layouts/svjour.inc:260
 msgid "Mail"
-msgstr ""
+msgstr "List"
 
 #: ../lib/layouts/aa.layout:72 ../lib/layouts/aa.layout:295
 #: ../lib/layouts/aapaper.layout:79 ../lib/layouts/aapaper.layout:167
@@ -5165,19 +5126,16 @@ msgid "NoteToEditor"
 msgstr "UwagaDoEdytora"
 
 #: ../lib/layouts/aastex.layout:121 ../lib/layouts/aastex.layout:541
-#, fuzzy
 msgid "Facility"
-msgstr "Fakt"
+msgstr ""
 
 #: ../lib/layouts/aastex.layout:123 ../lib/layouts/aastex.layout:567
-#, fuzzy
 msgid "Objectname"
-msgstr "Octave"
+msgstr ""
 
 #: ../lib/layouts/aastex.layout:125 ../lib/layouts/aastex.layout:594
-#, fuzzy
 msgid "Dataset"
-msgstr "Data"
+msgstr ""
 
 #: ../lib/layouts/aastex.layout:526
 msgid "FigCaption"
@@ -5304,7 +5262,7 @@ msgstr ""
 #: ../lib/layouts/broadway.layout:216 ../lib/layouts/egs.layout:261
 #: ../lib/layouts/hollywood.layout:311 ../lib/layouts/lyxmacros.inc:101
 msgid "Right Address"
-msgstr ""
+msgstr "Adres po prawej"
 
 #: ../lib/layouts/chess.layout:38
 msgid "Mainline"
@@ -5340,11 +5298,11 @@ msgstr ""
 
 #: ../lib/layouts/chess.layout:128
 msgid "ChessBoard"
-msgstr ""
+msgstr "Szachownica"
 
 #: ../lib/layouts/chess.layout:141
 msgid "BoardCentered"
-msgstr ""
+msgstr "[szachownica]"
 
 #: ../lib/layouts/chess.layout:156
 msgid "HighLight"
@@ -5361,7 +5319,7 @@ msgstr ""
 #: ../lib/layouts/cl2emult.layout:71 ../lib/layouts/llncs.layout:233
 #: ../lib/layouts/svjour.inc:232
 msgid "Institute"
-msgstr "Instytu³"
+msgstr "Instytucja"
 
 #: ../lib/layouts/cv.layout:57
 msgid "SubSection"
@@ -5389,14 +5347,14 @@ msgstr "Mój_Adres"
 #: ../lib/layouts/dinbrief.layout:31 ../lib/layouts/heb-letter.layout:12
 #: ../lib/layouts/stdletter.inc:45
 msgid "Send To Address"
-msgstr ""
+msgstr "Wy¶lij Na Adres"
 
 #: ../lib/layouts/dinbrief.layout:48 ../lib/layouts/g-brief-en.layout:517
 #: ../lib/layouts/g-brief2.layout:863 ../lib/layouts/heb-letter.layout:16
 #: ../lib/layouts/scrlettr.layout:72 ../lib/layouts/scrlttr2.layout:102
 #: ../lib/layouts/stdletter.inc:59
 msgid "Opening"
-msgstr ""
+msgstr "Rozpoczêcie"
 
 #: ../lib/layouts/dinbrief.layout:61 ../lib/layouts/g-brief-en.layout:73
 #: ../lib/layouts/g-brief2.layout:211 ../lib/layouts/heb-letter.layout:24
@@ -5410,33 +5368,33 @@ msgstr "Podpis"
 #: ../lib/layouts/scrlettr.layout:83 ../lib/layouts/scrlttr2.layout:124
 #: ../lib/layouts/stdletter.inc:106
 msgid "Closing"
-msgstr ""
+msgstr "Zakoñczenie"
 
 #: ../lib/layouts/dinbrief.layout:87 ../lib/layouts/stdletter.inc:145
 msgid "encl"
-msgstr ""
+msgstr "Za³."
 
 #: ../lib/layouts/dinbrief.layout:100
 msgid "ps"
-msgstr ""
+msgstr "PS"
 
 #: ../lib/layouts/dinbrief.layout:122 ../lib/layouts/g-brief-en.layout:566
 #: ../lib/layouts/g-brief2.layout:911 ../lib/layouts/stdletter.inc:129
 #: src/lengthcommon.C:35
 msgid "cc"
-msgstr ""
+msgstr "DW"
 
 #: ../lib/layouts/dinbrief.layout:135 ../lib/layouts/g-brief-de.layout:487
 msgid "Betreff"
-msgstr ""
+msgstr "Odpowied¼"
 
 #: ../lib/layouts/dinbrief.layout:160
 msgid "Stadt"
-msgstr ""
+msgstr "Miasto"
 
 #: ../lib/layouts/dinbrief.layout:180 ../lib/layouts/g-brief-de.layout:467
 msgid "Datum"
-msgstr ""
+msgstr "Data"
 
 #: ../lib/layouts/egs.layout:103 ../lib/layouts/kluwer.layout:91
 #: ../lib/layouts/linuxdoc.layout:170 ../lib/layouts/llncs.layout:85
@@ -5462,7 +5420,7 @@ msgstr ""
 
 #: ../lib/layouts/egs.layout:312 ../lib/layouts/obsolete.inc:10
 msgid "LaTeX Title"
-msgstr ""
+msgstr "Tytu³ LaTeX"
 
 #: ../lib/layouts/egs.layout:362
 msgid "Affil"
@@ -5494,13 +5452,12 @@ msgid "LyX-Code"
 msgstr ""
 
 #: ../lib/layouts/elsart.layout:136
-#, fuzzy
 msgid "Author Address"
-msgstr "AdresAutora"
+msgstr "Adres Autora"
 
 #: ../lib/layouts/elsart.layout:151 ../lib/layouts/revtex4.layout:184
 msgid "Author Email"
-msgstr "Email_Autora"
+msgstr "Email Autora"
 
 #: ../lib/layouts/elsart.layout:170 ../lib/layouts/revtex4.layout:199
 msgid "Author URL"
@@ -5528,23 +5485,23 @@ msgstr ""
 
 #: ../lib/layouts/entcs.layout:70
 msgid "Keyword"
-msgstr ""
+msgstr "S³owoKluczowe"
 
 #: ../lib/layouts/foils.layout:40
 msgid "Foilhead"
-msgstr ""
+msgstr "Tytu³Folii"
 
 #: ../lib/layouts/foils.layout:63
 msgid "ShortFoilhead"
-msgstr ""
+msgstr "SkróconyTytu³Folii"
 
 #: ../lib/layouts/foils.layout:70
 msgid "Rotatefoilhead"
-msgstr ""
+msgstr "ObróconyTytu³Folii"
 
 #: ../lib/layouts/foils.layout:77
 msgid "ShortRotatefoilhead"
-msgstr ""
+msgstr "SkróconyObróconyTytu³Folii"
 
 #: ../lib/layouts/foils.layout:88
 msgid "TickList"
@@ -5556,15 +5513,15 @@ msgstr ""
 
 #: ../lib/layouts/foils.layout:173
 msgid "My Logo"
-msgstr ""
+msgstr "Moje Logo"
 
 #: ../lib/layouts/foils.layout:193
 msgid "Restriction"
-msgstr ""
+msgstr "Ograniczenia"
 
 #: ../lib/layouts/foils.layout:215
 msgid "Right Footer"
-msgstr ""
+msgstr "Prawa Stopka"
 
 #: ../lib/layouts/foils.layout:320 ../lib/layouts/siamltex.layout:249
 #: ../lib/layouts/amsmaths.inc:93
@@ -5607,7 +5564,7 @@ msgstr ""
 
 #: ../lib/layouts/g-brief-de.layout:93
 msgid "Strasse"
-msgstr ""
+msgstr "Ulica"
 
 #: ../lib/layouts/g-brief-de.layout:113
 msgid "Zusatz"
@@ -5615,7 +5572,7 @@ msgstr ""
 
 #: ../lib/layouts/g-brief-de.layout:133
 msgid "Ort"
-msgstr ""
+msgstr "Miejscowo¶æ"
 
 #: ../lib/layouts/g-brief-de.layout:153
 msgid "Land"
@@ -5623,60 +5580,60 @@ msgstr ""
 
 #: ../lib/layouts/g-brief-de.layout:173
 msgid "RetourAdresse"
-msgstr ""
+msgstr "AdresZwrotny"
 
 #: ../lib/layouts/g-brief-de.layout:194
 msgid "MeinZeichen"
-msgstr ""
+msgstr "MójZnak"
 
 #: ../lib/layouts/g-brief-de.layout:214
 msgid "IhrZeichen"
-msgstr ""
+msgstr "WaszZnak"
 
 #: ../lib/layouts/g-brief-de.layout:236
 msgid "IhrSchreiben"
-msgstr ""
+msgstr "WaszePismo"
 
 #: ../lib/layouts/g-brief-de.layout:261
 msgid "Telefon"
-msgstr ""
+msgstr "Telefon"
 
 #: ../lib/layouts/g-brief-de.layout:282 ../lib/layouts/g-brief-en.layout:282
 msgid "Telefax"
-msgstr ""
+msgstr "Telefax"
 
 #: ../lib/layouts/g-brief-de.layout:302 ../lib/layouts/g-brief-en.layout:302
 msgid "Telex"
-msgstr ""
+msgstr "Telex"
 
 #: ../lib/layouts/g-brief-de.layout:323 ../lib/layouts/g-brief-en.layout:323
 msgid "EMail"
-msgstr ""
+msgstr "EMail"
 
 #: ../lib/layouts/g-brief-de.layout:343 ../lib/layouts/g-brief-en.layout:343
 msgid "HTTP"
-msgstr ""
+msgstr "HTTP"
 
 #: ../lib/layouts/g-brief-de.layout:363 ../lib/layouts/g-brief-en.layout:363
 #: ../lib/layouts/scrlttr2.layout:227
 msgid "Bank"
-msgstr ""
+msgstr "Bank"
 
 #: ../lib/layouts/g-brief-de.layout:384
 msgid "BLZ"
-msgstr ""
+msgstr "NrRozlBanku"
 
 #: ../lib/layouts/g-brief-de.layout:404
 msgid "Konto"
-msgstr ""
+msgstr "NrKonta"
 
 #: ../lib/layouts/g-brief-de.layout:424
 msgid "Postvermerk"
-msgstr ""
+msgstr "UwagiDlaPoczty"
 
 #: ../lib/layouts/g-brief-de.layout:445
 msgid "Adresse"
-msgstr ""
+msgstr "Adres"
 
 #: ../lib/layouts/g-brief-de.layout:510
 msgid "Anrede"
@@ -5692,16 +5649,16 @@ msgstr ""
 
 #: ../lib/layouts/g-brief-de.layout:584
 msgid "Gruss"
-msgstr ""
+msgstr "Pozdrowienia"
 
 #: ../lib/layouts/g-brief-en.layout:31 ../lib/layouts/g-brief2.layout:33
 #: ../lib/layouts/scrlettr.layout:50
 msgid "Letter"
-msgstr ""
+msgstr "List"
 
 #: ../lib/layouts/g-brief-en.layout:93
 msgid "Street"
-msgstr ""
+msgstr "Ulica"
 
 #: ../lib/layouts/g-brief-en.layout:113
 msgid "Addition"
@@ -5709,7 +5666,7 @@ msgstr ""
 
 #: ../lib/layouts/g-brief-en.layout:133
 msgid "Town"
-msgstr ""
+msgstr "Miasto"
 
 #: ../lib/layouts/g-brief-en.layout:153
 msgid "State"
@@ -5717,39 +5674,39 @@ msgstr ""
 
 #: ../lib/layouts/g-brief-en.layout:173 ../lib/layouts/g-brief2.layout:693
 msgid "ReturnAddress"
-msgstr ""
+msgstr "AdresZwrotny"
 
 #: ../lib/layouts/g-brief-en.layout:194 ../lib/layouts/g-brief2.layout:714
 msgid "MyRef"
-msgstr ""
+msgstr "MójZnak"
 
 #: ../lib/layouts/g-brief-en.layout:214 ../lib/layouts/g-brief2.layout:734
 msgid "YourRef"
-msgstr ""
+msgstr "WaszZnak"
 
 #: ../lib/layouts/g-brief-en.layout:236 ../lib/layouts/g-brief2.layout:756
 msgid "YourMail"
-msgstr ""
+msgstr "WaszePismo"
 
 #: ../lib/layouts/g-brief-en.layout:261
 msgid "Phone"
-msgstr ""
+msgstr "Telefon"
 
 #: ../lib/layouts/g-brief-en.layout:384
 msgid "BankCode"
-msgstr ""
+msgstr "NrRozlBanku"
 
 #: ../lib/layouts/g-brief-en.layout:404
 msgid "BankAccount"
-msgstr ""
+msgstr "NrKonta"
 
 #: ../lib/layouts/g-brief-en.layout:424 ../lib/layouts/g-brief2.layout:777
 msgid "PostalComment"
-msgstr ""
+msgstr "UwagiDlaPoczty"
 
 #: ../lib/layouts/g-brief-en.layout:446
 msgid "PostalCommend"
-msgstr ""
+msgstr "UwagiDlaPoczty"
 
 #: ../lib/layouts/g-brief-en.layout:494 ../lib/layouts/g-brief2.layout:840
 msgid "Reference"
@@ -5757,150 +5714,131 @@ msgstr "Odno¶nik"
 
 #: ../lib/layouts/g-brief-en.layout:543 ../lib/layouts/g-brief2.layout:888
 msgid "Encl."
-msgstr ""
+msgstr "Za³."
 
 #: ../lib/layouts/g-brief2.layout:75
-#, fuzzy
 msgid "NameRowA"
-msgstr "Nazwa:"
+msgstr "NazwaWierszA"
 
 #: ../lib/layouts/g-brief2.layout:95
-#, fuzzy
 msgid "NameRowB"
-msgstr "Nazwa:"
+msgstr "NazwaWierszB"
 
 #: ../lib/layouts/g-brief2.layout:114
-#, fuzzy
 msgid "NameRowC"
-msgstr "Nazwa:"
+msgstr "NazwaWierszC"
 
 #: ../lib/layouts/g-brief2.layout:133
-#, fuzzy
 msgid "NameRowD"
-msgstr "Nazwa:"
+msgstr "NazwaWierszD"
 
 #: ../lib/layouts/g-brief2.layout:152
-#, fuzzy
 msgid "NameRowE"
-msgstr "Nazwa:"
+msgstr "NazwaWierszE"
 
 #: ../lib/layouts/g-brief2.layout:171
-#, fuzzy
 msgid "NameRowF"
-msgstr "Nazwa:"
+msgstr "NazwaWierszF"
 
 #: ../lib/layouts/g-brief2.layout:190
-#, fuzzy
 msgid "NameRowG"
-msgstr "Nazwa:"
+msgstr "NazwaWierszG"
 
 #: ../lib/layouts/g-brief2.layout:230
-#, fuzzy
 msgid "AddressRowA"
-msgstr "Adres"
+msgstr "AdresWierszA"
 
 #: ../lib/layouts/g-brief2.layout:250
-#, fuzzy
 msgid "AddressRowB"
-msgstr "Adres"
+msgstr "AdresWierszB"
 
 #: ../lib/layouts/g-brief2.layout:269
-#, fuzzy
 msgid "AddressRowC"
-msgstr "Adres"
+msgstr "AdresWierszC"
 
 #: ../lib/layouts/g-brief2.layout:288
-#, fuzzy
 msgid "AddressRowD"
-msgstr "Adres"
+msgstr "AdresWierszD"
 
 #: ../lib/layouts/g-brief2.layout:307
-#, fuzzy
 msgid "AddressRowE"
-msgstr "Adres"
+msgstr "AdresWierszE"
 
 #: ../lib/layouts/g-brief2.layout:326
-#, fuzzy
 msgid "AddressRowF"
-msgstr "Adres"
+msgstr "AdresWierszF"
 
 #: ../lib/layouts/g-brief2.layout:345
-#, fuzzy
 msgid "TelephoneRowA"
-msgstr "Telefon"
+msgstr "TelefonWierszA"
 
 #: ../lib/layouts/g-brief2.layout:365
-#, fuzzy
 msgid "TelephoneRowB"
-msgstr "Telefon"
+msgstr "TelefonWierszB"
 
 #: ../lib/layouts/g-brief2.layout:384
-#, fuzzy
 msgid "TelephoneRowC"
-msgstr "Telefon"
+msgstr "TelefonWierszC"
 
 #: ../lib/layouts/g-brief2.layout:403
-#, fuzzy
 msgid "TelephoneRowD"
-msgstr "Usuñ wiersz|i"
+msgstr "TelefonWierszD"
 
 #: ../lib/layouts/g-brief2.layout:422
-#, fuzzy
 msgid "TelephoneRowE"
-msgstr "Telefon"
+msgstr "TelefonWierszE"
 
 #: ../lib/layouts/g-brief2.layout:441
-#, fuzzy
 msgid "TelephoneRowF"
-msgstr "Telefon"
+msgstr "TelefonWierszF"
 
 #: ../lib/layouts/g-brief2.layout:460
 msgid "InternetRowA"
-msgstr ""
+msgstr "InternetWierszA"
 
 #: ../lib/layouts/g-brief2.layout:480
 msgid "InternetRowB"
-msgstr ""
+msgstr "InternetWierszB"
 
 #: ../lib/layouts/g-brief2.layout:499
 msgid "InternetRowC"
-msgstr ""
+msgstr "InternetWierszD"
 
 #: ../lib/layouts/g-brief2.layout:518
 msgid "InternetRowD"
-msgstr ""
+msgstr "InternetWierszD"
 
 #: ../lib/layouts/g-brief2.layout:537
 msgid "InternetRowE"
-msgstr ""
+msgstr "InternetWierszE"
 
 #: ../lib/layouts/g-brief2.layout:556
 msgid "InternetRowF"
-msgstr ""
+msgstr "InternetWierszF"
 
 #: ../lib/layouts/g-brief2.layout:575
 msgid "BankRowA"
-msgstr ""
+msgstr "BankWierszA"
 
 #: ../lib/layouts/g-brief2.layout:595
 msgid "BankRowB"
-msgstr ""
+msgstr "BankWierszB"
 
 #: ../lib/layouts/g-brief2.layout:614
 msgid "BankRowC"
-msgstr ""
+msgstr "BankWierszC"
 
 #: ../lib/layouts/g-brief2.layout:633
 msgid "BankRowD"
-msgstr ""
+msgstr "BankWierszD"
 
 #: ../lib/layouts/g-brief2.layout:652
 msgid "BankRowE"
-msgstr ""
+msgstr "BankWierszE"
 
 #: ../lib/layouts/g-brief2.layout:671
 msgid "BankRowF"
-msgstr ""
+msgstr "BankWierszF"
 
 #: ../lib/layouts/heb-article.layout:16 ../lib/layouts/scrlttr2.layout:347
 #: ../lib/layouts/db_lyxmacros.inc:20 ../lib/layouts/lyxmacros.inc:47
@@ -5913,7 +5851,7 @@ msgstr ""
 
 #: ../lib/layouts/hollywood.layout:55 src/frontends/xforms/Menubar_pimpl.C:256
 msgid "More"
-msgstr ""
+msgstr "Wiêcej"
 
 #: ../lib/layouts/hollywood.layout:83
 msgid "FADE IN:"
@@ -5953,7 +5891,7 @@ msgstr ""
 
 #: ../lib/layouts/hollywood.layout:298
 msgid "Scene"
-msgstr ""
+msgstr "Scena"
 
 #: ../lib/layouts/hollywood.layout:353
 msgid "FADE OUT:"
@@ -5992,7 +5930,7 @@ msgstr ""
 
 #: ../lib/layouts/llncs.layout:185
 msgid "TOC Title"
-msgstr ""
+msgstr "Tytu³ Spisu tre¶ci"
 
 #: ../lib/layouts/llncs.layout:217 ../lib/layouts/svjour.inc:224
 msgid "Author Running"
@@ -6000,7 +5938,7 @@ msgstr ""
 
 #: ../lib/layouts/llncs.layout:225
 msgid "TOC Author"
-msgstr ""
+msgstr "Autor Spisu tre¶ci"
 
 #: ../lib/layouts/llncs.layout:411 ../lib/layouts/svjour.inc:479
 msgid "Property"
@@ -6015,24 +5953,20 @@ msgid "Solution"
 msgstr "Rozwi±zanie"
 
 #: ../lib/layouts/memoir.layout:31
-#, fuzzy
 msgid "Chapterprecis"
-msgstr "Rozdzia³"
+msgstr ""
 
 #: ../lib/layouts/memoir.layout:52
-#, fuzzy
 msgid "Epigraph"
-msgstr "Biografia"
+msgstr ""
 
 #: ../lib/layouts/memoir.layout:64
-#, fuzzy
 msgid "Poemtitle"
-msgstr "Tytu³Skrócony"
+msgstr ""
 
 #: ../lib/layouts/memoir.layout:82
-#, fuzzy
 msgid "Poemtitle*"
-msgstr "Tytu³Skrócony"
+msgstr ""
 
 #: ../lib/layouts/paper.layout:143
 msgid "SubTitle"
@@ -6048,7 +5982,7 @@ msgstr ""
 
 #: ../lib/layouts/revtex4.layout:109
 msgid "Preprint"
-msgstr "Przedruk"
+msgstr ""
 
 #: ../lib/layouts/revtex4.layout:236
 msgid "PACS"
@@ -6061,15 +5995,15 @@ msgstr ""
 
 #: ../lib/layouts/scrlettr.layout:95 ../lib/layouts/scrlttr2.layout:132
 msgid "PS"
-msgstr ""
+msgstr "PS"
 
 #: ../lib/layouts/scrlettr.layout:106 ../lib/layouts/scrlttr2.layout:140
 msgid "CC"
-msgstr ""
+msgstr "DW"
 
 #: ../lib/layouts/scrlettr.layout:121 ../lib/layouts/scrlttr2.layout:148
 msgid "Encl"
-msgstr ""
+msgstr "Za³."
 
 #: ../lib/layouts/scrlettr.layout:164 ../lib/layouts/scrlttr2.layout:194
 #: ../lib/layouts/stdletter.inc:179
@@ -6082,7 +6016,7 @@ msgstr "Miejsce"
 
 #: ../lib/layouts/scrlettr.layout:185 ../lib/layouts/scrlttr2.layout:259
 msgid "Backaddress"
-msgstr ""
+msgstr "AdresZwrotny"
 
 #: ../lib/layouts/scrlettr.layout:192 ../lib/layouts/scrlttr2.layout:267
 msgid "Specialmail"
@@ -6091,7 +6025,7 @@ msgstr ""
 #: ../lib/layouts/scrlettr.layout:199 ../lib/layouts/scrlttr2.layout:275
 #: ../lib/layouts/stdletter.inc:162
 msgid "Location"
-msgstr ""
+msgstr "Lokalizacja"
 
 #: ../lib/layouts/scrlettr.layout:213 ../lib/layouts/scrlttr2.layout:291
 #: ../lib/layouts/scrclass.inc:180
@@ -6100,15 +6034,15 @@ msgstr "Temat"
 
 #: ../lib/layouts/scrlettr.layout:220 ../lib/layouts/scrlttr2.layout:299
 msgid "Yourref"
-msgstr ""
+msgstr "WaszZnak"
 
 #: ../lib/layouts/scrlettr.layout:235 ../lib/layouts/scrlttr2.layout:315
 msgid "Yourmail"
-msgstr ""
+msgstr "WaszList"
 
 #: ../lib/layouts/scrlettr.layout:242 ../lib/layouts/scrlttr2.layout:323
 msgid "Myref"
-msgstr ""
+msgstr "MójZnak"
 
 #: ../lib/layouts/scrlettr.layout:249 ../lib/layouts/scrlttr2.layout:331
 msgid "Customer"
@@ -6119,36 +6053,32 @@ msgid "Invoice"
 msgstr "Faktura"
 
 #: ../lib/layouts/scrlttr2.layout:79
-#, fuzzy
 msgid "NextAddress"
-msgstr "Adres"
+msgstr "NastAdres"
 
 #: ../lib/layouts/scrlttr2.layout:186
-#, fuzzy
 msgid "SenderAddress"
-msgstr "Adres"
+msgstr "AdresNadawcy"
 
 #: ../lib/layouts/scrlttr2.layout:202
 msgid "Fax"
-msgstr ""
+msgstr "Fax"
 
 #: ../lib/layouts/scrlttr2.layout:211
-#, fuzzy
 msgid "E-Mail"
-msgstr "Email"
+msgstr "E-mail"
 
 #: ../lib/layouts/scrlttr2.layout:235
-#, fuzzy
 msgid "Logo"
-msgstr "Log"
+msgstr "Logo"
 
 #: ../lib/layouts/seminar.layout:49
 msgid "LandscapeSlide"
-msgstr ""
+msgstr "SlajdPoziomo"
 
 #: ../lib/layouts/seminar.layout:59
 msgid "PortraitSlide"
-msgstr ""
+msgstr "SlajdPionowo"
 
 #: ../lib/layouts/seminar.layout:68 ../lib/layouts/slides.layout:92
 msgid "Slide"
@@ -6160,23 +6090,23 @@ msgstr "Slajd*"
 
 #: ../lib/layouts/seminar.layout:76
 msgid "SlideHeading"
-msgstr ""
+msgstr "Tytu³Slajdu"
 
 #: ../lib/layouts/seminar.layout:81
 msgid "SlideSubHeading"
-msgstr ""
+msgstr "Podtytu³Slajdu"
 
 #: ../lib/layouts/seminar.layout:86
 msgid "ListOfSlides"
-msgstr ""
+msgstr "ListaSlajdów"
 
 #: ../lib/layouts/seminar.layout:95
 msgid "SlideContents"
-msgstr ""
+msgstr "Zawarto¶æSlajdu"
 
 #: ../lib/layouts/seminar.layout:104
 msgid "ProgressContents"
-msgstr ""
+msgstr "PostêpZawarto¶ci"
 
 #: ../lib/layouts/siamltex.layout:96 ../lib/layouts/aguplus.inc:59
 #: ../lib/layouts/stdstarsections.inc:56
@@ -6193,11 +6123,11 @@ msgstr ""
 
 #: ../lib/layouts/slides.layout:215
 msgid "InvisibleText"
-msgstr ""
+msgstr "TekstNiewidzialny"
 
 #: ../lib/layouts/slides.layout:244
 msgid "VisibleText"
-msgstr ""
+msgstr "TekstWidzialny"
 
 #: ../lib/layouts/slides.layout:295
 msgid "End All Slides"
@@ -6329,9 +6259,8 @@ msgid "Scrap"
 msgstr ""
 
 #: ../lib/layouts/scrclass.inc:108
-#, fuzzy
 msgid "Addpart"
-msgstr "Dodaj"
+msgstr ""
 
 #: ../lib/layouts/scrclass.inc:114
 msgid "Addchap"
@@ -6378,14 +6307,12 @@ msgid "Extratitle"
 msgstr ""
 
 #: ../lib/layouts/scrclass.inc:246
-#, fuzzy
 msgid "Captionabove"
-msgstr "Podpis"
+msgstr "PodpisPowy¿ej"
 
 #: ../lib/layouts/scrclass.inc:252
-#, fuzzy
 msgid "Captionbelow"
-msgstr "Podpis"
+msgstr "PodpisPoni¿ej"
 
 #: ../lib/layouts/scrclass.inc:258
 msgid "Dictum"
@@ -6448,7 +6375,6 @@ msgid "Basque"
 msgstr "Baskijski"
 
 #: ../lib/languages:9
-#, fuzzy
 msgid "Portuguese (Brazil)"
 msgstr "Portugalski"
 
@@ -6469,9 +6395,8 @@ msgid "Canadian"
 msgstr "Kanadyjski"
 
 #: ../lib/languages:14
-#, fuzzy
 msgid "French Canadian"
-msgstr "Kanadyjski"
+msgstr "Francuski (Kanada)"
 
 #: ../lib/languages:15
 msgid "Catalan"
@@ -6515,11 +6440,11 @@ msgstr "Francuski"
 
 #: ../lib/languages:26
 msgid "French (GUTenberg)"
-msgstr ""
+msgstr "Francuski (GUTenberg)"
 
 #: ../lib/languages:27
 msgid "Galician"
-msgstr ""
+msgstr "Galicyjski"
 
 #: ../lib/languages:30
 msgid "German"
@@ -6527,7 +6452,7 @@ msgstr "Niemiecki"
 
 #: ../lib/languages:31
 msgid "German (new spelling)"
-msgstr ""
+msgstr "Niemiecki (nowa pisownia)"
 
 #: ../lib/languages:33
 msgid "Hebrew"
@@ -6535,7 +6460,7 @@ msgstr "Hebrajski"
 
 #: ../lib/languages:35
 msgid "Icelandic"
-msgstr ""
+msgstr "Islandzki"
 
 #: ../lib/languages:36
 msgid "Irish"
@@ -6550,13 +6475,12 @@ msgid "Kazakh"
 msgstr "Kazachski"
 
 #: ../lib/languages:39
-#, fuzzy
 msgid "Latvian"
-msgstr "Chorwacki"
+msgstr "£otewski"
 
 #: ../lib/languages:40
 msgid "Lithuanian"
-msgstr ""
+msgstr "Litewski"
 
 #: ../lib/languages:41
 msgid "Lsorbian"
@@ -6571,9 +6495,8 @@ msgid "Norsk"
 msgstr "Norweski"
 
 #: ../lib/languages:45
-#, fuzzy
 msgid "Nynorsk"
-msgstr "Norweski"
+msgstr "Norweski (Nynorsk)"
 
 #: ../lib/languages:46
 msgid "Polish"
@@ -6793,7 +6716,7 @@ msgstr "Pisownia|S"
 
 #: ../lib/ui/default.ui:79
 msgid "Thesaurus..."
-msgstr ""
+msgstr "S³ownik synonimów..."
 
 #: ../lib/ui/default.ui:80
 msgid "Check TeX|h"
@@ -6949,7 +6872,7 @@ msgstr "Wyra¿enie eksponowane|e"
 
 #: ../lib/ui/default.ui:154
 msgid "Inline|I"
-msgstr ""
+msgstr "Wwierszu|W"
 
 #: ../lib/ui/default.ui:158
 msgid "Octave"
@@ -7040,9 +6963,8 @@ msgid "Special Character|S"
 msgstr "Znak specjalny|s"
 
 #: ../lib/ui/default.ui:197
-#, fuzzy
 msgid "Citation...|C"
-msgstr "Cytowanie"
+msgstr "Cytowanie...|C"
 
 #: ../lib/ui/default.ui:198
 msgid "Cross Reference...|R"
@@ -7277,9 +7199,8 @@ msgid "Index List|I"
 msgstr "Indeks|I"
 
 #: ../lib/ui/default.ui:286
-#, fuzzy
 msgid "BibTeX Bibliography...|B"
-msgstr "Bibliografia"
+msgstr "Bibliografia BibTeX-a...|B"
 
 #: ../lib/ui/default.ui:290
 msgid "LyX Document...|X"
@@ -8253,7 +8174,7 @@ msgstr "Cechy tabeli"
 
 #: src/LyXAction.C:365
 msgid "Open thesaurus"
-msgstr ""
+msgstr "Otwiera s³ownik synonimów"
 
 #: src/LyXAction.C:367
 msgid "Insert table of contents"
@@ -8325,9 +8246,8 @@ msgid "Emphasize"
 msgstr "Kursywa"
 
 #: src/SpellBase.C:48
-#, fuzzy
 msgid "Native OS API not yet supported."
-msgstr "Jeszcze nie zaimplementowano"
+msgstr ""
 
 #: src/buffer.C:356
 msgid "Couldn't set the layout for "
@@ -8394,18 +8314,17 @@ msgid "Can't load textclass "
 msgstr "Nie mo¿na wczytaæ klasy "
 
 #: src/buffer.C:656
-#, fuzzy, c-format
+#, c-format
 msgid "The document uses a missing TeX class \"%1$s\"."
-msgstr "Dokument u¿ywa nieznanej klasy ,,%1$s''"
+msgstr "Dokument u¿ywa brakuj±cej klasy TeX-a \"%1$s'\"."
 
 #: src/buffer.C:657 src/buffer.C:663
 msgid "LyX will not be able to produce output."
 msgstr ""
 
 #: src/buffer.C:661
-#, fuzzy
 msgid "The document uses a missing TeX class "
-msgstr "Dokument u¿ywa nieznanej klasy "
+msgstr "Dokument u¿ywa brakuj±cej klasy TeXa"
 
 #: src/buffer.C:983
 #, c-format
@@ -8435,12 +8354,10 @@ msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
 msgstr "Stary format pliku LyX-a. U¿yj LyX-a 0.10x aby go odczytaæ!"
 
 #: src/buffer.C:1253
-#, fuzzy
 msgid ""
 "The file was created with a newer version of LyX, but the lyx2lyx script "
 "cannot convert it.\n"
-msgstr ""
-"Plik zosta³ utworzony w nowszej wersji LyX-a, co mo¿e byæ powodem problemów."
+msgstr "Plik zosta³ utworzony w nowszej wersji LyX-a,  konwerter lyx2lyx nie mo¿e go skonwertowaæ.\n"
 
 #: src/buffer.C:1299
 msgid "Warning!"
@@ -9126,13 +9043,12 @@ msgid " strings have been replaced."
 msgstr " zast±piono."
 
 #: src/frontends/controllers/ControlSpellchecker.C:111
-#, fuzzy
 msgid ""
 "The spell-checker could not be started.\n"
 "Maybe it is mis-configured."
 msgstr ""
-"Program sprawdzania pisowni zakoñczy³ dzia³anie z kilku powodów.\n"
-"Byæ mo¿e jego proces zosta³ usuniêty."
+"Program sprawdzania pisowni nie mo¿e zostaæ uruchomiony.\n"
+"Byæ mo¿e nie zosta³ skonfigurowany."
 
 #: src/frontends/controllers/ControlSpellchecker.C:114
 #: src/frontends/controllers/ControlSpellchecker.C:207
@@ -9140,18 +9056,17 @@ msgid "The spell-checker has failed"
 msgstr ""
 
 #: src/frontends/controllers/ControlSpellchecker.C:201
-#, fuzzy
 msgid ""
 "The spell-checker has died for some reason.\n"
 "Maybe it has been killed."
 msgstr ""
 "Program sprawdzania pisowni zakoñczy³ dzia³anie z kilku powodów.\n"
-"Byæ mo¿e jego proces zosta³ usuniêty."
+"Byæ mo¿e jego proces zosta³ zabity."
 
 #: src/frontends/controllers/ControlSpellchecker.C:223
-#, fuzzy, c-format
+#, c-format
 msgid "%1$d words checked."
-msgstr "Sprawdzono jedno s³owo."
+msgstr "Sprawdzono s³ów: %1$d."
 
 #: src/frontends/controllers/ControlSpellchecker.C:227
 #: src/frontends/controllers/ControlSpellchecker.C:233
@@ -9159,14 +9074,12 @@ msgid "One word checked."
 msgstr "Sprawdzono jedno s³owo."
 
 #: src/frontends/controllers/ControlSpellchecker.C:231
-#, fuzzy
 msgid " words checked."
-msgstr "Sprawdzono jedno s³owo."
+msgstr "s³ów sprawdzono."
 
 #: src/frontends/controllers/ControlSpellchecker.C:238
-#, fuzzy
 msgid "Spell-checking is complete"
-msgstr "Sprawdzanie pisowni zakoñczone!"
+msgstr "Zakoñczono sprawdzanie pisowni"
 
 #: src/frontends/controllers/ControlVCLog.C:53
 msgid "No version control log file found."
@@ -9180,7 +9093,7 @@ msgstr "%1$s i %2$s"
 #: src/frontends/controllers/biblio.C:100
 #, c-format
 msgid "%1$s et al."
-msgstr ""
+msgstr "%1$s i inni."
 
 #: src/frontends/controllers/biblio.C:107
 msgid " and "
@@ -9188,7 +9101,7 @@ msgstr " i "
 
 #: src/frontends/controllers/biblio.C:109
 msgid " et al."
-msgstr ""
+msgstr " i inni."
 
 #: src/frontends/controllers/biblio.C:148
 msgid "No year"
@@ -9298,25 +9211,21 @@ msgid "Yellow"
 msgstr "¯ó³ty"
 
 #: src/frontends/controllers/helper_funcs.C:55
-#, fuzzy
 msgid "space"
-msgstr "&Zast±p"
+msgstr "odstêp"
 
 #: src/frontends/controllers/helper_funcs.C:105
-#, fuzzy
 msgid "Invalid filename"
-msgstr "Niepoprawna d³ugo¶æ!"
+msgstr "Niepoprawna nazwa pliku"
 
 #: src/frontends/controllers/helper_funcs.C:106
 #: src/frontends/controllers/helper_funcs.C:172
-#, fuzzy
 msgid "No LaTeX support for paths containing any of these characters:\n"
-msgstr "Nazwa pliku nie mo¿e zawieraæ ¿adnego z wymienionych znaków:"
+msgstr "LaTeX nie obs³uguje ¶cie¿ek zawieraj±cych jeden ze znaków:\n"
 
 #: src/frontends/controllers/helper_funcs.C:171
-#, fuzzy
 msgid "Invalid directory name"
-msgstr "Niew³a¶ciwe polecenie w trybie matematycznym"
+msgstr "Niepoprawna nazwa katalogu"
 
 #: src/frontends/gnome/GLog.C:51 src/frontends/qt2/QLog.C:52
 msgid "Build log"
@@ -9406,14 +9315,12 @@ msgid ",,text''"
 msgstr ",,tekst''"
 
 #: src/frontends/qt2/QDocument.C:88
-#, fuzzy
 msgid "<<text>>"
-msgstr "tekst"
+msgstr "<<tekst>>"
 
 #: src/frontends/qt2/QDocument.C:89
-#, fuzzy
 msgid ">>text<<"
-msgstr "tekst"
+msgstr ">>tekst<<"
 
 #: src/frontends/qt2/QDocument.C:101
 msgid "US letter"
@@ -9632,7 +9539,6 @@ msgid "Bold symbol\t\\boldsymbol"
 msgstr ""
 
 #: src/frontends/qt2/QMathDialog.C:151
-#, fuzzy
 msgid "Sans serif\t\\mathsf"
 msgstr "Bezszeryfowa\t\\mathsf"
 
@@ -9662,7 +9568,7 @@ msgstr "Normalny tryb tekstowy\t\\textrm"
 
 #: src/frontends/qt2/QMathMatrixDialog.C:36
 msgid "LyX: Insert matrix"
-msgstr "LyX: Wstaw macierz"
+msgstr "LyX: Wstawianie macierz"
 
 #: src/frontends/qt2/QMinipage.C:32
 msgid "Minipage"
@@ -9758,9 +9664,8 @@ msgid "Go back"
 msgstr "Powrót"
 
 #: src/frontends/qt2/QRef.C:129
-#, fuzzy
 msgid "Go to label"
-msgstr "&Najd³u¿sza etykieta"
+msgstr "Skok do etykiety"
 
 #: src/frontends/qt2/QSearch.C:30 src/frontends/xforms/FormSearch.C:24
 msgid "Find and Replace"
@@ -9981,14 +9886,12 @@ msgstr ""
 
 #. set up the tooltip mechanism
 #: src/frontends/xforms/FormCitation.C:162
-#, fuzzy
 msgid "Add citation of the selected bibliography entry."
-msgstr "Informacja na temat wybranej pozycji"
+msgstr "Dodaj cytowanie wybranej pozycji bibliografii"
 
 #: src/frontends/xforms/FormCitation.C:165
-#, fuzzy
 msgid "Delete citation of the selected bibliography entry."
-msgstr "Informacja na temat wybranej pozycji"
+msgstr "Usuñ cytowanie wybranej pozycji bibliografii"
 
 #: src/frontends/xforms/FormCitation.C:168
 msgid "Move the selected entry upwards (in the current list)."
@@ -10012,9 +9915,8 @@ msgid ""
 msgstr ""
 
 #: src/frontends/xforms/FormCitation.C:188
-#, fuzzy
 msgid "Information about the selected bibliography entry"
-msgstr "Informacja na temat wybranej pozycji"
+msgstr "Informacja na temat wybranej pozycji bibliografii"
 
 #: src/frontends/xforms/FormCitation.C:195
 msgid ""
@@ -10079,20 +9981,17 @@ msgstr ""
 
 #: src/frontends/xforms/FormDocument.C:236
 msgid " None | Small Margins | Very small Margins | Very wide Margins "
-msgstr ""
-" Brak | Ma³e marginesy | Bardzo ma³e marginesy | Bardzo szerokie marginesy "
+msgstr " Brak | Ma³e marginesy | Bardzo ma³e marginesy | Bardzo szerokie marginesy "
 
 #: src/frontends/xforms/FormDocument.C:286
-#, fuzzy
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | <<text>> | >>text<< "
-msgstr " ``tekst'' | ''tekst'' | ,,tekst`` | ,,tekst'' | «tekst» | »tekst« "
+msgstr " ``tekst'' | ''tekst'' | ,,tekst`` | ,,tekst'' | <<tekst>> | >>tekst<< "
 
 #: src/frontends/xforms/FormDocument.C:311
 msgid " Author-year | Numerical "
 msgstr " Autor-Rok | Numerycznie "
 
 #: src/frontends/xforms/FormDocument.C:337
-#, fuzzy
 msgid ""
 " Default | Tiny | Smallest | Smaller | Small | Normal | Large | Larger | "
 "Largest | Huge | Huger "
@@ -10120,8 +10019,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormDocument.C:1114
 msgid "Document is read-only. No changes to layout permitted."
-msgstr ""
-"Dokument otwarto tylko do odczytu. Zmiany w ustawieniach s± niedozwolone."
+msgstr "Dokument otwarto tylko do odczytu. Zmiany w ustawieniach s± niedozwolone."
 
 #: src/frontends/xforms/FormExternal.C:29
 msgid "Edit external file"
@@ -10163,15 +10061,15 @@ msgstr ""
 
 #: src/frontends/xforms/FormFloat.C:80
 msgid "Try float here."
-msgstr ""
+msgstr "Spróbuj tutaj wstawki."
 
 #: src/frontends/xforms/FormFloat.C:82
 msgid "Ignore internal settings. This is the \"!\" in LaTeX."
-msgstr ""
+msgstr "Ignoruje ustawienia wewnêtrzne. Odpowiada \"!\" w LaTeX-u."
 
 #: src/frontends/xforms/FormFloat.C:84
 msgid "Span float over the columns."
-msgstr ""
+msgstr "Rozci±gnij wstawkê na kolumny."
 
 #: src/frontends/xforms/FormGraphics.C:125
 msgid "Default|Monochrome|Grayscale|Color|Do not display"
@@ -10206,12 +10104,12 @@ msgstr "Wybierz tryb wy¶wietlania rysunku."
 
 #: src/frontends/xforms/FormGraphics.C:149
 msgid "Set the image width to the inserted value."
-msgstr ""
+msgstr "Okre¶l wysoko¶æ obrazu do wstawionej warto¶ci."
 
 #: src/frontends/xforms/FormGraphics.C:152
 #, no-c-format
 msgid "Select unit for width; Scale% for scaling whole image."
-msgstr ""
+msgstr "Wybierz jednostkê szeroko¶ci. Skala% dla skalowania ca³ego obrazka."
 
 #: src/frontends/xforms/FormGraphics.C:154
 msgid "Set the image height to the inserted value."
@@ -10241,11 +10139,11 @@ msgstr "Wy¶wietlaj obraz tylko jako prostok±t w oryginalnym rozmiarze."
 #. set up the tooltips for the bounding-box-section
 #: src/frontends/xforms/FormGraphics.C:200
 msgid "The lower left x-value of the bounding box."
-msgstr ""
+msgstr "Lewa dolna warto¶æ X bounding box."
 
 #: src/frontends/xforms/FormGraphics.C:202
 msgid "The lower left y-value of the bounding box."
-msgstr ""
+msgstr "Lewa dolna warto¶æ Y bounding box."
 
 #: src/frontends/xforms/FormGraphics.C:204
 msgid ""
@@ -10255,11 +10153,11 @@ msgstr ""
 
 #: src/frontends/xforms/FormGraphics.C:208
 msgid "The upper right y-value of the bounding box."
-msgstr ""
+msgstr "Prawa górna warto¶æ Y bounding box."
 
 #: src/frontends/xforms/FormGraphics.C:210
 msgid "Select unit for the bounding box values."
-msgstr ""
+msgstr "Wybierz jednostkê dla warto¶ci bounding box."
 
 #: src/frontends/xforms/FormGraphics.C:213
 msgid ""
@@ -10270,7 +10168,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormGraphics.C:218
 msgid "Clip image to the bounding box values."
-msgstr ""
+msgstr "Obetnij do rozmiarów bounding box."
 
 #. set up the tooltips for the extra section
 #: src/frontends/xforms/FormGraphics.C:251
@@ -10281,7 +10179,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormGraphics.C:255
 msgid "Insert the point of origin for rotation."
-msgstr ""
+msgstr "Wstaw punkt obrotu."
 
 #: src/frontends/xforms/FormGraphics.C:257
 msgid "Enables use of subfigure with its own caption."
@@ -10463,10 +10361,8 @@ msgid "LyX objects that can be assigned a color."
 msgstr "Obiekty, którym mo¿na przypisaæ kolory."
 
 #: src/frontends/xforms/FormPreferences.C:539
-msgid ""
-"Modify the LyX object's color. Note: you must then \"Apply\" the change."
-msgstr ""
-"Zmieñ kolor obiektu programu LyX. Uwaga: nale¿y potem ,,Zastosowaæ'' zmianê."
+msgid "Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgstr "Zmieñ kolor obiektu programu LyX. Uwaga: nale¿y potem ,,Zastosowaæ'' zmianê."
 
 #: src/frontends/xforms/FormPreferences.C:547
 msgid "Find a new color."
@@ -10505,15 +10401,13 @@ msgid "Convert \"to\" this format"
 msgstr "Konwersja ,,do'' formatu"
 
 #: src/frontends/xforms/FormPreferences.C:995
-#, fuzzy
 msgid ""
 "The conversion command. $$i is the input file name, $$b is the file name "
 "without its extension and $$o is the name of the output file. $$s can be "
 "used as the path to LyX's support directory."
 msgstr ""
 "Polecenie konwersji. $$i jest nazw± pliku wyj¶ciowego, $$b nazw± bez "
-"rozszerzenia, a $$o nazw± pliku wynikowego. $$s can be used as path to LyX's "
-"own collection of conversion scripts."
+"rozszerzenia, a $$o nazw± pliku wynikowego. $$s mo¿e byæ u¿yte jako ¶cie¿ka do katalogu u¿ytkownika/biblioteki."
 
 #: src/frontends/xforms/FormPreferences.C:1001
 msgid ""
@@ -10651,6 +10545,8 @@ msgid ""
 "Fonts must be input in the order Tiny > Smallest > Smaller > Small > Normal "
 "> Large > Larger > Largest > Huge > Huger."
 msgstr ""
+"Font musi byæ podany w kolejno¶ci Mikroskopijny > Bardzo ma³y > Mniejszy > "
+"Ma³y > Normalny > Du¿y >  Wiêkszy > Bardzo du¿y > Ogromny > Najwiêkszy."
 
 #: src/frontends/xforms/FormPreferences.C:2877
 msgid " ispell | aspell "
@@ -10717,29 +10613,24 @@ msgstr "Opcja pozwalaj±ca wydrukowaæ dokument od ty³u."
 
 #. set up the tooltips
 #: src/frontends/xforms/FormRef.C:66
-#, fuzzy
 msgid "Select a document for labels."
-msgstr "Wybierz dokument z odno¶nikami"
+msgstr "Wybierz dokument z etykietami."
 
 #: src/frontends/xforms/FormRef.C:68
-#, fuzzy
 msgid "Sort the labels alphabetically."
-msgstr "Sortuj odno¶niki alfabetycznie."
+msgstr "Sortuj etykiety alfabetycznie."
 
 #: src/frontends/xforms/FormRef.C:70 src/frontends/xforms/FormRef.C:279
-#, fuzzy
 msgid "Go to selected label."
-msgstr "Id¼ do odno¶nika"
+msgstr "Id¼ do wybranej etykiety."
 
 #: src/frontends/xforms/FormRef.C:72
-#, fuzzy
 msgid "Update the list of labels."
-msgstr "Aktualizuj listê odno¶ników"
+msgstr "Aktualizuj listê etykiet."
 
 #: src/frontends/xforms/FormRef.C:74
-#, fuzzy
 msgid "Select format style of the cross reference."
-msgstr "Wybierz dokument z odno¶nikami"
+msgstr "Wybierz styl formatowania odno¶ników."
 
 #: src/frontends/xforms/FormRef.C:178
 msgid "*** No labels found in document ***"
@@ -10747,7 +10638,7 @@ msgstr "*** Nie znaleziono etykiet w dokumencie ***"
 
 #: src/frontends/xforms/FormRef.C:276
 msgid "Go back to original place."
-msgstr ""
+msgstr "Wróæ do oryginalnego miejsca."
 
 #: src/frontends/xforms/FormRef.C:278
 msgid "Go to"
@@ -10788,8 +10679,7 @@ msgstr "Wyszukaj wstecz."
 
 #. Set up the tooltip mechanism
 #: src/frontends/xforms/FormSendto.C:45
-msgid ""
-"Export the buffer to this format before running the command below on it."
+msgid "Export the buffer to this format before running the command below on it."
 msgstr ""
 
 #: src/frontends/xforms/FormSendto.C:48
@@ -10821,7 +10711,7 @@ msgstr "Akceptuj s³owo na czas tej sesji"
 
 #: src/frontends/xforms/FormSpellchecker.C:70
 msgid "Add unknown word to personal dictionary."
-msgstr "Dodaj do osobistego s³ownika"
+msgstr "Dodaj s³owo do osobistego s³ownika"
 
 #: src/frontends/xforms/FormSpellchecker.C:72
 msgid "Shows word count and progress on spell check."
@@ -10850,7 +10740,7 @@ msgstr "D³uga tabela"
 
 #: src/frontends/xforms/FormTabular.C:533
 msgid "Wrong Cursor position, updated window"
-msgstr "Nieporawna pozycja kursora, od¶wie¿ zawarto¶æ okna"
+msgstr "Niepoprawna pozycja kursora, od¶wie¿ zawarto¶æ okna"
 
 #: src/frontends/xforms/FormTabular.C:554
 #: src/frontends/xforms/FormTabular.C:572
@@ -10876,12 +10766,11 @@ msgstr ""
 
 #: src/frontends/xforms/FormTexinfo.C:51
 msgid "Show full path or only file name."
-msgstr "Poka¿ pe³n± ¶cie¿kê albo tylko nazwy plików"
+msgstr "Poka¿ pe³n± ¶cie¿kê albo tylko nazwy plików."
 
 #: src/frontends/xforms/FormTexinfo.C:54
-#, fuzzy
 msgid "Runs the script \"TexFiles.sh\" to rebuild the file lists."
-msgstr "Uruchamia skrypt ,,TexFiles.sh'' buduj±cy nowe listy plików"
+msgstr "Uruchamia skrypt \"TexFiles.sh\" buduj±cy nowe listy plików."
 
 #: src/frontends/xforms/FormTexinfo.C:57
 msgid "Double click to view contents of file."
@@ -10904,7 +10793,7 @@ msgstr "*** Brak spisu ***"
 #. set up the tooltips
 #: src/frontends/xforms/FormWrap.C:65
 msgid "Enter width for the float."
-msgstr "Podaj szeroko¶æ wstawki"
+msgstr "Podaj szeroko¶æ wstawki."
 
 #: src/frontends/xforms/FormWrap.C:67
 msgid ""
@@ -10956,9 +10845,8 @@ msgstr "Sprawd¼ ,,zakres stron''!"
 
 #: src/frontends/xforms/xforms_helpers.C:285
 #: src/frontends/xforms/xforms_helpers.C:330
-#, fuzzy
 msgid "Failed to open file."
-msgstr "Nie mo¿na otworzyæ pliku"
+msgstr "Nie mo¿na otworzyæ pliku."
 
 #: src/frontends/xforms/xforms_helpers.C:362
 #: src/frontends/xforms/xforms_helpers.C:386
@@ -10981,7 +10869,7 @@ msgstr "Nie mo¿na zapisywaæ w tym katalogu."
 
 #: src/frontends/xforms/xforms_helpers.C:397
 msgid "Cannot read this directory."
-msgstr "Nie mo¿na odczytaæ katalogu"
+msgstr "Nie mo¿na odczytaæ katalogu."
 
 #: src/frontends/xforms/xforms_helpers.C:415
 #: src/frontends/xforms/xforms_helpers.C:461
@@ -10991,28 +10879,28 @@ msgstr "Nie podano pliku."
 #: src/frontends/xforms/xforms_helpers.C:443
 #: src/frontends/xforms/xforms_helpers.C:489
 msgid "A file is required, not a directory."
-msgstr "Wymagany jest plik, nie katalog"
+msgstr "Wymagany jest plik, nie katalog."
 
 #: src/frontends/xforms/xforms_helpers.C:448
 msgid "Cannot write to this file."
-msgstr "Nie mo¿na zapisaæ do tego pliku"
+msgstr "Nie mo¿na zapisaæ do tego pliku."
 
 #: src/frontends/xforms/xforms_helpers.C:483
 msgid "Cannot read from this directory."
-msgstr "Nie mo¿na czytaæ z tego katalogu"
+msgstr "Nie mo¿na czytaæ z tego katalogu."
 
 #: src/frontends/xforms/xforms_helpers.C:494
 msgid "File does not exist."
-msgstr "Plik nie istnieje"
+msgstr "Plik nie istnieje."
 
 #: src/frontends/xforms/xforms_helpers.C:499
 msgid "Cannot read from this file."
-msgstr "Nie mo¿na czytaæ z pliku"
+msgstr "Nie mo¿na czytaæ z pliku."
 
 #: src/importer.C:41
 #, c-format
 msgid "Importing %1$s..."
-msgstr "Importowanie %1$s"
+msgstr "Importowanie %1$s..."
 
 #: src/importer.C:43
 msgid "Importing "
@@ -11041,9 +10929,8 @@ msgid "Opened inset"
 msgstr "Otwarta wstawka"
 
 #: src/insets/insetbib.C:147
-#, fuzzy
 msgid "BibTeX Generated Bibliography"
-msgstr "Odno¶niki wygenerowane przez BibTeXa"
+msgstr "Bibliografia wygenerowana przez BibTeXa"
 
 #: src/insets/insetbib.C:268 src/lyx_main.C:576 src/lyx_main.C:580
 msgid "LyX Warning!"
@@ -11051,11 +10938,11 @@ msgstr "Ostrze¿enie LyX-a!"
 
 #: src/insets/insetbib.C:269
 msgid "There are spaces in the paths to your BibTeX databases."
-msgstr ""
+msgstr "W ¶cie¿ce do bazy BibTeX-a znajduj± siê spacje."
 
 #: src/insets/insetbib.C:270
 msgid "BibTeX will be unable to find them."
-msgstr ""
+msgstr "BibTeX nie bêdzie móg³ jej znale¼æ."
 
 #: src/insets/insetcaption.C:63
 msgid "Opened Caption Inset"
@@ -11125,9 +11012,8 @@ msgid "Opened Footnote Inset"
 msgstr "Otwarty przypis"
 
 #: src/insets/insetgraphics.C:219
-#, fuzzy
 msgid "Not shown."
-msgstr " nieznane"
+msgstr "Nie wy¶wietlone."
 
 #: src/insets/insetgraphics.C:222
 msgid "Loading..."
@@ -11139,7 +11025,7 @@ msgstr "Konwersja do wczytywalnego formatu"
 
 #: src/insets/insetgraphics.C:228
 msgid "Loaded into memory. Must now generate pixmap."
-msgstr "Wczytano do pamiêci. Nale¿y teraz wygenerowaæ piksmapê"
+msgstr "Wczytano do pamiêci. Nale¿y teraz wygenerowaæ piksmapê."
 
 #: src/insets/insetgraphics.C:231
 msgid "Scaling etc..."
@@ -11225,7 +11111,7 @@ msgstr "Lista otwartych wstawek"
 
 #: src/insets/insetmarginal.C:30 src/insets/insetmarginal.C:38
 msgid "margin"
-msgstr ""
+msgstr "Margines"
 
 #: src/insets/insetmarginal.C:51
 msgid "Opened Marginal Note Inset"
@@ -11274,19 +11160,19 @@ msgstr "Strona: "
 
 #: src/insets/insetref.C:116 src/mathed/ref_inset.C:125
 msgid "Textual Page Number"
-msgstr ""
+msgstr "Numer strony tekstowo"
 
 #: src/insets/insetref.C:116 src/mathed/ref_inset.C:125
 msgid "TextPage: "
-msgstr ""
+msgstr "TekstStrona: "
 
 #: src/insets/insetref.C:117 src/mathed/ref_inset.C:126
 msgid "Standard+Textual Page"
-msgstr ""
+msgstr "Standard+Numer strony testowo"
 
 #: src/insets/insetref.C:117 src/mathed/ref_inset.C:126
 msgid "Ref+Text: "
-msgstr ""
+msgstr "Odn.+Tekst: "
 
 #: src/insets/insetref.C:118 src/mathed/ref_inset.C:127
 msgid "PrettyRef"
@@ -11357,20 +11243,20 @@ msgid "Opened Wrap Inset"
 msgstr "Otwarta wstawka oblewana"
 
 #: src/ispell.C:197 src/ispell.C:204 src/ispell.C:213
-#, fuzzy
 msgid "Can't create pipe for spellchecker."
-msgstr "Rozpocznij sprawdzanie"
+msgstr "Nie mo¿na utworzyæ ³±cza dla sprawdzania pisowni."
 
 #: src/ispell.C:218 src/ispell.C:223 src/ispell.C:228
-#, fuzzy
 msgid "Can't open pipe for spellchecker."
-msgstr "Zatrzymaj sprawdzanie"
+msgstr "Nie mo¿na otworzyæ ³±cza dla sprawdzania pisowni."
 
 #: src/ispell.C:237
 msgid ""
 "Could not create an ispell process.\n"
 "You may not have the right languages installed."
 msgstr ""
+"Nie mo¿na utworzyæ procesu ispella.\n"
+"Byæ mo¿e nie zainstalowano poprawnego jêzyka."
 
 #. select returned error
 #: src/ispell.C:259
@@ -11381,7 +11267,7 @@ msgstr ""
 
 #: src/ispell.C:368
 msgid "Could not communicate with the spell-checker program."
-msgstr ""
+msgstr "Nie mo¿na skomunikowaæ siê z procesem sprawdzania pisowni ispell."
 
 #: src/kbsequence.C:153
 msgid "   options: "
@@ -11620,45 +11506,46 @@ msgid ""
 "%1$s. Make sure that this\n"
 "path exists and is writable and try again."
 msgstr ""
+"Nie mo¿na utworzyæ katalogu tymczasowego w\n"
+"%1$s. Upewnij siê ¿e ¶cie¿ka istnieje,\n"
+"masz prawo zapisu i spróbuj ponownie."
 
 #: src/lyx_main.C:388
-#, fuzzy
 msgid "Could not create a temporary directory in\n"
-msgstr "B³±d! Nie mo¿na utworzyæ katalogu tymczasowego:"
+msgstr "Nie mo¿na utworzyæ katalogu tymczasowego w\n"
 
 #: src/lyx_main.C:390
 msgid ""
 ". Make sure that this\n"
 "path exists and is writable and try again."
 msgstr ""
+"Upewnij siê ¿e ¶cie¿ka istnieje,\n"
+"masz prawo zapisu i spróbuj ponownie."
 
 #: src/lyx_main.C:394
-#, fuzzy
 msgid "Could not create temporary directory"
-msgstr "B³±d! Nie mo¿na utworzyæ katalogu tymczasowego:"
+msgstr "Nie mo¿na utworzyæ katalogu tymczasowego"
 
 #: src/lyx_main.C:538
-#, fuzzy
 msgid "You have specified a non-existent user LyX directory."
-msgstr "Podano b³êdny katalog LyX-a."
+msgstr "Podano nieistniej±cy katalog u¿ytkownika LyX-a."
 
 #: src/lyx_main.C:539
 msgid "It is needed to keep your own configuration."
 msgstr "Jest on wymagany do zapisania w³asnej konfiguracji LyX-a."
 
 #: src/lyx_main.C:540
-#, fuzzy
 msgid "Should I try to set it up for you? I'll exit if \"No\"."
-msgstr "Czy spróbowaæ wykonaæ to dla Ciebie (zalecane)?"
+msgstr "Czy spróbowaæ wykonaæ to dla Ciebie? Wybierz \"Nie\" aby zakoñczyæ."
 
 #: src/lyx_main.C:541
 msgid "No user LyX directory. Exiting."
-msgstr ""
+msgstr "Brak katalogu u¿ytkownika LyXa. Zakoñczenie pracy."
 
 #: src/lyx_main.C:546
-#, fuzzy, c-format
+#, c-format
 msgid "LyX: Creating directory %1$s"
-msgstr "LyX: Tworzenie katalogu "
+msgstr "LyX: Tworzenie katalogu %1$s"
 
 #: src/lyx_main.C:550
 msgid "LyX: Creating directory "
@@ -11666,9 +11553,8 @@ msgstr "LyX: Tworzenie katalogu "
 
 #. Failed, so let's exit.
 #: src/lyx_main.C:557
-#, fuzzy
 msgid "Failed to create directory. Exiting."
-msgstr "Wywo³anie createDirectory z nieprawid³ow± nazw±"
+msgstr "Nieudane tworzenie katalogu. Zakoñczenie pracy."
 
 #: src/lyx_main.C:577
 #, c-format
@@ -12084,8 +11970,7 @@ msgstr "Rozszerzenie wynikowego pliku drukowania. Zwykle \".ps\"."
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
-msgstr ""
-"Ostatnia opcja dla programu drukuj±cego przed nazw± drukowanego pliku DVI."
+msgstr "Ostatnia opcja dla programu drukuj±cego przed nazw± drukowanego pliku DVI."
 
 #: src/lyxrc.C:1950
 msgid ""
@@ -12148,8 +12033,7 @@ msgid "The encoding for the menu/popups fonts."
 msgstr "Kodowanie czcionek menu i okien dialogowych."
 
 #: src/lyxrc.C:1996
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Interwa³ czasu pomiêdzy automatycznym zapisem w sekundach. 0 wy³±cza "
 "automatycznyzapis."
@@ -12302,8 +12186,7 @@ msgid ""
 msgstr "Podaj inny jêzyk. Domy¶lnie u¿ywany jest jêzyk dokumentu."
 
 #: src/lyxrc.C:2091
-msgid ""
-"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "Podaj inny plik s³ownika osobistego. Na przyk³ad \".ispell_polish\"."
 
 #: src/lyxrc.C:2096
@@ -12357,10 +12240,8 @@ msgstr ""
 "LyX u¿yje katalogu pliku oryginalnego."
 
 #: src/lyxrc.C:2128
-msgid ""
-"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
-msgstr ""
-"Wybierz by mieæ mo¿liwo¶æ pisania od prawej do lewej (hebrajski, arabski)."
+msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgstr "Wybierz by mieæ mo¿liwo¶æ pisania od prawej do lewej (hebrajski, arabski)."
 
 #: src/lyxrc.C:2132
 msgid ""
@@ -12380,8 +12261,7 @@ msgstr ""
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
-msgstr ""
-"Wy³±cz je¶li nie chcesz u¿ywa¼ nazwy jêzyka jako argumentu \\documentclass."
+msgstr "Wy³±cz je¶li nie chcesz u¿ywa¼ nazwy jêzyka jako argumentu \\documentclass."
 
 #: src/lyxrc.C:2144
 msgid ""
@@ -12398,8 +12278,7 @@ msgid ""
 msgstr "W³±cz gdy polecenie zmiany jêzyka jest wymagane na pocz±tku dokumentu."
 
 #: src/lyxrc.C:2152
-msgid ""
-"Select if a language switching command is needed at the end of the document."
+msgid "Select if a language switching command is needed at the end of the document."
 msgstr "W³±cz gdy polecenie zmiany jêzyka jest wymagane na koñcu dokumentu."
 
 #: src/lyxrc.C:2156
@@ -12596,13 +12475,12 @@ msgstr "Nie mo¿na usun±æ pliku auto-zapisu!"
 
 #: src/support/package.C:363
 #, c-format
-msgid ""
-"Unable to determine the path to the LyX binary from the command line %1%"
-msgstr ""
+msgid "Unable to determine the path to the LyX binary from the command line %1%"
+msgstr "Nie mo¿na okre¶liæ ¶cie¿ki do katalogu systemowego LyX-a z wiersza poleceñ %1%"
 
 #: src/support/package.C:368
 msgid "Unable to determine the path to the LyX binary from the command line "
-msgstr ""
+msgstr "Nie mo¿na okre¶liæ ¶cie¿ki do katalogu systemowego LyX-a z wiersza poleceñ "
 
 #: src/support/package.C:494
 #, c-format
@@ -12612,17 +12490,19 @@ msgid ""
 "Try the '-sysdir' command line parameter or set the environment variable "
 "LYX_DIR_13x to the LyX system directory containing the file `chkconfig.ltx'."
 msgstr ""
+"Nie mo¿na okre¶liæ katalogu systemowego zawieraj±cy poszukiwany\n"
+"\t%1%\n"
+"Spróbuj podaæ parametr wywo³ania '-sysdir' lub ustaw zmienn± ¶rodowiskow± LYX_DIR_13x na katalog systemowy LyX-a zawieraj±cy plik 'chkconfig.ltx'."
 
 #: src/support/package.C:504
 msgid "Unable to determine the system directory having searched\n"
-msgstr ""
+msgstr "Nie mo¿na okre¶liæ katalogu systemowego zawieraj±cy poszukiwany\n"
 
 #: src/support/package.C:507
-#, fuzzy
 msgid ""
 "Try the '-sysdir' command line parameter or set the environment variable "
 "LYX_DIR_13x to the LyX system directory containing the file `chkconfig.ltx'."
-msgstr "ustaw warto¶æ zmiennej LYX_DIR_13x na katalog systemowy LyX-a "
+msgstr "Spróbuj podaæ parametr wywo³ania '-sysdir' lub ustaw zmienn± ¶rodowiskow± LYX_DIR_13x na katalog systemowy LyX-a zawieraj±cy plik 'chkconfig.ltx'."
 
 #: src/support/package.C:593
 #, c-format
@@ -12630,25 +12510,25 @@ msgid ""
 "Invalid %1% switch.\n"
 "Directory %2% does not contain %3%."
 msgstr ""
+"Niepoprawny prze³±cznik %1%.\n"
+"Katalog %2% nie zawiera %3%."
 
 #: src/support/package.C:598 src/support/package.C:633
 #: src/support/package.C:661
-#, fuzzy
 msgid "Invalid "
-msgstr "Niepoprawna d³ugo¶æ!"
+msgstr "Niepoprawna "
 
 #: src/support/package.C:599
 msgid " switch.\n"
-msgstr ""
+msgstr " prze³±cznik.\n"
 
 #: src/support/package.C:600 src/support/package.C:635
-#, fuzzy
 msgid "Directory "
-msgstr "Katalog:|#K"
+msgstr "Katalog "
 
 #: src/support/package.C:601 src/support/package.C:636
 msgid " does not contain "
-msgstr ""
+msgstr "nie zawiera "
 
 #: src/support/package.C:628
 #, c-format
@@ -12656,11 +12536,12 @@ msgid ""
 "Invalid %1% environment variable.\n"
 "Directory %2% does not contain %3%."
 msgstr ""
+"Niepoprawna zawarto¶æ zmiennej ¶rodowisowej %1%.\n"
+"Katalog %2% nie zawiera %3%."
 
 #: src/support/package.C:634 src/support/package.C:662
-#, fuzzy
 msgid " environment variable.\n"
-msgstr "B³êdna warto¶æ zmiennej LYX_DIR_13x."
+msgstr " zmienna ¶rodowiskowa.\n"
 
 #: src/support/package.C:656
 #, c-format
@@ -12668,11 +12549,12 @@ msgid ""
 "Invalid %1% environment variable.\n"
 "%2% is not a directory."
 msgstr ""
+"Niepoprawna zawarto¶æ zmiennej ¶rodowisowej %1%.\n"
+"%2% nie jest katalogiem."
 
 #: src/support/package.C:663
-#, fuzzy
 msgid " is not a directory."
-msgstr "Wymagany jest plik, nie katalog"
+msgstr " nie jest katalogiem."
 
 #: src/tabular.C:1346
 msgid "Warning:"
@@ -12690,13 +12572,11 @@ msgstr "Konwersja jest mo¿liwa tylko w starszym LyXie (<1.1.x)!"
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
-msgstr ""
-"Nie mo¿na wstawiæ spacji na pocz±tku akapitu. Przeczytaj, proszê, Samouczek."
+msgstr "Nie mo¿na wstawiæ spacji na pocz±tku akapitu. Przeczytaj, proszê, Samouczek."
 
 #: src/text.C:1926
 msgid "You cannot type two spaces this way. Please read the Tutorial."
-msgstr ""
-"Nie mo¿na wstawiæ dwu spacji w ten sposób. Przeczytaj, proszê, Samouczek."
+msgstr "Nie mo¿na wstawiæ dwu spacji w ten sposób. Przeczytaj, proszê, Samouczek."
 
 #: src/text.C:3348
 msgid "Page Break (top)"
@@ -12767,302 +12647,3 @@ msgstr "Znacznik ustawiony"
 msgid "LyX function 'layout' needs an argument."
 msgstr ""
 
-#~ msgid "space, '#', '~', '$' or '%'."
-#~ msgstr "spacja, '#', '~', '$' lub '%'."
-
-#~ msgid "directory name can't contain any of these characters:"
-#~ msgstr "Nazwa katalogu nie mo¿e zawieraæ ¿adnego z wymienionych znaków:"
-
-#~ msgid "BibTeX style files (*.bst)"
-#~ msgstr "Pliki stylów BibTeX-a (*.bst)"
-
-#~ msgid "BibTeX database files (*.bib)"
-#~ msgstr "Pliki baz BibTeX-a (*.bib)"
-
-#~ msgid "External material (*)"
-#~ msgstr "¬ród³o zewnêtrzne"
-
-#~ msgid "Select external material"
-#~ msgstr "Wybierz ¼ród³o zewnêtrzne"
-
-#~ msgid "PostScript files (*.ps)"
-#~ msgstr "Pliki PostScript (*.ps)"
-
-#~ msgid "Select a file to print to"
-#~ msgstr "Wybierz dokument do wydruku"
-
-#~ msgid "Select Database"
-#~ msgstr "Wybierz bazê danych"
-
-#~ msgid "*.bib| BibTeX Databases (*.bib)"
-#~ msgstr "*.bib| Baza BibTeX-a (*.bib)"
-
-#~ msgid "Select BibTeX-Style"
-#~ msgstr "Wybierz styl BibTeX-a"
-
-#~ msgid "*.bst| BibTeX Styles (*.bst)"
-#~ msgstr "*.bst| Style BibTeX-a (*.bst)"
-
-#~ msgid "Forked child processes:|#F"
-#~ msgstr "Rozwidlone procesy potomne:|#R"
-
-#~ msgid "Kill processes:|#K"
-#~ msgstr "Procesy do usuniêcia:|#P"
-
-#~ msgid "All ->"
-#~ msgstr "Wszystkie->"
-
-#~ msgid "Reference:|#e"
-#~ msgstr "Odno¶nik:|#O"
-
-#~ msgid "Cite &Style:"
-#~ msgstr "&Cudzys³owy:"
-
-#~ msgid "The citation key"
-#~ msgstr "Klucz cytowania"
-
-#~ msgid "Bibtex"
-#~ msgstr "BibTeX"
-
-#~ msgid "Search the available citations"
-#~ msgstr "Szukaj dostêpnych cytowañ"
-
-#~ msgid "Available citation keys"
-#~ msgstr "Dostêpne klucze"
-
-#~ msgid "Add the selected citation"
-#~ msgstr "Dodaj wybrany cytat"
-
-#~ msgid "Remove the selected citation"
-#~ msgstr "Usuñ wybrany cytat"
-
-#~ msgid "Citation entry"
-#~ msgstr "Cytowanie"
-
-#~ msgid "&File"
-#~ msgstr "&Plik"
-
-#~ msgid "Update the reference list"
-#~ msgstr "Aktualizuj listê odno¶ników"
-
-#~ msgid "&Reference:"
-#~ msgstr "&Odno¶nik:"
-
-#~ msgid "Available references"
-#~ msgstr "Dostêpne odno¶niki"
-
-#~ msgid "&Type"
-#~ msgstr "&Typ"
-
-#~ msgid "&Name"
-#~ msgstr "&Nazwa"
-
-#~ msgid "Citation Reference...|C"
-#~ msgstr "Cytowanie|C"
-
-#~ msgid "BibTeX Reference...|B"
-#~ msgstr "Bibliografia (BibTeX)|B"
-
-#~ msgid "Child Processes|C"
-#~ msgstr "Procesy potomne|P"
-
-#~ msgid "Show the processes forked by LyX"
-#~ msgstr "Poka¿ rozwidlone procesy przez LyX-a"
-
-#~ msgid "Kill the forked process with this PID"
-#~ msgstr "Usuñ rozwidlone procesy przez ich PID"
-
-#~ msgid "Bibliography Item"
-#~ msgstr "Pozycja bibliografii"
-
-#~ msgid "BibTeX"
-#~ msgstr "BibTeX"
-
-#~ msgid "LyX: Preferences"
-#~ msgstr "LyX: Ustawienia"
-
-#~ msgid "Go to reference"
-#~ msgstr "Id¼ do odno¶nika"
-
-#~ msgid "ShowFile"
-#~ msgstr "Podgl±d pliku"
-
-#~ msgid "Table of contents"
-#~ msgstr "Spis tre¶ci"
-
-#~ msgid "BibTeX Database"
-#~ msgstr "Baza danych BibTeX"
-
-#~ msgid "Add the selected entry to the current citation reference."
-#~ msgstr "Dodaj wybrany klucz do bie¿±cego cytowania"
-
-#~ msgid "Delete the selected entry from the current citation reference."
-#~ msgstr "Usuñ wybrany klucz z bie¿±cego cytowania"
-
-#~ msgid "ERT Options"
-#~ msgstr "Opcje ERT"
-
-#~ msgid "Child processes"
-#~ msgstr "Procesy potomne"
-
-#~ msgid "All currently running child processes forked by LyX."
-#~ msgstr "Wszystkie procesy rozwidlone aktualnie uruchomione przez LyX-a"
-
-#~ msgid "A list of all child processes to kill."
-#~ msgstr "Lista wszystkich procesów do usuniêcia."
-
-#~ msgid "Add all processes to the list of processes to kill."
-#~ msgstr "Dodaje wszystkie procesy do listy procesów do usuniecia."
-
-#~ msgid "LaTeX preamble"
-#~ msgstr "Preambu³a LaTeX-a"
-
-#~ msgid "Url"
-#~ msgstr "Url"
-
-#~ msgid "Warning: could not determine path of binary."
-#~ msgstr "Ostrze¿enie: nie mo¿na znale¼æ ¶cie¿ki do binariów."
-
-#~ msgid "If you have problems, try starting LyX with an absolute path."
-#~ msgstr "Je¶li masz problemy spróbuj uruchomiæ LyX-a ze ¶cie¿k± bezwzglêdn±."
-
-#~ msgid "System directory set to: "
-#~ msgstr "¦cie¿ka do katalogu systemowego: "
-
-#~ msgid "LyX Warning! Couldn't determine system directory. "
-#~ msgstr "Ostrze¿enie LyX-a! Nie mo¿na okre¶liæ katalogu systemowego. "
-
-#~ msgid "Try the '-sysdir' command line parameter or "
-#~ msgstr "U¿yj opcji '-sysdir' z linii poleceñ lub "
-
-#~ msgid "containing the file `chkconfig.ltx'."
-#~ msgstr "zawieraj±cy plik `chkconfig.ltx'."
-
-#~ msgid "Using built-in default %1$s but expect problems."
-#~ msgstr "Zastosowano ustawienia domy¶lne %1$s ale spodziewaj siê problemów."
-
-#~ msgid "Using built-in default "
-#~ msgstr "U¿yto ustawieñ domy¶lnych "
-
-#~ msgid " but expect problems."
-#~ msgstr " ale spodziewaj siê problemów."
-
-#~ msgid "Expect problems."
-#~ msgstr "Spodziewaj siê problemów."
-
-#~ msgid "Running without personal LyX directory."
-#~ msgstr "Uruchamianie bez osobistego katalogu LyX-a."
-
-#~ msgid "LyX: Creating directory %1$s and running configure..."
-#~ msgstr "LyX: Tworzenie katalogu %1$s i konfigurowanie"
-
-#~ msgid " and running configure..."
-#~ msgstr " i uruchomiono konfigurowanie"
-
-#~ msgid "Failed. Will use %1$s instead."
-#~ msgstr "Nie powiod³o siê. U¿yjê %1$s zamiast"
-
-#~ msgid "Failed. Will use "
-#~ msgstr "Nie powiod³o siê. U¿yjê "
-
-#~ msgid " instead."
-#~ msgstr " zamiast."
-
-#, fuzzy
-#~ msgid "AdressZeileA"
-#~ msgstr "Adres"
-
-#, fuzzy
-#~ msgid "AdressZeileB"
-#~ msgstr "Adres"
-
-#, fuzzy
-#~ msgid "AdressZeileC"
-#~ msgstr "Adres"
-
-#, fuzzy
-#~ msgid "AdressZeileD"
-#~ msgstr "Adres"
-
-#, fuzzy
-#~ msgid "AdressZeileE"
-#~ msgstr "Adres"
-
-#, fuzzy
-#~ msgid "AdressZeileF"
-#~ msgstr "Adres"
-
-#, fuzzy
-#~ msgid "TelefonZeileA"
-#~ msgstr "Telefon"
-
-#, fuzzy
-#~ msgid "TelefonZeileB"
-#~ msgstr "Telefon"
-
-#, fuzzy
-#~ msgid "TelefonZeileC"
-#~ msgstr "Telefon"
-
-#, fuzzy
-#~ msgid "TelefonZeileD"
-#~ msgstr "Telefon"
-
-#, fuzzy
-#~ msgid "TelefonZeileE"
-#~ msgstr "Telefon"
-
-#, fuzzy
-#~ msgid "TelefonZeileF"
-#~ msgstr "Telefon"
-
-#~ msgid "Files (*)"
-#~ msgstr "Pliki (*)"
-
-#~ msgid "Start|#S"
-#~ msgstr "Rozpocznij|#R"
-
-#~ msgid "Accept|#A"
-#~ msgstr "Akceptuj|#A"
-
-#~ msgid "tiny"
-#~ msgstr "mikroskopijny"
-
-#~ msgid "script"
-#~ msgstr "bardzo ma³y"
-
-#~ msgid "footnote"
-#~ msgstr "mniejszy"
-
-#~ msgid "small"
-#~ msgstr "ma³y"
-
-#~ msgid "normal"
-#~ msgstr "normalny"
-
-#~ msgid "large"
-#~ msgstr "du¿y"
-
-#~ msgid "LARGE"
-#~ msgstr "DU¯Y"
-
-#~ msgid "huge"
-#~ msgstr "Ogromny"
-
-#~ msgid "&Accept"
-#~ msgstr "&Akceptuj"
-
-#~ msgid "&Start..."
-#~ msgstr "&Rozpocznij"
-
-#~ msgid "Start spellcheck"
-#~ msgstr "Rozpocznij sprawdzanie pisowni"
-
-#~ msgid "Spellcheck complete"
-#~ msgstr "Sprawdzanie pisowni zakoñczone!"
-
-#~ msgid "Stop|#S"
-#~ msgstr "Zatrzymaj|Z"
-
-#~ msgid " (vertical fill)"
-#~ msgstr "(wype³nienie w pionie)"
