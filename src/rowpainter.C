@@ -735,7 +735,7 @@ bool isCursorOnRow(PainterInfo & pi, pit_type pit, RowList::const_iterator rit)
 	for (lyx::size_type d = 0; d < cur.depth(); d++)
 		if (cur[d].pit() == pit
 	  	    && cur[d].pos() >= rit->pos()
-		    && cur[d].pos() < rit->endpos())
+		    && cur[d].pos() <= rit->endpos())
 			return true;
 	return false;
 }

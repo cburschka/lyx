@@ -1,3 +1,7 @@
+2006-01-16  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* rowpainter.C (isCursorOnRow): do not exclude endpos().
+
 2006-01-11  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* cursor.C (macroModeClose): returns true if an inset actually got
