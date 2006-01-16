@@ -97,13 +97,8 @@ status collapsed
 
 \begin_layout Standard
 \noindent
-Principal maintainer of this file is 
-\noun on
-Mike Ressler
-\noun default
-.
- If you have comments or error corrections, please send them to the LyX
- Documentation mailing list: 
+If you have comments or error corrections, please send them to the LyX Documenta
+tion mailing list: 
 \family typewriter
 lyx-docs@lists.lyx.org
 \end_layout
@@ -332,8 +327,8 @@ HELP!
 \end_layout
 
 \begin_layout Standard
-First, the bad news: the help system is not as thorough or idiot-proof as
- in many commercial applications.
+First, the bad news: the help system is not as thorough as that in many
+ commercial applications.
  Patience.
  We're working on it.
 \end_layout
@@ -840,8 +835,7 @@ atch\InsetSpace ~
 Word
 \family default
  toggle button can be used to force LyX to only find complete words.
- I.e.
- searching for 
+ I.e., searching for 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1338,13 +1332,21 @@ For example, the sequence
 
 \family sans
 M-e\InsetSpace ~
-a
+s
 \family default
 
 \begin_inset Quotes erd
 \end_inset
 
- pastes text.
+ brings up the 
+\begin_inset Quotes eld
+\end_inset
+
+Text Style
+\begin_inset Quotes erd
+\end_inset
+
+ menu.
  Typing 
 \begin_inset Quotes eld
 \end_inset
@@ -1650,7 +1652,7 @@ Basic LyX Setup
 \begin_layout Standard
 There are two ways to run LyX.
  The first way is to install LyX and all of its support files on your system.
- Of course, you need root privileges to do that.
+ Of course, you need root (administrator) privileges to do that.
  The second way to run LyX doesn't require root access, letting you 
 \begin_inset Quotes eld
 \end_inset
@@ -1761,20 +1763,60 @@ lyxrc.defaults
 .
  It will then attempt to read a file called 
 \family typewriter
-~/.lyx/preferences
+preferences
 \family default
- beneath your home directory.
- The 
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+The 
+\family typewriter
+preferences
+\family default
+ file is found in different directories on different systems.
+ This directory is called LyX's 
+\emph on
+user directory
+\emph default
+.
+
+\emph on
+ 
+\emph default
+To find out where it is, use 
+\family sans
+\bar under
+H
+\bar default
+elp\SpecialChar \menuseparator
+About Ly
+\bar under
+X
+\family default
+\bar default
+.
+ (You may set up an alternative user directory from the command line, using
+ the switch 
+\family typewriter
+-userdir
+\family default
+.)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The 
 \family sans
 \bar under
 T
 \bar default
 ools\SpecialChar \menuseparator
 
-\family default
-\SpecialChar \-
-
-\family sans
 \bar under
 P
 \bar default
@@ -2559,7 +2601,11 @@ P
 \bar default
 references
 \family default
-) and set the entries 
+), select the 
+\family sans
+Printer
+\family default
+ tab, and set the entries 
 \family sans
 Adapt\InsetSpace ~
 output
@@ -2772,7 +2818,11 @@ ghostview
 gv
 \family default
 .
- LyX will automatically use it instead of ghostscript if it is available.
+ LyX will automatically use it instead of 
+\family typewriter
+ghostview
+\family default
+ if it is available.
 \end_layout
 
 \begin_layout Section
@@ -2796,19 +2846,16 @@ as described in the last section.
 \begin_layout Standard
 
 \size normal
-Those of you using Linux, however, will have a bit more work to do.
- Many people now receive a Linux distribution, such as Red Hat or Slackware,
- on CD-ROM
-\size default
-\SpecialChar \@.
-
-\size normal
+Those of you using Linux, however, may have a bit more work to do.
+ Many people now install Linux from an ISO image of one of the popular distribut
+ions.
  They follow the install instructions, get Linux up and running, but never
  realize that they need to set up their printer.
  
 \size default
-If you find that you need to do this by hand, we've written a little something
- to help you out with that; check out the 
+The more desktop friendly distributions may do this for you automatically.
+ However, if you find that you need to do this by hand, we've written a
+ little something to help you out with that; check out the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -4421,7 +4468,7 @@ Before describing all of the various paragraph environments, we'd like to
 Everyone seems to have their own convention for separating paragraphs.
  Most Americans indent the first line of a paragraph.
  Others don't indent but put extra space between the paragraphs.
- LyX uses the same convention you find among typographer.
+ LyX uses the same convention you find among typographers.
  The 
 \emph on
 first
@@ -4447,12 +4494,6 @@ will
  print it that way.
  You'll need to get a special package and insert an appropriate command
  in the preamble.
- [
-\emph on
-Editor's Note: I'll insert this info when I get the time.
- - jw
-\emph default
-]
 \end_layout
 
 \end_inset
@@ -5869,7 +5910,7 @@ You can only use inlined math in these environments.
 \end_layout
 
 \begin_layout Itemize
-You cannot do any nesting with these environments.
+You cannot nest other environments into these environments.
 \end_layout
 
 \begin_layout Itemize
@@ -7325,12 +7366,6 @@ could
 should
 \emph default
  only use it at the beginning of the document, after the title.
- Also, don't bother trying to nest 
-\family sans
-Abstract
-\family default
- in anything else or vice versa.
- It won't work.
  The 
 \family sans
 Abstract
@@ -7603,8 +7638,7 @@ nsert\SpecialChar \menuseparator
 \bar under
 C
 \bar default
-itation\InsetSpace ~
-Reference
+itation
 \family default
  command.
  Just choose the key inside in the available keys list, then add a reference
@@ -7751,7 +7785,7 @@ You can't really nest things into a
 \family sans
 Caption
 \family default
- environment or vice versa.
+ environment.
  Additionally, hitting 
 \family sans
 Return
@@ -8334,6 +8368,99 @@ Unnestable Can't nest them.
 \begin_layout Itemize
 
 \family sans
+Bibliography
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Title
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Author
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Date
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Fully\InsetSpace ~
+Nestable You can nest them.
+ You can nest other things into them.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family sans
+Abstract
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Verse
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Quote
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Quotation
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Itemize
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Enumerate
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Description
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+List
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+LyX-Code
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Nestable-Inside You can nest them inside of other things.
+ You can't nest anything into them.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family sans
 Part
 \end_layout
 
@@ -8410,99 +8537,6 @@ Subsubsection*
 \begin_layout Itemize
 
 \family sans
-Bibliography
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Abstract
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Title
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Author
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Date
-\end_layout
-
-\end_deeper
-\begin_layout Description
-Fully\InsetSpace ~
-Nestable You can nest them.
- You can nest other things into them.
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family sans
-Verse
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Quote
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Quotation
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Itemize
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Enumerate
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Description
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-List
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-LyX-Code
-\end_layout
-
-\end_deeper
-\begin_layout Description
-Nestable-Inside You can nest them inside of other things.
- You can't nest anything into them.
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family sans
 Standard
 \end_layout
 
@@ -8519,26 +8553,13 @@ Address
 Address
 \end_layout
 
-\end_deeper
-\begin_layout Standard
-The 
+\begin_layout Itemize
+
 \family sans
 Caption
-\family default
- environment doesn't really fit anywhere, since it's only used inside of
- 
-\family sans
-Table\InsetSpace ~
-Floats
-\family default
- and 
-\family sans
-Figure\InsetSpace ~
-Floats
-\family default
-.
 \end_layout
 
+\end_deeper
 \begin_layout Subsection
 Nesting Other Things: Tables, Math, Floats, etc.
 \begin_inset LatexCommand \label{sec:table-and-fig-nesting}
@@ -10163,11 +10184,13 @@ Noun
 \family default
  style corresponds to a font in smallcaps, which some languages and writing
  styles use to typeset proper names.
- The LyX Team actually hopes to someday have a full set of character styles,
- and to also allow the user to customize which font changes correspond to
- what styles.
- At the moment, though, you'll have to be satisfied with what we've done
- already.
+ The LyX Team has at last (as of LyX version\InsetSpace ~
+1.4) introduced true character
+ styles, but currently these must be defined explicitly in the document
+ layout file.
+ There's currently no GUI support to define new, or tweak existing, character
+ styles to allow you, the user, to customize which font changes correspond
+ to what styles.
 \end_layout
 
 \begin_layout Subsection
@@ -11941,7 +11964,7 @@ In LyX, the
 -
 \family default
 
-\begin_inset Quotes eld
+\begin_inset Quotes erd
 \end_inset
 
  character comes in three lengths, often called the 
@@ -12005,7 +12028,7 @@ status collapsed
 -
 \family default
 
-\begin_inset Quotes eld
+\begin_inset Quotes erd
 \end_inset
 
 
@@ -12049,7 +12072,7 @@ status collapsed
 -
 \family default
 
-\begin_inset Quotes eld
+\begin_inset Quotes erd
 \end_inset
 
 
@@ -12073,7 +12096,7 @@ a
 -
 \family default
 
-\begin_inset Quotes eld
+\begin_inset Quotes erd
 \end_inset
 
  in math mode
@@ -12089,7 +12112,7 @@ You generate these by using the
 -
 \family default
 
-\begin_inset Quotes eld
+\begin_inset Quotes erd
 \end_inset
 
  character multiple times in a row.
@@ -12109,7 +12132,7 @@ The three types of dash are distinct from the minus sign, which appears
 -
 \family default
 
-\begin_inset Quotes eld
+\begin_inset Quotes erd
 \end_inset
 
  in use:
@@ -12200,7 +12223,14 @@ texconfig
 \family typewriter
 fmtutil
 \family default
- in order to switch hyphenation on for your language by ''uncommenting''
+ in order to switch hyphenation on for your language by 
+\begin_inset Quotes eld
+\end_inset
+
+uncommenting
+\begin_inset Quotes erd
+\end_inset
+
  the relevant line in a file typically named 
 \family typewriter
 language.dat
@@ -12922,10 +12952,11 @@ I
 \bar no
 nsert
 \series default
-\bar under
+\bar default
 \SpecialChar \menuseparator
 
 \series medium
+\bar under
 F
 \bar no
 ootnote, 
@@ -13242,8 +13273,7 @@ from the menu.
 \end_layout
 
 \begin_layout Standard
-A graphics inset will be added to your document and a dialog will appear
- for you to choose the file to load.
+A dialog will appear for you to choose the file to load.
  You can also change any settings you need to in this dialog.
 \end_layout
 
@@ -14962,6 +14992,18 @@ T
 \family sans
 \bar default
 able
+\family default
+ or 
+\family sans
+\bar under
+E
+\bar default
+dit\SpecialChar \menuseparator
+Rows&
+\bar under
+C
+\bar default
+ols
 \family default
  when the cursor is inside a table.
  
@@ -17952,19 +17994,12 @@ Pane
 l
 \family default
 \bar default
- dialog, or via 
+ dialog, by 
 \family sans
-\bar under
-E
-\bar default
-dit\SpecialChar \menuseparator
-
-\bar under
-M
-\bar default
-ath
+Edit\SpecialChar \menuseparator
+Math
 \family default
-.
+, or by clicking the right mouse button on the formula.
  The math panel is very useful, so you may want to open it and leave it
  somewhere on the screen.
  If you're not already in a formula, selecting anything from the math panel
@@ -19719,7 +19754,19 @@ M
 \bar default
 ath
 \family default
- menu.
+ and 
+\family sans
+\bar under
+E
+\bar default
+dit\SpecialChar \menuseparator
+Rows&
+\bar under
+C
+\bar default
+ols
+\family default
+ menus.
 \end_layout
 
 \begin_layout Standard
@@ -19731,8 +19778,12 @@ There are numerous other arrays used in LaTeX math-mode, particularly with
 cases
 \family default
  and commutative diagrams.
- Not all of these are supported in LyX.
- However, it is possible to build these structures from a matrix.
+ Not all of these are supported in LyX but some are, see 
+\family sans
+Insert\SpecialChar \menuseparator
+Math
+\family default
+.
 \end_layout
 
 \begin_layout Standard
@@ -21449,13 +21500,21 @@ p
 \bar default
 review
 \family default
- check box in the
+ 
+\begin_inset Quotes eld
+\end_inset
+
+On
+\begin_inset Quotes erd
+\end_inset
+
+ pulldown item in the
 \family sans
  
 \bar under
-E
+T
 \bar default
-dit\SpecialChar \menuseparator
+ools\SpecialChar \menuseparator
 
 \bar under
 P
@@ -21496,7 +21555,15 @@ review
 
 \begin_layout Standard
 LyX will generate previews of math insets.
- It will also generate previews of include insets if you select the 
+ It will also generate previews of include insets or 
+\begin_inset Quotes eld
+\end_inset
+
+child documents
+\begin_inset Quotes erd
+\end_inset
+
+ if you select the 
 \family sans
 \bar under
 S
@@ -22878,7 +22945,7 @@ ccept compound words
 Prevent the spellchecker from complaining about compounded words like
 \newline
 
-\begin_inset Quotes eld
+\begin_inset Quotes erd
 \end_inset
 
 passthrough
@@ -28375,8 +28442,7 @@ status collapsed
 \begin_layout Standard
 
 \backslash
-href{http://www.lyx.org/cgi-bin/viewcvs.cgi/*checkout*/lyx-devel/lib/CREDITS?rev=HE
-AD&content-type=text/plain}{
+href{http://www.lyx.org/about/credits.php}{
 \end_layout
 
 \end_inset

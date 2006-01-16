@@ -45,7 +45,11 @@ Amir Karger
 \noun default
 .
  If you have comments or error corrections, please send them to the LyX
- Documentation mailing list, <lyx-docs@lists.lyx.org>.
+ Documentation mailing list, 
+\family typewriter
+lyx-docs@lists.lyx.org
+\family default
+.
 \end_layout
 
 \end_inset
@@ -2213,7 +2217,7 @@ exercise
 \begin_inset Quotes erd
 \end_inset
 
- here; just write a letter to someone
+ here; just write a letter to someone!
 \begin_inset Foot
 status collapsed
 
@@ -2237,7 +2241,7 @@ Environment
 
 \end_inset
 
-!
+
 \end_layout
 
 \begin_layout Standard
@@ -2493,7 +2497,6 @@ LyX puts the references in a box right where the cursor was.
  In the printed document, this reference marker will be replaced with either
  the page or section number (depending on what you selected in the 
 \family sans
-Insert\InsetSpace ~
 Reference
 \family default
  dialog).
@@ -2546,7 +2549,7 @@ Reference
 \family sans
 Go\InsetSpace ~
 to\InsetSpace ~
-reference
+Label
 \family default
  will move the cursor to the referenced label.
 \end_layout
@@ -2593,10 +2596,9 @@ If you want some more practice with labels, then try putting a new label
  If you'll be inserting cross-references often (if, for example, you're
  writing a journal article), it may be convenient to leave the 
 \family sans
-Insert\InsetSpace ~
 Reference
 \family default
- window open.
+ dialog open.
 \end_layout
 
 \begin_layout Standard
@@ -2923,10 +2925,9 @@ nsert\SpecialChar \menuseparator
 \bar under
 C
 \bar default
-itation\InsetSpace ~
-Reference\SpecialChar \@.
-
+itation
 \family default
+.
  A 
 \family sans
 Citation
@@ -2953,12 +2954,11 @@ lyxtutorial
 \begin_layout Standard
 How are the other fields used? The 
 \family sans
-Text\InsetSpace ~
-aft
 \bar under
-e
+T
 \bar default
-r
+ext\InsetSpace ~
+after
 \family default
  field in the 
 \family sans
@@ -2985,7 +2985,8 @@ abel
 field in the 
 \family sans
 Bibliography\InsetSpace ~
-item
+Entry\InsetSpace ~
+Settings
 \family default
  dialog.
  As usual, you can see the 
@@ -4349,7 +4350,7 @@ G
 \bar default
 raphics
 \family default
-\SpecialChar \@.
+.
  Then click on the figure to choose the file to include, rotate or scale
  it, etc.) Tables and figures can have captions, and LyX will automatically
  generate lists of figures and/or tables.
@@ -4492,9 +4493,10 @@ learn
  The short answer is that LyX can do pretty much everything LaTeX can do
  in one form or another, and it definitely simplifies most parts of writing
  a LaTeX document.
- Currently, there may be some annoyance in converting old LaTeX documents
- and in a couple other areas, but later releases of LyX will get rid of
- these problems.
+ The tool that is used to convert a LaTeX document to LyX was rewritten
+ completely for LyX\InsetSpace ~
+1.4.
+ It should now be able to handle most LaTeX gracefully.
 \end_layout
 
 \begin_layout Standard
@@ -4533,8 +4535,10 @@ nsert\SpecialChar \menuseparator
 Te
 \bar under
 X
-\family default
 \bar default
+\InsetSpace ~
+Code
+\family default
 .
  This creates a text box, and everything within it is passed straight to
  LaTeX.
@@ -4631,9 +4635,9 @@ usepackage{foo}
 \end_layout
 
 \begin_layout Subsection
-Importing LaTeX Documents--- 
+Importing LaTeX Documents --- 
 \family typewriter
-reLyX
+tex2lyx
 \end_layout
 
 \begin_layout Standard
@@ -4659,11 +4663,11 @@ L
 aTeX
 \family default
  command in LyX.
- This will call a Perl script called 
+ This will call 
 \family typewriter
-reLyX
+tex2lyx
 \family default
----which will create a file 
+ which will create a file 
 \family typewriter
 foo.lyx
 \family default
@@ -4671,51 +4675,24 @@ foo.lyx
 \family typewriter
 foo.tex
 \family default
----and then open that file.
+ --- and then open that file.
  If the translation doesn't work, you can try calling 
 \family typewriter
-reLyX
+tex2lyx
 \family default
- from the command line
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-When LyX is installed, a separate executable called 
-\family typewriter
-reLyX
-\family default
- will be placed in the same folder as the 
-\family typewriter
-lyx
-\family default
- executable (e.g., 
-\family typewriter
-/usr/local/bin/reLyX
-\family default
-).
-
-\family typewriter
- reLyX
-\family default
- requires Perl (version 5.002 as of this writing).
-\end_layout
-
-\end_inset
-
-, possibly using fancier options.
+ from the command line, possibly using fancier options.
 \end_layout
 
 \begin_layout Standard
 
 \family typewriter
-reLyX
+tex2lyx
 \family default
  will translate most legal LaTeX, but not everything.
  It will leave things it doesn't understand in TeX mode, so after translating
  a file with 
 \family typewriter
-reLyX
+tex2lyx
 \family default
 , you can look for red text and hand-edit it to look right.
 \end_layout
@@ -4723,7 +4700,7 @@ reLyX
 \begin_layout Standard
 
 \family typewriter
-reLyX
+tex2lyx
 \family default
  has its own manpage.
  Read it to find out about which LaTeX commands and environments aren't
@@ -4945,8 +4922,7 @@ nsert\SpecialChar \menuseparator
 \bar under
 C
 \bar default
-itation\InsetSpace ~
-Reference
+itation
 \family default
  (see Section\InsetSpace ~
 
@@ -4974,18 +4950,15 @@ Errors!
 \begin_layout Standard
 Sometimes when you LaTeX a document, there will be errors, things that LyX
  or LaTeX can't understand.
- When this happens, LyX will create an error box (a box with the word 
-\begin_inset Quotes eld
-\end_inset
-
-error
-\begin_inset Quotes erd
-\end_inset
-
- in it).
- Clicking on this box will pop up a window showing what the error was.
- LyX will just include the error message that LaTeX gave.
- Note that the placement of these errors in often not accurate.
+ When this happens, LyX will open a 
+\family sans
+LaTeX\InsetSpace ~
+Errors
+\family default
+ dialog.
+ Clicking on individual errors in this dialog will take you to the place
+ in the LyX document where the error occurs and also display the detailed
+ LaTeX error message.
 \end_layout
 
 \end_body
