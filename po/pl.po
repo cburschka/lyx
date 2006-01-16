@@ -2,20 +2,19 @@
 # translation of pl.po to Polish
 # Polskie teksty dla LyX-a (2001).
 # Polish messages for LyX (2001).
-# Copyright (C) 2000, 2005 Free Software Foundation, Inc.
+# Copyright (C) 2000, 2006 Free Software Foundation, Inc.
 # Pawe³ Dziekoñski <p.dziekonski@mml.ch.pwr.wroc.pl>
 # Tomasz £uczak <tlu@technodat.com.pl>
 # Arkadiusz Lipiec <alipiec@elka.pw.edu.pl>
-# Tomasz £uczak <tlu@technodat.com.pl>, 2005.
-# Tomasz Luczak <tlu@technodat.com.pl>, 2005.
+# Tomasz £uczak <tlu@technodat.com.pl>, 2005, 2006.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2005-12-24 10:59+0100\n"
-"PO-Revision-Date: 2005-12-28 20:46+0100\n"
-"Last-Translator: Tomasz Luczak <tlu@technodat.com.pl>\n"
+"PO-Revision-Date: 2006-01-12 23:14+0100\n"
+"Last-Translator: Tomasz £uczak <tlu@technodat.com.pl>\n"
 "Language-Team: Polski <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-2\n"
@@ -1313,7 +1312,7 @@ msgstr "Wy¶wietlanie rysunków:|#W"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1012
 msgid "Instant Preview:|#p"
-msgstr "Podgl±d:|#P"
+msgstr "Natychmiastowy podgl±d:|#P"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1054
 msgid "Real name:|#R"
@@ -1626,7 +1625,6 @@ msgid "Paper size:"
 msgstr "Rozmiar papieru:"
 
 #: src/frontends/xforms/forms/form_preferences.fd:2950
-#, fuzzy
 msgid "Plain text line length:|#A"
 msgstr "D³ugo¶æ wiersza ASCII:|#A"
 
@@ -1643,9 +1641,8 @@ msgid "Outside Code Interaction"
 msgstr "Przetwarzanie danych zawnêtrznych"
 
 #: src/frontends/xforms/forms/form_preferences.fd:3026
-#, fuzzy
 msgid "Plain text roff:|#r"
-msgstr "Drukarka:|#D"
+msgstr ""
 
 #: src/frontends/xforms/forms/form_preferences.fd:3044
 msgid "Checktex:|#c"
@@ -3827,7 +3824,7 @@ msgstr "Nie wy¶wietlaj"
 
 #: src/frontends/qt2/ui/QPrefDisplayModule.ui:127
 msgid "Instant &Preview:"
-msgstr "&Podgl±d:"
+msgstr "Natychmiastowy &podgl±d:"
 
 #: src/frontends/qt2/ui/QPrefFileformatsModule.ui:77
 msgid "&GUI name:"
@@ -5413,7 +5410,7 @@ msgstr ""
 #: lib/layouts/aa.layout:76 lib/layouts/aa.layout:170
 #: lib/layouts/svjour.inc:237
 msgid "Mail"
-msgstr ""
+msgstr "List"
 
 #: lib/layouts/aa.layout:79 lib/layouts/aa.layout:291
 #: lib/layouts/aapaper.layout:96 lib/layouts/aapaper.layout:184
@@ -5917,7 +5914,7 @@ msgstr ""
 #: lib/layouts/egs.layout:176 lib/layouts/linuxdoc.layout:190
 #: lib/layouts/manpage.layout:96 lib/layouts/stdlists.inc:25
 msgid "*"
-msgstr ""
+msgstr "*"
 
 #: lib/layouts/apa.layout:330
 msgid "Seriate"
@@ -6107,7 +6104,7 @@ msgstr ""
 #: lib/layouts/cl2emult.layout:69 lib/layouts/llncs.layout:214
 #: lib/layouts/svjour.inc:212
 msgid "Institute"
-msgstr "Instytu³"
+msgstr "Instytucja"
 
 #: lib/layouts/cv.layout:58
 msgid "Topic"
@@ -6260,7 +6257,7 @@ msgstr ""
 
 #: lib/layouts/egs.layout:268
 msgid "LaTeX Title"
-msgstr "LaTeX Tytu³:"
+msgstr "Tytu³ LaTeX"
 
 #: lib/layouts/egs.layout:303
 msgid "Author:"
@@ -7373,7 +7370,7 @@ msgstr "Instytucja"
 
 #: lib/layouts/revtex4.layout:94
 msgid "Preprint"
-msgstr "Przedruk"
+msgstr ""
 
 #: lib/layouts/revtex4.layout:165 lib/layouts/amsdefs.inc:202
 msgid "Thanks:"
@@ -8453,7 +8450,7 @@ msgstr "Niemiecki"
 
 #: lib/languages:31
 msgid "German (new spelling)"
-msgstr "Niemiecki (nowa ortografia)"
+msgstr "Niemiecki (nowa pisownia)"
 
 #: lib/languages:33
 msgid "Hebrew"
@@ -10660,7 +10657,7 @@ msgstr " Zapisanie pliku nie powiod³o siê! Dokument zosta³ utracony."
 #: src/bufferparams.C:414
 #, c-format
 msgid "The document uses a missing TeX class \"%1$s\".\n"
-msgstr "Dokument u¿ywa nieznanej klasy TeX-a \"%1$s'\".\n"
+msgstr "Dokument u¿ywa brakuj±cej klasy TeX-a \"%1$s'\".\n"
 
 #: src/bufferparams.C:416
 msgid "Document class not available"
@@ -12140,7 +12137,7 @@ msgstr "Niepoprawna nazwa pliku"
 msgid ""
 "LyX does not provide LateX support for file names containing any of these "
 "characters:\n"
-msgstr ""
+msgstr "LyX nie obs³uguje ¶cie¿ek zawieraj±cych jeden ze znaków:\n"
 
 #: src/frontends/xforms/Alert_pimpl.C:79
 msgid "OK|^M"
@@ -12269,7 +12266,7 @@ msgstr "Dodaj cytowanie wybranej pozycji bibliografii"
 
 #: src/frontends/xforms/FormCitation.C:178
 msgid "Delete citation of the selected bibliography entry."
-msgstr ""
+msgstr "Usuñ cytowanie wybranej pozycji bibliografii"
 
 #: src/frontends/xforms/FormCitation.C:181
 msgid "Move the selected entry upwards (in the current list)."
@@ -12545,7 +12542,7 @@ msgstr "Okre¶l wysoko¶æ obrazu do wstawionej warto¶ci."
 #: src/frontends/xforms/FormGraphics.C:163
 #, no-c-format
 msgid "Select unit for width; Scale% for scaling whole image."
-msgstr "Wybierz jednostkê szeroko¶ci. Skala% dla skalowania ca³ego obrazka"
+msgstr "Wybierz jednostkê szeroko¶ci. Skala% dla skalowania ca³ego obrazka."
 
 #: src/frontends/xforms/FormGraphics.C:165
 msgid "Set the image height to the inserted value."
@@ -12603,7 +12600,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormGraphics.C:229
 msgid "Clip image to the bounding box values."
-msgstr "Obetnij do rozmiarów bounding box"
+msgstr "Obetnij do rozmiarów bounding box."
 
 #: src/frontends/xforms/FormGraphics.C:261
 msgid ""
@@ -12613,7 +12610,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormGraphics.C:265
 msgid "Insert the point of origin for rotation."
-msgstr "Wstaw punkt obrotu"
+msgstr "Wstaw punkt obrotu."
 
 #: src/frontends/xforms/FormGraphics.C:267
 msgid "Enables use of subfigure with its own caption."
@@ -12946,15 +12943,15 @@ msgstr " ispell | aspell "
 
 #: src/frontends/xforms/FormPrint.C:80
 msgid "Select for printer output."
-msgstr "Wybierz do wydruku"
+msgstr "Wybierz do wydruku."
 
 #: src/frontends/xforms/FormPrint.C:82
 msgid "Enter printer command."
-msgstr "Podaj polecenie drukowania"
+msgstr "Podaj polecenie drukowania."
 
 #: src/frontends/xforms/FormPrint.C:84
 msgid "Select for file output."
-msgstr "Wybierz plik do wydruku"
+msgstr "Wybierz plik do wydruku."
 
 #: src/frontends/xforms/FormPrint.C:86
 msgid "Enter file name as print destination."
@@ -13054,11 +13051,11 @@ msgstr ""
 
 #: src/frontends/xforms/FormSearch.C:57
 msgid "Do case sensitive search."
-msgstr "Wielko¶æ liter"
+msgstr "Wielko¶æ liter."
 
 #: src/frontends/xforms/FormSearch.C:59
 msgid "Search only matching words."
-msgstr "Szukaj tylko zgodne s³owa"
+msgstr "Szukaj tylko zgodne s³owa."
 
 #: src/frontends/xforms/FormSearch.C:61
 msgid "Search backwards."
@@ -13084,19 +13081,19 @@ msgstr "Lista propozycji zastapieñ ze s³ownika"
 
 #: src/frontends/xforms/FormSpellchecker.C:68
 msgid "Replace unknown word."
-msgstr "Zast±p nieznane s³owo"
+msgstr "Zast±p nieznane s³owo."
 
 #: src/frontends/xforms/FormSpellchecker.C:70
 msgid "Ignore unknown word."
-msgstr "Ignoruj s³owo"
+msgstr "Ignoruj s³owo."
 
 #: src/frontends/xforms/FormSpellchecker.C:72
 msgid "Accept unknown word as known in this session."
-msgstr "Akceptuj s³owo na czas tej sesji"
+msgstr "Akceptuj s³owo na czas tej sesji."
 
 #: src/frontends/xforms/FormSpellchecker.C:74
 msgid "Add unknown word to personal dictionary."
-msgstr "Dodaj do osobistego s³ownika"
+msgstr "Dodaj do osobistego s³ownika."
 
 #: src/frontends/xforms/FormSpellchecker.C:76
 msgid "Proportion of document checked."
@@ -13116,7 +13113,7 @@ msgstr "D³uga tabela"
 
 #: src/frontends/xforms/FormTabular.C:538
 msgid "Wrong Cursor position, updated window"
-msgstr "Nieporawna pozycja kursora, od¶wie¿ zawarto¶æ okna"
+msgstr "Niepoprawna pozycja kursora, od¶wie¿ zawarto¶æ okna"
 
 #: src/frontends/xforms/FormTabular.C:559
 #: src/frontends/xforms/FormTabular.C:577
@@ -13149,7 +13146,7 @@ msgstr "Poka¿ pe³n± ¶cie¿kê albo tylko nazwy plików"
 
 #: src/frontends/xforms/FormTexinfo.C:60
 msgid "Runs the script \"TexFiles.sh\" to rebuild the file lists."
-msgstr "Uruchamia skrypt ,,TexFiles.sh'' buduj±cy nowe listy plików."
+msgstr "Uruchamia skrypt \"TexFiles.sh\" buduj±cy nowe listy plików."
 
 #: src/frontends/xforms/FormTexinfo.C:63
 msgid "Double click to view contents of file."
@@ -13457,7 +13454,7 @@ msgstr "Indeks"
 
 #: src/insets/insetmarginal.C:30 src/insets/insetmarginal.C:38
 msgid "margin"
-msgstr "Marginesy"
+msgstr "Margines"
 
 #: src/insets/insetmarginal.C:51
 msgid "Opened Marginal Note Inset"
@@ -13644,6 +13641,8 @@ msgid ""
 "Could not create an ispell process.\n"
 "You may not have the right languages installed."
 msgstr ""
+"Nie mo¿na utworzyæ procesu ispella.\n"
+"Byæ mo¿e nie zainstalowano poprawnego jêzyka."
 
 #: src/ispell.C:268
 msgid ""
@@ -13653,7 +13652,7 @@ msgstr ""
 
 #: src/ispell.C:377
 msgid "Could not communicate with the ispell spellchecker process."
-msgstr "Nie mo¿na skomunikowaæ siê z procesem sprawdzania pisowni ispell"
+msgstr "Nie mo¿na skomunikowaæ siê z procesem sprawdzania pisowni ispell."
 
 #: src/kbsequence.C:160
 msgid "   options: "
@@ -13870,7 +13869,7 @@ msgstr "Gotowe!"
 #: src/lyx_main.C:219
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
-msgstr "B³êdna opcja linii poleceñ ,,%1$s''  Zakoñczenie"
+msgstr "B³êdna opcja linii poleceñ ,,%1$s''  Zakoñczenie pracy."
 
 #: src/lyx_main.C:390
 msgid "LyX: "
@@ -13887,6 +13886,9 @@ msgid ""
 "%1$s. Make sure that this\n"
 "path exists and is writable and try again."
 msgstr ""
+"Nie mo¿na utworzyæ katalogu tymczasowego w\n"
+"%1$s. Upewnij siê ¿e ¶cie¿ka istnieje,\n"
+"masz prawo zapisu i spróbuj ponownie."
 
 #: src/lyx_main.C:642
 msgid "Missing user LyX directory"
@@ -13909,7 +13911,7 @@ msgstr "&Koniec programu."
 
 #: src/lyx_main.C:650
 msgid "No user LyX directory. Exiting."
-msgstr "Brak katalogu u¿ytkownika LyXa. Koñczenie pracy."
+msgstr "Brak katalogu u¿ytkownika LyXa. Zakoñczenie pracy."
 
 #: src/lyx_main.C:654
 #, c-format
@@ -13918,7 +13920,7 @@ msgstr "LyX: Tworzenie katalogu %1$s"
 
 #: src/lyx_main.C:661
 msgid "Failed to create directory. Exiting."
-msgstr "Nieudane tworzenie katalogu. Koñczenie pracy."
+msgstr "Nieudane tworzenie katalogu. Zakoñczenie pracy."
 
 #: src/lyx_main.C:811
 msgid "List of supported debug flags:"
@@ -14816,7 +14818,7 @@ msgstr "Wszystkie pliki (*)"
 #: src/support/package.C.in:424
 #, c-format
 msgid "Unable to determine the path to the LyX binary from the command line %1$s"
-msgstr ""
+msgstr "Nie mo¿na okre¶liæ ¶cie¿ki do katalogu systemowego LyX-a z wiersza poleceñ %1$s"
 
 #: src/support/package.C.in:545
 #, c-format
@@ -14826,6 +14828,9 @@ msgid ""
 "Try the '-sysdir' command line parameter or set the environment variable "
 "LYX_DIR_14x to the LyX system directory containing the file `chkconfig.ltx'."
 msgstr ""
+"Nie mo¿na okre¶liæ katalogu systemowego zawieraj±cy poszukiwany\n"
+"\t%1$s\n"
+"Spróbuj podaæ parametr wywo³ania '-sysdir' lub ustaw zmienn± ¶rodowiskow± LYX_DIR_14x na katalog systemowy LyX-a zawieraj±cy plik 'chkconfig.ltx'."
 
 #: src/support/package.C.in:630
 #, c-format
@@ -14833,6 +14838,8 @@ msgid ""
 "Invalid %1$s switch.\n"
 "Directory %2$s does not contain %3$s."
 msgstr ""
+"Niepoprawny prze³±cznik %1$s.\n"
+"Katalog %2$s nie zawiera %3$s."
 
 #: src/support/package.C.in:656
 #, c-format
@@ -14840,6 +14847,8 @@ msgid ""
 "Invalid %1$s environment variable.\n"
 "Directory %2$s does not contain %3$s."
 msgstr ""
+"Niepoprawna zawarto¶æ zmiennej ¶rodowisowej %1$s.\n"
+"Katalog %2$s nie zawiera %3$s."
 
 #: src/support/package.C.in:679
 #, c-format
@@ -14847,6 +14856,8 @@ msgid ""
 "Invalid %1$s environment variable.\n"
 "%2$s is not a directory."
 msgstr ""
+"Niepoprawna zawarto¶æ zmiennej ¶rodowisowej %1$s.\n"
+"%2$s nie jest katalogiem."
 
 #: src/support/userinfo.C:44
 msgid "Unknown user"
