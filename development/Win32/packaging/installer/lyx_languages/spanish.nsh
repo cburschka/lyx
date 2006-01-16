@@ -14,27 +14,27 @@ LangString SecDesktopTitle "${LYX_LANG}" "Icono de escritorio"
 
 LangString SecCoreDescription "${LYX_LANG}" "Los ficheros de ${PRODUCT_NAME}."
 LangString SecAllUsersDescription "${LYX_LANG}" "Instalar para todos los usuarios o sólo para el usuario actual. (Requiere privilegios de Administrador.)"
-LangString SecFileAssocDescription "${LYX_LANG}" "Asociar la extesión .lyx con LyX."
+LangString SecFileAssocDescription "${LYX_LANG}" "Asociar la extesión .lyx con ${PRODUCT_NAME}."
 LangString SecDesktopDescription "${LYX_LANG}" "Crear un icono de ${PRODUCT_NAME} en el escritorio."
 
-LangString ModifyingConfigureFailed "${LYX_LANG}" "Error al intentar añadir 'path_prefix' durante la ejecución del programa de configuración"
-LangString CreateCmdFilesFailed "${LYX_LANG}" "Failed atempting to create lyx.cmd and reLyX.cmd"
-LangString RunConfigureFailed "${LYX_LANG}" "Error al intentar ejecutar el programa de configuración"
+LangString ModifyingConfigureFailed "${LYX_LANG}" "Error al intentar añadir la entrada 'path_prefix' a la rutina de configuración"
+LangString CreateCmdFilesFailed "${LYX_LANG}" "Error al intentar crear lyx.cmd y reLyX.cmd"
+LangString RunConfigureFailed "${LYX_LANG}" "Error al intentar ejecutar la rutina de configuración"
 
-LangString FinishPageMessage "${LYX_LANG}" "Enhorabuena! LyX ha sido instalado satisfactoriamente."
-LangString FinishPageRun "${LYX_LANG}" "Ejecutar LyX"
+LangString FinishPageMessage "${LYX_LANG}" "Si todo fue bien, LyX debería haber sido instalado correctamente. Sin embargo, algunos de nuestros usuarios han informado de que la rutina de configuración falla al ejecutarse y, como resultado, LyX también falla al ejecutarse (puesto que no encuentra el fichero textclass.lst). Para solucionar este problema abra una ventana de MS-DOS y ejecute el comando 'sh configure' desde el directorio LyX/Resources/lyx ."
+LangString FinishPageRun "${LYX_LANG}" "Ejecutar LyX ahora"
 
 LangString DownloadPageField2 "${LYX_LANG}" "&No instalar"
 
 LangString MinSYSHeader "${LYX_LANG}" "MinSYS"
-LangString MinSYSDescription "${LYX_LANG}" "MinSYS es un pequeño entorno unix (www.mingw.org/msys.shtml) que ${PRODUCT_NAME} necesita para ejecutar algunos ficheros de comandos."
+LangString MinSYSDescription "${LYX_LANG}" "MinSYS (www.mingw.org/msys.shtml) es un pequeño entorno Unix que ${PRODUCT_NAME} necesita para ejecutar algunos ficheros de comandos."
 LangString EnterMinSYSFolder "${LYX_LANG}" "Por favor, introduzca la ruta completa del directorio que contiene sh.exe"
 LangString InvalidMinSYSFolder "${LYX_LANG}" "Imposible encontrar sh.exe"
 LangString MinSYSDownloadLabel "${LYX_LANG}" "&Descargar MinSYS"
 LangString MinSYSFolderLabel "${LYX_LANG}" "&Directorio que contiene sh.exe"
 
 LangString PythonHeader "${LYX_LANG}" "Python"
-LangString PythonDescription "${LYX_LANG}" "EL lenguaje de programación de comandos Python (www.python.org) debe estar instalado o de lo contrario ${PRODUCT_NAME} no será capaz de ejecutar ciertos ficheros de comandos."
+LangString PythonDescription "${LYX_LANG}" "El lenguaje de programación Python (www.python.org) debe estar instalado o de lo contrario ${PRODUCT_NAME} no será capaz de ejecutar ciertos ficheros de comandos."
 LangString EnterPythonFolder "${LYX_LANG}" "Por favor, introduzca la ruta completa del directorio que contiene Python.exe"
 LangString InvalidPythonFolder "${LYX_LANG}" "Imposible encontrar Python.exe"
 LangString PythonDownloadLabel "${LYX_LANG}" "&Descargar Python"
@@ -70,11 +70,11 @@ LangString GhostscriptFolderLabel "${LYX_LANG}" "&Directorio que contiene gswin3
 
 LangString SummaryTitle "${LYX_LANG}" "Resumen de la instalación"
 LangString SummaryPleaseInstall "${LYX_LANG}" "Por favor, instale los programas descargados y vuelva a ejecutar el insralador de LyX una vez más."
-LangString SummaryPathPrefix "${LYX_LANG}" "Durante la instalación el siguiente 'path_prefix' se añadirá a 'lyxrc.defaults':"
+LangString SummaryPathPrefix "${LYX_LANG}" "Durante la instalación la variable 'path_prefix' se añadirá a 'lyxrc.defaults' con el siguiente contenido:"
 
-LangString UILangageTitle "${LYX_LANG}" "The language of LyX's interface"
-LangString UILangageDescription "${LYX_LANG}" "As used for menus, messages, etc."
-LangString UILanguageAvailableLanguages "${LYX_LANG}" " Available Languages "
+LangString UILangageTitle "${LYX_LANG}" "Seleccione el idioma que desea para la interfaz de LyX"
+LangString UILangageDescription "${LYX_LANG}" "Será usado en los menús, mensajes, etc."
+LangString UILanguageAvailableLanguages "${LYX_LANG}" " Idiomas disponibles "
 
 LangString UnNotInRegistryLabel "${LYX_LANG}" "Imposible encontrar $(^Name) en el registro$\r$\nLos accesos rápidos del escritorio y del Menú de Inicio no serán eliminados."
 LangString UnNotAdminLabel "${LYX_LANG}" "Lo siento! Necesita privilegios de administrador$\r$\npara desinstalar $(^Name)."
