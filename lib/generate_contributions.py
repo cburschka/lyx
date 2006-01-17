@@ -447,11 +447,11 @@ contributers = [
                  u"Bug fixes"),
 
      contributer(u"Claudio Coco",
-                 "lacocio () iol ! it",
-                 "",
-                 "",
-                 "",
-                 "",
+                 "lacocio () libero ! it",
+                 "GPL",
+                 "Agreement to GNU General Public licence",
+                 "m=113749629514591",
+                 "17 January 2006",
                  u"Italian translation"),
 
      contributer(u"Jean-Pierre Chrétien",
