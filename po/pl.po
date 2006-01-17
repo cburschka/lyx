@@ -11,8 +11,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
-"Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-01-03 15:37+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-01-17 18:20+0100\n"
 "PO-Revision-Date: 2006-01-12 23:13+0100\n"
 "Last-Translator: Tomasz £uczak <tlu@technodat.com.pl>\n"
 "Language-Team: Polski <pl@li.org>\n"
@@ -2197,7 +2197,7 @@ msgstr ""
 
 #: ../src/frontends/qt2/ui/QAskForTextDialog.ui:139
 #: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:125
-#: src/frontends/qt2/Alert_pimpl.C:49
+#: src/frontends/qt2/Alert_pimpl.C:59
 msgid "&Cancel"
 msgstr "&Anuluj"
 
@@ -4541,7 +4541,8 @@ msgid "&View"
 msgstr "&Podgl±d"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
-msgid "Show contents of marked file. Only possible when files are shown with path"
+msgid ""
+"Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 "Wy¶wietla zawarto¶æ wybranego pliku. Mo¿liwe tylko gdy pliki s± wy¶wietlone "
 "ze ¶cie¿k±"
@@ -8357,7 +8358,9 @@ msgstr "Stary format pliku LyX-a. U¿yj LyX-a 0.10x aby go odczytaæ!"
 msgid ""
 "The file was created with a newer version of LyX, but the lyx2lyx script "
 "cannot convert it.\n"
-msgstr "Plik zosta³ utworzony w nowszej wersji LyX-a,  konwerter lyx2lyx nie mo¿e go skonwertowaæ.\n"
+msgstr ""
+"Plik zosta³ utworzony w nowszej wersji LyX-a,  konwerter lyx2lyx nie mo¿e go "
+"skonwertowaæ.\n"
 
 #: src/buffer.C:1299
 msgid "Warning!"
@@ -9244,20 +9247,20 @@ msgstr "Nie znaleziono utworzonego logu"
 msgid "No LaTeX log file found."
 msgstr "Nie znaleziono logu LaTeX-a"
 
-#: src/frontends/qt2/Alert_pimpl.C:42 src/frontends/qt2/Alert_pimpl.C:49
+#: src/frontends/qt2/Alert_pimpl.C:49 src/frontends/qt2/Alert_pimpl.C:59
 msgid "&Yes"
 msgstr "&Tak"
 
-#: src/frontends/qt2/Alert_pimpl.C:42 src/frontends/qt2/Alert_pimpl.C:49
+#: src/frontends/qt2/Alert_pimpl.C:49 src/frontends/qt2/Alert_pimpl.C:59
 msgid "&No"
 msgstr "&Nie"
 
-#: src/frontends/qt2/Alert_pimpl.C:57
+#: src/frontends/qt2/Alert_pimpl.C:67
 #, c-format
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
 
-#: src/frontends/qt2/Alert_pimpl.C:61
+#: src/frontends/qt2/Alert_pimpl.C:71
 msgid "LyX: "
 msgstr "LyX: "
 
@@ -9981,11 +9984,13 @@ msgstr ""
 
 #: src/frontends/xforms/FormDocument.C:236
 msgid " None | Small Margins | Very small Margins | Very wide Margins "
-msgstr " Brak | Ma³e marginesy | Bardzo ma³e marginesy | Bardzo szerokie marginesy "
+msgstr ""
+" Brak | Ma³e marginesy | Bardzo ma³e marginesy | Bardzo szerokie marginesy "
 
 #: src/frontends/xforms/FormDocument.C:286
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | <<text>> | >>text<< "
-msgstr " ``tekst'' | ''tekst'' | ,,tekst`` | ,,tekst'' | <<tekst>> | >>tekst<< "
+msgstr ""
+" ``tekst'' | ''tekst'' | ,,tekst`` | ,,tekst'' | <<tekst>> | >>tekst<< "
 
 #: src/frontends/xforms/FormDocument.C:311
 msgid " Author-year | Numerical "
@@ -10019,7 +10024,8 @@ msgstr ""
 
 #: src/frontends/xforms/FormDocument.C:1114
 msgid "Document is read-only. No changes to layout permitted."
-msgstr "Dokument otwarto tylko do odczytu. Zmiany w ustawieniach s± niedozwolone."
+msgstr ""
+"Dokument otwarto tylko do odczytu. Zmiany w ustawieniach s± niedozwolone."
 
 #: src/frontends/xforms/FormExternal.C:29
 msgid "Edit external file"
@@ -10361,8 +10367,10 @@ msgid "LyX objects that can be assigned a color."
 msgstr "Obiekty, którym mo¿na przypisaæ kolory."
 
 #: src/frontends/xforms/FormPreferences.C:539
-msgid "Modify the LyX object's color. Note: you must then \"Apply\" the change."
-msgstr "Zmieñ kolor obiektu programu LyX. Uwaga: nale¿y potem ,,Zastosowaæ'' zmianê."
+msgid ""
+"Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgstr ""
+"Zmieñ kolor obiektu programu LyX. Uwaga: nale¿y potem ,,Zastosowaæ'' zmianê."
 
 #: src/frontends/xforms/FormPreferences.C:547
 msgid "Find a new color."
@@ -10407,7 +10415,8 @@ msgid ""
 "used as the path to LyX's support directory."
 msgstr ""
 "Polecenie konwersji. $$i jest nazw± pliku wyj¶ciowego, $$b nazw± bez "
-"rozszerzenia, a $$o nazw± pliku wynikowego. $$s mo¿e byæ u¿yte jako ¶cie¿ka do katalogu u¿ytkownika/biblioteki."
+"rozszerzenia, a $$o nazw± pliku wynikowego. $$s mo¿e byæ u¿yte jako ¶cie¿ka "
+"do katalogu u¿ytkownika/biblioteki."
 
 #: src/frontends/xforms/FormPreferences.C:1001
 msgid ""
@@ -10679,7 +10688,8 @@ msgstr "Wyszukaj wstecz."
 
 #. Set up the tooltip mechanism
 #: src/frontends/xforms/FormSendto.C:45
-msgid "Export the buffer to this format before running the command below on it."
+msgid ""
+"Export the buffer to this format before running the command below on it."
 msgstr ""
 
 #: src/frontends/xforms/FormSendto.C:48
@@ -11970,7 +11980,8 @@ msgstr "Rozszerzenie wynikowego pliku drukowania. Zwykle \".ps\"."
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
-msgstr "Ostatnia opcja dla programu drukuj±cego przed nazw± drukowanego pliku DVI."
+msgstr ""
+"Ostatnia opcja dla programu drukuj±cego przed nazw± drukowanego pliku DVI."
 
 #: src/lyxrc.C:1950
 msgid ""
@@ -12033,7 +12044,8 @@ msgid "The encoding for the menu/popups fonts."
 msgstr "Kodowanie czcionek menu i okien dialogowych."
 
 #: src/lyxrc.C:1996
-msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid ""
+"The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Interwa³ czasu pomiêdzy automatycznym zapisem w sekundach. 0 wy³±cza "
 "automatycznyzapis."
@@ -12186,7 +12198,8 @@ msgid ""
 msgstr "Podaj inny jêzyk. Domy¶lnie u¿ywany jest jêzyk dokumentu."
 
 #: src/lyxrc.C:2091
-msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid ""
+"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "Podaj inny plik s³ownika osobistego. Na przyk³ad \".ispell_polish\"."
 
 #: src/lyxrc.C:2096
@@ -12240,8 +12253,10 @@ msgstr ""
 "LyX u¿yje katalogu pliku oryginalnego."
 
 #: src/lyxrc.C:2128
-msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
-msgstr "Wybierz by mieæ mo¿liwo¶æ pisania od prawej do lewej (hebrajski, arabski)."
+msgid ""
+"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgstr ""
+"Wybierz by mieæ mo¿liwo¶æ pisania od prawej do lewej (hebrajski, arabski)."
 
 #: src/lyxrc.C:2132
 msgid ""
@@ -12261,7 +12276,8 @@ msgstr ""
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
-msgstr "Wy³±cz je¶li nie chcesz u¿ywa¼ nazwy jêzyka jako argumentu \\documentclass."
+msgstr ""
+"Wy³±cz je¶li nie chcesz u¿ywa¼ nazwy jêzyka jako argumentu \\documentclass."
 
 #: src/lyxrc.C:2144
 msgid ""
@@ -12278,7 +12294,8 @@ msgid ""
 msgstr "W³±cz gdy polecenie zmiany jêzyka jest wymagane na pocz±tku dokumentu."
 
 #: src/lyxrc.C:2152
-msgid "Select if a language switching command is needed at the end of the document."
+msgid ""
+"Select if a language switching command is needed at the end of the document."
 msgstr "W³±cz gdy polecenie zmiany jêzyka jest wymagane na koñcu dokumentu."
 
 #: src/lyxrc.C:2156
@@ -12473,16 +12490,20 @@ msgstr "B³±d! Nie mo¿na utworzyæ katalogu:"
 msgid "Could not delete auto-save file!"
 msgstr "Nie mo¿na usun±æ pliku auto-zapisu!"
 
-#: src/support/package.C:363
+#: src/support/package.C:364
 #, c-format
-msgid "Unable to determine the path to the LyX binary from the command line %1%"
-msgstr "Nie mo¿na okre¶liæ ¶cie¿ki do katalogu systemowego LyX-a z wiersza poleceñ %1%"
+msgid ""
+"Unable to determine the path to the LyX binary from the command line %1%"
+msgstr ""
+"Nie mo¿na okre¶liæ ¶cie¿ki do katalogu systemowego LyX-a z wiersza poleceñ %"
+"1%"
 
-#: src/support/package.C:368
+#: src/support/package.C:369
 msgid "Unable to determine the path to the LyX binary from the command line "
-msgstr "Nie mo¿na okre¶liæ ¶cie¿ki do katalogu systemowego LyX-a z wiersza poleceñ "
+msgstr ""
+"Nie mo¿na okre¶liæ ¶cie¿ki do katalogu systemowego LyX-a z wiersza poleceñ "
 
-#: src/support/package.C:494
+#: src/support/package.C:495
 #, c-format
 msgid ""
 "Unable to determine the system directory having searched\n"
@@ -12492,19 +12513,22 @@ msgid ""
 msgstr ""
 "Nie mo¿na okre¶liæ katalogu systemowego zawieraj±cy poszukiwany\n"
 "\t%1%\n"
-"Spróbuj podaæ parametr wywo³ania '-sysdir' lub ustaw zmienn± ¶rodowiskow± LYX_DIR_13x na katalog systemowy LyX-a zawieraj±cy plik 'chkconfig.ltx'."
+"Spróbuj podaæ parametr wywo³ania '-sysdir' lub ustaw zmienn± ¶rodowiskow± "
+"LYX_DIR_13x na katalog systemowy LyX-a zawieraj±cy plik 'chkconfig.ltx'."
 
-#: src/support/package.C:504
+#: src/support/package.C:505
 msgid "Unable to determine the system directory having searched\n"
 msgstr "Nie mo¿na okre¶liæ katalogu systemowego zawieraj±cy poszukiwany\n"
 
-#: src/support/package.C:507
+#: src/support/package.C:508
 msgid ""
 "Try the '-sysdir' command line parameter or set the environment variable "
 "LYX_DIR_13x to the LyX system directory containing the file `chkconfig.ltx'."
-msgstr "Spróbuj podaæ parametr wywo³ania '-sysdir' lub ustaw zmienn± ¶rodowiskow± LYX_DIR_13x na katalog systemowy LyX-a zawieraj±cy plik 'chkconfig.ltx'."
+msgstr ""
+"Spróbuj podaæ parametr wywo³ania '-sysdir' lub ustaw zmienn± ¶rodowiskow± "
+"LYX_DIR_13x na katalog systemowy LyX-a zawieraj±cy plik 'chkconfig.ltx'."
 
-#: src/support/package.C:593
+#: src/support/package.C:594
 #, c-format
 msgid ""
 "Invalid %1% switch.\n"
@@ -12513,24 +12537,24 @@ msgstr ""
 "Niepoprawny prze³±cznik %1%.\n"
 "Katalog %2% nie zawiera %3%."
 
-#: src/support/package.C:598 src/support/package.C:633
-#: src/support/package.C:661
+#: src/support/package.C:599 src/support/package.C:634
+#: src/support/package.C:662
 msgid "Invalid "
 msgstr "Niepoprawna "
 
-#: src/support/package.C:599
+#: src/support/package.C:600
 msgid " switch.\n"
 msgstr " prze³±cznik.\n"
 
-#: src/support/package.C:600 src/support/package.C:635
+#: src/support/package.C:601 src/support/package.C:636
 msgid "Directory "
 msgstr "Katalog "
 
-#: src/support/package.C:601 src/support/package.C:636
+#: src/support/package.C:602 src/support/package.C:637
 msgid " does not contain "
 msgstr "nie zawiera "
 
-#: src/support/package.C:628
+#: src/support/package.C:629
 #, c-format
 msgid ""
 "Invalid %1% environment variable.\n"
@@ -12539,11 +12563,11 @@ msgstr ""
 "Niepoprawna zawarto¶æ zmiennej ¶rodowisowej %1%.\n"
 "Katalog %2% nie zawiera %3%."
 
-#: src/support/package.C:634 src/support/package.C:662
+#: src/support/package.C:635 src/support/package.C:663
 msgid " environment variable.\n"
 msgstr " zmienna ¶rodowiskowa.\n"
 
-#: src/support/package.C:656
+#: src/support/package.C:657
 #, c-format
 msgid ""
 "Invalid %1% environment variable.\n"
@@ -12552,7 +12576,7 @@ msgstr ""
 "Niepoprawna zawarto¶æ zmiennej ¶rodowisowej %1%.\n"
 "%2% nie jest katalogiem."
 
-#: src/support/package.C:663
+#: src/support/package.C:664
 msgid " is not a directory."
 msgstr " nie jest katalogiem."
 
@@ -12572,11 +12596,13 @@ msgstr "Konwersja jest mo¿liwa tylko w starszym LyXie (<1.1.x)!"
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
-msgstr "Nie mo¿na wstawiæ spacji na pocz±tku akapitu. Przeczytaj, proszê, Samouczek."
+msgstr ""
+"Nie mo¿na wstawiæ spacji na pocz±tku akapitu. Przeczytaj, proszê, Samouczek."
 
 #: src/text.C:1926
 msgid "You cannot type two spaces this way. Please read the Tutorial."
-msgstr "Nie mo¿na wstawiæ dwu spacji w ten sposób. Przeczytaj, proszê, Samouczek."
+msgstr ""
+"Nie mo¿na wstawiæ dwu spacji w ten sposób. Przeczytaj, proszê, Samouczek."
 
 #: src/text.C:3348
 msgid "Page Break (top)"
@@ -12646,4 +12672,3 @@ msgstr "Znacznik ustawiony"
 #: src/text3.C:1112
 msgid "LyX function 'layout' needs an argument."
 msgstr ""
-

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-03 15:37+0100\n"
+"POT-Creation-Date: 2006-01-17 18:20+0100\n"
 "PO-Revision-Date: 2004-01-08 21:46+0200\n"
 "Last-Translator: Claudiu Costin <claudiuc@kde.org>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
@@ -2204,7 +2204,7 @@ msgstr "&Nimic"
 
 #: ../src/frontends/qt2/ui/QAskForTextDialog.ui:139
 #: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:125
-#: src/frontends/qt2/Alert_pimpl.C:49
+#: src/frontends/qt2/Alert_pimpl.C:59
 msgid "&Cancel"
 msgstr "&Renunþã"
 
@@ -9386,22 +9386,22 @@ msgstr ""
 msgid "No LaTeX log file found."
 msgstr "Jurnal LaTeX|J"
 
-#: src/frontends/qt2/Alert_pimpl.C:42 src/frontends/qt2/Alert_pimpl.C:49
+#: src/frontends/qt2/Alert_pimpl.C:49 src/frontends/qt2/Alert_pimpl.C:59
 #, fuzzy
 msgid "&Yes"
 msgstr "L&inii"
 
-#: src/frontends/qt2/Alert_pimpl.C:42 src/frontends/qt2/Alert_pimpl.C:49
+#: src/frontends/qt2/Alert_pimpl.C:49 src/frontends/qt2/Alert_pimpl.C:59
 #, fuzzy
 msgid "&No"
 msgstr "Notã"
 
-#: src/frontends/qt2/Alert_pimpl.C:57
+#: src/frontends/qt2/Alert_pimpl.C:67
 #, c-format
 msgid "LyX: %1$s"
 msgstr ""
 
-#: src/frontends/qt2/Alert_pimpl.C:61
+#: src/frontends/qt2/Alert_pimpl.C:71
 #, fuzzy
 msgid "LyX: "
 msgstr "Vizualizeazã DVI"
@@ -12715,17 +12715,17 @@ msgstr "Nu pot ºterge director temporar"
 msgid "Could not delete auto-save file!"
 msgstr "Listã de slide-uri"
 
-#: src/support/package.C:363
+#: src/support/package.C:364
 #, c-format
 msgid ""
 "Unable to determine the path to the LyX binary from the command line %1%"
 msgstr ""
 
-#: src/support/package.C:368
+#: src/support/package.C:369
 msgid "Unable to determine the path to the LyX binary from the command line "
 msgstr ""
 
-#: src/support/package.C:494
+#: src/support/package.C:495
 #, c-format
 msgid ""
 "Unable to determine the system directory having searched\n"
@@ -12734,60 +12734,60 @@ msgid ""
 "LYX_DIR_13x to the LyX system directory containing the file `chkconfig.ltx'."
 msgstr ""
 
-#: src/support/package.C:504
+#: src/support/package.C:505
 msgid "Unable to determine the system directory having searched\n"
 msgstr ""
 
-#: src/support/package.C:507
+#: src/support/package.C:508
 msgid ""
 "Try the '-sysdir' command line parameter or set the environment variable "
 "LYX_DIR_13x to the LyX system directory containing the file `chkconfig.ltx'."
 msgstr ""
 
-#: src/support/package.C:593
+#: src/support/package.C:594
 #, c-format
 msgid ""
 "Invalid %1% switch.\n"
 "Directory %2% does not contain %3%."
 msgstr ""
 
-#: src/support/package.C:598 src/support/package.C:633
-#: src/support/package.C:661
+#: src/support/package.C:599 src/support/package.C:634
+#: src/support/package.C:662
 msgid "Invalid "
 msgstr ""
 
-#: src/support/package.C:599
+#: src/support/package.C:600
 msgid " switch.\n"
 msgstr ""
 
-#: src/support/package.C:600 src/support/package.C:635
+#: src/support/package.C:601 src/support/package.C:636
 #, fuzzy
 msgid "Directory "
 msgstr "Director:|#D"
 
-#: src/support/package.C:601 src/support/package.C:636
+#: src/support/package.C:602 src/support/package.C:637
 msgid " does not contain "
 msgstr ""
 
-#: src/support/package.C:628
+#: src/support/package.C:629
 #, c-format
 msgid ""
 "Invalid %1% environment variable.\n"
 "Directory %2% does not contain %3%."
 msgstr ""
 
-#: src/support/package.C:634 src/support/package.C:662
+#: src/support/package.C:635 src/support/package.C:663
 msgid " environment variable.\n"
 msgstr ""
 
-#: src/support/package.C:656
+#: src/support/package.C:657
 #, c-format
 msgid ""
 "Invalid %1% environment variable.\n"
 "%2% is not a directory."
 msgstr ""
 
-#: src/support/package.C:663
+#: src/support/package.C:664
 #, fuzzy
 msgid " is not a directory."
 msgstr "&Utilizeazã director temporar"

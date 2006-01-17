@@ -170,7 +170,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.7cvs\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-03 15:37+0100\n"
+"POT-Creation-Date: 2006-01-17 18:20+0100\n"
 "PO-Revision-Date: 2005-02-02 17:21+0100\n"
 "Last-Translator:  Adrien Rebollo <adrien.rebollo@wanadoo.fr>\n"
 "Language-Team: lyxfr <http://perso.wanadoo.fr/adrien.rebollo/lyxfr/lyxfr."
@@ -2362,7 +2362,7 @@ msgstr "&Bidon"
 
 #: ../src/frontends/qt2/ui/QAskForTextDialog.ui:139
 #: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:125
-#: src/frontends/qt2/Alert_pimpl.C:49
+#: src/frontends/qt2/Alert_pimpl.C:59
 msgid "&Cancel"
 msgstr "&Annuler"
 
@@ -9431,20 +9431,20 @@ msgstr "Fichier log introuvable."
 msgid "No LaTeX log file found."
 msgstr "Journal de bord LaTeX introuvable."
 
-#: src/frontends/qt2/Alert_pimpl.C:42 src/frontends/qt2/Alert_pimpl.C:49
+#: src/frontends/qt2/Alert_pimpl.C:49 src/frontends/qt2/Alert_pimpl.C:59
 msgid "&Yes"
 msgstr "&Oui"
 
-#: src/frontends/qt2/Alert_pimpl.C:42 src/frontends/qt2/Alert_pimpl.C:49
+#: src/frontends/qt2/Alert_pimpl.C:49 src/frontends/qt2/Alert_pimpl.C:59
 msgid "&No"
 msgstr "&Non"
 
-#: src/frontends/qt2/Alert_pimpl.C:57
+#: src/frontends/qt2/Alert_pimpl.C:67
 #, c-format
 msgid "LyX: %1$s"
 msgstr "LyX : %1$s"
 
-#: src/frontends/qt2/Alert_pimpl.C:61
+#: src/frontends/qt2/Alert_pimpl.C:71
 msgid "LyX: "
 msgstr "LyX : "
 
@@ -12781,7 +12781,7 @@ msgstr "Erreur ! Impossible de créer le répertoire :"
 msgid "Could not delete auto-save file!"
 msgstr "Impossible d'effacer le fichier de sauvegarde !"
 
-#: src/support/package.C:363
+#: src/support/package.C:364
 #, c-format
 msgid ""
 "Unable to determine the path to the LyX binary from the command line %1%"
@@ -12789,12 +12789,12 @@ msgstr ""
 "Impossible de localiser l'exécutable de LyX à partir de la ligne de commande "
 "%1%"
 
-#: src/support/package.C:368
+#: src/support/package.C:369
 msgid "Unable to determine the path to the LyX binary from the command line "
 msgstr ""
 "Impossible de localiser l'exécutable de LyX à partir de la ligne de commande "
 
-#: src/support/package.C:494
+#: src/support/package.C:495
 #, c-format
 msgid ""
 "Unable to determine the system directory having searched\n"
@@ -12808,11 +12808,11 @@ msgstr ""
 "d'environnement LYX_DIR_13x sur le répertoire système contenant le fichier "
 "`chkconfig.ltx'."
 
-#: src/support/package.C:504
+#: src/support/package.C:505
 msgid "Unable to determine the system directory having searched\n"
 msgstr "Impossible de trouver le répertoire de données dans\n"
 
-#: src/support/package.C:507
+#: src/support/package.C:508
 msgid ""
 "Try the '-sysdir' command line parameter or set the environment variable "
 "LYX_DIR_13x to the LyX system directory containing the file `chkconfig.ltx'."
@@ -12821,7 +12821,7 @@ msgstr ""
 "d'environnement LYX_DIR_13x sur le répertoire système contenant le fichier "
 "`chkconfig.ltx'."
 
-#: src/support/package.C:593
+#: src/support/package.C:594
 #, c-format
 msgid ""
 "Invalid %1% switch.\n"
@@ -12830,24 +12830,24 @@ msgstr ""
 "L'option %1% est invalide.\n"
 "Le répertoire %2% ne contient pas %3%."
 
-#: src/support/package.C:598 src/support/package.C:633
-#: src/support/package.C:661
+#: src/support/package.C:599 src/support/package.C:634
+#: src/support/package.C:662
 msgid "Invalid "
 msgstr "L'option "
 
-#: src/support/package.C:599
+#: src/support/package.C:600
 msgid " switch.\n"
 msgstr " est invalide.\n"
 
-#: src/support/package.C:600 src/support/package.C:635
+#: src/support/package.C:601 src/support/package.C:636
 msgid "Directory "
 msgstr "Le répertoire "
 
-#: src/support/package.C:601 src/support/package.C:636
+#: src/support/package.C:602 src/support/package.C:637
 msgid " does not contain "
 msgstr "ne contient pas "
 
-#: src/support/package.C:628
+#: src/support/package.C:629
 #, c-format
 msgid ""
 "Invalid %1% environment variable.\n"
@@ -12856,11 +12856,11 @@ msgstr ""
 "La variable d'environnement %1% est invalide.\n"
 "Le répertoire %2% ne contient pas %3%."
 
-#: src/support/package.C:634 src/support/package.C:662
+#: src/support/package.C:635 src/support/package.C:663
 msgid " environment variable.\n"
 msgstr " variable d'environnement.\n"
 
-#: src/support/package.C:656
+#: src/support/package.C:657
 #, c-format
 msgid ""
 "Invalid %1% environment variable.\n"
@@ -12869,7 +12869,7 @@ msgstr ""
 "La variable d'environnement %1% est invalide.\n"
 "%2% n'est pas un répertoire."
 
-#: src/support/package.C:663
+#: src/support/package.C:664
 msgid " is not a directory."
 msgstr " n'est pas un répertoire."
 

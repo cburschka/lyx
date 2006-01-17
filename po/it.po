@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.3x_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-03 15:37+0100\n"
+"POT-Creation-Date: 2006-01-17 18:20+0100\n"
 "PO-Revision-Date: 2006-01-11 17:22+0100\n"
 "Last-Translator: Kostantino <ciclope10ATalice.it>\n"
 "Language-Team: Italiano <tp@lists.linux.it>\n"
@@ -2193,7 +2193,7 @@ msgstr "&Fittizio"
 
 #: ../src/frontends/qt2/ui/QAskForTextDialog.ui:139
 #: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:125
-#: src/frontends/qt2/Alert_pimpl.C:49
+#: src/frontends/qt2/Alert_pimpl.C:59
 msgid "&Cancel"
 msgstr "&Cancella"
 
@@ -3724,11 +3724,13 @@ msgstr "Forma&to prestabilito della carta:"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:188
 msgid "&Reset class options when document class changes"
-msgstr "&Reimposta le opzioni della classe quando cambia la classe del documento"
+msgstr ""
+"&Reimposta le opzioni della classe quando cambia la classe del documento"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:192
 msgid "Set class options to default on class change"
-msgstr "Imposta le opzioni della classe a quelle prestabilite quando cambia la classe"
+msgstr ""
+"Imposta le opzioni della classe a quelle prestabilite quando cambia la classe"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:203
 msgid "External Applications"
@@ -4539,7 +4541,8 @@ msgid "&View"
 msgstr "&Vista"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
-msgid "Show contents of marked file. Only possible when files are shown with path"
+msgid ""
+"Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 "Mostra i contenuti del file segnato. E' possibile solo quando i file sono "
 "mostrati con il loro percorso."
@@ -8184,7 +8187,8 @@ msgstr "Vedi Indice generale"
 
 #: src/LyXAction.C:371
 msgid "Toggle cursor does/doesn't follow the scrollbar"
-msgstr "Attiva/Disattiva il cursore che segue/non segue la barra di scorrimento"
+msgstr ""
+"Attiva/Disattiva il cursore che segue/non segue la barra di scorrimento"
 
 #: src/LyXAction.C:382
 msgid "Register document under version control"
@@ -8349,7 +8353,8 @@ msgstr "Si è verificato un errore mentre avviavo lo script di conversione."
 
 #: src/buffer.C:1246
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
-msgstr "Ho trovato un vecchio formato di LyX. Utilizza LyX 0.10.x per leggerlo!"
+msgstr ""
+"Ho trovato un vecchio formato di LyX. Utilizza LyX 0.10.x per leggerlo!"
 
 #: src/buffer.C:1253
 msgid ""
@@ -8780,7 +8785,8 @@ msgstr "Per favore, installa LyX correttamente per avere un'idea dell'enorme\n"
 
 #: src/frontends/controllers/ControlAboutlyx.C:50
 msgid "amount of work other people have done for the LyX project."
-msgstr "lavoro che altre persone hanno fatto e stanno facendo per il progetto LyX!"
+msgstr ""
+"lavoro che altre persone hanno fatto e stanno facendo per il progetto LyX!"
 
 #: src/frontends/controllers/ControlAboutlyx.C:57
 msgid ""
@@ -8885,7 +8891,8 @@ msgstr "nella classe del documento scelta"
 
 #: src/frontends/controllers/ControlDocument.C:151
 msgid "Errors loading new document class."
-msgstr "Si sono verificati degli errori nel caricare la nuova classe del documento."
+msgstr ""
+"Si sono verificati degli errori nel caricare la nuova classe del documento."
 
 #: src/frontends/controllers/ControlDocument.C:152
 msgid "Reverting to original document class."
@@ -9250,20 +9257,20 @@ msgstr "Non ho trovato alcun registro di costruzione."
 msgid "No LaTeX log file found."
 msgstr "Non ho trovato nessun file di registro di LaTeX."
 
-#: src/frontends/qt2/Alert_pimpl.C:42 src/frontends/qt2/Alert_pimpl.C:49
+#: src/frontends/qt2/Alert_pimpl.C:49 src/frontends/qt2/Alert_pimpl.C:59
 msgid "&Yes"
 msgstr "&Sì"
 
-#: src/frontends/qt2/Alert_pimpl.C:42 src/frontends/qt2/Alert_pimpl.C:49
+#: src/frontends/qt2/Alert_pimpl.C:49 src/frontends/qt2/Alert_pimpl.C:59
 msgid "&No"
 msgstr "&No"
 
-#: src/frontends/qt2/Alert_pimpl.C:57
+#: src/frontends/qt2/Alert_pimpl.C:67
 #, c-format
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
 
-#: src/frontends/qt2/Alert_pimpl.C:61
+#: src/frontends/qt2/Alert_pimpl.C:71
 msgid "LyX: "
 msgstr "LyX: "
 
@@ -9882,7 +9889,8 @@ msgstr ""
 
 #: src/frontends/xforms/FormBibtex.C:79
 msgid "Select if the bibliography should appear in the Table of Contents"
-msgstr "Da selezionare se la bibliografia dovesse apparire nell'indice generale"
+msgstr ""
+"Da selezionare se la bibliografia dovesse apparire nell'indice generale"
 
 #: src/frontends/xforms/FormBibtex.C:83
 msgid "Choose a BibTeX style from the list."
@@ -9963,7 +9971,8 @@ msgstr ""
 
 #: src/frontends/xforms/FormCitation.C:204
 msgid "Optional text which appears before the citation, e.g. \"see <Ref>\""
-msgstr "Testo facoltativo come appare prima della citazione e cioè \"vedi <Ref>\""
+msgstr ""
+"Testo facoltativo come appare prima della citazione e cioè \"vedi <Ref>\""
 
 #: src/frontends/xforms/FormCitation.C:207
 msgid "Optional text which appears after the citation, e.g. \"pp. 12\""
@@ -10007,11 +10016,13 @@ msgstr ""
 
 #: src/frontends/xforms/FormDocument.C:236
 msgid " None | Small Margins | Very small Margins | Very wide Margins "
-msgstr " Nessuno | Margini Stretti| Margini molto Stretti | Margini molto Larghi"
+msgstr ""
+" Nessuno | Margini Stretti| Margini molto Stretti | Margini molto Larghi"
 
 #: src/frontends/xforms/FormDocument.C:286
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | <<text>> | >>text<< "
-msgstr " ``testo'' | ''testo'' | ,,testo`` | ,,testo'' | <<testo>> | >>testo<< "
+msgstr ""
+" ``testo'' | ''testo'' | ,,testo`` | ,,testo'' | <<testo>> | >>testo<< "
 
 #: src/frontends/xforms/FormDocument.C:311
 msgid " Author-year | Numerical "
@@ -10137,7 +10148,8 @@ msgstr "Imposta la larghezza dell'immagine al valore inserito."
 #: src/frontends/xforms/FormGraphics.C:152
 #, no-c-format
 msgid "Select unit for width; Scale% for scaling whole image."
-msgstr "Seleziona l'unità di lunghezza e varia per ridimensionare l'intera immagine."
+msgstr ""
+"Seleziona l'unità di lunghezza e varia per ridimensionare l'intera immagine."
 
 #: src/frontends/xforms/FormGraphics.C:154
 msgid "Set the image height to the inserted value."
@@ -10411,7 +10423,8 @@ msgid "LyX objects that can be assigned a color."
 msgstr "Oggetti di LyX a cui può essere assegnato un colore."
 
 #: src/frontends/xforms/FormPreferences.C:539
-msgid "Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgid ""
+"Modify the LyX object's color. Note: you must then \"Apply\" the change."
 msgstr ""
 "Modifica il colore dell'oggetto di LyX. Nota che allora devi premere il "
 "pulsante \"Applica\" per attivare il cambiamento."
@@ -10562,7 +10575,8 @@ msgstr "Bianco e Nero|Scala di Grigi|Colore|Non mostrare"
 
 #: src/frontends/xforms/FormPreferences.C:1981
 msgid " default | US letter | US legal | US executive | A3 | A4 | A5 | B5 "
-msgstr " predefinito | Lettera US | Legale US | Esecutivo US | A3 | A4 | A5 | B5 "
+msgstr ""
+" predefinito | Lettera US | Legale US | Esecutivo US | A3 | A4 | A5 | B5 "
 
 #: src/frontends/xforms/FormPreferences.C:2240
 msgid "Default path"
@@ -10732,7 +10746,8 @@ msgstr "Ricerca all'indietro."
 
 #. Set up the tooltip mechanism
 #: src/frontends/xforms/FormSendto.C:45
-msgid "Export the buffer to this format before running the command below on it."
+msgid ""
+"Export the buffer to this format before running the command below on it."
 msgstr ""
 "Esporta il buffer in questo formato prima di eseguire il comando contenuto "
 "in esso."
@@ -11109,7 +11124,8 @@ msgstr "Non è stato trovato alcun file!"
 
 #: src/insets/insetgraphics.C:240
 msgid "Error converting to loadable format"
-msgstr "Si è verificato un errore durante la conversione ad un formato caricabile"
+msgstr ""
+"Si è verificato un errore durante la conversione ad un formato caricabile"
 
 #: src/insets/insetgraphics.C:243
 msgid "Error loading file into memory"
@@ -12118,7 +12134,8 @@ msgid "The encoding for the menu/popups fonts."
 msgstr "E' la codifica per i caratteri dei menù e dei popup."
 
 #: src/lyxrc.C:1996
-msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid ""
+"The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "E' l'intervallo di tempo tra due autosalvataggi (in secondi): 0 significa "
 "nessun autosalvataggio."
@@ -12236,7 +12253,8 @@ msgstr ""
 
 #: src/lyxrc.C:2058
 msgid "Select to check whether the lastfiles still exist."
-msgstr "Da selezionare per controllare se esiste ancora l'elenco degli ultimi file."
+msgstr ""
+"Da selezionare per controllare se esiste ancora l'elenco degli ultimi file."
 
 #: src/lyxrc.C:2062
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
@@ -12279,14 +12297,16 @@ msgstr ""
 "lingua del documento."
 
 #: src/lyxrc.C:2091
-msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid ""
+"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
 "Specifica un dizionario personale alternativo. Per esempio:\".ispell_english"
 "\"."
 
 #: src/lyxrc.C:2096
 msgid "Specify additional chars that can be part of a word."
-msgstr "Specifica i caratteri addizionali che possono essere parte di una parola."
+msgstr ""
+"Specifica i caratteri addizionali che possono essere parte di una parola."
 
 #: src/lyxrc.C:2100
 msgid ""
@@ -12342,7 +12362,8 @@ msgstr ""
 "backup nella stessa cartella del file originale, se la stringa è vuota."
 
 #: src/lyxrc.C:2128
-msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgid ""
+"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "Da selezionare per abilitare il supporto per i linguaggi da destra a "
 "sinistra (cioè: Ebreo, Arabo)."
@@ -12388,7 +12409,8 @@ msgstr ""
 "documento."
 
 #: src/lyxrc.C:2152
-msgid "Select if a language switching command is needed at the end of the document."
+msgid ""
+"Select if a language switching command is needed at the end of the document."
 msgstr ""
 "Da selezionare se un comando di cambio lingua è richiesto alla fine del "
 "documento."
@@ -12592,20 +12614,21 @@ msgstr "Errore! Non riesco a creare la cartella:"
 msgid "Could not delete auto-save file!"
 msgstr "Non riesco ad eliminare il file di autosalvataggio!"
 
-#: src/support/package.C:363
+#: src/support/package.C:364
 #, c-format
-msgid "Unable to determine the path to the LyX binary from the command line %1%"
+msgid ""
+"Unable to determine the path to the LyX binary from the command line %1%"
 msgstr ""
 "Non riesco a determinare il percorso all'eseguibile di LyX dalla linea di "
 "comando %1%"
 
-#: src/support/package.C:368
+#: src/support/package.C:369
 msgid "Unable to determine the path to the LyX binary from the command line "
 msgstr ""
 "Non riesco a determinare il percorso all'eseguibile di LyX dalla linea di "
 "comando"
 
-#: src/support/package.C:494
+#: src/support/package.C:495
 #, c-format
 msgid ""
 "Unable to determine the system directory having searched\n"
@@ -12619,11 +12642,11 @@ msgstr ""
 "variabile d'ambiente LYX_DIR_13x alla cartella di sistema di LyX contenete "
 "il file `chkconfig.ltx'. "
 
-#: src/support/package.C:504
+#: src/support/package.C:505
 msgid "Unable to determine the system directory having searched\n"
 msgstr "Non riesco a determinare la cartella di sistema che hai cercato\n"
 
-#: src/support/package.C:507
+#: src/support/package.C:508
 msgid ""
 "Try the '-sysdir' command line parameter or set the environment variable "
 "LYX_DIR_13x to the LyX system directory containing the file `chkconfig.ltx'."
@@ -12632,7 +12655,7 @@ msgstr ""
 "variabile d'ambiente LYX_DIR_13x alla cartella di sistema di LyX contenete "
 "il file `chkconfig.ltx'. "
 
-#: src/support/package.C:593
+#: src/support/package.C:594
 #, c-format
 msgid ""
 "Invalid %1% switch.\n"
@@ -12641,24 +12664,24 @@ msgstr ""
 "Il commutatore %1% non è valido.\n"
 "La cartella %2% non contiene %3%."
 
-#: src/support/package.C:598 src/support/package.C:633
-#: src/support/package.C:661
+#: src/support/package.C:599 src/support/package.C:634
+#: src/support/package.C:662
 msgid "Invalid "
 msgstr "Non valido"
 
-#: src/support/package.C:599
+#: src/support/package.C:600
 msgid " switch.\n"
 msgstr "commuta.\n"
 
-#: src/support/package.C:600 src/support/package.C:635
+#: src/support/package.C:601 src/support/package.C:636
 msgid "Directory "
 msgstr "La cartella"
 
-#: src/support/package.C:601 src/support/package.C:636
+#: src/support/package.C:602 src/support/package.C:637
 msgid " does not contain "
 msgstr "non contiene"
 
-#: src/support/package.C:628
+#: src/support/package.C:629
 #, c-format
 msgid ""
 "Invalid %1% environment variable.\n"
@@ -12667,11 +12690,11 @@ msgstr ""
 "La variabile d'ambiente %1% non è valida.\n"
 "La cartella %2% non contiene %3%."
 
-#: src/support/package.C:634 src/support/package.C:662
+#: src/support/package.C:635 src/support/package.C:663
 msgid " environment variable.\n"
 msgstr "variabile d'ambiente.\n"
 
-#: src/support/package.C:656
+#: src/support/package.C:657
 #, c-format
 msgid ""
 "Invalid %1% environment variable.\n"
@@ -12680,7 +12703,7 @@ msgstr ""
 "La variabile d'ambiente %1% non è valida.\n"
 "%2% non è una cartella."
 
-#: src/support/package.C:663
+#: src/support/package.C:664
 msgid " is not a directory."
 msgstr "non è una cartella."
 
@@ -12708,7 +12731,8 @@ msgstr ""
 
 #: src/text.C:1926
 msgid "You cannot type two spaces this way. Please read the Tutorial."
-msgstr "Non puoi usare due spazi in questo modo. Per favore, leggi il Tutorial!"
+msgstr ""
+"Non puoi usare due spazi in questo modo. Per favore, leggi il Tutorial!"
 
 #: src/text.C:3348
 msgid "Page Break (top)"
@@ -12778,4 +12802,3 @@ msgstr "Il marchio è stato impostato"
 #: src/text3.C:1112
 msgid "LyX function 'layout' needs an argument."
 msgstr "La funzione di LyX 'layout' necessita di un argomento."
-

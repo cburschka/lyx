@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.3.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-03 15:37+0100\n"
+"POT-Creation-Date: 2006-01-17 18:20+0100\n"
 "PO-Revision-Date: 2005-11-03 18:21+0200\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -2195,7 +2195,7 @@ msgstr "&Laburpena"
 
 #: ../src/frontends/qt2/ui/QAskForTextDialog.ui:139
 #: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:125
-#: src/frontends/qt2/Alert_pimpl.C:49
+#: src/frontends/qt2/Alert_pimpl.C:59
 msgid "&Cancel"
 msgstr "&Utzi"
 
@@ -9257,20 +9257,20 @@ msgstr "Ez da eraikitako egunkaririk aurkitu."
 msgid "No LaTeX log file found."
 msgstr "Ez da LaTeX egunkaririk aurkitu."
 
-#: src/frontends/qt2/Alert_pimpl.C:42 src/frontends/qt2/Alert_pimpl.C:49
+#: src/frontends/qt2/Alert_pimpl.C:49 src/frontends/qt2/Alert_pimpl.C:59
 msgid "&Yes"
 msgstr "&Bai"
 
-#: src/frontends/qt2/Alert_pimpl.C:42 src/frontends/qt2/Alert_pimpl.C:49
+#: src/frontends/qt2/Alert_pimpl.C:49 src/frontends/qt2/Alert_pimpl.C:59
 msgid "&No"
 msgstr "&Ez"
 
-#: src/frontends/qt2/Alert_pimpl.C:57
+#: src/frontends/qt2/Alert_pimpl.C:67
 #, c-format
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
 
-#: src/frontends/qt2/Alert_pimpl.C:61
+#: src/frontends/qt2/Alert_pimpl.C:71
 msgid "LyX: "
 msgstr "LyX: "
 
@@ -12573,19 +12573,19 @@ msgstr "Abisua! Ezin izan da direktorioa sortu:"
 msgid "Could not delete auto-save file!"
 msgstr "Ezin izan da autogordetako fitxategia ezabatu!"
 
-#: src/support/package.C:363
+#: src/support/package.C:364
 #, c-format
 msgid ""
 "Unable to determine the path to the LyX binary from the command line %1%"
 msgstr ""
 "Ezin izan da LyX liburutegien bide-izena zehaztu (%1% komando lerrotik)"
 
-#: src/support/package.C:368
+#: src/support/package.C:369
 msgid "Unable to determine the path to the LyX binary from the command line "
 msgstr ""
 "Ezin izan da LyX liburutegien bide-izena zehaztu komando lerro honetatik "
 
-#: src/support/package.C:494
+#: src/support/package.C:495
 #, c-format
 msgid ""
 "Unable to determine the system directory having searched\n"
@@ -12599,11 +12599,11 @@ msgstr ""
 "LYX_DIR_13x aldagaia LyX sistemako direktorioarekin ('chkconfig.ltx' "
 "fitxategia duena)."
 
-#: src/support/package.C:504
+#: src/support/package.C:505
 msgid "Unable to determine the system directory having searched\n"
 msgstr "Ezin izan da egin den bilaketako sistemako direktorioa zehaztu\n"
 
-#: src/support/package.C:507
+#: src/support/package.C:508
 msgid ""
 "Try the '-sysdir' command line parameter or set the environment variable "
 "LYX_DIR_13x to the LyX system directory containing the file `chkconfig.ltx'."
@@ -12612,7 +12612,7 @@ msgstr ""
 "LYX_DIR_13x aldagaia LyX sistemako direktorioarekin ('chkconfig.ltx' "
 "fitxategia duena)."
 
-#: src/support/package.C:593
+#: src/support/package.C:594
 #, c-format
 msgid ""
 "Invalid %1% switch.\n"
@@ -12621,24 +12621,24 @@ msgstr ""
 "%1% aldatzaile baliogabea.\n"
 "%2% direktorioak ez dauka %3%."
 
-#: src/support/package.C:598 src/support/package.C:633
-#: src/support/package.C:661
+#: src/support/package.C:599 src/support/package.C:634
+#: src/support/package.C:662
 msgid "Invalid "
 msgstr "Baliogabea "
 
-#: src/support/package.C:599
+#: src/support/package.C:600
 msgid " switch.\n"
 msgstr " aldatzailea.\n"
 
-#: src/support/package.C:600 src/support/package.C:635
+#: src/support/package.C:601 src/support/package.C:636
 msgid "Directory "
 msgstr "Direktorioa "
 
-#: src/support/package.C:601 src/support/package.C:636
+#: src/support/package.C:602 src/support/package.C:637
 msgid " does not contain "
 msgstr " ez dauka "
 
-#: src/support/package.C:628
+#: src/support/package.C:629
 #, c-format
 msgid ""
 "Invalid %1% environment variable.\n"
@@ -12647,11 +12647,11 @@ msgstr ""
 "Inguruneko %1% aldagi baliogabea.\n"
 "%2% direktorioak ez dauka %3%."
 
-#: src/support/package.C:634 src/support/package.C:662
+#: src/support/package.C:635 src/support/package.C:663
 msgid " environment variable.\n"
 msgstr " inguruneko aldagaia.\n"
 
-#: src/support/package.C:656
+#: src/support/package.C:657
 #, c-format
 msgid ""
 "Invalid %1% environment variable.\n"
@@ -12660,7 +12660,7 @@ msgstr ""
 "Inguruneko %1% aldagaia baliogabea da.\n"
 "%2% ez da direktorioa."
 
-#: src/support/package.C:663
+#: src/support/package.C:664
 msgid " is not a directory."
 msgstr " ez da direktorioa."
 
