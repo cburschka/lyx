@@ -1,3 +1,9 @@
+2006-01-18  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* kbmap.C (defkey): 
+	* lyxfunc.C (processKeySym): make sure new FuncRequest objects
+	have origin set to KEYBOARD. (bug 2221)
+
 2006-01-16  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* rowpainter.C (isCursorOnRow): do not exclude endpos().

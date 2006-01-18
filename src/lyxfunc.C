@@ -307,7 +307,8 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 		// by a binding
 		if (keysym->isText() && keyseq.length() == 1) {
 			lyxerr[Debug::KEY] << "isText() is true, inserting." << endl;
-			func = FuncRequest(LFUN_SELFINSERT);
+			func = FuncRequest(LFUN_SELFINSERT, 
+					   FuncRequest::KEYBOARD);
 		} else {
 			lyxerr[Debug::KEY] << "Unknown, !isText() - giving up" << endl;
 			owner->message(_("Unknown function."));
@@ -318,7 +319,8 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 	if (func.action == LFUN_SELFINSERT) {
 		if (encoded_last_key != 0) {
 			string const arg(1, encoded_last_key);
-			dispatch(FuncRequest(LFUN_SELFINSERT, arg));
+			dispatch(FuncRequest(LFUN_SELFINSERT, arg, 
+					     FuncRequest::KEYBOARD));
 			lyxerr[Debug::KEY]
 				<< "SelfInsert arg[`" << arg << "']" << endl;
 		}

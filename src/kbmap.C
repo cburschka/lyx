@@ -274,6 +274,7 @@ void kb_keymap::defkey(kb_sequence * seq,
 	newone->mod = seq->modifiers[r];
 	if (r + 1 == seq->length()) {
 		newone->func = func;
+		newone->func.origin = FuncRequest::KEYBOARD;
 		newone->table.reset();
 		return;
 	} else {
