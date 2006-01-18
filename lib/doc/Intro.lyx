@@ -39,13 +39,8 @@ by the LyX Team
 status collapsed
 
 \begin_layout Standard
-Principal maintainer of this file is 
-\noun on
-John Weiss
-\noun default
-.
- If you have comments or error corrections, please send them to the LyX
- Documentation mailing list, <lyx-docs@lists.lyx.org>.
+If you have comments or error corrections, please send them to the LyX Documenta
+tion mailing list, <lyx-docs@lists.lyx.org>.
 \end_layout
 
 \end_inset
@@ -869,9 +864,9 @@ Real Jobs
 \end_inset
 
 , families, dishes to clean, kitty litter to dispose of, et cetera.
- If you want to help out, be sure to read Section\InsetSpace ~
+ If you want to help out, be sure to read Chapter\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sec:Contrib}
+\begin_inset LatexCommand \ref{chp:Contrib}
 
 \end_inset
 
@@ -947,7 +942,7 @@ In the printed manuals, all cross-references appear as the actual numbers
  for a chapter, section, subsection, and so on.
  Online, however, all cross-references appear as a grey box like the following:
  
-\begin_inset LatexCommand \ref{sec:Contrib}
+\begin_inset LatexCommand \ref{chp:Contrib}
 
 \end_inset
 
@@ -959,7 +954,7 @@ In the printed manuals, all cross-references appear as the actual numbers
 \begin_inset Quotes eld
 \end_inset
 
-sec:Contrib
+chp:Contrib
 \begin_inset Quotes erd
 \end_inset
 
@@ -1665,7 +1660,7 @@ Otherwise, you could needlessly frustrate yourself.
 \end_layout
 
 \begin_layout Chapter
-\begin_inset LatexCommand \label{sec:Contrib}
+\begin_inset LatexCommand \label{chp:Contrib}
 
 \end_inset
 
