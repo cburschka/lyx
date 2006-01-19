@@ -169,8 +169,8 @@ Converter::Impl::Impl(string const & from_file,   string const & to_file_base,
 		script_command_ =
 			"sh " +
 			QuoteName(LibFileSearch("scripts", "convertDefault.sh")) +
-			' ' +
-			QuoteName(from_format + ':' + from_file) +
+			' ' + 
+			QuoteName((from_format.empty() ? "" : from_format + ':') + from_file) +
 			' ' +
 			QuoteName(to_format + ':' + to_file_);
 
@@ -282,6 +282,9 @@ bool build_script(string const & from_file,
 {
 	lyxerr[Debug::GRAPHICS] << "build_script ... ";
 	typedef Converters::EdgePath EdgePath;
+
+	if (from_format.empty())
+		return false;
 
 	// we do not use ChangeExtension because this is a basename
 	// which may nevertheless contain a '.'

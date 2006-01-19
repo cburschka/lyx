@@ -294,7 +294,9 @@ bool Converters::convert(Buffer const * buffer,
 		if (try_default) {
 			// if no special converter defined, then we take the
 			// default one from ImageMagic.
-			string const from_ext = formats.extension(from_format);
+			string const from_ext = from_format.empty() ?
+				GetExtension(from_file) :
+				formats.extension(from_format);
 			string const command =
 				"sh " +
 				QuoteName(LibFileSearch("scripts", "convertDefault.sh")) +

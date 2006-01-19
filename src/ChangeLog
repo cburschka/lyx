@@ -1,3 +1,7 @@
+2006-01-11  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* converter.C (convert): handle unknown formats
+
 2006-01-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* cursor.C (goUpDown): comment out some debug messages.
@@ -38,7 +42,7 @@
 	* rowpainter.C (paintPar): always repaint the row with the
 	cursor in it
 
-2006-01-01  Lars Gullik BjÃ¸nnes <larsbj@gullik.net>
+2006-01-01  Lars Gullik Bjønnes <larsbj@gullik.net>
 
 	* MenuBackend.h: 
 	* bufferlist.h: 

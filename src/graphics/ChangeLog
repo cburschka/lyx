@@ -1,3 +1,9 @@
+2006-01-11  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* GraphicsCacheItem.C (convertToDisplayFormat): handle unknown
+	formats
+	* GraphicsConverter.C (Impl, build_script): ditto
+
 2005-11-02  Angus Leeming  <leeming@lyx.org>
 
 	* GraphicsCacheItem.C: trivial fix to a MSVS warning.

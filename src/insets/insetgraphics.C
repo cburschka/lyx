@@ -128,6 +128,8 @@ string const RemoveExtension(string const & filename)
 }
 
 
+/// Find the most suitable image format for images in \p format
+/// Note that \p format may be unknown (i. e. an empty string)
 string findTargetFormat(string const & format, OutputParams const & runparams)
 {
 	// Are we using latex or pdflatex?
@@ -661,7 +663,6 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	if (from.empty()) {
 		lyxerr[Debug::GRAPHICS]
 			<< "\tCould not get file format." << endl;
-		return orig_file;
 	}
 	string const to   = findTargetFormat(from, runparams);
 	string const ext  = formats.extension(to);

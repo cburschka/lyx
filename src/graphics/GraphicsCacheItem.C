@@ -335,8 +335,10 @@ string const findTargetFormat(string const & from)
 	typedef lyx::graphics::Image::FormatList FormatList;
 	FormatList const formats = lyx::graphics::Image::loadableFormats();
 
-	// There must be a format to load from.
-	BOOST_ASSERT(!formats.empty());
+	// Use the standard converter if we don't know the format to load
+	// from.
+	if (!formats.empty())
+		return string("ppm");
 
 	// First ascertain if we can load directly with no conversion
 	FormatList::const_iterator it  = formats.begin();
@@ -408,7 +410,6 @@ void CacheItem::Impl::convertToDisplayFormat()
 		setStatus(ErrorConverting);
 		lyxerr[Debug::GRAPHICS]
 			<< "\tCould not determine file format." << endl;
-		return;
 	}
 	lyxerr[Debug::GRAPHICS]
 		<< "\n\tThe file contains " << from << " format data." << endl;
