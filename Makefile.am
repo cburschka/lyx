@@ -14,8 +14,8 @@ else
 SUBDIRS = config development intl po src sourcedoc lib
 endif
 
-EXTRA_DIST = ANNOUNCE INSTALL.OS2 INSTALL.autoconf INSTALL.Win32 \
-	INSTALL.MacOSX README.OS2 README.Win32 \
+EXTRA_DIST = ANNOUNCE INSTALL.autoconf INSTALL.Win32 \
+	INSTALL.MacOSX README.Win32 \
 	UPGRADING lyx.man autogen.sh
 
 man_MANS = lyx.1
