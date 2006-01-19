@@ -81,7 +81,7 @@ void Counters::newCounter(string const & newc)
 	CounterList::iterator const cit = counterList.find(newc);
 	// if already exist give warning and return
 	if (cit != counterList.end()) {
-		lyxerr << "The new counter already exists." << endl;
+		lyxerr << "New counter already exists: " << newc << endl;
 		return;
 	}
 	counterList[newc];
@@ -94,14 +94,14 @@ void Counters::newCounter(string const & newc, string const & masterc)
 	CounterList::iterator const cit = counterList.find(newc);
 	// if already existant give warning and return
 	if (cit != counterList.end()) {
-		lyxerr << "The new counter already exists." << endl;
+		lyxerr << "New counter already exists: " << newc << endl;
 		return;
 	}
 	// then check if masterc exists
 	CounterList::iterator const it = counterList.find(masterc);
 	// if not give warning and return
 	if (it == counterList.end()) {
-		lyxerr << "The master counter does not exist." << endl;
+		lyxerr << "Master counter does not exist: " << masterc << endl;
 		return;
 	}
 

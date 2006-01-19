@@ -1019,10 +1019,10 @@ bool LCursor::goUpDown(bool up)
 
 	// try to find an inset that knows better then we
 	while (true) {
-		lyxerr << "updown: We are in " << &inset() << " idx: " << idx() << endl;
+		//lyxerr << "updown: We are in " << &inset() << " idx: " << idx() << endl;
 		// ask inset first
 		if (inset().idxUpDown(*this, up)) {
-			lyxerr << "idxUpDown triggered" << endl;
+			//lyxerr << "idxUpDown triggered" << endl;
 			// try to find best position within this inset
 			if (!selection())
 				setCursor(bruteFind2(*this, xo, yo));
@@ -1031,14 +1031,14 @@ bool LCursor::goUpDown(bool up)
 
 		// no such inset found, just take something "above"
 		if (!popLeft()) {
-			lyxerr << "updown: popleft failed (strange case)" << endl;
+			//lyxerr << "updown: popleft failed (strange case)" << endl;
 			int ylow  = up ? 0 : yo + 1;
 			int yhigh = up ? yo - 1 : bv().workHeight();
 			return bruteFind(*this, xo, yo, 0, bv().workWidth(), ylow, yhigh);
 		}
 
 		// any improvement so far?
-		lyxerr << "updown: popLeft succeeded" << endl;
+		//lyxerr << "updown: popLeft succeeded" << endl;
 		int xnew;
 		int ynew;
 		getPos(xnew, ynew);

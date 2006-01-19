@@ -1,3 +1,10 @@
+2006-01-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* cursor.C (goUpDown): comment out some debug messages.
+
+	* counters.C (newCounter): make error messages more explicit
+	(these appear with some textclasses like beamer)
+
 2006-01-18  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* kbmap.C (defkey): 

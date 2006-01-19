@@ -90,7 +90,7 @@ void initEncodings()
 
 	if (s.find("UTF") != string::npos || s.find("utf") != string::npos) 
 	//if (contains(c, "UTF") || contains(c, "utf"))
-		lyxerr << "Warning: this system's locale uses Unicode." << endl;
+		lyxerr[Debug::KEY]  << "Warning: this system's locale uses Unicode." << endl;
 
 	// strip off any encoding suffix
 	string::size_type i = s.find(".");
@@ -118,7 +118,7 @@ void initEncodings()
 
 	// when no document open
 	// use the appropriate encoding for the system language
-	lyxerr << "Language code:" << s << endl;
+	lyxerr[Debug::KEY] << "Language code:" << s << endl;
 	for (Languages::const_iterator it=languages.begin(); it != languages.end(); ++it) {
 		//lyxerr << it->second.code() << ":" << it->second.encodingStr() << ":" << it->second.encoding() << endl;
 		if (it->second.code() == s) {
@@ -126,7 +126,7 @@ void initEncodings()
 			break;
 		}
 	}
-	lyxerr << "Setting new locale for Qt:" << s << endl;
+	lyxerr[Debug::KEY]  << "Setting new encoding for Qt:" << s << endl;
 	QTextCodec * defaultCodec = encoding_map[s];
 	encoding_map[""] = defaultCodec;
 

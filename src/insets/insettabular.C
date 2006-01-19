@@ -421,7 +421,7 @@ string const InsetTabular::editMessage() const
 
 void InsetTabular::edit(LCursor & cur, bool left)
 {
-	lyxerr << "InsetTabular::edit: " << this << endl;
+	//lyxerr << "InsetTabular::edit: " << this << endl;
 	finishUndo();
 	cur.selection() = false;
 	cur.push(*this);
