@@ -313,4 +313,3 @@
 \endinput
 %%
 %% End of file `hollywood.cls'
-~
