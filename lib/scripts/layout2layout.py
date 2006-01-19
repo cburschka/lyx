@@ -70,7 +70,7 @@ def convert(lines):
     only_comment = 1
     label = ""
     space1 = ""
-    latextype = ""
+    latextype_line = -1
     style = ""
     while i < len(lines):
 
@@ -79,7 +79,7 @@ def convert(lines):
             i = i + 1
             continue
 
-	# insert file format if not already there
+        # insert file format if not already there
         if (only_comment):
                 match = re_Format.match(lines[i])
                 if match:
@@ -128,18 +128,19 @@ def convert(lines):
         # (or change the existing LatexType)
         match = re_LatexType.match(lines[i])
         if match:
-            latextype = match.group(4)
-            lines[i] = re_LatexType.sub(r'\1\2\3Bib_Environment', lines[i])
+            latextype_line = i
         match = re_Style.match(lines[i])
         if match:
             style = match.group(4)
             label = ""
             space1 = ""
-            latextype = ""
+            latextype_line = -1
         if re_End.match(lines[i]) and string.lower(label) == "bibliography":
-            if (latextype == ""):
+            if (latextype_line < 0):
                 lines.insert(i, "%sLatexType Bib_Environment" % space1)
                 i = i + 1
+            else:
+                lines[latextype_line] = re_LatexType.sub(r'\1\2\3Bib_Environment', lines[latextype_line])
 
         i = i + 1
 
