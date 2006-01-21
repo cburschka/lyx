@@ -5,6 +5,7 @@
 	* GDocument.[Ch], glade/document.glade: Add more functionality
 	  to the still-incomplete document dialog.
 	* Alert_pimpl.C: Make generic dialogs use the titles LyX gives them
+	* GGraphics.C: Default to scaling 100% when no scaling or size is given
 
 2006-01-20  Bernhard Reiter  <ockham@gmx.net>
 

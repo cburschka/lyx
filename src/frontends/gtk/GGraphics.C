@@ -384,8 +384,11 @@ void GGraphics::update() {
 		&& !float_equal(convert<double>(igp.scale), 0.0, 0.05)) {
 		// scaling sizing mode
 		setscalingradio_->set_active(true);
-	} else {
+	} else if (!igp.width.empty() && !igp.height.empty()) {
 		setsizeradio_->set_active(true);
+	} else {
+		outputscalespin_->get_adjustment()->set_value(100.0);
+		setscalingradio_->set_active(true);
 	}
 	onSizingModeChange();
 
