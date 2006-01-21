@@ -4,6 +4,7 @@
 	* Dialogs.C, Makefile.am, glade/Makefile.am: Use GBibItem
 	* GDocument.[Ch], glade/document.glade: Add more functionality
 	  to the still-incomplete document dialog.
+	* Alert_pimpl.C: Make generic dialogs use the titles LyX gives them
 
 2006-01-20  Bernhard Reiter  <ockham@gmx.net>
 

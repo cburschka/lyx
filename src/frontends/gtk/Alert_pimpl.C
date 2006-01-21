@@ -43,34 +43,37 @@ string translateShortcut(string const & str)
 }
 
 
-void warning_pimpl(string const &, string const & message)
+void warning_pimpl(string const & title, string const & message)
 {
 	Gtk::MessageDialog dlg(Glib::locale_to_utf8(message),
 			       true, Gtk::MESSAGE_WARNING,
 			       Gtk::BUTTONS_CLOSE, true);
+	dlg.set_title(title);
 	dlg.run();
 }
 
 
-void error_pimpl(string const &, string const & message)
+void error_pimpl(string const & title, string const & message)
 {
 	Gtk::MessageDialog dlg(Glib::locale_to_utf8(message),
 			       true, Gtk::MESSAGE_ERROR,
 			       Gtk::BUTTONS_CLOSE, true);
+	dlg.set_title(title);
 	dlg.run();
 }
 
 
-void information_pimpl(string const &, string const & message)
+void information_pimpl(string const & title, string const & message)
 {
 	Gtk::MessageDialog dlg(Glib::locale_to_utf8(message),
 			       true, Gtk::MESSAGE_INFO,
 			       Gtk::BUTTONS_CLOSE, true);
+	dlg.set_title(title);
 	dlg.run();
 }
 
 
-int prompt_pimpl(string const &, string const & question,
+int prompt_pimpl(string const & title, string const & question,
 		 int defaultButton, int /*escapeButton*/,
 		 string const & b1, string const & b2, string const & b3)
 {
@@ -82,6 +85,7 @@ int prompt_pimpl(string const &, string const & question,
 	Gtk::MessageDialog dlg(Glib::locale_to_utf8(question),
 			       true, Gtk::MESSAGE_QUESTION,
 			       Gtk::BUTTONS_NONE, true);
+	dlg.set_title(title);
 	dlg.add_button(gb1, 0);
 	dlg.add_button(gb2, 1);
 	if (!b3.empty())
