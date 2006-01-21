@@ -15,6 +15,8 @@
 #include "GViewBase.h"
 #include "vspace.h"
 
+#include "BranchList.h"
+
 #include <gtkmm.h>
 
 #include <map>
@@ -103,6 +105,60 @@ private:
 	Gtk::RadioButton * qdanishradio_;
 	std::vector<std::string> lang_;
 	// *** End "Language" Page ***
+
+	// *** Start "Numbering" Page ***
+	Gtk::Adjustment * numberingadj_;
+	Gtk::Adjustment * TOCadj_;
+	Gtk::Label * numberinglabel_;
+	Gtk::Label * TOClabel_;
+	void numberingChanged();
+	void TOCChanged();
+	// *** End "Numbering" Page ***
+
+	// *** Start "Bibliography" Page ***
+	Gtk::RadioButton * basicnumericalradio_;
+	Gtk::RadioButton * natbibnumericalradio_;
+	Gtk::RadioButton * natbibauthoryearradio_;
+	Gtk::RadioButton * jurabibradio_;
+	Gtk::ToggleButton * sectionedbibliographytoggle_;
+	// *** End "Bibliography" Page ***
+
+	// *** Start "Math" Page ***
+	Gtk::RadioButton * AMSautomaticallyradio_;
+	Gtk::RadioButton * AMSalwaysradio_;
+	Gtk::RadioButton * AMSneverradio_;
+	// *** End "Math" Page ***
+
+	// *** Start "Floats" Page ***
+	Gtk::RadioButton * defaultradio_;
+	Gtk::RadioButton * heredefinitelyradio_;
+	Gtk::RadioButton * alternativeradio_;
+	Gtk::CheckButton * topcheck_;
+	Gtk::CheckButton * bottomcheck_;
+	Gtk::CheckButton * pageoffloatscheck_;
+	Gtk::CheckButton * hereifpossiblecheck_;
+	Gtk::CheckButton * ignorerulescheck_;
+	void alternativeChanged();
+	// *** End "Floats" Page ***
+
+	// *** Start "Bullets" Page ***
+	// *** End "Bullets" Page ***
+
+	// *** Start "Branches" Page ***
+	//BranchList branchlist_;
+	Gtk::TreeView * branchesview_;
+	Gtk::Button * addbranchbutton_;
+	Gtk::Button * removebranchbutton_;
+	Gtk::TreeModelColumn<Glib::ustring> branchColName_;
+	Gtk::TreeModelColumn<bool> branchColActivated_;
+	Gtk::TreeModelColumn<Glib::ustring> branchColColor_;
+	Gtk::TreeModel::ColumnRecord branchCols_;
+	
+	Glib::RefPtr<Gtk::ListStore> branchliststore_;
+	Glib::RefPtr<Gtk::TreeSelection> branchsel_;
+	void addBranch();
+	void branchSelChanged();
+	// *** End "Branches" Page ***
 };
 
 } // namespace frontend

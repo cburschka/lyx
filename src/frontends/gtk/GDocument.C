@@ -40,6 +40,7 @@ namespace lyx {
 
 using support::bformat;
 using support::token;
+using support::contains;
 
 namespace frontend {
 
@@ -208,7 +209,7 @@ void GDocument::doBuild()
 
 	// *** Begin "Margins" Page ***
 	xml_->get_widget("DefaultMargins", defaultmargins_);
-	defaultmargins_->signal_clicked().connect(
+	defaultmargins_->signal_toggled().connect(
 		sigc::mem_fun(*this, &GDocument::marginsChanged));
 
 	xml_->get_widget("MarginTop", mtopspin_);
@@ -273,6 +274,94 @@ void GDocument::doBuild()
 	xml_->get_widget("FrenchQuote", qfrenchradio_);
 	xml_->get_widget("DanishQuote", qdanishradio_);
 	// *** End "Language" Page ***
+
+	// *** Start "Numbering" Page ***
+	Gtk::HScale * scale;
+	xml_->get_widget("Numbering", scale);
+	numberingadj_ = scale->get_adjustment();
+	numberingadj_->signal_value_changed().connect(
+		sigc::mem_fun(*this, &GDocument::numberingChanged));
+	xml_->get_widget("NumberingLabel", numberinglabel_);
+
+	xml_->get_widget("TOC", scale);
+	TOCadj_ = scale->get_adjustment();
+	TOCadj_->signal_value_changed().connect(
+		sigc::mem_fun(*this, &GDocument::TOCChanged));
+	xml_->get_widget("TOCLabel", TOClabel_);
+	// *** End "Numbering" Page ***
+
+	// *** Start "Bibliography" Page ***
+	xml_->get_widget("BasicNumerical", basicnumericalradio_);
+	xml_->get_widget("NatbibNumerical", natbibnumericalradio_);
+	xml_->get_widget("NatbibAuthorYear", natbibauthoryearradio_);
+	xml_->get_widget("Jurabib", jurabibradio_);
+	xml_->get_widget("SectionedBibliography", sectionedbibliographytoggle_);
+	// *** End "Bibliography" Page ***
+
+	// *** Start "Math" Page ***
+	xml_->get_widget("AMSAutomatically", AMSautomaticallyradio_);
+	xml_->get_widget("AMSAlways", AMSalwaysradio_);
+	xml_->get_widget("AMSNever", AMSneverradio_);
+	// *** End "Math" Page ***
+
+	// *** Start "Floats" Page ***
+	xml_->get_widget("DocumentDefault", defaultradio_);
+	xml_->get_widget("HereDefinitely", heredefinitelyradio_);
+	xml_->get_widget("Alternative", alternativeradio_);
+	alternativeradio_->signal_toggled().connect(
+		sigc::mem_fun(*this, &GDocument::alternativeChanged));
+	xml_->get_widget("TopOfPage", topcheck_);
+	xml_->get_widget("BottomOfPage", bottomcheck_);
+	xml_->get_widget("PageOfFloats", pageoffloatscheck_);
+	xml_->get_widget("HereIfPossible", hereifpossiblecheck_);
+	xml_->get_widget("IgnoreRules", ignorerulescheck_);
+	// Initial sensitivity
+	GDocument::alternativeChanged();
+
+	// *** End "Floats" Page ***
+
+	// *** Start "Bullets" Page ***
+	// *** End "Bullets" Page ***
+
+	// *** Start "Branches" Page ***
+	xml_->get_widget("Branches", branchesview_);
+	xml_->get_widget("AddBranch", addbranchbutton_);
+	addbranchbutton_->signal_clicked().connect(
+		sigc::mem_fun(*this, &GDocument::addBranch));
+	xml_->get_widget("RemoveBranch", removebranchbutton_);
+	branchCols_.add(branchColName_);
+	branchCols_.add(branchColActivated_);
+	branchCols_.add(branchColColor_);
+	
+	branchliststore_ = Gtk::ListStore::create(branchCols_);
+	branchesview_->set_model(branchliststore_);
+	branchesview_->append_column_editable(_("Name"), branchColName_);
+	branchesview_->append_column_editable(_("Activated"), branchColActivated_);
+	branchesview_->append_column_editable(_("Color"), branchColColor_);
+	branchsel_ = branchesview_->get_selection();
+	
+	branchsel_->signal_changed().connect(
+		sigc::mem_fun(*this, &GDocument::branchSelChanged));
+	
+	/*
+	ErrorList::const_iterator cit = errors.begin();
+	ErrorList::const_iterator end = errors.end();
+	for (int rowindex = 0; cit != end; ++cit, ++rowindex) {
+		Gtk::ListStore::Row row = *errliststore_->append();
+		if (rowindex == 0)
+			errlistsel_->select(*row);
+
+		(*row)[listCol_] = cit->error;
+		(*row)[listColIndex_] = rowindex;
+	}
+	*/
+	Gtk::ListStore::Row row = *branchliststore_->append();
+	(*row)[branchColName_] = "Munch";
+	(*row)[branchColActivated_] = false;
+	row = *branchliststore_->append();
+	(*row)[branchColName_] = "Hunch";
+	(*row)[branchColActivated_] = true;
+	// *** End "Branches" Page ***
 }
 
 
@@ -418,6 +507,86 @@ void GDocument::update()
 
 	// *** End "Language" Page ***
 
+	// *** Start "Numbering" Page ***
+	numberingadj_->set_value(params.secnumdepth + 2);
+	TOCadj_->set_value(params.tocdepth + 1);
+	// *** End "Numbering" Page ***
+
+	// *** Start "Bibliography" Page ***
+	switch (params.cite_engine) {
+	case biblio::ENGINE_BASIC:
+		basicnumericalradio_->set_active();
+		break;
+	case biblio::ENGINE_NATBIB_NUMERICAL:
+		natbibnumericalradio_->set_active();
+		break;
+	case biblio::ENGINE_NATBIB_AUTHORYEAR:
+		natbibauthoryearradio_->set_active();
+		break;
+	case biblio::ENGINE_JURABIB:
+		jurabibradio_->set_active();
+		break;
+	}
+
+	sectionedbibliographytoggle_->set_active(params.use_bibtopic);
+	// *** End "Bibliography" Page ***
+
+	// *** Start "Math" Page ***
+	switch (params.use_amsmath) {
+	case BufferParams::AMS_AUTO:
+		AMSautomaticallyradio_->set_active();
+		break;
+	case BufferParams::AMS_ON:
+		AMSalwaysradio_->set_active();
+		break;
+	case BufferParams::AMS_OFF:
+		AMSneverradio_->set_active();
+		break;
+	}
+	// *** End "Math" Page ***
+
+	// *** Start "Floats" Page ***
+	string const placement = params.float_placement;
+	bool const here_definitely = contains(placement, 'H');
+	bool const top    = contains(placement, 't');
+	bool const bottom = contains(placement, 'b');
+	bool const page   = contains(placement, 'p');
+	bool const here   = contains(placement, 'h');
+	bool const force  = contains(placement, '!');
+	bool const alternatives = top || bottom || page || here;
+
+	if (alternatives) {
+		alternativeradio_->set_active(true);
+	} else if (here_definitely) {
+		heredefinitelyradio_->set_active(true);
+	} else {
+		defaultradio_->set_active(true);
+	}
+	ignorerulescheck_->set_active(force);
+	topcheck_->set_active(top);
+	bottomcheck_->set_active(bottom);
+	pageoffloatscheck_->set_active(page);
+	hereifpossiblecheck_->set_active(here);
+
+	// *** End "Floats" Page ***
+
+	// *** Start "Bullets" Page ***
+	// *** End "Bullets" Page ***
+
+	// *** Start "Branches" Page ***
+	branchliststore_->clear();
+	
+	BranchList::const_iterator it = params.branchlist().begin();
+	BranchList::const_iterator const end = params.branchlist().end();
+	for (; it != end; ++it) {
+		Gtk::ListStore::Row row = *branchliststore_->append();
+		(*row)[branchColName_] = (*it).getBranch();
+		std::cerr << "update: loading '" << (*it).getBranch() << "'\n";
+		(*row)[branchColActivated_] = (*it).getSelected();
+		(*row)[branchColColor_] = (*it).getColor();
+	}
+	// *** End "Branches" Page ***
+
 	// Be a cheesy bastard, for the moment
 	bc().valid();
 }
@@ -546,6 +715,88 @@ void GDocument::apply()
 		params.quotes_language = InsetQuotes::DanishQ;
 	// *** End "Language" Page ***
 
+	// *** Start "Numbering" Page ***
+	params.secnumdepth = (int)(numberingadj_->get_value()) - 2;
+	params.tocdepth = (int)(TOCadj_->get_value()) - 1;
+	// *** End "Numbering" Page ***
+
+	// *** Start "Bibliography" Page ***
+	if (basicnumericalradio_->get_active())
+		params.cite_engine = biblio::ENGINE_BASIC;
+	else if (natbibnumericalradio_->get_active())
+		params.cite_engine = biblio::ENGINE_NATBIB_NUMERICAL;
+	else if (natbibauthoryearradio_->get_active())
+		params.cite_engine = biblio::ENGINE_NATBIB_AUTHORYEAR;
+	else if (jurabibradio_->get_active())
+		params.cite_engine = biblio::ENGINE_JURABIB;
+
+	params.use_bibtopic = sectionedbibliographytoggle_->get_active();
+	// *** End "Bibliography" Page ***
+
+	// *** Start "Math" Page ***
+	if (AMSautomaticallyradio_->get_active())
+		params.use_amsmath = BufferParams::AMS_AUTO;
+	else if (AMSalwaysradio_->get_active())
+		params.use_amsmath = BufferParams::AMS_ON;
+	else if (AMSneverradio_->get_active())
+		params.use_amsmath = BufferParams::AMS_OFF;
+	// *** End "Math" Page ***
+
+	// *** Start "Floats" Page ***
+	string placement;
+	if (alternativeradio_->get_active()) {
+		if (ignorerulescheck_->get_active())
+			placement += '!';
+		if (topcheck_->get_active())
+			placement += 't';
+		if (bottomcheck_->get_active())
+			placement += 'b';
+		if (pageoffloatscheck_->get_active())
+			placement += 'p';
+		if (hereifpossiblecheck_->get_active())
+			placement += 'h';
+		if (placement == "!")
+			placement.erase();
+	} else if (heredefinitelyradio_->get_active())
+		placement = "H";
+
+	params.float_placement = placement;
+	// *** End "Floats" Page ***
+
+	// *** Start "Bullets" Page ***
+	// *** End "Bullets" Page ***
+
+	// *** Start "Branches" Page ***
+	/*branchliststore_->clear();
+	
+	BranchList::const_iterator it = params.branchlist().begin();
+	BranchList::const_iterator const end = params.branchlist().end();
+	for (; it != end; ++it) {
+		Gtk::ListStore::Row row = *branchliststore_->append();
+		(*row)[branchColName_] = (*it).getBranch();
+		(*row)[branchColActivated_] = (*it).getSelected();
+		(*row)[branchColColor_] = (*it).getColor();
+	}*/
+	
+	BranchList branchlist;
+	
+	Gtk::ListStore::iterator it = branchliststore_->children().begin();
+	Gtk::ListStore::iterator const end = branchliststore_->children().end();
+	for (; it != end; ++it) {
+		Gtk::ListStore::Row row = *it;
+		Glib::ustring const name = (*row)[branchColName_];
+		if (branchlist.add(name)) {
+			std::cerr << "apply: adding '" << name << "'\n";
+			Branch * newbranch = branchlist.find(name);
+			newbranch->setSelected((*row)[branchColActivated_]);
+			Glib::ustring const color = (*row)[branchColColor_];
+			newbranch->setColor(color);
+		}
+	}
+	
+	params.branchlist() = branchlist;
+	
+	// *** End "Branches" Page ***
 }
 
 
@@ -606,12 +857,10 @@ void GDocument::classChanged()
 			pagestylecombo_.append_text("default");
 
 			string const pagestyleitems = ctrl.textClass().opt_pagestyle();
-			std::cerr << "pagestyleitems=" << pagestyleitems << "\n";
 			for (int n=0; !token(pagestyleitems,'|',n).empty(); ++n)
 				pagestylecombo_.append_text(token(pagestyleitems,'|',n));
 
 			comboBoxTextSet(pagestylecombo_, params.pagestyle);
-			std::cerr << "params.pagestyle=" << params.pagestyle << "\n";
 		}
 	} else {
 		classcombo_.set_active(params.textclass);
@@ -650,6 +899,70 @@ void GDocument::marginsChanged()
 	mheadsepunitcombo_.set_sensitive(custom);
 	mheadheightunitcombo_.set_sensitive(custom);
 	mfootskipunitcombo_.set_sensitive(custom);
+}
+
+
+void GDocument::numberingChanged()
+{
+	string const numberinglabels[] = {
+		_("No headings numbered"),
+		_("Only parts numbered"),
+		_("Chapters and above numbered"),
+		_("Sections and above numbered"),
+		_("Subsections and above numbered"),
+		_("Subsubsections and above numbered"),
+		_("Paragraphs and above numbered"),
+		_("All headings numbered")
+	};
+
+	int const value = (int)(numberingadj_->get_value());
+	numberinglabel_->set_label("<i>" + numberinglabels[value] + "</i>");
+}
+
+
+void GDocument::TOCChanged()
+{
+	string const TOClabels[] = {
+		_("Only Parts appear in TOC"),
+		_("Chapters and above appear in TOC"),
+		_("Sections and above appear in TOC"),
+		_("Subsections and above appear in TOC"),
+		_("Subsubsections and above appear in TOC"),
+		_("Paragraphs and above appear in TOC"),
+		_("TOC contains all headings")
+	};
+
+	int const value = (int)(TOCadj_->get_value());
+	TOClabel_->set_label("<i>" + TOClabels[value] + "</i>");
+}
+
+
+void GDocument::alternativeChanged()
+{
+	bool const sens = alternativeradio_->get_active();
+	topcheck_->set_sensitive(sens);
+	bottomcheck_->set_sensitive(sens);
+	pageoffloatscheck_->set_sensitive(sens);
+	hereifpossiblecheck_->set_sensitive(sens);
+	ignorerulescheck_->set_sensitive(sens);
+}
+
+
+void GDocument::addBranch()
+{
+	Gtk::ListStore::Row row = *branchliststore_->append();
+	(*row)[branchColName_] = "New Branch";
+	(*row)[branchColActivated_] = false;
+	(*row)[branchColColor_] = "#000000";
+}
+
+
+void GDocument::branchSelChanged()
+{
+	if (branchsel_->get_selected() == branchliststore_->children().end())
+		removebranchbutton_->set_sensitive(false);
+	else
+		removebranchbutton_->set_sensitive(true);
 }
 
 } // namespace frontend
