@@ -60,7 +60,7 @@
 #include "GAboutlyx.h"
 #include "GText.h"
 #include "GMathDelim.h"
-#include "FormBibitem.h"
+#include "GBibItem.h"
 #include "FormBibtex.h"
 #include "GBox.h"
 #include "FormBranch.h"
@@ -189,9 +189,9 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setView(new GAboutlyx(*dialog));
 		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "bibitem") {
-		dialog->bc().view(new xformsBC(dialog->bc()));
+		dialog->bc().view(new GBC(dialog->bc()));
 		dialog->setController(new ControlCommand(*dialog, name));
-		dialog->setView(new FormBibitem(*dialog));
+		dialog->setView(new GBibItem(*dialog));
 		dialog->bc().bp(new OkCancelReadOnlyPolicy);
 	} else if (name == "bibtex") {
 		dialog->bc().view(new xformsBC(dialog->bc()));

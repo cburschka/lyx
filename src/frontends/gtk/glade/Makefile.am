@@ -6,6 +6,7 @@ gladedir = $(pkgdatadir)/glade
 dist_glade_DATA = \
 	aboutlyx.glade \
 	box.glade \
+	bibitem.glade \
 	changes.glade \
 	character.glade \
 	citation.glade \

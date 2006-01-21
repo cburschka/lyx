@@ -31,6 +31,8 @@ libgtk_la_SOURCES = \
 	GAboutlyx.h \
 	GBC.C \
 	GBC.h \
+	GBibItem.C \
+	GBibItem.h \
 	GBox.C \
 	GBox.h \
 	GChanges.C \
@@ -135,7 +137,6 @@ xforms_objects = \
 	../xforms/Color.lo \
 	../xforms/combox.lo \
 	../xforms/fdesign_base.lo \
-	../xforms/FormBibitem.lo \
 	../xforms/FormBibtex.lo \
 	../xforms/FormBranch.lo \
 	../xforms/FormBrowser.lo \
