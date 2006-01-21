@@ -181,10 +181,10 @@ void GMenubar::onSubMenuActivate(MenuItem const * item,
 					Gtk::Menu_Helpers::CheckMenuElem(
 						labelTrans(i->label(),
 							   i->shortcut())));
-				Gtk::CheckMenuItem& citem =
+				Gtk::CheckMenuItem& checkitem =
 					static_cast<Gtk::CheckMenuItem&>(
 						gmenu->items().back());
-				citem.set_active(on);
+				checkitem.set_active(on);
 			} else {
 				// Choose an icon from the funcrequest
 				Gtk::BuiltinStockID stockID = getGTKStockIcon(i->func());
@@ -205,9 +205,9 @@ void GMenubar::onSubMenuActivate(MenuItem const * item,
 					}
 				}
 
-				Gtk::ImageMenuItem * item = Gtk::manage(new Gtk::ImageMenuItem);
+				Gtk::ImageMenuItem * imgitem = Gtk::manage(new Gtk::ImageMenuItem);
 				if (image)
-					item->set_image(*image);
+					imgitem->set_image(*image);
 
 				// This hbox is necessary because add_accel_label is protected,
 				// and even if you subclass Gtk::MenuItem then add_accel_label
@@ -219,17 +219,17 @@ void GMenubar::onSubMenuActivate(MenuItem const * item,
 					"   " + i->binding(), false));
 				hbox->pack_start(*label1, false, false, 0);
 				hbox->pack_end(*label2, false, false, 0);
-				item->add(*hbox);
+				imgitem->add(*hbox);
 
-				gmenu->append(*item);
-				item->show_all();
+				gmenu->append(*imgitem);
+				imgitem->show_all();
 			}
-			Gtk::MenuItem & item = gmenu->items().back();
-			item.signal_activate().connect(
+			Gtk::MenuItem & newitem = gmenu->items().back();
+			newitem.signal_activate().connect(
 				sigc::bind(sigc::mem_fun(*this, &GMenubar::onCommandActivate),
-					   &(*i), &item));
+					   &(*i), &newitem));
 			if (!flag.enabled())
-				item.set_sensitive(false);
+				newitem.set_sensitive(false);
 			break;
 		}
 		case MenuItem::Separator:
