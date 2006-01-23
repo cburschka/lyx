@@ -191,6 +191,20 @@ LyXFont LyXText::getFont(Paragraph const & par, pos_type const pos) const
 	if (!isMainText())
 		applyOuterFont(font);
 
+	// Find the pit value belonging to paragraph. This will not break 
+	// even if pars_ would not be a vector anymore.
+	// Performance appears acceptable.
+
+	pit_type pit = pars_.size();
+	for (pit_type it = 0; it < pit; ++it)
+		if (&pars_[it] == &par) {
+			pit = it;
+			break;
+		}
+	// Realize against environment font information
+	if (pit < pars_.size())
+		font.realize(outerFont(pit, pars_));
+
 	// Realize with the fonts of lesser depth.
 	font.realize(defaultfont_);
 

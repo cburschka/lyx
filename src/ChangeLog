@@ -1,3 +1,8 @@
+2006-01-23  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* text2.C: fix bug 2015: on screen fonts in nested environments 
+	can be wrong
+
 2006-01-11  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* converter.C (convert): handle unknown formats
