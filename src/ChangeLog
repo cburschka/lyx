@@ -1,3 +1,8 @@
+2006-01-23  Helge Hafting <helge.hafting@aitel.hist.no>
+	* buffer_funcs.C: Trivial fix - added {} around
+	the statements to be affected by a if-test. Now
+	label in a minipage in a float looks ok on screen again.
+
 2006-01-23  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* text2.C: fix bug 2015: on screen fonts in nested environments 

@@ -476,9 +476,10 @@ void setCounter(Buffer const & buf, ParIterator & it)
 			--i;
 			InsetBase * const in = &it[i].inset();
 			if (in->lyxCode() == InsetBase::FLOAT_CODE
-			    || in->lyxCode() == InsetBase::WRAP_CODE)
+			    || in->lyxCode() == InsetBase::WRAP_CODE) {
 				type = in->getInsetName();
 				break;
+			}
 		}
 
 		string s;
