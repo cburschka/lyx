@@ -28,8 +28,8 @@ dist_glade_DATA = \
 	sendto.glade \
 	showfile.glade \
 	spellcheck.glade \
-	tabular.glade \
 	tableCreate.glade \
+	tabular.glade \
 	texinfo.glade \
 	text.glade \
 	thesaurus.glade \
