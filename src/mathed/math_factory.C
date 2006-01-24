@@ -225,9 +225,9 @@ void initMath()
 {
 	static bool initialized = false;
 	if (!initialized) {
+		initialized = true;
 		initParser();
 		initSymbols();
-		initialized = true;
 	}
 }
 

@@ -1,3 +1,11 @@
+2006-01-18  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* math_factory.C (initMath): set initialized to true early to
+	avoid recursive invokation.
+
+	* math_macrotemplate.C (MathMacroTemplate): make sure math
+	structures are initialized.
+
 2006-01-11  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* math_nestinset.C (doDispatch/LFUN_SELFINSERT): when inserting a
