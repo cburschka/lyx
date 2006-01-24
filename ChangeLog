@@ -1,3 +1,7 @@
+2006-01-24  John Spray  <spray@lyx.org>
+
+	* configure.ac: the gtk frontend does not need xforms anymore.
+
 2006-01-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* Makefile.am (EXTRA_DIST): do not distribute INSTALL.OS2 and

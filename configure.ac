@@ -160,21 +160,13 @@ esac
 
 ### check which frontend we want to use
 
-dnl if the gtk frontend has been specified, then xforms is needed too
-if echo $FRONTENDS | grep gtk | grep -v xforms ; then
-  FRONTENDS="xforms $FRONTENDS"
-  noxformsbin=yes
-fi
-
 dnl The code below is not in a macro, because this would cause big
 dnl problems with the AC_REQUIRE contained in QT_DO_IT_ALL.
 for frontend in $FRONTENDS ; do
   case "$frontend" in
     xforms)
 	  XFORMS_DO_IT_ALL
-	  if test -z "$noxformsbin" ; then
-	    FRONTENDS_PROGS="$FRONTENDS_PROGS lyx-xforms\$(EXEEXT)"
-	  fi
+	  FRONTENDS_PROGS="$FRONTENDS_PROGS lyx-xforms\$(EXEEXT)"
 	  FRONTENDS_SUBDIRS="$FRONTENDS_SUBDIRS xforms"
 	  RPM_FRONTEND="xforms"
 	  FRONTEND_INFO="${FRONTEND_INFO}\
