@@ -1,4 +1,10 @@
+2006-01-24  John Spray <spray@lyx.org>
+	* GTabular.[Ch], glade/tabular.glade: Add tabular dialog (incomplete)
+	* LyXGtkLengthEntry.[Ch]: Add length entry widget
+	* Dialogs.C, Makefile.am, lyx_gui.C: Remove xforms references
+
 2006-01-23  John Spray <spray@lyx.org>
+
 	* LyXGdkImage.[Ch]: replace xforms Image class
 	* Makefile.am: build LyXGdkImage
 	* GPainter.C: use new Gdk Image class

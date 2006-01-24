@@ -14,11 +14,9 @@ AM_CPPFLAGS += \
 	-I$(top_srcdir)/src \
 	-I$(top_srcdir)/src/frontends \
 	-I$(top_srcdir)/src/frontends/controllers \
-	-I../xforms \
-	-I$(top_srcdir)/src/frontends/xforms \
 	$(BOOST_INCLUDES) @GTK_FRONTEND_CFLAGS@
 
-libgtk_la_LIBADD = $(xforms_objects) ../xforms/forms/*.lo @GTK_FRONTEND_LIBS@ @XFORMS_LIBS@
+libgtk_la_LIBADD = @GTK_FRONTEND_LIBS@
 
 # Alphabetical order please.  It makes it easier to figure out what's missing.
 libgtk_la_SOURCES = \
@@ -89,6 +87,8 @@ libgtk_la_SOURCES = \
 	GSpellchecker.h \
 	GTableCreate.C \
 	GTableCreate.h \
+	GTabular.C \
+	GTabular.h \
 	GTexinfo.C \
 	GTexinfo.h \
 	GText.C \
@@ -113,6 +113,10 @@ libgtk_la_SOURCES = \
 	GWorkArea.h \
 	GXpmBtnTbl.C \
 	GXpmBtnTbl.h \
+	LyXGdkImage.C \
+	LyXGdkImage.h \
+	GtkLengthEntry.C \
+	GtkLengthEntry.h \
 	GtkmmX.h \
 	IdSc.C \
 	IdSc.h \
@@ -131,35 +135,3 @@ libgtk_la_SOURCES = \
 	xftFontLoader.h \
 	xftFontMetrics.C
 
-
-xforms_objects = \
-	../xforms/bmtable.lo \
-	../xforms/checkedwidgets.lo \
-	../xforms/ColorHandler.lo \
-	../xforms/Color.lo \
-	../xforms/combox.lo \
-	../xforms/fdesign_base.lo \
-	../xforms/FormBibtex.lo \
-	../xforms/FormBranch.lo \
-	../xforms/FormBrowser.lo \
-	../xforms/FormColorpicker.lo \
-	../xforms/FormDialogView.lo \
-	../xforms/FormExternal.lo \
-	../xforms/FormMathsBitmap.lo \
-	../xforms/FormMathsDelim.lo \
-	../xforms/FormMathsSpace.lo \
-	../xforms/FormMathsStyle.lo \
-	../xforms/FormPreamble.lo \
-	../xforms/FormPreferences.lo \
-	../xforms/forms_gettext.lo \
-	../xforms/FormTabular.lo \
-	../xforms/FormText.lo \
-	../xforms/FormWrap.lo \
-	../xforms/freebrowser.lo \
-	../xforms/input_validators.lo \
-	../xforms/RadioButtonGroup.lo \
-	../xforms/Tooltips.lo \
-	../xforms/xformsBC.lo \
-	../xforms/xforms_helpers.lo \
-	../xforms/xformsImage.lo \
-	../xforms/xforms_resize.lo

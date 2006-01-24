@@ -48,10 +48,6 @@
 #include "xftFontLoader.h"
 #include "GWorkArea.h"
 
-//just for xforms
-#include "lyx_forms.h"
-#include "xforms_helpers.h"
-
 #include "support/lyxlib.h"
 #include "support/os.h"
 #include "support/filetools.h"
@@ -79,7 +75,6 @@ using lyx::support::package;
 
 using lyx::frontend::colorCache;
 using lyx::frontend::GView;
-using lyx::frontend::XformsColor;
 
 
 extern BufferList bufferlist;
@@ -99,59 +94,13 @@ bool finished = false;
 /// estimate DPI from X server
 int getDPI()
 {
+	//TODO use GDK instead
 	Screen * scr = ScreenOfDisplay(getDisplay(), getScreen());
 	return int(((HeightOfScreen(scr) * 25.4 / HeightMMOfScreen(scr)) +
 		(WidthOfScreen(scr) * 25.4 / WidthMMOfScreen(scr))) / 2);
 }
 
-
-/// set default GUI configuration
-void setDefaults()
-{
-	FL_IOPT cntl;
-	cntl.buttonFontSize = FL_NORMAL_SIZE;
-	cntl.browserFontSize = FL_NORMAL_SIZE;
-	cntl.labelFontSize = FL_NORMAL_SIZE;
-	cntl.choiceFontSize = FL_NORMAL_SIZE;
-	cntl.inputFontSize = FL_NORMAL_SIZE;
-	cntl.menuFontSize  = FL_NORMAL_SIZE;
-	cntl.borderWidth = -1;
-	cntl.vclass = FL_DefaultVisual;
-	fl_set_defaults(FL_PDVisual
-			| FL_PDButtonFontSize
-			| FL_PDBrowserFontSize
-			| FL_PDLabelFontSize
-			| FL_PDChoiceFontSize
-			| FL_PDInputFontSize
-			| FL_PDMenuFontSize
-			| FL_PDBorderWidth, &cntl);
-}
-
-
 extern "C" {
-
-
-int LyX_XErrHandler(Display * display, XErrorEvent * xeev) {
-	// We don't abort on BadWindow
-	if (xeev->error_code == BadWindow) {
-		lyxerr << "BadWindow received !" << std::endl;
-		lyxerr << "If you're using xforms 1.0 or greater, "
-		       << " please report this to lyx-devel@lists.lyx.org"
-		       << std::endl;
-		return 0;
-	}
-
-	// emergency cleanup
-	LyX::cref().emergencyCleanup();
-
-	// Get the reason for the crash.
-	char etxt[513];
-	XGetErrorText(display, xeev->error_code, etxt, 512);
-	lyxerr << etxt << " id: " << xeev->resourceid << std::endl;
-	// By doing an abort we get a nice backtrace. (hopefully)
-	lyx::support::abort();
-	return 0;
-}
 
 }
 
@@ -161,46 +110,9 @@ char geometry[40];
 } // namespace anon
 
 
-void parse_init_xforms(int & argc, char * argv[])
-{
-	setDefaults();
-
-	FL_CMD_OPT cmdopt[] = {
-		{"-geometry", "*.geometry", XrmoptionSepArg, "690x510"}
-	};
-
-	FL_resource res[] = {
-		{"geometry", "geometryClass", FL_STRING, geometry, "", 40}
-	};
-
-	const int num_res = sizeof(res)/sizeof(FL_resource);
-	fl_initialize(&argc, argv, "LyX", cmdopt, num_res);
-
-	// It appears that, in xforms >=0.89.5, fl_initialize()
-	// calls setlocale() and ruins our LC_NUMERIC setting.
-
-	fl_get_app_resources(res, num_res);
-
-	Display * display = fl_get_display();
-
-	if (!display) {
-		lyxerr << "LyX: unable to access X display, exiting"
-		       << std::endl;
-		::exit(1);
-	}
-
-	fcntl(ConnectionNumber(display), F_SETFD, FD_CLOEXEC);
-
-	XSetErrorHandler(LyX_XErrHandler);
-
-}
-
-
 void lyx_gui::parse_init(int & argc, char * argv[])
 {
 	new Gtk::Main(argc, argv);
-
-	parse_init_xforms(argc, argv);
 
 	using namespace lyx::graphics;
 	Image::newImage = boost::bind(&LyXGdkImage::newImage);
@@ -213,130 +125,13 @@ void lyx_gui::parse_init(int & argc, char * argv[])
 }
 
 
-void parse_lyxrc_xforms()
-{
-	XformsColor::read(lyx::support::AddName(package().user_support(),
-						"preferences.xform"));
-
-	if (lyxrc.popup_font_encoding.empty())
-		lyxrc.popup_font_encoding = lyxrc.font_norm;
-	// Set the font name for popups and menus
-	string boldfontname = lyxrc.popup_bold_font
-			       + "-*-*-*-?-*-*-*-*-"
-			       + lyxrc.popup_font_encoding;
-		// "?" means "scale that font"
-	string fontname = lyxrc.popup_normal_font
-			       + "-*-*-*-?-*-*-*-*-"
-			       + lyxrc.popup_font_encoding;
-
-	int bold = fl_set_font_name(FL_BOLD_STYLE, boldfontname.c_str());
-	int normal = fl_set_font_name(FL_NORMAL_STYLE, fontname.c_str());
-	if (bold < 0)
-		lyxerr << "Could not set menu font to "
-		       << boldfontname << std::endl;
-
-	if (normal < 0)
-		lyxerr << "Could not set popup font to "
-		       << fontname << std::endl;
-
-	if (bold < 0 && normal < 0) {
-		lyxerr << "Using 'helvetica' font for menus" << std::endl;
-		boldfontname = "-*-helvetica-bold-r-*-*-*-?-*-*-*-*-iso8859-1";
-		fontname = "-*-helvetica-medium-r-*-*-*-?-*-*-*-*-iso8859-1";
-		bold = fl_set_font_name(FL_BOLD_STYLE, boldfontname.c_str());
-		normal = fl_set_font_name(FL_NORMAL_STYLE, fontname.c_str());
-
-		if (bold < 0 && normal < 0) {
-			lyxerr << "Could not find helvetica font. Using 'fixed'."
-			       << std::endl;
-			fl_set_font_name(FL_NORMAL_STYLE, "fixed");
-			normal = bold = 0;
-		}
-	}
-	if (bold < 0)
-		fl_set_font_name(FL_BOLD_STYLE, fontname.c_str());
-	else if (normal < 0)
-		fl_set_font_name(FL_NORMAL_STYLE, boldfontname.c_str());
-
-	fl_setpup_fontstyle(FL_NORMAL_STYLE);
-	fl_setpup_fontsize(FL_NORMAL_SIZE);
-	fl_setpup_color(FL_MCOL, FL_BLACK);
-	fl_set_goodies_font(FL_NORMAL_STYLE, FL_NORMAL_SIZE);
-	fl_set_tooltip_font(FL_NORMAL_STYLE, FL_NORMAL_SIZE);
-}
-
-
 void lyx_gui::parse_lyxrc()
 {
-	parse_lyxrc_xforms();
-}
-
-
-void start_xforms()
-{
-	// initial geometry
-	int xpos = -1;
-	int ypos = -1;
-	unsigned int width = 690;
-	unsigned int height = 510;
-
-	int const geometryBitmask =
-		XParseGeometry(geometry,
-			       &xpos, &ypos, &width, &height);
-
-	// if width is not set by geometry, check it against monitor width
-	if (!(geometryBitmask & WidthValue)) {
-		Screen * scr = ScreenOfDisplay(fl_get_display(), fl_screen);
-		if (WidthOfScreen(scr) - 8 < int(width))
-			width = WidthOfScreen(scr) - 8;
-	}
-
-	// if height is not set by geometry, check it against monitor height
-	if (!(geometryBitmask & HeightValue)) {
-		Screen * scr = ScreenOfDisplay(fl_get_display(), fl_screen);
-		if (HeightOfScreen(scr) - 24 < int(height))
-			height = HeightOfScreen(scr) - 24;
-	}
-
-	Screen * s = ScreenOfDisplay(fl_get_display(), fl_screen);
-
-	// recalculate xpos if it's not set
-	if (xpos == -1)
-		xpos = (WidthOfScreen(s) - width) / 2;
-
-	// recalculate ypos if it's not set
-	if (ypos == -1)
-		ypos = (HeightOfScreen(s) - height) / 2;
-
-	lyxerr[Debug::GUI] << "Creating view: " << width << 'x' << height
-			   << '+' << xpos << '+' << ypos << std::endl;
-
-//	XFormsView view(width, height);
-//	view.show(xpos, ypos, "LyX");
-//	view.init();
-}
-
-
-static void events_xforms()
-{
-	if (fl_check_forms() == FL_EVENT) {
-		XEvent ev;
-		fl_XNextEvent(&ev);
-		lyxerr[Debug::GUI]
-			<< "Received unhandled X11 event" << std::endl
-			<< "Type: " << ev.xany.type
-			<< " Target: 0x" << std::hex << ev.xany.window
-			<< std::dec << std::endl;
-	}
 }
 
 
 void lyx_gui::start(string const & batch, std::vector<string> const & files)
 {
-	start_xforms();
-	// just for debug
-	//XSynchronize(getDisplay(), true);
-
 	boost::shared_ptr<GView> view_ptr(new GView);
 	LyX::ref().addLyXView(view_ptr);
 
@@ -362,7 +157,6 @@ void lyx_gui::start(string const & batch, std::vector<string> const & files)
 	while (!finished) {
 		while (Gtk::Main::events_pending())
 			Gtk::Main::iteration(false);
-		events_xforms();
 	}
 
 	// FIXME: breaks emergencyCleanup
@@ -381,7 +175,7 @@ FuncStatus lyx_gui::getStatus(FuncRequest const & ev)
 {
 	FuncStatus flag;
 	switch (ev.action) {
-	// Add this back if the gtk doc prefs dialog includes preamble - jcs
+	// TODO: Add this back if the gtk doc prefs dialog includes preamble - jcs
 	/*case LFUN_DIALOG_SHOW:
 		if (ev.argument == "preamble")
 			flag.unknown(true);

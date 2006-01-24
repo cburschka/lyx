@@ -28,6 +28,7 @@ dist_glade_DATA = \
 	sendto.glade \
 	showfile.glade \
 	spellcheck.glade \
+	tabular.glade \
 	tableCreate.glade \
 	texinfo.glade \
 	text.glade \
