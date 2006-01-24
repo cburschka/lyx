@@ -103,7 +103,6 @@ private:
 	/// The pixmap overlay on the workarea
 	Glib::RefPtr<Gdk::Pixmap> workAreaPixmap_;
 	Glib::RefPtr<Gdk::GC> workAreaGC_;
-	/// the xforms-specific painter
 	GPainter painter_;
 	XftDraw * draw_;
 	ColorHandler colorHandler_;

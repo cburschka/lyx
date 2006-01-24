@@ -1,3 +1,9 @@
+2006-01-23  John Spray <spray@lyx.org>
+	* LyXGdkImage.[Ch]: replace xforms Image class
+	* Makefile.am: build LyXGdkImage
+	* GPainter.C: use new Gdk Image class
+	* lyx_gui.C: use new Gdk Image class, disable XSynchronize
+
 2006-01-21  John Spray <spray@lyx.org>
 
 	* GBibItem.[Ch], glade/bibitem.glade: Add the bibitem dialog

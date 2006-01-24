@@ -116,6 +116,8 @@ libgtk_la_SOURCES = \
 	GtkmmX.h \
 	IdSc.C \
 	IdSc.h \
+	LyXGdkImage.C \
+	LyXGdkImage.h \
 	LyXKeySymFactory.C \
 	LyXScreenFactory.C \
 	WorkAreaFactory.C \

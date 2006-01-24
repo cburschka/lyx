@@ -50,7 +50,6 @@
 
 //just for xforms
 #include "lyx_forms.h"
-#include "xformsImage.h"
 #include "xforms_helpers.h"
 
 #include "support/lyxlib.h"
@@ -59,6 +58,8 @@
 #include "support/package.h"
 
 #include <gtkmm.h>
+
+#include "LyXGdkImage.h"
 
 #include <boost/bind.hpp>
 #include <boost/function.hpp>
@@ -192,11 +193,6 @@ void parse_init_xforms(int & argc, char * argv[])
 
 	XSetErrorHandler(LyX_XErrHandler);
 
-	using namespace lyx::graphics;
-
-	// connect the image loader based on the xforms library
-	Image::newImage = boost::bind(&xformsImage::newImage);
-	Image::loadableFormats = boost::bind(&xformsImage::loadableFormats);
 }
 
 
@@ -205,6 +201,10 @@ void lyx_gui::parse_init(int & argc, char * argv[])
 	new Gtk::Main(argc, argv);
 
 	parse_init_xforms(argc, argv);
+
+	using namespace lyx::graphics;
+	Image::newImage = boost::bind(&LyXGdkImage::newImage);
+	Image::loadableFormats = boost::bind(&LyXGdkImage::loadableFormats);
 
 	locale_init();
 
@@ -335,7 +335,7 @@ void lyx_gui::start(string const & batch, std::vector<string> const & files)
 {
 	start_xforms();
 	// just for debug
-	XSynchronize(getDisplay(), true);
+	//XSynchronize(getDisplay(), true);
 
 	boost::shared_ptr<GView> view_ptr(new GView);
 	LyX::ref().addLyXView(view_ptr);

@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Huang Ying
+ * \author John Spray
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -21,12 +22,12 @@
 #include "GPainter.h"
 #include "debug.h"
 #include "GWorkArea.h"
+#include "LyXGdkImage.h"
 #include "lyxrc.h"
 #include "encoding.h"
 #include "language.h"
 #include "LColor.h"
 #include "xftFontLoader.h"
-#include "xformsImage.h"
 #include "frontends/font_metrics.h"
 #include "codeConvert.h"
 
@@ -186,12 +187,14 @@ void GPainter::arc(int x, int y, unsigned int w, unsigned int h,
 void GPainter::image(int x, int y, int w, int h,
 	graphics::Image const & i)
 {
-	graphics::xformsImage const & image =
-		static_cast<graphics::xformsImage const &>(i);
-	Pixmap pixmap = GDK_PIXMAP_XID(owner_.getPixmap()->gobj());
-	GC gc = GDK_GC_XGC(owner_.getGC()->gobj());
-	XCopyArea(owner_.getDisplay(), image.getPixmap(), pixmap,
-		  gc, 0, 0, w, h, x, y);
+	graphics::LyXGdkImage const & image =
+		static_cast<graphics::LyXGdkImage const &>(i);
+	Glib::RefPtr<Gdk::Pixbuf> const & pixbuf = image.pixbuf();
+	Glib::RefPtr<Gdk::Pixmap> pixmap = owner_.getPixmap();
+
+	Glib::RefPtr<Gdk::GC> gc = owner_.getGC();
+	pixmap->draw_pixbuf (gc, pixbuf, 0, 0, x, y, w, h,
+	                     Gdk::RGB_DITHER_NONE, 0, 0);
 }
 
 
