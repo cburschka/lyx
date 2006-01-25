@@ -19,7 +19,6 @@
 #endif
 
 #include "xftFontLoader.h"
-#include "FontInfo.h"
 #include "gettext.h"
 #include "debug.h"
 #include "lyxrc.h"	// lyxrc.font_*
