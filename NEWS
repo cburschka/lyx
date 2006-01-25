@@ -1,8 +1,259 @@
 What's new in version 1.4.0?
 ----------------------------
 
-A long time since 1.3.0 now and a lot has happened. Alsmost the whole
-core of LyX has been rewritten.
+As usual with major releases, a lot of work that is not directly
+visible has taken place. The core of LyX has seen more cleanups and
+some of the new features are the direct results of this work.
+
+** Improved user interface
+
+LyX 1.4 has a re-designed layout for the menus, designed to decrease
+clutter and maximise productivity. Several menu items (in the Edit
+menu) are now context-sensitive, so they only appear when needed. For
+the die-hard old LyX users, the older layout (referred to as the
+classic UI) is still available, for now.
+
+It's now possible to define multiple toolbars as seen in other
+editors. By default, the new LyX release has two toolbars displayed,
+the standard one (similar to the static toolbar in LyX 1.3), plus the
+extra toolbar. In addition, there are two pre-defined toolbars
+available: one for tables, and one for math. 
+
+Another new feature worth mentioning is popup toolbars: you can set a
+toolbar such that it only appears when editing math, or when editing a
+table.
+
+** Change tracking
+
+This new feature, similar to that found in Microsoft Word and others,
+makes collaboration on a document a cinch. It provides a way to track
+changes made to a document, and later approve, reject, or modify such
+changes. 
+
+** Much better conversion from .tex to .lyx
+
+The ancient and unloved Perl script, reLyX has finally bitten the dust
+and been replaced by the brand new and shiny tex2lyx. tex2lyx's LaTeX
+parser follows most of the rules of the real TeX and so is already
+much more powerful than reLyX ever was.
+
+** Character styles
+
+For a system that purports to make it easy to write documents full of
+logical (as opposed to visual markup), LyX has always had one glaring
+omission: no character styles. LyX 1.4 goes some way towards
+addressing this defect, although there's no dialog to define your own
+styles. 
+
+
+** Branches
+
+The teacher who's setting an exam obviously doesn't want her pupils
+seeing the answers, yet having questions and answers in the same
+document will make the life of the markers of that exam much easier.
+
+That's just one example of someone who would benefit from LyX's new
+"branches" feature. In fact, anyone who writes documents which have
+more than one target audience will find this feature useful.
+
+** Minipages evolve to Boxes
+
+In 1.3, LyX only had native support for plain minipages. Now you can
+use a wide range of box types and decorations directly from the LyX
+GUI
+
+** Notes
+
+LyX now has three different Notes for you to add to your document from
+the Insert>Note menu:
+
+- the "LyX Note" is not exported to LaTeX, as now. The "Comment" is
+- exported to LaTeX as a comment environment and is not processed
+  further.
+- The Greyed Out note is visible in your PostScript or PDF output as,
+  well, greyed-out text.
+
+** Better language and numbering on screen
+
+Two features help to make the screen rendering closer to the printed output:
+
+- the labels attached to layouts like Chapter are now translated in
+  the language of the document, which may be different from the
+  language of the menus;
+- sectioning headers and theorems are now numbered according to the
+  document class specifications.
+
+** Word count
+
+Yes, it's finally there! Tools>Count Words will give you a word
+count of the document or of the current selection.
+
+** Error Lists
+
+Nasty "error boxes" were eliminated in favor of a dialog with a list
+of errors popping up at compilation time.
+
+** Improved bibliography support
+
+- LyX's support for natbib has been enhanced. Now, also the mysterious
+  "before citation" field is supported;
+- We have added support for jurabib, an amazing package to produce
+  flexible citations that are especially well suited for the humanities
+  and law fields;
+- Support for sectioned bibliographies (bibtopic) has been added;
+- the way bibtex is called is now customizable (as is the way the
+  index processor is invoked).
+
+** Improved microtypography support
+
+LyX aims to produce superior typography. With 1.4, it supports:
+
+- more blank characters (e.g. a "thin space", which should stand here
+  between "e." and "g.");
+- inner and outer quotation marks without the hassle of toggling the
+  style in the documents dialog. Just use the Alt key.
+- the handling of figure and table alignment inside floats has been
+  improved. You can now use the paragraph dialog without getting too
+  much space between figure/table and caption.
+
+** Small bits
+
+- Figure and table floats can be rotated sideways
+
+- The external xfig inset has been improved especially with regard to
+  pdf generation
+
+- The graphics inset dialog has now an "edit" button that allows to
+  edit the included figure
+
+- For index generation, xindy can be used instead of makeindex, which
+  has poor support for other than English index sorting.
+
+** Bug fixes
+
+Lots of long-lasting bugs have been fixed, as documented in LyX
+bugzilla. Probably some new ones have been introduced instead ;-)
+
+
+What's new in version 1.3.7?
+----------------------------
+
+We hope that this will be the last release in the 1.3.x series. In
+addition to many bug fixes, the following improvements are worth
+noting:
+
+- LyX 1.3.7 is able to read all LyX files up to file format 245,
+  the format that we anticipate will be used by the forthcoming LyX 1.4.0.
+
+- The windows version has received some polish, in particular in the
+  installer and in the handling of file names.
+
+All current 1.3.x users are encouraged to upgrade to this version.
+
+
+What's new in version 1.3.6?
+----------------------------
+
+Unix and MacOSX users should consider this to be a bugfix release.
+
+To Windows users, however, LyX 1.3.6 is the first version of LyX
+to support the platform officially. This means that we've put a huge
+effort into squashing those bugs that were present in Ruurd Reitsma's
+unofficial ports to Windows. Large chunks of the code base have been
+touched in an attempt to resolve these problems so whilst we're
+confident that LyX/Win 1.3.6 will be the best ever version of LyX on
+Windows, we cannot say that it's bug free.
+
+We would like to highlight three fixes in particular:
+  * It is now possible to typeset files which reside in a directory with
+    spaces in its name; this requires a modern TeX implementation (such
+    as teTeX 3.0).
+  * It is possible to use Ctrl-PageDown and Control-PageUp (<opt>-tab
+    and <opt><shift>-tab with LyX/Mac) to switch between the open documents.
+  * LaTeX-type accents, ligature breaks and hyphenation marks are now
+    considered as part of words 
+
+
+
+What's new in version 1.3.5?
+----------------------------
+
+This is mainly a bugfix release, with few notable user-visible
+improvements. However, we would like to highlight two fixes in particular:
+  * Nested documents (with Insert>Include File...), which have been
+    broken since LyX 1.2.0, should now work properly, including the
+    case where the files are in different directories.
+  * It is now possible to compile LyX with gcc 3.4.
+
+What's new in version 1.3.4?
+----------------------------
+
+This is a maintenance release which improves upon 1.3.3 in
+five main areas:
+  * It adds support for old files from LyX 0.10.x or 0.12.x;
+  * Lyx documents can now be opened and edited even if
+    they use text classes not present in your latex installation;
+  * New Qt features have been added (improved selection,
+    drag-and-drop);
+  * Mac OS X support is much improved;
+  * The interface and documentation localization have
+    been polished.
+
+What's new in version 1.3.3?
+----------------------------
+
+This is a maintenance release which improves upon 1.3.2 in
+four main areas:
+  * import of old LyX files and export to DocBook have been improved;
+  * many small bugs in the Qt frontend have been fixed;
+  * MacOSX users can now compile LyX and enjoy the native MacOSX interface;
+  * several languages now benefit from an improved translation of
+    the user interface and documentation.
+
+What's new in version 1.3.2?
+----------------------------
+
+This is a maintenance release which improves upon 1.3.1 in
+three main areas:
+  * the spellchecker code has been overhauled and many bugs 
+    have been squashed;
+  * many small bugs in the Qt frontend have been fixed;
+  * several languages now benefit from an improved translation of 
+    the user interface.
+
+What's new in version 1.3.1?
+----------------------------
+
+LyX 1.3.1 is a maintenance release, which adds some polish to the new
+features of LyX 1.3.0 (especially the Qt frontend) and also fixes some
+significant bugs in the math editor and the lyx2lyx import script. We
+also threw in a few new features (new textclasses, latex import
+improvements) for good measure.
+
+** Updates
+
+- when there is vertical space between paragraphs, the amount of space
+  is also indicated in the small/medium/large case [bug #814]
+
+- reLyX improvements: support for natib citations, for 'm' column
+  descriptors in tables; a .lyx file generated by reLyX now says this
+
+- new classes mwart, mwbk and mwrep (adaptation of the base classes to
+  polish conventions); new class elsart (for journals published by
+  Elsevier); updated classes koma-script (in particular new class
+  scrlttr2); re-introduce class ijmpd (which was in 1.2.x) and unbreak
+  class kluwer
+
+- new "polski" keymap, useful for entering Polish on a QWERTY
+  keyboard; update to Scientific Word-compatible bindings
+  (documentation has been updated too)
+
+- updates to the danish, dutch, french, german, norwegian, polish and
+  spanish translation of menus
+
+- Most of the documentation has been updated for the current version
+  of LyX. If you find some problems with the documentation in this
+  release, please contact lyx-docs@lists.lyx.org
 
 What's new in version 1.3.0?
 ----------------------------
@@ -835,3 +1086,4 @@ version 0.12.0, it adds the following features:
 Note that your existing global lyxrc file will not be overwritten by
 default since now LyX only installs a file lyxrc.example to use as
 template.
+
