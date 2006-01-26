@@ -2073,54 +2073,6 @@ for this purpose, but note that for the sake of readability, your lines
 \end_layout
 
 \begin_layout Subsection
-a4
-\end_layout
-
-\begin_layout Description
-Found: @chk_a4@
-\end_layout
-
-\begin_layout Description
-CTAN: 
-\family typewriter
-macros/latex/contrib/ntgclass/
-\end_layout
-
-\begin_layout Description
-Notes: The package 
-\family sans
-a4
-\family default
- changes the margins of your document to suit the European A4 page dimensions
- with smaller margins that the default A4 format.
-\end_layout
-
-\begin_layout Subsection
-a4wide
-\end_layout
-
-\begin_layout Description
-Found: @chk_a4wide@
-\end_layout
-
-\begin_layout Description
-CTAN: 
-\family typewriter
-macros/latex/contrib/misc/
-\end_layout
-
-\begin_layout Description
-Notes: The package 
-\family sans
-a4wide
-\family default
- is another package that allows setting of the margins of your document
- to A4 paper.
- With this package, the margins are very wide, but do not follow typographical
- conventions.
-\end_layout
-
-\begin_layout Subsection
 geometry
 \end_layout
 
@@ -2215,6 +2167,36 @@ Notes: The package
 bibtopic
 \family default
  is used to split BibTeX created bibliographies into sections.
+\end_layout
+
+\begin_layout Subsection
+dvipost
+\end_layout
+
+\begin_layout Description
+Found: @chk_dvipost@
+\end_layout
+
+\begin_layout Description
+URL: 
+\family sans
+http://freshmeat.net/projects/dvipost/
+\end_layout
+
+\begin_layout Description
+Notes: 
+\family sans
+dvipost
+\family default
+ is a post-processor for DVI files created by LaTeX and TeX.
+ It is needed by LyX to generate DVI or Postscript output of change tracking
+ marks.
+ To work properly, 
+\family sans
+dvipost 
+\family default
+needs teTeX version 2 or newer.
+ 
 \end_layout
 
 \begin_layout Subsection
