@@ -2,7 +2,7 @@
 
 ACLOCAL="aclocal -I ${PWD}/m4"
 AUTOHEADER="autoheader"
-AUTOMAKE="automake --add-missing --copy --force-missing --foreign"
+AUTOMAKE="automake --add-missing --copy --foreign"
 AUTOCONF="autoconf"
 ACINCLUDE_FILES="lyxinclude.m4 libtool.m4 xforms.m4 qt.m4 gtk--.m4 gnome--.m4 gnome.m4 spell.m4 cygwin.m4 pkg.m4"
 
