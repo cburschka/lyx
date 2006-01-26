@@ -282,11 +282,10 @@ string const LaTeXFeatures::getPackages() const
 	// color.sty
 	if (isRequired("color")) {
 		if (params_.graphicsDriver == "default")
-			packages << "\\usepackage[usenames]{color}\n";
+			packages << "\\usepackage{color}\n";
 		else
 			packages << "\\usepackage["
 				 << params_.graphicsDriver
-				 << ",usenames"
 				 << "]{color}\n";
 	}
 

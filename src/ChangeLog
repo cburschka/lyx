@@ -1,3 +1,11 @@
+2006-01-26  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* buffer.C: change tracking (dvipost) doesn't require
+	color.sty anymore.
+
+	* LaTeXFeatures.C (getPackages): no need for the color
+	option "usenames" (bug 2169).
+
 2006-01-23  Helge Hafting <helge.hafting@aitel.hist.no>
 	* buffer_funcs.C: Trivial fix - added {} around
 	the statements to be affected by a if-test. Now
