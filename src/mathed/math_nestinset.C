@@ -51,6 +51,7 @@
 #include "frontends/Dialogs.h"
 #include "frontends/LyXView.h"
 #include "frontends/Painter.h"
+#include "frontends/nullpainter.h"
 
 #include <sstream>
 
@@ -219,15 +220,18 @@ void MathNestInset::draw(PainterInfo & pi, int x, int y) const
 
 void MathNestInset::drawSelection(PainterInfo & pi, int x, int y) const
 {
-	// FIXME: hack to get position cache warm
-	draw(pi, x, y);
-
 	// this should use the x/y values given, not the cached values
 	LCursor & cur = pi.base.bv->cursor();
 	if (!cur.selection())
 		return;
 	if (!ptr_cmp(&cur.inset(), this))
 		return;
+
+	// FIXME: hack to get position cache warm
+	static NullPainter nop;
+	PainterInfo pinop(pi);
+	pinop.pain = nop;
+	draw(pinop, x, y);
 
 	CursorSlice s1 = cur.selBegin();
 	CursorSlice s2 = cur.selEnd();
