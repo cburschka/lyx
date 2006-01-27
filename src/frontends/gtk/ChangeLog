@@ -1,3 +1,8 @@
+2006-01-27  Bernhard Reiter  <ockham@gmx.net>
+
+	* GBranch.[Ch], glade/branch.glade: Add the Branches dialog
+	* Dialogs.C, Makefile.am, glade/Makefile.am: Use GBranch
+
 2006-01-25  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* xftFontLoader.C: remove obsolete header

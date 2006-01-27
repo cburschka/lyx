@@ -33,6 +33,8 @@ libgtk_la_SOURCES = \
 	GBibItem.h \
 	GBox.C \
 	GBox.h \
+	GBranch.C \
+	GBranch.h \
 	GChanges.C \
 	GChanges.h \
 	GCharacter.C \

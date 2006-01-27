@@ -5,8 +5,9 @@ DISTCLEANFILES += *.gladep
 gladedir = $(pkgdatadir)/glade
 dist_glade_DATA = \
 	aboutlyx.glade \
-	box.glade \
 	bibitem.glade \
+	box.glade \
+	branch.glade \
 	changes.glade \
 	character.glade \
 	citation.glade \

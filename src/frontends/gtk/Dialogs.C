@@ -61,7 +61,7 @@
 #include "GBibItem.h"
 //#include "FormBibtex.h"
 #include "GBox.h"
-//#include "FormBranch.h"
+#include "GBranch.h"
 #include "GChanges.h"
 #include "GCharacter.h"
 #include "GCitation.h"
@@ -484,9 +484,9 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setView(new GNote(*dialog));
 		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 	} else if (name == "branch") {
-//		dialog->bc().view(new xformsBC(dialog->bc()));
+		dialog->bc().view(new GBC(dialog->bc()));
 		dialog->setController(new ControlBranch(*dialog));
-//		dialog->setView(new FormBranch(*dialog));
+		dialog->setView(new GBranch(*dialog));
 		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 	} else if (name == "paragraph") {
 		dialog->bc().view(new GBC(dialog->bc()));
