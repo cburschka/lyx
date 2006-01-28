@@ -1,3 +1,7 @@
+2006-01-28  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* math_hullinset.C (getStatus): get rid of a compiler warning
+
 2006-01-27  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* math_nestinset.C (drawSelection): do not draw anything when
