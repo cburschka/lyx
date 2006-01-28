@@ -2,6 +2,9 @@
 
 	* GtkLengthEntry.[Ch]: implement signal_changed, setup spin limits
 	* GWrap.[Ch], glade/wrap.glade: Add Wrap dialog
+	* GDocument.[Ch], Dialogs.C: Implemented preamble editing in 
+		document dialog.  "dialog-show preamble" will now violate
+		an assertion in Dialogs.C.
 
 2006-01-27  Bernhard Reiter  <ockham@gmx.net>
 

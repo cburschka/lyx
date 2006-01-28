@@ -159,6 +159,10 @@ private:
 	void addBranch();
 	void branchSelChanged();
 	// *** End "Branches" Page ***
+
+	// *** Begin "Preamble" Page ***
+	Glib::RefPtr<Gtk::TextBuffer> preamblebuffer_;
+	// *** End "Preamble" Page ***
 };
 
 } // namespace frontend

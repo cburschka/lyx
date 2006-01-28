@@ -40,7 +40,6 @@
 #include "ControlMath.h"
 #include "ControlNote.h"
 #include "ControlParagraph.h"
-#include "ControlPreamble.h"
 #include "ControlPrefs.h"
 #include "ControlPrint.h"
 #include "ControlRef.h"
@@ -80,7 +79,6 @@
 //#include "FormMathsStyle.h"
 #include "GNote.h"
 #include "GParagraph.h"
-//#include "FormPreamble.h"
 //#include "FormPreferences.h"
 #include "GPrint.h"
 #include "GRef.h"
@@ -143,7 +141,7 @@ char const * const dialognames[] = {
 "mathgreek", "mathmisc", "mathdots", "mathbigoperators", "mathamsmisc",
 "mathamsarrows", "mathamsrelations", "mathamsnegatedrelations",
 "mathamsoperators", "mathdelimiter", "mathmatrix", "mathspace", "mathstyle",
-"note", "paragraph", "preamble", "prefs", "print", "ref", "sendto",
+"note", "paragraph", "prefs", "print", "ref", "sendto",
 "spellchecker", "tabular", "tabularcreate", "texinfo",
 
 #ifdef HAVE_LIBAIKSAURUS
@@ -492,11 +490,6 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setController(new ControlParagraph(*dialog));
 		dialog->setView(new GParagraph(*dialog));
 		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
-	} else if (name == "preamble") {
-//		dialog->bc().view(new xformsBC(dialog->bc()));
-		dialog->setController(new ControlPreamble(*dialog));
-//		dialog->setView(new FormPreamble(*dialog));
-		dialog->bc().bp(new OkApplyCancelPolicy);
 	} else if (name == "prefs") {
 //		dialog->bc().view(new xformsBC(dialog->bc()));
 		dialog->setController(new ControlPrefs(*dialog));

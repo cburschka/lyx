@@ -362,6 +362,12 @@ void GDocument::doBuild()
 	(*row)[branchColName_] = "Hunch";
 	(*row)[branchColActivated_] = true;
 	// *** End "Branches" Page ***
+
+	// *** Begin "Preamble" Page ***
+	Gtk::TextView *view;
+	xml_->get_widget ("Preamble", view);
+	preamblebuffer_ = view->get_buffer();
+	// *** End "Preamble" Page ***
 }
 
 
@@ -587,6 +593,10 @@ void GDocument::update()
 	}
 	// *** End "Branches" Page ***
 
+	// *** Begin "Preamble" Page ***
+	preamblebuffer_->set_text(params.preamble);
+	// *** End "Preamble" Page ***
+
 	// Be a cheesy bastard, for the moment
 	bc().valid();
 }
@@ -797,6 +807,10 @@ void GDocument::apply()
 	params.branchlist() = branchlist;
 	
 	// *** End "Branches" Page ***
+
+	// *** Begin "Preamble" Page ***
+	params.preamble = preamblebuffer_->get_text();
+	// *** End "Preamble" Page ***
 }
 
 
