@@ -74,7 +74,8 @@ void GBranch::update()
 	BranchList const branchlist = controller().branchlist();
 	string const cur_branch = controller().params().branch;
 
-	branchescombo_.clear_items();	
+	// FIXME: deprecated in favor of clear_items since gtkmm 2.8
+	branchescombo_.clear();	
 
 	const_iterator const begin = branchlist.begin();
 	const_iterator const end = branchlist.end();
