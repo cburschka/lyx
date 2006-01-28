@@ -256,6 +256,8 @@ void LyXGdkImage::rotate_impl(Params const & params)
 		return;
 
 	// TODO: allow free rotation
+	// Temporarily commented out for old gtkmm versions
+/*
 	Gdk::PixbufRotation rotation = Gdk::PIXBUF_ROTATE_NONE;
 	if (params.angle == 90.0)
 		rotation = Gdk::PIXBUF_ROTATE_COUNTERCLOCKWISE;
@@ -266,6 +268,7 @@ void LyXGdkImage::rotate_impl(Params const & params)
 		
 		
 	transformed_ = transformed_->rotate_simple(rotation);
+	*/
 }
 
 
