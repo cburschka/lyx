@@ -107,7 +107,6 @@ public:
 		if (m.empty())
 			return m;
 
-		//string oldMSG = setlocale(LC_MESSAGES, NULL);
 		// In this order, see support/filetools.C:
 		string lang = getEnv("LC_ALL");
 		if (lang.empty()) {
@@ -120,9 +119,17 @@ public:
 		}
 		
 		char const * lc_msgs = setlocale(LC_MESSAGES, lang_.c_str());
+		// setlocale fails (returns NULL) if the corresponding locale
+		// is not installed.
+		// On windows (mingw) it always returns NULL.
+		// Since this method gets called for every translatable
+		// buffer string like e.g. "Figure:" we warn only once.
 #ifndef _WIN32
-		if (!lc_msgs)
+		static bool warned = false;
+		if (!warned && !lc_msgs) {
+			warned = true;
 			lyxerr << "Locale " << lang_ << " could not be set" << std::endl;
+		}
 #endif
 		// CTYPE controls what getmessage thinks what encoding the po file uses
 		char const * lc_ctype = setlocale(LC_CTYPE, NULL);

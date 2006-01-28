@@ -1,3 +1,7 @@
+2006-01-28  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* messages.C (get): Only warn once if setlocale fails (bug 2177)
+
 2006-01-28  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* text2.C (setCharFont): take inset's own font settings into account
