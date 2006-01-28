@@ -283,6 +283,11 @@ void LyXText::setCharFont(pit_type pit, pos_type pos, LyXFont const & fnt)
 		}
 	}
 
+	// Inside inset, apply the inset's font attributes if any
+	// (charstyle!)
+	if (!isMainText())
+		layoutfont.realize(font_);
+
 	layoutfont.realize(defaultfont_);
 
 	// Now, reduce font against full layout font

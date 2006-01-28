@@ -1,3 +1,8 @@
+2006-01-28  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* text2.C (setCharFont): take inset's own font settings into account
+	when defining the font to reduce to, fixes 2019
+
 2006-01-28  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* bufferview_funcs.C (coordOffset): remove the check for
