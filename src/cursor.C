@@ -128,7 +128,7 @@ namespace {
 		double best_dist = std::numeric_limits<double>::max();;
 		DocIterator best_cursor = et;
 
-		for ( ; it != et; it.forwardPos()) {
+		for ( ; it != et; it.forwardPos(true)) {
 			// avoid invalid nesting when selecting
 			if (bv_funcs::status(&cursor.bv(), it) == bv_funcs::CUR_INSIDE
 			    && (!cursor.selection() || positionable(it, cursor.anchor_))) {

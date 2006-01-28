@@ -178,8 +178,11 @@ public:
 	//
 	/// move on one logical position, do not descend into nested insets
 	void forwardPosNoDescend();
-	/// move on one logical position, descend into nested insets
-	void forwardPos();
+	/**
+	 * move on one logical position, descend into nested insets
+	 * skip collapsed insets if \p ignorecollapsed is true
+	 */
+	void forwardPos(bool ignorecollapsed = false);
 	/// move on one physical character or inset
 	void forwardChar();
 	/// move on one paragraph

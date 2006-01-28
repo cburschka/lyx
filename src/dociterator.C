@@ -289,11 +289,20 @@ InsetBase * DocIterator::innerInsetOfType(int code) const
 }
 
 
-void DocIterator::forwardPos()
+void DocIterator::forwardPos(bool ignorecollapsed)
 {
 	//this dog bites his tail
 	if (empty()) {
 		push_back(CursorSlice(*inset_));
+		return;
+	}
+
+	// jump over collapsables if they are collapsed
+	// FIXME: the check for asMathInset() shouldn't be necessary
+	// but math insets do not return a sensible editable() state yet.
+	if (ignorecollapsed && nextInset() && (!nextInset()->asMathInset() 
+	    && nextInset()->editable() != InsetBase::HIGHLY_EDITABLE)) {
+		++top().pos();
 		return;
 	}
 

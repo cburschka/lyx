@@ -1,3 +1,16 @@
+2006-01-28  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* bufferview_funcs.C (coordOffset): remove the check for
+	collapsed collapsables (fix for bug 2094). This is now done
+	on a more general level (cursor.C).
+
+	* dociterator.[Ch] (forwardPos): add an optional argument
+	bool "ignorecollapsed" (default false), which lets forwardPos
+	skip collapsed insets.
+
+	* cursor.C (bruteFind): use forwardPos(ignorecollapsed = true)
+	(fixes bug 2241 and 2094).
+
 2006-01-26  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* buffer.C: change tracking (dvipost) doesn't require
