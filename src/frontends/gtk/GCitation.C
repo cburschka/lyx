@@ -167,6 +167,11 @@ void GCitation::doBuild()
 		sigc::mem_fun(*this, &GCitation::enable_apply));
 	stylecombo_->signal_changed().connect(
 		sigc::mem_fun(*this, &GCitation::enable_apply));
+	authorcheck_->signal_toggled().connect(
+		sigc::mem_fun(*this, &GCitation::enable_apply));
+	uppercasecheck_->signal_toggled().connect(
+		sigc::mem_fun(*this, &GCitation::enable_apply));
+
 }
 
 

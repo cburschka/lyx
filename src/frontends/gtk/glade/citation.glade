@@ -222,6 +222,7 @@
 		      <property name="width_chars">-1</property>
 		      <property name="single_line_mode">False</property>
 		      <property name="angle">0</property>
+		      <property name="mnemonic_widget">CiteKeys</property>
 		    </widget>
 		    <packing>
 		      <property name="type">label_item</property>
@@ -348,6 +349,7 @@
 		      <property name="width_chars">-1</property>
 		      <property name="single_line_mode">False</property>
 		      <property name="angle">0</property>
+		      <property name="mnemonic_widget">BibKeys</property>
 		    </widget>
 		    <packing>
 		      <property name="type">label_item</property>
@@ -422,8 +424,8 @@
 		      <child>
 			<widget class="GtkLabel" id="label16">
 			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">&lt;b&gt;Info&lt;/b&gt;</property>
-			  <property name="use_underline">False</property>
+        <property name="label" translatable="yes">&lt;b&gt;_Info&lt;/b&gt;</property>
+        <property name="use_underline">True</property>
 			  <property name="use_markup">True</property>
 			  <property name="justify">GTK_JUSTIFY_LEFT</property>
 			  <property name="wrap">False</property>
@@ -436,6 +438,7 @@
 			  <property name="width_chars">-1</property>
 			  <property name="single_line_mode">False</property>
 			  <property name="angle">0</property>
+			  <property name="mnemonic_widget">Info</property>
 			</widget>
 			<packing>
 			  <property name="type">label_item</property>
@@ -497,7 +500,7 @@
 				<widget class="GtkRadioButton" id="SearchCite">
 				  <property name="visible">True</property>
 				  <property name="can_focus">True</property>
-				  <property name="label" translatable="yes">Inset keys</property>
+				  <property name="label" translatable="yes">S_elected keys</property>
 				  <property name="use_underline">True</property>
 				  <property name="relief">GTK_RELIEF_NORMAL</property>
 				  <property name="focus_on_click">True</property>
@@ -516,7 +519,7 @@
 				<widget class="GtkRadioButton" id="SearchBib">
 				  <property name="visible">True</property>
 				  <property name="can_focus">True</property>
-				  <property name="label" translatable="yes">Bibliography keys</property>
+				  <property name="label" translatable="yes">A_vailable keys</property>
 				  <property name="use_underline">True</property>
 				  <property name="relief">GTK_RELIEF_NORMAL</property>
 				  <property name="focus_on_click">True</property>

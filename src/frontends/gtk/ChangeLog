@@ -2,6 +2,8 @@
 
 	* GBranch.[Ch], glade/branch.glade: Add the Branches dialog
 	* Dialogs.C, Makefile.am, glade/Makefile.am: Use GBranch
+ 	* GCitation.C, glade/citation.glade: Add some shortcuts, 
+ 	  set shortcut targets correctly plus some minor bc().valid() logic
 
 2006-01-25  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
