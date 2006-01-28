@@ -29,10 +29,8 @@ namespace frontend {
 GtkLengthEntry::GtkLengthEntry(
 	BaseObjectType* cobject,
 	const Glib::RefPtr<Gnome::Glade::Xml>& refGlade)
-: Gtk::HBox(cobject), spin_(0.1, 2)
+: Gtk::HBox(cobject), adj_(666.0, 0.0, 99999.0, 0.1, 1, 0.0), spin_(adj_, 0.1, 2)
 {
-
-	spin_.set_range(0.0, 99999.0f);
 	populateUnitCombo (combo_, true);
 	relative_ = true;
 
@@ -40,6 +38,14 @@ GtkLengthEntry::GtkLengthEntry(
 	pack_start (spin_, true, true, 0);
 	pack_start (combo_, true, true, 0);
 	show_all();
+	spin_.signal_changed().connect(sigc::mem_fun(changedsignal_, &sigc::signal<void>::emit));
+	combo_.signal_changed().connect(sigc::mem_fun(changedsignal_, &sigc::signal<void>::emit));
+}
+
+
+sigc::signal< void >& GtkLengthEntry::signal_changed()
+{
+	return changedsignal_;
 }
 
 

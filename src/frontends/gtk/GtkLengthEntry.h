@@ -38,10 +38,15 @@ public:
 
 	Gtk::SpinButton *get_spin();
 	Gtk::ComboBoxText *get_combo();
+	sigc::signal<void> &signal_changed();
 
 protected:
+	// spin_ construction depends on adj_, so it must come first
+	Gtk::Adjustment adj_;
 	Gtk::SpinButton spin_;
 	Gtk::ComboBoxText combo_;
+	sigc::signal<void> changedsignal_;
+	void emit_changed();
 	bool relative_;
 };
 
