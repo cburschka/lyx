@@ -94,14 +94,13 @@
 #include "GToc.h"
 #include "GUrl.h"
 #include "GVSpace.h"
-//#include "FormWrap.h"
+#include "GWrap.h"
 
 #ifdef HAVE_LIBAIKSAURUS
 #include "ControlThesaurus.h"
 #include "GThesaurus.h"
 #endif
 
-//#include "xformsBC.h"
 #include "ButtonController.h"
 
 #include "arrows.xbm"
@@ -561,9 +560,9 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setView(new GVSpace(*dialog));
 		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 	} else if (name == "wrap") {
-//		dialog->bc().view(new xformsBC(dialog->bc()));
+		dialog->bc().view(new GBC(dialog->bc()));
 		dialog->setController(new ControlWrap(*dialog));
-//		dialog->setView(new FormWrap(*dialog));
+		dialog->setView(new GWrap(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	}
 

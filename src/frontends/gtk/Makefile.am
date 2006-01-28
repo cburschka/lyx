@@ -113,6 +113,8 @@ libgtk_la_SOURCES = \
 	GVSpace.h \
 	GWorkArea.C \
 	GWorkArea.h \
+	GWrap.C \
+	GWrap.h \
 	GXpmBtnTbl.C \
 	GXpmBtnTbl.h \
 	LyXGdkImage.C \

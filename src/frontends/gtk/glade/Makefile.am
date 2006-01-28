@@ -36,4 +36,5 @@ dist_glade_DATA = \
 	thesaurus.glade \
 	toc.glade \
 	url.glade \
-	vspace.glade
+	vspace.glade \
+	wrap.glade
