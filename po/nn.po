@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: nn_1.4pre3\n"
-"Report-Msgid-Bugs-To: <lyx-devel@lists.lyx.org>\n"
-"POT-Creation-Date: 2005-12-23 18:55+0100\n"
+"Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
+"POT-Creation-Date: 2006-01-28 22:20+0100\n"
 "PO-Revision-Date: 2006-01-04 21:27+0100\n"
 "Last-Translator: Ingar Pareliussen <ingar_ved_samfundet.no>\n"
 "Language-Team:  <nn@li.org>\n"
@@ -72,7 +72,7 @@ msgid "OK"
 msgstr "OK"
 
 #: src/frontends/xforms/forms/form_bibitem.fd:80
-#: src/frontends/gtk/Dialogs.C:273 src/frontends/xforms/Dialogs.C:251
+#: src/frontends/gtk/Dialogs.C:271 src/frontends/xforms/Dialogs.C:251
 msgid "Label:|#L"
 msgstr "Etikett:|#E"
 
@@ -360,8 +360,8 @@ msgid "Info:"
 msgstr "Info:"
 
 #: src/frontends/xforms/forms/form_citation.fd:116
-msgid "@4-&gt;"
-msgstr "@4-&gt;"
+msgid "@4->"
+msgstr ""
 
 #: src/frontends/xforms/forms/form_citation.fd:134
 #: src/frontends/xforms/forms/form_document.fd:1891
@@ -369,12 +369,12 @@ msgid "@9+"
 msgstr "@9+"
 
 #: src/frontends/xforms/forms/form_citation.fd:152
-msgid "@8-&gt;"
-msgstr "@8-&gt;"
+msgid "@8->"
+msgstr ""
 
 #: src/frontends/xforms/forms/form_citation.fd:170
-msgid "@2-&gt;"
-msgstr "@2-&gt;"
+msgid "@2->"
+msgstr ""
 
 #: src/frontends/xforms/forms/form_citation.fd:188
 msgid "Search"
@@ -691,8 +691,8 @@ msgid "Activated Branches:"
 msgstr "Aktive greiner:"
 
 #: src/frontends/xforms/forms/form_document.fd:1873
-msgid "@5-&gt;"
-msgstr "@5-&gt;"
+msgid "@5->"
+msgstr ""
 
 #: src/frontends/xforms/forms/form_document.fd:1909
 msgid "Display Background:"
@@ -1033,7 +1033,7 @@ msgstr "Funksjonar:"
 
 #: src/frontends/xforms/forms/form_maths_panel.fd:153
 #: src/frontends/xforms/forms/form_maths_panel.fd:459
-#: src/frontends/gtk/Dialogs.C:351 src/frontends/xforms/Dialogs.C:327
+#: src/frontends/xforms/Dialogs.C:327
 #: src/frontends/xforms/FormPreferences.C:234
 #: src/frontends/xforms/FormPreferences.C:257
 #: src/frontends/xforms/FormPreferences.C:265
@@ -1041,7 +1041,7 @@ msgid "Misc"
 msgstr "Ymse"
 
 #: src/frontends/xforms/forms/form_maths_panel.fd:297
-#: src/frontends/qt2/ui/QMathDialogBase.ui:523 src/frontends/gtk/Dialogs.C:368
+#: src/frontends/qt2/ui/QMathDialogBase.ui:523
 #: src/frontends/xforms/Dialogs.C:344
 msgid "Dots"
 msgstr "Prikkar"
@@ -1147,7 +1147,8 @@ msgid "Save"
 msgstr "Lagra"
 
 #: src/frontends/xforms/forms/form_preferences.fd:236
-msgid "Scale &amp; Resolution"
+#, fuzzy
+msgid "Scale & Resolution"
 msgstr "skala og oppløysing"
 
 #: src/frontends/xforms/forms/form_preferences.fd:254
@@ -1232,7 +1233,8 @@ msgid "Size"
 msgstr "Storleik"
 
 #: src/frontends/xforms/forms/form_preferences.fd:629
-msgid "Popup Fonts &amp; Encoding"
+#, fuzzy
+msgid "Popup Fonts & Encoding"
 msgstr "Skrifttypar og teiknsett til snøggmenyar"
 
 #: src/frontends/xforms/forms/form_preferences.fd:647
@@ -1248,7 +1250,8 @@ msgid "Popup Encoding:|#P"
 msgstr "Snøggmeny teiknsett:|#H"
 
 #: src/frontends/xforms/forms/form_preferences.fd:701
-msgid "Layout &amp; Bindings"
+#, fuzzy
+msgid "Layout & Bindings"
 msgstr "Utsjånad og tastaturbindingar"
 
 #: src/frontends/xforms/forms/form_preferences.fd:719
@@ -2011,7 +2014,7 @@ msgstr "Vis stig|#V"
 msgid "Run TeXhash|#T"
 msgstr "Køyr TeXhash|#T"
 
-#: src/frontends/xforms/forms/form_text.fd:43 src/frontends/gtk/Dialogs.C:267
+#: src/frontends/xforms/forms/form_text.fd:43 src/frontends/gtk/Dialogs.C:265
 #: src/frontends/xforms/Dialogs.C:246
 msgid "Keyword:|#K"
 msgstr "Nøkkelord:|#N"
@@ -2070,7 +2073,8 @@ msgid "Citation Style"
 msgstr "Litteraturstil"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:60
-msgid "&amp;Jurabib"
+#, fuzzy
+msgid "&Jurabib"
 msgstr "&amp;Jurabib"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:64
@@ -2078,7 +2082,8 @@ msgid "Use the jurabib styles for law and humanities"
 msgstr "Juristar og humanistar vil til vanleg nytte Jurabib"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:75
-msgid "&amp;Natbib"
+#, fuzzy
+msgid "&Natbib"
 msgstr "&amp;Natbib"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:79
@@ -2086,7 +2091,8 @@ msgid "Use the natbib styles for natural sciences and arts"
 msgstr "Realistar vil til vanleg nytte Natbib"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:90
-msgid "&amp;Default (numerical)"
+#, fuzzy
+msgid "&Default (numerical)"
 msgstr "&amp;Nummerert"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:94
@@ -2094,11 +2100,13 @@ msgid "Use BibTeX's default numerical styles"
 msgstr "Den vanlege nummererte stilen"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:124
-msgid "Natbib &amp;style:"
+#, fuzzy
+msgid "Natbib &style:"
 msgstr "Natbib&amp;stil:"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:182
-msgid "S&amp;ectioned bibliography"
+#, fuzzy
+msgid "S&ectioned bibliography"
 msgstr "Oppd&amp;elt Litteraturliste"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:186
@@ -2107,17 +2115,20 @@ msgid "Select this if you want to split your bibliography into sections"
 msgstr "Denne delar opp litteraturlista"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:56
-msgid "A&amp;vailable Branches:"
-msgstr "Til&amp;gjengelege Greiner:"
+#, fuzzy
+msgid "A&vailable Branches:"
+msgstr "Tilgjengelege greiner:"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:68
 #: lib/layouts/g-brief-de.layout:34 lib/layouts/g-brief-en.layout:34
 #: lib/layouts/g-brief2.layout:56 lib/layouts/scrlettr.layout:124
 #: lib/layouts/scrlttr2.layout:150 lib/layouts/agu_stdtitle.inc:184
+#: src/frontends/gtk/GDocument.C:338
 msgid "Name"
 msgstr "Namn"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:82
+#: src/frontends/gtk/GDocument.C:339
 msgid "Activated"
 msgstr "Aktivert"
 
@@ -2125,6 +2136,7 @@ msgstr "Aktivert"
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:436
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:382
 #: src/frontends/qt2/ui/QPrefDisplayModule.ui:105
+#: src/frontends/gtk/GDocument.C:340
 msgid "Color"
 msgstr "Farge"
 
@@ -2133,7 +2145,8 @@ msgid "The available branches"
 msgstr "Tilgjengelege greiner"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:154
-msgid "(&amp;De)activate"
+#, fuzzy
+msgid "(&De)activate"
 msgstr "(&amp;Passiviser)"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:158
@@ -2141,7 +2154,8 @@ msgid "Toggle the selected branch"
 msgstr "Skru av/på den valde greina"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:169
-msgid "Alter Co&amp;lor..."
+#, fuzzy
+msgid "Alter Co&lor..."
 msgstr "En&amp;dra farge..."
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:173
@@ -2152,7 +2166,8 @@ msgstr "Definere eller endre fargen på bakgrunnen"
 #: src/frontends/qt2/ui/QPrefConvertersModule.ui:324
 #: src/frontends/qt2/ui/QPrefCopiersModule.ui:120
 #: src/frontends/qt2/ui/QPrefFileformatsModule.ui:365
-msgid "&amp;Remove"
+#, fuzzy
+msgid "&Remove"
 msgstr "&amp;Fjern"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:188
@@ -2160,7 +2175,8 @@ msgid "Remove the selected branch"
 msgstr "Fjern den valde greina"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:235
-msgid "&amp;New:"
+#, fuzzy
+msgid "&New:"
 msgstr "&amp;Ny:"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:257
@@ -2168,15 +2184,17 @@ msgstr "&amp;Ny:"
 #: src/frontends/qt2/ui/QCitationFindDialogBase.ui:164
 #: src/frontends/qt2/ui/QPrefCopiersModule.ui:180
 #: src/frontends/qt2/ui/QPrefFileformatsModule.ui:205
-msgid "&amp;Add"
-msgstr "&amp;Legg til"
+#, fuzzy
+msgid "&Add"
+msgstr "Legg til"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:261
 msgid "Add a new branch to the list"
 msgstr "Legg til ei ny grein til lista"
 
 #: src/frontends/qt2/ui/BulletsModuleBase.ui:118
-msgid "&amp;First level"
+#, fuzzy
+msgid "&First level"
 msgstr "&amp;Første nivå"
 
 #: src/frontends/qt2/ui/BulletsModuleBase.ui:178
@@ -2275,19 +2293,23 @@ msgid "Huger"
 msgstr "Gigantisk"
 
 #: src/frontends/qt2/ui/BulletsModuleBase.ui:353
-msgid "&amp;Second level"
+#, fuzzy
+msgid "&Second level"
 msgstr "&amp;Andre nivå"
 
 #: src/frontends/qt2/ui/BulletsModuleBase.ui:609
-msgid "&amp;Third level"
+#, fuzzy
+msgid "&Third level"
 msgstr "&amp;Tredje nivå"
 
 #: src/frontends/qt2/ui/BulletsModuleBase.ui:901
-msgid "Fou&amp;rth level"
+#, fuzzy
+msgid "Fou&rth level"
 msgstr "Fjer&amp;de nivå"
 
 #: src/frontends/qt2/ui/LaTeXModuleBase.ui:71
-msgid "Document &amp;class:"
+#, fuzzy
+msgid "Document &class:"
 msgstr "&amp;Dokumentklassa:"
 
 #: src/frontends/qt2/ui/LaTeXModuleBase.ui:138
@@ -2295,32 +2317,39 @@ msgid "Class Settings"
 msgstr "Klasseval"
 
 #: src/frontends/qt2/ui/LaTeXModuleBase.ui:157
-msgid "&amp;Options:"
-msgstr "&amp;Val:"
+#, fuzzy
+msgid "&Options:"
+msgstr "Val"
 
 #: src/frontends/qt2/ui/LaTeXModuleBase.ui:204
-msgid "Postscript &amp;driver:"
+#, fuzzy
+msgid "Postscript &driver:"
 msgstr "Postscript-&amp;drivaren:"
 
 #: src/frontends/qt2/ui/LanguageModuleBase.ui:56
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:209
-msgid "&amp;Language:"
-msgstr "&amp;Språk:"
+#, fuzzy
+msgid "&Language:"
+msgstr "Språk"
 
 #: src/frontends/qt2/ui/LanguageModuleBase.ui:108
-msgid "&amp;Use language's default encoding"
+#, fuzzy
+msgid "&Use language's default encoding"
 msgstr "&amp;Bruk standard vala til språket"
 
 #: src/frontends/qt2/ui/LanguageModuleBase.ui:191
-msgid "&amp;Encoding:"
+#, fuzzy
+msgid "&Encoding:"
 msgstr "&amp;Koding:"
 
 #: src/frontends/qt2/ui/LanguageModuleBase.ui:206
-msgid "&amp;Quote Style:"
+#, fuzzy
+msgid "&Quote Style:"
 msgstr "&amp;Sitatstil:"
 
 #: src/frontends/qt2/ui/MarginsModuleBase.ui:41
-msgid "&amp;Default Margins"
+#, fuzzy
+msgid "&Default Margins"
 msgstr "&amp;Standard margar"
 
 #: src/frontends/qt2/ui/MarginsModuleBase.ui:45
@@ -2328,47 +2357,58 @@ msgid "Use the margin settings provided by the document class"
 msgstr "Bruk standardval for margar ifrå dokumentklassa"
 
 #: src/frontends/qt2/ui/MarginsModuleBase.ui:132
-msgid "&amp;Top:"
-msgstr "Op&amp;pe:"
+#, fuzzy
+msgid "&Top:"
+msgstr "Topp"
 
 #: src/frontends/qt2/ui/MarginsModuleBase.ui:151
-msgid "&amp;Bottom:"
-msgstr "&amp;Nede:"
+#, fuzzy
+msgid "&Bottom:"
+msgstr "Botn"
 
 #: src/frontends/qt2/ui/MarginsModuleBase.ui:170
-msgid "&amp;Inner:"
+#, fuzzy
+msgid "&Inner:"
 msgstr "&amp;Indre:"
 
 #: src/frontends/qt2/ui/MarginsModuleBase.ui:189
-msgid "O&amp;uter:"
-msgstr "&amp;Ytre:"
+#, fuzzy
+msgid "O&uter:"
+msgstr "Ytre"
 
 #: src/frontends/qt2/ui/MarginsModuleBase.ui:208
-msgid "Head &amp;sep:"
+#, fuzzy
+msgid "Head &sep:"
 msgstr "Topptekst av&amp;stand:"
 
 #: src/frontends/qt2/ui/MarginsModuleBase.ui:227
-msgid "Head &amp;height:"
+#, fuzzy
+msgid "Head &height:"
 msgstr "Topptekst&amp;høgd:"
 
 #: src/frontends/qt2/ui/MarginsModuleBase.ui:246
-msgid "&amp;Foot skip:"
+#, fuzzy
+msgid "&Foot skip:"
 msgstr "&amp;Botntekst avstand:"
 
 #: src/frontends/qt2/ui/MathsModuleBase.ui:41
-msgid "&amp;Use AMS math package automatically"
+#, fuzzy
+msgid "&Use AMS math package automatically"
 msgstr "&amp;Bruk AMS-Matte automatisk"
 
 #: src/frontends/qt2/ui/MathsModuleBase.ui:56
-msgid "Use AMS &amp;math package"
+#, fuzzy
+msgid "Use AMS &math package"
 msgstr "Bruk AMS &amp;matte"
 
 #: src/frontends/qt2/ui/NumberingModuleBase.ui:41
-msgid "&amp;Numbering"
+#, fuzzy
+msgid "&Numbering"
 msgstr "&amp;Nummerering"
 
 #: src/frontends/qt2/ui/NumberingModuleBase.ui:96
-msgid "&amp;List in Table of Contents"
+#, fuzzy
+msgid "&List in Table of Contents"
 msgstr "&amp;Innhaldsliste"
 
 #: src/frontends/qt2/ui/NumberingModuleBase.ui:131
@@ -2400,8 +2440,9 @@ msgstr "Papirstorleik"
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:86
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:698
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:562
-msgid "&amp;Height:"
-msgstr "&amp;Høgd:"
+#, fuzzy
+msgid "&Height:"
+msgstr "Høgd"
 
 #: src/frontends/qt2/ui/PageLayoutModuleBase.ui:87
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:189
@@ -2409,23 +2450,27 @@ msgstr "&amp;Høgd:"
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:504
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:328
 #: src/frontends/qt2/ui/QWrapDialogBase.ui:75
-msgid "&amp;Width:"
-msgstr "&amp;Breidd:"
+#, fuzzy
+msgid "&Width:"
+msgstr "Breidd"
 
 #: src/frontends/qt2/ui/PageLayoutModuleBase.ui:109
 msgid "Choose a particular paper size, or set your own with \"Custom\""
 msgstr "Vel ein papirstorleik eller lag din eigen med \"Tilpassa\""
 
 #: src/frontends/qt2/ui/PageLayoutModuleBase.ui:199
-msgid "&amp;Portrait"
+#, fuzzy
+msgid "&Portrait"
 msgstr "S&amp;tåande"
 
 #: src/frontends/qt2/ui/PageLayoutModuleBase.ui:214
-msgid "&amp;Landscape"
-msgstr "&amp;Liggjande"
+#, fuzzy
+msgid "&Landscape"
+msgstr "Liggjande:"
 
 #: src/frontends/qt2/ui/PageLayoutModuleBase.ui:242
-msgid "Page &amp;style:"
+#, fuzzy
+msgid "Page &style:"
 msgstr "&amp;Side stil:"
 
 #: src/frontends/qt2/ui/PageLayoutModuleBase.ui:264
@@ -2433,7 +2478,8 @@ msgid "Style used for the page header and footer"
 msgstr "Topp og botntekst stil"
 
 #: src/frontends/qt2/ui/PageLayoutModuleBase.ui:277
-msgid "&amp;Two-sided document"
+#, fuzzy
+msgid "&Two-sided document"
 msgstr "&amp;Tosidig"
 
 #: src/frontends/qt2/ui/PageLayoutModuleBase.ui:281
@@ -2482,15 +2528,17 @@ msgstr "Opphavsrett"
 #: src/frontends/qt2/ui/QURLDialogBase.ui:171
 #: src/frontends/qt2/ui/QVSpaceDialogBase.ui:248
 #: src/frontends/qt2/ui/QWrapDialogBase.ui:318
-msgid "&amp;Close"
-msgstr "Lu&amp;kk"
+#, fuzzy
+msgid "&Close"
+msgstr "Lukk"
 
 #: src/frontends/qt2/ui/QAskForTextDialog.ui:22
 msgid "LyX: Enter text"
 msgstr "LyX: Skriv inn tekst"
 
 #: src/frontends/qt2/ui/QAskForTextDialog.ui:66
-msgid "&amp;Dummy"
+#, fuzzy
+msgid "&Dummy"
 msgstr "&amp;Dummy"
 
 #: src/frontends/qt2/ui/QAskForTextDialog.ui:124
@@ -2516,19 +2564,22 @@ msgstr "&amp;Dummy"
 #: src/frontends/qt2/ui/QURLDialogBase.ui:156
 #: src/frontends/qt2/ui/QVSpaceDialogBase.ui:214
 #: src/frontends/qt2/ui/QWrapDialogBase.ui:280
-msgid "&amp;OK"
-msgstr "&amp;OK"
+#, fuzzy
+msgid "&OK"
+msgstr "OK"
 
 #: src/frontends/qt2/ui/QAskForTextDialog.ui:139
 #: src/frontends/qt2/ui/QDocumentDialogBase.ui:214 src/buffer_funcs.C:91
 #: src/buffer_funcs.C:117 src/buffer_funcs.C:158 src/bufferlist.C:84
-#: src/bufferlist.C:183 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:655
-#: src/lyxfunc.C:817 src/lyxfunc.C:1862 src/lyxvc.C:168
-msgid "&amp;Cancel"
-msgstr "&amp;Avbryt"
+#: src/bufferlist.C:183 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:657
+#: src/lyxfunc.C:819 src/lyxfunc.C:1864 src/lyxvc.C:168
+#, fuzzy
+msgid "&Cancel"
+msgstr "Avbrot"
 
 #: src/frontends/qt2/ui/QBibitemDialogBase.ui:60
-msgid "&amp;Key:"
+#, fuzzy
+msgid "&Key:"
 msgstr "&amp;Nøkkel:"
 
 #: src/frontends/qt2/ui/QBibitemDialogBase.ui:68
@@ -2538,8 +2589,9 @@ msgstr "Litteratur nøkkel"
 
 #: src/frontends/qt2/ui/QBibitemDialogBase.ui:114
 #: src/frontends/qt2/ui/QRefDialogBase.ui:182 src/frontends/qt2/Dialogs.C:239
-msgid "&amp;Label:"
-msgstr "&amp;Etikett:"
+#, fuzzy
+msgid "&Label:"
+msgstr "Etikett"
 
 #: src/frontends/qt2/ui/QBibitemDialogBase.ui:122
 #: src/frontends/qt2/ui/QBibitemDialogBase.ui:140
@@ -2556,8 +2608,9 @@ msgstr "LyX: Legg til BibTeX Database"
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:725
 #: src/frontends/qt2/ui/QIncludeDialogBase.ui:90
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:473
-msgid "&amp;Browse..."
-msgstr "&amp;Bla gjennom..."
+#, fuzzy
+msgid "&Browse..."
+msgstr "Bla gjennom..."
 
 #: src/frontends/qt2/ui/QBibtexAddDialogBase.ui:78
 msgid "Enter BibTeX database name"
@@ -2587,20 +2640,22 @@ msgstr "Tilgjengelege BibTeX databasar"
 #: src/frontends/qt2/ui/QIndexDialogBase.ui:143
 #: src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/BufferView_pimpl.C:286
 #: src/frontends/gtk/GBC.h:27 src/frontends/qt2/Qt2BC.h:36
-#: src/frontends/xforms/xformsBC.h:29 src/lyxfunc.C:768
+#: src/frontends/xforms/xformsBC.h:29 src/lyxfunc.C:770
 msgid "Cancel"
 msgstr "Avbrot"
 
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:52
-msgid "St&amp;yle"
-msgstr "St&amp;il"
+#, fuzzy
+msgid "St&yle"
+msgstr "Stil"
 
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:60
 msgid "The BibTeX style"
 msgstr "BibTeX stil"
 
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:150
-msgid "Databa&amp;ses"
+#, fuzzy
+msgid "Databa&ses"
 msgstr "&amp;Databasar"
 
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:162
@@ -2613,7 +2668,8 @@ msgstr "Valde BibTeX databasar"
 
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:191
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:204
-msgid "&amp;Add..."
+#, fuzzy
+msgid "&Add..."
 msgstr "&amp;Legg til..."
 
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:195
@@ -2621,7 +2677,8 @@ msgid "Add a BibTeX database file"
 msgstr "Legg til ein BibTeX database"
 
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:206
-msgid "&amp;Delete"
+#, fuzzy
+msgid "&Delete"
 msgstr "&amp;Slett"
 
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:210
@@ -2651,11 +2708,13 @@ msgid "This bibliography section contains..."
 msgstr "Denne delen av litteraturlista inneheld..."
 
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:341
-msgid "&amp;Content:"
-msgstr "&amp;Innehald:"
+#, fuzzy
+msgid "&Content:"
+msgstr "Innhald"
 
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:360
-msgid "Add bibliography to &amp;TOC"
+#, fuzzy
+msgid "Add bibliography to &TOC"
 msgstr "Legg &amp;til innhaldslista"
 
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:364
@@ -2696,7 +2755,8 @@ msgstr "Breidd"
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:332
 #: src/frontends/qt2/ui/QPrefsDialogBase.ui:74
 #: src/frontends/qt2/ui/QWrapDialogBase.ui:240
-msgid "&amp;Restore"
+#, fuzzy
+msgid "&Restore"
 msgstr "Gjenopp&amp;rett"
 
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:306
@@ -2711,7 +2771,8 @@ msgstr "Gjenopp&amp;rett"
 #: src/frontends/qt2/ui/QSendtoDialogBase.ui:109
 #: src/frontends/qt2/ui/QVSpaceDialogBase.ui:233
 #: src/frontends/qt2/ui/QWrapDialogBase.ui:299
-msgid "&amp;Apply"
+#, fuzzy
+msgid "&Apply"
 msgstr "&amp;Bruk"
 
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:366
@@ -2786,15 +2847,18 @@ msgid "Vertical alignment of the box (with regard to baseline)"
 msgstr "Loddrett justering for ramma (i høve til grunnlinja)"
 
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:468
-msgid "Content hori&amp;zontal:"
+#, fuzzy
+msgid "Content hori&zontal:"
 msgstr "Innhaldet &amp;vassrett:"
 
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:487
-msgid "Content &amp;vertical:"
+#, fuzzy
+msgid "Content &vertical:"
 msgstr "Innhaldet &amp;loddrett:"
 
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:506
-msgid "&amp;Box vertical:"
+#, fuzzy
+msgid "&Box vertical:"
 msgstr "Ramma l&amp;oddrett:"
 
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:650
@@ -2806,20 +2870,24 @@ msgstr "Ingen"
 
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:671
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:690
-msgid "Inner box -- needed for fixed width &amp; line breaks"
+#, fuzzy
+msgid "Inner box -- needed for fixed width & line breaks"
 msgstr "Indre ramme - til bruk for fast breidd og linjeskift"
 
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:682
-msgid "&amp;Inner Box:"
+#, fuzzy
+msgid "&Inner Box:"
 msgstr "&amp;Indre ramme:"
 
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:701
-msgid "T&amp;ype:"
-msgstr "&amp;Type:"
+#, fuzzy
+msgid "T&ype:"
+msgstr "Type"
 
 #: src/frontends/qt2/ui/QBranchDialogBase.ui:90
-msgid "&amp;Available branches:"
-msgstr "&amp;Tilgjengelege greiner:"
+#, fuzzy
+msgid "&Available branches:"
+msgstr "Tilgjengelege greiner:"
 
 #: src/frontends/qt2/ui/QBranchDialogBase.ui:105
 msgid "Select your branch"
@@ -2834,15 +2902,17 @@ msgid "Details of the change"
 msgstr "Detaljar i endringa"
 
 #: src/frontends/qt2/ui/QChangesDialogBase.ui:103
-msgid "&amp;Accept"
-msgstr "&amp;Godta"
+#, fuzzy
+msgid "&Accept"
+msgstr "Akseptert"
 
 #: src/frontends/qt2/ui/QChangesDialogBase.ui:111
 msgid "Accept this change"
 msgstr "Godta endringa"
 
 #: src/frontends/qt2/ui/QChangesDialogBase.ui:122
-msgid "&amp;Reject"
+#, fuzzy
+msgid "&Reject"
 msgstr "&amp;Forkast"
 
 #: src/frontends/qt2/ui/QChangesDialogBase.ui:130
@@ -2850,7 +2920,8 @@ msgid "Reject this change"
 msgstr "Forkast endringa"
 
 #: src/frontends/qt2/ui/QChangesDialogBase.ui:200
-msgid "&amp;Next change"
+#, fuzzy
+msgid "&Next change"
 msgstr "&amp;Neste endring"
 
 #: src/frontends/qt2/ui/QChangesDialogBase.ui:208
@@ -2858,7 +2929,8 @@ msgid "Go to next change"
 msgstr "Gå til neste endring"
 
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:81
-msgid "&amp;Family:"
+#, fuzzy
+msgid "&Family:"
 msgstr "&amp;Familie:"
 
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:89
@@ -2872,7 +2944,8 @@ msgid "Font shape"
 msgstr "Skrifttype"
 
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:118
-msgid "S&amp;hape:"
+#, fuzzy
+msgid "S&hape:"
 msgstr "&amp;Form:"
 
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:144
@@ -2894,20 +2967,23 @@ msgid "Font color"
 msgstr "Farge på skrifta"
 
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:228
-msgid "&amp;Series:"
+#, fuzzy
+msgid "&Series:"
 msgstr "&amp;Serier:"
 
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:251
-msgid "&amp;Color:"
-msgstr "&amp;Farge:"
+#, fuzzy
+msgid "&Color:"
+msgstr "Farge"
 
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:287
 msgid "Never Toggled"
 msgstr "Byt aldri"
 
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:309
-msgid "Si&amp;ze:"
-msgstr "Stor&amp;leik:"
+#, fuzzy
+msgid "Si&ze:"
+msgstr "Storleik:"
 
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:317
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:335
@@ -2924,11 +3000,13 @@ msgid "Other font settings"
 msgstr "Andreskriftval"
 
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:374
-msgid "&amp;Misc:"
-msgstr "&amp;Ymse:"
+#, fuzzy
+msgid "&Misc:"
+msgstr "Ymse"
 
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:421
-msgid "&amp;Toggle all"
+#, fuzzy
+msgid "&Toggle all"
 msgstr "&amp;Byt alle"
 
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:425
@@ -2969,7 +3047,8 @@ msgid "Citations currently selected"
 msgstr "Den valde litteraturen"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:152
-msgid "D&amp;elete"
+#, fuzzy
+msgid "D&elete"
 msgstr "Sle&amp;tt"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:178
@@ -2977,11 +3056,13 @@ msgid "Move the selected citation up"
 msgstr "Flytt den valde litteraturen oppover"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:189
-msgid "&amp;Citations:"
-msgstr "&amp;Litteratur:"
+#, fuzzy
+msgid "&Citations:"
+msgstr "Litteratur:"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:312
-msgid "A&amp;pply"
+#, fuzzy
+msgid "A&pply"
 msgstr "&amp;Bruk"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:340
@@ -2989,7 +3070,8 @@ msgid "Style"
 msgstr "Stil"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:359
-msgid "Citation &amp;style:"
+#, fuzzy
+msgid "Citation &style:"
 msgstr "&amp;Litteraturstil:"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:381
@@ -2997,7 +3079,8 @@ msgid "Natbib citation style to use"
 msgstr "Bruk følgjande Natbib litteraturstil"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:392
-msgid "Force &amp;upper case"
+#, fuzzy
+msgid "Force &upper case"
 msgstr "Br&amp;uk storebokstavar alltid"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:396
@@ -3005,7 +3088,8 @@ msgid "Force upper case in citation"
 msgstr "Bruk store bokstavar i litteraturen"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:407
-msgid "&amp;Text after:"
+#, fuzzy
+msgid "&Text after:"
 msgstr "&amp;Tekst etter:"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:429
@@ -3017,11 +3101,13 @@ msgid "Text to place before citation"
 msgstr "Tekst før litteratur-referansen"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:458
-msgid "Text &amp;before:"
+#, fuzzy
+msgid "Text &before:"
 msgstr "Tekst &amp;før:"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:473
-msgid "&amp;Full author list"
+#, fuzzy
+msgid "&Full author list"
 msgstr "&amp;Heile forfattarlista"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:477
@@ -3037,7 +3123,8 @@ msgid "Available bibliography keys"
 msgstr "Tilgjengelege lltteraturnøkkelar"
 
 #: src/frontends/qt2/ui/QCitationFindDialogBase.ui:205
-msgid "&amp;Previous"
+#, fuzzy
+msgid "&Previous"
 msgstr "&amp;Førre"
 
 #: src/frontends/qt2/ui/QCitationFindDialogBase.ui:227
@@ -3046,7 +3133,8 @@ msgstr "Bla igjenom tilgjengeleg litteratur"
 
 #: src/frontends/qt2/ui/QCitationFindDialogBase.ui:245
 #: src/frontends/qt2/ui/QSearchDialogBase.ui:161
-msgid "Case &amp;sensitive"
+#, fuzzy
+msgid "Case &sensitive"
 msgstr "&amp;Skil mellom små og store bokstavar"
 
 #: src/frontends/qt2/ui/QCitationFindDialogBase.ui:249
@@ -3054,16 +3142,19 @@ msgid "Make the search case-sensitive"
 msgstr "Skil mellom små og store bokstavar i søket"
 
 #: src/frontends/qt2/ui/QCitationFindDialogBase.ui:267
-msgid "&amp;Next"
+#, fuzzy
+msgid "&Next"
 msgstr "&amp;Neste"
 
 #: src/frontends/qt2/ui/QCitationFindDialogBase.ui:308
 #: src/frontends/qt2/ui/QSearchDialogBase.ui:51
-msgid "&amp;Find:"
+#, fuzzy
+msgid "&Find:"
 msgstr "&amp;Finn:"
 
 #: src/frontends/qt2/ui/QCitationFindDialogBase.ui:353
-msgid "&amp;Regular Expression"
+#, fuzzy
+msgid "&Regular Expression"
 msgstr "&amp;Regulært uttrykk"
 
 #: src/frontends/qt2/ui/QCitationFindDialogBase.ui:357
@@ -3079,7 +3170,8 @@ msgid "Right delimiter"
 msgstr "Høgre skiljeteikn"
 
 #: src/frontends/qt2/ui/QDelimiterDialogBase.ui:321
-msgid "&amp;Keep matched"
+#, fuzzy
+msgid "&Keep matched"
 msgstr "&amp;Hald uendra"
 
 #: src/frontends/qt2/ui/QDelimiterDialogBase.ui:329
@@ -3087,8 +3179,9 @@ msgid "Match delimiter types"
 msgstr "Like skiljeteikn"
 
 #: src/frontends/qt2/ui/QDelimiterDialogBase.ui:378
-msgid "&amp;Insert"
-msgstr "Set &amp;inn"
+#, fuzzy
+msgid "&Insert"
+msgstr "Set inn|S"
 
 #: src/frontends/qt2/ui/QDelimiterDialogBase.ui:382
 msgid "Insert the delimiters"
@@ -3115,15 +3208,17 @@ msgid "Display"
 msgstr "Vis"
 
 #: src/frontends/qt2/ui/QERTDialogBase.ui:64
-msgid "&amp;Inline"
-msgstr "&amp;I teksten"
+#, fuzzy
+msgid "&Inline"
+msgstr "I teksten|I"
 
 #: src/frontends/qt2/ui/QERTDialogBase.ui:68
 msgid "Show ERT inline"
 msgstr "Vis ERT i teksten"
 
 #: src/frontends/qt2/ui/QERTDialogBase.ui:79
-msgid "&amp;Collapsed"
+#, fuzzy
+msgid "&Collapsed"
 msgstr "&amp;Samanlagd"
 
 #: src/frontends/qt2/ui/QERTDialogBase.ui:83
@@ -3131,7 +3226,8 @@ msgid "Show ERT button only"
 msgstr "Vis berre ERT knapp "
 
 #: src/frontends/qt2/ui/QERTDialogBase.ui:94
-msgid "O&amp;pen"
+#, fuzzy
+msgid "O&pen"
 msgstr "&amp;Opna"
 
 #: src/frontends/qt2/ui/QERTDialogBase.ui:98
@@ -3153,7 +3249,8 @@ msgid "Available templates"
 msgstr "Tilgjengelege malar"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:144
-msgid "&amp;Draft"
+#, fuzzy
+msgid "&Draft"
 msgstr "Kla&amp;dd"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:170
@@ -3165,8 +3262,9 @@ msgstr "Filnamn"
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:740
 #: src/frontends/qt2/ui/QIncludeDialogBase.ui:60
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:439
-msgid "&amp;File:"
-msgstr "&amp;Fil:"
+#, fuzzy
+msgid "&File:"
+msgstr "Fil"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:204
 #: src/frontends/qt2/ui/QIncludeDialogBase.ui:94
@@ -3174,7 +3272,8 @@ msgid "Select a file"
 msgstr "Vel ei-fil"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:236
-msgid "&amp;Edit File..."
+#, fuzzy
+msgid "&Edit File..."
 msgstr "&amp;Rediger fil..."
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:240
@@ -3182,8 +3281,9 @@ msgid "Edit the file externally"
 msgstr "Rediger fila eksternt"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:308
-msgid "Sca&amp;le:"
-msgstr "&amp;Forstørring:"
+#, fuzzy
+msgid "Sca&le:"
+msgstr "Skala:"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:316
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:353
@@ -3193,8 +3293,9 @@ msgid "Percentage to scale by in LyX"
 msgstr "Bilete skalert i LyX etter denne prosentdelen"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:402
-msgid "&amp;Display:"
-msgstr "&amp;Vis:"
+#, fuzzy
+msgid "&Display:"
+msgstr "Vis:"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:410
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:451
@@ -3209,7 +3310,7 @@ msgstr "Skjerm"
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:244
 #: src/frontends/controllers/ControlExternal.C:226
 #: src/frontends/controllers/ControlGraphics.C:169
-#: src/frontends/gtk/GDocument.C:174 src/frontends/qt2/QDocument.C:111
+#: src/frontends/gtk/GDocument.C:175 src/frontends/qt2/QDocument.C:111
 #: src/lyxfont.C:516
 msgid "Default"
 msgstr "Standard"
@@ -3232,7 +3333,8 @@ msgstr "Førehandsvising"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:464
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:333
-msgid "&amp;Show in LyX"
+#, fuzzy
+msgid "&Show in LyX"
 msgstr "&amp;Vis i LyX"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:468
@@ -3253,7 +3355,8 @@ msgid "Angle to rotate image by"
 msgstr "Roter bilete etter vinkelen"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:558
-msgid "&amp;Origin:"
+#, fuzzy
+msgid "&Origin:"
 msgstr "&amp;Origo:"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:566
@@ -3265,7 +3368,8 @@ msgstr "Origo for roteringa"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:588
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:245
-msgid "A&amp;ngle:"
+#, fuzzy
+msgid "A&ngle:"
 msgstr "Vi&amp;nkel:"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:634
@@ -3285,7 +3389,8 @@ msgstr "Høgda på bilete i det ferdig dokument"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:758
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:642
-msgid "&amp;Maintain aspect ratio"
+#, fuzzy
+msgid "&Maintain aspect ratio"
 msgstr "&amp;Same høgde og breidde høve"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:762
@@ -3300,17 +3405,20 @@ msgstr "Kutt"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:856
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:985
-msgid "Right &amp;top:"
+#, fuzzy
+msgid "Right &top:"
 msgstr "Til høgre &amp;oppe:"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:871
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:938
-msgid "&amp;Left bottom:"
+#, fuzzy
+msgid "&Left bottom:"
 msgstr "&amp;Til venstre nede:"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:978
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:797
-msgid "Clip to &amp;bounding box"
+#, fuzzy
+msgid "Clip to &bounding box"
 msgstr "Klipp til &amp;ramma"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:982
@@ -3320,7 +3428,8 @@ msgstr "Klipp til storleiken av ramma"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:993
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:833
-msgid "&amp;Get from File"
+#, fuzzy
+msgid "&Get from File"
 msgstr "&amp;Hent frå fil"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:997
@@ -3334,19 +3443,23 @@ msgid "Options"
 msgstr "Val"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:1065
-msgid "Forma&amp;t:"
+#, fuzzy
+msgid "Forma&t:"
 msgstr "Forma&amp;t:"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:1108
-msgid "O&amp;ption:"
-msgstr "&amp;Val:"
+#, fuzzy
+msgid "O&ption:"
+msgstr "Val"
 
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:186
-msgid "&amp;Graphics"
-msgstr "&amp;Grafikk"
+#, fuzzy
+msgid "&Graphics"
+msgstr "Grafikk"
 
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:282
-msgid "Or&amp;igin:"
+#, fuzzy
+msgid "Or&igin:"
 msgstr "&amp;Origo:"
 
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:314
@@ -3362,8 +3475,9 @@ msgid "Scale:"
 msgstr "Skala:"
 
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:695
-msgid "&amp;Edit"
-msgstr "&amp;Rediger"
+#, fuzzy
+msgid "&Edit"
+msgstr "Rediger|R"
 
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:714
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:748
@@ -3375,23 +3489,28 @@ msgid "Select an image file"
 msgstr "Vel ei biletefil"
 
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:763
-msgid "&amp;Clipping"
+#, fuzzy
+msgid "&Clipping"
 msgstr "&amp;Klipping"
 
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:1043
-msgid "E&amp;xtra options"
-msgstr "E&amp;kstra val"
+#, fuzzy
+msgid "E&xtra options"
+msgstr "Andre val:"
 
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:1062
-msgid "Su&amp;bfigure"
+#, fuzzy
+msgid "Su&bfigure"
 msgstr "&amp;Delfigur"
 
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:1066
 msgid "Is this just one part of a figure float ?"
-msgstr "Er dette berre ein del av delane til ein figurflytar med mange figurar?"
+msgstr ""
+"Er dette berre ein del av delane til ein figurflytar med mange figurar?"
 
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:1077
-msgid "Don't un&amp;zip on export"
+#, fuzzy
+msgid "Don't un&zip on export"
 msgstr "Ikkje un&amp;zip ved eksport"
 
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:1081
@@ -3399,7 +3518,8 @@ msgid "Don't uncompress image before exporting to LaTeX"
 msgstr "Pakk ikkje ut bilete før det blir eksportert til LaTeX"
 
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:1092
-msgid "LaTeX &amp;options:"
+#, fuzzy
+msgid "LaTeX &options:"
 msgstr "LaTeX-&amp;val:"
 
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:1100
@@ -3408,16 +3528,18 @@ msgid "Additional LaTeX options"
 msgstr "Andre LaTeX-val"
 
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:1122
-msgid "&amp;Draft mode"
-msgstr "Kla&amp;dd"
+#, fuzzy
+msgid "&Draft mode"
+msgstr "Kladd"
 
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:1126
 msgid "Draft mode"
 msgstr "Kladd"
 
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:1200
-msgid "Ca&amp;ption:"
-msgstr "&amp;Biletetekst:"
+#, fuzzy
+msgid "Ca&ption:"
+msgstr "Figur/tabell-tekst"
 
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:1208
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:1223
@@ -3429,7 +3551,8 @@ msgid "File name to include"
 msgstr "Namnet på fila"
 
 #: src/frontends/qt2/ui/QIncludeDialogBase.ui:122
-msgid "&amp;Include Type:"
+#, fuzzy
+msgid "&Include Type:"
 msgstr "&amp;Filtype:"
 
 #: src/frontends/qt2/ui/QIncludeDialogBase.ui:134
@@ -3448,7 +3571,8 @@ msgid "Verbatim"
 msgstr "Verbatim"
 
 #: src/frontends/qt2/ui/QIncludeDialogBase.ui:183
-msgid "&amp;Load"
+#, fuzzy
+msgid "&Load"
 msgstr "&amp;Last inn"
 
 #: src/frontends/qt2/ui/QIncludeDialogBase.ui:187
@@ -3456,7 +3580,8 @@ msgid "Load the file"
 msgstr "Last fila"
 
 #: src/frontends/qt2/ui/QIncludeDialogBase.ui:237
-msgid "&amp;Mark spaces in output"
+#, fuzzy
+msgid "&Mark spaces in output"
 msgstr "&amp;Marker mellomrom"
 
 #: src/frontends/qt2/ui/QIncludeDialogBase.ui:241
@@ -3464,7 +3589,8 @@ msgid "Underline spaces in generated output"
 msgstr "Strek under mellomrom i det ferdige dokumentet"
 
 #: src/frontends/qt2/ui/QIncludeDialogBase.ui:259
-msgid "&amp;Show preview"
+#, fuzzy
+msgid "&Show preview"
 msgstr "&amp;Førehandsvising"
 
 #: src/frontends/qt2/ui/QIncludeDialogBase.ui:263
@@ -3474,8 +3600,9 @@ msgstr "Bruk LaTeX førehandsvising"
 #: src/frontends/qt2/ui/QLogDialogBase.ui:88
 #: src/frontends/qt2/ui/QRefDialogBase.ui:67
 #: src/frontends/qt2/ui/QTocDialogBase.ui:171
-msgid "&amp;Update"
-msgstr "O&amp;ppdater"
+#, fuzzy
+msgid "&Update"
+msgstr "Oppdater|O"
 
 #: src/frontends/qt2/ui/QLogDialogBase.ui:96
 msgid "Update the display"
@@ -3522,8 +3649,9 @@ msgid "Show delimiter and bracket dialog"
 msgstr "Vis dialog for skiljeteikn og parentesar"
 
 #: src/frontends/qt2/ui/QMathDialogBase.ui:381
-msgid "&amp;Functions"
-msgstr "&amp;Funksjonar"
+#, fuzzy
+msgid "&Functions"
+msgstr "Funksjonar:"
 
 #: src/frontends/qt2/ui/QMathDialogBase.ui:410
 msgid "Select a function or operator to insert"
@@ -3546,11 +3674,11 @@ msgid "Relations"
 msgstr "Relasjonar"
 
 #: src/frontends/qt2/ui/QMathDialogBase.ui:511 lib/languages:32
-#: src/frontends/gtk/Dialogs.C:338 src/frontends/xforms/Dialogs.C:314
+#: src/frontends/xforms/Dialogs.C:314
 msgid "Greek"
 msgstr "Gresk"
 
-#: src/frontends/qt2/ui/QMathDialogBase.ui:517 src/frontends/gtk/Dialogs.C:302
+#: src/frontends/qt2/ui/QMathDialogBase.ui:517
 #: src/frontends/xforms/Dialogs.C:278
 msgid "Arrows"
 msgstr "Piler"
@@ -3588,7 +3716,8 @@ msgid "Select a page of symbols"
 msgstr "Vel ei symbol side"
 
 #: src/frontends/qt2/ui/QMathDialogBase.ui:655
-msgid "&amp;Detach panel"
+#, fuzzy
+msgid "&Detach panel"
 msgstr "&amp;Kopla frå vindauge"
 
 #: src/frontends/qt2/ui/QMathDialogBase.ui:659
@@ -3597,8 +3726,9 @@ msgstr "Opna dette feltet som eit eige vindauge"
 
 #: src/frontends/qt2/ui/QMathMatrixDialogBase.ui:68
 #: src/frontends/qt2/ui/QTabularCreateDialogBase.ui:60
-msgid "&amp;Rows:"
-msgstr "&amp;Rader:"
+#, fuzzy
+msgid "&Rows:"
+msgstr "Rader:"
 
 #: src/frontends/qt2/ui/QMathMatrixDialogBase.ui:76
 #: src/frontends/qt2/ui/QMathMatrixDialogBase.ui:99
@@ -3609,8 +3739,9 @@ msgstr "Tal på rader"
 
 #: src/frontends/qt2/ui/QMathMatrixDialogBase.ui:110
 #: src/frontends/qt2/ui/QTabularCreateDialogBase.ui:102
-msgid "&amp;Columns:"
-msgstr "&amp;Kolonnar:"
+#, fuzzy
+msgid "&Columns:"
+msgstr "Kolonnar:"
 
 #: src/frontends/qt2/ui/QMathMatrixDialogBase.ui:118
 #: src/frontends/qt2/ui/QMathMatrixDialogBase.ui:141
@@ -3630,7 +3761,8 @@ msgid "Vertical alignment"
 msgstr "Loddrett justering"
 
 #: src/frontends/qt2/ui/QMathMatrixDialogBase.ui:351
-msgid "&amp;Vertical:"
+#, fuzzy
+msgid "&Vertical:"
 msgstr "&amp;Loddrett:"
 
 #: src/frontends/qt2/ui/QMathMatrixDialogBase.ui:380
@@ -3638,12 +3770,14 @@ msgid "Horizontal alignment per column (l,c,r)"
 msgstr "Vassrett justering for kvar kolonne (l,c,r)"
 
 #: src/frontends/qt2/ui/QMathMatrixDialogBase.ui:399
-msgid "&amp;Horizontal:"
+#, fuzzy
+msgid "&Horizontal:"
 msgstr "&amp;Vassrett:"
 
 #: src/frontends/qt2/ui/QNoteDialogBase.ui:94
-msgid "LyX &amp;Note"
-msgstr "LyX &amp;Notat"
+#, fuzzy
+msgid "LyX &Note"
+msgstr "LyX notat|N"
 
 #: src/frontends/qt2/ui/QNoteDialogBase.ui:98
 #: src/frontends/xforms/FormNote.C:42
@@ -3651,8 +3785,9 @@ msgid "LyX internal only"
 msgstr "Berre for LyX internt "
 
 #: src/frontends/qt2/ui/QNoteDialogBase.ui:109
-msgid "&amp;Comment"
-msgstr "&amp;Kommentar"
+#, fuzzy
+msgid "&Comment"
+msgstr "Kommentar"
 
 #: src/frontends/qt2/ui/QNoteDialogBase.ui:113
 #: src/frontends/xforms/FormNote.C:44
@@ -3660,7 +3795,8 @@ msgid "Export to LaTeX/Docbook but don't print"
 msgstr "Eksporter til LaTeX/Docbook men skriv ikkje ut"
 
 #: src/frontends/qt2/ui/QNoteDialogBase.ui:124
-msgid "&amp;Greyed out"
+#, fuzzy
+msgid "&Greyed out"
 msgstr "Som &amp;Grå-tekst"
 
 #: src/frontends/qt2/ui/QNoteDialogBase.ui:128
@@ -3679,13 +3815,14 @@ msgstr "1.5"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:66
 #: src/frontends/qt2/ui/QVSpaceDialogBase.ui:151
-#: src/frontends/gtk/GDocument.C:148 src/frontends/gtk/GDocument.C:175
+#: src/frontends/gtk/GDocument.C:149 src/frontends/gtk/GDocument.C:176
 #: src/frontends/qt2/QDocument.C:112 src/frontends/qt2/QDocument.C:168
 msgid "Custom"
 msgstr "Tilpassa"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:82
-msgid "L&amp;ine spacing:"
+#, fuzzy
+msgid "L&ine spacing:"
 msgstr "&amp;Linjeavstand:"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:94
@@ -3693,11 +3830,13 @@ msgid "Justified"
 msgstr "Justert"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:128
-msgid "Alig&amp;nment:"
-msgstr "&amp;Justering:"
+#, fuzzy
+msgid "Alig&nment:"
+msgstr "Justering"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:207
-msgid "In&amp;dent paragraph"
+#, fuzzy
+msgid "In&dent paragraph"
 msgstr "In&amp;nrykk på avsnitt"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:245
@@ -3710,11 +3849,13 @@ msgid "This text defines the width of the paragraph label"
 msgstr "Teksten her avgjer kor brei overskrifta til avsnittet blir"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:275
-msgid "&amp;Longest label"
+#, fuzzy
+msgid "&Longest label"
 msgstr "&amp;Lengste etikett"
 
 #: src/frontends/qt2/ui/QPrefAsciiModule.ui:56
-msgid "&amp;roff command:"
+#, fuzzy
+msgid "&roff command:"
 msgstr "&amp;roff kommando:"
 
 #: src/frontends/qt2/ui/QPrefAsciiModule.ui:90
@@ -3722,7 +3863,8 @@ msgid "Max. line length of exported plain text/LaTeX/SGML files"
 msgstr "Kor mange teikn kan det vere på ei linje av tekst/LaTeX/SGML eksport"
 
 #: src/frontends/qt2/ui/QPrefAsciiModule.ui:124
-msgid "Output &amp;line length:"
+#, fuzzy
+msgid "Output &line length:"
 msgstr "Linje&amp;lengd:"
 
 #: src/frontends/qt2/ui/QPrefAsciiModule.ui:139
@@ -3730,59 +3872,72 @@ msgid "External app for formating tables in plain text output"
 msgstr "Ekstern applikasjon for reinteksttabellar"
 
 #: src/frontends/qt2/ui/QPrefColorsModule.ui:56
-msgid "&amp;Colors"
-msgstr "&amp;Fargar"
+#, fuzzy
+msgid "&Colors"
+msgstr "Fargar"
 
 #: src/frontends/qt2/ui/QPrefColorsModule.ui:109
-msgid "&amp;Alter..."
+#, fuzzy
+msgid "&Alter..."
 msgstr "&amp;Endra..."
 
 #: src/frontends/qt2/ui/QPrefConvertersModule.ui:85
-msgid "C&amp;onverter:"
-msgstr "Eksp&amp;ortprogram:"
+#, fuzzy
+msgid "C&onverter:"
+msgstr "Eksportprogram"
 
 #: src/frontends/qt2/ui/QPrefConvertersModule.ui:121
-msgid "&amp;To:[[as in 'From format x to format y']]"
+#, fuzzy
+msgid "&To:[[as in 'From format x to format y']]"
 msgstr "&amp;Til:[[som i frå format x til format y]]"
 
 #: src/frontends/qt2/ui/QPrefConvertersModule.ui:136
-msgid "&amp;From:"
+#, fuzzy
+msgid "&From:"
 msgstr "F&amp;rå:"
 
 #: src/frontends/qt2/ui/QPrefConvertersModule.ui:158
-msgid "E&amp;xtra flag:"
+#, fuzzy
+msgid "E&xtra flag:"
 msgstr "&amp;Ekstra flagg:"
 
 #: src/frontends/qt2/ui/QPrefConvertersModule.ui:211
 #: src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:75
-msgid "A&amp;dd"
-msgstr "&amp;Legg til"
+#, fuzzy
+msgid "A&dd"
+msgstr "Legg til"
 
 #: src/frontends/qt2/ui/QPrefConvertersModule.ui:222
 #: src/frontends/qt2/ui/QPrefCopiersModule.ui:191
 #: src/frontends/qt2/ui/QPrefFileformatsModule.ui:216
-msgid "&amp;Modify"
-msgstr "&amp;Endra"
+#, fuzzy
+msgid "&Modify"
+msgstr "Endra"
 
 #: src/frontends/qt2/ui/QPrefConvertersModule.ui:273
-msgid "&amp;Converters"
-msgstr "&amp;Eksportprogram"
+#, fuzzy
+msgid "&Converters"
+msgstr "Eksportprogram"
 
 #: src/frontends/qt2/ui/QPrefCopiersModule.ui:133
-msgid "C&amp;opiers"
-msgstr "K&amp;opiprogram"
+#, fuzzy
+msgid "C&opiers"
+msgstr "Kopierarar"
 
 #: src/frontends/qt2/ui/QPrefCopiersModule.ui:254
-msgid "&amp;Copier:"
-msgstr "&amp;Kopiprogram:"
+#, fuzzy
+msgid "&Copier:"
+msgstr "Kopiar:"
 
 #: src/frontends/qt2/ui/QPrefCopiersModule.ui:269
 #: src/frontends/qt2/ui/QRefDialogBase.ui:204
-msgid "&amp;Format:"
+#, fuzzy
+msgid "&Format:"
 msgstr "&amp;Format:"
 
 #: src/frontends/qt2/ui/QPrefCygwinPathModule.ui:66
-msgid "&amp;Use Cygwin-style paths"
+#, fuzzy
+msgid "&Use Cygwin-style paths"
 msgstr "&amp;Bruk Cygwin stigar"
 
 #: src/frontends/qt2/ui/QPrefCygwinPathModule.ui:74
@@ -3798,15 +3953,17 @@ msgstr ""
 "eksportprogramma du vil nytte."
 
 #: src/frontends/qt2/ui/QPrefDateModule.ui:56
-msgid "&amp;Date format:"
-msgstr "&amp;Datoformat:"
+#, fuzzy
+msgid "&Date format:"
+msgstr "Datoformat"
 
 #: src/frontends/qt2/ui/QPrefDateModule.ui:71
 msgid "Date format for strftime output"
 msgstr "Datoformatet til strftime"
 
 #: src/frontends/qt2/ui/QPrefDisplayModule.ui:56
-msgid "Display &amp;Graphics:"
+#, fuzzy
+msgid "Display &Graphics:"
 msgstr "Vis &amp;grafikk:"
 
 #: src/frontends/qt2/ui/QPrefDisplayModule.ui:68 src/lyxfont.C:69
@@ -3822,40 +3979,49 @@ msgid "Do not display"
 msgstr "Ikkje vis matte"
 
 #: src/frontends/qt2/ui/QPrefDisplayModule.ui:127
-msgid "Instant &amp;Preview:"
+#, fuzzy
+msgid "Instant &Preview:"
 msgstr "Før&amp;ehandsvising:"
 
 #: src/frontends/qt2/ui/QPrefFileformatsModule.ui:77
-msgid "&amp;GUI name:"
+#, fuzzy
+msgid "&GUI name:"
 msgstr "&amp;GUI namn:"
 
 #: src/frontends/qt2/ui/QPrefFileformatsModule.ui:92
-msgid "F&amp;ormat:"
+#, fuzzy
+msgid "F&ormat:"
 msgstr "F&amp;ormat:"
 
 #: src/frontends/qt2/ui/QPrefFileformatsModule.ui:114
-msgid "&amp;Viewer:"
+#, fuzzy
+msgid "&Viewer:"
 msgstr "&amp;Framsynar:"
 
 #: src/frontends/qt2/ui/QPrefFileformatsModule.ui:129
-msgid "Ed&amp;itor:"
+#, fuzzy
+msgid "Ed&itor:"
 msgstr "Skriveprogram:"
 
 #: src/frontends/qt2/ui/QPrefFileformatsModule.ui:151
-msgid "S&amp;hortcut:"
+#, fuzzy
+msgid "S&hortcut:"
 msgstr "&amp;Snøggtast:"
 
 #: src/frontends/qt2/ui/QPrefFileformatsModule.ui:166
-msgid "E&amp;xtension:"
+#, fuzzy
+msgid "E&xtension:"
 msgstr "Fil E&amp;tternamn:"
 
 #: src/frontends/qt2/ui/QPrefFileformatsModule.ui:286
-msgid "&amp;File formats"
-msgstr "&amp;Filformat"
+#, fuzzy
+msgid "&File formats"
+msgstr "Filformat"
 
 #: src/frontends/qt2/ui/QPrefIdentityModule.ui:56
-msgid "&amp;E-mail:"
-msgstr "&amp;E-post:"
+#, fuzzy
+msgid "&E-mail:"
+msgstr "E-post:"
 
 #: src/frontends/qt2/ui/QPrefIdentityModule.ui:71
 msgid "Your name"
@@ -3864,8 +4030,9 @@ msgstr "Ditt namn"
 #: src/frontends/qt2/ui/QPrefIdentityModule.ui:82
 #: src/frontends/qt2/ui/QRefDialogBase.ui:230
 #: src/frontends/qt2/ui/QURLDialogBase.ui:64
-msgid "&amp;Name:"
-msgstr "&amp;Namn:"
+#, fuzzy
+msgid "&Name:"
+msgstr "Namn:"
 
 #: src/frontends/qt2/ui/QPrefIdentityModule.ui:97
 msgid "Your E-mail address"
@@ -3873,68 +4040,84 @@ msgstr "Di E-post adresse"
 
 #: src/frontends/qt2/ui/QPrefKeyboardModule.ui:76
 #: src/frontends/qt2/ui/QPrefUIModule.ui:111
-msgid "Bro&amp;wse..."
-msgstr "&amp;Bla gjennom..."
+#, fuzzy
+msgid "Bro&wse..."
+msgstr "Bla gjennom..."
 
 #: src/frontends/qt2/ui/QPrefKeyboardModule.ui:91
-msgid "S&amp;econd:"
+#, fuzzy
+msgid "S&econd:"
 msgstr "Andr&amp;e:"
 
 #: src/frontends/qt2/ui/QPrefKeyboardModule.ui:106
-msgid "&amp;First:"
+#, fuzzy
+msgid "&First:"
 msgstr "&amp;Første:"
 
 #: src/frontends/qt2/ui/QPrefKeyboardModule.ui:121
 #: src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:125
-msgid "Br&amp;owse..."
-msgstr "Bla &amp;gjennom..."
+#, fuzzy
+msgid "Br&owse..."
+msgstr "Bla gjennom..."
 
 #: src/frontends/qt2/ui/QPrefKeyboardModule.ui:136
-msgid "Use &amp;keyboard map"
+#, fuzzy
+msgid "Use &keyboard map"
 msgstr "Byt &amp;tastaturoversikt"
 
 #: src/frontends/qt2/ui/QPrefLanguageModule.ui:41
-msgid "Command s&amp;tart:"
+#, fuzzy
+msgid "Command s&tart:"
 msgstr "S&amp;tart kommando:"
 
 #: src/frontends/qt2/ui/QPrefLanguageModule.ui:84
-msgid "&amp;Default language:"
+#, fuzzy
+msgid "&Default language:"
 msgstr "&amp;Standard språk:"
 
 #: src/frontends/qt2/ui/QPrefLanguageModule.ui:99
-msgid "Command e&amp;nd:"
+#, fuzzy
+msgid "Command e&nd:"
 msgstr "Slutt Komma&amp;ndo:"
 
 #: src/frontends/qt2/ui/QPrefLanguageModule.ui:114
-msgid "Language pac&amp;kage:"
+#, fuzzy
+msgid "Language pac&kage:"
 msgstr "Språ&amp;k pakke:"
 
 #: src/frontends/qt2/ui/QPrefLanguageModule.ui:129
-msgid "Auto &amp;begin"
+#, fuzzy
+msgid "Auto &begin"
 msgstr "Start aut&amp;omatisk"
 
 #: src/frontends/qt2/ui/QPrefLanguageModule.ui:140
-msgid "Use b&amp;abel"
+#, fuzzy
+msgid "Use b&abel"
 msgstr "Bruk&amp; babel"
 
 #: src/frontends/qt2/ui/QPrefLanguageModule.ui:172
-msgid "&amp;Global"
+#, fuzzy
+msgid "&Global"
 msgstr "&amp;Global"
 
 #: src/frontends/qt2/ui/QPrefLanguageModule.ui:183
-msgid "&amp;Right-to-left language support"
+#, fuzzy
+msgid "&Right-to-left language support"
 msgstr "Skriv frå høg&amp;re til venstre"
 
 #: src/frontends/qt2/ui/QPrefLanguageModule.ui:194
-msgid "Auto &amp;end"
+#, fuzzy
+msgid "Auto &end"
 msgstr "Auto slut&amp;t"
 
 #: src/frontends/qt2/ui/QPrefLanguageModule.ui:205
-msgid "Mark &amp;foreign languages"
+#, fuzzy
+msgid "Mark &foreign languages"
 msgstr "Marker &amp;andre språk"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:77
-msgid "&amp;Reset class options when document class changes"
+#, fuzzy
+msgid "&Reset class options when document class changes"
 msgstr "&amp;Bruk standard val når dokumentklassa blir endra"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:81
@@ -3950,7 +4133,8 @@ msgid "CheckTeX start options and flags"
 msgstr "CheckTeX val og flagg"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:122
-msgid "Chec&amp;kTeX command:"
+#, fuzzy
+msgid "Chec&kTeX command:"
 msgstr "Chec&amp;ktex kommando:"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:137
@@ -3958,7 +4142,8 @@ msgid "BibTeX command and options"
 msgstr "BibTeX val"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:148
-msgid "&amp;BibTeX command:"
+#, fuzzy
+msgid "&BibTeX command:"
 msgstr "&amp;BibTeX kommando:"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:163
@@ -3978,78 +4163,88 @@ msgid "Optional paper size flag (-paper) for some DVI viewers"
 msgstr "Ekstra val for papirstorleik (-paper) for enkelte DVI-framsynarar"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:250
-#: src/frontends/gtk/GDocument.C:176 src/frontends/qt2/QDocument.C:113
+#: src/frontends/gtk/GDocument.C:177 src/frontends/qt2/QDocument.C:113
 msgid "US letter"
 msgstr "US-letter"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:256
-#: src/frontends/gtk/GDocument.C:177 src/frontends/qt2/QDocument.C:114
+#: src/frontends/gtk/GDocument.C:178 src/frontends/qt2/QDocument.C:114
 msgid "US legal"
 msgstr "US-legal"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:262
-#: src/frontends/gtk/GDocument.C:178 src/frontends/qt2/QDocument.C:115
+#: src/frontends/gtk/GDocument.C:179 src/frontends/qt2/QDocument.C:115
 msgid "US executive"
 msgstr "US Executive"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:268
-#: src/frontends/gtk/GDocument.C:179 src/frontends/qt2/QDocument.C:116
+#: src/frontends/gtk/GDocument.C:180 src/frontends/qt2/QDocument.C:116
 msgid "A3"
 msgstr "A3"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:274
-#: src/frontends/gtk/GDocument.C:180 src/frontends/qt2/QDocument.C:117
+#: src/frontends/gtk/GDocument.C:181 src/frontends/qt2/QDocument.C:117
 msgid "A4"
 msgstr "A4"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:280
-#: src/frontends/gtk/GDocument.C:181 src/frontends/qt2/QDocument.C:118
+#: src/frontends/gtk/GDocument.C:182 src/frontends/qt2/QDocument.C:118
 msgid "A5"
 msgstr "A5"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:286
-#: src/frontends/gtk/GDocument.C:184 src/frontends/qt2/QDocument.C:121
+#: src/frontends/gtk/GDocument.C:185 src/frontends/qt2/QDocument.C:121
 msgid "B5"
 msgstr "B5"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:309
-msgid "Te&amp;X encoding:"
+#, fuzzy
+msgid "Te&X encoding:"
 msgstr "TeX &amp;koding:"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:324
-msgid "Default paper si&amp;ze:"
+#, fuzzy
+msgid "Default paper si&ze:"
 msgstr "Standard pap&amp;irstorleik:"
 
 #: src/frontends/qt2/ui/QPrefPathsModule.ui:78
-msgid "&amp;Document templates:"
+#, fuzzy
+msgid "&Document templates:"
 msgstr "Stig til &amp;malar:"
 
 #: src/frontends/qt2/ui/QPrefPathsModule.ui:107
-msgid "&amp;Backup directory:"
+#, fuzzy
+msgid "&Backup directory:"
 msgstr "&amp;Stig til reservekopi:"
 
 #: src/frontends/qt2/ui/QPrefPathsModule.ui:122
-msgid "&amp;Temporary directory:"
+#, fuzzy
+msgid "&Temporary directory:"
 msgstr "&amp;Mellombelslager stig:"
 
 #: src/frontends/qt2/ui/QPrefPathsModule.ui:137
-msgid "&amp;PATH prefix:"
+#, fuzzy
+msgid "&PATH prefix:"
 msgstr "&amp;Stig-prefiks:"
 
 #: src/frontends/qt2/ui/QPrefPathsModule.ui:152
-msgid "&amp;Working directory:"
+#, fuzzy
+msgid "&Working directory:"
 msgstr "&amp;Arbeidskatalog:"
 
 #: src/frontends/qt2/ui/QPrefPathsModule.ui:248
-msgid "Ly&amp;XServer pipe:"
+#, fuzzy
+msgid "Ly&XServer pipe:"
 msgstr "Ly&amp;XServer datarøyr:"
 
 #: src/frontends/qt2/ui/QPrefPrinterModule.ui:71
-msgid "Printer &amp;name:"
+#, fuzzy
+msgid "Printer &name:"
 msgstr "Skrivar&amp;namn:"
 
 #: src/frontends/qt2/ui/QPrefPrinterModule.ui:93
-msgid "Printer co&amp;mmand:"
+#, fuzzy
+msgid "Printer co&mmand:"
 msgstr "Utskriftsko&amp;mmando:"
 
 #: src/frontends/qt2/ui/QPrefPrinterModule.ui:108
@@ -4057,8 +4252,9 @@ msgid "Name of the default printer"
 msgstr "Namnet på standard skrivaren"
 
 #: src/frontends/qt2/ui/QPrefPrinterModule.ui:119
-msgid "Adapt outp&amp;ut"
-msgstr "Tilpass skrivar"
+#, fuzzy
+msgid "Adapt outp&ut"
+msgstr "Send skrivar namn"
 
 #: src/frontends/qt2/ui/QPrefPrinterModule.ui:123
 msgid "Use printer name explicitely"
@@ -4069,87 +4265,107 @@ msgid "Command Options"
 msgstr "Kommando flagg"
 
 #: src/frontends/qt2/ui/QPrefPrinterModule.ui:178
-msgid "Re&amp;verse:"
-msgstr "Om&amp;vendt:"
+#, fuzzy
+msgid "Re&verse:"
+msgstr "Omvendt:"
 
 #: src/frontends/qt2/ui/QPrefPrinterModule.ui:207
-msgid "To p&amp;rinter:"
-msgstr "Til sk&amp;rivar:"
+#, fuzzy
+msgid "To p&rinter:"
+msgstr "Til skrivar:"
 
 #: src/frontends/qt2/ui/QPrefPrinterModule.ui:222
-msgid "Paper si&amp;ze:"
-msgstr "&amp;Papirstorleik:"
+#, fuzzy
+msgid "Paper si&ze:"
+msgstr "Papirstorleik:"
 
 #: src/frontends/qt2/ui/QPrefPrinterModule.ui:251
-msgid "To &amp;file:"
-msgstr "Til &amp;fil:"
+#, fuzzy
+msgid "To &file:"
+msgstr "Utskrift til fil:"
 
 #: src/frontends/qt2/ui/QPrefPrinterModule.ui:287
-msgid "Spool &amp;command:"
-msgstr "Kø &amp;kommando:"
+#, fuzzy
+msgid "Spool &command:"
+msgstr "Kø-kommando:"
 
 #: src/frontends/qt2/ui/QPrefPrinterModule.ui:316
-msgid "&amp;Odd pages:"
-msgstr "Berre &amp;oddetalssider:"
+#, fuzzy
+msgid "&Odd pages:"
+msgstr "odde-sider:"
 
 #: src/frontends/qt2/ui/QPrefPrinterModule.ui:338
-msgid "Paper t&amp;ype:"
-msgstr "Papirt&amp;ype:"
+#, fuzzy
+msgid "Paper t&ype:"
+msgstr "Papirtype:"
 
 #: src/frontends/qt2/ui/QPrefPrinterModule.ui:360
-msgid "E&amp;xtra options:"
-msgstr "&amp;Andre val:"
+#, fuzzy
+msgid "E&xtra options:"
+msgstr "Andre val:"
 
 #: src/frontends/qt2/ui/QPrefPrinterModule.ui:375
-msgid "Spool pref&amp;ix:"
+#, fuzzy
+msgid "Spool pref&ix:"
 msgstr "Skrivar-kø pref&amp;iks:"
 
 #: src/frontends/qt2/ui/QPrefPrinterModule.ui:397
-msgid "Co&amp;llated:"
-msgstr "Samla &amp;kopiar:"
+#, fuzzy
+msgid "Co&llated:"
+msgstr "Samla:"
 
 #: src/frontends/qt2/ui/QPrefPrinterModule.ui:419
-msgid "&amp;Even pages:"
-msgstr "Berre &amp;Partalssider:"
+#, fuzzy
+msgid "&Even pages:"
+msgstr "Like-sider:"
 
 #: src/frontends/qt2/ui/QPrefPrinterModule.ui:434
-msgid "File ex&amp;tension:"
-msgstr "Fil&amp;etternamn:"
+#, fuzzy
+msgid "File ex&tension:"
+msgstr "Etternamn:"
 
 #: src/frontends/qt2/ui/QPrefPrinterModule.ui:456
-msgid "Lan&amp;dscape:"
-msgstr "Liggjan&amp;de:"
+#, fuzzy
+msgid "Lan&dscape:"
+msgstr "Liggjande:"
 
 #: src/frontends/qt2/ui/QPrefPrinterModule.ui:478
-msgid "Co&amp;pies:"
-msgstr "Ko&amp;piar:"
+#, fuzzy
+msgid "Co&pies:"
+msgstr "Kopiar:"
 
 #: src/frontends/qt2/ui/QPrefPrinterModule.ui:493
-msgid "Pa&amp;ge range:"
-msgstr "&amp;Utval av sider:"
+#, fuzzy
+msgid "Pa&ge range:"
+msgstr "Utval av sider:"
 
 #: src/frontends/qt2/ui/QPrefPrinterModule.ui:508
 msgid "Specify the command option names for your printer command"
 msgstr "Skriv program flagga for skrivarprogrammet"
 
 #: src/frontends/qt2/ui/QPrefScreenFontsModule.ui:110
-msgid "Sa&amp;ns Serif:"
-msgstr "Sans Se&amp;rif:"
+#, fuzzy
+msgid "Sa&ns Serif:"
+msgstr "Sans Serif"
 
 #: src/frontends/qt2/ui/QPrefScreenFontsModule.ui:157
-msgid "T&amp;ypewriter:"
-msgstr "T&amp;ypewriter:"
+#, fuzzy
+msgid "T&ypewriter:"
+msgstr "Typewriter"
 
 #: src/frontends/qt2/ui/QPrefScreenFontsModule.ui:172
-msgid "&amp;Roman:"
-msgstr "&amp;Roman:"
+#, fuzzy
+msgid "&Roman:"
+msgstr "Romansk"
 
 #: src/frontends/qt2/ui/QPrefScreenFontsModule.ui:246
-msgid "Screen &amp;DPI:"
+#, fuzzy
+msgid "Screen &DPI:"
 msgstr "Skjermoppløysing (&amp;DPI):"
 
 #: src/frontends/qt2/ui/QPrefScreenFontsModule.ui:272
-msgid "&amp;Zoom %:"
+#, fuzzy
+msgid "&Zoom %:"
 msgstr "&amp;Forstørring %:"
 
 #: src/frontends/qt2/ui/QPrefScreenFontsModule.ui:323
@@ -4161,7 +4377,8 @@ msgid "Hugest:"
 msgstr "Megasvær:"
 
 #: src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:56
-msgid "Spellchec&amp;ker executable:"
+#, fuzzy
+msgid "Spellchec&ker executable:"
 msgstr "Stave&amp;kontroll program:"
 
 #: src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:99
@@ -4169,11 +4386,13 @@ msgid "Override the language used for the spellchecker"
 msgstr "Ikkje bruk språket til stavekontrollen"
 
 #: src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:110
-msgid "Al&amp;ternative language:"
+#, fuzzy
+msgid "Al&ternative language:"
 msgstr "An&amp;drespråk:"
 
 #: src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:136
-msgid "Escape cha&amp;racters:"
+#, fuzzy
+msgid "Escape cha&racters:"
 msgstr "Ve&amp;rna teikn:"
 
 #: src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:172
@@ -4181,11 +4400,13 @@ msgid "Specify a personal dictionary file other than the default"
 msgstr "Vel ein annan personleg-katalog enn standard-katalogen"
 
 #: src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:183
-msgid "Personal &amp;dictionary:"
+#, fuzzy
+msgid "Personal &dictionary:"
 msgstr "Personleg&amp;ordbok:"
 
 #: src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:228
-msgid "Accept compound &amp;words"
+#, fuzzy
+msgid "Accept compound &words"
 msgstr "Godta sa&amp;mansetteord"
 
 #: src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:232
@@ -4193,19 +4414,23 @@ msgid "Accept words such as \"diskdrive\""
 msgstr "Akssepter ord som \"helikoptersjøførsertifikat\""
 
 #: src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:243
-msgid "Use input encod&amp;ing"
+#, fuzzy
+msgid "Use input encod&ing"
 msgstr "Bruk lokal teiknkod&amp;ing"
 
 #: src/frontends/qt2/ui/QPrefUIModule.ui:63
-msgid "B&amp;rowse..."
-msgstr "&amp;Bla gjennom ..."
+#, fuzzy
+msgid "B&rowse..."
+msgstr "Bla gjennom..."
 
 #: src/frontends/qt2/ui/QPrefUIModule.ui:74
-msgid "&amp;User interface file:"
+#, fuzzy
+msgid "&User interface file:"
 msgstr "Br&amp;ukargrensesnitt fil:"
 
 #: src/frontends/qt2/ui/QPrefUIModule.ui:89
-msgid "&amp;Bind file:"
+#, fuzzy
+msgid "&Bind file:"
 msgstr "Fil med &amp;tastaurbindingar:"
 
 #: src/frontends/qt2/ui/QPrefUIModule.ui:161
@@ -4213,7 +4438,8 @@ msgid "Documents"
 msgstr "Dokument"
 
 #: src/frontends/qt2/ui/QPrefUIModule.ui:180
-msgid "B&amp;ackup documents "
+#, fuzzy
+msgid "B&ackup documents "
 msgstr "T&amp;a reservekopi "
 
 #: src/frontends/qt2/ui/QPrefUIModule.ui:227
@@ -4225,7 +4451,8 @@ msgid "minutes"
 msgstr "minutt"
 
 #: src/frontends/qt2/ui/QPrefUIModule.ui:285
-msgid "&amp;Maximum last files:"
+#, fuzzy
+msgid "&Maximum last files:"
 msgstr "&amp;Filer du lasta sist:"
 
 #: src/frontends/qt2/ui/QPrefUIModule.ui:315
@@ -4233,24 +4460,28 @@ msgid "Scrolling"
 msgstr "Rulling"
 
 #: src/frontends/qt2/ui/QPrefUIModule.ui:349
-msgid "W&amp;heel mouse scroll:"
+#, fuzzy
+msgid "W&heel mouse scroll:"
 msgstr "Farta til muse&amp;hjulet:"
 
 #: src/frontends/qt2/ui/QPrefUIModule.ui:377
-msgid "Cursor follows &amp;scrollbar"
+#, fuzzy
+msgid "Cursor follows &scrollbar"
 msgstr "Skriv&amp;emerke følgjer rullefelt"
 
 #: src/frontends/qt2/ui/QPrefsDialogBase.ui:110 src/bufferlist.C:84
-#: src/bufferlist.C:183 src/lyxfunc.C:654
-msgid "&amp;Save"
-msgstr "&amp;Lagra"
+#: src/bufferlist.C:183 src/lyxfunc.C:656
+#, fuzzy
+msgid "&Save"
+msgstr "Lagra"
 
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:101
 msgid "Page number to print from"
 msgstr "Sidenummer ein skriv frå"
 
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:112
-msgid "&amp;To:[[as in 'From page x to page y']]"
+#, fuzzy
+msgid "&To:[[as in 'From page x to page y']]"
 msgstr "&amp;Til:[[som i frå side x til side y]]"
 
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:131
@@ -4258,7 +4489,8 @@ msgid "Page number to print to"
 msgstr "Sidenummer å stoppe skrivinga på"
 
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:144
-msgid "Fro&amp;m"
+#, fuzzy
+msgid "Fro&m"
 msgstr "F&amp;rå"
 
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:152
@@ -4267,19 +4499,23 @@ msgid "Print all pages"
 msgstr "Skriv ut alle sider"
 
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:163
-msgid "&amp;All"
+#, fuzzy
+msgid "&All"
 msgstr "&amp;Alle"
 
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:184
-msgid "Print &amp;odd-numbered pages"
+#, fuzzy
+msgid "Print &odd-numbered pages"
 msgstr "Skriv ut &amp;oddetalsider"
 
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:199
-msgid "Print &amp;even-numbered pages"
+#, fuzzy
+msgid "Print &even-numbered pages"
 msgstr "Skriv ut partalsid&amp;er"
 
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:214
-msgid "Re&amp;verse order"
+#, fuzzy
+msgid "Re&verse order"
 msgstr "Om&amp;vendt"
 
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:218
@@ -4291,24 +4527,27 @@ msgid "Number of copies"
 msgstr "Kor mange kopiar"
 
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:273
-msgid "&amp;Collate"
-msgstr "&amp;Samla"
+#, fuzzy
+msgid "&Collate"
+msgstr "Samla:"
 
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:277
 msgid "Collate copies"
 msgstr "Samla kopiar"
 
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:347
-msgid "&amp;Print"
-msgstr "Skriv &amp;ut"
+#, fuzzy
+msgid "&Print"
+msgstr "Skrivar"
 
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:387
 msgid "Print Destination"
 msgstr "Skrivar"
 
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:409
-msgid "P&amp;rinter:"
-msgstr "Sk&amp;rivar:"
+#, fuzzy
+msgid "P&rinter:"
+msgstr "Skrivar"
 
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:417
 msgid "Send output to the printer"
@@ -4328,15 +4567,17 @@ msgid "Update the label list"
 msgstr "Oppdater referanselista"
 
 #: src/frontends/qt2/ui/QRefDialogBase.ui:89 src/frontends/qt2/QRef.C:145
-msgid "&amp;Go to Label"
-msgstr "Gå til&amp;etikett"
+#, fuzzy
+msgid "&Go to Label"
+msgstr "Gå til etikett|e"
 
 #: src/frontends/qt2/ui/QRefDialogBase.ui:93
 msgid "Jump to the label"
 msgstr "Hopp til etikett"
 
 #: src/frontends/qt2/ui/QRefDialogBase.ui:106
-msgid "&amp;Sort"
+#, fuzzy
+msgid "&Sort"
 msgstr "&amp;Sorter"
 
 #: src/frontends/qt2/ui/QRefDialogBase.ui:110
@@ -4344,23 +4585,28 @@ msgid "Sort labels in alphabetical order"
 msgstr "Sorter etikettane i alfabetiskordning"
 
 #: src/frontends/qt2/ui/QRefDialogBase.ui:125
-msgid "&lt;reference&gt;"
-msgstr "&lt;referanse&gt;"
+#, fuzzy
+msgid "<reference>"
+msgstr "Val"
 
 #: src/frontends/qt2/ui/QRefDialogBase.ui:131
-msgid "(&lt;reference&gt;)"
-msgstr "(&lt;referanse&gt;)"
+#, fuzzy
+msgid "(<reference>)"
+msgstr "Val"
 
 #: src/frontends/qt2/ui/QRefDialogBase.ui:137
-msgid "&lt;page&gt;"
-msgstr "&lt;side&gt;"
+#, fuzzy
+msgid "<page>"
+msgstr "side%"
 
 #: src/frontends/qt2/ui/QRefDialogBase.ui:143
-msgid "on page &lt;page&gt;"
+#, fuzzy
+msgid "on page <page>"
 msgstr "på side &lt;side&gt;"
 
 #: src/frontends/qt2/ui/QRefDialogBase.ui:149
-msgid "&lt;reference&gt; on page &lt;page&gt;"
+#, fuzzy
+msgid "<reference> on page <page>"
 msgstr "&lt;referanse&gt; på side &lt;side&gt;"
 
 #: src/frontends/qt2/ui/QRefDialogBase.ui:155
@@ -4376,46 +4622,56 @@ msgid "Available labels"
 msgstr "Tilgjengelege etikettar"
 
 #: src/frontends/qt2/ui/QRefDialogBase.ui:364
-msgid "La&amp;bels in:"
+#, fuzzy
+msgid "La&bels in:"
 msgstr "E&amp;tikettar i:"
 
 #: src/frontends/qt2/ui/QSearchDialogBase.ui:108
-msgid "Replace &amp;with:"
+#, fuzzy
+msgid "Replace &with:"
 msgstr "&amp;Erstatt med:"
 
 #: src/frontends/qt2/ui/QSearchDialogBase.ui:172
-msgid "Match whole words onl&amp;y"
+#, fuzzy
+msgid "Match whole words onl&y"
 msgstr "&amp;Leit berre etter heile ord"
 
 #: src/frontends/qt2/ui/QSearchDialogBase.ui:250
-msgid "Find &amp;Next"
-msgstr "Finn &amp;neste"
+#, fuzzy
+msgid "Find &Next"
+msgstr "Finn neste"
 
 #: src/frontends/qt2/ui/QSearchDialogBase.ui:269
 #: src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:60
 #: src/frontends/qt2/ui/QThesaurusDialogBase.ui:187
-msgid "&amp;Replace"
+#, fuzzy
+msgid "&Replace"
 msgstr "&amp;Erstatt"
 
 #: src/frontends/qt2/ui/QSearchDialogBase.ui:284
-msgid "Replace &amp;All"
+#, fuzzy
+msgid "Replace &All"
 msgstr "Erstatt &amp;alle"
 
 #: src/frontends/qt2/ui/QSearchDialogBase.ui:295
-msgid "Search &amp;backwards"
-msgstr "Søk &amp;bakover"
+#, fuzzy
+msgid "Search &backwards"
+msgstr "Søk heilt bakover."
 
 #: src/frontends/qt2/ui/QSendtoDialogBase.ui:45
-msgid "&amp;Command:"
-msgstr "&amp;Kommando:"
+#, fuzzy
+msgid "&Command:"
+msgstr "Kommando:"
 
 #: src/frontends/qt2/ui/QSendtoDialogBase.ui:60
-msgid "&amp;Export formats:"
+#, fuzzy
+msgid "&Export formats:"
 msgstr "&amp;Eksportformat:"
 
 #: src/frontends/qt2/ui/QSendtoDialogBase.ui:168
 msgid "Process the converted file with this command ($$FName = file name)"
-msgstr "Bruk dette programmet for å eksportere dokumentet  ($$FNamn = fil namn)"
+msgstr ""
+"Bruk dette programmet for å eksportere dokumentet  ($$FNamn = fil namn)"
 
 #: src/frontends/qt2/ui/QSendtoDialogBase.ui:192
 msgid "Available export converters"
@@ -4434,15 +4690,17 @@ msgid "Add the word to your personal dictionary"
 msgstr "Legg til ordet i di personlege ordbok"
 
 #: src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:90
-msgid "&amp;Ignore"
-msgstr "&amp;Ingorer"
+#, fuzzy
+msgid "&Ignore"
+msgstr "Ignorer"
 
 #: src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:94
 msgid "Ignore this word"
 msgstr "Ignorer dette ordet"
 
 #: src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:105
-msgid "I&amp;gnore All"
+#, fuzzy
+msgid "I&gnore All"
 msgstr "I&amp;gnorer alle"
 
 #: src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:109
@@ -4470,11 +4728,13 @@ msgid "Replace with selected word"
 msgstr "Erstatt med det valde ordet"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:63
-msgid "&amp;Table Settings"
-msgstr "Val for &amp;Tabellar"
+#, fuzzy
+msgid "&Table Settings"
+msgstr "Tabellval"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:82
-msgid "&amp;Horizontal alignment:"
+#, fuzzy
+msgid "&Horizontal alignment:"
 msgstr "&amp;Vassrett tekstjustering:"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:94
@@ -4487,7 +4747,8 @@ msgid "Horizontal alignment in column"
 msgstr "Vassrett tekstjustering i kolonner"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:136
-msgid "&amp;Rotate table 90 degrees"
+#, fuzzy
+msgid "&Rotate table 90 degrees"
 msgstr "&amp;Roter tabell 90 grader"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:140
@@ -4495,7 +4756,8 @@ msgid "Rotate the table by 90 degrees"
 msgstr "Roter tabellen med 90 grader"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:151
-msgid "Rotate &amp;cell 90 degrees"
+#, fuzzy
+msgid "Rotate &cell 90 degrees"
 msgstr "Roter &amp;cella 90 grader"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:155
@@ -4503,7 +4765,8 @@ msgid "Rotate this cell by 90 degrees"
 msgstr "Roter cella med 90 grader"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:166
-msgid "LaTe&amp;X argument:"
+#, fuzzy
+msgid "LaTe&X argument:"
 msgstr "LaTe&amp;X argument:"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:181
@@ -4511,8 +4774,9 @@ msgid "Custom column format (LaTeX)"
 msgstr "Tilpassa kolonne format (LaTeX)"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:234
-msgid "&amp;Multicolumn"
-msgstr "&amp;Multikolonner"
+#, fuzzy
+msgid "&Multicolumn"
+msgstr "Multikolonne|M"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:238
 msgid "Merge cells"
@@ -4523,8 +4787,9 @@ msgid "Column Width"
 msgstr "Kolonnebreidd"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:268
-msgid "&amp;Vertical alignment:"
-msgstr "&amp;Loddrett justering:"
+#, fuzzy
+msgid "&Vertical alignment:"
+msgstr "Loddrett justering"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:298
 msgid "Width unit"
@@ -4539,8 +4804,9 @@ msgid "Vertical alignment for fixed width columns"
 msgstr "Loddrett justering for kolonner med fast breidd"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:376
-msgid "&amp;Borders"
-msgstr "&amp;Kantlinjer"
+#, fuzzy
+msgid "&Borders"
+msgstr "Kantlinjer"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:395
 msgid "Set Borders"
@@ -4555,7 +4821,8 @@ msgid "All Borders"
 msgstr "Alle kantlinjer"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:709
-msgid "&amp;Set"
+#, fuzzy
+msgid "&Set"
 msgstr "&amp;Vel"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:713
@@ -4563,7 +4830,8 @@ msgid "Set all borders of the current (selected) cell(s)"
 msgstr "Set alle kantar på dei valde cellene"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:724
-msgid "C&amp;lear"
+#, fuzzy
+msgid "C&lear"
 msgstr "&amp;Fjern"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:728
@@ -4571,11 +4839,13 @@ msgid "Unset all borders of the current (selected) cell(s)"
 msgstr "Skru av rammene på dei valde cellene"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:785
-msgid "&amp;Longtable"
-msgstr "&amp;Langtabell"
+#, fuzzy
+msgid "&Longtable"
+msgstr "Lang-Tabell"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:804
-msgid "&amp;Use long table"
+#, fuzzy
+msgid "&Use long table"
 msgstr "&amp;Det er ein lang tabell"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:808
@@ -4658,7 +4928,8 @@ msgid "Don't output the first header"
 msgstr "Skriv ikkje de fyrste topprada"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:1122
-msgid "Page &amp;break on current row"
+#, fuzzy
+msgid "Page &break on current row"
 msgstr "Skift si&amp;de i denne rada"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:1126
@@ -4697,7 +4968,8 @@ msgid "Selected classes or styles"
 msgstr "Valde klassar eller stilar"
 
 #: src/frontends/qt2/ui/QTexinfoDialogBase.ui:110
-msgid "Show &amp;path"
+#, fuzzy
+msgid "Show &path"
 msgstr "Vis &amp;stig"
 
 #: src/frontends/qt2/ui/QTexinfoDialogBase.ui:114
@@ -4709,7 +4981,8 @@ msgid "Installed files"
 msgstr "Installerte filer"
 
 #: src/frontends/qt2/ui/QTexinfoDialogBase.ui:180
-msgid "&amp;Rescan"
+#, fuzzy
+msgid "&Rescan"
 msgstr "&amp;Frisk opp"
 
 #: src/frontends/qt2/ui/QTexinfoDialogBase.ui:184
@@ -4717,11 +4990,13 @@ msgid "Rebuild the file lists"
 msgstr "Lag nye fil-lister"
 
 #: src/frontends/qt2/ui/QTexinfoDialogBase.ui:199
-msgid "&amp;View"
-msgstr "Vi&amp;s"
+#, fuzzy
+msgid "&View"
+msgstr "Vis|V"
 
 #: src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
-msgid "Show contents of marked file. Only possible when files are shown with path"
+msgid ""
+"Show contents of marked file. Only possible when files are shown with path"
 msgstr "Vis innhaldet i fila (Kan berre nyttast når stigar er vist)"
 
 #: src/frontends/qt2/ui/QTexinfoDialogBase.ui:256
@@ -4730,8 +5005,9 @@ msgstr "Lukk dette vindauget"
 
 #: src/frontends/qt2/ui/QThesaurusDialogBase.ui:60
 #: src/frontends/qt2/Dialogs.C:233
-msgid "&amp;Keyword:"
-msgstr "Nø&amp;kkelord:"
+#, fuzzy
+msgid "&Keyword:"
+msgstr "Nøkkelord:"
 
 #: src/frontends/qt2/ui/QThesaurusDialogBase.ui:68
 msgid "Index entry"
@@ -4746,7 +5022,8 @@ msgid "Select a related word"
 msgstr "Vel eit synonymt ord"
 
 #: src/frontends/qt2/ui/QThesaurusDialogBase.ui:157
-msgid "&amp;Selection:"
+#, fuzzy
+msgid "&Selection:"
 msgstr "&amp;Utval:"
 
 #: src/frontends/qt2/ui/QThesaurusDialogBase.ui:165
@@ -4759,16 +5036,18 @@ msgid "Replace the entry with the selection"
 msgstr "Erstatta setelen med utvalet"
 
 #: src/frontends/qt2/ui/QTocDialogBase.ui:60
-msgid "&amp;Type:"
-msgstr "&amp;Sort:"
+#, fuzzy
+msgid "&Type:"
+msgstr "Type"
 
 #: src/frontends/qt2/ui/QTocDialogBase.ui:109
 msgid "Contents list"
 msgstr "Innhaldsliste"
 
 #: src/frontends/qt2/ui/QURLDialogBase.ui:45
-msgid "&amp;URL:"
-msgstr "&amp;URL:"
+#, fuzzy
+msgid "&URL:"
+msgstr "URL:"
 
 #: src/frontends/qt2/ui/QURLDialogBase.ui:53
 #: src/frontends/qt2/ui/QURLDialogBase.ui:94 lib/layouts/scrlttr2.layout:213
@@ -4783,7 +5062,8 @@ msgid "Name associated with the URL"
 msgstr "Namn for URL-en"
 
 #: src/frontends/qt2/ui/QURLDialogBase.ui:120
-msgid "&amp;Generate hyperlink"
+#, fuzzy
+msgid "&Generate hyperlink"
 msgstr "&amp;Lag hyperlink"
 
 #: src/frontends/qt2/ui/QURLDialogBase.ui:124
@@ -4791,15 +5071,18 @@ msgid "Output as a hyperlink ?"
 msgstr "Eksporter som hyperlink ?"
 
 #: src/frontends/qt2/ui/QVSpaceDialogBase.ui:45
-msgid "&amp;Spacing:"
+#, fuzzy
+msgid "&Spacing:"
 msgstr "Mellom&amp;rom:"
 
 #: src/frontends/qt2/ui/QVSpaceDialogBase.ui:60
-msgid "&amp;Value:"
+#, fuzzy
+msgid "&Value:"
 msgstr "&amp;Verdi:"
 
 #: src/frontends/qt2/ui/QVSpaceDialogBase.ui:75
-msgid "&amp;Protect:"
+#, fuzzy
+msgid "&Protect:"
 msgstr "&amp;Vern:"
 
 #: src/frontends/qt2/ui/QVSpaceDialogBase.ui:98
@@ -4846,11 +5129,13 @@ msgid "Outer"
 msgstr "Ytre"
 
 #: src/frontends/qt2/ui/QWrapDialogBase.ui:125
-msgid "&amp;Placement:"
-msgstr "&amp;Plassering:"
+#, fuzzy
+msgid "&Placement:"
+msgstr "Plassering"
 
 #: src/frontends/qt2/ui/QWrapDialogBase.ui:187
-msgid "&amp;Units:"
+#, fuzzy
+msgid "&Units:"
 msgstr "&amp;Einingar:"
 
 #: src/frontends/qt2/ui/TextLayoutModuleBase.ui:56
@@ -4858,19 +5143,22 @@ msgid "Document Font"
 msgstr "Dokument skrifttype"
 
 #: src/frontends/qt2/ui/TextLayoutModuleBase.ui:75
-msgid "&amp;Font:"
+#, fuzzy
+msgid "&Font:"
 msgstr "Skri&amp;fttypar:"
 
 #: src/frontends/qt2/ui/TextLayoutModuleBase.ui:118
-msgid "&amp;Size:"
-msgstr "&amp;Storleik:"
+#, fuzzy
+msgid "&Size:"
+msgstr "Storleik:"
 
 #: src/frontends/qt2/ui/TextLayoutModuleBase.ui:137
 msgid "Separate Paragraphs With"
 msgstr "Ulik breidd på avsnitta"
 
 #: src/frontends/qt2/ui/TextLayoutModuleBase.ui:156
-msgid "&amp;Indentation"
+#, fuzzy
+msgid "&Indentation"
 msgstr "&amp;Innrykk"
 
 #: src/frontends/qt2/ui/TextLayoutModuleBase.ui:160
@@ -4878,15 +5166,18 @@ msgid "Indent consecutive paragraphs"
 msgstr "Innrykk på avsnitt som kjem etterkvarandre"
 
 #: src/frontends/qt2/ui/TextLayoutModuleBase.ui:171
-msgid "&amp;Vertical space"
-msgstr "&amp;Loddrett avstand"
+#, fuzzy
+msgid "&Vertical space"
+msgstr "Loddrett avstand"
 
 #: src/frontends/qt2/ui/TextLayoutModuleBase.ui:353
-msgid "&amp;Line spacing:"
+#, fuzzy
+msgid "&Line spacing:"
 msgstr "&amp;Linjeavstand:"
 
 #: src/frontends/qt2/ui/TextLayoutModuleBase.ui:423
-msgid "Two-&amp;column document"
+#, fuzzy
+msgid "Two-&column document"
 msgstr "To &amp;spalter"
 
 #: src/frontends/qt2/ui/TextLayoutModuleBase.ui:427
@@ -5107,7 +5398,7 @@ msgstr "Påstand #:"
 #: lib/layouts/elsart.layout:396 lib/layouts/llncs.layout:361
 #: lib/layouts/slides.layout:167 lib/layouts/amsmaths-plain.inc:193
 #: lib/layouts/amsmaths-seq.inc:160 lib/layouts/amsmaths.inc:418
-#: lib/layouts/svjour.inc:423 src/insets/insetnote.C:55
+#: lib/layouts/svjour.inc:423 src/insets/insetnote.C:57
 msgid "Note"
 msgstr "Notat"
 
@@ -5271,7 +5562,7 @@ msgstr "Litteratur"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:411
 #: lib/layouts/ijmpd.layout:163 lib/layouts/ijmpd.layout:171
 #: lib/layouts/kluwer.layout:324 lib/layouts/kluwer.layout:337
-#: src/rowpainter.C:423
+#: src/rowpainter.C:425
 msgid "Appendix"
 msgstr "Vedlegg"
 
@@ -5777,7 +6068,8 @@ msgid "Problem \\arabic{problem}."
 msgstr "Problem \\arabic{problem}."
 
 #: lib/layouts/amsart-seq.layout:217
-msgid "Exercise \\arabic{execise}."
+#, fuzzy
+msgid "Exercise \\arabic{exercise}."
 msgstr "Øving \\arabic{execise}."
 
 #: lib/layouts/amsart-seq.layout:223
@@ -6466,8 +6758,8 @@ msgid "CrossList"
 msgstr "KryssListe"
 
 #: lib/layouts/foils.layout:118
-msgid "&gt;&lt;"
-msgstr "&gt;&lt;"
+msgid "><"
+msgstr ""
 
 #: lib/layouts/foils.layout:164
 msgid "My Logo"
@@ -7673,7 +7965,8 @@ msgid "InvisibleText"
 msgstr "UsynlegTekst"
 
 #: lib/layouts/slides.layout:216
-msgid "&lt;Invisible Text Follows&gt;"
+#, fuzzy
+msgid "<Invisible Text Follows>"
 msgstr "&lt;UsynlegTekst følgjer&gt;"
 
 #: lib/layouts/slides.layout:233
@@ -7681,7 +7974,8 @@ msgid "VisibleText"
 msgstr "SynlegTekst"
 
 #: lib/layouts/slides.layout:241
-msgid "&lt;Visible Text Follows&gt;"
+#, fuzzy
+msgid "<Visible Text Follows>"
 msgstr "&lt;Synleg tekst følgjer&gt;"
 
 #: lib/layouts/spie.layout:54
@@ -7705,7 +7999,8 @@ msgid "email:"
 msgstr "epost:"
 
 #: lib/layouts/aapaper.inc:118
-msgid "Thesaurus not supported in recent A&amp;A:"
+#, fuzzy
+msgid "Thesaurus not supported in recent A&A:"
 msgstr "Synonym ordbok ikkje støtta i seinare A&amp;A:"
 
 #: lib/layouts/agu_stdsections.inc:79
@@ -7836,8 +8131,8 @@ msgstr "Topptekst:"
 msgid "Published-online:"
 msgstr "Nettpublikasjon:"
 
-#: lib/layouts/agu_stdtitle.inc:263 src/frontends/qt2/QCitation.C:50
-#: src/frontends/xforms/FormCitation.C:100
+#: lib/layouts/agu_stdtitle.inc:263 src/frontends/gtk/GCitation.C:71
+#: src/frontends/qt2/QCitation.C:50 src/frontends/xforms/FormCitation.C:100
 msgid "Citation"
 msgstr "Litteratur"
 
@@ -8682,7 +8977,8 @@ msgid "Paste External Selection|x"
 msgstr "Lim inn Utval|U"
 
 #: lib/ui/classic.ui:98 lib/ui/stdmenus.ui:90
-msgid "Find &amp; Replace...|F"
+#, fuzzy
+msgid "Find & Replace...|F"
 msgstr "Søk og erstatt...|S"
 
 #: lib/ui/classic.ui:100
@@ -8967,7 +9263,8 @@ msgid "Note|N"
 msgstr "Notat|N"
 
 #: lib/ui/classic.ui:226
-msgid "Lists &amp; TOC|O"
+#, fuzzy
+msgid "Lists & TOC|O"
 msgstr "Ulike Lister|l"
 
 #: lib/ui/classic.ui:228
@@ -9420,17 +9717,17 @@ msgid "Redo|R"
 msgstr "Gjer om|G"
 
 #: lib/ui/stdmenus.ui:84 lib/ui/stdtoolbars.ui:51
-#: src/mathed/math_nestinset.C:429 src/text3.C:839
+#: src/mathed/math_nestinset.C:433 src/text3.C:839
 msgid "Cut"
 msgstr "Klipp"
 
 #: lib/ui/stdmenus.ui:85 lib/ui/stdtoolbars.ui:52
-#: src/mathed/math_nestinset.C:437 src/text3.C:844
+#: src/mathed/math_nestinset.C:441 src/text3.C:844
 msgid "Copy"
 msgstr "Kopier"
 
 #: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:650
-#: src/mathed/math_gridinset.C:1204 src/mathed/math_nestinset.C:413
+#: src/mathed/math_gridinset.C:1204 src/mathed/math_nestinset.C:417
 #: src/text3.C:826
 msgid "Paste"
 msgstr "Lim inn"
@@ -9456,7 +9753,8 @@ msgid "Table|T"
 msgstr "Tabell|T"
 
 #: lib/ui/stdmenus.ui:98
-msgid "Rows &amp; Cols|C"
+#, fuzzy
+msgid "Rows & Cols|C"
 msgstr "Radar&amp; kolonner|k"
 
 #: lib/ui/stdmenus.ui:100
@@ -9964,16 +10262,18 @@ msgstr ""
 "\n"
 "Vil du gå tilbake til den siste lagra versjonen?"
 
-#: src/BufferView_pimpl.C:259 src/lyxfunc.C:816
+#: src/BufferView_pimpl.C:259 src/lyxfunc.C:818
 msgid "Revert to saved document?"
 msgstr "Gå tilbake til sist lagra?"
 
-#: src/BufferView_pimpl.C:260 src/lyxfunc.C:817 src/lyxvc.C:168
-msgid "&amp;Revert"
-msgstr "&amp;Tilbake til sist lagra"
+#: src/BufferView_pimpl.C:260 src/lyxfunc.C:819 src/lyxvc.C:168
+#, fuzzy
+msgid "&Revert"
+msgstr "Gå tilbake til sist lagra|T"
 
 #: src/BufferView_pimpl.C:260
-msgid "&amp;Switch to document"
+#, fuzzy
+msgid "&Switch to document"
 msgstr "&amp;Byt til dokumentet"
 
 #: src/BufferView_pimpl.C:282
@@ -9992,7 +10292,8 @@ msgid "Create new document?"
 msgstr "Vil du lagre eit nytt dokument?"
 
 #: src/BufferView_pimpl.C:286
-msgid "&amp;Create"
+#, fuzzy
+msgid "&Create"
 msgstr "&amp;Laga"
 
 #: src/BufferView_pimpl.C:295
@@ -10022,21 +10323,21 @@ msgstr "Vel kva for LyX-dokument som skal bli henta inn"
 #: src/frontends/controllers/ControlExternal.C:160
 #: src/frontends/controllers/ControlGraphics.C:94
 #: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:133
-#: src/lyxfunc.C:1703 src/lyxfunc.C:1740 src/lyxfunc.C:1815
+#: src/lyxfunc.C:1705 src/lyxfunc.C:1742 src/lyxfunc.C:1817
 msgid "Documents|#o#O"
 msgstr "Dokument|#o#O"
 
-#: src/BufferView_pimpl.C:853 src/lyxfunc.C:1742 src/lyxfunc.C:1817
+#: src/BufferView_pimpl.C:853 src/lyxfunc.C:1744 src/lyxfunc.C:1819
 msgid "Examples|#E#e"
 msgstr "Eksempla|#E#e"
 
-#: src/BufferView_pimpl.C:858 src/lyx_cb.C:141 src/lyxfunc.C:1710
-#: src/lyxfunc.C:1747
+#: src/BufferView_pimpl.C:858 src/lyx_cb.C:141 src/lyxfunc.C:1712
+#: src/lyxfunc.C:1749
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX Dokument (*.lyx)"
 
-#: src/BufferView_pimpl.C:868 src/lyxfunc.C:1757 src/lyxfunc.C:1835
-#: src/lyxfunc.C:1849 src/lyxfunc.C:1865
+#: src/BufferView_pimpl.C:868 src/lyxfunc.C:1759 src/lyxfunc.C:1837
+#: src/lyxfunc.C:1851 src/lyxfunc.C:1867
 msgid "Canceled."
 msgstr "Avbroten."
 
@@ -10546,11 +10847,13 @@ msgid "Load emergency save?"
 msgstr "Last nødkopien av dokumentet?"
 
 #: src/buffer_funcs.C:90
-msgid "&amp;Recover"
+#, fuzzy
+msgid "&Recover"
 msgstr "&amp;Gå tilbake"
 
 #: src/buffer_funcs.C:90
-msgid "&amp;Load Original"
+#, fuzzy
+msgid "&Load Original"
 msgstr "&amp;Last Original"
 
 #: src/buffer_funcs.C:112
@@ -10569,11 +10872,13 @@ msgid "Load backup?"
 msgstr "Gå tilbake til reservekopi?"
 
 #: src/buffer_funcs.C:116
-msgid "&amp;Load backup"
-msgstr "L&amp;ast reservekopi"
+#, fuzzy
+msgid "&Load backup"
+msgstr "Gå tilbake til reservekopi?"
 
 #: src/buffer_funcs.C:116
-msgid "Load &amp;original"
+#, fuzzy
+msgid "Load &original"
 msgstr "Last &amp;original"
 
 #: src/buffer_funcs.C:155
@@ -10586,7 +10891,8 @@ msgid "Retrieve from version control?"
 msgstr "Vil du laste inn frå versjonkontroll?"
 
 #: src/buffer_funcs.C:158
-msgid "&amp;Retrieve"
+#, fuzzy
+msgid "&Retrieve"
 msgstr "Gjenopp&amp;rett"
 
 #: src/buffer_funcs.C:190
@@ -10616,7 +10922,7 @@ msgstr "\\roman{enumiii}."
 msgid "\\Alph{enumiv}."
 msgstr "\\Alph{enumiv}."
 
-#: src/buffer_funcs.C:491
+#: src/buffer_funcs.C:492
 #, c-format
 msgid "%1$s #:"
 msgstr "%1$s #:"
@@ -10632,12 +10938,13 @@ msgstr ""
 "\n"
 "Vil du lagra dokumentet eller forkaste endringane?"
 
-#: src/bufferlist.C:83 src/bufferlist.C:182 src/lyxfunc.C:653
+#: src/bufferlist.C:83 src/bufferlist.C:182 src/lyxfunc.C:655
 msgid "Save changed document?"
 msgstr "Vil du lagre dokumentet?"
 
 #: src/bufferlist.C:84 src/bufferlist.C:183
-msgid "&amp;Discard"
+#, fuzzy
+msgid "&Discard"
 msgstr "&amp;Forkast"
 
 #: src/bufferlist.C:304
@@ -10670,7 +10977,7 @@ msgstr "Dokumentklassa er ikkje tilgjengeleg"
 msgid "LyX will not be able to produce output."
 msgstr "LyX kan ikkje lage eit korrekt resultat."
 
-#: src/bufferview_funcs.C:301
+#: src/bufferview_funcs.C:297
 msgid "No more insets"
 msgstr "Det er ikkje fleire innskot"
 
@@ -10695,12 +11002,12 @@ msgstr "Alle meldingane frå avlusinga"
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "Avlusar `%1$s' (%2$s)"
 
-#: src/converter.C:315 src/converter.C:438 src/converter.C:462
-#: src/converter.C:501
+#: src/converter.C:317 src/converter.C:440 src/converter.C:464
+#: src/converter.C:503
 msgid "Cannot convert file"
 msgstr "Kan ikkje konvertere fila"
 
-#: src/converter.C:316
+#: src/converter.C:318
 #, c-format
 msgid ""
 "No information for converting %1$s format files to %2$s.\n"
@@ -10709,38 +11016,38 @@ msgstr ""
 "Ingen informasjon om korleis ein konverterer %1$s formatet til %2$s.\n"
 "Prøv å sett det opp sjølv i val."
 
-#: src/converter.C:393 src/format.C:256 src/format.C:301
+#: src/converter.C:395 src/format.C:256 src/format.C:301
 msgid "Executing command: "
 msgstr "Køyrer kommando: "
 
-#: src/converter.C:433
+#: src/converter.C:435
 msgid "Build errors"
 msgstr "Byggjefeil"
 
-#: src/converter.C:434
+#: src/converter.C:436
 msgid "There were errors during the build process."
 msgstr "Det vart rapportert feil under bygginga."
 
-#: src/converter.C:439 src/format.C:264 src/format.C:309
+#: src/converter.C:441 src/format.C:264 src/format.C:309
 #, c-format
 msgid "An error occurred whilst running %1$s"
 msgstr "Vi fekk ein feil når vi køyrde %1$s"
 
-#: src/converter.C:463 src/converter.C:504
+#: src/converter.C:465 src/converter.C:506
 #, c-format
 msgid "Could not move a temporary file from %1$s to %2$s."
 msgstr "Kunne ikkje flytte ei mellombels fil frå %1$s til %2$s."
 
-#: src/converter.C:503
+#: src/converter.C:505
 #, c-format
 msgid "Could not copy a temporary file from %1$s to %2$s."
 msgstr "Kunne ikkje flytte ei mellombels fil frå %1$s til %2$s."
 
-#: src/converter.C:572
+#: src/converter.C:574
 msgid "Running LaTeX..."
 msgstr "Køyrer LaTeX..."
 
-#: src/converter.C:590
+#: src/converter.C:592
 #, c-format
 msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
@@ -10749,15 +11056,15 @@ msgstr ""
 "Køyringa av LaTeX gjekk gale. Og i tillegg klarar ikkje LyX å finne LaTeX "
 "loggen %1$s."
 
-#: src/converter.C:593
+#: src/converter.C:595
 msgid "LaTeX failed"
 msgstr "Feil ved LaTeX køyring"
 
-#: src/converter.C:595
+#: src/converter.C:597
 msgid "Output is empty"
 msgstr "Ingenting kom ut av konverteringa"
 
-#: src/converter.C:596
+#: src/converter.C:598
 msgid "An empty output file was generated."
 msgstr "Det vart berre laga ei tom fil."
 
@@ -10868,16 +11175,19 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "S&amp;krivover dokumentet?"
 
-#: src/exporter.C:77 src/lyx_cb.C:168 src/lyxfunc.C:1862
-msgid "&amp;Over-write"
+#: src/exporter.C:77 src/lyx_cb.C:168 src/lyxfunc.C:1864
+#, fuzzy
+msgid "&Over-write"
 msgstr "Skriv&amp;over"
 
 #: src/exporter.C:77
-msgid "Over-write &amp;all"
+#, fuzzy
+msgid "Over-write &all"
 msgstr "Skrivover &amp;alt"
 
 #: src/exporter.C:78
-msgid "&amp;Cancel export"
+#, fuzzy
+msgid "&Cancel export"
 msgstr "&amp;Avbryt eksport"
 
 #: src/exporter.C:127
@@ -11363,56 +11673,30 @@ msgstr "System filer|#S#s"
 msgid "User files|#U#u"
 msgstr "Brukar filer|#B#b"
 
-#: src/frontends/gtk/Dialogs.C:267 src/frontends/qt2/Dialogs.C:232
+#: src/frontends/gtk/Dialogs.C:265 src/frontends/qt2/Dialogs.C:232
 #: src/frontends/xforms/Dialogs.C:246
 msgid "Index Entry"
 msgstr "Indeksnøkkel"
 
-#: src/frontends/gtk/Dialogs.C:273 src/frontends/gtk/GRef.C:89
+#: src/frontends/gtk/Dialogs.C:271 src/frontends/gtk/GRef.C:89
 #: src/frontends/qt2/Dialogs.C:238 src/frontends/xforms/Dialogs.C:251
 msgid "Label"
 msgstr "Etikett"
 
-#: src/frontends/gtk/Dialogs.C:289 src/frontends/xforms/Dialogs.C:265
-msgid "Maths Decorations &amp; Accents"
-msgstr "Matte dekor og aksentar "
-
-#: src/frontends/gtk/Dialogs.C:316 src/frontends/xforms/Dialogs.C:292
-msgid "Binary Ops"
-msgstr "Binære val "
-
-#: src/frontends/gtk/Dialogs.C:327 src/frontends/xforms/Dialogs.C:303
-msgid "Binary Relations"
-msgstr "Binære relasjonar"
-
-#: src/frontends/gtk/Dialogs.C:379 src/frontends/xforms/Dialogs.C:355
-msgid "Big Operators"
-msgstr "Store Operatorar"
-
-#: src/frontends/gtk/Dialogs.C:390 src/frontends/xforms/Dialogs.C:366
-msgid "AMS Misc"
-msgstr "AMS Misc"
-
-#: src/frontends/gtk/Dialogs.C:403 src/frontends/xforms/Dialogs.C:379
-msgid "AMS Arrows"
-msgstr "AMS Piler"
-
-#: src/frontends/gtk/Dialogs.C:416 src/frontends/xforms/Dialogs.C:392
-msgid "AMS Relations"
-msgstr "AMS Relatsjoner"
-
-#: src/frontends/gtk/Dialogs.C:427 src/frontends/xforms/Dialogs.C:403
-msgid "AMS Negated Rel"
-msgstr "AMS Negated Rel"
-
-#: src/frontends/gtk/Dialogs.C:438 src/frontends/xforms/Dialogs.C:414
-msgid "AMS Operators"
-msgstr "AMS Operatorar"
+#: src/frontends/gtk/GBibItem.C:33 src/frontends/qt2/QBibitem.C:31
+#: src/frontends/xforms/FormBibitem.C:38
+msgid "Bibliography Entry Settings"
+msgstr "Val for litteraturnøkkel"
 
 #: src/frontends/gtk/GBox.C:42 src/frontends/qt2/QBox.C:51
 #: src/frontends/xforms/FormBox.C:47
 msgid "Box Settings"
 msgstr "Rammeval"
+
+#: src/frontends/gtk/GBranch.C:38 src/frontends/qt2/QBranch.C:36
+#: src/frontends/xforms/FormBranch.C:35
+msgid "Branch Settings"
+msgstr "Greinval"
 
 #: src/frontends/gtk/GChanges.C:33 src/frontends/qt2/QChanges.C:36
 #: src/frontends/xforms/FormChanges.C:32
@@ -11440,36 +11724,107 @@ msgstr "Slått saman endringar"
 msgid "Text Style"
 msgstr "Tekststil"
 
-#: src/frontends/gtk/GDocument.C:57 src/frontends/qt2/QDocument.C:68
+#: src/frontends/gtk/GCitation.C:122
+msgid "CiteKeys"
+msgstr ""
+
+#: src/frontends/gtk/GCitation.C:128
+msgid "BibKeys"
+msgstr ""
+
+#: src/frontends/gtk/GDocument.C:58 src/frontends/qt2/QDocument.C:68
 #: src/frontends/xforms/FormDocument.C:93
 msgid "Document Settings"
 msgstr "Dokumentval"
 
-#: src/frontends/gtk/GDocument.C:103 src/frontends/qt2/QDocument.C:133
+#: src/frontends/gtk/GDocument.C:104 src/frontends/qt2/QDocument.C:133
 #: src/frontends/xforms/FormDocument.C:169
 #, c-format
 msgid "Unavailable: %1$s"
 msgstr "Utilgjengeleg %1$s"
 
-#: src/frontends/gtk/GDocument.C:145
+#: src/frontends/gtk/GDocument.C:146
 msgid "Small Skip"
 msgstr "Liten avstand"
 
-#: src/frontends/gtk/GDocument.C:146
+#: src/frontends/gtk/GDocument.C:147
 msgid "Medium Skip"
 msgstr "Medium avstand"
 
-#: src/frontends/gtk/GDocument.C:147
+#: src/frontends/gtk/GDocument.C:148
 msgid "Big Skip"
 msgstr "Stor avstand"
 
-#: src/frontends/gtk/GDocument.C:182 src/frontends/qt2/QDocument.C:119
+#: src/frontends/gtk/GDocument.C:183 src/frontends/qt2/QDocument.C:119
 msgid "B3"
 msgstr "B3"
 
-#: src/frontends/gtk/GDocument.C:183 src/frontends/qt2/QDocument.C:120
+#: src/frontends/gtk/GDocument.C:184 src/frontends/qt2/QDocument.C:120
 msgid "B4"
 msgstr "B4"
+
+#: src/frontends/gtk/GDocument.C:922
+#, fuzzy
+msgid "No headings numbered"
+msgstr "Ingen nummer"
+
+#: src/frontends/gtk/GDocument.C:923
+msgid "Only parts numbered"
+msgstr ""
+
+#: src/frontends/gtk/GDocument.C:924
+msgid "Chapters and above numbered"
+msgstr ""
+
+#: src/frontends/gtk/GDocument.C:925
+#, fuzzy
+msgid "Sections and above numbered"
+msgstr "Kor mange nivå:"
+
+#: src/frontends/gtk/GDocument.C:926
+msgid "Subsections and above numbered"
+msgstr ""
+
+#: src/frontends/gtk/GDocument.C:927
+msgid "Subsubsections and above numbered"
+msgstr ""
+
+#: src/frontends/gtk/GDocument.C:928
+msgid "Paragraphs and above numbered"
+msgstr ""
+
+#: src/frontends/gtk/GDocument.C:929
+msgid "All headings numbered"
+msgstr ""
+
+#: src/frontends/gtk/GDocument.C:940
+#, fuzzy
+msgid "Only Parts appear in TOC"
+msgstr "Kjem i innhaldslista"
+
+#: src/frontends/gtk/GDocument.C:941
+msgid "Chapters and above appear in TOC"
+msgstr ""
+
+#: src/frontends/gtk/GDocument.C:942
+msgid "Sections and above appear in TOC"
+msgstr ""
+
+#: src/frontends/gtk/GDocument.C:943
+msgid "Subsections and above appear in TOC"
+msgstr ""
+
+#: src/frontends/gtk/GDocument.C:944
+msgid "Subsubsections and above appear in TOC"
+msgstr ""
+
+#: src/frontends/gtk/GDocument.C:945
+msgid "Paragraphs and above appear in TOC"
+msgstr ""
+
+#: src/frontends/gtk/GDocument.C:946
+msgid "TOC contains all headings"
+msgstr ""
 
 #: src/frontends/gtk/GERT.C:33
 msgid "TeX Settings"
@@ -11531,7 +11886,7 @@ msgid "Paragraph Settings"
 msgstr "Val for avsnitt"
 
 #: src/frontends/gtk/GParagraph.C:99 src/frontends/qt2/QParagraph.C:120
-#: src/frontends/xforms/FormParagraph.C:165 src/paragraph.C:620
+#: src/frontends/xforms/FormParagraph.C:165 src/paragraph.C:622
 msgid "Senseless with this layout!"
 msgstr "Meiningslaust med denne stilen."
 
@@ -11574,6 +11929,11 @@ msgstr "Kontrollert"
 msgid "Insert Table"
 msgstr "Set inn tabell"
 
+#: src/frontends/gtk/GTabular.C:67 src/frontends/qt2/QTabular.C:41
+#: src/frontends/xforms/FormTabular.C:57
+msgid "Table Settings"
+msgstr "Tabellval"
+
 #: src/frontends/gtk/GTexinfo.C:37 src/frontends/qt2/QTexinfo.C:34
 #: src/frontends/xforms/FormTexinfo.C:35
 msgid "TeX Information"
@@ -11600,6 +11960,11 @@ msgstr "*** Ingen punkt ***"
 msgid "VSpace Settings"
 msgstr "Val for loddrettmellomrom"
 
+#: src/frontends/gtk/GWrap.C:35 src/frontends/qt2/QWrap.C:39
+#: src/frontends/xforms/FormWrap.C:40
+msgid "Text Wrap Settings"
+msgstr "Tekst brekkingval"
+
 #: src/frontends/qt2/Alert_pimpl.C:39 src/frontends/qt2/Alert_pimpl.C:64
 #: src/frontends/qt2/Alert_pimpl.C:76 src/frontends/qt2/Alert_pimpl.C:88
 #: src/frontends/qt2/Alert_pimpl.C:101
@@ -11608,32 +11973,39 @@ msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
 
 #: src/frontends/qt2/BulletsModule.C:63
-msgid "&amp;Standard"
-msgstr "&amp;Standard"
+#, fuzzy
+msgid "&Standard"
+msgstr "Standard"
 
 #: src/frontends/qt2/BulletsModule.C:64
-msgid "&amp;Maths"
+#, fuzzy
+msgid "&Maths"
 msgstr "&amp;Matte"
 
 #: src/frontends/qt2/BulletsModule.C:65
-msgid "Dings &amp;1"
+#, fuzzy
+msgid "Dings &1"
 msgstr "Dings &amp;1"
 
 #: src/frontends/qt2/BulletsModule.C:66
-msgid "Dings &amp;2"
+#, fuzzy
+msgid "Dings &2"
 msgstr "Ding &amp;2"
 
 #: src/frontends/qt2/BulletsModule.C:67
-msgid "Dings &amp;3"
+#, fuzzy
+msgid "Dings &3"
 msgstr "Ding &amp;3"
 
 #: src/frontends/qt2/BulletsModule.C:68
-msgid "Dings &amp;4"
+#, fuzzy
+msgid "Dings &4"
 msgstr "Ding &amp;4"
 
 #: src/frontends/qt2/BulletsModule.C:71
-msgid "&amp;Custom..."
-msgstr "&amp;Tilpassa..."
+#, fuzzy
+msgid "&Custom..."
+msgstr "Tilpassa...|E"
 
 #: src/frontends/qt2/BulletsModule.C:340
 #: src/frontends/qt2/QDocumentDialog.C:85
@@ -11649,17 +12021,9 @@ msgstr "Legg til eit tilpassa punkt"
 msgid "Directories"
 msgstr "Katalogar"
 
-#: src/frontends/qt2/QBibitem.C:31 src/frontends/xforms/FormBibitem.C:38
-msgid "Bibliography Entry Settings"
-msgstr "Val for litteraturnøkkel"
-
 #: src/frontends/qt2/QBibtex.C:50 src/frontends/xforms/FormBibtex.C:51
 msgid "BibTeX Bibliography"
 msgstr "BibTeX litteraturliste"
-
-#: src/frontends/qt2/QBranch.C:36 src/frontends/xforms/FormBranch.C:35
-msgid "Branch Settings"
-msgstr "Greinval"
 
 #: src/frontends/qt2/QChanges.C:66
 #, c-format
@@ -11712,12 +12076,14 @@ msgid ",,text''"
 msgstr ",,tekst''"
 
 #: src/frontends/qt2/QDocument.C:100
-msgid "&lt;&lt;text&gt;&gt;"
-msgstr "&lt;&lt;tekst&gt;&gt;"
+#, fuzzy
+msgid "<<text>>"
+msgstr "tekst"
 
 #: src/frontends/qt2/QDocument.C:101
-msgid "&gt;&gt;text&lt;&lt;"
-msgstr "&gt;&gt;tekst&lt;&lt;"
+#, fuzzy
+msgid ">>text<<"
+msgstr "tekst"
 
 #: src/frontends/qt2/QDocument.C:144
 msgid "10"
@@ -11773,7 +12139,8 @@ msgid "Page Margins"
 msgstr "Sidemargar"
 
 #: src/frontends/qt2/QDocumentDialog.C:81
-msgid "Numbering &amp; TOC"
+#, fuzzy
+msgid "Numbering & TOC"
 msgstr "Nummerering og innhaldsliste"
 
 #: src/frontends/qt2/QDocumentDialog.C:83
@@ -12050,7 +12417,8 @@ msgid "Print Document"
 msgstr "Skriv ut dokumentet"
 
 #: src/frontends/qt2/QRef.C:137
-msgid "&amp;Go Back"
+#, fuzzy
+msgid "&Go Back"
 msgstr "&amp;Gå tilbake"
 
 #: src/frontends/qt2/QRef.C:139
@@ -12065,17 +12433,9 @@ msgstr "Gå til referanse"
 msgid "Send Document to Command"
 msgstr "Bruk denne kommandoen på dokumentet"
 
-#: src/frontends/qt2/QTabular.C:41 src/frontends/xforms/FormTabular.C:57
-msgid "Table Settings"
-msgstr "Tabellval"
-
 #: src/frontends/qt2/QVSpace.C:133 src/frontends/xforms/FormVSpace.C:166
 msgid "Vertical Space Settings"
 msgstr "Val for loddrettmellomrom"
-
-#: src/frontends/qt2/QWrap.C:39 src/frontends/xforms/FormWrap.C:40
-msgid "Text Wrap Settings"
-msgstr "Tekst brekkingval"
 
 #: src/frontends/qt2/QtView.C:164
 msgid "LyX"
@@ -12086,23 +12446,28 @@ msgid "Advanced Placement Options"
 msgstr "Avanserte val for plassering"
 
 #: src/frontends/qt2/floatplacement.C:38
-msgid "Use &amp;default placement"
+#, fuzzy
+msgid "Use &default placement"
 msgstr "Bruk &amp;standard plassering"
 
 #: src/frontends/qt2/floatplacement.C:39
-msgid "&amp;Top of page"
+#, fuzzy
+msgid "&Top of page"
 msgstr "&amp;Øvst på sida"
 
 #: src/frontends/qt2/floatplacement.C:40
-msgid "&amp;Bottom of page"
+#, fuzzy
+msgid "&Bottom of page"
 msgstr "&amp;Nedst på sida"
 
 #: src/frontends/qt2/floatplacement.C:41
-msgid "&amp;Page of floats"
+#, fuzzy
+msgid "&Page of floats"
 msgstr "&amp;Flytar side"
 
 #: src/frontends/qt2/floatplacement.C:42
-msgid "&amp;Here if possible"
+#, fuzzy
+msgid "&Here if possible"
 msgstr "&amp;Her, om det går"
 
 #: src/frontends/qt2/floatplacement.C:43
@@ -12110,15 +12475,18 @@ msgid "Here definitely"
 msgstr "Heilt sikkert her"
 
 #: src/frontends/qt2/floatplacement.C:44
-msgid "&amp;Ignore LaTeX rules"
+#, fuzzy
+msgid "&Ignore LaTeX rules"
 msgstr "&amp;Ignorer LaTeX reglar"
 
 #: src/frontends/qt2/floatplacement.C:84
-msgid "&amp;Span columns"
+#, fuzzy
+msgid "&Span columns"
 msgstr "&amp;Over fleire spaltar"
 
 #: src/frontends/qt2/floatplacement.C:94
-msgid "&amp;Rotate sideways"
+#, fuzzy
+msgid "&Rotate sideways"
 msgstr "Roter 90°"
 
 #: src/frontends/qt2/validators.C:112
@@ -12177,6 +12545,43 @@ msgstr ""
 msgid "LyX: Unknown X11 color %1$s for %2$s\n"
 msgstr "LyX: Ukjent X11 farge  %1$s for %2$s\n"
 
+#: src/frontends/xforms/Dialogs.C:265
+#, fuzzy
+msgid "Maths Decorations & Accents"
+msgstr "Matte dekor og aksentar "
+
+#: src/frontends/xforms/Dialogs.C:292
+msgid "Binary Ops"
+msgstr "Binære val "
+
+#: src/frontends/xforms/Dialogs.C:303
+msgid "Binary Relations"
+msgstr "Binære relasjonar"
+
+#: src/frontends/xforms/Dialogs.C:355
+msgid "Big Operators"
+msgstr "Store Operatorar"
+
+#: src/frontends/xforms/Dialogs.C:366
+msgid "AMS Misc"
+msgstr "AMS Misc"
+
+#: src/frontends/xforms/Dialogs.C:379
+msgid "AMS Arrows"
+msgstr "AMS Piler"
+
+#: src/frontends/xforms/Dialogs.C:392
+msgid "AMS Relations"
+msgstr "AMS Relatsjoner"
+
+#: src/frontends/xforms/Dialogs.C:403
+msgid "AMS Negated Rel"
+msgstr "AMS Negated Rel"
+
+#: src/frontends/xforms/Dialogs.C:414
+msgid "AMS Operators"
+msgstr "AMS Operatorar"
+
 #: src/frontends/xforms/FormAboutlyx.C:93
 msgid "License"
 msgstr "Lisens"
@@ -12191,7 +12596,8 @@ msgstr "Etikett brukt i dokumentet."
 
 #: src/frontends/xforms/FormBibtex.C:86
 msgid " all cited references | all uncited references | all references "
-msgstr "litteratur nytta i teksten | litteratur ikkje nytta i teksten | all literatur"
+msgstr ""
+"litteratur nytta i teksten | litteratur ikkje nytta i teksten | all literatur"
 
 #: src/frontends/xforms/FormBibtex.C:91
 msgid ""
@@ -12281,16 +12687,19 @@ msgstr "Flytt det valte elementet nedover (i den gjeldande lista)."
 msgid ""
 "The entries which will be cited. Select them with the arrow buttons from the "
 "right browser window."
-msgstr "Elementa som vil bli sitert. Vel element frå det høgre feltet med piltastane."
+msgstr ""
+"Elementa som vil bli sitert. Vel element frå det høgre feltet med piltastane."
 
 #: src/frontends/xforms/FormCitation.C:194
+#, fuzzy
 msgid ""
-"All entries in the database you have loaded (via \"Insert-&gt;List / TOC-"
-"&gt;BibTeX Bibliography\"). Move the ones you want to cite with the arrow "
+"All entries in the database you have loaded (via \"Insert->List / TOC-"
+">BibTeX Bibliography\"). Move the ones you want to cite with the arrow "
 "buttons into the left browser window."
 msgstr ""
-"Alle element i litteraturdatabasen som er lasta.(gjennom \"Set inn-&gt;&amp;Lister-&gt;BibTeX "
-"referanse\"). Flytt dei du vil sitere med piltastane til den venstre feltet."
+"Alle element i litteraturdatabasen som er lasta.(gjennom \"Set inn-&gt;&amp;"
+"Lister-&gt;BibTeX referanse\"). Flytt dei du vil sitere med piltastane til "
+"den venstre feltet."
 
 #: src/frontends/xforms/FormCitation.C:201
 msgid "Information about the selected bibliography entry"
@@ -12300,12 +12709,14 @@ msgstr "Informasjon om det valte litteratur elementet"
 msgid ""
 "Here you may select how the citation label should look inside the text "
 "(Natbib)."
-msgstr "Her kan du velje korleis litteraturreferansen skal sjå ut i teksten.(Natbib)."
+msgstr ""
+"Her kan du velje korleis litteraturreferansen skal sjå ut i teksten.(Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:211
+#, fuzzy
 msgid ""
 "Activate if you want to print all authors in a citation with more than three "
-"authors, and not \"&lt;First Author&gt; et al.\" (Natbib)."
+"authors, and not \"<First Author> et al.\" (Natbib)."
 msgstr ""
 "Vel denne dersom du vil at siteringar med meir enn tre forfattarar skal ha "
 "alle forfattarane i teksten, istaden for \"&lt;Første forfattar&gt; et al."
@@ -12321,12 +12732,15 @@ msgstr ""
 "ikkje \"van Gogh\"). Nyttig i starten på setningar (Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:217
-msgid "Optional text which appears before the citation, e.g. \"see &lt;Citation&gt;\""
+#, fuzzy
+msgid ""
+"Optional text which appears before the citation, e.g. \"see <Citation>\""
 msgstr "Valfri tekst før litteratur-referansen, f.eks. \"Sjå: &lt;Ref&gt;\""
 
 #: src/frontends/xforms/FormCitation.C:220
 msgid "Optional text which appears after the citation, e.g. \"pp. 12\""
-msgstr "Valfri tekst etter litteratur-referansen, f.eks. \"&lt;Ref&gt; side 10\""
+msgstr ""
+"Valfri tekst etter litteratur-referansen, f.eks. \"&lt;Ref&gt; side 10\""
 
 #: src/frontends/xforms/FormCitation.C:223
 msgid "Search your database (all fields will be searched)."
@@ -12378,7 +12792,8 @@ msgstr ""
 "B3 | B4 | B5 "
 
 #: src/frontends/xforms/FormDocument.C:298
-msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | &lt;&lt;text&gt;&gt; | &gt;&gt;text&lt;&lt; "
+#, fuzzy
+msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | <<text>> | >>text<< "
 msgstr " ``tekst'' | ''tekst'' | ,,tekst`` | ,,tekst'' | «tekst» | »tekst« "
 
 #: src/frontends/xforms/FormDocument.C:314
@@ -12643,7 +13058,8 @@ msgstr "Set inn under-figurtekst."
 msgid ""
 "Add any additional LaTeX option, which is defined in the graphicx-package "
 "and not mentioned in the gui's tabfolders."
-msgstr "Kva som helst av graphicx kommandoane i LATeX som ikkje er med i fanene."
+msgstr ""
+"Kva som helst av graphicx kommandoane i LATeX som ikkje er med i fanene."
 
 #: src/frontends/xforms/FormGraphics.C:282
 msgid "Bounding Box"
@@ -12690,7 +13106,8 @@ msgid "Math Spacing"
 msgstr "Matte-mellomrom"
 
 #: src/frontends/xforms/FormMathsStyle.C:48
-msgid "Math Styles &amp; Fonts"
+#, fuzzy
+msgid "Math Styles & Fonts"
 msgstr "Matte stiler og skriftstiler"
 
 #: src/frontends/xforms/FormParagraph.C:93
@@ -12705,7 +13122,8 @@ msgid " (default)"
 msgstr " (standard)"
 
 #: src/frontends/xforms/FormPreferences.C:207
-msgid "Look &amp; Feel"
+#, fuzzy
+msgid "Look & Feel"
 msgstr "Utsjånad og åtferd"
 
 #: src/frontends/xforms/FormPreferences.C:210
@@ -12733,8 +13151,10 @@ msgid "LyX objects that can be assigned a color."
 msgstr "LyX objekt som ein kan tilegne fargar."
 
 #: src/frontends/xforms/FormPreferences.C:509
-msgid "Modify the LyX object's color. Note: you must then \"Apply\" the change."
-msgstr "Endra farge på LyX objekt. Merk ! Du må trykkje på \"Bruk\" etter endringa."
+msgid ""
+"Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgstr ""
+"Endra farge på LyX objekt. Merk ! Du må trykkje på \"Bruk\" etter endringa."
 
 #: src/frontends/xforms/FormPreferences.C:580
 msgid "GUI background"
@@ -12777,7 +13197,9 @@ msgstr ""
 msgid ""
 "Extra information for the Converter class, e.g., whether and how to parse "
 "the result."
-msgstr "Ekstra informasjon om eksportprogrammet, Det vil sei om og korleis omarbeide resultatet."
+msgstr ""
+"Ekstra informasjon om eksportprogrammet, Det vil sei om og korleis omarbeide "
+"resultatet."
 
 #: src/frontends/xforms/FormPreferences.C:775
 msgid ""
@@ -12951,12 +13373,14 @@ msgid "Fonts must be positive!"
 msgstr "Verdiane for skriftstilstorleik må vera positive."
 
 #: src/frontends/xforms/FormPreferences.C:2859
+#, fuzzy
 msgid ""
-"Fonts must be input in the order Tiny &gt; Smallest &gt; Smaller &gt; Small &gt; Normal "
-"&gt; Large &gt; Larger &gt; Largest &gt; Huge &gt; Huger."
+"Fonts must be input in the order Tiny > Smallest > Smaller > Small > Normal "
+"> Large > Larger > Largest > Huge > Huger."
 msgstr ""
-"Storleiken på skrifttype må vere ordna slik: Bitte-liten &lt; Minst &lt; Mindre &lt; "
-"Liten &lt; Normal &lt; Stor &lt; Større &lt; Størst &lt; Enorm &lt;Gigantisk."
+"Storleiken på skrifttype må vere ordna slik: Bitte-liten &lt; Minst &lt; "
+"Mindre &lt; Liten &lt; Normal &lt; Stor &lt; Større &lt; Størst &lt; Enorm "
+"&lt;Gigantisk."
 
 #: src/frontends/xforms/FormPreferences.C:2988
 msgid " ispell | aspell "
@@ -13083,7 +13507,8 @@ msgid "Search backwards."
 msgstr "Søk heilt bakover."
 
 #: src/frontends/xforms/FormSendto.C:56
-msgid "Export the buffer to this format before running the command below on it."
+msgid ""
+"Export the buffer to this format before running the command below on it."
 msgstr "Eksporter til dette formatet før vi køyrar kommandoen under."
 
 #: src/frontends/xforms/FormSendto.C:59
@@ -13187,7 +13612,8 @@ msgstr ""
 
 #: src/frontends/xforms/FormVSpace.C:198
 msgid "DefSkip|SmallSkip|MedSkip|BigSkip|VFill|Length"
-msgstr "Standard mellomrom|Lite mellomrom|Medium mellomrom|Stort mellomrom|Fyll|Lengd"
+msgstr ""
+"Standard mellomrom|Lite mellomrom|Medium mellomrom|Stort mellomrom|Fyll|Lengd"
 
 #: src/frontends/xforms/FormVSpace.C:212
 msgid "Additional vertical space."
@@ -13320,11 +13746,11 @@ msgstr "Opna innskot"
 msgid "BibTeX Generated Bibliography"
 msgstr "BibTeX genererte referansar"
 
-#: src/insets/insetbibtex.C:189
+#: src/insets/insetbibtex.C:190
 msgid "Export Warning!"
 msgstr "Eksport åtvaring!"
 
-#: src/insets/insetbibtex.C:190
+#: src/insets/insetbibtex.C:191
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
@@ -13397,7 +13823,7 @@ msgstr "Opna ERT innskot"
 msgid "ERT"
 msgstr "ERT"
 
-#: src/insets/insetexternal.C:580
+#: src/insets/insetexternal.C:579
 #, c-format
 msgid "External template %1$s is not installed"
 msgstr "Ekstern mal %1$s er ikkje installert"
@@ -13432,7 +13858,7 @@ msgstr "fot"
 msgid "Opened Footnote Inset"
 msgstr "Opna botntekst innskot"
 
-#: src/insets/insetgraphics.C:481 src/insets/insetinclude.C:397
+#: src/insets/insetgraphics.C:483 src/insets/insetinclude.C:401
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -13443,12 +13869,12 @@ msgstr ""
 "%1$s\n"
 "til den mellombelse katalogen."
 
-#: src/insets/insetgraphics.C:693
+#: src/insets/insetgraphics.C:695
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr "Ingen konvertering av %1$s var naudsynt likvel"
 
-#: src/insets/insetgraphics.C:791
+#: src/insets/insetgraphics.C:793
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "Grafikk-fil: %1$s"
@@ -13461,7 +13887,7 @@ msgstr "Set inn Verbatim"
 msgid "Verbatim Input*"
 msgstr "Set inn Verbatim*"
 
-#: src/insets/insetinclude.C:366
+#: src/insets/insetinclude.C:369
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -13472,7 +13898,7 @@ msgstr ""
 "har tekstklassa %2$s'\n"
 "medan hovuddokumentet har tekstklassa `%3$s'."
 
-#: src/insets/insetinclude.C:372
+#: src/insets/insetinclude.C:375
 msgid "Different textclasses"
 msgstr "Ulike tekstklassar"
 
@@ -13492,15 +13918,15 @@ msgstr "margin"
 msgid "Opened Marginal Note Inset"
 msgstr "Opna margnotis innskot"
 
-#: src/insets/insetnote.C:56
+#: src/insets/insetnote.C:58
 msgid "Comment"
 msgstr "Kommentar"
 
-#: src/insets/insetnote.C:57
+#: src/insets/insetnote.C:59
 msgid "Greyed out"
 msgstr "Som &amp;Grå-tekst"
 
-#: src/insets/insetnote.C:135
+#: src/insets/insetnote.C:137
 msgid "Opened Note Inset"
 msgstr "Opna notat innskot"
 
@@ -13776,18 +14202,19 @@ msgid "Rename and save?"
 msgstr "Gje nytt namn og lagra?"
 
 #: src/lyx_cb.C:115
-msgid "&amp;Rename"
+#, fuzzy
+msgid "&Rename"
 msgstr "End&amp;ra namn"
 
 #: src/lyx_cb.C:131
 msgid "Choose a filename to save document as"
 msgstr "Vel eit anna filnamn"
 
-#: src/lyx_cb.C:135 src/lyxfunc.C:1705
+#: src/lyx_cb.C:135 src/lyxfunc.C:1707
 msgid "Templates|#T#t"
 msgstr "Malar|#M#m"
 
-#: src/lyx_cb.C:165 src/lyxfunc.C:1859
+#: src/lyx_cb.C:165 src/lyxfunc.C:1861
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -13798,7 +14225,7 @@ msgstr ""
 "\n"
 "Vil du skriva over dokumentet?"
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:1861
+#: src/lyx_cb.C:167 src/lyxfunc.C:1863
 msgid "Over-write document?"
 msgstr "Skriv over dokumentet?"
 
@@ -13941,11 +14368,13 @@ msgstr ""
 "LyX treng den for å lagre vala dine."
 
 #: src/lyx_main.C:648
-msgid "&amp;Create directory."
+#, fuzzy
+msgid "&Create directory."
 msgstr "&amp;Lag katalog."
 
 #: src/lyx_main.C:649
-msgid "&amp;Exit LyX."
+#, fuzzy
+msgid "&Exit LyX."
 msgstr "&amp;Skru av LyX."
 
 #: src/lyx_main.C:650
@@ -14101,35 +14530,35 @@ msgstr "Språk: %1$s,"
 msgid "  Number %1$s"
 msgstr "   Nummerering %1$s"
 
-#: src/lyxfunc.C:313
+#: src/lyxfunc.C:314
 msgid "Unknown function."
 msgstr "Ukjent funksjon."
 
-#: src/lyxfunc.C:352
+#: src/lyxfunc.C:354
 msgid "Nothing to do"
 msgstr "Har ingenting å gjere"
 
-#: src/lyxfunc.C:370
+#: src/lyxfunc.C:372
 msgid "Unknown action"
 msgstr "Ukjend handling"
 
-#: src/lyxfunc.C:376 src/lyxfunc.C:635
+#: src/lyxfunc.C:378 src/lyxfunc.C:637
 msgid "Command disabled"
 msgstr "Den kommandoen er stengt"
 
-#: src/lyxfunc.C:383
+#: src/lyxfunc.C:385
 msgid "Command not allowed without any document open"
 msgstr "Kan ikkje gjera det utan eit dokument"
 
-#: src/lyxfunc.C:620
+#: src/lyxfunc.C:622
 msgid "Document is read-only"
 msgstr "Dokumentet kan berre bli lest frå"
 
-#: src/lyxfunc.C:629
+#: src/lyxfunc.C:631
 msgid "This portion of the document is deleted."
 msgstr "Denne delen av dokumetet er sletta."
 
-#: src/lyxfunc.C:650
+#: src/lyxfunc.C:652
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -14140,7 +14569,7 @@ msgstr ""
 "\n"
 "Vil du lagra dokumentet?"
 
-#: src/lyxfunc.C:666
+#: src/lyxfunc.C:668
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
@@ -14149,11 +14578,11 @@ msgstr ""
 "Kunne ikkje skrive ut dokumentet %1$s.\n"
 "Sjekk at skrivaren har dei rette vala."
 
-#: src/lyxfunc.C:669
+#: src/lyxfunc.C:671
 msgid "Print document failed"
 msgstr "Kan ikkje skrive ut"
 
-#: src/lyxfunc.C:688
+#: src/lyxfunc.C:690
 #, c-format
 msgid ""
 "The document could not be converted\n"
@@ -14162,20 +14591,20 @@ msgstr ""
 "Dokumentet kunne ikkje bli konvertert\n"
 "til dokumentklassa %1$s."
 
-#: src/lyxfunc.C:691
+#: src/lyxfunc.C:693
 msgid "Could not change class"
 msgstr "Kan ikkje endra klassa"
 
-#: src/lyxfunc.C:799
+#: src/lyxfunc.C:801
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Lagrar %1$s..."
 
-#: src/lyxfunc.C:803
+#: src/lyxfunc.C:805
 msgid " done."
 msgstr "ferdig."
 
-#: src/lyxfunc.C:814
+#: src/lyxfunc.C:816
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -14184,81 +14613,83 @@ msgstr ""
 "Alle endingar vil forsvinne. Er du sikker at du vil gå tilbake til siste "
 "lagra versjon av dokumentet %1$s?"
 
-#: src/lyxfunc.C:836
+#: src/lyxfunc.C:838
 msgid "Build"
 msgstr "Bygg"
 
-#: src/lyxfunc.C:841
+#: src/lyxfunc.C:843
 msgid "ChkTeX"
 msgstr "ChkTeX"
 
-#: src/lyxfunc.C:1013 src/text3.C:1253
+#: src/lyxfunc.C:1015 src/text3.C:1253
 msgid "Missing argument"
 msgstr "Manglande val"
 
-#: src/lyxfunc.C:1022
+#: src/lyxfunc.C:1024
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Opnar hjelpfila %1$s..."
 
-#: src/lyxfunc.C:1278
+#: src/lyxfunc.C:1280
 msgid "Opening child document "
 msgstr "Opner barne-dokumnet"
 
-#: src/lyxfunc.C:1357
-msgid "Syntax: set-color &lt;lyx_name&gt; &lt;x11_name&gt;"
+#: src/lyxfunc.C:1359
+#, fuzzy
+msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Syntaks: set-color &lt;lyx_name&gt; &lt;x11_name&gt;"
 
-#: src/lyxfunc.C:1368
+#: src/lyxfunc.C:1370
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
-msgstr "Kan ikkje sette fargen  \"%1$s\", den finst ikkje eller kan ikkje bli endra"
+msgstr ""
+"Kan ikkje sette fargen  \"%1$s\", den finst ikkje eller kan ikkje bli endra"
 
-#: src/lyxfunc.C:1481
+#: src/lyxfunc.C:1483
 msgid "Document defaults saved in "
 msgstr "Standardval for dokument er lagra i "
 
-#: src/lyxfunc.C:1484
+#: src/lyxfunc.C:1486
 msgid "Unable to save document defaults"
 msgstr "Klarte ikkje å lagre standardval for dokument "
 
-#: src/lyxfunc.C:1538
+#: src/lyxfunc.C:1540
 msgid "Converting document to new document class..."
 msgstr "Konverterer dokumentet til ny dokument klasse ..."
 
-#: src/lyxfunc.C:1549
+#: src/lyxfunc.C:1551
 msgid "Class switch"
 msgstr "Klasse val"
 
-#: src/lyxfunc.C:1701
+#: src/lyxfunc.C:1703
 msgid "Select template file"
 msgstr "Vel mal"
 
-#: src/lyxfunc.C:1738
+#: src/lyxfunc.C:1740
 msgid "Select document to open"
 msgstr "Vel dokument"
 
-#: src/lyxfunc.C:1779
+#: src/lyxfunc.C:1781
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Opnar dokumentet %1$s..."
 
-#: src/lyxfunc.C:1783
+#: src/lyxfunc.C:1785
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokumentet %1$s er ope."
 
-#: src/lyxfunc.C:1785
+#: src/lyxfunc.C:1787
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Kunne ikkje opna dokumentet %1$s"
 
-#: src/lyxfunc.C:1810
+#: src/lyxfunc.C:1812
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Vel %1$s filen som skal importerast"
 
-#: src/lyxfunc.C:1920
+#: src/lyxfunc.C:1922
 msgid "Welcome to LyX!"
 msgstr "Velkomen til LyX!"
 
@@ -14266,7 +14697,8 @@ msgstr "Velkomen til LyX!"
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
-msgstr "La samanskrivne ord slik som \"helikoptersjøførsertifikat\"vere korrekt?"
+msgstr ""
+"La samanskrivne ord slik som \"helikoptersjøførsertifikat\"vere korrekt?"
 
 #: src/lyxrc.C:2078
 msgid ""
@@ -14280,15 +14712,16 @@ msgid ""
 "g. \"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"none"
 "\" is specified, an internal routine is used."
 msgstr ""
-"Eksternt program for å teikne tabellar når ein konverterer til rein tekst. T.d.: "
-"\"groff -t -Tlatin1 $$FName\" Der $$FName er namnet på startfila. Dersom "
+"Eksternt program for å teikne tabellar når ein konverterer til rein tekst. T."
+"d.: \"groff -t -Tlatin1 $$FName\" Der $$FName er namnet på startfila. Dersom "
 "\"none\" blir brukt, vil LyX bruke intern teikning."
 
 #: src/lyxrc.C:2086
 msgid ""
 "This is the maximum line length of an exported text file (LaTeX, SGML or "
 "plain text)."
-msgstr "Maksimal linjelengd for Reine tekst filer (LaTeX, SGML eller rein tekst)."
+msgstr ""
+"Maksimal linjelengd for Reine tekst filer (LaTeX, SGML eller rein tekst)."
 
 #: src/lyxrc.C:2090
 msgid ""
@@ -14305,7 +14738,8 @@ msgstr ""
 "bytter klasse."
 
 #: src/lyxrc.C:2098
-msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid ""
+"The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Kor lang tid  mellom kvar automatiske lagring (i sekund). 0 skrur av "
 "automatisk lagring."
@@ -14399,7 +14833,8 @@ msgstr "Vel uvanlege bokstavar som kan vere ein del av eit ord."
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
-msgstr "Kodinga av skrifttyper i LaTeX2e (fontenc). T1 er best for dei fleste språk."
+msgstr ""
+"Kodinga av skrifttyper i LaTeX2e (fontenc). T1 er best for dei fleste språk."
 
 #: src/lyxrc.C:2181
 msgid ""
@@ -14430,7 +14865,8 @@ msgid ""
 msgstr "Trengs det ein språk endring først i dokumentet?"
 
 #: src/lyxrc.C:2202
-msgid "Select if a language switching command is needed at the end of the document."
+msgid ""
+"Select if a language switching command is needed at the end of the document."
 msgstr "Trengs det ein språk endring sist i dokumentet?"
 
 #: src/lyxrc.C:2206
@@ -14483,12 +14919,14 @@ msgstr "Vel om du vil  at LyX skal ta reservekopiar."
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
-msgstr "Gje ord på eit anna språk enn standard språket i dokumentet  ein annan farge."
+msgstr ""
+"Gje ord på eit anna språk enn standard språket i dokumentet  ein annan farge."
 
 #: src/lyxrc.C:2242
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
-msgstr "Kor mange sist opna filer skal vere tilgjengeleg i filmenyen (opp til %1$d)."
+msgstr ""
+"Kor mange sist opna filer skal vere tilgjengeleg i filmenyen (opp til %1$d)."
 
 #: src/lyxrc.C:2246
 msgid ""
@@ -14499,7 +14937,8 @@ msgstr ""
 "operativsystemet."
 
 #: src/lyxrc.C:2253
-msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid ""
+"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "Vel ei alternativ personleg ordbok. T.d.: \"ispell_engelsk\"."
 
 #: src/lyxrc.C:2257
@@ -14520,7 +14959,8 @@ msgstr "Vis førehandsvising av typesettet av slike ting som matte"
 
 #: src/lyxrc.C:2273
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
-msgstr "Førehandsvising av likningar vil ha \"(#)\"-merke istaden for nummererte."
+msgstr ""
+"Førehandsvising av likningar vil ha \"(#)\"-merke istaden for nummererte."
 
 #: src/lyxrc.C:2277
 msgid "Scale the preview size to suit."
@@ -14595,7 +15035,8 @@ msgstr ""
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
-msgstr "Prefiks som blir lagt til skrivarar som blir spesifisert i skrivar-dialogen."
+msgstr ""
+"Prefiks som blir lagt til skrivarar som blir spesifisert i skrivar-dialogen."
 
 #: src/lyxrc.C:2337
 msgid "Option to pass to the print program to print to a file."
@@ -14616,8 +15057,10 @@ msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "Favoritt utskrift program, t.d.  \"dvips\", \"dvilj4\"."
 
 #: src/lyxrc.C:2353
-msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
-msgstr "Skriv frå høgre til venstre (t.d. for språk som Hebraisk eller Arabisk)."
+msgid ""
+"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgstr ""
+"Skriv frå høgre til venstre (t.d. for språk som Hebraisk eller Arabisk)."
 
 #: src/lyxrc.C:2357
 msgid ""
@@ -14656,7 +15099,8 @@ msgstr ""
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
 "roughly the same size as on paper."
-msgstr "Forstørring for skjermskrifttypar. 100% er om lag like stort som på arket."
+msgstr ""
+"Forstørring for skjermskrifttypar. 100% er om lag like stort som på arket."
 
 #: src/lyxrc.C:2389
 msgid ""
@@ -14710,13 +15154,15 @@ msgstr ""
 
 #: src/lyxrc.C:2435
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
-msgstr "Papir meldinga til DVI-framsynar (La den vere tom eller bruk \"-paper\")"
+msgstr ""
+"Papir meldinga til DVI-framsynar (La den vere tom eller bruk \"-paper\")"
 
 #: src/lyxrc.C:2442
 msgid ""
 "The number of lines that are scrolled by mice with wheels or five button "
 "mice."
-msgstr "Kor mange linjer skal flyttast med mus med rulleknapp eller fem knappar?"
+msgstr ""
+"Kor mange linjer skal flyttast med mus med rulleknapp eller fem knappar?"
 
 #: src/lyxvc.C:93
 msgid "Document not saved"
@@ -14759,12 +15205,12 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Gå tilbake til den siste lagra versjonen av dokumentet?"
 
-#: src/mathed/formulamacro.C:127 src/mathed/math_macrotemplate.C:100
+#: src/mathed/formulamacro.C:127 src/mathed/math_macrotemplate.C:106
 #, c-format
 msgid " Macro: %1$s: "
 msgstr "Makro: %1$s: "
 
-#: src/mathed/math_amsarrayinset.C:110 src/mathed/math_hullinset.C:1196
+#: src/mathed/math_amsarrayinset.C:110 src/mathed/math_hullinset.C:1198
 #: src/mathed/math_splitinset.C:73 src/mathed/math_substackinset.C:69
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -14804,30 +15250,30 @@ msgstr "Ingen nummer"
 msgid "Number"
 msgstr "Nummer"
 
-#: src/mathed/math_hullinset.C:1169
+#: src/mathed/math_hullinset.C:1171
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Kan ikkje endre talet på radar i '%1$s'"
 
-#: src/mathed/math_hullinset.C:1179
+#: src/mathed/math_hullinset.C:1181
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Kan ikkje endre talet på kolonner i '%1$s'"
 
-#: src/mathed/math_hullinset.C:1189
+#: src/mathed/math_hullinset.C:1191
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Kan ikkje leggje til fleire vassrette linjer i rutenettet '%1$s'"
 
-#: src/mathed/math_hullinset.C:1292 src/text3.C:170
+#: src/mathed/math_hullinset.C:1294 src/text3.C:170
 msgid "Math editor mode"
 msgstr "Mattemodus"
 
-#: src/mathed/math_nestinset.C:792
+#: src/mathed/math_nestinset.C:808
 msgid "create new math text environment ($...$)"
 msgstr "Lag nytt mattemiljø ($...$)"
 
-#: src/mathed/math_nestinset.C:795
+#: src/mathed/math_nestinset.C:811
 msgid "entered math text mode (textrm)"
 msgstr "Nyttar mattemiljø (textrm)"
 
@@ -14862,7 +15308,8 @@ msgstr "*|Alle filer (*)"
 
 #: src/support/package.C.in:424
 #, c-format
-msgid "Unable to determine the path to the LyX binary from the command line %1$s"
+msgid ""
+"Unable to determine the path to the LyX binary from the command line %1$s"
 msgstr "Klarte ikkje å finne stigen til LyX frå kommandolinja %1$s"
 
 #: src/support/package.C.in:545
@@ -14875,8 +15322,8 @@ msgid ""
 msgstr ""
 "Klarte ikkje å finne systemstigen etter å ha leita i\n"
 "\t%1$s\n"
-"Prøv '-sysdir' valet til LyX frå kommandolina eller set miljøvalet LYX_DIR_14x "
-"til systemstigen i fila `chkconfig.ltx'."
+"Prøv '-sysdir' valet til LyX frå kommandolina eller set miljøvalet "
+"LYX_DIR_14x til systemstigen i fila `chkconfig.ltx'."
 
 #: src/support/package.C.in:630
 #, c-format
@@ -14990,7 +15437,7 @@ msgstr ", plass: "
 msgid ", Boundary: "
 msgstr ", Grense: "
 
-#: src/text2.C:510
+#: src/text2.C:529
 msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
@@ -14998,11 +15445,11 @@ msgstr ""
 "Ingen endring av skrifttype er definert. Bruk Bokstavar i stilmenyen for å "
 "definere skrifttype."
 
-#: src/text2.C:552
+#: src/text2.C:571
 msgid "Nothing to index!"
 msgstr "Ingenting å lage indeks av!"
 
-#: src/text2.C:554
+#: src/text2.C:573
 msgid "Cannot index more than one paragraph!"
 msgstr "Kan ikkje lage indeks av meir enn eit avsnitt!"
 
@@ -15054,3 +15501,332 @@ msgstr "Fyll loddrett"
 msgid "protected"
 msgstr "vern"
 
+#~ msgid "@4-&gt;"
+#~ msgstr "@4-&gt;"
+
+#~ msgid "@8-&gt;"
+#~ msgstr "@8-&gt;"
+
+#~ msgid "@2-&gt;"
+#~ msgstr "@2-&gt;"
+
+#~ msgid "@5-&gt;"
+#~ msgstr "@5-&gt;"
+
+#~ msgid "A&amp;vailable Branches:"
+#~ msgstr "Til&amp;gjengelege Greiner:"
+
+#~ msgid "&amp;Add"
+#~ msgstr "&amp;Legg til"
+
+#~ msgid "&amp;Options:"
+#~ msgstr "&amp;Val:"
+
+#~ msgid "&amp;Language:"
+#~ msgstr "&amp;Språk:"
+
+#~ msgid "&amp;Top:"
+#~ msgstr "Op&amp;pe:"
+
+#~ msgid "&amp;Bottom:"
+#~ msgstr "&amp;Nede:"
+
+#~ msgid "O&amp;uter:"
+#~ msgstr "&amp;Ytre:"
+
+#~ msgid "&amp;Height:"
+#~ msgstr "&amp;Høgd:"
+
+#~ msgid "&amp;Width:"
+#~ msgstr "&amp;Breidd:"
+
+#~ msgid "&amp;Landscape"
+#~ msgstr "&amp;Liggjande"
+
+#~ msgid "&amp;Close"
+#~ msgstr "Lu&amp;kk"
+
+#~ msgid "&amp;OK"
+#~ msgstr "&amp;OK"
+
+#~ msgid "&amp;Cancel"
+#~ msgstr "&amp;Avbryt"
+
+#~ msgid "&amp;Label:"
+#~ msgstr "&amp;Etikett:"
+
+#~ msgid "&amp;Browse..."
+#~ msgstr "&amp;Bla gjennom..."
+
+#~ msgid "St&amp;yle"
+#~ msgstr "St&amp;il"
+
+#~ msgid "&amp;Content:"
+#~ msgstr "&amp;Innehald:"
+
+#~ msgid "T&amp;ype:"
+#~ msgstr "&amp;Type:"
+
+#~ msgid "&amp;Available branches:"
+#~ msgstr "&amp;Tilgjengelege greiner:"
+
+#~ msgid "&amp;Accept"
+#~ msgstr "&amp;Godta"
+
+#~ msgid "&amp;Color:"
+#~ msgstr "&amp;Farge:"
+
+#~ msgid "Si&amp;ze:"
+#~ msgstr "Stor&amp;leik:"
+
+#~ msgid "&amp;Misc:"
+#~ msgstr "&amp;Ymse:"
+
+#~ msgid "&amp;Citations:"
+#~ msgstr "&amp;Litteratur:"
+
+#~ msgid "&amp;Insert"
+#~ msgstr "Set &amp;inn"
+
+#~ msgid "&amp;Inline"
+#~ msgstr "&amp;I teksten"
+
+#~ msgid "&amp;File:"
+#~ msgstr "&amp;Fil:"
+
+#~ msgid "Sca&amp;le:"
+#~ msgstr "&amp;Forstørring:"
+
+#~ msgid "&amp;Display:"
+#~ msgstr "&amp;Vis:"
+
+#~ msgid "O&amp;ption:"
+#~ msgstr "&amp;Val:"
+
+#~ msgid "&amp;Graphics"
+#~ msgstr "&amp;Grafikk"
+
+#~ msgid "&amp;Edit"
+#~ msgstr "&amp;Rediger"
+
+#~ msgid "E&amp;xtra options"
+#~ msgstr "E&amp;kstra val"
+
+#~ msgid "&amp;Draft mode"
+#~ msgstr "Kla&amp;dd"
+
+#~ msgid "Ca&amp;ption:"
+#~ msgstr "&amp;Biletetekst:"
+
+#~ msgid "&amp;Update"
+#~ msgstr "O&amp;ppdater"
+
+#~ msgid "&amp;Functions"
+#~ msgstr "&amp;Funksjonar"
+
+#~ msgid "&amp;Rows:"
+#~ msgstr "&amp;Rader:"
+
+#~ msgid "&amp;Columns:"
+#~ msgstr "&amp;Kolonnar:"
+
+#~ msgid "LyX &amp;Note"
+#~ msgstr "LyX &amp;Notat"
+
+#~ msgid "&amp;Comment"
+#~ msgstr "&amp;Kommentar"
+
+#~ msgid "&amp;Greyed out"
+#~ msgstr "Som &amp;Grå-tekst"
+
+#~ msgid "Alig&amp;nment:"
+#~ msgstr "&amp;Justering:"
+
+#~ msgid "&amp;Colors"
+#~ msgstr "&amp;Fargar"
+
+#~ msgid "C&amp;onverter:"
+#~ msgstr "Eksp&amp;ortprogram:"
+
+#~ msgid "A&amp;dd"
+#~ msgstr "&amp;Legg til"
+
+#~ msgid "&amp;Modify"
+#~ msgstr "&amp;Endra"
+
+#~ msgid "&amp;Converters"
+#~ msgstr "&amp;Eksportprogram"
+
+#~ msgid "C&amp;opiers"
+#~ msgstr "K&amp;opiprogram"
+
+#~ msgid "&amp;Copier:"
+#~ msgstr "&amp;Kopiprogram:"
+
+#~ msgid "&amp;Date format:"
+#~ msgstr "&amp;Datoformat:"
+
+#~ msgid "&amp;File formats"
+#~ msgstr "&amp;Filformat"
+
+#~ msgid "&amp;E-mail:"
+#~ msgstr "&amp;E-post:"
+
+#~ msgid "&amp;Name:"
+#~ msgstr "&amp;Namn:"
+
+#~ msgid "Bro&amp;wse..."
+#~ msgstr "&amp;Bla gjennom..."
+
+#~ msgid "Br&amp;owse..."
+#~ msgstr "Bla &amp;gjennom..."
+
+#~ msgid "Adapt outp&amp;ut"
+#~ msgstr "Tilpass skrivar"
+
+#~ msgid "Re&amp;verse:"
+#~ msgstr "Om&amp;vendt:"
+
+#~ msgid "To p&amp;rinter:"
+#~ msgstr "Til sk&amp;rivar:"
+
+#~ msgid "Paper si&amp;ze:"
+#~ msgstr "&amp;Papirstorleik:"
+
+#~ msgid "To &amp;file:"
+#~ msgstr "Til &amp;fil:"
+
+#~ msgid "Spool &amp;command:"
+#~ msgstr "Kø &amp;kommando:"
+
+#~ msgid "&amp;Odd pages:"
+#~ msgstr "Berre &amp;oddetalssider:"
+
+#~ msgid "Paper t&amp;ype:"
+#~ msgstr "Papirt&amp;ype:"
+
+#~ msgid "E&amp;xtra options:"
+#~ msgstr "&amp;Andre val:"
+
+#~ msgid "Co&amp;llated:"
+#~ msgstr "Samla &amp;kopiar:"
+
+#~ msgid "&amp;Even pages:"
+#~ msgstr "Berre &amp;Partalssider:"
+
+#~ msgid "File ex&amp;tension:"
+#~ msgstr "Fil&amp;etternamn:"
+
+#~ msgid "Lan&amp;dscape:"
+#~ msgstr "Liggjan&amp;de:"
+
+#~ msgid "Co&amp;pies:"
+#~ msgstr "Ko&amp;piar:"
+
+#~ msgid "Pa&amp;ge range:"
+#~ msgstr "&amp;Utval av sider:"
+
+#~ msgid "Sa&amp;ns Serif:"
+#~ msgstr "Sans Se&amp;rif:"
+
+#~ msgid "T&amp;ypewriter:"
+#~ msgstr "T&amp;ypewriter:"
+
+#~ msgid "&amp;Roman:"
+#~ msgstr "&amp;Roman:"
+
+#~ msgid "B&amp;rowse..."
+#~ msgstr "&amp;Bla gjennom ..."
+
+#~ msgid "&amp;Save"
+#~ msgstr "&amp;Lagra"
+
+#~ msgid "&amp;Collate"
+#~ msgstr "&amp;Samla"
+
+#~ msgid "&amp;Print"
+#~ msgstr "Skriv &amp;ut"
+
+#~ msgid "P&amp;rinter:"
+#~ msgstr "Sk&amp;rivar:"
+
+#~ msgid "&amp;Go to Label"
+#~ msgstr "Gå til&amp;etikett"
+
+#~ msgid "&lt;reference&gt;"
+#~ msgstr "&lt;referanse&gt;"
+
+#~ msgid "(&lt;reference&gt;)"
+#~ msgstr "(&lt;referanse&gt;)"
+
+#~ msgid "&lt;page&gt;"
+#~ msgstr "&lt;side&gt;"
+
+#~ msgid "Find &amp;Next"
+#~ msgstr "Finn &amp;neste"
+
+#~ msgid "Search &amp;backwards"
+#~ msgstr "Søk &amp;bakover"
+
+#~ msgid "&amp;Command:"
+#~ msgstr "&amp;Kommando:"
+
+#~ msgid "&amp;Ignore"
+#~ msgstr "&amp;Ingorer"
+
+#~ msgid "&amp;Table Settings"
+#~ msgstr "Val for &amp;Tabellar"
+
+#~ msgid "&amp;Multicolumn"
+#~ msgstr "&amp;Multikolonner"
+
+#~ msgid "&amp;Vertical alignment:"
+#~ msgstr "&amp;Loddrett justering:"
+
+#~ msgid "&amp;Borders"
+#~ msgstr "&amp;Kantlinjer"
+
+#~ msgid "&amp;Longtable"
+#~ msgstr "&amp;Langtabell"
+
+#~ msgid "&amp;View"
+#~ msgstr "Vi&amp;s"
+
+#~ msgid "&amp;Keyword:"
+#~ msgstr "Nø&amp;kkelord:"
+
+#~ msgid "&amp;Type:"
+#~ msgstr "&amp;Sort:"
+
+#~ msgid "&amp;URL:"
+#~ msgstr "&amp;URL:"
+
+#~ msgid "&amp;Placement:"
+#~ msgstr "&amp;Plassering:"
+
+#~ msgid "&amp;Size:"
+#~ msgstr "&amp;Storleik:"
+
+#~ msgid "&amp;Vertical space"
+#~ msgstr "&amp;Loddrett avstand"
+
+#~ msgid "&gt;&lt;"
+#~ msgstr "&gt;&lt;"
+
+#~ msgid "&amp;Revert"
+#~ msgstr "&amp;Tilbake til sist lagra"
+
+#~ msgid "&amp;Load backup"
+#~ msgstr "L&amp;ast reservekopi"
+
+#~ msgid "&amp;Standard"
+#~ msgstr "&amp;Standard"
+
+#~ msgid "&amp;Custom..."
+#~ msgstr "&amp;Tilpassa..."
+
+#~ msgid "&lt;&lt;text&gt;&gt;"
+#~ msgstr "&lt;&lt;tekst&gt;&gt;"
+
+#~ msgid "&gt;&gt;text&lt;&lt;"
+#~ msgstr "&gt;&gt;tekst&lt;&lt;"

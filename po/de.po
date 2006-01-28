@@ -83,7 +83,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-01-28 21:37+0100\n"
+"POT-Creation-Date: 2006-01-28 22:20+0100\n"
 "PO-Revision-Date: 2006-01-28 21:47+0100\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
@@ -7939,8 +7939,8 @@ msgstr "Kolumnenkopf:"
 msgid "Published-online:"
 msgstr "Online veröffentlicht:"
 
-#: lib/layouts/agu_stdtitle.inc:263 src/frontends/qt2/QCitation.C:50
-#: src/frontends/xforms/FormCitation.C:100
+#: lib/layouts/agu_stdtitle.inc:263 src/frontends/gtk/GCitation.C:71
+#: src/frontends/qt2/QCitation.C:50 src/frontends/xforms/FormCitation.C:100
 msgid "Citation"
 msgstr "Zitat"
 
@@ -11491,10 +11491,20 @@ msgstr "Stichwort"
 msgid "Label"
 msgstr "Marke"
 
+#: src/frontends/gtk/GBibItem.C:33 src/frontends/qt2/QBibitem.C:31
+#: src/frontends/xforms/FormBibitem.C:38
+msgid "Bibliography Entry Settings"
+msgstr "Literatureintrag-Einstellungen"
+
 #: src/frontends/gtk/GBox.C:42 src/frontends/qt2/QBox.C:51
 #: src/frontends/xforms/FormBox.C:47
 msgid "Box Settings"
 msgstr "Box-Einstellungen"
+
+#: src/frontends/gtk/GBranch.C:38 src/frontends/qt2/QBranch.C:36
+#: src/frontends/xforms/FormBranch.C:35
+msgid "Branch Settings"
+msgstr "Zweig-Einstellungen"
 
 #: src/frontends/gtk/GChanges.C:33 src/frontends/qt2/QChanges.C:36
 #: src/frontends/xforms/FormChanges.C:32
@@ -11521,6 +11531,14 @@ msgstr "Änderungen wurden zusammengefasst"
 #: src/frontends/xforms/FormCharacter.C:41
 msgid "Text Style"
 msgstr "Textstil"
+
+#: src/frontends/gtk/GCitation.C:122
+msgid "CiteKeys"
+msgstr ""
+
+#: src/frontends/gtk/GCitation.C:128
+msgid "BibKeys"
+msgstr ""
 
 #: src/frontends/gtk/GDocument.C:58 src/frontends/qt2/QDocument.C:68
 #: src/frontends/xforms/FormDocument.C:93
@@ -11716,6 +11734,11 @@ msgstr "geprüft"
 msgid "Insert Table"
 msgstr "Tabelle einfügen"
 
+#: src/frontends/gtk/GTabular.C:67 src/frontends/qt2/QTabular.C:41
+#: src/frontends/xforms/FormTabular.C:57
+msgid "Table Settings"
+msgstr "Tabellen-Einstellungen"
+
 #: src/frontends/gtk/GTexinfo.C:37 src/frontends/qt2/QTexinfo.C:34
 #: src/frontends/xforms/FormTexinfo.C:35
 msgid "TeX Information"
@@ -11741,6 +11764,11 @@ msgstr "*** Keine Einträge ***"
 #: src/frontends/gtk/GVSpace.C:34
 msgid "VSpace Settings"
 msgstr "Einstellungen für vertikalen Abstand"
+
+#: src/frontends/gtk/GWrap.C:35 src/frontends/qt2/QWrap.C:39
+#: src/frontends/xforms/FormWrap.C:40
+msgid "Text Wrap Settings"
+msgstr "Einstellungen für umflossenes Gleitobjekt"
 
 #: src/frontends/qt2/Alert_pimpl.C:39 src/frontends/qt2/Alert_pimpl.C:64
 #: src/frontends/qt2/Alert_pimpl.C:76 src/frontends/qt2/Alert_pimpl.C:88
@@ -11791,17 +11819,9 @@ msgstr "Geben Sie ein benutzerdefiniertes Aufzählungszeichen ein"
 msgid "Directories"
 msgstr "Verzeichnisse"
 
-#: src/frontends/qt2/QBibitem.C:31 src/frontends/xforms/FormBibitem.C:38
-msgid "Bibliography Entry Settings"
-msgstr "Literatureintrag-Einstellungen"
-
 #: src/frontends/qt2/QBibtex.C:50 src/frontends/xforms/FormBibtex.C:51
 msgid "BibTeX Bibliography"
 msgstr "BibTeX-Literaturverzeichnis"
-
-#: src/frontends/qt2/QBranch.C:36 src/frontends/xforms/FormBranch.C:35
-msgid "Branch Settings"
-msgstr "Zweig-Einstellungen"
 
 #: src/frontends/qt2/QChanges.C:66
 #, c-format
@@ -12207,17 +12227,9 @@ msgstr "Springe zur Marke"
 msgid "Send Document to Command"
 msgstr "Dokument an Befehl senden"
 
-#: src/frontends/qt2/QTabular.C:41 src/frontends/xforms/FormTabular.C:57
-msgid "Table Settings"
-msgstr "Tabellen-Einstellungen"
-
 #: src/frontends/qt2/QVSpace.C:133 src/frontends/xforms/FormVSpace.C:166
 msgid "Vertical Space Settings"
 msgstr "Einstellungen für vertikalen Abstand"
-
-#: src/frontends/qt2/QWrap.C:39 src/frontends/xforms/FormWrap.C:40
-msgid "Text Wrap Settings"
-msgstr "Einstellungen für umflossenes Gleitobjekt"
 
 #: src/frontends/qt2/QtView.C:164
 msgid "LyX"

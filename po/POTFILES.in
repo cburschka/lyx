@@ -36,9 +36,12 @@ src/frontends/controllers/frnt_lang.C
 src/frontends/controllers/helper_funcs.C
 src/frontends/gtk/Dialogs.C
 src/frontends/gtk/GBC.h
+src/frontends/gtk/GBibItem.C
 src/frontends/gtk/GBox.C
+src/frontends/gtk/GBranch.C
 src/frontends/gtk/GChanges.C
 src/frontends/gtk/GCharacter.C
+src/frontends/gtk/GCitation.C
 src/frontends/gtk/GDocument.C
 src/frontends/gtk/GERT.C
 src/frontends/gtk/GErrorList.C
@@ -57,11 +60,13 @@ src/frontends/gtk/GSendto.C
 src/frontends/gtk/GShowFile.C
 src/frontends/gtk/GSpellchecker.C
 src/frontends/gtk/GTableCreate.C
+src/frontends/gtk/GTabular.C
 src/frontends/gtk/GTexinfo.C
 src/frontends/gtk/GThesaurus.C
 src/frontends/gtk/GToc.C
 src/frontends/gtk/GUrl.C
 src/frontends/gtk/GVSpace.C
+src/frontends/gtk/GWrap.C
 src/frontends/qt2/Alert_pimpl.C
 src/frontends/qt2/BulletsModule.C
 src/frontends/qt2/Dialogs.C
