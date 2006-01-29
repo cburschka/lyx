@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.1.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-01-28 22:20+0100\n"
+"POT-Creation-Date: 2006-01-29 14:49+0100\n"
 "PO-Revision-Date: 2005-12-18 15:07+0100\n"
 "Last-Translator: Claudiu Costin <claudiuc@geocities.com>\n"
 "Language-Team: Romanian <ro-kde@egroups.com>\n"
@@ -2650,6 +2650,11 @@ msgstr "Opþiuni"
 msgid "Postscript &driver:"
 msgstr ""
 
+#: src/frontends/qt2/ui/LanguageModuleBase.ui:22
+#, fuzzy
+msgid "LanguageModuleBase"
+msgstr "Limbaj"
+
 #: src/frontends/qt2/ui/LanguageModuleBase.ui:56
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:209
 #, fuzzy
@@ -2661,12 +2666,12 @@ msgstr "Limbaj"
 msgid "&Use language's default encoding"
 msgstr "Utilizeazã codarea textului|#t"
 
-#: src/frontends/qt2/ui/LanguageModuleBase.ui:191
+#: src/frontends/qt2/ui/LanguageModuleBase.ui:170
 #, fuzzy
 msgid "&Encoding:"
 msgstr "Codificarea"
 
-#: src/frontends/qt2/ui/LanguageModuleBase.ui:206
+#: src/frontends/qt2/ui/LanguageModuleBase.ui:192
 #, fuzzy
 msgid "&Quote Style:"
 msgstr "Stil citare   "
@@ -16629,7 +16634,7 @@ msgstr ""
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_hullinset.C:1294 src/text3.C:170
+#: src/mathed/math_hullinset.C:1297 src/text3.C:170
 msgid "Math editor mode"
 msgstr "Mod de editare matematic"
 

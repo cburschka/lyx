@@ -62,7 +62,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-01-28 22:20+0100\n"
+"POT-Creation-Date: 2006-01-29 14:49+0100\n"
 "PO-Revision-Date: 2005-12-18 15:12+0100\n"
 "Last-Translator: Pauli Virtanen <pauli.virtanen@hut.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -2438,6 +2438,11 @@ msgstr "&Valinnat:"
 msgid "Postscript &driver:"
 msgstr "PostS&cript-ajuri:"
 
+#: src/frontends/qt2/ui/LanguageModuleBase.ui:22
+#, fuzzy
+msgid "LanguageModuleBase"
+msgstr "Kieli"
+
 #: src/frontends/qt2/ui/LanguageModuleBase.ui:56
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:209
 msgid "&Language:"
@@ -2448,11 +2453,11 @@ msgstr "&Kieli:"
 msgid "&Use language's default encoding"
 msgstr "LaTeXin oletusasetukset"
 
-#: src/frontends/qt2/ui/LanguageModuleBase.ui:191
+#: src/frontends/qt2/ui/LanguageModuleBase.ui:170
 msgid "&Encoding:"
 msgstr "&Merkistö:"
 
-#: src/frontends/qt2/ui/LanguageModuleBase.ui:206
+#: src/frontends/qt2/ui/LanguageModuleBase.ui:192
 #, fuzzy
 msgid "&Quote Style:"
 msgstr "Lainausmerkit"
@@ -15971,7 +15976,7 @@ msgstr ""
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_hullinset.C:1294 src/text3.C:170
+#: src/mathed/math_hullinset.C:1297 src/text3.C:170
 msgid "Math editor mode"
 msgstr "Matematiikkaeditoritila"
 

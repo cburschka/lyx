@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-01-28 22:20+0100\n"
+"POT-Creation-Date: 2006-01-29 14:49+0100\n"
 "PO-Revision-Date: 2005-12-31 13:58+0100\n"
 "Last-Translator: Eulogio Serradilla <eulogio.sr@terra.es>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -2306,6 +2306,11 @@ msgstr "Op&ciones:"
 msgid "Postscript &driver:"
 msgstr "&Controlador postscript:"
 
+#: src/frontends/qt2/ui/LanguageModuleBase.ui:22
+#, fuzzy
+msgid "LanguageModuleBase"
+msgstr "Idioma"
+
 #: src/frontends/qt2/ui/LanguageModuleBase.ui:56
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:209
 msgid "&Language:"
@@ -2315,11 +2320,11 @@ msgstr "&Idioma:"
 msgid "&Use language's default encoding"
 msgstr "&Usar la codificación predefinida del idioma"
 
-#: src/frontends/qt2/ui/LanguageModuleBase.ui:191
+#: src/frontends/qt2/ui/LanguageModuleBase.ui:170
 msgid "&Encoding:"
 msgstr "&Codificación:"
 
-#: src/frontends/qt2/ui/LanguageModuleBase.ui:206
+#: src/frontends/qt2/ui/LanguageModuleBase.ui:192
 msgid "&Quote Style:"
 msgstr "Estilo de &cita:"
 
@@ -15012,7 +15017,7 @@ msgstr "No se puede cambiar el número de columnas en '%1$s'"
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "No se pueden añadir líneas de cuadrícula horizontal en '%1$s'"
 
-#: src/mathed/math_hullinset.C:1294 src/text3.C:170
+#: src/mathed/math_hullinset.C:1297 src/text3.C:170
 msgid "Math editor mode"
 msgstr "Modo del editor de ecuaciones"
 

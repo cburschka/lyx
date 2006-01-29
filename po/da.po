@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: da\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-01-28 22:20+0100\n"
+"POT-Creation-Date: 2006-01-29 14:49+0100\n"
 "PO-Revision-Date: 2005-12-18 15:13+0100\n"
 "Last-Translator: Claus Hindsgaul <claus_h@image.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -2324,6 +2324,11 @@ msgstr "Inds&tillinger:"
 msgid "Postscript &driver:"
 msgstr "Postscript-&driver:"
 
+#: src/frontends/qt2/ui/LanguageModuleBase.ui:22
+#, fuzzy
+msgid "LanguageModuleBase"
+msgstr "Sprog"
+
 #: src/frontends/qt2/ui/LanguageModuleBase.ui:56
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:209
 msgid "&Language:"
@@ -2333,11 +2338,11 @@ msgstr "&Sprog:"
 msgid "&Use language's default encoding"
 msgstr "Brug sprogets standardtegnsæt"
 
-#: src/frontends/qt2/ui/LanguageModuleBase.ui:191
+#: src/frontends/qt2/ui/LanguageModuleBase.ui:170
 msgid "&Encoding:"
 msgstr "Tegns&æt:"
 
-#: src/frontends/qt2/ui/LanguageModuleBase.ui:206
+#: src/frontends/qt2/ui/LanguageModuleBase.ui:192
 msgid "&Quote Style:"
 msgstr "G&åseøjne-stil:"
 
@@ -15537,7 +15542,7 @@ msgstr ""
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_hullinset.C:1294 src/text3.C:170
+#: src/mathed/math_hullinset.C:1297 src/text3.C:170
 msgid "Math editor mode"
 msgstr "Matematikredigering"
 
