@@ -112,8 +112,6 @@ status open
 
 \begin_layout Standard
 \noindent
-
-\color black
 Questa guida viene mantenuta aggiornata da 
 \noun on
 Mike Ressler
@@ -125,12 +123,8 @@ Mike Ressler
 <lyx-docs@lists.lyx.org>
 \family default
 .
-\end_layout
-
-\begin_layout Standard
-La traduzione in italiano è curata da 
+ La traduzione in italiano è curata da 
 \noun on
-\color black
 Claudio Coco
 \noun default
 , 
@@ -4750,7 +4744,7 @@ Esistono sei tipi di intestazioni di sezione numerate.
 \begin_inset Note Note
 status open
 
-\begin_layout Itemize
+\begin_layout Standard
 Perchè non si fa menzione del tipo di intestazione denominato Parte ?
 \end_layout
 
@@ -6650,7 +6644,7 @@ Riempimento Orizzontale
 \labelwidthstring MMMMMMMM
 
 \hfill
-Center
+Centro
 \hfill
  Un 
 \family sans
@@ -7815,7 +7809,7 @@ LyX modificherà la profondità di annidamento solo se consentito.
  Inoltre, la variazione della profondità di annidamento di un paragrafo
  agirà anche sulla profondità di eventuali paragrafi ulteriormente annidati
  al suo interno.
- Poichè è difficile descrivere esattamente come LyX si comporta in situazioni
+ Poiché è difficile descrivere esattamente come LyX si comporta in situazioni
  simili, vi consigliamo di effettuare delle prove e verificare il risultato
  finale.
 \end_layout
@@ -9806,7 +9800,7 @@ Enfatizzato
 \family sans
 Nominativo
 \family default
-, che potete attivare sia mediante associazioni di tasti, da menu, nonchè
+, che potete attivare sia mediante associazioni di tasti, da menu, nonché
  attraverso la barra degli strumenti.
 \end_layout
 
@@ -12579,7 +12573,7 @@ chiuderà
 \family default
 \series default
 \bar default
-<???>Cliccando su 
+Cliccando su 
 \begin_inset Quotes eld
 \end_inset
 
@@ -14106,7 +14100,7 @@ Multicolonna
 \family default
  risulta di grande utilità se avete bisogno di controllare specificatamente
  una singola cella di una tabella, con riferimento alle linee costituenti
- il bordo superiore ed inferiore, nonchè l'allineamento del testo.
+ il bordo superiore ed inferiore, nonché l'allineamento del testo.
  Segue un esempio della gestione speciale di una cella:
 \end_layout
 
@@ -14290,10 +14284,10 @@ Osservate come le celle di testa sono allineate al centro, mentre la colonna
  rimosse la linea inferiore e quella superiore di due celle della tabella.
  
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Standard
-<???> I can make nothing of this explanation.
+I can make nothing of this explanation.
  An improvement would be nice :) - jbl
 \end_layout
 
@@ -16177,7 +16171,7 @@ Navigare una Equazione
 \begin_layout Standard
 Il miglior controllo sul posizionamento del cursore all'interno di una equazione
  si ottiene mediante i tasti cursore.
- Poichè la modalità matematica richiede una disposizione dei simboli molto
+ Poiché la modalità matematica richiede una disposizione dei simboli molto
  piú complessa rispetto alla semplice disposizione lineare, in essa si usano
  piccoli quadrati per indicare dove può essere effettuata l'inserzione di
  un qualche elemento.
@@ -16224,7 +16218,7 @@ Lo
 Spazio
 \family default
  sembra non produrre alcun effetto nell'ambito della modalità matematica,
- poichè, di fatto, non aggiunge spazi tra i caratteri, bensí consente di
+ poiché, di fatto, non aggiunge spazi tra i caratteri, bensí consente di
  uscire da una struttura nidificata.
  Per questo motivo è necessario che facciate attenzione nell'uso dello 
 \family sans
@@ -17683,7 +17677,7 @@ Potete aggiungere delle righe in una matrice preesistente usando
 \family sans
 C-Invio
 \family default
- all'interno della stessa, nonchè aggiungere o eliminare colonne, dal menu
+ all'interno della stessa, nonché aggiungere o eliminare colonne, dal menu
  
 \family sans
 \bar under
@@ -18610,7 +18604,7 @@ scriptstyle e
 \emph default
 scriptscriptstyle.
  Per molti caratteri, stiletesto e stilecentrato hanno al momento la stessa
- dimensione, ma le frazioni, gli esponenti, i pedici, nonchè qualche altro
+ dimensione, ma le frazioni, gli esponenti, i pedici, nonché qualche altro
  elemento caratteristico, sono, nello stilecentrato, più grandi o posizionati
  differentemente.
  Eccetto per alcuni operatori, che si ridimensionano autonomamente per adattarsi
