@@ -78,18 +78,11 @@
 # FORMATS SECTION ##########################
 #
 
-\format "pdf" "pdf" "PDF (pdflatex)" ""
-\format "pdf2" "pdf" "PDF (ps to pdf)" ""
 \viewer "dvi" "open"
 \viewer "eps" "open"
 \viewer "html" "open"
 \viewer "pdf" "open"
 \viewer "ps" "open"
-\viewer "text" "open"
-\viewer "latex" "open"
-\viewer "word" "open"
-\viewer "oo" "open"
-\viewer "rtf" "open"
 
 #
 # CONVERTERS SECTION ##########################
