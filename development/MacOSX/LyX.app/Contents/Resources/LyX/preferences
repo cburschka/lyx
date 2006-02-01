@@ -18,7 +18,7 @@
 
 \path_prefix "/usr/bin:/usr/local/bin:/usr/local/teTeX/bin/powerpc-apple-darwin-current:/usr/X11R6/bin:/sw/bin:/opt/local/teTeX/bin"
 \serverpipe "~/Library/Application Support/LyX/.lyxpipe"
-\preview true
+\preview on
 
 #
 # SCREEN & FONTS SECTION ############################
@@ -78,13 +78,17 @@
 # FORMATS SECTION ##########################
 #
 
-\format "pdf" "pdf" "PDF (pdflatex)" ""
-\format "pdf2" "pdf" "PDF (ps to pdf)" ""
-\viewer "dvi" "open"
-\viewer "eps" "open"
-\viewer "html" "open"
-\viewer "pdf" "open"
-\viewer "ps" "open"
+\format "dvi" "dvi" "DVI" "D" "open" ""
+\format "html" "html" "HTML" "H" "open" ""
+\format "latex" "tex" "LaTeX" "L" "open" ""
+\format "pdf" "pdf" "PDF (ps2pdf)" "P" "open" ""
+\format "ps" "ps" "Postscript" "t" "open" ""
+\format "sxw" "sxw" "OpenOffice.Org Writer" "O" "open" ""
+\format "text" "txt" "ASCII" "A" "open" ""
+\format "textparagraph" "txt" "ASCII (paragraphs)" "" "open" ""
+\format "word" "doc" "Word" "W" "open" ""
+\format "rtf" "rtf" "RTF" "" "open" ""
+
 
 #
 # CONVERTERS SECTION ##########################
