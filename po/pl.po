@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-01-29 14:49+0100\n"
-"PO-Revision-Date: 2006-01-12 23:14+0100\n"
+"POT-Creation-Date: 2006-01-30 22:05+0100\n"
+"PO-Revision-Date: 2006-01-30 22:49+0100\n"
 "Last-Translator: Tomasz £uczak <tlu@technodat.com.pl>\n"
 "Language-Team: Polski <pl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -726,7 +726,7 @@ msgstr "Widoczne|#W"
 #: src/frontends/xforms/forms/form_graphics.fd:176
 #: src/frontends/xforms/forms/form_print.fd:373
 msgid "File:|#F"
-msgstr "Plik:|#P"
+msgstr "Plik:|#l"
 
 #: src/frontends/xforms/forms/form_external.fd:176
 msgid "Edit File...|#E"
@@ -985,7 +985,7 @@ msgstr "Do³±cz|#D"
 
 #: src/frontends/xforms/forms/form_include.fd:261
 msgid "Preview|#P"
-msgstr "Podgl±d|#P"
+msgstr "Podgl±d|#o"
 
 #: src/frontends/xforms/forms/form_maths_delim.fd:152
 msgid ""
@@ -2819,8 +2819,7 @@ msgstr "Brak"
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:671
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:690
 msgid "Inner box -- needed for fixed width & line breaks"
-msgstr ""
-"Wnêtrze pudelka -- potrzebne dla ustalenia szeroko¶ci i ³amania wierszy"
+msgstr "Wnêtrze pudelka -- potrzebne dla ustalenia szeroko¶ci i ³amania wierszy"
 
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:682
 msgid "&Inner Box:"
@@ -3179,7 +3178,7 @@ msgstr "Nazwa pliku"
 #: src/frontends/qt2/ui/QIncludeDialogBase.ui:60
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:439
 msgid "&File:"
-msgstr "&Plik:"
+msgstr "P&lik:"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:204
 #: src/frontends/qt2/ui/QIncludeDialogBase.ui:94
@@ -4732,11 +4731,10 @@ msgstr "Od¶wie¿a listê plików"
 
 #: src/frontends/qt2/ui/QTexinfoDialogBase.ui:199
 msgid "&View"
-msgstr "&Podgl±d"
+msgstr "P&odgl±d"
 
 #: src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
+msgid "Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 "Wy¶wietla zawarto¶æ wybranego pliku. Mo¿liwe tylko gdy pliki s± wy¶wietlone "
 "ze ¶cie¿k±"
@@ -8565,7 +8563,7 @@ msgstr "Walijski"
 
 #: lib/ui/classic.ui:32 lib/ui/stdmenus.ui:19
 msgid "File|F"
-msgstr "Plik|P"
+msgstr "Plik|l"
 
 #: lib/ui/classic.ui:33 lib/ui/stdmenus.ui:20
 msgid "Edit|E"
@@ -8581,7 +8579,7 @@ msgstr "Formatowanie|F"
 
 #: lib/ui/classic.ui:36 lib/ui/stdmenus.ui:21
 msgid "View|V"
-msgstr "Podgl±d|P"
+msgstr "Podgl±d|o"
 
 #: lib/ui/classic.ui:37 lib/ui/stdmenus.ui:23
 msgid "Navigate|N"
@@ -8593,7 +8591,7 @@ msgstr "Dokumenty|D"
 
 #: lib/ui/classic.ui:39 lib/ui/stdmenus.ui:26
 msgid "Help|H"
-msgstr "Pomoc|P"
+msgstr "Pomoc|m"
 
 #: lib/ui/classic.ui:47 lib/ui/stdmenus.ui:34
 msgid "New|N"
@@ -9603,7 +9601,7 @@ msgstr "Styl tekstu|l"
 
 #: lib/ui/stdmenus.ui:246
 msgid "File|e"
-msgstr "Plik|P"
+msgstr "Plik|l"
 
 #: lib/ui/stdmenus.ui:247 src/insets/insetbox.C:144 src/insets/insetbox.C:146
 #: src/insets/insetbox.C:148
@@ -12401,10 +12399,8 @@ msgid ""
 msgstr ""
 
 #: src/frontends/xforms/FormCitation.C:217
-msgid ""
-"Optional text which appears before the citation, e.g. \"see <Citation>\""
-msgstr ""
-"Opcjonalny tekst, który pojawi siê przed cytowaniem np. \"patrz <Cytat>\""
+msgid "Optional text which appears before the citation, e.g. \"see <Citation>\""
+msgstr "Opcjonalny tekst, który pojawi siê przed cytowaniem np. \"patrz <Cytat>\""
 
 #: src/frontends/xforms/FormCitation.C:220
 msgid "Optional text which appears after the citation, e.g. \"pp. 12\""
@@ -12459,8 +12455,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormDocument.C:298
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | <<text>> | >>text<< "
-msgstr ""
-" ``tekst'' | ''tekst'' | ,,tekst`` | ,,tekst'' | <<tekst>> | >>tekst<< "
+msgstr " ``tekst'' | ''tekst'' | ,,tekst`` | ,,tekst'' | <<tekst>> | >>tekst<< "
 
 #: src/frontends/xforms/FormDocument.C:314
 msgid " Basic | Natbib author-year | Natbib numerical | Jurabib "
@@ -12545,8 +12540,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormDocument.C:1332
 msgid "Document is read-only. No changes to layout permitted."
-msgstr ""
-"Dokument otwarto tylko do odczytu. Zmiany w ustawieniach s± niedozwolone."
+msgstr "Dokument otwarto tylko do odczytu. Zmiany w ustawieniach s± niedozwolone."
 
 #: src/frontends/xforms/FormExternal.C:418
 msgid "Default|Monochrome|Grayscale|Color|Preview"
@@ -12806,10 +12800,8 @@ msgid "LyX objects that can be assigned a color."
 msgstr "Obiekty, którym mo¿na przypisaæ kolory."
 
 #: src/frontends/xforms/FormPreferences.C:509
-msgid ""
-"Modify the LyX object's color. Note: you must then \"Apply\" the change."
-msgstr ""
-"Zmieñ kolor obiektu programu LyX. Uwaga: nale¿y potem ,,Zastosowaæ'' zmianê."
+msgid "Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgstr "Zmieñ kolor obiektu programu LyX. Uwaga: nale¿y potem ,,Zastosowaæ'' zmianê."
 
 #: src/frontends/xforms/FormPreferences.C:580
 msgid "GUI background"
@@ -12944,7 +12936,7 @@ msgstr ""
 #: src/frontends/xforms/FormPreferences.C:1333
 msgid "Used to recognize the file. E.g., ps, pdf, tex."
 msgstr ""
-"Rozszerzenie u¿ywane jest do rozpoznawania formatów plików, na przyk³ad ps, "
+"Rozszerzenie u¿ywane jest do rozpoznawania formatów plików, np. ps, "
 "pdf, tex."
 
 #: src/frontends/xforms/FormPreferences.C:1336
@@ -13158,8 +13150,7 @@ msgid "Search backwards."
 msgstr "Wyszukaj wstecz."
 
 #: src/frontends/xforms/FormSendto.C:56
-msgid ""
-"Export the buffer to this format before running the command below on it."
+msgid "Export the buffer to this format before running the command below on it."
 msgstr ""
 
 #: src/frontends/xforms/FormSendto.C:59
@@ -14368,8 +14359,7 @@ msgstr ""
 "zastêpowany wpisywanym."
 
 #: src/lyxrc.C:2098
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Interwa³ czasu pomiêdzy automatycznym zapisem w sekundach. 0 wy³±cza "
 "automatycznyzapis."
@@ -14490,8 +14480,7 @@ msgid ""
 msgstr "W³±cz gdy polecenie zmiany jêzyka jest wymagane na pocz±tku dokumentu."
 
 #: src/lyxrc.C:2202
-msgid ""
-"Select if a language switching command is needed at the end of the document."
+msgid "Select if a language switching command is needed at the end of the document."
 msgstr "W³±cz gdy polecenie zmiany jêzyka jest wymagane na koñcu dokumentu."
 
 #: src/lyxrc.C:2206
@@ -14515,8 +14504,7 @@ msgstr "Polecenie LaTeX-a zmieniaj±ce lokalnie jêzyk dokumentu."
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
-msgstr ""
-"Wy³±cz je¶li nie chcesz u¿ywa¼ nazwy jêzyka jako argumentu \\documentclass."
+msgstr "Wy³±cz je¶li nie chcesz u¿ywa¼ nazwy jêzyka jako argumentu \\documentclass."
 
 #: src/lyxrc.C:2222
 msgid ""
@@ -14562,8 +14550,7 @@ msgid ""
 msgstr ""
 
 #: src/lyxrc.C:2253
-msgid ""
-"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "Podaj inny plik s³ownika osobistego. Na przyk³ad \".ispell_polish\"."
 
 #: src/lyxrc.C:2257
@@ -14614,8 +14601,7 @@ msgstr "Opcja pozwalaj±ca wydrukowaæ tylko strony parzyste."
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
-msgstr ""
-"Ostatnia opcja dla programu drukuj±cego przed nazw± drukowanego pliku DVI."
+msgstr "Ostatnia opcja dla programu drukuj±cego przed nazw± drukowanego pliku DVI."
 
 #: src/lyxrc.C:2301
 msgid "Extension of printer program output file. Usually \".ps\"."
@@ -14681,10 +14667,8 @@ msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "Sterownik drukowania, na przyk³ad \"dvips\", \"dvilj4\"."
 
 #: src/lyxrc.C:2353
-msgid ""
-"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
-msgstr ""
-"Wybierz by mieæ mo¿liwo¶æ pisania od prawej do lewej (hebrajski, arabski)."
+msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgstr "Wybierz by mieæ mo¿liwo¶æ pisania od prawej do lewej (hebrajski, arabski)."
 
 #: src/lyxrc.C:2357
 msgid ""
@@ -14927,8 +14911,7 @@ msgstr "Wszystkie pliki (*)"
 
 #: src/support/package.C.in:424
 #, c-format
-msgid ""
-"Unable to determine the path to the LyX binary from the command line %1$s"
+msgid "Unable to determine the path to the LyX binary from the command line %1$s"
 msgstr ""
 "Nie mo¿na okre¶liæ ¶cie¿ki do katalogu systemowego LyX-a z wiersza poleceñ %1"
 "$s"
@@ -15000,13 +14983,11 @@ msgstr "Nieznany token"
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
-msgstr ""
-"Nie mo¿na wstawiæ spacji na pocz±tku akapitu. Przeczytaj, proszê, Samouczek."
+msgstr "Nie mo¿na wstawiæ spacji na pocz±tku akapitu. Przeczytaj, proszê, Samouczek."
 
 #: src/text.C:1175
 msgid "You cannot type two spaces this way. Please read the Tutorial."
-msgstr ""
-"Nie mo¿na wstawiæ dwu spacji w ten sposób. Przeczytaj, proszê, Samouczek."
+msgstr "Nie mo¿na wstawiæ dwu spacji w ten sposób. Przeczytaj, proszê, Samouczek."
 
 #: src/text.C:2194
 msgid "Change: "
@@ -15054,7 +15035,7 @@ msgstr ", Pozycja: "
 msgid ", Boundary: "
 msgstr ""
 
-#: src/text2.C:529
+#: src/text2.C:530
 msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
@@ -15062,11 +15043,11 @@ msgstr ""
 "Operacja zmiany czcionki nie jest zdefiniowana. Podaj j± w menu Formatowanie/"
 "Czcionki."
 
-#: src/text2.C:571
+#: src/text2.C:572
 msgid "Nothing to index!"
 msgstr "Brak obiektów do indeksowania!"
 
-#: src/text2.C:573
+#: src/text2.C:574
 msgid "Cannot index more than one paragraph!"
 msgstr "Nie mo¿na indeksowaæ wiêcej ni¿ jednego akapitu"
 
@@ -15117,3 +15098,4 @@ msgstr "Wype³nij pionowo"
 #: src/vspace.C:506
 msgid "protected"
 msgstr "chronione"
+
