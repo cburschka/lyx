@@ -1613,6 +1613,51 @@ def convert_frameless_box(file):
 	                      'collapsed ' + params['collapsed']]
 	    i = i + 6
 
+
+def remove_branches(file):
+    i = 0
+    while 1:
+        i = find_token(file.header, "\\branch", i)
+        if i == -1:
+            break
+        file.warning("Removing branch %s." % split(file.header[i])[1])
+        j = find_token(file.header, "\\end_branch", i)
+        if j == -1:
+            file.warning("Malformed LyX file: Missing '\\end_branch'.")
+            break
+        del file.header[i:j+1]
+
+    i = 0
+    while 1:
+        i = find_token(file.body, "\\begin_inset Branch", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(file.body, i)
+        if j == -1:
+            file.warning("Malformed LyX file: Missing '\\end_inset'.")
+            i = i + 1
+            continue
+        del file.body[i]
+        del file.body[j - 1]
+        # Seach for a line starting 'collapsed'
+        # If, however, we find a line starting '\layout'
+        # (_always_ present) then break with a warning message
+        collapsed_found = 0
+        while 1:
+            if (file.body[i][:9] == "collapsed"):
+                del file.body[i]
+                collapsed_found = 1
+                continue
+            elif (file.body[i][:7] == "\\layout"):
+                if collapsed_found == 0:
+                    file.warning("Malformed LyX file: Missing 'collapsed'.")
+                # Delete this new paragraph, since it would not appear in
+                # .tex output. This avoids also empty paragraphs.
+                del file.body[i]
+                break
+            i = i + 1
+
+
 ##
 # Convert jurabib
 #
@@ -2318,7 +2363,8 @@ revert =  [[244, []],
            [226, [revert_box, revert_external_2]],
            [225, [revert_note]],
            [224, [rm_end_layout, begin_layout2layout, revert_end_document,
-                  revert_valignment_middle, revert_breaks, convert_frameless_box]],
+                  revert_valignment_middle, revert_breaks, convert_frameless_box,
+                  remove_branches]],
            [223, [revert_external_2, revert_comment, revert_eqref]],
            [222, [revert_spaces, revert_bibtex]],
            [221, [rm_end_header, rm_tracking_changes, rm_body_changes]]]
