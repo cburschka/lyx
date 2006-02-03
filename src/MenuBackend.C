@@ -517,6 +517,11 @@ void expandFormats(MenuItem::Kind kind, Menu & tomenu, LyXView const * view)
 			else if ((*fit)->name() == "textparagraph")
 				label = _("Plain Text as Paragraphs");
 			label += "...";
+		} else if (kind == MenuItem::ExportFormats) {
+			// exporting to LyX does not make sense
+			// FIXME: Introduce noexport flag
+			if ((*fit)->name() == "lyx")
+				continue;
 		}
 		if (!(*fit)->shortcut().empty())
 			label += '|' + (*fit)->shortcut();

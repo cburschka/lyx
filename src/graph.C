@@ -77,8 +77,6 @@ Graph::getReachable(int from, bool only_viewable,
 		int const i = Q_.front();
 		Q_.pop();
 		Format const & format = formats.get(i);
-		if (format.name() == "lyx")
-			continue;
 		if (!only_viewable || !format.viewer().empty() ||
 		    format.isChildFormat())
 			result.push_back(i);

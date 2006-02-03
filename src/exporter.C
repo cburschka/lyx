@@ -61,6 +61,7 @@ vector<string> const Backends(Buffer const & buffer)
 	if (buffer.params().getLyXTextClass().isTeXClassAvailable())
 		v.push_back(BufferFormat(buffer));
 	v.push_back("text");
+	v.push_back("lyx");
 	return v;
 }
 
@@ -143,11 +144,19 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 	runparams.flavor = OutputParams::LATEX;
 	runparams.linelen = lyxrc.ascii_linelen;
 	vector<string> backends = Backends(*buffer);
-	if (find(backends.begin(), backends.end(), format) == backends.end()) {
+	// FIXME: Without this test export to lyx13 would be through
+	// latex -> lyx -> lyx13, because the first backend below with a
+	// working conversion path is used. We should replace this test and
+	// the explicit loop below with a method
+	// getShortestPath(vector<string> const & from, string const & to)
+	// which returns the shortest path from one of the formats in 'from'
+	// to 'to'.
+	if (format == "lyx13x" && !converters.getPath("lyx", format).empty())
+		backend_format = "lyx";
+	else if (find(backends.begin(), backends.end(), format) == backends.end()) {
 		for (vector<string>::const_iterator it = backends.begin();
 		     it != backends.end(); ++it) {
-			Graph::EdgePath p =
-				converters.getPath(*it,	format);
+			Graph::EdgePath p = converters.getPath(*it, format);
 			if (!p.empty()) {
 				runparams.flavor = converters.getFlavor(p);
 				backend_format = *it;
@@ -171,6 +180,9 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 	// Ascii backend
 	if (backend_format == "text")
 		writeFileAscii(*buffer, filename, runparams);
+	// no backend
+	else if (backend_format == "lyx")
+		buffer->writeFile(filename);
 	// Linuxdoc backend
 	else if (buffer->isLinuxDoc()) {
 		runparams.nice = !put_in_tempdir;

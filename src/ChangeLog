@@ -1,3 +1,10 @@
+2006-02-02  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* exporter.C (Backends): Add "lyx" backend
+	* exporter.C (Export): Handle "lyx" backend
+	* graph.C (getReachable): Don't exclude "lyx"
+	* MenuBackend.C (expandFormats): exclude "lyx" from export menu
+
 2006-02-03  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* cursor.C (bruteFind2): convert relative to absolute co-ordinates

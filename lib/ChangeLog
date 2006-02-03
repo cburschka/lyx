@@ -1,3 +1,9 @@
+2006-02-02  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* configure.m4: add lyx13x format and converter
+	* configure.m4: remove viewer from lyx format to exclude it from the
+	View menu
+
 2006-01-26  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* chkconfig.ltx: add missing tests for bibtopic and jurabib;
