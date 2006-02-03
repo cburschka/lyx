@@ -1,5 +1,10 @@
 2006-02-03  Martin Vermeer  <martin.vermeer@hut.fi>
 
+	* cursor.C (bruteFind2): convert relative to absolute co-ordinates
+	for correct in-mathed positioning
+
+2006-02-03  Martin Vermeer  <martin.vermeer@hut.fi>
+
 	* rowpainter.C (paintForeignMark): fix foreign blue line under
 	insets
 

@@ -97,7 +97,12 @@ namespace {
 		for (size_t i = 0; ; ++i) {
 			int xo;
 			int yo;
-			it.inset().cursorPos(it.top(), c.boundary() && ((i+1) == it.depth()), xo, yo);
+			InsetBase const * inset = &it.inset();
+			Point o = theCoords.getInsets().xy(inset);
+			inset->cursorPos(it.top(), c.boundary(), xo, yo);
+			// Convert to absolute
+			xo += o.x_;
+			yo += o.y_;
 			double d = (x - xo) * (x - xo) + (y - yo) * (y - yo);
 			// '<=' in order to take the last possible position
 			// this is important for clicking behind \sum in e.g. '\sum_i a'
