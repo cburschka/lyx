@@ -71,7 +71,7 @@ public:
 	void paintText();
 
 private:
-	void paintForeignMark(double orig_x, LyXFont const & font);
+	void paintForeignMark(double orig_x, LyXFont const & font, int desc = 0);
 	void paintHebrewComposeChar(lyx::pos_type & vpos, LyXFont const & font);
 	void paintArabicComposeChar(lyx::pos_type & vpos, LyXFont const & font);
 	void paintChars(lyx::pos_type & vpos, LyXFont font, 
@@ -288,7 +288,7 @@ void RowPainter::paintChars(pos_type & vpos, LyXFont font,
 }
 
 
-void RowPainter::paintForeignMark(double orig_x, LyXFont const & font)
+void RowPainter::paintForeignMark(double orig_x, LyXFont const & font, int desc)
 {
 	if (!lyxrc.mark_foreign_language)
 		return;
@@ -297,7 +297,7 @@ void RowPainter::paintForeignMark(double orig_x, LyXFont const & font)
 	if (font.language() == bv_.buffer()->params().language)
 		return;
 
-	int const y = yo_ + 1;
+	int const y = yo_ + 1 + desc;
 	pain_.line(int(orig_x), y, int(x_), y, LColor::language);
 }
 
@@ -313,7 +313,8 @@ void RowPainter::paintFromPos(pos_type & vpos)
 	if (par_.isInset(pos)) {
 		paintInset(pos, orig_font);
 		++vpos;
-		paintForeignMark(orig_x, orig_font);
+		paintForeignMark(orig_x, orig_font,
+			par_.getInset(pos)->descent());
 		return;
 	}
 
