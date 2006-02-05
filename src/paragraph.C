@@ -356,12 +356,12 @@ FontSpan Paragraph::fontSpan(lyx::pos_type pos) const
 
 
 // Gets uninstantiated font setting at position 0
-LyXFont const Paragraph::getFirstFontSettings() const
+LyXFont const Paragraph::getFirstFontSettings(BufferParams const & bparams) const
 {
 	if (!empty() && !pimpl_->fontlist.empty())
 		return pimpl_->fontlist[0].font();
 
-	return LyXFont(LyXFont::ALL_INHERIT);
+	return LyXFont(LyXFont::ALL_INHERIT, bparams.language);
 }
 
 
@@ -1494,7 +1494,7 @@ Language const *
 Paragraph::getParLanguage(BufferParams const & bparams) const
 {
 	if (!empty())
-		return getFirstFontSettings().language();
+		return getFirstFontSettings(bparams).language();
 #ifdef WITH_WARNINGS
 #warning FIXME we should check the prev par as well (Lgb)
 #endif

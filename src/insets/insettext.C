@@ -80,6 +80,9 @@ InsetText::InsetText(BufferParams const & bp)
 	paragraphs().back().layout(bp.getLyXTextClass().defaultLayout());
 	if (bp.tracking_changes)
 		paragraphs().back().trackChanges();
+	// Dispose of the infamous L-shaped cursor.
+	text_.current_font.setLanguage(bp.language);
+	text_.real_current_font.setLanguage(bp.language);
 	init();
 }
 
@@ -91,6 +94,10 @@ InsetText::InsetText(InsetText const & in)
 	drawFrame_ = in.drawFrame_;
 	frame_color_ = in.frame_color_;
 	text_.paragraphs() = in.text_.paragraphs();
+	// Hand current buffer language down to "cloned" textinsets 
+	// e.g. tabular cells
+	text_.current_font = in.text_.current_font;
+	text_.real_current_font = in.text_.real_current_font;
 	init();
 }
 
@@ -176,6 +183,7 @@ void InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 	setViewCache(mi.base.bv);
 	mi.base.textwidth -= 2 * border_;
 	font_ = mi.base.font;
+	// Hand font through to contained lyxtext:
 	text_.font_ = mi.base.font;
 	text_.metrics(mi, dim);
 	dim.asc += border_;

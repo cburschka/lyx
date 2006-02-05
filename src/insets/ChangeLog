@@ -1,3 +1,9 @@
+2006-02-05  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* insettext.C: Fix bug 2115: blue language lines (for default font)
+	popping up when the documnent font is different. This includes
+	work by Georg Baum.
+
 2006-01-11  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* insetgraphics.C (findTargetFormat): document

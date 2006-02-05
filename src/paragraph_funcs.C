@@ -157,7 +157,7 @@ void breakParagraph(BufferParams const & bparams,
 		// Make sure that we keep the language when
 		// breaking paragrpah.
 		if (tmp->empty()) {
-			LyXFont changed = tmp->getFirstFontSettings();
+			LyXFont changed = tmp->getFirstFontSettings(bparams);
 			LyXFont old = par.getFontSettings(bparams, par.size());
 			changed.setLanguage(old.language());
 			tmp->setFont(0, changed);

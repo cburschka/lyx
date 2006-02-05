@@ -341,10 +341,6 @@ public:
 	LyXFont current_font;
 	/// the current font
 	LyXFont real_current_font;
-	/// our buffer's default layout font. This is textclass specific
-	/* This is actually never initialized! Should be replaced by a
-	 * defaultfont() method that looks at the textclass (easy). [JMarc]*/
-	LyXFont defaultfont_;
 	///
 	int background_color_;
 

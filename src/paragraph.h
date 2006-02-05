@@ -273,7 +273,7 @@ public:
 	LyXFont const
 	getFontSettings(BufferParams const &, lyx::pos_type pos) const;
 	///
-	LyXFont const getFirstFontSettings() const;
+	LyXFont const getFirstFontSettings(BufferParams const &) const;
 
 	/** Get fully instantiated font. If pos == -1, use the layout
 	    font attached to this paragraph.

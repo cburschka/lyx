@@ -159,7 +159,7 @@ void RowPainter::paintInset(pos_type const pos, LyXFont const & font)
 	// FIXME: We should always use font, see documentation of
 	// noFontChange() in insetbase.h.
 	pi.base.font = inset->noFontChange() ?
-		bv_.buffer()->params().getLyXTextClass().defaultfont() :
+		bv_.buffer()->params().getFont() :
 		font;
 	pi.ltr_pos = (text_.bidi.level(pos) % 2 == 0);
 	pi.erased_ = erased_ || isDeletedText(par_, pos);
@@ -658,7 +658,8 @@ void RowPainter::paintText()
 		if (running_strikeout && (highly_editable_inset || !is_struckout)) {
 			// Calculate 1/3 height of the buffer's default font
 			int const middle =
-				yo_ - font_metrics::maxAscent(text_.defaultfont_) / 3;
+				yo_ -
+				font_metrics::maxAscent(bv_.buffer()->params().getFont()) / 3;
 			pain_.line(last_strikeout_x, middle, int(x_), middle,
 				LColor::strikeout, Painter::line_solid, Painter::line_thin);
 			running_strikeout = false;
@@ -711,7 +712,8 @@ void RowPainter::paintText()
 	if (running_strikeout) {
 		// calculate 1/3 height of the buffer's default font
 		int const middle =
-			yo_ - font_metrics::maxAscent(text_.defaultfont_) / 3;
+			yo_ -
+			font_metrics::maxAscent(bv_.buffer()->params().getFont()) / 3;
 		pain_.line(last_strikeout_x, middle, int(x_), middle,
 			LColor::strikeout, Painter::line_solid, Painter::line_thin);
 		running_strikeout = false;

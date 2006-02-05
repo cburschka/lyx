@@ -1,3 +1,17 @@
+2006-02-05  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* buffer.C:
+	* bufferparams.[Ch]:
+	* lyxtext.h:
+	* paragraph.[Ch]:
+	* paragraph_funcs.C
+	* rowpainter.C:
+	* text.C:
+	* text2.C:
+	* text3.C: Fix bug 2115: blue language lines (for default font)
+	popping up when the documnent font is different. This includes work
+	by Georg Baum.
+
 2006-02-02  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* exporter.C (Backends): Add "lyx" backend

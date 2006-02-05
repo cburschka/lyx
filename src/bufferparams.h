@@ -115,6 +115,9 @@ public:
 	///
 	LyXTextClass const & getLyXTextClass() const;
 
+	/// returns the main font for the buffer (document)
+	LyXFont const getFont() const;
+
 	/* this are for the PaperLayout */
 	/// the papersize
 	PAPER_SIZE papersize;

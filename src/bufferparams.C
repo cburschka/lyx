@@ -1092,6 +1092,14 @@ LyXTextClass const & BufferParams::getLyXTextClass() const
 }
 
 
+LyXFont const BufferParams::getFont() const
+{
+	LyXFont f = getLyXTextClass().defaultfont();
+	f.setLanguage(language);
+	return f;
+}
+
+
 void BufferParams::readPreamble(LyXLex & lex)
 {
 	if (lex.getString() != "\\begin_preamble")

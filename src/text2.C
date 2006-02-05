@@ -207,7 +207,7 @@ LyXFont LyXText::getFont(Paragraph const & par, pos_type const pos) const
 		font.realize(outerFont(pit, pars_));
 
 	// Realize with the fonts of lesser depth.
-	font.realize(defaultfont_);
+	font.realize(params.getFont());
 
 	return font;
 }
@@ -221,7 +221,7 @@ LyXFont LyXText::getFont(Paragraph const & par, pos_type const pos) const
 // font.
 void LyXText::applyOuterFont(LyXFont & font) const {
 	LyXFont lf(font_);
-	lf.reduce(defaultfont_);
+	lf.reduce(bv()->buffer()->params().getFont());
 	lf.realize(font);
 	lf.setLanguage(font.language());
 	font = lf;
@@ -238,7 +238,7 @@ LyXFont LyXText::getLayoutFont(pit_type const pit) const
 	LyXFont font = layout->font;
 	// Realize with the fonts of lesser depth.
 	//font.realize(outerFont(pit, paragraphs()));
-	font.realize(defaultfont_);
+	font.realize(bv()->buffer()->params().getFont());
 
 	return font;
 }
@@ -253,7 +253,7 @@ LyXFont LyXText::getLabelFont(Paragraph const & par) const
 
 	LyXFont font = layout->labelfont;
 	// Realize with the fonts of lesser depth.
-	font.realize(defaultfont_);
+	font.realize(bv()->buffer()->params().getFont());
 
 	return font;
 }
@@ -289,7 +289,7 @@ void LyXText::setCharFont(pit_type pit, pos_type pos, LyXFont const & fnt)
 	if (!isMainText())
 		layoutfont.realize(font_);
 
-	layoutfont.realize(defaultfont_);
+	layoutfont.realize(bv()->buffer()->params().getFont());
 
 	// Now, reduce font against full layout font
 	font.reduce(layoutfont);
