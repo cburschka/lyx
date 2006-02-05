@@ -79,7 +79,7 @@
 //#include "FormMathsStyle.h"
 #include "GNote.h"
 #include "GParagraph.h"
-//#include "FormPreferences.h"
+#include "GPreferences.h"
 #include "GPrint.h"
 #include "GRef.h"
 #include "GSearch.h"
@@ -491,9 +491,9 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setView(new GParagraph(*dialog));
 		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 	} else if (name == "prefs") {
-//		dialog->bc().view(new xformsBC(dialog->bc()));
+		dialog->bc().view(new GBC(dialog->bc()));
 		dialog->setController(new ControlPrefs(*dialog));
-//		dialog->setView(new FormPreferences(*dialog));
+		dialog->setView(new GPreferences(*dialog));
 		dialog->bc().bp(new PreferencesPolicy);
 	} else if (name == "print") {
 		dialog->bc().view(new GBC(dialog->bc()));

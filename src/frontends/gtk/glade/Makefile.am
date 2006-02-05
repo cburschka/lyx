@@ -23,6 +23,7 @@ dist_glade_DATA = \
 	mathPanel.glade \
 	note.glade \
 	paragraph.glade \
+	preferences.glade \
 	print.glade \
 	ref.glade \
 	search.glade \

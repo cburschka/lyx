@@ -73,6 +73,8 @@ libgtk_la_SOURCES = \
 	GPainter.h \
 	GParagraph.C \
 	GParagraph.h \
+	GPreferences.C \
+	GPreferences.h \
 	GPrint.C \
 	GPrint.h \
 	GRef.C \
