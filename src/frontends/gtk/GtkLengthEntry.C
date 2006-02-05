@@ -36,7 +36,7 @@ GtkLengthEntry::GtkLengthEntry(
 
 	set_spacing(6);
 	pack_start (spin_, true, true, 0);
-	pack_start (combo_, true, true, 0);
+	pack_start (combo_, false, false, 0);
 	show_all();
 	spin_.signal_changed().connect(sigc::mem_fun(changedsignal_, &sigc::signal<void>::emit));
 	combo_.signal_changed().connect(sigc::mem_fun(changedsignal_, &sigc::signal<void>::emit));
