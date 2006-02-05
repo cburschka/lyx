@@ -29,30 +29,6 @@
 #include <libglademm.h>
 
 using std::string;
-/*using std::pair;
-using std::makepair;*/
-
-/*
-namespace {
-
-pair <string, string> parseFontName(Glib::ustring &name)
-{
-	string fontname = "";
-	string foundry = "";
-
-	int i = 0;	
-	string word;
-	while (word = token(name, ' ', i++)) {
-		if (word == "Bold" || word == "Italic")
-			fontname += (i? " " : "") + word;
-	}
-
-	std::cerr << "parseFontName: made '" << name << "' into '" << fontname << "'\n";
-
-	return makepair (fontname, foundry);
-}
-
-}*/
 
 namespace lyx {
 namespace frontend {
