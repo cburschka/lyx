@@ -47,15 +47,10 @@ void GVSpace::doBuild()
 	setOK(button);
 
 	xml_->get_widget("Spacing", spacingcombo_);
-	xml_->get_widget("Value", valuespin_);
-	Gtk::VBox * box;
-	xml_->get_widget("ValueUnits", box);
-	box->pack_start(valueunitscombo_, true, true, 0);
-	box->show_all();
+	xml_->get_widget_derived("Size", sizelengthentry_);
+	sizelengthentry_->set_relative(false);
 
 	xml_->get_widget("Protect", protectcheck_);
-
-	populateUnitCombo(valueunitscombo_, false);
 
 	spacingcombo_->signal_changed().connect(
 		sigc::mem_fun(*this, &GVSpace::onSpacingComboChanged));
@@ -94,10 +89,9 @@ void GVSpace::update()
 
 	bool const custom_vspace = space.kind() == VSpace::LENGTH;
 	if (custom_vspace) {
-		setWidgetsFromLength(*valuespin_->get_adjustment(), valueunitscombo_, space.length().len());
+		sizelengthentry_->set_length(space.length().len());
 	} else {
-		setWidgetsFromLength(*valuespin_->get_adjustment(), valueunitscombo_, LyXLength());
-
+		sizelengthentry_->set_length("");
 	}
 }
 
@@ -122,7 +116,7 @@ void GVSpace::apply()
 		space = VSpace(VSpace::VFILL);
 		break;
 	case 5:
-		space = VSpace(LyXGlueLength(getLengthFromWidgets(*valuespin_->get_adjustment(), valueunitscombo_)));
+		space = VSpace(LyXGlueLength(sizelengthentry_->get_length()));
 		break;
 	}
 
@@ -135,8 +129,7 @@ void GVSpace::apply()
 void GVSpace::onSpacingComboChanged()
 {
 	bool const custom = spacingcombo_->get_active_row_number() == 5;
-	valueunitscombo_.set_sensitive(custom);
-	valuespin_->set_sensitive(custom);
+	sizelengthentry_->set_sensitive(custom);
 }
 
 } // namespace frontend

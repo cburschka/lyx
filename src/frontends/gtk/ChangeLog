@@ -3,6 +3,8 @@
 	* GPreferences.[Ch], glade/preferences.glade: Start work on 
 	  preferences dialog ("Screen fonts" tab done).
 	* GtkLengthEntry.C: fix packing, oversized units box
+	* GVSpace.[Ch], GDocument.[Ch], glade/document.glade, glade/vspace.glade:
+	  Use GtkLengthEntry
 
 2006-01-28  John Spray  <spray@lyx.org>
 

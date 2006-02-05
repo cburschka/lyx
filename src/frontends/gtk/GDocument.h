@@ -17,6 +17,8 @@
 
 #include "BranchList.h"
 
+#include "GtkLengthEntry.h"
+
 #include <gtkmm.h>
 
 #include <map>
@@ -54,18 +56,14 @@ private:
 	Gtk::RadioButton * vspaceradio_;
 	Gtk::ComboBoxText vspacesizecombo_;
 	std::map<int, VSpace::vspace_kind> vspacesizemap_;
-	Gtk::ComboBoxText vspaceunitcombo_;
-	Gtk::SpinButton * vspacelengthspin_;
-	Gtk::Adjustment * vspacelengthadj_;
+	GtkLengthEntry *vspacelengthentry_;
 	void updateParagraphSeparationSensitivity();
 	void classChanged();
 	// *** End "Document" Page ***
 
 	// *** Begin "Page" Page ***
-	Gtk::SpinButton * pagewidthspin_;
-	Gtk::SpinButton * pageheightspin_;
-	Gtk::ComboBoxText pagewidthunitscombo_;
-	Gtk::ComboBoxText pageheightunitscombo_;
+	GtkLengthEntry * pagewidthlengthentry_;
+	GtkLengthEntry * pageheightlengthentry_;
 	Gtk::ComboBoxText pagesizecombo_;
 	Gtk::RadioButton * portraitradio_;
 	Gtk::RadioButton * landscaperadio_;
@@ -77,20 +75,13 @@ private:
 
 	// *** Begin "Margins" Page ***
 	Gtk::CheckButton * defaultmargins_;
-	Gtk::SpinButton * mtopspin_;
-	Gtk::SpinButton * mbottomspin_;
-	Gtk::SpinButton * minnerspin_;
-	Gtk::SpinButton * mouterspin_;
-	Gtk::SpinButton * mheadsepspin_;
-	Gtk::SpinButton * mheadheightspin_;
-	Gtk::SpinButton * mfootskipspin_;
-	Gtk::ComboBoxText mtopunitcombo_;
-	Gtk::ComboBoxText mbottomunitcombo_;
-	Gtk::ComboBoxText minnerunitcombo_;
-	Gtk::ComboBoxText mouterunitcombo_;
-	Gtk::ComboBoxText mheadsepunitcombo_;
-	Gtk::ComboBoxText mheadheightunitcombo_;
-	Gtk::ComboBoxText mfootskipunitcombo_;
+	GtkLengthEntry * mtoplengthentry_;
+	GtkLengthEntry * mbottomlengthentry_;
+	GtkLengthEntry * minnerlengthentry_;
+	GtkLengthEntry * mouterlengthentry_;
+	GtkLengthEntry * mheadseplengthentry_;
+	GtkLengthEntry * mheadheightlengthentry_;
+	GtkLengthEntry * mfootskiplengthentry_;
 	void marginsChanged();
 	// *** End "Margins" Page ***
 

@@ -14,6 +14,8 @@
 
 #include "GViewBase.h"
 
+#include "GtkLengthEntry.h"
+
 namespace lyx {
 namespace frontend {
 
@@ -32,8 +34,7 @@ private:
 	void onSpacingComboChanged();
 
 	Gtk::ComboBox * spacingcombo_;
-	Gtk::SpinButton * valuespin_;
-	Gtk::ComboBoxText valueunitscombo_;
+	GtkLengthEntry * sizelengthentry_;
 	Gtk::CheckButton * protectcheck_;
 };
 

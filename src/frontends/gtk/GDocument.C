@@ -139,6 +139,7 @@ void GDocument::doBuild()
 	vspaceradio_->signal_toggled().connect(
 		sigc::mem_fun(*this, &GDocument::updateParagraphSeparationSensitivity));
 
+
 	xml_->get_widget("VerticalSpaceSize", box);
 	box->pack_start(vspacesizecombo_, true, true, 0);
 	box->show_all();
@@ -156,14 +157,8 @@ void GDocument::doBuild()
 		sigc::mem_fun(*this,
 		&GDocument::updateParagraphSeparationSensitivity));
 
-	xml_->get_widget("VerticalSpaceLength", vspacelengthspin_);
-	vspacelengthadj_ = vspacelengthspin_->get_adjustment();
-
-	xml_->get_widget("VerticalSpaceUnit", box);
-	box->pack_start(vspaceunitcombo_, true, true, 0);
-	box->show_all();
-
-	populateUnitCombo(vspaceunitcombo_, false);
+	xml_->get_widget_derived("VerticalSpaceLength", vspacelengthentry_);
+	vspacelengthentry_->set_relative(false);
 
 	updateParagraphSeparationSensitivity();
 	// *** End "Document" Page ***
@@ -186,16 +181,10 @@ void GDocument::doBuild()
 	pagesizecombo_.signal_changed().connect(
 		sigc::mem_fun(*this, &GDocument::pageSizeChanged));
 
-	xml_->get_widget("PageWidth", pagewidthspin_);
-	xml_->get_widget("PageHeight", pageheightspin_);
-	xml_->get_widget("PageWidthUnits", box);
-	box->pack_start(pagewidthunitscombo_, true, true, 0);
-	box->show_all();
-	populateUnitCombo(pagewidthunitscombo_, false);
-	xml_->get_widget("PageHeightUnits", box);
-	box->pack_start(pageheightunitscombo_, true, true, 0);
-	box->show_all();
-	populateUnitCombo(pageheightunitscombo_, false);
+	xml_->get_widget_derived("PageWidth", pagewidthlengthentry_);
+	xml_->get_widget_derived("PageHeight", pageheightlengthentry_);
+	pagewidthlengthentry_->set_relative(false);
+	pageheightlengthentry_->set_relative(false);
 
 	xml_->get_widget("Portrait", portraitradio_);
 	xml_->get_widget("Landscape", landscaperadio_);
@@ -212,39 +201,13 @@ void GDocument::doBuild()
 	defaultmargins_->signal_toggled().connect(
 		sigc::mem_fun(*this, &GDocument::marginsChanged));
 
-	xml_->get_widget("MarginTop", mtopspin_);
-	xml_->get_widget("MarginBottom", mbottomspin_);
-	xml_->get_widget("MarginInner", minnerspin_);
-	xml_->get_widget("MarginOuter", mouterspin_);
-	xml_->get_widget("MarginHeadSep", mheadsepspin_);
-	xml_->get_widget("MarginHeadHeight", mheadheightspin_);
-	xml_->get_widget("MarginFootSkip", mfootskipspin_);
-
-	xml_->get_widget("MarginTopUnits", box);
-	box->pack_start(mtopunitcombo_, true, true, 0);
-	populateUnitCombo(mtopunitcombo_, false);
-	xml_->get_widget("MarginBottomUnits", box);
-	box->pack_start(mbottomunitcombo_, true, true, 0);
-	populateUnitCombo(mbottomunitcombo_, false);
-	xml_->get_widget("MarginInnerUnits", box);
-	box->pack_start(minnerunitcombo_, true, true, 0);
-	populateUnitCombo(minnerunitcombo_, false);
-	xml_->get_widget("MarginOuterUnits", box);
-	box->pack_start(mouterunitcombo_, true, true, 0);
-	populateUnitCombo(mouterunitcombo_, false);
-	xml_->get_widget("MarginHeadSepUnits", box);
-	box->pack_start(mheadsepunitcombo_, true, true, 0);
-	populateUnitCombo(mheadsepunitcombo_, false);
-	xml_->get_widget("MarginHeadHeightUnits", box);
-	box->pack_start(mheadheightunitcombo_, true, true, 0);
-	populateUnitCombo(mheadheightunitcombo_, false);
-	xml_->get_widget("MarginFootSkipUnits", box);
-	box->pack_start(mfootskipunitcombo_, true, true, 0);
-	populateUnitCombo(mfootskipunitcombo_, false);
-
-	Gtk::Table * table;
-	xml_->get_widget("MarginsTable", table);
-	table->show_all();
+	xml_->get_widget_derived("MarginsTop", mtoplengthentry_);
+	xml_->get_widget_derived("MarginsBottom", mbottomlengthentry_);
+	xml_->get_widget_derived("MarginsInner", minnerlengthentry_);
+	xml_->get_widget_derived("MarginsOuter", mouterlengthentry_);
+	xml_->get_widget_derived("MarginsHeadSep", mheadseplengthentry_);
+	xml_->get_widget_derived("MarginsHeadHeight", mheadheightlengthentry_);
+	xml_->get_widget_derived("MarginsFootSkip", mfootskiplengthentry_);
 	// *** End "Margins" Page ***
 
 	// *** Start "Language" Page ***
@@ -408,7 +371,7 @@ void GDocument::update()
 	}
 
 	LyXLength vspacelen = params.getDefSkip().length().len();
-	setWidgetsFromLength(*vspacelengthadj_, vspaceunitcombo_, vspacelen);
+	vspacelengthentry_->set_length (vspacelen);
 
 	// *** End "Document" Page ***
 
@@ -416,12 +379,8 @@ void GDocument::update()
 	int const psize = params.papersize;
 	pagesizecombo_.set_active(psize);
 
-	setWidgetsFromLength(
-		*(pagewidthspin_->get_adjustment()),
-		pagewidthunitscombo_, LyXLength(params.paperwidth));
-	setWidgetsFromLength(
-		*(pageheightspin_->get_adjustment()),
-		pageheightunitscombo_, LyXLength(params.paperheight));
+	pagewidthlengthentry_->set_length(LyXLength(params.paperwidth));
+	pageheightlengthentry_->set_length(LyXLength(params.paperheight));
 
 	if (params.orientation == ORIENTATION_PORTRAIT)
 		portraitradio_->set_active();
@@ -440,36 +399,15 @@ void GDocument::update()
 
 	defaultmargins_->set_active(!params.use_geometry);
 
-	setWidgetsFromLength(
-		*(mtopspin_->get_adjustment()),
-		mtopunitcombo_,
-		LyXLength(params.topmargin));
-	setWidgetsFromLength(
-		*(mbottomspin_->get_adjustment()),
-		mbottomunitcombo_,
-		LyXLength(params.bottommargin));
-	setWidgetsFromLength(
-		*(minnerspin_->get_adjustment()),
-		minnerunitcombo_,
-		LyXLength(params.leftmargin));
-	setWidgetsFromLength(
-		*(mouterspin_->get_adjustment()),
-		mouterunitcombo_,
-		LyXLength(params.rightmargin));
-	setWidgetsFromLength(
-		*(mheadsepspin_->get_adjustment()),
-		mheadsepunitcombo_,
-		LyXLength(params.headsep));
-	setWidgetsFromLength(
-		*(mheadheightspin_->get_adjustment()),
-		mheadheightunitcombo_,
-		LyXLength(params.headheight));
-	setWidgetsFromLength(
-		*(mfootskipspin_->get_adjustment()),
-		mfootskipunitcombo_,
-		LyXLength(params.footskip));
-	marginsChanged();
+	mtoplengthentry_->set_length(params.topmargin);
+	mbottomlengthentry_->set_length(params.bottommargin);
+	minnerlengthentry_->set_length(params.leftmargin);
+	mouterlengthentry_->set_length(params.rightmargin);
+	mheadseplengthentry_->set_length(params.headsep);
+	mheadheightlengthentry_->set_length(params.headheight);
+	mfootskiplengthentry_->set_length(params.footskip);
 
+	marginsChanged();
 	// *** End "Margins" Page ***
 
 	// *** Start "Language" Page ***
@@ -636,10 +574,7 @@ void GDocument::apply()
 		vspacesizemap_[vspacesizecombo_.get_active_row_number()];
 	params.setDefSkip(VSpace(selection));
 	if (selection == VSpace::LENGTH) {
-		string const length =
-		getLengthFromWidgets(*vspacelengthadj_,
-				     vspaceunitcombo_);
-
+		LyXLength length = vspacelengthentry_->get_length();
 		params.setDefSkip(VSpace(LyXGlueLength(length)));
 	}
 
@@ -649,10 +584,8 @@ void GDocument::apply()
 	params.papersize = PAPER_SIZE(
 		pagesizecombo_.get_active_row_number());
 
-	params.paperwidth = getLengthFromWidgets(
-		*(pagewidthspin_->get_adjustment()), pagewidthunitscombo_);
-	params.paperheight = getLengthFromWidgets(
-		*(pageheightspin_->get_adjustment()), pageheightunitscombo_);
+	params.paperwidth = pagewidthlengthentry_->get_length_string();
+	params.paperheight = pageheightlengthentry_->get_length_string();
 
 	if (portraitradio_->get_active())
 		params.orientation = ORIENTATION_PORTRAIT;
@@ -670,33 +603,18 @@ void GDocument::apply()
 		params.sides = LyXTextClass::OneSide;
 
 	params.pagestyle = pagestylecombo_.get_active_text();
-
 	// *** End "Page" Page ***
 
 	// *** Begin "Margins" Page ***
 	params.use_geometry = !defaultmargins_->get_active();
 
-	params.topmargin = getLengthFromWidgets(
-		*(mtopspin_->get_adjustment()),
-		mtopunitcombo_);
-	params.bottommargin = getLengthFromWidgets(
-		*(mbottomspin_->get_adjustment()),
-		mbottomunitcombo_);
-	params.leftmargin = getLengthFromWidgets(
-		*(minnerspin_->get_adjustment()),
-		minnerunitcombo_);
-	params.rightmargin = getLengthFromWidgets(
-		*(mouterspin_->get_adjustment()),
-		mouterunitcombo_);
-	params.headsep = getLengthFromWidgets(
-		*(mheadsepspin_->get_adjustment()),
-		mheadsepunitcombo_);
-	params.headheight = getLengthFromWidgets(
-		*(mheadheightspin_->get_adjustment()),
-		mheadheightunitcombo_);
-	params.footskip = getLengthFromWidgets(
-		*(mfootskipspin_->get_adjustment()),
-		mfootskipunitcombo_);
+	params.topmargin = mtoplengthentry_->get_length_string();
+	params.bottommargin = mbottomlengthentry_->get_length_string();
+	params.leftmargin = minnerlengthentry_->get_length_string();
+	params.rightmargin = mouterlengthentry_->get_length_string();
+	params.headsep = mheadseplengthentry_->get_length_string();
+	params.headheight = mheadheightlengthentry_->get_length_string();
+	params.footskip = mfootskiplengthentry_->get_length_string();
 	// *** End "Margins" Page ***
 
 	// *** Start "Language" Page ***
@@ -839,8 +757,7 @@ void GDocument::updateParagraphSeparationSensitivity()
 	bool const lengthsensitive = vspacesensitive &&
 		(vspacesizecombo_.get_active_row_number() == 3);
 
-	vspacelengthspin_->set_sensitive(lengthsensitive);
-	vspaceunitcombo_.set_sensitive(lengthsensitive);
+	vspacelengthentry_->set_sensitive(lengthsensitive);
 }
 
 
@@ -885,10 +802,8 @@ void GDocument::classChanged()
 void GDocument::pageSizeChanged()
 {
 	bool const customsize = pagesizecombo_.get_active_row_number() == 1;
-	pagewidthspin_->set_sensitive(customsize);
-	pageheightspin_->set_sensitive(customsize);
-	pagewidthunitscombo_.set_sensitive(customsize);
-	pageheightunitscombo_.set_sensitive(customsize);
+	pagewidthlengthentry_->set_sensitive(customsize);
+	pageheightlengthentry_->set_sensitive(customsize);
 
 	if (customsize)
 		portraitradio_->set_active();
@@ -899,20 +814,13 @@ void GDocument::marginsChanged()
 {
 	bool const custom = !defaultmargins_->get_active();
 
-	mtopspin_->set_sensitive(custom);
-	mbottomspin_->set_sensitive(custom);
-	minnerspin_->set_sensitive(custom);
-	mouterspin_->set_sensitive(custom);
-	mheadsepspin_->set_sensitive(custom);
-	mheadheightspin_->set_sensitive(custom);
-	mfootskipspin_->set_sensitive(custom);
-	mtopunitcombo_.set_sensitive(custom);
-	mbottomunitcombo_.set_sensitive(custom);
-	minnerunitcombo_.set_sensitive(custom);
-	mouterunitcombo_.set_sensitive(custom);
-	mheadsepunitcombo_.set_sensitive(custom);
-	mheadheightunitcombo_.set_sensitive(custom);
-	mfootskipunitcombo_.set_sensitive(custom);
+	mtoplengthentry_->set_sensitive(custom);
+	mbottomlengthentry_->set_sensitive(custom);
+	minnerlengthentry_->set_sensitive(custom);
+	mouterlengthentry_->set_sensitive(custom);
+	mheadseplengthentry_->set_sensitive(custom);
+	mheadheightlengthentry_->set_sensitive(custom);
+	mfootskiplengthentry_->set_sensitive(custom);
 }
 
 
