@@ -292,6 +292,8 @@ void GDocument::doBuild()
 	addbranchbutton_->signal_clicked().connect(
 		sigc::mem_fun(*this, &GDocument::addBranch));
 	xml_->get_widget("RemoveBranch", removebranchbutton_);
+	removebranchbutton_->signal_clicked().connect(
+		sigc::mem_fun(*this, &GDocument::removeBranch));
 	branchCols_.add(branchColName_);
 	branchCols_.add(branchColActivated_);
 	branchCols_.add(branchColColor_);
@@ -876,6 +878,16 @@ void GDocument::addBranch()
 	(*row)[branchColName_] = "New Branch";
 	(*row)[branchColActivated_] = false;
 	(*row)[branchColColor_] = "#000000";
+}
+
+
+void GDocument::removeBranch()
+{
+	Gtk::TreeModel::iterator const selected = branchsel_->get_selected();
+	if (!branchliststore_->iter_is_valid(selected))
+		return;
+
+	branchliststore_->erase (selected);
 }
 
 

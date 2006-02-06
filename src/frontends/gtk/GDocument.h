@@ -148,6 +148,7 @@ private:
 	Glib::RefPtr<Gtk::ListStore> branchliststore_;
 	Glib::RefPtr<Gtk::TreeSelection> branchsel_;
 	void addBranch();
+	void removeBranch();
 	void branchSelChanged();
 	// *** End "Branches" Page ***
 
