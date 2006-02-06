@@ -78,17 +78,9 @@ void GGraphics::doBuild()
 	xml_->get_widget("Browse", browsebutton_);
 	xml_->get_widget("Edit", editbutton_);
 	xml_->get_widget("Display", displaycombo_);
-	xml_->get_widget("Width", widthspin_);
-	xml_->get_widget("Height", heightspin_);
+	xml_->get_widget_derived("Width", widthlengthentry_);
+	xml_->get_widget_derived("Height", heightlengthentry_);
 	xml_->get_widget("MaintainAspectRatio", aspectcheck_);
-
-	Gtk::VBox * box;
-	xml_->get_widget("WidthUnits", box);
-	box->pack_start(widthunitscombo_, true, true, 0);
-	box->show_all();
-	xml_->get_widget("HeightUnits", box);
-	box->pack_start(heightunitscombo_, true, true, 0);
-	box->show_all();
 
 	xml_->get_widget("SetScaling", setscalingradio_);
 	xml_->get_widget("SetSize", setsizeradio_);
@@ -128,13 +120,9 @@ void GGraphics::doBuild()
 		sigc::mem_fun(*this, &GGraphics::onInput));
 	outputscalespin_->signal_changed().connect(
 		sigc::mem_fun(*this, &GGraphics::onInput));
-	heightspin_->signal_changed().connect(
+	heightlengthentry_->signal_changed().connect(
 		sigc::mem_fun(*this, &GGraphics::onInput));
-	heightunitscombo_.signal_changed().connect(
-		sigc::mem_fun(*this, &GGraphics::onInput));
-	widthspin_->signal_changed().connect(
-		sigc::mem_fun(*this, &GGraphics::onInput));
-	widthunitscombo_.signal_changed().connect(
+	widthlengthentry_->signal_changed().connect(
 		sigc::mem_fun(*this, &GGraphics::onInput));
 	aspectcheck_->signal_toggled().connect(
 		sigc::mem_fun(*this, &GGraphics::onInput));
@@ -149,9 +137,6 @@ void GGraphics::doBuild()
 
 	editbutton_->signal_clicked().connect(
 		sigc::mem_fun(*this, &GGraphics::onEditClicked));
-
-	populateUnitCombo(widthunitscombo_, true);
-	populateUnitCombo(heightunitscombo_, true);
 
 	// the bounding box page
 	leftbottomxspin_->signal_changed().connect(
@@ -215,10 +200,8 @@ void GGraphics::onSizingModeChange()
 	bool const scalingmode = setscalingradio_->get_active();
 
 	outputscalespin_->set_sensitive(scalingmode);
-	widthspin_->set_sensitive(!scalingmode);
-	heightspin_->set_sensitive(!scalingmode);
-	widthunitscombo_.set_sensitive(!scalingmode);
-	heightunitscombo_.set_sensitive(!scalingmode);
+	widthlengthentry_->set_sensitive(!scalingmode);
+	heightlengthentry_->set_sensitive(!scalingmode);
 	aspectcheck_->set_sensitive(!scalingmode);
 	bc().input(ButtonPolicy::SMI_VALID);
 }
@@ -282,10 +265,10 @@ void GGraphics::apply()
 		igp.width = LyXLength();
 	} else {
 		igp.scale = string();
-		igp.width = LyXLength(getLengthFromWidgets(*widthspin_->get_adjustment(), widthunitscombo_));
+		igp.width = widthlengthentry_->get_length();
 	}
 
-	igp.height = LyXLength(getLengthFromWidgets(*heightspin_->get_adjustment(), heightunitscombo_));
+	igp.height = heightlengthentry_->get_length();
 
 	igp.keepAspectRatio = aspectcheck_->get_active();
 	igp.draft = draftcheck_->get_active();
@@ -377,8 +360,8 @@ void GGraphics::update() {
 
 	outputscalespin_->get_adjustment()->set_value(convert<double>(igp.scale));
 
-	setWidgetsFromLength(*widthspin_->get_adjustment(), widthunitscombo_, igp.width);
-	setWidgetsFromLength(*heightspin_->get_adjustment(), heightunitscombo_, igp.height);
+	widthlengthentry_->set_length(igp.width);
+	heightlengthentry_->set_length(igp.height);
 
 	if (!igp.scale.empty()
 		&& !float_equal(convert<double>(igp.scale), 0.0, 0.05)) {

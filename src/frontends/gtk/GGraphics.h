@@ -14,6 +14,8 @@
 
 #include "GViewBase.h"
 
+#include "GtkLengthEntry.h"
+
 #include "lyxlength.h"
 
 #include <boost/scoped_ptr.hpp>
@@ -62,11 +64,9 @@ private:
 	Gtk::Button * browsebutton_;
 	Gtk::Button * editbutton_;
 	Gtk::ComboBox * displaycombo_;
-	Gtk::SpinButton * widthspin_;
-	Gtk::SpinButton * heightspin_;
+	GtkLengthEntry * widthlengthentry_;
+	GtkLengthEntry * heightlengthentry_;
 	Gtk::CheckButton * aspectcheck_;
-	Gtk::ComboBoxText widthunitscombo_;
-	Gtk::ComboBoxText heightunitscombo_;
 	Gtk::RadioButton * setscalingradio_;
 	Gtk::RadioButton * setsizeradio_;
 
