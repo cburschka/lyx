@@ -144,7 +144,7 @@ private:
 	Gtk::TreeModelColumn<bool> branchColActivated_;
 	Gtk::TreeModelColumn<Glib::ustring> branchColColor_;
 	Gtk::TreeModel::ColumnRecord branchCols_;
-	
+
 	Glib::RefPtr<Gtk::ListStore> branchliststore_;
 	Glib::RefPtr<Gtk::TreeSelection> branchsel_;
 	void addBranch();

@@ -74,7 +74,7 @@ Image::FormatList LyXGdkImage::loadableFormats()
 	Gdk::Pixbuf::SListHandle_PixbufFormat gdkformats = Gdk::Pixbuf::get_formats();
 	Gdk::Pixbuf::SListHandle_PixbufFormat::iterator it = gdkformats.begin();
 	Gdk::Pixbuf::SListHandle_PixbufFormat::iterator gdk_end = gdkformats.end();
-	
+
 	for (; it != gdk_end; ++it) {
 		Gdk::PixbufFormat thisformat = (*it);
 		lyxerr[Debug::GRAPHICS] << thisformat.get_name() << endl;
@@ -265,8 +265,8 @@ void LyXGdkImage::rotate_impl(Params const & params)
 		rotation = Gdk::PIXBUF_ROTATE_UPSIDEDOWN;
 	else if (params.angle == 270.0)
 		rotation = Gdk::PIXBUF_ROTATE_CLOCKWISE;
-		
-		
+
+
 	transformed_ = transformed_->rotate_simple(rotation);
 	*/
 }

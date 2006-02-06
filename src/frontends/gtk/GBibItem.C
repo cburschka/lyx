@@ -76,7 +76,7 @@ void GBibItem::apply()
 void GBibItem::changed()
 {
 	if (keyentry_->get_text().size() > 0)
-		bc().valid(TRUE);	
+		bc().valid(TRUE);
 	else
 		bc().valid(FALSE);
 }

@@ -67,7 +67,7 @@ private:
 	Gtk::CheckButton *rightbordercheck_;
 	Gtk::CheckButton *rotatecellcheck_;
 	Gtk::CheckButton *multicolcheck_;
-	
+
 	// **** Longtable tab ****
 };
 

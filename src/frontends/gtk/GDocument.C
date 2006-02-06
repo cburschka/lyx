@@ -297,17 +297,17 @@ void GDocument::doBuild()
 	branchCols_.add(branchColName_);
 	branchCols_.add(branchColActivated_);
 	branchCols_.add(branchColColor_);
-	
+
 	branchliststore_ = Gtk::ListStore::create(branchCols_);
 	branchesview_->set_model(branchliststore_);
 	branchesview_->append_column_editable(_("Name"), branchColName_);
 	branchesview_->append_column_editable(_("Activated"), branchColActivated_);
 	branchesview_->append_column_editable(_("Color"), branchColColor_);
 	branchsel_ = branchesview_->get_selection();
-	
+
 	branchsel_->signal_changed().connect(
 		sigc::mem_fun(*this, &GDocument::branchSelChanged));
-	
+
 	/*
 	ErrorList::const_iterator cit = errors.begin();
 	ErrorList::const_iterator end = errors.end();
@@ -521,7 +521,7 @@ void GDocument::update()
 
 	// *** Start "Branches" Page ***
 	branchliststore_->clear();
-	
+
 	BranchList::const_iterator it = params.branchlist().begin();
 	BranchList::const_iterator const end = params.branchlist().end();
 	for (; it != end; ++it) {
@@ -698,7 +698,7 @@ void GDocument::apply()
 
 	// *** Start "Branches" Page ***
 	/*branchliststore_->clear();
-	
+
 	BranchList::const_iterator it = params.branchlist().begin();
 	BranchList::const_iterator const end = params.branchlist().end();
 	for (; it != end; ++it) {
@@ -707,9 +707,9 @@ void GDocument::apply()
 		(*row)[branchColActivated_] = (*it).getSelected();
 		(*row)[branchColColor_] = (*it).getColor();
 	}*/
-	
+
 	BranchList branchlist;
-	
+
 	Gtk::ListStore::iterator it = branchliststore_->children().begin();
 	Gtk::ListStore::iterator const end = branchliststore_->children().end();
 	for (; it != end; ++it) {
@@ -723,9 +723,9 @@ void GDocument::apply()
 			newbranch->setColor(color);
 		}
 	}
-	
+
 	params.branchlist() = branchlist;
-	
+
 	// *** End "Branches" Page ***
 
 	// *** Begin "Preamble" Page ***

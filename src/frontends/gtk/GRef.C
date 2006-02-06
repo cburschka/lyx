@@ -100,14 +100,14 @@ void GRef::doBuild()
 		sigc::mem_fun(*this, &GRef::back));
 	refreshbutton_->signal_clicked().connect(
 		sigc::mem_fun(*this, &GRef::update_labels));
-	
+
 	labelentry_->signal_changed().connect(
 		sigc::mem_fun(*this, &GRef::update_validity));
 	formatcombo_->signal_changed().connect(
 		sigc::mem_fun(*this, &GRef::update_validity));
 	nameentry_->signal_changed().connect(
 		sigc::mem_fun(*this, &GRef::update_validity));
-	
+
 	applylock_ = false;
 	bc().valid(false);
 }
@@ -121,14 +121,14 @@ void GRef::selection_changed ()
 	Gtk::TreeModel::iterator iter = refview_->get_selection()->get_selected();
 	if(iter) {
 		Gtk::TreeModel::Row row = *iter;
-		labelentry_->set_text(row[refColumns.name]);		
+		labelentry_->set_text(row[refColumns.name]);
 	}
 }
 
 
 void GRef::jumpto()
 {
-	
+
 	if (backbutton_->is_sensitive()) {
 //		controller().gotoAnotherRef(labelentry_->get_text());
 //		OR
@@ -145,7 +145,7 @@ void GRef::jumpto()
 
 void GRef::back()
 {
-	controller().gotoBookmark();	
+	controller().gotoBookmark();
 	backbutton_->set_sensitive(false);
 	jumptobutton_->set_sensitive(true);
 }
@@ -162,7 +162,7 @@ void GRef::buffer_changed()
 void GRef::update()
 {
 	applylock_ = true;
-	
+
 	bc().refreshReadOnly();
 	jumptobutton_->set_sensitive(true);
 	backbutton_->set_sensitive(false);
@@ -181,12 +181,12 @@ void GRef::update()
 	if (doctype == Kernel::LINUXDOC || doctype == Kernel::DOCBOOK) {
 		formatcombo_->set_active(0);
 		formatcombo_->set_sensitive(false);
-		
+
 	} else {
 		formatcombo_->set_active(InsetRef::getType(controller().params().getCmdName()));
 		formatcombo_->set_sensitive(true);
 	}
-	
+
 	bufferstore_ = Gtk::ListStore::create(bufferColumns);
 	vector<string> const buffers = controller().getBufferList();
 	buffercombo_->set_model(bufferstore_);

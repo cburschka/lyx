@@ -29,11 +29,11 @@ private:
 	virtual void doBuild();
 	virtual void update();
 
-	/// enables the apply button if a synonym is selected from the list 
+	/// enables the apply button if a synonym is selected from the list
 	void selection_changed();
 
-	/** apply() won't act when this is true. 
-	    true if no text is selected when the Branch dialog is opened 
+	/** apply() won't act when this is true.
+	    true if no text is selected when the Branch dialog is opened
 	 */
 	bool applylock_;
 

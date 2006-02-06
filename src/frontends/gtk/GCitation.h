@@ -74,13 +74,13 @@ private:
 	 */
  	inline void set_search_buttons();
 
-	/** Helper function for bibFilter_; true if argument's 
+	/** Helper function for bibFilter_; true if argument's
 	    [bibColumns.cite] is false.
 	 */
-	static inline bool bib_visible(const Gtk::TreeModel::const_iterator&); 
+	static inline bool bib_visible(const Gtk::TreeModel::const_iterator&);
 
-	/** apply() won't act when this is true. 
-	    true if no text is selected when the citation dialog is opened 
+	/** apply() won't act when this is true.
+	    true if no text is selected when the citation dialog is opened
 	 */
 	bool applylock_;
 
@@ -119,7 +119,7 @@ private:
 	Gtk::CheckButton * authorcheck_;
 	Gtk::CheckButton * uppercasecheck_;
 
-	Glib::RefPtr<Gtk::TextBuffer> info_;  	
+	Glib::RefPtr<Gtk::TextBuffer> info_;
 
 	Glib::RefPtr<Gtk::ListStore> allListStore_;
 	Glib::RefPtr<Gtk::ListStore> styleStore_;

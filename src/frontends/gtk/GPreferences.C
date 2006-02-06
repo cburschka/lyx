@@ -56,7 +56,7 @@ void GPreferences::doBuild()
 
 	// *** Screen fonts ***
 	// FIXME: these font buttons display a dialog
-	// with options for size and bold/etc which are 
+	// with options for size and bold/etc which are
 	// ignored
 	xml_->get_widget("Roman", romanfontbutton_);
 	xml_->get_widget("SansSerif", sansseriffontbutton_);
@@ -81,7 +81,7 @@ void GPreferences::update()
 
 	LyXRC const & rc(controller().rc());
 
-	// *** Screen fonts *** 
+	// *** Screen fonts ***
 	std::cerr << "Update: got font_name:font_foundry:\n";
 	std::cerr << rc.roman_font_name << ":" << rc.roman_font_foundry << "\n";
 	std::cerr << rc.sans_font_name << ":" << rc.sans_font_foundry << "\n";
@@ -116,7 +116,7 @@ void GPreferences::apply()
 	rc.typewriter_font_name = Pango::FontDescription(
 		typewriterfontbutton_->get_font_name()).get_family ();
 	rc.typewriter_font_foundry = "";
-	
+
 	rc.zoom = zoomadj_->get_value();
 	rc.dpi = dpiadj_->get_value();
 

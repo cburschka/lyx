@@ -114,7 +114,7 @@ void GTabular::doBuild()
 
 void GTabular::apply()
 {
-	
+
 }
 
 
@@ -193,7 +193,7 @@ void GTabular::updateSensitivity()
 {
 	bool specifywidth = specifywidthcheck_->get_active();
 	widthlength_->set_sensitive(specifywidth);
-	vertaligncombo_->set_sensitive(specifywidth);	
+	vertaligncombo_->set_sensitive(specifywidth);
 }
 
 } // namespace frontend

@@ -144,7 +144,7 @@ void GThesaurus::update_lists()
 			Gtk::TreeModel::Row row = *(synTreeStore_->append());
 			row[synColumns.name] = cit->first;
 
-			for (std::vector<string>::const_iterator cit2 = cit->second.begin(); 
+			for (std::vector<string>::const_iterator cit2 = cit->second.begin();
 				cit2 != cit->second.end(); ++cit2) {
   				Gtk::TreeModel::Row childrow = *(synTreeStore_->append(row.children()));
 				childrow[synColumns.name] = *cit2;

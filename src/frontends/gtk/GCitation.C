@@ -178,7 +178,7 @@ void GCitation::doBuild()
 void GCitation::enable_apply() {
 	// if we passed !applylock_ directly as an argument, the restore button
 	// would be activated
-	if (!applylock_ && !(citeFilter_->children()).empty()) 
+	if (!applylock_ && !(citeFilter_->children()).empty())
 		bc().valid(true);
 }
 
@@ -194,7 +194,7 @@ void GCitation::fill_styles()
 	int orig = stylecombo_->get_active_row_number();
 
 	Gtk::TreeModel::iterator iter = citeselection_->get_selected();
-	if(!iter) 
+	if(!iter)
 		iter = (citeFilter_->children()).begin();
 	string key = Glib::locale_from_utf8((*iter)[bibColumns.name]);
 
@@ -244,7 +244,7 @@ void GCitation::update_style()
 		std::find(styles.begin(), styles.end(), cs.style);
 
 	//restore the latest natbib style
-	if (style_ >= 0 && Gtk::TreeModel::Children::size_type(style_) < 
+	if (style_ >= 0 && Gtk::TreeModel::Children::size_type(style_) <
 		(styleStore_->children()).size())
 			stylecombo_->set_active(style_);
 	else
@@ -267,7 +267,7 @@ void GCitation::update_contents()
 	biblio::InfoMap const & theMap = controller().bibkeysInfo();
 	std::vector<std::string> bibkeys = biblio::getKeys(theMap);
 	std::vector<std::string> citekeys = support::getVectorFromString(
-		controller().params().getContents()); 
+		controller().params().getContents());
 
 	int bib_order = 0;
 	allListStore_->clear();
@@ -288,13 +288,13 @@ void GCitation::update_contents()
 	for (std::vector<std::string>::const_iterator ccit = citekeys.begin();
 		ccit != citekeys.end(); ++ccit) {
 
-		for (Gtk::TreeModel::const_iterator cbit = 
-			(allListStore_->children()).begin(); 
+		for (Gtk::TreeModel::const_iterator cbit =
+			(allListStore_->children()).begin();
 			cbit != (allListStore_->children()).end(); ++cbit) {
 
 			if ((*cbit)[bibColumns.name] == (*ccit)) {
 				(*cbit)[bibColumns.cite] = true;
-				allListStore_->move(cbit, 
+				allListStore_->move(cbit,
 					(allListStore_->children()).end());
 				break;
 			}
@@ -334,17 +334,17 @@ void GCitation::update()
 
 void GCitation::up()
 {
-	Gtk::TreeModel::iterator src = 
+	Gtk::TreeModel::iterator src =
 		citeselection_->get_selected();
 	Gtk::TreeModel::iterator dest = src;
 
-	if(--dest == (citeFilter_->children()).begin()) 
+	if(--dest == (citeFilter_->children()).begin())
 		upbutton_->set_sensitive(false);
 
 	src = citeFilter_->convert_iter_to_child_iter(src);
 	dest = citeFilter_->convert_iter_to_child_iter(dest);
 	allListStore_->iter_swap(src, dest);
-		
+
 	bc().valid(true);
 	downbutton_->set_sensitive(true);
 }
@@ -352,13 +352,13 @@ void GCitation::up()
 
 void GCitation::down()
 {
-	Gtk::TreeModel::iterator src = 
+	Gtk::TreeModel::iterator src =
 		citeselection_->get_selected();
 	Gtk::TreeModel::iterator dest = src;
 	// Avoid slow operator-- by using an extra variable
-	Gtk::TreeModel::iterator endtest = ++dest; 
+	Gtk::TreeModel::iterator endtest = ++dest;
 
-	if(++endtest == (citeFilter_->children()).end()) 
+	if(++endtest == (citeFilter_->children()).end())
 		downbutton_->set_sensitive(false);
 
 	src = citeFilter_->convert_iter_to_child_iter(src);
@@ -378,8 +378,8 @@ void GCitation::add()
 		Gtk::TreeModel::iterator next_iter = iter;
 
 		// Select the right key in bibkeysview_ afterwards
-		if(++next_iter == (bibFilter_->children()).end()) { 
-			if(iter != (bibFilter_->children()).begin()) { 
+		if(++next_iter == (bibFilter_->children()).end()) {
+			if(iter != (bibFilter_->children()).begin()) {
 				bibselection_->select(--iter);
 				++iter;
 			} else { // bibkeysview_ will be left empty...
@@ -397,7 +397,7 @@ void GCitation::add()
 		// If a cite key is selected, move bib key to the position above
 		// Otherwise to the last position in citekeysview_
 		Gtk::TreeModel::iterator cite_iter(citeselection_->get_selected());
-		if (cite_iter) { 
+		if (cite_iter) {
 			cite_iter = citeFilter_->convert_iter_to_child_iter(cite_iter);
 		} else {
 			cite_iter = (allListStore_->children()).end();
@@ -421,7 +421,7 @@ void GCitation::add()
 void GCitation::remove()
 {
 	Gtk::TreeModel::iterator iter(citeselection_->get_selected());
-	
+
 	if (iter) {
 		Gtk::TreeModel::iterator next_iter(iter);
 
@@ -457,29 +457,29 @@ void GCitation::remove()
 
 void GCitation::cite_selected()
 {
-	Gtk::TreeModel::iterator iter = 
+	Gtk::TreeModel::iterator iter =
 		citeselection_->get_selected();
 
 	if (iter) {
 		info_->set_text((*iter)[bibColumns.info]);
-		removebutton_->set_sensitive(true);	
+		removebutton_->set_sensitive(true);
 
 		// Set sensitivity of Up/Down buttons
 		if (iter == (citeFilter_->children()).begin()) {
 			upbutton_->set_sensitive(false);
 		} else {
 			upbutton_->set_sensitive(true);
-		} 
+		}
 
 		if (++iter == (citeFilter_->children()).end()) {
 			downbutton_->set_sensitive(false);
 		} else {
-			downbutton_->set_sensitive(true);		
+			downbutton_->set_sensitive(true);
 		}
 
 	} else {
 		info_->set_text("");
-		removebutton_->set_sensitive(false);	
+		removebutton_->set_sensitive(false);
 
 		// Set sensitivity of Up/Down buttons
 		upbutton_->set_sensitive(false);
@@ -491,15 +491,15 @@ void GCitation::cite_selected()
 
 void GCitation::bib_selected()
 {
-	Gtk::TreeModel::iterator iter = 
+	Gtk::TreeModel::iterator iter =
 		bibselection_->get_selected();
 
 	if (iter) {
 		info_->set_text((*iter)[bibColumns.info]);
-		addbutton_->set_sensitive(true);		
+		addbutton_->set_sensitive(true);
 	} else {
 		info_->set_text("");
-		addbutton_->set_sensitive(false);	
+		addbutton_->set_sensitive(false);
 	}
 }
 
@@ -522,9 +522,9 @@ void GCitation::apply()
 
 	string citekeys;
 	int i = 0;
-	for (Gtk::TreeModel::const_iterator cit=children.begin(); 
+	for (Gtk::TreeModel::const_iterator cit=children.begin();
 		cit!=children.end(); ++cit) {
-		
+
 		string item(support::trim(Glib::locale_from_utf8((*cit)[bibColumns.name])));
 		if (item.empty())
 			continue;
@@ -532,9 +532,9 @@ void GCitation::apply()
 			citekeys += ",";
 		citekeys += item;
 	}
-		
+
 	controller().params().setCmdName(command);
-	controller().params().setContents(citekeys); 
+	controller().params().setContents(citekeys);
 
 	controller().params().setSecOptions(Glib::locale_from_utf8(beforeentry_->get_text()));
 	controller().params().setOptions(Glib::locale_from_utf8(afterentry_->get_text()));
@@ -545,7 +545,7 @@ void GCitation::apply()
 void GCitation::find(biblio::Direction dir)
 {
 	biblio::InfoMap const & theMap = controller().bibkeysInfo();
-	std::vector<std::string> bibkeys; 
+	std::vector<std::string> bibkeys;
 
 	biblio::Search const type = regexpcheck_->get_active()
 		? biblio::REGEX : biblio::SIMPLE;
@@ -559,36 +559,36 @@ void GCitation::find(biblio::Direction dir)
 	Gtk::TreeModel::iterator iter;
 	Gtk::TreeModel::Children::difference_type sel = 0;
 
-	if (search_cite) { 
-		for (iter = (citeFilter_->children()).begin(); 
+	if (search_cite) {
+		for (iter = (citeFilter_->children()).begin();
 			iter != (citeFilter_->children()).end(); ++iter) {
 
 			bibkeys.push_back(Glib::locale_from_utf8(
 				(*iter)[bibColumns.name]));
 		}
 
-		iter = citeselection_->get_selected(); 
+		iter = citeselection_->get_selected();
 		if (iter)
 			sel = std::distance((citeFilter_->children()).begin(), iter);
 	} else {
-		for (iter = (bibFilter_->children()).begin(); 
+		for (iter = (bibFilter_->children()).begin();
 			iter != (bibFilter_->children()).end(); ++iter) {
 
 			bibkeys.push_back(Glib::locale_from_utf8(
 				(*iter)[bibColumns.name]));
 		}
 
-		iter = bibselection_->get_selected(); 
+		iter = bibselection_->get_selected();
 		if (iter)
 			sel = std::distance(
 				(bibFilter_->children()).begin(), iter);
 	}
-	
+
 	start = bibkeys.begin();
 
-	if (sel >= 0 && 
+	if (sel >= 0 &&
 		Gtk::TreeModel::Children::size_type(sel) < bibkeys.size())
-			std::advance(start, sel); 
+			std::advance(start, sel);
 
 	bool is_cite = !search_cite;
 	while(is_cite != search_cite) {
@@ -618,28 +618,28 @@ void GCitation::find(biblio::Direction dir)
 			}
 		}
 		vector<string>::const_iterator bibstart = bibkeys.begin();
-		vector<string>::difference_type const found = 
+		vector<string>::difference_type const found =
 			std::distance(bibstart, cit);
-		if (found == sel) 
+		if (found == sel)
 			return;
 
 		start = cit;
 		if (search_cite)
 			iter = (citeFilter_->children()).begin();
 		else
-			iter = (bibFilter_->children()).begin(); 
-		std::advance(iter, found); 
+			iter = (bibFilter_->children()).begin();
+		std::advance(iter, found);
 		is_cite = (*iter)[bibColumns.cite];
-	} 
+	}
 
 	// Highlight and scroll to the key that was found
 	if (search_cite) {
-		citeselection_->select(iter); 
+		citeselection_->select(iter);
 		citekeysview_->set_cursor(Gtk::TreePath(iter));
 		citekeysview_->scroll_to_row(Gtk::TreePath(iter));
 		cite_selected();
 	} else {
-		bibselection_->select(iter); 
+		bibselection_->select(iter);
 		bibkeysview_->set_cursor(Gtk::TreePath(iter));
 		bibkeysview_->scroll_to_row(Gtk::TreePath(iter));
 		bib_selected();
@@ -655,7 +655,7 @@ void GCitation::set_search_buttons()
 	backbutton_->set_sensitive(val);
 	forwardbutton_->set_sensitive(val);
 }
-	
+
 void GCitation::previous()
 {
 	find(biblio::BACKWARD);

@@ -31,13 +31,13 @@ private:
 
 	/// updates the synonym list (e.g. when the keyword is changed)
 	void update_lists();
-	/// enables the apply button if a synonym is selected from the list 
+	/// enables the apply button if a synonym is selected from the list
 	void selection_changed();
 	/// changes the keyword entry content to the synonym double-clicked on
 	void meaningsview_activated(const Gtk::TreeModel::Path&, Gtk::TreeViewColumn*);
 
-	/** apply() won't act when this is true. 
-	    true if no text is selected when the thesaurus dialog is opened 
+	/** apply() won't act when this is true.
+	    true if no text is selected when the thesaurus dialog is opened
 	 */
 	bool applylock_;
 
