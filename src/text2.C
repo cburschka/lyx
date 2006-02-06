@@ -1255,7 +1255,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur, LCursor & old)
 	if (oldpar.empty() || (oldpar.size() == 1 && oldpar.isLineSeparator(0))) {
 		// Delete old par.
 		recordUndo(old, Undo::ATOMIC,
-			   max(old.pit() - 1, 0),
+			   max(old.pit() - 1, pit_type(0)),
 			   min(old.pit() + 1, old.lastpit()));
 		ParagraphList & plist = old.text()->paragraphs();
 		plist.erase(plist.begin() + old.pit());
