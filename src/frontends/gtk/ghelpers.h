@@ -24,18 +24,7 @@ class FuncRequest;
 namespace lyx {
 namespace frontend {
 
-std::string const getLengthFromWidgets(
-	Gtk::Adjustment const & adj,
-	Gtk::ComboBoxText const & combo);
-
-void setWidgetsFromLength(
-	Gtk::Adjustment & adj,
-	Gtk::ComboBoxText & combo,
-	LyXLength const & length);
-
 int comboBoxTextSet(Gtk::ComboBoxText & combo, Glib::ustring target);
-
-void populateUnitCombo(Gtk::ComboBoxText & combo, bool userelative);
 
 // Get a GTK stockID from a lyx function id.
 // Return Gtk::Stock::MISSING_IMAGE if no suitable stock found

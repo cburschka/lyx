@@ -11,6 +11,13 @@
 
 #include <config.h>
 
+#include "ghelpers.h"
+
+#include "GtkLengthEntry.h"
+
+#include <vector>
+#include <sstream>
+
 // Too hard to make concept checks work with this file
 #ifdef _GLIBCXX_CONCEPT_CHECKS
 #undef _GLIBCXX_CONCEPT_CHECKS
@@ -19,11 +26,48 @@
 #undef _GLIBCPP_CONCEPT_CHECKS
 #endif
 
-#include "GtkLengthEntry.h"
 
+using std::string;
+using std::vector;
 
 namespace lyx {
 namespace frontend {
+
+namespace {
+
+string const getLengthFromWidgets(Gtk::Adjustment const & adj, Gtk::ComboBoxText const & combo)
+{
+	std::ostringstream os;
+	os << adj.get_value();
+	os << combo.get_active_text();
+	return os.str();
+}
+
+
+void setWidgetsFromLength(Gtk::Adjustment & adj, Gtk::ComboBoxText & combo, LyXLength const & length)
+{
+	adj.set_value(length.value());
+
+	string unit = stringFromUnit(length.unit());
+	if (unit.empty())
+		unit = getDefaultUnit();
+
+	comboBoxTextSet(combo,unit);
+}
+
+
+void populateUnitCombo(Gtk::ComboBoxText & combo, bool const userelative)
+{
+	vector<string> const units = buildLengthUnitList(userelative);
+
+	vector<string>::const_iterator it = units.begin();
+	vector<string>::const_iterator const end = units.end();
+	for(; it != end; ++it)
+		combo.append_text(*it);
+}
+
+
+}
 
 
 GtkLengthEntry::GtkLengthEntry(

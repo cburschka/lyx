@@ -36,38 +36,8 @@ using std::vector;
 namespace lyx {
 namespace frontend {
 
-string const getLengthFromWidgets(Gtk::Adjustment const & adj, Gtk::ComboBoxText const & combo)
-{
-	std::ostringstream os;
-	os << adj.get_value();
-	os << combo.get_active_text();
-	return os.str();
-}
-
-
-void setWidgetsFromLength(Gtk::Adjustment & adj, Gtk::ComboBoxText & combo, LyXLength const & length)
-{
-	adj.set_value(length.value());
-
-	string unit = stringFromUnit(length.unit());
-	if (unit.empty())
-		unit = getDefaultUnit();
-
-	comboBoxTextSet(combo,unit);
-}
-
-
-void populateUnitCombo(Gtk::ComboBoxText & combo, bool const userelative)
-{
-	vector<string> units = buildLengthUnitList(userelative);
-
-	vector<string>::const_iterator it = units.begin();
-	vector<string>::const_iterator end = units.end();
-	for(; it != end; ++it)
-		combo.append_text(*it);
-}
-
-
+// This function should be replaced by Gtk::ComboBoxText::set_active_text
+// Which was introduced in gtkmm 2.6
 int comboBoxTextSet(Gtk::ComboBoxText & combo, Glib::ustring target)
 {
 	int const children = combo.get_model()->children().size();
@@ -164,7 +134,6 @@ void unitsComboFromLength(Gtk::ComboBox * combo,
 
 vector<string> const buildLengthUnitList(bool const userelative)
 {
-	//vector<string> data(unit_name_gui, unit_name_gui + num_units);
 	vector<string> data;
 	if (userelative) {
 		data = vector<string>(unit_name_gui, unit_name_gui + num_units);

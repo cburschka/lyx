@@ -14,7 +14,6 @@
 #define GLENGTHENTRY_H
 
 
-#include "ghelpers.h"
 #include "lengthcommon.h"
 
 #include <gtkmm.h>

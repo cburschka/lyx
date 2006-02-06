@@ -3,6 +3,8 @@
 	* GGraphics.[Ch], glade/graphics.glade: Use GtkLengthEntry, touch up glade
 	* GDocument.[Ch], glade/document.glade: Only Bullet options left to do
 	* GBibtex.[Ch], glade/bibtex.glade: Implement bibtex dialog
+	* ghelpers.[Ch], GtkLengthEntry.[Ch]: Move some old stuff out of
+	  ghelpers into GtkLengthEntry
 
 2006-02-05  John Spray  <spray@lyx.org>
 
