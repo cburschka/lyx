@@ -58,7 +58,7 @@
 #include "GText.h"
 #include "GMathDelim.h"
 #include "GBibItem.h"
-//#include "FormBibtex.h"
+#include "GBibtex.h"
 #include "GBox.h"
 #include "GBranch.h"
 #include "GChanges.h"
@@ -189,9 +189,9 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setView(new GBibItem(*dialog));
 		dialog->bc().bp(new OkCancelReadOnlyPolicy);
 	} else if (name == "bibtex") {
-//		dialog->bc().view(new xformsBC(dialog->bc()));
+		dialog->bc().view(new GBC(dialog->bc()));
 		dialog->setController(new ControlBibtex(*dialog));
-//		dialog->setView(new FormBibtex(*dialog));
+		dialog->setView(new GBibtex(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "box") {
 		dialog->bc().view(new GBC(dialog->bc()));
