@@ -11,13 +11,6 @@
 
 #include <config.h>
 
-#include "ghelpers.h"
-
-#include "GtkLengthEntry.h"
-
-#include <vector>
-#include <sstream>
-
 // Too hard to make concept checks work with this file
 #ifdef _GLIBCXX_CONCEPT_CHECKS
 #undef _GLIBCXX_CONCEPT_CHECKS
@@ -26,6 +19,12 @@
 #undef _GLIBCPP_CONCEPT_CHECKS
 #endif
 
+#include "GtkLengthEntry.h"
+
+#include "ghelpers.h"
+
+#include <vector>
+#include <sstream>
 
 using std::string;
 using std::vector;
