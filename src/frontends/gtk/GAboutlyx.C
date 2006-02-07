@@ -23,9 +23,13 @@
 #include "ghelpers.h"
 #include "version.h"
 
+#include "support/filetools.h" // LibFileSearch
+
 #include <libglademm.h>
 
 #include <sstream>
+
+using lyx::support::LibFileSearch;
 
 using std::ostringstream;
 using std::string;
@@ -157,32 +161,66 @@ void GAboutlyx::doBuild()
 {
 	string const gladeName = findGladeFile("aboutlyx");
 	xml_ = Gnome::Glade::Xml::create(gladeName);
-	Gtk::Label * version;
-	Gtk::Label * credits;
-	Gtk::Label * license;
-	xml_->get_widget("version", version);
-	xml_->get_widget("credits", credits);
-	xml_->get_widget("license", license);
-	std::ostringstream vs;
-	vs << controller().getVersion()
-	   << std::endl << lyx_version_info;
-	version->set_text(Glib::locale_to_utf8(vs.str()));
-	std::ostringstream crs;
-	controller().getCredits(crs);
-	credits->set_markup(
-		translateMarkup(Glib::convert(crs.str(),
-					      "UTF-8",
-					      "ISO8859-1")));
+
+	Gtk::AboutDialog *dialog;
+	xml_->get_widget("dialog", dialog);
+
+	dialog->set_version(Glib::ustring(PACKAGE_VERSION));
+
 	std::ostringstream ls;
 	ls << controller().getCopyright() << "\n\n"
 	   << controller().getLicense() << "\n\n"
 	   << controller().getDisclaimer();
-	license->set_text(Glib::locale_to_utf8(ls.str()));
-	Gtk::Button * btn;
-	xml_->get_widget("close_button", btn);
-	setCancel(btn);
-	//btn->signal_clicked().connect(sigc::mem_fun(*this, &GViewBase::onCancel));
+	dialog->set_license (ls.str());
+
+	string const filename = LibFileSearch("images", "banner", "ppm");
+	Glib::RefPtr<Gdk::Pixbuf> logo = Gdk::Pixbuf::create_from_file(filename);
+	Glib::RefPtr<Gdk::Pixbuf> logo_scaled = logo->scale_simple(
+		logo->get_width() / 2,
+		logo->get_height() / 2,
+		Gdk::INTERP_BILINEAR);
+	dialog->set_logo(logo_scaled);
+
+	// Total crack - find and hide the built in Credits button
+	// that glade helpfully puts there for us.
+	Glib::List_Iterator<Gtk::Box_Helpers::Child> it =
+		dialog->get_action_area()->children().begin();
+	Glib::List_Iterator<Gtk::Box_Helpers::Child> const end =
+		dialog->get_action_area()->children().end();
+	for (; it != end; ++it) {
+		Gtk::Button * button = (Gtk::Button*)(it->get_widget());
+		// The close button is a stock ID which we can reliably test for
+		// The license button has no icon
+		// What's left is the credits button
+		if (button->get_label() != "gtk-close" && button->get_image())
+			button->hide();
+	}
+
+	Gtk::Button &authorbutton = *Gtk::manage(
+		new Gtk::Button(_("C_redits"), true));
+	authorbutton.set_image(*Gtk::manage(
+		new Gtk::Image(Gtk::Stock::ABOUT, Gtk::ICON_SIZE_BUTTON)));
+	dialog->get_action_area()->pack_end(authorbutton);
+	dialog->get_action_area()->reorder_child(authorbutton, 0);
+	authorbutton.signal_clicked().connect(
+		sigc::mem_fun(*this, &GAboutlyx::showAuthors));
+	authorbutton.show();
+	xml_->get_widget("AuthorsDialog", authordialog_);
+	Gtk::Label *authorlabel;
+	xml_->get_widget("Authors", authorlabel);
+	std::ostringstream crs;
+	controller().getCredits(crs);
+	authorlabel->set_markup(translateMarkup(
+		Glib::convert(crs.str(), "UTF-8", "ISO-8859-1")));
 }
+
+
+void GAboutlyx::showAuthors()
+{
+	authordialog_->run();
+	authordialog_->hide();
+}
+
 
 } // namespace frontend
 } // namespace lyx

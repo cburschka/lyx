@@ -26,6 +26,9 @@ private:
 	virtual void apply() {}
 	virtual void update() {}
 	virtual void doBuild();
+
+	void showAuthors();
+	Gtk::Dialog *authordialog_;
 };
 
 } // namespace frontend
