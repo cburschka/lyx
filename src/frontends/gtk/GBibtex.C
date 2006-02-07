@@ -127,6 +127,8 @@ void GBibtex::update()
 	else
 		toccheck_->set_active(false);
 
+	toccheck_->set_sensitive(!bibtopic);
+
 	string btprint(controller().params().getSecOptions());
 	int btp = 0;
 	if (btprint == "btPrintNotCited")
@@ -182,11 +184,12 @@ void GBibtex::apply()
 
 	string const bibstyle = stylecombo_.get_active_text();
 	bool const bibtotoc = toccheck_->get_active();
+	bool const bibtopic = controller().usingBibtopic();
 
-	if (bibtotoc && (!bibstyle.empty())) {
+	if (!bibtopic && bibtotoc && (!bibstyle.empty())) {
 		// both bibtotoc and style
 		controller().params().setOptions("bibtotoc," + bibstyle);
-	} else if (bibtotoc) {
+	} else if (!bibtopic && bibtotoc) {
 		// bibtotoc and no style
 		controller().params().setOptions("bibtotoc");
 	} else {
@@ -214,7 +217,7 @@ void GBibtex::apply()
 		break;
 	}
 
-	if (!controller().usingBibtopic())
+	if (!bibtopic)
 		controller().params().setSecOptions("");
 }
 
