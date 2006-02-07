@@ -66,19 +66,50 @@ void GPreferences::doBuild()
 	dpiadj_ = spin->get_adjustment();
 	xml_->get_widget("Zoom", spin);
 	zoomadj_ = spin->get_adjustment();
+	
+	// *** Graphics ***
+	xml_->get_widget("GraphicsColor", graphicscolorradio_);
+	xml_->get_widget("GraphicsGrayscale", graphicsgrayscaleradio_);
+	xml_->get_widget("GraphicsMonochrome", graphicsmonoradio_);
+	xml_->get_widget("GraphicsDoNotDisplay", graphicsnoneradio_);
+	
+	xml_->get_widget("InstantPreviewOn", instprevonradio_);
+	xml_->get_widget("InstantPreviewOff", instprevoffradio_);
+	xml_->get_widget("InstantPreviewNoMath", instprevnomathradio_);
 
-/*
-	inlineradio_->signal_toggled().connect(
-		sigc::mem_fun(*this, &GPreferences::apply));
-		bcview().addReadOnly(inlineradio_);*/
+	// *** Keyboard ***
+	xml_->get_widget("UseKeyboardMap", keyboardmapcheck_);
+	Gtk::HBox *box;
+	xml_->get_widget("FirstKeyboardMap", box);
+	box->pack_start(keyboardmap1fcbutton_);
+	keyboardmap1fcbutton_.set_action(Gtk::FILE_CHOOSER_ACTION_OPEN);
+	keyboardmap1fcbutton_.show();
+	xml_->get_widget("SecondKeyboardMap", box);
+	box->pack_start(keyboardmap2fcbutton_);
+	keyboardmap2fcbutton_.set_action(Gtk::FILE_CHOOSER_ACTION_OPEN);
+	keyboardmap2fcbutton_.show();
+	
+	Gtk::FileFilter kmapfilter;
+	kmapfilter.set_name ("LyX keyboard maps");
+	kmapfilter.add_pattern ("*.kmap");
+	Gtk::FileFilter allfilter;
+	allfilter.set_name ("All files");
+	allfilter.add_pattern ("*");
 
+	keyboardmap1fcbutton_.add_filter (kmapfilter);
+	keyboardmap1fcbutton_.add_filter (allfilter);
+	keyboardmap1fcbutton_.set_filter (kmapfilter);
+	keyboardmap2fcbutton_.add_filter (kmapfilter);
+	keyboardmap2fcbutton_.add_filter (allfilter);
+	keyboardmap2fcbutton_.set_filter (kmapfilter);
+	
+	keyboardmapcheck_->signal_toggled().connect(
+		sigc::mem_fun(*this, &GPreferences::keyboard_sensitivity));
 }
 
 
 void GPreferences::update()
 {
-	applylock_ = true;
-
 	LyXRC const & rc(controller().rc());
 
 	// *** Screen fonts ***
@@ -94,19 +125,54 @@ void GPreferences::update()
 	zoomadj_->set_value (rc.zoom);
 	dpiadj_->set_value (rc.dpi);
 
+	// *** Graphics ***
+	switch (rc.display_graphics) {
+		case graphics::NoDisplay:
+			graphicsnoneradio_->set_active();
+		break;
+		case graphics::MonochromeDisplay:
+			graphicsmonoradio_->set_active();
+		break;
+		case graphics::GrayscaleDisplay:
+			graphicsgrayscaleradio_->set_active();
+		break;
+		default:
+		case graphics::ColorDisplay:
+			graphicscolorradio_->set_active();
+		break;
+	}
+
+	switch (rc.preview) {
+		case LyXRC::PREVIEW_ON:
+			instprevonradio_->set_active();
+		break;
+		case LyXRC::PREVIEW_NO_MATH:
+			instprevnomathradio_->set_active();
+		break;
+		default:
+		case LyXRC::PREVIEW_OFF:
+			instprevoffradio_->set_active();
+		break;
+	}
+	
+	// *** Keyboard ***
+	keyboardmapcheck_->set_active (rc.use_kbmap);
+	keyboardmap1fcbutton_.set_filename (rc.primary_kbmap);
+	keyboardmap2fcbutton_.set_filename (rc.secondary_kbmap);
+	keyboardmap1fcbutton_.set_sensitive (rc.use_kbmap);
+	keyboardmap2fcbutton_.set_sensitive (rc.use_kbmap);
+
 	bc().valid();
-	applylock_ = false;
 }
 
 
 void GPreferences::apply()
 {
-	if (applylock_)
-		return;
-
 	LyXRC & rc(controller().rc());
 
 	// *** Screen fonts ***
+	LyXRC const oldrc(rc);
+
 	rc.roman_font_name = Pango::FontDescription(
 		romanfontbutton_->get_font_name()).get_family ();
 	rc.roman_font_foundry = "";
@@ -117,11 +183,51 @@ void GPreferences::apply()
 		typewriterfontbutton_->get_font_name()).get_family ();
 	rc.typewriter_font_foundry = "";
 
-	rc.zoom = zoomadj_->get_value();
-	rc.dpi = dpiadj_->get_value();
+	rc.zoom = static_cast<int>(zoomadj_->get_value());
+	rc.dpi = static_cast<int>(dpiadj_->get_value());
+
+	if (rc.font_sizes != oldrc.font_sizes
+		|| rc.roman_font_name != oldrc.roman_font_name
+		|| rc.sans_font_name != oldrc.sans_font_name
+		|| rc.typewriter_font_name != oldrc.typewriter_font_name
+		|| rc.zoom != oldrc.zoom || rc.dpi != oldrc.dpi) {
+		controller().updateScreenFonts();
+	}
+
+	// *** Graphics ***
+	if (graphicsnoneradio_->get_active())
+		rc.display_graphics = graphics::NoDisplay;
+	else if (graphicsgrayscaleradio_->get_active())
+		rc.display_graphics = graphics::GrayscaleDisplay;
+	else if (graphicsmonoradio_->get_active())
+		rc.display_graphics = graphics::MonochromeDisplay;
+	else
+		rc.display_graphics = graphics::ColorDisplay;
+
+	if (instprevonradio_->get_active())
+		rc.preview = LyXRC::PREVIEW_ON;
+	else if (instprevnomathradio_->get_active())
+		rc.preview = LyXRC::PREVIEW_NO_MATH;
+	else
+		rc.preview = LyXRC::PREVIEW_OFF;
+
+	// *** Keyboard ***
+	rc.use_kbmap = keyboardmapcheck_->get_active();
+	if (rc.use_kbmap) {
+		rc.primary_kbmap = keyboardmap1fcbutton_.get_filename();
+		rc.secondary_kbmap = keyboardmap2fcbutton_.get_filename();
+	}
 
 	// Prevent Apply button ever getting disabled
 	bc().valid();
+}
+
+
+void GPreferences::keyboard_sensitivity ()
+{
+	bool const kbmap = keyboardmapcheck_->get_active();
+	keyboardmap1fcbutton_.set_sensitive(kbmap);
+	keyboardmap2fcbutton_.set_sensitive(kbmap);
 }
 
 } // namespace frontend

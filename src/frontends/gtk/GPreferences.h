@@ -29,9 +29,6 @@ private:
 	virtual void doBuild();
 	virtual void update();
 
-	// apply() won't act when this is true
-	bool applylock_;
-
 	// >>> Font tab
 	Gtk::FontButton *romanfontbutton_;
 	Gtk::FontButton *sansseriffontbutton_;
@@ -39,6 +36,24 @@ private:
 	Gtk::Adjustment *dpiadj_;
 	Gtk::Adjustment *zoomadj_;
 	// <<< Font tab
+	
+	// >>> Graphics tab
+	Gtk::RadioButton *graphicscolorradio_;
+	Gtk::RadioButton *graphicsgrayscaleradio_;
+	Gtk::RadioButton *graphicsmonoradio_;
+	Gtk::RadioButton *graphicsnoneradio_;
+	
+	Gtk::RadioButton *instprevonradio_;
+	Gtk::RadioButton *instprevoffradio_;
+	Gtk::RadioButton *instprevnomathradio_;
+	// <<< Graphics tab
+	
+	// >>> Keyboard tab
+	void keyboard_sensitivity ();
+	Gtk::CheckButton *keyboardmapcheck_;
+	Gtk::FileChooserButton keyboardmap1fcbutton_;
+	Gtk::FileChooserButton keyboardmap2fcbutton_;
+	// <<< Keyboard tab
 };
 
 } // namespace frontend
