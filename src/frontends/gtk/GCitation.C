@@ -156,8 +156,11 @@ void GCitation::doBuild()
 	findentry_->signal_changed().connect(
 		sigc::mem_fun(*this, &GCitation::set_search_buttons));
 
+	bibkeysview_->signal_row_activated().connect(
+		sigc::mem_fun(*this, &GCitation::bibkeysview_activated));
 	bibselection_->signal_changed().connect(
 		sigc::mem_fun(*this, &GCitation::bib_selected));
+	
 	citeselection_->signal_changed().connect(
 		sigc::mem_fun(*this, &GCitation::cite_selected));
 
@@ -665,6 +668,12 @@ void GCitation::previous()
 void GCitation::next()
 {
 	find(biblio::FORWARD);
+}
+
+
+void GCitation::bibkeysview_activated(const Gtk::TreeModel::Path&, Gtk::TreeViewColumn*)
+{
+	add();
 }
 
 } // namespace frontend

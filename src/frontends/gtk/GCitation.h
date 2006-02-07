@@ -79,6 +79,9 @@ private:
 	 */
 	static inline bool bib_visible(const Gtk::TreeModel::const_iterator&);
 
+	/// Handle adding a bib key by double clicking
+	void bibkeysview_activated(const Gtk::TreeModel::Path&, Gtk::TreeViewColumn*);
+
 	/** apply() won't act when this is true.
 	    true if no text is selected when the citation dialog is opened
 	 */
