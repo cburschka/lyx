@@ -242,8 +242,7 @@ build_lyx()
 	# The configure script will be unable to create config.h if it
 	# contains Win32-style line endings.
 	rm -f configure.ac
-	sed 's/
-$//' config/configure.ac > configure.ac.$$
+	sed 's/\r$//' config/configure.ac > configure.ac.$$
 	cmp -s config/configure.ac configure.ac.$$ && {
 	    rm -f configure.ac.$$
 	} || {
