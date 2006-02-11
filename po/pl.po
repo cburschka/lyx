@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-01-30 22:05+0100\n"
+"POT-Creation-Date: 2006-02-10 09:25+0100\n"
 "PO-Revision-Date: 2006-01-30 22:49+0100\n"
 "Last-Translator: Tomasz £uczak <tlu@technodat.com.pl>\n"
 "Language-Team: Polski <pl@li.org>\n"
@@ -2116,12 +2116,12 @@ msgstr "&Dostêpne ga³êzie:"
 #: lib/layouts/g-brief-de.layout:34 lib/layouts/g-brief-en.layout:34
 #: lib/layouts/g-brief2.layout:56 lib/layouts/scrlettr.layout:124
 #: lib/layouts/scrlttr2.layout:150 lib/layouts/agu_stdtitle.inc:184
-#: src/frontends/gtk/GDocument.C:338
+#: src/frontends/gtk/GDocument.C:303
 msgid "Name"
 msgstr "Nazwa"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:82
-#: src/frontends/gtk/GDocument.C:339
+#: src/frontends/gtk/GDocument.C:304
 msgid "Activated"
 msgstr "Aktywne"
 
@@ -2129,7 +2129,7 @@ msgstr "Aktywne"
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:436
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:382
 #: src/frontends/qt2/ui/QPrefDisplayModule.ui:105
-#: src/frontends/gtk/GDocument.C:340
+#: src/frontends/gtk/GDocument.C:305
 msgid "Color"
 msgstr "W kolorze"
 
@@ -2819,7 +2819,8 @@ msgstr "Brak"
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:671
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:690
 msgid "Inner box -- needed for fixed width & line breaks"
-msgstr "Wnêtrze pudelka -- potrzebne dla ustalenia szeroko¶ci i ³amania wierszy"
+msgstr ""
+"Wnêtrze pudelka -- potrzebne dla ustalenia szeroko¶ci i ³amania wierszy"
 
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:682
 msgid "&Inner Box:"
@@ -3221,7 +3222,7 @@ msgstr "Wy¶wietlanie na ekranie"
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:244
 #: src/frontends/controllers/ControlExternal.C:226
 #: src/frontends/controllers/ControlGraphics.C:169
-#: src/frontends/gtk/GDocument.C:175 src/frontends/qt2/QDocument.C:111
+#: src/frontends/gtk/GDocument.C:170 src/frontends/qt2/QDocument.C:111
 #: src/lyxfont.C:516
 msgid "Default"
 msgstr "Domy¶lny"
@@ -3691,7 +3692,7 @@ msgstr "1.5"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:66
 #: src/frontends/qt2/ui/QVSpaceDialogBase.ui:151
-#: src/frontends/gtk/GDocument.C:149 src/frontends/gtk/GDocument.C:176
+#: src/frontends/gtk/GDocument.C:150 src/frontends/gtk/GDocument.C:171
 #: src/frontends/qt2/QDocument.C:112 src/frontends/qt2/QDocument.C:168
 msgid "Custom"
 msgstr "W³asne"
@@ -3991,37 +3992,37 @@ msgid "Optional paper size flag (-paper) for some DVI viewers"
 msgstr "Dodatkowe opcje rozmiaru papieru dla przegl±darek DVI"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:250
-#: src/frontends/gtk/GDocument.C:177 src/frontends/qt2/QDocument.C:113
+#: src/frontends/gtk/GDocument.C:172 src/frontends/qt2/QDocument.C:113
 msgid "US letter"
 msgstr "US letter"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:256
-#: src/frontends/gtk/GDocument.C:178 src/frontends/qt2/QDocument.C:114
+#: src/frontends/gtk/GDocument.C:173 src/frontends/qt2/QDocument.C:114
 msgid "US legal"
 msgstr "US legal"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:262
-#: src/frontends/gtk/GDocument.C:179 src/frontends/qt2/QDocument.C:115
+#: src/frontends/gtk/GDocument.C:174 src/frontends/qt2/QDocument.C:115
 msgid "US executive"
 msgstr "US executive"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:268
-#: src/frontends/gtk/GDocument.C:180 src/frontends/qt2/QDocument.C:116
+#: src/frontends/gtk/GDocument.C:175 src/frontends/qt2/QDocument.C:116
 msgid "A3"
 msgstr "A3"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:274
-#: src/frontends/gtk/GDocument.C:181 src/frontends/qt2/QDocument.C:117
+#: src/frontends/gtk/GDocument.C:176 src/frontends/qt2/QDocument.C:117
 msgid "A4"
 msgstr "A4"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:280
-#: src/frontends/gtk/GDocument.C:182 src/frontends/qt2/QDocument.C:118
+#: src/frontends/gtk/GDocument.C:177 src/frontends/qt2/QDocument.C:118
 msgid "A5"
 msgstr "A5"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:286
-#: src/frontends/gtk/GDocument.C:185 src/frontends/qt2/QDocument.C:121
+#: src/frontends/gtk/GDocument.C:180 src/frontends/qt2/QDocument.C:121
 msgid "B5"
 msgstr "B5"
 
@@ -4734,7 +4735,8 @@ msgid "&View"
 msgstr "P&odgl±d"
 
 #: src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
-msgid "Show contents of marked file. Only possible when files are shown with path"
+msgid ""
+"Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 "Wy¶wietla zawarto¶æ wybranego pliku. Mo¿liwe tylko gdy pliki s± wy¶wietlone "
 "ze ¶cie¿k±"
@@ -5286,7 +5288,7 @@ msgstr "Bibliografia"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:411
 #: lib/layouts/ijmpd.layout:163 lib/layouts/ijmpd.layout:171
 #: lib/layouts/kluwer.layout:324 lib/layouts/kluwer.layout:337
-#: src/rowpainter.C:425
+#: src/rowpainter.C:426
 msgid "Appendix"
 msgstr "Dodatek"
 
@@ -10397,8 +10399,8 @@ msgstr "Uruchomiony MakeIndex."
 msgid "Running BibTeX."
 msgstr "Uruchomiony BibTeX."
 
-#: src/MenuBackend.C:452 src/MenuBackend.C:473 src/MenuBackend.C:535
-#: src/MenuBackend.C:559 src/MenuBackend.C:584 src/MenuBackend.C:673
+#: src/MenuBackend.C:452 src/MenuBackend.C:473 src/MenuBackend.C:540
+#: src/MenuBackend.C:564 src/MenuBackend.C:589 src/MenuBackend.C:678
 msgid "No Documents Open!"
 msgstr "Nie ma otwartych dokumentów!"
 
@@ -10410,7 +10412,7 @@ msgstr "Plik ASCII jako wiersze"
 msgid "Plain Text as Paragraphs"
 msgstr "Plik ASCII jako akapity"
 
-#: src/MenuBackend.C:708
+#: src/MenuBackend.C:713
 msgid "No Table of contents"
 msgstr "Brak spisu tre¶ci"
 
@@ -10855,7 +10857,7 @@ msgstr "¦ledzenie zmian"
 msgid "External template/inset messages"
 msgstr ""
 
-#: src/exporter.C:72
+#: src/exporter.C:73
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -10866,58 +10868,58 @@ msgstr ""
 "\n"
 "Czy chcesz zast±piæ ten plik?"
 
-#: src/exporter.C:75
+#: src/exporter.C:76
 msgid "Over-write file?"
 msgstr "Zast±piæ plik?"
 
-#: src/exporter.C:77 src/lyx_cb.C:168 src/lyxfunc.C:1864
+#: src/exporter.C:78 src/lyx_cb.C:168 src/lyxfunc.C:1864
 msgid "&Over-write"
 msgstr "&Zastêpowanie"
 
-#: src/exporter.C:77
+#: src/exporter.C:78
 msgid "Over-write &all"
 msgstr "Zastêpowanie &wszystkich"
 
-#: src/exporter.C:78
+#: src/exporter.C:79
 msgid "&Cancel export"
 msgstr "&Anuluj eksport"
 
-#: src/exporter.C:127
+#: src/exporter.C:128
 msgid "Couldn't copy file"
 msgstr "Nie mo¿na skopiowaæ pliku"
 
-#: src/exporter.C:128
+#: src/exporter.C:129
 #, c-format
 msgid "Copying %1$s to %2$s failed."
 msgstr "Nieudane kopoowanie %1$s do %2$s<."
 
-#: src/exporter.C:158
+#: src/exporter.C:167
 msgid "Couldn't export file"
 msgstr "Nie mo¿na wyeksportowaæ pliku"
 
-#: src/exporter.C:159
+#: src/exporter.C:168
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Brak informacji na temat formatu eksportu %1$s"
 
-#: src/exporter.C:190
+#: src/exporter.C:202
 msgid "File name error"
 msgstr "B³±d nazwy pliku"
 
-#: src/exporter.C:191
+#: src/exporter.C:203
 msgid "The directory path to the document cannot contain spaces."
 msgstr "¦cie¿ka do dokumentu nie mo¿e zawieraæ spacji."
 
-#: src/exporter.C:221
+#: src/exporter.C:233
 msgid "Document export cancelled."
 msgstr "Przerwano eksport dokumentu"
 
-#: src/exporter.C:227
+#: src/exporter.C:239
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokument wyeksportowano jako %1$s do pliku `%2$s'"
 
-#: src/exporter.C:233
+#: src/exporter.C:245
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokument wyeksportowano jako %1$s"
@@ -11443,86 +11445,86 @@ msgstr "Styl dokumentu"
 msgid "Unavailable: %1$s"
 msgstr "Niedostêpne: %1$s"
 
-#: src/frontends/gtk/GDocument.C:146
+#: src/frontends/gtk/GDocument.C:147
 msgid "Small Skip"
 msgstr "Ma³y odstêp"
 
-#: src/frontends/gtk/GDocument.C:147
+#: src/frontends/gtk/GDocument.C:148
 msgid "Medium Skip"
 msgstr "¦redni odstêp"
 
-#: src/frontends/gtk/GDocument.C:148
+#: src/frontends/gtk/GDocument.C:149
 msgid "Big Skip"
 msgstr "Du¿y odstêp"
 
-#: src/frontends/gtk/GDocument.C:183 src/frontends/qt2/QDocument.C:119
+#: src/frontends/gtk/GDocument.C:178 src/frontends/qt2/QDocument.C:119
 msgid "B3"
 msgstr "B3"
 
-#: src/frontends/gtk/GDocument.C:184 src/frontends/qt2/QDocument.C:120
+#: src/frontends/gtk/GDocument.C:179 src/frontends/qt2/QDocument.C:120
 msgid "B4"
 msgstr "B4"
 
-#: src/frontends/gtk/GDocument.C:922
+#: src/frontends/gtk/GDocument.C:832
 #, fuzzy
 msgid "No headings numbered"
 msgstr "Bez numeracji"
 
-#: src/frontends/gtk/GDocument.C:923
+#: src/frontends/gtk/GDocument.C:833
 msgid "Only parts numbered"
 msgstr ""
 
-#: src/frontends/gtk/GDocument.C:924
+#: src/frontends/gtk/GDocument.C:834
 msgid "Chapters and above numbered"
 msgstr ""
 
-#: src/frontends/gtk/GDocument.C:925
+#: src/frontends/gtk/GDocument.C:835
 #, fuzzy
 msgid "Sections and above numbered"
 msgstr "G³êboko¶æ num. rozdzia³ów:"
 
-#: src/frontends/gtk/GDocument.C:926
+#: src/frontends/gtk/GDocument.C:836
 msgid "Subsections and above numbered"
 msgstr ""
 
-#: src/frontends/gtk/GDocument.C:927
+#: src/frontends/gtk/GDocument.C:837
 msgid "Subsubsections and above numbered"
 msgstr ""
 
-#: src/frontends/gtk/GDocument.C:928
+#: src/frontends/gtk/GDocument.C:838
 msgid "Paragraphs and above numbered"
 msgstr ""
 
-#: src/frontends/gtk/GDocument.C:929
+#: src/frontends/gtk/GDocument.C:839
 msgid "All headings numbered"
 msgstr ""
 
-#: src/frontends/gtk/GDocument.C:940
+#: src/frontends/gtk/GDocument.C:850
 #, fuzzy
 msgid "Only Parts appear in TOC"
 msgstr "W spisie tre¶ci"
 
-#: src/frontends/gtk/GDocument.C:941
+#: src/frontends/gtk/GDocument.C:851
 msgid "Chapters and above appear in TOC"
 msgstr ""
 
-#: src/frontends/gtk/GDocument.C:942
+#: src/frontends/gtk/GDocument.C:852
 msgid "Sections and above appear in TOC"
 msgstr ""
 
-#: src/frontends/gtk/GDocument.C:943
+#: src/frontends/gtk/GDocument.C:853
 msgid "Subsections and above appear in TOC"
 msgstr ""
 
-#: src/frontends/gtk/GDocument.C:944
+#: src/frontends/gtk/GDocument.C:854
 msgid "Subsubsections and above appear in TOC"
 msgstr ""
 
-#: src/frontends/gtk/GDocument.C:945
+#: src/frontends/gtk/GDocument.C:855
 msgid "Paragraphs and above appear in TOC"
 msgstr ""
 
-#: src/frontends/gtk/GDocument.C:946
+#: src/frontends/gtk/GDocument.C:856
 msgid "TOC contains all headings"
 msgstr ""
 
@@ -12399,8 +12401,10 @@ msgid ""
 msgstr ""
 
 #: src/frontends/xforms/FormCitation.C:217
-msgid "Optional text which appears before the citation, e.g. \"see <Citation>\""
-msgstr "Opcjonalny tekst, który pojawi siê przed cytowaniem np. \"patrz <Cytat>\""
+msgid ""
+"Optional text which appears before the citation, e.g. \"see <Citation>\""
+msgstr ""
+"Opcjonalny tekst, który pojawi siê przed cytowaniem np. \"patrz <Cytat>\""
 
 #: src/frontends/xforms/FormCitation.C:220
 msgid "Optional text which appears after the citation, e.g. \"pp. 12\""
@@ -12455,7 +12459,8 @@ msgstr ""
 
 #: src/frontends/xforms/FormDocument.C:298
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | <<text>> | >>text<< "
-msgstr " ``tekst'' | ''tekst'' | ,,tekst`` | ,,tekst'' | <<tekst>> | >>tekst<< "
+msgstr ""
+" ``tekst'' | ''tekst'' | ,,tekst`` | ,,tekst'' | <<tekst>> | >>tekst<< "
 
 #: src/frontends/xforms/FormDocument.C:314
 msgid " Basic | Natbib author-year | Natbib numerical | Jurabib "
@@ -12540,7 +12545,8 @@ msgstr ""
 
 #: src/frontends/xforms/FormDocument.C:1332
 msgid "Document is read-only. No changes to layout permitted."
-msgstr "Dokument otwarto tylko do odczytu. Zmiany w ustawieniach s± niedozwolone."
+msgstr ""
+"Dokument otwarto tylko do odczytu. Zmiany w ustawieniach s± niedozwolone."
 
 #: src/frontends/xforms/FormExternal.C:418
 msgid "Default|Monochrome|Grayscale|Color|Preview"
@@ -12800,8 +12806,10 @@ msgid "LyX objects that can be assigned a color."
 msgstr "Obiekty, którym mo¿na przypisaæ kolory."
 
 #: src/frontends/xforms/FormPreferences.C:509
-msgid "Modify the LyX object's color. Note: you must then \"Apply\" the change."
-msgstr "Zmieñ kolor obiektu programu LyX. Uwaga: nale¿y potem ,,Zastosowaæ'' zmianê."
+msgid ""
+"Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgstr ""
+"Zmieñ kolor obiektu programu LyX. Uwaga: nale¿y potem ,,Zastosowaæ'' zmianê."
 
 #: src/frontends/xforms/FormPreferences.C:580
 msgid "GUI background"
@@ -12936,8 +12944,7 @@ msgstr ""
 #: src/frontends/xforms/FormPreferences.C:1333
 msgid "Used to recognize the file. E.g., ps, pdf, tex."
 msgstr ""
-"Rozszerzenie u¿ywane jest do rozpoznawania formatów plików, np. ps, "
-"pdf, tex."
+"Rozszerzenie u¿ywane jest do rozpoznawania formatów plików, np. ps, pdf, tex."
 
 #: src/frontends/xforms/FormPreferences.C:1336
 msgid "The command used to launch the viewer application."
@@ -13150,7 +13157,8 @@ msgid "Search backwards."
 msgstr "Wyszukaj wstecz."
 
 #: src/frontends/xforms/FormSendto.C:56
-msgid "Export the buffer to this format before running the command below on it."
+msgid ""
+"Export the buffer to this format before running the command below on it."
 msgstr ""
 
 #: src/frontends/xforms/FormSendto.C:59
@@ -13626,7 +13634,7 @@ msgstr "B³±d ustawienia wielokolumnowej komórki"
 msgid "You cannot set multicolumn vertically."
 msgstr "Nie mo¿na ustawiæ wielokolumnowej komórki pionowo"
 
-#: src/insets/insettext.C:227
+#: src/insets/insettext.C:235
 msgid "Opened Text Inset"
 msgstr "Otwarta wstawka tekstowa"
 
@@ -14239,7 +14247,7 @@ msgstr ""
 msgid "ChkTeX"
 msgstr "ChkTeX"
 
-#: src/lyxfunc.C:1015 src/text3.C:1253
+#: src/lyxfunc.C:1015 src/text3.C:1247
 msgid "Missing argument"
 msgstr "Brakuje argumentu"
 
@@ -14359,7 +14367,8 @@ msgstr ""
 "zastêpowany wpisywanym."
 
 #: src/lyxrc.C:2098
-msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid ""
+"The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Interwa³ czasu pomiêdzy automatycznym zapisem w sekundach. 0 wy³±cza "
 "automatycznyzapis."
@@ -14480,7 +14489,8 @@ msgid ""
 msgstr "W³±cz gdy polecenie zmiany jêzyka jest wymagane na pocz±tku dokumentu."
 
 #: src/lyxrc.C:2202
-msgid "Select if a language switching command is needed at the end of the document."
+msgid ""
+"Select if a language switching command is needed at the end of the document."
 msgstr "W³±cz gdy polecenie zmiany jêzyka jest wymagane na koñcu dokumentu."
 
 #: src/lyxrc.C:2206
@@ -14504,7 +14514,8 @@ msgstr "Polecenie LaTeX-a zmieniaj±ce lokalnie jêzyk dokumentu."
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
-msgstr "Wy³±cz je¶li nie chcesz u¿ywa¼ nazwy jêzyka jako argumentu \\documentclass."
+msgstr ""
+"Wy³±cz je¶li nie chcesz u¿ywa¼ nazwy jêzyka jako argumentu \\documentclass."
 
 #: src/lyxrc.C:2222
 msgid ""
@@ -14550,7 +14561,8 @@ msgid ""
 msgstr ""
 
 #: src/lyxrc.C:2253
-msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid ""
+"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "Podaj inny plik s³ownika osobistego. Na przyk³ad \".ispell_polish\"."
 
 #: src/lyxrc.C:2257
@@ -14601,7 +14613,8 @@ msgstr "Opcja pozwalaj±ca wydrukowaæ tylko strony parzyste."
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
-msgstr "Ostatnia opcja dla programu drukuj±cego przed nazw± drukowanego pliku DVI."
+msgstr ""
+"Ostatnia opcja dla programu drukuj±cego przed nazw± drukowanego pliku DVI."
 
 #: src/lyxrc.C:2301
 msgid "Extension of printer program output file. Usually \".ps\"."
@@ -14667,8 +14680,10 @@ msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "Sterownik drukowania, na przyk³ad \"dvips\", \"dvilj4\"."
 
 #: src/lyxrc.C:2353
-msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
-msgstr "Wybierz by mieæ mo¿liwo¶æ pisania od prawej do lewej (hebrajski, arabski)."
+msgid ""
+"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgstr ""
+"Wybierz by mieæ mo¿liwo¶æ pisania od prawej do lewej (hebrajski, arabski)."
 
 #: src/lyxrc.C:2357
 msgid ""
@@ -14911,7 +14926,8 @@ msgstr "Wszystkie pliki (*)"
 
 #: src/support/package.C.in:424
 #, c-format
-msgid "Unable to determine the path to the LyX binary from the command line %1$s"
+msgid ""
+"Unable to determine the path to the LyX binary from the command line %1$s"
 msgstr ""
 "Nie mo¿na okre¶liæ ¶cie¿ki do katalogu systemowego LyX-a z wiersza poleceñ %1"
 "$s"
@@ -14983,17 +14999,19 @@ msgstr "Nieznany token"
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
-msgstr "Nie mo¿na wstawiæ spacji na pocz±tku akapitu. Przeczytaj, proszê, Samouczek."
+msgstr ""
+"Nie mo¿na wstawiæ spacji na pocz±tku akapitu. Przeczytaj, proszê, Samouczek."
 
 #: src/text.C:1175
 msgid "You cannot type two spaces this way. Please read the Tutorial."
-msgstr "Nie mo¿na wstawiæ dwu spacji w ten sposób. Przeczytaj, proszê, Samouczek."
+msgstr ""
+"Nie mo¿na wstawiæ dwu spacji w ten sposób. Przeczytaj, proszê, Samouczek."
 
-#: src/text.C:2194
+#: src/text.C:2193
 msgid "Change: "
 msgstr "Zmiana: "
 
-#: src/text.C:2198
+#: src/text.C:2197
 msgid " at "
 msgstr " na "
 
@@ -15067,11 +15085,11 @@ msgstr "Ustawienia "
 msgid " not known"
 msgstr " nieznane"
 
-#: src/text3.C:1357 src/text3.C:1369
+#: src/text3.C:1351 src/text3.C:1363
 msgid "Character set"
 msgstr "Kodowanie"
 
-#: src/text3.C:1501
+#: src/text3.C:1495
 msgid "Paragraph layout set"
 msgstr "Styl akapitu ustawiony"
 
@@ -15098,4 +15116,3 @@ msgstr "Wype³nij pionowo"
 #: src/vspace.C:506
 msgid "protected"
 msgstr "chronione"
-

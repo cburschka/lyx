@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx_it_prova\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-01-29 14:49+0100\n"
+"POT-Creation-Date: 2006-02-10 09:25+0100\n"
 "PO-Revision-Date: 2006-01-10 22:06+0100\n"
 "Last-Translator: Kostantino <ciclope10ATalice.it>\n"
 "Language-Team: Italiano <tp@lists.linux.it>\n"
@@ -2180,12 +2180,12 @@ msgstr "Etichette disponibili"
 #: lib/layouts/g-brief-de.layout:34 lib/layouts/g-brief-en.layout:34
 #: lib/layouts/g-brief2.layout:56 lib/layouts/scrlettr.layout:124
 #: lib/layouts/scrlttr2.layout:150 lib/layouts/agu_stdtitle.inc:184
-#: src/frontends/gtk/GDocument.C:338
+#: src/frontends/gtk/GDocument.C:303
 msgid "Name"
 msgstr "Nome"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:82
-#: src/frontends/gtk/GDocument.C:339
+#: src/frontends/gtk/GDocument.C:304
 msgid "Activated"
 msgstr ""
 
@@ -2193,7 +2193,7 @@ msgstr ""
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:436
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:382
 #: src/frontends/qt2/ui/QPrefDisplayModule.ui:105
-#: src/frontends/gtk/GDocument.C:340
+#: src/frontends/gtk/GDocument.C:305
 msgid "Color"
 msgstr "Colore"
 
@@ -3344,7 +3344,7 @@ msgstr "Contenuto dello schermo"
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:244
 #: src/frontends/controllers/ControlExternal.C:226
 #: src/frontends/controllers/ControlGraphics.C:169
-#: src/frontends/gtk/GDocument.C:175 src/frontends/qt2/QDocument.C:111
+#: src/frontends/gtk/GDocument.C:170 src/frontends/qt2/QDocument.C:111
 #: src/lyxfont.C:516
 msgid "Default"
 msgstr "Predefinito"
@@ -3827,7 +3827,7 @@ msgstr "1.5"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:66
 #: src/frontends/qt2/ui/QVSpaceDialogBase.ui:151
-#: src/frontends/gtk/GDocument.C:149 src/frontends/gtk/GDocument.C:176
+#: src/frontends/gtk/GDocument.C:150 src/frontends/gtk/GDocument.C:171
 #: src/frontends/qt2/QDocument.C:112 src/frontends/qt2/QDocument.C:168
 msgid "Custom"
 msgstr "Personalizzato"
@@ -4145,37 +4145,37 @@ msgstr ""
 "visualizzatori DVI"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:250
-#: src/frontends/gtk/GDocument.C:177 src/frontends/qt2/QDocument.C:113
+#: src/frontends/gtk/GDocument.C:172 src/frontends/qt2/QDocument.C:113
 msgid "US letter"
 msgstr "Lettera US"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:256
-#: src/frontends/gtk/GDocument.C:178 src/frontends/qt2/QDocument.C:114
+#: src/frontends/gtk/GDocument.C:173 src/frontends/qt2/QDocument.C:114
 msgid "US legal"
 msgstr "Legale US"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:262
-#: src/frontends/gtk/GDocument.C:179 src/frontends/qt2/QDocument.C:115
+#: src/frontends/gtk/GDocument.C:174 src/frontends/qt2/QDocument.C:115
 msgid "US executive"
 msgstr "Esecutivo US"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:268
-#: src/frontends/gtk/GDocument.C:180 src/frontends/qt2/QDocument.C:116
+#: src/frontends/gtk/GDocument.C:175 src/frontends/qt2/QDocument.C:116
 msgid "A3"
 msgstr "A3"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:274
-#: src/frontends/gtk/GDocument.C:181 src/frontends/qt2/QDocument.C:117
+#: src/frontends/gtk/GDocument.C:176 src/frontends/qt2/QDocument.C:117
 msgid "A4"
 msgstr "A4"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:280
-#: src/frontends/gtk/GDocument.C:182 src/frontends/qt2/QDocument.C:118
+#: src/frontends/gtk/GDocument.C:177 src/frontends/qt2/QDocument.C:118
 msgid "A5"
 msgstr "A5"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:286
-#: src/frontends/gtk/GDocument.C:185 src/frontends/qt2/QDocument.C:121
+#: src/frontends/gtk/GDocument.C:180 src/frontends/qt2/QDocument.C:121
 msgid "B5"
 msgstr "B5"
 
@@ -5497,7 +5497,7 @@ msgstr "Bibliografia"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:411
 #: lib/layouts/ijmpd.layout:163 lib/layouts/ijmpd.layout:171
 #: lib/layouts/kluwer.layout:324 lib/layouts/kluwer.layout:337
-#: src/rowpainter.C:425
+#: src/rowpainter.C:426
 msgid "Appendix"
 msgstr "Appendice"
 
@@ -11079,8 +11079,8 @@ msgstr "MakeIndex è in esecuzione."
 msgid "Running BibTeX."
 msgstr "BibTeX è in esecuzione."
 
-#: src/MenuBackend.C:452 src/MenuBackend.C:473 src/MenuBackend.C:535
-#: src/MenuBackend.C:559 src/MenuBackend.C:584 src/MenuBackend.C:673
+#: src/MenuBackend.C:452 src/MenuBackend.C:473 src/MenuBackend.C:540
+#: src/MenuBackend.C:564 src/MenuBackend.C:589 src/MenuBackend.C:678
 msgid "No Documents Open!"
 msgstr "Non è stato aperto alcun documento!"
 
@@ -11094,7 +11094,7 @@ msgstr "Testo ASCII come linee"
 msgid "Plain Text as Paragraphs"
 msgstr "Testo ASCII come paragrafi"
 
-#: src/MenuBackend.C:708
+#: src/MenuBackend.C:713
 msgid "No Table of contents"
 msgstr "Nessun indice generale"
 
@@ -11557,7 +11557,7 @@ msgstr "Cambia lingua"
 msgid "External template/inset messages"
 msgstr "Applicativi esterni"
 
-#: src/exporter.C:72
+#: src/exporter.C:73
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -11565,66 +11565,66 @@ msgid ""
 "Do you want to over-write that file?"
 msgstr ""
 
-#: src/exporter.C:75
+#: src/exporter.C:76
 #, fuzzy
 msgid "Over-write file?"
 msgstr "Vedi file"
 
-#: src/exporter.C:77 src/lyx_cb.C:168 src/lyxfunc.C:1864
+#: src/exporter.C:78 src/lyx_cb.C:168 src/lyxfunc.C:1864
 #, fuzzy
 msgid "&Over-write"
 msgstr "T&ypewriter:"
 
-#: src/exporter.C:77
+#: src/exporter.C:78
 msgid "Over-write &all"
 msgstr ""
 
-#: src/exporter.C:78
+#: src/exporter.C:79
 #, fuzzy
 msgid "&Cancel export"
 msgstr "&Cancella"
 
-#: src/exporter.C:127
+#: src/exporter.C:128
 #, fuzzy
 msgid "Couldn't copy file"
 msgstr "Non riesco a copiare il file"
 
-#: src/exporter.C:128
+#: src/exporter.C:129
 #, c-format
 msgid "Copying %1$s to %2$s failed."
 msgstr ""
 
-#: src/exporter.C:158
+#: src/exporter.C:167
 #, fuzzy
 msgid "Couldn't export file"
 msgstr "Non riesco ad esportare il file"
 
-#: src/exporter.C:159
+#: src/exporter.C:168
 #, fuzzy, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Nessuna informazione per l'importazione da %1$s"
 
-#: src/exporter.C:190
+#: src/exporter.C:202
 #, fuzzy
 msgid "File name error"
 msgstr "Nome file"
 
-#: src/exporter.C:191
+#: src/exporter.C:203
 #, fuzzy
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Il percorso ai file di LyX non può contenere spazi."
 
-#: src/exporter.C:221
+#: src/exporter.C:233
 #, fuzzy
 msgid "Document export cancelled."
 msgstr "Il documento è stato esportato come "
 
-#: src/exporter.C:227
+#: src/exporter.C:239
 #, fuzzy, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Il documento è stato esportato come "
 
-#: src/exporter.C:233
+#: src/exporter.C:245
 #, fuzzy, c-format
 msgid "Document exported as %1$s"
 msgstr "Il documento è stato esportato come "
@@ -12189,89 +12189,89 @@ msgstr "Impostazioni dei documenti"
 msgid "Unavailable: %1$s"
 msgstr "Disponibile"
 
-#: src/frontends/gtk/GDocument.C:146
+#: src/frontends/gtk/GDocument.C:147
 #, fuzzy
 msgid "Small Skip"
 msgstr "Salto piccolo"
 
-#: src/frontends/gtk/GDocument.C:147
+#: src/frontends/gtk/GDocument.C:148
 #, fuzzy
 msgid "Medium Skip"
 msgstr "Salto medio"
 
-#: src/frontends/gtk/GDocument.C:148
+#: src/frontends/gtk/GDocument.C:149
 #, fuzzy
 msgid "Big Skip"
 msgstr "Salto grande"
 
-#: src/frontends/gtk/GDocument.C:183 src/frontends/qt2/QDocument.C:119
+#: src/frontends/gtk/GDocument.C:178 src/frontends/qt2/QDocument.C:119
 msgid "B3"
 msgstr "B3"
 
-#: src/frontends/gtk/GDocument.C:184 src/frontends/qt2/QDocument.C:120
+#: src/frontends/gtk/GDocument.C:179 src/frontends/qt2/QDocument.C:120
 msgid "B4"
 msgstr "B4"
 
-#: src/frontends/gtk/GDocument.C:922
+#: src/frontends/gtk/GDocument.C:832
 #, fuzzy
 msgid "No headings numbered"
 msgstr "numero ms"
 
-#: src/frontends/gtk/GDocument.C:923
+#: src/frontends/gtk/GDocument.C:833
 msgid "Only parts numbered"
 msgstr ""
 
-#: src/frontends/gtk/GDocument.C:924
+#: src/frontends/gtk/GDocument.C:834
 msgid "Chapters and above numbered"
 msgstr ""
 
-#: src/frontends/gtk/GDocument.C:925
+#: src/frontends/gtk/GDocument.C:835
 #, fuzzy
 msgid "Sections and above numbered"
 msgstr "Valore del rientro della sezione:"
 
-#: src/frontends/gtk/GDocument.C:926
+#: src/frontends/gtk/GDocument.C:836
 msgid "Subsections and above numbered"
 msgstr ""
 
-#: src/frontends/gtk/GDocument.C:927
+#: src/frontends/gtk/GDocument.C:837
 msgid "Subsubsections and above numbered"
 msgstr ""
 
-#: src/frontends/gtk/GDocument.C:928
+#: src/frontends/gtk/GDocument.C:838
 #, fuzzy
 msgid "Paragraphs and above numbered"
 msgstr " i paragrafi potrebbero non essere convertiti"
 
-#: src/frontends/gtk/GDocument.C:929
+#: src/frontends/gtk/GDocument.C:839
 msgid "All headings numbered"
 msgstr ""
 
-#: src/frontends/gtk/GDocument.C:940
+#: src/frontends/gtk/GDocument.C:850
 msgid "Only Parts appear in TOC"
 msgstr ""
 
-#: src/frontends/gtk/GDocument.C:941
+#: src/frontends/gtk/GDocument.C:851
 msgid "Chapters and above appear in TOC"
 msgstr ""
 
-#: src/frontends/gtk/GDocument.C:942
+#: src/frontends/gtk/GDocument.C:852
 msgid "Sections and above appear in TOC"
 msgstr ""
 
-#: src/frontends/gtk/GDocument.C:943
+#: src/frontends/gtk/GDocument.C:853
 msgid "Subsections and above appear in TOC"
 msgstr ""
 
-#: src/frontends/gtk/GDocument.C:944
+#: src/frontends/gtk/GDocument.C:854
 msgid "Subsubsections and above appear in TOC"
 msgstr ""
 
-#: src/frontends/gtk/GDocument.C:945
+#: src/frontends/gtk/GDocument.C:855
 msgid "Paragraphs and above appear in TOC"
 msgstr ""
 
-#: src/frontends/gtk/GDocument.C:946
+#: src/frontends/gtk/GDocument.C:856
 msgid "TOC contains all headings"
 msgstr ""
 
@@ -14532,7 +14532,7 @@ msgstr ""
 msgid "You cannot set multicolumn vertically."
 msgstr ""
 
-#: src/insets/insettext.C:227
+#: src/insets/insettext.C:235
 msgid "Opened Text Inset"
 msgstr "E' stato aperto l'inserto Testo"
 
@@ -15154,7 +15154,7 @@ msgstr "Registro di costruzione"
 msgid "ChkTeX"
 msgstr "Controlla TeX"
 
-#: src/lyxfunc.C:1015 src/text3.C:1253
+#: src/lyxfunc.C:1015 src/text3.C:1247
 msgid "Missing argument"
 msgstr "Argomento mancante"
 
@@ -15976,12 +15976,12 @@ msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Non puoi usare due spazi in questo modo. Per favore, leggi il Tutorial!"
 
-#: src/text.C:2194
+#: src/text.C:2193
 #, fuzzy
 msgid "Change: "
 msgstr "Pagina: "
 
-#: src/text.C:2198
+#: src/text.C:2197
 #, fuzzy
 msgid " at "
 msgstr " a "
@@ -16026,7 +16026,7 @@ msgstr "Proposizione"
 msgid ", Boundary: "
 msgstr ""
 
-#: src/text2.C:529
+#: src/text2.C:530
 msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
@@ -16034,11 +16034,11 @@ msgstr ""
 "Non è stata definita alcuna modifica del carattere. Usa Carattere nel menù "
 "Struttura per definire la modifica dei caratteri."
 
-#: src/text2.C:571
+#: src/text2.C:572
 msgid "Nothing to index!"
 msgstr "Niente da aggiungere all'indice!"
 
-#: src/text2.C:573
+#: src/text2.C:574
 msgid "Cannot index more than one paragraph!"
 msgstr "Non posso aggiungere all'indice più di un paragrafo!"
 
@@ -16058,11 +16058,11 @@ msgstr "Struttura "
 msgid " not known"
 msgstr " sconosciuta"
 
-#: src/text3.C:1357 src/text3.C:1369
+#: src/text3.C:1351 src/text3.C:1363
 msgid "Character set"
 msgstr "Insieme dei caratteri"
 
-#: src/text3.C:1501
+#: src/text3.C:1495
 msgid "Paragraph layout set"
 msgstr "Ho impostato la struttura del paragrafo"
 
