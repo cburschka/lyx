@@ -100,13 +100,6 @@ int getDPI()
 		(WidthOfScreen(scr) * 25.4 / WidthMMOfScreen(scr))) / 2);
 }
 
-extern "C" {
-
-}
-
-/// read in geometry specification
-char geometry[40];
-
 } // namespace anon
 
 
@@ -175,11 +168,10 @@ FuncStatus lyx_gui::getStatus(FuncRequest const & ev)
 {
 	FuncStatus flag;
 	switch (ev.action) {
-	// TODO: Add this back if the gtk doc prefs dialog includes preamble - jcs
-	/*case LFUN_DIALOG_SHOW:
+	case LFUN_DIALOG_SHOW:
 		if (ev.argument == "preamble")
 			flag.unknown(true);
-		break;*/
+		break;
 	case LFUN_TOOLTIPS_TOGGLE:
 		flag.unknown(true);
 		break;
