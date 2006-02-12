@@ -1,3 +1,8 @@
+2006-02-12  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* package.C.in (relative_system_support_dir): fix for win32 and
+	OSX packaging.
+
 2005-11-02  Angus Leeming  <leeming@lyx.org>
 
 	* path.C: trivial fix to a MSVS warning.

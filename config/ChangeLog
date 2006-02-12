@@ -1,4 +1,11 @@
-2006-01-26  Lars Gullik BjÃ¸nne  s<larsbj@lyx.org>
+2006-02-07  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyxinclude.m4 (LYX_VERSION_SUFFIX): do not alter PACKAGE here.
+	(LYX_USE_PACKAGING): add $version_suffix to PACKAGE here and set
+	program_suffix for posix (bug 2237); provide a custom definition
+	of pkgdatadir for OSX and windows.
+
+2006-01-26  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* ltmain.sh: apply patch for darwin
 

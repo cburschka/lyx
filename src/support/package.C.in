@@ -699,7 +699,7 @@ string const relative_system_support_dir()
 	string result;
 
 #if defined (USE_WINDOWS_PACKAGING) || defined (USE_MACOSX_PACKAGING)
-	result = AddPath("../Resources/", PACKAGE);
+	result = "../Resources/";
 #else // Posix-like.
 	result = AddPath("../share/", PACKAGE);
 #endif

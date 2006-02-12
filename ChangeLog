@@ -1,3 +1,8 @@
+2006-02-07  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* configure.ac: call LYX_VERSION_SUFFIX and LYX_USE_PACKAGING
+	earlier (bug 2237); fix definition of LYX_ABS_INSTALLED_DATADIR.
+
 2006-02-11  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* configure.ac:
@@ -7,7 +12,7 @@
 
 	* Delete all .cvsignore files from the source tree
 
-2006-01-26    <larsbj@gullik.net>
+2006-01-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* autogen.sh: remove the --force-missing option to automake 
 

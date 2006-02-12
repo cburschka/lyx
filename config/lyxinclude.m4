@@ -7,7 +7,7 @@ dnl         Allan Rae (rae@lyx.org)
 dnl Usage LYX_CHECK_VERSION   Displays version of LyX being built and
 dnl sets variables "lyx_devel_version" and "lyx_prerelease"
 AC_DEFUN([LYX_CHECK_VERSION],[
-echo "configuring LyX version $VERSION"
+echo "configuring LyX version" AC_PACKAGE_VERSION
 if echo AC_PACKAGE_VERSION | grep 'svn' >/dev/null ; then
   lyx_devel_version=yes
   AC_DEFINE(DEVEL_VERSION, 1, [Define if you are building a development version of LyX])
@@ -28,20 +28,19 @@ dnl Define the option to set a LyX version on installed executables and director
 dnl
 dnl
 AC_DEFUN([LYX_VERSION_SUFFIX],[
-AC_MSG_CHECKING([for install target])
+AC_MSG_CHECKING([for version suffix])
 RPM_VERSION_SUFFIX='""'
 AC_ARG_WITH(version-suffix,
   [  --with-version-suffix[=<version>]  install lyx files as lyx<version>],
   [if test "x$withval" = "xyes";
    then
-     withval="-$VERSION"
+     withval="-"AC_PACKAGE_VERSION
      ac_configure_args=`echo $ac_configure_args | sed "s,--with-version-suffix,--with-version-suffix=$withval,"`
    fi
-   PACKAGE="$PACKAGE$withval"
-   program_suffix=$withval
+   version_suffix=$withval
    RPM_VERSION_SUFFIX="--with-version-suffix=$withval"])
 AC_SUBST(RPM_VERSION_SUFFIX)
-AC_MSG_RESULT([$PACKAGE])
+AC_MSG_RESULT([$withval])
 ])
 
 
@@ -586,24 +585,31 @@ AC_ARG_WITH(packaging,
 AC_MSG_RESULT($lyx_use_packaging)
 case $lyx_use_packaging in
    macosx) AC_DEFINE(USE_MACOSX_PACKAGING, 1, [Define to 1 if LyX should use a MacOS X application bundle file layout])
-	   PACKAGE=LyX
-	   default_prefix="/Applications/LyX.app"
+	   PACKAGE=LyX${version_suffix}
+	   program_suffix=$version_suffix
+	   default_prefix="/Applications/${PACKAGE}.app"
 	   bindir='${prefix}/Contents/MacOS'
 	   libdir='${prefix}/Contents/Resources'
 	   datadir='${prefix}/Contents/Resources'
-	   mandir='${prefix}/Contents/Resources/man' ;;
+	   pkgdatadir='${datadir}'
+	   mandir='${datadir}/man' ;;
   windows) AC_DEFINE(USE_WINDOWS_PACKAGING, 1, [Define to 1 if LyX should use a Windows-style file layout])
-	   PACKAGE=LyX
-	   default_prefix="C:/Program Files/LyX"
+	   PACKAGE=LyX${version_suffix}
+	   program_suffix=$version_suffix
+	   default_prefix="C:/Program Files/${PACKAGE}"
 	   bindir='${prefix}/bin'
 	   libdir='${prefix}/Resources'
 	   datadir='${prefix}/Resources'
+	   pkgdatadir='${datadir}'
 	   mandir='${prefix}/Resources/man' ;;
     posix) AC_DEFINE(USE_POSIX_PACKAGING, 1, [Define to 1 if LyX should use a POSIX-style file layout])
-	   PACKAGE=lyx
+	   PACKAGE=lyx${version_suffix}
+	   program_suffix=$version_suffix
+	   pkgdatadir='${datadir}/${PACKAGE}'
 	   default_prefix=$ac_default_prefix ;;
     *) LYX_ERROR([Unknown packaging type $lyx_use_packaging]) ;;
 esac
+AC_SUBST(pkgdatadir)
 ])
 
 

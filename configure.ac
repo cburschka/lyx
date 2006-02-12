@@ -9,7 +9,13 @@ AC_CONFIG_AUX_DIR(config)
 
 # First check the version
 LYX_CHECK_VERSION
+LYX_VERSION_SUFFIX
+# Check how the files should be packaged
 AC_CANONICAL_TARGET
+LYX_USE_PACKAGING
+# We need to define these variables here and the no-define option of
+# AM_INIT_AUTOMAKE above because we alter $PACKAGE in LYX_USE_PACKAGING. 
+AC_DEFINE_UNQUOTED(PACKAGE, "$PACKAGE", [Name of package])
 
 dnl default maintainer mode to true for development versions
 if test "${enable_maintainer_mode+set}" != set; then
@@ -17,14 +23,9 @@ if test "${enable_maintainer_mode+set}" != set; then
 fi
 AM_MAINTAINER_MODE
 
+save_PACKAGE=$PACKAGE
 AM_INIT_AUTOMAKE([foreign dist-bzip2 tar-ustar no-define 1.9])
-
-# Check how the files should be packaged
-LYX_USE_PACKAGING
-LYX_VERSION_SUFFIX
-# We need to define these variables here and the no-define option of
-# AM_INIT_AUTOMAKE above because LYX_VERSION_SUFFIX alters $PACKAGE.
-AC_DEFINE_UNQUOTED(PACKAGE, "$PACKAGE", [Name of package])
+PACKAGE=$save_PACKAGE
 
 ### Set the execute permissions of the various scripts correctly
 for file in config/install-sh config/mkinstalldirs lib/configure ; do
@@ -302,7 +303,8 @@ AC_FUNC_SELECT_ARGTYPES
 
 ### Some information on what just happened
 real_bindir=`eval "echo \`eval \"echo ${bindir}\"\`"`
-real_datadir=`eval "echo \`eval \"echo ${datadir}/${PACKAGE}\"\`"`
+real_pkgdatadir=`eval "echo \`eval \"echo ${pkgdatadir}\"\`"`
+real_localedir=`eval "echo \`eval \"echo ${datadir}/locale\"\`"`
 VERSION_INFO="Configuration\n\
   Host type:                      ${host}\n\
   Special build flags:            ${lyx_flags}\n\
@@ -317,12 +319,11 @@ VERSION_INFO="Configuration\n\
 ${FRONTEND_INFO}\
   Packaging:                      ${lyx_use_packaging}\n\
   LyX binary dir:                 ${real_bindir}\n\
-  LyX files dir:                  ${real_datadir}\n"
+  LyX files dir:                  ${real_pkgdatadir}\n"
 
-real_localedir=`eval "echo \`eval \"echo ${datadir}/locale\"\`"`
 MSYS_AC_CANONICAL_PATH(LYX_ABS_TOP_SRCDIR, ${srcdir})
 MSYS_AC_CANONICAL_PATH(LYX_ABS_INSTALLED_LOCALEDIR, ${real_localedir})
-MSYS_AC_CANONICAL_PATH(LYX_ABS_INSTALLED_DATADIR, ${real_datadir})
+MSYS_AC_CANONICAL_PATH(LYX_ABS_INSTALLED_DATADIR, ${real_pkgdatadir})
 
 AC_SUBST(VERSION_INFO)
 AC_SUBST(RPM_FRONTEND)
