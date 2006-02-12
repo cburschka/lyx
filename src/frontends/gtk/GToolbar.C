@@ -231,26 +231,21 @@ void GToolbar::add(FuncRequest const & func, string const & tooltip)
 	}
 
 	default: {
-		// choose an icon from the funcrequest
-		Gtk::BuiltinStockID stockID = getGTKStockIcon(func);
-
 		Glib::ustring tip = Glib::locale_to_utf8(tooltip);
 
 		Gtk::ToolButton * toolbutton;
-		if (stockID != Gtk::Stock::MISSING_IMAGE) {
-			// Prefer stock gtk graphics
-			Gtk::IconSize size(Gtk::ICON_SIZE_LARGE_TOOLBAR);
-			Gtk::Image * image = Gtk::manage(new Gtk::Image(stockID, size));
-			image->show();
-			toolbutton = Gtk::manage(new Gtk::ToolButton(*image));
-		} else {
+		Gtk::Image * image = NULL;
+		image = getGTKIcon(func, Gtk::ICON_SIZE_LARGE_TOOLBAR);
+		if (!image) {
 			Glib::ustring xpmName =
 				Glib::locale_to_utf8(toolbarbackend.getIcon(func));
-			Gtk::Image * image = Gtk::manage(new Gtk::Image(xpmName));
-			image->show();
-			toolbutton = Gtk::manage(new Gtk::ToolButton(*image));
+			if (xpmName.find("unknown.xpm") == Glib::ustring::npos) {
+				image = Gtk::manage(new Gtk::Image(xpmName));
+			}
 		}
 
+		image->show();
+		toolbutton = Gtk::manage(new Gtk::ToolButton(*image));
 		// This code is putting a function reference into the GObject data field
 		// named gToolData.  That's how we know how to update the status of the
 		// toolitem later.

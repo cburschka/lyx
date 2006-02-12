@@ -28,6 +28,8 @@
 #include "support/filetools.h"
 #include "support/package.h"
 
+#include "gtkmm/icontheme.h"
+
 #include <sstream>
 
 using std::string;
@@ -36,20 +38,8 @@ using std::vector;
 namespace lyx {
 namespace frontend {
 
-// This function should be replaced by Gtk::ComboBoxText::set_active_text
-// Which was introduced in gtkmm 2.6
-int comboBoxTextSet(Gtk::ComboBoxText & combo, Glib::ustring target)
-{
-	int const children = combo.get_model()->children().size();
-	for (int i = 0; i < children; i++) {
-		combo.set_active(i);
-		if (combo.get_active_text() == target)
-			return 0;
-	}
-	return -1;
-}
-
-
+// Get a GTK stockID from a lyx function id.
+// Return Gtk::Stock::MISSING_IMAGE if no suitable stock found
 Gtk::BuiltinStockID getGTKStockIcon(FuncRequest const & func)
 {
 	switch (func.action) {
@@ -87,6 +77,42 @@ Gtk::BuiltinStockID getGTKStockIcon(FuncRequest const & func)
 			break;
 		default: return Gtk::Stock::MISSING_IMAGE;
 	}
+}
+
+
+Gtk::Image *getGTKIcon(FuncRequest const & func, Gtk::IconSize const & size)
+{
+		/*static Glib::RefPtr<Gtk::IconTheme> theme;
+		if (!theme)
+			theme = Gtk::IconTheme::get_default();*/
+
+		Gtk::Image *image = NULL;
+
+		Gtk::BuiltinStockID const stockID = getGTKStockIcon(func);
+		if (stockID != Gtk::Stock::MISSING_IMAGE) {
+			// Prefer stock gtk graphics
+			image = Gtk::manage(new Gtk::Image(stockID, size));
+		} else {
+			/*if (func.action == LFUN_MENUNEW) {
+				std::cerr << "Looking for icon\n";
+				std::vector<Glib::ustring> icons = theme->list_icons("mimetypes");
+				for (std::vector<Glib::ustring>::iterator it = icons.begin(); it != icons.end(); ++it) {
+					std::cerr << (*it) << "\n";
+				}
+				std::vector<Glib::ustring> paths = theme->get_search_path();
+				for (std::vector<Glib::ustring>::iterator it = paths.begin(); it != paths.end(); ++it) {
+					std::cerr << (*it) << "\n";
+				}
+				std::cerr << theme->get_example_icon_name() << "\n";
+				if (theme->has_icon("table-center")) {
+					std::cerr << "Found icon\n";
+					Glib::RefPtr<Gdk::Pixbuf> pbuf = theme->load_icon("table-center", 64, Gtk::ICON_LOOKUP_USE_BUILTIN);
+					image = Gtk::manage(new Gtk::Image(pbuf));
+				}
+			}*/
+		}
+		
+		return image;
 }
 
 

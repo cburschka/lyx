@@ -349,11 +349,11 @@ void GDocument::update()
 	extraoptionsentry_->set_text(params.options);
 
 	// Postscript driver
-	comboBoxTextSet(psdrivercombo_, params.graphicsDriver);
+	psdrivercombo_.set_active_text (params.graphicsDriver);
 
 	// Font & Size
-	comboBoxTextSet(fontcombo_, params.fonts);
-	comboBoxTextSet(fontsizecombo_, params.fontsize);
+	fontcombo_.set_active_text (params.fonts);
+	fontsizecombo_.set_active_text (params.fontsize);
 
 	// Line Spacing
 	linespacingadj_->set_value(params.spacing().getValue());
@@ -396,7 +396,7 @@ void GDocument::update()
 
 	doublesidedtoggle_->set_active(params.sides == LyXTextClass::TwoSides);
 
-	comboBoxTextSet(pagestylecombo_, params.pagestyle);
+	pagestylecombo_.set_active_text (params.pagestyle);
 	// *** End "Page" Page ***
 
 	defaultmargins_->set_active(!params.use_geometry);
@@ -784,7 +784,7 @@ void GDocument::classChanged()
 			for (int n = 0; !token(fontsizeitems, '|', n).empty(); ++n)
 				fontsizecombo_.append_text(token(fontsizeitems, '|', n));
 
-			comboBoxTextSet(fontsizecombo_, params.fontsize);
+			fontsizecombo_.set_active_text (params.fontsize);
 
 			pagestylecombo_.clear();
 			pagestylecombo_.append_text("default");
@@ -793,7 +793,7 @@ void GDocument::classChanged()
 			for (int n=0; !token(pagestyleitems,'|',n).empty(); ++n)
 				pagestylecombo_.append_text(token(pagestyleitems,'|',n));
 
-			comboBoxTextSet(pagestylecombo_, params.pagestyle);
+			pagestylecombo_.set_active_text (params.pagestyle);
 		}
 	} else {
 		classcombo_.set_active(params.textclass);

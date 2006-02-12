@@ -5,6 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Angus Leeming
+ * \author John Spray
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -24,11 +25,9 @@ class FuncRequest;
 namespace lyx {
 namespace frontend {
 
-int comboBoxTextSet(Gtk::ComboBoxText & combo, Glib::ustring target);
-
-// Get a GTK stockID from a lyx function id.
-// Return Gtk::Stock::MISSING_IMAGE if no suitable stock found
-Gtk::BuiltinStockID getGTKStockIcon(FuncRequest const & func);
+// Load an icon from GTK icon theme
+// Return NULL if no suitable icon found
+Gtk::Image *getGTKIcon(FuncRequest const & func, Gtk::IconSize const & size);
 
 std::string const getDefaultUnit();
 

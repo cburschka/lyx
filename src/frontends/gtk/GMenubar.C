@@ -195,12 +195,8 @@ void GMenubar::onSubMenuActivate(MenuItem const * item,
 				checkitem.set_active(on);
 			} else {
 				// Choose an icon from the funcrequest
-				Gtk::BuiltinStockID stockID = getGTKStockIcon(i->func());
-				Gtk::Image * image = NULL;
-				// Prefer stock graphics
-				if (stockID != Gtk::Stock::MISSING_IMAGE) {
-					image = Gtk::manage(new Gtk::Image(stockID, Gtk::ICON_SIZE_MENU));
-				} else {
+				Gtk::Image * image = getGTKIcon(i->func(), Gtk::ICON_SIZE_MENU);
+				if (!image) {
 					Glib::ustring xpmName =
 						Glib::locale_to_utf8(toolbarbackend.getIcon(i->func()));
 					if (xpmName.find("unknown.xpm") == Glib::ustring::npos) {

@@ -51,7 +51,7 @@ void setWidgetsFromLength(Gtk::Adjustment & adj, Gtk::ComboBoxText & combo, LyXL
 	if (unit.empty())
 		unit = getDefaultUnit();
 
-	comboBoxTextSet(combo,unit);
+	combo.set_active_text (unit);
 }
 
 

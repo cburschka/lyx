@@ -1,5 +1,10 @@
 2006-02-12  John Spray  <spray@lyx.org>
 	* GMenubar.C: assume backend strings in latin1 (bug 1954)
+	* GDocument.C, GtkLengthEntry.C: replace comboBoxTextSet with
+	  Gtk::ComboBoxText::set_active_text
+	* ghelpers.[Ch]: remove comboBoxTextSet, rearrange GTK icon
+	  lookup code in preparation for using icon themes.
+	* GMenubar.C, GToolbar.C: use the new icon lookup function
 
 2006-02-12  Bartek Kostrzewa  <bartek@runbox.com>
 	* GMenubar.C: Fix crash with navigation submenus
