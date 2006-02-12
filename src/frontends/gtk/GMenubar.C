@@ -142,18 +142,26 @@ void GMenubar::onSubMenuActivate(MenuItem const * item,
 	ClearMenu(gmenu);
 	LyxMenu * lyxmenu = static_cast<LyxMenu*>(gmenu);
 	lyxmenu->clearBackMenu();
-	Menu * fmenu = item->submenuname().empty() ?
-		item->submenu() :
-		&menubackend.getMenu(item->submenuname());
+
+	Menu * fmenu;
+	Menu::const_iterator i;
+	Menu::const_iterator end;
+	if(!item->submenuname().empty()) {
+		fmenu = &menubackend.getMenu(item->submenuname());
+		menubackend.expand(*fmenu, lyxmenu->getBackMenu(), view_);
+		i = lyxmenu->getBackMenu().begin();
+		end = lyxmenu->getBackMenu().end();
+	} else {
+		fmenu = item->submenu();
+		i = fmenu->begin();
+		end = fmenu->end();
+	}
 
 	// Choose size for icons on command items
 	int iconwidth = 16;
 	int iconheight = 16;
 	Gtk::IconSize::lookup(Gtk::ICON_SIZE_MENU, iconwidth, iconheight);
 
-	menubackend.expand(*fmenu, lyxmenu->getBackMenu(), view_);
-	Menu::const_iterator i = lyxmenu->getBackMenu().begin();
-	Menu::const_iterator end = lyxmenu->getBackMenu().end();
 	Gtk::Menu * gmenu_new;
 	for (; i != end; ++i) {
 		switch (i->kind()) {
