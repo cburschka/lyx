@@ -53,9 +53,9 @@ Glib::ustring labelTrans(string const & label, string const & shortcut)
 	string labelN = label;
 	string::size_type i = label.find(shortcut);
 	if (i == string::npos)
-		return Glib::locale_to_utf8(label);
+		return Glib::convert(label, "UTF-8", "ISO-8859-1");
 	labelN.insert(i, "_");
-	return Glib::locale_to_utf8(labelN);
+	return Glib::convert(labelN, "UTF-8", "ISO-8859-1");
 }
 
 
@@ -120,7 +120,7 @@ void GMenubar::update()
 
 void GMenubar::openByName(string const & name)
 {
-	Glib::ustring uname = Glib::locale_to_utf8(name);
+	Glib::ustring uname = Glib::convert(name, "UTF-8", "ISO-8859-1");
 	std::vector<Glib::ustring>::iterator it =
 		std::find(mainMenuNames_.begin(), mainMenuNames_.end(),
 			  uname);
