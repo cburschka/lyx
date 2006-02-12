@@ -14,6 +14,8 @@
 
 #include "GViewBase.h"
 
+#include <vector>
+
 namespace lyx {
 namespace frontend {
 
@@ -51,9 +53,23 @@ private:
 	// >>> Keyboard tab
 	void keyboard_sensitivity ();
 	Gtk::CheckButton *keyboardmapcheck_;
-	Gtk::FileChooserButton keyboardmap1fcbutton_;
-	Gtk::FileChooserButton keyboardmap2fcbutton_;
+	Gtk::FileChooserButton *keyboardmap1fcbutton_;
+	Gtk::FileChooserButton *keyboardmap2fcbutton_;
 	// <<< Keyboard tab
+	
+	// >>> Language tab
+	std::vector<std::string> lang_;
+	Gtk::ComboBoxText defaultlanguagecombo_;
+	Gtk::Entry *languagepackageentry_;
+	Gtk::Entry *commandstartentry_;
+	Gtk::Entry *commandendentry_;
+	Gtk::CheckButton *usebabelcheck_;
+	Gtk::CheckButton *markforeigncheck_;
+	Gtk::CheckButton *globalcheck_;
+	Gtk::CheckButton *RTLsupportcheck_;
+	Gtk::CheckButton *autobegincheck_;
+	Gtk::CheckButton *autoendcheck_;
+	// <<< Language tab
 };
 
 } // namespace frontend

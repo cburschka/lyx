@@ -22,13 +22,14 @@
 #include "ControlPrefs.h"
 #include "ghelpers.h"
 
-//#include "support/lstrings.h"
-
-//#include <boost/tuple/tuple.hpp>
+#include "controllers/frnt_lang.h"
+#include "controllers/helper_funcs.h"
+#include "support/lstrings.h"
 
 #include <libglademm.h>
 
 using std::string;
+using std::vector;
 
 namespace lyx {
 namespace frontend {
@@ -53,6 +54,7 @@ void GPreferences::doBuild()
 	xml_->get_widget("Revert", button);
 	setRestore(button);
 
+	Gtk::HBox *box = NULL;
 
 	// *** Screen fonts ***
 	// FIXME: these font buttons display a dialog
@@ -79,15 +81,17 @@ void GPreferences::doBuild()
 
 	// *** Keyboard ***
 	xml_->get_widget("UseKeyboardMap", keyboardmapcheck_);
-	Gtk::HBox *box;
+	
 	xml_->get_widget("FirstKeyboardMap", box);
-	box->pack_start(keyboardmap1fcbutton_);
-	keyboardmap1fcbutton_.set_action(Gtk::FILE_CHOOSER_ACTION_OPEN);
-	keyboardmap1fcbutton_.show();
+	keyboardmap1fcbutton_ = Gtk::manage(new Gtk::FileChooserButton);
+	box->pack_start(*keyboardmap1fcbutton_);
+	keyboardmap1fcbutton_->set_action(Gtk::FILE_CHOOSER_ACTION_OPEN);
+	keyboardmap1fcbutton_->show();
 	xml_->get_widget("SecondKeyboardMap", box);
-	box->pack_start(keyboardmap2fcbutton_);
-	keyboardmap2fcbutton_.set_action(Gtk::FILE_CHOOSER_ACTION_OPEN);
-	keyboardmap2fcbutton_.show();
+	keyboardmap2fcbutton_ = Gtk::manage(new Gtk::FileChooserButton);
+	box->pack_start(*keyboardmap2fcbutton_);
+	keyboardmap2fcbutton_->set_action(Gtk::FILE_CHOOSER_ACTION_OPEN);
+	keyboardmap2fcbutton_->show();
 	
 	Gtk::FileFilter kmapfilter;
 	kmapfilter.set_name ("LyX keyboard maps");
@@ -96,15 +100,40 @@ void GPreferences::doBuild()
 	allfilter.set_name ("All files");
 	allfilter.add_pattern ("*");
 
-	keyboardmap1fcbutton_.add_filter (kmapfilter);
-	keyboardmap1fcbutton_.add_filter (allfilter);
-	keyboardmap1fcbutton_.set_filter (kmapfilter);
-	keyboardmap2fcbutton_.add_filter (kmapfilter);
-	keyboardmap2fcbutton_.add_filter (allfilter);
-	keyboardmap2fcbutton_.set_filter (kmapfilter);
+	keyboardmap1fcbutton_->add_filter (kmapfilter);
+	keyboardmap1fcbutton_->add_filter (allfilter);
+	keyboardmap1fcbutton_->set_filter (kmapfilter);
+	keyboardmap2fcbutton_->add_filter (kmapfilter);
+	keyboardmap2fcbutton_->add_filter (allfilter);
+	keyboardmap2fcbutton_->set_filter (kmapfilter);
 	
 	keyboardmapcheck_->signal_toggled().connect(
 		sigc::mem_fun(*this, &GPreferences::keyboard_sensitivity));
+		
+	// *** Language ***
+	
+	xml_->get_widget("DefaultLanguage", box);
+	box->pack_start (defaultlanguagecombo_);
+	defaultlanguagecombo_.show();
+	xml_->get_widget("LanguagePackage", languagepackageentry_);
+	xml_->get_widget("CommandStart", commandstartentry_);
+	xml_->get_widget("CommandEnd", commandendentry_);
+	xml_->get_widget("UseBabel", usebabelcheck_);
+	xml_->get_widget("MarkForeignLanguages", markforeigncheck_);
+	xml_->get_widget("Global", globalcheck_);
+	xml_->get_widget("RTLSupport", RTLsupportcheck_);
+	xml_->get_widget("AutoBegin", autobegincheck_);
+	xml_->get_widget("AutoEnd", autoendcheck_);
+	
+	// Store the lang identifiers for later
+	vector<LanguagePair> const langs = getLanguageData(false);
+	lang_ = getSecond(langs);
+
+	vector<LanguagePair>::const_iterator lit  = langs.begin();
+	vector<LanguagePair>::const_iterator const lend = langs.end();
+	for (; lit != lend; ++lit) {
+		defaultlanguagecombo_.append_text(lit->first);
+	}
 }
 
 
@@ -157,10 +186,25 @@ void GPreferences::update()
 	
 	// *** Keyboard ***
 	keyboardmapcheck_->set_active (rc.use_kbmap);
-	keyboardmap1fcbutton_.set_filename (rc.primary_kbmap);
-	keyboardmap2fcbutton_.set_filename (rc.secondary_kbmap);
-	keyboardmap1fcbutton_.set_sensitive (rc.use_kbmap);
-	keyboardmap2fcbutton_.set_sensitive (rc.use_kbmap);
+	keyboardmap1fcbutton_->set_filename (rc.primary_kbmap);
+	keyboardmap2fcbutton_->set_filename (rc.secondary_kbmap);
+	keyboardmap1fcbutton_->set_sensitive (rc.use_kbmap);
+	keyboardmap2fcbutton_->set_sensitive (rc.use_kbmap);
+
+	// *** Language ***
+	int const pos = int(findPos(lang_, rc.default_language));
+	defaultlanguagecombo_.set_active(pos);
+	
+	languagepackageentry_->set_text(rc.language_package);
+	commandstartentry_->set_text(rc.language_command_begin);
+	commandendentry_->set_text(rc.language_command_end);
+
+	usebabelcheck_->set_active(rc.language_use_babel);
+	markforeigncheck_->set_active(rc.mark_foreign_language);
+	globalcheck_->set_active(rc.language_global_options);
+	RTLsupportcheck_->set_active(rc.rtl_support);
+	autobegincheck_->set_active(rc.language_auto_begin);
+	autoendcheck_->set_active(rc.language_auto_end);
 
 	bc().valid();
 }
@@ -214,9 +258,24 @@ void GPreferences::apply()
 	// *** Keyboard ***
 	rc.use_kbmap = keyboardmapcheck_->get_active();
 	if (rc.use_kbmap) {
-		rc.primary_kbmap = keyboardmap1fcbutton_.get_filename();
-		rc.secondary_kbmap = keyboardmap2fcbutton_.get_filename();
+		rc.primary_kbmap = keyboardmap1fcbutton_->get_filename();
+		rc.secondary_kbmap = keyboardmap2fcbutton_->get_filename();
 	}
+	
+	// *** Language ***
+	rc.default_language = lang_[
+		defaultlanguagecombo_.get_active_row_number()];
+
+	rc.language_package = languagepackageentry_->get_text();
+	rc.language_command_begin = commandstartentry_->get_text();
+	rc.language_command_end = commandendentry_->get_text();
+
+	rc.language_use_babel = usebabelcheck_->get_active();
+	rc.mark_foreign_language = markforeigncheck_->get_active();
+	rc.language_global_options = globalcheck_->get_active();
+	rc.rtl_support = RTLsupportcheck_->get_active();
+	rc.language_auto_begin = autobegincheck_->get_active();
+	rc.language_auto_end = autoendcheck_->get_active();
 
 	// Prevent Apply button ever getting disabled
 	bc().valid();
@@ -226,8 +285,8 @@ void GPreferences::apply()
 void GPreferences::keyboard_sensitivity ()
 {
 	bool const kbmap = keyboardmapcheck_->get_active();
-	keyboardmap1fcbutton_.set_sensitive(kbmap);
-	keyboardmap2fcbutton_.set_sensitive(kbmap);
+	keyboardmap1fcbutton_->set_sensitive(kbmap);
+	keyboardmap2fcbutton_->set_sensitive(kbmap);
 }
 
 } // namespace frontend
