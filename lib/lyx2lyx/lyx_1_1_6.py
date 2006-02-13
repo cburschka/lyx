@@ -146,7 +146,7 @@ def update_tabular(file):
                 tmp.append('<Cell multicolumn="%s" alignment="%s" valignment="0" topline="%s" bottomline="%s" leftline="%d" rightline="%d" rotate="%s" usebox="%s" width=%s special=%s>' % (cell_info[m][0],cell_info[m][1],cell_info[m][2],cell_info[m][3],leftline,rightline,cell_info[m][5],cell_info[m][6],cell_info[m][7],cell_info[m][8]))
                 tmp.append('\\begin_inset Text')
                 tmp.append('')
-                tmp.append('\\layout Standard')
+                tmp.append('\\layout %s' % file.default_layout)
                 tmp.append('')
 
                 if cell_info[m][0] != '2':

@@ -95,6 +95,13 @@ def get_value(lines, token, start, end = 0):
         return ""
 
 
+def get_layout(line, default_layout):
+    tokens = string.split(line)
+    if len(tokens) > 1:
+        return tokens[1]
+    return default_layout
+
+
 def del_token(lines, token, i, j):
     k = find_token2(lines, token, i, j)
     if k == -1:

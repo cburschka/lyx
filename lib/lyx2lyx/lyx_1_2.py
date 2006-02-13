@@ -23,7 +23,7 @@ import re
 from parser_tools import find_token, find_token_backwards, get_next_paragraph,\
                          find_tokens, find_end_of_inset, find_re, \
                          is_nonempty_line, get_paragraph, find_nonempty_line, \
-                         get_value, get_tabular_lines, check_token
+                         get_value, get_tabular_lines, check_token, get_layout
 
 floats = {
     "footnote": ["\\begin_inset Foot",
@@ -179,7 +179,7 @@ def remove_pextra(file):
 	    if hfill:
 		start = ["","\hfill",""]+start
 	else:
-	    start = ["\\layout Standard"] + start
+	    start = ['\\layout %s' % file.default_layout,''] + start
 
 	j0 = find_token_backwards(lines,"\\layout", i-1)
 	j = get_next_paragraph(lines, i, file.format + 1)
@@ -216,13 +216,14 @@ def is_empty(lines):
 move_rexp =  re.compile(r"\\(family|series|shape|size|emph|numeric|bar|noun|end_deeper)")
 ert_rexp = re.compile(r"\\begin_inset|\\hfill|.*\\SpecialChar")
 spchar_rexp = re.compile(r"(.*)(\\SpecialChar.*)")
-ert_begin = ["\\begin_inset ERT",
-	     "status Collapsed",
-	     "",
-	     "\\layout Standard"]
 
 
 def remove_oldert(file):
+    ert_begin = ["\\begin_inset ERT",
+                 "status Collapsed",
+                 "",
+                 '\\layout %s' % file.default_layout,
+                 ""]
     lines = file.body
     i = 0
     while 1:
@@ -248,8 +249,7 @@ def remove_oldert(file):
 	new = []
 	new2 = []
 	if check_token(lines[i], "\\layout LaTeX"):
-	    new = ["\layout Standard", "", ""]
-	    # We have a problem with classes in which Standard is not the default layout!
+	    new = ['\layout %s' % file.default_layout, "", ""]
 
 	k = i+1
 	while 1:
@@ -349,8 +349,11 @@ def remove_oldertinset(file):
 	i = i+1
 
 
-def is_ert_paragraph(lines, i):
-    if not check_token(lines[i], "\\layout Standard"):
+def is_ert_paragraph(file, i):
+    lines = file.body
+    if not check_token(lines[i], "\\layout"):
+        return 0
+    if not file.is_default_layout(get_layout(lines[i], file.default_layout)):
         return 0
 
     i = find_nonempty_line(lines, i+1)
@@ -372,7 +375,7 @@ def combine_ert(file):
 	j = get_paragraph(lines, i, file.format + 1)
 	count = 0
 	text = []
-	while is_ert_paragraph(lines, j):
+	while is_ert_paragraph(file, j):
 
 	    count = count+1
 	    i2 = find_token(lines, "\\layout", j+1)
@@ -721,7 +724,7 @@ def change_infoinset(file):
             note_lines = [txt]+note_lines
 
         for line in note_lines:
-            new = new + ["\layout Standard", ""]
+            new = new + ['\layout %s' % file.default_layout, ""]
             tmp = string.split(line, '\\')
             new = new + [tmp[0]]
             for x in tmp[1:]:

@@ -18,10 +18,9 @@
 
 import re
 import string
-from parser_tools import find_token, find_token_backwards, find_re
+from parser_tools import find_token, find_token_backwards, find_re, get_layout
 
 
-layout_exp = re.compile(r"\\layout (\S*)")
 math_env = ["\\[","\\begin{eqnarray*}","\\begin{eqnarray}","\\begin{equation}"]
 
 def replace_protected_separator(file):
@@ -33,11 +32,7 @@ def replace_protected_separator(file):
             break
         j = find_token_backwards(lines, "\\layout", i)
         #if j == -1: print error
-        layout_m = layout_exp.match(lines[j])
-        if layout_m:
-            layout = layout_m.group(1)
-        else:
-            layout = "Standard"
+        layout = get_layout(lines[j], file.default_layout)
 
         if layout == "LyX-Code":
             result = ""
@@ -130,7 +125,7 @@ def first_layout(file):
     while (lines[0] == ""):
         del lines[0]
     if lines[0][:7] != "\\layout":
-        lines[:0] = ["\\layout Standard"]
+        lines[:0] = ['\\layout %s' % file.default_layout, '']
 
 
 def remove_space_in_units(file):

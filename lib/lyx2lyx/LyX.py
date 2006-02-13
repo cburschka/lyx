@@ -111,6 +111,10 @@ class LyX_Base:
 
         self.backend = "latex"
         self.textclass = "article"
+        # This is a hack: We use '' since we don't know the default
+        # layout of the text class. LyX will parse it as default layout.
+        # FIXME: Read the layout file and use the real default layout
+        self.default_layout = ''
         self.header = []
         self.preamble = []
         self.body = []
@@ -289,6 +293,14 @@ class LyX_Base:
             self.warning('Parameter not found in the header: %s' % param, 3)
             return
         self.header[i] = '\\%s %s' % (param, str(value))
+
+
+    def is_default_layout(self, layout):
+        " Check whether a layout is the default layout of this class."
+        # FIXME: Check against the real text class default layout
+        if layout == 'Standard' or layout == self.default_layout:
+            return 1
+        return 0
 
 
     def convert(self):

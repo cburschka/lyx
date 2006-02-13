@@ -23,7 +23,8 @@ from os import access, F_OK
 import os.path
 from parser_tools import find_token, find_end_of_inset, get_next_paragraph, \
                          get_paragraph, get_value, del_token, is_nonempty_line,\
-			 find_tokens, find_end_of, find_token2, find_re
+			 find_tokens, find_end_of, find_token2, find_re,\
+                         get_layout
 from sys import stdin
 from string import replace, split, find, strip, join
 
@@ -81,7 +82,7 @@ def revert_spaces(file):
             file.body[i+1:i+1] = ''
 	    if space == "\\space":
 		space = "\\ "
-            i = insert_ert(file.body, i+1, 'Collapsed', space, file.format - 1)
+            i = insert_ert(file.body, i+1, 'Collapsed', space, file.format - 1, file.default_layout)
 
 ##
 # \InsetSpace \, -> \InsetSpace \thinspace{}
@@ -129,7 +130,7 @@ def revert_eqref(file):
             break
         eqref = lyx_support_escape(regexp.sub("", file.body[i]))
         file.body[i:i+1] = ["\\begin_inset ERT", "status Collapsed", "",
-                            "\\layout Standard", "", "\\backslash ",
+                            '\\layout %s' % file.default_layout, "", "\\backslash ",
                             "eqref" + eqref]
         i = i + 7
 
@@ -251,10 +252,10 @@ def convert_comment(file):
         if i == -1:
             return
 
-        file.body[i:i+1] = ["\\layout Standard","","",
+        file.body[i:i+1] = ['\\layout %s' % file.default_layout,"","",
                         "\\begin_inset Comment",
                         "collapsed true","",
-                        "\\layout Standard"]
+                        '\\layout %s' % file.default_layout]
         i = i + 7
 
         while 1:
@@ -303,7 +304,7 @@ def convert_comment(file):
                     file.body[i:i] = ["\\end_inset"]
                     i = i + 1
                     break
-                file.body[i:i+1] = ["\\layout Standard"]
+                file.body[i:i+1] = ['\\layout %s' % file.default_layout]
                 i = i + 1
 
 
@@ -570,7 +571,7 @@ def convert_breaks(file):
         i = find_token(file.body, "\\begin_layout", i)
         if i == -1:
             return
-        layout = split(file.body[i])[1]
+        layout = get_layout(file.body[i], file.default_layout)
         i = i + 1
 
         # Merge all paragraph parameters into a single line
@@ -597,7 +598,8 @@ def convert_breaks(file):
         # We want to avoid new paragraphs if possible becauase we want to
         # inherit font sizes.
         nonstandard = 0
-        if (layout != "Standard" or find(file.body[i],"\\align") != -1 or
+        if (not file.is_default_layout(layout) or
+            find(file.body[i],"\\align") != -1 or
             find(file.body[i],"\\labelwidthstring") != -1 or
             find(file.body[i],"\\noindent") != -1):
             nonstandard = 1
@@ -640,7 +642,7 @@ def convert_breaks(file):
             paragraph_above = list()
             if nonstandard:
                 # We need to create an extra paragraph for nonstandard environments
-                paragraph_above = ['\\begin_layout Standard', '']
+                paragraph_above = ['\\begin_layout %s' % file.default_layout, '']
 
             if pb_top != -1:
                 paragraph_above.extend(['\\newpage ',''])
@@ -655,7 +657,7 @@ def convert_breaks(file):
                 # We can't use the vspace inset because it does not know \parskip.
                 paragraph_above.extend(['\\lyxline ', '', ''])
                 insert_ert(paragraph_above, len(paragraph_above) - 1, 'Collapsed',
-                           '\\vspace{-1\\parskip}\n', file.format + 1)
+                           '\\vspace{-1\\parskip}\n', file.format + 1, file.default_layout)
                 paragraph_above.extend([''])
 
             if nonstandard:
@@ -692,7 +694,7 @@ def convert_breaks(file):
             paragraph_below = list()
             if nonstandard:
                 # We need to create an extra paragraph for nonstandard environments
-                paragraph_below = ['', '\\begin_layout Standard', '']
+                paragraph_below = ['', '\\begin_layout %s' % file.default_layout, '']
             else:
                 for a in range(len(font_attributes)):
                     if find_token(file.body, font_attributes[a], i, k) != -1:
@@ -993,7 +995,7 @@ def convert_minipage(file):
 # -------------------------------------------------------------------------------------------
 # Convert backslashes and '\n' into valid ERT code, append the converted
 # text to body[i] and return the (maybe incremented) line index i
-def convert_ertbackslash(body, i, ert, format):
+def convert_ertbackslash(body, i, ert, format, default_layout):
     for c in ert:
 	if c == '\\':
 	    body[i] = body[i] + '\\backslash '
@@ -1004,7 +1006,7 @@ def convert_ertbackslash(body, i, ert, format):
                 body[i+1:i+1] = ['\\newline ', '']
                 i = i + 2
             else:
-                body[i+1:i+1] = ['\\end_layout', '', '\\begin_layout Standard', '']
+                body[i+1:i+1] = ['\\end_layout', '', '\\begin_layout %s' % default_layout, '']
                 i = i + 4
 	else:
 	    body[i] = body[i] + c
@@ -1313,7 +1315,7 @@ def revert_breaks(file):
         # The others are converted in the next loop runs (if they exist)
         if insets[0] == "vspace":
             file.body[i:i+1] = ['\\begin_inset ERT', 'status Collapsed', '',
-                                '\\layout Standard', '', '\\backslash ']
+                                '\\layout %s' % file.default_layout, '', '\\backslash ']
             i = i + 6
             if spaceamount[0][-1] == '*':
                 spaceamount[0] = spaceamount[0][:-1]
@@ -1345,7 +1347,7 @@ def revert_breaks(file):
                     file.body.insert(i, 'vspace*{')
                 else:
                     file.body.insert(i, 'vspace{')
-                i = convert_ertbackslash(file.body, i, spaceamount[0], file.format - 1)
+                i = convert_ertbackslash(file.body, i, spaceamount[0], file.format - 1, file.default_layout)
                 file.body[i] = file.body[i] + '}'
             i = i + 1
         elif insets[0] == "lyxline":
@@ -1356,7 +1358,7 @@ def revert_breaks(file):
                 latexsize = '\\normalsize'
             i = insert_ert(file.body, i, 'Collapsed',
                            '\\lyxline{%s}' % latexsize,
-                           file.format - 1)
+                           file.format - 1, file.default_layout)
             # We use \providecommand so that we don't get an error if native
             # lyxlines are used (LyX writes first its own preamble and then
             # the user specified one)
@@ -1368,7 +1370,7 @@ def revert_breaks(file):
         elif insets[0] == "newpage":
             file.body[i] = ''
             i = insert_ert(file.body, i, 'Collapsed', '\\newpage{}',
-                           file.format - 1)
+                           file.format - 1, file.default_layout)
 
 
 # Convert a LyX length into a LaTeX length
@@ -1392,9 +1394,9 @@ def convert_len(len, special):
 
 # Convert a LyX length into valid ERT code and append it to body[i]
 # Return the (maybe incremented) line index i
-def convert_ertlen(body, i, len, special, format):
+def convert_ertlen(body, i, len, special, format, default_layout):
     # Convert backslashes and insert the converted length into body
-    return convert_ertbackslash(body, i, convert_len(len, special), format)
+    return convert_ertbackslash(body, i, convert_len(len, special), format, default_layout)
 
 
 # Return the value of len without the unit in numerical form
@@ -1408,15 +1410,15 @@ def len2value(len):
 
 # Convert text to ERT and insert it at body[i]
 # Return the index of the line after the inserted ERT
-def insert_ert(body, i, status, text, format):
+def insert_ert(body, i, status, text, format, default_layout):
     body[i:i] = ['\\begin_inset ERT', 'status ' + status, '']
     i = i + 3
     if format <= 224:
-        body[i:i] = ['\\layout Standard', '']
+        body[i:i] = ['\\layout %s' % default_layout, '']
     else:
-        body[i:i] = ['\\begin_layout Standard', '']
+        body[i:i] = ['\\begin_layout %s' % default_layout, '']
     i = i + 1       # i points now to the just created empty line
-    i = convert_ertbackslash(body, i, text, format) + 1
+    i = convert_ertbackslash(body, i, text, format, default_layout) + 1
     if format > 224:
         body[i:i] = ['\\end_layout']
         i = i + 1
@@ -1557,7 +1559,7 @@ def convert_frameless_box(file):
             ert = ert + '\\let\\endminipage\\endlyxtolyxminipage%\n'
 
             old_i = i
-            i = insert_ert(file.body, i, 'Collapsed', ert, file.format - 1)
+            i = insert_ert(file.body, i, 'Collapsed', ert, file.format - 1, file.default_layout)
             j = j + i - old_i - 1
 
             file.body[i:i] = ['\\begin_inset Minipage',
@@ -1572,21 +1574,21 @@ def convert_frameless_box(file):
             # Restore the original minipage environment since we may have
             # minipages inside this box.
             # Start a new paragraph because the following may be nonstandard
-            file.body[i:i] = ['\\layout Standard', '', '']
+            file.body[i:i] = ['\\layout %s' % file.default_layout, '', '']
             i = i + 2
             j = j + 3
             ert = '\\let\\minipage\\lyxtolyxrealminipage%\n'
             ert = ert + '\\let\\endminipage\\lyxtolyxrealendminipage%'
             old_i = i
-            i = insert_ert(file.body, i, 'Collapsed', ert, file.format - 1)
+            i = insert_ert(file.body, i, 'Collapsed', ert, file.format - 1, file.default_layout)
             j = j + i - old_i - 1
 
             # Redefine the minipage end before the inset end.
             # Start a new paragraph because the previous may be nonstandard
-            file.body[j:j] = ['\\layout Standard', '', '']
+            file.body[j:j] = ['\\layout %s' % file.default_layout, '', '']
             j = j + 2
             ert = '\\let\\endminipage\\endlyxtolyxminipage'
-            j = insert_ert(file.body, j, 'Collapsed', ert, file.format - 1)
+            j = insert_ert(file.body, j, 'Collapsed', ert, file.format - 1, file.default_layout)
 	    j = j + 1
             file.body.insert(j, '')
 	    j = j + 1
@@ -1597,7 +1599,7 @@ def convert_frameless_box(file):
                 ert = '}%\n'
             else:
                 ert = '\\end{lyxtolyxrealminipage}%\n'
-            j = insert_ert(file.body, j, 'Collapsed', ert, file.format - 1)
+            j = insert_ert(file.body, j, 'Collapsed', ert, file.format - 1, file.default_layout)
 
             # We don't need to restore the original minipage after the inset
             # end because the scope of the redefinition is the original box.
@@ -1841,7 +1843,7 @@ def convert_names(file):
                           "\\begin_inset CharStyle Firstname",
                           "status inlined",
                           "",
-                          "\\begin_layout Standard",
+                          '\\begin_layout %s' % file.default_layout,
                           "",
                           "%s" % firstname,
                           "\end_layout",
@@ -1852,7 +1854,7 @@ def convert_names(file):
                           "\\begin_inset CharStyle Surname",
                           "status inlined",
                           "",
-                          "\\begin_layout Standard",
+                          '\\begin_layout %s' % file.default_layout,
                           "",
                           "%s" % surname,
                           "\\end_layout",
@@ -2179,7 +2181,7 @@ def convert_ert_paragraphs(file):
             k = find_token(file.body, "\\begin_layout", k, j)
             if k == -1:
                 break
-            file.body[k] = "\\begin_layout Standard"
+            file.body[k] = '\\begin_layout %s' % file.default_layout
             k = k + 1
 
         # remove all paragraph parameters and font settings
@@ -2196,14 +2198,14 @@ def convert_ert_paragraphs(file):
         k = i
         first_pagraph = 1
         while 1:
-            k = find_token(file.body, "\\begin_layout Standard", k, j)
+            k = find_token(file.body, "\\begin_layout", k, j)
             if k == -1:
                 break
             if first_pagraph:
                 first_pagraph = 0
                 k = k + 1
                 continue
-            file.body[k:k] = ["\\begin_layout Standard", "",
+            file.body[k:k] = ['\\begin_layout %s' % file.default_layout, "",
                               "\\end_layout", ""]
             k = k + 5
             j = j + 4
@@ -2214,9 +2216,14 @@ def convert_ert_paragraphs(file):
             k = find_token(file.body, "\\newline", k, j)
             if k == -1:
                 break
-            file.body[k:k+1] = ["\\end_layout", "", "\\begin_layout Standard"]
+            file.body[k:k+1] = ["\\end_layout", "", '\\begin_layout %s' % file.default_layout]
             k = k + 4
             j = j + 3
+            # We need an empty line if file.default_layout == ''
+            if file.body[k-1] != '':
+                file.body.insert(k-1, '')
+                k = k + 1
+                j = j + 1
         i = i + 1
 
 
@@ -2257,9 +2264,14 @@ def revert_ert_paragraphs(file):
                 l = l + 1
             if strip(file.body[l]) and split(file.body[l])[0] == "\\newline":
                 file.body[k:l+1] = ["\\end_layout", "",
-                                    "\\begin_layout Standard"]
+                                    '\\begin_layout %s' % file.default_layout]
                 j = j - l + k + 2
                 k = k + 3
+                # We need an empty line if file.default_layout == ''
+                if file.body[l+1] != '':
+                    file.body.insert(l+1, '')
+                    k = k + 1
+                    j = j + 1
             else:
                 k = k + 1
         i = i + 1
