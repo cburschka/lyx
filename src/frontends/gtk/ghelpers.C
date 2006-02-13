@@ -61,6 +61,11 @@ Gtk::BuiltinStockID getGTKStockIcon(FuncRequest const & func)
 		case LFUN_ITAL: return Gtk::Stock::ITALIC;
 		case LFUN_FILE_OPEN: return Gtk::Stock::OPEN;
 		case LFUN_RECONFIGURE: return Gtk::Stock::REFRESH;
+		case LFUN_LABEL_GOTO: 
+		case LFUN_BOOKMARK_GOTO: return Gtk::Stock::JUMP_TO;
+		case LFUN_GOTONOTE: return Gtk::Stock::GO_FORWARD;
+		case LFUN_ACCEPT_ALL_CHANGES: return Gtk::Stock::APPLY;
+		case LFUN_REJECT_ALL_CHANGES: return Gtk::Stock::CANCEL;
 		case LFUN_DIALOG_SHOW:
 			if (func.argument == "findreplace")
 				return Gtk::Stock::FIND_AND_REPLACE;
@@ -72,6 +77,8 @@ Gtk::BuiltinStockID getGTKStockIcon(FuncRequest const & func)
 				return Gtk::Stock::PREFERENCES;
 			else if (func.argument == "document")
 				return Gtk::Stock::PROPERTIES;
+			else if (func.argument == "aboutlyx")
+				return Gtk::Stock::ABOUT;
 			else
 				return Gtk::Stock::MISSING_IMAGE;
 			break;
@@ -80,36 +87,95 @@ Gtk::BuiltinStockID getGTKStockIcon(FuncRequest const & func)
 }
 
 
+Glib::ustring getGTKThemeIcon(FuncRequest const & func)
+{
+	switch (func.action) {
+		case LFUN_TABULAR_INSERT: return "stock_insert-table";
+		case LFUN_MATH_MODE: return "stock_insert-math-object";
+		case LFUN_EMPH: return "stock_text_italic";
+		case LFUN_DIALOG_SHOW_NEW_INSET:
+			if (func.argument == "graphics")
+				return "stock_placeholder-picture";
+			if (func.argument == "include")
+				return "stock_insert-file";
+			break;
+		case LFUN_DIALOG_SHOW:
+			if (func.argument == "spellchecker")
+				return "stock_spellcheck";
+			else if (func.argument == "character")
+				return "stock_font";
+			break;
+		case LFUN_DEPTH_PLUS: return "format-indent-more";
+		case LFUN_DEPTH_MIN: return "format-indent-less";
+		case LFUN_LAYOUT:
+			if (func.argument == "Enumerate")
+				return "stock_list_enum";
+			else if (func.argument == "Itemize")
+				return "stock_list_bullet";
+			break;
+		case LFUN_FREEFONT_APPLY: return "stock_font-formatting-toggle";
+		case LFUN_THESAURUS_ENTRY: return "stock_thesaurus";
+		case LFUN_URL: return "stock_insert-url";
+		case LFUN_TABULAR_FEATURE:
+			if (func.argument == "append-row")
+				return "stock_insert-rows";
+			else if (func.argument == "append-column")
+				return "stock_insert-columns";
+			else if (func.argument == "delete-row")
+				return "stock_delete-row";
+			else if (func.argument == "delete-column")
+				return "stock_delete-column";
+			else if (func.argument == "valign-top")
+				return "stock_cell-align-top";
+			else if (func.argument == "valign-middle")
+				return "stock_cell-align-center";
+			else if (func.argument == "valign-bottom")
+				return "stock_cell-align-bottom";
+			else if (func.argument == "align-left")
+				return "gtk-justify-left";
+			else if (func.argument == "align-center")
+				return "gtk-justify-center";
+			else if (func.argument == "align-right")
+				return "gtk-justify-right";
+			break;
+			
+			case LFUN_BOOKMARK_SAVE: return "stock_add-bookmark";
+			case LFUN_INSERT_NOTE: return "stock_insert-note";
+			case LFUN_LAYOUT_PARAGRAPH: return "stock_format-paragraph";
+			case LFUN_MENUNEWTMPLT: return "stock_new-template";
+			//case LFUN_INSET_ERT: return "gnome-mime-application-x-tex";
+	}
+	return "";
+}
+
+
 Gtk::Image *getGTKIcon(FuncRequest const & func, Gtk::IconSize const & size)
 {
-		/*static Glib::RefPtr<Gtk::IconTheme> theme;
+		static Glib::RefPtr<Gtk::IconTheme> theme;
 		if (!theme)
-			theme = Gtk::IconTheme::get_default();*/
+			theme = Gtk::IconTheme::get_default();
 
+		// TODO: cache these values somewhere else
+		int iconwidth = 16;
+		int iconheight = 16;
+		Gtk::IconSize::lookup(size, iconwidth, iconheight);
+
+		// TODO: this stuff is called every menu view - needs 
+		// caching somewhere, or maybe GTK does enough of that for us.
 		Gtk::Image *image = NULL;
-
 		Gtk::BuiltinStockID const stockID = getGTKStockIcon(func);
 		if (stockID != Gtk::Stock::MISSING_IMAGE) {
-			// Prefer stock gtk graphics
 			image = Gtk::manage(new Gtk::Image(stockID, size));
 		} else {
-			/*if (func.action == LFUN_MENUNEW) {
-				std::cerr << "Looking for icon\n";
-				std::vector<Glib::ustring> icons = theme->list_icons("mimetypes");
-				for (std::vector<Glib::ustring>::iterator it = icons.begin(); it != icons.end(); ++it) {
-					std::cerr << (*it) << "\n";
+			Glib::ustring iconname = getGTKThemeIcon (func);
+			if (iconname != "") {
+				if (theme->has_icon(iconname)) {
+					Glib::RefPtr<Gdk::Pixbuf> pbuf = theme->load_icon(iconname, iconwidth, Gtk::ICON_LOOKUP_FORCE_SVG);
+					if (pbuf) {
+						image = Gtk::manage(new Gtk::Image(pbuf));
+					}
 				}
-				std::vector<Glib::ustring> paths = theme->get_search_path();
-				for (std::vector<Glib::ustring>::iterator it = paths.begin(); it != paths.end(); ++it) {
-					std::cerr << (*it) << "\n";
-				}
-				std::cerr << theme->get_example_icon_name() << "\n";
-				if (theme->has_icon("table-center")) {
-					std::cerr << "Found icon\n";
-					Glib::RefPtr<Gdk::Pixbuf> pbuf = theme->load_icon("table-center", 64, Gtk::ICON_LOOKUP_USE_BUILTIN);
-					image = Gtk::manage(new Gtk::Image(pbuf));
-				}
-			}*/
+			}
 		}
 		
 		return image;
