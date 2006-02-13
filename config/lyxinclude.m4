@@ -586,7 +586,6 @@ AC_MSG_RESULT($lyx_use_packaging)
 case $lyx_use_packaging in
    macosx) AC_DEFINE(USE_MACOSX_PACKAGING, 1, [Define to 1 if LyX should use a MacOS X application bundle file layout])
 	   PACKAGE=LyX${version_suffix}
-	   program_suffix=$version_suffix
 	   default_prefix="/Applications/${PACKAGE}.app"
 	   bindir='${prefix}/Contents/MacOS'
 	   libdir='${prefix}/Contents/Resources'

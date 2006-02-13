@@ -10,14 +10,14 @@
 # This file is written by LyX, if you want to make your own
 # modifications you should do them from inside LyX and save
 
-\bind_file mac
+\bind_file "mac"
 
 #
 # MISC SECTION ######################################
 #
 
 \path_prefix "/usr/bin:/usr/local/bin:/usr/local/teTeX/bin/powerpc-apple-darwin-current:/usr/X11R6/bin:/sw/bin:/opt/local/teTeX/bin"
-\serverpipe "~/Library/Application Support/LyX/.lyxpipe"
+\serverpipe "~/Library/Application Support/LyX-1.4/.lyxpipe"
 \preview on
 
 #
@@ -52,6 +52,7 @@
 # FILE SECTION ######################################
 #
 
+\template_path "~/Library/Application Support/LyX-1.4/templates"
 
 #
 # ASCII EXPORT SECTION ##############################
@@ -89,8 +90,13 @@
 \format "word" "doc" "Word" "W" "open" ""
 \format "rtf" "rtf" "RTF" "" "open" ""
 
-
 #
 # CONVERTERS SECTION ##########################
+#
+
+\converter "latex" "lyx" "$$s/../MacOS/tex2lyx -f $$i $$o" ""
+
+#
+# COPIERS SECTION ##########################
 #
 
