@@ -4,6 +4,8 @@
 	* GPreferences.C: append arbitrary size to font strings
 	  when passing to gtk font button, to prevent it from 
 	  mangling some more complicated font names.
+	* lyx_gui.C: use Gtk::Main instead of while() loop: 
+	  fix eating CPU even when idle
 
 2006-02-12  John Spray  <spray@lyx.org>
 	* GMenubar.C: assume backend strings in latin1 (bug 1954)

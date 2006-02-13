@@ -87,10 +87,6 @@ bool lyx_gui::use_gui = true;
 
 namespace {
 
-/// quit lyx
-bool finished = false;
-
-
 /// estimate DPI from X server
 int getDPI()
 {
@@ -146,11 +142,7 @@ void lyx_gui::start(string const & batch, std::vector<string> const & files)
 		view.getLyXFunc().dispatch(lyxaction.lookupFunc(batch));
 	}
 
-	// enter the event loop
-	while (!finished) {
-		while (Gtk::Main::events_pending())
-			Gtk::Main::iteration(false);
-	}
+	Gtk::Main::run();
 
 	// FIXME: breaks emergencyCleanup
 	delete lyxsocket;
@@ -160,7 +152,7 @@ void lyx_gui::start(string const & batch, std::vector<string> const & files)
 
 void lyx_gui::exit()
 {
-	finished = true;
+	Gtk::Main::quit();
 }
 
 
