@@ -26,6 +26,7 @@ namespace lyx {
 namespace frontend {
 
 class GWorkArea;
+class ColorHandler;
 
 /**
  * GPainter - a painter implementation for Gtkmm
@@ -39,9 +40,8 @@ public:
 	/// return the height of the work area in pixels
 	virtual int paperHeight() const;
 
-	void setForeground(Glib::RefPtr<Gdk::GC> gc, LColor_color clr);
-	void setLineParam(Glib::RefPtr<Gdk::GC> gc,
-			  line_style ls, line_width lw);
+	inline void setForeground(LColor_color clr);
+	inline void setLineParam(line_style ls, line_width lw);
 	XftColor * getXftColor(LColor_color clr);
 	/// draw a line from point to point
 	virtual void line(
@@ -126,9 +126,16 @@ public:
 		XChar2b const * str, size_t l,
 		LyXFont const & f);
 
+	void start();
+
 private:
 	/// our owner who we paint upon
 	GWorkArea & owner_;
+	
+	Glib::RefPtr<Gdk::GC> gc_;
+	Glib::RefPtr<Gdk::Pixmap> pixmap_;
+	ColorHandler *colorhandler_;
+	LColor_color currentcolor_;
 };
 
 } // namespace frontend

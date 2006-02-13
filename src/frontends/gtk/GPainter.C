@@ -55,7 +55,7 @@ namespace lyx {
 namespace frontend {
 
 GPainter::GPainter(GWorkArea & xwa)
-	: Painter(), owner_(xwa)
+	: Painter(), owner_(xwa), currentcolor_(LColor::magenta)
 {
 }
 
@@ -72,15 +72,25 @@ int GPainter::paperHeight() const
 }
 
 
-void GPainter::setForeground(Glib::RefPtr<Gdk::GC> gc, LColor_color clr)
+inline void GPainter::setForeground(LColor_color clr)
 {
-	Gdk::Color * gclr = owner_.getColorHandler().getGdkColor(clr);
-	gc->set_foreground(*gclr);
+	if (clr != currentcolor_) {
+		gc_->set_foreground(*(colorhandler_->getGdkColor(clr)));
+		currentcolor_ = clr;
+	}
 }
 
 
-void GPainter::setLineParam(Glib::RefPtr<Gdk::GC> gc,
-			    line_style ls, line_width lw)
+void GPainter::start()
+{
+	pixmap_ = owner_.getPixmap();
+	colorhandler_ = &(owner_.getColorHandler());
+	gc_ = owner_.getGC();
+	gc_->set_foreground(*(colorhandler_->getGdkColor(currentcolor_)));
+}
+
+
+inline void GPainter::setLineParam(line_style ls, line_width lw)
 {
 	int width = 0;
 	switch (lw) {
@@ -101,15 +111,15 @@ void GPainter::setLineParam(Glib::RefPtr<Gdk::GC> gc,
 		style = Gdk::LINE_ON_OFF_DASH;
 		break;
 	}
-	gc->set_line_attributes(width, style,
+	gc_->set_line_attributes(width, style,
 				Gdk::CAP_NOT_LAST, Gdk::JOIN_MITER);
 }
 
 
 void GPainter::point(int x, int y, LColor_color c)
 {
-	setForeground(owner_.getGC(), c);
-	owner_.getPixmap()->draw_point(owner_.getGC(), x, y);
+	setForeground(c);
+	pixmap_->draw_point(gc_, x, y);
 }
 
 
@@ -119,9 +129,9 @@ void GPainter::line(int x1, int y1,
 	line_style ls,
 	line_width lw)
 {
-	setForeground(owner_.getGC(), col);
-	setLineParam(owner_.getGC(), ls, lw);
-	owner_.getPixmap()->draw_line(owner_.getGC(), x1, y1, x2, y2);
+	setForeground(col);
+	setLineParam(ls, lw);
+	pixmap_->draw_line(gc_, x1, y1, x2, y2);
 }
 
 
@@ -130,15 +140,15 @@ void GPainter::lines(int const * xp, int const * yp, int np,
 	line_style ls,
 	line_width lw)
 {
-	setForeground(owner_.getGC(), col);
-	setLineParam(owner_.getGC(), ls, lw);
+	setForeground(col);
+	setLineParam(ls, lw);
 	std::vector<Gdk::Point> points(np);
 
 	for (int i = 0; i < np; ++i) {
 		points[i].set_x(xp[i]);
 		points[i].set_y(yp[i]);
 	}
-	owner_.getPixmap()->draw_lines(owner_.getGC(), points);
+	pixmap_->draw_lines(gc_, points);
 }
 
 
@@ -147,39 +157,39 @@ void GPainter::rectangle(int x, int y, int w, int h,
 	line_style ls,
 	line_width lw)
 {
-	setForeground(owner_.getGC(), col);
-	setLineParam(owner_.getGC(), ls, lw);
-	owner_.getPixmap()->draw_rectangle(owner_.getGC(), false, x, y, w, h);
+	setForeground(col);
+	setLineParam(ls, lw);
+	pixmap_->draw_rectangle(gc_, false, x, y, w, h);
 }
 
 
 void GPainter::fillRectangle(int x, int y, int w, int h,
 	LColor_color col)
 {
-	setForeground(owner_.getGC(), col);
-	owner_.getPixmap()->draw_rectangle(owner_.getGC(), true, x, y, w, h);
+	setForeground(col);
+	pixmap_->draw_rectangle(gc_, true, x, y, w, h);
 }
 
 
 void GPainter::fillPolygon(int const * xp, int const * yp,
 	int np, LColor_color col)
 {
-	setForeground(owner_.getGC(), col);
+	setForeground(col);
 	std::vector<Gdk::Point> points(np);
 
 	for (int i = 0; i < np; ++i) {
 		points[i].set_x(xp[i]);
 		points[i].set_y(yp[i]);
 	}
-	owner_.getPixmap()->draw_polygon(owner_.getGC(), true, points);
+	pixmap_->draw_polygon(gc_, true, points);
 }
 
 
 void GPainter::arc(int x, int y, unsigned int w, unsigned int h,
 	int a1, int a2, LColor_color col)
 {
-	setForeground(owner_.getGC(), col);
-	owner_.getPixmap()->draw_arc(owner_.getGC(),
+	setForeground(col);
+	pixmap_->draw_arc(gc_,
 				     false, x, y, w, h, a1, a2);
 }
 
@@ -190,9 +200,9 @@ void GPainter::image(int x, int y, int w, int h,
 	graphics::LyXGdkImage const & image =
 		static_cast<graphics::LyXGdkImage const &>(i);
 	Glib::RefPtr<Gdk::Pixbuf> const & pixbuf = image.pixbuf();
-	Glib::RefPtr<Gdk::Pixmap> pixmap = owner_.getPixmap();
+	Glib::RefPtr<Gdk::Pixmap> pixmap = pixmap_;
 
-	Glib::RefPtr<Gdk::GC> gc = owner_.getGC();
+	Glib::RefPtr<Gdk::GC> gc = gc_;
 	pixmap->draw_pixbuf (gc, pixbuf, 0, 0, x, y, w, h,
 	                     Gdk::RGB_DITHER_NONE, 0, 0);
 }
@@ -226,7 +236,6 @@ void GPainter::text(int x, int y, wchar_t const * s, int ls, LyXFont const & f)
 	XftFont * font = getXftFont(f);
 	XftColor * xftClr = owner_.getColorHandler().
 		getXftColor(f.realColor());
-//	getXftColor(f.realColor());
 	XftDraw * draw = owner_.getXftDraw();
 	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
 		XftDrawString32(draw, xftClr, font, x, y,

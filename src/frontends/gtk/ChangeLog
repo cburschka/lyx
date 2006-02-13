@@ -6,6 +6,8 @@
 	  mangling some more complicated font names.
 	* lyx_gui.C: use Gtk::Main instead of while() loop: 
 	  fix eating CPU even when idle
+	* GPainter.[Ch]: some futile attempts to make painting
+	  faster by diminishing function overhead.
 
 2006-02-12  John Spray  <spray@lyx.org>
 	* GMenubar.C: assume backend strings in latin1 (bug 1954)
