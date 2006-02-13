@@ -142,14 +142,14 @@ void GPreferences::update()
 	LyXRC const & rc(controller().rc());
 
 	// *** Screen fonts ***
-	std::cerr << "Update: got font_name:font_foundry:\n";
-	std::cerr << rc.roman_font_name << ":" << rc.roman_font_foundry << "\n";
-	std::cerr << rc.sans_font_name << ":" << rc.sans_font_foundry << "\n";
-	std::cerr << rc.typewriter_font_name << ":" << rc.typewriter_font_foundry << "\n\n";
-
-	romanfontbutton_->set_font_name(rc.roman_font_name);
-	sansseriffontbutton_->set_font_name(rc.sans_font_name);
-	typewriterfontbutton_->set_font_name(rc.typewriter_font_name);
+	Glib::ustring gtk_roman_font_name = rc.roman_font_name + ", 12";
+	std::cerr << "Rc's roman_font_name is '" << rc.roman_font_name << "'\n";
+	std::cerr << "Our roman_font_name is '" << gtk_roman_font_name << "'\n";
+	romanfontbutton_->set_font_name(gtk_roman_font_name);
+	Glib::ustring gtk_sans_font_name = rc.sans_font_name + ", 12";
+	sansseriffontbutton_->set_font_name(gtk_sans_font_name);
+	Glib::ustring gtk_typewriter_font_name = rc.typewriter_font_name + ", 12";
+	typewriterfontbutton_->set_font_name(gtk_typewriter_font_name);
 
 	zoomadj_->set_value (rc.zoom);
 	dpiadj_->set_value (rc.dpi);
@@ -219,6 +219,10 @@ void GPreferences::apply()
 
 	rc.roman_font_name = Pango::FontDescription(
 		romanfontbutton_->get_font_name()).get_family ();
+	std::cerr << "Button's font_name is '" <<	romanfontbutton_->get_font_name() << "'\n";
+	std::cerr << "Setting font name to :\n";
+	std::cerr << "\t'" << Pango::FontDescription(
+		romanfontbutton_->get_font_name()).get_family () << "'\n";
 	rc.roman_font_foundry = "";
 	rc.sans_font_name = Pango::FontDescription(
 		sansseriffontbutton_->get_font_name()).get_family ();

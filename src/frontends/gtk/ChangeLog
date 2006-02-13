@@ -1,6 +1,9 @@
 2006-02-13  John Spray  <spray@lyx.org>
 	* ghelpers.C: implement Gtk::IconTheme stuff for getting 
 	  lots more icons from the theme.
+	* GPreferences.C: append arbitrary size to font strings
+	  when passing to gtk font button, to prevent it from 
+	  mangling some more complicated font names.
 
 2006-02-12  John Spray  <spray@lyx.org>
 	* GMenubar.C: assume backend strings in latin1 (bug 1954)
