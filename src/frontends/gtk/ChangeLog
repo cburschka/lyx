@@ -6,6 +6,8 @@
 	  no longer used.
 	* GWorkArea.C: fix copy and paste text encoding.  Now 
 	  I can copy and paste Schrödinger.
+	* GMenubar.C, GToolbar.C, GPainter.C: dodgy text encoding 
+	  conversions are marked with comments.  grep for ENCODING.
 
 2006-02-13  John Spray  <spray@lyx.org>
 	* ghelpers.C: implement Gtk::IconTheme stuff for getting 

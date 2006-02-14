@@ -130,6 +130,8 @@ void GLayoutBox::update()
 		if ((*it)->obsoleted_by().empty()) {
 			Gtk::TreeModel::iterator iter = model_->append();
 			Gtk::TreeModel::Row row = *iter;
+			// ENCODING, FIXME: are the backend layout strings really 
+			// in locale encoding?
 			row[cols_.name] = Glib::locale_to_utf8((*it)->name());
 		}
 	combo_.set_active(current_selection);
@@ -231,12 +233,17 @@ void GToolbar::add(FuncRequest const & func, string const & tooltip)
 	}
 
 	default: {
+		// ENCODING, FIXME - we assume tooltips are in locale.  No 
+		// idea whether they actually are.
 		Glib::ustring tip = Glib::locale_to_utf8(tooltip);
 
 		Gtk::ToolButton * toolbutton;
 		Gtk::Image * image = NULL;
 		image = getGTKIcon(func, Gtk::ICON_SIZE_LARGE_TOOLBAR);
 		if (!image) {
+			// ENCODING, FIXME: does Gtk::Image constructer really want
+			// filename in UTF-8 rather than filesystem encoding?
+			// This probably won't break when filenames are ASCII.
 			Glib::ustring xpmName =
 				Glib::locale_to_utf8(toolbarbackend.getIcon(func));
 			if (xpmName.find("unknown.xpm") == Glib::ustring::npos) {

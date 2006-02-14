@@ -48,6 +48,7 @@ private:
 };
 
 
+// ENCODING: assume that the backend will give us a ISO-8859-1 string
 Glib::ustring labelTrans(string const & label, string const & shortcut)
 {
 	string labelN = label;
@@ -197,6 +198,10 @@ void GMenubar::onSubMenuActivate(MenuItem const * item,
 				// Choose an icon from the funcrequest
 				Gtk::Image * image = getGTKIcon(i->func(), Gtk::ICON_SIZE_MENU);
 				if (!image) {
+					// ENCODING, FIXME: does Pixbuf::create_from_file really 
+					// want UTF-8, or does it want filename encoding?  Is 
+					// the backend string really in locale encoding?
+					// This shouldn't break as long as filenames are ASCII
 					Glib::ustring xpmName =
 						Glib::locale_to_utf8(toolbarbackend.getIcon(i->func()));
 					if (xpmName.find("unknown.xpm") == Glib::ustring::npos) {
