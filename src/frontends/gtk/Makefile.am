@@ -133,7 +133,6 @@ libgtk_la_SOURCES = \
 	LyXKeySymFactory.C \
 	LyXScreenFactory.C \
 	WorkAreaFactory.C \
-	codeConvert.h \
 	ghelpers.C \
 	ghelpers.h \
 	io_callback.C \

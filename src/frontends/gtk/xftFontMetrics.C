@@ -24,7 +24,6 @@
 #include "lyxrc.h"
 #include "encoding.h"
 #include "language.h"
-#include "codeConvert.h"
 
 #include "support/lstrings.h"
 #include "debug.h"
@@ -77,17 +76,6 @@ inline int XGlyphLogWidth(XGlyphInfo const & info)
 	return info.xOff;
 }
 
-
-wchar_t C2WC(char ch)
-{
-	wchar_t wcs[2] = {0, 0};
-	char mbs[2] = {0, 0};
-	mbs[0] = ch;
-	mbstowcs(wcs, mbs, 2);
-	return wcs[0];
-}
-
-
 } // namespace anon
 
 
@@ -108,88 +96,61 @@ int maxDescent(LyXFont const & f)
 }
 
 
-int ascent(wchar_t c,LyXFont const & f)
+int ascent(char c,LyXFont const & f)
 {
 	XftFont * font = getXftFont(f);
 	XGlyphInfo glyph;
-	XftTextExtents32(getDisplay(), font,
-			 wcsToXftChar32StrFast(&c),
+	XftTextExtents8(getDisplay(), font,
+			 reinterpret_cast<XftChar8 *>(&c),
 			 1,
 			 &glyph);
 	return XGlyphAscent(glyph);
 }
 
 
-int ascent(char c, LyXFont const & f)
-{
-	return ascent(C2WC(c), f);
-}
-
-
-int descent(wchar_t c,LyXFont const & f)
+int descent(char c,LyXFont const & f)
 {
 	XftFont * font = getXftFont(f);
 	XGlyphInfo glyph;
-	XftTextExtents32(getDisplay(), font,
-			 wcsToXftChar32StrFast(&c),
+	XftTextExtents8(getDisplay(), font,
+			 reinterpret_cast<XftChar8 *>(&c),
 			 1,
 			 &glyph);
 	return XGlyphDescent(glyph);
 }
 
 
-int descent(char c, LyXFont const & f)
-{
-	return descent(C2WC(c), f);
-}
-
-
-int lbearing(wchar_t c,LyXFont const & f)
+int lbearing(char c,LyXFont const & f)
 {
 	XftFont * font = getXftFont(f);
 	XGlyphInfo glyph;
-	XftTextExtents32(getDisplay(), font,
-			 wcsToXftChar32StrFast(&c),
+	XftTextExtents8(getDisplay(), font,
+			 reinterpret_cast<XftChar8 *>(&c),
 			 1,
 			 &glyph);
 	return XGlyphLbearing(glyph);
 }
 
 
-int rbearing(wchar_t c,LyXFont const & f)
+int rbearing(char c,LyXFont const & f)
 {
 	XftFont * font = getXftFont(f);
 	XGlyphInfo glyph;
-	XftTextExtents32(getDisplay(), font,
-			 wcsToXftChar32StrFast(&c),
+	XftTextExtents8(getDisplay(), font,
+			 reinterpret_cast<XftChar8 *>(&c),
 			 1,
 			 &glyph);
 	return XGlyphRbearing(glyph);
 }
 
 
-int lbearing(char c, LyXFont const & f)
-{
-	return lbearing(C2WC(c), f);
-}
-
-
-int rbearing(char c, LyXFont const & f)
-{
-	return rbearing(C2WC(c), f);
-}
-
-
-int width(wchar_t const * s, size_t n, LyXFont const & f)
+int width(char const * s, size_t n, LyXFont const & f)
 {
 	XftFont * font = getXftFont(f);
 	XGlyphInfo glyph;
 	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE){
-		XftTextExtents32(getDisplay(), font,
-				 const_cast<XftChar32 *>(
-					 wcsToXftChar32StrFast(s)),
-				 n,
-				 &glyph);
+		XftTextExtents8(getDisplay(), font,
+				 reinterpret_cast<XftChar8 *>(const_cast<char *>(s)), n, &glyph);
 		return XGlyphLogWidth(glyph);
 	} else {
 		int result = 0;
@@ -197,16 +158,16 @@ int width(wchar_t const * s, size_t n, LyXFont const & f)
 		smallfont.decSize().decSize().setShape(LyXFont::UP_SHAPE);
 		XftFont * fontS = getXftFont(smallfont);
 		for (size_t i = 0; i < n; ++i) {
-			wchar_t wc = lyx::support::uppercase(s[i]);
-			if (wc != s[i]) {
-				XftTextExtents32(getDisplay(), fontS,
-						 wcsToXftChar32StrFast(&wc),
+			char c = lyx::support::uppercase(s[i]);
+			if (c != s[i]) {
+				XftTextExtents8(getDisplay(), fontS,
+						 reinterpret_cast<XftChar8 *>(&c),
 						 1,
 						 &glyph);
 				result += XGlyphLogWidth(glyph);
 			} else {
-				XftTextExtents32(getDisplay(), font,
-						 wcsToXftChar32StrFast(&wc),
+				XftTextExtents8(getDisplay(), font,
+						 reinterpret_cast<XftChar8 *>(&c),
 						 1,
 						 &glyph);
 				result += XGlyphLogWidth(glyph);
@@ -217,42 +178,14 @@ int width(wchar_t const * s, size_t n, LyXFont const & f)
 }
 
 
-int width(wchar_t c,LyXFont const & f)
-{
-	return width(&c, 1, f);
-}
-
-
-int width(char const * s, size_t n, LyXFont const & f)
-{
-	boost::scoped_array<wchar_t> wcs(new wchar_t[n]);
-	int len; // Signed to handle error retvals
-	if (fontLoader.isSpecial(f)) {
-		unsigned char const * us =
-			reinterpret_cast<unsigned char const *>(s);
-		len = n;
-		std::copy(us, us + n, wcs.get());
-	} else {
-		len = mbstowcs(wcs.get(), s, n);
-		if (len < 0) {
-			lyxerr[Debug::FONT] << "Invalid multibyte encoding! '" << s << "'\n";
-			return n * width("0", 1, f);
-		}
-	}
-	return width(wcs.get(), static_cast<size_t>(len), f);
-}
-
-
 int signedWidth(string const & s, LyXFont const & f)
 {
 	if (s.empty())
 		return 0;
-	boost::scoped_array<wchar_t> wcs(new wchar_t[s.length() + 1]);
-	int len = mbstowcs(wcs.get(), s.c_str(), s.length());
-	if (wcs[0] == '-')
-		return width(wcs.get() + 1, len - 1, f);
+	if (s[0] == '-')
+		return width(s.c_str() + 1, s.size() - 1, f);
 	else
-		return width(wcs.get(), len, f);
+		return width(s.c_str(), s.size(), f);
 }
 
 
