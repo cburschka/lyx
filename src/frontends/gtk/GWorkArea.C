@@ -519,20 +519,26 @@ void GWorkArea::haveSelection(bool toHave) const
 }
 
 
+// ENCODING: Gtk::Clipboard returns UTF-8, we assume that the backend 
+// wants ISO-8859-1 and convert it to that.
 string const GWorkArea::getClipboard() const
 {
 	Glib::RefPtr<Gtk::Clipboard> clipboard =
 		Gtk::Clipboard::get(GDK_SELECTION_PRIMARY);
-	return Glib::locale_from_utf8(clipboard->wait_for_text());
+	return Glib::convert_with_fallback(
+		clipboard->wait_for_text(), "ISO-8859-1", "UTF-8");
 }
 
 
+// ENCODING: we assume that the backend passes us ISO-8859-1 and 
+// convert from that to UTF-8 before passing to GTK
 void GWorkArea::putClipboard(string const & str) const
 {
 	Glib::RefPtr<Gtk::Clipboard> clipboard =
 		Gtk::Clipboard::get(GDK_SELECTION_PRIMARY);
-	clipboard->set_text(Glib::locale_to_utf8(str));
+	clipboard->set_text(Glib::convert(str, "UTF-8", "ISO-8859-1"));
 }
+
 
 } // namespace frontend
 } // namespace lyx

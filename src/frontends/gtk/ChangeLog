@@ -4,6 +4,8 @@
 		Now I can type Schrödinger.
 	* codeConvert.h, Makefile.am: Remove codeConvert.h, it's 
 	  no longer used.
+	* GWorkArea.C: fix copy and paste text encoding.  Now 
+	  I can copy and paste Schrödinger.
 
 2006-02-13  John Spray  <spray@lyx.org>
 	* ghelpers.C: implement Gtk::IconTheme stuff for getting 
