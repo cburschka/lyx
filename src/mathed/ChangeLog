@@ -1,3 +1,7 @@
+2006-02-13  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* math_macro.C (editXY): Prevent crash (fix by Andrew Beck)
+
 2006-01-28  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* math_hullinset.C (getStatus): get rid of a compiler warning

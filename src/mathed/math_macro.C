@@ -129,8 +129,17 @@ void MathMacro::validate(LaTeXFeatures & features) const
 InsetBase * MathMacro::editXY(LCursor & cur, int x, int y)
 {
 	// We may have 0 arguments, but MathNestInset requires at least one.
-	if (nargs() > 0)
+	if (nargs() > 0) {
+		// Prevent crash due to cold coordcache
+		// FIXME: This is only a workaround, the call of
+		// MathNestInset::editXY is correct. The correct fix would
+		// ensure that the coordcache of the arguments is valid.
+		if (!editing(&cur.bv())) {
+			edit(cur, true);
+			return this;
+		}
 		return MathNestInset::editXY(cur, x, y);
+	}
 	return this;
 }
 
