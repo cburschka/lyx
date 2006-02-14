@@ -8,6 +8,8 @@
 	  I can copy and paste Schrödinger.
 	* GMenubar.C, GToolbar.C, GPainter.C: dodgy text encoding 
 	  conversions are marked with comments.  grep for ENCODING.
+	* GViewBase.C: no longer call update() in show(), fixes 
+	  update getting called twice when opening dialog.
 
 2006-02-13  John Spray  <spray@lyx.org>
 	* ghelpers.C: implement Gtk::IconTheme stuff for getting 

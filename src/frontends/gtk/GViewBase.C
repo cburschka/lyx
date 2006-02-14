@@ -61,7 +61,7 @@ void GViewBase::show()
 	if (!window()) {
 		build();
 	}
-	update();
+
 	if (dialog().controller().exitEarly())
 		return;
 
