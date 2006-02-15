@@ -30,6 +30,7 @@ using std::max;
 
 using std::vector;
 using std::string;
+using std::swap;
 
 
 namespace lyx {
@@ -384,11 +385,10 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 		string const tmp = *it;
 
 		fl_delete_browser_line(dialog_->browser_cite, sel);
-		citekeys.erase(it);
+		swap(citekeys[sel - 2], citekeys[sel - 1]);
 
 		fl_insert_browser_line(dialog_->browser_cite, sel - 1, tmp.c_str());
 		fl_select_browser_line(dialog_->browser_cite, sel - 1);
-		citekeys.insert(it - 1, tmp);
 		setCiteButtons(ON);
 		activate = ButtonPolicy::SMI_VALID;
 
@@ -402,11 +402,10 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 		string const tmp = *it;
 
 		fl_delete_browser_line(dialog_->browser_cite, sel);
-		citekeys.erase(it);
+		swap(citekeys[sel], citekeys[sel - 1]);
 
 		fl_insert_browser_line(dialog_->browser_cite, sel+1, tmp.c_str());
 		fl_select_browser_line(dialog_->browser_cite, sel+1);
-		citekeys.insert(it+1, tmp);
 		setCiteButtons(ON);
 		activate = ButtonPolicy::SMI_VALID;
 

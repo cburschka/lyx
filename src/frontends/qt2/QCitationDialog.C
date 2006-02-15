@@ -29,6 +29,7 @@
 
 using std::vector;
 using std::string;
+using std::swap;
 
 namespace lyx {
 namespace frontend {
@@ -193,11 +194,10 @@ void QCitationDialog::up()
 	string const tmp = *it;
 
 	selectedLB->removeItem(sel);
-	form_->citekeys.erase(it);
+	swap(form_->citekeys[sel - 1], form_->citekeys[sel]);
 
 	selectedLB->insertItem(toqstr(tmp), sel - 1);
 	selectedLB->setSelected(sel - 1, true);
-	form_->citekeys.insert(it - 1, tmp);
 
 	form_->changed();
 	form_->fillStyles();
@@ -214,11 +214,10 @@ void QCitationDialog::down()
 	string const tmp = *it;
 
 	selectedLB->removeItem(sel);
-	form_->citekeys.erase(it);
+	swap(form_->citekeys[sel + 1], form_->citekeys[sel]);
 
 	selectedLB->insertItem(toqstr(tmp), sel + 1);
 	selectedLB->setSelected(sel + 1, true);
-	form_->citekeys.insert(it + 1, tmp);
 
 	form_->changed();
 	form_->fillStyles();

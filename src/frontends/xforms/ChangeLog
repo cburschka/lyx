@@ -1,3 +1,8 @@
+2006-02-15  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* FormCitation.C (input): fix crash due to invalidated
+	iterator.
+
 2005-12-12  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* FormPreferences.C: fix off-by-x errors in paper size setting
