@@ -381,8 +381,7 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 			return ButtonPolicy::SMI_NOOP;
 
 		// Move the selected key up one line
-		vector<string>::iterator it = citekeys.begin() + sel - 1;
-		string const tmp = *it;
+		string const tmp = citekeys[sel - 1];
 
 		fl_delete_browser_line(dialog_->browser_cite, sel);
 		swap(citekeys[sel - 2], citekeys[sel - 1]);
@@ -398,8 +397,7 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 			return ButtonPolicy::SMI_NOOP;
 
 		// Move the selected key down one line
-		vector<string>::iterator it = citekeys.begin() + sel - 1;
-		string const tmp = *it;
+		string const tmp = citekeys[sel - 1];
 
 		fl_delete_browser_line(dialog_->browser_cite, sel);
 		swap(citekeys[sel], citekeys[sel - 1]);

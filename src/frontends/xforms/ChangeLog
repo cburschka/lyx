@@ -1,5 +1,9 @@
 2006-02-15  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
+	* FormCitation.C (input): get rid of the iterator.
+
+2006-02-15  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
 	* FormCitation.C (input): fix crash due to invalidated
 	iterator.
 

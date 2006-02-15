@@ -189,9 +189,10 @@ void QCitationDialog::up()
 {
 	int const sel = selectedLB->currentItem();
 
+	BOOST_ASSERT(sel > 0);
+
 	// Move the selected key up one line
-	vector<string>::iterator it = form_->citekeys.begin() + sel;
-	string const tmp = *it;
+	string const tmp = form_->citekeys[sel];
 
 	selectedLB->removeItem(sel);
 	swap(form_->citekeys[sel - 1], form_->citekeys[sel]);
@@ -209,9 +210,10 @@ void QCitationDialog::down()
 {
 	int const sel = selectedLB->currentItem();
 
+	BOOST_ASSERT(sel < (int)form_->citekeys.size());
+
 	// Move the selected key down one line
-	vector<string>::iterator it = form_->citekeys.begin() + sel;
-	string const tmp = *it;
+	string const tmp = form_->citekeys[sel];
 
 	selectedLB->removeItem(sel);
 	swap(form_->citekeys[sel + 1], form_->citekeys[sel]);
