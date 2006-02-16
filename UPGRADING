@@ -1,5 +1,23 @@
-How do I upgrade my existing LyX system to version 1.3.0?
+How do I upgrade my existing LyX system to version 1.4.x?
 ---------------------------------------------------------
+
+The format of the preferences file has changed slightly. LyX 1.4.x is
+able to read old preferences files, but it will save them in the new
+format, so it is not possible to run LyX 1.3.x and 1.4.x with the same
+personal configuration directory.
+
+The format of the layout files has also changed, but LyX 1.4.x uses a
+converter layout2layout.py written in python that will convert old layout
+files on the fly. You can also call it manually on your layout files if
+you want to convert them to 1.4.x format permanently.
+
+The format of the external template file has changed substantially.
+Automatic conversion is not available, so you need to convert your
+external templates manually. The new format of the external template
+configuration file is described in chapter 6.5 of the Customization Guide.
+
+And of course, if you upgrade from LyX 1.2.x, remember that since
+1.3.0, you have to do the following changes:
 
 One of the perennial bug bears of LyX users in the past has been that
 they have had to run Edit->Reconfigure when starting their new version
@@ -53,18 +71,24 @@ in order to get previews of your document's graphics.
 Document transfer
 -----------------
 
-LyX 1.3.0 uses an external python script, lyx2lyx, to import documents
+LyX 1.4.x uses an external python script, lyx2lyx, to import documents
 written using previous versions of LyX. All versions of LyX as far back as
 0.12 are supported, so any klyx users still holding out for an alternative
 to xforms will finally be able to put their dinosaur to rest ;-)
 
 Of course, this means that you must have python (at least version 1.5)
-installed in order to use LyX 1.3.0 with your old documents.
+installed in order to use LyX 1.4.x with your old documents.
 
 lyx2lyx also has the framework in place to be able to convert documents
-to an earlier format. However, these converters have not yet been written
-so older versions of LyX will NOT be able to read documents saved with
-LyX 1.3.0.
+to an earlier format. However, these converters have only been written
+for the conversion from 1.4.x to 1.3.x, so versions of LyX older than
+1.3.0 will NOT be able to read documents saved with LyX 1.4.x.
+The conversion from 1.4.x to 1.3.x is lossless as long as no new features
+are used. lyx2lyx tries hard to find something equivalent for new
+features such as boxes, but this is known to fail sometimes.
+LyX 1.3.7 contains an updated lyx2lyx that can read documents in 1.4.x
+format. LyX 1.4.x can also export to 1.3.x format for document transfer to
+older 1.3.x releases.
 
 If you were previously (in LyX 1.1.x) using the floatflt paragraph
 option to wrap text around a figure, it was necessary to modify this
