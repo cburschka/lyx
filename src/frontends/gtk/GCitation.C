@@ -291,17 +291,29 @@ void GCitation::update_contents()
 	for (std::vector<std::string>::const_iterator ccit = citekeys.begin();
 		ccit != citekeys.end(); ++ccit) {
 
+		bool found = false;
 		for (Gtk::TreeModel::const_iterator cbit =
 			(allListStore_->children()).begin();
 			cbit != (allListStore_->children()).end(); ++cbit) {
 
 			if ((*cbit)[bibColumns.name] == (*ccit)) {
+				found = true;
 				(*cbit)[bibColumns.cite] = true;
 				allListStore_->move(cbit,
 					(allListStore_->children()).end());
 				break;
 			}
-
+		}
+		if (!found) {
+			// It wasn't in the list of keys, but to support 
+			// working on a document away from the bibtex file
+			// we should keep it anyway.
+			Gtk::TreeModel::iterator iter = allListStore_->append();
+			(*iter)[bibColumns.name] = Glib::locale_to_utf8(*ccit);
+			(*iter)[bibColumns.cite] = true;
+			(*iter)[bibColumns.bib_order] = ++bib_order;
+			(*iter)[bibColumns.info] = Glib::locale_to_utf8(
+				biblio::getInfo(theMap,*ccit));
 		}
 	}
 }
