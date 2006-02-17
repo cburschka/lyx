@@ -1,6 +1,8 @@
 2006-02-16  John Spray  <spray@lyx.org>
 	* GCitation.C: Add selected keys to the list, even if they're 
 	  in the list of bibkeys.
+	* GViewBase.C: Put update() back into show(), it was still 
+	  needed by some dialogs.  More investigation needed.
 
 2006-02-14  John Spray  <spray@lyx.org>
 	* GPainter.[Ch], xftFontMetrics.C: Remove broken multibyte 
