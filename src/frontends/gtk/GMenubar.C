@@ -26,11 +26,15 @@
 #include "ToolbarBackend.h" // for getIcon
 
 #include "debug.h"
+#include "support/lstrings.h"
 #include "lyxfunc.h"
 
 using std::string;
 
 namespace lyx {
+
+using support::subst;
+
 namespace frontend {
 
 namespace
@@ -49,14 +53,14 @@ private:
 
 
 // ENCODING: assume that the backend will give us a ISO-8859-1 string
-Glib::ustring labelTrans(string const & label, string const & shortcut)
+Glib::ustring labelTrans(string const & label_src, string const & shortcut)
 {
-	string labelN = label;
+	string label = subst(label_src, "_", "__");
 	string::size_type i = label.find(shortcut);
 	if (i == string::npos)
 		return Glib::convert(label, "UTF-8", "ISO-8859-1");
-	labelN.insert(i, "_");
-	return Glib::convert(labelN, "UTF-8", "ISO-8859-1");
+	label.insert(i, "_");
+	return Glib::convert(label, "UTF-8", "ISO-8859-1");
 }
 
 
