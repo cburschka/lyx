@@ -58,7 +58,7 @@ void GTableCreate::apply()
 {
 	size_t const rows = rows_->get_value_as_int();
 	size_t const columns = columns_->get_value_as_int();
-	controller().params() = std::make_pair(columns, rows);
+	controller().params() = std::make_pair(rows, columns);
 }
 
 } // namespace frontend
