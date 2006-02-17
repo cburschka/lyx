@@ -41,6 +41,7 @@ GPreferences::GPreferences(Dialog & parent)
 
 void GPreferences::doBuild()
 {
+	std::cerr << ">>doBuild\n";
 	string const gladeName = findGladeFile("preferences");
 	xml_ = Gnome::Glade::Xml::create(gladeName);
 
@@ -81,17 +82,8 @@ void GPreferences::doBuild()
 
 	// *** Keyboard ***
 	xml_->get_widget("UseKeyboardMap", keyboardmapcheck_);
-	
-	xml_->get_widget("FirstKeyboardMap", box);
-	keyboardmap1fcbutton_ = Gtk::manage(new Gtk::FileChooserButton);
-	box->pack_start(*keyboardmap1fcbutton_);
-	keyboardmap1fcbutton_->set_action(Gtk::FILE_CHOOSER_ACTION_OPEN);
-	keyboardmap1fcbutton_->show();
-	xml_->get_widget("SecondKeyboardMap", box);
-	keyboardmap2fcbutton_ = Gtk::manage(new Gtk::FileChooserButton);
-	box->pack_start(*keyboardmap2fcbutton_);
-	keyboardmap2fcbutton_->set_action(Gtk::FILE_CHOOSER_ACTION_OPEN);
-	keyboardmap2fcbutton_->show();
+	xml_->get_widget("FirstKeyboardMap", keyboardmap1fcbutton_);
+	xml_->get_widget("SecondKeyboardMap", keyboardmap2fcbutton_);
 	
 	Gtk::FileFilter kmapfilter;
 	kmapfilter.set_name ("LyX keyboard maps");
@@ -134,12 +126,45 @@ void GPreferences::doBuild()
 	for (; lit != lend; ++lit) {
 		defaultlanguagecombo_.append_text(lit->first);
 	}
+
+	// *** Spellchecker ***
+	xml_->get_widget("Spellchecker", box);
+	box->pack_start(spellcheckercombo_);
+	spellcheckercombo_.show();
+	xml_->get_widget("AlternativeLanguage", alternativelanguageentry_);
+	xml_->get_widget("EscapeCharacters", escapecharactersentry_);
+	xml_->get_widget("PersonalDictionary", personaldictionaryfcbutton_);
+	xml_->get_widget("AcceptCompoundWords", acceptcompoundcheck_);
+	xml_->get_widget("UseInputEncoding", useinputenccheck_);
+
+	Gtk::FileFilter ispellfilter;
+	ispellfilter.set_name ("iSpell Dictionary Files");
+	ispellfilter.add_pattern ("*.ispell");
+	
+	personaldictionaryfcbutton_->add_filter (ispellfilter);
+	personaldictionaryfcbutton_->add_filter (allfilter);
+	personaldictionaryfcbutton_->set_filter (ispellfilter);
+
+	spellcheckercombo_.append_text ("ispell");
+	spellcheckercombo_.append_text ("aspell");
+	spellcheckercombo_.append_text ("hspell");
+#ifdef USE_PSPELL
+	spellcheckercombo_.append_text (_("pspell (library)"));
+#else
+#ifdef USE_ASPELL
+	spellcheckercombo_.append_text (_("aspell (library)"));
+#endif
+#endif
+	
+
 }
 
 
 void GPreferences::update()
 {
 	LyXRC const & rc(controller().rc());
+
+	std::cerr << ">> update\n";
 
 	// *** Screen fonts ***
 	Glib::ustring gtk_roman_font_name = rc.roman_font_name + ", 12";
@@ -205,6 +230,32 @@ void GPreferences::update()
 	RTLsupportcheck_->set_active(rc.rtl_support);
 	autobegincheck_->set_active(rc.language_auto_begin);
 	autoendcheck_->set_active(rc.language_auto_end);
+
+	// *** Spellchecker ***
+	spellcheckercombo_.set_active (0);
+
+	if (rc.isp_command == "ispell") {
+		spellcheckercombo_.set_active (0);
+	} else if (rc.isp_command == "aspell") {
+		spellcheckercombo_.set_active (1);
+	} else if (rc.isp_command == "hspell") {
+		spellcheckercombo_.set_active (2);
+	}
+
+	if (rc.use_spell_lib) {
+#if defined(USE_ASPELL) || defined(USE_PSPELL)
+		spellcheckercombo_.set_active (3);
+#endif
+	}
+	
+	// FIXME: remove isp_use_alt_lang
+	alternativelanguageentry_->set_text(rc.isp_alt_lang);
+	// FIXME: remove isp_use_esc_chars
+	escapecharactersentry_->set_text(rc.isp_esc_chars);
+	// FIXME: remove isp_use_pers_dict
+	personaldictionaryfcbutton_->set_filename(rc.isp_pers_dict);
+	acceptcompoundcheck_->set_active(rc.isp_accept_compound);
+	useinputenccheck_->set_active(rc.isp_use_input_encoding);
 
 	bc().valid();
 }
@@ -281,6 +332,31 @@ void GPreferences::apply()
 	rc.language_auto_begin = autobegincheck_->get_active();
 	rc.language_auto_end = autoendcheck_->get_active();
 
+	// *** Spellchecker ***
+	switch (spellcheckercombo_.get_active_row_number()) {
+		case 0:
+		case 1:
+		case 2:
+			rc.use_spell_lib = false;
+			rc.isp_command = spellcheckercombo_.get_active_text();
+			break;
+		case 3:
+			rc.use_spell_lib = true;
+			break;
+	}
+
+	// FIXME: remove isp_use_alt_lang
+	rc.isp_alt_lang = alternativelanguageentry_->get_text();
+	rc.isp_use_alt_lang = !rc.isp_alt_lang.empty();
+	// FIXME: remove isp_use_esc_chars
+	rc.isp_esc_chars = escapecharactersentry_->get_text();
+	rc.isp_use_esc_chars = !rc.isp_esc_chars.empty();
+	// FIXME: remove isp_use_pers_dict
+	rc.isp_pers_dict = personaldictionaryfcbutton_->get_filename();
+	rc.isp_use_pers_dict = !rc.isp_pers_dict.empty();
+	rc.isp_accept_compound = acceptcompoundcheck_->get_active();
+	rc.isp_use_input_encoding = useinputenccheck_->get_active();
+
 	// Prevent Apply button ever getting disabled
 	bc().valid();
 }
@@ -292,6 +368,7 @@ void GPreferences::keyboard_sensitivity ()
 	keyboardmap1fcbutton_->set_sensitive(kbmap);
 	keyboardmap2fcbutton_->set_sensitive(kbmap);
 }
+
 
 } // namespace frontend
 } // namespace lyx

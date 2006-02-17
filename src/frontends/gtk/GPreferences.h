@@ -70,6 +70,15 @@ private:
 	Gtk::CheckButton *autobegincheck_;
 	Gtk::CheckButton *autoendcheck_;
 	// <<< Language tab
+	
+	// >>> Spellchecker tab
+	Gtk::ComboBoxText spellcheckercombo_;
+	Gtk::Entry *alternativelanguageentry_;
+	Gtk::Entry *escapecharactersentry_;
+	Gtk::FileChooserButton *personaldictionaryfcbutton_;
+	Gtk::CheckButton *acceptcompoundcheck_;
+	Gtk::CheckButton *useinputenccheck_;
+	// <<< Spellchecker tab
 };
 
 } // namespace frontend
