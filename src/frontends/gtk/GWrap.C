@@ -73,6 +73,8 @@ void GWrap::update()
 		item = 2;
 	else if (params.placement == "p")
 		item = 3;
+	else
+		item = 0; // default
 
 	placementcombo_->set_active (item);
 
@@ -87,11 +89,11 @@ void GWrap::apply()
 	if (applylock_)
 		return;
 
-        InsetWrapParams & params = controller().params();
+	InsetWrapParams & params = controller().params();
 
-        params.width = widthlengthentry_->get_length();
+	params.width = widthlengthentry_->get_length();
 
-        int const placementrow = placementcombo_->get_active_row_number();
+	int const placementrow = placementcombo_->get_active_row_number();
 	BOOST_ASSERT (0 <= placementrow <= 3);
 	switch (placementrow) {
 		case 1:

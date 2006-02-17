@@ -5,6 +5,7 @@
 	  needed by some dialogs.  More investigation needed.
 	* GTableCreate.C: Fix rows and columns being switched
 	* GMenubar.C: Escape underscores in menu labels
+	* GWrap.C: Cope with empty placement string for default placement
 
 2006-02-14  John Spray  <spray@lyx.org>
 	* GPainter.[Ch], xftFontMetrics.C: Remove broken multibyte 
