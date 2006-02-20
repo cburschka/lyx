@@ -78,19 +78,29 @@ def make_texcolor(hexcolor):
 
 def extract_metrics_info(dvipng_stdout, metrics_file):
     metrics = open(metrics_file, 'w')
-    metrics_re = re.compile("\[([0-9]+) depth=(-?[0-9]+) height=(-?[0-9]+)")
+# "\[[0-9]+" can match two kinds of numbers: page numbers from dvipng
+# and glyph numbers from mktexpk. The glyph numbers always match
+# "\[[0-9]+\]" while the page number never is followed by "\]". Thus:
+    page_re = re.compile("\[([0-9]+)[^]]");
+    metrics_re = re.compile("depth=(-?[0-9]+) height=(-?[0-9]+)")
 
     success = 0
+    page = ""
     pos = 0
     while 1:
+        match = page_re.search(dvipng_stdout, pos)
+        if match == None:
+            break
+        page = match.group(1)
+        pos = match.end()
         match = metrics_re.search(dvipng_stdout, pos)
         if match == None:
             break
         success = 1
 
         # Calculate the 'ascent fraction'.
-        descent = string.atof(match.group(2))
-        ascent  = string.atof(match.group(3))
+        descent = string.atof(match.group(1))
+        ascent  = string.atof(match.group(2))
 
         frac = 0.5
         if ascent > 0 and descent > 0:
@@ -101,8 +111,8 @@ def extract_metrics_info(dvipng_stdout, metrics_file):
             if frac < 0 or frac > 1:
                 frac = 0.5
 
-        metrics.write("Snippet %s %f\n" % (match.group(1), frac))
-        pos = match.end(3) + 2
+        metrics.write("Snippet %s %f\n" % (page, frac))
+        pos = match.end() + 2
 
     return success
 

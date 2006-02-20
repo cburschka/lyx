@@ -1,3 +1,8 @@
+2006-02-19  Enrico Forestieri  <forenr@tlc.unipr.it>
+
+	* scripts/lyxpreview2bitmap.py: fix script to work with recent versions
+	of preview-latex and dvipng (bug 2243).
+
 2006-02-19  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* bind/de_menus.bind: comment out obsolete bindings (bug 1161).
