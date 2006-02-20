@@ -44,6 +44,8 @@ private:
 	void onInput();
 	void allBorders(bool borders);
 	void updateSensitivity();
+	void updateSpecialRowsSensitivity();
+	void updateHorzAlignCombo(bool extraoption);
 
 	bool updating_;
 
@@ -52,7 +54,7 @@ private:
 	Gtk::SpinButton *cellcolspin_;
 
 	// **** Table tab ****
-	Gtk::ComboBox *horzaligncombo_;
+	Gtk::ComboBoxText *horzaligncombo_;
 	Gtk::ComboBox *vertaligncombo_;
 	Gtk::CheckButton *specifywidthcheck_;
 	GtkLengthEntry *widthlength_;
@@ -69,6 +71,27 @@ private:
 	Gtk::CheckButton *multicolcheck_;
 
 	// **** Longtable tab ****
+	Gtk::CheckButton *longtablecheck_;
+	Gtk::CheckButton *pagebreakcheck_;
+	
+	Gtk::Table *specialrowstable_;
+
+	Gtk::CheckButton *headeroncheck_;
+	Gtk::CheckButton *footeroncheck_;
+	Gtk::CheckButton *firstheaderoncheck_;
+	Gtk::CheckButton *lastfooteroncheck_;
+	Gtk::CheckButton *firstheaderemptycheck_;
+	Gtk::CheckButton *lastfooteremptycheck_;
+	Gtk::CheckButton *headerupperborderdoublecheck_;
+	Gtk::CheckButton *footerupperborderdoublecheck_;
+	Gtk::CheckButton *firstheaderupperborderdoublecheck_;
+	Gtk::CheckButton *lastfooterupperborderdoublecheck_;
+	Gtk::CheckButton *headerlowerborderdoublecheck_;
+	Gtk::CheckButton *footerlowerborderdoublecheck_;
+	Gtk::CheckButton *firstheaderlowerborderdoublecheck_;
+	Gtk::CheckButton *lastfooterlowerborderdoublecheck_;
+	
+
 };
 
 } // namespace frontend
