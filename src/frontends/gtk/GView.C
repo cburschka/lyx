@@ -95,7 +95,7 @@ GView::GView()
 		boost::bind(&GMiniBuffer::editMode, minibuffer_.get()));
 	view_state_changed.connect(boost::bind(&GView::showViewState, this));
 	signal_focus_in_event().connect(sigc::mem_fun(*this, &GView::onFocusIn));
-	set_default_size(620, 550);
+	set_default_size(750, 550);
 	// Make sure the buttons are disabled if needed.
 	updateToolbars();
 	string const iconName =
