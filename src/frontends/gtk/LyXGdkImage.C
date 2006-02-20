@@ -164,47 +164,39 @@ void LyXGdkImage::load_impl(string const & filename)
 	finishedLoading(true);
 }
 
-/*
-namespace {
-
-// This code is taken from KImageEffect::toGray
-QImage & toGray(QImage & img)
-{
-	if (img.width() == 0 || img.height() == 0)
-		return img;
-
-	int const pixels = img.depth() > 8 ?
-		img.width() * img.height() : img.numColors();
-
-	unsigned int * const data = img.depth() > 8 ?
-		(unsigned int *)img.bits() :
-		(unsigned int *)img.colorTable();
-
-	for(int i = 0; i < pixels; ++i){
-		int const val = qGray(data[i]);
-		data[i] = qRgba(val, val, val, qAlpha(data[i]));
-	}
-	return img;
-}
-
-} // namespace anon
-*/
 
 bool LyXGdkImage::setPixmap_impl(Params const & params)
 {
 	if (!original_ || params.display == NoDisplay)
 		return false;
 
-	// TODO: implement grayscale and monochrome
 	switch (params.display) {
 	case GrayscaleDisplay: {
-		//toGray(transformed_);
-		//transformed_->saturate_and_pixelate (dest, 0.0, false);
+		transformed_->saturate_and_pixelate (transformed_, 0.0, false);
 		break;
 	}
 
 	case MonochromeDisplay: {
-		//transformed_.convertDepth(transformed_.depth(), Qt::MonoOnly);
+		int const rowstride = transformed_->get_rowstride();
+		int const n_channels = transformed_->get_n_channels();
+		int const width = transformed_->get_width();
+		int const height = transformed_->get_height();
+		int const bps = transformed_->get_bits_per_sample();
+		guint8 * const pixels = transformed_->get_pixels();
+		guint8 * p; // the current pixel
+		
+		guint8 const threshold = 50; // Completely arbitrary
+
+		for( int y = 0; y < height; ++y) {
+			for( int x = 0; x < width; ++x) {
+				p = pixels + y * rowstride + x * n_channels;
+				if ( (p[0] + p[1] + p[2])/bps < threshold)
+					p[0] = p[1] = p[2] = 0;
+				else
+					p[0] = p[1] = p[2] = 255;
+			}
+		}
+		
 		break;
 	}
 
@@ -256,8 +248,6 @@ void LyXGdkImage::rotate_impl(Params const & params)
 		return;
 
 	// TODO: allow free rotation
-	// Temporarily commented out for old gtkmm versions
-/*
 	Gdk::PixbufRotation rotation = Gdk::PIXBUF_ROTATE_NONE;
 	if (params.angle == 90.0)
 		rotation = Gdk::PIXBUF_ROTATE_COUNTERCLOCKWISE;
@@ -266,9 +256,7 @@ void LyXGdkImage::rotate_impl(Params const & params)
 	else if (params.angle == 270.0)
 		rotation = Gdk::PIXBUF_ROTATE_CLOCKWISE;
 
-
 	transformed_ = transformed_->rotate_simple(rotation);
-	*/
 }
 
 
