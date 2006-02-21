@@ -1,3 +1,8 @@
+2006-02-21  Lars Gullik Bjønnes <larsbj@lyx.org>
+
+	* boost/bind.hpp: include visit_each.hpp to fix a gcc 4.1 compile
+	problem
+
 2005-09-30  Angus Leeming  <leeming@lyx.org>
 
 	* libs/filesystem/src/operations_posix_windows.cpp (exists):
@@ -8,7 +13,7 @@
 	The "correct" fix is currently being discussed on the boost-devel
 	list, but this work around will do for us for now.
 
-2005-09-30  Angus Leeming  <leeming-0hXrFu2P2+c@public.gmane.org>
+2005-09-30  Angus Leeming  <leeming@lyx.org>
 
 	* libs/filesystem/src/operations_posix_windows.cpp: add a block
 	of preprocessor code to include NewAPIs.h conditioned on the

@@ -25,6 +25,7 @@
 #include <boost/mem_fn.hpp>
 #include <boost/type.hpp>
 #include <boost/bind/arg.hpp>
+#include <boost/visit_each.hpp>
 #include <boost/detail/workaround.hpp>
 
 // Borland-specific bug, visit_each() silently fails to produce code
