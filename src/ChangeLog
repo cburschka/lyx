@@ -1,5 +1,8 @@
 2006-02-22  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
+	* buffer.C (readHeader): also erase params.preamble in advance
+	so that an empty preamble is actually recognized (bug 2317).
+
 	* rowpainter.C (paintFromPos): ditch applyOuterFont (bug 2308).
 
 2006-02-06  Georg Baum  <Georg.Baum@post.rwth-aachen.de>

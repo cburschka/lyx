@@ -404,6 +404,7 @@ int Buffer::readHeader(LyXLex & lex)
 
 	// Initialize parameters that may be/go lacking in header:
 	params().branchlist().clear();
+	params().preamble.erase();
 	params().options.erase();
 	params().float_placement.erase();
 	params().paperwidth.erase();
