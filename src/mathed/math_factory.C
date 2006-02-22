@@ -50,6 +50,7 @@
 #include "math_undersetinset.h"
 #include "math_unknowninset.h"
 #include "math_xarrowinset.h"
+#include "math_xymatrixinset.h"
 
 //#include "insets/insetref.h"
 #include "ref_inset.h"
@@ -292,6 +293,8 @@ MathAtom createMathInset(string const & s)
 		return MathAtom(new MathMakeboxInset);
 	if (s == "kern")
 		return MathAtom(new MathKernInset);
+	if (s == "xymatrix")
+		return MathAtom(new MathXYMatrixInset);
 	if (s == "xrightarrow" || s == "xleftarrow")
 		return MathAtom(new MathXArrowInset(s));
 	if (s == "split" || s == "gathered" || s == "aligned" || s == "alignedat")
