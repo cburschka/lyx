@@ -1,3 +1,7 @@
+2006-02-22  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* rowpainter.C (paintFromPos): ditch applyOuterFont (bug 2308).
+
 2006-02-06  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* text2.C (deleteEmptyParagraphMechanism): 64bit compile fix

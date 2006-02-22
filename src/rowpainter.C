@@ -306,7 +306,6 @@ void RowPainter::paintFromPos(pos_type & vpos)
 {
 	pos_type const pos = text_.bidi.vis2log(vpos);
 	LyXFont orig_font = text_.getFont(par_, pos);
-	text_.applyOuterFont(orig_font);
 
 	double const orig_x = x_;
 

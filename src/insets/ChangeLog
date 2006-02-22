@@ -1,3 +1,7 @@
+2006-02-22  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* insetfootlike.C (metrics, draw): use buffer's default font (bug 2308).
+
 2006-02-05  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* insettext.C: Fix bug 2115: blue language lines (for default font)

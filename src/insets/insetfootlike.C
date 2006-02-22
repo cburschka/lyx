@@ -13,6 +13,8 @@
 #include "insetfootlike.h"
 
 #include "buffer.h"
+#include "BufferView.h"
+#include "bufferparams.h"
 #include "LColor.h"
 #include "metricsinfo.h"
 #include "paragraph.h"
@@ -45,7 +47,7 @@ InsetFootlike::InsetFootlike(InsetFootlike const & in)
 void InsetFootlike::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	LyXFont tmpfont = mi.base.font;
-	mi.base.font = LyXFont(LyXFont::ALL_SANE);
+	mi.base.font = mi.base.bv->buffer()->params().getFont();
 	InsetCollapsable::metrics(mi, dim);
 	mi.base.font = tmpfont;
 	dim_ = dim;
@@ -55,7 +57,7 @@ void InsetFootlike::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetFootlike::draw(PainterInfo & pi, int x, int y) const
 {
 	LyXFont tmpfont = pi.base.font;
-	pi.base.font = LyXFont(LyXFont::ALL_SANE);
+	pi.base.font = pi.base.bv->buffer()->params().getFont();
 	InsetCollapsable::draw(pi, x, y);
 	pi.base.font = tmpfont;
 }
