@@ -57,6 +57,46 @@ def rm_end_header(file):
     del file.header[i]
 
 
+def convert_amsmath(file):
+    i = find_token(file.header, "\\use_amsmath", 0)
+    if i == -1:
+        file.warning("Malformed LyX file: Missing '\\use_amsmath'.")
+        return
+    tokens = split(file.header[i])
+    if len(tokens) != 2:
+        file.warning("Malformed LyX file: Could not parse line '%s'." % file.header[i])
+        use_amsmath = '0'
+    else:
+        use_amsmath = tokens[1]
+    # old: 0 == off, 1 == on
+    # new: 0 == off, 1 == auto, 2 == on
+    # translate off -> auto, since old format 'off' means auto in reality
+    if use_amsmath == '0':
+        file.header[i] = "\\use_amsmath 1"
+    else:
+        file.header[i] = "\\use_amsmath 2"
+
+
+def revert_amsmath(file):
+    i = find_token(file.header, "\\use_amsmath", 0)
+    if i == -1:
+        file.warning("Malformed LyX file: Missing '\\use_amsmath'.")
+        return
+    tokens = split(file.header[i])
+    if len(tokens) != 2:
+        file.warning("Malformed LyX file: Could not parse line '%s'." % file.header[i])
+        use_amsmath = '0'
+    else:
+        use_amsmath = tokens[1]
+    # old: 0 == off, 1 == on
+    # new: 0 == off, 1 == auto, 2 == on
+    # translate auto -> off, since old format 'off' means auto in reality
+    if use_amsmath == '2':
+        file.header[i] = "\\use_amsmath 1"
+    else:
+        file.header[i] = "\\use_amsmath 0"
+
+
 ##
 # \SpecialChar ~ -> \InsetSpace ~
 #
@@ -2326,7 +2366,7 @@ def remove_quotestimes(file):
 # Convertion hub
 #
 
-convert = [[222, [insert_tracking_changes, add_end_header]],
+convert = [[222, [insert_tracking_changes, add_end_header, convert_amsmath]],
            [223, [remove_color_default, convert_spaces, convert_bibtex, remove_insetparent]],
            [224, [convert_external, convert_comment]],
            [225, [add_end_layout, layout2begin_layout, convert_end_document,
@@ -2379,7 +2419,7 @@ revert =  [[244, []],
                   remove_branches]],
            [223, [revert_external_2, revert_comment, revert_eqref]],
            [222, [revert_spaces, revert_bibtex]],
-           [221, [rm_end_header, rm_tracking_changes, rm_body_changes]]]
+           [221, [revert_amsmath, rm_end_header, rm_tracking_changes, rm_body_changes]]]
 
 
 if __name__ == "__main__":
