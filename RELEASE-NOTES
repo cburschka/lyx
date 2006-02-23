@@ -1,0 +1,42 @@
+Known issues with version 1.4.0
+--------------------------------
+
+This file describes some known problems in LyX 1.4.0 that did not
+occur in 1.3.7. Note that fixes are available for many of these, but
+they have not yet been applied because of incomplete testing. 
+
+** Noticeable delays when editing a large document
+
+- exiting a math formula with the keyboard.
+  http://bugzilla.lyx.org/show_bug.cgi?id=2217
+
+- creating/deleting paragraphs.
+  http://bugzilla.lyx.org/show_bug.cgi?id=2287    
+
+** Change tracking
+
+- Breaking a paragraph is not supported.
+  http://bugzilla.lyx.org/show_bug.cgi?id=880
+
+- Delete key does not move the cursor to the next character.
+  http://bugzilla.lyx.org/show_bug.cgi?id=2185
+  
+- Pasted text inserted wrong after switch of change tracking state.
+  http://bugzilla.lyx.org/show_bug.cgi?id=2207
+
+- First change is skipped is "Merges changes..." dialog.
+  http://bugzilla.lyx.org/show_bug.cgi?id=2212
+
+** User Interface
+
+- Shift-PageDown and Shift-PageUp key combinations work only if there
+  is an already active selection.
+  http://bugzilla.lyx.org/show_bug.cgi?id=2119
+
+- First word is skipped when spell checking.
+  http://bugzilla.lyx.org/show_bug.cgi?id=2218
+
+- Font changes do not apply to tables inside the selection when
+  making latex.
+  http://bugzilla.lyx.org/show_bug.cgi?id=1973
+
