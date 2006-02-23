@@ -56,12 +56,12 @@ How does the LyX version scheme work?
     these releases will contain a few new features, and that the
     bulk of the patches will be documentation updates.
 
-    If you get the source from cvs, the version string will look like
-    one of:
+    If you get the source from Subversion, the version string will
+    look like one of:
 
-       1.4.1cvs     -- this is the stable branch on which maintenance
+       1.4.1svn     -- this is the stable branch on which maintenance
                release 1.4.1 will eventually be tagged.
-       1.5.0cvs     -- this is the main branch on which stable
+       1.5.0svn     -- this is the main branch on which stable
                release 1.5.0 will eventually be tagged.
 
 What's new?
@@ -128,7 +128,7 @@ Internet resources of relevance to LyX
     ftp://ftp.lyx.org/pub/lyx/
 
     The LyX Development page has information about the development
-    effort. LyX is under CVS control, so you can get the very
+    effort. LyX is under Subversion control, so you can get the very
     latest sources from there at any time.
     http://www.lyx.org/devel
     ftp://ftp.devel.lyx.org/pub/lyx/
