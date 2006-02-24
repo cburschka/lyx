@@ -375,6 +375,7 @@ MathArray::size_type MathArray::x2pos(int targetx, int glue) const
 	const_iterator it = begin();
 	int lastx = 0;
 	int currx = 0;
+	// find first position after targetx
 	for (; currx < targetx && it < end(); ++it) {
 		lastx = currx;
 		if ((*it)->getChar() == ' ')
@@ -382,19 +383,20 @@ MathArray::size_type MathArray::x2pos(int targetx, int glue) const
 		currx += (*it)->width();
 	}
 
-	if (abs(lastx - targetx) < abs(currx - targetx) && it != begin())
+	/** 
+	 * If we are not at the beginning of the array, go to the left
+	 * of the inset if one of the following two condition holds:
+	 * - the current inset is editable (so that the cursor tip is
+	 *   deeper than us): in this case, we want all intermediate
+	 *   cursor slices to be before insets;
+	 * - the mouse is closer to the left side of the inset than to
+	 *   the right one.
+	 * See bug 1918 for details.    
+	 **/
+	if (it != begin()
+	    && ((*boost::prior(it))->asNestInset()
+		|| abs(lastx - targetx) < abs(currx - targetx))) {
 		--it;
-	// The below code guarantees that in this slice, the cursor will
-	// never be on the right edge of an inset after a mouse click.
-#ifdef WITH_WARNINGS
-#warning A better solution has to be found here!
-	// FIXME: this is too brute! The position left to an inset should
-	// be reachable with the mouse in general.
-#endif
-	if (it != begin()) {
-		--it;
-		if (it < end() && (*it)->getChar())
-			++it;
 	}
 
 	return it - begin();

@@ -1,3 +1,9 @@
+2006-02-23  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* math_data.C (x2pos): Place cursor correctly in the case of
+	MathNestInset; this avoids misplaced cursor (and subsequent crash)
+	when placing the mouse near a symbol inset.
+
 2006-02-17  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* math_xymatrixinset.[Ch]: Readd
