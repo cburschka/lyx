@@ -33,10 +33,17 @@ they have not yet been applied because of incomplete testing.
   is an already active selection.
   http://bugzilla.lyx.org/show_bug.cgi?id=2119
 
-- First word is skipped when spell checking.
+- First incorrect word is skipped when spell checking.
   http://bugzilla.lyx.org/show_bug.cgi?id=2218
 
 - Font changes do not apply to tables inside the selection when
   making latex.
   http://bugzilla.lyx.org/show_bug.cgi?id=1973
 
+- Bookmarks and links to LaTeX errors are broken after paragraph
+  deletion/insertion.
+  http://bugzilla.lyx.org/show_bug.cgi?id=2284
+  http://bugzilla.lyx.org/show_bug.cgi?id=2242
+
+- Instant preview figures are sometimes displaced
+  http://bugzilla.lyx.org/show_bug.cgi?id=2167

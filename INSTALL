@@ -26,10 +26,10 @@ These four steps will compile, test and install LyX:
            if you want a smaller binary.
 
 
-Note for CVS checkouts
-----------------------
+Note for Subversion checkouts
+-----------------------------
 
-If you have checked this out from CVS, you need to have:
+If you have checked this out from Subversion, you need to have:
 * automake >= 1.9
 * autoconf >= 2.52
 * gettext >= 0.12
@@ -156,7 +156,7 @@ flags:
     You can use this feature to install more than one version of LyX
     on the same system. You can optionally specify a "version" of your
     own, by doing something like :
-       ./configure --with-version-suffix=-latestcvs
+       ./configure --with-version-suffix=-latestsvn
 
     Note that the standard configure options --program-prefix,
     --program-suffix and the others will not affect the shared LyX
