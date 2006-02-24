@@ -1,3 +1,14 @@
+2006-02-24  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* text3.C (mathDispatch): fix crash when selection is not empty
+	but selectionAsString is empty (bug 2321).
+
+2006-02-23  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* text.C (changeCase): avoid crash in empty paragraph or on last
+	word of the paragraph. (buf 2323)
+	(cursorRightOneWord): fix the logic to stop at a beginning of a word.
+
 2006-02-22  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* buffer.C (readHeader): also erase params.preamble in advance

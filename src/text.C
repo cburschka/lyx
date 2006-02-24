@@ -1326,12 +1326,11 @@ bool LyXText::cursorRightOneWord(LCursor & cur)
 		++old.pit();
 		old.pos() = 0;
 	} else {
-		// Skip through initial nonword stuff.
-		// Treat floats and insets as words.
-		while (old.pos() != old.lastpos() && !old.paragraph().isLetter(old.pos()))
-			++old.pos();
 		// Advance through word.
 		while (old.pos() != old.lastpos() && old.paragraph().isLetter(old.pos()))
+			++old.pos();
+		// Skip through trailing nonword stuff.
+		while (old.pos() != old.lastpos() && !old.paragraph().isLetter(old.pos()))
 			++old.pos();
 	}
 	return setCursor(cur, old.pit(), old.pos());
@@ -1349,7 +1348,6 @@ bool LyXText::cursorLeftOneWord(LCursor & cur)
 		old.pos() = old.lastpos();
 	} else {
 		// Skip through initial nonword stuff.
-		// Treat floats and insets as words.
 		while (old.pos() != 0 && !old.paragraph().isLetter(old.pos() - 1))
 			--old.pos();
 		// Advance through word.
@@ -1495,7 +1493,7 @@ void LyXText::changeCase(LCursor & cur, LyXText::TextCase action)
 	} else {
 		from = cur.top();
 		getWord(from, to, lyx::PARTIAL_WORD);
-		setCursor(cur, to.pit(), to.pos() + 1);
+		cursorRightOneWord(cur);
 	}
 
 	recordUndoSelection(cur);

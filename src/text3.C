@@ -135,6 +135,9 @@ namespace {
 		string sel = cur.selectionAsString(false);
 		//lyxerr << "selection is: '" << sel << "'" << endl;
 
+		// It may happen that sel is empty but there is a selection
+		replaceSelection(cur);
+
 		if (sel.empty()) {
 			const int old_pos = cur.pos();
 			cur.insert(new MathHullInset("simple"));
@@ -155,7 +158,6 @@ namespace {
 			// create a macro if we see "\\newcommand"
 			// somewhere, and an ordinary formula
 			// otherwise
-			cutSelection(cur, true, true);
 			if (sel.find("\\newcommand") == string::npos
 			    && sel.find("\\def") == string::npos)
 			{
