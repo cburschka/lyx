@@ -1,3 +1,9 @@
+2006-02-24  Enrico Forestieri  <forenr@tlc.unipr.it>
+
+	* scripts/legacy_lyxpreview2ppm.py (extract_metrics_info): 
+	* scripts/lyxpreview2bitmap.py (extract_metrics_info): fix
+	computation when either ascent or descent is 0. (bug 2167)
+
 2006-02-19  Enrico Forestieri  <forenr@tlc.unipr.it>
 
 	* scripts/lyxpreview2bitmap.py: fix script to work with recent versions

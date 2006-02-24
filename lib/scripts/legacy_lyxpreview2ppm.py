@@ -95,7 +95,7 @@ def extract_metrics_info(log_file, metrics_file):
                 descent = string.atoi(match.group(3))
 
                 frac = 0.5
-                if ascent > 0 and descent > 0:
+                if ascent >= 0 and descent >= 0:
                     ascent = float(ascent) + tp_ascent
                     descent = float(descent) - tp_descent
 
