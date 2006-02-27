@@ -78,10 +78,6 @@ public:
 	///
 	Code lyxCode() const { return TEXT_CODE; }
 	///
-	void setFont(BufferView *, LyXFont const &,
-		     bool toggleall = false,
-		     bool selectall = false);
-	///
 	void setText(std::string const &, LyXFont const &);
 	///
 	void setAutoBreakRows(bool);

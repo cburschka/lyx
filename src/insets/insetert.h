@@ -31,15 +31,19 @@ class InsetERT : public InsetCollapsable {
 public:
 	///
 	InsetERT(BufferParams const &, CollapseStatus status = Open);
+#if 0
 	///
 	InsetERT(BufferParams const &,
 		 Language const *, std::string const & contents, CollapseStatus status);
+#endif
 	///
 	~InsetERT();
 	///
 	InsetBase::Code lyxCode() const { return InsetBase::ERT_CODE; }
 	///
 	void write(Buffer const & buf, std::ostream & os) const;
+	///
+	void read(Buffer const & buf, LyXLex & lex);
 	///
 	std::string const editMessage() const;
 	///

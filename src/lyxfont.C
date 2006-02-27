@@ -726,7 +726,8 @@ void LyXFont::lyxWriteChanges(LyXFont const & orgfont,
 		if (col_str == "inherit") col_str = "default";
 		os << "\\color " << col_str << "\n";
 	}
-	if (orgfont.language() != language()) {
+	if (orgfont.language() != language() &&
+	    language() != latex_language) {
 		if (language())
 			os << "\\lang " << language()->lang() << "\n";
 		else

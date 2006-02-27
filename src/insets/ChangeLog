@@ -1,3 +1,16 @@
+2005-02-25  Martin Vermeer  <martin.vermeer@hut.fi>
+2006-02-25  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* insetert.[Ch] (read): new, force all paragraphs to latex_language
+	* insetert.C (doDispatch): set latex_language, not buffer language
+	for copied text
+	* insetert.C (doDispatch): force latex_language for newly inserted
+	text
+	* insetert.C (draw): realize draw font
+	* insetert.[Ch] (InsetERT): use latex_language and comment out unused
+	constructor
+	* insettext.h (setFont): remove unused declaration
+
 2006-02-22  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* insetfootlike.C (metrics, draw): use buffer's default font (bug 2308).

@@ -58,6 +58,8 @@ void InsetERT::init()
 	font.decSize();
 	font.setColor(LColor::latex);
 	setLabelFont(font);
+	text_.current_font.setLanguage(latex_language);
+	text_.real_current_font.setLanguage(latex_language);
 
 	setInsetName("ERT");
 }
@@ -83,23 +85,19 @@ auto_ptr<InsetBase> InsetERT::doClone() const
 }
 
 
+#if 0
 InsetERT::InsetERT(BufferParams const & bp,
 		   Language const *, string const & contents, CollapseStatus status)
 	: InsetCollapsable(bp, status)
 {
-	//LyXFont font(LyXFont::ALL_INHERIT, lang);
-	LyXFont font;
-	getDrawFont(font);
-	string::const_iterator cit = contents.begin();
-	string::const_iterator end = contents.end();
-	pos_type pos = 0;
-	for (; cit != end; ++cit)
-		paragraphs().begin()->insertChar(pos++, *cit, font);
+	LyXFont font(LyXFont::ALL_INHERIT, latex_language);
+	paragraphs().begin()->insert(0, contents, font);
 
 	// the init has to be after the initialization of the paragraph
 	// because of the label settings (draw_label for ert insets).
 	init();
 }
+#endif
 
 
 InsetERT::~InsetERT()
@@ -112,6 +110,30 @@ void InsetERT::write(Buffer const & buf, ostream & os) const
 {
 	os << "ERT" << "\n";
 	InsetCollapsable::write(buf, os);
+}
+
+
+void InsetERT::read(Buffer const & buf, LyXLex & lex)
+{
+	InsetCollapsable::read(buf, lex);
+
+	// Force default font
+	// This avoids paragraphs in buffer language that would have a
+	// foreign language after a document langauge change, and it ensures
+	// that all new text in ERT gets the "latex" language, since new text
+	// inherits the language from the last position of the existing text.
+	// As a side effect this makes us also robust against bugs in LyX
+	// that might lead to font changes in ERT in .lyx files.
+	LyXFont font(LyXFont::ALL_INHERIT, latex_language);
+	ParagraphList::iterator par = paragraphs().begin();
+	ParagraphList::iterator const end = paragraphs().end();
+	while (par != end) {
+		pos_type siz = par->size();
+		for (pos_type i = 0; i <= siz; ++i) {
+			par->setFont(i, font);
+		}
+		++par;
+	}
 }
 
 
@@ -222,8 +244,8 @@ void InsetERT::doDispatch(LCursor & cur, FuncRequest & cmd)
 		LyXLayout_ptr const layout =
 			bp.getLyXTextClass().defaultLayout();
 		LyXFont font = layout->font;
-		// We need to set the language for non-english documents
-		font.setLanguage(bp.language);
+		// ERT contents has always latex_language
+		font.setLanguage(latex_language);
 		ParagraphList::iterator const end = paragraphs().end();
 		for (ParagraphList::iterator par = paragraphs().begin();
 		     par != end; ++par) {
@@ -239,6 +261,15 @@ void InsetERT::doDispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 	}
 	default:
+		// Force any new text to latex_language
+		// FIXME: This should only be necessary in init(), but
+		// new paragraphs that are created by pressing enter at the
+		// start of an existing paragraph get the buffer language
+		// and not latex_language, so we take this brute force
+		// approach.
+		text_.current_font.setLanguage(latex_language);
+		text_.real_current_font.setLanguage(latex_language);
+
 		InsetCollapsable::doDispatch(cur, cmd);
 		break;
 	}
@@ -390,8 +421,7 @@ void InsetERT::draw(PainterInfo & pi, int x, int y) const
 {
 	LyXFont tmpfont = pi.base.font;
 	getDrawFont(pi.base.font);
-	// I don't understand why the above .realize isn't needed, or
-	// even wanted, here. It just works. -- MV 10.04.2005
+	pi.base.font.realize(tmpfont);
 	InsetCollapsable::draw(pi, x, y);
 	pi.base.font = tmpfont;
 }

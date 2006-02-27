@@ -1,3 +1,7 @@
+2006-02-25  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* lyxfont.C (lyxWriteChanges): Don't write \lang latex
+
 2006-02-24  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* text3.C (mathDispatch): fix crash when selection is not empty
