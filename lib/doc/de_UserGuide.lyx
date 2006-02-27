@@ -2,7 +2,7 @@
 \lyxformat 245
 \begin_document
 \begin_header
-\textclass book
+\textclass scrbook
 \begin_preamble
 % Präambel nicht verändern!!!
 %
@@ -37,10 +37,10 @@
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
-\leftmargin 2cm
-\topmargin 1cm
-\rightmargin 2cm
-\bottommargin 1cm
+\leftmargin 3.5cm
+\topmargin 3.5cm
+\rightmargin 3.5cm
+\bottommargin 3.5cm
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation skip
@@ -83,29 +83,11 @@ Peter Sütterlin
 \end_inset
 
 
-\size footnotesize
-
-\begin_inset Foot
-status open
-
-\begin_layout Standard
-
-\noun on
-HHa
-\noun default
-: Ich habe mich bemüht, dieses Dokument so zu schreiben, daß es mit meinen
- Randeinstellungen, die sehr schmal sind,  und als book (koma-script) sauber
- gesetzt wird.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 21.
- Dzember 2005
+letzte Änderung: 26.
+ Februar 2006
 \end_layout
 
 \begin_layout Standard
@@ -1250,6 +1232,7 @@ oder
 \begin_inset Graphics
 	filename ../images/undo.xpm
 	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
@@ -1268,12 +1251,13 @@ iederholen
 \family default
  (
 \family sans
-Umschalt+Strg+Z
+Umschalt +Strg+Z
 \family default
  oder 
 \begin_inset Graphics
 	filename ../images/redo.xpm
 	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
@@ -1666,6 +1650,18 @@ das Ende der
  Wenn Sie die Emacs-Tastenbelegung verwenden, erfolgt die Positionierung
  an den Anfang bzw.\InsetSpace ~
 das Ende des Dokumentes.
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+\backslash
+begin{sloppypar}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout List
@@ -1702,6 +1698,18 @@ Entf
 Entf
 \family default
  das Zeichen rechts vom Cursor (falls kein Text markiert ist).
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+\backslash
+end{sloppypar}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -5338,7 +5346,7 @@ VI
 \family default
  (
 \family sans
-Umschalt+Strg+D
+Umschalt+Strg +D
 \family default
 ).
  Nachdem LaTeX fertig ist, klicken Sie in das 
@@ -5390,7 +5398,9 @@ Wer auf einem großen System arbeitet, sollte keine Probleme haben.
 
 \begin_layout Standard
 Wer aber Linux benutzt, hat ein wenig mehr Arbeit.
- Viele erhalten jetzt eine Linux-Distribution auf CD-ROM.
+ Viele erhalten jetzt eine Linux-Distri\SpecialChar \-
+bu\SpecialChar \-
+tion auf CD-ROM.
  Sie befolgen die Installationsvorschriften und bekommen Linux zum Laufen,
  aber sind sich nie klar darüber, daß sie ihren Drucker einrichten müssen.
  Wir haben im 
@@ -7133,7 +7143,7 @@ pull-down
 \end_inset
 
 -Menü am Anfang der Werkzeugleiste.
- Für einige gibt es am Anfang der zweiten Reihe der Werkzeugliste eigene
+ Für einige gibt es am Anfang der zweiten Reihe der Werkzeugleiste eigene
  Schalter (zum Beispiel 
 \family sans
 Aufzählung
@@ -7146,7 +7156,11 @@ Aufzählung
 
 \end_inset
 
-, Auflistung 
+, 
+\family sans
+Auflistung
+\family default
+ 
 \begin_inset Graphics
 	filename ../images/layout_Itemize.xpm
 	scale 70
@@ -7785,17 +7799,15 @@ Also, wenn Sie die
 \family sans
 Unterunterabschn.
 \family default
--Umgebung benutzen, um einen neuen Unter-Unterabschnitt zu markieren, markiert
+-Umgebung benutzen, um einen neuen Unter-Unterab\SpecialChar \-
+schnitt zu markieren, markiert
  LyX die Überschrift mit der zugehörigen Nummer und den Nummern des Unterabschni
 tt
 \family sans
-es
+es, 
 \family default
-, des Abschnitt
-\family sans
-es
-\family default
- und, falls möglich, des Kapitels, in dem der Unter-Unterabschnitt steht.
+des Abschnittes und, falls möglich, des Kapitels, in dem der Unter-Unterabschnit
+t steht.
  Beispiel: der fünfte Abschnitt des zweiten Kapitels dieses Handbuches hat
  die Marke 
 \begin_inset Quotes gld
@@ -9017,6 +9029,18 @@ r
 
 -Konzept aus.
  Alle Anpassungen erscheinen im gedruckten Dokument.
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+\backslash
+begin{sloppypar}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -9030,6 +9054,18 @@ ng abnimmt.
 
  ausführlich beschreiben.
  Lesen Sie ihn auf jeden Fall!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+\backslash
+end{sloppypar}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -9558,13 +9594,9 @@ Marken
 t.
  Ist die wirkliche Breite größer als der Standardwert, wird die Marke in
  die erste Zeile 
-\begin_inset Quotes gld
-\end_inset
-
+\emph on
 ausgedehnt
-\begin_inset Quotes grd
-\end_inset
-
+\emph default
 .
  Das bedeutet, daß der linke Rand der ersten Textzeile dann nicht mit dem
  Rand des Restes übereinstimmt, so wie bei diesem Element.
@@ -10553,7 +10585,8 @@ Beschriftung
 
 \end_inset
 
-) wird standardmäßig für Gleitobjekt-Abbildungen und Gleitobjekt-Tabellen
+) wird standardmäßig für Gleit\SpecialChar \-
+objekt-Abbildungen und Gleitobjekt-Tabellen
  benutzt.
  Auf dem LyX-Bildschirm werden Sie entweder die Marke 
 \begin_inset Quotes gld
@@ -10957,7 +10990,8 @@ LyX unterscheidet sich vom normalen Konzept der
 \begin_inset Quotes gld
 \end_inset
 
-Textverarbeitung-als-Superschreibmaschine
+Textverarbeitung-als-Superschreibma\SpecialChar \-
+schine
 \begin_inset Quotes grd
 \end_inset
 
@@ -11313,7 +11347,10 @@ Die
 \family sans
 Beschriftung
 \family default
--Umgebung paßt nirgendwo richtig hinein, weil sie nur in Gleitobjekt-Abbildungen
+-Umgebung paßt nirgendwo richtig hinein, weil sie nur in Gleitobjekt-Ab\SpecialChar \-
+bil\SpecialChar \-
+dun\SpecialChar \-
+gen
  und Gleit\SpecialChar \-
 ob\SpecialChar \-
 jekt-Tabellen benutzt wird.
@@ -12117,7 +12154,8 @@ Standard
 \family default
 -Absatz, auch auf Stufe 4, nur mit einem 
 \family sans
-Alt+Eingabe
+Alt+Ein\SpecialChar \-
+gabe
 \family default
  erzeugt.
 \end_layout
@@ -12272,7 +12310,11 @@ Beispiel 2: Vererbung
 
 \begin_layout LyX-Code
 Dies ist die LyX-Code-Umgebung auf Stufe 1, der äußersten Stufe.
- Jetzt werden wir Ein-gabe drücken, dann 
+ 
+\end_layout
+
+\begin_layout LyX-Code
+Jetzt werden wir Eingabe drücken, dann 
 \begin_inset Graphics
 	filename ../images/depth-increment.xpm
 	scale 70
@@ -12280,7 +12322,11 @@ Dies ist die LyX-Code-Umgebung auf Stufe 1, der äußersten Stufe.
 
 \end_inset
 
-; danach werden wir zur Aufzählung-Umgebung wechseln.
+; danach werden wir zur 
+\end_layout
+
+\begin_layout LyX-Code
+Aufzählung-Umgebung wechseln.
 \end_layout
 
 \begin_deeper
@@ -14728,7 +14774,8 @@ cht\SpecialChar \menuseparator
 \bar under
 A
 \bar default
-ktualisieren\SpecialChar \menuseparator
+ktua\SpecialChar \-
+lisieren\SpecialChar \menuseparator
 
 \bar under
 D
@@ -14862,7 +14909,7 @@ Strg+P
 \begin_inset Graphics
 	filename ../images/dialog-show_print.xpm
 	scale 70
-	BoundingBox 0bp 6bp 24bp 24bp
+	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
@@ -17311,7 +17358,9 @@ Es gibt noch zwei weitere Dinge, die die Verwendung der
 \family sans
 Beschriftung
 \family default
--Umgebung für Gleitobjekt-Abbildung und Gleitobjekt-Abbildung\InsetSpace ~
+-Umgebung für Gleit\SpecialChar \-
+ob\SpecialChar \-
+jekt-Abbildung und Gleitobjekt-Abbildung\InsetSpace ~
 (breit) so
  angenehm macht: falls Sie eine Liste der Abbildungen in Ihr Dokument einfügen
  wollen (siehe Abschnitt 
@@ -17748,13 +17797,15 @@ den LaTeX-Teil
 \family typewriter
 foo.pstex_t
 \family default
-, der den Text und einen Verweis auf den PostScript®-Teil enthält.
+, der den Text und einen Verweis auf den Post\SpecialChar \-
+Script®-Teil enthält.
 \end_layout
 
 \end_deeper
 \begin_layout Standard
 Sie müssen in diesem Fall nur den LaTeX-Teil, wie oben beschrieben einbinden.
- Der PostScript®-Teil wird dann automatisch miteingebunden.
+ Der Post\SpecialChar \-
+Script®-Teil wird dann automatisch miteingebunden.
 \begin_inset Foot
 status open
 
@@ -23345,7 +23396,9 @@ Dies wurde folgendermaßen erreicht: zuerst wurde eine Gleichungs-Umgebung
 \bar under
 E
 \bar default
-infügen\SpecialChar \menuseparator
+in\SpecialChar \-
+fü\SpecialChar \-
+gen\SpecialChar \menuseparator
 
 \bar under
 M
@@ -23387,6 +23440,18 @@ nter
  In die beiden blauen Kästchen wurde dann alles rechts der geschweiften
  Klammer geschrieben.
  Wie man den Roman-Font bekommt, wird später erklärt.
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+\backslash
+begin{sloppypar}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -23405,7 +23470,8 @@ athe\SpecialChar \menuseparator
 \bar under
 G
 \bar default
-leichungs-Umgebung
+lei\SpecialChar \-
+chungs-Umgebung
 \family default
 ).
  Dadurch wird in das LaTeX-Format für mehrzeilige Gleichungen (
@@ -23432,6 +23498,18 @@ Tab
 \series default
 -Taste bewegen können.
  Hier ist ein Beispiel:
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+\backslash
+end{sloppypar}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula \begin{eqnarray*}
 3 & = & 1+2\\
 4+5 & = & 9.\end{eqnarray*}
@@ -23901,6 +23979,8 @@ mand
 newcommand{
 \backslash
 macrowarg}[1]{2+
+\newline
+
 \backslash
 sqrt{#1}}
 \family default
@@ -23979,7 +24059,9 @@ macrowarg
 
 
 \family typewriter
-math-macro macrowarg 1
+math-
+\newline
+macro macrowarg 1
 \family default
 
 \begin_inset Quotes grd
@@ -25120,7 +25202,8 @@ adobestd
 \family default
 , 
 \family typewriter
-adobeother
+adobe\SpecialChar \-
+other
 \family default
 , 
 \family typewriter
@@ -26592,7 +26675,8 @@ vorher
 \bar under
 B
 \bar default
-earbeiten\SpecialChar \menuseparator
+earbei\SpecialChar \-
+ten\SpecialChar \menuseparator
 
 \bar under
 G
@@ -26769,7 +26853,8 @@ Sprache\SpecialChar \menuseparator
 \bar under
 K
 \bar default
-odierung:
+odie\SpecialChar \-
+rung:
 \family default
  auf 
 \family sans
@@ -31604,10 +31689,11 @@ DF/PDF (dvipdf
 \bar under
 m
 \bar default
-)/Pos
+)/ Pos
 \bar under
 t
 \bar default
+\SpecialChar \-
 script/
 \bar under
 B
@@ -32031,6 +32117,17 @@ bsätze\SpecialChar \ldots{}
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+\backslash
+begin{sloppypar}
+\end_layout
+
+\end_inset
+
 Funktioniert genauso wie 
 \family sans
 \bar under
@@ -32053,6 +32150,18 @@ Zeilen/Absätze
 \end_inset
 
 ).
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+\backslash
+end{sloppypar}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
