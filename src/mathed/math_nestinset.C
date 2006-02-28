@@ -888,13 +888,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		int cell(0);
 		if (cmd.argument == "\\root")
 			cell = 1;
-		// math macros are nest insets and may have 0 cells.
-		// handleNest would crash in this case.
-		if (ar.size() == 1 && (ar[0].nucleus()->asNestInset()) &&
-		    ar[0].nucleus()->nargs() > MathInset::idx_type(cell)) {
-			cur.handleNest(ar[0], cell);
-		} else
-			cur.niceInsert(cmd.argument);
+		cur.niceInsert(cmd.argument);
 		break;
 		}
 

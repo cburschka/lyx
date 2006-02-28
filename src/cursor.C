@@ -379,6 +379,8 @@ void LCursor::getPos(int & x, int & y) const
 }
 
 
+// Don't use this routine. It is erroneous: LFUN_PASTE should be called with
+// buffer number, not data to be inserted -- MV 26.02.2006
 void LCursor::paste(string const & data)
 {
 	if (!data.empty())
@@ -712,7 +714,10 @@ void LCursor::niceInsert(MathAtom const & t)
 		// be careful here: don't use 'pushLeft(t)' as this we need to
 		// push the clone, not the original
 		pushLeft(*nextInset());
-		paste(safe);
+		// We may not use niceInsert here (recursion)
+		MathArray ar;
+		asArray(safe, ar);
+		insert(ar);
 	}
 }
 

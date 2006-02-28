@@ -1,3 +1,8 @@
+2006-02-28  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* cursor.C (niceInsert): fix (properly) insertion of
+	fonts/decorations around selection
+
 2006-02-25  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* lyxfont.C (lyxWriteChanges): Don't write \lang latex

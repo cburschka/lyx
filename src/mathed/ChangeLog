@@ -1,3 +1,8 @@
+2006-02-28  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* math_nestinset.C (doDispatch): fix (properly) insertion of
+	fonts/decorations around selection
+
 2006-02-23  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* math_data.C (x2pos): Place cursor correctly in the case of
