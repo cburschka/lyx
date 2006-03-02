@@ -18,10 +18,10 @@ LangString SecFileAssocDescription "${LYX_LANG}" "Vernüpfung zwischen ${PRODUCT_
 LangString SecDesktopDescription "${LYX_LANG}" "Verknüpfung zu ${PRODUCT_NAME} auf dem Desktop."
 
 LangString ModifyingConfigureFailed "${LYX_LANG}" "Der 'path_prefix' (Liste mit Programmpfaden) konnte nicht im Konfigurationsskript gesetzt werden."
-LangString CreateCmdFilesFailed "${LYX_LANG}" "Failed atempting to create lyx.cmd and reLyX.cmd"
+LangString CreateCmdFilesFailed "${LYX_LANG}" "Konnte die Dateien lyx.cmd und reLyX.cmd nicht erstellen."
 LangString RunConfigureFailed "${LYX_LANG}" "Konnte das Konfigurationsskript nicht ausführen."
 
-LangString FinishPageMessage "${LYX_LANG}" "Glückwunsch! LyX wurde erfolgreich installiert."
+LangString FinishPageMessage "${LYX_LANG}" "LyX sollte nun installiert sein. Jedoch haben einige Nutzer berichtet, dass das Konfigurationsskript nicht ausgeführt werden konnte und LyX daher nicht startet. Die Fehlermeldung lautet in diesem Fall $\'reporting a missing textclass.lst file$\'. Um den Fehler zu beheben, führen Sie bitte den Befehl $\'sh configure$\' aus Windows Kommandozeile aus, wenn Sie sich im Verzeichnis $\'<LyX>\Resources\lyx$\' befinden."
 LangString FinishPageRun "${LYX_LANG}" "LyX starten"
 
 LangString DownloadPageField2 "${LYX_LANG}" "&Nicht installieren"
@@ -47,12 +47,6 @@ LangString InvalidMiKTeXFolder "${LYX_LANG}" "Kann die Datei latex.exe nicht fin
 LangString MiKTeXDownloadLabel "${LYX_LANG}" "&MiKTeX herunterladen"
 LangString MiKTeXFolderLabel "${LYX_LANG}" "&Ordner der die Datei latex.exe enthält"
 
-LangString PerlHeader "${LYX_LANG}" "Perl"
-LangString PerlDescription "${LYX_LANG}" `Wenn Sie das ${PRODUCT_NAME}-Zusatzprogramm "reLyX" verwenden wollen, welches LaTeX-Dateien in ${PRODUCT_NAME}-Dateien umwandeln kann, sollten Sie Perl (www.perl.com) installieren.`
-LangString EnterPerlFolder "${LYX_LANG}" "Geben sie den Pfad zur Datei perl.exe an."
-LangString InvalidPerlFolder "${LYX_LANG}" "Kann die Datei perl.exe nicht finden."
-LangString PerlDownloadLabel "${LYX_LANG}" "&Perl herunterladen"
-LangString PerlFolderLabel "${LYX_LANG}" "&Ordner der die Datei perl.exe enthält"
 
 LangString ImageMagickHeader "${LYX_LANG}" "ImageMagick"
 LangString ImageMagickDescription "${LYX_LANG}" "ImageMagick (www.imagemagick.org/script/index.php) wird benötigt, um Grafikdateien in verschiedene Dateiformate umzuwandeln."
@@ -72,8 +66,9 @@ LangString SummaryTitle "${LYX_LANG}" "Software Zusammenfassung"
 LangString SummaryPleaseInstall "${LYX_LANG}" "Bitte installieren sie die heruntergeladenen Programme und starten dann ${PRODUCT_NAME}'s Installer nochmal."
 LangString SummaryPathPrefix "${LYX_LANG}" "Die Liste mit den Programmpfaden, der so genannte 'path_prefix' wird zur Datei 'lyxrc.defaults' hinzugefügt:"
 
-LangString UILangageTitle "${LYX_LANG}" "The language of LyX's interface"
-LangString UILangageDescription "${LYX_LANG}" "As used for menus, messages, etc."
+LangString UILangageTitle "${LYX_LANG}" "Die Sprache von LyXs Benutzeroberfläche"
+LangString UILangageDescription "${LYX_LANG}" "Wird für die Menüs, Mitteilungen, usw. verwendet"
+LangString UILanguageAvailableLanguages "${LYX_LANG}" " Verfügbare Sprachen "
 
 LangString UnNotInRegistryLabel "${LYX_LANG}" "Kann $(^Name) nicht in der Registry finden. $\r$\n Desktopsymbole und Einträge im Startmenü können nicht entfernt werden."
 LangString UnNotAdminLabel "${LYX_LANG}" "Sie benötigen Administratorrechte $\r$\n um $(^Name) zu deinstallieren."

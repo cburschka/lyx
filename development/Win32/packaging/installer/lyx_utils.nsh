@@ -72,6 +72,10 @@
    StrCpy ${LangNme} "Nederlands"
   ${endif}
 
+  ${if} ${LangISOCode} = 1045
+   StrCpy ${LangNme} "Polski"
+  ${endif}
+
   ${if} ${LangISOCode} = 1053
    StrCpy ${LangNme} "Svenska"
   ${endif}
@@ -108,6 +112,10 @@
   ${if} ${Name} == "Italiano"
    StrCpy ${LangCde} "it_IT"
   ${endif}
+
+  ${if} ${Name} == "Magyar nyelv"
+   StrCpy ${LangCde} "hu_HU"
+  ${endif}  
 
   ${if} ${Name} == "Nederlands"
    StrCpy ${LangCde} "nl_NL"
