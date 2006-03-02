@@ -255,7 +255,13 @@ Section "-Installation actions" SecInstallation
     ${endif}
   ${endif}
 
-  lyx_configure::create_bat_files "$INSTDIR\bin" "$LangCode"
+  lyx_configure::create_lyx_bat "$INSTDIR\bin" "$LangCode"
+  Pop $0
+  ${if} $0 != 0
+    MessageBox MB_OK "$(CreateCmdFilesFailed)"
+  ${endif}
+
+  lyx_configure::create_relyx_bat "$INSTDIR\bin" "$LangCode"
   Pop $0
   ${if} $0 != 0
     MessageBox MB_OK "$(CreateCmdFilesFailed)"
