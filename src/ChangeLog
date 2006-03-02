@@ -1,3 +1,7 @@
+2006-02-26  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* text3.C (mathDispatch): fix math inset creation from string (bug 2315)
+
 2006-02-28  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* cursor.C (niceInsert): fix (properly) insertion of

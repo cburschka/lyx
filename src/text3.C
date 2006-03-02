@@ -158,16 +158,21 @@ namespace {
 			// create a macro if we see "\\newcommand"
 			// somewhere, and an ordinary formula
 			// otherwise
+			istringstream is(sel);
 			if (sel.find("\\newcommand") == string::npos
 			    && sel.find("\\def") == string::npos)
 			{
-				cur.insert(new MathHullInset("simple"));
-				cur.dispatch(FuncRequest(LFUN_RIGHT));
-				cur.dispatch(FuncRequest(LFUN_INSERT_MATH, sel));
-			} else {
-				istringstream is(sel);
+				MathHullInset * formula = new MathHullInset;
+				LyXLex lex(0, 0);
+				lex.setStream(is);
+				formula->read(cur.buffer(), lex);
+				if (formula->getType() == "none")
+					// Don't create pseudo formulas if
+					// delimiters are left out
+					formula->mutate("simple");
+				cur.insert(formula);
+			} else
 				cur.insert(new MathMacroTemplate(is));
-			}
 		}
 		cur.message(N_("Math editor mode"));
 	}
