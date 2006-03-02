@@ -18,7 +18,7 @@ LangString SecFileAssocDescription "${LYX_LANG}" "Opret association mellem LyX o
 LangString SecDesktopDescription "${LYX_LANG}" "Et ${PRODUCT_NAME} ikon på skrivebordet"
 
 LangString ModifyingConfigureFailed "${LYX_LANG}" "Forsøget på at indstille 'path_prefix' i konfigurationen mislykkedes"
-LangString CreateCmdFilesFailed "${LYX_LANG}" "Failed atempting to create lyx.cmd and reLyX.cmd"
+LangString CreateCmdFilesFailed "${LYX_LANG}" "Det lykkedes ikke at oprette lyx.cms og reLyx.cmd"
 LangString RunConfigureFailed "${LYX_LANG}" "Mislykket forsøg på at afvikle konfigurations-scriptet"
 
 LangString FinishPageMessage "${LYX_LANG}" "Tillykke!! LyX er installeret."
@@ -47,12 +47,6 @@ LangString InvalidMiKTeXFolder "${LYX_LANG}" "Kunne ikke finde latex.exe"
 LangString MiKTeXDownloadLabel "${LYX_LANG}" "&Hent MiKTeX"
 LangString MiKTeXFolderLabel "${LYX_LANG}" "&Mappen som indeholder latex.exe"
 
-LangString PerlHeader "${LYX_LANG}" "Perl"
-LangString PerlDescription "${LYX_LANG}" "Hvis du forventer at skulle bruge reLyX til at konvertere LaTeX- til LyX-dokumenter, skal du installere Perl (www.perl.com)."
-LangString EnterPerlFolder "${LYX_LANG}" "Angiv stien til mappen som indeholder Perl.exe"
-LangString InvalidPerlFolder "${LYX_LANG}" "Kunne ikke finde Perl.exe"
-LangString PerlDownloadLabel "${LYX_LANG}" "&Hent Perl"
-LangString PerlFolderLabel "${LYX_LANG}" "&Mappen som indeholder perl.exe"
 
 LangString ImageMagickHeader "${LYX_LANG}" "ImageMagick"
 LangString ImageMagickDescription "${LYX_LANG}" "ImageMagick (www.imagemagick.org/script/index.php) bruges til at konvertere grafik-filer til forskellige slutformater."
@@ -72,8 +66,9 @@ LangString SummaryTitle "${LYX_LANG}" "Software - sammendrag"
 LangString SummaryPleaseInstall "${LYX_LANG}" "Installer de filer du har downloaded, og kør så LyX's installationsprogram igen."
 LangString SummaryPathPrefix "${LYX_LANG}" "Jeg tilføjer en 'path_prefix' streng til 'lyxrc.defaults' som indeholder:"
 
-LangString UILangageTitle "${LYX_LANG}" "The language of LyX's interface"
-LangString UILangageDescription "${LYX_LANG}" "As used for menus, messages, etc."
+LangString UILangageTitle "${LYX_LANG}" "Sprogvalg for LyXs brugergrænseflade"
+LangString UILangageDescription "${LYX_LANG}" "Bruges til menuer, beskeder etc."
+LangString UILanguageAvailableLanguages "${LYX_LANG}" " Tilgængelige sprog "
 
 LangString UnNotInRegistryLabel "${LYX_LANG}" "Kunne ikke finde $(^Name) i registreringsdatabsen$\r$\nGenvejene på skrivebordet og i Start-menuen bliver ikke fjernet"
 LangString UnNotAdminLabel "${LYX_LANG}" "Beklager! Du skal have administrator-rettigheder$\r$\nfor at afinstallere$(^Name)."

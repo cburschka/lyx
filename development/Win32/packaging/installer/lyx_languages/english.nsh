@@ -18,10 +18,10 @@ LangString SecFileAssocDescription "${LYX_LANG}" "Create associations between th
 LangString SecDesktopDescription "${LYX_LANG}" "A ${PRODUCT_NAME} icon on the desktop."
 
 LangString ModifyingConfigureFailed "${LYX_LANG}" "Failed attempting to set 'path_prefix' in the configure script"
-LangString CreateCmdFilesFailed "${LYX_LANG}" "Failed atempting to create lyx.cmd and reLyX.cmd"
+LangString CreateCmdFilesFailed "${LYX_LANG}" "Failed attempting to create lyx.cmd and reLyX.cmd"
 LangString RunConfigureFailed "${LYX_LANG}" "Failed attempting to execute the configure script"
 
-LangString FinishPageMessage "${LYX_LANG}" "Congratulations! LyX has been installed successfully."
+LangString FinishPageMessage "${LYX_LANG}" "LyX should now be installed. However, some of our users report that the configure script fails to run and, as a result, LyX fails to start, reporting a missing textclass.lst file. To fix, run the command: 'sh configure' from the LyX/Resources/lyx directory."
 LangString FinishPageRun "${LYX_LANG}" "Launch LyX"
 
 LangString DownloadPageField2 "${LYX_LANG}" "&Do not install"
@@ -47,12 +47,6 @@ LangString InvalidMiKTeXFolder "${LYX_LANG}" "Unable to find latex.exe"
 LangString MiKTeXDownloadLabel "${LYX_LANG}" "&Download MiKTeX"
 LangString MiKTeXFolderLabel "${LYX_LANG}" "&Folder containing latex.exe"
 
-LangString PerlHeader "${LYX_LANG}" "Perl"
-LangString PerlDescription "${LYX_LANG}" "If you plan on using reLyX to convert LaTeX documents to LyX ones, then you should install Perl (www.perl.com)."
-LangString EnterPerlFolder "${LYX_LANG}" "Please input the path to the folder containing Perl.exe"
-LangString InvalidPerlFolder "${LYX_LANG}" "Unable to find Perl.exe"
-LangString PerlDownloadLabel "${LYX_LANG}" "&Download Perl"
-LangString PerlFolderLabel "${LYX_LANG}" "&Folder containing perl.exe"
 
 LangString ImageMagickHeader "${LYX_LANG}" "ImageMagick"
 LangString ImageMagickDescription "${LYX_LANG}" "The ImageMagick tools (www.imagemagick.org/script/index.php) can be used to convert graphics files to whatever output format is needed."
@@ -74,6 +68,7 @@ LangString SummaryPathPrefix "${LYX_LANG}" "I shall add a 'path_prefix' string t
 
 LangString UILangageTitle "${LYX_LANG}" "The language of LyX's interface"
 LangString UILangageDescription "${LYX_LANG}" "As used for menus, messages, etc."
+LangString UILanguageAvailableLanguages "${LYX_LANG}" " Available Languages "
 
 LangString UnNotInRegistryLabel "${LYX_LANG}" "Unable to find $(^Name) in the registry$\r$\nShortcuts on the desktop and in the Start Menu will not be removed."
 LangString UnNotAdminLabel "${LYX_LANG}" "Sorry! You must have administrator privileges$\r$\nto uninstall $(^Name)."

@@ -26,7 +26,7 @@ SetCompressor lzma
 ; You should need to change only these macros...
 
 !define PRODUCT_NAME "LyX"
-!define PRODUCT_VERSION "1.3.6"
+!define PRODUCT_VERSION "1.4.0"
 !define PRODUCT_LICENSE_FILE "..\..\..\..\COPYING"
 !define PRODUCT_SOURCEDIR "..\..\..\..\build\installprefix"
 !define PRODUCT_EXE "$INSTDIR\bin\lyx.exe"
@@ -35,7 +35,7 @@ SetCompressor lzma
 !define PRODUCT_MIME_TYPE "application/lyx"
 !define PRODUCT_UNINSTALL_EXE "$INSTDIR\uninstall.exe"
 
-!define INSTALLER_EXE "lyx_setup_136.exe"
+!define INSTALLER_EXE "lyx_setup_140.exe"
 !define INSTALLER_ICON "..\icons\lyx_32x32.ico"
 
 ; Replaced by HKLM or HKCU depending on SetShellVarContext.
@@ -100,10 +100,6 @@ Var DoNotRequireMiKTeX
 Var MiKTeXPath
 Var DownloadMiKTeX
 
-Var DoNotRequirePerl
-Var PerlPath
-Var DownloadPerl
-
 Var DoNotRequireGhostscript
 Var GhostscriptPath
 Var DownloadGhostscript
@@ -113,7 +109,6 @@ Var ImageMagickPath
 Var DownloadImageMagick
 
 Var PDFViewerPath
-Var PDFViewerProg
 
 Var PSViewerPath
 Var PSViewerProg
@@ -146,7 +141,6 @@ Var LangCode
 Page custom DownloadMinSYS DownloadMinSYS_LeaveFunction
 Page custom DownloadPython DownloadPython_LeaveFunction
 Page custom DownloadMiKTeX DownloadMiKTeX_LeaveFunction
-Page custom DownloadPerl DownloadPerl_LeaveFunction
 Page custom DownloadGhostscript DownloadGhostscript_LeaveFunction
 Page custom DownloadImageMagick DownloadImageMagick_LeaveFunction
 Page custom SummariseDownloads SummariseDownloads_LeaveFunction
@@ -173,6 +167,7 @@ Page custom SelectMenuLanguage SelectMenuLanguage_LeaveFunction
 !insertmacro MUI_PAGE_INSTFILES
 
 !define MUI_FINISHPAGE_RUN
+!define MUI_FINISHPAGE_TEXT_LARGE
 !define MUI_FINISHPAGE_TEXT "$(FinishPageMessage)"
 !define MUI_FINISHPAGE_RUN_TEXT "$(FinishPageRun)"
 !define MUI_FINISHPAGE_RUN_FUNCTION "LaunchProduct"
@@ -191,6 +186,7 @@ Page custom SelectMenuLanguage SelectMenuLanguage_LeaveFunction
 !insertmacro MUI_LANGUAGE "French"
 !insertmacro MUI_LANGUAGE "Italian"
 !insertmacro MUI_LANGUAGE "Dutch"
+!insertmacro MUI_LANGUAGE "Polish"
 !insertmacro MUI_LANGUAGE "Swedish"
 
 !include "lyx_languages\english.nsh"
@@ -199,6 +195,7 @@ Page custom SelectMenuLanguage SelectMenuLanguage_LeaveFunction
 !include "lyx_languages\french.nsh"
 !include "lyx_languages\german.nsh"
 !include "lyx_languages\italian.nsh"
+!include "lyx_languages\polish.nsh"
 !include "lyx_languages\spanish.nsh"
 !include "lyx_languages\swedish.nsh"
 
@@ -246,20 +243,20 @@ Section "-Installation actions" SecInstallation
   File /r "${PRODUCT_SOURCEDIR}\bin"
 
   ${if} "$PathPrefix" != ""
-    lyx_configure::set_path_prefix "$INSTDIR\Resources\lyx\configure" "$PathPrefix"
+    lyx_configure::set_path_prefix "$INSTDIR\Resources\configure" "$PathPrefix"
     Pop $0
     ${if} $0 != 0
       MessageBox MB_OK "$(ModifyingConfigureFailed)"
     ${endif}
   ${endif}
 
-  lyx_configure::create_bat_files "$INSTDIR\bin" "$LangCode"
+  lyx_configure::create_lyx_bat "$INSTDIR\bin" "$LangCode"
   Pop $0
   ${if} $0 != 0
     MessageBox MB_OK "$(CreateCmdFilesFailed)"
   ${endif}
 
-  lyx_configure::run_configure "$INSTDIR\Resources\lyx\configure" "$PathPrefix"
+  lyx_configure::run_configure "$INSTDIR\Resources\configure" "$PathPrefix"
   Pop $0
   ${if} $0 != 0
     MessageBox MB_OK "$(RunConfigureFailed)"
@@ -345,7 +342,6 @@ Function .onInit
   Call SearchMinSYS
   Call SearchPython
   Call SearchMiKTeX
-  Call SearchPerl
   Call SearchGhostscript
   Call SearchImageMagick
   Call SearchPDFViewer
@@ -518,42 +514,6 @@ FunctionEnd
 
 ;--------------------------------
 
-; Sets the value of the global $PerlPath variable.
-Function SearchPerl
-  ${SearchRegistry} \
-      $PerlPath \
-      "Software\Perl" \
-      BinDir \
-      "\perl.exe" \
-      ""
-FunctionEnd
-
-Function DownloadPerl
-  StrCpy $DoNotRequirePerl "1"
-  StrCpy $DownloadPerl "1"
-
-  ${DownloadEnter} \
-      $PerlPath \
-      1 \
-      "$(PerlDownloadLabel)" \
-      "$(PerlFolderLabel)" \
-      "$(PerlHeader)" \
-      "$(PerlDescription)"
-FunctionEnd
-
-Function DownloadPerl_LeaveFunction
-  ${DownloadLeave} \
-      $DoNotRequirePerl \
-      $DownloadPerl \
-      $PerlPath \
-      "http://www.activestate.com/Products/ActivePerl/" \
-      "$(EnterPerlFolder)" \
-      "perl.exe" \
-      "$(InvalidPerlFolder)"
-FunctionEnd
-
-;--------------------------------
-
 ; Sets the value of the global $GhostscriptPath variable.
 Function SearchGhostscript
   ; This function manipulates the $0 and $1 registers,
@@ -664,35 +624,33 @@ FunctionEnd
 
 ;--------------------------------
 
-; Sets the value of the global $PDFViewerPath and $PDFViewerProg variables.
+; Sets the value of the global $PDFViewerPath variable.
 Function SearchPDFViewer
+  ; test if a pdf-viewer is installed, only test for Acrobat, Adobe Reader (AroRD32), and GSview32
   StrCpy $PDFViewerPath ""
-  !insertmacro GetFileExtProg $PDFViewerPath $PDFViewerProg ".pdf" "a"
+  ReadRegStr $PDFViewerPath HKLM "Software\Microsoft\Windows\CurrentVersion\App Paths\Acrobat.exe" "Path"
+  ${if} $PDFViewerPath == ""
+   ReadRegStr $PDFViewerPath HKLM "Software\Microsoft\Windows\CurrentVersion\App Paths\AcroRd32.exe" "Path"
+  ${endif}
+  ${if} $PDFViewerPath == ""
+   ReadRegStr $PDFViewerPath HKLM "Software\Microsoft\Windows\CurrentVersion\App Paths\gsview32.exe" "Path"
+  ${endif}
+  StrCpy $0 $PDFViewerPath "" -1 ;remove the "\" at the end
+  ${if} $0 == "\"
+   StrCpy $PDFViewerPath $PDFViewerPath -1
+  ${endif}
 FunctionEnd
 
 ;--------------------------------
 
 Function SearchPSViewer
-  ; This function manipulates the $0 and $1 registers,
-  ; so push their current content onto the stack.
+  ; This function manipulates the $0 register,
+  ; so push its current content onto the stack.
   Push $0
-  Push $1
 
+  ; test if a ps-viewer is installed, only check for GSview32
   StrCpy $PSViewerPath ""
-  StrCpy $0 ""
-  StrCpy $1 ""
-  !insertmacro GetFileExtProg $PSViewerPath $PSViewerProg ".ps" "a"
-  ${if} $PSViewerPath != ""
-    StrCpy $0 $PSViewerPath
-    StrCpy $0 $0 "" -8
-  ${endif}
-  ${if} $0 == "Distillr"
-    !insertmacro GetFileExtProg $0 $1 ".ps" "b"
-    ${if} $1 != ""
-      StrCpy $PSViewerPath $0
-      StrCpy $PSViewerProg $1
-    ${endif}
-  ${endif}
+  ReadRegStr $PSViewerPath HKLM "Software\Microsoft\Windows\CurrentVersion\App Paths\gsview32.exe" "Path"
 
   ; Failed to find anything that way. Try another.
   ${if} $PSViewerPath == ""
@@ -709,8 +667,7 @@ Function SearchPSViewer
     ${StrStrAdv} $PSViewerProg $PSViewerProg "\" "<" ">" "0" "0" "0"
   ${endif}
 
-  ; Return the $0 and $1 registers to their original states
-  Pop $1
+  ; Return the $0 register to its original states
   Pop $0
 FunctionEnd
 
@@ -728,9 +685,6 @@ Function SummariseDownloads
   ${if} $MiKTeXPath != ""
     StrCpy $PathPrefix "$PathPrefix;$MiKTeXPath"
   ${endif}
-  ${if} $PerlPath != ""
-    StrCpy $PathPrefix "$PathPrefix;$PerlPath"
-  ${endif}
   ${if} $GhostscriptPath != ""
     StrCpy $PathPrefix "$PathPrefix;$GhostscriptPath"
   ${endif}
@@ -742,7 +696,6 @@ Function SummariseDownloads
 
   IntOp $DoNotInstallLyX $DownloadMinSYS + $DownloadPython
   IntOp $DoNotInstallLyX $DoNotInstallLyX + $DownloadMiKTeX
-  IntOp $DoNotInstallLyX $DoNotInstallLyX + $DownloadPerl
   IntOp $DoNotInstallLyX $DoNotInstallLyX + $DownloadGhostscript
   IntOp $DoNotInstallLyX $DoNotInstallLyX + $DownloadImageMagick
 
@@ -773,6 +726,7 @@ Function SelectMenuLanguage
   ;tranlate NSIS's language code to the language name; macro from lyx_utils.nsh
   !insertmacro TranslateLangCode $LangName $Language
 
+  !insertmacro MUI_INSTALLOPTIONS_WRITE "io_ui_language.ini" "Field 1" "State" "$(UILanguageAvailableLanguages)"
   !insertmacro MUI_INSTALLOPTIONS_WRITE "io_ui_language.ini" "Field 2" "State" "$LangName"
 
   !insertmacro MUI_HEADER_TEXT "$(UILangageTitle)" "$(UILangageDescription)"
@@ -837,11 +791,15 @@ Section Uninstall
 
   Delete "$DESKTOP\${PRODUCT_NAME}.lnk"
 
-  DeleteRegKey "HKCU" "${PRODUCT_UNINST_KEY}\Installer Language"
+  DeleteRegKey "HKCU" "${PRODUCT_UNINST_KEY}"
   DeleteRegKey ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}"
   DeleteRegKey HKLM "${PRODUCT_DIR_REGKEY}"
+  DeleteRegKey HKCR "Applications\lyx.exe"
+  DeleteRegKey HKCR "Applications\lyx.bat"
 
+  ; remove extension .lyx
   ${RemoveFileAssociation} "${PRODUCT_EXT}" "${PRODUCT_NAME}"
+  DeleteRegKey HKCR "${PRODUCT_NAME}"
 
   SetAutoClose true
 SectionEnd

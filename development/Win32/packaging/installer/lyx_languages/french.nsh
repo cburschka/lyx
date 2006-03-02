@@ -19,10 +19,10 @@ LangString SecFileAssocDescription "${LYX_LANG}" "Crée les associations entre l'
 LangString SecDesktopDescription "${LYX_LANG}" "Une icône ${PRODUCT_NAME} sur le bureau."
 
 LangString ModifyingConfigureFailed "${LYX_LANG}" "Échec de l'allocation 'path_prefix' lors de la configuration."
-LangString CreateCmdFilesFailed "${LYX_LANG}" "Failed atempting to create lyx.cmd and reLyX.cmd"
+LangString CreateCmdFilesFailed "${LYX_LANG}" "Échec de la création des fichiers lyx.cmd et reLyX.cmd"
 LangString RunConfigureFailed "${LYX_LANG}" "Échec de la tentative de configuration initiale de LyX."
 
-LangString FinishPageMessage "${LYX_LANG}" "Félicitations ! LyX est installé avec succès."
+LangString FinishPageMessage "${LYX_LANG}" "LyX devrait être installé. Cependant, quelques utilisateurs ont signalé que le script de configuration échouait; en conséquence, LyX refuse de démarrer avec un message indiquant l'absence du fichier textclass.lst. Pour rectifier l'installation, exécuter 'sh configure' depuis le répertoire LyX/Resources/lyx."
 LangString FinishPageRun "${LYX_LANG}" "Démarrer LyX"
 
 LangString DownloadPageField2 "${LYX_LANG}" "&Ne pas installer"
@@ -48,12 +48,6 @@ LangString InvalidMiKTeXFolder "${LYX_LANG}" "latex.exe introuvable"
 LangString MiKTeXDownloadLabel "${LYX_LANG}" "&Télécharger MiKTeX"
 LangString MiKTeXFolderLabel "${LYX_LANG}" "&Répertoire contenant latex.exe"
 
-LangString PerlHeader "${LYX_LANG}" "Perl"
-LangString PerlDescription "${LYX_LANG}" "Si vous avez l'intention d'utiliser reLyX pour convertir des documents LaTeX en LyX, vous devez installer Perl (www.perl.com)."
-LangString EnterPerlFolder "${LYX_LANG}" "Merci de saisir le chemin conduisant au répertoire où se trouve Perl.exe"
-LangString InvalidPerlFolder "${LYX_LANG}" "Perl.exe introuvable"
-LangString PerlDownloadLabel "${LYX_LANG}" "&Télécharger Perl"
-LangString PerlFolderLabel "${LYX_LANG}" "&Répertoire contenant perl.exe"
 
 LangString ImageMagickHeader "${LYX_LANG}" "ImageMagick"
 LangString ImageMagickDescription "${LYX_LANG}" "Les outils graphiques de ImageMagick (www.imagemagick.org/script/index.php) peuvent être utilisés pour convertir les fichiers graphiques dans n'importe quel format nécessaire."
@@ -73,8 +67,9 @@ LangString SummaryTitle "${LYX_LANG}" "Résumé d'installation"
 LangString SummaryPleaseInstall "${LYX_LANG}" "Merci d'installer les fichiers téléchargés, puis d'exécuter de nouveau l'installation de LyX."
 LangString SummaryPathPrefix "${LYX_LANG}" "Durant l'installation, une chaîne de caractères 'path_prefix'  sera ajoutée à 'lyxrc.defaults', elle contiendra :"
 
-LangString UILangageTitle "${LYX_LANG}" "The language of LyX's interface"
-LangString UILangageDescription "${LYX_LANG}" "As used for menus, messages, etc."
+LangString UILangageTitle "${LYX_LANG}" "Le langage de l'interface de LyX"
+LangString UILangageDescription "${LYX_LANG}" "Tel qu'il est utilisé pour les menus, messages, etc."
+LangString UILanguageAvailableLanguages "${LYX_LANG}" " Langages disponibles"
 
 LangString UnNotInRegistryLabel "${LYX_LANG}" "$(^Name) introuvable dans le base des registres. $\r$\nLes raccourcis sur le bureau et dans le menu de démarrage ne seront pas supprimés."
 LangString UnNotAdminLabel "${LYX_LANG}" "Désolé ! Vous devez avoir les droits d'administration$\r$\npour installer$(^Name)."
