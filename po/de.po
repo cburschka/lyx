@@ -83,7 +83,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-02-23 20:13+0100\n"
+"POT-Creation-Date: 2006-03-03 09:25+0100\n"
 "PO-Revision-Date: 2006-01-28 21:47+0100\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
@@ -2041,7 +2041,7 @@ msgstr "Seitenumbruch nach der aktuellen Zeile|#S"
 #: src/frontends/xforms/forms/form_tabular.fd:1638
 #: src/frontends/xforms/forms/form_tabular.fd:1656
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:60
-#: src/frontends/qt2/QDocument.C:166 src/text.C:2231
+#: src/frontends/qt2/QDocument.C:166 src/text.C:2229
 msgid "Double"
 msgstr "Doppelt"
 
@@ -3761,7 +3761,7 @@ msgid "Print as grey text"
 msgstr "Als grauen Text drucken"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:48
-#: src/frontends/qt2/QDocument.C:162 src/text.C:2225
+#: src/frontends/qt2/QDocument.C:162 src/text.C:2223
 msgid "Single"
 msgstr "Einfach"
 
@@ -9532,18 +9532,18 @@ msgid "Redo|R"
 msgstr "Wiederholen|W"
 
 #: lib/ui/stdmenus.ui:84 lib/ui/stdtoolbars.ui:51
-#: src/mathed/math_nestinset.C:433 src/text3.C:839
+#: src/mathed/math_nestinset.C:433 src/text3.C:846
 msgid "Cut"
 msgstr "Ausschneiden"
 
 #: lib/ui/stdmenus.ui:85 lib/ui/stdtoolbars.ui:52
-#: src/mathed/math_nestinset.C:441 src/text3.C:844
+#: src/mathed/math_nestinset.C:441 src/text3.C:851
 msgid "Copy"
 msgstr "Kopieren"
 
 #: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:650
 #: src/mathed/math_gridinset.C:1204 src/mathed/math_nestinset.C:417
-#: src/text3.C:826
+#: src/text3.C:833
 msgid "Paste"
 msgstr "Einfügen"
 
@@ -11498,19 +11498,10 @@ msgstr "Stichwort"
 msgid "Label"
 msgstr "Marke"
 
-#: src/frontends/gtk/GAboutlyx.C:200
-msgid "C_redits"
-msgstr "R_uhm und Ehre"
-
 #: src/frontends/gtk/GBibItem.C:33 src/frontends/qt2/QBibitem.C:31
 #: src/frontends/xforms/FormBibitem.C:38
 msgid "Bibliography Entry Settings"
 msgstr "Literatureintrag-Einstellungen"
-
-#: src/frontends/gtk/GBibtex.C:43 src/frontends/qt2/QBibtex.C:50
-#: src/frontends/xforms/FormBibtex.C:51
-msgid "BibTeX Bibliography"
-msgstr "BibTeX-Literaturverzeichnis"
 
 #: src/frontends/gtk/GBox.C:42 src/frontends/qt2/QBox.C:51
 #: src/frontends/xforms/FormBox.C:47
@@ -11711,19 +11702,6 @@ msgstr "Absatz-Einstellungen"
 msgid "Senseless with this layout!"
 msgstr "Für dieses Format nicht relevant!"
 
-#: src/frontends/gtk/GPreferences.C:38 src/frontends/qt2/QPrefs.C:81
-#: src/frontends/xforms/FormPreferences.C:94
-msgid "Preferences"
-msgstr "Einstellungen"
-
-#: src/frontends/gtk/GPreferences.C:152 src/frontends/qt2/QPrefs.C:135
-msgid "pspell (library)"
-msgstr "pspell (Bibliothek)"
-
-#: src/frontends/gtk/GPreferences.C:155 src/frontends/qt2/QPrefs.C:138
-msgid "aspell (library)"
-msgstr "aspell (Bibliothek)"
-
 #: src/frontends/gtk/GRef.C:65 src/frontends/qt2/QRef.C:42
 #: src/frontends/xforms/FormRef.C:42
 msgid "Cross-reference"
@@ -11848,6 +11826,10 @@ msgstr "Geben Sie ein benutzerdefiniertes Aufzählungszeichen ein"
 msgid "Directories"
 msgstr "Verzeichnisse"
 
+#: src/frontends/qt2/QBibtex.C:50 src/frontends/xforms/FormBibtex.C:51
+msgid "BibTeX Bibliography"
+msgstr "BibTeX-Literaturverzeichnis"
+
 #: src/frontends/qt2/QChanges.C:66
 #, c-format
 msgid ""
@@ -11938,7 +11920,7 @@ msgstr "mit Überschriften"
 msgid "fancy"
 msgstr "ausgefallen"
 
-#: src/frontends/qt2/QDocument.C:164 src/text.C:2228
+#: src/frontends/qt2/QDocument.C:164 src/text.C:2226
 msgid "OneHalf"
 msgstr "Eineinhalb"
 
@@ -12121,6 +12103,10 @@ msgstr "Normaler Textmodus\t\\textrm"
 msgid "LyX: Insert Matrix"
 msgstr "LyX: Matrix einfügen"
 
+#: src/frontends/qt2/QPrefs.C:81 src/frontends/xforms/FormPreferences.C:94
+msgid "Preferences"
+msgstr "Einstellungen"
+
 #: src/frontends/qt2/QPrefs.C:131
 msgid "ispell"
 msgstr "ispell"
@@ -12132,6 +12118,14 @@ msgstr "aspell"
 #: src/frontends/qt2/QPrefs.C:133
 msgid "hspell"
 msgstr "hspell"
+
+#: src/frontends/qt2/QPrefs.C:135
+msgid "pspell (library)"
+msgstr "pspell (Bibliothek)"
+
+#: src/frontends/qt2/QPrefs.C:138
+msgid "aspell (library)"
+msgstr "aspell (Bibliothek)"
 
 #: src/frontends/qt2/QPrefsDialog.C:94
 msgid "Look and feel"
@@ -13609,11 +13603,11 @@ msgstr "Zeichenstil-Einfügung geöffnet"
 msgid "Opened Environment Inset: "
 msgstr "Umgebungseinfügung geöffnet: "
 
-#: src/insets/insetert.C:120
+#: src/insets/insetert.C:142
 msgid "Opened ERT Inset"
 msgstr "ERT-Einfügung geöffnet"
 
-#: src/insets/insetert.C:368
+#: src/insets/insetert.C:399
 msgid "ERT"
 msgstr "ERT"
 
@@ -14421,7 +14415,7 @@ msgstr "Erstellung"
 msgid "ChkTeX"
 msgstr "ChkTeX"
 
-#: src/lyxfunc.C:1015 src/text3.C:1247
+#: src/lyxfunc.C:1015 src/text3.C:1254
 msgid "Missing argument"
 msgstr "Fehlendes Argument"
 
@@ -15120,7 +15114,7 @@ msgstr "Die Anzahl der Spalten in '%1$s' kann nicht geändert werden"
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Es können keine horizontalen Gitterlinien in '%1$s' hinzugefügt werden"
 
-#: src/mathed/math_hullinset.C:1297 src/text3.C:170
+#: src/mathed/math_hullinset.C:1297 src/text3.C:177
 msgid "Math editor mode"
 msgstr "Mathe-Editor-Modus"
 
@@ -15249,49 +15243,49 @@ msgstr ""
 "Sie können zwei Leerzeichen nicht auf diese Weise eingeben. Bitte lesen Sie "
 "das Tutorium."
 
-#: src/text.C:2193
+#: src/text.C:2191
 msgid "Change: "
 msgstr "Änderung: "
 
-#: src/text.C:2197
+#: src/text.C:2195
 msgid " at "
 msgstr " am "
 
-#: src/text.C:2209
+#: src/text.C:2207
 #, c-format
 msgid "Font: %1$s"
 msgstr "Schrift: %1$s"
 
-#: src/text.C:2216
+#: src/text.C:2214
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Tiefe: %1$d"
 
-#: src/text.C:2222
+#: src/text.C:2220
 msgid ", Spacing: "
 msgstr ", Abstand: "
 
-#: src/text.C:2234
+#: src/text.C:2232
 msgid "Other ("
 msgstr "Andere ("
 
-#: src/text.C:2243
+#: src/text.C:2241
 msgid ", Inset: "
 msgstr ", Einfügung: "
 
-#: src/text.C:2244
+#: src/text.C:2242
 msgid ", Paragraph: "
 msgstr ", Absatz: "
 
-#: src/text.C:2245
+#: src/text.C:2243
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/text.C:2246
+#: src/text.C:2244
 msgid ", Position: "
 msgstr ", Position: "
 
-#: src/text.C:2247
+#: src/text.C:2245
 msgid ", Boundary: "
 msgstr ", Grenze: "
 
@@ -15311,27 +15305,27 @@ msgstr "Nichts zu indizieren!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Es kann nicht mehr als ein Absatz indiziert werden!"
 
-#: src/text3.C:735
+#: src/text3.C:742
 msgid "Unknown spacing argument: "
 msgstr "Unbekanntes Abstandsargument: "
 
-#: src/text3.C:888
+#: src/text3.C:895
 msgid "LyX function 'layout' needs an argument."
 msgstr "Die LyX-Funktion 'layout' benötigt ein Argument."
 
-#: src/text3.C:906
+#: src/text3.C:913
 msgid "Layout "
 msgstr "Format "
 
-#: src/text3.C:907
+#: src/text3.C:914
 msgid " not known"
 msgstr " unbekannt"
 
-#: src/text3.C:1351 src/text3.C:1363
+#: src/text3.C:1358 src/text3.C:1370
 msgid "Character set"
 msgstr "Zeichensatz"
 
-#: src/text3.C:1495
+#: src/text3.C:1502
 msgid "Paragraph layout set"
 msgstr "Absatzformat festgelegt"
 
@@ -15358,3 +15352,6 @@ msgstr "Variabel"
 #: src/vspace.C:506
 msgid "protected"
 msgstr "geschützt"
+
+#~ msgid "C_redits"
+#~ msgstr "R_uhm und Ehre"

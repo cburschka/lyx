@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nn_1.4pre3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-02-10 09:25+0100\n"
+"POT-Creation-Date: 2006-03-03 09:25+0100\n"
 "PO-Revision-Date: 2006-01-04 21:27+0100\n"
 "Last-Translator: Ingar Pareliussen <ingar_ved_samfundet.no>\n"
 "Language-Team:  <nn@li.org>\n"
@@ -1967,7 +1967,7 @@ msgstr "Skift side i denne rada|#d"
 #: src/frontends/xforms/forms/form_tabular.fd:1638
 #: src/frontends/xforms/forms/form_tabular.fd:1656
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:60
-#: src/frontends/qt2/QDocument.C:166 src/text.C:2231
+#: src/frontends/qt2/QDocument.C:166 src/text.C:2229
 msgid "Double"
 msgstr "Dobbel"
 
@@ -2783,8 +2783,9 @@ msgstr "&amp;Bruk"
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:366
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:100
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:100
-#: src/frontends/qt2/ui/QWrapDialogBase.ui:93 src/frontends/qt2/QTabular.C:184
-#: src/frontends/xforms/FormBox.C:90 src/frontends/xforms/FormParagraph.C:187
+#: src/frontends/qt2/ui/QWrapDialogBase.ui:93 src/frontends/gtk/GTabular.C:353
+#: src/frontends/qt2/QTabular.C:184 src/frontends/xforms/FormBox.C:90
+#: src/frontends/xforms/FormParagraph.C:187
 msgid "Left"
 msgstr "Venstre"
 
@@ -2793,16 +2794,17 @@ msgstr "Venstre"
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:106
 #: src/frontends/controllers/ControlExternal.C:228
 #: src/frontends/controllers/ControlGraphics.C:171
-#: src/frontends/qt2/QTabular.C:185 src/frontends/xforms/FormBox.C:91
-#: src/frontends/xforms/FormParagraph.C:180
+#: src/frontends/gtk/GTabular.C:354 src/frontends/qt2/QTabular.C:185
+#: src/frontends/xforms/FormBox.C:91 src/frontends/xforms/FormParagraph.C:180
 msgid "Center"
 msgstr "Midten"
 
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:378
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:106
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:112
-#: src/frontends/qt2/ui/QWrapDialogBase.ui:99 src/frontends/qt2/QTabular.C:186
-#: src/frontends/xforms/FormBox.C:92 src/frontends/xforms/FormParagraph.C:194
+#: src/frontends/qt2/ui/QWrapDialogBase.ui:99 src/frontends/gtk/GTabular.C:355
+#: src/frontends/qt2/QTabular.C:186 src/frontends/xforms/FormBox.C:92
+#: src/frontends/xforms/FormParagraph.C:194
 msgid "Right"
 msgstr "Høgre"
 
@@ -3810,7 +3812,7 @@ msgid "Print as grey text"
 msgstr "Skriv ut som grå tekst"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:48
-#: src/frontends/qt2/QDocument.C:162 src/text.C:2225
+#: src/frontends/qt2/QDocument.C:162 src/text.C:2223
 msgid "Single"
 msgstr "Enkel"
 
@@ -4743,7 +4745,8 @@ msgid "&Horizontal alignment:"
 msgstr "&amp;Vassrett tekstjustering:"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:94
-#: src/frontends/qt2/QTabular.C:188 src/frontends/xforms/FormParagraph.C:173
+#: src/frontends/gtk/GTabular.C:357 src/frontends/qt2/QTabular.C:188
+#: src/frontends/xforms/FormParagraph.C:173
 msgid "Block"
 msgstr "Blokk justert"
 
@@ -5567,7 +5570,7 @@ msgstr "Litteratur"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:411
 #: lib/layouts/ijmpd.layout:163 lib/layouts/ijmpd.layout:171
 #: lib/layouts/kluwer.layout:324 lib/layouts/kluwer.layout:337
-#: src/rowpainter.C:426
+#: src/rowpainter.C:425
 msgid "Appendix"
 msgstr "Vedlegg"
 
@@ -8137,7 +8140,7 @@ msgid "Published-online:"
 msgstr "Nettpublikasjon:"
 
 #: lib/layouts/agu_stdtitle.inc:263 src/frontends/gtk/GCitation.C:71
-#: src/frontends/qt2/QCitation.C:50 src/frontends/xforms/FormCitation.C:100
+#: src/frontends/qt2/QCitation.C:50 src/frontends/xforms/FormCitation.C:101
 msgid "Citation"
 msgstr "Litteratur"
 
@@ -9722,18 +9725,18 @@ msgid "Redo|R"
 msgstr "Gjer om|G"
 
 #: lib/ui/stdmenus.ui:84 lib/ui/stdtoolbars.ui:51
-#: src/mathed/math_nestinset.C:433 src/text3.C:839
+#: src/mathed/math_nestinset.C:433 src/text3.C:846
 msgid "Cut"
 msgstr "Klipp"
 
 #: lib/ui/stdmenus.ui:85 lib/ui/stdtoolbars.ui:52
-#: src/mathed/math_nestinset.C:441 src/text3.C:844
+#: src/mathed/math_nestinset.C:441 src/text3.C:851
 msgid "Copy"
 msgstr "Kopier"
 
 #: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:650
 #: src/mathed/math_gridinset.C:1204 src/mathed/math_nestinset.C:417
-#: src/text3.C:826
+#: src/text3.C:833
 msgid "Paste"
 msgstr "Lim inn"
 
@@ -10726,50 +10729,50 @@ msgstr "Ukjent dokumentklasse"
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr "Brukar standard dokumentklasse sidan dokumentklassa %1$s er ukjent."
 
-#: src/buffer.C:444 src/text.C:338
+#: src/buffer.C:445 src/text.C:338
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Ukjent symbol %1$s %2$s\n"
 
-#: src/buffer.C:448 src/buffer.C:455 src/buffer.C:470
+#: src/buffer.C:449 src/buffer.C:456 src/buffer.C:471
 msgid "Document header error"
 msgstr "Filhovud-feil"
 
-#: src/buffer.C:454
+#: src/buffer.C:455
 msgid "\\begin_header is missing"
 msgstr "\\begin_header manglar"
 
-#: src/buffer.C:469
+#: src/buffer.C:470
 msgid "\\begin_document is missing"
 msgstr "\\begin_document manglar"
 
-#: src/buffer.C:479
+#: src/buffer.C:480
 msgid "Can't load document class"
 msgstr "Kan ikkje lese dokumentklassa"
 
-#: src/buffer.C:587 src/buffer.C:596
+#: src/buffer.C:588 src/buffer.C:597
 msgid "Document could not be read"
 msgstr "Kunne ikkje lese dokumentet"
 
-#: src/buffer.C:588 src/buffer.C:597
+#: src/buffer.C:589 src/buffer.C:598
 #, c-format
 msgid "%1$s could not be read."
 msgstr "Kunne ikkje lese %1$s."
 
-#: src/buffer.C:605 src/buffer.C:671
+#: src/buffer.C:606 src/buffer.C:672
 msgid "Document format failure"
 msgstr "Dokumentstil feil"
 
-#: src/buffer.C:606
+#: src/buffer.C:607
 #, c-format
 msgid "%1$s is not a LyX document."
 msgstr "%1$s er ikkje eit LyX dokumentet."
 
-#: src/buffer.C:625
+#: src/buffer.C:626
 msgid "Conversion failed"
 msgstr "Feil oppstod i konverteringa"
 
-#: src/buffer.C:626
+#: src/buffer.C:627
 #, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but a temporary file for converting "
@@ -10778,11 +10781,11 @@ msgstr ""
 "%1$s vart laga i ein gammal LyX versjon, Desverre kunne vi ikkje lage ein "
 "mellombels kopi for å konvertere dokumentet."
 
-#: src/buffer.C:635
+#: src/buffer.C:636
 msgid "Conversion script not found"
 msgstr "Fann ikkje eksport programmet"
 
-#: src/buffer.C:636
+#: src/buffer.C:637
 #, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but the conversion script lyx2lyx "
@@ -10791,11 +10794,11 @@ msgstr ""
 "%1$s vart laga i ein gammal LyX versjon. men programmet for å fornye "
 "dokumentet \"lyx2lyx\" vart ikkje funne."
 
-#: src/buffer.C:656
+#: src/buffer.C:657
 msgid "Conversion script failed"
 msgstr "Feil ved køyring av eksport programmet"
 
-#: src/buffer.C:657
+#: src/buffer.C:658
 #, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but the lyx2lyx script failed to "
@@ -10804,20 +10807,20 @@ msgstr ""
 "%1$s vart laga i ein gammal LyX versjon. men programmet for å fornye "
 "dokumentet \"lyx2lyx\" klarte ikkje å fornye det."
 
-#: src/buffer.C:672
+#: src/buffer.C:673
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr "%1$s slutta før tida, noko som truleg tyder at det er øydelagd."
 
-#: src/buffer.C:1129
+#: src/buffer.C:1130
 msgid "Running chktex..."
 msgstr "Køyrer ChkTeX ..."
 
-#: src/buffer.C:1142
+#: src/buffer.C:1143
 msgid "chktex failure"
 msgstr "ChkTeX feil"
 
-#: src/buffer.C:1143
+#: src/buffer.C:1144
 msgid "Could not run chktex successfully."
 msgstr "Kunne ikkje køyre ChkTeX."
 
@@ -11934,7 +11937,7 @@ msgstr "Kontrollert"
 msgid "Insert Table"
 msgstr "Set inn tabell"
 
-#: src/frontends/gtk/GTabular.C:67 src/frontends/qt2/QTabular.C:41
+#: src/frontends/gtk/GTabular.C:38 src/frontends/qt2/QTabular.C:41
 #: src/frontends/xforms/FormTabular.C:57
 msgid "Table Settings"
 msgstr "Tabellval"
@@ -12122,7 +12125,7 @@ msgstr "hovud"
 msgid "fancy"
 msgstr "frodig"
 
-#: src/frontends/qt2/QDocument.C:164 src/text.C:2228
+#: src/frontends/qt2/QDocument.C:164 src/text.C:2226
 msgid "OneHalf"
 msgstr "Halvannan"
 
@@ -12672,30 +12675,30 @@ msgstr ""
 msgid "Invalid length!"
 msgstr "Ugyldig lengd!"
 
-#: src/frontends/xforms/FormCitation.C:175
+#: src/frontends/xforms/FormCitation.C:176
 msgid "Add citation of the selected bibliography entry."
 msgstr "Legg til referanse av den valte litteraturen."
 
-#: src/frontends/xforms/FormCitation.C:178
+#: src/frontends/xforms/FormCitation.C:179
 msgid "Delete citation of the selected bibliography entry."
 msgstr "Slett den valde referansen."
 
-#: src/frontends/xforms/FormCitation.C:181
+#: src/frontends/xforms/FormCitation.C:182
 msgid "Move the selected entry upwards (in the current list)."
 msgstr "Flytt det valte elementet oppover (i den gjeldande lista)."
 
-#: src/frontends/xforms/FormCitation.C:184
+#: src/frontends/xforms/FormCitation.C:185
 msgid "Move the selected entry downwards (in the current list)."
 msgstr "Flytt det valte elementet nedover (i den gjeldande lista)."
 
-#: src/frontends/xforms/FormCitation.C:187
+#: src/frontends/xforms/FormCitation.C:188
 msgid ""
 "The entries which will be cited. Select them with the arrow buttons from the "
 "right browser window."
 msgstr ""
 "Elementa som vil bli sitert. Vel element frå det høgre feltet med piltastane."
 
-#: src/frontends/xforms/FormCitation.C:194
+#: src/frontends/xforms/FormCitation.C:195
 #, fuzzy
 msgid ""
 "All entries in the database you have loaded (via \"Insert->List / TOC-"
@@ -12706,18 +12709,18 @@ msgstr ""
 "Lister-&gt;BibTeX referanse\"). Flytt dei du vil sitere med piltastane til "
 "den venstre feltet."
 
-#: src/frontends/xforms/FormCitation.C:201
+#: src/frontends/xforms/FormCitation.C:202
 msgid "Information about the selected bibliography entry"
 msgstr "Informasjon om det valte litteratur elementet"
 
-#: src/frontends/xforms/FormCitation.C:208
+#: src/frontends/xforms/FormCitation.C:209
 msgid ""
 "Here you may select how the citation label should look inside the text "
 "(Natbib)."
 msgstr ""
 "Her kan du velje korleis litteraturreferansen skal sjå ut i teksten.(Natbib)."
 
-#: src/frontends/xforms/FormCitation.C:211
+#: src/frontends/xforms/FormCitation.C:212
 #, fuzzy
 msgid ""
 "Activate if you want to print all authors in a citation with more than three "
@@ -12727,7 +12730,7 @@ msgstr ""
 "alle forfattarane i teksten, istaden for \"&lt;Første forfattar&gt; et al."
 "\" (Natbib)."
 
-#: src/frontends/xforms/FormCitation.C:214
+#: src/frontends/xforms/FormCitation.C:215
 msgid ""
 "Activate if you want to print the first character of the author name as "
 "uppercase (\"Van Gogh\", not \"van Gogh\"). Useful at the beginning of "
@@ -12736,22 +12739,22 @@ msgstr ""
 "Vel denne dersom du vil ha storbokstav på forfattaren (\"Van Gogh\", og "
 "ikkje \"van Gogh\"). Nyttig i starten på setningar (Natbib)."
 
-#: src/frontends/xforms/FormCitation.C:217
+#: src/frontends/xforms/FormCitation.C:218
 #, fuzzy
 msgid ""
 "Optional text which appears before the citation, e.g. \"see <Citation>\""
 msgstr "Valfri tekst før litteratur-referansen, f.eks. \"Sjå: &lt;Ref&gt;\""
 
-#: src/frontends/xforms/FormCitation.C:220
+#: src/frontends/xforms/FormCitation.C:221
 msgid "Optional text which appears after the citation, e.g. \"pp. 12\""
 msgstr ""
 "Valfri tekst etter litteratur-referansen, f.eks. \"&lt;Ref&gt; side 10\""
 
-#: src/frontends/xforms/FormCitation.C:223
+#: src/frontends/xforms/FormCitation.C:224
 msgid "Search your database (all fields will be searched)."
 msgstr "Leit i databasen (alle felt vil bli leita igjennom)."
 
-#: src/frontends/xforms/FormCitation.C:226
+#: src/frontends/xforms/FormCitation.C:227
 msgid ""
 "Activate if you want to have case sensitive search: \"bibtex\" finds \"bibtex"
 "\", but not \"BibTeX\"."
@@ -12759,7 +12762,7 @@ msgstr ""
 "Vel om du vil skilje mellom store og små bokstavar. \"bibtex\" finn \"bibtex"
 "\", men ikkje \"BibTeX\"."
 
-#: src/frontends/xforms/FormCitation.C:229
+#: src/frontends/xforms/FormCitation.C:230
 msgid "Activate if you want to enter Regular Expressions."
 msgstr "Vel om du vil søkje etter regulære uttrykk."
 
@@ -13820,11 +13823,11 @@ msgstr "Opna bokstav innskot"
 msgid "Opened Environment Inset: "
 msgstr "Opna miljø innskot"
 
-#: src/insets/insetert.C:120
+#: src/insets/insetert.C:142
 msgid "Opened ERT Inset"
 msgstr "Opna ERT innskot"
 
-#: src/insets/insetert.C:368
+#: src/insets/insetert.C:399
 msgid "ERT"
 msgstr "ERT"
 
@@ -14626,7 +14629,7 @@ msgstr "Bygg"
 msgid "ChkTeX"
 msgstr "ChkTeX"
 
-#: src/lyxfunc.C:1015 src/text3.C:1247
+#: src/lyxfunc.C:1015 src/text3.C:1254
 msgid "Missing argument"
 msgstr "Manglande val"
 
@@ -15270,7 +15273,7 @@ msgstr "Kan ikkje endre talet på kolonner i '%1$s'"
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Kan ikkje leggje til fleire vassrette linjer i rutenettet '%1$s'"
 
-#: src/mathed/math_hullinset.C:1297 src/text3.C:170
+#: src/mathed/math_hullinset.C:1297 src/text3.C:177
 msgid "Math editor mode"
 msgstr "Mattemodus"
 
@@ -15396,49 +15399,49 @@ msgstr ""
 "Du kan ikkje sette inn to mellomrom etter kvarandre. Ver så snill å lese "
 "innføring i LyX."
 
-#: src/text.C:2193
+#: src/text.C:2191
 msgid "Change: "
 msgstr "Endring: "
 
-#: src/text.C:2197
+#: src/text.C:2195
 msgid " at "
 msgstr " til "
 
-#: src/text.C:2209
+#: src/text.C:2207
 #, c-format
 msgid "Font: %1$s"
 msgstr "Skrifttype:%1$s"
 
-#: src/text.C:2216
+#: src/text.C:2214
 #, c-format
 msgid ", Depth: %1$d"
 msgstr " Djupn: %1$d"
 
-#: src/text.C:2222
+#: src/text.C:2220
 msgid ", Spacing: "
 msgstr ", mellomrom: "
 
-#: src/text.C:2234
+#: src/text.C:2232
 msgid "Other ("
 msgstr "Anna ("
 
-#: src/text.C:2243
+#: src/text.C:2241
 msgid ", Inset: "
 msgstr ", Innskot: "
 
-#: src/text.C:2244
+#: src/text.C:2242
 msgid ", Paragraph: "
 msgstr ", Avsnitt: "
 
-#: src/text.C:2245
+#: src/text.C:2243
 msgid ", Id: "
 msgstr " Id: "
 
-#: src/text.C:2246
+#: src/text.C:2244
 msgid ", Position: "
 msgstr ", plass: "
 
-#: src/text.C:2247
+#: src/text.C:2245
 msgid ", Boundary: "
 msgstr ", Grense: "
 
@@ -15458,27 +15461,27 @@ msgstr "Ingenting å lage indeks av!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Kan ikkje lage indeks av meir enn eit avsnitt!"
 
-#: src/text3.C:735
+#: src/text3.C:742
 msgid "Unknown spacing argument: "
 msgstr "Ukjent argument for linjeavstand: "
 
-#: src/text3.C:888
+#: src/text3.C:895
 msgid "LyX function 'layout' needs an argument."
 msgstr "LyX funksjonen «Stil» treng eit argument."
 
-#: src/text3.C:906
+#: src/text3.C:913
 msgid "Layout "
 msgstr "Stil "
 
-#: src/text3.C:907
+#: src/text3.C:914
 msgid " not known"
 msgstr " ukjent"
 
-#: src/text3.C:1351 src/text3.C:1363
+#: src/text3.C:1358 src/text3.C:1370
 msgid "Character set"
 msgstr "Teiknsett"
 
-#: src/text3.C:1495
+#: src/text3.C:1502
 msgid "Paragraph layout set"
 msgstr "set avsnitt stil"
 

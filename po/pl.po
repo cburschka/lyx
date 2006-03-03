@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-02-10 09:25+0100\n"
+"POT-Creation-Date: 2006-03-03 09:25+0100\n"
 "PO-Revision-Date: 2006-01-30 22:49+0100\n"
 "Last-Translator: Tomasz £uczak <tlu@technodat.com.pl>\n"
 "Language-Team: Polski <pl@li.org>\n"
@@ -1966,7 +1966,7 @@ msgstr "Z³am stronê na bie¿±cym wierszu|#Z"
 #: src/frontends/xforms/forms/form_tabular.fd:1638
 #: src/frontends/xforms/forms/form_tabular.fd:1656
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:60
-#: src/frontends/qt2/QDocument.C:166 src/text.C:2231
+#: src/frontends/qt2/QDocument.C:166 src/text.C:2229
 msgid "Double"
 msgstr "Podwójna"
 
@@ -2729,8 +2729,9 @@ msgstr "&Zastosuj"
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:366
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:100
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:100
-#: src/frontends/qt2/ui/QWrapDialogBase.ui:93 src/frontends/qt2/QTabular.C:184
-#: src/frontends/xforms/FormBox.C:90 src/frontends/xforms/FormParagraph.C:187
+#: src/frontends/qt2/ui/QWrapDialogBase.ui:93 src/frontends/gtk/GTabular.C:353
+#: src/frontends/qt2/QTabular.C:184 src/frontends/xforms/FormBox.C:90
+#: src/frontends/xforms/FormParagraph.C:187
 msgid "Left"
 msgstr "Lewy"
 
@@ -2739,16 +2740,17 @@ msgstr "Lewy"
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:106
 #: src/frontends/controllers/ControlExternal.C:228
 #: src/frontends/controllers/ControlGraphics.C:171
-#: src/frontends/qt2/QTabular.C:185 src/frontends/xforms/FormBox.C:91
-#: src/frontends/xforms/FormParagraph.C:180
+#: src/frontends/gtk/GTabular.C:354 src/frontends/qt2/QTabular.C:185
+#: src/frontends/xforms/FormBox.C:91 src/frontends/xforms/FormParagraph.C:180
 msgid "Center"
 msgstr "¦rodkowane"
 
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:378
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:106
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:112
-#: src/frontends/qt2/ui/QWrapDialogBase.ui:99 src/frontends/qt2/QTabular.C:186
-#: src/frontends/xforms/FormBox.C:92 src/frontends/xforms/FormParagraph.C:194
+#: src/frontends/qt2/ui/QWrapDialogBase.ui:99 src/frontends/gtk/GTabular.C:355
+#: src/frontends/qt2/QTabular.C:186 src/frontends/xforms/FormBox.C:92
+#: src/frontends/xforms/FormParagraph.C:194
 msgid "Right"
 msgstr "Prawy"
 
@@ -3682,7 +3684,7 @@ msgid "Print as grey text"
 msgstr "Drukuj jako szary tekst"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:48
-#: src/frontends/qt2/QDocument.C:162 src/text.C:2225
+#: src/frontends/qt2/QDocument.C:162 src/text.C:2223
 msgid "Single"
 msgstr "Pojedyñczy"
 
@@ -4492,7 +4494,8 @@ msgid "&Horizontal alignment:"
 msgstr "&Justowanie:"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:94
-#: src/frontends/qt2/QTabular.C:188 src/frontends/xforms/FormParagraph.C:173
+#: src/frontends/gtk/GTabular.C:357 src/frontends/qt2/QTabular.C:188
+#: src/frontends/xforms/FormParagraph.C:173
 msgid "Block"
 msgstr "Blok"
 
@@ -5288,7 +5291,7 @@ msgstr "Bibliografia"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:411
 #: lib/layouts/ijmpd.layout:163 lib/layouts/ijmpd.layout:171
 #: lib/layouts/kluwer.layout:324 lib/layouts/kluwer.layout:337
-#: src/rowpainter.C:426
+#: src/rowpainter.C:425
 msgid "Appendix"
 msgstr "Dodatek"
 
@@ -7855,7 +7858,7 @@ msgid "Published-online:"
 msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:263 src/frontends/gtk/GCitation.C:71
-#: src/frontends/qt2/QCitation.C:50 src/frontends/xforms/FormCitation.C:100
+#: src/frontends/qt2/QCitation.C:50 src/frontends/xforms/FormCitation.C:101
 msgid "Citation"
 msgstr "Cytowanie"
 
@@ -9438,18 +9441,18 @@ msgid "Redo|R"
 msgstr "Ponów|P"
 
 #: lib/ui/stdmenus.ui:84 lib/ui/stdtoolbars.ui:51
-#: src/mathed/math_nestinset.C:433 src/text3.C:839
+#: src/mathed/math_nestinset.C:433 src/text3.C:846
 msgid "Cut"
 msgstr "Wytnij"
 
 #: lib/ui/stdmenus.ui:85 lib/ui/stdtoolbars.ui:52
-#: src/mathed/math_nestinset.C:441 src/text3.C:844
+#: src/mathed/math_nestinset.C:441 src/text3.C:851
 msgid "Copy"
 msgstr "Kopiuj"
 
 #: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:650
 #: src/mathed/math_gridinset.C:1204 src/mathed/math_nestinset.C:417
-#: src/text3.C:826
+#: src/text3.C:833
 msgid "Paste"
 msgstr "Wklej"
 
@@ -10438,92 +10441,92 @@ msgstr "Nieznana klasa dokumentu"
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr "U¿yto domy¶lnej klasy dokumentu, poniewa¿ klasa %1$s jest nieznana."
 
-#: src/buffer.C:444 src/text.C:338
+#: src/buffer.C:445 src/text.C:338
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Nieznany token %1$s %2$s\n"
 
-#: src/buffer.C:448 src/buffer.C:455 src/buffer.C:470
+#: src/buffer.C:449 src/buffer.C:456 src/buffer.C:471
 msgid "Document header error"
 msgstr "B³±d nag³ówka dokumentu"
 
-#: src/buffer.C:454
+#: src/buffer.C:455
 msgid "\\begin_header is missing"
 msgstr "Brakuje \\begin_header"
 
-#: src/buffer.C:469
+#: src/buffer.C:470
 msgid "\\begin_document is missing"
 msgstr "Brakuje \\begin_document"
 
-#: src/buffer.C:479
+#: src/buffer.C:480
 msgid "Can't load document class"
 msgstr "Nie mo¿na wczytaæ klasy"
 
-#: src/buffer.C:587 src/buffer.C:596
+#: src/buffer.C:588 src/buffer.C:597
 msgid "Document could not be read"
 msgstr "Nie mo¿na wczytaæ dokumentu"
 
-#: src/buffer.C:588 src/buffer.C:597
+#: src/buffer.C:589 src/buffer.C:598
 #, c-format
 msgid "%1$s could not be read."
 msgstr "%1$s nie mog± byæ wczytane."
 
-#: src/buffer.C:605 src/buffer.C:671
+#: src/buffer.C:606 src/buffer.C:672
 msgid "Document format failure"
 msgstr "Niepoprawny format dokumentu"
 
-#: src/buffer.C:606
+#: src/buffer.C:607
 #, c-format
 msgid "%1$s is not a LyX document."
 msgstr "%1$s nie jest dokumentem LyX-a"
 
-#: src/buffer.C:625
+#: src/buffer.C:626
 msgid "Conversion failed"
 msgstr "Nieudana konwersja"
 
-#: src/buffer.C:626
+#: src/buffer.C:627
 #, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but a temporary file for converting "
 "it could not be created."
 msgstr ""
 
-#: src/buffer.C:635
+#: src/buffer.C:636
 msgid "Conversion script not found"
 msgstr "Nie znaleziono skryptu konwersji"
 
-#: src/buffer.C:636
+#: src/buffer.C:637
 #, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but the conversion script lyx2lyx "
 "could not be found."
 msgstr ""
 
-#: src/buffer.C:656
+#: src/buffer.C:657
 msgid "Conversion script failed"
 msgstr "Niepoprawny skryptu konwersji"
 
-#: src/buffer.C:657
+#: src/buffer.C:658
 #, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but the lyx2lyx script failed to "
 "convert it."
 msgstr ""
 
-#: src/buffer.C:672
+#: src/buffer.C:673
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr ""
 
-#: src/buffer.C:1129
+#: src/buffer.C:1130
 msgid "Running chktex..."
 msgstr "chktex zosta³ uruchomiony"
 
-#: src/buffer.C:1142
+#: src/buffer.C:1143
 msgid "chktex failure"
 msgstr ""
 
-#: src/buffer.C:1143
+#: src/buffer.C:1144
 msgid "Could not run chktex successfully."
 msgstr "Nie mo¿na pomy¶lnie uruchomiæ chktex."
 
@@ -11631,7 +11634,7 @@ msgstr "sprawdzono"
 msgid "Insert Table"
 msgstr "Wstaw tabelê"
 
-#: src/frontends/gtk/GTabular.C:67 src/frontends/qt2/QTabular.C:41
+#: src/frontends/gtk/GTabular.C:38 src/frontends/qt2/QTabular.C:41
 #: src/frontends/xforms/FormTabular.C:57
 msgid "Table Settings"
 msgstr "Ustawienia tabeli"
@@ -11810,7 +11813,7 @@ msgstr "headings"
 msgid "fancy"
 msgstr "fancy"
 
-#: src/frontends/qt2/QDocument.C:164 src/text.C:2228
+#: src/frontends/qt2/QDocument.C:164 src/text.C:2226
 msgid "OneHalf"
 msgstr "Pó³tora"
 
@@ -12348,79 +12351,79 @@ msgstr ""
 msgid "Invalid length!"
 msgstr "Niepoprawna d³ugo¶æ!"
 
-#: src/frontends/xforms/FormCitation.C:175
+#: src/frontends/xforms/FormCitation.C:176
 msgid "Add citation of the selected bibliography entry."
 msgstr "Dodaj cytowanie wybranej pozycji bibliografii"
 
-#: src/frontends/xforms/FormCitation.C:178
+#: src/frontends/xforms/FormCitation.C:179
 msgid "Delete citation of the selected bibliography entry."
 msgstr "Usuñ cytowanie wybranej pozycji bibliografii"
 
-#: src/frontends/xforms/FormCitation.C:181
+#: src/frontends/xforms/FormCitation.C:182
 msgid "Move the selected entry upwards (in the current list)."
 msgstr "Przesuñ zaznaczony wpis w górê."
 
-#: src/frontends/xforms/FormCitation.C:184
+#: src/frontends/xforms/FormCitation.C:185
 msgid "Move the selected entry downwards (in the current list)."
 msgstr "Przesuñ zaznaczony wpis w dó³."
 
-#: src/frontends/xforms/FormCitation.C:187
+#: src/frontends/xforms/FormCitation.C:188
 msgid ""
 "The entries which will be cited. Select them with the arrow buttons from the "
 "right browser window."
 msgstr ""
 
-#: src/frontends/xforms/FormCitation.C:194
+#: src/frontends/xforms/FormCitation.C:195
 msgid ""
 "All entries in the database you have loaded (via \"Insert->List / TOC-"
 ">BibTeX Bibliography\"). Move the ones you want to cite with the arrow "
 "buttons into the left browser window."
 msgstr ""
 
-#: src/frontends/xforms/FormCitation.C:201
+#: src/frontends/xforms/FormCitation.C:202
 msgid "Information about the selected bibliography entry"
 msgstr "Informacja na temat wybranej pozycji bibliografii"
 
-#: src/frontends/xforms/FormCitation.C:208
+#: src/frontends/xforms/FormCitation.C:209
 msgid ""
 "Here you may select how the citation label should look inside the text "
 "(Natbib)."
 msgstr ""
 
-#: src/frontends/xforms/FormCitation.C:211
+#: src/frontends/xforms/FormCitation.C:212
 msgid ""
 "Activate if you want to print all authors in a citation with more than three "
 "authors, and not \"<First Author> et al.\" (Natbib)."
 msgstr ""
 
-#: src/frontends/xforms/FormCitation.C:214
+#: src/frontends/xforms/FormCitation.C:215
 msgid ""
 "Activate if you want to print the first character of the author name as "
 "uppercase (\"Van Gogh\", not \"van Gogh\"). Useful at the beginning of "
 "sentences (Natbib)."
 msgstr ""
 
-#: src/frontends/xforms/FormCitation.C:217
+#: src/frontends/xforms/FormCitation.C:218
 msgid ""
 "Optional text which appears before the citation, e.g. \"see <Citation>\""
 msgstr ""
 "Opcjonalny tekst, który pojawi siê przed cytowaniem np. \"patrz <Cytat>\""
 
-#: src/frontends/xforms/FormCitation.C:220
+#: src/frontends/xforms/FormCitation.C:221
 msgid "Optional text which appears after the citation, e.g. \"pp. 12\""
 msgstr "Opcjonalny tekst, który pojawi siê za cytowaniemkiem, np. \"pp. 12\""
 
-#: src/frontends/xforms/FormCitation.C:223
+#: src/frontends/xforms/FormCitation.C:224
 msgid "Search your database (all fields will be searched)."
 msgstr "Szukaj w bazie (wszystkie pola bêd± przeszukiwane)"
 
-#: src/frontends/xforms/FormCitation.C:226
+#: src/frontends/xforms/FormCitation.C:227
 msgid ""
 "Activate if you want to have case sensitive search: \"bibtex\" finds \"bibtex"
 "\", but not \"BibTeX\"."
 msgstr ""
 
-#: src/frontends/xforms/FormCitation.C:229
+#: src/frontends/xforms/FormCitation.C:230
 msgid "Activate if you want to enter Regular Expressions."
 msgstr "Zaznacz je¶li chcesz podaæ wyra¿enie regularne."
 
@@ -13458,11 +13461,11 @@ msgstr ""
 msgid "Opened Environment Inset: "
 msgstr ""
 
-#: src/insets/insetert.C:120
+#: src/insets/insetert.C:142
 msgid "Opened ERT Inset"
 msgstr "Otwarta wstawka ERT"
 
-#: src/insets/insetert.C:368
+#: src/insets/insetert.C:399
 msgid "ERT"
 msgstr "ERT"
 
@@ -14247,7 +14250,7 @@ msgstr ""
 msgid "ChkTeX"
 msgstr "ChkTeX"
 
-#: src/lyxfunc.C:1015 src/text3.C:1247
+#: src/lyxfunc.C:1015 src/text3.C:1254
 msgid "Missing argument"
 msgstr "Brakuje argumentu"
 
@@ -14885,7 +14888,7 @@ msgstr ""
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_hullinset.C:1297 src/text3.C:170
+#: src/mathed/math_hullinset.C:1297 src/text3.C:177
 msgid "Math editor mode"
 msgstr "Tryb edytora matematycznego"
 
@@ -15007,49 +15010,49 @@ msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Nie mo¿na wstawiæ dwu spacji w ten sposób. Przeczytaj, proszê, Samouczek."
 
-#: src/text.C:2193
+#: src/text.C:2191
 msgid "Change: "
 msgstr "Zmiana: "
 
-#: src/text.C:2197
+#: src/text.C:2195
 msgid " at "
 msgstr " na "
 
-#: src/text.C:2209
+#: src/text.C:2207
 #, c-format
 msgid "Font: %1$s"
 msgstr "Czcionka: %1$s"
 
-#: src/text.C:2216
+#: src/text.C:2214
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", G³êboko¶æ: %1$d"
 
-#: src/text.C:2222
+#: src/text.C:2220
 msgid ", Spacing: "
 msgstr ", Odstêp: "
 
-#: src/text.C:2234
+#: src/text.C:2232
 msgid "Other ("
 msgstr "Inny ("
 
-#: src/text.C:2243
+#: src/text.C:2241
 msgid ", Inset: "
 msgstr ""
 
-#: src/text.C:2244
+#: src/text.C:2242
 msgid ", Paragraph: "
 msgstr ", Akapit: "
 
-#: src/text.C:2245
+#: src/text.C:2243
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/text.C:2246
+#: src/text.C:2244
 msgid ", Position: "
 msgstr ", Pozycja: "
 
-#: src/text.C:2247
+#: src/text.C:2245
 msgid ", Boundary: "
 msgstr ""
 
@@ -15069,27 +15072,27 @@ msgstr "Brak obiektów do indeksowania!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Nie mo¿na indeksowaæ wiêcej ni¿ jednego akapitu"
 
-#: src/text3.C:735
+#: src/text3.C:742
 msgid "Unknown spacing argument: "
 msgstr ""
 
-#: src/text3.C:888
+#: src/text3.C:895
 msgid "LyX function 'layout' needs an argument."
 msgstr ""
 
-#: src/text3.C:906
+#: src/text3.C:913
 msgid "Layout "
 msgstr "Ustawienia "
 
-#: src/text3.C:907
+#: src/text3.C:914
 msgid " not known"
 msgstr " nieznane"
 
-#: src/text3.C:1351 src/text3.C:1363
+#: src/text3.C:1358 src/text3.C:1370
 msgid "Character set"
 msgstr "Kodowanie"
 
-#: src/text3.C:1495
+#: src/text3.C:1502
 msgid "Paragraph layout set"
 msgstr "Styl akapitu ustawiony"
 

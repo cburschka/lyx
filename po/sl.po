@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.7pre1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-02-10 09:25+0100\n"
+"POT-Creation-Date: 2006-03-03 09:25+0100\n"
 "PO-Revision-Date: 2005-12-18 15:06+0100\n"
 "Last-Translator:  Roman Maurer <roman.maurer@amis.net>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
@@ -2265,7 +2265,7 @@ msgstr "Ni moè tiskati"
 #: src/frontends/xforms/forms/form_tabular.fd:1638
 #: src/frontends/xforms/forms/form_tabular.fd:1656
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:60
-#: src/frontends/qt2/QDocument.C:166 src/text.C:2231
+#: src/frontends/qt2/QDocument.C:166 src/text.C:2229
 msgid "Double"
 msgstr "Dvojni"
 
@@ -3120,8 +3120,9 @@ msgstr "Uporabi"
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:366
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:100
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:100
-#: src/frontends/qt2/ui/QWrapDialogBase.ui:93 src/frontends/qt2/QTabular.C:184
-#: src/frontends/xforms/FormBox.C:90 src/frontends/xforms/FormParagraph.C:187
+#: src/frontends/qt2/ui/QWrapDialogBase.ui:93 src/frontends/gtk/GTabular.C:353
+#: src/frontends/qt2/QTabular.C:184 src/frontends/xforms/FormBox.C:90
+#: src/frontends/xforms/FormParagraph.C:187
 msgid "Left"
 msgstr "Levo"
 
@@ -3130,8 +3131,8 @@ msgstr "Levo"
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:106
 #: src/frontends/controllers/ControlExternal.C:228
 #: src/frontends/controllers/ControlGraphics.C:171
-#: src/frontends/qt2/QTabular.C:185 src/frontends/xforms/FormBox.C:91
-#: src/frontends/xforms/FormParagraph.C:180
+#: src/frontends/gtk/GTabular.C:354 src/frontends/qt2/QTabular.C:185
+#: src/frontends/xforms/FormBox.C:91 src/frontends/xforms/FormParagraph.C:180
 #, fuzzy
 msgid "Center"
 msgstr "Sredina"
@@ -3139,8 +3140,9 @@ msgstr "Sredina"
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:378
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:106
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:112
-#: src/frontends/qt2/ui/QWrapDialogBase.ui:99 src/frontends/qt2/QTabular.C:186
-#: src/frontends/xforms/FormBox.C:92 src/frontends/xforms/FormParagraph.C:194
+#: src/frontends/qt2/ui/QWrapDialogBase.ui:99 src/frontends/gtk/GTabular.C:355
+#: src/frontends/qt2/QTabular.C:186 src/frontends/xforms/FormBox.C:92
+#: src/frontends/xforms/FormParagraph.C:194
 msgid "Right"
 msgstr "Desno"
 
@@ -4213,7 +4215,7 @@ msgid "Print as grey text"
 msgstr "Natisni vse strani"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:48
-#: src/frontends/qt2/QDocument.C:162 src/text.C:2225
+#: src/frontends/qt2/QDocument.C:162 src/text.C:2223
 msgid "Single"
 msgstr "Enojni"
 
@@ -5170,7 +5172,8 @@ msgid "&Horizontal alignment:"
 msgstr "Vodoravna poravnava|#H"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:94
-#: src/frontends/qt2/QTabular.C:188 src/frontends/xforms/FormParagraph.C:173
+#: src/frontends/gtk/GTabular.C:357 src/frontends/qt2/QTabular.C:188
+#: src/frontends/xforms/FormParagraph.C:173
 #, fuzzy
 msgid "Block"
 msgstr "Blok"
@@ -6053,7 +6056,7 @@ msgstr "Literatura"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:411
 #: lib/layouts/ijmpd.layout:163 lib/layouts/ijmpd.layout:171
 #: lib/layouts/kluwer.layout:324 lib/layouts/kluwer.layout:337
-#: src/rowpainter.C:426
+#: src/rowpainter.C:425
 msgid "Appendix"
 msgstr "Dodatek"
 
@@ -8915,7 +8918,7 @@ msgid "Published-online:"
 msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:263 src/frontends/gtk/GCitation.C:71
-#: src/frontends/qt2/QCitation.C:50 src/frontends/xforms/FormCitation.C:100
+#: src/frontends/qt2/QCitation.C:50 src/frontends/xforms/FormCitation.C:101
 msgid "Citation"
 msgstr "Citat"
 
@@ -10692,18 +10695,18 @@ msgid "Redo|R"
 msgstr "Ponovi|o"
 
 #: lib/ui/stdmenus.ui:84 lib/ui/stdtoolbars.ui:51
-#: src/mathed/math_nestinset.C:433 src/text3.C:839
+#: src/mathed/math_nestinset.C:433 src/text3.C:846
 msgid "Cut"
 msgstr "Izre¾i"
 
 #: lib/ui/stdmenus.ui:85 lib/ui/stdtoolbars.ui:52
-#: src/mathed/math_nestinset.C:441 src/text3.C:844
+#: src/mathed/math_nestinset.C:441 src/text3.C:851
 msgid "Copy"
 msgstr "Prepi¹i"
 
 #: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:650
 #: src/mathed/math_gridinset.C:1204 src/mathed/math_nestinset.C:417
-#: src/text3.C:826
+#: src/text3.C:833
 msgid "Paste"
 msgstr "Prilepi"
 
@@ -11844,99 +11847,99 @@ msgstr "v izbrani razred spisa"
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 
-#: src/buffer.C:444 src/text.C:338
+#: src/buffer.C:445 src/text.C:338
 #, fuzzy, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Neznana akcija"
 
-#: src/buffer.C:448 src/buffer.C:455 src/buffer.C:470
+#: src/buffer.C:449 src/buffer.C:456 src/buffer.C:471
 #, fuzzy
 msgid "Document header error"
 msgstr "Napaka LaTeXa"
 
-#: src/buffer.C:454
+#: src/buffer.C:455
 msgid "\\begin_header is missing"
 msgstr ""
 
-#: src/buffer.C:469
+#: src/buffer.C:470
 msgid "\\begin_document is missing"
 msgstr ""
 
-#: src/buffer.C:479
+#: src/buffer.C:480
 #, fuzzy
 msgid "Can't load document class"
 msgstr "Ni moè nalo¾iti besedilnega razreda "
 
-#: src/buffer.C:587 src/buffer.C:596
+#: src/buffer.C:588 src/buffer.C:597
 #, fuzzy
 msgid "Document could not be read"
 msgstr "Nastavitev videza spisa"
 
-#: src/buffer.C:588 src/buffer.C:597
+#: src/buffer.C:589 src/buffer.C:598
 #, fuzzy, c-format
 msgid "%1$s could not be read."
 msgstr " odstavkov ni moè spremeniti"
 
-#: src/buffer.C:605 src/buffer.C:671
+#: src/buffer.C:606 src/buffer.C:672
 #, fuzzy
 msgid "Document format failure"
 msgstr "Spis"
 
-#: src/buffer.C:606
+#: src/buffer.C:607
 #, fuzzy, c-format
 msgid "%1$s is not a LyX document."
 msgstr "Spisa ni moè odpreti"
 
-#: src/buffer.C:625
+#: src/buffer.C:626
 #, fuzzy
 msgid "Conversion failed"
 msgstr "Napake pri spreminjanju!"
 
-#: src/buffer.C:626
+#: src/buffer.C:627
 #, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but a temporary file for converting "
 "it could not be created."
 msgstr ""
 
-#: src/buffer.C:635
+#: src/buffer.C:636
 #, fuzzy
 msgid "Conversion script not found"
 msgstr "Nobenih odkritih opozoril."
 
-#: src/buffer.C:636
+#: src/buffer.C:637
 #, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but the conversion script lyx2lyx "
 "could not be found."
 msgstr ""
 
-#: src/buffer.C:656
+#: src/buffer.C:657
 #, fuzzy
 msgid "Conversion script failed"
 msgstr "Napake pri spreminjanju!"
 
-#: src/buffer.C:657
+#: src/buffer.C:658
 #, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but the lyx2lyx script failed to "
 "convert it."
 msgstr ""
 
-#: src/buffer.C:672
+#: src/buffer.C:673
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr ""
 
-#: src/buffer.C:1129
+#: src/buffer.C:1130
 msgid "Running chktex..."
 msgstr "Izvaja se chktex..."
 
-#: src/buffer.C:1142
+#: src/buffer.C:1143
 msgid "chktex failure"
 msgstr ""
 
-#: src/buffer.C:1143
+#: src/buffer.C:1144
 #, fuzzy
 msgid "Could not run chktex successfully."
 msgstr "Chktex uspe¹no zagnan"
@@ -13179,7 +13182,7 @@ msgstr "Èrkovalnik"
 msgid "Insert Table"
 msgstr "Vstavi tabelo"
 
-#: src/frontends/gtk/GTabular.C:67 src/frontends/qt2/QTabular.C:41
+#: src/frontends/gtk/GTabular.C:38 src/frontends/qt2/QTabular.C:41
 #: src/frontends/xforms/FormTabular.C:57
 #, fuzzy
 msgid "Table Settings"
@@ -13383,7 +13386,7 @@ msgstr "GlavaProsojnice"
 msgid "fancy"
 msgstr ""
 
-#: src/frontends/qt2/QDocument.C:164 src/text.C:2228
+#: src/frontends/qt2/QDocument.C:164 src/text.C:2226
 #, fuzzy
 msgid "OneHalf"
 msgstr "Polovièni"
@@ -13981,82 +13984,82 @@ msgstr ""
 msgid "Invalid length!"
 msgstr "Vkljuèi datoteko|V"
 
-#: src/frontends/xforms/FormCitation.C:175
+#: src/frontends/xforms/FormCitation.C:176
 #, fuzzy
 msgid "Add citation of the selected bibliography entry."
 msgstr "Izberite tipke"
 
-#: src/frontends/xforms/FormCitation.C:178
+#: src/frontends/xforms/FormCitation.C:179
 msgid "Delete citation of the selected bibliography entry."
 msgstr ""
 
-#: src/frontends/xforms/FormCitation.C:181
+#: src/frontends/xforms/FormCitation.C:182
 #, fuzzy
 msgid "Move the selected entry upwards (in the current list)."
 msgstr "_Vnesi nov citat"
 
-#: src/frontends/xforms/FormCitation.C:184
+#: src/frontends/xforms/FormCitation.C:185
 #, fuzzy
 msgid "Move the selected entry downwards (in the current list)."
 msgstr "_Vnesi nov citat"
 
-#: src/frontends/xforms/FormCitation.C:187
+#: src/frontends/xforms/FormCitation.C:188
 msgid ""
 "The entries which will be cited. Select them with the arrow buttons from the "
 "right browser window."
 msgstr ""
 
-#: src/frontends/xforms/FormCitation.C:194
+#: src/frontends/xforms/FormCitation.C:195
 msgid ""
 "All entries in the database you have loaded (via \"Insert->List / TOC-"
 ">BibTeX Bibliography\"). Move the ones you want to cite with the arrow "
 "buttons into the left browser window."
 msgstr ""
 
-#: src/frontends/xforms/FormCitation.C:201
+#: src/frontends/xforms/FormCitation.C:202
 #, fuzzy
 msgid "Information about the selected bibliography entry"
 msgstr "Izberite tipke"
 
-#: src/frontends/xforms/FormCitation.C:208
+#: src/frontends/xforms/FormCitation.C:209
 msgid ""
 "Here you may select how the citation label should look inside the text "
 "(Natbib)."
 msgstr ""
 
-#: src/frontends/xforms/FormCitation.C:211
+#: src/frontends/xforms/FormCitation.C:212
 msgid ""
 "Activate if you want to print all authors in a citation with more than three "
 "authors, and not \"<First Author> et al.\" (Natbib)."
 msgstr ""
 
-#: src/frontends/xforms/FormCitation.C:214
+#: src/frontends/xforms/FormCitation.C:215
 msgid ""
 "Activate if you want to print the first character of the author name as "
 "uppercase (\"Van Gogh\", not \"van Gogh\"). Useful at the beginning of "
 "sentences (Natbib)."
 msgstr ""
 
-#: src/frontends/xforms/FormCitation.C:217
+#: src/frontends/xforms/FormCitation.C:218
 msgid ""
 "Optional text which appears before the citation, e.g. \"see <Citation>\""
 msgstr ""
 
-#: src/frontends/xforms/FormCitation.C:220
+#: src/frontends/xforms/FormCitation.C:221
 msgid "Optional text which appears after the citation, e.g. \"pp. 12\""
 msgstr ""
 
-#: src/frontends/xforms/FormCitation.C:223
+#: src/frontends/xforms/FormCitation.C:224
 msgid "Search your database (all fields will be searched)."
 msgstr ""
 
-#: src/frontends/xforms/FormCitation.C:226
+#: src/frontends/xforms/FormCitation.C:227
 msgid ""
 "Activate if you want to have case sensitive search: \"bibtex\" finds \"bibtex"
 "\", but not \"BibTeX\"."
 msgstr ""
 
-#: src/frontends/xforms/FormCitation.C:229
+#: src/frontends/xforms/FormCitation.C:230
 msgid "Activate if you want to enter Regular Expressions."
 msgstr ""
 
@@ -15199,12 +15202,12 @@ msgstr "Odprta zabele¾ka"
 msgid "Opened Environment Inset: "
 msgstr "Odprta zabele¾ka"
 
-#: src/insets/insetert.C:120
+#: src/insets/insetert.C:142
 #, fuzzy
 msgid "Opened ERT Inset"
 msgstr "Odprt vstavek"
 
-#: src/insets/insetert.C:368
+#: src/insets/insetert.C:399
 msgid "ERT"
 msgstr ""
 
@@ -16046,7 +16049,7 @@ msgstr "Zgradi program"
 msgid "ChkTeX"
 msgstr "Preveri TeX"
 
-#: src/lyxfunc.C:1015 src/text3.C:1247
+#: src/lyxfunc.C:1015 src/text3.C:1254
 msgid "Missing argument"
 msgstr "Manjkajoèi argument"
 
@@ -16632,7 +16635,7 @@ msgstr ""
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_hullinset.C:1297 src/text3.C:170
+#: src/mathed/math_hullinset.C:1297 src/text3.C:177
 msgid "Math editor mode"
 msgstr "Naèin matematiènega urejanja"
 
@@ -16750,55 +16753,55 @@ msgstr ""
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "Tako ni mogoèe vstaviti dveh presledkov.  Prosimo, preberite Uèbenik."
 
-#: src/text.C:2193
+#: src/text.C:2191
 #, fuzzy
 msgid "Change: "
 msgstr "Strani:"
 
-#: src/text.C:2197
+#: src/text.C:2195
 #, fuzzy
 msgid " at "
 msgstr " za "
 
-#: src/text.C:2209
+#: src/text.C:2207
 #, fuzzy, c-format
 msgid "Font: %1$s"
 msgstr "Pisava: "
 
-#: src/text.C:2216
+#: src/text.C:2214
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr ", globina: "
 
-#: src/text.C:2222
+#: src/text.C:2220
 msgid ", Spacing: "
 msgstr ", Presledki: "
 
-#: src/text.C:2234
+#: src/text.C:2232
 msgid "Other ("
 msgstr "Drugi ("
 
-#: src/text.C:2243
+#: src/text.C:2241
 #, fuzzy
 msgid ", Inset: "
 msgstr ", globina: "
 
-#: src/text.C:2244
+#: src/text.C:2242
 #, fuzzy
 msgid ", Paragraph: "
 msgstr "Odstavek"
 
-#: src/text.C:2245
+#: src/text.C:2243
 #, fuzzy
 msgid ", Id: "
 msgstr ", globina: "
 
-#: src/text.C:2246
+#: src/text.C:2244
 #, fuzzy
 msgid ", Position: "
 msgstr "Podmena"
 
-#: src/text.C:2247
+#: src/text.C:2245
 msgid ", Boundary: "
 msgstr ""
 
@@ -16820,29 +16823,29 @@ msgstr "Nièesar ni moè storiti"
 msgid "Cannot index more than one paragraph!"
 msgstr "Celica tabele ne more obsegati veè kot enega odstavka!"
 
-#: src/text3.C:735
+#: src/text3.C:742
 #, fuzzy
 msgid "Unknown spacing argument: "
 msgstr "Manjkajoèi argument"
 
-#: src/text3.C:888
+#: src/text3.C:895
 msgid "LyX function 'layout' needs an argument."
 msgstr ""
 
-#: src/text3.C:906
+#: src/text3.C:913
 msgid "Layout "
 msgstr "Videz "
 
-#: src/text3.C:907
+#: src/text3.C:914
 msgid " not known"
 msgstr " ni znan"
 
-#: src/text3.C:1351 src/text3.C:1363
+#: src/text3.C:1358 src/text3.C:1370
 #, fuzzy
 msgid "Character set"
 msgstr "Znakovni nabor:|#Z"
 
-#: src/text3.C:1495
+#: src/text3.C:1502
 msgid "Paragraph layout set"
 msgstr "Nastavljen videz odstavka"
 
