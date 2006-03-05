@@ -207,6 +207,25 @@ dnl qt build will fail without moc or uic
 	    LYX_ERROR([qt library not found !])
 	  fi
       ;;
+    qt4)
+	  QT4_DO_IT_ALL
+	  FRONTENDS_PROGS="$FRONTENDS_PROGS lyx-qt4\$(EXEEXT)"
+	  FRONTENDS_SUBDIRS="$FRONTENDS_SUBDIRS qt4"
+	  RPM_FRONTEND="qt4"
+	  FRONTEND_INFO="${FRONTEND_INFO}\
+  Qt 4 Frontend:\n\
+      Qt 4 version:\t\t${QT4_VERSION}\n"
+dnl qt 4 build will fail without moc or uic
+	  if test -z "$MOC4"; then
+	    LYX_ERROR([moc 4 binary not found !])
+	  fi
+	  if test -z "$UIC4"; then
+	    LYX_ERROR([uic 4 binary not found !])
+	  fi
+	  if test -z "$QT4_LIB"; then
+	    LYX_ERROR([qt 4 library not found !])
+	  fi
+      ;;
     *)
 	  LYX_ERROR(Unknown frontend '$frontend');;
   esac
@@ -450,6 +469,9 @@ AC_CONFIG_FILES([Makefile  m4/Makefile \
        src/frontends/qt2/moc/Makefile \
        src/frontends/qt2/ui/Makefile \
        src/frontends/qt2/ui/moc/Makefile \
+       src/frontends/qt4/Makefile \
+       src/frontends/qt4/moc/Makefile \
+       src/frontends/qt4/ui/Makefile \
 ])
 
 AC_OUTPUT
