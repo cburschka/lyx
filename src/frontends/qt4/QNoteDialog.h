@@ -1,0 +1,40 @@
+// -*- C++ -*-
+/**
+ * \file QNoteDialog.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Jürgen Spitzmüller
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
+#ifndef QNOTEDIALOG_H
+#define QNOTEDIALOG_H
+
+#include "ui/QNoteUi.h"
+
+#include <QDialog>
+#include <QCloseEvent>
+
+namespace lyx {
+namespace frontend {
+
+class QNote;
+
+class QNoteDialog : public QDialog, public Ui::QNoteUi {
+	Q_OBJECT
+public:
+	QNoteDialog(QNote * form);
+protected slots:
+	virtual void change_adaptor();
+protected:
+	virtual void closeEvent(QCloseEvent * e);
+private:
+	QNote * form_;
+};
+
+} // namespace frontend
+} // namespace lyx
+
+#endif // QNOTEDIALOG_H

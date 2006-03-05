@@ -1,0 +1,64 @@
+/**
+ * \file QErrorList.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Alfredo Braunstein
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
+#include <config.h>
+
+#include "QErrorList.h"
+#include "QErrorListDialog.h"
+#include "Qt2BC.h"
+#include "qt_helpers.h"
+
+#include "controllers/ControlErrorList.h"
+
+#include <q3listbox.h>
+#include <q3textbrowser.h>
+#include <qpushbutton.h>
+
+namespace lyx {
+namespace frontend {
+
+typedef QController<ControlErrorList, QView<QErrorListDialog> > base_class;
+
+QErrorList::QErrorList(Dialog & parent)
+	: base_class(parent, "")
+{}
+
+
+void QErrorList::build_dialog()
+{
+	dialog_.reset(new QErrorListDialog(this));
+	bcview().setCancel(dialog_->closePB);
+}
+
+
+void QErrorList::select(int item)
+{
+	controller().goTo(item);
+	dialog_->descriptionTB->setText(toqstr(controller().errorList()[item].description));
+}
+
+
+void QErrorList::update_contents()
+{
+	setTitle(controller().name());
+	dialog_->errorsLB->clear();
+	dialog_->descriptionTB->setText(QString());
+
+	ErrorList::const_iterator it = controller().errorList().begin();
+	ErrorList::const_iterator end = controller().errorList().end();
+	for(; it != end; ++it) {
+		new Q3ListBoxText(dialog_->errorsLB, toqstr(it->error));
+	}
+
+	dialog_->errorsLB->setSelected(0, true);
+}
+
+} // namespace frontend
+} // namespace lyx

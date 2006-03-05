@@ -1,0 +1,96 @@
+<ui version="4.0" stdsetdef="1" >
+  <author></author>
+  <comment></comment>
+  <exportmacro></exportmacro>
+  <class>QNoteUi</class>
+  <widget class="QDialog" name="QNote" >
+    <property name="geometry" >
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>188</width>
+        <height>192</height>
+      </rect>
+    </property>
+    <property name="windowTitle" >
+      <string/>
+    </property>
+    <property name="sizeGripEnabled" >
+      <bool>true</bool>
+    </property>
+    <layout class="QGridLayout" >
+      <property name="margin" >
+        <number>11</number>
+      </property>
+      <property name="spacing" >
+        <number>6</number>
+      </property>
+      <item row="1" column="0" >
+        <widget class="QPushButton" name="okPB" >
+          <property name="text" >
+            <string>&amp;OK</string>
+          </property>
+          <property name="default" >
+            <bool>false</bool>
+          </property>
+        </widget>
+      </item>
+      <item row="1" column="1" >
+        <widget class="QPushButton" name="closePB" >
+          <property name="text" >
+            <string>Close</string>
+          </property>
+          <property name="default" >
+            <bool>true</bool>
+          </property>
+        </widget>
+      </item>
+      <item rowspan="1" row="0" column="0" colspan="2" >
+        <widget class="QGroupBox" name="NoteBG" >
+          <property name="title" >
+            <string>Type</string>
+          </property>
+          <layout class="QVBoxLayout" >
+            <property name="margin" >
+              <number>11</number>
+            </property>
+            <property name="spacing" >
+              <number>6</number>
+            </property>
+            <item>
+              <widget class="QRadioButton" name="noteRB" >
+                <property name="text" >
+                  <string>LyX &amp;Note</string>
+                </property>
+                <property name="toolTip" >
+                  <string>LyX internal only</string>
+                </property>
+              </widget>
+            </item>
+            <item>
+              <widget class="QRadioButton" name="commentRB" >
+                <property name="text" >
+                  <string>&amp;Comment</string>
+                </property>
+                <property name="toolTip" >
+                  <string>Export to LaTeX/Docbook but don't print</string>
+                </property>
+              </widget>
+            </item>
+            <item>
+              <widget class="QRadioButton" name="greyedoutRB" >
+                <property name="text" >
+                  <string>&amp;Greyed out</string>
+                </property>
+                <property name="toolTip" >
+                  <string>Print as grey text</string>
+                </property>
+              </widget>
+            </item>
+          </layout>
+        </widget>
+      </item>
+    </layout>
+  </widget>
+  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+</ui>

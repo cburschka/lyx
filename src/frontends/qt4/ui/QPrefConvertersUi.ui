@@ -1,0 +1,259 @@
+<ui version="4.0" stdsetdef="1" >
+  <author></author>
+  <comment></comment>
+  <exportmacro></exportmacro>
+  <class>QPrefConvertersUi</class>
+  <widget class="QWidget" name="QPrefConverters" >
+    <property name="geometry" >
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>472</width>
+        <height>265</height>
+      </rect>
+    </property>
+    <property name="windowTitle" >
+      <string/>
+    </property>
+    <layout class="QGridLayout" >
+      <property name="margin" >
+        <number>11</number>
+      </property>
+      <property name="spacing" >
+        <number>6</number>
+      </property>
+      <item row="0" column="1" >
+        <layout class="QGridLayout" >
+          <property name="margin" >
+            <number>0</number>
+          </property>
+          <property name="spacing" >
+            <number>6</number>
+          </property>
+          <item row="0" column="0" >
+            <layout class="QGridLayout" >
+              <property name="margin" >
+                <number>0</number>
+              </property>
+              <property name="spacing" >
+                <number>6</number>
+              </property>
+              <item row="0" column="1" >
+                <widget class="QComboBox" name="converterFromCO" >
+                  <property name="sizePolicy" >
+                    <sizepolicy>
+                      <hsizetype>3</hsizetype>
+                      <vsizetype>0</vsizetype>
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                    </sizepolicy>
+                  </property>
+                </widget>
+              </item>
+              <item row="2" column="0" >
+                <widget class="QLabel" name="converterLA" >
+                  <property name="text" >
+                    <string>C&amp;onverter:</string>
+                  </property>
+                  <property name="buddy" >
+                    <cstring>converterED</cstring>
+                  </property>
+                </widget>
+              </item>
+              <item row="1" column="1" >
+                <widget class="QComboBox" name="converterToCO" >
+                  <property name="sizePolicy" >
+                    <sizepolicy>
+                      <hsizetype>3</hsizetype>
+                      <vsizetype>0</vsizetype>
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                    </sizepolicy>
+                  </property>
+                </widget>
+              </item>
+              <item row="3" column="1" >
+                <widget class="QLineEdit" name="converterFlagED" />
+              </item>
+              <item row="1" column="0" >
+                <widget class="QLabel" name="converterToLA" >
+                  <property name="text" >
+                    <string>&amp;To:[[as in 'From format x to format y']]</string>
+                  </property>
+                  <property name="buddy" >
+                    <cstring>converterToCO</cstring>
+                  </property>
+                </widget>
+              </item>
+              <item row="0" column="0" >
+                <widget class="QLabel" name="converterFromLA" >
+                  <property name="text" >
+                    <string>&amp;From:</string>
+                  </property>
+                  <property name="buddy" >
+                    <cstring>converterFromCO</cstring>
+                  </property>
+                </widget>
+              </item>
+              <item row="2" column="1" >
+                <widget class="QLineEdit" name="converterED" />
+              </item>
+              <item row="3" column="0" >
+                <widget class="QLabel" name="converterFlagLA" >
+                  <property name="text" >
+                    <string>E&amp;xtra flag:</string>
+                  </property>
+                  <property name="buddy" >
+                    <cstring>converterFlagED</cstring>
+                  </property>
+                </widget>
+              </item>
+            </layout>
+          </item>
+          <item row="2" column="0" >
+            <spacer name="Spacer28" >
+              <property name="sizeHint" >
+                <size>
+                  <width>20</width>
+                  <height>20</height>
+                </size>
+              </property>
+              <property name="sizeType" >
+                <enum>Expanding</enum>
+              </property>
+              <property name="orientation" >
+                <enum>Vertical</enum>
+              </property>
+            </spacer>
+          </item>
+          <item row="1" column="0" >
+            <layout class="QHBoxLayout" >
+              <property name="margin" >
+                <number>0</number>
+              </property>
+              <property name="spacing" >
+                <number>6</number>
+              </property>
+              <item>
+                <widget class="QPushButton" name="converterNewPB" >
+                  <property name="text" >
+                    <string>A&amp;dd</string>
+                  </property>
+                </widget>
+              </item>
+              <item>
+                <widget class="QPushButton" name="converterModifyPB" >
+                  <property name="text" >
+                    <string>&amp;Modify</string>
+                  </property>
+                </widget>
+              </item>
+              <item>
+                <spacer name="Spacer3" >
+                  <property name="sizeHint" >
+                    <size>
+                      <width>20</width>
+                      <height>20</height>
+                    </size>
+                  </property>
+                  <property name="sizeType" >
+                    <enum>Expanding</enum>
+                  </property>
+                  <property name="orientation" >
+                    <enum>Horizontal</enum>
+                  </property>
+                </spacer>
+              </item>
+            </layout>
+          </item>
+        </layout>
+      </item>
+      <item row="0" column="0" >
+        <layout class="QGridLayout" >
+          <property name="margin" >
+            <number>0</number>
+          </property>
+          <property name="spacing" >
+            <number>6</number>
+          </property>
+          <item row="0" column="0" >
+            <widget class="QLabel" name="formatsLA_2" >
+              <property name="text" >
+                <string>&amp;Converters</string>
+              </property>
+              <property name="buddy" >
+                <cstring>convertersLB</cstring>
+              </property>
+            </widget>
+          </item>
+          <item row="2" column="0" >
+            <layout class="QHBoxLayout" >
+              <property name="margin" >
+                <number>0</number>
+              </property>
+              <property name="spacing" >
+                <number>6</number>
+              </property>
+              <item>
+                <spacer name="Spacer8" >
+                  <property name="sizeHint" >
+                    <size>
+                      <width>20</width>
+                      <height>20</height>
+                    </size>
+                  </property>
+                  <property name="sizeType" >
+                    <enum>Expanding</enum>
+                  </property>
+                  <property name="orientation" >
+                    <enum>Horizontal</enum>
+                  </property>
+                </spacer>
+              </item>
+              <item>
+                <widget class="QPushButton" name="converterRemovePB" >
+                  <property name="text" >
+                    <string>&amp;Remove</string>
+                  </property>
+                </widget>
+              </item>
+            </layout>
+          </item>
+          <item row="1" column="0" >
+            <widget class="Q3ListBox" name="convertersLB" >
+              <property name="sizePolicy" >
+                <sizepolicy>
+                  <hsizetype>5</hsizetype>
+                  <vsizetype>7</vsizetype>
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                </sizepolicy>
+              </property>
+              <property name="vScrollBarMode" >
+                <enum>Q3ScrollView::AlwaysOn</enum>
+              </property>
+              <property name="hScrollBarMode" >
+                <enum>Q3ScrollView::AlwaysOff</enum>
+              </property>
+              <item>
+                <property name="text" >
+                  <string>New Item</string>
+                </property>
+              </item>
+            </widget>
+          </item>
+        </layout>
+      </item>
+    </layout>
+  </widget>
+  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+  <tabstops>
+    <tabstop>convertersLB</tabstop>
+    <tabstop>converterFromCO</tabstop>
+    <tabstop>converterToCO</tabstop>
+    <tabstop>converterED</tabstop>
+    <tabstop>converterFlagED</tabstop>
+    <tabstop>converterNewPB</tabstop>
+    <tabstop>converterRemovePB</tabstop>
+  </tabstops>
+</ui>

@@ -1,0 +1,64 @@
+<ui version="4.0" stdsetdef="1" >
+  <author></author>
+  <comment></comment>
+  <exportmacro></exportmacro>
+  <class>MathsUi</class>
+  <widget class="QWidget" name="Maths" >
+    <property name="geometry" >
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>351</width>
+        <height>233</height>
+      </rect>
+    </property>
+    <property name="windowTitle" >
+      <string/>
+    </property>
+    <layout class="QVBoxLayout" >
+      <property name="margin" >
+        <number>11</number>
+      </property>
+      <property name="spacing" >
+        <number>6</number>
+      </property>
+      <item>
+        <widget class="QCheckBox" name="amsautoCB" >
+          <property name="text" >
+            <string>&amp;Use AMS math package automatically</string>
+          </property>
+          <property name="checked" >
+            <bool>false</bool>
+          </property>
+        </widget>
+      </item>
+      <item>
+        <widget class="QCheckBox" name="amsCB" >
+          <property name="text" >
+            <string>Use AMS &amp;math package</string>
+          </property>
+        </widget>
+      </item>
+      <item>
+        <spacer name="Spacer1" >
+          <property name="sizeHint" >
+            <size>
+              <width>20</width>
+              <height>20</height>
+            </size>
+          </property>
+          <property name="sizeType" >
+            <enum>Expanding</enum>
+          </property>
+          <property name="orientation" >
+            <enum>Vertical</enum>
+          </property>
+        </spacer>
+      </item>
+    </layout>
+  </widget>
+  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+  <tabstops>
+    <tabstop>amsautoCB</tabstop>
+  </tabstops>
+</ui>

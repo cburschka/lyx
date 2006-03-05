@@ -1,0 +1,1042 @@
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>QTabularUi</class>
+ <widget class="QDialog" name="QTabular" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>447</width>
+    <height>408</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string/>
+  </property>
+  <property name="sizeGripEnabled" >
+   <bool>true</bool>
+  </property>
+  <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>11</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item>
+    <widget class="QTabWidget" name="TabWidget" >
+     <property name="toolTip" >
+      <string/>
+     </property>
+     <property name="tabShape" >
+      <enum>QTabWidget::Rounded</enum>
+     </property>
+     <widget class="QWidget" name="Settings" >
+      <attribute name="title" >
+       <string>&amp;Table Settings</string>
+      </attribute>
+      <layout class="QGridLayout" >
+       <property name="margin" >
+        <number>11</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item row="0" column="0" colspan="2" >
+        <widget class="QLabel" name="hAlignCO" >
+         <property name="text" >
+          <string>&amp;Horizontal alignment:</string>
+         </property>
+         <property name="buddy" >
+          <cstring>hAlignCB</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2" >
+        <widget class="QComboBox" name="hAlignCB" >
+         <property name="toolTip" >
+          <string>Horizontal alignment in column</string>
+         </property>
+         <item>
+          <property name="text" >
+           <string>Block</string>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>Left</string>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>Center</string>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>Right</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="3" column="0" colspan="4" >
+        <widget class="QCheckBox" name="rotateTabularCB" >
+         <property name="enabled" >
+          <bool>true</bool>
+         </property>
+         <property name="toolTip" >
+          <string>Rotate the table by 90 degrees</string>
+         </property>
+         <property name="text" >
+          <string>&amp;Rotate table 90 degrees</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0" colspan="4" >
+        <widget class="QCheckBox" name="rotateCellCB" >
+         <property name="toolTip" >
+          <string>Rotate this cell by 90 degrees</string>
+         </property>
+         <property name="text" >
+          <string>Rotate &amp;cell 90 degrees</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0" colspan="2" >
+        <widget class="QLabel" name="specialAlignmentLA" >
+         <property name="text" >
+          <string>LaTe&amp;X argument:</string>
+         </property>
+         <property name="buddy" >
+          <cstring>specialAlignmentED</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="2" colspan="2" >
+        <widget class="QLineEdit" name="specialAlignmentED" >
+         <property name="toolTip" >
+          <string>Custom column format (LaTeX)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="2" >
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType" >
+          <enum>QSizePolicy::Expanding</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="3" >
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType" >
+          <enum>QSizePolicy::Expanding</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="2" column="0" >
+        <widget class="QCheckBox" name="multicolumnCB" >
+         <property name="toolTip" >
+          <string>Merge cells</string>
+         </property>
+         <property name="text" >
+          <string>&amp;Multicolumn</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="4" >
+        <widget class="QGroupBox" name="GroupBox12" >
+         <property name="title" >
+          <string>Column Width</string>
+         </property>
+         <layout class="QGridLayout" >
+          <property name="margin" >
+           <number>11</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item row="1" column="0" >
+           <widget class="QLabel" name="vAlignCO" >
+            <property name="text" >
+             <string>&amp;Vertical alignment:</string>
+            </property>
+            <property name="buddy" >
+             <cstring>vAlignCB</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2" >
+           <widget class="LengthCombo" name="widthUnit" >
+            <property name="enabled" >
+             <bool>true</bool>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>50</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="focusPolicy" >
+             <enum>Qt::StrongFocus</enum>
+            </property>
+            <property name="toolTip" >
+             <string>Width unit</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1" >
+           <widget class="QLineEdit" name="widthED" >
+            <property name="enabled" >
+             <bool>true</bool>
+            </property>
+            <property name="toolTip" >
+             <string>Fixed width of the column</string>
+            </property>
+            <property name="text" >
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" >
+           <widget class="QLabel" name="fixedWidthColLA" >
+            <property name="text" >
+             <string>&amp;Width:</string>
+            </property>
+            <property name="buddy" >
+             <cstring>widthED</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1" >
+           <widget class="QComboBox" name="vAlignCB" >
+            <property name="toolTip" >
+             <string>Vertical alignment for fixed width columns</string>
+            </property>
+            <item>
+             <property name="text" >
+              <string>Top</string>
+             </property>
+            </item>
+            <item>
+             <property name="text" >
+              <string>Middle</string>
+             </property>
+            </item>
+            <item>
+             <property name="text" >
+              <string>Bottom</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="Borders" >
+      <attribute name="title" >
+       <string>&amp;Borders</string>
+      </attribute>
+      <layout class="QGridLayout" >
+       <property name="margin" >
+        <number>11</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item row="0" column="0" >
+        <widget class="QGroupBox" name="setBordersGB" >
+         <property name="title" >
+          <string>Set Borders</string>
+         </property>
+         <layout class="QGridLayout" >
+          <property name="margin" >
+           <number>11</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item row="0" column="0" >
+           <widget class="QFrame" name="bordersF" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>5</hsizetype>
+              <vsizetype>5</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="palette" >
+             <palette>
+              <active>
+               <color>
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+               <color>
+                <red>230</red>
+                <green>240</green>
+                <blue>249</blue>
+               </color>
+               <color>
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+               <color>
+                <red>242</red>
+                <green>247</green>
+                <blue>252</blue>
+               </color>
+               <color>
+                <red>115</red>
+                <green>120</green>
+                <blue>124</blue>
+               </color>
+               <color>
+                <red>154</red>
+                <green>160</green>
+                <blue>166</blue>
+               </color>
+               <color>
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+               <color>
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+               <color>
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+               <color>
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+               <color>
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+               <color>
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+               <color>
+                <red>16</red>
+                <green>145</green>
+                <blue>210</blue>
+               </color>
+               <color>
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+               <color>
+                <red>0</red>
+                <green>0</green>
+                <blue>255</blue>
+               </color>
+               <color>
+                <red>255</red>
+                <green>0</green>
+                <blue>255</blue>
+               </color>
+               <color>
+                <red>232</red>
+                <green>232</green>
+                <blue>232</blue>
+               </color>
+              </active>
+              <inactive>
+               <color>
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+               <color>
+                <red>230</red>
+                <green>240</green>
+                <blue>249</blue>
+               </color>
+               <color>
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+               <color>
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+               <color>
+                <red>115</red>
+                <green>120</green>
+                <blue>124</blue>
+               </color>
+               <color>
+                <red>154</red>
+                <green>160</green>
+                <blue>166</blue>
+               </color>
+               <color>
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+               <color>
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+               <color>
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+               <color>
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+               <color>
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+               <color>
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+               <color>
+                <red>16</red>
+                <green>145</green>
+                <blue>210</blue>
+               </color>
+               <color>
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+               <color>
+                <red>0</red>
+                <green>0</green>
+                <blue>255</blue>
+               </color>
+               <color>
+                <red>255</red>
+                <green>0</green>
+                <blue>255</blue>
+               </color>
+               <color>
+                <red>232</red>
+                <green>232</green>
+                <blue>232</blue>
+               </color>
+              </inactive>
+              <disabled>
+               <color>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
+               </color>
+               <color>
+                <red>230</red>
+                <green>240</green>
+                <blue>249</blue>
+               </color>
+               <color>
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+               <color>
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+               <color>
+                <red>115</red>
+                <green>120</green>
+                <blue>124</blue>
+               </color>
+               <color>
+                <red>154</red>
+                <green>160</green>
+                <blue>166</blue>
+               </color>
+               <color>
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+               <color>
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+               <color>
+                <red>128</red>
+                <green>128</green>
+                <blue>128</blue>
+               </color>
+               <color>
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+               <color>
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+               <color>
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+               <color>
+                <red>16</red>
+                <green>145</green>
+                <blue>210</blue>
+               </color>
+               <color>
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+               <color>
+                <red>0</red>
+                <green>0</green>
+                <blue>255</blue>
+               </color>
+               <color>
+                <red>255</red>
+                <green>0</green>
+                <blue>255</blue>
+               </color>
+               <color>
+                <red>232</red>
+                <green>232</green>
+                <blue>232</blue>
+               </color>
+              </disabled>
+             </palette>
+            </property>
+            <property name="frameShape" >
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow" >
+             <enum>QFrame::Sunken</enum>
+            </property>
+            <layout class="QGridLayout" >
+             <property name="margin" >
+              <number>3</number>
+             </property>
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <item row="0" column="0" >
+              <widget class="QSetBorder" name="borders" >
+               <property name="sizePolicy" >
+                <sizepolicy>
+                 <hsizetype>1</hsizetype>
+                 <vsizetype>1</vsizetype>
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="toolTip" >
+                <string>Set borders of the current (selected) cell(s)</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="0" column="1" >
+        <widget class="QGroupBox" name="allBordersGB" >
+         <property name="title" >
+          <string>All Borders</string>
+         </property>
+         <layout class="QGridLayout" >
+          <property name="margin" >
+           <number>11</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item row="0" column="0" >
+           <widget class="QPushButton" name="borderSetPB" >
+            <property name="toolTip" >
+             <string>Set all borders of the current (selected) cell(s)</string>
+            </property>
+            <property name="text" >
+             <string>&amp;Set</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" >
+           <widget class="QPushButton" name="borderUnsetPB" >
+            <property name="toolTip" >
+             <string>Unset all borders of the current (selected) cell(s)</string>
+            </property>
+            <property name="text" >
+             <string>C&amp;lear</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="0" column="2" >
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType" >
+          <enum>QSizePolicy::Expanding</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="1" column="0" >
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType" >
+          <enum>QSizePolicy::Expanding</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="Longtables" >
+      <attribute name="title" >
+       <string>&amp;Longtable</string>
+      </attribute>
+      <layout class="QGridLayout" >
+       <property name="margin" >
+        <number>11</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item row="0" column="0" >
+        <widget class="QCheckBox" name="longTabularCB" >
+         <property name="toolTip" >
+          <string>Select for tables that span multiple pages</string>
+         </property>
+         <property name="text" >
+          <string>&amp;Use long table</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" >
+        <widget class="QGroupBox" name="longtableGB" >
+         <property name="enabled" >
+          <bool>false</bool>
+         </property>
+         <property name="title" >
+          <string>Settings</string>
+         </property>
+         <layout class="QGridLayout" >
+          <property name="margin" >
+           <number>11</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item row="0" column="1" >
+           <widget class="QLabel" name="StatusLA" >
+            <property name="text" >
+             <string>Status</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" >
+           <widget class="QLabel" name="HeaderLA" >
+            <property name="text" >
+             <string>Header:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0" >
+           <widget class="QLabel" name="FooterLA" >
+            <property name="text" >
+             <string>Footer:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0" >
+           <widget class="QLabel" name="FirstHeaderLA" >
+            <property name="text" >
+             <string>First header:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0" >
+           <widget class="QLabel" name="LastFooterLA" >
+            <property name="text" >
+             <string>Last footer:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="4" >
+           <widget class="QLabel" name="ContentsLA" >
+            <property name="text" >
+             <string>Contents</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2" >
+           <widget class="QLabel" name="BorderAboveLA" >
+            <property name="text" >
+             <string>Border above</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="3" >
+           <widget class="QLabel" name="BorderBelowLA" >
+            <property name="text" >
+             <string>Border below</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1" >
+           <widget class="QCheckBox" name="headerStatusCB" >
+            <property name="toolTip" >
+             <string>Repeat this row as header on every (except the first) page</string>
+            </property>
+            <property name="text" >
+             <string>on</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1" >
+           <widget class="QCheckBox" name="firstheaderStatusCB" >
+            <property name="toolTip" >
+             <string>This row is the header of the first page</string>
+            </property>
+            <property name="whatsThis" >
+             <string/>
+            </property>
+            <property name="text" >
+             <string>on</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1" >
+           <widget class="QCheckBox" name="footerStatusCB" >
+            <property name="toolTip" >
+             <string>Repeat this row as footer on every (except the last) page</string>
+            </property>
+            <property name="text" >
+             <string>on</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1" >
+           <widget class="QCheckBox" name="lastfooterStatusCB" >
+            <property name="toolTip" >
+             <string>This row is the footer of the last page</string>
+            </property>
+            <property name="text" >
+             <string>on</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2" >
+           <widget class="QCheckBox" name="headerBorderAboveCB" >
+            <property name="toolTip" >
+             <string/>
+            </property>
+            <property name="text" >
+             <string>double</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="2" >
+           <widget class="QCheckBox" name="firstheaderBorderAboveCB" >
+            <property name="text" >
+             <string>double</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="2" >
+           <widget class="QCheckBox" name="footerBorderAboveCB" >
+            <property name="text" >
+             <string>double</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="2" >
+           <widget class="QCheckBox" name="lastfooterBorderAboveCB" >
+            <property name="text" >
+             <string>double</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="3" >
+           <widget class="QCheckBox" name="lastfooterBorderBelowCB" >
+            <property name="text" >
+             <string>double</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="3" >
+           <widget class="QCheckBox" name="footerBorderBelowCB" >
+            <property name="text" >
+             <string>double</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="3" >
+           <widget class="QCheckBox" name="firstheaderBorderBelowCB" >
+            <property name="text" >
+             <string>double</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="3" >
+           <widget class="QCheckBox" name="headerBorderBelowCB" >
+            <property name="text" >
+             <string>double</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="4" >
+           <widget class="QCheckBox" name="lastfooterNoContentsCB" >
+            <property name="toolTip" >
+             <string>Don't output the last footer</string>
+            </property>
+            <property name="text" >
+             <string>is empty</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="4" >
+           <widget class="QCheckBox" name="firstheaderNoContentsCB" >
+            <property name="toolTip" >
+             <string>Don't output the first header</string>
+            </property>
+            <property name="text" >
+             <string>is empty</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="2" column="0" >
+        <widget class="QCheckBox" name="newpageCB" >
+         <property name="enabled" >
+          <bool>false</bool>
+         </property>
+         <property name="toolTip" >
+          <string>Set a page break on the current row</string>
+         </property>
+         <property name="text" >
+          <string>Page &amp;break on current row</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="TextLabel1" >
+       <property name="text" >
+        <string>Current cell:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="tabularRowED" >
+       <property name="sizePolicy" >
+        <sizepolicy>
+         <hsizetype>1</hsizetype>
+         <vsizetype>0</vsizetype>
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="maximumSize" >
+        <size>
+         <width>40</width>
+         <height>32767</height>
+        </size>
+       </property>
+       <property name="focusPolicy" >
+        <enum>Qt::NoFocus</enum>
+       </property>
+       <property name="toolTip" >
+        <string>Current row position</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="tabularColumnED" >
+       <property name="sizePolicy" >
+        <sizepolicy>
+         <hsizetype>1</hsizetype>
+         <vsizetype>0</vsizetype>
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="maximumSize" >
+        <size>
+         <width>40</width>
+         <height>32767</height>
+        </size>
+       </property>
+       <property name="focusPolicy" >
+        <enum>Qt::NoFocus</enum>
+       </property>
+       <property name="toolTip" >
+        <string>Current column position</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="closePB" >
+       <property name="sizePolicy" >
+        <sizepolicy>
+         <hsizetype>1</hsizetype>
+         <vsizetype>0</vsizetype>
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text" >
+        <string>Close</string>
+       </property>
+       <property name="autoDefault" >
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <pixmapfunction></pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>LengthCombo</class>
+   <extends></extends>
+   <header>lengthcombo.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>QSetBorder</class>
+   <extends></extends>
+   <header>qsetborder.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>TabWidget</tabstop>
+  <tabstop>hAlignCB</tabstop>
+  <tabstop>widthED</tabstop>
+  <tabstop>widthUnit</tabstop>
+  <tabstop>vAlignCB</tabstop>
+  <tabstop>multicolumnCB</tabstop>
+  <tabstop>rotateTabularCB</tabstop>
+  <tabstop>rotateCellCB</tabstop>
+  <tabstop>specialAlignmentED</tabstop>
+  <tabstop>borderSetPB</tabstop>
+  <tabstop>borderUnsetPB</tabstop>
+  <tabstop>longTabularCB</tabstop>
+  <tabstop>headerStatusCB</tabstop>
+  <tabstop>headerBorderAboveCB</tabstop>
+  <tabstop>headerBorderBelowCB</tabstop>
+  <tabstop>firstheaderStatusCB</tabstop>
+  <tabstop>firstheaderBorderAboveCB</tabstop>
+  <tabstop>firstheaderBorderBelowCB</tabstop>
+  <tabstop>firstheaderNoContentsCB</tabstop>
+  <tabstop>footerStatusCB</tabstop>
+  <tabstop>footerBorderAboveCB</tabstop>
+  <tabstop>footerBorderBelowCB</tabstop>
+  <tabstop>lastfooterStatusCB</tabstop>
+  <tabstop>lastfooterBorderAboveCB</tabstop>
+  <tabstop>lastfooterBorderBelowCB</tabstop>
+  <tabstop>lastfooterNoContentsCB</tabstop>
+  <tabstop>newpageCB</tabstop>
+  <tabstop>closePB</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,328 @@
+/**
+ * \file QMathDialog.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author John Levon
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
+#include <config.h>
+
+#include "QMathDialog.h"
+#include "QMath.h"
+//Added by qt3to4:
+#include <QPixmap>
+#include <QResizeEvent>
+
+#include "iconpalette.h"
+#include "qt_helpers.h"
+
+#include "controllers/ControlMath.h"
+
+#include "frontends/lyx_gui.h"
+
+#include <q3widgetstack.h>
+#include <qpushbutton.h>
+#include <q3listbox.h>
+#include <q3popupmenu.h>
+
+using std::string;
+
+namespace lyx {
+namespace frontend {
+
+class QScrollViewSingle : public Q3ScrollView {
+public:
+	QScrollViewSingle(QWidget * p)
+		: Q3ScrollView(p), w_(0) {
+		setResizePolicy(Manual);
+		setHScrollBarMode(AlwaysOff);
+		setVScrollBarMode(AlwaysOn);
+		setBackgroundMode(Qt::PaletteBackground);
+		viewport()->setBackgroundMode(Qt::PaletteBackground);
+	}
+
+	void setChild(QWidget * w) {
+		w_ = w;
+		setMinimumWidth(verticalScrollBar()->width() + w_->width() + 4);
+		addChild(w_);
+	}
+protected:
+	virtual void resizeEvent(QResizeEvent * e) {
+		Q3ScrollView::resizeEvent(e);
+		if (!w_)
+			return;
+
+		w_->resize(viewport()->width(), w_->height());
+		// force the resize to get accurate scrollbar
+		lyx_gui::sync_events();
+		resizeContents(w_->width(), w_->height());
+	}
+private:
+	QWidget * w_;
+};
+
+namespace {
+
+char const ** panels[] = {
+	latex_bop, latex_varsz, latex_brel, latex_greek, latex_arrow,
+	latex_dots, latex_deco, latex_misc, latex_ams_ops,
+	latex_ams_rel, latex_ams_nrel, latex_ams_arrows,
+	latex_ams_misc
+};
+
+int const nr_panels = sizeof(panels)/sizeof(panels[0]);
+
+bool panel_initialised[nr_panels];
+
+} // namespace anon
+
+
+QMathDialog::QMathDialog(QMath * form)
+	: form_(form)
+{
+	setupUi(this);
+
+	// enlarge the symbols ComboBox (no scrollbar)
+	//symbolsCO->setSizeLimit(13);
+
+	connect(symbolsCO, SIGNAL(activated(int)), symbolsWS, SLOT(raiseWidget(int)));
+
+    connect( tearoffPB, SIGNAL( clicked() ), this, SLOT( expandClicked() ) );
+    connect( closePB, SIGNAL( clicked() ), this, SLOT( accept() ) );
+    connect( fracPB, SIGNAL( clicked() ), this, SLOT( fracClicked() ) );
+    connect( superscriptPB, SIGNAL( clicked() ), this, SLOT( superscriptClicked() ) );
+    connect( subscriptPB, SIGNAL( clicked() ), this, SLOT( subscriptClicked() ) );
+    connect( delimitersPB, SIGNAL( clicked() ), this, SLOT( delimiterClicked() ) );
+    connect( matrixPB, SIGNAL( clicked() ), this, SLOT( matrixClicked() ) );
+    connect( functionsLB, SIGNAL( selected(const QString&) ), this, SLOT( functionSelected(const QString &) ) );
+    connect( equationPB, SIGNAL( clicked() ), this, SLOT( equationClicked() ) );
+
+	for (int i = 0; *function_names[i]; ++i) {
+		functionsLB->insertItem(function_names[i]);
+	}
+
+	for (int i = 0; i < nr_panels; ++i) {
+		QScrollViewSingle * view = new QScrollViewSingle(symbolsWS);
+		symbolsWS->addWidget(view, i);
+	}
+
+	// aboutToShow() only fires when != 0 in Qt 2 !
+	symbolsWS->raiseWidget(0);
+	addPanel(0);
+	panel_initialised[0] = true;
+
+	connect(symbolsWS, SIGNAL(aboutToShow(int)), this, SLOT(showingPanel(int)));
+
+	Q3PopupMenu * m = new Q3PopupMenu(spacePB);
+	m->setCaption(qt_("LyX: Math Spacing"));
+	m->insertTearOffHandle();
+	m->insertItem(qt_("Thin space	\\,"), 1);
+	m->insertItem(qt_("Medium space	\\:"), 2);
+	m->insertItem(qt_("Thick space	\\;"), 3);
+	m->insertItem(qt_("Quadratin space	\\quad"), 4);
+	m->insertItem(qt_("Double quadratin space	\\qquad"), 5);
+	m->insertItem(qt_("Negative space	\\!"), 6);
+	connect(m, SIGNAL(activated(int)), this, SLOT(insertSpace(int)));
+	spacePB->setPopup(m);
+
+	m = new Q3PopupMenu(sqrtPB);
+	m->setCaption(qt_("LyX: Math Roots"));
+	m->insertTearOffHandle();
+	m->insertItem(qt_("Square root	\\sqrt"), 1);
+	m->insertItem(qt_("Cube root	\\root"), 2);
+	m->insertItem(qt_("Other root	\\root"), 3);
+	connect(m, SIGNAL(activated(int)), this, SLOT(insertRoot(int)));
+	sqrtPB->setPopup(m);
+
+	m = new Q3PopupMenu(stylePB);
+	m->setCaption(qt_("LyX: Math Styles"));
+	m->insertTearOffHandle();
+	m->insertItem(qt_("Display style	\\displaystyle"), 1);
+	m->insertItem(qt_("Normal text style	\\textstyle"), 2);
+	m->insertItem(qt_("Script (small) style	\\scriptstyle"), 3);
+	m->insertItem(qt_("Scriptscript (smaller) style	\\scriptscriptstyle"), 4);
+	connect(m, SIGNAL(activated(int)), this, SLOT(insertStyle(int)));
+	stylePB->setPopup(m);
+
+	m = new Q3PopupMenu(fontPB);
+	m->setCaption(qt_("LyX: Math Fonts"));
+	m->insertTearOffHandle();
+	m->insertItem(qt_("Roman	\\mathrm"), 1);
+	m->insertItem(qt_("Bold	\\mathbf"), 2);
+	m->insertItem(qt_("Bold symbol	\\boldsymbol"), 3);
+	m->insertItem(qt_("Sans serif	\\mathsf"), 4);
+	m->insertItem(qt_("Italic	\\mathit"), 5);
+	m->insertItem(qt_("Typewriter	\\mathtt"), 6);
+	m->insertItem(qt_("Blackboard	\\mathbb"), 7);
+	m->insertItem(qt_("Fraktur	\\mathfrak"), 8);
+	m->insertItem(qt_("Calligraphic	\\mathcal"), 9);
+	m->insertItem(qt_("Normal text mode	\\textrm"), 10);
+	connect(m, SIGNAL(activated(int)), this, SLOT(insertFont(int)));
+	fontPB->setPopup(m);
+}
+
+
+void QMathDialog::showingPanel(int num)
+{
+	if (panel_initialised[num])
+		return;
+
+	addPanel(num);
+
+	panel_initialised[num] = true;
+}
+
+
+IconPalette * QMathDialog::makePanel(QWidget * parent, char const ** entries)
+{
+	IconPalette * p = new IconPalette(parent);
+	for (int i = 0; *entries[i]; ++i) {
+		p->add(QPixmap(toqstr(find_xpm(entries[i]))), entries[i], string("\\") + entries[i]);
+	}
+	// Leave these std:: qualifications alone !
+	connect(p, SIGNAL(button_clicked(const std::string &)),
+		this, SLOT(symbol_clicked(const std::string &)));
+
+	return p;
+}
+
+
+void QMathDialog::addPanel(int num)
+{
+	QScrollViewSingle * view = static_cast<QScrollViewSingle*>(symbolsWS->widget(num));
+	IconPalette * p = makePanel(view->viewport(), panels[num]);
+	view->setChild(p);
+}
+
+
+void QMathDialog::symbol_clicked(const string & str)
+{
+	form_->controller().dispatchInsert(str);
+}
+
+
+void QMathDialog::fracClicked()
+{
+	form_->controller().dispatchInsert("frac");
+}
+
+
+void QMathDialog::delimiterClicked()
+{
+	form_->controller().showDialog("mathdelimiter");
+}
+
+
+void QMathDialog::expandClicked()
+{
+	int const id = symbolsWS->id(symbolsWS->visibleWidget());
+	IconPalette * p = makePanel(0, panels[id]);
+	string s = "LyX: ";
+	s += fromqstr(symbolsCO->text(id));
+	p->setCaption(toqstr(s));
+	p->resize(40 * 5, p->height());
+	p->show();
+	p->setMaximumSize(p->width(), p->height());
+}
+
+
+void QMathDialog::functionSelected(const QString & str)
+{
+	form_->controller().dispatchInsert(fromqstr(str));
+}
+
+
+void QMathDialog::matrixClicked()
+{
+	form_->controller().showDialog("mathmatrix");
+}
+
+
+void QMathDialog::equationClicked()
+{
+	form_->controller().dispatchToggleDisplay();
+}
+
+
+void QMathDialog::subscriptClicked()
+{
+	form_->controller().dispatchSubscript();
+}
+
+
+void QMathDialog::superscriptClicked()
+{
+	form_->controller().dispatchSuperscript();
+}
+
+
+void QMathDialog::insertSpace(int id)
+{
+	string str;
+	switch (id) {
+		case 1: str = ","; break;
+		case 2: str = ":"; break;
+		case 3: str = ";"; break;
+		case 4: str = "quad"; break;
+		case 5: str = "qquad"; break;
+		case 6: str = "!"; break;
+		default: return;
+	}
+	form_->controller().dispatchInsert(str);
+}
+
+
+void QMathDialog::insertRoot(int id)
+{
+	switch (id) {
+		case 1:
+			form_->controller().dispatchInsert("sqrt");
+			break;
+		case 2:
+			form_->controller().dispatchCubeRoot();
+			break;
+		case 3:
+			form_->controller().dispatchInsert("root");
+			break;
+	}
+}
+
+
+void QMathDialog::insertStyle(int id)
+{
+	string str;
+	switch (id) {
+		case 1: str = "displaystyle"; break;
+		case 2: str = "textstyle"; break;
+		case 3: str = "scriptstyle"; break;
+		case 4: str = "scriptscriptstyle"; break;
+		default: return;
+	}
+	form_->controller().dispatchInsert(str);
+}
+
+
+void QMathDialog::insertFont(int id)
+{
+	string str;
+	switch (id) {
+		case 1: str = "mathrm"; break;
+		case 2: str = "mathbf"; break;
+		case 3: str = "boldsymbol"; break;
+		case 4: str = "mathsf"; break;
+		case 5: str = "mathit"; break;
+		case 6: str = "mathtt"; break;
+		case 7: str = "mathbb"; break;
+		case 8: str = "mathfrak"; break;
+		case 9: str = "mathcal"; break;
+		case 10: str = "textrm"; break;
+		default: return;
+	}
+	form_->controller().dispatchInsert(str);
+}
+
+} // namespace frontend
+} // namespace lyx

@@ -1,0 +1,913 @@
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>QGraphicsUi</class>
+ <widget class="QDialog" name="QGraphicsUi" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>451</width>
+    <height>549</height>
+   </rect>
+  </property>
+  <property name="sizePolicy" >
+   <sizepolicy>
+    <hsizetype>1</hsizetype>
+    <vsizetype>1</vsizetype>
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle" >
+   <string/>
+  </property>
+  <property name="sizeGripEnabled" >
+   <bool>true</bool>
+  </property>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>11</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item row="1" column="0" >
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QPushButton" name="restorePB" >
+       <property name="text" >
+        <string>&amp;Restore</string>
+       </property>
+       <property name="autoDefault" >
+        <bool>false</bool>
+       </property>
+       <property name="default" >
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::MinimumExpanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="okPB" >
+       <property name="text" >
+        <string>&amp;OK</string>
+       </property>
+       <property name="autoDefault" >
+        <bool>true</bool>
+       </property>
+       <property name="default" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="applyPB" >
+       <property name="sizePolicy" >
+        <sizepolicy>
+         <hsizetype>1</hsizetype>
+         <vsizetype>0</vsizetype>
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text" >
+        <string>&amp;Apply</string>
+       </property>
+       <property name="autoDefault" >
+        <bool>false</bool>
+       </property>
+       <property name="default" >
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="closePB" >
+       <property name="sizePolicy" >
+        <sizepolicy>
+         <hsizetype>1</hsizetype>
+         <vsizetype>0</vsizetype>
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text" >
+        <string>Close</string>
+       </property>
+       <property name="autoDefault" >
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="0" column="0" >
+    <widget class="QTabWidget" name="TabWidget" >
+     <property name="toolTip" >
+      <string/>
+     </property>
+     <widget class="QWidget" name="Graphics" >
+      <attribute name="title" >
+       <string>&amp;Graphics</string>
+      </attribute>
+      <layout class="QGridLayout" >
+       <property name="margin" >
+        <number>11</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item row="3" column="1" >
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType" >
+          <enum>QSizePolicy::Expanding</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="2" column="0" colspan="2" >
+        <widget class="QGroupBox" name="rotateGB" >
+         <property name="title" >
+          <string>Rotation</string>
+         </property>
+         <layout class="QHBoxLayout" >
+          <property name="margin" >
+           <number>11</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="angleL_2" >
+            <property name="toolTip" >
+             <string>Angle to rotate image by</string>
+            </property>
+            <property name="text" >
+             <string>A&amp;ngle:</string>
+            </property>
+            <property name="buddy" >
+             <cstring>angle</cstring>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="angle" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>3</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="toolTip" >
+             <string>Angle to rotate image by</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="originL_2" >
+            <property name="toolTip" >
+             <string>The origin of the rotation</string>
+            </property>
+            <property name="text" >
+             <string>Or&amp;igin:</string>
+            </property>
+            <property name="buddy" >
+             <cstring>origin</cstring>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="origin" >
+            <property name="toolTip" >
+             <string>The origin of the rotation</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="1" column="0" >
+        <widget class="QGroupBox" name="GroupBox5" >
+         <property name="title" >
+          <string>LyX Display</string>
+         </property>
+         <layout class="QVBoxLayout" >
+          <property name="margin" >
+           <number>11</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QCheckBox" name="displayCB" >
+            <property name="toolTip" >
+             <string>Display image in LyX</string>
+            </property>
+            <property name="text" >
+             <string>&amp;Show in LyX</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="TextLabel1" >
+            <property name="toolTip" >
+             <string>Screen display</string>
+            </property>
+            <property name="text" >
+             <string>Display:</string>
+            </property>
+            <property name="buddy" >
+             <cstring>showCB</cstring>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="showCB" >
+            <property name="toolTip" >
+             <string>Screen display</string>
+            </property>
+            <item>
+             <property name="text" >
+              <string>Default</string>
+             </property>
+            </item>
+            <item>
+             <property name="text" >
+              <string>Monochrome</string>
+             </property>
+            </item>
+            <item>
+             <property name="text" >
+              <string>Grayscale</string>
+             </property>
+            </item>
+            <item>
+             <property name="text" >
+              <string>Color</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="scaleLA" >
+            <property name="toolTip" >
+             <string>Percentage to scale by in LyX</string>
+            </property>
+            <property name="text" >
+             <string>Scale:</string>
+            </property>
+            <property name="buddy" >
+             <cstring>displayscale</cstring>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" >
+            <property name="margin" >
+             <number>0</number>
+            </property>
+            <property name="spacing" >
+             <number>6</number>
+            </property>
+            <item>
+             <widget class="QLineEdit" name="displayscale" >
+              <property name="enabled" >
+               <bool>true</bool>
+              </property>
+              <property name="sizePolicy" >
+               <sizepolicy>
+                <hsizetype>5</hsizetype>
+                <vsizetype>0</vsizetype>
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="toolTip" >
+               <string>Percentage to scale by in LyX</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="displayscaleL" >
+              <property name="enabled" >
+               <bool>true</bool>
+              </property>
+              <property name="focusPolicy" >
+               <enum>Qt::NoFocus</enum>
+              </property>
+              <property name="text" >
+               <string>%</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="1" column="1" >
+        <widget class="QGroupBox" name="GroupBox11" >
+         <property name="title" >
+          <string>Output</string>
+         </property>
+         <layout class="QVBoxLayout" >
+          <property name="margin" >
+           <number>11</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="sizewidthL_2" >
+            <property name="enabled" >
+             <bool>true</bool>
+            </property>
+            <property name="text" >
+             <string>&amp;Width:</string>
+            </property>
+            <property name="buddy" >
+             <cstring>Width</cstring>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" >
+            <property name="margin" >
+             <number>0</number>
+            </property>
+            <property name="spacing" >
+             <number>6</number>
+            </property>
+            <item>
+             <widget class="QLineEdit" name="Width" >
+              <property name="enabled" >
+               <bool>true</bool>
+              </property>
+              <property name="toolTip" >
+               <string>Width of image in output</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="widthUnit" />
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QLabel" name="sizeheightL_2" >
+            <property name="enabled" >
+             <bool>true</bool>
+            </property>
+            <property name="text" >
+             <string>&amp;Height:</string>
+            </property>
+            <property name="buddy" >
+             <cstring>Height</cstring>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" >
+            <property name="margin" >
+             <number>0</number>
+            </property>
+            <property name="spacing" >
+             <number>6</number>
+            </property>
+            <item>
+             <widget class="QLineEdit" name="Height" >
+              <property name="enabled" >
+               <bool>true</bool>
+              </property>
+              <property name="toolTip" >
+               <string>Height of image in output</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="LengthCombo" name="heightUnit" >
+              <property name="sizePolicy" >
+               <sizepolicy>
+                <hsizetype>3</hsizetype>
+                <vsizetype>5</vsizetype>
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize" >
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="focusPolicy" >
+               <enum>Qt::StrongFocus</enum>
+              </property>
+              <property name="toolTip" >
+               <string>Units of height value</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="aspectratio" >
+            <property name="enabled" >
+             <bool>true</bool>
+            </property>
+            <property name="toolTip" >
+             <string>Maintain aspect ratio with largest dimension</string>
+            </property>
+            <property name="text" >
+             <string>&amp;Maintain aspect ratio</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="0" column="0" colspan="2" >
+        <layout class="QGridLayout" >
+         <property name="margin" >
+          <number>0</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item row="1" column="1" >
+          <spacer>
+           <property name="orientation" >
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType" >
+            <enum>QSizePolicy::MinimumExpanding</enum>
+           </property>
+           <property name="sizeHint" >
+            <size>
+             <width>20</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="1" column="2" >
+          <widget class="QPushButton" name="editPB" >
+           <property name="text" >
+            <string>&amp;Edit</string>
+           </property>
+           <property name="autoDefault" >
+            <bool>false</bool>
+           </property>
+           <property name="default" >
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1" >
+          <widget class="QLineEdit" name="filename" >
+           <property name="toolTip" >
+            <string>File name of image</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2" >
+          <widget class="QPushButton" name="browsePB" >
+           <property name="toolTip" >
+            <string>Select an image file</string>
+           </property>
+           <property name="text" >
+            <string>&amp;Browse...</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0" >
+          <widget class="QLabel" name="filenameL" >
+           <property name="toolTip" >
+            <string>File name of image</string>
+           </property>
+           <property name="text" >
+            <string>&amp;File:</string>
+           </property>
+           <property name="buddy" >
+            <cstring>filename</cstring>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="Clipping" >
+      <attribute name="title" >
+       <string>&amp;Clipping</string>
+      </attribute>
+      <layout class="QGridLayout" >
+       <property name="margin" >
+        <number>11</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item row="0" column="0" colspan="2" >
+        <layout class="QHBoxLayout" >
+         <property name="margin" >
+          <number>0</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item>
+          <widget class="QCheckBox" name="clip" >
+           <property name="toolTip" >
+            <string>Clip to bounding box values</string>
+           </property>
+           <property name="text" >
+            <string>Clip to &amp;bounding box</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer>
+           <property name="orientation" >
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType" >
+            <enum>QSizePolicy::Expanding</enum>
+           </property>
+           <property name="sizeHint" >
+            <size>
+             <width>20</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="getPB" >
+           <property name="toolTip" >
+            <string>Get bounding box from the (EPS) file</string>
+           </property>
+           <property name="text" >
+            <string>&amp;Get from File</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="0" >
+        <widget class="QFrame" name="Frame3" >
+         <property name="enabled" >
+          <bool>true</bool>
+         </property>
+         <property name="sizePolicy" >
+          <sizepolicy>
+           <hsizetype>5</hsizetype>
+           <vsizetype>7</vsizetype>
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="frameShape" >
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow" >
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QGridLayout" >
+          <property name="margin" >
+           <number>11</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item row="1" column="2" >
+           <widget class="QComboBox" name="lbXunit" />
+          </item>
+          <item row="2" column="0" >
+           <widget class="QLabel" name="yL" >
+            <property name="text" >
+             <string>y</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="2" >
+           <widget class="QComboBox" name="lbYunit" />
+          </item>
+          <item row="1" column="0" >
+           <widget class="QLabel" name="xL" >
+            <property name="text" >
+             <string>x</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1" >
+           <widget class="QLineEdit" name="lbY" />
+          </item>
+          <item row="1" column="1" >
+           <widget class="QLineEdit" name="lbX" >
+            <property name="toolTip" >
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1" colspan="2" >
+           <widget class="QLabel" name="lbL" >
+            <property name="text" >
+             <string>&amp;Left bottom:</string>
+            </property>
+            <property name="buddy" >
+             <cstring>lbX</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="2" >
+           <widget class="QComboBox" name="rtYunit" />
+          </item>
+          <item row="4" column="2" >
+           <widget class="QComboBox" name="rtXunit" />
+          </item>
+          <item row="4" column="1" >
+           <widget class="QLineEdit" name="rtX" />
+          </item>
+          <item row="4" column="0" >
+           <widget class="QLabel" name="xL_2" >
+            <property name="text" >
+             <string>x</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0" colspan="3" >
+           <widget class="QLabel" name="rtL" >
+            <property name="text" >
+             <string>Right &amp;top:</string>
+            </property>
+            <property name="buddy" >
+             <cstring>rtX</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0" >
+           <widget class="QLabel" name="yL_2" >
+            <property name="text" >
+             <string>y</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1" >
+           <widget class="QLineEdit" name="rtY" />
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="2" column="0" >
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType" >
+          <enum>QSizePolicy::MinimumExpanding</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="ExtraOptions" >
+      <attribute name="title" >
+       <string>E&amp;xtra options</string>
+      </attribute>
+      <layout class="QGridLayout" >
+       <property name="margin" >
+        <number>11</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item row="0" column="0" colspan="2" >
+        <widget class="QCheckBox" name="subfigure" >
+         <property name="toolTip" >
+          <string>Is this just one part of a figure float ?</string>
+         </property>
+         <property name="text" >
+          <string>Su&amp;bfigure</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0" colspan="2" >
+        <widget class="QCheckBox" name="unzipCB" >
+         <property name="toolTip" >
+          <string>Don't uncompress image before exporting to LaTeX</string>
+         </property>
+         <property name="text" >
+          <string>Don't un&amp;zip on export</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0" >
+        <widget class="QLabel" name="latexoptionsLA" >
+         <property name="toolTip" >
+          <string>Additional LaTeX options</string>
+         </property>
+         <property name="text" >
+          <string>LaTeX &amp;options:</string>
+         </property>
+         <property name="buddy" >
+          <cstring>latexoptions</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1" >
+        <widget class="QLineEdit" name="latexoptions" >
+         <property name="toolTip" >
+          <string>Additional LaTeX options</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0" colspan="2" >
+        <widget class="QCheckBox" name="draftCB" >
+         <property name="toolTip" >
+          <string>Draft mode</string>
+         </property>
+         <property name="text" >
+          <string>&amp;Draft mode</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0" colspan="2" >
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType" >
+          <enum>QSizePolicy::Expanding</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="6" column="0" colspan="2" >
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType" >
+          <enum>QSizePolicy::Expanding</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="2" column="0" colspan="2" >
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType" >
+          <enum>QSizePolicy::Expanding</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="1" column="0" >
+        <widget class="QLabel" name="CaptionLA" >
+         <property name="toolTip" >
+          <string>The caption for the sub-figure</string>
+         </property>
+         <property name="text" >
+          <string>Ca&amp;ption:</string>
+         </property>
+         <property name="buddy" >
+          <cstring>subcaption</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1" >
+        <widget class="QLineEdit" name="subcaption" >
+         <property name="enabled" >
+          <bool>false</bool>
+         </property>
+         <property name="toolTip" >
+          <string>The caption for the sub-figure</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="1" >
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType" >
+          <enum>QSizePolicy::Expanding</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <pixmapfunction></pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>LengthCombo</class>
+   <extends></extends>
+   <header>lengthcombo.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>TabWidget</tabstop>
+  <tabstop>filename</tabstop>
+  <tabstop>browsePB</tabstop>
+  <tabstop>displayCB</tabstop>
+  <tabstop>showCB</tabstop>
+  <tabstop>displayscale</tabstop>
+  <tabstop>Width</tabstop>
+  <tabstop>widthUnit</tabstop>
+  <tabstop>Height</tabstop>
+  <tabstop>heightUnit</tabstop>
+  <tabstop>aspectratio</tabstop>
+  <tabstop>angle</tabstop>
+  <tabstop>origin</tabstop>
+  <tabstop>clip</tabstop>
+  <tabstop>getPB</tabstop>
+  <tabstop>lbX</tabstop>
+  <tabstop>lbXunit</tabstop>
+  <tabstop>lbY</tabstop>
+  <tabstop>lbYunit</tabstop>
+  <tabstop>rtX</tabstop>
+  <tabstop>rtXunit</tabstop>
+  <tabstop>rtY</tabstop>
+  <tabstop>rtYunit</tabstop>
+  <tabstop>subfigure</tabstop>
+  <tabstop>subcaption</tabstop>
+  <tabstop>latexoptions</tabstop>
+  <tabstop>draftCB</tabstop>
+  <tabstop>unzipCB</tabstop>
+  <tabstop>restorePB</tabstop>
+  <tabstop>okPB</tabstop>
+  <tabstop>applyPB</tabstop>
+  <tabstop>closePB</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

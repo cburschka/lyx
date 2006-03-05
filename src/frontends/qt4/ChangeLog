@@ -1,0 +1,5759 @@
+2005-12-14  Hartmut Haase  <hha4491@atomstromfrei.de>
+
+	* ui/QPrefLatexModule.ui: make the papersize choices in
+	Tools>Preferences>LaTeX and Document>Preferences>Page Format
+	identical. 
+
+2005-12-12  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QPrefs.C: fix off-by-x errors in paper size setting
+	by using new helper functions fromPaperSize/toPaperSize (bug 2148).
+
+2005-11-17  Michael Gerz  <michael.gerz@teststep.org>
+
+	* ui/*.ui: remove dummy captions that pollute the po files
+
+2005-10-07  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* QContentPane.C: Fix bug 1966: uncontrollable scrolling
+
+2005-10-19  Angus Leeming  <leeming@lyx.org>
+
+	* lyx_gui.C (LApplication d-tor): remove code to unlock
+	QApplication mutex as we didn't lock the thing in the
+	first place; undefined behaviour.
+
+2005-10-16  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* QLyXKeySym.C (initEncodings): prevent crash when no codec found
+
+2005-10-07  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* QContentPane.C (QContentPane): make times 50 msec instead of 25,
+	will consume less CPU (Thanks Angus profiling)
+
+2005-10-06  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QCitationDialog.C (openFind): ensure the main citation dialog
+	is visible.
+
+2005-10-02  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* QToc.C: fix bug 2038  
+
+2005-09-15  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QTabular.C: disable newpageCB when !longtabular.
+
+2005-09-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QtView.C (QtView): do not try to se the icon under Qt/Mac.
+
+2005-09-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QGraphics.C (update_contents): fix compiler warning.
+
+2005-09-15  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QCitationDialog.C (find): correct start iterator when searching
+	backwards (bug 2002).
+
+2005-09-08  Angus Leeming  <leeming@lyx.org>
+
+	* QPrefsDialog.C:
+	* ui/QPrefSpellcheckerModule.ui:
+	* ui/QSpellcheckerDialogBase.ui: correct grammar describing invocation
+	of the spellchecker.
+
+2005-08-19  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* ui/QPreambleDialogBase.ui: remove obsolete file
+
+2005-08-07  Angus Leeming  <leeming@lyx.org>
+
+	* ui/QExternalDialogBase.ui: give the browse button a sane tooltip.
+
+2005-07-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QDialogView.C (show): exit after update if Controller::exitEarly()
+	is true. (bug 1950)
+
+2005-07-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QBibTeX.C: Do not insert empty items to bst combo.
+	
+	* QTexInfo.C: 
+	* QTexInfoDialog.c: Load and display full-path and no-path
+	lists correctly (bug 1936)
+
+2005-07-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QToc.C (update_contents): fix missing qstring->string translation.
+
+2005-07-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QToc.C (updateType, update_contents): Do not compare against 
+	translatable strings (bug 1870).
+
+2005-07-23  Angus Leeming  <leeming@lyx.org>
+
+	* QRefDialogBase.ui: disconnect two refsLB signals to the
+	refSelected and changed_adaptor slots.
+
+2005-07-22  Angus Leeming  <leeming@lyx.org>
+
+	* QRef.C (update_contents): disable the OK button when the dialog is
+	first shown. The user must first select a reference.
+
+	* QRefDialog.C (changed_adaptor): only enable the OK button when
+	the "Label:" field is not empty.
+	(refHighlighted): set the text in the "Label:" field only when
+	an item is currently selected in the "Available refs" browser. (When
+	th signal connected to this slot is triggered.)
+
+	* QBibtexDialogBase.ui:
+	* QCharacterDialogBase.ui:
+	* QERTDialogBase.ui:
+	* QNoteDialogBase.ui: remove the Alt-C shortcut from the Close button.
+
+	* QAskForTextDialog.ui:
+	* QBibtexDialogBase.ui:
+	* QBranchDialogBase.ui:
+	* QERTDialogBase.ui:
+	* QGraphicsDialogBase.ui:
+	* QIndexDialogBase.ui:
+	* QNoteDialogBase.ui:
+	* QSendtoDialogBase.ui: connect the Alt-O shortcut to the OK button.
+
+	* QBibtexDialogBase.ui: change the shortcut to the "Content" field.
+	* QERTDialogBase.ui:  change the shortcut to the "Open" field.
+	* QGraphicsDialogBase.ui: change the shortcut to the "Origin" field.
+	* QNoteDialogBase.ui: change the shortcut to the "Comment" field.
+	* QParagraphDialogBase.ui:  change the shortcut to the "Longest label"
+	field.
+	* QPrefConvertersModule.ui: change the shortcut to the "From" field.
+	* QPrefLanguageModule.ui: change the shortcut to the "Use babel" field.
+	* QPrefUIModule.ui: change the shortcut to the "Cursor follows
+	scrollbar" field.
+	* QRefDialogBase.ui: change the shortcut to the "Labels in:" field.
+	
+2005-07-20  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QDocument.C:
+	* QDocumentDialog.[Ch]:
+	* ui/MarginsModuleBase.ui: remove the paperpackage widgets (bug 1929) 
+
+2005-07-18  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QPrefsDialog.C (switch_copierLB, switch_copierCO): remove debug
+	information
+
+	* QWorkArea.C (dropEvent): convert file name to internal path
+	before loading it.
+
+2005-07-17  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QGraphics.C (update_contents): fix out of range access.
+
+2005-07-17  Michael Schmitt  <michqel.schmitt@teststep.org>
+
+	* ui/QBibtexDialogBase.ui: fix typo
+	* ui/QChangesDialogBase.ui: remove space from message
+
+2005-07-18  José Matos  <jamatos@fc.up.pt>
+
+	* QDocument.C: new file format, remove support for a4.sty,
+	a4wide.sty and a4widemargins.
+
+2005-07-16  José Matos  <jamatos@fc.up.pt>
+
+	* QDocumentDialog.C:
+	* QExternal.C:
+	* QGraphics.C:
+	* QDocument.C: remove setPaperStuff and use a
+	single papersize variable.
+
+2005-07-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* qfont_loader.C (addToFontPath): remove.
+	(available): do not try to call addToFontPath.
+
+2005-07-14  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* moc/Makefile.am: dist pch.h and mark PCH_FILE as a built file
+	* ui/moc/Makefile.am: ditto
+
+2005-07-12  Angus Leeming  <leeming@lyx.org>
+
+	* lyx_gui.C (LQApplication d-tor): unlock the mutex if the Qt library
+	is multi-threaded.
+
+2005-06-16  Joao Luis Meloni Assirati  <assirati@nonada.if.usp.br>
+
+	* QMathDialog.C (QMathDialog, insertFont): add boldsymbol font.
+ 
+2005-07-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QToc.C: consider gui name, not type, when trying to set the
+	toc combo (fixes bug 1870).
+
+2005-07-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QChanges.C: use bformat() for translatable strings.
+
+2005-07-01  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QChanges.[Ch] (update_contents): move to next change on update.
+	* QChanges.C: make some strings translatable.
+
+2005-06-21  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* qfont_loader.h (USE_LYX_FONTCACHE): change order of #includes so
+	that the test is meaningful.
+
+2005-06-16  Angus Leeming  <leeming@lyx.org>
+
+	* QPrefs.C (apply, update_contents): wrap all input and output of
+	paths with calls to os::internal_path and os::external_path,
+	respectively.
+
+	* QPrefsDialog.C (modify_format, modify_converter): keep the
+	current item selected after pressing the "Modify" button.
+
+2005-06-12  Angus Leeming  <leeming@lyx.org>
+
+	* QPrefs.C (setComboxFont): ensure that only the font family name
+	(not the name of the foundary also) is used when trying to find
+	the system default font in the list of all fonts.
+
+2005-06-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* qfont_loader.C (addToFontPath): delete the data structure
+	allocated by XGetFontPath.
+
+2005-06-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* qfont_loader.h:
+	* qfont_loader.C (charwidth): do no do font width caching with
+	Qt >= 3.1.0.
+
+2005-06-06  Lars Gullik Bjønnes  <larsbj@gullik.net>
+	(Committed Martin Vermeer <martin.vermeer@hut.fi>)
+
+	* QContentPane.[Ch]: implement keystroke event stack with
+	repeat key "regulation". Key are not sent to LyX core faster
+	than rendering can handle.
+
+2005-06-03  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QContentPane.[Ch]: Limit the QIM*Events to X11. They are not
+	needed (yet) on other OSes (and confuse qt/mac).
+
+2005-05-31  Angus Leeming  <leeming@lyx.org>
+
+	* QBibtexDialog.C (addDatabase): fix QString ->std::string
+	compilation problem.
+
+2005-05-31  Angus Leeming  <leeming@lyx.org>
+
+	* validators.C (validate): allow ':' characters in file names.
+
+2005-05-28  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* ui/QIndexDialogBase.ui: remove unused label; remove faulty
+	tooltips (QIndex is not only used for indexes!)
+	* ui/QCitationDialogBase.ui: fix two tooltips
+
+2005-05-28  José Matos  <jamatos@lyx.org>
+
+	* QContentPane.[Ch]: implement QIM*Events. This brings the dead
+	keys back into play on systems compiled against a qt-immodule-
+	patched Qt [bug 1830].
+
+2005-06-20  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* QPrefsDialog.C:
+	* ui/QPrefAsciiModule.ui: rename "ASCII" to "Plain text"
+
+2005-06-21  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QCitationDialog.C: explicitely setCurrentItem on search
+	operations (else results are not selected).
+
+2005-05-14  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* Dialogs.C: add missing ":" to text messages
+	* QTexinfo.C: dialog title "LaTeX Information" => "TeX Information"
+	* ui/QBibtexAddDialogBase.ui: fix label & tooltip
+	* ui/QCitationFindDialogBase.ui: change text "citation key/entry" =>
+	"bibliography key/entry"
+
+2005-05-19  Angus Leeming  <leeming@lyx.org>
+
+	* qscreen.[Ch]: cache and reuse pixmaps to show the flashing cursor.
+
+2005-05-13  Angus Leeming  <leeming@lyx.org>
+
+	* QBibtex.C (build_dialog):
+	* QBibtexDialog.C (c-tor, bibEDChanged, addPressed): add a
+	PathValidator of the add_->BibED widget and use it to control
+	the activation state of the "Add" button.
+
+	* QExternal.C (build_dialog, update_contents):
+	* QExternalDialog.C (c-tor): add a PathValidator of the fileED
+	widget.
+
+	* QGraphics.C (build_dialog, update_contents):
+	* QGraphicsDialog.C (c-tor): add a PathValidator of the filename
+	widget.
+
+	* QInclude.C (build_dialog, update_contents):
+	* QIncludeDialog.C (c-tor): add a PathValidator of the filenameED
+	widget.
+
+2005-05-09  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* *.C: strip "LyX: " prefix from dialog titles; harmonize
+	dialog titles with menu entries and xforms frontend; fix
+	capitalization
+
+2005-05-07  Angus Leeming  <leeming@lyx.org>
+
+	* Alert_pimpl.C (prompt_pimpl, warning_pimpl, error_pimpl)
+	(information_pimpl, askForText_pimpl): make these warning dialogs
+	modal with respect to the calling dialog, rather than with respect
+	to the main window.
+
+	* lengthvalidator.[Ch]: removed.
+	* validators.[Ch]: added.
+	* Makefile.dialogs: remove lengthvalidator.[Ch]. Add validators.[Ch].
+
+	* QBoxDialog.C (unsignedLengthValidator):
+	* QDocumentDialog.C (unsignedLengthValidator):
+	* QExternalDialog.C (unsignedLengthValidator):
+	* QGraphicsDialog.C (unsignedLengthValidator):
+	* QTabularDialog.C (unsignedLengthValidator):
+	* QVSpaceDialog.C (unsignedLengthValidator):
+	removed. Use the version in validators.C.
+
+2005-05-12  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QLPopupMenu.C (fire): use lyx_gui::sync_events.
+
+	* QMathDialog.C (resizeEvent): use lyx_gui::sync_events instead of
+	the event loop.
+
+2005-05-11  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QDocument.C (update_contents): set the limits of the numbering
+	sliders depending on the class; disable the numbering module when
+	the class does not have a sectioning structure.
+
+	* QDocumentDialog.h: remove the numberlevel* listviewitems.
+
+	* QDocumentDialog.C (QDocumentDialog): no need to populate
+	numbering listview here.
+	(classChanged): always invoke QDocument::update_content().
+	(updateNumbering): populate the listview directly from the
+	textclass information;
+
+2005-05-11  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyx_gui.C (sync_events):
+	* QMathDialog.C (resizeEvent): use event loop for qt >= 3.1
+
+2005-05-11  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* lyx_gui.C (sync_events):
+	* QDialogView.h (update, build):
+	* QLPopupMenu.C (fire):
+	* QMathDialog.C (resizeEvent, showingPanel): fix processEvent
+	-caused update recursion bug
+
+2005-05-06  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* ui/*.ui: remove captions: they are unused and pollute the po
+	files; add missing ":"; use terms "Bibliography" and "Citation"
+	consistently; change "pre-amble" to "preamble"
+
+2005-05-04  Angus Leeming  <leeming@lyx.org>
+
+	* QPrefsDialog.C (QPrefsDialog): disable the spellCommandCO if
+	USE_ISPELL is not defined.
+
+	* ui/Makefile.am (CLEANFILES): add *Module.h and *Dialog.h.
+
+2005-05-02  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QTabularDialog.C: correct handling of the LFUN_UNSET_*
+	functions within longtabular.
+
+	* ui/QTabularDialogBase.ui: add tooltips to longtabular tab.
+
+2005-04-28  Angus Leeming  <leeming@lyx.org>
+
+	* BulletsModule.[Ch] (BulletsModule): emit a signal when the
+	bullet push buttons are clicked to set the currently-pressed
+	bullet list.
+	(clicked1, clicked2, clicked3, clicked4): new slots.
+	(selected1, selected2, selected3, selected4): rename the old
+	pressed[1-4] slots.
+	(setCustom): use the stored information about which button was
+	pressed to populate the custom dialog with the LaTeX of the
+	current choice.
+	(getBullet): return a reference to const.
+
+2005-04-28  Angus Leeming  <leeming@lyx.org>
+
+	* QLImage.[Ch] (transformed_pixmap_): new variable. The image
+	pixmap is prepared for display in setPixmap_impl, so buffer it
+	for future redraws.
+	(copy ctor): copy the data, don't regenerate it from original_;
+	(dtor): use machine-generated destructor.
+
+	* QLPainter.C (image): use bitBlt to draw the buffered image
+	pixmap efficiently.
+
+2005-04-25  Angus Leeming  <leeming@lyx.org>
+
+	* pch.h:
+	* moc/pch.h:
+	* qttableview.C:
+	include <config.h> in .C files, not .h ones.
+	add licence blurb.
+	protect headers inside preprocessor guards.
+
+2005-04-22  Angus Leeming  <leeming@lyx.org>
+
+	* Makefile.am:
+	* moc/Makefile.am:
+	* ui/Makefile.am:
+	* ui/moc/Makefile.am: Move the Qt-specific preprocessor flags out of
+	the various Makefile.am files to config/qt.m4.
+
+2005-04-15  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* ui/QPrefsConvertersModule.ui:
+	* ui/QPrefsCopiersModule.ui:
+	* ui/QPrefsFileformatsModule.ui:
+	* QPrefsDialog.[Ch]: more intuitive ui (cf. bug 1829)
+
+2005-04-14  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* ui/NumberingModuleBase.ui: Remove numbering items ...
+	* QDocumentDialog.[Ch]: ... and initialize them here to prevent
+	unwanted sorting. Check whether chapter is supported and adjust
+	numbering scheme accordingly.
+
+2005-04-11  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* panelstack.C (addCategory): let the listview compute the
+	correct width.
+
+2005-04-08  Angus Leeming  <leeming@lyx.org>
+
+	* QAbout.C (build_dialog): specify that the CREDITS data is
+	encoded in ISO-8859-1 (latin1).
+
+2005-03-18  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* ui/QPrefLatexModule.ui: fix layout
+
+2005-02-18  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* ui/QRefDialogBase.ui: substitute "reference" by "label"
+	in messages
+
+2005-02-10  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QRefDialog.C (refSelected): insert selected ref to
+	text widget (this was not possible if there was only
+	one entry, an empty inset was generated).
+
+2005-01-31  Asger Ottar Alstrup  <aalstrup@laerdal.dk>
+
+	* QDialogView.h (form): add cast for MSVC.
+
+	* QLPainter.C (smllCapsText, text): MSVC doesn't like the use
+	of operator[](i) here, so use at(i) instead.
+
+	* lengthvalidator.h: remove incorrect Q_EXPORT spec.
+
+2005-01-31  Angus Leeming  <leeming@lyx.org>
+
+	* QGraphics.[Ch] (slotEdit): unused cruft, so removed.
+
+2005-01-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* Several files: use convert<> instead of atoi,strToXXX and friends
+
+2005-01-20  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* floatplacement.C (heredefinitelyClicked): remove bogus
+	semicolon.
+
+2005-01-15  Angus Leeming  <leeming@lyx.org>
+
+	* QPrefs.C, QPrefsDialog.C, ui/QPrefPathsModule.ui: add an interface
+	to modify LyXRC::path_prefix.
+
+2005-01-15  Angus Leeming  <leeming@lyx.org>
+
+	* ui/Makefile.am: enable Qt's uic to process the .ui files
+	when using srcdir != buildir and precompiled headers.
+
+2005-01-13  Angus Leeming  <leeming@lyx.org>
+
+	* Makefile.dialogs: add QPrefCygwinPathModule.ui.
+
+	* ui/QPrefCygwinPathModule.ui: new file. Defines a pane containing
+	only a check box "Use Cygwin paths".
+
+	* QPrefs.C (apply, update_contents): code to get/set the value
+	of the Cygwin check box. Compiled only under Cygwin.
+
+	* QPrefsDialog.[Ch]: code to add teh Cygwin paths module to the
+	dialog.
+
+2005-01-10  Angus Leeming  <leeming@lyx.org>
+
+	* lyx_gui.C: use support/package.h to provide the paths to the
+	various directories used by LyX.
+
+2005-01-07  Ruurd Reitsma  <rareitsma@yahoo.com>
+
+	* qfont_metrics.C (ascent, descent): correct the metrics returned
+	by Qt/Win 3.2.1 non-commercial edition.
+
+2005-01-06  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* QDocument.C:
+	* QBox.C: drop unused include tostr.h
+
+	* qt_helpers.C:
+	* QWrap.C:
+	* QVSpace.C
+	* QTabular.C:
+	* QParagraph.C:
+	* QGraphics.C:
+	* QExternal.C: tostr -> convert
+
+2005-01-06  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QDocument.C:
+	* QParagraph.C: store all float/double values as strings.
+
+2005-01-05  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* ui/moc/Makefile.am (libqt2uimoc_la_LINK): improve link trick
+	* moc/Makefile.am (libqt2moc_la_LINK): ditto
+
+2005-01-05  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QPrefs.C: store all float/double values as strings.
+	lyxrc.dpi is an int value now.
+
+	* QFontLoader.C: lyxrc.font_sizes is a string now.
+
+	* lyx_gui.C: change getDVI() to int.
+
+2005-01-05  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* ui/Makefile.am (libqt2ui_la_LINK): Improve the trick to avoid
+	relink or lib all the time.
+
+2005-01-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QExternal.C: store all float/double values as strings.
+	* GGraphics.C: more precise checks for the value strings.
+
+2004-12-28  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QGraphics.C: store all float/double values as strings.
+
+2004-12-19  Angus Leeming  <leeming@lyx.org>
+
+	* lyx_gui.C (start): s/slashify_path/internal_path/
+
+2004-12-16  Angus Leeming  <leeming@lyx.org>
+
+	* qt_helpers.C (fromqstr): Don't use std::string(0) to construct
+	a string. Bad things will happen.
+
+2004-12-14  Angus Leeming  <leeming@lyx.org>
+
+	* qgridview.h (class QGridView): remove invalid Q_EXPORT declaration
+	as it breaks compilation of the generated qgridview_moc.C on
+	Windows machines. Has no effect on *nix machines where Q_EXPORT expands
+	to an empty string.
+
+2004-12-14  Angus Leeming  <leeming@lyx.org>
+
+	* Makefile.am (AM_CPPFLAGS):
+	* moc/Makefile.am (AM_CPPFLAGS): Remove trailing slash from -Ifoo/
+	to overcome bug in the MinGW port of g++ 3.4.2.
+
+2004-12-05  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* Makefile.am (AM_CPPFLAGS): reformat slightly
+
+2004-12-03  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* Makefile.am, ui/Makefile.am (AM_CPPFLAGS): fix typo
+
+2004-12-02  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* QTabular.C: use size_t-like types for cell, row and column indices
+
+2004-12-03  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* lengthvalidator.C: revert to correct if clause.
+
+	* QDocument.C:
+	* QDocumentDialog.C:
+	* QTabular.C:
+	* QTabularDialog.C:
+	* QPrefs.C: implement length validators
+
+	* QExternalDialog.C:
+	* QGraphicsDialog.C: chose correct validators
+
+2004-11-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* qt_helpers.[Ch]: new member function widgetsToLength
+	for ordinary QComboBoxes
+	* QGraphics.C:
+	* QGraphicsDialog.C: use new member function. Add length
+	validator
+	* QBox.C:
+	* QBoxDialog.C: Add length validator
+
+2004-11-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* ui/QTabularDialogBase.ui: Rename button ("Default" to "Set"),
+	which is more appropriate. Also modify some tooltips.
+
+2004-11-26  Angus Leeming  <leeming@lyx.org>
+
+	* FileDialog.C:
+	* FileDialog_private.C: changes due to the changed FileFilterList API.
+
+2004-11-25  Angus Leeming  <leeming@lyx.org>
+
+	* FileDialog.C:
+	* FileDialog_private.C: s/globbing.h/filefilterlist.h/ in #includes.
+
+2004-11-22  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* lengthvalidator.[Ch]: add GlueLength validator
+	* QVSpace.C:
+	* QVSpaceDialog.C: use GlueLength validator
+
+	* lengthcombo.C: whitespace
+
+2004-11-17  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* QPrefsDialog.h: include LColor.h to satisfy concept checks.
+	* lcolorcache.h: ditto
+
+2004-11-15  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QtView.C (hasFocus): new method
+
+	* QLPopupMenu.C (populate): remove a Qt/Mac hack to disable some
+	menu entries when the main window does not have focus
+
+2004-11-08  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QLToolbar.C (selected): use layoutSelected
+
+2004-11-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QLToolbar.C (activated, clicked):
+	* QtView.C (activated): do not use the verbose argument to dispatch
+
+2004-11-08  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QPrefsDialog.C (new_format(), remove_format()): fix crash when
+	adding new formats (add missing converters().update() call) [bug 1692]
+
+	* QPrefsDialog.[Ch]:
+	* ui/QPrefConvertersModule.C: improve ui for converter changes
+	[bug 1488].
+
+2004-11-06  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* QLImage.C (loadableFormats): use bind, equal_to instead of
+	compare_memfun
+
+	* lyx_gui.C (start): use for_each instead of explict for loop
+
+2004-10-26  Angus Leeming  <leeming@lyx.org>
+
+	* Makefile.dialogs:
+	* QPrefs.[Ch]:
+	* QPrefsDialog.[Ch]:
+	* ui/QPrefCopierModule.ui: enable the Movers to be modified from the
+	preferences dialog.
+
+2004-10-18  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* ui/QPrefConvertersModule.ui: Add translation context to "To:"
+	* ui/QPrintDialogBase.ui: ditto
+
+2004-10-11  Andreas Vox  <vox@isp.uni-luebeck.de>
+
+	* qfont_loader.C (initFontPath, addToFontPath): two new static
+	member functions that replace addFontPath
+	(available): remove special MacOSX code; use addToFontPath
+
+	* lyx_gui.C (parse_init): add call to qfont_loader::initFontPath()
+
+2004-10-01  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QLPopupMenu.C (populate): move the code below to here, so that
+	it only has an effect on the menu entries
+
+	* lyx_gui.C (getStatus): remove special Qt/Mac code, which broke
+	most dialogs (bug 1693)
+
+2004-10-05  Angus Leeming  <leeming@lyx.org>
+
+	* QPrefs.C, QPRefsDialog.C, ui/QPrefLatexModule.ui: add code to
+	input/output the indexing command (usually 'makeindex').
+
+2004-09-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* qfont_loader.C (addFontPath): quote the name of the font dir in
+	case it contains a space
+
+2004-08-19  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* BulletsModule.C (setBullet): use toqstr() for a string passed to
+	qt, otherwise it won't compile on SuSE 9.0
+
+2004-08-18  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* Some pch work.
+
+2004-08-18  José Matos  <jamatos@lyx.org>
+
+	* BulletsModule.C (setBullet): show custom bullet instead of "...",
+	change from John Levon.
+
+2004-08-15  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* qfontexample.h: add header guards
+
+	* qcoloritem.h: add header guards
+
+	* floatplacement.h: add header guards
+
+	* pch.h: new file
+
+	* Makefile.am: support pch
+
+2004-08-11  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	Fix problem with the menu merging functionality of Qt/Mac. All the
+	code below is #ifdef Q_WS_MACX.
+
+	* QLPopupMenu.C (showing): append dummy entries to one menu (so that
+	Qt/Mac moves them to the LyX menu) and give them special index value.
+	(fire): if index is more than indexOffset, dispatch to the
+	corresponding entry from the "LyX" menu.
+
+	* lyx_gui.C (parse_init): add a new translator whose sole purpose
+	is to hide some menu entries from Qt/Mac scrutiny and avoid some
+	menu merging.
+
+	* QLMenubar.C (QLMenubar): Use "LyX" as special menu; initialize
+	the contents of the first menu in the menubar
+
+2004-08-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QPrefsDialog.C (change_color):
+	* QDocumentDialog.C (toggleBranchColor): set the parent of the
+	color picker correctly.
+
+2004-08-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QLPopupMenu.C (fire): make Qt process events before we
+	dispatch our function (toolbars still do not get repainted
+	correctly, though)
+
+2004-08-12  Kornel Benko  <kornel.benko@berlin.de>
+
+	* QPrefs.C (setComboxFont): Use fromqstr() instead of latin1() for
+	font name comparison since latin1() can return NULL
+	* lyx_gui.C (roman_font_name): convert return value with fromqstr()
+	instead of latin1() since latin1() can return NULL
+	(sans_font_name): ditto
+	(typewriter_font_name): ditto
+
+2004-08-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* FileDialog.C: #define USE_NATIVE_FILEDIALOG under LyX/Mac
+	(save, open, opendir): when USE_NATIVE_FILEDIALOG
+	is defined, use QFileDialog::getOpenFileName and friends.
+
+2004-08-08  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* Makefile.am (AM_CXXFLAGS): do not disable QTranslator code
+
+	* lyx_gui.C (parse_init): install a translator for Qt native
+	strings.
+
+2004-08-07  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QBibtexDialog.C (browsePressed): use ControlBibtex::browseBst
+	(browseBibPressed): use ControlBibtex::browseBib
+
+	* QLPrintDialog.C (browseClicked): use ControlPrint::browse
+
+2004-08-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* QContentPane.C (keyPressEvent): make sure to use the smart
+	pointer as soon as possible.
+
+2004-07-24  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* QPrefs.C, QMathMatrixDialog.C:
+	* QLog.C, QAbout.C: change "support/std_sstream.h" to <sstream>
+
+2004-07-22  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* lyx_gui.C (set_read_callback,remove_read_callback): delete funcs
+
+	* Makefile.dialogs (MOCFILES): remove io_callback.[Ch]
+	* io_callback.[Ch]: delete files
+
+2004-07-21  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* socket_callback.C (data_received): simplify
+	(socket_callback): take fd and boost::function as args.
+	(server_received): delete function
+
+	* lyx_gui.C (register_socket_callback): setup the callback
+	(unregiser_socket_callback): tear down the callback
+
+2004-07-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QLyXKeySym.C (qprint): like print, but return a QString
+	(print): use qprint.
+
+	* QLPopupMenu.C (getLabel): do not add the binding here anymore
+	(populate): changes to make bindings work on Qt/Mac.
+
+2004-06-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyx_gui.C (getStatus): under Mac OS X, disable the
+	buffer-related lfuns when the main window does not have the focus.
+
+2004-06-21  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QCitation.[Ch]: add validation (fix bug 1617).
+
+2004-06-18  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* lyx_gui.C (roman_font_name): go through QString when converting
+	to std::string.
+	(sans_font_name): ditto
+	(typewriter_font_name): ditto
+
+2004-06-08  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QLMenubar.C (QLMenubar): use QLMenubar::menuBar().
+	(menuBar): new method; returns the menu bar that LyX should use.
+
+2004-06-02  Angus Leeming  <leeming@lyx.org>
+
+	* Q[a-zA-Z]*DialogBase.C: reverse yesterday's patch, as discussed
+	on the list.
+
+2004-06-01  Angus Leeming  <leeming@lyx.org>
+
+	* Q[a-zA-Z]*DialogBase.C: tell the QDialog base class who the
+	parent dialog is.
+
+2004-05-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* ui/Makefile.am (EXTRA_DIST): add QPreambleDialogBase.ui
+
+2004-05-20  Angus Leeming  <leeming@lyx.org>
+
+	* Most .C files: bring some sort of sanity to the order
+	of inclusion of header files.
+
+2004-05-19  Angus Leeming  <leeming@lyx.org>
+
+	* Most files: wrap code up inside namespace lyx::frontend.
+
+2004-05-14  Angus Leeming  <leeming@lyx.org>
+
+	* QCitation.C: small changes due to the changes in biblio.h.
+
+2004-05-12  Angus Leeming  <leeming@lyx.org>
+
+	* QDocument.C (apply, update): get, set data with
+	BufferParams::cite_engine.
+
+2004-05-10  Angus Leeming  <leeming@lyx.org>
+
+	* QCitation.C: simplified code to use the biblio::CiteEngine
+	enum rather than multiple bools, usingNatbib and using Jurabib.
+
+2004-05-05  Angus Leeming  <leeming@lyx.org>
+
+	* QIndexDialog.[Ch] (reject): overload the QDialog::reject function
+	and so squash bug 1251 completely.
+
+2004-05-05  Angus Leeming  <leeming@lyx.org>
+
+	* QRef.C (redoRefs): Prevent widgets from emitting any signals
+	whilst we modify their state.
+
+2004-05-04  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C: Remove "error" dialog identifier.
+
+2004-05-02  Angus Leeming  <leeming@lyx.org>
+
+	* QLImage.[Ch]: store and use QImage rather than QPixmap. Saves
+	a heap of transformations to/from QImage when manipulating the
+	data.
+
+	* QLPainter.C (image): access QLImage::qimage rather than ::qpixmap.
+
+2004-05-02  Angus Leeming  <leeming@lyx.org>
+
+	* QLPainter.C (image): set the background colour to
+	LColor::graphicsbg.
+
+	* QLImage.C (setPixmap_impl): remove commented out xforms code
+	to set pixmap background colour.
+
+2004-05-02  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* QGraphics.C: #include <cmath> (STLport compile fix for floor())
+
+2004-04-29  Angus Leeming  <leeming@lyx.org>
+
+	* QLImage.C (toGray): new helper function, copied from
+	KImageEffect::toGray.
+	(setPixmap_impl): use it.
+
+2004-04-29  Angus Leeming  <leeming@lyx.org>
+
+	* QGraphics.C (apply): Remove a #warning statement by
+	fixing the code.
+
+2004-04-28  Angus Leeming  <leeming@lyx.org>
+
+	* QLToolbar.[Ch]: rewrite code to derive from a single Toolbar or
+	LayoutBox.
+
+	* QtView.C: small changes due to changed Toolbar API.
+
+2004-04-28  Angus Leeming  <leeming@lyx.org>
+
+	* WorkAreaFactory.C (create): No longer passed x, y data.
+
+	* QWorkArea.[Ch] (c-tor): No longer receives x, y data.
+
+	* QtView.[Ch] (c-tor): no longer passes x, y data to BufferView c-tor.
+
+2004-04-28  Angus Leeming  <leeming@lyx.org>
+
+	* WorkAreaFactory.C (create): pass a LyXView & to QWorkArea c-tor.
+
+	* QWorkArea.[Ch] (c-tor): now receives a LyXView &.
+
+2004-04-21  John Levon  <levon@movementarian.org>
+
+	* QLToolbar.C: use GUI name for tooltip
+
+2004-04-19  Angus Leeming  <leeming@lyx.org>
+
+	* QPref.C:
+	* QPrefsDialog.C:
+	* ui/QPrefDisplayModule.ui: changes due to changes to LyXRC::preview.
+
+2004-04-18  John Levon  <levon@movementarian.org>
+
+	* QDelimiterDialog.C:
+	* QMathDialog.C: make button callbacks work again
+
+	* README: add a warning
+
+2004-04-13  Angus Leeming  <leeming@lyx.org>
+
+	* ui/QExternalDialogBase.ui:
+	* ui/QGraphicsDialogBase.ui: layout tweaks.
+
+2004-04-12  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* QPrefsDialog.C, ui/QPrefFileformatsModule.ui: add editor to format
+	* QGraphics.[Ch]: add slotEdit()
+	* QGraphicsDialog.[Ch]: add edit_clicked()
+	* ui/QGraphicsDialogBase.ui: add Edit button
+
+2004-04-07  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* QLPainter.[Ch]: adjust to changes in Painter.h
+
+2004-04-05  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C (build): set the preferences dialog button policy to
+	PreferencesPolicy.
+
+2004-04-05  Angus Leeming  <leeming@lyx.org>
+
+	* QGraphics.C (getUnitNo): const-correct.
+
+2004-04-05  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* floatplacement.[Ch]: check whether we are in the float or
+	document dialog (in the latter, the span and sideways checkboxes
+	are not used). Fixes a crash.
+
+2004-04-01  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* floatplacement.[Ch]: another adjustment of placement enabling.
+
+2004-04-01  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* floatplacement.[Ch]: correct fix for enabling of placement
+	values (bug 1016)
+
+2004-03-31  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs2.C:
+	* Qt2Base.[Ch]: removed.
+
+	* Makefile.am:
+	* Makefile.dialogs: adjusted to suit.
+
+2004-03-31  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C (build): added "preamble" as a symonym for "document".
+	* Dialogs2.C (showPreamble): removed.
+
+2004-03-31  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C (build): added spellchecker dialog.
+	* Dialogs2.C (showSpellchecker): removed.
+
+	* QSpellchecker.[Ch]: converted to the Dialog-based scheme.
+
+2004-03-31  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C (build): added preferences dialog.
+	* Dialogs2.C (showPreferences): removed.
+
+	* QPrefs.[Ch]: converted to the Dialog-based scheme.
+
+2004-03-31  Angus Leeming  <leeming@lyx.org>
+
+	* QPrefs.[Ch]:
+	* QPrefsDialog.C: changes due to the changed ControlPrefs interface.
+
+2004-03-30  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C (build): added document dialog.
+	* Dialogs2.C (showDocument): removed.
+
+	* QDocument.[Ch]: converted to the Dialog-based scheme.
+
+2004-03-29  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QBibtex.C:
+	* QDocument.C:
+	* QDocumentDialog.C:
+	* ui/BiblioModuleBase.ui: bibtopic support.
+
+	* QPrefs.C:
+	* QPrefsDialog.C:
+	* ui/QPrefsLaTeXModule.ui: customize bibtex call.
+
+	* QFloat.C:
+	* QFloatDialog.C:
+	* floatplacement.[Ch]: add support for sidewaysfloats
+	fix enabling of placement values (bug 1016)
+
+2004-03-28  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C (build): added print dialog.
+	* Dialogs2.C (showPrint): removed.
+
+	* QPrint.[Ch]: converted to the Dialog-based scheme.
+
+2004-03-27  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C (build): added sendto dialog.
+	* Dialogs2.C (showSendto): removed.
+
+	* QSendto.[Ch]: converted to the Dialog-based scheme.
+
+2004-03-25  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QLyXKeySym.C (print): new method; print a KeySym using Qt syntax
+
+2004-03-17  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs2.C, lyx_gui.C: remove mention of the forks dialog.
+
+2004-03-07  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QCitation.C:
+	* QDocument.C:
+	* QDocumentDialog.C:
+	* ui/BiblioModuleBase.ui: support jurabib.
+
+2004-03-05  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QCitation.C:
+	* ui/QCitationDialogBase.ui: Support second \cite option.
+
+	* QDocumentDialog.C (branches): Don't deselect branch
+	after button press.
+	* QBranch.C: fix off-by-one-error.
+
+2004-02-21  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* QPrefs.C, QPrefsDialog.C, ui/QPrefPathsModule.ui: remove
+	use_tempdir
+
+2004-02-20  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QDocument.C:
+	* QDocumentDialog.C:
+	* ui/LanguageModuleBase.ui: get rid of the single/double
+	quote toggle (accessible via lfuns now).
+
+2004-02-19  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QRef.[Ch]: Real fix for bug 1511 (restore latest settings);
+	fix for bug 1512 (restore ref format settings).
+
+2004-02-18  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QCitation.[Ch]:
+	* QCitationDialog.[Ch]: open the find dialog if an inset is
+	new (new method openFind()). Fixes bug 1146.
+
+	* QCitation.C: restore the chosen natbib style.
+
+	* QRef.C: Disable goto button if there is no ref (bug 1037)
+	Restore setting of the buffer combo (bug 1511)
+
+2004-02-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* floatplacement.C (set): "c" -> 'c' in calls to contains
+
+2004-01-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* QPrefs.C: add using statement for std::distance
+	(findPos): add a typedef for the const_iterator.
+
+	* QLPopupMenu.C: add using statement for std::distance
+
+	* QDocument.C: add using statement for std::distance
+
+2004-01-25  Angus Leeming  <leeming@lyx.org>
+
+	* Dialog.C (build): add the "findreplace" dialog.
+	* Dialogs2.C (showSearch): removed.
+
+	* QSearch.[Ch]: derive from QDialogView rather than from Qt2Base.
+
+2004-01-15  Ronald Florence  <ron@18james.com>
+
+	* Menubar_pimpl.C: change Q_WS_MAC conditional define to
+	Q_WS_MACX.
+
+	* qfont_loader.C: add support for LyX/Mac to find Fonts directory
+	inside the application bundle.
+
+2004-01-08  Angus Leeming  <leeming@lyx.org>
+
+	* FileDialog.C (open, save):
+	* FileDialog_private.[Ch] (c-tor):
+	the file filter mask is now passed as a FileFilterList rather than
+	as a string.
+
+	* QExternalDialog.C (browseClicked):
+	* QGraphicsDialog.C (browse_clicked):
+	* QInclude.C (browse):
+	changes doe to the name change controller().Browse() to
+	controller().browse().
+
+2003-12-15  Ronald Florence <ron@18james.com>
+
+	* qfont_loader.C: fixed headers to compile w/o X11
+
+	* QWorkArea.C (checkAppleEventForMissingParams)
+	(handleOpenDocuments): add support for OpenDocuments apple event
+
+	* lyx_gui.C (macEventFilter): handle apple events
+
+2004-01-05  Angus Leeming  <leeming@lyx.org>
+
+	* FileDialog_private.C (c-tor): invoke convert_brace_glob to convert
+	a csh-style glob like "*.{abc,def}" to something that
+	Qt can understand.
+
+2003-12-30  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* ui/QGraphicsDialogBase.ui: add missing signal/slot (bug 1469).
+
+2003-12-14  Angus Leeming  <leeming@lyx.org>
+
+	* QBranch.C: use the List interface to BranchList, simplifying the code.
+
+	* QDocument.C:
+	* QDocumentDialog.C: overhaul the branchlist code.
+
+2003-12-14  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QMinipage.[Ch]:
+	* QMinipageDialog.[Ch]:
+	* ui/QMinipageDialogBase.ui: remove from repository.
+	* Dialogs.C:
+	* Makefile.am:
+	* Makefile.dialogs: remove minipage.
+
+2003-12-12  Angus Leeming  <leeming@lyx.org>
+
+	* QBranch.C:
+	* socket_callback.[Ch]: unix line endings.
+
+2003-12-11  Angus Leeming  <leeming@lyx.org>
+
+	* QCitationDialog.C (availableChanged, selectedChanged): ensure that
+	the bibkeysInfo map is populated before calling biblio::getInfo.
+	Prevents and assert when the bibtex database is not found.
+
+2003-12-10  Angus Leeming  <leeming@lyx.org>
+
+	* QExternal.C, ui/QExternalDialogBase.ui: add a 'draft' check box
+	and use it to fill InsetExternalParams::draft.
+
+2003-12-10  Angus Leeming  <leeming@lyx.org>
+
+	* QNote.C: changes due to the change of type of InsetNoteParams::type
+	from string to an enum.
+
+2003-12-10  Angus Leeming  <leeming@lyx.org>
+
+	* lengthvalidator.[Ch]: make <qwidget.h> visible to the class.
+
+2003-12-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lengthvalidator.[Ch] (LengthValidator): change the constructor to
+	take a QWidget* instead of QObject*.
+
+2003-12-09  Angus Leeming  <leeming@lyx.org>
+
+	* checkedwidgets.C (setWarningColor): new function that should
+	work also with Qt 2.3.x.
+	(setWidget): call setWarningColor, not setPaletteForegroundColor.
+
+2003-12-08  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QExternal.C: add using directive
+
+2003-12-05  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* QBox.[Ch]: (new)
+	* QBoxDialog.[Ch]: (new)
+	* ui/QBoxDialogBase.ui: (new)
+	* Makefile.am:
+	* Makefile.dialogs:
+	* Dialogs.C: new VSpace dialog.
+	* lengthcommon.[Ch]: add insertItem(int) method
+
+2003-12-05  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* QDocument.C: use geometry on custom, A3, B3 and B4
+	papersizes.
+
+2003-12-05  Angus Leeming  <leeming@lyx.org>
+
+	* QVCLog.[Ch]:
+	* QVCLogDialog.[Ch]:
+	* ui/QVCLogDialogBase.ui: removed.
+
+	* Makefile.am, Makefile.dialogs: remove all mention of these files.
+
+2003-12-05  Angus Leeming  <leeming@lyx.org>
+
+	* QLog.C: much simplified, thanks to the more powerful interface
+	of ControlLog.
+
+	* Dialogs.C: no need anymore to build a separate VCLog dialog.
+
+2003-12-05  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* ui/QExternalDialogBase.ui: improved layout.
+
+2003-12-04  Angus Leeming  <leeming@lyx.org>
+
+	* lengthvalidator.[Ch]: a new class LengthValidator, derived from
+	QValidator enables us to validate that the input text is a LyXLength.
+
+	* checkedwidgets.[Ch]: a new class CheckedLineEdit derived from
+	CheckedWidget enables us to add widgets to a list at build time.
+	Thereafter, their validity is checked automatically on each
+	input event, thus allowing us to 'remember' invalid widgets and
+	so control the state of the 'Apply', 'Ok' buttons.
+	As a bit of fun and to provide the user with some visual feedback,
+	the invalid widgets are displayed in red.
+
+	* Makefile.am, Makefile.dialogs: add the new files.
+
+	* QExternal.[Ch]:
+	* QExternalDialog.C:
+	* ui/QExternalDialogBase.ui: a total overhaul. In addition, the
+	dialog can now manipulate the transform data (rotate, scale, crop).
+	Makes full use of CheckedLineEdit.
+
+2003-12-01  Angus Leeming  <leeming@lyx.org>
+
+	* QContentPane.[Ch] (SyntheticMouseEvent): a new, helper struct.
+	(QContentPane): store an instance of SyntheticMouseEvent and
+	add a slot, generateSyntheticMouseEvent, that is invoked by the
+	SyntheticMouseEvent::timeout.
+	(mouseMoveEvent): initialize synthetic_mouse_event_ when the
+	mouse button is depressed and the cursor is outside of the work area.
+	(generateSyntheticMouseEvent): if the scrollbar value is different
+	from the cached value, then dispatch a 'synthetic' mouse event.
+
+2003-12-01  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QVSpace.C: remove VSPACE::NONE, remove restore button.
+	* ui/QVSpaceDialogBase.ui: remove restore button, fix tooltip.
+
+2003-12-01  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* QDocumentDialog.[Ch]: (branches) don't insert a coloritem
+	for colorless branches; implement double click for (de)activating
+	branches.
+
+	* lengthcombo.[Ch]: introduce a noPercents() method which allows
+	to use the widget without the %-items.
+	* QVSpace.C:
+	* QDocument.C: use noPercents() where appropriate.
+
+	* QParagraph.[Ch]: remove dead code and dependencies.
+
+2003-11-30  Angus Leeming  <leeming@lyx.org>
+
+	* QContentPane.C (QContentPane): squash warning about variables
+	being initialized in the wrong order.
+
+2003-11-29  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* qt_helpers.C (widgetsToLength): handle glue lengths
+	* QDocumentDialog.C: use clicked() instead of pressed()
+	for branches color button.
+	* QVSpace.[Ch]: fix a few bugs, simplify the code (by using
+	qt_helpers functions)
+	* QDocumentDialog.C:
+	* ui/QDocumentDialogBase.ui: use lengthcombo instead of
+	QComboBox (which simplifies the code).
+	* QParagraphDialog.C: whitespace
+	* ui/QParagraphDialogBase.ui: restore lost connections.
+
+2003-11-29  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* QVSpace.[Ch]: (new)
+	* QVSpaceDialog.[Ch]: (new)
+	* ui/QVSpaceDialogBase.ui: (new)
+	* Makefile.am:
+	* Makefile.dialogs:
+	* Dialogs.C: new VSpace dialog.
+
+2003-11-24  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* QContentpane.[Ch] (trackScrollbar): add
+	* QWorkarea.C (setScrollbarParams): do not track scrollbar signals
+	when manually setting the scrollbar position
+
+2003-11-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* ui/QMathDialogBase.ui: remove mention of \frac in tooltip, since
+	\f is interpreted by gettext as a special sequence.
+
+	* QDocument.C (build_dialog): remove use of latin1 in
+	some translatable strings. It confuses gettext.
+
+2003-11-20  Angus Leeming  <leeming@lyx.org>
+
+	* BulletsModule.C (setBullet): squash gcc 'may be uninitialized' warning.
+	* QTabularDialog.C (hAlign_changed, vAlign_changed): ditto.
+
+	* QLImage.C (clip_impl): squash comparison of signed, unsigned warning.
+	* QSendto.C (apply, isValid): ditto.
+	* qt_helpers.C (formatted): ditto.
+
+2003-11-05  João Luis M. Assirati  <assirati@fma.if.usp.br>
+
+	* lyx_gui.C: {set,remove}_{server,data}socket_callback(): replace
+	dummy functions with working ones
+	* socket_callback.[Ch] ():
+	new files with a class to connect sockets.
+	* Makefile.am: add the above
+
+2003-11-04  Alfredo Braunstein  <abraunst@libero.it>
+
+	* QSearch.[Ch]:
+	* QSearchDialog.C: adjust to spellcheck code changes
+
+2003-11-01  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* ui/QParagraphDialogBase.ui: finally remove [line|pagebreak]_[above|below]
+
+2003-10-27  André Pönitz  <poenitz@gmx.net>
+
+	* QParagraph.C:
+	* ui/QParagraphDialogBase.ui: partially remove [line|pagebreak]_[above|below]
+
+2003-10-27  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* QDocument.[Ch]:
+	* QDocumentDialog.[Ch]: Fix color setting of branches.
+
+2003-10-23  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* Dialogs.C:
+	* Makefile.am:
+	* Makefile.dialogs:
+	* QDocument.[Ch]:
+	* QDocumentDialog.[Ch]: Add qt gui for branches
+
+	* QBranch.[Ch]:
+	* QBranchDialog.[Ch]:
+	* ui/BranchesModuleBase.ui:
+	* ui/QBranchModuleBase.ui: new files (qt gui for branches).
+
+2003-10-22  Angus Leeming  <leeming@lyx.org>
+
+	* QExternal.C:
+	* QExternalDialogBase.ui: enable the user to choose to 'preview' the
+	external file.
+
+2003-10-14  Angus Leeming  <leeming@lyx.org>
+
+	* lyx_gui.C (start): store the LyXView in the LyX list of all LyXViews.
+
+2003-10-13  João Luis Meloni Assirati  <assirati@fma.if.usp.br>
+
+	* lyx_gui.C: Declared and allocated lyxsocket.
+
+2003-10-13  Angus Leeming  <leeming@lyx.org>
+
+	* lyx_gui.C (set_datasocket_callback, set_serversocket_callback,
+	remove_datasocket_callback, remove_serversocket_callback):
+	placeholder functions, enabling the frontend to be linked.
+
+2003-10-13  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* lyx_gui.C (start): adjust for distpatch change
+
+2003-10-08  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* qfont_loader.C: add #include (needed for LyX/Mac)
+
+2003-10-08  Angus Leeming  <leeming@lyx.org>
+
+	Fix doxygen warnings.
+
+	* QLToolbar.h: \file qt2/Toolbar_pimpl.h -> \file QLToolbar.h
+
+2003-10-07  Angus Leeming  <leeming@lyx.org>
+
+	* ui/QExternalDialogBase.ui:
+	* QExternal.[Ch]:
+	* QExternalDialog.[Ch]: allow the user to alter the extradata
+	field of InsetExternal::Params.
+
+2003-10-07  Angus Leeming  <leeming@lyx.org>
+
+	* QExternal.C: InsetExternal::Params -> InsetExternalParams.
+
+2003-10-06  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* QDelimiterDialog.h:
+	* QMathDialog.h:
+	* QSearchDialog.h:
+	* floatplacement.h:
+	* iconpalette.h:
+	* panelstack.h: add #include <string>.
+
+2003-10-01  Vitaly Lipatov  <lav@vl3143.spb.edu>
+
+	* FileDialog.C: use fromqstr in a few places to enable the dialog to
+	read non-latin filenames.
+
+2003-10-01  Angus Leeming  <leeming@lyx.org>
+
+	* QExternal.C (helpText): changes due to the introduction of
+	namespace lyx::external.
+
+2003-09-29  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* several .C files: add debug.h at top to avoid compilation
+	errors.
+
+2003-09-25  Angus Leeming  <leeming@lyx.org>
+
+	* QExternal.C (update_contents, apply): InsetExternal::Params::
+	templatename now has accessor functions.
+
+2003-09-22  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* QLPopupMenu.C (getLabel): fix so that bindings are added even if
+	shortcut is missing.
+
+2003-09-21  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* QtView.C (activated): change to take a FuncRequest, not a slot
+	anymore.
+
+	* QLToolbar.C (update): adjust
+	(add): change to take a FuncRequest
+
+	* QLPopupMenu.C (createMenu): constify id
+	(QLPopupMenu): connect to local class func fire instead of to
+	QtView::activated.
+	(fire): new class function
+	(populate): change to store a cache of FuncRequest for the menu
+	items, adjust
+
+	* QContentPane.C (keyPressEvent): fix new bug
+
+	* LyXKeySymFactory.C (create): fix new bug
+
+2003-09-19  Angus Leeming  <leeming@lyx.org>
+
+	* QInclude.C: changes dues to the changed storage in InsetInclude,
+	from an InsetInclude::params to an InsetCommandParams.
+
+2003-09-18  Angus Leeming  <leeming@lyx.org>
+
+	* QInclude.C (apply): No need to set InsetInclude::Params::flag;
+	the variable has been removed. Instead, set the command name directly.
+
+2003-09-18  Angus Leeming  <leeming@lyx.org>
+
+	* QLPainter.C:
+	* QLPainter.h:
+	* QPrefsDialog.h:
+	* lcolorcache.C:
+	* lcolorcache.h:
+	* lyx_gui.C: rename EnumLColor as LColor_color.
+
+2003-09-16  Angus Leeming  <leeming@lyx.org>
+
+	* QLImage.[Ch]: separate interface from implementation. Make all the virtual
+	functions private.
+
+2003-09-16  Angus Leeming  <leeming@lyx.org>
+
+	* QCharacter.C, QPrefs.C, lyx_gui.C: add #include "LColor.h".
+
+2003-09-15  Angus Leeming  <leeming@lyx.org>
+
+	* QLPainter.C: add #include "LColor.h".
+	* QLPainter.[Ch] (setPen, point, line, lines, rectangle, fillPolygon, arc):
+	pass EnumLColor args, rather than LColor::color ones.
+
+	* QPrefsDialog.C: add #include "LColor.h".
+	* QPrefsDialog.h: remove #include "LColor.h". Store a vector<EnumLColor> colors_;
+
+	* QWorkArea.C: add #include "LColor.h".
+
+	* lcolorcache.C: add #include "LColor.h".
+	* lcolorcache.h: store a map<EnumLColor, QColor>.
+	* lcolorcache.[Ch] (get):pass EnumLColor args, rather than LColor::color ones.
+
+	* qscreen.C: add #include "LColor.h".
+
+	* lyx_gui.C (hexname, update_color): pass EnumLColor args, rather
+	than LColor::color ones.
+
+2003-09-15  Angus Leeming  <leeming@lyx.org>
+
+	* QAbout.C (build_dialog):
+	* QPrefs.C (apply): remove STRCONV.
+
+2003-09-09  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* BulletsModule.C: change Assert to BOOST_ASSERT
+	* panelstack.C: ditto
+	* QDocument.C: ditto
+
+2003-09-08  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QLToolbar.C: include <qtoolbar.h>
+
+	* QLPopupMenu.h: include <utility>
+
+	* qt_helpers.C:
+	* qfont_loader.C: include <algorithm>
+
+2003-09-08  Angus Leeming  <leeming@lyx.org>
+
+	* FileDialog.C:
+	* QCitation.C:
+	* QCitationDialog.C:
+	* QCommandBuffer.C:
+	* QContentPane.C:
+	* QGraphics.C:
+	* QLMenubar.C:
+	* QLPopupMenu.C:
+	* QLog.C:
+	* QMathDialog.C:
+	* QParagraphDialog.C:
+	* QPrefsDialog.C:
+	* QRef.C:
+	* QTexinfo.C:
+	* QtView.C:
+	* lyx_gui.C:
+	* panelstack.C:
+	* qscreen.C:
+	* qt_helpers.C: remove redundant using directives.
+
+2003-09-07  Angus Leeming  <leeming@lyx.org>
+
+	* BulletsModule.h: remove #include "support/std_string.h", <vector>.
+	* QBrowseBox.h: remove #include <qwidget.h>.
+	* QCharacter.h: remove #include "support/std_string.h".
+	* QCharacterDialog.h: remove #include <qevent.h>, <qcheckbox.h>,
+	<qcombobox.h>.
+	* QContentPane.h: remove #include <qevent.h>.
+	* QDialogView.h: remove #include <qfont.h>.
+	* QDocumentDialog.h: remove #include "ui/BulletsModuleBase.h".
+	* QLPopupMenu.h: remove #include <map>.
+	* QLToolbar.h: remove #include <vector>.
+	* QWorkArea.h: remove #include <qwidget.h>, <qpixmap.h>.
+	* Qt2Base.h: remove #include <qfont.h>.
+	* QtLyXView.h: remove #include "frontends/LyXView.h".
+	* emptytable.h: remove #include <qpainter.h>.
+	* qsetborder.h: remove #include <qcolor.h>.
+
+2003-09-06  Angus Leeming  <leeming@lyx.org>
+
+	* QParagraph.C: add Spacing.h and vspace.h includes.
+
+2003-09-06  Angus Leeming  <leeming@lyx.org>
+
+	* QContentPane.C: add a typedef for LyXKeySymPtr.
+
+2003-09-06  Angus Leeming  <leeming@lyx.org>
+
+	* QCitationDialog.C:
+	* QMathDialog.C:
+	* QTabularDialog.C: remove using std::endl directive.
+
+2003-09-06  Kornel Benko  <kornel.benko@berlin.de>
+
+	* QLyXKeySym.C: re-add <map> header file.
+	* QBrowseBox.C: re-add <cmath> header file.
+	* qttableview.C: re-add <limits.h> header file.
+
+2003-09-05  Angus Leeming  <leeming@lyx.org>
+
+	* QCitation.h:
+	* QGraphics.h:
+	* QPrefs.h:
+	* qscreen.[Ch]:
+	ensure that the header files can be compiled stand-alone.
+
+2003-09-05  Angus Leeming  <leeming@lyx.org>
+
+	* *.C: strip out redundant #includes. (352 in total.)
+
+2003-09-03  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* ui/QTabularDialogBase.ui: fix typo in tooltip.
+
+2003-08-18  Bas Zoetekouw  <bas@o2w.nl>
+
+	* ui/QRefDialogBase.ui: add eqref entry
+
+2003-08-12  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* QTabularDialog.C:
+	* QTabular.C: rename LYX_VALIGN_CENTER to LYX_VALIGN_MIDDLE;
+	rename VCENTER to MIDDLE;
+	* ui/QTabularDialogBase.ui:
+	* ui/QMathMatrixDialogBase.ui: replace "Center" by "Middle"
+	* ui/QBibtexDialogBase.ui: rename "Bibtex" to "BibTeX"
+	* ui/QDocumentDialogBase.ui: Remove redundant ' ' from message
+
+2003-08-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QWorkArea.C (QWorkArea):
+	(dragEnterEvent):
+	(dropEvent): add support for drag and drop of URIs
+
+2003-08-03  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* ui/moc/Makefile.am (INCLUDES): forgot to use QT_INCLUDES
+
+2003-08-02  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* ui/Makefile.am (INCLUDES):
+	* moc/Makefile.am (INCLUDES):
+	* Makefile.am (INCLUDES): use QT_INCLUDES
+
+	* QLToolbar.C (clearLayoutList): call Toolbar::clearLayoutList
+
+2003-07-30  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* ui/QCitationDialogBase.ui: Omit correct signal for styleCO changes
+	(bug 1284).
+	* QNote.C:
+	* ui/QNoteDialogBase.ui: consistent terminology for note inset (bug 1270)
+
+2003-07-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* qfont_loader.C:
+	* QLPopupMenu.h: add includes needed by gcc 2.95.3
+
+2003-07-27  John Levon  <levon@movementarian.org>
+
+	* QToc.h:
+	* QToc.C: fix compile for lyx::toc
+
+2003-07-26  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QPrefs.C:
+	* QDocumentDialog.C:
+	* QDocument.C:
+	* QGraphics.C: adapt PAPER_* enums
+
+2003-07-25  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QLMenubar.h:
+	* QLMenubar.C: derives from Menubar (replaces Menubar::Pimpl)
+
+	* Menubar_pimpl.C:
+	* Menubar_pimpl.h: removed
+
+	* QtView.C: modified because of changes above
+
+2003-07-25  Jean-Marc Lasgouttes <lasgouttes@lyx.org>
+
+	* QLToolbar.h:
+	* QLToolbar.C: derives from Toolbar (replaces Toolbar::Pimpl)
+
+	* Toolbar_pimpl.C:
+	* Toolbar_pimpl.h: removed
+
+	* QtView.C: modified because of changes above
+
+2003-07-24  John Levon  <levon@movementarian.org>
+
+	* QPrefs.C: make sure to correctly split a default
+	lyxrc font for finding the font in the combo box
+	(bug 1285)
+
+2003-07-23  Angus Leeming  <leeming@lyx.org>
+
+	* QExternal.C (apply, update_contents):
+	changes due to the use of the FileName class to store the external
+	file name.
+
+	* QGraphics.C (apply, update_contents): use Kernel::bufferFilepath()
+	wrapper.
+
+2003-07-21  Angus Leeming  <leeming@lyx.org>
+
+	* QGraphics.C (apply, update_contents):
+	changes due to the use of the FileName class to store the graphics
+	file name.
+
+2003-07-21  Angus Leeming  <leeming@lyx.org>
+
+	* QExternal.C (update_contents, apply):
+	* QGraphics.C (update_contents, apply):
+	* QLPainter.C (image):
+	* QPrefs.C (update_contents, apply): use namespace lyx::graphics rather
+	than grfx shortcut.
+
+2003-07-21  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* QBibTeXDialog.C:
+	* QCitationDialog.C:
+	* ui/QBibTeXAddDialogBase.ui:
+	* ui/QCitationFindDialogBase.ui:
+	Allow multiple selections, forbid duplicates (bug 1146)
+
+2003-07-19  John Levon  <levon@movementarian.org>
+
+	* ui/QTabularCreateDialogBase.ui: set a max size (bug 1152)
+
+2003-07-18  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* Qt2Base.h (controller): ditto
+
+	* QDialogView.h (controller): follow C++ rules more closely.
+
+2003-07-15  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* QTabular.C:
+	* QTabularDialog.C: handle clever width input (bug 1156)
+
+2003-07-15  John Levon  <levon@movementarian.org>
+
+	* QMathDialog.C: use widget(i) not visibleWidget() due to
+	issue N26610 in Qt 3.2.0beta2
+
+2003-07-10  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* Menubar_pimpl.C (Pimpl): when creating a top-level menu, make
+	sure that it is initialized to some reasonable value, so that the
+	(ugly) Qt/Mac code can do its magic (conditionally on Q_WS_MAC).
+
+2003-07-09  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* ui/QNoteDialog.ui:
+	* QNoteDialog.[Ch]:
+	* QNote.[Ch]:
+	* Makefile.dialogs:
+	* Dialogs.C:
+	* Dialogs2.C: New Annotation (Note) dialog
+
+2003-07-11  André Pönitz  <poenitz@lyx.org>
+
+	* Alert_pimpl.C:
+	* QDocument.C: use bformat() instead of #ifdef
+
+2003-07-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* introduce namespace lyx::graphics
+
+2003-07-03  John Levon  <levon@movementarian.org>
+
+	* ui/QTexinfoDialog.ui: enable View properly
+
+2003-07-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* introduce namespace lyx::support
+
+2003-06-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* QLPopupMenu.C: fix \file
+
+	* BulletsModule.C (BulletsModule): fix type const order (opposite
+	of everywhere else in the lyx code)
+	* QAboutDialog.C (QAboutDialog): ditto
+	* QBrowseBox.C (QBrowseBox): ditto
+	(exec): ditto
+	* and several more files the same...
+
+2003-06-27  Alfredo Braunstein  <abraunst@libero.it>
+
+	* lyx_gui.C (start): use BufferView::loadLyXFile
+
+2003-06-12  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* Toolbar_pimpl.C (add): do not add unknown lfuns
+
+2003-06-21  Alfredo Braunstein  <abraunst@libero.it>
+
+	* QError.[Ch]:
+	* QErrorDialog.[Ch]:
+	* ui/QErrorDialogBase.ui: removed
+	* Makefile.am:
+	* Makefile.dialogs:
+	* Dialogs.C: adjust
+
+2003-06-21  Alfredo Braunstein  <abraunst@libero.it>
+
+	* QDocumentDialog.C: header reordering to handle qt/boost "signals"
+	symbol clash
+
+2003-06-20  Angus Leeming  <leeming@lyx.org>
+
+	* QBibtexDialog.C (browsePressed): fix warning of comparison between
+	signed and unsigned ints.
+
+	* QBibtex.C (update_contents): changes due to changed controller
+	interface.
+
+	* QTexinfo.[Ch]:
+	* QTexinfoDialog.C: clean-up handling of TeX file databases.
+
+2003-06-19  Alfredo Braunstein  <abraunst@libero.it>
+
+	* lyx_gui.C (start): call ::loadLyXFile instead
+	of BufferList::loadLyXFile
+
+2003-06-19  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C:
+	* Dialogs2.C:
+	* QTexinfo.[Ch]: changes to use the new Dialog-based scheme.
+
+2003-06-19  Angus Leeming  <leeming@lyx.org>
+
+	* lyx_gui.C (getStatus): changes due to replacement of lots of lfuns
+	with LFUN_DIALOG_SHOW <name>.
+
+2003-06-17  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C: rename math panel identifier as "mathpanel".
+	* Dialogs2.C (showMathPanel): removed.
+
+2003-06-17  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C:
+	* QDelimiterDialog.C:
+	* QMath.[Ch]:
+	* QMathDialog.C:
+	* QMathMatrixDialog.C: s/ControlMath2/ControlMath/.
+
+2003-06-17  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C (build): create "mathdelimiter" and "mathmatrix" dialogs.
+
+	* QMath.[Ch]: add QMathMatrix and QMathDelimiter classes.
+
+	* QDelimiterDialog.[Ch]: store a QMathDelimiter*, not a QMath*.
+	* QMathMatrixDialog.[Ch]: store a QMathMatrix*, not a QMath*.
+
+	* QMathDialog.C (delimiterClicked, matrixClicked): fix memory leaks.
+
+2003-06-14  John Levon  <levon@movementarian.org>
+
+	* ui/QPrintDialogBase.ui: make "OK" default
+
+2003-06-13  John Levon  <levon@movementarian.org>
+
+	* ui/QRefDialogBase.ui: reduce visual clutter
+
+2003-06-13  John Levon  <levon@movementarian.org>
+
+	* qfont_loader.C: handle Qt 3.2 beta1's "xft" raw name
+
+2003-06-12  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C: add the math dialog.
+	* Dialogs2.C: a temporary hack; keep showMathPanel() but invoke (and store)
+	the new dialog.
+
+	* QMath.[Ch]: derive from QDialogView.
+
+	* QMathDialog.C:
+	* QDelimiterDialog.C:
+	* QMathMatrixDialog.C: the dispatch functions are now in the controller.
+
+2003-06-12  Angus Leeming  <leeming@lyx.org>
+
+	* QExternalDialog.C (editClicked): do not call form_->changed().
+
+2003-06-11  Angus Leeming  <leeming@lyx.org>
+
+	* QExternal.C: changes due to InsetExternal::Params no longer
+	storing the ExternalTemplate but its name.
+	* QRef.C: move #include "insets/insetref.h" above the Qt headers.
+	Something nasty going on with Qt polluting the global namespace.
+
+2003-06-10  Angus Leeming  <leeming@lyx.org>
+
+	* QDocument.C (apply): compilation fix after Lars' changes ;-)
+
+2003-06-10  Angus Leeming  <leeming@lyx.org>
+
+	* QExternal.C (update_contents): show the help text when the dialog is
+	opened.
+
+2003-06-06  John Levon  <levon@movementarian.org>
+
+	* ui/QExternalDialogBase.ui: re-org
+
+2003-06-04  Angus Leeming  <leeming@lyx.org>
+
+	* QExternal.C:
+	* ui/QExternalDialogBase.ui: remove the widget to input the removed
+	InsetExternal::Params::parameters variable.
+
+2003-06-03  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C (build): change the External dialog button policy to
+	NoRepeatedApplyReadOnlyPolicy.
+
+	* QExternal.C:
+	* QExternalDialog.[Ch]:
+	* ui/QExternalDialogBase.ui:
+	add widgets to set the way the External dialog is
+	displayed within LyX.
+	Remove the buttons to trigger the View command and the Update command
+	(duplicates Apply).
+
+2003-06-03  John Levon  <levon@movementarian.org>
+
+	* lyx_gui.C: add sync_events()
+	* qscreen.C: remove previous hack for bug 818
+
+2003-06-03  John Levon  <levon@movementarian.org>
+
+	* qscreen.C: paint before saving the cursor pixmap
+	(bug 818)
+
+2003-06-03  John Levon  <levon@movementarian.org>
+
+	* QTabular.C: fix a crash
+
+2003-06-01  John Levon  <levon@movementarian.org>
+
+	* QGraphicsDialog.C: use relative file browsing
+	(bug 1028)
+
+2003-05-24  John Levon  <levon@movementarian.org>
+
+	* Toolbar_pimpl.C: workaround a Qt bug with combobox
+	popup
+
+2003-05-24  John Levon  <levon@movementarian.org>
+
+	* Makefile.am:
+	* lcolorcache.h:
+	* lcolorcache.C: add LColor::color -> QColor cache
+
+	* QLPainter.C:
+	* QPrefs.C:
+	* QWorkArea.C:
+	* lyx_gui.C: use it
+
+2003-05-22  Angus Leeming  <leeming@lyx.org>
+
+	compile fixes.
+	* QDialogView.h: QController and QView c-tors take a string not a
+	QString.
+	* Qt2Base.h: ditto for the Qt2DB and Qt2CB c-tors.
+
+	* QDocument.C (c-tor):
+	* QPrefs.C (c-tor):
+	* QPrint.C (c-tor):
+	* QSearch.C (c-tor):
+	* QSendto.C (c-tor):
+	* QSpellchecker.C (c-tor):
+	* QTexinfo.C (c-tor): pass a string not a QString to the base class.
+
+	* QIndex.[Ch](c-tor): pass it a string, not a QString.
+
+	* Dialogs.C (build): the title passed to the Index dialog is a string,
+	not a QString.
+
+2003-05-21  Alfredo Braunstein  <abraunst@libero.it>
+
+	* Qt2Base.[Ch]:
+	* QDialogView.[Ch] (setTitle): added
+	* QAbout.C:
+	* QBibitem.C:
+	* QBibtex.C:
+	* QChanges.C:
+	* QCharacter.C:
+	* QCitation.C:
+	* QERT.C:
+	* QError.C:
+	* QErrorList.C:
+	* QErrorListDialog.C:
+	* QExternal.C:
+	* QFloat.C:
+	* QGraphics.C:
+	* QInclude.C:
+	* QLog.C:
+	* QMinipage.C:
+	* QParagraph.C:
+	* QRef.C:
+	* QShowFile.C:
+	* QTabular.C:
+	* QTabularCreate.C:
+	* QThesaurus.C:
+	* QToc.C:
+	* QURL.C:
+	* QVCLog.C:
+	* QWrap.C: the argument to Dialog::View ctor is now a string. use
+	setTitle instead of setCaption when appropriate
+
+2003-05-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QErrorListDialog.C: remove include for <qtextedit.h>
+
+2003-05-21  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* qt_helpers.C: include <algorithm> for std::min.
+
+2003-05-20  Alfredo Braunstein  <abraunst@libero.it>
+
+	* QErrorList.[Ch]: small bugs fixed.
+
+2003-05-17  Alfredo Braunstein  <abraunst@libero.it>
+
+	* QErrorList.C (update_contents): replace TextBrowser::clear() by
+	TextBrowser::setText(QString())
+
+2003-05-14  Juergen Spitzmueller <juergen.sp@t-online.de>
+
+	* QErrorList.C (select): added a missing toqstr()
+
+2003-05-14  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* Menubar_pimpl.C (~Pimpl): move out of line
+	(update): ditto
+	(view): ditto
+	(backend): ditto
+
+2003-05-13  Alfredo Braunstein  <abraunst@libero.it>
+
+	* QErrorList.[Ch]:
+	* QErrorListDialog.[Ch]: added
+	* Makefile.dialogs:
+	* Makefile.am: the above additions
+	* Dialogs.C: ditto
+
+2003-05-13  André Pönitz  <poenitz@lyx.org>
+
+	* Document.C:
+	* QGraphics.C:
+	* QTabular.C:
+	* QPref.C:
+	* QTabular.C:
+	* QWrap.C:
+	* QMinipage.C: tostr() has a header of its own now
+
+2003-05-08  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* ui/moc/Makefile.am: better lib building
+
+	* ui/Makefile.am: better lib building
+
+	* moc/Makefile.am: better lib building
+
+	* QtView.h: have to include config.h so that all code see the
+	defines therein.
+
+	* Makefile.am: better lib building
+
+2003-05-02  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* QDocument.C:
+	* QDocumentDialog.C: Handle document classes with missing TeX class
+	(-> class name prefix: "Unavailable: ")
+
+2003-05-03  John Levon  <levon@movementarian.org>
+
+	* qscreen.h:
+	* qscreen.C: implement new cursor API
+
+2003-04-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QPrefs.C (apply): only set colors if they are different from
+	their original values
+
+2003-04-30  John Levon  <levon@movementarian.org>
+
+	* various: change dialog titles to match new menu layout
+
+2003-04-29  John Levon  <levon@movementarian.org>
+
+	* ui/QGraphicsDialogBase.ui: re-organise visually
+
+2003-04-27  John Levon  <levon@movementarian.org>
+
+	* Alert_pimpl.C: handle cancel_button
+
+	* QTabular.C:
+	* QTabularDialog.C:
+	* QTabularDialog.h:
+	* ui/QTabularDialogBase.ui: ui fixes
+
+2003-04-23  John Levon  <levon@movementarian.org>
+
+	* QCitationDialog.C: close dialog on return in listbox
+	(bug 866)
+
+2003-04-23  John Levon  <levon@movementarian.org>
+
+	* QPrefs.C:
+	* lyx_gui.C: fix bug 1063
+
+2003-04-15  Angus Leeming  <leeming@lyx.org>
+
+	* QLImage.C: #include lstrings.h.
+
+2003-04-15  John Levon  <levon@movementarian.org>
+
+	* QCommandBuffer.h:
+	* QCommandBuffer.C: make a widget not a toolbar
+
+	* QtView.h:
+	* QtView.C: don't let the toolbars be movable.
+	Create addCommandBuffer(), and handle no command buffer.
+
+	* Toolbar_pimpl.C: handle toolbar placement flags, and
+	Minibuffer.
+
+2003-04-14  John Levon  <levon@movementarian.org>
+
+	* QPrefs.C: fix warning
+
+2003-04-12  John Levon  <levon@movementarian.org>
+
+	* ui/QExternalDialogBase.ui: fix tab order
+
+2003-04-12  John Levon  <levon@movementarian.org>
+
+	* floatplacement.C: fix tab order
+
+	* QTocDialog.C:
+	* QThesaurusDialog.C: hide the pointless QHeader
+
+2003-04-12  John Levon  <levon@movementarian.org>
+
+	* ui/QBibtexDialogBase.ui:
+	* ui/QBibtexAddDialogBase.ui:
+	* Makefile.dialogs:
+	* QBibtex.C:
+	* QBibtexDialog.h:
+	* QBibtexDialog.C: do the same thing with bibtex
+
+2003-04-12  John Levon  <levon@movementarian.org>
+
+	* Makefile.dialogs:
+	* ui/QCitationDialogBase.ui:
+	* ui/QCitationFindDialogBase.ui:
+	* QCitation.C:
+	* QCitationDialog.h:
+	* QCitationDialog.C: move the search/add citation
+	stuff into a separate dialog.
+
+2003-04-10  John Levon  <levon@movementarian.org>
+
+	* QTabularDialog.h:
+	* QTabularDialog.C:
+	* ui/QTabularDialog.ui: move stuff to controller
+
+2003-04-10  John Levon  <levon@movementarian.org>
+
+	* ui/NumberingModuleBase.ui: bug 1032
+
+2003-04-10  John Levon  <levon@movementarian.org>
+
+	* QtView.C: Toolbar ctor changed
+
+	* Toolbar_pimpl.h:
+	* Toolbar_pimpl.C: store toolbars in a map
+	for show/hide as needed
+
+2003-04-09  John Levon  <levon@movementarian.org>
+
+	* Toolbar_pimpl.h:
+	* Toolbar_pimpl.C: handle API change for multiple
+	toolbars
+
+2003-04-08  John Levon  <levon@movementarian.org>
+
+	* Toolbar_pimpl.C: move xpm code into ToolbarBackend,
+	handle tooltip
+
+2003-04-07  John Levon  <levon@movementarian.org>
+
+	* ui/QIncludeDialogBase.ui: make "Show preview"
+	call change_adaptor()
+
+2003-04-07  John Levon  <levon@movementarian.org>
+
+	* QtView.h:
+	* QtView.C: implement clearMessage()
+
+2003-04-07  John Levon  <levon@movementarian.org>
+
+	* QtView.h:
+	* QtView.C: rename idle_timer_. Make it single-shot.
+	  Do not over-write an explicit message with the
+	  default message.
+
+2003-04-05  John Levon  <levon@movementarian.org>
+
+	* QCommandBuffer.C:
+	* QCommandEdit.C:
+	* QCommandEdit.h: use tab instead of right-arrow
+	for completion
+
+2003-04-04  John Levon  <levon@movementarian.org>
+
+	* panelstack.C: hide the pointless header
+
+2003-04-04  John Levon  <levon@movementarian.org>
+
+	* QCitation.C:
+	* QCitationDialog.C:
+	* QCitationDialogBase.ui: some UI fixes, remove
+	text before, add accelerators
+
+2003-04-03  John Levon  <levon@movementarian.org>
+
+	* QRefDialog.h:
+	* QRefDialog.C: set focus on the refs list. Don't
+	use "Goto" jargon. Add some accelerators. Make return/click
+	on a reference close the dialog. Don't use obsolete inSort()
+
+2003-04-01  John Levon  <levon@movementarian.org>
+
+	* QtView.C:
+	* Toolbar_pimpl.C: ToolbarDefaults got renamed,
+	handle no toolbar
+
+2003-03-31  John Levon  <levon@movementarian.org>
+
+	* lyx_gui.C: return useful default font names, add use_gui
+
+	* QPrefs.C: remove some dead font code
+
+	* qfont_loader.C: use_gui moved.
+	* qfont_metrics.C: use_gui moved.
+
+2003-03-31  John Levon  <levon@movementarian.org>
+
+	* Alert_pimpl.C: remove alert()
+
+2003-03-29  John Levon  <levon@movementarian.org>
+
+	* QBrowseBox.C: handle transparent pixmaps
+
+2003-03-29  John Levon  <levon@movementarian.org>
+
+	* QBrowseBox.h:
+	* QBrowseBox.C: fix bug 908
+
+2003-03-29  John Levon  <levon@movementarian.org>
+
+	* ui/BulletsModuleBase.ui: final tweaks
+
+2003-03-29  John Levon  <levon@movementarian.org>
+
+	* Alert_pimpl.C: implement warning(), information(), error()
+
+2003-03-29  John Levon  <levon@movementarian.org>
+
+	* Alert_pimpl.C: implement prompt()
+
+2003-03-29  John Levon  <levon@movementarian.org>
+
+	* QDocument.C:
+	* QDocumentDialog.C:
+	* QDocumentDialog.h:
+	* ui/NumberingModuleBase.ui: feedback for numbering
+
+	* ui/TextLayoutModuleBase.ui: relayout
+
+2003-03-29  John Levon  <levon@movementarian.org>
+
+	* BulletsModule.h:
+	* BulletsModule.C:
+	* QDocumentDialog.C:
+	* ui/BulletsModuleBase.ui: completely rework the
+	bullets panel
+
+2003-03-28  John Levon  <levon@movementarian.org>
+
+	* ui/QDocumentDialogBase.ui: small tweak
+
+2003-03-28  John Levon  <levon@movementarian.org>
+
+	* QPrefs.C:
+	* ui/QPrefSpellcheckerModule.ui: fix bug 978
+
+2003-03-28  John Levon  <levon@movementarian.org>
+
+	* ui/QCharacterDialogBase.ui: re-org, fix bug 999
+
+2003-03-28  John Levon  <levon@movementarian.org>
+
+	* QParagraph.C:
+	* QParagraphDialog.C:
+	* ui/QParagraphDialog.ui: don't use negative checkbox
+	strings. Add whats this for label width. Add tooltips
+	(bug 997). Never show "Senseless with this layout!"
+
+	* lengthcombo.C: remove pointless whatsthis
+
+2003-03-28  John Levon  <levon@movementarian.org>
+
+	* panelstack.C: compile fixes for Qt 2.3
+
+2003-03-28  John Levon  <levon@movementarian.org>
+
+	* QFloat.C:
+	* QFloatDialog.h:
+	* QFloatDialog.C:
+	* ui/QFloatDialog.ui:
+	* Makefile.dialogs:
+	* moc/Makefile.am:
+	* floatplacement.h:
+	* floatplacement.C: move the float code into its
+	  own widget
+
+	* QDocument.C:
+	* QDocumentDialog.h:
+	* QDocumentDialog.C: use that widget
+
+	* Makefile.dialogs:
+	* QDocument.C:
+	* QDocumentDialog.h:
+	* QDocumentDialog.C:
+	* ui/QDocumentDialogBase.ui:
+	* ui/ClassModuleBase.ui:
+	* ui/PaperModuleBase.ui:
+	* ui/PackagesModuleBase.ui:
+	* ui/MathsModuleBase.ui:
+	* ui/LatexModuleBase.ui:
+	* ui/PageLayoutModuleBase.ui:
+	* ui/TextLayoutModuleBase.ui: big re-organisation
+	of the doc dialog panes
+
+2003-03-28  John Levon  <levon@movementarian.org>
+
+	* panelstack.C: make sure the first panel is visible
+
+	* QDocument.h:
+	* QDocument.C: add (unused) showPreamble
+
+	* QDocumentDialog.h:
+	* QDocumentDialog.C:
+	* ui/QDocumentDialog.ui: use PanelStack
+
+2003-03-28  John Levon  <levon@movementarian.org>
+
+	* Makefile.am:
+	* Makefile.dialogs:
+	* moc/Makefile.am:
+	* panelstack.h:
+	* panelstack.C: add new class for handling paned dialogs
+
+	* QPrefsDialog.h:
+	* QPrefsDialog.C:
+	* ui/QPrefsDialogBase.ui: use the above
+
+	* ui/QPrefUIModule.ui: re-layout
+
+2003-03-27  John Levon  <levon@movementarian.org>
+
+	* ui/QParagraphDialogBase.ui: fix dupe accelerator / group label
+
+2003-03-27  John Levon  <levon@movementarian.org>
+
+	* QLyXKeySym.C: remove debug stuff from startup hot path
+
+2003-03-26  Edwin Leuven  <e.leuven@uva.nl>
+
+	* bulletstring.[Ch]: unused; remove
+
+2003-03-26  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C:
+	* Dialogs2.C:
+	* Dialogs3.C:
+	* Dialogs_impl.h:
+	move the contents of Dialogs.C and Dialogs_impl.h into Dialogs2.C.
+	move Dialog3.C to Dialogs.C.
+
+	* Makefile.am: remove Dialogs_impl.h, Dialog3.C.
+
+2003-03-26  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C:
+	* Dialogs2.C:
+	* Dialogs_impl.h: remove the thesaurus dialog.
+
+	* Dialogs3.C: add it here.
+
+	* QThesaurus.[Ch]: changes to use the new Dialog-based scheme.
+
+2003-03-25  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C:
+	* Dialogs2.C:
+	* Dialogs_impl.h: remove the log, showfile and vclog dialogs.
+
+	* Dialogs3.C: add these dialogs.
+
+	* QLog.[Ch]:
+	* QShowFile.[Ch]:
+	* QVCLog.[Ch]: changes to use the new Dialog-based scheme.
+
+2003-03-23  John Levon  <levon@movementarian.org>
+
+	* lyx_gui.C: remove unused variables
+
+2003-03-22  John Levon  <levon@movementarian.org>
+
+	* qscreen.C: remove "internal" parameter, unused
+
+2003-03-21  John Levon  <levon@movementarian.org>
+
+	* QDocument.C: fix swapping of TOC and secnum depth
+
+2003-03-15  John Levon  <levon@movementarian.org>
+
+	* QMathDialog.C: "Sans serif" not "San serif"
+
+2003-03-15  John Levon  <levon@movementarian.org>
+
+	* ui/QMathDialogBase.ui: fix english in a tooltip
+
+2003-03-15  John Levon  <levon@movementarian.org>
+
+	* ui/QRefDialogBase.ui: s/Goto/Go to reference/
+
+2003-03-12  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QParagraph.C (apply): do not reset vfill spacing to 'none' when
+	there is no explicit length given (off by one typo)
+
+2003-03-13  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C:
+	* Dialogs2.C:
+	* Dialogs_impl.h: remove paragraph dialog.
+
+	* Dialogs3.C: add paragraph dialog.
+
+	* QParagraph.[Ch]: changes to use the new Dialog-based scheme.
+
+2003-03-12  John Levon  <levon@movementarian.org>
+
+	* ui/QPrefsDialogBase.ui: resizing improvement
+
+2003-03-12  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C:
+	* Dialogs2.C:
+	* Dialogs_impl.h: remove character dialog.
+
+	* Dialogs3.C: add character dialog.
+
+	* QCharacter.[Ch]: changes to use the new Dialog-based scheme.
+
+
+2003-03-12  John Levon  <levon@movementarian.org>
+
+	* QSearch.C: don't disable checkboxes on RO doc (bug 937)
+
+2003-03-10  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs3.C (build): the "tabularcreate" dialog is always valid.
+	Use IgnorantPolicy for thr B.C.
+
+2003-03-09  Angus Leeming  <leeming@lyx.org>
+
+	* lots of files: changes associated with the clean-up of the
+	ButtonController.
+
+2003-03-09  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C:
+	* Dialogs2.C:
+	* Dialogs_impl.h: remove merge changes dialog.
+
+	* Dialogs3.C: add merge changes dialog.
+
+	* QChanges.[Ch]: changes to use the new Dialog-based scheme.
+
+2003-03-09  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C:
+	* Dialogs2.C:
+	* Dialogs_impl.h: remove about lyx dialog.
+
+	* Dialogs3.C: add about lyx dialog.
+
+	* QAbout.[Ch]: changes to use the new Dialog-based scheme.
+
+2003-03-09  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C:
+	* Dialogs2.C:
+	* Dialogs_impl.h: remove tabularcreate dialog.
+
+	* Dialogs3.C: add tabularcreate dialog.
+
+	* QTabularCreate.[Ch]: changes to use the new Dialog-based scheme.
+
+2003-03-09  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C:
+	* Dialogs2.C:
+	* Dialogs_impl.h: remove tabular dialog.
+
+	* Dialogs3.C: add tabular dialog.
+
+	* QTabular.[Ch]: changes to use the new Dialog-based scheme.
+
+2003-03-09  Angus Leeming  <leeming@lyx.org>
+
+	* QDialogView.h: make controller methods of QController public to
+	enable the QXyzDialog classes to access the controller if need be.
+	* Qt2Base.h: ditto for the controller methods of Qt2CB.
+
+	* QTabular.C:
+	* QTabularDialog.C: changes due to the changed ControlTabular
+	interface.
+
+2003-03-07  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* QPrefs.C:
+	* QPrefSpellcheckerModule.ui: Add 'hspell' option.
+
+2003-03-07  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C:
+	* Dialogs2.C:
+	* Dialogs_impl.h: remove graphics dialog.
+
+	* Dialogs3.C: add graphics dialog.
+
+	* QGraphics.[Ch]: changes to use the new Dialog-based scheme.
+
+2003-03-07  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C:
+	* Dialogs2.C:
+	* Dialogs_impl.h: remove minipage dialog.
+
+	* Dialogs3.C: add minipage dialog. No longer use the bibitem, include,
+	label or url controllers; use ControlCommand instead.
+
+	* QBibitem.[Ch]:
+	* QIndex.[Ch]:
+	* QURL.[Ch]: changes due to use of ControlCommand, above
+
+	* QBibitemDialog.C: no need to include controller.
+
+	* QMinipage.[Ch]: changes to use the new Dialog-based scheme.
+
+2003-03-06  Alfredo Braunstein  <abraunst@libero.it>
+
+	* qscreen.C: use LyXText::top_y() instead of LyXText::first_y
+
+2003-03-06  John Levon  <levon@movementarian.org>
+
+	* ui/QPrefUIModule.ui: make max last files reflect reality,
+	spotted by Michael Abshoff
+
+2003-03-06  John Levon  <levon@movementarian.org>
+
+	* QDocument.C: compile fix
+
+2003-03-06  John Levon  <levon@movementarian.org>
+
+	* QExternalDialog.C: connect Apply
+
+2003-03-05  Angus Leeming  <leeming@lyx.org>
+
+	* QWrap.[Ch]: changes to use the new Dialog-based scheme.
+
+	* Dialogs.C:
+	* Dialogs2.C:
+	* Dialogs_impl.h: remove wrap dialog.
+
+	* Dialogs3.C: add wrap dialog.
+
+2003-03-05  Angus Leeming  <leeming@lyx.org>
+
+	* QFloat.[Ch]: changes to use the new Dialog-based scheme.
+
+	* Dialogs.C:
+	* Dialogs2.C:
+	* Dialogs_impl.h: remove float dialog.
+
+	* Dialogs3.C: add float dialog.
+
+2003-03-05  Angus Leeming  <leeming@lyx.org>
+
+	* QFloat.C (update_contents): rename FloatParams as InsetFloatParams.
+
+2003-03-05  Angus Leeming  <leeming@lyx.org>
+
+	* QInclude.[Ch]: changes to use the new Dialog-based scheme.
+
+	* Dialogs.C:
+	* Dialogs2.C:
+	* Dialogs_impl.h: remove include dialog.
+
+	* Dialogs3.C: add include dialog.
+
+2003-03-05  Angus Leeming  <leeming@lyx.org>
+
+	* QExternal.[Ch]: changes to use the new Dialog-based scheme.
+
+	* Dialogs.C:
+	* Dialogs2.C:
+	* Dialogs_impl.h: remove external dialog.
+
+	* Dialogs3.C: add external dialog.
+
+2003-03-05  Angus Leeming  <leeming@lyx.org>
+
+	* QIndex.[Ch]: minimal changes needed to use this dialog
+	for both the Index and the Label dialogs.
+
+	* Dialogs3.C: add label dialog.
+
+2003-03-03  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* qfont_loader.C (available): Rewrite as the old version did not
+	work properly.
+
+2003-02-28  Alfredo Braunstein <abraunst@libero.it>
+
+	* QLImage.C
+	* QSendto.C
+	* QSendtoDialog.C: removed #include "converter.h", and...
+	* QPrefs.h: added #include "format.h"
+
+2003-02-25  John Levon  <levon@movementarian.org>
+
+	From Nathan Weston
+
+	* QBibtexDialogBase.ui:
+	* QCharacterDialogBase.ui:
+	* QCitationDialogBase.ui:
+	* QDocumentDialogBase.ui:
+	* QExternalDialogBase.ui:
+	* QFloatDialogBase.ui:
+	* QMinipageDialogBase.ui:
+	* QParagraphDialogBase.ui: fix default button to be OK (bug #921)
+
+2003-02-23  John Levon  <levon@movementarian.org>
+
+	* ui/QParagraphDialogBase.ui: fix dupe accelerator (bug #918)
+
+2003-02-22  Alfredo Braunstein <abraunst@libero.it>
+
+	* lyx_gui.C (parse_init): added a call to LoaderQueue::setPriority
+
+2003-02-21  Angus Leeming  <leeming@lyx.org>
+
+	* Timeout_pimpl.[Ch]: removed.
+	* qtTimeout.[Ch]: new files, replacing the above.
+	The qtTimeout class derives from Timeout::Impl.
+
+2003-02-21  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* qfont_loader.C (addFontPath): make debug messages quieter
+
+2003-02-21  Angus Leeming  <leeming@lyx.org>
+
+	* FileDialog.C (FileDialog): no need for LyXView *.
+
+2003-02-17  John Levon  <levon@movementarian.org>
+
+	* QSpellchecker.h:
+	* QSpellchecker.C:
+	* ui/QSpellcheckerDialogBase.ui:
+	* QSpellcheckerDialog.h:
+	* QSpellcheckerDialog.C: re-working, remove start etc.
+
+	* README: add comment about checking accelerators
+
+2003-02-17  John Levon  <levon@movementarian.org>
+
+	* ui/QPrefSpellcheckerModule.ui: capitalization fix
+
+2003-02-16  John Levon  <levon@movementarian.org>
+
+	* QX.C: consistent title labels for dialogs.
+
+2003-02-15  John Levon  <levon@movementarian.org>
+
+	* ui/QSpellcheckerDialogBase.ui: make "Accept" be "Ignore All"
+
+	* QSpellchecker.C: default to the first suggestion in replace
+	  combo
+
+2003-02-15  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* QLPopupMenu.C (populate): adapt to menubackend change. In
+	particular, unknown and optional+disabled elements are never seen.
+	(disabled): remove. This is done in backend now.
+
+2003-02-15  John Levon  <levon@movementarian.org>
+
+	* QDocument.C:
+	* QDocumentDialog.C:
+	* ui/LanguageModuleBase.ui: improve UI of language encoding
+
+2003-02-15  John Levon  <levon@movementarian.org>
+
+	* ui/BulletsModuleBase.ui:
+	* ui/ClassModuleBase.ui:
+	* ui/LanguageModuleBase.ui:
+	* ui/MarginsModuleBase.ui:
+	* ui/NumberingModuleBase.ui:
+	* ui/QPrefScreenFontsModule.ui:
+	* ui/QPrefsDialogBase.ui: tab ordering fixes
+
+	* README: add some rules
+
+2003-02-15  John Levon  <levon@movementarian.org>
+
+	* QPrefs.C: fix silly typo that screwed up the print
+	  parameters
+
+2003-02-14  John Levon  <levon@movementarian.org>
+
+	* QtView.h:
+	* QtView.C: change prohibit/allowInput() to be busy(bool),
+	  and actually implement the busy cursor
+
+2003-02-09  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* QBibtexDialog.C: Fix browsing mechanism of *.sty files (bug 773).
+
+	* ui/QBibtexDialogBase.ui: Remove unused Update button (bug 773).
+	Replace addBib LineEdit with ComboBox.
+
+	* QBibtex.C: Insert available .bib-files into addBibCB.
+
+2003-02-13  John Levon  <levon@movementarian.org>
+
+	* ui/QSpellcheckerDialogBase.ui: A&dd not &Add, bug 884
+
+2003-02-10  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* QDocument.C: Allow qt users actually to use another
+	papersize than default (set params.paperpackage).
+
+2003-02-09  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* QDocumentDialog.[Ch]: Show A4 packages also when default
+	papersize is A4 (and default chosen) and only in portrait mode.
+
+2003-02-12  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* qfont_metrics.C: Add checks for lyxrc.use_gui.
+	This fixes 'lyx -e' with the QT frontend.
+
+2003-02-10  João Luis Meloni Assirati  <assirati@fma.if.usp.br>
+
+	* ui/QMathMatrixDialogBase.ui: Fix horizontal alignment tooltip
+
+2003-02-08  John Levon  <levon@movementarian.org>
+
+	* Makefile.am:
+	* QChanges.h:
+	* QChanges.C:
+	* QChangesDialog.h:
+	* QChangesDialog.C:
+	* ui/QChangesDialogBase.ui: add changes dialog
+
+	* ui/QPrefIdentityModule.ui:
+	* QPrefs.C:
+	* QPrefsDialog.h:
+	* QPrefsDialog.C: add identity prefs
+
+2003-02-07  John Levon  <levon@movementarian.org>
+
+	* lyx_gui.C: delete lyxserver on exit path (bug 865)
+
+2003-02-07  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* QTabular.C (closeGUI): do not change if nothing has to
+	be changed (bug 849).
+
+2003-01-31  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* ui/BulletsModuleBase.ui: Replace LaTeX font size names by LyX
+	names for consistency reasons and to resolve a translation conflict
+
+2003-02-05  John Levon  <levon@movementarian.org>
+
+	* QLPrintDialog.C: fix braindead "helpful" code
+
+2003-02-02  John Levon  <levon@movementarian.org>
+
+	* QTocDialog.C: set no sorting (bug 856)
+
+2003-02-02  John Levon  <levon@movementarian.org>
+
+	* QPrefs.C: apply formats first (bug 854)
+	* QPrefsDialog.C: make sure a formats/converters item
+	  is always selected (bug 855)
+
+2003-01-31  Angus Leeming  <leeming@lyx.org>
+
+	* Qt2Base.[Ch]: instantiate the isVisible() virtual method.
+
+2003-01-30  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs2.C (createIndex): enable ControlCommand to create an
+	InsetCommandParam of type "index", not null.
+
+2003-01-26  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* ui/QThesaurusDialogBase.ui: add colons to labels.
+
+2003-01-23  John Levon  <levon@movementarian.org>
+
+	* ui/*.ui: move several group box labels to title capitalisation
+
+2003-01-20  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* QDocument.C: rename "Xxxskip" to "XxxSkip"
+	* QGraphicsDialog.C:
+	* QLog.C: Make output messages identical to other messages
+	* ui/*.ui: In strings, remove space in front of colon
+        ("... :" => "...:") for harmonization with xforms labels
+
+2003-01-16  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* ui/QDocumentDialogBase.ui:
+	* ui/ClassModuleBase.ui:
+	* ui/LanguageModuleBase.ui:
+	* ui/PackagesModuleBase.ui:
+	* QDocument.C:
+	* QDocumentDialog.[Ch]: Rearrangement.
+
+2003-01-15  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* QIndex.C:
+	* QUrl.C: fix validation on update().
+
+2003-01-11  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* FileDialog.C: implement opendir [bug 824], fix mask.
+
+	* QPrefsDialog.C: use browsedir for paths [bug 824]
+
+2003-01-13  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* qgridview.cpp: rename to...
+	* qgridview.C: ...this
+
+	* Makefile.am: distcheck ready
+
+	* Makefile.dialogs: simplify
+
+	* Rename a lot of files from *Dialog.ui to *DialogBase.ui
+
+	* ui/Makefile.am: simplify and distcheck ready, make sure to dist
+	all the ui files.
+
+	* ui/moc/Makefile.am: simplify and distcheck ready
+
+	* moc/Makefile.am: simplify and distcheck ready
+
+2003-01-12  Edwin Leuven  <e.leuven@uva.nl>
+
+	* ui/QPreambleDialog.ui:
+	* QPreamble.[Ch]:
+	* QPreambleDialog.[Ch]:
+	* Dialogs.C:
+	* Dialogs_impl.h:
+	* Makefile.dialogs: Remove preamble dialog
+
+2003-01-12  Alfredo Braunstein <abraunst@libero.it>
+
+	* QSpellcheckerDialog.C (spellcheck,update_contents): enable/disable
+	  elements of the dialog.
+
+2003-01-12  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* ui/Makefile.am (EXTRA_DIST): dist ui files
+	(SRCS): var with all ui files
+
+2003-01-06  Michael Schmitt <Michael.Schmitt@teststep.org>
+
+	* FileDialog.C:
+	* QIndexDialog.C:
+	* QPrefsDialog.C:
+	* QToc.C:
+	* qfont_loader.C: fix inconsistent usage of spaces, colons,
+	capitalization, and the like.
+
+2003-01-05  John Levon  <levon@movementarian.org>
+
+	* QLyXKeySym.h:
+	* QLyXKeySym.C: add an encoding map for getISOEncoded
+
+	* lyx_gui.C: init encodings
+
+	* QtView.h:
+	* QtView.C:
+
+2003-01-04  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* QURL.C: isValid(): fix validation.
+
+2002-12-21  John Levon  <levon@movementarian.org>
+
+	* FileDialog.C:
+	* QBibtex.C: fix mis-use of conversions to QString
+
+2003-01-02  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* QCitationDialog.C: update dialog correctly on search.
+
+2002-12-26  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* ui/QMathDialog.ui:
+	* QPrefsDialog.C (select_workingdir): fix typo
+
+2002-12-21  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* qfont_loader.C (isAvailable): Call to addFontPath().
+	Also, add a cache.
+
+2002-12-20  John Levon  <levon@movementarian.org>
+
+	* lyx_gui.C: fix exit to use std::exit, so we don't
+	  end up back in the LyX code
+
+2002-12-19  John Levon  <levon@movementarian.org>
+
+	* ui/QPrefsDialog.ui: remove auto-default stuff - it was
+	  confusing
+
+2002-12-19  John Levon  <levon@movementarian.org>
+
+	* QLyXKeySym.C: do not attempt to compare Qt::Key_unknowns
+
+2002-12-19  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lyx_gui.C (getStatus): forks-show is not implemented by the qt
+	frontend
+
+2002-12-19  John Levon  <levon@movementarian.org>
+
+	* QPrefs.C: if we can't find the font family, use
+	  StyleHint to get one close by
+
+2002-12-18  Alfredo Braunstein <abraunst@libero.it>
+
+	* QRef.C (redoRefs): small bug fix (wrong label was selected)
+
+2002-12-18  Edwin Leuven  <e.leuven@uva.nl>
+
+	* QCitationDialog.C: update styles combo when necessary
+
+2002-12-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* Alert_pimpl.C (askForText_pimpl): replace qt_() with _()
+
+2002-12-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* QLPopupMenu.C (populate): ignore unknown lfuns; do not insert
+	separator as first item of a menu
+
+	* lyx_gui.C (getStatus): indicate that LFUN_LAYOUT_PREAMBLE and
+	LFUN_TOOLTIPS_TOGGLE are not implemented
+
+2002-12-18  Edwin Leuven  <e.leuven@uva.nl>
+
+	* BulletsModule.C: fix crash on custom bullet cancel
+
+2002-12-18  John Levon  <levon@movementarian.org>
+
+	* qfont_loader.C: symbol should not match "Standard Symbols 1"
+
+2002-12-18  John Levon  <levon@movementarian.org>
+
+	* qfont_loader.C: rewrite for proper maths symbols
+	  handling
+
+2002-12-17  John Levon  <levon@movementarian.org>
+
+	* qt_helpers.h:
+	* qt_helpers.C: add fromqstr/toqstr/qt_ for converting
+	  using locale from/to QString
+
+	* all files: use the above
+
+	* QDocumentDialog.C: fix margins properly
+
+2002-12-17  Alfredo Braunstein <abraunst@libero.it>
+
+	* QCommandBuffer.C: added up.xpm and down.xpm to the command buffer
+
+2002-12-13  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* QBibtexDialog.[Ch]
+	* ui/QBibtexDialog.ui:
+	Add LineEdit for manual *.bib file insertion, ws changes.
+
+2002-12-17  John Levon  <levon@movementarian.org>
+
+	* QLPopupMenu.C: add using endl
+
+2002-12-16  Edwin Leuven  <e.leuven@uva.nl>
+
+	* BulletsModule.C: forgot to remove an include of
+	bulletstrings.[Ch] removed in the previous commit
+
+2002-12-16  Edwin Leuven  <e.leuven@uva.nl>
+
+	* BulletsModule.[Ch]: Fix bulletstuff
+	* QDocument.C:
+	* QDocumentDialog.C:
+	* ui/BulletsModuleBase.ui:
+
+2002-12-12  John Levon  <levon@movementarian.org>
+
+	* QSpellcheckerDialog.h:
+	* QSpellcheckerDialog.C:
+	* QSpellchecker.C: place broken word in replace box
+	  for user fixing
+
+2002-12-12  John Levon  <levon@movementarian.org>
+
+	* FileDialog_private.C: don't mess with windows z-ordering
+	  when opening a dialog (appear above focusWidget)
+
+2002-12-12  John Levon  <levon@movementarian.org>
+
+	* QLyXKeySym.C: check for isNull(). It's needed by
+	  Kornel, dunno why
+
+2002-12-12  John Levon  <levon@movementarian.org>
+
+	* ui/QSpellcheckerDialog.ui: make double click replace word
+
+2002-12-12  John Levon  <levon@movementarian.org>
+
+	* QSearchDialog.C:
+	* ui/QSearchDialog.ui: fixes from Alfredo
+
+2002-12-12  John Levon  <levon@movementarian.org>
+
+	* QLyxKeySym.h:
+	* QLyXKeySym.C:
+	* qlkey.h: implement isText() to allow us to insert
+	  unrecognised text
+
+2002-12-11  John Levon  <levon@movementarian.org>
+
+	* qfont_loader.h:
+	* qfont_loader.C:
+	* qfont_metrics.C: cache per-char widths to avoid slowness
+	  of QFontMetrics::width
+
+2002-12-10  John Levon  <levon@movementarian.org>
+
+	* ui/QURLDialog.ui: fix tab order
+
+2002-12-10  John Levon  <levon@movementarian.org>
+
+	* QRef.C: patch from Alfredo
+
+2002-12-09  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* QAbout.C (build_dialog): use old over-eager version for 1.3.0.
+
+2002-12-09  John Levon  <levon@movementarian.org>
+
+	* ui/*ModuleBase.ui: some capitalisation fixes
+
+2002-12-08  John Levon  <levon@movementarian.org>
+
+	* ui/Makefile.am: use uic -tr; fix by Pauli Virtanen
+
+2002-12-08  John Levon  <levon@movementarian.org>
+
+	* ui/QExternalDialog.ui: connect Edit button; fix by
+	Alfredo Braunstein
+
+2002-12-07  John Levon  <levon@movementarian.org>
+
+	* QMathMatrixDialog.C: row/column insert was inverted; fix
+	  by Alfredo Braunstein
+
+2002-12-07  John Levon  <levon@movementarian.org>
+
+	* QDelimiterDialog.C:
+	* QDelimiterDialog.h:
+	* QMathDialog.C:
+	* QMathDialog.h:
+	* iconpalette.h: fix connections for Qt 3, hopefully
+
+2002-12-05  John Levon  <levon@movementarian.org>
+
+	* QContentPane.C: set I-beam cursor
+
+2002-11-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* qlkey.h (string_to_qkey): Add many missing entries
+
+2002-12-04  John Levon  <levon@movementarian.org>
+
+	* qt_helpers.h:
+	* qt_helpers.C:
+	* QDocument.h:
+	* QDocument.C: move methods below to helpers
+
+2002-11-03  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* QDocument.C: new methods widgetsToLength, lengthToWidgets.
+	set defaultUnit
+
+2002-12-03  John Levon  <levon@movementarian.org>
+
+	* QIncludeDialog.C: another fix
+
+2002-12-03  John Levon  <levon@movementarian.org>
+
+	* ui/QIncludeDialog.ui:
+	* QInclude.C: support preview()
+
+2002-12-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* several files: ws changes
+
+2002-11-30  John Levon  <levon@movementarian.org>
+
+	* QParagraph.C: another fix from Otto Tronarp
+
+2002-11-30  John Levon  <levon@movementarian.org>
+
+	* various: string(widget->text()) is not good.
+
+2002-11-28  John Levon  <levon@movementarian.org>
+
+	* qt_helpers.C: fix build
+
+2002-11-28  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* qsetborder.[Ch]: implement John's setEnabled bool
+
+	* QTabular.C:
+	* QTabularDialog.C: remaining fixes.
+
+2002-11-28  John Levon  <levon@movementarian.org>
+
+	* QSpellcheckerDialog.C: fix Escape + restarting spellcheck
+
+2002-11-28  John Levon  <levon@movementarian.org>
+
+	* QSpellcheckerDialog.C: small fix
+
+2002-11-28  John Levon  <levon@movementarian.org>
+
+	* QDocument.C: fix line spacing
+
+2002-11-27  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* ui/TabularDialog.ui:
+	* QTabular.C:
+	* QTabularDialog.C: ui fixes.
+
+2002-11-27  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* qfont_loader.C (font_info): Use lyxrc.*_font_foundry.
+
+	* QPrefs.C: Handle lyxrc.*_font_foundry.
+
+	* qt_helpers.C: New file.
+
+2002-11-27  John Levon  <levon@movementarian.org>
+
+	* qsetborder.h:
+	* qsetborder.C: cleanup
+
+	* QTabular.C:
+	* QTabularDialog.C: cleanups, fixes
+
+2002-11-27  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* ui/TabularDialog.ui:
+	* QTabular.[Ch]:
+	* QTabularDialog.[Ch]: implement most functions
+	* qsetborder.[Ch]: fixes
+
+2002-11-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* Alert_pimpl.C (askForText_pimpl): use boost.format
+
+2002-11-26  John Levon  <levon@movementarian.org>
+
+	* QMathDialog.C:
+	* Toolbar_pimpl.h:
+	* Toolbar_pimpl.C: Qt is the Lord of Suck
+
+2002-11-25  John Levon  <levon@movementarian.org>
+
+	* qscreen.C: use LColor::cursor properly
+
+	* QPrefs.C:
+	* ui/QPrefKeyboardModule.ui:
+	* ui/QPrefUIModule.ui: UI fixes
+
+2002-11-25  Herbert Voss  <Herbert.Voss@alumni.TU-Berlin.DE>
+
+	* QVCLog.C (update_contents): fix USE_BOOST_FORMAT
+
+2002-11-24  John Levon  <levon@movementarian.org>
+
+	* QDocumentDialog.C: fix build
+
+2002-11-21  Angus Leeming  <leeming@lyx.org>
+
+	* QDocumentDialog.C (classChanged): use ControlDocument::loadTextclass.
+
+2002-11-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* QVCLog.C (update_contents): use boost::format
+
+2002-11-21  John Levon  <levon@movementarian.org>
+
+	* qscreen.C: show content pane cursor even when
+	  focus is on dialog, command buffer etc.
+
+2002-11-20  John Levon  <levon@movementarian.org>
+
+	* QMathDialog.C: don't pass empty commands to math
+	  on menu tear-off
+
+2002-11-20  John Levon  <levon@movementarian.org>
+
+	* QLPopupMenu.C: only check .disabled() on Commands
+
+2002-11-20  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* QLPopupMenu.C (getLabel): show labels for menu entries
+
+	* qlkey.h (string_to_qkey): add support for KP_xxx keysyms
+
+2002-11-20  John Levon  <levon@movementarian.org>
+
+	* ui/QDelimiterDialog.ui: geometry fix
+
+2002-11-20  John Levon  <levon@movementarian.org>
+
+	* Toolbar_pimpl.C:
+	* QDelimiterDialog.C:
+	* QMathDialog.C: use find_xpm to mangle name
+
+2002-11-20  John Levon  <levon@movementarian.org>
+
+	* QDelimiterDialog.h:
+	* QDelimiterDialog.C: fix delimiter connect()
+
+2002-11-20  John Levon  <levon@movementarian.org>
+
+	* QDocument.C:
+	* QDocumentDialog.C: fix my sillies
+
+2002-11-20  John Levon  <levon@movementarian.org>
+
+	* QLPainter.C: use realColor not color for the font
+
+2002-11-18  John Levon  <levon@movementarian.org>
+
+	* Makefile.am:
+	* qfontexample.h:
+	* qfontexample.C:
+	* QPrefs.C:
+	* QPrefsDialog.h:
+	* QPrefsDialog.C:
+	* ui/QPrefScreenFontsModule.ui: show an example
+	  of the chosen font
+
+2002-11-18  John Levon  <levon@movementarian.org>
+
+	* ui/Makefile.am:
+	* moc/Makefile.am:
+	* ui/moc/Makefile.am:
+	* Makefile.am: define no translation
+
+	* QDocument.C: avoid QBloatList
+
+2002-11-17  John Levon  <levon@movementarian.org>
+
+	* ui/QPrefScreenFontsModule.ui:
+	* QPrefsDialog.h:
+	* QPrefsDialog.C:
+	* QPrefs.C: use font families properly
+
+	* qfont_loader.C: and obey them
+
+2002-11-17  John Levon  <levon@movementarian.org>
+
+	* QPrefsDialog.C: partial fonts fix
+
+2002-11-17  John Levon  <levon@movementarian.org>
+
+	* QPrefsDialog.h:
+	* QPrefsDialog.C: implement browse slots. Also
+	  try to do something with fonts for Qt 3 (untested)
+
+2002-11-17  John Levon  <levon@movementarian.org>
+
+	* QGraphics.C: some fixes from Herbert & me
+
+2002-11-15  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* FileDialog.C: fix empty mask string
+
+2002-11-17  John Levon  <levon@movementarian.org>
+
+	* QLImage.C: implement monochrome, and fake grayscale
+
+2002-11-17  John Levon  <levon@movementarian.org>
+
+	* qfont_loader.h:
+	* qfont_loader.C: fix totally broken update code
+
+2002-11-17  John Levon  <levon@movementarian.org>
+
+	* Makefile.am:
+	* qcoloritem.h:
+	* qcoloritem.C:
+	* ui/QPrefColorsModule.ui:
+	* QPrefs.C:
+	* QPrefsDialog.h:
+	* QPrefsDialog.C: implement colors. We're done !
+
+2002-11-17  John Levon  <levon@movementarian.org>
+
+	* FileDialog.C:  split into open/save so open
+	  no longer says "Save" !
+
+2002-11-17  John Levon  <levon@movementarian.org>
+
+	* QPrefsDialog.h:
+	* QPrefsDialog.C: implement converters
+
+2002-11-17  John Levon  <levon@movementarian.org>
+
+	* QPrefsDialog.C:
+	* QPrefs.C: implement formats
+
+2002-11-17  John Levon  <levon@movementarian.org>
+
+	* fontloader.C: disable crashing code for now
+
+	* QPrefs.h:
+	* QPrefs.C:
+	* QPrefsDialog.C: implement most prefs load/save
+
+2002-11-17  John Levon  <levon@movementarian.org>
+
+	* ui/QPref*:
+	* QPrefsDialog.C:
+	* QPrefs.C: more work
+
+2002-11-15  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* QTabular.C: compile fixes
+
+2002-11-15  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* ui/QTabularDialog.ui: some relabelling
+
+2002-11-15  John Levon  <levon@movementarian.org>
+
+	* QPrefs.h:
+	* QPrefs.C: some update() work
+
+2002-11-15  John Levon  <levon@movementarian.org>
+
+	* QPrefs.C: add #if 0 xforms code for working on
+
+	* QTabular.C: remove some handled #if 0 code
+
+2002-11-15  John Levon  <levon@movementarian.org>
+
+	* qsetborder.h:
+	* qsetborder.C: fix ws
+
+2002-11-15  John Levon  <levon@movementarian.org>
+
+	* QTabularDialog.h:
+	* QTabularDialog.C:
+	* QTabular.C: add some stuff
+
+2002-11-15  John Levon  <levon@movementarian.org>
+
+	* Makefile.dialogs:
+	* Makefile.am:
+	* moc/Makefile.am:
+	* Dialogs2.C:
+	* Dialogs_impl.h:
+	* Dialogs.C:
+	* QTabular.h:
+	* QTabular.C:
+	* QTabularDialog.h:
+	* QTabularDialog.C: add skeleton
+
+2002-11-14  John Levon  <levon@movementarian.org>
+
+	* ui/QTabularDialog.ui: label for cell pos
+
+2002-11-13  Herbert Voss  <voss@perce.de>
+
+	* QBibtex.C: (apply, isValid) small changes
+
+2002-11-13  John Levon  <levon@movementarian.org>
+
+	* all pref files: make the stack work
+
+2002-11-13  John Levon  <levon@movementarian.org>
+
+	* Dialogs.C:
+	* Dialogs2.C:
+	* Dialog_impl.h:
+	* Makefile.dialogs:
+	* QPrefs.h:
+	* QPrefs.C:
+	* QPrefsDialog.h:
+	* QPrefsDialog.C: add skeleton dialog
+
+2002-11-13  John Levon  <levon@movementarian.org>
+
+	* ui/QBibtexDialog.ui: add some change_adaptors()
+
+	* QBibtex.C: fix duplicate entries in style CB, and
+	  alphasort it again, but still allow empty/user-defined
+	  style
+
+2002-11-12  Herbert Voss  <voss@perce.de>
+
+	* QBibtex.[Ch]: fix bugs in the apply-part
+
+2002-11-13  John Levon  <levon@movementarian.org>
+
+	* QDocument.h:
+	* QDocument.C:
+	* QDocumentDialog.h:
+	* QDocumentDialog.C:
+	* ui/QDocumentDialog.ui:
+	* ui/BulletsModuleBase.ui: some UI fixes
+
+2002-11-12  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* QDocumentDialog.C: enable apply on change
+	* QBrowseBox.C: remove qWarning
+
+2002-11-12  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* BulletsModule.C: more bullet changes
+	* BulletsModule.h
+	* Makefile.am
+	* QDocument.C
+	* QDocumentDialog.C
+	* bulletstrings.C
+	* bulletstrings.h
+	* ui/BulletsModuleBase.ui
+
+2002-11-12  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* QBrowseBox: Juergen Spitzmueller's mouse focus fix
+
+2002-11-08  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* Dialogs2.C: compile fix
+
+2002-11-08  Edwin Leuven <leuven@fee.uva.nl>
+
+	* QDocument.[Ch]: Remove unused methods
+	* QBrowseBox.[Ch]: Capture mouse, new methods, etc
+	* BulletsModule.[Ch]: Further improvements
+	* QDocumentDialog.[Ch]: more bullet stuff
+	* ui/BulletsModuleBase.ui: idem
+	* ui/QTabularDialog.ui: new tabular dialog
+	* qsetborder.[Ch]: new small qt widget to set table borders
+
+2002-11-08  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* lyx_gui.C:
+	* QWorkArea.C: Fix X selection code.
+
+2002-11-07  John Levon  <levon@movementarian.org>
+
+	* ui/QIncludeDialog.ui:
+	* QInclude.C: fix setting of combobox
+
+2002-11-07  John Levon  <levon@movementarian.org>
+
+	* ui/QPref*: add initial prefs ui from Juergen S
+
+2002-11-27  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* ui/QDocument.ui:
+	* QDocumentDialog.C:
+	* QDocument.[Ch]:
+	Implement "Save as default" and "Use class defaults"
+
+	* QDocumentDialog.C: Fix dialog update on class change
+	implement lyxrc.auto_reset_options
+
+2002-11-07  John Levon  <levon@movementarian.org>
+
+	* QGraphics.[Ch]:
+	* QGraphicsDialog.[Ch]:
+	* ui/QGraphicsDialog.ui: various fixes so it actually
+	works
+
+2002-11-01  Herbert Voss  <voss@perce.de>
+
+	* QGraphics.[Ch]:
+	* QGraphicsDialog.[Ch]:
+	* ui/QGraphicsDialog.ui: get scale/rotate working
+
+2002-11-04  Angus Leeming  <leeming@lyx.org>
+
+	* QGraphics.C (update_contents): controller.getUnits() ->
+	frnt::getBBUnits().
+
+2002-11-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* QAbout.C (build_dialog): do not use str().c_str() when not needed.
+
+	* qttableview.C: include config.h
+
+	* lyx_gui.C: move includes around a bit
+	(start): adjust signature
+
+2002-10-31  John Levon  <levon@movementarian.org>
+
+	* QExternal.C: fix crash, valid check
+
+2002-10-31  John Levon  <levon@movementarian.org>
+
+	* QGraphics.C:
+	* QGraphicsDialog.C:
+	* QGraphicsDialog.h:
+	* ui/QGraphicsDialog.ui: bb unit fixes
+
+2002-10-30  John Levon  <levon@movementarian.org>
+
+	* QPrintDialog.[hC]: move to ...
+
+	* QLPrintDialog.[hC]: ... here to prevent name clash
+
+	* QPrint.h:
+	* QPrint.C:
+	* Dialogs_impl.h:
+	* Makefile.dialogs: from above
+
+	* QSpellchecker.C: reset progress
+
+2002-10-30  John Levon  <levon@movementarian.org>
+
+	* QGraphics.C:
+	* ui/QGraphicsDialog.ui: some fixes from Herbert
+
+2002-10-30  John Levon  <levon@movementarian.org>
+
+	* ui/QTabularDialog.ui: initial UI from Juergen Spitzmueller
+
+2002-10-28  John Levon  <levon@movementarian.org>
+
+	* iconpalette.C:
+	* QMathDialog.C: fix symbol insert breakage from Lars' patch
+
+2002-10-26  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* ui/QMathMatrixDialog.ui:
+	* QMathMatrixDialog.[Ch]:
+	* Makefile.dialogs:
+	* QMath.C:
+	* QMathDialog.C: implement Matrix dialog
+
+	* QMathDialog.C: enlarge Symbols combox (prevent scrollbar)
+
+2002-10-28  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* qfont_loader.C (font_info): Add xfonts to the font path if
+	necessary.
+
+2002-10-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* QVCLog.C (update_contents): modify
+
+	* QPreamble.C (apply): modify
+
+2002-10-21  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* qfont_metrics.C (ascent): Fix returned value.
+
+2002-10-21  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* QContentPane.h:
+	* QContentPane.C: implement wheelEvent
+
+2002-10-20  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* several files: Use QT_VERSION >= 300 instead of >= 0x030000
+
+2002-10-20  John Levon  <levon@movementarian.org>
+
+	* ui/QDelimiterDialog.ui: remove two huge XPMs that
+	  were accidentally built in
+
+2002-10-20  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* Toolbar_pimpl.C (setLayout): initialize i to 0, don't
+	reinitialize.
+
+	* README: add a comment about the strange moc behaviour.
+
+	* QWrap.C (apply): local ref to params
+	(update_contents): ditto
+	(numtostr): use erase to clear string
+
+	* QWorkArea.C (setScrollbarParams): use explicit std::max
+
+	* QURL.C (update_contents): local ref to params
+	(apply): ditto
+
+	* QRef.C (update_contents): local ref to params
+	(apply): ditto
+
+	* QPreambleDialog.C (editClicked): no need to explicitly
+	initialize an std::string.
+	(editClicked): read file with smaller overhead.
+
+	* QParagraph.C (apply): local ref to params
+	(update_contents): ditto
+
+	* QMinipage.C (apply): local ref to params
+	(update_contents): ditto
+	(update_contents): handle InsetMinipage::top in switch
+
+	* QMath.C (createMathPanel): use "new Type" not "new Type()"
+
+	* QLyXKeySym.h: adda key_ accessor key().
+
+	* QLyXKeySym.C (operator=): out of class version.
+
+	* QLog.C (update_contents): use a simpler and faster way to fill
+	the log dialog.
+
+	* QLPopupMenu.C (getLabel): use subst directly on mi.label()
+
+	* QLPainter.C (QLPainter): use "new Type" not "new Type()"
+	(lines): put int i inside for scope
+	(fillPolygon): put j insize for scope
+
+	* QInclude.C (update_contents): local ref to params
+	(apply): ditto
+
+	* QGraphics.C (update_contents): initialize item to 0
+	(apply): use erase to clear string
+
+	* QFloat.C (update_contents): local ref to params
+	(apply): ditto
+
+	* QExternal.C (update_contents): local ref to params
+	(helpText): ditto
+	(apply): ditto
+
+	* QERT.C (apply): local reference to params
+
+	* QDocument.C (apply): have a local reference to the params
+	(update_contents): ditto
+
+	* QCommandEdit.C: add missing include config.h
+
+	* QCommandBuffer.C (QCommandBuffer): call method directly on
+	unnamed pointer objects.
+	(complete): use "new Type", not "new Type()"
+	(complete): use explict std::max
+
+	* QCharacter.C (update_contents): use a local reference as
+	controller cache
+	(apply): ditto
+
+	* QBibtex.C (update_contents): use erase to clear a string.
+
+	* QAbout.C (build_dialog): fill the credits view in a bit more
+	elegant way
+
+	* almost all files: clean up formatting and indenting.
+
+2002-10-19  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* qfont_loader.C (update): move loop vars into for scopes.
+	(get): add some debug msg.
+	(font_info): ditto
+	(getfontinfo): simplify slightly
+
+	* QParagraph.C (setWidgetsFromVSpace): initilize item
+
+	* QERT.C (update_contents): initialize rb
+
+	* QDocument.C (build_dialog): move int n inside for scope.
+
+	* QCharacter.C (findPos2nd): add a typedef
+
+	* FileDialog_private.C: include order changed.
+	(LyXFileDialog): some reformat
+
+	* FileDialog.C: include order changed.
+	(FileDialog): fix wrong use of new.
+
+2002-10-17  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* ui/QSendtoDialog.ui: fix layout
+
+2002-10-17  Angus Leeming  <leeming@lyx.org>
+
+	* lyx_gui.C (getDPI): use an average of DpiX and DpiY.
+
+	* QBrowseBox.[Ch] (c-tor): remove unneeded arguments.
+
+2002-10-17  André Pönitz  <poenitz@lyx.org>
+
+	* QBrowseBox.[Ch]: fix style issues
+
+2002-10-17  Angus Leeming  <leeming@lyx.org>
+
+	* ui/moc/Makefile.am:
+	* moc/Makefile.am: add a distclean-local target to remove *_moc.C.
+
+2002-10-16  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* ui/QSendtoDialog.ui:
+	* QSendtoDialog.[Ch]:
+	* QSendto.[Ch]:
+	* Makefile.dialogs:
+	* Dialogs.C:
+	* Dialogs2.C:
+	* Dialogs_impl.h: Implement Sendto (Custom Export) dialog
+
+2002-10-16  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* qfont_loader.C (font_info): correct calculation of font size
+	(point size) for qt.
+
+2002-10-15  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* QBrowseBox.C (QBrowseBox): transpose const char
+
+2002-10-15  Angus Leeming  <leeming@lyx.org>
+
+	* QBrowseBox.C (c-tor): default values should go only in the .h file.
+
+	* QDocument.C: add a using std::vector declaration.
+
+2002-10-15  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* QLPainter.C (text): Unicode support.
+	* qfont_metrics.C (width): ditto.
+
+	* qfont_loader.C (available): Add code for QT 2.x.
+
+2002-10-14  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* lyx_gui.C (getDPI): Implemented.
+
+2002-10-12  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* qfont_loader.C (available): Implemented.
+
+2002-10-09  Edwin Leuven <leuven@fee.uva.nl>
+
+	* QDocument.C: Brand new document dialog
+	* QDocument.h:
+	* QDocumentDialog.C:
+	* QDocumentDialog.h:
+	* BulletsModule.C:
+	* BulletsModule.h:
+	* Dialogs.C:
+	* Dialogs2.C:
+	* Dialogs_impl.h:
+	* Makefile.am:
+	* Makefile.dialogs:
+	* QBrowseBox.C:
+	* QBrowseBox.h:
+	* qgridview.cpp:
+	* qgridview.h:
+	* moc/Makefile.am:
+	* ui/BiblioModuleBase.ui:
+	* ui/BulletsModuleBase.ui:
+	* ui/ClassModuleBase.ui:
+	* ui/LanguageModuleBase.ui:
+	* ui/Makefile.am:
+	* ui/MarginsModuleBase.ui:
+	* ui/NumberingModuleBase.ui:
+	* ui/PackagesModuleBase.ui:
+	* ui/PaperModuleBase.ui:
+	* ui/PreambleModuleBase.ui:
+	* ui/QDocumentDialog.ui:
+	* ui/QGraphicsDialog.ui:
+	* ui/QPrintDialog.ui:
+	* ui/QRefDialog.ui:
+
+2002-09-28  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* ui/QWrapDialog.ui:
+	* QWrapDialog.[Ch]:
+	* QWrap.[Ch]:
+	* Makefile.dialogs:
+	* Dialogs.C:
+	* Dialogs2.C:
+	* Dialogs_impl.h: Implement Wrap figure dialog
+
+2002-09-25  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs2.C:
+	* Dialogs_impl.h:
+	* LyXKeySymFactory.C:
+	* LyXScreenFactory.C:
+	* Menubar_pimpl.[Ch]:
+	* Toolbar_pimpl.[Ch]:
+	* WorkAreaFactory.C:
+	* lyx_gui.C: doxygen fixes.
+
+2002-09-24  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* ui/moc/Makefile.am (INCLUDES):
+	* ui/Makefile.am (INCLUDES):
+	* moc/Makefile.am (INCLUDES):
+	* Makefile.am (INCLUDES): loose SIGC_INCLUDES
+
+2002-09-24  John Levon  <levon@movementarian.org>
+
+	* QCommandEdit.h:
+	* QCommandEdit.C: fix build by removing the pragmas.
+
+2002-09-24  Angus Leeming  <leeming@lyx.org>
+
+	* most files: "standard-conforming" Licence declaration.
+	Remove trailing whitespace.
+
+	* many header files: do not #include <config.h>.
+	Remove unnecessary #includes by using forward declarations.
+	Add as first line: // -*- C++ -*-
+	Move several definitions of virtual functions out of line
+	as they are unlikely to be inlined anyway (and it reduces
+	header file dependencies)...
+
+	* many files: added g++ #pragma directives.
+
+2002-09-23  Angus Leeming  <leeming@lyx.org>
+
+	* QMath.h: forward declare QMathDialog.
+	Remove trailing semi-colons after definition of apply and
+	update_contents methods.
+
+	* qfont_metrics.C: endl is in namespace std.
+	Some whitespece stuff.
+
+2002-09-22  John Levon  <levon@movementarian.org>
+
+	* qlkey.h: make Key_Unknown a modifier, to handle
+	  Norbert's Alt Gr
+
+2002-09-17  John Levon  <levon@movementarian.org>
+
+	* QLPainter.C: use dots for dashes because Qt sucks
+
+2002-09-16  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* Toolbar_pimpl.C (changed_layout): when selecting a layout in
+	combox, make sure the corresponding shortcut is shown in
+	minibuffer
+
+2002-09-16  John Levon  <levon@movementarian.org>
+
+	* FileDialog.C: set AnyFile mode
+
+2002-09-16  John Levon  <levon@movementarian.org>
+
+	* QMathDialog.C: allow menus to be torn off
+
+2002-09-16  John Levon  <levon@movementarian.org>
+
+	* QDelimiterDialog.C: fix empty delimiter
+
+2002-09-15  John Levon  <levon@movementarian.org>
+
+	* Makefile.dialogs:
+	* ui/QDelimiterDialog.ui:
+	* QDelimiterDialog.h:
+	* QDelimiterDialog.C:
+	* QMath.h:
+	* QMath.C:
+	* QMathDialog.h:
+	* QMathDialog.C: add delimiter dialog
+
+2002-09-15  John Levon  <levon@movementarian.org>
+
+	* Alert_pimpl.C: title fix
+
+2002-09-14  John Levon  <levon@movementarian.org>
+
+	* QMath.h:
+	* QMath.C:
+	* QMathDialog.h:
+	* QMathDialog.C:
+	* ui/QMathDialog.ui: matrix
+
+2002-09-14  John Levon  <levon@movementarian.org>
+
+	* qlkey.h: fix two typos to be Alt_R instead
+
+2002-09-14  John Levon  <levon@movementarian.org>
+
+	* qfont_metrics.C: fix rbearing()
+
+2002-09-14  John Levon  <levon@movementarian.org>
+
+	* QLPainter.C: fix arc
+
+2002-09-14  John Levon  <levon@movementarian.org>
+
+	* ui/QMathDialog.ui:
+	* QMathDialog.h:
+	* QMathDialog.C: add back display. Implement
+	  font/style
+
+2002-09-14  John Levon  <levon@movementarian.org>
+
+	* ui/QMathDialog.ui:
+	* QMathDialog.h:
+	* QMathDialog.C: add spaces menu
+
+2002-09-13  John Levon  <levon@movementarian.org>
+
+	* Menubar_pimpl.C:
+	* QLPopupMenu.C: fix submenus again
+
+2002-09-12  John Levon  <levon@movementarian.org>
+
+	* qscreen.h:
+	* qscreen.C: be even smarter about repaint() vs. update()
+
+2002-09-12  John Levon  <levon@movementarian.org>
+
+	* QPrint.C: don't reset unless different buffer
+
+2002-09-12  John Levon  <levon@movementarian.org>
+
+	* QPrint.C: get collate from params too
+
+	* ui/QGraphicsDialog.ui: re-arrange bb a bit
+
+2002-09-12  John Levon  <levon@movementarian.org>
+
+	* Menubar_pimpl.C:
+	* Menubar_pimpl.h:
+	* QtView.C: implement openByName(). Move activated
+	signal to per-menu
+
+2002-09-12  John Levon  <levon@movementarian.org>
+
+	* QCommandBuffer.C: fix click
+
+2002-09-12  John Levon  <levon@movementarian.org>
+
+	* QMathDialog.C: work around Qt bug in previous change
+
+2002-09-12  John Levon  <levon@movementarian.org>
+
+	* QMathDialog.h:
+	* QMathDialog.C: load icon palettes on demand
+
+2002-09-12  John Levon  <levon@movementarian.org>
+
+	* QMathDialog.C: get the scrollbars right on first show
+
+2002-09-11  John Levon  <levon@movementarian.org>
+
+	* QPrint.h:
+	* QPrint.C:
+	* ui/QPrintDialog.ui: update for odd/even changes
+
+2002-09-11  John Levon  <levon@movementarian.org>
+
+	* QCitationDialog.C: show right info when selecting a cite
+
+	* QParagraphDialog.C: don't validate lengths, to allow glue
+
+2002-09-11  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* QFloatDialog.C: Fix the setEnable() logic
+
+2002-09-11  John Levon  <levon@movementarian.org>
+
+	* Alert_pimpl.C:
+	* QExternalDialog.h:
+	* QExternalDialog.C:
+	* QGraphicsDialog.h:
+	* QGraphicsDialog.C:
+	* QIncludeDialog.h:
+	* QIncludeDialog.C:
+	* QIndexDialog.h:
+	* QIndexDialog.C:
+	* QSearchDialog.h:
+	* QSearchDialog.C:
+	* QURLDialog.h:
+	* QURLDialog.C: focus on the first linedit on show()
+
+2002-09-11  John Levon  <levon@movementarian.org>
+
+	* QSearchDialog.C: fill combo boxes
+
+2002-09-11  John Levon  <levon@movementarian.org>
+
+	* qscreen.C: use repaint() not update() for immediate change
+
+	* QContentPane.C: warning fix
+
+2002-09-11  John Levon  <levon@movementarian.org>
+
+	* qfont_metrics.C: fix button metrics
+
+	* QLPainter.C: fillPolygon() should actually fill
+
+2002-09-10  John Levon  <levon@movementarian.org>
+
+	* Menubar_pimpl.C:
+	* QLPopupMenu.h:
+	* QLPopupMenu.C: finally fix Navigate
+
+2002-09-10  John Levon  <levon@movementarian.org>
+
+	* ui/QIncludeDialog.ui:
+	* QInclude.h:
+	* QInclude.C: remove don't typeset
+
+	* Dialogs2.C: add empty showWrap
+
+2002-09-08  John Levon  <levon@movementarian.org>
+
+	* QFloat.C: another fix
+
+2002-09-08  John Levon  <levon@movementarian.org>
+
+	* QFloat.h:
+	* QFloat.C:
+	* QFloatDialog.h:
+	* QFloatDialog.C:
+	* ui/QFloatDialog.ui: fix bug 527 and more
+
+2002-09-12  Angus Leeming  <leeming@lyx.org>
+
+	* iconpalette.C (resizeEvent): compile fix.
+
+	* QInclude.C (update_contents): remove lyxerr call.
+
+2002-09-08  John Levon  <levon@movementarian.org>
+
+	* qfont_loader.C: fix bug 531 (emph())
+
+2002-09-08  John Levon  <levon@movementarian.org>
+
+	* QMathDialog.C:
+	* iconpalette.h:
+	* iconpalette.C: make sizing work properly
+
+2002-09-08  John Levon  <levon@movementarian.org>
+
+	* QMathDialog.h:
+	* QMathDialog.C: detachable icon menus
+
+2002-09-08  John Levon  <levon@movementarian.org>
+
+	* QMathDialog.C:
+	* iconpalette.h:
+	* iconpalette.C: re lay out on size change
+
+2002-09-08  John Levon  <levon@movementarian.org>
+
+	* QMathDialog.h:
+	* QMathDialog.C:
+	* iconpalette.C: More fixes.
+
+2002-09-08  John Levon  <levon@movementarian.org>
+
+	* ui/QMathDialog.ui:
+	* QMathDialog.h:
+	* QMathDialog.C: add decos as symbols. Some fixes.
+
+2002-09-07  John Levon  <levon@movementarian.org>
+
+	* qfont_metrics.C: unrevert per-char metrics. Droppings
+	  are better than entirely wrong metrics. Hopefully
+	  Andre can fix it ...
+
+2002-09-07  John Levon  <levon@movementarian.org>
+
+	* qfont_loader.C: fix sizes for symbols etc.
+
+2002-09-07  John Levon  <levon@movementarian.org>
+
+	* qfont_metrics.C: revert accurate per-char metrics
+	  because LyX is broken
+
+2002-09-07  John Levon  <levon@movementarian.org>
+
+	* qfont_loader.h:
+	* qfont_loader.C: add debug
+
+2002-09-06  John Levon  <levon@movementarian.org>
+
+	* QMath.h:
+	* QMath.C: add sub/superscript
+
+	* ui/QMathDialog.ui:
+	* QMathDialog.h:
+	* QMathDialog.C: add dots. Use a completely broken :(
+	  scrollview.
+
+	* iconpalette.C: increase size
+
+2002-09-04  Angus Leeming  <leeming@lyx.org>
+
+	* QLyXKeySym.C: using std::endl directive.
+
+2002-08-30  John Levon  <levon@movementarian.org>
+
+	* Makefile.dialogs:
+	* moc/Makefile.am:
+	* QMath.h:
+	* QMath.C:
+	* QMathDialog.h:
+	* QMathDialog.C:
+	* ui/QMathDialog.ui: start math panel
+
+	* iconpalette.h:
+	* iconpalette.C: new widget used by above
+
+2002-08-29  John Levon  <levon@movementarian.org>
+
+	* Toolbar_pimpl.C: defocus layout combo on select
+
+2002-08-29  John Levon  <levon@movementarian.org>
+
+	* QtView.C: add back in allow/prohibitInput (for now)
+
+	* TODO: update
+
+2002-08-29  John Levon  <levon@movementarian.org>
+
+	* Toolbar_pimpl.C: mathed math-insert - skip
+	  the preceding '\' when looking for file name
+
+2002-08-29  John Levon  <levon@movementarian.org>
+
+	* Toolbar_pimpl.C: math xpm handling in preparation
+	for some fixed XPMs
+
+2002-08-29  John Levon  <levon@movementarian.org>
+
+	* QCommandBuffer.h:
+	* QCommandBuffer.C: use a QListView not combo box.
+	  Qt Sucks.
+
+2002-08-29  John Levon  <levon@movementarian.org>
+
+	* ui/*: use size grippie consistently
+
+2002-08-29  John Levon  <levon@movementarian.org>
+
+	* QContentPane.C:
+	* QContentPane.h: implement triple click
+
+2002-08-29  John Levon  <levon@movementarian.org>
+
+	* QInclude.C: remove some wrong code removed from xforms
+
+2002-08-29  John Levon  <levon@movementarian.org>
+
+	* qfont_metrics.C: add per char ascent/descent
+
+2002-08-28  John Levon  <levon@movementarian.org>
+
+	* QContentPane.C: fix cut-and-paste borkage from
+	  LFUN_MOUSE changes
+
+2002-08-25  Rob Lahaye  <lahaye@snu.ac.kr>
+
+	* QLImage.C: replace redundant xoffset_l and yoffset_t
+	calculation by something better.
+
+2002-08-25  John Levon  <levon@movementarian.org>
+
+	* FileDialog.C:
+	* FileDialog_private.h:
+	* FileDialog_private.C: disable non-sync code due
+	  to Qt bug. Add support for buttons
+
+2002-08-25  John Levon  <levon@movementarian.org>
+
+	* QLPopupMenu.C: implement optional() support
+
+	* TODO: update
+
+2002-08-25  John Levon  <levon@movementarian.org>
+
+	* Makefile.am:
+	* Menubar_pimpl.h:
+	* Menubar_pimpl.C:
+	* QLPopupMenu.h:
+	* QLPopupMenu.C: Populate menus upon open
+
+2002-08-25  John Levon  <levon@movementarian.org>
+
+	* qlkey.h: add A-Z into string_to_qkey
+
+	* QLyXKeySym.h:
+	* QLyXKeySym.C: remove crap again
+
+2002-08-25  John Levon  <levon@movementarian.org>
+
+	* QLyXKeySym.h:
+	* QLyXKeySym.C:
+	* QContentPane.C: revert some wrong direction stuff and try
+	  again. STILL BROKEN :(
+
+2002-08-25  John Levon  <levon@movementarian.org>
+
+	* QGraphics.C:
+	* ui/QGraphicsDialog.ui: update, and some UI improvements
+
+2002-08-23  Rob Lahaye  <lahaye@snu.ac.kr>
+
+	* lengthcombo.C: apply changes to "enum UNIT" in src/lyxlength.h
+
+	* QLImage.C:
+	* QGraphics.C: Implement changes for new xforms graphics dialog
+	(NB: Qt Graphics dialog itself is NOT YET updated!).
+
+2002-08-15  Angus Leeming  <leeming@lyx.org>
+
+	* lyx_gui.C (hexname): enable previews to work!
+
+2002-08-15  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C:
+	* Dialogs2.C
+	* Dialogs_impl.h: the brave new world of Dialog creation.
+
+	* guiapi.C: discard.
+
+	* Makefile.am: add new files Dialogs2.C Dialogs_impl.h and
+	remove guiapi.C.
+
+2002-08-14  John Levon  <levon@movementarian.org>
+
+	* Alert_pimpl.C: remove xforms header
+
+	* Toolbar_pimpl.C: build fix
+
+2002-08-13  Angus Leeming  <leeming@lyx.org>
+
+	* Qt2Base.h: compile fix isReadonly -> bufferIsReadonly.
+
+	* FileDialog_private.C:
+	* Menubar_pimpl.C:
+	* Toolbar_pimpl.C:
+	* QtView.C:
+	* lyx_gui.C:
+	changes due to the changed LyXView interface that now returns references
+	to member variables not pointers.
+
+2002-08-12  Angus Leeming  <leeming@lyx.org>
+
+	* Menubar_pimpl.C: no need to #include "Dialogs.h". Remove semi-colon
+	from namespace closing delimiter.
+
+	* Menubar_pimpl.h:  remove MenuItemInfo:: prefix from c-tor declaration.
+
+	* QAbout.[Ch]:
+	* QBibitem.[Ch]:
+	* QBibtex.[Ch]:
+	* QCharacter.[Ch]:
+	* QCitation.[Ch]:
+	* QERT.[Ch]:
+	* QError.[Ch]:
+	* QExternal.[Ch]:
+	* QFloat.[Ch]:
+	* QGraphics.[Ch]:
+	* QInclude.[Ch]:
+	* QIndex.[Ch]:
+	* QLog.[Ch]:
+	* QMinipage.[Ch]:
+	* QParagraph.[Ch]:
+	* QPreamble.[Ch]:
+	* QPrint.[Ch]:
+	* QRef.[Ch]:
+	* QSearch.[Ch]:
+	* QShowFile.[Ch]:
+	* QSpellchecker.[Ch]:
+	* QTabularCreate.[Ch]:
+	* QTexinfo.[Ch]:
+	* QThesaurus.[Ch]:
+	* QToc.[Ch]:
+	* QURL.[Ch]:
+	* QVCLog.[Ch]:
+	No longer pass Controller or Dialogs to the c-tor.
+	No longer forward-declare Dialogs.
+
+	* Qt2Base.[Ch]: derives from ViewBase directly.
+	No longer passed ControlButtons & or Dialogs &.
+	(bc): new method, enabling the daughter classes to access the
+	ButtonController.
+	(slotWMHide):
+	(slotApply):
+	(slotOK):
+	(slotClose):
+	(slotRestore): changes due to a change in the ViewBase class.
+
+	* QtView.C (c-tor): no longer pass Dialogs & to the Toolbar.
+
+	* Toolbar_pimpl.[Ch] (c-tor): no longer passed a Dialogs &.
+
+	* guiapi.C: access the controller methods by explicit invocation of the
+	controller.
+
+2002-08-09  John Levon  <levon@movementarian.org>
+
+	* Toolbar_pimpl.C: add missing header
+
+2002-08-08  John Levon  <levon@movementarian.org>
+
+	* Toolbar_pimpl.C:
+	* Menubar_pimpl.C: lyxaction cleanup
+
+2002-08-08  John Levon  <levon@movementarian.org>
+
+	* QGraphicsDialog.C: enable rotate
+
+	* ui/QGraphicsDialog.ui: trigger changed on
+	  activated() not highlighted()
+
+2002-08-08  John Levon  <levon@movementarian.org>
+
+	* QGraphics.C:
+	* ui/QGraphicsDialog.ui: lots of fixes and cleanup
+
+	* ui/QRefDialog.ui: geometry cleanup
+
+2002-08-07  John Levon  <levon@movementarian.org>
+
+	* Menubar_pimpl.C: fix compile for gcc 3.1
+
+2002-08-06  John Levon  <levon@movementarian.org>
+
+	* ui/QSpellcheckerDialogBase.ui:
+	* QSpellcheckerDialog.h:
+	* QSpellchecker.h:
+	* QSpellchecker.C: remove options()
+
+	* QtView.C: fix build
+
+2002-07-31  John Levon  <levon@movementarian.org>
+
+	* io_callback.h: make a more proper class
+
+	* lyx_gui.C: implement removal of I/O callbacks
+
+2002-07-30  John Levon  <levon@movementarian.org>
+
+	* qlkey.h:
+	* QLyXKeySym.h:
+	* QLyXKeySym.C: do our own getISOEncoded() mapping
+	  because Qt can't handle it
+
+2002-07-29  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* several file: strip,frontStrip -> trim,ltrim,rtrim
+
+2002-07-25  John Levon  <levon@movementarian.org>
+
+	* Toolbar_pimpl.C: fix tooltips
+
+2002-07-25  John Levon  <levon@movementarian.org>
+
+	* QCommandEdit.C:
+	* Toolbar_pimpl.C: make Tab work in the content pane
+
+2002-07-25  John Levon  <levon@movementarian.org>
+
+	* Menubar_pimpl.C: split create/fill of menus into
+	  two functions
+
+2002-07-25  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Menubar_pimpl.C: make it compile again
+
+2002-07-24  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Menubar_pimpl.C: make it compile again
+
+2002-07-24  Angus Leeming  <leeming@lyx.org>
+
+	* FileDialog_private.C (done): add a false to the arguments passed to
+	getLyXFunc.
+
+	* QBibtex.C:
+	* QCommandBuffer.C: add a using std::vector directive.
+
+	* QBibtexDialog.C: s/<vector.h>/<vector>/
+
+	* QCommandBuffer.C: remove trailing semi-colon at the end of the
+	namespace scope.
+
+	* QTexinfo.h: s/vector<string>/std::vector<string>/
+
+2002-07-23  Edwin Leuven <leuven@fee.uva.nl>
+
+	* QBibtex.C: syle combobox instead of listbox
+	* QBibtexDialog.C:
+	* ui/QBibtexDialog.ui
+	* QTexinfo.C: Repair view without path/selection
+	* QTexinfo.h
+	* QTexinfoDialog.C
+	* QTexinfoDialog.h
+	* ui/QTexinfoDialog.ui
+	* ui/QCitationDialog.ui: layout fix
+	* ui/QExternalDialog.ui: idem
+	* TODO: update
+
+2002-07-23  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QCommandBuffer.C: real compile fix
+
+2002-07-22  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QLyXKeySym.C: return 0 when text_ is empty
+	  for getISOEncoded()
+
+2002-07-22  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QCommandBuffer.C: probably compile fix
+
+	* QtView.C:
+	* Toolbar_pimpl.h:
+	* Toolbar_pimpl.C: remove dead code
+
+2002-07-22  John Levon  <moz@compsoc.man.ac.uk>
+
+	* lyx_gui.C: add exit() so we don't busy loop !
+
+2002-07-22  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QCommandEdit.C: complete if right at end of line
+
+	* QLyXKeySym.C: cleanup comments
+
+	* QtView.C: prefer const int
+
+	* qlkey.h: fix some transliteration errors...
+
+2002-07-22  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Toolbar_pimpl.h:
+	* Toolbar_pimpl.C: remove ->push()
+
+2002-07-22  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* QCitationDialog.C: fix loop search and info update after selecting
+	* TODO: remove this is issue
+
+2002-07-22  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* ui/QBibtexDialog.ui: style browser
+	* QBibtex.C: idem
+	* QBibtexDialog.C: idem
+
+	* ui/QRefDialog.ui: document combo
+	* QRef.C: idem
+
+	* QInclude.C: new layout
+	* ui/QIncludeDialog.ui: new layout
+
+	* ui/QCitationDialog.ui: new layout
+
+	* ui/QExternalDialog.ui: new layout
+
+	* QGraphics.C: Compile fix
+
+	* TODO:
+
+2002-07-22  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Menubar_pimpl.h:
+	* Menubar_pimpl.C: implement check/disable, submenus
+
+2002-07-22  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Toolbar_pimpl.h:
+	* Toolbar_pimpl.C: implement getLayoutList()
+
+2002-07-21  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* Toolbar_pimpl.C: use BufferParams::getLyXTextClass
+
+2002-07-21  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QToc.h:
+	* QToc.C: compile fixes, default to depth_(1)
+
+2002-07-21  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Menubar_pimpl.C: change for removed menubar stuff
+
+2002-07-21  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QtView.C: reset idle timer on message()
+
+2002-07-20  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QLImage.C: various fixes
+
+	* QWorkArea.C: set focus proxy
+
+	* qscreen.C: don't show cursor when in command buffer
+
+	* Makefile.am:
+	* moc/Makefile.am:
+	* QMiniBuffer.h:
+	* QMiniBuffer.C:
+	* QCommandBuffer.h:
+	* QCommandBuffer.C:
+	* QCommandEdit.h:
+	* QCommandEdit.C:
+	* QtView.h:
+	* QtView.C: Rudimentary command buffer
+
+2002-07-19  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QWorkArea.C: remove unnecessary include
+
+2002-07-18  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QtView.C:
+	* Toolbar_pimpl.C:
+	* lyx_gui.C: verboseDispatch() is now dispatch()
+
+2002-07-07  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* QParagraph.[Ch]: Add paragraph dialog
+	* QParagraphDialog.[Ch]:
+	* ui/QParagraphDialog.[Ch]:
+	* Makefile.am:
+	* Makefile.dialogs:
+	* guiapi.C:
+
+2002-07-17  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QtView.C: basic statusbar show
+
+2002-07-17  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QLImage.C: add using std
+
+2002-07-15  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QLImage.h:
+	* QLImage.C: remove getPixmap() add isDrawable()
+
+2002-07-14  John Levon  <moz@compsoc.man.ac.uk>
+
+	* io_callback.h:
+	* lyx_gui.C: make set_read_callback() work
+
+2002-07-14  John Levon  <moz@compsoc.man.ac.uk>
+
+	* lyx_gui.C: add set_read_callback()
+
+	* Makefile.am:
+	* xforms/*: remove
+
+2002-07-13  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QtView.C: add a status bar
+
+	* Toolbar_pimpl.C: minor fixes
+
+	* lyx_gui.C: implement hexname()
+
+2002-07-12  John Levon  <moz@compsoc.man.ac.uk>
+
+	* lyx_gui.C: move init_graphics() to parse_init()
+
+2002-07-12  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Toolbar_pimpl.h:
+	* Toolbar_pimpl.C: remove unused (de)activate()
+
+2002-07-12  John Levon  <moz@compsoc.man.ac.uk>
+
+	* lyx_gui.C: implement update_fonts(), font_available()
+
+2002-07-12  John Levon  <moz@compsoc.man.ac.uk>
+
+	* lyx_gui.C: add un-needed update_color()
+
+2002-07-12  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QtView.h:
+	* QtView.C: remove unused methods
+
+2002-07-12  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Makefile.am:
+	* QLImage.h:
+	* QLImage.C: initial image loader
+
+	* lyx_gui.C: initialise graphics
+
+	* QLPainter.C: draw images
+
+	* QWorkArea.C: implement clipboard as much as possible
+
+2002-07-11  John Levon  <moz@compsoc.man.ac.uk>
+
+	* dialog files: add unused Dialogs paramater to allow compile
+
+	* QtView.C:
+	* QMiniBuffer.h:
+	* QMiniBuffer.C:
+	* Makefile.am: add QMiniBuffer (placeholder)
+
+	* TODO: add
+
+	* Toolbar_pimpl.h:
+	* Toolbar_pimpl.C: compile fix
+
+	* lyx_gui.C: add hexname() place holder
+
+2002-07-04  André Pönitz  <poenitz@lyx.org>
+
+	* xforms/Makefile.am: replace XFORMSGIMAGE by XFORMSIMAGE
+
+2002-06-28  Angus Leeming  <leeming@lyx.org>
+
+	* QLPainter.[Ch]: changes associated with the name change
+	grfx::GImage -> grfx::Image.
+
+2002-06-21  Angus Leeming  <leeming@lyx.org>
+
+	* Menubar_pimpl.C (c-tor): rename MenuBackend const & mb argument to
+	avoid name clash with MenuBackend::const_iterator mb.
+
+	* QContentPane.C:
+	* QLPainter.C:
+	* qscreen.C: add using std::endl directive.
+
+	* QLPainter.C (lines, fillPolygon) : wrap QCOORD points inside a
+	scoped_array as np is not known at compile time and my compiler barfs.
+
+	* Toolbar_pimpl.h: forward declare class ToolbarProxy.
+
+	* qfont_loader.h: don't #include "font_loader.h".
+
+	* qfont_metrics.C: remove trailing ';' from namespace anon scope.
+
+2002-06-21  John Levon  <moz@compsoc.man.ac.uk>
+
+	* qfont_metrics.C: fix variable names
+
+2002-06-21  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QWorkArea.C: remove dead splash code
+
+2002-06-21  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QContentPane.C: restore calls to workAreaResize()
+
+	* QLyXKeySym.h: tidy
+
+	* QWorkArea.h: remove redraw()
+
+	* QWorkArea.C: remove resize()
+
+2002-06-20  John Levon  <moz@compsoc.man.ac.uk>
+
+	* guiapi.C: createIndex() changed
+
+2002-06-20  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QWorkArea.h: remove unused resize(...)
+
+2002-06-20  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QWorkArea.h: remove unused stuff
+
+2002-06-19  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QContentPane.h:
+	* QContentPane.C: remove focus/unfocus events
+
+2002-06-19  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QWorkArea.h: remove unused methods
+
+2002-06-19  John Levon  <moz@compsoc.man.ac.uk>
+
+	* LyXKeySymFactory.C: add
+
+	* Makefile.am:
+	* QContentPane.C:
+	* qlkey.h:
+	* QLyXKeySym.h:
+	* QLyXKeySym.C: get keyboard partly working
+
+	* qfont_metrics.C: fix compile
+
+2002-06-19  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Makefile.am: add the new files ...
+
+	* Dialogs.C:
+	* guiapi.C:
+	* all dialogs: implement new dialog stuff, fix compile
+
+	* FileDialog_private.h:
+
+	* GUIRunTime.C:
+	* lyx_gui.C: update for lyx_gui namespace
+
+	* LyXScreenFactory.C: add
+
+	* QContentPane.h:
+	* QContentPane.C: new widget for containing a lyx document
+
+	* QLPainter.h:
+	* QLPainter.C: qt painter object
+
+	* QWorkArea.h:
+	* QWorkArea.C: Qt version of the work area
+
+	* QtView.h:
+	* QtView.C: Qt version of LyXView
+
+	* Toolbar_pimpl.h:
+	* Toolbar_pimpl.C:
+	* Menubar_pimpl.h:
+	* Menubar_pimpl.C: initial Qt versions
+
+	* WorkAreaFactory.C: generate a QWorkArea
+
+	* emptytable.C: add a resize grippie
+
+	* qfont_loader.h:
+	* qfont_loader.C: font loader for Qt
+
+	* qfont_metrics.h:
+	* qfont_metrics.C: font metrics for Qt
+
+	* qlkey.h: convert Qt key symbol into a name
+
+	* qscreen.h:
+	* qscreen.C: Qt version of screen
+
+	* moc/Makefile.am: add new files
+
+	* xforms/Makefile.am: remove all xforms dialogs
+
+2002-06-10  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* Qt2BC.C: do not include ButtonController.tmpl
+
+2002-05-23  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QtLyXView.h: moved into frontends/
+
+2002-05-22  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* QDocument.h: use more specific smart_ptr header.
+	* Qt2Base.h: ditto
+
+2002-04-30  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QCharacter.h:
+	* QCharacter.C: update for language i18n change
+
+2002-04-16  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Dialogs.C: add tooltipsEnabled()
+
+	* QTeXInfo.C: include right header
+
+	* moc/Makefile.am: add back missing moc files
+
+	* xforms/Makefile.am: add missing FeedbackController
+
+2002-04-08  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* xforms/Makefile.am (link_files): use correct _SOURCES variable.
+
+	* ui/moc/Makefile.am: move include to top
+	(DISTCLEANFILES): take the UIMOCDIALOGS variable instead
+
+	* ui/Makefile.am: ws change
+
+	* moc/Makefile.am: move include to top
+
+	* Makefile.am (EXTRA_DIST): some file taken from...
+	* Makefile.dialogs (DIALOGSOURCES):here
+
+	* xforms/Makefile.am (EXTRA_DIST): delete
+	(libqt2xforms_la_SOURCES): change to...
+	(nodist_libqt2xforms_la_SOURCES): this
+
+	* ui/moc/Makefile.am (libqt2uimoc_la_SOURCES): change to...
+	(nodist_libqt2uimoc_la_SOURCES): this
+
+	* ui/Makefile.am (libqt2ui_la_SOURCES): change to...
+	(nodist_libqt2ui_la_SOURCES): this
+
+	* moc/Makefile.am (libqtmoc_la_SOURCES): comment out
+	(nodist_libqt2moc_la_SOURCES): new
+
+	* Makefile.dialogs (DIALOGSOURCES): add QParagraph,
+	QParagraphDialog, QDocument, QDocumentDialog
+
+	* Makefile.am (DISTCLEANFILES): delete
+	(EXTRA_DIST): add with Makefile.dialogs
+
+2002-04-02  John Levon  <moz@compsoc.man.ac.uk>
+
+	* ui/QParagraphDialog.ui: fix a couple of typos for
+	  the translators
+
+2002-03-25  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* xforms/Makefile.am (link_files): whitespace.
+
+2002-03-22  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* xforms/Makefile.am (libqt2xforms.la): it should depend on
+	libqt2xforms_la_OBJECTS not libqt2xforms_la_SOURCES!
+
+2002-03-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* most files: ws cleanup
+
+2002-03-11  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* docygen fixes.
+
+2002-03-05  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* GUIRunTime.C (initialiseGraphics): use the xforms image loader if
+	your version of the xforms libraries is up to the task.
+
+	* xforms/Makefile.am: link in the xforms image loader if so configured.
+
+2002-03-04   Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* Dialogs.C (redrawGUI): removed to frontends/Dialogs.C
+
+	* Dialogs.C:
+	* GUIRunTime.C (initialiseGraphics): moved to GUIRunTime.
+
+2002-03-02  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* Makefile.am: get rid of LYX_LIBS
+
+	* QDocument.C (class_update): layout as string
+
+2002-03-01  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Makefile.am:
+	* moc/Makefile.am:
+	* ui/Makefile.am:
+	* ui/moc/Makefile.am: fix compile
+
+	* xforms/: compile the necessary files via symlinks
+
+	* QPreambleDialog.C: new systemcall interface
+
+	* Timeout_pimpl.h:
+	* Timeout_pimpl.C: add running()
+
+	* Dialogs.C: add init graphics, and doc/par xforms forms
+
+2002-02-06  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QToc.C: fix crash
+
+2002-02-06  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* QGraphics.C: compilation fix
+	* QTexinfoDialog.C:
+	* QTexinfoDialog.h:
+	* ui/QTexinfoDialog.ui: remove help button
+
+2002-01-31  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* qt2/QGraphics.C:
+	* qt2/QGraphics.h:
+	* qt2/QGraphicsDialog.C:
+	* qt2/QGraphicsDialog.h:
+	* qt2/lengthcombo.C:
+	* qt2/ui/QGraphicsDialog.ui: new dialog
+	* qt2/QAbout.C:
+	* qt2/ui/QAboutDialog.ui: reduce size
+	* qt2/ui/QFloatDialog.ui: update dialog
+
+2002-01-29  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* Makefile.am:
+	* Dialogs.C:
+	* Makefile.dialogs:
+	* QShowFile.h:
+	* QShowFile.C:
+	* QShowFileDialog.h:
+	* QShowFileDialog.C:
+	* ui/QShowFileDialog.ui: add showfile dialog
+	* ui/QCitationDialog.ui: minor layout tweaks
+
+2002-01-25  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* Dialogs.C: removed now redundant #include "QParagraph.h".
+
+	* QSearchDialog.h (remember): removed unnecessary
+	QSearchDialog qualifier.
+
+	* QTexinfo.C:
+	* QToc.C: added various using std::xyz directives.
+
+2002-01-25  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* Makefile.am:
+	* Dialogs.C:
+	* Makefile.dialogs:
+	* QFloat.h:
+	* QFloat.C:
+	* QFloatDialog.h:
+	* QFloatDialog.C:
+	* ui/QFloatDialog.ui: add float dialog
+
+2002-01-25  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Makefile.am:
+	* Makefile.dialogs: don't compile QPar/Doc
+	  for now, as they cause problems
+
+2002-01-20  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Makefile.am:
+	* Dialogs.C:
+	* QToc.h:
+	* QToc.C:
+	* QTocDialog.h:
+	* QTocDialog.C:
+	* ui/QTocDialog.ui: resuscitate TOC dialog
+
+2002-01-20  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QCitation.h:
+	* QCitation.C:
+	* QCitationDialog.h:
+	* QCitationDialog.C:
+	* ui/QCitationDialog.ui: natbib fixes
+
+2002-01-19  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* QTexinfo.[Ch]: added
+	* QTexinfoDialog.[Ch]: added
+	* ui/QTexinfoDialog.ui: added
+	* Dialogs.C: add dialog
+	* Makefile.dialogs: idem
+
+2002-01-18  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* QMinipage.C: compiles fixes (lyxlength related)
+
+2002-01-15  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Makefile.am:
+	* FileDialog_private.h: fix compile
+
+	* QThesaurus.h:
+	* QThesaurus.C:
+	* QThesaurusDialog.h:
+	* QThesaurusDialog.C:
+	* ui/QThesaurusDialog.ui: new thesaurus code
+
+2002-01-14  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* QMinipage.C (apply, update_contents): MinipageParams::width renamed
+	as MinipageParams::pageWidth.
+
+2002-01-04  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QParagraph.C: add needed include
+
+2001-12-08  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Makefile.am:
+	* Dialogs.C: bring back unconverted dialogs
+
+2001-12-05  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QParagraph.C:
+	* QParagraphDialog.h:
+	* QParagraphDialog.C: use new vspace API
+
+	* QTocDialog.C: silence warnings
+
+2001-12-05  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* qttableview.C: change "while(" to "while ("
+
+2001-12-05  Allan Rae  <rae@lyx.org>
+
+	* QParagraph.C (apply):
+	(update): Use the right LyXText -- extending John's fix
+
+2001-12-01  Maks Orlovich  <mo002j@mail.rochester.edu>
+
+	* moc/Makefile.am:
+	* Makefile.am:
+	* QBibtexDialog.C:
+	* QExternalDialog.C:
+	* QParagraphDialog.h:
+	* QPreambleDialog.C:
+	* emptytable.C:
+	* qttableview.C:
+	* qttableview.C:
+	* qttableview.h: fixes for Qt3
+
+2001-12-01  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Makefile.am: add Alert_pimpl.lo
+
+2001-11-06  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Makefile.am: link in new DropDown.lo
+
+	* QSpellcheckerDialog.C: fix warning
+
+	* ui/moc/Makefile.am: remove dead thing
+
+2001-10-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* ui/moc/Makefile.am: remove unportable # at beginning of
+	declaration.
+
+	* ui/Makefile.am:
+	* Makefile.am: remove extra DISTCLEANFILES declaration
+
+2001-10-07  Adrien Rebollo  <adrien.rebollo@gmx.fr>
+
+	* ui/QDocumentDialog.ui:
+	* QDocument.C (build_dialog): support latin4
+
+2001-10-05  Adrien Rebollo  <adrien.rebollo@gmx.fr>
+
+	* ui/QDocumentDialog.ui:
+	* QDocument.C (build_dialog): support latin3
+
+2001-09-27  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* Dialogs.C: remove splash dialog code.
+
+	* QSplash.[Ch]:
+	* QSplashDialog.[Ch]: removed.
+
+	* Makefile.dialogs: remove splash dialog files.
+
+2001-09-18  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QRef.C: fix compile
+
+	* README: update
+
+2001-09-09  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* Makefile.am (libqt2_la_LIBADD): rename from OBJADD, depend on
+	gui libs
+
+2001-09-06  John Levon  <moz@compsoc.man.ac.uk>
+
+	* ui/QMinipageDialog.ui: fix layout, remove old slot
+
+	* QRefDialog.C: fix warning
+
+2001-09-02  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* ui/QSpellcheckerDialog.ui: reworded layout
+
+2001-09-02  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* QMinipage.C: remove radiobutton add combox
+	* ui/QMinipageDialog.ui: + buttons at bottom
+
+2001-09-01  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Makefile.dialogs:
+	* Dialogs.C:
+	* QSpellchecker.[Ch]:
+	* QSpellcheckerDialog.[Ch]:
+	* ui/QSpellcheckerDialog.ui: add spellchecker dialog
+
+2001-08-31  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* ui/QMinipageDialog.ui: layout tweak again (but it's getting better)
+
+2001-08-31  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* ui/QGraphicsDialog.ui : minor layout tweak
+	* ui/QIncludeDialog.ui : idem
+	* ui/QMinipageDialog.ui: idem
+	* ui/QURLDialog.ui: idem
+
+2001-08-31  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* ui/QRefDialog.ui : minor layout tweak
+	* Qref.C: idem
+
+2001-08-31  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QTabularCreateDialog.C: fix warnings
+
+	* emptytable.h:
+	* emptytable.C:
+	* ui/QTabularCreateDialog.ui: fix layout
+	  when table size is changed
+
+2001-08-31  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Dialogs.C:
+	* QSearch.[Ch]:
+	* QSearchDialog.[Ch]:
+	* ui/QSearchDialog.ui: add search back
+
+2001-08-29  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Dialogs.C:
+	* QPrint.[Ch]:
+	* QPrintDialog.[Ch]:
+	* ui/QPrintDialog.ui: add print dialog back
+
+2001-08-29  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Makefile.am:
+	* moc/Makefile.am:
+	* ui/Makefile.am:
+	* ui/moc/Makefile.am: use AM_CXXFLAGS to add defines
+
+2001-08-29  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* QAbout.C: added a using std::getline directive.
+
+	* QCitationDialog.C (doFind): removed const from argument to make it
+	consistent with the header file.
+
+	* QDocument.[Ch] (c-tor): moved declaration of into .C file. Compilation
+	was failing with "incomplete type is not allowed" in instantiation
+	of boost::scoped_ptr<QDocumentDialog> dialog_.
+
+	* QLog.C: added a couple of using std::xyz directives.
+
+	* QPreambleDialog.C: added a using std::getline directive.
+
+	* QToc.C: using SigC::slot directive.
+
+2001-08-29  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* ui/QURLDialog.ui : minor layout tweak
+
+2001-08-29  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QPreamble.[Ch]:
+	* QPreambleDialog.[Ch]:
+	* ui/QPreambleDialog.ui:
+	* Makefile.am:
+	* Makefile.dialogs:
+	* Dialogs.C: add pre-amble dialog
+
+2001-08-29  John Levon  <moz@compsoc.man.ac.uk>
+
+	* ui/QIndexDialog.ui:
+	* QIndexDialog.C: add QWhatsThis in C source
+
+	* README: document this restriction
+
+2001-08-29  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QMinipage.[Ch]:
+	* QMinipageDialog.[Ch]:
+	* ui/QMinipageDialog.ui:
+	* lengthcombo.[Ch]:
+	* Makefile.am:
+	* moc/Makefile.am:
+	* Makefile.dialogs:
+	* Dialogs.C: add minipage and prototype length combo widget
+
+2001-08-29  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QLog.[Ch]:
+	* QLogDialog.[Ch]:
+	* ui/QLogDialog.ui:
+	* QVCLog.[Ch]:
+	* QVCLogDialog.[Ch]:
+	* ui/QVCLogDialog.ui:
+	* Dialogs.C:
+	* Makefile.am:
+	* Makefile.dialogs: add log and vclog dialogs
+
+2001-08-28  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Dialogs.C:
+	* QTabularCreate.[Ch]:
+	* QTabularCreate.h:
+	* QTabularCreateDialog.C:
+	* QTabularCreateDialog.h:
+	* ui/Makefile.am:
+	* ui/QTabularCreateDialog.ui: bring back
+	tabcreate
+
+2001-08-28  John Levon  <moz@compsoc.man.ac.uk>
+
+	* ui/QCharacterDialog.ui:
+	* ui/QThesaurusDialog.ui: fix tab order
+
+	* QGraphics.[Ch]:
+	* QGraphicsDialog.[Ch]:
+	* ui/QGraphicsDialog.ui:
+	* Makefile.am:
+	* Makefile.dialogs:
+	* Dialogs.C: add graphics dialog
+
+2001-08-28  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QThesaurus.C: clear selection on update
+
+	* QInclude.[Ch]:
+	* QincludeDialog.[Ch]:
+	* ui/QincludeDialog.ui:
+	* Makefile.am:
+	* Makefile.dialogs:
+	* Dialogs.C: add Include dialog
+
+	* README: add note about crashes
+
+2001-08-27  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QThesaurusDialog.C: whoops, forgot to clear before update
+
+2001-08-27  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QBibtex.C:
+	* QBibtexDialog.h:
+	* QBibtexDialog.C:
+	* ui/QBibtexDialog.ui: fix some things, add
+	  delete button
+
+	* QExternalDialog.C: fix file dialog thing
+
+	* QThesaurus.h:
+	* QThesaurus.C:
+	* QThesaurusDialog.h:
+	* QThesaurusDialog.C:
+	* ui/QThesaurusDialog.ui: fix compile, get working
+
+	* moc/Makefile.am: fix builddir != srcdir
+
+2001-08-27  John Levon  <moz@compsoc.man.ac.uk>
+
+	* GUIRunTime.C: fix argc handling
+
+2001-08-27  John Levon  <moz@compsoc.man.ac.uk>
+
+	* ui/*.ui:
+	* ui/Makefile.am: add some sed magic to replace tr() with _()
+
+2001-08-27  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Makefile.am: remove accidentally committed xforms file
+
+2001-08-27  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Dialogs.C:
+	* Makefile.dialogs:
+	* QThesaurus.[Ch]:
+	* QThesaurusDialog.[Ch]:
+	* ui/QThesaurusDialog.ui: add thesaurus dialog
+
+2001-08-27  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Dialogs.C:
+	* Makefile.am:
+	* Makefile.dialogs:
+	* QExternal.[Ch]:
+	* QExternalDialog.[Ch]:
+	* ui/QExternalDialog.ui: add external dialog
+
+2001-08-26  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Dialogs.C:
+	* Makefile.dialogs:
+	* QERT.[Ch]:
+	* QERTDialog.[Ch]:
+	* ui/QERTDialog.ui: add ERT dialog
+
+2001-08-26  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Dialogs.C:
+	* Makefile.am:
+	* Makefile.dialogs:
+	* QError.[Ch]:
+	* QErrorDialog.[Ch]:
+	* ui/QErrorDialog.ui: add LaTeX error dialog
+
+2001-08-26  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Dialogs.C:
+	* QCharacter.[Ch]:
+	* QCharacterDialog.[Ch]:
+	* ui/QcharacterDialog.ui: make work again,
+	  add auto-apply feature
+
+2001-08-26  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Dialogs.C:
+	* Makefile.am:
+	* Makefile.dialogs:
+	* QBibitem.[Ch]:
+	* QBibitemDialog.[Ch]:
+	* ui/QBibitemDialog.ui: add Bibitem dialog
+
+2001-08-26  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Dialogs.C:
+	* Makefile.dialogs:
+	* QBibtex.[Ch]:
+	* QBibtexDialog.[Ch]:
+	* ui/QBibtexDialog.ui: added BibTeX dialog.
+
+	* README: update
+
+2001-08-26  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Qt2BC.C: whoops, reversed sense of setReadOnly()
+
+2001-08-26  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Dialogs.C:
+	* QRef.[Ch]:
+	* ui/QRefDialog.ui: add Ref dialog back
+
+	* QAbout.[Ch]:
+	* QCitation.[Ch]:
+	* QDocument.[Ch]:
+	* QIndex.[Ch]:
+	* QURL.[Ch]:
+	* Qt2Base.h: protect build() with updating_ too
+
+	* QCitationDialog.C: use Qt2Base::readOnly
+
+	* README: update
+
+2001-08-25  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Dialogs.C: add URL
+
+	* QAbout.h:
+	* QCitation.h:
+	* QDocument.h:
+	* QIndex.C:
+	* Qt2Base.h:
+	* Qt2Base.C: add an updating_ variable to prevent
+	  bc() breakage.
+
+	* QURL.h:
+	* QURL.C:
+	* QURLDialog.h:
+	* QURLDialog.C:
+	* ui/QURLDialog.ui: make alive again
+
+	* Qt2BC.C: make lineedits ReadOnly not disabled
+
+	* README: update
+
+	* ui/QCitationDialog.ui: small cleanups
+
+	* ui/QIndexDialog.ui: add a what's this
+
+2001-08-24  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Dialogs.C: include the right files
+
+	* QCitation.C: closePB not cancelPB
+
+	* QCitationDialog.C:
+	* QCitationDialog.h:
+	* ui/QCitationDialog.ui: small fixes
+
+	* QIndex.h:
+	* QIndex.C:
+	* QIndexDialog.C:
+	* QIndexDialog.h:
+	* ui/QIndexDialog.ui: more fixes
+
+	* Qt2Base.h:
+	* Qt2Base.C: add reset() to workaround problem.
+
+	* README: update
+
+	* Makefile.am:
+	* Timeout_pimpl.h:
+	* Timeout_pimpl.C: add the timer
+
+2001-08-23  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Dialogs.C:
+	* Makefile.am:
+	* Qt2BC.h:
+	* Qt2BC.C:
+	* QAbout.C:
+	* QCitation.C:
+	* QDocument.h:
+	* Qt2Base.C:
+	* Qt2Base.h: rename qt2BC -> Qt2BC, set focus for widget enable
+
+	* QIndex.h:
+	* QIndex.C:
+	* ui/QIndexDialog.ui: use the BC properly
+
+	* Qt2Base.h:
+	* Qt2Base.C: add a virtual isValid(), and predicate what changed()
+	  tells the BC on the return value
+
+	* README: update
+
+2001-08-21  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Dialogs.C: add QIndex
+
+	* ui/Makefile.am:
+	* Makefile.am: fix build
+
+	* ui/QAboutDialog.ui:
+	* QAbout.C: finish dialog
+
+	* ui/QCitationDialog.ui:
+	* QCitationDialog.C: BC fixes
+
+	* ui/QIndexDialog.ui:
+	* QIndex.h:
+	* QIndex.C:
+	* QIndexDialog.h:
+	* QIndexDialog.C: got index dialog working
+
+2001-08-19  John Levon  <moz@compsoc.man.ac.uk>
+
+	* all files: enormous naming re-jig and tidy
+
+2001-07-13  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	Consistent use of Lsstream.h:
+	* FormCredits.C (build): std::stringstream -> stringstream.
+
+2001-06-17  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormCitation.C (build): removed bc().refresh() call as the controller
+	should take care of this.
+	(update): removed noKeys stuff as you don't use it.
+
+	* FormCitationDialogImpl.C (slotBibSelected): Can't select bibkeys[-1]!
+	We were being bit by the xforms browser returns the browser line number
+	in Fortran style, but Qt uses C-style.
+
+2001-06-16  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormCitationDialogImpl.C: added using directive.
+
+	* qt2BC.[Ch]: qt2BC now derives from GuiBC<QButton, QWidget>.
+	No idea why this wasn't done ages ago!
+
+2001-06-15  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormCharacter.C:
+	* FormParagraph.C (c-tor): cosmetic name change of signal.
+
+2001-06-14  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormCitation.C:
+	* Qt2Base.C: removed // -*- C++ -*- as first line.
+
+	* FileDialog_private.h:
+	* FormCopyright.h:
+	* FormCredits.h:
+	* FormIndex.h:
+	* FormParagraph.h:
+	* FormPrint.h:
+	* FormRef.h:
+	* FormSearch.h:
+	* FormSplash.h:
+	* FormTabularCreate.h:
+	* FormToc.h:
+	* FormUrl.h:
+	* QtLyXView.h: added // -*- C++ -*- as first line.
+
+2001-06-02  John Levon  <moz@compsoc.man.ac.uk>
+
+	* <various>: fix random space pepper to use
+	  hard tabs. Also add <config.h> where necessitated
+	  by using LString.h
+
+2001-05-22  Adrien Rebollo <rebollo@iaf.cnrs-gif.fr>
+
+	* FormDocument.C (build): add iso8859-15 support.
+
+2001-05-17  Allan Rae  <rae@lyx.org>
+
+	* FormCharacter.C:
+	* FormCopyright.C:
+	* FormCredits.C:
+	* FormSearch.C: gettext went missing but is back gain now _().
+
+	* Makefile.am:  ButtonController is now ButtonControllerBase.
+	It now compiles but it won't link lyx on my system.  Complaints about
+	not being able to link in libraries lib{GL,GLU,Xft,Xext,Xmu} which
+	are all present and accounted for by ldconfig.  YMMV.
+
+2001-05-09  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* FormParagraph.C: remove !NEW_INSETS and !NO_PEXTRA cruft
+
+2001-04-03  John Levon  <moz@compsoc.man.ac.uk>
+
+	* FormCharacter.C:
+	* FormDocument.h:
+	* FormSearch.C:
+	* Dialogs.C: s/popup/dialog/
+
+	* qt2BC.h:
+	* qt2BC.C:
+	* FormCitation.C:
+	* FormDocument.C: s/UndoAll/Restore/
+
+	* Qt2Base.h:
+	* Qt2Base.C: s/ControlButton/ControlButtons/
+
+
+2001-04-02  Kalle Dalheimer  <kalle@klaralvdalens-datakonsult.se>
+
+	* Makefile.am: Simplified Makefile.am
+
+2001-03-31  Kalle Dalheimer  <kalle@klaralvdalens-datakonsult.se>
+
+	* FormCitationDialogImpl.C (doPreviousNext): Propagated search
+	fixes from XForms
+	* several files: MVC for citation dialog
+
+2001-03-30  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* Qt2Base.[Ch]: changed ControlBase to ControlButton.
+
+2001-03-19  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* qt2 compiles again:
+	* Makefile.am: added missing xform dialogs
+	* FormParagraph.C: only extra setting if wanted
+	* FormParagraph.h: add namespace to connection
+
+2001-03-16  Kalle Dalheimer  <kalle@klaralvdalens-datakonsult.se>
+
+	* FormParagraph.C (apply): Only call SetParagraphExtraOpt() when
+	NO_PEXTRA is not defined (in line with XForms frontend)
+
+	* Dialogs.C: Adapted to backend changes
+
+	* Makefile.am: updated citation dialog
+	* Citation dialog added: FormCitation.{C,h},
+	*    FormCitationDialog.ui, FormCitationDialogImpl.{C,h}
+
+2001-03-15  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
+
+	* several files: remove CXX_WORKING_NAMESPACES
+
+2001-03-15  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* Added splash screen
+	* Makefile.am: updated
+	* FormSplash.[Ch]: added
+	* FormSplashImpl.[Ch]: added
+
+2001-03-09  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* Makefile.am: updated
+	* paragraphdlg.ui: manually enabled items in minipage settings
+	* paragraphdlgimpl.C: tweak enable code on extra page
+	* Stuff sent in by Denis Perchine <dyp@perchine.com> to compile again:
+	* FileDialog_private.[Ch]: added
+	* FileDialog.C: added
+	* FormParagraph.C: params settings updated
+
+2001-03-06  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* Search dialog added:
+	* FormSearch.[Ch]
+	* searchdlg.ui
+	* searchdlg.[Ch]
+	* searchdlgimpl.[Ch]
+
+2001-02-16  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* remove inheritance from noncopyable in Form*.h
+	* Character dialog added:
+	* FormCharacter.[Ch]
+	* chardlg.ui
+	* chardlg.[Ch]
+	* chardlgimpl.[Ch]
+
+2001-02-16  John Levon  <moz@compsoc.man.ac.uk>
+
+	* FormParagraph.C: fix bview->update()
+
+2001-01-24  Edwin Leuven  <leuven@fee.uva.nl>
+
+	*FormParagraph.C:
+	*FormParagraph.h:
+	*FormPrint.C:
+	*FormPrint.h:
+	*FormTabularCreate.C:
+	*FormTabularCreate.h:
+	*QtLyXView.h:
+	*emptytable.C:
+	*emptytable.h:
+	*paragraphdlg.C:
+	*paragraphdlg.h:
+	*paragraphdlg.ui:
+	*paragraphdlgimpl.C:
+	*paragraphdlgimpl.h:
+	*printdlg.C:
+	*printdlg.h:
+	*printdlg.ui:
+	*printdlgimpl.C:
+	*printdlgimpl.h:
+	*tabularcreatedlg.C:
+	*tabularcreatedlg.h:
+	*tabularcreatedlg.ui:
+	*tabularcreatedlgimpl.C:
+	*tabularcreatedlgimpl.h:
+	*Makefile.am: added paragraph/print/tabular create dialogs
+
+2001-01-24  John Levon  <moz@compsoc.man.ac.uk>
+
+	* src/frontends/qt2/.cvsignore:
+	* Dialogs.C:
+	* FormCopyright.C:
+	* FormCopyright.h:
+	* FormCopyrightDialog.C:
+	* FormCopyrightDialog.h:
+	* FormCopyrightDialogBase.C:
+	* FormCopyrightDialogBase.h:
+	* FormCopyrightDialogBase.ui:
+	* GUIRunTime.C:
+	* Makefile.am: start frontend with the Copyright
+	  dialog

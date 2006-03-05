@@ -1,0 +1,145 @@
+<ui version="4.0" stdsetdef="1" >
+  <author></author>
+  <comment></comment>
+  <exportmacro></exportmacro>
+  <class>QSendtoUi</class>
+  <widget class="QDialog" name="QSendto" >
+    <property name="geometry" >
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>282</width>
+        <height>262</height>
+      </rect>
+    </property>
+    <property name="windowTitle" >
+      <string/>
+    </property>
+    <property name="sizeGripEnabled" >
+      <bool>true</bool>
+    </property>
+    <layout class="QGridLayout" >
+      <property name="margin" >
+        <number>11</number>
+      </property>
+      <property name="spacing" >
+        <number>6</number>
+      </property>
+      <item row="2" column="0" >
+        <widget class="QLabel" name="commandLA" >
+          <property name="text" >
+            <string>&amp;Command:</string>
+          </property>
+          <property name="buddy" >
+            <cstring>commandCO</cstring>
+          </property>
+        </widget>
+      </item>
+      <item row="0" column="0" >
+        <widget class="QLabel" name="formatLA" >
+          <property name="text" >
+            <string>&amp;Export formats:</string>
+          </property>
+          <property name="buddy" >
+            <cstring>formatLB</cstring>
+          </property>
+        </widget>
+      </item>
+      <item row="4" column="0" >
+        <layout class="QHBoxLayout" >
+          <property name="margin" >
+            <number>0</number>
+          </property>
+          <property name="spacing" >
+            <number>6</number>
+          </property>
+          <item>
+            <widget class="QPushButton" name="okPB" >
+              <property name="text" >
+                <string>&amp;OK</string>
+              </property>
+              <property name="autoDefault" >
+                <bool>true</bool>
+              </property>
+              <property name="default" >
+                <bool>false</bool>
+              </property>
+            </widget>
+          </item>
+          <item>
+            <widget class="QPushButton" name="applyPB" >
+              <property name="text" >
+                <string>&amp;Apply</string>
+              </property>
+            </widget>
+          </item>
+          <item>
+            <widget class="QPushButton" name="closePB" >
+              <property name="text" >
+                <string>Cancel</string>
+              </property>
+            </widget>
+          </item>
+        </layout>
+      </item>
+      <item row="3" column="0" >
+        <widget class="QComboBox" name="commandCO" >
+          <property name="sizePolicy" >
+            <sizepolicy>
+              <hsizetype>3</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+            </sizepolicy>
+          </property>
+          <property name="focusPolicy" >
+            <enum>Qt::StrongFocus</enum>
+          </property>
+          <property name="editable" >
+            <bool>true</bool>
+          </property>
+          <property name="maxCount" >
+            <number>666</number>
+          </property>
+          <property name="insertPolicy" >
+            <enum>QComboBox::InsertAtTop</enum>
+          </property>
+          <property name="autoCompletion" >
+            <bool>true</bool>
+          </property>
+          <property name="duplicatesEnabled" >
+            <bool>false</bool>
+          </property>
+          <property name="toolTip" >
+            <string>Process the converted file with this command ($$FName = file name)</string>
+          </property>
+        </widget>
+      </item>
+      <item row="1" column="0" >
+        <widget class="Q3ListBox" name="formatLB" >
+          <property name="maximumSize" >
+            <size>
+              <width>32767</width>
+              <height>32767</height>
+            </size>
+          </property>
+          <property name="toolTip" >
+            <string>Available export converters</string>
+          </property>
+          <item>
+            <property name="text" >
+              <string>New Item</string>
+            </property>
+          </item>
+        </widget>
+      </item>
+    </layout>
+  </widget>
+  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+  <tabstops>
+    <tabstop>formatLB</tabstop>
+    <tabstop>okPB</tabstop>
+    <tabstop>applyPB</tabstop>
+    <tabstop>closePB</tabstop>
+  </tabstops>
+</ui>

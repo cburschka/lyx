@@ -1,0 +1,117 @@
+<ui version="4.0" stdsetdef="1" >
+  <author></author>
+  <comment></comment>
+  <exportmacro></exportmacro>
+  <class>QPrefAsciiUi</class>
+  <widget class="QWidget" name="QPrefAscii" >
+    <property name="geometry" >
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>340</width>
+        <height>99</height>
+      </rect>
+    </property>
+    <property name="windowTitle" >
+      <string/>
+    </property>
+    <layout class="QVBoxLayout" >
+      <property name="margin" >
+        <number>11</number>
+      </property>
+      <property name="spacing" >
+        <number>6</number>
+      </property>
+      <item>
+        <layout class="QGridLayout" >
+          <property name="margin" >
+            <number>0</number>
+          </property>
+          <property name="spacing" >
+            <number>6</number>
+          </property>
+          <item row="1" column="0" >
+            <widget class="QLabel" name="asciiRoffLA" >
+              <property name="text" >
+                <string>&amp;roff command:</string>
+              </property>
+              <property name="buddy" >
+                <cstring>asciiRoffED</cstring>
+              </property>
+            </widget>
+          </item>
+          <item row="0" column="1" >
+            <layout class="QHBoxLayout" >
+              <property name="margin" >
+                <number>0</number>
+              </property>
+              <property name="spacing" >
+                <number>6</number>
+              </property>
+              <item>
+                <widget class="QSpinBox" name="asciiLinelengthSB" >
+                  <property name="maximum" >
+                    <number>120</number>
+                  </property>
+                  <property name="toolTip" >
+                    <string>Max. line length of exported plain text/LaTeX/SGML files</string>
+                  </property>
+                </widget>
+              </item>
+              <item>
+                <spacer name="Spacer6" >
+                  <property name="sizeHint" >
+                    <size>
+                      <width>20</width>
+                      <height>20</height>
+                    </size>
+                  </property>
+                  <property name="sizeType" >
+                    <enum>Expanding</enum>
+                  </property>
+                  <property name="orientation" >
+                    <enum>Horizontal</enum>
+                  </property>
+                </spacer>
+              </item>
+            </layout>
+          </item>
+          <item row="0" column="0" >
+            <widget class="QLabel" name="asciiLinelengthLA" >
+              <property name="text" >
+                <string>Output &amp;line length:</string>
+              </property>
+              <property name="buddy" >
+                <cstring>asciiLinelengthSB</cstring>
+              </property>
+            </widget>
+          </item>
+          <item row="1" column="1" >
+            <widget class="QLineEdit" name="asciiRoffED" >
+              <property name="toolTip" >
+                <string>External app for formating tables in plain text output</string>
+              </property>
+            </widget>
+          </item>
+        </layout>
+      </item>
+      <item>
+        <spacer name="Spacer2" >
+          <property name="sizeHint" >
+            <size>
+              <width>20</width>
+              <height>20</height>
+            </size>
+          </property>
+          <property name="sizeType" >
+            <enum>Expanding</enum>
+          </property>
+          <property name="orientation" >
+            <enum>Vertical</enum>
+          </property>
+        </spacer>
+      </item>
+    </layout>
+  </widget>
+  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+</ui>

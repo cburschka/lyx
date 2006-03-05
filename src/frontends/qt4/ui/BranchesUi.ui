@@ -1,0 +1,207 @@
+<ui version="4.0" stdsetdef="1" >
+  <author></author>
+  <comment></comment>
+  <exportmacro></exportmacro>
+  <class>BranchesUi</class>
+  <widget class="QWidget" name="Branches" >
+    <property name="geometry" >
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>344</width>
+        <height>297</height>
+      </rect>
+    </property>
+    <property name="windowTitle" >
+      <string/>
+    </property>
+    <layout class="QGridLayout" >
+      <property name="margin" >
+        <number>11</number>
+      </property>
+      <property name="spacing" >
+        <number>6</number>
+      </property>
+      <item rowspan="5" row="1" column="0" colspan="1" >
+        <layout class="QGridLayout" >
+          <property name="margin" >
+            <number>0</number>
+          </property>
+          <property name="spacing" >
+            <number>6</number>
+          </property>
+          <item row="0" column="0" >
+            <widget class="QLabel" name="availableLB" >
+              <property name="text" >
+                <string>A&amp;vailable Branches:</string>
+              </property>
+              <property name="buddy" >
+                <cstring>branchesLV</cstring>
+              </property>
+            </widget>
+          </item>
+          <item row="1" column="0" >
+            <widget class="Q3ListView" name="branchesLV" >
+              <property name="enabled" >
+                <bool>true</bool>
+              </property>
+              <property name="focusPolicy" >
+                <enum>Qt::NoFocus</enum>
+              </property>
+              <property name="resizePolicy" >
+                <enum>Q3ScrollView::AutoOneFit</enum>
+              </property>
+              <property name="vScrollBarMode" >
+                <enum>Q3ScrollView::Auto</enum>
+              </property>
+              <property name="hScrollBarMode" >
+                <enum>Q3ScrollView::Auto</enum>
+              </property>
+              <property name="allColumnsShowFocus" >
+                <bool>true</bool>
+              </property>
+              <property name="rootIsDecorated" >
+                <bool>false</bool>
+              </property>
+              <property name="toolTip" >
+                <string>The available branches</string>
+              </property>
+              <column>
+                <property name="text" >
+                  <string>Name</string>
+                </property>
+                <property name="clickable" >
+                  <bool>true</bool>
+                </property>
+                <property name="resizable" >
+                  <bool>true</bool>
+                </property>
+              </column>
+              <column>
+                <property name="text" >
+                  <string>Activated</string>
+                </property>
+                <property name="clickable" >
+                  <bool>true</bool>
+                </property>
+                <property name="resizable" >
+                  <bool>true</bool>
+                </property>
+              </column>
+              <column>
+                <property name="text" >
+                  <string>Color</string>
+                </property>
+                <property name="clickable" >
+                  <bool>true</bool>
+                </property>
+                <property name="resizable" >
+                  <bool>true</bool>
+                </property>
+              </column>
+            </widget>
+          </item>
+        </layout>
+      </item>
+      <item row="3" column="1" >
+        <widget class="QPushButton" name="activatePB" >
+          <property name="text" >
+            <string>(&amp;De)activate</string>
+          </property>
+          <property name="toolTip" >
+            <string>Toggle the selected branch</string>
+          </property>
+        </widget>
+      </item>
+      <item row="4" column="1" >
+        <widget class="QPushButton" name="colorPB" >
+          <property name="text" >
+            <string>Alter Co&amp;lor...</string>
+          </property>
+          <property name="toolTip" >
+            <string>Define or change background color</string>
+          </property>
+        </widget>
+      </item>
+      <item row="2" column="1" >
+        <widget class="QPushButton" name="removePB" >
+          <property name="text" >
+            <string>&amp;Remove</string>
+          </property>
+          <property name="toolTip" >
+            <string>Remove the selected branch</string>
+          </property>
+        </widget>
+      </item>
+      <item row="5" column="1" >
+        <spacer name="Spacer2" >
+          <property name="sizeHint" >
+            <size>
+              <width>20</width>
+              <height>20</height>
+            </size>
+          </property>
+          <property name="sizeType" >
+            <enum>Expanding</enum>
+          </property>
+          <property name="orientation" >
+            <enum>Vertical</enum>
+          </property>
+        </spacer>
+      </item>
+      <item rowspan="1" row="0" column="0" colspan="2" >
+        <layout class="QHBoxLayout" >
+          <property name="margin" >
+            <number>0</number>
+          </property>
+          <property name="spacing" >
+            <number>6</number>
+          </property>
+          <item>
+            <widget class="QLabel" name="newBranchLA" >
+              <property name="text" >
+                <string>&amp;New:</string>
+              </property>
+              <property name="buddy" >
+                <cstring>newBranchLE</cstring>
+              </property>
+            </widget>
+          </item>
+          <item>
+            <widget class="QLineEdit" name="newBranchLE" />
+          </item>
+          <item>
+            <widget class="QPushButton" name="addBranchPB" >
+              <property name="text" >
+                <string>&amp;Add</string>
+              </property>
+              <property name="toolTip" >
+                <string>Add a new branch to the list</string>
+              </property>
+            </widget>
+          </item>
+        </layout>
+      </item>
+      <item row="1" column="1" >
+        <spacer name="Spacer3" >
+          <property name="sizeHint" >
+            <size>
+              <width>20</width>
+              <height>20</height>
+            </size>
+          </property>
+          <property name="sizeType" >
+            <enum>Expanding</enum>
+          </property>
+          <property name="orientation" >
+            <enum>Vertical</enum>
+          </property>
+        </spacer>
+      </item>
+    </layout>
+  </widget>
+  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+  <tabstops>
+    <tabstop>branchesLV</tabstop>
+  </tabstops>
+</ui>

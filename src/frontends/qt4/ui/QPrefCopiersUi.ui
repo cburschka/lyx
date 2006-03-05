@@ -1,0 +1,222 @@
+<ui version="4.0" stdsetdef="1" >
+  <author></author>
+  <comment></comment>
+  <exportmacro></exportmacro>
+  <class>QPrefCopiersUi</class>
+  <widget class="QWidget" name="QPrefCopiers" >
+    <property name="geometry" >
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>428</width>
+        <height>261</height>
+      </rect>
+    </property>
+    <property name="windowTitle" >
+      <string/>
+    </property>
+    <layout class="QGridLayout" >
+      <property name="margin" >
+        <number>11</number>
+      </property>
+      <property name="spacing" >
+        <number>6</number>
+      </property>
+      <item row="0" column="0" >
+        <layout class="QGridLayout" >
+          <property name="margin" >
+            <number>0</number>
+          </property>
+          <property name="spacing" >
+            <number>6</number>
+          </property>
+          <item row="1" column="0" >
+            <widget class="Q3ListBox" name="AllCopiersLB" >
+              <property name="sizePolicy" >
+                <sizepolicy>
+                  <hsizetype>5</hsizetype>
+                  <vsizetype>7</vsizetype>
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                </sizepolicy>
+              </property>
+              <property name="vScrollBarMode" >
+                <enum>Q3ScrollView::Auto</enum>
+              </property>
+              <property name="hScrollBarMode" >
+                <enum>Q3ScrollView::AlwaysOff</enum>
+              </property>
+              <item>
+                <property name="text" >
+                  <string>New Item</string>
+                </property>
+              </item>
+            </widget>
+          </item>
+          <item row="2" column="0" >
+            <layout class="QHBoxLayout" >
+              <property name="margin" >
+                <number>0</number>
+              </property>
+              <property name="spacing" >
+                <number>6</number>
+              </property>
+              <item>
+                <spacer name="Spacer3" >
+                  <property name="sizeHint" >
+                    <size>
+                      <width>20</width>
+                      <height>20</height>
+                    </size>
+                  </property>
+                  <property name="sizeType" >
+                    <enum>Preferred</enum>
+                  </property>
+                  <property name="orientation" >
+                    <enum>Horizontal</enum>
+                  </property>
+                </spacer>
+              </item>
+              <item>
+                <widget class="QPushButton" name="copierRemovePB" >
+                  <property name="text" >
+                    <string>&amp;Remove</string>
+                  </property>
+                </widget>
+              </item>
+            </layout>
+          </item>
+          <item row="0" column="0" >
+            <widget class="QLabel" name="AllCopiersLA" >
+              <property name="text" >
+                <string>C&amp;opiers</string>
+              </property>
+              <property name="buddy" >
+                <cstring>AllCopiersLB</cstring>
+              </property>
+            </widget>
+          </item>
+        </layout>
+      </item>
+      <item row="0" column="1" >
+        <layout class="QGridLayout" >
+          <property name="margin" >
+            <number>0</number>
+          </property>
+          <property name="spacing" >
+            <number>6</number>
+          </property>
+          <item row="1" column="0" >
+            <layout class="QHBoxLayout" >
+              <property name="margin" >
+                <number>0</number>
+              </property>
+              <property name="spacing" >
+                <number>6</number>
+              </property>
+              <item>
+                <widget class="QPushButton" name="copierNewPB" >
+                  <property name="text" >
+                    <string>&amp;Add</string>
+                  </property>
+                </widget>
+              </item>
+              <item>
+                <widget class="QPushButton" name="copierModifyPB" >
+                  <property name="text" >
+                    <string>&amp;Modify</string>
+                  </property>
+                </widget>
+              </item>
+              <item>
+                <spacer name="Spacer2" >
+                  <property name="sizeHint" >
+                    <size>
+                      <width>20</width>
+                      <height>20</height>
+                    </size>
+                  </property>
+                  <property name="sizeType" >
+                    <enum>Expanding</enum>
+                  </property>
+                  <property name="orientation" >
+                    <enum>Horizontal</enum>
+                  </property>
+                </spacer>
+              </item>
+            </layout>
+          </item>
+          <item row="0" column="0" >
+            <layout class="QGridLayout" >
+              <property name="margin" >
+                <number>0</number>
+              </property>
+              <property name="spacing" >
+                <number>6</number>
+              </property>
+              <item row="0" column="1" >
+                <widget class="QComboBox" name="copierFormatCO" >
+                  <property name="sizePolicy" >
+                    <sizepolicy>
+                      <hsizetype>3</hsizetype>
+                      <vsizetype>0</vsizetype>
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                    </sizepolicy>
+                  </property>
+                </widget>
+              </item>
+              <item row="2" column="0" >
+                <widget class="QLabel" name="copierLA" >
+                  <property name="text" >
+                    <string>&amp;Copier:</string>
+                  </property>
+                  <property name="buddy" >
+                    <cstring>copierED</cstring>
+                  </property>
+                </widget>
+              </item>
+              <item row="0" column="0" >
+                <widget class="QLabel" name="copierFormatLA" >
+                  <property name="text" >
+                    <string>&amp;Format:</string>
+                  </property>
+                  <property name="buddy" >
+                    <cstring>copierFormatCO</cstring>
+                  </property>
+                </widget>
+              </item>
+              <item row="2" column="1" >
+                <widget class="QLineEdit" name="copierED" />
+              </item>
+            </layout>
+          </item>
+          <item row="2" column="0" >
+            <spacer name="Spacer28" >
+              <property name="sizeHint" >
+                <size>
+                  <width>20</width>
+                  <height>20</height>
+                </size>
+              </property>
+              <property name="sizeType" >
+                <enum>Expanding</enum>
+              </property>
+              <property name="orientation" >
+                <enum>Vertical</enum>
+              </property>
+            </spacer>
+          </item>
+        </layout>
+      </item>
+    </layout>
+  </widget>
+  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+  <tabstops>
+    <tabstop>AllCopiersLB</tabstop>
+    <tabstop>copierFormatCO</tabstop>
+    <tabstop>copierED</tabstop>
+    <tabstop>copierNewPB</tabstop>
+    <tabstop>copierRemovePB</tabstop>
+  </tabstops>
+</ui>

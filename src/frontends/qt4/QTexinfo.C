@@ -1,0 +1,73 @@
+/**
+ * \file QTexinfo.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Edwin Leuven
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
+#include <config.h>
+
+#include "QTexinfo.h"
+#include "QTexinfoDialog.h"
+#include "Qt2BC.h"
+#include "qt_helpers.h"
+
+#include "support/filetools.h"
+
+#include <qcheckbox.h>
+#include <q3listbox.h>
+#include <qpushbutton.h>
+
+using lyx::support::OnlyFilename;
+
+using std::string;
+
+namespace lyx {
+namespace frontend {
+
+typedef QController<ControlTexinfo, QView<QTexinfoDialog> > base_class;
+
+QTexinfo::QTexinfo(Dialog & parent)
+	: base_class(parent, _("TeX Information")),
+	  warningPosted(false), activeStyle(ControlTexinfo::cls)
+{
+}
+
+
+void QTexinfo::build_dialog()
+{
+	dialog_.reset(new QTexinfoDialog(this));
+
+	updateStyles(ControlTexinfo::cls);
+
+	bcview().setCancel(dialog_->closePB);
+}
+
+
+void QTexinfo::updateStyles(ControlTexinfo::texFileSuffix whichStyle)
+{
+	ContentsType & data = texdata_[whichStyle];
+	bool const withFullPath = dialog_->path->isChecked();
+
+	getTexFileList(whichStyle, data, withFullPath);
+
+	dialog_->fileList->clear();
+	ContentsType::const_iterator it  = data.begin();
+	ContentsType::const_iterator end = data.end();
+	for (; it != end; ++it)
+		dialog_->fileList->insertItem(toqstr(*it));
+
+	activeStyle = whichStyle;
+}
+
+
+void QTexinfo::updateStyles()
+{
+	updateStyles(activeStyle);
+}
+
+} // namespace frontend
+} // namespace lyx

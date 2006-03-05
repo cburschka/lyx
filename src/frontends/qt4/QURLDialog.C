@@ -1,0 +1,64 @@
+/**
+ * \file QURLDialog.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author John Levon
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
+#include <config.h>
+
+#include "QURLDialog.h"
+#include "QURL.h"
+
+#include <QLineEdit>
+#include <QPushButton>
+#include <QCloseEvent>
+
+namespace lyx {
+namespace frontend {
+
+QURLDialog::QURLDialog(QURL * form)
+	: form_(form)
+{
+	setupUi(this);
+
+	connect(okPB, SIGNAL(clicked()),
+		form_, SLOT(slotOK()));
+	connect(closePB, SIGNAL(clicked()),
+		form_, SLOT(slotClose()));
+
+    connect( urlED, SIGNAL( textChanged(const QString&) ), this, SLOT( changed_adaptor() ) );
+    connect( hyperlinkCB, SIGNAL( clicked() ), this, SLOT( changed_adaptor() ) );
+    connect( nameED, SIGNAL( textChanged(const QString&) ), this, SLOT( changed_adaptor() ) );
+}
+
+
+QURLDialog::~QURLDialog()
+{
+}
+
+
+void QURLDialog::show()
+{
+	QDialog::show();
+	urlED->setFocus();
+}
+
+
+void QURLDialog::changed_adaptor()
+{
+	form_->changed();
+}
+
+
+void QURLDialog::closeEvent(QCloseEvent * e)
+{
+	form_->slotWMHide();
+	e->accept();
+}
+
+} // namespace frontend
+} // namespace lyx

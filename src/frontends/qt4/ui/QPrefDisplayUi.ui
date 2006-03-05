@@ -1,0 +1,117 @@
+<ui version="4.0" stdsetdef="1" >
+  <author></author>
+  <comment></comment>
+  <exportmacro></exportmacro>
+  <class>QPrefDisplayUi</class>
+  <widget class="QWidget" name="QPrefDisplay" >
+    <property name="geometry" >
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>264</width>
+        <height>133</height>
+      </rect>
+    </property>
+    <property name="windowTitle" >
+      <string/>
+    </property>
+    <layout class="QGridLayout" >
+      <property name="margin" >
+        <number>11</number>
+      </property>
+      <property name="spacing" >
+        <number>6</number>
+      </property>
+      <item row="0" column="0" >
+        <layout class="QGridLayout" >
+          <property name="margin" >
+            <number>0</number>
+          </property>
+          <property name="spacing" >
+            <number>6</number>
+          </property>
+          <item row="0" column="0" >
+            <widget class="QLabel" name="displayGraphicsLA" >
+              <property name="text" >
+                <string>Display &amp;Graphics:</string>
+              </property>
+              <property name="buddy" >
+                <cstring>displayGraphicsCO</cstring>
+              </property>
+            </widget>
+          </item>
+          <item row="1" column="1" >
+            <widget class="QComboBox" name="instantPreviewCO" >
+              <item>
+                <property name="text" >
+                  <string>Off</string>
+                </property>
+              </item>
+              <item>
+                <property name="text" >
+                  <string>No math</string>
+                </property>
+              </item>
+              <item>
+                <property name="text" >
+                  <string>On</string>
+                </property>
+              </item>
+            </widget>
+          </item>
+          <item row="0" column="1" >
+            <widget class="QComboBox" name="displayGraphicsCO" >
+              <item>
+                <property name="text" >
+                  <string>Monochrome</string>
+                </property>
+              </item>
+              <item>
+                <property name="text" >
+                  <string>Grayscale</string>
+                </property>
+              </item>
+              <item>
+                <property name="text" >
+                  <string>Color</string>
+                </property>
+              </item>
+              <item>
+                <property name="text" >
+                  <string>Do not display</string>
+                </property>
+              </item>
+            </widget>
+          </item>
+          <item row="1" column="0" >
+            <widget class="QLabel" name="instantPreviewLA" >
+              <property name="text" >
+                <string>Instant &amp;Preview:</string>
+              </property>
+              <property name="buddy" >
+                <cstring>instantPreviewCO</cstring>
+              </property>
+            </widget>
+          </item>
+        </layout>
+      </item>
+      <item row="1" column="0" >
+        <spacer name="Spacer1" >
+          <property name="sizeHint" >
+            <size>
+              <width>20</width>
+              <height>20</height>
+            </size>
+          </property>
+          <property name="sizeType" >
+            <enum>Expanding</enum>
+          </property>
+          <property name="orientation" >
+            <enum>Vertical</enum>
+          </property>
+        </spacer>
+      </item>
+    </layout>
+  </widget>
+  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+</ui>

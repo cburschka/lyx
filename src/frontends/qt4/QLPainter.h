@@ -1,0 +1,145 @@
+// -*- C++ -*-
+/**
+ * \file QLPainter.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author John Levon
+ * \author Abdelrazak Younes
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
+#ifndef QLPAINTER_H
+#define QLPAINTER_H
+
+#include "Painter.h"
+
+#include <boost/scoped_ptr.hpp>
+
+class LyXFont;
+class QPaintDevice;
+class QPainter;
+class QString;
+class QPixmap;
+class QWorkArea;
+
+/**
+ * QLPainter - a painter implementation for Qt4
+ */
+class QLPainter : public Painter {
+public:
+	QLPainter(QWorkArea *);
+
+	~QLPainter();
+
+	/// begin painting
+	virtual void start();
+
+	/// end painting
+	virtual void end();
+
+	/// return the width of the work area in pixels
+	virtual int paperWidth() const;
+	/// return the height of the work area in pixels
+	virtual int paperHeight() const;
+
+	/// draw a line from point to point
+	virtual void line(
+		int x1, int y1,
+		int x2, int y2,
+		LColor_color,
+		line_style = line_solid,
+		line_width = line_thin);
+
+	/**
+	 * lines -  draw a set of lines
+	 * @param xp array of points' x co-ords
+	 * @param yp array of points' y co-ords
+	 * @param np size of the points array
+	 */
+	virtual void lines(
+		int const * xp,
+		int const * yp,
+		int np,
+		LColor_color,
+		line_style = line_solid,
+		line_width = line_thin);
+
+	/// draw a rectangle
+	virtual void rectangle(
+		int x, int y,
+		int w, int h,
+		LColor_color,
+		line_style = line_solid,
+		line_width = line_thin);
+
+	/// draw a filled rectangle
+	virtual void fillRectangle(
+		int x, int y,
+		int w, int h,
+		LColor_color);
+
+	/// draw a filled (irregular) polygon
+	virtual void fillPolygon(
+		int const * xp,
+		int const * yp,
+		int np,
+		LColor_color);
+
+	/// draw an arc
+	virtual void arc(
+		int x, int y,
+		unsigned int w, unsigned int h,
+		int a1, int a2,
+		LColor_color);
+
+	/// draw a pixel
+	virtual void point(
+		int x, int y,
+		LColor_color);
+
+	/// draw an image from the image cache
+	virtual void image(int x, int y,
+		int w, int h,
+		lyx::graphics::Image const & image);
+
+	/// draw a string at position x, y (y is the baseline)
+	virtual void text(int x, int y,
+		std::string const & str, LyXFont const & f);
+
+	/** Draw a string at position x, y (y is the baseline)
+	 *  This is just for fast drawing
+	 */
+	virtual void text(int x, int y,
+		char const * str, size_t l,
+		LyXFont const & f);
+
+	/// draw a char at position x, y (y is the baseline)
+	virtual void text(int x, int y,
+		char c, LyXFont const & f);
+
+	/// draw a pixmap from the image cache
+	virtual void pixmap(int x, int y, QPixmap const & pixmap);
+
+private:
+	/// draw small caps text
+	void smallCapsText(int x, int y,
+		QString const & str, LyXFont const & f);
+
+	/// set pen parameters
+	QPainter & setQPainterPen(QPainter & qp, LColor_color c,
+		line_style ls = line_solid,
+		line_width lw = line_thin);
+
+	/// our qt painter
+	boost::scoped_ptr<QPainter> qp_;
+
+	/// recursion check
+	int paint_check_;
+
+	/// the working area
+	QWorkArea * qwa_;
+};
+
+#endif // QLPAINTER_H

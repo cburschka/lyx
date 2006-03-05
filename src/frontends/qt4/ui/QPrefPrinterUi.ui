@@ -1,0 +1,357 @@
+<ui version="4.0" stdsetdef="1" >
+  <author></author>
+  <comment></comment>
+  <exportmacro></exportmacro>
+  <class>QPrefPrinterUi</class>
+  <widget class="QWidget" name="QPrefPrinter" >
+    <property name="geometry" >
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>433</width>
+        <height>485</height>
+      </rect>
+    </property>
+    <property name="windowTitle" >
+      <string/>
+    </property>
+    <layout class="QVBoxLayout" >
+      <property name="margin" >
+        <number>11</number>
+      </property>
+      <property name="spacing" >
+        <number>6</number>
+      </property>
+      <item>
+        <layout class="QHBoxLayout" >
+          <property name="margin" >
+            <number>0</number>
+          </property>
+          <property name="spacing" >
+            <number>6</number>
+          </property>
+          <item>
+            <layout class="QGridLayout" >
+              <property name="margin" >
+                <number>0</number>
+              </property>
+              <property name="spacing" >
+                <number>6</number>
+              </property>
+              <item row="0" column="0" >
+                <widget class="QLabel" name="printerNameLA" >
+                  <property name="text" >
+                    <string>Printer &amp;name:</string>
+                  </property>
+                  <property name="buddy" >
+                    <cstring>printerNameED</cstring>
+                  </property>
+                </widget>
+              </item>
+              <item row="2" column="2" >
+                <widget class="QLineEdit" name="printerCommandED" />
+              </item>
+              <item rowspan="1" row="2" column="0" colspan="2" >
+                <widget class="QLabel" name="printerCommandLA" >
+                  <property name="text" >
+                    <string>Printer co&amp;mmand:</string>
+                  </property>
+                  <property name="buddy" >
+                    <cstring>printerCommandED</cstring>
+                  </property>
+                </widget>
+              </item>
+              <item rowspan="1" row="0" column="1" colspan="2" >
+                <widget class="QLineEdit" name="printerNameED" >
+                  <property name="toolTip" >
+                    <string>Name of the default printer</string>
+                  </property>
+                </widget>
+              </item>
+              <item rowspan="1" row="1" column="0" colspan="2" >
+                <widget class="QCheckBox" name="printerAdaptCB" >
+                  <property name="text" >
+                    <string>Adapt outp&amp;ut</string>
+                  </property>
+                  <property name="toolTip" >
+                    <string>Use printer name explicitely</string>
+                  </property>
+                </widget>
+              </item>
+            </layout>
+          </item>
+          <item>
+            <spacer name="Spacer1" >
+              <property name="sizeHint" >
+                <size>
+                  <width>20</width>
+                  <height>20</height>
+                </size>
+              </property>
+              <property name="sizeType" >
+                <enum>Expanding</enum>
+              </property>
+              <property name="orientation" >
+                <enum>Horizontal</enum>
+              </property>
+            </spacer>
+          </item>
+        </layout>
+      </item>
+      <item>
+        <widget class="QGroupBox" name="GroupBox1" >
+          <property name="title" >
+            <string>Command Options</string>
+          </property>
+          <layout class="QGridLayout" >
+            <property name="margin" >
+              <number>11</number>
+            </property>
+            <property name="spacing" >
+              <number>6</number>
+            </property>
+            <item row="4" column="0" >
+              <widget class="QLabel" name="printerReverseLA" >
+                <property name="text" >
+                  <string>Re&amp;verse:</string>
+                </property>
+                <property name="buddy" >
+                  <cstring>printerReverseED</cstring>
+                </property>
+              </widget>
+            </item>
+            <item row="2" column="3" >
+              <widget class="QLineEdit" name="printerCollatedED" />
+            </item>
+            <item row="4" column="1" >
+              <widget class="QLineEdit" name="printerReverseED" />
+            </item>
+            <item row="5" column="0" >
+              <widget class="QLabel" name="printerToPrinterLA" >
+                <property name="text" >
+                  <string>To p&amp;rinter:</string>
+                </property>
+                <property name="buddy" >
+                  <cstring>printerToPrinterED</cstring>
+                </property>
+              </widget>
+            </item>
+            <item row="7" column="2" >
+              <widget class="QLabel" name="printerPaperSizeLA" >
+                <property name="text" >
+                  <string>Paper si&amp;ze:</string>
+                </property>
+                <property name="buddy" >
+                  <cstring>printerPaperSizeED</cstring>
+                </property>
+              </widget>
+            </item>
+            <item row="1" column="3" >
+              <widget class="QLineEdit" name="printerOddED" />
+            </item>
+            <item row="7" column="3" >
+              <widget class="QLineEdit" name="printerPaperSizeED" />
+            </item>
+            <item row="4" column="2" >
+              <widget class="QLabel" name="printerToFileLA" >
+                <property name="text" >
+                  <string>To &amp;file:</string>
+                </property>
+                <property name="buddy" >
+                  <cstring>printerToFileED</cstring>
+                </property>
+              </widget>
+            </item>
+            <item row="6" column="1" >
+              <widget class="QLineEdit" name="printerExtensionED" />
+            </item>
+            <item row="5" column="3" >
+              <widget class="QLineEdit" name="printerExtraED" />
+            </item>
+            <item row="7" column="1" >
+              <widget class="QLineEdit" name="printerSpoolCommandED" />
+            </item>
+            <item row="7" column="0" >
+              <widget class="QLabel" name="printerSpoolCommandLA" >
+                <property name="text" >
+                  <string>Spool &amp;command:</string>
+                </property>
+                <property name="buddy" >
+                  <cstring>printerSpoolCommandED</cstring>
+                </property>
+              </widget>
+            </item>
+            <item row="6" column="3" >
+              <widget class="QLineEdit" name="printerSpoolPrefixED" />
+            </item>
+            <item row="3" column="1" >
+              <widget class="QLineEdit" name="printerCopiesED" />
+            </item>
+            <item row="1" column="2" >
+              <widget class="QLabel" name="printerOddLA" >
+                <property name="text" >
+                  <string>&amp;Odd pages:</string>
+                </property>
+                <property name="buddy" >
+                  <cstring>printerOddED</cstring>
+                </property>
+              </widget>
+            </item>
+            <item row="4" column="3" >
+              <widget class="QLineEdit" name="printerToFileED" />
+            </item>
+            <item row="8" column="0" >
+              <widget class="QLabel" name="printerPaperTypeLA" >
+                <property name="text" >
+                  <string>Paper t&amp;ype:</string>
+                </property>
+                <property name="buddy" >
+                  <cstring>printerPaperTypeED</cstring>
+                </property>
+              </widget>
+            </item>
+            <item row="8" column="1" >
+              <widget class="QLineEdit" name="printerPaperTypeED" />
+            </item>
+            <item row="5" column="2" >
+              <widget class="QLabel" name="printerExtraLA" >
+                <property name="text" >
+                  <string>E&amp;xtra options:</string>
+                </property>
+                <property name="buddy" >
+                  <cstring>printerExtraED</cstring>
+                </property>
+              </widget>
+            </item>
+            <item row="6" column="2" >
+              <widget class="QLabel" name="printerSpoolPrefixLA" >
+                <property name="text" >
+                  <string>Spool pref&amp;ix:</string>
+                </property>
+                <property name="buddy" >
+                  <cstring>printerSpoolPrefixED</cstring>
+                </property>
+              </widget>
+            </item>
+            <item row="5" column="1" >
+              <widget class="QLineEdit" name="printerToPrinterED" />
+            </item>
+            <item row="2" column="2" >
+              <widget class="QLabel" name="printerCollatedLA" >
+                <property name="text" >
+                  <string>Co&amp;llated:</string>
+                </property>
+                <property name="buddy" >
+                  <cstring>printerCollatedED</cstring>
+                </property>
+              </widget>
+            </item>
+            <item row="2" column="1" >
+              <widget class="QLineEdit" name="printerPageRangeED" />
+            </item>
+            <item row="1" column="0" >
+              <widget class="QLabel" name="printerEvenLA" >
+                <property name="text" >
+                  <string>&amp;Even pages:</string>
+                </property>
+                <property name="buddy" >
+                  <cstring>printerEvenED</cstring>
+                </property>
+              </widget>
+            </item>
+            <item row="6" column="0" >
+              <widget class="QLabel" name="printerExtensionLA" >
+                <property name="text" >
+                  <string>File ex&amp;tension:</string>
+                </property>
+                <property name="buddy" >
+                  <cstring>printerExtensionED</cstring>
+                </property>
+              </widget>
+            </item>
+            <item row="3" column="3" >
+              <widget class="QLineEdit" name="printerLandscapeED" />
+            </item>
+            <item row="3" column="2" >
+              <widget class="QLabel" name="printerLandscapeLA" >
+                <property name="text" >
+                  <string>Lan&amp;dscape:</string>
+                </property>
+                <property name="buddy" >
+                  <cstring>printerLandscapeED</cstring>
+                </property>
+              </widget>
+            </item>
+            <item row="1" column="1" >
+              <widget class="QLineEdit" name="printerEvenED" />
+            </item>
+            <item row="3" column="0" >
+              <widget class="QLabel" name="printerCopiesLA" >
+                <property name="text" >
+                  <string>Co&amp;pies:</string>
+                </property>
+                <property name="buddy" >
+                  <cstring>printerCopiesED</cstring>
+                </property>
+              </widget>
+            </item>
+            <item row="2" column="0" >
+              <widget class="QLabel" name="printerPageRangeLA" >
+                <property name="text" >
+                  <string>Pa&amp;ge range:</string>
+                </property>
+                <property name="buddy" >
+                  <cstring>printerPageRangeED</cstring>
+                </property>
+              </widget>
+            </item>
+            <item rowspan="1" row="0" column="0" colspan="4" >
+              <widget class="QLabel" name="TextLabel1" >
+                <property name="text" >
+                  <string>Specify the command option names for your printer command</string>
+                </property>
+              </widget>
+            </item>
+          </layout>
+        </widget>
+      </item>
+      <item>
+        <spacer name="Spacer2" >
+          <property name="sizeHint" >
+            <size>
+              <width>20</width>
+              <height>20</height>
+            </size>
+          </property>
+          <property name="sizeType" >
+            <enum>Expanding</enum>
+          </property>
+          <property name="orientation" >
+            <enum>Vertical</enum>
+          </property>
+        </spacer>
+      </item>
+    </layout>
+  </widget>
+  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+  <tabstops>
+    <tabstop>printerNameED</tabstop>
+    <tabstop>printerAdaptCB</tabstop>
+    <tabstop>printerCommandED</tabstop>
+    <tabstop>printerEvenED</tabstop>
+    <tabstop>printerPageRangeED</tabstop>
+    <tabstop>printerCopiesED</tabstop>
+    <tabstop>printerReverseED</tabstop>
+    <tabstop>printerToPrinterED</tabstop>
+    <tabstop>printerExtensionED</tabstop>
+    <tabstop>printerSpoolCommandED</tabstop>
+    <tabstop>printerPaperTypeED</tabstop>
+    <tabstop>printerOddED</tabstop>
+    <tabstop>printerCollatedED</tabstop>
+    <tabstop>printerLandscapeED</tabstop>
+    <tabstop>printerToFileED</tabstop>
+    <tabstop>printerExtraED</tabstop>
+    <tabstop>printerSpoolPrefixED</tabstop>
+    <tabstop>printerPaperSizeED</tabstop>
+  </tabstops>
+</ui>

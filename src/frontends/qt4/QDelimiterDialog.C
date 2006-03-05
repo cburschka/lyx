@@ -1,0 +1,145 @@
+/**
+ * \file QDelimiterDialog.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author John Levon
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
+#include <config.h>
+
+#include "QDelimiterDialog.h"
+
+#include "iconpalette.h"
+#include "QMath.h"
+#include "qt_helpers.h"
+
+#include "controllers/ControlMath.h"
+
+#include <qlabel.h>
+#include <qpixmap.h>
+#include <qcheckbox.h>
+
+
+using std::string;
+
+namespace lyx {
+namespace frontend {
+
+namespace {
+
+char const * delim[] = {
+	"(", ")", "{", "}", "[", "]",
+	"lceil", "rceil", "lfloor", "rfloor", "langle", "rangle",
+	"uparrow", "Uparrow", "downarrow", "Downarrow",
+	"|", "Vert", "slash", "backslash", ""
+};
+
+
+string do_match(const string & str)
+{
+	if (str == "(") return ")";
+	if (str == ")") return "(";
+	if (str == "[") return "]";
+	if (str == "]") return "[";
+	if (str == "{") return "}";
+	if (str == "}") return "{";
+	if (str == "l") return "r";
+	if (str == "rceil") return "lceil";
+	if (str == "lceil") return "rceil";
+	if (str == "rfloor") return "lfloor";
+	if (str == "lfloor") return "rfloor";
+	if (str == "rangle") return "langle";
+	if (str == "langle") return "rangle";
+	if (str == "backslash") return "slash";
+	if (str == "slash") return "backslash";
+	return str;
+}
+
+
+string fix_name(const string & str)
+{
+	if (str == "slash")
+		return "/";
+	if (str == "backslash")
+		return "\\";
+	if (str == "empty")
+		return ".";
+	return str;
+}
+
+} // namespace anon
+
+
+QDelimiterDialog::QDelimiterDialog(QMathDelimiter * form)
+	: form_(form)
+{
+	setupUi(this);
+
+    connect( closePB, SIGNAL( clicked() ), this, SLOT( accept() ) );
+    connect( insertPB, SIGNAL( clicked() ), this, SLOT( insertClicked() ) );
+
+	setCaption(qt_("LyX: Delimiters"));
+
+	for (int i = 0; *delim[i]; ++i) {
+		string xpm(find_xpm(delim[i]));
+		leftIP->add(QPixmap(toqstr(xpm)), delim[i], delim[i]);
+		rightIP->add(QPixmap(toqstr(xpm)), delim[i], delim[i]);
+	}
+
+	string empty_xpm(find_xpm("empty"));
+
+	leftIP->add(QPixmap(toqstr(empty_xpm)), "empty", "empty");
+	rightIP->add(QPixmap(toqstr(empty_xpm)), "empty", "empty");
+	// Leave these std:: qualifications alone !
+	connect(leftIP, SIGNAL(button_clicked(const std::string &)),
+		this, SLOT(ldelim_clicked(const std::string &)));
+	connect(rightIP, SIGNAL(button_clicked(const std::string &)),
+		this, SLOT(rdelim_clicked(const std::string &)));
+	ldelim_clicked("(");
+	rdelim_clicked(")");
+}
+
+
+void QDelimiterDialog::insertClicked()
+{
+	form_->controller().dispatchDelim(fix_name(left_) + ' ' + fix_name(right_));
+}
+
+
+void QDelimiterDialog::set_label(QLabel * label, const string & str)
+{
+	label->setUpdatesEnabled(false);
+	label->setPixmap(QPixmap(toqstr(find_xpm(str))));
+	label->setUpdatesEnabled(true);
+	label->update();
+}
+
+
+void QDelimiterDialog::ldelim_clicked(const string & str)
+{
+	left_ = str;
+
+	set_label(leftPI, left_);
+	if (matchCB->isChecked()) {
+		right_ = do_match(left_);
+		set_label(rightPI, right_);
+	}
+}
+
+
+void QDelimiterDialog::rdelim_clicked(const string & str)
+{
+	right_ = str;
+
+	set_label(rightPI, right_);
+	if (matchCB->isChecked()) {
+		left_ = do_match(right_);
+		set_label(leftPI, left_);
+	}
+}
+
+} // namespace frontend
+} // namespace lyx

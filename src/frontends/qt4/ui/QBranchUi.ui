@@ -1,0 +1,78 @@
+<ui version="4.0" stdsetdef="1" >
+  <author></author>
+  <comment></comment>
+  <exportmacro></exportmacro>
+  <class>QBranchUi</class>
+  <widget class="QDialog" name="QBranch" >
+    <property name="geometry" >
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>188</width>
+        <height>129</height>
+      </rect>
+    </property>
+    <property name="windowTitle" >
+      <string/>
+    </property>
+    <property name="sizeGripEnabled" >
+      <bool>true</bool>
+    </property>
+    <layout class="QGridLayout" >
+      <property name="margin" >
+        <number>11</number>
+      </property>
+      <property name="spacing" >
+        <number>6</number>
+      </property>
+      <item row="1" column="0" >
+        <widget class="QPushButton" name="okPB" >
+          <property name="text" >
+            <string>&amp;OK</string>
+          </property>
+          <property name="default" >
+            <bool>false</bool>
+          </property>
+        </widget>
+      </item>
+      <item row="1" column="1" >
+        <widget class="QPushButton" name="closePB" >
+          <property name="text" >
+            <string>&amp;Close</string>
+          </property>
+          <property name="default" >
+            <bool>true</bool>
+          </property>
+        </widget>
+      </item>
+      <item rowspan="1" row="0" column="0" colspan="2" >
+        <layout class="QVBoxLayout" >
+          <property name="margin" >
+            <number>0</number>
+          </property>
+          <property name="spacing" >
+            <number>6</number>
+          </property>
+          <item>
+            <widget class="QLabel" name="branchLA" >
+              <property name="text" >
+                <string>&amp;Available branches:</string>
+              </property>
+              <property name="buddy" >
+                <cstring>branchCO</cstring>
+              </property>
+            </widget>
+          </item>
+          <item>
+            <widget class="QComboBox" name="branchCO" >
+              <property name="toolTip" >
+                <string>Select your branch</string>
+              </property>
+            </widget>
+          </item>
+        </layout>
+      </item>
+    </layout>
+  </widget>
+  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+</ui>

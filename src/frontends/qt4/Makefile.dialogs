@@ -1,0 +1,131 @@
+# this is the master file from which the dialog file rules are generated
+
+UIFILES = \
+	BiblioUi.ui \
+	BranchesUi.ui \
+	BulletsUi.ui \
+	TextLayoutUi.ui \
+	LanguageUi.ui \
+	LaTeXUi.ui \
+	MarginsUi.ui \
+	NumberingUi.ui \
+	MathsUi.ui \
+	PageLayoutUi.ui \
+	PreambleUi.ui \
+	QAboutUi.ui \
+	QAskForTextUi.ui \
+	QBibitemUi.ui \
+	QBibtexUi.ui \
+	QBibtexAddUi.ui \
+	QBoxUi.ui \
+	QBranchUi.ui \
+	QChangesUi.ui \
+	QCharacterUi.ui \
+	QCitationUi.ui \
+	QCitationFindUi.ui \
+	QDelimiterUi.ui \
+	QDocumentUi.ui \
+	QErrorListUi.ui \
+	QERTUi.ui \
+	QExternalUi.ui \
+	QFloatUi.ui \
+	QGraphicsUi.ui \
+	QIncludeUi.ui \
+	QIndexUi.ui \
+	QLogUi.ui \
+	QMathUi.ui \
+	QMathMatrixUi.ui \
+	QNoteUi.ui \
+	QParagraphUi.ui \
+	QPrefAsciiUi.ui \
+	QPrefColorsUi.ui \
+	QPrefConvertersUi.ui \
+	QPrefCopiersUi.ui \
+	QPrefCygwinPathUi.ui \
+	QPrefDateUi.ui \
+	QPrefDisplayUi.ui \
+	QPrefFileformatsUi.ui \
+	QPrefIdentityUi.ui \
+	QPrefKeyboardUi.ui \
+	QPrefLanguageUi.ui \
+	QPrefLatexUi.ui \
+	QPrefPathsUi.ui \
+	QPrefPrinterUi.ui \
+	QPrefScreenFontsUi.ui \
+	QPrefsUi.ui \
+	QPrefSpellcheckerUi.ui \
+	QPrefUi.ui \
+	QPrintUi.ui \
+	QRefUi.ui \
+	QSearchUi.ui \
+	QSendtoUi.ui \
+	QShowFileUi.ui \
+	QSpellcheckerUi.ui \
+	QTabularCreateUi.ui \
+	QTabularUi.ui \
+	QTexinfoUi.ui \
+	QThesaurusUi.ui \
+	QTocUi.ui \
+	QURLUi.ui \
+	QVSpaceUi.ui \
+	QWrapUi.ui
+
+MOCFILES = \
+	BulletsModule.C BulletsModule.h \
+	emptytable.C emptytable.h \
+	FileDialog_private.C FileDialog_private.h \
+	floatplacement.C floatplacement.h \
+	iconpalette.C iconpalette.h \
+	lengthcombo.C lengthcombo.h \
+	panelstack.C panelstack.h \
+	QAboutDialog.C QAboutDialog.h \
+	QBibitemDialog.C QBibitemDialog.h \
+	QBibtexDialog.C QBibtexDialog.h \
+	QBoxDialog.C QBoxDialog.h \
+	QBranchDialog.C QBranchDialog.h \
+	QBranches.C QBranches.h \
+	QBrowseBox.C QBrowseBox.h \
+	QChangesDialog.C QChangesDialog.h \
+	QCharacterDialog.C QCharacterDialog.h \
+	QCitationDialog.C QCitationDialog.h \
+	QCommandBuffer.C QCommandBuffer.h \
+	QCommandEdit.C QCommandEdit.h \
+	QDelimiterDialog.C QDelimiterDialog.h \
+	QDocumentDialog.C QDocumentDialog.h \
+	QErrorListDialog.C QErrorListDialog.h \
+	QERTDialog.C QERTDialog.h \
+	QExternalDialog.C QExternalDialog.h \
+	QFloatDialog.C QFloatDialog.h \
+	QGraphicsDialog.C QGraphicsDialog.h \
+	QIncludeDialog.C QIncludeDialog.h \
+	QIndexDialog.C QIndexDialog.h \
+	QLAction.C QLAction.h \
+	QLogDialog.C QLogDialog.h \
+	QLMenubar.C QLMenubar.h \
+	QLPopupMenu.C QLPopupMenu.h \
+	QLPrintDialog.C QLPrintDialog.h \
+	QMathDialog.C QMathDialog.h \
+	QMathMatrixDialog.C QMathMatrixDialog.h \
+	QNoteDialog.C QNoteDialog.h \
+	QParagraphDialog.C QParagraphDialog.h \
+	QPrefsDialog.C QPrefsDialog.h \
+	QRefDialog.C QRefDialog.h \
+	QSearchDialog.C QSearchDialog.h \
+	QSendtoDialog.C QSendtoDialog.h \
+	qsetborder.C qsetborder.h \
+	QShowFileDialog.C QShowFileDialog.h \
+	QSpellcheckerDialog.C QSpellcheckerDialog.h \
+	QDialogView.C QDialogView.h \
+	QTabularCreateDialog.C QTabularCreateDialog.h \
+	QTabularDialog.C QTabularDialog.h \
+	QTexinfoDialog.C QTexinfoDialog.h \
+	QThesaurusDialog.C QThesaurusDialog.h \
+	QTocDialog.C QTocDialog.h \
+	QtView.C QtView.h \
+	QURLDialog.C QURLDialog.h \
+	QVSpaceDialog.C QVSpaceDialog.h \
+	QWorkArea.C QWorkArea.h \
+	QWrapDialog.C QWrapDialog.h \
+	QLToolbar.C QLToolbar.h \
+	socket_callback.C socket_callback.h \
+	validators.C validators.h
