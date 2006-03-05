@@ -1,3 +1,13 @@
+2006-03-05  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* Makefile.am: update for filetools test
+
+	* filetools.C: test prog
+
+	* regfiles/filetools: regression data
+
+	* test_filetools: new test driver
+
 2005-02-25  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* Makefile.am (makeregfiles): rename from regfiles

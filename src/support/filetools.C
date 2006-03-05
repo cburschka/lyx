@@ -594,42 +594,16 @@ string const ExpandPath(string const & path)
 // Also converts paths like /foo//bar ==> /foo/bar
 string const NormalizePath(string const & path)
 {
-	string TempBase;
-	string RTemp;
-	string Temp;
+	// Normalize paths like /foo//bar ==> /foo/bar
+	static boost::regex regex("/{2,}");
+	string const tmppath = boost::regex_merge(path, regex, "/");
 
-	if (os::is_absolute_path(path))
-		RTemp = path;
-	else
-		// Make implicit current directory explicit
-		RTemp = "./" + path;
+	fs::path const npath = fs::path(tmppath, fs::no_check).normalize();
 
-	// Normalise paths like /foo//bar ==> /foo/bar
-	boost::RegEx regex("/{2,}");
-	RTemp = regex.Merge(RTemp, "/");
-
-	while (!RTemp.empty()) {
-		// Split by next /
-		RTemp = split(RTemp, Temp, '/');
-
-		if (Temp == ".") {
-			TempBase = "./";
-		} else if (Temp == "..") {
-			// Remove one level of TempBase
-			string::difference_type i = TempBase.length() - 2;
-			while (i > 0 && TempBase[i] != '/')
-				--i;
-			if (i >= 0 && TempBase[i] == '/')
-				TempBase.erase(i + 1, string::npos);
-			else
-				TempBase = "../";
-		} else {
-			TempBase += Temp + '/';
-		}
-	}
-
-	// returns absolute path
-	return TempBase;
+	if (!npath.is_complete())
+		return "./" + npath.string() + '/';
+	
+	return npath.string() + '/';
 }
 
 

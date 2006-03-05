@@ -1,3 +1,8 @@
+2006-03-05  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* filetools.C (NormalizePath): Change to use boost::filesystem and
+	alter regex usage in preparation for boost 1.33.1.
+
 2006-02-12  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* package.C.in (relative_system_support_dir): fix for win32 and
