@@ -10,7 +10,14 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/signal.hpp>
 #include <boost/signals/trackable.hpp>
-#include <boost/test/detail/nullstream.hpp>
+#include <boost/version.hpp>
+
+#if BOOST_VERSION < 103301
+# include <boost/test/detail/nullstream.hpp>
+#else
+# include <boost/test/utils/nullstream.hpp>
+#endif
+
 #include <boost/tokenizer.hpp>
 #include <boost/utility.hpp>
 

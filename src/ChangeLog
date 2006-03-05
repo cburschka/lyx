@@ -1,3 +1,9 @@
+2006-03-05  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* pch.h:
+	* support/pch.h:
+	* support/debugstream.h: Use the correct nullstream.
+
 2006-02-26  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* text3.C (mathDispatch): fix math inset creation from string (bug 2315)

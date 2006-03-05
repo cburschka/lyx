@@ -14,7 +14,13 @@
 
 #include <iostream>
 
-#include <boost/test/detail/nullstream.hpp>
+#include <boost/version.hpp>
+
+#if BOOST_VERSION < 103301
+#  include <boost/test/detail/nullstream.hpp>
+#else
+#  include <boost/test/utils/nullstream.hpp>
+#endif
 
 #ifdef DEBUG
 # define TEMPORARY_DEBUG_MACRO DEBUG
