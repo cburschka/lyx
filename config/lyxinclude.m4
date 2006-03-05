@@ -244,7 +244,7 @@ if test x$GXX = xyes; then
     fi
     if test x$enable_warnings = xyes ; then
         case $gxx_version in
-            2.*|3.1*|3.2*|3.3*)
+            3.1*|3.2*|3.3*)
                 CPPFLAGS="-W -Wall $CPPFLAGS"
                 ;;
             *)
@@ -254,9 +254,6 @@ if test x$GXX = xyes; then
     fi
   fi
   case $gxx_version in
-      2.95.1)  AM_CXXFLAGS="-fpermissive -ftemplate-depth-30";;
-      2.95.*)  AM_CXXFLAGS="-Wno-non-template-friend -ftemplate-depth-30";;
-      2.96*)  AM_CXXFLAGS="-fno-exceptions -ftemplate-depth-30 -Wno-non-template-friend";;
       3.1*)    AM_CXXFLAGS="-finline-limit=500 -fno-exceptions";;
       3.2*|3.3*)    AM_CXXFLAGS="-fno-exceptions";;
       3.4*|4.0*)
