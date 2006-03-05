@@ -11,8 +11,8 @@
 // See http://www.boost.org/libs/mpl for documentation.
 
 // $Source: /cvsroot/boost/boost/boost/mpl/aux_/lambda_support.hpp,v $
-// $Date: 2004/10/30 08:21:50 $
-// $Revision: 1.11.2.1 $
+// $Date: 2004/11/28 01:37:05 $
+// $Revision: 1.12 $
 
 #include <boost/mpl/aux_/config/lambda.hpp>
 

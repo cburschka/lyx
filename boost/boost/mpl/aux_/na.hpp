@@ -11,8 +11,8 @@
 // See http://www.boost.org/libs/mpl for documentation.
 
 // $Source: /cvsroot/boost/boost/boost/mpl/aux_/na.hpp,v $
-// $Date: 2004/10/30 08:21:50 $
-// $Revision: 1.5.2.1 $
+// $Date: 2004/11/28 01:37:30 $
+// $Revision: 1.6 $
 
 #include <boost/mpl/bool.hpp>
 #include <boost/mpl/aux_/na_fwd.hpp>

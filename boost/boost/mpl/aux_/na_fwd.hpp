@@ -10,9 +10,9 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-// $Source: /cvsroot/boost/boost/boost/mpl/aux_/Attic/na_fwd.hpp,v $
-// $Date: 2004/10/30 08:22:23 $
-// $Revision: 1.1.2.1 $
+// $Source: /cvsroot/boost/boost/boost/mpl/aux_/na_fwd.hpp,v $
+// $Date: 2004/11/28 01:37:30 $
+// $Revision: 1.2 $
 
 #include <boost/mpl/aux_/adl_barrier.hpp>
 

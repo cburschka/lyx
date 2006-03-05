@@ -21,17 +21,24 @@
 // the library is being built (possibly exporting rather than importing code)
 #define BOOST_FILESYSTEM_SOURCE 
 
+#define _FILE_OFFSET_BITS 64 // at worst, these defines may have no effect,
+#define __USE_FILE_OFFSET64 // but that is harmless on Windows and on POSIX
+      // 64-bit systems or on 32-bit systems which don't have files larger 
+      // than can be represented by a traditional POSIX/UNIX off_t type. 
+      // OTOH, defining them should kick in 64-bit off_t's (and thus 
+      // st_size) on 32-bit systems that provide the Large File
+      // Support (LFS) interface, such as Linux, Solaris, and IRIX.
+      // The defines are given before any headers are included to
+      // ensure that they are available to all included headers.
+      // That is required at least on Solaris, and possibly on other
+      // systems as well.
+
 #include <boost/filesystem/config.hpp>
 #include <boost/filesystem/operations.hpp>
 #include <boost/filesystem/exception.hpp>
 #include <boost/scoped_array.hpp>
 #include <boost/throw_exception.hpp>
 #include <boost/detail/workaround.hpp>
-#include <cstring>
-
-#ifdef BOOST_NO_STDC_NAMESPACE
-namespace std { using ::strcmp; using ::remove; using ::rename; }
-#endif
 
 namespace fs = boost::filesystem;
 
@@ -46,51 +53,6 @@ namespace fs = boost::filesystem;
 
 # if defined(BOOST_WINDOWS)
 #   include "windows.h"
-
-    //////////////////////////////////////////////////////////////////////
-    //
-    // Enable Boost.Filesystem to run on Win95 using the emulation
-    // of GetFileAttributesEx available in the Microsoft Platform SDK
-    // header file NewAPIs.h.
-    //
-    // The user needs only to define WANT_GETFILEATTRIBUTESEX_WRAPPER
-    // to enable this emulation.
-    //
-    // Please note, however, that this block of preprocessor code enables
-    // the user to compile against the emulation code. To link the
-    // executable the user must also compile the function definitions in
-    // NewAPIs.h. See NewAPIs.h for further details.
-    //
-    // This code should work both with Microsoft's native implementation
-    // of the winapi headers and also with MinGW/Cygwin's version.
-    //
-    //////////////////////////////////////////////////////////////////////
-#   if defined(WANT_GETFILEATTRIBUTESEX_WRAPPER)
-#     if (defined(__MINGW32__) || defined(__CYGWIN__)) && WINVER < 0x040A
-        // MinGW/Cygwin's winapi header files and NewAPIs.h do not live
-        // well together because NewAPIs.h redefines
-        // WIN32_FILE_ATTRIBUTE_DATA and GET_FILEEX_INFO_LEVELS
-        // if WINVER < 0x04A.
-#       include <w32api.h>
-#       if __W32API_MAJOR_VERSION < 3 || \
-           __W32API_MAJOR_VERSION == 3 && __W32API_MINOR_VERSION <= 3
-#         define BOOST_FILESYSTEM_WINVER WINVER
-#         undef WINVER
-#         define WINVER 0x040A
-#       endif
-#     endif
-
-#     include <NewAPIs.h>
-
-      // Return macro definitions to their original state.
-#     ifdef BOOST_FILESYSTEM_WINVER
-#       undef WINVER
-#       define WINVER BOOST_FILESYSTEM_WINVER
-#       undef BOOST_FILESYSTEM_WINVER
-#     endif
-#   endif
-    //////////////////////////////////////////////////////////////////////
-
 #   if defined(__BORLANDC__) || defined(__MWERKS__)
 #     if defined(__BORLANDC__)
         using std::time_t;
@@ -106,14 +68,6 @@ namespace fs = boost::filesystem;
 // other macros defined. There was a bug report of this happening.)
 
 # else // BOOST_POSIX
-#   define _USE_FILE_OFFSET_BITS 64 // at worst,
-#   define __USE_FILE_OFFSET64 // these defines may do nothing,
-      // but that won't matter on 64-bit systems or on 32-bit systems which
-      // don't have files larger than can be represented by a traditional
-      // POSIX/UNIX off_t type. OTOH, defining them should kick
-      // in 64-bit off_t's (and thus st_size) on 32-bit systems that support
-      // the Large File Support (LFS) interface, such as Linux, Solaris, and IRIX.
-
 #   include <sys/types.h>
 #   include "dirent.h"
 #   include "unistd.h"
@@ -123,9 +77,15 @@ namespace fs = boost::filesystem;
 
 #include <sys/stat.h>  // even on Windows some functions use stat()
 #include <string>
+#include <cstring>
 #include <cstdio>      // for remove, rename
 #include <cerrno>
 #include <cassert>
+//#include <iostream>    // for debugging only; comment out when not in use
+
+#ifdef BOOST_NO_STDC_NAMESPACE
+namespace std { using ::strcmp; using ::remove; using ::rename; }
+#endif
 
 #include <boost/config/abi_prefix.hpp> // must be the last header
 
@@ -137,7 +97,7 @@ namespace
 
 # define BOOST_HANDLE DIR *
 # define BOOST_INVALID_HANDLE_VALUE 0
-# define BOOST_SYSTEM_DIRECTORY_TYPE struct dirent *
+# define BOOST_SYSTEM_DIRECTORY_TYPE struct dirent
 
   inline const char *  find_first_file( const char * dir,
     BOOST_HANDLE & handle, BOOST_SYSTEM_DIRECTORY_TYPE & )
@@ -154,29 +114,44 @@ namespace
     ::closedir( handle );
   }
 
-  inline const char * find_next_file(
-    BOOST_HANDLE handle, const fs::path & ph, BOOST_SYSTEM_DIRECTORY_TYPE & )
+  // warning: the only dirent member updated is d_name
+  inline int readdir_r_simulator( DIR * dirp, struct dirent * entry,
+    struct dirent ** result ) // *result set to 0 on end of directory
+    {
+#     if defined(_POSIX_THREAD_SAFE_FUNCTIONS) \
+      && defined(_SC_THREAD_SAFE_FUNCTIONS) \
+      && (_POSIX_THREAD_SAFE_FUNCTIONS+0 >= 0) \
+      && ( !defined(__HP_aCC) || ( defined(__HP_aCC) && defined(_REENTRANT) ) )
+      if ( ::sysconf( _SC_THREAD_SAFE_FUNCTIONS ) >= 0 )
+        { return ::readdir_r( dirp, entry, result ); }
+#     endif
+
+      struct dirent * p;
+      errno = 0;
+      *result = 0;
+      if ( (p = ::readdir( dirp )) == 0 )
+        return errno;
+      // POSIX specs require entry->d_name be large enough:
+      std::strcpy( entry->d_name, p->d_name );
+      *result = entry;
+      return 0;
+    }
+
+  inline const char * find_next_file( BOOST_HANDLE handle,
+    const fs::path & ph, BOOST_SYSTEM_DIRECTORY_TYPE & entry )
   // Returns: if EOF 0, otherwise name
   // Throws: if system reports error
   {
-
-//  TODO: use readdir_r() if available, so code is multi-thread safe.
-//  Fly-in-ointment: not all platforms support readdir_r().
-
-    struct dirent * dp;
-    errno = 0;
-    if ( (dp = ::readdir( handle )) == 0 )
+    struct dirent * result;
+    int return_code;
+    if ( (return_code = ::readdir_r_simulator( handle, &entry, &result )) != 0 )
     {
-      if ( errno != 0 )
-      {
-        boost::throw_exception(
-          fs::filesystem_error(
-            "boost::filesystem::directory_iterator::operator++",
-            ph, errno ) );
-      }
-      else { return 0; } // end reached
+      boost::throw_exception(
+        fs::filesystem_error(
+          "boost::filesystem::directory_iterator::operator++",
+          ph, return_code ) );
     }
-    return dp->d_name;
+    return result ? entry.d_name : 0;
   }
 #else // BOOST_WINDOWS
 
@@ -187,16 +162,23 @@ namespace
   inline const char *  find_first_file( const char * dir,
     BOOST_HANDLE & handle, BOOST_SYSTEM_DIRECTORY_TYPE & data )
   // Returns: 0 if error, otherwise name
+  // Note: an empty root directory has no "." or ".." entries, so this causes
+  // a ERROR_FILE_NOT_FOUND error which we do not considered an error. Instead,
+  // the handle is set to BOOST_INVALID_HANDLE_VALUE and a non-zero is returned.
   {
-//    std::cout << "find_first_file " << dir << std::endl;
-    std::string dirpath( std::string(dir) + "/*" );
+    // use a form of search Sebastian Martel reports will work with Win98
+    std::string dirpath( dir );
+    dirpath += (dirpath.empty()
+      || (dirpath[dirpath.size()-1] != '\\'
+      && dirpath[dirpath.size()-1] != '/')) ? "\\*" : "*";
+
     return ( (handle = ::FindFirstFileA( dirpath.c_str(), &data ))
-      == BOOST_INVALID_HANDLE_VALUE ) ? 0 : data.cFileName;
+      == BOOST_INVALID_HANDLE_VALUE
+      && ::GetLastError() != ERROR_FILE_NOT_FOUND) ? 0 : data.cFileName;
   }  
 
   inline void find_close( BOOST_HANDLE handle )
   {
-//    std::cout << "find_close" << std::endl;
     assert( handle != BOOST_INVALID_HANDLE_VALUE );
     ::FindClose( handle );
   }
@@ -295,11 +277,18 @@ namespace boost
         BOOST_SYSTEM_DIRECTORY_TYPE scratch;
         const char * name = 0;  // initialization quiets compiler warnings
         if ( dir_path.empty() )
-        m_imp->handle = BOOST_INVALID_HANDLE_VALUE;
+          m_imp->handle = BOOST_INVALID_HANDLE_VALUE;
         else
+        {
           name = find_first_file( dir_path.native_directory_string().c_str(),
             m_imp->handle, scratch );  // sets handle
-
+          if ( m_imp->handle == BOOST_INVALID_HANDLE_VALUE
+            && name ) // eof
+          {
+            m_imp.reset(); // make end iterator
+            return;
+          }
+        }
         if ( m_imp->handle != BOOST_INVALID_HANDLE_VALUE )
         {
           m_imp->entry_path = dir_path;
@@ -369,11 +358,12 @@ namespace boost
       if(::GetFileAttributesA( ph.string().c_str() ) == 0xFFFFFFFF)
       {
          UINT err = ::GetLastError();
-         if((err == ERROR_FILE_NOT_FOUND) ||
-	    (err == ERROR_INVALID_PARAMETER) ||
-	    (err == ERROR_PATH_NOT_FOUND) ||
-	    (err == ERROR_INVALID_NAME) ||
-	    (err == ERROR_ACCESS_DENIED))
+         if((err == ERROR_FILE_NOT_FOUND)
+           || (err == ERROR_INVALID_PARAMETER)
+           || (err == ERROR_NOT_READY)
+           || (err == ERROR_PATH_NOT_FOUND)
+           || (err == ERROR_INVALID_NAME)
+           || (err == ERROR_BAD_NETPATH ))
             return false; // GetFileAttributes failed because the path does not exist
          // for any other error we assume the file does exist and fall through,
          // this may not be the best policy though...  (JM 20040330)
@@ -440,7 +430,7 @@ namespace boost
         : path_stat.st_size == 0;
 #   else
       WIN32_FILE_ATTRIBUTE_DATA fad;
-      if ( !::GetFileAttributesEx( ph.string().c_str(),
+      if ( !::GetFileAttributesExA( ph.string().c_str(),
         ::GetFileExInfoStandard, &fad ) )
         boost::throw_exception( filesystem_error(
           "boost::filesystem::is_empty",
@@ -544,28 +534,17 @@ namespace boost
             "boost::filesystem::equivalent",
             ph2, fs::detail::system_error_code() ) );
       // In theory, volume serial numbers are sufficient to distinguish between
-      // devices, but in practice VSN's are sometimes duplicated, so device id
-      // is also checked. Device id's alone aren't sufficient because network
-      // share devices on different machines will have the same id. Furthermore,
-      // cheap floppy disks often have 0 VSN's and are mounted on the same
-      // lettered drive across networks, so last write time and file size is
-      // checked to distinguish that case as far as is possible.
-      if ( info1.dwVolumeSerialNumber != info2.dwVolumeSerialNumber
-        || info1.nFileIndexHigh != info2.nFileIndexHigh
-        || info1.nFileIndexLow != info2.nFileIndexLow
-        || info1.nFileSizeHigh != info2.nFileSizeHigh
-        || info1.nFileSizeLow != info2.nFileSizeLow ) return false;
-      struct stat s1;
-      if ( ::stat( ph1.string().c_str(), &s1 ) != 0 )
-        boost::throw_exception( filesystem_error(
-          "boost::filesystem::equivalent",
-          ph1, fs::detail::system_error_code() ) );
-      struct stat s2;
-      if ( ::stat( ph2.string().c_str(), &s2 ) != 0 )
-        boost::throw_exception( filesystem_error(
-          "boost::filesystem::equivalent",
-          ph2, fs::detail::system_error_code() ) );
-      return s1.st_dev == s2.st_dev;
+      // devices, but in practice VSN's are sometimes duplicated, so last write
+      // time and file size are also checked.
+      return info1.dwVolumeSerialNumber == info2.dwVolumeSerialNumber
+        && info1.nFileIndexHigh == info2.nFileIndexHigh
+        && info1.nFileIndexLow == info2.nFileIndexLow
+        && info1.nFileSizeHigh == info2.nFileSizeHigh
+        && info1.nFileSizeLow == info2.nFileSizeLow
+        && info1.ftLastWriteTime.dwLowDateTime
+          == info2.ftLastWriteTime.dwLowDateTime
+        && info1.ftLastWriteTime.dwHighDateTime
+          == info2.ftLastWriteTime.dwHighDateTime;
 #   endif
     }
 
@@ -587,7 +566,7 @@ namespace boost
 #   else
       // by now, intmax_t is 64-bits on all Windows compilers
       WIN32_FILE_ATTRIBUTE_DATA fad;
-      if ( !::GetFileAttributesEx( ph.string().c_str(),
+      if ( !::GetFileAttributesExA( ph.string().c_str(),
         ::GetFileExInfoStandard, &fad ) )
         boost::throw_exception( filesystem_error(
           "boost::filesystem::file_size",
@@ -658,9 +637,20 @@ namespace boost
 #   ifdef BOOST_POSIX
         || symbolic_link_exists( ph ) ) // handle dangling symbolic links
       {
+#     if defined(__QNXNTO__) || (defined(__MSL__) && (defined(macintosh) || defined(__APPLE__) || defined(__APPLE_CC__)))
+        // Some Metrowerks C library versions fail on directories because of a
+        // known Metrowerks coding error in ::remove. Workaround is to call
+        // rmdir() or unlink() as indicated.
+        // Same bug reported for QNX; same fix.
+        if ( (is_directory( ph )
+          ? ::rmdir( ph.string().c_str() )
+          : ::unlink( ph.string().c_str() )) != 0 )
+#     else
         // note that the POSIX behavior for symbolic links is what we want;
         // the link rather than what it points to is deleted
         if ( std::remove( ph.string().c_str() ) != 0 )
+#     endif
+
         {
           int error = fs::detail::system_error_code();
           // POSIX says "If the directory is not an empty directory, rmdir()
@@ -713,12 +703,23 @@ namespace boost
           old_path, new_path, fs::detail::system_error_code() ) );
     }
 
+#ifdef BOOST_POSIX
+    namespace detail
+    {
+      void throw_copy_file_error( const path & from_file_ph,
+                    const path & to_file_ph )
+      {
+        boost::throw_exception( fs::filesystem_error(
+          "boost::filesystem::copy_file",
+          from_file_ph, to_file_ph, system_error_code() ) );
+      }
+    }
+#endif
+
     BOOST_FILESYSTEM_DECL void copy_file( const path & from_file_ph,
                     const path & to_file_ph )
     {
 #   ifdef BOOST_POSIX
-      // TODO: Ask POSIX experts if this is the best way to copy a file
-
       const std::size_t buf_sz = 32768;
       boost::scoped_array<char> buf( new char [buf_sz] );
       int infile=0, outfile=0;  // init quiets compiler warning
@@ -731,27 +732,40 @@ namespace boost
                               O_WRONLY | O_CREAT | O_EXCL,
                               from_stat.st_mode )) < 0 )
       {
-        if ( infile != 0 ) ::close( infile );
-        boost::throw_exception( filesystem_error(
-          "boost::filesystem::copy_file",
-          from_file_ph, to_file_ph, fs::detail::system_error_code() ) );
+        if ( infile >= 0 ) ::close( infile );
+        detail::throw_copy_file_error( from_file_ph, to_file_ph );
       }
 
-      ssize_t sz;
-      while ( (sz = ::read( infile, buf.get(), buf_sz )) > 0
-        && (sz = ::write( outfile, buf.get(), sz )) > 0 ) {}
+      ssize_t sz, sz_read=1, sz_write;
+      while ( sz_read > 0
+        && (sz_read = ::read( infile, buf.get(), buf_sz )) > 0 )
+      {
+        // Allow for partial writes - see Advanced Unix Programming (2nd Ed.),
+        // Marc Rochkind, Addison-Wesley, 2004, page 94
+        sz_write = 0;
+        do
+        {
+          if ( (sz = ::write( outfile, buf.get(), sz_read - sz_write )) < 0 )
+          { 
+            sz_read = sz; // cause read loop termination
+            break;        //  and error to be thrown after closes
+          }
+          sz_write += sz;
+        } while ( sz_write < sz_read );
+      }
 
-      ::close( infile );
-      ::close( outfile );
+      if ( ::close( infile) < 0 ) sz_read = -1;
+      if ( ::close( outfile) < 0 ) sz_read = -1;
 
-      if ( sz != 0 )
+      if ( sz_read < 0 )
+        detail::throw_copy_file_error( from_file_ph, to_file_ph );
 #   else
       if ( !::CopyFileA( from_file_ph.string().c_str(),
                       to_file_ph.string().c_str(), /*fail_if_exists=*/true ) )
-#   endif
-        boost::throw_exception( filesystem_error(
+        boost::throw_exception( fs::filesystem_error(
           "boost::filesystem::copy_file",
-          from_file_ph, to_file_ph, fs::detail::system_error_code() ) );
+          from_file_ph, to_file_ph, detail::system_error_code() ) );
+#   endif
     }
 
     BOOST_FILESYSTEM_DECL path current_path()
@@ -763,7 +777,12 @@ namespace boost
           buf( new char[static_cast<std::size_t>(path_max)] );
         if ( ::getcwd( buf.get(), static_cast<std::size_t>(path_max) ) == 0 )
         {
-          if ( errno != ERANGE )
+          if ( errno != ERANGE
+// there is a bug in some versions of the Metrowerks C lib on the Mac: wrong errno set 
+#if defined(__MSL__) && (defined(macintosh) || defined(__APPLE__) || defined(__APPLE_CC__))
+            && errno != 0
+#endif
+            )
             boost::throw_exception(
               filesystem_error( "boost::filesystem::current_path", path(),
                 fs::detail::system_error_code() ) );

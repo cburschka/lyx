@@ -11,8 +11,8 @@
 // See http://www.boost.org/libs/mpl for documentation.
 
 // $Source: /cvsroot/boost/boost/boost/mpl/aux_/value_wknd.hpp,v $
-// $Date: 2004/09/28 13:56:59 $
-// $Revision: 1.13 $
+// $Date: 2004/12/20 17:51:57 $
+// $Revision: 1.14 $
 
 #include <boost/mpl/aux_/static_cast.hpp>
 #include <boost/mpl/aux_/config/integral.hpp>
@@ -68,5 +68,22 @@ template<> struct value_wknd<int>
     BOOST_MPL_AUX_VALUE_WKND(C)::value \
 /**/
 #endif
+
+
+namespace boost { namespace mpl { namespace aux {
+
+template< typename T > struct value_type_wknd
+{
+    typedef typename T::value_type type;
+};
+
+#if defined(BOOST_MPL_CFG_MSVC_ETI_BUG)
+template<> struct value_type_wknd<int>
+{
+    typedef int type;
+};
+#endif
+
+}}}
 
 #endif // BOOST_MPL_AUX_VALUE_WKND_HPP_INCLUDED

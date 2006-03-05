@@ -88,6 +88,15 @@
 #  endif
 #endif
 
+#if defined(__GNUC__) && !defined(BOOST_FUNCTION_SCOPE_USING_DECLARATION_BREAKS_ADL)
+//
+// Figure out when Intel is emulating this gcc bug:
+//
+#  if ((__GNUC__ == 3) && (__GNUC_MINOR__ <= 2)) || (BOOST_INTEL <= 900)
+#     define BOOST_FUNCTION_SCOPE_USING_DECLARATION_BREAKS_ADL
+#  endif
+#endif
+
 //
 // Verify that we have actually got BOOST_NO_INTRINSIC_WCHAR_T
 // set correctly, if we don't do this now, we will get errors later
@@ -106,11 +115,6 @@ template< typename T > struct assert_intrinsic_wchar_t;
 template<> struct assert_intrinsic_wchar_t<wchar_t> {};
 // if you see an error here then define BOOST_NO_INTRINSIC_WCHAR_T on the command line:
 template<> struct assert_intrinsic_wchar_t<unsigned short> {};
-#endif
-
-
-#if (BOOST_INTEL_CXX_VERSION <= 800) || !defined(BOOST_STRICT_CONFIG)
-#  define BOOST_FUNCTION_SCOPE_USING_DECLARATION_BREAKS_ADL
 #endif
 
 #if _MSC_VER+0 >= 1000
@@ -137,7 +141,7 @@ template<> struct assert_intrinsic_wchar_t<unsigned short> {};
 #endif
 //
 // last known and checked version:
-#if (BOOST_INTEL_CXX_VERSION > 810)
+#if (BOOST_INTEL_CXX_VERSION > 900)
 #  if defined(BOOST_ASSERT_CONFIG)
 #     error "Unknown compiler version - please run the configure tests and report the results"
 #  elif defined(_MSC_VER)

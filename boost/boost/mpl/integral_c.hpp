@@ -11,8 +11,8 @@
 // See http://www.boost.org/libs/mpl for documentation.
 
 // $Source: /cvsroot/boost/boost/boost/mpl/integral_c.hpp,v $
-// $Date: 2004/09/07 08:51:31 $
-// $Revision: 1.21 $
+// $Date: 2005/07/19 04:03:12 $
+// $Revision: 1.22 $
 
 #include <boost/mpl/integral_c_fwd.hpp>
 #include <boost/mpl/aux_/config/ctps.hpp>
@@ -40,7 +40,9 @@ template< bool C >
 struct integral_c<bool, C>
 {
     BOOST_STATIC_CONSTANT(bool, value = C);
+    typedef integral_c_tag tag;
     typedef integral_c type;
+    typedef bool value_type;
     operator bool() const { return this->value; }
 };
 BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_CLOSE

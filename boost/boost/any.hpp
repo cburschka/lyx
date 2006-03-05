@@ -14,7 +14,10 @@
 #include <typeinfo>
 
 #include "boost/config.hpp"
+#include <boost/type_traits/remove_reference.hpp>
+#include <boost/type_traits/is_reference.hpp>
 #include <boost/throw_exception.hpp>
+#include <boost/static_assert.hpp>
 
 namespace boost
 {
@@ -85,7 +88,7 @@ namespace boost
         class placeholder
         {
         public: // structors
-    
+
             virtual ~placeholder()
             {
             }
@@ -95,7 +98,7 @@ namespace boost
             virtual const std::type_info & type() const = 0;
 
             virtual placeholder * clone() const = 0;
-    
+
         };
 
         template<typename ValueType>
@@ -132,6 +135,9 @@ namespace boost
 
         template<typename ValueType>
         friend ValueType * any_cast(any *);
+
+        template<typename ValueType>
+        friend ValueType * unsafe_any_cast(any *);
 
 #else
 
@@ -170,12 +176,57 @@ namespace boost
     template<typename ValueType>
     ValueType any_cast(const any & operand)
     {
-        const ValueType * result = any_cast<ValueType>(&operand);
+        typedef BOOST_DEDUCED_TYPENAME remove_reference<ValueType>::type nonref;
+
+#ifdef BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
+        // If 'nonref' is still reference type, it means the user has not
+        // specialized 'remove_reference'.
+
+        // Please use BOOST_BROKEN_COMPILER_TYPE_TRAITS_SPECIALIZATION macro
+        // to generate specialization of remove_reference for your class
+        // See type traits library documentation for details
+        BOOST_STATIC_ASSERT(!is_reference<nonref>::value);
+#endif
+
+        const nonref * result = any_cast<nonref>(&operand);
         if(!result)
             boost::throw_exception(bad_any_cast());
         return *result;
     }
 
+    template<typename ValueType>
+    ValueType any_cast(any & operand)
+    {
+        typedef BOOST_DEDUCED_TYPENAME remove_reference<ValueType>::type nonref;
+
+#ifdef BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
+        // The comment in the above version of 'any_cast' explains when this
+        // assert is fired and what to do.
+        BOOST_STATIC_ASSERT(!is_reference<nonref>::value);
+#endif
+
+        nonref * result = any_cast<nonref>(&operand);
+        if(!result)
+            boost::throw_exception(bad_any_cast());
+        return *result;
+    }
+
+    // Note: The "unsafe" versions of any_cast are not part of the
+    // public interface and may be removed at any time. They are
+    // required where we know what type is stored in the any and can't
+    // use typeid() comparison, e.g., when our types may travel across
+    // different shared libraries.
+    template<typename ValueType>
+    ValueType * unsafe_any_cast(any * operand)
+    {
+        return &static_cast<any::holder<ValueType> *>(operand->content)->held;
+    }
+
+    template<typename ValueType>
+    const ValueType * unsafe_any_cast(const any * operand)
+    {
+        return any_cast<ValueType>(const_cast<any *>(operand));
+    }
 }
 
 // Copyright Kevlin Henney, 2000, 2001, 2002. All rights reserved.
