@@ -1,3 +1,8 @@
+2006-03-06  José Matos  <jamatos@lyx.org>
+
+	* lyx_1_4.py (remove_paperpackage): Only reset the papersize for
+	a4* paperpackages.
+
 2006-02-22  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* lyx_1_4.py (convert_amsmath, revert_amsmath): new, convert ams math
