@@ -367,7 +367,14 @@ AC_DEFUN([QT4_CHECK_COMPILE],
 		AC_LANG_CPLUSPLUS
 		SAVE_CXXFLAGS=$CXXFLAGS
 		CXXFLAGS="$CXXFLAGS $QT4_INCLUDES $QT4_LDFLAGS"
-		QT4_TRY_LINK(-lQtCore)
+		for libname in '-lQtCore -lQtGui -lQtXml -lQt3Support' \
+		               '-lQtCore4 -lQtGui4 -lQtXml4 -lQt3Support4'
+		do
+			QT4_TRY_LINK($libname)
+			if test -n "$qt4_cv_libname"; then
+				break;
+			fi
+		done
 		CXXFLAGS=$SAVE_CXXFLAGS
 	])
 
@@ -377,7 +384,6 @@ AC_DEFUN([QT4_CHECK_COMPILE],
 			AC_MSG_ERROR([Cannot compile a simple Qt 4 executable. Check you have the right \$QT4DIR !])
 		fi
 	else
-		qt4_cv_libname="$qt4_cv_libname -lQtGui -lQt3Support"
 		AC_MSG_RESULT([$qt4_cv_libname])
 	fi
 ])
