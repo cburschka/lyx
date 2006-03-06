@@ -458,6 +458,7 @@ AC_CONFIG_FILES([Makefile  m4/Makefile \
        src/support/tests/Makefile \
        src/frontends/Makefile \
        src/frontends/controllers/Makefile \
+       src/frontends/controllers/tests/Makefile \
        src/frontends/xforms/Makefile \
        src/frontends/xforms/lyx_forms.h-tmp:src/frontends/xforms/lyx_forms.h.in \
        src/frontends/xforms/lyx_xpm.h-tmp:src/frontends/xforms/lyx_xpm.h.in \
