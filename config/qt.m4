@@ -447,7 +447,7 @@ AC_DEFUN([QT4_DO_IT_ALL],
 	QT4_LDFLAGS=
 	if test -n "$qt4_cv_includes"; then
 		QT4_INCLUDES="-I$qt4_cv_includes"
-		for i in Qt QtGui Qt3Support; do
+		for i in Qt QtCore QtGui Qt3Support; do
 			QT4_INCLUDES="$QT4_INCLUDES -I$qt4_cv_includes/$i"
 		done
 	fi
