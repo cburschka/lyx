@@ -254,10 +254,10 @@ if test x$GXX = xyes; then
     fi
   fi
   case $gxx_version in
-      3.1*)    AM_CXXFLAGS="-finline-limit=500 -fno-exceptions";;
-      3.2*|3.3*)    AM_CXXFLAGS="-fno-exceptions";;
+      3.1*)    AM_CXXFLAGS="-finline-limit=500 ";;
+      3.2*|3.3*)    AM_CXXFLAGS="";;
       3.4*|4.0*)
-          AM_CXXFLAGS="-fno-exceptions"
+          AM_CXXFLAGS=""
           test $enable_pch = yes && lyx_pch_comp=yes
           ;;
       *)       AM_CXXFLAGS="";;

@@ -1,3 +1,8 @@
+2006-03-06  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* lyxinclude.m4: Turn exceptions on for gcc (read: don't turn them
+	off)
+
 2006-03-05  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* lyxinclude.m4: Remove support for versions of GCC older than 3.1
