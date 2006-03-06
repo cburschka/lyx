@@ -370,24 +370,29 @@ namespace {
 // Escape special chars.
 // All characters are literals except: '.|*?+(){}[]^$\'
 // These characters are literals when preceded by a "\", which is done here
+// @todo: This function should be moved to support, and then the test in tests
+//        should be moved there as well.
 string const escape_special_chars(string const & expr)
 {
 	// Search for all chars '.|*?+(){}[^$]\'
 	// Note that '[' and '\' must be escaped.
 	// This is a limitation of boost::regex, but all other chars in BREs
 	// are assumed literal.
-	boost::RegEx reg("[].|*?+(){}^$\\[\\\\]");
+	boost::regex reg("[].|*?+(){}^$\\[\\\\]");
 
-	// $& is a perl-like expression that expands to all of the current match
+	// $& is a perl-like expression that expands to all
+	// of the current match
 	// The '$' must be prefixed with the escape character '\' for
 	// boost to treat it as a literal.
 	// Thus, to prefix a matched expression with '\', we use:
-	return reg.Merge(expr, "\\\\$&");
+	return boost::regex_replace(expr, reg, "\\\\$&");
 }
 
 
 // A functor for use with std::find_if, used to ascertain whether a
 // data entry matches the required regex_
+// @throws: boost::regex_error if the supplied regex pattern is not valid
+// @todo: This function should be moved to support.
 class RegexMatch : public std::unary_function<string, bool>
 {
 public:
@@ -397,9 +402,6 @@ public:
 		: map_(m), regex_(re, icase) {}
 
 	bool operator()(string const & key) const {
-		if (!validRE())
-			return false;
-
 		// the data searched is the key + its associated BibTeX/biblio
 		// fields
 		string data = key;
@@ -409,14 +411,11 @@ public:
 
 		// Attempts to find a match for the current RE
 		// somewhere in data.
-		return regex_.Search(data);
+		return boost::regex_search(data, regex_);
 	}
-
-	bool validRE() const { return regex_.error_code() == 0; }
-
 private:
 	InfoMap const map_;
-	mutable boost::RegEx regex_;
+	mutable boost::regex regex_;
 };
 
 } // namespace anon
@@ -442,27 +441,31 @@ searchKeys(InfoMap const & theMap,
 	if (type == SIMPLE)
 		// We must escape special chars in the search_expr so that
 		// it is treated as a simple string by boost::regex.
-		expr = escape_special_chars(expr);
+	        expr = escape_special_chars(expr);
 
-	// Build the functor that will be passed to find_if.
-	RegexMatch const match(theMap, expr, !caseSensitive);
-	if (!match.validRE())
+	try {
+		// Build the functor that will be passed to find_if.
+		RegexMatch const match(theMap, expr, !caseSensitive);
+
+		// Search the vector of 'keys' from 'start' for one
+		// that matches the predicate 'match'. Searching can
+		// be forward or backward from start.
+		if (dir == FORWARD)
+			return std::find_if(start, keys.end(), match);
+
+		vector<string>::const_reverse_iterator rit(start);
+		vector<string>::const_reverse_iterator rend = keys.rend();
+		rit = std::find_if(rit, rend, match);
+		
+		if (rit == rend)
+			return keys.end();
+		// This is correct and always safe.
+		// (See Meyer's Effective STL, Item 28.)
+		return (++rit).base();
+	}
+	catch (boost::regex_error & regerr) {
 		return keys.end();
-
-	// Search the vector of 'keys' from 'start' for one that matches the
-	// predicate 'match'. Searching can be forward or backward from start.
-	if (dir == FORWARD)
-		return std::find_if(start, keys.end(), match);
-
-	vector<string>::const_reverse_iterator rit(start);
-	vector<string>::const_reverse_iterator rend = keys.rend();
-	rit = std::find_if(rit, rend, match);
-
-	if (rit == rend)
-		return keys.end();
-	// This is correct and always safe.
-	// (See Meyer's Effective STL, Item 28.)
-	return (++rit).base();
+	}
 }
 
 

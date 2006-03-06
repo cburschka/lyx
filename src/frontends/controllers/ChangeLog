@@ -1,3 +1,9 @@
+2006-03-06  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* biblio.C (escape_special_chars): Update for boost::regex v4
+	(RegexMatch): Update for bosot::regex v4
+	(searchKeys): Handle exception if it occurs.
+
 2005-12-12  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* ControlPrefs.[Ch]: new helper functions toPaperSize and

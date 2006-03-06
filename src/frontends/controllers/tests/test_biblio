@@ -1,0 +1,7 @@
+#!/bin/bash
+
+regfile=`cat ${srcdir}/regfiles/biblio`
+output=`./biblio`
+
+test "$regfile" = "$output"
+exit $?
