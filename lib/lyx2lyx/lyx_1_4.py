@@ -2342,13 +2342,15 @@ def remove_paperpackage(file):
 
     paperpackage = split(file.header[i])[1]
 
-    if paperpackage in ("a4", "a4wide", "widemarginsa4"):
-        conv = {"a4":"\\usepackage{a4}","a4wide": "\\usepackage{a4wide}",
-                "widemarginsa4": "\\usepackage[widemargins]{a4}"}
-        # for compatibility we ensure it is the first entry in preamble
-        file.preamble[0:0] = [conv[paperpackage]]
-
     del file.header[i]
+
+    if paperpackage not in ("a4", "a4wide", "widemarginsa4"):
+        return
+
+    conv = {"a4":"\\usepackage{a4}","a4wide": "\\usepackage{a4wide}",
+            "widemarginsa4": "\\usepackage[widemargins]{a4}"}
+    # for compatibility we ensure it is the first entry in preamble
+    file.preamble[0:0] = [conv[paperpackage]]
 
     i = find_token(file.header, '\\papersize', 0)
     if i != -1:
