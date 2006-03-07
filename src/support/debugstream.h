@@ -16,7 +16,7 @@
 
 #include <boost/version.hpp>
 
-#if BOOST_VERSION < 103301
+#if BOOST_VERSION < 103300
 #  include <boost/test/detail/nullstream.hpp>
 #else
 #  include <boost/test/utils/nullstream.hpp>

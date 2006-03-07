@@ -1,3 +1,7 @@
+2006-03-07  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* debugstream.h: fix nullstream.hpp location for boost 1.33.0
+
 2006-03-05  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* filetools.C (NormalizePath): Change to use boost::filesystem and
