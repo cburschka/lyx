@@ -1,3 +1,7 @@
+2006-03-07  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* tests/pch.h: fix nullstream.hpp location for boost 1.33.0
+
 2006-03-06  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* biblio.C (escape_special_chars): Update for boost::regex v4
