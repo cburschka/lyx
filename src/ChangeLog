@@ -1,3 +1,8 @@
+2006-03-10  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* bufferparams.C (writeLaTeX): define \labelitemi with \def. Fixes LaTeX 
+	error if the class has not defined them yet (bug 2053).
+
 2006-02-26  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* text3.C (mathDispatch): fix math inset creation from string (bug 2315)

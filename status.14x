@@ -30,6 +30,8 @@ What's new
 
 - fix LaTeX error with AMS classes (bug 2363).
 
+- fix LaTeX error when \labelitemi was undefined (bug 2053).
+
 * User Interface:
 
 - Improve handling of the labeling environment in KOMA letters (bug 2246).
