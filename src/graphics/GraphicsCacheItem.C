@@ -335,9 +335,12 @@ string const findTargetFormat(string const & from)
 	typedef lyx::graphics::Image::FormatList FormatList;
 	FormatList const formats = lyx::graphics::Image::loadableFormats();
 
+	 // There must be a format to load from.
+	BOOST_ASSERT(!formats.empty());
+
 	// Use the standard converter if we don't know the format to load
 	// from.
-	if (!formats.empty())
+	if (from.empty())
 		return string("ppm");
 
 	// First ascertain if we can load directly with no conversion
