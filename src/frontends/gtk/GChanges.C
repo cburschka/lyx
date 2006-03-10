@@ -63,7 +63,10 @@ void GChanges::doBuild()
 
 void GChanges::update()
 {
-	onNext();
+	if (controller().changed())
+		promptChange();
+	else
+		promptDismiss();
 }
 
 

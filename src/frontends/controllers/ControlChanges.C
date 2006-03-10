@@ -39,6 +39,13 @@ bool ControlChanges::find()
 }
 
 
+bool ControlChanges::changed()
+{
+	Change c(kernel().bufferview()->getCurrentChange());
+	return c.type != Change::UNCHANGED;
+}
+
+
 string const ControlChanges::getChangeDate()
 {
 	Change c(kernel().bufferview()->getCurrentChange());

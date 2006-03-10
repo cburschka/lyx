@@ -1,3 +1,8 @@
+2006-03-10  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* QChanges.C: fix bug 2212: First change is skipped in
+	"Merge changes..." dialog
+
 2006-03-10  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* QWorkArea.C (getClipboard): convert MAC to UNIX line endings on OSX

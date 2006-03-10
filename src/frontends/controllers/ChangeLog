@@ -1,3 +1,8 @@
+2006-03-10  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* ControlChanges.C: fix bug 2212: First change is skipped in
+	"Merge changes..." dialog
+
 2005-12-12  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* ControlPrefs.[Ch]: new helper functions toPaperSize and

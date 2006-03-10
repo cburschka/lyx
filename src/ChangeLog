@@ -4142,6 +4142,11 @@
 
 2004-02-06  André Pönitz  <poenitz@gmx.net>
 
+	* BufferView_pimpl.C: fix bug 2212: First change is skipped is
+	"Merge changes..." dialog
+
+2006-03-10  Martin Vermeer  <martin.vermeer@hut.fi>
+
 	* BufferView.[Ch]:
 	* BufferView_pimpl.[Ch]:
 	* text3.C: move some text specific LFUN handling
