@@ -1,5 +1,8 @@
 2006-03-10  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
+	* languages: fix babel/jurabib conflict with Spanish by using 
+	\deactivatetilden.
+
 	* layouts/amsdefs.inc: clear Address definition from lyxmacros
 	(bug 2363).
 	
