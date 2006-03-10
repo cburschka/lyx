@@ -13,8 +13,6 @@ End
 Input stdlists.inc
 Input stdcounters.inc
 
-NoStyle List
-
 
 Style Description
 	LabelFont
@@ -24,21 +22,16 @@ End
 
 
 Style Labeling
-	Margin                Manual
-	LatexType             List_Environment
+	CopyStyle             List
 	LatexName             labeling
-	NextNoindent          1
-	LabelSep              xxx
-	ParSkip               0.4
-	TopSep                0.7
-	BottomSep             0.7
-	ParSep                0.5
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Manual
-	LabelString           "00.00.0000"
+	# overwrite the preamble code definition
+	Preamble
+	EndPreamble
 End
 
+Style List
+	Obsoletedby           Labeling
+End
 
 Input stdlayouts.inc
 
