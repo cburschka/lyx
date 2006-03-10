@@ -1956,6 +1956,15 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			}
 		}
 
+		else if (t.cs() == "verb") {
+			context.check_layout(os);
+			char const delimiter = p.next_token().character();
+			string const arg = p.getArg(delimiter, delimiter);
+			ostringstream oss;
+			oss << "\\verb" << delimiter << arg << delimiter;
+			handle_ert(os, oss.str(), context);
+		}
+
 		else if (t.cs() == "\"") {
 			context.check_layout(os);
 			string const name = p.verbatim_item();
