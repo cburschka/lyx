@@ -922,12 +922,7 @@ void BufferView::Pimpl::trackChanges()
 		buffer_->undostack().clear();
 	} else {
 		cursor_.setCursor(doc_iterator_begin(buffer_->inset()));
-		bool const found = lyx::find::findNextChange(bv_);
-		if (found) {
-			// We reset the cursor to the start of the
-			// document, since the Changes Dialog is going
-			// to search for the next change anyway.
-			cursor_.setCursor(doc_iterator_begin(buffer_->inset()));
+		if (lyx::find::findNextChange(bv_)) {
 			owner_->getDialogs().show("changes");
 			return;
 		}
@@ -1228,7 +1223,8 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_MERGE_CHANGES:
-		owner_->getDialogs().show("changes");
+		if (lyx::find::findNextChange(bv_))
+			owner_->getDialogs().show("changes");
 		break;
 
 	case LFUN_ACCEPT_ALL_CHANGES: {

@@ -48,35 +48,32 @@ void FormChanges::build()
 
 void FormChanges::update()
 {
-	input(dialog_->button_next, 0);
+	if (!dialog_.get()) return;
+	bool exist = controller().changed();
+	setEnabled(dialog_->button_accept, exist);
+	setEnabled(dialog_->button_reject, exist);
+	setEnabled(dialog_->button_next, exist);
+
+	string const author = exist ? controller().getChangeAuthor() : "";
+	fl_set_object_label(dialog_->text_author, author.c_str());
+
+	string const date = exist ? controller().getChangeDate() : "";
+	fl_set_object_label(dialog_->text_date, date.c_str());
+
+	// Yes, this is needed.
+	fl_redraw_form(form());
 }
 
 
 ButtonPolicy::SMInput FormChanges::input(FL_OBJECT * obj, long)
 {
-	if (obj == dialog_->button_accept) {
+	if (obj == dialog_->button_accept)
 		controller().accept();
-
-	} else if (obj == dialog_->button_reject) {
+	else if (obj == dialog_->button_reject)
 		controller().reject();
-
-	} else if (obj == dialog_->button_next) {
-
-		bool const exist = controller().find();
-		setEnabled(dialog_->button_accept, exist);
-		setEnabled(dialog_->button_reject, exist);
-		setEnabled(dialog_->button_next, exist);
-
-		string const author = exist ? controller().getChangeAuthor() : "";
-		fl_set_object_label(dialog_->text_author, author.c_str());
-
-		string const date = exist ? controller().getChangeDate() : "";
-		fl_set_object_label(dialog_->text_date, date.c_str());
-
-		// Yes, this is needed.
-		fl_redraw_form(form());
-	}
-
+	else if (obj == dialog_->button_next)
+		controller().find();
+	update();
 	return ButtonPolicy::SMI_VALID;
 }
 
