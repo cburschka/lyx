@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX v1.4.0cvs-2006.01.03\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-03-03 09:25+0100\n"
-"PO-Revision-Date: 2006-01-03 22:30+0100\n"
+"POT-Creation-Date: 2006-03-06 11:29+0100\n"
+"PO-Revision-Date: 2006-03-06 20:30+0100\n"
 "Last-Translator: Szõke Sándor <alex@lyx.hu>\n"
 "Language-Team: Magyar <magyar@lists.linux.hu>\n"
 "MIME-Version: 1.0\n"
@@ -185,9 +185,8 @@ msgid "Restore|#R"
 msgstr "Visszavon|#V"
 
 #: src/frontends/xforms/forms/form_bibtex.fd:242
-#, fuzzy
 msgid "Content:|#o"
-msgstr "Tartalom"
+msgstr "Tartalom:|#o"
 
 #: src/frontends/xforms/forms/form_box.fd:62
 #, fuzzy
@@ -199,12 +198,10 @@ msgid "Has Inner Box"
 msgstr ""
 
 #: src/frontends/xforms/forms/form_box.fd:152
-#, fuzzy
 msgid "Vertical Alignment"
 msgstr "Függõleges igazítás"
 
 #: src/frontends/xforms/forms/form_box.fd:170
-#, fuzzy
 msgid "Width Unit"
 msgstr "Szélesség egysége"
 
@@ -225,16 +222,14 @@ msgid "Inner Alignment (Vert.)"
 msgstr ""
 
 #: src/frontends/xforms/forms/form_box.fd:242
-#, fuzzy
 msgid "Horizontal Alignment"
-msgstr "&Vízszintes igazítás:"
+msgstr "Vízszintes igazítás:"
 
 #: src/frontends/xforms/forms/form_box.fd:260
 #: src/frontends/controllers/ControlBox.C:80 src/frontends/qt2/QBox.C:187
 #: src/frontends/qt2/QBox.C:221
-#, fuzzy
 msgid "Height"
-msgstr "&Magasság"
+msgstr "Magasság"
 
 #: src/frontends/xforms/forms/form_box.fd:278
 #, fuzzy
@@ -304,7 +299,6 @@ msgid "Changed by:"
 msgstr ""
 
 #: src/frontends/xforms/forms/form_changes.fd:134
-#, fuzzy
 msgid "author"
 msgstr "Szerzõ"
 
@@ -314,9 +308,8 @@ msgid "date"
 msgstr "Frissít"
 
 #: src/frontends/xforms/forms/form_changes.fd:170
-#, fuzzy
 msgid "on:"
-msgstr "be"
+msgstr "be:"
 
 #: src/frontends/xforms/forms/form_character.fd:62
 msgid "Family:|#F"
@@ -427,7 +420,6 @@ msgid "Text after:|#T"
 msgstr "Szöveg utána:|#u"
 
 #: src/frontends/xforms/forms/form_colorpicker.fd:44
-#, fuzzy
 msgid "tabbed folder"
 msgstr "Tabbed folder"
 
@@ -554,7 +546,6 @@ msgid "Font Size:|#O"
 msgstr "Betûméret:|#r"
 
 #: src/frontends/xforms/forms/form_document.fd:812
-#, fuzzy
 msgid "Class:|#C"
 msgstr "Dokumentumosztály:|#D"
 
@@ -625,7 +616,6 @@ msgid "PS Driver:|#S"
 msgstr "Postscript meghajtó:|#P"
 
 #: src/frontends/xforms/forms/form_document.fd:1355
-#, fuzzy
 msgid "Use AMS Math:|#M"
 msgstr "AMS képlet használata|#S"
 
@@ -635,7 +625,6 @@ msgid "Sectioned bibliography|#e"
 msgstr "Az irodalomjegyzék kulcs"
 
 #: src/frontends/xforms/forms/form_document.fd:1391
-#, fuzzy
 msgid "Citation Style:|#C"
 msgstr "Idézetstílus:|#I"
 
@@ -697,9 +686,8 @@ msgid "Add|#d"
 msgstr "Hozzáadás|#H"
 
 #: src/frontends/xforms/forms/form_document.fd:1819
-#, fuzzy
 msgid "Remove|#e"
-msgstr "&Eltávolít"
+msgstr "Eltávolít|#E"
 
 #: src/frontends/xforms/forms/form_document.fd:1837
 #, fuzzy
@@ -711,9 +699,8 @@ msgid "Activated Branches:"
 msgstr ""
 
 #: src/frontends/xforms/forms/form_document.fd:1873
-#, fuzzy
 msgid "@5->"
-msgstr "@4->"
+msgstr "@5->"
 
 #: src/frontends/xforms/forms/form_document.fd:1909
 #, fuzzy
@@ -721,9 +708,8 @@ msgid "Display Background:"
 msgstr "betét háttér"
 
 #: src/frontends/xforms/forms/form_document.fd:1927
-#, fuzzy
 msgid "Modify"
-msgstr "&Módosít"
+msgstr "Módosít"
 
 #: src/frontends/xforms/forms/form_ert.fd:43
 #: src/frontends/xforms/forms/form_tabular.fd:1764
@@ -750,24 +736,20 @@ msgid "File:|#F"
 msgstr "Fájl:|#F"
 
 #: src/frontends/xforms/forms/form_external.fd:176
-#, fuzzy
 msgid "Edit File...|#E"
-msgstr "Fájl szerkesztése|#z"
+msgstr "Fájl szerkesztése ...|#z"
 
 #: src/frontends/xforms/forms/form_external.fd:194
-#, fuzzy
 msgid "Template:|#T"
 msgstr "Sablon:|#S"
 
 #: src/frontends/xforms/forms/form_external.fd:230
-#, fuzzy
 msgid "Draft|#D"
-msgstr "Alapérték|#l"
+msgstr "Vázlat|#V"
 
 #: src/frontends/xforms/forms/form_external.fd:272
-#, fuzzy
 msgid "Show in LyX|#S"
-msgstr "&LyX mutassa"
+msgstr "LyX mutassa||#L"
 
 #: src/frontends/xforms/forms/form_external.fd:290
 #: src/frontends/xforms/forms/form_graphics.fd:410
@@ -775,7 +757,6 @@ msgid "Display:|#D"
 msgstr "Megjelenítés:|#l"
 
 #: src/frontends/xforms/forms/form_external.fd:308
-#, fuzzy
 msgid "Scale:|#l"
 msgstr "Méretarány:|#r"
 
@@ -787,7 +768,6 @@ msgid "%"
 msgstr "%"
 
 #: src/frontends/xforms/forms/form_external.fd:368
-#, fuzzy
 msgid "Angle:|#n"
 msgstr "Szög:|#S"
 
@@ -816,17 +796,14 @@ msgid "y"
 msgstr "y"
 
 #: src/frontends/xforms/forms/form_external.fd:578
-#, fuzzy
 msgid "Clip to bounding box|#b"
 msgstr "Vágás befoglaló keretbe|#k"
 
 #: src/frontends/xforms/forms/form_external.fd:596
-#, fuzzy
 msgid "Get from File|#G"
 msgstr "Betöltés fájlból|#e"
 
 #: src/frontends/xforms/forms/form_external.fd:614
-#, fuzzy
 msgid "Right top:|#t"
 msgstr "Jobb felsõ sarok:|#J"
 
@@ -836,14 +813,12 @@ msgid "Left bottom:|#L"
 msgstr "Bal alsó sarok:|#B"
 
 #: src/frontends/xforms/forms/form_external.fd:710
-#, fuzzy
 msgid "Format:|#t"
 msgstr "Formátum:|#o"
 
 #: src/frontends/xforms/forms/form_external.fd:728
-#, fuzzy
 msgid "Option:|#p"
-msgstr "Kap&csolók:"
+msgstr "Kapcsolók:|#c"
 
 #: src/frontends/xforms/forms/form_filedialog.fd:44
 msgid "Directory:|#D"
@@ -926,9 +901,8 @@ msgid "Output"
 msgstr "Kimenet"
 
 #: src/frontends/xforms/forms/form_graphics.fd:212
-#, fuzzy
 msgid "Edit|#E"
-msgstr "Szerkesztés|e"
+msgstr "Szerkesztés|#e"
 
 #: src/frontends/xforms/forms/form_graphics.fd:230
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:255
@@ -1010,19 +984,16 @@ msgid "Verbatim|#V"
 msgstr "Verbatim|#V"
 
 #: src/frontends/xforms/forms/form_include.fd:206
-#, fuzzy
 msgid "Use input|#U"
 msgstr "Input használata|#I"
 
 #: src/frontends/xforms/forms/form_include.fd:225
-#, fuzzy
 msgid "Use include|#i"
 msgstr "Include használata|#n"
 
 #: src/frontends/xforms/forms/form_include.fd:261
-#, fuzzy
 msgid "Preview|#P"
-msgstr "Elõnézet megjelenítése|#E"
+msgstr "Elõnézet|#E"
 
 #: src/frontends/xforms/forms/form_maths_delim.fd:152
 msgid ""
@@ -1123,9 +1094,8 @@ msgstr "textrm"
 
 #: src/frontends/xforms/forms/form_note.fd:44
 #: src/frontends/qt2/ui/QNoteDialogBase.ui:75
-#, fuzzy
 msgid "Type"
-msgstr "&Típus:"
+msgstr "Típus:"
 
 #: src/frontends/xforms/forms/form_note.fd:80
 #, fuzzy
@@ -1133,9 +1103,8 @@ msgid "LyX Note|#N"
 msgstr "Megjegyzés|z"
 
 #: src/frontends/xforms/forms/form_note.fd:98
-#, fuzzy
 msgid "Comment|#o"
-msgstr "Megjegyzés"
+msgstr "Megjegyzés|#M"
 
 #: src/frontends/xforms/forms/form_note.fd:116
 msgid "Greyed out|#G"
@@ -1181,7 +1150,6 @@ msgstr "Sorkizárt|#z"
 #: src/frontends/xforms/forms/form_paragraph.fd:296
 #: src/frontends/xforms/forms/form_tabular.fd:561
 #: src/frontends/xforms/forms/form_tabular.fd:1001
-#, fuzzy
 msgid "Center|#C"
 msgstr "Középre|#K"
 
@@ -1352,23 +1320,20 @@ msgid "Graphics display:|#G"
 msgstr "Grafika megjelenítése:"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1012
-#, fuzzy
 msgid "Instant Preview:|#p"
-msgstr "Azonnali elõnézet"
+msgstr "Azonnali elõnézet:|#A"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1054
-#, fuzzy
 msgid "Real name:|#R"
-msgstr "Cseréli|#C"
+msgstr "Valós név:|#C"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1072
 msgid "Email address:|#E"
 msgstr ""
 
 #: src/frontends/xforms/forms/form_preferences.fd:1114
-#, fuzzy
 msgid "Spellchecker executable:|#S"
-msgstr "Helyesírás-ellenõrzõ ...|H"
+msgstr "Helyesírás-ellenõrzõ:|#H"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1132
 msgid "Alternative language:|#a"
@@ -1490,9 +1455,8 @@ msgid "Viewer:|#V"
 msgstr "Megjelenítõ:"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1846
-#, fuzzy
 msgid "Editor:|#i"
-msgstr "Szerkesztés|e"
+msgstr "Szerkesztõ:|#e"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1864
 #: src/frontends/xforms/forms/form_preferences.fd:2014
@@ -1672,9 +1636,8 @@ msgid "Paper size:"
 msgstr "Papírméret:"
 
 #: src/frontends/xforms/forms/form_preferences.fd:2950
-#, fuzzy
 msgid "Plain text line length:|#A"
-msgstr "ASCIIi sor hossza:"
+msgstr "ASCII sor hossza:|#A"
 
 #: src/frontends/xforms/forms/form_preferences.fd:2972
 msgid "TeX encoding:|#T"
@@ -1706,9 +1669,8 @@ msgid "Autoreset Class Options on change|#u"
 msgstr "Visszaállítás alapértelmezésre osztályváltozás esetén"
 
 #: src/frontends/xforms/forms/form_preferences.fd:3098
-#, fuzzy
 msgid "BibTeX:|#B"
-msgstr "LaTeX:|#L"
+msgstr "BibTeX:|#B"
 
 #: src/frontends/xforms/forms/form_preferences.fd:3116
 #, fuzzy
@@ -1949,7 +1911,6 @@ msgid "Top|#p"
 msgstr "Fent|#e"
 
 #: src/frontends/xforms/forms/form_tabular.fd:634
-#, fuzzy
 msgid "Middle|#M"
 msgstr "Középén|#K"
 
@@ -2100,14 +2061,12 @@ msgid "HTML type|#H"
 msgstr "Hiperlink létrehozása|#H"
 
 #: src/frontends/xforms/forms/form_vspace.fd:44
-#, fuzzy
 msgid "Spacing:|#S"
 msgstr "Sorköz:|#z"
 
 #: src/frontends/xforms/forms/form_vspace.fd:62
-#, fuzzy
 msgid "Value:|#V"
-msgstr "É&rték:"
+msgstr "Érték:|#r"
 
 #: src/frontends/xforms/forms/form_vspace.fd:98
 #, fuzzy
@@ -2123,9 +2082,8 @@ msgid "Default|#D"
 msgstr "Alapérték|#l"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:41
-#, fuzzy
 msgid "Citation Style"
-msgstr "Idézet&stílus:"
+msgstr "Idézet stílusa"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:60
 msgid "&Jurabib"
@@ -2136,7 +2094,6 @@ msgid "Use the jurabib styles for law and humanities"
 msgstr ""
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:75
-#, fuzzy
 msgid "&Natbib"
 msgstr "&Natbib használata"
 
@@ -2145,9 +2102,8 @@ msgid "Use the natbib styles for natural sciences and arts"
 msgstr ""
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:90
-#, fuzzy
 msgid "&Default (numerical)"
-msgstr "Alapérték"
+msgstr "&Alapérték (numerikus)"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:94
 #, fuzzy
@@ -2155,9 +2111,8 @@ msgid "Use BibTeX's default numerical styles"
 msgstr "LaTeX alapértelmezés használata"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:124
-#, fuzzy
 msgid "Natbib &style:"
-msgstr "Oldal&stílus:"
+msgstr "Natbib &stílus:"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:182
 #, fuzzy
@@ -2210,9 +2165,8 @@ msgid "Toggle the selected branch"
 msgstr "Kiválasztott adatbázis eltávolítása"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:169
-#, fuzzy
 msgid "Alter Co&lor..."
-msgstr "Módosítás&a ..."
+msgstr "Szín módosítás&a ..."
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:173
 msgid "Define or change background color"
@@ -2231,9 +2185,8 @@ msgid "Remove the selected branch"
 msgstr "Kiválasztott adatbázis eltávolítása"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:235
-#, fuzzy
 msgid "&New:"
-msgstr "Ú&j"
+msgstr "Ú&j:"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:257
 #: src/frontends/qt2/ui/QBibtexAddDialogBase.ui:175
@@ -2248,17 +2201,15 @@ msgid "Add a new branch to the list"
 msgstr ""
 
 #: src/frontends/qt2/ui/BulletsModuleBase.ui:118
-#, fuzzy
 msgid "&First level"
-msgstr "Elsõ fejléc"
+msgstr "&Elsõ szint"
 
 #: src/frontends/qt2/ui/BulletsModuleBase.ui:178
 #: src/frontends/qt2/ui/BulletsModuleBase.ui:413
 #: src/frontends/qt2/ui/BulletsModuleBase.ui:669
 #: src/frontends/qt2/ui/BulletsModuleBase.ui:963
-#, fuzzy
 msgid "Size:"
-msgstr "&Méret:"
+msgstr "Méret:"
 
 #: src/frontends/qt2/ui/BulletsModuleBase.ui:190
 #: src/frontends/qt2/ui/BulletsModuleBase.ui:425
@@ -2370,7 +2321,6 @@ msgid "Class Settings"
 msgstr "Úsztatási beállítások"
 
 #: src/frontends/qt2/ui/LaTeXModuleBase.ui:157
-#, fuzzy
 msgid "&Options:"
 msgstr "Kap&csolók:"
 
@@ -3054,9 +3004,8 @@ msgid "toggle font on all of the above"
 msgstr "A fentiek mindegyikét állítsa"
 
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:436
-#, fuzzy
 msgid "Apply changes immediately"
-msgstr "Minden változást alkalmazz automatikusan"
+msgstr "Változások azonnali alkalmazása"
 
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:440
 msgid "Apply each change automatically"
@@ -3190,7 +3139,6 @@ msgid "&Find:"
 msgstr "&Mit keres:"
 
 #: src/frontends/qt2/ui/QCitationFindDialogBase.ui:353
-#, fuzzy
 msgid "&Regular Expression"
 msgstr "&Reguláris kifejezés"
 
@@ -5328,9 +5276,8 @@ msgid "Note"
 msgstr "Megjegyzés"
 
 #: lib/layouts/IEEEtran.layout:224
-#, fuzzy
 msgid "Note #:"
-msgstr "Megjegyzés"
+msgstr "Megjegyzés #:"
 
 #: lib/layouts/IEEEtran.layout:231 lib/layouts/amsart-plain.layout:127
 #: lib/layouts/amsart-seq.layout:239 lib/layouts/amsmaths-plain.inc:203
@@ -5339,9 +5286,8 @@ msgid "Notation"
 msgstr "Jelölés"
 
 #: lib/layouts/IEEEtran.layout:234
-#, fuzzy
 msgid "Notation #:"
-msgstr "Jelölés"
+msgstr "Jelölés #:"
 
 #: lib/layouts/IEEEtran.layout:241 lib/layouts/amsart-plain.layout:145
 #: lib/layouts/amsart-seq.layout:257 lib/layouts/elsart.layout:418
@@ -5449,9 +5395,8 @@ msgid "Abstract"
 msgstr "Kivonat"
 
 #: lib/layouts/IEEEtran.layout:334
-#, fuzzy
 msgid "Abstract---"
-msgstr "Kivonat"
+msgstr "Kivonat---"
 
 #: lib/layouts/IEEEtran.layout:348 lib/layouts/aastex.layout:109
 #: lib/layouts/aastex.layout:284 lib/layouts/elsart.layout:64
@@ -5659,9 +5604,8 @@ msgstr ""
 
 #: lib/layouts/aa.layout:205 lib/layouts/egs.layout:526
 #: lib/layouts/svjour.inc:309
-#, fuzzy
 msgid "Acknowledgements."
-msgstr "Köszönetnyilvánítások"
+msgstr "Köszönetnyilvánítások."
 
 #: lib/layouts/aapaper.layout:63 lib/layouts/egs.layout:637
 #: src/frontends/qt2/QPrefsDialog.C:111
@@ -5764,14 +5708,12 @@ msgid "Subject headings:"
 msgstr "címek"
 
 #: lib/layouts/aastex.layout:339
-#, fuzzy
 msgid "[Acknowledgements]"
-msgstr "Köszönetnyilvánítások"
+msgstr "[Köszönetnyilvánítások]"
 
 #: lib/layouts/aastex.layout:360
-#, fuzzy
 msgid "and"
-msgstr " és "
+msgstr "és"
 
 #: lib/layouts/aastex.layout:381
 msgid "Place Figure here:"
@@ -5782,24 +5724,20 @@ msgid "Place Table here:"
 msgstr ""
 
 #: lib/layouts/aastex.layout:422
-#, fuzzy
 msgid "[Appendix]"
-msgstr "Függelék"
+msgstr "[Függelék]"
 
 #: lib/layouts/aastex.layout:482
-#, fuzzy
 msgid "Note to Editor:"
-msgstr "Megjegyzés a szerkesztõnek"
+msgstr "Megjegyzés a szerkesztõnek:"
 
 #: lib/layouts/aastex.layout:503
-#, fuzzy
 msgid "References. ---"
-msgstr "Hivatkozások: "
+msgstr "Hivatkozások. ---"
 
 #: lib/layouts/aastex.layout:523
-#, fuzzy
 msgid "Note. ---"
-msgstr "Megjegyzés"
+msgstr "Megjegyzés. ---"
 
 #: lib/layouts/aastex.layout:549
 msgid "FigCaption"
@@ -5819,30 +5757,26 @@ msgid "Obj:"
 msgstr ""
 
 #: lib/layouts/aastex.layout:629
-#, fuzzy
 msgid "Dataset:"
-msgstr "Adatbázis:|#D"
+msgstr "Adatkészlet"
 
 #: lib/layouts/amsart-plain.layout:27 lib/layouts/foils.layout:300
 #: lib/layouts/siamltex.layout:270 lib/layouts/amsmaths-plain.inc:35
 #: lib/layouts/amsmaths.inc:95
-#, fuzzy
 msgid "Theorem."
-msgstr "Tétel"
+msgstr "Tétel."
 
 #: lib/layouts/amsart-plain.layout:33 lib/layouts/foils.layout:314
 #: lib/layouts/siamltex.layout:284 lib/layouts/amsmaths-plain.inc:45
 #: lib/layouts/amsmaths.inc:117
-#, fuzzy
 msgid "Corollary."
-msgstr "Folyomány"
+msgstr "Folyomány."
 
 #: lib/layouts/amsart-plain.layout:39 lib/layouts/foils.layout:307
 #: lib/layouts/siamltex.layout:277 lib/layouts/amsmaths-plain.inc:55
 #: lib/layouts/amsmaths.inc:139
-#, fuzzy
 msgid "Lemma."
-msgstr "Segédtétel"
+msgstr "Segédtétel."
 
 #: lib/layouts/amsart-plain.layout:45 lib/layouts/foils.layout:321
 #: lib/layouts/siamltex.layout:291 lib/layouts/amsmaths-plain.inc:65
@@ -5870,57 +5804,48 @@ msgid "Algorithm"
 msgstr "Algoritmus"
 
 #: lib/layouts/amsart-plain.layout:63
-#, fuzzy
 msgid "Algorithm."
-msgstr "Algoritmus"
+msgstr "Algoritmus."
 
 #: lib/layouts/amsart-plain.layout:69 lib/layouts/amsmaths-plain.inc:105
 #: lib/layouts/amsmaths.inc:227
-#, fuzzy
 msgid "Fact."
-msgstr "Tény"
+msgstr "Tény."
 
 #: lib/layouts/amsart-plain.layout:75 lib/layouts/amsmaths-plain.inc:115
-#, fuzzy
 msgid "Axiom."
-msgstr "Axióma"
+msgstr "Axióma."
 
 #: lib/layouts/amsart-plain.layout:81 lib/layouts/foils.layout:328
 #: lib/layouts/siamltex.layout:297 lib/layouts/amsmaths-plain.inc:125
 #: lib/layouts/amsmaths.inc:268
-#, fuzzy
 msgid "Definition."
-msgstr "Definíció"
+msgstr "Definíció."
 
 #: lib/layouts/amsart-plain.layout:87 lib/layouts/amsmaths-plain.inc:135
 #: lib/layouts/amsmaths.inc:290
-#, fuzzy
 msgid "Example."
-msgstr "Példa"
+msgstr "Példa."
 
 #: lib/layouts/amsart-plain.layout:93 lib/layouts/amsmaths-plain.inc:145
 #: lib/layouts/amsmaths.inc:312
-#, fuzzy
 msgid "Condition."
-msgstr "Feltétel"
+msgstr "Feltétel."
 
 #: lib/layouts/amsart-plain.layout:99 lib/layouts/amsmaths-plain.inc:155
 #: lib/layouts/amsmaths.inc:334
-#, fuzzy
 msgid "Problem."
-msgstr "Probléma"
+msgstr "Probléma."
 
 #: lib/layouts/amsart-plain.layout:105 lib/layouts/amsmaths-plain.inc:165
 #: lib/layouts/amsmaths.inc:357
-#, fuzzy
 msgid "Exercise."
-msgstr "gyakorlat"
+msgstr "Gyakorlat."
 
 #: lib/layouts/amsart-plain.layout:111 lib/layouts/amsmaths-plain.inc:175
 #: lib/layouts/amsmaths.inc:388
-#, fuzzy
 msgid "Remark."
-msgstr "Észrevétel"
+msgstr "Észrevétel."
 
 #: lib/layouts/amsart-plain.layout:117 lib/layouts/llncs.layout:309
 #: lib/layouts/amsmaths-plain.inc:185 lib/layouts/amsmaths.inc:410
@@ -5930,15 +5855,13 @@ msgstr ""
 
 #: lib/layouts/amsart-plain.layout:123 lib/layouts/amsmaths-plain.inc:195
 #: lib/layouts/amsmaths.inc:432
-#, fuzzy
 msgid "Note."
-msgstr "Megjegyzés"
+msgstr "Megjegyzés."
 
 #: lib/layouts/amsart-plain.layout:129 lib/layouts/amsmaths-plain.inc:205
 #: lib/layouts/amsmaths.inc:454
-#, fuzzy
 msgid "Notation."
-msgstr "Jelölés"
+msgstr "Jelölés."
 
 #: lib/layouts/amsart-plain.layout:133 lib/layouts/amsart-seq.layout:245
 #: lib/layouts/elsart.layout:410 lib/layouts/amsmaths-plain.inc:213
@@ -5971,9 +5894,8 @@ msgstr "Következtetés"
 
 #: lib/layouts/amsart-plain.layout:153 lib/layouts/amsmaths-plain.inc:245
 #: lib/layouts/amsmaths.inc:520
-#, fuzzy
 msgid "Conclusion."
-msgstr "Következtetés"
+msgstr "Következtetés."
 
 #: lib/layouts/amsart-seq.layout:139
 msgid "Theorem \\arabic{theorem}."
@@ -6067,7 +5989,7 @@ msgstr ""
 #: lib/layouts/numarticle.inc:16
 #, fuzzy
 msgid "\\arabic{section}"
-msgstr "Alszakasz"
+msgstr "\\arabic{section}"
 
 #: lib/layouts/amsbook.layout:109
 msgid "Chapter Exercises"
@@ -6078,9 +6000,8 @@ msgid "RightHeader"
 msgstr "Jobb fejléc"
 
 #: lib/layouts/apa.layout:59
-#, fuzzy
 msgid "Right header:"
-msgstr "Jobb fejléc"
+msgstr "Jobb fejléc:"
 
 #: lib/layouts/apa.layout:83
 #, fuzzy
@@ -6092,9 +6013,8 @@ msgid "ShortTitle"
 msgstr "Rövid cím"
 
 #: lib/layouts/apa.layout:100
-#, fuzzy
 msgid "Short title:"
-msgstr "Rövid cím"
+msgstr "Rövid cím:"
 
 #: lib/layouts/apa.layout:129
 msgid "TwoAuthors"
@@ -6135,9 +6055,8 @@ msgid "CopNum"
 msgstr ""
 
 #: lib/layouts/apa.layout:234
-#, fuzzy
 msgid "Acknowledgements:"
-msgstr "Köszönetnyilvánítások"
+msgstr "Köszönetnyilvánítások:"
 
 #: lib/layouts/apa.layout:243 lib/layouts/revtex4.layout:201
 #: lib/layouts/spie.layout:89
@@ -6261,54 +6180,48 @@ msgid "Variation"
 msgstr "Variáció"
 
 #: lib/layouts/chess.layout:62
-#, fuzzy
 msgid "Variation:"
-msgstr "Variáció"
+msgstr "Variáció:"
 
 #: lib/layouts/chess.layout:68
 msgid "SubVariation"
 msgstr "Alvariáció"
 
 #: lib/layouts/chess.layout:71
-#, fuzzy
 msgid "Subvariation:"
-msgstr "Alvariáció"
+msgstr "Alvariáció:"
 
 #: lib/layouts/chess.layout:77
 msgid "SubVariation2"
 msgstr "Alvariáció2"
 
 #: lib/layouts/chess.layout:80
-#, fuzzy
 msgid "Subvariation(2):"
-msgstr "Alvariáció2"
+msgstr "Alvariáció(2):"
 
 #: lib/layouts/chess.layout:86
 msgid "SubVariation3"
 msgstr "Alvariáció3"
 
 #: lib/layouts/chess.layout:89
-#, fuzzy
 msgid "Subvariation(3):"
-msgstr "Alvariáció3"
+msgstr "Alvariáció(3):"
 
 #: lib/layouts/chess.layout:95
 msgid "SubVariation4"
 msgstr "Alvariáció4"
 
 #: lib/layouts/chess.layout:98
-#, fuzzy
 msgid "Subvariation(4):"
-msgstr "Alvariáció4"
+msgstr "Alvariáció(4):"
 
 #: lib/layouts/chess.layout:104
 msgid "SubVariation5"
 msgstr "Alvariáció5"
 
 #: lib/layouts/chess.layout:107
-#, fuzzy
 msgid "Subvariation(5):"
-msgstr "Alvariáció5"
+msgstr "Alvariáció(5):"
 
 #: lib/layouts/chess.layout:114
 msgid "HideMoves"
@@ -6323,9 +6236,8 @@ msgid "ChessBoard"
 msgstr "Sakktábla"
 
 #: lib/layouts/chess.layout:128
-#, fuzzy
 msgid "[chessboard]"
-msgstr "Sakktábla"
+msgstr "[Sakktábla]"
 
 #: lib/layouts/chess.layout:137
 msgid "BoardCentered"
@@ -6340,18 +6252,16 @@ msgid "HighLight"
 msgstr ""
 
 #: lib/layouts/chess.layout:157
-#, fuzzy
 msgid "Highlights:"
-msgstr "&Magasság:"
+msgstr "Kijelölés:"
 
 #: lib/layouts/chess.layout:172
 msgid "Arrow"
 msgstr "Nyíl"
 
 #: lib/layouts/chess.layout:177
-#, fuzzy
 msgid "Arrow:"
-msgstr "Nyíl"
+msgstr "Nyíl:"
 
 #: lib/layouts/chess.layout:183
 msgid "KnightMove"
@@ -6399,9 +6309,8 @@ msgid "Send To Address"
 msgstr "Címzett"
 
 #: lib/layouts/dinbrief.layout:34 lib/layouts/g-brief-de.layout:184
-#, fuzzy
 msgid "Adresse:"
-msgstr "Cím"
+msgstr "Cím:"
 
 #: lib/layouts/dinbrief.layout:46 lib/layouts/g-brief-en.layout:204
 #: lib/layouts/g-brief2.layout:864 lib/layouts/scrlettr.layout:69
@@ -6448,9 +6357,8 @@ msgid "ps"
 msgstr ""
 
 #: lib/layouts/dinbrief.layout:110
-#, fuzzy
 msgid "PS:"
-msgstr "UI"
+msgstr "UI:"
 
 #: lib/layouts/dinbrief.layout:120 lib/layouts/g-brief-en.layout:221
 #: lib/layouts/g-brief2.layout:912 lib/layouts/stdletter.inc:101
@@ -6485,9 +6393,8 @@ msgid "Datum"
 msgstr "Dátum"
 
 #: lib/layouts/dinbrief.layout:189 lib/layouts/g-brief-de.layout:191
-#, fuzzy
 msgid "Datum:"
-msgstr "Dátum"
+msgstr "Dátum:"
 
 #: lib/layouts/egs.layout:85 lib/layouts/kluwer.layout:94
 #: lib/layouts/linuxdoc.layout:154 lib/layouts/llncs.layout:78
@@ -6527,9 +6434,8 @@ msgid "LaTeX Title"
 msgstr "LaTeX fõcím"
 
 #: lib/layouts/egs.layout:303
-#, fuzzy
 msgid "Author:"
-msgstr "Szerzõ"
+msgstr "Szerzõ:"
 
 #: lib/layouts/egs.layout:312
 msgid "Affil"
@@ -6579,9 +6485,8 @@ msgstr "Elfogadott"
 
 #: lib/layouts/egs.layout:443 lib/layouts/agu_stdtitle.inc:217
 #: lib/layouts/aguplus.inc:128
-#, fuzzy
 msgid "Accepted:"
-msgstr "Elfogadott"
+msgstr "Elfogadott:"
 
 #: lib/layouts/egs.layout:452
 msgid "Offsets"
@@ -6595,9 +6500,8 @@ msgstr ""
 #: lib/layouts/llncs.layout:255 lib/layouts/siamltex.layout:156
 #: lib/layouts/svglobal.layout:44 lib/layouts/svjog.layout:49
 #: lib/layouts/amsdefs.inc:139 lib/layouts/svjour.inc:267
-#, fuzzy
 msgid "Abstract."
-msgstr "Kivonat"
+msgstr "Kivonat."
 
 #: lib/layouts/egs.layout:655 lib/layouts/db_lyxmacros.inc:18
 #: lib/layouts/lyxmacros.inc:12
@@ -6612,18 +6516,16 @@ msgstr "Szerzõ cím"
 #: lib/layouts/g-brief2.layout:810 lib/layouts/revtex.layout:128
 #: lib/layouts/revtex4.layout:158 lib/layouts/scrlettr.layout:155
 #: lib/layouts/scrlttr2.layout:62 lib/layouts/amsdefs.inc:161
-#, fuzzy
 msgid "Address:"
-msgstr "Cím"
+msgstr "Cím:"
 
 #: lib/layouts/elsart.layout:150 lib/layouts/revtex4.layout:169
 msgid "Author Email"
 msgstr "Szerzõ e-mail"
 
 #: lib/layouts/elsart.layout:160 lib/layouts/llncs.layout:237
-#, fuzzy
 msgid "Email:"
-msgstr "E-mail"
+msgstr "Email:"
 
 #: lib/layouts/elsart.layout:171 lib/layouts/revtex4.layout:183
 msgid "Author URL"
@@ -6631,9 +6533,8 @@ msgstr "Szerzõ URL"
 
 #: lib/layouts/elsart.layout:182 lib/layouts/revtex4.layout:187
 #: lib/layouts/amsdefs.inc:188
-#, fuzzy
 msgid "URL:"
-msgstr "&URL:"
+msgstr "URL:"
 
 #: lib/layouts/elsart.layout:194 lib/layouts/revtex4.layout:162
 #: lib/layouts/amsdefs.inc:199
@@ -6718,9 +6619,8 @@ msgid "Keyword"
 msgstr "Kulcsszó"
 
 #: lib/layouts/entcs.layout:109 lib/layouts/svjour.inc:288
-#, fuzzy
 msgid "Key words:"
-msgstr "Kulcsszavak"
+msgstr "Kulcsszavak:"
 
 #: lib/layouts/foils.layout:42
 msgid "Foilhead"
@@ -6759,9 +6659,8 @@ msgid "My Logo"
 msgstr "Saját embléma"
 
 #: lib/layouts/foils.layout:173
-#, fuzzy
 msgid "My Logo:"
-msgstr "Saját embléma"
+msgstr "Saját embléma:"
 
 #: lib/layouts/foils.layout:182
 msgid "Restriction"
@@ -6773,44 +6672,38 @@ msgid "Restriction:"
 msgstr "Leírás"
 
 #: lib/layouts/foils.layout:194 lib/layouts/aguplus.inc:90
-#, fuzzy
 msgid "Left Header:"
-msgstr "Bal fejléc"
+msgstr "Bal fejléc:"
 
 #: lib/layouts/foils.layout:202 lib/layouts/aguplus.inc:104
-#, fuzzy
 msgid "Right Header:"
-msgstr "Jobb fejléc"
+msgstr "Jobb fejléc:"
 
 #: lib/layouts/foils.layout:206
 msgid "Right Footer"
 msgstr "Jobb lábjegyzet"
 
 #: lib/layouts/foils.layout:210
-#, fuzzy
 msgid "Right Footer:"
-msgstr "Jobb lábjegyzet"
+msgstr "Jobb lábjegyzet:"
 
 #: lib/layouts/foils.layout:237 lib/layouts/heb-article.layout:33
 #: lib/layouts/llncs.layout:419 lib/layouts/siamltex.layout:206
 #: lib/layouts/svjour.inc:482
-#, fuzzy
 msgid "Theorem #."
-msgstr "Tétel"
+msgstr "Tétel #."
 
 #: lib/layouts/foils.layout:251 lib/layouts/heb-article.layout:48
 #: lib/layouts/llncs.layout:358 lib/layouts/siamltex.layout:220
 #: lib/layouts/svjour.inc:419
-#, fuzzy
 msgid "Lemma #."
-msgstr "Segédtétel"
+msgstr "Segédtétel #."
 
 #: lib/layouts/foils.layout:258 lib/layouts/heb-article.layout:58
 #: lib/layouts/llncs.layout:323 lib/layouts/siamltex.layout:227
 #: lib/layouts/svjour.inc:380
-#, fuzzy
 msgid "Corollary #."
-msgstr "Folyomány"
+msgstr "Folyomány #."
 
 #: lib/layouts/foils.layout:265 lib/layouts/llncs.layout:392
 #: lib/layouts/siamltex.layout:234 lib/layouts/svjour.inc:454
@@ -6820,9 +6713,8 @@ msgstr ""
 #: lib/layouts/foils.layout:272 lib/layouts/heb-article.layout:78
 #: lib/layouts/llncs.layout:337 lib/layouts/siamltex.layout:241
 #: lib/layouts/svjour.inc:394
-#, fuzzy
 msgid "Definition #."
-msgstr "Definíció"
+msgstr "Definíció #."
 
 #: lib/layouts/foils.layout:286 lib/layouts/llncs.layout:378
 #: lib/layouts/siamltex.layout:255 lib/layouts/amsdefs.inc:43
@@ -6860,9 +6752,8 @@ msgid "Brieftext"
 msgstr ""
 
 #: lib/layouts/g-brief-de.layout:25
-#, fuzzy
 msgid "Text:"
-msgstr "Szöveg"
+msgstr "Szöveg:"
 
 #: lib/layouts/g-brief-de.layout:53
 msgid "Unterschrift"
@@ -6873,9 +6764,8 @@ msgid "Strasse"
 msgstr "Utca"
 
 #: lib/layouts/g-brief-de.layout:63
-#, fuzzy
 msgid "Strasse:"
-msgstr "Utca"
+msgstr "Utca:"
 
 #: lib/layouts/g-brief-de.layout:67
 msgid "Zusatz"
@@ -6898,18 +6788,16 @@ msgid "Land"
 msgstr ""
 
 #: lib/layouts/g-brief-de.layout:84
-#, fuzzy
 msgid "Land:"
-msgstr "Fekvõ:"
+msgstr "Ország:"
 
 #: lib/layouts/g-brief-de.layout:88
 msgid "RetourAdresse"
 msgstr ""
 
 #: lib/layouts/g-brief-de.layout:91
-#, fuzzy
 msgid "RetourAdresse:"
-msgstr "Cím"
+msgstr "Feladó címe:"
 
 #: lib/layouts/g-brief-de.layout:95
 msgid "MeinZeichen"
@@ -6940,45 +6828,40 @@ msgid "Telefon"
 msgstr "Telefon"
 
 #: lib/layouts/g-brief-de.layout:119
-#, fuzzy
 msgid "Telefon:"
-msgstr "Telefon"
+msgstr "Telefon:"
 
 #: lib/layouts/g-brief-de.layout:123 lib/layouts/g-brief-en.layout:123
 msgid "Telefax"
 msgstr "Telefax"
 
 #: lib/layouts/g-brief-de.layout:126 lib/layouts/g-brief-en.layout:126
-#, fuzzy
 msgid "Telefax:"
-msgstr "Telefax"
+msgstr "Telefax:"
 
 #: lib/layouts/g-brief-de.layout:130 lib/layouts/g-brief-en.layout:130
 msgid "Telex"
 msgstr "Telex"
 
 #: lib/layouts/g-brief-de.layout:133 lib/layouts/g-brief-en.layout:133
-#, fuzzy
 msgid "Telex:"
-msgstr "Telex"
+msgstr "Telex:"
 
 #: lib/layouts/g-brief-de.layout:137 lib/layouts/g-brief-en.layout:137
 msgid "EMail"
 msgstr "E-mail"
 
 #: lib/layouts/g-brief-de.layout:140 lib/layouts/g-brief-en.layout:140
-#, fuzzy
 msgid "EMail:"
-msgstr "E-mail"
+msgstr "E-mail:"
 
 #: lib/layouts/g-brief-de.layout:144 lib/layouts/g-brief-en.layout:144
 msgid "HTTP"
 msgstr "HTTP"
 
 #: lib/layouts/g-brief-de.layout:147 lib/layouts/g-brief-en.layout:147
-#, fuzzy
 msgid "HTTP:"
-msgstr "HTTP"
+msgstr "HTTP:"
 
 #: lib/layouts/g-brief-de.layout:151 lib/layouts/g-brief-en.layout:151
 #: lib/layouts/scrlttr2.layout:221
@@ -6987,9 +6870,8 @@ msgstr "Bank"
 
 #: lib/layouts/g-brief-de.layout:154 lib/layouts/g-brief-en.layout:154
 #: lib/layouts/scrlttr2.layout:225
-#, fuzzy
 msgid "Bank:"
-msgstr "Bank"
+msgstr "Bank:"
 
 #: lib/layouts/g-brief-de.layout:158
 msgid "BLZ"
@@ -7004,9 +6886,8 @@ msgid "Konto"
 msgstr "Számla"
 
 #: lib/layouts/g-brief-de.layout:168
-#, fuzzy
 msgid "Konto:"
-msgstr "Számla"
+msgstr "Számla:"
 
 #: lib/layouts/g-brief-de.layout:172
 msgid "Postvermerk"
@@ -7043,52 +6924,46 @@ msgid "Letter"
 msgstr "Levél"
 
 #: lib/layouts/g-brief-en.layout:25 lib/layouts/g-brief2.layout:43
-#, fuzzy
 msgid "Letter:"
-msgstr "Levél"
+msgstr "Levél:"
 
 #: lib/layouts/g-brief-en.layout:56 lib/layouts/g-brief2.layout:222
 #: lib/layouts/scrlettr.layout:148 lib/layouts/scrlttr2.layout:177
 #: lib/layouts/stdletter.inc:84
-#, fuzzy
 msgid "Signature:"
-msgstr "Aláírás"
+msgstr "Aláírás:"
 
 #: lib/layouts/g-brief-en.layout:60
 msgid "Street"
 msgstr "Utca"
 
 #: lib/layouts/g-brief-en.layout:63
-#, fuzzy
 msgid "Street:"
-msgstr "Utca"
+msgstr "Utca:"
 
 #: lib/layouts/g-brief-en.layout:67
 msgid "Addition"
 msgstr ""
 
 #: lib/layouts/g-brief-en.layout:70
-#, fuzzy
 msgid "Addition:"
-msgstr "Feltétel"
+msgstr "Továbbá:"
 
 #: lib/layouts/g-brief-en.layout:74
 msgid "Town"
 msgstr "Város"
 
 #: lib/layouts/g-brief-en.layout:77
-#, fuzzy
 msgid "Town:"
-msgstr "Város"
+msgstr "Város:"
 
 #: lib/layouts/g-brief-en.layout:81
 msgid "State"
 msgstr "Állam"
 
 #: lib/layouts/g-brief-en.layout:84
-#, fuzzy
 msgid "State:"
-msgstr "Állam"
+msgstr "Állam:"
 
 #: lib/layouts/g-brief-en.layout:88 lib/layouts/g-brief2.layout:694
 msgid "ReturnAddress"
@@ -7131,18 +7006,16 @@ msgid "Phone"
 msgstr "Telefon"
 
 #: lib/layouts/g-brief-en.layout:119
-#, fuzzy
 msgid "Phone:"
-msgstr "Telefon"
+msgstr "Telefon:"
 
 #: lib/layouts/g-brief-en.layout:158
 msgid "BankCode"
 msgstr "Bankkód"
 
 #: lib/layouts/g-brief-en.layout:161
-#, fuzzy
 msgid "BankCode:"
-msgstr "Bankkód"
+msgstr "Bankkód:"
 
 #: lib/layouts/g-brief-en.layout:165
 msgid "BankAccount"
@@ -7158,32 +7031,28 @@ msgid "PostalComment"
 msgstr ""
 
 #: lib/layouts/g-brief-en.layout:175 lib/layouts/g-brief2.layout:788
-#, fuzzy
 msgid "PostalComment:"
-msgstr "Megjegyzés"
+msgstr "Postai Megjegyzés:"
 
 #: lib/layouts/g-brief-en.layout:191 lib/layouts/g-brief2.layout:831
 #: lib/layouts/revtex.layout:108 lib/layouts/revtex4.layout:125
 #: lib/layouts/scrlettr.layout:176 lib/layouts/scrlttr2.layout:249
 #: lib/layouts/amsdefs.inc:114
-#, fuzzy
 msgid "Date:"
-msgstr "Dátum"
+msgstr "Dátum:"
 
 #: lib/layouts/g-brief-en.layout:195 lib/layouts/g-brief2.layout:841
 msgid "Reference"
 msgstr "Hivatkozások"
 
 #: lib/layouts/g-brief-en.layout:200 lib/layouts/g-brief2.layout:853
-#, fuzzy
 msgid "Reference:"
-msgstr "Hivatkozások"
+msgstr "Hivatkozás:"
 
 #: lib/layouts/g-brief-en.layout:209 lib/layouts/g-brief2.layout:876
 #: lib/layouts/scrlttr2.layout:109 lib/layouts/stdletter.inc:63
-#, fuzzy
 msgid "Opening:"
-msgstr "Figyelem:"
+msgstr "Nyitószó:"
 
 #: lib/layouts/g-brief-en.layout:213 lib/layouts/g-brief2.layout:889
 msgid "Encl."
@@ -7201,79 +7070,70 @@ msgstr ""
 
 #: lib/layouts/g-brief-en.layout:235 lib/layouts/g-brief2.layout:946
 #: lib/layouts/scrlttr2.layout:123 lib/layouts/stdletter.inc:97
-#, fuzzy
 msgid "Closing:"
-msgstr "Zárszó"
+msgstr "Zárszó:"
 
 #: lib/layouts/g-brief2.layout:76
 msgid "NameRowA"
 msgstr "NévsorA"
 
 #: lib/layouts/g-brief2.layout:87
-#, fuzzy
 msgid "NameRowA:"
-msgstr "NévsorA"
+msgstr "NévSorA"
 
 #: lib/layouts/g-brief2.layout:96
 msgid "NameRowB"
 msgstr "NévsorB"
 
 #: lib/layouts/g-brief2.layout:106
-#, fuzzy
 msgid "NameRowB:"
-msgstr "NévsorB"
+msgstr "NévSorB"
 
 #: lib/layouts/g-brief2.layout:115
 msgid "NameRowC"
 msgstr "NévsorC"
 
 #: lib/layouts/g-brief2.layout:125
-#, fuzzy
 msgid "NameRowC:"
-msgstr "NévsorC"
+msgstr "NévSorC"
 
 #: lib/layouts/g-brief2.layout:134
 msgid "NameRowD"
 msgstr "NévsorD"
 
 #: lib/layouts/g-brief2.layout:144
-#, fuzzy
 msgid "NameRowD:"
-msgstr "NévsorD"
+msgstr "NévSorD"
 
 #: lib/layouts/g-brief2.layout:153
 msgid "NameRowE"
 msgstr "NévsorE"
 
 #: lib/layouts/g-brief2.layout:163
-#, fuzzy
 msgid "NameRowE:"
-msgstr "NévsorE"
+msgstr "NévSorE"
 
 #: lib/layouts/g-brief2.layout:172
 msgid "NameRowF"
 msgstr "NévsorF"
 
 #: lib/layouts/g-brief2.layout:182
-#, fuzzy
 msgid "NameRowF:"
-msgstr "NévsorF"
+msgstr "NévSorF"
 
 #: lib/layouts/g-brief2.layout:191
 msgid "NameRowG"
 msgstr "NévsorG"
 
 #: lib/layouts/g-brief2.layout:201
-#, fuzzy
 msgid "NameRowG:"
-msgstr "NévsorG"
+msgstr "NévSorG"
 
 #: lib/layouts/g-brief2.layout:231
 msgid "AddressRowA"
 msgstr "CímsorA"
 
 #: lib/layouts/g-brief2.layout:242
-#, fuzzy
 msgid "AddressRowA:"
 msgstr "CímsorA"
 
@@ -7282,7 +7142,6 @@ msgid "AddressRowB"
 msgstr "CímsorB"
 
 #: lib/layouts/g-brief2.layout:261
-#, fuzzy
 msgid "AddressRowB:"
 msgstr "CímsorB"
 
@@ -7291,7 +7150,6 @@ msgid "AddressRowC"
 msgstr "CímsorC"
 
 #: lib/layouts/g-brief2.layout:280
-#, fuzzy
 msgid "AddressRowC:"
 msgstr "CímsorC"
 
@@ -7300,7 +7158,6 @@ msgid "AddressRowD"
 msgstr "CímsorD"
 
 #: lib/layouts/g-brief2.layout:299
-#, fuzzy
 msgid "AddressRowD:"
 msgstr "CímsorD"
 
@@ -7309,7 +7166,6 @@ msgid "AddressRowE"
 msgstr "CímsorE"
 
 #: lib/layouts/g-brief2.layout:318
-#, fuzzy
 msgid "AddressRowE:"
 msgstr "CímsorE"
 
@@ -7318,7 +7174,6 @@ msgid "AddressRowF"
 msgstr "CímsorF"
 
 #: lib/layouts/g-brief2.layout:337
-#, fuzzy
 msgid "AddressRowF:"
 msgstr "CímsorF"
 
@@ -7327,7 +7182,6 @@ msgid "TelephoneRowA"
 msgstr "TelefonsorA"
 
 #: lib/layouts/g-brief2.layout:357
-#, fuzzy
 msgid "TelephoneRowA:"
 msgstr "TelefonsorA"
 
@@ -8009,7 +7863,6 @@ msgid "ListOfSlides"
 msgstr "Fólialista"
 
 #: lib/layouts/seminar.layout:96
-#, fuzzy
 msgid "List Of Slides"
 msgstr "Fólialista"
 
@@ -8018,7 +7871,6 @@ msgid "SlideContents"
 msgstr "Fólia tartalma"
 
 #: lib/layouts/seminar.layout:106
-#, fuzzy
 msgid "Slidecontents"
 msgstr "Fólia tartalma"
 
@@ -8077,27 +7929,24 @@ msgid "InvisibleText"
 msgstr "Láthatatlan szöveg"
 
 #: lib/layouts/slides.layout:216
-#, fuzzy
 msgid "<Invisible Text Follows>"
-msgstr "Láthatatlan szöveg"
+msgstr "<Láthatatlan szöveg>"
 
 #: lib/layouts/slides.layout:233
 msgid "VisibleText"
 msgstr "Látható szöveg"
 
 #: lib/layouts/slides.layout:241
-#, fuzzy
 msgid "<Visible Text Follows>"
-msgstr "Látható szöveg"
+msgstr "<Látható szöveg>"
 
 #: lib/layouts/spie.layout:54
 msgid "Authorinfo"
 msgstr "Szerzõ infó"
 
 #: lib/layouts/spie.layout:66
-#, fuzzy
 msgid "Authorinfo:"
-msgstr "Szerzõ infó"
+msgstr "Szerzõ infó:"
 
 #: lib/layouts/spie.layout:79
 msgid "ABSTRACT"
@@ -8108,9 +7957,8 @@ msgid "ACKNOWLEDGMENTS"
 msgstr ""
 
 #: lib/layouts/aapaper.inc:56
-#, fuzzy
 msgid "email:"
-msgstr "E-mail"
+msgstr "email:"
 
 #: lib/layouts/aapaper.inc:118
 msgid "Thesaurus not supported in recent A&A:"
@@ -8122,9 +7970,8 @@ msgid "Subsubparagraph"
 msgstr "Albekezdés"
 
 #: lib/layouts/agu_stdtitle.inc:19
-#, fuzzy
 msgid "-- Header --"
-msgstr "Fejléc"
+msgstr "-- Fejléc --"
 
 #: lib/layouts/agu_stdtitle.inc:31
 #, fuzzy
@@ -8314,14 +8161,12 @@ msgid "Figures:"
 msgstr "Ábra"
 
 #: lib/layouts/agu_stdtitle.inc:303
-#, fuzzy
 msgid "Tables"
-msgstr "Táblázat"
+msgstr "Táblázatok"
 
 #: lib/layouts/agu_stdtitle.inc:306
-#, fuzzy
 msgid "Tables:"
-msgstr "Táblázat"
+msgstr "Táblázat:"
 
 #: lib/layouts/agu_stdtitle.inc:311
 #, fuzzy
@@ -8391,9 +8236,8 @@ msgid "Current Address"
 msgstr "Jelenlegi cím"
 
 #: lib/layouts/amsdefs.inc:172
-#, fuzzy
 msgid "Current address:"
-msgstr "Jelenlegi cím"
+msgstr "Jelenlegi cím:"
 
 #: lib/layouts/amsdefs.inc:180
 msgid "E-mail address:"
@@ -8417,9 +8261,8 @@ msgid "Translator"
 msgstr "Fordító"
 
 #: lib/layouts/amsdefs.inc:216
-#, fuzzy
 msgid "Translator:"
-msgstr "Fordító"
+msgstr "Fordító:"
 
 #: lib/layouts/amsdefs.inc:220
 msgid "Subjectclass"
@@ -8758,33 +8601,28 @@ msgid "Table"
 msgstr "Táblázat"
 
 #: lib/layouts/stdfloats.inc:15
-#, fuzzy
 msgid "List of Tables"
-msgstr "Listája"
+msgstr "Táblázatok listája"
 
 #: lib/layouts/stdfloats.inc:22
 msgid "Figure"
 msgstr "Ábra"
 
 #: lib/layouts/stdfloats.inc:27
-#, fuzzy
 msgid "List of Figures"
-msgstr "Listája"
+msgstr "Ábrák listája"
 
 #: lib/layouts/stdfloats.inc:39
-#, fuzzy
 msgid "List of Algorithms"
-msgstr "Algoritmus"
+msgstr "Algoritmusok listája"
 
 #: lib/layouts/stdlayouts.inc:75
-#, fuzzy
 msgid "Senseless!"
-msgstr "Értelmetlen: "
+msgstr "Értelmetlen!"
 
 #: lib/layouts/stdlists.inc:103
-#, fuzzy
 msgid "#*"
-msgstr "*"
+msgstr "#*"
 
 #: lib/layouts/svjour.inc:98
 msgid "Headnote"
@@ -9174,18 +9012,16 @@ msgid "Thesaurus..."
 msgstr "Szinonimák ..."
 
 #: lib/ui/classic.ui:106 lib/ui/stdmenus.ui:426
-#, fuzzy
 msgid "Count Words|W"
-msgstr "Aktuális szó"
+msgstr "Szavak megszámolása|S"
 
 #: lib/ui/classic.ui:107 lib/ui/stdmenus.ui:427
 msgid "Check TeX|h"
 msgstr "TeX ellenõrzés|n"
 
 #: lib/ui/classic.ui:108
-#, fuzzy
 msgid "Change Tracking|g"
-msgstr "Nyelv váltása"
+msgstr "Változások követése|k"
 
 #: lib/ui/classic.ui:110 lib/ui/stdmenus.ui:434
 msgid "Preferences...|P"
@@ -9196,14 +9032,12 @@ msgid "Reconfigure|R"
 msgstr "Újrakonfigurálás|r"
 
 #: lib/ui/classic.ui:115 lib/ui/stdmenus.ui:121
-#, fuzzy
 msgid "Selection as Lines|L"
-msgstr "mint sorok|s"
+msgstr "Kijelölés sorokként|s"
 
 #: lib/ui/classic.ui:116 lib/ui/stdmenus.ui:122
-#, fuzzy
 msgid "Selection as Paragraphs|P"
-msgstr "mint bekezdések|b"
+msgstr "Kijelölés bekezdésekként|b"
 
 #: lib/ui/classic.ui:120 lib/ui/stdmenus.ui:131
 msgid "Multicolumn|M"
@@ -9394,7 +9228,6 @@ msgid "AlignAt Environment"
 msgstr "AlignAt környezet"
 
 #: lib/ui/classic.ui:204
-#, fuzzy
 msgid "Flalign Environment|F"
 msgstr "Flalign környezet|F"
 
@@ -9419,7 +9252,6 @@ msgid "Citation...|C"
 msgstr "Idézet ...|I"
 
 #: lib/ui/classic.ui:218 lib/ui/stdmenus.ui:250
-#, fuzzy
 msgid "Cross-reference...|r"
 msgstr "Kereszthivatkozás ...|r"
 
@@ -9440,9 +9272,8 @@ msgid "Short Title"
 msgstr "Rövid cím"
 
 #: lib/ui/classic.ui:223
-#, fuzzy
 msgid "Index Entry|I"
-msgstr "Tárgymutató-bejegyzés ...|y"
+msgstr "Tárgymutató-bejegyzés|y"
 
 #: lib/ui/classic.ui:224 lib/ui/stdmenus.ui:257
 msgid "URL...|U"
@@ -9457,9 +9288,8 @@ msgid "Lists & TOC|O"
 msgstr "Listák és tartalomjegyzék|o"
 
 #: lib/ui/classic.ui:228
-#, fuzzy
 msgid "TeX Code|T"
-msgstr "TeX|X"
+msgstr "TeX kód|X"
 
 #: lib/ui/classic.ui:229
 msgid "Minipage|p"
@@ -9511,7 +9341,6 @@ msgid "Ligature Break|k"
 msgstr "Ligatúratörés|L"
 
 #: lib/ui/classic.ui:245 lib/ui/stdmenus.ui:276
-#, fuzzy
 msgid "Protected Space|r"
 msgstr "Védett szóköz|s"
 
@@ -9530,7 +9359,6 @@ msgid "Vertical Space..."
 msgstr "Függõleges kitöltés|#i"
 
 #: lib/ui/classic.ui:249 lib/ui/stdmenus.ui:285
-#, fuzzy
 msgid "Line Break|L"
 msgstr "Sortörés|r"
 
@@ -9557,14 +9385,12 @@ msgid "Menu Separator|M"
 msgstr "Menü elválasztó|M"
 
 #: lib/ui/classic.ui:255 lib/ui/stdmenus.ui:280
-#, fuzzy
 msgid "Horizontal Line"
-msgstr "&Vízszintes igazítás:"
+msgstr "Vízszintes vonal"
 
 #: lib/ui/classic.ui:256 lib/ui/stdmenus.ui:286 src/insets/insetpagebreak.C:51
-#, fuzzy
 msgid "Page Break"
-msgstr "Ol&daltörés"
+msgstr "Oldaltörés"
 
 #: lib/ui/classic.ui:261 lib/ui/stdmenus.ui:291
 msgid "Display Formula|D"
@@ -9611,7 +9437,6 @@ msgid "Split Environment|S"
 msgstr "Igazítás környezet|a"
 
 #: lib/ui/classic.ui:275 lib/ui/stdmenus.ui:306
-#, fuzzy
 msgid "Font Change|o"
 msgstr "Betûkészlet váltása|B"
 
@@ -9620,82 +9445,66 @@ msgid "Math Panel|l"
 msgstr "Képletszerkesztõ|l"
 
 #: lib/ui/classic.ui:280 lib/ui/stdmenus.ui:311
-#, fuzzy
 msgid "Math Normal Font"
 msgstr "Képlet alap betûkészlet"
 
 #: lib/ui/classic.ui:282 lib/ui/stdmenus.ui:313
-#, fuzzy
 msgid "Math Calligraphic Family"
 msgstr "Képlet kalligrafikus család"
 
 #: lib/ui/classic.ui:283 lib/ui/stdmenus.ui:314
-#, fuzzy
 msgid "Math Fraktur Family"
 msgstr "Képlet fraktúr család"
 
 #: lib/ui/classic.ui:284 lib/ui/stdmenus.ui:315
-#, fuzzy
 msgid "Math Roman Family"
 msgstr "Képlet Roman család"
 
 #: lib/ui/classic.ui:285 lib/ui/stdmenus.ui:316
-#, fuzzy
 msgid "Math Sans Serif Family"
 msgstr "Képlet Sans Serif család"
 
 #: lib/ui/classic.ui:287 lib/ui/stdmenus.ui:318
-#, fuzzy
 msgid "Math Bold Series"
 msgstr "Képlet félkövér típus"
 
 #: lib/ui/classic.ui:289 lib/ui/stdmenus.ui:320
-#, fuzzy
 msgid "Text Normal Font"
 msgstr "Szöveg alap betûkészlet"
 
 #: lib/ui/classic.ui:291 lib/ui/stdmenus.ui:322
-#, fuzzy
 msgid "Text Roman Family"
 msgstr "Szöveg Roman család"
 
 #: lib/ui/classic.ui:292 lib/ui/stdmenus.ui:323
-#, fuzzy
 msgid "Text Sans Serif Family"
 msgstr "Szöveg Sans Serif család"
 
 #: lib/ui/classic.ui:293 lib/ui/stdmenus.ui:324
-#, fuzzy
 msgid "Text Typewriter Family"
 msgstr "Szöveg írógép betûcsalád"
 
 #: lib/ui/classic.ui:295 lib/ui/stdmenus.ui:326
-#, fuzzy
 msgid "Text Bold Series"
 msgstr "Szöveg félkövér típus"
 
 #: lib/ui/classic.ui:296 lib/ui/stdmenus.ui:327
-#, fuzzy
 msgid "Text Medium Series"
 msgstr "Szöveg normál típus"
 
 #: lib/ui/classic.ui:298 lib/ui/stdmenus.ui:329
-#, fuzzy
 msgid "Text Italic Shape"
 msgstr "Szöveg dõlt alak"
 
 #: lib/ui/classic.ui:299 lib/ui/stdmenus.ui:330
-#, fuzzy
 msgid "Text Small Caps Shape"
 msgstr "Szöveg kiskapitális alak"
 
 #: lib/ui/classic.ui:300 lib/ui/stdmenus.ui:331
-#, fuzzy
 msgid "Text Slanted Shape"
 msgstr "Szöveg döntött alak"
 
 #: lib/ui/classic.ui:301 lib/ui/stdmenus.ui:332
-#, fuzzy
 msgid "Text Upright Shape"
 msgstr "Szöveg upright alak"
 
@@ -9720,37 +9529,32 @@ msgid "LyX Document...|X"
 msgstr "LyX dokumentum ...|X"
 
 #: lib/ui/classic.ui:318 lib/ui/stdmenus.ui:350
-#, fuzzy
 msgid "Plain Text as Lines...|L"
-msgstr "ASCII mint sorok ...|s"
+msgstr "Sima szöveg sorokként ...|s"
 
 #: lib/ui/classic.ui:319 lib/ui/stdmenus.ui:351
-#, fuzzy
 msgid "Plain Text as Paragraphs...|P"
-msgstr "ASCII mint bekezdések ...|b"
+msgstr "Sima szöveg bekezdésekként ...|b"
 
 #: lib/ui/classic.ui:323 lib/ui/stdmenus.ui:387
-#, fuzzy
 msgid "Track Changes|T"
-msgstr "Változások bejegyzése ...|V"
+msgstr "Változások követése|V"
 
 #: lib/ui/classic.ui:324 lib/ui/stdmenus.ui:388
-#, fuzzy
 msgid "Merge Changes...|M"
-msgstr "Változások bejegyzése ...|V"
+msgstr "Változások elfogadása ...|V"
 
 #: lib/ui/classic.ui:325 lib/ui/stdmenus.ui:389
 msgid "Accept All Changes|A"
-msgstr ""
+msgstr "Minden változás elfogadása|e"
 
 #: lib/ui/classic.ui:326 lib/ui/stdmenus.ui:390
 msgid "Reject All Changes|R"
-msgstr ""
+msgstr "Minden változás elvetése|v"
 
 #: lib/ui/classic.ui:327 lib/ui/stdmenus.ui:391
-#, fuzzy
 msgid "Show Changes in Output|S"
-msgstr "Az eredményben a kép szélessége"
+msgstr "Változások mutatása a kimenetben|m"
 
 #: lib/ui/classic.ui:334
 msgid "Character...|C"
@@ -9789,9 +9593,8 @@ msgid "Increase Environment Depth|i"
 msgstr "Környezeti mélység növelése|n"
 
 #: lib/ui/classic.ui:346
-#, fuzzy
 msgid "LaTeX Preamble...|r"
-msgstr "LaTeX preambulum"
+msgstr "LaTeX preambulum ...|r"
 
 #: lib/ui/classic.ui:347
 msgid "Start Appendix Here|S"
@@ -9806,23 +9609,20 @@ msgid "Update|U"
 msgstr "Frissítés|i"
 
 #: lib/ui/classic.ui:359 lib/ui/stdmenus.ui:378
-#, fuzzy
 msgid "LaTeX Log|L"
-msgstr "LaTeX napló"
+msgstr "LaTeX napló|l"
 
 #: lib/ui/classic.ui:361
 msgid "TeX Information|X"
 msgstr "TeX információ|X"
 
 #: lib/ui/classic.ui:374 lib/ui/stdmenus.ui:399
-#, fuzzy
 msgid "Next Note|N"
-msgstr "Megjegyzés|z"
+msgstr "Következõ megjegyzés|z"
 
 #: lib/ui/classic.ui:375 lib/ui/stdmenus.ui:400
-#, fuzzy
 msgid "Go to Label|L"
-msgstr "Címkére ugrás"
+msgstr "Címkére ugrás|C"
 
 #: lib/ui/classic.ui:376 lib/ui/stdmenus.ui:398
 msgid "Bookmarks|B"
@@ -9841,39 +9641,32 @@ msgid "Save Bookmark 3"
 msgstr "3. könyvjelzõ mentése"
 
 #: lib/ui/classic.ui:383 lib/ui/stdmenus.ui:415
-#, fuzzy
 msgid "Save Bookmark 4"
-msgstr "2. könyvjelzõ mentése"
+msgstr "4. könyvjelzõ mentése"
 
 #: lib/ui/classic.ui:384 lib/ui/stdmenus.ui:416
-#, fuzzy
 msgid "Save Bookmark 5"
-msgstr "2. könyvjelzõ mentése"
+msgstr "5. könyvjelzõ mentése"
 
 #: lib/ui/classic.ui:386 lib/ui/stdmenus.ui:406
-#, fuzzy
 msgid "Go to Bookmark 1|1"
 msgstr "Ugrás 1. könyvjelzõre|1"
 
 #: lib/ui/classic.ui:387 lib/ui/stdmenus.ui:407
-#, fuzzy
 msgid "Go to Bookmark 2|2"
 msgstr "Ugrás 2. könyvjelzõre|2"
 
 #: lib/ui/classic.ui:388 lib/ui/stdmenus.ui:408
-#, fuzzy
 msgid "Go to Bookmark 3|3"
 msgstr "Ugrás 3. könyvjelzõre|3"
 
 #: lib/ui/classic.ui:389 lib/ui/stdmenus.ui:409
-#, fuzzy
 msgid "Go to Bookmark 4|4"
-msgstr "Ugrás 3. könyvjelzõre|3"
+msgstr "Ugrás 4. könyvjelzõre|4"
 
 #: lib/ui/classic.ui:390 lib/ui/stdmenus.ui:410
-#, fuzzy
 msgid "Go to Bookmark 5|5"
-msgstr "Ugrás 3. könyvjelzõre|3"
+msgstr "Ugrás 5. könyvjelzõre|5"
 
 #: lib/ui/classic.ui:405
 msgid "Tooltips|o"
@@ -9921,41 +9714,34 @@ msgid "About LyX"
 msgstr "LyX névjegy"
 
 #: lib/ui/classic.ui:426 lib/ui/stdmenus.ui:459
-#, fuzzy
 msgid "Preferences..."
-msgstr "Beállítások ...|B"
+msgstr "Beállítások ..."
 
 #: lib/ui/classic.ui:427 lib/ui/stdmenus.ui:460
-#, fuzzy
 msgid "Quit LyX"
-msgstr "LyX névjegy"
+msgstr "Kilépés LyX-bõl"
 
 #: lib/ui/classic.ui:447 lib/ui/default.ui:34
 msgid "Toolbars"
-msgstr ""
+msgstr "Eszköztárak"
 
 #: lib/ui/stdmenus.ui:24
-#, fuzzy
 msgid "Document|D"
 msgstr "Dokumentumok|D"
 
 #: lib/ui/stdmenus.ui:25
-#, fuzzy
 msgid "Tools|T"
-msgstr "Ötletek|t"
+msgstr "Eszközök|k"
 
 #: lib/ui/stdmenus.ui:35
-#, fuzzy
 msgid "New from Template...|m"
 msgstr "Új, sablon alapján ...|l"
 
 #: lib/ui/stdmenus.ui:38
-#, fuzzy
 msgid "Open recent|t"
-msgstr "Dokumentum megnyitása "
+msgstr "Legutóbbi dokumentum megnyitása|t"
 
 #: lib/ui/stdmenus.ui:82
-#, fuzzy
 msgid "Redo|R"
 msgstr "Mégis alkalmaz|M"
 
@@ -9977,26 +9763,23 @@ msgstr "Beillesztés"
 
 #: lib/ui/stdmenus.ui:87
 msgid "Paste Recent"
-msgstr ""
+msgstr "Utolsó beillesztések"
 
 #: lib/ui/stdmenus.ui:88
-#, fuzzy
 msgid "Paste External Selection"
-msgstr "Beillesztés vágólapról|v"
+msgstr "Külsõ kijelõlés beillesztése"
 
 #: lib/ui/stdmenus.ui:92
 msgid "Text Style...|S"
-msgstr ""
+msgstr "Szöveg stílus ...|S"
 
 #: lib/ui/stdmenus.ui:93
-#, fuzzy
 msgid "Paragraph Settings...|P"
-msgstr "Bekezdés ...|e"
+msgstr "Bekezdés beállításai...|e"
 
 #: lib/ui/stdmenus.ui:96
-#, fuzzy
 msgid "Table|T"
-msgstr "Táblázat"
+msgstr "Táblázat|T"
 
 #: lib/ui/stdmenus.ui:98
 msgid "Rows & Cols|C"
@@ -10013,9 +9796,8 @@ msgid "Decrease List Depth|D"
 msgstr "Környezeti mélység csökkentése|c"
 
 #: lib/ui/stdmenus.ui:107
-#, fuzzy
 msgid "TeX Code Settings...|C"
-msgstr "LaTeX beállítások"
+msgstr "TeX kód beállítások ...|k"
 
 #: lib/ui/stdmenus.ui:109
 #, fuzzy
@@ -10042,9 +9824,8 @@ msgid "Box Settings...|x"
 msgstr "Úsztatási beállítások"
 
 #: lib/ui/stdmenus.ui:117
-#, fuzzy
 msgid "Table Settings...|a"
-msgstr "Táblázat beállításai"
+msgstr "Táblázat beállításai ...|a"
 
 #: lib/ui/stdmenus.ui:133
 #, fuzzy
@@ -10127,24 +9908,20 @@ msgid "Delete Line to Right"
 msgstr "Válassza ki a beszúrandó fájlt"
 
 #: lib/ui/stdmenus.ui:218
-#, fuzzy
 msgid "Display Tooltips|i"
 msgstr "Ötletek|t"
 
 #: lib/ui/stdmenus.ui:239
-#, fuzzy
 msgid "Special Formatting|o"
-msgstr "Különleges oszlop"
+msgstr "Különleges formázások|o"
 
 #: lib/ui/stdmenus.ui:240
-#, fuzzy
 msgid "List / TOC|i"
 msgstr "Listák és tartalomjegyzék|o"
 
 #: lib/ui/stdmenus.ui:241
-#, fuzzy
 msgid "Float|a"
-msgstr "Úsztatások|a"
+msgstr "Úsztatás|a"
 
 #: lib/ui/stdmenus.ui:244
 msgid "Branch|B"
@@ -10156,28 +9933,25 @@ msgid "Character Style|y"
 msgstr "Betûkészlet"
 
 #: lib/ui/stdmenus.ui:246
-#, fuzzy
 msgid "File|e"
 msgstr "Fájl|F"
 
 #: lib/ui/stdmenus.ui:247 src/insets/insetbox.C:144 src/insets/insetbox.C:146
 #: src/insets/insetbox.C:148
 msgid "Box"
-msgstr ""
+msgstr "Doboz"
 
 #: lib/ui/stdmenus.ui:252
-#, fuzzy
 msgid "Index Entry|d"
-msgstr "Szóbejegyzés"
+msgstr "Szóbejegyzés|s"
 
 #: lib/ui/stdmenus.ui:255
-#, fuzzy
 msgid "Table...|T"
 msgstr "Táblázat ...|T"
 
 #: lib/ui/stdmenus.ui:261
 msgid "TeX Code|X"
-msgstr ""
+msgstr "TeX kód|X"
 
 #: lib/ui/stdmenus.ui:267
 msgid "Ordinary Quote|Q"
@@ -10204,75 +9978,62 @@ msgid "Gathered Environment"
 msgstr "Gather környezet"
 
 #: lib/ui/stdmenus.ui:307
-#, fuzzy
 msgid "Math Panel|P"
 msgstr "Képletszerkesztõ|l"
 
 #: lib/ui/stdmenus.ui:338
-#, fuzzy
 msgid "Text Wrap Float|W"
-msgstr "Úsztatás beszúrása"
+msgstr "Körbefuttatás usztatása|u"
 
 #: lib/ui/stdmenus.ui:353
-#, fuzzy
 msgid "External Material...|M"
 msgstr "Külsõ anyag ...|K"
 
 #: lib/ui/stdmenus.ui:354
-#, fuzzy
 msgid "Child Document...|d"
-msgstr "Dokumentum ...|D"
+msgstr "Aldokumentum ...|D"
 
 #: lib/ui/stdmenus.ui:358
-#, fuzzy
 msgid "LyX Note|N"
-msgstr "Megjegyzés|z"
+msgstr "LyX megjegyzés|z"
 
 #: lib/ui/stdmenus.ui:359
-#, fuzzy
 msgid "Comment|C"
-msgstr "Megjegyzés"
+msgstr "Megjegyzés|M"
 
 #: lib/ui/stdmenus.ui:360
 msgid "Greyed Out|G"
 msgstr ""
 
 #: lib/ui/stdmenus.ui:376
-#, fuzzy
 msgid "Change Tracking|C"
-msgstr "Nyelv váltása"
+msgstr "Változások követése|l"
 
 #: lib/ui/stdmenus.ui:379
 msgid "Table of Contents|T"
 msgstr "Tartalomjegyzék|T"
 
 #: lib/ui/stdmenus.ui:380
-#, fuzzy
 msgid "LaTeX Preamble...|P"
-msgstr "LaTeX preambulum"
+msgstr "LaTeX preambulum ...|P"
 
 #: lib/ui/stdmenus.ui:381
-#, fuzzy
 msgid "Start Appendix Here|A"
-msgstr "Innentõl függelék|f"
+msgstr "Kezd itt a függeléket|f"
 
 #: lib/ui/stdmenus.ui:383
-#, fuzzy
 msgid "Settings...|S"
-msgstr "Beállítások"
+msgstr "Beállítások ...|B"
 
 #: lib/ui/stdmenus.ui:425
-#, fuzzy
 msgid "Thesaurus...|T"
-msgstr "Szinonimák ..."
+msgstr "Szinonimák ...|S"
 
 #: lib/ui/stdmenus.ui:428
-#, fuzzy
 msgid "TeX Information|I"
 msgstr "TeX információ|X"
 
 #: lib/ui/stdtoolbars.ui:42
-#, fuzzy
 msgid "standard"
 msgstr "Normál szöveg"
 
@@ -10281,19 +10042,16 @@ msgid "New document"
 msgstr "Új dokumentum"
 
 #: lib/ui/stdtoolbars.ui:45
-#, fuzzy
 msgid "Open document"
 msgstr "Dokumentum megnyitása "
 
 #: lib/ui/stdtoolbars.ui:46
-#, fuzzy
 msgid "Save document"
-msgstr "Mentsem a dokumentumot?"
+msgstr "Dokumentum mentése"
 
 #: lib/ui/stdtoolbars.ui:47
-#, fuzzy
 msgid "Print document"
-msgstr "Dokumentum importálása"
+msgstr "Dokumentum nyomtatása"
 
 #: lib/ui/stdtoolbars.ui:49 src/BufferView_pimpl.C:1108
 msgid "Undo"
@@ -10304,17 +10062,14 @@ msgid "Redo"
 msgstr "Mégis"
 
 #: lib/ui/stdtoolbars.ui:54
-#, fuzzy
 msgid "Find and replace"
 msgstr "Keres és cserél"
 
 #: lib/ui/stdtoolbars.ui:56
-#, fuzzy
 msgid "Toggle emphasis"
 msgstr "Kiemelés váltása"
 
 #: lib/ui/stdtoolbars.ui:57
-#, fuzzy
 msgid "Toggle noun"
 msgstr "Kiskapitális stílus váltása"
 
@@ -10419,9 +10174,8 @@ msgid "Include file"
 msgstr "Fájl csatolása"
 
 #: lib/ui/stdtoolbars.ui:87
-#, fuzzy
 msgid "Text style"
-msgstr "LaTeX stílusok"
+msgstr "Szöveg stílus"
 
 #: lib/ui/stdtoolbars.ui:88
 #, fuzzy
@@ -10573,24 +10327,20 @@ msgid "Insert product"
 msgstr "Gyökjel beszúrása"
 
 #: lib/ui/stdtoolbars.ui:132
-#, fuzzy
 msgid "Insert ( )"
-msgstr "&Beszúrás"
+msgstr "Beszúrás()"
 
 #: lib/ui/stdtoolbars.ui:133
-#, fuzzy
 msgid "Insert [ ]"
-msgstr "&Beszúrás"
+msgstr "Beszúrás[]"
 
 #: lib/ui/stdtoolbars.ui:134
-#, fuzzy
 msgid "Insert { }"
-msgstr "&Beszúrás"
+msgstr "Beszúrás{}"
 
 #: lib/ui/stdtoolbars.ui:137
-#, fuzzy
 msgid "Insert cases"
-msgstr "Táblázat beszúrása"
+msgstr "Esetek beszúrása"
 
 #: lib/ui/stdtoolbars.ui:144
 msgid "minibuffer"
@@ -10631,16 +10381,17 @@ msgid ""
 "\n"
 "Do you want to create a new document?"
 msgstr ""
+"A %1$s dokumentum még nem létezik.\n"
+"\n"
+"Létre akarja hozni az új dokumentumot?"
 
 #: src/BufferView_pimpl.C:285
-#, fuzzy
 msgid "Create new document?"
-msgstr "Készítsünk egy új dokumentumot ezen a néven?"
+msgstr "Létrehozzam az új dokumentumot?"
 
 #: src/BufferView_pimpl.C:286
-#, fuzzy
 msgid "&Create"
-msgstr "&Leválogatás"
+msgstr "&Létrehozás"
 
 #: src/BufferView_pimpl.C:295
 #, fuzzy
@@ -10680,9 +10431,8 @@ msgstr "Példák|#P#p"
 
 #: src/BufferView_pimpl.C:858 src/lyx_cb.C:141 src/lyxfunc.C:1712
 #: src/lyxfunc.C:1749
-#, fuzzy
 msgid "LyX Documents (*.lyx)"
-msgstr "*.lyx| LyX dokumentumok (*.lyx)"
+msgstr "LyX dokumentumok (*.lyx)"
 
 #: src/BufferView_pimpl.C:868 src/lyxfunc.C:1759 src/lyxfunc.C:1837
 #: src/lyxfunc.C:1851 src/lyxfunc.C:1867
@@ -10754,9 +10504,8 @@ msgid "One word in document."
 msgstr "Dokumentum beszúrása "
 
 #: src/BufferView_pimpl.C:1323
-#, fuzzy
 msgid "Count words"
-msgstr "Aktuális szó"
+msgstr "Szavak megszámolása"
 
 #: src/Chktex.C:67
 #, c-format
@@ -11053,14 +10802,12 @@ msgid "No Documents Open!"
 msgstr "Nincs nyitott dokumentum!"
 
 #: src/MenuBackend.C:516
-#, fuzzy
 msgid "Plain Text as Lines"
-msgstr "ASCII szöveget soroknak"
+msgstr "Sima szöveg sorokként"
 
 #: src/MenuBackend.C:518
-#, fuzzy
 msgid "Plain Text as Paragraphs"
-msgstr "ASCII szöveget bekezdéseknek"
+msgstr "Sima szöveg bekezdésekként"
 
 #: src/MenuBackend.C:713
 msgid "No Table of contents"
@@ -11297,15 +11044,17 @@ msgid ""
 "\n"
 "Do you want to save the document or discard the changes?"
 msgstr ""
+"A %1$s dokumentum megváltozott.\n"
+"\n"
+"Akarja menteni a dokumentumot vagy a modosítások elvetése?"
 
 #: src/bufferlist.C:83 src/bufferlist.C:182 src/lyxfunc.C:655
-#, fuzzy
 msgid "Save changed document?"
-msgstr "Mentsem a dokumentumot?"
+msgstr "Mentsem a megváltozott dokumentumot?"
 
 #: src/bufferlist.C:84 src/bufferlist.C:183
 msgid "&Discard"
-msgstr ""
+msgstr "&Elvetés"
 
 #: src/bufferlist.C:304
 #, c-format
@@ -11516,9 +11265,8 @@ msgid "Graphics conversion and loading"
 msgstr "Képkonverzió és betöltés"
 
 #: src/debug.C:64
-#, fuzzy
 msgid "Change tracking"
-msgstr "Nyelv váltása"
+msgstr "Változások követése"
 
 #: src/debug.C:65
 #, fuzzy
@@ -12129,17 +11877,17 @@ msgstr ""
 
 #: src/frontends/gtk/GCharacter.C:40 src/frontends/qt2/QCharacter.C:35
 #: src/frontends/xforms/FormCharacter.C:41
-#, fuzzy
 msgid "Text Style"
-msgstr "Dokumentumstílus"
+msgstr "Szöveg stílus"
 
 #: src/frontends/gtk/GCitation.C:122
 msgid "CiteKeys"
 msgstr ""
 
 #: src/frontends/gtk/GCitation.C:128
+#, fuzzy
 msgid "BibKeys"
-msgstr ""
+msgstr "BibTeX stílusok"
 
 #: src/frontends/gtk/GDocument.C:58 src/frontends/qt2/QDocument.C:68
 #: src/frontends/xforms/FormDocument.C:93
@@ -12153,17 +11901,14 @@ msgid "Unavailable: %1$s"
 msgstr "Elérhetõ"
 
 #: src/frontends/gtk/GDocument.C:147
-#, fuzzy
 msgid "Small Skip"
 msgstr "Kis kihagyás"
 
 #: src/frontends/gtk/GDocument.C:148
-#, fuzzy
 msgid "Medium Skip"
 msgstr "Közepes kihagyás"
 
 #: src/frontends/gtk/GDocument.C:149
-#, fuzzy
 msgid "Big Skip"
 msgstr "Nagy kihagyás"
 
@@ -12239,19 +11984,16 @@ msgid "TOC contains all headings"
 msgstr ""
 
 #: src/frontends/gtk/GERT.C:33
-#, fuzzy
 msgid "TeX Settings"
-msgstr "Táblázat beállításai"
+msgstr "TeX beállítások"
 
 #: src/frontends/gtk/GErrorList.C:32
-#, fuzzy
 msgid "Errors"
-msgstr "Hiba"
+msgstr "Hibák"
 
 #: src/frontends/gtk/GErrorList.C:82
-#, fuzzy
 msgid "*** No Errors ***"
-msgstr "*** Nincsenek listák ***"
+msgstr "*** Nincsenek hibák ***"
 
 #: src/frontends/gtk/GFloat.C:41 src/frontends/qt2/QFloat.C:31
 #: src/frontends/xforms/FormFloat.C:51
@@ -12286,7 +12028,6 @@ msgstr "Képlet határolók"
 
 #: src/frontends/gtk/GMathPanel.C:107 src/frontends/qt2/QMath.C:27
 #: src/frontends/xforms/FormMathsPanel.C:41
-#, fuzzy
 msgid "Math Panel"
 msgstr "Képletszerkesztõ"
 
@@ -12362,9 +12103,8 @@ msgstr "Táblázat beállításai"
 
 #: src/frontends/gtk/GTexinfo.C:37 src/frontends/qt2/QTexinfo.C:34
 #: src/frontends/xforms/FormTexinfo.C:35
-#, fuzzy
 msgid "TeX Information"
-msgstr "TeX információ|X"
+msgstr "TeX információ"
 
 #: src/frontends/gtk/GThesaurus.C:66
 msgid "Synonym"
@@ -12434,9 +12174,8 @@ msgid "Dings &4"
 msgstr "4. csoport|#p"
 
 #: src/frontends/qt2/BulletsModule.C:71
-#, fuzzy
 msgid "&Custom..."
-msgstr "Egyéb ..."
+msgstr "&Egyéb ..."
 
 #: src/frontends/qt2/BulletsModule.C:340
 #: src/frontends/qt2/QDocumentDialog.C:85
@@ -12550,9 +12289,8 @@ msgstr "Másfél"
 
 #: src/frontends/qt2/QDocumentDialog.C:76
 #: src/frontends/qt2/QDocumentDialog.C:88
-#, fuzzy
 msgid "Document Class"
-msgstr "&Dokumentumosztály:"
+msgstr "Dokumentumosztály"
 
 #: src/frontends/qt2/QDocumentDialog.C:77
 #, fuzzy
@@ -12597,16 +12335,14 @@ msgstr "LaTeX preambulum"
 
 #: src/frontends/qt2/QDocumentDialog.C:385
 #: src/frontends/qt2/QDocumentDialog.C:421
-#, fuzzy
 msgid "No"
-msgstr "&Nem"
+msgstr "Nem"
 
 #: src/frontends/qt2/QDocumentDialog.C:386
 #: src/frontends/qt2/QDocumentDialog.C:421
 #: src/frontends/qt2/QDocumentDialog.C:488
-#, fuzzy
 msgid "Yes"
-msgstr "&Igen"
+msgstr "Igen"
 
 #: src/frontends/qt2/QERT.C:30 src/frontends/xforms/FormERT.C:27
 #, fuzzy
@@ -12622,7 +12358,6 @@ msgid "Scale%"
 msgstr "%Méretarány"
 
 #: src/frontends/qt2/QMath.C:55
-#, fuzzy
 msgid "Math Delimiter"
 msgstr "Képlet határolók"
 
@@ -12673,7 +12408,6 @@ msgid "Other root\t\\root"
 msgstr "Egyéb gyök\t\\root"
 
 #: src/frontends/qt2/QMathDialog.C:128
-#, fuzzy
 msgid "LyX: Math Styles"
 msgstr "LyX: Képlet stílus beállítása"
 
@@ -12739,7 +12473,6 @@ msgid "Normal text mode\t\\textrm"
 msgstr "Normál szöveg mód\t\\textrm"
 
 #: src/frontends/qt2/QMathMatrixDialog.C:46
-#, fuzzy
 msgid "LyX: Insert Matrix"
 msgstr "LyX: Mátrix beszúrása"
 
@@ -12798,9 +12531,8 @@ msgid "Outputs"
 msgstr "Kimenet"
 
 #: src/frontends/qt2/QPrefsDialog.C:109
-#, fuzzy
 msgid "Plain text"
-msgstr "Következõ ..."
+msgstr "Sima szöveg"
 
 #: src/frontends/qt2/QPrefsDialog.C:110
 msgid "Date format"
@@ -13105,7 +12837,6 @@ msgid ""
 msgstr ""
 
 #: src/frontends/xforms/FormBox.C:269 src/frontends/xforms/FormBox.C:277
-#, fuzzy
 msgid "Invalid length!"
 msgstr "Érvénytelen hosszúság!"
 
@@ -13548,27 +13279,22 @@ msgid "Underline spaces in generated output."
 msgstr "Aláhúzza a szóközöket a kimenetben"
 
 #: src/frontends/xforms/FormInclude.C:84
-#, fuzzy
 msgid "Show LaTeX preview."
 msgstr "Mutasd meg a LaTeX elõnézetet"
 
 #: src/frontends/xforms/FormInclude.C:86
-#, fuzzy
 msgid "Load the file."
 msgstr "Töltsd be a fájlt"
 
 #: src/frontends/xforms/FormMathsMatrix.C:72
-#, fuzzy
 msgid "Top | Middle | Bottom"
-msgstr "Fent|Középen|Lent"
+msgstr "Fent | Középen | Lent"
 
 #: src/frontends/xforms/FormMathsSpace.C:31
-#, fuzzy
 msgid "Math Spacing"
 msgstr "Képlet közök"
 
 #: src/frontends/xforms/FormMathsStyle.C:48
-#, fuzzy
 msgid "Math Styles & Fonts"
 msgstr "Képlet stílusok és betûk"
 
@@ -14944,9 +14670,8 @@ msgid "Missing filename for --import"
 msgstr "Hiányzó fájlnév --import-hoz"
 
 #: src/lyxfind.C:142
-#, fuzzy
 msgid "Search error"
-msgstr "Keresés"
+msgstr "Keresési hiba"
 
 #: src/lyxfind.C:142
 #, fuzzy
@@ -15047,6 +14772,9 @@ msgid ""
 "\n"
 "Do you want to save the document?"
 msgstr ""
+"A %1$s dokumentum megváltozott.\n"
+"\n"
+"Akarja menteni a dokumentumot vagy a modosítások elvetése?"
 
 #: src/lyxfunc.C:668
 #, c-format
@@ -15661,14 +15389,12 @@ msgid ""
 msgstr "Az egérgörgõvel vagy ötödik gombbal görgetett sorok száma."
 
 #: src/lyxvc.C:93
-#, fuzzy
 msgid "Document not saved"
-msgstr "A dokumentumot nem lehet menteni!"
+msgstr "A dokumentum nincs mentve"
 
 #: src/lyxvc.C:94
-#, fuzzy
 msgid "You must save the document before it can be registered."
-msgstr "mielõtt regisztrálja."
+msgstr "A dokumentumot regisztrálás elõtt menteni kell."
 
 #: src/lyxvc.C:123
 msgid "LyX VC: Initial description"

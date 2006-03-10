@@ -18,8 +18,8 @@
 # modifiy this when you change version
 # Note that an empty lyx_branch variable (ie cvs HEAD)
 # will "do the right thing".
-lyx_version=1.4.0cvs
-lyx_branch=
+lyx_version=1.4.1svn
+lyx_branch=BRANCH_1_4_X
 
 
 # GNU sed and grep have real problems dealing with 8-bit characters
@@ -270,7 +270,8 @@ while (list(\$foo,\$info) = each(\$podata)) {
 	}
 	print "<td \$style>" ;
 
-	print "<a href=\"http://www.lyx.org/cgi-bin/viewcvs.cgi/lyx-devel/po/" . \$info['langcode'] . ".po$branch_tag\">" . \$lang[\$info['langcode']] . "</a></td>";
+//	print "<a href=\"http://www.lyx.org/cgi-bin/viewcvs.cgi/lyx-devel/po/" . \$info['langcode'] . ".po$branch_tag\">" . \$lang[\$info['langcode']] . "</a></td>";
+	print \$lang[\$info['langcode']] . "</td>";
 
 	print "<td \$style align=\"right\">" . \$info['msg_tr'] . "</td>";
 

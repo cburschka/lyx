@@ -19,18 +19,21 @@ What's new
 
 ** Updates
 
+- Update Hungarian localization.
 
 ** Bug fixes
 
-- Convert line endings for external copy/paste on OS X (bug 1955)
+* Document input/output:
+
+- Fix LaTeX error with Address layout in AMS classes (bug 2363).
+
+- Fix LaTeX error when \labelitemi was undefined (bug 2053).
 
 - Translate \verb commands correctly in tex2lyx (bug 2236)
 
-* Document input/output:
+* User Interface:
 
-- fix LaTeX error with AMS classes (bug 2363).
-
-- fix LaTeX error when \labelitemi was undefined (bug 2053).
+- Convert line endings for external copy/paste on OS X (bug 1955)
 
 * User Interface:
 
