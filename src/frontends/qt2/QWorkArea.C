@@ -35,6 +35,11 @@
 #include <Carbon/Carbon.h>
 #endif
 
+#ifdef Q_OS_MAC
+#include <support/lstrings.h>
+
+using lyx::support::subst;
+#endif
 using std::endl;
 using std::string;
 
@@ -201,7 +206,12 @@ string const QWorkArea::getClipboard() const
 	QString str = QApplication::clipboard()->text();
 	if (str.isNull())
 		return string();
+#ifdef Q_OS_MAC
+	// The MAC clipboard uses \r for lineendings, and we use \n
+	return subst(fromqstr(str), '\r', '\n');
+#else
 	return fromqstr(str);
+#endif
 }
 
 
@@ -210,7 +220,12 @@ void QWorkArea::putClipboard(string const & str) const
 #if QT_VERSION >= 300
 	QApplication::clipboard()->setSelectionMode(true);
 #endif
+#ifdef Q_OS_MAC
+	// The MAC clipboard uses \r for lineendings, and we use \n
+	QApplication::clipboard()->setText(toqstr(subst(str, '\n', '\r')));
+#else
 	QApplication::clipboard()->setText(toqstr(str));
+#endif
 }
 
 

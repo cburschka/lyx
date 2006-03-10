@@ -1,3 +1,8 @@
+2006-03-10  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* QWorkArea.C (getClipboard): convert MAC to UNIX line endings on OSX
+	* QWorkArea.C (putClipboard): convert UNIX to MAC line endings on OSX
+
 2006-03-05  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* add svn:ignore
