@@ -1,5 +1,8 @@
 2006-03-10  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
+	* layouts/amsdefs.inc: clear Address definition from lyxmacros
+	(bug 2363).
+	
 	* layouts/scrlettr.layout:
 	* layouts/scrlttr2.layout: Map labeling to list (bug 2246).
 

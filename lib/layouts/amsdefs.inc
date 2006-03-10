@@ -146,6 +146,8 @@ Style Abstract
 	EndFont
 End
 
+# Clear Address definition from lyxmacros
+NoStyle Address
 
 Style Address
 	Margin                Dynamic
