@@ -1,3 +1,8 @@
+2006-03-10  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* bufferparams.C (writeLaTeX): define \labelitemi with \def. Fixes LaTeX 
+	error if the class has not defined them yet (bug 2053).
+
 2006-03-10  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* BufferView.[Ch]:

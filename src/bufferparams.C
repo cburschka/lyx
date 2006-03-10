@@ -1005,7 +1005,7 @@ bool BufferParams::writeLaTeX(ostream & os, LaTeXFeatures & features,
 		if (user_defined_bullet(i) != ITEMIZE_DEFAULTS[i]) {
 			if (bullets_def.empty())
 				bullets_def="\\AtBeginDocument{\n";
-			bullets_def += "  \\renewcommand{\\labelitemi";
+			bullets_def += "  \\def\\labelitemi";
 			switch (i) {
 				// `i' is one less than the item to modify
 			case 0:
@@ -1020,7 +1020,7 @@ bool BufferParams::writeLaTeX(ostream & os, LaTeXFeatures & features,
 				bullets_def += 'v';
 				break;
 			}
-			bullets_def += "}{" +
+			bullets_def += '{' +
 				user_defined_bullet(i).getText()
 				+ "}\n";
 		}
