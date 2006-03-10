@@ -369,6 +369,18 @@ void BufferView::putSelectionAt(DocIterator const & cur,
 }
 
 
+bool const BufferView::repaintAll() const
+{ 
+	return pimpl_->repaintAll();
+}
+
+	
+void const BufferView::repaintAll(bool r) const
+{ 
+	pimpl_->repaintAll(r);
+}
+
+
 LCursor & BufferView::cursor()
 {
 	return pimpl_->cursor_;

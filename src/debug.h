@@ -74,6 +74,8 @@ public:
 		///
 		EXTERNAL   = (1 << 23),
 		///
+		PAINTING   = (1 << 24),
+		///
 		DEBUG      = (1 << 31),
 		///
 		ANY = 0xffffffff

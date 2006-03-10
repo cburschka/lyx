@@ -151,6 +151,15 @@ int RowPainter::leftMargin() const
 }
 
 
+bool isTrueTextInset(InsetBase * in)
+{
+	// Math and tabular insets have isTextInset = true, though they are
+	// not derived from InsetText. Paint them fully
+	return (in && in->isTextInset() && in->asMathInset() == 0
+		&& in->lyxCode() != InsetBase::TABULAR_CODE);
+}
+
+
 void RowPainter::paintInset(pos_type const pos, LyXFont const & font)
 {
 	InsetBase const * inset = par_.getInset(pos);
@@ -164,8 +173,15 @@ void RowPainter::paintInset(pos_type const pos, LyXFont const & font)
 	pi.ltr_pos = (text_.bidi.level(pos) % 2 == 0);
 	pi.erased_ = erased_ || isDeletedText(par_, pos);
 	theCoords.insets().add(inset, int(x_), yo_);
-	inset->drawSelection(pi, int(x_), yo_);
+	InsetBase * in = const_cast<InsetBase *>(inset);
+	// non-wide insets are painted completely. Recursive
+	bool tmp = bv_.repaintAll();
+	if (!isTrueTextInset(in) || !static_cast<InsetText*>(in)->Wide())
+		bv_.repaintAll(true);
+	if (bv_.repaintAll())
+		inset->drawSelection(pi, int(x_), yo_);
 	inset->draw(pi, int(x_), yo_);
+	bv_.repaintAll(tmp);
 	x_ += inset->width();
 }
 
@@ -720,25 +736,52 @@ void RowPainter::paintText()
 }
 
 
-lyx::size_type calculateRowSignature(Row const & row, Paragraph const & par)
+lyx::size_type calculateRowSignature(Row const & row, Paragraph const & par,
+	int x, int y)
 {
 	boost::crc_32_type crc;
 	for (lyx::pos_type i = row.pos(); i < row.endpos(); ++i) {
 		const unsigned char b[] = { par.getChar(i) };
 		crc.process_bytes(b, 1);
 	}
+	const unsigned char b[] = { x, y, row.width() };
+	crc.process_bytes(b, 3);
 	return crc.checksum();
 }
 
 
-bool isCursorOnRow(PainterInfo & pi, pit_type pit, RowList::const_iterator rit)
+bool CursorOnRow(PainterInfo & pi, pit_type const pit, 
+	RowList::const_iterator rit, LyXText const & text)
 {
+	// Is there a cursor on this row (or inside inset on row)
 	LCursor & cur = pi.base.bv->cursor();
-	for (lyx::size_type d = 0; d < cur.depth(); d++)
-		if (cur[d].pit() == pit
-	  	    && cur[d].pos() >= rit->pos()
-		    && cur[d].pos() <= rit->endpos())
+	for (lyx::size_type d = 0; d < cur.depth(); d++) {
+		CursorSlice const & sl = cur[d];
+		if (sl.text() == &text
+		    && sl.pit() == pit
+	  	    && sl.pos() >= rit->pos()
+		    && sl.pos() < rit->endpos())
 			return true;
+	}
+	return false;
+}
+
+
+bool innerCursorOnRow(PainterInfo & pi, pit_type pit, 
+	RowList::const_iterator rit, LyXText const & text)
+{
+	// Is there a cursor inside an inset on this row, and is this inset
+	// the only "character" on this row
+	LCursor & cur = pi.base.bv->cursor();
+	if (rit->pos() + 1 != rit->endpos())
+		return false;
+	for (lyx::size_type d = 0; d < cur.depth(); d++) {
+		CursorSlice const & sl = cur[d];
+		if (sl.text() == &text
+		    && sl.pit() == pit 
+		    && sl.pos() == rit->pos())
+			return d < cur.depth() - 1;
+	}
 	return false;
 }
 
@@ -762,17 +805,31 @@ void paintPar
 	lyx::size_type rowno(0);
 	for (RowList::const_iterator rit = rb; rit != re; ++rit, ++rowno) {
 		y += rit->ascent();
+		// Allow setting of bv->repaintAll() for nested insets in
+		// this row only
+		bool tmp = pi.base.bv->repaintAll();
 
 		// Row signature; has row changed since last paint?
-		lyx::size_type const row_sig = calculateRowSignature(*rit, par);
-
-		bool cursor_on_row = isCursorOnRow(pi, pit, rit);
+		lyx::size_type const row_sig = calculateRowSignature(*rit, par, x, y);
+		bool row_has_changed = par.rowSignature()[rowno] != row_sig;
 		
-		// If selection is on, the current row signature differs from
+		bool cursor_on_row = CursorOnRow(pi, pit, rit, text);
+		bool in_inset_alone_on_row = innerCursorOnRow(pi, pit, rit,
+			text);
+
+		// If this is the only object on the row, we can make it wide
+		for (pos_type i = rit->pos() ; i != rit->endpos(); ++i) {
+			InsetBase* in 
+			    = const_cast<InsetBase*>(par.getInset(i));
+			if (isTrueTextInset(in))
+				static_cast<InsetText*>(in)->Wide()
+				    = in_inset_alone_on_row;
+		}
+
+		// If selection is on, the current row signature differs 
 		// from cache, or cursor is inside an inset _on this row_, 
 		// then paint the row
-		if (repaintAll || par.rowSignature()[rowno] != row_sig
-			    || cursor_on_row) {
+		if (repaintAll || row_has_changed || cursor_on_row) {
 			// Add to row signature cache
 			par.rowSignature()[rowno] = row_sig;
 
@@ -781,15 +838,25 @@ void paintPar
 			RowPainter rp(inside ? pi : nullpi, text, pit, *rit, x, y);
 			// Clear background of this row 
 			// (if paragraph background was not cleared)
-			if (!repaintAll) {
-				pi.pain.fillRectangle(x, y - rit->ascent(), 
+			if (!repaintAll && 
+			    (!in_inset_alone_on_row || row_has_changed)) {
+				pi.pain.fillRectangle(( rowno ? 0 : x - 10 ), y - rit->ascent(), 
 				    pi.base.bv->workWidth(), rit->height(),
 				    text.backgroundColor());
+				// If outer row has changed, force nested
+				// insets to repaint completely
+				if (row_has_changed)
+					pi.base.bv->repaintAll(true);
 			}
 			
 			// Instrumentation for testing row cache (see also
 			// 12 lines lower):
-			//lyxerr << "#";
+			if (text.isMainText())
+    				lyxerr[Debug::PAINTING] << "#";
+			else
+    				lyxerr[Debug::PAINTING] << "[" <<
+				    repaintAll << row_has_changed <<
+				    cursor_on_row << "]";
 			rp.paintAppendix();
 			rp.paintDepthBar();
 			rp.paintChangeBar();
@@ -800,8 +867,10 @@ void paintPar
 			rp.paintText();
 		}
 		y += rit->descent();
+		// Restore, see above
+		pi.base.bv->repaintAll(tmp);
 	}
-	//lyxerr << "." << endl;
+	lyxerr[Debug::PAINTING] << "." << endl;
 }
 
 } // namespace anon
@@ -814,8 +883,11 @@ void paintText(BufferView const & bv, ViewMetricsInfo const & vi)
 	bool const select = bv.cursor().selection();
 
 	PainterInfo pi(const_cast<BufferView *>(&bv), pain);
-	if (select || !vi.singlepar) {
-		// Clear background (Delegated to rows if no selection)
+	// Should the whole screen, including insets, be refreshed?
+	bool repaintAll(select || !vi.singlepar);
+	
+	if (repaintAll) {
+		// Clear background (if not delegated to rows)
 		pain.fillRectangle(0, vi.y1, bv.workWidth(), vi.y2 - vi.y1,
 			text->backgroundColor());
 	}
@@ -826,9 +898,10 @@ void paintText(BufferView const & bv, ViewMetricsInfo const & vi)
 	int yy = vi.y1;
 	// draw contents
 	for (pit_type pit = vi.p1; pit <= vi.p2; ++pit) {
+		bv.repaintAll(repaintAll);
 		Paragraph const & par = text->getPar(pit);
 		yy += par.ascent();
-		paintPar(pi, *bv.text(), pit, 0, yy, select || !vi.singlepar);
+		paintPar(pi, *bv.text(), pit, 0, yy, repaintAll);
 		yy += par.descent();
 	}
 
@@ -865,9 +938,11 @@ void paintTextInset(LyXText const & text, PainterInfo & pi, int x, int y)
 //	lyxerr << "  paintTextInset: y: " << y << endl;
 
 	y -= text.getPar(0).ascent();
+	// This flag can not be set from within same inset:
+	bool repaintAll = pi.base.bv->repaintAll();
 	for (int pit = 0; pit < int(text.paragraphs().size()); ++pit) {
 		y += text.getPar(pit).ascent();
-		paintPar(pi, text, pit, x, y, true);
+		paintPar(pi, text, pit, x, y, repaintAll);
 		y += text.getPar(pit).descent();
 	}
 }

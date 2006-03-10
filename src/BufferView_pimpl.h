@@ -59,6 +59,8 @@ public:
 	void resizeCurrentBuffer();
 	//
 	bool fitCursor();
+	//
+	bool multiParSel();
 	///
 	void update(Update::flags flags = Update::Force);
 	///
@@ -103,6 +105,10 @@ public:
 	FuncStatus getStatus(FuncRequest const & cmd);
 	/// a function should be executed
 	bool dispatch(FuncRequest const & ev);
+	/// Flag: do a full redraw of inside text of inset
+	bool repaintAll() { return refresh_inside_; }
+	///
+	void repaintAll(bool r) {refresh_inside_ = r; }
 private:
 	/// An error list (replaces the error insets)
 	ErrorList errorlist_;
@@ -183,13 +189,15 @@ private:
 	///
 	LCursor cursor_;
 	///
+	bool multiparsel_cache_;
 	///
 	lyx::pit_type anchor_ref_;
 	///
 	int offset_ref_;
 	///
 	ViewMetricsInfo metrics(bool singlepar = false);
-
-
+	/// Working variable indicating a full screen refresh
+	mutable bool refresh_inside_;
+	
 };
 #endif // BUFFERVIEW_PIMPL_H

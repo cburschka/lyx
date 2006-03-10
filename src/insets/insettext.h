@@ -137,7 +137,9 @@ public:
 	bool neverIndent() const;
 	///
 	InsetText(InsetText const &);
-
+	///
+	bool & Wide() const { return wide_inset_; }
+	
 protected:
 	///
 	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
@@ -158,6 +160,8 @@ private:
 	mutable lyx::pit_type old_pit;
 	///
 	static int border_;
+	///
+	mutable bool wide_inset_;
 public:
 	///
 	mutable LyXText text_;

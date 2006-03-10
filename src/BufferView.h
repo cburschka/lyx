@@ -40,7 +40,8 @@ namespace Update {
 	enum flags {
 		FitCursor = 1,
 		Force = 2,
-		SinglePar = 4
+		SinglePar = 4,
+		MultiParSel = 8
 	};
 
 inline flags operator|(flags const f, flags const g)
@@ -198,7 +199,10 @@ public:
 	 */
 	void putSelectionAt(DocIterator const & cur,
 		int length, bool backwards);
-
+	///
+	bool const repaintAll() const;
+	///
+	void const repaintAll(bool r) const;
 
 private:
 	///

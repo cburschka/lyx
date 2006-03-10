@@ -138,7 +138,7 @@ void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim = dimensionCollapsed();
 		if (status() == Open) {
 			InsetText::metrics(mi, textdim_);
-			openinlined_ = (textdim_.wid + dim.wid <= mi.base.textwidth);
+			openinlined_ = textdim_.wid + 2 * dim.wid <= mi.base.textwidth;
 			if (openinlined_) {
 				dim.wid += textdim_.wid;
 				dim.des = max(dim.des - textdim_.asc + dim.asc, textdim_.des);
@@ -171,6 +171,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		button_dim.y2 = top + dimc.height();
 
 		pi.pain.buttonText(xx, top + dimc.asc, label, labelfont_);
+
 		if (status() == Open) {
 			int textx, texty;
 			if (openinlined_) {
