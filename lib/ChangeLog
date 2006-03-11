@@ -1,3 +1,12 @@
+2006-03-11  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* configure.py: fix off-by-one error in version_suffix handling
+	* configure.py: fix several typos
+	* configure.py: adjust whitespace of converter output
+	* configure.py: fix noweave detection
+	* configure.py: sort textclass.lst
+	* configure.py: fix test for tex_allows_spaces
+
 2006-03-10  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* languages: fix babel/jurabib conflict with Spanish by using 
