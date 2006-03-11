@@ -1162,8 +1162,7 @@ int InsetTabular::dist(idx_type const cell, int x, int y) const
 	int const ybeg = o.y_ - inset.ascent();
 	row_type const row = tabular.row_of_cell(cell);
 	int const rowheight = tabular.getAscentOfRow(row)
-			+ tabular.getDescentOfRow(row)
-			+ tabular.getAdditionalHeight(row);
+			+ tabular.getDescentOfRow(row);
 	int const yend = ybeg + rowheight;
 
 	if (x < xbeg)
