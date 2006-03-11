@@ -223,6 +223,8 @@ public:
 	///
 	bool Delete(LCursor & cur);
 	///
+	bool backspacePos0(LCursor & cur);
+	///
 	bool backspace(LCursor & cur);
 	///
 	bool selectWordWhenUnderCursor(LCursor & cur, lyx::word_location);

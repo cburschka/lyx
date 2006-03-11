@@ -159,11 +159,14 @@ void Paragraph::write(Buffer const & buf, ostream & os,
 	lyx::time_type const curtime(lyx::current_time());
 
 	int column = 0;
-	for (pos_type i = 0; i < size(); ++i) {
+	for (pos_type i = 0; i <= size(); ++i) {
 
 		Change change = pimpl_->lookupChangeFull(i);
 		Changes::lyxMarkChange(os, column, curtime, running_change, change);
 		running_change = change;
+
+		if (i == size())
+			break;
 
 		// Write font changes
 		LyXFont font2 = getFontSettings(bparams, i);
@@ -222,15 +225,6 @@ void Paragraph::write(Buffer const & buf, ostream & os,
 			break;
 		}
 	}
-
-	// to make reading work properly
-	if (!size()) {
-		running_change = pimpl_->lookupChange(0);
-		Changes::lyxMarkChange(os, column, curtime,
-			Change(Change::UNCHANGED), running_change);
-	}
-	Changes::lyxMarkChange(os, column, curtime,
-		running_change, Change(Change::UNCHANGED));
 
 	os << "\n\\end_layout\n";
 }
@@ -1639,14 +1633,14 @@ void Paragraph::cleanChanges()
 
 Change::Type Paragraph::lookupChange(lyx::pos_type pos) const
 {
-	BOOST_ASSERT(empty() || pos < size());
+	BOOST_ASSERT(pos <= size());
 	return pimpl_->lookupChange(pos);
 }
 
 
 Change const Paragraph::lookupChangeFull(lyx::pos_type pos) const
 {
-	BOOST_ASSERT(empty() || pos < size());
+	BOOST_ASSERT(pos <= size());
 	return pimpl_->lookupChangeFull(pos);
 }
 
@@ -1666,6 +1660,12 @@ bool Paragraph::isChangeEdited(pos_type start, pos_type end) const
 void Paragraph::setChange(lyx::pos_type pos, Change::Type type)
 {
 	pimpl_->setChange(pos, type);
+}
+
+
+void Paragraph::setChangeFull(lyx::pos_type pos, Change change)
+{
+	pimpl_->setChangeFull(pos, change);
 }
 
 

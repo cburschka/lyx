@@ -271,64 +271,35 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 		return PitPosPair(endpit, endpos);
 	}
 
-	bool all_erased = true;
-
-        // Clear fragments of the first par in selection
-	pars[startpit].erase(startpos, pars[startpit].size());
-	if (pars[startpit].size() != startpos)
-		all_erased = false;
-
-        // Clear fragments of the last par in selection
-	endpos -= pars[endpit].erase(0, endpos);
-	if (endpos != 0)
-		all_erased = false;
-
-        // Erase all the "middle" paragraphs.
-	if (params.tracking_changes) {
-		// Look through the deleted pars if any, erasing as needed
-		for (pit_type pit = startpit + 1; pit != endpit;) {
-			// "erase" the contents of the par
-			pars[pit].erase(0, pars[pit].size());
-			if (pars[pit].empty()) {
-				// remove the par if it's now empty
-				pars.erase(pars.begin() + pit);
-				--endpit;
-			} else {
-				++pit;
-				all_erased = false;
-			}
-		}
-	} else {
-		pars.erase(pars.begin() + startpit + 1, pars.begin() + endpit);
-		endpit = startpit + 1;
-	}
-	
-#if 0 // FIXME: why for cut but not copy ?
-	// the cut selection should begin with standard layout
-	if (realcut) {
-		buf->params().clear();
-		buf->bibkey = 0;
-		buf->layout(textclasslist[buffer->params.textclass].defaultLayoutName());
-	}
-#endif
-
-	if (startpit + 1 == pit_type(pars.size()))
-		return PitPosPair(endpit, endpos);
-
-	if (doclear) {
-		pars[startpit + 1].stripLeadingSpaces();
+	// A paragraph break has to be physically removed by merging, but
+	// only if either (1) change tracking is off, or (2) the para break
+	// is "blue"
+	for (pit_type pit = startpit; pit != endpit + 1;) {
+		bool const merge = !params.tracking_changes ||
+			pars[pit].lookupChange(pars[pit].size()) ==
+			Change::INSERTED;
+		pos_type const left  = ( pit == startpit ? startpos : 0 );
+		pos_type const right = ( pit == endpit ? endpos :
+				pars[pit].size() + 1 );
+		// Logical erase only:
+		pars[pit].erase(left, right);
+		// Separate handling of para break:
+		if (merge && pit != endpit &&
+		   pars[pit].hasSameLayout(pars[pit + 1])) {
+			pos_type const thissize = pars[pit].size();
+			if (doclear)
+				pars[pit + 1].stripLeadingSpaces();
+			mergeParagraph(params, pars, pit);
+			--endpit;
+			if (pit == endpit)
+				endpos += thissize;
+		} else 
+			++pit;
 	}
 
-	// Merge first and last paragraph, if possible
-	if (all_erased &&
-	    (pars[startpit].hasSameLayout(pars[startpit + 1]) ||
-	     pars[startpit + 1].empty())) {
-		mergeParagraph(params, pars, startpit);
-		// This because endpar gets deleted here!
-		endpit = startpit;
-		endpos = startpos;
-	}
-
+	// Ensure legal cursor pos:
+	endpit = startpit;
+	endpos = startpos;
 	return PitPosPair(endpit, endpos);
 }
 

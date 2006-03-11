@@ -315,8 +315,10 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 	} else if (token == "\\change_unchanged") {
 		// Hack ! Needed for empty paragraphs :/
 		// FIXME: is it still ??
+		/*
 		if (!par.size())
 			par.cleanChanges();
+		*/
 		change = Change(Change::UNCHANGED);
 	} else if (token == "\\change_inserted") {
 		lex.eatLine();
@@ -375,6 +377,9 @@ void readParagraph(Buffer const & buf, Paragraph & par, LyXLex & lex)
 			break;
 		}
 	}
+	// Final change goes to paragraph break:
+	par.setChangeFull(par.size(), change);
+	
 	// Initialize begin_of_body_ on load; redoParagraph maintains
 	par.setBeginOfBody();
 }
@@ -1026,13 +1031,9 @@ namespace {
 void LyXText::breakParagraph(LCursor & cur, bool keep_layout)
 {
 	BOOST_ASSERT(this == cur.text());
-	// allow only if at start or end, or all previous is new text
+
 	Paragraph & cpar = cur.paragraph();
 	pit_type cpit = cur.pit();
-
-	if (cur.pos() != 0 && cur.pos() != cur.lastpos()
-	    && cpar.isChangeEdited(0, cur.pos()))
-		return;
 
 	LyXTextClass const & tclass = cur.buffer().params().getLyXTextClass();
 	LyXLayout_ptr const & layout = cpar.layout();
@@ -1087,6 +1088,12 @@ void LyXText::breakParagraph(LCursor & cur, bool keep_layout)
 		pars_[next_par].erase(0);
 
 	updateCounters(cur.buffer());
+
+	// Mark "carriage return" as inserted if change tracking:
+	if (cur.buffer().params().tracking_changes) {
+		cur.paragraph().setChange(cur.paragraph().size(), 
+			Change::INSERTED);
+	}
 
 	// This check is necessary. Otherwise the new empty paragraph will
 	// be deleted automatically. And it is more friendly for the user!
@@ -1392,18 +1399,34 @@ void LyXText::acceptChange(LCursor & cur)
 	if (!cur.selection() && cur.lastpos() != 0)
 		return;
 
-	CursorSlice const & startc = cur.selBegin();
-	CursorSlice const & endc = cur.selEnd();
-	if (startc.pit() == endc.pit()) {
-		recordUndoSelection(cur, Undo::INSERT);
-		pars_[startc.pit()].acceptChange(startc.pos(), endc.pos());
-		finishUndo();
-		cur.clearSelection();
-		setCursorIntern(cur, startc.pit(), 0);
+	recordUndoSelection(cur, Undo::INSERT);
+	
+	DocIterator it = cur.selectionBegin();
+	DocIterator et = cur.selectionEnd();
+	pit_type pit = it.pit();
+	Change::Type const type = pars_[pit].lookupChange(it.pos());
+	for (; pit <= et.pit(); ++pit) {
+		pos_type left  = ( pit == it.pit() ? it.pos() : 0 );
+		pos_type right = 
+		    ( pit == et.pit() ? et.pos() : pars_[pit].size() + 1 );
+		pars_[pit].acceptChange(left, right);
 	}
-#ifdef WITH_WARNINGS
-#warning handle multi par selection
-#endif
+	if (type == Change::DELETED) {
+		ParagraphList & plist = paragraphs();
+		if (it.pit() + 1 < et.pit())
+			pars_.erase(plist.begin() + it.pit() + 1,
+				    plist.begin() + et.pit());
+		
+		// Paragraph merge if appropriate:
+		if (pars_[it.pit()].lookupChange(pars_[it.pit()].size()) 
+			== Change::DELETED) {
+			setCursorIntern(cur, it.pit() + 1, 0);
+			backspacePos0(cur);
+		}
+	}
+	finishUndo();
+	cur.clearSelection();
+	setCursorIntern(cur, it.pit(), 0);
 }
 
 
@@ -1413,18 +1436,33 @@ void LyXText::rejectChange(LCursor & cur)
 	if (!cur.selection() && cur.lastpos() != 0)
 		return;
 
-	CursorSlice const & startc = cur.selBegin();
-	CursorSlice const & endc = cur.selEnd();
-	if (startc.pit() == endc.pit()) {
-		recordUndoSelection(cur, Undo::INSERT);
-		pars_[startc.pit()].rejectChange(startc.pos(), endc.pos());
-		finishUndo();
-		cur.clearSelection();
-		setCursorIntern(cur, startc.pit(), 0);
+	recordUndoSelection(cur, Undo::INSERT);
+
+	DocIterator it = cur.selectionBegin();
+	DocIterator et = cur.selectionEnd();
+	pit_type pit = it.pit();
+	Change::Type const type = pars_[pit].lookupChange(it.pos());
+	for (; pit <= et.pit(); ++pit) {
+		pos_type left  = ( pit == it.pit() ? it.pos() : 0 );
+		pos_type right = 
+		    ( pit == et.pit() ? et.pos() : pars_[pit].size() + 1 );
+		pars_[pit].rejectChange(left, right);
 	}
-#ifdef WITH_WARNINGS
-#warning handle multi par selection
-#endif
+	if (type == Change::INSERTED) {
+		ParagraphList & plist = paragraphs();
+		if (it.pit() + 1 < et.pit())
+			pars_.erase(plist.begin() + it.pit() + 1,
+				    plist.begin() + et.pit());
+		// Paragraph merge if appropriate:
+		if (pars_[it.pit()].lookupChange(pars_[it.pit()].size()) 
+			== Change::INSERTED) {
+			setCursorIntern(cur, it.pit() + 1, 0);
+			backspacePos0(cur);
+		}
+	}
+	finishUndo();
+	cur.clearSelection();
+	setCursorIntern(cur, it.pit(), 0);
 }
 
 
@@ -1556,6 +1594,80 @@ bool LyXText::Delete(LCursor & cur)
 }
 
 
+bool LyXText::backspacePos0(LCursor & cur)
+{
+	BOOST_ASSERT(this == cur.text());
+	bool needsUpdate = false;
+
+	Paragraph & par = cur.paragraph();
+	// is it an empty paragraph?
+	pos_type lastpos = cur.lastpos();
+	if (lastpos == 0 || (lastpos == 1 && par.isSeparator(0))) {
+		// This is an empty paragraph and we delete it just
+		// by moving the cursor one step
+		// left and let the DeleteEmptyParagraphMechanism
+		// handle the actual deletion of the paragraph.
+
+		if (cur.pit() != 0) {
+			// For KeepEmpty layouts we need to get
+			// rid of the keepEmpty setting first.
+			// And the only way to do this is to
+			// reset the layout to something
+			// else: f.ex. the default layout.
+			if (par.allowEmpty()) {
+				Buffer & buf = cur.buffer();
+				BufferParams const & bparams = buf.params();
+				par.layout(bparams.getLyXTextClass().defaultLayout());
+			}
+                                
+			cursorLeft(cur);
+			return true;
+		}
+	}
+
+	if (cur.pit() != 0)
+		recordUndo(cur, Undo::DELETE, cur.pit() - 1);
+
+	pit_type tmppit = cur.pit();
+	// We used to do cursorLeftIntern() here, but it is
+	// not a good idea since it triggers the auto-delete
+	// mechanism. So we do a cursorLeftIntern()-lite,
+	// without the dreaded mechanism. (JMarc)
+	if (cur.pit() != 0) {
+		// steps into the above paragraph.
+		setCursorIntern(cur, cur.pit() - 1,
+				pars_[cur.pit() - 1].size(),
+				false);
+	}
+
+	// Pasting is not allowed, if the paragraphs have different
+	// layout. I think it is a real bug of all other
+	// word processors to allow it. It confuses the user.
+	// Correction: Pasting is always allowed with standard-layout
+	// Correction (Jug 20050717): Remove check about alignment!
+	Buffer & buf = cur.buffer();
+	BufferParams const & bufparams = buf.params();
+	LyXTextClass const & tclass = bufparams.getLyXTextClass();
+	pit_type const cpit = cur.pit();
+
+	if (cpit != tmppit
+	    && (pars_[cpit].layout() == pars_[tmppit].layout()
+	        || pars_[tmppit].layout() == tclass.defaultLayout()))
+	{
+		mergeParagraph(bufparams, pars_, cpit);
+		needsUpdate = true;
+
+		if (cur.pos() != 0 && pars_[cpit].isSeparator(cur.pos() - 1))
+				--cur.pos();
+
+		// the counters may have changed
+		updateCounters(cur.buffer());
+		setCursor(cur, cur.pit(), cur.pos(), false);
+	}
+	return needsUpdate;
+}
+
+
 bool LyXText::backspace(LCursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
@@ -1565,77 +1677,17 @@ bool LyXText::backspace(LCursor & cur)
 		// the the backspace will collapse two paragraphs into
 		// one.
 
-		// but it's not allowed unless it's new
-		Paragraph & par = cur.paragraph();
-		if (par.isChangeEdited(0, par.size()))
+		if (cur.buffer().params().tracking_changes) {
+			// Previous paragraph, mark "carriage return" as
+			// deleted:
+			Paragraph & par = pars_[cur.pit() - 1];
+			par.setChange(par.size(), Change::DELETED);
+			setCursorIntern(cur, cur.pit() - 1, par.size());
 			return false;
-
-		// we may paste some paragraphs
-
-		// is it an empty paragraph?
-		pos_type lastpos = cur.lastpos();
-		if (lastpos == 0 || (lastpos == 1 && par.isSeparator(0))) {
-			// This is an empty paragraph and we delete it just
-			// by moving the cursor one step
-			// left and let the DeleteEmptyParagraphMechanism
-			// handle the actual deletion of the paragraph.
-
-			if (cur.pit() != 0) {
-                                // For KeepEmpty layouts we need to get
-                                // rid of the keepEmpty setting first.
-                                // And the only way to do this is to
-                                // reset the layout to something
-                                // else: f.ex. the default layout.
-                                if (par.allowEmpty()) {
-                                        Buffer & buf = cur.buffer();
-                                        BufferParams const & bparams = buf.params();
-                                        par.layout(bparams.getLyXTextClass().defaultLayout());
-                                }
-                                
-				cursorLeft(cur);
-				return true;
-			}
 		}
 
-		if (cur.pit() != 0)
-			recordUndo(cur, Undo::DELETE, cur.pit() - 1);
+		needsUpdate = backspacePos0(cur);
 
-		pit_type tmppit = cur.pit();
-		// We used to do cursorLeftIntern() here, but it is
-		// not a good idea since it triggers the auto-delete
-		// mechanism. So we do a cursorLeftIntern()-lite,
-		// without the dreaded mechanism. (JMarc)
-		if (cur.pit() != 0) {
-			// steps into the above paragraph.
-			setCursorIntern(cur, cur.pit() - 1,
-					pars_[cur.pit() - 1].size(),
-					false);
-		}
-
-		// Pasting is not allowed, if the paragraphs have different
-		// layout. I think it is a real bug of all other
-		// word processors to allow it. It confuses the user.
-		// Correction: Pasting is always allowed with standard-layout
-		// Correction (Jug 20050717): Remove check about alignment!
-		Buffer & buf = cur.buffer();
-		BufferParams const & bufparams = buf.params();
-		LyXTextClass const & tclass = bufparams.getLyXTextClass();
-		pit_type const cpit = cur.pit();
-
-		if (cpit != tmppit
-		    && (pars_[cpit].layout() == pars_[tmppit].layout()
-		        || pars_[tmppit].layout() == tclass.defaultLayout()))
-		{
-			mergeParagraph(bufparams, pars_, cpit);
-			needsUpdate = true;
-
-			if (cur.pos() != 0 && pars_[cpit].isSeparator(cur.pos() - 1))
-				--cur.pos();
-
-			// the counters may have changed
-			updateCounters(cur.buffer());
-			setCursor(cur, cur.pit(), cur.pos(), false);
-		}
 	} else {
 		// this is the code for a normal backspace, not pasting
 		// any paragraphs
@@ -2182,8 +2234,10 @@ string LyXText::currentState(LCursor & cur)
 	std::ostringstream os;
 
 	bool const show_change = buf.params().tracking_changes
-		&& cur.pos() != cur.lastpos()
 		&& par.lookupChange(cur.pos()) != Change::UNCHANGED;
+
+	if (buf.params().tracking_changes)
+		os << "[C] ";
 
 	if (show_change) {
 		Change change = par.lookupChangeFull(cur.pos());

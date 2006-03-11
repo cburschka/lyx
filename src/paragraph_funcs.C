@@ -213,6 +213,9 @@ void breakParagraphConservative(BufferParams const & bparams,
 			if (moveItem(par, tmp, bparams, i, j - pos, change))
 				++j;
 		}
+		// Move over end-of-par change attr
+		tmp.setChange(tmp.size(), par.lookupChange(par.size()));
+
 		// If tracking changes, set all the text that is to be
 		// erased to Type::INSERTED.
 		for (pos_type k = pos_end; k >= pos; --k) {
@@ -233,12 +236,15 @@ void mergeParagraph(BufferParams const & bparams,
 	pos_type pos_end = next.size() - 1;
 	pos_type pos_insert = par.size();
 
+	Change::Type cr = next.lookupChange(next.size());
 	// ok, now copy the paragraph
 	for (pos_type i = 0, j = 0; i <= pos_end; ++i) {
 		Change::Type change = next.lookupChange(i);
 		if (moveItem(next, par, bparams, i, pos_insert + j, change))
 			++j;
 	}
+	// Move the change status of "carriage return" over
+	par.setChange(par.size(), cr);
 
 	pars.erase(pars.begin() + par_offset + 1);
 }

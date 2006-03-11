@@ -1,3 +1,19 @@
+2006-03-11  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* paragraph.[Ch] (write, lookupChange, lookupChangeFull;
+	added setChangeFull):
+	* paragraph_pimpl.[Ch] (trackChanges, cleanChanges, acceptChange,
+	rejectChange, erase; added setChangeFull):
+	* CutAndPaste.C (eraseSelectionHelper):
+	* lyxtext.h:
+	* text.C (readParToken, readParagraph, breakParagraph,
+	acceptChange, rejectChange, backspace, currentState; 
+	added backspacePos0):
+	* paragraph_funcs.C (breakParagraphConservative, mergeParagraph):
+	* lyxfind.C (findChange, findNextChange): fix bug 880: Change
+	tracked paragraphs should still allow a paragraph split (and related
+	things, i.e., multi-paragraph change tracking)
+
 2006-03-10  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* BufferView_pimpl.C: fix bug 2212: First change is skipped is
