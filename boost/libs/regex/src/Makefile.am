@@ -17,7 +17,6 @@ libboost_regex_la_SOURCES = \
 	cregex.cpp \
 	fileiter.cpp \
 	instances.cpp \
-	primary_transform.hpp \
 	regex.cpp \
 	regex_raw_buffer.cpp \
 	regex_traits_defaults.cpp \
