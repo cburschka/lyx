@@ -59,7 +59,7 @@ public slots:
 
 private:
 	/// Initialize specific MACOS X menubar
-	void QLMenubar::macxMenuBarInit();
+	void macxMenuBarInit();
 
 	/// owning view
 	QtView * owner_;

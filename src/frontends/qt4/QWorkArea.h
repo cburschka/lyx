@@ -94,10 +94,7 @@ public:
 /**
  * Qt-specific implementation of the work area
  * (buffer view GUI)
- *
- * It consists of a content pane widget, and a scrollbar.
- * Hopefully soon we can just use QScrollView ...
- */
+*/
 class QWorkArea : public QAbstractScrollArea, public WorkArea {
 
 	Q_OBJECT
@@ -108,48 +105,49 @@ public:
 
 	virtual ~QWorkArea();
 	/// return the width of the content pane
-	virtual int workWidth() const { return viewport()->width(); }
+	virtual int workWidth() const { return workWidth_; }
+
 	/// return the height of the content pane
-	virtual int workHeight() const { return viewport()->height(); }
+	virtual int workHeight() const { return workHeight_; }
 	///
 	virtual void setScrollbarParams(int height, int pos, int line_height);
 
 	/// a selection exists
 	virtual void haveSelection(bool) const;
+
 	///
 	virtual std::string const getClipboard() const;
+	
 	///
 	virtual void putClipboard(std::string const &) const;
+	
 	///
 	virtual void dragEnterEvent(QDragEnterEvent * event);
+	
 	///
 	virtual void dropEvent(QDropEvent* event);
 	
 	/// return the widget's painter
-	virtual Painter & getPainter();
+	virtual Painter & getPainter() { return (Painter &) painter_; }
 
+	///
 	//virtual QPaintDevice & paintDevice() { return content_->pixmap(); }
+
 	/// return the backing pixmap
 	QPixmap * pixmap() const { return pixmap_.get(); }
 
 	/// return the widget's painter
-//	virtual QLPainter & getQLPainter();
+	//virtual QLPainter & getQLPainter() const { return painter_; }
 
 	/// get the content pane widget
-	QWidget * getContent() const;
-
-
+	QWidget * getContent() const  { return viewport(); }
 
 protected:
-	
-//	void scrollContentsBy(int dx, int dy);
 
 	/// repaint part of the widget
 	void paintEvent(QPaintEvent * e);
-
 	/// widget has been resized
 	void resizeEvent(QResizeEvent * e);
-
 	/// mouse button press
 	void mousePressEvent(QMouseEvent * e);
 	/// mouse button release
@@ -164,6 +162,7 @@ protected:
 	void keyPressEvent(QKeyEvent * e);
 
 #if USE_INPUT_METHODS
+protected:
 	/// IM events
 	void QWorkArea::inputMethodEvent(QInputMethodEvent * e) 
 #endif
@@ -173,10 +172,12 @@ public slots:
 	void keyeventTimeout();
 	void adjustViewWithScrollBar(int action);
 
-protected:
-
-
 private:
+
+	/// 
+	int workWidth_;
+	///
+	int workHeight_;
 
 	/// our painter
 	QLPainter painter_;
