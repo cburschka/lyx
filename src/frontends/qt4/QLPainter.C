@@ -265,7 +265,7 @@ void QLPainter::text(int x, int y, char const * s, size_t ls,
 
 	QString str;
 	str.setLength(ls);
-	for (size_t i = 0; i < ls; ++i)
+	for (int i = 0; i < ls; ++i)
 		// Brain-dead MSVC wants at(i) rather than operator[]
 		str[i] = QChar(encoding->ucs(s[i]));
 	// HACK: QT3 refuses to show single compose characters

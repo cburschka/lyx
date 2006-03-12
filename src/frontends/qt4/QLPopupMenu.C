@@ -11,6 +11,8 @@
 
 #include <config.h>
 
+#include <boost/current_function.hpp>
+
 // Qt defines a macro 'signals' that clashes with a boost namespace.
 // All is well if the namespace is visible first.
 #include "QtView.h"
@@ -26,7 +28,7 @@
 #include "debug.h"
 
 
-#ifdef Q_WS_MACX
+#ifdef Q_OS_MACX
 #include "kbmap.h"
 #include "QLyXKeySym.h"
 extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
@@ -145,7 +147,7 @@ string const QLPopupMenu::getLabel(MenuItem const & mi)
 /// \todo Mac specific binding handling.
 void QLPopupMenu::addBinding(string & label, MenuItem const & mi)
 {
-#ifndef Q_WS_MACX
+#ifndef Q_OS_MACX
 
 		string const binding(mi.binding());
 		if (!binding.empty()) {
@@ -175,7 +177,7 @@ void QLPopupMenu::addBinding(string & label, MenuItem const & mi)
 /// \todo Fix Mac specific menu hack
 void QLPopupMenu::specialMacXmenuHack()
 {
-#ifdef Q_WS_MACX
+#ifdef Q_OS_MACX
 	/* The qt/mac menu code has a very silly hack that
 	   moves some menu entries that it recognizes by name
 	   (e.g. "Preferences...") to the "LyX" menu. This

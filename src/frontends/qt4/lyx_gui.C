@@ -160,7 +160,6 @@ void parse_init(int & argc, char * argv[])
 
 	static LQApplication app(argc, argv);
 
-#if QT_VERSION >= 0x030200
 	// install translation file for Qt built-in dialogs
 	// These are only installed since Qt 3.2.x
 	static QTranslator qt_trans(0);
@@ -176,9 +175,8 @@ void parse_init(int & argc, char * argv[])
 		lyxerr[Debug::GUI]
 			<< "Could not find  Qt translations for locale "
 			<< QTextCodec::locale() << std::endl;
-#endif
 
-#ifdef Q_WS_MACX
+/*#ifdef Q_WS_MACX
 	// These translations are meant to break Qt/Mac menu merging
 	// algorithm on some entries. It lists the menu names that
 	// should not be moved to the LyX menu
@@ -194,7 +192,7 @@ void parse_init(int & argc, char * argv[])
 
 	app.installTranslator(&aqua_trans);
 #endif
-
+*/
 	using namespace lyx::graphics;
 
 	Image::newImage = boost::bind(&QLImage::newImage);

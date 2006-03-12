@@ -1,5 +1,5 @@
 /**
- * \file qt2/QLMenubar.C
+ * \file qt4/QLMenubar.C
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -21,15 +21,8 @@
 #include "support/lstrings.h"
 
 #include "MenuBackend.h"
-#include "support/lstrings.h"
 
 #include "debug.h"
-
-#ifdef Q_WS_MACX
-#include "kbmap.h"
-#include "QLyXKeySym.h"
-extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
-#endif
 
 #include <QMenuBar>
 #include <QCursor>
@@ -156,8 +149,8 @@ MenuBackend const & QLMenubar::backend()
 */
 QMenuBar * QLMenubar::menuBar() const
 {
-#ifdef Q_WS_MAC
-	return menubar_.get();
+#ifdef Q_OS_MACX
+	return mac_menubar_.get();
 #else
 	return owner_->menuBar();
 #endif
@@ -165,14 +158,14 @@ QMenuBar * QLMenubar::menuBar() const
 
 void QLMenubar::macxMenuBarInit()
 {
-#ifdef Q_WS_MACX
-	menubar_ = new QMenuBar;
+#ifdef Q_OS_MACX
+	mac_menubar_.reset(new QMenuBar);
 
 	// this is the name of the menu that contains our special entries
 	menubackend_.specialMenu("LyX");
 	// make sure that the special entries are added to the first
 	// menu even before this menu has been opened.
-	name_map_[menubackend_.getMenubar().begin()->submenuname()]->showing();
+	name_map_[menubackend_.getMenubar().begin()->submenuname()]->update();
 #endif
 }
 

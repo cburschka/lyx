@@ -16,11 +16,13 @@
 #include "frontends/Menubar.h"
 
 #include <map>
+#include <boost/scoped_ptr.hpp>
 
 #include <QObject>
+#include <QMenuBar>
 
-class QMenuBar;
-class QMenu;
+#include "QLPopupMenu.h"
+
 class LyXView;
 class MenuBackend;
 class Menu;
@@ -67,14 +69,13 @@ private:
 	/// menu controller
 	MenuBackend & menubackend_;
 
-	typedef std::map<std::string, QMenu *> NameMap;
+	typedef std::map<std::string, QLPopupMenu *> NameMap;
 
 	/// name to menu for openByName
 	NameMap name_map_;
 
-#ifdef Q_WS_MACX
-	boost::scoped_ptr<QMenuBar> menubar_;
-#endif
+	/// MACOS X special menubar.
+	boost::scoped_ptr<QMenuBar> mac_menubar_;
 };
 
 } // namespace frontend
