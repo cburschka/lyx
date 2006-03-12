@@ -127,13 +127,6 @@ else
 	exit 1
 fi
 
-# Autogenerate lib/configure.m4.
-echo -n "Building lib/configure ... "
-rm -f lib/configure
-$GNUM4 lib/configure.m4 > lib/configure
-chmod a+x lib/configure
-echo "done."
-
 echo
 echo 'run "./configure ; make"'
 echo

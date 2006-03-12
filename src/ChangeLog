@@ -1,3 +1,8 @@
+2006-03-12  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* lyx_cb.C (Reconfigure): run lib/configure.py, not lib/configure
+	* lyx_main.C (reconfigureUserLyXDir): run ditto
+
 2006-03-12  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* lyxtext.h: doxygen documentation fix

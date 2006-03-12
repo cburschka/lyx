@@ -1,3 +1,8 @@
+2006-03-12  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* configure.m4: Remove
+	* Makefile.am: Remove configure.m4 and use configure.py
+
 2006-03-11  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* configure.py: fix off-by-one error in version_suffix handling
