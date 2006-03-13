@@ -22,7 +22,7 @@ LangString ModifyingConfigureFailed "${LYX_LANG}" "Échec de l'allocation 'path_p
 LangString CreateCmdFilesFailed "${LYX_LANG}" "Échec de la création des fichiers lyx.cmd et reLyX.cmd"
 LangString RunConfigureFailed "${LYX_LANG}" "Échec de la tentative de configuration initiale de LyX."
 
-LangString FinishPageMessage "${LYX_LANG}" "LyX devrait être installé. Cependant, quelques utilisateurs ont signalé que le script de configuration échouait; en conséquence, LyX refuse de démarrer avec un message indiquant l'absence du fichier textclass.lst. Pour rectifier l'installation, exécuter 'sh configure' depuis le répertoire LyX/Resources/lyx."
+LangString FinishPageMessage "${LYX_LANG}" "LyX devrait être installé. Cependant, quelques utilisateurs ont signalé que le script de configuration échouait; en conséquence, LyX refuse de démarrer avec un message indiquant l'absence du fichier textclass.lst. Pour rectifier l'installation, exécuter 'sh configure' depuis le répertoire LyX/Resources."
 LangString FinishPageRun "${LYX_LANG}" "Démarrer LyX"
 
 LangString DownloadPageField2 "${LYX_LANG}" "&Ne pas installer"

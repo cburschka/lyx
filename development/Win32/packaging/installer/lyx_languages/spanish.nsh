@@ -21,7 +21,7 @@ LangString ModifyingConfigureFailed "${LYX_LANG}" "Error al intentar añadir la e
 LangString CreateCmdFilesFailed "${LYX_LANG}" "Error al intentar crear lyx.cmd y reLyX.cmd"
 LangString RunConfigureFailed "${LYX_LANG}" "Error al intentar ejecutar la rutina de configuración"
 
-LangString FinishPageMessage "${LYX_LANG}" "Si todo fue bien, LyX debería haber sido instalado correctamente. Sin embargo, algunos de nuestros usuarios han informado de que la rutina de configuración falla al ejecutarse y, como resultado, LyX también falla al ejecutarse (puesto que no encuentra el fichero textclass.lst). Para solucionar este problema abra una ventana de MS-DOS y ejecute el comando 'sh configure' desde el directorio LyX/Resources/lyx ."
+LangString FinishPageMessage "${LYX_LANG}" "Si todo fue bien, LyX debería haber sido instalado correctamente. Sin embargo, algunos de nuestros usuarios han informado de que la rutina de configuración falla al ejecutarse y, como resultado, LyX también falla al ejecutarse (puesto que no encuentra el fichero textclass.lst). Para solucionar este problema abra una ventana de MS-DOS y ejecute el comando 'sh configure' desde el directorio LyX/Resources."
 LangString FinishPageRun "${LYX_LANG}" "Ejecutar LyX ahora"
 
 LangString DownloadPageField2 "${LYX_LANG}" "&No instalar"
