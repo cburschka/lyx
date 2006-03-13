@@ -559,14 +559,18 @@ void MathScriptInset::notifyCursorLeaves(LCursor & cur)
 	//lyxerr << "MathScriptInset::notifyCursorLeaves: 1 " << cur << endl;
 
 	// remove empty scripts if possible
-if (1) {
-	if (nargs() > 2 && cur.idx() == 2 && cell(2).empty()) {
-		// must be a subscript...
-		removeScript(false);
+	if (nargs() > 2) {
+		// Case of two scripts. In this case, 1 = super, 2 = sub
+		if (cur.idx() == 2 && cell(2).empty()) {
+			// must be a subscript...
+			removeScript(false);
+		} else if (cur.idx() == 1 && cell(1).empty()) {
+			// must be a superscript...
+			removeScript(true);
+		}
 	} else if (nargs() > 1 && cur.idx() == 1 && cell(1).empty()) {
 		// could be either subscript or super script
 		removeScript(cell_1_is_up_);
-	}
 }
 
 	//lyxerr << "MathScriptInset::notifyCursorLeaves: 2 " << cur << endl;
