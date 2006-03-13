@@ -73,7 +73,7 @@ Options:
   elif op == '--keep-temps':
     lyx_keep_temps = True
   elif op[0:22] == '--with-version-suffix=':  # never mind if op is not long enough
-    version_suffix = op[23:]
+    version_suffix = op[22:]
   else:
     print "Unknown option", op
     sys.exit(1)
@@ -202,7 +202,7 @@ def checkProg(description, progs, rc_entry = [], path = [] ):
 
 # Find programs! Returned path is not used now
 path, LATEX = checkProg( 'a Latex2e program', ['pplatex $$i', 'latex $$i', 'latex2e $$i'],
-  rc_entry = [ r'\converter latex      dvi        "%%" "latex"' ] )
+  rc_entry = [ r'\converter latex      dvi        "%%"	"latex"' ] )
 
 # no latex
 lyx_check_config = False
@@ -221,10 +221,10 @@ if LATEX != 'none':
   else:
     print "Latex not usable (not LaTeX2e) "
   # remove temporary files
-  removeFiles(['chkltex.ltx', 'chklatex.log'])
+  removeFiles(['chklatex.ltx', 'chklatex.log'])
 
 checkProg('the pdflatex program', ['pdflatex $$i'],
-  rc_entry = [ r'\converter latex	pdf2	"%%" "latex"' ])
+  rc_entry = [ r'\converter latex      pdf2       "%%"	"latex"' ])
 
 checkProg('a Tgif viewer and editor', ['tgif'],
   rc_entry = [ r'\Format tgif       obj     Tgif                   "" "%%"	"%%"'])
@@ -233,14 +233,14 @@ checkProg('a FIG viewer and editor', ['xfig'],
   rc_entry = [ r'\Format fig        fig     FIG                    "" "%%"	"%%"'] )
 
 checkProg('a Grace viewer and editor', ['xmgrace'],
-  rc_entry = [  r'\Format agr	agr	Grace  "" "%%" "%%"' ] )
+  rc_entry = [ r'\Format agr        agr     Grace                  "" "%%"	"%%"'] )
 
 checkProg('a FEN viewer and editor', ['xboard -lpf $$i -mode EditPosition'],
   rc_entry = [ r'\Format fen        fen     FEN                    "" "%%"	"%%"' ])
 
 path, iv = checkProg('a raster image viewer', ['xv', 'kview', 'gimp'])
 path, ie = checkProg('a raster image editor', ['gimp'])
-addToRC(r'''\Format bmp        bmp     BMP  "" "%s"	"%s"
+addToRC(r'''\Format bmp        bmp     BMP                    "" "%s"	"%s"
 \Format gif        gif     GIF                    "" "%s"	"%s"
 \Format jpg        jpg     JPEG                   "" "%s"	"%s"
 \Format pbm        pbm     PBM                    "" "%s"	"%s"
@@ -269,31 +269,31 @@ checkProg('a text editor', ['xemacs', 'gvim', 'kedit', 'kwrite', 'kate', \
 
 checkProg('a LaTeX -> LyX converter', [os.path.join('..','src','tex2lyx','tex2lyx') + ' -f $$i $$o', \
   'tex2lyx' +  version_suffix + ' -f $$i $$o' ],
-  rc_entry = [ r'\converter latex      lyx        "%%" ""' ])
+  rc_entry = [ r'\converter latex      lyx        "%%"	""' ])
 
 checkProg('a Noweb -> LyX converter', ['noweb2lyx' + version_suffix + ' $$i $$o'], path = ['./reLyX'],
-  rc_entry = [ r'\converter literate   lyx        "%%" ""' ])
+  rc_entry = [ r'\converter literate   lyx        "%%"	""' ])
 
-checkProg('a Noweb -> LaTeX converter', ['noweave' + version_suffix + ' -delay -index $$i > $$o'],
-  path = ['./reLyX'], rc_entry = [ r'\converter literate	latex	"%%" ""' ])
+checkProg('a Noweb -> LaTeX converter', ['noweave -delay -index $$i > $$o'],
+  rc_entry = [ r'\converter literate   latex      "%%"	""' ])
 
 checkProg('a HTML -> LaTeX converter', ['html2latex $$i'],
-  rc_entry = [ r'\converter html       latex      "%%" ""' ])
+  rc_entry = [ r'\converter html       latex      "%%"	""' ])
 
 checkProg('a MSWord -> LaTeX converter', ['wvCleanLatex $$i $$o'],
-  rc_entry = [ r'\converter word       latex      "%%" ""' ])
+  rc_entry = [ r'\converter word       latex      "%%"	""' ])
 
 checkProg('a LaTeX -> MS Word converter', ["htlatex $$i 'html,word' 'symbol/!' '-cvalidate'"],
-  rc_entry = [  r'\converter latex	wordhtml	"%%"  ""' ])
+  rc_entry = [ r'\converter latex      wordhtml   "%%"	""' ])
 
 # FIXME: image_command is not used anywhere.
 checkProg('Image converter', ['convert $$i $$o'])
 
 checkProg('an OpenOffice.org -> LaTeX converter', ['w2l -clean $$i'],
-  rc_entry = [r'\converter sxw      latex        "%%"	""' ])
+  rc_entry = [ r'\converter sxw        latex      "%%"	""' ])
 
 checkProg('an LaTeX -> OpenOffice.org LaTeX converter', ['oolatex $$i', 'oolatex.sh $$i'],
-  rc_entry = [r'\converter latex      sxw        "%%"	"latex"' ])
+  rc_entry = [ r'\converter latex      sxw        "%%"	"latex"' ])
 
 #checkProg('a Postscript interpreter', ['gs'],
 #  rc_entry = [ r'\ps_command "%%"' ])
@@ -322,16 +322,16 @@ checkProg('a DVI to PS converter', ['dvips -o $$o $$i'],
   rc_entry = [ r'\converter dvi        ps         "%%"	""' ])
 
 checkProg('a DVI to PDF converter', ['dvipdfm $$i'],
-  rc_entry = [ r'\converter dvi        pdf3       "%%" ""' ])
+  rc_entry = [ r'\converter dvi        pdf3       "%%"	""' ])
 
 ### We have a script to convert previewlyx to ppm
-addToRC(r'\converter lyxpreview	ppm	"python $$s/scripts/lyxpreview2bitmap.py"	""')
+addToRC(r'\converter lyxpreview ppm        "python $$s/scripts/lyxpreview2bitmap.py"	""')
 
 path, dvipng = checkProg('dvipng', ['dvipng'])
 if dvipng == "dvipng":
-  addToRC(r'\converter lyxpreview	png	"python $$s/scripts/lyxpreview2bitmap.py"	""')
+  addToRC(r'\converter lyxpreview png        "python $$s/scripts/lyxpreview2bitmap.py"	""')
 else:
-  addToRC(r'\converter lyxpreview	png	""	""')
+  addToRC(r'\converter lyxpreview png        ""	""')
 
 checkProg('a *roff formatter', ['groff', 'nroff'],
   rc_entry = [
@@ -352,18 +352,18 @@ path, OCTAVE = checkProg('Octave', ['octave'])
 path, MAPLE = checkProg('Maple', ['maple'])
 
 checkProg('a fax program', ['kdeprintfax $$i', 'ksendfax $$i'],
-  rc_entry = [ r'\converter ps	fax	"%%" ""'])
+  rc_entry = [ r'\converter ps         fax        "%%"	""'])
 
 path, LINUXDOC = checkProg('SGML-tools 1.x (LinuxDoc)', ['sgml2lyx'],
   rc_entry = [
-    r'''\converter linuxdoc	lyx "sgml2lyx $$i" ""
-\converter linuxdoc	latex	"sgml2latex $$i" ""
-\converter linuxdoc	dvi	"sgml2latex -o dvi $$i" ""
-\converter linuxdoc	html	"sgml2html $$i" "" ''',
-    r'''\converter	linuxdoc lyx "none" ""
-\converter linuxdoc	latex "none" ""
-\converter linuxdoc	dvi "none" ""
-\converter linuxdoc	html "none" "" ''' ])
+    r'''\converter linuxdoc   lyx        "sgml2lyx $$i"	""
+\converter linuxdoc   latex      "sgml2latex $$i"	""
+\converter linuxdoc   dvi        "sgml2latex -o dvi $$i"	""
+\converter linuxdoc   html       "sgml2html $$i"	""''',
+    r'''\converter linuxdoc   lyx        "none"	""
+\converter linuxdoc   latex      "none"	""
+\converter linuxdoc   dvi        "none"	""
+\converter linuxdoc   html       "none"	""''' ])
 
 if LINUXDOC != 'none':
   chk_linuxdoc = 'yes'
@@ -376,12 +376,12 @@ else:
 
 path, DOCBOOK = checkProg('SGML-tools 2.x (DocBook) or db2x scripts', ['sgmltools', 'db2dvi'],
   rc_entry = [
-    r'''\converter docbook    dvi        "sgmltools -b dvi $$i" ""
-\converter docbook    html       "sgmltools -b html $$i" ""''',
-    r'''\converter docbook    dvi        "db2dvi $$i" ""
-\converter docbook    html       "db2html $$i" ""''',
-    r'''\converter docbook    dvi        "none" ""
-\converter docbook    html       "none" ""'''])
+    r'''\converter docbook    dvi        "sgmltools -b dvi $$i"	""
+\converter docbook    html       "sgmltools -b html $$i"	""''',
+    r'''\converter docbook    dvi        "db2dvi $$i"	""
+\converter docbook    html       "db2html $$i"	""''',
+    r'''\converter docbook    dvi        "none"	""
+\converter docbook    html       "none"	""'''])
 
 if DOCBOOK != 'none':
   chk_docbook = 'yes'
@@ -402,7 +402,7 @@ checkProg('a spool command', ['lp', 'lpr'],
 
 checkProg('a LaTeX -> HTML converter', ['htlatex $$i', 'tth  -t -e2 -L$$b < $$i > $$o', \
   'latex2html -no_subdir -split 0 -show_section_numbers $$i', 'hevea -s $$i'],
-  rc_entry = [ r'\converter latex      html       "%%" "originaldir,needaux"' ])
+  rc_entry = [ r'\converter latex      html       "%%"	"originaldir,needaux"' ])
 
 # Add the rest of the entries (no checkProg is required)
 addToRC(r'''\Format date       ""     "date command"          "" ""	""
@@ -417,7 +417,7 @@ addToRC(r'''\Format date       ""     "date command"          "" ""	""
 \Format word       doc    "MS Word"               W  ""	""
 \Format wordhtml   html   "MS Word (HTML)"        "" ""        ""
 \converter date       dateout    "date +%d-%m-%Y > $$o"	""
-\converter docbook    docbook-xml "cp $$i $$o" "xml"
+\converter docbook    docbook-xml "cp $$i $$o"	"xml"
 \converter fen        asciichess "python $$s/scripts/fen2ascii.py $$i $$o"	""
 \converter fig        pdftex     "sh $$s/scripts/fig2pdftex.sh $$i $$o"	""
 \converter fig        pstex      "sh $$s/scripts/fig2pstex.sh $$i $$o"	""
@@ -508,11 +508,11 @@ else:
     rmcopy = True
   writeToFile('wrap_chkconfig.ltx', '%s\n%s\n\\input{chkconfig.ltx}\n' \
     % (linuxdoc_cmd, docbook_cmd) )
-  cl = open('chklayouts.tex', 'w')
   ## Construct the list of classes to test for.
   # build the list of available layout files and convert it to commands
   # for chkconfig.ltx
   p1 = re.compile(r'\Declare(LaTeX|DocBook|LinuxDoc)Class')
+  testclasses = list()
   for file in glob.glob( os.path.join('layouts', '*.layout') ) + \
     glob.glob( os.path.join(srcdir, 'layouts', '*.layout' ) ) :
     if not os.path.isfile(file): continue
@@ -523,9 +523,12 @@ else:
       if line[0] != '#':
         print "Wrong input layout file with line '" + line
         sys.exit(3)
-      cl.write( "\\TestDocClass{%s}{%s}\n" % \
-        ( classname, line[1:].strip() ) )
+      testclasses.append("\\TestDocClass{%s}{%s}" % (classname, line[1:].strip()))
       break
+  testclasses.sort()
+  cl = open('chklayouts.tex', 'w')
+  for line in testclasses:
+    cl.write(line + '\n')
   cl.close()
   #
   # we have chklayouts.tex, then process it
@@ -588,14 +591,14 @@ writeToFile( os.path.join('doc', 'LaTeXConfig.lyx'),
   ''.join(lyxin))
 
 ### Let's check whether spaces are allowed in TeX file names
-print "Checking whether TeX allows spaces in file names... ",
 tex_allows_spaces = 'false'
-if not lyx_check_config:
+if lyx_check_config:
+  print "Checking whether TeX allows spaces in file names... ",
   writeToFile('a b.tex', r'\message{working^^J}' )
   # FIXME: the bsh version uses < /dev/null which is not portable.
   # Can anyone confirm if this option (-interaction) is available
   # at other flavor of latex as well? (MikTex/win, Web2C/linux are fine.) 
-  if ''.join(cmdOutput('latex -interaction=nonstopmode "a b"')).find('working') != -1:
+  if ''.join(cmdOutput(LATEX + ' -interaction=nonstopmode "a b"')).find('working') != -1:
     print 'yes'
     tex_allows_spaces = 'true'
   else:
@@ -605,29 +608,29 @@ if not lyx_check_config:
 
 checkProg('a FIG -> EPS/PPM converter', ['fig2dev'],
   rc_entry = [
-    r'''\converter fig eps "fig2dev -L eps $$i $$o" ""
-\converter fig	ppm	"fig2dev -L ppm $$i $$o" ""
-\converter fig	png	"fig2dev -L png $$i $$o" ""''',
+    r'''\converter fig        eps        "fig2dev -L eps $$i $$o"	""
+\converter fig        ppm        "fig2dev -L ppm $$i $$o"	""
+\converter fig        png        "fig2dev -L png $$i $$o"	""''',
     ''])
 
 checkProg('a TIFF -> PS converter', ['tiff2ps $$i > $$o'],
-  rc_entry = [ r'\converter tiff	eps	"%%" ""', ''])
+  rc_entry = [ r'\converter tiff       eps        "%%"	""', ''])
 
 checkProg('a TGIF -> EPS/PPM converter', ['tgif'],
   rc_entry = [
-    r'''\converter tgif eps "tgif -stdout -print -color -eps $$i > $$o" ""
-\converter tgif	pdf	"tgif -stdout -print -color -pdf $$i > $$o" ""''',
+    r'''\converter tgif       eps        "tgif -stdout -print -color -eps $$i > $$o"	""
+\converter tgif       pdf        "tgif -stdout -print -color -pdf $$i > $$o"	""''',
     ''])
 
 checkProg('a EPS -> PDF converter', ['epstopdf'],
-  rc_entry = [ r'\converter eps       pdf      "epstopdf --outfile=$$o $$i" ""', ''])
+  rc_entry = [ r'\converter eps        pdf        "epstopdf --outfile=$$o $$i"	""', ''])
 
-path, GRACE = checkProg('a  Grace -> Image converter', ['gracebat'],
+path, GRACE = checkProg('a Grace -> Image converter', ['gracebat'],
   rc_entry = [
-    r'''\converter agr	eps	"gracebat -hardcopy -printfile $$o -hdevice EPS $$i 2>/dev/null" ""
-\converter agr	png	"gracebat -hardcopy -printfile $$o -hdevice PNG $$i 2>/dev/null" ""
-\converter agr	jpg	"gracebat -hardcopy -printfile $$o -hdevice JPEG $$i 2>/dev/null" ""
-\converter agr	ppm	"gracebat -hardcopy -printfile $$o -hdevice PNM $$i 2>/dev/null" ""''',
+    r'''\converter agr        eps        "gracebat -hardcopy -printfile $$o -hdevice EPS $$i 2>/dev/null"	""
+\converter agr        png        "gracebat -hardcopy -printfile $$o -hdevice PNG $$i 2>/dev/null"	""
+\converter agr        jpg        "gracebat -hardcopy -printfile $$o -hdevice JPEG $$i 2>/dev/null"	""
+\converter agr        ppm        "gracebat -hardcopy -printfile $$o -hdevice PNM $$i 2>/dev/null"	""''',
     ''])
 
 # chk_fontenc may not exist 
