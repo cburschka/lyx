@@ -1,5 +1,10 @@
 2006-03-13  Martin Vermeer  <martin.vermeer@hut.fi>
 
+	* math_data.C (x2pos): Mouse click to right of last nestinset in a
+	cell will position cursor to its left
+
+2006-03-13  Martin Vermeer  <martin.vermeer@hut.fi>
+
 	* math_scriptinset.C (notifyCursorLeaves): Fix to bug 2362: Deleting
 	superscript also deletes subscript
 
