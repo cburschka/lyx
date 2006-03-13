@@ -1,4 +1,4 @@
-#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+#LyX 1.4.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 245
 \begin_document
 \begin_header
@@ -1769,6 +1769,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 linebreak
 \end_layout
@@ -2308,7 +2309,9 @@ Date
 Abstract
 \family default
  environment.
- Now see how it looks when printed.
+ Notice how the title is presented when it's printed out.
+ If you changed the document format to Book, you'll get a separate title
+ page, like the first page of this tutorial.
 \end_layout
 
 \begin_layout Standard
