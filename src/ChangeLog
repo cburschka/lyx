@@ -1,3 +1,8 @@
+2006-03-13  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* rowpainter.C (paintChangeBar): fix painting of change bar with
+	only paragraph break changed
+
 2006-03-12  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* lyx_cb.C (Reconfigure): run lib/configure.py, not lib/configure
