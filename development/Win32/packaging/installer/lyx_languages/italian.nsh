@@ -21,7 +21,7 @@ LangString ModifyingConfigureFailed "${LYX_LANG}" "Fallito tentativo di aggiorna
 LangString CreateCmdFilesFailed "${LYX_LANG}" "Fallito tentativo di creare lyx.cmd e reLyX.cmd"
 LangString RunConfigureFailed "${LYX_LANG}" "Fallito tentativo di eseguire lo script di configurazione"
 
-LangString FinishPageMessage "${LYX_LANG}" "LyX è stato installato. Però, se l$\'installer non è riuscito a lanciare lo script di configurazione, non sarete in grado di usare LyX a causa della mancata generazione del file textclass.lst. In tal caso, il rimedio consiste nell'eseguire il comando 'sh configure' nella directory $\'<LyX>/Resources/lyx$\'."
+LangString FinishPageMessage "${LYX_LANG}" "LyX è stato installato. Però, se l$\'installer non è riuscito a lanciare lo script di configurazione, non sarete in grado di usare LyX a causa della mancata generazione del file textclass.lst. In tal caso, il rimedio consiste nell'eseguire il comando 'sh configure' nella directory $\'<LyX>/Resources$\'."
 
 LangString FinishPageRun "${LYX_LANG}" "Lancia LyX"
 

@@ -26,7 +26,7 @@ LangString ModifyingConfigureFailed "${LYX_LANG}" "Misslyckades med att sätta sö
 LangString CreateCmdFilesFailed "${LYX_LANG}" "Misslyckades med att skapa filerna lyx.cmd och reLyX.cmd"
 LangString RunConfigureFailed "${LYX_LANG}" "Misslyckades med att köra konfigurationsprogrammet"
 
-LangString FinishPageMessage "${LYX_LANG}" "LyX borde nu ha installerats. Dessvärre har en del användare rapporterat att konfigurationsskriptet ibland misslyckats. Om detta händer är inte LyX ordentligt konfigurerat och vägrar starta med ett felmeddelande om att filen 'textclass.lst' saknas. För att åtgärda detta problem, öppna ett kommandofönster (kör programmet 'cmd'), och gå till katalogen 'LyX/Resources/lyx directory'. I den katalogen kör du sedan kommandot 'sh configure' vilket kommer att konfigurar LyX."
+LangString FinishPageMessage "${LYX_LANG}" "LyX borde nu ha installerats. Dessvärre har en del användare rapporterat att konfigurationsskriptet ibland misslyckats. Om detta händer är inte LyX ordentligt konfigurerat och vägrar starta med ett felmeddelande om att filen 'textclass.lst' saknas. För att åtgärda detta problem, öppna ett kommandofönster (kör programmet 'cmd'), och gå till katalogen 'LyX/Resources directory'. I den katalogen kör du sedan kommandot 'sh configure' vilket kommer att konfigurar LyX."
 LangString FinishPageRun "${LYX_LANG}" "Starta LyX"
 
 LangString DownloadPageField2 "${LYX_LANG}" "Installera &ej"

@@ -21,7 +21,7 @@ LangString ModifyingConfigureFailed "${LYX_LANG}" "'path_prefix' kon niet worden
 LangString CreateCmdFilesFailed "${LYX_LANG}" "lyx.cmd en reLyX.cmd konden niet worden aangemaakt"
 LangString RunConfigureFailed "${LYX_LANG}" "Mislukte configuratie poging"
 
-LangString FinishPageMessage "${LYX_LANG}" "LyX is nu geinstalleerd. Sommige gebruikers hebben echter gemeld dat het configuratie script niet is uitgevoerd waardoor LyX afbreekt met de melding dat het bestand textclass.lst ontbreekt. Ga, om dit te herstellen, in de commando prompt naar het LyX/Resources/lyx pad en voer het commando 'sh configure' uit."
+LangString FinishPageMessage "${LYX_LANG}" "LyX is nu geinstalleerd. Sommige gebruikers hebben echter gemeld dat het configuratie script niet is uitgevoerd waardoor LyX afbreekt met de melding dat het bestand textclass.lst ontbreekt. Ga, om dit te herstellen, in de commando prompt naar het LyX/Resources pad en voer het commando 'sh configure' uit."
 LangString FinishPageRun "${LYX_LANG}" "Start LyX"
 
 LangString DownloadPageField2 "${LYX_LANG}" "&Niet installeren"
