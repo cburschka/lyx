@@ -113,19 +113,19 @@ scriptstyle       style       2
 scriptscriptstyle style       3
 
 # misc
-begin             begin       none
-right             right       none
+# The commented lines in this block get misparsed as MathSymbolInset because
+# createMathInset() does not know them. I don't know if this is old cruft
+# or if it is planned to use this in the future. gb 2006-03-13
+#begin             begin       none
+#right             right       none
 underset          underset    none
 overset           overset     none
-parbox            parbox      none
-protect           protect     none
+#protect           protect     none
 mbox              mbox        forcetext
-newcommand        newcommand  none
-label             label       none
-left              left        none
-end               end         none
-fbox              fbox        none
-boxed             fbox        none
+#newcommand        newcommand  none
+#label             label       none
+#left              left        none
+#end               end         none
 
 
 #
