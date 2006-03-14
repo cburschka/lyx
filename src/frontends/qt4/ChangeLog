@@ -1,8 +1,23 @@
-2006-03-01  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+2006-03-14  Abdelrazak Younes  <younes.a@free.fr>
+
+	* QWorkArea.[Ch]: Wheel one-liner mouse fix
+	* QWorkArea.C: Reverted to Q_WS_X11 and Q_WS_MACX instead of Q_OS_*
+	* QWorkArea.h: Added comments
+
+2006-03-12  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* ui/pch.h: new file
+
+2006-03-11  Abdelrazak Younes  <younes.a@free.fr>
+
+	* Various Compilation fixes for MacOSX. There is still a problem
+	  with Dialog.C:275 which does not recognize 
+
+2006-03-10  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* QLMenubar.h: compile fix for gcc-4.1.
 
-2006-03-01  Abdelrazak Younes  <younes.a@free.fr>
+2006-03-10  Abdelrazak Younes  <younes.a@free.fr>
 
 	* QWorkArea.[Ch] cleanup:
 	- Added private members workWidth_ and workHeight_ in order to
@@ -13,10 +28,6 @@
 	- placed all specific stuff (Qt-immodule, X11 and Mac OSX) in a
 	  separate place at the end of QWorkArea.C.
 	- initial support for Wheel mouse (still does not work).
-
-2006-03-12  Lars Gullik Bjønnes  <larsbj@lyx.org>
-
-	* ui/pch.h: new file
 
 2006-03-10  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 

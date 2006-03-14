@@ -43,7 +43,7 @@
 #include <X11/Xlib.h>
 #endif
 
-#ifdef Q_OS_MACX
+#ifdef Q_WS_MACX
 #include <Carbon/Carbon.h>
 #include <support/lstrings.h>
 using lyx::support::subst;
@@ -185,7 +185,7 @@ QWorkArea::QWorkArea(LyXView &, int w, int h)
 	setInputMethodEnabled(true);
 #endif
 
-#ifdef Q_OS_X11
+#ifdef Q_WS_X11
 	// doubleClickInterval() is 400 ms on X11 witch is just too long.
 	// On Windows and Mac OS X, the operating system's value is used.
 	// On Microsoft Windows, calling this function sets the double
@@ -193,7 +193,7 @@ QWorkArea::QWorkArea(LyXView &, int w, int h)
 	QApplication::setDoubleClickInterval(300);
 #endif
 
-#ifdef Q_OS_MACX
+#ifdef Q_WS_MACX
 	wa_ptr = this;
 #endif
 }
@@ -249,7 +249,7 @@ string const QWorkArea::getClipboard() const
 	lyxerr[Debug::ACTION] << "getClipboard: " << (const char*) str << endl;
 	if (str.isNull())
 		return string();
-#ifdef Q_OS_MACX
+#ifdef Q_WS_MACX
 	// The MAC clipboard uses \r for lineendings, and we use \n
 	return subst(fromqstr(str), '\r', '\n');
 #else
@@ -260,7 +260,7 @@ string const QWorkArea::getClipboard() const
 
 void QWorkArea::putClipboard(string const & str) const
 {
-#ifdef Q_OS_MACX
+#ifdef Q_WS_MACX
 	// The MAC clipboard uses \r for lineendings, and we use \n
 	QApplication::clipboard()->setText(toqstr(subst(str, '\n', '\r')),
 	                                   QClipboard::Selection);
@@ -390,6 +390,7 @@ void QWorkArea::mouseMoveEvent(QMouseEvent * e)
 void QWorkArea::wheelEvent(QWheelEvent * e)
 {
 	verticalScrollBar()->setValue(verticalScrollBar()->value() - e->delta());
+	adjustViewWithScrollBar();
 }
 
 void QWorkArea::generateSyntheticMouseEvent()
@@ -573,7 +574,7 @@ bool lyxX11EventFilter(XEvent * xev)
 ////////////////////////////////////////////////////////////////////////
 // Mac OSX specific stuff goes here...
 
-#ifdef Q_OS_MACX
+#ifdef Q_WS_MACX
 namespace{
 OSErr checkAppleEventForMissingParams(const AppleEvent& theAppleEvent)
  {
@@ -637,4 +638,4 @@ pascal OSErr handleOpenDocuments(const AppleEvent* inEvent,
 	AEDisposeDesc(&documentList);
 	return err;
 }
-#endif  // Q_OS_MACX
+#endif  // Q_WS_MACX

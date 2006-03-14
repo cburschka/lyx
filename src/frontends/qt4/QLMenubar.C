@@ -149,7 +149,7 @@ MenuBackend const & QLMenubar::backend()
 */
 QMenuBar * QLMenubar::menuBar() const
 {
-#ifdef Q_OS_MACX
+#ifdef Q_WS_MACX
 	return mac_menubar_.get();
 #else
 	return owner_->menuBar();
@@ -158,7 +158,7 @@ QMenuBar * QLMenubar::menuBar() const
 
 void QLMenubar::macxMenuBarInit()
 {
-#ifdef Q_OS_MACX
+#ifdef Q_WS_MACX
 	mac_menubar_.reset(new QMenuBar);
 
 	// this is the name of the menu that contains our special entries

@@ -169,34 +169,45 @@ protected:
 
 public slots:
 
+	/// Timeout event Slot for keyboard bufferring.
+	/// \todo This is not used currently in the code, remove?
 	void keyeventTimeout();
-	void adjustViewWithScrollBar(int action);
+
+	/// Adjust the LyX buffer view with the position of the scrollbar.
+	/**
+	* The action argument is not used in the the code, it is there
+	* only for the connection to the vertical srollbar signal which 
+	* emits an 'int' action.
+	*/
+	void adjustViewWithScrollBar(int action = 0);
 
 private:
 
-	/// 
+	/// Buffer view width.
 	int workWidth_;
-	///
+
+	/// Buffer view height.
 	int workHeight_;
 
-	/// our painter
+	/// Our painter.
 	QLPainter painter_;
 
 	/// The slot connected to SyntheticMouseEvent::timeout.
 	void generateSyntheticMouseEvent();
 
+	///
 	SyntheticMouseEvent synthetic_mouse_event_;
 
 	/// the double buffered pixmap
 	boost::scoped_ptr<QPixmap> pixmap_;
 
+	/// \todo remove
 	QTimer step_timer_;
+
+	/// \todo remove
 	std::queue<boost::shared_ptr<QKeyEvent> > keyeventQueue_;
 
 	double_click dc_event_;
-
-	bool scrolled_with_mouse_;
-	bool scrolled_with_keyboard_;
 };
 
 #endif // QWORKAREA_H
