@@ -393,7 +393,7 @@ MathArray::size_type MathArray::x2pos(int targetx, int glue) const
 	 *   the right one.
 	 * See bug 1918 for details.    
 	 **/
-	if (it != begin()
+	if (it != begin() && currx >= targetx
 	    && ((*boost::prior(it))->asNestInset()
 		|| abs(lastx - targetx) < abs(currx - targetx))) {
 		--it;
