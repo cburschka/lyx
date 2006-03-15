@@ -177,7 +177,8 @@ bool isChosenFont(QFont & font, string const & family)
 	}
 
 	// Qt 3.2 beta1 returns "xft" for all xft fonts
-	if (font.rawName() == "xft") {
+	// Qt 4.1 returns "Multi" for all ? xft fonts
+	if (font.rawName() == "xft" || font.rawName() == "Multi") {
 		if (contains(fromqstr(fi.family()), family)) {
 			lyxerr[Debug::FONT] << " got it (Xft) ";
 			return true;
