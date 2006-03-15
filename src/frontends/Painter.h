@@ -110,7 +110,7 @@ public:
 		int w, int h,
 		LColor_color) = 0;
 
-	/// draw a filled (irregular) polygon
+	/// draw a filled (irregular) polygon (UNUSED, could be removed)
 	virtual void fillPolygon(
 		int const * xp,
 		int const * yp,
