@@ -104,21 +104,25 @@ string const FileName::mangledFilename(std::string const & dir) const
 	// This string contains about 50 chars-worth of other data,
 	// leaving us, say, 160 characters for the file name itself.
 	// (Erring on the side of caution.)
-	string::size_type max_length = 160;
+	// Other experiments show that MiKTeX's pdflatex compiler is even
+	// more picky. A maximum length of 140 has been proven to work.
+	string::size_type max_length = 140;
 	if (dir.size() - 1 < max_length) {
-		// If dir.size() > max_length, all bets are off anyway.
 		// "+ 1" for the directory separator.
 		max_length -= dir.size() + 1;
+	}
+	// If dir.size() > max_length, all bets are off for YAP anyway.
+	// We truncate the filename nevertheless because of MiKTeX's
+	// pdflatex compiler.
 
-		// If the mangled file name is too long, hack it to fit.
-		// We know we're guaranteed to have a unique file name because
-		// of the counter.
-		if (mname.size() > max_length) {
-			int const half = (int(max_length) / 2) - 2;
-			if (half > 0) {
-				mname = mname.substr(0, half) + "___" +
-					mname.substr(mname.size() - half);
-			}
+	// If the mangled file name is too long, hack it to fit.
+	// We know we're guaranteed to have a unique file name because
+	// of the counter.
+	if (mname.size() > max_length) {
+		int const half = (int(max_length) / 2) - 2;
+		if (half > 0) {
+			mname = mname.substr(0, half) + "___" +
+				mname.substr(mname.size() - half);
 		}
 	}
 

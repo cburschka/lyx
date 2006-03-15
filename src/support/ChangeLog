@@ -1,3 +1,8 @@
+2006-03-15  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* filename.C (mangledFilename): truncate filename to 140 characters
+	for MiKTeX's pdflatex
+
 2006-03-07  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* debugstream.h: fix nullstream.hpp location for boost 1.33.0
