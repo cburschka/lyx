@@ -70,7 +70,6 @@ void QLPopupMenu::update()
 	lyxerr[Debug::GUI] << "\tTriggered menu: " << name_ << endl;
 
 	clear();
-	topLevelMenu_.clear();
 
 	if (name_.empty())
 		return;

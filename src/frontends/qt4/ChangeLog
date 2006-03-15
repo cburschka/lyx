@@ -1,3 +1,7 @@
+2006-03-15  Abdelrazak Younes  <younes.a@free.fr>
+
+	* QLPopupMenu.C: removed topLevelMenu_.clear() call.
+
 2006-03-15  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* qfont_loader.C (isChosenFont): Xft-enabled Qt 4.1 seems to call
