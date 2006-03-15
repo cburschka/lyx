@@ -764,6 +764,9 @@ void expandBranches(Menu & tomenu, LyXView const * view)
 void MenuBackend::expand(Menu const & frommenu, Menu & tomenu,
 			 LyXView const * view) const
 {
+	if (!tomenu.empty())
+		tomenu.clear();
+
 	for (Menu::const_iterator cit = frommenu.begin();
 	     cit != frommenu.end() ; ++cit) {
 		switch (cit->kind()) {

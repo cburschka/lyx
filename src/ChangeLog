@@ -1,3 +1,10 @@
+2006-03-15  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* MenuBackend.C (expand): make sure the menu is empty before
+	starting. 
+
+	* MenuBackend.h (clear): new method.
+
 2006-03-13  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* rowpainter.C (paintChangeBar): fix painting of change bar with

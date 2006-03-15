@@ -153,6 +153,8 @@ public:
 	std::string const & name() const { return name_; }
 	///
 	bool empty() const { return items_.empty(); }
+	/// Clear the menu content.
+	void clear() { items_.clear(); }
 	///
 	ItemList::size_type size() const { return items_.size(); }
 	///
