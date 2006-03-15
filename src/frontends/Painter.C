@@ -35,22 +35,14 @@ void Painter::buttonFrame(int x, int y, int w, int h)
 	int const d = 2;
 
 	fillRectangle(x, y, w, d, LColor::top);
-	fillRectangle(x, (y + h - d), w, d, LColor::bottom);
+	fillRectangle(x, y + h - d, w, d, LColor::bottom);
 
-	// Now a couple of trapezoids
-	int x1[4], y1[4];
-
-	x1[0] = x + d;   y1[0] = y + d;
-	x1[1] = x + d;   y1[1] = y + h - d;
-	x1[2] = x;       y1[2] = y + h;
-	x1[3] = x;       y1[3] = y;
-	fillPolygon(x1, y1, 4, LColor::left);
-
-	x1[0] = x + w - d;  y1[0] = y + d;
-	x1[1] = x + w - d;  y1[1] = y + h - d;
-	x1[2] = x + w;      y1[2] = y + h - d;
-	x1[3] = x + w;      y1[3] = y;
-	fillPolygon(x1, y1, 4, LColor::right);
+	for (int i = 0 ; i < d ; ++i) {
+		line(x + i, y + i, 
+		     x + i, y + h - 1 - i, LColor::left);
+		line(x + w - 1 - i, y + i + 1, 
+		     x + w - 1 - i, y + h - 1 - i, LColor::right);
+	}
 }
 
 

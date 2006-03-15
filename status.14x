@@ -29,24 +29,26 @@ What's new
 
 - Fix LaTeX error when \labelitemi was undefined (bug 2053).
 
-- Translate \verb commands correctly in tex2lyx (bug 2236)
+- Translate \verb commands correctly in tex2lyx (bug 2236).
 
 * User Interface:
 
-- Convert line endings for external copy/paste on OS X (bug 1955)
+- Convert line endings for external copy/paste on OS X (bug 1955).
 
 - fix jurabib error with Spanish documents (bug 2365).
 
-- First change is skipped in "Merge changes..." dialog (bug 2212)
+- First change is skipped in "Merge changes..." dialog (bug 2212).
 
 - Improve handling of the labeling environment in KOMA letters (bug 2246).
 
 - Fix: deleting superscript also deleted subscript (bug 2362)
 
-- Fix: Mouse click to right of last nestinset in a cell will position cursor
-  to its left
+- Fix positioning of cursor when clicking to right of last nestinset
+  in a cell.
 
-- fix cursor positioning in tabulars (bug 2006)
+- Fix cursor positioning in tabulars (bug 2006).
+
+- Fix drawing of inset buttons (bug 2328)
 
 * Configuration/Installation:
 

@@ -1,3 +1,8 @@
+2006-03-01  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* Painter.C (buttonFrame): draw lines instead of trapezoids; it is
+	simpler and fixes drawing with Qt frontend (bug 2328).
+
 2005-08-02  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* LyXView.C (updateInset): scroll bar fix
