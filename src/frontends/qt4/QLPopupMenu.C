@@ -52,7 +52,7 @@ namespace frontend {
 
 QLPopupMenu::QLPopupMenu(QLMenubar * owner, 
 						 MenuItem const & mi, bool topLevelMenu)
-	: owner_(owner), topLevelMenu_(topLevelMenu)
+	: owner_(owner)
 {
 	name_ = mi.submenuname();
 
@@ -70,18 +70,18 @@ void QLPopupMenu::update()
 	lyxerr[Debug::GUI] << "\tTriggered menu: " << name_ << endl;
 
 	clear();
-	topLevelMenu.clear();
+	topLevelMenu_.clear();
 
 	if (name_.empty())
 		return;
 
 	Menu const & fromLyxMenu = owner_->backend().getMenu(name_);
-	owner_->backend().expand(fromLyxMenu, topLevelMenu, owner_->view());
+	owner_->backend().expand(fromLyxMenu, topLevelMenu_, owner_->view());
 	
-	if (!owner_->backend().hasMenu(topLevelMenu.name())) {
-		lyxerr[Debug::GUI] << "\tWARNING: menu seems empty" << topLevelMenu.name() << endl;
+	if (!owner_->backend().hasMenu(topLevelMenu_.name())) {
+		lyxerr[Debug::GUI] << "\tWARNING: menu seems empty" << topLevelMenu_.name() << endl;
 	}
-	populate(this, &topLevelMenu);
+	populate(this, &topLevelMenu_);
 
 	specialMacXmenuHack();
 }

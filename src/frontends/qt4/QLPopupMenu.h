@@ -56,14 +56,12 @@ private:
 	/// \todo Mac specific binding handling.
 	void addBinding(std::string & label, MenuItem const & mi);
 
-	bool topLevelMenu_;
+	/// Top Level Menu
+	Menu topLevelMenu_;
 
 	/// Mac specific menu hack
 	/// \todo Fix it
 	void specialMacXmenuHack();
-
-	/// Top Level Menu
-	Menu topLevelMenu;
 };
 
 } // namespace frontend
