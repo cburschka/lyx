@@ -165,7 +165,7 @@ void QLMenubar::macxMenuBarInit()
 	menubackend_.specialMenu("LyX");
 	// make sure that the special entries are added to the first
 	// menu even before this menu has been opened.
-	name_map_[menubackend_.getMenubar().begin()->submenuname()]->update();
+	//name_map_[menubackend_.getMenubar().begin()->submenuname()]->update();
 #endif
 }
 
