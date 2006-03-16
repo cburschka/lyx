@@ -81,6 +81,8 @@ void PanelStack::addCategory(string const & n, string const & parent)
 	}
 
 	panel_map_[n] = item;
+
+	list_->setFixedWidth(list_->sizeHint().width());
 /*
 	item->setFlags(false);
 	item->setOpen(true);

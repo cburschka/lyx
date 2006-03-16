@@ -895,7 +895,7 @@ void QPrefsDialog::change_color()
 	QColor c(QColorDialog::getColor(ci->color(), qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget()));
 	if (c.isValid()) {
 		ci->color(c);
-		lb->update();
+		lb->triggerUpdate(false);
 		change_adaptor();
 	}
 }

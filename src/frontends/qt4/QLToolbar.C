@@ -80,15 +80,10 @@ Qt::ToolBarArea getToolBarPosition(ToolbarBackend::Flags const & flags)
 QLayoutBox::QLayoutBox(QToolBar * toolbar, QtView & owner)
 	: owner_(owner)
 {
-	QSizePolicy p(QSizePolicy::Minimum, QSizePolicy::Fixed);
 	combo_ = new QComboBox;
-	combo_->setSizePolicy(p);
+	combo_->setSizeAdjustPolicy(QComboBox::AdjustToContents);
 	combo_->setFocusPolicy(Qt::ClickFocus);
 	combo_->setMinimumWidth(combo_->sizeHint().width());
-
- //	QAction * action = new QAction(combo_, tr("Layout"), this);
-//	action->setToolTip(toqstr(tooltip));
-//	action->setStatusTip(toqstr(tooltip));
 
 	QObject::connect(combo_, SIGNAL(activated(const QString &)),
 			 this, SLOT(selected(const QString &)));
