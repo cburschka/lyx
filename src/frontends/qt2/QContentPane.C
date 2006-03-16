@@ -258,7 +258,11 @@ void QContentPane::mouseMoveEvent(QMouseEvent * e)
 
 void QContentPane::wheelEvent(QWheelEvent * e)
 {
-	wa_->scrollbar_->setValue(wa_->scrollbar_->value() - e->delta());
+	// Wheel rotation by one notch results in a delta() of 120 (see
+	// documentation of QWheelEvent)
+	int const lines = QApplication::wheelScrollLines() * e->delta() / 120;
+	wa_->scrollbar_->setValue(wa_->scrollbar_->value() -
+	                          lines *  wa_->scrollbar_->lineStep());
 }
 
 
