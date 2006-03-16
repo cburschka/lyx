@@ -1681,9 +1681,12 @@ bool LyXText::backspace(LCursor & cur)
 			// Previous paragraph, mark "carriage return" as
 			// deleted:
 			Paragraph & par = pars_[cur.pit() - 1];
-			par.setChange(par.size(), Change::DELETED);
-			setCursorIntern(cur, cur.pit() - 1, par.size());
-			return false;
+			// Take care of a just inserted para break:
+			if (par.lookupChange(par.size()) != Change::INSERTED) {
+				par.setChange(par.size(), Change::DELETED);
+				setCursorIntern(cur, cur.pit() - 1, par.size());
+				return false;
+			}
 		}
 
 		needsUpdate = backspacePos0(cur);

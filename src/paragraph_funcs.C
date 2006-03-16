@@ -236,6 +236,19 @@ void mergeParagraph(BufferParams const & bparams,
 	pos_type pos_end = next.size() - 1;
 	pos_type pos_insert = par.size();
 
+	// What happens is the following. Later on, moveItem() will copy
+	// over characters from the next paragraph to be inserted into this
+	// position. Now, if the first char to be so copied is "red" (i.e.,
+	// marked deleted) and the paragraph break is marked "blue",
+	// insertChar will trigger (eventually, through record(), and see
+	// del() and erase() in changes.C) a "hard" character deletion.
+	// Which doesn't make sense of course at this pos, but the effect is
+	// to shorten the change range to which this para break belongs, by
+	// one. It will (should) remain "orphaned", having no CT info to it,
+	// and check() in changes.C will assert. Setting the para break
+	// forcibly to "black" prevents this scenario. -- MV 13.3.2006
+	par.setChange(par.size(), Change::UNCHANGED);
+
 	Change::Type cr = next.lookupChange(next.size());
 	// ok, now copy the paragraph
 	for (pos_type i = 0, j = 0; i <= pos_end; ++i) {

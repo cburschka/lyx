@@ -234,7 +234,8 @@ pasteSelectionHelper(Buffer const & buffer,
 	pit = last_paste;
 	pos = pars[last_paste].size();
 
-	// Maybe some pasting.
+	// Join (conditionally) last pasted paragraph with next one, i.e.,
+	// the tail of the spliced document paragraph
 	if (!empty && last_paste + 1 != pit_type(pars.size())) {
 		if (pars[last_paste + 1].hasSameLayout(pars[last_paste])) {
 			mergeParagraph(buffer.params(), pars, last_paste);

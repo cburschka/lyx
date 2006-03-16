@@ -1,3 +1,13 @@
+2006-03-15  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* CutAndPaste.C (pasteSelectionHelper): comments
+	* paragraph_funcs.C (mergeParagraph): fix Juergen's cut&paste bug
+	* changes.h: comments
+	* paragraph.C (stripLeadingSpaces): remove unnecessary setChange
+	* text.C (backspace): allow deletion of inserted para break
+	Change tracking -related bug fixes (reported by Juergen) and 
+	some documentation work
+
 2006-03-15  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* MenuBackend.C (expand): make sure the menu is empty before
