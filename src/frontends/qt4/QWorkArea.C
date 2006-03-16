@@ -389,9 +389,14 @@ void QWorkArea::mouseMoveEvent(QMouseEvent * e)
 
 void QWorkArea::wheelEvent(QWheelEvent * e)
 {
-	verticalScrollBar()->setValue(verticalScrollBar()->value() - e->delta());
+	// Wheel rotation by one notch results in a delta() of 120 (see
+	// documentation of QWheelEvent)
+	int const lines = QApplication::wheelScrollLines() * e->delta() / 120;
+	verticalScrollBar()->setValue(verticalScrollBar()->value() -
+			lines *  verticalScrollBar()->lineStep());
 	adjustViewWithScrollBar();
 }
+
 
 void QWorkArea::generateSyntheticMouseEvent()
 {
