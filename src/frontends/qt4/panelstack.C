@@ -108,7 +108,6 @@ void PanelStack::addPanel(QWidget * panel, string const & name, string const & p
 	widget_map_[item] = panel;
 	stack_->addWidget(panel);
 	stack_->setMinimumSize(panel->minimumSize());
-	resize(sizeHint());
 }
 
 
