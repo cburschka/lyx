@@ -1,3 +1,8 @@
+2006-03-16  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* text.C (delete): adjust cursor after backspace in change tracking
+	mode (bug 2185).
+
 2006-03-16  Félix-Antoine Bourbonnais  <bouf10pub2@myriade.ca>
 
 	* text3.C (dispatch): set needsUpdate according to the return
