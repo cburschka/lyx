@@ -1541,6 +1541,10 @@ bool LyXText::Delete(LCursor & cur)
 		recordUndo(cur, Undo::DELETE, cur.pit());
 		setCursorIntern(cur, cur.pit(), cur.pos() + 1, false, cur.boundary());
 		needsUpdate = backspace(cur);
+		Paragraph & par = cur.paragraph();
+		if (cur.pos() < par.size()
+		    && par.lookupChange(cur.pos()) == Change::DELETED)
+			cur.posRight();
 	} else if (cur.pit() != cur.lastpit()) {
 		LCursor scur = cur;
 

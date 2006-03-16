@@ -58,6 +58,8 @@ What's new
 
 - Fix cursor positioning in tabulars (bug 2006).
 
+- Adjust cursor after backspace in change tracking mode (bug 2185).
+
 - Update screen when cursor was between two spaces and goes to
   line/document start/end (bug 2298).
 
