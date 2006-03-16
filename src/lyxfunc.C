@@ -540,6 +540,11 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 	}
 
+	case LFUN_MENUWRITE: {
+		enable = !view()->buffer()->isClean();
+		break;
+	}
+
 	// this one is difficult to get right. As a half-baked
 	// solution, we consider only the first action of the sequence
 	case LFUN_SEQUENCE: {
@@ -559,7 +564,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_CANCEL:
 	case LFUN_META_FAKE:
 	case LFUN_CLOSEBUFFER:
-	case LFUN_MENUWRITE:
 	case LFUN_WRITEAS:
 	case LFUN_UPDATE:
 	case LFUN_PREVIEW:

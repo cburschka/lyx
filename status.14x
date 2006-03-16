@@ -37,9 +37,11 @@ What's new
 
 - Convert line endings for external copy/paste on OS X (bug 1955).
 
-- fix jurabib error with Spanish documents (bug 2365).
+- Disable saving when document is unchanged (bug 2313)
 
-- First change is skipped in "Merge changes..." dialog (bug 2212).
+- Fix jurabib error with Spanish documents (bug 2365).
+
+- Do not skip change in "Merge changes..." dialog (bug 2212).
 
 - Improve handling of the labeling environment in KOMA letters (bug 2246).
 
