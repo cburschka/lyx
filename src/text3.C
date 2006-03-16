@@ -387,7 +387,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		if (cur.depth() == 1) {
 			if (!cur.mark())
 				cur.clearSelection();
-			cursorTop(cur);
+			needsUpdate = cursorTop(cur);
 			finishChange(cur, false);
 		} else {
 			cur.undispatched();
@@ -398,7 +398,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		if (cur.depth() == 1) {
 			if (!cur.selection())
 				cur.resetAnchor();
-			cursorTop(cur);
+			needsUpdate = cursorTop(cur);
 			finishChange(cur, true);
 		} else {
 			cur.undispatched();
@@ -409,7 +409,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		if (cur.depth() == 1) {
 			if (!cur.mark())
 				cur.clearSelection();
-			cursorBottom(cur);
+			needsUpdate = cursorBottom(cur);
 			finishChange(cur, false);
 		} else {
 			cur.undispatched();
@@ -420,7 +420,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		if (cur.depth() == 1) {
 			if (!cur.selection())
 				cur.resetAnchor();
-			cursorBottom(cur);
+			needsUpdate = cursorBottom(cur);
 			finishChange(cur, true);
 		} else {
 			cur.undispatched();
@@ -520,7 +520,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		update(cur);
 		if (!cur.selection())
 			cur.resetAnchor();
-		cursorPrevious(cur);
+		needsUpdate = cursorPrevious(cur);
 		finishChange(cur, true);
 		break;
 
@@ -528,7 +528,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		update(cur);
 		if (!cur.selection())
 			cur.resetAnchor();
-		cursorNext(cur);
+		needsUpdate = cursorNext(cur);
 		finishChange(cur, true);
 		break;
 
@@ -536,7 +536,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		update(cur);
 		if (!cur.selection())
 			cur.resetAnchor();
-		cursorHome(cur);
+		needsUpdate = cursorHome(cur);
 		finishChange(cur, true);
 		break;
 
@@ -544,7 +544,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		update(cur);
 		if (!cur.selection())
 			cur.resetAnchor();
-		cursorEnd(cur);
+		needsUpdate = cursorEnd(cur);
 		finishChange(cur, true);
 		break;
 
@@ -604,14 +604,14 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_HOME:
 		if (!cur.mark())
 			cur.clearSelection();
-		cursorHome(cur);
+		needsUpdate = cursorHome(cur);
 		finishChange(cur, false);
 		break;
 
 	case LFUN_END:
 		if (!cur.mark())
 			cur.clearSelection();
-		cursorEnd(cur);
+		needsUpdate = cursorEnd(cur);
 		finishChange(cur, false);
 		break;
 

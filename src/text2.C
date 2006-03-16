@@ -476,16 +476,16 @@ void LyXText::setFont(LCursor & cur, LyXFont const & font, bool toggleall)
 // the cursor set functions have a special mechanism. When they
 // realize you left an empty paragraph, they will delete it.
 
-void LyXText::cursorHome(LCursor & cur)
+bool LyXText::cursorHome(LCursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
 	Row const & row = cur.paragraph().getRow(cur.pos(),cur.boundary());
 
-	setCursor(cur, cur.pit(), row.pos());
+	return setCursor(cur, cur.pit(), row.pos());
 }
 
 
-void LyXText::cursorEnd(LCursor & cur)
+bool LyXText::cursorEnd(LCursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
 	// if not on the last row of the par, put the cursor before
@@ -494,7 +494,7 @@ void LyXText::cursorEnd(LCursor & cur)
 	pos_type end = cur.textRow().endpos();
 	if (end == 0)
 		// empty text, end-1 is no valid position
-		return;
+		return false;
 	bool boundary = false;
 	if (end != cur.lastpos()) {
 		if (!cur.paragraph().isLineSeparator(end-1)
@@ -503,21 +503,21 @@ void LyXText::cursorEnd(LCursor & cur)
 		else
 			--end;
 	}
-	setCursor(cur, cur.pit(), end, true, boundary);
+	return setCursor(cur, cur.pit(), end, true, boundary);
 }
 
 
-void LyXText::cursorTop(LCursor & cur)
+bool LyXText::cursorTop(LCursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
-	setCursor(cur, 0, 0);
+	return setCursor(cur, 0, 0);
 }
 
 
-void LyXText::cursorBottom(LCursor & cur)
+bool LyXText::cursorBottom(LCursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
-	setCursor(cur, cur.lastpit(), boost::prior(paragraphs().end())->size());
+	return setCursor(cur, cur.lastpit(), boost::prior(paragraphs().end())->size());
 }
 
 
