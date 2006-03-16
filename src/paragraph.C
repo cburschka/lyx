@@ -563,7 +563,8 @@ int Paragraph::stripLeadingSpaces()
 		return 0;
 
 	int i = 0;
-	while (!empty() && (isNewline(0) || isLineSeparator(0))) {
+	while (!empty() && (isNewline(0) || isLineSeparator(0)) 
+		&& (lookupChange(0) != Change::DELETED)) {
 		erase(0);
 		++i;
 	}
