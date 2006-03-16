@@ -31,6 +31,8 @@ extern std::map<std::string, std::vector<std::string> > used_packages;
 
 
 /// in text.C
+std::string translate_len(std::string const &);
+
 void parse_text(Parser & p, std::ostream & os, unsigned flags, bool outer,
 		Context & context);
 
