@@ -1059,7 +1059,7 @@ void handle_tabular(Parser & p, ostream & os, bool is_long_tabular,
 		   << verbose_valign(colinfo[col].valign) << "\""
 		   << write_attribute("leftline", colinfo[col].leftlines > 0)
 		   << write_attribute("rightline", colinfo[col].rightlines > 0)
-		   << write_attribute("width", colinfo[col].width)
+		   << write_attribute("width", translate_len(colinfo[col].width))
 		   << write_attribute("special", colinfo[col].special)
 		   << ">\n";
 	}
@@ -1099,7 +1099,7 @@ void handle_tabular(Parser & p, ostream & os, bool is_long_tabular,
 			//if (cell.bottomline)
 			//	cerr << " bottomline=\"true\"";
 			os << " usebox=\"none\""
-			   << write_attribute("width", cell.width);
+			   << write_attribute("width", translate_len(cell.width));
 			if (cell.multi != CELL_NORMAL)
 				os << write_attribute("special", cell.special);
 			os << ">"

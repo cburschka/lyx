@@ -293,6 +293,8 @@ bool translate_len(string const & length, string & valstring, string & unit)
 	return true;
 }
 
+}
+
 
 string translate_len(string const & length)
 {
@@ -304,6 +306,8 @@ string translate_len(string const & length)
 	return length;
 }
 
+
+namespace {
 
 /*!
  * Translates a LaTeX length into \p value, \p unit and
