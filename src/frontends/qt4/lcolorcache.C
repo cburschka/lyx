@@ -16,11 +16,15 @@
 
 LColorCache lcolorcache;
 
+const QColor grey40(0x66, 0x66, 0x66);
+const QColor grey60(0x99, 0x99, 0x99);
+const QColor grey80(0xcc, 0xcc, 0xcc);
+const QColor grey90(0xe5, 0xe5, 0xe5);
+
 
 LColorCache::LColorCache()
 {
 }
-
 
 QColor const & LColorCache::get(LColor_color col) const
 {
@@ -29,13 +33,13 @@ QColor const & LColorCache::get(LColor_color col) const
 		return cit->second;
 
 	if (lcolor.getX11Name(col) == "grey40")
-		colormap[col] = Qt::lightGray;
+		colormap[col] = grey40;
 	else if (lcolor.getX11Name(col) == "grey60")
-		colormap[col] = Qt::gray;
+		colormap[col] = grey60;
 	else if (lcolor.getX11Name(col) == "grey80")
-		colormap[col] = Qt::darkGray;
+		colormap[col] = grey80;
 	else if (lcolor.getX11Name(col) == "grey90")
-		colormap[col] = Qt::darkGray;
+		colormap[col] = grey90;
 	else
 		colormap[col] = QColor(lcolor.getX11Name(col).c_str());
 
