@@ -120,6 +120,8 @@ overset           overset     none
 parbox            parbox      none
 protect           protect     none
 mbox              mbox        forcetext
+tag               mbox        forcetext
+tag*              mbox        forcetext
 newcommand        newcommand  none
 #label             label       none
 left              left        none

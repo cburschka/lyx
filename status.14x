@@ -33,6 +33,8 @@ What's new
 
 - Truncate temporary file names that are too long for MikTeX's pdflatex
 
+- Parse \tag and \tag* commands correctly in tex2lyx and mathed (bug 2234).
+
 * User Interface:
 
 - Convert line endings for external copy/paste on OS X (bug 1955).
