@@ -209,17 +209,17 @@ public:
 	///
 	bool cursorDownParagraph(LCursor & cur);
 	///
-	void cursorHome(LCursor & cur);
+	bool cursorHome(LCursor & cur);
 	///
-	void cursorEnd(LCursor & cur);
+	bool cursorEnd(LCursor & cur);
 	///
 	bool cursorPrevious(LCursor & cur);
 	///
 	bool cursorNext(LCursor & cur);
 	///
-	void cursorTop(LCursor & cur);
+	bool cursorTop(LCursor & cur);
 	///
-	void cursorBottom(LCursor & cur);
+	bool cursorBottom(LCursor & cur);
 	///
 	bool Delete(LCursor & cur);
 	///

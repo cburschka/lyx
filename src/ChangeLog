@@ -1,3 +1,11 @@
+2006-03-16  Félix-Antoine Bourbonnais  <bouf10pub2@myriade.ca>
+
+	* text3.C (dispatch): set needsUpdate according to the return
+	value of the methods below (bug 2298)
+
+	* text2.C (cursorTop, cursorBottom, cursorHome, cursorEnd): return
+	true if dEPM triggered.
+
 2006-03-16  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* text.C (getPossibleLabel): get a sensible prefix inside figure and 

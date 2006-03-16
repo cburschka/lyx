@@ -54,6 +54,9 @@ What's new
 
 - Fix cursor positioning in tabulars (bug 2006).
 
+- Update screen when cursor was between two spaces and goes to
+  line/document start/end (bug 2298).
+
 - Fix drawing of inset buttons (bug 2328)
 
 - Fix drawing of \boxed and \fbox in formulas (bug 2361).
