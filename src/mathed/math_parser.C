@@ -1260,6 +1260,15 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 			parse(cell->back().nucleus()->cell(2), FLAG_ITEM, MathInset::TEXT_MODE);
 		}
 
+		else if (t.cs() == "tag") {
+			if (nextToken().character() == '*') {
+				getToken();
+				cell->push_back(createMathInset(t.cs() + '*'));
+			} else
+				cell->push_back(createMathInset(t.cs()));
+			parse(cell->back().nucleus()->cell(0), FLAG_ITEM, MathInset::TEXT_MODE);
+		}
+
 #if 0
 		else if (t.cs() == "infer") {
 			MathArray ar;

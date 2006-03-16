@@ -185,6 +185,17 @@ void parse_math(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 			os << '}';
 		}
 
+		else if (t.cs() == "tag") {
+			os << '\\' << t.cs();
+			if (p.next_token().asInput() == "*") {
+				p.get_token();
+				os << '*';
+			}
+			os << '{';
+			parse_math(p, os, FLAG_ITEM, MATHTEXT_MODE);
+			os << '}';
+		}
+
 		else if (t.cs() == "mbox" || t.cs() == "fbox") {
 			os << "\\" << t.cs() << '{';
 			parse_math(p, os, FLAG_ITEM, MATHTEXT_MODE);
