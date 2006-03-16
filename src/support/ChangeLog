@@ -1,3 +1,8 @@
+2006-03-15  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* filename.C (mangledFilename): truncate filename to 140 characters
+	for MiKTeX's pdflatex
+
 2006-02-12  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* package.C.in (relative_system_support_dir): fix for win32 and

@@ -31,6 +31,8 @@ What's new
 
 - Translate \verb commands correctly in tex2lyx (bug 2236).
 
+- Truncate temporary file names that are too long for MikTeX's pdflatex
+
 * User Interface:
 
 - Convert line endings for external copy/paste on OS X (bug 1955).
