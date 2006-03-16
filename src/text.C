@@ -2321,8 +2321,25 @@ string LyXText::getPossibleLabel(LCursor & cur) const
 		}
 	}
 
-	string text = layout->latexname().substr(0, 3);
-	if (layout->latexname() == "theorem")
+	string name = layout->latexname();
+
+	// for captions, we want the abbreviation of the float type
+	if (layout->labeltype == LABEL_SENSITIVE) {
+		// Search for the first float or wrap inset in the iterator
+		size_t i = cur.depth();
+		while (i > 0) {
+			--i;
+			InsetBase * const in = &cur[i].inset();
+			if (in->lyxCode() == InsetBase::FLOAT_CODE
+			    || in->lyxCode() == InsetBase::WRAP_CODE) {
+				name = in->getInsetName();
+				break;
+			}
+		}
+	}
+
+	string text = name.substr(0, 3);
+	if (name == "theorem")
 		text = "thm"; // Create a correct prefix for prettyref
 
 	text += ':';

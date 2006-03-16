@@ -1,3 +1,8 @@
+2006-03-16  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* text.C (getPossibleLabel): get a sensible prefix inside figure and 
+	tabular	floats (bug 1999).
+
 2006-03-16  John Spray  <spray@lyx.org>
 
 	* lyxfunc.C (getStatus): disable LFUN_MENUWRITE when document is
