@@ -1244,7 +1244,15 @@ contributers = [
                  "",
                  "",
                  "",
-                 u"bug reports and small fixes") ]
+                 u"bug reports and small fixes"),
+
+     contributer(u"Abdelrazak Younes",
+                 "younes.a () free ! fr",
+                 "GPL",
+                 "Re: [Patch] RFQ: ParagraphList Rewrite",
+                 "m=113993670602439",
+                 "14 February 2006",
+                 u"Qt4 frontend, editing optimisations") ]
 
 
 if __name__ == "__main__":
