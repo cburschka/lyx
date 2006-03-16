@@ -1,3 +1,8 @@
+2006-03-16  John Spray  <spray@lyx.org>
+
+	* lyxfunc.C (getStatus): disable LFUN_MENUWRITE when document is
+	clean (bug 2313)
+
 2006-03-15  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* CutAndPaste.C (pasteSelectionHelper): comments
