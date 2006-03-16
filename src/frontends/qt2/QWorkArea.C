@@ -62,8 +62,7 @@ QWorkArea::QWorkArea(LyXView &, int, int)
 
 	content_->show();
 
-	// It is said that this helps reduce flicker
-	content_->setBackgroundMode(NoBackground);
+	content_->setBackgroundColor(lcolorcache.get(LColor::background));
 
 	QHBoxLayout * vl = new QHBoxLayout(this);
 	vl->addWidget(content_, 5);
