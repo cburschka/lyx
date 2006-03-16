@@ -35,6 +35,8 @@ What's new
 
 - Parse \tag and \tag* commands correctly in tex2lyx and mathed (bug 2234).
 
+- Import fixed width table columns correctly in tex2lyx (bug 2290).
+
 * User Interface:
 
 - Convert line endings for external copy/paste on OS X (bug 1955).
@@ -62,6 +64,8 @@ What's new
 - Fix drawing of inset buttons (bug 2328)
 
 - Fix drawing of \boxed and \fbox in formulas (bug 2361).
+
+- Use the qt wide scroll wheel setting (bug 2175).
 
 * Configuration/Installation:
 
