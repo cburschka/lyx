@@ -1,3 +1,8 @@
+2006-03-17  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* insettabular.C (getStatus): add extra condition for PASTE in 
+	respect of the tabularStack (bug 2377).
+
 2006-03-11  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* insettabular.C (dist): fix miscalculation of rowheight (bug 2006)
