@@ -151,15 +151,6 @@ int RowPainter::leftMargin() const
 }
 
 
-bool isTrueTextInset(InsetBase * in)
-{
-	// Math and tabular insets have isTextInset = true, though they are
-	// not derived from InsetText. Paint them fully
-	return (in && in->isTextInset() && in->asMathInset() == 0
-		&& in->lyxCode() != InsetBase::TABULAR_CODE);
-}
-
-
 void RowPainter::paintInset(pos_type const pos, LyXFont const & font)
 {
 	InsetBase const * inset = par_.getInset(pos);
@@ -176,8 +167,10 @@ void RowPainter::paintInset(pos_type const pos, LyXFont const & font)
 	InsetBase * in = const_cast<InsetBase *>(inset);
 	// non-wide insets are painted completely. Recursive
 	bool tmp = bv_.repaintAll();
-	if (!isTrueTextInset(in) || !static_cast<InsetText*>(in)->Wide())
+	if (!in->asTextInset() || !static_cast<InsetText*>(in)->Wide()) {
 		bv_.repaintAll(true);
+		lyxerr[Debug::PAINTING] << endl << "Paint inset fully" << endl;
+	}
 	if (bv_.repaintAll())
 		inset->drawSelection(pi, int(x_), yo_);
 	inset->draw(pi, int(x_), yo_);
@@ -821,9 +814,11 @@ void paintPar
 		for (pos_type i = rit->pos() ; i != rit->endpos(); ++i) {
 			InsetBase* in 
 			    = const_cast<InsetBase*>(par.getInset(i));
-			if (isTrueTextInset(in))
+			if (in && in->asTextInset()) {
 				static_cast<InsetText*>(in)->Wide()
-				    = in_inset_alone_on_row;
+				    = in_inset_alone_on_row  &&
+					static_cast<InsetText*>(in)->Tall();
+			}
 		}
 
 		// If selection is on, the current row signature differs 

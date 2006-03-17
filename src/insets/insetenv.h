@@ -34,8 +34,6 @@ public:
 	///
 	InsetBase::EDITABLE editable() const { return HIGHLY_EDITABLE; }
 	///
-	bool isTextInset() const { return true; }
-	///
 	LyXLayout_ptr const & layout() const;
 	/** returns true if, when outputing LaTeX, font changes should
             be closed before generating this inset. This is needed for

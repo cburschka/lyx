@@ -57,7 +57,9 @@ public:
 	///
 	EDITABLE editable() const { return HIGHLY_EDITABLE; }
 	///
-	bool isTextInset() const { return true; }
+	bool canTrackChanges() const { return true; }
+	///
+	InsetText * asTextInset() const { return const_cast<InsetText *>(this); }
 	///
 	int latex(Buffer const &, std::ostream &,
 		  OutputParams const &) const;
@@ -139,7 +141,9 @@ public:
 	InsetText(InsetText const &);
 	///
 	bool & Wide() const { return wide_inset_; }
-	
+	///
+	bool const Tall() const;
+
 protected:
 	///
 	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);

@@ -536,7 +536,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 			&& runparams.flavor == OutputParams::LATEX
 			&& features.isAvailable("dvipost");
 
-		if (inset->isTextInset()) {
+		if (inset->canTrackChanges()) {
 			column += Changes::latexMarkChange(os, running_change,
 				Change::UNCHANGED, output);
 			running_change = Change::UNCHANGED;

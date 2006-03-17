@@ -258,6 +258,12 @@ InsetBase * InsetText::editXY(LCursor & cur, int x, int y)
 }
 
 
+bool const InsetText::Tall() const
+{
+	return text_.ascent() + text_.descent() > 2  * defaultRowHeight(); 
+}
+
+
 void InsetText::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
 	lyxerr[Debug::DEBUG] << BOOST_CURRENT_FUNCTION

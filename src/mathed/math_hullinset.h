@@ -189,7 +189,7 @@ public:
 	/// what appears in the minibuffer when opening
 	virtual std::string const editMessage() const;
 	///
-	virtual bool isTextInset() const { return true; }
+	virtual bool canTrackChanges() const { return true; }
 	///
 	virtual void mutateToText();
 	///
