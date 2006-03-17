@@ -20,7 +20,7 @@
 import string
 import re
 from parser_tools import find_token, find_end_of_inset, get_value,\
-                         find_token2, del_token
+                         find_token_exact, del_token
 
 def change_insetgraphics(file):
     lines = file.body
@@ -38,16 +38,16 @@ def change_insetgraphics(file):
 	if get_value(lines, "rotateOrigin", i, j) == "leftBaseline":
 	    j = del_token(lines, "rotateOrigin", i, j)
 
-	k = find_token2(lines, "rotate", i, j)
+	k = find_token_exact(lines, "rotate", i, j)
 	if k != -1:
 	    del lines[k]
 	    j = j-1
 	else:
 	    j = del_token(lines, "rotateAngle", i, j)
 
-	k = find_token2(lines, "size_type", i, j)
+	k = find_token_exact(lines, "size_type", i, j)
 	if k == -1:
-	    k = find_token2(lines, "size_kind", i, j)
+	    k = find_token_exact(lines, "size_kind", i, j)
 	if k != -1:
 	    size_type = string.split(lines[k])[1]
 	    del lines[k]
@@ -64,9 +64,9 @@ def change_insetgraphics(file):
 	    else:
 		j = del_token(lines, "scale", i, j)
 
-	k = find_token2(lines, "lyxsize_type", i, j)
+	k = find_token_exact(lines, "lyxsize_type", i, j)
 	if k == -1:
-	    k = find_token2(lines, "lyxsize_kind", i, j)
+	    k = find_token_exact(lines, "lyxsize_kind", i, j)
 	if k != -1:
 	    lyxsize_type = string.split(lines[k])[1]
 	    del lines[k]

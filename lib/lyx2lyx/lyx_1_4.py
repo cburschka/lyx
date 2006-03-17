@@ -23,8 +23,8 @@ from os import access, F_OK
 import os.path
 from parser_tools import find_token, find_end_of_inset, get_next_paragraph, \
                          get_paragraph, get_value, del_token, is_nonempty_line,\
-			 find_tokens, find_end_of, find_token2, find_re,\
-                         get_layout
+			 find_tokens, find_end_of, find_token_exact, find_tokens_exact,\
+                         find_re, get_layout
 from sys import stdin
 from string import replace, split, find, strip, join
 
@@ -827,7 +827,7 @@ def revert_box(file):
 def convert_collapsable(file):
     i = 0
     while 1:
-        i = find_tokens(file.body, ["\\begin_inset Box",
+        i = find_tokens_exact(file.body, ["\\begin_inset Box",
                                 "\\begin_inset Branch",
                                 "\\begin_inset CharStyle",
                                 "\\begin_inset Float",
@@ -861,7 +861,7 @@ def convert_collapsable(file):
 def revert_collapsable(file):
     i = 0
     while 1:
-        i = find_tokens(file.body, ["\\begin_inset Box",
+        i = find_tokens_exact(file.body, ["\\begin_inset Box",
                                 "\\begin_inset Branch",
                                 "\\begin_inset CharStyle",
                                 "\\begin_inset Float",
@@ -1752,7 +1752,7 @@ def revert_bibtopic(file):
 def convert_float(file):
     i = 0
     while 1:
-        i = find_token(file.body, '\\begin_inset Float', i)
+        i = find_token_exact(file.body, '\\begin_inset Float', i)
         if i == -1:
             return
         # Seach for a line starting 'wide'
@@ -1773,7 +1773,7 @@ def convert_float(file):
 def revert_float(file):
     i = 0
     while 1:
-        i = find_token(file.body, '\\begin_inset Float', i)
+        i = find_token_exact(file.body, '\\begin_inset Float', i)
         if i == -1:
             return
         j = find_end_of_inset(file.body, i)
@@ -1799,7 +1799,7 @@ def convert_graphics(file):
         if i == -1:
             return
 
-	j = find_token2(file.body, "filename", i)
+	j = find_token_exact(file.body, "filename", i)
         if j == -1:
             return
         i = i + 1
