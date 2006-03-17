@@ -37,24 +37,40 @@ def find_token(lines, token, start, end = 0):
     return -1
 
 
-def find_token2(lines, token, start, end = 0):
+def find_token_exact(lines, token, start, end = 0):
     if end == 0:
 	end = len(lines)
     for i in xrange(start, end):
-	x = string.split(lines[i])
-	if len(x) > 0 and x[0] == token:
-	    return i
+        x = string.split(lines[i])
+        y = string.split(token)
+        if len(x) < len(y):
+            continue
+        if x[:len(y)] == y:
+            return i
     return -1
 
 
 def find_tokens(lines, tokens, start, end = 0):
     if end == 0:
 	end = len(lines)
-    for i in xrange(start, end):
-	line = lines[i]
+    for i in range(start, end):
 	for token in tokens:
-	    if line[:len(token)] == token:
+	    if lines[i][:len(token)] == token:
 		return i
+    return -1
+
+
+def find_tokens_exact(lines, tokens, start, end = 0):
+    if end == 0:
+	end = len(lines)
+    for i in range(start, end):
+        for token in tokens:
+            x = string.split(lines[i])
+            y = string.split(token)
+            if len(x) < len(y):
+                continue
+            if x[:len(y)] == y:
+                return i
     return -1
 
 
@@ -86,7 +102,7 @@ def find_tokens_backwards(lines, tokens, start):
 
 
 def get_value(lines, token, start, end = 0):
-    i = find_token2(lines, token, start, end)
+    i = find_token_exact(lines, token, start, end)
     if i == -1:
 	return ""
     if len(string.split(lines[i])) > 1:
@@ -103,7 +119,7 @@ def get_layout(line, default_layout):
 
 
 def del_token(lines, token, i, j):
-    k = find_token2(lines, token, i, j)
+    k = find_token_exact(lines, token, i, j)
     if k == -1:
 	return j
     else:
