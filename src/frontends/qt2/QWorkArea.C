@@ -184,7 +184,6 @@ void QWorkArea::haveSelection(bool own) const
 {
 	wa_ptr = this;
 
-#if QT_VERSION >= 300
 	if (!QApplication::clipboard()->supportsSelection())
 		return;
 
@@ -194,15 +193,12 @@ void QWorkArea::haveSelection(bool own) const
 	}
 	// We don't need to do anything if own = false, as this case is
 	// handled by QT.
-#endif
 }
 
 
 string const QWorkArea::getClipboard() const
 {
-#if QT_VERSION >= 300
 	QApplication::clipboard()->setSelectionMode(true);
-#endif
 	QString str = QApplication::clipboard()->text();
 	if (str.isNull())
 		return string();
@@ -217,9 +213,7 @@ string const QWorkArea::getClipboard() const
 
 void QWorkArea::putClipboard(string const & str) const
 {
-#if QT_VERSION >= 300
 	QApplication::clipboard()->setSelectionMode(true);
-#endif
 #ifdef Q_OS_MAC
 	// The MAC clipboard uses \r for lineendings, and we use \n
 	QApplication::clipboard()->setText(toqstr(subst(str, '\n', '\r')));

@@ -37,9 +37,7 @@ PanelStack::PanelStack(QWidget * parent, const char * name)
 	list_->setVScrollBarMode(QScrollView::AlwaysOff);
 	list_->addColumn("");
 	list_->setColumnWidthMode(0, QListView::Maximum);
-#if QT_VERSION >= 300
 	list_->setResizeMode(QListView::AllColumns);
-#endif
 	list_->setRootIsDecorated(true);
 	QWidget * w = static_cast<QWidget*>(list_->child("list view header"));
 	if (w)

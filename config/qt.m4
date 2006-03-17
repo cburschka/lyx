@@ -96,7 +96,7 @@ AC_DEFUN([QT_TRY_LINK],
 		],
 	[
 	QString s("mangle_failure");
-	#if (QT_VERSION < 221)
+	#if (QT_VERSION < 0x030000)
 	break_me_(\\\);
 	#endif
 	],
