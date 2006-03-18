@@ -753,7 +753,7 @@ bool CursorOnRow(PainterInfo & pi, pit_type const pit,
 		if (sl.text() == &text
 		    && sl.pit() == pit
 	  	    && sl.pos() >= rit->pos()
-		    && sl.pos() < rit->endpos())
+		    && sl.pos() <= rit->endpos())
 			return true;
 	}
 	return false;
