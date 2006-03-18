@@ -164,10 +164,10 @@ void RowPainter::paintInset(pos_type const pos, LyXFont const & font)
 	pi.ltr_pos = (text_.bidi.level(pos) % 2 == 0);
 	pi.erased_ = erased_ || isDeletedText(par_, pos);
 	theCoords.insets().add(inset, int(x_), yo_);
-	InsetBase * in = const_cast<InsetBase *>(inset);
+	InsetText const * const in = inset->asTextInset();
 	// non-wide insets are painted completely. Recursive
 	bool tmp = bv_.repaintAll();
-	if (!in->asTextInset() || !static_cast<InsetText*>(in)->Wide()) {
+	if (!in || !in->Wide()) {
 		bv_.repaintAll(true);
 		lyxerr[Debug::PAINTING] << endl << "Paint inset fully" << endl;
 	}
@@ -812,12 +812,12 @@ void paintPar
 
 		// If this is the only object on the row, we can make it wide
 		for (pos_type i = rit->pos() ; i != rit->endpos(); ++i) {
-			InsetBase* in 
-			    = const_cast<InsetBase*>(par.getInset(i));
-			if (in && in->asTextInset()) {
-				static_cast<InsetText*>(in)->Wide()
-				    = in_inset_alone_on_row  &&
-					static_cast<InsetText*>(in)->Tall();
+			InsetBase const * const in = par.getInset(i);
+			if (in) {
+				InsetText const * const t = in->asTextInset();
+				if (t)
+					t->Wide() = in_inset_alone_on_row &&
+					            t->Tall();
 			}
 		}
 

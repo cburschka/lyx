@@ -220,7 +220,7 @@ public:
 	/// does this contain text that can be change track marked in DVI?
 	virtual bool canTrackChanges() const { return false; }
 	/// is this inset based on the TextInset class?
-	virtual InsetText * asTextInset() const { return 0; }
+	virtual InsetText const * asTextInset() const { return 0; }
 	/// return true if the inset should be removed automatically
 	virtual bool autoDelete() const;
 

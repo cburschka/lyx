@@ -59,7 +59,7 @@ public:
 	///
 	bool canTrackChanges() const { return true; }
 	///
-	InsetText * asTextInset() const { return const_cast<InsetText *>(this); }
+	InsetText const * asTextInset() const { return this; }
 	///
 	int latex(Buffer const &, std::ostream &,
 		  OutputParams const &) const;
