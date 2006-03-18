@@ -76,3 +76,6 @@ What's new
 
 * Configuration/Installation:
 
+- Don't use the -mms-bitfields compiler switch on mingw and cygwin, since
+  Q..3/ does not use it either in the default configuration
+
