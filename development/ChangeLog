@@ -1,3 +1,10 @@
+2006-03-18  Michael Gerz  <michael.gerz@teststep.org>
+
+	* Win32/packaging/build_aspell.sh:
+	add new aspell build script (sync with LyX 1.5.0)
+	* Win32/packaging/installer/lyx_languages.polish.nsh:
+	add polish translations (sync with LyX 1.5.0)
+
 2006-03-10  Michael Gerz  <michael.gerz@teststep.org>
 
 	* Win32/packaging/installer/lyx_languages/*.nsh:
@@ -5,7 +12,7 @@
 
 2006-02-24  Bennett Helm <bennett.helm@fandm.edu>
 
-    * Minor tweak to Info.plist in Mac application bundle.
+	* Minor tweak to Info.plist in Mac application bundle.
 
 2006-02-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
