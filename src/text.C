@@ -1689,7 +1689,7 @@ bool LyXText::backspace(LCursor & cur)
 			if (par.lookupChange(par.size()) != Change::INSERTED) {
 				par.setChange(par.size(), Change::DELETED);
 				setCursorIntern(cur, cur.pit() - 1, par.size());
-				return false;
+				return true;
 			}
 		}
 
