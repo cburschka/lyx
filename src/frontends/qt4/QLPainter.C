@@ -39,19 +39,8 @@ QLPainter::~QLPainter()
 }
 
 QLPainter::QLPainter(QWorkArea * qwa)
-	: Painter(), paint_check_(0), qwa_(qwa)
+	: Painter(), qwa_(qwa)
 {
-}
-
-void QLPainter::start()
-{
-}
-
-
-void QLPainter::end()
-{
-//	if (qp_->isActive())
-//		qp_->end();
 }
 
 
@@ -66,29 +55,6 @@ int QLPainter::paperHeight() const
 	return qwa_->viewport()->height();
 }
 
-/*
-QPainter & QLPainter::setPen(LColor_color c,
-	Painter::line_style ls, Painter::line_width lw)
-{
-	QPen pen = qp_->pen();
-
-	pen.setColor(lcolorcache.get(c));
-
-	switch (ls) {
-		case line_solid: pen.setStyle(Qt::SolidLine); break;
-		case line_onoffdash: pen.setStyle(Qt::DotLine); break;
-	}
-
-	switch (lw) {
-		case line_thin: pen.setWidth(0); break;
-		case line_thick: pen.setWidth(3); break;
-	}
-
-	qp_->setPen(pen);
-
-	return *qp_;
-}
-*/
 QPainter & QLPainter::setQPainterPen(QPainter & qp, LColor_color c,
 	Painter::line_style ls, Painter::line_width lw)
 {
@@ -113,7 +79,7 @@ QPainter & QLPainter::setQPainterPen(QPainter & qp, LColor_color c,
 
 void QLPainter::point(int x, int y, LColor_color c)
 {
-	QPainter qp(qwa_->pixmap());
+	QPainter qp(qwa_->paintDevice());
 	setQPainterPen(qp, c).drawPoint(x, y);
 }
 
@@ -123,7 +89,7 @@ void QLPainter::line(int x1, int y1, int x2, int y2,
 	line_style ls,
 	line_width lw)
 {
-	QPainter qp(qwa_->pixmap());
+	QPainter qp(qwa_->paintDevice());
 	setQPainterPen(qp, col, ls, lw).drawLine(x1, y1, x2, y2);
 }
 
@@ -143,7 +109,7 @@ void QLPainter::lines(int const * xp, int const * yp, int np,
 		points[i].setY(yp[i]);
 	}
 
-	QPainter qp(qwa_->pixmap());
+	QPainter qp(qwa_->paintDevice());
 	setQPainterPen(qp, col, ls, lw).drawPolyline(points.get(), np);
 }
 
@@ -153,18 +119,14 @@ void QLPainter::rectangle(int x, int y, int w, int h,
 	line_style ls,
 	line_width lw)
 {
-	QPainter qp(qwa_->pixmap());
+	QPainter qp(qwa_->paintDevice());
 	setQPainterPen(qp, col, ls, lw).drawRect(x, y, w, h);
 }
 
 
 void QLPainter::fillRectangle(int x, int y, int w, int h, LColor_color col)
 {
-//	lyxerr[Debug::GRAPHICS] << BOOST_CURRENT_FUNCTION
-//		<< "\nx=" << x << " y=" << y << " w=" << w << " h=" << h
-//		<< " LColor " << col << endl;
-
-	QPainter qp(qwa_->pixmap());
+	QPainter qp(qwa_->paintDevice());
 	qp.fillRect(x, y, w, h, lcolorcache.get(col));
 }
 
@@ -180,7 +142,7 @@ void QLPainter::fillPolygon(int const * xp, int const * yp,
 		points[i].setY(yp[i]);
 	}
 
-	QPainter qp(qwa_->pixmap());
+	QPainter qp(qwa_->paintDevice());
 	setQPainterPen(qp, col);
 	qp.setBrush(lcolorcache.get(col));
 	qp.drawPolygon(points.get(), np);
@@ -192,7 +154,7 @@ void QLPainter::arc(int x, int y, unsigned int w, unsigned int h,
 	int a1, int a2, LColor_color col)
 {
 	// LyX usings 1/64ths degree, Qt usings 1/16th
-	QPainter qp(qwa_->pixmap());
+	QPainter qp(qwa_->paintDevice());
 	setQPainterPen(qp, col).drawArc(x, y, w, h, a1 / 4, a2 / 4);
 }
 
@@ -205,7 +167,7 @@ void QLPainter::image(int x, int y, int w, int h,
 
 	fillRectangle(x, y, w, h, LColor::graphicsbg);
 
-	QPainter qp(qwa_->pixmap());
+	QPainter qp(qwa_->paintDevice());
 	qp.drawImage(x, y, qlimage.qimage(), 0, 0, w, h);
 }
 
@@ -234,7 +196,7 @@ void QLPainter::smallCapsText(int x, int y,
 	QFontMetrics const & qfontm = QFontMetrics(qfont);
 	QFontMetrics const & qsmallfontm = QFontMetrics(qsmallfont);
 
-	QPainter qp(qwa_->pixmap());
+	QPainter qp(qwa_->paintDevice());
 	int tmpx = x;
 	size_t ls = s.length();
 	for (size_t i = 0; i < ls; ++i) {
@@ -256,7 +218,7 @@ void QLPainter::smallCapsText(int x, int y,
 void QLPainter::text(int x, int y, char const * s, size_t ls,
 	LyXFont const & f)
 {
-	QPainter qp(qwa_->pixmap());
+	QPainter qp(qwa_->paintDevice());
 	setQPainterPen(qp, f.realColor());
 
 	Encoding const * encoding = f.language()->encoding();
@@ -288,8 +250,14 @@ void QLPainter::text(int x, int y, char const * s, size_t ls,
 
 }
 /// draw a pixmap from the image cache
-void QLPainter::pixmap(int x, int y, QPixmap const & pixmap)
+void QLPainter::drawPixmap(int x, int y, QPixmap const & pixmap)
 {
-	QPainter qp(qwa_->pixmap());
+	QPainter qp(qwa_->paintDevice());
 	qp.drawPixmap(x, y, pixmap);
+}
+
+void QLPainter::drawImage(int x, int y, QImage const & image)
+{
+	QPainter qp(qwa_->paintDevice());
+	qp.drawImage(x, y, image);
 }

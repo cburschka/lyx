@@ -12,10 +12,12 @@
 #ifndef QSCREEN_H
 #define QSCREEN_H
 
+
 #include "screen.h"
-#include <qcolor.h>
 
 #include <QPixmap>
+
+class QColor;
 
 class QWorkArea;
 class WorkArea;
@@ -47,13 +49,9 @@ private:
 	/// our owning widget
 	QWorkArea & owner_;
 
-//	QRegion nocursor_region_;
-//	QRegion hcursor_region_;
-//	QRegion vcursor_region_;
-
-	QPixmap nocursor_pixmap_;
-	QPixmap hcursor_pixmap_;
-	QPixmap vcursor_pixmap_;
+	QPixmap nocursor_;
+	QPixmap hcursor_;
+	QPixmap vcursor_;
 
 	//@{ the cursor pixmap position/size
 	int cursor_x_;

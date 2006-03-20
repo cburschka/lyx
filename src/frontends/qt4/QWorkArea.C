@@ -492,10 +492,12 @@ void QWorkArea::resizeEvent(QResizeEvent * resizeEvent)
 
 	verticalScrollBar()->setPageStep(viewport()->height());
 
-	pixmap_.reset(new QPixmap(viewport()->width(), viewport()->height()));
+	screen_device_ = QPixmap(viewport()->width(), viewport()->height());
+	paint_device_ = QImage(viewport()->width(), viewport()->height(), QImage::Format_RGB32);
 
 	this->workAreaResize();
 
+	/*
 	lyxerr[Debug::GUI] << BOOST_CURRENT_FUNCTION
 		<< "\n QWidget width\t" << this->QWidget::width()
 		<< "\n QWidget height\t" << this->QWidget::height()
@@ -504,10 +506,21 @@ void QWorkArea::resizeEvent(QResizeEvent * resizeEvent)
 		<< "\n QResizeEvent rect left\t" << rect().left()
 		<< "\n QResizeEvent rect right\t" << rect().right()
 		<< endl;
+		*/
+}
+
+void QWorkArea::update(int x, int y, int w, int h)
+{
+	//screen_device_.fromImage(paint_device_);
+	QPainter q(&screen_device_);
+	q.drawImage(x, y, paint_device_.copy(x, y, w, h));
+	
+	viewport()->update(x, y, w, h);
 }
 
 void QWorkArea::paintEvent(QPaintEvent * e)
 {
+	/*
 	lyxerr[Debug::GUI] << BOOST_CURRENT_FUNCTION
 		<< "\n QWidget width\t" << this->width()
 		<< "\n QWidget height\t" << this->height()
@@ -520,9 +533,21 @@ void QWorkArea::paintEvent(QPaintEvent * e)
 		<< "\n QPaintEvent w\t" << e->rect().width()
 		<< "\n QPaintEvent h\t" << e->rect().height()
 		<< endl;
-
+	*/
 	QPainter q(viewport());
-	q.drawPixmap(e->rect(), *pixmap_.get(), e->rect());
+	q.drawPixmap(e->rect(), screen_device_, e->rect());
+}
+
+QPixmap QWorkArea::copyScreen(int x, int y, int w, int h) const
+{
+	return screen_device_.copy(x, y, w, h);
+}
+
+void QWorkArea::drawScreen(int x, int y, QPixmap pixmap)
+{
+	QPainter q(&screen_device_);
+	q.drawPixmap(x, y, pixmap);
+	viewport()->update(x, y, pixmap.width(), pixmap.height());
 }
 
 

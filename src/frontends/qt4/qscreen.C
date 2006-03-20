@@ -13,14 +13,13 @@
 
 #include "QWorkArea.h"
 #include "qscreen.h"
-//Added by qt3to4:
-#include <QPixmap>
+
+#include <QColor>
 #include <QPainter>
+#include <QApplication>
 
 #include "debug.h"
 #include "lcolorcache.h"
-
-#include <QApplication>
 
 
 namespace {
@@ -29,7 +28,7 @@ namespace {
 
 
 QScreen::QScreen(QWorkArea & o)
-	: LyXScreen(), owner_(o), nocursor_pixmap_(0,0)
+	: LyXScreen(), owner_(o), nocursor_(0,0)
 {
 }
 
@@ -46,12 +45,11 @@ WorkArea & QScreen::workarea() const
 
 void QScreen::expose(int x, int y, int w, int h)
 {
-	lyxerr[Debug::GUI] << "expose " << w << 'x' << h		<< '+' << x << '+' << y << std::endl;
+	lyxerr[Debug::GUI] << "expose " << w << 'x' << h
+		<< '+' << x << '+' << y << std::endl;
 
-	owner_.viewport()->update(x, y, w, h);
-//	owner_.update();
+	owner_.update(x, y, w, h);
 }
-
 
 void QScreen::showCursor(int x, int y, int h, Cursor_Shape shape)
 {
@@ -60,11 +58,7 @@ void QScreen::showCursor(int x, int y, int h, Cursor_Shape shape)
 
 	if (x==cursor_x_ && y==cursor_y_ && h==cursor_h_) {
 		// Draw the new (vertical) cursor using the cached store.
-		QLPainter * lp = (QLPainter *) &(owner_.getPainter());
-		lp->pixmap(cursor_x_, cursor_y_, vcursor_pixmap_);
-		owner_.viewport()->update(
-			cursor_x_, cursor_y_,
-			cursor_w_, cursor_h_);
+		owner_.drawScreen(cursor_x_, cursor_y_, vcursor_);
 		return;
 	}
 		
@@ -92,45 +86,33 @@ void QScreen::showCursor(int x, int y, int h, Cursor_Shape shape)
 	// 2 the vertical line of the cursor.
 	// 3 the horizontal line of the L-shaped cursor (if necessary).
 
-	// Initialise storage for these pixmaps as necessary.
-	if (cursor_w_ != nocursor_pixmap_.width() ||
-	    cursor_h_ != nocursor_pixmap_.height()) {
-		nocursor_pixmap_.resize(cursor_w_, cursor_h_);
-	}
-
 	QColor const & required_color = lcolorcache.get(LColor::cursor);
 	bool const cursor_color_changed = required_color != cursor_color_;
 	if (cursor_color_changed)
 		cursor_color_ = required_color;
 
-//	if (cursor_h_ != vcursor_pixmap_.height() || cursor_color_changed) {
-//		if (cursor_h_ != vcursor_pixmap_.height())
-			vcursor_pixmap_.resize(cursor_w_, cursor_h_);
-		vcursor_pixmap_.fill(cursor_color_);
-//	}
+	vcursor_ = QPixmap(cursor_w_, cursor_h_);
+	vcursor_ .fill(cursor_color_);
 
 	switch (shape) {
 	case BAR_SHAPE:
 		break;
 	case REVERSED_L_SHAPE:
 	case L_SHAPE:
-		if (cursor_w_ != hcursor_pixmap_.width() ||
+		if (cursor_w_ != hcursor_.width() ||
 		    cursor_color_changed) {
-			if (cursor_w_ != hcursor_pixmap_.width())
-				hcursor_pixmap_.resize(cursor_w_, 1);
-			hcursor_pixmap_.fill(cursor_color_);
+			if (cursor_w_ != hcursor_.width())
+				hcursor_ = QPixmap(cursor_w_, 1);
+			hcursor_.fill(cursor_color_);
 		}
 		break;
 	}
 
 	// Save the old area (no cursor).
-	QPainter qp(&nocursor_pixmap_);
-	qp.drawPixmap(0, 0, *owner_.pixmap(),
-	       cursor_x_, cursor_y_, cursor_w_, cursor_h_);
+	nocursor_ = owner_.copyScreen(cursor_x_, cursor_y_, cursor_w_, cursor_h_);
 
 	// Draw the new (vertical) cursor using the cached store.
-	QLPainter * lp = (QLPainter *) &(owner_.getPainter());
-	lp->pixmap(cursor_x_, cursor_y_, vcursor_pixmap_);
+	owner_.drawScreen(cursor_x_, cursor_y_, vcursor_);
 
 	// Draw the new (horizontal) cursor if necessary.
 	switch (shape) {
@@ -138,26 +120,17 @@ void QScreen::showCursor(int x, int y, int h, Cursor_Shape shape)
 		break;
 	case REVERSED_L_SHAPE:
 	case L_SHAPE:
-		lp->pixmap(cursor_x_, y + h - 1, hcursor_pixmap_);
+		owner_.drawScreen(cursor_x_, y + h - 1, hcursor_);
 		break;
 	}
-
-	owner_.viewport()->update(
-		cursor_x_, cursor_y_,
-		cursor_w_, cursor_h_);
 }
 
 
 void QScreen::removeCursor()
 {
 	// before first showCursor
-	if (nocursor_pixmap_.isNull())
+	if (nocursor_.isNull())
 		return;
 
-	QLPainter * lp = (QLPainter *) &(owner_.getPainter());
-	lp->pixmap(cursor_x_, cursor_y_, nocursor_pixmap_);
-
-	owner_.viewport()->update(
-		cursor_x_, cursor_y_,
-		cursor_w_, cursor_h_);
+	owner_.drawScreen(cursor_x_, cursor_y_, nocursor_);
 }

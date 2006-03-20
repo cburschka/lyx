@@ -22,12 +22,12 @@
 #undef emit
 #endif
 
-#include "funcrequest.h"
-#include "frontends/Timeout.h"
-
 #include "WorkArea.h"
 #include "QLPainter.h"
 #include "LyXView.h"
+
+#include "funcrequest.h"
+#include "frontends/Timeout.h"
 
 #include <QAbstractScrollArea>
 #include <QMouseEvent>
@@ -36,8 +36,8 @@
 #include <QKeyEvent>
 #include <QPaintEvent>
 #include <QTimer>
-
-#include <boost/scoped_ptr.hpp>
+#include <QImage>
+#include <QPixmap>
 
 #include <queue>
 
@@ -130,17 +130,20 @@ public:
 	/// return the widget's painter
 	virtual Painter & getPainter() { return (Painter &) painter_; }
 
-	///
-	//virtual QPaintDevice & paintDevice() { return content_->pixmap(); }
-
 	/// return the backing pixmap
-	QPixmap * pixmap() const { return pixmap_.get(); }
+	QPaintDevice * paintDevice() { return &paint_device_; }
 
-	/// return the widget's painter
-	//virtual QLPainter & getQLPainter() const { return painter_; }
+	/// update the passed area.
+	void update(int x, int y, int w, int h);
 
-	/// get the content pane widget
-	QWidget * getContent() const  { return viewport(); }
+	/// return a screen copy of the defined area.
+	QPixmap copyScreen(int x, int y, int w, int h) const;
+
+	/// Draw a pixmap onto the backing pixmap.
+	/**
+	QPixmap is implicitely shared so no need to pass by reference.
+	*/
+	void drawScreen(int x, int y, QPixmap pixmap);
 
 protected:
 
@@ -198,8 +201,11 @@ private:
 	///
 	SyntheticMouseEvent synthetic_mouse_event_;
 
-	/// the double buffered pixmap
-	boost::scoped_ptr<QPixmap> pixmap_;
+	/// Our client side painting device.
+	QImage paint_device_;
+
+	/// Our server side painting device.
+	QPixmap screen_device_;
 
 	/// \todo remove
 	QTimer step_timer_;

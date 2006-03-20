@@ -22,6 +22,7 @@ class QPaintDevice;
 class QPainter;
 class QString;
 class QPixmap;
+class QImage;
 class QWorkArea;
 
 /**
@@ -34,10 +35,16 @@ public:
 	~QLPainter();
 
 	/// begin painting
-	virtual void start();
+	/**
+	Not used in the the Qt4 frontend.
+	*/
+	virtual void start() {}
 
 	/// end painting
-	virtual void end();
+	/**
+	Not used in the the Qt4 frontend.
+	*/
+	virtual void end() {}
 
 	/// return the width of the work area in pixels
 	virtual int paperWidth() const;
@@ -120,7 +127,10 @@ public:
 		char c, LyXFont const & f);
 
 	/// draw a pixmap from the image cache
-	virtual void pixmap(int x, int y, QPixmap const & pixmap);
+	virtual void drawPixmap(int x, int y, QPixmap const & pixmap);
+
+	/// draw a pixmap from the image cache
+	virtual void drawImage(int x, int y, QImage const & image);
 
 private:
 	/// draw small caps text
@@ -134,9 +144,6 @@ private:
 
 	/// our qt painter
 	boost::scoped_ptr<QPainter> qp_;
-
-	/// recursion check
-	int paint_check_;
 
 	/// the working area
 	QWorkArea * qwa_;
