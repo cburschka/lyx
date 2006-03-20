@@ -1348,6 +1348,8 @@ ViewMetricsInfo BufferView::Pimpl::metrics(bool singlepar)
 	theCoords.clear();
 	BufferView & bv = *bv_;
 	LyXText * const text = bv.text();
+	lyx::pit_type size = int(text->paragraphs().size());
+
 	if (anchor_ref_ > int(text->paragraphs().size() - 1)) {
 		anchor_ref_ = int(text->paragraphs().size() - 1);
 		offset_ref_ = 0;
@@ -1434,7 +1436,8 @@ ViewMetricsInfo BufferView::Pimpl::metrics(bool singlepar)
                 << " pit2: " << pit2
                 << " npit: " << npit
                 << " singlepar: " << singlepar
+                << "size: " << size
                 << endl;
 
-	return ViewMetricsInfo(pit1, pit2, y1, y2, singlepar);
+	return ViewMetricsInfo(pit1, pit2, y1, y2, singlepar, size);
 }

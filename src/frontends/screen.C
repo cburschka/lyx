@@ -219,7 +219,10 @@ void LyXScreen::redraw(BufferView & bv, ViewMetricsInfo const & vi)
 	workarea().getPainter().start();
 	paintText(bv, vi);
 	lyxerr[Debug::DEBUG] << "Redraw screen" << endl;
-	expose(0, 0, workarea().workWidth(), workarea().workHeight());
+	int const ymin = std::max(vi.y1, 0);
+	int const ymax = 
+		( vi.p2 < vi.size - 1 ?  vi.y2 : workarea().workHeight() );
+	expose(0, ymin, workarea().workWidth(), ymax - ymin);
 	workarea().getPainter().end();
 	theCoords.doneUpdating();
 }
