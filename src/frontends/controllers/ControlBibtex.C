@@ -13,6 +13,7 @@
 #include <config.h>
 
 #include "ControlBibtex.h"
+#include "biblio.h"
 
 #include "buffer.h"
 #include "bufferparams.h"
@@ -24,6 +25,7 @@
 
 #include "support/filefilterlist.h"
 #include "support/filetools.h"
+#include "support/lstrings.h"
 
 using std::pair;
 using std::string;
@@ -32,8 +34,11 @@ using std::vector;
 
 namespace lyx {
 
+using support::contains;
 using support::FileFilterList;
 using support::OnlyFilename;
+using support::prefixIs;
+using support::split;
 
 namespace frontend {
 
@@ -112,7 +117,55 @@ void ControlBibtex::rescanBibStyles() const
 
 bool ControlBibtex::usingBibtopic() const
 {
-    return kernel().buffer().params().use_bibtopic;
+	return kernel().buffer().params().use_bibtopic;
+}
+
+
+bool ControlBibtex::bibtotoc() const
+{
+	return prefixIs(params().getOptions(), "bibtotoc");
+}
+
+
+string const ControlBibtex::getStylefile() const
+{
+	// the different bibtex packages have (and need) their
+	// own "plain" stylefiles
+	biblio::CiteEngine_enum const & engine =
+		biblio::getEngine(kernel().buffer());
+	string defaultstyle;
+	switch (engine) {
+	case biblio::ENGINE_BASIC:
+		defaultstyle = "plain";
+		break;
+	case biblio::ENGINE_NATBIB_AUTHORYEAR:
+		defaultstyle = "plainnat";
+		break;
+	case biblio::ENGINE_NATBIB_NUMERICAL:
+		defaultstyle = "plainnat";
+		break;
+	case biblio::ENGINE_JURABIB:
+		defaultstyle = "jurabib";
+		break;
+	}
+
+	string bst = params().getOptions();
+	if (bibtotoc()){
+		// bibstyle exists?
+		if (contains(bst,',')) {
+			string bibtotoc = "bibtotoc";
+			bst = split(bst, bibtotoc, ',');
+		} else
+			bst.erase();
+	}
+
+	// propose default style file for new insets
+	// existing insets might have (legally) no bst files
+	// (if the class already provides a style)
+	if (bst.empty() && params().getContents().empty())
+		bst = defaultstyle;
+
+	return bst;
 }
 
 } // namespace frontend

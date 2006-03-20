@@ -48,6 +48,10 @@ public:
 	void rescanBibStyles() const;
 	/// do we use bibtopic (for sectioned bibliography)?
 	bool usingBibtopic() const;
+	/// should we put the bibliography to the TOC?
+	bool bibtotoc() const;
+	/// which stylefile do we use?
+	std::string const getStylefile() const;
 };
 
 } // namespace frontend

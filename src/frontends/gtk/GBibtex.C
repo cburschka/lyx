@@ -28,8 +28,6 @@
 #include <libglademm.h>
 
 using lyx::support::ChangeExtension;
-using lyx::support::contains;
-using lyx::support::prefixIs;
 using lyx::support::split;
 using lyx::support::trim;
 
@@ -109,20 +107,10 @@ void GBibtex::update()
 		}
 	}
 
-	string bibtotoc = "bibtotoc";
-	string bibstyle(controller().params().getOptions());
-
-	// bibtotoc exists?
-	if (prefixIs(bibstyle, bibtotoc)){
-		// bibstyle exists?
-		if (contains(bibstyle,','))
-			bibstyle = split(bibstyle, bibtotoc, ',');
-		else
-			bibstyle.erase();
-	}
+	string bibstyle(controller().getStylefile());
 
 	bool const bibtopic = controller().usingBibtopic();
-	if (prefixIs(bibstyle, bibtotoc) && !bibtopic)
+	if (controller().bibtotoc() && !bibtopic)
 		toccheck_->set_active(true);
 	else
 		toccheck_->set_active(false);
