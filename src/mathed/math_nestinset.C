@@ -712,8 +712,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 			// do superscript if LyX handles
 			// deadkeys
 			recordUndo(cur, Undo::ATOMIC);
-			safe_ = grabAndEraseSelection(cur);
-			script(cur, true);
+			script(cur, true, grabAndEraseSelection(cur));
 		}
 		break;
 
@@ -792,19 +791,19 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		handleFont(cur, cmd.argument, "textnormal");
 		break;
 
-	case LFUN_MATH_MODE:
+	case LFUN_MATH_MODE: {
 #if 1
 		// ignore math-mode on when already in math mode
 		if (currentMode() == InsetBase::MATH_MODE && cmd.argument == "on")
 			break;
 		cur.macroModeClose();
-		safe_ = grabAndEraseSelection(cur);
+		string const save_selection = grabAndEraseSelection(cur);
 		selClearOrDel(cur);
 		//cur.plainInsert(MathAtom(new MathMBoxInset(cur.bv())));
 		cur.plainInsert(MathAtom(new MathBoxInset("mbox")));
 		cur.posLeft();
 		cur.pushLeft(*cur.nextInset());
-		cur.niceInsert(safe_);
+		cur.niceInsert(save_selection);
 #else
 		if (currentMode() == InsetBase::TEXT_MODE) {
 			cur.niceInsert(MathAtom(new MathHullInset("simple")));
@@ -815,6 +814,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		}
 #endif
 		break;
+	}
 
 	case LFUN_MATH_SIZE:
 #if 0
@@ -1095,8 +1095,9 @@ void MathNestInset::lfunMouseRelease(LCursor & cur, FuncRequest & cmd)
 bool MathNestInset::interpret(LCursor & cur, char c)
 {
 	//lyxerr << "interpret 2: '" << c << "'" << endl;
+	string save_selection;
 	if (c == '^' || c == '_')
-		safe_ = grabAndEraseSelection(cur);
+		save_selection = grabAndEraseSelection(cur);
 
 	cur.clearTargetX();
 
@@ -1206,11 +1207,11 @@ bool MathNestInset::interpret(LCursor & cur, char c)
 	// These shouldn't work in text mode:
 	if (currentMode() != MathInset::TEXT_MODE) {
 		if (c == '_') {
-			script(cur, false);
+			script(cur, false, save_selection);
 			return true;
 		}
 		if (c == '^') {
-			script(cur, true);
+			script(cur, true, save_selection);
 			return true;
 		}
 		if (c == '~') {
@@ -1237,7 +1238,8 @@ bool MathNestInset::interpret(LCursor & cur, char c)
 }
 
 
-bool MathNestInset::script(LCursor & cur, bool up)
+bool MathNestInset::script(LCursor & cur, bool up, string const &
+		save_selection)
 {
 	// Hack to get \^ and \_ working
 	lyxerr << "handling script: up: " << up << endl;
@@ -1280,9 +1282,9 @@ bool MathNestInset::script(LCursor & cur, bool up)
 		cur.idx() = 1;
 		cur.pos() = 0;
 	}
-	//lyxerr << "inserting 1: safe:\n" << safe_ << endl;
-	cur.niceInsert(safe_);
+	//lyxerr << "inserting selection 1:\n" << save_selection << endl;
+	cur.niceInsert(save_selection);
 	cur.resetAnchor();
-	//lyxerr << "inserting 2: safe:\n" << safe_ << endl;
+	//lyxerr << "inserting selection 2:\n" << save_selection << endl;
 	return true;
 }

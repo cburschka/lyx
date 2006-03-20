@@ -110,7 +110,8 @@ protected:
 	///
 	bool interpret(LCursor & cur, char c);
 	///
-	bool script(LCursor & cur, bool);
+	bool script(LCursor & cur, bool, 
+		std::string const & save_selection = std::string());
 
 
 private:
@@ -128,8 +129,6 @@ protected:
 	cells_type cells_;
 	/// if the inset is locked, it can't be entered with the cursor
 	bool lock_;
-	///
-	std::string safe_;
 };
 
 #endif
