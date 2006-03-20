@@ -153,7 +153,7 @@ void QBranches::on_colorPB_clicked()
 	if (selItem != 0)
 		sel_branch = selItem->text(0);
 	if (!sel_branch.isEmpty()) {
-		QColor initial;
+		QColor initial("lightskyblue");
 		string current_branch = fromqstr(sel_branch);
 		Branch * branch =
 			branchlist_.find(current_branch);
