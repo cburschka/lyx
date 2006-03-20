@@ -1,3 +1,7 @@
+2006-03-20  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QWorkArea.C (QWorkArea): do not paint background (bug 2197).
+
 2006-03-20  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* QBibtex.C: Move parsing of Options (stylefile, bibtotoc)
