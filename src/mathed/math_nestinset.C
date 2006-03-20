@@ -712,7 +712,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 			// do superscript if LyX handles
 			// deadkeys
 			recordUndo(cur, Undo::ATOMIC);
-			script(cur, true);
+			script(cur, true, grabAndEraseSelection(cur));
 		}
 		break;
 
@@ -791,17 +791,19 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		handleFont(cur, cmd.argument, "textnormal");
 		break;
 
-	case LFUN_MATH_MODE:
+	case LFUN_MATH_MODE: {
 #if 1
 		// ignore math-mode on when already in math mode
 		if (currentMode() == InsetBase::MATH_MODE && cmd.argument == "on")
 			break;
 		cur.macroModeClose();
+		string const save_selection = grabAndEraseSelection(cur);
 		selClearOrDel(cur);
 		//cur.plainInsert(MathAtom(new MathMBoxInset(cur.bv())));
 		cur.plainInsert(MathAtom(new MathBoxInset("mbox")));
 		cur.posLeft();
 		cur.pushLeft(*cur.nextInset());
+		cur.niceInsert(save_selection);
 #else
 		if (currentMode() == InsetBase::TEXT_MODE) {
 			cur.niceInsert(MathAtom(new MathHullInset("simple")));
@@ -812,6 +814,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		}
 #endif
 		break;
+	}
 
 	case LFUN_MATH_SIZE:
 #if 0
@@ -883,12 +886,10 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 // math-insert only handles special math things like "matrix".
 	case LFUN_INSERT_MATH: {
 		recordUndo(cur, Undo::ATOMIC);
-		MathArray ar;
-		asArray(cmd.argument, ar);
-		int cell(0);
-		if (cmd.argument == "\\root")
-			cell = 1;
-		cur.niceInsert(cmd.argument);
+		if (cmd.argument == "^" || cmd.argument == "_") {
+			interpret(cur, cmd.argument[0]);
+		} else
+			cur.niceInsert(cmd.argument);
 		break;
 		}
 
@@ -1094,6 +1095,10 @@ void MathNestInset::lfunMouseRelease(LCursor & cur, FuncRequest & cmd)
 bool MathNestInset::interpret(LCursor & cur, char c)
 {
 	//lyxerr << "interpret 2: '" << c << "'" << endl;
+	string save_selection;
+	if (c == '^' || c == '_')
+		save_selection = grabAndEraseSelection(cur);
+
 	cur.clearTargetX();
 
 	// handle macroMode
@@ -1202,11 +1207,11 @@ bool MathNestInset::interpret(LCursor & cur, char c)
 	// These shouldn't work in text mode:
 	if (currentMode() != MathInset::TEXT_MODE) {
 		if (c == '_') {
-			script(cur, false);
+			script(cur, false, save_selection);
 			return true;
 		}
 		if (c == '^') {
-			script(cur, true);
+			script(cur, true, save_selection);
 			return true;
 		}
 		if (c == '~') {
@@ -1233,7 +1238,8 @@ bool MathNestInset::interpret(LCursor & cur, char c)
 }
 
 
-bool MathNestInset::script(LCursor & cur, bool up)
+bool MathNestInset::script(LCursor & cur, bool up, string const &
+		save_selection)
 {
 	// Hack to get \^ and \_ working
 	lyxerr << "handling script: up: " << up << endl;
@@ -1246,7 +1252,6 @@ bool MathNestInset::script(LCursor & cur, bool up)
 	}
 
 	cur.macroModeClose();
-	string safe = grabAndEraseSelection(cur);
 	if (asScriptInset() && cur.idx() == 0) {
 		// we are in a nucleus of a script inset, move to _our_ script
 		MathScriptInset * inset = asScriptInset();
@@ -1277,9 +1282,9 @@ bool MathNestInset::script(LCursor & cur, bool up)
 		cur.idx() = 1;
 		cur.pos() = 0;
 	}
-	//lyxerr << "pasting 1: safe:\n" << safe << endl;
-	cur.paste(safe);
+	//lyxerr << "inserting selection 1:\n" << save_selection << endl;
+	cur.niceInsert(save_selection);
 	cur.resetAnchor();
-	//lyxerr << "pasting 2: safe:\n" << safe << endl;
+	//lyxerr << "inserting selection 2:\n" << save_selection << endl;
 	return true;
 }

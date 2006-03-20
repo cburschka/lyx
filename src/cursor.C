@@ -379,15 +379,6 @@ void LCursor::getPos(int & x, int & y) const
 }
 
 
-// Don't use this routine. It is erroneous: LFUN_PASTE should be called with
-// buffer number, not data to be inserted -- MV 26.02.2006
-void LCursor::paste(string const & data)
-{
-	if (!data.empty())
-		dispatch(FuncRequest(LFUN_PASTE, data));
-}
-
-
 void LCursor::resetAnchor()
 {
 	anchor_ = *this;

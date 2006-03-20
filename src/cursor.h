@@ -88,8 +88,6 @@ public:
 	//
 	std::string selectionAsString(bool label) const;
 	///
-	void paste(std::string const & data);
-	///
 	std::string currentState();
 
 	/// auto-correct mode
