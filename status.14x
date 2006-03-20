@@ -48,34 +48,36 @@ What's new
 
 - Fix jurabib error with Spanish documents (bug 2365).
 
+- Propose sensible style files for bibtex, depending on whether plain,
+  natbib or jurabib is used (bug 2322).
+
 - More sensible default label in table and figure captions (bug 1999).
 
 - Do not skip change in "Merge changes..." dialog (bug 2212).
 
 - Improve handling of the labeling environment in KOMA letters (bug 2246).
 
-- Fix: deleting superscript also deleted subscript (bug 2362)
-
 - Fix positioning of cursor when clicking to right of last nestinset
   in a cell.
 
 - Fix cursor positioning in tabulars (bug 2006).
 
+- Update screen when cursor was between two spaces and goes to
+  line/document start/end (bug 2298).
+
 - Fix copy and paste for multiple cells (bug 2377).
 
 - Adjust cursor after backspace in change tracking mode (bug 2185).
 
-- Update screen when cursor was between two spaces and goes to
-  line/document start/end (bug 2298).
-
 - Fix drawing of inset buttons (bug 2328)
+
+- Fix: deleting superscript also deleted subscript (bug 2362)
 
 - Fix drawing of \boxed and \fbox in formulas (bug 2361).
 
 - Use the qt wide scroll wheel setting (bug 2175).
 
-- Propose sensible style files for bibtex, depending on whether plain,
-  natbib or jurabib is used (bug 2322).
+- Fix Find&Replace with sciword bindings.
 
 * Configuration/Installation:
 
