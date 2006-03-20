@@ -712,6 +712,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 			// do superscript if LyX handles
 			// deadkeys
 			recordUndo(cur, Undo::ATOMIC);
+			safe_ = grabAndEraseSelection(cur);
 			script(cur, true);
 		}
 		break;
@@ -883,12 +884,10 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 // math-insert only handles special math things like "matrix".
 	case LFUN_INSERT_MATH: {
 		recordUndo(cur, Undo::ATOMIC);
-		MathArray ar;
-		asArray(cmd.argument, ar);
-		int cell(0);
-		if (cmd.argument == "\\root")
-			cell = 1;
-		cur.niceInsert(cmd.argument);
+		if (cmd.argument == "^" || cmd.argument == "_") {
+			interpret(cur, cmd.argument[0]);
+		} else
+			cur.niceInsert(cmd.argument);
 		break;
 		}
 
@@ -1094,6 +1093,9 @@ void MathNestInset::lfunMouseRelease(LCursor & cur, FuncRequest & cmd)
 bool MathNestInset::interpret(LCursor & cur, char c)
 {
 	//lyxerr << "interpret 2: '" << c << "'" << endl;
+	if (c == '^' || c == '_')
+		safe_ = grabAndEraseSelection(cur);
+
 	cur.clearTargetX();
 
 	// handle macroMode
@@ -1246,7 +1248,6 @@ bool MathNestInset::script(LCursor & cur, bool up)
 	}
 
 	cur.macroModeClose();
-	string safe = grabAndEraseSelection(cur);
 	if (asScriptInset() && cur.idx() == 0) {
 		// we are in a nucleus of a script inset, move to _our_ script
 		MathScriptInset * inset = asScriptInset();
@@ -1277,9 +1278,9 @@ bool MathNestInset::script(LCursor & cur, bool up)
 		cur.idx() = 1;
 		cur.pos() = 0;
 	}
-	//lyxerr << "pasting 1: safe:\n" << safe << endl;
-	cur.paste(safe);
+	//lyxerr << "inserting 1: safe:\n" << safe_ << endl;
+	cur.niceInsert(safe_);
 	cur.resetAnchor();
-	//lyxerr << "pasting 2: safe:\n" << safe << endl;
+	//lyxerr << "inserting 2: safe:\n" << safe_ << endl;
 	return true;
 }

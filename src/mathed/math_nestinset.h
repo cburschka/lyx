@@ -128,6 +128,8 @@ protected:
 	cells_type cells_;
 	/// if the inset is locked, it can't be entered with the cursor
 	bool lock_;
+	///
+	std::string safe_;
 };
 
 #endif
