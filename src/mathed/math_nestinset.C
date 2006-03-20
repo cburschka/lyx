@@ -798,11 +798,13 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		if (currentMode() == InsetBase::MATH_MODE && cmd.argument == "on")
 			break;
 		cur.macroModeClose();
+		safe_ = grabAndEraseSelection(cur);
 		selClearOrDel(cur);
 		//cur.plainInsert(MathAtom(new MathMBoxInset(cur.bv())));
 		cur.plainInsert(MathAtom(new MathBoxInset("mbox")));
 		cur.posLeft();
 		cur.pushLeft(*cur.nextInset());
+		cur.niceInsert(safe_);
 #else
 		if (currentMode() == InsetBase::TEXT_MODE) {
 			cur.niceInsert(MathAtom(new MathHullInset("simple")));
