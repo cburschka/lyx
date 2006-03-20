@@ -163,7 +163,7 @@
 #\bind "C-F1"                   "help-context"                  # Not yet implemented!
 \bind "F2"                     "buffer-write"
 \bind "S-F2"                     "buffer-export latex"
-\bind "F3"                     "find-replace"
+\bind "F3"                     "dialog-show findreplace"
 
 \bind "C-F4"                   "buffer-close"
 \bind "M-F4"                   "lyx-quit"
