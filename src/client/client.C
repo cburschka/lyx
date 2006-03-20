@@ -458,7 +458,7 @@ int a(vector<char *> const & arg)
 }
 
 
-string mainTmp("/tmp");
+string mainTmp(package().temp_dir());
 
 
 int t(vector<char *> const & arg)

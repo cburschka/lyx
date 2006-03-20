@@ -209,7 +209,6 @@ void LyXRC::setDefaults() {
 	print_paper_flag = "-t";
 	print_paper_dimension_flag = "-T";
 	document_path.erase();
-	tempdir_path = "/tmp";
 	view_dvi_paper_option.erase();
 	default_papersize = PAPER_DEFAULT;
 	custom_export_format = "ps";

@@ -333,7 +333,7 @@ void BufferList::emergencyWrite(Buffer * buf)
 	// 3) In "/tmp" directory.
 	// MakeAbsPath to prepend the current
 	// drive letter on OS/2
-	s = AddName(MakeAbsPath("/tmp/"), buf->fileName());
+	s = AddName(package().temp_dir(), buf->fileName());
 	s += ".emergency";
 	lyxerr << ' ' << s << endl;
 	if (buf->writeFile(s)) {
