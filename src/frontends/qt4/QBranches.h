@@ -40,6 +40,9 @@ public:
 	void update(BufferParams const & params);
 	void apply(BufferParams & params) const;
 
+signals:
+	void changed();
+
 protected:
 	void toggleBranch(Q3ListViewItem * selItem);
 	void update();

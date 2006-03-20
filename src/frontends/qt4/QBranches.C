@@ -81,6 +81,7 @@ void QBranches::update()
 		if (bname == sel_branch)
 			branchesLV->setSelected(newItem, true);
 	}
+	emit changed();
 }
 
 void QBranches::apply(BufferParams & params) const
