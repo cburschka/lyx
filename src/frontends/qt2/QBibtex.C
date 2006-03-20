@@ -33,8 +33,6 @@
 
 
 using lyx::support::ChangeExtension;
-using lyx::support::contains;
-using lyx::support::prefixIs;
 using lyx::support::split;
 using lyx::support::trim;
 
@@ -98,23 +96,7 @@ void QBibtex::update_contents()
 		dialog_->add_->bibLB->insertItem(toqstr(bibItem));
 	}
 
-	string bibtotoc = "bibtotoc";
-	string bibstyle(controller().params().getOptions());
-
-	// bibtotoc exists?
-	if (prefixIs(bibstyle, bibtotoc)){
-		// bibstyle exists?
-		if (contains(bibstyle,','))
-			bibstyle = split(bibstyle, bibtotoc, ',');
-		else
-			bibstyle.erase();
-	}
-
-	if (prefixIs(bibstyle, bibtotoc) && !bibtopic)
-		dialog_->bibtocCB->setChecked(true);
-	else
-		dialog_->bibtocCB->setChecked(false);
-
+	dialog_->bibtocCB->setChecked(controller().bibtotoc() && !bibtopic);
 	dialog_->bibtocCB->setEnabled(!bibtopic);
 
 	string btprint(controller().params().getSecOptions());
@@ -130,6 +112,7 @@ void QBibtex::update_contents()
 	dialog_->styleCB->clear();
 
 	int item_nr(-1);
+	string bibstyle(controller().getStylefile());
 
 	vector<string> str;
 	controller().getBibStyles(str);

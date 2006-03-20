@@ -74,6 +74,9 @@ What's new
 
 - Use the qt wide scroll wheel setting (bug 2175).
 
+- Propose sensible style files for bibtex, depending on whether plain,
+  natbib or jurabib is used (bug 2322).
+
 * Configuration/Installation:
 
 - Don't use the -mms-bitfields compiler switch on mingw and cygwin, since

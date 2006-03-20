@@ -1,3 +1,8 @@
+2006-03-20  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* FormBibtex.C: Move parsing of Options (stylefile, bibtotoc)
+	to the controller (bug 2322).
+
 2006-03-10  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* FormChanges.C: fix bug 2212: First change is skipped in

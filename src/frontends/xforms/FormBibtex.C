@@ -34,12 +34,10 @@ namespace lyx {
 
 using support::ChangeExtension;
 using support::compare;
-using support::contains;
 using support::FileFilterList;
 using support::getStringFromVector;
 using support::getVectorFromString;
 using support::OnlyFilename;
-using support::prefixIs;
 using support::split;
 
 namespace frontend {
@@ -179,20 +177,13 @@ void FormBibtex::update()
 	fl_set_input(dialog_->input_database,
 		     controller().params().getContents().c_str());
 
-	string bibtotoc = "bibtotoc";
-	string bibstyle = controller().params().getOptions();
+	string bibstyle = controller().getStylefile();
 
 	bool const bibtopic = controller().usingBibtopic();
-	bool const bibtotoc_exists = prefixIs(bibstyle, bibtotoc);
-	fl_set_button(dialog_->check_bibtotoc, bibtotoc_exists && !bibtopic);
+	fl_set_button(dialog_->check_bibtotoc,
+		controller().bibtotoc() && !bibtopic);
 	setEnabled(dialog_->check_bibtotoc, !bibtopic);
-	if (bibtotoc_exists) {
-		if (contains(bibstyle, ',')) { // bibstyle exists?
-			bibstyle = split(bibstyle, bibtotoc, ',');
-		} else {
-			bibstyle.erase();
-		}
-	}
+
 	fl_set_input(dialog_->input_style, bibstyle.c_str());
 
 	string btprint = controller().params().getSecOptions();
