@@ -44,6 +44,7 @@
 
 #include "gettext.h"
 #include "LColor.h"
+#include "lcolorcache.h"
 
 #include "controllers/ControlPrefs.h"
 
@@ -168,9 +169,8 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 			|| lc == LColor::ignore) continue;
 
 		colors_.push_back(lc);
-		string const x11name(lcolor.getX11Name(lc));
 		string const guiname(lcolor.getGUIName(lc));
-		QColorItem * ci(new QColorItem(QColor(toqstr(x11name)),
+		QColorItem * ci(new QColorItem(lcolorcache.get(lc),
 				toqstr(guiname)));
 		colorsModule->lyxObjectsLB->insertItem(ci);
 	}
