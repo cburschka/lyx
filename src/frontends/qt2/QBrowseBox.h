@@ -12,7 +12,7 @@
 #ifndef QBROWSEBOX_H
 #define QBROWSEBOX_H
 
-#include "qgridview.h"
+#include <qgridview.h>
 
 
 class QString;
