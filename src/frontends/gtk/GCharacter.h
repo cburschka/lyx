@@ -65,7 +65,7 @@ private:
 
 	Gtk::CheckButton * toggleallcheck_;
 
-	void GCharacter::onChange();
+	void onChange();
 };
 
 } // namespace frontend
