@@ -27,7 +27,7 @@ namespace frontend {
 
 class GtkLengthEntry : public Gtk::HBox {
 public:
-	GtkLengthEntry::GtkLengthEntry(BaseObjectType* cobject, const Glib::RefPtr<Gnome::Glade::Xml>& refGlade);
+	GtkLengthEntry(BaseObjectType* cobject, const Glib::RefPtr<Gnome::Glade::Xml>& refGlade);
 
 	void set_length(LyXLength const & length);
 	void set_length(std::string const & length);
