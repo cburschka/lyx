@@ -1131,12 +1131,14 @@ void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		else if (s == "append-row")
 			for (int i = 0, n = extractInt(is); i < n; ++i)
 				addRow(cur.row());
-		else if (s == "delete-row")
+		else if (s == "delete-row") {
 			for (int i = 0, n = extractInt(is); i < n; ++i) {
 				delRow(cur.row());
 				if (cur.idx() > nargs())
 					cur.idx() -= ncols();
 			}
+			cur.pos() = 0; // trick, see below
+		}
 		else if (s == "copy-row") {
 			// Here (as later) we save the cursor col/row 
 			// in order to restore it after operation. 
@@ -1173,6 +1175,7 @@ void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 			for (int i = 0, n = extractInt(is); i < n; ++i)
 				delCol(col(cur.idx()));
 			cur.idx() = index(r, min(c, cur.ncols() - 1));
+			cur.pos() = 0; // trick, see above
 		}
 		else if (s == "copy-column") {
 			row_type const r = cur.row();
