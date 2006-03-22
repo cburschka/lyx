@@ -14,6 +14,7 @@
 #define QPREFSDIALOG_H
 
 #include "LColor.h"
+#include "lyxrc.h"
 
 #include "ui/QPrefsUi.h"
 
@@ -52,21 +53,23 @@ template<class UI>
 		}
 	};
 
-
 namespace lyx {
 namespace frontend {
 
 class QPrefs;
 
+///
 class QPrefsDialog : public QDialog, public Ui::QPrefsUi {
 	Q_OBJECT
 public:
-	friend class QPrefs;
-
 	QPrefsDialog(QPrefs *);
 
 	~QPrefsDialog();
+	
+	void apply(LyXRC & rc) const;
+	void update(LyXRC const & rc);
 
+protected:
 	void updateConverters();
 	void updateConverterButtons();
 	void updateCopiers();
@@ -117,6 +120,9 @@ protected:
 	void closeEvent(QCloseEvent * e);
 
 private:
+
+	/// languages
+	std::vector<std::string> lang_;
 
 	std::vector<LColor_color> colors_;
 

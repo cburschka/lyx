@@ -13,10 +13,26 @@
 #include "debug.h"
 #include "qt_helpers.h"
 
+#include "lcolorcache.h"
+#include "Qt2BC.h"
+#include "qt_helpers.h"
+
+#include "debug.h"
+#include "lastfiles.h"
+#include "LColor.h"
+#include "lyxfont.h"
+
+#include "support/lstrings.h"
+#include "support/os.h"
+
+#include "controllers/ControlPrefs.h"
+#include "controllers/frnt_lang.h"
+#include "controllers/helper_funcs.h"
+
+#include "frontends/lyx_gui.h"
+
 #include "QPrefsDialog.h"
 #include "QPrefs.h"
-//Added by qt3to4:
-#include <QCloseEvent>
 
 #include "panelstack.h"
 #include "qcoloritem.h"
@@ -48,16 +64,30 @@
 
 #include "controllers/ControlPrefs.h"
 
-#include <qcheckbox.h>
-#include <qcolordialog.h>
-#include <qfontdatabase.h>
-#include <qlineedit.h>
-#include <qpushbutton.h>
-#include <qspinbox.h>
-#include <qstring.h>
-#include <qvalidator.h>
+#include <QCheckBox>
+#include <QColorDialog>
+#include <QFontDatabase>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QSpinBox>
+#include <QString>
+#include <QValidator>
+#include <QCloseEvent>
 
+#include <boost/tuple/tuple.hpp>
+#include <iomanip>
+#include <sstream>
+
+using lyx::support::compare_no_case;
+
+using std::distance;
+using std::endl;
+using std::setfill;
+using std::setw;
 using std::string;
+using std::ostringstream;
+using std::pair;
+using std::vector;
 
 namespace lyx {
 namespace frontend {
@@ -77,50 +107,308 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 		form, SLOT(slotRestore()));
 
 
-	asciiModule = new UiWidget<Ui::QPrefAsciiUi>(this);
 
-	dateModule = new UiWidget<Ui::QPrefDateUi>(this);
+	asciiModule = new UiWidget<Ui::QPrefAsciiUi>(this);
+	connect(asciiModule->asciiLinelengthSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
+	connect(asciiModule->asciiRoffED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+
 	
+	dateModule = new UiWidget<Ui::QPrefDateUi>(this);
+	connect(dateModule->DateED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+
+	
+
 	keyboardModule = new UiWidget<Ui::QPrefKeyboardUi>(this);
-    connect( keyboardModule->keymapCB, SIGNAL( toggled(bool) ), keyboardModule->firstKeymapLA, SLOT( setEnabled(bool) ) );
-    connect( keyboardModule->keymapCB, SIGNAL( toggled(bool) ), keyboardModule->secondKeymapLA, SLOT( setEnabled(bool) ) );
-    connect( keyboardModule->keymapCB, SIGNAL( toggled(bool) ), keyboardModule->firstKeymapED, SLOT( setEnabled(bool) ) );
-    connect( keyboardModule->keymapCB, SIGNAL( toggled(bool) ), keyboardModule->secondKeymapED, SLOT( setEnabled(bool) ) );
-    connect( keyboardModule->keymapCB, SIGNAL( toggled(bool) ), keyboardModule->firstKeymapPB, SLOT( setEnabled(bool) ) );
-    connect( keyboardModule->keymapCB, SIGNAL( toggled(bool) ), keyboardModule->secondKeymapPB, SLOT( setEnabled(bool) ) );
+	connect( keyboardModule->keymapCB, SIGNAL( toggled(bool) ),
+		 keyboardModule->firstKeymapLA, SLOT( setEnabled(bool) ) );
+	connect( keyboardModule->keymapCB, SIGNAL( toggled(bool) ),
+		keyboardModule->secondKeymapLA, SLOT( setEnabled(bool) ) );
+	connect( keyboardModule->keymapCB, SIGNAL( toggled(bool) ),
+		keyboardModule->firstKeymapED, SLOT( setEnabled(bool) ) );
+	connect( keyboardModule->keymapCB, SIGNAL( toggled(bool) ),
+		keyboardModule->secondKeymapED, SLOT( setEnabled(bool) ) );
+	connect( keyboardModule->keymapCB, SIGNAL( toggled(bool) ),
+		keyboardModule->firstKeymapPB, SLOT( setEnabled(bool) ) );
+	connect( keyboardModule->keymapCB, SIGNAL( toggled(bool) ),
+		keyboardModule->secondKeymapPB, SLOT( setEnabled(bool) ) );
+	connect(keyboardModule->firstKeymapPB, SIGNAL(clicked()), this, SLOT(select_keymap1()));
+	connect(keyboardModule->secondKeymapPB, SIGNAL(clicked()), this, SLOT(select_keymap2()));
+	connect(keyboardModule->keymapCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(keyboardModule->firstKeymapED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(keyboardModule->secondKeymapED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+
+
 
 	latexModule = new UiWidget<Ui::QPrefLatexUi>(this);
+	connect(latexModule->latexEncodingED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(latexModule->latexChecktexED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(latexModule->latexBibtexED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(latexModule->latexIndexED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(latexModule->latexAutoresetCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(latexModule->latexDviPaperED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(latexModule->latexPaperSizeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	
+
+
+
 	screenfontsModule = new UiWidget<Ui::QPrefScreenFontsUi>(this);
+	connect(screenfontsModule->screenRomanCO, SIGNAL(activated(const QString&)), this, SLOT(select_roman(const QString&)));
+	connect(screenfontsModule->screenSansCO, SIGNAL(activated(const QString&)), this, SLOT(select_sans(const QString&)));
+	connect(screenfontsModule->screenTypewriterCO, SIGNAL(activated(const QString&)), this, SLOT(select_typewriter(const QString&)));
+
+	QFontDatabase fontdb;
+	QStringList families(fontdb.families());
+	for (QStringList::Iterator it = families.begin(); it != families.end(); ++it) {
+		screenfontsModule->screenRomanCO->insertItem(*it);
+		screenfontsModule->screenSansCO->insertItem(*it);
+		screenfontsModule->screenTypewriterCO->insertItem(*it);
+	}
+	connect(screenfontsModule->screenRomanCO, SIGNAL(activated(const QString&)), this, SLOT(change_adaptor()));
+	connect(screenfontsModule->screenSansCO, SIGNAL(activated(const QString&)), this, SLOT(change_adaptor()));
+	connect(screenfontsModule->screenTypewriterCO, SIGNAL(activated(const QString&)), this, SLOT(change_adaptor()));
+	connect(screenfontsModule->screenZoomSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
+	connect(screenfontsModule->screenDpiSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
+	connect(screenfontsModule->screenTinyED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(screenfontsModule->screenSmallestED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(screenfontsModule->screenSmallerED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(screenfontsModule->screenSmallED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(screenfontsModule->screenNormalED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(screenfontsModule->screenLargeED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(screenfontsModule->screenLargerED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(screenfontsModule->screenLargestED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(screenfontsModule->screenHugeED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(screenfontsModule->screenHugerED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+
+	screenfontsModule->screenTinyED->setValidator(new QDoubleValidator(
+		screenfontsModule->screenTinyED));
+	screenfontsModule->screenSmallestED->setValidator(new QDoubleValidator(
+		screenfontsModule->screenSmallestED));
+	screenfontsModule->screenSmallerED->setValidator(new QDoubleValidator(
+		screenfontsModule->screenSmallerED));
+	screenfontsModule->screenSmallED->setValidator(new QDoubleValidator(
+		screenfontsModule->screenSmallED));
+	screenfontsModule->screenNormalED->setValidator(new QDoubleValidator(
+		screenfontsModule->screenNormalED));
+	screenfontsModule->screenLargeED->setValidator(new QDoubleValidator(
+		screenfontsModule->screenLargeED));
+	screenfontsModule->screenLargerED->setValidator(new QDoubleValidator(
+		screenfontsModule->screenLargerED));
+	screenfontsModule->screenLargestED->setValidator(new QDoubleValidator(
+		screenfontsModule->screenLargestED));
+	screenfontsModule->screenHugeED->setValidator(new QDoubleValidator(
+		screenfontsModule->screenHugeED));
+	screenfontsModule->screenHugerED->setValidator(new QDoubleValidator(
+		screenfontsModule->screenHugerED));
+
+
 	
+
 	colorsModule = new UiWidget<Ui::QPrefColorsUi>(this);
+	// FIXME: put in controller
+	for (int i = 0; i < LColor::ignore; ++i) {
+		LColor::color lc = static_cast<LColor::color>(i);
+		if (lc == LColor::none
+			|| lc == LColor::black
+			|| lc == LColor::white
+			|| lc == LColor::red
+			|| lc == LColor::green
+			|| lc == LColor::blue
+			|| lc == LColor::cyan
+			|| lc == LColor::magenta
+			|| lc == LColor::yellow
+			|| lc == LColor::inherit
+			|| lc == LColor::ignore) continue;
+
+		colors_.push_back(lc);
+		string const guiname(lcolor.getGUIName(lc));
+		QColorItem * ci(new QColorItem(lcolorcache.get(lc),
+				toqstr(guiname)));
+		colorsModule->lyxObjectsLB->insertItem(ci);
+	}
+	connect(colorsModule->colorChangePB, SIGNAL(clicked()), this, SLOT(change_color()));
+	connect(colorsModule->lyxObjectsLB, SIGNAL(selected(int)), this, SLOT(change_color()));
+
+
+
 
 #if defined(__CYGWIN__) || defined(__CYGWIN32__)
 	cygwinpathModule = new UiWidget<Ui::QPrefCygwinPathUi>(this);
+	connect(cygwinpathModule->pathCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 #endif
 
-	displayModule = new UiWidget<Ui::QPrefDisplayUi>(this);
-	
-	pathsModule = new UiWidget<Ui::QPrefPathsUi>(this);
-	
-	spellcheckerModule = new UiWidget<Ui::QPrefSpellcheckerUi>(this);
-	
-	convertersModule = new UiWidget<Ui::QPrefConvertersUi>(this);
-	
-	copiersModule = new UiWidget<Ui::QPrefCopiersUi>(this);
-	
-	fileformatsModule = new UiWidget<Ui::QPrefFileformatsUi>(this);
-	
-	languageModule = new UiWidget<Ui::QPrefLanguageUi>(this);
 
-	printerModule = new UiWidget<Ui::QPrefPrinterUi>(this);
+
+	displayModule = new UiWidget<Ui::QPrefDisplayUi>(this);
+	connect(displayModule->instantPreviewCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(displayModule->displayGraphicsCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	
+
+
+	pathsModule = new UiWidget<Ui::QPrefPathsUi>(this);
+	connect(pathsModule->templateDirPB, SIGNAL(clicked()), this, SLOT(select_templatedir()));
+	connect(pathsModule->tempDirPB, SIGNAL(clicked()), this, SLOT(select_tempdir()));
+	connect(pathsModule->backupDirPB, SIGNAL(clicked()), this, SLOT(select_backupdir()));
+	connect(pathsModule->workingDirPB, SIGNAL(clicked()), this, SLOT(select_workingdir()));
+	connect(pathsModule->lyxserverDirPB, SIGNAL(clicked()), this, SLOT(select_lyxpipe()));
+	connect(pathsModule->workingDirED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(pathsModule->templateDirED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(pathsModule->backupDirED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(pathsModule->tempDirED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(pathsModule->lyxserverDirED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(pathsModule->pathPrefixED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	
+
+
+	spellcheckerModule = new UiWidget<Ui::QPrefSpellcheckerUi>(this);
+	connect(spellcheckerModule->persDictionaryPB, SIGNAL(clicked()), this, SLOT(select_dict()));
+#if defined (USE_ISPELL)
+	connect(spellcheckerModule->spellCommandCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+#else
+	spellcheckerModule->spellCommandCO->setEnabled(false);
+#endif
+	connect(spellcheckerModule->altLanguageED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(spellcheckerModule->escapeCharactersED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(spellcheckerModule->persDictionaryED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(spellcheckerModule->compoundWordCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(spellcheckerModule->inputEncodingCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	spellcheckerModule->spellCommandCO->insertItem(qt_("ispell"));
+	spellcheckerModule->spellCommandCO->insertItem(qt_("aspell"));
+	spellcheckerModule->spellCommandCO->insertItem(qt_("hspell"));
+#ifdef USE_PSPELL
+	spellcheckerModule->spellCommandCO->insertItem(qt_("pspell (library)"));
+#else
+#ifdef USE_ASPELL
+	spellcheckerModule->spellCommandCO->insertItem(qt_("aspell (library)"));
+#endif
+#endif
+
+	
+
+	convertersModule = new UiWidget<Ui::QPrefConvertersUi>(this);
+	connect(convertersModule->converterNewPB, SIGNAL(clicked()), this, SLOT(new_converter()));
+	connect(convertersModule->converterRemovePB, SIGNAL(clicked()), this, SLOT(remove_converter()));
+	connect(convertersModule->converterModifyPB, SIGNAL(clicked()), this, SLOT(modify_converter()));
+	connect(convertersModule->convertersLB, SIGNAL(highlighted(int)), this, SLOT(switch_converter(int)));
+	connect(convertersModule->converterFromCO, SIGNAL(activated(const QString&)), this, SLOT(converter_changed()));
+	connect(convertersModule->converterToCO, SIGNAL(activated(const QString&)), this, SLOT(converter_changed()));
+	connect(convertersModule->converterED, SIGNAL(textChanged(const QString&)), this, SLOT(converter_changed()));
+	connect(convertersModule->converterFlagED, SIGNAL(textChanged(const QString&)), this, SLOT(converter_changed()));
+	connect(convertersModule->converterNewPB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(convertersModule->converterRemovePB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(convertersModule->converterModifyPB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+
+	
+
+	copiersModule = new UiWidget<Ui::QPrefCopiersUi>(this);
+	connect(copiersModule->copierNewPB, SIGNAL(clicked()), this, SLOT(new_copier()));
+	connect(copiersModule->copierRemovePB, SIGNAL(clicked()), this, SLOT(remove_copier()));
+	connect(copiersModule->copierModifyPB, SIGNAL(clicked()), this, SLOT(modify_copier()));
+	connect(copiersModule->AllCopiersLB, SIGNAL(highlighted(int)), this, SLOT(switch_copierLB(int)));
+	connect(copiersModule->copierFormatCO, SIGNAL(activated(int)), this, SLOT(switch_copierCO(int)));
+	connect(copiersModule->copierNewPB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(copiersModule->copierRemovePB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(copiersModule->copierModifyPB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(copiersModule->copierFormatCO, SIGNAL(activated(const QString&)), this, SLOT(copiers_changed()));
+	connect(copiersModule->copierED, SIGNAL(textChanged(const QString&)), this, SLOT(copiers_changed()));
+	
+
+
+
+	fileformatsModule = new UiWidget<Ui::QPrefFileformatsUi>(this);
+	connect(fileformatsModule->formatNewPB, SIGNAL(clicked()), this, SLOT(new_format()));
+	connect(fileformatsModule->formatRemovePB, SIGNAL(clicked()), this, SLOT(remove_format()));
+	connect(fileformatsModule->formatModifyPB, SIGNAL(clicked()), this, SLOT(modify_format()));
+	connect(fileformatsModule->formatsLB, SIGNAL(highlighted(int)), this, SLOT(switch_format(int)));
+	connect(fileformatsModule->formatED, SIGNAL(textChanged(const QString&)), this, SLOT(fileformat_changed()));
+	connect(fileformatsModule->guiNameED, SIGNAL(textChanged(const QString&)), this, SLOT(fileformat_changed()));
+	connect(fileformatsModule->shortcutED, SIGNAL(textChanged(const QString&)), this, SLOT(fileformat_changed()));
+	connect(fileformatsModule->extensionED, SIGNAL(textChanged(const QString&)), this, SLOT(fileformat_changed()));
+	connect(fileformatsModule->viewerED, SIGNAL(textChanged(const QString&)), this, SLOT(fileformat_changed()));
+	connect(fileformatsModule->editorED, SIGNAL(textChanged(const QString&)), this, SLOT(fileformat_changed()));
+	connect(fileformatsModule->formatNewPB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(fileformatsModule->formatRemovePB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(fileformatsModule->formatModifyPB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	
+
+
+
+	languageModule = new UiWidget<Ui::QPrefLanguageUi>(this);
+	connect(languageModule->rtlCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(languageModule->markForeignCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(languageModule->autoBeginCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(languageModule->autoEndCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(languageModule->useBabelCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(languageModule->globalCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(languageModule->languagePackageED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(languageModule->startCommandED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(languageModule->endCommandED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(languageModule->defaultLanguageCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+
+	languageModule->defaultLanguageCO->clear();
+
+	// store the lang identifiers for later
+	using lyx::frontend::LanguagePair;
+	std::vector<LanguagePair> const langs =
+		lyx::frontend::getLanguageData(false);
+	lang_ = getSecond(langs);
+
+	std::vector<LanguagePair>::const_iterator lit  = langs.begin();
+	std::vector<LanguagePair>::const_iterator lend = langs.end();
+	for (; lit != lend; ++lit) {
+		languageModule->defaultLanguageCO->insertItem(toqstr(lit->first));
+	}
+
+
+
+	
+	
+	printerModule = new UiWidget<Ui::QPrefPrinterUi>(this);
+	connect(printerModule->printerAdaptCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(printerModule->printerCommandED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(printerModule->printerNameED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(printerModule->printerPageRangeED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(printerModule->printerCopiesED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(printerModule->printerReverseED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(printerModule->printerToPrinterED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(printerModule->printerExtensionED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(printerModule->printerSpoolCommandED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(printerModule->printerPaperTypeED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(printerModule->printerEvenED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(printerModule->printerOddED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(printerModule->printerCollatedED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(printerModule->printerLandscapeED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(printerModule->printerToFileED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(printerModule->printerExtraED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(printerModule->printerSpoolPrefixED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(printerModule->printerPaperSizeED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	
+
+
+
 	uiModule = new UiWidget<Ui::QPrefUi>(this);
     connect( uiModule->autoSaveCB, SIGNAL( toggled(bool) ), uiModule->autoSaveLA, SLOT( setEnabled(bool) ) );
     connect( uiModule->autoSaveCB, SIGNAL( toggled(bool) ), uiModule->autoSaveSB, SLOT( setEnabled(bool) ) );
     connect( uiModule->autoSaveCB, SIGNAL( toggled(bool) ), uiModule->TextLabel1, SLOT( setEnabled(bool) ) );
+	connect(uiModule->uiFilePB, SIGNAL(clicked()), this, SLOT(select_ui()));
+	connect(uiModule->bindFilePB, SIGNAL(clicked()), this, SLOT(select_bind()));
+	connect(uiModule->uiFileED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(uiModule->bindFileED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(uiModule->cursorFollowsCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(uiModule->wheelMouseSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
+	connect(uiModule->autoSaveSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
+	connect(uiModule->autoSaveCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(uiModule->lastfilesSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
+	uiModule->lastfilesSB->setMaxValue(maxlastfiles);
+
+
+
 
 	identityModule = new UiWidget<Ui::QPrefIdentityUi>(this);
+	connect(identityModule->nameED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(identityModule->emailED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+
+
+
 
 	string const laf = _("Look and feel");
 	prefsPS->addCategory(laf);
@@ -153,208 +441,14 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 
 	prefsPS->setCurrentPanel(_("User interface"));
 
-	// FIXME: put in controller
-	for (int i = 0; i < LColor::ignore; ++i) {
-		LColor::color lc = static_cast<LColor::color>(i);
-		if (lc == LColor::none
-			|| lc == LColor::black
-			|| lc == LColor::white
-			|| lc == LColor::red
-			|| lc == LColor::green
-			|| lc == LColor::blue
-			|| lc == LColor::cyan
-			|| lc == LColor::magenta
-			|| lc == LColor::yellow
-			|| lc == LColor::inherit
-			|| lc == LColor::ignore) continue;
 
-		colors_.push_back(lc);
-		string const guiname(lcolor.getGUIName(lc));
-		QColorItem * ci(new QColorItem(lcolorcache.get(lc),
-				toqstr(guiname)));
-		colorsModule->lyxObjectsLB->insertItem(ci);
-	}
-
-	QFontDatabase fontdb;
-	QStringList families(fontdb.families());
-
-	connect(screenfontsModule->screenRomanCO, SIGNAL(activated(const QString&)), this, SLOT(select_roman(const QString&)));
-	connect(screenfontsModule->screenSansCO, SIGNAL(activated(const QString&)), this, SLOT(select_sans(const QString&)));
-	connect(screenfontsModule->screenTypewriterCO, SIGNAL(activated(const QString&)), this, SLOT(select_typewriter(const QString&)));
-
-	for (QStringList::Iterator it = families.begin(); it != families.end(); ++it) {
-		screenfontsModule->screenRomanCO->insertItem(*it);
-		screenfontsModule->screenSansCO->insertItem(*it);
-		screenfontsModule->screenTypewriterCO->insertItem(*it);
-	}
-
-	connect(uiModule->uiFilePB, SIGNAL(clicked()), this, SLOT(select_ui()));
-	connect(uiModule->bindFilePB, SIGNAL(clicked()), this, SLOT(select_bind()));
-
-	connect(keyboardModule->firstKeymapPB, SIGNAL(clicked()), this, SLOT(select_keymap1()));
-	connect(keyboardModule->secondKeymapPB, SIGNAL(clicked()), this, SLOT(select_keymap2()));
-
-	connect(spellcheckerModule->persDictionaryPB, SIGNAL(clicked()), this, SLOT(select_dict()));
-
-	connect(pathsModule->templateDirPB, SIGNAL(clicked()), this, SLOT(select_templatedir()));
-	connect(pathsModule->tempDirPB, SIGNAL(clicked()), this, SLOT(select_tempdir()));
-	connect(pathsModule->backupDirPB, SIGNAL(clicked()), this, SLOT(select_backupdir()));
-	connect(pathsModule->workingDirPB, SIGNAL(clicked()), this, SLOT(select_workingdir()));
-	connect(pathsModule->lyxserverDirPB, SIGNAL(clicked()), this, SLOT(select_lyxpipe()));
-
-	connect(colorsModule->colorChangePB, SIGNAL(clicked()), this, SLOT(change_color()));
-	connect(colorsModule->lyxObjectsLB, SIGNAL(selected(int)), this, SLOT(change_color()));
-
-	connect(fileformatsModule->formatNewPB, SIGNAL(clicked()), this, SLOT(new_format()));
-	connect(fileformatsModule->formatRemovePB, SIGNAL(clicked()), this, SLOT(remove_format()));
-	connect(fileformatsModule->formatModifyPB, SIGNAL(clicked()), this, SLOT(modify_format()));
-	connect(fileformatsModule->formatsLB, SIGNAL(highlighted(int)), this, SLOT(switch_format(int)));
-	connect(fileformatsModule->formatED, SIGNAL(textChanged(const QString&)), this, SLOT(fileformat_changed()));
-	connect(fileformatsModule->guiNameED, SIGNAL(textChanged(const QString&)), this, SLOT(fileformat_changed()));
-	connect(fileformatsModule->shortcutED, SIGNAL(textChanged(const QString&)), this, SLOT(fileformat_changed()));
-	connect(fileformatsModule->extensionED, SIGNAL(textChanged(const QString&)), this, SLOT(fileformat_changed()));
-	connect(fileformatsModule->viewerED, SIGNAL(textChanged(const QString&)), this, SLOT(fileformat_changed()));
-	connect(fileformatsModule->editorED, SIGNAL(textChanged(const QString&)), this, SLOT(fileformat_changed()));
-
-	connect(convertersModule->converterNewPB, SIGNAL(clicked()), this, SLOT(new_converter()));
-	connect(convertersModule->converterRemovePB, SIGNAL(clicked()), this, SLOT(remove_converter()));
-	connect(convertersModule->converterModifyPB, SIGNAL(clicked()), this, SLOT(modify_converter()));
-	connect(convertersModule->convertersLB, SIGNAL(highlighted(int)), this, SLOT(switch_converter(int)));
-	connect(convertersModule->converterFromCO, SIGNAL(activated(const QString&)), this, SLOT(converter_changed()));
-	connect(convertersModule->converterToCO, SIGNAL(activated(const QString&)), this, SLOT(converter_changed()));
-	connect(convertersModule->converterED, SIGNAL(textChanged(const QString&)), this, SLOT(converter_changed()));
-	connect(convertersModule->converterFlagED, SIGNAL(textChanged(const QString&)), this, SLOT(converter_changed()));
-
-	// Qt really sucks. This is as ugly as it looks, but the alternative
-	// means having to derive every module == bloat
-
-	connect(convertersModule->converterNewPB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(convertersModule->converterRemovePB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(convertersModule->converterModifyPB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-
-	connect(copiersModule->copierNewPB, SIGNAL(clicked()), this, SLOT(new_copier()));
-	connect(copiersModule->copierRemovePB, SIGNAL(clicked()), this, SLOT(remove_copier()));
-	connect(copiersModule->copierModifyPB, SIGNAL(clicked()), this, SLOT(modify_copier()));
-	connect(copiersModule->AllCopiersLB, SIGNAL(highlighted(int)), this, SLOT(switch_copierLB(int)));
-	connect(copiersModule->copierFormatCO, SIGNAL(activated(int)), this, SLOT(switch_copierCO(int)));
-	connect(copiersModule->copierNewPB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(copiersModule->copierRemovePB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(copiersModule->copierModifyPB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(copiersModule->copierFormatCO, SIGNAL(activated(const QString&)), this, SLOT(copiers_changed()));
-	connect(copiersModule->copierED, SIGNAL(textChanged(const QString&)), this, SLOT(copiers_changed()));
-
-	connect(fileformatsModule->formatNewPB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(fileformatsModule->formatRemovePB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(fileformatsModule->formatModifyPB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(languageModule->rtlCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
-	connect(languageModule->markForeignCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
-	connect(languageModule->autoBeginCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
-	connect(languageModule->autoEndCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
-	connect(languageModule->useBabelCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
-	connect(languageModule->globalCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
-	connect(languageModule->languagePackageED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(languageModule->startCommandED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(languageModule->endCommandED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(languageModule->defaultLanguageCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(uiModule->uiFileED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(uiModule->bindFileED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(uiModule->cursorFollowsCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
-	connect(uiModule->wheelMouseSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
-	connect(uiModule->autoSaveSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
-	connect(uiModule->autoSaveCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
-	connect(uiModule->lastfilesSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
-	connect(keyboardModule->keymapCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
-	connect(keyboardModule->firstKeymapED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(keyboardModule->secondKeymapED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(asciiModule->asciiLinelengthSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
-	connect(asciiModule->asciiRoffED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(dateModule->DateED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-#if defined(__CYGWIN__) || defined(__CYGWIN32__)
-	connect(cygwinpathModule->pathCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
-#endif
-	connect(latexModule->latexEncodingED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(latexModule->latexChecktexED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(latexModule->latexBibtexED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(latexModule->latexIndexED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(latexModule->latexAutoresetCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
-	connect(latexModule->latexDviPaperED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(latexModule->latexPaperSizeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(displayModule->instantPreviewCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(displayModule->displayGraphicsCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(pathsModule->workingDirED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(pathsModule->templateDirED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(pathsModule->backupDirED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(pathsModule->tempDirED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(pathsModule->lyxserverDirED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(pathsModule->pathPrefixED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-#if defined (USE_ISPELL)
-	connect(spellcheckerModule->spellCommandCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-#else
-	spellcheckerModule->spellCommandCO->setEnabled(false);
-#endif
-	connect(spellcheckerModule->altLanguageED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(spellcheckerModule->escapeCharactersED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(spellcheckerModule->persDictionaryED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(spellcheckerModule->compoundWordCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
-	connect(spellcheckerModule->inputEncodingCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
-	connect(printerModule->printerAdaptCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
-	connect(printerModule->printerCommandED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(printerModule->printerNameED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(printerModule->printerPageRangeED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(printerModule->printerCopiesED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(printerModule->printerReverseED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(printerModule->printerToPrinterED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(printerModule->printerExtensionED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(printerModule->printerSpoolCommandED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(printerModule->printerPaperTypeED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(printerModule->printerEvenED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(printerModule->printerOddED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(printerModule->printerCollatedED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(printerModule->printerLandscapeED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(printerModule->printerToFileED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(printerModule->printerExtraED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(printerModule->printerSpoolPrefixED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(printerModule->printerPaperSizeED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(screenfontsModule->screenRomanCO, SIGNAL(activated(const QString&)), this, SLOT(change_adaptor()));
-	connect(screenfontsModule->screenSansCO, SIGNAL(activated(const QString&)), this, SLOT(change_adaptor()));
-	connect(screenfontsModule->screenTypewriterCO, SIGNAL(activated(const QString&)), this, SLOT(change_adaptor()));
-	connect(screenfontsModule->screenZoomSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
-	connect(screenfontsModule->screenDpiSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
-	connect(screenfontsModule->screenTinyED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(screenfontsModule->screenSmallestED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(screenfontsModule->screenSmallerED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(screenfontsModule->screenSmallED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(screenfontsModule->screenNormalED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(screenfontsModule->screenLargeED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(screenfontsModule->screenLargerED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(screenfontsModule->screenLargestED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(screenfontsModule->screenHugeED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(screenfontsModule->screenHugerED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(identityModule->nameED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(identityModule->emailED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-
-	// initialize the validators
-	screenfontsModule->screenTinyED->setValidator(new QDoubleValidator(
-		screenfontsModule->screenTinyED));
-	screenfontsModule->screenSmallestED->setValidator(new QDoubleValidator(
-		screenfontsModule->screenSmallestED));
-	screenfontsModule->screenSmallerED->setValidator(new QDoubleValidator(
-		screenfontsModule->screenSmallerED));
-	screenfontsModule->screenSmallED->setValidator(new QDoubleValidator(
-		screenfontsModule->screenSmallED));
-	screenfontsModule->screenNormalED->setValidator(new QDoubleValidator(
-		screenfontsModule->screenNormalED));
-	screenfontsModule->screenLargeED->setValidator(new QDoubleValidator(
-		screenfontsModule->screenLargeED));
-	screenfontsModule->screenLargerED->setValidator(new QDoubleValidator(
-		screenfontsModule->screenLargerED));
-	screenfontsModule->screenLargestED->setValidator(new QDoubleValidator(
-		screenfontsModule->screenLargestED));
-	screenfontsModule->screenHugeED->setValidator(new QDoubleValidator(
-		screenfontsModule->screenHugeED));
-	screenfontsModule->screenHugerED->setValidator(new QDoubleValidator(
-		screenfontsModule->screenHugerED));
+	form_->bcview().setOK(savePB);
+	form_->bcview().setApply(applyPB);
+	form_->bcview().setCancel(closePB);
+	form_->bcview().setRestore(restorePB);
 }
+
+
 
 
 QPrefsDialog::~QPrefsDialog()
@@ -999,6 +1093,498 @@ void QPrefsDialog::select_typewriter(const QString& name)
 {
 	screenfontsModule->screenTypewriterFE->set(QFont(name), name);
 }
+
+namespace {
+
+string const internal_path(QString const & input)
+{
+	return lyx::support::os::internal_path(fromqstr(input));
+}
+
+}
+
+void QPrefsDialog::apply(LyXRC & rc) const
+{
+	// FIXME: remove rtl_support bool
+	rc.rtl_support = languageModule->rtlCB->isChecked();
+	rc.mark_foreign_language = languageModule->markForeignCB->isChecked();
+	rc.language_auto_begin = languageModule->autoBeginCB->isChecked();
+	rc.language_auto_end = languageModule->autoEndCB->isChecked();
+	rc.language_use_babel = languageModule->useBabelCB->isChecked();
+	rc.language_global_options = languageModule->globalCB->isChecked();
+	rc.language_package = fromqstr(languageModule->languagePackageED->text());
+	rc.language_command_begin = fromqstr(languageModule->startCommandED->text());
+	rc.language_command_end = fromqstr(languageModule->endCommandED->text());
+	rc.default_language = lang_[languageModule->defaultLanguageCO->currentItem()];
+
+
+	rc.ui_file = internal_path(uiModule->uiFileED->text());
+	rc.bind_file = internal_path(uiModule->bindFileED->text());
+	rc.cursor_follows_scrollbar = uiModule->cursorFollowsCB->isChecked();
+	rc.wheel_jump = uiModule->wheelMouseSB->value();
+	rc.autosave = uiModule->autoSaveSB->value() * 60;
+	rc.make_backup = uiModule->autoSaveCB->isChecked();
+	rc.num_lastfiles = uiModule->lastfilesSB->value();
+
+
+	// FIXME: can derive CB from the two EDs
+	rc.use_kbmap = keyboardModule->keymapCB->isChecked();
+	rc.primary_kbmap = internal_path(keyboardModule->firstKeymapED->text());
+	rc.secondary_kbmap = internal_path(keyboardModule->secondKeymapED->text());
+
+
+	rc.ascii_linelen = asciiModule->asciiLinelengthSB->value();
+	rc.ascii_roff_command = fromqstr(asciiModule->asciiRoffED->text());
+
+
+	rc.date_insert_format = fromqstr(dateModule->DateED->text());
+
+
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
+	rc.cygwin_path_fix = cygwinpathModule->pathCB->isChecked();
+#endif
+
+
+	rc.fontenc = fromqstr(latexModule->latexEncodingED->text());
+	rc.chktex_command = fromqstr(latexModule->latexChecktexED->text());
+	rc.bibtex_command = fromqstr(latexModule->latexBibtexED->text());
+	rc.index_command = fromqstr(latexModule->latexIndexED->text());
+	rc.auto_reset_options = latexModule->latexAutoresetCB->isChecked();
+	rc.view_dvi_paper_option = fromqstr(latexModule->latexDviPaperED->text());
+	rc.default_papersize =
+		form_->controller().toPaperSize(latexModule->latexPaperSizeCO->currentItem());
+
+
+	switch (displayModule->instantPreviewCO->currentItem()) {
+	case 0: rc.preview = LyXRC::PREVIEW_OFF; break;
+	case 1:	rc.preview = LyXRC::PREVIEW_NO_MATH; break;
+	case 2:	rc.preview = LyXRC::PREVIEW_ON;	break;
+	}
+
+	lyx::graphics::DisplayType dtype;
+	switch (displayModule->displayGraphicsCO->currentItem()) {
+	case 3:	dtype = lyx::graphics::NoDisplay; break;
+	case 2:	dtype = lyx::graphics::ColorDisplay; break;
+	case 1: dtype = lyx::graphics::GrayscaleDisplay;	break;
+	case 0: dtype = lyx::graphics::MonochromeDisplay; break;
+	default: dtype = lyx::graphics::GrayscaleDisplay;
+	}
+	rc.display_graphics = dtype;
+
+#ifdef WITH_WARNINGS
+#warning FIXME!! The graphics cache no longer has a changeDisplay method.
+#endif
+#if 0
+	if (old_value != rc.display_graphics) {
+		lyx::graphics::GCache & gc = lyx::graphics::GCache::get();
+		gc.changeDisplay();
+	}
+#endif
+
+
+	rc.document_path = internal_path(pathsModule->workingDirED->text());
+	rc.template_path = internal_path(pathsModule->templateDirED->text());
+	rc.backupdir_path = internal_path(pathsModule->backupDirED->text());
+	rc.tempdir_path = internal_path(pathsModule->tempDirED->text());
+	rc.path_prefix = fromqstr(pathsModule->pathPrefixED->text());
+	// FIXME: should be a checkbox only
+	rc.lyxpipes = internal_path(pathsModule->lyxserverDirED->text());
+
+
+	switch (spellcheckerModule->spellCommandCO->currentItem()) {
+		case 0:
+		case 1:
+		case 2:
+			rc.use_spell_lib = false;
+			rc.isp_command = fromqstr(spellcheckerModule->spellCommandCO->currentText());
+			break;
+		case 3:
+			rc.use_spell_lib = true;
+			break;
+	}
+
+	// FIXME: remove isp_use_alt_lang
+	rc.isp_alt_lang = fromqstr(spellcheckerModule->altLanguageED->text());
+	rc.isp_use_alt_lang = !rc.isp_alt_lang.empty();
+	// FIXME: remove isp_use_esc_chars
+	rc.isp_esc_chars = fromqstr(spellcheckerModule->escapeCharactersED->text());
+	rc.isp_use_esc_chars = !rc.isp_esc_chars.empty();
+	// FIXME: remove isp_use_pers_dict
+	rc.isp_pers_dict = internal_path(spellcheckerModule->persDictionaryED->text());
+	rc.isp_use_pers_dict = !rc.isp_pers_dict.empty();
+	rc.isp_accept_compound = spellcheckerModule->compoundWordCB->isChecked();
+	rc.isp_use_input_encoding = spellcheckerModule->inputEncodingCB->isChecked();
+
+
+
+	rc.print_adapt_output = printerModule->printerAdaptCB->isChecked();
+	rc.print_command = fromqstr(printerModule->printerCommandED->text());
+	rc.printer = fromqstr(printerModule->printerNameED->text());
+
+	rc.print_pagerange_flag = fromqstr(printerModule->printerPageRangeED->text());
+	rc.print_copies_flag = fromqstr(printerModule->printerCopiesED->text());
+	rc.print_reverse_flag = fromqstr(printerModule->printerReverseED->text());
+	rc.print_to_printer = fromqstr(printerModule->printerToPrinterED->text());
+	rc.print_file_extension = fromqstr(printerModule->printerExtensionED->text());
+	rc.print_spool_command = fromqstr(printerModule->printerSpoolCommandED->text());
+	rc.print_paper_flag = fromqstr(printerModule->printerPaperTypeED->text());
+	rc.print_evenpage_flag = fromqstr(printerModule->printerEvenED->text());
+	rc.print_oddpage_flag = fromqstr(printerModule->printerOddED->text());
+	rc.print_collcopies_flag = fromqstr(printerModule->printerCollatedED->text());
+	rc.print_landscape_flag = fromqstr(printerModule->printerLandscapeED->text());
+	rc.print_to_file = internal_path(printerModule->printerToFileED->text());
+	rc.print_extra_options = fromqstr(printerModule->printerExtraED->text());
+	rc.print_spool_printerprefix = fromqstr(printerModule->printerSpoolPrefixED->text());
+	rc.print_paper_dimension_flag = fromqstr(printerModule->printerPaperSizeED->text());
+
+
+
+	rc.user_name = fromqstr(identityModule->nameED->text());
+	rc.user_email = fromqstr(identityModule->emailED->text());
+
+
+
+	LyXRC const oldrc(rc);
+
+	boost::tie(rc.roman_font_name, rc.roman_font_foundry)
+		= parseFontName(fromqstr(screenfontsModule->screenRomanCO->currentText()));
+	boost::tie(rc.sans_font_name, rc.sans_font_foundry) =
+		parseFontName(fromqstr(screenfontsModule->screenSansCO->currentText()));
+	boost::tie(rc.typewriter_font_name, rc.typewriter_font_foundry) =
+		parseFontName(fromqstr(screenfontsModule->screenTypewriterCO->currentText()));
+
+	rc.zoom = screenfontsModule->screenZoomSB->value();
+	rc.dpi = screenfontsModule->screenDpiSB->value();
+	rc.font_sizes[LyXFont::SIZE_TINY] = fromqstr(screenfontsModule->screenTinyED->text());
+	rc.font_sizes[LyXFont::SIZE_SCRIPT] = fromqstr(screenfontsModule->screenSmallestED->text());
+	rc.font_sizes[LyXFont::SIZE_FOOTNOTE] = fromqstr(screenfontsModule->screenSmallerED->text());
+	rc.font_sizes[LyXFont::SIZE_SMALL] = fromqstr(screenfontsModule->screenSmallED->text());
+	rc.font_sizes[LyXFont::SIZE_NORMAL] = fromqstr(screenfontsModule->screenNormalED->text());
+	rc.font_sizes[LyXFont::SIZE_LARGE] = fromqstr(screenfontsModule->screenLargeED->text());
+	rc.font_sizes[LyXFont::SIZE_LARGER] = fromqstr(screenfontsModule->screenLargerED->text());
+	rc.font_sizes[LyXFont::SIZE_LARGEST] = fromqstr(screenfontsModule->screenLargestED->text());
+	rc.font_sizes[LyXFont::SIZE_HUGE] = fromqstr(screenfontsModule->screenHugeED->text());
+	rc.font_sizes[LyXFont::SIZE_HUGER] = fromqstr(screenfontsModule->screenHugerED->text());
+
+	if (rc.font_sizes != oldrc.font_sizes
+		|| rc.roman_font_name != oldrc.roman_font_name
+		|| rc.sans_font_name != oldrc.sans_font_name
+		|| rc.typewriter_font_name != oldrc.typewriter_font_name
+		|| rc.zoom != oldrc.zoom || rc.dpi != oldrc.dpi) {
+		form_->controller().updateScreenFonts();
+	}
+
+	
+	
+	
+	unsigned int i;
+	for (i = 0; i < colorsModule->lyxObjectsLB->count(); ++i) {
+		Q3ListBoxItem * ib(colorsModule->lyxObjectsLB->item(i));
+		QColorItem * ci(static_cast<QColorItem*>(ib));
+
+		LColor::color const col(colors_[i]);
+		QColor const & qcol(lcolorcache.get(col));
+
+		// FIXME: dubious, but it's what xforms does
+		if (qcol != ci->color()) {
+			ostringstream ostr;
+
+			ostr << '#' << std::setbase(16) << setfill('0')
+			     << setw(2) << ci->color().red()
+			     << setw(2) << ci->color().green()
+			     << setw(2) << ci->color().blue();
+
+			string newhex(ostr.str());
+			form_->controller().setColor(col, newhex);
+		}
+	}
+}
+
+// FIXME: move to helper_funcs.h
+namespace {
+
+template<class A>
+typename std::vector<A>::size_type
+findPos(std::vector<A> const & vec, A const & val)
+{
+	typedef typename std::vector<A>::const_iterator Cit;
+
+	Cit it = std::find(vec.begin(), vec.end(), val);
+	if (it == vec.end())
+		return 0;
+	return distance(vec.begin(), it);
+}
+
+void setComboxFont(QComboBox * cb, string const & family, string const & foundry)
+{
+	string const name = makeFontName(family, foundry);
+	for (int i = 0; i < cb->count(); ++i) {
+		if (fromqstr(cb->text(i)) == name) {
+			cb->setCurrentItem(i);
+			return;
+		}
+	}
+
+	// Try matching without foundry name
+
+	// We count in reverse in order to prefer the Xft foundry
+	for (int i = cb->count() - 1; i >= 0; --i) {
+		pair<string, string> tmp = parseFontName(fromqstr(cb->text(i)));
+		if (compare_no_case(tmp.first, family) == 0) {
+			cb->setCurrentItem(i);
+			return;
+		}
+	}
+
+	// family alone can contain e.g. "Helvetica [Adobe]"
+	pair<string, string> tmpfam = parseFontName(family);
+
+	// We count in reverse in order to prefer the Xft foundry
+	for (int i = cb->count() - 1; i >= 0; --i) {
+		pair<string, string> tmp = parseFontName(fromqstr(cb->text(i)));
+		if (compare_no_case(tmp.first, tmpfam.first) == 0) {
+			cb->setCurrentItem(i);
+			return;
+		}
+	}
+
+	// Bleh, default fonts, and the names couldn't be found. Hack
+	// for bug 1063. Qt makes baby Jesus cry.
+
+	QFont font;
+
+	if (family == lyx_gui::roman_font_name()) {
+		font.setStyleHint(QFont::Serif);
+		font.setFamily(family.c_str());
+	} else if (family == lyx_gui::sans_font_name()) {
+		font.setStyleHint(QFont::SansSerif);
+		font.setFamily(family.c_str());
+	} else if (family == lyx_gui::typewriter_font_name()) {
+		font.setStyleHint(QFont::TypeWriter);
+		font.setFamily(family.c_str());
+	} else {
+		lyxerr << "FAILED to find the default font: '"
+                       << foundry << "', '" << family << '\''<< endl;
+		return;
+	}
+
+	QFontInfo info(font);
+	pair<string, string> tmp = parseFontName(fromqstr(info.family()));
+	string const & default_font_name = tmp.first;
+	lyxerr << "Apparent font is " << default_font_name << endl;
+
+	for (int i = 0; i < cb->count(); ++i) {
+		lyxerr << "Looking at " << fromqstr(cb->text(i)) << endl;
+		if (compare_no_case(fromqstr(cb->text(i)),
+				    default_font_name) == 0) {
+			cb->setCurrentItem(i);
+			return;
+		}
+	}
+
+	lyxerr << "FAILED to find the font: '"
+               << foundry << "', '" << family << '\'' <<endl;
+}
+
+} // end namespace anon
+
+namespace {
+
+QString const external_path(string const & input)
+{
+	return toqstr(lyx::support::os::external_path(input));
+}
+
+}
+
+void QPrefsDialog::update(LyXRC const & rc)
+{
+	// FIXME: remove rtl_support bool
+	languageModule->rtlCB->setChecked(rc.rtl_support);
+	languageModule->markForeignCB->setChecked(rc.mark_foreign_language);
+	languageModule->autoBeginCB->setChecked(rc.language_auto_begin);
+	languageModule->autoEndCB->setChecked(rc.language_auto_end);
+	languageModule->useBabelCB->setChecked(rc.language_use_babel);
+	languageModule->globalCB->setChecked(rc.language_global_options);
+	languageModule->languagePackageED->setText(toqstr(rc.language_package));
+	languageModule->startCommandED->setText(toqstr(rc.language_command_begin));
+	languageModule->endCommandED->setText(toqstr(rc.language_command_end));
+
+	int const pos = int(findPos(lang_, rc.default_language));
+	languageModule->defaultLanguageCO->setCurrentItem(pos);
+
+	uiModule->uiFileED->setText(external_path(rc.ui_file));
+	uiModule->bindFileED->setText(external_path(rc.bind_file));
+	uiModule->cursorFollowsCB->setChecked(rc.cursor_follows_scrollbar);
+	uiModule->wheelMouseSB->setValue(rc.wheel_jump);
+	// convert to minutes
+	int mins(rc.autosave / 60);
+	if (rc.autosave && !mins)
+		mins = 1;
+	uiModule->autoSaveSB->setValue(mins);
+	uiModule->autoSaveCB->setChecked(rc.make_backup);
+	uiModule->lastfilesSB->setValue(rc.num_lastfiles);
+
+
+	identityModule->nameED->setText(toqstr(rc.user_name));
+	identityModule->emailED->setText(toqstr(rc.user_email));
+
+
+	// FIXME: can derive CB from the two EDs
+	keyboardModule->keymapCB->setChecked(rc.use_kbmap);
+	// no idea why we need these. Fscking Qt.
+	keyboardModule->firstKeymapED->setEnabled(rc.use_kbmap);
+	keyboardModule->firstKeymapPB->setEnabled(rc.use_kbmap);
+	keyboardModule->firstKeymapLA->setEnabled(rc.use_kbmap);
+	keyboardModule->secondKeymapED->setEnabled(rc.use_kbmap);
+	keyboardModule->secondKeymapPB->setEnabled(rc.use_kbmap);
+	keyboardModule->secondKeymapLA->setEnabled(rc.use_kbmap);
+	keyboardModule->firstKeymapED->setText(external_path(rc.primary_kbmap));
+	keyboardModule->secondKeymapED->setText(external_path(rc.secondary_kbmap));
+
+
+
+	asciiModule->asciiLinelengthSB->setValue(rc.ascii_linelen);
+	asciiModule->asciiRoffED->setText(toqstr(rc.ascii_roff_command));
+
+
+
+	dateModule->DateED->setText(toqstr(rc.date_insert_format));
+
+
+
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
+	cygwinpathModule->pathCB->setChecked(rc.cygwin_path_fix);
+#endif
+
+
+
+	latexModule->latexEncodingED->setText(toqstr(rc.fontenc));
+	latexModule->latexChecktexED->setText(toqstr(rc.chktex_command));
+	latexModule->latexBibtexED->setText(toqstr(rc.bibtex_command));
+	latexModule->latexIndexED->setText(toqstr(rc.index_command));
+	latexModule->latexAutoresetCB->setChecked(rc.auto_reset_options);
+	latexModule->latexDviPaperED->setText(toqstr(rc.view_dvi_paper_option));
+	latexModule->latexPaperSizeCO->setCurrentItem(
+		form_->controller().fromPaperSize(rc.default_papersize));
+
+
+
+	switch (rc.preview) {
+	case LyXRC::PREVIEW_OFF:
+		displayModule->instantPreviewCO->setCurrentItem(0);
+		break;
+	case LyXRC::PREVIEW_NO_MATH :
+		displayModule->instantPreviewCO->setCurrentItem(1);
+		break;
+	case LyXRC::PREVIEW_ON :
+		displayModule->instantPreviewCO->setCurrentItem(2);
+		break;
+	}
+
+	int item = 2;
+	switch (rc.display_graphics) {
+		case lyx::graphics::NoDisplay:		item = 3; break;
+		case lyx::graphics::ColorDisplay:	item = 2; break;
+		case lyx::graphics::GrayscaleDisplay:	item = 1; break;
+		case lyx::graphics::MonochromeDisplay:	item = 0; break;
+		default: break;
+	}
+	displayModule->displayGraphicsCO->setCurrentItem(item);
+
+
+
+	pathsModule->workingDirED->setText(external_path(rc.document_path));
+	pathsModule->templateDirED->setText(external_path(rc.template_path));
+	pathsModule->backupDirED->setText(external_path(rc.backupdir_path));
+	pathsModule->tempDirED->setText(external_path(rc.tempdir_path));
+	pathsModule->pathPrefixED->setText(toqstr(rc.path_prefix));
+	// FIXME: should be a checkbox only
+	pathsModule->lyxserverDirED->setText(external_path(rc.lyxpipes));
+
+
+
+	spellcheckerModule->spellCommandCO->setCurrentItem(0);
+
+	if (rc.isp_command == "ispell") {
+		spellcheckerModule->spellCommandCO->setCurrentItem(0);
+	} else if (rc.isp_command == "aspell") {
+		spellcheckerModule->spellCommandCO->setCurrentItem(1);
+	} else if (rc.isp_command == "hspell") {
+		spellcheckerModule->spellCommandCO->setCurrentItem(2);
+	}
+
+	if (rc.use_spell_lib) {
+#if defined(USE_ASPELL) || defined(USE_PSPELL)
+		spellcheckerModule->spellCommandCO->setCurrentItem(3);
+#endif
+	}
+
+	// FIXME: remove isp_use_alt_lang
+	spellcheckerModule->altLanguageED->setText(toqstr(rc.isp_alt_lang));
+	// FIXME: remove isp_use_esc_chars
+	spellcheckerModule->escapeCharactersED->setText(toqstr(rc.isp_esc_chars));
+	// FIXME: remove isp_use_pers_dict
+	spellcheckerModule->persDictionaryED->setText(external_path(rc.isp_pers_dict));
+	spellcheckerModule->compoundWordCB->setChecked(rc.isp_accept_compound);
+	spellcheckerModule->inputEncodingCB->setChecked(rc.isp_use_input_encoding);
+
+
+
+
+	printerModule->printerAdaptCB->setChecked(rc.print_adapt_output);
+	printerModule->printerCommandED->setText(toqstr(rc.print_command));
+	printerModule->printerNameED->setText(toqstr(rc.printer));
+
+	printerModule->printerPageRangeED->setText(toqstr(rc.print_pagerange_flag));
+	printerModule->printerCopiesED->setText(toqstr(rc.print_copies_flag));
+	printerModule->printerReverseED->setText(toqstr(rc.print_reverse_flag));
+	printerModule->printerToPrinterED->setText(toqstr(rc.print_to_printer));
+	printerModule->printerExtensionED->setText(toqstr(rc.print_file_extension));
+	printerModule->printerSpoolCommandED->setText(toqstr(rc.print_spool_command));
+	printerModule->printerPaperTypeED->setText(toqstr(rc.print_paper_flag));
+	printerModule->printerEvenED->setText(toqstr(rc.print_evenpage_flag));
+	printerModule->printerOddED->setText(toqstr(rc.print_oddpage_flag));
+	printerModule->printerCollatedED->setText(toqstr(rc.print_collcopies_flag));
+	printerModule->printerLandscapeED->setText(toqstr(rc.print_landscape_flag));
+	printerModule->printerToFileED->setText(external_path(rc.print_to_file));
+	printerModule->printerExtraED->setText(toqstr(rc.print_extra_options));
+	printerModule->printerSpoolPrefixED->setText(toqstr(rc.print_spool_printerprefix));
+	printerModule->printerPaperSizeED->setText(toqstr(rc.print_paper_dimension_flag));
+
+
+
+
+	setComboxFont(screenfontsModule->screenRomanCO, rc.roman_font_name,
+			rc.roman_font_foundry);
+	setComboxFont(screenfontsModule->screenSansCO, rc.sans_font_name,
+			rc.sans_font_foundry);
+	setComboxFont(screenfontsModule->screenTypewriterCO, rc.typewriter_font_name,
+			rc.typewriter_font_foundry);
+
+	select_roman(screenfontsModule->screenRomanCO->currentText());
+	select_sans(screenfontsModule->screenSansCO->currentText());
+	select_typewriter(screenfontsModule->screenTypewriterCO->currentText());
+
+	screenfontsModule->screenZoomSB->setValue(rc.zoom);
+	screenfontsModule->screenDpiSB->setValue(rc.dpi);
+	screenfontsModule->screenTinyED->setText(toqstr(rc.font_sizes[LyXFont::SIZE_TINY]));
+	screenfontsModule->screenSmallestED->setText(toqstr(rc.font_sizes[LyXFont::SIZE_SCRIPT]));
+	screenfontsModule->screenSmallerED->setText(toqstr(rc.font_sizes[LyXFont::SIZE_FOOTNOTE]));
+	screenfontsModule->screenSmallED->setText(toqstr(rc.font_sizes[LyXFont::SIZE_SMALL]));
+	screenfontsModule->screenNormalED->setText(toqstr(rc.font_sizes[LyXFont::SIZE_NORMAL]));
+	screenfontsModule->screenLargeED->setText(toqstr(rc.font_sizes[LyXFont::SIZE_LARGE]));
+	screenfontsModule->screenLargerED->setText(toqstr(rc.font_sizes[LyXFont::SIZE_LARGER]));
+	screenfontsModule->screenLargestED->setText(toqstr(rc.font_sizes[LyXFont::SIZE_LARGEST]));
+	screenfontsModule->screenHugeED->setText(toqstr(rc.font_sizes[LyXFont::SIZE_HUGE]));
+	screenfontsModule->screenHugerED->setText(toqstr(rc.font_sizes[LyXFont::SIZE_HUGER]));
+
+	updateFormats();
+	updateConverters();
+	updateCopiers();
+
+}
+
 
 } // namespace frontend
 } // namespace lyx

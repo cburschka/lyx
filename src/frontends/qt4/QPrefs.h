@@ -29,10 +29,11 @@ class QPrefs
 	: public QController<ControlPrefs, QView<QPrefsDialog> >
 {
 public:
-
-	friend class QPrefsDialog;
-
 	QPrefs(Dialog &);
+
+	Converters & converters();
+	Formats & formats();
+	Movers & movers();
 
 private:
 	/// Apply changes
@@ -44,12 +45,6 @@ private:
 	/// build the dialog
 	virtual void build_dialog();
 
-	Converters & converters();
-	Formats & formats();
-	Movers & movers();
-
-	/// languages
-	std::vector<std::string> lang_;
 };
 
 } // namespace frontend

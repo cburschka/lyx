@@ -40,6 +40,9 @@ public:
 	/// the dialog has changed contents
 	virtual void changed();
 
+	///
+	Qt2BC & bcview();
+
 protected:
 	/// build the actual dialog
 	virtual void build_dialog() = 0;
@@ -57,12 +60,10 @@ protected:
 	/// is the dialog currently valid ?
 	virtual bool isValid();
 
-	///
-	Qt2BC & bcview();
-
 	/// are we updating ?
 	bool updating_;
-protected slots:
+
+public slots:
 	// dialog closed from WM
 	void slotWMHide();
 
