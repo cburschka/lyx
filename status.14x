@@ -31,7 +31,7 @@ What's new
 
 - Translate \verb commands correctly in tex2lyx (bug 2236).
 
-- Truncate temporary file names that are too long for MikTeX's pdflatex
+- Truncate temporary file names that are too long for MikTeX's pdflatex.
 
 - Parse \tag and \tag* commands correctly in tex2lyx and mathed (bug 2234).
 
@@ -57,40 +57,40 @@ What's new
 
 - Improve handling of the labeling environment in KOMA letters (bug 2246).
 
+- Fix crash when deleting row/column in a math array.
+
 - Fix positioning of cursor when clicking to right of last nestinset
   in a cell.
 
-- Fix cursor positioning in tabulars (bug 2006).
+- Fix: deleting superscript also deleted subscript (bug 2362)
+
+- Fix converting selection to superscript, subscript or mbox inset (math)
+
+- Fix drawing of \boxed and \fbox in formulas (bug 2361).
 
 - Update screen when cursor was between two spaces and goes to
   line/document start/end (bug 2298).
 
-- Fix copy and paste for multiple cells (bug 2377).
-
 - Adjust cursor after backspace in change tracking mode (bug 2185).
+
+- Fix cursor positioning in tabulars (bug 2006).
+
+- Fix copy and paste for multiple cells (bug 2377).
 
 - Fix drawing of inset buttons (bug 2328)
 
-- Fix: deleting superscript also deleted subscript (bug 2362)
-
-- Fix drawing of \boxed and \fbox in formulas (bug 2361).
+- Small optimizations in the way the Qt frontend updates the screen,
 
 - Use the qt wide scroll wheel setting (bug 2175).
 
-- fix converting selection to superscript, subscript or mbox inset (math)
+- Remove zombie wheel mouse spin box from the qt preferences dialog (bug 783).
 
 - Fix Find&Replace with sciword bindings.
-
-- small optimizations in the way the Qt frontend updates the screen,
-
-- Fix crash when deleting row/column in a math array
-
-- remove zombie wheel mouse spin box from the qt preferences dialog (bug 783).
 
 * Configuration/Installation:
 
 - Don't use the -mms-bitfields compiler switch on mingw and cygwin, since
-  Q..3/ does not use it either in the default configuration
+  Q..3/ does not use it either in the default configuration.
 
-- Compilation fix (gtk frontend) for gcc 4.1
+- Compilation fix (gtk frontend) for gcc 4.1.
 

@@ -1,3 +1,8 @@
+2006-03-20  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyxfunc.C (getStatus): always allow saving unnamed buffers (bug
+	2313 cont'd).
+
 2006-03-16  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* text.C (delete): adjust cursor after backspace in change tracking

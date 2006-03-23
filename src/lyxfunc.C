@@ -541,7 +541,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	}
 
 	case LFUN_MENUWRITE: {
-		enable = !view()->buffer()->isClean();
+		enable = view()->buffer()->isUnnamed() 
+			|| !view()->buffer()->isClean();
 		break;
 	}
 
