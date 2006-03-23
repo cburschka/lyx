@@ -1,5 +1,7 @@
 include $(top_srcdir)/config/common.am
 
+SUBDIRS = tests
+
 EXTRA_DIST = pch.h BCView.tmpl
 
 BUILT_SOURCES = $(PCH_FILE)
