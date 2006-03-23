@@ -144,7 +144,7 @@ void QScreen::showCursor(int x, int y, int h, Cursor_Shape shape)
 		break;
 	}
 
-	owner_.getContent()->repaint(
+	owner_.getContent()->update(
 		cursor_x_, cursor_y_,
 		cursor_w_, cursor_h_);
 }
@@ -160,5 +160,5 @@ void QScreen::removeCursor()
 	       &nocursor_pixmap_, 0, 0, cursor_w_, cursor_h_);
 
 	owner_.getContent()
-		->repaint(cursor_x_, cursor_y_, cursor_w_, cursor_h_);
+		->update(cursor_x_, cursor_y_, cursor_w_, cursor_h_);
 }
