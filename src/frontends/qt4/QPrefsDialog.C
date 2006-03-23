@@ -394,7 +394,6 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	connect(uiModule->uiFileED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(uiModule->bindFileED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(uiModule->cursorFollowsCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
-	connect(uiModule->wheelMouseSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
 	connect(uiModule->autoSaveSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
 	connect(uiModule->autoSaveCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 	connect(uiModule->lastfilesSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
@@ -1121,7 +1120,6 @@ void QPrefsDialog::apply(LyXRC & rc) const
 	rc.ui_file = internal_path(uiModule->uiFileED->text());
 	rc.bind_file = internal_path(uiModule->bindFileED->text());
 	rc.cursor_follows_scrollbar = uiModule->cursorFollowsCB->isChecked();
-	rc.wheel_jump = uiModule->wheelMouseSB->value();
 	rc.autosave = uiModule->autoSaveSB->value() * 60;
 	rc.make_backup = uiModule->autoSaveCB->isChecked();
 	rc.num_lastfiles = uiModule->lastfilesSB->value();
@@ -1416,7 +1414,6 @@ void QPrefsDialog::update(LyXRC const & rc)
 	uiModule->uiFileED->setText(external_path(rc.ui_file));
 	uiModule->bindFileED->setText(external_path(rc.bind_file));
 	uiModule->cursorFollowsCB->setChecked(rc.cursor_follows_scrollbar);
-	uiModule->wheelMouseSB->setValue(rc.wheel_jump);
 	// convert to minutes
 	int mins(rc.autosave / 60);
 	if (rc.autosave && !mins)
