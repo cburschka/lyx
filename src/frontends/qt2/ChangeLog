@@ -1,3 +1,9 @@
+2006-03-23  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QPrefs.C (apply, update_contents):
+	* QPrefsDialog.C:
+	* ui/QPrefUIModule.ui: remove wheel mouse spin box (bug 783).
+
 2006-03-20  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* QWorkArea.C (QWorkArea): do not paint background (bug 2197).

@@ -83,6 +83,8 @@ What's new
 
 - Fix crash when deleting row/column in a math array
 
+- remove zombie wheel mouse spin box from the qt preferences dialog (bug 783).
+
 * Configuration/Installation:
 
 - Don't use the -mms-bitfields compiler switch on mingw and cygwin, since
