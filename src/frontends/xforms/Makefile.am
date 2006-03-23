@@ -60,8 +60,6 @@ libxforms_la_SOURCES = \
 	xscreen.C \
 	xscreen.h \
 	Alert_pimpl.C \
-	Color.C \
-	Color.h \
 	ColorHandler.C \
 	ColorHandler.h \
 	Dialogs.C \

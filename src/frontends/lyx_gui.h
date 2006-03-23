@@ -27,6 +27,9 @@ class LyXComm;
 class LyXDataSocket;
 class LyXServerSocket;
 class FuncRequest;
+namespace lyx {
+struct RGBColor;
+}
 
 /// GUI interaction
 namespace lyx_gui {
@@ -73,6 +76,13 @@ void exit();
  * that a given lfun is not implemented by a frontend
  */
 FuncStatus getStatus(FuncRequest const & ev);
+
+/**
+ * Given col, fills r, g, b in the range 0-255.
+ * The function returns true if successful.
+ * It returns false on failure and sets r, g, b to 0.
+ */
+bool getRGBColor(LColor_color col, lyx::RGBColor & rgbcol);
 
 /** Eg, passing LColor::black returns "000000",
  *      passing LColor::white returns "ffffff".

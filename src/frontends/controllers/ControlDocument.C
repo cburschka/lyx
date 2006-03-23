@@ -114,11 +114,8 @@ void ControlDocument::dispatchParams()
 		for (; it != end; ++it) {
 			string const & current_branch = it->getBranch();
 			Branch const * branch = branchlist.find(current_branch);
-			string x11hexname = branch->getColor();
-			// check that we have a valid color!
-			if (x11hexname.empty() || x11hexname[0] != '#')
-				x11hexname = 
-					lcolor.getX11Name(LColor::background);
+			string const x11hexname =
+					lyx::X11hexname(branch->getColor());
 			// display the new color
 			string const str = current_branch  + ' ' + x11hexname;
 			kernel().dispatch(FuncRequest(LFUN_SET_COLOR, str));

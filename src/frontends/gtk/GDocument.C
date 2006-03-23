@@ -529,7 +529,7 @@ void GDocument::update()
 		(*row)[branchColName_] = (*it).getBranch();
 		std::cerr << "update: loading '" << (*it).getBranch() << "'\n";
 		(*row)[branchColActivated_] = (*it).getSelected();
-		(*row)[branchColColor_] = (*it).getColor();
+		(*row)[branchColColor_] = X11hexname((*it).getColor());
 	}
 	// *** End "Branches" Page ***
 
@@ -720,6 +720,10 @@ void GDocument::apply()
 			Branch * newbranch = branchlist.find(name);
 			newbranch->setSelected((*row)[branchColActivated_]);
 			Glib::ustring const color = (*row)[branchColColor_];
+			// FIXME: The color should be editable via a color
+			// chooser, not a text field (see qt/xforms frontends)
+			// setColor will silently ignore an invalid color and
+			// use the normal background color for now.
 			newbranch->setColor(color);
 		}
 	}

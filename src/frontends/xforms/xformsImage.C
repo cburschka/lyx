@@ -12,6 +12,7 @@
 
 #include "xformsImage.h"
 #include "Color.h"
+#include "lyx_gui.h"
 
 #include "debug.h"
 #include "format.h"
@@ -32,8 +33,6 @@
 
 #include <boost/bind.hpp>
 #include <boost/tuple/tuple.hpp>
-
-using lyx::frontend::getRGBColor;
 
 using lyx::support::float_equal;
 using lyx::support::prefixIs;
@@ -470,13 +469,13 @@ void init_graphics()
 
 unsigned int packedcolor(LColor::color col)
 {
-	unsigned int r, g, b;
-	bool const success = getRGBColor(col, r, g, b);
+	lyx::RGBColor rgb;
+	bool const success = lyx_gui::getRGBColor(col, rgb);
 	if (!success)
 		// Set to black on failure
 		return FL_PACK(255, 255, 255);
 
-	return FL_PACK(r, g, b);
+	return FL_PACK(rgb.r, rgb.g, rgb.b);
 }
 
 } // namespace anon

@@ -24,6 +24,7 @@
 
 #include "lyx_forms.h"
 
+using lyx::RGBColor;
 using std::string;
 
 namespace lyx {

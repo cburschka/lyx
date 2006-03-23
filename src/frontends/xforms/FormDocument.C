@@ -678,21 +678,13 @@ RGBColor get_current_color(FL_OBJECT * browser, BranchList const & branchlist)
 {
 	BOOST_ASSERT(browser && browser->objclass == FL_BROWSER);
 
-	RGBColor color;
-
 	int const i = fl_get_browser(browser);
 	string const branch_name = fl_get_browser_line(browser, i);
 	Branch const * branch = branchlist.find(branch_name);
 	if (!branch)
-		return color;
+		return RGBColor();
 
-	string const x11hexname = branch->getColor();
-	if (x11hexname[0] == '#') {
-		color = RGBColor(x11hexname);
-	} else{
-		fl_getmcolor(FL_COL1, &color.r, &color.g, &color.b);
-	}
-	return color;
+	return branch->getColor();
 }
 
 } // namespace anon
@@ -1298,20 +1290,16 @@ void FormDocument::branch_update(BufferParams const & params)
 
 	// display proper colour...
 	RGBColor rgb;
-	string x11hexname;
 	if (current_branch == "none")
-		x11hexname = "none";
+		fl_getmcolor(FL_COL1, &rgb.r, &rgb.g, &rgb.b);
 	else {
 		Branch * branch = branchlist_.find(current_branch);
 		if (branch)
-			x11hexname = branch->getColor();
+			rgb = branch->getColor();
+		else
+			fl_getmcolor(FL_COL1, &rgb.r, &rgb.g, &rgb.b);
 	}
 
-	if (x11hexname[0] == '#') {
-		rgb = RGBColor(x11hexname);
-	} else {
-		fl_getmcolor(FL_COL1, &rgb.r, &rgb.g, &rgb.b);
-	}
 	fl_mapcolor(GUI_COLOR_CHOICE, rgb.r, rgb.g, rgb.b);
 	fl_redraw_object(branch_->button_color);
 

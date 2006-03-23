@@ -12,8 +12,6 @@
 
 #include "Color.h"
 
-#include "lyx_forms.h"
-
 #include "LColor.h"
 
 #include <cmath>
@@ -33,7 +31,6 @@ using std::ostringstream;
 using std::string;
 
 namespace lyx {
-namespace frontend {
 
 namespace {
 
@@ -49,28 +46,6 @@ int hexstrToInt(string const & str)
 
 } // namespace anon
 
-
-
-bool getRGBColor(LColor_color col,
-		 unsigned int & r, unsigned int & g, unsigned int & b)
-{
-	string const name = lcolor.getX11Name(col);
-	Display * const display = fl_get_display();
-	Colormap const cmap = fl_state[fl_get_vclass()].colormap;
-	XColor xcol, ccol;
-
-	if (XLookupColor(display, cmap, name.c_str(), &xcol, &ccol) == 0) {
-		r = 0;
-		g = 0;
-		b = 0;
-		return false;
-	}
-
-	r = xcol.red   / 256;
-	g = xcol.green / 256;
-	b = xcol.blue  / 256;
-	return true;
-}
 
 
 string const X11hexname(RGBColor const & col)
@@ -199,5 +174,4 @@ HSVColor::HSVColor(RGBColor const & rgb)
 	}
 }
 
-} // namespace frontend
 } // namespace lyx

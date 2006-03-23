@@ -18,16 +18,7 @@
 
 #include <string>
 
-class LColor_color;
-
 namespace lyx {
-namespace frontend {
-
-/** Given col, fills r, g, b in the range 0-255.
-    The function returns true if successful.
-    It returns false on failure and sets r, g, b to 0. */
-bool getRGBColor(LColor_color col,
-		 unsigned int & r, unsigned int & g, unsigned int & b);
 
 struct RGBColor;
 /// returns a string of form #rrggbb, given an RGBColor struct
@@ -78,7 +69,6 @@ bool operator!=(RGBColor const & c1, RGBColor const & c2)
 	return !(c1 == c2);
 }
 
-} // namespace frontend
 } // namespace lyx
 
 #endif

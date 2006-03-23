@@ -30,12 +30,16 @@
 #ifndef BRANCHES_H
 #define BRANCHES_H
 
+#include "Color.h"
+
 #include <string>
 #include <list>
 
 
 class Branch {
 public:
+	///
+	Branch();
 	///
 	std::string const & getBranch() const;
 	///
@@ -47,8 +51,15 @@ public:
 	 */
 	bool setSelected(bool);
 	///
-	std::string const & getColor() const;
+	lyx::RGBColor const & getColor() const;
 	///
+	void setColor(lyx::RGBColor const &);
+	/**
+	 * Set color from a string "#rrggbb".
+	 * Use LColor:background if the string is no valid color.
+	 * This ensures compatibility with LyX 1.4.0 that had the symbolic
+	 * color "none" that was displayed as LColor:background.
+	 */
 	void setColor(std::string const &);
 
 
@@ -58,7 +69,7 @@ private:
 	///
 	bool selected_;
 	///
-	std::string color_;
+	lyx::RGBColor color_;
 };
 
 

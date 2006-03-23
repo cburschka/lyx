@@ -26,6 +26,7 @@
 #include "funcrequest.h"
 #include "gettext.h"
 
+#include "Color.h"
 #include "LColor.h"
 #include "LyXAction.h"
 #include "lyx_main.h"
@@ -175,23 +176,44 @@ FuncStatus lyx_gui::getStatus(FuncRequest const & ev)
 }
 
 
-string const lyx_gui::hexname(LColor_color col)
+bool lyx_gui::getRGBColor(LColor_color col, lyx::RGBColor & rgbcol)
 {
 	Gdk::Color gdkColor;
 	Gdk::Color * gclr = colorCache.getColor(col);
 	if (!gclr) {
 		gclr = &gdkColor;
-		gclr->parse(lcolor.getX11Name(col));
+		if(!gclr->parse(lcolor.getX11Name(col))) {
+			rgbcol.r = 0;
+			rgbcol.g = 0;
+			rgbcol.b = 0;
+			return false;
+		}
+	}
+
+	// Note that X stores the RGB values in the range 0 - 65535
+	// whilst we require them in the range 0 - 255.
+	rgbcol.r = gclr->get_red() / 256;
+	rgbcol.g = gclr->get_green() / 256;
+	rgbcol.b = gclr->get_blue() / 256;
+	return true;
+}
+
+
+string const lyx_gui::hexname(LColor_color col)
+{
+	lyx::RGBColor rgbcol;
+	if (!getRGBColor(col, rgbcol)) {
+		lyxerr << "X can't find color for \"" << lcolor.getLyXName(col)
+		       << '"' << std::endl;
+		return string();
 	}
 
 	std::ostringstream os;
 
-	// Note that X stores the RGB values in the range 0 - 65535
-	// whilst we require them in the range 0 - 255.
 	os << std::setbase(16) << std::setfill('0')
-	   << std::setw(2) << (gclr->get_red() / 256)
-	   << std::setw(2) << (gclr->get_green() / 256)
-	   << std::setw(2) << (gclr->get_blue() / 256);
+	   << std::setw(2) << rgbcol.r
+	   << std::setw(2) << rgbcol.g
+	   << std::setw(2) << rgbcol.b;
 
 	return os.str();
 }

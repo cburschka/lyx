@@ -12,6 +12,7 @@
 
 #include "lcolorcache.h"
 
+#include "Color.h"
 #include "LColor.h"
 
 LColorCache lcolorcache;
@@ -37,4 +38,10 @@ QColor const & LColorCache::get(LColor_color col) const
 void LColorCache::clear()
 {
 	colormap.clear();
+}
+
+
+QColor const rgb2qcolor(lyx::RGBColor const & rgb)
+{
+	return QColor(rgb.r, rgb.g, rgb.b);
 }

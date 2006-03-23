@@ -16,6 +16,7 @@
 // FIXME: move this stuff out again
 #include "bufferlist.h"
 #include "BufferView.h"
+#include "Color.h"
 #include "funcrequest.h"
 #include "LColor.h"
 #include "lyx_main.h"
@@ -297,6 +298,22 @@ FuncStatus getStatus(FuncRequest const & ev)
 	}
 
 	return flag;
+}
+
+
+bool getRGBColor(LColor_color col, lyx::RGBColor & rgbcol)
+{
+	QColor const & qcol = lcolorcache.get(col);
+	if (!qcol.isValid()) {
+		rgbcol.r = 0;
+		rgbcol.g = 0;
+		rgbcol.b = 0;
+		return false;
+	}
+	rgbcol.r = qcol.red();
+	rgbcol.g = qcol.green();
+	rgbcol.b = qcol.blue();
+	return true;
 }
 
 

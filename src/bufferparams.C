@@ -601,7 +601,7 @@ void BufferParams::writeFile(ostream & os) const
 	for (; it != end; ++it) {
 		os << "\\branch " << it->getBranch()
 		   << "\n\\selected " << it->getSelected()
-		   << "\n\\color " << it->getColor()
+		   << "\n\\color " << lyx::X11hexname(it->getColor())
 		   << "\n\\end_branch"
 		   << "\n";
 	}

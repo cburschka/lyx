@@ -11,9 +11,17 @@
 #include <config.h>
 
 #include "BranchList.h"
+#include "LColor.h"
+#include "frontends/lyx_gui.h"
 #include <algorithm>
 
 using std::string;
+
+
+Branch::Branch()
+{
+	lyx_gui::getRGBColor(LColor::background, color_);
+}
 
 
 string const & Branch::getBranch() const
@@ -43,15 +51,25 @@ bool Branch::setSelected(bool b)
 }
 
 
-string const & Branch::getColor() const
+lyx::RGBColor const & Branch::getColor() const
 {
 	return color_;
 }
 
 
-void Branch::setColor(string const & c)
+void Branch::setColor(lyx::RGBColor const & c)
 {
 	color_ = c;
+}
+
+
+void Branch::setColor(string const & c)
+{
+	if (c.size() == 7 && c[0] == '#')
+		color_ = lyx::RGBColor(c);
+	else
+		// no color set or invalid color - use normal background
+		lyx_gui::getRGBColor(LColor::background, color_);
 }
 
 
@@ -91,7 +109,6 @@ bool BranchList::add(string const & s)
 			Branch br;
 			br.setBranch(name);
 			br.setSelected(false);
-			br.setColor("none");
 			list.push_back(br);
 		}
 		if (j == string::npos)

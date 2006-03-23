@@ -13,6 +13,7 @@
 
 #include "QBranches.h"
 
+#include "lcolorcache.h"
 #include "validators.h"
 #include "qt_helpers.h"
 
@@ -68,10 +69,7 @@ void QBranches::update()
 		QString const sel = it->getSelected() ? qt_("Yes") : qt_("No");
 		Q3ListViewItem * newItem =
 			new Q3ListViewItem(branchesLV, bname, sel);
-		string const x11hexname = it->getColor();
-		QColor itemcolor;
-		if (x11hexname[0] == '#')
-			itemcolor.setNamedColor(toqstr(x11hexname));
+		QColor const itemcolor = rgb2qcolor(it->getColor());
 		if (itemcolor.isValid()) {
 			QPixmap coloritem(30, 10);
 			coloritem.fill(itemcolor);
@@ -154,16 +152,13 @@ void QBranches::on_colorPB_clicked()
 	if (selItem != 0)
 		sel_branch = selItem->text(0);
 	if (!sel_branch.isEmpty()) {
-		QColor initial("lightskyblue");
 		string current_branch = fromqstr(sel_branch);
 		Branch * branch =
 			branchlist_.find(current_branch);
 		if (!branch)
 			return;
 
-		string x11hexname = branch->getColor();
-		if (x11hexname[0] == '#')
-			initial.setNamedColor(toqstr(x11hexname));
+		QColor const initial = rgb2qcolor(branch->getColor());
 		QColor ncol(QColorDialog::getColor(initial, qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget()));
 		if (ncol.isValid()){
 			// add the color to the branchlist

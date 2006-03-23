@@ -35,7 +35,7 @@ public:
 	    a color is chosen (or the dialog is closed).
 	    \param color the color used to initialise the dialog.
 	 */
-	RGBColor const & requestColor(RGBColor const & color);
+	lyx::RGBColor const & requestColor(lyx::RGBColor const & color);
 
 	/** Input callback function.
 	 *  Invoked only by the xforms callback interface
@@ -71,8 +71,8 @@ private:
 	/// The title displayed by the Window Manager.
 	std::string title_;
 
-	RGBColor input_color_;
-	RGBColor color_;
+	lyx::RGBColor input_color_;
+	lyx::RGBColor color_;
 	bool finished_;
 
 	/// Passed to the window manager to give a pretty little symbol ;-)

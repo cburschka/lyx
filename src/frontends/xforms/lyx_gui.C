@@ -51,7 +51,6 @@ using lyx::support::AddName;
 using lyx::support::package;
 
 using lyx::frontend::fontloader;
-using lyx::frontend::getRGBColor;
 using lyx::frontend::lyxColorHandler;
 using lyx::frontend::LyXColorHandler;
 using lyx::frontend::XformsColor;
@@ -348,11 +347,34 @@ FuncStatus getStatus(FuncRequest const & /*ev*/)
 	return FuncStatus();
 }
 
+
+bool getRGBColor(LColor_color col, lyx::RGBColor & rgbcol)
+{
+	string const name = lcolor.getX11Name(col);
+	Display * const display = fl_get_display();
+	Colormap const cmap = fl_state[fl_get_vclass()].colormap;
+	XColor xcol, ccol;
+
+	if (XLookupColor(display, cmap, name.c_str(), &xcol, &ccol) == 0) {
+		rgbcol.r = 0;
+		rgbcol.g = 0;
+		rgbcol.b = 0;
+		return false;
+	}
+
+	// Note that X stores the RGB values in the range 0 - 65535
+	// whilst we require them in the range 0 - 255.
+	rgbcol.r = xcol.red   / 256;
+	rgbcol.g = xcol.green / 256;
+	rgbcol.b = xcol.blue  / 256;
+	return true;
+}
+
+
 string const hexname(LColor_color col)
 {
-	unsigned int r, g, b;
-	bool const success = getRGBColor(col, r, g, b);
-	if (!success) {
+	lyx::RGBColor rgbcol;
+	if (!getRGBColor(col, rgbcol)) {
 		lyxerr << "X can't find color for \"" << lcolor.getLyXName(col)
 		       << '"' << endl;
 		return string();
@@ -361,9 +383,9 @@ string const hexname(LColor_color col)
 	ostringstream os;
 
 	os << setbase(16) << setfill('0')
-	   << setw(2) << r
-	   << setw(2) << g
-	   << setw(2) << b;
+	   << setw(2) << rgbcol.r
+	   << setw(2) << rgbcol.g
+	   << setw(2) << rgbcol.b;
 
 	return os.str();
 }

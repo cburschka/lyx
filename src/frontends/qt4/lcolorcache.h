@@ -19,6 +19,11 @@
 #include <QColor>
 
 
+namespace lyx {
+struct RGBColor;
+}
+
+
 // FIXME: use a fixed-size array not a map ?
 
 /**
@@ -43,4 +48,6 @@ private:
 /// singleton instance
 extern LColorCache lcolorcache;
 
+///
+QColor const rgb2qcolor(lyx::RGBColor const &);
 #endif // LCOLORCACHE_H

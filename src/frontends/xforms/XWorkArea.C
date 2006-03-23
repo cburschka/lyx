@@ -16,6 +16,7 @@
 #include "Color.h"
 #include "XFormsView.h"
 #include "XLyXKeySym.h"
+#include "lyx_gui.h"
 
 #include "debug.h"
 #include "funcrequest.h"
@@ -119,9 +120,9 @@ XWorkArea::XWorkArea(LyXView & owner, int w, int h)
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
 	fl_set_object_gravity(obj, NorthWestGravity, SouthEastGravity);
 
-	unsigned int r, g, b;
-	if (getRGBColor(LColor::background, r, g, b)) {
-		fl_mapcolor(FL_FREE_COL12, r, g, b);
+	RGBColor col;
+	if (lyx_gui::getRGBColor(LColor::background, col)) {
+		fl_mapcolor(FL_FREE_COL12, col.r, col.g, col.b);
 		fl_set_object_color(obj, FL_FREE_COL12, FL_MCOL);
 	}
 

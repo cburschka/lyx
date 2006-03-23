@@ -27,6 +27,7 @@
 #include "lastfiles.h"
 #include "LColor.h"
 #include "lyxfont.h"
+#include "frontends/lyx_gui.h"
 
 #include "support/convert.h"
 #include "support/lstrings.h"
@@ -37,6 +38,8 @@
 #include "combox.h"
 
 #include <iomanip>
+
+using lyx::RGBColor;
 
 using std::endl;
 using std::make_pair;
@@ -621,7 +624,7 @@ void FormPreferences::Colors::LoadBrowserLyX()
 		    || lc == LColor::ignore) continue;
 
 		RGBColor col;
-		bool const success = getRGBColor(lc, col.r, col.g, col.b);
+		bool const success = lyx_gui::getRGBColor(lc, col);
 		if (!success) {
 			lyxerr << "FormPreferences::Colors::LoadBrowserLyX:\n"
 			       << "LColor " << lcolor.getLyXName(lc)

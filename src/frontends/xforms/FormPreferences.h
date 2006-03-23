@@ -50,7 +50,6 @@ struct FD_preferences_screen_fonts;
 struct FD_preferences_spelloptions;
 
 class FormColorpicker;
-class RGBColor;
 
 /** This class provides an XForms implementation of the FormPreferences Dialog.
  *  The preferences dialog allows users to set/save their preferences.

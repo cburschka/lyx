@@ -85,6 +85,8 @@ lyx_SOURCES = \
 	BranchList.h \
 	Chktex.C \
 	Chktex.h \
+	Color.C \
+	Color.h \
 	CutAndPaste.C \
 	CutAndPaste.h \
 	DepTable.C \
