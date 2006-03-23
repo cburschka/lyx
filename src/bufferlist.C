@@ -22,7 +22,7 @@
 #include "lyx_main.h"
 #include "output_latex.h"
 #include "paragraph.h"
-#include "ParagraphList_fwd.h"
+#include "ParagraphList.h"
 
 #include "frontends/Alert.h"
 

@@ -14,6 +14,8 @@
 #ifndef CUTANDPASTE_H
 #define CUTANDPASTE_H
 
+#include "ParagraphList_fwd.h"
+
 #include "support/types.h"
 
 #include <string>
@@ -23,7 +25,6 @@ class Buffer;
 class ErrorList;
 class LyXTextClass;
 class LCursor;
-class ParagraphList;
 
 ///
 namespace lyx {

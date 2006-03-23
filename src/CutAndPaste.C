@@ -214,14 +214,16 @@ pasteSelectionHelper(Buffer const & buffer,
 
 	// Paste it!
 	if (empty) {
-		pars.insert(pars.begin() + pit, insertion.begin(),
+		pars.insert(boost::next(pars.begin(), pit),
+			    insertion.begin(),
 		            insertion.end());
 
 		// merge the empty par with the last par of the insertion
 		mergeParagraph(buffer.params(), pars,
 		               pit + insertion.size() - 1);
 	} else {
-		pars.insert(pars.begin() + pit + 1, insertion.begin(),
+		pars.insert(boost::next(pars.begin(), pit + 1),
+			    insertion.begin(),
 		            insertion.end());
 
 		// merge the first par of the insertion with the current par
@@ -314,7 +316,8 @@ void copySelectionHelper(ParagraphList & pars,
 	BOOST_ASSERT(startpit != endpit || start <= end);
 
 	// Clone the paragraphs within the selection.
-	ParagraphList paragraphs(pars.begin() + startpit, pars.begin() + endpit + 1);
+	ParagraphList paragraphs(boost::next(pars.begin(), startpit),
+				 boost::next(pars.begin(), endpit + 1));
 
 	for_each(paragraphs.begin(), paragraphs.end(), resetOwnerAndChanges());
 

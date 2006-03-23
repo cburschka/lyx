@@ -19,7 +19,7 @@
 #include "output.h"
 #include "outputparams.h"
 #include "paragraph.h"
-#include "ParagraphList_fwd.h"
+#include "ParagraphList.h"
 #include "ParagraphParameters.h"
 
 #include "support/lstrings.h"

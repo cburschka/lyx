@@ -22,6 +22,7 @@
 #include "BufferView.h"
 #include "lyxtext.h"
 #include "paragraph.h"
+#include "ParagraphList.h"
 
 #include "mathed/math_support.h"
 #include "insets/inset.h"

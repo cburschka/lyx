@@ -12,6 +12,8 @@
 #ifndef PARAGRAPH_FUNCS_H
 #define PARAGRAPH_FUNCS_H
 
+#include "ParagraphList_fwd.h"
+
 #include "support/types.h"
 
 class Buffer;
@@ -19,7 +21,6 @@ class BufferParams;
 class InsetBase;
 class LyXFont;
 class Paragraph;
-class ParagraphList;
 
 /**
  * This breaks a paragraph at the specified position.

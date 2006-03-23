@@ -12,11 +12,12 @@
 #ifndef OUTPUT_LATEX_H
 #define OUTPUT_LATEX_H
 
+#include "ParagraphList_fwd.h"
+
 #include <string>
 
 class Buffer;
 class OutputParams;
-class ParagraphList;
 class TexRow;
 
 /// Just a wrapper for the method below, first creating the ofstream.

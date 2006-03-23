@@ -20,7 +20,7 @@
 #include "debug.h"
 #include "paragraph.h"
 #include "paragraph_funcs.h"
-#include "ParagraphList_fwd.h"
+#include "ParagraphList.h"
 #include "ParagraphParameters.h"
 #include "sgml.h"
 
@@ -47,7 +47,7 @@ namespace {
 ParagraphList::const_iterator searchParagraph(ParagraphList::const_iterator const & par,
 					      ParagraphList::const_iterator const & pend)
 {
-	ParagraphList::const_iterator p = par + 1;
+	ParagraphList::const_iterator p = boost::next(par);
 
 	for( ; p != pend && p->layout()->latextype == LATEX_PARAGRAPH; ++p);
 
@@ -59,7 +59,7 @@ ParagraphList::const_iterator searchCommand(ParagraphList::const_iterator const 
 					    ParagraphList::const_iterator const & pend)
 {
 	LyXLayout_ptr const & bstyle = par->layout();
-	ParagraphList::const_iterator p = par + 1;
+	ParagraphList::const_iterator p = boost::next(par);
 
 	for( ; p != pend; ++p) {
 		LyXLayout_ptr const & style = p->layout();
@@ -74,7 +74,7 @@ ParagraphList::const_iterator searchEnvironment(ParagraphList::const_iterator co
 						ParagraphList::const_iterator const & pend)
 {
 	LyXLayout_ptr const & bstyle = par->layout();
-	ParagraphList::const_iterator p = par + 1;
+	ParagraphList::const_iterator p = boost::next(par);
 	for( ; p != pend; ++p) {
 		LyXLayout_ptr const & style = p->layout();
 		if( style->latextype == LATEX_COMMAND)
@@ -108,10 +108,10 @@ ParagraphList::const_iterator makeParagraph(Buffer const & buf,
 		if (par != pbegin)
 			os << '\n';
 		if (par->layout() == defaultstyle && par->emptyTag()) {
-			par->simpleDocBookOnePar(buf, os, runparams, outerFont(par - paragraphs.begin(), paragraphs));
+			par->simpleDocBookOnePar(buf, os, runparams, outerFont(std::distance(paragraphs.begin(), par), paragraphs));
 		} else {
 			sgml::openTag(buf, os, runparams, *par);
-			par->simpleDocBookOnePar(buf, os, runparams, outerFont(par - paragraphs.begin(), paragraphs));
+			par->simpleDocBookOnePar(buf, os, runparams, outerFont(std::distance(paragraphs.begin(), par), paragraphs));
 			sgml::closeTag(os, *par);
 		}
 	}
@@ -170,7 +170,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 		case LATEX_ITEM_ENVIRONMENT: {
 			if(par->params().depth() == pbegin->params().depth()) {
 				sgml::openTag(os, wrapper);
-				par->simpleDocBookOnePar(buf, os, runparams, outerFont(par - paragraphs.begin(), paragraphs), sep);
+				par->simpleDocBookOnePar(buf, os, runparams, outerFont(std::distance(paragraphs.begin(), par), paragraphs), sep);
 				sgml::closeTag(os, wrapper);
 				++par;
 			}
@@ -239,7 +239,7 @@ ParagraphList::const_iterator makeCommand(Buffer const & buf,
 
 	// Opend inner tag and	close inner tags
 	sgml::openTag(os, bstyle->innertag());
-	par->simpleDocBookOnePar(buf, os, runparams,  outerFont(par - paragraphs.begin(), paragraphs));
+	par->simpleDocBookOnePar(buf, os, runparams,  outerFont(std::distance(paragraphs.begin(), par), paragraphs));
 	sgml::closeTag(os, bstyle->innertag());
 	os << '\n';
 

@@ -21,7 +21,7 @@
 #include "lyxfont.h"
 #include "layout.h"
 #include "lyxlayout_ptr_fwd.h"
-#include "ParagraphList_fwd.h"
+#include "ParagraphList.h"
 
 #include <iosfwd>
 

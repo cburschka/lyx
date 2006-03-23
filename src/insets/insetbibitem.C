@@ -19,7 +19,7 @@
 #include "lyxfont.h"
 #include "lyxlex.h"
 #include "paragraph.h"
-#include "ParagraphList_fwd.h"
+#include "ParagraphList.h"
 
 #include "frontends/font_metrics.h"
 

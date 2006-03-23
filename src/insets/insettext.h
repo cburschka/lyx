@@ -16,6 +16,7 @@
 #include "RowList_fwd.h"
 #include "lyxfont.h"
 #include "lyxtext.h"
+#include "ParagraphList_fwd.h"
 
 #include "support/types.h"
 
@@ -27,7 +28,6 @@ class BufferView;
 class CursorSlice;
 class Dimension;
 class LColor_color;
-class ParagraphList;
 
 
 /**

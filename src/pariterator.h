@@ -13,6 +13,7 @@
 #define PARITERATOR_H
 
 #include "dociterator.h"
+#include "ParagraphList_fwd.h"
 
 #include "support/types.h"
 
@@ -24,7 +25,6 @@
 
 class InsetBase;
 class LyXText;
-class ParagraphList;
 
 
 class ParIterator : public std::iterator<std::forward_iterator_tag, Paragraph>,

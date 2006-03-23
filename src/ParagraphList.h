@@ -9,14 +9,14 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef PARAGRAPH_LIST_FWD_H
-#define PARAGRAPH_LIST_FWD_H
+#ifndef PARAGRAPH_LIST_H
+#define PARAGRAPH_LIST_H
 
-template <class T>
-class RandomAccessList;
+#include "paragraph.h"
 
-class Paragraph;
+#include "support/RandomAccessList.h"
 
+/// Container for all kind of Paragraphs used in Lyx.
 typedef RandomAccessList<Paragraph> ParagraphList;
 
 #endif

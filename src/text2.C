@@ -1258,7 +1258,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur, LCursor & old)
 			   max(old.pit() - 1, pit_type(0)),
 			   min(old.pit() + 1, old.lastpit()));
 		ParagraphList & plist = old.text()->paragraphs();
-		plist.erase(plist.begin() + old.pit());
+		plist.erase(boost::next(plist.begin(), old.pit()));
 
 		// see #warning above
 		if (cur.depth() >= old.depth()) {

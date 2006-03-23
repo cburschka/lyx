@@ -289,6 +289,7 @@ int InsetCharStyle::linuxdoc(Buffer const & buf, ostream & os,
 int InsetCharStyle::docbook(Buffer const & buf, ostream & os,
 			    OutputParams const & runparams) const
 {
+	ParagraphList::const_iterator beg = paragraphs().begin();
 	ParagraphList::const_iterator par = paragraphs().begin();
         ParagraphList::const_iterator end = paragraphs().end();
 
@@ -298,7 +299,7 @@ int InsetCharStyle::docbook(Buffer const & buf, ostream & os,
 
         for (; par != end; ++par) {
 		par->simpleDocBookOnePar(buf, os, runparams,
-				 outerFont(par - paragraphs().begin(),
+					 outerFont(std::distance(beg, par),
 						   paragraphs()));
         }
 

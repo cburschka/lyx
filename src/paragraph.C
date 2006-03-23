@@ -66,10 +66,6 @@ using std::ostream;
 using std::ostringstream;
 
 
-ParagraphList::ParagraphList()
-{}
-
-
 Paragraph::Paragraph()
 	: begin_of_body_(0), pimpl_(new Paragraph::Pimpl(this))
 {
