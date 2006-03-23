@@ -1,3 +1,8 @@
+2006-03-23  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* qscreen.C (showCursor, removeCursor): just update, instead of a
+	full repaint.
+
 2006-03-23  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* QPrefs.C (apply, update_contents):
