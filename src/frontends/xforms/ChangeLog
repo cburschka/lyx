@@ -1,3 +1,11 @@
+2006-03-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* FormDocument.C (options_apply): do not return a bool anymore
+	(was not used); skip secnumdepth and tocdepth if the class does
+	not define a ToC structure.
+	(UpdateClassParams): disable the secnumdepth and tocdepth widgets
+	if the class does not define a ToC structure.
+
 2006-03-20  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* FormBibtex.C: Move parsing of Options (stylefile, bibtotoc)

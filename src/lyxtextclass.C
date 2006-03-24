@@ -1095,6 +1095,12 @@ int LyXTextClass::max_toclevel() const
 }
 
 
+bool LyXTextClass::hasTocLevels() const
+{
+	return min_toclevel_ != LyXLayout::NOT_IN_TOC;
+}
+
+
 ostream & operator<<(ostream & os, LyXTextClass::PageSides p)
 {
 	switch (p) {

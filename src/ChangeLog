@@ -1,3 +1,10 @@
+2006-03-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyxtextclass.C (hasTocLevels): new method.
+
+	* bufferparams.C (useClassDefaults, writeLaTeX): skip secnumdepth
+	and tocdepth if the class does not define a ToC structure.
+
 2006-03-20  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyxfunc.C (getStatus): always allow saving unnamed buffers (bug

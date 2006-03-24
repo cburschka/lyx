@@ -176,6 +176,8 @@ public:
 	int min_toclevel() const;
 	/// The maximal TocLevel of sectioning layouts
 	int max_toclevel() const;
+	/// returns true if the class has a ToC structure
+	bool hasTocLevels() const;
 private:
 	///
 	bool delete_layout(std::string const &);

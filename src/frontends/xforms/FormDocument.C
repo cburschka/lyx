@@ -957,10 +957,8 @@ bool FormDocument::language_apply(BufferParams & params)
 }
 
 
-bool FormDocument::options_apply(BufferParams & params)
+void FormDocument::options_apply(BufferParams & params)
 {
-	bool redo = false;
-
 	params.graphicsDriver = getString(options_->choice_postscript_driver);
 	params.use_amsmath = static_cast<BufferParams::AMS>(
 		fl_get_choice(options_->choice_ams_math) - 1);
@@ -983,17 +981,14 @@ bool FormDocument::options_apply(BufferParams & params)
 
 	params.use_bibtopic  = fl_get_button(options_->check_bibtopic);
 
-	int tmpchar = int(fl_get_counter_value(options_->counter_secnumdepth));
-	if (params.secnumdepth != tmpchar)
-		redo = true;
-	params.secnumdepth = tmpchar;
-
-	params.tocdepth = int(fl_get_counter_value(options_->counter_tocdepth));
+	if (params.getLyXTextClass().hasTocLevels()) {
+		params.secnumdepth = int(fl_get_counter_value(options_->counter_secnumdepth));
+		params.tocdepth = int(fl_get_counter_value(options_->counter_tocdepth));
+	}
 
 	params.float_placement =
 		getString(options_->input_float_placement);
 
-	return redo;
 }
 
 
@@ -1019,7 +1014,7 @@ void FormDocument::UpdateClassParams(BufferParams const & params)
 	// These are the params that have to be updated on any class change
 	// (even if the class defaults are not used) (JSpitzm 2002-04-08)
 
-	LyXTextClass const & tclass = textclasslist[params.textclass];
+	LyXTextClass const & tclass = params.getLyXTextClass();
 
 	fl_set_combox(class_->combox_class, params.textclass + 1);
 	fl_clear_choice(class_->choice_fontsize);
@@ -1036,6 +1031,8 @@ void FormDocument::UpdateClassParams(BufferParams const & params)
 			   params.pagestyle.c_str());
 
 	fl_set_input(class_->input_extra, tclass.options().c_str());
+	setEnabled(options_->counter_secnumdepth, tclass.hasTocLevels());
+	setEnabled(options_->counter_tocdepth, tclass.hasTocLevels());
 }
 
 void FormDocument::class_update(BufferParams const & params)
@@ -1166,8 +1163,12 @@ void FormDocument::options_update(BufferParams const & params)
 	fl_set_choice(options_->choice_cite_engine, cite_choice);
 
 	fl_set_button(options_->check_bibtopic,  params.use_bibtopic);
-	fl_set_counter_value(options_->counter_secnumdepth, params.secnumdepth);
-	fl_set_counter_value(options_->counter_tocdepth, params.tocdepth);
+
+	if (params.getLyXTextClass().hasTocLevels()) {
+		fl_set_counter_value(options_->counter_secnumdepth, params.secnumdepth);
+		fl_set_counter_value(options_->counter_tocdepth, params.tocdepth);
+	}
+
 	if (!params.float_placement.empty())
 		fl_set_input(options_->input_float_placement,
 			     params.float_placement.c_str());
