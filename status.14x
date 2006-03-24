@@ -29,6 +29,9 @@ What's new
 
 - Fix LaTeX error when \labelitemi was undefined (bug 2053).
 
+- Fix LaTeX error when inserting a graphics in a section heading or a
+  caption (bug 675).
+
 - Translate \verb commands correctly in tex2lyx (bug 2236).
 
 - Truncate temporary file names that are too long for MikTeX's pdflatex.
