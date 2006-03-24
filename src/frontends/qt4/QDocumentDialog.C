@@ -43,23 +43,9 @@
 #include "controllers/frnt_lang.h"
 
 
-#include <QLabel>
-#include <QLineEdit>
-#include <QPushButton>
-#include <QRadioButton>
-#include <QCheckBox>
-#include <QSlider>
-#include <QPixmap>
-#include <QColor>
-#include <QColorDialog>
-#include <QValidator>
-
 using lyx::support::token;
 using lyx::support::bformat;
 using lyx::support::getVectorFromString;
-
-using std::string;
-
 
 using std::distance;
 using std::vector;
@@ -79,13 +65,6 @@ char const * encodings[] = { "LaTeX default", "latin1", "latin2",
 };
 
 }
-
-/*
-QDocumentDialog::getTextClass()
-{
-	return latexModule->classCO->currentItem();
-}
-*/
 
 QDocumentDialog::QDocumentDialog(QDocument * form)
 	: form_(form), 
@@ -359,7 +338,7 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 
 	preambleModule = new UiWidget<Ui::PreambleUi>;
 	// preamble
-	connect(preambleModule->preambleMLE, SIGNAL(textChanged()), this, SLOT(change_adaptor()));
+	connect(preambleModule->preambleTE, SIGNAL(textChanged()), this, SLOT(change_adaptor()));
 
 
 	bulletsModule = new BulletsModule;
@@ -592,7 +571,7 @@ void QDocumentDialog::apply(BufferParams & params)
 {
 	// preamble
 	params.preamble =
-		fromqstr(preambleModule->preambleMLE->text());
+		fromqstr(preambleModule->preambleTE->document()->toPlainText());
 
 	// biblio
 	params.cite_engine = biblio::ENGINE_BASIC;
@@ -650,8 +629,10 @@ void QDocumentDialog::apply(BufferParams & params)
 	params.language = languages.getLanguage(lang_[pos]);
 
 	// numbering
-	params.tocdepth = numberingModule->tocSL->value();
-	params.secnumdepth = numberingModule->depthSL->value();
+	if (params.getLyXTextClass().hasTocLevels()) {
+		params.tocdepth = numberingModule->tocSL->value();
+		params.secnumdepth = numberingModule->depthSL->value();
+	}
 
 	// bullets
 	params.user_defined_bullet(0) = bulletsModule->getBullet(0);
@@ -837,7 +818,7 @@ void QDocumentDialog::update(BufferParams const & params)
 
 	// preamble
 	QString preamble = toqstr(params.preamble);
-	preambleModule->preambleMLE->setText(preamble);
+	preambleModule->preambleTE->document()->setPlainText(preamble);
 
 	// biblio
 	biblioModule->citeDefaultRB->setChecked(
@@ -883,19 +864,19 @@ void QDocumentDialog::update(BufferParams const & params)
 	// numbering
 	int const min_toclevel = form_->controller().textClass().min_toclevel();
 	int const max_toclevel = form_->controller().textClass().max_toclevel();
-	if (min_toclevel != LyXLayout::NOT_IN_TOC)
+	if (form_->controller().textClass().hasTocLevels())
 		numberingModule->setEnabled(true);
-	else {
+		numberingModule->depthSL->setMinValue(min_toclevel - 1);
+		numberingModule->depthSL->setMaxValue(max_toclevel);
+		numberingModule->depthSL->setValue(params.secnumdepth);
+		numberingModule->tocSL->setMinValue(min_toclevel - 1);
+		numberingModule->tocSL->setMaxValue(max_toclevel);
+		numberingModule->tocSL->setValue(params.tocdepth);
+		updateNumbering();
+	} else {
 		numberingModule->setEnabled(false);
 		numberingModule->tocLV->clear();
 	}
-	numberingModule->depthSL->setMinValue(min_toclevel - 1);
-	numberingModule->depthSL->setMaxValue(max_toclevel);
-	numberingModule->depthSL->setValue(params.secnumdepth);
-	numberingModule->tocSL->setMinValue(min_toclevel - 1);
-	numberingModule->tocSL->setMaxValue(max_toclevel);
-	numberingModule->tocSL->setValue(params.tocdepth);
-	updateNumbering();
 
 	// bullets
 	bulletsModule->setBullet(0,params.user_defined_bullet(0));
