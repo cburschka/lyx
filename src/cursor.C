@@ -127,16 +127,26 @@ namespace {
 		BOOST_ASSERT(!cursor.empty());
 		InsetBase & inset = cursor[0].inset();
 
-		DocIterator it = doc_iterator_begin(inset);
-		DocIterator const et = doc_iterator_end(inset);
+		CoordCache::InnerParPosCache const & cache = theCoords.getParPos().find(cursor.bottom().text())->second;
+		// Get an iterator on the first paragraph in the cache
+		DocIterator it(inset);
+		it.push_back(CursorSlice(inset));
+		it.pit() = cache.begin()->first;
+		// Get an iterator after the last paragraph in the cache
+		DocIterator et(inset);
+		et.push_back(CursorSlice(inset));
+		et.pit() = boost::prior(cache.end())->first;
+		if (et.pit() >= et.lastpit())
+			et = doc_iterator_end(inset);
+		else 
+			++et.pit();
 
 		double best_dist = std::numeric_limits<double>::max();;
 		DocIterator best_cursor = et;
 
 		for ( ; it != et; it.forwardPos(true)) {
 			// avoid invalid nesting when selecting
-			if (bv_funcs::status(&cursor.bv(), it) == bv_funcs::CUR_INSIDE
-			    && (!cursor.selection() || positionable(it, cursor.anchor_))) {
+			if (!cursor.selection() || positionable(it, cursor.anchor_)) {
 				Point p = bv_funcs::getPos(it, false);
 				int xo = p.x_;
 				int yo = p.y_;
@@ -147,7 +157,7 @@ namespace {
 					// '<=' in order to take the last possible position
 					// this is important for clicking behind \sum in e.g. '\sum_i a'
 					if (d <= best_dist) {
-						lyxerr << "*" << endl;
+						//	lyxerr << "*" << endl;
 						best_dist   = d;
 						best_cursor = it;
 					}
