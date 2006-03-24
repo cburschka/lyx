@@ -864,7 +864,7 @@ void QDocumentDialog::update(BufferParams const & params)
 	// numbering
 	int const min_toclevel = form_->controller().textClass().min_toclevel();
 	int const max_toclevel = form_->controller().textClass().max_toclevel();
-	if (form_->controller().textClass().hasTocLevels())
+	if (form_->controller().textClass().hasTocLevels()) {
 		numberingModule->setEnabled(true);
 		numberingModule->depthSL->setMinValue(min_toclevel - 1);
 		numberingModule->depthSL->setMaxValue(max_toclevel);
