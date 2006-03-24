@@ -96,7 +96,8 @@ void breakParagraph(BufferParams const & bparams,
 {
 	// create a new paragraph, and insert into the list
 	ParagraphList::iterator tmp =
-		pars.insert(pars.begin() + par_offset + 1, Paragraph());
+		pars.insert(boost::next(pars.begin(), par_offset + 1),
+			    Paragraph());
 
 	Paragraph & par = pars[par_offset];
 
@@ -193,7 +194,8 @@ void breakParagraphConservative(BufferParams const & bparams,
 	ParagraphList & pars, pit_type par_offset, pos_type pos)
 {
 	// create a new paragraph
-	Paragraph & tmp = *pars.insert(pars.begin() + par_offset + 1, Paragraph());
+	Paragraph & tmp = *pars.insert(boost::next(pars.begin(), par_offset + 1),
+				       Paragraph());
 	Paragraph & par = pars[par_offset];
 
 	if (bparams.tracking_changes)
@@ -259,7 +261,7 @@ void mergeParagraph(BufferParams const & bparams,
 	// Move the change status of "carriage return" over
 	par.setChange(par.size(), cr);
 
-	pars.erase(pars.begin() + par_offset + 1);
+	pars.erase(boost::next(pars.begin(), par_offset + 1));
 }
 
 

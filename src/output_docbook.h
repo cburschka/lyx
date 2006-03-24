@@ -13,11 +13,12 @@
 #ifndef OUTPUT_DOCBOOK_H
 #define OUTPUT_DOCBOOK_H
 
+#include "ParagraphList_fwd.h"
+
 #include <iosfwd>
 
 class Buffer;
 class OutputParams;
-class ParagraphList;
 
 ///
 void docbookParagraphs(ParagraphList const & subset,

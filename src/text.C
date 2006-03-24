@@ -1414,8 +1414,8 @@ void LyXText::acceptChange(LCursor & cur)
 	if (type == Change::DELETED) {
 		ParagraphList & plist = paragraphs();
 		if (it.pit() + 1 < et.pit())
-			pars_.erase(plist.begin() + it.pit() + 1,
-				    plist.begin() + et.pit());
+			pars_.erase(boost::next(plist.begin(), it.pit() + 1),
+				    boost::next(plist.begin(), et.pit()));
 		
 		// Paragraph merge if appropriate:
 		if (pars_[it.pit()].lookupChange(pars_[it.pit()].size()) 
@@ -1451,8 +1451,8 @@ void LyXText::rejectChange(LCursor & cur)
 	if (type == Change::INSERTED) {
 		ParagraphList & plist = paragraphs();
 		if (it.pit() + 1 < et.pit())
-			pars_.erase(plist.begin() + it.pit() + 1,
-				    plist.begin() + et.pit());
+			pars_.erase(boost::next(plist.begin(), it.pit() + 1),
+				    boost::next(plist.begin(), et.pit()));
 		// Paragraph merge if appropriate:
 		if (pars_[it.pit()].lookupChange(pars_[it.pit()].size()) 
 			== Change::INSERTED) {

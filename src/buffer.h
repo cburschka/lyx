@@ -15,6 +15,7 @@
 #include "InsetList.h"
 
 #include "dociterator.h"
+#include "ParagraphList_fwd.h"
 
 #include "support/limited_stack.h"
 #include "support/types.h"
@@ -42,7 +43,6 @@ class LaTeXFeatures;
 class Language;
 class MacroData;
 class OutputParams;
-class ParagraphList;
 class ParConstIterator;
 class ParIterator;
 class TeXErrors;

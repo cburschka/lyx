@@ -27,7 +27,7 @@
 #include "lyxtextclass.h"
 #include "paragraph.h"
 #include "paragraph_funcs.h"
-#include "ParagraphList_fwd.h"
+#include "ParagraphList.h"
 #include "ParagraphParameters.h"
 #include "pariterator.h"
 #include "lyxvc.h"
