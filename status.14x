@@ -51,6 +51,9 @@ What's new
 - Propose sensible style files for bibtex, depending on whether plain,
   natbib or jurabib is used (bug 2322).
 
+- Avoid bogus values like -1000 for section numbering septh when using
+  classes without a sectionning structure (part of bug 2355).
+
 - More sensible default label in table and figure captions (bug 1999).
 
 - Do not skip change in "Merge changes..." dialog (bug 2212).
