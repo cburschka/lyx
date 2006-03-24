@@ -216,6 +216,12 @@ string internal_path(string const & p)
 }
 
 
+string latex_path(string const & p)
+{
+	return p;
+}
+
+
 // (Claus H.) On Win32 both Unix and Win32/DOS pathnames are used.
 // Therefore an absolute path could be either a pathname starting
 // with a slash (Unix) or a pathname starting with a drive letter

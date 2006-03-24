@@ -63,6 +63,12 @@ string internal_path(string const & p)
 }
 
 
+string latex_path(string const & p)
+{
+	return p;
+}
+
+
 bool is_absolute_path(string const & p)
 {
 	return !p.empty() && p[0] == '/';
