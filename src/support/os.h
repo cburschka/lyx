@@ -47,6 +47,14 @@ std::string external_path(std::string const & p);
 /// Converts a host OS style path to unix style.
 std::string internal_path(std::string const & p);
 
+/**
+ * Converts a unix style path into a form suitable for inclusion in a LaTeX
+ * document.
+ * Caution: This function handles only the OS specific part of that task.
+ * Never use it directly, use lyx::support::latex_path instead.
+ */
+std::string latex_path(std::string const & p);
+
 /// Is the path absolute?
 bool is_absolute_path(std::string const & p);
 

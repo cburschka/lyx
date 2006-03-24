@@ -102,6 +102,15 @@ string internal_path(string const & p)
 }
 
 
+string latex_path(string const & p)
+{
+	// We may need a posix style path or a windows style path (depending
+	// on cygwin_path_fix_), but we use always forward slashes, since it
+	// gets written into a .tex file.
+	return external_path(p);
+}
+
+
 bool is_absolute_path(string const & p)
 {
 	if (p.empty())

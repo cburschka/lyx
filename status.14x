@@ -40,6 +40,8 @@ What's new
 - Convert old LyX documents with a float list at the end correctly in
   lyx2lyx (bug 2245).
 
+- Set search path for included files correctly on Cygwin (bug 2409)
+
 * User Interface:
 
 - Convert line endings for external copy/paste on OS X (bug 1955).

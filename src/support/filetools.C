@@ -87,6 +87,8 @@ string const latex_path(string const & original_path,
 		latex_path_dots dots)
 {
 	string path = subst(original_path, "\\", "/");
+	// On cygwin, we may need windows or posix style paths.
+	path = os::latex_path(path);
 	path = subst(path, "~", "\\string~");
 	if (path.find(' ') != string::npos) {
 		// We can't use '"' because " is sometimes active (e.g. if
