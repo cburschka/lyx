@@ -99,7 +99,7 @@ void Paragraph::Pimpl::trackChanges(Change::Type type)
 	lyxerr[Debug::CHANGES] << "track changes for par "
 		<< id_ << " type " << type << endl;
 	changes_.reset(new Changes(type));
-	changes_->set(type, 0, size());
+	changes_->set(type, 0, size() + 1);
 }
 
 
@@ -116,7 +116,7 @@ void Paragraph::Pimpl::cleanChanges()
 		return;
 
 	changes_.reset(new Changes(Change::INSERTED));
-	changes_->set(Change::INSERTED, 0, size());
+	changes_->set(Change::INSERTED, 0, size() + 1);
 }
 
 
@@ -146,6 +146,14 @@ void Paragraph::Pimpl::setChange(pos_type pos, Change::Type type)
 	changes_->set(type, pos);
 }
 
+
+void Paragraph::Pimpl::setChangeFull(pos_type pos, Change change)
+{
+	if (!tracking())
+		return;
+
+	changes_->set(change, pos);
+}
 
 Change::Type Paragraph::Pimpl::lookupChange(pos_type pos) const
 {
@@ -204,10 +212,14 @@ void Paragraph::Pimpl::acceptChange(pos_type start, pos_type end)
 				break;
 
 			case Change::DELETED:
-				eraseIntern(i);
-				changes_->erase(i);
-				--end;
-				--i;
+				// Suppress access to nonexistent 
+				// "end-of-paragraph char":
+				if (i < size()) {
+					eraseIntern(i);
+					changes_->erase(i);
+					--end;
+					--i;
+				}
 				break;
 		}
 	}
@@ -235,15 +247,18 @@ void Paragraph::Pimpl::rejectChange(pos_type start, pos_type end)
 				break;
 
 			case Change::INSERTED:
-				eraseIntern(i);
-				changes_->erase(i);
-				--end;
-				--i;
+				if (i < size()) {
+					eraseIntern(i);
+					changes_->erase(i);
+					--end;
+					--i;
+				}
 				break;
 
 			case Change::DELETED:
 				changes_->set(Change::UNCHANGED, i);
-				if (owner_->isInset(i))
+				// No real char at position size():
+				if (i < size() && owner_->isInset(i))
 					owner_->getInset(i)->markErased(false);
 				break;
 		}
@@ -351,7 +366,7 @@ void Paragraph::Pimpl::eraseIntern(pos_type pos)
 
 bool Paragraph::Pimpl::erase(pos_type pos)
 {
-	BOOST_ASSERT(pos < size());
+	BOOST_ASSERT(pos <= size());
 
 	if (tracking()) {
 		Change::Type changetype(changes_->lookup(pos));
@@ -359,14 +374,19 @@ bool Paragraph::Pimpl::erase(pos_type pos)
 
 		// only allow the actual removal if it was /new/ text
 		if (changetype != Change::INSERTED) {
-			if (owner_->isInset(pos))
+			if (pos < size() && owner_->isInset(pos))
 				owner_->getInset(pos)->markErased(true);
 			return false;
 		}
 	}
 
-	eraseIntern(pos);
-	return true;
+	// Don't physically access nonexistent end-of-paragraph char
+	if (pos < size()) {
+		eraseIntern(pos);
+		return true;
+	}
+
+	return false;
 }
 
 

@@ -347,7 +347,7 @@ void RowPainter::paintChangeBar()
 	pos_type const start = row_.pos();
 	pos_type const end = row_.endpos();
 
-	if (start == end || !par_.isChanged(start, end - 1))
+	if (start == end || !par_.isChanged(start, end))
 		return;
 
 	int const height = text_.isLastRow(pit_, row_)

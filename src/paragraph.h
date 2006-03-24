@@ -224,6 +224,9 @@ public:
 
 	/// set change at pos
 	void setChange(lyx::pos_type pos, Change::Type type);
+	
+	/// set full change at pos
+	void setChangeFull(lyx::pos_type pos, Change change);
 
 	/// accept change
 	void acceptChange(lyx::pos_type start, lyx::pos_type end);

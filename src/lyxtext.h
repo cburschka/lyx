@@ -220,9 +220,14 @@ public:
 	bool cursorTop(LCursor & cur);
 	///
 	bool cursorBottom(LCursor & cur);
-	///
+	/// Delete character at cursor. Honour change tracking
 	bool Delete(LCursor & cur);
-	///
+	/** At cursor position 0, merge paragraph with the one before it.
+	 * Ignore CT (this is used in \c acceptChange, \c rejectChange for
+	 * physical deletion of paragraph break)
+	 */
+	bool backspacePos0(LCursor & cur);
+	/// Delete character before cursor. Honour CT
 	bool backspace(LCursor & cur);
 	///
 	bool selectWordWhenUnderCursor(LCursor & cur, lyx::word_location);

@@ -1,3 +1,38 @@
+2006-03-18  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* text.C (backspace): Fix changebar non-update
+
+2006-03-15  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* CutAndPaste.C (pasteSelectionHelper): comments
+	* paragraph_funcs.C (mergeParagraph): fix Juergen's cut&paste bug
+	* changes.h: comments
+	* paragraph.C (stripLeadingSpaces): remove unnecessary setChange
+	* text.C (backspace): allow deletion of inserted para break
+	Change tracking -related bug fixes (reported by Juergen) and
+	some documentation work
+
+2006-03-13  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* rowpainter.C (paintChangeBar): fix painting of change bar with
+	only paragraph break changed
+
+2006-03-11  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* paragraph.[Ch] (write, lookupChange, lookupChangeFull;
+	added setChangeFull):
+	* paragraph_pimpl.[Ch] (trackChanges, cleanChanges, acceptChange,
+	rejectChange, erase; added setChangeFull):
+	* CutAndPaste.C (eraseSelectionHelper):
+	* lyxtext.h:
+	* text.C (readParToken, readParagraph, breakParagraph,
+	acceptChange, rejectChange, backspace, currentState;
+	added backspacePos0):
+	* paragraph_funcs.C (breakParagraphConservative, mergeParagraph):
+	* lyxfind.C (findChange, findNextChange): fix bug 880: Change
+	tracked paragraphs should still allow a paragraph split (and related
+	things, i.e., multi-paragraph change tracking)
+
 2006-02-20  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* cursor.C (bruteFind): only iterate over the paragraphs that are

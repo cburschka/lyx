@@ -54,6 +54,8 @@ public:
 	bool isChangeEdited(lyx::pos_type start, lyx::pos_type end) const;
 	/// set change at pos
 	void setChange(lyx::pos_type pos, Change::Type type);
+	/// set full change at pos
+	void setChangeFull(lyx::pos_type pos, Change change);
 	/// mark as erased
 	void markErased(bool);
 	/// accept change

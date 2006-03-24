@@ -127,9 +127,8 @@ bool findBackwards(DocIterator & cur, MatchString const & match)
 
 bool findChange(DocIterator & cur)
 {
-	for (; cur; cur.forwardChar())
-		if (cur.inTexted() && cur.pos() != cur.paragraph().size() &&
-		    cur.paragraph().lookupChange(cur.pos())
+	for (; cur; cur.forwardPos())
+		if (cur.inTexted() && cur.paragraph().lookupChange(cur.pos())
 		    != Change::UNCHANGED)
 			return true;
 	return false;
@@ -344,25 +343,21 @@ bool findNextChange(BufferView * bv)
 	if (!findChange(cur))
 		return false;
 
-	Paragraph const & par = cur.paragraph();
-	const pos_type pos = cur.pos();
+	bv->cursor().setCursor(cur);
+	bv->cursor().resetAnchor();
+	
+	Change orig_change = cur.paragraph().lookupChangeFull(cur.pos());
 
-	Change orig_change = par.lookupChangeFull(pos);
-	const pos_type parsize = par.size();
-	pos_type end = pos;
-
-	for (; end != parsize; ++end) {
-		Change change = par.lookupChangeFull(end);
+	DocIterator et = doc_iterator_end(cur.inset());
+	for (; cur != et; cur.forwardPosNoDescend()) {
+		Change change = cur.paragraph().lookupChangeFull(cur.pos());
 		if (change != orig_change) {
-			// slight UI optimisation: for replacements, we get
-			// text like : _old_new. Consider that as one change.
-			if (!(orig_change.type == Change::DELETED &&
-				change.type == Change::INSERTED))
-				break;
+			break;
 		}
 	}
-	pos_type length = end - pos;
-	bv->putSelectionAt(cur, length, false);
+	// Now put cursor to end of selection:
+	bv->cursor().setCursor(cur);
+	bv->cursor().setSelection();
 	// if we used a lfun like in find/replace, dispatch would do
 	// that for us
 	bv->update();

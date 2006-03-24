@@ -84,7 +84,8 @@ public:
 	/// return true if there is a deleted or unchanged range contained
 	bool isChangeEdited(lyx::pos_type start, lyx::pos_type end) const;
 
-	/// remove the given entry
+	/// remove the given entry. This implies that a character was
+	/// deleted at pos, and will adjust all range bounds past it
 	void erase(lyx::pos_type pos);
 
 	/// output latex to mark a transition between two changetypes
@@ -134,22 +135,23 @@ private:
 
 	typedef std::vector<ChangeRange> ChangeTable;
 
-	/// our table of changes
+	/// our table of changes, every row a range and change descriptor
 	ChangeTable table_;
 
 	/// change type for an empty paragraph
 	Change::Type empty_type_;
 
-	/// handle a delete
+	/// handle a delete, either logical or physical (see erase)
 	void del(Change change, ChangeTable::size_type pos);
 
-	/// handle an add
+	/// handle an add, adjusting range bounds past it
 	void add(Change change, ChangeTable::size_type pos);
 
-	/// merge neighbouring ranges
+	/// merge neighbouring ranges, assuming that they are abutting
+	/// (as done by set())
 	void merge();
 
-	/// consistency check
+	/// consistency check, needed before merge()
 	void check() const;
 
 };
