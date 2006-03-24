@@ -748,9 +748,15 @@ int InsetGraphics::latex(Buffer const & buf, ostream & os,
 	string after;
 	// Do we want subcaptions?
 	if (params().subcaption) {
+		if (runparams.moving_arg)
+			before += "\\protect";
 		before += "\\subfigure[" + params().subcaptionText + "]{";
 		after = '}';
 	}
+
+	if (runparams.moving_arg)
+		before += "\\protect";
+	
 	// We never use the starred form, we use the "clip" option instead.
 	before += "\\includegraphics";
 
