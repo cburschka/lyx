@@ -915,17 +915,20 @@ bool BufferParams::writeLaTeX(ostream & os, LaTeXFeatures & features,
 		texrow.newline();
 	}
 
-	if (secnumdepth != tclass.secnumdepth()) {
-		os << "\\setcounter{secnumdepth}{"
-		   << secnumdepth
-		   << "}\n";
-		texrow.newline();
-	}
-	if (tocdepth != tclass.tocdepth()) {
-		os << "\\setcounter{tocdepth}{"
-		   << tocdepth
-		   << "}\n";
-		texrow.newline();
+	// Only if class has a ToC hierarchy
+	if (tclass.hasTocLevels()) {
+		if (secnumdepth != tclass.secnumdepth()) {
+			os << "\\setcounter{secnumdepth}{"
+			   << secnumdepth
+			   << "}\n";
+			texrow.newline();
+		}
+		if (tocdepth != tclass.tocdepth()) {
+			os << "\\setcounter{tocdepth}{"
+			   << tocdepth
+			   << "}\n";
+			texrow.newline();
+		}
 	}
 
 	if (paragraph_separation) {
@@ -1068,8 +1071,11 @@ void BufferParams::useClassDefaults()
 	columns = tclass.columns();
 	pagestyle = tclass.pagestyle();
 	options = tclass.options();
-	secnumdepth = tclass.secnumdepth();
-	tocdepth = tclass.tocdepth();
+	// Only if class has a ToC hierarchy
+	if (tclass.hasTocLevels()) {
+		secnumdepth = tclass.secnumdepth();
+		tocdepth = tclass.tocdepth();
+	}
 }
 
 

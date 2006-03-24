@@ -267,8 +267,10 @@ void QDocument::apply()
 	params.language = languages.getLanguage(lang_[pos]);
 
 	// numbering
-	params.tocdepth = dialog_->numberingModule->tocSL->value();
-	params.secnumdepth = dialog_->numberingModule->depthSL->value();
+	if (params.getLyXTextClass().hasTocLevels()) {
+		params.tocdepth = dialog_->numberingModule->tocSL->value();
+		params.secnumdepth = dialog_->numberingModule->depthSL->value();
+	}
 
 	// bullets
 	params.user_defined_bullet(0) = dialog_->bulletsModule->getBullet(0);
@@ -506,19 +508,19 @@ void QDocument::update_contents()
 	// numbering
 	int const min_toclevel = controller().textClass().min_toclevel();
 	int const max_toclevel = controller().textClass().max_toclevel();
-	if (min_toclevel != LyXLayout::NOT_IN_TOC)
+	if (controller().textClass().hasTocLevels()) {
 		dialog_->numberingModule->setEnabled(true);
-	else {
+		dialog_->numberingModule->depthSL->setMinValue(min_toclevel - 1);
+		dialog_->numberingModule->depthSL->setMaxValue(max_toclevel);
+		dialog_->numberingModule->depthSL->setValue(params.secnumdepth);
+		dialog_->numberingModule->tocSL->setMinValue(min_toclevel - 1);
+		dialog_->numberingModule->tocSL->setMaxValue(max_toclevel);
+		dialog_->numberingModule->tocSL->setValue(params.tocdepth);
+		dialog_->updateNumbering();
+	} else {
 		dialog_->numberingModule->setEnabled(false);
 		dialog_->numberingModule->tocLV->clear();
 	}
-	dialog_->numberingModule->depthSL->setMinValue(min_toclevel - 1);
-	dialog_->numberingModule->depthSL->setMaxValue(max_toclevel);
-	dialog_->numberingModule->depthSL->setValue(params.secnumdepth);
-	dialog_->numberingModule->tocSL->setMinValue(min_toclevel - 1);
-	dialog_->numberingModule->tocSL->setMaxValue(max_toclevel);
-	dialog_->numberingModule->tocSL->setValue(params.tocdepth);
-	dialog_->updateNumbering();
 
 	// bullets
 	dialog_->bulletsModule->setBullet(0,params.user_defined_bullet(0));

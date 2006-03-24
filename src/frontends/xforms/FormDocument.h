@@ -96,7 +96,7 @@ private:
 	///
 	bool language_apply(BufferParams &);
 	///
-	bool options_apply(BufferParams &);
+	void options_apply(BufferParams &);
 	///
 	void bullets_apply(BufferParams &);
 	///
