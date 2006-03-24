@@ -1,3 +1,40 @@
+2006-03-23  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+        * output_latex.h:
+        * buffer.h:
+        * CutAndPaste.h:
+        * pariterator.h:
+        * paragraph_funcs.h:
+        * output_linuxdoc.h:
+        * output_docbook.h: get forward declaration of ParagraphList
+
+        * output_plaintext.C:
+        * bufferlist.C:
+        * undo.C:
+        * lyxtext.h:
+        * undo.h:
+        * buffer_funcs.C: get proper ParagraphList decls
+
+        * output_linuxdoc.C (linuxdocParagraphs):
+        * output_latex.C (TeXOnePar): use std::distance
+
+        * CutAndPaste.C (pasteSelectionHelper, copySelectionHelper):
+        * paragraph_funcs.C (breakParagraph,
+        breakParagraphConservative, mergeParagraph):
+        * text.C (acceptChange, rejectChange):
+        * text2.C (deleteEmptyParagraphMechanism): use boost::next
+
+        * output_docbook.C (several places): use boost::next and
+        std::distance
+
+        * ParagraphList_fwd.h: modify to provid a forward declaratoin
+        of the new ParagraphList.
+
+        * ParagraphList.h: new file, setup user of RandomAccessList
+
+        * paragraph.C: remove ParagraphList constructor from this file
+
+
 2006-03-18  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* text.C (backspace): Fix changebar non-update

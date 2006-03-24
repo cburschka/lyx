@@ -1,3 +1,12 @@
+2006-03-23  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+        * insettext.h: get forward declaration of ParagraphList
+
+        * insetbibitem.C: get proper ParagraphList decls
+
+        * insettext.C (appendParagraphs):
+        * insetcharstyle.C (docbook): use std::distance
+
 2006-03-24  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* insetgraphics.C (latex): add \protect as needed (bug 675).
