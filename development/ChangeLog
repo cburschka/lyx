@@ -1,3 +1,12 @@
+2006-3-7  Bennett Helm <bennett.helm@fandm.edu>
+
+	* MacOSX/LyX.app/Contents/MacOS/lyxeditor: update location of
+	preferences file within LyX.app bundle 
+	
+	* MacOSX/LyX.app/Contents/Resources/preferences: update
+	path_prefix to include /opt/local/bin, and remove references to
+	"-1.4" version suffix
+
 2006-03-18  Michael Gerz  <michael.gerz@teststep.org>
 
 	* Win32/packaging/build_aspell.sh:
