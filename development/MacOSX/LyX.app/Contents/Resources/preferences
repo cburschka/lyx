@@ -16,8 +16,8 @@
 # MISC SECTION ######################################
 #
 
-\path_prefix "/usr/bin:/usr/local/bin:/usr/local/teTeX/bin/powerpc-apple-darwin-current:/usr/X11R6/bin:/sw/bin:/opt/local/teTeX/bin"
-\serverpipe "~/Library/Application Support/LyX-1.4/.lyxpipe"
+\path_prefix "/usr/bin:/usr/local/bin:/usr/local/teTeX/bin/powerpc-apple-darwin-current:/usr/X11R6/bin:/sw/bin:/opt/local/teTeX/bin:/opt/local/bin"
+\serverpipe "~/Library/Application Support/LyX/.lyxpipe"
 \preview on
 
 #
@@ -52,7 +52,7 @@
 # FILE SECTION ######################################
 #
 
-\template_path "~/Library/Application Support/LyX-1.4/templates"
+\template_path "~/Library/Application Support/LyX/templates"
 
 #
 # ASCII EXPORT SECTION ##############################
