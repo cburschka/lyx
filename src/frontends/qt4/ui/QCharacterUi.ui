@@ -1,401 +1,403 @@
-<ui version="4.0" stdsetdef="1" >
-  <author></author>
-  <comment></comment>
-  <exportmacro></exportmacro>
-  <class>QCharacterUi</class>
-  <widget class="QDialog" name="QCharacter" >
-    <property name="geometry" >
-      <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>356</width>
-        <height>305</height>
-      </rect>
-    </property>
-    <property name="windowTitle" >
-      <string/>
-    </property>
-    <property name="sizeGripEnabled" >
-      <bool>true</bool>
-    </property>
-    <layout class="QVBoxLayout" >
-      <property name="margin" >
-        <number>11</number>
-      </property>
-      <property name="spacing" >
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>QCharacterUi</class>
+ <widget class="QDialog" name="QCharacterUi" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>356</width>
+    <height>305</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string/>
+  </property>
+  <property name="sizeGripEnabled" >
+   <bool>true</bool>
+  </property>
+  <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>11</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <layout class="QGridLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
         <number>6</number>
-      </property>
-      <item>
-        <layout class="QHBoxLayout" >
+       </property>
+       <item row="0" column="0" >
+        <widget class="QLabel" name="familyLA" >
+         <property name="toolTip" >
+          <string>Font family</string>
+         </property>
+         <property name="text" >
+          <string>&amp;Family:</string>
+         </property>
+         <property name="buddy" >
+          <cstring>familyCO</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1" >
+        <widget class="QComboBox" name="shapeCO" >
+         <property name="sizePolicy" >
+          <sizepolicy>
+           <hsizetype>3</hsizetype>
+           <vsizetype>0</vsizetype>
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="toolTip" >
+          <string>Font shape</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0" >
+        <widget class="QLabel" name="shapeLA" >
+         <property name="toolTip" >
+          <string>Font shape</string>
+         </property>
+         <property name="text" >
+          <string>S&amp;hape:</string>
+         </property>
+         <property name="buddy" >
+          <cstring>shapeCO</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1" >
+        <widget class="QComboBox" name="seriesCO" >
+         <property name="sizePolicy" >
+          <sizepolicy>
+           <hsizetype>3</hsizetype>
+           <vsizetype>0</vsizetype>
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="toolTip" >
+          <string>Font series</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1" >
+        <widget class="QComboBox" name="langCO" >
+         <property name="sizePolicy" >
+          <sizepolicy>
+           <hsizetype>3</hsizetype>
+           <vsizetype>0</vsizetype>
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="toolTip" >
+          <string>Language</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1" >
+        <widget class="QComboBox" name="familyCO" >
+         <property name="sizePolicy" >
+          <sizepolicy>
+           <hsizetype>3</hsizetype>
+           <vsizetype>0</vsizetype>
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="toolTip" >
+          <string>Font family</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1" >
+        <widget class="QComboBox" name="colorCO" >
+         <property name="sizePolicy" >
+          <sizepolicy>
+           <hsizetype>3</hsizetype>
+           <vsizetype>0</vsizetype>
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="toolTip" >
+          <string>Font color</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0" >
+        <widget class="QLabel" name="langLA" >
+         <property name="toolTip" >
+          <string>Language</string>
+         </property>
+         <property name="text" >
+          <string>&amp;Language:</string>
+         </property>
+         <property name="buddy" >
+          <cstring>langCO</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" >
+        <widget class="QLabel" name="seriesLA" >
+         <property name="toolTip" >
+          <string>Font series</string>
+         </property>
+         <property name="text" >
+          <string>&amp;Series:</string>
+         </property>
+         <property name="buddy" >
+          <cstring>seriesCO</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0" >
+        <widget class="QLabel" name="colorLA" >
+         <property name="enabled" >
+          <bool>true</bool>
+         </property>
+         <property name="toolTip" >
+          <string>Font color</string>
+         </property>
+         <property name="text" >
+          <string>&amp;Color:</string>
+         </property>
+         <property name="buddy" >
+          <cstring>colorCO</cstring>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item>
+        <widget class="QGroupBox" name="sizeGB" >
+         <property name="title" >
+          <string>Never Toggled</string>
+         </property>
+         <layout class="QHBoxLayout" >
           <property name="margin" >
-            <number>0</number>
+           <number>11</number>
           </property>
           <property name="spacing" >
-            <number>6</number>
+           <number>6</number>
           </property>
           <item>
-            <layout class="QGridLayout" >
-              <property name="margin" >
-                <number>0</number>
-              </property>
-              <property name="spacing" >
-                <number>6</number>
-              </property>
-              <item row="0" column="0" >
-                <widget class="QLabel" name="familyLA" >
-                  <property name="text" >
-                    <string>&amp;Family:</string>
-                  </property>
-                  <property name="buddy" >
-                    <cstring>familyCO</cstring>
-                  </property>
-                  <property name="toolTip" >
-                    <string>Font family</string>
-                  </property>
-                </widget>
-              </item>
-              <item row="2" column="1" >
-                <widget class="QComboBox" name="shapeCO" >
-                  <property name="sizePolicy" >
-                    <sizepolicy>
-                      <hsizetype>3</hsizetype>
-                      <vsizetype>0</vsizetype>
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                    </sizepolicy>
-                  </property>
-                  <property name="toolTip" >
-                    <string>Font shape</string>
-                  </property>
-                </widget>
-              </item>
-              <item row="2" column="0" >
-                <widget class="QLabel" name="shapeLA" >
-                  <property name="text" >
-                    <string>S&amp;hape:</string>
-                  </property>
-                  <property name="buddy" >
-                    <cstring>shapeCO</cstring>
-                  </property>
-                  <property name="toolTip" >
-                    <string>Font shape</string>
-                  </property>
-                </widget>
-              </item>
-              <item row="1" column="1" >
-                <widget class="QComboBox" name="seriesCO" >
-                  <property name="sizePolicy" >
-                    <sizepolicy>
-                      <hsizetype>3</hsizetype>
-                      <vsizetype>0</vsizetype>
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                    </sizepolicy>
-                  </property>
-                  <property name="toolTip" >
-                    <string>Font series</string>
-                  </property>
-                </widget>
-              </item>
-              <item row="4" column="1" >
-                <widget class="QComboBox" name="langCO" >
-                  <property name="sizePolicy" >
-                    <sizepolicy>
-                      <hsizetype>3</hsizetype>
-                      <vsizetype>0</vsizetype>
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                    </sizepolicy>
-                  </property>
-                  <property name="toolTip" >
-                    <string>Language</string>
-                  </property>
-                </widget>
-              </item>
-              <item row="0" column="1" >
-                <widget class="QComboBox" name="familyCO" >
-                  <property name="sizePolicy" >
-                    <sizepolicy>
-                      <hsizetype>3</hsizetype>
-                      <vsizetype>0</vsizetype>
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                    </sizepolicy>
-                  </property>
-                  <property name="toolTip" >
-                    <string>Font family</string>
-                  </property>
-                </widget>
-              </item>
-              <item row="3" column="1" >
-                <widget class="QComboBox" name="colorCO" >
-                  <property name="sizePolicy" >
-                    <sizepolicy>
-                      <hsizetype>3</hsizetype>
-                      <vsizetype>0</vsizetype>
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                    </sizepolicy>
-                  </property>
-                  <property name="toolTip" >
-                    <string>Font color</string>
-                  </property>
-                </widget>
-              </item>
-              <item row="4" column="0" >
-                <widget class="QLabel" name="langLA" >
-                  <property name="text" >
-                    <string>&amp;Language:</string>
-                  </property>
-                  <property name="buddy" >
-                    <cstring>langCO</cstring>
-                  </property>
-                  <property name="toolTip" >
-                    <string>Language</string>
-                  </property>
-                </widget>
-              </item>
-              <item row="1" column="0" >
-                <widget class="QLabel" name="seriesLA" >
-                  <property name="text" >
-                    <string>&amp;Series:</string>
-                  </property>
-                  <property name="buddy" >
-                    <cstring>seriesCO</cstring>
-                  </property>
-                  <property name="toolTip" >
-                    <string>Font series</string>
-                  </property>
-                </widget>
-              </item>
-              <item row="3" column="0" >
-                <widget class="QLabel" name="colorLA" >
-                  <property name="enabled" >
-                    <bool>true</bool>
-                  </property>
-                  <property name="text" >
-                    <string>&amp;Color:</string>
-                  </property>
-                  <property name="buddy" >
-                    <cstring>colorCO</cstring>
-                  </property>
-                  <property name="toolTip" >
-                    <string>Font color</string>
-                  </property>
-                </widget>
-              </item>
-            </layout>
+           <widget class="QLabel" name="sizeLA" >
+            <property name="toolTip" >
+             <string>Font size</string>
+            </property>
+            <property name="text" >
+             <string>Si&amp;ze:</string>
+            </property>
+            <property name="buddy" >
+             <cstring>sizeCO</cstring>
+            </property>
+           </widget>
           </item>
           <item>
-            <layout class="QVBoxLayout" >
-              <property name="margin" >
-                <number>0</number>
-              </property>
-              <property name="spacing" >
-                <number>6</number>
-              </property>
-              <item>
-                <widget class="QGroupBox" name="sizeGB" >
-                  <property name="title" >
-                    <string>Never Toggled</string>
-                  </property>
-                  <layout class="QHBoxLayout" >
-                    <property name="margin" >
-                      <number>11</number>
-                    </property>
-                    <property name="spacing" >
-                      <number>6</number>
-                    </property>
-                    <item>
-                      <widget class="QLabel" name="sizeLA" >
-                        <property name="text" >
-                          <string>Si&amp;ze:</string>
-                        </property>
-                        <property name="buddy" >
-                          <cstring>sizeCO</cstring>
-                        </property>
-                        <property name="toolTip" >
-                          <string>Font size</string>
-                        </property>
-                      </widget>
-                    </item>
-                    <item>
-                      <widget class="QComboBox" name="sizeCO" >
-                        <property name="sizePolicy" >
-                          <sizepolicy>
-                            <hsizetype>1</hsizetype>
-                            <vsizetype>0</vsizetype>
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                          </sizepolicy>
-                        </property>
-                        <property name="toolTip" >
-                          <string>Font size</string>
-                        </property>
-                      </widget>
-                    </item>
-                  </layout>
-                </widget>
-              </item>
-              <item>
-                <widget class="QGroupBox" name="miscGB" >
-                  <property name="title" >
-                    <string>Always Toggled</string>
-                  </property>
-                  <property name="toolTip" >
-                    <string>Other font settings</string>
-                  </property>
-                  <layout class="QHBoxLayout" >
-                    <property name="margin" >
-                      <number>11</number>
-                    </property>
-                    <property name="spacing" >
-                      <number>6</number>
-                    </property>
-                    <item>
-                      <widget class="QLabel" name="miscLA" >
-                        <property name="text" >
-                          <string>&amp;Misc:</string>
-                        </property>
-                        <property name="buddy" >
-                          <cstring>miscCO</cstring>
-                        </property>
-                      </widget>
-                    </item>
-                    <item>
-                      <widget class="QComboBox" name="miscCO" >
-                        <property name="toolTip" >
-                          <string>Other font settings</string>
-                        </property>
-                      </widget>
-                    </item>
-                  </layout>
-                </widget>
-              </item>
-            </layout>
+           <widget class="QComboBox" name="sizeCO" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>1</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="toolTip" >
+             <string>Font size</string>
+            </property>
+           </widget>
           </item>
-        </layout>
-      </item>
-      <item>
-        <layout class="QHBoxLayout" >
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="miscGB" >
+         <property name="toolTip" >
+          <string>Other font settings</string>
+         </property>
+         <property name="title" >
+          <string>Always Toggled</string>
+         </property>
+         <layout class="QHBoxLayout" >
           <property name="margin" >
-            <number>0</number>
+           <number>11</number>
           </property>
           <property name="spacing" >
-            <number>6</number>
+           <number>6</number>
           </property>
           <item>
-            <widget class="QCheckBox" name="toggleallCB" >
-              <property name="text" >
-                <string>&amp;Toggle all</string>
-              </property>
-              <property name="toolTip" >
-                <string>toggle font on all of the above</string>
-              </property>
-            </widget>
+           <widget class="QLabel" name="miscLA" >
+            <property name="text" >
+             <string>&amp;Misc:</string>
+            </property>
+            <property name="buddy" >
+             <cstring>miscCO</cstring>
+            </property>
+           </widget>
           </item>
           <item>
-            <widget class="QCheckBox" name="autoapplyCB" >
-              <property name="text" >
-                <string>Apply changes immediately</string>
-              </property>
-              <property name="toolTip" >
-                <string>Apply each change automatically</string>
-              </property>
-            </widget>
+           <widget class="QComboBox" name="miscCO" >
+            <property name="toolTip" >
+             <string>Other font settings</string>
+            </property>
+           </widget>
           </item>
-        </layout>
-      </item>
-      <item>
-        <spacer name="Spacer3" >
-          <property name="sizeHint" >
-            <size>
-              <width>20</width>
-              <height>20</height>
-            </size>
-          </property>
-          <property name="sizeType" >
-            <enum>Expanding</enum>
-          </property>
-          <property name="orientation" >
-            <enum>Vertical</enum>
-          </property>
-        </spacer>
-      </item>
-      <item>
-        <layout class="QHBoxLayout" >
-          <property name="margin" >
-            <number>0</number>
-          </property>
-          <property name="spacing" >
-            <number>6</number>
-          </property>
-          <item>
-            <spacer name="Spacer2_2" >
-              <property name="sizeHint" >
-                <size>
-                  <width>20</width>
-                  <height>20</height>
-                </size>
-              </property>
-              <property name="sizeType" >
-                <enum>Expanding</enum>
-              </property>
-              <property name="orientation" >
-                <enum>Horizontal</enum>
-              </property>
-            </spacer>
-          </item>
-          <item>
-            <widget class="QPushButton" name="okPB" >
-              <property name="text" >
-                <string>&amp;OK</string>
-              </property>
-              <property name="default" >
-                <bool>true</bool>
-              </property>
-            </widget>
-          </item>
-          <item>
-            <widget class="QPushButton" name="applyPB" >
-              <property name="text" >
-                <string>&amp;Apply</string>
-              </property>
-              <property name="autoDefault" >
-                <bool>false</bool>
-              </property>
-            </widget>
-          </item>
-          <item>
-            <widget class="QPushButton" name="closePB" >
-              <property name="text" >
-                <string>Close</string>
-              </property>
-              <property name="autoDefault" >
-                <bool>false</bool>
-              </property>
-              <property name="default" >
-                <bool>false</bool>
-              </property>
-            </widget>
-          </item>
-        </layout>
-      </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </item>
     </layout>
-  </widget>
-  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
-  <tabstops>
-    <tabstop>familyCO</tabstop>
-    <tabstop>seriesCO</tabstop>
-    <tabstop>shapeCO</tabstop>
-    <tabstop>colorCO</tabstop>
-    <tabstop>langCO</tabstop>
-    <tabstop>toggleallCB</tabstop>
-    <tabstop>sizeCO</tabstop>
-    <tabstop>miscCO</tabstop>
-    <tabstop>autoapplyCB</tabstop>
-    <tabstop>okPB</tabstop>
-    <tabstop>applyPB</tabstop>
-    <tabstop>closePB</tabstop>
-  </tabstops>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QCheckBox" name="toggleallCB" >
+       <property name="toolTip" >
+        <string>toggle font on all of the above</string>
+       </property>
+       <property name="text" >
+        <string>&amp;Toggle all</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="autoapplyCB" >
+       <property name="toolTip" >
+        <string>Apply each change automatically</string>
+       </property>
+       <property name="text" >
+        <string>Apply changes immediately</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="okPB" >
+       <property name="text" >
+        <string>&amp;OK</string>
+       </property>
+       <property name="default" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="applyPB" >
+       <property name="text" >
+        <string>&amp;Apply</string>
+       </property>
+       <property name="autoDefault" >
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="closePB" >
+       <property name="text" >
+        <string>Close</string>
+       </property>
+       <property name="autoDefault" >
+        <bool>false</bool>
+       </property>
+       <property name="default" >
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ <tabstops>
+  <tabstop>familyCO</tabstop>
+  <tabstop>seriesCO</tabstop>
+  <tabstop>shapeCO</tabstop>
+  <tabstop>colorCO</tabstop>
+  <tabstop>langCO</tabstop>
+  <tabstop>toggleallCB</tabstop>
+  <tabstop>sizeCO</tabstop>
+  <tabstop>miscCO</tabstop>
+  <tabstop>autoapplyCB</tabstop>
+  <tabstop>okPB</tabstop>
+  <tabstop>applyPB</tabstop>
+  <tabstop>closePB</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
 </ui>

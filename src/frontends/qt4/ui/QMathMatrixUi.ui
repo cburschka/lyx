@@ -1,299 +1,288 @@
-<ui version="4.0" stdsetdef="1" >
-  <author></author>
-  <comment></comment>
-  <exportmacro></exportmacro>
-  <class>QMathMatrixUi</class>
-  <widget class="QDialog" name="QMathMatrix" >
-    <property name="geometry" >
-      <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>248</width>
-        <height>371</height>
-      </rect>
-    </property>
-    <property name="windowTitle" >
-      <string/>
-    </property>
-    <property name="sizeGripEnabled" >
-      <bool>true</bool>
-    </property>
-    <layout class="QGridLayout" >
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>QMathMatrixUi</class>
+ <widget class="QDialog" name="QMathMatrixUi" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>248</width>
+    <height>371</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string/>
+  </property>
+  <property name="sizeGripEnabled" >
+   <bool>true</bool>
+  </property>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>11</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item row="0" column="0" colspan="2" >
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="rowsL" >
+       <property name="toolTip" >
+        <string>Number of rows</string>
+       </property>
+       <property name="text" >
+        <string>&amp;Rows:</string>
+       </property>
+       <property name="buddy" >
+        <cstring>rowsSB</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="rowsSB" >
+       <property name="toolTip" >
+        <string>Number of rows</string>
+       </property>
+       <property name="buttonSymbols" >
+        <enum>QAbstractSpinBox::PlusMinus</enum>
+       </property>
+       <property name="maximum" >
+        <number>511</number>
+       </property>
+       <property name="minimum" >
+        <number>1</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="columnsL" >
+       <property name="toolTip" >
+        <string>Number of columns</string>
+       </property>
+       <property name="text" >
+        <string>&amp;Columns:</string>
+       </property>
+       <property name="buddy" >
+        <cstring>columnsSB</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="columnsSB" >
+       <property name="toolTip" >
+        <string>Number of columns</string>
+       </property>
+       <property name="buttonSymbols" >
+        <enum>QAbstractSpinBox::PlusMinus</enum>
+       </property>
+       <property name="maximum" >
+        <number>511</number>
+       </property>
+       <property name="minimum" >
+        <number>1</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="1" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::MinimumExpanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="0" >
+    <widget class="EmptyTable" name="table" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>5</hsizetype>
+       <vsizetype>5</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="toolTip" >
+      <string>Resize this to the correct table dimensions</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="2" >
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="okPB" >
+       <property name="text" >
+        <string>&amp;OK</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="closePB" >
+       <property name="text" >
+        <string>Close</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="2" column="0" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::MinimumExpanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="3" column="0" colspan="2" >
+    <widget class="QGroupBox" name="alignmentG" >
+     <property name="title" >
+      <string>Alignment</string>
+     </property>
+     <layout class="QGridLayout" >
       <property name="margin" >
-        <number>11</number>
+       <number>11</number>
       </property>
       <property name="spacing" >
-        <number>6</number>
+       <number>6</number>
       </property>
-      <item rowspan="1" row="0" column="0" colspan="2" >
-        <layout class="QHBoxLayout" >
-          <property name="margin" >
-            <number>0</number>
-          </property>
-          <property name="spacing" >
-            <number>6</number>
-          </property>
-          <item>
-            <widget class="QLabel" name="rowsL" >
-              <property name="text" >
-                <string>&amp;Rows:</string>
-              </property>
-              <property name="buddy" >
-                <cstring>rowsSB</cstring>
-              </property>
-              <property name="toolTip" >
-                <string>Number of rows</string>
-              </property>
-            </widget>
-          </item>
-          <item>
-            <widget class="QSpinBox" name="rowsSB" >
-              <property name="buttonSymbols" >
-                <enum>QAbstractSpinBox::PlusMinus</enum>
-              </property>
-              <property name="maximum" >
-                <number>511</number>
-              </property>
-              <property name="minimum" >
-                <number>1</number>
-              </property>
-              <property name="toolTip" >
-                <string>Number of rows</string>
-              </property>
-            </widget>
-          </item>
-          <item>
-            <widget class="QLabel" name="columnsL" >
-              <property name="text" >
-                <string>&amp;Columns:</string>
-              </property>
-              <property name="buddy" >
-                <cstring>columnsSB</cstring>
-              </property>
-              <property name="toolTip" >
-                <string>Number of columns</string>
-              </property>
-            </widget>
-          </item>
-          <item>
-            <widget class="QSpinBox" name="columnsSB" >
-              <property name="buttonSymbols" >
-                <enum>QAbstractSpinBox::PlusMinus</enum>
-              </property>
-              <property name="maximum" >
-                <number>511</number>
-              </property>
-              <property name="minimum" >
-                <number>1</number>
-              </property>
-              <property name="toolTip" >
-                <string>Number of columns</string>
-              </property>
-            </widget>
-          </item>
-          <item>
-            <spacer name="Spacer1" >
-              <property name="sizeHint" >
-                <size>
-                  <width>20</width>
-                  <height>20</height>
-                </size>
-              </property>
-              <property name="sizeType" >
-                <enum>Expanding</enum>
-              </property>
-              <property name="orientation" >
-                <enum>Horizontal</enum>
-              </property>
-            </spacer>
-          </item>
-        </layout>
+      <item row="1" column="0" >
+       <widget class="QComboBox" name="valignCO" >
+        <property name="toolTip" >
+         <string>Vertical alignment</string>
+        </property>
+        <item>
+         <property name="text" >
+          <string>Top</string>
+         </property>
+        </item>
+        <item>
+         <property name="text" >
+          <string>Middle</string>
+         </property>
+        </item>
+        <item>
+         <property name="text" >
+          <string>Bottom</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="valignLA" >
+        <property name="text" >
+         <string>&amp;Vertical:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+        <property name="buddy" >
+         <cstring>valignCO</cstring>
+        </property>
+       </widget>
       </item>
       <item row="1" column="1" >
-        <spacer name="Spacer1_2" >
-          <property name="sizeHint" >
-            <size>
-              <width>20</width>
-              <height>20</height>
-            </size>
-          </property>
-          <property name="sizeType" >
-            <enum>MinimumExpanding</enum>
-          </property>
-          <property name="orientation" >
-            <enum>Horizontal</enum>
-          </property>
-        </spacer>
+       <widget class="QLineEdit" name="halignED" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>1</hsizetype>
+          <vsizetype>0</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="toolTip" >
+         <string>Horizontal alignment per column (l,c,r)</string>
+        </property>
+       </widget>
       </item>
-      <item row="1" column="0" >
-        <widget class="EmptyTable" name="table" >
-          <property name="sizePolicy" >
-            <sizepolicy>
-              <hsizetype>5</hsizetype>
-              <vsizetype>5</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-            </sizepolicy>
-          </property>
-          <property name="toolTip" >
-            <string>Resize this to the correct table dimensions</string>
-          </property>
-        </widget>
+      <item row="0" column="1" >
+       <widget class="QLabel" name="widthLA_2" >
+        <property name="text" >
+         <string>&amp;Horizontal:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>halignED</cstring>
+        </property>
+       </widget>
       </item>
-      <item rowspan="1" row="4" column="0" colspan="2" >
-        <layout class="QHBoxLayout" >
-          <property name="margin" >
-            <number>0</number>
-          </property>
-          <property name="spacing" >
-            <number>6</number>
-          </property>
-          <item>
-            <spacer name="Spacer2" >
-              <property name="sizeHint" >
-                <size>
-                  <width>20</width>
-                  <height>20</height>
-                </size>
-              </property>
-              <property name="sizeType" >
-                <enum>Expanding</enum>
-              </property>
-              <property name="orientation" >
-                <enum>Horizontal</enum>
-              </property>
-            </spacer>
-          </item>
-          <item>
-            <widget class="QPushButton" name="okPB" >
-              <property name="text" >
-                <string>&amp;OK</string>
-              </property>
-            </widget>
-          </item>
-          <item>
-            <widget class="QPushButton" name="closePB" >
-              <property name="text" >
-                <string>Close</string>
-              </property>
-            </widget>
-          </item>
-        </layout>
-      </item>
-      <item row="2" column="0" >
-        <spacer name="Spacer2_2" >
-          <property name="sizeHint" >
-            <size>
-              <width>20</width>
-              <height>20</height>
-            </size>
-          </property>
-          <property name="sizeType" >
-            <enum>MinimumExpanding</enum>
-          </property>
-          <property name="orientation" >
-            <enum>Vertical</enum>
-          </property>
-        </spacer>
-      </item>
-      <item rowspan="1" row="3" column="0" colspan="2" >
-        <widget class="QGroupBox" name="alignmentG" >
-          <property name="title" >
-            <string>Alignment</string>
-          </property>
-          <layout class="QGridLayout" >
-            <property name="margin" >
-              <number>11</number>
-            </property>
-            <property name="spacing" >
-              <number>6</number>
-            </property>
-            <item row="1" column="0" >
-              <widget class="QComboBox" name="valignCO" >
-                <property name="toolTip" >
-                  <string>Vertical alignment</string>
-                </property>
-                <item>
-                  <property name="text" >
-                    <string>Top</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>Middle</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>Bottom</string>
-                  </property>
-                </item>
-              </widget>
-            </item>
-            <item row="0" column="0" >
-              <widget class="QLabel" name="valignLA" >
-                <property name="text" >
-                  <string>&amp;Vertical:</string>
-                </property>
-                <property name="alignment" >
-                  <set>Qt::AlignVCenter|Qt::AlignLeft</set>
-                </property>
-                <property name="buddy" >
-                  <cstring>valignCO</cstring>
-                </property>
-              </widget>
-            </item>
-            <item row="1" column="1" >
-              <widget class="QLineEdit" name="halignED" >
-                <property name="sizePolicy" >
-                  <sizepolicy>
-                    <hsizetype>1</hsizetype>
-                    <vsizetype>0</vsizetype>
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                  </sizepolicy>
-                </property>
-                <property name="toolTip" >
-                  <string>Horizontal alignment per column (l,c,r)</string>
-                </property>
-              </widget>
-            </item>
-            <item row="0" column="1" >
-              <widget class="QLabel" name="widthLA_2" >
-                <property name="text" >
-                  <string>&amp;Horizontal:</string>
-                </property>
-                <property name="buddy" >
-                  <cstring>halignED</cstring>
-                </property>
-              </widget>
-            </item>
-          </layout>
-        </widget>
-      </item>
-    </layout>
-  </widget>
-  <pixmapfunction></pixmapfunction>
-  <customwidgets>
-    <customwidget>
-      <class>EmptyTable</class>
-      <extends></extends>
-      <header location="local" >emptytable.h</header>
-      <sizehint>
-        <width>-1</width>
-        <height>-1</height>
-      </sizehint>
-      <container>0</container>
-      <sizepolicy>
-        <hordata>5</hordata>
-        <verdata>5</verdata>
-      </sizepolicy>
-      <pixmap>image0</pixmap>
-    </customwidget>
-  </customwidgets>
-  <images>
-    <image name="image0" >
-      <data format="XPM.GZ" length="646" >789c6dd2c10ac2300c00d07bbf2234b7229d1be245fc04c5a3201e4615f430059d0711ff5ddb2e6bb236ec90eed134cb5a19d8ef36602af5ecdbfeeac05dda0798d3abebde87e3faa374d3807fa0d633a52d38d8de6f679fe33fc776e196f53cd010188256a3600a292882096246517815ca99884606e18044a3a40d91824820924265a7923a2e8bcd05f33db1173e002913175f2a6be6d3294871a2d95fa00e8a94ee017b69d339d90df1e77c57ea072ede6758</data>
-    </image>
-  </images>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <pixmapfunction></pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>EmptyTable</class>
+   <extends></extends>
+   <header>emptytable.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
 </ui>

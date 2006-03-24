@@ -1,194 +1,200 @@
-<ui version="4.0" stdsetdef="1" >
-  <author></author>
-  <comment></comment>
-  <exportmacro></exportmacro>
-  <class>QTexinfoUi</class>
-  <widget class="QDialog" name="QTexinfo" >
-    <property name="geometry" >
-      <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>267</width>
-        <height>290</height>
-      </rect>
-    </property>
-    <property name="windowTitle" >
-      <string/>
-    </property>
-    <property name="sizeGripEnabled" >
-      <bool>true</bool>
-    </property>
-    <layout class="QVBoxLayout" >
-      <property name="margin" >
-        <number>11</number>
-      </property>
-      <property name="spacing" >
-        <number>6</number>
-      </property>
-      <item>
-        <layout class="QHBoxLayout" >
-          <property name="margin" >
-            <number>0</number>
-          </property>
-          <property name="spacing" >
-            <number>6</number>
-          </property>
-          <item>
-            <widget class="QComboBox" name="whatStyle" >
-              <property name="toolTip" >
-                <string>Selected classes or styles</string>
-              </property>
-              <item>
-                <property name="text" >
-                  <string>LaTeX classes</string>
-                </property>
-              </item>
-              <item>
-                <property name="text" >
-                  <string>LaTeX styles</string>
-                </property>
-              </item>
-              <item>
-                <property name="text" >
-                  <string>BibTeX styles</string>
-                </property>
-              </item>
-            </widget>
-          </item>
-          <item>
-            <spacer name="Spacer1" >
-              <property name="sizeHint" >
-                <size>
-                  <width>20</width>
-                  <height>20</height>
-                </size>
-              </property>
-              <property name="sizeType" >
-                <enum>Expanding</enum>
-              </property>
-              <property name="orientation" >
-                <enum>Horizontal</enum>
-              </property>
-            </spacer>
-          </item>
-          <item>
-            <widget class="QCheckBox" name="path" >
-              <property name="text" >
-                <string>Show &amp;path</string>
-              </property>
-              <property name="toolTip" >
-                <string>Toggles view of the file list</string>
-              </property>
-            </widget>
-          </item>
-        </layout>
-      </item>
-      <item>
-        <widget class="Q3ListBox" name="fileList" >
-          <property name="toolTip" >
-            <string>Installed files</string>
-          </property>
-          <item>
-            <property name="text" >
-              <string>New Item</string>
-            </property>
-          </item>
-        </widget>
-      </item>
-      <item>
-        <layout class="QHBoxLayout" >
-          <property name="margin" >
-            <number>0</number>
-          </property>
-          <property name="spacing" >
-            <number>6</number>
-          </property>
-          <item>
-            <spacer name="Spacer5" >
-              <property name="sizeHint" >
-                <size>
-                  <width>20</width>
-                  <height>20</height>
-                </size>
-              </property>
-              <property name="sizeType" >
-                <enum>Expanding</enum>
-              </property>
-              <property name="orientation" >
-                <enum>Horizontal</enum>
-              </property>
-            </spacer>
-          </item>
-          <item>
-            <widget class="QPushButton" name="rescanPB" >
-              <property name="text" >
-                <string>&amp;Rescan</string>
-              </property>
-              <property name="toolTip" >
-                <string>Rebuild the file lists</string>
-              </property>
-            </widget>
-          </item>
-          <item>
-            <widget class="QPushButton" name="viewPB" >
-              <property name="enabled" >
-                <bool>false</bool>
-              </property>
-              <property name="text" >
-                <string>&amp;View</string>
-              </property>
-              <property name="toolTip" >
-                <string>Show contents of marked file. Only possible when files are shown with path</string>
-              </property>
-            </widget>
-          </item>
-        </layout>
-      </item>
-      <item>
-        <layout class="QHBoxLayout" >
-          <property name="margin" >
-            <number>0</number>
-          </property>
-          <property name="spacing" >
-            <number>6</number>
-          </property>
-          <item>
-            <spacer name="Spacer4" >
-              <property name="sizeHint" >
-                <size>
-                  <width>20</width>
-                  <height>20</height>
-                </size>
-              </property>
-              <property name="sizeType" >
-                <enum>Expanding</enum>
-              </property>
-              <property name="orientation" >
-                <enum>Horizontal</enum>
-              </property>
-            </spacer>
-          </item>
-          <item>
-            <widget class="QPushButton" name="closePB" >
-              <property name="text" >
-                <string>&amp;Close</string>
-              </property>
-              <property name="toolTip" >
-                <string>Close this dialog</string>
-              </property>
-            </widget>
-          </item>
-        </layout>
-      </item>
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>QTexinfoUi</class>
+ <widget class="QDialog" name="QTexinfoUi" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>267</width>
+    <height>290</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string/>
+  </property>
+  <property name="sizeGripEnabled" >
+   <bool>true</bool>
+  </property>
+  <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>11</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QComboBox" name="whatStyle" >
+       <property name="toolTip" >
+        <string>Selected classes or styles</string>
+       </property>
+       <item>
+        <property name="text" >
+         <string>LaTeX classes</string>
+        </property>
+       </item>
+       <item>
+        <property name="text" >
+         <string>LaTeX styles</string>
+        </property>
+       </item>
+       <item>
+        <property name="text" >
+         <string>BibTeX styles</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="path" >
+       <property name="toolTip" >
+        <string>Toggles view of the file list</string>
+       </property>
+       <property name="text" >
+        <string>Show &amp;path</string>
+       </property>
+      </widget>
+     </item>
     </layout>
-  </widget>
-  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
-  <tabstops>
-    <tabstop>whatStyle</tabstop>
-    <tabstop>path</tabstop>
-    <tabstop>fileList</tabstop>
-    <tabstop>rescanPB</tabstop>
-    <tabstop>viewPB</tabstop>
-    <tabstop>closePB</tabstop>
-  </tabstops>
+   </item>
+   <item>
+    <widget class="Q3ListBox" name="fileList" >
+     <property name="toolTip" >
+      <string>Installed files</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="rescanPB" >
+       <property name="toolTip" >
+        <string>Rebuild the file lists</string>
+       </property>
+       <property name="text" >
+        <string>&amp;Rescan</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="viewPB" >
+       <property name="enabled" >
+        <bool>false</bool>
+       </property>
+       <property name="toolTip" >
+        <string>Show contents of marked file. Only possible when files are shown with path</string>
+       </property>
+       <property name="text" >
+        <string>&amp;View</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="closePB" >
+       <property name="toolTip" >
+        <string>Close this dialog</string>
+       </property>
+       <property name="text" >
+        <string>&amp;Close</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>Q3ListBox</class>
+   <extends></extends>
+   <header>q3listbox.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>whatStyle</tabstop>
+  <tabstop>path</tabstop>
+  <tabstop>fileList</tabstop>
+  <tabstop>rescanPB</tabstop>
+  <tabstop>viewPB</tabstop>
+  <tabstop>closePB</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
 </ui>

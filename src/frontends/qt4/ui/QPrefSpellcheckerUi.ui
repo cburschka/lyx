@@ -1,195 +1,197 @@
-<ui version="4.0" stdsetdef="1" >
-  <author></author>
-  <comment></comment>
-  <exportmacro></exportmacro>
-  <class>QPrefSpellcheckerUi</class>
-  <widget class="QWidget" name="QPrefSpellchecker" >
-    <property name="geometry" >
-      <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>386</width>
-        <height>268</height>
-      </rect>
-    </property>
-    <property name="windowTitle" >
-      <string/>
-    </property>
-    <layout class="QVBoxLayout" >
-      <property name="margin" >
-        <number>11</number>
-      </property>
-      <property name="spacing" >
-        <number>6</number>
-      </property>
-      <item>
-        <layout class="QGridLayout" >
-          <property name="margin" >
-            <number>0</number>
-          </property>
-          <property name="spacing" >
-            <number>6</number>
-          </property>
-          <item row="0" column="0" >
-            <widget class="QLabel" name="spellCommandLA" >
-              <property name="text" >
-                <string>Spellchec&amp;ker executable:</string>
-              </property>
-              <property name="buddy" >
-                <cstring>spellCommandCO</cstring>
-              </property>
-            </widget>
-          </item>
-          <item row="2" column="1" >
-            <widget class="QLineEdit" name="escapeCharactersED" />
-          </item>
-          <item row="0" column="2" >
-            <spacer name="Spacer13" >
-              <property name="sizeHint" >
-                <size>
-                  <width>20</width>
-                  <height>20</height>
-                </size>
-              </property>
-              <property name="sizeType" >
-                <enum>Expanding</enum>
-              </property>
-              <property name="orientation" >
-                <enum>Horizontal</enum>
-              </property>
-            </spacer>
-          </item>
-          <item row="1" column="1" >
-            <widget class="QLineEdit" name="altLanguageED" >
-              <property name="toolTip" >
-                <string>Override the language used for the spellchecker</string>
-              </property>
-            </widget>
-          </item>
-          <item row="1" column="0" >
-            <widget class="QLabel" name="altLanguageLA" >
-              <property name="text" >
-                <string>Al&amp;ternative language:</string>
-              </property>
-              <property name="buddy" >
-                <cstring>altLanguageED</cstring>
-              </property>
-            </widget>
-          </item>
-          <item row="3" column="2" >
-            <widget class="QPushButton" name="persDictionaryPB" >
-              <property name="text" >
-                <string>Br&amp;owse...</string>
-              </property>
-            </widget>
-          </item>
-          <item row="2" column="0" >
-            <widget class="QLabel" name="escapeCharactersLA" >
-              <property name="text" >
-                <string>Escape cha&amp;racters:</string>
-              </property>
-              <property name="buddy" >
-                <cstring>escapeCharactersED</cstring>
-              </property>
-            </widget>
-          </item>
-          <item row="2" column="2" >
-            <spacer name="Spacer11" >
-              <property name="sizeHint" >
-                <size>
-                  <width>20</width>
-                  <height>20</height>
-                </size>
-              </property>
-              <property name="sizeType" >
-                <enum>Expanding</enum>
-              </property>
-              <property name="orientation" >
-                <enum>Horizontal</enum>
-              </property>
-            </spacer>
-          </item>
-          <item row="3" column="1" >
-            <widget class="QLineEdit" name="persDictionaryED" >
-              <property name="toolTip" >
-                <string>Specify a personal dictionary file other than the default</string>
-              </property>
-            </widget>
-          </item>
-          <item row="3" column="0" >
-            <widget class="QLabel" name="persDictionaryLA" >
-              <property name="text" >
-                <string>Personal &amp;dictionary:</string>
-              </property>
-              <property name="buddy" >
-                <cstring>persDictionaryED</cstring>
-              </property>
-            </widget>
-          </item>
-          <item row="0" column="1" >
-            <widget class="QComboBox" name="spellCommandCO" />
-          </item>
-          <item row="1" column="2" >
-            <spacer name="Spacer12" >
-              <property name="sizeHint" >
-                <size>
-                  <width>20</width>
-                  <height>20</height>
-                </size>
-              </property>
-              <property name="sizeType" >
-                <enum>Expanding</enum>
-              </property>
-              <property name="orientation" >
-                <enum>Horizontal</enum>
-              </property>
-            </spacer>
-          </item>
-        </layout>
-      </item>
-      <item>
-        <widget class="QCheckBox" name="compoundWordCB" >
-          <property name="text" >
-            <string>Accept compound &amp;words</string>
-          </property>
-          <property name="toolTip" >
-            <string>Accept words such as "diskdrive"</string>
-          </property>
-        </widget>
-      </item>
-      <item>
-        <widget class="QCheckBox" name="inputEncodingCB" >
-          <property name="text" >
-            <string>Use input encod&amp;ing</string>
-          </property>
-        </widget>
-      </item>
-      <item>
-        <spacer name="Spacer17" >
-          <property name="sizeHint" >
-            <size>
-              <width>20</width>
-              <height>20</height>
-            </size>
-          </property>
-          <property name="sizeType" >
-            <enum>Expanding</enum>
-          </property>
-          <property name="orientation" >
-            <enum>Vertical</enum>
-          </property>
-        </spacer>
-      </item>
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>QPrefSpellcheckerUi</class>
+ <widget class="QWidget" name="QPrefSpellcheckerUi" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>386</width>
+    <height>268</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string/>
+  </property>
+  <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>11</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item>
+    <layout class="QGridLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item row="0" column="0" >
+      <widget class="QLabel" name="spellCommandLA" >
+       <property name="text" >
+        <string>Spellchec&amp;ker executable:</string>
+       </property>
+       <property name="buddy" >
+        <cstring>spellCommandCO</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1" >
+      <widget class="QLineEdit" name="escapeCharactersED" />
+     </item>
+     <item row="0" column="2" >
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="1" column="1" >
+      <widget class="QLineEdit" name="altLanguageED" >
+       <property name="toolTip" >
+        <string>Override the language used for the spellchecker</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0" >
+      <widget class="QLabel" name="altLanguageLA" >
+       <property name="text" >
+        <string>Al&amp;ternative language:</string>
+       </property>
+       <property name="buddy" >
+        <cstring>altLanguageED</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="2" >
+      <widget class="QPushButton" name="persDictionaryPB" >
+       <property name="text" >
+        <string>Br&amp;owse...</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0" >
+      <widget class="QLabel" name="escapeCharactersLA" >
+       <property name="text" >
+        <string>Escape cha&amp;racters:</string>
+       </property>
+       <property name="buddy" >
+        <cstring>escapeCharactersED</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="2" >
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="3" column="1" >
+      <widget class="QLineEdit" name="persDictionaryED" >
+       <property name="toolTip" >
+        <string>Specify a personal dictionary file other than the default</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0" >
+      <widget class="QLabel" name="persDictionaryLA" >
+       <property name="text" >
+        <string>Personal &amp;dictionary:</string>
+       </property>
+       <property name="buddy" >
+        <cstring>persDictionaryED</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1" >
+      <widget class="QComboBox" name="spellCommandCO" />
+     </item>
+     <item row="1" column="2" >
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
     </layout>
-  </widget>
-  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
-  <tabstops>
-    <tabstop>spellCommandCO</tabstop>
-    <tabstop>altLanguageED</tabstop>
-    <tabstop>escapeCharactersED</tabstop>
-    <tabstop>persDictionaryED</tabstop>
-    <tabstop>persDictionaryPB</tabstop>
-    <tabstop>compoundWordCB</tabstop>
-    <tabstop>inputEncodingCB</tabstop>
-  </tabstops>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="compoundWordCB" >
+     <property name="toolTip" >
+      <string>Accept words such as "diskdrive"</string>
+     </property>
+     <property name="text" >
+      <string>Accept compound &amp;words</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="inputEncodingCB" >
+     <property name="text" >
+      <string>Use input encod&amp;ing</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ <tabstops>
+  <tabstop>spellCommandCO</tabstop>
+  <tabstop>altLanguageED</tabstop>
+  <tabstop>escapeCharactersED</tabstop>
+  <tabstop>persDictionaryED</tabstop>
+  <tabstop>persDictionaryPB</tabstop>
+  <tabstop>compoundWordCB</tabstop>
+  <tabstop>inputEncodingCB</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
 </ui>

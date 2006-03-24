@@ -1,122 +1,124 @@
-<ui version="4.0" stdsetdef="1" >
-  <author></author>
-  <comment></comment>
-  <exportmacro></exportmacro>
-  <class>QERTUi</class>
-  <widget class="QDialog" name="QERT" >
-    <property name="geometry" >
-      <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>197</width>
-        <height>194</height>
-      </rect>
-    </property>
-    <property name="windowTitle" >
-      <string/>
-    </property>
-    <property name="sizeGripEnabled" >
-      <bool>true</bool>
-    </property>
-    <layout class="QVBoxLayout" >
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>QERTUi</class>
+ <widget class="QDialog" name="QERTUi" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>197</width>
+    <height>194</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string/>
+  </property>
+  <property name="sizeGripEnabled" >
+   <bool>true</bool>
+  </property>
+  <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>11</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item>
+    <widget class="QGroupBox" name="ertBG" >
+     <property name="title" >
+      <string>Display</string>
+     </property>
+     <layout class="QVBoxLayout" >
       <property name="margin" >
-        <number>11</number>
+       <number>11</number>
       </property>
       <property name="spacing" >
-        <number>6</number>
+       <number>6</number>
       </property>
       <item>
-        <widget class="QGroupBox" name="ertBG" >
-          <property name="title" >
-            <string>Display</string>
-          </property>
-          <layout class="QVBoxLayout" >
-            <property name="margin" >
-              <number>11</number>
-            </property>
-            <property name="spacing" >
-              <number>6</number>
-            </property>
-            <item>
-              <widget class="QRadioButton" name="inlineRB" >
-                <property name="text" >
-                  <string>&amp;Inline</string>
-                </property>
-                <property name="toolTip" >
-                  <string>Show ERT inline</string>
-                </property>
-              </widget>
-            </item>
-            <item>
-              <widget class="QRadioButton" name="collapsedRB" >
-                <property name="text" >
-                  <string>&amp;Collapsed</string>
-                </property>
-                <property name="toolTip" >
-                  <string>Show ERT button only</string>
-                </property>
-              </widget>
-            </item>
-            <item>
-              <widget class="QRadioButton" name="openRB" >
-                <property name="text" >
-                  <string>O&amp;pen</string>
-                </property>
-                <property name="toolTip" >
-                  <string>Show ERT contents</string>
-                </property>
-              </widget>
-            </item>
-          </layout>
-        </widget>
+       <widget class="QRadioButton" name="inlineRB" >
+        <property name="toolTip" >
+         <string>Show ERT inline</string>
+        </property>
+        <property name="text" >
+         <string>&amp;Inline</string>
+        </property>
+       </widget>
       </item>
       <item>
-        <layout class="QHBoxLayout" >
-          <property name="margin" >
-            <number>0</number>
-          </property>
-          <property name="spacing" >
-            <number>6</number>
-          </property>
-          <item>
-            <spacer name="Spacer3" >
-              <property name="sizeHint" >
-                <size>
-                  <width>20</width>
-                  <height>20</height>
-                </size>
-              </property>
-              <property name="sizeType" >
-                <enum>Expanding</enum>
-              </property>
-              <property name="orientation" >
-                <enum>Horizontal</enum>
-              </property>
-            </spacer>
-          </item>
-          <item>
-            <widget class="QPushButton" name="okPB" >
-              <property name="text" >
-                <string>&amp;OK</string>
-              </property>
-              <property name="default" >
-                <bool>false</bool>
-              </property>
-            </widget>
-          </item>
-          <item>
-            <widget class="QPushButton" name="closePB" >
-              <property name="text" >
-                <string>Close</string>
-              </property>
-              <property name="default" >
-                <bool>true</bool>
-              </property>
-            </widget>
-          </item>
-        </layout>
+       <widget class="QRadioButton" name="collapsedRB" >
+        <property name="toolTip" >
+         <string>Show ERT button only</string>
+        </property>
+        <property name="text" >
+         <string>&amp;Collapsed</string>
+        </property>
+       </widget>
       </item>
+      <item>
+       <widget class="QRadioButton" name="openRB" >
+        <property name="toolTip" >
+         <string>Show ERT contents</string>
+        </property>
+        <property name="text" >
+         <string>O&amp;pen</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="okPB" >
+       <property name="text" >
+        <string>&amp;OK</string>
+       </property>
+       <property name="default" >
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="closePB" >
+       <property name="text" >
+        <string>Close</string>
+       </property>
+       <property name="default" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
     </layout>
-  </widget>
-  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+   </item>
+  </layout>
+ </widget>
+ <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ <resources/>
+ <connections/>
 </ui>

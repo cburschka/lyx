@@ -1,179 +1,190 @@
-<ui version="4.0" stdsetdef="1" >
-  <author></author>
-  <comment></comment>
-  <exportmacro></exportmacro>
-  <class>QChangesUi</class>
-  <widget class="QDialog" name="QChanges" >
-    <property name="geometry" >
-      <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>297</width>
-        <height>252</height>
-      </rect>
-    </property>
-    <property name="windowTitle" >
-      <string/>
-    </property>
-    <property name="sizeGripEnabled" >
-      <bool>true</bool>
-    </property>
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>QChangesUi</class>
+ <widget class="QDialog" name="QChangesUi" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>297</width>
+    <height>252</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string/>
+  </property>
+  <property name="sizeGripEnabled" >
+   <bool>true</bool>
+  </property>
+  <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>11</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item>
     <layout class="QVBoxLayout" >
-      <property name="margin" >
-        <number>11</number>
-      </property>
-      <property name="spacing" >
-        <number>6</number>
-      </property>
-      <item>
-        <layout class="QVBoxLayout" >
-          <property name="margin" >
-            <number>0</number>
-          </property>
-          <property name="spacing" >
-            <number>6</number>
-          </property>
-          <item>
-            <widget class="QLabel" name="changeLA" >
-              <property name="text" >
-                <string>Change:</string>
-              </property>
-            </widget>
-          </item>
-          <item>
-            <widget class="Q3TextView" name="changeTV" >
-              <property name="focusPolicy" >
-                <enum>Qt::WheelFocus</enum>
-              </property>
-              <property name="toolTip" >
-                <string>Details of the change</string>
-              </property>
-            </widget>
-          </item>
-        </layout>
-      </item>
-      <item>
-        <layout class="QHBoxLayout" >
-          <property name="margin" >
-            <number>0</number>
-          </property>
-          <property name="spacing" >
-            <number>6</number>
-          </property>
-          <item>
-            <widget class="QPushButton" name="acceptPB" >
-              <property name="text" >
-                <string>&amp;Accept</string>
-              </property>
-              <property name="autoDefault" >
-                <bool>false</bool>
-              </property>
-              <property name="toolTip" >
-                <string>Accept this change</string>
-              </property>
-            </widget>
-          </item>
-          <item>
-            <widget class="QPushButton" name="rejectPB" >
-              <property name="text" >
-                <string>&amp;Reject</string>
-              </property>
-              <property name="autoDefault" >
-                <bool>false</bool>
-              </property>
-              <property name="toolTip" >
-                <string>Reject this change</string>
-              </property>
-            </widget>
-          </item>
-          <item>
-            <spacer name="Spacer3" >
-              <property name="sizeHint" >
-                <size>
-                  <width>20</width>
-                  <height>20</height>
-                </size>
-              </property>
-              <property name="sizeType" >
-                <enum>Expanding</enum>
-              </property>
-              <property name="orientation" >
-                <enum>Horizontal</enum>
-              </property>
-            </spacer>
-          </item>
-        </layout>
-      </item>
-      <item>
-        <spacer name="Spacer4" >
-          <property name="sizeHint" >
-            <size>
-              <width>20</width>
-              <height>20</height>
-            </size>
-          </property>
-          <property name="sizeType" >
-            <enum>Expanding</enum>
-          </property>
-          <property name="orientation" >
-            <enum>Vertical</enum>
-          </property>
-        </spacer>
-      </item>
-      <item>
-        <layout class="QHBoxLayout" >
-          <property name="margin" >
-            <number>0</number>
-          </property>
-          <property name="spacing" >
-            <number>6</number>
-          </property>
-          <item>
-            <widget class="QPushButton" name="nextPB" >
-              <property name="text" >
-                <string>&amp;Next change</string>
-              </property>
-              <property name="default" >
-                <bool>true</bool>
-              </property>
-              <property name="toolTip" >
-                <string>Go to next change</string>
-              </property>
-            </widget>
-          </item>
-          <item>
-            <spacer name="Spacer1" >
-              <property name="sizeHint" >
-                <size>
-                  <width>20</width>
-                  <height>20</height>
-                </size>
-              </property>
-              <property name="sizeType" >
-                <enum>Expanding</enum>
-              </property>
-              <property name="orientation" >
-                <enum>Horizontal</enum>
-              </property>
-            </spacer>
-          </item>
-          <item>
-            <widget class="QPushButton" name="closePB" >
-              <property name="text" >
-                <string>Cancel</string>
-              </property>
-            </widget>
-          </item>
-        </layout>
-      </item>
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="changeLA" >
+       <property name="text" >
+        <string>Change:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="Q3TextView" name="changeTV" >
+       <property name="focusPolicy" >
+        <enum>Qt::WheelFocus</enum>
+       </property>
+       <property name="toolTip" >
+        <string>Details of the change</string>
+       </property>
+      </widget>
+     </item>
     </layout>
-  </widget>
-  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
-  <tabstops>
-    <tabstop>changeTV</tabstop>
-    <tabstop>acceptPB</tabstop>
-    <tabstop>rejectPB</tabstop>
-    <tabstop>nextPB</tabstop>
-    <tabstop>closePB</tabstop>
-  </tabstops>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QPushButton" name="acceptPB" >
+       <property name="toolTip" >
+        <string>Accept this change</string>
+       </property>
+       <property name="text" >
+        <string>&amp;Accept</string>
+       </property>
+       <property name="autoDefault" >
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="rejectPB" >
+       <property name="toolTip" >
+        <string>Reject this change</string>
+       </property>
+       <property name="text" >
+        <string>&amp;Reject</string>
+       </property>
+       <property name="autoDefault" >
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QPushButton" name="nextPB" >
+       <property name="toolTip" >
+        <string>Go to next change</string>
+       </property>
+       <property name="text" >
+        <string>&amp;Next change</string>
+       </property>
+       <property name="default" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="closePB" >
+       <property name="text" >
+        <string>Cancel</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>Q3TextView</class>
+   <extends>QWidget</extends>
+   <header>q3textview.h</header>
+   <container>1</container>
+   <pixmap></pixmap>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>changeTV</tabstop>
+  <tabstop>acceptPB</tabstop>
+  <tabstop>rejectPB</tabstop>
+  <tabstop>nextPB</tabstop>
+  <tabstop>closePB</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
 </ui>

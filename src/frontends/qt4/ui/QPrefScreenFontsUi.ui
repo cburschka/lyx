@@ -1,417 +1,406 @@
-<ui version="4.0" stdsetdef="1" >
-  <author></author>
-  <comment></comment>
-  <exportmacro></exportmacro>
-  <class>QPrefScreenFontsUi</class>
-  <widget class="QWidget" name="QPrefScreenFonts" >
-    <property name="geometry" >
-      <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>342</width>
-        <height>441</height>
-      </rect>
-    </property>
-    <property name="windowTitle" >
-      <string/>
-    </property>
-    <layout class="QVBoxLayout" >
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>QPrefScreenFontsUi</class>
+ <widget class="QWidget" name="QPrefScreenFontsUi" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>342</width>
+    <height>441</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string/>
+  </property>
+  <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>11</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <layout class="QGridLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item row="1" column="1" >
+        <widget class="QComboBox" name="screenSansCO" >
+         <property name="duplicatesEnabled" >
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2" >
+        <widget class="QFontExample" name="screenSansFE" >
+         <property name="sizePolicy" >
+          <sizepolicy>
+           <hsizetype>3</hsizetype>
+           <vsizetype>5</vsizetype>
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize" >
+          <size>
+           <width>60</width>
+           <height>0</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" >
+        <widget class="QLabel" name="screenSansLA" >
+         <property name="text" >
+          <string>Sa&amp;ns Serif:</string>
+         </property>
+         <property name="buddy" >
+          <cstring>screenSansCO</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2" >
+        <widget class="QFontExample" name="screenRomanFE" >
+         <property name="sizePolicy" >
+          <sizepolicy>
+           <hsizetype>3</hsizetype>
+           <vsizetype>5</vsizetype>
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize" >
+          <size>
+           <width>60</width>
+           <height>0</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1" >
+        <widget class="QComboBox" name="screenRomanCO" >
+         <property name="duplicatesEnabled" >
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0" >
+        <widget class="QLabel" name="screenTypewriterLA" >
+         <property name="text" >
+          <string>T&amp;ypewriter:</string>
+         </property>
+         <property name="buddy" >
+          <cstring>screenTypewriterCO</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0" >
+        <widget class="QLabel" name="screenRomanLA" >
+         <property name="text" >
+          <string>&amp;Roman:</string>
+         </property>
+         <property name="buddy" >
+          <cstring>screenRomanCO</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2" >
+        <widget class="QFontExample" name="screenTypewriterFE" >
+         <property name="sizePolicy" >
+          <sizepolicy>
+           <hsizetype>3</hsizetype>
+           <vsizetype>5</vsizetype>
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1" >
+        <widget class="QComboBox" name="screenTypewriterCO" >
+         <property name="duplicatesEnabled" >
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <layout class="QGridLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item row="1" column="0" >
+        <widget class="QLabel" name="scrrenDpiLA" >
+         <property name="text" >
+          <string>Screen &amp;DPI:</string>
+         </property>
+         <property name="buddy" >
+          <cstring>screenDpiSB</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1" >
+        <widget class="QSpinBox" name="screenDpiSB" >
+         <property name="maximum" >
+          <number>999</number>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0" >
+        <widget class="QLabel" name="screenZoomLA" >
+         <property name="text" >
+          <string>&amp;Zoom %:</string>
+         </property>
+         <property name="buddy" >
+          <cstring>screenZoomSB</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1" >
+        <widget class="QSpinBox" name="screenZoomSB" >
+         <property name="maximum" >
+          <number>999</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="GroupBox3" >
+     <property name="title" >
+      <string>Font Sizes</string>
+     </property>
+     <layout class="QGridLayout" >
       <property name="margin" >
-        <number>11</number>
+       <number>11</number>
       </property>
       <property name="spacing" >
-        <number>6</number>
+       <number>6</number>
       </property>
-      <item>
-        <layout class="QHBoxLayout" >
-          <property name="margin" >
-            <number>0</number>
-          </property>
-          <property name="spacing" >
-            <number>6</number>
-          </property>
-          <item>
-            <layout class="QGridLayout" >
-              <property name="margin" >
-                <number>0</number>
-              </property>
-              <property name="spacing" >
-                <number>6</number>
-              </property>
-              <item row="1" column="1" >
-                <widget class="QComboBox" name="screenSansCO" >
-                  <property name="duplicatesEnabled" >
-                    <bool>false</bool>
-                  </property>
-                </widget>
-              </item>
-              <item row="1" column="2" >
-                <widget class="QFontExample" name="screenSansFE" >
-                  <property name="sizePolicy" >
-                    <sizepolicy>
-                      <hsizetype>3</hsizetype>
-                      <vsizetype>5</vsizetype>
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                    </sizepolicy>
-                  </property>
-                  <property name="minimumSize" >
-                    <size>
-                      <width>60</width>
-                      <height>0</height>
-                    </size>
-                  </property>
-                </widget>
-              </item>
-              <item row="1" column="0" >
-                <widget class="QLabel" name="screenSansLA" >
-                  <property name="text" >
-                    <string>Sa&amp;ns Serif:</string>
-                  </property>
-                  <property name="buddy" >
-                    <cstring>screenSansCO</cstring>
-                  </property>
-                </widget>
-              </item>
-              <item row="0" column="2" >
-                <widget class="QFontExample" name="screenRomanFE" >
-                  <property name="sizePolicy" >
-                    <sizepolicy>
-                      <hsizetype>3</hsizetype>
-                      <vsizetype>5</vsizetype>
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                    </sizepolicy>
-                  </property>
-                  <property name="minimumSize" >
-                    <size>
-                      <width>60</width>
-                      <height>0</height>
-                    </size>
-                  </property>
-                </widget>
-              </item>
-              <item row="0" column="1" >
-                <widget class="QComboBox" name="screenRomanCO" >
-                  <property name="duplicatesEnabled" >
-                    <bool>false</bool>
-                  </property>
-                </widget>
-              </item>
-              <item row="2" column="0" >
-                <widget class="QLabel" name="screenTypewriterLA" >
-                  <property name="text" >
-                    <string>T&amp;ypewriter:</string>
-                  </property>
-                  <property name="buddy" >
-                    <cstring>screenTypewriterCO</cstring>
-                  </property>
-                </widget>
-              </item>
-              <item row="0" column="0" >
-                <widget class="QLabel" name="screenRomanLA" >
-                  <property name="text" >
-                    <string>&amp;Roman:</string>
-                  </property>
-                  <property name="buddy" >
-                    <cstring>screenRomanCO</cstring>
-                  </property>
-                </widget>
-              </item>
-              <item row="2" column="2" >
-                <widget class="QFontExample" name="screenTypewriterFE" >
-                  <property name="sizePolicy" >
-                    <sizepolicy>
-                      <hsizetype>3</hsizetype>
-                      <vsizetype>5</vsizetype>
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                    </sizepolicy>
-                  </property>
-                </widget>
-              </item>
-              <item row="2" column="1" >
-                <widget class="QComboBox" name="screenTypewriterCO" >
-                  <property name="duplicatesEnabled" >
-                    <bool>false</bool>
-                  </property>
-                </widget>
-              </item>
-            </layout>
-          </item>
-        </layout>
+      <item row="0" column="1" >
+       <widget class="QLineEdit" name="screenTinyED" />
       </item>
-      <item>
-        <layout class="QHBoxLayout" >
-          <property name="margin" >
-            <number>0</number>
-          </property>
-          <property name="spacing" >
-            <number>6</number>
-          </property>
-          <item>
-            <layout class="QGridLayout" >
-              <property name="margin" >
-                <number>0</number>
-              </property>
-              <property name="spacing" >
-                <number>6</number>
-              </property>
-              <item row="1" column="0" >
-                <widget class="QLabel" name="scrrenDpiLA" >
-                  <property name="text" >
-                    <string>Screen &amp;DPI:</string>
-                  </property>
-                  <property name="buddy" >
-                    <cstring>screenDpiSB</cstring>
-                  </property>
-                </widget>
-              </item>
-              <item row="1" column="1" >
-                <widget class="QSpinBox" name="screenDpiSB" >
-                  <property name="maximum" >
-                    <number>999</number>
-                  </property>
-                </widget>
-              </item>
-              <item row="0" column="0" >
-                <widget class="QLabel" name="screenZoomLA" >
-                  <property name="text" >
-                    <string>&amp;Zoom %:</string>
-                  </property>
-                  <property name="buddy" >
-                    <cstring>screenZoomSB</cstring>
-                  </property>
-                </widget>
-              </item>
-              <item row="0" column="1" >
-                <widget class="QSpinBox" name="screenZoomSB" >
-                  <property name="maximum" >
-                    <number>999</number>
-                  </property>
-                </widget>
-              </item>
-            </layout>
-          </item>
-          <item>
-            <spacer name="Spacer23" >
-              <property name="sizeHint" >
-                <size>
-                  <width>20</width>
-                  <height>20</height>
-                </size>
-              </property>
-              <property name="sizeType" >
-                <enum>Expanding</enum>
-              </property>
-              <property name="orientation" >
-                <enum>Horizontal</enum>
-              </property>
-            </spacer>
-          </item>
-        </layout>
+      <item row="4" column="3" >
+       <widget class="QLineEdit" name="screenHugerED" />
       </item>
-      <item>
-        <widget class="QGroupBox" name="GroupBox3" >
-          <property name="title" >
-            <string>Font Sizes</string>
-          </property>
-          <layout class="QGridLayout" >
-            <property name="margin" >
-              <number>11</number>
-            </property>
-            <property name="spacing" >
-              <number>6</number>
-            </property>
-            <item row="0" column="1" >
-              <widget class="QLineEdit" name="screenTinyED" />
-            </item>
-            <item row="4" column="3" >
-              <widget class="QLineEdit" name="screenHugerED" />
-            </item>
-            <item row="1" column="1" >
-              <widget class="QLineEdit" name="screenSmallestED" />
-            </item>
-            <item row="2" column="1" >
-              <widget class="QLineEdit" name="screenSmallerED" />
-            </item>
-            <item row="3" column="1" >
-              <widget class="QLineEdit" name="screenSmallED" />
-            </item>
-            <item row="4" column="1" >
-              <widget class="QLineEdit" name="screenNormalED" />
-            </item>
-            <item row="0" column="3" >
-              <widget class="QLineEdit" name="screenLargeED" />
-            </item>
-            <item row="1" column="3" >
-              <widget class="QLineEdit" name="screenLargerED" />
-            </item>
-            <item row="2" column="3" >
-              <widget class="QLineEdit" name="screenLargestED" />
-            </item>
-            <item row="1" column="2" >
-              <widget class="QLabel" name="screenLargerLA" >
-                <property name="text" >
-                  <string>Larger:</string>
-                </property>
-                <property name="buddy" >
-                  <cstring>screenLargerED</cstring>
-                </property>
-              </widget>
-            </item>
-            <item row="2" column="2" >
-              <widget class="QLabel" name="screenLargestLA" >
-                <property name="text" >
-                  <string>Largest:</string>
-                </property>
-                <property name="buddy" >
-                  <cstring>screenLargestED</cstring>
-                </property>
-              </widget>
-            </item>
-            <item row="3" column="3" >
-              <widget class="QLineEdit" name="screenHugeED" />
-            </item>
-            <item row="3" column="2" >
-              <widget class="QLabel" name="screenHugeLA" >
-                <property name="text" >
-                  <string>Huge:</string>
-                </property>
-                <property name="buddy" >
-                  <cstring>screenHugeED</cstring>
-                </property>
-              </widget>
-            </item>
-            <item row="4" column="2" >
-              <widget class="QLabel" name="screenHugestLA" >
-                <property name="text" >
-                  <string>Hugest:</string>
-                </property>
-                <property name="buddy" >
-                  <cstring>screenHugestED</cstring>
-                </property>
-              </widget>
-            </item>
-            <item row="1" column="0" >
-              <widget class="QLabel" name="screenSmallestLA" >
-                <property name="text" >
-                  <string>Smallest:</string>
-                </property>
-                <property name="buddy" >
-                  <cstring>screenSmallestED</cstring>
-                </property>
-              </widget>
-            </item>
-            <item row="2" column="0" >
-              <widget class="QLabel" name="screenSmallerLA" >
-                <property name="text" >
-                  <string>Smaller:</string>
-                </property>
-                <property name="buddy" >
-                  <cstring>screenSmallerED</cstring>
-                </property>
-              </widget>
-            </item>
-            <item row="3" column="0" >
-              <widget class="QLabel" name="screenSmallLA" >
-                <property name="text" >
-                  <string>Small:</string>
-                </property>
-                <property name="buddy" >
-                  <cstring>screenSmallED</cstring>
-                </property>
-              </widget>
-            </item>
-            <item row="4" column="0" >
-              <widget class="QLabel" name="screenNormalLA" >
-                <property name="text" >
-                  <string>Normal:</string>
-                </property>
-                <property name="buddy" >
-                  <cstring>screenNormalED</cstring>
-                </property>
-              </widget>
-            </item>
-            <item row="0" column="0" >
-              <widget class="QLabel" name="screenTinyLA" >
-                <property name="text" >
-                  <string>Tiny:</string>
-                </property>
-                <property name="buddy" >
-                  <cstring>screenTinyED</cstring>
-                </property>
-              </widget>
-            </item>
-            <item row="0" column="2" >
-              <widget class="QLabel" name="screenLargeLA" >
-                <property name="text" >
-                  <string>Large:</string>
-                </property>
-                <property name="buddy" >
-                  <cstring>screenLargeED</cstring>
-                </property>
-              </widget>
-            </item>
-          </layout>
-        </widget>
+      <item row="1" column="1" >
+       <widget class="QLineEdit" name="screenSmallestED" />
       </item>
-      <item>
-        <spacer name="Spacer2" >
-          <property name="sizeHint" >
-            <size>
-              <width>20</width>
-              <height>20</height>
-            </size>
-          </property>
-          <property name="sizeType" >
-            <enum>Expanding</enum>
-          </property>
-          <property name="orientation" >
-            <enum>Vertical</enum>
-          </property>
-        </spacer>
+      <item row="2" column="1" >
+       <widget class="QLineEdit" name="screenSmallerED" />
       </item>
-    </layout>
-  </widget>
-  <pixmapfunction></pixmapfunction>
-  <customwidgets>
-    <customwidget>
-      <class>QFontExample</class>
-      <extends></extends>
-      <header location="local" >qfontexample.h</header>
-      <sizehint>
-        <width>-1</width>
-        <height>-1</height>
-      </sizehint>
-      <container>0</container>
-      <sizepolicy>
-        <hordata>5</hordata>
-        <verdata>5</verdata>
-      </sizepolicy>
-      <pixmap>image0</pixmap>
-    </customwidget>
-  </customwidgets>
-  <tabstops>
-    <tabstop>screenRomanCO</tabstop>
-    <tabstop>screenSansCO</tabstop>
-    <tabstop>screenTypewriterCO</tabstop>
-    <tabstop>screenZoomSB</tabstop>
-    <tabstop>screenDpiSB</tabstop>
-    <tabstop>screenTinyED</tabstop>
-    <tabstop>screenSmallestED</tabstop>
-    <tabstop>screenSmallerED</tabstop>
-    <tabstop>screenSmallED</tabstop>
-    <tabstop>screenNormalED</tabstop>
-    <tabstop>screenLargeED</tabstop>
-    <tabstop>screenLargerED</tabstop>
-    <tabstop>screenLargestED</tabstop>
-    <tabstop>screenHugeED</tabstop>
-    <tabstop>screenHugerED</tabstop>
-  </tabstops>
-  <images>
-    <image name="image0" >
-      <data format="XPM.GZ" length="646" >789c6dd2c10ac2300c00d07bbf2234b7229d1be245fc04c5a3201e4615f430059d0711ff5ddb2e6bb236ec90eed134cb5a19d8ef36602af5ecdbfeeac05dda0798d3abebde87e3faa374d3807fa0d633a52d38d8de6f679fe33fc776e196f53cd010188256a3600a292882096246517815ca99884606e18044a3a40d91824820924265a7923a2e8bcd05f33db1173e002913175f2a6be6d3294871a2d95fa00e8a94ee017b69d339d90df1e77c57ea072ede6758</data>
-    </image>
-  </images>
+      <item row="3" column="1" >
+       <widget class="QLineEdit" name="screenSmallED" />
+      </item>
+      <item row="4" column="1" >
+       <widget class="QLineEdit" name="screenNormalED" />
+      </item>
+      <item row="0" column="3" >
+       <widget class="QLineEdit" name="screenLargeED" />
+      </item>
+      <item row="1" column="3" >
+       <widget class="QLineEdit" name="screenLargerED" />
+      </item>
+      <item row="2" column="3" >
+       <widget class="QLineEdit" name="screenLargestED" />
+      </item>
+      <item row="1" column="2" >
+       <widget class="QLabel" name="screenLargerLA" >
+        <property name="text" >
+         <string>Larger:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>screenLargerED</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2" >
+       <widget class="QLabel" name="screenLargestLA" >
+        <property name="text" >
+         <string>Largest:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>screenLargestED</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="3" >
+       <widget class="QLineEdit" name="screenHugeED" />
+      </item>
+      <item row="3" column="2" >
+       <widget class="QLabel" name="screenHugeLA" >
+        <property name="text" >
+         <string>Huge:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>screenHugeED</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="2" >
+       <widget class="QLabel" name="screenHugestLA" >
+        <property name="text" >
+         <string>Hugest:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>screenHugestED</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QLabel" name="screenSmallestLA" >
+        <property name="text" >
+         <string>Smallest:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>screenSmallestED</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" >
+       <widget class="QLabel" name="screenSmallerLA" >
+        <property name="text" >
+         <string>Smaller:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>screenSmallerED</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" >
+       <widget class="QLabel" name="screenSmallLA" >
+        <property name="text" >
+         <string>Small:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>screenSmallED</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0" >
+       <widget class="QLabel" name="screenNormalLA" >
+        <property name="text" >
+         <string>Normal:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>screenNormalED</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="screenTinyLA" >
+        <property name="text" >
+         <string>Tiny:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>screenTinyED</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2" >
+       <widget class="QLabel" name="screenLargeLA" >
+        <property name="text" >
+         <string>Large:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>screenLargeED</cstring>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <pixmapfunction></pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>QFontExample</class>
+   <extends></extends>
+   <header>qfontexample.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>screenRomanCO</tabstop>
+  <tabstop>screenSansCO</tabstop>
+  <tabstop>screenTypewriterCO</tabstop>
+  <tabstop>screenZoomSB</tabstop>
+  <tabstop>screenDpiSB</tabstop>
+  <tabstop>screenTinyED</tabstop>
+  <tabstop>screenSmallestED</tabstop>
+  <tabstop>screenSmallerED</tabstop>
+  <tabstop>screenSmallED</tabstop>
+  <tabstop>screenNormalED</tabstop>
+  <tabstop>screenLargeED</tabstop>
+  <tabstop>screenLargerED</tabstop>
+  <tabstop>screenLargestED</tabstop>
+  <tabstop>screenHugeED</tabstop>
+  <tabstop>screenHugerED</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
 </ui>

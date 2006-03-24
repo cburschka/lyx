@@ -1,177 +1,182 @@
-<ui version="4.0" stdsetdef="1" >
-  <author></author>
-  <comment></comment>
-  <exportmacro></exportmacro>
-  <class>QThesaurusUi</class>
-  <widget class="QDialog" name="QThesaurus" >
-    <property name="geometry" >
-      <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>462</width>
-        <height>442</height>
-      </rect>
-    </property>
-    <property name="windowTitle" >
-      <string/>
-    </property>
-    <property name="sizeGripEnabled" >
-      <bool>true</bool>
-    </property>
-    <layout class="QVBoxLayout" >
-      <property name="margin" >
-        <number>11</number>
-      </property>
-      <property name="spacing" >
-        <number>6</number>
-      </property>
-      <item>
-        <layout class="QHBoxLayout" >
-          <property name="margin" >
-            <number>0</number>
-          </property>
-          <property name="spacing" >
-            <number>6</number>
-          </property>
-          <item>
-            <widget class="QLabel" name="entryLA" >
-              <property name="text" >
-                <string>&amp;Keyword:</string>
-              </property>
-              <property name="buddy" >
-                <cstring>entryED</cstring>
-              </property>
-              <property name="toolTip" >
-                <string>Index entry</string>
-              </property>
-            </widget>
-          </item>
-          <item>
-            <widget class="QLineEdit" name="entryED" >
-              <property name="toolTip" >
-                <string>Entry</string>
-              </property>
-            </widget>
-          </item>
-          <item>
-            <spacer name="Spacer2" >
-              <property name="sizeHint" >
-                <size>
-                  <width>20</width>
-                  <height>20</height>
-                </size>
-              </property>
-              <property name="sizeType" >
-                <enum>Expanding</enum>
-              </property>
-              <property name="orientation" >
-                <enum>Horizontal</enum>
-              </property>
-            </spacer>
-          </item>
-        </layout>
-      </item>
-      <item>
-        <widget class="Q3ListView" name="meaningsLV" >
-          <property name="allColumnsShowFocus" >
-            <bool>true</bool>
-          </property>
-          <property name="toolTip" >
-            <string>Select a related word</string>
-          </property>
-          <column>
-            <property name="text" >
-              <string>Thesaurus entries:</string>
-            </property>
-            <property name="clickable" >
-              <bool>true</bool>
-            </property>
-            <property name="resizable" >
-              <bool>true</bool>
-            </property>
-          </column>
-        </widget>
-      </item>
-      <item>
-        <layout class="QHBoxLayout" >
-          <property name="margin" >
-            <number>0</number>
-          </property>
-          <property name="spacing" >
-            <number>6</number>
-          </property>
-          <item>
-            <widget class="QLabel" name="selectionLA" >
-              <property name="text" >
-                <string>&amp;Selection:</string>
-              </property>
-              <property name="buddy" >
-                <cstring>replaceED</cstring>
-              </property>
-              <property name="toolTip" >
-                <string>The selected entry</string>
-              </property>
-            </widget>
-          </item>
-          <item>
-            <widget class="QLineEdit" name="replaceED" >
-              <property name="toolTip" >
-                <string>The selected entry</string>
-              </property>
-            </widget>
-          </item>
-          <item>
-            <widget class="QPushButton" name="replacePB" >
-              <property name="text" >
-                <string>&amp;Replace</string>
-              </property>
-              <property name="toolTip" >
-                <string>Replace the entry with the selection</string>
-              </property>
-            </widget>
-          </item>
-        </layout>
-      </item>
-      <item>
-        <layout class="QHBoxLayout" >
-          <property name="margin" >
-            <number>0</number>
-          </property>
-          <property name="spacing" >
-            <number>6</number>
-          </property>
-          <item>
-            <spacer name="Spacer3" >
-              <property name="sizeHint" >
-                <size>
-                  <width>20</width>
-                  <height>20</height>
-                </size>
-              </property>
-              <property name="sizeType" >
-                <enum>Expanding</enum>
-              </property>
-              <property name="orientation" >
-                <enum>Horizontal</enum>
-              </property>
-            </spacer>
-          </item>
-          <item>
-            <widget class="QPushButton" name="closePB" >
-              <property name="text" >
-                <string>&amp;Close</string>
-              </property>
-            </widget>
-          </item>
-        </layout>
-      </item>
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>QThesaurusUi</class>
+ <widget class="QDialog" name="QThesaurusUi" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>462</width>
+    <height>442</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string/>
+  </property>
+  <property name="sizeGripEnabled" >
+   <bool>true</bool>
+  </property>
+  <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>11</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="entryLA" >
+       <property name="toolTip" >
+        <string>Index entry</string>
+       </property>
+       <property name="text" >
+        <string>&amp;Keyword:</string>
+       </property>
+       <property name="buddy" >
+        <cstring>entryED</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="entryED" >
+       <property name="toolTip" >
+        <string>Entry</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
     </layout>
-  </widget>
-  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
-  <tabstops>
-    <tabstop>entryED</tabstop>
-    <tabstop>replaceED</tabstop>
-    <tabstop>replacePB</tabstop>
-    <tabstop>closePB</tabstop>
-  </tabstops>
+   </item>
+   <item>
+    <widget class="Q3ListView" name="meaningsLV" >
+     <property name="toolTip" >
+      <string>Select a related word</string>
+     </property>
+     <property name="allColumnsShowFocus" >
+      <bool>true</bool>
+     </property>
+     <column>
+      <property name="text" >
+       <string>Thesaurus entries:</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="selectionLA" >
+       <property name="toolTip" >
+        <string>The selected entry</string>
+       </property>
+       <property name="text" >
+        <string>&amp;Selection:</string>
+       </property>
+       <property name="buddy" >
+        <cstring>replaceED</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="replaceED" >
+       <property name="toolTip" >
+        <string>The selected entry</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="replacePB" >
+       <property name="toolTip" >
+        <string>Replace the entry with the selection</string>
+       </property>
+       <property name="text" >
+        <string>&amp;Replace</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="closePB" >
+       <property name="text" >
+        <string>&amp;Close</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>Q3ListView</class>
+   <extends></extends>
+   <header>q3listview.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>entryED</tabstop>
+  <tabstop>replaceED</tabstop>
+  <tabstop>replacePB</tabstop>
+  <tabstop>closePB</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
 </ui>

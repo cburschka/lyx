@@ -1,136 +1,125 @@
-<ui version="4.0" stdsetdef="1" >
-  <author></author>
-  <comment></comment>
-  <exportmacro></exportmacro>
-  <class>QPrefsUi</class>
-  <widget class="QDialog" name="QPrefs" >
-    <property name="geometry" >
-      <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>433</width>
-        <height>352</height>
-      </rect>
-    </property>
-    <property name="sizePolicy" >
-      <sizepolicy>
-        <hsizetype>1</hsizetype>
-        <vsizetype>1</vsizetype>
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-      </sizepolicy>
-    </property>
-    <property name="windowTitle" >
-      <string/>
-    </property>
-    <property name="sizeGripEnabled" >
-      <bool>true</bool>
-    </property>
-    <layout class="QVBoxLayout" >
-      <property name="margin" >
-        <number>11</number>
-      </property>
-      <property name="spacing" >
-        <number>6</number>
-      </property>
-      <item>
-        <widget class="PanelStack" name="prefsPS" />
-      </item>
-      <item>
-        <layout class="QHBoxLayout" >
-          <property name="margin" >
-            <number>0</number>
-          </property>
-          <property name="spacing" >
-            <number>6</number>
-          </property>
-          <item>
-            <widget class="QPushButton" name="restorePB" >
-              <property name="text" >
-                <string>&amp;Restore</string>
-              </property>
-              <property name="autoDefault" >
-                <bool>false</bool>
-              </property>
-            </widget>
-          </item>
-          <item>
-            <spacer name="Spacer1" >
-              <property name="sizeHint" >
-                <size>
-                  <width>20</width>
-                  <height>20</height>
-                </size>
-              </property>
-              <property name="sizeType" >
-                <enum>Expanding</enum>
-              </property>
-              <property name="orientation" >
-                <enum>Horizontal</enum>
-              </property>
-            </spacer>
-          </item>
-          <item>
-            <widget class="QPushButton" name="savePB" >
-              <property name="text" >
-                <string>&amp;Save</string>
-              </property>
-              <property name="autoDefault" >
-                <bool>false</bool>
-              </property>
-            </widget>
-          </item>
-          <item>
-            <widget class="QPushButton" name="applyPB" >
-              <property name="text" >
-                <string>&amp;Apply</string>
-              </property>
-              <property name="autoDefault" >
-                <bool>false</bool>
-              </property>
-            </widget>
-          </item>
-          <item>
-            <widget class="QPushButton" name="closePB" >
-              <property name="text" >
-                <string>&amp;Close</string>
-              </property>
-              <property name="autoDefault" >
-                <bool>false</bool>
-              </property>
-            </widget>
-          </item>
-        </layout>
-      </item>
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>QPrefsUi</class>
+ <widget class="QDialog" name="QPrefsUi" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>433</width>
+    <height>352</height>
+   </rect>
+  </property>
+  <property name="sizePolicy" >
+   <sizepolicy>
+    <hsizetype>1</hsizetype>
+    <vsizetype>1</vsizetype>
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle" >
+   <string/>
+  </property>
+  <property name="sizeGripEnabled" >
+   <bool>true</bool>
+  </property>
+  <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>11</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item>
+    <widget class="PanelStack" name="prefsPS" />
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QPushButton" name="restorePB" >
+       <property name="text" >
+        <string>&amp;Restore</string>
+       </property>
+       <property name="autoDefault" >
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="savePB" >
+       <property name="text" >
+        <string>&amp;Save</string>
+       </property>
+       <property name="autoDefault" >
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="applyPB" >
+       <property name="text" >
+        <string>&amp;Apply</string>
+       </property>
+       <property name="autoDefault" >
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="closePB" >
+       <property name="text" >
+        <string>&amp;Close</string>
+       </property>
+       <property name="autoDefault" >
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
     </layout>
-  </widget>
-  <pixmapfunction></pixmapfunction>
-  <customwidgets>
-    <customwidget>
-      <class>PanelStack</class>
-      <extends></extends>
-      <header location="local" >panelstack.h</header>
-      <sizehint>
-        <width>-1</width>
-        <height>-1</height>
-      </sizehint>
-      <container>1</container>
-      <sizepolicy>
-        <hordata>7</hordata>
-        <verdata>7</verdata>
-      </sizepolicy>
-      <pixmap>image0</pixmap>
-    </customwidget>
-  </customwidgets>
-  <tabstops>
-    <tabstop>restorePB</tabstop>
-    <tabstop>savePB</tabstop>
-    <tabstop>applyPB</tabstop>
-    <tabstop>closePB</tabstop>
-  </tabstops>
-  <images>
-    <image name="image0" >
-      <data format="XPM.GZ" length="646" >789c6dd2c10ac2300c00d07bbf2234b7229d1be245fc04c5a3201e4615f430059d0711ff5ddb2e6bb236ec90eed134cb5a19d8ef36602af5ecdbfeeac05dda0798d3abebde87e3faa374d3807fa0d633a52d38d8de6f679fe33fc776e196f53cd010188256a3600a292882096246517815ca99884606e18044a3a40d91824820924265a7923a2e8bcd05f33db1173e002913175f2a6be6d3294871a2d95fa00e8a94ee017b69d339d90df1e77c57ea072ede6758</data>
-    </image>
-  </images>
+   </item>
+  </layout>
+ </widget>
+ <pixmapfunction></pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>PanelStack</class>
+   <extends></extends>
+   <header>panelstack.h</header>
+   <container>1</container>
+   <pixmap></pixmap>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>restorePB</tabstop>
+  <tabstop>savePB</tabstop>
+  <tabstop>applyPB</tabstop>
+  <tabstop>closePB</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
 </ui>

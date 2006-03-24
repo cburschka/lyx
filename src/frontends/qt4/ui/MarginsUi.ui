@@ -1,333 +1,322 @@
-<ui version="4.0" stdsetdef="1" >
-  <author></author>
-  <comment></comment>
-  <exportmacro></exportmacro>
-  <class>MarginsUi</class>
-  <widget class="QWidget" name="Margins" >
-    <property name="geometry" >
-      <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>329</width>
-        <height>373</height>
-      </rect>
-    </property>
-    <property name="windowTitle" >
-      <string/>
-    </property>
-    <layout class="QGridLayout" >
-      <property name="margin" >
-        <number>11</number>
-      </property>
-      <property name="spacing" >
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>MarginsUi</class>
+ <widget class="QWidget" name="MarginsUi" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>329</width>
+    <height>373</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string/>
+  </property>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>11</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item row="0" column="0" >
+    <widget class="QCheckBox" name="marginCB" >
+     <property name="toolTip" >
+      <string>Use the margin settings provided by the document class</string>
+     </property>
+     <property name="text" >
+      <string>&amp;Default Margins</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="2" column="0" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="0" >
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
         <number>6</number>
-      </property>
-      <item row="0" column="0" >
-        <widget class="QCheckBox" name="marginCB" >
-          <property name="text" >
-            <string>&amp;Default Margins</string>
-          </property>
-          <property name="toolTip" >
-            <string>Use the margin settings provided by the document class</string>
-          </property>
+       </property>
+       <item>
+        <widget class="QLabel" name="topL" >
+         <property name="enabled" >
+          <bool>false</bool>
+         </property>
+         <property name="text" >
+          <string>&amp;Top:</string>
+         </property>
+         <property name="buddy" >
+          <cstring>topLE</cstring>
+         </property>
         </widget>
-      </item>
-      <item row="1" column="1" >
-        <spacer name="Spacer22" >
-          <property name="sizeHint" >
-            <size>
-              <width>20</width>
-              <height>20</height>
-            </size>
-          </property>
-          <property name="sizeType" >
-            <enum>Expanding</enum>
-          </property>
-          <property name="orientation" >
-            <enum>Horizontal</enum>
-          </property>
-        </spacer>
-      </item>
-      <item row="2" column="0" >
-        <spacer name="Spacer21" >
-          <property name="sizeHint" >
-            <size>
-              <width>20</width>
-              <height>20</height>
-            </size>
-          </property>
-          <property name="sizeType" >
-            <enum>Expanding</enum>
-          </property>
-          <property name="orientation" >
-            <enum>Vertical</enum>
-          </property>
-        </spacer>
-      </item>
-      <item row="1" column="0" >
-        <layout class="QHBoxLayout" >
-          <property name="margin" >
-            <number>0</number>
-          </property>
-          <property name="spacing" >
-            <number>6</number>
-          </property>
-          <item>
-            <layout class="QVBoxLayout" >
-              <property name="margin" >
-                <number>0</number>
-              </property>
-              <property name="spacing" >
-                <number>6</number>
-              </property>
-              <item>
-                <widget class="QLabel" name="topL" >
-                  <property name="enabled" >
-                    <bool>false</bool>
-                  </property>
-                  <property name="text" >
-                    <string>&amp;Top:</string>
-                  </property>
-                  <property name="buddy" >
-                    <cstring>topLE</cstring>
-                  </property>
-                </widget>
-              </item>
-              <item>
-                <widget class="QLabel" name="bottomL" >
-                  <property name="enabled" >
-                    <bool>false</bool>
-                  </property>
-                  <property name="text" >
-                    <string>&amp;Bottom:</string>
-                  </property>
-                  <property name="buddy" >
-                    <cstring>bottomLE</cstring>
-                  </property>
-                </widget>
-              </item>
-              <item>
-                <widget class="QLabel" name="innerL" >
-                  <property name="enabled" >
-                    <bool>false</bool>
-                  </property>
-                  <property name="text" >
-                    <string>&amp;Inner:</string>
-                  </property>
-                  <property name="buddy" >
-                    <cstring>innerLE</cstring>
-                  </property>
-                </widget>
-              </item>
-              <item>
-                <widget class="QLabel" name="outerL" >
-                  <property name="enabled" >
-                    <bool>false</bool>
-                  </property>
-                  <property name="text" >
-                    <string>O&amp;uter:</string>
-                  </property>
-                  <property name="buddy" >
-                    <cstring>outerLE</cstring>
-                  </property>
-                </widget>
-              </item>
-              <item>
-                <widget class="QLabel" name="headsepL" >
-                  <property name="enabled" >
-                    <bool>false</bool>
-                  </property>
-                  <property name="text" >
-                    <string>Head &amp;sep:</string>
-                  </property>
-                  <property name="buddy" >
-                    <cstring>headsepLE</cstring>
-                  </property>
-                </widget>
-              </item>
-              <item>
-                <widget class="QLabel" name="headheightL" >
-                  <property name="enabled" >
-                    <bool>false</bool>
-                  </property>
-                  <property name="text" >
-                    <string>Head &amp;height:</string>
-                  </property>
-                  <property name="buddy" >
-                    <cstring>headheightLE</cstring>
-                  </property>
-                </widget>
-              </item>
-              <item>
-                <widget class="QLabel" name="footskipL" >
-                  <property name="enabled" >
-                    <bool>false</bool>
-                  </property>
-                  <property name="text" >
-                    <string>&amp;Foot skip:</string>
-                  </property>
-                  <property name="buddy" >
-                    <cstring>footskipLE</cstring>
-                  </property>
-                </widget>
-              </item>
-            </layout>
-          </item>
-          <item>
-            <layout class="QVBoxLayout" >
-              <property name="margin" >
-                <number>0</number>
-              </property>
-              <property name="spacing" >
-                <number>6</number>
-              </property>
-              <item>
-                <widget class="QLineEdit" name="topLE" >
-                  <property name="enabled" >
-                    <bool>false</bool>
-                  </property>
-                </widget>
-              </item>
-              <item>
-                <widget class="QLineEdit" name="bottomLE" >
-                  <property name="enabled" >
-                    <bool>false</bool>
-                  </property>
-                  <property name="text" >
-                    <string/>
-                  </property>
-                </widget>
-              </item>
-              <item>
-                <widget class="QLineEdit" name="innerLE" >
-                  <property name="enabled" >
-                    <bool>false</bool>
-                  </property>
-                </widget>
-              </item>
-              <item>
-                <widget class="QLineEdit" name="outerLE" >
-                  <property name="enabled" >
-                    <bool>false</bool>
-                  </property>
-                </widget>
-              </item>
-              <item>
-                <widget class="QLineEdit" name="headsepLE" >
-                  <property name="enabled" >
-                    <bool>false</bool>
-                  </property>
-                </widget>
-              </item>
-              <item>
-                <widget class="QLineEdit" name="headheightLE" >
-                  <property name="enabled" >
-                    <bool>false</bool>
-                  </property>
-                </widget>
-              </item>
-              <item>
-                <widget class="QLineEdit" name="footskipLE" >
-                  <property name="enabled" >
-                    <bool>false</bool>
-                  </property>
-                </widget>
-              </item>
-            </layout>
-          </item>
-          <item>
-            <layout class="QVBoxLayout" >
-              <property name="margin" >
-                <number>0</number>
-              </property>
-              <property name="spacing" >
-                <number>6</number>
-              </property>
-              <item>
-                <widget class="LengthCombo" name="topUnit" >
-                  <property name="enabled" >
-                    <bool>false</bool>
-                  </property>
-                </widget>
-              </item>
-              <item>
-                <widget class="LengthCombo" name="bottomUnit" >
-                  <property name="enabled" >
-                    <bool>false</bool>
-                  </property>
-                </widget>
-              </item>
-              <item>
-                <widget class="LengthCombo" name="innerUnit" >
-                  <property name="enabled" >
-                    <bool>false</bool>
-                  </property>
-                </widget>
-              </item>
-              <item>
-                <widget class="LengthCombo" name="outerUnit" >
-                  <property name="enabled" >
-                    <bool>false</bool>
-                  </property>
-                </widget>
-              </item>
-              <item>
-                <widget class="LengthCombo" name="headsepUnit" >
-                  <property name="enabled" >
-                    <bool>false</bool>
-                  </property>
-                </widget>
-              </item>
-              <item>
-                <widget class="LengthCombo" name="headheightUnit" >
-                  <property name="enabled" >
-                    <bool>false</bool>
-                  </property>
-                </widget>
-              </item>
-              <item>
-                <widget class="LengthCombo" name="footskipUnit" >
-                  <property name="enabled" >
-                    <bool>false</bool>
-                  </property>
-                </widget>
-              </item>
-            </layout>
-          </item>
-        </layout>
-      </item>
+       </item>
+       <item>
+        <widget class="QLabel" name="bottomL" >
+         <property name="enabled" >
+          <bool>false</bool>
+         </property>
+         <property name="text" >
+          <string>&amp;Bottom:</string>
+         </property>
+         <property name="buddy" >
+          <cstring>bottomLE</cstring>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="innerL" >
+         <property name="enabled" >
+          <bool>false</bool>
+         </property>
+         <property name="text" >
+          <string>&amp;Inner:</string>
+         </property>
+         <property name="buddy" >
+          <cstring>innerLE</cstring>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="outerL" >
+         <property name="enabled" >
+          <bool>false</bool>
+         </property>
+         <property name="text" >
+          <string>O&amp;uter:</string>
+         </property>
+         <property name="buddy" >
+          <cstring>outerLE</cstring>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="headsepL" >
+         <property name="enabled" >
+          <bool>false</bool>
+         </property>
+         <property name="text" >
+          <string>Head &amp;sep:</string>
+         </property>
+         <property name="buddy" >
+          <cstring>headsepLE</cstring>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="headheightL" >
+         <property name="enabled" >
+          <bool>false</bool>
+         </property>
+         <property name="text" >
+          <string>Head &amp;height:</string>
+         </property>
+         <property name="buddy" >
+          <cstring>headheightLE</cstring>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="footskipL" >
+         <property name="enabled" >
+          <bool>false</bool>
+         </property>
+         <property name="text" >
+          <string>&amp;Foot skip:</string>
+         </property>
+         <property name="buddy" >
+          <cstring>footskipLE</cstring>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item>
+        <widget class="QLineEdit" name="topLE" >
+         <property name="enabled" >
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="bottomLE" >
+         <property name="enabled" >
+          <bool>false</bool>
+         </property>
+         <property name="text" >
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="innerLE" >
+         <property name="enabled" >
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="outerLE" >
+         <property name="enabled" >
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="headsepLE" >
+         <property name="enabled" >
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="headheightLE" >
+         <property name="enabled" >
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="footskipLE" >
+         <property name="enabled" >
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item>
+        <widget class="LengthCombo" name="topUnit" >
+         <property name="enabled" >
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="LengthCombo" name="bottomUnit" >
+         <property name="enabled" >
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="LengthCombo" name="innerUnit" >
+         <property name="enabled" >
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="LengthCombo" name="outerUnit" >
+         <property name="enabled" >
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="LengthCombo" name="headsepUnit" >
+         <property name="enabled" >
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="LengthCombo" name="headheightUnit" >
+         <property name="enabled" >
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="LengthCombo" name="footskipUnit" >
+         <property name="enabled" >
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
     </layout>
-  </widget>
-  <pixmapfunction></pixmapfunction>
-  <customwidgets>
-    <customwidget>
-      <class>LengthCombo</class>
-      <extends></extends>
-      <header location="local" >lengthcombo.h</header>
-      <sizehint>
-        <width>-1</width>
-        <height>-1</height>
-      </sizehint>
-      <container>0</container>
-      <sizepolicy>
-        <hordata>5</hordata>
-        <verdata>5</verdata>
-      </sizepolicy>
-      <pixmap>image0</pixmap>
-    </customwidget>
-  </customwidgets>
-  <tabstops>
-    <tabstop>topLE</tabstop>
-    <tabstop>bottomLE</tabstop>
-    <tabstop>innerLE</tabstop>
-    <tabstop>outerLE</tabstop>
-    <tabstop>headsepLE</tabstop>
-    <tabstop>headheightLE</tabstop>
-    <tabstop>footskipLE</tabstop>
-  </tabstops>
-  <images>
-    <image name="image0" >
-      <data format="XPM.GZ" length="646" >789c6dd2c10ac2300c00d07bbf2234b7229d1be245fc04c5a3201e4615f430059d0711ff5ddb2e6bb236ec90eed134cb5a19d8ef36602af5ecdbfeeac05dda0798d3abebde87e3faa374d3807fa0d633a52d38d8de6f679fe33fc776e196f53cd010188256a3600a292882096246517815ca99884606e18044a3a40d91824820924265a7923a2e8bcd05f33db1173e002913175f2a6be6d3294871a2d95fa00e8a94ee017b69d339d90df1e77c57ea072ede6758</data>
-    </image>
-  </images>
+   </item>
+  </layout>
+ </widget>
+ <pixmapfunction></pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>LengthCombo</class>
+   <extends></extends>
+   <header>lengthcombo.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>topLE</tabstop>
+  <tabstop>bottomLE</tabstop>
+  <tabstop>innerLE</tabstop>
+  <tabstop>outerLE</tabstop>
+  <tabstop>headsepLE</tabstop>
+  <tabstop>headheightLE</tabstop>
+  <tabstop>footskipLE</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
 </ui>

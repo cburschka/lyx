@@ -1,42 +1,44 @@
-<ui version="4.0" stdsetdef="1" >
-  <author></author>
-  <comment></comment>
-  <exportmacro></exportmacro>
-  <class>QPrefCygwinPathUi</class>
-  <widget class="QWidget" name="QPrefCygwinPath" >
-    <property name="geometry" >
-      <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>275</width>
-        <height>91</height>
-      </rect>
-    </property>
-    <property name="windowTitle" >
-      <string/>
-    </property>
-    <widget class="QCheckBox" name="pathCB" >
-      <property name="enabled" >
-        <bool>true</bool>
-      </property>
-      <property name="geometry" >
-        <rect>
-          <x>10</x>
-          <y>10</y>
-          <width>260</width>
-          <height>26</height>
-        </rect>
-      </property>
-      <property name="text" >
-        <string>&amp;Use Cygwin-style paths</string>
-      </property>
-      <property name="toolTip" >
-        <string/>
-      </property>
-      <property name="whatsThis" >
-        <string>Select if LyX should output Cygwin-style paths rather than Windows-style paths. Useful if you're using the Cygwin teTeX rather than a native Windows MikTeX. Note, however, that you'll need to write shell script wrappers for all your converters.</string>
-      </property>
-    </widget>
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>QPrefCygwinPathUi</class>
+ <widget class="QWidget" name="QPrefCygwinPathUi" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>275</width>
+    <height>91</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string/>
+  </property>
+  <widget class="QCheckBox" name="pathCB" >
+   <property name="enabled" >
+    <bool>true</bool>
+   </property>
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>260</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="toolTip" >
+    <string/>
+   </property>
+   <property name="whatsThis" >
+    <string>Select if LyX should output Cygwin-style paths rather than Windows-style paths. Useful if you're using the Cygwin teTeX rather than a native Windows MikTeX. Note, however, that you'll need to write shell script wrappers for all your converters.</string>
+   </property>
+   <property name="text" >
+    <string>&amp;Use Cygwin-style paths</string>
+   </property>
   </widget>
-  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ </widget>
+ <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ <resources/>
+ <connections/>
 </ui>

@@ -1,179 +1,181 @@
-<ui version="4.0" stdsetdef="1" >
-  <author></author>
-  <comment></comment>
-  <exportmacro></exportmacro>
-  <class>LaTeXUi</class>
-  <widget class="QWidget" name="LaTeX" >
-    <property name="geometry" >
-      <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>456</width>
-        <height>273</height>
-      </rect>
-    </property>
-    <property name="windowTitle" >
-      <string/>
-    </property>
-    <layout class="QHBoxLayout" >
-      <property name="margin" >
-        <number>11</number>
-      </property>
-      <property name="spacing" >
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>LaTeXUi</class>
+ <widget class="QWidget" name="LaTeXUi" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>456</width>
+    <height>273</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string/>
+  </property>
+  <layout class="QHBoxLayout" >
+   <property name="margin" >
+    <number>11</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item>
+    <layout class="QVBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <layout class="QHBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
         <number>6</number>
-      </property>
-      <item>
-        <layout class="QVBoxLayout" >
+       </property>
+       <item>
+        <widget class="QLabel" name="classL" >
+         <property name="text" >
+          <string>Document &amp;class:</string>
+         </property>
+         <property name="buddy" >
+          <cstring>classCO</cstring>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="classCO" >
+         <property name="sizePolicy" >
+          <sizepolicy>
+           <hsizetype>5</hsizetype>
+           <vsizetype>0</vsizetype>
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>20</width>
+         <height>21</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item>
+        <widget class="QGroupBox" name="GroupBox4" >
+         <property name="title" >
+          <string>Class Settings</string>
+         </property>
+         <layout class="QGridLayout" >
           <property name="margin" >
-            <number>0</number>
+           <number>11</number>
           </property>
           <property name="spacing" >
-            <number>6</number>
+           <number>6</number>
           </property>
-          <item>
-            <layout class="QHBoxLayout" >
-              <property name="margin" >
-                <number>0</number>
-              </property>
-              <property name="spacing" >
-                <number>6</number>
-              </property>
-              <item>
-                <widget class="QLabel" name="classL" >
-                  <property name="text" >
-                    <string>Document &amp;class:</string>
-                  </property>
-                  <property name="buddy" >
-                    <cstring>classCO</cstring>
-                  </property>
-                </widget>
-              </item>
-              <item>
-                <widget class="QComboBox" name="classCO" >
-                  <property name="sizePolicy" >
-                    <sizepolicy>
-                      <hsizetype>5</hsizetype>
-                      <vsizetype>0</vsizetype>
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                    </sizepolicy>
-                  </property>
-                </widget>
-              </item>
-            </layout>
+          <item row="0" column="0" >
+           <widget class="QLabel" name="optionsL" >
+            <property name="text" >
+             <string>&amp;Options:</string>
+            </property>
+            <property name="buddy" >
+             <cstring>optionsLE</cstring>
+            </property>
+           </widget>
           </item>
-          <item>
-            <spacer name="Spacer19" >
-              <property name="sizeHint" >
-                <size>
-                  <width>20</width>
-                  <height>21</height>
-                </size>
-              </property>
-              <property name="sizeType" >
-                <enum>Fixed</enum>
-              </property>
-              <property name="orientation" >
-                <enum>Vertical</enum>
-              </property>
-            </spacer>
+          <item row="0" column="1" >
+           <widget class="QLineEdit" name="optionsLE" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>5</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+           </widget>
           </item>
-          <item>
-            <layout class="QHBoxLayout" >
-              <property name="margin" >
-                <number>0</number>
-              </property>
-              <property name="spacing" >
-                <number>6</number>
-              </property>
-              <item>
-                <widget class="QGroupBox" name="GroupBox4" >
-                  <property name="title" >
-                    <string>Class Settings</string>
-                  </property>
-                  <layout class="QGridLayout" >
-                    <property name="margin" >
-                      <number>11</number>
-                    </property>
-                    <property name="spacing" >
-                      <number>6</number>
-                    </property>
-                    <item row="0" column="0" >
-                      <widget class="QLabel" name="optionsL" >
-                        <property name="text" >
-                          <string>&amp;Options:</string>
-                        </property>
-                        <property name="buddy" >
-                          <cstring>optionsLE</cstring>
-                        </property>
-                      </widget>
-                    </item>
-                    <item row="0" column="1" >
-                      <widget class="QLineEdit" name="optionsLE" >
-                        <property name="sizePolicy" >
-                          <sizepolicy>
-                            <hsizetype>5</hsizetype>
-                            <vsizetype>0</vsizetype>
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                          </sizepolicy>
-                        </property>
-                      </widget>
-                    </item>
-                    <item row="1" column="1" >
-                      <widget class="QComboBox" name="psdriverCO" >
-                        <property name="sizePolicy" >
-                          <sizepolicy>
-                            <hsizetype>5</hsizetype>
-                            <vsizetype>0</vsizetype>
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                          </sizepolicy>
-                        </property>
-                        <property name="duplicatesEnabled" >
-                          <bool>false</bool>
-                        </property>
-                      </widget>
-                    </item>
-                    <item row="1" column="0" >
-                      <widget class="QLabel" name="psdriverL" >
-                        <property name="text" >
-                          <string>Postscript &amp;driver:</string>
-                        </property>
-                        <property name="buddy" >
-                          <cstring>psdriverCO</cstring>
-                        </property>
-                      </widget>
-                    </item>
-                  </layout>
-                </widget>
-              </item>
-            </layout>
+          <item row="1" column="1" >
+           <widget class="QComboBox" name="psdriverCO" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>5</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="duplicatesEnabled" >
+             <bool>false</bool>
+            </property>
+           </widget>
           </item>
-          <item>
-            <spacer name="Spacer9" >
-              <property name="sizeHint" >
-                <size>
-                  <width>20</width>
-                  <height>20</height>
-                </size>
-              </property>
-              <property name="sizeType" >
-                <enum>Expanding</enum>
-              </property>
-              <property name="orientation" >
-                <enum>Vertical</enum>
-              </property>
-            </spacer>
+          <item row="1" column="0" >
+           <widget class="QLabel" name="psdriverL" >
+            <property name="text" >
+             <string>Postscript &amp;driver:</string>
+            </property>
+            <property name="buddy" >
+             <cstring>psdriverCO</cstring>
+            </property>
+           </widget>
           </item>
-        </layout>
-      </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
     </layout>
-  </widget>
-  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
-  <tabstops>
-    <tabstop>classCO</tabstop>
-    <tabstop>optionsLE</tabstop>
-    <tabstop>psdriverCO</tabstop>
-  </tabstops>
+   </item>
+  </layout>
+ </widget>
+ <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ <tabstops>
+  <tabstop>classCO</tabstop>
+  <tabstop>optionsLE</tabstop>
+  <tabstop>psdriverCO</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
 </ui>

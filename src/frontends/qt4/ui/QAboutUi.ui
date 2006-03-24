@@ -1,150 +1,154 @@
-<ui version="4.0" stdsetdef="1" >
-  <author></author>
-  <comment></comment>
-  <exportmacro></exportmacro>
-  <class>QAboutUi</class>
-  <widget class="QDialog" name="QAbout" >
-    <property name="geometry" >
-      <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>327</width>
-        <height>232</height>
-      </rect>
-    </property>
-    <property name="windowTitle" >
-      <string/>
-    </property>
-    <property name="sizeGripEnabled" >
-      <bool>true</bool>
-    </property>
-    <layout class="QVBoxLayout" >
-      <property name="margin" >
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>QAboutUi</class>
+ <widget class="QDialog" name="QAboutUi" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>327</width>
+    <height>232</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string/>
+  </property>
+  <property name="sizeGripEnabled" >
+   <bool>true</bool>
+  </property>
+  <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>11</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item>
+    <widget class="QTabWidget" name="tab" >
+     <widget class="QWidget" name="versiontab" >
+      <attribute name="title" >
+       <string>Version</string>
+      </attribute>
+      <layout class="QVBoxLayout" >
+       <property name="margin" >
         <number>11</number>
-      </property>
-      <property name="spacing" >
+       </property>
+       <property name="spacing" >
         <number>6</number>
-      </property>
-      <item>
-        <widget class="QTabWidget" name="tab" >
-          <widget class="QWidget" name="versiontab" >
-            <attribute name="title" >
-              <string>Version</string>
-            </attribute>
-            <layout class="QVBoxLayout" >
-              <property name="margin" >
-                <number>11</number>
-              </property>
-              <property name="spacing" >
-                <number>6</number>
-              </property>
-              <item>
-                <widget class="QLabel" name="versionLA" >
-                  <property name="frameShape" >
-                    <enum>QFrame::Box</enum>
-                  </property>
-                  <property name="frameShadow" >
-                    <enum>QFrame::Sunken</enum>
-                  </property>
-                  <property name="margin" >
-                    <number>6</number>
-                  </property>
-                  <property name="text" >
-                    <string>Version goes here</string>
-                  </property>
-                  <property name="alignment" >
-                    <set>Qt::AlignCenter</set>
-                  </property>
-                </widget>
-              </item>
-            </layout>
-          </widget>
-          <widget class="QWidget" name="creditstab" >
-            <attribute name="title" >
-              <string>Credits</string>
-            </attribute>
-            <layout class="QVBoxLayout" >
-              <property name="margin" >
-                <number>11</number>
-              </property>
-              <property name="spacing" >
-                <number>6</number>
-              </property>
-              <item>
-                <widget class="Q3TextView" name="creditsTV" >
-                  <property name="text" >
-                    <string/>
-                  </property>
-                  <property name="textFormat" >
-                    <enum>Qt::RichText</enum>
-                  </property>
-                </widget>
-              </item>
-            </layout>
-          </widget>
-          <widget class="QWidget" name="copyrighttab" >
-            <attribute name="title" >
-              <string>Copyright</string>
-            </attribute>
-            <layout class="QGridLayout" >
-              <property name="margin" >
-                <number>11</number>
-              </property>
-              <property name="spacing" >
-                <number>6</number>
-              </property>
-              <item row="0" column="0" >
-                <widget class="Q3TextView" name="copyright" />
-              </item>
-            </layout>
-          </widget>
+       </property>
+       <item>
+        <widget class="QLabel" name="versionLA" >
+         <property name="frameShape" >
+          <enum>QFrame::Box</enum>
+         </property>
+         <property name="frameShadow" >
+          <enum>QFrame::Sunken</enum>
+         </property>
+         <property name="text" >
+          <string>Version goes here</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="margin" >
+          <number>6</number>
+         </property>
         </widget>
-      </item>
-      <item>
-        <layout class="QHBoxLayout" >
-          <property name="margin" >
-            <number>0</number>
-          </property>
-          <property name="spacing" >
-            <number>6</number>
-          </property>
-          <item>
-            <spacer name="Spacer1" >
-              <property name="sizeHint" >
-                <size>
-                  <width>20</width>
-                  <height>20</height>
-                </size>
-              </property>
-              <property name="sizeType" >
-                <enum>Expanding</enum>
-              </property>
-              <property name="orientation" >
-                <enum>Horizontal</enum>
-              </property>
-            </spacer>
-          </item>
-          <item>
-            <widget class="QPushButton" name="closePB" >
-              <property name="sizePolicy" >
-                <sizepolicy>
-                  <hsizetype>0</hsizetype>
-                  <vsizetype>0</vsizetype>
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                </sizepolicy>
-              </property>
-              <property name="text" >
-                <string>&amp;Close</string>
-              </property>
-              <property name="default" >
-                <bool>true</bool>
-              </property>
-            </widget>
-          </item>
-        </layout>
-      </item>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="creditstab" >
+      <attribute name="title" >
+       <string>Credits</string>
+      </attribute>
+      <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>11</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item>
+        <widget class="Q3TextView" name="creditsTV" />
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="copyrighttab" >
+      <attribute name="title" >
+       <string>Copyright</string>
+      </attribute>
+      <layout class="QGridLayout" >
+       <property name="margin" >
+        <number>11</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item row="0" column="0" >
+        <widget class="Q3TextView" name="copyright" />
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="closePB" >
+       <property name="sizePolicy" >
+        <sizepolicy>
+         <hsizetype>0</hsizetype>
+         <vsizetype>0</vsizetype>
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text" >
+        <string>&amp;Close</string>
+       </property>
+       <property name="default" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
     </layout>
-  </widget>
-  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+   </item>
+  </layout>
+ </widget>
+ <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>Q3TextView</class>
+   <extends>QWidget</extends>
+   <header>q3textview.h</header>
+   <container>1</container>
+   <pixmap></pixmap>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
 </ui>

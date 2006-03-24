@@ -3,7 +3,7 @@
  <comment></comment>
  <exportmacro></exportmacro>
  <class>QTabularUi</class>
- <widget class="QDialog" name="QTabular" >
+ <widget class="QDialog" name="QTabularUi" >
   <property name="geometry" >
    <rect>
     <x>0</x>
@@ -993,16 +993,16 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>LengthCombo</class>
+   <class>QSetBorder</class>
    <extends></extends>
-   <header>lengthcombo.h</header>
+   <header>qsetborder.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>QSetBorder</class>
+   <class>LengthCombo</class>
    <extends></extends>
-   <header>qsetborder.h</header>
+   <header>lengthcombo.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

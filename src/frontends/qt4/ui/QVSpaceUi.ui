@@ -1,242 +1,231 @@
-<ui version="4.0" stdsetdef="1" >
-  <author></author>
-  <comment></comment>
-  <exportmacro></exportmacro>
-  <class>QVSpaceUi</class>
-  <widget class="QDialog" name="QVSpace" >
-    <property name="geometry" >
-      <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>233</width>
-        <height>140</height>
-      </rect>
-    </property>
-    <property name="windowTitle" >
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>QVSpaceUi</class>
+ <widget class="QDialog" name="QVSpaceUi" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>233</width>
+    <height>140</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string/>
+  </property>
+  <property name="sizeGripEnabled" >
+   <bool>true</bool>
+  </property>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>11</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item row="0" column="0" >
+    <widget class="QLabel" name="spacingL" >
+     <property name="text" >
+      <string>&amp;Spacing:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>spacingCO</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" >
+    <widget class="QLabel" name="valueL" >
+     <property name="text" >
+      <string>&amp;Value:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>valueLE</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" >
+    <widget class="QLabel" name="keepL" >
+     <property name="toolTip" >
       <string/>
-    </property>
-    <property name="sizeGripEnabled" >
-      <bool>true</bool>
-    </property>
-    <layout class="QGridLayout" >
-      <property name="margin" >
-        <number>11</number>
+     </property>
+     <property name="text" >
+      <string>&amp;Protect:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>keepCB</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1" >
+    <widget class="QCheckBox" name="keepCB" >
+     <property name="toolTip" >
+      <string>Insert the spacing even after a page break</string>
+     </property>
+     <property name="text" >
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1" >
+    <widget class="QLineEdit" name="valueLE" >
+     <property name="enabled" >
+      <bool>false</bool>
+     </property>
+     <property name="toolTip" >
+      <string>Custom value. Needs spacing type "Custom".</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1" >
+    <widget class="QComboBox" name="spacingCO" >
+     <property name="toolTip" >
+      <string>Supported spacing types</string>
+     </property>
+     <item>
+      <property name="text" >
+       <string>DefSkip</string>
       </property>
-      <property name="spacing" >
-        <number>6</number>
+     </item>
+     <item>
+      <property name="text" >
+       <string>SmallSkip</string>
       </property>
-      <item row="0" column="0" >
-        <widget class="QLabel" name="spacingL" >
-          <property name="text" >
-            <string>&amp;Spacing:</string>
-          </property>
-          <property name="buddy" >
-            <cstring>spacingCO</cstring>
-          </property>
-        </widget>
-      </item>
-      <item row="1" column="0" >
-        <widget class="QLabel" name="valueL" >
-          <property name="text" >
-            <string>&amp;Value:</string>
-          </property>
-          <property name="buddy" >
-            <cstring>valueLE</cstring>
-          </property>
-        </widget>
-      </item>
-      <item row="2" column="0" >
-        <widget class="QLabel" name="keepL" >
-          <property name="text" >
-            <string>&amp;Protect:</string>
-          </property>
-          <property name="buddy" >
-            <cstring>keepCB</cstring>
-          </property>
-          <property name="toolTip" >
-            <string/>
-          </property>
-        </widget>
-      </item>
-      <item row="2" column="1" >
-        <widget class="QCheckBox" name="keepCB" >
-          <property name="text" >
-            <string/>
-          </property>
-          <property name="toolTip" >
-            <string>Insert the spacing even after a page break</string>
-          </property>
-        </widget>
-      </item>
-      <item row="1" column="1" >
-        <widget class="QLineEdit" name="valueLE" >
-          <property name="enabled" >
-            <bool>false</bool>
-          </property>
-          <property name="toolTip" >
-            <string>Custom value. Needs spacing type "Custom".</string>
-          </property>
-        </widget>
-      </item>
-      <item row="0" column="1" >
-        <widget class="QComboBox" name="spacingCO" >
-          <property name="toolTip" >
-            <string>Supported spacing types</string>
-          </property>
-          <item>
-            <property name="text" >
-              <string>DefSkip</string>
-            </property>
-          </item>
-          <item>
-            <property name="text" >
-              <string>SmallSkip</string>
-            </property>
-          </item>
-          <item>
-            <property name="text" >
-              <string>MedSkip</string>
-            </property>
-          </item>
-          <item>
-            <property name="text" >
-              <string>BigSkip</string>
-            </property>
-          </item>
-          <item>
-            <property name="text" >
-              <string>VFill</string>
-            </property>
-          </item>
-          <item>
-            <property name="text" >
-              <string>Custom</string>
-            </property>
-          </item>
-        </widget>
-      </item>
-      <item row="1" column="2" >
-        <widget class="LengthCombo" name="unitCO" />
-      </item>
-      <item row="3" column="1" >
-        <spacer name="Spacer28" >
-          <property name="sizeHint" >
-            <size>
-              <width>20</width>
-              <height>20</height>
-            </size>
-          </property>
-          <property name="sizeType" >
-            <enum>Expanding</enum>
-          </property>
-          <property name="orientation" >
-            <enum>Vertical</enum>
-          </property>
-        </spacer>
-      </item>
-      <item rowspan="1" row="4" column="0" colspan="3" >
-        <layout class="QHBoxLayout" >
-          <property name="margin" >
-            <number>0</number>
-          </property>
-          <property name="spacing" >
-            <number>6</number>
-          </property>
-          <item>
-            <widget class="QPushButton" name="okPB" >
-              <property name="text" >
-                <string>&amp;OK</string>
-              </property>
-              <property name="autoDefault" >
-                <bool>false</bool>
-              </property>
-              <property name="default" >
-                <bool>true</bool>
-              </property>
-            </widget>
-          </item>
-          <item>
-            <widget class="QPushButton" name="applyPB" >
-              <property name="text" >
-                <string>&amp;Apply</string>
-              </property>
-              <property name="autoDefault" >
-                <bool>false</bool>
-              </property>
-            </widget>
-          </item>
-          <item>
-            <widget class="QPushButton" name="closePB" >
-              <property name="text" >
-                <string>&amp;Close</string>
-              </property>
-              <property name="autoDefault" >
-                <bool>false</bool>
-              </property>
-            </widget>
-          </item>
-        </layout>
-      </item>
-      <item row="0" column="2" >
-        <spacer name="Spacer8" >
-          <property name="sizeHint" >
-            <size>
-              <width>20</width>
-              <height>20</height>
-            </size>
-          </property>
-          <property name="sizeType" >
-            <enum>Expanding</enum>
-          </property>
-          <property name="orientation" >
-            <enum>Horizontal</enum>
-          </property>
-        </spacer>
-      </item>
-      <item row="2" column="2" >
-        <spacer name="Spacer9" >
-          <property name="sizeHint" >
-            <size>
-              <width>20</width>
-              <height>20</height>
-            </size>
-          </property>
-          <property name="sizeType" >
-            <enum>Expanding</enum>
-          </property>
-          <property name="orientation" >
-            <enum>Horizontal</enum>
-          </property>
-        </spacer>
-      </item>
+     </item>
+     <item>
+      <property name="text" >
+       <string>MedSkip</string>
+      </property>
+     </item>
+     <item>
+      <property name="text" >
+       <string>BigSkip</string>
+      </property>
+     </item>
+     <item>
+      <property name="text" >
+       <string>VFill</string>
+      </property>
+     </item>
+     <item>
+      <property name="text" >
+       <string>Custom</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="1" column="2" >
+    <widget class="LengthCombo" name="unitCO" />
+   </item>
+   <item row="3" column="1" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="4" column="0" colspan="3" >
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QPushButton" name="okPB" >
+       <property name="text" >
+        <string>&amp;OK</string>
+       </property>
+       <property name="autoDefault" >
+        <bool>false</bool>
+       </property>
+       <property name="default" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="applyPB" >
+       <property name="text" >
+        <string>&amp;Apply</string>
+       </property>
+       <property name="autoDefault" >
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="closePB" >
+       <property name="text" >
+        <string>&amp;Close</string>
+       </property>
+       <property name="autoDefault" >
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
     </layout>
-  </widget>
-  <pixmapfunction></pixmapfunction>
-  <customwidgets>
-    <customwidget>
-      <class>LengthCombo</class>
-      <extends></extends>
-      <header location="local" >lengthcombo.h</header>
-      <sizehint>
-        <width>-1</width>
-        <height>-1</height>
-      </sizehint>
-      <container>0</container>
-      <sizepolicy>
-        <hordata>5</hordata>
-        <verdata>5</verdata>
-      </sizepolicy>
-      <pixmap>image0</pixmap>
-    </customwidget>
-  </customwidgets>
-  <tabstops>
-    <tabstop>okPB</tabstop>
-    <tabstop>applyPB</tabstop>
-    <tabstop>closePB</tabstop>
-  </tabstops>
-  <images>
-    <image name="image0" >
-      <data format="XPM.GZ" length="646" >789c6dd2c10ac2300c00d07bbf2234b7229d1be245fc04c5a3201e4615f430059d0711ff5ddb2e6bb236ec90eed134cb5a19d8ef36602af5ecdbfeeac05dda0798d3abebde87e3faa374d3807fa0d633a52d38d8de6f679fe33fc776e196f53cd010188256a3600a292882096246517815ca99884606e18044a3a40d91824820924265a7923a2e8bcd05f33db1173e002913175f2a6be6d3294871a2d95fa00e8a94ee017b69d339d90df1e77c57ea072ede6758</data>
-    </image>
-  </images>
+   </item>
+   <item row="0" column="2" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="2" column="2" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <pixmapfunction></pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>LengthCombo</class>
+   <extends></extends>
+   <header>lengthcombo.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>okPB</tabstop>
+  <tabstop>applyPB</tabstop>
+  <tabstop>closePB</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
 </ui>
