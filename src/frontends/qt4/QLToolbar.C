@@ -84,7 +84,7 @@ QLayoutBox::QLayoutBox(QToolBar * toolbar, QtView & owner)
 	combo_->setSizeAdjustPolicy(QComboBox::AdjustToContents);
 	combo_->setFocusPolicy(Qt::ClickFocus);
 	combo_->setMinimumWidth(combo_->sizeHint().width());
-	combo_->setMaxVisibleItems(30);
+	combo_->setMaxVisibleItems(100);
 
 	QObject::connect(combo_, SIGNAL(activated(const QString &)),
 			 this, SLOT(selected(const QString &)));

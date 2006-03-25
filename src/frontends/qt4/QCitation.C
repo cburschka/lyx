@@ -13,7 +13,6 @@
 
 #include "QCitation.h"
 #include "QCitationDialog.h"
-#include "ui/QCitationFindUi.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
 
@@ -24,218 +23,185 @@
 
 #include "support/lstrings.h"
 
-#include <qcheckbox.h>
-#include <qlineedit.h>
-#include <q3listbox.h>
-#include <q3multilineedit.h>
-#include <qpushbutton.h>
-#include <qlabel.h>
+#include <vector>
+#include <string>
+#include <iostream>
+using std::cout;
+using std::endl;
 
-using std::find;
-using std::string;
 using std::vector;
+using std::string;
+
+void toQStringList(QStringList & qlist, vector<string> const & v)
+{
+	qlist.clear();
+	for (size_t i=0; i != v.size(); ++i) {
+		if (v[i].empty())
+			continue;
+		qlist.append(toqstr(v[i]));
+	}
+}
+
+void toVector(vector<string> & v, const QStringList & qlist)
+{
+	v.clear();
+
+	for (size_t i=0; i != qlist.size(); ++i)
+		v.push_back(fromqstr(qlist[i]));
+}
 
 namespace lyx {
-
-using support::getStringFromVector;
-using support::getVectorFromString;
-using support::trim;
-
 namespace frontend {
 
 typedef QController<ControlCitation, QView<QCitationDialog> > base_class;
 
+
 QCitation::QCitation(Dialog & parent)
 	: base_class(parent, _("Citation"))
-{}
+{
+}
 
 
 void QCitation::apply()
 {
-	vector<biblio::CiteStyle> const & styles =
-		ControlCitation::getCiteStyles();
+	InsetCommandParams & params = controller().params();
+	dialog_->update(params);
 
-	int const choice = dialog_->citationStyleCO->currentItem();
-	bool const full  = dialog_->fulllistCB->isChecked();
-	bool const force = dialog_->forceuppercaseCB->isChecked();
-
-	string const command =
-		biblio::CitationStyle(styles[choice], full, force)
-		.asLatexStr();
-
-	controller().params().setCmdName(command);
-	controller().params().setContents(getStringFromVector(citekeys));
-
-	string const before = fromqstr(dialog_->textBeforeED->text());
-	controller().params().setSecOptions(before);
-
-	string const after = fromqstr(dialog_->textAfterED->text());
-	controller().params().setOptions(after);
-
-	style_ = choice;
-	open_find_ = false;
-}
-
-
-void QCitation::hide()
-{
-	citekeys.clear();
-	bibkeys.clear();
-	open_find_ = true;
-
-	QDialogView::hide();
+	params.setContents(fromqstr(selected_keys_.stringList().join("'")));
 }
 
 
 void QCitation::build_dialog()
 {
 	dialog_.reset(new QCitationDialog(this));
-
-	// Manage the ok, apply, restore and cancel/close buttons
-	bcview().setOK(dialog_->okPB);
-	bcview().setApply(dialog_->applyPB);
-	bcview().setCancel(dialog_->closePB);
-	bcview().setRestore(dialog_->restorePB);
-
-	bcview().addReadOnly(dialog_->addPB);
-	bcview().addReadOnly(dialog_->deletePB);
-	bcview().addReadOnly(dialog_->upPB);
-	bcview().addReadOnly(dialog_->downPB);
-	bcview().addReadOnly(dialog_->citationStyleCO);
-	bcview().addReadOnly(dialog_->forceuppercaseCB);
-	bcview().addReadOnly(dialog_->fulllistCB);
-	bcview().addReadOnly(dialog_->textBeforeED);
-	bcview().addReadOnly(dialog_->textAfterED);
-
-	open_find_ = true;
-}
-
-
-void QCitation::fillStyles()
-{
-	if (citekeys.empty()) {
-		dialog_->citationStyleCO->setEnabled(false);
-		dialog_->citationStyleLA->setEnabled(false);
-		return;
-	}
-
-	int const orig = dialog_->citationStyleCO->currentItem();
-
-	dialog_->citationStyleCO->clear();
-
-	int curr = dialog_->selectedLB->currentItem();
-	if (curr < 0)
-		curr = 0;
-
-	string key = citekeys[curr];
-
-	vector<string> const & sty = controller().getCiteStrings(key);
-
-	biblio::CiteEngine const engine = controller().getEngine();
-	bool const basic_engine = engine == biblio::ENGINE_BASIC;
-
-	dialog_->citationStyleCO->setEnabled(!sty.empty() && !basic_engine);
-	dialog_->citationStyleLA->setEnabled(!sty.empty() && !basic_engine);
-
-	for (vector<string>::const_iterator it = sty.begin();
-		it != sty.end(); ++it) {
-		dialog_->citationStyleCO->insertItem(toqstr(*it));
-	}
-
-	if (orig != -1 && orig < dialog_->citationStyleCO->count())
-		dialog_->citationStyleCO->setCurrentItem(orig);
-}
-
-
-void QCitation::updateStyle()
-{
-	biblio::CiteEngine const engine = controller().getEngine();
-	bool const natbib_engine =
-		engine == biblio::ENGINE_NATBIB_AUTHORYEAR ||
-		engine == biblio::ENGINE_NATBIB_NUMERICAL;
-	bool const basic_engine = engine == biblio::ENGINE_BASIC;
-
-	dialog_->fulllistCB->setEnabled(natbib_engine);
-	dialog_->forceuppercaseCB->setEnabled(natbib_engine);
-	dialog_->textBeforeED->setEnabled(!basic_engine);
-
-	string const & command = controller().params().getCmdName();
-
-	// Find the style of the citekeys
-	vector<biblio::CiteStyle> const & styles =
-		ControlCitation::getCiteStyles();
-	biblio::CitationStyle const cs(command);
-
-	vector<biblio::CiteStyle>::const_iterator cit =
-		find(styles.begin(), styles.end(), cs.style);
-
-	// restore the latest natbib style
-	if (style_ >= 0 && style_ < dialog_->citationStyleCO->count())
-		dialog_->citationStyleCO->setCurrentItem(style_);
-	else
-		dialog_->citationStyleCO->setCurrentItem(0);
-	dialog_->fulllistCB->setChecked(false);
-	dialog_->forceuppercaseCB->setChecked(false);
-
-	if (cit != styles.end()) {
-		int const i = int(cit - styles.begin());
-		dialog_->citationStyleCO->setCurrentItem(i);
-		dialog_->fulllistCB->setChecked(cs.full);
-		dialog_->forceuppercaseCB->setChecked(cs.forceUCase);
-	}
 }
 
 
 void QCitation::update_contents()
 {
+	QStringList keys;
+	
 	// Make the list of all available bibliography keys
-	bibkeys = biblio::getKeys(controller().bibkeysInfo());
-	updateBrowser(dialog_->ui_.availableLB, bibkeys);
+	toQStringList(keys,
+		biblio::getKeys(controller().bibkeysInfo()));
+	available_keys_.setStringList(keys);
 
 	// Ditto for the keys cited in this inset
-	citekeys = getVectorFromString(controller().params().getContents());
-	updateBrowser(dialog_->selectedLB, citekeys);
+	QString str = toqstr(controller().params().getContents());
+	if (!str.isEmpty()) {
+		keys = str.split(",");
+		selected_keys_.setStringList(keys);
+	}
 
-	// No keys have been selected yet, so...
-	dialog_->infoML->clear();
-	dialog_->setButtons();
-
-	dialog_->textBeforeED->setText(
-		toqstr(controller().params().getSecOptions()));
-	dialog_->textAfterED->setText(
-		toqstr(controller().params().getOptions()));
-
-	fillStyles();
-	updateStyle();
-
-	// open the find dialog if nothing has been selected (yet)
-	// the bool prevents that this is also done after "apply"
-	if (open_find_)
-		dialog_->openFind();
+	dialog_->update(controller().params());
 
 	bc().valid(isValid());
 }
 
-
-void QCitation::updateBrowser(Q3ListBox * browser,
-			      vector<string> const & keys) const
+void QCitation::hide()
 {
-	browser->clear();
-
-	for (vector<string>::const_iterator it = keys.begin();
-		it < keys.end(); ++it) {
-		string const key = trim(*it);
-		// FIXME: why the .empty() test ?
-		if (!key.empty())
-			browser->insertItem(toqstr(key));
-	}
+	QDialogView::hide();
 }
-
 
 bool QCitation::isValid()
 {
-	return dialog_->selectedLB->count() > 0;
+	return selected_keys_.rowCount() > 0;
 }
+
+QModelIndex QCitation::findKey(QString const & str, QModelIndex const & index) const
+{
+	QStringList const avail = available_keys_.stringList();
+	int const pos = avail.indexOf(str, index.row());
+	if (pos == -1)
+		return index;
+	return available_keys_.index(pos);
+}
+
+QModelIndex QCitation::findKey(QString const & str) const
+{
+	QStringList const avail = available_keys_.stringList();
+	int const pos = avail.indexOf(str);
+	if (pos == -1)
+		return QModelIndex();
+	return available_keys_.index(pos);
+}
+
+void QCitation::addKeys(QModelIndexList const & indexes)
+{
+	// = selectionModel->selectedIndexes();
+
+	QModelIndex index;
+
+	if (indexes.empty())
+		return;
+
+	QStringList keys = selected_keys_.stringList();
+	
+	foreach(index, indexes) {
+		if (keys.indexOf(index.data().toString()) == -1)
+			keys.append(index.data().toString());
+	}
+
+	selected_keys_.setStringList(keys);
+	
+	changed();
+}
+
+void QCitation::deleteKeys(QModelIndexList const & indexes)
+{
+	QModelIndex index;
+
+	if (indexes.empty())
+		return;
+
+	QStringList keys = selected_keys_.stringList();
+	
+	foreach(index, indexes) {
+		int const pos = keys.indexOf(index.data().toString());
+		if (pos != -1)
+			keys.removeAt(pos);
+	}
+
+	selected_keys_.setStringList(keys);
+	
+	changed();
+}
+
+void QCitation::upKey(QModelIndexList const & indexes)
+{
+	if (indexes.empty() || indexes.size() > 1)
+		return;
+
+	int pos = indexes[0].row();
+	if (pos < 1)
+		return;
+
+	QStringList keys = selected_keys_.stringList();
+	keys.swap(pos, pos-1);
+	selected_keys_.setStringList(keys);
+	
+	changed();
+}
+
+void QCitation::downKey(QModelIndexList const & indexes)
+{
+	if (indexes.empty() || indexes.size() > 1)
+		return;
+
+	int pos = indexes[0].row();
+	if (pos >= selected_keys_.rowCount() - 1)
+		return;
+
+	QStringList keys = selected_keys_.stringList();
+	keys.swap(pos, pos+1);
+	selected_keys_.setStringList(keys);
+	
+	changed();
+}
+
+
+
+
 
 
 } // namespace frontend

@@ -14,9 +14,8 @@
 #define QCITATION_H
 
 #include "QDialogView.h"
-#include <vector>
 
-class Q3ListBox;
+#include <QStringListModel>
 
 namespace lyx {
 namespace frontend {
@@ -31,8 +30,27 @@ public:
 	friend class QCitationDialog;
 	///
 	QCitation(Dialog &);
+
+	QStringListModel * available() 
+	{ return &available_keys_; }
+
+	QStringListModel * selected() 
+	{ return &selected_keys_; }
+
+	QStringListModel * found() 
+	{ return &found_keys_; }
+	
+	QModelIndex findKey(QString const & str, QModelIndex const & index) const;
+	QModelIndex findKey(QString const & str) const;
+
+	void addKeys(QModelIndexList const & indexes);
+	void deleteKeys(QModelIndexList const & indexes);
+	void upKey(QModelIndexList const & indexes);
+	void downKey(QModelIndexList const & indexes);
+
 protected:
 	virtual bool isValid();
+
 private:
 
 	/// Set the Params variable for the Controller.
@@ -44,22 +62,14 @@ private:
 	/// Update dialog before/whilst showing it.
 	virtual void update_contents();
 
-	/// fill the styles combo
-	void fillStyles();
-
-	/// set the styles combo
-	void updateStyle();
-
-	void updateBrowser(Q3ListBox *, std::vector<std::string> const &) const;
-	/// check if apply has been pressed
-	bool open_find_;
+	/// available keys
+	QStringListModel available_keys_;
 
 	/// selected keys
-	std::vector<std::string> citekeys;
-	/// available bib keys
-	std::vector<std::string> bibkeys;
-	/// selected natbib style
-	int style_;
+	QStringListModel selected_keys_;
+
+	/// found keys
+	QStringListModel found_keys_;
 };
 
 } // namespace frontend
