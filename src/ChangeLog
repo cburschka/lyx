@@ -1,3 +1,8 @@
+2006-03-25  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* text.C (backspace): don't try to go to previous par when in 
+	first par (fix crash in change tracking mode).
+
 2006-03-23  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
         * output_latex.h:
