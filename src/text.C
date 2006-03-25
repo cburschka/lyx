@@ -1681,7 +1681,7 @@ bool LyXText::backspace(LCursor & cur)
 		// the the backspace will collapse two paragraphs into
 		// one.
 
-		if (cur.buffer().params().tracking_changes) {
+		if (cur.pit() != 0 && cur.buffer().params().tracking_changes) {
 			// Previous paragraph, mark "carriage return" as
 			// deleted:
 			Paragraph & par = pars_[cur.pit() - 1];
