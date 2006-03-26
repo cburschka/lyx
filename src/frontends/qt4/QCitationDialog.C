@@ -111,7 +111,7 @@ QCitationDialog::~QCitationDialog()
 
 void QCitationDialog::on_okPB_clicked()
 {
-	apply(form_->controller().params());
+	form_->apply();
 	accept();
 }
 
@@ -122,7 +122,7 @@ void QCitationDialog::on_cancelPB_clicked()
 
 void QCitationDialog::on_applyPB_clicked()
 {
-	apply(form_->controller().params());
+	form_->apply();
 }
 
 void QCitationDialog::on_restorePB_clicked()
@@ -319,6 +319,7 @@ void QCitationDialog::on_findLE_textChanged(const QString & text)
 	QModelIndex const index = form_->findKey(text);
 	if (! index.isValid())
 		return;
+
 //	QItemSelection selection(index, index);
 	availableLV->selectionModel()->select(index, QItemSelectionModel::Select);
 	changed();

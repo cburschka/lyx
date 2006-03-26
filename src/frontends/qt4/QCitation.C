@@ -65,9 +65,27 @@ QCitation::QCitation(Dialog & parent)
 void QCitation::apply()
 {
 	InsetCommandParams & params = controller().params();
-	dialog_->update(params);
+	dialog_->apply(params);
 
 	params.setContents(fromqstr(selected_keys_.stringList().join("'")));
+/*
+	if (dialog().controller().isBufferDependent()) {
+		if (!dialog().kernel().isBufferAvailable() ||
+		    dialog().kernel().isBufferReadonly())
+			return;
+	}
+
+	dialog().view().apply();
+	dialog().controller().dispatchParams();
+
+	if (dialog().controller().disconnectOnApply()) {
+		dialog().kernel().disconnect(name());
+		dialog().controller().initialiseParams(string());
+		dialog().view().update();
+	}
+*/
+//	dialog().ApplyButton();
+//	dialog().apply();
 }
 
 
@@ -119,10 +137,16 @@ QModelIndex QCitation::findKey(QString const & str, QModelIndex const & index) c
 
 QModelIndex QCitation::findKey(QString const & str) const
 {
+	cout << "Find text " << fromqstr(str) << endl;
+
 	QStringList const avail = available_keys_.stringList();
-	int const pos = avail.indexOf(str);
+	QRegExp reg_exp(str);
+
+	int const pos = avail.indexOf(reg_exp);
 	if (pos == -1)
 		return QModelIndex();
+
+	cout << "found key " << fromqstr(avail[pos]) << " at pos " << pos << endl;
 	return available_keys_.index(pos);
 }
 
@@ -198,11 +222,6 @@ void QCitation::downKey(QModelIndexList const & indexes)
 	
 	changed();
 }
-
-
-
-
-
 
 } // namespace frontend
 } // namespace lyx
