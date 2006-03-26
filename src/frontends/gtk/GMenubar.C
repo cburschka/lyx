@@ -52,15 +52,15 @@ private:
 };
 
 
-// ENCODING: assume that the backend will give us a ISO-8859-1 string
+// ENCODING: assume that the backend will give us a locale string
 Glib::ustring labelTrans(string const & label_src, string const & shortcut)
 {
 	string label = subst(label_src, "_", "__");
 	string::size_type i = label.find(shortcut);
 	if (i == string::npos)
-		return Glib::convert(label, "UTF-8", "ISO-8859-1");
+		return Glib::locale_to_utf8 (label);
 	label.insert(i, "_");
-	return Glib::convert(label, "UTF-8", "ISO-8859-1");
+	return Glib::locale_to_utf8 (label);
 }
 
 
