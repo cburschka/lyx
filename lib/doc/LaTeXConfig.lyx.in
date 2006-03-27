@@ -1,4 +1,4 @@
-#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+#LyX 1.4.1svn created this file. For more info see http://www.lyx.org/
 \lyxformat 245
 \begin_document
 \begin_header
@@ -2052,7 +2052,12 @@ macros/latex/required/tools/
 \end_layout
 
 \begin_layout Description
-Notes: none yet
+Notes: The package 
+\family typewriter
+varioref
+\family default
+ introduces some commands to generate references with an information about
+ the page of the referred label.
 \end_layout
 
 \begin_layout Section
@@ -2348,7 +2353,48 @@ macros/latex/contrib/prettyref
 \end_layout
 
 \begin_layout Description
-Notes: none yet
+Notes: The package 
+\family typewriter
+prettyref
+\family default
+ provides a command to identify reference labels by a prefix.
+ LyX uses labels in the form 
+\begin_inset Quotes eld
+\end_inset
+
+sec:mysection
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\family typewriter
+prettyref
+\family default
+ interprets the "sec:" part.
+\end_layout
+
+\begin_layout Subsection
+preview
+\end_layout
+
+\begin_layout Description
+Found: @chk_preview@
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/preview
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family typewriter
+preview
+\family default
+ is needed by LyX to preview LaTeX constructs; especially for math formulas
+ when you use the option ``Instant Preview'' in Tools->Preferences->Look
+ and feel->Graphics.
 \end_layout
 
 \begin_layout Subsection
