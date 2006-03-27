@@ -226,6 +226,12 @@ void InsetERT::doDispatch(LCursor & cur, FuncRequest & cmd)
 	//lyxerr << "\nInsetERT::doDispatch (begin): cmd: " << cmd << endl;
 	switch (cmd.action) {
 
+	case LFUN_QUOTE: {
+		// We need to bypass the fancy quotes in LyXText
+		FuncRequest f(LFUN_SELFINSERT, "\"");
+		dispatch(cur, f);
+		break;
+	}
 	case LFUN_INSET_MODIFY: {
 		InsetCollapsable::CollapseStatus st;
 		InsetERTMailer::string2params(cmd.argument, st);
@@ -354,7 +360,6 @@ bool InsetERT::getStatus(LCursor & cur, FuncRequest const & cmd,
 		case LFUN_INSERT_BOX:
 		case LFUN_GOTONOTE:
 		case LFUN_PARAGRAPH_SPACING:
-		case LFUN_QUOTE:
 		case LFUN_LABEL_GOTO:
 		case LFUN_REFERENCE_GOTO:
 		case LFUN_SPACE_INSERT:
@@ -372,6 +377,7 @@ bool InsetERT::getStatus(LCursor & cur, FuncRequest const & cmd,
 			status.enabled(false);
 			return true;
 
+		case LFUN_QUOTE:
 		case LFUN_INSET_MODIFY:
 		case LFUN_PASTE:
 		case LFUN_PASTESELECTION:
