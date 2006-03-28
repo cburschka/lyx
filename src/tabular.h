@@ -23,6 +23,7 @@
 #include <iosfwd>
 #include <vector>
 
+class BufferView;
 class InsetTabular;
 class LCursor;
 class OutputParams;
@@ -185,7 +186,7 @@ public:
 
 	/// constructor
 	LyXTabular(BufferParams const &, col_type columns_arg,
-	           row_type rows_arg);
+	           row_type rows_arg, BufferView const *);
 
 	/// Returns true if there is a topline, returns false if not
 	bool topLine(idx_type cell, bool onlycolumn = false) const;
@@ -403,7 +404,7 @@ public:
 	class cellstruct {
 	public:
 		///
-		cellstruct(BufferParams const &);
+		cellstruct(BufferParams const &, BufferView const *);
 		///
 		cellstruct(cellstruct const &);
 		///
@@ -531,7 +532,7 @@ public:
 
 	///
 	void init(BufferParams const &, row_type rows_arg,
-	          col_type columns_arg);
+	          col_type columns_arg, BufferView const *);
 	///
 	void set_row_column_number_info();
 	/// Returns true if a complete update is necessary, otherwise false
