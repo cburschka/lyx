@@ -1,3 +1,9 @@
+2006-03-11  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	*insettabular (doDispatch, insertAsciiString): 
+	fix insertion of \t- and \n-separated content from external 
+	clipboard (bug 2394).
+
 2006-03-23  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
         * insettext.h: get forward declaration of ParagraphList
