@@ -46,6 +46,7 @@
 #include <iostream>
 #include <limits>
 
+using lyx::cap::dirtyTabularStack;
 using lyx::cap::tabularStackDirty;
 
 using lyx::graphics::PreviewLoader;
@@ -467,10 +468,8 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		}
 
 		if (cmd.button() == mouse_button::button2) {
-			// FIXME: pasting multiple cells (with insettabular's own
-			// LFUN_PASTESELECTION still does not work! (jspitzm)
 			cmd = FuncRequest(LFUN_PASTESELECTION, "paragraph");
-			cell(cur.idx())->dispatch(cur, cmd);
+			doDispatch(cur, cmd);
 			break;
 		}
 
@@ -726,11 +725,15 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 			if (cell < cells && op < len)
 				paste_tabular->getCellInset(cell)->
 					setText(clip.substr(op, len - op), font);
-		} else if (!insertAsciiString(cur.bv(), clip, true)) {
+			dirtyTabularStack(true);
+		} else if (insertAsciiString(cur.bv(), clip, false))
+			break;
+		else {
 			// so that the clipboard is used and it goes on
 			// to default
 			// and executes LFUN_PASTESELECTION in insettext!
 			paste_tabular.reset();
+			dirtyTabularStack(false);
 		}
 		// fall through
 	}
@@ -1885,6 +1888,7 @@ bool InsetTabular::insertAsciiString(BufferView & bv, string const & buf,
 			new LyXTabular(bv.buffer()->params(), rows, maxCols, &bv));
 		loctab = paste_tabular.get();
 		cols = 0;
+		dirtyTabularStack(true);
 	} else {
 		loctab = &tabular;
 		cell = bv.cursor().idx();
