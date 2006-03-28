@@ -1,3 +1,9 @@
+2006-03-28  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QPrefsDialog.C (remove_format): Prevent deletion of file formats
+	if they are used by a converter and warn the user accordingly.
+	Fixes crash (bug 2431).
+
 2006-03-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* QDocument.C (apply): skip secnumdepth and tocdepth if the class

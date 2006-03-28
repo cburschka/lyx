@@ -106,7 +106,10 @@ What's new
 
 - Fix alignment of superscript previews (bug 2391).
 
-- Reenable quotes in ERT (bug 2429)
+- Reenable quotes in ERT (bug 2429).
+
+- Prevent deletion of file formats that are used by a converter. Fixes crash
+  (bug 2431).
 
 * Configuration/Installation:
 
