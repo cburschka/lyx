@@ -531,7 +531,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 		// output change tracking marks only if desired,
 		// if dvipost is installed,
 		// and with dvi/ps (other formats don't work)
-		LaTeXFeatures features(buf, bparams, runparams.nice);
+		LaTeXFeatures features(buf, bparams, runparams);
 		bool const output = bparams.output_changes
 			&& runparams.flavor == OutputParams::LATEX
 			&& features.isAvailable("dvipost");

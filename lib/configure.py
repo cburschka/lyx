@@ -224,7 +224,7 @@ if LATEX != 'none':
   removeFiles(['chklatex.ltx', 'chklatex.log'])
 
 checkProg('the pdflatex program', ['pdflatex $$i'],
-  rc_entry = [ r'\converter latex      pdf2       "%%"	"latex"' ])
+  rc_entry = [ r'\converter pdflatex   pdf2       "%%"	"latex"' ])
 
 checkProg('a Tgif viewer and editor', ['tgif'],
   rc_entry = [ r'\Format tgif       obj     Tgif                   "" "%%"	"%%"'])
@@ -262,8 +262,9 @@ checkProg('a text editor', ['xemacs', 'gvim', 'kedit', 'kwrite', 'kate', \
 \Format docbook    sgml    DocBook                B  ""	"%%"
 \Format docbook-xml xml   "Docbook (XML)"         "" ""	"%%"
 \Format literate   nw      NoWeb                  N  ""	"%%"
-\Format latex      tex     LaTeX                  L  ""	"%%"
+\Format latex      tex    "TeX (latex)"           L  ""	"%%"
 \Format linuxdoc   sgml    LinuxDoc               x  ""	"%%"
+\Format pdflatex   tex    "TeX (pdflatex)"        "" ""	"%%"
 \Format text       txt    "Plain text"            a  ""	"%%"
 \Format textparagraph txt "Plain text (paragraphs)"    "" ""	"%%"''' ])
 

@@ -58,8 +58,12 @@ namespace {
 vector<string> const Backends(Buffer const & buffer)
 {
 	vector<string> v;
-	if (buffer.params().getLyXTextClass().isTeXClassAvailable())
+	if (buffer.params().getLyXTextClass().isTeXClassAvailable()) {
 		v.push_back(BufferFormat(buffer));
+		// FIXME: Don't hardcode format names here, but use a flag
+		if (v.back() == "latex")
+			v.push_back("pdflatex");
+	}
 	v.push_back("text");
 	v.push_back("lyx");
 	return v;
@@ -169,8 +173,12 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 				   formats.prettyName(format)));
 			return false;
 		}
-	} else
+	} else {
 		backend_format = format;
+		// FIXME: Don't hardcode format names here, but use a flag
+		if (backend_format == "pdflatex")
+			runparams.flavor = OutputParams::PDFLATEX;
+	}
 
 	string filename = buffer->getLatexName(false);
 	filename = AddName(buffer->temppath(), filename);

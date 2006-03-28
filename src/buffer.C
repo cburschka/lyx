@@ -833,7 +833,7 @@ void Buffer::makeLaTeXFile(ostream & os,
 
 	// validate the buffer.
 	lyxerr[Debug::LATEX] << "  Validating buffer..." << endl;
-	LaTeXFeatures features(*this, params(), runparams.nice);
+	LaTeXFeatures features(*this, params(), runparams);
 	validate(features);
 	lyxerr[Debug::LATEX] << "  Buffer validation done." << endl;
 
@@ -986,7 +986,7 @@ void Buffer::makeLinuxDocFile(string const & fname,
 	if (!openFileWrite(ofs, fname))
 		return;
 
-	LaTeXFeatures features(*this, params(), runparams.nice);
+	LaTeXFeatures features(*this, params(), runparams);
 	validate(features);
 
 	texrow().reset();
@@ -1044,7 +1044,7 @@ void Buffer::makeDocBookFile(string const & fname,
 	if (!openFileWrite(ofs, fname))
 		return;
 
-	LaTeXFeatures features(*this, params(), runparams.nice);
+	LaTeXFeatures features(*this, params(), runparams);
 	validate(features);
 
 	texrow().reset();

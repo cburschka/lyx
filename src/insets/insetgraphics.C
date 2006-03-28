@@ -607,6 +607,8 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 		params().filename.outputFilename(m_buffer->filePath()) :
 		OnlyFilename(temp_file));
 	string const source_file = runparams.nice ? orig_file : temp_file;
+	string const tex_format = (runparams.flavor == OutputParams::LATEX) ?
+			"latex" : "pdflatex";
 
 	if (zipped) {
 		if (params().noUnzip) {
@@ -619,7 +621,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 
 			string const bb_orig_file = ChangeExtension(orig_file, "bb");
 			if (runparams.nice) {
-				runparams.exportdata->addExternalFile("latex",
+				runparams.exportdata->addExternalFile(tex_format,
 						bb_orig_file,
 						ChangeExtension(output_file, "bb"));
 			} else {
@@ -630,10 +632,10 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 					copyFileIfNeeded(bb_orig_file, bb_file);
 				if (status == FAILURE)
 					return orig_file;
-				runparams.exportdata->addExternalFile("latex",
+				runparams.exportdata->addExternalFile(tex_format,
 						bb_file);
 			}
-			runparams.exportdata->addExternalFile("latex",
+			runparams.exportdata->addExternalFile(tex_format,
 					source_file, output_file);
 			runparams.exportdata->addExternalFile("dvi",
 					source_file, output_file);
@@ -678,7 +680,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 
 	if (from == to) {
 		// The extension of temp_file might be != ext!
-		runparams.exportdata->addExternalFile("latex", source_file,
+		runparams.exportdata->addExternalFile(tex_format, source_file,
 		                                      output_file);
 		runparams.exportdata->addExternalFile("dvi", source_file,
 		                                      output_file);
@@ -695,7 +697,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 			<< bformat(_("No conversion of %1$s is needed after all"),
 				   rel_file)
 			<< std::endl;
-		runparams.exportdata->addExternalFile("latex", to_file,
+		runparams.exportdata->addExternalFile(tex_format, to_file,
 		                                      output_to_file);
 		runparams.exportdata->addExternalFile("dvi", to_file,
 		                                      output_to_file);
@@ -709,7 +711,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 		<< "\t from " << from << " to " << to << '\n';
 
 	if (converters.convert(&buf, temp_file, temp_file, from, to, true)) {
-		runparams.exportdata->addExternalFile("latex",
+		runparams.exportdata->addExternalFile(tex_format,
 				to_file, output_to_file);
 		runparams.exportdata->addExternalFile("dvi",
 				to_file, output_to_file);
@@ -884,7 +886,7 @@ void InsetGraphics::validate(LaTeXFeatures & features) const
 
 	features.require("graphicx");
 
-	if (features.nice()) {
+	if (features.runparams().nice) {
 		Buffer const * m_buffer = features.buffer().getMasterBuffer();
 		string basename =
 			params().filename.outputFilename(m_buffer->filePath());

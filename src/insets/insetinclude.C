@@ -407,11 +407,13 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 		}
 	}
 
+	string const tex_format = (runparams.flavor == OutputParams::LATEX) ?
+			"latex" : "pdflatex";
 	if (isVerbatim(params_)) {
 		incfile = latex_path(incfile);
 		os << '\\' << params_.getCmdName() << '{' << incfile << '}';
 	} else if (type(params_) == INPUT) {
-		runparams.exportdata->addExternalFile("latex", writefile,
+		runparams.exportdata->addExternalFile(tex_format, writefile,
 		                                      exportfile);
 
 		// \input wants file with extension (default is .tex)
@@ -426,7 +428,7 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 			   <<  '}';
 		}
 	} else {
-		runparams.exportdata->addExternalFile("latex", writefile,
+		runparams.exportdata->addExternalFile(tex_format, writefile,
 		                                      exportfile);
 
 		// \include don't want extension and demands that the
@@ -556,7 +558,7 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 	else
 		writefile = included_file;
 
-	if (!features.nice() && !isVerbatim(params_)) {
+	if (!features.runparams().nice && !isVerbatim(params_)) {
 		incfile = FileName(writefile).mangledFilename();
 		writefile = MakeAbsPath(incfile,
 			                buffer.getMasterBuffer()->temppath());

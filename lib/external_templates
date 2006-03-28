@@ -82,7 +82,7 @@ Template RasterImage
 		UpdateFormat png
 		UpdateResult "$$AbsPath$$Basename.png"
 		Requirement "graphicx"
-		ReferencedFile latex "$$AbsPath$$Basename.png"
+		ReferencedFile pdflatex "$$AbsPath$$Basename.png"
 	FormatEnd
 	Format Ascii
 		Product "$$Contents(\"$$AbsPath$$Basename.asc\")"
@@ -134,8 +134,8 @@ Template XFig
 		Requirement "graphicx"
 		# Preamble WarnNotFound
 		# Preamble InputOrWarn
-		ReferencedFile latex "$$AbsOrRelPathMaster$$Basename.pdftex_t"
-		ReferencedFile latex "$$AbsPath$$Basename.pdf"
+		ReferencedFile pdflatex "$$AbsOrRelPathMaster$$Basename.pdftex_t"
+		ReferencedFile pdflatex "$$AbsPath$$Basename.pdf"
 	FormatEnd
 	Format Ascii
 		Product "$$Contents(\"$$AbsPath$$Basename.asc\")"
@@ -184,6 +184,11 @@ Template ChessDiagram
 		Requirement "chess"
 		ReferencedFile latex "$$AbsPath$$Basename$$Extension"
 	FormatEnd
+	Format PDFLaTeX
+		Product "\\loadgame{$$AbsOrRelPathMaster$$Basename}\\showboard"
+		Requirement "chess"
+		ReferencedFile pdflatex "$$AbsPath$$Basename$$Extension"
+	FormatEnd
 	Format Ascii
 		Product "$$Contents(\"$$AbsPath$$Basename.asc\")"
 		UpdateFormat asciichess
@@ -208,6 +213,11 @@ Template Date
 	FileFilter "*"
 	AutomaticProduction true
 	Format LaTeX
+		Product "$$Contents(\"$$Tempname\")"
+		UpdateFormat dateout
+		UpdateResult "$$Tempname"
+	FormatEnd
+	Format PDFLaTeX
 		Product "$$Contents(\"$$Tempname\")"
 		UpdateFormat dateout
 		UpdateResult "$$Tempname"
