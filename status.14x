@@ -111,6 +111,8 @@ What's new
 - Prevent deletion of file formats that are used by a converter. Fixes crash
   (bug 2431).
 
+- Fix bug 2380: Pasting external material into table causes seg fault
+
 * Configuration/Installation:
 
 - Don't use the -mms-bitfields compiler switch on mingw and cygwin, since
