@@ -103,12 +103,12 @@ def extract_metrics_info(dvipng_stdout, metrics_file):
         ascent  = string.atof(match.group(2))
 
         frac = 0.5
-        if ascent >= 0 and descent >= 0:
+        if ascent >= 0 or descent >= 0:
             if abs(ascent + descent) > 0.1:
                 frac = ascent / (ascent + descent)
 
-            # Sanity check
-            if frac < 0 or frac > 1:
+	    # Sanity check
+            if frac < 0:
                 frac = 0.5
 
         metrics.write("Snippet %s %f\n" % (page, frac))
