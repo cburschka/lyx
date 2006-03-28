@@ -111,6 +111,7 @@ lyx_SOURCES = \
 	LyXAction.h \
 	MenuBackend.C \
 	MenuBackend.h \
+	ParagraphList.h \
 	ParagraphList_fwd.h \
 	ParagraphParameters.C \
 	ParagraphParameters.h \
