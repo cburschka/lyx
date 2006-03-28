@@ -1,3 +1,8 @@
+2006-03-25  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* text.C (Delete): move cursor to next par after deleting 
+	a paragraph break in change tracking mode.
+
 2006-03-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* Makefile.am (lyx_SOURCES): add ParagraphList.h.

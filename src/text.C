@@ -1579,17 +1579,21 @@ bool LyXText::Delete(LCursor & cur)
 		recordUndo(cur, Undo::DELETE, cur.pit());
 		setCursorIntern(cur, cur.pit(), cur.pos() + 1, false, cur.boundary());
 		needsUpdate = backspace(cur);
-		Paragraph & par = cur.paragraph();
-		if (cur.pos() < par.size()
-		    && par.lookupChange(cur.pos()) == Change::DELETED)
+		if (cur.paragraph().lookupChange(cur.pos()) == Change::DELETED)
 			cur.posRight();
 	} else if (cur.pit() != cur.lastpit()) {
 		LCursor scur = cur;
 
-		setCursorIntern(cur, cur.pit()+1, 0, false, false);
+		setCursorIntern(cur, cur.pit() + 1, 0, false, false);
 		if (pars_[cur.pit()].layout() == pars_[scur.pit()].layout()) {
 			recordUndo(scur, Undo::DELETE, scur.pit());
 			needsUpdate = backspace(cur);
+			if (cur.buffer().params().tracking_changes) {
+				// move forward after the paragraph break is DELETED
+				Paragraph & par = cur.paragraph();
+				if (par.lookupChange(par.size()) == Change::DELETED)
+					setCursorIntern(cur, cur.pit() + 1, 0);
+				}
 		} else {
 			setCursorIntern(scur, scur.pit(), scur.pos(), false, scur.boundary());
 		}
