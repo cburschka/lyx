@@ -29,6 +29,7 @@
 #include "controllers/frnt_lang.h"
 #include "controllers/helper_funcs.h"
 
+#include "frontends/Alert.h"
 #include "frontends/lyx_gui.h"
 
 #include "QPrefsDialog.h"
@@ -969,7 +970,14 @@ void QPrefsDialog::remove_format()
 	int const nr(fileformatsModule->formatsLB->currentItem());
 	if (nr < 0)
 		return;
-	form_->formats().erase(form_->formats().get(nr).name());
+	string const current_text = form_->formats().get(nr).name();
+	if (form_->converters().formatIsUsed(current_text)) {
+		Alert::error(_("Format in use"),
+				_("Cannot remove a Format used by a Converter. "
+				      "Remove the converter first."));
+		return;
+	}
+	form_->formats().erase(current_text);
 	updateFormats();
 	form_->converters().update(form_->formats());
 
