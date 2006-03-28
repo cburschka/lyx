@@ -1,3 +1,7 @@
+2006-03-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* Makefile.am (lyx_SOURCES): add ParagraphList.h.
+
 2006-03-25  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* text.C (backspace): don't try to go to previous par when in 

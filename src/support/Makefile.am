@@ -20,6 +20,7 @@ AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
 libsupport_la_SOURCES = \
 	FileMonitor.h \
 	FileMonitor.C \
+	RandomAccessList.h \
 	abort.C \
 	chdir.C \
 	convert.C \
