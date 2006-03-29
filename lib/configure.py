@@ -262,7 +262,7 @@ checkProg('a text editor', ['xemacs', 'gvim', 'kedit', 'kwrite', 'kate', \
 \Format docbook    sgml    DocBook                B  ""	"%%"
 \Format docbook-xml xml   "Docbook (XML)"         "" ""	"%%"
 \Format literate   nw      NoWeb                  N  ""	"%%"
-\Format latex      tex    "TeX (latex)"           L  ""	"%%"
+\Format latex      tex    "TeX (latex)"           l  ""	"%%"
 \Format linuxdoc   sgml    LinuxDoc               x  ""	"%%"
 \Format pdflatex   tex    "TeX (pdflatex)"        "" ""	"%%"
 \Format text       txt    "Plain text"            a  ""	"%%"
