@@ -50,6 +50,8 @@ What's new
 - Convert old LyX documents with a float list at the end correctly in
   lyx2lyx (bug 2245).
 
+- Fix crash when generating LaTeX dependencies on Cygwin.
+
 - Set search path for included files correctly on Cygwin (bug 2409).
 
 * User Interface:
