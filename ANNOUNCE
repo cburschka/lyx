@@ -1,19 +1,19 @@
 Public release of LyX version 1.4.1
 ===================================
 
-We are glad to announce the release of LyX 1.4.1. This is a bug fix
-release, but some of the bugs were big, in particular:
+We are pleased to announce the release of LyX 1.4.1. This is a bug fix
+release, but some of the bugs were big. In particular:
 
-- fix enormous memory consumption and slowness with documents
-  containing a lot of graphics and preview.
+- fix the huge memory consumption and corresponding sluggishness with
+  documents containing many graphics or `instant preview' snippets.
 
-- fix delay when exiting from a math inset. 
+- fix the delay when exiting from a math inset. 
 
 - let the change tracking code track paragraph breaks too.
 
 Also, this will be the first 1.4 release with a windows installer.
 
-See the file RELEASE-NOTES for some known problems in that release.
+See the file RELEASE-NOTES for some known problems in this release.
 
 In case you are wondering what LyX is, here is what
 http://www.lyx.org/ has to say on the subject:
@@ -36,7 +36,7 @@ http://www.lyx.org/ has to say on the subject:
    your dissertation the evening before going to press.
 
    LyX is stable and fully featured. It is a multi-platform, fully
-   internationalized application running natively on Unix/Linux and the
+   internationalized application running natively on Unix/Linux, the
    Macintosh and modern Windows platforms. 
 
 You can download LyX 1.4.1 here (the .bz2 are compressed with bzip2,
@@ -70,21 +70,20 @@ of the following patches instead
 Note that this patch will not produce valid LyX/Mac sources, since
 some binary files have been added for this release.
 
-
 If you find what you think is a bug in LyX 1.4.1, you may either
-e-mail the LyX developers' mailing list (lyx-devel @ lists.lyx.org), or open
+e-mail the LyX developers' mailing list (lyx-devel  <at>  lists.lyx.org), or open
 a bug report at http://bugzilla.lyx.org
 
 If you're having trouble using the new version of LyX, or have a question,
 first check out http://www.lyx.org/help/. If you can't find the answer there,
-e-mail the LyX users' list (lyx-users @ lists.lyx.org).
+e-mail the LyX users' list (lyx-users  <at>  lists.lyx.org).
 
 Enjoy!
 
 The LyX team.
 
+What's new in version 1.4.1?
+---------------------------- 
 
 
-What's new in version 1.4.0?
-----------------------------
 
