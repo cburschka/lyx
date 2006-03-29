@@ -68,7 +68,7 @@ What's new
 
 - More sensible default label in table and figure captions (bug 1999).
 
-- Do not skip change in "Merge changes..." dialog (bug 2212).
+- Do not skip first change in "Merge changes..." dialog (bug 2212).
 
 - Improve handling of the labeling environment in KOMA letters (bug 2246).
 
@@ -114,6 +114,8 @@ What's new
   (bug 2431).
 
 - Fix bug 2380: Pasting external material into table causes seg fault
+
+- Prevent non-standard paragraph layouts in charstyle insets
 
 * Configuration/Installation:
 

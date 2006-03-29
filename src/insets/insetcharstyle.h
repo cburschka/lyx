@@ -69,6 +69,8 @@ public:
 	///
 	void getDrawFont(LyXFont &) const;
 	///
+	bool forceDefaultParagraphs(idx_type) const { return true; }
+	///
 	int latex(Buffer const &, std::ostream &,
 		  OutputParams const &) const;
 	///
