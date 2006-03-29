@@ -44,8 +44,17 @@ public slots:
 	void depth_adaptor(int);
 	void select_adaptor(QTreeWidgetItem *);
 	void update_adaptor();
+
+protected slots:
+	void on_moveUpPB_clicked();
+	void on_moveDownPB_clicked();
+	void on_moveInPB_clicked();
+	void on_moveOutPB_clicked();
+
 protected:
+	void enableButtons(bool enable = true);
 	void closeEvent(QCloseEvent * e);
+
 private:
 	
 	void populateItem(QTreeWidgetItem * parentItem, toc::Toc::const_iterator& iter);

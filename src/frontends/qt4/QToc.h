@@ -35,6 +35,11 @@ public:
 	/// return the toc list
 	lyx::toc::Toc & get_toclist() { return toclist;}
 
+	void moveUp();
+	void moveDown();
+	void moveIn();
+	void moveOut();
+
 private:
 
 	/// select an entry

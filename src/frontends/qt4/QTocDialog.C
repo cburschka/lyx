@@ -63,6 +63,43 @@ QTocDialog::~QTocDialog()
 {
 }
 
+void QTocDialog::on_moveUpPB_clicked()
+{
+	enableButtons(false);
+	form_->moveUp();
+	enableButtons();
+}
+
+void QTocDialog::on_moveDownPB_clicked()
+{
+	enableButtons(false);
+	form_->moveDown();
+	enableButtons();
+}
+
+void QTocDialog::on_moveInPB_clicked()
+{
+	enableButtons(false);
+	form_->moveIn();
+	enableButtons();
+}
+
+void QTocDialog::on_moveOutPB_clicked()
+{
+	enableButtons(false);
+	form_->moveOut();
+	enableButtons();
+}
+
+void QTocDialog::enableButtons(bool enable)
+{
+	moveUpPB->setEnabled(enable);
+	moveDownPB->setEnabled(enable);
+	moveInPB->setEnabled(enable);
+	moveOutPB->setEnabled(enable);
+	updatePB->setEnabled(enable);
+}
+
 void QTocDialog::updateType()
 {
 	typeCO->clear();

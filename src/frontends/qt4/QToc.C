@@ -70,5 +70,33 @@ void QToc::select(string const & text)
 	controller().goTo(*iter);
 }
 
+void QToc::moveUp()
+{
+	controller().outline(toc::UP);
+	update_contents();
+}
+
+
+void QToc::moveDown()
+{
+	controller().outline(toc::DOWN);
+	update_contents();
+}
+
+
+void QToc::moveIn()
+{
+	controller().outline(toc::IN);
+	update_contents();
+}
+
+
+void QToc::moveOut()
+{
+	controller().outline(toc::OUT);
+	update_contents();
+}
+
+
 } // namespace frontend
 } // namespace lyx
