@@ -313,8 +313,7 @@ void l_getline(istream & is, string & str)
 
 /// Define a few methods for the inner structs
 
-LyXTabular::cellstruct::cellstruct(BufferParams const & bp,
-		BufferView const * bv)
+LyXTabular::cellstruct::cellstruct(BufferParams const & bp)
 	: cellno(0),
 	  width_of_cell(0),
 	  multicolumn(LyXTabular::CELL_NORMAL),
@@ -327,9 +326,7 @@ LyXTabular::cellstruct::cellstruct(BufferParams const & bp,
 	  usebox(BOX_NONE),
 	  rotate(false),
 	  inset(new InsetText(bp))
-{
-	inset->setViewCache(bv);
-}
+{}
 
 
 LyXTabular::cellstruct::cellstruct(cellstruct const & cs)
@@ -409,21 +406,21 @@ LyXTabular::ltType::ltType()
 
 
 LyXTabular::LyXTabular(BufferParams const & bp, row_type rows_arg,
-                       col_type columns_arg, BufferView const * bv)
+                       col_type columns_arg)
 {
-	init(bp, rows_arg, columns_arg, bv);
+	init(bp, rows_arg, columns_arg);
 }
 
 
 // activates all lines and sets all widths to 0
 void LyXTabular::init(BufferParams const & bp, row_type rows_arg,
-                      col_type columns_arg, BufferView const * bv)
+                      col_type columns_arg)
 {
 	rows_    = rows_arg;
 	columns_ = columns_arg;
 	row_info = row_vector(rows_);
 	column_info = column_vector(columns_);
-	cell_info = cell_vvector(rows_, cell_vector(columns_, cellstruct(bp, bv)));
+	cell_info = cell_vvector(rows_, cell_vector(columns_, cellstruct(bp)));
 	row_info.reserve(10);
 	column_info.reserve(10);
 	cell_info.reserve(100);
@@ -457,7 +454,6 @@ void LyXTabular::fixCellNums()
 
 void LyXTabular::appendRow(BufferParams const & bp, idx_type const cell)
 {
-	BufferView const * const bv = getCellInset(0)->getText(0)->bv();
 	++rows_;
 
 	row_type const row = row_of_cell(cell);
@@ -471,7 +467,7 @@ void LyXTabular::appendRow(BufferParams const & bp, idx_type const cell)
 	for (row_type i = 0; i < rows_ - 1; ++i)
 		swap(cell_info[i], old[i]);
 
-	cell_info = cell_vvector(rows_, cell_vector(columns_, cellstruct(bp, bv)));
+	cell_info = cell_vvector(rows_, cell_vector(columns_, cellstruct(bp)));
 
 	for (row_type i = 0; i <= row; ++i)
 		swap(cell_info[i], old[i]);
@@ -501,7 +497,6 @@ void LyXTabular::deleteRow(row_type const row)
 
 void LyXTabular::appendColumn(BufferParams const & bp, idx_type const cell)
 {
-	BufferView const * const bv = getCellInset(0)->getText(0)->bv();
 	++columns_;
 
 	col_type const column = column_of_cell(cell);
@@ -511,7 +506,7 @@ void LyXTabular::appendColumn(BufferParams const & bp, idx_type const cell)
 	column_info[column + 1] = column_info[column];
 
 	for (row_type i = 0; i < rows_; ++i) {
-		cell_info[i].insert(cell_info[i].begin() + column + 1, cellstruct(bp, bv));
+		cell_info[i].insert(cell_info[i].begin() + column + 1, cellstruct(bp));
 
 		// care about multicolumns
 		if (cell_info[i][column + 1].multicolumn == CELL_BEGIN_OF_MULTICOLUMN)
@@ -1278,7 +1273,7 @@ void LyXTabular::read(Buffer const & buf, LyXLex & lex)
 	int columns_arg;
 	if (!getTokenValue(line, "columns", columns_arg))
 		return;
-	init(buf.params(), rows_arg, columns_arg, buf.text().bv());
+	init(buf.params(), rows_arg, columns_arg);
 	l_getline(is, line);
 	if (!prefixIs(line, "<features")) {
 		lyxerr << "Wrong tabular format (expected <features ...> got"

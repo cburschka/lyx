@@ -168,7 +168,7 @@ bool InsetTabular::hasPasteBuffer() const
 InsetTabular::InsetTabular(Buffer const & buf, row_type rows,
                            col_type columns)
 	: tabular(buf.params(), max(rows, row_type(1)),
-	  max(columns, col_type(1)), buf.text().bv()), buffer_(&buf), scx_(0)
+	  max(columns, col_type(1))), buffer_(&buf), scx_(0)
 {}
 
 
@@ -692,7 +692,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 			maxCols = max(cols, maxCols);
 
 			paste_tabular.reset(
-				new LyXTabular(cur.buffer().params(), rows, maxCols, &cur.bv()));
+				new LyXTabular(cur.buffer().params(), rows, maxCols));
 
 			string::size_type op = 0;
 			idx_type cell = 0;
@@ -1885,7 +1885,7 @@ bool InsetTabular::insertAsciiString(BufferView & bv, string const & buf,
 	row_type row = 0;
 	if (usePaste) {
 		paste_tabular.reset(
-			new LyXTabular(bv.buffer()->params(), rows, maxCols, &bv));
+			new LyXTabular(bv.buffer()->params(), rows, maxCols));
 		loctab = paste_tabular.get();
 		cols = 0;
 		dirtyTabularStack(true);
@@ -1913,6 +1913,7 @@ bool InsetTabular::insertAsciiString(BufferView & bv, string const & buf,
 			// we can only set this if we are not too far right
 			if (cols < columns) {
 				shared_ptr<InsetText> inset = loctab->getCellInset(cell);
+				inset->setViewCache(&bv);
 				Paragraph & par = inset->text_.getPar(0);
 				LyXFont const font = inset->text_.getFont(par, 0);
 				inset->setText(buf.substr(op, p - op), font);
@@ -1924,6 +1925,7 @@ bool InsetTabular::insertAsciiString(BufferView & bv, string const & buf,
 			// we can only set this if we are not too far right
 			if (cols < columns) {
 				shared_ptr<InsetText> inset = tabular.getCellInset(cell);
+				inset->setViewCache(&bv);
 				Paragraph & par = inset->text_.getPar(0);
 				LyXFont const font = inset->text_.getFont(par, 0);
 				inset->setText(buf.substr(op, p - op), font);
@@ -1940,6 +1942,7 @@ bool InsetTabular::insertAsciiString(BufferView & bv, string const & buf,
 	// check for the last cell if there is no trailing '\n'
 	if (cell < cells && op < len) {
 		shared_ptr<InsetText> inset = loctab->getCellInset(cell);
+		inset->setViewCache(&bv);
 		Paragraph & par = inset->text_.getPar(0);
 		LyXFont const font = inset->text_.getFont(par, 0);
 		inset->setText(buf.substr(op, len - op), font);
