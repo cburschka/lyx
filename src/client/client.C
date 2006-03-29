@@ -14,7 +14,6 @@
 
 #include "debug.h"
 #include "support/lstrings.h"
-#include "support/package.h"
 
 #include <boost/filesystem/operations.hpp>
 #include <boost/lexical_cast.hpp>
@@ -459,7 +458,7 @@ int a(vector<char *> const & arg)
 }
 
 
-string mainTmp(lyx::support::package().temp_dir());
+string mainTmp("/tmp");
 
 
 int t(vector<char *> const & arg)
