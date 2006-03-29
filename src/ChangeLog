@@ -5,6 +5,11 @@
 
 2006-03-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	* lyxrc.C (setDefaults): no need to initialize tempdir_path.
+
+	* bufferlist.C (emergencyWrite): do not use explicit /tmp
+	directory name.
+
 	* Makefile.am (lyx_SOURCES): add ParagraphList.h.
 
 2006-03-25  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>

@@ -330,10 +330,8 @@ void BufferList::emergencyWrite(Buffer * buf)
 
 	lyxerr << _("  Save failed! Trying...") << endl;
 
-	// 3) In "/tmp" directory.
-	// MakeAbsPath to prepend the current
-	// drive letter on OS/2
-	s = AddName(MakeAbsPath("/tmp/"), buf->fileName());
+	// 3) In temp directory.
+	s = AddName(package().temp_dir(), buf->fileName());
 	s += ".emergency";
 	lyxerr << ' ' << s << endl;
 	if (buf->writeFile(s)) {
