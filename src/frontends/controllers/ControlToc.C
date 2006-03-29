@@ -8,9 +8,12 @@
  * Full author contact details are available in file CREDITS.
  */
 
+#include <sstream>
+
 #include <config.h>
 
 #include "ControlToc.h"
+#include "funcrequest.h"
 #include "gettext.h"
 
 using std::vector;
@@ -31,6 +34,14 @@ ControlToc::ControlToc(Dialog & d)
 void ControlToc::goTo(toc::TocItem const & item)
 {
 	item.goTo(kernel().lyxview());
+}
+
+
+void ControlToc::outline(toc::OutlineOp op)
+{
+	std::ostringstream o;
+	o << op << std::flush; 
+	kernel().dispatch(FuncRequest(LFUN_OUTLINE, o.str()));
 }
 
 

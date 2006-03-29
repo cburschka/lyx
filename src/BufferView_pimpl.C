@@ -49,6 +49,7 @@
 #include "ParagraphParameters.h"
 #include "pariterator.h"
 #include "rowpainter.h"
+#include "toc.h"
 #include "undo.h"
 #include "vspace.h"
 
@@ -1042,6 +1043,7 @@ FuncStatus BufferView::Pimpl::getStatus(FuncRequest const & cmd)
 	case LFUN_INSERT_LABEL:
 	case LFUN_BOOKMARK_SAVE:
 	case LFUN_GOTO_PARAGRAPH:
+	case LFUN_OUTLINE:
 	case LFUN_GOTOERROR:
 	case LFUN_GOTONOTE:
 	case LFUN_REFERENCE_GOTO:
@@ -1197,6 +1199,16 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		break;
 	}
 
+	case LFUN_OUTLINE: {
+		lyx::toc::OutlineOp const op =
+		    static_cast<lyx::toc::OutlineOp>(convert<int>(cmd.argument));
+		lyx::toc::Outline(op, buffer_, cursor_.pit());
+		bv_->text()->setCursor(cursor_, cursor_.pit(), 0);
+		buffer_->markDirty();
+		updateCounters(*buffer_);
+		update();
+	}
+				  
 	case LFUN_GOTOERROR:
 		bv_funcs::gotoInset(bv_, InsetBase::ERROR_CODE, false);
 		break;

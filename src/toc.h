@@ -20,6 +20,8 @@
 #include <vector>
 #include <string>
 
+#include "pariterator.h"
+
 class Buffer;
 class LyXView;
 class Paragraph;
@@ -82,6 +84,18 @@ bool operator!=(TocItem const & a, TocItem const & b)
 {
 	return !(a == b);
 }
+
+
+/// the type of outline operation
+enum OutlineOp {
+	UP, // Move this header with text down
+	DOWN,   // Move this header with text up
+	IN, // Make this header deeper
+	OUT // Make this header shallower
+};
+
+
+void Outline(OutlineOp, Buffer *, pit_type &);
 
 
 } // namespace toc

@@ -29,6 +29,10 @@ public slots:
 	void depth_adaptor(int);
 	void select_adaptor(QListViewItem *);
 	void update_adaptor();
+	void moveup_adaptor();
+	void movedn_adaptor();
+	void movein_adaptor();
+	void moveout_adaptor();
 protected:
 	void closeEvent(QCloseEvent * e);
 private:

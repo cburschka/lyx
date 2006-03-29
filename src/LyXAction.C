@@ -240,6 +240,7 @@ void LyXAction::init()
 		{ LFUN_DOWN_PARAGRAPH, "paragraph-down", ReadOnly | NoUpdate},
 		{ LFUN_DOWN_PARAGRAPHSEL, "paragraph-down-select", ReadOnly },
 		{ LFUN_GOTO_PARAGRAPH, "paragraph-goto", ReadOnly },
+		{ LFUN_OUTLINE, "outline", ReadOnly },
 		{ LFUN_PARAGRAPH_SPACING, "paragraph-spacing", Noop },
 		{ LFUN_UP_PARAGRAPH, "paragraph-up", ReadOnly | NoUpdate},
 		{ LFUN_UP_PARAGRAPHSEL, "paragraph-up-select", ReadOnly },

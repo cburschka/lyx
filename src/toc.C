@@ -19,7 +19,6 @@
 #include "funcrequest.h"
 #include "LyXAction.h"
 #include "paragraph.h"
-#include "pariterator.h"
 
 #include "frontends/LyXView.h"
 
@@ -163,6 +162,107 @@ void asciiTocList(string const & type, Buffer const & buffer, ostream & os)
 		Toc::const_iterator end = cit->second.end();
 		for (; ccit != end; ++ccit)
 			os << ccit->asString() << '\n';
+	}
+}
+
+
+void Outline(OutlineOp mode, Buffer * buf, pit_type & pit)
+{
+	ParagraphList & pars = buf->text().paragraphs();
+	ParagraphList::iterator bgn = pars.begin();
+	ParagraphList::iterator s = boost::next(bgn, pit);
+	ParagraphList::iterator p = s;
+	ParagraphList::iterator end = pars.end();
+
+	LyXTextClass::const_iterator lit =
+		buf->params().getLyXTextClass().begin();
+	LyXTextClass::const_iterator const lend =
+		buf->params().getLyXTextClass().end();
+
+	int const thistoclevel = s->layout()->toclevel;
+	int toclevel;
+	switch (mode) {
+		case UP: {
+			if (p != end)
+				++p;
+			for (; p != end; ++p) {
+				toclevel = p->layout()->toclevel;
+				if (toclevel != LyXLayout::NOT_IN_TOC 
+				    && toclevel <= thistoclevel) {
+					break;	
+				}
+			}
+			ParagraphList::iterator q = s;
+			if (q != bgn)
+				--q;
+			else
+				break;
+			for (; q != bgn; --q) {
+				toclevel = q->layout()->toclevel;
+				if (toclevel != LyXLayout::NOT_IN_TOC 
+				    && toclevel <= thistoclevel) {
+					break;	
+				}
+			}
+			pit_type const newpit = std::distance(pars.begin(), q);
+			pit_type const len = std::distance(s, p);
+			pit += len;
+			pars.insert(q, s, p);
+			s = boost::next(pars.begin(), pit);
+			ParagraphList::iterator t = boost::next(s, len);
+			pit = newpit;
+			pars.erase(s, t);
+		break;
+		}
+		case DOWN: {
+   			   if (p != end)
+				++p;
+			for (; p != end; ++p) {
+				toclevel = p->layout()->toclevel;
+				if (toclevel != LyXLayout::NOT_IN_TOC 
+				    && toclevel <= thistoclevel) {
+					break;	
+				}
+			}
+			ParagraphList::iterator q = p;
+			if (q != end)
+				++q;
+			else
+				break;
+			for (; q != end; ++q) {
+				toclevel = q->layout()->toclevel;
+				if (toclevel != LyXLayout::NOT_IN_TOC 
+				    && toclevel <= thistoclevel) {
+					break;	
+				}
+			}
+			pit_type const newpit = std::distance(pars.begin(), q);
+			pit_type const len = std::distance(s, p);
+			pars.insert(q, s, p);
+			s = boost::next(pars.begin(), pit);
+			ParagraphList::iterator t = boost::next(s, len);
+			pit = newpit - len;
+			pars.erase(s, t);
+		break;
+		}
+		case IN:
+			for (; lit != lend; ++lit) {
+				if ((*lit)->toclevel == thistoclevel + 1) {
+					s->layout((*lit));
+					break;
+				}
+			}
+		break;
+		case OUT:
+			for (; lit != lend; ++lit) {
+				if ((*lit)->toclevel == thistoclevel - 1) {
+					s->layout((*lit));
+					break;
+				}
+			}
+		break;
+		default:
+		break;
 	}
 }
 

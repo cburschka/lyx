@@ -38,6 +38,9 @@ public:
 
 	/// Given a type, returns the contents
 	toc::Toc const getContents(std::string const & type) const;
+
+	/// Apply the selected outlining operation
+	void outline(toc::OutlineOp op);
 };
 
 } // namespace frontend

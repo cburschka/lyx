@@ -107,7 +107,9 @@ void QToc::updateToc(int newdepth)
 	QListViewItem * last = 0;
 	QListViewItem * parent = 0;
 	QListViewItem * item;
-
+	QListViewItem * selected_item = 0;
+	bool multiple = false;
+	
 	// Yes, it is this ugly. Two reasons - root items must have
 	// a QListView parent, rather than QListViewItem; and the
 	// TOC can move in and out an arbitrary number of levels
@@ -157,10 +159,24 @@ void QToc::updateToc(int newdepth)
 		item->setOpen(iter->depth < depth_);
 		curdepth = iter->depth;
 		last = item;
+
+		// Recognise part past the counter
+		if (iter->str.substr(iter->str.find(' ') + 1) == text_) {
+			if (selected_item == 0)
+				selected_item = item;
+			else
+				// more than one match
+				multiple = true;
+		}
 	}
 
 	dialog_->tocLV->setUpdatesEnabled(true);
 	dialog_->tocLV->update();
+	if (!multiple) {
+		dialog_->tocLV->ensureItemVisible(selected_item);
+		dialog_->tocLV->setSelected(selected_item, true);
+		dialog_->tocLV->scrollBy(0, dialog_->tocLV->height() / 2);
+	}
 	setTitle(fromqstr(dialog_->typeCO->currentText()));
 }
 
@@ -180,6 +196,8 @@ void QToc::select(string const & text)
 		return;
 	}
 
+	// Lop off counter part and save:
+	text_ = text.substr(text.find(' ') + 1);
 	controller().goTo(*iter);
 }
 
@@ -189,6 +207,35 @@ void QToc::set_depth(int depth)
 	if (depth != depth_)
 		updateToc(depth);
 }
+
+
+void QToc::moveup()
+{
+	controller().outline(toc::UP);
+	update_contents();
+}
+
+
+void QToc::movedn()
+{
+	controller().outline(toc::DOWN);
+	update_contents();
+}
+
+
+void QToc::movein()
+{
+	controller().outline(toc::IN);
+	update_contents();
+}
+
+
+void QToc::moveout()
+{
+	controller().outline(toc::OUT);
+	update_contents();
+}
+
 
 } // namespace frontend
 } // namespace lyx
