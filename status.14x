@@ -11,7 +11,7 @@ can get with the command
 
 JMarc
 
-[In this list, I try to group things by topics, and in decreasing
+[In this list, I try to group things by topic and in decreasing
 order of importance. This is, of course, subjective...]
 
 What's new
@@ -26,7 +26,7 @@ What's new
 
 - Update Spanish translation of the tutorial.
 
-- Document the packages prettyref, varioref and preview in LaTeXConfig.lyx
+- Document the packages prettyref, varioref and preview in LaTeXConfig.lyx.
 
 ** Bug fixes
 
@@ -34,9 +34,9 @@ What's new
 
 - Fix LaTeX error with Address layout in AMS classes (bug 2363).
 
-- Fix LaTeX error when \labelitemi was undefined (bug 2053).
+- Fix LaTeX error when \labelitemi is undefined (bug 2053).
 
-- Fix LaTeX error when inserting a graphics in a section heading or a
+- Fix LaTeX error when inserting a graphic in a section heading or a
   caption (bug 675).
 
 - Translate \verb commands correctly in tex2lyx (bug 2236).
@@ -50,23 +50,23 @@ What's new
 - Convert old LyX documents with a float list at the end correctly in
   lyx2lyx (bug 2245).
 
-- Set search path for included files correctly on Cygwin (bug 2409)
+- Set search path for included files correctly on Cygwin (bug 2409).
 
 * User Interface:
 
 - Convert line endings for external copy/paste on OS X (bug 1955).
 
-- Disable saving when document is unchanged (bug 2313)
+- Disable saving when document is unchanged (bug 2313).
 
 - Fix jurabib error with Spanish documents (bug 2365).
 
 - Propose sensible style files for bibtex, depending on whether plain,
   natbib or jurabib is used (bug 2322).
 
-- Avoid bogus values like -1000 for section numbering septh when using
-  classes without a sectionning structure (part of bug 2355).
+- Avoid bogus values like -1000 for section numbering depth when using
+  classes without a sectioning structure (part of bug 2355).
 
-- More sensible default label in table and figure captions (bug 1999).
+- Create a more sensible default label in table and figure captions (bug 1999).
 
 - Do not skip first change in "Merge changes..." dialog (bug 2212).
 
@@ -79,13 +79,13 @@ What's new
 - Fix positioning of cursor when clicking to right of last nestinset
   in a cell.
 
-- Fix: deleting superscript also deleted subscript (bug 2362)
+- Fix: deleting superscript also deleted subscript (bug 2362).
 
-- Fix converting selection to superscript, subscript or mbox inset (math)
+- Fix conversion of selection to superscript, subscript or mbox inset (math).
 
 - Fix drawing of \boxed and \fbox in formulas (bug 2361).
 
-- Update screen when cursor was between two spaces and goes to
+- Update screen when cursor is between two spaces and goes to
   line/document start/end (bug 2298).
 
 - Adjust cursor after backspace in change tracking mode (bug 2185).
@@ -94,26 +94,15 @@ What's new
 
 - Fix copy and paste for multiple cells (bug 2377).
 
-- Fix insertion of external multi-cell material into tabulars (bug 2394).
+- Fix drawing of inset buttons (bug 2328).
 
-- Fix drawing of inset buttons (bug 2328)
+- Small optimizations in the way the Qt frontend updates the screen.
 
-- Small optimizations in the way the Qt frontend updates the screen,
+- Use the Qt wide scroll wheel setting (bug 2175).
 
-- Use the qt wide scroll wheel setting (bug 2175).
-
-- Remove zombie wheel mouse spin box from the qt preferences dialog (bug 783).
+- Remove zombie wheel mouse spin box from the Qt preferences dialog (bug 783).
 
 - Fix Find&Replace with sciword bindings.
-
-- Fix alignment of superscript previews (bug 2391).
-
-- Reenable quotes in ERT (bug 2429).
-
-- Prevent deletion of file formats that are used by a converter. Fixes crash
-  (bug 2431).
-
-- Fix bug 2380: Pasting external material into table causes seg fault
 
 - Prevent non-standard paragraph layouts in charstyle insets
 
@@ -124,6 +113,6 @@ What's new
 
 - Compilation fix (gtk frontend) for gcc 4.1.
 
-- Bookmarks and links to LaTeX errors are broken after paragraph
+- Fix bookmarks and links to LaTeX errors which were broken after paragraph
   deletion/insertion (bugs 2284 and 2242).
 
