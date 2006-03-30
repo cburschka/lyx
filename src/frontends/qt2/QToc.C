@@ -173,9 +173,9 @@ void QToc::updateToc(int newdepth)
 	dialog_->tocLV->setUpdatesEnabled(true);
 	dialog_->tocLV->update();
 	if (!multiple) {
-		dialog_->tocLV->ensureItemVisible(selected_item);
+		dialog_->tocLV->scrollBy(0, selected_item->itemPos() 
+			- dialog_->tocLV->height() / 2);
 		dialog_->tocLV->setSelected(selected_item, true);
-		dialog_->tocLV->scrollBy(0, dialog_->tocLV->height() / 2);
 	}
 	setTitle(fromqstr(dialog_->typeCO->currentText()));
 }
