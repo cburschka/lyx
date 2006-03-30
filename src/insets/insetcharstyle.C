@@ -238,13 +238,7 @@ void InsetCharStyle::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_PASTE:
 	case LFUN_PASTESELECTION: {
 		InsetCollapsable::doDispatch(cur, cmd);
-		BufferParams const & bp = cur.buffer().params();
-		LyXLayout_ptr const layout =
-			bp.getLyXTextClass().defaultLayout();
-		ParagraphList::iterator const end = paragraphs().end();
-		for (ParagraphList::iterator par = paragraphs().begin(); 
-				par != end; ++par)
-			par->layout(layout);
+		forceParagraphsToDefault(cur);
 		break;
 		}
 		default:

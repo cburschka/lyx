@@ -244,6 +244,7 @@ void InsetERT::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 		// Since we can only store plain text, we must reset all
 		// attributes.
+		forceParagraphsToDefault(cur);
 		// FIXME: Change only the pasted paragraphs
 
 		BufferParams const & bp = cur.buffer().params();
@@ -255,7 +256,6 @@ void InsetERT::doDispatch(LCursor & cur, FuncRequest & cmd)
 		ParagraphList::iterator const end = paragraphs().end();
 		for (ParagraphList::iterator par = paragraphs().begin();
 		     par != end; ++par) {
-			par->layout(layout);
 			// in case par had a manual label
 			par->setBeginOfBody();
 			pos_type const siz = par->size();

@@ -745,6 +745,9 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 			break;
 		}
 		cell(cur.idx())->dispatch(cur, cmd);
+		// Reset pasted paragraphs:
+		if (tabular.getPWidth(cur.idx()).zero())
+			cell(cur.idx())->forceParagraphsToDefault(cur);
 		break;
 
 	case LFUN_EMPH:
