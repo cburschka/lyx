@@ -39,13 +39,15 @@ public:
 	/// update the float types
 	void updateType();
 
-public slots:
-	void activate_adaptor(int);
-	void depth_adaptor(int);
-	void select_adaptor(QTreeWidgetItem *);
-	void update_adaptor();
-
 protected slots:
+	///
+	void on_tocTW_currentItemChanged(QTreeWidgetItem * current,
+		QTreeWidgetItem * previous);
+
+	void on_closePB_clicked();
+	void on_updatePB_clicked();
+	void on_depthSL_valueChanged(int depth);
+	void on_typeCO_activated(int value);
 	void on_moveUpPB_clicked();
 	void on_moveDownPB_clicked();
 	void on_moveInPB_clicked();

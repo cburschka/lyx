@@ -44,23 +44,52 @@ QTocDialog::QTocDialog(QToc * form)
 	// disable sorting
 	tocTW->setSortingEnabled(false);
 	tocTW->setColumnCount(1);
+
 	// hide the pointless QHeader
 //	QWidget * w = static_cast<QWidget*>(tocTW->child("list view header"));
 //	if (w)
 //		w->hide();
 
-	connect(closePB, SIGNAL(clicked()),
-		form, SLOT(slotClose()));
-
-	connect( tocTW, SIGNAL(itemClicked(QTreeWidgetItem*)), this, SLOT(select_adaptor(QTreeWidgetItem*)));
-    connect( typeCO, SIGNAL( activated(int) ), this, SLOT( activate_adaptor(int) ) );
-    connect( updatePB, SIGNAL( clicked() ), this, SLOT( update_adaptor() ) );
-    connect( depthSL, SIGNAL( valueChanged(int) ), this, SLOT( depth_adaptor(int) ) );
+//	connect(closePB, SIGNAL(clicked()),
+//		form, SLOT(slotClose()));
 }
 
 
 QTocDialog::~QTocDialog()
 {
+	accept();
+}
+
+void QTocDialog::on_tocTW_currentItemChanged(QTreeWidgetItem * current,
+								 QTreeWidgetItem * previous)
+{
+	form_->select(fromqstr(current->text(0)));
+		lyxerr[Debug::GUI]
+			<< fromqstr(current->text(0)) << " selected" << endl;
+}
+
+void QTocDialog::on_closePB_clicked()
+{
+	accept();
+}
+
+void QTocDialog::on_updatePB_clicked()
+{
+	form_->update();
+}
+
+void QTocDialog::on_depthSL_valueChanged(int depth) 
+{
+	if (depth == depth_)
+		return;
+
+	depth_ = depth;
+	updateToc(true);
+}
+
+void QTocDialog::on_typeCO_activated(int value)
+{
+	updateToc();
 }
 
 void QTocDialog::on_moveUpPB_clicked()
@@ -149,7 +178,6 @@ void QTocDialog::updateToc(bool newdepth)
 
 		if (iter->depth == 1) {
 			topLevelItem = new QTreeWidgetItem(tocTW);
-//			tocTW->addTopLevelItem(topLevelItem);
 			topLevelItem->setText(0, toqstr(iter->str));
 			if (iter->depth < depth_) tocTW->collapseItem(topLevelItem);
 
@@ -197,7 +225,6 @@ void QTocDialog::populateItem(QTreeWidgetItem * parentItem, toc::Toc::const_iter
 
 		item = new QTreeWidgetItem(parentItem);
 		item->setText(0, toqstr(iter->str));
-//		parentItem->addChild(item);
 
 		if (iter->depth < depth_) tocTW->collapseItem(item);
 //		else tocTW->expandItem(item);
@@ -212,33 +239,6 @@ void QTocDialog::populateItem(QTreeWidgetItem * parentItem, toc::Toc::const_iter
 	}
 }
 
-void QTocDialog::activate_adaptor(int)
-{
-	updateToc();
-}
-
-
-void QTocDialog::depth_adaptor(int depth)
-{
-	if (depth == depth_)
-		return;
-
-	depth_ = depth;
-	updateToc(true);
-}
-
-
-void QTocDialog::select_adaptor(QTreeWidgetItem * item)
-{
-	form_->select(fromqstr(item->text(0)));
-}
-
-
-void QTocDialog::update_adaptor()
-{
-	form_->update();
-}
-
 
 void QTocDialog::closeEvent(QCloseEvent * e)
 {
@@ -249,55 +249,3 @@ void QTocDialog::closeEvent(QCloseEvent * e)
 } // namespace frontend
 } // namespace lyx
 
-
-/*
-	stack<pair<QTreeWidgetItem *, QTreeWidgetItem *> > istack;
-	QTreeWidgetItem * last = 0;
-	QTreeWidgetItem * parent = 0;
-	QTreeWidgetItem * item;
-
-	// Yes, it is this ugly. Two reasons - root items must have
-	// a QListView parent, rather than QListViewItem; and the
-	// TOC can move in and out an arbitrary number of levels
-
-	for (toc::Toc::const_iterator iter = form_->get_toclist().begin();
-	     iter != form_->get_toclist().end(); ++iter) {
-
-		if (iter->depth == 0) {
-			TocTW
-
-		if (iter->depth == curdepth) {
-			// insert it after the last one we processed
-			if (!parent)
-				item = (last ? new QTreeWidgetItem(tocTW,last) : new QTreeWidgetItem(tocTW));
-			else
-				item = (last ? new QTreeWidgetItem(parent,last) : new QTreeWidgetItem(parent));
-		} else if (iter->depth > curdepth) {
-			int diff = iter->depth - curdepth;
-			// first save old parent and last
-			while (diff--)
-				istack.push(pair< QTreeWidgetItem *, QTreeWidgetItem * >(parent,last));
-			item = (last ? new QTreeWidgetItem(last) : new QTreeWidgetItem(tocTW));
-			parent = last;
-		} else {
-			int diff = curdepth - iter->depth;
-			pair<QTreeWidgetItem *, QTreeWidgetItem * > top;
-			// restore context
-			while (diff--) {
-				top = istack.top();
-				istack.pop();
-			}
-			parent = top.first;
-			last = top.second;
-			// insert it after the last one we processed
-			if (!parent)
-				item = (last ? new QTreeWidgetItem(tocTW,last) : new QTreeWidgetItem(tocTW));
-			else
-				item = (last ? new QTreeWidgetItem(parent,last) : new QTreeWidgetItem(parent));
-		}
-		item->setText(0, toqstr(iter->str));
-		item->setOpen(iter->depth < depth_);
-		curdepth = iter->depth;
-		last = item;
-	}
-*/
