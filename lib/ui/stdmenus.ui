@@ -95,7 +95,7 @@ Menuset
 # Mathed b0rkage means these don't work properly
 		OptSubmenu "Table|T" "edit_tabular"
 		OptSubmenu "Math|M" "edit_math"
-		OptSubmenu "Rows & Cols|C" "tabular_features"
+		OptSubmenu "Rows & Columns|C" "tabular_features"
 		Separator
 		OptItem "Increase List Depth|I" "depth-increment"
 		OptItem "Decrease List Depth|D" "depth-decrement"

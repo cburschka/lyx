@@ -317,7 +317,7 @@ bool Converters::convert(Buffer const * buffer,
 		Alert::error(_("Cannot convert file"),
 			bformat(_("No information for converting %1$s "
 				"format files to %2$s.\n"
-				"Try defining a convertor in the preferences."),
+				"Define a convertor in the preferences."),
 			from_format, to_format));
 		return false;
 	}
