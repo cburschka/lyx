@@ -33,7 +33,7 @@ def addToRC(lines):
 
 def removeFiles(filenames):
   '''utility function: 'rm -f'
-    ignore erroes when file does not exist, or is a directory.
+    ignore errors when file does not exist, or is a directory.
   '''
   for file in filenames:
     try:
@@ -78,7 +78,7 @@ def createDirectories():
         sys.exit(1)
 
 
-def checkCygwinPath():
+def checkCygwinPath(srcdir):
   ''' Adjust PATH for Win32 (Cygwin) '''
   if sys.platform == 'cygwin':
     from tempfile import mkstemp
@@ -88,19 +88,23 @@ def checkCygwinPath():
 \begin{document}\end{document}
   ''')
     os.close(fd)
-    inpname = cmdOutput('cygpath -w ' + tmpfname).replace('\\', '/')
+    inpname = cmdOutput('cygpath -m ' + tmpfname)
     # a wrapper file
     wfd, wtmpfname = mkstemp(suffix='.ltx')
+    wtmpfname = cmdOutput('cygpath -m ' + wtmpfname)
     os.write(wfd, r'\input{' + inpname + '}' )
     os.close(wfd)
     if cmdOutput('latex ' + wtmpfname).find('Error') != -1:
+      print "configure: cygwin detected; path correction is not needed"
+    else:
       print "configure: cygwin detected; path correction"
-      srcdir = cmdOutput('cygpath -w ' + srcdir).replace(r'\\', '')
+      srcdir = cmdOutput('cygpath -m ' + srcdir)
       print "srcdir = ", srcdir
       addToRC(r'\cygwin_path_fix_needed true')
-    else:
-      print "configure: cygwin detected; path correction is not needed"
-    removeFiles( [ tmpfname, wtmpfname ])
+    tmpbname,ext = os.path.splitext(os.path.basename(tmpfname))
+    wtmpbname,ext = os.path.splitext(os.path.basename(wtmpfname))
+    removeFiles( [ tmpfname, wtmpfname, tmpbname + '.log', \
+	    tmpbname + '.aux', wtmpbname + '.log', wtmpbname + '.aux' ] )
 
 
 ## Searching some useful programs
@@ -416,7 +420,37 @@ def checkOtherEntries():
 ''')
 
 
-def checkLatexConfig(check_config):
+def processLayoutFile(file, bool_docbook, bool_linuxdoc):
+  ''' process layout file and get a line of result
+    
+    Declear line are like this: (article.layout, scrbook.layout, svjog.layout)
+    
+    \DeclareLaTeXClass{article}
+    \DeclareLaTeXClass[scrbook]{book (koma-script)}
+    \DeclareLaTeXClass[svjour,svjog.clo]{article (Springer - svjour/jog)}
+
+    we expect output:
+    
+    "article" "article" "article" "false"
+    "scrbook" "scrbook" "book (koma-script)" "false"
+    "svjog" "svjour" "article (Springer - svjour/jog)" "false"
+  '''
+  classname = file.split(os.sep)[-1].split('.')[0]
+  # return ('LaTeX', '[a,b]', 'a', ',b,c', 'article') for \DeclearLaTeXClass[a,b,c]{article}
+  p = re.compile(r'\Declare(LaTeX|DocBook|LinuxDoc)Class\s*(\[([^,]*)(,.*)*\])*\s*{(.*)}')
+  for line in open(file).readlines():
+    res = p.search(line)
+    if res != None:
+      (classtype, optAll, opt, opt1, desc) = res.groups()
+      avai = {'LaTeX':'false', 'DocBook':bool_docbook, 'LinuxDoc':bool_linuxdoc}[classtype]
+      if opt == None:
+        opt = classname
+      return '"%s" "%s" "%s" "%s"\n' % (classname, opt, desc, avai)
+  print "Layout file without \DeclearXXClass line. "
+  sys.exit(2)
+
+  
+def checkLatexConfig(check_config, bool_docbook, bool_linuxdoc):
   ''' Explore the LaTeX configuration '''
   print 'checking LaTeX configuration... ',
   # First, remove the files that we want to re-create
@@ -436,16 +470,6 @@ def checkLatexConfig(check_config):
     # build the list of available layout files and convert it to commands
     # for chkconfig.ltx
     foundClasses = []
-    # sed filters
-    # FIXME: this is a direct translation of the sed commands
-    # There may be more efficient methods
-    p1 = re.compile(r'\Declare(LaTeX|DocBook|LinuxDoc)Class')
-    p2 = re.compile(r'^.*\DeclareLaTeXClass *(.*)')
-    p3 = re.compile(r'^.*\DeclareDocBookClass *(.*)')
-    p4 = re.compile(r'^.*\DeclareLinuxDocClass *(.*)')
-    p5 = re.compile(r'\[([^,]*),[^]]*\]')
-    p6 = re.compile('^{')
-    p7 = re.compile(r'\[([^]]*)\] *{([^}]*)}')
     for file in glob.glob( os.path.join('layouts', '*.layout') ) + \
       glob.glob( os.path.join(srcdir, 'layouts', '*.layout' ) ) :
       # valid file?
@@ -459,34 +483,7 @@ def checkLatexConfig(check_config):
       # make sure the same class is not considered twice
       if foundClasses.count(cleanclass) == 0: # not found before
         foundClasses.append(cleanclass)
-        # The sed commands below are a bit scary. Here is what they do:
-        # 1-3: remove the \DeclareFOO macro and add the correct boolean
-        #      at the end of the line telling whether the class is
-        #      available
-        # 4: if the macro had an optional argument with several
-        #    parameters, only keep the first one
-        # 5: if the macro did not have an optional argument, provide one
-        #    (equal to the class name)
-        # 6: remove brackets and replace with correctly quoted entries
-        #     grep '\\Declare\(LaTeX\|DocBook\|LinuxDoc\)Class' "$file" \
-        #      | sed -e 's/^.*\DeclareLaTeXClass *\(.*\)/\1 "false"/' \
-        #	    -e 's/^.*\DeclareDocBookClass *\(.*\)/\1 "'$bool_docbook'"/' \
-        #	    -e 's/^.*\DeclareLinuxDocClass *\(.*\)/\1 "'$bool_linuxdoc'"/' \
-        #	    -e 's/\[\([^,]*\),[^]]*\]/[\1]/' \
-        #	    -e 's/^{/['$class']{/' \
-        #	    -e 's/\[\([^]]*\)\] *{\([^}]*\)}/"'$class'" "\1" "\2"/' \
-        #                   >>textclass.lst
-        for line in open(file).readlines():
-          if p1.search(line) == None:
-            continue
-          line = p2.sub(r'\1 "false"', line)
-          line = p3.sub(r'\1 "' + bool_docbook + '"', line)
-          line = p4.sub(r'\1 "' + bool_linuxdoc + '"', line)
-          line = p5.sub(r'[\1]', line)
-          line = p6.sub("[" + classname + "]{", line)
-          line = p7.sub( "'" + classname + "'" + r'"\1" "\2"', line)
-          tx.write(line)
-          break       # one file, one line.
+        tx.write(processLayoutFile(file, bool_docbook, bool_linuxdoc))
     tx.close()
     print '\tdone'
   else:
@@ -528,9 +525,8 @@ def checkLatexConfig(check_config):
       if re.match('^\+', line):
         print line
     #
-    #  get lines in chkconfig.vars?
-    # is this really necessary? Some of the values was write 
-    # to rc file.
+    # currently, values in chhkconfig are only used to set
+    # \font_encoding
     values = {}
     for line in open('chkconfig.vars').readlines():
       key, val = re.sub('-', '_', line).split('=')
@@ -549,7 +545,7 @@ def createLaTeXConfig():
   # if chkconfig.sed does not exist (because LaTeX did not run),
   # then provide a standard version.
   if not os.path.isfile('chkconfig.sed'):
-    writeToFile('chkconfig.sed', '##s/@.*@/???/g\n')
+    writeToFile('chkconfig.sed', 's!@.*@!???!g\n')
   print "creating packages.lst"
   # if packages.lst does not exist (because LaTeX did not run),
   # then provide a standard version.
@@ -582,8 +578,13 @@ s!@chk_docbook@!%s!g
       continue
     try:
       fr, to = p.match(sed).groups()
-      for line in range(len(lyxin)):
-        lyxin[line] = lyxin[line].replace(fr, to)
+      # if latex did not run, change all @name@ to '???'
+      if fr == '@.*@':
+        for line in range(len(lyxin)):
+          lyxin[line] = re.sub('@.*@', to, lyxin[line])
+      else:
+        for line in range(len(lyxin)):
+          lyxin[line] = lyxin[line].replace(fr, to)
     except:  # wrong sed entry?
       print "Wrong sed entry in chkconfig.sed: '" + sed + "'"
       sys.exit(4)
@@ -672,7 +673,7 @@ Options:
     sys.exit(1)
   setEnviron()
   createDirectories()
-  checkCygwinPath()
+  checkCygwinPath(srcdir)
   ## Write the first part of outfile
   writeToFile(outfile, '''# This file has been automatically generated by LyX' lib/configure.py
 # script. It contains default settings that have been determined by
@@ -690,6 +691,6 @@ Options:
   checkTeXAllowSpaces()
   checkOtherEntries()
   # --without-latex-config can disable lyx_check_config
-  checkLatexConfig( lyx_check_config and LATEX != '')
+  checkLatexConfig( lyx_check_config and LATEX != '', bool_docbook, bool_linuxdoc)
   createLaTeXConfig()
   removeExtraFiles()
