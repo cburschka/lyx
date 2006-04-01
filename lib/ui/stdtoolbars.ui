@@ -134,7 +134,7 @@ Toolbar "math" "Math"
 	Item "Insert { }" "math-delim { }"
 	Separator
 	Item "Insert matrix" "math-matrix 2 2"
-	Item "Insert cases" "math-insert \cases"
+	Item "Insert cases environment" "math-insert \cases"
 	Item "Add row" "tabular-feature append-row"
 	Item "Add column" "tabular-feature append-column"
 	Item "Delete row" "tabular-feature delete-row"

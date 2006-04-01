@@ -645,8 +645,8 @@ bool LyX::queryUserLyXDir(bool explicit_userdir)
 			      "It is needed to keep your own configuration."),
 			    package().user_support()),
 		    1, 0,
-		    _("&Create directory."),
-		    _("&Exit LyX."))) {
+		    _("&Create directory"),
+		    _("&Exit LyX"))) {
 		lyxerr << _("No user LyX directory. Exiting.") << endl;
 		exit(1);
 	}
@@ -826,8 +826,8 @@ int parse_help(string const &, string const &)
 		_("Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 		  "Command line switches (case sensitive):\n"
 		  "\t-help              summarize LyX usage\n"
-		  "\t-userdir dir       try to set user directory to dir\n"
-		  "\t-sysdir dir        try to set system directory to dir\n"
+		  "\t-userdir dir       set user directory to dir\n"
+		  "\t-sysdir dir        set system directory to dir\n"
 		  "\t-geometry WxH+X+Y  set geometry of the main window\n"
 		  "\t-dbg feature[,feature]...\n"
 		  "                  select the features to debug.\n"

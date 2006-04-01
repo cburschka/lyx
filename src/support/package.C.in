@@ -545,7 +545,7 @@ get_system_support_dir(string const & abs_binary,
 	lyxerr << bformat(_("Unable to determine the system directory "
 			    "having searched\n"
 			    "\t%1$s\n"
-			    "Try the '-sysdir' command line parameter or "
+			    "Use the '-sysdir' command line parameter or "
 			    "set the environment variable LYX_DIR_14x to "
 			    "the LyX system directory containing the file "
 			    "`chkconfig.ltx'."),
