@@ -1,11 +1,16 @@
+2006-04-01  Michael Gerz  <michael.gerz@teststep.org>
+
+	* filename.C (mangledFilename): truncate filename to 100 characters
+	for MiKTeX's pdflatex
+
 2006-03-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* Makefile.am (libsupport_la_SOURCES): add RandomAccessList.h.
 
 2006-03-23  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
-        * RandomAccessList.h: New container for Paragraphs from
-        Abdelrazak Younes
+	* RandomAccessList.h: New container for Paragraphs from
+	Abdelrazak Younes
 
 2006-03-15  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
