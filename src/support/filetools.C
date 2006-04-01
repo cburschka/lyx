@@ -744,6 +744,12 @@ string const ChangeExtension(string const & oldname, string const & extension)
 }
 
 
+string const removeExtension(string const & name)
+{
+	return ChangeExtension(name, string());
+}
+
+
 /// Return the extension of the file (not including the .)
 string const GetExtension(string const & name)
 {

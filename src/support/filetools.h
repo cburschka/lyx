@@ -154,6 +154,9 @@ std::string const AddPath(std::string const & path, std::string const & path2);
 std::string const
 ChangeExtension(std::string const & oldname, std::string const & extension);
 
+/// Remove the extension from \p name
+std::string const removeExtension(std::string const & name);
+
 /// Return the extension of the file (not including the .)
 std::string const GetExtension(std::string const & name);
 

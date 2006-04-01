@@ -101,6 +101,7 @@ using lyx::support::GetExtension;
 using lyx::support::IsFileReadable;
 using lyx::support::latex_path;
 using lyx::support::OnlyFilename;
+using lyx::support::removeExtension;
 using lyx::support::rtrim;
 using lyx::support::subst;
 using lyx::support::Systemcall;
@@ -118,15 +119,6 @@ using std::ostringstream;
 
 
 namespace {
-
-// This function is a utility function
-// ... that should be with ChangeExtension ...
-inline
-string const RemoveExtension(string const & filename)
-{
-	return ChangeExtension(filename, string());
-}
-
 
 /// Find the most suitable image format for images in \p format
 /// Note that \p format may be unknown (i. e. an empty string)
@@ -510,7 +502,7 @@ copyToDirIfNeeded(string const & file_in, string const & dir, bool zipped)
 		// extension removed, because base.eps and base.eps.gz may
 		// have different content but would get the same mangled
 		// name in this case.
-		string const base = RemoveExtension(unzippedFileName(file_in));
+		string const base = removeExtension(unzippedFileName(file_in));
 		string::size_type const ext_len = file_in.length() - base.length();
 		mangled[mangled.length() - ext_len] = '.';
 	}
@@ -534,7 +526,7 @@ string const stripExtensionIfPossible(string const & file)
 	                                     lyx::support::EXCLUDE_EXTENSION);
 	if (contains(latex_name, '"'))
 		return latex_name;
-	return latex_path(RemoveExtension(file),
+	return latex_path(removeExtension(file),
 	                  lyx::support::PROTECT_EXTENSION,
 	                  lyx::support::ESCAPE_DOTS);
 }
@@ -882,7 +874,7 @@ void InsetGraphics::validate(LaTeXFeatures & features) const
 		return;
 
 	features.includeFile(graphic_label,
-	                     RemoveExtension(params().filename.absFilename()));
+	                     removeExtension(params().filename.absFilename()));
 
 	features.require("graphicx");
 
@@ -890,9 +882,9 @@ void InsetGraphics::validate(LaTeXFeatures & features) const
 		Buffer const * m_buffer = features.buffer().getMasterBuffer();
 		string basename =
 			params().filename.outputFilename(m_buffer->filePath());
-		basename = RemoveExtension(basename);
+		basename = removeExtension(basename);
 		if(params().filename.isZipped())
-			basename = RemoveExtension(basename);
+			basename = removeExtension(basename);
 		if (contains(basename, "."))
 			features.require("lyxdot");
 	}
