@@ -19,6 +19,7 @@
 
 #include <map>
 #include <sstream>
+#include <algorithm>
 
 
 using std::map;
@@ -98,22 +99,13 @@ string const FileName::mangledFilename(std::string const & dir) const
 	s << counter++ << mname;
 	mname = s.str();
 
-	// Experiments show that MiKTeX's YAP (version 2.4.1803)
-	// will crash if the string referencing the file name in
-	// the .dvi file is longer than 220 characters.
-	// This string contains about 50 chars-worth of other data,
-	// leaving us, say, 160 characters for the file name itself.
-	// (Erring on the side of caution.)
-	// Other experiments show that MiKTeX's pdflatex compiler is even
-	// more picky. A maximum length of 140 has been proven to work.
-	string::size_type max_length = 140;
-	if (dir.size() - 1 < max_length) {
-		// "+ 1" for the directory separator.
-		max_length -= dir.size() + 1;
-	}
-	// If dir.size() > max_length, all bets are off for YAP anyway.
-	// We truncate the filename nevertheless because of MiKTeX's
-	// pdflatex compiler.
+	// MiKTeX's YAP (version 2.4.1803) crashes if the file name 
+	// is longer than about 160 characters. MiKTeX's pdflatex
+	// is even pickier. A maximum length of 100 has been proven to work.
+	// If dir.size() > max length, all bets are off for YAP. We truncate
+	// the filename nevertheless, keeping a minimum of 10 chars.
+
+	string::size_type max_length = std::max(100 - ((int)dir.size() + 1), 10);
 
 	// If the mangled file name is too long, hack it to fit.
 	// We know we're guaranteed to have a unique file name because
