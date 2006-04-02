@@ -4,8 +4,6 @@
 # Peter Sütterlin <P.Suetterlin@astro.uu.nl>
 # Michael Gerz <Michael.Gerz@teststep.org>
 # 
-# !!! M. Gerz: Check translations of "quote" and "reference"!!!
-# 
 # Ein paar generelle Richtlinien für eine einheitliche Übersetzung (Vorschlag von M. Gerz):
 #
 #   1. In Tooltips die "Sie"-Form verwenden. Beispiel:
@@ -83,8 +81,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-03-25 16:57+0100\n"
-"PO-Revision-Date: 2006-03-27 21:47+0100\n"
+"POT-Creation-Date: 2006-04-01 16:43+0200\n"
+"PO-Revision-Date: 2006-04-01 21:47+0100\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -2041,7 +2039,7 @@ msgstr "Seitenumbruch nach der aktuellen Zeile|#S"
 #: src/frontends/xforms/forms/form_tabular.fd:1638
 #: src/frontends/xforms/forms/form_tabular.fd:1656
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:60
-#: src/frontends/qt2/QDocument.C:166 src/text.C:2290
+#: src/frontends/qt2/QDocument.C:166 src/text.C:2294
 msgid "Double"
 msgstr "Doppelt"
 
@@ -2972,7 +2970,7 @@ msgstr "Schriftserie"
 
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:162
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:217
-#: src/frontends/qt2/QDocumentDialog.C:80 src/frontends/qt2/QPrefsDialog.C:104
+#: src/frontends/qt2/QDocumentDialog.C:80 src/frontends/qt2/QPrefsDialog.C:106
 #: src/frontends/xforms/FormDocument.C:421
 #: src/frontends/xforms/FormPreferences.C:273
 msgid "Language"
@@ -3761,7 +3759,7 @@ msgid "Print as grey text"
 msgstr "Als grauen Text drucken"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:48
-#: src/frontends/qt2/QDocument.C:162 src/text.C:2284
+#: src/frontends/qt2/QDocument.C:162 src/text.C:2288
 msgid "Single"
 msgstr "Einfach"
 
@@ -5550,7 +5548,7 @@ msgid "Acknowledgements."
 msgstr "Danksagungen."
 
 #: lib/layouts/aapaper.layout:63 lib/layouts/egs.layout:637
-#: src/frontends/qt2/QPrefsDialog.C:111
+#: src/frontends/qt2/QPrefsDialog.C:113
 msgid "LaTeX"
 msgstr "LaTeX"
 
@@ -9564,7 +9562,7 @@ msgid "Table|T"
 msgstr "Tabelle|T"
 
 #: lib/ui/stdmenus.ui:98
-msgid "Rows & Cols|C"
+msgid "Rows & Columns|C"
 msgstr "Zeilen & Spalten|Z"
 
 #: lib/ui/stdmenus.ui:100
@@ -10049,7 +10047,7 @@ msgid "Insert { }"
 msgstr "{ } einfügen"
 
 #: lib/ui/stdtoolbars.ui:137
-msgid "Insert cases"
+msgid "Insert cases environment"
 msgstr "Cases-Umgebung einfügen"
 
 #: lib/ui/stdtoolbars.ui:144
@@ -10754,7 +10752,7 @@ msgstr "&Verwerfen"
 msgid "LyX: Attempting to save document %1$s"
 msgstr "LyX: Versuche, das Dokument %1$s zu speichern..."
 
-#: src/bufferlist.C:314 src/bufferlist.C:327 src/bufferlist.C:341
+#: src/bufferlist.C:314 src/bufferlist.C:327 src/bufferlist.C:339
 msgid "  Save seems successful. Phew."
 msgstr "  Speichern scheint gelungen zu sein. Glück gehabt!"
 
@@ -10762,7 +10760,7 @@ msgstr "  Speichern scheint gelungen zu sein. Glück gehabt!"
 msgid "  Save failed! Trying..."
 msgstr "  Die Speicherung ist fehlgeschlagen! Versuche erneut..."
 
-#: src/bufferlist.C:344
+#: src/bufferlist.C:342
 msgid "  Save failed! Bummer. Document is lost."
 msgstr ""
 "  Die Speicherung ist endgültig fehlgeschlagen. Das Dokument ist verloren!"
@@ -10814,11 +10812,11 @@ msgstr "Die Datei kann nicht konvertiert werden"
 #, c-format
 msgid ""
 "No information for converting %1$s format files to %2$s.\n"
-"Try defining a convertor in the preferences."
+"Define a convertor in the preferences."
 msgstr ""
 "Keine Information vorhanden, um Dateien im %1$s-Format nach %2$s zu "
 "konvertieren.\n"
-"Versuchen Sie einen Konverter in den Einstellungen zu definieren."
+"Definieren Sie einen Konverter in den Einstellungen."
 
 #: src/converter.C:395 src/format.C:256 src/format.C:301
 msgid "Executing command: "
@@ -11497,10 +11495,19 @@ msgstr "Stichwort"
 msgid "Label"
 msgstr "Marke"
 
+#: src/frontends/gtk/GAboutlyx.C:200
+msgid "C_redits"
+msgstr "_Ruhm und Ehre"
+
 #: src/frontends/gtk/GBibItem.C:33 src/frontends/qt2/QBibitem.C:31
 #: src/frontends/xforms/FormBibitem.C:38
 msgid "Bibliography Entry Settings"
 msgstr "Literatureintrag-Einstellungen"
+
+#: src/frontends/gtk/GBibtex.C:41 src/frontends/qt2/QBibtex.C:48
+#: src/frontends/xforms/FormBibtex.C:49
+msgid "BibTeX Bibliography"
+msgstr "BibTeX-Literaturverzeichnis"
 
 #: src/frontends/gtk/GBox.C:42 src/frontends/qt2/QBox.C:51
 #: src/frontends/xforms/FormBox.C:47
@@ -11655,7 +11662,7 @@ msgid "Float Settings"
 msgstr "Gleitobjekt-Einstellungen"
 
 #: src/frontends/gtk/GGraphics.C:53 src/frontends/qt2/QGraphics.C:60
-#: src/frontends/qt2/QPrefsDialog.C:99 src/frontends/xforms/FormGraphics.C:78
+#: src/frontends/qt2/QPrefsDialog.C:101 src/frontends/xforms/FormGraphics.C:78
 msgid "Graphics"
 msgstr "Grafik"
 
@@ -11701,6 +11708,19 @@ msgstr "Absatz-Einstellungen"
 msgid "Senseless with this layout!"
 msgstr "Für dieses Format nicht relevant!"
 
+#: src/frontends/gtk/GPreferences.C:38 src/frontends/qt2/QPrefs.C:81
+#: src/frontends/xforms/FormPreferences.C:94
+msgid "Preferences"
+msgstr "Einstellungen"
+
+#: src/frontends/gtk/GPreferences.C:152 src/frontends/qt2/QPrefs.C:135
+msgid "pspell (library)"
+msgstr "pspell (Bibliothek)"
+
+#: src/frontends/gtk/GPreferences.C:155 src/frontends/qt2/QPrefs.C:138
+msgid "aspell (library)"
+msgstr "aspell (Bibliothek)"
+
 #: src/frontends/gtk/GRef.C:65 src/frontends/qt2/QRef.C:42
 #: src/frontends/xforms/FormRef.C:42
 msgid "Cross-reference"
@@ -11724,7 +11744,7 @@ msgstr "Dokument an Befehl senden"
 msgid "Show File"
 msgstr "Zeige Datei"
 
-#: src/frontends/gtk/GSpellchecker.C:35 src/frontends/qt2/QPrefsDialog.C:105
+#: src/frontends/gtk/GSpellchecker.C:35 src/frontends/qt2/QPrefsDialog.C:107
 #: src/frontends/qt2/QSpellchecker.C:35
 #: src/frontends/xforms/FormPreferences.C:270
 #: src/frontends/xforms/FormSpellchecker.C:34
@@ -11825,10 +11845,6 @@ msgstr "Geben Sie ein benutzerdefiniertes Aufzählungszeichen ein"
 msgid "Directories"
 msgstr "Verzeichnisse"
 
-#: src/frontends/qt2/QBibtex.C:48 src/frontends/xforms/FormBibtex.C:49
-msgid "BibTeX Bibliography"
-msgstr "BibTeX-Literaturverzeichnis"
-
 #: src/frontends/qt2/QChanges.C:58
 #, c-format
 msgid ""
@@ -11919,7 +11935,7 @@ msgstr "mit Überschriften"
 msgid "fancy"
 msgstr "ausgefallen"
 
-#: src/frontends/qt2/QDocument.C:164 src/text.C:2287
+#: src/frontends/qt2/QDocument.C:164 src/text.C:2291
 msgid "OneHalf"
 msgstr "Eineinhalb"
 
@@ -12102,10 +12118,6 @@ msgstr "Normaler Textmodus\t\\textrm"
 msgid "LyX: Insert Matrix"
 msgstr "LyX: Matrix einfügen"
 
-#: src/frontends/qt2/QPrefs.C:81 src/frontends/xforms/FormPreferences.C:94
-msgid "Preferences"
-msgstr "Einstellungen"
-
 #: src/frontends/qt2/QPrefs.C:131
 msgid "ispell"
 msgstr "ispell"
@@ -12118,98 +12130,101 @@ msgstr "aspell"
 msgid "hspell"
 msgstr "hspell"
 
-#: src/frontends/qt2/QPrefs.C:135
-msgid "pspell (library)"
-msgstr "pspell (Bibliothek)"
-
-#: src/frontends/qt2/QPrefs.C:138
-msgid "aspell (library)"
-msgstr "aspell (Bibliothek)"
-
-#: src/frontends/qt2/QPrefsDialog.C:94
+#: src/frontends/qt2/QPrefsDialog.C:96
 msgid "Look and feel"
 msgstr "Aussehen"
 
-#: src/frontends/qt2/QPrefsDialog.C:96 src/frontends/qt2/QPrefsDialog.C:123
+#: src/frontends/qt2/QPrefsDialog.C:98 src/frontends/qt2/QPrefsDialog.C:125
 msgid "User interface"
 msgstr "Benutzerschnittstelle"
 
-#: src/frontends/qt2/QPrefsDialog.C:97
+#: src/frontends/qt2/QPrefsDialog.C:99
 msgid "Screen fonts"
 msgstr "Bildschirmschriften"
 
-#: src/frontends/qt2/QPrefsDialog.C:98
+#: src/frontends/qt2/QPrefsDialog.C:100
 #: src/frontends/xforms/FormPreferences.C:231
 msgid "Colors"
 msgstr "Farben"
 
-#: src/frontends/qt2/QPrefsDialog.C:100
+#: src/frontends/qt2/QPrefsDialog.C:102
 msgid "Keyboard"
 msgstr "Tastatur"
 
-#: src/frontends/qt2/QPrefsDialog.C:102
+#: src/frontends/qt2/QPrefsDialog.C:104
 msgid "Language settings"
 msgstr "Sprach-Einstellungen"
 
-#: src/frontends/qt2/QPrefsDialog.C:107
+#: src/frontends/qt2/QPrefsDialog.C:109
 #: src/frontends/xforms/FormPreferences.C:219
 msgid "Outputs"
 msgstr "Ausgabe"
 
-#: src/frontends/qt2/QPrefsDialog.C:109
+#: src/frontends/qt2/QPrefsDialog.C:111
 msgid "Plain text"
 msgstr "Einfacher Text"
 
-#: src/frontends/qt2/QPrefsDialog.C:110
+#: src/frontends/qt2/QPrefsDialog.C:112
 msgid "Date format"
 msgstr "Datumsformat"
 
-#: src/frontends/qt2/QPrefsDialog.C:113 src/frontends/qt2/QPrefsDialog.C:118
+#: src/frontends/qt2/QPrefsDialog.C:115 src/frontends/qt2/QPrefsDialog.C:120
 #: src/frontends/xforms/FormPreferences.C:254
 msgid "Paths"
 msgstr "Pfade"
 
-#: src/frontends/qt2/QPrefsDialog.C:115
+#: src/frontends/qt2/QPrefsDialog.C:117
 #: src/frontends/xforms/FormPreferences.C:262
 msgid "Printer"
 msgstr "Drucker"
 
-#: src/frontends/qt2/QPrefsDialog.C:117
+#: src/frontends/qt2/QPrefsDialog.C:119
 #: src/frontends/xforms/FormPreferences.C:237
 msgid "Identity"
 msgstr "Identität"
 
-#: src/frontends/qt2/QPrefsDialog.C:119
+#: src/frontends/qt2/QPrefsDialog.C:121
 msgid "File formats"
 msgstr "Dateiformate"
 
-#: src/frontends/qt2/QPrefsDialog.C:120
+#: src/frontends/qt2/QPrefsDialog.C:122
 #: src/frontends/xforms/FormPreferences.C:245
 msgid "Converters"
 msgstr "Konverter"
 
-#: src/frontends/qt2/QPrefsDialog.C:121
+#: src/frontends/qt2/QPrefsDialog.C:123
 #: src/frontends/xforms/FormPreferences.C:248
 msgid "Copiers"
 msgstr "Kopierer"
 
-#: src/frontends/qt2/QPrefsDialog.C:917
+#: src/frontends/qt2/QPrefsDialog.C:852
+msgid "Format in use"
+msgstr "Format wird verwendet"
+
+#: src/frontends/qt2/QPrefsDialog.C:853
+#: src/frontends/xforms/FormPreferences.C:1466
+msgid "Cannot remove a Format used by a Converter. Remove the converter first."
+msgstr ""
+"Ein Format, das von einem Konverter verwendet wird, kann nicht entfernt "
+"werden. Bitte entfernen Sie zunächst den Konverter."
+
+#: src/frontends/qt2/QPrefsDialog.C:926
 msgid "Select a document templates directory"
 msgstr "Wählen Sie ein Verzeichnis für die Dokumentvorlagen"
 
-#: src/frontends/qt2/QPrefsDialog.C:925
+#: src/frontends/qt2/QPrefsDialog.C:934
 msgid "Select a temporary directory"
 msgstr "Wählen Sie ein temporäres Verzeichnis"
 
-#: src/frontends/qt2/QPrefsDialog.C:933
+#: src/frontends/qt2/QPrefsDialog.C:942
 msgid "Select a backups directory"
 msgstr "Wählen Sie ein Verzeichnis für Sicherungen"
 
-#: src/frontends/qt2/QPrefsDialog.C:941
+#: src/frontends/qt2/QPrefsDialog.C:950
 msgid "Select a document directory"
 msgstr "Wählen Sie ein Dokumentverzeichnis"
 
-#: src/frontends/qt2/QPrefsDialog.C:949
+#: src/frontends/qt2/QPrefsDialog.C:958
 msgid "Give a filename for the LyX server pipe"
 msgstr "Geben Sie einen Dateinamen für die LyX-Server-Weiterleitung an"
 
@@ -13114,12 +13129,6 @@ msgstr ""
 "Die Einstellungen für das ausgewählte Format verändern. Hinweis: Sie müssen "
 "die Änderung danach \"Übernehmen\"."
 
-#: src/frontends/xforms/FormPreferences.C:1466
-msgid "Cannot remove a Format used by a Converter. Remove the converter first."
-msgstr ""
-"Ein Format, das von einem Konverter verwendet wird, kann nicht entfernt "
-"werden. Bitte entfernen Sie zunächst den Konverter."
-
 #: src/frontends/xforms/FormPreferences.C:1976
 msgid "Monochrome|Grayscale|Color|Do not display"
 msgstr "Schwarzweiß|Graustufen|Farbe|Nicht anzeigen"
@@ -13581,8 +13590,8 @@ msgstr "Zweig-Einfügung geöffnet"
 msgid "Branch: "
 msgstr "Zweig: "
 
-#: src/insets/insetbranch.C:103 src/insets/insetcharstyle.C:154
-#: src/insets/insetcharstyle.C:200
+#: src/insets/insetbranch.C:103 src/insets/insetcharstyle.C:156
+#: src/insets/insetcharstyle.C:202
 msgid "Undef: "
 msgstr "Undef.: "
 
@@ -13594,7 +13603,7 @@ msgstr "Legenden-Einfügung geöffnet"
 msgid "Float"
 msgstr "Gleitobjekt"
 
-#: src/insets/insetcharstyle.C:116
+#: src/insets/insetcharstyle.C:118
 msgid "Opened CharStyle Inset"
 msgstr "Zeichenstil-Einfügung geöffnet"
 
@@ -13606,7 +13615,7 @@ msgstr "Umgebungseinfügung geöffnet: "
 msgid "Opened ERT Inset"
 msgstr "ERT-Einfügung geöffnet"
 
-#: src/insets/insetert.C:399
+#: src/insets/insetert.C:405
 msgid "ERT"
 msgstr "ERT"
 
@@ -13769,15 +13778,15 @@ msgstr "PrettyRef"
 msgid "PrettyRef: "
 msgstr "PrettyRef: "
 
-#: src/insets/insettabular.C:418
+#: src/insets/insettabular.C:419
 msgid "Opened table"
 msgstr "Tabelle geöffnet"
 
-#: src/insets/insettabular.C:1565
+#: src/insets/insettabular.C:1568
 msgid "Error setting multicolumn"
 msgstr "Fehler beim Festlegen der Mehrfachspalte"
 
-#: src/insets/insettabular.C:1566
+#: src/insets/insettabular.C:1569
 msgid "You cannot set multicolumn vertically."
 msgstr "Sie können eine Mehrfachspalte nicht vertikal festlegen."
 
@@ -14158,12 +14167,12 @@ msgstr ""
 "Es wird benötigt, um Ihre persönliche Konfiguration abzulegen."
 
 #: src/lyx_main.C:648
-msgid "&Create directory."
-msgstr "Verzeichnis &erstellen."
+msgid "&Create directory"
+msgstr "Verzeichnis &erstellen"
 
 #: src/lyx_main.C:649
-msgid "&Exit LyX."
-msgstr "LyX &beenden."
+msgid "&Exit LyX"
+msgstr "LyX &beenden"
 
 #: src/lyx_main.C:650
 msgid "No user LyX directory. Exiting."
@@ -14192,8 +14201,8 @@ msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
 "\t-help              summarize LyX usage\n"
-"\t-userdir dir       try to set user directory to dir\n"
-"\t-sysdir dir        try to set system directory to dir\n"
+"\t-userdir dir       set user directory to dir\n"
+"\t-sysdir dir        set system directory to dir\n"
 "\t-geometry WxH+X+Y  set geometry of the main window\n"
 "\t-dbg feature[,feature]...\n"
 "                  select the features to debug.\n"
@@ -14210,9 +14219,9 @@ msgid ""
 msgstr ""
 "Aufruf: lyx [ Befehlszeilenoptionen ] [ name.lyx ... ]\n"
 "Befehlszeilenoptionen (groß/klein beachten):\n"
-"\t-help              LyX Benutzung zusammenfassen\n"
-"\t-userdir dir       Setze das Benutzerverzeichnis auf dir\n"
-"\t-sysdir dir        Setze das Systemverzeichnis auf dir\n"
+"\t-help              Fasst LyX-Benutzung zusammen\n"
+"\t-userdir dir       Setzt das Benutzerverzeichnis auf dir\n"
+"\t-sysdir dir        Setzt das Systemverzeichnis auf dir\n"
 "\t-geometry WxH+X+Y  Legt Höhe/Breite/Position des Fensters fest.\n"
 "\t-dbg Feature[,Feature]...\n"
 "                     Wählt die Themenbereiche aus, für die eine\n"
@@ -14226,7 +14235,7 @@ msgstr ""
 "\t-i [--import] fmt file.xxx\n"
 "                     fmt ist das gewünschte Import-Format, \n"
 "                     file.xxx ist die zu importierende Datei.\n"
-"\t-version           Zusammenfassung von Version und Erstellungsdatum.\n"
+"\t-version           Fasst Version und Erstellungsdatum zusammen.\n"
 "\n"
 "Weitere Optionen sind in der Online-Hilfe (man lyx) aufgeführt."
 
@@ -14486,7 +14495,7 @@ msgstr "Wählen Sie die einzufügende %1$s-Datei"
 msgid "Welcome to LyX!"
 msgstr "Willkommen bei LyX!"
 
-#: src/lyxrc.C:2073
+#: src/lyxrc.C:2072
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
@@ -14494,7 +14503,7 @@ msgstr ""
 "Sollen zusammengeschriebene Worte wie \"Verzeichnisname\" als korrekt "
 "angesehen werden?"
 
-#: src/lyxrc.C:2078
+#: src/lyxrc.C:2077
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
@@ -14502,7 +14511,7 @@ msgstr ""
 "Hier können Sie eine andere Sprache angeben, die zur Rechtschreibprüfung "
 "verwendet wird. Voreingestellt ist die Sprache des Dokuments."
 
-#: src/lyxrc.C:2082
+#: src/lyxrc.C:2081
 msgid ""
 "Use to define an external program to render tables in plain text output. E."
 "g. \"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"none"
@@ -14513,7 +14522,7 @@ msgstr ""
 "$FName\" wobei $$FName die Eingabedatei ist. Wird \"none\" angegeben, "
 "verwendet LyX eine interne Routine."
 
-#: src/lyxrc.C:2086
+#: src/lyxrc.C:2085
 msgid ""
 "This is the maximum line length of an exported text file (LaTeX, SGML or "
 "plain text)."
@@ -14521,7 +14530,7 @@ msgstr ""
 "Dies ist die maximale Zeilenlänge für exportierte Text-Dateien (LaTeX, SGML "
 "oder einfacher Text)."
 
-#: src/lyxrc.C:2090
+#: src/lyxrc.C:2089
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
@@ -14529,7 +14538,7 @@ msgstr ""
 "Deaktivieren Sie diesen Schalter, wenn Sie nicht möchten, dass markierter "
 "Text automatisch durch Ihre Eingabe ersetzt wird."
 
-#: src/lyxrc.C:2094
+#: src/lyxrc.C:2093
 msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
@@ -14538,14 +14547,14 @@ msgstr ""
 "Klassenoptionen nach einem Klassenwechsel auf den Standardwert zurückgesetzt "
 "werden."
 
-#: src/lyxrc.C:2098
+#: src/lyxrc.C:2097
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Das Zeitintervall zwischen automatischen Sicherungen (in Sekunden). 0 "
 "bedeutet kein automatisches Speichern."
 
-#: src/lyxrc.C:2105
+#: src/lyxrc.C:2104
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
@@ -14553,7 +14562,7 @@ msgstr ""
 "Der Pfad für Sicherungsdateien. Wird nichts angegeben, werden die Kopien im "
 "selben Verzeichnis wie das Original gespeichert."
 
-#: src/lyxrc.C:2109
+#: src/lyxrc.C:2108
 msgid ""
 "Define the options of bibtex (cf. man bibtex) or select an alternative "
 "compiler (e.g. mlbibtex or bibulus)."
@@ -14561,7 +14570,7 @@ msgstr ""
 "Definieren Sie die Optionen von BibTeX (vgl. man bibtex) oder wählen Sie "
 "einen alternativen Übersetzer (z.B. mlbibtex oder bibulus)."
 
-#: src/lyxrc.C:2113
+#: src/lyxrc.C:2112
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
@@ -14570,13 +14579,13 @@ msgstr ""
 "absoluten Pfad angeben oder nur einen Namen, LyX sucht dann in den lokalen "
 "und globalen bind-Verzeichnissen."
 
-#: src/lyxrc.C:2117
+#: src/lyxrc.C:2116
 msgid "Select to check whether the lastfiles still exist."
 msgstr ""
 "Bitte aktivieren, wenn geprüft werden soll, ob die angegebenen, zuletzt "
 "bearbeiteten Dateien noch existieren."
 
-#: src/lyxrc.C:2121
+#: src/lyxrc.C:2120
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
@@ -14585,7 +14594,7 @@ msgstr ""
 "\"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -n38\". Bitte lesen Sie die "
 "Dokumentation von ChkTeX."
 
-#: src/lyxrc.C:2131
+#: src/lyxrc.C:2130
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
@@ -14594,7 +14603,7 @@ msgstr ""
 "wenn Sie den angezeigten Ausschnitt mit dem Rollbalken verändern. Ist dieser "
 "Schalter aktiv, wird der Cursor `mitgenommen'."
 
-#: src/lyxrc.C:2145
+#: src/lyxrc.C:2144
 #, no-c-format
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
@@ -14603,15 +14612,15 @@ msgstr ""
 "Hier sind die Formatangaben für strftime erlaubt; näheres entnehmen Sie "
 "bitte der man-Seite von strftime. Beispiel: \"%A, %e. %B %Y\"."
 
-#: src/lyxrc.C:2149
+#: src/lyxrc.C:2148
 msgid "New documents will be assigned this language."
 msgstr "Standardsprache für neue Dokumente."
 
-#: src/lyxrc.C:2153
+#: src/lyxrc.C:2152
 msgid "Specify the default paper size."
 msgstr "Geben Sie die Standard-Papiergröße an."
 
-#: src/lyxrc.C:2157
+#: src/lyxrc.C:2156
 msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
@@ -14619,11 +14628,11 @@ msgstr ""
 "Dialoge werden minimiert, wenn das Hauptfenster minimiert wird. (Betrifft "
 "nur Dialoge, die nach dem Aktivieren dieser Option geöffnet werden)."
 
-#: src/lyxrc.C:2161
+#: src/lyxrc.C:2160
 msgid "Select how LyX will display any graphics."
 msgstr "Wählen Sie, wie LyX Grafiken darstellen soll."
 
-#: src/lyxrc.C:2165
+#: src/lyxrc.C:2164
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
@@ -14631,12 +14640,12 @@ msgstr ""
 "Der Standard-Pfad für Ihre Dokumente. Bei einem leerem Eintrag wird das "
 "Verzeichnis gewählt, aus dem LyX gestartet wurde."
 
-#: src/lyxrc.C:2170
+#: src/lyxrc.C:2169
 msgid "Specify additional chars that can be part of a word."
 msgstr ""
 "Geben Sie zusätzliche Zeichen an, die als Teil eines Wortes erlaubt sind."
 
-#: src/lyxrc.C:2174
+#: src/lyxrc.C:2173
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
@@ -14644,7 +14653,7 @@ msgstr ""
 "Die verwendete Schriftkodierung für das LaTeX2e-Paket fontenc. Für nicht "
 "englische Sprachen wird unbedingt T1 empfohlen."
 
-#: src/lyxrc.C:2181
+#: src/lyxrc.C:2180
 msgid ""
 "Define the options of makeindex (cf. man makeindex) or select an alternative "
 "compiler. E.g., using xindy/make-rules, the command string would be "
@@ -14654,7 +14663,7 @@ msgstr ""
 "Sie einen alternativen Übersetzer. Bei der Verwendung von xindy/make-rules "
 "würde der Befehl z.B. \"makeindex.sh -m $$lang\" lauten."
 
-#: src/lyxrc.C:2190
+#: src/lyxrc.C:2189
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
@@ -14663,13 +14672,13 @@ msgstr ""
 "können dies z.B. verwenden, um einfach deutsche Texte auf einer "
 "amerikanischen Tastatur zu schreiben."
 
-#: src/lyxrc.C:2194
+#: src/lyxrc.C:2193
 msgid "Maximum number of words in the initialization string for a new label"
 msgstr ""
 "Maximale Anzahl von Worten in der Initialisierungs-Zeichenkette für eine "
 "neue Marke."
 
-#: src/lyxrc.C:2198
+#: src/lyxrc.C:2197
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
@@ -14677,14 +14686,14 @@ msgstr ""
 "Bitte aktivieren, wenn zu Beginn des Dokuments ein besonderer Befehl "
 "benötigt wird, um die Sprache zu aktivieren."
 
-#: src/lyxrc.C:2202
+#: src/lyxrc.C:2201
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr ""
 "Bitte aktivieren, wenn am Ende des Dokuments ein besonderer Befehl benötigt "
 "wird, um die Sprache zu deaktivieren."
 
-#: src/lyxrc.C:2206
+#: src/lyxrc.C:2205
 msgid ""
 "The LaTeX command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
@@ -14694,15 +14703,15 @@ msgstr ""
 "zu wechseln. Beispiel: \\selectlanguage{$$lang} wobei $$lang durch den Namen "
 "der zweiten Sprache ersetzt wird."
 
-#: src/lyxrc.C:2210
+#: src/lyxrc.C:2209
 msgid "The LaTeX command for changing back to the language of the document."
 msgstr "Der LaTeX-Befehl, um zur Sprache des Dokuments zurückzuwechseln."
 
-#: src/lyxrc.C:2214
+#: src/lyxrc.C:2213
 msgid "The LaTeX command for local changing of the language."
 msgstr "Der LaTeX-Befehl, um die Sprache lokal zu ändern."
 
-#: src/lyxrc.C:2218
+#: src/lyxrc.C:2217
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
@@ -14710,7 +14719,7 @@ msgstr ""
 "Deaktivieren Sie diesen Schalter, wenn die Sprache nicht als Argument für "
 "\\documentclass verwendet werden soll."
 
-#: src/lyxrc.C:2222
+#: src/lyxrc.C:2221
 msgid ""
 "The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
@@ -14718,7 +14727,7 @@ msgstr ""
 "Der LaTeX-Befehl, um das Sprachpaket zu laden. Beispiel: \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
 
-#: src/lyxrc.C:2226
+#: src/lyxrc.C:2225
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
@@ -14726,19 +14735,19 @@ msgstr ""
 "Deaktivieren Sie diesen Schalter, wenn das Paket babel nicht verwendet "
 "werden soll falls die Sprache des Dokuments die Standardsprache ist."
 
-#: src/lyxrc.C:2230
+#: src/lyxrc.C:2229
 msgid "The file where the last-files information should be stored."
 msgstr ""
 "Die Datei, in der Informationen zu den zuletzt bearbeiteten Dateien "
 "gespeichert werden."
 
-#: src/lyxrc.C:2234
+#: src/lyxrc.C:2233
 msgid "De-select if you don't want LyX to create backup files."
 msgstr ""
 "Deaktivieren Sie diesen Schalter, wenn LyX keine Sicherungsdateien erstellen "
 "soll."
 
-#: src/lyxrc.C:2238
+#: src/lyxrc.C:2237
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
@@ -14746,14 +14755,14 @@ msgstr ""
 "Bitte aktivieren, um Textbereiche mit einer von der Standardsprache des "
 "Dokuments abweichenden Sprache farblich hervorzuheben."
 
-#: src/lyxrc.C:2242
+#: src/lyxrc.C:2241
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 msgstr ""
 "Die maximale Anzahl der zuletzt geöffneten Dateien. Bis zu %1$d können im "
 "'Datei'-Menü erscheinen."
 
-#: src/lyxrc.C:2246
+#: src/lyxrc.C:2245
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
@@ -14762,48 +14771,48 @@ msgstr ""
 "vorangestellt werden sollten. Verwenden Sie das native Format Ihres "
 "Betriebssystems."
 
-#: src/lyxrc.C:2253
+#: src/lyxrc.C:2252
 msgid ""
 "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
 "Geben Sie eine alternative, persönliche Wörterbuchdatei an, z.B. \"."
 "ispell_deutsch\"."
 
-#: src/lyxrc.C:2257
+#: src/lyxrc.C:2256
 msgid "The bold font in the dialogs."
 msgstr "Die Fettschrift in den Dialogfeldern."
 
-#: src/lyxrc.C:2261
+#: src/lyxrc.C:2260
 msgid "The encoding for the menu/popups fonts."
 msgstr "Die Kodierung der Schriften in den Menüs und Dialogen."
 
-#: src/lyxrc.C:2265
+#: src/lyxrc.C:2264
 msgid "The normal font in the dialogs."
 msgstr "Die Normalschrift in den Dialogfeldern."
 
-#: src/lyxrc.C:2269
+#: src/lyxrc.C:2268
 msgid "Shows a typeset preview of things such as math"
 msgstr "Zeigt eine exakte Vorschau von z.B. mathematischen Formeln"
 
-#: src/lyxrc.C:2273
+#: src/lyxrc.C:2272
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr ""
 "Gleichungen werden in der Vorschau \"(#)\" anstelle von Nummern als Marken "
 "haben"
 
-#: src/lyxrc.C:2277
+#: src/lyxrc.C:2276
 msgid "Scale the preview size to suit."
 msgstr "Skaliere die Größe der Vorschau geeignet."
 
-#: src/lyxrc.C:2281
+#: src/lyxrc.C:2280
 msgid "The option for specifying whether the copies should be collated."
 msgstr "Die Option, um 'collate' für mehrere Kopien zu aktivieren."
 
-#: src/lyxrc.C:2285
+#: src/lyxrc.C:2284
 msgid "The option for specifying the number of copies to print."
 msgstr "Die Option, um die Anzahl der Kopien anzugeben."
 
-#: src/lyxrc.C:2289
+#: src/lyxrc.C:2288
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
@@ -14811,11 +14820,11 @@ msgstr ""
 "Standard-Drucker für den Ausdruck. Wird keiner angegeben, verwendet LyX die "
 "Umgebungsvariable PRINTER."
 
-#: src/lyxrc.C:2293
+#: src/lyxrc.C:2292
 msgid "The option to print only even pages."
 msgstr "Die Option, um nur gerade Seiten zu drucken."
 
-#: src/lyxrc.C:2297
+#: src/lyxrc.C:2296
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
@@ -14824,36 +14833,36 @@ msgstr ""
 "zwar nach allen anderen Optionen, aber noch vor dem Namen der zu druckenden "
 "DVI-Datei."
 
-#: src/lyxrc.C:2301
+#: src/lyxrc.C:2300
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr "Endung der Ausgabedatei des Druckprogramms. Normalerweise \".ps\"."
 
-#: src/lyxrc.C:2305
+#: src/lyxrc.C:2304
 msgid "The option to print out in landscape."
 msgstr "Die Option, um im Querformat zu drucken."
 
-#: src/lyxrc.C:2309
+#: src/lyxrc.C:2308
 msgid "The option to print only odd pages."
 msgstr "Die Option, um nur ungerade Seiten zu drucken."
 
-#: src/lyxrc.C:2313
+#: src/lyxrc.C:2312
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr ""
 "Die Option, um eine durch Kommata getrennte Liste von Seiten anzugeben."
 
-#: src/lyxrc.C:2317
+#: src/lyxrc.C:2316
 msgid "Option to specify the dimensions of the print paper."
 msgstr "Die Option, um die Seitengröße anzugeben."
 
-#: src/lyxrc.C:2321
+#: src/lyxrc.C:2320
 msgid "The option to specify paper type."
 msgstr "Die Option, um die Papierart anzugeben."
 
-#: src/lyxrc.C:2325
+#: src/lyxrc.C:2324
 msgid "The option to reverse the order of the pages printed."
 msgstr "Die Option, um die Reihenfolge der gedruckten Seiten umzukehren."
 
-#: src/lyxrc.C:2329
+#: src/lyxrc.C:2328
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
@@ -14863,7 +14872,7 @@ msgstr ""
 "eine Datei, anschließend wird das angegebene Spool-Programm aufgerufen, um "
 "den Druckauftrag mit den angegebenen Optionen auszuführen."
 
-#: src/lyxrc.C:2333
+#: src/lyxrc.C:2332
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
@@ -14871,15 +14880,15 @@ msgstr ""
 "Falls Sie einen Druckernamen im Druck-Dialog angeben, wird er angeführt von "
 "diesem Argument an das Spool-Programm weitergegeben."
 
-#: src/lyxrc.C:2337
+#: src/lyxrc.C:2336
 msgid "Option to pass to the print program to print to a file."
 msgstr "Option, um die Druckausgabe in eine Datei umzulenken."
 
-#: src/lyxrc.C:2341
+#: src/lyxrc.C:2340
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr "Option, um die Ausgabe auf einen angegebenen Drucker zu veranlassen."
 
-#: src/lyxrc.C:2345
+#: src/lyxrc.C:2344
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
@@ -14887,18 +14896,18 @@ msgstr ""
 "Bitte aktivieren, wenn LyX beim Drucken den Namen des Standarddruckers "
 "explizit angeben soll."
 
-#: src/lyxrc.C:2349
+#: src/lyxrc.C:2348
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "Ihr bevorzugtes Druckprogramm, z.B. \"dvips\", \"dvilj4\"."
 
-#: src/lyxrc.C:2353
+#: src/lyxrc.C:2352
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "Bitte aktivieren, um Sprachen zu unterstützen, die von rechts nach links "
 "geschrieben werden, wie etwa Hebräisch oder Arabisch."
 
-#: src/lyxrc.C:2357
+#: src/lyxrc.C:2356
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
@@ -14907,17 +14916,17 @@ msgstr ""
 "selbsttätig ermittelt. Scheitert dies, können Sie hier den korrekten Wert "
 "vorgeben."
 
-#: src/lyxrc.C:2361
+#: src/lyxrc.C:2360
 msgid "The encoding for the screen fonts."
 msgstr "Die Kodierung der Bildschirmschriften."
 
-#: src/lyxrc.C:2367
+#: src/lyxrc.C:2366
 msgid "The screen fonts used to display the text while editing."
 msgstr ""
 "Die Bildschirmschriften, die für die Anzeige des Textes während der "
 "Bearbeitung verwendet werden."
 
-#: src/lyxrc.C:2376
+#: src/lyxrc.C:2375
 msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
@@ -14928,13 +14937,13 @@ msgstr ""
 "blockig erscheinen. Wenn Sie diese Option abwählen, verwendet LyX die "
 "nächstpassende Größe anstatt die Schrift zu skalieren."
 
-#: src/lyxrc.C:2380
+#: src/lyxrc.C:2379
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr ""
 "Die Schriftgrößen, die für die Skalierung der Bildschirmschriften verwendet "
 "werden."
 
-#: src/lyxrc.C:2385
+#: src/lyxrc.C:2384
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
@@ -14943,7 +14952,7 @@ msgstr ""
 "Der prozentuale Vergrößerungsfaktor für die Bildschirmschriften. Ein Wert "
 "von 100% lässt die Zeichen etwa genauso groß erscheinen wie auf Papier."
 
-#: src/lyxrc.C:2389
+#: src/lyxrc.C:2388
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
@@ -14952,17 +14961,17 @@ msgstr ""
 "Weiterleitungen erhalten automatisch die Endungen \".in\" und \".out\". "
 "Diese Option ist vor allem für Fortgeschrittene interessant."
 
-#: src/lyxrc.C:2396
+#: src/lyxrc.C:2395
 msgid "De-select if you don't want the startup banner."
 msgstr ""
 "Deaktivieren Sie diesen Schalter, wenn das Start-Logo nicht angezeigt werden "
 "soll."
 
-#: src/lyxrc.C:2400
+#: src/lyxrc.C:2399
 msgid "What command runs the spellchecker?"
 msgstr "Welcher Befehl führt die Rechtschreibprüfung aus?"
 
-#: src/lyxrc.C:2404
+#: src/lyxrc.C:2403
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
@@ -14970,7 +14979,7 @@ msgstr ""
 "In diesem Verzeichnis legt LyX seine temporären Dateien an. Diese werden "
 "gelöscht, wenn Sie LyX beenden."
 
-#: src/lyxrc.C:2408
+#: src/lyxrc.C:2407
 msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
@@ -14978,7 +14987,7 @@ msgstr ""
 "Der Pfad, den LyX bei der Auswahl einer Vorlage voreinstellt. Bei einem "
 "leeren Eintrag wird das Verzeichnis gewählt, aus dem LyX gestartet wurde."
 
-#: src/lyxrc.C:2415
+#: src/lyxrc.C:2414
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
@@ -14987,7 +14996,7 @@ msgstr ""
 "Entweder Sie geben einen absoluten Pfad an oder LyX sucht in den lokalen und "
 "globalen ui-Verzeichnissen."
 
-#: src/lyxrc.C:2428
+#: src/lyxrc.C:2427
 msgid ""
 "Specify whether to pass the -T input encoding option to ispell. Enable this "
 "if you cannot check the spelling of words containing accented letters. This "
@@ -14998,13 +15007,13 @@ msgstr ""
 "korrekt geprüft werden können. Allerdings funktioniert diese Einstellung "
 "nicht mit allen Wörterbüchern."
 
-#: src/lyxrc.C:2435
+#: src/lyxrc.C:2434
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 "Geben Sie die Papiergrößen-Option für den DVI-Betrachter an (Verwenden sie "
 "\"-paper\" oder lassen Sie den Eintrag leer)."
 
-#: src/lyxrc.C:2442
+#: src/lyxrc.C:2441
 msgid ""
 "The number of lines that are scrolled by mice with wheels or five button "
 "mice."
@@ -15167,7 +15176,7 @@ msgstr ""
 msgid ""
 "Unable to determine the system directory having searched\n"
 "\t%1$s\n"
-"Try the '-sysdir' command line parameter or set the environment variable "
+"Use the '-sysdir' command line parameter or set the environment variable "
 "LYX_DIR_14x to the LyX system directory containing the file `chkconfig.ltx'."
 msgstr ""
 "Das Systemverzeichnis kann trotz der Suche in\n"
@@ -15242,49 +15251,49 @@ msgstr ""
 "Sie können zwei Leerzeichen nicht auf diese Weise eingeben. Bitte lesen Sie "
 "das Tutorium."
 
-#: src/text.C:2252
+#: src/text.C:2256
 msgid "Change: "
 msgstr "Änderung: "
 
-#: src/text.C:2256
+#: src/text.C:2260
 msgid " at "
 msgstr " am "
 
-#: src/text.C:2268
+#: src/text.C:2272
 #, c-format
 msgid "Font: %1$s"
 msgstr "Schrift: %1$s"
 
-#: src/text.C:2275
+#: src/text.C:2279
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Tiefe: %1$d"
 
-#: src/text.C:2281
+#: src/text.C:2285
 msgid ", Spacing: "
 msgstr ", Abstand: "
 
-#: src/text.C:2293
+#: src/text.C:2297
 msgid "Other ("
 msgstr "Andere ("
 
-#: src/text.C:2302
+#: src/text.C:2306
 msgid ", Inset: "
 msgstr ", Einfügung: "
 
-#: src/text.C:2303
+#: src/text.C:2307
 msgid ", Paragraph: "
 msgstr ", Absatz: "
 
-#: src/text.C:2304
+#: src/text.C:2308
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/text.C:2305
+#: src/text.C:2309
 msgid ", Position: "
 msgstr ", Position: "
 
-#: src/text.C:2306
+#: src/text.C:2310
 msgid ", Boundary: "
 msgstr ", Grenze: "
 
