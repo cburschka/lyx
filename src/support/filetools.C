@@ -1172,12 +1172,22 @@ string const readBB_from_PSFile(string const & file)
 		return string();
 	}
 
+	static boost::regex bbox_re(
+		"^%%BoundingBox:\\s*([[:digit:]]+)\\s+([[:digit:]]+)\\s+([[:digit:]]+)\\s+([[:digit:]]+)");
 	std::ifstream is(file_.c_str());
 	while (is) {
 		string s;
 		getline(is,s);
-		if (contains(s,"%%BoundingBox:") && !contains(s,"atend")) {
-			string const bb = ltrim(s.substr(14));
+		boost::smatch what;
+		if (regex_match(s, what, bbox_re)) {
+			// Our callers expect the tokens in the string
+			// separated by single spaces.
+			// FIXME: change return type from string to something
+			// sensible
+			ostringstream os;
+			os << what.str(1) << ' ' << what.str(2) << ' '
+			   << what.str(3) << ' ' << what.str(4);
+			string const bb = os.str();
 			readBB_lyxerrMessage(file_, zipped, bb);
 			return bb;
 		}
