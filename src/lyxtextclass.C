@@ -64,7 +64,7 @@ bool layout2layout(string const & filename, string const & tempfile)
 	string const script = LibFileSearch("scripts", "layout2layout.py");
 	if (script.empty()) {
 		lyxerr << "Could not find layout conversion "
-		          "script layout2layout.py." << endl;
+			  "script layout2layout.py." << endl;
 		return false;
 	}
 
@@ -80,7 +80,7 @@ bool layout2layout(string const & filename, string const & tempfile)
 		lyx::support::RunCommand(command_str);
 	if (ret.first != 0) {
 		lyxerr << "Could not run layout conversion "
-		          "script layout2layout.py." << endl;
+			  "script layout2layout.py." << endl;
 		return false;
 	}
 	return true;
@@ -431,7 +431,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 
 	if (format != FORMAT) {
 		lyxerr[Debug::TCLASS] << "Converting layout file from format "
-		                      << format << " to " << FORMAT << endl;
+				      << format << " to " << FORMAT << endl;
 		string const tempfile = lyx::support::tempName();
 		error = !layout2layout(filename, tempfile);
 		if (!error)
@@ -881,7 +881,7 @@ LyXLayout_ptr const & LyXTextClass::operator[](string const & name) const
 		       << "' in the layout list. You MUST investigate!"
 		       << endl;
 		for (LayoutList::const_iterator it = layoutlist_.begin();
-		         it != layoutlist_.end(); ++it)
+			 it != layoutlist_.end(); ++it)
 			lyxerr  << " " << it->get()->name() << endl;
 
 		// we require the name to exist

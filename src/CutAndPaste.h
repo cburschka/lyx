@@ -58,8 +58,8 @@ void copySelection(LCursor & cur);
 void pasteSelection(LCursor & cur, size_t sel_index = 0);
 
 ///
-void pasteParagraphList(LCursor & cur, ParagraphList const & parlist, 
-                        textclass_type textclass);
+void pasteParagraphList(LCursor & cur, ParagraphList const & parlist,
+			textclass_type textclass);
 
 
 /** Needed to switch between different classes. This works
@@ -91,7 +91,7 @@ void selClearOrDel(LCursor & cur);
 void selPaste(LCursor & cur, size_t n);
 
 /** Tabular has its own paste stack for multiple cells
- *  but it needs to know whether there is a more recent 
+ *  but it needs to know whether there is a more recent
  *  ordinary paste. Therefore which one is newer.
  */
 //FIXME: this is a workaround for bug 1919. Replace this by

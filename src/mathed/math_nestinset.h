@@ -110,7 +110,7 @@ protected:
 	///
 	bool interpret(LCursor & cur, char c);
 	///
-	bool script(LCursor & cur, bool, 
+	bool script(LCursor & cur, bool,
 		std::string const & save_selection = std::string());
 
 

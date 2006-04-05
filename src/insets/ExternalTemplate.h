@@ -81,7 +81,7 @@ public:
 		std::map<TransformID, TransformStore> option_transformers;
 
 		typedef std::map<std::string,
-		                 std::vector<std::string> > FileMap;
+				 std::vector<std::string> > FileMap;
 		/// Referenced files for some formats
 		FileMap referencedFiles;
 	};

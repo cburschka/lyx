@@ -49,7 +49,7 @@ char const encode(string const & encoding, QString const & str)
 	EncodingMap::const_iterator cit = encoding_map.find(encoding);
 	if (cit == encoding_map.end()) {
 		lyxerr[Debug::KEY] << "Unrecognised encoding '" << encoding
-		                   << "'." << endl;
+				   << "'." << endl;
 		codec = encoding_map.find("")->second;
 	} else {
 		codec = cit->second;
@@ -57,7 +57,7 @@ char const encode(string const & encoding, QString const & str)
 
 	if (!codec) {
 		lyxerr[Debug::KEY] << "No codec for encoding '" << encoding
-		                   << "' found." << endl;
+				   << "' found." << endl;
 		return 0;
 	}
 
@@ -91,14 +91,14 @@ void initEncodings()
 		}
 	}
 
-	if (s.find("UTF") != string::npos || s.find("utf") != string::npos) 
+	if (s.find("UTF") != string::npos || s.find("utf") != string::npos)
 	//if (contains(c, "UTF") || contains(c, "utf"))
 		lyxerr << "Warning: this system's locale uses Unicode." << endl;
 
 	// strip off any encoding suffix
 	string::size_type i = s.find(".");
 	s = s.substr(0, i);
-										       
+
 	encoding_map["iso8859-1"] = QTextCodec::codecForName("ISO 8859-1");
 	encoding_map["iso8859-2"] = QTextCodec::codecForName("ISO 8859-2");
 	encoding_map["iso8859-3"] = QTextCodec::codecForName("ISO 8859-3");

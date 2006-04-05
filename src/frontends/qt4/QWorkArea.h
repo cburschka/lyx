@@ -117,16 +117,16 @@ public:
 
 	///
 	virtual std::string const getClipboard() const;
-	
+
 	///
 	virtual void putClipboard(std::string const &) const;
-	
+
 	///
 	virtual void dragEnterEvent(QDragEnterEvent * event);
-	
+
 	///
 	virtual void dropEvent(QDropEvent* event);
-	
+
 	/// return the widget's painter
 	virtual Painter & getPainter() { return (Painter &) painter_; }
 
@@ -167,7 +167,7 @@ protected:
 #if USE_INPUT_METHODS
 protected:
 	/// IM events
-	void QWorkArea::inputMethodEvent(QInputMethodEvent * e) 
+	void QWorkArea::inputMethodEvent(QInputMethodEvent * e)
 #endif
 
 public slots:
@@ -179,7 +179,7 @@ public slots:
 	/// Adjust the LyX buffer view with the position of the scrollbar.
 	/**
 	* The action argument is not used in the the code, it is there
-	* only for the connection to the vertical srollbar signal which 
+	* only for the connection to the vertical srollbar signal which
 	* emits an 'int' action.
 	*/
 	void adjustViewWithScrollBar(int action = 0);

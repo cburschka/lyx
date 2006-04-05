@@ -49,7 +49,7 @@ class InsetTabular : public InsetOld {
 public:
 	///
 	InsetTabular(Buffer const &, row_type rows = 1,
-	             col_type columns = 1);
+		     col_type columns = 1);
 	///
 	~InsetTabular();
 	///
@@ -155,7 +155,7 @@ private:
 
 	///
 	void drawCellLines(Painter &, int x, int y, row_type row,
-	                   idx_type cell, bool erased) const;
+			   idx_type cell, bool erased) const;
 	///
 	void setCursorFromCoordinates(LCursor & cur, int x, int y) const;
 
@@ -181,7 +181,7 @@ private:
 	bool isRightToLeft(LCursor & cur) const;
 	///
 	void getSelection(LCursor & cur, row_type & rs, row_type & re,
-	                  col_type & cs, col_type & ce) const;
+			  col_type & cs, col_type & ce) const;
 	///
 	bool insertAsciiString(BufferView &, std::string const & buf, bool usePaste);
 	/// are we operating on several cells?

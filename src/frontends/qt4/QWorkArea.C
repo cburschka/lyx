@@ -49,7 +49,7 @@
 using lyx::support::subst;
 #endif
 
-// You can find other qt-immodule, X11 and MACX specific stuff 
+// You can find other qt-immodule, X11 and MACX specific stuff
 // at the end of this file...
 ///////////////////////////////////////////////////////////////
 
@@ -149,13 +149,13 @@ QWorkArea::QWorkArea(LyXView &, int w, int h)
 	synthetic_mouse_event_.timeout.timeout.connect(
 		boost::bind(&QWorkArea::generateSyntheticMouseEvent,
 			    this));
-	
+
 	// Initialize the vertical Scroll Bar
 	QObject::connect(verticalScrollBar(), SIGNAL(actionTriggered(int)),
 		this, SLOT(adjustViewWithScrollBar(int)));
 
 	// PageStep only depends on the viewport height.
-	verticalScrollBar()->setPageStep(workHeight_);	
+	verticalScrollBar()->setPageStep(workHeight_);
 
 	lyxerr[Debug::GUI] << BOOST_CURRENT_FUNCTION
 		<< "\n Area width\t" << width()
@@ -263,9 +263,9 @@ void QWorkArea::putClipboard(string const & str) const
 #ifdef Q_WS_MACX
 	// The MAC clipboard uses \r for lineendings, and we use \n
 	QApplication::clipboard()->setText(toqstr(subst(str, '\n', '\r')),
-	                                   QClipboard::Selection);
+					   QClipboard::Selection);
 #else
- 	QApplication::clipboard()->setText(toqstr(str), QClipboard::Selection);
+	QApplication::clipboard()->setText(toqstr(str), QClipboard::Selection);
 #endif
 	lyxerr[Debug::ACTION] << "putClipboard: " << str << endl;
 }
@@ -277,7 +277,7 @@ void QWorkArea::dragEnterEvent(QDragEnterEvent * event)
 
 	/// \todo Ask lyx-devel is this is enough:
 	/// if (event->mimeData()->hasFormat("text/plain"))
-	/// 	event->acceptProposedAction();
+	///	event->acceptProposedAction();
 
 }
 
@@ -429,8 +429,8 @@ void QWorkArea::keyPressEvent(QKeyEvent * e)
 
     boost::shared_ptr<QLyXKeySym> sym(new QLyXKeySym);
     sym->set(e);
-    this->workAreaKeyPress(sym, q_key_state(e->state())); 	 
- 
+    this->workAreaKeyPress(sym, q_key_state(e->state()));
+
 }
 
 // This is not used for now...
@@ -514,7 +514,7 @@ void QWorkArea::update(int x, int y, int w, int h)
 	//screen_device_.fromImage(paint_device_);
 	QPainter q(&screen_device_);
 	q.drawImage(x, y, paint_device_.copy(x, y, w, h));
-	
+
 	viewport()->update(x, y, w, h);
 }
 
@@ -561,7 +561,7 @@ void QWorkArea::drawScreen(int x, int y, QPixmap pixmap)
 #if USE_INPUT_METHODS
 // to make qt-immodule work
 
-void QWorkArea::inputMethodEvent(QInputMethodEvent * e) 
+void QWorkArea::inputMethodEvent(QInputMethodEvent * e)
 {
 	QString const text = e->text();
 	if (!text.isEmpty()) {

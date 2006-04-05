@@ -77,7 +77,7 @@ Paragraph::Paragraph()
 Paragraph::Paragraph(Paragraph const & par)
 	:	itemdepth(par.itemdepth), insetlist(par.insetlist),
 		dim_(par.dim_),
-		rows_(par.rows_), rowSignature_(par.rowSignature_), 
+		rows_(par.rows_), rowSignature_(par.rowSignature_),
 		layout_(par.layout_),
 		text_(par.text_), begin_of_body_(par.begin_of_body_),
 	  pimpl_(new Paragraph::Pimpl(*par.pimpl_, this))
@@ -331,8 +331,8 @@ FontSpan Paragraph::fontSpan(lyx::pos_type pos) const
 				return FontSpan(std::max(start, beginOfBody()),
 						cit->pos());
 			else
-				return FontSpan(start, 
-						std::min(beginOfBody() - 1, 
+				return FontSpan(start,
+						std::min(beginOfBody() - 1,
 							 cit->pos()));
 		}
 		start = cit->pos() + 1;
@@ -559,7 +559,7 @@ int Paragraph::stripLeadingSpaces()
 		return 0;
 
 	int i = 0;
-	while (!empty() && (isNewline(0) || isLineSeparator(0)) 
+	while (!empty() && (isNewline(0) || isLineSeparator(0))
 		&& (lookupChange(0) != Change::DELETED)) {
 		erase(0);
 		++i;

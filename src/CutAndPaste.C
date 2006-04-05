@@ -69,7 +69,7 @@ typedef limited_stack<pair<ParagraphList, textclass_type> > CutStack;
 CutStack theCuts(10);
 
 // store whether the tabular stack is newer than the normal copy stack
-// FIXME: this is a workaround for bug 1919. Should be removed for 1.5, 
+// FIXME: this is a workaround for bug 1919. Should be removed for 1.5,
 // when we (hopefully) have a one-for-all paste mechanism.
 bool dirty_tabular_stack_;
 
@@ -105,9 +105,9 @@ bool checkPastePossible(int index)
 
 
 pair<PitPosPair, pit_type>
-pasteSelectionHelper(Buffer const & buffer, 
+pasteSelectionHelper(Buffer const & buffer,
 		     ParagraphList & pars, pit_type pit, int pos,
-		     ParagraphList const & parlist, textclass_type textclass, 
+		     ParagraphList const & parlist, textclass_type textclass,
 		     ErrorList & errorlist)
 {
 	if (parlist.empty())
@@ -216,15 +216,15 @@ pasteSelectionHelper(Buffer const & buffer,
 	if (empty) {
 		pars.insert(boost::next(pars.begin(), pit),
 			    insertion.begin(),
-		            insertion.end());
+			    insertion.end());
 
 		// merge the empty par with the last par of the insertion
 		mergeParagraph(buffer.params(), pars,
-		               pit + insertion.size() - 1);
+			       pit + insertion.size() - 1);
 	} else {
 		pars.insert(boost::next(pars.begin(), pit + 1),
 			    insertion.begin(),
-		            insertion.end());
+			    insertion.end());
 
 		// merge the first par of the insertion with the current par
 		mergeParagraph(buffer.params(), pars, pit);
@@ -262,12 +262,12 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 	pit_type startpit, pit_type endpit,
 	int startpos, int endpos, bool doclear)
 {
-        // Start of selection is really invalid.
+	// Start of selection is really invalid.
 	if (startpit == pit_type(pars.size()) ||
 	    (startpos > pars[startpit].size()))
 		return PitPosPair(endpit, endpos);
 
-        // Start and end is inside same paragraph
+	// Start and end is inside same paragraph
 	if (endpit == pit_type(pars.size()) ||
 	    startpit == endpit) {
 		endpos -= pars[startpit].erase(startpos, endpos);
@@ -296,7 +296,7 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 			--endpit;
 			if (pit == endpit)
 				endpos += thissize;
-		} else 
+		} else
 			++pit;
 	}
 
@@ -584,8 +584,8 @@ std::string getSelection(Buffer const & buf, size_t sel_index)
 }
 
 
-void pasteParagraphList(LCursor & cur, ParagraphList const & parlist, 
-                        textclass_type textclass)
+void pasteParagraphList(LCursor & cur, ParagraphList const & parlist,
+			textclass_type textclass)
 {
 	if (cur.inTexted()) {
 		LyXText * text = cur.text();
@@ -599,10 +599,10 @@ void pasteParagraphList(LCursor & cur, ParagraphList const & parlist,
 
 		boost::tie(ppp, endpit) =
 			pasteSelectionHelper(cur.buffer(),
-                                             text->paragraphs(),
-                                             cur.pit(), cur.pos(),
-                                             parlist, textclass,
-                                             el);
+					     text->paragraphs(),
+					     cur.pit(), cur.pos(),
+					     parlist, textclass,
+					     el);
 		bufferErrors(cur.buffer(), el);
 		updateCounters(cur.buffer());
 		cur.clearSelection();

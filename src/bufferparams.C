@@ -414,7 +414,7 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 				bformat(_("The document uses a missing "
 				"TeX class \"%1$s\".\n"), classname);
 			Alert::warning(_("Document class not available"),
-			               msg + _("LyX will not be able to produce output."));
+				       msg + _("LyX will not be able to produce output."));
 		}
 	} else if (token == "\\begin_preamble") {
 		readPreamble(lex);

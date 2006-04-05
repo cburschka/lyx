@@ -1575,4 +1575,3 @@ void Buffer::changeRefsIfUnique(string const & from, string const & to)
 		}
 	}
 }
-

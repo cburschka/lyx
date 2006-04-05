@@ -58,7 +58,7 @@ protected:
 	void closeEvent(QCloseEvent * e);
 
 private:
-	
+
 	void populateItem(QTreeWidgetItem * parentItem, toc::Toc::const_iterator& iter);
 
 	QToc * form_;

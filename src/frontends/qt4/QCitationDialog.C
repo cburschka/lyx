@@ -60,7 +60,7 @@ QCitationDialog::QCitationDialog(QCitation * form)
 	: form_(form)
 {
 	setupUi(this);
-	
+
 /*	connect(restorePB, SIGNAL(clicked()),
 		form, SLOT(slotRestore()));
 	connect(okPB, SIGNAL(clicked()),
@@ -99,7 +99,7 @@ QCitationDialog::QCitationDialog(QCitation * form)
 
 
 //	find_ = new QCitationFind(form_, this);
-	
+
 //	connect(selectedLV, SIGNAL(doubleClicked(const QModelIndex & index)),
 //		form_, SLOT(on_okPB_clicked()));//SLOT(slotOK()));
 }
@@ -229,7 +229,7 @@ void QCitationDialog::fillStyles()
 
 	if (selectedLV->selectionModel()->selectedIndexes().empty())
 		return;
-	
+
 	int curr = selectedLV->selectionModel()->selectedIndexes()[0].row();//selectedLV->currentItem();
 
 	string key = fromqstr(selected_keys[curr]);
@@ -261,7 +261,7 @@ void QCitationDialog::setButtons()
 
 	int sel_nr=-1;
 	if (! selectedLV->selectionModel()->selectedIndexes().empty()) {
-		sel_nr = 
+		sel_nr =
 		selectedLV->selectionModel()->selectedIndexes()[0].row();
 	}
 

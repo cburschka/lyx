@@ -46,7 +46,7 @@ public:
 protected slots:
 
 //	void on_selectedLB_currentChanged(Q3ListBoxItem*);
-	
+
 	void on_okPB_clicked();
 	void on_cancelPB_clicked();
 	void on_restorePB_clicked();

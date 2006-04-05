@@ -219,7 +219,7 @@ bool LyXDataSocket::connected() const
 bool LyXDataSocket::readln(string & line)
 {
 	int const charbuf_size = 100;
-        char charbuf[charbuf_size]; // buffer for the ::read() system call
+	char charbuf[charbuf_size]; // buffer for the ::read() system call
 	int count;
 
 	// read and store characters in buffer

@@ -29,7 +29,7 @@ namespace Alert {
  * slap you with fish, and not in an enjoyable way either.
  */
 int prompt(std::string const & title, std::string const & question,
-           int default_button, int cancel_button,
+	   int default_button, int cancel_button,
 	   std::string const & b1, std::string const & b2, std::string const & b3 = std::string());
 
 /**

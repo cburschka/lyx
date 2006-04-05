@@ -59,17 +59,17 @@ void FormBox::build()
 	}
 
 	string str = _("Frameless: No border\n"
-	               "Boxed: Rectangular\n"
-	               "ovalbox: Oval, thin border\n"
-	               "Ovalbox: Oval, thick border\n"
-	               "Shadowbox: Box casting shadow\n"
-	               "Doublebox: Double line border");
+		       "Boxed: Rectangular\n"
+		       "ovalbox: Oval, thin border\n"
+		       "Ovalbox: Oval, thick border\n"
+		       "Shadowbox: Box casting shadow\n"
+		       "Doublebox: Double line border");
 	tooltips().init(dialog_->choice_type, str);
 
 	bcview().addReadOnly(dialog_->check_inner_box);
 
 	str = _("The inner box may be a parbox or a minipage,\n"
-	        "with appropriate arguments from this dialog.");
+		"with appropriate arguments from this dialog.");
 	tooltips().init(dialog_->check_inner_box, str);
 
 	bcview().addReadOnly(dialog_->radio_parbox);

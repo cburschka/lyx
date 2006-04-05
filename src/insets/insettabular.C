@@ -166,7 +166,7 @@ bool InsetTabular::hasPasteBuffer() const
 
 
 InsetTabular::InsetTabular(Buffer const & buf, row_type rows,
-                           col_type columns)
+			   col_type columns)
 	: tabular(buf.params(), max(rows, row_type(1)),
 	  max(columns, col_type(1))), buffer_(&buf), scx_(0)
 {}
@@ -251,7 +251,7 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 			Dimension dim;
 			MetricsInfo m = mi;
 			LyXLength p_width;
-			if (tabular.cell_info[i][j].multicolumn == 
+			if (tabular.cell_info[i][j].multicolumn ==
 			    LyXTabular::CELL_BEGIN_OF_MULTICOLUMN)
 				p_width = tabular.cellinfo_of_cell(cell).p_width;
 			else
@@ -449,7 +449,7 @@ void InsetTabular::edit(LCursor & cur, bool left)
 
 void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
-	lyxerr[Debug::DEBUG] << "# InsetTabular::doDispatch: cmd: " << cmd 
+	lyxerr[Debug::DEBUG] << "# InsetTabular::doDispatch: cmd: " << cmd
 			     << "\n  cur:" << cur << endl;
 	CursorSlice sl = cur.top();
 	LCursor & bvcur = cur.bv().cursor();
@@ -512,7 +512,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		cell(cur.idx())->dispatch(cur, cmd);
 		if (!cur.result().dispatched()) {
 			isRightToLeft(cur) ? movePrevCell(cur) : moveNextCell(cur);
-			if (sl == cur.top()) 
+			if (sl == cur.top())
 				cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 			else
 				cur.dispatched();
@@ -524,7 +524,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		cell(cur.idx())->dispatch(cur, cmd);
 		if (!cur.result().dispatched()) {
 			isRightToLeft(cur) ? moveNextCell(cur) : movePrevCell(cur);
-			if (sl == cur.top()) 
+			if (sl == cur.top())
 				cmd = FuncRequest(LFUN_FINISHED_LEFT);
 			else
 				cur.dispatched();
@@ -1182,9 +1182,9 @@ int InsetTabular::dist(idx_type const cell, int x, int y) const
 	else if (x > xend)
 		xx = x - xend;
 
-	if (y < ybeg) 
+	if (y < ybeg)
 		yy = ybeg - y;
-	else if (y > yend) 
+	else if (y > yend)
 		yy = y - yend;
 
 	//lyxerr << " xbeg=" << xbeg << "  xend=" << xend
@@ -1738,7 +1738,7 @@ bool InsetTabular::copySelection(LCursor & cur)
 	paste_tabular->plaintext(cur.buffer(), os, runparams, 0, true, '\t');
 	cur.bv().stuffClipboard(os.str());
 	// mark tabular stack dirty
-	// FIXME: this is a workaround for bug 1919. Should be removed for 1.5, 
+	// FIXME: this is a workaround for bug 1919. Should be removed for 1.5,
 	// when we (hopefully) have a one-for-all paste mechanism.
 	lyx::cap::dirtyTabularStack(true);
 
@@ -2000,14 +2000,14 @@ void InsetTabularMailer::string2params(string const & in, InsetTabular & inset)
 	lex >> token;
 	if (!lex || token != name_)
 		return print_mailer_error("InsetTabularMailer", in, 1,
-		                          name_);
+					  name_);
 
 	// This is part of the inset proper that is usually swallowed
 	// by Buffer::readInset
 	lex >> token;
 	if (!lex || token != "Tabular")
 		return print_mailer_error("InsetTabularMailer", in, 2,
-		                          "Tabular");
+					  "Tabular");
 
 	Buffer const & buffer = inset.buffer();
 	inset.read(buffer, lex);

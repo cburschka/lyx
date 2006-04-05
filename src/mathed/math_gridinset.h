@@ -220,7 +220,7 @@ protected:
 	int cellYOffset(idx_type idx) const;
 	/// returns proper 'end of line' code for LaTeX
 	virtual std::string eolString(row_type row, bool emptyline,
-	                              bool fragile) const;
+				      bool fragile) const;
 	/// returns proper 'end of column' code for LaTeX
 	virtual std::string eocString(col_type col, col_type lastcol) const;
 	/// extract number of columns from alignment string

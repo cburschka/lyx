@@ -134,7 +134,7 @@ CommandMap known_math_environments;
 
 
 void add_known_command(string const & command, string const & o1,
-                       bool o2)
+		       bool o2)
 {
 	// We have to handle the following cases:
 	// definition                      o1    o2    invocation result
@@ -194,7 +194,7 @@ void read_command(Parser & p, string command, CommandMap & commands) {
  * Read a class of environments from the syntax file
  */
 void read_environment(Parser & p, string const & begin,
-                      CommandMap & environments)
+		      CommandMap & environments)
 {
 	string environment;
 	while (p.good()) {
@@ -244,7 +244,7 @@ void read_syntaxfile(string const & file_name)
 				if (name == "environments" || name == "reLyXre")
 					// We understand "reLyXre", but it is
 					// not as powerful as "environments".
-					read_environment(p, name, 
+					read_environment(p, name,
 						known_environments);
 				else if (name == "mathenvironments")
 					read_environment(p, name,
@@ -269,13 +269,13 @@ typedef boost::function<int(string const &, string const &)> cmd_helper;
 int parse_help(string const &, string const &)
 {
 	cerr << "Usage: tex2lyx [ command line switches ] <infile.tex> [<outfile.lyx>]\n"
-	        "Command line switches (case sensitive):\n"
-	        "\t-help              summarize tex2lyx usage\n"
-	        "\t-f                 Force creation of .lyx files even if they exist already\n"
+		"Command line switches (case sensitive):\n"
+		"\t-help              summarize tex2lyx usage\n"
+		"\t-f                 Force creation of .lyx files even if they exist already\n"
 		"\t-userdir dir       try to set user directory to dir\n"
 		"\t-sysdir dir        try to set system directory to dir\n"
-	        "\t-c textclass       declare the textclass\n"
-	        "\t-s syntaxfile      read additional syntax file" << endl;
+		"\t-c textclass       declare the textclass\n"
+		"\t-s syntaxfile      read additional syntax file" << endl;
 	exit(0);
 }
 
@@ -484,7 +484,7 @@ int main(int argc, char * argv[])
 
 	if (argc <= 1) {
 		cerr << "Usage: tex2lyx [ command line switches ] <infile.tex> [<outfile.lyx>]\n"
-		          "See tex2lyx -help." << endl;
+			  "See tex2lyx -help." << endl;
 		return 2;
 	}
 

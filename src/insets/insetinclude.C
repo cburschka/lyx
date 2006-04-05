@@ -344,13 +344,13 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 	// buffer directory.
 	if (!AbsolutePath(incfile)) {
 		incfile = MakeRelPath(included_file,
-		                      m_buffer->filePath());
+				      m_buffer->filePath());
 	}
 
 	// write it to a file (so far the complete file)
 	string const exportfile = ChangeExtension(incfile, ".tex");
 	string const mangled = FileName(ChangeExtension(included_file,
-	                                                ".tex")).mangledFilename();
+							".tex")).mangledFilename();
 	string const writefile = MakeAbsPath(mangled, m_buffer->temppath());
 
 	if (!runparams.nice)
@@ -367,11 +367,11 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 
 		if (tmp->params().textclass != m_buffer->params().textclass) {
 			string text = bformat(_("Included file `%1$s'\n"
-			                        "has textclass `%2$s'\n"
-			                        "while parent file has textclass `%3$s'."),
-			                      MakeDisplayPath(included_file),
-			                      tmp->params().getLyXTextClass().name(),
-			                      m_buffer->params().getLyXTextClass().name());
+						"has textclass `%2$s'\n"
+						"while parent file has textclass `%3$s'."),
+					      MakeDisplayPath(included_file),
+					      tmp->params().getLyXTextClass().name(),
+					      m_buffer->params().getLyXTextClass().name());
 			Alert::warning(_("Different textclasses"), text);
 			//return 0;
 		}
@@ -399,8 +399,8 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 			if (!copy(included_file, writefile)) {
 				lyxerr[Debug::LATEX]
 					<< bformat(_("Could not copy the file\n%1$s\n"
-					             "into the temporary directory."),
-					           included_file)
+						     "into the temporary directory."),
+						   included_file)
 					<< endl;
 				return 0;
 			}
@@ -414,7 +414,7 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 		os << '\\' << params_.getCmdName() << '{' << incfile << '}';
 	} else if (type(params_) == INPUT) {
 		runparams.exportdata->addExternalFile(tex_format, writefile,
-		                                      exportfile);
+						      exportfile);
 
 		// \input wants file with extension (default is .tex)
 		if (!IsLyXFilename(included_file)) {
@@ -429,7 +429,7 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 		}
 	} else {
 		runparams.exportdata->addExternalFile(tex_format, writefile,
-		                                      exportfile);
+						      exportfile);
 
 		// \include don't want extension and demands that the
 		// file really have .tex
@@ -472,7 +472,7 @@ int InsetInclude::linuxdoc(Buffer const & buffer, ostream & os,
 		Buffer * tmp = bufferlist.getBuffer(included_file);
 
 		writefile = MakeAbsPath(FileName(writefile).mangledFilename(),
-		                        buffer.getMasterBuffer()->temppath());
+					buffer.getMasterBuffer()->temppath());
 		if (!runparams.nice)
 			incfile = writefile;
 
@@ -489,7 +489,7 @@ int InsetInclude::linuxdoc(Buffer const & buffer, ostream & os,
 		   << "]]>";
 	} else {
 		runparams.exportdata->addExternalFile("linuxdoc", writefile,
-		                                      exportfile);
+						      exportfile);
 		os << '&' << include_label << ';';
 	}
 
@@ -517,7 +517,7 @@ int InsetInclude::docbook(Buffer const & buffer, ostream & os,
 
 		string const mangled = FileName(writefile).mangledFilename();
 		writefile = MakeAbsPath(mangled,
-		                        buffer.getMasterBuffer()->temppath());
+					buffer.getMasterBuffer()->temppath());
 		if (!runparams.nice)
 			incfile = mangled;
 
@@ -529,9 +529,9 @@ int InsetInclude::docbook(Buffer const & buffer, ostream & os,
 	}
 
 	runparams.exportdata->addExternalFile("docbook", writefile,
-	                                      exportfile);
+					      exportfile);
 	runparams.exportdata->addExternalFile("docbook-xml", writefile,
-	                                      exportfile);
+					      exportfile);
 
 	if (isVerbatim(params_)) {
 		os << "<inlinegraphic fileref=\""
@@ -561,7 +561,7 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 	if (!features.runparams().nice && !isVerbatim(params_)) {
 		incfile = FileName(writefile).mangledFilename();
 		writefile = MakeAbsPath(incfile,
-			                buffer.getMasterBuffer()->temppath());
+					buffer.getMasterBuffer()->temppath());
 	}
 
 	features.includeFile(include_label, writefile);

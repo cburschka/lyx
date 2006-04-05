@@ -28,7 +28,7 @@ QSpellcheckerDialog::QSpellcheckerDialog(QSpellchecker * form)
 
 	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
-    
+
     connect( replaceCO, SIGNAL( highlighted(const QString&) ), this, SLOT( replaceChanged(const QString &) ) );
     connect( replacePB, SIGNAL( clicked() ), this, SLOT( replaceClicked() ) );
     connect( ignorePB, SIGNAL( clicked() ), this, SLOT( ignoreClicked() ) );

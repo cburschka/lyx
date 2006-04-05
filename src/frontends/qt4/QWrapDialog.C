@@ -32,7 +32,7 @@ QWrapDialog::QWrapDialog(QWrap * form)
 		form, SLOT(slotOK()));
 	connect(applyPB, SIGNAL(clicked()),
 		form, SLOT(slotApply()));
-	connect(closePB, SIGNAL(clicked()),	
+	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
 
     connect( widthED, SIGNAL( textChanged(const QString&) ), this, SLOT( change_adaptor() ) );

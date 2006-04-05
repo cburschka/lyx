@@ -86,7 +86,7 @@ public:
 	/// Only used in case of full backups
 	BufferParams bparams;
 	/// Only used in case of full backups
-	bool isFullBuffer;	
+	bool isFullBuffer;
 };
 
 

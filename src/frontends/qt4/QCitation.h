@@ -31,15 +31,15 @@ public:
 	///
 	QCitation(Dialog &);
 
-	QStringListModel * available() 
+	QStringListModel * available()
 	{ return &available_keys_; }
 
-	QStringListModel * selected() 
+	QStringListModel * selected()
 	{ return &selected_keys_; }
 
-	QStringListModel * found() 
+	QStringListModel * found()
 	{ return &found_keys_; }
-	
+
 	QModelIndex findKey(QString const & str, QModelIndex const & index) const;
 	QModelIndex findKey(QString const & str) const;
 

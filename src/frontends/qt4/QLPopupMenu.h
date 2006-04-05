@@ -31,7 +31,7 @@ class QLPopupMenu : public QMenu {
 public:
 
 	QLPopupMenu(QLMenubar * owner, MenuItem const & mi, bool topLevelMenu=false);
- 
+
 	/// populates the menu or one of its submenu
 	/// This is used as a recursive function
 	void populate(QMenu* qMenu, Menu * menu);
@@ -48,7 +48,7 @@ private:
 	/// the name of this menu
 	std::string name_;
 
-private:	
+private:
 	/// Get a Menu item label from the menu backend
 	std::string const getLabel(MenuItem const & mi);
 

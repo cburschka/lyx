@@ -206,9 +206,9 @@ void InsetCollapsable::cursorPos
 	(CursorSlice const & sl, bool boundary, int & x, int & y) const
 {
 	BOOST_ASSERT(status() != Collapsed);
-	
+
 	InsetText::cursorPos(sl, boundary, x, y);
-	
+
 	if (status() == Open) {
 		if (openinlined_)
 			x += dimensionCollapsed().wid;
@@ -342,7 +342,7 @@ void InsetCollapsable::doDispatch(LCursor & cur, FuncRequest & cmd)
 			setStatus(cur, Open);
 		else if (cmd.argument == "close")
 			setStatus(cur, Collapsed);
-		else if (cmd.argument == "toggle" || cmd.argument.empty()) 
+		else if (cmd.argument == "toggle" || cmd.argument.empty())
 			if (isOpen()) {
 				setStatus(cur, Collapsed);
 				cur.forwardPosNoDescend();
@@ -399,4 +399,3 @@ void InsetCollapsable::setLabelFont(LyXFont & font)
 {
 	labelfont_ = font;
 }
-

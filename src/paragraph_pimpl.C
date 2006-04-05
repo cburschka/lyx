@@ -212,7 +212,7 @@ void Paragraph::Pimpl::acceptChange(pos_type start, pos_type end)
 				break;
 
 			case Change::DELETED:
-				// Suppress access to nonexistent 
+				// Suppress access to nonexistent
 				// "end-of-paragraph char":
 				if (i < size()) {
 					eraseIntern(i);

@@ -498,7 +498,7 @@ void PreviewLoader::Impl::startLoading()
 	// The conversion command.
 	ostringstream cs;
 	cs << pconverter_->command << ' ' << pconverter_->to << ' '
-	   << support::QuoteName(latexfile) << ' ' 
+	   << support::QuoteName(latexfile) << ' '
 	   << int(font_scaling_factor_) << ' '
 	   << lyx_gui::hexname(LColor::preview) << ' '
 	   << lyx_gui::hexname(LColor::background);

@@ -94,7 +94,7 @@ InsetText::InsetText(InsetText const & in)
 	drawFrame_ = in.drawFrame_;
 	frame_color_ = in.frame_color_;
 	text_.paragraphs() = in.text_.paragraphs();
-	// Hand current buffer language down to "cloned" textinsets 
+	// Hand current buffer language down to "cloned" textinsets
 	// e.g. tabular cells
 	text_.current_font = in.text_.current_font;
 	text_.real_current_font = in.text_.real_current_font;
@@ -225,10 +225,10 @@ void InsetText::drawSelection(PainterInfo & pi, int x, int y) const
 	int const h = a + text_.descent() + border_;
 	int const ww = pi.base.bv->workWidth();
 	if (Wide())
-		pi.pain.fillRectangle(0, y - a, ww, h, 
+		pi.pain.fillRectangle(0, y - a, ww, h,
 			backgroundColor());
 	else
-		pi.pain.fillRectangle(x, y - a, w, h, 
+		pi.pain.fillRectangle(x, y - a, w, h,
 			backgroundColor());
 	text_.drawSelection(pi, x, y);
 }
@@ -260,7 +260,7 @@ InsetBase * InsetText::editXY(LCursor & cur, int x, int y)
 
 bool const InsetText::Tall() const
 {
-	return text_.ascent() + text_.descent() > 2  * defaultRowHeight(); 
+	return text_.ascent() + text_.descent() > 2  * defaultRowHeight();
 }
 
 
@@ -270,7 +270,7 @@ void InsetText::forceParagraphsToDefault(LCursor & cur)
 	LyXLayout_ptr const layout =
 		bp.getLyXTextClass().defaultLayout();
 	ParagraphList::iterator const end = paragraphs().end();
-	for (ParagraphList::iterator par = paragraphs().begin(); 
+	for (ParagraphList::iterator par = paragraphs().begin();
 			par != end; ++par)
 		par->layout(layout);
 }

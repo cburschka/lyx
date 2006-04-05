@@ -78,7 +78,7 @@ enum LTRowType
 class RowInfo {
 public:
 	RowInfo() : topline(false), bottomline(false), type(LT_NORMAL),
-	            newpage(false) {}
+		    newpage(false) {}
 	/// horizontal line above
 	bool topline;
 	/// horizontal line below
@@ -105,8 +105,8 @@ enum Multicolumn {
 class CellInfo {
 public:
 	CellInfo() : multi(CELL_NORMAL), align('n'), valign('n'),
-	             leftlines(0), rightlines(0), topline(false),
-	             bottomline(false), rotate(false) {}
+		     leftlines(0), rightlines(0), topline(false),
+		     bottomline(false), rotate(false) {}
 	/// cell content
 	string content;
 	/// multicolumn flag
@@ -194,10 +194,10 @@ string const write_attribute(string const & name, string const & s)
  gets "translated" to:
 
 \verbatim
-         HLINE 1                     TAB 2 TAB 3 HLINE          HLINE LINE
+	 HLINE 1                     TAB 2 TAB 3 HLINE          HLINE LINE
   \hline HLINE \multicolumn{2}{c}{4} TAB 5       HLINE          HLINE LINE
-         HLINE 6                     TAB 7       HLINE          HLINE LINE
-         HLINE 8                                 HLINE \endhead HLINE LINE
+	 HLINE 6                     TAB 7       HLINE          HLINE LINE
+	 HLINE 8                                 HLINE \endhead HLINE LINE
 \endverbatim
  */
 
@@ -260,11 +260,11 @@ void ci2special(ColInfo & ci)
  * in an intermediate form. fix_colalign() makes it suitable for LyX output.
  */
 void handle_colalign(Parser & p, vector<ColInfo> & colinfo,
-                     ColInfo const & start)
+		     ColInfo const & start)
 {
 	if (p.get_token().cat() != catBegin)
 		cerr << "Wrong syntax for table column alignment.\n"
-		        "Expected '{', got '" << p.curr_token().asInput()
+			"Expected '{', got '" << p.curr_token().asInput()
 		     << "'.\n";
 
 	ColInfo next = start;
@@ -369,7 +369,7 @@ void handle_colalign(Parser & p, vector<ColInfo> & colinfo,
 					next = ColInfo();
 				} else {
 					cerr << "Ignoring column specification"
-					        " '*{" << num << "}{"
+						" '*{" << num << "}{"
 					     << arg << "}'." << endl;
 				}
 				break;
@@ -397,7 +397,7 @@ void handle_colalign(Parser & p, vector<ColInfo> & colinfo,
 					next = ColInfo();
 				} else
 					cerr << "Ignoring column specification"
-					        " '" << t << "'." << endl;
+						" '" << t << "'." << endl;
 				break;
 			}
 	}
@@ -468,7 +468,7 @@ void fix_colalign(vector<ColInfo> & colinfo)
  * \returns wether the token \p t was parsed
  */
 bool parse_hlines(Parser & p, Token const & t, string & hlines,
-                  bool is_long_tabular)
+		  bool is_long_tabular)
 {
 	BOOST_ASSERT(t.cat() == catEscape);
 
@@ -509,7 +509,7 @@ enum RowPosition {
  * content. The cell content is parsed in a second step in handle_tabular().
  */
 void parse_table(Parser & p, ostream & os, bool is_long_tabular,
-                 RowPosition & pos, unsigned flags)
+		 RowPosition & pos, unsigned flags)
 {
 	// table structure commands such as \hline
 	string hlines;
@@ -539,7 +539,7 @@ void parse_table(Parser & p, ostream & os, bool is_long_tabular,
 					comments += t.asInput();
 				continue;
 			} else if (t.cat() == catSpace ||
-			           t.cat() == catNewline) {
+				   t.cat() == catNewline) {
 				// whitespace is irrelevant here, we
 				// need to recognize hline stuff
 				p.skip_spaces();
@@ -570,11 +570,11 @@ void parse_table(Parser & p, ostream & os, bool is_long_tabular,
 			}
 
 			else if (t.cs() == "tabularnewline" ||
-			         t.cs() == "\\" ||
-			         t.cs() == "cr") {
+				 t.cs() == "\\" ||
+				 t.cs() == "cr") {
 				if (t.cs() == "cr")
 					cerr << "Warning: Converting TeX "
-					        "'\\cr' to LaTeX '\\\\'."
+						"'\\cr' to LaTeX '\\\\'."
 					     << endl;
 				// stuff before the line break
 				os << comments << HLINE << hlines << HLINE
@@ -587,10 +587,10 @@ void parse_table(Parser & p, ostream & os, bool is_long_tabular,
 			}
 
 			else if (is_long_tabular &&
-			         (t.cs() == "endhead" ||
-			          t.cs() == "endfirsthead" ||
-			          t.cs() == "endfoot" ||
-			          t.cs() == "endlastfoot")) {
+				 (t.cs() == "endhead" ||
+				  t.cs() == "endfirsthead" ||
+				  t.cs() == "endfoot" ||
+				  t.cs() == "endlastfoot")) {
 				hlines += t.asInput();
 				switch (pos) {
 				case IN_COLUMNS:
@@ -681,7 +681,7 @@ void parse_table(Parser & p, ostream & os, bool is_long_tabular,
 		else if (t.cat() == catBegin) {
 			os << '{';
 			parse_table(p, os, is_long_tabular, pos,
-			            FLAG_BRACE_LAST);
+				    FLAG_BRACE_LAST);
 			os << '}';
 		}
 
@@ -861,28 +861,28 @@ void handle_tabular(Parser & p, ostream & os, bool is_long_tabular,
 					size_t from = convert<unsigned int>(t[0]);
 					if (from == 0)
 						cerr << "Could not parse "
-						        "cline start column."
+							"cline start column."
 						     << endl;
 					else
 						// 1 based index -> 0 based
 						--from;
 					if (from >= colinfo.size()) {
 						cerr << "cline starts at non "
-						        "existing column "
+							"existing column "
 						     << (from + 1) << endl;
 						from = colinfo.size() - 1;
 					}
 					size_t to = convert<unsigned int>(t[1]);
 					if (to == 0)
 						cerr << "Could not parse "
-						        "cline end column."
+							"cline end column."
 						     << endl;
 					else
 						// 1 based index -> 0 based
 						--to;
 					if (to >= colinfo.size()) {
 						cerr << "cline ends at non "
-						        "existing column "
+							"existing column "
 						     << (to + 1) << endl;
 						to = colinfo.size() - 1;
 					}
@@ -935,8 +935,8 @@ void handle_tabular(Parser & p, ostream & os, bool is_long_tabular,
 						else
 							// This does not work in LaTeX
 							cerr << "Ignoring "
-							        "'\\newpage' "
-							        "before rows."
+								"'\\newpage' "
+								"before rows."
 							     << endl;
 					} else
 						rowinfo[row].newpage = true;
@@ -993,7 +993,7 @@ void handle_tabular(Parser & p, ostream & os, bool is_long_tabular,
 					cerr << "Moving cell content '"
 					     << cells[cell]
 					     << "' into a multicolumn cell. "
-					        "This will probably not work."
+						"This will probably not work."
 					     << endl;
 				}
 				cellinfo[row][col].content += os.str();
@@ -1070,13 +1070,13 @@ void handle_tabular(Parser & p, ostream & os, bool is_long_tabular,
 		   << write_attribute("topline", rowinfo[row].topline)
 		   << write_attribute("bottomline", rowinfo[row].bottomline)
 		   << write_attribute("endhead",
-		                      rowinfo[row].type == LT_HEAD)
+				      rowinfo[row].type == LT_HEAD)
 		   << write_attribute("endfirsthead",
-		                      rowinfo[row].type == LT_FIRSTHEAD)
+				      rowinfo[row].type == LT_FIRSTHEAD)
 		   << write_attribute("endfoot",
-		                      rowinfo[row].type == LT_FOOT)
+				      rowinfo[row].type == LT_FOOT)
 		   << write_attribute("endlastfoot",
-		                      rowinfo[row].type == LT_LASTFOOT)
+				      rowinfo[row].type == LT_LASTFOOT)
 		   << write_attribute("newpage", rowinfo[row].newpage)
 		   << ">\n";
 		for (size_t col = 0; col < colinfo.size(); ++col) {

@@ -67,10 +67,10 @@ public:
 	std::string const & getContents() const { return p_.getContents(); }
 	///
 	void setContents(std::string const & c)
-        {
-                updateButtonLabel_ = true;
-                p_.setContents(c);
-        }
+	{
+		updateButtonLabel_ = true;
+		p_.setContents(c);
+	}
 	///
 	std::string const & getOptions() const { return p_.getOptions(); }
 	///
@@ -89,22 +89,22 @@ protected:
 	std::string const & getCmdName() const { return p_.getCmdName(); }
 	///
 	void setCmdName(std::string const & n)
-        {
-                updateButtonLabel_ = true;
-                p_.setCmdName(n);
-        }
+	{
+		updateButtonLabel_ = true;
+		p_.setCmdName(n);
+	}
 	///
 	void setOptions(std::string const & o)
-        {
-                updateButtonLabel_ = true;
-                p_.setOptions(o);
-        }
+	{
+		updateButtonLabel_ = true;
+		p_.setOptions(o);
+	}
 	///
 	void setSecOptions(std::string const & s)
-        {
-                updateButtonLabel_ = true;
-                p_.setSecOptions(s);
-        }
+	{
+		updateButtonLabel_ = true;
+		p_.setSecOptions(s);
+	}
 	///
 	void setParams(InsetCommandParams const &);
 	/// This should provide the text for the button

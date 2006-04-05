@@ -76,11 +76,11 @@ int checkOverwrite(string const & filename)
 	if (fs::exists(filename)) {
 		string text = bformat(_("The file %1$s already exists.\n\n"
 					"Do you want to over-write that file?"),
-		                      MakeDisplayPath(filename));
+				      MakeDisplayPath(filename));
 		return Alert::prompt(_("Over-write file?"),
-		                     text, 0, 2,
-		                     _("&Over-write"), _("Over-write &all"),
-		                     _("&Cancel export"));
+				     text, 0, 2,
+				     _("&Over-write"), _("Over-write &all"),
+				     _("&Cancel export"));
 	}
 	return 0;
 }
@@ -102,8 +102,8 @@ enum CopyStatus {
  *  - CANCEL  if the export should be cancelled
  */
 CopyStatus copyFile(string const & format,
-                    string const & sourceFile, string const & destFile,
-                    string const & latexFile, bool force)
+		    string const & sourceFile, string const & destFile,
+		    string const & latexFile, bool force)
 {
 	CopyStatus ret = force ? FORCE : SUCCESS;
 
@@ -130,9 +130,9 @@ CopyStatus copyFile(string const & format,
 	Mover const & mover = movers(format);
 	if (!mover.copy(sourceFile, destFile, latexFile))
 		Alert::error(_("Couldn't copy file"),
-		             bformat(_("Copying %1$s to %2$s failed."),
-		                     MakeDisplayPath(sourceFile),
-		                     MakeDisplayPath(destFile)));
+			     bformat(_("Copying %1$s to %2$s failed."),
+				     MakeDisplayPath(sourceFile),
+				     MakeDisplayPath(destFile)));
 
 	return ret;
 }
@@ -222,7 +222,7 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 	if (!put_in_tempdir) {
 		string const tmp_result_file = result_file;
 		result_file = ChangeExtension(buffer->fileName(),
-		                              formats.extension(format));
+					      formats.extension(format));
 		// We need to copy referenced files (e. g. included graphics
 		// if format == "dvi") to the result dir.
 		vector<ExportedFile> const files =
@@ -234,24 +234,24 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 			string const fmt =
 				formats.getFormatFromFile(it->sourceName);
 			status = copyFile(fmt, it->sourceName,
-			                  MakeAbsPath(it->exportName, dest),
-			                  it->exportName, status == FORCE);
+					  MakeAbsPath(it->exportName, dest),
+					  it->exportName, status == FORCE);
 		}
 		if (status == CANCEL) {
 			buffer->message(_("Document export cancelled."));
 		} else if (fs::exists(tmp_result_file)) {
 			// Finally copy the main file
 			status = copyFile(format, tmp_result_file,
-			                  result_file, result_file,
-			                  status == FORCE);
+					  result_file, result_file,
+					  status == FORCE);
 			buffer->message(bformat(_("Document exported as %1$s "
-			                          "to file `%2$s'"),
-			                        formats.prettyName(format),
-			                        MakeDisplayPath(result_file)));
+						  "to file `%2$s'"),
+						formats.prettyName(format),
+						MakeDisplayPath(result_file)));
 		} else {
 			// This must be a dummy converter like fax (bug 1888)
 			buffer->message(bformat(_("Document exported as %1$s"),
-			                        formats.prettyName(format)));
+						formats.prettyName(format)));
 		}
 	}
 

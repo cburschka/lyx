@@ -188,7 +188,7 @@ Change::Type lookupChange(DocIterator const & dit, bool outer = false)
 
 	for (size_t i = 0 ; i < depth ; ++i) {
 		CursorSlice const & slice = dit[i];
-		if (!slice.inset().inMathed() 
+		if (!slice.inset().inMathed()
 		    && slice.pos() < slice.paragraph().size()) {
 			Change::Type const ch = slice.paragraph().lookupChange(slice.pos());
 			if (ch != Change::UNCHANGED)
@@ -309,7 +309,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 		// by a binding
 		if (keysym->isText() && keyseq.length() == 1) {
 			lyxerr[Debug::KEY] << "isText() is true, inserting." << endl;
-			func = FuncRequest(LFUN_SELFINSERT, 
+			func = FuncRequest(LFUN_SELFINSERT,
 					   FuncRequest::KEYBOARD);
 		} else {
 			lyxerr[Debug::KEY] << "Unknown, !isText() - giving up" << endl;
@@ -321,7 +321,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 	if (func.action == LFUN_SELFINSERT) {
 		if (encoded_last_key != 0) {
 			string const arg(1, encoded_last_key);
-			dispatch(FuncRequest(LFUN_SELFINSERT, arg, 
+			dispatch(FuncRequest(LFUN_SELFINSERT, arg,
 					     FuncRequest::KEYBOARD));
 			lyxerr[Debug::KEY]
 				<< "SelfInsert arg[`" << arg << "']" << endl;
@@ -543,7 +543,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	}
 
 	case LFUN_MENUWRITE: {
-		enable = view()->buffer()->isUnnamed() 
+		enable = view()->buffer()->isUnnamed()
 			|| !view()->buffer()->isClean();
 		break;
 	}
@@ -1002,7 +1002,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				// save cursor Position for opened files to .lyx/session
 				LyX::ref().session().saveFilePosition(owner->buffer()->fileName(),
 					boost::tie(view()->cursor().pit(), view()->cursor().pos()) );
-				// save opened file name to .lyx/session 
+				// save opened file name to .lyx/session
 				LyX::ref().session().setLastOpenedFiles( bufferlist.getFileNames());
 				// save bookmarks to .lyx/session
 				view()->saveSavedPositions();
@@ -1266,12 +1266,12 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			owner->getDialogs().disconnect(argument);
 			break;
 
-		
+
 		case LFUN_INSERT_CITATION: {
 			if (!argument.empty()) {
 				// we can have one optional argument, delimited by '|'
 				// citation-insert <key>|<text_before>
-				// this should be enhanced to also support text_after 
+				// this should be enhanced to also support text_after
 				// and citation style
 				string arg = argument;
 				string opt1;
@@ -1629,7 +1629,7 @@ void LyXFunc::sendDispatchMessage(string const & msg, FuncRequest const & cmd)
 	/* When an action did not originate from the UI/kbd, it makes
 	 * sense to avoid updating the GUI. It turns out that this
 	 * fixes bug 1941, for reasons that are described here:
-	 * http://bugzilla.lyx.org/show_bug.cgi?id=1941#c4 
+	 * http://bugzilla.lyx.org/show_bug.cgi?id=1941#c4
 	 */
 	if (cmd.origin != FuncRequest::INTERNAL) {
 		owner->updateMenubar();
@@ -1891,7 +1891,7 @@ void LyXFunc::doImport(string const & argument)
 
 void LyXFunc::closeBuffer()
 {
-	// save current cursor position 
+	// save current cursor position
 	LyX::ref().session().saveFilePosition(owner->buffer()->fileName(),
 		boost::tie(view()->cursor().pit(), view()->cursor().pos()) );
 	if (bufferlist.close(owner->buffer(), true) && !quitting) {

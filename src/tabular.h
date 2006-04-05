@@ -185,7 +185,7 @@ public:
 
 	/// constructor
 	LyXTabular(BufferParams const &, col_type columns_arg,
-	           row_type rows_arg);
+		   row_type rows_arg);
 
 	/// Returns true if there is a topline, returns false if not
 	bool topLine(idx_type cell, bool onlycolumn = false) const;
@@ -247,13 +247,13 @@ public:
 	bool setMColumnPWidth(LCursor &, idx_type, LyXLength const &);
 	///
 	void setAlignSpecial(idx_type cell, std::string const & special,
-	                     Feature what);
+			     Feature what);
 	///
 	LyXAlignment getAlignment(idx_type cell,
-	                          bool onlycolumn = false) const;
+				  bool onlycolumn = false) const;
 	///
 	VAlignment getVAlignment(idx_type cell,
-	                         bool onlycolumn = false) const;
+				 bool onlycolumn = false) const;
 	///
 	LyXLength const getPWidth(idx_type cell) const;
 	///
@@ -384,7 +384,7 @@ public:
 	boost::shared_ptr<InsetText> getCellInset(idx_type cell) const;
 	///
 	boost::shared_ptr<InsetText> getCellInset(row_type row,
-	                                          col_type column) const;
+						  col_type column) const;
 	///
 	void setCellInset(row_type row, col_type column,
 			  boost::shared_ptr<InsetText>) const;
@@ -531,7 +531,7 @@ public:
 
 	///
 	void init(BufferParams const &, row_type rows_arg,
-	          col_type columns_arg);
+		  col_type columns_arg);
 	///
 	void set_row_column_number_info();
 	/// Returns true if a complete update is necessary, otherwise false

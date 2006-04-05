@@ -49,10 +49,10 @@ enum Substitute {
 */
 std::string const doSubstitution(InsetExternalParams const & params,
 				 Buffer const & buffer,
-                                 std::string const & s,
-                                 bool use_latex_path,
+				 std::string const & s,
+				 bool use_latex_path,
 				 bool external_in_tmpdir = false,
-                                 Substitute what = ALL);
+				 Substitute what = ALL);
 
 
 /** Write the output for a specific file format
@@ -65,8 +65,8 @@ int writeExternal(InsetExternalParams const &,
 		  Buffer const &,
 		  std::ostream &,
 		  ExportData &,
-                  bool external_in_tmpdir,
-                  bool external_in_comment);
+		  bool external_in_tmpdir,
+		  bool external_in_comment);
 
 } // namespace external
 } // namespace lyx

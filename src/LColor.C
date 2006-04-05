@@ -188,7 +188,7 @@ string const LColor::getX11Name(LColor::color c) const
 		return it->second.x11name;
 
 	lyxerr << "LyX internal error: Missing color"
-	          " entry in LColor.C for " << c << '\n'
+		  " entry in LColor.C for " << c << '\n'
 	       << "Using black." << endl;
 	return "black";
 }

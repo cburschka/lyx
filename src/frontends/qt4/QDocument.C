@@ -42,7 +42,7 @@ namespace lyx {
 namespace frontend {
 
 typedef QController<ControlDocument, QView<QDocumentDialog> > base_class;
- 
+
 
 QDocument::QDocument(Dialog & parent)
 	: base_class(parent, _("Document Settings"))

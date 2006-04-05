@@ -502,8 +502,8 @@ bool Converters::move(string const & fmt,
 			if (!moved && no_errors) {
 				Alert::error(_("Cannot convert file"),
 					bformat(copy ?
-					        _("Could not copy a temporary file from %1$s to %2$s.") :
-					        _("Could not move a temporary file from %1$s to %2$s."),
+						_("Could not copy a temporary file from %1$s to %2$s.") :
+						_("Could not move a temporary file from %1$s to %2$s."),
 						from2, to2));
 				no_errors = false;
 			}
@@ -515,7 +515,7 @@ bool Converters::move(string const & fmt,
 bool Converters::convert(Buffer const * buffer,
 			 string const & from_file, string const & to_file_base,
 			 string const & from_format, string const & to_format,
-                         bool try_default)
+			 bool try_default)
 {
 	string to_file;
 	return convert(buffer, from_file, to_file_base, from_format, to_format,

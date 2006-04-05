@@ -52,7 +52,7 @@ void QBranches::update(BufferParams const & params)
 
 void QBranches::update()
 {
-	
+
 	// store the selected branch
 	Q3ListViewItem * selItem =
 		branchesLV->selectedItem();

@@ -406,7 +406,7 @@ LyXTabular::ltType::ltType()
 
 
 LyXTabular::LyXTabular(BufferParams const & bp, row_type rows_arg,
-                       col_type columns_arg)
+		       col_type columns_arg)
 {
 	init(bp, rows_arg, columns_arg);
 }
@@ -414,7 +414,7 @@ LyXTabular::LyXTabular(BufferParams const & bp, row_type rows_arg,
 
 // activates all lines and sets all widths to 0
 void LyXTabular::init(BufferParams const & bp, row_type rows_arg,
-                      col_type columns_arg)
+		      col_type columns_arg)
 {
 	rows_    = rows_arg;
 	columns_ = columns_arg;
@@ -856,7 +856,7 @@ void LyXTabular::setWidthOfCell(idx_type cell, int new_width)
 
 
 void LyXTabular::setAlignment(idx_type cell, LyXAlignment align,
-                              bool onlycolumn)
+			      bool onlycolumn)
 {
 	if (!isMultiColumn(cell) || onlycolumn)
 		column_info[column_of_cell(cell)].alignment = align;
@@ -866,7 +866,7 @@ void LyXTabular::setAlignment(idx_type cell, LyXAlignment align,
 
 
 void LyXTabular::setVAlignment(idx_type cell, VAlignment align,
-                               bool onlycolumn)
+			       bool onlycolumn)
 {
 	if (!isMultiColumn(cell) || onlycolumn)
 		column_info[column_of_cell(cell)].valignment = align;
@@ -915,7 +915,7 @@ void LyXTabular::setColumnPWidth(LCursor & cur, idx_type cell,
 		idx_type const cell = getCellNumber(i, j);
 		// because of multicolumns
 		toggleFixedWidth(cur, getCellInset(cell).get(),
-		                 !getPWidth(cell).zero());
+				 !getPWidth(cell).zero());
 	}
 	// cur paragraph can become invalid after paragraphs were merged
 	if (cur.pit() > cur.lastpit())
@@ -1385,7 +1385,7 @@ LyXTabular::cellstruct & LyXTabular::cellinfo_of_cell(idx_type cell) const
 
 
 void LyXTabular::setMultiColumn(Buffer * buffer, idx_type cell,
-                                idx_type number)
+				idx_type number)
 {
 	cellstruct & cs = cellinfo_of_cell(cell);
 	cs.multicolumn = CELL_BEGIN_OF_MULTICOLUMN;
@@ -1536,10 +1536,10 @@ LyXTabular::idx_type LyXTabular::getLastCellBelow(idx_type cell) const
 
 
 LyXTabular::idx_type LyXTabular::getCellNumber(row_type row,
-                                               col_type column) const
+					       col_type column) const
 {
 	BOOST_ASSERT(column != npos && column < columns_ &&
-	             row    != npos && row    < rows_);
+		     row    != npos && row    < rows_);
 	return cell_info[row][column].cellno;
 }
 
@@ -1565,7 +1565,7 @@ LyXTabular::BoxType LyXTabular::getUsebox(idx_type cell) const
 //  This are functions used for the longtable support
 ///
 void LyXTabular::setLTHead(row_type row, bool flag, ltType const & hd,
-                           bool first)
+			   bool first)
 {
 	if (first) {
 		endfirsthead = hd;
@@ -1596,7 +1596,7 @@ bool LyXTabular::getRowOfLTFirstHead(row_type row, ltType & hd) const
 
 
 void LyXTabular::setLTFoot(row_type row, bool flag, ltType const & fd,
-                           bool last)
+			   bool last)
 {
 	if (last) {
 		endlastfoot = fd;
@@ -2553,7 +2553,7 @@ shared_ptr<InsetText> LyXTabular::getCellInset(idx_type cell) const
 
 
 shared_ptr<InsetText> LyXTabular::getCellInset(row_type row,
-                                               col_type column) const
+					       col_type column) const
 {
 	return cell_info[row][column].inset;
 }

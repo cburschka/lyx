@@ -141,7 +141,7 @@ int width(char const * s, size_t ls, LyXFont const & f)
 	Encoding const * encoding = fontencoding(f);
 	QLFontInfo & fi = fontloader.fontinfo(f);
 
-	if (ls == 1) 
+	if (ls == 1)
 		return fi.width(encoding->ucs(s[0]));
 
 	int w = 0;
@@ -184,4 +184,3 @@ void buttonText(string const & str, LyXFont const & f,
 }
 
 } // namespace font_metrics
-

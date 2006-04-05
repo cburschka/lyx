@@ -53,7 +53,7 @@ void parse_math(Parser & p, std::ostream & os, unsigned flags, mode_type mode);
 
 /// in table.C
 void handle_tabular(Parser & p, std::ostream & os, bool is_long_tabular,
-                    Context & context);
+		    Context & context);
 
 
 /// in tex2lyx.C
@@ -74,7 +74,7 @@ char const * const * is_known(std::string const &, char const * const *);
  * \param o2 wether \newcommand had a second optional parameter
  */
 void add_known_command(std::string const & command, std::string const & o1,
-                       bool o2);
+		       bool o2);
 
 // Access to environment stack
 extern std::vector<std::string> active_environments;

@@ -402,17 +402,17 @@ void MathGridInset::metrics(MetricsInfo & mi) const
 
 	dim_.wid   =   colinfo_[ncols() - 1].offset_
 		       + colinfo_[ncols() - 1].width_
-	         + vlinesep() * colinfo_[ncols()].lines_
+		 + vlinesep() * colinfo_[ncols()].lines_
 		       + border();
 
 	dim_.asc  = - rowinfo_[0].offset_
 		       + rowinfo_[0].ascent_
-	         + hlinesep() * rowinfo_[0].lines_
+		 + hlinesep() * rowinfo_[0].lines_
 		       + border();
 
 	dim_.des =   rowinfo_[nrows() - 1].offset_
 		       + rowinfo_[nrows() - 1].descent_
-	         + hlinesep() * rowinfo_[nrows()].lines_
+		 + hlinesep() * rowinfo_[nrows()].lines_
 		       + border();
 
 
@@ -1078,7 +1078,7 @@ void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 			cur.undispatched();
 		}
 		break;
-	
+
 	case LFUN_CELL_FORWARD:
 		// Can't handle selection by additional 'shift' as this is
 		// hard bound to LFUN_CELL_BACKWARD
@@ -1140,8 +1140,8 @@ void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 			cur.pos() = 0; // trick, see below
 		}
 		else if (s == "copy-row") {
-			// Here (as later) we save the cursor col/row 
-			// in order to restore it after operation. 
+			// Here (as later) we save the cursor col/row
+			// in order to restore it after operation.
 			row_type const r = cur.row();
 			col_type const c = cur.col();
 			for (int i = 0, n = extractInt(is); i < n; ++i)
@@ -1150,9 +1150,9 @@ void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		}
 		else if (s == "swap-row") {
 			swapRow(cur.row());
-			// Trick to suppress same-idx-means-different-cell 
+			// Trick to suppress same-idx-means-different-cell
 			// assertion crash:
-			cur.pos() = 0; 
+			cur.pos() = 0;
 		}
 		else if (s == "add-hline-above")
 			rowinfo_[cur.row()].lines_++;
@@ -1345,7 +1345,7 @@ bool MathGridInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 		}
 
 		status.setOnOff(s == "align-left"    && halign(cur.col()) == 'l'
-		           || s == "align-right"   && halign(cur.col()) == 'r'
+			   || s == "align-right"   && halign(cur.col()) == 'r'
 			   || s == "align-center"  && halign(cur.col()) == 'c'
 			   || s == "valign-top"    && valign() == 't'
 			   || s == "valign-bottom" && valign() == 'b'

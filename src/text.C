@@ -195,13 +195,13 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 
 	} else if (token == "\\end_layout") {
 		lyxerr << BOOST_CURRENT_FUNCTION
-                       << ": Solitary \\end_layout in line "
-                       << lex.getLineNo() << "\n"
+		       << ": Solitary \\end_layout in line "
+		       << lex.getLineNo() << "\n"
 		       << "Missing \\begin_layout?.\n";
 	} else if (token == "\\end_inset") {
 		lyxerr << BOOST_CURRENT_FUNCTION
-                       << ": Solitary \\end_inset in line "
-                       << lex.getLineNo() << "\n"
+		       << ": Solitary \\end_inset in line "
+		       << lex.getLineNo() << "\n"
 		       << "Missing \\begin_inset?.\n";
 	} else if (token == "\\begin_inset") {
 		InsetBase * inset = readInset(lex, buf);
@@ -379,7 +379,7 @@ void readParagraph(Buffer const & buf, Paragraph & par, LyXLex & lex)
 	}
 	// Final change goes to paragraph break:
 	par.setChangeFull(par.size(), change);
-	
+
 	// Initialize begin_of_body_ on load; redoParagraph maintains
 	par.setBeginOfBody();
 }
@@ -601,8 +601,8 @@ int LyXText::leftMargin(pit_type const pit, pos_type const pos) const
 	       || layout->labeltype == LABEL_TOP_ENVIRONMENT
 	       || layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT
 	       || (layout->labeltype == LABEL_STATIC
-	           && layout->latextype == LATEX_ENVIRONMENT
-	           && !isFirstInSequence(pit, pars_)))
+		   && layout->latextype == LATEX_ENVIRONMENT
+		   && !isFirstInSequence(pit, pars_)))
 	    && align == LYX_ALIGN_BLOCK
 	    && !par.params().noindent()
 	    // in some insets, paragraphs are never indented
@@ -612,8 +612,8 @@ int LyXText::leftMargin(pit_type const pit, pos_type const pos) const
 		    && par.isInset(pos)
 		    && par.getInset(pos)->display())
 	    && (par.layout() != tclass.defaultLayout()
-	        || bv()->buffer()->params().paragraph_separation ==
-	           BufferParams::PARSEP_INDENT))
+		|| bv()->buffer()->params().paragraph_separation ==
+		   BufferParams::PARSEP_INDENT))
 	{
 		l_margin += font_metrics::signedWidth(parindent, tclass.defaultfont());
 	}
@@ -920,7 +920,7 @@ void LyXText::setHeightOfRow(pit_type const pit, Row & row)
 			&& pit != 0
 			&& ((layout->isParagraph() && par.getDepth() == 0)
 			    || (pars_[pit - 1].layout()->isParagraph()
-			        && pars_[pit - 1].getDepth() == 0)))
+				&& pars_[pit - 1].getDepth() == 0)))
 		{
 				maxasc += bufparams.getDefSkip().inPixels(*bv());
 		}
@@ -933,8 +933,8 @@ void LyXText::setHeightOfRow(pit_type const pit, Row & row)
 		if (layout->counter == "chapter"
 		    && !par.params().labelString().empty()) {
 			labeladdon = int(font_metrics::maxHeight(labelfont)
-			             * layout->spacing.getValue()
-			             * spacing(par));
+				     * layout->spacing.getValue()
+				     * spacing(par));
 		}
 
 		// special code for the top label
@@ -1091,7 +1091,7 @@ void LyXText::breakParagraph(LCursor & cur, bool keep_layout)
 
 	// Mark "carriage return" as inserted if change tracking:
 	if (cur.buffer().params().tracking_changes) {
-		cur.paragraph().setChange(cur.paragraph().size(), 
+		cur.paragraph().setChange(cur.paragraph().size(),
 			Change::INSERTED);
 	}
 
@@ -1400,14 +1400,14 @@ void LyXText::acceptChange(LCursor & cur)
 		return;
 
 	recordUndoSelection(cur, Undo::INSERT);
-	
+
 	DocIterator it = cur.selectionBegin();
 	DocIterator et = cur.selectionEnd();
 	pit_type pit = it.pit();
 	Change::Type const type = pars_[pit].lookupChange(it.pos());
 	for (; pit <= et.pit(); ++pit) {
 		pos_type left  = ( pit == it.pit() ? it.pos() : 0 );
-		pos_type right = 
+		pos_type right =
 		    ( pit == et.pit() ? et.pos() : pars_[pit].size() + 1 );
 		pars_[pit].acceptChange(left, right);
 	}
@@ -1416,9 +1416,9 @@ void LyXText::acceptChange(LCursor & cur)
 		if (it.pit() + 1 < et.pit())
 			pars_.erase(boost::next(plist.begin(), it.pit() + 1),
 				    boost::next(plist.begin(), et.pit()));
-		
+
 		// Paragraph merge if appropriate:
-		if (pars_[it.pit()].lookupChange(pars_[it.pit()].size()) 
+		if (pars_[it.pit()].lookupChange(pars_[it.pit()].size())
 			== Change::DELETED) {
 			setCursorIntern(cur, it.pit() + 1, 0);
 			backspacePos0(cur);
@@ -1444,7 +1444,7 @@ void LyXText::rejectChange(LCursor & cur)
 	Change::Type const type = pars_[pit].lookupChange(it.pos());
 	for (; pit <= et.pit(); ++pit) {
 		pos_type left  = ( pit == it.pit() ? it.pos() : 0 );
-		pos_type right = 
+		pos_type right =
 		    ( pit == et.pit() ? et.pos() : pars_[pit].size() + 1 );
 		pars_[pit].rejectChange(left, right);
 	}
@@ -1454,7 +1454,7 @@ void LyXText::rejectChange(LCursor & cur)
 			pars_.erase(boost::next(plist.begin(), it.pit() + 1),
 				    boost::next(plist.begin(), et.pit()));
 		// Paragraph merge if appropriate:
-		if (pars_[it.pit()].lookupChange(pars_[it.pit()].size()) 
+		if (pars_[it.pit()].lookupChange(pars_[it.pit()].size())
 			== Change::INSERTED) {
 			setCursorIntern(cur, it.pit() + 1, 0);
 			backspacePos0(cur);
@@ -1627,7 +1627,7 @@ bool LyXText::backspacePos0(LCursor & cur)
 				BufferParams const & bparams = buf.params();
 				par.layout(bparams.getLyXTextClass().defaultLayout());
 			}
-                                
+
 			cursorLeft(cur);
 			return true;
 		}
@@ -1660,7 +1660,7 @@ bool LyXText::backspacePos0(LCursor & cur)
 
 	if (cpit != tmppit
 	    && (pars_[cpit].layout() == pars_[tmppit].layout()
-	        || pars_[tmppit].layout() == tclass.defaultLayout()))
+		|| pars_[tmppit].layout() == tclass.defaultLayout()))
 	{
 		mergeParagraph(bufparams, pars_, cpit);
 		needsUpdate = true;
@@ -1739,7 +1739,7 @@ bool LyXText::redoParagraph(pit_type const pit)
 			// Insist on it being in pos 0
 			&& par.getChar(0) == Paragraph::META_INSET) {
 			InsetBase * inset = par.insetlist.begin()->inset;
-        	        if (inset->lyxCode() == InsetBase::BIBITEM_CODE)
+			if (inset->lyxCode() == InsetBase::BIBITEM_CODE)
 				hasbibitem = true;
 		}
 		if (!hasbibitem) {
@@ -1796,7 +1796,7 @@ bool LyXText::redoParagraph(pit_type const pit)
 		par.rows().push_back(row);
 		dim.des += row.height();
 	}
-	    
+
 	dim.asc += par.rows()[0].ascent();
 	dim.des -= par.rows()[0].ascent();
 
@@ -1921,9 +1921,9 @@ void LyXText::drawSelection(PainterInfo & pi, int x, int) const
 		return;
 
 	lyxerr[Debug::DEBUG]
-                << BOOST_CURRENT_FUNCTION
-                << "draw selection at " << x
-                << endl;
+		<< BOOST_CURRENT_FUNCTION
+		<< "draw selection at " << x
+		<< endl;
 
 	DocIterator beg = cur.selectionBegin();
 	DocIterator end = cur.selectionEnd();
@@ -2197,7 +2197,7 @@ int LyXText::cursorX(CursorSlice const & sl, bool boundary) const
 		else if (par.isSeparator(pos) && pos >= body_pos)
 			x += m.separator;
 	}
-	
+
 	// see correction above
 	if (boundary_correction)
 		if (getFont(par, ppos).isVisibleRightToLeft())
@@ -2212,7 +2212,7 @@ int LyXText::cursorX(CursorSlice const & sl, bool boundary) const
 		if (!boundary && font.isVisibleRightToLeft()
 		  && par.isInset(sl.pos()))
 			x -= par.getInset(sl.pos())->width();
-	}	
+	}
 	return int(x);
 }
 
@@ -2412,11 +2412,11 @@ bool LyXText::setCursorFromCoordinates(LCursor & cur, int const x, int const y)
 	pit_type pit = getPitNearY(y);
 	int yy = theCoords.get(this, pit).y_ - pars_[pit].ascent();
 	lyxerr[Debug::DEBUG]
-                << BOOST_CURRENT_FUNCTION
-                << ": x: " << x
-                << " y: " << y
+		<< BOOST_CURRENT_FUNCTION
+		<< ": x: " << x
+		<< " y: " << y
 		<< " pit: " << pit
-                << " yy: " << yy << endl;
+		<< " yy: " << yy << endl;
 
 	Paragraph const & par = pars_[pit];
 	int r = 0;
@@ -2431,20 +2431,20 @@ bool LyXText::setCursorFromCoordinates(LCursor & cur, int const x, int const y)
 	Row const & row = par.rows()[r];
 
 	lyxerr[Debug::DEBUG]
-                << BOOST_CURRENT_FUNCTION
-                << ": row " << r
-                << " from pos: " << row.pos()
-                << endl;
+		<< BOOST_CURRENT_FUNCTION
+		<< ": row " << r
+		<< " from pos: " << row.pos()
+		<< endl;
 
 	bool bound = false;
 	int xx = x;
 	pos_type const pos = row.pos() + getColumnNearX(pit, row, xx, bound);
 
-        lyxerr[Debug::DEBUG]
-                << BOOST_CURRENT_FUNCTION
-                << ": setting cursor pit: " << pit
-                << " pos: " << pos
-                << endl;
-        
+	lyxerr[Debug::DEBUG]
+		<< BOOST_CURRENT_FUNCTION
+		<< ": setting cursor pit: " << pit
+		<< " pos: " << pos
+		<< endl;
+
 	return setCursor(cur, pit, pos, true, bound);
 }

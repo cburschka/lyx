@@ -44,7 +44,7 @@ PanelStack::PanelStack(QWidget * parent, const char * name)
 		w->hide();
 
 	connect(list_, SIGNAL(currentChanged(QListViewItem*)),
-	        this, SLOT(switchPanel(QListViewItem *)));
+		this, SLOT(switchPanel(QListViewItem *)));
 
 	QHBoxLayout * layout = new QHBoxLayout(this);
 	layout->addWidget(list_, 0);

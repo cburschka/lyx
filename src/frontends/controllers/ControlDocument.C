@@ -120,9 +120,9 @@ void ControlDocument::dispatchParams()
 			string const str = current_branch  + ' ' + x11hexname;
 			kernel().dispatch(FuncRequest(LFUN_SET_COLOR, str));
 		}
-	
+
 		// Open insets of selected branches, close deselected ones
-		kernel().dispatch(FuncRequest(LFUN_ALL_INSETS_TOGGLE, 
+		kernel().dispatch(FuncRequest(LFUN_ALL_INSETS_TOGGLE,
 			"assign branch"));
 	}
 	// update the bufferview

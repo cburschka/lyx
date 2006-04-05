@@ -277,7 +277,7 @@ bool findInset(DocIterator & dit, vector<InsetBase_code> const & codes,
 		} else
 			return false;
 	}
-	
+
 	dit = tmpdit;
 	return true;
 }

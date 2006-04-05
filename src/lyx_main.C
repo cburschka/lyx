@@ -245,7 +245,7 @@ void LyX::priv_exec(int & argc, char * argv[])
 		// clear this list to save a few bytes of RAM
 		session_->clearLastOpenedFiles();
 	}
-	
+
 	// Execute batch commands if available
 	if (!batch_command.empty()) {
 
@@ -360,10 +360,10 @@ static void error_handler(int err_sig)
 		break;
 	case SIGSEGV:
 		lyxerr << "\nlyx: SIGSEGV signal caught\n"
-		          "Sorry, you have found a bug in LyX. "
-		          "Please read the bug-reporting instructions "
-		          "in Help->Introduction and send us a bug report, "
-		          "if necessary. Thanks !\nBye." << endl;
+			  "Sorry, you have found a bug in LyX. "
+			  "Please read the bug-reporting instructions "
+			  "in Help->Introduction and send us a bug report, "
+			  "if necessary. Thanks !\nBye." << endl;
 		break;
 	case SIGINT:
 	case SIGTERM:
@@ -501,10 +501,10 @@ void LyX::init(bool gui)
 	package().temp_dir() = createLyXTmpDir(lyxrc.tempdir_path);
 	if (package().temp_dir().empty()) {
 		Alert::error(_("Could not create temporary directory"),
-		             bformat(_("Could not create a temporary directory in\n"
-		                       "%1$s. Make sure that this\n"
-		                       "path exists and is writable and try again."),
-		                     lyxrc.tempdir_path));
+			     bformat(_("Could not create a temporary directory in\n"
+				       "%1$s. Make sure that this\n"
+				       "path exists and is writable and try again."),
+				     lyxrc.tempdir_path));
 		// createLyXTmpDir() tries sufficiently hard to create a
 		// usable temp dir, so the probability to come here is
 		// close to zero. We therefore don't try to overcome this

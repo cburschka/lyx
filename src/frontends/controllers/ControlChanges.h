@@ -40,7 +40,7 @@ public:
 
 	/// Are there changes to be merged at current location?
 	bool changed();
-	
+
 	/// return date of change
 	std::string const getChangeDate();
 

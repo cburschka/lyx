@@ -56,7 +56,7 @@ inline bool operator!=(Font const & f1, Font const & f2)
 
 /// Output changed font parameters if \p oldfont and \p newfont differ
 void output_font_change(std::ostream & os, Font const & oldfont,
-                        Font const & newfont);
+			Font const & newfont);
 
 
 /*!
@@ -77,7 +77,7 @@ public:
 		LyXTextClass const & textclass_,
 		LyXLayout_ptr layout_ = LyXLayout_ptr(),
 		LyXLayout_ptr parent_layout_= LyXLayout_ptr(),
-	        Font font_ = Font());
+		Font font_ = Font());
 	~Context();
 
 	/// Output a \\begin_layout if requested

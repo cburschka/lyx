@@ -216,13 +216,13 @@ void bufferErrors(Buffer const & buf, TeXErrors const & terr)
 		int pos_start = -1;
 		int errorrow = cit->error_in_line;
 		bool found = buf.texrow().getIdFromRow(errorrow, id_start,
-		                                       pos_start);
+						       pos_start);
 		int id_end = -1;
 		int pos_end = -1;
 		do {
 			++errorrow;
 			found = buf.texrow().getIdFromRow(errorrow, id_end,
-			                                  pos_end);
+							  pos_end);
 		} while (found && id_start == id_end && pos_start == pos_end);
 
 		buf.error(ErrorItem(cit->error_desc, cit->error_text,
@@ -277,7 +277,7 @@ namespace {
 lyx::depth_type getDepth(DocIterator const & it)
 {
 	lyx::depth_type depth = 0;
-	for (size_t i = 0 ; i < it.depth() ; ++i) 
+	for (size_t i = 0 ; i < it.depth() ; ++i)
 		if (!it[i].inset().inMathed())
 			depth += it[i].paragraph().getDepth() + 1;
 	// remove 1 since the outer inset does not count
@@ -285,12 +285,12 @@ lyx::depth_type getDepth(DocIterator const & it)
 }
 
 lyx::depth_type getItemDepth(ParIterator const & it)
-{	
+{
 	Paragraph const & par = *it;
 	LYX_LABEL_TYPES const labeltype = par.layout()->labeltype;
 
 	if (labeltype != LABEL_ENUMERATE && labeltype != LABEL_ITEMIZE)
- 		return 0;
+		return 0;
 
 	// this will hold the lowest depth encountered up to now.
 	lyx::depth_type min_depth = getDepth(it);
@@ -306,12 +306,12 @@ lyx::depth_type getItemDepth(ParIterator const & it)
 				return 0;
 			}
 		}
-		
+
 		// We search for the first paragraph with same label
 		// that is not more deeply nested.
 		Paragraph & prev_par = *prev_it;
 		lyx::depth_type const prev_depth = getDepth(prev_it);
-	 	if (labeltype == prev_par.layout()->labeltype) {
+		if (labeltype == prev_par.layout()->labeltype) {
 			if (prev_depth < min_depth) {
 				return prev_par.itemdepth + 1;
 			}
@@ -545,5 +545,3 @@ string expandLabel(Buffer const & buf,
 
 	return tclass.counters().counterLabel(fmt);
 }
-
-

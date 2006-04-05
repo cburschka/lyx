@@ -29,21 +29,21 @@ Movers system_movers;
 
 
 bool Mover::do_copy(string const & from, string const & to,
-                    string const &) const
+		    string const &) const
 {
 	return support::copy(from, to);
 }
 
 
 bool Mover::do_rename(string const & from, string const & to,
-                      string const &) const
+		      string const &) const
 {
 	return support::rename(from, to);
 }
 
 
 bool SpecialisedMover::do_copy(string const & from, string const & to,
-                               string const & latex) const
+			       string const & latex) const
 {
 	if (command_.empty())
 		return Mover::do_copy(from, to, latex);
@@ -59,7 +59,7 @@ bool SpecialisedMover::do_copy(string const & from, string const & to,
 
 
 bool SpecialisedMover::do_rename(string const & from, string const & to,
-                                 string const & latex) const
+				 string const & latex) const
 {
 	if (command_.empty())
 		return Mover::do_rename(from, to, latex);

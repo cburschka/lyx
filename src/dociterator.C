@@ -300,7 +300,7 @@ void DocIterator::forwardPos(bool ignorecollapsed)
 	// jump over collapsables if they are collapsed
 	// FIXME: the check for asMathInset() shouldn't be necessary
 	// but math insets do not return a sensible editable() state yet.
-	if (ignorecollapsed && nextInset() && (!nextInset()->asMathInset() 
+	if (ignorecollapsed && nextInset() && (!nextInset()->asMathInset()
 	    && nextInset()->editable() != InsetBase::HIGHLY_EDITABLE)) {
 		++top().pos();
 		return;
@@ -512,7 +512,7 @@ bool DocIterator::hasPart(DocIterator const & it) const
 }
 
 
-void DocIterator::updateInsets(InsetBase * inset) 
+void DocIterator::updateInsets(InsetBase * inset)
 {
 	// this function re-creates the cache of inset pointers.
 	// code taken in part from StableDocIterator::asDocIterator.
@@ -587,4 +587,3 @@ bool operator==(StableDocIterator const & dit1, StableDocIterator const & dit2)
 {
 	return dit1.data_ == dit2.data_;
 }
-

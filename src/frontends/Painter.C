@@ -38,9 +38,9 @@ void Painter::buttonFrame(int x, int y, int w, int h)
 	fillRectangle(x, y + h - d, w, d, LColor::bottom);
 
 	for (int i = 0 ; i < d ; ++i) {
-		line(x + i, y + i, 
+		line(x + i, y + i,
 		     x + i, y + h - 1 - i, LColor::left);
-		line(x + w - 1 - i, y + i + 1, 
+		line(x + w - 1 - i, y + i + 1,
 		     x + w - 1 - i, y + h - 1 - i, LColor::right);
 	}
 }

@@ -168,7 +168,7 @@ public:
 	void setCursor(CursorSlice &, pit_type par, pos_type pos);
 	///
 	void setCursorIntern(LCursor & cur, pit_type par,
-	         pos_type pos, bool setfont = true, bool boundary = false);
+		 pos_type pos, bool setfont = true, bool boundary = false);
 	///
 	void setCurrentFont(LCursor & cur);
 

@@ -30,13 +30,13 @@ namespace lyx {
 namespace frontend {
 
 
-class QBranches: public QWidget, public Ui::BranchesUi 
+class QBranches: public QWidget, public Ui::BranchesUi
 {
 	Q_OBJECT
 public:
 	QBranches(QWidget * parent=0, Qt::WFlags f=0);
 	~QBranches();
-	
+
 	void update(BufferParams const & params);
 	void apply(BufferParams & params) const;
 

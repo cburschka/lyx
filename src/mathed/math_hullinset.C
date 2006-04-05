@@ -194,7 +194,7 @@ InsetBase * MathHullInset::editXY(LCursor & cur, int x, int y)
 		edit(cur, true);
 		return this;
 	}
-	return MathNestInset::editXY(cur, x, y); 
+	return MathNestInset::editXY(cur, x, y);
 }
 
 
@@ -799,7 +799,7 @@ void MathHullInset::mutate(string const & newtype)
 	}
 
 	else if (type_ ==  "align"   || type_ == "alignat" ||
-	         type_ == "xalignat" || type_ == "flalign") {
+		 type_ == "xalignat" || type_ == "flalign") {
 		if (smaller(newtype, "align")) {
 			changeCols(3);
 			setType("eqnarray");
@@ -835,7 +835,7 @@ void MathHullInset::mutate(string const & newtype)
 		if (newtype == "gather" || newtype == "multline")
 			setType(newtype);
 		else if (newtype ==   "align"   || newtype == "flalign"  ||
-		         newtype ==   "alignat" || newtype == "xalignat") {
+			 newtype ==   "alignat" || newtype == "xalignat") {
 			splitTo2Cols();
 			setType(newtype);
 		} else if (newtype ==   "xxalignat") {
@@ -1156,7 +1156,7 @@ bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 		// dialog would not be applyable.
 		string const name = cmd.getArg(0);
 		status.enabled(name == "ref" ||
-		               (name == "label" && type_ != "simple"));
+			       (name == "label" && type_ != "simple"));
 		break;
 	}
 	case LFUN_TABULAR_FEATURE: {

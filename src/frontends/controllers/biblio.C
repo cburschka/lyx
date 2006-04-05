@@ -441,7 +441,7 @@ searchKeys(InfoMap const & theMap,
 	if (type == SIMPLE)
 		// We must escape special chars in the search_expr so that
 		// it is treated as a simple string by boost::regex.
-	        expr = escape_special_chars(expr);
+		expr = escape_special_chars(expr);
 
 	try {
 		// Build the functor that will be passed to find_if.
@@ -456,7 +456,7 @@ searchKeys(InfoMap const & theMap,
 		vector<string>::const_reverse_iterator rit(start);
 		vector<string>::const_reverse_iterator rend = keys.rend();
 		rit = std::find_if(rit, rend, match);
-		
+
 		if (rit == rend)
 			return keys.end();
 		// This is correct and always safe.

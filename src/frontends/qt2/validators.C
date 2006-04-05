@@ -127,7 +127,7 @@ QValidator::State PathValidator::validate(QString & qtext, int &) const
 
 	string const text = lyx::support::trim(fromqstr(qtext));
 	if (text.empty())
-		return 	acceptable_if_empty_ ?
+		return	acceptable_if_empty_ ?
 			QValidator::Acceptable : QValidator::Intermediate;
 
 	string invalid_chars("#$%{}()[]\"^");

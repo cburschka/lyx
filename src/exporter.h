@@ -73,15 +73,15 @@ public:
 	 *                   or relative to the exported document.
 	 */
 	void addExternalFile(std::string const & format,
-	                     std::string const & sourceName,
-	                     std::string const & exportName);
+			     std::string const & sourceName,
+			     std::string const & exportName);
 	/** add a referenced file for one format.
 	 *  The final name is the source file name without path.
 	 * \param format     format that references the given file
 	 * \param sourceName source file name. Needs to be absolute
 	 */
 	void addExternalFile(std::string const & format,
-	                     std::string const & sourceName);
+			     std::string const & sourceName);
 	/// get referenced files for \p format
 	std::vector<ExportedFile> const
 	externalFiles(std::string const & format) const;

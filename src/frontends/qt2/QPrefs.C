@@ -440,7 +440,7 @@ void setComboxFont(QComboBox * cb, string const & family, string const & foundry
 		font.setFamily(family.c_str());
 	} else {
 		lyxerr << "FAILED to find the default font: '"
-                       << foundry << "', '" << family << '\''<< endl;
+		       << foundry << "', '" << family << '\''<< endl;
 		return;
 	}
 
@@ -459,7 +459,7 @@ void setComboxFont(QComboBox * cb, string const & family, string const & foundry
 	}
 
 	lyxerr << "FAILED to find the font: '"
-               << foundry << "', '" << family << '\'' <<endl;
+	       << foundry << "', '" << family << '\'' <<endl;
 }
 
 } // end namespace anon

@@ -116,7 +116,7 @@ bool MathAMSArrayInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 	}
 	default:
 		return MathGridInset::getStatus(cur, cmd, flag);
-        }
+	}
 }
 
 

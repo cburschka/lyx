@@ -99,8 +99,8 @@ public:
 	void add(std::string const & name);
 	///
 	void add(std::string const & name, std::string const & extension,
-	         std::string const & prettyname, std::string const & shortcut,
-	         std::string const & viewer, std::string const & editor);
+		 std::string const & prettyname, std::string const & shortcut,
+		 std::string const & viewer, std::string const & editor);
 	///
 	void erase(std::string const & name);
 	///

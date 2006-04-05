@@ -368,4 +368,3 @@ bool createMathInset_fromDialogStr(string const & str, MathArray & ar)
 
 	return ar[0].nucleus();
 }
-

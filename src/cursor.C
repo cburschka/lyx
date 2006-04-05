@@ -138,7 +138,7 @@ namespace {
 		et.pit() = boost::prior(cache.end())->first;
 		if (et.pit() >= et.lastpit())
 			et = doc_iterator_end(inset);
-		else 
+		else
 			++et.pit();
 
 		double best_dist = std::numeric_limits<double>::max();;
@@ -189,8 +189,8 @@ namespace {
 		//lyxerr << "Pit start: " << from << endl;
 
 		//lyxerr << "bruteFind3: x: " << x << " y: " << y
-		//	<< " xlow: " << xlow << " xhigh: " << xhigh 
-		//	<< " ylow: " << ylow << " yhigh: " << yhigh 
+		//	<< " xlow: " << xlow << " xhigh: " << xhigh
+		//	<< " ylow: " << ylow << " yhigh: " << yhigh
 		//	<< endl;
 		InsetBase & inset = bv.buffer()->inset();
 		DocIterator it = doc_iterator_begin(inset);
@@ -1015,7 +1015,7 @@ bool LCursor::goUpDown(bool up)
 // FIXME: Switch this on for more robust movement
 #if 0
 
-	return bruteFind3(*this, xo, yo, up); 
+	return bruteFind3(*this, xo, yo, up);
 
 #else
 	//xarray().boundingBox(xlow, xhigh, ylow, yhigh);

@@ -43,6 +43,6 @@ private:
 	LyXLength wid_;
 	/// in pixels
 	mutable int wid_pix_;
-	
+
 };
 #endif

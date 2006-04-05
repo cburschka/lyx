@@ -51,7 +51,7 @@ PanelStack::PanelStack(QWidget * parent)
 	list_->setHeaderLabels(HeaderLabels);
 
 	connect(list_, SIGNAL(currentItemChanged (QTreeWidgetItem*, QTreeWidgetItem*)),
-	        this, SLOT(switchPanel(QTreeWidgetItem *, QTreeWidgetItem*)));
+		this, SLOT(switchPanel(QTreeWidgetItem *, QTreeWidgetItem*)));
 
 	QHBoxLayout * layout = new QHBoxLayout(this);
 	layout->addWidget(list_, 0);

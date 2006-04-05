@@ -96,8 +96,8 @@ void QRefDialog::refSelected(const QString & sel)
 	int const cur_item = refsLB->currentItem();
 	bool const cur_item_selected = cur_item >= 0 ?
 		refsLB->isSelected(cur_item) : false;
-  	 
-	if (cur_item_selected)		
+
+	if (cur_item_selected)
 		referenceED->setText(sel);
 	// <enter> or double click, inserts ref and closes dialog
 	form_->slotOK();

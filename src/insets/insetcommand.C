@@ -46,7 +46,7 @@ InsetCommand::~InsetCommand()
 
 void InsetCommand::metrics(MetricsInfo & mi, Dimension & dim) const
 {
- 	if (updateButtonLabel_) {
+	if (updateButtonLabel_) {
 		updateButtonLabel_ = false;
 		button_.update(getScreenLabel(*mi.base.bv->buffer()),
 			       editable() != NOT_EDITABLE);

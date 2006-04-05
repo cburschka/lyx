@@ -187,9 +187,9 @@ void Outline(OutlineOp mode, Buffer * buf, pit_type & pit)
 				++p;
 			for (; p != end; ++p) {
 				toclevel = p->layout()->toclevel;
-				if (toclevel != LyXLayout::NOT_IN_TOC 
+				if (toclevel != LyXLayout::NOT_IN_TOC
 				    && toclevel <= thistoclevel) {
-					break;	
+					break;
 				}
 			}
 			ParagraphList::iterator q = s;
@@ -199,9 +199,9 @@ void Outline(OutlineOp mode, Buffer * buf, pit_type & pit)
 				break;
 			for (; q != bgn; --q) {
 				toclevel = q->layout()->toclevel;
-				if (toclevel != LyXLayout::NOT_IN_TOC 
+				if (toclevel != LyXLayout::NOT_IN_TOC
 				    && toclevel <= thistoclevel) {
-					break;	
+					break;
 				}
 			}
 			pit_type const newpit = std::distance(pars.begin(), q);
@@ -215,13 +215,13 @@ void Outline(OutlineOp mode, Buffer * buf, pit_type & pit)
 		break;
 		}
 		case DOWN: {
-   			   if (p != end)
+			   if (p != end)
 				++p;
 			for (; p != end; ++p) {
 				toclevel = p->layout()->toclevel;
-				if (toclevel != LyXLayout::NOT_IN_TOC 
+				if (toclevel != LyXLayout::NOT_IN_TOC
 				    && toclevel <= thistoclevel) {
-					break;	
+					break;
 				}
 			}
 			ParagraphList::iterator q = p;
@@ -231,9 +231,9 @@ void Outline(OutlineOp mode, Buffer * buf, pit_type & pit)
 				break;
 			for (; q != end; ++q) {
 				toclevel = q->layout()->toclevel;
-				if (toclevel != LyXLayout::NOT_IN_TOC 
+				if (toclevel != LyXLayout::NOT_IN_TOC
 				    && toclevel <= thistoclevel) {
-					break;	
+					break;
 				}
 			}
 			pit_type const newpit = std::distance(pars.begin(), q);

@@ -526,8 +526,8 @@ void check_space(Parser const & p, ostream & os, Context & context)
  * Parse all arguments of \p command
  */
 void parse_arguments(string const & command,
-                     vector<ArgumentType> const & template_arguments,
-                     Parser & p, ostream & os, bool outer, Context & context)
+		     vector<ArgumentType> const & template_arguments,
+		     Parser & p, ostream & os, bool outer, Context & context)
 {
 	string ert = command;
 	size_t no_arguments = template_arguments.size();
@@ -562,7 +562,7 @@ bool parse_command(string const & command, Parser & p, ostream & os,
 {
 	if (known_commands.find(command) != known_commands.end()) {
 		parse_arguments(command, known_commands[command], p, os,
-		                outer, context);
+				outer, context);
 		return true;
 	}
 	return false;
@@ -673,8 +673,8 @@ void parse_box(Parser & p, ostream & os, unsigned flags, bool outer,
 
 /// parse an unknown environment
 void parse_unknown_environment(Parser & p, string const & name, ostream & os,
-                               unsigned flags, bool outer,
-                               Context & parent_context)
+			       unsigned flags, bool outer,
+			       Context & parent_context)
 {
 	if (name == "tabbing")
 		// We need to remember that we have to handle '\=' specially
@@ -699,7 +699,7 @@ void parse_unknown_environment(Parser & p, string const & name, ostream & os,
 
 
 void parse_environment(Parser & p, ostream & os, bool outer,
-                       Context & parent_context)
+		       Context & parent_context)
 {
 	LyXLayout_ptr newlayout;
 	string const name = p.getArg('{', '}');
@@ -771,11 +771,11 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 
 	else if (!parent_context.new_layout_allowed)
 		parse_unknown_environment(p, name, os, FLAG_END, outer,
-		                          parent_context);
+					  parent_context);
 
 	// Alignment settings
 	else if (name == "center" || name == "flushleft" || name == "flushright" ||
-	         name == "centering" || name == "raggedright" || name == "raggedleft") {
+		 name == "centering" || name == "raggedright" || name == "raggedleft") {
 		eat_whitespace(p, os, parent_context, false);
 		// We must begin a new paragraph if not already done
 		if (! parent_context.atParagraphStart()) {
@@ -867,13 +867,13 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		if (specialfont)
 			parent_context.new_layout_allowed = false;
 		parse_arguments("\\begin{" + name + "}", arguments, p, os,
-		                outer, parent_context);
+				outer, parent_context);
 		if (contents == verbatim)
 			handle_ert(os, p.verbatimEnvironment(name),
-			           parent_context);
+				   parent_context);
 		else
 			parse_text_snippet(p, os, FLAG_END, outer,
-			                   parent_context);
+					   parent_context);
 		handle_ert(os, "\\end{" + name + "}", parent_context);
 		if (specialfont)
 			parent_context.new_layout_allowed = new_layout_allowed;
@@ -881,7 +881,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 
 	else
 		parse_unknown_environment(p, name, os, FLAG_END, outer,
-		                          parent_context);
+					  parent_context);
 
 	active_environments.pop_back();
 }
@@ -927,7 +927,7 @@ void eat_whitespace(Parser & p, ostream & os, Context & context,
 		if (t.cat() == catComment)
 			parse_comment(p, os, t, context);
 		else if ((! eatParagraph && p.isParagraph()) ||
-		         (t.cat() != catSpace && t.cat() != catNewline)) {
+			 (t.cat() != catSpace && t.cat() != catNewline)) {
 			p.putback();
 			return;
 		}
@@ -1007,7 +1007,7 @@ void fix_relative_filename(string & name)
 	if (lyx::support::AbsolutePath(name))
 		return;
 	name = MakeRelPath(MakeAbsPath(name, getMasterFilePath()),
-	                   getParentFilePath());
+			   getParentFilePath());
 }
 
 } // anonymous namespace
@@ -1129,7 +1129,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cat() == catBegin &&
-		         p.next_token().cat() == catEnd) {
+			 p.next_token().cat() == catEnd) {
 			// {}
 			Token const prev = p.prev_token();
 			p.get_token();
@@ -1166,13 +1166,13 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			} else if (! context.new_layout_allowed) {
 				handle_ert(os, "{", context);
 				parse_text_snippet(p, os, FLAG_BRACE_LAST,
-				                   outer, context);
+						   outer, context);
 				handle_ert(os, "}", context);
 			} else if (is_known(next.cs(), known_sizes)) {
 				// next will change the size, so we must
 				// reset it here
 				parse_text_snippet(p, os, FLAG_BRACE_LAST,
-				                   outer, context);
+						   outer, context);
 				if (!context.atParagraphStart())
 					os << "\n\\size "
 					   << context.font.size << "\n";
@@ -1180,7 +1180,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				// next will change the font family, so we
 				// must reset it here
 				parse_text_snippet(p, os, FLAG_BRACE_LAST,
-				                   outer, context);
+						   outer, context);
 				if (!context.atParagraphStart())
 					os << "\n\\family "
 					   << context.font.family << "\n";
@@ -1188,7 +1188,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				// next will change the font series, so we
 				// must reset it here
 				parse_text_snippet(p, os, FLAG_BRACE_LAST,
-				                   outer, context);
+						   outer, context);
 				if (!context.atParagraphStart())
 					os << "\n\\series "
 					   << context.font.series << "\n";
@@ -1196,17 +1196,17 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				// next will change the font shape, so we
 				// must reset it here
 				parse_text_snippet(p, os, FLAG_BRACE_LAST,
-				                   outer, context);
+						   outer, context);
 				if (!context.atParagraphStart())
 					os << "\n\\shape "
 					   << context.font.shape << "\n";
 			} else if (is_known(next.cs(), known_old_font_families) ||
-			           is_known(next.cs(), known_old_font_series) ||
-			           is_known(next.cs(), known_old_font_shapes)) {
+				   is_known(next.cs(), known_old_font_series) ||
+				   is_known(next.cs(), known_old_font_shapes)) {
 				// next will change the font family, series
 				// and shape, so we must reset it here
 				parse_text_snippet(p, os, FLAG_BRACE_LAST,
-				                   outer, context);
+						   outer, context);
 				if (!context.atParagraphStart())
 					os <<  "\n\\family "
 					   << context.font.family
@@ -1217,7 +1217,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			} else {
 				handle_ert(os, "{", context);
 				parse_text_snippet(p, os, FLAG_BRACE_LAST,
-				                   outer, context);
+						   outer, context);
 				handle_ert(os, "}", context);
 			}
 		}
@@ -1277,7 +1277,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			if (p.next_token().character() == '[') {
 				p.get_token(); // eat '['
 				s = parse_text_snippet(p, FLAG_BRACK_LAST,
-				                       outer, context);
+						       outer, context);
 				optarg = true;
 			}
 			context.set_item();
@@ -1354,7 +1354,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		// Must attempt to parse "Section*" before "Section".
 		else if ((p.next_token().asInput() == "*") &&
-		         context.new_layout_allowed && 
+			 context.new_layout_allowed &&
 			 // The single '=' is meant here.
 			 (newlayout = findLayout(context.textclass,
 						 t.cs() + '*')).get() &&
@@ -1366,7 +1366,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		// The single '=' is meant here.
 		else if (context.new_layout_allowed &&
-		         (newlayout = findLayout(context.textclass, t.cs())).get() &&
+			 (newlayout = findLayout(context.textclass, t.cs())).get() &&
 			 newlayout->isCommand()) {
 			output_command_layout(os, p, outer, context, newlayout);
 			p.skip_spaces();
@@ -1389,24 +1389,24 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				// Now try to find it out.
 				string const dvips_name =
 					find_file(name, path,
-					          known_dvips_graphics_formats);
+						  known_dvips_graphics_formats);
 				string const pdftex_name =
 					find_file(name, path,
-					          known_pdftex_graphics_formats);
+						  known_pdftex_graphics_formats);
 				if (!dvips_name.empty()) {
 					if (!pdftex_name.empty()) {
 						cerr << "This file contains the "
-						        "latex snippet\n"
-						        "\"\\includegraphics{"
+							"latex snippet\n"
+							"\"\\includegraphics{"
 						     << name << "}\".\n"
-						        "However, files\n\""
+							"However, files\n\""
 						     << dvips_name << "\" and\n\""
 						     << pdftex_name << "\"\n"
-						        "both exist, so I had to make a "
-						        "choice and took the first one.\n"
-						        "Please move the unwanted one "
-						        "someplace else and try again\n"
-						        "if my choice was wrong."
+							"both exist, so I had to make a "
+							"choice and took the first one.\n"
+							"Please move the unwanted one "
+							"someplace else and try again\n"
+							"if my choice was wrong."
 						     << endl;
 					}
 					name = dvips_name;
@@ -1516,7 +1516,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "footnote" ||
-		         (t.cs() == "thanks" && context.layout->intitle)) {
+			 (t.cs() == "thanks" && context.layout->intitle)) {
 			p.skip_spaces();
 			context.check_layout(os);
 			begin_inset(os, "Foot\n");
@@ -1598,48 +1598,48 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "textrm")
 			parse_text_attributes(p, os, FLAG_ITEM, outer,
-			                      context, "\\family",
-			                      context.font.family, "roman");
+					      context, "\\family",
+					      context.font.family, "roman");
 
 		else if (t.cs() == "textsf")
 			parse_text_attributes(p, os, FLAG_ITEM, outer,
-			                      context, "\\family",
-			                      context.font.family, "sans");
+					      context, "\\family",
+					      context.font.family, "sans");
 
 		else if (t.cs() == "texttt")
 			parse_text_attributes(p, os, FLAG_ITEM, outer,
-			                      context, "\\family",
-			                      context.font.family, "typewriter");
+					      context, "\\family",
+					      context.font.family, "typewriter");
 
 		else if (t.cs() == "textmd")
 			parse_text_attributes(p, os, FLAG_ITEM, outer,
-			                      context, "\\series",
-			                      context.font.series, "medium");
+					      context, "\\series",
+					      context.font.series, "medium");
 
 		else if (t.cs() == "textbf")
 			parse_text_attributes(p, os, FLAG_ITEM, outer,
-			                      context, "\\series",
-			                      context.font.series, "bold");
+					      context, "\\series",
+					      context.font.series, "bold");
 
 		else if (t.cs() == "textup")
 			parse_text_attributes(p, os, FLAG_ITEM, outer,
-			                      context, "\\shape",
-			                      context.font.shape, "up");
+					      context, "\\shape",
+					      context.font.shape, "up");
 
 		else if (t.cs() == "textit")
 			parse_text_attributes(p, os, FLAG_ITEM, outer,
-			                      context, "\\shape",
-			                      context.font.shape, "italic");
+					      context, "\\shape",
+					      context.font.shape, "italic");
 
 		else if (t.cs() == "textsl")
 			parse_text_attributes(p, os, FLAG_ITEM, outer,
-			                      context, "\\shape",
-			                      context.font.shape, "slanted");
+					      context, "\\shape",
+					      context.font.shape, "slanted");
 
 		else if (t.cs() == "textsc")
 			parse_text_attributes(p, os, FLAG_ITEM, outer,
-			                      context, "\\shape",
-			                      context.font.shape, "smallcaps");
+					      context, "\\shape",
+					      context.font.shape, "smallcaps");
 
 		else if (t.cs() == "textnormal" || t.cs() == "normalfont") {
 			context.check_layout(os);
@@ -1677,11 +1677,11 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (use_natbib &&
-		         is_known(t.cs(), known_natbib_commands) &&
-		         ((t.cs() != "citefullauthor" &&
-		           t.cs() != "citeyear" &&
-		           t.cs() != "citeyearpar") ||
-		          p.next_token().asInput() != "*")) {
+			 is_known(t.cs(), known_natbib_commands) &&
+			 ((t.cs() != "citefullauthor" &&
+			   t.cs() != "citeyear" &&
+			   t.cs() != "citeyearpar") ||
+			  p.next_token().asInput() != "*")) {
 			context.check_layout(os);
 			// tex                       lyx
 			// \citet[before][after]{a}  \citet[after][before]{a}
@@ -1727,16 +1727,16 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (use_jurabib &&
-		         is_known(t.cs(), known_jurabib_commands)) {
+			 is_known(t.cs(), known_jurabib_commands)) {
 			context.check_layout(os);
 			string const command = '\\' + t.cs();
 			char argumentOrder = '\0';
 			vector<string> const & options = used_packages["jurabib"];
 			if (std::find(options.begin(), options.end(),
-			              "natbiborder") != options.end())
+				      "natbiborder") != options.end())
 				argumentOrder = 'n';
 			else if (std::find(options.begin(), options.end(),
-			                   "jurabiborder") != options.end())
+					   "jurabiborder") != options.end())
 				argumentOrder = 'j';
 
 			// text before the citation
@@ -1749,12 +1749,12 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			string const citation = p.verbatim_item();
 			if (!before.empty() && argumentOrder == '\0') {
 				cerr << "Warning: Assuming argument order "
-				        "of jurabib version 0.6 for\n'"
+					"of jurabib version 0.6 for\n'"
 				     << command << before << after << '{'
 				     << citation << "}'.\n"
-				        "Add 'jurabiborder' to the jurabib "
-				        "package options if you used an\n"
-				        "earlier jurabib version." << endl;
+					"Add 'jurabiborder' to the jurabib "
+					"package options if you used an\n"
+					"earlier jurabib version." << endl;
 			}
 			begin_inset(os, "LatexCommand ");
 			os << command << after << before
@@ -1791,7 +1791,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (is_known(t.cs(), known_sizes) &&
-		         context.new_layout_allowed) {
+			 context.new_layout_allowed) {
 			char const * const * where = is_known(t.cs(), known_sizes);
 			context.check_layout(os);
 			Font const oldFont = context.font;
@@ -1801,7 +1801,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (is_known(t.cs(), known_font_families) &&
-		         context.new_layout_allowed) {
+			 context.new_layout_allowed) {
 			char const * const * where =
 				is_known(t.cs(), known_font_families);
 			context.check_layout(os);
@@ -1813,7 +1813,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (is_known(t.cs(), known_font_series) &&
-		         context.new_layout_allowed) {
+			 context.new_layout_allowed) {
 			char const * const * where =
 				is_known(t.cs(), known_font_series);
 			context.check_layout(os);
@@ -1825,7 +1825,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (is_known(t.cs(), known_font_shapes) &&
-		         context.new_layout_allowed) {
+			 context.new_layout_allowed) {
 			char const * const * where =
 				is_known(t.cs(), known_font_shapes);
 			context.check_layout(os);
@@ -1836,7 +1836,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			eat_whitespace(p, os, context, false);
 		}
 		else if (is_known(t.cs(), known_old_font_families) &&
-		         context.new_layout_allowed) {
+			 context.new_layout_allowed) {
 			char const * const * where =
 				is_known(t.cs(), known_old_font_families);
 			context.check_layout(os);
@@ -1850,7 +1850,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (is_known(t.cs(), known_old_font_series) &&
-		         context.new_layout_allowed) {
+			 context.new_layout_allowed) {
 			char const * const * where =
 				is_known(t.cs(), known_old_font_series);
 			context.check_layout(os);
@@ -1864,7 +1864,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (is_known(t.cs(), known_old_font_shapes) &&
-		         context.new_layout_allowed) {
+			 context.new_layout_allowed) {
 			char const * const * where =
 				is_known(t.cs(), known_old_font_shapes);
 			context.check_layout(os);
@@ -1987,7 +1987,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "=" && (flags & FLAG_TABBING))
 			handle_ert(os, t.asInput(), context);
 
-		else if (t.cs() == "H" || t.cs() == "c" || t.cs() == "^" 
+		else if (t.cs() == "H" || t.cs() == "c" || t.cs() == "^"
 			 || t.cs() == "'" || t.cs() == "`"
 			 || t.cs() == "~" || t.cs() == "." || t.cs() == "=") {
 			// we need the trim as the LyX parser chokes on such spaces
@@ -2041,7 +2041,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				// Now try to find it out.
 				string const tex_name =
 					find_file(filename, path,
-					          known_tex_extensions);
+						  known_tex_extensions);
 				if (!tex_name.empty())
 					filename = tex_name;
 			}
@@ -2092,7 +2092,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			parse_box(p, os, FLAG_ITEM, outer, context, true);
 
 		else if (t.cs() == "smallskip" ||
-		         t.cs() == "medskip" ||
+			 t.cs() == "medskip" ||
 			 t.cs() == "bigskip" ||
 			 t.cs() == "vfill") {
 			context.check_layout(os);
@@ -2110,8 +2110,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "newcommand" ||
-		         t.cs() == "providecommand" ||
-		         t.cs() == "renewcommand") {
+			 t.cs() == "providecommand" ||
+			 t.cs() == "renewcommand") {
 			// these could be handled by parse_command(), but
 			// we need to call add_known_command() here.
 			string name = t.asInput();
@@ -2125,8 +2125,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			string const opt2 = p.getFullOpt();
 			add_known_command(command, opt1, !opt2.empty());
 			string const ert = name + '{' + command + '}' +
-			                   opt1 + opt2 +
-			                   '{' + p.verbatim_item() + '}';
+					   opt1 + opt2 +
+					   '{' + p.verbatim_item() + '}';
 			handle_ert(os, ert, context);
 		}
 

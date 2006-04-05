@@ -143,7 +143,7 @@ public:
 	{
 		return boundary ? slices1_ : slices0_;
 	}
-	
+
 private:
 	/// MathArrays
 	CoordCacheBase<MathArray> arrays_;

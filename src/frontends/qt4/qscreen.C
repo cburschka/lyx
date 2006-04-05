@@ -61,7 +61,7 @@ void QScreen::showCursor(int x, int y, int h, Cursor_Shape shape)
 		owner_.drawScreen(cursor_x_, cursor_y_, vcursor_);
 		return;
 	}
-		
+
 	// Cache the dimensions of the cursor.
 	cursor_x_ = x;
 	cursor_y_ = y;

@@ -108,7 +108,7 @@ bool stared(string const & s)
  * environments like "equation" that have a fixed number of rows.
  */
 bool addRow(MathGridInset & grid, MathGridInset::row_type & cellrow,
-            string const & vskip)
+	    string const & vskip)
 {
 	++cellrow;
 	if (cellrow == grid.nrows()) {
@@ -975,7 +975,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 					grid.asHullInset()->numbered(
 							cellrow, numbered);
 				cell = &grid.cell(grid.index(cellrow,
-				                             cellcol));
+							     cellcol));
 			}
 		}
 
@@ -1099,7 +1099,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 			}
 
 			else if (name == "split" || name == "cases" ||
-			         name == "gathered" || name == "aligned") {
+				 name == "gathered" || name == "aligned") {
 				cell->push_back(createMathInset(name));
 				parse2(cell->back(), FLAG_END, mode, false);
 			}

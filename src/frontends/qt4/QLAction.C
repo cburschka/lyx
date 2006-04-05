@@ -72,7 +72,7 @@ void QLAction::setAction(FuncRequest const & func)
 void QLAction::update()
 {
 	FuncStatus const status = lyxView_.getLyXFunc().getStatus(func_);
-	
+
 	this->setChecked(status.onoff(true));
 	this->setEnabled(status.enabled());
 }

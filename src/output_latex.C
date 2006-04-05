@@ -502,7 +502,7 @@ void latexParagraphs(Buffer const & buf,
 
 			if (layout->is_environment) {
 				par = TeXOnePar(buf, paragraphs, par, os, texrow,
-				                runparams, everypar);
+						runparams, everypar);
 			} else if (layout->isEnvironment() ||
 				!par->params().leftIndent().zero())
 			{
@@ -510,11 +510,11 @@ void latexParagraphs(Buffer const & buf,
 						     texrow, runparams);
 			} else {
 				par = TeXOnePar(buf, paragraphs, par, os, texrow,
-				                runparams, everypar);
+						runparams, everypar);
 			}
 		} else {
 			par = TeXOnePar(buf, paragraphs, par, os, texrow,
-			                runparams, everypar);
+					runparams, everypar);
 		}
 	}
 	// It might be that we only have a title in this document

@@ -165,11 +165,11 @@ void FormTabular::update()
 	fl_activate_object(column_options_->input_column_width);
 	fl_activate_object(column_options_->choice_value_column_width);
 	fl_set_input(dialog_->input_tabular_column,
-	             convert<string>(column).c_str());
+		     convert<string>(column).c_str());
 	fl_deactivate_object(dialog_->input_tabular_column);
 	LyXTabular::row_type row = tabular.row_of_cell(cell);
 	fl_set_input(dialog_->input_tabular_row,
-	             convert<string>(row + 1).c_str());
+		     convert<string>(row + 1).c_str());
 	fl_deactivate_object(dialog_->input_tabular_row);
 	if (tabular.isMultiColumn(cell)) {
 		fl_set_button(cell_options_->check_multicolumn, 1);

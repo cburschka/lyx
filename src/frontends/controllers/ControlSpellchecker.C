@@ -68,7 +68,7 @@ namespace {
 SpellBase * getSpeller(BufferParams const & bp)
 {
 	string lang = (lyxrc.isp_use_alt_lang)
-	              ? lyxrc.isp_alt_lang
+		      ? lyxrc.isp_alt_lang
 		      : bp.language->code();
 
 #if defined(USE_ASPELL)
@@ -265,7 +265,7 @@ bool ControlSpellchecker::checkAlive()
 		message = _("The spellchecker has died for some reason.\n"
 			    "Maybe it has been killed.");
 	else
-		message = _("The spellchecker has failed.\n") 
+		message = _("The spellchecker has failed.\n")
 			+ speller_->error();
 
 	dialog().CancelButton();

@@ -231,7 +231,7 @@ bool InsetNote::getStatus(LCursor & cur, FuncRequest const & cmd,
 
 
 int InsetNote::latex(Buffer const & buf, ostream & os,
-                     OutputParams const & runparams_in) const
+		     OutputParams const & runparams_in) const
 {
 	if (params_.type == InsetNoteParams::Note)
 		return 0;
@@ -259,7 +259,7 @@ int InsetNote::latex(Buffer const & buf, ostream & os,
 
 
 int InsetNote::linuxdoc(Buffer const & buf, std::ostream & os,
-                        OutputParams const & runparams_in) const
+			OutputParams const & runparams_in) const
 {
 	if (params_.type == InsetNoteParams::Note)
 		return 0;
@@ -286,7 +286,7 @@ int InsetNote::linuxdoc(Buffer const & buf, std::ostream & os,
 
 
 int InsetNote::docbook(Buffer const & buf, std::ostream & os,
-                       OutputParams const & runparams_in) const
+		       OutputParams const & runparams_in) const
 {
 	if (params_.type == InsetNoteParams::Note)
 		return 0;
@@ -313,7 +313,7 @@ int InsetNote::docbook(Buffer const & buf, std::ostream & os,
 
 
 int InsetNote::plaintext(Buffer const & buf, std::ostream & os,
-                         OutputParams const & runparams_in) const
+			 OutputParams const & runparams_in) const
 {
 	if (params_.type == InsetNoteParams::Note)
 		return 0;

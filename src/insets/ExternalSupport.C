@@ -57,7 +57,7 @@ void editExternal(InsetExternalParams const & params, Buffer const & buffer)
 {
 	string const file_with_path = params.filename.absFilename();
 	formats.edit(buffer, file_with_path,
-	             formats.getFormatFromFile(file_with_path));
+		     formats.getFormatFromFile(file_with_path));
 }
 
 
@@ -66,9 +66,9 @@ namespace {
 string const subst_path(string const & input,
 			string const & placeholder,
 			string const & path,
-                        bool use_latex_path,
-                        support::latex_path_extension ext = support::PROTECT_EXTENSION,
-                        support::latex_path_dots dots = support::LEAVE_DOTS)
+			bool use_latex_path,
+			support::latex_path_extension ext = support::PROTECT_EXTENSION,
+			support::latex_path_dots dots = support::LEAVE_DOTS)
 {
 	if (input.find(placeholder) == string::npos)
 		return input;
@@ -83,9 +83,9 @@ string const subst_path(string const & input,
 
 string const doSubstitution(InsetExternalParams const & params,
 			    Buffer const & buffer, string const & s,
-                            bool use_latex_path,
+			    bool use_latex_path,
 			    bool external_in_tmpdir,
-                            Substitute what)
+			    Substitute what)
 {
 	Buffer const * m_buffer = buffer.getMasterBuffer();
 	string const parentpath = external_in_tmpdir ?
@@ -115,39 +115,39 @@ string const doSubstitution(InsetExternalParams const & params,
 			relToParentPath.clear();
 
 		result = subst_path(result, "$$FPath", filepath,
-		                    use_latex_path,
-		                    support::PROTECT_EXTENSION,
-		                    support::ESCAPE_DOTS);
+				    use_latex_path,
+				    support::PROTECT_EXTENSION,
+				    support::ESCAPE_DOTS);
 		result = subst_path(result, "$$AbsPath", abspath,
-		                    use_latex_path,
-		                    support::PROTECT_EXTENSION,
-		                    support::ESCAPE_DOTS);
+				    use_latex_path,
+				    support::PROTECT_EXTENSION,
+				    support::ESCAPE_DOTS);
 		result = subst_path(result, "$$RelPathMaster",
-		                    relToMasterPath, use_latex_path,
-		                    support::PROTECT_EXTENSION,
-		                    support::ESCAPE_DOTS);
+				    relToMasterPath, use_latex_path,
+				    support::PROTECT_EXTENSION,
+				    support::ESCAPE_DOTS);
 		result = subst_path(result, "$$RelPathParent",
-		                    relToParentPath, use_latex_path,
-		                    support::PROTECT_EXTENSION,
-		                    support::ESCAPE_DOTS);
+				    relToParentPath, use_latex_path,
+				    support::PROTECT_EXTENSION,
+				    support::ESCAPE_DOTS);
 		if (support::AbsolutePath(filename)) {
 			result = subst_path(result, "$$AbsOrRelPathMaster",
-			                    abspath, use_latex_path,
-			                    support::PROTECT_EXTENSION,
-			                    support::ESCAPE_DOTS);
+					    abspath, use_latex_path,
+					    support::PROTECT_EXTENSION,
+					    support::ESCAPE_DOTS);
 			result = subst_path(result, "$$AbsOrRelPathParent",
-			                    abspath, use_latex_path,
-			                    support::PROTECT_EXTENSION,
-			                    support::ESCAPE_DOTS);
+					    abspath, use_latex_path,
+					    support::PROTECT_EXTENSION,
+					    support::ESCAPE_DOTS);
 		} else {
 			result = subst_path(result, "$$AbsOrRelPathMaster",
-			                    relToMasterPath, use_latex_path,
-			                    support::PROTECT_EXTENSION,
-			                    support::ESCAPE_DOTS);
+					    relToMasterPath, use_latex_path,
+					    support::PROTECT_EXTENSION,
+					    support::ESCAPE_DOTS);
 			result = subst_path(result, "$$AbsOrRelPathParent",
-			                    relToParentPath, use_latex_path,
-			                    support::PROTECT_EXTENSION,
-			                    support::ESCAPE_DOTS);
+					    relToParentPath, use_latex_path,
+					    support::PROTECT_EXTENSION,
+					    support::ESCAPE_DOTS);
 		}
 	}
 
@@ -155,9 +155,9 @@ string const doSubstitution(InsetExternalParams const & params,
 		return result;
 
 	result = subst_path(result, "$$FName", filename, use_latex_path,
-	                    support::EXCLUDE_EXTENSION);
+			    support::EXCLUDE_EXTENSION);
 	result = subst_path(result, "$$Basename", basename, use_latex_path,
-	                    support::PROTECT_EXTENSION, support::ESCAPE_DOTS);
+			    support::PROTECT_EXTENSION, support::ESCAPE_DOTS);
 	result = subst_path(result, "$$Extension",
 			'.' + support::GetExtension(filename), use_latex_path);
 	result = subst_path(result, "$$Tempname", params.tempname(), use_latex_path);
@@ -197,7 +197,7 @@ namespace {
 void updateExternal(InsetExternalParams const & params,
 		    string const & format,
 		    Buffer const & buffer,
-                    ExportData & exportdata,
+		    ExportData & exportdata,
 		    bool external_in_tmpdir)
 {
 	Template const * const et_ptr = getTemplatePtr(params);
@@ -273,7 +273,7 @@ void updateExternal(InsetExternalParams const & params,
 	// the generated file (always in the temp dir)
 	string const to_file = doSubstitution(params, buffer,
 					      outputFormat.updateResult,
-	                                      false, true);
+					      false, true);
 	string const abs_to_file =
 		support::MakeAbsPath(to_file, m_buffer->temppath());
 
@@ -288,7 +288,7 @@ void updateExternal(InsetExternalParams const & params,
 		for (; fit != fend; ++fit) {
 			string const source = support::MakeAbsPath(
 					doSubstitution(params, buffer, *fit,
-					               false, true),
+						       false, true),
 					m_buffer->temppath());
 			// The path of the referenced file is never the
 			// temp path, but the filename may be the mangled
@@ -297,10 +297,10 @@ void updateExternal(InsetExternalParams const & params,
 			string file = support::subst(*fit, "$$FName",
 					"$$FPath$$Basename$$Extension");
 			file = doSubstitution(params, buffer, file, false, false,
-			                      PATHS);
+					      PATHS);
 			file = doSubstitution(params, buffer, file,
-			                      false, external_in_tmpdir,
-			                      ALL_BUT_PATHS);
+					      false, external_in_tmpdir,
+					      ALL_BUT_PATHS);
 			// if file is a relative name, it is interpreted
 			// relative to the master document.
 			exportdata.addExternalFile(rit->first, source, file);
@@ -332,9 +332,9 @@ string const substituteOptions(InsetExternalParams const & params,
 int writeExternal(InsetExternalParams const & params,
 		  string const & format,
 		  Buffer const & buffer, ostream & os,
-                  ExportData & exportdata,
-                  bool external_in_tmpdir,
-                  bool external_in_comment)
+		  ExportData & exportdata,
+		  bool external_in_tmpdir,
+		  bool external_in_comment)
 {
 	Template const * const et_ptr = getTemplatePtr(params);
 	if (!et_ptr)
@@ -352,11 +352,11 @@ int writeExternal(InsetExternalParams const & params,
 
 	if (!external_in_comment)
 		updateExternal(params, format, buffer, exportdata,
-		               external_in_tmpdir);
+			       external_in_tmpdir);
 
 	bool const use_latex_path = format == "LaTeX";
 	string str = doSubstitution(params, buffer, cit->second.product,
-	                            use_latex_path, external_in_tmpdir);
+				    use_latex_path, external_in_tmpdir);
 	str = substituteCommands(params, str, format);
 	str = substituteOptions(params, str, format);
 	os << str;

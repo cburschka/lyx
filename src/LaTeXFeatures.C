@@ -50,7 +50,7 @@ LaTeXFeatures::PackagesList LaTeXFeatures::packages_;
 
 
 LaTeXFeatures::LaTeXFeatures(Buffer const & b, BufferParams const & p,
-                             OutputParams const & r)
+			     OutputParams const & r)
 	: buffer_(&b), params_(p), runparams_(r)
 {}
 

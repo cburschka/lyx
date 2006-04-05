@@ -176,5 +176,3 @@ void layoutSelected(LyXView & lv, string const & name)
 	lyxerr << "ERROR (layoutSelected): layout not found!"
 	       << endl;
 }
-
-

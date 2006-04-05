@@ -81,11 +81,11 @@ public:
 protected:
 	virtual bool
 	do_copy(std::string const & from, std::string const & to,
-	        std::string const &) const;
+		std::string const &) const;
 
 	virtual bool
 	do_rename(std::string const & from, std::string const & to,
-	          std::string const &) const;
+		  std::string const &) const;
 };
 
 
@@ -128,11 +128,11 @@ public:
 private:
 	virtual bool
 	do_copy(std::string const & from, std::string const & to,
-	        std::string const & latex) const;
+		std::string const & latex) const;
 
 	virtual bool
 	do_rename(std::string const & from, std::string const & to,
-	          std::string const & latex) const;
+		  std::string const & latex) const;
 
 	std::string command_;
 };

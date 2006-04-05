@@ -113,11 +113,11 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	connect(asciiModule->asciiLinelengthSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
 	connect(asciiModule->asciiRoffED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 
-	
+
 	dateModule = new UiWidget<Ui::QPrefDateUi>(this);
 	connect(dateModule->DateED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 
-	
+
 
 	keyboardModule = new UiWidget<Ui::QPrefKeyboardUi>(this);
 	connect( keyboardModule->keymapCB, SIGNAL( toggled(bool) ),
@@ -148,7 +148,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	connect(latexModule->latexAutoresetCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 	connect(latexModule->latexDviPaperED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(latexModule->latexPaperSizeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	
+
 
 
 
@@ -202,7 +202,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 		screenfontsModule->screenHugerED));
 
 
-	
+
 
 	colorsModule = new UiWidget<Ui::QPrefColorsUi>(this);
 	// FIXME: put in controller
@@ -242,7 +242,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	displayModule = new UiWidget<Ui::QPrefDisplayUi>(this);
 	connect(displayModule->instantPreviewCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(displayModule->displayGraphicsCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	
+
 
 
 	pathsModule = new UiWidget<Ui::QPrefPathsUi>(this);
@@ -257,7 +257,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	connect(pathsModule->tempDirED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(pathsModule->lyxserverDirED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(pathsModule->pathPrefixED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	
+
 
 
 	spellcheckerModule = new UiWidget<Ui::QPrefSpellcheckerUi>(this);
@@ -283,7 +283,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 #endif
 #endif
 
-	
+
 
 	convertersModule = new UiWidget<Ui::QPrefConvertersUi>(this);
 	connect(convertersModule->converterNewPB, SIGNAL(clicked()), this, SLOT(new_converter()));
@@ -298,7 +298,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	connect(convertersModule->converterRemovePB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(convertersModule->converterModifyPB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 
-	
+
 
 	copiersModule = new UiWidget<Ui::QPrefCopiersUi>(this);
 	connect(copiersModule->copierNewPB, SIGNAL(clicked()), this, SLOT(new_copier()));
@@ -311,7 +311,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	connect(copiersModule->copierModifyPB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(copiersModule->copierFormatCO, SIGNAL(activated(const QString&)), this, SLOT(copiers_changed()));
 	connect(copiersModule->copierED, SIGNAL(textChanged(const QString&)), this, SLOT(copiers_changed()));
-	
+
 
 
 
@@ -329,7 +329,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	connect(fileformatsModule->formatNewPB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(fileformatsModule->formatRemovePB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(fileformatsModule->formatModifyPB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	
+
 
 
 
@@ -361,8 +361,8 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 
 
 
-	
-	
+
+
 	printerModule = new UiWidget<Ui::QPrefPrinterUi>(this);
 	connect(printerModule->printerAdaptCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 	connect(printerModule->printerCommandED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
@@ -382,7 +382,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	connect(printerModule->printerExtraED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(printerModule->printerSpoolPrefixED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(printerModule->printerPaperSizeED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	
+
 
 
 
@@ -1280,9 +1280,9 @@ void QPrefsDialog::apply(LyXRC & rc) const
 		form_->controller().updateScreenFonts();
 	}
 
-	
-	
-	
+
+
+
 	unsigned int i;
 	for (i = 0; i < colorsModule->lyxObjectsLB->count(); ++i) {
 		Q3ListBoxItem * ib(colorsModule->lyxObjectsLB->item(i));
@@ -1370,7 +1370,7 @@ void setComboxFont(QComboBox * cb, string const & family, string const & foundry
 		font.setFamily(family.c_str());
 	} else {
 		lyxerr << "FAILED to find the default font: '"
-                       << foundry << "', '" << family << '\''<< endl;
+		       << foundry << "', '" << family << '\''<< endl;
 		return;
 	}
 
@@ -1389,7 +1389,7 @@ void setComboxFont(QComboBox * cb, string const & family, string const & foundry
 	}
 
 	lyxerr << "FAILED to find the font: '"
-               << foundry << "', '" << family << '\'' <<endl;
+	       << foundry << "', '" << family << '\'' <<endl;
 }
 
 } // end namespace anon

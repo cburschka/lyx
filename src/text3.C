@@ -153,7 +153,7 @@ namespace {
 			// is empty
 			if (!cmd.argument.empty())
 				cur.dispatch(FuncRequest(LFUN_INSERT_MATH,
-				                         cmd.argument));
+							 cmd.argument));
 		} else {
 			// create a macro if we see "\\newcommand"
 			// somewhere, and an ordinary formula
@@ -313,7 +313,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	bool singleParUpdate = lyxaction.funcHasFlag(cmd.action,
 		LyXAction::SingleParUpdate);
 	// Signals that a full-screen update is required
-	bool needsUpdate = !(lyxaction.funcHasFlag(cmd.action, 
+	bool needsUpdate = !(lyxaction.funcHasFlag(cmd.action,
 		LyXAction::NoUpdate) || singleParUpdate);
 	// Remember the old paragraph metric (_outer_ paragraph!)
 	Dimension olddim = cur.bottom().paragraph().dim();
@@ -861,7 +861,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_GETXY:
 		cur.message(convert<string>(cursorX(cur.top(), cur.boundary())) + ' '
-		          + convert<string>(cursorY(cur.top(), cur.boundary())));
+			  + convert<string>(cursorY(cur.top(), cur.boundary())));
 		break;
 
 	case LFUN_SETXY: {
@@ -994,7 +994,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_DATE_INSERT: 
+	case LFUN_DATE_INSERT:
 		if (cmd.argument.empty())
 			bv->owner()->dispatch(FuncRequest(LFUN_SELFINSERT,
 				lyx::formatted_time(lyx::current_time())));
@@ -1530,9 +1530,9 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	default:
-		lyxerr[Debug::ACTION] 
+		lyxerr[Debug::ACTION]
 			<< BOOST_CURRENT_FUNCTION
-			<< ": Command " << cmd 
+			<< ": Command " << cmd
 			<< " not DISPATCHED by LyXText" << endl;
 		cur.undispatched();
 		break;
@@ -1540,7 +1540,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	if (singleParUpdate)
 		// Inserting characters does not change par height
-		if (cur.bottom().paragraph().dim().height() 
+		if (cur.bottom().paragraph().dim().height()
 		    == olddim.height()) {
 			// if so, update _only_ this paragraph
 			cur.bv().update(Update::SinglePar |

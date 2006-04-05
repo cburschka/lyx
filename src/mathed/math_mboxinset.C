@@ -114,4 +114,3 @@ void MathMBoxInset::drawSelection(PainterInfo & pi, int x, int y) const
 {
 	text_.drawSelection(pi, x, y);
 }
-

@@ -192,7 +192,7 @@ LyXFont LyXText::getFont(Paragraph const & par, pos_type const pos) const
 	if (!isMainText())
 		applyOuterFont(font);
 
-	// Find the pit value belonging to paragraph. This will not break 
+	// Find the pit value belonging to paragraph. This will not break
 	// even if pars_ would not be a vector anymore.
 	// Performance appears acceptable.
 
@@ -954,7 +954,7 @@ InsetBase * LyXText::editXY(LCursor & cur, int x, int y)
 	// This should be just before or just behind the
 	// cursor position set above.
 	BOOST_ASSERT((pos != 0 && inset == pars_[pit].getInset(pos - 1))
-	             || inset == pars_[pit].getInset(pos));
+		     || inset == pars_[pit].getInset(pos));
 	// Make sure the cursor points to the position before
 	// this inset.
 	if (inset == pars_[pit].getInset(pos - 1))
@@ -1263,7 +1263,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur, LCursor & old)
 		// see #warning above
 		if (cur.depth() >= old.depth()) {
 			CursorSlice & curslice = cur[old.depth() - 1];
-			if (&curslice.inset() == &old.inset() 
+			if (&curslice.inset() == &old.inset()
 			    && curslice.pit() > old.pit()) {
 				--curslice.pit();
 				// since a paragraph has been deleted, all the

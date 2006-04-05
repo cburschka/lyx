@@ -38,10 +38,10 @@ int const nohue = -1;
 
 int hexstrToInt(string const & str)
 {
-        int val = 0;
-        istringstream is(str);
-        is >> std::setbase(16) >> val;
-        return val;
+	int val = 0;
+	istringstream is(str);
+	is >> std::setbase(16) >> val;
+	return val;
 }
 
 } // namespace anon

@@ -30,7 +30,7 @@ const long maxlastfiles = 20;
   1. the latest documents loaded (lastfiles)
   2. cursor positions of files closed (lastfilepos)
   3. opened files when a lyx session is closed (lastopened)
-  4. bookmarks 
+  4. bookmarks
   5. general purpose session info in the form of key/value pairs
  */
 namespace lyx {
@@ -62,7 +62,7 @@ public:
 	/** Write the session file.
 	*/
 	void writeFile() const;
-	
+
 	/** Insert #file# into the lastfile dequeue.
 	    This funtion inserts #file# into the last files list. If the file
 	    already exists it is moved to the top of the list, else exist it
@@ -71,30 +71,30 @@ public:
 	    @param file the file to insert in the lastfile list.
 	*/
 	void addLastFile(std::string const & file);
-	
+
 	/** add cursor position to the fname entry in the filepos map
 	    @param fname file entry for which to save position information
 	    @param pos position of the cursor when the file is closed.
 	*/
 	void saveFilePosition(std::string const & fname, FilePos pos);
-	
+
 	/** clear lastopened file list
 	 */
 	void clearLastOpenedFiles();
-	
+
 	/** set lastopened file list
-	    @param files filenames of a list of opened files 
+	    @param files filenames of a list of opened files
 	*/
 	void setLastOpenedFiles(std::vector<std::string> const & files);
-	
+
 	/** load saved cursor position from the fname entry in the filepos map
 	    @param fname file entry for which to load position information
 	*/
 	FilePos loadFilePosition(std::string const & fname) const;
-	
+
 	/// Return lastfiles container (deque)
 	LastFiles const lastFiles() const { return lastfiles; }
-	
+
 	/// Return lastopened container (vector)
 	LastOpened const lastOpenedFiles() const { return lastopened; }
 
@@ -102,24 +102,24 @@ public:
 		@bookmark bookmark to be saved
 	*/
 	void saveBookmark(Bookmark const & bookmark);
-	
-	/** return bookmark list. Non-const container is used since 
+
+	/** return bookmark list. Non-const container is used since
 		bookmarks will be cleaned after use.
 	*/
 	BookmarkList & loadBookmarks() { return bookmarks; }
 
-	/** set session info 
+	/** set session info
 		@param key key of the value to store
 		@param value value, a string without newline ('\n')
 	*/
 	void saveSessionInfo(std::string const & key, std::string const & value);
 
 	/** load session info
-		@param key a key to extract value from the session file 
+		@param key a key to extract value from the session file
 		@param release whether or not clear the value. Default to true
 			since most of such values are supposed to be used only once.
 	*/
-	std::string const loadSessionInfo(std::string const & key, bool release = true);	
+	std::string const loadSessionInfo(std::string const & key, bool release = true);
 private:
 	/// Default number of lastfiles.
 	unsigned int const default_num_last_files;
@@ -132,7 +132,7 @@ private:
 
 	/// file to save session, determined in the constructor.
 	std::string session_file;
-	
+
 	/// a list of lastfiles
 	LastFiles lastfiles;
 
@@ -141,19 +141,19 @@ private:
 
 	/// a map to save session info
 	MiscInfo sessioninfo;
-	
+
 	/// number of files in the lastfiles list.
 	unsigned int num_lastfiles;
-	
+
 	/// a map of file positions
 	FilePosMap lastfilepos;
-	
+
 	/// a list of lastopened files
 	LastOpened lastopened;
-	
+
 	/** Read the session file.
 	    Reads the #.lyx/session# at the beginning of the LyX session.
-	    This will read the session file (usually #.lyx/session#). 
+	    This will read the session file (usually #.lyx/session#).
 	    @param file the file containing the session.
 	*/
 	void readFile();

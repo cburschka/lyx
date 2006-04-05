@@ -135,12 +135,12 @@ string Formats::getFormatFromFile(string const & filename) const
 
 	// try to find a format from the file extension.
 	string const ext(lyx::support::GetExtension(filename));
-        if (!ext.empty()) {
+	if (!ext.empty()) {
 		// this is ambigous if two formats have the same extension,
 		// but better than nothing
 		Formats::const_iterator cit =
 			find_if(formatlist.begin(), formatlist.end(),
-			        FormatExtensionsEqual(ext));
+				FormatExtensionsEqual(ext));
 		if (cit != formats.end()) {
 			lyxerr[Debug::GRAPHICS]
 				<< "\twill guess format from file extension: "
@@ -270,7 +270,7 @@ bool Formats::view(Buffer const & buffer, string const & filename,
 
 
 bool Formats::edit(Buffer const & buffer, string const & filename,
-		         string const & format_name) const
+			 string const & format_name) const
 {
 	if (filename.empty())
 		return false;

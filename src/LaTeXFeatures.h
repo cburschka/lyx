@@ -42,7 +42,7 @@ class LaTeXFeatures {
 public:
 	///
 	LaTeXFeatures(Buffer const &, BufferParams const &,
-	              OutputParams const &);
+		      OutputParams const &);
 	/// The packages needed by the document
 	std::string const getPackages() const;
 	/// The macros definitions needed by the document

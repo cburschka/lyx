@@ -78,7 +78,7 @@ public:
 	/// Called the first time when available() can't load a symbol font
 	static void addToFontPath();
 
-	/// Get font info (font + metrics) for the given LyX font. 
+	/// Get font info (font + metrics) for the given LyX font.
 	QLFontInfo & fontinfo(LyXFont const & f) {
 		QLFontInfo * & fi =
 			fontinfo_[f.family()][f.series()][f.realShape()][f.size()];

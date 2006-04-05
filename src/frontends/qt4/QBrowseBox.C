@@ -40,7 +40,7 @@ QBrowseBox::QBrowseBox(int rows, int cols, QWidget* parent, const char * name, Q
 
 
 	setFrameStyle(QFrame::WinPanel | QFrame::Raised);
-	
+
 	setVScrollBarMode(Q3ScrollView::AlwaysOff);
 	setHScrollBarMode(Q3ScrollView::AlwaysOff);
 

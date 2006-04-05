@@ -200,6 +200,6 @@ private:
 	ViewMetricsInfo metrics(bool singlepar = false);
 	/// Working variable indicating a full screen refresh
 	mutable bool refresh_inside_;
-	
+
 };
 #endif // BUFFERVIEW_PIMPL_H

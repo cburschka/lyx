@@ -415,7 +415,7 @@ LyXTextClass const parse_preamble(Parser & p, ostream & os, string const & force
 			while (p.next_token().cat() != catBegin)
 				name += p.get_token().asString();
 			h_preamble << "\\def\\" << name << '{'
-			           << p.verbatim_item() << "}";
+				   << p.verbatim_item() << "}";
 		}
 
 		else if (t.cs() == "newcolumntype") {
@@ -472,7 +472,7 @@ LyXTextClass const parse_preamble(Parser & p, ostream & os, string const & force
 			add_package("jurabib", jurabibsetup);
 			if (!jurabibsetup.empty()) {
 				h_preamble << "\\jurabibsetup{"
-				           << join(jurabibsetup, ",") << '}';
+					   << join(jurabibsetup, ",") << '}';
 			}
 		}
 

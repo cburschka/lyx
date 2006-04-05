@@ -86,7 +86,7 @@ protected:
 	void closeEvent(QCloseEvent * e);
 
 private:
-	
+
 	UiWidget<Ui::TextLayoutUi> *textLayoutModule;
 	UiWidget<Ui::PageLayoutUi> *pageLayoutModule;
 	UiWidget<Ui::MarginsUi> *marginsModule;
@@ -96,7 +96,7 @@ private:
 	UiWidget<Ui::MathsUi> *mathsModule;
 	UiWidget<Ui::LaTeXUi> *latexModule;
 	UiWidget<Ui::PreambleUi> *preambleModule;
-	
+
 	QBranches *branchesModule;
 
 	BulletsModule * bulletsModule;

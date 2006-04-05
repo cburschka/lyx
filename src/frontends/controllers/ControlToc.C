@@ -40,7 +40,7 @@ void ControlToc::goTo(toc::TocItem const & item)
 void ControlToc::outline(toc::OutlineOp op)
 {
 	std::ostringstream o;
-	o << op << std::flush; 
+	o << op << std::flush;
 	kernel().dispatch(FuncRequest(LFUN_OUTLINE, o.str()));
 }
 

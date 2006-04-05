@@ -298,17 +298,17 @@ int InsetCharStyle::docbook(Buffer const & buf, ostream & os,
 {
 	ParagraphList::const_iterator beg = paragraphs().begin();
 	ParagraphList::const_iterator par = paragraphs().begin();
-        ParagraphList::const_iterator end = paragraphs().end();
+	ParagraphList::const_iterator end = paragraphs().end();
 
 	if (!undefined())
 		sgml::openTag(os, params_.latexname,
 			par->getID(buf, runparams) + params_.latexparam);
 
-        for (; par != end; ++par) {
+	for (; par != end; ++par) {
 		par->simpleDocBookOnePar(buf, os, runparams,
 					 outerFont(std::distance(beg, par),
 						   paragraphs()));
-        }
+	}
 
 	if (!undefined())
 		sgml::closeTag(os, params_.latexname);

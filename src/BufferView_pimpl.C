@@ -144,7 +144,7 @@ T * getInsetByCode(LCursor & cur, InsetBase::Code code)
 BufferView::Pimpl::Pimpl(BufferView & bv, LyXView * owner,
 			 int width, int height)
 	: bv_(&bv), owner_(owner), buffer_(0), wh_(0), cursor_timeout(400),
-	  using_xterm_cursor(false), cursor_(bv), 
+	  using_xterm_cursor(false), cursor_(bv),
 	  anchor_ref_(0), offset_ref_(0)
 {
 	xsel_cache_.set = false;
@@ -176,7 +176,7 @@ BufferView::Pimpl::Pimpl(BufferView & bv, LyXView * owner,
 		bm != bmList.end(); ++bm)
 		if (bm->get<0>() < saved_positions_num)
 			saved_positions[bm->get<0>()] = Position( bm->get<1>(), bm->get<2>(), bm->get<3>() );
-	// and then clear them		
+	// and then clear them
 	bmList.clear();
 }
 
@@ -302,14 +302,14 @@ bool BufferView::Pimpl::loadLyXFile(string const & filename, bool tolastfiles)
 
 	setBuffer(b);
 	bv_->showErrorList(_("Parse"));
-    
+
 	// scroll to the position when the file was last closed
 	if (lyxrc.use_lastfilepos) {
 		lyx::pit_type pit;
 		lyx::pos_type pos;
 		boost::tie(pit, pos) = LyX::ref().session().loadFilePosition(s);
 		// I am not sure how to separate the following part to a function
-		// so I will leave this to Lars. 
+		// so I will leave this to Lars.
 		//
 		// check pit since the document may be externally changed.
 		if ( static_cast<size_t>(pit) < b->paragraphs().size() ) {
@@ -321,7 +321,7 @@ bool BufferView::Pimpl::loadLyXFile(string const & filename, bool tolastfiles)
 					bv_->setCursor(makeDocIterator(it, min(pos, it->size())));
 					bv_->update(Update::FitCursor);
 					break;
-				}	
+				}
 		}
 	}
 
@@ -434,7 +434,7 @@ void BufferView::Pimpl::setBuffer(Buffer * b)
 			BOOST_ASSERT(i>0);
 			--i;
 		}
-	}	
+	}
 
 	if (buffer_ && lyx::graphics::Previews::status() != LyXRC::PREVIEW_OFF)
 		lyx::graphics::Previews::get().generateBufferPreviews(*buffer_);
@@ -491,7 +491,7 @@ void BufferView::Pimpl::updateScrollbar()
 
 	// estimated average paragraph height:
 	if (wh_ == 0)
-		wh_ = workarea().workHeight() / 4; 
+		wh_ = workarea().workHeight() / 4;
 	int h = t.getPar(anchor_ref_).height();
 
 	// Normalize anchor/offset (MV):
@@ -506,7 +506,7 @@ void BufferView::Pimpl::updateScrollbar()
 	for (lyx::pit_type pit = anchor_ref_; pit <= parsize; ++pit) {
 		if (sumh > workarea().workHeight())
 			break;
-		int const h2 = t.getPar(pit).height(); 
+		int const h2 = t.getPar(pit).height();
 		sumh += h2;
 		nh++;
 	}
@@ -514,9 +514,9 @@ void BufferView::Pimpl::updateScrollbar()
 	// More realistic average paragraph height
 	if (hav > wh_)
 		wh_ = hav;
-	
-	workarea().setScrollbarParams((parsize + 1) * wh_, 
-		anchor_ref_ * wh_ + int(offset_ref_ * wh_ / float(h)), 
+
+	workarea().setScrollbarParams((parsize + 1) * wh_,
+		anchor_ref_ * wh_ + int(offset_ref_ * wh_ / float(h)),
 		int(wh_ * defaultRowHeight() / float(h)));
 }
 
@@ -706,11 +706,11 @@ bool BufferView::Pimpl::multiParSel()
 void BufferView::Pimpl::update(Update::flags flags)
 {
 	lyxerr[Debug::DEBUG]
-                << BOOST_CURRENT_FUNCTION
-                << "[fitcursor = " << (flags & Update::FitCursor)
-                << ", forceupdate = " << (flags & Update::Force)
-                << ", singlepar = " << (flags & Update::SinglePar)
-                << "]  buffer: " << buffer_ << endl;
+		<< BOOST_CURRENT_FUNCTION
+		<< "[fitcursor = " << (flags & Update::FitCursor)
+		<< ", forceupdate = " << (flags & Update::Force)
+		<< ", singlepar = " << (flags & Update::SinglePar)
+		<< "]  buffer: " << buffer_ << endl;
 
 	// Check needed to survive LyX startup
 	if (buffer_) {
@@ -853,7 +853,7 @@ void BufferView::Pimpl::saveSavedPositions()
 	for (unsigned int i=1; i < saved_positions_num; ++i) {
 		if ( isSavedPosition(i) )
 			LyX::ref().session().saveBookmark( boost::tie(
-				i, 
+				i,
 				saved_positions[i].filename,
 				saved_positions[i].par_id,
 				saved_positions[i].par_pos) );
@@ -946,7 +946,7 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filenm)
 	Buffer buf("", false);
 	buf.error.connect(boost::bind(&BufferView::Pimpl::addError, this, _1));
 	if (::loadLyXFile(&buf, MakeAbsPath(filename))) {
-		lyx::cap::pasteParagraphList(cursor_, buf.paragraphs(), 
+		lyx::cap::pasteParagraphList(cursor_, buf.paragraphs(),
 					     buf.params().textclass);
 		res = _("Document %1$s inserted.");
 	} else
@@ -1257,7 +1257,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		updateCounters(*buffer_);
 		update();
 	}
-				  
+
 	case LFUN_GOTOERROR:
 		bv_funcs::gotoInset(bv_, InsetBase::ERROR_CODE, false);
 		break;
@@ -1424,7 +1424,7 @@ ViewMetricsInfo BufferView::Pimpl::metrics(bool singlepar)
 
 	// Rebreak anchor paragraph. In Single Paragraph mode, rebreak only
 	// the (main text, not inset!) paragraph containing the cursor.
-	// (if this paragraph contains insets etc., rebreaking will 
+	// (if this paragraph contains insets etc., rebreaking will
 	// recursively descend)
 	if (!singlepar || pit == cursor_.bottom().pit())
 		text->redoParagraph(pit);
@@ -1476,8 +1476,8 @@ ViewMetricsInfo BufferView::Pimpl::metrics(bool singlepar)
 		y += text->getPar(pit).ascent();
 		theCoords.parPos()[text][pit] = Point(0, y);
 		if (singlepar && pit == cursor_.bottom().pit()) {
-			// In Single Paragraph mode, collect here the 
-		    	// y1 and y2 of the (one) paragraph the cursor is in
+			// In Single Paragraph mode, collect here the
+			// y1 and y2 of the (one) paragraph the cursor is in
 			y1 = y - text->getPar(pit).ascent();
 			y2 = y + text->getPar(pit).descent();
 		}
@@ -1489,17 +1489,17 @@ ViewMetricsInfo BufferView::Pimpl::metrics(bool singlepar)
 		pit1 = cursor_.bottom().pit();
 		pit2 = cursor_.bottom().pit();
 	}
-	
+
 	lyxerr[Debug::DEBUG]
-                << BOOST_CURRENT_FUNCTION
-                << " y1: " << y1
-                << " y2: " << y2
-                << " pit1: " << pit1
-                << " pit2: " << pit2
-                << " npit: " << npit
-                << " singlepar: " << singlepar
-                << "size: " << size
-                << endl;
+		<< BOOST_CURRENT_FUNCTION
+		<< " y1: " << y1
+		<< " y2: " << y2
+		<< " pit1: " << pit1
+		<< " pit2: " << pit2
+		<< " npit: " << npit
+		<< " singlepar: " << singlepar
+		<< "size: " << size
+		<< endl;
 
 	return ViewMetricsInfo(pit1, pit2, y1, y2, singlepar, size);
 }

@@ -23,7 +23,7 @@ using std::string;
 namespace {
 
 void begin_layout(ostream & os, LyXLayout_ptr layout, Font const & font,
-                  Font const & normalfont)
+		  Font const & normalfont)
 {
 	os << "\n\\begin_layout " << layout->name() << "\n";
 	// FIXME: This is not enough for things like
@@ -63,7 +63,7 @@ bool operator==(Font const & f1, Font const & f2)
 
 
 void output_font_change(ostream & os, Font const & oldfont,
-                        Font const & newfont)
+			Font const & newfont)
 {
 	if (oldfont.family != newfont.family)
 		os << "\n\\family " << newfont.family << '\n';
@@ -101,7 +101,7 @@ Context::~Context()
 {
 	if (!extra_stuff.empty())
 		std::cerr << "Bug: Ignoring extra stuff '" << extra_stuff
-		          << '\'' << std::endl;
+			  << '\'' << std::endl;
 }
 
 
@@ -130,7 +130,7 @@ void Context::check_layout(ostream & os)
 				if (!deeper_paragraph)
 					begin_deeper(os);
 				begin_layout(os, textclass.defaultLayout(),
-				             font, normalfont);
+					     font, normalfont);
 				deeper_paragraph = true;
 			}
 			need_layout = false;

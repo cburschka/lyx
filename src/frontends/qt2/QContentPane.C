@@ -262,7 +262,7 @@ void QContentPane::wheelEvent(QWheelEvent * e)
 	// documentation of QWheelEvent)
 	int const lines = QApplication::wheelScrollLines() * e->delta() / 120;
 	wa_->scrollbar_->setValue(wa_->scrollbar_->value() -
-	                          lines *  wa_->scrollbar_->lineStep());
+				  lines *  wa_->scrollbar_->lineStep());
 }
 
 

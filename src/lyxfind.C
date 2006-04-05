@@ -345,7 +345,7 @@ bool findNextChange(BufferView * bv)
 
 	bv->cursor().setCursor(cur);
 	bv->cursor().resetAnchor();
-	
+
 	Change orig_change = cur.paragraph().lookupChangeFull(cur.pos());
 
 	DocIterator et = doc_iterator_end(cur.inset());

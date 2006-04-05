@@ -97,7 +97,7 @@ public:
 		string::size_type i = lang_.find(".");
 		lang_ = lang_.substr(0, i);
 		lyxerr[Debug::DEBUG] << BOOST_CURRENT_FUNCTION
-                                     << ": language(" << lang_ << ")" << std::endl;
+				     << ": language(" << lang_ << ")" << std::endl;
 	}
 
 	~Pimpl() {}
@@ -117,7 +117,7 @@ public:
 					lang = "C";
 			}
 		}
-		
+
 		char const * lc_msgs = setlocale(LC_MESSAGES, lang_.c_str());
 		// setlocale fails (returns NULL) if the corresponding locale
 		// is not installed.
@@ -141,11 +141,11 @@ public:
 		int e = errno;
 		if (e) {
 			lyxerr[Debug::DEBUG]
-                                << BOOST_CURRENT_FUNCTION << '\n'
-                                << "Error code: " << errno << '\n'
-                                << "Lang, mess: " << lang_ << " " << m << '\n'
-                                << "Directory : " << package().locale_dir() << '\n'
-                                << "Rtn value : " << c << std::endl;
+				<< BOOST_CURRENT_FUNCTION << '\n'
+				<< "Error code: " << errno << '\n'
+				<< "Lang, mess: " << lang_ << " " << m << '\n'
+				<< "Directory : " << package().locale_dir() << '\n'
+				<< "Rtn value : " << c << std::endl;
 		}
 		textdomain(PACKAGE);
 		const char* msg = gettext(m.c_str());

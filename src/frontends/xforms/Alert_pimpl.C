@@ -50,7 +50,7 @@ void information_pimpl(string const &, string const & message)
 
 
 int prompt_pimpl(string const &, string const & question,
-           int default_button, int /*escape_button*/,
+	   int default_button, int /*escape_button*/,
 	   string const & b1, string const & b2, string const & b3)
 {
 	string b1label, b1sc;

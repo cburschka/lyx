@@ -74,8 +74,8 @@ private:
 	void paintForeignMark(double orig_x, LyXFont const & font, int desc = 0);
 	void paintHebrewComposeChar(lyx::pos_type & vpos, LyXFont const & font);
 	void paintArabicComposeChar(lyx::pos_type & vpos, LyXFont const & font);
-	void paintChars(lyx::pos_type & vpos, LyXFont font, 
-	                bool hebrew, bool arabic);
+	void paintChars(lyx::pos_type & vpos, LyXFont font,
+			bool hebrew, bool arabic);
 	int paintAppendixStart(int y);
 	void paintFromPos(lyx::pos_type & vpos);
 	void paintInset(lyx::pos_type const pos, LyXFont const & font);
@@ -231,7 +231,7 @@ void RowPainter::paintArabicComposeChar(pos_type & vpos, LyXFont const & font)
 		c = par_.getChar(i);
 		if (!Encodings::IsComposeChar_arabic(c)) {
 			if (IsPrintableNonspace(c)) {
-				int const width2 = 
+				int const width2 =
 					text_.singleWidth(par_, i, c, text_.getFont(par_, i));
 				dx = (width2 - width) / 2;
 			}
@@ -243,7 +243,7 @@ void RowPainter::paintArabicComposeChar(pos_type & vpos, LyXFont const & font)
 }
 
 
-void RowPainter::paintChars(pos_type & vpos, LyXFont font, 
+void RowPainter::paintChars(pos_type & vpos, LyXFont font,
 			    bool hebrew, bool arabic)
 {
 	pos_type pos = text_.bidi.vis2log(vpos);
@@ -621,7 +621,7 @@ void RowPainter::paintText()
 	bool is_struckout = false;
 	int last_strikeout_x = 0;
 
-	// Use font span to speed things up, see below 
+	// Use font span to speed things up, see below
 	FontSpan font_span;
 	LyXFont font;
 
@@ -743,7 +743,7 @@ lyx::size_type calculateRowSignature(Row const & row, Paragraph const & par,
 }
 
 
-bool CursorOnRow(PainterInfo & pi, pit_type const pit, 
+bool CursorOnRow(PainterInfo & pi, pit_type const pit,
 	RowList::const_iterator rit, LyXText const & text)
 {
 	// Is there a cursor on this row (or inside inset on row)
@@ -752,7 +752,7 @@ bool CursorOnRow(PainterInfo & pi, pit_type const pit,
 		CursorSlice const & sl = cur[d];
 		if (sl.text() == &text
 		    && sl.pit() == pit
-	  	    && sl.pos() >= rit->pos()
+		    && sl.pos() >= rit->pos()
 		    && sl.pos() <= rit->endpos())
 			return true;
 	}
@@ -760,7 +760,7 @@ bool CursorOnRow(PainterInfo & pi, pit_type const pit,
 }
 
 
-bool innerCursorOnRow(PainterInfo & pi, pit_type pit, 
+bool innerCursorOnRow(PainterInfo & pi, pit_type pit,
 	RowList::const_iterator rit, LyXText const & text)
 {
 	// Is there a cursor inside an inset on this row, and is this inset
@@ -771,7 +771,7 @@ bool innerCursorOnRow(PainterInfo & pi, pit_type pit,
 	for (lyx::size_type d = 0; d < cur.depth(); d++) {
 		CursorSlice const & sl = cur[d];
 		if (sl.text() == &text
-		    && sl.pit() == pit 
+		    && sl.pit() == pit
 		    && sl.pos() == rit->pos())
 			return d < cur.depth() - 1;
 	}
@@ -805,7 +805,7 @@ void paintPar
 		// Row signature; has row changed since last paint?
 		lyx::size_type const row_sig = calculateRowSignature(*rit, par, x, y);
 		bool row_has_changed = par.rowSignature()[rowno] != row_sig;
-		
+
 		bool cursor_on_row = CursorOnRow(pi, pit, rit, text);
 		bool in_inset_alone_on_row = innerCursorOnRow(pi, pit, rit,
 			text);
@@ -817,12 +817,12 @@ void paintPar
 				InsetText const * const t = in->asTextInset();
 				if (t)
 					t->Wide() = in_inset_alone_on_row &&
-					            t->Tall();
+						    t->Tall();
 			}
 		}
 
-		// If selection is on, the current row signature differs 
-		// from cache, or cursor is inside an inset _on this row_, 
+		// If selection is on, the current row signature differs
+		// from cache, or cursor is inside an inset _on this row_,
 		// then paint the row
 		if (repaintAll || row_has_changed || cursor_on_row) {
 			// Add to row signature cache
@@ -831,11 +831,11 @@ void paintPar
 			bool const inside = (y + rit->descent() >= 0
 				       && y - rit->ascent() < ww);
 			RowPainter rp(inside ? pi : nullpi, text, pit, *rit, x, y);
-			// Clear background of this row 
+			// Clear background of this row
 			// (if paragraph background was not cleared)
-			if (!repaintAll && 
+			if (!repaintAll &&
 			    (!in_inset_alone_on_row || row_has_changed)) {
-				pi.pain.fillRectangle(( rowno ? 0 : x - 10 ), y - rit->ascent(), 
+				pi.pain.fillRectangle(( rowno ? 0 : x - 10 ), y - rit->ascent(),
 				    pi.base.bv->workWidth(), rit->height(),
 				    text.backgroundColor());
 				// If outer row has changed, force nested
@@ -843,13 +843,13 @@ void paintPar
 				if (row_has_changed)
 					pi.base.bv->repaintAll(true);
 			}
-			
+
 			// Instrumentation for testing row cache (see also
 			// 12 lines lower):
 			if (text.isMainText())
-    				lyxerr[Debug::PAINTING] << "#";
+				lyxerr[Debug::PAINTING] << "#";
 			else
-    				lyxerr[Debug::PAINTING] << "[" <<
+				lyxerr[Debug::PAINTING] << "[" <<
 				    repaintAll << row_has_changed <<
 				    cursor_on_row << "]";
 			rp.paintAppendix();
@@ -880,7 +880,7 @@ void paintText(BufferView const & bv, ViewMetricsInfo const & vi)
 	PainterInfo pi(const_cast<BufferView *>(&bv), pain);
 	// Should the whole screen, including insets, be refreshed?
 	bool repaintAll(select || !vi.singlepar);
-	
+
 	if (repaintAll) {
 		// Clear background (if not delegated to rows)
 		pain.fillRectangle(0, vi.y1, bv.workWidth(), vi.y2 - vi.y1,
@@ -906,13 +906,13 @@ void paintText(BufferView const & bv, ViewMetricsInfo const & vi)
 
 	if (vi.p1 > 0) {
 		text->redoParagraph(vi.p1 - 1);
-		theCoords.parPos()[bv.text()][vi.p1 - 1] = 
+		theCoords.parPos()[bv.text()][vi.p1 - 1] =
 			Point(0, vi.y1 - text->getPar(vi.p1 - 1).descent());
 	}
 
 	if (vi.p2 < lyx::pit_type(text->paragraphs().size()) - 1) {
 		text->redoParagraph(vi.p2 + 1);
-		theCoords.parPos()[bv.text()][vi.p2 + 1] = 
+		theCoords.parPos()[bv.text()][vi.p2 + 1] =
 			Point(0, vi.y2 + text->getPar(vi.p2 + 1).ascent());
 	}
 

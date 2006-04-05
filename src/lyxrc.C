@@ -400,14 +400,14 @@ int LyXRC::read(LyXLex & lexrc)
 		case RC_CYGWIN_PATH_FIX:
 			if (lexrc.next()) {
 				cygwin_path_fix = lexrc.getBool();
- 			}
- 			break;
+			}
+			break;
 
 		case RC_TEX_ALLOWS_SPACES:
 			if (lexrc.next()) {
 				tex_allows_spaces = lexrc.getBool();
-  			}
- 			break;
+			}
+			break;
 
 		case RC_KBMAP:
 			if (lexrc.next()) {
@@ -1379,7 +1379,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 		if (tex_allows_spaces != system_lyxrc.tex_allows_spaces) {
 			os << "\\tex_allows_spaces "
 			   << convert<string>(tex_allows_spaces) << '\n';
-    		}
+		}
 	case RC_KBMAP:
 		if (ignore_system_lyxrc ||
 		    use_kbmap != system_lyxrc.use_kbmap) {
@@ -1460,7 +1460,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 			os << "\\preview_scale_factor "
 			   << preview_scale_factor << '\n';
 		}
-		
+
 		os << "\n#\n"
 		   << "# SCREEN & FONTS SECTION ############################\n"
 		   << "#\n\n";
@@ -1801,7 +1801,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 	case RC_LOADSESSION:
 		if (ignore_system_lyxrc ||
 		    load_session != system_lyxrc.load_session) {
-			os << "\\load_session " << convert<string>(load_session) 
+			os << "\\load_session " << convert<string>(load_session)
 			   << "\n";
 		}
 	case RC_NUMLASTFILES:
@@ -2448,11 +2448,11 @@ string const LyXRC::getDescription(LyXRCTags tag)
 	case RC_SCREEN_GEOMETRY_HEIGHT:
 	case RC_SCREEN_GEOMETRY_WIDTH:
 		str = _("Specify geometry of the main view in width x height (values from last session will not be used if non-zero values are specified).");
-		break;	
+		break;
 
 	case RC_SCREEN_GEOMETRY_XYSAVED:
 		str = _("Allow session manager to save and restore windows position.");
-		break;	
+		break;
 
 	case RC_SERVERPIPE:
 		str = _("This starts the lyxserver. The pipes get an additional extension \".in\" and \".out\". Only for advanced users.");

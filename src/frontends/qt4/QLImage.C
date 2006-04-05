@@ -87,7 +87,7 @@ Image::FormatList QLImage::loadableFormats()
 	for (QList<QByteArray>::const_iterator it =qt_formats.begin(); it != qt_formats.end(); ++it) {
 
 		lyxerr[Debug::GRAPHICS] << (const char *) *it << ", ";
-		
+
 		string ext = lowercase((const char *) *it);
 
 		// special case

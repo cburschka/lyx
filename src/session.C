@@ -23,8 +23,8 @@
 #include <algorithm>
 #include <iterator>
 
-using lyx::support::AddName; 
-using lyx::support::package;  
+using lyx::support::AddName;
+using lyx::support::package;
 
 namespace fs = boost::filesystem;
 
@@ -94,7 +94,7 @@ void Session::readFile()
 
 	// the following is currently not implemented very
 	// robustly. (Manually editing of the session file may crash lyx)
-	// 
+	//
 	while (getline(ifs, tmp)) {
 		// Ignore comments, empty line or line stats with ' '
 		if (tmp == "" || tmp[0] == '#' || tmp[0] == ' ')
@@ -138,7 +138,7 @@ void Session::readFile()
 				continue;
 			lastopened.push_back(tmp);
 		} else if (section == id_bookmarks) {
-			// read bookmarks 
+			// read bookmarks
 			// bookmarkid, id, pos, file\n
 			unsigned int num;
 			unsigned int id;
@@ -179,9 +179,9 @@ void Session::writeFile() const
 		     ostream_iterator<string>(ofs, "\n"));
 		// second section
 		ofs << '\n' << sec_lastfilepos << '\n';
-		for (FilePosMap::const_iterator file = lastfilepos.begin(); 
+		for (FilePosMap::const_iterator file = lastfilepos.begin();
 			file != lastfilepos.end(); ++file) {
-			ofs << file->second.get<0>() << ", " 
+			ofs << file->second.get<0>() << ", "
 			    << file->second.get<1>() << ", "
 			    << file->first << '\n';
 		}
@@ -191,11 +191,11 @@ void Session::writeFile() const
 		     ostream_iterator<string>(ofs, "\n"));
 		// fourth section
 		ofs << '\n' << sec_bookmarks << '\n';
-		for (BookmarkList::const_iterator bm = bookmarks.begin(); 
+		for (BookmarkList::const_iterator bm = bookmarks.begin();
 			bm != bookmarks.end(); ++bm) {
 			// save bookmark number, id, pos, fname
 			ofs << bm->get<0>() << ", "
-				<< bm->get<2>() << ", " 
+				<< bm->get<2>() << ", "
 				<< bm->get<3>() << ", "
 				<< bm->get<1>() << '\n';
 		}
@@ -236,7 +236,7 @@ Session::FilePos Session::loadFilePosition(string const & fname) const
 	if (entry != lastfilepos.end())
 		return entry->second;
 	// Not found, return the first paragraph
-	else 
+	else
 		return 0;
 }
 

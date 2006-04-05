@@ -50,7 +50,7 @@ namespace frontend {
 
 // MacOSX specific stuff is at the end.
 
-QLPopupMenu::QLPopupMenu(QLMenubar * owner, 
+QLPopupMenu::QLPopupMenu(QLMenubar * owner,
 						 MenuItem const & mi, bool topLevelMenu)
 	: owner_(owner)
 {
@@ -76,7 +76,7 @@ void QLPopupMenu::update()
 
 	Menu const & fromLyxMenu = owner_->backend().getMenu(name_);
 	owner_->backend().expand(fromLyxMenu, topLevelMenu_, owner_->view());
-	
+
 	if (!owner_->backend().hasMenu(topLevelMenu_.name())) {
 		lyxerr[Debug::GUI] << "\tWARNING: menu seems empty" << topLevelMenu_.name() << endl;
 	}
@@ -98,28 +98,28 @@ void QLPopupMenu::populate(QMenu* qMenu, Menu * menu)
 
 	Menu::const_iterator m = menu->begin();
 	Menu::const_iterator end = menu->end();
-	
+
 	for (; m != end; ++m) {
 
 		if (m->kind() == MenuItem::Separator) {
-		
+
 			qMenu->addSeparator();
 			lyxerr[Debug::GUI] << "adding Menubar Separator" << endl;
 
 		} else if (m->kind() == MenuItem::Submenu) {
-			
+
 			lyxerr[Debug::GUI] << "** creating New Sub-Menu " << getLabel(*m) << endl;
 			QMenu * subMenu = qMenu->addMenu(toqstr(getLabel(*m)));
 			populate(subMenu, m->submenu());
-			
+
 		} else { // we have a MenuItem::Command
 
 			FuncStatus status = m->status();
 			lyxerr[Debug::GUI] << "creating Menu Item " << m->label() << endl;
-			
+
 			string label = getLabel(*m);
 			addBinding(label, *m);
-			
+
 			QLAction * action = new QLAction(*(owner_->view()), label, m->func());
 			action->setEnabled(m->status().enabled());
 			action->setChecked(m->status().onoff(true));

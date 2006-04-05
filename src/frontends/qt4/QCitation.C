@@ -98,7 +98,7 @@ void QCitation::build_dialog()
 void QCitation::update_contents()
 {
 	QStringList keys;
-	
+
 	// Make the list of all available bibliography keys
 	toQStringList(keys,
 		biblio::getKeys(controller().bibkeysInfo()));
@@ -160,14 +160,14 @@ void QCitation::addKeys(QModelIndexList const & indexes)
 		return;
 
 	QStringList keys = selected_keys_.stringList();
-	
+
 	foreach(index, indexes) {
 		if (keys.indexOf(index.data().toString()) == -1)
 			keys.append(index.data().toString());
 	}
 
 	selected_keys_.setStringList(keys);
-	
+
 	changed();
 }
 
@@ -179,7 +179,7 @@ void QCitation::deleteKeys(QModelIndexList const & indexes)
 		return;
 
 	QStringList keys = selected_keys_.stringList();
-	
+
 	foreach(index, indexes) {
 		int const pos = keys.indexOf(index.data().toString());
 		if (pos != -1)
@@ -187,7 +187,7 @@ void QCitation::deleteKeys(QModelIndexList const & indexes)
 	}
 
 	selected_keys_.setStringList(keys);
-	
+
 	changed();
 }
 
@@ -203,7 +203,7 @@ void QCitation::upKey(QModelIndexList const & indexes)
 	QStringList keys = selected_keys_.stringList();
 	keys.swap(pos, pos-1);
 	selected_keys_.setStringList(keys);
-	
+
 	changed();
 }
 
@@ -219,7 +219,7 @@ void QCitation::downKey(QModelIndexList const & indexes)
 	QStringList keys = selected_keys_.stringList();
 	keys.swap(pos, pos+1);
 	selected_keys_.setStringList(keys);
-	
+
 	changed();
 }
 

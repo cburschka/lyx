@@ -78,7 +78,7 @@ void QTocDialog::on_updatePB_clicked()
 	form_->update();
 }
 
-void QTocDialog::on_depthSL_valueChanged(int depth) 
+void QTocDialog::on_depthSL_valueChanged(int depth)
 {
 	if (depth == depth_)
 		return;
@@ -208,7 +208,7 @@ void QTocDialog::populateItem(QTreeWidgetItem * parentItem, toc::Toc::const_iter
 	QTreeWidgetItem * item;
 
 	while (iter != form_->get_toclist().end()) {
-		
+
 		++iter;
 
 		if (iter == form_->get_toclist().end())
@@ -248,4 +248,3 @@ void QTocDialog::closeEvent(QCloseEvent * e)
 
 } // namespace frontend
 } // namespace lyx
-

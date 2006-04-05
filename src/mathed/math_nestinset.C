@@ -677,7 +677,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		// spacial handling of space. If we insert an inset
 		// via macro mode, we want to put the cursor inside it
 		// if relevant. Think typing "\frac<space>".
-		if (cmd.argument[0] == ' ' 
+		if (cmd.argument[0] == ' '
 		    && cur.inMacroMode() && cur.macroName() != "\\"
 		    && cur.macroModeClose()) {
 			MathAtom const atom = cur.prevAtom();

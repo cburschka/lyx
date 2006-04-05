@@ -58,7 +58,7 @@ public:
 	lyx::pos_type first, last;
 };
 
-	
+
 /// A Paragraph holds all text, attributes and insets in a text paragraph
 class Paragraph  {
 public:
@@ -224,7 +224,7 @@ public:
 
 	/// set change at pos
 	void setChange(lyx::pos_type pos, Change::Type type);
-	
+
 	/// set full change at pos
 	void setChangeFull(lyx::pos_type pos, Change change);
 
@@ -396,7 +396,7 @@ public:
 	RowList const & rows() const { return rows_; }
 	///
 	RowSignature & rowSignature() const { return rowSignature_; }
-	
+
 	/// LyXText::redoParagraph updates this
 	Dimension & dim() { return dim_; }
 

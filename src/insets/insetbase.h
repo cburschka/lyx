@@ -197,7 +197,7 @@ public:
 		OutputParams const &) const { return 0; };
 
 	/** This enum indicates by which means the inset can be modified:
-	- NOT_EDITABLE: the inset's content can not be modified at all 
+	- NOT_EDITABLE: the inset's content can not be modified at all
 	  (e.g. printindex, insetspecialchar)
 	- IS_EDITABLE: content can be edited via dialog (e.g. bibtex, index, url)
 	- HIGHLY_EDITABLE: content can be edited on screen (normally means that
@@ -398,7 +398,7 @@ public:
 
 	/// mark the inset as erased or not
 	virtual void markErased(bool erased);
-		
+
 	/// pretty arbitrary
 	virtual int width() const { return 10; }
 	/// pretty arbitrary

@@ -179,7 +179,7 @@ void InsetVSpace::draw(PainterInfo & pi, int x, int y) const
 	font.decSize();
 	font_metrics::rectText(label(), font, w, a, d);
 
-	pi.pain.rectText(x + 2 * arrow_size + 5, 
+	pi.pain.rectText(x + 2 * arrow_size + 5,
 			 start + (end - start) / 2 + (a - d) / 2,
 			 label(), font, LColor::none, LColor::none);
 

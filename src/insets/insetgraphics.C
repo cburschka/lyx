@@ -523,12 +523,12 @@ string const stripExtensionIfPossible(string const & file)
 	// The automatic format selection does not work if the file
 	// name is escaped.
 	string const latex_name = latex_path(file,
-	                                     lyx::support::EXCLUDE_EXTENSION);
+					     lyx::support::EXCLUDE_EXTENSION);
 	if (contains(latex_name, '"'))
 		return latex_name;
 	return latex_path(removeExtension(file),
-	                  lyx::support::PROTECT_EXTENSION,
-	                  lyx::support::ESCAPE_DOTS);
+			  lyx::support::PROTECT_EXTENSION,
+			  lyx::support::ESCAPE_DOTS);
 }
 
 
@@ -634,7 +634,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 			// We can't strip the extension, because we don't know
 			// the unzipped file format
 			return latex_path(output_file,
-			                  lyx::support::EXCLUDE_EXTENSION);
+					  lyx::support::EXCLUDE_EXTENSION);
 		}
 
 		string const unzipped_temp_file = unzippedFileName(temp_file);
@@ -673,9 +673,9 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	if (from == to) {
 		// The extension of temp_file might be != ext!
 		runparams.exportdata->addExternalFile(tex_format, source_file,
-		                                      output_file);
+						      output_file);
 		runparams.exportdata->addExternalFile("dvi", source_file,
-		                                      output_file);
+						      output_file);
 		return stripExtensionIfPossible(output_file, to);
 	}
 
@@ -690,9 +690,9 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 				   rel_file)
 			<< std::endl;
 		runparams.exportdata->addExternalFile(tex_format, to_file,
-		                                      output_to_file);
+						      output_to_file);
 		runparams.exportdata->addExternalFile("dvi", to_file,
-		                                      output_to_file);
+						      output_to_file);
 		return stripExtensionIfPossible(output_file);
 	}
 
@@ -750,7 +750,7 @@ int InsetGraphics::latex(Buffer const & buf, ostream & os,
 
 	if (runparams.moving_arg)
 		before += "\\protect";
-	
+
 	// We never use the starred form, we use the "clip" option instead.
 	before += "\\includegraphics";
 
@@ -804,7 +804,7 @@ int InsetGraphics::linuxdoc(Buffer const & buf, ostream & os,
 				params().filename.absFilename();
 
 	runparams.exportdata->addExternalFile("linuxdoc",
-	                                      params().filename.absFilename());
+					      params().filename.absFilename());
 	os << "<eps file=\"" << file_name << "\">\n";
 	os << "<img src=\"" << file_name << "\">";
 	return 0;
@@ -874,7 +874,7 @@ void InsetGraphics::validate(LaTeXFeatures & features) const
 		return;
 
 	features.includeFile(graphic_label,
-	                     removeExtension(params().filename.absFilename()));
+			     removeExtension(params().filename.absFilename()));
 
 	features.require("graphicx");
 
@@ -918,11 +918,11 @@ InsetGraphicsParams const & InsetGraphics::params() const
 
 
 void InsetGraphics::editGraphics(InsetGraphicsParams const & p,
-                                 Buffer const & buffer) const
+				 Buffer const & buffer) const
 {
 	string const file_with_path = p.filename.absFilename();
 	formats.edit(buffer, file_with_path,
-	             formats.getFormatFromFile(file_with_path));
+		     formats.getFormatFromFile(file_with_path));
 }
 
 

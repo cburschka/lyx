@@ -107,7 +107,7 @@ void RefInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 
 bool RefInset::getStatus(LCursor & cur, FuncRequest const & cmd,
-                         FuncStatus & status) const
+			 FuncStatus & status) const
 {
 	switch (cmd.action) {
 	// we handle these
@@ -193,4 +193,3 @@ RefInset::ref_type_info RefInset::types[] = {
 	{ "prettyref", N_("PrettyRef"),             N_("PrettyRef: ")},
 	{ "", "", "" }
 };
-

@@ -67,7 +67,7 @@ char const * encodings[] = { "LaTeX default", "latin1", "latin2",
 }
 
 QDocumentDialog::QDocumentDialog(QDocument * form)
-	: form_(form), 
+	: form_(form),
 	lang_(getSecond(getLanguageData(false)))
 {
 	setupUi(this);
@@ -80,7 +80,7 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 		form, SLOT(slotClose()));
 	connect(restorePB, SIGNAL(clicked()),
 		form, SLOT(slotRestore()));
-	
+
 
     connect( savePB, SIGNAL( clicked() ), this, SLOT( saveDefaultClicked() ) );
     connect( defaultPB, SIGNAL( clicked() ), this, SLOT( useDefaultsClicked() ) );
@@ -136,13 +136,13 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 		qt_("Double"), Spacing::Double);
 	textLayoutModule->lspacingCO->insertItem(
 		qt_("Custom"), Spacing::Other);
-	
+
 	// initialize the length validator
 	addCheckedLineEdit(form_->bcview(), textLayoutModule->skipLE);
-	
 
 
-	
+
+
 	pageLayoutModule = new UiWidget<Ui::PageLayoutUi>;
 	// page layout
 	connect(pageLayoutModule->papersizeCO, SIGNAL(activated(int)), this, SLOT(setCustomPapersize(int)));
@@ -166,7 +166,7 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 		pageLayoutModule->paperheightL);
 	addCheckedLineEdit(form_->bcview(), pageLayoutModule->paperwidthLE,
 		pageLayoutModule->paperwidthL);
-	
+
 	// paper
 	QComboBox * cb = pageLayoutModule->papersizeCO;
 	cb->insertItem(qt_("Default"));
@@ -208,7 +208,7 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	connect(marginsModule->headsepLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(marginsModule->headsepUnit, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(marginsModule->footskipLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(marginsModule->footskipUnit, SIGNAL(activated(int)), this, SLOT(change_adaptor()));	
+	connect(marginsModule->footskipUnit, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	marginsModule->topLE->setValidator(unsignedLengthValidator(
 		marginsModule->topLE));
 	marginsModule->bottomLE->setValidator(unsignedLengthValidator(
@@ -240,7 +240,7 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 		marginsModule->footskipL);
 
 
-	
+
 
 
 	langModule = new UiWidget<Ui::LanguageUi>;
@@ -298,15 +298,15 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	biblioModule->citeStyleCO->insertItem(qt_("Numerical"));
 	biblioModule->citeStyleCO->setCurrentItem(0);
 
-	
-	
+
+
 	mathsModule = new UiWidget<Ui::MathsUi>;
     connect( mathsModule->amsautoCB, SIGNAL( toggled(bool) ), mathsModule->amsCB, SLOT( setDisabled(bool) ) );
 	// maths
 	connect(mathsModule->amsCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 	connect(mathsModule->amsautoCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 
-	
+
 	latexModule = new UiWidget<Ui::LaTeXUi>;
 	// latex class
 	connect(latexModule->classCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
@@ -329,12 +329,12 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 			latexModule->classCO->insertItem(toqstr(item));
 		}
 	}
-	
 
-	
+
+
 	branchesModule = new QBranches;
 	connect(branchesModule, SIGNAL(changed()), this, SLOT(change_adaptor()));
-	
+
 
 	preambleModule = new UiWidget<Ui::PreambleUi>;
 	// preamble
@@ -345,7 +345,7 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	// bullets
 	connect(bulletsModule, SIGNAL(changed()), this, SLOT(change_adaptor()));
 
-	
+
 	floatModule = new FloatPlacement(this);
 	// float
 	connect(floatModule, SIGNAL(changed()), this, SLOT(change_adaptor()));
@@ -363,7 +363,7 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	docPS->addPanel(branchesModule, _("Branches"));
 	docPS->addPanel(preambleModule, _("LaTeX Preamble"));
 	docPS->setCurrentPanel(_("Document Class"));
-}				
+}
 
 
 QDocumentDialog::~QDocumentDialog()

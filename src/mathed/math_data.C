@@ -383,7 +383,7 @@ MathArray::size_type MathArray::x2pos(int targetx, int glue) const
 		currx += (*it)->width();
 	}
 
-	/** 
+	/**
 	 * If we are not at the beginning of the array, go to the left
 	 * of the inset if one of the following two condition holds:
 	 * - the current inset is editable (so that the cursor tip is
@@ -391,7 +391,7 @@ MathArray::size_type MathArray::x2pos(int targetx, int glue) const
 	 *   cursor slices to be before insets;
 	 * - the mouse is closer to the left side of the inset than to
 	 *   the right one.
-	 * See bug 1918 for details.    
+	 * See bug 1918 for details.
 	 **/
 	if (it != begin() && currx >= targetx
 	    && ((*boost::prior(it))->asNestInset()

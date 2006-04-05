@@ -35,7 +35,7 @@ public:
 	/// connect a connection notification from the LyXServerSocket
 	socket_callback(int fd, boost::function<void()> func);
 public slots:
-        void data_received();
+	void data_received();
 private:
 	/// our notifier
 	boost::scoped_ptr<QSocketNotifier> sn_;
