@@ -54,9 +54,10 @@ private:
 // Path p("/tmp");  // right
 // we add this macro:
 ///
-#ifndef PATH_C
-#define Path(x) unnamed_Path;
-#endif
+// With boost 1.34 this is not usable anymore
+//#ifndef PATH_C
+//#define Path(x) unnamed_Path;
+//#endif
 // Tip gotten from Bobby Schmidt's column in C/C++ Users Journal
 
 } // namespace support
