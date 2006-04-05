@@ -110,6 +110,9 @@ What's new
 
 - Prevent non-standard paragraph layouts in charstyle insets
 
+- Reading the bounding box from eps files does not fail anymore when the
+  file contains additional spaces (bug 1235)
+
 * Configuration/Installation:
 
 - Don't use the -mms-bitfields compiler switch on mingw and cygwin, since
