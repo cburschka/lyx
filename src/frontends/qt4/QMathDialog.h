@@ -18,9 +18,28 @@
 #include <QDialog>
 
 class IconPalette;
+class QListWidgetItem;
 
 namespace lyx {
 namespace frontend {
+
+class QMAction : public QAction {
+	Q_OBJECT
+public:
+	QMAction( const QString & text, const std::string & action, QObject * parent)
+	: QAction(text,parent), action_(action) {
+		connect(this, SIGNAL(triggered()), this, SLOT(action()));
+	}
+signals:
+	void action(const std::string &);
+protected slots:
+	void action() {
+		emit action(action_);
+	}
+private:
+	std::string action_;
+};
+
 
 class QMath;
 
@@ -33,25 +52,23 @@ public slots:
 	virtual void delimiterClicked();
 	virtual void expandClicked();
 	virtual void fracClicked();
-	virtual void functionSelected(const QString &);
+	virtual void functionSelected(QListWidgetItem *);
 	virtual void matrixClicked();
 	virtual void subscriptClicked();
 	virtual void superscriptClicked();
 	virtual void equationClicked();
 	void symbol_clicked(const std::string &);
-	void insertSpace(int id);
-	void insertRoot(int id);
-	void insertStyle(int id);
-	void insertFont(int id);
+	void insertCubeRoot();
 
 	/// about to show a symbol panel
 	void showingPanel(int);
 protected:
 	//needed ? virtual void closeEvent(QCloseEvent * e);
 private:
+	/// add item to popup menu
+	void addMenuItem(QMenu * menu, const QString & label, const std::string &);
 	/// make a symbol panel
 	IconPalette * makePanel(QWidget * parent, char const ** entries);
-
 	/// add a symbol panel
 	void addPanel(int num);
 

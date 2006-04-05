@@ -8,8 +8,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>322</width>
-    <height>356</height>
+    <width>375</width>
+    <height>321</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -18,15 +18,15 @@
   <property name="sizeGripEnabled" >
    <bool>true</bool>
   </property>
-  <layout class="QVBoxLayout" >
+  <layout class="QGridLayout" >
    <property name="margin" >
-    <number>11</number>
+    <number>9</number>
    </property>
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item>
-    <layout class="QHBoxLayout" >
+   <item rowspan="3" row="0" column="2" >
+    <layout class="QVBoxLayout" >
      <property name="margin" >
       <number>0</number>
      </property>
@@ -34,7 +34,7 @@
       <number>6</number>
      </property>
      <item>
-      <layout class="QVBoxLayout" >
+      <layout class="QHBoxLayout" >
        <property name="margin" >
         <number>0</number>
        </property>
@@ -42,461 +42,182 @@
         <number>6</number>
        </property>
        <item>
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
+        <widget class="QComboBox" name="symbolsCO" >
+         <property name="sizePolicy" >
+          <sizepolicy>
+           <hsizetype>3</hsizetype>
+           <vsizetype>0</vsizetype>
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
          </property>
-         <property name="spacing" >
-          <number>6</number>
+         <property name="toolTip" >
+          <string>Select a page of symbols</string>
          </property>
          <item>
-          <widget class="QPushButton" name="sqrtPB" >
-           <property name="toolTip" >
-            <string>Insert root</string>
-           </property>
-           <property name="text" >
-            <string/>
-           </property>
-           <property name="icon" >
-            <iconset/>
-           </property>
-          </widget>
+          <property name="text" >
+           <string>Operators</string>
+          </property>
          </item>
          <item>
-          <widget class="QPushButton" name="spacePB" >
-           <property name="toolTip" >
-            <string>Insert spacing</string>
-           </property>
-           <property name="text" >
-            <string/>
-           </property>
-           <property name="icon" >
-            <iconset/>
-           </property>
-          </widget>
+          <property name="text" >
+           <string>Big operators</string>
+          </property>
          </item>
          <item>
-          <widget class="QPushButton" name="stylePB" >
-           <property name="toolTip" >
-            <string>Set limits style</string>
-           </property>
-           <property name="text" >
-            <string/>
-           </property>
-           <property name="icon" >
-            <iconset/>
-           </property>
-          </widget>
+          <property name="text" >
+           <string>Relations</string>
+          </property>
          </item>
          <item>
-          <widget class="QPushButton" name="fontPB" >
-           <property name="toolTip" >
-            <string>Set math font</string>
-           </property>
-           <property name="text" >
-            <string/>
-           </property>
-           <property name="icon" >
-            <iconset/>
-           </property>
-          </widget>
+          <property name="text" >
+           <string>Greek</string>
+          </property>
          </item>
-        </layout>
+         <item>
+          <property name="text" >
+           <string>Arrows</string>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>Dots</string>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>Frame decorations</string>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>Miscellaneous</string>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>AMS operators</string>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>AMS relations</string>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>AMS negated relations</string>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>AMS arrows</string>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>AMS Miscellaneous</string>
+          </property>
+         </item>
+        </widget>
        </item>
        <item>
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Horizontal</enum>
          </property>
-         <property name="spacing" >
-          <number>6</number>
+         <property name="sizeHint" >
+          <size>
+           <width>16</width>
+           <height>22</height>
+          </size>
          </property>
-         <item>
-          <layout class="QGridLayout" >
-           <property name="margin" >
-            <number>0</number>
-           </property>
-           <property name="spacing" >
-            <number>6</number>
-           </property>
-           <item row="1" column="1" >
-            <widget class="QPushButton" name="fracPB" >
-             <property name="sizePolicy" >
-              <sizepolicy>
-               <hsizetype>1</hsizetype>
-               <vsizetype>1</vsizetype>
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="toolTip" >
-              <string>Insert fraction</string>
-             </property>
-             <property name="text" >
-              <string/>
-             </property>
-             <property name="icon" >
-              <iconset/>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0" >
-            <widget class="QPushButton" name="equationPB" >
-             <property name="sizePolicy" >
-              <sizepolicy>
-               <hsizetype>1</hsizetype>
-               <vsizetype>1</vsizetype>
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="toolTip" >
-              <string>Toggle between display and inline mode</string>
-             </property>
-             <property name="text" >
-              <string/>
-             </property>
-             <property name="icon" >
-              <iconset/>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1" >
-            <widget class="QPushButton" name="matrixPB" >
-             <property name="toolTip" >
-              <string>Insert matrix</string>
-             </property>
-             <property name="text" >
-              <string/>
-             </property>
-             <property name="icon" >
-              <iconset/>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="2" >
-            <widget class="QPushButton" name="subscriptPB" >
-             <property name="toolTip" >
-              <string>Subscript</string>
-             </property>
-             <property name="text" >
-              <string/>
-             </property>
-             <property name="icon" >
-              <iconset/>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="2" >
-            <widget class="QPushButton" name="superscriptPB" >
-             <property name="toolTip" >
-              <string>Superscript</string>
-             </property>
-             <property name="text" >
-              <string/>
-             </property>
-             <property name="icon" >
-              <iconset/>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="0" >
-            <widget class="QPushButton" name="delimitersPB" >
-             <property name="toolTip" >
-              <string>Show delimiter and bracket dialog</string>
-             </property>
-             <property name="text" >
-              <string/>
-             </property>
-             <property name="icon" >
-              <iconset/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <spacer>
-           <property name="orientation" >
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeType" >
-            <enum>QSizePolicy::Expanding</enum>
-           </property>
-           <property name="sizeHint" >
-            <size>
-             <width>20</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <layout class="QVBoxLayout" >
-           <property name="margin" >
-            <number>0</number>
-           </property>
-           <property name="spacing" >
-            <number>6</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="functionsLA" >
-             <property name="text" >
-              <string>&amp;Functions</string>
-             </property>
-             <property name="buddy" >
-              <cstring>functionsLB</cstring>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="Q3ListBox" name="functionsLB" >
-             <property name="sizePolicy" >
-              <sizepolicy>
-               <hsizetype>1</hsizetype>
-               <vsizetype>7</vsizetype>
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="minimumSize" >
-              <size>
-               <width>100</width>
-               <height>100</height>
-              </size>
-             </property>
-             <property name="toolTip" >
-              <string>Select a function or operator to insert</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <spacer>
-           <property name="orientation" >
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeType" >
-            <enum>QSizePolicy::Expanding</enum>
-           </property>
-           <property name="sizeHint" >
-            <size>
-             <width>20</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
+        </spacer>
        </item>
       </layout>
      </item>
      <item>
-      <widget class="QGroupBox" name="symbolsGB" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>7</hsizetype>
-         <vsizetype>3</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
+      <widget class="QStackedWidget" name="symbolWS" >
+       <widget class="QWidget" name="page" />
+       <widget class="QWidget" name="page_2" />
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
        </property>
-       <property name="minimumSize" >
-        <size>
-         <width>0</width>
-         <height>0</height>
-        </size>
+       <property name="spacing" >
+        <number>6</number>
        </property>
-       <property name="title" >
-        <string>Symbols</string>
+       <item>
+        <widget class="QPushButton" name="tearoffPB" >
+         <property name="toolTip" >
+          <string>Open this panel as a separate window</string>
+         </property>
+         <property name="text" >
+          <string>&amp;Detach panel</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>81</width>
+           <height>51</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="1" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="0" >
+    <layout class="QVBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="functionsLA" >
+       <property name="text" >
+        <string>&amp;Functions</string>
        </property>
-       <layout class="QVBoxLayout" >
-        <property name="margin" >
-         <number>11</number>
-        </property>
-        <property name="spacing" >
-         <number>6</number>
-        </property>
-        <item>
-         <layout class="QHBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
-          </property>
-          <property name="spacing" >
-           <number>6</number>
-          </property>
-          <item>
-           <widget class="QComboBox" name="symbolsCO" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>3</hsizetype>
-              <vsizetype>0</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="toolTip" >
-             <string>Select a page of symbols</string>
-            </property>
-            <item>
-             <property name="text" >
-              <string>Operators</string>
-             </property>
-            </item>
-            <item>
-             <property name="text" >
-              <string>Big operators</string>
-             </property>
-            </item>
-            <item>
-             <property name="text" >
-              <string>Relations</string>
-             </property>
-            </item>
-            <item>
-             <property name="text" >
-              <string>Greek</string>
-             </property>
-            </item>
-            <item>
-             <property name="text" >
-              <string>Arrows</string>
-             </property>
-            </item>
-            <item>
-             <property name="text" >
-              <string>Dots</string>
-             </property>
-            </item>
-            <item>
-             <property name="text" >
-              <string>Frame decorations</string>
-             </property>
-            </item>
-            <item>
-             <property name="text" >
-              <string>Miscellaneous</string>
-             </property>
-            </item>
-            <item>
-             <property name="text" >
-              <string>AMS operators</string>
-             </property>
-            </item>
-            <item>
-             <property name="text" >
-              <string>AMS relations</string>
-             </property>
-            </item>
-            <item>
-             <property name="text" >
-              <string>AMS negated relations</string>
-             </property>
-            </item>
-            <item>
-             <property name="text" >
-              <string>AMS arrows</string>
-             </property>
-            </item>
-            <item>
-             <property name="text" >
-              <string>AMS Miscellaneous</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-          <item>
-           <spacer>
-            <property name="orientation" >
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeType" >
-             <enum>QSizePolicy::MinimumExpanding</enum>
-            </property>
-            <property name="sizeHint" >
-             <size>
-              <width>20</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <widget class="Q3WidgetStack" name="symbolsWS" >
-          <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>7</hsizetype>
-            <vsizetype>7</vsizetype>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize" >
-           <size>
-            <width>0</width>
-            <height>200</height>
-           </size>
-          </property>
-          <property name="focusPolicy" >
-           <enum>Qt::TabFocus</enum>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
-          </property>
-          <property name="spacing" >
-           <number>6</number>
-          </property>
-          <item>
-           <widget class="QPushButton" name="tearoffPB" >
-            <property name="toolTip" >
-             <string>Open this panel as a separate window</string>
-            </property>
-            <property name="text" >
-             <string>&amp;Detach panel</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer>
-            <property name="orientation" >
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeType" >
-             <enum>QSizePolicy::Expanding</enum>
-            </property>
-            <property name="sizeHint" >
-             <size>
-              <width>20</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
-        </item>
-       </layout>
+       <property name="buddy" >
+        <cstring>functionsLW</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QListWidget" name="functionsLW" >
+       <property name="alternatingRowColors" >
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
     </layout>
    </item>
-   <item>
+   <item row="3" column="0" colspan="3" >
     <layout class="QHBoxLayout" >
      <property name="margin" >
       <number>0</number>
@@ -514,8 +235,8 @@
        </property>
        <property name="sizeHint" >
         <size>
-         <width>20</width>
-         <height>20</height>
+         <width>471</width>
+         <height>28</height>
         </size>
        </property>
       </spacer>
@@ -529,25 +250,193 @@
      </item>
     </layout>
    </item>
+   <item row="2" column="0" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="0" colspan="2" >
+    <layout class="QGridLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item row="2" column="1" >
+      <widget class="QPushButton" name="delimitersPB" >
+       <property name="toolTip" >
+        <string>Show delimiter and bracket dialog</string>
+       </property>
+       <property name="text" >
+        <string/>
+       </property>
+       <property name="icon" >
+        <iconset>../lib/images/delim.xpm</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1" >
+      <widget class="QPushButton" name="fracPB" >
+       <property name="sizePolicy" >
+        <sizepolicy>
+         <hsizetype>1</hsizetype>
+         <vsizetype>1</vsizetype>
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="toolTip" >
+        <string>Insert fraction</string>
+       </property>
+       <property name="text" >
+        <string/>
+       </property>
+       <property name="icon" >
+        <iconset>../lib/images/frac.xpm</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2" >
+      <widget class="QPushButton" name="subscriptPB" >
+       <property name="toolTip" >
+        <string>Subscript</string>
+       </property>
+       <property name="text" >
+        <string/>
+       </property>
+       <property name="icon" >
+        <iconset>../lib/images/sub.xpm</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0" >
+      <widget class="QPushButton" name="equationPB" >
+       <property name="sizePolicy" >
+        <sizepolicy>
+         <hsizetype>1</hsizetype>
+         <vsizetype>1</vsizetype>
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="toolTip" >
+        <string>Toggle between display and inline mode</string>
+       </property>
+       <property name="text" >
+        <string/>
+       </property>
+       <property name="icon" >
+        <iconset>../lib/images/equation.xpm</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1" >
+      <widget class="QPushButton" name="spacePB" >
+       <property name="toolTip" >
+        <string>Insert spacing</string>
+       </property>
+       <property name="text" >
+        <string/>
+       </property>
+       <property name="icon" >
+        <iconset>../lib/images/space.xpm</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0" >
+      <widget class="QPushButton" name="matrixPB" >
+       <property name="toolTip" >
+        <string>Insert matrix</string>
+       </property>
+       <property name="text" >
+        <string/>
+       </property>
+       <property name="icon" >
+        <iconset>../lib/images/matrix.xpm</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0" >
+      <widget class="QPushButton" name="sqrtPB" >
+       <property name="toolTip" >
+        <string>Insert root</string>
+       </property>
+       <property name="text" >
+        <string/>
+       </property>
+       <property name="icon" >
+        <iconset>../lib/images/sqrt.xpm</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2" >
+      <widget class="QPushButton" name="stylePB" >
+       <property name="toolTip" >
+        <string>Set limits style</string>
+       </property>
+       <property name="text" >
+        <string/>
+       </property>
+       <property name="icon" >
+        <iconset>../lib/images/style.xpm</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="3" >
+      <widget class="QPushButton" name="fontPB" >
+       <property name="toolTip" >
+        <string>Set math font</string>
+       </property>
+       <property name="text" >
+        <string/>
+       </property>
+       <property name="icon" >
+        <iconset>../lib/images/font.xpm</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="3" >
+      <widget class="QPushButton" name="superscriptPB" >
+       <property name="toolTip" >
+        <string>Superscript</string>
+       </property>
+       <property name="text" >
+        <string/>
+       </property>
+       <property name="icon" >
+        <iconset>../lib/images/super.xpm</iconset>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
   </layout>
  </widget>
  <pixmapfunction></pixmapfunction>
- <customwidgets>
-  <customwidget>
-   <class>Q3ListBox</class>
-   <extends></extends>
-   <header>q3listbox.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>Q3WidgetStack</class>
-   <extends></extends>
-   <header>q3widgetstack.h</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
- </customwidgets>
+ <tabstops>
+  <tabstop>symbolsCO</tabstop>
+  <tabstop>closePB</tabstop>
+  <tabstop>tearoffPB</tabstop>
+  <tabstop>delimitersPB</tabstop>
+  <tabstop>superscriptPB</tabstop>
+  <tabstop>subscriptPB</tabstop>
+  <tabstop>matrixPB</tabstop>
+  <tabstop>equationPB</tabstop>
+  <tabstop>fracPB</tabstop>
+  <tabstop>fontPB</tabstop>
+  <tabstop>stylePB</tabstop>
+  <tabstop>spacePB</tabstop>
+  <tabstop>sqrtPB</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

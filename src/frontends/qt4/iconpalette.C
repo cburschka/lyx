@@ -82,7 +82,7 @@ void IconPalette::resizeEvent(QResizeEvent * e)
 	if (!layout_->isEmpty() && maxcol == maxcol_)
 		return;
 
-	int cols(width() / button_size);
+	int cols = max(width() / button_size, 1);
 	int rows = max(int(buttons_.size() / cols), 1);
 	if (buttons_.size() % cols)
 		++rows;
