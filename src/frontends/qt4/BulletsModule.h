@@ -17,14 +17,14 @@
 #include "Bullet.h"
 #include <boost/array.hpp>
 
-#include <QDialog>
+#include <QWidget>
 
 class QBrowseBox;
 class QPushButton;
 class QComboBox;
 class QPixmap;
 
-class BulletsModule : public QDialog, public Ui::BulletsUi {
+class BulletsModule : public QWidget, public Ui::BulletsUi {
 	Q_OBJECT
 public:
 
