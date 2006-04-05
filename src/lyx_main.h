@@ -24,9 +24,11 @@
 class Buffer;
 class ErrorItem;
 class InsetBase;
-class LastFiles;
 class LyXView;
 class kb_keymap;
+namespace lyx {
+	class Session;
+}
 
 
 /// initial startup
@@ -39,8 +41,8 @@ public:
 	/// in the case of failure
 	void emergencyCleanup() const;
 
-	LastFiles & lastfiles();
-	LastFiles const & lastfiles() const;
+	lyx::Session & session();
+	lyx::Session const & session() const;
 
 	void addLyXView(boost::shared_ptr<LyXView> const & lyxview);
 
@@ -86,8 +88,8 @@ private:
 	/// the parsed command line batch command if any
 	std::string batch_command;
 
-	/// last files loaded
-	boost::scoped_ptr<LastFiles> lastfiles_;
+	/// lyx session, containing lastfiles, lastfilepos, and lastopened
+	boost::scoped_ptr<lyx::Session> session_;
 	///
 	typedef std::list<boost::shared_ptr<LyXView> > ViewList;
 	ViewList views_;

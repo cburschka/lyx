@@ -66,7 +66,7 @@ public:
 	virtual void busy(bool) const;
 
 	/// callback for close event from window manager
-	static int atCloseMainFormCB(FL_FORM *, void *);
+	int atCloseMainFormCB();
 
 	/// display a status message
 	virtual void message(std::string const & str);

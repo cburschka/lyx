@@ -24,7 +24,7 @@
 #include "controllers/helper_funcs.h" // getSecond
 
 #include "buffer.h"
-#include "lastfiles.h"
+#include "session.h"
 #include "LColor.h"
 #include "lyxfont.h"
 #include "frontends/lyx_gui.h"
@@ -2203,7 +2203,6 @@ void FormPreferences::Paths::apply(LyXRC & rc)
 	if (!button) str.erase();
 
 	rc.check_lastfiles = button;
-	rc.lastfiles = str;
 	rc.num_lastfiles = static_cast<unsigned int>
 		(fl_get_counter_value(dialog_->counter_lastfiles));
 
@@ -2261,8 +2260,6 @@ FormPreferences::Paths::feedback(FL_OBJECT const * const ob) const
 		return LyXRC::getDescription(LyXRC::RC_TEMPDIRPATH);
 	if (ob == dialog_->check_last_files)
 		return LyXRC::getDescription(LyXRC::RC_CHECKLASTFILES);
-	if (ob == dialog_->input_lastfiles)
-		return LyXRC::getDescription(LyXRC::RC_LASTFILES);
 	if (ob == dialog_->counter_lastfiles)
 		return LyXRC::getDescription(LyXRC::RC_NUMLASTFILES);
 	if (ob == dialog_->check_make_backups)
@@ -2410,13 +2407,8 @@ void FormPreferences::Paths::update(LyXRC const & rc)
 	fl_set_input(dialog_->input_temp_dir, rc.tempdir_path.c_str());
 	fl_set_input(dialog_->input_path_prefix, rc.path_prefix.c_str());
 
-	str.erase();
-	if (rc.check_lastfiles)
-		str = rc.lastfiles;
-
 	fl_set_button(dialog_->check_last_files,
 		      rc.check_lastfiles);
-	fl_set_input(dialog_->input_lastfiles, str.c_str());
 	fl_set_counter_value(dialog_->counter_lastfiles,
 			     rc.num_lastfiles);
 

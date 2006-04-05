@@ -190,8 +190,8 @@ lyx_SOURCES = \
 	kbsequence.h \
 	language.C \
 	language.h \
-	lastfiles.C \
-	lastfiles.h \
+	session.C \
+	session.h \
 	layout.h \
 	lengthcommon.C \
 	lengthcommon.h \

@@ -17,7 +17,7 @@
 #include "bufferparams.h"
 #include "debug.h"
 #include "gettext.h"
-#include "lastfiles.h"
+#include "session.h"
 #include "lyx_cb.h"
 #include "lyx_main.h"
 #include "output_latex.h"
@@ -187,7 +187,7 @@ bool BufferList::close(Buffer * buf, bool const ask)
 			if (!WriteAs(buf))
 				return false;
 		} else if (buf->save()) {
-			LyX::ref().lastfiles().newFile(buf->fileName());
+			LyX::ref().session().addLastFile(buf->fileName());
 		} else {
 			return false;
 		}

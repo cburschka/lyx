@@ -95,6 +95,8 @@ public:
 	void restorePosition(unsigned int i);
 	///
 	bool isSavedPosition(unsigned int i);
+	/// save bookmarks to .lyx/session
+	void saveSavedPositions();
 	///
 	void switchKeyMap();
 	///

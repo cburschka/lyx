@@ -75,7 +75,8 @@ public:
 		RC_LANGUAGE_GLOBAL_OPTIONS,
 		RC_LANGUAGE_PACKAGE,
 		RC_LANGUAGE_USE_BABEL,
-		RC_LASTFILES,
+		RC_USELASTFILEPOS,
+		RC_LOADSESSION,
 		RC_MAKE_BACKUP,
 		RC_MARK_FOREIGN_LANGUAGE,
 		RC_NUMLASTFILES,
@@ -116,6 +117,9 @@ public:
 		RC_SCREEN_FONT_SIZES,
 		RC_SCREEN_FONT_TYPEWRITER,
 		RC_SCREEN_FONT_TYPEWRITER_FOUNDRY,
+		RC_SCREEN_GEOMETRY_HEIGHT,
+		RC_SCREEN_GEOMETRY_WIDTH,
+		RC_SCREEN_GEOMETRY_XYSAVED,
 		RC_SCREEN_ZOOM,
 		RC_SERVERPIPE,
 		RC_SET_COLOR,
@@ -227,14 +231,22 @@ public:
 	bool auto_reset_options;
 	///
 	bool check_lastfiles;
-	/// filename for lastfiles file
-	std::string lastfiles;
 	/// maximal number of lastfiles
 	unsigned int num_lastfiles;
+	/// whether or not go to saved position when opening a file
+	bool use_lastfilepos;
+	/// load files from last session automatically
+	bool load_session;
 	/// shall a backup file be created
 	bool make_backup;
 	/// A directory for storing backup files
 	std::string backupdir_path;
+	/// Width of MainWindow. if 0, value from last session will be used
+	int geometry_width;
+	/// Height of MainWindow, if 0, value from last session will be used
+	int geometry_height;
+	/// Whether or not save/restore windows position as session info
+	bool geometry_xysaved;
 	/// Zoom factor for screen fonts
 	unsigned int zoom;
 	/// parameter for button_4 and button_5 (scrollwheel)

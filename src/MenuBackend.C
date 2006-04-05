@@ -30,7 +30,7 @@
 #include "gettext.h"
 #include "importer.h"
 #include "kbmap.h"
-#include "lastfiles.h"
+#include "session.h"
 #include "LyXAction.h"
 #include "lyx_main.h" // for lastfiles
 #include "lyxfunc.h"
@@ -428,13 +428,12 @@ string const limit_string_length(string const & str)
 
 void expandLastfiles(Menu & tomenu, LyXView const * view)
 {
-	LastFiles const & lastfiles = LyX::cref().lastfiles();
+	lyx::Session::LastFiles const & lf = LyX::cref().session().lastFiles();
+	lyx::Session::LastFiles::const_iterator lfit = lf.begin();
 
 	int ii = 1;
-	LastFiles::const_iterator lfit = lastfiles.begin();
-	LastFiles::const_iterator end = lastfiles.end();
 
-	for (; lfit != end && ii < 10; ++lfit, ++ii) {
+	for (; lfit != lf.end() && ii < 10; ++lfit, ++ii) {
 		string const label = convert<string>(ii) + ". "
 			+ MakeDisplayPath((*lfit), 30)
 			+ '|' + convert<string>(ii);

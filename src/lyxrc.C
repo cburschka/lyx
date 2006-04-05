@@ -25,7 +25,7 @@
 #include "converter.h"
 #include "format.h"
 #include "gettext.h"
-#include "lastfiles.h"
+#include "session.h"
 #include "LColor.h"
 #include "lyxlex.h"
 #include "lyxfont.h"
@@ -104,7 +104,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\language_global_options", LyXRC::RC_LANGUAGE_GLOBAL_OPTIONS },
 	{ "\\language_package", LyXRC::RC_LANGUAGE_PACKAGE },
 	{ "\\language_use_babel", LyXRC::RC_LANGUAGE_USE_BABEL },
-	{ "\\lastfiles", LyXRC::RC_LASTFILES },
+	{ "\\load_session", LyXRC::RC_LOADSESSION },
 	{ "\\make_backup", LyXRC::RC_MAKE_BACKUP },
 	{ "\\mark_foreign_language", LyXRC::RC_MARK_FOREIGN_LANGUAGE },
 	{ "\\num_lastfiles", LyXRC::RC_NUMLASTFILES },
@@ -152,6 +152,9 @@ keyword_item lyxrcTags[] = {
 	{ "\\screen_font_typewriter", LyXRC::RC_SCREEN_FONT_TYPEWRITER },
 	{ "\\screen_font_typewriter_foundry", LyXRC::RC_SCREEN_FONT_TYPEWRITER_FOUNDRY },
 	{ "\\screen_zoom", LyXRC::RC_SCREEN_ZOOM },
+	{ "\\screen_geometry_height", LyXRC::RC_SCREEN_GEOMETRY_HEIGHT },
+	{ "\\screen_geometry_width", LyXRC::RC_SCREEN_GEOMETRY_WIDTH },
+	{ "\\screen_geometry_xysaved", LyXRC::RC_SCREEN_GEOMETRY_XYSAVED },
 	{ "\\serverpipe", LyXRC::RC_SERVERPIPE },
 	{ "\\set_color", LyXRC::RC_SET_COLOR },
 	{ "\\show_banner", LyXRC::RC_SHOW_BANNER },
@@ -163,6 +166,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\use_alt_language", LyXRC::RC_USE_ALT_LANG },
 	{ "\\use_escape_chars", LyXRC::RC_USE_ESC_CHARS },
 	{ "\\use_input_encoding", LyXRC::RC_USE_INP_ENC },
+	{ "\\use_lastfilepos", LyXRC::RC_USELASTFILEPOS },
 	{ "\\use_personal_dictionary", LyXRC::RC_USE_PERS_DICT },
 	// compatibility with versions older than 1.4.0 only
 	{ "\\use_pspell", LyXRC::RC_USE_SPELL_LIB },
@@ -219,6 +223,9 @@ void LyXRC::setDefaults() {
 	dpi = 75;
 	// Because a screen typically is wider than a piece of paper:
 	zoom = 150;
+	geometry_width = 0;
+	geometry_height = 0;
+	geometry_xysaved = true;
 	wheel_jump = 5;
 	// Default LaTeX font size:
 	font_sizes[LyXFont::SIZE_TINY] = "5.0";
@@ -246,6 +253,8 @@ void LyXRC::setDefaults() {
 	ascii_linelen = 65;
 	num_lastfiles = maxlastfiles;
 	check_lastfiles = true;
+	use_lastfilepos = true;
+	load_session = true;
 	make_backup = true;
 	backupdir_path.erase();
 	display_graphics = lyx::graphics::ColorDisplay;
@@ -629,6 +638,24 @@ int LyXRC::read(LyXLex & lexrc)
 			}
 			break;
 
+		case RC_SCREEN_GEOMETRY_HEIGHT:
+			if (lexrc.next()) {
+				geometry_height = lexrc.getInteger();
+			}
+			break;
+
+		case RC_SCREEN_GEOMETRY_WIDTH:
+			if (lexrc.next()) {
+				geometry_width = lexrc.getInteger();
+			}
+			break;
+
+		case RC_SCREEN_GEOMETRY_XYSAVED:
+			if (lexrc.next()) {
+				geometry_xysaved = lexrc.getBool();
+			}
+			break;
+
 		case RC_WHEEL_JUMP:
 			if (lexrc.next()) {
 				wheel_jump = lexrc.getInteger();
@@ -717,9 +744,15 @@ int LyXRC::read(LyXLex & lexrc)
 			}
 			break;
 
-		case RC_LASTFILES:
+		case RC_USELASTFILEPOS:
 			if (lexrc.next()) {
-				lastfiles = ExpandPath(os::internal_path(lexrc.getString()));
+				use_lastfilepos = lexrc.getBool();
+			}
+			break;
+
+		case RC_LOADSESSION:
+			if (lexrc.next()) {
+				load_session = lexrc.getBool();
 			}
 			break;
 
@@ -1427,7 +1460,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 			os << "\\preview_scale_factor "
 			   << preview_scale_factor << '\n';
 		}
-
+		
 		os << "\n#\n"
 		   << "# SCREEN & FONTS SECTION ############################\n"
 		   << "#\n\n";
@@ -1459,6 +1492,24 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 		if (ignore_system_lyxrc ||
 		    zoom != system_lyxrc.zoom) {
 			os << "\\screen_zoom " << zoom << '\n';
+		}
+	case RC_SCREEN_GEOMETRY_HEIGHT:
+		if (ignore_system_lyxrc ||
+		    geometry_height != system_lyxrc.geometry_height) {
+			os << "\\screen_geometry_height " << geometry_height
+			   << '\n';
+		}
+	case RC_SCREEN_GEOMETRY_WIDTH:
+		if (ignore_system_lyxrc ||
+		    geometry_width != system_lyxrc.geometry_width) {
+			os << "\\screen_geometry_width " << geometry_width
+			   << '\n';
+		}
+	case RC_SCREEN_GEOMETRY_XYSAVED:
+		if (ignore_system_lyxrc ||
+		    geometry_xysaved != system_lyxrc.geometry_xysaved) {
+			os << "\\screen_geometry_xysaved " << convert<string>(geometry_xysaved)
+			   << '\n';
 		}
 	case RC_WHEEL_JUMP:
 		if (ignore_system_lyxrc ||
@@ -1741,11 +1792,17 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 			string const path = os::external_path(document_path);
 			os << "\\document_path \"" << path << "\"\n";
 		}
-	case RC_LASTFILES:
+	case RC_USELASTFILEPOS:
 		if (ignore_system_lyxrc ||
-		    lastfiles != system_lyxrc.lastfiles) {
-			string const path = os::external_path(lastfiles);
-			os << "\\lastfiles \"" << path << "\"\n";
+		    use_lastfilepos != system_lyxrc.use_lastfilepos) {
+			os << "\\use_session " << convert<string>(use_lastfilepos)
+			   << '\n';
+		}
+	case RC_LOADSESSION:
+		if (ignore_system_lyxrc ||
+		    load_session != system_lyxrc.load_session) {
+			os << "\\load_session " << convert<string>(load_session) 
+			   << "\n";
 		}
 	case RC_NUMLASTFILES:
 		if (ignore_system_lyxrc ||
@@ -2225,8 +2282,12 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		str = _("De-select if you don't want babel to be used when the language of the document is the default language.");
 		break;
 
-	case RC_LASTFILES:
-		str = _("The file where the last-files information should be stored.");
+	case RC_USELASTFILEPOS:
+		str = _("De-select if you do not want LyX to scroll to saved position.");
+		break;
+
+	case RC_LOADSESSION:
+		str = _("De-select to prevent loading files opened from the last lyx session.");
 		break;
 
 	case RC_MAKE_BACKUP:
@@ -2383,6 +2444,15 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		//xgettext:no-c-format
 		str = _("The zoom percentage for screen fonts. A setting of 100% will make the fonts roughly the same size as on paper.");
 		break;
+
+	case RC_SCREEN_GEOMETRY_HEIGHT:
+	case RC_SCREEN_GEOMETRY_WIDTH:
+		str = _("Specify geometry of the main view in width x height (values from last session will not be used if non-zero values are specified).");
+		break;	
+
+	case RC_SCREEN_GEOMETRY_XYSAVED:
+		str = _("Allow session manager to save and restore windows position.");
+		break;	
 
 	case RC_SERVERPIPE:
 		str = _("This starts the lyxserver. The pipes get an additional extension \".in\" and \".out\". Only for advanced users.");

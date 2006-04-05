@@ -35,7 +35,7 @@
 #include "ui/QPrefIdentityModule.h"
 
 #include "debug.h"
-#include "lastfiles.h"
+#include "session.h"
 #include "LColor.h"
 #include "lyxfont.h"
 

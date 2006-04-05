@@ -28,7 +28,7 @@
 #include "gettext.h"
 #include "kbmap.h"
 #include "language.h"
-#include "lastfiles.h"
+#include "session.h"
 #include "LColor.h"
 #include "lyxfunc.h"
 #include "lyxlex.h"
@@ -163,17 +163,17 @@ LyX::LyX()
 {}
 
 
-LastFiles & LyX::lastfiles()
+lyx::Session & LyX::session()
 {
-	BOOST_ASSERT(lastfiles_.get());
-	return *lastfiles_.get();
+	BOOST_ASSERT(session_.get());
+	return *session_.get();
 }
 
 
-LastFiles const & LyX::lastfiles() const
+lyx::Session const & LyX::session() const
 {
-	BOOST_ASSERT(lastfiles_.get());
-	return *lastfiles_.get();
+	BOOST_ASSERT(session_.get());
+	return *session_.get();
 }
 
 
@@ -238,6 +238,14 @@ void LyX::priv_exec(int & argc, char * argv[])
 	if (first_start)
 		files.push_back(i18nLibFileSearch("examples", "splash.lyx"));
 
+	// if a file is specified, I assume that user wants to edit *that* file
+	if (files.empty() && lyxrc.load_session) {
+		vector<string> const & lastopened = session_->lastOpenedFiles();
+		files.insert(files.end(), lastopened.begin(), lastopened.end()  );
+		// clear this list to save a few bytes of RAM
+		session_->clearLastOpenedFiles();
+	}
+	
 	// Execute batch commands if available
 	if (!batch_command.empty()) {
 
@@ -425,10 +433,6 @@ void LyX::init(bool gui)
 					      "templates");
 	}
 
-	if (lyxrc.lastfiles.empty()) {
-		lyxrc.lastfiles = AddName(package().user_support(), "lastfiles");
-	}
-
 	if (lyxrc.roman_font_name.empty())
 		lyxrc.roman_font_name = lyx_gui::roman_font_name();
 	if (lyxrc.sans_font_name.empty())
@@ -513,11 +517,8 @@ void LyX::init(bool gui)
 		lyxerr << "LyX tmp dir: `" << package().temp_dir() << '\'' << endl;
 	}
 
-	lyxerr[Debug::INIT] << "Reading lastfiles `"
-			    << lyxrc.lastfiles << "'..." << endl;
-	lastfiles_.reset(new LastFiles(lyxrc.lastfiles,
-				       lyxrc.check_lastfiles,
-				       lyxrc.num_lastfiles));
+	lyxerr[Debug::INIT] << "Reading session information '.lyx/session'..." << endl;
+	session_.reset(new lyx::Session(lyxrc.num_lastfiles));
 }
 
 

@@ -24,12 +24,17 @@
 
 #include "BufferView.h"
 #include "lyx_cb.h"
+#include "lyxrc.h"
+#include "lyx_main.h"
+#include "session.h"
 #include "lyxfunc.h"
 #include "MenuBackend.h"
+#include "funcrequest.h"
 
 #include "frontends/Toolbars.h"
 
 #include "support/filetools.h"
+#include "support/convert.h"
 
 #include <boost/bind.hpp>
 
@@ -95,7 +100,24 @@ GView::GView()
 		boost::bind(&GMiniBuffer::editMode, minibuffer_.get()));
 	view_state_changed.connect(boost::bind(&GView::showViewState, this));
 	signal_focus_in_event().connect(sigc::mem_fun(*this, &GView::onFocusIn));
-	set_default_size(750, 550);
+	// 
+	int width = 750;
+	int height = 550;
+	// first try lyxrc
+	if (lyxrc.geometry_width != 0 && lyxrc.geometry_height != 0 ) {
+		width = lyxrc.geometry_width;
+		height = lyxrc.geometry_height;
+	}
+	// if lyxrc returns (0,0), then use session info
+	else {
+		string val = LyX::ref().session().loadSessionInfo("WindowWidth");
+		if (val != "")
+			width = convert<unsigned int>(val);
+		val = LyX::ref().session().loadSessionInfo("WindowHeight");
+		if (val != "")
+			height = convert<unsigned int>(val);
+	}	
+	set_default_size(width, height);
 	// Make sure the buttons are disabled if needed.
 	updateToolbars();
 	string const iconName =
@@ -117,7 +139,14 @@ Gtk::Box & GView::getBox(Position pos)
 
 bool GView::on_delete_event(GdkEventAny * /*event*/)
 {
-	QuitLyX(false);
+	// save windows size and position
+	Gtk::Requisition req = workArea_->size_request();
+	LyX::ref().session().saveSessionInfo("WindowWidth", convert<string>(req.width));
+	LyX::ref().session().saveSessionInfo("WindowHeight", convert<string>(req.height));
+	// trigger LFUN_QUIT instead of quit directly
+	// since LFUN_QUIT may have more cleanup stuff
+	//
+	getLyXFunc().dispatch(FuncRequest(LFUN_QUIT));
 	return true;
 }
 

@@ -188,6 +188,10 @@ bool BufferView::isSavedPosition(unsigned int i)
 	return pimpl_->isSavedPosition(i);
 }
 
+void BufferView::saveSavedPositions()
+{
+	return pimpl_->saveSavedPositions();
+}
 
 void BufferView::switchKeyMap()
 {

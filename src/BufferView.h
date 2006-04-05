@@ -120,6 +120,8 @@ public:
 	void restorePosition(unsigned int i);
 	/// does the given bookmark have a saved position ?
 	bool isSavedPosition(unsigned int i);
+	/// save bookmarks to .lyx/session
+	void saveSavedPositions();
 
 	/// return the current change at the cursor
 	Change const getCurrentChange();

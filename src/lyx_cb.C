@@ -22,7 +22,7 @@
 #include "cursor.h"
 #include "debug.h"
 #include "gettext.h"
-#include "lastfiles.h"
+#include "session.h"
 #include "LaTeXFeatures.h"
 #include "lyx_main.h"
 #include "lyxlayout.h"
@@ -101,7 +101,7 @@ bool quitting;	// flag, that we are quitting the program
 bool MenuWrite(Buffer * buffer)
 {
 	if (buffer->save()) {
-		LyX::ref().lastfiles().newFile(buffer->fileName());
+		LyX::ref().session().addLastFile(buffer->fileName());
 		return true;
 	}
 
@@ -196,7 +196,7 @@ void QuitLyX(bool noask)
 		if (!noask && !bufferlist.quitWriteAll())
 			return;
 
-		LyX::cref().lastfiles().writeFile(lyxrc.lastfiles);
+		LyX::cref().session().writeFile();
 	}
 
 	// Set a flag that we do quitting from the program,

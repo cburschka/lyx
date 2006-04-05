@@ -28,6 +28,7 @@
 #include "LyXAction.h"
 #include "lyxfunc.h"
 #include "lyxrc.h"
+#include "session.h"
 #include "lyxserver.h"
 #include "lyxsocket.h"
 
@@ -37,6 +38,7 @@
 #include "support/lyxlib.h"
 #include "support/os.h"
 #include "support/package.h"
+#include "support/convert.h"
 
 #include "lyx_forms.h"
 
@@ -259,6 +261,20 @@ void start(string const & batch, vector<string> const & files)
 	int ypos = -1;
 	unsigned int width = 690;
 	unsigned int height = 510;
+	// first try lyxrc
+	if (lyxrc.geometry_width != 0 && lyxrc.geometry_height != 0 ) {
+		width = lyxrc.geometry_width;
+		height = lyxrc.geometry_height;
+	}
+	// if lyxrc returns (0,0), then use session info
+	else {
+		string val = LyX::ref().session().loadSessionInfo("WindowWidth");
+		if (val != "")
+			width = convert<unsigned int>(val);
+		val = LyX::ref().session().loadSessionInfo("WindowHeight");
+		if (val != "")
+			height = convert<unsigned int>(val);
+	}
 
 	int const geometryBitmask =
 		XParseGeometry(geometry,

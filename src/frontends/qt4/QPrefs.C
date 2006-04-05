@@ -18,7 +18,6 @@
 #include "qt_helpers.h"
 
 #include "debug.h"
-#include "lastfiles.h"
 #include "LColor.h"
 #include "lyxfont.h"
 

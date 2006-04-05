@@ -42,7 +42,7 @@
 #include "lyxfunc.h"
 #include "lyxtext.h"
 #include "lyxrc.h"
-#include "lastfiles.h"
+#include "session.h"
 #include "metricsinfo.h"
 #include "paragraph.h"
 #include "paragraph_funcs.h"
@@ -170,6 +170,14 @@ BufferView::Pimpl::Pimpl(BufferView & bv, LyXView * owner,
 		.connect(boost::bind(&BufferView::Pimpl::cursorToggle, this));
 	cursor_timeout.start();
 	saved_positions.resize(saved_positions_num);
+	// load saved bookmarks
+	lyx::Session::BookmarkList & bmList = LyX::ref().session().loadBookmarks();
+	for (lyx::Session::BookmarkList::iterator bm = bmList.begin();
+		bm != bmList.end(); ++bm)
+		if (bm->get<0>() < saved_positions_num)
+			saved_positions[bm->get<0>()] = Position( bm->get<1>(), bm->get<2>(), bm->get<3>() );
+	// and then clear them		
+	bmList.clear();
 }
 
 
@@ -294,9 +302,31 @@ bool BufferView::Pimpl::loadLyXFile(string const & filename, bool tolastfiles)
 
 	setBuffer(b);
 	bv_->showErrorList(_("Parse"));
+    
+	// scroll to the position when the file was last closed
+	if (lyxrc.use_lastfilepos) {
+		lyx::pit_type pit;
+		lyx::pos_type pos;
+		boost::tie(pit, pos) = LyX::ref().session().loadFilePosition(s);
+		// I am not sure how to separate the following part to a function
+		// so I will leave this to Lars. 
+		//
+		// check pit since the document may be externally changed.
+		if ( static_cast<size_t>(pit) < b->paragraphs().size() ) {
+			ParIterator it = b->par_iterator_begin();
+			ParIterator const end = b->par_iterator_end();
+			for (; it != end; ++it)
+				if (it.pit() == pit) {
+					// restored pos may be bigger than it->size
+					bv_->setCursor(makeDocIterator(it, min(pos, it->size())));
+					bv_->update(Update::FitCursor);
+					break;
+				}	
+		}
+	}
 
 	if (tolastfiles)
-		LyX::ref().lastfiles().newFile(b->fileName());
+		LyX::ref().session().addLastFile(b->fileName());
 
 	return true;
 }
@@ -332,6 +362,9 @@ void BufferView::Pimpl::setBuffer(Buffer * b)
 		// to this buffer later on.
 		buffer_->saveCursor(cursor_.selectionBegin(),
 				    cursor_.selectionEnd());
+		// current buffer is going to be switched-off, save cursor pos
+		LyX::ref().session().saveFilePosition(buffer_->fileName(),
+			boost::tie(cursor_.pit(), cursor_.pos()) );
 	}
 
 	// If we are closing current buffer, switch to the first in
@@ -809,6 +842,22 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 bool BufferView::Pimpl::isSavedPosition(unsigned int i)
 {
 	return i < saved_positions_num && !saved_positions[i].filename.empty();
+}
+
+
+void BufferView::Pimpl::saveSavedPositions()
+{
+	// save bookmarks. It is better to use the pit interface
+	// but I do not know how to effectively convert between
+	// par_id and pit.
+	for (unsigned int i=1; i < saved_positions_num; ++i) {
+		if ( isSavedPosition(i) )
+			LyX::ref().session().saveBookmark( boost::tie(
+				i, 
+				saved_positions[i].filename,
+				saved_positions[i].par_id,
+				saved_positions[i].par_pos) );
+	}
 }
 
 

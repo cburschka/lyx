@@ -17,13 +17,17 @@
 
 #include "BufferView.h"
 #include "debug.h"
+#include "lyx_main.h"
+#include "session.h"
 #include "lyxfunc.h"
 #include "MenuBackend.h"
+#include "funcrequest.h"
 
 #include "frontends/Dialogs.h"
 #include "frontends/Toolbars.h"
 
 #include "support/filetools.h"        // OnlyFilename()
+#include "support/convert.h"
 
 #include <boost/bind.hpp>
 
@@ -45,9 +49,13 @@ namespace frontend {
 extern "C" {
 
 static
-int C_XFormsView_atCloseMainFormCB(FL_FORM * form, void * p)
+int C_XFormsView_atCloseMainFormCB(FL_FORM * /*form*/, void * arg)
 {
-	return XFormsView::atCloseMainFormCB(form, p);
+	// For some reason u_vdata does not contain the pointer
+	// to the XFormsView that we need. We get it through arg instead.
+	//XFormsView * view = static_cast<XFormsView*>(form->u_vdata);
+	XFormsView * view = static_cast<XFormsView*>(arg);
+	return view->atCloseMainFormCB();
 }
 
 }
@@ -93,7 +101,7 @@ XFormsView::XFormsView(int width, int height)
 	// dimensions.
 	form_ = fl_bgn_form(FL_NO_BOX, width, height);
 	form_->u_vdata = this;
-	fl_set_form_atclose(form_, C_XFormsView_atCloseMainFormCB, 0);
+	fl_set_form_atclose(form_, C_XFormsView_atCloseMainFormCB, this);
 
 	FL_OBJECT * obj = fl_add_box(FL_FLAT_BOX, 0, 0, width, height, "");
 	fl_set_object_color(obj, FL_MCOL, FL_MCOL);
@@ -171,9 +179,15 @@ FL_FORM * XFormsView::getForm() const
 
 
 // Callback for close main form from window manager
-int XFormsView::atCloseMainFormCB(FL_FORM *, void *)
+int XFormsView::atCloseMainFormCB()
 {
-	QuitLyX(false);
+	// save windows size
+	LyX::ref().session().saveSessionInfo("WindowWidth", convert<string>(form_->w));
+	LyX::ref().session().saveSessionInfo("WindowHeight", convert<string>(form_->h));
+	// trigger LFUN_QUIT instead of quit directly
+	// since LFUN_QUIT may have more cleanup stuff
+	//
+	getLyXFunc().dispatch(FuncRequest(LFUN_QUIT));
 	return FL_IGNORE;
 }
 

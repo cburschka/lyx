@@ -43,6 +43,8 @@
 #include "kbmap.h"
 #include "language.h"
 #include "LColor.h"
+#include "session.h"
+#include "lyx_main.h"
 #include "lyx_cb.h"
 #include "LyXAction.h"
 #include "lyxfind.h"
@@ -996,6 +998,15 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_QUIT:
+			if (view()->available()) {
+				// save cursor Position for opened files to .lyx/session
+				LyX::ref().session().saveFilePosition(owner->buffer()->fileName(),
+					boost::tie(view()->cursor().pit(), view()->cursor().pos()) );
+				// save opened file name to .lyx/session 
+				LyX::ref().session().setLastOpenedFiles( bufferlist.getFileNames());
+				// save bookmarks to .lyx/session
+				view()->saveSavedPositions();
+			}
 			QuitLyX(argument == "force");
 			break;
 
@@ -1880,6 +1891,9 @@ void LyXFunc::doImport(string const & argument)
 
 void LyXFunc::closeBuffer()
 {
+	// save current cursor position 
+	LyX::ref().session().saveFilePosition(owner->buffer()->fileName(),
+		boost::tie(view()->cursor().pit(), view()->cursor().pos()) );
 	if (bufferlist.close(owner->buffer(), true) && !quitting) {
 		if (bufferlist.empty()) {
 			// need this otherwise SEGV may occur while
@@ -1966,6 +1980,8 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_BIBTEX_COMMAND:
 	case LyXRC::RC_BINDFILE:
 	case LyXRC::RC_CHECKLASTFILES:
+	case LyXRC::RC_USELASTFILEPOS:
+	case LyXRC::RC_LOADSESSION:
 	case LyXRC::RC_CHKTEX_COMMAND:
 	case LyXRC::RC_CONVERTER:
 	case LyXRC::RC_COPIER:
@@ -2007,7 +2023,6 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_LANGUAGE_GLOBAL_OPTIONS:
 	case LyXRC::RC_LANGUAGE_PACKAGE:
 	case LyXRC::RC_LANGUAGE_USE_BABEL:
-	case LyXRC::RC_LASTFILES:
 	case LyXRC::RC_MAKE_BACKUP:
 	case LyXRC::RC_MARK_FOREIGN_LANGUAGE:
 	case LyXRC::RC_NUMLASTFILES:
@@ -2052,6 +2067,9 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_SCREEN_FONT_SIZES:
 	case LyXRC::RC_SCREEN_FONT_TYPEWRITER:
 	case LyXRC::RC_SCREEN_FONT_TYPEWRITER_FOUNDRY:
+	case LyXRC::RC_SCREEN_GEOMETRY_HEIGHT:
+	case LyXRC::RC_SCREEN_GEOMETRY_WIDTH:
+	case LyXRC::RC_SCREEN_GEOMETRY_XYSAVED:
 	case LyXRC::RC_SCREEN_ZOOM:
 	case LyXRC::RC_SERVERPIPE:
 	case LyXRC::RC_SET_COLOR:

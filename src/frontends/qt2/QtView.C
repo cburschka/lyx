@@ -13,12 +13,17 @@
 
 #include "BufferView.h"
 #include "lyx_cb.h"
+#include "lyxrc.h"
+#include "lyx_main.h"
+#include "session.h"
 #include "lyxfunc.h"
 #include "MenuBackend.h"
+#include "funcrequest.h"
 
 #include "frontends/Toolbars.h"
 
 #include "support/filetools.h"
+#include "support/convert.h"
 
 #include <boost/bind.hpp>
 
@@ -155,7 +160,16 @@ bool QtView::hasFocus() const
 
 void QtView::closeEvent(QCloseEvent *)
 {
-	QuitLyX(false);
+	// save windows size and position
+	LyX::ref().session().saveSessionInfo("WindowWidth", convert<string>(width()));
+	LyX::ref().session().saveSessionInfo("WindowHeight", convert<string>(height()));
+	if (lyxrc.geometry_xysaved) {
+		LyX::ref().session().saveSessionInfo("WindowPosX", convert<string>(x()));
+		LyX::ref().session().saveSessionInfo("WindowPosY", convert<string>(y()));
+	}
+	// trigger LFUN_QUIT instead of quit directly
+	// since LFUN_QUIT may have more cleanup stuff
+	getLyXFunc().dispatch(FuncRequest(LFUN_QUIT));
 }
 
 
