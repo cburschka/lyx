@@ -394,33 +394,32 @@ int mkstemp(char*);
 #endif
 
 #ifdef __EMX__
-#include "support/os2_defines.h"
+#  include "support/os2_defines.h"
 #endif
 
 #if defined(HAVE_OSTREAM) && defined(HAVE_LOCALE) && defined(HAVE_SSTREAM)
-#define USE_BOOST_FORMAT 1
+#  define USE_BOOST_FORMAT 1
 #else
-#define USE_BOOST_FORMAT 0
+#  define USE_BOOST_FORMAT 0
 #endif
 
 #define BOOST_USER_CONFIG <config.h>
 
-#if defined(ENABLE_ASSERTIONS)
-#define BOOST_ENABLE_ASSERT_HANDLER 1
-#else
-#define BOOST_DISABLE_ASSERTS 1
+#if !defined(ENABLE_ASSERTIONS)
+#  define BOOST_DISABLE_ASSERTS 1
 #endif
+#define BOOST_ENABLE_ASSERT_HANDLER 1
 
 #define BOOST_DISABLE_THREADS 1
 #define BOOST_NO_WREGEX 1
 #define BOOST_NO_WSTRING 1
 
 #ifdef __CYGWIN__
-#define BOOST_POSIX 1
+#  define BOOST_POSIX 1
 #endif
 
 #if defined(HAVE_NEWAPIS_H)
-#define WANT_GETFILEATTRIBUTESEX_WRAPPER 1
+#  define WANT_GETFILEATTRIBUTESEX_WRAPPER 1
 #endif
 
 #endif
