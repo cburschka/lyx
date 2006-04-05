@@ -44,6 +44,7 @@ dist_noinst_DATA = \
 	images/dots.xbm \
 	images/equation.xpm \
 	images/font.xbm \
+	images/font.xpm \
 	images/frac.xpm \
 	images/greek.xbm \
 	images/matrix.xpm \
