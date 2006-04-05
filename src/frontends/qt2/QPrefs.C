@@ -148,6 +148,11 @@ string const internal_path(QString const & input)
 	return lyx::support::os::internal_path(fromqstr(input));
 }
 
+string const internal_path_list(QString const & input)
+{
+	return lyx::support::os::internal_path_list(fromqstr(input));
+}
+
 }
 
 
@@ -199,7 +204,7 @@ void QPrefs::apply()
 
 #if defined(__CYGWIN__) || defined(__CYGWIN32__)
 	QPrefCygwinPathModule * cygwinmod(dialog_->cygwinpathModule);
-	rc.cygwin_path_fix = cygwinmod->pathCB->isChecked();
+	rc.cygwin_path_fix = !cygwinmod->pathCB->isChecked();
 #endif
 
 	QPrefLatexModule * latexmod(dialog_->latexModule);
@@ -253,7 +258,7 @@ void QPrefs::apply()
 	rc.template_path = internal_path(pathsmod->templateDirED->text());
 	rc.backupdir_path = internal_path(pathsmod->backupDirED->text());
 	rc.tempdir_path = internal_path(pathsmod->tempDirED->text());
-	rc.path_prefix = fromqstr(pathsmod->pathPrefixED->text());
+	rc.path_prefix = internal_path_list(pathsmod->pathPrefixED->text());
 	// FIXME: should be a checkbox only
 	rc.lyxpipes = internal_path(pathsmod->lyxserverDirED->text());
 
@@ -467,6 +472,11 @@ QString const external_path(string const & input)
 	return toqstr(lyx::support::os::external_path(input));
 }
 
+QString const external_path_list(string const & input)
+{
+	return toqstr(lyx::support::os::external_path_list(input));
+}
+
 }
 
 
@@ -536,7 +546,7 @@ void QPrefs::update_contents()
 
 #if defined(__CYGWIN__) || defined(__CYGWIN32__)
 	QPrefCygwinPathModule * cygwinmod(dialog_->cygwinpathModule);
-	cygwinmod->pathCB->setChecked(rc.cygwin_path_fix);
+	cygwinmod->pathCB->setChecked(!rc.cygwin_path_fix);
 #endif
 
 	QPrefLatexModule * latexmod(dialog_->latexModule);
@@ -583,7 +593,7 @@ void QPrefs::update_contents()
 	pathsmod->templateDirED->setText(external_path(rc.template_path));
 	pathsmod->backupDirED->setText(external_path(rc.backupdir_path));
 	pathsmod->tempDirED->setText(external_path(rc.tempdir_path));
-	pathsmod->pathPrefixED->setText(toqstr(rc.path_prefix));
+	pathsmod->pathPrefixED->setText(external_path_list(rc.path_prefix));
 	// FIXME: should be a checkbox only
 	pathsmod->lyxserverDirED->setText(external_path(rc.lyxpipes));
 

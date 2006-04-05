@@ -86,16 +86,19 @@ string const latex_path(string const & original_path,
 		latex_path_extension extension,
 		latex_path_dots dots)
 {
-	string path = subst(original_path, "\\", "/");
 	// On cygwin, we may need windows or posix style paths.
-	path = os::latex_path(path);
+	string path = os::latex_path(original_path);
 	path = subst(path, "~", "\\string~");
 	if (path.find(' ') != string::npos) {
 		// We can't use '"' because " is sometimes active (e.g. if
 		// babel is loaded with the "german" option)
 		if (extension == EXCLUDE_EXTENSION) {
-			string const base = ChangeExtension(path, string());
+			// ChangeExtension calls os::internal_path internally
+			// so don't use it to remove the extension.
 			string const ext = GetExtension(path);
+			string const base = ext.empty() ?
+				path :
+				path.substr(0, path.length() - ext.length() - 1);
 			// ChangeExtension calls os::internal_path internally
 			// so don't use it to re-add the extension.
 			path = "\\string\"" + base + "\\string\"." + ext;
