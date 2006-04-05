@@ -57,8 +57,8 @@ int make_tempfile(char * templ)
 	return ::open(templ, O_RDWR | O_CREAT | O_EXCL, S_IRUSR | S_IWUSR);
 # elif defined (HAVE__OPEN)
 	return ::_open(templ,
-	               _O_RDWR | _O_CREAT | _O_EXCL,
-	               _S_IREAD | _S_IWRITE);
+		       _O_RDWR | _O_CREAT | _O_EXCL,
+		       _S_IREAD | _S_IWRITE);
 # else
 #  error No open() function.
 # endif

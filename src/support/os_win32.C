@@ -310,7 +310,7 @@ GetFolderPath::GetFolderPath()
 	folder_path_func_ = reinterpret_cast<function_pointer>(::GetProcAddress(folder_module_, "SHGetFolderPathA"));
 	if (folder_path_func_ == 0) {
 		lyxerr << "Unable to find SHGetFolderPathA in shfolder.dll\n"
-		          "Don't know how to proceed. Sorry."
+			  "Don't know how to proceed. Sorry."
 		       << std::endl;
 		bail_out();
 	}

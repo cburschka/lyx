@@ -607,7 +607,7 @@ string const NormalizePath(string const & path)
 
 	if (!npath.is_complete())
 		return "./" + npath.string() + '/';
-	
+
 	return npath.string() + '/';
 }
 

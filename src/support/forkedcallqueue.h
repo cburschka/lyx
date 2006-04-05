@@ -31,13 +31,13 @@ class ForkedCallQueue {
 public:
 	/// A process in the queue
 	typedef std::pair<std::string, Forkedcall::SignalTypePtr> Process;
-        /** Add a process to the queue. Processes are forked sequentially
-	 *  only one is running at a time.
-         *  Connect to the returned signal and you'll be informed when
-         *  the process has ended.
-         */
+	/** Add a process to the queue. Processes are forked sequentially
+	 *  only one is running at a time.
+	 *  Connect to the returned signal and you'll be informed when
+	 *  the process has ended.
+	 */
 	Forkedcall::SignalTypePtr add(std::string const & process);
-	/// Query whether the queue is running a forked process now.
+	/// Query whether the queue is running a forked process now.
 	bool running() const;
 	/// Get the and only instance of the class
 	static ForkedCallQueue & get();

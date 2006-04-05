@@ -60,11 +60,11 @@ private:
     int flush_buffer();
 public:
     gzstreambuf() : opened(0) {
-        setp( buffer, buffer + (bufferSize-1));
-        setg( buffer + 4,     // beginning of putback area
-              buffer + 4,     // read position
-              buffer + 4);    // end position
-        // ASSERT: both input & output capabilities will not be used together
+	setp( buffer, buffer + (bufferSize-1));
+	setg( buffer + 4,     // beginning of putback area
+	      buffer + 4,     // read position
+	      buffer + 4);    // end position
+	// ASSERT: both input & output capabilities will not be used together
     }
     int is_open() { return opened; }
     gzstreambuf* open( const char* name, int open_mode);
@@ -98,10 +98,10 @@ class igzstream : public gzstreambase, public std::istream {
 public:
     igzstream() : std::istream( &buf) {}
     igzstream( const char* name, int open_mode = std::ios::in)
-        : gzstreambase( name, open_mode), std::istream( &buf) {}
+	: gzstreambase( name, open_mode), std::istream( &buf) {}
     gzstreambuf* rdbuf() { return gzstreambase::rdbuf(); }
     void open( const char* name, int open_mode = std::ios::in) {
-        gzstreambase::open( name, open_mode);
+	gzstreambase::open( name, open_mode);
     }
 };
 
@@ -109,10 +109,10 @@ class ogzstream : public gzstreambase, public std::ostream {
 public:
     ogzstream() : std::ostream( &buf) {}
     ogzstream( const char* name, int mode = std::ios::out)
-        : gzstreambase( name, mode), std::ostream( &buf) {}
+	: gzstreambase( name, mode), std::ostream( &buf) {}
     gzstreambuf* rdbuf() { return gzstreambase::rdbuf(); }
     void open( const char* name, int open_mode = std::ios::out) {
-        gzstreambase::open( name, open_mode);
+	gzstreambase::open( name, open_mode);
     }
 };
 

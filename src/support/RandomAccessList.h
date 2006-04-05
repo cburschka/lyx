@@ -31,7 +31,7 @@ keeps the std::list::iterator interface. A typical use would be:
 
 	typedef RandomAccessList<some_class> MyContainer;
 
-Then you can use MyContainer as if it was a standard 
+Then you can use MyContainer as if it was a standard
 std::vector<some_class> for operator[] access and as if it was a
 standard std::list for iterator access. The main difference with
 std::vector is that insertion of elements is much less costly. Compared

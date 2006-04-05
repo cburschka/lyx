@@ -41,7 +41,7 @@ int lyx::support::mkdir(std::string const & pathname, unsigned long int mode)
 	// plain Windows 32
 	return CreateDirectory(pathname.c_str(), 0) != 0 ? 0 : -1;
 #elif HAVE__MKDIR
- 	return ::_mkdir(pathname.c_str());
+	return ::_mkdir(pathname.c_str());
 #else
 #   error "Don't know how to create a directory on this system."
 #endif

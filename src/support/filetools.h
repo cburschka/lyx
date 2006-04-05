@@ -180,7 +180,7 @@ std::string const unzippedFileName(std::string const & zipped_file);
   Will overwrite an already existing unzipped file without warning.
  */
 std::string const unzipFile(std::string const & zipped_file,
-                            std::string const & unzipped_file = std::string());
+			    std::string const & unzipped_file = std::string());
 
 /// Returns true is path is absolute
 bool AbsolutePath(std::string const & path);

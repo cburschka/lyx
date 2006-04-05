@@ -83,8 +83,8 @@ bool is_readonly(path const & ph)
 #endif
 #ifdef BOOST_WINDOWS
 	DWORD const attr = ::GetFileAttributes(ph.string().c_str());
-        return (attr != INVALID_FILE_ATTRIBUTES
-                && (attr & FILE_ATTRIBUTE_READONLY));
+	return (attr != INVALID_FILE_ATTRIBUTES
+		&& (attr & FILE_ATTRIBUTE_READONLY));
 #endif
 }
 
@@ -94,7 +94,7 @@ void copy_file(path const & source, path const & target, bool noclobber)
 
 #ifdef BOOST_POSIX
 	int const infile = ::open(source.string().c_str(), O_RDONLY);
-        if (infile == -1) {
+	if (infile == -1) {
 		boost::throw_exception(
 			filesystem_error(
 				"boost::filesystem::copy_file",
@@ -102,52 +102,52 @@ void copy_file(path const & source, path const & target, bool noclobber)
 				fs::detail::system_error_code()));
 	}
 
-        struct stat source_stat;
-        int const ret = ::fstat(infile, &source_stat);
-        if (ret == -1) {
-                ::close(infile);
+	struct stat source_stat;
+	int const ret = ::fstat(infile, &source_stat);
+	if (ret == -1) {
+		::close(infile);
 		boost::throw_exception(
 			filesystem_error(
 				"boost::filesystem::copy_file",
 				source, target,
 				fs::detail::system_error_code()));
-        }
+	}
 
-        int const flags = O_WRONLY | O_CREAT | (noclobber ? O_EXCL : O_TRUNC);
+	int const flags = O_WRONLY | O_CREAT | (noclobber ? O_EXCL : O_TRUNC);
 
-        int const outfile = ::open(target.string().c_str(), flags, source_stat.st_mode);
-        if (outfile == -1) {
-                ::close(infile);
+	int const outfile = ::open(target.string().c_str(), flags, source_stat.st_mode);
+	if (outfile == -1) {
+		::close(infile);
 		boost::throw_exception(
 			filesystem_error(
 				"boost::filesystem::copy_file",
 				source, target,
 				fs::detail::system_error_code()));
-        }
+	}
 
-        std::size_t const buf_sz = 32768;
-        char buf[buf_sz];
-        ssize_t in = -1;
-        ssize_t out = -1;
+	std::size_t const buf_sz = 32768;
+	char buf[buf_sz];
+	ssize_t in = -1;
+	ssize_t out = -1;
 
-        while (true) {
-                in = ::read(infile, buf, buf_sz);
-                if (in == -1) {
-                        break;
-                } else if (in == 0) {
-                        break;
-                } else {
-                        out = ::write(outfile, buf, in);
-                        if (out == -1) {
-                                break;
-                        }
-                }
-        }
+	while (true) {
+		in = ::read(infile, buf, buf_sz);
+		if (in == -1) {
+			break;
+		} else if (in == 0) {
+			break;
+		} else {
+			out = ::write(outfile, buf, in);
+			if (out == -1) {
+				break;
+			}
+		}
+	}
 
-        ::close(infile);
-        ::close(outfile);
+	::close(infile);
+	::close(outfile);
 
-        if (in == -1 || out == -1)
+	if (in == -1 || out == -1)
 		boost::throw_exception(
 			filesystem_error(
 				"boost::filesystem::copy_file",

@@ -99,7 +99,7 @@ string const FileName::mangledFilename(std::string const & dir) const
 	s << counter++ << mname;
 	mname = s.str();
 
-	// MiKTeX's YAP (version 2.4.1803) crashes if the file name 
+	// MiKTeX's YAP (version 2.4.1803) crashes if the file name
 	// is longer than about 160 characters. MiKTeX's pdflatex
 	// is even pickier. A maximum length of 100 has been proven to work.
 	// If dir.size() > max length, all bets are off for YAP. We truncate
