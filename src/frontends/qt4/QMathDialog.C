@@ -72,7 +72,7 @@ QMathDialog::QMathDialog(QMath * form)
 	for (int i = 0; *function_names[i]; ++i) {
 		functionsLW->addItem(function_names[i]);
 	}
-	functionsLW->setFixedWidth(functionsLW->sizeHint().width());
+	//functionsLW->setFixedWidth(functionsLW->sizeHint().width());
 
 	// add first symbol panel
 	addPanel(0);
