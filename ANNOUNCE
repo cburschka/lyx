@@ -7,6 +7,8 @@ release, but some of the bugs were big. In particular:
 - fix the huge memory consumption and corresponding sluggishness with
   documents containing many graphics or `instant preview' snippets.
 
+- fix slow screen update with nested insets, particularly with LyX/Mac.
+
 - fix the delay when exiting from a math inset. 
 
 - let the change tracking code track paragraph breaks too.
