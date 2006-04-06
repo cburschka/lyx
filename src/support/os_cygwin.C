@@ -27,6 +27,8 @@
 using std::endl;
 using std::string;
 
+using lyx::support::contains;
+
 
 namespace lyx {
 namespace support {
@@ -66,39 +68,103 @@ namespace {
 
 bool cygwin_path_fix_ = false;
 
+// In both is_posix_path() and is_windows_path() it is assumed that
+// a valid posix or pseudo-windows path is passed. They simply tell
+// whether the path looks posix/pseudo-windows or not.
+
+bool is_posix_path(string const & p)
+{
+	return  p.empty() ||
+		(!contains(p, '\\') && (p.length() <= 1 || p[1] != ':'));
+}
+
+// This is a test for a win32 style path with forward slashes (pseudo-windows).
+
+bool is_windows_path(string const & p)
+{
+	return p.empty() ||
+		(!contains(p, '\\') && (p.length() <= 1 || p[1] == ':'));
+}
+
+
+enum PathStyle {
+    posix,
+    windows
+};
+
+
+string convert_path(string const & p, PathStyle const & target)
+{
+	char path_buf[PATH_MAX];
+
+	if ((target == posix && is_posix_path(p)) ||
+	    (target == windows && is_windows_path(p)))
+		return p;
+
+	path_buf[0] = '\0';
+
+	if (target == posix)
+		cygwin_conv_to_posix_path(p.c_str(), path_buf);
+	else
+		cygwin_conv_to_win32_path(p.c_str(), path_buf);
+
+	return subst(path_buf[0] ? path_buf : p, '\\', '/');
+}
+
+
+string convert_path_list(string const & p, PathStyle const & target)
+{
+	char const * const pc = p.c_str();
+	PathStyle const actual = cygwin_posix_path_list_p(pc) ? posix : windows;
+
+	if (target != actual) {
+		int const target_size = (target == posix) ?
+				cygwin_win32_to_posix_path_list_buf_size(pc) :
+				cygwin_posix_to_win32_path_list_buf_size(pc);
+
+		char * ptr = new char[target_size];
+
+		if (ptr) {
+			if (target == posix)
+				cygwin_win32_to_posix_path_list(pc, ptr);
+			else
+				cygwin_posix_to_win32_path_list(pc, ptr);
+
+			string path_list = subst(ptr, '\\', '/');
+			delete ptr;
+			return path_list;
+		}
+	}
+
+	return subst(p, '\\', '/');
+}
+
 } // namespace anon
 
 
 string external_path(string const & p)
 {
-	string dos_path;
-
-	// Translate from cygwin path syntax to dos path syntax
-	if (cygwin_path_fix_ && is_absolute_path(p)) {
-		char dp[PATH_MAX];
-		cygwin_conv_to_full_win32_path(p.c_str(), dp);
-		dos_path = !dp ? "" : dp;
-	}
-
-	else return p;
-
-	//No backslashes in LaTeX files
-	dos_path = subst(dos_path,'\\','/');
-
-	lyxerr[Debug::LATEX]
-		<< "<Cygwin path correction> ["
-		<< p << "]->>["
-		<< dos_path << ']' << endl;
-	return dos_path;
+	return convert_path(p, cygwin_path_fix_ ? PathStyle(windows)
+						: PathStyle(posix));
 }
 
 
 string internal_path(string const & p)
 {
-	char posix_path[PATH_MAX];
-	posix_path[0] = '\0';
-	cygwin_conv_to_posix_path(p.c_str(), posix_path);
-	return posix_path;
+	return convert_path(p, PathStyle(posix));
+}
+
+
+string external_path_list(string const & p)
+{
+	return convert_path_list(p, cygwin_path_fix_ ? PathStyle(windows)
+						     : PathStyle(posix));
+}
+
+
+string internal_path_list(string const & p)
+{
+	return convert_path_list(p, PathStyle(posix));
 }
 
 
@@ -107,7 +173,17 @@ string latex_path(string const & p)
 	// We may need a posix style path or a windows style path (depending
 	// on cygwin_path_fix_), but we use always forward slashes, since it
 	// gets written into a .tex file.
-	return external_path(p);
+
+	if (cygwin_path_fix_ && is_absolute_path(p)) {
+		string dos_path = convert_path(p, PathStyle(windows));
+		lyxerr[Debug::LATEX]
+			<< "<Cygwin path correction> ["
+			<< p << "]->>["
+			<< dos_path << ']' << endl;
+		return dos_path;
+	}
+
+	return convert_path(p, PathStyle(posix));
 }
 
 

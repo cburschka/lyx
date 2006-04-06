@@ -1,3 +1,17 @@
+2006-04-06  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	Fix mess up of internal/external paths (from Enrico Forestieri)
+
+	* os.h: New declarations to deal with PATH lists.
+	* os_cygwin.C: Major rewrite to account for path style
+	problems.
+	* os_unix.C:
+	* os_win32.C: Stub functions for PATH lists.
+	* environment.C: fix bug 2344: Wrong path_prefix handling
+	in cygwin
+	* filetools.C (ChangeExtension): fix for the path
+	style to be written in .tex files (cygwin related).
+
 2006-04-01  Michael Gerz  <michael.gerz@teststep.org>
 
 	* filename.C (mangledFilename): truncate filename to 100 characters

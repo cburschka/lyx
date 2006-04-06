@@ -1,3 +1,11 @@
+2006-04-06  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	Fix mess up of internal/external paths (from Enrico Forestieri)
+
+	* QPrefs.C (internal_path_list, external_path_list): Handle the
+	PATH prefix style according to the user-prefs style.
+	(apply, update_contents): fix inverted logic of	rc.cygwin_path_fix
+
 2006-03-28  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* QPrefsDialog.C (remove_format): Prevent deletion of file formats

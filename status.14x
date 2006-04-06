@@ -52,6 +52,8 @@ What's new
 
 - Fix crash when generating LaTeX dependencies on Cygwin.
 
+- Fix wrong path_prefix handling in Cygwin builds (bug 2344)
+
 - Set search path for included files correctly on Cygwin (bug 2409).
 
 - Better layout file conversion (bug 2355)
@@ -61,6 +63,9 @@ What's new
 - Fix slowness in rendering inside insets, especially on the Mac (bug 2195)
 
 - Convert line endings for external copy/paste on OS X (bug 1955).
+
+- Fix bookmarks and links to LaTeX errors which were broken after paragraph
+  deletion/insertion (bugs 2284 and 2242).
 
 - Disable saving when document is unchanged (bug 2313).
 
@@ -121,7 +126,4 @@ What's new
   Q..3/ does not use it either in the default configuration.
 
 - Compilation fix (gtk frontend) for gcc 4.1.
-
-- Fix bookmarks and links to LaTeX errors which were broken after paragraph
-  deletion/insertion (bugs 2284 and 2242).
 

@@ -47,6 +47,12 @@ std::string external_path(std::string const & p);
 /// Converts a host OS style path to unix style.
 std::string internal_path(std::string const & p);
 
+/// Converts a unix style path list to host OS style.
+std::string external_path_list(std::string const & p);
+
+/// Converts a host OS style path list to unix style.
+std::string internal_path_list(std::string const & p);
+
 /**
  * Converts a unix style path into a form suitable for inclusion in a LaTeX
  * document.

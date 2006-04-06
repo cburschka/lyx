@@ -216,9 +216,21 @@ string internal_path(string const & p)
 }
 
 
+string external_path_list(string const & p)
+{
+	return subst(p, '/', '\\');
+}
+
+
+string internal_path_list(string const & p)
+{
+	return subst(p, '\\', '/');
+}
+
+
 string latex_path(string const & p)
 {
-	return p;
+	return subst(p, '\\', '/');
 }
 
 
