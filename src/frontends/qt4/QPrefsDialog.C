@@ -109,17 +109,17 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 
 
 
-	asciiModule = new UiWidget<Ui::QPrefAsciiUi>(this);
+	asciiModule = new UiWidget<Ui::QPrefAsciiUi>;
 	connect(asciiModule->asciiLinelengthSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
 	connect(asciiModule->asciiRoffED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 
 
-	dateModule = new UiWidget<Ui::QPrefDateUi>(this);
+	dateModule = new UiWidget<Ui::QPrefDateUi>;
 	connect(dateModule->DateED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 
 
 
-	keyboardModule = new UiWidget<Ui::QPrefKeyboardUi>(this);
+	keyboardModule = new UiWidget<Ui::QPrefKeyboardUi>;
 	connect( keyboardModule->keymapCB, SIGNAL( toggled(bool) ),
 		 keyboardModule->firstKeymapLA, SLOT( setEnabled(bool) ) );
 	connect( keyboardModule->keymapCB, SIGNAL( toggled(bool) ),
@@ -140,7 +140,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 
 
 
-	latexModule = new UiWidget<Ui::QPrefLatexUi>(this);
+	latexModule = new UiWidget<Ui::QPrefLatexUi>;
 	connect(latexModule->latexEncodingED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(latexModule->latexChecktexED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(latexModule->latexBibtexED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
@@ -152,7 +152,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 
 
 
-	screenfontsModule = new UiWidget<Ui::QPrefScreenFontsUi>(this);
+	screenfontsModule = new UiWidget<Ui::QPrefScreenFontsUi>;
 	connect(screenfontsModule->screenRomanCO, SIGNAL(activated(const QString&)), this, SLOT(select_roman(const QString&)));
 	connect(screenfontsModule->screenSansCO, SIGNAL(activated(const QString&)), this, SLOT(select_sans(const QString&)));
 	connect(screenfontsModule->screenTypewriterCO, SIGNAL(activated(const QString&)), this, SLOT(select_typewriter(const QString&)));
@@ -204,7 +204,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 
 
 
-	colorsModule = new UiWidget<Ui::QPrefColorsUi>(this);
+	colorsModule = new UiWidget<Ui::QPrefColorsUi>;
 	// FIXME: put in controller
 	for (int i = 0; i < LColor::ignore; ++i) {
 		LColor::color lc = static_cast<LColor::color>(i);
@@ -233,19 +233,19 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 
 
 #if defined(__CYGWIN__) || defined(__CYGWIN32__)
-	cygwinpathModule = new UiWidget<Ui::QPrefCygwinPathUi>(this);
+	cygwinpathModule = new UiWidget<Ui::QPrefCygwinPathUi>;
 	connect(cygwinpathModule->pathCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 #endif
 
 
 
-	displayModule = new UiWidget<Ui::QPrefDisplayUi>(this);
+	displayModule = new UiWidget<Ui::QPrefDisplayUi>;
 	connect(displayModule->instantPreviewCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(displayModule->displayGraphicsCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 
 
 
-	pathsModule = new UiWidget<Ui::QPrefPathsUi>(this);
+	pathsModule = new UiWidget<Ui::QPrefPathsUi>;
 	connect(pathsModule->templateDirPB, SIGNAL(clicked()), this, SLOT(select_templatedir()));
 	connect(pathsModule->tempDirPB, SIGNAL(clicked()), this, SLOT(select_tempdir()));
 	connect(pathsModule->backupDirPB, SIGNAL(clicked()), this, SLOT(select_backupdir()));
@@ -260,7 +260,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 
 
 
-	spellcheckerModule = new UiWidget<Ui::QPrefSpellcheckerUi>(this);
+	spellcheckerModule = new UiWidget<Ui::QPrefSpellcheckerUi>;
 	connect(spellcheckerModule->persDictionaryPB, SIGNAL(clicked()), this, SLOT(select_dict()));
 #if defined (USE_ISPELL)
 	connect(spellcheckerModule->spellCommandCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
@@ -285,7 +285,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 
 
 
-	convertersModule = new UiWidget<Ui::QPrefConvertersUi>(this);
+	convertersModule = new UiWidget<Ui::QPrefConvertersUi>;
 	connect(convertersModule->converterNewPB, SIGNAL(clicked()), this, SLOT(new_converter()));
 	connect(convertersModule->converterRemovePB, SIGNAL(clicked()), this, SLOT(remove_converter()));
 	connect(convertersModule->converterModifyPB, SIGNAL(clicked()), this, SLOT(modify_converter()));
@@ -300,7 +300,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 
 
 
-	copiersModule = new UiWidget<Ui::QPrefCopiersUi>(this);
+	copiersModule = new UiWidget<Ui::QPrefCopiersUi>;
 	connect(copiersModule->copierNewPB, SIGNAL(clicked()), this, SLOT(new_copier()));
 	connect(copiersModule->copierRemovePB, SIGNAL(clicked()), this, SLOT(remove_copier()));
 	connect(copiersModule->copierModifyPB, SIGNAL(clicked()), this, SLOT(modify_copier()));
@@ -315,7 +315,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 
 
 
-	fileformatsModule = new UiWidget<Ui::QPrefFileformatsUi>(this);
+	fileformatsModule = new UiWidget<Ui::QPrefFileformatsUi>;
 	connect(fileformatsModule->formatNewPB, SIGNAL(clicked()), this, SLOT(new_format()));
 	connect(fileformatsModule->formatRemovePB, SIGNAL(clicked()), this, SLOT(remove_format()));
 	connect(fileformatsModule->formatModifyPB, SIGNAL(clicked()), this, SLOT(modify_format()));
@@ -333,7 +333,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 
 
 
-	languageModule = new UiWidget<Ui::QPrefLanguageUi>(this);
+	languageModule = new UiWidget<Ui::QPrefLanguageUi>;
 	connect(languageModule->rtlCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 	connect(languageModule->markForeignCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 	connect(languageModule->autoBeginCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
@@ -363,7 +363,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 
 
 
-	printerModule = new UiWidget<Ui::QPrefPrinterUi>(this);
+	printerModule = new UiWidget<Ui::QPrefPrinterUi>;
 	connect(printerModule->printerAdaptCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 	connect(printerModule->printerCommandED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(printerModule->printerNameED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
@@ -386,7 +386,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 
 
 
-	uiModule = new UiWidget<Ui::QPrefUi>(this);
+	uiModule = new UiWidget<Ui::QPrefUi>;
     connect( uiModule->autoSaveCB, SIGNAL( toggled(bool) ), uiModule->autoSaveLA, SLOT( setEnabled(bool) ) );
     connect( uiModule->autoSaveCB, SIGNAL( toggled(bool) ), uiModule->autoSaveSB, SLOT( setEnabled(bool) ) );
     connect( uiModule->autoSaveCB, SIGNAL( toggled(bool) ), uiModule->TextLabel1, SLOT( setEnabled(bool) ) );
@@ -403,7 +403,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 
 
 
-	identityModule = new UiWidget<Ui::QPrefIdentityUi>(this);
+	identityModule = new UiWidget<Ui::QPrefIdentityUi>;
 	connect(identityModule->nameED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(identityModule->emailED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 
