@@ -25,10 +25,12 @@
 #include "lyxrc.h"
 #include "lyxserver.h"
 #include "lyxsocket.h"
+#include "session.h"
 
 #include "graphics/LoaderQueue.h"
 
 #include "support/lstrings.h"
+#include "support/convert.h"
 #include "support/os.h"
 #include "support/package.h"
 #include "debug.h"
