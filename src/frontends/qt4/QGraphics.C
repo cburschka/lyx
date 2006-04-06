@@ -106,10 +106,10 @@ void QGraphics::build_dialog()
 	bcview().addReadOnly(dialog_->getPB);
 
 	// initialize the length validator
-	addCheckedLineEdit(bcview(), dialog_->Width, dialog_->sizewidthL_2);
-	addCheckedLineEdit(bcview(), dialog_->Height, dialog_->sizeheightL_2);
+	addCheckedLineEdit(bcview(), dialog_->Width, dialog_->widthL);
+	addCheckedLineEdit(bcview(), dialog_->Height, dialog_->heightL);
 	addCheckedLineEdit(bcview(), dialog_->displayscale, dialog_->scaleLA);
-	addCheckedLineEdit(bcview(), dialog_->angle, dialog_->angleL_2);
+	addCheckedLineEdit(bcview(), dialog_->angle, dialog_->angleL);
 	addCheckedLineEdit(bcview(), dialog_->lbX, dialog_->xL);
 	addCheckedLineEdit(bcview(), dialog_->lbY, dialog_->yL);
 	addCheckedLineEdit(bcview(), dialog_->rtX, dialog_->xL_2);
@@ -240,6 +240,7 @@ void QGraphics::update_contents()
 	dialog_->showCB->setEnabled(igp.display != lyx::graphics::NoDisplay && !readOnly());
 	dialog_->displayCB->setChecked(igp.display != lyx::graphics::NoDisplay);
 	dialog_->displayscale->setEnabled(igp.display != lyx::graphics::NoDisplay && !readOnly());
+	dialog_->displayscaleL->setEnabled(igp.display != lyx::graphics::NoDisplay && !readOnly());
 	dialog_->displayscale->setText(toqstr(convert<string>(igp.lyxscale)));
 
 	//// the output section (width/height)
@@ -272,6 +273,7 @@ void QGraphics::update_contents()
 
 	// enable height input in case of non "Scale%" as width-unit
 	bool use_height = (dialog_->widthUnit->currentItem() > 0);
+	dialog_->heightL->setEnabled(use_height);
 	dialog_->Height->setEnabled(use_height);
 	dialog_->heightUnit->setEnabled(use_height);
 
@@ -295,6 +297,9 @@ void QGraphics::update_contents()
 			getItemNo(origin_ltx, igp.rotateOrigin));
 	else
 		dialog_->origin->setCurrentItem(0);
+
+	// disable edit button when no filename is present
+	dialog_->editPB->setDisabled(dialog_->filename->text().isEmpty());
 
 	//// latex section
 	dialog_->latexoptions->setText(toqstr(igp.special));

@@ -17,6 +17,7 @@
 
 #include <QCloseEvent>
 #include <QDialog>
+#include <QString>
 
 namespace lyx {
 namespace frontend {
@@ -36,6 +37,7 @@ protected slots:
 	virtual void browse_clicked();
 	virtual void getBB_clicked();
 	virtual void edit_clicked();
+	virtual void filenameChanged(const QString &);
 protected:
 	virtual void closeEvent(QCloseEvent * e);
 private:
