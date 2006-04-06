@@ -20,7 +20,14 @@
 class MathFracInset : public MathFracbaseInset {
 public:
 	///
-	explicit MathFracInset(bool atop = false);
+	enum Kind {
+		FRAC,
+		ATOP,
+		NICEFRAC
+	};
+
+	///
+	explicit MathFracInset(Kind kind = FRAC);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
@@ -46,10 +53,12 @@ public:
 	void octave(OctaveStream &) const;
 	///
 	void mathmlize(MathMLStream &) const;
+	///
+	void validate(LaTeXFeatures & features) const;
 public:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 	///
-	bool const atop_;
+	Kind kind_;
 };
 
 #endif

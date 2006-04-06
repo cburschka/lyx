@@ -15,6 +15,7 @@
 #include "math_data.h"
 #include "math_mathmlstream.h"
 #include "textpainter.h"
+#include "LaTeXFeatures.h"
 #include "LColor.h"
 #include "frontends/Painter.h"
 
@@ -24,8 +25,8 @@ using std::max;
 using std::auto_ptr;
 
 
-MathFracInset::MathFracInset(bool atop)
-	: atop_(atop)
+MathFracInset::MathFracInset(Kind kind)
+	: kind_(kind)
 {}
 
 
@@ -37,13 +38,13 @@ auto_ptr<InsetBase> MathFracInset::doClone() const
 
 MathFracInset * MathFracInset::asFracInset()
 {
-	return atop_ ? 0 : this;
+	return kind_ == ATOP ? 0 : this;
 }
 
 
 MathFracInset const * MathFracInset::asFracInset() const
 {
-	return atop_ ? 0 : this;
+	return kind_ == ATOP ? 0 : this;
 }
 
 
@@ -52,9 +53,15 @@ void MathFracInset::metrics(MetricsInfo & mi, Dimension & dim) const
 	FracChanger dummy(mi.base);
 	cell(0).metrics(mi);
 	cell(1).metrics(mi);
-	dim.wid = max(cell(0).width(), cell(1).width()) + 2;
-	dim.asc = cell(0).height() + 2 + 5;
-	dim.des = cell(1).height() + 2 - 5;
+	if (kind_ == NICEFRAC) {
+		dim.wid =  cell(0).width() + cell(1).width() + 5;
+		dim.asc = cell(0).height() + 5;
+		dim.des = cell(1).height() - 5;
+	} else {
+		dim.wid = max(cell(0).width(), cell(1).width()) + 2;
+		dim.asc = cell(0).height() + 2 + 5;
+		dim.des = cell(1).height() + 2 - 5;
+	}
 	metricsMarkers(dim);
 	dim_ = dim;
 }
@@ -65,10 +72,25 @@ void MathFracInset::draw(PainterInfo & pi, int x, int y) const
 	setPosCache(pi, x, y);
 	int m = x + dim_.wid / 2;
 	FracChanger dummy(pi.base);
-	cell(0).draw(pi, m - cell(0).width() / 2, y - cell(0).descent() - 2 - 5);
-	cell(1).draw(pi, m - cell(1).width() / 2, y + cell(1).ascent()  + 2 - 5);
-	if (!atop_)
-		pi.pain.line(x + 1, y - 5, x + dim_.wid - 2, y - 5, LColor::math);
+	if (kind_ == NICEFRAC) {
+		cell(0).draw(pi, x + 2, 
+				y - cell(0).descent() - 5);
+		cell(1).draw(pi, x + cell(0).width() + 5,
+				y + cell(1).ascent() / 2);
+	} else {
+		cell(0).draw(pi, m - cell(0).width() / 2, 
+				y - cell(0).descent() - 2 - 5);
+		cell(1).draw(pi, m - cell(1).width() / 2,
+				y + cell(1).ascent()  + 2 - 5);
+	}
+	if (kind_ == NICEFRAC)
+		pi.pain.line(x + cell(0).width(), 
+				y + dim_.des - 2, 
+				x + cell(0).width() + 5, 
+				y - dim_.asc + 2, LColor::math);
+	if (kind_ == FRAC)
+		pi.pain.line(x + 1, y - 5, 
+				x + dim_.wid - 2, y - 5, LColor::math);
 	drawMarkers(pi, x, y);
 }
 
@@ -89,14 +111,15 @@ void MathFracInset::drawT(TextPainter & pain, int x, int y) const
 	int m = x + dim_.width() / 2;
 	cell(0).drawT(pain, m - cell(0).width() / 2, y - cell(0).descent() - 1);
 	cell(1).drawT(pain, m - cell(1).width() / 2, y + cell(1).ascent());
-	if (!atop_)
+	// ASCII art: ignore niceties
+	if (kind_ == FRAC || kind_ == NICEFRAC)
 		pain.horizontalLine(x, y, dim_.width());
 }
 
 
 void MathFracInset::write(WriteStream & os) const
 {
-	if (atop_)
+	if (kind_ == ATOP)
 		os << '{' << cell(0) << "\\atop " << cell(1) << '}';
 	else // it's \\frac
 		MathNestInset::write(os);
@@ -105,7 +128,16 @@ void MathFracInset::write(WriteStream & os) const
 
 string MathFracInset::name() const
 {
-	return atop_ ? "atop" : "frac";
+	switch (kind_) {
+	case FRAC:
+		return "frac";
+	case NICEFRAC:
+		return "nicefrac";
+	case ATOP:
+		return "atop";
+	default:
+		return string();
+	}
 }
 
 
@@ -131,3 +163,12 @@ void MathFracInset::mathmlize(MathMLStream & os) const
 {
 	os << MTag("mfrac") << cell(0) << cell(1) << ETag("mfrac");
 }
+
+
+void MathFracInset::validate(LaTeXFeatures & features) const
+{
+	if (kind_ == NICEFRAC)
+		features.require("nicefrac");
+	MathNestInset::validate(features);
+}
+

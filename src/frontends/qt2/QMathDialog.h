@@ -30,7 +30,7 @@ public:
 public slots:
 	virtual void delimiterClicked();
 	virtual void expandClicked();
-	virtual void fracClicked();
+	virtual void fracClicked(int);
 	virtual void functionSelected(const QString &);
 	virtual void matrixClicked();
 	virtual void subscriptClicked();

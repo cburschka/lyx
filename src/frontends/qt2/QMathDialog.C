@@ -124,6 +124,18 @@ QMathDialog::QMathDialog(QMath * form)
 	connect(m, SIGNAL(activated(int)), this, SLOT(insertRoot(int)));
 	sqrtPB->setPopup(m);
 
+	m = new QPopupMenu(fracPB);
+	m->setCaption(qt_("LyX: Fractions"));
+	m->insertTearOffHandle();
+	m->insertItem(qt_("Standard	\\frac"), 1);
+	m->insertItem(qt_("No hor. line	\\atop"), 2);
+	m->insertItem(qt_("Nice	\\nicefrac"), 3);
+	m->insertItem(qt_("Text frac (amsmath)	\\tfrac"), 4);
+	m->insertItem(qt_("Display frac (amsmath)	\\dfrac"), 5);
+	m->insertItem(qt_("Binomial	\\choose"), 6);
+	connect(m, SIGNAL(activated(int)), this, SLOT(fracClicked(int)));
+	fracPB->setPopup(m);
+
 	m = new QPopupMenu(stylePB);
 	m->setCaption(qt_("LyX: Math Styles"));
 	m->insertTearOffHandle();
@@ -191,9 +203,19 @@ void QMathDialog::symbol_clicked(const string & str)
 }
 
 
-void QMathDialog::fracClicked()
+void QMathDialog::fracClicked(int id)
 {
-	form_->controller().dispatchInsert("frac");
+	string str;
+	switch (id) {
+		case 1: str = "frac"; break;
+		case 2: str = "atop"; break;
+		case 3: str = "nicefrac"; break;
+		case 4: str = "tfrac"; break;
+		case 5: str = "dfrac"; break;
+		case 6: str = "choose"; break;
+		default: return;
+	}
+	form_->controller().dispatchInsert(str);
 }
 
 

@@ -814,12 +814,6 @@
         <slot>accept()</slot>
     </connection>
     <connection>
-        <sender>fracPB</sender>
-        <signal>clicked()</signal>
-        <receiver>QMathDialogBase</receiver>
-        <slot>fracClicked()</slot>
-    </connection>
-    <connection>
         <sender>superscriptPB</sender>
         <signal>clicked()</signal>
         <receiver>QMathDialogBase</receiver>
