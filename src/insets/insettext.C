@@ -200,6 +200,7 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 	// update our idea of where we are
 	setPosCache(pi, x, y);
 
+	text_.background_color_ = backgroundColor();
 	text_.draw(pi, x + border_, y);
 
 	if (drawFrame_) {
@@ -207,7 +208,7 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 		int const a = text_.ascent() + border_;
 		int const h = a + text_.descent() + border_;
 		int const ww = pi.base.bv->workWidth();
-		if (w > ww - 40)  {
+		if (w > ww - 40 || Wide())  {
 			pi.pain.line(0, y - a, ww, y - a, frameColor());
 			pi.pain.line(0, y - a + h, ww, y - a + h, frameColor());
 		} else {
@@ -219,13 +220,16 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 
 void InsetText::drawSelection(PainterInfo & pi, int x, int y) const
 {
-	if (backgroundColor() != LColor::background) {
-		// repaint the background if needed
-		int const w = text_.width() + 2 * border_;
-		int const a = text_.ascent() + border_;
-		int const h = a + text_.descent() + border_;
-		pi.pain.fillRectangle(x, y - a, w, h, backgroundColor());
-	}
+	int const w = text_.width() + 2 * border_;
+	int const a = text_.ascent() + border_;
+	int const h = a + text_.descent() + border_;
+	int const ww = pi.base.bv->workWidth();
+	if (Wide())
+		pi.pain.fillRectangle(0, y - a, ww, h, 
+			backgroundColor());
+	else
+		pi.pain.fillRectangle(x, y - a, w, h, 
+			backgroundColor());
 	text_.drawSelection(pi, x, y);
 }
 
@@ -251,6 +255,12 @@ void InsetText::edit(LCursor & cur, bool left)
 InsetBase * InsetText::editXY(LCursor & cur, int x, int y)
 {
 	return text_.editXY(cur, x, y);
+}
+
+
+bool const InsetText::Tall() const
+{
+	return text_.ascent() + text_.descent() > 2  * defaultRowHeight(); 
 }
 
 

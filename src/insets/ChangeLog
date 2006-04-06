@@ -1,17 +1,31 @@
+2006-03-18  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* insetbase.h (asTextInset):
+	* insettext.h (asTextInset): constify
+
+2006-03-17  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	Changes to the within-inset row rendering caching code.
+
+	* insetenv.h (isTextInset): 
+	* insetcollapsable.h (isTextInset): remove method
+	* insettabular.h (canTrackChanges):
+	* insetbase.h (canTrackChange): rename from isTextInset, add methods
+	* insettext.[Ch]: rename method; add Tall()
+
 2006-03-11  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
-	*insettabular (doDispatch, insertAsciiString): 
-	fix insertion of \t- and \n-separated content from external 
-	clipboard (bug 2394).
+	* insettabular (doDispatch, insertAsciiString): fix insertion of
+	\t- and \n-separated content from external clipboard (bug 2394).
 
 2006-03-23  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
-        * insettext.h: get forward declaration of ParagraphList
+	* insettext.h: get forward declaration of ParagraphList
 
-        * insetbibitem.C: get proper ParagraphList decls
+	* insetbibitem.C: get proper ParagraphList decls
 
-        * insettext.C (appendParagraphs):
-        * insetcharstyle.C (docbook): use std::distance
+	* insettext.C (appendParagraphs):
+	* insetcharstyle.C (docbook): use std::distance
 
 2006-03-24  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
@@ -41,7 +55,8 @@
 
 2006-02-22  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
-	* insetfootlike.C (metrics, draw): use buffer's default font (bug 2308).
+	* insetfootlike.C (metrics, draw): use buffer's default font (bug
+	2308).
 
 2006-02-05  Martin Vermeer  <martin.vermeer@hut.fi>
 

@@ -658,6 +658,17 @@ bool BufferView::Pimpl::fitCursor()
 }
 
 
+bool BufferView::Pimpl::multiParSel()
+{
+	if (!cursor_.selection())
+		return false;
+	bool ret = multiparsel_cache_;
+	multiparsel_cache_ = cursor_.selBegin().pit() != cursor_.selEnd().pit();
+	// Either this, or previous selection spans paragraphs
+	return ret || multiparsel_cache_;
+}
+
+
 void BufferView::Pimpl::update(Update::flags flags)
 {
 	lyxerr[Debug::DEBUG]
@@ -682,9 +693,13 @@ void BufferView::Pimpl::update(Update::flags flags)
 
 		// First drawing step
 		ViewMetricsInfo vi = metrics(flags & Update::SinglePar);
-		bool forceupdate(flags & Update::Force);
+		bool forceupdate(flags & (Update::Force | Update::SinglePar));
 
 		if ((flags & Update::FitCursor) && fitCursor()) {
+			forceupdate = true;
+			vi = metrics();
+		}
+		if ((flags & Update::MultiParSel) && multiParSel()) {
 			forceupdate = true;
 			vi = metrics();
 		}
@@ -984,7 +999,7 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 		if (cur.result().update())
 			update(Update::FitCursor | Update::Force);
 		else
-			update();
+			update(Update::FitCursor | Update::MultiParSel);
 	}
 
 	// See workAreaKeyPress

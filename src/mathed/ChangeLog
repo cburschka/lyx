@@ -1,3 +1,7 @@
+2006-03-17  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* math_hullinset.h (canTrackChanges): renamed from isTextInset.
+
 2006-03-14  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* math_parser.C (parse1): Parse \tag and \tag* correctly

@@ -628,12 +628,16 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_DELETE:
 		if (!cur.selection()) {
+			if (cur.pos() == cur.paragraph().size())
+				// Par boundary, force full-screen update
+				singleParUpdate = false;
 			needsUpdate = Delete(cur);
 			cur.resetAnchor();
 			// It is possible to make it a lot faster still
 			// just comment out the line below...
 		} else {
 			cutSelection(cur, true, false);
+			singleParUpdate = false;
 		}
 		moveCursor(cur, false);
 		break;
@@ -656,6 +660,9 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_BACKSPACE:
 		if (!cur.selection()) {
 			if (bv->owner()->getIntl().getTransManager().backspace()) {
+				// Par boundary, full-screen update
+				if (cur.pos() == 0)
+					singleParUpdate = false;
 				needsUpdate = backspace(cur);
 				cur.resetAnchor();
 				// It is possible to make it a lot faster still
@@ -663,6 +670,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			}
 		} else {
 			cutSelection(cur, true, false);
+			singleParUpdate = false;
 		}
 		bv->switchKeyMap();
 		break;
@@ -1532,10 +1540,14 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	if (singleParUpdate)
 		// Inserting characters does not change par height
-	   	if (cur.bottom().paragraph().dim().height() 
+		if (cur.bottom().paragraph().dim().height() 
 		    == olddim.height()) {
 			// if so, update _only_ this paragraph
-			cur.bv().update(Update::SinglePar | Update::Force);
+			cur.bv().update(Update::SinglePar |
+					Update::FitCursor |
+					Update::MultiParSel);
+			cur.noUpdate();
+			return;
 		} else
 			needsUpdate = true;
 	if (!needsUpdate

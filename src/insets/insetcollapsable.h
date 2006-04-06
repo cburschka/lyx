@@ -57,8 +57,6 @@ public:
 	/// can we go further down on mouse click?
 	bool descendable() const;
 	///
-	bool isTextInset() const { return true; }
-	///
 	void setLabel(std::string const & l);
 	///
 	virtual void setButtonLabel() {}

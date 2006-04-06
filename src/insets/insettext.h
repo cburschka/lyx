@@ -57,7 +57,9 @@ public:
 	///
 	EDITABLE editable() const { return HIGHLY_EDITABLE; }
 	///
-	bool isTextInset() const { return true; }
+	bool canTrackChanges() const { return true; }
+	///
+	InsetText const * asTextInset() const { return this; }
 	///
 	int latex(Buffer const &, std::ostream &,
 		  OutputParams const &) const;
@@ -137,6 +139,10 @@ public:
 	bool neverIndent() const;
 	///
 	InsetText(InsetText const &);
+	///
+	bool & Wide() const { return wide_inset_; }
+	///
+	bool const Tall() const;
 
 protected:
 	///
@@ -158,6 +164,8 @@ private:
 	mutable lyx::pit_type old_pit;
 	///
 	static int border_;
+	///
+	mutable bool wide_inset_;
 public:
 	///
 	mutable LyXText text_;

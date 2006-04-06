@@ -21,6 +21,7 @@ class BufferView;
 class CursorSlice;
 class FuncRequest;
 class FuncStatus;
+class InsetText;
 class LaTeXFeatures;
 class LCursor;
 class LyXLex;
@@ -216,8 +217,10 @@ public:
 	virtual EDITABLE editable() const;
 	/// can we go further down on mouse click?
 	virtual bool descendable() const { return false; }
-	///
-	virtual bool isTextInset() const { return false; }
+	/// does this contain text that can be change track marked in DVI?
+	virtual bool canTrackChanges() const { return false; }
+	/// is this inset based on the TextInset class?
+	virtual InsetText const * asTextInset() const { return 0; }
 	/// return true if the inset should be removed automatically
 	virtual bool autoDelete() const;
 
