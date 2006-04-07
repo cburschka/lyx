@@ -82,18 +82,18 @@ def convert(lines):
     counters = {"part"          : "\\Roman{part}",
                 "chapter"       : "\\arabic{chapter}",
                 "section"       : "\\arabic{section}",
-                "subsection"    : "@Section@.\\arabic{subsection}",
-                "subsubsection" : "@Subsection@.\\arabic{subsubsection}",
-                "paragraph"     : "@Subsubsection@.\\arabic{paragraph}",
-                "subparagraph"  : "@Paragraph@.\\arabic{subparagraph}"}
+                "subsection"    : "\\arabic{section}.\\arabic{subsection}",
+                "subsubsection" : "\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}",
+                "paragraph"     : "\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}.\\arabic{paragraph}",
+                "subparagraph"  : "\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}.\\arabic{paragraph}.\\arabic{subparagraph}"}
 
     # counters for sectioning styles in appendix (hardcoded in 1.3)
     appendixcounters = {"chapter"       : "\\Alph{chapter}",
                         "section"       : "\\Alph{section}",
-                        "subsection"    : "@Section@.\\arabic{subsection}",
-                        "subsubsection" : "@Subsection@.\\arabic{subsubsection}",
-                        "paragraph"     : "@Subsubsection@.\\arabic{paragraph}",
-                        "subparagraph"  : "@Paragraph@.\\arabic{subparagraph}"}
+                        "subsection"    : "\\arabic{section}.\\arabic{subsection}",
+                        "subsubsection" : "\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}",
+                        "paragraph"     : "\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}.\\arabic{paragraph}",
+                        "subparagraph"  : "\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}.\\arabic{paragraph}.\\arabic{subparagraph}"}
 
     # Value of TocLevel for sectioning styles
     toclevels = {"part"          : 0,
