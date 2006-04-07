@@ -108,3 +108,5 @@ Style Subparagraph
 	NextNoIndent          0
 	LeftMargin            MM
 End
+
+Input numarticle.inc
