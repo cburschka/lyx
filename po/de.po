@@ -81,7 +81,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-04-01 16:43+0200\n"
+"POT-Creation-Date: 2006-04-06 15:16+0200\n"
 "PO-Revision-Date: 2006-04-01 21:47+0100\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
@@ -5375,7 +5375,7 @@ msgstr "Literaturverzeichnis"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:411
 #: lib/layouts/ijmpd.layout:163 lib/layouts/ijmpd.layout:171
 #: lib/layouts/kluwer.layout:324 lib/layouts/kluwer.layout:337
-#: src/rowpainter.C:425
+#: src/rowpainter.C:434
 msgid "Appendix"
 msgstr "Anhang"
 
@@ -9526,18 +9526,18 @@ msgid "Redo|R"
 msgstr "Wiederholen|W"
 
 #: lib/ui/stdmenus.ui:84 lib/ui/stdtoolbars.ui:51
-#: src/mathed/math_nestinset.C:433 src/text3.C:846
+#: src/mathed/math_nestinset.C:433 src/text3.C:854
 msgid "Cut"
 msgstr "Ausschneiden"
 
 #: lib/ui/stdmenus.ui:85 lib/ui/stdtoolbars.ui:52
-#: src/mathed/math_nestinset.C:441 src/text3.C:851
+#: src/mathed/math_nestinset.C:441 src/text3.C:859
 msgid "Copy"
 msgstr "Kopieren"
 
 #: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:625
 #: src/mathed/math_gridinset.C:1207 src/mathed/math_nestinset.C:417
-#: src/text3.C:833
+#: src/text3.C:841
 msgid "Paste"
 msgstr "Einfügen"
 
@@ -9806,11 +9806,11 @@ msgstr "Dokument speichern"
 msgid "Print document"
 msgstr "Dokument drucken"
 
-#: lib/ui/stdtoolbars.ui:49 src/BufferView_pimpl.C:1103
+#: lib/ui/stdtoolbars.ui:49 src/BufferView_pimpl.C:1118
 msgid "Undo"
 msgstr "Rückgängig"
 
-#: lib/ui/stdtoolbars.ui:50 src/BufferView_pimpl.C:1114
+#: lib/ui/stdtoolbars.ui:50 src/BufferView_pimpl.C:1129
 msgid "Redo"
 msgstr "Wiederholen"
 
@@ -10109,21 +10109,21 @@ msgstr "Parsen"
 msgid "Formatting document..."
 msgstr "Formatieren des Dokuments..."
 
-#: src/BufferView_pimpl.C:756
+#: src/BufferView_pimpl.C:771
 #, c-format
 msgid "Saved bookmark %1$d"
 msgstr "Lesezeichen %1$d gespeichert"
 
-#: src/BufferView_pimpl.C:789
+#: src/BufferView_pimpl.C:804
 #, c-format
 msgid "Moved to bookmark %1$d"
 msgstr "Zu Lesezeichen %1$d gewechselt"
 
-#: src/BufferView_pimpl.C:849
+#: src/BufferView_pimpl.C:864
 msgid "Select LyX document to insert"
 msgstr "Wählen Sie das einzufügende LyX-Dokument"
 
-#: src/BufferView_pimpl.C:851 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView_pimpl.C:866 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:65
 #: src/frontends/controllers/ControlExternal.C:160
 #: src/frontends/controllers/ControlGraphics.C:94
@@ -10132,82 +10132,82 @@ msgstr "Wählen Sie das einzufügende LyX-Dokument"
 msgid "Documents|#o#O"
 msgstr "Dokumente|#k"
 
-#: src/BufferView_pimpl.C:853 src/lyxfunc.C:1749 src/lyxfunc.C:1824
+#: src/BufferView_pimpl.C:868 src/lyxfunc.C:1749 src/lyxfunc.C:1824
 msgid "Examples|#E#e"
 msgstr "Beispiele|#B"
 
-#: src/BufferView_pimpl.C:858 src/lyx_cb.C:141 src/lyxfunc.C:1717
+#: src/BufferView_pimpl.C:873 src/lyx_cb.C:141 src/lyxfunc.C:1717
 #: src/lyxfunc.C:1754
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX-Dokumente (*.lyx)"
 
-#: src/BufferView_pimpl.C:868 src/lyxfunc.C:1764 src/lyxfunc.C:1842
+#: src/BufferView_pimpl.C:883 src/lyxfunc.C:1764 src/lyxfunc.C:1842
 #: src/lyxfunc.C:1856 src/lyxfunc.C:1872
 msgid "Canceled."
 msgstr "Abgebrochen."
 
-#: src/BufferView_pimpl.C:878
+#: src/BufferView_pimpl.C:893
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Füge Dokument %1$s ein..."
 
-#: src/BufferView_pimpl.C:886
+#: src/BufferView_pimpl.C:901
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s ist eingefügt."
 
-#: src/BufferView_pimpl.C:888
+#: src/BufferView_pimpl.C:903
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Das Dokument %1$s konnte nicht eingefügt werden"
 
-#: src/BufferView_pimpl.C:891
+#: src/BufferView_pimpl.C:906
 msgid "Document insertion"
 msgstr "Dokument-Einfügung"
 
-#: src/BufferView_pimpl.C:1106
+#: src/BufferView_pimpl.C:1121
 msgid "No further undo information"
 msgstr "Nichts mehr rückgängig zu machen"
 
-#: src/BufferView_pimpl.C:1117
+#: src/BufferView_pimpl.C:1132
 msgid "No further redo information"
 msgstr "Nichts mehr zu wiederholen"
 
-#: src/BufferView_pimpl.C:1247
+#: src/BufferView_pimpl.C:1262
 msgid "Mark off"
 msgstr "Marke aus"
 
-#: src/BufferView_pimpl.C:1254
+#: src/BufferView_pimpl.C:1269
 msgid "Mark on"
 msgstr "Marke ein"
 
-#: src/BufferView_pimpl.C:1261
+#: src/BufferView_pimpl.C:1276
 msgid "Mark removed"
 msgstr "Marke entfernt"
 
-#: src/BufferView_pimpl.C:1264
+#: src/BufferView_pimpl.C:1279
 msgid "Mark set"
 msgstr "Marke gesetzt"
 
-#: src/BufferView_pimpl.C:1306
+#: src/BufferView_pimpl.C:1321
 #, c-format
 msgid "%1$d words in selection."
 msgstr "%1$d Wörter in der Auswahl."
 
-#: src/BufferView_pimpl.C:1309
+#: src/BufferView_pimpl.C:1324
 #, c-format
 msgid "%1$d words in document."
 msgstr "%1$d Wörter im Dokument."
 
-#: src/BufferView_pimpl.C:1314
+#: src/BufferView_pimpl.C:1329
 msgid "One word in selection."
 msgstr "Ein Wort in der Auswahl."
 
-#: src/BufferView_pimpl.C:1316
+#: src/BufferView_pimpl.C:1331
 msgid "One word in document."
 msgstr "Ein Wort im Dokument."
 
-#: src/BufferView_pimpl.C:1319
+#: src/BufferView_pimpl.C:1334
 msgid "Count words"
 msgstr "Wörter zählen"
 
@@ -10790,15 +10790,15 @@ msgstr "Keine Testmeldung"
 msgid "General information"
 msgstr "Allgemeine Informationen"
 
-#: src/client/debug.C:43 src/debug.C:66
+#: src/client/debug.C:43 src/debug.C:67
 msgid "Developers' general debug messages"
 msgstr "Allgemeine Testmeldungen der Entwickler"
 
-#: src/client/debug.C:44 src/debug.C:67
+#: src/client/debug.C:44 src/debug.C:68
 msgid "All debugging messages"
 msgstr "Alle Testmeldungen"
 
-#: src/client/debug.C:88 src/debug.C:111
+#: src/client/debug.C:88 src/debug.C:112
 #, c-format
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "Testen von `%1$s' (%2$s)"
@@ -10965,6 +10965,10 @@ msgstr "Änderungsverfolgung"
 #: src/debug.C:65
 msgid "External template/inset messages"
 msgstr "Externe Vorlagen/Einfügungs-Meldungen"
+
+#: src/debug.C:66
+msgid "RowPainter profiling"
+msgstr ""
 
 #: src/exporter.C:73
 #, c-format
@@ -11495,19 +11499,10 @@ msgstr "Stichwort"
 msgid "Label"
 msgstr "Marke"
 
-#: src/frontends/gtk/GAboutlyx.C:200
-msgid "C_redits"
-msgstr "_Ruhm und Ehre"
-
 #: src/frontends/gtk/GBibItem.C:33 src/frontends/qt2/QBibitem.C:31
 #: src/frontends/xforms/FormBibitem.C:38
 msgid "Bibliography Entry Settings"
 msgstr "Literatureintrag-Einstellungen"
-
-#: src/frontends/gtk/GBibtex.C:41 src/frontends/qt2/QBibtex.C:48
-#: src/frontends/xforms/FormBibtex.C:49
-msgid "BibTeX Bibliography"
-msgstr "BibTeX-Literaturverzeichnis"
 
 #: src/frontends/gtk/GBox.C:42 src/frontends/qt2/QBox.C:51
 #: src/frontends/xforms/FormBox.C:47
@@ -11708,19 +11703,6 @@ msgstr "Absatz-Einstellungen"
 msgid "Senseless with this layout!"
 msgstr "Für dieses Format nicht relevant!"
 
-#: src/frontends/gtk/GPreferences.C:38 src/frontends/qt2/QPrefs.C:81
-#: src/frontends/xforms/FormPreferences.C:94
-msgid "Preferences"
-msgstr "Einstellungen"
-
-#: src/frontends/gtk/GPreferences.C:152 src/frontends/qt2/QPrefs.C:135
-msgid "pspell (library)"
-msgstr "pspell (Bibliothek)"
-
-#: src/frontends/gtk/GPreferences.C:155 src/frontends/qt2/QPrefs.C:138
-msgid "aspell (library)"
-msgstr "aspell (Bibliothek)"
-
 #: src/frontends/gtk/GRef.C:65 src/frontends/qt2/QRef.C:42
 #: src/frontends/xforms/FormRef.C:42
 msgid "Cross-reference"
@@ -11844,6 +11826,10 @@ msgstr "Geben Sie ein benutzerdefiniertes Aufzählungszeichen ein"
 #: src/frontends/qt2/FileDialog.C:155
 msgid "Directories"
 msgstr "Verzeichnisse"
+
+#: src/frontends/qt2/QBibtex.C:48 src/frontends/xforms/FormBibtex.C:49
+msgid "BibTeX Bibliography"
+msgstr "BibTeX-Literaturverzeichnis"
 
 #: src/frontends/qt2/QChanges.C:58
 #, c-format
@@ -12118,6 +12104,10 @@ msgstr "Normaler Textmodus\t\\textrm"
 msgid "LyX: Insert Matrix"
 msgstr "LyX: Matrix einfügen"
 
+#: src/frontends/qt2/QPrefs.C:81 src/frontends/xforms/FormPreferences.C:94
+msgid "Preferences"
+msgstr "Einstellungen"
+
 #: src/frontends/qt2/QPrefs.C:131
 msgid "ispell"
 msgstr "ispell"
@@ -12129,6 +12119,14 @@ msgstr "aspell"
 #: src/frontends/qt2/QPrefs.C:133
 msgid "hspell"
 msgstr "hspell"
+
+#: src/frontends/qt2/QPrefs.C:135
+msgid "pspell (library)"
+msgstr "pspell (Bibliothek)"
+
+#: src/frontends/qt2/QPrefs.C:138
+msgid "aspell (library)"
+msgstr "aspell (Bibliothek)"
 
 #: src/frontends/qt2/QPrefsDialog.C:96
 msgid "Look and feel"
@@ -13790,7 +13788,7 @@ msgstr "Fehler beim Festlegen der Mehrfachspalte"
 msgid "You cannot set multicolumn vertically."
 msgstr "Sie können eine Mehrfachspalte nicht vertikal festlegen."
 
-#: src/insets/insettext.C:235
+#: src/insets/insettext.C:239
 msgid "Opened Text Inset"
 msgstr "Text-Einfügung geöffnet"
 
@@ -14423,7 +14421,7 @@ msgstr "Erstellung"
 msgid "ChkTeX"
 msgstr "ChkTeX"
 
-#: src/lyxfunc.C:1020 src/text3.C:1254
+#: src/lyxfunc.C:1020 src/text3.C:1262
 msgid "Missing argument"
 msgstr "Fehlendes Argument"
 
@@ -15313,27 +15311,27 @@ msgstr "Nichts zu indizieren!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Es kann nicht mehr als ein Absatz indiziert werden!"
 
-#: src/text3.C:742
+#: src/text3.C:750
 msgid "Unknown spacing argument: "
 msgstr "Unbekanntes Abstandsargument: "
 
-#: src/text3.C:895
+#: src/text3.C:903
 msgid "LyX function 'layout' needs an argument."
 msgstr "Die LyX-Funktion 'layout' benötigt ein Argument."
 
-#: src/text3.C:913
+#: src/text3.C:921
 msgid "Layout "
 msgstr "Format "
 
-#: src/text3.C:914
+#: src/text3.C:922
 msgid " not known"
 msgstr " unbekannt"
 
-#: src/text3.C:1358 src/text3.C:1370
+#: src/text3.C:1366 src/text3.C:1378
 msgid "Character set"
 msgstr "Zeichensatz"
 
-#: src/text3.C:1502
+#: src/text3.C:1510
 msgid "Paragraph layout set"
 msgstr "Absatzformat festgelegt"
 
@@ -15360,3 +15358,6 @@ msgstr "Variabel"
 #: src/vspace.C:506
 msgid "protected"
 msgstr "geschützt"
+
+#~ msgid "C_redits"
+#~ msgstr "_Ruhm und Ehre"
