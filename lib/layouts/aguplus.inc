@@ -8,7 +8,6 @@
 
 Format 2
 Input stdclass.inc
-Input numarticle.inc
 
 SecNumDepth             4
 

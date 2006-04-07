@@ -37,7 +37,6 @@ End
 
 
 Input stdsections.inc
-Input numarticle.inc
 Input stdstarsections.inc
 Input stdlayouts.inc
 Input stdlists.inc
