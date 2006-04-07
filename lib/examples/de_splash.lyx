@@ -1,9 +1,9 @@
-#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
-\lyxformat 243
+#LyX 1.4.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 245
 \begin_document
 \begin_header
-\textclass article
-\language german
+\textclass scrartcl
+\language ngerman
 \inputencoding latin1
 \fontscheme default
 \graphics default
@@ -20,7 +20,6 @@
 \paragraph_separation indent
 \defskip medskip
 \quotes_language german
-\quotes_times 2
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -31,17 +30,23 @@
 \begin_body
 
 \begin_layout Title
-
 Willkommen bei LyX!
+\newline
+
+\size large
+(Version 1.4.x)
+\end_layout
+
+\begin_layout Date
+letzte Änderung: 2.
+ April 2006
 \end_layout
 
 \begin_layout Section*
-
 Die wichtigsten Dinge, wenn Sie LyX verwenden 
 \end_layout
 
 \begin_layout Enumerate
-
 LyX besitzt eine exzellente Dokumentation --- bitte machen Sie regen Gebrauch
  davon! Lesen Sie zunächst 
 \family sans
@@ -72,7 +77,6 @@ utorium
 \end_layout
 
 \begin_layout Enumerate
-
 LyX kann man am besten als 
 \begin_inset Quotes gld
 \end_inset
@@ -89,33 +93,35 @@ ion erläutert.
 \end_layout
 
 \begin_layout Enumerate
-
 Mit LyX erstellte Texte sehen gut aus.
  Überzeugen Sie sich davon mit 
 \family sans
-Anzei
+Ans
 \bar under
-g
+i
 \bar default
-en\SpecialChar \menuseparator
+cht\SpecialChar \menuseparator
 
 \bar under
 D
 \bar default
 VI
 \family default
+ oder 
+\family sans
+Strg+D
+\family default
 .
 \end_layout
 
 \begin_layout Enumerate
-
 Ja, LyX kann (fast) die gesamte Funktionalität von LaTeX umsetzen.
  Und, ja, LyX kann vorhandene LaTeX-Dateien importieren.
  Erfahrene LaTeX-Nutzer sollten das 
 \emph on
 Tutorium
 \emph default
- überfliegen und dann das Kapitel 
+ überfliegen und dann den Abschnitt 
 \begin_inset Quotes gld
 \end_inset
 
@@ -129,14 +135,21 @@ LyX für LaTeX-Benutzer
 \end_layout
 
 \begin_layout Enumerate
-
 LyX bietet ausführliche Unterstützung für all diejenigen, die eine andere
  Sprache als Englisch lesen und schreiben.
  Darüberhinaus sind Dinge wie Tastaturbelegung, Werkzeugleiste und viele
- weitere Charakteristiken frei konfigurierbar (das meiste durch editieren
- der Datei 
-\family typewriter
-lyxrc
+ weitere Charakteristiken frei konfigurierbar (das meiste durch 
+\family sans
+\bar under
+W
+\bar default
+erkzeuge\SpecialChar \menuseparator
+E
+\bar under
+i
+\bar default
+nstellungen\SpecialChar \ldots{}
+
 \family default
 ).
  Näheres erläutert 
@@ -155,8 +168,7 @@ npassung
 \end_layout
 
 \begin_layout Enumerate
-
-Die Web-Seite von LyX ist auf 
+Die Internet-Seite von LyX ist auf 
 \family typewriter
 
 \begin_inset LatexCommand \url{http://www.lyx.org/}
