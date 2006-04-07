@@ -2184,7 +2184,7 @@ Found: @chk_dvipost@
 
 \begin_layout Description
 URL: 
-\family sans
+\family typewriter
 http://freshmeat.net/projects/dvipost/
 \end_layout
 
@@ -2201,7 +2201,29 @@ dvipost
 dvipost 
 \family default
 needs teTeX version 2 or newer.
- 
+\end_layout
+
+\begin_layout Subsection
+fancybox
+\end_layout
+
+\begin_layout Description
+Found: @chk_fancybox@
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/fancybox/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+fancybox
+\family default
+ is needed to draw frames around boxes (menu Insert \SpecialChar \menuseparator
+ Box).
 \end_layout
 
 \begin_layout Subsection
