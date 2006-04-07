@@ -21,6 +21,7 @@ class Buffer;
 class DocIterator;
 class ErrorList;
 class TeXErrors;
+class ParIterator;
 
 /**
  *  Loads a LyX file \c filename into \c Buffer
@@ -47,6 +48,13 @@ int countWords(DocIterator const & from, DocIterator const & to);
 /// Expand the counters for the labelstring of \c layout
 std::string expandLabel(Buffer const & buf, LyXLayout_ptr const & layout,
 			bool appendix);
+
+/// updates current counter and/or label if possible.
+/**
+\retval true if a full updateCounters is required.
+\retval false if a full updateCounters is not required.
+*/
+bool needsUpdateCounters(Buffer const & buf, ParIterator & it);
 
 /// updates all counters
 void updateCounters(Buffer const &);

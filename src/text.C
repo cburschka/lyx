@@ -24,6 +24,7 @@
 #include "bufferparams.h"
 #include "BufferView.h"
 #include "cursor.h"
+#include "pariterator.h"
 #include "coordcache.h"
 #include "CutAndPaste.h"
 #include "debug.h"
@@ -1087,7 +1088,12 @@ void LyXText::breakParagraph(LCursor & cur, bool keep_layout)
 	while (!pars_[next_par].empty() && pars_[next_par].isNewline(0))
 		pars_[next_par].erase(0);
 
-	updateCounters(cur.buffer());
+	ParIterator current_it(cur);
+	ParIterator next_it(cur); next_it.pit() = next_par;
+
+	if (needsUpdateCounters(cur.buffer(), current_it)
+		|| needsUpdateCounters(cur.buffer(), next_it))
+		updateCounters(cur.buffer());
 
 	// Mark "carriage return" as inserted if change tracking:
 	if (cur.buffer().params().tracking_changes) {
@@ -1669,7 +1675,10 @@ bool LyXText::backspacePos0(LCursor & cur)
 				--cur.pos();
 
 		// the counters may have changed
-		updateCounters(cur.buffer());
+		ParIterator par_it(cur);
+		if (needsUpdateCounters(cur.buffer(), par_it))
+			updateCounters(cur.buffer());
+
 		setCursor(cur, cur.pit(), cur.pos(), false);
 	}
 	return needsUpdate;

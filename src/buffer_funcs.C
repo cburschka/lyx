@@ -503,6 +503,29 @@ void setCounter(Buffer const & buf, ParIterator & it)
 } // anon namespace
 
 
+bool needsUpdateCounters(Buffer const & buf, ParIterator & it)
+{
+	switch (it->layout()->labeltype) {
+
+	case LABEL_NO_LABEL:
+	case LABEL_MANUAL:
+	case LABEL_BIBLIO:
+	case LABEL_TOP_ENVIRONMENT:
+	case LABEL_CENTERED_TOP_ENVIRONMENT:
+	case LABEL_STATIC:
+	case LABEL_ITEMIZE:
+		setCounter(buf, it);
+		return false;
+
+	case LABEL_SENSITIVE:
+	case LABEL_COUNTER:
+	// do more things with enumerate later
+	case LABEL_ENUMERATE:
+		return true;
+	}
+}
+
+
 void updateCounters(Buffer const & buf)
 {
 	// start over

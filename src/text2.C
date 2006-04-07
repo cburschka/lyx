@@ -1274,7 +1274,9 @@ bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur, LCursor & old)
 				cur.resetAnchor();
 			}
 		}
-		updateCounters(old.buffer());
+		ParIterator par_it(old);
+		if (needsUpdateCounters(old.buffer(), par_it))
+			updateCounters(old.buffer());
 		return true;
 	}
 
