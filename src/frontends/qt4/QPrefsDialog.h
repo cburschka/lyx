@@ -47,7 +47,7 @@ template<class UI>
 	class UiWidget: public QWidget, public UI
 	{
 	public:
-		UiWidget(QWidget * Parent): QWidget(Parent)
+		UiWidget(QWidget * Parent = 0): QWidget(Parent)
 		{
 			UI::setupUi(this);
 		}

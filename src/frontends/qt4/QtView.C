@@ -14,7 +14,7 @@
 
 #include "BufferView.h"
 #include "lyx_cb.h"
-#include "lyx_rc.h"
+#include "lyxrc.h"
 #include "lyx_main.h"
 #include "session.h"
 #include "lyxfunc.h"
