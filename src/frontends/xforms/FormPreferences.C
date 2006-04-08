@@ -52,8 +52,8 @@ using std::string;
 
 namespace lyx {
 
-using support::AddName;
-using support::ChangeExtension;
+using support::addName;
+using support::changeExtension;
 using support::package;
 using support::rtrim;
 using support::trim;
@@ -308,7 +308,7 @@ void FormPreferences::apply()
 	// The "Save" button has been pressed.
 	if (dialog().isClosing() && colors_.modifiedXformsPrefs) {
 		string const filename =
-			AddName(package().user_support(), "preferences.xform");
+			addName(package().user_support(), "preferences.xform");
 		colors_.modifiedXformsPrefs = !XformsColor::write(filename);
 	}
 }
@@ -2341,7 +2341,7 @@ bool FormPreferences::Paths::input(FL_OBJECT const * const ob)
 		string const name = getString(dialog_->input_serverpipe);
 		if (!name.empty()) {
 			// strip off the extension
-			string const str = ChangeExtension(name, "");
+			string const str = changeExtension(name, "");
 			if (!RWInfo::WriteableFile(str + ".in")) {
 				parent_.postWarning(RWInfo::ErrorMessage());
 				return false;

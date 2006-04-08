@@ -36,7 +36,7 @@ namespace lyx {
 
 using support::contains;
 using support::FileFilterList;
-using support::OnlyFilename;
+using support::onlyFilename;
 using support::prefixIs;
 using support::split;
 
@@ -82,7 +82,7 @@ void ControlBibtex::getBibStyles(vector<string> & data) const
 	vector<string>::iterator it  = data.begin();
 	vector<string>::iterator end = data.end();
 	for (; it != end; ++it) {
-		*it = OnlyFilename(*it);
+		*it = onlyFilename(*it);
 	}
 	// sort on filename only (no path)
 	std::sort(data.begin(), data.end());
@@ -102,7 +102,7 @@ void ControlBibtex::getBibFiles(vector<string> & data) const
 	vector<string>::iterator it  = data.begin();
 	vector<string>::iterator end = data.end();
 	for (; it != end; ++it) {
-		*it = OnlyFilename(*it);
+		*it = onlyFilename(*it);
 	}
 	// sort on filename only (no path)
 	std::sort(data.begin(), data.end());

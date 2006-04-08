@@ -29,14 +29,14 @@
 
 namespace support = lyx::support;
 
-using support::ChangeExtension;
+using support::changeExtension;
 using support::Forkedcall;
 using support::ForkedCallQueue;
-using support::LibFileSearch;
-using support::LibScriptSearch;
-using support::OnlyPath;
-using support::OnlyFilename;
-using support::QuoteName;
+using support::libFileSearch;
+using support::libScriptSearch;
+using support::onlyPath;
+using support::onlyFilename;
+using support::quoteName;
 using support::subst;
 using support::tempName;
 using support::unlink;
@@ -168,11 +168,11 @@ Converter::Impl::Impl(string const & from_file,   string const & to_file_base,
 	if (!success) {
 		script_command_ =
 			"sh " +
-			QuoteName(LibFileSearch("scripts", "convertDefault.sh")) +
+			quoteName(libFileSearch("scripts", "convertDefault.sh")) +
 			' ' +
-			QuoteName((from_format.empty() ? "" : from_format + ':') + from_file) +
+			quoteName((from_format.empty() ? "" : from_format + ':') + from_file) +
 			' ' +
-			QuoteName(to_format + ':' + to_file_);
+			quoteName(to_format + ':' + to_file_);
 
 		lyxerr[Debug::GRAPHICS]
 			<< "\tNo converter defined! I use convertDefault.sh\n\t"
@@ -187,7 +187,7 @@ Converter::Impl::Impl(string const & from_file,   string const & to_file_base,
 
 		// Output the script to file.
 		static int counter = 0;
-		script_file_ = OnlyPath(to_file_base) + "lyxconvert" +
+		script_file_ = onlyPath(to_file_base) + "lyxconvert" +
 			convert<string>(counter++) + ".sh";
 
 		std::ofstream fs(script_file_.c_str());
@@ -206,9 +206,9 @@ Converter::Impl::Impl(string const & from_file,   string const & to_file_base,
 		// We create a dummy command for ease of understanding of the
 		// list of forked processes.
 		// Note: 'sh ' is absolutely essential, or execvp will fail.
-		script_command_ = "sh " + QuoteName(script_file_) + ' ' +
-			QuoteName(OnlyFilename(from_file)) + ' ' +
-			QuoteName(to_format);
+		script_command_ = "sh " + quoteName(script_file_) + ' ' +
+			quoteName(onlyFilename(from_file)) + ' ' +
+			quoteName(to_format);
 	}
 	// All is ready to go
 	valid_process_ = true;
@@ -292,7 +292,7 @@ bool build_script(string const & from_file,
 		+ formats.extension(to_format);
 
 	if (from_format == to_format) {
-		script << move_file(QuoteName(from_file), QuoteName(to_file));
+		script << move_file(quoteName(from_file), quoteName(to_file));
 		lyxerr[Debug::GRAPHICS] << "ready (from == to)" << endl;
 		return true;
 	}
@@ -327,19 +327,19 @@ bool build_script(string const & from_file,
 
 		// Build the conversion command
 		string const infile      = outfile;
-		string const infile_base = ChangeExtension(infile, string());
-		outfile = ChangeExtension(to_base, conv.To->extension());
+		string const infile_base = changeExtension(infile, string());
+		outfile = changeExtension(to_base, conv.To->extension());
 
 		// Store these names in the shell script
-		script << "infile="      << QuoteName(infile) << '\n'
-		       << "infile_base=" << QuoteName(infile_base) << '\n'
-		       << "outfile="     << QuoteName(outfile) << '\n';
+		script << "infile="      << quoteName(infile) << '\n'
+		       << "infile_base=" << quoteName(infile_base) << '\n'
+		       << "outfile="     << quoteName(outfile) << '\n';
 
 		string command = conv.command;
 		command = subst(command, token_from, "\"${infile}\"");
 		command = subst(command, token_base, "\"${infile_base}\"");
 		command = subst(command, token_to,   "\"${outfile}\"");
-		command = LibScriptSearch(command);
+		command = libScriptSearch(command);
 
 		// Store in the shell script
 		script << "\n" << command << " ||\n";
@@ -372,7 +372,7 @@ bool build_script(string const & from_file,
 	}
 
 	// Move the final outfile to to_file
-	script << move_file("\"${outfile}\"", QuoteName(to_file));
+	script << move_file("\"${outfile}\"", quoteName(to_file));
 	lyxerr[Debug::GRAPHICS] << "ready!" << endl;
 
 	return true;

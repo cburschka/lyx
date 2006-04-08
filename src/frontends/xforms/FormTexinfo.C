@@ -24,8 +24,6 @@ using std::string;
 
 namespace lyx {
 
-using support::OnlyFilename;
-
 namespace frontend {
 
 

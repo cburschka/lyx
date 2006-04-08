@@ -29,7 +29,7 @@
 
 #include <sstream>
 
-using lyx::support::LibFileSearch;
+using lyx::support::libFileSearch;
 
 using std::ostringstream;
 using std::string;
@@ -173,7 +173,7 @@ void GAboutlyx::doBuild()
 	   << controller().getDisclaimer();
 	dialog->set_license (ls.str());
 
-	string const filename = LibFileSearch("images", "banner", "ppm");
+	string const filename = libFileSearch("images", "banner", "ppm");
 	Glib::RefPtr<Gdk::Pixbuf> logo = Gdk::Pixbuf::create_from_file(filename);
 	Glib::RefPtr<Gdk::Pixbuf> logo_scaled = logo->scale_simple(
 		logo->get_width() / 2,

@@ -49,7 +49,7 @@
 #include <sstream>
 #include <iomanip>
 
-using lyx::support::AddName;
+using lyx::support::addName;
 using lyx::support::package;
 
 using lyx::frontend::fontloader;
@@ -204,7 +204,7 @@ void parse_init(int & argc, char * argv[])
 
 void parse_lyxrc()
 {
-	XformsColor::read(AddName(package().user_support(),
+	XformsColor::read(addName(package().user_support(),
 				  "preferences.xform"));
 
 	if (lyxrc.popup_font_encoding.empty())

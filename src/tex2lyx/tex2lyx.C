@@ -52,11 +52,11 @@ using std::string;
 using std::vector;
 using std::map;
 
-using lyx::support::ChangeExtension;
+using lyx::support::changeExtension;
 using lyx::support::isStrUnsignedInt;
 using lyx::support::ltrim;
-using lyx::support::MakeAbsPath;
-using lyx::support::OnlyPath;
+using lyx::support::makeAbsPath;
+using lyx::support::onlyPath;
 using lyx::support::rtrim;
 using lyx::support::isFileReadable;
 
@@ -431,7 +431,7 @@ void tex2lyx(std::istream &is, std::ostream &os)
 /// convert TeX from \p infilename to LyX and write it to \p os
 bool tex2lyx(string const &infilename, std::ostream &os)
 {
-	BOOST_ASSERT(lyx::support::AbsolutePath(infilename));
+	BOOST_ASSERT(lyx::support::absolutePath(infilename));
 	ifstream is(infilename.c_str());
 	if (!is.good()) {
 		cerr << "Could not open input file \"" << infilename
@@ -439,7 +439,7 @@ bool tex2lyx(string const &infilename, std::ostream &os)
 		return false;
 	}
 	string const oldParentFilePath = parentFilePath;
-	parentFilePath = OnlyPath(infilename);
+	parentFilePath = onlyPath(infilename);
 	tex2lyx(is, os);
 	parentFilePath = oldParentFilePath;
 	return true;
@@ -494,16 +494,16 @@ int main(int argc, char * argv[])
 
 	// Now every known option is parsed. Look for input and output
 	// file name (the latter is optional).
-	string const infilename = MakeAbsPath(argv[1]);
+	string const infilename = makeAbsPath(argv[1]);
 	string outfilename;
 	if (argc > 2) {
 		outfilename = argv[2];
 		if (outfilename != "-")
-			outfilename = MakeAbsPath(argv[2]);
+			outfilename = makeAbsPath(argv[2]);
 	} else
-		outfilename = ChangeExtension(infilename, ".lyx");
+		outfilename = changeExtension(infilename, ".lyx");
 
-	string const system_syntaxfile = lyx::support::LibFileSearch("", "syntax.default");
+	string const system_syntaxfile = lyx::support::libFileSearch("", "syntax.default");
 	if (system_syntaxfile.empty()) {
 		cerr << "Error: Could not find syntax file \"syntax.default\"." << endl;
 		exit(1);
@@ -512,7 +512,7 @@ int main(int argc, char * argv[])
 	if (!syntaxfile.empty())
 		read_syntaxfile(syntaxfile);
 
-	masterFilePath = OnlyPath(infilename);
+	masterFilePath = onlyPath(infilename);
 	parentFilePath = masterFilePath;
 
 	if (outfilename == "-") {

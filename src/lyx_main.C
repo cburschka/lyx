@@ -58,19 +58,19 @@
 #include <iostream>
 #include <csignal>
 
-using lyx::support::AddName;
-using lyx::support::AddPath;
+using lyx::support::addName;
+using lyx::support::addPath;
 using lyx::support::bformat;
 using lyx::support::createDirectory;
 using lyx::support::createLyXTmpDir;
-using lyx::support::FileSearch;
+using lyx::support::fileSearch;
 using lyx::support::getEnv;
 using lyx::support::i18nLibFileSearch;
-using lyx::support::LibFileSearch;
+using lyx::support::libFileSearch;
 using lyx::support::package;
 using lyx::support::Path;
 using lyx::support::prependEnvPath;
-using lyx::support::QuoteName;
+using lyx::support::quoteName;
 using lyx::support::rtrim;
 
 namespace os = lyx::support::os;
@@ -117,9 +117,9 @@ void showFileError(string const & error)
 void reconfigureUserLyXDir()
 {
 	string const configure_script =
-		AddName(package().system_support(), "configure.py");
+		addName(package().system_support(), "configure.py");
 	string const configure_command =
-		"python " + QuoteName(configure_script);
+		"python " + quoteName(configure_script);
 
 	lyxerr << _("LyX: reconfiguring user directory") << endl;
 	Path p(package().user_support());
@@ -260,7 +260,7 @@ void LyX::priv_exec(int & argc, char * argv[])
 		for (; it != end; ++it) {
 			// get absolute path of file and add ".lyx" to
 			// the filename if necessary
-			string s = FileSearch(string(), *it, "lyx");
+			string s = fileSearch(string(), *it, "lyx");
 			if (s.empty()) {
 				last_loaded = newFile(*it, string(), true);
 			} else {
@@ -429,7 +429,7 @@ void LyX::init(bool gui)
 	lyxrc.document_path = package().document_dir();
 
 	if (lyxrc.template_path.empty()) {
-		lyxrc.template_path = AddPath(package().system_support(),
+		lyxrc.template_path = addPath(package().system_support(),
 					      "templates");
 	}
 
@@ -453,9 +453,9 @@ void LyX::init(bool gui)
 
 	string prefsfile = "preferences";
 	// back compatibility to lyxs < 1.1.6
-	if (LibFileSearch(string(), prefsfile).empty())
+	if (libFileSearch(string(), prefsfile).empty())
 		prefsfile = "lyxrc";
-	if (!LibFileSearch(string(), prefsfile).empty())
+	if (!libFileSearch(string(), prefsfile).empty())
 		readRcFile(prefsfile);
 
 	readEncodingsFile("encodings");
@@ -622,9 +622,9 @@ bool LyX::queryUserLyXDir(bool explicit_userdir)
 	    fs::is_directory(package().user_support())) {
 		first_start = false;
 		string const configure_script =
-			AddName(package().system_support(), "configure.py");
+			addName(package().system_support(), "configure.py");
 		string const userDefaults =
-			AddName(package().user_support(), "lyxrc.defaults");
+			addName(package().user_support(), "lyxrc.defaults");
 		if (fs::exists(configure_script) &&
 		    fs::exists(userDefaults) &&
 		    fs::last_write_time(configure_script)
@@ -672,7 +672,7 @@ void LyX::readRcFile(string const & name)
 {
 	lyxerr[Debug::INIT] << "About to read " << name << "..." << endl;
 
-	string const lyxrc_path = LibFileSearch(string(), name);
+	string const lyxrc_path = libFileSearch(string(), name);
 	if (!lyxrc_path.empty()) {
 
 		lyxerr[Debug::INIT] << "Found " << name
@@ -719,7 +719,7 @@ void LyX::readUIFile(string const & name)
 
 	lyxerr[Debug::INIT] << "About to read " << name << "..." << endl;
 
-	string const ui_path = LibFileSearch("ui", name, "ui");
+	string const ui_path = libFileSearch("ui", name, "ui");
 
 	if (ui_path.empty()) {
 		lyxerr[Debug::INIT] << "Could not find " << name << endl;
@@ -775,7 +775,7 @@ void LyX::readLanguagesFile(string const & name)
 {
 	lyxerr[Debug::INIT] << "About to read " << name << "..." << endl;
 
-	string const lang_path = LibFileSearch(string(), name);
+	string const lang_path = libFileSearch(string(), name);
 	if (lang_path.empty()) {
 		showFileError(name);
 		return;
@@ -789,7 +789,7 @@ void LyX::readEncodingsFile(string const & name)
 {
 	lyxerr[Debug::INIT] << "About to read " << name << "..." << endl;
 
-	string const enc_path = LibFileSearch(string(), name);
+	string const enc_path = libFileSearch(string(), name);
 	if (enc_path.empty()) {
 		showFileError(name);
 		return;

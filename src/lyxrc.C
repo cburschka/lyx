@@ -44,9 +44,9 @@ namespace os = lyx::support::os;
 
 using lyx::support::ascii_lowercase;
 using lyx::support::bformat;
-using lyx::support::ExpandPath;
+using lyx::support::expandPath;
 using lyx::support::getEnv;
-using lyx::support::LibFileSearch;
+using lyx::support::libFileSearch;
 using lyx::support::token;
 
 using std::cout;
@@ -365,7 +365,7 @@ int LyXRC::read(LyXLex & lexrc)
 		case RC_INPUT: // Include file
 			if (lexrc.next()) {
 				string const tmp =
-					LibFileSearch(string(),
+					libFileSearch(string(),
 						      lexrc.getString());
 				if (read(tmp)) {
 					lexrc.printError("Error reading "
@@ -420,7 +420,7 @@ int LyXRC::read(LyXLex & lexrc)
 				string const kmap(os::internal_path(lexrc.getString()));
 				if (kmap.empty()) {
 					// nothing
-				} else if (!LibFileSearch("kbd", kmap,
+				} else if (!libFileSearch("kbd", kmap,
 							  "kmap").empty()) {
 					primary_kbmap = kmap;
 				} else {
@@ -434,7 +434,7 @@ int LyXRC::read(LyXLex & lexrc)
 				string const kmap(os::internal_path(lexrc.getString()));
 				if (kmap.empty()) {
 					// nothing
-				} else if (!LibFileSearch("kbd", kmap,
+				} else if (!libFileSearch("kbd", kmap,
 							  "kmap").empty()) {
 					secondary_kbmap = kmap;
 				} else {
@@ -720,21 +720,21 @@ int LyXRC::read(LyXLex & lexrc)
 		case RC_DOCUMENTPATH:
 			if (lexrc.next()) {
 				document_path = os::internal_path(lexrc.getString());
-				document_path = ExpandPath(document_path);
+				document_path = expandPath(document_path);
 			}
 			break;
 
 		case RC_TEMPLATEPATH:
 			if (lexrc.next()) {
 				template_path = os::internal_path(lexrc.getString());
-				template_path = ExpandPath(template_path);
+				template_path = expandPath(template_path);
 			}
 			break;
 
 		case RC_TEMPDIRPATH:
 			if (lexrc.next()) {
 				tempdir_path = os::internal_path(lexrc.getString());
-				tempdir_path = ExpandPath(tempdir_path);
+				tempdir_path = expandPath(tempdir_path);
 			}
 			break;
 
@@ -876,7 +876,7 @@ int LyXRC::read(LyXLex & lexrc)
 		case RC_SERVERPIPE:
 			if (lexrc.next()) {
 				lyxpipes = os::internal_path(lexrc.getString());
-				lyxpipes = ExpandPath(lyxpipes);
+				lyxpipes = expandPath(lyxpipes);
 			}
 			break;
 
@@ -961,7 +961,7 @@ int LyXRC::read(LyXLex & lexrc)
 		case RC_BACKUPDIR_PATH:
 			if (lexrc.next()) {
 				backupdir_path = os::internal_path(lexrc.getString());
-				backupdir_path = ExpandPath(backupdir_path);
+				backupdir_path = expandPath(backupdir_path);
 			}
 			break;
 		case RC_DATE_INSERT_FORMAT:

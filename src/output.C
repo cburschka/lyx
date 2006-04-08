@@ -21,7 +21,7 @@
 #include <fstream>
 
 using lyx::support::bformat;
-using lyx::support::MakeDisplayPath;
+using lyx::support::makeDisplayPath;
 
 using std::ofstream;
 using std::string;
@@ -30,7 +30,7 @@ bool openFileWrite(ofstream & ofs, string const & fname)
 {
 	ofs.open(fname.c_str());
 	if (!ofs) {
-		string const file = MakeDisplayPath(fname, 50);
+		string const file = makeDisplayPath(fname, 50);
 		string text = bformat(_("Could not open the specified "
 					"document\n%1$s."), file);
 		Alert::error(_("Could not open file"), text);

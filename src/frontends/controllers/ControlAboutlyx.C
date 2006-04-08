@@ -28,8 +28,8 @@ using std::string;
 
 namespace lyx {
 
-using support::FileSearch;
-using support::MakeDisplayPath;
+using support::fileSearch;
+using support::makeDisplayPath;
 using support::package;
 
 namespace frontend {
@@ -42,7 +42,7 @@ ControlAboutlyx::ControlAboutlyx(Dialog & parent)
 
 void ControlAboutlyx::getCredits(ostream & ss) const
 {
-	string const name = FileSearch(package().system_support(), "CREDITS");
+	string const name = fileSearch(package().system_support(), "CREDITS");
 
 	bool found(!name.empty());
 
@@ -89,10 +89,10 @@ string const ControlAboutlyx::getVersion() const
 	   << lyx_release_date
 	   << "\n"
 	   << _("Library directory: ")
-	   << MakeDisplayPath(package().system_support())
+	   << makeDisplayPath(package().system_support())
 	   << "\n"
 	   << _("User directory: ")
-	   << MakeDisplayPath(package().user_support());
+	   << makeDisplayPath(package().user_support());
 
 	return ss.str();
 }

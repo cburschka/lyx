@@ -36,14 +36,14 @@
 
 #include <boost/filesystem/operations.hpp>
 
-using lyx::support::AddName;
+using lyx::support::addName;
 using lyx::support::bformat;
-using lyx::support::ChangeExtension;
+using lyx::support::changeExtension;
 using lyx::support::contains;
-using lyx::support::MakeAbsPath;
-using lyx::support::MakeDisplayPath;
-using lyx::support::OnlyFilename;
-using lyx::support::OnlyPath;
+using lyx::support::makeAbsPath;
+using lyx::support::makeDisplayPath;
+using lyx::support::onlyFilename;
+using lyx::support::onlyPath;
 using lyx::support::package;
 using lyx::support::prefixIs;
 
@@ -76,7 +76,7 @@ int checkOverwrite(string const & filename)
 	if (fs::exists(filename)) {
 		string text = bformat(_("The file %1$s already exists.\n\n"
 					"Do you want to over-write that file?"),
-				      MakeDisplayPath(filename));
+				      makeDisplayPath(filename));
 		return Alert::prompt(_("Over-write file?"),
 				     text, 0, 2,
 				     _("&Over-write"), _("Over-write &all"),
@@ -111,7 +111,7 @@ CopyStatus copyFile(string const & format,
 	// overwrite themselves. This check could be changed to
 	// boost::filesystem::equivalent(sourceFile, destFile) if export to
 	// other directories than the document directory is desired.
-	if (!prefixIs(OnlyPath(sourceFile), package().temp_dir()))
+	if (!prefixIs(onlyPath(sourceFile), package().temp_dir()))
 		return ret;
 
 	if (!force) {
@@ -131,8 +131,8 @@ CopyStatus copyFile(string const & format,
 	if (!mover.copy(sourceFile, destFile, latexFile))
 		Alert::error(_("Couldn't copy file"),
 			     bformat(_("Copying %1$s to %2$s failed."),
-				     MakeDisplayPath(sourceFile),
-				     MakeDisplayPath(destFile)));
+				     makeDisplayPath(sourceFile),
+				     makeDisplayPath(destFile)));
 
 	return ret;
 }
@@ -181,8 +181,8 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 	}
 
 	string filename = buffer->getLatexName(false);
-	filename = AddName(buffer->temppath(), filename);
-	filename = ChangeExtension(filename,
+	filename = addName(buffer->temppath(), filename);
+	filename = changeExtension(filename,
 				   formats.extension(backend_format));
 
 	// Ascii backend
@@ -221,20 +221,20 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 
 	if (!put_in_tempdir) {
 		string const tmp_result_file = result_file;
-		result_file = ChangeExtension(buffer->fileName(),
+		result_file = changeExtension(buffer->fileName(),
 					      formats.extension(format));
 		// We need to copy referenced files (e. g. included graphics
 		// if format == "dvi") to the result dir.
 		vector<ExportedFile> const files =
 			runparams.exportdata->externalFiles(format);
-		string const dest = OnlyPath(result_file);
+		string const dest = onlyPath(result_file);
 		CopyStatus status = SUCCESS;
 		for (vector<ExportedFile>::const_iterator it = files.begin();
 				it != files.end() && status != CANCEL; ++it) {
 			string const fmt =
 				formats.getFormatFromFile(it->sourceName);
 			status = copyFile(fmt, it->sourceName,
-					  MakeAbsPath(it->exportName, dest),
+					  makeAbsPath(it->exportName, dest),
 					  it->exportName, status == FORCE);
 		}
 		if (status == CANCEL) {
@@ -247,7 +247,7 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 			buffer->message(bformat(_("Document exported as %1$s "
 						  "to file `%2$s'"),
 						formats.prettyName(format),
-						MakeDisplayPath(result_file)));
+						makeDisplayPath(result_file)));
 		} else {
 			// This must be a dummy converter like fax (bug 1888)
 			buffer->message(bformat(_("Document exported as %1$s"),
@@ -319,7 +319,7 @@ void ExportData::addExternalFile(string const & format,
 				 string const & sourceName,
 				 string const & exportName)
 {
-	BOOST_ASSERT(lyx::support::AbsolutePath(sourceName));
+	BOOST_ASSERT(lyx::support::absolutePath(sourceName));
 
 	// Make sure that we have every file only once, otherwise copyFile()
 	// would ask several times if it should overwrite a file.
@@ -333,7 +333,7 @@ void ExportData::addExternalFile(string const & format,
 void ExportData::addExternalFile(string const & format,
 				 string const & sourceName)
 {
-	addExternalFile(format, sourceName, OnlyFilename(sourceName));
+	addExternalFile(format, sourceName, onlyFilename(sourceName));
 }
 
 

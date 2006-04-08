@@ -66,7 +66,7 @@
 #include <fstream>
 #include <sstream>
 
-using lyx::support::LibFileSearch;
+using lyx::support::libFileSearch;
 using lyx::support::split;
 
 using std::string;
@@ -107,7 +107,7 @@ bool math_font_available(string & name)
 
 void initSymbols()
 {
-	string const filename = LibFileSearch(string(), "symbols");
+	string const filename = libFileSearch(string(), "symbols");
 	lyxerr[Debug::MATHED] << "read symbols from " << filename << endl;
 	if (filename.empty()) {
 		lyxerr << "Could not find symbols file" << endl;

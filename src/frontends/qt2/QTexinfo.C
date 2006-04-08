@@ -21,7 +21,7 @@
 #include <qlistbox.h>
 #include <qpushbutton.h>
 
-using lyx::support::OnlyFilename;
+using lyx::support::onlyFilename;
 
 using std::string;
 

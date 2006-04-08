@@ -47,7 +47,7 @@ void GViewBase::build()
 {
 	doBuild();
 	string const iconName =
-		support::LibFileSearch("images", "lyx", "xpm");
+		support::libFileSearch("images", "lyx", "xpm");
 	if (!iconName.empty())
 		window()->set_icon_from_file(iconName);
 	window()->signal_delete_event().connect(

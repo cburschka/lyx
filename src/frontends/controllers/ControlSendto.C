@@ -26,7 +26,6 @@ using std::string;
 
 namespace lyx {
 
-using support::AddName;
 using support::trim;
 
 namespace frontend {

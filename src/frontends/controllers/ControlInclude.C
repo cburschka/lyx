@@ -36,8 +36,8 @@ namespace lyx {
 
 using support::FileFilterList;
 using support::isFileReadable;
-using support::MakeAbsPath;
-using support::OnlyPath;
+using support::makeAbsPath;
+using support::onlyPath;
 
 namespace frontend {
 
@@ -90,7 +90,7 @@ string const ControlInclude::browse(string const & in_name, Type in_type) const
 	pair<string, string> dir1(N_("Documents|#o#O"),
 				  string(lyxrc.document_path));
 
-	string const docpath = OnlyPath(kernel().buffer().fileName());
+	string const docpath = onlyPath(kernel().buffer().fileName());
 
 	return browseRelFile(in_name, docpath, title,
 			     filters, false, dir1);
@@ -99,7 +99,7 @@ string const ControlInclude::browse(string const & in_name, Type in_type) const
 
 void ControlInclude::load(string const & file)
 {
-	string const ext = support::GetExtension(file);
+	string const ext = support::getExtension(file);
 	if (ext == "lyx")
 		kernel().dispatch(FuncRequest(LFUN_CHILDOPEN, file));
 	else
@@ -111,8 +111,8 @@ void ControlInclude::load(string const & file)
 bool ControlInclude::fileExists(string const & file)
 {
 	string const fileWithAbsPath
-		= MakeAbsPath(file,
-			      OnlyPath(kernel().buffer().fileName()));
+		= makeAbsPath(file,
+			      onlyPath(kernel().buffer().fileName()));
 
 	if (isFileReadable(fileWithAbsPath))
 		return true;

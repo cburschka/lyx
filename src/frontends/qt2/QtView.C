@@ -43,7 +43,7 @@ FontLoader fontloader;
 
 namespace lyx {
 
-using support::LibFileSearch;
+using support::libFileSearch;
 
 namespace frontend {
 
@@ -75,7 +75,7 @@ QtView::QtView(unsigned int width, unsigned int height)
 #ifndef Q_WS_MACX
 	//  assign an icon to main form. We do not do it under Qt/Mac,
 	//  since the icon is provided in the application bundle.
-	string const iconname = LibFileSearch("images", "lyx", "xpm");
+	string const iconname = libFileSearch("images", "lyx", "xpm");
 	if (!iconname.empty())
 		setIcon(QPixmap(toqstr(iconname)));
 #endif

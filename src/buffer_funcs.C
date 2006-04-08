@@ -47,10 +47,10 @@
 
 using lyx::pit_type;
 using lyx::support::bformat;
-using lyx::support::LibFileSearch;
-using lyx::support::MakeDisplayPath;
-using lyx::support::OnlyFilename;
-using lyx::support::OnlyPath;
+using lyx::support::libFileSearch;
+using lyx::support::makeDisplayPath;
+using lyx::support::onlyFilename;
+using lyx::support::onlyPath;
 using lyx::support::unlink;
 
 using std::min;
@@ -68,7 +68,7 @@ bool readFile(Buffer * const b, string const & s)
 
 	// File information about normal file
 	if (!fs::exists(s)) {
-		string const file = MakeDisplayPath(s, 50);
+		string const file = makeDisplayPath(s, 50);
 		string text = bformat(_("The specified document\n%1$s"
 					"\ncould not be read."), file);
 		Alert::error(_("Could not read document"), text);
@@ -76,12 +76,12 @@ bool readFile(Buffer * const b, string const & s)
 	}
 
 	// Check if emergency save file exists and is newer.
-	string const e = OnlyPath(s) + OnlyFilename(s) + ".emergency";
+	string const e = onlyPath(s) + onlyFilename(s) + ".emergency";
 
 	if (fs::exists(e) && fs::exists(s)
 	    && fs::last_write_time(e) > fs::last_write_time(s))
 	{
-		string const file = MakeDisplayPath(s, 20);
+		string const file = makeDisplayPath(s, 20);
 		string const text =
 			bformat(_("An emergency save of the document "
 				  "%1$s exists.\n\n"
@@ -102,12 +102,12 @@ bool readFile(Buffer * const b, string const & s)
 	}
 
 	// Now check if autosave file is newer.
-	string const a = OnlyPath(s) + '#' + OnlyFilename(s) + '#';
+	string const a = onlyPath(s) + '#' + onlyFilename(s) + '#';
 
 	if (fs::exists(a) && fs::exists(s)
 	    && fs::last_write_time(a) > fs::last_write_time(s))
 	{
-		string const file = MakeDisplayPath(s, 20);
+		string const file = makeDisplayPath(s, 20);
 		string const text =
 			bformat(_("The backup of the document "
 				  "%1$s is newer.\n\nLoad the "
@@ -148,7 +148,7 @@ bool loadLyXFile(Buffer * b, string const & s)
 			return true;
 		}
 	} else {
-		string const file = MakeDisplayPath(s, 20);
+		string const file = makeDisplayPath(s, 20);
 		// Here we probably should run
 		if (LyXVC::file_not_found_hook(s)) {
 			string const text =
@@ -180,13 +180,13 @@ Buffer * newFile(string const & filename, string const & templatename,
 	string tname;
 	// use defaults.lyx as a default template if it exists.
 	if (templatename.empty())
-		tname = LibFileSearch("templates", "defaults.lyx");
+		tname = libFileSearch("templates", "defaults.lyx");
 	else
 		tname = templatename;
 
 	if (!tname.empty()) {
 		if (!b->readFile(tname)) {
-			string const file = MakeDisplayPath(tname, 50);
+			string const file = makeDisplayPath(tname, 50);
 			string const text  = bformat(_("The specified document template\n%1$s\ncould not be read."), file);
 			Alert::error(_("Could not read template"), text);
 			// no template, start with empty buffer

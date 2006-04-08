@@ -22,8 +22,8 @@
 
 using lyx::textclass_type;
 
-using lyx::support::LibFileSearch;
-using lyx::support::MakeDisplayPath;
+using lyx::support::libFileSearch;
+using lyx::support::makeDisplayPath;
 
 using boost::bind;
 
@@ -91,13 +91,13 @@ public:
 bool LyXTextClassList::Read()
 {
 	LyXLex lex(0, 0);
-	string real_file = LibFileSearch("", "textclass.lst");
+	string real_file = libFileSearch("", "textclass.lst");
 	lyxerr[Debug::TCLASS] << "Reading textclasses from `"
 			      << real_file << '\'' << endl;
 
 	if (real_file.empty()) {
 		lyxerr << "LyXTextClassList::Read: unable to find "
-			"textclass file  `" << MakeDisplayPath(real_file, 1000)
+			"textclass file  `" << makeDisplayPath(real_file, 1000)
 		       << "'. Exiting." << endl;
 		return false;
 		// This causes LyX to end... Not a desirable behaviour. Lgb
@@ -115,7 +115,7 @@ bool LyXTextClassList::Read()
 
 	if (!lex.isOK()) {
 		lyxerr << "LyXTextClassList::Read: unable to open "
-			"textclass file  `" << MakeDisplayPath(real_file, 1000)
+			"textclass file  `" << makeDisplayPath(real_file, 1000)
 		       << "'\nCheck your installation. LyX can't continue."
 		       << endl;
 		return false;

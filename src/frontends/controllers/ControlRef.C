@@ -26,8 +26,8 @@ extern BufferList bufferlist;
 
 namespace lyx {
 
-using support::MakeAbsPath;
-using support::MakeDisplayPath;
+using support::makeAbsPath;
+using support::makeDisplayPath;
 
 namespace frontend {
 
@@ -38,7 +38,7 @@ ControlRef::ControlRef(Dialog & d)
 
 vector<string> const ControlRef::getLabelList(string const & name) const
 {
-	Buffer const & buf = *bufferlist.getBuffer(MakeAbsPath(name));
+	Buffer const & buf = *bufferlist.getBuffer(makeAbsPath(name));
 	vector<string> list;
 	buf.getLabelList(list);
 	return list;
@@ -63,7 +63,7 @@ vector<string> const ControlRef::getBufferList() const
 	vector<string> buffers = bufferlist.getFileNames();
 	for (vector<string>::iterator it = buffers.begin();
 	     it != buffers.end(); ++it) {
-		*it = MakeDisplayPath(*it);
+		*it = makeDisplayPath(*it);
 	}
 
 	return buffers;

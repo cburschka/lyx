@@ -32,12 +32,12 @@ using std::string;
 
 namespace lyx {
 
-using support::ChangeExtension;
+using support::changeExtension;
 using support::compare;
 using support::FileFilterList;
 using support::getStringFromVector;
 using support::getVectorFromString;
-using support::OnlyFilename;
+using support::onlyFilename;
 using support::split;
 
 namespace frontend {
@@ -148,7 +148,7 @@ ButtonPolicy::SMInput FormBibtex::input(FL_OBJECT * ob, long ob_value)
 			return ButtonPolicy::SMI_NOOP;
 		} else {
 			fl_set_input(dialog_->input_style,
-					ChangeExtension(style, "").c_str());
+					changeExtension(style, "").c_str());
 		}
 		// reset the browser so that the following
 		// single-click callback doesn't do anything
@@ -211,7 +211,7 @@ string const unique_and_no_extensions(string const & str_in)
 	vector<string> dbase = getVectorFromString(str_in);
 	for (vector<string>::iterator it = dbase.begin();
 	     it != dbase.end(); ++it) {
-		*it = ChangeExtension(*it, string());
+		*it = changeExtension(*it, string());
 	}
 	eliminate_duplicates(dbase);
 	return getStringFromVector(dbase);
@@ -237,7 +237,7 @@ void FormBibtex::apply()
 	string bibstyle = getString(dialog_->input_style);
 	if (!bibstyle.empty()) {
 		// save the BibTeX style without any ".bst" extension
-		bibstyle = ChangeExtension(OnlyFilename(bibstyle), "");
+		bibstyle = changeExtension(onlyFilename(bibstyle), "");
 	}
 
 	bool const addtotoc = fl_get_button(dialog_->check_bibtotoc);

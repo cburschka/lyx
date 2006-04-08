@@ -34,11 +34,11 @@
 #include <algorithm>
 #include <functional>
 
-using lyx::support::AddName;
+using lyx::support::addName;
 using lyx::support::bformat;
-using lyx::support::MakeAbsPath;
-using lyx::support::MakeDisplayPath;
-using lyx::support::OnlyFilename;
+using lyx::support::makeAbsPath;
+using lyx::support::makeDisplayPath;
+using lyx::support::onlyFilename;
 using lyx::support::removeAutosaveFile;
 using lyx::support::package;
 using lyx::support::prefixIs;
@@ -73,9 +73,9 @@ bool BufferList::quitWriteBuffer(Buffer * buf)
 
 	string file;
 	if (buf->isUnnamed())
-		file = OnlyFilename(buf->fileName());
+		file = onlyFilename(buf->fileName());
 	else
-		file = MakeDisplayPath(buf->fileName(), 30);
+		file = makeDisplayPath(buf->fileName(), 30);
 
 	string const text =
 		bformat(_("The document %1$s has unsaved changes.\n\n"
@@ -172,9 +172,9 @@ bool BufferList::close(Buffer * buf, bool const ask)
 
 	string fname;
 	if (buf->isUnnamed())
-		fname = OnlyFilename(buf->fileName());
+		fname = onlyFilename(buf->fileName());
 	else
-		fname = MakeDisplayPath(buf->fileName(), 30);
+		fname = makeDisplayPath(buf->fileName(), 30);
 
 	string const text =
 		bformat(_("The document %1$s has unsaved changes.\n\n"
@@ -299,7 +299,7 @@ void BufferList::emergencyWrite(Buffer * buf)
 		return;
 
 	string const doc = buf->isUnnamed()
-		? OnlyFilename(buf->fileName()) : buf->fileName();
+		? onlyFilename(buf->fileName()) : buf->fileName();
 
 	lyxerr << bformat(_("LyX: Attempting to save document %1$s"), doc) << endl;
 
@@ -319,7 +319,7 @@ void BufferList::emergencyWrite(Buffer * buf)
 	}
 
 	// 2) In HOME directory.
-	string s = AddName(package().home_dir(), buf->fileName());
+	string s = addName(package().home_dir(), buf->fileName());
 	s += ".emergency";
 	lyxerr << ' ' << s << endl;
 	if (buf->writeFile(s)) {
@@ -333,7 +333,7 @@ void BufferList::emergencyWrite(Buffer * buf)
 	// 3) In "/tmp" directory.
 	// MakeAbsPath to prepend the current
 	// drive letter on OS/2
-	s = AddName(package().temp_dir(), buf->fileName());
+	s = addName(package().temp_dir(), buf->fileName());
 	s += ".emergency";
 	lyxerr << ' ' << s << endl;
 	if (buf->writeFile(s)) {

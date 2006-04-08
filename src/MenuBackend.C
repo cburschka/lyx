@@ -49,7 +49,7 @@
 
 using lyx::support::compare_ascii_no_case;
 using lyx::support::contains;
-using lyx::support::MakeDisplayPath;
+using lyx::support::makeDisplayPath;
 using lyx::support::token;
 
 using boost::bind;
@@ -435,7 +435,7 @@ void expandLastfiles(Menu & tomenu, LyXView const * view)
 
 	for (; lfit != lf.end() && ii < 10; ++lfit, ++ii) {
 		string const label = convert<string>(ii) + ". "
-			+ MakeDisplayPath((*lfit), 30)
+			+ makeDisplayPath((*lfit), 30)
 			+ '|' + convert<string>(ii);
 		tomenu.add(MenuItem(MenuItem::Command, label, FuncRequest(LFUN_FILE_OPEN, (*lfit))), view);
 	}
@@ -457,7 +457,7 @@ void expandDocuments(Menu & tomenu, LyXView const * view)
 	Strings::const_iterator docit = names.begin();
 	Strings::const_iterator end = names.end();
 	for (; docit != end; ++docit, ++ii) {
-		string label = MakeDisplayPath(*docit, 20);
+		string label = makeDisplayPath(*docit, 20);
 		if (ii < 10)
 			label = convert<string>(ii) + ". " + label + '|' + convert<string>(ii);
 		tomenu.add(MenuItem(MenuItem::Command, label, FuncRequest(LFUN_SWITCHBUFFER, *docit)), view);

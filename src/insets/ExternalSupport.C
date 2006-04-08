@@ -94,23 +94,23 @@ string const doSubstitution(InsetExternalParams const & params,
 	string const filename = external_in_tmpdir ?
 		params.filename.mangledFilename() :
 		params.filename.outputFilename(parentpath);
-	string const basename = support::ChangeExtension(
-			support::OnlyFilename(filename), string());
-	string const absname = support::MakeAbsPath(filename, parentpath);
+	string const basename = support::changeExtension(
+			support::onlyFilename(filename), string());
+	string const absname = support::makeAbsPath(filename, parentpath);
 
 	string result = s;
 	if (what != ALL_BUT_PATHS) {
-		string const filepath = support::OnlyPath(filename);
-		string const abspath = support::OnlyPath(absname);
+		string const filepath = support::onlyPath(filename);
+		string const abspath = support::onlyPath(absname);
 		string const masterpath = external_in_tmpdir ?
 			m_buffer->temppath() :
 			m_buffer->filePath();
-		string relToMasterPath = support::OnlyPath(
-				support::MakeRelPath(absname, masterpath));
+		string relToMasterPath = support::onlyPath(
+				support::makeRelPath(absname, masterpath));
 		if (relToMasterPath == "./")
 			relToMasterPath.clear();
-		string relToParentPath = support::OnlyPath(
-				support::MakeRelPath(absname, parentpath));
+		string relToParentPath = support::onlyPath(
+				support::makeRelPath(absname, parentpath));
 		if (relToParentPath == "./")
 			relToParentPath.clear();
 
@@ -130,7 +130,7 @@ string const doSubstitution(InsetExternalParams const & params,
 				    relToParentPath, use_latex_path,
 				    support::PROTECT_EXTENSION,
 				    support::ESCAPE_DOTS);
-		if (support::AbsolutePath(filename)) {
+		if (support::absolutePath(filename)) {
 			result = subst_path(result, "$$AbsOrRelPathMaster",
 					    abspath, use_latex_path,
 					    support::PROTECT_EXTENSION,
@@ -159,7 +159,7 @@ string const doSubstitution(InsetExternalParams const & params,
 	result = subst_path(result, "$$Basename", basename, use_latex_path,
 			    support::PROTECT_EXTENSION, support::ESCAPE_DOTS);
 	result = subst_path(result, "$$Extension",
-			'.' + support::GetExtension(filename), use_latex_path);
+			'.' + support::getExtension(filename), use_latex_path);
 	result = subst_path(result, "$$Tempname", params.tempname(), use_latex_path);
 	result = subst_path(result, "$$Sysdir",
 				support::package().system_support(), use_latex_path);
@@ -177,7 +177,7 @@ string const doSubstitution(InsetExternalParams const & params,
 		support::Path p(filepath);
 
 		if (support::isFileReadable(file))
-			contents = support::GetFileContents(file);
+			contents = support::getFileContents(file);
 
 		result = support::subst(result,
 					("$$Contents(\"" + file + "\")").c_str(),
@@ -252,7 +252,7 @@ void updateExternal(InsetExternalParams const & params,
 	// We copy the source file to the temp dir and do the conversion
 	// there if necessary
 	string const temp_file =
-		support::MakeAbsPath(params.filename.mangledFilename(),
+		support::makeAbsPath(params.filename.mangledFilename(),
 				     m_buffer->temppath());
 	if (!abs_from_file.empty()) {
 		unsigned long const from_checksum = support::sum(abs_from_file);
@@ -275,7 +275,7 @@ void updateExternal(InsetExternalParams const & params,
 					      outputFormat.updateResult,
 					      false, true);
 	string const abs_to_file =
-		support::MakeAbsPath(to_file, m_buffer->temppath());
+		support::makeAbsPath(to_file, m_buffer->temppath());
 
 	// Record the referenced files for the exporter.
 	// The exporter will copy them to the export dir.
@@ -286,7 +286,7 @@ void updateExternal(InsetExternalParams const & params,
 		vector<string>::const_iterator fit  = rit->second.begin();
 		vector<string>::const_iterator fend = rit->second.end();
 		for (; fit != fend; ++fit) {
-			string const source = support::MakeAbsPath(
+			string const source = support::makeAbsPath(
 					doSubstitution(params, buffer, *fit,
 						       false, true),
 					m_buffer->temppath());
@@ -312,7 +312,7 @@ void updateExternal(InsetExternalParams const & params,
 	if (support::compare_timestamps(temp_file, abs_to_file) < 0)
 		return; // SUCCESS
 	string const to_file_base =
-		support::ChangeExtension(to_file, string());
+		support::changeExtension(to_file, string());
 	/* bool const success = */
 		converters.convert(&buffer, temp_file, to_file_base,
 				   from_format, to_format, true);

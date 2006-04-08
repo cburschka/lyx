@@ -28,11 +28,11 @@
 
 namespace support = lyx::support;
 
-using support::ChangeExtension;
+using support::changeExtension;
 using support::FileMonitor;
 using support::isFileReadable;
-using support::MakeDisplayPath;
-using support::OnlyFilename;
+using support::makeDisplayPath;
+using support::onlyFilename;
 using support::tempName;
 using support::unlink;
 using support::unzipFile;
@@ -402,7 +402,7 @@ void CacheItem::Impl::convertToDisplayFormat()
 	} else
 		filename = filename_;
 
-	string const displayed_filename = MakeDisplayPath(filename_);
+	string const displayed_filename = makeDisplayPath(filename_);
 	lyxerr[Debug::GRAPHICS] << "[GrahicsCacheItem::convertToDisplayFormat]\n"
 		<< "\tAttempting to convert image file: " << filename
 		<< "\n\twith displayed filename: " << displayed_filename
@@ -428,7 +428,7 @@ void CacheItem::Impl::convertToDisplayFormat()
 
 	lyxerr[Debug::GRAPHICS] << "\tConverting it to " << to << " format." << endl;
 	// Take only the filename part of the file, without path or extension.
-	string const temp = ChangeExtension(OnlyFilename(filename), string());
+	string const temp = changeExtension(onlyFilename(filename), string());
 
 	// Add some stuff to create a uniquely named temporary file.
 	// This file is deleted in loadImage after it is loaded into memory.

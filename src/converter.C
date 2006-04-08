@@ -29,22 +29,22 @@
 #include "support/path.h"
 #include "support/systemcall.h"
 
-using lyx::support::AddName;
+using lyx::support::addName;
 using lyx::support::bformat;
-using lyx::support::ChangeExtension;
+using lyx::support::changeExtension;
 using lyx::support::compare_ascii_no_case;
 using lyx::support::contains;
-using lyx::support::DirList;
-using lyx::support::GetExtension;
+using lyx::support::dirList;
+using lyx::support::getExtension;
 using lyx::support::isFileReadable;
-using lyx::support::LibFileSearch;
-using lyx::support::LibScriptSearch;
-using lyx::support::MakeRelPath;
-using lyx::support::OnlyFilename;
-using lyx::support::OnlyPath;
+using lyx::support::libFileSearch;
+using lyx::support::libScriptSearch;
+using lyx::support::makeRelPath;
+using lyx::support::onlyFilename;
+using lyx::support::onlyPath;
 using lyx::support::Path;
 using lyx::support::prefixIs;
-using lyx::support::QuoteName;
+using lyx::support::quoteName;
 using lyx::support::split;
 using lyx::support::subst;
 using lyx::support::Systemcall;
@@ -284,7 +284,7 @@ bool Converters::convert(Buffer const * buffer,
 			 string & to_file, bool try_default)
 {
 	string const to_ext = formats.extension(to_format);
-	to_file = ChangeExtension(to_file_base, to_ext);
+	to_file = changeExtension(to_file_base, to_ext);
 
 	if (from_format == to_format)
 		return move(from_format, from_file, to_file, false);
@@ -295,15 +295,15 @@ bool Converters::convert(Buffer const * buffer,
 			// if no special converter defined, then we take the
 			// default one from ImageMagic.
 			string const from_ext = from_format.empty() ?
-				GetExtension(from_file) :
+				getExtension(from_file) :
 				formats.extension(from_format);
 			string const command =
 				"sh " +
-				QuoteName(LibFileSearch("scripts", "convertDefault.sh")) +
+				quoteName(libFileSearch("scripts", "convertDefault.sh")) +
 				' ' +
-				QuoteName(from_ext + ':' + from_file) +
+				quoteName(from_ext + ':' + from_file) +
 				' ' +
-				QuoteName(to_ext + ':' + to_file);
+				quoteName(to_ext + ':' + to_file);
 			lyxerr[Debug::FILES]
 				<< "No converter defined! "
 				   "I use convertDefault.sh:\n\t"
@@ -323,12 +323,12 @@ bool Converters::convert(Buffer const * buffer,
 	}
 	OutputParams runparams;
 	runparams.flavor = getFlavor(edgepath);
-	string path = OnlyPath(from_file);
+	string path = onlyPath(from_file);
 	Path p(path);
 
 	bool run_latex = false;
-	string from_base = ChangeExtension(from_file, "");
-	string to_base = ChangeExtension(to_file, "");
+	string from_base = changeExtension(from_file, "");
+	string to_base = changeExtension(to_file, "");
 	string infile;
 	string outfile = from_file;
 	for (Graph::EdgePath::const_iterator cit = edgepath.begin();
@@ -340,18 +340,18 @@ bool Converters::convert(Buffer const * buffer,
 			       << conv.from << " to " << conv.to << endl;
 		infile = outfile;
 		outfile = conv.result_dir.empty()
-			? ChangeExtension(from_file, conv.To->extension())
-			: AddName(subst(conv.result_dir,
+			? changeExtension(from_file, conv.To->extension())
+			: addName(subst(conv.result_dir,
 					token_base, from_base),
 				  subst(conv.result_file,
-					token_base, OnlyFilename(from_base)));
+					token_base, onlyFilename(from_base)));
 
 		// if input and output files are equal, we use a
 		// temporary file as intermediary (JMarc)
 		string real_outfile;
 		if (outfile == infile) {
 			real_outfile = infile;
-			outfile = AddName(buffer->temppath(), "tmpfile.out");
+			outfile = addName(buffer->temppath(), "tmpfile.out");
 		}
 
 		if (conv.latex) {
@@ -370,18 +370,18 @@ bool Converters::convert(Buffer const * buffer,
 			}
 
 			string const infile2 = (conv.original_dir)
-				? infile : MakeRelPath(infile, path);
+				? infile : makeRelPath(infile, path);
 			string const outfile2 = (conv.original_dir)
-				? outfile : MakeRelPath(outfile, path);
+				? outfile : makeRelPath(outfile, path);
 
 			string command = conv.command;
-			command = subst(command, token_from, QuoteName(infile2));
-			command = subst(command, token_base, QuoteName(from_base));
-			command = subst(command, token_to, QuoteName(outfile2));
-			command = LibScriptSearch(command);
+			command = subst(command, token_from, quoteName(infile2));
+			command = subst(command, token_base, quoteName(from_base));
+			command = subst(command, token_to, quoteName(outfile2));
+			command = libScriptSearch(command);
 
 			if (!conv.parselog.empty())
-				command += " 2> " + QuoteName(infile2 + ".out");
+				command += " 2> " + quoteName(infile2 + ".out");
 
 			if (conv.from == "dvi" && conv.to == "ps")
 				command = add_options(command,
@@ -421,10 +421,10 @@ bool Converters::convert(Buffer const * buffer,
 
 			if (!conv.parselog.empty()) {
 				string const logfile =  infile2 + ".log";
-				string const script = LibScriptSearch(conv.parselog);
+				string const script = libScriptSearch(conv.parselog);
 				string const command2 = script +
-					" < " + QuoteName(infile2 + ".out") +
-					" > " + QuoteName(logfile);
+					" < " + quoteName(infile2 + ".out") +
+					" > " + quoteName(logfile);
 				one.startscript(Systemcall::Wait, command2);
 				if (!scanLog(*buffer, command, logfile))
 					return false;
@@ -451,9 +451,9 @@ bool Converters::convert(Buffer const * buffer,
 		return true;
 
 	if (!conv.result_dir.empty()) {
-		to_file = AddName(subst(conv.result_dir, token_base, to_base),
+		to_file = addName(subst(conv.result_dir, token_base, to_base),
 				  subst(conv.result_file,
-					token_base, OnlyFilename(to_base)));
+					token_base, onlyFilename(to_base)));
 		if (from_base != to_base) {
 			string const from = subst(conv.result_dir,
 					    token_base, from_base);
@@ -480,18 +480,18 @@ bool Converters::move(string const & fmt,
 		return true;
 
 	bool no_errors = true;
-	string const path = OnlyPath(from);
-	string const base = OnlyFilename(ChangeExtension(from, ""));
-	string const to_base = ChangeExtension(to, "");
-	string const to_extension = GetExtension(to);
+	string const path = onlyPath(from);
+	string const base = onlyFilename(changeExtension(from, ""));
+	string const to_base = changeExtension(to, "");
+	string const to_extension = getExtension(to);
 
-	vector<string> files = DirList(OnlyPath(from), GetExtension(from));
+	vector<string> files = dirList(onlyPath(from), getExtension(from));
 	for (vector<string>::const_iterator it = files.begin();
 	     it != files.end(); ++it)
 		if (prefixIs(*it, base)) {
 			string const from2 = path + *it;
 			string to2 = to_base + it->substr(base.length());
-			to2 = ChangeExtension(to2, to_extension);
+			to2 = changeExtension(to2, to_extension);
 			lyxerr[Debug::FILES] << "moving " << from2
 					     << " to " << to2 << endl;
 

@@ -54,20 +54,20 @@
 #include <cerrno>
 #include <fstream>
 
-using lyx::support::AddName;
+using lyx::support::addName;
 using lyx::support::bformat;
 using lyx::support::destroyDir;
 using lyx::support::FileFilterList;
 using lyx::support::ForkedProcess;
 using lyx::support::isLyXFilename;
-using lyx::support::LibFileSearch;
-using lyx::support::MakeAbsPath;
-using lyx::support::MakeDisplayPath;
-using lyx::support::OnlyFilename;
-using lyx::support::OnlyPath;
+using lyx::support::libFileSearch;
+using lyx::support::makeAbsPath;
+using lyx::support::makeDisplayPath;
+using lyx::support::onlyFilename;
+using lyx::support::onlyPath;
 using lyx::support::Path;
 using lyx::support::package;
-using lyx::support::QuoteName;
+using lyx::support::quoteName;
 using lyx::support::removeAutosaveFile;
 using lyx::support::rename;
 using lyx::support::split;
@@ -107,7 +107,7 @@ bool MenuWrite(Buffer * buffer)
 
 	// FIXME: we don't tell the user *WHY* the save failed !!
 
-	string const file = MakeDisplayPath(buffer->fileName(), 30);
+	string const file = makeDisplayPath(buffer->fileName(), 30);
 
 	string text = bformat(_("The document %1$s could not be saved.\n\n"
 		"Do you want to rename the document and try again?"), file);
@@ -141,9 +141,9 @@ bool WriteAs(Buffer * buffer, string const & filename)
 		FileFilterList const filter (_("LyX Documents (*.lyx)"));
 
 		FileDialog::Result result =
-			fileDlg.save(OnlyPath(fname),
+			fileDlg.save(onlyPath(fname),
 				     filter,
-				     OnlyFilename(fname));
+				     onlyFilename(fname));
 
 		if (result.first == FileDialog::Later)
 			return false;
@@ -154,14 +154,14 @@ bool WriteAs(Buffer * buffer, string const & filename)
 			return false;
 
 		// Make sure the absolute filename ends with appropriate suffix
-		fname = MakeAbsPath(fname);
+		fname = makeAbsPath(fname);
 		if (!isLyXFilename(fname))
 			fname += ".lyx";
 	} else
 		fname = filename;
 
 	if (fs::exists(fname)) {
-		string const file = MakeDisplayPath(fname, 30);
+		string const file = makeDisplayPath(fname, 30);
 		string text = bformat(_("The document %1$s already exists.\n\n"
 			"Do you want to over-write that document?"), file);
 		int const ret = Alert::prompt(_("Over-write document?"),
@@ -315,7 +315,7 @@ void AutoSave(BufferView * bv)
 	// create autosave filename
 	string fname = bv->buffer()->filePath();
 	fname += '#';
-	fname += OnlyFilename(bv->buffer()->fileName());
+	fname += onlyFilename(bv->buffer()->fileName());
 	fname += '#';
 
 	AutoSaveBuffer autosave(*bv, fname);
@@ -400,7 +400,7 @@ string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagrap
 
 	if (!fs::is_readable(fname)) {
 		string const error = strerror(errno);
-		string const file = MakeDisplayPath(fname, 50);
+		string const file = makeDisplayPath(fname, 50);
 		string const text = bformat(_("Could not read the specified document\n"
 			"%1$s\ndue to the error: %2$s"), file, error);
 		Alert::error(_("Could not read file"), text);
@@ -410,7 +410,7 @@ string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagrap
 	ifstream ifs(fname.c_str());
 	if (!ifs) {
 		string const error = strerror(errno);
-		string const file = MakeDisplayPath(fname, 50);
+		string const file = makeDisplayPath(fname, 50);
 		string const text = bformat(_("Could not open the specified document\n"
 			"%1$s\ndue to the error: %2$s"), file, error);
 		Alert::error(_("Could not open file"), text);
@@ -447,13 +447,13 @@ void Reconfigure(BufferView * bv)
 	// Run configure in user lyx directory
 	Path p(package().user_support());
 	string const configure_script =
-		AddName(package().system_support(), "configure.py");
-	string const configure_command = "python " + QuoteName(configure_script);
+		addName(package().system_support(), "configure.py");
+	string const configure_command = "python " + quoteName(configure_script);
 	Systemcall one;
 	one.startscript(Systemcall::Wait, configure_command);
 	p.pop();
 	bv->owner()->message(_("Reloading configuration..."));
-	lyxrc.read(LibFileSearch(string(), "lyxrc.defaults"));
+	lyxrc.read(libFileSearch(string(), "lyxrc.defaults"));
 	// Re-read packages.lst
 	LaTeXFeatures::getAvailable();
 

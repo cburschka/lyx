@@ -90,17 +90,17 @@ TODO
 
 namespace support = lyx::support;
 
-using lyx::support::AbsolutePath;
+using lyx::support::absolutePath;
 using lyx::support::bformat;
-using lyx::support::ChangeExtension;
+using lyx::support::changeExtension;
 using lyx::support::compare_timestamps;
 using lyx::support::contains;
 using lyx::support::FileName;
 using lyx::support::float_equal;
-using lyx::support::GetExtension;
+using lyx::support::getExtension;
 using lyx::support::isFileReadable;
 using lyx::support::latex_path;
-using lyx::support::OnlyFilename;
+using lyx::support::onlyFilename;
 using lyx::support::removeExtension;
 using lyx::support::rtrim;
 using lyx::support::subst;
@@ -458,8 +458,8 @@ enum CopyStatus {
 std::pair<CopyStatus, string> const
 copyFileIfNeeded(string const & file_in, string const & file_out)
 {
-	BOOST_ASSERT(AbsolutePath(file_in));
-	BOOST_ASSERT(AbsolutePath(file_out));
+	BOOST_ASSERT(absolutePath(file_in));
+	BOOST_ASSERT(absolutePath(file_out));
 
 	unsigned long const checksum_in  = support::sum(file_in);
 	unsigned long const checksum_out = support::sum(file_out);
@@ -488,10 +488,10 @@ copyToDirIfNeeded(string const & file_in, string const & dir, bool zipped)
 {
 	using support::rtrim;
 
-	BOOST_ASSERT(AbsolutePath(file_in));
+	BOOST_ASSERT(absolutePath(file_in));
 
-	string const only_path = support::OnlyPath(file_in);
-	if (rtrim(support::OnlyPath(file_in) , "/") == rtrim(dir, "/"))
+	string const only_path = support::onlyPath(file_in);
+	if (rtrim(support::onlyPath(file_in) , "/") == rtrim(dir, "/"))
 		return std::make_pair(IDENTICAL_PATHS, file_in);
 
 	string mangled = FileName(file_in).mangledFilename();
@@ -506,7 +506,7 @@ copyToDirIfNeeded(string const & file_in, string const & dir, bool zipped)
 		string::size_type const ext_len = file_in.length() - base.length();
 		mangled[mangled.length() - ext_len] = '.';
 	}
-	string const file_out = support::MakeAbsPath(mangled, dir);
+	string const file_out = support::makeAbsPath(mangled, dir);
 
 	return copyFileIfNeeded(file_in, file_out);
 }
@@ -537,7 +537,7 @@ string const stripExtensionIfPossible(string const & file, string const & to)
 	// No conversion is needed. LaTeX can handle the graphic file as is.
 	// This is true even if the orig_file is compressed.
 	string const to_format = formats.getFormat(to)->extension();
-	string const file_format = GetExtension(file);
+	string const file_format = getExtension(file);
 	// for latex .ps == .eps
 	if (to_format == file_format ||
 	    (to_format == "eps" && file_format ==  "ps") ||
@@ -597,7 +597,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	//        run through the LaTeX compiler.
 	string output_file = os::external_path(runparams.nice ?
 		params().filename.outputFilename(m_buffer->filePath()) :
-		OnlyFilename(temp_file));
+		onlyFilename(temp_file));
 	string source_file = runparams.nice ? orig_file : temp_file;
 	string const tex_format = (runparams.flavor == OutputParams::LATEX) ?
 			"latex" : "pdflatex";
@@ -611,15 +611,15 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 			lyxerr[Debug::GRAPHICS]
 				<< "\tpass zipped file to LaTeX.\n";
 
-			string const bb_orig_file = ChangeExtension(orig_file, "bb");
+			string const bb_orig_file = changeExtension(orig_file, "bb");
 			if (runparams.nice) {
 				runparams.exportdata->addExternalFile(tex_format,
 						bb_orig_file,
-						ChangeExtension(output_file, "bb"));
+						changeExtension(output_file, "bb"));
 			} else {
 				// LaTeX needs the bounding box file in the
 				// tmp dir
-				string bb_file = ChangeExtension(temp_file, "bb");
+				string bb_file = changeExtension(temp_file, "bb");
 				boost::tie(status, bb_file) =
 					copyFileIfNeeded(bb_orig_file, bb_file);
 				if (status == FAILURE)
@@ -681,8 +681,8 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 		return stripExtensionIfPossible(output_file, to);
 	}
 
-	string const to_file = ChangeExtension(temp_file, ext);
-	string const output_to_file = ChangeExtension(output_file, ext);
+	string const to_file = changeExtension(temp_file, ext);
+	string const output_to_file = changeExtension(output_file, ext);
 
 	// Do we need to perform the conversion?
 	// Yes if to_file does not exist or if temp_file is newer than to_file

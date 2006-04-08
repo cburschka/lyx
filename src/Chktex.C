@@ -24,8 +24,8 @@
 
 #include <fstream>
 
-using lyx::support::ChangeExtension;
-using lyx::support::OnlyFilename;
+using lyx::support::changeExtension;
+using lyx::support::onlyFilename;
 using lyx::support::split;
 using lyx::support::Systemcall;
 
@@ -43,7 +43,7 @@ Chktex::Chktex(string const & chktex, string const & f, string const & p)
 int Chktex::run(TeXErrors &terr)
 {
 	// run bibtex
-	string log = OnlyFilename(ChangeExtension(file, ".log"));
+	string log = onlyFilename(changeExtension(file, ".log"));
 	string tmp = cmd + " -q -v0 -b0 -x " + file + " -o " + log;
 	Systemcall one;
 	int result = one.startscript(Systemcall::Wait, tmp);
@@ -61,7 +61,7 @@ int Chktex::scanLogFile(TeXErrors & terr)
 	string token;
 	int retval = 0;
 
-	string const tmp = OnlyFilename(ChangeExtension(file, ".log"));
+	string const tmp = onlyFilename(changeExtension(file, ".log"));
 
 #if USE_BOOST_FORMAT
 	boost::format msg(_("ChkTeX warning id # %1$d"));

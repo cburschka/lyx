@@ -100,24 +100,24 @@
 
 using bv_funcs::freefont2string;
 
-using lyx::support::AbsolutePath;
-using lyx::support::AddName;
-using lyx::support::AddPath;
+using lyx::support::absolutePath;
+using lyx::support::addName;
+using lyx::support::addPath;
 using lyx::support::bformat;
-using lyx::support::ChangeExtension;
+using lyx::support::changeExtension;
 using lyx::support::contains;
 using lyx::support::FileFilterList;
-using lyx::support::FileSearch;
+using lyx::support::fileSearch;
 using lyx::support::ForkedcallsController;
 using lyx::support::i18nLibFileSearch;
 using lyx::support::isDirWriteable;
 using lyx::support::isFileReadable;
 using lyx::support::isStrInt;
-using lyx::support::MakeAbsPath;
-using lyx::support::MakeDisplayPath;
+using lyx::support::makeAbsPath;
+using lyx::support::makeDisplayPath;
 using lyx::support::package;
 using lyx::support::Path;
-using lyx::support::QuoteName;
+using lyx::support::quoteName;
 using lyx::support::rtrim;
 using lyx::support::split;
 using lyx::support::subst;
@@ -655,7 +655,7 @@ bool ensureBufferClean(BufferView * bv)
 	if (buf.isClean())
 		return true;
 
-	string const file = MakeDisplayPath(buf.fileName(), 30);
+	string const file = makeDisplayPath(buf.fileName(), 30);
 	string text = bformat(_("The document %1$s has unsaved "
 				"changes.\n\nDo you want to save "
 				"the document?"), file);
@@ -674,7 +674,7 @@ void showPrintError(string const & name)
 {
 	string str = bformat(_("Could not print the document %1$s.\n"
 			       "Check that your printer is set up correctly."),
-			     MakeDisplayPath(name, 50));
+			     makeDisplayPath(name, 50));
 	Alert::error(_("Print document failed"), str);
 }
 
@@ -806,7 +806,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_MENUWRITE:
 			if (!owner->buffer()->isUnnamed()) {
 				string const str = bformat(_("Saving document %1$s..."),
-					 MakeDisplayPath(owner->buffer()->fileName()));
+					 makeDisplayPath(owner->buffer()->fileName()));
 				owner->message(str);
 				MenuWrite(owner->buffer());
 				owner->message(str + _(" done."));
@@ -819,7 +819,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_MENURELOAD: {
-			string const file = MakeDisplayPath(view()->buffer()->fileName(), 20);
+			string const file = makeDisplayPath(view()->buffer()->fileName(), 20);
 			string text = bformat(_("Any changes will be lost. Are you sure "
 				"you want to revert to the saved version of the document %1$s?"), file);
 			int const ret = Alert::prompt(_("Revert to saved document?"),
@@ -879,9 +879,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			if (format->name() == "lyx") {
 				string const latexname =
 					buffer->getLatexName(false);
-				filename = ChangeExtension(latexname,
+				filename = changeExtension(latexname,
 							   format->extension());
-				filename = AddName(buffer->temppath(), filename);
+				filename = addName(buffer->temppath(), filename);
 
 				if (!buffer->writeFile(filename))
 					break;
@@ -939,18 +939,18 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			Systemcall one;
 			int res = 0;
 			string const dviname =
-				ChangeExtension(buffer->getLatexName(true),
+				changeExtension(buffer->getLatexName(true),
 						"dvi");
 
 			if (target == "printer") {
 				if (!lyxrc.print_spool_command.empty()) {
 					// case 3: print using a spool
 					string const psname =
-						ChangeExtension(dviname,".ps");
+						changeExtension(dviname,".ps");
 					command += lyxrc.print_to_file
-						+ QuoteName(psname)
+						+ quoteName(psname)
 						+ ' '
-						+ QuoteName(dviname);
+						+ quoteName(dviname);
 
 					string command2 =
 						lyxrc.print_spool_command +' ';
@@ -959,7 +959,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 							+ target_name
 							+ ' ';
 					}
-					command2 += QuoteName(psname);
+					command2 += quoteName(psname);
 					// First run dvips.
 					// If successful, then spool command
 					res = one.startscript(
@@ -974,16 +974,16 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 					// case 2: print directly to a printer
 					res = one.startscript(
 						Systemcall::DontWait,
-						command + QuoteName(dviname));
+						command + quoteName(dviname));
 				}
 
 			} else {
 				// case 1: print to a file
 				command += lyxrc.print_to_file
-					+ QuoteName(MakeAbsPath(target_name,
+					+ quoteName(makeAbsPath(target_name,
 								path))
 					+ ' '
-					+ QuoteName(dviname);
+					+ quoteName(dviname);
 				res = one.startscript(Systemcall::DontWait,
 						      command);
 			}
@@ -1038,7 +1038,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				break;
 			}
 			owner->message(bformat(_("Opening help file %1$s..."),
-				MakeDisplayPath(fname)));
+				makeDisplayPath(fname)));
 			view()->loadLyXFile(fname, false);
 			break;
 		}
@@ -1137,7 +1137,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			} else {
 				// Must replace extension of the file to be .lyx
 				// and get full path
-				string const s = ChangeExtension(file_name, ".lyx");
+				string const s = changeExtension(file_name, ".lyx");
 				// Either change buffer or load the file
 				if (bufferlist.exists(s)) {
 					view()->setBuffer(bufferlist.getBuffer(s));
@@ -1292,9 +1292,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_CHILDOPEN: {
 			string const filename =
-				MakeAbsPath(argument, owner->buffer()->filePath());
+				makeAbsPath(argument, owner->buffer()->filePath());
 			setMessage(N_("Opening child document ") +
-					 MakeDisplayPath(filename) + "...");
+					 makeDisplayPath(filename) + "...");
 			view()->savePosition(0);
 			string const parentfilename = owner->buffer()->fileName();
 			if (bufferlist.exists(filename))
@@ -1479,7 +1479,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_SAVE_AS_DEFAULT: {
 			string const fname =
-				AddName(AddPath(package().user_support(), "templates/"),
+				addName(addPath(package().user_support(), "templates/"),
 					"defaults.lyx");
 			Buffer defaults(fname);
 
@@ -1497,7 +1497,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 			if (defaults.writeFile(defaults.fileName()))
 				setMessage(_("Document defaults saved in ")
-					   + MakeDisplayPath(fname));
+					   + makeDisplayPath(fname));
 			else
 				setErrorMessage(_("Unable to save document defaults"));
 			break;
@@ -1703,11 +1703,11 @@ void LyXFunc::menuNew(string const & name, bool fromTemplate)
 	static int newfile_number;
 
 	if (filename.empty()) {
-		filename = AddName(lyxrc.document_path,
+		filename = addName(lyxrc.document_path,
 			    "newfile" + convert<string>(++newfile_number) + ".lyx");
 		while (bufferlist.exists(filename) || fs::is_readable(filename)) {
 			++newfile_number;
-			filename = AddName(lyxrc.document_path,
+			filename = addName(lyxrc.document_path,
 					   "newfile" +	convert<string>(newfile_number) +
 				    ".lyx");
 		}
@@ -1758,7 +1758,7 @@ void LyXFunc::open(string const & fname)
 			make_pair(string(_("Documents|#o#O")),
 				  string(lyxrc.document_path)),
 			make_pair(string(_("Examples|#E#e")),
-				  string(AddPath(package().system_support(), "examples"))));
+				  string(addPath(package().system_support(), "examples"))));
 
 		FileDialog::Result result =
 			fileDlg.open(initpath,
@@ -1780,12 +1780,12 @@ void LyXFunc::open(string const & fname)
 
 	// get absolute path of file and add ".lyx" to the filename if
 	// necessary
-	string const fullpath = FileSearch(string(), filename, "lyx");
+	string const fullpath = fileSearch(string(), filename, "lyx");
 	if (!fullpath.empty()) {
 		filename = fullpath;
 	}
 
-	string const disp_fn(MakeDisplayPath(filename));
+	string const disp_fn(makeDisplayPath(filename));
 
 	// if the file doesn't exist, let the user create one
 	if (!fs::exists(filename)) {
@@ -1833,7 +1833,7 @@ void LyXFunc::doImport(string const & argument)
 			make_pair(string(_("Documents|#o#O")),
 				  string(lyxrc.document_path)),
 			make_pair(string(_("Examples|#E#e")),
-				  string(AddPath(package().system_support(), "examples"))));
+				  string(addPath(package().system_support(), "examples"))));
 
 		string const filter = formats.prettyName(format)
 			+ " (*." + formats.extension(format) + ')';
@@ -1857,9 +1857,9 @@ void LyXFunc::doImport(string const & argument)
 		return;
 
 	// get absolute path of file
-	filename = MakeAbsPath(filename);
+	filename = makeAbsPath(filename);
 
-	string const lyxfile = ChangeExtension(filename, ".lyx");
+	string const lyxfile = changeExtension(filename, ".lyx");
 
 	// Check if the document already is open
 	if (lyx_gui::use_gui && bufferlist.exists(lyxfile)) {
@@ -1872,7 +1872,7 @@ void LyXFunc::doImport(string const & argument)
 	// if the file exists already, and we didn't do
 	// -i lyx thefile.lyx, warn
 	if (fs::exists(lyxfile) && filename != lyxfile) {
-		string const file = MakeDisplayPath(lyxfile, 30);
+		string const file = makeDisplayPath(lyxfile, 30);
 
 		string text = bformat(_("The document %1$s already exists.\n\n"
 			"Do you want to over-write that document?"), file);

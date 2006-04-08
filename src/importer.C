@@ -25,8 +25,8 @@
 #include "BufferView.h"
 
 using lyx::support::bformat;
-using lyx::support::ChangeExtension;
-using lyx::support::MakeDisplayPath;
+using lyx::support::changeExtension;
+using lyx::support::makeDisplayPath;
 
 using std::find;
 using std::string;
@@ -40,10 +40,10 @@ extern void InsertAsciiFile(BufferView *, string const &, bool);
 bool Importer::Import(LyXView * lv, string const & filename,
 		      string const & format)
 {
-	string const displaypath = MakeDisplayPath(filename);
+	string const displaypath = makeDisplayPath(filename);
 	lv->message(bformat(_("Importing %1$s..."), displaypath));
 
-	string const lyxfile = ChangeExtension(filename, ".lyx");
+	string const lyxfile = changeExtension(filename, ".lyx");
 
 	string loader_format;
 	vector<string> loaders = Loaders();
@@ -74,7 +74,7 @@ bool Importer::Import(LyXView * lv, string const & filename,
 		lv->view()->newFile(lyxfile, string(), true);
 		bool as_paragraphs = loader_format == "textparagraph";
 		string filename2 = (loader_format == format) ? filename
-			: ChangeExtension(filename,
+			: changeExtension(filename,
 					  formats.extension(loader_format));
 		InsertAsciiFile(lv->view().get(), filename2, as_paragraphs);
 		lv->dispatch(FuncRequest(LFUN_MARK_OFF));

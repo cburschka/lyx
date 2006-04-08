@@ -31,9 +31,9 @@
 #include <sstream>
 
 using lyx::support::isSGMLFilename;
-using lyx::support::LibFileSearch;
-using lyx::support::MakeRelPath;
-using lyx::support::OnlyPath;
+using lyx::support::libFileSearch;
+using lyx::support::makeRelPath;
+using lyx::support::onlyPath;
 
 using std::endl;
 using std::find;
@@ -75,7 +75,7 @@ void LaTeXFeatures::require(string const & name)
 void LaTeXFeatures::getAvailable()
 {
 	LyXLex lex(0, 0);
-	string real_file = LibFileSearch("", "packages.lst");
+	string real_file = libFileSearch("", "packages.lst");
 
 	if (real_file.empty())
 		return;
@@ -503,14 +503,14 @@ string const LaTeXFeatures::getLyXSGMLEntities() const
 string const LaTeXFeatures::getIncludedFiles(string const & fname) const
 {
 	ostringstream sgmlpreamble;
-	string const basename = OnlyPath(fname);
+	string const basename = onlyPath(fname);
 
 	FileMap::const_iterator end = IncludedFiles_.end();
 	for (FileMap::const_iterator fi = IncludedFiles_.begin();
 	     fi != end; ++fi)
 		sgmlpreamble << "\n<!ENTITY " << fi->first
 			     << (isSGMLFilename(fi->second) ? " SYSTEM \"" : " \"")
-			     << MakeRelPath(fi->second, basename) << "\">";
+			     << makeRelPath(fi->second, basename) << "\">";
 
 	return sgmlpreamble.str();
 }

@@ -41,9 +41,9 @@ namespace fs = boost::filesystem;
 
 namespace lyx {
 
-using support::AbsolutePath;
+using support::absolutePath;
 using support::isStrDbl;
-using support::OnlyPath;
+using support::onlyPath;
 using support::subst;
 using support::trim;
 
@@ -417,7 +417,7 @@ bool RWInfo::WriteableDir(string const & name)
 {
 	error_message.erase();
 
-	if (!AbsolutePath(name)) {
+	if (!absolutePath(name)) {
 		error_message = _("The absolute path is required.");
 		return false;
 	}
@@ -440,7 +440,7 @@ bool RWInfo::ReadableDir(string const & name)
 {
 	error_message.erase();
 
-	if (!AbsolutePath(name)) {
+	if (!absolutePath(name)) {
 		error_message = _("The absolute path is required.");
 		return false;
 	}
@@ -473,8 +473,8 @@ bool RWInfo::WriteableFile(string const & name)
 		return false;
 	}
 
-	string const dir = OnlyPath(name);
-	if (!AbsolutePath(dir)) {
+	string const dir = onlyPath(name);
+	if (!absolutePath(dir)) {
 		error_message = _("The absolute path is required.");
 		return false;
 	}
@@ -518,8 +518,8 @@ bool RWInfo::ReadableFile(string const & name)
 		return false;
 	}
 
-	string const dir = OnlyPath(name);
-	if (!AbsolutePath(dir)) {
+	string const dir = onlyPath(name);
+	if (!absolutePath(dir)) {
 		error_message = _("The absolute path is required.");
 		return false;
 	}

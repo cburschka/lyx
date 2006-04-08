@@ -24,7 +24,7 @@
 
 #include <boost/assert.hpp>
 
-using lyx::support::LibFileSearch;
+using lyx::support::libFileSearch;
 
 using std::string;
 
@@ -84,22 +84,22 @@ BulletsModule::BulletsModule(QWidget * parent,  const char * name, WFlags fl)
 
 	// insert pixmaps
 	string bmfile;
-	bmfile = LibFileSearch("images", "standard", "xpm");
+	bmfile = libFileSearch("images", "standard", "xpm");
 	standard_->insertItem(QPixmap(toqstr(bmfile)));
 
-	bmfile = LibFileSearch("images", "amssymb", "xpm");
+	bmfile = libFileSearch("images", "amssymb", "xpm");
 	maths_->insertItem(QPixmap(toqstr(bmfile)));
 
-	bmfile = LibFileSearch("images", "psnfss1", "xpm");
+	bmfile = libFileSearch("images", "psnfss1", "xpm");
 	ding1_->insertItem(QPixmap(toqstr(bmfile)));
 
-	bmfile = LibFileSearch("images", "psnfss2", "xpm");
+	bmfile = libFileSearch("images", "psnfss2", "xpm");
 	ding2_->insertItem(QPixmap(toqstr(bmfile)));
 
-	bmfile = LibFileSearch("images", "psnfss3", "xpm");
+	bmfile = libFileSearch("images", "psnfss3", "xpm");
 	ding3_->insertItem(QPixmap(toqstr(bmfile)));
 
-	bmfile = LibFileSearch("images", "psnfss4", "xpm");
+	bmfile = libFileSearch("images", "psnfss4", "xpm");
 	ding4_->insertItem(QPixmap(toqstr(bmfile)));
 
 	connect(standard_, SIGNAL(selected(int, int)),

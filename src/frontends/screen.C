@@ -44,7 +44,7 @@
 #include <boost/bind.hpp>
 #include <boost/signals/trackable.hpp>
 
-using lyx::support::LibFileSearch;
+using lyx::support::libFileSearch;
 
 using std::endl;
 using std::min;
@@ -102,7 +102,7 @@ SplashScreen::SplashScreen()
 	if (!lyxrc.show_banner)
 		return;
 
-	string const file = LibFileSearch("images", "banner", "ppm");
+	string const file = libFileSearch("images", "banner", "ppm");
 	if (file.empty())
 		return;
 

@@ -27,9 +27,9 @@
 
 #include <sstream>
 
-using lyx::support::LibFileSearch;
-using lyx::support::MakeDisplayPath;
-using lyx::support::QuoteName;
+using lyx::support::libFileSearch;
+using lyx::support::makeDisplayPath;
+using lyx::support::quoteName;
 using lyx::support::rtrim;
 using lyx::support::subst;
 
@@ -61,7 +61,7 @@ int const FORMAT = 2;
 
 bool layout2layout(string const & filename, string const & tempfile)
 {
-	string const script = LibFileSearch("scripts", "layout2layout.py");
+	string const script = libFileSearch("scripts", "layout2layout.py");
 	if (script.empty()) {
 		lyxerr << "Could not find layout conversion "
 			  "script layout2layout.py." << endl;
@@ -69,15 +69,15 @@ bool layout2layout(string const & filename, string const & tempfile)
 	}
 
 	std::ostringstream command;
-	command << "python " << QuoteName(script)
-		<< ' ' << QuoteName(filename)
-		<< ' ' << QuoteName(tempfile);
+	command << "python " << quoteName(script)
+		<< ' ' << quoteName(filename)
+		<< ' ' << quoteName(tempfile);
 	string const command_str = command.str();
 
 	lyxerr[Debug::TCLASS] << "Running `" << command_str << '\'' << endl;
 
 	lyx::support::cmd_ret const ret =
-		lyx::support::RunCommand(command_str);
+		lyx::support::runCommand(command_str);
 	if (ret.first != 0) {
 		lyxerr << "Could not run layout conversion "
 			  "script layout2layout.py." << endl;
@@ -205,11 +205,11 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 
 	if (!merge)
 		lyxerr[Debug::TCLASS] << "Reading textclass "
-				      << MakeDisplayPath(filename)
+				      << makeDisplayPath(filename)
 				      << endl;
 	else
 		lyxerr[Debug::TCLASS] << "Reading input file "
-				     << MakeDisplayPath(filename)
+				     << makeDisplayPath(filename)
 				     << endl;
 
 	LyXLex lexrc(textClassTags,
@@ -251,7 +251,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 
 		case TC_INPUT: // Include file
 			if (lexrc.next()) {
-				string tmp = LibFileSearch("layouts",
+				string tmp = libFileSearch("layouts",
 							    lexrc.getString(),
 							    "layout");
 
@@ -442,7 +442,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 
 	if (!merge) { // we are at top level here.
 		lyxerr[Debug::TCLASS] << "Finished reading textclass "
-				      << MakeDisplayPath(filename)
+				      << makeDisplayPath(filename)
 				      << endl;
 		if (defaultlayout_.empty()) {
 			lyxerr << "Error: Textclass '" << name_
@@ -472,7 +472,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 
 	} else
 		lyxerr[Debug::TCLASS] << "Finished reading input file "
-				      << MakeDisplayPath(filename)
+				      << makeDisplayPath(filename)
 				      << endl;
 
 	return error;
@@ -916,12 +916,12 @@ bool LyXTextClass::load() const
 		return true;
 
 	// Read style-file
-	string const real_file = LibFileSearch("layouts", name_, "layout");
+	string const real_file = libFileSearch("layouts", name_, "layout");
 	loaded_ = const_cast<LyXTextClass*>(this)->Read(real_file) == 0;
 
 	if (!loaded_) {
 		lyxerr << "Error reading `"
-		       << MakeDisplayPath(real_file)
+		       << makeDisplayPath(real_file)
 		       << "'\n(Check `" << name_
 		       << "')\nCheck your installation and "
 			"try Options/Reconfigure..." << endl;

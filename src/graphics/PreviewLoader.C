@@ -498,12 +498,12 @@ void PreviewLoader::Impl::startLoading()
 	// The conversion command.
 	ostringstream cs;
 	cs << pconverter_->command << ' ' << pconverter_->to << ' '
-	   << support::QuoteName(latexfile) << ' '
+	   << support::quoteName(latexfile) << ' '
 	   << int(font_scaling_factor_) << ' '
 	   << lyx_gui::hexname(LColor::preview) << ' '
 	   << lyx_gui::hexname(LColor::background);
 
-	string const command = support::LibScriptSearch(cs.str());
+	string const command = support::libScriptSearch(cs.str());
 
 	// Initiate the conversion from LaTeX to bitmap images files.
 	support::Forkedcall::SignalTypePtr
@@ -654,7 +654,7 @@ string const unique_filename(string const bufferpath)
 {
 	static int theCounter = 0;
 	string const filename = convert<string>(theCounter++) + "lyxpreview";
-	return support::AddName(bufferpath, filename);
+	return support::addName(bufferpath, filename);
 }
 
 

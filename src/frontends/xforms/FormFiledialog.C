@@ -35,13 +35,13 @@
 #include <algorithm>
 #include <sstream>
 
-using lyx::support::AbsolutePath;
-using lyx::support::AddName;
-using lyx::support::ExpandPath;
+using lyx::support::absolutePath;
+using lyx::support::addName;
+using lyx::support::expandPath;
 using lyx::support::FileFilterList;
 using lyx::support::getcwd;
-using lyx::support::MakeAbsPath;
-using lyx::support::OnlyFilename;
+using lyx::support::makeAbsPath;
+using lyx::support::onlyFilename;
 using lyx::support::package;
 using lyx::support::split;
 using lyx::support::suffixIs;
@@ -228,7 +228,7 @@ void FileDialog::Private::SetDirectory(string const & path)
 	if (path.empty())
 		tmp = getcwd();
 	else
-		tmp = MakeAbsPath(ExpandPath(path), directory_);
+		tmp = makeAbsPath(expandPath(path), directory_);
 
 	// must check the directory exists
 	if (!fs::exists(tmp) || !fs::is_directory(tmp)) {
@@ -274,7 +274,7 @@ void FileDialog::Private::SetFilters(FileFilterList const & filters)
 
 FileDialog::Private::Private()
 {
-	directory_ = MakeAbsPath(string("."));
+	directory_ = makeAbsPath(string("."));
 
 	// Creates form if necessary.
 	if (!file_dlg_form_) {
@@ -591,7 +591,7 @@ string const FileDialog::Private::Select(string const & title,
 
 	// highlight the suggested file in the browser, if it exists.
 	int sel = 0;
-	string const filename = OnlyFilename(suggested);
+	string const filename = onlyFilename(suggested);
 	if (!filename.empty()) {
 		for (int i = 0; i < fl_get_browser_maxline(file_dlg_form_->List); ++i) {
 			string s = fl_get_browser_line(file_dlg_form_->List, i + 1);
@@ -642,8 +642,8 @@ string const FileDialog::Private::Select(string const & title,
 
 	file_name_ = fl_get_input(file_dlg_form_->Filename);
 
-	if (!AbsolutePath(file_name_))
-		file_name_ = AddName(fl_get_input(file_dlg_form_->DirBox), file_name_);
+	if (!absolutePath(file_name_))
+		file_name_ = addName(fl_get_input(file_dlg_form_->DirBox), file_name_);
 	return file_name_;
 }
 

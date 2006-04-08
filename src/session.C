@@ -23,7 +23,7 @@
 #include <algorithm>
 #include <iterator>
 
-using lyx::support::AddName;
+using lyx::support::addName;
 using lyx::support::package;
 
 namespace fs = boost::filesystem;
@@ -65,7 +65,7 @@ Session::Session(unsigned int num) :
 	setNumberOfLastFiles(num);
 	// locate the session file
 	// note that the session file name 'session' is hard-coded
-	session_file = AddName(package().user_support(), "session");
+	session_file = addName(package().user_support(), "session");
 	//
 	readFile();
 }

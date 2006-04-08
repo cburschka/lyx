@@ -11,20 +11,20 @@ string _(string const & str)
 	return str;
 }
 
-void test_NormalizePath()
+void test_normalizePath()
 {
-	cout << NormalizePath("foo/../bar") << endl;
-	cout << NormalizePath("foo/./bar") << endl;
-	cout << NormalizePath("./foo/../bar") << endl;
-	cout << NormalizePath("./foo/./bar") << endl;
-	cout << NormalizePath("/foo/../bar") << endl;
-	cout << NormalizePath("/foo/./bar") << endl;
-	cout << NormalizePath("foo//bar") << endl;	
-	cout << NormalizePath("./foo//bar") << endl;	
-	cout << NormalizePath("/foo//bar") << endl;	
+	cout << normalizePath("foo/../bar") << endl;
+	cout << normalizePath("foo/./bar") << endl;
+	cout << normalizePath("./foo/../bar") << endl;
+	cout << normalizePath("./foo/./bar") << endl;
+	cout << normalizePath("/foo/../bar") << endl;
+	cout << normalizePath("/foo/./bar") << endl;
+	cout << normalizePath("foo//bar") << endl;
+	cout << normalizePath("./foo//bar") << endl;
+	cout << normalizePath("/foo//bar") << endl;
 }
 
 int main()
 {
-	test_NormalizePath();
+	test_normalizePath();
 }

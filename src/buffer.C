@@ -94,27 +94,27 @@
 using lyx::pos_type;
 using lyx::pit_type;
 
-using lyx::support::AddName;
+using lyx::support::addName;
 using lyx::support::bformat;
-using lyx::support::ChangeExtension;
+using lyx::support::changeExtension;
 using lyx::support::cmd_ret;
 using lyx::support::createBufferTmpDir;
 using lyx::support::destroyDir;
 using lyx::support::getFormatFromContents;
 using lyx::support::isDirWriteable;
-using lyx::support::LibFileSearch;
+using lyx::support::libFileSearch;
 using lyx::support::latex_path;
 using lyx::support::ltrim;
-using lyx::support::MakeAbsPath;
-using lyx::support::MakeDisplayPath;
-using lyx::support::MakeLatexName;
-using lyx::support::OnlyFilename;
-using lyx::support::OnlyPath;
+using lyx::support::makeAbsPath;
+using lyx::support::makeDisplayPath;
+using lyx::support::makeLatexName;
+using lyx::support::onlyFilename;
+using lyx::support::onlyPath;
 using lyx::support::Path;
-using lyx::support::QuoteName;
+using lyx::support::quoteName;
 using lyx::support::removeAutosaveFile;
 using lyx::support::rename;
-using lyx::support::RunCommand;
+using lyx::support::runCommand;
 using lyx::support::split;
 using lyx::support::subst;
 using lyx::support::tempName;
@@ -202,7 +202,7 @@ public:
 
 Buffer::Impl::Impl(Buffer & parent, string const & file, bool readonly_)
 	: lyx_clean(true), bak_clean(true), unnamed(false), read_only(readonly_),
-	  filename(file), filepath(OnlyPath(file)), file_fully_loaded(false),
+	  filename(file), filepath(onlyPath(file)), file_fully_loaded(false),
 		inset(params)
 {
 	inset.setAutoBreakRows(true);
@@ -331,8 +331,8 @@ TexRow const & Buffer::texrow() const
 
 string const Buffer::getLatexName(bool const no_path) const
 {
-	string const name = ChangeExtension(MakeLatexName(fileName()), ".tex");
-	return no_path ? OnlyFilename(name) : name;
+	string const name = changeExtension(makeLatexName(fileName()), ".tex");
+	return no_path ? onlyFilename(name) : name;
 }
 
 
@@ -345,12 +345,12 @@ pair<Buffer::LogType, string> const Buffer::getLogName() const
 
 	string const path = temppath();
 
-	string const fname = AddName(path,
-				     OnlyFilename(ChangeExtension(filename,
+	string const fname = addName(path,
+				     onlyFilename(changeExtension(filename,
 								  ".log")));
 	string const bname =
-		AddName(path, OnlyFilename(
-			ChangeExtension(filename,
+		addName(path, onlyFilename(
+			changeExtension(filename,
 					formats.extension("literate") + ".out")));
 
 	// If no Latex log or Build log is newer, show Build log
@@ -376,8 +376,8 @@ void Buffer::setReadonly(bool const flag)
 
 void Buffer::setFileName(string const & newfile)
 {
-	pimpl_->filename = MakeAbsPath(newfile);
-	pimpl_->filepath = OnlyPath(pimpl_->filename);
+	pimpl_->filename = makeAbsPath(newfile);
+	pimpl_->filepath = onlyPath(pimpl_->filename);
 	setReadonly(fs::is_readonly(pimpl_->filename));
 	updateTitles();
 }
@@ -631,7 +631,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename)
 					      filename));
 			return false;
 		}
-		string const lyx2lyx = LibFileSearch("lyx2lyx", "lyx2lyx");
+		string const lyx2lyx = libFileSearch("lyx2lyx", "lyx2lyx");
 		if (lyx2lyx.empty()) {
 			Alert::error(_("Conversion script not found"),
 				     bformat(_("%1$s is from an earlier"
@@ -642,17 +642,17 @@ bool Buffer::readFile(LyXLex & lex, string const & filename)
 			return false;
 		}
 		ostringstream command;
-		command << "python " << QuoteName(lyx2lyx)
+		command << "python " << quoteName(lyx2lyx)
 			<< " -t " << convert<string>(LYX_FORMAT)
-			<< " -o " << QuoteName(tmpfile) << ' '
-			<< QuoteName(filename);
+			<< " -o " << quoteName(tmpfile) << ' '
+			<< quoteName(filename);
 		string const command_str = command.str();
 
 		lyxerr[Debug::INFO] << "Running '"
 				    << command_str << '\''
 				    << endl;
 
-		cmd_ret const ret = RunCommand(command_str);
+		cmd_ret const ret = runCommand(command_str);
 		if (ret.first != 0) {
 			Alert::error(_("Conversion script failed"),
 				     bformat(_("%1$s is from an earlier version"
@@ -695,7 +695,7 @@ bool Buffer::save() const
 	if (lyxrc.make_backup) {
 		s = fileName() + '~';
 		if (!lyxrc.backupdir_path.empty())
-			s = AddName(lyxrc.backupdir_path,
+			s = addName(lyxrc.backupdir_path,
 				    subst(os::internal_path(s),'/','!'));
 
 		// It might very well be that this variant is just
@@ -999,7 +999,7 @@ void Buffer::makeLinuxDocFile(string const & fname,
 		ofs << tclass.class_header();
 
 		string preamble = params().preamble;
-		string const name = runparams.nice ? ChangeExtension(pimpl_->filename, ".sgml")
+		string const name = runparams.nice ? changeExtension(pimpl_->filename, ".sgml")
 			 : fname;
 		preamble += features.getIncludedFiles(name);
 		preamble += features.getLyXSGMLEntities();
@@ -1074,7 +1074,7 @@ void Buffer::makeDocBookFile(string const & fname,
 			preamble += "<!ENTITY % output.print.bmp \"IGNORE\">\n";
 		}
 
-		string const name = runparams.nice ? ChangeExtension(pimpl_->filename, ".sgml")
+		string const name = runparams.nice ? changeExtension(pimpl_->filename, ".sgml")
 			 : fname;
 		preamble += features.getIncludedFiles(name);
 		preamble += features.getLyXSGMLEntities();

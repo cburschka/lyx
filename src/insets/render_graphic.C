@@ -31,8 +31,8 @@
 
 namespace graphics = lyx::graphics;
 
-using lyx::support::AbsolutePath;
-using lyx::support::OnlyFilename;
+using lyx::support::absolutePath;
+using lyx::support::onlyFilename;
 
 using std::string;
 using std::auto_ptr;
@@ -67,7 +67,7 @@ void RenderGraphic::update(graphics::Params const & params)
 	params_ = params;
 
 	if (!params_.filename.empty()) {
-		BOOST_ASSERT(AbsolutePath(params_.filename));
+		BOOST_ASSERT(absolutePath(params_.filename));
 		loader_.reset(params_.filename, params_);
 	}
 }
@@ -142,7 +142,7 @@ void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 		LyXFont msgFont(mi.base.font);
 		msgFont.setFamily(LyXFont::SANS_FAMILY);
 
-		string const justname = OnlyFilename(params_.filename);
+		string const justname = onlyFilename(params_.filename);
 		if (!justname.empty()) {
 			msgFont.setSize(LyXFont::SIZE_FOOTNOTE);
 			font_width = font_metrics::width(justname, msgFont);
@@ -191,7 +191,7 @@ void RenderGraphic::draw(PainterInfo & pi, int x, int y) const
 		// Print the file name.
 		LyXFont msgFont = pi.base.font;
 		msgFont.setFamily(LyXFont::SANS_FAMILY);
-		string const justname = OnlyFilename(params_.filename);
+		string const justname = onlyFilename(params_.filename);
 
 		if (!justname.empty()) {
 			msgFont.setSize(LyXFont::SIZE_FOOTNOTE);

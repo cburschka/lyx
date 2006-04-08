@@ -30,14 +30,14 @@ using std::endl;
 namespace lyx {
 
 using support::contains;
-using support::GetExtension;
-using support::GetFileContents;
+using support::getExtension;
+using support::getFileContents;
 using support::getVectorFromString;
-using support::LibFileSearch;
-using support::OnlyFilename;
+using support::libFileSearch;
+using support::onlyFilename;
 using support::package;
 using support::Path;
-using support::QuoteName;
+using support::quoteName;
 using support::split;
 using support::Systemcall;
 using support::token;
@@ -53,7 +53,7 @@ void rescanTexStyles()
 	Systemcall one;
 	one.startscript(Systemcall::Wait,
 			"sh " +
-			QuoteName(LibFileSearch("scripts", "TeXFiles.sh")));
+			quoteName(libFileSearch("scripts", "TeXFiles.sh")));
 }
 
 
@@ -71,11 +71,11 @@ void texhash()
 void getTexFileList(string const & filename, std::vector<string> & list)
 {
 	list.clear();
-	string const file = LibFileSearch("", filename);
+	string const file = libFileSearch("", filename);
 	if (file.empty())
 		return;
 
-	list = getVectorFromString(GetFileContents(file), "\n");
+	list = getVectorFromString(getFileContents(file), "\n");
 
 	// Normalise paths like /foo//bar ==> /foo/bar
 	boost::RegEx regex("/{2,}");
@@ -115,7 +115,7 @@ string const getTexFileFromList(string const & file,
 {
 	string file_ = file;
 	// do we need to add the suffix?
-	if (!(GetExtension(file) == type))
+	if (!(getExtension(file) == type))
 		file_ += '.' + type;
 
 	lyxerr << "Searching for file " << file_ << endl;
@@ -129,13 +129,13 @@ string const getTexFileFromList(string const & file,
 		lstfile = "bstFiles.lst";
 	else if (type == "bib")
 		lstfile = "bibFiles.lst";
-	string const allClasses = GetFileContents(LibFileSearch(string(),
+	string const allClasses = getFileContents(libFileSearch(string(),
 								lstfile));
 	int entries = 0;
 	string classfile = token(allClasses, '\n', entries);
 	int count = 0;
 	while ((!contains(classfile, file) ||
-		(OnlyFilename(classfile) != file)) &&
+		(onlyFilename(classfile) != file)) &&
 		(++count < 1000)) {
 		classfile = token(allClasses, '\n', ++entries);
 	}

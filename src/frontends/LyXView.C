@@ -46,8 +46,8 @@
 # include <unistd.h>
 #endif
 
-using lyx::support::MakeDisplayPath;
-using lyx::support::OnlyFilename;
+using lyx::support::makeDisplayPath;
+using lyx::support::onlyFilename;
 
 using std::endl;
 using std::string;
@@ -179,8 +179,8 @@ void LyXView::updateWindowTitle()
 	if (view()->available()) {
 		string const cur_title = buffer()->fileName();
 		if (!cur_title.empty()) {
-			maximize_title += ": " + MakeDisplayPath(cur_title, 30);
-			minimize_title = OnlyFilename(cur_title);
+			maximize_title += ": " + makeDisplayPath(cur_title, 30);
+			minimize_title = onlyFilename(cur_title);
 			if (!buffer()->isClean()) {
 				maximize_title += _(" (changed)");
 				minimize_title += '*';

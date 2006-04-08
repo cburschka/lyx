@@ -32,8 +32,6 @@ using std::string;
 
 namespace lyx {
 
-using support::LibFileSearch;
-using support::OnlyPath;
 using support::Systemcall;
 
 namespace frontend {

@@ -19,7 +19,7 @@
 #include "trans_mgr.h"
 
 using lyx::support::contains;
-using lyx::support::LibFileSearch;
+using lyx::support::libFileSearch;
 
 using std::endl;
 using std::string;
@@ -325,7 +325,7 @@ string const Trans::process(char c, TransManager & k)
 
 int Trans::Load(string const & language)
 {
-	string const filename = LibFileSearch("kbd", language, "kmap");
+	string const filename = libFileSearch("kbd", language, "kmap");
 	if (filename.empty())
 		return -1;
 

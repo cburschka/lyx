@@ -22,7 +22,7 @@ using std::vector;
 
 namespace lyx {
 
-using support::OnlyFilename;
+using support::onlyFilename;
 
 namespace frontend {
 
@@ -54,7 +54,7 @@ void getTexFileList(ControlTexinfo::texFileSuffix type,
 	vector<string>::iterator it  = list.begin();
 	vector<string>::iterator end = list.end();
 	for (; it != end; ++it) {
-		*it = OnlyFilename(*it);
+		*it = onlyFilename(*it);
 	}
 	// sort on filename only (no path)
 	std::sort(list.begin(), list.end());

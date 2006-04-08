@@ -30,8 +30,8 @@ using std::time;
 #endif
 
 using lyx::support::ltrim;
-using lyx::support::MakeAbsPath;
-using lyx::support::OnlyFilename;
+using lyx::support::makeAbsPath;
+using lyx::support::onlyFilename;
 using lyx::support::suffixIs;
 using lyx::support::sum;
 
@@ -52,7 +52,7 @@ bool DepTable::dep_info::changed() const
 void DepTable::insert(string const & fi, bool upd)
 {
 	// not quite sure if this is the correct place for MakeAbsPath
-	string const f = MakeAbsPath(fi);
+	string const f = makeAbsPath(fi);
 	if (deplist.find(f) == deplist.end()) {
 		dep_info di;
 		di.crc_prev = 0;
@@ -132,7 +132,7 @@ bool DepTable::sumchange() const
 bool DepTable::haschanged(string const & f) const
 {
 	// not quite sure if this is the correct place for MakeAbsPath
-	string const fil = MakeAbsPath(f);
+	string const fil = makeAbsPath(f);
 	DepList::const_iterator cit = deplist.find(fil);
 	if (cit != deplist.end()) {
 		if (cit->second.changed())
@@ -199,7 +199,7 @@ void DepTable::remove_file(string const & filename)
 	DepList::iterator cit = deplist.begin();
 	DepList::iterator end = deplist.end();
 	while (cit != end) {
-		if (OnlyFilename(cit->first) == filename) {
+		if (onlyFilename(cit->first) == filename) {
 			// Can't erase the current iterator, but we
 			// can increment and then erase.
 			// deplist is a map so only the erased

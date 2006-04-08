@@ -35,9 +35,9 @@
 #endif
 
 using lyx::support::contains;
-using lyx::support::LibFileSearch;
-using lyx::support::OnlyPath;
-using lyx::support::QuoteName;
+using lyx::support::libFileSearch;
+using lyx::support::onlyPath;
+using lyx::support::quoteName;
 using lyx::support::Systemcall;
 
 using std::endl;

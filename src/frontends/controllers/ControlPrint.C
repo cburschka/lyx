@@ -29,7 +29,7 @@ using std::string;
 
 namespace lyx {
 
-using support::ChangeExtension;
+using support::changeExtension;
 using support::FileFilterList;
 
 namespace frontend {
@@ -44,10 +44,10 @@ ControlPrint::ControlPrint(Dialog & parent)
 bool ControlPrint::initialiseParams(std::string const &)
 {
 	/// get global printer parameters
-	string const name =  ChangeExtension(kernel().buffer().fileName(),
+	string const name =  changeExtension(kernel().buffer().fileName(),
 					lyxrc.print_file_extension);
-	params_.reset(new PrinterParams (PrinterParams::PRINTER,
-					 lyxrc.printer, name));
+	params_.reset(new PrinterParams(PrinterParams::PRINTER,
+					lyxrc.printer, name));
 
 	dialog().bc().valid(); // so that the user can press Ok
 	return true;

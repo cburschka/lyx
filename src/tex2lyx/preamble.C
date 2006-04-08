@@ -34,7 +34,7 @@ using std::vector;
 using std::cerr;
 using std::endl;
 
-using lyx::support::LibFileSearch;
+using lyx::support::libFileSearch;
 
 // special columntypes
 extern std::map<char, int> special_columns;
@@ -485,7 +485,7 @@ LyXTextClass const parse_preamble(Parser & p, ostream & os, string const & force
 	if (!forceclass.empty()) {
 		h_textclass = forceclass;
 	}
-	string layoutfilename = LibFileSearch("layouts", h_textclass, "layout");
+	string layoutfilename = libFileSearch("layouts", h_textclass, "layout");
 	if (layoutfilename.empty()) {
 		cerr << "Error: Could not find layout file for textclass \"" << h_textclass << "\"." << endl;
 		exit(1);

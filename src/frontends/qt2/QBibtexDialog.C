@@ -30,7 +30,7 @@
 #include <qlineedit.h>
 #include <qlistbox.h>
 
-using lyx::support::ChangeExtension;
+using lyx::support::changeExtension;
 using lyx::support::trim;
 
 using std::string;
@@ -97,7 +97,7 @@ void QBibtexDialog::browsePressed()
 	string const file = form_->controller().browseBst("");
 
 	if (!file.empty()) {
-		string const filen = ChangeExtension(file, "");
+		string const filen = changeExtension(file, "");
 		bool present = false;
 		unsigned int pres = 0;
 
@@ -122,7 +122,7 @@ void QBibtexDialog::browseBibPressed()
 	string const file = trim(form_->controller().browseBib(""));
 
 	if (!file.empty()) {
-		string const f = ChangeExtension(file, "");
+		string const f = changeExtension(file, "");
 		bool present = false;
 
 		for (unsigned int i = 0; i != add_->bibLB->count(); i++) {
@@ -166,7 +166,7 @@ void QBibtexDialog::addDatabase()
 	}
 
 	if (!file.empty()) {
-		QString const f = toqstr(ChangeExtension(file, ""));
+		QString const f = toqstr(changeExtension(file, ""));
 		if ((databaseLB->findItem(f)) == 0)
 			databaseLB->insertItem(f);
 	}

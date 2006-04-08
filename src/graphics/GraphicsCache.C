@@ -66,7 +66,7 @@ std::vector<string> Cache::loadableFormats() const
 
 void Cache::add(string const & file) const
 {
-	if (!support::AbsolutePath(file)) {
+	if (!support::absolutePath(file)) {
 		lyxerr << "Cache::add(" << file << "):\n"
 		       << "The file must be have an absolute path."
 		       << std::endl;

@@ -22,7 +22,7 @@
 
 #include <fstream>
 
-using lyx::support::LibFileSearch;
+using lyx::support::libFileSearch;
 
 using boost::regex;
 using boost::smatch;
@@ -48,7 +48,7 @@ bool CharacterSet::loadFile(string const & fname)
 	// open definition file
 	lyxerr[Debug::KBMAP]
 		<< "Reading character set file " << fname << ".cdef" << endl;
-	string const filename = LibFileSearch("kbd", fname, "cdef");
+	string const filename = libFileSearch("kbd", fname, "cdef");
 	ifstream ifs(filename.c_str());
 	if (!ifs) {
 		lyxerr << "Unable to open character set file" << endl;

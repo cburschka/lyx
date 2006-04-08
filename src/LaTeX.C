@@ -32,15 +32,15 @@
 
 #include <fstream>
 
-using lyx::support::AbsolutePath;
+using lyx::support::absolutePath;
 using lyx::support::bformat;
-using lyx::support::ChangeExtension;
+using lyx::support::changeExtension;
 using lyx::support::contains;
 using lyx::support::findtexfile;
 using lyx::support::getcwd;
-using lyx::support::OnlyFilename;
+using lyx::support::onlyFilename;
 using lyx::support::prefixIs;
-using lyx::support::QuoteName;
+using lyx::support::quoteName;
 using lyx::support::rtrim;
 using lyx::support::split;
 using lyx::support::subst;
@@ -128,9 +128,9 @@ LaTeX::LaTeX(string const & latex, OutputParams const & rp,
 	depfile = file + ".dep";
 	if (prefixIs(cmd, "pdf")) { // Do we use pdflatex ?
 		depfile += "-pdf";
-		output_file = ChangeExtension(file,".pdf");
+		output_file = changeExtension(file,".pdf");
 	} else {
-		output_file = ChangeExtension(file,".dvi");
+		output_file = changeExtension(file,".dvi");
 	}
 }
 
@@ -146,18 +146,18 @@ void LaTeX::deleteFilesOnError() const
 
 	// but the reason for the error might be in a generated file...
 
-	string const ofname = OnlyFilename(file);
+	string const ofname = onlyFilename(file);
 
 	// bibtex file
-	string const bbl = ChangeExtension(ofname, ".bbl");
+	string const bbl = changeExtension(ofname, ".bbl");
 	unlink(bbl);
 
 	// makeindex file
-	string const ind = ChangeExtension(ofname, ".ind");
+	string const ind = changeExtension(ofname, ".ind");
 	unlink(ind);
 
 	// Also remove the aux file
-	string const aux = ChangeExtension(ofname, ".aux");
+	string const aux = changeExtension(ofname, ".aux");
 	unlink(aux);
 }
 
@@ -199,7 +199,7 @@ int LaTeX::run(TeXErrors & terr)
 
 	bool had_depfile = fs::exists(depfile);
 	bool run_bibtex = false;
-	string aux_file = OnlyFilename(ChangeExtension(file, "aux"));
+	string aux_file = onlyFilename(changeExtension(file, "aux"));
 
 	if (had_depfile) {
 		lyxerr[Debug::DEPEND] << "Dependency file exists" << endl;
@@ -270,11 +270,11 @@ int LaTeX::run(TeXErrors & terr)
 	// if needed.
 
 	// run makeindex
-	if (head.haschanged(OnlyFilename(ChangeExtension(file, ".idx")))) {
+	if (head.haschanged(onlyFilename(changeExtension(file, ".idx")))) {
 		// no checks for now
 		lyxerr[Debug::LATEX] << "Running MakeIndex." << endl;
 		message(_("Running MakeIndex."));
-		rerun = runMakeIndex(OnlyFilename(ChangeExtension(file, ".idx")), runparams);
+		rerun = runMakeIndex(onlyFilename(changeExtension(file, ".idx")), runparams);
 	}
 
 	// run bibtex
@@ -338,11 +338,11 @@ int LaTeX::run(TeXErrors & terr)
 	// more after this.
 
 	// run makeindex if the <file>.idx has changed or was generated.
-	if (head.haschanged(OnlyFilename(ChangeExtension(file, ".idx")))) {
+	if (head.haschanged(onlyFilename(changeExtension(file, ".idx")))) {
 		// no checks for now
 		lyxerr[Debug::LATEX] << "Running MakeIndex." << endl;
 		message(_("Running MakeIndex."));
-		rerun = runMakeIndex(OnlyFilename(ChangeExtension(file, ".idx")), runparams);
+		rerun = runMakeIndex(onlyFilename(changeExtension(file, ".idx")), runparams);
 	}
 
 	// 2
@@ -383,7 +383,7 @@ int LaTeX::run(TeXErrors & terr)
 
 int LaTeX::startscript()
 {
-	string tmp = cmd + ' ' + QuoteName(file) + " > " + os::nulldev();
+	string tmp = cmd + ' ' + quoteName(file) + " > " + os::nulldev();
 	Systemcall one;
 	return one.startscript(Systemcall::Wait, tmp);
 }
@@ -396,7 +396,7 @@ bool LaTeX::runMakeIndex(string const & f, OutputParams const & runparams)
 			     <<  f << endl;
 	string tmp = lyxrc.index_command + " ";
 	tmp = subst(tmp, "$$lang", runparams.document_language);
-	tmp += QuoteName(f);
+	tmp += quoteName(f);
 	Systemcall one;
 	one.startscript(Systemcall::Wait, tmp);
 	return true;
@@ -411,7 +411,7 @@ LaTeX::scanAuxFiles(string const & file)
 	result.push_back(scanAuxFile(file));
 
 	for (int i = 1; i < 1000; ++i) {
-		string const file2 = ChangeExtension(file, "")
+		string const file2 = changeExtension(file, "")
 			+ '.' + convert<string>(i)
 			+ ".aux";
 		if (!fs::exists(file2))
@@ -461,7 +461,7 @@ void LaTeX::scanAuxFile(string const & file, Aux_Info & aux_info)
 			while (!data.empty()) {
 				string database;
 				data = split(data, database, ',');
-				database = ChangeExtension(database, "bib");
+				database = changeExtension(database, "bib");
 				lyxerr[Debug::LATEX] << "BibTeX database: `"
 						     << database << '\'' << endl;
 				aux_info.databases.insert(database);
@@ -470,7 +470,7 @@ void LaTeX::scanAuxFile(string const & file, Aux_Info & aux_info)
 			string style = sub.str(1);
 			// token is now the style file
 			// pass it to the helper
-			style = ChangeExtension(style, "bst");
+			style = changeExtension(style, "bst");
 			lyxerr[Debug::LATEX] << "BibTeX style: `"
 					     << style << '\'' << endl;
 			aux_info.styles.insert(style);
@@ -520,7 +520,7 @@ bool LaTeX::runBibTeX(vector<Aux_Info> const & bibtex_info)
 		result = true;
 
 		string tmp = lyxrc.bibtex_command + " ";
-		tmp += QuoteName(OnlyFilename(ChangeExtension(it->aux_file, string())));
+		tmp += quoteName(onlyFilename(changeExtension(it->aux_file, string())));
 		Systemcall one;
 		one.startscript(Systemcall::Wait, tmp);
 	}
@@ -534,7 +534,7 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 	int last_line = -1;
 	int line_count = 1;
 	int retval = NO_ERRORS;
-	string tmp = OnlyFilename(ChangeExtension(file, ".log"));
+	string tmp = onlyFilename(changeExtension(file, ".log"));
 	lyxerr[Debug::LATEX] << "Log file: " << tmp << endl;
 	ifstream ifs(tmp.c_str());
 
@@ -682,7 +682,7 @@ void handleFoundFile(string const & ff, DepTable & head)
 	// (1) foundfile is an
 	//     absolute path and should
 	//     be inserted.
-	if (AbsolutePath(foundfile)) {
+	if (absolutePath(foundfile)) {
 		lyxerr[Debug::DEPEND] << "AbsolutePath file: "
 				      << foundfile << endl;
 		// On initial insert we want to do the update at once
@@ -694,7 +694,7 @@ void handleFoundFile(string const & ff, DepTable & head)
 		return;
 	}
 
-	string const onlyfile = OnlyFilename(foundfile);
+	string const onlyfile = onlyFilename(foundfile);
 
 	// (2) foundfile is in the tmpdir
 	//     insert it into head
@@ -737,7 +737,7 @@ void LaTeX::deplog(DepTable & head)
 	// files used by the LaTeX run. The files are then entered into the
 	// dependency file.
 
-	string const logfile = OnlyFilename(ChangeExtension(file, ".log"));
+	string const logfile = onlyFilename(changeExtension(file, ".log"));
 
 	static regex reg1(".*\\([^)]+.*");
 	static regex reg2("File: ([^ ]+).*");
@@ -788,5 +788,5 @@ void LaTeX::deplog(DepTable & head)
 	}
 
 	// Make sure that the main .tex file is in the dependancy file.
-	head.insert(OnlyFilename(file), true);
+	head.insert(onlyFilename(file), true);
 }

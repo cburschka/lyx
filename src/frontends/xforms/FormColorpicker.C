@@ -286,7 +286,7 @@ void FormColorpicker::prepare_to_show()
 
 	//  assign an icon to the form
 	string const iconname =
-		support::LibFileSearch("images", "lyx", "xpm");
+		support::libFileSearch("images", "lyx", "xpm");
 
 	if (!iconname.empty()) {
 		unsigned int w, h;

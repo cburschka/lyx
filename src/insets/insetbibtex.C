@@ -36,9 +36,9 @@
 #include <fstream>
 #include <sstream>
 
-using lyx::support::AbsolutePath;
+using lyx::support::absolutePath;
 using lyx::support::ascii_lowercase;
-using lyx::support::ChangeExtension;
+using lyx::support::changeExtension;
 using lyx::support::contains;
 using lyx::support::copy;
 using lyx::support::FileName;
@@ -46,8 +46,8 @@ using lyx::support::findtexfile;
 using lyx::support::isFileReadable;
 using lyx::support::latex_path;
 using lyx::support::ltrim;
-using lyx::support::MakeAbsPath;
-using lyx::support::MakeRelPath;
+using lyx::support::makeAbsPath;
+using lyx::support::makeRelPath;
 using lyx::support::Path;
 using lyx::support::prefixIs;
 using lyx::support::removeExtension;
@@ -111,13 +111,13 @@ namespace {
 string normalize_name(Buffer const & buffer, OutputParams const & runparams,
 		      string const & name, string const & ext)
 {
-	string const fname = MakeAbsPath(name, buffer.filePath());
-	if (AbsolutePath(name) || !isFileReadable(fname + ext))
+	string const fname = makeAbsPath(name, buffer.filePath());
+	if (absolutePath(name) || !isFileReadable(fname + ext))
 		return name;
 	else if (!runparams.nice)
 		return fname;
 	else
-		return MakeRelPath(fname, buffer.getMasterBuffer()->filePath());
+		return makeRelPath(fname, buffer.getMasterBuffer()->filePath());
 }
 
 }
@@ -166,7 +166,7 @@ int InsetBibtex::latex(Buffer const & buffer, ostream & os,
 
 			// mangledFilename() needs the extension
 			database = removeExtension(FileName(in_file).mangledFilename());
-			string const out_file = MakeAbsPath(database + ".bib",
+			string const out_file = makeAbsPath(database + ".bib",
 					buffer.getMasterBuffer()->temppath());
 
 			bool const success = copy(in_file, out_file);
@@ -221,7 +221,7 @@ int InsetBibtex::latex(Buffer const & buffer, ostream & os,
 			// use new style name
 			base = removeExtension(
 					FileName(in_file).mangledFilename());
-			string const out_file = MakeAbsPath(base + ".bst",
+			string const out_file = makeAbsPath(base + ".bst",
 					buffer.getMasterBuffer()->temppath());
 			bool const success = copy(in_file, out_file);
 			if (!success) {
@@ -300,7 +300,7 @@ vector<string> const InsetBibtex::getFiles(Buffer const & buffer) const
 	string bibfiles = getContents();
 	bibfiles = split(bibfiles, tmp, ',');
 	while (!tmp.empty()) {
-		string file = findtexfile(ChangeExtension(tmp, "bib"), "bib");
+		string file = findtexfile(changeExtension(tmp, "bib"), "bib");
 		lyxerr[Debug::LATEX] << "Bibfile: " << file << endl;
 
 		// If we didn't find a matching file name just fail silently

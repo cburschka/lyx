@@ -43,27 +43,29 @@ std::string const createLyXTmpDir(std::string const & deflt);
     If path entry begins with $$User/, use user_lyxdir.
     Example: "$$User/doc;$$LyX/doc".
 */
-std::string const FileOpenSearch(std::string const & path, std::string const & name,
-		       std::string const & ext = std::string());
+std::string const fileOpenSearch(std::string const & path,
+				 std::string const & name,
+				 std::string const & ext = std::string());
 
 /** Returns the real name of file name in directory path, with optional
   extension ext.
   The file is searched in the given path (unless it is an absolute
   file name), first directly, and then with extension .ext (if given).
   */
-std::string const FileSearch(std::string const & path, std::string const & name,
-		  std::string const & ext = std::string());
+std::string const fileSearch(std::string const & path,
+			     std::string const & name,
+			     std::string const & ext = std::string());
 
 /// Returns a vector of all files in directory dir having extension ext.
-std::vector<std::string> const DirList(std::string const & dir,
-				  std::string const & ext = std::string());
+std::vector<std::string> const dirList(std::string const & dir,
+				       std::string const & ext = std::string());
 
 /** Is directory read only?
   returns
     true: dir writeable
     false: not writeable
 */
-bool isDirWriteable (std::string const & path);
+bool isDirWriteable(std::string const & path);
 
 /** Is a file readable ?
   Returns true if the file `path' is readable.
@@ -83,15 +85,17 @@ bool isSGMLFilename(std::string const & filename);
       -# system_lyxdir
     The third parameter `ext' is optional.
 */
-std::string const LibFileSearch(std::string const & dir, std::string const & name,
-		     std::string const & ext = std::string());
+std::string const libFileSearch(std::string const & dir,
+				std::string const & name,
+				std::string const & ext = std::string());
 
-/** Same as LibFileSearch(), but tries first to find an
+/** Same as libFileSearch(), but tries first to find an
   internationalized version of the file by prepending $LANG_ to the
   name
   */
 std::string const
-i18nLibFileSearch(std::string const & dir, std::string const & name,
+i18nLibFileSearch(std::string const & dir,
+		  std::string const & name,
 		  std::string const & ext = std::string());
 
 /** Takes a command such as "sh $$s/scripts/convertDefault.sh file.in file.out"
@@ -100,7 +104,7 @@ i18nLibFileSearch(std::string const & dir, std::string const & name,
  *  command will still fail, but the error message will make some sort of
  *  sense ;-)
  */
-std::string const LibScriptSearch(std::string const & command);
+std::string const libScriptSearch(std::string const & command);
 
 enum latex_path_extension {
 	PROTECT_EXTENSION,
@@ -136,29 +140,29 @@ std::string const latex_path(std::string const & path,
 		latex_path_dots dots = LEAVE_DOTS);
 
 /// Substitutes active latex characters with underscores in filename
-std::string const MakeLatexName(std::string const & file);
+std::string const makeLatexName(std::string const & file);
 
 /// Put the name in quotes suitable for the current shell
-std::string const QuoteName(std::string const & file);
+std::string const quoteName(std::string const & file);
 
 /// Add a filename to a path. Any path from filename is stripped first.
-std::string const AddName(std::string const & path, std::string const & fname);
+std::string const addName(std::string const & path, std::string const & fname);
 
 /// Append sub-directory(ies) to path in an intelligent way
-std::string const AddPath(std::string const & path, std::string const & path2);
+std::string const addPath(std::string const & path, std::string const & path2);
 
 /** Change extension of oldname to extension.
  If oldname does not have an extension, it is appended.
  If the extension is empty, any extension is removed from the name.
  */
 std::string const
-ChangeExtension(std::string const & oldname, std::string const & extension);
+changeExtension(std::string const & oldname, std::string const & extension);
 
 /// Remove the extension from \p name
 std::string const removeExtension(std::string const & name);
 
 /// Return the extension of the file (not including the .)
-std::string const GetExtension(std::string const & name);
+std::string const getExtension(std::string const & name);
 
 /** Guess the file format name (as in Format::name()) from contents.
  Normally you don't want to use this directly, but rather
@@ -183,23 +187,23 @@ std::string const unzipFile(std::string const & zipped_file,
 			    std::string const & unzipped_file = std::string());
 
 /// Returns true is path is absolute
-bool AbsolutePath(std::string const & path);
+bool absolutePath(std::string const & path);
 
 /// Create absolute path. If impossible, don't do anything
-std::string const ExpandPath(std::string const & path);
+std::string const expandPath(std::string const & path);
 
 /** Convert relative path into absolute path based on a basepath.
   If relpath is absolute, just use that.
   If basepath doesn't exist use CWD.
   */
-std::string const MakeAbsPath(std::string const & RelPath = std::string(),
-			 std::string const & BasePath = std::string());
+std::string const makeAbsPath(std::string const & RelPath = std::string(),
+			      std::string const & BasePath = std::string());
 
 /** Creates a nice compact path for displaying. The parameter
   threshold, if given, specifies the maximal length of the path.
   */
 std::string const
-MakeDisplayPath(std::string const & path, unsigned int threshold = 1000);
+makeDisplayPath(std::string const & path, unsigned int threshold = 1000);
 
 /** Makes relative path out of absolute path.
   If it is deeper than basepath,
@@ -209,36 +213,39 @@ MakeDisplayPath(std::string const & path, unsigned int threshold = 1000);
   WARNING: the absolute path and base path must really be absolute paths!!!
   */
 std::string const
-MakeRelPath(std::string const & abspath, std::string const & basepath);
+makeRelPath(std::string const & abspath, std::string const & basepath);
 
 /// Strip filename from path name
-std::string const OnlyPath(std::string const & fname);
+std::string const onlyPath(std::string const & fname);
 
 /** Normalize a path. Constracts path/../path
  *  Also converts paths like /foo//bar ==> /foo/bar
  */
-std::string const NormalizePath(std::string const & path);
+std::string const normalizePath(std::string const & path);
 
 /// Strips path from filename
-std::string const OnlyFilename(std::string const & fname);
+std::string const onlyFilename(std::string const & fname);
 
 /// Get the contents of a file as a huge std::string
-std::string const GetFileContents(std::string const & fname);
+std::string const getFileContents(std::string const & fname);
 
 /** Check and Replace Environmentvariables ${NAME} in Path.
     Replaces all occurences of these, if they are found in the
     environment.
     Variables are defined by Var := '${' [a-zA-Z_][a-zA-Z_0-9]* '}'
 */
-std::string const ReplaceEnvironmentPath(std::string const & path);
+std::string const replaceEnvironmentPath(std::string const & path);
 
 /* Set \c link to the path \c file points to as a symbolic link.
    If \c resolve is true, then \c link is an absolute path
    Returns true if successful */
-bool LyXReadLink(std::string const & file, std::string & link, bool resolve = false);
+bool readLink(std::string const & file,
+	      std::string & link,
+	      bool resolve = false);
 
 /// Uses kpsewhich to find tex files
-std::string const findtexfile(std::string const & fil, std::string const & format);
+std::string const findtexfile(std::string const & fil,
+			      std::string const & format);
 
 /// remove the autosave-file and give a Message if it can't be done
 void removeAutosaveFile(std::string const & filename);
@@ -257,7 +264,7 @@ int compare_timestamps(std::string const & file1, std::string const & file2);
 
 typedef std::pair<int, std::string> cmd_ret;
 
-cmd_ret const RunCommand(std::string const & cmd);
+cmd_ret const runCommand(std::string const & cmd);
 
 } // namespace support
 } // namespace lyx

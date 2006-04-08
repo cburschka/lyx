@@ -17,8 +17,7 @@ using std::string;
 
 namespace lyx {
 
-using support::GetFileContents;
-using support::OnlyFilename;
+using support::onlyFilename;
 
 namespace frontend {
 
@@ -43,13 +42,13 @@ void ControlShowFile::clearParams()
 
 string ControlShowFile::getFileContents()
 {
-	return GetFileContents(filename_);
+	return support::getFileContents(filename_);
 }
 
 
 string ControlShowFile::getFileName()
 {
-	return OnlyFilename(filename_);
+	return onlyFilename(filename_);
 }
 
 } // namespace frontend

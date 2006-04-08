@@ -48,7 +48,7 @@ bool SpecialisedMover::do_copy(string const & from, string const & to,
 	if (command_.empty())
 		return Mover::do_copy(from, to, latex);
 
-	string command = support::LibScriptSearch(command_);
+	string command = support::libScriptSearch(command_);
 	command = support::subst(command, "$$i", from);
 	command = support::subst(command, "$$o", to);
 	command = support::subst(command, "$$l", latex);

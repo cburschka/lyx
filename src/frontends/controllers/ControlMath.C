@@ -25,7 +25,7 @@ using std::string;
 namespace lyx {
 
 using support::compare;
-using support::LibFileSearch;
+using support::libFileSearch;
 using support::subst;
 
 namespace frontend {
@@ -374,7 +374,7 @@ string const find_xpm(string const & name)
 			   << "Looking for math XPM called \""
 			   << xpm_name << '"' << std::endl;
 
-	return LibFileSearch("images/math/", xpm_name, "xpm");
+	return libFileSearch("images/math/", xpm_name, "xpm");
 }
 
 } // namespace frontend

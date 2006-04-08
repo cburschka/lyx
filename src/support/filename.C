@@ -38,14 +38,14 @@ FileName::FileName()
 FileName::FileName(string const & abs_filename, bool save_abs)
 	: name_(abs_filename), save_abs_path_(save_abs)
 {
-	BOOST_ASSERT(AbsolutePath(name_));
+	BOOST_ASSERT(absolutePath(name_));
 }
 
 
 void FileName::set(string const & name, string const & buffer_path)
 {
-	save_abs_path_ = AbsolutePath(name);
-	name_ = save_abs_path_ ? name : MakeAbsPath(name, buffer_path);
+	save_abs_path_ = absolutePath(name);
+	name_ = save_abs_path_ ? name : makeAbsPath(name, buffer_path);
 }
 
 
@@ -57,13 +57,13 @@ void FileName::erase()
 
 string const FileName::relFilename(string const & path) const
 {
-	return MakeRelPath(name_, path);
+	return makeRelPath(name_, path);
 }
 
 
 string const FileName::outputFilename(string const & path) const
 {
-	return save_abs_path_ ? name_ : MakeRelPath(name_, path);
+	return save_abs_path_ ? name_ : makeRelPath(name_, path);
 }
 
 
@@ -80,7 +80,7 @@ string const FileName::mangledFilename(std::string const & dir) const
 	// Now the real work
 	string mname = os::internal_path(name_);
 	// Remove the extension.
-	mname = ChangeExtension(name_, string());
+	mname = changeExtension(name_, string());
 	// Replace '/' in the file name with '_'
 	mname = subst(mname, "/", "_");
 	// Replace '.' in the file name with '_'
@@ -90,7 +90,7 @@ string const FileName::mangledFilename(std::string const & dir) const
 	// Replace ':' in the file name with '_'
 	mname = subst(mname, ":", "_");
 	// Add the extension back on
-	mname = ChangeExtension(mname, GetExtension(name_));
+	mname = changeExtension(mname, getExtension(name_));
 
 	// Prepend a counter to the filename. This is necessary to make
 	// the mangled name unique.

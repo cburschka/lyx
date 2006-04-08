@@ -246,7 +246,7 @@ void TemplateManager::readTemplates(string const & path)
 
 	LyXLex lex(templatetags, TM_TEMPLATE_END);
 
-	string filename = support::LibFileSearch("", "external_templates");
+	string filename = support::libFileSearch("", "external_templates");
 	if (filename.empty() || !lex.setFile(filename)) {
 		lex.printError("external::TemplateManager::readTemplates: "
 			       "No template file");

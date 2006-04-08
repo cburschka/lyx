@@ -25,7 +25,7 @@
 
 using lyx::support::compare_ascii_no_case;
 using lyx::support::getVectorFromString;
-using lyx::support::LibFileSearch;
+using lyx::support::libFileSearch;
 using lyx::support::subst;
 
 using std::endl;
@@ -229,11 +229,11 @@ string const ToolbarBackend::getIcon(FuncRequest const & f)
 		if (!f.argument.empty())
 			xpm_name = subst(name + ' ' + f.argument, ' ', '_');
 
-		fullname = LibFileSearch("images", xpm_name, "xpm");
+		fullname = libFileSearch("images", xpm_name, "xpm");
 
 		if (fullname.empty()) {
 			// try without the argument
-			fullname = LibFileSearch("images", name, "xpm");
+			fullname = libFileSearch("images", name, "xpm");
 		}
 	}
 
@@ -246,5 +246,5 @@ string const ToolbarBackend::getIcon(FuncRequest const & f)
 	lyxerr[Debug::GUI] << "Cannot find icon for command \""
 			   << lyxaction.getActionName(f.action)
 			   << '(' << f.argument << ")\"" << endl;
-	return LibFileSearch("images", "unknown", "xpm");
+	return libFileSearch("images", "unknown", "xpm");
 }

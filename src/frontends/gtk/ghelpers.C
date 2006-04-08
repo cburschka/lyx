@@ -61,7 +61,7 @@ Gtk::BuiltinStockID getGTKStockIcon(FuncRequest const & func)
 		case LFUN_ITAL: return Gtk::Stock::ITALIC;
 		case LFUN_FILE_OPEN: return Gtk::Stock::OPEN;
 		case LFUN_RECONFIGURE: return Gtk::Stock::REFRESH;
-		case LFUN_LABEL_GOTO: 
+		case LFUN_LABEL_GOTO:
 		case LFUN_BOOKMARK_GOTO: return Gtk::Stock::JUMP_TO;
 		case LFUN_GOTONOTE: return Gtk::Stock::GO_FORWARD;
 		case LFUN_ACCEPT_ALL_CHANGES: return Gtk::Stock::APPLY;
@@ -138,7 +138,7 @@ Glib::ustring getGTKThemeIcon(FuncRequest const & func)
 			else if (func.argument == "align-right")
 				return "gtk-justify-right";
 			break;
-			
+
 			case LFUN_BOOKMARK_SAVE: return "stock_add-bookmark";
 			case LFUN_INSERT_NOTE: return "stock_insert-note";
 			case LFUN_LAYOUT_PARAGRAPH: return "stock_format-paragraph";
@@ -160,7 +160,7 @@ Gtk::Image *getGTKIcon(FuncRequest const & func, Gtk::IconSize const & size)
 		int iconheight = 16;
 		Gtk::IconSize::lookup(size, iconwidth, iconheight);
 
-		// TODO: this stuff is called every menu view - needs 
+		// TODO: this stuff is called every menu view - needs
 		// caching somewhere, or maybe GTK does enough of that for us.
 		Gtk::Image *image = NULL;
 		Gtk::BuiltinStockID const stockID = getGTKStockIcon(func);
@@ -177,7 +177,7 @@ Gtk::Image *getGTKIcon(FuncRequest const & func, Gtk::IconSize const & size)
 				}
 			}
 		}
-		
+
 		return image;
 }
 
@@ -200,9 +200,9 @@ string const getDefaultUnit()
 
 
 void unitsComboFromLength(Gtk::ComboBox * combo,
-                           Gtk::TreeModelColumn<Glib::ustring> const & stringcol,
-                           LyXLength const & len,
-                           std::string const & defunit)
+			   Gtk::TreeModelColumn<Glib::ustring> const & stringcol,
+			   LyXLength const & len,
+			   std::string const & defunit)
 {
 	string unit = stringFromUnit(len.unit());
 	if (unit.empty())
@@ -244,18 +244,18 @@ string const findGladeFile(string const & name)
 {
 	// First, search in the installation directories.
 
-	string filename = lyx::support::LibFileSearch("glade", name, "glade");
+	string filename = lyx::support::libFileSearch("glade", name, "glade");
 
 	if (!filename.empty())
 		return filename;
 
 	// Second, search in the src tree.
 	string const dir =
-		lyx::support::AddPath(lyx::support::package().top_srcdir(),
+		lyx::support::addPath(lyx::support::package().top_srcdir(),
 				      "src/frontends/gtk/glade");
 
-	filename = lyx::support::ChangeExtension(name, ".glade");
-	filename = lyx::support::AddName(dir, filename);
+	filename = lyx::support::changeExtension(name, ".glade");
+	filename = lyx::support::addName(dir, filename);
 
 	if (!lyx::support::isFileReadable(filename)) {
 		lyxerr << "Unable to find glade file \"" << name

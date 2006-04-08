@@ -24,7 +24,7 @@
 
 using lyx::support::compare_ascii_no_case;
 using lyx::support::getFormatFromContents;
-using lyx::support::MakeDisplayPath;
+using lyx::support::makeDisplayPath;
 using lyx::support::split;
 using lyx::support::subst;
 
@@ -73,7 +73,7 @@ void LyXLex::Pimpl::printError(string const & message) const
 {
 	string const tmpmsg = subst(message, "$$Token", getString());
 	lyxerr << "LyX: " << tmpmsg << " [around line " << lineno
-	       << " of file " << MakeDisplayPath(name) << ']' << endl;
+	       << " of file " << makeDisplayPath(name) << ']' << endl;
 }
 
 

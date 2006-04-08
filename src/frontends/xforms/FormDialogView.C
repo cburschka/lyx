@@ -31,7 +31,7 @@ using std::string;
 namespace lyx {
 
 using support::bformat;
-using support::LibFileSearch;
+using support::libFileSearch;
 
 namespace frontend {
 
@@ -114,7 +114,7 @@ void FormDialogView::prepare_to_show()
 		fl_winicontitle(form()->window, getTitle().c_str());
 
 	//  assign an icon to the form
-	string const iconname = LibFileSearch("images", "lyx", "xpm");
+	string const iconname = libFileSearch("images", "lyx", "xpm");
 	if (!iconname.empty()) {
 		unsigned int w, h;
 		icon_pixmap_ = fl_read_pixmapfile(fl_root,

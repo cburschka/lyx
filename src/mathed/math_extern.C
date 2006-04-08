@@ -40,8 +40,8 @@
 
 using lyx::support::cmd_ret;
 using lyx::support::getVectorFromString;
-using lyx::support::LibFileSearch;
-using lyx::support::RunCommand;
+using lyx::support::libFileSearch;
+using lyx::support::runCommand;
 using lyx::support::subst;
 
 using std::string;
@@ -899,7 +899,7 @@ namespace {
 	{
 		string command =  "echo '" + data + "' | " + cmd;
 		lyxerr << "calling: " << command << endl;
-		cmd_ret const ret = RunCommand(command);
+		cmd_ret const ret = runCommand(command);
 		return ret.second;
 	}
 
@@ -1199,7 +1199,7 @@ MathArray pipeThroughExtern(string const & lang, string const & extra,
 	string data = os.str();
 
 	// search external script
-	string file = LibFileSearch("mathed", "extern_" + lang);
+	string file = libFileSearch("mathed", "extern_" + lang);
 	if (file.empty()) {
 		lyxerr << "converter to '" << lang << "' not found" << endl;
 		return MathArray();

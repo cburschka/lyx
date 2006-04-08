@@ -28,7 +28,7 @@
 
 using lyx::support::bformat;
 using lyx::support::isFileReadable;
-using lyx::support::MakeDisplayPath;
+using lyx::support::makeDisplayPath;
 using lyx::support::tempName;
 
 using std::endl;
@@ -103,14 +103,14 @@ void LyXVC::registrer()
 		if (isFileReadable(cvs_entries)) {
 			lyxerr[Debug::LYXVC]
 				<< "LyXVC: registering "
-				<< MakeDisplayPath(filename)
+				<< makeDisplayPath(filename)
 				<< " with CVS" << endl;
 			vcs.reset(new CVS(cvs_entries, filename));
 
 		} else {
 			lyxerr[Debug::LYXVC]
 				<< "LyXVC: registering "
-				<< MakeDisplayPath(filename)
+				<< makeDisplayPath(filename)
 				<< " with RCS" << endl;
 			vcs.reset(new RCS(filename));
 		}
@@ -160,7 +160,7 @@ void LyXVC::revert()
 {
 	lyxerr[Debug::LYXVC] << "LyXVC: revert" << endl;
 
-	string const file = MakeDisplayPath(owner_->fileName(), 20);
+	string const file = makeDisplayPath(owner_->fileName(), 20);
 	string text = bformat(_("Reverting to the stored version of the "
 		"document %1$s will lose all current changes.\n\n"
 		"Do you want to revert to the saved version?"), file);

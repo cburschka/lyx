@@ -100,7 +100,7 @@ GView::GView()
 		boost::bind(&GMiniBuffer::editMode, minibuffer_.get()));
 	view_state_changed.connect(boost::bind(&GView::showViewState, this));
 	signal_focus_in_event().connect(sigc::mem_fun(*this, &GView::onFocusIn));
-	// 
+	//
 	int width = 750;
 	int height = 550;
 	// first try lyxrc
@@ -116,12 +116,12 @@ GView::GView()
 		val = LyX::ref().session().loadSessionInfo("WindowHeight");
 		if (val != "")
 			height = convert<unsigned int>(val);
-	}	
+	}
 	set_default_size(width, height);
 	// Make sure the buttons are disabled if needed.
 	updateToolbars();
 	string const iconName =
-		support::LibFileSearch("images", "lyx", "xpm");
+		support::libFileSearch("images", "lyx", "xpm");
 	if (!iconName.empty())
 		set_icon_from_file(iconName);
 }

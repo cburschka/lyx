@@ -62,7 +62,7 @@ using support::bformat;
 using support::contains;
 using support::getStringFromVector;
 using support::getVectorFromString;
-using support::LibFileSearch;
+using support::libFileSearch;
 
 namespace frontend {
 
@@ -365,7 +365,7 @@ void FormDocument::build()
 
 	fl_set_input_maxchars(bullets_->input_latex, 80);
 
-	string const bmtablefile = LibFileSearch("images", "standard", "xpm");
+	string const bmtablefile = libFileSearch("images", "standard", "xpm");
 	fl_set_bmtable_pixmap_file(bullets_->bmtable_panel, 6, 6,
 				   bmtablefile.c_str());
 
@@ -1428,7 +1428,7 @@ void FormDocument::BulletPanel(FL_OBJECT * ob)
 		}
 		new_panel += ".xpm";
 		fl_set_bmtable_pixmap_file(bullets_->bmtable_panel, 6, 6,
-					   LibFileSearch("images", new_panel).c_str());
+					   libFileSearch("images", new_panel).c_str());
 		fl_redraw_object(bullets_->bmtable_panel);
 		fl_unfreeze_form(bullets_->form);
 	}

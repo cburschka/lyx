@@ -73,7 +73,7 @@ int make_tempfile(char * templ)
 string const lyx::support::tempName(string const & dir, string const & mask)
 {
 	string const tmpdir(dir.empty() ? package().temp_dir() : dir);
-	string tmpfl(AddName(tmpdir, mask));
+	string tmpfl(addName(tmpdir, mask));
 #if defined (HAVE_GETPID)
 	tmpfl += convert<string>(getpid());
 #elif defined (HAVE__GETPID)

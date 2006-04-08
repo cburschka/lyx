@@ -42,10 +42,10 @@ namespace fs = boost::filesystem;
 
 namespace lyx {
 
-using support::AddName;
+using support::addName;
 using support::FileFilterList;
 using support::isFileReadable;
-using support::MakeAbsPath;
+using support::makeAbsPath;
 using support::package;
 using support::readBB_from_PSFile;
 
@@ -86,10 +86,10 @@ string const ControlGraphics::browse(string const & in_name) const
 	string const title = _("Select graphics file");
 
 	// Does user clipart directory exist?
-	string clipdir = AddName (package().user_support(), "clipart");
+	string clipdir = addName(package().user_support(), "clipart");
 	if (!(fs::exists(clipdir) && fs::is_directory(clipdir)))
 		// No - bail out to system clipart directory
-		clipdir = AddName (package().system_support(), "clipart");
+		clipdir = addName(package().system_support(), "clipart");
 	pair<string, string> dir1(_("Clipart|#C#c"), clipdir);
 	pair<string, string> dir2(_("Documents|#o#O"), string(lyxrc.document_path));
 	// Show the file browser dialog
@@ -103,7 +103,7 @@ string const ControlGraphics::browse(string const & in_name) const
 string const ControlGraphics::readBB(string const & file)
 {
 	string const abs_file =
-		MakeAbsPath(file, kernel().bufferFilepath());
+		makeAbsPath(file, kernel().bufferFilepath());
 
 	// try to get it from the file, if possible. Zipped files are
 	// unzipped in the readBB_from_PSFile-Function
@@ -132,7 +132,7 @@ string const ControlGraphics::readBB(string const & file)
 bool ControlGraphics::isFilenameValid(string const & fname) const
 {
 	// It may be that the filename is relative.
-	string const name = MakeAbsPath(fname, kernel().bufferFilepath());
+	string const name = makeAbsPath(fname, kernel().bufferFilepath());
 	return isFileReadable(name);
 }
 
@@ -178,7 +178,7 @@ size_t const rorigin_size = sizeof(rorigin_lyx_strs) / sizeof(char *);
 
 vector<string> const getBBUnits()
 {
-	return vector<string> (bb_units, bb_units + bb_size);
+	return vector<string>(bb_units, bb_units + bb_size);
 }
 
 

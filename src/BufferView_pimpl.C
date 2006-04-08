@@ -84,14 +84,14 @@
 
 using lyx::pos_type;
 
-using lyx::support::AddPath;
+using lyx::support::addPath;
 using lyx::support::bformat;
 using lyx::support::FileFilterList;
-using lyx::support::FileSearch;
+using lyx::support::fileSearch;
 using lyx::support::ForkedcallsController;
 using lyx::support::isDirWriteable;
-using lyx::support::MakeDisplayPath;
-using lyx::support::MakeAbsPath;
+using lyx::support::makeDisplayPath;
+using lyx::support::makeAbsPath;
 using lyx::support::package;
 
 using std::endl;
@@ -252,7 +252,7 @@ bool BufferView::Pimpl::loadLyXFile(string const & filename, bool tolastfiles)
 {
 	// Get absolute path of file and add ".lyx"
 	// to the filename if necessary
-	string s = FileSearch(string(), filename, "lyx");
+	string s = fileSearch(string(), filename, "lyx");
 
 	bool const found = !s.empty();
 
@@ -261,7 +261,7 @@ bool BufferView::Pimpl::loadLyXFile(string const & filename, bool tolastfiles)
 
 	// File already open?
 	if (bufferlist.exists(s)) {
-		string const file = MakeDisplayPath(s, 20);
+		string const file = makeDisplayPath(s, 20);
 		string text = bformat(_("The document %1$s is already "
 					"loaded.\n\nDo you want to revert "
 					"to the saved version?"), file);
@@ -916,7 +916,7 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filenm)
 			make_pair(string(_("Documents|#o#O")),
 				  string(lyxrc.document_path)),
 			make_pair(string(_("Examples|#E#e")),
-				  string(AddPath(package().system_support(), "examples"))));
+				  string(addPath(package().system_support(), "examples"))));
 
 		FileDialog::Result result =
 			fileDlg.open(initpath,
@@ -937,15 +937,15 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filenm)
 
 	// Get absolute path of file and add ".lyx"
 	// to the filename if necessary
-	filename = FileSearch(string(), filename, "lyx");
+	filename = fileSearch(string(), filename, "lyx");
 
-	string const disp_fn = MakeDisplayPath(filename);
+	string const disp_fn = makeDisplayPath(filename);
 	owner_->message(bformat(_("Inserting document %1$s..."), disp_fn));
 
 	string res;
 	Buffer buf("", false);
 	buf.error.connect(boost::bind(&BufferView::Pimpl::addError, this, _1));
-	if (::loadLyXFile(&buf, MakeAbsPath(filename))) {
+	if (::loadLyXFile(&buf, makeAbsPath(filename))) {
 		lyx::cap::pasteParagraphList(cursor_, buf.paragraphs(),
 					     buf.params().textclass);
 		res = _("Document %1$s inserted.");

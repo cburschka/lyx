@@ -42,7 +42,7 @@ extern void QuitLyX(bool);
 
 namespace lyx {
 
-using support::LibFileSearch;
+using support::libFileSearch;
 
 namespace frontend {
 
@@ -112,7 +112,7 @@ XFormsView::XFormsView(int width, int height)
 	minibuffer_.reset(new XMiniBuffer(*this, *controlcommand_));
 
 	//  Assign an icon to the main form.
-	string const iconname = LibFileSearch("images", "lyx", "xpm");
+	string const iconname = libFileSearch("images", "lyx", "xpm");
 	if (!iconname.empty()) {
 		unsigned int w, h;
 		icon_pixmap_ = fl_read_pixmapfile(fl_root,

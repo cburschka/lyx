@@ -29,9 +29,9 @@
 #include <sstream>
 #include <vector>
 
-using lyx::support::ChangeExtension;
-using lyx::support::MakeAbsPath;
-using lyx::support::MakeRelPath;
+using lyx::support::changeExtension;
+using lyx::support::makeAbsPath;
+using lyx::support::makeRelPath;
 using lyx::support::rtrim;
 using lyx::support::suffixIs;
 using lyx::support::contains;
@@ -344,7 +344,7 @@ string find_file(string const & name, string const & path,
 		// We don't use ChangeExtension() because it does the wrong
 		// thing if name contains a dot.
 		string const trial = name + '.' + (*what);
-		if (fs::exists(MakeAbsPath(trial, path)))
+		if (fs::exists(makeAbsPath(trial, path)))
 			return trial;
 	}
 	return string();
@@ -1004,9 +1004,9 @@ string const normalize_filename(string const & name)
 /// convention (relative to .lyx file) if it is relative
 void fix_relative_filename(string & name)
 {
-	if (lyx::support::AbsolutePath(name))
+	if (lyx::support::absolutePath(name))
 		return;
-	name = MakeRelPath(MakeAbsPath(name, getMasterFilePath()),
+	name = makeRelPath(makeAbsPath(name, getMasterFilePath()),
 			   getParentFilePath());
 }
 
@@ -1384,7 +1384,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			string const path = getMasterFilePath();
 			// We want to preserve relative / absolute filenames,
 			// therefore path is only used for testing
-			if (!fs::exists(MakeAbsPath(name, path))) {
+			if (!fs::exists(makeAbsPath(name, path))) {
 				// The file extension is probably missing.
 				// Now try to find it out.
 				string const dvips_name =
@@ -1414,7 +1414,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					name = pdftex_name;
 			}
 
-			if (fs::exists(MakeAbsPath(name, path)))
+			if (fs::exists(makeAbsPath(name, path)))
 				fix_relative_filename(name);
 			else
 				cerr << "Warning: Could not find graphics file '"
@@ -2036,7 +2036,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// We want to preserve relative / absolute filenames,
 			// therefore path is only used for testing
 			if (t.cs() == "include" &&
-			    !fs::exists(MakeAbsPath(filename, path))) {
+			    !fs::exists(makeAbsPath(filename, path))) {
 				// The file extension is probably missing.
 				// Now try to find it out.
 				string const tex_name =
@@ -2045,14 +2045,14 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				if (!tex_name.empty())
 					filename = tex_name;
 			}
-			if (fs::exists(MakeAbsPath(filename, path))) {
+			if (fs::exists(makeAbsPath(filename, path))) {
 				string const abstexname =
-					MakeAbsPath(filename, path);
+					makeAbsPath(filename, path);
 				string const abslyxname =
-					ChangeExtension(abstexname, ".lyx");
+					changeExtension(abstexname, ".lyx");
 				fix_relative_filename(filename);
 				string const lyxname =
-					ChangeExtension(filename, ".lyx");
+					changeExtension(filename, ".lyx");
 				if (t.cs() != "verbatiminput" &&
 				    tex2lyx(abstexname, abslyxname)) {
 					os << name << '{' << lyxname << "}\n";

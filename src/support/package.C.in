@@ -125,7 +125,7 @@ Package::Package(string const & command_line_arg0,
 	document_dir_ = get_document_dir(home_dir_);
 
 	string const abs_binary = abs_path_from_binary_name(command_line_arg0);
-	binary_dir_ = OnlyPath(abs_binary);
+	binary_dir_ = onlyPath(abs_binary);
 
 	// Is LyX being run in-place from the build tree?
 	boost::tie(build_support_dir_, system_support_dir_) =
@@ -224,7 +224,7 @@ get_build_support_dir(std::string const & binary_dir,
 		break;
 	}
 
-	return NormalizePath(AddPath(binary_dir, indirection));
+	return normalizePath(addPath(binary_dir, indirection));
 }
 
 
@@ -245,17 +245,17 @@ get_build_dirs(string const & abs_binary,
 	string binary = abs_binary;
 	while (true) {
 		// Try and find "lyxrc.defaults".
-		string const binary_dir = OnlyPath(binary);
+		string const binary_dir = onlyPath(binary);
 		string const build_support_dir =
 			get_build_support_dir(binary_dir, top_build_dir_location);
 
-		if (!FileSearch(build_support_dir, "lyxrc.defaults").empty()) {
+		if (!fileSearch(build_support_dir, "lyxrc.defaults").empty()) {
 			// Try and find "chkconfig.ltx".
 			string const system_support_dir =
-				MakeAbsPath(AddPath(top_srcdir(), "lib"),
-					    AddPath(binary_dir, "support"));
+				makeAbsPath(addPath(top_srcdir(), "lib"),
+					    addPath(binary_dir, "support"));
 
-			if (!FileSearch(system_support_dir, "chkconfig.ltx").empty()) {
+			if (!fileSearch(system_support_dir, "chkconfig.ltx").empty()) {
 				lyxerr[Debug::INIT] << check_text << " yes"
 						    << std::endl;
 				return std::make_pair(build_support_dir, system_support_dir);
@@ -268,7 +268,7 @@ get_build_dirs(string const & abs_binary,
 			break;
 
 		string link;
-		if (LyXReadLink(binary, link, true)) {
+		if (readLink(binary, link, true)) {
 			binary = link;
 		} else {
 			// Unable to resolve the link.
@@ -322,7 +322,7 @@ string const get_locale_dir(string const & system_support_dir)
 	// 2. Search for system_support_dir / <relative locale dir>
 	// The <relative locale dir> is OS-dependent. (On Unix, it will
 	// be "../locale/".)
-	path = NormalizePath(AddPath(system_support_dir, relative_locale_dir()));
+	path = normalizePath(addPath(system_support_dir, relative_locale_dir()));
 
 	if (fs::exists(path) && fs::is_directory(path))
 		return path;
@@ -367,7 +367,7 @@ string const abs_path_from_command_line(string const & command_line)
 		return string();
 
 	string const path = os::internal_path(command_line);
-	return os::is_absolute_path(path) ? path : MakeAbsPath(path);
+	return os::is_absolute_path(path) ? path : makeAbsPath(path);
 }
 
 
@@ -389,13 +389,13 @@ string const get_binary_path(string const & exe)
 
 	// Two possibilities present themselves.
 	// 1. The binary is relative to the CWD.
-	string const abs_exe_path = MakeAbsPath(exe_path);
+	string const abs_exe_path = makeAbsPath(exe_path);
 	if (fs::exists(abs_exe_path))
 		return abs_exe_path;
 
 	// 2. exe must be the name of the binary only and it
 	// can be found on the PATH.
-	string const exe_name = OnlyFilename(exe_path);
+	string const exe_name = onlyFilename(exe_path);
 	if (exe_name != exe_path)
 		return string();
 
@@ -404,9 +404,9 @@ string const get_binary_path(string const & exe)
 	std::vector<string>::const_iterator const end = path.end();
 	for (; it != end; ++it) {
 		// This will do nothing if *it is already absolute.
-		string const exe_dir = MakeAbsPath(*it);
+		string const exe_dir = makeAbsPath(*it);
 
-		string const exe_path = AddName(exe_dir, exe_name);
+		string const exe_path = addName(exe_dir, exe_name);
 		if (fs::exists(exe_path))
 			return exe_path;
 	}
@@ -472,13 +472,13 @@ get_system_support_dir(string const & abs_binary,
 	string binary = abs_binary;
 	while (true) {
 		// Try and find "chkconfig.ltx".
-		string const binary_dir = OnlyPath(binary);
+		string const binary_dir = onlyPath(binary);
 
 		string const lyxdir =
-			NormalizePath(AddPath(binary_dir, relative_lyxdir));
+			normalizePath(addPath(binary_dir, relative_lyxdir));
 		searched_dirs.push_back(lyxdir);
 
-		if (!FileSearch(lyxdir, chkconfig_ltx).empty()) {
+		if (!fileSearch(lyxdir, chkconfig_ltx).empty()) {
 			// Success! "chkconfig.ltx" has been found.
 			return lyxdir;
 		}
@@ -489,7 +489,7 @@ get_system_support_dir(string const & abs_binary,
 			break;
 
 		string link;
-		if (LyXReadLink(binary, link, true)) {
+		if (readLink(binary, link, true)) {
 			binary = link;
 		} else {
 			// Unable to resolve the link.
@@ -498,7 +498,7 @@ get_system_support_dir(string const & abs_binary,
 	}
 
 	// 4. Repeat the exercise on the directory itself.
-	string binary_dir = OnlyPath(abs_binary);
+	string binary_dir = onlyPath(abs_binary);
 	while (true) {
 		// This time test whether the directory is a symbolic link
 		// *before* looking for "chkconfig.ltx".
@@ -507,7 +507,7 @@ get_system_support_dir(string const & abs_binary,
 			break;
 
 		string link;
-		if (LyXReadLink(binary_dir, link, true)) {
+		if (readLink(binary_dir, link, true)) {
 			binary_dir = link;
 		} else {
 			// Unable to resolve the link.
@@ -516,10 +516,10 @@ get_system_support_dir(string const & abs_binary,
 
 		// Try and find "chkconfig.ltx".
 		string const lyxdir =
-			NormalizePath(AddPath(binary_dir, relative_lyxdir));
+			normalizePath(addPath(binary_dir, relative_lyxdir));
 		searched_dirs.push_back(lyxdir);
 
-		if (!FileSearch(lyxdir, chkconfig_ltx).empty()) {
+		if (!fileSearch(lyxdir, chkconfig_ltx).empty()) {
 			// Success! "chkconfig.ltx" has been found.
 			return lyxdir;
 		}
@@ -527,7 +527,7 @@ get_system_support_dir(string const & abs_binary,
 
 	// 5. In desparation, try the hard-coded system support dir.
 	path = hardcoded_system_support_dir();
-	if (!FileSearch(path, chkconfig_ltx).empty())
+	if (!fileSearch(path, chkconfig_ltx).empty())
 		return path;
 
 	// Everything has failed :-(
@@ -592,7 +592,7 @@ string const get_default_user_support_dir(string const & home_dir)
 	(void)home_dir; // Silence warning about unused variable.
 
 	os::GetFolderPath win32_folder_path;
-	return AddPath(win32_folder_path(os::GetFolderPath::APPDATA), PACKAGE);
+	return addPath(win32_folder_path(os::GetFolderPath::APPDATA), PACKAGE);
 
 #elif defined (USE_MACOSX_PACKAGING)
 	(void)home_dir; // Silence warning about unused variable.
@@ -611,10 +611,10 @@ string const get_default_user_support_dir(string const & home_dir)
 	if (status_code != 0)
 		return string();
 
-	return AddPath(reinterpret_cast<char const *>(store), PACKAGE);
+	return addPath(reinterpret_cast<char const *>(store), PACKAGE);
 
 #else // USE_POSIX_PACKAGING
-	return AddPath(home_dir, string(".") + PACKAGE);
+	return addPath(home_dir, string(".") + PACKAGE);
 #endif
 }
 
@@ -625,7 +625,7 @@ bool check_command_line_dir(string const & dir,
 			    string const & file,
 			    string const & command_line_switch)
 {
-	string const abs_path = FileSearch(dir, file);
+	string const abs_path = fileSearch(dir, file);
 	if (abs_path.empty()) {
 		lyxerr << bformat(_("Invalid %1$s switch.\n"
 				    "Directory %2$s does not contain %3$s."),
@@ -641,7 +641,7 @@ bool check_command_line_dir(string const & dir,
 string const extract_env_var_dir(string const & env_var)
 {
 	string const dir = os::internal_path(getEnv(env_var));
-	return dir.empty() ? dir : MakeAbsPath(dir);
+	return dir.empty() ? dir : makeAbsPath(dir);
 }
 
 
@@ -651,11 +651,11 @@ bool check_env_var_dir(string const & dir,
 		       string const & file,
 		       string const & env_var)
 {
-	string const abs_path = FileSearch(dir, file);
+	string const abs_path = fileSearch(dir, file);
 	if (abs_path.empty()) {
 		lyxerr << bformat(_("Invalid %1$s environment variable.\n"
 				    "Directory %2$s does not contain %3$s."),
-			          env_var, dir, file)
+				  env_var, dir, file)
 		       << std::endl;
 	}
 
@@ -701,7 +701,7 @@ string const relative_system_support_dir()
 #if defined (USE_WINDOWS_PACKAGING) || defined (USE_MACOSX_PACKAGING)
 	result = "../Resources/";
 #else // Posix-like.
-	result = AddPath("../share/", PACKAGE);
+	result = addPath("../share/", PACKAGE);
 #endif
 
 	return result;

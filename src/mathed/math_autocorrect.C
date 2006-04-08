@@ -22,7 +22,7 @@
 #include <fstream>
 #include <sstream>
 
-using lyx::support::LibFileSearch;
+using lyx::support::libFileSearch;
 
 using std::string;
 using std::ifstream;
@@ -143,7 +143,7 @@ Corrections theCorrections;
 void initAutoCorrect()
 {
 	lyxerr[Debug::MATHED] << "reading autocorrect file" << endl;
-	string const file = LibFileSearch(string(), "autocorrect");
+	string const file = libFileSearch(string(), "autocorrect");
 	if (file.empty()) {
 		lyxerr << "Could not find autocorrect file" << endl;
 		return;

@@ -27,12 +27,12 @@
 using lyx::support::bformat;
 using lyx::support::compare_ascii_no_case;
 using lyx::support::contains;
-using lyx::support::LibScriptSearch;
-using lyx::support::MakeDisplayPath;
-using lyx::support::OnlyFilename;
-using lyx::support::OnlyPath;
+using lyx::support::libScriptSearch;
+using lyx::support::makeDisplayPath;
+using lyx::support::onlyFilename;
+using lyx::support::onlyPath;
 using lyx::support::Path;
-using lyx::support::QuoteName;
+using lyx::support::quoteName;
 using lyx::support::subst;
 using lyx::support::Systemcall;
 
@@ -134,7 +134,7 @@ string Formats::getFormatFromFile(string const & filename) const
 		return format;
 
 	// try to find a format from the file extension.
-	string const ext(lyx::support::GetExtension(filename));
+	string const ext(lyx::support::getExtension(filename));
 	if (!ext.empty()) {
 		// this is ambigous if two formats have the same extension,
 		// but better than nothing
@@ -232,7 +232,7 @@ bool Formats::view(Buffer const & buffer, string const & filename,
 		return false;
 	}
 
-	string command = LibScriptSearch(format->viewer());
+	string command = libScriptSearch(format->viewer());
 
 	if (format_name == "dvi" &&
 	    !lyxrc.view_dvi_paper_option.empty()) {
@@ -249,20 +249,20 @@ bool Formats::view(Buffer const & buffer, string const & filename,
 		command += ' ' + token_from;
 
 	command = subst(command, token_from,
-			QuoteName(OnlyFilename(filename)));
-	command = subst(command, token_path, QuoteName(OnlyPath(filename)));
-	command = subst(command, token_socket, QuoteName(lyxsocket->address()));
+			quoteName(onlyFilename(filename)));
+	command = subst(command, token_path, quoteName(onlyPath(filename)));
+	command = subst(command, token_socket, quoteName(lyxsocket->address()));
 	lyxerr[Debug::FILES] << "Executing command: " << command << std::endl;
 	buffer.message(_("Executing command: ") + command);
 
-	Path p(OnlyPath(filename));
+	Path p(onlyPath(filename));
 	Systemcall one;
 	int const res = one.startscript(Systemcall::DontWait, command);
 
 	if (res) {
 		Alert::error(_("Cannot view file"),
 			     bformat(_("An error occurred whilst running %1$s"),
-			       MakeDisplayPath(command, 50)));
+			       makeDisplayPath(command, 50)));
 		return false;
 	}
 	return true;
@@ -294,20 +294,20 @@ bool Formats::edit(Buffer const & buffer, string const & filename,
 		command += ' ' + token_from;
 
 	command = subst(command, token_from,
-			QuoteName(OnlyFilename(filename)));
-	command = subst(command, token_path, QuoteName(OnlyPath(filename)));
-	command = subst(command, token_socket, QuoteName(lyxsocket->address()));
+			quoteName(onlyFilename(filename)));
+	command = subst(command, token_path, quoteName(onlyPath(filename)));
+	command = subst(command, token_socket, quoteName(lyxsocket->address()));
 	lyxerr[Debug::FILES] << "Executing command: " << command << std::endl;
 	buffer.message(_("Executing command: ") + command);
 
-	Path p(OnlyPath(filename));
+	Path p(onlyPath(filename));
 	Systemcall one;
 	int const res = one.startscript(Systemcall::DontWait, command);
 
 	if (res) {
 		Alert::error(_("Cannot edit file"),
 			     bformat(_("An error occurred whilst running %1$s"),
-			       MakeDisplayPath(command, 50)));
+			       makeDisplayPath(command, 50)));
 		return false;
 	}
 	return true;

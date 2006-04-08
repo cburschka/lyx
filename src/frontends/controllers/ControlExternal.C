@@ -38,7 +38,7 @@ using std::string;
 namespace lyx {
 
 using support::FileFilterList;
-using support::MakeAbsPath;
+using support::makeAbsPath;
 using support::readBB_from_PSFile;
 
 namespace frontend {
@@ -167,7 +167,7 @@ string const ControlExternal::browse(string const & input,
 string const ControlExternal::readBB(string const & file)
 {
 	string const abs_file =
-		MakeAbsPath(file, kernel().bufferFilepath());
+		makeAbsPath(file, kernel().bufferFilepath());
 
 	// try to get it from the file, if possible. Zipped files are
 	// unzipped in the readBB_from_PSFile-Function

@@ -53,22 +53,22 @@
 
 #include <sstream>
 
-using lyx::support::AddName;
-using lyx::support::AbsolutePath;
+using lyx::support::addName;
+using lyx::support::absolutePath;
 using lyx::support::bformat;
-using lyx::support::ChangeExtension;
+using lyx::support::changeExtension;
 using lyx::support::contains;
 using lyx::support::copy;
 using lyx::support::FileName;
-using lyx::support::GetFileContents;
+using lyx::support::getFileContents;
 using lyx::support::isFileReadable;
 using lyx::support::isLyXFilename;
 using lyx::support::latex_path;
-using lyx::support::MakeAbsPath;
-using lyx::support::MakeDisplayPath;
-using lyx::support::MakeRelPath;
-using lyx::support::OnlyFilename;
-using lyx::support::OnlyPath;
+using lyx::support::makeAbsPath;
+using lyx::support::makeDisplayPath;
+using lyx::support::makeRelPath;
+using lyx::support::onlyFilename;
+using lyx::support::onlyPath;
 using lyx::support::subst;
 using lyx::support::sum;
 
@@ -222,8 +222,8 @@ string const parentFilename(Buffer const & buffer)
 string const includedFilename(Buffer const & buffer,
 			      InsetCommandParams const & params)
 {
-	return MakeAbsPath(params.getContents(),
-			   OnlyPath(parentFilename(buffer)));
+	return makeAbsPath(params.getContents(),
+			   onlyPath(parentFilename(buffer)));
 }
 
 
@@ -292,7 +292,7 @@ string const InsetInclude::getScreenLabel(Buffer const &) const
 	if (params_.getContents().empty())
 		temp += "???";
 	else
-		temp += OnlyFilename(params_.getContents());
+		temp += onlyFilename(params_.getContents());
 
 	return temp;
 }
@@ -342,16 +342,16 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 
 	// if incfile is relative, make it relative to the master
 	// buffer directory.
-	if (!AbsolutePath(incfile)) {
-		incfile = MakeRelPath(included_file,
+	if (!absolutePath(incfile)) {
+		incfile = makeRelPath(included_file,
 				      m_buffer->filePath());
 	}
 
 	// write it to a file (so far the complete file)
-	string const exportfile = ChangeExtension(incfile, ".tex");
-	string const mangled = FileName(ChangeExtension(included_file,
+	string const exportfile = changeExtension(incfile, ".tex");
+	string const mangled = FileName(changeExtension(included_file,
 							".tex")).mangledFilename();
-	string const writefile = MakeAbsPath(mangled, m_buffer->temppath());
+	string const writefile = makeAbsPath(mangled, m_buffer->temppath());
 
 	if (!runparams.nice)
 		incfile = mangled;
@@ -369,7 +369,7 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 			string text = bformat(_("Included file `%1$s'\n"
 						"has textclass `%2$s'\n"
 						"while parent file has textclass `%3$s'."),
-					      MakeDisplayPath(included_file),
+					      makeDisplayPath(included_file),
 					      tmp->params().getLyXTextClass().name(),
 					      m_buffer->params().getLyXTextClass().name());
 			Alert::warning(_("Different textclasses"), text);
@@ -386,7 +386,7 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 // make use of it somehow? (JMarc 20031002)
 #endif
 		tmp->makeLaTeXFile(writefile,
-				   OnlyPath(masterFilename(buffer)),
+				   onlyPath(masterFilename(buffer)),
 				   runparams, false);
 	} else {
 		// Copy the file to the temp dir, so that .aux files etc.
@@ -421,7 +421,7 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 			incfile = latex_path(incfile);
 			os << '\\' << params_.getCmdName() << '{' << incfile << '}';
 		} else {
-		incfile = ChangeExtension(incfile, ".tex");
+		incfile = changeExtension(incfile, ".tex");
 		incfile = latex_path(incfile);
 			os << '\\' << params_.getCmdName() << '{'
 			   << incfile
@@ -433,7 +433,7 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 
 		// \include don't want extension and demands that the
 		// file really have .tex
-		incfile = ChangeExtension(incfile, string());
+		incfile = changeExtension(incfile, string());
 		incfile = latex_path(incfile);
 		os << '\\' << params_.getCmdName() << '{'
 		   << incfile
@@ -448,7 +448,7 @@ int InsetInclude::plaintext(Buffer const & buffer, ostream & os,
 			OutputParams const &) const
 {
 	if (isVerbatim(params_))
-		os << GetFileContents(includedFilename(buffer, params_));
+		os << getFileContents(includedFilename(buffer, params_));
 	return 0;
 }
 
@@ -465,13 +465,13 @@ int InsetInclude::linuxdoc(Buffer const & buffer, ostream & os,
 	string const included_file = includedFilename(buffer, params_);
 
 	// write it to a file (so far the complete file)
-	string const exportfile = ChangeExtension(incfile, ".sgml");
-	string writefile = ChangeExtension(included_file, ".sgml");
+	string const exportfile = changeExtension(incfile, ".sgml");
+	string writefile = changeExtension(included_file, ".sgml");
 
 	if (loadIfNeeded(buffer, params_)) {
 		Buffer * tmp = bufferlist.getBuffer(included_file);
 
-		writefile = MakeAbsPath(FileName(writefile).mangledFilename(),
+		writefile = makeAbsPath(FileName(writefile).mangledFilename(),
 					buffer.getMasterBuffer()->temppath());
 		if (!runparams.nice)
 			incfile = writefile;
@@ -485,7 +485,7 @@ int InsetInclude::linuxdoc(Buffer const & buffer, ostream & os,
 
 	if (isVerbatim(params_)) {
 		os << "<![CDATA["
-		   << GetFileContents(included_file)
+		   << getFileContents(included_file)
 		   << "]]>";
 	} else {
 		runparams.exportdata->addExternalFile("linuxdoc", writefile,
@@ -509,14 +509,14 @@ int InsetInclude::docbook(Buffer const & buffer, ostream & os,
 	string const included_file = includedFilename(buffer, params_);
 
 	// write it to a file (so far the complete file)
-	string const exportfile = ChangeExtension(incfile, ".sgml");
-	string writefile = ChangeExtension(included_file, ".sgml");
+	string const exportfile = changeExtension(incfile, ".sgml");
+	string writefile = changeExtension(included_file, ".sgml");
 
 	if (loadIfNeeded(buffer, params_)) {
 		Buffer * tmp = bufferlist.getBuffer(included_file);
 
 		string const mangled = FileName(writefile).mangledFilename();
-		writefile = MakeAbsPath(mangled,
+		writefile = makeAbsPath(mangled,
 					buffer.getMasterBuffer()->temppath());
 		if (!runparams.nice)
 			incfile = mangled;
@@ -554,13 +554,13 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 	string const included_file = includedFilename(buffer, params_);
 
 	if (isLyXFilename(included_file))
-		writefile = ChangeExtension(included_file, ".sgml");
+		writefile = changeExtension(included_file, ".sgml");
 	else
 		writefile = included_file;
 
 	if (!features.runparams().nice && !isVerbatim(params_)) {
 		incfile = FileName(writefile).mangledFilename();
-		writefile = MakeAbsPath(incfile,
+		writefile = makeAbsPath(incfile,
 					buffer.getMasterBuffer()->temppath());
 	}
 

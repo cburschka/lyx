@@ -27,7 +27,7 @@
 
 #include <libglademm.h>
 
-using lyx::support::ChangeExtension;
+using lyx::support::changeExtension;
 using lyx::support::split;
 using lyx::support::trim;
 
@@ -135,7 +135,7 @@ void GBibtex::update()
 	vector<string>::const_iterator it = str.begin();
 	vector<string>::const_iterator const end = str.end();
 	for (; it != end; ++it) {
-		string item(ChangeExtension(*it, ""));
+		string item(changeExtension(*it, ""));
 		if (item == bibstyle)
 			item_nr = int(it - str.begin());
 		stylecombo_.append_text (item);
@@ -216,7 +216,7 @@ void GBibtex::add()
 	if (new_bib.empty())
 		return;
 
-	new_bib = ChangeExtension(new_bib, string());
+	new_bib = changeExtension(new_bib, string());
 
 	Gtk::TreeModel::iterator const row = databasesstore_->append();
 	(*row)[stringcol_] = new_bib;
@@ -242,7 +242,7 @@ void GBibtex::browse()
 	string const file = controller().browseBst("");
 
 	if (!file.empty()) {
-		string const filen = ChangeExtension(file, "");
+		string const filen = changeExtension(file, "");
 		bool present = false;
 
 		for (int i = 0; i < stylecombo_.get_model()->children().size(); ++i) {
