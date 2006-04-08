@@ -16,6 +16,39 @@ dist_pkgdata_DATA = lyxrc.example CREDITS chkconfig.ltx configure.py \
 	       lyxrc.defaults textclass.lst packages.lst external_templates \
 	       encodings languages symbols syntax.default
 
+dist_noinst_DATA = \
+	images/README \
+	images/font-smallcaps.xpm \
+	images/math/ams_arrows.xbm \
+	images/math/ams_misc.xbm \
+	images/math/ams_nrel.xbm \
+	images/math/ams_ops.xbm \
+	images/math/ams_rel.xbm \
+	images/math/arrows.xbm \
+	images/math/bop.xbm \
+	images/math/brel.xbm \
+	images/math/deco.xbm \
+	images/math/deco.xpm \
+	images/math/delim0.xpm \
+	images/math/delim1.xpm \
+	images/math/delim.xbm \
+	images/math/delim.xpm \
+	images/math/dots.xbm \
+	images/math/equation.xpm \
+	images/math/font.xbm \
+	images/math/font.xpm \
+	images/math/frac-square.xpm \
+	images/math/greek.xbm \
+	images/math/matrix.xpm \
+	images/math/misc.xbm \
+	images/math/space.xpm \
+	images/math/sqrt-square.xpm \
+	images/math/style.xbm \
+	images/math/style.xpm \
+	images/math/sub.xpm \
+	images/math/super.xpm \
+	images/math/varsz.xbm
+
 binddir = $(pkgdatadir)/bind
 dist_bind_DATA = \
 	bind/broadway.bind \

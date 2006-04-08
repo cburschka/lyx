@@ -24,40 +24,6 @@ man_MANS = lyx.1
 bindistdir=$(PWD)/lyxbin
 bindistfile=$(PACKAGE)-$(VERSION)-bin.tar.gz
 
-dist_noinst_DATA = \
-	images/ChangeLog \
-	images/README \
-	images/ams_arrows.xbm \
-	images/ams_misc.xbm \
-	images/ams_nrel.xbm \
-	images/ams_ops.xbm \
-	images/ams_rel.xbm \
-	images/arrows.xbm \
-	images/bop.xbm \
-	images/brel.xbm \
-	images/deco.xbm \
-	images/deco.xpm \
-	images/delim.xbm \
-	images/delim.xpm \
-	images/delim0.xpm \
-	images/delim1.xpm \
-	images/dots.xbm \
-	images/equation.xpm \
-	images/font.xbm \
-	images/font.xpm \
-	images/frac.xpm \
-	images/greek.xbm \
-	images/matrix.xpm \
-	images/misc.xbm \
-	images/smallcaps.xpm \
-	images/space.xpm \
-	images/sqrt.xpm \
-	images/style.xbm \
-	images/style.xpm \
-	images/sub.xpm \
-	images/super.xpm \
-	images/varsz.xbm
-
 lyx.1:
 	cp -p $(srcdir)/lyx.man lyx.1
 

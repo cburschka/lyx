@@ -29,11 +29,11 @@
 #include "deco.xpm"
 #include "delim.xpm"
 #include "equation.xpm"
-#include "frac.xpm"
+#include "frac-square.xpm"
 #include "matrix.xpm"
 #include "space.xpm"
 #include "style.xpm"
-#include "sqrt.xpm"
+#include "sqrt-square.xpm"
 #include "sub.xpm"
 #include "super.xpm"
 
