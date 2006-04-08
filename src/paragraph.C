@@ -1461,7 +1461,7 @@ bool Paragraph::isNewline(pos_type pos) const
 bool Paragraph::isLineSeparator(pos_type pos) const
 {
 	value_type const c = getChar(pos);
-	return IsLineSeparatorChar(c)
+	return isLineSeparatorChar(c)
 		|| (c == Paragraph::META_INSET && getInset(pos) &&
 		getInset(pos)->isLineSeparator());
 }
@@ -1474,7 +1474,7 @@ bool Paragraph::isLetter(pos_type pos) const
 		return getInset(pos)->isLetter();
 	else {
 		value_type const c = getChar(pos);
-		return IsLetterChar(c) || IsDigit(c);
+		return isLetterChar(c) || isDigit(c);
 	}
 }
 
@@ -1547,7 +1547,7 @@ string const Paragraph::asString(Buffer const & buffer,
 
 	for (pos_type i = 0; i < size(); ++i) {
 		value_type c = getChar(i);
-		if (IsPrintable(c))
+		if (isPrintable(c))
 			s += c;
 		else if (c == META_INSET &&
 			 getInset(i)->lyxCode() == InsetBase::MATH_CODE) {
@@ -1586,7 +1586,7 @@ string const Paragraph::asString(Buffer const & buffer,
 
 	for (pos_type i = beg; i < end; ++i) {
 		value_type const c = getUChar(buffer.params(), i);
-		if (IsPrintable(c))
+		if (isPrintable(c))
 			os << c;
 		else if (c == META_INSET)
 			getInset(i)->textString(buffer, os, runparams);
@@ -1811,7 +1811,7 @@ size_t Paragraph::pos2row(pos_type pos) const
 unsigned char Paragraph::transformChar(unsigned char c, pos_type pos) const
 {
 	if (!Encodings::is_arabic(c))
-		if (lyxrc.font_norm_type == LyXRC::ISO_8859_6_8 && IsDigit(c))
+		if (lyxrc.font_norm_type == LyXRC::ISO_8859_6_8 && isDigit(c))
 			return c + (0xb0 - '0');
 		else
 			return c;

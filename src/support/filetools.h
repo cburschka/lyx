@@ -63,18 +63,18 @@ std::vector<std::string> const DirList(std::string const & dir,
     true: dir writeable
     false: not writeable
 */
-bool IsDirWriteable (std::string const & path);
+bool isDirWriteable (std::string const & path);
 
 /** Is a file readable ?
   Returns true if the file `path' is readable.
  */
-bool IsFileReadable (std::string const & path);
+bool isFileReadable (std::string const & path);
 
 ///
-bool IsLyXFilename(std::string const & filename);
+bool isLyXFilename(std::string const & filename);
 
 ///
-bool IsSGMLFilename(std::string const & filename);
+bool isSGMLFilename(std::string const & filename);
 
 /** Returns the path of a library data file.
     Search the file name.ext in the subdirectory dir of

@@ -61,8 +61,8 @@ using lyx::support::contains;
 using lyx::support::copy;
 using lyx::support::FileName;
 using lyx::support::GetFileContents;
-using lyx::support::IsFileReadable;
-using lyx::support::IsLyXFilename;
+using lyx::support::isFileReadable;
+using lyx::support::isLyXFilename;
 using lyx::support::latex_path;
 using lyx::support::MakeAbsPath;
 using lyx::support::MakeDisplayPath;
@@ -307,7 +307,7 @@ bool loadIfNeeded(Buffer const & buffer, InsetCommandParams const & params)
 		return false;
 
 	string const included_file = includedFilename(buffer, params);
-	if (!IsLyXFilename(included_file))
+	if (!isLyXFilename(included_file))
 		return false;
 
 	Buffer * buf = bufferlist.getBuffer(included_file);
@@ -417,7 +417,7 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 						      exportfile);
 
 		// \input wants file with extension (default is .tex)
-		if (!IsLyXFilename(included_file)) {
+		if (!isLyXFilename(included_file)) {
 			incfile = latex_path(incfile);
 			os << '\\' << params_.getCmdName() << '{' << incfile << '}';
 		} else {
@@ -553,7 +553,7 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 
 	string const included_file = includedFilename(buffer, params_);
 
-	if (IsLyXFilename(included_file))
+	if (isLyXFilename(included_file))
 		writefile = ChangeExtension(included_file, ".sgml");
 	else
 		writefile = included_file;
@@ -692,7 +692,7 @@ bool preview_wanted(InsetCommandParams const & params, Buffer const & buffer)
 	string const included_file = includedFilename(buffer, params);
 
 	return type(params) == INPUT && params.preview() &&
-		IsFileReadable(included_file);
+		isFileReadable(included_file);
 }
 
 

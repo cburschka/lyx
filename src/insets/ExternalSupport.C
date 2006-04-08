@@ -172,11 +172,11 @@ string const doSubstitution(InsetExternalParams const & params,
 		string const file = result.substr(pos + 12, end - (pos + 12));
 		string contents;
 
-		string const filepath = support::IsFileReadable(file) ?
+		string const filepath = support::isFileReadable(file) ?
 			buffer.filePath() : m_buffer->temppath();
 		support::Path p(filepath);
 
-		if (support::IsFileReadable(file))
+		if (support::isFileReadable(file))
 			contents = support::GetFileContents(file);
 
 		result = support::subst(result,

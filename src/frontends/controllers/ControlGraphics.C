@@ -44,7 +44,7 @@ namespace lyx {
 
 using support::AddName;
 using support::FileFilterList;
-using support::IsFileReadable;
+using support::isFileReadable;
 using support::MakeAbsPath;
 using support::package;
 using support::readBB_from_PSFile;
@@ -133,7 +133,7 @@ bool ControlGraphics::isFilenameValid(string const & fname) const
 {
 	// It may be that the filename is relative.
 	string const name = MakeAbsPath(fname, kernel().bufferFilepath());
-	return IsFileReadable(name);
+	return isFileReadable(name);
 }
 
 

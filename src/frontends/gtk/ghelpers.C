@@ -257,7 +257,7 @@ string const findGladeFile(string const & name)
 	filename = lyx::support::ChangeExtension(name, ".glade");
 	filename = lyx::support::AddName(dir, filename);
 
-	if (!lyx::support::IsFileReadable(filename)) {
+	if (!lyx::support::isFileReadable(filename)) {
 		lyxerr << "Unable to find glade file \"" << name
 		       << "\". libglade is going to crash..." << std::endl;
 	}

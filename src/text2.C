@@ -648,7 +648,7 @@ void LyXText::insertStringAsParagraphs(LCursor & cur, string const & str)
 				linestr[i] = ' ';
 				newline_inserted = true;
 			}
-		} else if (IsPrintable(linestr[i])) {
+		} else if (isPrintable(linestr[i])) {
 			newline_inserted = false;
 		}
 	}

@@ -101,7 +101,7 @@ using lyx::support::cmd_ret;
 using lyx::support::createBufferTmpDir;
 using lyx::support::destroyDir;
 using lyx::support::getFormatFromContents;
-using lyx::support::IsDirWriteable;
+using lyx::support::isDirWriteable;
 using lyx::support::LibFileSearch;
 using lyx::support::latex_path;
 using lyx::support::ltrim;
@@ -531,7 +531,7 @@ void Buffer::insertStringAsLines(ParagraphList & pars,
 				}
 				space_inserted = true;
 			}
-		} else if (!IsPrintable(*cit)) {
+		} else if (!isPrintable(*cit)) {
 			// Ignore unprintables
 			continue;
 		} else {

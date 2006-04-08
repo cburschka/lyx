@@ -98,7 +98,7 @@ using lyx::support::contains;
 using lyx::support::FileName;
 using lyx::support::float_equal;
 using lyx::support::GetExtension;
-using lyx::support::IsFileReadable;
+using lyx::support::isFileReadable;
 using lyx::support::latex_path;
 using lyx::support::OnlyFilename;
 using lyx::support::removeExtension;
@@ -576,7 +576,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	// not exist.
 	// We are not going to change the extension or using the name of the
 	// temporary file, the code is already complicated enough.
-	if (runparams.inComment || !IsFileReadable(orig_file))
+	if (runparams.inComment || !isFileReadable(orig_file))
 		return params().filename.outputFilename(m_buffer->filePath());
 
 	// We place all temporary files in the master buffer's temp dir.
@@ -726,7 +726,7 @@ int InsetGraphics::latex(Buffer const & buf, ostream & os,
 		params().filename.relFilename(buf.filePath());
 
 	string const file_ = params().filename.absFilename();
-	bool const file_exists = !file_.empty() && IsFileReadable(file_);
+	bool const file_exists = !file_.empty() && isFileReadable(file_);
 	string const message = file_exists ?
 		string() : string("bb = 0 0 200 100, draft, type=eps");
 	// if !message.empty() then there was no existing file

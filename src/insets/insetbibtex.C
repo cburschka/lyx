@@ -43,7 +43,7 @@ using lyx::support::contains;
 using lyx::support::copy;
 using lyx::support::FileName;
 using lyx::support::findtexfile;
-using lyx::support::IsFileReadable;
+using lyx::support::isFileReadable;
 using lyx::support::latex_path;
 using lyx::support::ltrim;
 using lyx::support::MakeAbsPath;
@@ -112,7 +112,7 @@ string normalize_name(Buffer const & buffer, OutputParams const & runparams,
 		      string const & name, string const & ext)
 {
 	string const fname = MakeAbsPath(name, buffer.filePath());
-	if (AbsolutePath(name) || !IsFileReadable(fname + ext))
+	if (AbsolutePath(name) || !isFileReadable(fname + ext))
 		return name;
 	else if (!runparams.nice)
 		return fname;
@@ -162,7 +162,7 @@ int InsetBibtex::latex(Buffer const & buffer, ostream & os,
 		string const in_file = database + ".bib";
 
 		if (!runparams.inComment && !runparams.nice &&
-		    IsFileReadable(in_file)) {
+		    isFileReadable(in_file)) {
 
 			// mangledFilename() needs the extension
 			database = removeExtension(FileName(in_file).mangledFilename());
@@ -217,7 +217,7 @@ int InsetBibtex::latex(Buffer const & buffer, ostream & os,
 		// This prevents problems with spaces and 8bit charcaters
 		// in the file name.
 		if (!runparams.inComment && !runparams.nice &&
-		    IsFileReadable(in_file)) {
+		    isFileReadable(in_file)) {
 			// use new style name
 			base = removeExtension(
 					FileName(in_file).mangledFilename());

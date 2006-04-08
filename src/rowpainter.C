@@ -196,7 +196,7 @@ void RowPainter::paintHebrewComposeChar(pos_type & vpos, LyXFont const & font)
 	for (pos_type i = pos - 1; i >= 0; --i) {
 		c = par_.getChar(i);
 		if (!Encodings::IsComposeChar_hebrew(c)) {
-			if (IsPrintableNonspace(c)) {
+			if (isPrintableNonspace(c)) {
 				int const width2 =
 					text_.singleWidth(par_, i, c, text_.getFont(par_, i));
 				// dalet / resh
@@ -230,7 +230,7 @@ void RowPainter::paintArabicComposeChar(pos_type & vpos, LyXFont const & font)
 	for (pos_type i = pos - 1; i >= 0; --i) {
 		c = par_.getChar(i);
 		if (!Encodings::IsComposeChar_arabic(c)) {
-			if (IsPrintableNonspace(c)) {
+			if (isPrintableNonspace(c)) {
 				int const width2 =
 					text_.singleWidth(par_, i, c, text_.getFont(par_, i));
 				dx = (width2 - width) / 2;
@@ -270,7 +270,7 @@ void RowPainter::paintChars(pos_type & vpos, LyXFont font,
 
 		char c = par_.getChar(pos);
 
-		if (!IsPrintableNonspace(c))
+		if (!isPrintableNonspace(c))
 			break;
 
 		if (arabic && Encodings::IsComposeChar_arabic(c))

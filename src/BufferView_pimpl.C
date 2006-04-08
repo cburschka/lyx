@@ -89,7 +89,7 @@ using lyx::support::bformat;
 using lyx::support::FileFilterList;
 using lyx::support::FileSearch;
 using lyx::support::ForkedcallsController;
-using lyx::support::IsDirWriteable;
+using lyx::support::isDirWriteable;
 using lyx::support::MakeDisplayPath;
 using lyx::support::MakeAbsPath;
 using lyx::support::package;
@@ -907,7 +907,7 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filenm)
 		if (available()) {
 			string const trypath = owner_->buffer()->filePath();
 			// If directory is writeable, use this as default.
-			if (IsDirWriteable(trypath))
+			if (isDirWriteable(trypath))
 				initpath = trypath;
 		}
 

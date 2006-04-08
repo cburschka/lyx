@@ -110,8 +110,8 @@ using lyx::support::FileFilterList;
 using lyx::support::FileSearch;
 using lyx::support::ForkedcallsController;
 using lyx::support::i18nLibFileSearch;
-using lyx::support::IsDirWriteable;
-using lyx::support::IsFileReadable;
+using lyx::support::isDirWriteable;
+using lyx::support::isFileReadable;
 using lyx::support::isStrInt;
 using lyx::support::MakeAbsPath;
 using lyx::support::MakeDisplayPath;
@@ -515,7 +515,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		else if (name == "character" || name == "mathpanel")
 			enable = cur.inset().lyxCode() != InsetBase::ERT_CODE;
 		else if (name == "latexlog")
-			enable = IsFileReadable(buf->getLogName().second);
+			enable = isFileReadable(buf->getLogName().second);
 #if !defined (USE_ASPELL) && !defined (USE_ISPELL) && !defined (USE_PSPELL)
 		else if (name == "spellchecker")
 			enable = false;
@@ -1696,7 +1696,7 @@ void LyXFunc::menuNew(string const & name, bool fromTemplate)
 	if (view()->available()) {
 		string const trypath = owner->buffer()->filePath();
 		// If directory is writeable, use this as default.
-		if (IsDirWriteable(trypath))
+		if (isDirWriteable(trypath))
 			initpath = trypath;
 	}
 
@@ -1746,7 +1746,7 @@ void LyXFunc::open(string const & fname)
 	if (view()->available()) {
 		string const trypath = owner->buffer()->filePath();
 		// If directory is writeable, use this as default.
-		if (IsDirWriteable(trypath))
+		if (isDirWriteable(trypath))
 			initpath = trypath;
 	}
 
@@ -1821,7 +1821,7 @@ void LyXFunc::doImport(string const & argument)
 		if (view()->available()) {
 			string const trypath = owner->buffer()->filePath();
 			// If directory is writeable, use this as default.
-			if (IsDirWriteable(trypath))
+			if (isDirWriteable(trypath))
 				initpath = trypath;
 		}
 

@@ -161,7 +161,7 @@ WordLangTuple nextWord(DocIterator & cur, ptrdiff_t & progress,
 				Paragraph::value_type const c =
 					cur.paragraph().getChar(cur.pos());
 				word += c;
-				if (IsDigit(c))
+				if (isDigit(c))
 					ignoreword = true;
 			}
 		} else { // !isLetter(cur)

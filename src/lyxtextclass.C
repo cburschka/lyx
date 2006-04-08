@@ -167,7 +167,7 @@ enum TextClassTags {
 // Reads a textclass structure from file.
 bool LyXTextClass::Read(string const & filename, bool merge)
 {
-	if (!lyx::support::IsFileReadable(filename)) {
+	if (!lyx::support::isFileReadable(filename)) {
 		lyxerr << "Cannot read layout file `" << filename << "'."
 		       << endl;
 		return true;

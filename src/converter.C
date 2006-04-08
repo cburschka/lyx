@@ -36,7 +36,7 @@ using lyx::support::compare_ascii_no_case;
 using lyx::support::contains;
 using lyx::support::DirList;
 using lyx::support::GetExtension;
-using lyx::support::IsFileReadable;
+using lyx::support::isFileReadable;
 using lyx::support::LibFileSearch;
 using lyx::support::LibScriptSearch;
 using lyx::support::MakeRelPath;
@@ -310,7 +310,7 @@ bool Converters::convert(Buffer const * buffer,
 				<< command << endl;
 			Systemcall one;
 			one.startscript(Systemcall::Wait, command);
-			if (IsFileReadable(to_file)) {
+			if (isFileReadable(to_file)) {
 				return true;
 			}
 		}

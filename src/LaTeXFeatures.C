@@ -30,7 +30,7 @@
 
 #include <sstream>
 
-using lyx::support::IsSGMLFilename;
+using lyx::support::isSGMLFilename;
 using lyx::support::LibFileSearch;
 using lyx::support::MakeRelPath;
 using lyx::support::OnlyPath;
@@ -509,7 +509,7 @@ string const LaTeXFeatures::getIncludedFiles(string const & fname) const
 	for (FileMap::const_iterator fi = IncludedFiles_.begin();
 	     fi != end; ++fi)
 		sgmlpreamble << "\n<!ENTITY " << fi->first
-			     << (IsSGMLFilename(fi->second) ? " SYSTEM \"" : " \"")
+			     << (isSGMLFilename(fi->second) ? " SYSTEM \"" : " \"")
 			     << MakeRelPath(fi->second, basename) << "\">";
 
 	return sgmlpreamble.str();

@@ -35,7 +35,7 @@ using std::string;
 namespace lyx {
 
 using support::FileFilterList;
-using support::IsFileReadable;
+using support::isFileReadable;
 using support::MakeAbsPath;
 using support::OnlyPath;
 
@@ -114,7 +114,7 @@ bool ControlInclude::fileExists(string const & file)
 		= MakeAbsPath(file,
 			      OnlyPath(kernel().buffer().fileName()));
 
-	if (IsFileReadable(fileWithAbsPath))
+	if (isFileReadable(fileWithAbsPath))
 		return true;
 
 	return false;

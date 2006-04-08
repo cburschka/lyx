@@ -801,7 +801,7 @@ bool preview_wanted(InsetExternalParams const & params)
 	string const included_file = params.filename.absFilename();
 
 	return params.display == external::PreviewDisplay &&
-		support::IsFileReadable(included_file);
+		support::isFileReadable(included_file);
 }
 
 

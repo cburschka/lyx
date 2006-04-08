@@ -59,7 +59,7 @@ using lyx::support::bformat;
 using lyx::support::destroyDir;
 using lyx::support::FileFilterList;
 using lyx::support::ForkedProcess;
-using lyx::support::IsLyXFilename;
+using lyx::support::isLyXFilename;
 using lyx::support::LibFileSearch;
 using lyx::support::MakeAbsPath;
 using lyx::support::MakeDisplayPath;
@@ -135,7 +135,7 @@ bool WriteAs(Buffer * buffer, string const & filename)
 			make_pair(string(_("Templates|#T#t")),
 				  string(lyxrc.template_path)));
 
-		if (!IsLyXFilename(fname))
+		if (!isLyXFilename(fname))
 			fname += ".lyx";
 
 		FileFilterList const filter (_("LyX Documents (*.lyx)"));
@@ -155,7 +155,7 @@ bool WriteAs(Buffer * buffer, string const & filename)
 
 		// Make sure the absolute filename ends with appropriate suffix
 		fname = MakeAbsPath(fname);
-		if (!IsLyXFilename(fname))
+		if (!isLyXFilename(fname))
 			fname += ".lyx";
 	} else
 		fname = filename;

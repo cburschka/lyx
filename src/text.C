@@ -427,7 +427,7 @@ int LyXText::singleWidth(Paragraph const & par,
 			 pos_type pos, char c, LyXFont const & font) const
 {
 	// The most common case is handled first (Asger)
-	if (IsPrintable(c)) {
+	if (isPrintable(c)) {
 		Language const * language = font.language();
 		if (language->RightToLeft()) {
 			if ((lyxrc.font_norm_type == LyXRC::ISO_8859_6_8 ||
@@ -1132,7 +1132,7 @@ void LyXText::insertChar(LCursor & cur, char c)
 		static string const number_seperators = ".,:";
 
 		if (current_font.number() == LyXFont::ON) {
-			if (!IsDigit(c) && !contains(number_operators, c) &&
+			if (!isDigit(c) && !contains(number_operators, c) &&
 			    !(contains(number_seperators, c) &&
 			      cur.pos() != 0 &&
 			      cur.pos() != cur.lastpos() &&
@@ -1140,7 +1140,7 @@ void LyXText::insertChar(LCursor & cur, char c)
 			      getFont(par, cur.pos() - 1).number() == LyXFont::ON)
 			   )
 				number(cur); // Set current_font.number to OFF
-		} else if (IsDigit(c) &&
+		} else if (isDigit(c) &&
 			   real_current_font.isVisibleRightToLeft()) {
 			number(cur); // Set current_font.number to ON
 
@@ -1169,7 +1169,7 @@ void LyXText::insertChar(LCursor & cur, char c)
 
 	// When the free-spacing option is set for the current layout,
 	// disable the double-space checking
-	if (!freeSpacing && IsLineSeparatorChar(c)) {
+	if (!freeSpacing && isLineSeparatorChar(c)) {
 		if (cur.pos() == 0) {
 			static bool sent_space_message = false;
 			if (!sent_space_message) {

@@ -70,13 +70,13 @@ namespace fs = boost::filesystem;
 namespace lyx {
 namespace support {
 
-bool IsLyXFilename(string const & filename)
+bool isLyXFilename(string const & filename)
 {
 	return suffixIs(ascii_lowercase(filename), ".lyx");
 }
 
 
-bool IsSGMLFilename(string const & filename)
+bool isSGMLFilename(string const & filename)
 {
 	return suffixIs(ascii_lowercase(filename), ".sgml");
 }
@@ -142,7 +142,7 @@ string const QuoteName(string const & name)
 
 
 // Is a file readable ?
-bool IsFileReadable(string const & path)
+bool isFileReadable(string const & path)
 {
 	return fs::exists(path) && !fs::is_directory(path) && fs::is_readable(path);
 }
@@ -150,9 +150,9 @@ bool IsFileReadable(string const & path)
 
 //returns true: dir writeable
 //	  false: not writeable
-bool IsDirWriteable(string const & path)
+bool isDirWriteable(string const & path)
 {
-	lyxerr[Debug::FILES] << "IsDirWriteable: " << path << endl;
+	lyxerr[Debug::FILES] << "isDirWriteable: " << path << endl;
 
 	string const tmpfl = tempName(path, "lyxwritetest");
 
@@ -246,14 +246,14 @@ string const FileSearch(string const & path, string const & name,
 	string const tmpname = ReplaceEnvironmentPath(name);
 	string fullname = MakeAbsPath(tmpname, path);
 	// search first without extension, then with it.
-	if (IsFileReadable(fullname))
+	if (isFileReadable(fullname))
 		return fullname;
 	if (ext.empty())
 		return string();
 	// Is it not more reasonable to use ChangeExtension()? (SMiyata)
 	fullname += '.';
 	fullname += ext;
-	return IsFileReadable(fullname) ? fullname : string();
+	return isFileReadable(fullname) ? fullname : string();
 }
 
 
@@ -415,7 +415,7 @@ string const createLyXTmpDir(string const & deflt)
 #ifdef __EMX__
 			Path p(package().user_support());
 #endif
-			if (IsDirWriteable(deflt)) {
+			if (isDirWriteable(deflt)) {
 				// deflt could not be created because it
 				// did exist already, so let's create our own
 				// dir inside deflt.
@@ -797,7 +797,7 @@ string const GetExtension(string const & name)
 string const getFormatFromContents(string const & filename)
 {
 	// paranoia check
-	if (filename.empty() || !IsFileReadable(filename))
+	if (filename.empty() || !isFileReadable(filename))
 		return string();
 
 	ifstream ifs(filename.c_str());

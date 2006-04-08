@@ -18,7 +18,7 @@
 
 /// return true if the char is a line separator
 inline
-bool IsLineSeparatorChar(char c)
+bool isLineSeparatorChar(char c)
 {
 	return c == ' ';
 }
@@ -26,7 +26,7 @@ bool IsLineSeparatorChar(char c)
 
 /// return true if a char is alphabetical (including accented chars)
 inline
-bool IsLetterChar(unsigned char c)
+bool isLetterChar(unsigned char c)
 {
 	return (c >= 'A' && c <= 'Z')
 		|| (c >= 'a' && c <= 'z')
@@ -36,7 +36,7 @@ bool IsLetterChar(unsigned char c)
 
 /// return true if the char is printable (masked to 7-bit ASCII)
 inline
-bool IsPrintable(unsigned char c)
+bool isPrintable(unsigned char c)
 {
 	return (c & 127) >= ' ';
 }
@@ -44,15 +44,15 @@ bool IsPrintable(unsigned char c)
 
 /// return true if the char is printable and not a space (masked to 7-bit ASCII)
 inline
-bool IsPrintableNonspace(unsigned char c)
+bool isPrintableNonspace(unsigned char c)
 {
-	return IsPrintable(c) && c != ' ';
+	return isPrintable(c) && c != ' ';
 }
 
 
 /// completely pointless FIXME
 inline
-bool IsDigit(unsigned char ch)
+bool isDigit(unsigned char ch)
 {
 	return ch >= '0' && ch <= '9';
 }
