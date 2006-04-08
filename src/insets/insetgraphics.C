@@ -603,10 +603,10 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	// buffer.
 	// "nice" means that the buffer is exported to LaTeX format but not
 	//        run through the LaTeX compiler.
-	string const output_file = os::external_path(runparams.nice ?
+	string output_file = os::external_path(runparams.nice ?
 		params().filename.outputFilename(m_buffer->filePath()) :
 		OnlyFilename(temp_file));
-	string const source_file = runparams.nice ? orig_file : temp_file;
+	string source_file = runparams.nice ? orig_file : temp_file;
 
 	if (zipped) {
 		if (params().noUnzip) {
@@ -644,6 +644,8 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 		}
 
 		string const unzipped_temp_file = unzippedFileName(temp_file);
+		output_file = unzippedFileName(output_file);
+		source_file = unzippedFileName(source_file);
 		if (compare_timestamps(unzipped_temp_file, temp_file) > 0) {
 			// temp_file has been unzipped already and
 			// orig_file has not changed in the meantime.

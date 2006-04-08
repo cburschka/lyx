@@ -124,6 +124,8 @@ What's new
 - Reading the bounding box from eps files does not fail anymore when the
   file contains additional spaces (bug 1235)
 
+- Fix LaTeX error for zipped graphics (bug 2231).
+
 * Configuration/Installation:
 
 - Don't use the -mms-bitfields compiler switch on mingw and cygwin, since
