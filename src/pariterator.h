@@ -66,6 +66,9 @@ public:
 	///
 	lyx::pit_type pit() const;
 	///
+	/// return the paragraph this cursor is in
+	pit_type & pit() { return DocIterator::pit(); }
+
 	ParagraphList & plist() const;
 };
 
