@@ -95,7 +95,7 @@ enum OutlineOp {
 };
 
 
-void Outline(OutlineOp, Buffer *, pit_type &);
+void outline(OutlineOp, Buffer *, pit_type &);
 
 
 } // namespace toc

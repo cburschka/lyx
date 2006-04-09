@@ -33,14 +33,14 @@ public:
 		    bool put_in_tempdir);
 	///
 	static
-	bool Preview(Buffer * buffer, std::string const & format);
+	bool preview(Buffer * buffer, std::string const & format);
 	///
 	static
-	bool IsExportable(Buffer const & buffer, std::string const & format);
+	bool isExportable(Buffer const & buffer, std::string const & format);
 	///
 	static
 	std::vector<Format const *> const
-	GetExportableFormats(Buffer const & buffer, bool only_viewable);
+	getExportableFormats(Buffer const & buffer, bool only_viewable);
 	///
 };
 

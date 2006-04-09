@@ -66,7 +66,7 @@ void pasteParagraphList(LCursor & cur, ParagraphList const & parlist,
  *  for a list of paragraphs beginning with the specified par.
  *  It changes layouts and character styles.
  */
-void SwitchBetweenClasses(lyx::textclass_type c1,
+void switchBetweenClasses(lyx::textclass_type c1,
 				lyx::textclass_type c2,
 				ParagraphList & par,
 				ErrorList &);

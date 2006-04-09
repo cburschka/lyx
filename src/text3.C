@@ -631,7 +631,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			if (cur.pos() == cur.paragraph().size())
 				// Par boundary, force full-screen update
 				singleParUpdate = false;
-			needsUpdate = Delete(cur);
+			needsUpdate = erase(cur);
 			cur.resetAnchor();
 			// It is possible to make it a lot faster still
 			// just comment out the line below...
@@ -649,7 +649,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 				cursorRight(cur);
 				cursorLeft(cur);
 			}
-			Delete(cur);
+			erase(cur);
 			cur.resetAnchor();
 		} else {
 			cutSelection(cur, true, false);
@@ -1133,7 +1133,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		string::const_iterator end = cmd.argument.end();
 		for (; cit != end; ++cit)
 			bv->owner()->getIntl().getTransManager().
-				TranslateAndInsert(*cit, this);
+				translateAndInsert(*cit, this);
 
 		cur.resetAnchor();
 		moveCursor(cur, false);
@@ -1441,7 +1441,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		bv->owner()->getLyXFunc().handleKeyFunc(cmd.action);
 		if (!cmd.argument.empty())
 			bv->owner()->getIntl().getTransManager()
-				.TranslateAndInsert(cmd.argument[0], this);
+				.translateAndInsert(cmd.argument[0], this);
 		break;
 
 	case LFUN_FLOAT_LIST: {

@@ -202,21 +202,21 @@ TransManager::~TransManager()
 {}
 
 
-int TransManager::SetPrimary(string const & language)
+int TransManager::setPrimary(string const & language)
 {
-	if (t1_->GetName() == language)
+	if (t1_->getName() == language)
 		return 0;
 
-	return t1_->Load(language);
+	return t1_->load(language);
 }
 
 
-int TransManager::SetSecondary(string const & language)
+int TransManager::setSecondary(string const & language)
 {
-	if (t2_->GetName() == language)
+	if (t2_->getName() == language)
 		return 0;
 
-	return t2_->Load(language);
+	return t2_->load(language);
 }
 
 
@@ -226,31 +226,31 @@ bool TransManager::setCharset(string const & str)
 }
 
 
-void TransManager::EnablePrimary()
+void TransManager::enablePrimary()
 {
-	if (t1_->IsDefined())
+	if (t1_->isDefined())
 		active_ = t1_.get();
 
 	lyxerr[Debug::KBMAP] << "Enabling primary keymap" << endl;
 }
 
 
-void TransManager::EnableSecondary()
+void TransManager::enableSecondary()
 {
-	if (t2_->IsDefined())
+	if (t2_->isDefined())
 		active_ = t2_.get();
 	lyxerr[Debug::KBMAP] << "Enabling secondary keymap" << endl;
 }
 
 
-void TransManager::DisableKeymap()
+void TransManager::disableKeymap()
 {
 	active_ = &default_;
 	lyxerr[Debug::KBMAP] << "Disabling keymap" << endl;
 }
 
 
-void  TransManager::TranslateAndInsert(char c, LyXText * text)
+void  TransManager::translateAndInsert(char c, LyXText * text)
 {
 	string res = active_->process(c, *this);
 
@@ -321,6 +321,6 @@ void TransManager::deadkey(char c, tex_accent accent, LyXText * t)
 		insert(res, t);
 	} else {
 		// Go through the translation
-		TranslateAndInsert(c, t);
+		translateAndInsert(c, t);
 	}
 }

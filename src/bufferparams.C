@@ -283,7 +283,7 @@ BufferParams::BufferParams()
 	  // true in the returned pair, then `second' is the textclass
 	  // number; if it is false, second is 0. In both cases, second
 	  // is what we want.
-	textclass(textclasslist.NumberOfClass("article").second),
+	textclass(textclasslist.numberOfClass("article").second),
 	pimpl_(new Impl)
 {
 	paragraph_separation = PARSEP_INDENT;
@@ -402,7 +402,7 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 		lex.next();
 		string const classname = lex.getString();
 		pair<bool, lyx::textclass_type> pp =
-			textclasslist.NumberOfClass(classname);
+			textclasslist.numberOfClass(classname);
 		if (pp.first) {
 			textclass = pp.second;
 		} else {
@@ -796,7 +796,7 @@ bool BufferParams::writeLaTeX(ostream & os, LaTeXFeatures & features,
 
 	if (inputenc == "auto") {
 		string const doc_encoding =
-			language->encoding()->LatexName();
+			language->encoding()->latexName();
 
 		// Create a list with all the input encodings used
 		// in the document

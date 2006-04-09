@@ -179,7 +179,7 @@ private:
 	///
 	std::vector<Position> saved_positions;
 	///
-	void MenuInsertLyXFile(std::string const & filen);
+	void menuInsertLyXFile(std::string const & filen);
 	/// our workarea
 	WorkArea & workarea() const;
 	/// this is used to handle XSelection events in the right manner

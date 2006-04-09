@@ -62,7 +62,7 @@ public:
 	const_iterator end() const { return layoutlist_.end(); }
 
 	/// Performs the read of the layout file.
-	bool Read(std::string const & filename, bool merge = false);
+	bool read(std::string const & filename, bool merge = false);
 	///
 	void readOutputType(LyXLex &);
 	///

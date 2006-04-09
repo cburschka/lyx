@@ -91,7 +91,7 @@ unsigned char const errno_tab[] =
 
 
 inline
-int TranslateOS2Error(unsigned long rc)
+int translateOS2Error(unsigned long rc)
 {
 	if (rc >= sizeof (errno_tab))
 		return EINVAL;

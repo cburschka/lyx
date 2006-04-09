@@ -32,11 +32,11 @@ public:
 			encoding_table[i] = e[i];
 	}
 	///
-	std::string const & Name() const {
+	std::string const & name() const {
 		return Name_;
 	}
 	///
-	std::string const & LatexName() const {
+	std::string const & latexName() const {
 		return LatexName_;
 	}
 	///
@@ -82,10 +82,10 @@ public:
 	};
 	///
 	static
-	bool IsComposeChar_hebrew(unsigned char c);
+	bool isComposeChar_hebrew(unsigned char c);
 	///
 	static
-	bool IsComposeChar_arabic(unsigned char c);
+	bool isComposeChar_arabic(unsigned char c);
 	///
 	static
 	bool is_arabic_special(unsigned char c);
@@ -94,7 +94,7 @@ public:
 	bool is_arabic(unsigned char c);
 	///
 	static
-	unsigned char TransformChar(unsigned char c, Letter_Form form);
+	unsigned char transformChar(unsigned char c, Letter_Form form);
 
 private:
 	///

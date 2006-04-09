@@ -166,7 +166,7 @@ void asciiTocList(string const & type, Buffer const & buffer, ostream & os)
 }
 
 
-void Outline(OutlineOp mode, Buffer * buf, pit_type & pit)
+void outline(OutlineOp mode, Buffer * buf, pit_type & pit)
 {
 	ParagraphList & pars = buf->text().paragraphs();
 	ParagraphList::iterator bgn = pars.begin();

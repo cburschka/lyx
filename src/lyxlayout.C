@@ -129,7 +129,7 @@ LyXLayout::LyXLayout ()
 
 
 // Reads a layout definition from file
-bool LyXLayout::Read(LyXLex & lexrc, LyXTextClass const & tclass)
+bool LyXLayout::read(LyXLex & lexrc, LyXTextClass const & tclass)
 {
 	// This table is sorted alphabetically [asierra 30March96]
 	keyword_item layoutTags[] = {

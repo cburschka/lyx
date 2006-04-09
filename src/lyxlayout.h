@@ -29,7 +29,7 @@ public:
 	///
 	LyXLayout();
 	///
-	bool Read(LyXLex &, LyXTextClass const &);
+	bool read(LyXLex &, LyXTextClass const &);
 	///
 	void readAlign(LyXLex &);
 	///

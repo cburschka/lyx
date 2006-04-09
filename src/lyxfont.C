@@ -206,13 +206,13 @@ LColor_color LyXFont::color() const
 
 bool LyXFont::isRightToLeft() const
 {
-	return lang->RightToLeft();
+	return lang->rightToLeft();
 }
 
 
 bool LyXFont::isVisibleRightToLeft() const
 {
-	return (lang->RightToLeft() &&
+	return (lang->rightToLeft() &&
 		number() != ON);
 }
 

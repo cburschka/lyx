@@ -28,52 +28,52 @@ Intl::Intl()
 }
 
 
-void Intl::KeyMapOn(bool on)
+void Intl::keyMapOn(bool on)
 {
 	keymapon = on;
 
 	if (on) {
 		if (keymap == PRIMARY)
-			KeyMapPrim();
+			keyMapPrim();
 		else
-			KeyMapSec();
+			keyMapSec();
 	} else
-		trans.DisableKeymap();
+		trans.disableKeymap();
 }
 
 
-void Intl::ToggleKeyMap()
+void Intl::toggleKeyMap()
 {
 	if (keymapon && (keymap == PRIMARY)) {
-		KeyMapSec();
+		keyMapSec();
 	} else if (keymapon) {
-		KeyMapOn(false);
+		keyMapOn(false);
 	} else
-		KeyMapPrim();
+		keyMapPrim();
 }
 
 
-void Intl::KeyMapPrim()
+void Intl::keyMapPrim()
 {
-	if (!trans.SetPrimary(prim_lang))
-		trans.EnablePrimary();
+	if (!trans.setPrimary(prim_lang))
+		trans.enablePrimary();
 
 	keymapon = true;
 	keymap = PRIMARY;
 }
 
 
-void Intl::KeyMapSec()
+void Intl::keyMapSec()
 {
-	if (!trans.SetSecondary(sec_lang))
-		trans.EnableSecondary();
+	if (!trans.setSecondary(sec_lang))
+		trans.enableSecondary();
 
 	keymapon = true;
 	keymap = SECONDARY;
 }
 
 
-void Intl::InitKeyMapper(bool on)
+void Intl::initKeyMapper(bool on)
 {
 	lyxerr[Debug::INIT] << "Initializing key mappings..." << endl;
 
@@ -82,12 +82,12 @@ void Intl::InitKeyMapper(bool on)
 	else
 		keymapon = on;
 
-	KeyMapOn(keymapon);
+	keyMapOn(keymapon);
 
 	if (keymapon)
-		KeyMapPrim();
+		keyMapPrim();
 
-	trans.SetPrimary(prim_lang);
-	trans.SetSecondary(sec_lang);
+	trans.setPrimary(prim_lang);
+	trans.setSecondary(sec_lang);
 	trans.setCharset(lyxrc.font_norm);
 }

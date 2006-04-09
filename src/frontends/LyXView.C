@@ -86,7 +86,7 @@ void LyXView::init()
 		autosave_timeout_->start();
 	}
 
-	intl_->InitKeyMapper(lyxrc.use_kbmap);
+	intl_->initKeyMapper(lyxrc.use_kbmap);
 }
 
 
@@ -132,7 +132,7 @@ void LyXView::autoSave()
 	lyxerr[Debug::INFO] << "Running autoSave()" << endl;
 
 	if (view()->available()) {
-		::AutoSave(view().get());
+		::autoSave(view().get());
 	}
 }
 

@@ -491,7 +491,7 @@ LyXTextClass const parse_preamble(Parser & p, ostream & os, string const & force
 		exit(1);
 	}
 	LyXTextClass textclass;
-	textclass.Read(layoutfilename);
+	textclass.read(layoutfilename);
 	if (h_papersides.empty()) {
 		ostringstream ss;
 		ss << textclass.sides();

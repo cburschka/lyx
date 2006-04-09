@@ -159,7 +159,7 @@ void LyXScreen::showCursor(BufferView & bv)
 	bool const samelang = realfont.language() == bp.language;
 	bool const isrtl = realfont.isVisibleRightToLeft();
 
-	if (!samelang || isrtl != bp.language->RightToLeft()) {
+	if (!samelang || isrtl != bp.language->rightToLeft()) {
 		shape = L_SHAPE;
 		if (isrtl)
 			shape = REVERSED_L_SHAPE;

@@ -17,6 +17,7 @@
 #include "format.h"
 #include "frontends/LyXView.h"
 #include "funcrequest.h"
+#include "lyx_cb.h"
 
 #include "bufferlist.h"
 #include "support/filetools.h"
@@ -34,7 +35,6 @@ using std::vector;
 
 
 extern BufferList bufferlist;
-extern void InsertAsciiFile(BufferView *, string const &, bool);
 
 
 bool Importer::Import(LyXView * lv, string const & filename,
@@ -76,7 +76,7 @@ bool Importer::Import(LyXView * lv, string const & filename,
 		string filename2 = (loader_format == format) ? filename
 			: changeExtension(filename,
 					  formats.extension(loader_format));
-		InsertAsciiFile(lv->view().get(), filename2, as_paragraphs);
+		insertAsciiFile(lv->view().get(), filename2, as_paragraphs);
 		lv->dispatch(FuncRequest(LFUN_MARK_OFF));
 	}
 

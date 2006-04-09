@@ -59,7 +59,7 @@ vector<string> const Backends(Buffer const & buffer)
 {
 	vector<string> v;
 	if (buffer.params().getLyXTextClass().isTeXClassAvailable()) {
-		v.push_back(BufferFormat(buffer));
+		v.push_back(bufferFormat(buffer));
 		// FIXME: Don't hardcode format names here, but use a flag
 		if (v.back() == "latex")
 			v.push_back("pdflatex");
@@ -267,7 +267,7 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 }
 
 
-bool Exporter::Preview(Buffer * buffer, string const & format)
+bool Exporter::preview(Buffer * buffer, string const & format)
 {
 	string result_file;
 	if (!Export(buffer, format, true, result_file))
@@ -276,7 +276,7 @@ bool Exporter::Preview(Buffer * buffer, string const & format)
 }
 
 
-bool Exporter::IsExportable(Buffer const & buffer, string const & format)
+bool Exporter::isExportable(Buffer const & buffer, string const & format)
 {
 	vector<string> backends = Backends(buffer);
 	for (vector<string>::const_iterator it = backends.begin();
@@ -288,7 +288,7 @@ bool Exporter::IsExportable(Buffer const & buffer, string const & format)
 
 
 vector<Format const *> const
-Exporter::GetExportableFormats(Buffer const & buffer, bool only_viewable)
+Exporter::getExportableFormats(Buffer const & buffer, bool only_viewable)
 {
 	vector<string> backends = Backends(buffer);
 	vector<Format const *> result =

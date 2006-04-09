@@ -90,9 +90,9 @@ bool BufferList::quitWriteBuffer(Buffer * buf)
 		bool succeeded;
 
 		if (buf->isUnnamed())
-			succeeded = WriteAs(buf);
+			succeeded = writeAs(buf);
 		else
-			succeeded = MenuWrite(buf);
+			succeeded = menuWrite(buf);
 
 		if (!succeeded)
 			return false;
@@ -184,7 +184,7 @@ bool BufferList::close(Buffer * buf, bool const ask)
 
 	if (ret == 0) {
 		if (buf->isUnnamed()) {
-			if (!WriteAs(buf))
+			if (!writeAs(buf))
 				return false;
 		} else if (buf->save()) {
 			LyX::ref().session().addLastFile(buf->fileName());

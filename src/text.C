@@ -429,15 +429,15 @@ int LyXText::singleWidth(Paragraph const & par,
 	// The most common case is handled first (Asger)
 	if (isPrintable(c)) {
 		Language const * language = font.language();
-		if (language->RightToLeft()) {
+		if (language->rightToLeft()) {
 			if ((lyxrc.font_norm_type == LyXRC::ISO_8859_6_8 ||
 			     lyxrc.font_norm_type == LyXRC::ISO_10646_1)
 			    && language->lang() == "arabic") {
-				if (Encodings::IsComposeChar_arabic(c))
+				if (Encodings::isComposeChar_arabic(c))
 					return 0;
 				c = par.transformChar(c, pos);
 			} else if (language->lang() == "hebrew" &&
-				   Encodings::IsComposeChar_hebrew(c))
+				   Encodings::isComposeChar_hebrew(c))
 				return 0;
 		}
 		return font_metrics::width(c, font);
@@ -1576,7 +1576,7 @@ void LyXText::changeCase(LCursor & cur, LyXText::TextCase action)
 }
 
 
-bool LyXText::Delete(LCursor & cur)
+bool LyXText::erase(LCursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
 	bool needsUpdate = false;

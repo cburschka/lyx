@@ -158,7 +158,7 @@ int LaunchIspell::generateChild()
 	if (lyxrc.isp_use_input_encoding &&
 	    params.inputenc != "default") {
 		string enc = (params.inputenc == "auto")
-			? params.language->encoding()->LatexName()
+			? params.language->encoding()->latexName()
 			: params.inputenc;
 		string::size_type n = enc.length();
 		tmp = new char[3];

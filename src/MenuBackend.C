@@ -485,15 +485,15 @@ void expandFormats(MenuItem::Kind kind, Menu & tomenu, LyXView const * view)
 		action = LFUN_IMPORT;
 		break;
 	case MenuItem::ViewFormats:
-		formats = Exporter::GetExportableFormats(*view->buffer(), true);
+		formats = Exporter::getExportableFormats(*view->buffer(), true);
 		action = LFUN_PREVIEW;
 		break;
 	case MenuItem::UpdateFormats:
-		formats = Exporter::GetExportableFormats(*view->buffer(), true);
+		formats = Exporter::getExportableFormats(*view->buffer(), true);
 		action = LFUN_UPDATE;
 		break;
 	default:
-		formats = Exporter::GetExportableFormats(*view->buffer(), false);
+		formats = Exporter::getExportableFormats(*view->buffer(), false);
 		action = LFUN_EXPORT;
 	}
 	sort(formats.begin(), formats.end(), compare_format());

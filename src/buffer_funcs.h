@@ -36,7 +36,7 @@ Buffer * newFile(std::string const & filename, std::string const & templatename,
 		 bool isNamed = false);
 
 ///return the format of the buffer on a string
-std::string const BufferFormat(Buffer const & buffer);
+std::string const bufferFormat(Buffer const & buffer);
 ///
 void bufferErrors(Buffer const &, TeXErrors const &);
 ///

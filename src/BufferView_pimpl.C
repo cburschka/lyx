@@ -869,10 +869,10 @@ void BufferView::Pimpl::switchKeyMap()
 	Intl & intl = owner_->getIntl();
 	if (bv_->getLyXText()->real_current_font.isRightToLeft()) {
 		if (intl.keymap == Intl::PRIMARY)
-			intl.KeyMapSec();
+			intl.keyMapSec();
 	} else {
 		if (intl.keymap == Intl::SECONDARY)
-			intl.KeyMapPrim();
+			intl.keyMapPrim();
 	}
 }
 
@@ -895,7 +895,7 @@ void BufferView::Pimpl::stuffClipboard(string const & content) const
 }
 
 
-void BufferView::Pimpl::MenuInsertLyXFile(string const & filenm)
+void BufferView::Pimpl::menuInsertLyXFile(string const & filenm)
 {
 	BOOST_ASSERT(cursor_.inTexted());
 	string filename = filenm;
@@ -1188,15 +1188,15 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_FILE_INSERT:
-		MenuInsertLyXFile(cmd.argument);
+		menuInsertLyXFile(cmd.argument);
 		break;
 
 	case LFUN_FILE_INSERT_ASCII_PARA:
-		InsertAsciiFile(bv_, cmd.argument, true);
+		insertAsciiFile(bv_, cmd.argument, true);
 		break;
 
 	case LFUN_FILE_INSERT_ASCII:
-		InsertAsciiFile(bv_, cmd.argument, false);
+		insertAsciiFile(bv_, cmd.argument, false);
 		break;
 
 	case LFUN_FONT_STATE:
@@ -1251,7 +1251,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 	case LFUN_OUTLINE: {
 		lyx::toc::OutlineOp const op =
 		    static_cast<lyx::toc::OutlineOp>(convert<int>(cmd.argument));
-		lyx::toc::Outline(op, buffer_, cursor_.pit());
+		lyx::toc::outline(op, buffer_, cursor_.pit());
 		bv_->text()->setCursor(cursor_, cursor_.pit(), 0);
 		buffer_->markDirty();
 		updateCounters(*buffer_);

@@ -40,7 +40,7 @@ public:
 	///
 	std::string const & display() const { return display_; }
 	///
-	bool RightToLeft() const { return rightToLeft_; }
+	bool rightToLeft() const { return rightToLeft_; }
 	///
 	Encoding const * encoding() const { return encoding_; }
 	///

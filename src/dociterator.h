@@ -23,7 +23,6 @@ class Paragraph;
 class Row;
 
 
-
 // only needed for gcc 2.95, remove when support terminated
 template <typename A, typename B>
 bool ptr_cmp(A const * a, B const * b)

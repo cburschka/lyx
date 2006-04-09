@@ -1494,7 +1494,7 @@ Paragraph::getParLanguage(BufferParams const & bparams) const
 bool Paragraph::isRightToLeftPar(BufferParams const & bparams) const
 {
 	return lyxrc.rtl_support
-		&& getParLanguage(bparams)->RightToLeft()
+		&& getParLanguage(bparams)->rightToLeft()
 		&& ownerCode() != InsetBase::ERT_CODE;
 }
 
@@ -1821,7 +1821,7 @@ unsigned char Paragraph::transformChar(unsigned char c, pos_type pos) const
 
 	for (pos_type i = pos + 1, end = size(); i < end; ++i) {
 		unsigned char const par_char = getChar(i);
-		if (!Encodings::IsComposeChar_arabic(par_char)) {
+		if (!Encodings::isComposeChar_arabic(par_char)) {
 			next_char = par_char;
 			break;
 		}
@@ -1830,15 +1830,15 @@ unsigned char Paragraph::transformChar(unsigned char c, pos_type pos) const
 	if (Encodings::is_arabic(next_char)) {
 		if (Encodings::is_arabic(prev_char) &&
 			!Encodings::is_arabic_special(prev_char))
-			return Encodings::TransformChar(c, Encodings::FORM_MEDIAL);
+			return Encodings::transformChar(c, Encodings::FORM_MEDIAL);
 		else
-			return Encodings::TransformChar(c, Encodings::FORM_INITIAL);
+			return Encodings::transformChar(c, Encodings::FORM_INITIAL);
 	} else {
 		if (Encodings::is_arabic(prev_char) &&
 			!Encodings::is_arabic_special(prev_char))
-			return Encodings::TransformChar(c, Encodings::FORM_FINAL);
+			return Encodings::transformChar(c, Encodings::FORM_FINAL);
 		else
-			return Encodings::TransformChar(c, Encodings::FORM_ISOLATED);
+			return Encodings::transformChar(c, Encodings::FORM_ISOLATED);
 	}
 }
 

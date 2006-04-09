@@ -139,7 +139,7 @@ pasteSelectionHelper(Buffer const & buffer,
 	}
 
 	// Make sure there is no class difference.
-	lyx::cap::SwitchBetweenClasses(textclass, tc, insertion, errorlist);
+	lyx::cap::switchBetweenClasses(textclass, tc, insertion, errorlist);
 
 	ParagraphList::iterator tmpbuf = insertion.begin();
 	int depth_delta = pars[pit].params().depth() - tmpbuf->params().depth();
@@ -350,7 +350,7 @@ string grabAndEraseSelection(LCursor & cur)
 }
 
 
-void SwitchBetweenClasses(textclass_type c1, textclass_type c2,
+void switchBetweenClasses(textclass_type c1, textclass_type c2,
 	ParagraphList & pars, ErrorList & errorlist)
 {
 	BOOST_ASSERT(!pars.empty());

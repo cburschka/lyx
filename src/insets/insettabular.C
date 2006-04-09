@@ -1811,7 +1811,7 @@ bool InsetTabular::isRightToLeft(LCursor & cur) const
 	Paragraph const & parentpar = cur[cur.depth() - 2].paragraph();
 	LCursor::pos_type const parentpos = cur[cur.depth() - 2].pos();
 	return parentpar.getFontSettings(cur.bv().buffer()->params(),
-					 parentpos).language()->RightToLeft();
+					 parentpos).language()->rightToLeft();
 }
 
 

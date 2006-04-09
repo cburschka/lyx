@@ -120,7 +120,7 @@ bool LyXTextClass::isTeXClassAvailable() const
 bool LyXTextClass::do_readStyle(LyXLex & lexrc, LyXLayout & lay)
 {
 	lyxerr[Debug::TCLASS] << "Reading style " << lay.name() << endl;
-	if (!lay.Read(lexrc, *this)) {
+	if (!lay.read(lexrc, *this)) {
 		// Resolve fonts
 		lay.resfont = lay.font;
 		lay.resfont.realize(defaultfont());
@@ -165,7 +165,7 @@ enum TextClassTags {
 
 
 // Reads a textclass structure from file.
-bool LyXTextClass::Read(string const & filename, bool merge)
+bool LyXTextClass::read(string const & filename, bool merge)
 {
 	if (!lyx::support::isFileReadable(filename)) {
 		lyxerr << "Cannot read layout file `" << filename << "'."
@@ -255,7 +255,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 							    lexrc.getString(),
 							    "layout");
 
-				if (Read(tmp, true)) {
+				if (read(tmp, true)) {
 					lexrc.printError("Error reading input"
 							 "file: "+tmp);
 					error = true;
@@ -435,7 +435,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 		string const tempfile = lyx::support::tempName();
 		error = !layout2layout(filename, tempfile);
 		if (!error)
-			error = Read(tempfile, merge);
+			error = read(tempfile, merge);
 		lyx::support::unlink(tempfile);
 		return error;
 	}
@@ -917,7 +917,7 @@ bool LyXTextClass::load() const
 
 	// Read style-file
 	string const real_file = libFileSearch("layouts", name_, "layout");
-	loaded_ = const_cast<LyXTextClass*>(this)->Read(real_file) == 0;
+	loaded_ = const_cast<LyXTextClass*>(this)->read(real_file) == 0;
 
 	if (!loaded_) {
 		lyxerr << "Error reading `"

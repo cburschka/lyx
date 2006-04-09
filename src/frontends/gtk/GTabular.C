@@ -90,7 +90,7 @@ void GTabular::doBuild()
 		sigc::mem_fun(*this, &GTabular::updateSpecialRowsSensitivity));
 
 	xml_->get_widget("PageBreak", pagebreakcheck_);
-	
+
 	xml_->get_widget("SpecialRows", specialrowstable_);
 
 	xml_->get_widget("HeaderOn",headeroncheck_);
@@ -188,7 +188,7 @@ void GTabular::update()
 	}
 
 	updateHorzAlignCombo(!multicol && !pwidth.zero());
-	
+
 	int halign = tabular.getAlignment(cell);
 	if (halign == LYX_ALIGN_RIGHT)
 		horzaligncombo_->set_active(2);
@@ -299,9 +299,9 @@ void GTabular::update()
 		}
 
 	}
-	
+
 	updating_ = false;
-	
+
 	updateSensitivity();
 	updateSpecialRowsSensitivity();
 }
@@ -335,7 +335,7 @@ void GTabular::updateSensitivity()
 	bool const multicol = multicolcheck_->get_active();
 
 	widthlength_->set_sensitive(specifywidth);
-	vertaligncombo_->set_sensitive(specifywidth);	
+	vertaligncombo_->set_sensitive(specifywidth);
 
 	updateHorzAlignCombo(!multicol && specifywidth);
 }
@@ -379,7 +379,7 @@ void GTabular::updateSpecialRowsSensitivity()
 	headerlowerborderdoublecheck_->set_sensitive(header);
 	footerupperborderdoublecheck_->set_sensitive(footer);
 	footerlowerborderdoublecheck_->set_sensitive(footer);
-	
+
 	firstheaderoncheck_->set_sensitive(!firstheaderempty);
 	firstheaderupperborderdoublecheck_->set_sensitive(firstheaderempty || firstheader);
 	firstheaderlowerborderdoublecheck_->set_sensitive(firstheaderempty || firstheader);

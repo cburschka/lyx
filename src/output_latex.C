@@ -272,7 +272,7 @@ TeXOnePar(Buffer const & buf,
 	if (bparams.inputenc == "auto" &&
 	    language->encoding() != previous_language->encoding()) {
 		os << "\\inputencoding{"
-		   << language->encoding()->LatexName()
+		   << language->encoding()->latexName()
 		   << "}\n";
 		texrow.newline();
 	}

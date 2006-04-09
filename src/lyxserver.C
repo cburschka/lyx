@@ -192,7 +192,7 @@ int LyXComm::startPipe(string const & filename, bool write)
 	}
 
 	if (rc != NO_ERROR) {
-		errnum = TranslateOS2Error(rc);
+		errnum = translateOS2Error(rc);
 		lyxerr <<"LyXComm: Could not create pipe " << filename
 		       << strerror(errnum) << endl;
 		return -1;
@@ -200,7 +200,7 @@ int LyXComm::startPipe(string const & filename, bool write)
 	// Listen to it.
 	rc = DosConnectNPipe(os2fd);
 	if (rc != NO_ERROR && rc != ERROR_PIPE_NOT_CONNECTED) {
-		errnum = TranslateOS2Error(rc);
+		errnum = translateOS2Error(rc);
 		lyxerr <<"LyXComm: Could not create pipe " << filename
 		       << strerror(errnum) << endl;
 		return -1;
@@ -256,7 +256,7 @@ void LyXComm::endPipe(int & fd, string const & filename, bool write)
 
 	rc = DosDisConnectNPipe(fd);
 	if (rc != NO_ERROR) {
-		errnum = TranslateOS2Error(rc);
+		errnum = translateOS2Error(rc);
 		lyxerr << "LyXComm: Could not disconnect pipe " << filename
 		       << '\n' << strerror(errnum) << endl;
 		return;
@@ -374,7 +374,7 @@ void LyXComm::send(string const & msg)
 	int errnum;
 	rc = DosResetBuffer(outfd);	// To avoid synchronization problems.
 	if (rc != NO_ERROR) {
-		errnum = TranslateOS2Error(rc);
+		errnum = translateOS2Error(rc);
 		lyxerr << "LyXComm: Message could not be flushed: " << msg
 		       << '\n' << strerror(errnum) << endl;
 	}

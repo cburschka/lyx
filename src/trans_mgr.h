@@ -156,15 +156,15 @@ public:
 	///
 	~TransManager();
 	///
-	int SetPrimary(std::string const &);
+	int setPrimary(std::string const &);
 	///
-	int SetSecondary(std::string const &);
+	int setSecondary(std::string const &);
 	///
-	void EnablePrimary();
+	void enablePrimary();
 	///
-	void EnableSecondary();
+	void enableSecondary();
 	///
-	void DisableKeymap();
+	void disableKeymap();
 	///
 	bool setCharset(std::string const &);
 	///
@@ -172,7 +172,7 @@ public:
 		return trans_fsm_.currentState->backspace();
 	}
 	///
-	void TranslateAndInsert(char, LyXText *);
+	void translateAndInsert(char, LyXText *);
 	///
 	std::string const deadkey(char, KmodInfo);
 	///

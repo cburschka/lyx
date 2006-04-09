@@ -42,7 +42,7 @@ using std::pair;
 
 // Gets textclass number from name
 pair<bool, textclass_type> const
-LyXTextClassList::NumberOfClass(string const & textclass) const
+LyXTextClassList::numberOfClass(string const & textclass) const
 {
 	ClassList::const_iterator cit =
 		find_if(classlist_.begin(), classlist_.end(),
@@ -88,7 +88,7 @@ public:
 
 
 // Reads LyX textclass definitions according to textclass config file
-bool LyXTextClassList::Read()
+bool LyXTextClassList::read()
 {
 	LyXLex lex(0, 0);
 	string real_file = libFileSearch("", "textclass.lst");
@@ -176,7 +176,7 @@ void LyXSetStyle()
 {
 	lyxerr[Debug::TCLASS] << "LyXSetStyle: parsing configuration..." << endl;
 
-	if (!textclasslist.Read()) {
+	if (!textclasslist.read()) {
 		lyxerr[Debug::TCLASS] << "LyXSetStyle: an error occured "
 			"during parsing.\n             Exiting." << endl;
 		exit(1);

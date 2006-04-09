@@ -30,6 +30,7 @@
 #include "language.h"
 #include "session.h"
 #include "LColor.h"
+#include "lyx_cb.h"
 #include "lyxfunc.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
@@ -86,8 +87,6 @@ using std::signal;
 using std::system;
 #endif
 
-
-extern void QuitLyX(bool);
 
 extern LyXServer * lyxserver;
 
@@ -277,7 +276,7 @@ void LyX::priv_exec(int & argc, char * argv[])
 		if (last_loaded) {
 			bool success = false;
 			if (last_loaded->dispatch(batch_command, &success)) {
-				QuitLyX(false);
+				quitLyX(false);
 				exit(!success);
 			}
 		}
@@ -288,7 +287,7 @@ void LyX::priv_exec(int & argc, char * argv[])
 		lyx_gui::start(batch_command, files);
 	else {
 		// Something went wrong above
-		QuitLyX(false);
+		quitLyX(false);
 		exit(EXIT_FAILURE);
 	}
 }

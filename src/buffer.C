@@ -1055,7 +1055,7 @@ void Buffer::makeDocBookFile(string const & fname,
 	if (!only_body) {
 		if (runparams.flavor == OutputParams::XML)
 			ofs << "<?xml version=\"1.0\" encoding=\""
-			    << params().language->encoding()->Name() << "\"?>\n";
+			    << params().language->encoding()->name() << "\"?>\n";
 
 		ofs << "<!DOCTYPE " << top_element << " ";
 

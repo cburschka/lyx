@@ -34,11 +34,11 @@ public:
 	~Trans();
 
 	///
-	int Load(std::string const & language);
+	int load(std::string const & language);
 	///
-	bool IsDefined() const;
+	bool isDefined() const;
 	///
-	std::string const & GetName() const;
+	std::string const & getName() const;
 	///
 	std::string const process(char, TransManager &);
 	///
@@ -46,19 +46,19 @@ public:
 
 private:
 	///
-	void AddDeadkey(tex_accent, std::string const &);
+	void addDeadkey(tex_accent, std::string const &);
 	///
-	void FreeKeymap();
+	void freeKeymap();
 	///
-	int Load(LyXLex &);
+	int load(LyXLex &);
 	///
-	std::string const & Match(unsigned char c);
+	std::string const & match(unsigned char c);
 	///
-	void InsertException(KmodException & exclist, char c,
+	void insertException(KmodException & exclist, char c,
 			     std::string const & data, bool = false,
 			     tex_accent = TEX_NOACCENT);
 	///
-	void FreeException(KmodException & exclist);
+	void freeException(KmodException & exclist);
 
 	///
 	std::string name_;
@@ -71,7 +71,7 @@ private:
 
 ///
 inline
-std::string const & Trans::Match(unsigned char c)
+std::string const & Trans::match(unsigned char c)
 {
 	std::map<int, std::string>::iterator it = keymap_.find(c);
 	if (it != keymap_.end()) {

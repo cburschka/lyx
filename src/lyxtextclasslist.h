@@ -40,13 +40,13 @@ public:
 
 	/// Gets textclass number from name, -1 if textclass name does not exist
 	std::pair<bool, lyx::textclass_type> const
-	NumberOfClass(std::string const & textclass) const;
+	numberOfClass(std::string const & textclass) const;
 
 	///
 	LyXTextClass const & operator[](lyx::textclass_type textclass) const;
 
 	/// Read textclass list.  Returns false if this fails.
-	bool Read();
+	bool read();
 private:
 	///
 	mutable ClassList classlist_;

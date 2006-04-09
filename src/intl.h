@@ -33,19 +33,19 @@ public:
 	Intl();
 
 	/// {en/dis}able the keymap
-	void KeyMapOn(bool on);
+	void keyMapOn(bool on);
 
 	/// set the primary language keymap
-	void KeyMapPrim();
+	void keyMapPrim();
 
 	/// set the secondary language keymap
-	void KeyMapSec();
+	void keyMapSec();
 
 	/// turn on/off key mappings, status in keymapon
-	void ToggleKeyMap();
+	void toggleKeyMap();
 
 	/// initialize key mapper
-	void InitKeyMapper(bool on);
+	void initKeyMapper(bool on);
 
 	// Get the Translation Manager
 	TransManager & getTransManager();

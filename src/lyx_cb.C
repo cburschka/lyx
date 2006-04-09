@@ -98,7 +98,7 @@ bool quitting;	// flag, that we are quitting the program
 // Menu callbacks
 //
 
-bool MenuWrite(Buffer * buffer)
+bool menuWrite(Buffer * buffer)
 {
 	if (buffer->save()) {
 		LyX::ref().session().addLastFile(buffer->fileName());
@@ -115,13 +115,13 @@ bool MenuWrite(Buffer * buffer)
 		text, 0, 1, _("&Rename"), _("&Cancel"));
 
 	if (ret == 0)
-		return WriteAs(buffer);
+		return writeAs(buffer);
 	return false;
 }
 
 
 
-bool WriteAs(Buffer * buffer, string const & filename)
+bool writeAs(Buffer * buffer, string const & filename)
 {
 	string fname = buffer->fileName();
 	string const oldname = fname;
@@ -177,7 +177,7 @@ bool WriteAs(Buffer * buffer, string const & filename)
 	bool unnamed = buffer->isUnnamed();
 	buffer->setUnnamed(false);
 
-	if (!MenuWrite(buffer)) {
+	if (!menuWrite(buffer)) {
 		buffer->setFileName(oldname);
 		buffer->setUnnamed(unnamed);
 		return false;
@@ -188,7 +188,7 @@ bool WriteAs(Buffer * buffer, string const & filename)
 }
 
 
-void QuitLyX(bool noask)
+void quitLyX(bool noask)
 {
 	lyxerr[Debug::INFO] << "Running QuitLyX." << endl;
 
@@ -297,7 +297,7 @@ int AutoSaveBuffer::generateChild()
 } // namespace anon
 
 
-void AutoSave(BufferView * bv)
+void autoSave(BufferView * bv)
 	// should probably be moved into BufferList (Lgb)
 	// Perfect target for a thread...
 {
@@ -333,7 +333,7 @@ void AutoSave(BufferView * bv)
 // create new file with template
 // SERVERCMD !
 //
-void NewFile(BufferView * bv, string const & filename)
+void newFile(BufferView * bv, string const & filename)
 {
 	// Split argument by :
 	string name;
@@ -356,7 +356,7 @@ void NewFile(BufferView * bv, string const & filename)
 
 
 // Insert ascii file (if filename is empty, prompt for one)
-void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
+void insertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 {
 	if (!bv->available())
 		return;
@@ -440,7 +440,7 @@ string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagrap
 
 // This function runs "configure" and then rereads lyx.defaults to
 // reconfigure the automatic settings.
-void Reconfigure(BufferView * bv)
+void reconfigure(BufferView * bv)
 {
 	bv->owner()->message(_("Running configure..."));
 

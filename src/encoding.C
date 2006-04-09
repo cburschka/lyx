@@ -248,7 +248,7 @@ unsigned char const arabic_start = 0xc1;
 } // namespace anon
 
 
-bool Encodings::IsComposeChar_hebrew(unsigned char c)
+bool Encodings::isComposeChar_hebrew(unsigned char c)
 {
 	return c <= 0xd2 && c >= 0xc0 &&
 		c != 0xce && c != 0xd0;
@@ -268,7 +268,7 @@ bool Encodings::is_arabic_special(unsigned char c)
 		 c == 0xe9;
 }
 
-bool Encodings::IsComposeChar_arabic(unsigned char c)
+bool Encodings::isComposeChar_arabic(unsigned char c)
 {
 	return c >= 0xeb && c <= 0xf2;
 }
@@ -280,7 +280,7 @@ bool Encodings::is_arabic(unsigned char c)
 }
 
 
-unsigned char Encodings::TransformChar(unsigned char c,
+unsigned char Encodings::transformChar(unsigned char c,
 				      Encodings::Letter_Form form)
 {
 	if (!is_arabic(c))

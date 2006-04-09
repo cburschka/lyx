@@ -203,7 +203,7 @@ void GPainter::image(int x, int y, int w, int h,
 
 	Glib::RefPtr<Gdk::GC> gc = gc_;
 	pixmap->draw_pixbuf (gc, pixbuf, 0, 0, x, y, w, h,
-	                     Gdk::RGB_DITHER_NONE, 0, 0);
+			     Gdk::RGB_DITHER_NONE, 0, 0);
 }
 
 
@@ -215,7 +215,7 @@ inline XftFont * getXftFont(LyXFont const & f)
 
 
 // ENCODING: we assume we've got 8-bit string in whatever format Xft
-// wants.  We should be finding out what the backend's giving us and 
+// wants.  We should be finding out what the backend's giving us and
 // then converting it before feeding it to Xft using XftDrawStringUtf8
 void GPainter::text(int x, int y, char const * s, size_t ls, LyXFont const & f)
 {

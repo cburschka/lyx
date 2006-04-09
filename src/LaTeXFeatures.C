@@ -220,8 +220,8 @@ set<string> LaTeXFeatures::getEncodingSet(string const & doc_encoding) const
 	LanguageList::const_iterator it  = UsedLanguages_.begin();
 	LanguageList::const_iterator end = UsedLanguages_.end();
 	for (; it != end; ++it)
-		if ((*it)->encoding()->LatexName() != doc_encoding)
-			encodings.insert((*it)->encoding()->LatexName());
+		if ((*it)->encoding()->latexName() != doc_encoding)
+			encodings.insert((*it)->encoding()->latexName());
 	return encodings;
 }
 

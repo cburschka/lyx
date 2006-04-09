@@ -602,9 +602,9 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 			if ((bparams.inputenc == "latin1" ||
 			     bparams.inputenc == "latin9") ||
 			    (bparams.inputenc == "auto" &&
-			     (font.language()->encoding()->LatexName()
+			     (font.language()->encoding()->latexName()
 			      == "latin1" ||
-			      font.language()->encoding()->LatexName()
+			      font.language()->encoding()->latexName()
 			      == "latin9"))) {
 				os << "\\ensuremath{"
 				   << c

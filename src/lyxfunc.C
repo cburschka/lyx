@@ -247,7 +247,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 
 	Encoding const * encoding = view()->cursor().getEncoding();
 
-	encoded_last_key = keysym->getISOEncoded(encoding ? encoding->Name() : "");
+	encoded_last_key = keysym->getISOEncoded(encoding ? encoding->name() : "");
 
 	// Do a one-deep top-level lookup for
 	// cancel and meta-fake keys. RVDK_PATCH_5
@@ -413,7 +413,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 
 	case LFUN_EXPORT:
 		enable = cmd.argument == "custom"
-			|| Exporter::IsExportable(*buf, cmd.argument);
+			|| Exporter::isExportable(*buf, cmd.argument);
 		break;
 
 	case LFUN_RUNCHKTEX:
@@ -421,7 +421,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 
 	case LFUN_BUILDPROG:
-		enable = Exporter::IsExportable(*buf, "program");
+		enable = Exporter::isExportable(*buf, "program");
 		break;
 
 	case LFUN_LAYOUT_TABULAR:
@@ -510,7 +510,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 				|| name == "prefs"
 				|| name == "texinfo";
 		else if (name == "print")
-			enable = Exporter::IsExportable(*buf, "dvi")
+			enable = Exporter::isExportable(*buf, "dvi")
 				&& lyxrc.print_command != "none";
 		else if (name == "character" || name == "mathpanel")
 			enable = cur.inset().lyxCode() != InsetBase::ERT_CODE;
@@ -682,7 +682,7 @@ void showPrintError(string const & name)
 void loadTextclass(string const & name)
 {
 	std::pair<bool, lyx::textclass_type> const tc_pair =
-		textclasslist.NumberOfClass(name);
+		textclasslist.numberOfClass(name);
 
 	if (!tc_pair.first) {
 		lyxerr << "Document class \"" << name
@@ -808,14 +808,14 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				string const str = bformat(_("Saving document %1$s..."),
 					 makeDisplayPath(owner->buffer()->fileName()));
 				owner->message(str);
-				MenuWrite(owner->buffer());
+				menuWrite(owner->buffer());
 				owner->message(str + _(" done."));
 			} else
-				WriteAs(owner->buffer());
+				writeAs(owner->buffer());
 			break;
 
 		case LFUN_WRITEAS:
-			WriteAs(owner->buffer(), argument);
+			writeAs(owner->buffer(), argument);
 			break;
 
 		case LFUN_MENURELOAD: {
@@ -832,12 +832,12 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_UPDATE:
 			Exporter::Export(owner->buffer(), argument, true);
-			view()->showErrorList(BufferFormat(*owner->buffer()));
+			view()->showErrorList(bufferFormat(*owner->buffer()));
 			break;
 
 		case LFUN_PREVIEW:
-			Exporter::Preview(owner->buffer(), argument);
-			view()->showErrorList(BufferFormat(*owner->buffer()));
+			Exporter::preview(owner->buffer(), argument);
+			view()->showErrorList(bufferFormat(*owner->buffer()));
 			break;
 
 		case LFUN_BUILDPROG:
@@ -855,7 +855,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				owner->getDialogs().show("sendto");
 			else {
 				Exporter::Export(owner->buffer(), argument, false);
-				view()->showErrorList(BufferFormat(*owner->buffer()));
+				view()->showErrorList(bufferFormat(*owner->buffer()));
 			}
 			break;
 
@@ -1007,7 +1007,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				// save bookmarks to .lyx/session
 				view()->saveSavedPositions();
 			}
-			QuitLyX(argument == "force");
+			quitLyX(argument == "force");
 			break;
 
 		case LFUN_TOCVIEW: {
@@ -1018,11 +1018,11 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_AUTOSAVE:
-			AutoSave(view());
+			autoSave(view());
 			break;
 
 		case LFUN_RECONFIGURE:
-			Reconfigure(view());
+			reconfigure(view());
 			break;
 
 		case LFUN_HELP_OPEN: {
@@ -1097,7 +1097,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_FILE_NEW:
-			NewFile(view(), argument);
+			newFile(view(), argument);
 			break;
 
 		case LFUN_FILE_OPEN:
@@ -1313,19 +1313,19 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_KMAP_OFF:
-			owner->getIntl().KeyMapOn(false);
+			owner->getIntl().keyMapOn(false);
 			break;
 
 		case LFUN_KMAP_PRIM:
-			owner->getIntl().KeyMapPrim();
+			owner->getIntl().keyMapPrim();
 			break;
 
 		case LFUN_KMAP_SEC:
-			owner->getIntl().KeyMapSec();
+			owner->getIntl().keyMapSec();
 			break;
 
 		case LFUN_KMAP_TOGGLE:
-			owner->getIntl().ToggleKeyMap();
+			owner->getIntl().toggleKeyMap();
 			break;
 
 		case LFUN_REPEAT: {
@@ -1469,7 +1469,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			if (!newL || oldL == newL)
 				break;
 
-			if (oldL->RightToLeft() == newL->RightToLeft()
+			if (oldL->rightToLeft() == newL->rightToLeft()
 			    && !buffer.isMultiLingual())
 				buffer.changeLanguage(oldL, newL);
 			else
@@ -1543,7 +1543,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			loadTextclass(argument);
 
 			std::pair<bool, lyx::textclass_type> const tc_pair =
-				textclasslist.NumberOfClass(argument);
+				textclasslist.numberOfClass(argument);
 
 			if (!tc_pair.first)
 				break;
@@ -1558,7 +1558,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			buffer->params().textclass = new_class;
 			StableDocIterator backcur(view()->cursor());
 			ErrorList el;
-			lyx::cap::SwitchBetweenClasses(
+			lyx::cap::switchBetweenClasses(
 				old_class, new_class,
 				buffer->paragraphs(), el);
 

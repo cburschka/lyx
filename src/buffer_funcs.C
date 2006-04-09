@@ -237,7 +237,7 @@ void bufferErrors(Buffer const & buf, ErrorList const & el)
 }
 
 
-string const BufferFormat(Buffer const & buffer)
+string const bufferFormat(Buffer const & buffer)
 {
 	if (buffer.isLinuxDoc())
 		return "linuxdoc";
