@@ -23,7 +23,7 @@
 
 #include "controllers/ControlBibtex.h"
 
-#include "support/filetools.h" // ChangeExtension
+#include "support/filetools.h" // changeExtension
 #include "support/lstrings.h"
 
 #include <qpushbutton.h>
@@ -31,7 +31,7 @@
 #include <qcheckbox.h>
 
 
-using lyx::support::ChangeExtension;
+using lyx::support::changeExtension;
 using lyx::support::split;
 using lyx::support::trim;
 
@@ -91,7 +91,7 @@ void QBibtex::update_contents()
 	controller().getBibFiles(bib_str);
 	for (vector<string>::const_iterator it = bib_str.begin();
 		it != bib_str.end(); ++it) {
-		string bibItem(ChangeExtension(*it, ""));
+		string bibItem(changeExtension(*it, ""));
 		dialog_->add_->bibLB->insertItem(toqstr(bibItem));
 	}
 
@@ -118,7 +118,7 @@ void QBibtex::update_contents()
 	controller().getBibStyles(str);
 	for (vector<string>::const_iterator it = str.begin();
 		it != str.end(); ++it) {
-		string item(ChangeExtension(*it, ""));
+		string item(changeExtension(*it, ""));
 		if (item == bibstyle)
 			item_nr = int(it - str.begin());
 		dialog_->styleCB->insertItem(toqstr(item));

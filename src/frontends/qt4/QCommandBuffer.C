@@ -33,7 +33,7 @@
 #include <QToolTip>
 #include <QPushButton>
 
-using lyx::support::LibFileSearch;
+using lyx::support::libFileSearch;
 
 using std::vector;
 using std::string;
@@ -77,8 +77,8 @@ protected:
 QCommandBuffer::QCommandBuffer(QtView * view, ControlCommandBuffer & control, QWidget * parent)
 	: QWidget(parent), view_(view), controller_(control)
 {
-	QPixmap qpup(toqstr(LibFileSearch("images", "up", "xpm")));
-	QPixmap qpdown(toqstr(LibFileSearch("images", "down", "xpm")));
+	QPixmap qpup(toqstr(libFileSearch("images", "up", "xpm")));
+	QPixmap qpdown(toqstr(libFileSearch("images", "down", "xpm")));
 
 	QVBoxLayout * top = new QVBoxLayout(this);
 	QHBoxLayout * layout = new QHBoxLayout(0);

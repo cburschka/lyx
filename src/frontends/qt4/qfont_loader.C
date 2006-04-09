@@ -35,10 +35,6 @@
 #endif
 
 using lyx::support::contains;
-using lyx::support::LibFileSearch;
-using lyx::support::OnlyPath;
-using lyx::support::QuoteName;
-using lyx::support::Systemcall;
 
 using std::endl;
 using std::make_pair;

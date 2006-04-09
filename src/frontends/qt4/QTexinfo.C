@@ -21,8 +21,6 @@
 #include <q3listbox.h>
 #include <qpushbutton.h>
 
-using lyx::support::OnlyFilename;
-
 using std::string;
 
 namespace lyx {
