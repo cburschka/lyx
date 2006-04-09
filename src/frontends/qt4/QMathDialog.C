@@ -26,8 +26,11 @@
 #include "qt_helpers.h"
 #include "controllers/ControlMath.h"
 #include "frontends/lyx_gui.h"
+#include "support/filetools.h"
 
 using std::string;
+
+using lyx::support::LibFileSearch;
 
 namespace lyx {
 namespace frontend {
@@ -67,6 +70,27 @@ QMathDialog::QMathDialog(QMath * form)
 	connect( functionsLW, SIGNAL( itemActivated(QListWidgetItem *)  ), this, SLOT( functionSelected(QListWidgetItem *) ) );
 	connect( equationPB, SIGNAL( clicked() ), this, SLOT( equationClicked() ) );
 	connect( symbolsCO, SIGNAL(activated(int)), this, SLOT(showingPanel(int)));
+
+	string icon_path = LibFileSearch("images/math", "sqrt-square", "xpm");
+	sqrtPB->setIcon(QIcon(toqstr(icon_path)));
+	icon_path = LibFileSearch("images/math", "space", "xpm");
+	spacePB->setIcon(QIcon(toqstr(icon_path)));
+	icon_path = LibFileSearch("images/math", "style", "xpm");
+	stylePB->setIcon(QIcon(toqstr(icon_path)));
+	icon_path = LibFileSearch("images/math", "font", "xpm");
+	fontPB->setIcon(QIcon(toqstr(icon_path)));
+	icon_path = LibFileSearch("images/math", "equation", "xpm");
+	equationPB->setIcon(QIcon(toqstr(icon_path)));
+	icon_path = LibFileSearch("images/math", "frac-square", "xpm");
+	fracPB->setIcon(QIcon(toqstr(icon_path)));
+	icon_path = LibFileSearch("images/math", "sub", "xpm");
+	subscriptPB->setIcon(QIcon(toqstr(icon_path)));
+	icon_path = LibFileSearch("images/math", "super", "xpm");
+	superscriptPB->setIcon(QIcon(toqstr(icon_path)));
+	icon_path = LibFileSearch("images/math", "matrix", "xpm");
+	matrixPB->setIcon(QIcon(toqstr(icon_path)));
+	icon_path = LibFileSearch("images/math", "delim", "xpm");
+	delimitersPB->setIcon(QIcon(toqstr(icon_path)));
 
 	// function list
 	for (int i = 0; *function_names[i]; ++i) {

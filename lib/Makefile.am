@@ -32,21 +32,11 @@ dist_noinst_DATA = \
 	images/math/delim0.xpm \
 	images/math/delim1.xpm \
 	images/math/delim.xbm \
-	images/math/delim.xpm \
 	images/math/dots.xbm \
-	images/math/equation.xpm \
 	images/math/font.xbm \
-	images/math/font.xpm \
 	images/math/frac-square.xpm \
 	images/math/greek.xbm \
-	images/math/matrix.xpm \
 	images/math/misc.xbm \
-	images/math/space.xpm \
-	images/math/sqrt-square.xpm \
-	images/math/style.xbm \
-	images/math/style.xpm \
-	images/math/sub.xpm \
-	images/math/super.xpm \
 	images/math/varsz.xbm
 
 binddir = $(pkgdatadir)/bind
@@ -255,6 +245,16 @@ dist_images_DATA = \
 
 imagesmathdir = $(imagesdir)/math
 dist_imagesmath_DATA = \
+	images/math/style.xbm \
+	images/math/font.xpm \
+	images/math/delim.xpm \
+	images/math/equation.xpm \
+	images/math/matrix.xpm \
+	images/math/space.xpm \
+	images/math/sqrt-square.xpm \
+	images/math/style.xpm \
+	images/math/sub.xpm \
+	images/math/super.xpm \
 	images/math/Bbbk.xpm \
 	images/math/Finv.xpm \
 	images/math/Game.xpm \
