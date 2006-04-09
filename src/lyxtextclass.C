@@ -24,6 +24,8 @@
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 #include "support/filetools.h"
+#include <boost/filesystem/operations.hpp>
+namespace fs = boost::filesystem;
 
 #include <sstream>
 
@@ -910,13 +912,15 @@ bool LyXTextClass::delete_layout(string const & name)
 
 
 // Load textclass info if not loaded yet
-bool LyXTextClass::load() const
+bool LyXTextClass::load(string const & path) const
 {
 	if (loaded_)
 		return true;
 
-	// Read style-file
-	string const real_file = libFileSearch("layouts", name_, "layout");
+	// Read style-file, current directory is searched before system ones
+	string real_file = path + "/" + name_ + ".layout";
+	if (!fs::exists(real_file))
+		real_file = libFileSearch("layouts", name_, "layout");
 	loaded_ = const_cast<LyXTextClass*>(this)->read(real_file) == 0;
 
 	if (!loaded_) {

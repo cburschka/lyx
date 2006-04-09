@@ -230,6 +230,8 @@ public:
 	std::string const paperSizeName() const;
 	///
 	std::string const babelCall(std::string const & lang_opts) const;
+	/// path of the current buffer
+	std::string filepath;
 
 private:
 	/** Use the Pimpl idiom to hide those member variables that would otherwise

@@ -47,6 +47,12 @@ public:
 
 	/// Read textclass list.  Returns false if this fails.
 	bool read();
+	
+	/// add a textclass from user local directory. 
+ 	/// Return ture/false, and textclass number
+ 	std::pair<bool, lyx::textclass_type> const
+ 	addTextClass(std::string const & textclass, std::string const & path);
+
 private:
 	///
 	mutable ClassList classlist_;

@@ -406,9 +406,18 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 		if (pp.first) {
 			textclass = pp.second;
 		} else {
-			textclass = 0;
-			return classname;
+			// if text class does not exist, try to load it from filepath
+			pp = textclasslist.addTextClass(classname, filepath);
+			if (pp.first) {
+				textclass = pp.second;
+			} else {	
+				textclass = 0;
+				return classname;
+			}	
 		}
+		// FIXME: isTeXClassAvailable will try to load the layout file, but will
+		// fail because of the lack of path info. Warnings will be given although
+		// the layout file will be correctly loaded later.
 		if (!getLyXTextClass().isTeXClassAvailable()) {
 			string const msg =
 				bformat(_("The document uses a missing "

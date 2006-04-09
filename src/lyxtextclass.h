@@ -84,7 +84,7 @@ public:
 	LyXLayout_ptr const & operator[](std::string const & vname) const;
 
 	/// Sees to that the textclass structure has been loaded
-	bool load() const;
+	bool load(std::string const & path=".") const;
 	/// Has this layout file been loaded yet?
 	bool loaded() const { return loaded_; }
 

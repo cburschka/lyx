@@ -182,9 +182,6 @@ public:
 	/// name of the file the buffer is associated with.
 	string filename;
 
-	/// The path to the document file.
-	string filepath;
-
 	boost::scoped_ptr<Messages> messages;
 
 	/** Set to true only when the file is fully loaded.
@@ -203,12 +200,13 @@ public:
 
 Buffer::Impl::Impl(Buffer & parent, string const & file, bool readonly_)
 	: lyx_clean(true), bak_clean(true), unnamed(false), read_only(readonly_),
-	  filename(file), filepath(onlyPath(file)), file_fully_loaded(false),
+	  filename(file), file_fully_loaded(false),
 		inset(params)
 {
 	inset.setAutoBreakRows(true);
 	lyxvc.buffer(&parent);
 	temppath = createBufferTmpDir();
+	params.filepath = onlyPath(file);
 	// FIXME: And now do something if temppath == string(), because we
 	// assume from now on that temppath points to a valid temp dir.
 	// See http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg67406.html
@@ -378,7 +376,7 @@ void Buffer::setReadonly(bool const flag)
 void Buffer::setFileName(string const & newfile)
 {
 	pimpl_->filename = makeAbsPath(newfile);
-	pimpl_->filepath = onlyPath(pimpl_->filename);
+	params().filepath = onlyPath(pimpl_->filename);
 	setReadonly(fs::is_readonly(pimpl_->filename));
 	updateTitles();
 }
@@ -476,7 +474,7 @@ bool Buffer::readDocument(LyXLex & lex)
 	BOOST_ASSERT(paragraphs().empty());
 
 	readHeader(lex);
-	if (!params().getLyXTextClass().load()) {
+	if (!params().getLyXTextClass().load(filePath())) {
 		string theclass = params().getLyXTextClass().name();
 		Alert::error(_("Can't load document class"), bformat(
 				     "Using the default document class, because the "
@@ -1468,7 +1466,7 @@ string const & Buffer::fileName() const
 
 string const & Buffer::filePath() const
 {
-	return pimpl_->filepath;
+	return params().filepath;
 }
 
 

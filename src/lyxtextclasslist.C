@@ -19,6 +19,10 @@
 #include "support/filetools.h"
 
 #include <boost/bind.hpp>
+#include <boost/regex.hpp>
+#include <boost/filesystem/operations.hpp>
+#include <fstream>
+namespace fs = boost::filesystem;
 
 using lyx::textclass_type;
 
@@ -26,6 +30,8 @@ using lyx::support::libFileSearch;
 using lyx::support::makeDisplayPath;
 
 using boost::bind;
+using boost::regex;
+using boost::smatch;
 
 #ifndef CXX_GLOBAL_CSTD
 using std::exit;
@@ -38,6 +44,7 @@ using std::make_pair;
 using std::sort;
 using std::string;
 using std::pair;
+using std::ifstream;
 
 
 // Gets textclass number from name
@@ -166,6 +173,44 @@ bool LyXTextClassList::read()
 	return true;
 }
 
+
+std::pair<bool, lyx::textclass_type> const
+LyXTextClassList::addTextClass(std::string const & textclass, std::string const & path)
+{
+	// only check for textclass.layout file, .cls can be anywhere in $TEXINPUTS
+	// NOTE: latex class name is defined in textclass.layout, which can be different from textclass
+	string layout_file = path + "/" + textclass + ".layout";
+	if (fs::exists(layout_file)) {
+		lyxerr[Debug::TCLASS] << "Adding class " << textclass << " from directory " << path << endl;
+		// Read .layout file and get description, real latex classname etc
+		//
+		// This is a C++ version of function processLayoutFile in configure.py,
+		// which uses the following regex
+		//     \Declare(LaTeX|DocBook|LinuxDoc)Class\s*(\[([^,]*)(,.*)*\])*\s*{(.*)}
+		ifstream ifs(layout_file.c_str());
+		static regex const reg("^#\\s*\\\\Declare(LaTeX|DocBook|LinuxDoc)Class\\s*"
+			"(?:\\[([^,]*)(?:,.*)*\\])*\\s*\\{(.*)\\}\\s*");
+		string line;
+		while (getline(ifs, line)) {
+			// look for the \DeclareXXXClass line
+			smatch sub;
+			if (regex_match(line, sub, reg)) {
+				// returns: whole string, classtype (not used here), first option, description
+				BOOST_ASSERT(sub.size()==4);
+				// now, add the layout to textclass.
+				LyXTextClass tmpl(textclass, sub.str(2)==""?textclass:sub.str(2), 
+					sub.str(3) + " <" + path + ">", true);
+				if (lyxerr.debugging(Debug::TCLASS))
+					tmpl.load(path);
+				classlist_.push_back(tmpl);
+				return make_pair(true, classlist_.size() - 1);
+			}
+		}
+	}
+	// If .layout is not in local directory, or an invalid layout is found, return false
+	return make_pair(false, textclass_type(0));
+}
+	
 
 // Global variable: textclass table.
 LyXTextClassList textclasslist;
