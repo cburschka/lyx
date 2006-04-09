@@ -30,7 +30,7 @@
 
 using std::string;
 
-using lyx::support::LibFileSearch;
+using lyx::support::libFileSearch;
 
 namespace lyx {
 namespace frontend {
@@ -71,25 +71,25 @@ QMathDialog::QMathDialog(QMath * form)
 	connect( equationPB, SIGNAL( clicked() ), this, SLOT( equationClicked() ) );
 	connect( symbolsCO, SIGNAL(activated(int)), this, SLOT(showingPanel(int)));
 
-	string icon_path = LibFileSearch("images/math", "sqrt-square", "xpm");
+	string icon_path = libFileSearch("images/math", "sqrt-square", "xpm");
 	sqrtPB->setIcon(QIcon(toqstr(icon_path)));
-	icon_path = LibFileSearch("images/math", "space", "xpm");
+	icon_path = libFileSearch("images/math", "space", "xpm");
 	spacePB->setIcon(QIcon(toqstr(icon_path)));
-	icon_path = LibFileSearch("images/math", "style", "xpm");
+	icon_path = libFileSearch("images/math", "style", "xpm");
 	stylePB->setIcon(QIcon(toqstr(icon_path)));
-	icon_path = LibFileSearch("images/math", "font", "xpm");
+	icon_path = libFileSearch("images/math", "font", "xpm");
 	fontPB->setIcon(QIcon(toqstr(icon_path)));
-	icon_path = LibFileSearch("images/math", "equation", "xpm");
+	icon_path = libFileSearch("images/math", "equation", "xpm");
 	equationPB->setIcon(QIcon(toqstr(icon_path)));
-	icon_path = LibFileSearch("images/math", "frac-square", "xpm");
+	icon_path = libFileSearch("images/math", "frac-square", "xpm");
 	fracPB->setIcon(QIcon(toqstr(icon_path)));
-	icon_path = LibFileSearch("images/math", "sub", "xpm");
+	icon_path = libFileSearch("images/math", "sub", "xpm");
 	subscriptPB->setIcon(QIcon(toqstr(icon_path)));
-	icon_path = LibFileSearch("images/math", "super", "xpm");
+	icon_path = libFileSearch("images/math", "super", "xpm");
 	superscriptPB->setIcon(QIcon(toqstr(icon_path)));
-	icon_path = LibFileSearch("images/math", "matrix", "xpm");
+	icon_path = libFileSearch("images/math", "matrix", "xpm");
 	matrixPB->setIcon(QIcon(toqstr(icon_path)));
-	icon_path = LibFileSearch("images/math", "delim", "xpm");
+	icon_path = libFileSearch("images/math", "delim", "xpm");
 	delimitersPB->setIcon(QIcon(toqstr(icon_path)));
 
 	// function list
