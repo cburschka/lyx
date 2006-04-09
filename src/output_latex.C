@@ -463,8 +463,20 @@ void latexParagraphs(Buffer const & buf,
 	ParagraphList::const_iterator par = paragraphs.begin();
 	ParagraphList::const_iterator endpar = paragraphs.end();
 
+	BOOST_ASSERT(runparams.par_begin <= runparams.par_end);
+	// if only part of the paragraphs will be outputed
+	if (runparams.par_begin !=  runparams.par_end) {
+		par = boost::next(paragraphs.begin(), runparams.par_begin);
+		endpar = boost::next(paragraphs.begin(), runparams.par_end);
+		// runparams will be passed to nested paragraphs, so
+		// we have to reset the range parameters.
+		const_cast<OutputParams&>(runparams).par_begin = 0;
+		const_cast<OutputParams&>(runparams).par_end = 0;
+	}
+
 	// if only_body
 	while (par != endpar) {
+		ParagraphList::const_iterator lastpar = par;
 		// well we have to check if we are in an inset with unlimited
 		// length (all in one row) if that is true then we don't allow
 		// any special options in the paragraph and also we don't allow
@@ -516,6 +528,8 @@ void latexParagraphs(Buffer const & buf,
 			par = TeXOnePar(buf, paragraphs, par, os, texrow,
 					runparams, everypar);
 		}
+		if (std::distance(lastpar, par) >= std::distance(lastpar, endpar))
+			break;
 	}
 	// It might be that we only have a title in this document
 	if (was_title && !already_title) {

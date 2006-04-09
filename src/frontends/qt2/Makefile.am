@@ -49,6 +49,7 @@ libqt2_la_SOURCES = \
 	QIndex.C QIndex.h \
 	QLImage.C QLImage.h \
 	QLog.C QLog.h \
+	QViewSource.C QViewSource.h \
 	QLPainter.C QLPainter.h \
 	QLyXKeySym.C QLyXKeySym.h \
 	QMath.C QMath.h \

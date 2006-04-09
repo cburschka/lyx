@@ -27,6 +27,7 @@
 #include "ControlGraphics.h"
 #include "ControlInclude.h"
 #include "ControlLog.h"
+#include "ControlViewSource.h"
 #include "ControlMath.h"
 #include "ControlNote.h"
 #include "ControlParagraph.h"
@@ -66,6 +67,7 @@
 #include "QInclude.h"
 #include "QIndex.h"
 #include "QLog.h"
+#include "QViewSource.h"
 #include "QMath.h"
 #include "QNote.h"
 #include "QParagraph.h"
@@ -102,7 +104,7 @@ namespace {
 char const * const dialognames[] = {
 "aboutlyx", "bibitem", "bibtex", "box", "branch", "changes", "character",
 "citation", "document", "errorlist", "ert", "external", "file",
-"findreplace", "float", "graphics", "include", "index", "label", "log",
+"findreplace", "float", "graphics", "include", "index", "label", "log", "view-source",
 "mathpanel", "mathdelimiter", "mathmatrix", "note", "paragraph", "preamble",
 "prefs", "print", "ref", "sendto", "spellchecker","tabular", "tabularcreate",
 
@@ -241,6 +243,10 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 	} else if (name == "log") {
 		dialog->setController(new ControlLog(*dialog));
 		dialog->setView(new QLog(*dialog));
+		dialog->bc().bp(new OkCancelPolicy);
+	} else if (name == "view-source") {
+		dialog->setController(new ControlViewSource(*dialog));
+		dialog->setView(new QViewSource(*dialog));
 		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "mathpanel") {
 		dialog->setController(new ControlMath(*dialog));

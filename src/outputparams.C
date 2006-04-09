@@ -19,7 +19,9 @@ OutputParams::OutputParams()
 	  local_font(0), free_spacing(false), use_babel(false),
 	  linelen(0), depth(0),
 	  exportdata(new ExportData),
-	  inComment(false)
+	  inComment(false),
+	  par_begin(0), par_end(0),
+	  dryrun(false)
 {}
 
 

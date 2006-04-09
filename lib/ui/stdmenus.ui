@@ -217,6 +217,7 @@ Menuset
 #	Item "Close All Footnotes|C" "close-footnotes"
 		Item "Display Tooltips|i" "toggle-tooltips"
 		Separator
+		Item "View source|s" "dialog-show view-source"
 		Submenu "Update|U" "document_update"
 		ViewFormats
 		Separator

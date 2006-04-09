@@ -63,6 +63,8 @@ libcontrollers_la_SOURCES= \
 	ControlInclude.h \
 	ControlLog.C \
 	ControlLog.h \
+	ControlViewSource.C \
+	ControlViewSource.h \
 	ControlMath.C \
 	ControlMath.h \
 	ControlNote.C \

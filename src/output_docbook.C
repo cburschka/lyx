@@ -16,6 +16,7 @@
 #include "buffer.h"
 #include "buffer_funcs.h"
 #include "bufferparams.h"
+#include "outputparams.h"
 #include "counters.h"
 #include "debug.h"
 #include "paragraph.h"
@@ -285,8 +286,20 @@ void docbookParagraphs(ParagraphList const & paragraphs,
 	ParagraphList::const_iterator par = paragraphs.begin();
 	ParagraphList::const_iterator pend = paragraphs.end();
 
+	BOOST_ASSERT(runparams.par_begin <= runparams.par_end);
+	// if only part of the paragraphs will be outputed
+	if (runparams.par_begin !=  runparams.par_end) {
+		par = boost::next(paragraphs.begin(), runparams.par_begin);
+		pend = boost::next(paragraphs.begin(), runparams.par_end);
+		// runparams will be passed to nested paragraphs, so
+		// we have to reset the range parameters.
+		const_cast<OutputParams&>(runparams).par_begin = 0;
+		const_cast<OutputParams&>(runparams).par_end = 0;
+	}
+	
 	while (par != pend) {
 		LyXLayout_ptr const & style = par->layout();
+		ParagraphList::const_iterator lastpar = par;
 		ParagraphList::const_iterator send;
 
 		switch (style->latextype) {
@@ -308,5 +321,8 @@ void docbookParagraphs(ParagraphList const & paragraphs,
 		default:
 			break;
 		}
+		// makeEnvironment may process more than one paragraphs and bypass pend
+		if (std::distance(lastpar, par) >= std::distance(lastpar, pend))
+			break;
 	}
 }

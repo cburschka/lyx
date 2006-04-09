@@ -559,6 +559,10 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	string const orig_file = params().filename.absFilename();
 	string const rel_file = params().filename.relFilename(buf.filePath());
 
+	// previewing source code, no file copying or file format conversion 
+	if (runparams.dryrun)
+		return stripExtensionIfPossible(rel_file);
+
 	// If the file is compressed and we have specified that it
 	// should not be uncompressed, then just return its name and
 	// let LaTeX do the rest!

@@ -81,6 +81,7 @@ using lyx::support::token;
 using std::endl;
 using std::string;
 using std::istringstream;
+using std::ostringstream;
 
 
 extern string current_layout;
@@ -1107,6 +1108,21 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		bv->switchKeyMap();
 		bv->owner()->updateMenubar();
 		bv->owner()->updateToolbars();
+
+		// if view-source dialog is visible, send source code of selected
+		// text to the dialog
+		if (cmd.button() == mouse_button::button1 && cur.selection() 
+			&& bv->owner()->getDialogs().visible("view-source")) {
+			// get *top* level paragraphs that contain the selection
+			lyx::pit_type par_begin = bv->cursor().selectionBegin().bottom().pit();
+			lyx::pit_type par_end = bv->cursor().selectionEnd().bottom().pit();
+			if (par_begin > par_end)
+				std::swap(par_begin, par_end);
+			ostringstream ostr;
+			bv->buffer()->getSourceCode(ostr, par_begin, par_end + 1);
+			// display the dialog and show source code
+			bv->owner()->getDialogs().update("view-source", ostr.str());
+		}
 		break;
 	}
 

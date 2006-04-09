@@ -15,6 +15,7 @@
 
 #include "buffer.h"
 #include "bufferparams.h"
+#include "outputparams.h"
 #include "paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphList.h"
@@ -40,6 +41,18 @@ void linuxdocParagraphs(Buffer const & buf,
 
 	ParagraphList::const_iterator pit = paragraphs.begin();
 	ParagraphList::const_iterator pend = paragraphs.end();
+	
+	BOOST_ASSERT(runparams.par_begin <= runparams.par_end);
+	// if only part of the paragraphs will be outputed
+	if (runparams.par_begin !=  runparams.par_end) {
+		pit = boost::next(paragraphs.begin(), runparams.par_begin);
+		pend = boost::next(paragraphs.begin(), runparams.par_end);
+		// runparams will be passed to nested paragraphs, so
+		// we have to reset the range parameters.
+		const_cast<OutputParams&>(runparams).par_begin = 0;
+		const_cast<OutputParams&>(runparams).par_end = 0;
+	}
+
 	for (; pit != pend; ++pit) {
 		LyXLayout_ptr const & style = pit->layout();
 		// treat <toc> as a special case for compatibility with old code

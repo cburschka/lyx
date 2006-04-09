@@ -131,6 +131,7 @@ using std::make_pair;
 using std::pair;
 using std::string;
 using std::istringstream;
+using std::ostringstream;
 
 namespace biblio = lyx::biblio;
 namespace fs = boost::filesystem;
@@ -522,6 +523,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 #endif
 		else if (name == "vclog")
 			enable = buf->lyxvc().inUse();
+		else if (name == "view-source")
+			enable = buf;
 		break;
 	}
 
@@ -1182,6 +1185,25 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				string const data = "vc " +
 					owner->buffer()->lyxvc().getLogFile();
 				owner->getDialogs().show("log", data);
+			}
+			else if (name == "view-source") {
+				// get the *top* level paragraphs that contain the cursor, 
+				// or the selected text
+				lyx::pit_type par_begin;
+				lyx::pit_type par_end;
+				if (!view()->cursor().selection()) {
+					par_begin = view()->cursor().bottom().pit();
+					par_end = par_begin;
+				} else {
+					par_begin = view()->cursor().selectionBegin().bottom().pit();
+					par_end = view()->cursor().selectionEnd().bottom().pit();
+				}
+				if (par_begin > par_end)
+					std::swap(par_begin, par_end);
+				ostringstream ostr;
+				view()->buffer()->getSourceCode(ostr, par_begin, par_end + 1);
+				// display the dialog and show source code
+				owner->getDialogs().show("view-source", ostr.str());
 			}
 			else
 				owner->getDialogs().show(name, data);

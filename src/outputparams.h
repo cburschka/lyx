@@ -24,7 +24,6 @@ class LyXFont;
 
 class OutputParams {
 public:
-	//
 	enum FLAVOR {
 		LATEX,
 		PDFLATEX,
@@ -97,6 +96,22 @@ public:
 	 *  if this flag is true, since they may not exist.
 	 */
 	bool inComment;
+
+	/** allow output of only part of the top-level paragraphs 
+	 *  par_begin: beginning paragraph
+	 */
+	lyx::pit_type par_begin;
+
+	/** allow output of only part of the top-level paragraphs 
+	 *  par_end: par_end-1 is the ending paragraph
+	 *  if par_begin=par_end, output all paragraphs
+	 */
+	lyx::pit_type par_end;
+
+	/** whether or not do actual file copying and image conversion 
+	 *  This mode will be used to preview the source code
+	 */
+	bool dryrun;
 };
 
 #endif // NOT OUTPUTPARAMS_H
