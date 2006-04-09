@@ -98,24 +98,15 @@ public:
 		///
 		FontTable(lyx::pos_type p, LyXFont const & f)
 			: pos_(p), font_(f)
-		{
-#if 0
-			font_ = container.get(f);
-#endif
-		}
+		{}
 		///
 		lyx::pos_type pos() const { return pos_; }
 		///
 		void pos(lyx::pos_type p) { pos_ = p; }
 		///
 		LyXFont const & font() const { return font_; }
-#if 0
-		///
-		void font(LyXFont const & f) { font_ = container.get(f);}
-#else
 		///
 		void font(LyXFont const & f) { font_ = f;}
-#endif
 	private:
 		/// End position of paragraph this font attribute covers
 		lyx::pos_type pos_;
@@ -128,13 +119,7 @@ public:
 		    The values LyXFont::IGNORE_* and LyXFont::TOGGLE are NOT
 		    allowed in these font tables.
 		*/
-#if 0
-		boost::shared_ptr<LyXFont> font_;
-		///
-		static ShareContainer<LyXFont> container;
-#else
 		LyXFont font_;
-#endif
 	};
 	///
 	friend class matchFT;
