@@ -108,7 +108,7 @@ public:
 	std::string getStringToIndex(LCursor const & cur);
 
 	/// insert a character at cursor position
-	void insertChar(LCursor & cur, char c);
+	void insertChar(LCursor & cur, lyx::char_type c);
 	/// insert an inset at cursor position
 	void insertInset(LCursor & cur, InsetBase * inset);
 

@@ -15,6 +15,8 @@
 
 #include "LColor.h"
 
+#include "support/types.h"
+
 #include <string>
 
 
@@ -152,7 +154,7 @@ public:
 
 	/// draw a char at position x, y (y is the baseline)
 	virtual void text(int x, int y,
-		char c, LyXFont const & f) = 0;
+			  lyx::char_type c, LyXFont const & f) = 0;
 
 	/**
 	 * Draw a string and enclose it inside a rectangle. If

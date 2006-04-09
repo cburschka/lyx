@@ -75,6 +75,7 @@
 
 #include <sstream>
 
+using lyx::char_type;
 using lyx::pit_type;
 using lyx::pos_type;
 using lyx::word_location;
@@ -424,7 +425,7 @@ int LyXText::singleWidth(Paragraph const & par, pos_type pos) const
 
 
 int LyXText::singleWidth(Paragraph const & par,
-			 pos_type pos, char c, LyXFont const & font) const
+			 pos_type pos, char_type c, LyXFont const & font) const
 {
 	// The most common case is handled first (Asger)
 	if (isPrintable(c)) {
@@ -710,7 +711,7 @@ void LyXText::rowBreakPoint(pit_type const pit, Row & row) const
 	pos_type point = end;
 	pos_type i = pos;
 	for ( ; i < end; ++i, ++fi) {
-		char const c = par.getChar(i);
+		char_type const c = par.getChar(i);
 		int thiswidth = singleWidth(par, i, c, *fi);
 
 		// add the auto-hfill from label end to the body
@@ -803,7 +804,7 @@ void LyXText::setRowWidth(pit_type const pit, Row & row) const
 					w -= singleWidth(par, i - 1);
 				w = max(w, labelEnd(pit));
 			}
-			char const c = par.getChar(i);
+			char_type const c = par.getChar(i);
 			w += singleWidth(par, i, c, *fi);
 		}
 	}
@@ -1112,7 +1113,7 @@ void LyXText::breakParagraph(LCursor & cur, bool keep_layout)
 
 // insert a character, moves all the following breaks in the
 // same Paragraph one to the right and make a rebreak
-void LyXText::insertChar(LCursor & cur, char c)
+void LyXText::insertChar(LCursor & cur, char_type c)
 {
 	BOOST_ASSERT(this == cur.text());
 	BOOST_ASSERT(c != Paragraph::META_INSET);
@@ -1145,7 +1146,7 @@ void LyXText::insertChar(LCursor & cur, char c)
 			number(cur); // Set current_font.number to ON
 
 			if (cur.pos() != 0) {
-				char const c = par.getChar(cur.pos() - 1);
+				char_type const c = par.getChar(cur.pos() - 1);
 				if (contains(number_unary_operators, c) &&
 				    (cur.pos() == 1
 				     || par.isSeparator(cur.pos() - 2)
@@ -1552,7 +1553,7 @@ void LyXText::changeCase(LCursor & cur, LyXText::TextCase action)
 			pos = 0;
 			continue;
 		}
-		unsigned char c = pars_[pit].getChar(pos);
+		char_type c = pars_[pit].getChar(pos);
 		if (c != Paragraph::META_INSET) {
 			switch (action) {
 			case text_lowercase:

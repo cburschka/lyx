@@ -181,7 +181,7 @@ void QLPainter::text(int x, int y, string const & s, LyXFont const & f)
 }
 
 
-void QLPainter::text(int x, int y, char c, LyXFont const & f)
+void QLPainter::text(int x, int y, lyx::char_type c, LyXFont const & f)
 {
 	char s[2] = { c, '\0' };
 	return text(x, y, s, 1, f);

@@ -42,6 +42,7 @@
 
 #include <boost/crc.hpp>
 
+using lyx::char_type;
 using lyx::pos_type;
 using lyx::pit_type;
 
@@ -186,7 +187,7 @@ void RowPainter::paintHebrewComposeChar(pos_type & vpos, LyXFont const & font)
 	string str;
 
 	// first char
-	char c = par_.getChar(pos);
+	char_type c = par_.getChar(pos);
 	str += c;
 	++vpos;
 
@@ -219,7 +220,7 @@ void RowPainter::paintArabicComposeChar(pos_type & vpos, LyXFont const & font)
 	string str;
 
 	// first char
-	char c = par_.getChar(pos);
+	char_type c = par_.getChar(pos);
 	c = par_.transformChar(c, pos);
 	str += c;
 	++vpos;
@@ -268,7 +269,7 @@ void RowPainter::paintChars(pos_type & vpos, LyXFont font,
 		if (prev_change != par_.lookupChange(pos))
 			break;
 
-		char c = par_.getChar(pos);
+		char_type c = par_.getChar(pos);
 
 		if (!isPrintableNonspace(c))
 			break;
@@ -327,7 +328,7 @@ void RowPainter::paintFromPos(pos_type & vpos)
 	}
 
 	// usual characters, no insets
-	char const c = par_.getChar(pos);
+	char_type const c = par_.getChar(pos);
 
 	// special case languages
 	std::string const & lang = orig_font.language()->lang();

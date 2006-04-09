@@ -965,7 +965,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		lyx::cap::replaceSelection(cur);
 		Paragraph & par = cur.paragraph();
 		lyx::pos_type pos = cur.pos();
-		char c;
+		lyx::char_type c;
 		if (pos == 0)
 			c = ' ';
 		else if (cur.prevInset() && cur.prevInset()->isSpace())

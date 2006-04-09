@@ -70,9 +70,10 @@ public:
 		/// try getInset() and crash. We should fix
 		/// all these places.
 		META_INSET = 1
+		//META_INSET = 0x200001  // above 0x10ffff, for ucs-4
 	};
 	///
-	typedef char value_type;
+	typedef lyx::char_type value_type;
 	///
 	typedef lyx::depth_type depth_type;
 	///

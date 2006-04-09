@@ -18,6 +18,7 @@
 
 #include "language.h"
 
+using lyx::char_type;
 
 using std::string;
 
@@ -42,7 +43,7 @@ int maxDescent(LyXFont const & f)
 }
 
 
-int ascent(char c, LyXFont const & f)
+int ascent(char_type c, LyXFont const & f)
 {
 	if (!lyx_gui::use_gui)
 		return 1;
@@ -58,7 +59,7 @@ int ascent(char c, LyXFont const & f)
 }
 
 
-int descent(char c, LyXFont const & f)
+int descent(char_type c, LyXFont const & f)
 {
 	if (!lyx_gui::use_gui)
 		return 1;
@@ -74,7 +75,7 @@ int descent(char c, LyXFont const & f)
 }
 
 
-int lbearing(char c, LyXFont const & f)
+int lbearing(char_type c, LyXFont const & f)
 {
 	if (!lyx_gui::use_gui)
 		return 1;
@@ -82,7 +83,7 @@ int lbearing(char c, LyXFont const & f)
 }
 
 
-int rbearing(char c, LyXFont const & f)
+int rbearing(char_type c, LyXFont const & f)
 {
 	if (!lyx_gui::use_gui)
 		return 1;

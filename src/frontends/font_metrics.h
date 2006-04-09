@@ -13,6 +13,8 @@
 #ifndef FONT_METRICS_H
 #define FONT_METRICS_H
 
+#include "support/types.h"
+
 #include <string>
 
 
@@ -51,25 +53,25 @@ namespace font_metrics {
 		return maxAscent(f) + maxDescent(f);
 	}
 	/// return the ascent of the char in the font
-	int ascent(char c, LyXFont const & f);
+	int ascent(lyx::char_type c, LyXFont const & f);
 	/// return the descent of the char in the font
-	int descent(char c, LyXFont const & f);
+	int descent(lyx::char_type c, LyXFont const & f);
 	/// return the descent of the char in the font
-	inline int height(char c, LyXFont const & f) {
+	inline int height(lyx::char_type c, LyXFont const & f) {
 		return ascent(c, f) + descent(c, f);
 	}
 	/// return the left bearing of the char in the font
-	int lbearing(char c, LyXFont const & f);
+	int lbearing(lyx::char_type c, LyXFont const & f);
 	/// return the right bearing of the char in the font
-	int rbearing(char c, LyXFont const & f);
+	int rbearing(lyx::char_type c, LyXFont const & f);
 	/// return the inner width of the char in the font
-	inline int center(char c, LyXFont const & f) {
+	inline int center(lyx::char_type c, LyXFont const & f) {
 		return (rbearing(c, f) - lbearing(c, f)) / 2;
 	}
 	/// return the width of the string in the font
 	int width(char const * s, size_t n, LyXFont const & f);
 	/// return the width of the char in the font
-	inline int width(char c, LyXFont const & f) {
+	inline int width(lyx::char_type c, LyXFont const & f) {
 		return width(&c, 1, f);
 	}
 	/// return the width of the string in the font

@@ -52,6 +52,7 @@
 #include <sstream>
 #include <limits>
 
+using lyx::char_type;
 using lyx::pit_type;
 
 using std::string;
@@ -637,7 +638,7 @@ void LCursor::plainErase()
 
 void LCursor::markInsert()
 {
-	insert(char(0));
+	insert(char_type(0));
 }
 
 
@@ -657,12 +658,12 @@ void LCursor::plainInsert(MathAtom const & t)
 void LCursor::insert(string const & str)
 {
 	for_each(str.begin(), str.end(),
-		 boost::bind(static_cast<void(LCursor::*)(char)>
+		 boost::bind(static_cast<void(LCursor::*)(char_type)>
 			     (&LCursor::insert), this, _1));
 }
 
 
-void LCursor::insert(char c)
+void LCursor::insert(char_type c)
 {
 	//lyxerr << "LCursor::insert char '" << c << "'" << endl;
 	BOOST_ASSERT(!empty());

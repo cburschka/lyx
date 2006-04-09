@@ -112,7 +112,7 @@ public:
 	/// insert an inset
 	void insert(InsetBase *);
 	/// insert a single char
-	void insert(char c);
+	void insert(lyx::char_type c);
 	/// insert a string
 	void insert(std::string const & str);
 
