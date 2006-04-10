@@ -1040,7 +1040,13 @@ void MathNestInset::lfunMousePress(LCursor & cur, FuncRequest & cmd)
 	}
 
 	if (cmd.button() == mouse_button::button2) {
-		cur.dispatch(FuncRequest(LFUN_PASTESELECTION));
+		MathArray ar;
+		asArray(cur.bv().getClipboard(), ar);
+		cur.clearSelection();
+		editXY(cur, cmd.x, cmd.y);
+		cur.insert(ar);
+		cur.bv().update();
+		return;
 	}
 }
 
@@ -1069,16 +1075,6 @@ void MathNestInset::lfunMouseRelease(LCursor & cur, FuncRequest & cmd)
 
 	if (cmd.button() == mouse_button::button1) {
 		//cur.bv().stuffClipboard(cur.grabSelection());
-		return;
-	}
-
-	if (cmd.button() == mouse_button::button2) {
-		MathArray ar;
-		asArray(cur.bv().getClipboard(), ar);
-		cur.clearSelection();
-		cur.setScreenPos(cmd.x, cmd.y);
-		cur.insert(ar);
-		cur.bv().update();
 		return;
 	}
 
