@@ -621,7 +621,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_DELETE_WORD_BACKWARD:
 	case LFUN_BACKSPACE:
 		if (cur.pos() == 0)
-			// May affect external cell:
+			// delete whole cell
 			recordUndoInset(cur, Undo::ATOMIC);
 		else
 			recordUndo(cur, Undo::ATOMIC);
@@ -630,11 +630,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_DELETE_WORD_FORWARD:
 	case LFUN_DELETE:
-		if (cur.pos() == cur.lastpos())
-			// May affect external cell:
-			recordUndoInset(cur, Undo::ATOMIC);
-		else
-			recordUndo(cur, Undo::ATOMIC);
+		recordUndo(cur);
 		cur.erase();
 		break;
 
