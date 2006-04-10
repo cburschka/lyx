@@ -1,3 +1,9 @@
+2006-04-10  José Matos  <jamatos@lyx.org>
+
+	* LyX.py: update release version number.
+	* lyx_1_4.py (convert_sgml_paragraphs): Convert SGML paragraphs
+	for previous versions of docbook documents.
+
 2006-03-06  José Matos  <jamatos@lyx.org>
 
 	* lyx_1_4.py (remove_paperpackage): Only reset the papersize for

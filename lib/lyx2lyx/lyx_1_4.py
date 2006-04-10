@@ -2365,6 +2365,27 @@ def remove_quotestimes(file):
 
 
 ##
+# Convert SGML paragraphs
+#
+def convert_sgml_paragraphs(file):
+    if file.backend != "docbook":
+        return
+
+    i = 0
+    while 1:
+        i = find_token(file.body, "\\begin_layout SGML", i)
+
+        if i == -1:
+            return
+
+        file.body[i] = "\\begin_layout Standard"
+        j = find_token(file.body, "\\end_layout", i)
+
+        file.body[j+1:j+1] = ['','\\end_inset','','','\\end_layout']
+        file.body[i+1:i+1] = ['\\begin_inset ERT','status inlined','','\\begin_layout Standard','']
+
+        i = i + 10
+##
 # Convertion hub
 #
 
@@ -2393,7 +2414,7 @@ convert = [[222, [insert_tracking_changes, add_end_header, convert_amsmath]],
            [242, [convert_french]],
            [243, [remove_paperpackage]],
 	   [244, [rename_spaces]],
-	   [245, [remove_quotestimes]]]
+	   [245, [remove_quotestimes, convert_sgml_paragraphs]]]
 
 revert =  [[244, []],
 	   [243, [revert_space_names]],
