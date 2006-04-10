@@ -62,6 +62,9 @@ What's new
 
 - Better layout file conversion (bug 2355)
 
+- Fix convertion of old documents with SGML paragraphs in lyx-docbook documents
+  (bug 2501). Note that this fix is incomplete and the complete fix will go in 1.4.2
+
 * User Interface:
 
 - Fix slowness in rendering inside insets, especially on the Mac (bug 2195)
