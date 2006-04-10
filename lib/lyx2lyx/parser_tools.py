@@ -53,7 +53,7 @@ def find_token_exact(lines, token, start, end = 0):
 def find_tokens(lines, tokens, start, end = 0):
     if end == 0:
 	end = len(lines)
-    for i in range(start, end):
+    for i in xrange(start, end):
 	for token in tokens:
 	    if lines[i][:len(token)] == token:
 		return i
@@ -63,7 +63,7 @@ def find_tokens(lines, tokens, start, end = 0):
 def find_tokens_exact(lines, tokens, start, end = 0):
     if end == 0:
 	end = len(lines)
-    for i in range(start, end):
+    for i in xrange(start, end):
         for token in tokens:
             x = string.split(lines[i])
             y = string.split(token)
