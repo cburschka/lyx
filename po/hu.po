@@ -1,20 +1,21 @@
+# translation of hu.po to
 # translation of lyx.po to Hungarian
-# Szõke Sándor <alex@lyx.hu>, 2005.
+# Szõke Sándor <alex@lyx.hu>, 2005, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX v1.4.0cvs-2006.01.03\n"
+"Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2006-04-06 15:16+0200\n"
-"PO-Revision-Date: 2006-03-17 22:49+0100\n"
+"PO-Revision-Date: 2006-04-09 12:25+0100\n"
 "Last-Translator: Szõke Sándor <alex@lyx.hu>\n"
-"Language-Team: Magyar <magyar@lists.linux.hu>\n"
+"Language-Team:  <hu@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-2\n"
+"Content-Type: text/plain; charset=ISO-8859-2\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Hungarian\n"
 "X-Poedit-Country: Hungary\n"
 "X-Poedit-SourceCharset: iso-8859-2\n"
-"X-Generator: KBabel 1.3.1\n"
+"X-Generator: KBabel 1.10.2\n"
 
 #: src/frontends/xforms/forms/form_aboutlyx.fd:44
 #: src/frontends/xforms/forms/form_changes.fd:98
@@ -189,9 +190,8 @@ msgid "Content:|#o"
 msgstr "Tartalom:|#o"
 
 #: src/frontends/xforms/forms/form_box.fd:62
-#, fuzzy
 msgid "Box Type|#T"
-msgstr "Típus:|#T"
+msgstr "Doboz típus:|#D"
 
 #: src/frontends/xforms/forms/form_box.fd:134
 msgid "Has Inner Box"
@@ -213,13 +213,12 @@ msgstr "Szélesség"
 
 #: src/frontends/xforms/forms/form_box.fd:206
 #: src/frontends/xforms/forms/form_box.fd:296
-#, fuzzy
 msgid "Special"
-msgstr "Cella egyéb"
+msgstr "Egyéb"
 
 #: src/frontends/xforms/forms/form_box.fd:224
 msgid "Inner Alignment (Vert.)"
-msgstr ""
+msgstr "Belsõ függõleges igazítás"
 
 #: src/frontends/xforms/forms/form_box.fd:242
 msgid "Horizontal Alignment"
@@ -232,9 +231,8 @@ msgid "Height"
 msgstr "Magasság"
 
 #: src/frontends/xforms/forms/form_box.fd:278
-#, fuzzy
 msgid "Height Unit"
-msgstr "&Magasság"
+msgstr "Magasság egysége"
 
 #: src/frontends/xforms/forms/form_box.fd:314
 #: src/frontends/xforms/forms/form_maths_style.fd:134
@@ -265,9 +263,8 @@ msgid "Minipage"
 msgstr "Minilap"
 
 #: src/frontends/xforms/forms/form_branch.fd:44
-#, fuzzy
 msgid "Branch:|#B"
-msgstr "Biztonsági másolat:"
+msgstr "Változat:|#V"
 
 #: src/frontends/xforms/forms/form_browser.fd:62
 #: src/frontends/xforms/forms/form_errorlist.fd:62
@@ -301,9 +298,8 @@ msgid "author"
 msgstr "Szerzõ"
 
 #: src/frontends/xforms/forms/form_changes.fd:152
-#, fuzzy
 msgid "date"
-msgstr "Frissít"
+msgstr "dátum"
 
 #: src/frontends/xforms/forms/form_changes.fd:170
 msgid "on:"
@@ -691,7 +687,7 @@ msgstr "Elérhetõ változatok:"
 
 #: src/frontends/xforms/forms/form_document.fd:1855
 msgid "Activated Branches:"
-msgstr "Aktivált ágak:"
+msgstr "Aktivált változatok:"
 
 #: src/frontends/xforms/forms/form_document.fd:1873
 msgid "@5->"
@@ -1663,9 +1659,8 @@ msgid "BibTeX:|#B"
 msgstr "BibTeX:|#B"
 
 #: src/frontends/xforms/forms/form_preferences.fd:3116
-#, fuzzy
 msgid "Index:|#I"
-msgstr "Belsõ:"
+msgstr "Tárgyszó:|#T"
 
 #: src/frontends/xforms/forms/form_preferences.fd:3134
 msgid "Use Cygwin Paths|#s"
@@ -2077,7 +2072,7 @@ msgstr "Idézet stílusa"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:60
 msgid "&Jurabib"
-msgstr ""
+msgstr "&Jurabib"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:64
 msgid "Use the jurabib styles for law and humanities"
@@ -2665,14 +2660,12 @@ msgstr "Beállítások"
 
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:323
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:349
-#, fuzzy
 msgid "This bibliography section contains..."
-msgstr "Irodalomjegyzék beállítások"
+msgstr "Ez az irodalomjegyzék szakasz tartalmaz ..."
 
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:341
-#, fuzzy
 msgid "&Content:"
-msgstr "Tartalom"
+msgstr "&Tartalom:"
 
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:360
 msgid "Add bibliography to &TOC"
@@ -2853,7 +2846,7 @@ msgstr "Változás:"
 
 #: src/frontends/qt2/ui/QChangesDialogBase.ui:75
 msgid "Details of the change"
-msgstr ""
+msgstr "Változás részletei"
 
 #: src/frontends/qt2/ui/QChangesDialogBase.ui:103
 msgid "&Accept"
@@ -3689,9 +3682,8 @@ msgstr "&Kiszürkített"
 
 #: src/frontends/qt2/ui/QNoteDialogBase.ui:128
 #: src/frontends/xforms/FormNote.C:46
-#, fuzzy
 msgid "Print as grey text"
-msgstr "Minden oldalt nyomtat"
+msgstr "Szürke szövegként nyomtat"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:48
 #: src/frontends/qt2/QDocument.C:162 src/text.C:2288
@@ -3840,9 +3832,8 @@ msgid "Off"
 msgstr "Ki"
 
 #: src/frontends/qt2/ui/QPrefDisplayModule.ui:74
-#, fuzzy
 msgid "No math"
-msgstr "képlet"
+msgstr "Nincs képlet"
 
 #: src/frontends/qt2/ui/QPrefDisplayModule.ui:111
 msgid "Do not display"
@@ -3986,18 +3977,16 @@ msgid "BibTeX command and options"
 msgstr "BibTeX parancs és kapcsolók"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:148
-#, fuzzy
 msgid "&BibTeX command:"
-msgstr "Chec&kTeX parancs:"
+msgstr "&BibTeX parancs:"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:163
 msgid "Index command and options (makeindex, xindy)"
 msgstr "Tárgymutató parancs és kapcsolók (makeindex, xindy)"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:174
-#, fuzzy
 msgid "Index command:"
-msgstr "Következõ parancs"
+msgstr "Tárgyjegyzék parancs:"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:189
 msgid "DVI viewer paper size options:"
@@ -4507,9 +4496,8 @@ msgstr "&Vízszintes igazítás:"
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:94
 #: src/frontends/gtk/GTabular.C:357 src/frontends/qt2/QTabular.C:188
 #: src/frontends/xforms/FormParagraph.C:173
-#, fuzzy
 msgid "Block"
-msgstr "Blokk"
+msgstr "Sorkizárt"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:121
 msgid "Horizontal alignment in column"
@@ -4839,9 +4827,8 @@ msgid "&Protect:"
 msgstr "&Védett:"
 
 #: src/frontends/qt2/ui/QVSpaceDialogBase.ui:98
-#, fuzzy
 msgid "Insert the spacing even after a page break"
-msgstr "Ligatúratörés beszúrása"
+msgstr "Kihagyás beszúrása még laptörés után is"
 
 #: src/frontends/qt2/ui/QVSpaceDialogBase.ui:113
 msgid "Custom value. Needs spacing type \"Custom\"."
@@ -5583,7 +5570,7 @@ msgstr ""
 #: lib/layouts/aastex.layout:296
 #, fuzzy
 msgid "Subject headings:"
-msgstr "címek"
+msgstr "Tárgy"
 
 #: lib/layouts/aastex.layout:339
 msgid "[Acknowledgements]"
@@ -6328,9 +6315,8 @@ msgid "msnumber"
 msgstr ""
 
 #: lib/layouts/egs.layout:373
-#, fuzzy
 msgid "MS_number:"
-msgstr "Példányszám:|#P"
+msgstr "MS_number:"
 
 #: lib/layouts/egs.layout:383
 msgid "FirstAuthor"
@@ -7342,9 +7328,8 @@ msgid "TOC Author"
 msgstr "Tartalomjegyzék szerzõ"
 
 #: lib/layouts/llncs.layout:210
-#, fuzzy
 msgid "TOC Author:"
-msgstr "Tartalomjegyzék szerzõ"
+msgstr "Tartalomjegyzék szerzõ:"
 
 #: lib/layouts/llncs.layout:299
 msgid "Case #."
@@ -7497,9 +7482,8 @@ msgid "Telephone"
 msgstr "Telefon"
 
 #: lib/layouts/scrlettr.layout:155 lib/layouts/stdletter.inc:139
-#, fuzzy
 msgid "Telephone:"
-msgstr "Telefon"
+msgstr "Telefon:"
 
 #: lib/layouts/scrlettr.layout:159 lib/layouts/scrlttr2.layout:232
 msgid "Place"
@@ -7588,9 +7572,8 @@ msgid "Invoice"
 msgstr "Számla"
 
 #: lib/layouts/scrlettr.layout:246 lib/layouts/scrlttr2.layout:332
-#, fuzzy
 msgid "Invoice no.:"
-msgstr "Számla"
+msgstr "Számla száma:"
 
 #: lib/layouts/scrlttr2.layout:69
 msgid "NextAddress"
@@ -8235,7 +8218,6 @@ msgid "RevisionHistory"
 msgstr "Revízió elõélete"
 
 #: lib/layouts/db_stdtitle.inc:59
-#, fuzzy
 msgid "Revision History"
 msgstr "Revízió elõélete"
 
@@ -8857,7 +8839,6 @@ msgid "Line Right|R"
 msgstr "Jobb oldali vonal|b"
 
 #: lib/ui/classic.ui:127
-#, fuzzy
 msgid "Alignment|i"
 msgstr "Igazítás|a"
 
@@ -8894,34 +8875,28 @@ msgid "Swap Columns"
 msgstr "Oszlopok cseréje"
 
 #: lib/ui/classic.ui:141 lib/ui/stdmenus.ui:141
-#, fuzzy
 msgid "Left|L"
-msgstr "Balra|#B"
+msgstr "Balra|B"
 
 #: lib/ui/classic.ui:142 lib/ui/stdmenus.ui:142
-#, fuzzy
 msgid "Center|C"
-msgstr "Középre"
+msgstr "Középre|K"
 
 #: lib/ui/classic.ui:143 lib/ui/stdmenus.ui:143
-#, fuzzy
 msgid "Right|R"
-msgstr "Jobbra"
+msgstr "Jobbra|J"
 
 #: lib/ui/classic.ui:145 lib/ui/stdmenus.ui:145
-#, fuzzy
 msgid "Top|T"
-msgstr "Fent|#F"
+msgstr "Fent|F"
 
 #: lib/ui/classic.ui:146 lib/ui/stdmenus.ui:146
-#, fuzzy
 msgid "Middle|M"
-msgstr "Középre"
+msgstr "Középre|K"
 
 #: lib/ui/classic.ui:147 lib/ui/stdmenus.ui:147
-#, fuzzy
 msgid "Bottom|B"
-msgstr "Lent|#L"
+msgstr "Lent|L"
 
 #: lib/ui/classic.ui:159 lib/ui/stdmenus.ui:161
 msgid "Toggle Numbering|N"
@@ -9169,7 +9144,6 @@ msgid "Single Quote|Q"
 msgstr "Aposztrof|p"
 
 #: lib/ui/classic.ui:253
-#, fuzzy
 msgid "Ordinary Quote|O"
 msgstr "Hagyományos idézõjel|H"
 
@@ -9194,9 +9168,8 @@ msgid "Eqnarray Environment|E"
 msgstr "Egyenletrendszer környezet|E"
 
 #: lib/ui/classic.ui:263 lib/ui/stdmenus.ui:201 lib/ui/stdmenus.ui:293
-#, fuzzy
 msgid "AMS align Environment|a"
-msgstr "AMS igazítás környezet"
+msgstr "AMS igazítási környezet|M"
 
 #: lib/ui/classic.ui:264 lib/ui/stdmenus.ui:202 lib/ui/stdmenus.ui:294
 msgid "AMS alignat Environment|t"
@@ -9207,14 +9180,12 @@ msgid "AMS flalign Environment|f"
 msgstr "AMS flalign környezet|f"
 
 #: lib/ui/classic.ui:268 lib/ui/stdmenus.ui:204 lib/ui/stdmenus.ui:296
-#, fuzzy
 msgid "AMS gather Environment|g"
-msgstr "AMS gather környezet"
+msgstr "AMS gather környezet|S"
 
 #: lib/ui/classic.ui:269 lib/ui/stdmenus.ui:205 lib/ui/stdmenus.ui:297
-#, fuzzy
 msgid "AMS multline Environment|m"
-msgstr "AMS többsoros környezet"
+msgstr "AMS többsoros környezet|S"
 
 #: lib/ui/classic.ui:271 lib/ui/stdmenus.ui:299
 msgid "Array Environment|y"
@@ -9225,9 +9196,8 @@ msgid "Cases Environment|C"
 msgstr "Esetek környezet|s"
 
 #: lib/ui/classic.ui:273 lib/ui/stdmenus.ui:304
-#, fuzzy
 msgid "Split Environment|S"
-msgstr "Igazítás környezet|a"
+msgstr "Környezet felosztása|K"
 
 #: lib/ui/classic.ui:275 lib/ui/stdmenus.ui:306
 msgid "Font Change|o"
@@ -9575,17 +9545,14 @@ msgid "Table|T"
 msgstr "Táblázat|T"
 
 #: lib/ui/stdmenus.ui:98
-#, fuzzy
 msgid "Rows & Columns|C"
-msgstr "Oszlopok cseréje"
+msgstr "Sorok és Oszlopok|S"
 
 #: lib/ui/stdmenus.ui:100
-#, fuzzy
 msgid "Increase List Depth|I"
 msgstr "Környezeti mélység növelése|n"
 
 #: lib/ui/stdmenus.ui:101
-#, fuzzy
 msgid "Decrease List Depth|D"
 msgstr "Környezeti mélység csökkentése|c"
 
@@ -9594,23 +9561,20 @@ msgid "TeX Code Settings...|C"
 msgstr "TeX kód beállítások ...|k"
 
 #: lib/ui/stdmenus.ui:109
-#, fuzzy
 msgid "Float Settings...|a"
-msgstr "Úsztatási beállítások"
+msgstr "Úsztatási beállítások ...|i"
 
 #: lib/ui/stdmenus.ui:110
 msgid "Text Wrap Settings...|W"
 msgstr "Körbefuttatás beállításai ...|f"
 
 #: lib/ui/stdmenus.ui:111
-#, fuzzy
 msgid "Note Settings...|N"
-msgstr "Úsztatási beállítások"
+msgstr "Megjegyzés beállítások ...|b"
 
 #: lib/ui/stdmenus.ui:112
-#, fuzzy
 msgid "Branch Settings...|B"
-msgstr "Irodalomjegyzék beállítások"
+msgstr "Változat beállítások...|V"
 
 #: lib/ui/stdmenus.ui:113
 msgid "Box Settings...|x"
@@ -9621,24 +9585,20 @@ msgid "Table Settings...|a"
 msgstr "Táblázat beállításai ...|a"
 
 #: lib/ui/stdmenus.ui:133
-#, fuzzy
 msgid "Top Line|T"
-msgstr "Fent|#F"
+msgstr "Felsõ volan|F"
 
 #: lib/ui/stdmenus.ui:134
-#, fuzzy
 msgid "Bottom Line|B"
-msgstr "Lent|#L"
+msgstr "Alsó vonal|A"
 
 #: lib/ui/stdmenus.ui:135
-#, fuzzy
 msgid "Left Line|L"
-msgstr "Bal alapvonal"
+msgstr "Bal vonal|B"
 
 #: lib/ui/stdmenus.ui:136
-#, fuzzy
 msgid "Right Line|R"
-msgstr "Jobbra"
+msgstr "Jobb vonal|J"
 
 #: lib/ui/stdmenus.ui:149
 msgid "Add Row"
@@ -9657,29 +9617,24 @@ msgid "Delete Column"
 msgstr "Oszlop törlése"
 
 #: lib/ui/stdmenus.ui:169
-#, fuzzy
 msgid "Add Line Above"
 msgstr "Szegély fent"
 
 #: lib/ui/stdmenus.ui:170
-#, fuzzy
 msgid "Add Line Below"
 msgstr "Szegély lent"
 
 #: lib/ui/stdmenus.ui:171
-#, fuzzy
 msgid "Delete Line Above"
-msgstr "Aktuális sor törlése"
+msgstr "Fenti szegély törlése"
 
 #: lib/ui/stdmenus.ui:172
-#, fuzzy
 msgid "Delete Line Below"
-msgstr "Aktuális sor törlése"
+msgstr "Lenti szegély törlése"
 
 #: lib/ui/stdmenus.ui:174
-#, fuzzy
 msgid "Add Line to Left"
-msgstr "Bal oldali vonal|l"
+msgstr "Bal oldali vonal"
 
 #: lib/ui/stdmenus.ui:175
 #, fuzzy
@@ -9687,14 +9642,12 @@ msgid "Add Line to Right"
 msgstr "Jobb oldali vonal|b"
 
 #: lib/ui/stdmenus.ui:176
-#, fuzzy
 msgid "Delete Line to Left"
-msgstr "Válassza ki a beszúrandó fájlt"
+msgstr "Sor törlése balra"
 
 #: lib/ui/stdmenus.ui:177
-#, fuzzy
 msgid "Delete Line to Right"
-msgstr "Válassza ki a beszúrandó fájlt"
+msgstr "Sor törlése jobbra"
 
 #: lib/ui/stdmenus.ui:218
 msgid "Display Tooltips|i"
@@ -9714,12 +9667,11 @@ msgstr "Úsztatás|a"
 
 #: lib/ui/stdmenus.ui:244
 msgid "Branch|B"
-msgstr ""
+msgstr "Változat|V"
 
 #: lib/ui/stdmenus.ui:245
-#, fuzzy
 msgid "Character Style|y"
-msgstr "Betûkészlet"
+msgstr "Betû stílus|S"
 
 #: lib/ui/stdmenus.ui:246
 msgid "File|e"
@@ -10083,18 +10035,17 @@ msgid "Insert { }"
 msgstr "{} beszúrása"
 
 #: lib/ui/stdtoolbars.ui:137
-#, fuzzy
 msgid "Insert cases environment"
-msgstr "Esetek környezet|s"
+msgstr "Esetek környezet beszúrása"
 
 #: lib/ui/stdtoolbars.ui:144
 msgid "minibuffer"
 msgstr ""
 
 #: src/BufferView.C:243
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s Errors (%2$s)"
-msgstr "%1$s és %2$s"
+msgstr "%1$s hibák (%2$s)"
 
 #: src/BufferView_pimpl.C:256
 #, c-format
@@ -10103,20 +10054,21 @@ msgid ""
 "\n"
 "Do you want to revert to the saved version?"
 msgstr ""
+"A %1$s dokumentum már be van töltve.\n"
+"\n"
+"Vissza akar térni egy mentett változathoz?"
 
 #: src/BufferView_pimpl.C:259 src/lyxfunc.C:823
-#, fuzzy
 msgid "Revert to saved document?"
-msgstr "Mentett visszaállítása"
+msgstr "Mentett dokumentum visszaállítása?"
 
 #: src/BufferView_pimpl.C:260 src/lyxfunc.C:824 src/lyxvc.C:168
 msgid "&Revert"
 msgstr "&Visszatér"
 
 #: src/BufferView_pimpl.C:260
-#, fuzzy
 msgid "&Switch to document"
-msgstr "Nyitott dokumentumra váltás"
+msgstr "&Átváltás dokumentumra"
 
 #: src/BufferView_pimpl.C:282
 #, c-format
@@ -10199,9 +10151,8 @@ msgid "Could not insert document %1$s"
 msgstr "Nem tudom beszúrni a dokumentumot %1$s"
 
 #: src/BufferView_pimpl.C:906
-#, fuzzy
 msgid "Document insertion"
-msgstr "Dokumentumbeállítások"
+msgstr "Dokumentum beszúrás"
 
 #: src/BufferView_pimpl.C:1121
 msgid "No further undo information"
@@ -10272,20 +10223,17 @@ msgstr ""
 "%3$s, erre %4$s"
 
 #: src/CutAndPaste.C:383
-#, fuzzy
 msgid "Changed Layout"
-msgstr "Betû kinézet"
+msgstr "Kinézet megváltozott"
 
 #: src/CutAndPaste.C:402
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
 "%2$s to %3$s"
 msgstr ""
-"A formátum meg fog változni errõl:\n"
-"%1$s, erre: %2$s\n"
-"mert osztálykonverzió történt errõl\n"
-"%3$s, erre %4$s"
+"A %1$s betûstílus ismeretlen, mert osztálykonverzió történt\n"
+"%2$s-ról, %3$s-ra"
 
 #: src/CutAndPaste.C:408
 msgid "Undefined character style"
@@ -10368,14 +10316,12 @@ msgid "comment background"
 msgstr "megjegyzés háttere"
 
 #: src/LColor.C:111
-#, fuzzy
 msgid "greyedout inset"
-msgstr "Betét kinyitva"
+msgstr "kiszürkített betét"
 
 #: src/LColor.C:112
-#, fuzzy
 msgid "greyedout inset background"
-msgstr "betét háttér"
+msgstr "kiszürkített betét háttér"
 
 #: src/LColor.C:113
 msgid "depth bar"
@@ -10450,9 +10396,8 @@ msgid "end-of-line marker"
 msgstr "sorvégejelölõ"
 
 #: src/LColor.C:132
-#, fuzzy
 msgid "appendix marker"
-msgstr "függelék vonal"
+msgstr "függelék jelölõ"
 
 #: src/LColor.C:133
 #, fuzzy
@@ -10460,14 +10405,12 @@ msgid "change bar"
 msgstr "Nincs változás"
 
 #: src/LColor.C:134
-#, fuzzy
 msgid "Deleted text"
-msgstr "&Törlés"
+msgstr "Törölt szöveg"
 
 #: src/LColor.C:135
-#, fuzzy
 msgid "Added text"
-msgstr "LaTeX szöveg"
+msgstr "Hozzáadott szöveg"
 
 #: src/LColor.C:136
 msgid "added space markers"
@@ -10478,14 +10421,12 @@ msgid "top/bottom line"
 msgstr "felsõ/alsó vonal"
 
 #: src/LColor.C:138
-#, fuzzy
 msgid "table line"
 msgstr "táblázat vonal"
 
 #: src/LColor.C:140
-#, fuzzy
 msgid "table on/off line"
-msgstr "táblázat rácsvonal"
+msgstr "táblázat rácsvonal (be/ki)"
 
 #: src/LColor.C:142
 msgid "bottom area"
@@ -10524,9 +10465,9 @@ msgid "ignore"
 msgstr "mellõz"
 
 #: src/LaTeX.C:87
-#, fuzzy, c-format
+#, c-format
 msgid "Waiting for LaTeX run number %1$d"
-msgstr "LaTeX futtatási szám %1$d"
+msgstr "Várakozás a %1$d. LaTeX futtatásra"
 
 #: src/LaTeX.C:276 src/LaTeX.C:344
 msgid "Running MakeIndex."
@@ -10558,24 +10499,24 @@ msgid "Native OS API not yet supported."
 msgstr "Az eredeti OS API nincs támogatva."
 
 #: src/buffer.C:233
-#, fuzzy
 msgid "Could not remove temporary directory"
-msgstr "Ideiglenes könyvtár nem hozható létre"
+msgstr "Ideiglenes könyvtár nem törölhetõ"
 
 #: src/buffer.C:234
-#, fuzzy, c-format
+#, c-format
 msgid "Could not remove the temporary directory %1$s"
-msgstr "Ideiglenes könyvtár nem hozható létre"
+msgstr "Ideiglenes könyvtár '%1$s' nem törölhetõ "
 
 #: src/buffer.C:391
-#, fuzzy
 msgid "Unknown document class"
-msgstr "a választott dokumentumosztályba"
+msgstr "Ismeretlen dokumentum osztály"
 
 #: src/buffer.C:392
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
+"Alapértelmezett dokumentum osztály használata, mivel a %1$s oszály "
+"ismeretlen."
 
 #: src/buffer.C:445 src/text.C:340
 #, c-format
@@ -10583,47 +10524,42 @@ msgid "Unknown token: %1$s %2$s\n"
 msgstr "Ismeretlen szimbólum: %1$s %2$s\n"
 
 #: src/buffer.C:449 src/buffer.C:456 src/buffer.C:471
-#, fuzzy
 msgid "Document header error"
-msgstr "A dokumentumot átneveztem '"
+msgstr "Dokumentum fejléc hiba"
 
 #: src/buffer.C:455
 msgid "\\begin_header is missing"
-msgstr ""
+msgstr "\\begin_header hiányzik"
 
 #: src/buffer.C:470
 msgid "\\begin_document is missing"
-msgstr ""
+msgstr "\\begin_document hiányzik"
 
 #: src/buffer.C:480
-#, fuzzy
 msgid "Can't load document class"
-msgstr "Szövegosztály nem tölthetõ be: "
+msgstr "Dokumentumosztály nem tölthetõ be"
 
 #: src/buffer.C:588 src/buffer.C:597
-#, fuzzy
 msgid "Document could not be read"
-msgstr "A dokumentumot nem lehet menteni!"
+msgstr "A dokumentumot nem lehet olvasni"
 
 #: src/buffer.C:589 src/buffer.C:598
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s could not be read."
-msgstr "%1$s bekezdés nem alakítható át"
+msgstr "%1$s nem olvasható."
 
 #: src/buffer.C:606 src/buffer.C:672
-#, fuzzy
 msgid "Document format failure"
-msgstr "Dokumentumstílus"
+msgstr "Dokumentum formátumhiba"
 
 #: src/buffer.C:607
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s is not a LyX document."
-msgstr "A LyX dokumentumban használt kulcs."
+msgstr "%1$s nem LyX dokumentum."
 
 #: src/buffer.C:626
-#, fuzzy
 msgid "Conversion failed"
-msgstr "Átalakítók"
+msgstr "Átalakítás nem sikerült"
 
 #: src/buffer.C:627
 #, c-format
@@ -10633,9 +10569,8 @@ msgid ""
 msgstr ""
 
 #: src/buffer.C:636
-#, fuzzy
 msgid "Conversion script not found"
-msgstr "Nem találtam verziókövetési naplófájlt."
+msgstr "Átalakító parancsfájl nincs meg"
 
 #: src/buffer.C:637
 #, c-format
@@ -10645,18 +10580,17 @@ msgid ""
 msgstr ""
 
 #: src/buffer.C:657
-#, fuzzy
 msgid "Conversion script failed"
-msgstr "Nem találom az átalakító parancsfájlt."
+msgstr "Az átalakító parancs sikertelen (failed)"
 
 #: src/buffer.C:658
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but the lyx2lyx script failed to "
 "convert it."
 msgstr ""
-"Ez a fájl újabb LyX verzióval készült, és a lyx2lyx parancsfájl nem tudja "
-"átalakítani.\n"
+"A %1$s fájl korábbi LyX verzióval készült, és a lyx2lyx program nem tudja "
+"átalakítani."
 
 #: src/buffer.C:673
 #, c-format
@@ -10672,9 +10606,8 @@ msgid "chktex failure"
 msgstr "chktex hiba"
 
 #: src/buffer.C:1144
-#, fuzzy
 msgid "Could not run chktex successfully."
-msgstr "A chktex sikeresen lefutott"
+msgstr "A chktex futtatása sikertelen."
 
 #: src/buffer_funcs.C:72
 #, c-format
@@ -10685,26 +10618,27 @@ msgid ""
 msgstr ""
 
 #: src/buffer_funcs.C:74
-#, fuzzy
 msgid "Could not read document"
-msgstr "A dokumentum nem nyitható meg "
+msgstr "A dokumentum nem olvasható"
 
 #: src/buffer_funcs.C:86
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
 "\n"
 "Recover emergency save?"
-msgstr "A dokumentum biztonsági másolata létezik!"
+msgstr ""
+"A %1$s dokumentum biztonsági másolata létezik!\n"
+"\n"
+"Helyreállítsam a mentett változatot?"
 
 #: src/buffer_funcs.C:89
 msgid "Load emergency save?"
 msgstr ""
 
 #: src/buffer_funcs.C:90
-#, fuzzy
 msgid "&Recover"
-msgstr "&Eltávolít"
+msgstr "&Helyreállítás"
 
 #: src/buffer_funcs.C:90
 msgid "&Load Original"
@@ -10719,23 +10653,21 @@ msgid ""
 msgstr ""
 
 #: src/buffer_funcs.C:115
-#, fuzzy
 msgid "Load backup?"
-msgstr "Kurzor vissza a kiindulópontra"
+msgstr "Biztonsági mentés betöltése?"
 
 #: src/buffer_funcs.C:116
-#, fuzzy
 msgid "&Load backup"
-msgstr "Visszau&grás"
+msgstr "&Biztonsági mentés betöltése"
 
 #: src/buffer_funcs.C:116
 msgid "Load &original"
 msgstr ""
 
 #: src/buffer_funcs.C:155
-#, fuzzy, c-format
+#, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
-msgstr "Szeretné a fájlt megnyitni megjelenítéshez vagy szerkesztéshez?"
+msgstr "Szeretné a %1$s fájlt verzkövetõvel használni?"
 
 #: src/buffer_funcs.C:157
 #, fuzzy
@@ -10756,9 +10688,8 @@ msgid ""
 msgstr ""
 
 #: src/buffer_funcs.C:191
-#, fuzzy
 msgid "Could not read template"
-msgstr "Ideiglenes könyvtár nem hozható létre"
+msgstr "Sablon nem olvasható"
 
 #: src/buffer_funcs.C:447
 msgid "\\arabic{enumi}."
@@ -10814,14 +10745,13 @@ msgid "  Save failed! Bummer. Document is lost."
 msgstr "  Sikertelen mentés! A csudába, a dokumentum elvesztett."
 
 #: src/bufferparams.C:414
-#, fuzzy, c-format
+#, c-format
 msgid "The document uses a missing TeX class \"%1$s\".\n"
-msgstr "A dokumentum egy hiányzó TeX osztályt használ: \"%1$s\"."
+msgstr "A dokumentum egy hiányzó TeX osztályt használ: \"%1$s\".\n"
 
 #: src/bufferparams.C:416
-#, fuzzy
 msgid "Document class not available"
-msgstr "A dokumentumot nem lehet menteni!"
+msgstr "A dokumentum-osztály nem érhetõ el"
 
 #: src/bufferparams.C:417
 msgid "LyX will not be able to produce output."
@@ -10840,9 +10770,8 @@ msgid "General information"
 msgstr "Általános információ"
 
 #: src/client/debug.C:43 src/debug.C:67
-#, fuzzy
 msgid "Developers' general debug messages"
-msgstr "Minden nyomkövetési üzenet"
+msgstr "Developers' general debug messages"
 
 #: src/client/debug.C:44 src/debug.C:68
 msgid "All debugging messages"
@@ -10859,14 +10788,15 @@ msgid "Cannot convert file"
 msgstr "A fájl nem alakítható át"
 
 #: src/converter.C:318
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "No information for converting %1$s format files to %2$s.\n"
 "Define a convertor in the preferences."
-msgstr "Nincs információ a fájl átalakításra %1$s -rõl %2$s formába"
+msgstr ""
+"Nincs információ a %1$s formátumú fájl átalakítására %2$s-á.\n"
+"Adjon meg átalakítót a beállításokban."
 
 #: src/converter.C:395 src/format.C:256 src/format.C:301
-#, fuzzy
 msgid "Executing command: "
 msgstr "Parancs végrehajtása:"
 
@@ -10876,24 +10806,23 @@ msgid "Build errors"
 msgstr "Program fordítása"
 
 #: src/converter.C:436
-#, fuzzy
 msgid "There were errors during the build process."
 msgstr "Hibák léptek fel a dokumentum fordítása során."
 
 #: src/converter.C:441 src/format.C:264 src/format.C:309
-#, fuzzy, c-format
+#, c-format
 msgid "An error occurred whilst running %1$s"
-msgstr "Hiba történt az átalakító parancsfájl futása közben."
+msgstr "Hiba történt %1$s futása közben"
 
 #: src/converter.C:465 src/converter.C:506
-#, fuzzy, c-format
+#, c-format
 msgid "Could not move a temporary file from %1$s to %2$s."
-msgstr "Az ideiglenes könyvtár nem hozható létre\n"
+msgstr "Az ideiglenes fájl nem mozgatható innen:%1$s ide: %2$s."
 
 #: src/converter.C:505
-#, fuzzy, c-format
+#, c-format
 msgid "Could not copy a temporary file from %1$s to %2$s."
-msgstr "Az ideiglenes könyvtár nem hozható létre\n"
+msgstr "Az ideiglenes fájl nem másolható innen:%1$s ide: %2$s."
 
 #: src/converter.C:574
 msgid "Running LaTeX..."
@@ -10907,14 +10836,12 @@ msgid ""
 msgstr ""
 
 #: src/converter.C:595
-#, fuzzy
 msgid "LaTeX failed"
-msgstr "LaTeX fõcím"
+msgstr "LaTeX sikertelen"
 
 #: src/converter.C:597
-#, fuzzy
 msgid "Output is empty"
-msgstr "üres"
+msgstr "A kimenet üres"
 
 #: src/converter.C:598
 msgid "An empty output file was generated."
@@ -11009,9 +10936,8 @@ msgid "Change tracking"
 msgstr "Változások követése"
 
 #: src/debug.C:65
-#, fuzzy
 msgid "External template/inset messages"
-msgstr "Külsõ programok"
+msgstr "Külsõ sablon/betét üzenetek"
 
 #: src/debug.C:66
 msgid "RowPainter profiling"
@@ -11029,9 +10955,8 @@ msgstr ""
 "Szeretné a tartalmát kicserélni?"
 
 #: src/exporter.C:76
-#, fuzzy
 msgid "Over-write file?"
-msgstr "Fájl megjelenítése"
+msgstr "Felülírjam a fájlt?"
 
 #: src/exporter.C:78 src/lyx_cb.C:168 src/lyxfunc.C:1869
 msgid "&Over-write"
@@ -11042,12 +10967,10 @@ msgid "Over-write &all"
 msgstr "&Mindet kicseréli"
 
 #: src/exporter.C:79
-#, fuzzy
 msgid "&Cancel export"
-msgstr "&Mégsem"
+msgstr "&exportálás megszakítása"
 
 #: src/exporter.C:128
-#, fuzzy
 msgid "Couldn't copy file"
 msgstr "A fájl nem másolható"
 
@@ -11057,38 +10980,35 @@ msgid "Copying %1$s to %2$s failed."
 msgstr ""
 
 #: src/exporter.C:167
-#, fuzzy
 msgid "Couldn't export file"
 msgstr "A fájl nem exportálható"
 
 #: src/exporter.C:168
-#, fuzzy, c-format
+#, c-format
 msgid "No information for exporting the format %1$s."
-msgstr "Nincs információ az impotáláshoz innen: %1$s"
+msgstr "Nincs információ az %1$s-ba exportáláshoz."
 
 #: src/exporter.C:202
 msgid "File name error"
 msgstr "Fájlnév hiba"
 
 #: src/exporter.C:203
-#, fuzzy
 msgid "The directory path to the document cannot contain spaces."
-msgstr "A lyx fájl elérési útja szóközöket tartalmaz."
+msgstr "A lyx fájl elérési útja nem tartalmazhat szóközöket."
 
 #: src/exporter.C:233
-#, fuzzy
 msgid "Document export cancelled."
-msgstr "A dokumentumot exportáltam, mint"
+msgstr "A dokumentumot exportálás megszakítva."
 
 #: src/exporter.C:239
-#, fuzzy, c-format
+#, c-format
 msgid "Document exported as %1$s to file `%2$s'"
-msgstr "A dokumentumot exportáltam, mint"
+msgstr "A %1$s dokumentumot exportáltam, mint `%2$s'"
 
 #: src/exporter.C:245
-#, fuzzy, c-format
+#, c-format
 msgid "Document exported as %1$s"
-msgstr "A dokumentumot exportáltam, mint"
+msgstr "A dokumentumot exportáltam, mint %1$s"
 
 #: src/format.C:229 src/format.C:263
 msgid "Cannot view file"
@@ -11104,9 +11024,9 @@ msgid "Cannot edit file"
 msgstr "A fájl nem szerkeszthetõ"
 
 #: src/format.C:286
-#, fuzzy, c-format
+#, c-format
 msgid "No information for editing %1$s"
-msgstr "Nincs információ a %1$s nézetéhez "
+msgstr "Nincs információ a %1$s szerkesztéséhez"
 
 #: src/frontends/LyXView.C:185
 msgid " (changed)"
@@ -11202,23 +11122,23 @@ msgstr "Nincs keret rajzolva"
 
 #: src/frontends/controllers/ControlBox.C:63
 msgid "Rectangular box"
-msgstr "Négyszögû doboz"
+msgstr "Négyszögû keret"
 
 #: src/frontends/controllers/ControlBox.C:64
 msgid "Oval box, thin"
-msgstr "vékony, ovális doboz"
+msgstr "Vékony, ovális keret"
 
 #: src/frontends/controllers/ControlBox.C:65
 msgid "Oval box, thick"
-msgstr "vastag, ovális doboz"
+msgstr "vastag, ovális keret"
 
 #: src/frontends/controllers/ControlBox.C:66
 msgid "Shadow box"
-msgstr "Árnyék doboz"
+msgstr "Árnyékolt keret"
 
 #: src/frontends/controllers/ControlBox.C:67
 msgid "Double box"
-msgstr "Dupla doboz"
+msgstr "Dupla keret"
 
 #: src/frontends/controllers/ControlBox.C:81 src/frontends/qt2/QBox.C:190
 #: src/frontends/qt2/QBox.C:224
@@ -11285,7 +11205,6 @@ msgid "Select graphics file"
 msgstr "Grafikus fájl kiválasztása"
 
 #: src/frontends/controllers/ControlGraphics.C:93
-#, fuzzy
 msgid "Clipart|#C#c"
 msgstr "Clipart|#C#c"
 
@@ -11377,14 +11296,10 @@ msgid "Spellchecker error"
 msgstr "Helyesírás-ellenõrzõ hiba"
 
 #: src/frontends/controllers/ControlSpellchecker.C:112
-#, fuzzy
 msgid "The spellchecker could not be started\n"
-msgstr ""
-"A helyesírás-ellenõrzõ nem indítható el.\n"
-"Lehet, hogy nincs jól beállítva."
+msgstr "A helyesírás-ellenõrzõ nem indítható el\n"
 
 #: src/frontends/controllers/ControlSpellchecker.C:265
-#, fuzzy
 msgid ""
 "The spellchecker has died for some reason.\n"
 "Maybe it has been killed."
@@ -11393,12 +11308,10 @@ msgstr ""
 "Lehet, hogy ki lett lõve!"
 
 #: src/frontends/controllers/ControlSpellchecker.C:268
-#, fuzzy
 msgid "The spellchecker has failed.\n"
-msgstr "A helyesírás-ellenõrzõ nem mûködik"
+msgstr "A helyesírás-ellenõrzõ nem mûködik.\n"
 
 #: src/frontends/controllers/ControlSpellchecker.C:273
-#, fuzzy
 msgid "The spellchecker has failed"
 msgstr "A helyesírás-ellenõrzõ nem mûködik"
 
@@ -11412,7 +11325,6 @@ msgid "One word checked."
 msgstr "Egy szó ellenõrizve."
 
 #: src/frontends/controllers/ControlSpellchecker.C:292
-#, fuzzy
 msgid "Spelling check completed"
 msgstr "A helyesírás-ellenõrzés kész"
 
@@ -11543,14 +11455,12 @@ msgid "Yellow"
 msgstr "Sárga"
 
 #: src/frontends/controllers/helper_funcs.C:100
-#, fuzzy
 msgid "System files|#S#s"
-msgstr "Rendsz kiosztás"
+msgstr "Rendszer fájlok|#R#r"
 
 #: src/frontends/controllers/helper_funcs.C:103
-#, fuzzy
 msgid "User files|#U#u"
-msgstr "Felhaszn kiosztás"
+msgstr "Felhasználói fájlok|#F#f"
 
 #: src/frontends/gtk/Dialogs.C:265 src/frontends/qt2/Dialogs.C:232
 #: src/frontends/xforms/Dialogs.C:246
@@ -11564,9 +11474,8 @@ msgstr "Címke"
 
 #: src/frontends/gtk/GBibItem.C:33 src/frontends/qt2/QBibitem.C:31
 #: src/frontends/xforms/FormBibitem.C:38
-#, fuzzy
 msgid "Bibliography Entry Settings"
-msgstr "Irodalomjegyzék beállítások"
+msgstr "Irodalomjegyzék elem beállítások"
 
 #: src/frontends/gtk/GBox.C:42 src/frontends/qt2/QBox.C:51
 #: src/frontends/xforms/FormBox.C:47
@@ -11575,9 +11484,8 @@ msgstr "Doboz beállítások"
 
 #: src/frontends/gtk/GBranch.C:38 src/frontends/qt2/QBranch.C:36
 #: src/frontends/xforms/FormBranch.C:35
-#, fuzzy
 msgid "Branch Settings"
-msgstr "Irodalomjegyzék beállítások"
+msgstr "Változat beállítások"
 
 #: src/frontends/gtk/GChanges.C:33 src/frontends/qt2/QChanges.C:36
 #: src/frontends/xforms/FormChanges.C:32
@@ -11589,14 +11497,12 @@ msgid "Accept highlighted change?"
 msgstr ""
 
 #: src/frontends/gtk/GChanges.C:109
-#, fuzzy
 msgid "unknown author"
-msgstr "Ismeretlen mûvelet"
+msgstr "Ismeretlen szerzõ"
 
 #: src/frontends/gtk/GChanges.C:111
-#, fuzzy
 msgid "unknown date"
-msgstr " ismeretlen szimbólumokat"
+msgstr "Ismeretlen dátum"
 
 #: src/frontends/gtk/GChanges.C:125
 msgid "Done merging changes"
@@ -11622,9 +11528,9 @@ msgstr "Dokumentumbeállítások"
 
 #: src/frontends/gtk/GDocument.C:104 src/frontends/qt2/QDocument.C:133
 #: src/frontends/xforms/FormDocument.C:169
-#, fuzzy, c-format
+#, c-format
 msgid "Unavailable: %1$s"
-msgstr "Elérhetõ"
+msgstr "Elérhetetlen: %1$s"
 
 #: src/frontends/gtk/GDocument.C:147
 msgid "Small Skip"
@@ -11647,9 +11553,8 @@ msgid "B4"
 msgstr "B4"
 
 #: src/frontends/gtk/GDocument.C:832
-#, fuzzy
 msgid "No headings numbered"
-msgstr "  Szám "
+msgstr ""
 
 #: src/frontends/gtk/GDocument.C:833
 msgid "Only parts numbered"
@@ -11737,14 +11642,12 @@ msgid "Child Document"
 msgstr "Aldokumentum"
 
 #: src/frontends/gtk/GLog.C:34
-#, fuzzy
 msgid "Log Viewer"
-msgstr "Megjele&nítõ:"
+msgstr "Megjelenítõ:"
 
 #: src/frontends/gtk/GLog.C:70 src/frontends/gtk/GShowFile.C:63
-#, fuzzy
 msgid "Error reading file!"
-msgstr "Hiba olvasás közben "
+msgstr "Hiba fájlolvasás közben !"
 
 #: src/frontends/gtk/GMathDelim.C:105 src/frontends/xforms/FormMathsDelim.C:59
 msgid "Math Delimiters"
@@ -11781,9 +11684,8 @@ msgid "Cross-reference"
 msgstr "Kereszthivatkozás"
 
 #: src/frontends/gtk/GRef.C:229
-#, fuzzy
 msgid "No labels found."
-msgstr "A fájl nincs meg!"
+msgstr "Nincs címke."
 
 #: src/frontends/gtk/GSearch.C:36 src/frontends/qt2/QSearch.C:31
 #: src/frontends/xforms/FormSearch.C:30
@@ -11807,7 +11709,6 @@ msgid "Spellchecker"
 msgstr "Helyesírás-ellenõrzõ"
 
 #: src/frontends/gtk/GSpellchecker.C:136
-#, fuzzy
 msgid "checked"
 msgstr " szó ellenõrizve."
 
@@ -11828,12 +11729,11 @@ msgstr "TeX információ"
 
 #: src/frontends/gtk/GThesaurus.C:66
 msgid "Synonym"
-msgstr ""
+msgstr "Szinoníma"
 
 #: src/frontends/gtk/GThesaurus.C:156
-#, fuzzy
 msgid "No synonyms found"
-msgstr "Nincs figyelmeztetés."
+msgstr "Nem találtam szinonímákat"
 
 #: src/frontends/gtk/GToc.C:122 src/frontends/xforms/FormErrorList.C:83
 #: src/frontends/xforms/FormToc.C:109 src/frontends/xforms/FormToc.C:127
@@ -11841,9 +11741,8 @@ msgid "*** No Lists ***"
 msgstr "*** Nincsenek listák ***"
 
 #: src/frontends/gtk/GToc.C:145
-#, fuzzy
 msgid "*** No Items ***"
-msgstr "*** Nincsenek listák ***"
+msgstr "*** Nincsenek elemek ***"
 
 #: src/frontends/gtk/GVSpace.C:34
 #, fuzzy
@@ -12074,9 +11973,8 @@ msgid "Math Delimiter"
 msgstr "Képlet határolók"
 
 #: src/frontends/qt2/QMathDialog.C:107
-#, fuzzy
 msgid "LyX: Math Spacing"
-msgstr "Képlet közök"
+msgstr "LyX: Képlet közök"
 
 #: src/frontends/qt2/QMathDialog.C:109
 msgid "Thin space\t\\,"
@@ -12103,9 +12001,8 @@ msgid "Negative space\t\\!"
 msgstr "Negatív köz\t\\!"
 
 #: src/frontends/qt2/QMathDialog.C:119
-#, fuzzy
 msgid "LyX: Math Roots"
-msgstr "LyX: Képlet betûtípus beállítása"
+msgstr "LyX: Képlet gyökjelek"
 
 #: src/frontends/qt2/QMathDialog.C:121
 msgid "Square root\t\\sqrt"
@@ -12140,9 +12037,8 @@ msgid "Scriptscript (smaller) style\t\\scriptscriptstyle"
 msgstr "Kézírás stílus (kisebb) \t\\scriptscriptstyle"
 
 #: src/frontends/qt2/QMathDialog.C:138
-#, fuzzy
 msgid "LyX: Math Fonts"
-msgstr "LyX: Képletszerkesztõ"
+msgstr "LyX: Képlet betûtípusok"
 
 #: src/frontends/qt2/QMathDialog.C:140
 msgid "Roman\t\\mathrm"
@@ -12262,9 +12158,8 @@ msgstr "Nyomtató"
 
 #: src/frontends/qt2/QPrefsDialog.C:119
 #: src/frontends/xforms/FormPreferences.C:237
-#, fuzzy
 msgid "Identity"
-msgstr "&Behúzás"
+msgstr ""
 
 #: src/frontends/qt2/QPrefsDialog.C:121
 msgid "File formats"
@@ -12281,9 +12176,8 @@ msgid "Copiers"
 msgstr "Másolók"
 
 #: src/frontends/qt2/QPrefsDialog.C:852
-#, fuzzy
 msgid "Format in use"
-msgstr "Formátumok"
+msgstr "Használt formátumok"
 
 #: src/frontends/qt2/QPrefsDialog.C:853
 #: src/frontends/xforms/FormPreferences.C:1466
@@ -12317,24 +12211,20 @@ msgid "Print Document"
 msgstr "Dokumentum nyomtatása"
 
 #: src/frontends/qt2/QRef.C:137
-#, fuzzy
 msgid "&Go Back"
 msgstr "Visszau&grás"
 
 #: src/frontends/qt2/QRef.C:139
-#, fuzzy
 msgid "Jump back"
 msgstr "Kurzor vissza a kiindulópontra"
 
 #: src/frontends/qt2/QRef.C:147
-#, fuzzy
 msgid "Jump to label"
 msgstr "Címkére ugrás"
 
 #: src/frontends/qt2/QSendto.C:36 src/frontends/xforms/FormSendto.C:39
-#, fuzzy
 msgid "Send Document to Command"
-msgstr "Parancs alkalmazása dokumentumra"
+msgstr ""
 
 #: src/frontends/qt2/QVSpace.C:133 src/frontends/xforms/FormVSpace.C:166
 msgid "Vertical Space Settings"
@@ -12396,52 +12286,53 @@ msgstr "Érvénytelen fájlnév"
 
 #: src/frontends/qt2/validators.C:142
 #: src/frontends/xforms/checkedwidgets.C:201
-#, fuzzy
 msgid ""
 "LyX does not provide LateX support for file names containing any of these "
 "characters:\n"
-msgstr "Nincs LaTeX támogatás a következõ jelekre:\n"
+msgstr ""
+"A LaTeX támogatás nem mûködik azokra a fájlnevekre amelyek tartalmazzák a "
+"következõ jelek valamelyikét:\n"
 
 #: src/frontends/xforms/Alert_pimpl.C:79
-#, fuzzy
 msgid "OK|^M"
-msgstr "OK|#O"
+msgstr "OK|^M"
 
 #: src/frontends/xforms/Alert_pimpl.C:80
-#, fuzzy
 msgid "Clear|#C"
-msgstr "Töröl|#r"
+msgstr "Törlés|#r"
 
 #: src/frontends/xforms/ColorHandler.C:106
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "LyX: Unknown X11 color %1$s\n"
 "     Using black instead, sorry!"
 msgstr ""
-"LyX:A %1$s egy ismeretlen X11 szín, ehhez: %2$s\n"
+"LyX: A %1$s egy ismeretlen X11 szín,\n"
 "     Feketét használok helyette, sajnálom!"
 
 #: src/frontends/xforms/ColorHandler.C:115
-#, fuzzy, c-format
+#, c-format
 msgid "LyX: X11 color %1$s allocated"
-msgstr "LyX: X11 color %1$s allocated for %2$s"
+msgstr "LyX: X11 szín %1$s lefoglalva"
 
 #: src/frontends/xforms/ColorHandler.C:158
-#, fuzzy, c-format
+#, c-format
 msgid "LyX: Couldn't allocate '%1$s' with (r,g,b)=%2$s.\n"
-msgstr "V"
+msgstr "LyX: Nem tudom lefoglalni a '%1$s'-t  (r,g,b)=%2$s.\n"
 
 #: src/frontends/xforms/ColorHandler.C:162
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "     Using closest allocated color with (r,g,b)=%1$s instead.\n"
 "Pixel [%2$s] is used."
-msgstr "     Helyette lefoglaltam a legközelebbi színt (r,g,b)=("
+msgstr ""
+"     Helyette lefoglaltam a legközelebbi színt (r,g,b)=%1$s.\n"
+"A [%2$s] pixelt használom."
 
 #: src/frontends/xforms/ColorHandler.C:191
-#, fuzzy, c-format
+#, c-format
 msgid "LyX: Unknown X11 color %1$s for %2$s\n"
-msgstr "LyX: A "
+msgstr "LyX: Ismeretlen X11 szín %1$s %2$s-hez\n"
 
 #: src/frontends/xforms/Dialogs.C:265
 msgid "Maths Decorations & Accents"
@@ -12452,9 +12343,8 @@ msgid "Binary Ops"
 msgstr "Bináris mûveletek"
 
 #: src/frontends/xforms/Dialogs.C:303
-#, fuzzy
 msgid "Binary Relations"
-msgstr "Relációk"
+msgstr "Bináris relációk"
 
 #: src/frontends/xforms/Dialogs.C:355
 msgid "Big Operators"
@@ -12523,9 +12413,8 @@ msgstr ""
 "tartalomjegyzékben."
 
 #: src/frontends/xforms/FormBibtex.C:105
-#, fuzzy
 msgid "Double click to choose a BibTeX style from the list."
-msgstr "Válasszon BibTeX stílust a listáról."
+msgstr "Kettõs kattintás után választhat egy BibTeX stílust a listáról."
 
 #: src/frontends/xforms/FormBibtex.C:113
 msgid ""
@@ -12536,9 +12425,8 @@ msgstr ""
 "listázza amiket a TeX használni tud."
 
 #: src/frontends/xforms/FormBibtex.C:118
-#, fuzzy
 msgid "The bibliography section contains..."
-msgstr "Az irodalomjegyzék kulcs"
+msgstr "Az irodalomjegyzék szakasz tartalmaz ..."
 
 #: src/frontends/xforms/FormBox.C:61
 msgid ""
@@ -12549,6 +12437,12 @@ msgid ""
 "Shadowbox: Box casting shadow\n"
 "Doublebox: Double line border"
 msgstr ""
+"Nincs keret: Nincs semmilyen keret\n"
+"Négyszögû keret: Négyszögletes a keret\n"
+"Ovális keret: Vékony ovális keret\n"
+"Ovális keret: Vastag ovális keret\n"
+"Árnyékolt keret: Árnyékolt keretes doboz\n"
+"Kétszeres keret: Kétszeres vastagságú keret"
 
 #: src/frontends/xforms/FormBox.C:71
 msgid ""
@@ -12586,14 +12480,14 @@ msgstr ""
 "bejegyzéseket."
 
 #: src/frontends/xforms/FormCitation.C:195
-#, fuzzy
 msgid ""
 "All entries in the database you have loaded (via \"Insert->List / TOC-"
 ">BibTeX Bibliography\"). Move the ones you want to cite with the arrow "
 "buttons into the left browser window."
 msgstr ""
 "Minden bejegyzés amit az adatbázisba betöltött (a \"Beszúrás->Listák és "
-"taralomjegyzék->BibTeX irodalomjegyzék\"-vel)."
+"taralomjegyzék->BibTeX irodalomjegyzék\"-vel). Mozgassa be azokat a nyíl "
+"billentyûkkel a bal böngészõablakba amiket használni szeretne."
 
 #: src/frontends/xforms/FormCitation.C:202
 msgid "Information about the selected bibliography entry"
@@ -12627,10 +12521,10 @@ msgstr ""
 "mondatkezdéshez (Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:218
-#, fuzzy
 msgid ""
 "Optional text which appears before the citation, e.g. \"see <Citation>\""
-msgstr "Egyéb szöveg, amely a idézés elõtt jelenik meg, pl. \"lásd  <Hiv>\""
+msgstr ""
+"Egyéb szöveg, amely a idézés elõtt jelenik meg, pl. \"lásd  <Citation>\""
 
 #: src/frontends/xforms/FormCitation.C:221
 msgid "Optional text which appears after the citation, e.g. \"pp. 12\""
@@ -12729,9 +12623,8 @@ msgid "Activate the selected branch for output."
 msgstr "A kiválasztott változat aktiválása a kimenetben."
 
 #: src/frontends/xforms/FormDocument.C:397
-#, fuzzy
 msgid "Deactivate the selected activated branch."
-msgstr "Kiválasztott adatbázis eltávolítása"
+msgstr "A kiválasztott változat kikapcsolása."
 
 #: src/frontends/xforms/FormDocument.C:399
 msgid "Available branches for this document."
@@ -12747,7 +12640,7 @@ msgstr "A változat háttérszínének megadása vagy változtatása"
 
 #: src/frontends/xforms/FormDocument.C:405
 msgid "Background color of branch inset"
-msgstr ""
+msgstr "A változat-betét háttérszine"
 
 #: src/frontends/xforms/FormDocument.C:417
 msgid "Document"
@@ -12846,9 +12739,8 @@ msgid "Span float over the columns."
 msgstr "Hasábok áthidalása"
 
 #: src/frontends/xforms/FormFloat.C:100
-#, fuzzy
 msgid "Rotate the float sideways by 90 degs."
-msgstr "Elforgatja a táblázatot 90 fokkal"
+msgstr "Elforgatja a lebegõt 90 fokkal"
 
 #: src/frontends/xforms/FormGraphics.C:140
 msgid "Default|Monochrome|Grayscale|Color|Do not display"
@@ -12965,9 +12857,8 @@ msgid "Bounding Box"
 msgstr "Méretre vágás"
 
 #: src/frontends/xforms/FormInclude.C:72
-#, fuzzy
 msgid "File name to include."
-msgstr "A csatolandó fájl neve"
+msgstr "A csatolandó fájl neve."
 
 #: src/frontends/xforms/FormInclude.C:74 src/frontends/xforms/FormPrint.C:88
 msgid "Browse directories for file name."
@@ -13150,31 +13041,28 @@ msgstr ""
 "segédkönyvtár elérési útjaként."
 
 #: src/frontends/xforms/FormPreferences.C:1031
-#, fuzzy
 msgid ""
 "Remove the current copier from the list of available copiers. Note: you must "
 "then \"Apply\" the change."
 msgstr ""
-"Az aktuális átalakító törlése. Megjegyzés: meg kell nyomnia az \"Alkalmaz\"-"
-"t az érvényesítéshez."
+"Az aktuális másoló eltávolítása, az elérhetõ másolók listájáról. Megjegyzés: "
+"meg kell nyomnia az \"Alkalmaz\"-t az érvényesítéshez."
 
 #: src/frontends/xforms/FormPreferences.C:1036
-#, fuzzy
 msgid ""
 "Add the current copier to the list of available copiers. Note: you must then "
 "\"Apply\" the change."
 msgstr ""
-"Az aktuális átalakító hozzáadása a listához. Megjegyzés: meg kell nyomnia az "
-"\"Alkalmaz\"-t az érvényesítéshez."
+"Az aktuális másoló hozzáadása az elérhetõ másolók listájához. Megjegyzés: "
+"meg kell nyomnia az \"Alkalmaz\"-t az érvényesítéshez."
 
 #: src/frontends/xforms/FormPreferences.C:1039
-#, fuzzy
 msgid ""
 "Modify the contents of the current copier. Note: you must then \"Apply\" the "
 "change."
 msgstr ""
-"Aktuális átalakító módosítása. Megjegyzés: meg kell nyomnia az \"Alkalmaz\"-"
-"t az érvényesítéshez."
+"Aktuális másoló tulajdonságainak módosítása. Megjegyzés: meg kell nyomnia az "
+"\"Alkalmaz\"-t az érvényesítéshez."
 
 #: src/frontends/xforms/FormPreferences.C:1320
 msgid "All the currently defined formats known to LyX."
@@ -13236,7 +13124,7 @@ msgstr "Monokróm|Szürkeskála|Színes|Nem mutat"
 
 #: src/frontends/xforms/FormPreferences.C:1979
 msgid "Off|No math|On"
-msgstr ""
+msgstr "Off|Nincs képlet|On"
 
 #: src/frontends/xforms/FormPreferences.C:2102
 msgid " default | US letter | US legal | US executive | A3 | A4 | A5 | B5 "
@@ -13349,7 +13237,6 @@ msgid "Update the list of labels."
 msgstr "Címkék listájának frissítése"
 
 #: src/frontends/xforms/FormRef.C:83
-#, fuzzy
 msgid "Select format style of the cross-reference."
 msgstr "Hivatkozás formátumának kiválasztása."
 
@@ -13648,16 +13535,16 @@ msgid "BibTeX Generated Bibliography"
 msgstr "BibTeX által készített irodalomjegyzék"
 
 #: src/insets/insetbibtex.C:190
-#, fuzzy
 msgid "Export Warning!"
-msgstr "Figyelem!"
+msgstr "Exportálási Figyelmeztetés!"
 
 #: src/insets/insetbibtex.C:191
-#, fuzzy
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
-msgstr "Szóközök vannak a BibTeX adatbázis elérési útjában."
+msgstr ""
+"Szóközök vannak a BibTeX adatbázis elérési útjában.\n"
+"A BibTeX nem fogja tudni megtalálni õket."
 
 #: src/insets/insetbox.C:57
 #, fuzzy
@@ -13671,15 +13558,15 @@ msgstr "Paraméterek"
 
 #: src/insets/insetbox.C:59
 msgid "ovalbox"
-msgstr ""
+msgstr "ovális keret"
 
 #: src/insets/insetbox.C:60
 msgid "Ovalbox"
-msgstr ""
+msgstr "Ovális keret"
 
 #: src/insets/insetbox.C:61
 msgid "Shadowbox"
-msgstr ""
+msgstr "Árnyékolt keret"
 
 #: src/insets/insetbox.C:62
 #, fuzzy
@@ -13692,13 +13579,12 @@ msgid "Opened Box Inset"
 msgstr "Megjegyzésbetét kinyitva"
 
 #: src/insets/insetbranch.C:72
-#, fuzzy
 msgid "Opened Branch Inset"
-msgstr "Körbefuttatott-betét nyitva"
+msgstr "Változat betét nyitva"
 
 #: src/insets/insetbranch.C:97
 msgid "Branch: "
-msgstr ""
+msgstr "Változat: "
 
 #: src/insets/insetbranch.C:103 src/insets/insetcharstyle.C:156
 #: src/insets/insetcharstyle.C:202
@@ -13735,7 +13621,7 @@ msgstr "ERT"
 #: src/insets/insetexternal.C:579
 #, c-format
 msgid "External template %1$s is not installed"
-msgstr ""
+msgstr "A %1$s külsõ sablon nincs telepítve"
 
 #: src/insets/insetfloat.C:134 src/insets/insetfloat.C:412
 #: src/insets/insetfloat.C:422
@@ -13803,7 +13689,7 @@ msgstr ""
 
 #: src/insets/insetinclude.C:375
 msgid "Different textclasses"
-msgstr ""
+msgstr "Különbözõ szövegosztályok"
 
 #: src/insets/insetindex.C:39
 msgid "Idx"
@@ -13846,9 +13732,8 @@ msgid "Ref: "
 msgstr "Hiv:"
 
 #: src/insets/insetref.C:150 src/mathed/ref_inset.C:189
-#, fuzzy
 msgid "Equation"
-msgstr "Felirat"
+msgstr "Egyenlet"
 
 #: src/insets/insetref.C:150 src/mathed/ref_inset.C:189
 #, fuzzy
@@ -13894,11 +13779,11 @@ msgstr "Fájl megnyitása"
 
 #: src/insets/insettabular.C:1568
 msgid "Error setting multicolumn"
-msgstr ""
+msgstr "Hiba cellaegyesítés közben"
 
 #: src/insets/insettabular.C:1569
 msgid "You cannot set multicolumn vertically."
-msgstr ""
+msgstr "Függõlegesen nem lehet cellát egyesíteni!"
 
 #: src/insets/insettext.C:239
 msgid "Opened Text Inset"
@@ -13949,9 +13834,8 @@ msgid "Converting to loadable format..."
 msgstr "Átalakítás betölthetõ formátumra ..."
 
 #: src/insets/render_graphic.C:99
-#, fuzzy
 msgid "Loaded into memory. Generating pixmap..."
-msgstr "Betöltöttem a memóirába. Most pixmapet készítek."
+msgstr "Betöltöttem a memóirába. Most pixmapet készítek ..."
 
 #: src/insets/render_graphic.C:101
 msgid "Scaling etc..."
@@ -13983,17 +13867,15 @@ msgstr "Nincs kép"
 
 #: src/insets/render_preview.C:89
 msgid "Preview loading"
-msgstr ""
+msgstr "Elõnézet betöltése"
 
 #: src/insets/render_preview.C:92
-#, fuzzy
 msgid "Preview ready"
-msgstr "Elõnézet megjelenítése|#E"
+msgstr "Elõnézet kész"
 
 #: src/insets/render_preview.C:95
-#, fuzzy
 msgid "Preview failed"
-msgstr "Automatikus mentés sikertelen!"
+msgstr "Elõnézet sikertelen!"
 
 #: src/ispell.C:206 src/ispell.C:213 src/ispell.C:222
 msgid "Can't create pipe for spellchecker."
@@ -14012,18 +13894,16 @@ msgstr ""
 "Telepítette a megfelelõ nyelvet?"
 
 #: src/ispell.C:268
-#, fuzzy
 msgid ""
 "The ispell process returned an error.\n"
 "Perhaps it has been configured wrongly ?"
 msgstr ""
-"A helyesírás-ellenõrzõ program hibával állt le.\n"
+"Az islepp helyesírás-ellenõrzõ program hibával állt le.\n"
 "Megfelelõen van beállítva?"
 
 #: src/ispell.C:377
-#, fuzzy
 msgid "Could not communicate with the ispell spellchecker process."
-msgstr "Nincs kapcsolat a helyesírás-ellenõrzõ programmal."
+msgstr "Nincs kapcsolat az ispell helyesírás-ellenõrzõ programmal."
 
 #: src/kbsequence.C:160
 msgid "   options: "
@@ -14104,10 +13984,13 @@ msgid ""
 "\n"
 "Do you want to rename the document and try again?"
 msgstr ""
+"A %1$s dokumentumot nem lehet menteni!\n"
+"\n"
+"Átnevezi a dokumentumot és megpróbálja újra?"
 
 #: src/lyx_cb.C:114
 msgid "Rename and save?"
-msgstr ""
+msgstr "Átnevezzem és mentsem?"
 
 #: src/lyx_cb.C:115
 msgid "&Rename"
@@ -14137,14 +14020,13 @@ msgid "Over-write document?"
 msgstr "Felülírjam a dokumentumot?"
 
 #: src/lyx_cb.C:214
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to remove the temporary directory %1$s"
-msgstr "Ideiglenes könyvtár nem hozható létre"
+msgstr "Az %1$s ideiglenes könyvtár nem törölhetõ"
 
 #: src/lyx_cb.C:216
-#, fuzzy
 msgid "Unable to remove temporary directory"
-msgstr "Adja meg az ideiglenes könyvtárat"
+msgstr "Ideiglenes könyvtár nem törölhetõ"
 
 #: src/lyx_cb.C:248
 #, c-format
@@ -14170,6 +14052,9 @@ msgid ""
 "%1$s\n"
 "due to the error: %2$s"
 msgstr ""
+"A %1$s dokumentum\n"
+"nem olvasható,\n"
+"%2$s hiba miatt"
 
 #: src/lyx_cb.C:406
 msgid "Could not read file"
@@ -14182,6 +14067,9 @@ msgid ""
 "%1$s\n"
 "due to the error: %2$s"
 msgstr ""
+"A %1$s dokumentum\n"
+"nem nyitható meg,\n"
+"%2$s hiba miatt"
 
 #: src/lyx_cb.C:416 src/output.C:36
 msgid "Could not open file"
@@ -14210,9 +14098,8 @@ msgstr ""
 "használatba vételéhez."
 
 #: src/lyx_main.C:110
-#, fuzzy
 msgid "Could not read configuration file"
-msgstr "Nem tudja futtatni a fájlt:"
+msgstr "Konfiguráció fájl nem olvasható"
 
 #: src/lyx_main.C:111
 #, c-format
@@ -14221,6 +14108,9 @@ msgid ""
 "%1$s.\n"
 "Please check your installation."
 msgstr ""
+"%1$s hiba történt,\n"
+"a konfigurációs fájl olvasása közben.\n"
+"Ellenõrizze a programot. (Please check your installation.)"
 
 #: src/lyx_main.C:124
 msgid "LyX: reconfiguring user directory"
@@ -14255,26 +14145,25 @@ msgstr ""
 "írható, majd próbálja újra!"
 
 #: src/lyx_main.C:642
-#, fuzzy
 msgid "Missing user LyX directory"
-msgstr "Nincs felhasználói LyX könyvtár. Kilépek."
+msgstr "Nincs felhasználói LyX könyvtár"
 
 #: src/lyx_main.C:643
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
-msgstr "Nem létezõ LyX felhasználói könyvtárat adott meg."
+msgstr ""
+"Nem létezõ LyX felhasználói könyvtárat adott meg, %1$s.\n"
+"Valahol tárolnia kell a saját beállításait."
 
 #: src/lyx_main.C:648
-#, fuzzy
 msgid "&Create directory"
-msgstr "&Könyvtár létrehozása."
+msgstr "&Könyvtár létrehozása"
 
 #: src/lyx_main.C:649
-#, fuzzy
 msgid "&Exit LyX"
-msgstr "Kilépés LyX-bõl"
+msgstr "&Kilépés LyX-bõl"
 
 #: src/lyx_main.C:650
 msgid "No user LyX directory. Exiting."
@@ -14299,7 +14188,6 @@ msgid "Setting debug level to %1$s"
 msgstr "Nyomkövetési szint beállítása: %1$s"
 
 #: src/lyx_main.C:826
-#, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -14321,13 +14209,13 @@ msgid ""
 "Check the LyX man page for more details."
 msgstr ""
 "Használat: lyx [ parancssori kapcsolók ] [ doksi.lyx ... ]\n"
-"Parancssori kapcsolók (kis- és nagybetû számít):\n"
+"Parancssori kapcsolók (kis- vagy nagybetû számít):\n"
 "\t-help              összefoglalja a LyX használatát\n"
-"\t-userdir dir       megpróbálja beállítani a felhasználói könyvtárat\n"
-"\t-sysdir dir        megpróbálja beállítani a rendszerkönyvtárat\n"
+"\t-userdir dir       felhasználói könyvtár beállítása\n"
+"\t-sysdir dir        rendszerkönyvtár beállítása\n"
 "\t-geometry WxH+X+Y  a fõablak méretének beállítása\n"
-"\t-dbg feature[,feature]...\n"
-"                  válassza ki a nyomkövetési jellemzõt.\n"
+"\t-dbg jellemzõ[,jellemzõ]...\n"
+"                  válassza ki a nyomkövetési mód jellemzõit.\n"
 "                  Írja be a `lyx -dbg' parancsot a jellemzõk listájához\n"
 "\t-x [--execute] parancs\n"
 "                  ahol a parancs egy lyx parancs.\n"
@@ -14368,9 +14256,8 @@ msgid "Search error"
 msgstr "Keresési hiba"
 
 #: src/lyxfind.C:141
-#, fuzzy
 msgid "Search string is empty"
-msgstr "Az eredményfájl üres"
+msgstr "A keresendõ szöveg üres"
 
 #: src/lyxfind.C:293 src/lyxfind.C:323
 msgid "String not found!"
@@ -14457,7 +14344,7 @@ msgstr "Csak olvasható dokumentum"
 
 #: src/lyxfunc.C:636
 msgid "This portion of the document is deleted."
-msgstr ""
+msgstr "A dokumentum ezen része törölve lett."
 
 #: src/lyxfunc.C:657
 #, c-format
@@ -14476,21 +14363,25 @@ msgid ""
 "Could not print the document %1$s.\n"
 "Check that your printer is set up correctly."
 msgstr ""
+"A %1$s dokumentum nem nyomtatható.\n"
+"Kérem ellenõrizze a nyomtató beállításait."
 
 #: src/lyxfunc.C:676
 msgid "Print document failed"
 msgstr "Nyomtatás sikertelen"
 
 #: src/lyxfunc.C:695
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The document could not be converted\n"
 "into the document class %1$s."
-msgstr "A dokumentum egy ismeretlen szövegosztályt: \"%1$s\" használ."
+msgstr ""
+"A dokumentumot nem lehet\n"
+" %1$s osztály formátumba átalakítani."
 
 #: src/lyxfunc.C:698
 msgid "Could not change class"
-msgstr ""
+msgstr "Osztály nem változtatható meg"
 
 #: src/lyxfunc.C:806
 #, c-format
@@ -14507,11 +14398,12 @@ msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr ""
+"A változtatások el fognak veszni. Biztos benne, hogy visszatér a %1$s "
+"dokumentum mentett változatához?"
 
 #: src/lyxfunc.C:843
-#, fuzzy
 msgid "Build"
-msgstr "Fordítási napló"
+msgstr "Build"
 
 #: src/lyxfunc.C:848
 msgid "ChkTeX"
@@ -14542,14 +14434,12 @@ msgstr ""
 "újradefiniálni"
 
 #: src/lyxfunc.C:1488
-#, fuzzy
 msgid "Document defaults saved in "
-msgstr "Dokumentum alapbeállítás|#D"
+msgstr "Dokumentum alapértékek elmentve ide:"
 
 #: src/lyxfunc.C:1491
-#, fuzzy
 msgid "Unable to save document defaults"
-msgstr "Mentsd dokumentum alapértéknek"
+msgstr "Sikertelen mentése a dokumentum alapértékeknek"
 
 #: src/lyxfunc.C:1545
 msgid "Converting document to new document class..."
@@ -14609,7 +14499,6 @@ msgstr ""
 "nyelve."
 
 #: src/lyxrc.C:2081
-#, fuzzy
 msgid ""
 "Use to define an external program to render tables in plain text output. E."
 "g. \"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"none"
@@ -15136,11 +15025,11 @@ msgstr ""
 
 #: src/mathed/math_gridinset.C:1303
 msgid "Only one row"
-msgstr ""
+msgstr "Csak egy sor"
 
 #: src/mathed/math_gridinset.C:1309
 msgid "Only one column"
-msgstr ""
+msgstr "Csak egy oszlop"
 
 #: src/mathed/math_gridinset.C:1317
 #, fuzzy
@@ -15152,29 +15041,27 @@ msgid "No vline to delete"
 msgstr ""
 
 #: src/mathed/math_gridinset.C:1344
-#, fuzzy, c-format
+#, c-format
 msgid "Unknown tabular feature '%1$s'"
-msgstr "Táblázat jellemzõi"
+msgstr "Ismeretlen táblázat jellemzõ '%1$s'"
 
 #: src/mathed/math_hullinset.C:1029 src/mathed/math_hullinset.C:1038
-#, fuzzy
 msgid "No number"
 msgstr "Nem szám"
 
 #: src/mathed/math_hullinset.C:1029 src/mathed/math_hullinset.C:1038
-#, fuzzy
 msgid "Number"
 msgstr "Szám"
 
 #: src/mathed/math_hullinset.C:1171
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
-msgstr ""
+msgstr "A sorok száma itt: '%1$s' nem változtatható"
 
 #: src/mathed/math_hullinset.C:1181
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
-msgstr ""
+msgstr "Az oszlopok száma itt: '%1$s' nem változtatható"
 
 #: src/mathed/math_hullinset.C:1191
 #, c-format
@@ -15190,25 +15077,25 @@ msgid "create new math text environment ($...$)"
 msgstr ""
 
 #: src/mathed/math_nestinset.C:813
-#, fuzzy
 msgid "entered math text mode (textrm)"
-msgstr "Normál szöveg mód\t\\textrm"
+msgstr "képlet módba lépés (textrm)"
 
 #: src/output.C:34
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not open the specified document\n"
 "%1$s."
-msgstr "A dokumentum nem nyitható meg %1$s"
+msgstr ""
+"A %1$s dokumentum\n"
+"nem nyitható meg ."
 
 #: src/output_linuxdoc.C:79
 msgid "Error:"
 msgstr "Hiba:"
 
 #: src/output_linuxdoc.C:79
-#, fuzzy
 msgid "Wrong depth for LatexType Command.\n"
-msgstr "Hiba: Rossz mélység a LatexType parancshoz.\n"
+msgstr "Rossz mélység a LatexType parancshoz.\n"
 
 #: src/output_plaintext.C:157
 msgid "Abstract: "
@@ -15223,52 +15110,52 @@ msgid "All files (*)"
 msgstr "Minden fájl (*)"
 
 #: src/support/package.C.in:424
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Unable to determine the path to the LyX binary from the command line %1$s"
 msgstr ""
 "Nem tudom meghatározni az elérési útvonalat a LyX programhoz a "
-"parancssorból: %1%"
+"parancssorból: %1$s"
 
 #: src/support/package.C.in:545
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Unable to determine the system directory having searched\n"
 "\t%1$s\n"
 "Use the '-sysdir' command line parameter or set the environment variable "
 "LYX_DIR_14x to the LyX system directory containing the file `chkconfig.ltx'."
 msgstr ""
-"Nem tudom meghatározni a rendszerkönyvtárat, kerestem a \t%1%-ban\n"
+"Nem tudom meghatározni a rendszerkönyvtárat, kerestem a \t%1$s-ban\n"
 "Próbálja a '-sysdir' parancssori paramétert vagy készítsen egy környezeti "
-"változót LYX_DIR_13x néven a LyX rendszerkönyvtárhoz, ahol a  `chkconfig."
+"változót LYX_DIR_14x néven a LyX rendszerkönyvtárhoz, ahol a  `chkconfig."
 "ltx' fájl van."
 
 #: src/support/package.C.in:630
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Invalid %1$s switch.\n"
 "Directory %2$s does not contain %3$s."
 msgstr ""
-"Érvénytelen %1% kapcsoló.\n"
-"A %2% könyvtár nem tartalmaz %3%-at."
+"Érvénytelen %1$s kapcsoló.\n"
+"A %2$s nem tartalmazza %3$s-at."
 
 #: src/support/package.C.in:656
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Invalid %1$s environment variable.\n"
 "Directory %2$s does not contain %3$s."
 msgstr ""
-"Érvénytelen %1% környezeti változó.\n"
-"%2% könyvtár nem tartalmazza %3%-at."
+"Érvénytelen %1$s környezeti változó.\n"
+"%2$s könyvtár nem tartalmazza %3$s-at."
 
 #: src/support/package.C.in:679
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Invalid %1$s environment variable.\n"
 "%2$s is not a directory."
 msgstr ""
-"Érvénytelen %1% környezeti változó.\n"
-"%2% nem könyvtár."
+"Érvénytelen %1$s környezeti változó.\n"
+"%2$s nem könyvtár."
 
 #: src/support/userinfo.C:44
 msgid "Unknown user"
@@ -15284,6 +15171,8 @@ msgid ""
 "Layout '%1$s' does not exist in textclass '%2$s'\n"
 "Trying to use the default instead.\n"
 msgstr ""
+"A '%1$s' formátum nem létezik a '%2$s' szövegosztályban,\n"
+"az alapértéket próbálom használni.\n"
 
 #: src/text.C:213
 msgid "Unknown Inset"
@@ -15341,7 +15230,7 @@ msgstr ", Bekezdés: "
 
 #: src/text.C:2308
 msgid ", Id: "
-msgstr ""
+msgstr ", Azon: "
 
 #: src/text.C:2309
 msgid ", Position: "
@@ -15349,7 +15238,7 @@ msgstr ", Pozíció: "
 
 #: src/text.C:2310
 msgid ", Boundary: "
-msgstr ""
+msgstr ", Határ: "
 
 #: src/text2.C:530
 msgid ""
@@ -15414,1469 +15303,3 @@ msgstr "Függõleges kitöltés"
 #: src/vspace.C:506
 msgid "protected"
 msgstr "védett"
-
-#~ msgid "Scrolling"
-#~ msgstr "Görgetés"
-
-#~ msgid "W&heel mouse scroll:"
-#~ msgstr "&Görgetés egérrel:"
-
-#~ msgid "Insert cases"
-#~ msgstr "Esetek beszúrása"
-
-#, fuzzy
-#~ msgid "C_redits"
-#~ msgstr "Stáblista"
-
-#~ msgid "Special (A4 portrait only):|#S"
-#~ msgstr "Speciális (csak álló A4-es):|#c"
-
-#~ msgid "Double|#D"
-#~ msgstr "Dupla|#D"
-
-#~ msgid "Use Natbib|#N"
-#~ msgstr "Natbib használata|#N"
-
-#~ msgid "Parameters:|#P"
-#~ msgstr "Paraméterek:|#P"
-
-#~ msgid "View result|#V"
-#~ msgstr "Eredmény nézete|#E"
-
-#~ msgid "Update result|#U"
-#~ msgstr "Eredmény frissítése|#r"
-
-#~ msgid "Below"
-#~ msgstr "Utána"
-
-#~ msgid "Above"
-#~ msgstr "Elõtte"
-
-#~ msgid "Line|#i"
-#~ msgstr "Vonal|#o"
-
-#~ msgid "Line|#n"
-#~ msgstr "Vonal|#n"
-
-#~ msgid "Page break|#g"
-#~ msgstr "Oldaltörés|#t"
-
-#~ msgid "Page break|#b"
-#~ msgstr "Oldaltörés|#s"
-
-#~ msgid "Keep|#K"
-#~ msgstr "Tartsd a közt|#T"
-
-#~ msgid "Keep|#p"
-#~ msgstr "Tartsd a közt|#d"
-
-#~ msgid "Spell command:|#S"
-#~ msgstr "Helyesírás-ellenõrzõ:"
-
-#~ msgid "To:|#T"
-#~ msgstr "Mire:"
-
-#~ msgid "ASCII roff:|#r"
-#~ msgstr "roff parancs:"
-
-#~ msgid "Center|#c"
-#~ msgstr "Középre|#K"
-
-#~ msgid "Center|#n"
-#~ msgstr "Középen|#z"
-
-#~ msgid "Form1"
-#~ msgstr "Form1"
-
-#~ msgid "Set &Bullet"
-#~ msgstr "&Jelölõ megadása"
-
-#~ msgid "Form2"
-#~ msgstr "Form2"
-
-#~ msgid "S&kip"
-#~ msgstr "&Kihagyás:"
-
-#~ msgid "Float &placement:"
-#~ msgstr "Úsztatás el&helyezése:"
-
-#~ msgid "&Font && size:"
-#~ msgstr "Betûkészlet és &méret:"
-
-#~ msgid "&Single"
-#~ msgstr "&Szimpla"
-
-#~ msgid "&Double"
-#~ msgstr "&Dupla"
-
-#~ msgid "&Margins:"
-#~ msgstr "&Margók:"
-
-#~ msgid "Numbering Depth"
-#~ msgstr "Számozási mélység"
-
-#~ msgid "&Section:"
-#~ msgstr "&Szakaszok:"
-
-#~ msgid "Packages"
-#~ msgstr "Csomagok"
-
-#~ msgid "Paper &size:"
-#~ msgstr "&Papírméret:"
-
-#~ msgid "Bibliography Entry"
-#~ msgstr "Irodalomjegyzék bejegyzés"
-
-#~ msgid "Add a BibTeX file manually"
-#~ msgstr "BibTeX fájl hozzáadása kézzel"
-
-#~ msgid "Browse for a BibTeX database file"
-#~ msgstr "BibTeX adatbázisfájl megkeresése"
-
-#~ msgid "Character"
-#~ msgstr "Betû"
-
-#~ msgid "Auto apply"
-#~ msgstr "Automatikusan alkalmazza"
-
-#~ msgid "&Case sensitive"
-#~ msgstr "Ki&s- és nagybetû érzékeny"
-
-#~ msgid "Add citation of the selected bibliography entry"
-#~ msgstr "Idézet hozzáadása a kiválasztott irodalomjegyzék bejegyzéshez"
-
-#~ msgid "Remove citation of the selected bibliography entry"
-#~ msgstr "Idézet törlése a kiválasztott irodalomjegyzék bejegyzésbõl"
-
-#~ msgid "Selected"
-#~ msgstr "Kiválasztott"
-
-#~ msgid "Info"
-#~ msgstr "Információ"
-
-#~ msgid "Not yet supported"
-#~ msgstr "Még nem támogatott"
-
-#~ msgid "title here"
-#~ msgstr "cím itt"
-
-#~ msgid "ERT inset display"
-#~ msgstr "ERT betét megjelenítése"
-
-#~ msgid "LaTeX Error"
-#~ msgstr "LaTeX hiba"
-
-#~ msgid "LaTeX error messages"
-#~ msgstr "LaTeX hibaüzenetek"
-
-#~ msgid "&View Result"
-#~ msgstr "E&redmény megjelenítése"
-
-#~ msgid "&Update Result"
-#~ msgstr "Ere&dmény frissítése"
-
-#~ msgid "Update the material"
-#~ msgstr "Külsõ anyag frissítése"
-
-#~ msgid "&Parameters:"
-#~ msgstr "&Paraméterek:"
-
-#~ msgid "Prefer top of page"
-#~ msgstr "Lehetõleg az oldal felsõ részére"
-
-#~ msgid "Prefer bottom of page"
-#~ msgstr "Lehetõleg az oldal alsó részére"
-
-#~ msgid "Separate page for multiple floats"
-#~ msgstr "Külön oldal több úsztatásnak"
-
-#~ msgid "Place float at current position if possible"
-#~ msgstr "Elhelyezés az aktuális pozícióba, amennyiben az lehetséges"
-
-#~ msgid "Ignore the internal LaTeX placement rules"
-#~ msgstr "LaTeX belsõ elhelyezési szabályok mellõzése"
-
-#~ msgid "Place float at current position"
-#~ msgstr "Mindenképpen az aktuális pozícióba"
-
-#~ msgid "Span columns in multi-column documents"
-#~ msgstr "Áthidalja a hasábokat egy többhasábos dokumentumban"
-
-#~ msgid "&Width"
-#~ msgstr "Szél&esség"
-
-#~ msgid "Include File"
-#~ msgstr "Csatolandó fájl"
-
-#~ msgid "&Keyword"
-#~ msgstr "&Kulcsszó"
-
-#~ msgid "Log"
-#~ msgstr "Napló"
-
-#~ msgid "Minipage settings"
-#~ msgstr "Minilap beállítások"
-
-#~ msgid "A&lignment:"
-#~ msgstr "&Igazítás:"
-
-#~ msgid "&General"
-#~ msgstr "Általáno&s"
-
-#~ msgid "&Don't indent"
-#~ msgstr "Nincs &behúzás"
-
-#~ msgid "Above paragraph"
-#~ msgstr "Bekezdés elõtt"
-
-#~ msgid "S&pacing:"
-#~ msgstr "Szöv&egköz:"
-
-#~ msgid "&Keep space:"
-#~ msgstr "Tartsd a &közt:"
-
-#~ msgid "&Unit:"
-#~ msgstr "&Mértékegység:"
-
-#~ msgid "Below paragraph"
-#~ msgstr "Bekezdés után"
-
-#~ msgid "&Lines && Pagebreaks"
-#~ msgstr "Vona&lak és laptörések"
-
-#~ msgid "L&ines"
-#~ msgstr "Vízsz&intes vonalak"
-
-#~ msgid "A&bove"
-#~ msgstr "&Elõtte"
-
-#~ msgid "B&elow"
-#~ msgstr "&Utána"
-
-#~ msgid "Abo&ve"
-#~ msgstr "Elõ&tte"
-
-#~ msgid "Belo&w"
-#~ msgstr "Utá&na"
-
-#~ msgid "LaTeX pre-amble"
-#~ msgstr "LaTeX preambulum"
-
-#~ msgid "The LaTeX pre-amble"
-#~ msgstr "A LaTeX preambulum"
-
-#~ msgid "Edit the pre-amble in an external editor"
-#~ msgstr "Szerkessze a bevezetõt egy külsõ programmal"
-
-#~ msgid "ASCII settings"
-#~ msgstr "ASCII beállítások"
-
-#~ msgid "File Conversion"
-#~ msgstr "Fájl átalakítás"
-
-#~ msgid "&To:"
-#~ msgstr "Mi&re:"
-
-#~ msgid "Cygwin Paths"
-#~ msgstr "Cygwin elérési út"
-
-#~ msgid "Date Format"
-#~ msgstr "Dátum formátuma"
-
-#~ msgid "Display insets"
-#~ msgstr "Betétek megjelenítése"
-
-#~ msgid "File Formats"
-#~ msgstr "Fájlformátumok"
-
-#~ msgid "US Letter"
-#~ msgstr "US Letter"
-
-#~ msgid "Legal"
-#~ msgstr "Legal"
-
-#~ msgid "Executive"
-#~ msgstr "Executive"
-
-#~ msgid "Spell checker"
-#~ msgstr "Helyesírás-ellenõrzõ"
-
-#~ msgid "UI"
-#~ msgstr "UI"
-
-#~ msgid "Print"
-#~ msgstr "Nyomtatás"
-
-#~ msgid "&to"
-#~ msgstr "u&tolsó"
-
-#~ msgid "&Goto"
-#~ msgstr "U&grás"
-
-#~ msgid "Move the document cursor to label"
-#~ msgstr "A kurzor a kiválasztott címkéhez ugrik"
-
-#~ msgid "&Document:"
-#~ msgstr "&Dokumentum:"
-
-#~ msgid "Search and replace"
-#~ msgstr "Keresés és csere"
-
-#~ msgid "Custom Export"
-#~ msgstr "Egyéb exportálás"
-
-#~ msgid "File:"
-#~ msgstr "Fájl:"
-
-#~ msgid "How far spellchecking has got"
-#~ msgstr "Hol tart a helyesírásellenõrzés"
-
-#~ msgid "Column"
-#~ msgstr "Oszlop"
-
-#~ msgid "Append column (right)"
-#~ msgstr "Oszlop hozzáadása (jobbra)"
-
-#~ msgid "De&lete"
-#~ msgstr "Tör&lés"
-
-#~ msgid "Delete current column"
-#~ msgstr "Aktuális oszlop törlése"
-
-#~ msgid "Row"
-#~ msgstr "Sor"
-
-#~ msgid "Append row (below)"
-#~ msgstr "Sor hozzáadása (alá)"
-
-#~ msgid "Table Of Contents"
-#~ msgstr "Tartalomjegyzék"
-
-#~ msgid "Version control log"
-#~ msgstr "Verziókövetõ napló"
-
-#~ msgid "Wrap Options"
-#~ msgstr "Körbefuttatás beállításai"
-
-#~ msgid "Abstract "
-#~ msgstr "Kivonat"
-
-#~ msgid "SubSection"
-#~ msgstr "Alszakasz"
-
-#~ msgid "End All Slides"
-#~ msgstr "Fóliák vége"
-
-#~ msgid "TheoremStyle"
-#~ msgstr "Tétel stílus"
-
-#~ msgid " Keywords"
-#~ msgstr " Kulcsszavak"
-
-#~ msgid "French (GUTenberg)"
-#~ msgstr "Francia (GUTenberg)"
-
-#, fuzzy
-#~ msgid "Lsorbian"
-#~ msgstr "Lsorbian"
-
-#, fuzzy
-#~ msgid "Usorbian"
-#~ msgstr "Usorbian"
-
-#~ msgid "Remove All Error Boxes|E"
-#~ msgstr "Hibajelölõk eltüntetése|l"
-
-#~ msgid "Open/Close float|l"
-#~ msgstr "Betétet nyit/zár|e"
-
-#~ msgid "V.Align Center|n"
-#~ msgstr "Függõleges igazítás középre|r"
-
-#~ msgid "V.Align Bottom|V"
-#~ msgstr "Függõleges igazítás le|e"
-
-#~ msgid "Align Left|L"
-#~ msgstr "Balra igazít|l"
-
-#~ msgid "Align Right|R"
-#~ msgstr "Jobbra igazít|r"
-
-#~ msgid "V.Align Top|T"
-#~ msgstr "Függõleges igazítás fel|t"
-
-#~ msgid "V.Align Center|e"
-#~ msgstr "Függõleges igazítás középre|e"
-
-#~ msgid "HFill|H"
-#~ msgstr "Vízszintes kitöltõ|k"
-
-#~ msgid "Preamble...|r"
-#~ msgstr "Preambulum ...|P"
-
-#~ msgid "LaTeX Logfile|L"
-#~ msgstr "LaTeX naplófájl|L"
-
-#~ msgid "Error|E"
-#~ msgstr "Hiba|H"
-
-#~ msgid "Refs|R"
-#~ msgstr "Hivatkozások|v"
-
-#~ msgid "Error!"
-#~ msgstr "Hiba!"
-
-#~ msgid "Specified file is unreadable: "
-#~ msgstr "A megadott fájl olvashatatlan: "
-
-#~ msgid "Error! Cannot open specified file:"
-#~ msgstr "Hiba! A megadott fájl nem nyitható meg:"
-
-#~ msgid "Paragraph environment type copied"
-#~ msgstr "Bekezdéstípus másolva"
-
-#~ msgid "Paragraph environment type set"
-#~ msgstr "Bekezdéstípus beállítva"
-
-#~ msgid "Saved bookmark "
-#~ msgstr "Mentett könyvjelzõ: "
-
-#~ msgid "Moved to bookmark "
-#~ msgstr "Ugrás könyvjelzõre: "
-
-#~ msgid "..."
-#~ msgstr "..."
-
-#~ msgid " inserted."
-#~ msgstr " beszúrása megtörtént."
-
-#~ msgid "Could not insert document "
-#~ msgstr "Nem tudom beszúrni a dokumentumot"
-
-#~ msgid "Couldn't find this label"
-#~ msgstr "Ezt a címkét nem találom"
-
-#~ msgid "in current document."
-#~ msgstr "az aktuális dokumentumban."
-
-#~ msgid "Unknown function!"
-#~ msgstr "Ismeretlen funkció!"
-
-#~ msgid "Layout had to be changed from\n"
-#~ msgstr "A formátum meg fog változni errõl:\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "because of class conversion from\n"
-#~ msgstr ""
-#~ "\n"
-#~ "mert osztálykonverzió történt errõl:\n"
-
-#~ msgid "math cursor"
-#~ msgstr "képlet kurzora"
-
-#~ msgid "LaTeX run number "
-#~ msgstr "LaTeX futtatási szám "
-
-#~ msgid "Insert appendix"
-#~ msgstr "Függelék beszúrása"
-
-#~ msgid "Describe command"
-#~ msgstr "Parancs leírása"
-
-#~ msgid "Autosave"
-#~ msgstr "Automatikus mentés"
-
-#~ msgid "Go to beginning of document"
-#~ msgstr "Menj a dokumentum elejére"
-
-#~ msgid "Select to beginning of document"
-#~ msgstr "Kijelölés a dokumentum elejéig"
-
-#~ msgid "Export to"
-#~ msgstr "Exportálás"
-
-#~ msgid "New document from template"
-#~ msgstr "Új dokumentum sablon alapján"
-
-#~ msgid "Toggle read-only"
-#~ msgstr "Írásvédett váltása"
-
-#~ msgid "View"
-#~ msgstr "Nézet"
-
-#~ msgid "Save As"
-#~ msgstr "Mentés másként"
-
-#~ msgid "Go one char back"
-#~ msgstr "Menj egy betûvel vissza"
-
-#~ msgid "Go one char forward"
-#~ msgstr "Menj egy betûvel tovább"
-
-#~ msgid "Execute command"
-#~ msgstr "Parancs végrehajtása"
-
-#~ msgid "Decrement environment depth"
-#~ msgstr "Környezeti mélység csökkentése"
-
-#~ msgid "Increment environment depth"
-#~ msgstr "Környezeti mélység növelése"
-
-#~ msgid "Insert ... dots"
-#~ msgstr "Hármaspont ... beszúrása"
-
-#~ msgid "Go down"
-#~ msgstr "Menj le"
-
-#~ msgid "Choose Paragraph Environment"
-#~ msgstr "Válassza ki a bekezdés formátumát"
-
-#~ msgid "Insert end of sentence period"
-#~ msgstr "Mondatvége beszúrása"
-
-#~ msgid "Remove all error boxes"
-#~ msgstr "Összes hibajelölõ eltüntetése"
-
-#~ msgid "Insert a new ERT Inset"
-#~ msgstr "Új ERT betét beszúrása"
-
-#~ msgid "Insert a new external inset"
-#~ msgstr "Új külsõ betét beszúrása"
-
-#~ msgid "Insert ASCII files as lines"
-#~ msgstr "ASCII fájlok beszúrása sorokként"
-
-#~ msgid "Insert ASCII file as a paragraph"
-#~ msgstr "ASCII fájl beszúrása bekezdésként"
-
-#~ msgid "Find & Replace"
-#~ msgstr "Keres és cserél"
-
-#~ msgid "Insert a Wrap"
-#~ msgstr "Körbefuttatás beszúrása"
-
-#~ msgid "Toggle bold"
-#~ msgstr "Félkövér váltása"
-
-#~ msgid "Toggle code style"
-#~ msgstr "Kód stílus váltása"
-
-#~ msgid "Default font style"
-#~ msgstr "Alap betûtípus"
-
-#~ msgid "Toggle user defined style"
-#~ msgstr "Felhasználói stílus váltása"
-
-#~ msgid "Toggle roman font style"
-#~ msgstr "Roman betûtípus váltása"
-
-#~ msgid "Toggle sans font style"
-#~ msgstr "Sans betûtípus váltása"
-
-#~ msgid "Toggle fraktur font style"
-#~ msgstr "Fraktúr betûtípus váltása"
-
-#~ msgid "Toggle italic font style"
-#~ msgstr "Dõlt betûtípus váltása"
-
-#~ msgid "Set font size"
-#~ msgstr "Betûméret beállítása"
-
-#~ msgid "Show font state"
-#~ msgstr "Mutasd a betûkészlet állapotát"
-
-#~ msgid "Toggle font underline"
-#~ msgstr "Aláhúzás váltása"
-
-#~ msgid "Select next char"
-#~ msgstr "Következõ betû kijelölése"
-
-#~ msgid "Open a Help file"
-#~ msgstr "Súgófájl megnyitása"
-
-#~ msgid "Insert hyphenation point"
-#~ msgstr "Szóelválasztási pont beszúrása"
-
-#~ msgid "Insert index list"
-#~ msgstr "Tárgymutató beszúrása"
-
-#~ msgid "Turn off keymap"
-#~ msgstr "Egyedi billentyûkiosztás kikapcsolása"
-
-#~ msgid "Use primary keymap"
-#~ msgstr "Elsõdleges billentyûkiosztás használata"
-
-#~ msgid "Use secondary keymap"
-#~ msgstr "Másodlagos billentyûkiosztás használata"
-
-#~ msgid "Toggle keymap"
-#~ msgstr "Billentyûkiosztás váltása"
-
-#~ msgid "Insert Optional Argument"
-#~ msgstr "Opcionális paraméter beszúrása"
-
-#~ msgid "View LaTeX log"
-#~ msgstr "LaTeX napló megjelenítése"
-
-#~ msgid "Copy paragraph environment type"
-#~ msgstr "Bekezdés formátumának másolása"
-
-#~ msgid "Paste paragraph environment type"
-#~ msgstr "Bekezdés formátumának beillesztése"
-
-#~ msgid "Open the tabular layout"
-#~ msgstr "Táblázattervezõ megnyitása"
-
-#~ msgid "Go to beginning of line"
-#~ msgstr "Menj a sor elejére"
-
-#~ msgid "Select to beginning of line"
-#~ msgstr "Kijelölés a sor elejéig"
-
-#~ msgid "Go to end of line"
-#~ msgstr "Menj a sor végére"
-
-#~ msgid "Select to end of line"
-#~ msgstr "Kijelölés a sor végéig"
-
-#~ msgid "Exit"
-#~ msgstr "Kilépés"
-
-#~ msgid "Math Greek"
-#~ msgstr "Képlet görög"
-
-#~ msgid "Insert math symbol"
-#~ msgstr "Képlet szimbólum beszúrása"
-
-#~ msgid "Add subscript"
-#~ msgstr "Alsó index hozzáadása"
-
-#~ msgid "Add superscript"
-#~ msgstr "Felsõ index hozzáadása"
-
-#~ msgid "Math mode"
-#~ msgstr "Képletszerkesztõ mód"
-
-#~ msgid "toggle inset"
-#~ msgstr "betét váltása"
-
-#~ msgid "Go one paragraph down"
-#~ msgstr "Menj egy bekezdéssel le"
-
-#~ msgid "Go to paragraph"
-#~ msgstr "Menj a bekezdéshez"
-
-#~ msgid "Go one paragraph up"
-#~ msgstr "Menj egy bekezdéssel fel"
-
-#~ msgid "Select previous paragraph"
-#~ msgstr "Elõzõ bekezdés kijelölése"
-
-#~ msgid "Insert protected space"
-#~ msgstr "Védett szóköz beszúrása"
-
-#~ msgid "Reconfigure"
-#~ msgstr "Újrakonfigurálás"
-
-#~ msgid "Scroll inset"
-#~ msgstr "Betét görgetése"
-
-#~ msgid "Open thesaurus"
-#~ msgstr "Szótár megnyitása"
-
-#~ msgid "View table of contents"
-#~ msgstr "Tartalomjegyzék megjelenítése"
-
-#~ msgid "Toggle cursor does/doesn't follow the scrollbar"
-#~ msgstr "A kurzor görgetõsáv-követésének váltása"
-
-#~ msgid "Register document under version control"
-#~ msgstr "A dokumentum regisztrálása verziókövetõbe"
-
-#~ msgid "Show message in minibuffer"
-#~ msgstr "Minitároló tartalmának megjelenítése"
-
-#~ msgid "Display information about LyX"
-#~ msgstr "Információ megjelenítése a LyX-rõl"
-
-#~ msgid "Display information about the TeX installation"
-#~ msgstr "Információ megjelenítése a TeX telepítésrõl"
-
-#~ msgid "No description available!"
-#~ msgstr "Leírás nem érhetõ el!"
-
-#~ msgid "New...|N"
-#~ msgstr "Új ...|j"
-
-#~ msgid "Quit|Q"
-#~ msgstr "Kilépés|K"
-
-#~ msgid "LaTeX...|L"
-#~ msgstr "LaTeX ...|L"
-
-#~ msgid "LinuxDoc...|L"
-#~ msgstr "LinuxDoc ...|L"
-
-#~ msgid "Emphasize"
-#~ msgstr "Kiemelés"
-
-#~ msgid "Textclass Loading Error!"
-#~ msgstr "Szövegosztály betöltési hiba!"
-
-#~ msgid "When reading %1$s"
-#~ msgstr "Beolvasás közben: %1$s,"
-
-#~ msgid "When reading "
-#~ msgstr "Beolvasás közben: "
-
-#~ msgid "Encountered "
-#~ msgstr "találtam"
-
-#~ msgid "one unknown token"
-#~ msgstr "egy ismeretlen szimbólumot"
-
-#~ msgid "Textclass error"
-#~ msgstr "Szövegosztály hiba"
-
-#~ msgid "-- substituting default."
-#~ msgstr "-- alapérték helyettesítése."
-
-#~ msgid "The document uses an unknown textclass "
-#~ msgstr "A dokumentum egy ismeretlen szövegosztályt használ"
-
-#~ msgid "Can't load textclass %1$s"
-#~ msgstr "Szövegosztály nem tölthetõ be: %1$s"
-
-#~ msgid "The document uses a missing TeX class "
-#~ msgstr "A dokumentum egy hiányzó TeX osztályt használ "
-
-#~ msgid "ERROR!"
-#~ msgstr "HIBA!"
-
-#~ msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
-#~ msgstr ""
-#~ "Régi LyX fájlformátumot találtam. Használja a LyX 0.10.x-et, a "
-#~ "beolvasáshoz!"
-
-#~ msgid "Reading of document is not complete"
-#~ msgstr "A dokumentum olvasása nem fejezõdött be"
-
-#~ msgid "Maybe the document is truncated"
-#~ msgstr "Lehet, hogy megsérült"
-
-#~ msgid "Not a LyX file!"
-#~ msgstr "Nem LyX fájl!"
-
-#~ msgid "Unable to read file!"
-#~ msgstr "Nem tudom olvasni a fájlt!"
-
-#~ msgid "Error: Cannot write file:"
-#~ msgstr "Hiba: A fájl nem írható:"
-
-#~ msgid "Error: Cannot open file: "
-#~ msgstr "Hiba: Nem tudom megnyitni a fájlt: "
-
-#~ msgid "LYX_ERROR:"
-#~ msgstr "LYX_HIBA:"
-
-#~ msgid "chktex did not work!"
-#~ msgstr "chktex nem mûködött!"
-
-#~ msgid "Changes in document:"
-#~ msgstr "A dokumentum megváltozott:"
-
-#~ msgid "LyX: Attempting to save document "
-#~ msgstr "LyX: Megpróbálja menteni a dokumentumot: "
-
-#~ msgid "Try to load that instead?"
-#~ msgstr "Azt próbáljam meg betölteni?"
-
-#~ msgid "Autosave file is newer."
-#~ msgstr "Automatikusan mentett fájl újabb."
-
-#~ msgid "Load that one instead?"
-#~ msgstr "Azt töltsem be inkább?"
-
-#~ msgid "Unable to open template"
-#~ msgstr "Sablon nem nyitható meg"
-
-#~ msgid "Document is already open:"
-#~ msgstr "A dokumentum már meg van nyitva:"
-
-#~ msgid "Do you want to reload that document?"
-#~ msgstr "Újra betöltsem a dokumentumot?"
-
-#~ msgid "Cannot open specified file:"
-#~ msgstr "A megadott fájl nem nyitható meg:"
-
-#~ msgid "Error! unknown language"
-#~ msgstr "Hiba! Ismeretlen nyelv"
-
-#~ msgid "No information for viewing "
-#~ msgstr "Nincs információ a fájl nézetéhez "
-
-#~ msgid "Error while executing"
-#~ msgstr "Hiba végrehajtás közben"
-
-#~ msgid "You should try to fix them."
-#~ msgstr "Ki kell javítania õket."
-
-#~ msgid "Error while trying to move directory:"
-#~ msgstr "Hiba a könyvtár mozgatása során:"
-
-#~ msgid "to %1$s"
-#~ msgstr "forrás %1$s"
-
-#~ msgid "to "
-#~ msgstr "cél "
-
-#~ msgid "Error while trying to move file:"
-#~ msgstr "Hiba a fájl áthelyezése közben:"
-
-#~ msgid "One error detected"
-#~ msgstr "Egy hibát találtam"
-
-#~ msgid "You should try to fix it."
-#~ msgstr "Ki kell javítania."
-
-#~ msgid " errors detected."
-#~ msgstr " hibát találtam."
-
-#~ msgid "There were errors during running of %1$s"
-#~ msgstr "Hiba lépett fel %1$s futtatása során"
-
-#~ msgid "There were errors during running of "
-#~ msgstr "Hiba lépett fel a következõ futtatása során: "
-
-#~ msgid "The operation resulted in"
-#~ msgstr "A mûvelet eredménye"
-
-#~ msgid "an empty file."
-#~ msgstr "egy üres fájl."
-
-#~ msgid "LaTeX did not work!"
-#~ msgstr "A LaTeX nem mûködött!"
-
-#~ msgid "Missing log file:"
-#~ msgstr "Hiányzó naplófájl:"
-
-#~ msgid "There were errors during the LaTeX run."
-#~ msgstr "Hibák történtek LaTeX futtatása közben."
-
-#~ msgid "Debugging `"
-#~ msgstr "Nyomkövetés `"
-
-#~ msgid "No information for exporting to "
-#~ msgstr "Nincs információ az exportáláshoz erre:"
-
-#~ msgid "Cannot run LaTeX."
-#~ msgstr "A LaTeX nem futtatható."
-
-#~ msgid " to file `"
-#~ msgstr "fájlba: `"
-
-#~ msgid "Document settings applied"
-#~ msgstr "A dokumentumbeállításokat alkalmaztam"
-
-#~ msgid "One paragraph couldn't be converted"
-#~ msgstr "Egy bekezdés nem alakítható át"
-
-#~ msgid "Conversion Errors!"
-#~ msgstr "Átalakítási hibák!"
-
-#~ msgid "Errors loading new document class."
-#~ msgstr "Új dokumentumosztály nem tölthetõ be."
-
-#~ msgid "Reverting to original document class."
-#~ msgstr "Visszatérés az eredeti dokumentumosztályhoz."
-
-#~ msgid "Do you want to save the current settings"
-#~ msgstr "El akarja menteni az aktuális dokumentum"
-
-#~ msgid "for the document layout as default?"
-#~ msgstr "formátum beállításait alapértékként?"
-
-#~ msgid "(they will be valid for any new document)"
-#~ msgstr "(minden új dokumentumra hatása lesz)"
-
-#~ msgid "Center baseline"
-#~ msgstr "Középsõ alapvonal"
-
-#~ msgid "Right baseline"
-#~ msgstr "Jobb alapvonal"
-
-#~ msgid "LaTeX preamble set"
-#~ msgstr "LaTeX preambulum beállítása"
-
-#~ msgid "Sys UI|#S#s"
-#~ msgstr "Rendsz UI|#S#s"
-
-#~ msgid "User UI|#U#u"
-#~ msgstr "Felh UI|#U#u"
-
-#~ msgid "Key maps|#K#k"
-#~ msgstr "Kiosztások|#O#o"
-
-#~ msgid "Unable to print"
-#~ msgstr "Nem tudok nyomtatni"
-
-#~ msgid "Check that your parameters are correct"
-#~ msgstr "Ellenõrizze paraméterei helyességét"
-
-#~ msgid " et al."
-#~ msgstr " összesen."
-
-#~ msgid "Invalid directory name"
-#~ msgstr "Érvénytelen könyvtárnév"
-
-#~ msgid "LaTeX log"
-#~ msgstr "LaTeX napló"
-
-#~ msgid "Preamble"
-#~ msgstr "Preambulum"
-
-#~ msgid "Papersize and Orientation"
-#~ msgstr "Papírméret és elrendezés"
-
-#~ msgid "Language Settings and Quote Style"
-#~ msgstr "Nyelv és idézõjel beállítás"
-
-#~ msgid "Bullet Types"
-#~ msgstr "Felsorolásjel típusok"
-
-#~ msgid "Small margins"
-#~ msgstr "Kis margók"
-
-#~ msgid "Very small margins"
-#~ msgstr "Nagyon kis margók"
-
-#~ msgid "Very wide margins"
-#~ msgstr "Nagyon széles margók"
-
-#~ msgid "LaTeX ERT"
-#~ msgstr "LaTeX ERT"
-
-#~ msgid "External"
-#~ msgstr "Külsõ"
-
-#~ msgid "LyX: Insert space"
-#~ msgstr "LyX: Köz beszúrás"
-
-#~ msgid "LyX: Insert root"
-#~ msgstr "LyX: gyökjel beszúrása"
-
-#~ msgid "ASCII"
-#~ msgstr "ASCII"
-
-#~ msgid "New"
-#~ msgstr "Új"
-
-#~ msgid "LyX: Edit Table"
-#~ msgstr "LyX: táblázat szerkesztése"
-
-#~ msgid "LaTeX Information"
-#~ msgstr "LaTeX Információ"
-
-#~ msgid "Version control log for %1$s"
-#~ msgstr "Verziókövetés naplója ehhez: %1$s"
-
-#~ msgid "Version control log for "
-#~ msgstr "Verziókövetés naplója ehhez: "
-
-#~ msgid "Choose one of the units or relative lengths"
-#~ msgstr "Válasszon egy mértéket vagy relatív hosszt"
-
-#~ msgid "Dismiss"
-#~ msgstr "Mégse"
-
-#~ msgid "Yes|Yy#y"
-#~ msgstr "Igen|Ii#i"
-
-#~ msgid "No|Nn#n"
-#~ msgstr "Nem|Nn#n"
-
-#~ msgid " for "
-#~ msgstr " egy Ismeretlen X11 szín, ehhez: "
-
-#~ msgid ""
-#~ "\n"
-#~ "     Using black instead, sorry!"
-#~ msgstr ""
-#~ "\n"
-#~ "     Feketét használok helyette, sajnálom!"
-
-#~ msgid "LyX: X11 color "
-#~ msgstr "LyX: X11 szín "
-
-#~ msgid " allocated for "
-#~ msgstr " foglalás "
-
-#~ msgid "LyX: Using approximated X11 color %1$s allocated for %2$s"
-#~ msgstr "LyX: Hasonló X11 szín használata %1$s foglalása ehhez: %2$s"
-
-#~ msgid "LyX: Using approximated X11 color "
-#~ msgstr "LyX: Hasonló X11 szín használata "
-
-#~ msgid ""
-#~ "LyX: Couldn't allocate '%1$s' for %2$s with (r,g,b)=(%3$d,%4$d,%5$d).\n"
-#~ "     Using closest allocated color with (r,g,b)=(%6$d,%7$d,%8$d) "
-#~ "instead.\n"
-#~ "Pixel [%9$d] is used."
-#~ msgstr ""
-#~ "LyX: Nem tudom lefoglalni a '%1$s'-t ehhez: %2$s (r,g,b)=(%3$d,%4$d,%5"
-#~ "$d).\n"
-#~ "     Helyette lefoglaltam a legközelebbi színt (r,g,b)=(%6$d,%7$d,%8$d).\n"
-#~ "Képpont [%9$d]-t használok."
-
-#~ msgid "' for "
-#~ msgstr "'-t ehhez: "
-
-#~ msgid " with (r,g,b)=("
-#~ msgstr " (r,g,b)=("
-
-#~ msgid ").\n"
-#~ msgstr ").\n"
-
-#~ msgid ""
-#~ ") instead.\n"
-#~ "Pixel ["
-#~ msgstr ""
-#~ ").\n"
-#~ "Képpont ["
-
-#~ msgid "] is used."
-#~ msgstr "]-t használok."
-
-#~ msgid "WARNING!"
-#~ msgstr "FIGYELEM!"
-
-#~ msgid "Document Layout"
-#~ msgstr "Dokumentum beállítások"
-
-#~ msgid " None | Small Margins | Very small Margins | Very wide Margins "
-#~ msgstr " Nincs | Kis margók | Nagyon kis margók | Nagyon széles margók "
-
-#~ msgid " Author-year | Numerical "
-#~ msgstr "Szerzõ-év | Numerikus"
-
-#~ msgid "Edit external file"
-#~ msgstr "Külsõ fájl szerkesztése"
-
-#~ msgid "Scale%%|"
-#~ msgstr "Scale%%|"
-
-#~ msgid "LyX: LaTeX Log"
-#~ msgstr "LyX: LaTeX napló"
-
-#~ msgid "Minipage Options"
-#~ msgstr "Minilap opciók"
-
-#~ msgid "Add a separator line above this paragraph."
-#~ msgstr "Elválasztó vonal beszúrása bekezdés elé."
-
-#~ msgid "Enforce a page break above this paragraph."
-#~ msgstr "Laptörés eröltetése a bekezdés elõtt."
-
-#~ msgid "Add additional space above this paragraph."
-#~ msgstr "További kihagyás beszúrása bekezdés elé."
-
-#~ msgid "Never suppress space (e.g. at top of page or new page)."
-#~ msgstr "Mindig használja a kihagyást (pl. az oldal tetején is)."
-
-#~ msgid "Add a separator line below this paragraph."
-#~ msgstr "Elválasztó vonal beszúrása bekezdés után."
-
-#~ msgid "Enforce a page break below this paragraph."
-#~ msgstr "Laptörés eröltetése a bekezdés után."
-
-#~ msgid "Add additional space below this paragraph."
-#~ msgstr "További kihagyás beszúrása bekezdés után."
-
-#~ msgid "Never suppress space (e.g. at bottom of page or new page)."
-#~ msgstr "Mindig használja a kihagyást (pl. az oldal alján is)."
-
-#~ msgid "Find a new color."
-#~ msgstr "Új szín választása."
-
-#~ msgid "Toggle between RGB and HSV color spaces."
-#~ msgstr "Választás az RGB és HSV színtér között."
-
-#~ msgid "Shows word count and progress on spell check."
-#~ msgstr "Mutatja az ellenõrzöt szavak számát és az ellenõrzés folyamatát."
-
-#~ msgid "Edit table settings"
-#~ msgstr "Táblázat beállítások szerkesztése"
-
-#~ msgid "Tabular"
-#~ msgstr "Táblázat"
-
-#~ msgid "Insert Tabular"
-#~ msgstr "Táblázat beszúrása"
-
-#~ msgid "Done"
-#~ msgstr "Kész"
-
-#~ msgid "ERROR! Unable to print!"
-#~ msgstr "HIBA! Nem tudok nyomtatni!"
-
-#~ msgid "Check `range of pages'!"
-#~ msgstr "Lap-tartomány ellenörzése!"
-
-#~ msgid "Importing "
-#~ msgstr "Importálás "
-
-#~ msgid "No information for importing from "
-#~ msgstr "Nincs információ az impotáláshoz innen: "
-
-#~ msgid "LyX Warning!"
-#~ msgstr "LyX figyelmeztetés!"
-
-#~ msgid "BibTeX will be unable to find them."
-#~ msgstr "BibTeX nem találja õket."
-
-#~ msgid "Opened error"
-#~ msgstr "Hibajelölõ kinyitva"
-
-#~ msgid "Impossible operation!"
-#~ msgstr "Lehetetlen mûvelet!"
-
-#~ msgid "Not permitted to change font-types inside ERT-insets!"
-#~ msgstr "ERT betétekben nem lehet betûtípust váltani!"
-
-#~ msgid "Sorry."
-#~ msgstr "Sajnálom."
-
-#~ msgid "float:"
-#~ msgstr "úsztatás:"
-
-#~ msgid "into tempdir"
-#~ msgstr "ideiglenes könyvtárba"
-
-#~ msgid "Cannot convert Image (not existing file?)"
-#~ msgstr "A kép nem alakítható át (a fájl nem létezik?)"
-
-#~ msgid "No information for converting from "
-#~ msgstr "Nincs információ a fájl átalakításra "
-
-#~ msgid "Graphics file: "
-#~ msgstr "Képfájl: "
-
-#~ msgid "Enter label:"
-#~ msgstr "Adja meg a címkét:"
-
-#~ msgid "list"
-#~ msgstr "lista"
-
-#~ msgid "Opened List Inset"
-#~ msgstr "Felsorolásbetét kinyitva"
-
-#~ msgid "minipage"
-#~ msgstr "minilap"
-
-#~ msgid "Opened Minipage Inset"
-#~ msgstr "Minilapbetét kinyitva"
-
-#~ msgid "Parent: %s"
-#~ msgstr "Szülõ: %s"
-
-#~ msgid "Parent: "
-#~ msgstr "Szülõ: "
-
-#~ msgid "Opened Tabular Inset"
-#~ msgstr "Táblázatbetét kinyitva"
-
-#~ msgid "Multicolumns can only be horizontally."
-#~ msgstr "Cellát egyesíteni csak vízszintesen lehet."
-
-#~ msgid "Cannot include more than one paragraph!"
-#~ msgstr "Nem tudok csatolni egynél több bekezdést!"
-
-#~ msgid "Error: LatexType Command not allowed here.\n"
-#~ msgstr "Hiba: A LaTexType parancs itt nem használható.\n"
-
-#~ msgid "Save failed. Rename and try again?"
-#~ msgstr "Sikertelen mentés. Átnevezi és megpróbálja újra?"
-
-#~ msgid "(If not, document is not saved.)"
-#~ msgstr "(Nem esetén a dokumentum nem lesz mentve.)"
-
-#~ msgid "Same name as document already has:"
-#~ msgstr "Azonos nevû dokumentum már létezik:"
-
-#~ msgid "Save anyway?"
-#~ msgstr "Mindenképpen mentsem?"
-
-#~ msgid "Another document with same name open!"
-#~ msgstr "Azonos nevû, másik dokumentum is nyitva van!"
-
-#~ msgid "Replace with current document?"
-#~ msgstr "Kicseréljem az aktuális dokumentummal?"
-
-#~ msgid "', but not saved..."
-#~ msgstr "', de nem mentettem ..."
-
-#~ msgid "Document already exists:"
-#~ msgstr "A dokumentum már létezik:"
-
-#~ msgid "Replace file?"
-#~ msgstr "Kicseréljem a fájlt?"
-
-#~ msgid "Holding the old name."
-#~ msgstr "Régi név megtartása."
-
-#~ msgid "Chktex does not work with SGML derived documents."
-#~ msgstr "A chktex nem mûködik SGML eredetû dokumentumokon."
-
-#~ msgid "One warning found."
-#~ msgstr "Egy figyelmeztetés."
-
-#~ msgid "Use `Navigate->Error' to find it."
-#~ msgstr "Használja a `Navigáció->Hiba'-t, hogy megtalálja."
-
-#~ msgid " warnings found."
-#~ msgstr " figyelmeztetés történt."
-
-#~ msgid "Use `Navigate->Error' to find them."
-#~ msgstr "Használja a `Navigáció->Hiba'-t, hogy megtalálja ezeket."
-
-#~ msgid "It seems chktex does not work."
-#~ msgstr "Úgy tûnik, a chktex nem mûködik."
-
-#~ msgid "Auto-saving "
-#~ msgstr "Automatikus mentés"
-
-#~ msgid "Error! Specified file is unreadable: "
-#~ msgstr "Hiba! A megadott fájl olvashatatlan:"
-
-#~ msgid "Enter new label to insert:"
-#~ msgstr "Adja meg a beszúrandó címkét:"
-
-#~ msgid "You need to restart LyX to make use of any"
-#~ msgstr "Újra kell indítania a LyX-et ahhoz, hogy használhassa"
-
-#~ msgid "Wrong command line option `"
-#~ msgstr "Hibás parancssori kapcsoló `"
-
-#~ msgid "'. Exiting."
-#~ msgstr "'. Kilépek."
-
-#~ msgid ""
-#~ ". Make sure that this\n"
-#~ "path exists and is writable and try again."
-#~ msgstr ""
-#~ " Ellenõrizze a létezését\n"
-#~ "és próbálja újra."
-
-#~ msgid "It is needed to keep your own configuration."
-#~ msgstr "Fontos, hogy megtartsa a saját beállítását."
-
-#~ msgid "Should I try to set it up for you? I'll exit if \"No\"."
-#~ msgstr "Megpróbálhatom beállítani? \"Nem\" esetén kilépek."
-
-#~ msgid "Error while reading %1$s."
-#~ msgstr "Hiba olvasás közben: %1$s."
-
-#~ msgid "Using built-in defaults."
-#~ msgstr "A beépített alapértékek használata."
-
-#~ msgid "Setting debug level to "
-#~ msgstr "Nyomkövetési szint beállítása: "
-
-#~ msgid "Sorry!"
-#~ msgstr "Sajnálom!"
-
-#~ msgid "You cannot replace a single space, nor an empty character."
-#~ msgstr "Nem tudja kicserélni a szimpla szóközt, sem az üres betût."
-
-#~ msgid "Emphasis "
-#~ msgstr "Kiemelés "
-
-#~ msgid "Underline "
-#~ msgstr "Aláhúzás"
-
-#~ msgid "Noun "
-#~ msgstr "Kapitális "
-
-#~ msgid "Language: "
-#~ msgstr "Nyelv:"
-
-#~ msgid "Unknown function (%1$s)"
-#~ msgstr "Ismeretlen funkció (%1$s)"
-
-#~ msgid "Unknown function ("
-#~ msgstr "Ismeretlen funkció ("
-
-#~ msgid "Saving document "
-#~ msgstr "Dokumentum mentése: "
-
-#~ msgid "Opening help file "
-#~ msgstr "Súgófájl megnyitása "
-
-#~ msgid "This is only allowed in math mode!"
-#~ msgstr "Ez képletszerkesztõben nem lehetséges!"
-
-#~ msgid "Set-color "
-#~ msgstr "Set-color "
-
-#~ msgid " failed - color is undefined or may not be redefined"
-#~ msgstr ""
-#~ " sikertelen - a szín nincs meghatározva vagy nem lehet újradefiniálni"
-
-#~ msgid "No such file"
-#~ msgstr "Nincs meg a fájl"
-
-#~ msgid "Start a new document with this filename ?"
-#~ msgstr "Készítsen egy új dokumentumot ezen a néven?"
-
-#~ msgid " opened."
-#~ msgstr " megnyitva."
-
-#~ msgid " file to import"
-#~ msgstr " fájlt az importáláshoz"
-
-#~ msgid ""
-#~ "Do you want to close that document now?\n"
-#~ "('No' will just switch to the open version)"
-#~ msgstr ""
-#~ "Be akarja most zárni azt a dokumentumot?\n"
-#~ "(\"Nem\" vissza fog váltani a nyitott változathoz)"
-
-#~ msgid "A document by the name"
-#~ msgstr "Azonos nevû dokumentum "
-
-#~ msgid "already exists. Overwrite?"
-#~ msgstr "már létezik. Felülírjam?"
-
-#~ msgid ""
-#~ "Select if you wish to use a temporary directory structure to store "
-#~ "temporary TeX output."
-#~ msgstr ""
-#~ "Válassza ki, ha használni szeretne ideigleneskönyvtár-hierarchiát a TeX "
-#~ "kimenet tárolásához."
-
-#~ msgid "LyX wasn't able to find its layout descriptions!"
-#~ msgstr "A LyX nem találta meg a külalak leírókat!"
-
-#~ msgid "Check that the file \"textclass.lst\""
-#~ msgstr "Ellenõrizze, hogy a \"textclass.lst\" fájl"
-
-#~ msgid "is installed correctly. Sorry, has to exit :-("
-#~ msgstr "telepítése megtörtént. Sajnos, most ki kell lépnem :-("
-
-#~ msgid "LyX wasn't able to find any layout description!"
-#~ msgstr "A LyX nem talált semmilyen külalak leírót!"
-
-#~ msgid "Check the contents of the file \"textclass.lst\""
-#~ msgstr "Ellenõrizze a \"textclass.lst\" fájl tartalmát"
-
-#~ msgid "Sorry, has to exit :-("
-#~ msgstr "Sajnálom, most ki kell lépnem :-("
-
-#~ msgid "File not saved"
-#~ msgstr "A fájl nincs mentve"
-
-#~ msgid "You must save the file"
-#~ msgstr "El kell mentenie a fájlt"
-
-#~ msgid "Save document and proceed?"
-#~ msgstr "Mentsem a dokumentumot és folytassam?"
-
-#~ msgid "This document has NOT been registered."
-#~ msgstr "A dokumentum NEM lett regisztrálva."
-
-#~ msgid "Ignore changes and proceed with check out?"
-#~ msgstr ""
-#~ "Hagyja figyelmen kívül a változásokat és folytassam a kitárolást (check-"
-#~ "out)?"
-
-#~ msgid "When you revert, you will loose all changes made"
-#~ msgstr ""
-#~ "Amikor visszatér (egy korábbi verzióhoz), el fogja veszíteni a utolsó "
-
-#~ msgid "to the document since the last check in."
-#~ msgstr "betárolás utáni módosításokat az aktuális dokumentumban."
-
-#~ msgid "Do you still want to do it?"
-#~ msgstr "Biztos meg akarja csinálni?"
-
-#~ msgid "Invalid action in math mode!"
-#~ msgstr "Érvénytelen mûvelet képletszerkesztõ módban!"
-
-#~ msgid " Macro: "
-#~ msgstr " Makró: "
-
-#~ msgid "Error! Cannot open directory:"
-#~ msgstr "Hiba! A könyvtár nem elérhetõ:"
-
-#~ msgid "Error! Could not remove file:"
-#~ msgstr "Hiba! A fájl nem törölhetõ:"
-
-#~ msgid "Error! Couldn't create temporary directory:"
-#~ msgstr "Hiba! Az ideiglenes könyvtár nem hozható létre:"
-
-#~ msgid "Error! Couldn't delete temporary directory:"
-#~ msgstr "Hiba! Az ideiglenes könyvtár nem törölhetõ:"
-
-#~ msgid "Internal error!"
-#~ msgstr "Belsõ hiba!"
-
-#~ msgid "Call to createDirectory with invalid name"
-#~ msgstr "A createDirectory hívása érvénytelen névvel"
-
-#~ msgid "Error! Couldn't create directory:"
-#~ msgstr "Hiba! A könyvtár létrehozása sikertelen:"
-
-#~ msgid "Could not delete auto-save file!"
-#~ msgstr "Az automatikusan mentett fájl nem törölhetõ!"
-
-#~ msgid ""
-#~ "Unable to determine the path to the LyX binary from the command line "
-#~ msgstr ""
-#~ "Nem tudom meghatározni az elérési útvonalat a LyX programhoz a "
-#~ "parancssorból: "
-
-#~ msgid "Unable to determine the system directory having searched\n"
-#~ msgstr "Nem tudom meghatározni a rendszerkönyvtárat, kerestem a \n"
-
-#~ msgid ""
-#~ "Try the '-sysdir' command line parameter or set the environment variable "
-#~ "LYX_DIR_13x to the LyX system directory containing the file `chkconfig."
-#~ "ltx'."
-#~ msgstr ""
-#~ "Próbálja a '-sysdir' parancssori paramétert vagy készítsen egy környezeti "
-#~ "változót LYX_DIR_13x néven a LyX rendszer könyvtárhoz, ahol a  `chkconfig."
-#~ "ltx' fájl van."
-
-#~ msgid "Invalid "
-#~ msgstr "Érvénytelen "
-
-#~ msgid "Directory "
-#~ msgstr "Könyvtár "
-
-#~ msgid " does not contain "
-#~ msgstr " nem tartalmaz "
-
-#~ msgid " environment variable.\n"
-#~ msgstr " környezeti változó.\n"
-
-#~ msgid " is not a directory."
-#~ msgstr " nem könyvtár."
-
-#~ msgid "Tabular format < 5 is not supported anymore\n"
-#~ msgstr "Táblázatos forma < 5 már nincs támogatva\n"
-
-#~ msgid "Get an older version of LyX (< 1.1.x) for conversion!"
-#~ msgstr "Használjon régebbi verziójú LyX-et (<1.1x) a konverzióhoz."
-
-#~ msgid "Page Break (top)"
-#~ msgstr "Laptörés (fent)"
-
-#~ msgid "Space above"
-#~ msgstr "Kihagyás felette"
-
-#~ msgid "Page Break (bottom)"
-#~ msgstr "Laptörés (lent)"
-
-#~ msgid "Space below"
-#~ msgstr "Kihagyás alatta"
