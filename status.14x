@@ -56,6 +56,10 @@ What's new
 
 - Fix crash when generating LaTeX dependencies on Cygwin.
 
+- Fixed bug 2485: middle-mouse insertion in math inserts both inside and
+  outside math; also fixed crash, and moved from mouse release to mouse
+  press
+
 - Fix wrong path_prefix handling in Cygwin builds (bug 2344)
 
 - Set search path for included files correctly on Cygwin (bug 2409).
@@ -135,4 +139,9 @@ What's new
   Q..3/ does not use it either in the default configuration.
 
 - Compilation fix (gtk frontend) for gcc 4.1.
+
+- Bookmarks and links to LaTeX errors are broken after paragraph
+  deletion/insertion (bugs 2284 and 2242).
+
+- Fixed broken math panel sub/super script UI
 
