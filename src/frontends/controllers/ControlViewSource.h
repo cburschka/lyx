@@ -36,22 +36,11 @@ public:
 	///
 	virtual bool isBufferDependent() const { return true; }
 
-	/// The title displayed by the dialog reflects the \c VIEWSOURCETYPE
+	/// The title displayed by the dialog reflects source type. 
 	std::string const title() const;
 
-	/// get the source code
-	std::string const str() const { return source_; }
-	
-private:
-	/// Recognized source code type
-	enum SOURCETYPE {
-		LatexSource,
-		LinuxDocSource,
-		DocBookSource
-	};
-
-	SOURCETYPE type_;
-	std::string source_;
+	/// get the source code of selected paragraphs
+	std::string const updateContent();
 };
 
 } // namespace frontend

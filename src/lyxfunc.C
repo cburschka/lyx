@@ -1165,9 +1165,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				data = freefont2string();
 				if (!data.empty())
 					owner->getDialogs().show("character", data);
-			}
-
-			else if (name == "latexlog") {
+			} else if (name == "latexlog") {
 				pair<Buffer::LogType, string> const logfile =
 					owner->buffer()->getLogName();
 				switch (logfile.first) {
@@ -1180,32 +1178,11 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				}
 				data += logfile.second;
 				owner->getDialogs().show("log", data);
-			}
-			else if (name == "vclog") {
+			} else if (name == "vclog") {
 				string const data = "vc " +
 					owner->buffer()->lyxvc().getLogFile();
 				owner->getDialogs().show("log", data);
-			}
-			else if (name == "view-source") {
-				// get the *top* level paragraphs that contain the cursor, 
-				// or the selected text
-				lyx::pit_type par_begin;
-				lyx::pit_type par_end;
-				if (!view()->cursor().selection()) {
-					par_begin = view()->cursor().bottom().pit();
-					par_end = par_begin;
-				} else {
-					par_begin = view()->cursor().selectionBegin().bottom().pit();
-					par_end = view()->cursor().selectionEnd().bottom().pit();
-				}
-				if (par_begin > par_end)
-					std::swap(par_begin, par_end);
-				ostringstream ostr;
-				view()->buffer()->getSourceCode(ostr, par_begin, par_end + 1);
-				// display the dialog and show source code
-				owner->getDialogs().show("view-source", ostr.str());
-			}
-			else
+			} else
 				owner->getDialogs().show(name, data);
 			break;
 		}

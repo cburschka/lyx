@@ -688,7 +688,7 @@ int InsetExternal::latex(Buffer const & buf, ostream & os,
 	// run through the LaTeX compiler.
 	// If we're running through the LaTeX compiler, we should write the
 	// generated files in the bufer's temporary directory.
-	bool const external_in_tmpdir = !runparams.nice;
+	bool const external_in_tmpdir = !runparams.nice && !runparams.dryrun;
 
 	// If the template has specified a PDFLaTeX output, then we try and
 	// use that.

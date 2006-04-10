@@ -14,8 +14,14 @@
 
 #include "ControlViewSource.h"
 #include "gettext.h"
+#include "support/types.h"
+#include "BufferView.h"
+#include "buffer.h"
+#include "cursor.h"
+#include <sstream>
 
 using std::string;
+using std::ostringstream;
 
 namespace lyx {
 namespace frontend {
@@ -27,39 +33,58 @@ ControlViewSource::ControlViewSource(Dialog & parent)
 
 bool ControlViewSource::initialiseParams(string const & source)
 {
-	string sourcetype = source.substr(1, 5);
-	if (sourcetype == "LaTeX") {
-		type_ = LatexSource;
-		source_ = source.substr(7);
-	} else if (sourcetype == "Linux") {
-		type_ = LinuxDocSource;
-		source_ = source.substr(10);
-	} else if (sourcetype == "DocBo") {
-		type_ = DocBookSource;
-		source_ = source.substr(9);
-	} else
-		return false;
-	
 	return true;
+}
+
+string const ControlViewSource::updateContent()
+{	
+	// get the *top* level paragraphs that contain the cursor, 
+	// or the selected text
+	lyx::pit_type par_begin;
+	lyx::pit_type par_end;
+
+	BufferView * view = kernel().bufferview();
+	if (!view->cursor().selection()) {
+		par_begin = view->cursor().bottom().pit();
+		par_end = par_begin;
+	} else {
+		par_begin = view->cursor().selectionBegin().bottom().pit();
+		par_end = view->cursor().selectionEnd().bottom().pit();
+	}
+	if (par_begin > par_end)
+		std::swap(par_begin, par_end);
+	ostringstream ostr;
+	view->buffer()->getSourceCode(ostr, par_begin, par_end + 1);
+	return ostr.str();
 }
 
 
 void ControlViewSource::clearParams()
 {
-	source_.erase();
 }
 
 
 string const ControlViewSource::title() const
 {
-	switch (type_) {
-	case LatexSource:
-		return _("LaTeX Source");
-	case LinuxDocSource:
-		return _("LinuxDoc Source");
-	case DocBookSource:
-		return _("DocBook Source");
+	string source_type;
+	
+	Kernel::DocType doctype = kernel().docType();
+	switch (doctype) {
+	case Kernel::LATEX:
+		source_type = "LaTeX";
+		break;
+	case Kernel::LINUXDOC:
+		source_type = "LinuxDoc";
+		break;
+	case Kernel::DOCBOOK:
+		source_type = "DocBook";
+		break;
+	case Kernel::LITERATE:
+		source_type = "Literate";
+	default:
+		BOOST_ASSERT(false);
 	}
+	return _(source_type + " Source");
 }
 
 } // namespace frontend

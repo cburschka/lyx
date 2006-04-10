@@ -14,6 +14,7 @@
 #include "QViewSource.h"
 #include "QViewSourceDialog.h"
 #include "qt_helpers.h"
+#include "lyx_gui.h"
 
 #include "controllers/ControlViewSource.h"
 
@@ -38,7 +39,7 @@ void QViewSource::build_dialog()
 	dialog_->viewSourceTV->setReadOnly(true);
 	dialog_->viewSourceTV->setTextFormat(Qt::PlainText);
 	// this is personal. I think source code should be in fixed-size font
-	QFont font("Courier New");
+	QFont font(toqstr(lyx_gui::typewriter_font_name()));
 	font.setFixedPitch(true);
 	font.setStyleHint(QFont::TypeWriter);
 	dialog_->viewSourceTV->setFont(font);
@@ -50,8 +51,7 @@ void QViewSource::build_dialog()
 void QViewSource::update_contents()
 {
 	setTitle(controller().title());
-
-	dialog_->viewSourceTV->setText(toqstr(controller().str()));
+	dialog_->viewSourceTV->setText(toqstr(controller().updateContent()));
 }
 
 } // namespace frontend

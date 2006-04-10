@@ -161,7 +161,7 @@ int InsetBibtex::latex(Buffer const & buffer, ostream & os,
 			normalize_name(buffer, runparams, input, ".bib");
 		string const in_file = database + ".bib";
 
-		if (!runparams.inComment && !runparams.nice &&
+		if (!runparams.inComment && !runparams.dryrun && !runparams.nice &&
 		    isFileReadable(in_file)) {
 
 			// mangledFilename() needs the extension
@@ -216,7 +216,7 @@ int InsetBibtex::latex(Buffer const & buffer, ostream & os,
 		// exporting to .tex copy it to the tmp directory.
 		// This prevents problems with spaces and 8bit charcaters
 		// in the file name.
-		if (!runparams.inComment && !runparams.nice &&
+		if (!runparams.inComment && !runparams.dryrun && !runparams.nice &&
 		    isFileReadable(in_file)) {
 			// use new style name
 			base = removeExtension(

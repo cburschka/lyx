@@ -1576,7 +1576,7 @@ void Buffer::changeRefsIfUnique(string const & from, string const & to)
 }
 
 
-void Buffer::getSourceCode(ostream& os, lyx::pit_type par_begin, lyx::pit_type par_end)
+void Buffer::getSourceCode(ostream & os, lyx::pit_type par_begin, lyx::pit_type par_end)
 {
 	OutputParams runparams;
 	runparams.nice = true;
@@ -1587,16 +1587,6 @@ void Buffer::getSourceCode(ostream& os, lyx::pit_type par_begin, lyx::pit_type p
 	// No side effect of file copying and image conversion
 	runparams.dryrun = true;
 
-	// set source type for the view-source dialog
-	if (isLatex())
-		os << "%LaTeX\n";
-	else if (isLinuxDoc())
-		os << "%LinuxDoc\n";
-	else if (isDocBook())
-		os << "%DocBook\n";
-	else
-		BOOST_ASSERT(false);
-	// start text
 	if (par_begin + 1 == par_end)
 		os << "% Preview source code for paragraph " << par_begin << "\n\n";
 	else

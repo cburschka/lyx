@@ -359,7 +359,7 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 	lyxerr[Debug::LATEX] << "exportfile:" << exportfile << endl;
 	lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
 
-	if (runparams.inComment)
+	if (runparams.inComment || runparams.dryrun)
 		// Don't try to load or copy the file
 		;
 	else if (loadIfNeeded(buffer, params_)) {
