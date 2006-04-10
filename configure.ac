@@ -440,6 +440,7 @@ AC_CONFIG_FILES([Makefile  m4/Makefile \
        development/lyx.spec \
        lib/Makefile \
        lib/doc/Makefile \
+       lib/lyx2lyx/lyx2lyx_version.py \
        lib/lyx2lyx/Makefile \
        intl/Makefile \
        po/Makefile.in \

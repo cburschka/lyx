@@ -8,6 +8,7 @@ lyx2lyxdir = $(pkgdatadir)/lyx2lyx
 # and chmod manually in install-data-hook.
 dist_lyx2lyx_PYTHON = \
 	lyx2lyx \
+	lyx2lyx_version.py \
 	parser_tools.py \
 	LyX.py \
 	lyx_0_12.py \

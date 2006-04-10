@@ -25,7 +25,9 @@ import re
 import string
 import time
 
-version_lyx2lyx = "1.5.0svn"
+import lyx2lyx_version
+version_lyx2lyx = lyx2lyx_version.version
+
 default_debug_level = 2
 
 # Regular expressions used
