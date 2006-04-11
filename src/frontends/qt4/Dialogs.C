@@ -53,6 +53,7 @@
 #include "QChanges.h"
 #include "QCharacter.h"
 #include "QCitation.h"
+#include "QCitationDialog.h"
 #include "QDocument.h"
 #include "QErrorList.h"
 #include "QERT.h"
@@ -173,8 +174,9 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setView(new QCharacter(*dialog));
 		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 	} else if (name == "citation") {
-		dialog->setController(new ControlCitation(*dialog));
-		dialog->setView(new QCitation(*dialog));
+		QCitation * ci = new QCitation(*dialog);
+		dialog->setController(ci);
+		dialog->setView(new QCitationDialog(*dialog, ci));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "document" || name == "preamble") {
 

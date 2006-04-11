@@ -11,8 +11,8 @@
 
 #include <config.h>
 
+#include "ControlCitation.h"
 #include "QCitation.h"
-#include "QCitationDialog.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
 
@@ -32,15 +32,19 @@ using std::endl;
 using std::vector;
 using std::string;
 
-void toQStringList(QStringList & qlist, vector<string> const & v)
+
+QStringList toQStringList(vector<string> const & v)
 {
-	qlist.clear();
+	QStringList qlist;
+
 	for (size_t i=0; i != v.size(); ++i) {
 		if (v[i].empty())
 			continue;
 		qlist.append(toqstr(v[i]));
 	}
+	return qlist;
 }
+
 
 void toVector(vector<string> & v, const QStringList & qlist)
 {
@@ -50,32 +54,40 @@ void toVector(vector<string> & v, const QStringList & qlist)
 		v.push_back(fromqstr(qlist[i]));
 }
 
+
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlCitation, QView<QCitationDialog> > base_class;
-
 
 QCitation::QCitation(Dialog & parent)
-	: base_class(parent, _("Citation"))
+	: ControlCitation(parent)
 {
 }
 
 
-void QCitation::apply()
+void QCitation::apply(int const choice, bool const full, bool const force,
+					  QString before, QString after)
 {
-	InsetCommandParams & params = controller().params();
-	dialog_->apply(params);
+//	InsetCommandParams & params = params();
 
-	params.setContents(fromqstr(selected_keys_.stringList().join("'")));
+	vector<biblio::CiteStyle> const & styles =
+		ControlCitation::getCiteStyles();
+
+	string const command =
+		biblio::CitationStyle(styles[choice], full, force)
+		.asLatexStr();
+
+	params().setContents(fromqstr(selected_keys_.stringList().join(",")));
+	params().setSecOptions(fromqstr(before));
+	params().setOptions(fromqstr(after));
+	dispatchParams();
+
 /*
 	if (dialog().controller().isBufferDependent()) {
 		if (!dialog().kernel().isBufferAvailable() ||
 		    dialog().kernel().isBufferReadonly())
 			return;
 	}
-
-	dialog().view().apply();
 	dialog().controller().dispatchParams();
 
 	if (dialog().controller().disconnectOnApply()) {
@@ -84,47 +96,41 @@ void QCitation::apply()
 		dialog().view().update();
 	}
 */
-//	dialog().ApplyButton();
-//	dialog().apply();
 }
 
 
-void QCitation::build_dialog()
+QString QCitation::textBefore()
 {
-	dialog_.reset(new QCitationDialog(this));
+	return toqstr(params().getSecOptions());
 }
 
 
-void QCitation::update_contents()
+QString QCitation::textAfter()
 {
-	QStringList keys;
+	return toqstr(params().getOptions());
+}
 
+
+void QCitation::updateModel()
+{
 	// Make the list of all available bibliography keys
-	toQStringList(keys,
-		biblio::getKeys(controller().bibkeysInfo()));
+	QStringList keys = toQStringList(biblio::getKeys(bibkeysInfo()));
 	available_keys_.setStringList(keys);
 
 	// Ditto for the keys cited in this inset
-	QString str = toqstr(controller().params().getContents());
+	QString str = toqstr(params().getContents());
 	if (!str.isEmpty()) {
 		keys = str.split(",");
 		selected_keys_.setStringList(keys);
 	}
-
-	dialog_->update(controller().params());
-
-	bc().valid(isValid());
 }
 
-void QCitation::hide()
-{
-	QDialogView::hide();
-}
 
 bool QCitation::isValid()
 {
 	return selected_keys_.rowCount() > 0;
 }
+
 
 QModelIndex QCitation::findKey(QString const & str, QModelIndex const & index) const
 {
@@ -134,6 +140,7 @@ QModelIndex QCitation::findKey(QString const & str, QModelIndex const & index) c
 		return index;
 	return available_keys_.index(pos);
 }
+
 
 QModelIndex QCitation::findKey(QString const & str) const
 {
@@ -150,10 +157,9 @@ QModelIndex QCitation::findKey(QString const & str) const
 	return available_keys_.index(pos);
 }
 
+
 void QCitation::addKeys(QModelIndexList const & indexes)
 {
-	// = selectionModel->selectedIndexes();
-
 	QModelIndex index;
 
 	if (indexes.empty())
@@ -167,9 +173,8 @@ void QCitation::addKeys(QModelIndexList const & indexes)
 	}
 
 	selected_keys_.setStringList(keys);
-
-	changed();
 }
+
 
 void QCitation::deleteKeys(QModelIndexList const & indexes)
 {
@@ -187,9 +192,8 @@ void QCitation::deleteKeys(QModelIndexList const & indexes)
 	}
 
 	selected_keys_.setStringList(keys);
-
-	changed();
 }
+
 
 void QCitation::upKey(QModelIndexList const & indexes)
 {
@@ -203,9 +207,8 @@ void QCitation::upKey(QModelIndexList const & indexes)
 	QStringList keys = selected_keys_.stringList();
 	keys.swap(pos, pos-1);
 	selected_keys_.setStringList(keys);
-
-	changed();
 }
+
 
 void QCitation::downKey(QModelIndexList const & indexes)
 {
@@ -219,8 +222,14 @@ void QCitation::downKey(QModelIndexList const & indexes)
 	QStringList keys = selected_keys_.stringList();
 	keys.swap(pos, pos+1);
 	selected_keys_.setStringList(keys);
+}
 
-	changed();
+
+QStringList QCitation::citationStyles(int sel)
+{
+	string key = fromqstr(selected_keys_.stringList()[sel]);
+
+	return toQStringList(getCiteStrings(key));
 }
 
 } // namespace frontend

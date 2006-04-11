@@ -42,49 +42,32 @@ using support::trim;
 
 namespace frontend {
 
-void updateBrowser(Q3ListBox * browser,
-			      vector<string> const & keys)
-{
-	browser->clear();
 
-	for (vector<string>::const_iterator it = keys.begin();
-		it < keys.end(); ++it) {
-		string const key = trim(*it);
-		// FIXME: why the .empty() test ?
-		if (!key.empty())
-			browser->insertItem(toqstr(key));
-	}
-}
-
-QCitationDialog::QCitationDialog(QCitation * form)
-	: form_(form)
+QCitationDialog::QCitationDialog(Dialog & dialog, QCitation * form)
+	: Dialog::View(dialog, "Citation"), form_(form)
 {
 	setupUi(this);
 
-/*	connect(restorePB, SIGNAL(clicked()),
-		form, SLOT(slotRestore()));
-	connect(okPB, SIGNAL(clicked()),
-		form, SLOT(slotOK()));
-	connect(applyPB, SIGNAL(clicked()),
-		form, SLOT(slotApply()));
-	connect(closePB, SIGNAL(clicked()),
-		form, SLOT(slotClose()));
-*/
-	// Manage the ok, apply, restore and cancel/close buttons
-	form_->bcview().setOK(okPB);
-	form_->bcview().setApply(applyPB);
-	form_->bcview().setCancel(closePB);
-	form_->bcview().setRestore(restorePB);
+	setCaption(toqstr("LyX: " + getTitle()));
 
-	form_->bcview().addReadOnly(addPB);
-	form_->bcview().addReadOnly(deletePB);
-	form_->bcview().addReadOnly(upPB);
-	form_->bcview().addReadOnly(downPB);
-	form_->bcview().addReadOnly(citationStyleCO);
-	form_->bcview().addReadOnly(forceuppercaseCB);
-	form_->bcview().addReadOnly(fulllistCB);
-	form_->bcview().addReadOnly(textBeforeED);
-	form_->bcview().addReadOnly(textAfterED);
+/*
+
+	// Manage the ok, apply, restore and cancel/close buttons
+	bcview().setOK(okPB);
+	bcview().setApply(applyPB);
+	bcview().setCancel(closePB);
+	bcview().setRestore(restorePB);
+
+	bcview().addReadOnly(addPB);
+	bcview().addReadOnly(deletePB);
+	bcview().addReadOnly(upPB);
+	bcview().addReadOnly(downPB);
+	bcview().addReadOnly(citationStyleCO);
+	bcview().addReadOnly(forceuppercaseCB);
+	bcview().addReadOnly(fulllistCB);
+	bcview().addReadOnly(textBeforeED);
+	bcview().addReadOnly(textAfterED);
+*/
 
 	selectedLV->setModel(form_->selected());
 	availableLV->setModel(form_->available());
@@ -99,7 +82,7 @@ QCitationDialog::QCitationDialog(QCitation * form)
 
 
 //	find_ = new QCitationFind(form_, this);
-
+	
 //	connect(selectedLV, SIGNAL(doubleClicked(const QModelIndex & index)),
 //		form_, SLOT(on_okPB_clicked()));//SLOT(slotOK()));
 }
@@ -108,73 +91,78 @@ QCitationDialog::~QCitationDialog()
 {
 }
 
+void QCitationDialog::apply()
+{
+	int  const choice = std::max(0, citationStyleCO->currentItem());
+	bool const full  = fulllistCB->isChecked();
+	bool const force = forceuppercaseCB->isChecked();
+
+	QString const before = textBeforeED->text();
+	QString const after = textAfterED->text();
+
+	form_->apply(choice, full, force, before, after);
+}
+
+
+void QCitationDialog::hide()
+{
+	accept();
+}
+
+
+void QCitationDialog::show()
+{
+	QDialog::show();
+}
+
+
+bool QCitationDialog::isVisible() const
+{
+	return QDialog::isVisible();
+}
+ 
 
 void QCitationDialog::on_okPB_clicked()
 {
-	form_->apply();
+	apply();
 	accept();
 }
 
 void QCitationDialog::on_cancelPB_clicked()
 {
-	reject();
+	accept();
+//	reject();
 }
 
 void QCitationDialog::on_applyPB_clicked()
 {
-	form_->apply();
+	apply();
 }
 
 void QCitationDialog::on_restorePB_clicked()
 {
-	form_->update_contents();
+	update();
+	bc().valid(form_->isValid() );
 }
 
-void QCitationDialog::apply(InsetCommandParams & params)
+void QCitationDialog::update()
 {
-	vector<biblio::CiteStyle> const & styles =
-		ControlCitation::getCiteStyles();
+	form_->updateModel();
 
-	int  const choice = std::max(0, citationStyleCO->currentItem());
-	bool const full  = fulllistCB->isChecked();
-	bool const force = forceuppercaseCB->isChecked();
-
-	string const command =
-		biblio::CitationStyle(styles[choice], full, force)
-		.asLatexStr();
-
-	params.setCmdName(command);
-
-	string const before = fromqstr(textBeforeED->text());
-	params.setSecOptions(before);
-
-	string const after = fromqstr(textAfterED->text());
-	params.setOptions(after);
-
-	style_ = choice;
-}
-
-
-void QCitationDialog::update(InsetCommandParams const & params)
-{
 	// No keys have been selected yet, so...
 	infoML->document()->clear();
 	setButtons();
 
-	textBeforeED->setText(
-		toqstr(params.getSecOptions()));
-	textAfterED->setText(
-		toqstr(params.getOptions()));
+	textBeforeED->setText(form_->textBefore());
+	textAfterED->setText(form_->textAfter());
 
 	fillStyles();
 	updateStyle();
-
-//	find_->update();
 }
 
 void QCitationDialog::updateStyle()
 {
-	biblio::CiteEngine const engine = form_->controller().getEngine();
+	biblio::CiteEngine const engine = form_->getEngine();
 	bool const natbib_engine =
 		engine == biblio::ENGINE_NATBIB_AUTHORYEAR ||
 		engine == biblio::ENGINE_NATBIB_NUMERICAL;
@@ -184,7 +172,7 @@ void QCitationDialog::updateStyle()
 	forceuppercaseCB->setEnabled(natbib_engine);
 	textBeforeED->setEnabled(!basic_engine);
 
-	string const & command = form_->controller().params().getCmdName();
+	string const & command = form_->params().getCmdName();
 
 	// Find the style of the citekeys
 	vector<biblio::CiteStyle> const & styles =
@@ -199,6 +187,7 @@ void QCitationDialog::updateStyle()
 		citationStyleCO->setCurrentItem(style_);
 	else
 		citationStyleCO->setCurrentItem(0);
+
 	fulllistCB->setChecked(false);
 	forceuppercaseCB->setChecked(false);
 
@@ -213,39 +202,31 @@ void QCitationDialog::updateStyle()
 
 void QCitationDialog::fillStyles()
 {
-	if (citekeys.empty()) {
-		citationStyleCO->setEnabled(false);
-		citationStyleLA->setEnabled(false);
-		return;
-	}
-
 	int const orig = citationStyleCO->currentItem();
 
 	citationStyleCO->clear();
 
 	QStringList selected_keys = form_->selected()->stringList();
-	if (selected_keys.empty())
+	if (selected_keys.empty()) {
+		citationStyleCO->setEnabled(false);
+		citationStyleLA->setEnabled(false);
 		return;
+	}
 
 	if (selectedLV->selectionModel()->selectedIndexes().empty())
 		return;
-
+	
 	int curr = selectedLV->selectionModel()->selectedIndexes()[0].row();//selectedLV->currentItem();
 
-	string key = fromqstr(selected_keys[curr]);
+	QStringList sty = form_->citationStyles(curr);
 
-	vector<string> const & sty = form_->controller().getCiteStrings(key);
+	bool const basic_engine = 
+		(form_->getEngine() == biblio::ENGINE_BASIC);
 
-	biblio::CiteEngine const engine = form_->controller().getEngine();
-	bool const basic_engine = engine == biblio::ENGINE_BASIC;
+	citationStyleCO->setEnabled(!sty.isEmpty() && !basic_engine);
+	citationStyleLA->setEnabled(!sty.isEmpty() && !basic_engine);
 
-	citationStyleCO->setEnabled(!sty.empty() && !basic_engine);
-	citationStyleLA->setEnabled(!sty.empty() && !basic_engine);
-
-	for (vector<string>::const_iterator it = sty.begin();
-		it != sty.end(); ++it) {
-		citationStyleCO->insertItem(toqstr(*it));
-	}
+	citationStyleCO->insertItems(0, sty);
 
 	if (orig != -1 && orig < citationStyleCO->count())
 		citationStyleCO->setCurrentItem(orig);
@@ -254,14 +235,14 @@ void QCitationDialog::fillStyles()
 
 void QCitationDialog::setButtons()
 {
-	if (form_->readOnly())
-		return;
+//	if (form_->readOnly())
+//		return;
 
 	int const row_count = selectedLV->model()->rowCount();
 
 	int sel_nr=-1;
 	if (! selectedLV->selectionModel()->selectedIndexes().empty()) {
-		sel_nr =
+		sel_nr = 
 		selectedLV->selectionModel()->selectedIndexes()[0].row();
 	}
 
@@ -292,11 +273,12 @@ void QCitationDialog::on_selectedLV_currentChanged(Q3ListBoxItem*)
 void QCitationDialog::on_addPB_clicked()
 {
 	form_->addKeys(availableLV->selectionModel()->selectedIndexes());
+	changed();
 }
 
 void QCitationDialog::on_deletePB_clicked()
 {
-	form_->addKeys(selectedLV->selectionModel()->selectedIndexes());
+	form_->deleteKeys(selectedLV->selectionModel()->selectedIndexes());
 	changed();
 }
 
@@ -338,6 +320,20 @@ void QCitationDialog::changed()
 	setButtons();
 }
 
+
+void updateBrowser(Q3ListBox * browser,
+			      vector<string> const & keys)
+{
+	browser->clear();
+
+	for (vector<string>::const_iterator it = keys.begin();
+		it < keys.end(); ++it) {
+		string const key = trim(*it);
+		// FIXME: why the .empty() test ?
+		if (!key.empty())
+			browser->insertItem(toqstr(key));
+	}
+}
 
 
 QCitationFind::QCitationFind(QCitation * form, QWidget * parent, Qt::WFlags f)
@@ -419,7 +415,7 @@ void QCitationFind::find(biblio::Direction dir)
 {
 /*	QStringList bibkeys = form_->available()->stringList();
 
-	biblio::InfoMap const & theMap = form_->controller().bibkeysInfo();
+	biblio::InfoMap const & theMap = form_->bibkeysInfo();
 
 	biblio::Search const type = searchTypeCB->isChecked()
 		? biblio::REGEX : biblio::SIMPLE;

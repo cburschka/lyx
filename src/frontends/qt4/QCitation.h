@@ -13,21 +13,16 @@
 #ifndef QCITATION_H
 #define QCITATION_H
 
-#include "QDialogView.h"
+#include "ControlCitation.h"
 
 #include <QStringListModel>
 
 namespace lyx {
 namespace frontend {
 
-class ControlCitation;
-class QCitationDialog;
-
-
-class QCitation : public QController<ControlCitation, QView<QCitationDialog> >
+class QCitation : public ControlCitation
 {
 public:
-	friend class QCitationDialog;
 	///
 	QCitation(Dialog &);
 
@@ -40,6 +35,9 @@ public:
 	QStringListModel * found()
 	{ return &found_keys_; }
 
+	QString textBefore();
+	QString textAfter();
+
 	QModelIndex findKey(QString const & str, QModelIndex const & index) const;
 	QModelIndex findKey(QString const & str) const;
 
@@ -48,20 +46,19 @@ public:
 	void upKey(QModelIndexList const & indexes);
 	void downKey(QModelIndexList const & indexes);
 
-protected:
+	QStringList citationStyles(int sel);
+
+
 	virtual bool isValid();
 
-private:
-
 	/// Set the Params variable for the Controller.
-	virtual void apply();
-	/// Build the dialog.
-	virtual void build_dialog();
-	/// Hide the dialog.
-	virtual void hide();
-	/// Update dialog before/whilst showing it.
-	virtual void update_contents();
+	virtual void apply(int const choice, bool const full, bool const force,
+					  QString before, QString After);
 
+	/// Update dialog before/whilst showing it.
+	virtual void updateModel();
+
+private:	
 	/// available keys
 	QStringListModel available_keys_;
 
@@ -72,6 +69,47 @@ private:
 	QStringListModel found_keys_;
 };
 
+
+/** A controller for Citation dialogs.
+ */
+/*
+class Citation {
+public:
+	///
+	Citation();
+
+	///
+	virtual bool initialiseParams(std::string const & data);
+
+	/// clean-up on hide.
+	virtual void clearParams();
+
+	/** Disconnect from the inset when the Apply button is pressed.
+	 *  Allows easy insertion of multiple citations.
+	 */
+/*	virtual bool disconnectOnApply() const { return true; }
+
+	/// Returns a reference to the map of stored keys
+	biblio::InfoMap const & bibkeysInfo() const;
+
+	///
+	biblio::CiteEngine_enum getEngine() const;
+
+	/// Possible citations based on this key
+	std::vector<std::string> const getCiteStrings(std::string const & key) const;
+
+	/// available CiteStyle-s (depends on availability of Natbib/Jurabib)
+	static std::vector<biblio::CiteStyle> const & getCiteStyles() {
+		return citeStyles_;
+	}
+private:
+	/// The info associated with each key
+	biblio::InfoMap bibkeysInfo_;
+
+	///
+	static std::vector<biblio::CiteStyle> citeStyles_;
+};
+*/
 } // namespace frontend
 } // namespace lyx
 

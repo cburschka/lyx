@@ -12,6 +12,8 @@
 #ifndef QCITATIONDIALOG_H
 #define QCITATIONDIALOG_H
 
+#include "Dialog.h"
+
 #include "ui/QCitationUi.h"
 #include "ui/QCitationFindUi.h"
 #include "controllers/biblio.h"
@@ -30,23 +32,37 @@ namespace frontend {
 class QCitation;
 class QCitationFind;
 
-class QCitationDialog : public QDialog, public Ui::QCitationUi {
+class QCitationDialog: public QDialog, public Ui::QCitationUi, public Dialog::View {
 	Q_OBJECT
 
 public:
-	QCitationDialog(QCitation * form);
+	QCitationDialog(Dialog &, QCitation * form );
 
-	~QCitationDialog();
+	//QCitationDialog(QCitation * form);
 
-	void update(InsetCommandParams const & params);
-	void apply(InsetCommandParams & params);
+	virtual ~QCitationDialog();
 
-//	virtual bool isValid();
+	virtual void apply();
+
+	/// Hide the dialog from sight
+	void hide();
+
+	/// Redraw the dialog (e.g. if the colors have been remapped).
+	void redraw() {}
+
+	/// Create the dialog if necessary, update it and display it.
+	void show();
+
+	/// Update the display of the dialog whilst it is still visible.
+	void update();
+
+	/// \return true if the dialog is visible.
+	bool isVisible() const;
 
 protected slots:
 
 //	void on_selectedLB_currentChanged(Q3ListBoxItem*);
-
+	
 	void on_okPB_clicked();
 	void on_cancelPB_clicked();
 	void on_restorePB_clicked();
