@@ -7,6 +7,11 @@
 	* rowpainter.C (CursorOnRow): expand redrawing of current row to
 	endpos(). 
 
+2006-04-01  Michael Gerz  <michael.gerz@teststep.org>
+
+	* converter.C:
+	* lyx_main.C: tiny changes to text messages.
+
 2006-03-18  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* rowpainter.C (paintInset): remove unneeded casts
