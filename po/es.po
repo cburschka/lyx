@@ -5,19 +5,19 @@
 # David Suárez de lis <fafefito@usc.es>, 1999, 2000.
 # German Poo Caaman~o <gpoo@ubiobio.cl>, 2001.
 # Alfredo Braunstein <abraunst@ictp.trieste.it>, 2002, 2003.
-# Eulogio Serradilla Rodríguez <eulogio.sr@terra.es>, 2003, 2004, 2005.
+# Eulogio Serradilla Rodríguez <eulogio.sr@terra.es>, 2003, 2004, 2005, 2006.
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2006-04-06 15:16+0200\n"
-"PO-Revision-Date: 2005-12-31 13:58+0100\n"
+"PO-Revision-Date: 2006-04-10 18:16+0200\n"
 "Last-Translator: Eulogio Serradilla <eulogio.sr@terra.es>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.1\n"
+"X-Generator: KBabel 1.11.2\n"
 "\n"
 
 #: src/frontends/xforms/forms/form_aboutlyx.fd:44
@@ -384,7 +384,7 @@ msgstr "Búsqueda"
 
 #: src/frontends/xforms/forms/form_citation.fd:224
 msgid "Regular Expression|#x"
-msgstr "Expresión Regular|#x"
+msgstr "Expresión regular|#x"
 
 #: src/frontends/xforms/forms/form_citation.fd:242
 #: src/frontends/xforms/forms/form_search.fd:134
@@ -2161,7 +2161,7 @@ msgstr "&Quitar"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:188
 msgid "Remove the selected branch"
-msgstr "Quitar la etiqueta seleccionada"
+msgstr "Quitar la rama seleccionada"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:235
 msgid "&New:"
@@ -2177,7 +2177,7 @@ msgstr "&Añadir"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:261
 msgid "Add a new branch to the list"
-msgstr "Añadir una nueva etiqueta a la lista"
+msgstr "Añadir una rama nueva a la lista"
 
 #: src/frontends/qt2/ui/BulletsModuleBase.ui:118
 msgid "&First level"
@@ -2276,7 +2276,7 @@ msgstr "Enorme"
 #: src/frontends/qt2/ui/BulletsModuleBase.ui:1035
 #: src/frontends/controllers/character.C:159 src/lyxfont.C:65
 msgid "Huger"
-msgstr "Enorme"
+msgstr "Más enorme"
 
 #: src/frontends/qt2/ui/BulletsModuleBase.ui:353
 msgid "&Second level"
@@ -2307,9 +2307,8 @@ msgid "Postscript &driver:"
 msgstr "&Controlador postscript:"
 
 #: src/frontends/qt2/ui/LanguageModuleBase.ui:22
-#, fuzzy
 msgid "LanguageModuleBase"
-msgstr "Idioma"
+msgstr "LanguageModuleBase"
 
 #: src/frontends/qt2/ui/LanguageModuleBase.ui:56
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:209
@@ -2837,7 +2836,7 @@ msgstr "&Ramas disponibles:"
 
 #: src/frontends/qt2/ui/QBranchDialogBase.ui:105
 msgid "Select your branch"
-msgstr "Seleccionar etiqueta"
+msgstr "Seleccionar rama"
 
 #: src/frontends/qt2/ui/QChangesDialogBase.ui:60
 msgid "Change:"
@@ -4217,7 +4216,7 @@ msgstr "Usar cod&ificación de entrada"
 
 #: src/frontends/qt2/ui/QPrefUIModule.ui:29
 msgid "QPrefUIModule"
-msgstr ""
+msgstr "QPrefUIModule"
 
 #: src/frontends/qt2/ui/QPrefUIModule.ui:78
 msgid "Documents"
@@ -5799,7 +5798,6 @@ msgid "Problem \\arabic{problem}."
 msgstr "Problema \\arabic{problem}."
 
 #: lib/layouts/amsart-seq.layout:217
-#, fuzzy
 msgid "Exercise \\arabic{exercise}."
 msgstr "Ejercicio \\arabic{execise}."
 
@@ -9478,7 +9476,6 @@ msgid "Table|T"
 msgstr "Tabla|T"
 
 #: lib/ui/stdmenus.ui:98
-#, fuzzy
 msgid "Rows & Columns|C"
 msgstr "Filas y columnas|F"
 
@@ -9964,9 +9961,8 @@ msgid "Insert { }"
 msgstr "Insertar { }"
 
 #: lib/ui/stdtoolbars.ui:137
-#, fuzzy
 msgid "Insert cases environment"
-msgstr "Entorno casos|c"
+msgstr "Insertar entorno casos"
 
 #: lib/ui/stdtoolbars.ui:144
 msgid "minibuffer"
@@ -10730,13 +10726,13 @@ msgid "Cannot convert file"
 msgstr "No se puede convertir archivo"
 
 #: src/converter.C:318
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "No information for converting %1$s format files to %2$s.\n"
 "Define a convertor in the preferences."
 msgstr ""
 "Sin información para convertir los archivos de formato %1$s a %2$s.\n"
-"Pruebe a definir un convertidor en las preferencias."
+"Defina un convertidor en las preferencias."
 
 #: src/converter.C:395 src/format.C:256 src/format.C:301
 msgid "Executing command: "
@@ -10884,7 +10880,7 @@ msgstr "Mensajes de recuadros/plantillas externos"
 
 #: src/debug.C:66
 msgid "RowPainter profiling"
-msgstr ""
+msgstr "RowPainter profiling"
 
 #: src/exporter.C:73
 #, c-format
@@ -11428,7 +11424,7 @@ msgstr "Configuración del cuadro"
 #: src/frontends/gtk/GBranch.C:38 src/frontends/qt2/QBranch.C:36
 #: src/frontends/xforms/FormBranch.C:35
 msgid "Branch Settings"
-msgstr "configuración de rama"
+msgstr "Configuración de rama"
 
 #: src/frontends/gtk/GChanges.C:33 src/frontends/qt2/QChanges.C:36
 #: src/frontends/xforms/FormChanges.C:32
@@ -11458,11 +11454,11 @@ msgstr "Estilo del texto"
 
 #: src/frontends/gtk/GCitation.C:122
 msgid "CiteKeys"
-msgstr ""
+msgstr "ClavesCitadas"
 
 #: src/frontends/gtk/GCitation.C:128
 msgid "BibKeys"
-msgstr ""
+msgstr "ClavesBib"
 
 #: src/frontends/gtk/GDocument.C:58 src/frontends/qt2/QDocument.C:68
 #: src/frontends/xforms/FormDocument.C:93
@@ -11496,67 +11492,64 @@ msgid "B4"
 msgstr "B4"
 
 #: src/frontends/gtk/GDocument.C:832
-#, fuzzy
 msgid "No headings numbered"
-msgstr "Ningún número"
+msgstr "Ningún encabezamiento numerado"
 
 #: src/frontends/gtk/GDocument.C:833
 msgid "Only parts numbered"
-msgstr ""
+msgstr "Solo partes numeradas"
 
 #: src/frontends/gtk/GDocument.C:834
 msgid "Chapters and above numbered"
-msgstr ""
+msgstr "Capítulos y superiores numerados"
 
 #: src/frontends/gtk/GDocument.C:835
-#, fuzzy
 msgid "Sections and above numbered"
-msgstr "Profundidad de sección:"
+msgstr "Secciones y superiores numerados"
 
 #: src/frontends/gtk/GDocument.C:836
 msgid "Subsections and above numbered"
-msgstr ""
+msgstr "Subsecciones y superiores numerados"
 
 #: src/frontends/gtk/GDocument.C:837
 msgid "Subsubsections and above numbered"
-msgstr ""
+msgstr "Subsubsecciones y superiores numerados"
 
 #: src/frontends/gtk/GDocument.C:838
 msgid "Paragraphs and above numbered"
-msgstr ""
+msgstr "Párrafos y superiores numerados"
 
 #: src/frontends/gtk/GDocument.C:839
 msgid "All headings numbered"
-msgstr ""
+msgstr "Todos los encabezamientos numerados"
 
 #: src/frontends/gtk/GDocument.C:850
-#, fuzzy
 msgid "Only Parts appear in TOC"
-msgstr "Aparece en el IG"
+msgstr "Solo Partes aparecen en el IG"
 
 #: src/frontends/gtk/GDocument.C:851
 msgid "Chapters and above appear in TOC"
-msgstr ""
+msgstr "Capítulos y superiores aparecen en el IG"
 
 #: src/frontends/gtk/GDocument.C:852
 msgid "Sections and above appear in TOC"
-msgstr ""
+msgstr "Secciones y superiores aparecen en el IG"
 
 #: src/frontends/gtk/GDocument.C:853
 msgid "Subsections and above appear in TOC"
-msgstr ""
+msgstr "Subsecciones y superiores aparecen en el IG"
 
 #: src/frontends/gtk/GDocument.C:854
 msgid "Subsubsections and above appear in TOC"
-msgstr ""
+msgstr "Subsubsecciones y superiores aparecen en el IG"
 
 #: src/frontends/gtk/GDocument.C:855
 msgid "Paragraphs and above appear in TOC"
-msgstr ""
+msgstr "Párrafos y superiores aparecen en el IG"
 
 #: src/frontends/gtk/GDocument.C:856
 msgid "TOC contains all headings"
-msgstr ""
+msgstr "El IG contiene todos los encabezamientos"
 
 #: src/frontends/gtk/GERT.C:33
 msgid "TeX Settings"
@@ -12115,9 +12108,8 @@ msgid "Copiers"
 msgstr "Copiadoras"
 
 #: src/frontends/qt2/QPrefsDialog.C:852
-#, fuzzy
 msgid "Format in use"
-msgstr "Formatos"
+msgstr "Formato en uso"
 
 #: src/frontends/qt2/QPrefsDialog.C:853
 #: src/frontends/xforms/FormPreferences.C:1466
@@ -12548,11 +12540,11 @@ msgstr ""
 
 #: src/frontends/xforms/FormDocument.C:389
 msgid "Enter the name of a new branch."
-msgstr "Introducir el nombre de una nueva rama."
+msgstr "Introducir el nombre de una rama nueva."
 
 #: src/frontends/xforms/FormDocument.C:391
 msgid "Add a new branch to the document."
-msgstr "Añadir una nueva rama al documento."
+msgstr "Añadir una rama nueva al documento."
 
 #: src/frontends/xforms/FormDocument.C:393
 msgid "Remove the selected branch from the document."
@@ -14097,14 +14089,12 @@ msgstr ""
 "Es necesario mantener su propia configuración."
 
 #: src/lyx_main.C:648
-#, fuzzy
 msgid "&Create directory"
-msgstr "&Crear directorio."
+msgstr "&Crear directorio"
 
 #: src/lyx_main.C:649
-#, fuzzy
 msgid "&Exit LyX"
-msgstr "&Salir de LyX."
+msgstr "&Salir de LyX"
 
 #: src/lyx_main.C:650
 msgid "No user LyX directory. Exiting."
@@ -14129,7 +14119,6 @@ msgid "Setting debug level to %1$s"
 msgstr "Estableciendo nivel de depuración a %1$s"
 
 #: src/lyx_main.C:826
-#, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -14151,15 +14140,15 @@ msgid ""
 "Check the LyX man page for more details."
 msgstr ""
 "Uso: lyx [ opciones ] [ nombre.lyx ... ]\n"
-"Opciones (distingue entre mayúsculas y minúsculas):\n"
+"Opciones (distingue mayúsculas):\n"
 "\t-help          resumen del uso de LyX\n"
-"\t-userdir dir   intentar poner directorio del usuario a dir\n"
-"\t-sysdir dir    intentar poner directorio del sistema a dir\n"
+"\t-userdir dir   poner directorio del usuario a dir\n"
+"\t-sysdir dir    poner directorio del sistema a dir\n"
 "\t-geometry WxH+X+Y poner geometría de la ventana principal\n"
 "\t-dbg característica[,característica]...\n"
 "                 seleccionar características a depurar\n"
-"\t-x [--execute] comando\n"
-"                 donde comando es un comando de LyX.\n"
+"\t-x [--execute] command\n"
+"                 donde command es un comando de LyX.\n"
 "\t-e [--export] fmt\n"
 "                 donde fmt es el formato a exportar.\n"
 "\t-e [--export] fmt archivo.xxx\n"
@@ -15080,7 +15069,7 @@ msgstr ""
 "No se pudo determinar la ruta al binario LyX desde la línea de comandos %1$s"
 
 #: src/support/package.C.in:545
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Unable to determine the system directory having searched\n"
 "\t%1$s\n"
@@ -15089,9 +15078,9 @@ msgid ""
 msgstr ""
 "No se pudo determinar el directorio del sistema habiendo buscado en\n"
 "\t%1$s\n"
-"Intente con el parámetro '-sysdir' de la línea de comandos o ponga en la "
-"variable de entorno LYX_DIR_14x al directorio del sistema que contiene el "
-"archivo `chkconfig.ltx'."
+"Use el parámetro '-sysdir' de la línea de comandos o ponga en la variable de "
+"entorno LYX_DIR_14x al directorio del sistema que contiene el archivo "
+"`chkconfig.ltx'."
 
 #: src/support/package.C.in:630
 #, c-format
@@ -15267,12 +15256,3 @@ msgstr "Relleno vertical"
 #: src/vspace.C:506
 msgid "protected"
 msgstr "protegido"
-
-#~ msgid "Scrolling"
-#~ msgstr "Desplazamiento"
-
-#~ msgid "W&heel mouse scroll:"
-#~ msgstr "Despla&zamiento rueda del ratón:"
-
-#~ msgid "Insert cases"
-#~ msgstr "Insertar casos"
