@@ -26,7 +26,7 @@
   <property name="sizeGripEnabled" >
    <bool>true</bool>
   </property>
-  <widget class="QWidget" name="" >
+  <widget class="QWidget" name="layoutWidget" >
    <property name="geometry" >
     <rect>
      <x>320</x>
@@ -50,9 +50,9 @@
      </widget>
     </item>
     <item row="1" column="0" >
-     <widget class="QPushButton" name="closePB" >
+     <widget class="QPushButton" name="cancelPB" >
       <property name="text" >
-       <string>Cancel</string>
+       <string>&amp;Cancel</string>
       </property>
       <property name="autoDefault" >
        <bool>false</bool>
@@ -331,19 +331,6 @@
     <cstring>selectedLV</cstring>
    </property>
   </widget>
-  <widget class="QPushButton" name="advancedSearchPB" >
-   <property name="geometry" >
-    <rect>
-     <x>260</x>
-     <y>240</y>
-     <width>111</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text" >
-    <string>Advanced &amp;Search...</string>
-   </property>
-  </widget>
   <widget class="QTextEdit" name="infoML" >
    <property name="geometry" >
     <rect>
@@ -390,6 +377,19 @@
     <string/>
    </property>
   </widget>
+  <widget class="QPushButton" name="advancedSearchPB" >
+   <property name="geometry" >
+    <rect>
+     <x>260</x>
+     <y>240</y>
+     <width>111</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Advanced &amp;Search...</string>
+   </property>
+  </widget>
  </widget>
  <pixmapfunction></pixmapfunction>
  <tabstops>
@@ -405,7 +405,7 @@
   <tabstop>restorePB</tabstop>
   <tabstop>okPB</tabstop>
   <tabstop>applyPB</tabstop>
-  <tabstop>closePB</tabstop>
+  <tabstop>cancelPB</tabstop>
  </tabstops>
  <resources/>
  <connections/>
