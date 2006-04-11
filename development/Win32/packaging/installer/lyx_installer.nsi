@@ -26,7 +26,8 @@ SetCompressor lzma
 ; You should need to change only these macros...
 
 !define PRODUCT_NAME "LyX"
-!define PRODUCT_VERSION "1.4.0"
+!define PRODUCT_VERSION "1.4.1"
+!define INSTALLER_VERSION "141"
 !define PRODUCT_LICENSE_FILE "..\..\..\..\COPYING"
 !define PRODUCT_SOURCEDIR "..\..\..\..\build\installprefix"
 !define PRODUCT_EXE "$INSTDIR\bin\lyx.exe"
@@ -35,21 +36,21 @@ SetCompressor lzma
 !define PRODUCT_MIME_TYPE "application/lyx"
 !define PRODUCT_UNINSTALL_EXE "$INSTDIR\uninstall.exe"
 
-!define INSTALLER_EXE "lyx_setup_140.exe"
+!define INSTALLER_EXE "lyx_setup_141.exe"
 !define INSTALLER_ICON "..\icons\lyx_32x32.ico"
 
 ; Replaced by HKLM or HKCU depending on SetShellVarContext.
 !define PRODUCT_ROOT_KEY "SHCTX"
 
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\lyx.exe"
-!define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
+!define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\LyX14"
 
 ;--------------------------------
 ; Make some of the information above available to NSIS.
 
 Name "${PRODUCT_NAME}"
 OutFile "${INSTALLER_EXE}"
-InstallDir "$PROGRAMFILES\${PRODUCT_NAME}"
+InstallDir "$PROGRAMFILES\${PRODUCT_NAME}${INSTALLER_VERSION}"
 
 ;--------------------------------
 !include "MUI.nsh"
@@ -161,6 +162,7 @@ Page custom SelectMenuLanguage SelectMenuLanguage_LeaveFunction
 !define MUI_STARTMENUPAGE_REGISTRY_ROOT "${PRODUCT_ROOT_KEY}"
 !define MUI_STARTMENUPAGE_REGISTRY_KEY "${PRODUCT_UNINST_KEY}"
 !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME "Start Menu Folder"
+!define MUI_STARTMENUPAGE_DEFAULTFOLDER "LyX ${PRODUCT_VERSION}"
 !insertmacro MUI_PAGE_STARTMENU ${PRODUCT_NAME} $StartmenuFolder
 
 ; Watch the components being installed.
@@ -264,11 +266,17 @@ Section "-Installation actions" SecInstallation
 
   WriteRegStr HKLM "${PRODUCT_DIR_REGKEY}" "" "${PRODUCT_EXE}"
   WriteRegStr ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "RootKey" "$ProductRootKey"
-  WriteRegStr ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayName" "$(^Name)"
+  WriteRegStr ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayName" "${PRODUCT_NAME} ${PRODUCT_VERSION}"
   WriteRegStr ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "UninstallString" "${PRODUCT_UNINSTALL_EXE}"
   WriteRegStr ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayIcon" "${PRODUCT_EXE}"
   WriteRegStr ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayVersion" "${PRODUCT_VERSION}"
   WriteRegStr ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "StartMenu" "$SMPROGRAMS\$StartmenuFolder"
+  WriteRegStr ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "URLUpdateInfo" "http://www.lyx.org/"
+  WriteRegStr ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "URLInfoAbout" "http://www.lyx.org/about/"
+  WriteRegStr ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "Publisher" "LyX Team"
+  WriteRegStr ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "HelpLink" "http://www.lyx.org/internet/mailing.php"
+  WriteRegDWORD ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "NoModify" 0x00000001
+  WriteRegDWORD ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "NoRepair" 0x00000001
 
   CreateDirectory "$SMPROGRAMS\$StartmenuFolder"
   CreateShortCut "$SMPROGRAMS\$StartmenuFolder\${PRODUCT_NAME}.lnk" "${PRODUCT_BAT}" "" "${PRODUCT_EXE}"
