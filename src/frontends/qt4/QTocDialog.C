@@ -13,6 +13,7 @@
 
 #include "QTocDialog.h"
 #include "QToc.h"
+#include "Qt2BC.h"
 #include "qt_helpers.h"
 #include "controllers/ControlToc.h"
 
@@ -41,6 +42,9 @@ QTocDialog::QTocDialog(QToc * form)
 {
 	setupUi(this);
 
+	// Manage the cancel/close button
+	form_->bcview().setCancel(closePB);
+
 	// disable sorting
 	tocTW->setSortingEnabled(false);
 	tocTW->setColumnCount(1);
@@ -64,8 +68,6 @@ void QTocDialog::on_tocTW_currentItemChanged(QTreeWidgetItem * current,
 								 QTreeWidgetItem * previous)
 {
 	form_->select(fromqstr(current->text(0)));
-		lyxerr[Debug::GUI]
-			<< fromqstr(current->text(0)) << " selected" << endl;
 }
 
 void QTocDialog::on_closePB_clicked()
@@ -227,7 +229,8 @@ void QTocDialog::populateItem(QTreeWidgetItem * parentItem, toc::Toc::const_iter
 		item->setText(0, toqstr(iter->str));
 
 		if (iter->depth < depth_) tocTW->collapseItem(item);
-//		else tocTW->expandItem(item);
+		else tocTW->expandItem(item);
+
 		lyxerr[Debug::GUI]
 			<< "Table of contents: Added item " << iter->str
 			<< " at depth " << iter->depth
