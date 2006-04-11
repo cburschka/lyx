@@ -1,3 +1,9 @@
+2006-04-11  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* libs/filesystem/src/operations_posix_windows.cpp: change needed
+	to enable compilation against NewAPIs.h. Ie, LyX 1.4 will work for
+	Win98 users.
+
 2006-02-21  Lars Gullik Bjønnes <larsbj@lyx.org>
 
 	* boost/bind.hpp: include visit_each.hpp to fix a gcc 4.1 compile

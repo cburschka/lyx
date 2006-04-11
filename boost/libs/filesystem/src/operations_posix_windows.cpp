@@ -73,7 +73,7 @@ namespace fs = boost::filesystem;
         // if WINVER < 0x04A.
 #       include <w32api.h>
 #       if __W32API_MAJOR_VERSION < 3 || \
-           __W32API_MAJOR_VERSION == 3 && __W32API_MINOR_VERSION <= 3
+           __W32API_MAJOR_VERSION == 3 && __W32API_MINOR_VERSION <= 6
 #         define BOOST_FILESYSTEM_WINVER WINVER
 #         undef WINVER
 #         define WINVER 0x040A
