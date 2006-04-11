@@ -4,14 +4,14 @@ Public release of LyX version 1.4.1
 We are pleased to announce the release of LyX 1.4.1. This is a bug fix
 release, but some of the bugs were big. In particular:
 
-- fix the huge memory consumption and corresponding sluggishness with
-  documents containing many graphics or `instant preview' snippets.
+ - fix the huge memory consumption and corresponding sluggishness with
+   documents containing many graphics or `instant preview' snippets.
 
-- fix slow screen update with nested insets, particularly with LyX/Mac.
+ - fix slow screen update with nested insets, particularly with LyX/Mac.
 
-- fix the delay when exiting from a math inset. 
+ - fix the delay when exiting from a math inset. 
 
-- let the change tracking code track paragraph breaks too.
+ - let the change tracking code track paragraph breaks too.
 
 Also, this will be the first 1.4 release with a windows installer.
 
@@ -87,5 +87,136 @@ The LyX team.
 What's new in version 1.4.1?
 ---------------------------- 
 
+** Updates
 
+- Enable breaking and merging of paragraphs in change tracking mode
+  (bug 880).
+
+- Update Basque, German, Hungarian, Italian, Polish and Spanish
+  localizations; import 1.3.7 localizations for Finnish, Slovak,
+  Russian, Slovenian, Romanian, Dutch and Turkish.
+
+- Update Spanish translation of the tutorial; update German
+  translation of the Tutorial and Introduction.
+
+- Document the packages fancybox, prettyref, preview and varioref in 
+  LaTeXConfig.lyx.
+
+
+** Bug fixes
+
+* Document input/output:
+
+- Fix LaTeX error with Address layout in AMS classes (bug 2363).
+
+- Fix LaTeX error when \labelitemi is undefined (bug 2053).
+
+- Fix LaTeX error when inserting a graphic in a section heading or a
+  caption (bug 675).
+
+- Translate \verb commands correctly in tex2lyx (bug 2236).
+
+- Truncate temporary file names that are too long for MikTeX's pdflatex.
+
+- Parse \tag and \tag* commands correctly in tex2lyx and mathed (bug 2234).
+
+- Import fixed width table columns correctly in tex2lyx (bug 2290).
+
+- Convert old LyX documents with a float list at the end correctly in
+  lyx2lyx (bug 2245).
+
+- Fix crash when generating LaTeX dependencies on Cygwin.
+
+- Fix wrong path_prefix handling in Cygwin builds (bug 2344)
+
+- Set search path for included files correctly on Cygwin (bug 2409).
+
+- Better layout file conversion (bug 2355)
+
+- Fix convertion of old documents with SGML paragraphs in lyx-docbook
+  documents (bug 2501). Note that this fix is incomplete and the
+  complete fix will go in 1.4.2
+
+
+* Math editor:
+
+- Fix crash when deleting row/column in a math array.
+
+- Fix crash with middle-mouse paste in math.
+
+- Fix delay when exiting from a math inset (bug 2217).
+
+- Fix middle-mouse paste in math that went both inside and outside
+  math (bug 2485).
+
+- Fix positioning of cursor when clicking to right of last nestinset
+  in a cell.
+
+- Fix: deleting superscript also deleted subscript (bug 2362).
+
+- Fix conversion of selection to superscript, subscript or mbox inset (math).
+
+- Fix drawing of \boxed and \fbox in formulas (bug 2361).
+
+- Fixed broken math panel sub/super script UI
+
+
+* User Interface:
+
+- Fix slowness in rendering inside insets, especially on the Mac (bug 2195)
+
+- Convert line endings for external copy/paste on OS X (bug 1955).
+
+- Fix bookmarks and links to LaTeX errors which were broken after paragraph
+  deletion/insertion (bugs 2284 and 2242).
+
+- Disable saving when document is unchanged (bug 2313).
+
+- Fix jurabib error with Spanish documents (bug 2365).
+
+- Propose sensible style files for bibtex, depending on whether plain,
+  natbib or jurabib is used (bug 2322).
+
+- Avoid bogus values like -1000 for section numbering depth when using
+  classes without a sectioning structure (part of bug 2355).
+
+- Create a more sensible default label in table and figure captions (bug 1999).
+
+- Do not skip first change in "Merge changes..." dialog (bug 2212).
+
+- Improve handling of the labeling environment in KOMA letters (bug 2246).
+
+- Update screen when cursor is between two spaces and goes to
+  line/document start/end (bug 2298).
+
+- Adjust cursor after backspace in change tracking mode (bug 2185).
+
+- Fix cursor positioning in tabulars (bug 2006).
+
+- Fix copy and paste for multiple cells (bug 2377).
+
+- Fix drawing of inset buttons (bug 2328).
+
+- Small optimizations in the way the Qt frontend updates the screen.
+
+- Use the Qt wide scroll wheel setting (bug 2175).
+
+- Remove zombie wheel mouse spin box from the Qt preferences dialog (bug 783).
+
+- Fix Find&Replace with sciword bindings.
+
+- Prevent non-standard paragraph layouts in charstyle insets
+
+- Reading the bounding box from eps files does not fail anymore when the
+  file contains additional spaces (bug 1235)
+
+- Fix LaTeX error for zipped graphics (bug 2231).
+
+
+* Configuration/Installation:
+
+- Don't use the -mms-bitfields compiler switch on mingw and cygwin, since
+  Q..3/ does not use it either in the default configuration.
+
+- Compilation fix (gtk frontend) for gcc 4.1.
 
