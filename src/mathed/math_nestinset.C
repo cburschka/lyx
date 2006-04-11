@@ -790,10 +790,6 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_DEFAULT:
 		handleFont(cur, cmd.argument, "textnormal");
 		break;
-	case LFUN_UNDERLINE:
-		recordUndo(cur, Undo::ATOMIC);
-		cur.handleNest(createMathInset("underline"));
-		break;
 
 	case LFUN_MATH_MODE: {
 #if 1
