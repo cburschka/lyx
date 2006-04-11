@@ -21,6 +21,7 @@ const QColor grey40(0x66, 0x66, 0x66);
 const QColor grey60(0x99, 0x99, 0x99);
 const QColor grey80(0xcc, 0xcc, 0xcc);
 const QColor grey90(0xe5, 0xe5, 0xe5);
+const QColor none = Qt::black;
 
 
 LColorCache::LColorCache()
@@ -41,6 +42,8 @@ QColor const & LColorCache::get(LColor_color col) const
 		colormap[col] = grey80;
 	else if (lcolor.getX11Name(col) == "grey90")
 		colormap[col] = grey90;
+	else if (lcolor.getX11Name(col) == "none")
+		colormap[col] = none;
 	else
 		colormap[col] = QColor(lcolor.getX11Name(col).c_str());
 
