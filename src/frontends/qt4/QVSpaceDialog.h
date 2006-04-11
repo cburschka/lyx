@@ -32,7 +32,7 @@ public:
 public slots:
 	void change_adaptor();
 
-protected:
+protected slots:
 	void closeEvent(QCloseEvent *);
 	void enableCustom(int);
 

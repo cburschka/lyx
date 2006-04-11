@@ -65,9 +65,9 @@ void QVSpaceDialog::change_adaptor()
 }
 
 
-void QVSpaceDialog::enableCustom(int)
+void QVSpaceDialog::enableCustom(int selection)
 {
-	bool const enable = spacingCO->currentItem() == 5;
+	bool const enable = selection == 5;
 	valueLE->setEnabled(enable);
 	unitCO->setEnabled(enable);
 }
