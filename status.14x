@@ -56,18 +56,39 @@ What's new
 
 - Fix crash when generating LaTeX dependencies on Cygwin.
 
-- Fixed bug 2485: middle-mouse insertion in math inserts both inside and
-  outside math; also fixed crash, and moved from mouse release to mouse
-  press
-
 - Fix wrong path_prefix handling in Cygwin builds (bug 2344)
 
 - Set search path for included files correctly on Cygwin (bug 2409).
 
 - Better layout file conversion (bug 2355)
 
-- Fix convertion of old documents with SGML paragraphs in lyx-docbook documents
-  (bug 2501). Note that this fix is incomplete and the complete fix will go in 1.4.2
+- Fix convertion of old documents with SGML paragraphs in lyx-docbook
+  documents (bug 2501). Note that this fix is incomplete and the
+  complete fix will go in 1.4.2
+
+
+* Math editor:
+
+- Fix crash when deleting row/column in a math array.
+
+- Fix crash with middle-mouse paste in math.
+
+- Fix delay when exiting from a math inset (bug 2217).
+
+- Fix middle-mouse paste in math that went both inside and outside
+  math (bug 2485).
+
+- Fix positioning of cursor when clicking to right of last nestinset
+  in a cell.
+
+- Fix: deleting superscript also deleted subscript (bug 2362).
+
+- Fix conversion of selection to superscript, subscript or mbox inset (math).
+
+- Fix drawing of \boxed and \fbox in formulas (bug 2361).
+
+- Fixed broken math panel sub/super script UI
+
 
 * User Interface:
 
@@ -93,19 +114,6 @@ What's new
 - Do not skip first change in "Merge changes..." dialog (bug 2212).
 
 - Improve handling of the labeling environment in KOMA letters (bug 2246).
-
-- Fix crash when deleting row/column in a math array.
-
-- Fix delay when exiting from a math inset (bug 2217).
-
-- Fix positioning of cursor when clicking to right of last nestinset
-  in a cell.
-
-- Fix: deleting superscript also deleted subscript (bug 2362).
-
-- Fix conversion of selection to superscript, subscript or mbox inset (math).
-
-- Fix drawing of \boxed and \fbox in formulas (bug 2361).
 
 - Update screen when cursor is between two spaces and goes to
   line/document start/end (bug 2298).
@@ -139,9 +147,4 @@ What's new
   Q..3/ does not use it either in the default configuration.
 
 - Compilation fix (gtk frontend) for gcc 4.1.
-
-- Bookmarks and links to LaTeX errors are broken after paragraph
-  deletion/insertion (bugs 2284 and 2242).
-
-- Fixed broken math panel sub/super script UI
 
