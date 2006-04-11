@@ -1,5 +1,12 @@
 2006-04-11  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	* Win32/packaging/installer/lyx_installer.nsi: Ensure that we
+	apply compression to everything in one go rather than on
+	individual files (Recent versions of NSIS have changed the
+	semantics of how to invoke really efficient compression).
+
+2006-04-11  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
 	* Win32/packaging/installer/lyx_installer.nsi: update for 1.4.1.
 
 2006-03-28  Bennett Helm <bennett.helm@fandm.edu>
