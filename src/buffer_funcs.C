@@ -496,7 +496,9 @@ void setCounter(Buffer const & buf, ParIterator & it)
 		}
 
 		par.params().labelString(s);
-	} else
+	} else if (layout->labeltype == LABEL_NO_LABEL)
+		par.params().labelString(string());
+	else
 		par.params().labelString(buf.B_(layout->labelstring()));
 }
 
