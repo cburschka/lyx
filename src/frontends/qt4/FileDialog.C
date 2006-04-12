@@ -37,7 +37,7 @@
 #ifdef USE_NATIVE_FILEDIALOG
 #include <qapplication.h>
 #include "support/filetools.h"
-using lyx::support::MakeAbsPath;
+using lyx::support::makeAbsPath;
 #endif
 
 using lyx::support::FileFilterList;
@@ -79,7 +79,7 @@ FileDialog::Result const FileDialog::save(string const & path,
 	result.first = FileDialog::Chosen;
 
 #ifdef USE_NATIVE_FILEDIALOG
-	string const startsWith = MakeAbsPath(suggested, path);
+	string const startsWith = makeAbsPath(suggested, path);
 	result.second = fromqstr(
 		Q3FileDialog::getSaveFileName(toqstr(startsWith),
 					     toqstr(filters.as_string()),
@@ -114,7 +114,7 @@ FileDialog::Result const FileDialog::open(string const & path,
 	result.first = FileDialog::Chosen;
 
 #ifdef USE_NATIVE_FILEDIALOG
-	string const startsWith = MakeAbsPath(suggested, path);
+	string const startsWith = makeAbsPath(suggested, path);
 	result.second = fromqstr(
 		Q3FileDialog::getOpenFileName(toqstr(startsWith),
 					     toqstr(filters.as_string()),
@@ -146,7 +146,7 @@ FileDialog::Result const FileDialog::opendir(string const & path,
 	result.first = FileDialog::Chosen;
 
 #ifdef USE_NATIVE_FILEDIALOG
-	string const startsWith = MakeAbsPath(suggested, path);
+	string const startsWith = makeAbsPath(suggested, path);
 	result.second = fromqstr(
 		Q3FileDialog::getExistingDirectory(toqstr(startsWith),
 						  qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(),
