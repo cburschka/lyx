@@ -80,10 +80,8 @@ char const * MathAMSArrayInset::name_right() const
 
 void MathAMSArrayInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	MetricsInfo m = mi;
-	if (m.base.style == LM_ST_DISPLAY)
-		m.base.style = LM_ST_TEXT;
-	MathGridInset::metrics(m, dim);
+	ArrayChanger dummy(mi.base);
+	MathGridInset::metrics(mi, dim);
 	dim.wid += 14;
 	dim_ = dim;
 }
@@ -91,11 +89,12 @@ void MathAMSArrayInset::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void MathAMSArrayInset::draw(PainterInfo & pi, int x, int y) const
 {
-	MathGridInset::drawWithMargin(pi, x, y, 6, 8);
 	int const yy = y - dim_.ascent();
+	// Drawing the deco after an ArrayChanger does not work
 	mathed_draw_deco(pi, x + 1, yy, 5, dim_.height(), name_left());
 	mathed_draw_deco(pi, x + dim_.width() - 8, yy, 5, dim_.height(), name_right());
-	setPosCache(pi, x, y);
+	ArrayChanger dummy(pi.base);
+	MathGridInset::drawWithMargin(pi, x, y, 6, 8);
 }
 
 
