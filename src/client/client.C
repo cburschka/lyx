@@ -27,6 +27,11 @@
 # include <unistd.h>
 #endif
 
+// struct timeval
+#ifdef HAVE_SYS_TIME_H
+# include <sys/time.h>
+#endif
+
 // select()
 #ifdef HAVE_SYS_SELECT_H
 # include <sys/select.h>
