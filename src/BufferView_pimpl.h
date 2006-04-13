@@ -76,8 +76,6 @@ public:
 	/// Wheel mouse scroll, move by multiples of text->defaultRowHeight().
 	void scroll(int lines);
 	///
-	typedef boost::shared_ptr<LyXKeySym> LyXKeySymPtr;
-	///
 	void workAreaKeyPress(LyXKeySymPtr key, key_modifier::state state);
 	///
 	void selectionRequested();

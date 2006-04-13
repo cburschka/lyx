@@ -14,20 +14,17 @@
 #define KBSEQUENCE_H
 
 #include "frontends/key_state.h"
-
-#include <boost/shared_ptr.hpp>
+#include "frontends/LyXKeySym.h"
 
 #include <string>
 #include <vector>
 
 class kb_keymap;
-class LyXKeySym;
 class FuncRequest;
 
 /// Holds a key sequence and the current and standard keymaps
 class kb_sequence {
 public:
-	typedef boost::shared_ptr<LyXKeySym> LyXKeySymPtr;
 	typedef std::vector<LyXKeySymPtr> KeySequence;
 
 	friend class kb_keymap;

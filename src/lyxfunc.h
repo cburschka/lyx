@@ -48,8 +48,6 @@ public:
 	std::string const viewStatusMessage();
 
 	///
-	typedef boost::shared_ptr<LyXKeySym> LyXKeySymPtr;
-	///
 	void processKeySym(LyXKeySymPtr key, key_modifier::state state);
 
 	///

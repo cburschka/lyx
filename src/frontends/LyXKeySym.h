@@ -16,6 +16,8 @@
 
 #include "key_state.h"
 
+#include <boost/shared_ptr.hpp>
+
 /**
  * This is a base class for representing a keypress.
  * Each frontend has to implement this to provide
@@ -63,5 +65,7 @@ public:
  * sake of the keymap business.
  */
 bool operator==(LyXKeySym const & k1, LyXKeySym const & k2);
+
+typedef boost::shared_ptr<LyXKeySym> LyXKeySymPtr;
 
 #endif
