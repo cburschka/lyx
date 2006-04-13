@@ -668,65 +668,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		string const clip = cur.bv().getClipboard();
 		if (clip.empty())
 			break;
-		if (clip.find('\t') != string::npos) {
-			col_type cols = 1;
-			row_type rows = 1;
-			col_type maxCols = 1;
-			size_t len = clip.length();
-			for (size_t p = 0; p < len; ++p) {
-				p = clip.find_first_of("\t\n", p);
-				if (p == string::npos)
-					break;
-				switch (clip[p]) {
-				case '\t':
-					++cols;
-					break;
-				case '\n':
-					if (p + 1 < len)
-						++rows;
-					maxCols = max(cols, maxCols);
-					cols = 1;
-					break;
-				}
-			}
-			maxCols = max(cols, maxCols);
-
-			paste_tabular.reset(
-				new LyXTabular(cur.buffer().params(), rows, maxCols));
-
-			string::size_type op = 0;
-			idx_type cell = 0;
-			idx_type const cells =
-				paste_tabular->getNumberOfCells();
-			cols = 0;
-			LyXFont font;
-			for (size_t p = 0; cell < cells && p < len; ++p) {
-				p = clip.find_first_of("\t\n", p);
-				if (p == string::npos || p >= len)
-					break;
-				switch (clip[p]) {
-				case '\t':
-					paste_tabular->getCellInset(cell)->
-						setText(clip.substr(op, p - op), font);
-					++cols;
-					++cell;
-					break;
-				case '\n':
-					paste_tabular->getCellInset(cell)->
-						setText(clip.substr(op, p - op), font);
-					while (cols++ < maxCols)
-						++cell;
-					cols = 0;
-					break;
-				}
-				op = p + 1;
-			}
-			// check for the last cell if there is no trailing '\n'
-			if (cell < cells && op < len)
-				paste_tabular->getCellInset(cell)->
-					setText(clip.substr(op, len - op), font);
-			dirtyTabularStack(true);
-		} else if (insertAsciiString(cur.bv(), clip, false))
+		if (insertAsciiString(cur.bv(), clip, false))
 			break;
 		else {
 			// so that the clipboard is used and it goes on
