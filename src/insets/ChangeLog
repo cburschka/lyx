@@ -1,3 +1,9 @@
+2006-04-13  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* insettabular (doDispatch): use insertAsciiString in
+	LFUN_PASTESELECTION. Simplifies the code a lot and fixes 
+	wrong language settings.
+
 2006-03-18  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* insetbase.h (asTextInset):
