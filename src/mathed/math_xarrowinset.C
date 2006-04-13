@@ -16,6 +16,8 @@
 #include "math_streamstr.h"
 #include "math_support.h"
 
+#include "LaTeXFeatures.h"
+
 using std::string;
 using std::auto_ptr;
 
@@ -66,4 +68,11 @@ void MathXArrowInset::write(WriteStream & os) const
 void MathXArrowInset::normalize(NormalStream & os) const
 {
 	os << "[xarrow " << name_ << ' ' <<  cell(0) << ' ' << cell(1) << ']';
+}
+
+
+void MathXArrowInset::validate(LaTeXFeatures & features) const
+{
+	features.require("amsmath");
+	MathNestInset::validate(features);
 }

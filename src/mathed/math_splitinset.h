@@ -31,6 +31,8 @@ public:
 	///
 	void infoize(std::ostream & os) const;
 	///
+	void validate(LaTeXFeatures & features) const;
+	///
 	int defaultColSpace(col_type) { return 0; }
 	///
 	char defaultColAlign(col_type);

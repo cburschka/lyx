@@ -18,6 +18,7 @@
 #include "funcrequest.h"
 #include "FuncStatus.h"
 #include "gettext.h"
+#include "LaTeXFeatures.h"
 
 #include "support/lstrings.h"
 #include "support/std_ostream.h"
@@ -102,4 +103,11 @@ void MathSplitInset::infoize(std::ostream & os) const
 	string name = name_;
 	name[0] = lyx::support::uppercase(name[0]);
 	os << name << ' ';
+}
+
+
+void MathSplitInset::validate(LaTeXFeatures & features) const
+{
+	features.require("amsmath");
+	MathNestInset::validate(features);
 }
