@@ -19,7 +19,7 @@
 
 #include "lcolorcache.h"
 #include "qt_helpers.h"
-
+#include "BufferView.h"
 #include "debug.h"
 #include "funcrequest.h"
 #include "LColor.h"
@@ -230,7 +230,10 @@ void QWorkArea::adjustViewWithScrollBar(int action)
 
 void QWorkArea::haveSelection(bool own) const
 {
-	wa_ptr = this;
+	// static_cast is not possible here
+	// wa_ptr = static_cast<QWorkArea*>(this);
+	/// \todo ask X11 and MAC devels why this wa_ptr is useful.
+	wa_ptr = (QWorkArea*)(this);
 
 	if (!QApplication::clipboard()->supportsSelection())
 		return;
