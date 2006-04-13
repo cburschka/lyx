@@ -23,6 +23,7 @@
 #include "GtkmmX.h"
 #include "GLyXKeySym.h"
 
+#include "BufferView.h"
 #include "debug.h"
 #include "funcrequest.h"
 #include "LColor.h"
@@ -172,7 +173,7 @@ void inputCommitRelay(GtkIMContext */*imcontext*/, gchar * str, GWorkArea * area
 
 
 GWorkArea::GWorkArea(LyXView & owner, int width, int height)
-	: workAreaPixmap_(0), painter_(*this), draw_(0), colorHandler_(*this),
+    : view_(owner), workAreaPixmap_(0), painter_(*this), draw_(0), colorHandler_(*this),
 	  adjusting_(false)
 {
 	workArea_.set_size_request(width, height);
@@ -331,7 +332,7 @@ bool GWorkArea::onConfigure(GdkEventConfigure * /*event*/)
 		gtk_im_context_set_client_window(
 			imContext_, workArea_.get_window()->gobj());
 	}
-	workAreaResize();
+	view_.view()->workAreaResize();
 	return true;
 }
 
@@ -374,7 +375,7 @@ void GWorkArea::onScroll()
 	adjusting_ = true;
 
 	double val = vscrollbar_.get_adjustment()->get_value();
-	scrollDocView(static_cast<int>(val));
+	view_.view()->scrollDocView(static_cast<int>(val));
 	adjusting_ = false;
 }
 
@@ -420,7 +421,7 @@ bool GWorkArea::onButtonPress(GdkEventButton * event)
 	default:
 		break;
 	}
-	dispatch(FuncRequest(ka,
+	view_.view()->workAreaDispatch(FuncRequest(ka,
 			     static_cast<int>(event->x),
 			     static_cast<int>(event->y),
 			     gButtonToLyx(event->button)));
@@ -431,7 +432,7 @@ bool GWorkArea::onButtonPress(GdkEventButton * event)
 
 bool GWorkArea::onButtonRelease(GdkEventButton * event)
 {
-	dispatch(FuncRequest(LFUN_MOUSE_RELEASE,
+        view_.view()->workAreaDispatch(FuncRequest(LFUN_MOUSE_RELEASE,
 			     static_cast<int>(event->x),
 			     static_cast<int>(event->y),
 			     gButtonToLyx(event->button)));
@@ -456,7 +457,7 @@ bool GWorkArea::onMotionNotify(GdkEventMotion * event)
 		}
 		timeBefore = event->time;
 	}
-	dispatch(FuncRequest(LFUN_MOUSE_MOTION,
+	view_.view()->workAreaDispatch(FuncRequest(LFUN_MOUSE_MOTION,
 			     static_cast<int>(event->x),
 			     static_cast<int>(event->y),
 			     gtkButtonState(event->state)));
@@ -480,7 +481,7 @@ bool GWorkArea::onKeyPress(GdkEventKey * event)
 	    !inputGet) {
 #endif
 		GLyXKeySym *glk = new GLyXKeySym(event->keyval);
-		workAreaKeyPress(LyXKeySymPtr(glk),
+		view_.view()->workAreaKeyPress(LyXKeySymPtr(glk),
 				 gtkKeyState(event->state));
 #ifdef I18N
 	} else if (!inputCache_.empty())
@@ -493,7 +494,7 @@ bool GWorkArea::onKeyPress(GdkEventKey * event)
 void GWorkArea::onClipboardGet(Gtk::SelectionData & /*selection_data*/,
 			       guint /*info*/)
 {
-	selectionRequested();
+	view_.view()->selectionRequested();
 }
 
 
@@ -519,7 +520,7 @@ void GWorkArea::haveSelection(bool toHave) const
 }
 
 
-// ENCODING: Gtk::Clipboard returns UTF-8, we assume that the backend 
+// ENCODING: Gtk::Clipboard returns UTF-8, we assume that the backend
 // wants ISO-8859-1 and convert it to that.
 string const GWorkArea::getClipboard() const
 {
@@ -530,7 +531,7 @@ string const GWorkArea::getClipboard() const
 }
 
 
-// ENCODING: we assume that the backend passes us ISO-8859-1 and 
+// ENCODING: we assume that the backend passes us ISO-8859-1 and
 // convert from that to UTF-8 before passing to GTK
 void GWorkArea::putClipboard(string const & str) const
 {

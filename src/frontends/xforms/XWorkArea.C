@@ -12,6 +12,7 @@
 #include <config.h>
 
 #include "XWorkArea.h"
+#include "BufferView.h"
 
 #include "Color.h"
 #include "XFormsView.h"
@@ -108,7 +109,7 @@ int C_event_cb(FL_FORM * form, void * xev)
 
 
 XWorkArea::XWorkArea(LyXView & owner, int w, int h)
-	: workareapixmap(0), painter_(*this)
+        : view_(owner), workareapixmap(0), painter_(*this)
 {
 	fl_freeze_all_forms();
 
@@ -219,7 +220,7 @@ void XWorkArea::redraw(int width, int height)
 				       height,
 				       fl_get_visual_depth());
 
-	workAreaResize();
+	view_.view()->workAreaResize();
 }
 
 
@@ -276,7 +277,7 @@ void XWorkArea::scroll_cb()
 		       << "scroll: docheight: " << doc_height_ << endl;
 	}
 
-	scrollDocView(int(val));
+	view_.view()->scrollDocView(int(val));
 	waitForX(false);
 }
 
@@ -331,7 +332,7 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 
 		// Should really have used xbutton.state
 		lyxerr[Debug::WORKAREA] << "Workarea event: PUSH" << endl;
-		area->dispatch(
+		area->view_.view()->workAreaDispatch(
 			FuncRequest(LFUN_MOUSE_PRESS,
 				    ev->xbutton.x - ob->x,
 				    ev->xbutton.y - ob->y,
@@ -349,7 +350,7 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 
 		lyxerr[Debug::WORKAREA] << "Workarea event: RELEASE" << endl;
 
-		area->dispatch(
+		area->view_.view()->workAreaDispatch(
 			FuncRequest(LFUN_MOUSE_RELEASE,
 				    ev->xbutton.x - ob->x,
 				    ev->xbutton.y - ob->y,
@@ -418,7 +419,7 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 					ev->xbutton.x - ob->x,
 					ev->xbutton.y - ob->y,
 					x_button_state(key));
-			area->dispatch(cmd);
+			area->view_.view()->workAreaDispatch(cmd);
 		}
 		break;
 	}
@@ -509,7 +510,7 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		XLyXKeySym * xlk = new XLyXKeySym;
 		xlk->initFromKeySym(ret_key);
 
-		area->workAreaKeyPress(LyXKeySymPtr(xlk),
+		area->view_.view()->workAreaKeyPress(LyXKeySymPtr(xlk),
 				       x_key_state(ret_state));
 		break;
 	}
@@ -542,7 +543,7 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 					ev->xbutton.x - ob->x,
 					ev->xbutton.y - ob->y,
 					x_button_state(key));
-			area->dispatch(cmd);
+			area->view_.view()->workAreaDispatch(cmd);
 		}
 		break;
 
@@ -558,7 +559,7 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 					ev->xbutton.x - ob->x,
 					ev->xbutton.y - ob->y,
 					x_button_state(key));
-			area->dispatch(cmd);
+			area->view_.view()->workAreaDispatch(cmd);
 		}
 		break;
 
@@ -601,11 +602,11 @@ int XWorkArea::event_cb(XEvent * xev)
 	switch (xev->type) {
 	case SelectionRequest:
 		lyxerr[Debug::GUI] << "X requested selection." << endl;
-		selectionRequested();
+		view_.view()->selectionRequested();
 		break;
 	case SelectionClear:
 		lyxerr[Debug::GUI] << "Lost selection." << endl;
-		selectionLost();
+		view_.view()->selectionLost();
 		break;
 	}
 	return 0;

@@ -63,7 +63,15 @@ public:
 
 	/// get the content pane widget
 	QWidget * getContent() const { return content_; }
+        ///
+        LyXView & view()
+        {
+                return owner_;
+        }
 private:
+        /// The owning LyXView
+        LyXView & owner_;
+        
 	/// scroll bar
 	QScrollBar * scrollbar_;
 	/// content

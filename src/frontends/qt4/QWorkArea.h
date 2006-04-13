@@ -145,6 +145,10 @@ public:
 	*/
 	void drawScreen(int x, int y, QPixmap pixmap);
 
+        LyXView & view()
+        {
+                return view_;
+        }
 protected:
 
 	/// repaint part of the widget
@@ -185,7 +189,9 @@ public slots:
 	void adjustViewWithScrollBar(int action = 0);
 
 private:
-
+        ///
+        LyXView & view_;
+        
 	/// Buffer view width.
 	int workWidth_;
 

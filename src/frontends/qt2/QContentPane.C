@@ -10,6 +10,9 @@
 
 #include <config.h>
 
+#include "BufferView.h"
+#include "frontends/LyXView.h"
+
 // Qt defines a macro 'signals' that clashes with a boost namespace.
 // All is well if the namespace is visible first.
 #include "QWorkArea.h"
@@ -155,7 +158,7 @@ void QContentPane::generateSyntheticMouseEvent()
 		synthetic_mouse_event_.scrollbar_value_old = scrollbar_value;
 
 		// ... and dispatch the event to the LyX core.
-		wa_->dispatch(synthetic_mouse_event_.cmd);
+                wa_->view().view()->workAreaDispatch(synthetic_mouse_event_.cmd);
 	}
 }
 
@@ -163,7 +166,7 @@ void QContentPane::generateSyntheticMouseEvent()
 void QContentPane::scrollBarChanged(int val)
 {
 	if (track_scrollbar_)
-		wa_->scrollDocView(val);
+                wa_->view().view()->scrollDocView(val);
 }
 
 
@@ -174,13 +177,13 @@ void QContentPane::mousePressEvent(QMouseEvent * e)
 		FuncRequest cmd(LFUN_MOUSE_TRIPLE,
 			dc_event_.x, dc_event_.y,
 			q_button_state(dc_event_.state));
-		wa_->dispatch(cmd);
+                wa_->view().view()->workAreaDispatch(cmd);
 		return;
 	}
 
 	FuncRequest const cmd(LFUN_MOUSE_PRESS, e->x(), e->y(),
 			      q_button_state(e->button()));
-	wa_->dispatch(cmd);
+        wa_->view().view()->workAreaDispatch(cmd);
 }
 
 
@@ -191,7 +194,7 @@ void QContentPane::mouseReleaseEvent(QMouseEvent * e)
 
 	FuncRequest const cmd(LFUN_MOUSE_RELEASE, e->x(), e->y(),
 			      q_button_state(e->button()));
-	wa_->dispatch(cmd);
+        wa_->view().view()->workAreaDispatch(cmd);
 }
 
 
@@ -251,7 +254,7 @@ void QContentPane::mouseMoveEvent(QMouseEvent * e)
 		synthetic_mouse_event_.scrollbar_value_old = scrollbar_value;
 
 		// ... and dispatch the event to the LyX core.
-		wa_->dispatch(cmd);
+                wa_->view().view()->workAreaDispatch(cmd);
 	}
 }
 
@@ -289,7 +292,7 @@ void QContentPane::keyeventTimeout()
 	boost::shared_ptr<QLyXKeySym> sym(new QLyXKeySym);
 		sym->set(ev.get());
 
-		wa_->workAreaKeyPress(sym, q_key_state(ev->state()));
+                wa_->view().view()->workAreaKeyPress(sym, q_key_state(ev->state()));
 		keyeventQueue_.pop();
 
 		handle_autos = false;
@@ -310,7 +313,7 @@ void QContentPane::doubleClickTimeout()
 	FuncRequest cmd(LFUN_MOUSE_DOUBLE,
 		dc_event_.x, dc_event_.y,
 		q_button_state(dc_event_.state));
-	wa_->dispatch(cmd);
+        wa_->view().view()->workAreaDispatch(cmd);
 }
 
 
@@ -331,7 +334,7 @@ void QContentPane::resizeEvent(QResizeEvent *)
 	}
 
 	pixmap_->resize(width(), height());
-	wa_->workAreaResize();
+        wa_->view().view()->workAreaResize();
 }
 
 
@@ -339,7 +342,7 @@ void QContentPane::paintEvent(QPaintEvent * e)
 {
 	if (!pixmap_.get()) {
 		pixmap_.reset(new QPixmap(width(), height()));
-		wa_->workAreaResize();
+                wa_->view().view()->workAreaResize();
 		return;
 	}
 

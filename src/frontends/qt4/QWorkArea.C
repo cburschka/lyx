@@ -60,7 +60,7 @@ namespace os = lyx::support::os;
 
 namespace {
 
-QWorkArea const * wa_ptr = 0;
+QWorkArea * wa_ptr = 0;
 
 /// return the LyX key state from Qt's
 key_modifier::state q_key_state(Qt::ButtonState state)
@@ -120,8 +120,8 @@ SyntheticMouseEvent::SyntheticMouseEvent()
 {}
 
 
-QWorkArea::QWorkArea(LyXView &, int w, int h)
-	: QAbstractScrollArea(qApp->mainWidget()), WorkArea(), painter_(this)
+QWorkArea::QWorkArea(LyXView & owner, int w, int h)
+    : QAbstractScrollArea(qApp->mainWidget()), WorkArea(), view_(owner), painter_(this)
 {
 	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -224,7 +224,7 @@ void QWorkArea::adjustViewWithScrollBar(int action)
 		<< " linestep=" << verticalScrollBar()->lineStep()
 		<< endl;
 
-	this->scrollDocView(verticalScrollBar()->sliderPosition());
+	view_.view()->scrollDocView(verticalScrollBar()->sliderPosition());
 }
 
 
@@ -292,7 +292,7 @@ void QWorkArea::dropEvent(QDropEvent* event)
 		for (QStringList::Iterator i = files.begin();
 		     i!=files.end(); ++i) {
 			string const file = os::internal_path(fromqstr(*i));
-			dispatch(FuncRequest(LFUN_FILE_OPEN, file));
+			view_.view()->workAreaDispatch(FuncRequest(LFUN_FILE_OPEN, file));
 		}
 	}
 }
@@ -305,13 +305,13 @@ void QWorkArea::mousePressEvent(QMouseEvent * e)
 		FuncRequest cmd(LFUN_MOUSE_TRIPLE,
 			dc_event_.x, dc_event_.y,
 			q_button_state(dc_event_.state));
-		this->dispatch(cmd);
+		view_.view()->workAreaDispatch(cmd);
 		return;
 	}
 
 	FuncRequest const cmd(LFUN_MOUSE_PRESS, e->x(), e->y(),
 			      q_button_state(e->button()));
-	this->dispatch(cmd);
+	view_.view()->workAreaDispatch(cmd);
 }
 
 
@@ -322,7 +322,7 @@ void QWorkArea::mouseReleaseEvent(QMouseEvent * e)
 
 	FuncRequest const cmd(LFUN_MOUSE_RELEASE, e->x(), e->y(),
 			      q_button_state(e->button()));
-	this->dispatch(cmd);
+	view_.view()->workAreaDispatch(cmd);
 }
 
 
@@ -382,7 +382,7 @@ void QWorkArea::mouseMoveEvent(QMouseEvent * e)
 		synthetic_mouse_event_.scrollbar_value_old = scrollbar_value;
 
 		// ... and dispatch the event to the LyX core.
-		this->dispatch(cmd);
+		view_.view()->workAreaDispatch(cmd);
 	}
 }
 
@@ -412,7 +412,7 @@ void QWorkArea::generateSyntheticMouseEvent()
 		synthetic_mouse_event_.scrollbar_value_old = scrollbar_value;
 
 		// ... and dispatch the event to the LyX core.
-		this->dispatch(synthetic_mouse_event_.cmd);
+		view_.view()->workAreaDispatch(synthetic_mouse_event_.cmd);
 	}
 }
 
@@ -429,7 +429,7 @@ void QWorkArea::keyPressEvent(QKeyEvent * e)
 
     boost::shared_ptr<QLyXKeySym> sym(new QLyXKeySym);
     sym->set(e);
-    this->workAreaKeyPress(sym, q_key_state(e->state()));
+    view_.view()->workAreaKeyPress(sym, q_key_state(e->state()));
 
 }
 
@@ -448,17 +448,17 @@ void QWorkArea::keyeventTimeout()
 			continue;
 		}
 
-	boost::shared_ptr<QLyXKeySym> sym(new QLyXKeySym);
+                boost::shared_ptr<QLyXKeySym> sym(new QLyXKeySym);
 		sym->set(ev.get());
 
-	lyxerr[Debug::GUI] << BOOST_CURRENT_FUNCTION
-		<< " count=" << ev->count()
-		<< " text=" << (const char *) ev->text()
-		<< " isAutoRepeat=" << ev->isAutoRepeat()
-		<< " key=" << ev->key()
-		<< endl;
+                lyxerr[Debug::GUI] << BOOST_CURRENT_FUNCTION
+                                   << " count=" << ev->count()
+                                   << " text=" << (const char *) ev->text()
+                                   << " isAutoRepeat=" << ev->isAutoRepeat()
+                                   << " key=" << ev->key()
+                                   << endl;
 
-		this->workAreaKeyPress(sym, q_key_state(ev->state()));
+                view_.view()->workAreaKeyPress(sym, q_key_state(ev->state()));
 		keyeventQueue_.pop();
 
 		handle_autos = false;
@@ -481,7 +481,7 @@ void QWorkArea::mouseDoubleClickEvent(QMouseEvent * e)
 	FuncRequest cmd(LFUN_MOUSE_DOUBLE,
 		dc_event_.x, dc_event_.y,
 		q_button_state(dc_event_.state));
-	this->dispatch(cmd);
+	view_.view()->workAreaDispatch(cmd);
 }
 
 
@@ -495,7 +495,7 @@ void QWorkArea::resizeEvent(QResizeEvent * resizeEvent)
 	screen_device_ = QPixmap(viewport()->width(), viewport()->height());
 	paint_device_ = QImage(viewport()->width(), viewport()->height(), QImage::Format_RGB32);
 
-	this->workAreaResize();
+	view_.view()->workAreaResize();
 
 	/*
 	lyxerr[Debug::GUI] << BOOST_CURRENT_FUNCTION
@@ -537,6 +537,7 @@ void QWorkArea::paintEvent(QPaintEvent * e)
 	QPainter q(viewport());
 	q.drawPixmap(e->rect(), screen_device_, e->rect());
 }
+
 
 QPixmap QWorkArea::copyScreen(int x, int y, int w, int h) const
 {
@@ -588,12 +589,12 @@ bool lyxX11EventFilter(XEvent * xev)
 	case SelectionRequest:
 		lyxerr[Debug::GUI] << "X requested selection." << endl;
 		if (wa_ptr)
-			wa_ptr->selectionRequested();
+			wa_ptr->view().view()->selectionRequested();
 		break;
 	case SelectionClear:
 		lyxerr[Debug::GUI] << "Lost selection." << endl;
 		if (wa_ptr)
-			wa_ptr->selectionLost();
+			wa_ptr->view().view()->selectionLost();
 		break;
 	}
 	return false;
@@ -657,7 +658,7 @@ pascal OSErr handleOpenDocuments(const AppleEvent* inEvent,
 					FSRefMakePath(&ref, (UInt8*)qstr_buf,
 						      1024);
 					s_arg=QString::fromUtf8(qstr_buf);
-					wa_ptr->dispatch(
+					wa_ptr->view().view()->workAreaDispatch(
 						FuncRequest(LFUN_FILE_OPEN,
 							    fromqstr(s_arg)));
 					break;

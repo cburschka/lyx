@@ -65,6 +65,8 @@ public:
 	/// handles SelectionRequest X Event, to fill the clipboard
 	int event_cb(XEvent * xev);
 private:
+        LyXView & view_;
+        
 	/// generate the pixmap, and copy backing pixmap to it,
 	/// and send resize event if needed
 	void redraw(int, int);

@@ -10,6 +10,9 @@
 
 #include <config.h>
 
+#include "frontends/LyXView.h"
+#include "BufferView.h"
+
 #include "QWorkArea.h"
 
 #include "lcolorcache.h"
@@ -46,11 +49,11 @@ using std::string;
 namespace os = lyx::support::os;
 
 namespace {
-QWorkArea const * wa_ptr = 0;
+QWorkArea * wa_ptr = 0;
 }
 
-QWorkArea::QWorkArea(LyXView &, int, int)
-	: WorkArea(), QWidget(qApp->mainWidget()), painter_(*this)
+QWorkArea::QWorkArea(LyXView & owner, int, int)
+        : WorkArea(), QWidget(qApp->mainWidget()), owner_(owner), painter_(*this)
 {
 	scrollbar_ = new QScrollBar(QScrollBar::Vertical, this);
 	content_ = new QContentPane(this);
@@ -103,12 +106,12 @@ bool lyxX11EventFilter(XEvent * xev)
 	case SelectionRequest:
 		lyxerr[Debug::GUI] << "X requested selection." << endl;
 		if (wa_ptr)
-			wa_ptr->selectionRequested();
+			wa_ptr->view().view()->selectionRequested();
 		break;
 	case SelectionClear:
 		lyxerr[Debug::GUI] << "Lost selection." << endl;
 		if (wa_ptr)
-			wa_ptr->selectionLost();
+			wa_ptr->view().view()->selectionLost();
 		break;
 	}
 	return false;
@@ -183,7 +186,7 @@ pascal OSErr handleOpenDocuments(const AppleEvent* inEvent,
 
 void QWorkArea::haveSelection(bool own) const
 {
-	wa_ptr = this;
+	wa_ptr = const_cast<QWorkArea*>(this);
 
 	if (!QApplication::clipboard()->supportsSelection())
 		return;
@@ -230,7 +233,7 @@ void QWorkArea::dragEnterEvent(QDragEnterEvent * event)
 }
 
 
-void QWorkArea::dropEvent(QDropEvent* event)
+void QWorkArea::dropEvent(QDropEvent * event)
 {
 	QStringList files;
 
@@ -238,9 +241,9 @@ void QWorkArea::dropEvent(QDropEvent* event)
 		lyxerr[Debug::GUI] << "QWorkArea::dropEvent: got URIs!"
 				   << endl;
 		for (QStringList::Iterator i = files.begin();
-		     i!=files.end(); ++i) {
+		     i != files.end(); ++i) {
 			string const file = os::internal_path(fromqstr(*i));
-			dispatch(FuncRequest(LFUN_FILE_OPEN, file));
+			view().view()->workAreaDispatch(FuncRequest(LFUN_FILE_OPEN, file));
 		}
 	}
 }

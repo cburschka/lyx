@@ -116,14 +116,7 @@ unsigned int const saved_positions_num = 20;
 // to these connections we avoid a segfault upon startup, and also at exit.
 // (Lgb)
 
-boost::signals::connection dispatchcon;
 boost::signals::connection timecon;
-boost::signals::connection doccon;
-boost::signals::connection resizecon;
-boost::signals::connection kpresscon;
-boost::signals::connection selectioncon;
-boost::signals::connection lostcon;
-
 
 /// Return an inset of this class if it exists at the current cursor position
 template <class T>
@@ -153,22 +146,11 @@ BufferView::Pimpl::Pimpl(BufferView & bv, LyXView * owner,
 	screen_.reset(LyXScreenFactory::create(workarea()));
 
 	// Setup the signals
-	doccon = workarea().scrollDocView
-		.connect(boost::bind(&BufferView::Pimpl::scrollDocView, this, _1));
-	resizecon = workarea().workAreaResize
-		.connect(boost::bind(&BufferView::Pimpl::workAreaResize, this));
-	dispatchcon = workarea().dispatch
-		.connect(boost::bind(&BufferView::Pimpl::workAreaDispatch, this, _1));
-	kpresscon = workarea().workAreaKeyPress
-		.connect(boost::bind(&BufferView::Pimpl::workAreaKeyPress, this, _1, _2));
-	selectioncon = workarea().selectionRequested
-		.connect(boost::bind(&BufferView::Pimpl::selectionRequested, this));
-	lostcon = workarea().selectionLost
-		.connect(boost::bind(&BufferView::Pimpl::selectionLost, this));
-
 	timecon = cursor_timeout.timeout
 		.connect(boost::bind(&BufferView::Pimpl::cursorToggle, this));
+        
 	cursor_timeout.start();
+        
 	saved_positions.resize(saved_positions_num);
 	// load saved bookmarks
 	lyx::Session::BookmarkList & bmList = LyX::ref().session().loadBookmarks();

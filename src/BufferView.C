@@ -235,6 +235,36 @@ bool BufferView::dispatch(FuncRequest const & ev)
 }
 
 
+void BufferView::selectionRequested()
+{
+        pimpl_->selectionRequested();
+}
+
+
+void BufferView::selectionLost()
+{
+        pimpl_->selectionLost();
+}
+
+
+void BufferView::workAreaResize()
+{
+        pimpl_->workAreaResize();
+}
+
+
+void BufferView::workAreaKeyPress(LyXKeySymPtr key, key_modifier::state state)
+{
+        pimpl_->workAreaKeyPress(key, state);
+}
+
+
+bool BufferView::workAreaDispatch(FuncRequest const & ev)
+{
+        return pimpl_->workAreaDispatch(ev);
+}
+
+
 void BufferView::scroll(int lines)
 {
 	pimpl_->scroll(lines);

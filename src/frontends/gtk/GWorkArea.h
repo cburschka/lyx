@@ -97,6 +97,7 @@ private:
 	bool onKeyPress(GdkEventKey * event);
 	void onClipboardGet(Gtk::SelectionData & selection_data, guint info);
 	void onClipboardClear();
+        LyXView & view_;
 	Gtk::HBox hbox_;
 	Gtk::DrawingArea workArea_;
 	Gtk::VScrollbar vscrollbar_;

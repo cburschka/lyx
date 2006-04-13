@@ -15,6 +15,8 @@
 #ifndef BUFFER_VIEW_H
 #define BUFFER_VIEW_H
 
+#include "frontends/LyXKeySym.h"
+
 #include "support/types.h"
 
 #include <boost/utility.hpp>
@@ -174,6 +176,20 @@ public:
 	FuncStatus getStatus(FuncRequest const & cmd);
 	/// execute the given function
 	bool dispatch(FuncRequest const & argument);
+
+	///
+	void selectionRequested();
+	///
+	void selectionLost();
+
+	///
+	void workAreaResize();
+
+        /// Receive a keypress
+        void workAreaKeyPress(LyXKeySymPtr key, key_modifier::state state);
+
+	/// a function should be executed from the workarea
+	bool workAreaDispatch(FuncRequest const & ev);
 
 	/// clear the X selection
 	void unsetXSel();

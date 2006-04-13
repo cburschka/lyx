@@ -58,19 +58,6 @@ public:
 	virtual std::string const getClipboard() const = 0;
 	/// fill the clipboard
 	virtual void putClipboard(std::string const &) const = 0;
-
-	/// work area dimensions have changed
-	boost::signal<void()> workAreaResize;
-	/// the scrollbar has changed
-	boost::signal<void(int)> scrollDocView;
-	/// a key combination has been pressed
-	boost::signal<void(LyXKeySymPtr, key_modifier::state)> workAreaKeyPress;
-	/// some mouse event
-	boost::signal<void(FuncRequest)> dispatch;
-	/// emitted when an X client has requested our selection
-	boost::signal<void()> selectionRequested;
-	/// emitted when another X client has stolen our selection
-	boost::signal<void()> selectionLost;
 };
 
 #endif // WORKAREA_H
