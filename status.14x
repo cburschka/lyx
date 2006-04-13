@@ -28,7 +28,9 @@ What's new
 - Convert definitions of itemize and enumerate environments in old layout
   files correctly
 
-
+- Make sure that the amsmath package is used in LaTeX output when
+  using the AMS-specific commands \xleftarrow, \xrightarrow or
+  array constructs split, gathered, aligned and alignedat (bug 2149).
 
 * Math editor:
 

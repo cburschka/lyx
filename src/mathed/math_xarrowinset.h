@@ -28,6 +28,8 @@ public:
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void normalize(NormalStream & os) const;
+	///
+	void validate(LaTeXFeatures & features) const;
 
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;

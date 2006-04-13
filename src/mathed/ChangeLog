@@ -1,3 +1,9 @@
+2006-04-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* math_xarrowinset.C (validate): 
+	* math_splitinset.C (validate): new methods; require amsmath (bug
+	2149).
+
 2006-03-17  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* math_hullinset.h (canTrackChanges): renamed from isTextInset.
