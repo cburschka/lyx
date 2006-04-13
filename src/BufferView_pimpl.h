@@ -25,6 +25,7 @@
 #include "insets/inset.h"
 
 #include "frontends/key_state.h"
+#include "frontends/LyXKeySym.h"
 #include "frontends/Timeout.h"
 
 #include "support/types.h"
