@@ -114,6 +114,7 @@ def convert(lines):
     labelstring_line = -1
     labelstringappendix_line = -1
     labeltype_line = -1
+    latextype = ""
     latextype_line = -1
     style = ""
     maxcounter = 0
@@ -206,6 +207,7 @@ def convert(lines):
         # Remember the LatexType line
         match = re_LatexType.match(lines[i])
         if match:
+            latextype = string.lower(match.group(4))
             latextype_line = i
 
         # Reset variables at the beginning of a style definition
@@ -220,6 +222,7 @@ def convert(lines):
             labelstring_line = -1
             labelstringappendix_line = -1
             labeltype_line = -1
+            latextype = ""
             latextype_line = -1
 
         if re_End.match(lines[i]):
@@ -232,6 +235,16 @@ def convert(lines):
                     i = i + 1
                 else:
                     lines[latextype_line] = re_LatexType.sub(r'\1\2\3Bib_Environment', lines[latextype_line])
+
+            # Change "LabelType Static" to "LabelType Itemize" for itemize environments
+            if latextype == "item_environment" and string.lower(label) == "static":
+                lines[labeltype_line] = re_LabelType.sub(r'\1\2\3Itemize', lines[labeltype_line])
+
+            # Change "LabelType Counter_EnumI" to "LabelType Enumerate" for enumerate environments
+            if latextype == "item_environment" and string.lower(label) == "counter_enumi":
+                lines[labeltype_line] = re_LabelType.sub(r'\1\2\3Enumerate', lines[labeltype_line])
+                # Don't add the LabelCounter line later
+                counter = ""
 
             # Replace
             #
