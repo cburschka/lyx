@@ -14,6 +14,7 @@
 #include <config.h>
 
 #include "paragraph_pimpl.h"
+#include "paragraph.h"
 
 #include "bufferparams.h"
 #include "debug.h"
@@ -109,12 +110,20 @@ void Paragraph::Pimpl::untrackChanges()
 }
 
 
-void Paragraph::Pimpl::cleanChanges()
+void Paragraph::Pimpl::cleanChanges(Paragraph::ChangeTracking ct)
 {
-	// if we're not tracking, we don't want to reset...
-	if (!tracking())
+	// if the paragraph was not tracked and we don't know the buffer's
+	// change tracking state, we do nothing
+	if ((ct == Paragraph::trackingUnknown) && !tracking())
 		return;
 
+	// untrack everything if we are in a buffer where ct is disabled
+	else if (ct == Paragraph::trackingOff) {
+		untrackChanges();
+		return;
+	}
+	
+	// in a buffer where ct is enabled, set everything to INSERTED
 	changes_.reset(new Changes(Change::INSERTED));
 	changes_->set(Change::INSERTED, 0, size() + 1);
 }

@@ -43,7 +43,7 @@ public:
 	/// stop tracking
 	void untrackChanges();
 	/// set all text as new for change mode
-	void cleanChanges();
+	void cleanChanges(Paragraph::ChangeTracking ct = Paragraph::trackingUnknown);
 	/// look up change type at given pos
 	Change::Type lookupChange(lyx::pos_type pos) const;
 	/// look up change at given pos

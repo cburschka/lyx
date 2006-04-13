@@ -1,3 +1,20 @@
+2006-04-13  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* src/paragraph.h (public): new enum ChangeTracking,
+	indicating if ct is used in the current buffer.
+	(cleanChanges): pass enum ChangeTracking.
+
+        * src/paragraph_pimpl.C (cleanChanges): delete ct marks from
+	paste content if ct is of in the buffer. Set content INSERTED
+	if ct is on (bug 2207).
+
+        * src/CutAndPaste.C (pasteSelectionHelper): pass information 
+	about the current change tracking state to cleanChanges.
+
+        * src/paragraph_pimpl.h (cleanChanges): pass enum ChangeTracking.
+
+        * src/paragraph.C (cleanChanges): pass enum ChangeTracking.
+
 2006-04-11  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* version.C.in: update date for 1.4.1.

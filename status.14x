@@ -43,6 +43,9 @@ What's new
 - When pasting contents to a tabular with the middle mouse, the language has sometimes
   be changed. This is fixed now.
 
+- Set change tracking marks properly when copying between documents with different change
+  tracking status (bug 2207).
+
 * Configuration/Installation:
 
 - Make LyX/Win work under windows 98.

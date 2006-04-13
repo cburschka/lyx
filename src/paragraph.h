@@ -71,6 +71,15 @@ public:
 		/// all these places.
 		META_INSET = 1
 	};
+	enum ChangeTracking
+	{
+		/// Change tracking is "on" in this buffer
+		trackingOn,
+		/// Change tracking is "off" in this buffer
+		trackingOff,
+		/// Change tracking is "unknown" in this buffer
+		trackingUnknown
+	};
 	///
 	typedef char value_type;
 	///
@@ -208,7 +217,7 @@ public:
 	void untrackChanges();
 
 	/// set entire paragraph to new text for change tracking
-	void cleanChanges();
+	void cleanChanges(ChangeTracking ct = trackingUnknown);
 
 	/// look up change type at given pos
 	Change::Type lookupChange(lyx::pos_type pos) const;

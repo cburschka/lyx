@@ -1620,9 +1620,9 @@ void Paragraph::untrackChanges()
 }
 
 
-void Paragraph::cleanChanges()
+void Paragraph::cleanChanges(ChangeTracking ct)
 {
-	pimpl_->cleanChanges();
+	pimpl_->cleanChanges(ct);
 }
 
 

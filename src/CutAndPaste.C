@@ -172,6 +172,12 @@ pasteSelectionHelper(Buffer const & buffer,
 			    !pars[pit].insetAllowed(tmpbuf->getInset(i)->lyxCode()))
 				tmpbuf->erase(i--);
 		}
+
+		// reset change tracking status
+		if (buffer.params().tracking_changes)
+			tmpbuf->cleanChanges(Paragraph::trackingOn);
+		else
+			tmpbuf->cleanChanges(Paragraph::trackingOff);
 	}
 
 	bool const empty = pars[pit].empty();
