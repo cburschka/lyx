@@ -230,10 +230,8 @@ void QWorkArea::adjustViewWithScrollBar(int action)
 
 void QWorkArea::haveSelection(bool own) const
 {
-	// static_cast is not possible here
-	// wa_ptr = static_cast<QWorkArea*>(this);
 	/// \todo ask X11 and MAC devels why this wa_ptr is useful.
-	wa_ptr = (QWorkArea*)(this);
+	wa_ptr = const_cast<QWorkArea*>(this);
 
 	if (!QApplication::clipboard()->supportsSelection())
 		return;
