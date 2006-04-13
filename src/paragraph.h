@@ -72,6 +72,15 @@ public:
 		META_INSET = 1
 		//META_INSET = 0x200001  // above 0x10ffff, for ucs-4
 	};
+	enum ChangeTracking
+	{
+		/// Change tracking is "on" in this buffer
+		trackingOn,
+		/// Change tracking is "off" in this buffer
+		trackingOff,
+		/// Change tracking is "unknown" in this buffer
+		trackingUnknown
+	};
 	///
 	typedef lyx::char_type value_type;
 	///
@@ -209,7 +218,7 @@ public:
 	void untrackChanges();
 
 	/// set entire paragraph to new text for change tracking
-	void cleanChanges();
+	void cleanChanges(ChangeTracking ct = trackingUnknown);
 
 	/// look up change type at given pos
 	Change::Type lookupChange(lyx::pos_type pos) const;
