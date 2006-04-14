@@ -87,6 +87,8 @@ void MathFontInset::validate(LaTeXFeatures & features) const
 		features.require("amssymb");
 	if (key_->name == "text")
 		features.require("amsmath");
+	if (key_->name == "textipa")
+		features.require("tipa");
 }
 
 
