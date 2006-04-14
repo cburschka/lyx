@@ -243,6 +243,7 @@ char const * simplefeatures[] = {
 	"fancybox",
 	"calc",
 	"nicefrac",
+	"tipa",
 };
 
 int const nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);
