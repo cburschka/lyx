@@ -17,6 +17,7 @@
 #include "support/os.h"
 #include "support/os_win32.h"
 #include "support/lstrings.h"
+#include "support/filetools.h"
 
 #include "debug.h"
 
@@ -62,10 +63,21 @@
 using std::endl;
 using std::string;
 
+using lyx::support::runCommand;
+using lyx::support::split;
+
 
 namespace lyx {
 namespace support {
 namespace os {
+
+namespace {
+
+bool cygwin_path_fix_ = false;
+
+string cygdrive = "/cygdrive";
+
+} // namespace anon
 
 void init(int /* argc */, char * argv[])
 {
@@ -145,6 +157,20 @@ void init(int /* argc */, char * argv[])
 		// If found, hide it
 		if (hwndFound != NULL)
 			ShowWindow( hwndFound, SW_HIDE);
+	}
+
+	// If cygwin is detected, query the cygdrive prefix
+	cmd_ret const c = runCommand("sh -c uname");
+	if (c.first != -1 && prefixIs(c.second, "CYGWIN")) {
+		cmd_ret const p = runCommand("mount --show-cygdrive-prefix");
+		// The output of the mount command is as follows:
+		// Prefix              Type         Flags
+		// /cygdrive           system       binmode
+		// So, we use the inner split to pass the second line to the
+		// outer split which sets cygdrive with its contents until
+		// the first blank, discarding the unneeded return value.
+		if (p.first != -1 && prefixIs(p.second, "Prefix"))
+			(void) split(split(p.second, '\n'), cygdrive, ' ');
 	}
 }
 
@@ -230,6 +256,20 @@ string internal_path_list(string const & p)
 
 string latex_path(string const & p)
 {
+	// We may need a posix style path or a windows style path (depending
+	// on cygwin_path_fix_), but we use always forward slashes, since it
+	// gets written into a .tex file.
+
+	if (cygwin_path_fix_ && is_absolute_path(p)) {
+		string const drive = p.substr(0, 2);
+		string const cygprefix = cygdrive + "/" + drive.substr(0, 1);
+		string const cygpath = subst(subst(p, '\\', '/'), drive, cygprefix);
+		lyxerr[Debug::LATEX]
+			<< "<Cygwin path correction> ["
+			<< p << "]->>["
+			<< cygpath << ']' << endl;
+		return cygpath;
+	}
 	return subst(p, '\\', '/');
 }
 
@@ -279,8 +319,10 @@ char path_separator()
 }
 
 
-void cygwin_path_fix(bool)
-{}
+void cygwin_path_fix(bool use_cygwin_paths)
+{
+	cygwin_path_fix_ = !use_cygwin_paths;
+}
 
 
 namespace {
