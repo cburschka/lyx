@@ -33,6 +33,7 @@ UIFILES = \
 	QIncludeUi.ui \
 	QIndexUi.ui \
 	QLogUi.ui \
+	QViewSourceUi.ui \
 	QMathUi.ui \
 	QMathMatrixUi.ui \
 	QNoteUi.ui \
@@ -101,6 +102,8 @@ MOCFILES = \
 	QIndexDialog.C QIndexDialog.h \
 	QLAction.C QLAction.h \
 	QLogDialog.C QLogDialog.h \
+	QViewSourceDialog.C QViewSourceDialog.h \
+	QViewSource.C QViewSource.h \
 	QLMenubar.C QLMenubar.h \
 	QLPopupMenu.C QLPopupMenu.h \
 	QLPrintDialog.C QLPrintDialog.h \

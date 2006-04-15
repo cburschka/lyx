@@ -50,6 +50,7 @@ libqt4_la_SOURCES = \
 	QLAction.C QLAction.h \
 	QLImage.C QLImage.h \
 	QLog.C QLog.h \
+	QViewSource.C QViewSource.h \
 	QLPainter.C QLPainter.h \
 	QLyXKeySym.C QLyXKeySym.h \
 	QMath.C QMath.h \
