@@ -475,7 +475,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 		// we'll pop up the table dialog on release
 		if (cmd.button() == mouse_button::button3)
-			break;
+			cur.undispatched();
 		break;
 
 	case LFUN_MOUSE_MOTION:

@@ -289,7 +289,7 @@ void InsetCollapsable::doDispatch(LCursor & cur, FuncRequest & cmd)
 		else if (status() == Open && !hitButton(cmd))
 			InsetText::doDispatch(cur, cmd);
 		else
-			cur.noUpdate();
+			cur.undispatched();
 		break;
 
 	case LFUN_MOUSE_MOTION:

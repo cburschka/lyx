@@ -49,8 +49,10 @@ void InsetRef::doDispatch(LCursor & cur, FuncRequest & cmd)
 		// Eventually trigger dialog with button 3 not 1
 		if (cmd.button() == mouse_button::button3)
 			cur.bv().owner()->dispatch(FuncRequest(LFUN_LABEL_GOTO, getContents()));
-		else
+		else {
 			InsetCommandMailer("ref", *this).showDialog(&cur.bv());
+			cur.undispatched();
+		}
 		return;
 
 	case LFUN_MOUSE_RELEASE:
