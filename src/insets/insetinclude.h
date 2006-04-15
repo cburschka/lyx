@@ -52,9 +52,19 @@ public:
 	 *  \param buffer the Buffer containing this inset.
 	 *  \param keys the list of bibkeys in the child buffer.
 	 */
-	///
 	void fillWithBibKeys(Buffer const & buffer,
 		std::vector<std::pair<std::string,std::string> > & keys) const;
+	/** Update the cache with all bibfiles in use of the child buffer
+	 *  (including bibfiles of grandchild documents).
+	 *  \param buffer the Buffer containing this inset.
+	 */
+	void updateBibfilesCache(Buffer const & buffer);
+	/** Return the cache with all bibfiles in use of the child buffer
+	 *  (including bibfiles of grandchild documents).
+	 *  \param buffer the Buffer containing this inset.
+	 */
+	std::vector<std::string> const &
+	getBibfilesCache(Buffer const & buffer) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///

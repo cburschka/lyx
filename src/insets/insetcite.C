@@ -24,6 +24,8 @@
 
 #include "support/lstrings.h"
 
+#include <boost/filesystem/operations.hpp>
+
 using lyx::support::ascii_lowercase;
 using lyx::support::contains;
 using lyx::support::getVectorFromString;
@@ -37,6 +39,7 @@ using std::vector;
 using std::map;
 
 namespace biblio = lyx::biblio;
+namespace fs = boost::filesystem;
 
 
 namespace {
@@ -50,25 +53,46 @@ string const getNatbibLabel(Buffer const & buffer,
 	if (!buffer.fully_loaded())
 		return string();
 
+	// Cache the labels
 	typedef std::map<Buffer const *, biblio::InfoMap> CachedMap;
 	static CachedMap cached_keys;
 
-	// build the keylist
-	typedef vector<std::pair<string, string> > InfoType;
-	InfoType bibkeys;
-	buffer.fillWithBibKeys(bibkeys);
-
-	InfoType::const_iterator bit  = bibkeys.begin();
-	InfoType::const_iterator bend = bibkeys.end();
+	// and cache the timestamp of the bibliography files.
+	static std::map<string, time_t> bibfileStatus;
 
 	biblio::InfoMap infomap;
-	for (; bit != bend; ++bit) {
-		infomap[bit->first] = bit->second;
+
+	vector<string> const & bibfilesCache = buffer.getBibfilesCache();
+	// compare the cached timestamps with the actual ones.
+	bool changed = false;
+	for (vector<string>::const_iterator it = bibfilesCache.begin();
+			it != bibfilesCache.end(); ++ it) {
+		string const f = *it;
+		if (bibfileStatus[f] != fs::last_write_time(f)) {
+			changed = true;
+			bibfileStatus[f] = fs::last_write_time(f);
+		}
 	}
+
+	// build the keylist only if the bibfiles have been changed
+	if (cached_keys.empty() || bibfileStatus.empty() || changed) {
+		typedef vector<std::pair<string, string> > InfoType;
+		InfoType bibkeys;
+		buffer.fillWithBibKeys(bibkeys);
+
+		InfoType::const_iterator bit  = bibkeys.begin();
+		InfoType::const_iterator bend = bibkeys.end();
+
+		for (; bit != bend; ++bit)
+			infomap[bit->first] = bit->second;
+
+		cached_keys[&buffer] = infomap;
+	} else
+		// use the cached keys
+		infomap = cached_keys[&buffer];
+
 	if (infomap.empty())
 		return string();
-
-	cached_keys[&buffer] = infomap;
 
 	// the natbib citation-styles
 	// CITET:	author (year)
