@@ -8,7 +8,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>358</width>
+    <width>386</width>
     <height>351</height>
    </rect>
   </property>
@@ -18,180 +18,159 @@
   <property name="sizeGripEnabled" >
    <bool>true</bool>
   </property>
-  <widget class="QWidget" name="" >
-   <layout class="QHBoxLayout" >
-    <property name="margin" >
-     <number>0</number>
-    </property>
-    <property name="spacing" >
-     <number>6</number>
-    </property>
-    <item>
-     <widget class="QLabel" name="typeLA" >
-      <property name="text" >
-       <string>&amp;Type:</string>
-      </property>
-      <property name="buddy" >
-       <cstring>typeCO</cstring>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QComboBox" name="typeCO" >
-      <property name="sizePolicy" >
-       <sizepolicy>
-        <hsizetype>3</hsizetype>
-        <vsizetype>0</vsizetype>
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <spacer>
-      <property name="orientation" >
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeType" >
-       <enum>QSizePolicy::Expanding</enum>
-      </property>
-      <property name="sizeHint" >
-       <size>
-        <width>20</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QSlider" name="depthSL" >
-   <property name="geometry" >
-    <rect>
-     <x>11</x>
-     <y>248</y>
-     <width>335</width>
-     <height>21</height>
-    </rect>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>9</number>
    </property>
-   <property name="maximum" >
-    <number>5</number>
+   <property name="spacing" >
+    <number>6</number>
    </property>
-   <property name="pageStep" >
-    <number>1</number>
-   </property>
-   <property name="value" >
-    <number>1</number>
-   </property>
-   <property name="orientation" >
-    <enum>Qt::Horizontal</enum>
-   </property>
-  </widget>
-  <widget class="QWidget" name="" >
-   <property name="geometry" >
-    <rect>
-     <x>20</x>
-     <y>280</y>
-     <width>328</width>
-     <height>27</height>
-    </rect>
-   </property>
-   <layout class="QGridLayout" >
-    <property name="margin" >
-     <number>0</number>
-    </property>
-    <property name="spacing" >
-     <number>6</number>
-    </property>
-    <item row="0" column="0" >
-     <widget class="QPushButton" name="moveUpPB" >
-      <property name="text" >
-       <string>&amp;Up</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1" >
-     <widget class="QPushButton" name="moveDownPB" >
-      <property name="text" >
-       <string>&amp;Down</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="3" >
-     <widget class="QPushButton" name="moveOutPB" >
-      <property name="text" >
-       <string>&amp;Out</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="2" >
-     <widget class="QPushButton" name="moveInPB" >
-      <property name="text" >
-       <string>&amp;In</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="" >
-   <property name="geometry" >
-    <rect>
-     <x>140</x>
-     <y>320</y>
-     <width>208</width>
-     <height>27</height>
-    </rect>
-   </property>
-   <layout class="QGridLayout" >
-    <property name="margin" >
-     <number>0</number>
-    </property>
-    <property name="spacing" >
-     <number>6</number>
-    </property>
-    <item row="0" column="2" >
-     <widget class="QPushButton" name="closePB" >
-      <property name="text" >
-       <string>&amp;Close</string>
-      </property>
-      <property name="default" >
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1" >
-     <spacer>
-      <property name="orientation" >
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" >
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="0" column="0" >
-     <widget class="QPushButton" name="updatePB" >
-      <property name="text" >
-       <string>&amp;Update</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QTreeWidget" name="tocTW" >
-   <property name="geometry" >
-    <rect>
-     <x>11</x>
-     <y>39</y>
-     <width>331</width>
-     <height>203</height>
-    </rect>
-   </property>
-  </widget>
+   <item row="3" column="0" >
+    <layout class="QGridLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item row="0" column="0" >
+      <widget class="QPushButton" name="moveUpPB" >
+       <property name="text" >
+        <string>&amp;Up</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1" >
+      <widget class="QPushButton" name="moveDownPB" >
+       <property name="text" >
+        <string>&amp;Down</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="3" >
+      <widget class="QPushButton" name="moveOutPB" >
+       <property name="text" >
+        <string>&amp;Out</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2" >
+      <widget class="QPushButton" name="moveInPB" >
+       <property name="text" >
+        <string>&amp;In</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0" >
+    <widget class="QTreeWidget" name="tocTW" />
+   </item>
+   <item row="4" column="0" >
+    <layout class="QGridLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item row="0" column="2" >
+      <widget class="QPushButton" name="closePB" >
+       <property name="text" >
+        <string>&amp;Close</string>
+       </property>
+       <property name="default" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1" >
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="0" column="0" >
+      <widget class="QPushButton" name="updatePB" >
+       <property name="text" >
+        <string>&amp;Update</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="2" column="0" >
+    <widget class="QSlider" name="depthSL" >
+     <property name="maximum" >
+      <number>5</number>
+     </property>
+     <property name="pageStep" >
+      <number>1</number>
+     </property>
+     <property name="value" >
+      <number>1</number>
+     </property>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" >
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="typeLA" >
+       <property name="text" >
+        <string>&amp;Type:</string>
+       </property>
+       <property name="buddy" >
+        <cstring>typeCO</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="typeCO" >
+       <property name="sizePolicy" >
+        <sizepolicy>
+         <hsizetype>3</hsizetype>
+         <vsizetype>0</vsizetype>
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+  </layout>
  </widget>
  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
  <resources/>
