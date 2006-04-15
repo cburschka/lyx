@@ -181,7 +181,10 @@ void QTocDialog::updateToc(bool newdepth)
 		if (iter->depth == 1) {
 			topLevelItem = new QTreeWidgetItem(tocTW);
 			topLevelItem->setText(0, toqstr(iter->str));
-			if (iter->depth < depth_) tocTW->collapseItem(topLevelItem);
+			if (iter->depth > depth_)
+				tocTW->collapseItem(topLevelItem);
+			else if (iter->depth <= depth_)
+				tocTW->expandItem(topLevelItem);
 
 			lyxerr[Debug::GUI]
 				<< "Table of contents\n"
@@ -204,9 +207,9 @@ void QTocDialog::updateToc(bool newdepth)
 	tocTW->show();
 }
 
-void QTocDialog::populateItem(QTreeWidgetItem * parentItem, toc::Toc::const_iterator& iter)
+void QTocDialog::populateItem(QTreeWidgetItem * parentItem, toc::Toc::const_iterator & iter)
 {
-	int curdepth = iter->depth+1;
+	int curdepth = iter->depth + 1;
 	QTreeWidgetItem * item;
 
 	while (iter != form_->get_toclist().end()) {
@@ -228,14 +231,17 @@ void QTocDialog::populateItem(QTreeWidgetItem * parentItem, toc::Toc::const_iter
 		item = new QTreeWidgetItem(parentItem);
 		item->setText(0, toqstr(iter->str));
 
-		if (iter->depth < depth_) tocTW->collapseItem(item);
-		else tocTW->expandItem(item);
+		if (iter->depth > depth_)
+			tocTW->collapseItem(item);
+		else if (iter->depth <= depth_)
+			tocTW->expandItem(item);
 
 		lyxerr[Debug::GUI]
 			<< "Table of contents: Added item " << iter->str
 			<< " at depth " << iter->depth
 			<< "  \", parent \""
 			<< fromqstr(parentItem->text(0)) << '"'
+			<< "expanded: " << tocTW->isItemExpanded(item)
 			<< endl;
 
 		populateItem(item, iter);
