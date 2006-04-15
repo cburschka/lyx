@@ -112,6 +112,8 @@ libmathed_la_SOURCES = \
 	math_parinset.h \
 	math_parser.C \
 	math_parser.h \
+	math_phantominset.C \
+	math_phantominset.h \
 	math_replace.h \
 	math_rootinset.C \
 	math_rootinset.h \
