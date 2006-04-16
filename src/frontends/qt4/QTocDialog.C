@@ -19,6 +19,7 @@
 
 #include "debug.h"
 
+#include <QHeaderView>
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
 #include <QPushButton>
@@ -50,9 +51,9 @@ QTocDialog::QTocDialog(QToc * form)
 	tocTW->setColumnCount(1);
 
 	// hide the pointless QHeader
-//	QWidget * w = static_cast<QWidget*>(tocTW->child("list view header"));
-//	if (w)
-//		w->hide();
+	QHeaderView * w = static_cast<QHeaderView*>(tocTW->header());
+	if (w)
+		w->hide();
 
 //	connect(closePB, SIGNAL(clicked()),
 //		form, SLOT(slotClose()));
@@ -65,7 +66,7 @@ QTocDialog::~QTocDialog()
 }
 
 void QTocDialog::on_tocTW_currentItemChanged(QTreeWidgetItem * current,
-								 QTreeWidgetItem * previous)
+						QTreeWidgetItem * previous)
 {
 	form_->select(fromqstr(current->text(0)));
 }
