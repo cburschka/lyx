@@ -1090,11 +1090,11 @@ void LyXText::breakParagraph(LCursor & cur, bool keep_layout)
 		pars_[next_par].erase(0);
 
 	ParIterator current_it(cur);
-	ParIterator next_it(cur); next_it.pit() = next_par;
+	ParIterator last_it(cur);
+	++last_it;
+	++last_it;
 
-	if (needsUpdateCounters(cur.buffer(), current_it)
-		|| needsUpdateCounters(cur.buffer(), next_it))
-		updateCounters(cur.buffer());
+	updateLabels(cur.buffer(), current_it, last_it);
 
 	// Mark "carriage return" as inserted if change tracking:
 	if (cur.buffer().params().tracking_changes) {
@@ -1677,8 +1677,7 @@ bool LyXText::backspacePos0(LCursor & cur)
 
 		// the counters may have changed
 		ParIterator par_it(cur);
-		if (needsUpdateCounters(cur.buffer(), par_it))
-			updateCounters(cur.buffer());
+		updateLabels(cur.buffer(), par_it);
 
 		setCursor(cur, cur.pit(), cur.pos(), false);
 	}

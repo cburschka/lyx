@@ -49,15 +49,21 @@ int countWords(DocIterator const & from, DocIterator const & to);
 std::string expandLabel(Buffer const & buf, LyXLayout_ptr const & layout,
 			bool appendix);
 
-/// updates current counter and/or label if possible.
+
+/// update labels at "iter".
 /**
-\retval true if a full updateCounters is required.
-\retval false if a full updateCounters is not required.
+A full updateLabels(Buffer const &) will be called if not possible.
 */
-bool needsUpdateCounters(Buffer const & buf, ParIterator & it);
+void updateLabels(Buffer const & buf, ParIterator & it);
+
+/// update labels between "from" and "to" if possible.
+/**
+A full updateLabels(Buffer const &) will be called if not possible.
+*/
+void updateLabels(Buffer const & buf,
+	ParIterator & from, ParIterator & to);
 
 /// updates all counters
-void updateCounters(Buffer const &);
-
+void updateLabels(Buffer const &);
 
 #endif // BUFFER_FUNCS_H

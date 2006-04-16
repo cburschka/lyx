@@ -342,7 +342,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		par.params().startOfAppendix(start);
 
 		// we can set the refreshing parameters now
-		updateCounters(cur.buffer());
+		updateLabels(cur.buffer());
 		break;
 	}
 

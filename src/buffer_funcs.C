@@ -42,8 +42,12 @@
 #include "support/fs_extras.h"
 #include "support/lyxlib.h"
 
+#include <iostream>
+
 #include <boost/bind.hpp>
 #include <boost/filesystem/operations.hpp>
+
+using namespace std;
 
 using lyx::pit_type;
 using lyx::support::bformat;
@@ -346,8 +350,8 @@ bool needEnumCounterReset(ParIterator const & it)
 }
 
 
-// set the counter of a paragraph. This includes the labels
-void setCounter(Buffer const & buf, ParIterator & it)
+// set the label of a paragraph. This includes the counters.
+void setLabel(Buffer const & buf, ParIterator & it)
 {
 	Paragraph & par = *it;
 	BufferParams const & bufparams = buf.params();
@@ -505,10 +509,14 @@ void setCounter(Buffer const & buf, ParIterator & it)
 } // anon namespace
 
 
-bool needsUpdateCounters(Buffer const & buf, ParIterator & it)
+bool updateCurrentLabel(Buffer const & buf, 
+	ParIterator & it)	
 {
+    if (it == par_iterator_end(buf.inset()))
+        return true;
+	
 	switch (it->layout()->labeltype) {
-
+		
 	case LABEL_NO_LABEL:
 	case LABEL_MANUAL:
 	case LABEL_BIBLIO:
@@ -516,24 +524,53 @@ bool needsUpdateCounters(Buffer const & buf, ParIterator & it)
 	case LABEL_CENTERED_TOP_ENVIRONMENT:
 	case LABEL_STATIC:
 	case LABEL_ITEMIZE:
-		setCounter(buf, it);
-		return false;
+		setLabel(buf, it);
+		return true;
 
 	case LABEL_SENSITIVE:
 	case LABEL_COUNTER:
 	// do more things with enumerate later
 	case LABEL_ENUMERATE:
-		return true;
+		return false;
+	}
+
+	// This is dead code which get rid of a warning:
+	return true;
+}
+
+
+void updateLabels(Buffer const & buf, 
+	ParIterator & from, ParIterator & to)
+{
+	for (ParIterator it = from; it != to; ++it) {
+		if (it.pit() > it.lastpit())
+			return;
+		if (!updateCurrentLabel (buf, it)) {
+			updateLabels(buf);
+			return;
+		}
 	}
 }
 
 
-void updateCounters(Buffer const & buf)
+void updateLabels(Buffer const & buf, 
+	ParIterator & iter)
 {
-	// start over
-	buf.params().getLyXTextClass().counters().reset();
+	if (updateCurrentLabel(buf, iter))
+		return;
 
-	for (ParIterator it = par_iterator_begin(buf.inset()); it; ++it) {
+	updateLabels(buf);
+}
+
+
+void updateLabels(Buffer const & buf)
+{
+	// start over the counters
+	buf.params().getLyXTextClass().counters().reset();
+	
+	ParIterator const end = par_iterator_end(buf.inset());
+
+	for (ParIterator it = par_iterator_begin(buf.inset()); it != end; ++it) {
 		// reduce depth if necessary
 		if (it.pit()) {
 			Paragraph const & prevpar = it.plist()[it.pit() - 1];
@@ -543,7 +580,7 @@ void updateCounters(Buffer const & buf)
 			it->params().depth(0);
 
 		// set the counter for this paragraph
-		setCounter(buf, it);
+		setLabel(buf, it);
 	}
 }
 

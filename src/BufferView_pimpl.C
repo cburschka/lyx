@@ -1236,7 +1236,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		lyx::toc::outline(op, buffer_, cursor_.pit());
 		bv_->text()->setCursor(cursor_, cursor_.pit(), 0);
 		buffer_->markDirty();
-		updateCounters(*buffer_);
+		updateLabels(*buffer_);
 		update();
 	}
 

@@ -1564,7 +1564,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			view()->setCursor(backcur.asDocIterator(&(buffer->inset())));
 			bufferErrors(*buffer, el);
 			view()->showErrorList(_("Class switch"));
-			updateCounters(*buffer);
+			updateLabels(*buffer);
 			update = true;
 			break;
 		}

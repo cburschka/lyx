@@ -90,7 +90,7 @@ void LyXText::init(BufferView * bv)
 		pars_[pit].rows().clear();
 
 	current_font = getFont(pars_[0], 0);
-	updateCounters(*bv->buffer());
+	updateLabels(*bv->buffer());
 }
 
 
@@ -358,7 +358,7 @@ void LyXText::setLayout(LCursor & cur, string const & layout)
 	pit_type undopit = undoSpan(end - 1);
 	recUndo(start, undopit - 1);
 	setLayout(start, end, layout);
-	updateCounters(cur.buffer());
+	updateLabels(cur.buffer());
 }
 
 
@@ -419,7 +419,7 @@ void LyXText::changeDepth(LCursor & cur, DEPTH_CHANGE type)
 	}
 	// this handles the counter labels, and also fixes up
 	// depth values for follow-on (child) paragraphs
-	updateCounters(cur.buffer());
+	updateLabels(cur.buffer());
 }
 
 
@@ -1274,9 +1274,11 @@ bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur, LCursor & old)
 				cur.resetAnchor();
 			}
 		}
-		ParIterator par_it(old);
-		if (needsUpdateCounters(old.buffer(), par_it))
-			updateCounters(old.buffer());
+		// There is a crash reported by Edwin Leuven (16/04/2006) because of:
+		//ParIterator par_it(old);
+		//updateLabels(old.buffer(), par_it);
+		// So for now we do the full update:
+		updateLabels(old.buffer());
 		return true;
 	}
 

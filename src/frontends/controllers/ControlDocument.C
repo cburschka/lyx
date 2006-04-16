@@ -104,7 +104,7 @@ void ControlDocument::dispatchParams()
 
 	// redo the numbering if necessary
 	if (new_secnumdepth != old_secnumdepth)
-		updateCounters(kernel().buffer());
+		updateLabels(kernel().buffer());
 
 	// Generate the colours requested by each new branch.
 	BranchList & branchlist = params().branchlist();
