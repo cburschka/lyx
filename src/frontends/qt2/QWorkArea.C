@@ -171,7 +171,7 @@ pascal OSErr handleOpenDocuments(const AppleEvent* inEvent,
 					FSRefMakePath(&ref, (UInt8*)qstr_buf,
 						      1024);
 					s_arg=QString::fromUtf8(qstr_buf);
-					wa_ptr->dispatch(
+					wa_ptr->view().view()->workAreaDispatch(
 						FuncRequest(LFUN_FILE_OPEN,
 							    fromqstr(s_arg)));
 					break;
