@@ -12,13 +12,15 @@
 #include <config.h>
 
 #include "QToc.h"
-#include "QTocDialog.h"
+#include "TocModel.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
 
 #include "debug.h"
 
 #include "controllers/ControlToc.h"
+
+#include <algorithm>
 
 using std::endl;
 
@@ -29,71 +31,119 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlToc, QView<QTocDialog> > base_class;
-
 QToc::QToc(Dialog & parent)
-	: base_class(parent, _("Table of Contents"))
-{}
-
-
-void QToc::build_dialog()
+	: ControlToc(parent)
 {
-	dialog_.reset(new QTocDialog(this));
+	update();
 }
 
 
-void QToc::update_contents()
+bool QToc::canOutline()
 {
-	dialog_->updateType();
-	dialog_->updateToc();
+	vector<string> const & types = getTypes();
+
+	BOOST_ASSERT(type_ >= 0 && type_ < int(types.size()));
+	return ControlToc::canOutline(types[type_]);
 }
 
 
-void QToc::select(string const & text)
+QStandardItemModel * QToc::tocModel()
 {
-	toc::Toc::const_iterator iter = toclist.begin();
+	lyxerr[Debug::GUI]
+		<< "QToc: type_ " << type_
+		<< "  toc_models_.size() " << toc_models_.size()
+		<< endl;
 
-	for (; iter != toclist.end(); ++iter) {
-		if (iter->str == text)
-			break;
-	}
+	BOOST_ASSERT(type_ >= 0 && type_ < int(toc_models_.size()));
+	return toc_models_[type_];
+}
 
-	if (iter == toclist.end()) {
-		lyxerr[Debug::GUI] << "Couldn't find highlighted TOC entry: "
-			<< text << endl;
+
+QStandardItemModel * QToc::setTocModel(int type)
+{
+	type_ = type;
+
+	lyxerr[Debug::GUI]
+		<< "QToc: type_ " << type_
+		<< "  toc_models_.size() " << toc_models_.size()
+		<< endl;
+
+	BOOST_ASSERT(type_ >= 0 && type_ < int(toc_models_.size()));
+	return toc_models_[type_];
+}
+
+
+void QToc::goTo(QModelIndex const & index)
+{
+	if (!index.isValid()) {
+		lyxerr[Debug::GUI]
+			<< "QToc::goTo(): QModelIndex is invalid!"
+			<< endl;
 		return;
 	}
+	
+	lyxerr[Debug::GUI]
+		<< "QToc::goTo " << toc_models_[type_]->item(index).str
+		<< endl;
 
-	controller().goTo(*iter);
+	ControlToc::goTo(toc_models_[type_]->item(index));
 }
 
-void QToc::moveUp()
+
+void QToc::update()
 {
-	controller().outline(toc::UP);
-	update_contents();
+	toc_models_.clear();
+
+	QStringList type_list;
+
+	type_ = 0;
+
+	vector<string> const & types = getTypes();
+	string const & selected_type = toc::getType(params().getCmdName());
+	lyxerr[Debug::GUI] << "selected_type " << selected_type	<< endl;
+
+	QString gui_names_;
+	for (size_t i = 0; i != types.size(); ++i) {
+		string const & type_str = types[i];
+		type_list.append(toqstr(getGuiName(type_str)));
+		if (type_str == selected_type)
+			type_ = i;
+		
+		lyxerr[Debug::GUI]
+			<< "QToc: new type " << type_str
+			<< "\ttoc_models_.size() " << toc_models_.size()
+			<< endl;
+
+		toc_models_.push_back(new TocModel(getContents(types[i])));
+	}
+	type_model_.setStringList(type_list);
 }
 
 
-void QToc::moveDown()
+void QToc::updateToc(int type)
 {
-	controller().outline(toc::DOWN);
-	update_contents();
+	vector<string> const & choice = getTypes();
+
+	toc_models_[type] = new TocModel(getContents(choice[type]));
 }
 
 
-void QToc::moveIn()
+void QToc::move(toc::OutlineOp const operation, QModelIndex & index)
 {
-	controller().outline(toc::IN);
-	update_contents();
+	int toc_id = toc_models_[type_]->item(index).id_;
+	string toc_str = toc_models_[type_]->item(index).str;
+	toc_str.erase(0, toc_str.find(' ') + 1);
+
+	outline(operation);
+	updateToc(type_);
+
+	lyxerr[Debug::GUI]
+		<< "Toc id " << toc_id
+		<< "  Toc str " << toc_str
+		<< endl;
+
+	index = toc_models_[type_]->index(toc_str);
 }
-
-
-void QToc::moveOut()
-{
-	controller().outline(toc::OUT);
-	update_contents();
-}
-
 
 } // namespace frontend
 } // namespace lyx

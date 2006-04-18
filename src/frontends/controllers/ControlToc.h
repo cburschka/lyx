@@ -41,6 +41,9 @@ public:
 
 	/// Apply the selected outlining operation
 	void outline(toc::OutlineOp op);
+	
+	/// Test if outlining operation is possible
+	bool canOutline(std::string const & type);
 };
 
 } // namespace frontend

@@ -17,32 +17,47 @@
 #include "controllers/ControlToc.h"
 
 #include <QDialog>
-#include <QCloseEvent>
 
-class QTreeWidget;
-class QTreeWidgetItem;
+class QTreeViewItem;
 
 namespace lyx {
 namespace frontend {
 
 class QToc;
 
-class QTocDialog : public QDialog, public Ui::QTocUi {
+class QTocDialog : public QDialog, public Ui::QTocUi, public Dialog::View  {
 	Q_OBJECT
 public:
-	QTocDialog(QToc * form);
+	QTocDialog(Dialog &, QToc * form);
+
 	~QTocDialog();
 
-	/// update the listview
-	void updateToc(bool newdepth=false);
+	virtual void apply();
 
-	/// update the float types
-	void updateType();
+	/// Hide the dialog from sight
+	void hide();
+
+	/// Redraw the dialog (e.g. if the colors have been remapped).
+	void redraw() {}
+
+	/// Create the dialog if necessary, update it and display it.
+	void show();
+
+	/// Update the display of the dialog whilst it is still visible.
+	void update();
+
+	/// \return true if the dialog is visible.
+	bool isVisible() const;
 
 protected slots:
 	///
-	void on_tocTW_currentItemChanged(QTreeWidgetItem * current,
-		QTreeWidgetItem * previous);
+	void select(QModelIndex const & index);
+	///
+	void selectionChanged(const QModelIndex & current,
+		const QModelIndex & previous);
+
+	/// Temporary until the slot above work.
+	void on_tocTV_clicked(const QModelIndex & index );
 
 	void on_closePB_clicked();
 	void on_updatePB_clicked();
@@ -54,12 +69,13 @@ protected slots:
 	void on_moveOutPB_clicked();
 
 protected:
+	///
 	void enableButtons(bool enable = true);
-	void closeEvent(QCloseEvent * e);
+	///
+	void move(toc::OutlineOp const operation);
+	///
 
 private:
-
-	void populateItem(QTreeWidgetItem * parentItem, toc::Toc::const_iterator& iter);
 
 	QToc * form_;
 

@@ -18,7 +18,6 @@
 #include "ControlBranch.h"
 #include "ControlChanges.h"
 #include "ControlCharacter.h"
-#include "ControlCitation.h"
 #include "ControlDocument.h"
 #include "ControlErrorList.h"
 #include "ControlERT.h"
@@ -40,7 +39,6 @@
 #include "ControlSpellchecker.h"
 #include "ControlTabular.h"
 #include "ControlTabularCreate.h"
-#include "ControlToc.h"
 #include "ControlVSpace.h"
 #include "ControlWrap.h"
 
@@ -83,6 +81,7 @@
 #include "QTabularCreate.h"
 #include "QTexinfo.h"
 #include "QToc.h"
+#include "QTocDialog.h"
 #include "q3url.h"
 #include "QVSpace.h"
 #include "QWrap.h"
@@ -310,8 +309,9 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 #endif
 	} else if (name == "toc") {
-		dialog->setController(new ControlToc(*dialog));
-		dialog->setView(new QToc(*dialog));
+		QToc * qtoc = new QToc(*dialog);
+		dialog->setController(qtoc);
+		dialog->setView(new QTocDialog(*dialog, qtoc));
 		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "url") {
 		dialog->setController(new ControlCommand(*dialog, name));

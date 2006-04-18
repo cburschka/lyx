@@ -37,6 +37,12 @@ void ControlToc::goTo(toc::TocItem const & item)
 }
 
 
+bool ControlToc::canOutline(string const & type)
+{
+	return type == "TOC";
+}
+
+
 void ControlToc::outline(toc::OutlineOp op)
 {
 	std::ostringstream o;

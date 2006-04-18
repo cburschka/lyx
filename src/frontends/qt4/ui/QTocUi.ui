@@ -63,9 +63,6 @@
      </item>
     </layout>
    </item>
-   <item row="1" column="0" >
-    <widget class="QTreeWidget" name="tocTW" />
-   </item>
    <item row="4" column="0" >
     <layout class="QGridLayout" >
      <property name="margin" >
@@ -169,6 +166,9 @@
       </spacer>
      </item>
     </layout>
+   </item>
+   <item row="1" column="0" >
+    <widget class="QTreeView" name="tocTV" />
    </item>
   </layout>
  </widget>

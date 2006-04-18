@@ -19,11 +19,10 @@
 
 #include "debug.h"
 
-#include <QHeaderView>
-#include <QTreeWidget>
 #include <QTreeWidgetItem>
 #include <QPushButton>
 #include <QCloseEvent>
+#include <QHeaderView>
 
 #include <vector>
 #include <string>
@@ -35,28 +34,22 @@ using std::stack;
 using std::vector;
 using std::string;
 
+
 namespace lyx {
 namespace frontend {
 
-QTocDialog::QTocDialog(QToc * form)
-	: form_(form), depth_(2)
+QTocDialog::QTocDialog(Dialog & dialog, QToc * form)
+	: Dialog::View(dialog, "Toc"), form_(form), depth_(2)
 {
 	setupUi(this);
 
-	// Manage the cancel/close button
-	form_->bcview().setCancel(closePB);
+	update();
 
-	// disable sorting
-	tocTW->setSortingEnabled(false);
-	tocTW->setColumnCount(1);
-
-	// hide the pointless QHeader
-	QHeaderView * w = static_cast<QHeaderView*>(tocTW->header());
-	if (w)
-		w->hide();
-
-//	connect(closePB, SIGNAL(clicked()),
-//		form, SLOT(slotClose()));
+	connect(tocTV->selectionModel(),
+		SIGNAL(currentChanged(const QModelIndex &,
+			const QModelIndex &)),
+		this, SLOT(selectionChanged(const QModelIndex &,
+			const QModelIndex &)));
 }
 
 
@@ -65,21 +58,39 @@ QTocDialog::~QTocDialog()
 	accept();
 }
 
-void QTocDialog::on_tocTW_currentItemChanged(QTreeWidgetItem * current,
-						QTreeWidgetItem * previous)
+void QTocDialog::selectionChanged(const QModelIndex & current,
+								  const QModelIndex & previous)
 {
-	form_->select(fromqstr(current->text(0)));
+	lyxerr[Debug::GUI]
+		<< "selectionChanged index " << current.row() << ", " << current.column()
+		<< endl;
+
+	form_->goTo(current);
 }
+
+
+void QTocDialog::on_tocTV_clicked(const QModelIndex & index )
+{
+	lyxerr[Debug::GUI]
+		<< "on_tocTV_clicked index " << index.row() << ", " << index.column()
+		<< endl;
+
+	form_->goTo(index);
+}
+
 
 void QTocDialog::on_closePB_clicked()
 {
 	accept();
 }
 
+
 void QTocDialog::on_updatePB_clicked()
 {
 	form_->update();
+	update();
 }
+
 
 void QTocDialog::on_depthSL_valueChanged(int depth)
 {
@@ -87,174 +98,134 @@ void QTocDialog::on_depthSL_valueChanged(int depth)
 		return;
 
 	depth_ = depth;
-	updateToc(true);
+
+/*
+	while (
+	tocTv->setExpanded();
+			if (iter->depth > depth_)
+				tocTV->collapseItem(topLevelItem);
+			else if (iter->depth <= depth_)
+				tocTV->expandItem(topLevelItem);
+*/
 }
+
 
 void QTocDialog::on_typeCO_activated(int value)
 {
-	updateToc();
+	form_->setTocModel(value);
+	enableButtons();
 }
+
 
 void QTocDialog::on_moveUpPB_clicked()
 {
-	enableButtons(false);
-	form_->moveUp();
-	enableButtons();
+	move(toc::UP);
 }
+
 
 void QTocDialog::on_moveDownPB_clicked()
 {
-	enableButtons(false);
-	form_->moveDown();
-	enableButtons();
+	move(toc::DOWN);
 }
+
 
 void QTocDialog::on_moveInPB_clicked()
 {
-	enableButtons(false);
-	form_->moveIn();
-	enableButtons();
+	move(toc::IN);
 }
+
 
 void QTocDialog::on_moveOutPB_clicked()
 {
+	move(toc::OUT);
+}
+
+
+void QTocDialog::move(toc::OutlineOp const operation)
+{
 	enableButtons(false);
-	form_->moveOut();
+	QModelIndex index = tocTV->selectionModel()->selectedIndexes()[0];
+	form_->move(operation, index);
+	select(index);
 	enableButtons();
+}
+
+void QTocDialog::select(QModelIndex const & index)
+{
+	tocTV->setModel(form_->tocModel());
+
+	if (index.isValid()) {
+		tocTV->scrollTo(index);
+		tocTV->selectionModel()->select(index, QItemSelectionModel::Select);
+	}
 }
 
 void QTocDialog::enableButtons(bool enable)
 {
+	updatePB->setEnabled(enable);
+
+	if (!form_->canOutline())
+		enable = false;
+
 	moveUpPB->setEnabled(enable);
 	moveDownPB->setEnabled(enable);
 	moveInPB->setEnabled(enable);
 	moveOutPB->setEnabled(enable);
-	updatePB->setEnabled(enable);
 }
 
-void QTocDialog::updateType()
+
+void QTocDialog::update()
 {
-	typeCO->clear();
+	typeCO->setModel(form_->typeModel());
+	tocTV->setModel(form_->tocModel());
+	tocTV->showColumn(0);
+	// hide the pointless QHeader for now
+	// in the future, new columns may appear 
+	// like labels, bookmarks, etc...
+	// tocTV->header()->hide();
+	tocTV->header()->setVisible(true);
+	enableButtons();
 
-	vector<string> const & choice = form_->controller().getTypes();
-	string const & type = toc::getType(form_->controller().params().getCmdName());
+	connect(tocTV->selectionModel(),
+		SIGNAL(currentChanged(const QModelIndex &,
+			const QModelIndex &)),
+		this, SLOT(selectionChanged(const QModelIndex &,
+			const QModelIndex &)));
 
-	for (vector<string>::const_iterator it = choice.begin();
-		it != choice.end(); ++it) {
-		string const & guiname = form_->controller().getGuiName(*it);
-		typeCO->insertItem(toqstr(guiname));
-		if (*it == type) {
-			typeCO->setCurrentItem(it - choice.begin());
-			form_->setTitle(guiname);
-		}
-	}
+	lyxerr[Debug::GUI]
+		<< "form_->tocModel()->rowCount " << form_->tocModel()->rowCount()
+		<< "\nform_->tocModel()->columnCount " << form_->tocModel()->columnCount()
+		<< endl;
+//	setTitle(form_->guiname())
 }
 
-void QTocDialog::updateToc(bool newdepth)
+
+void QTocDialog::apply()
 {
-	vector<string> const & choice = form_->controller().getTypes();
-	string type;
-	if (!choice.empty())
-		type = choice[typeCO->currentItem()];
-
-	toc::Toc const & contents = form_->controller().getContents(type);
-
-	// Check if all elements are the same.
-	if (!newdepth && form_->get_toclist() == contents) {
-		return;
-	}
-
-	tocTW->clear();
-
-	form_->get_toclist() = contents;
-
-	if (form_->get_toclist().empty())
-		return;
-
-	tocTW->setUpdatesEnabled(false);
-
-	QTreeWidgetItem * topLevelItem;
-
-	toc::Toc::const_iterator iter = form_->get_toclist().begin();
-
-	while (iter != form_->get_toclist().end()) {
-
-		if (iter->depth == 1) {
-			topLevelItem = new QTreeWidgetItem(tocTW);
-			topLevelItem->setText(0, toqstr(iter->str));
-			if (iter->depth > depth_)
-				tocTW->collapseItem(topLevelItem);
-			else if (iter->depth <= depth_)
-				tocTW->expandItem(topLevelItem);
-
-			lyxerr[Debug::GUI]
-				<< "Table of contents\n"
-				<< "Added Top Level item " << iter->str
-				<< " at depth " << iter->depth
-				<< endl;
-
-			populateItem(topLevelItem, iter);
-		}
-
-		if (iter == form_->get_toclist().end())
-			break;
-
-		++iter;
-	}
-
-	tocTW->setUpdatesEnabled(true);
-	tocTW->update();
-	form_->setTitle(fromqstr(typeCO->currentText()));
-	tocTW->show();
+	// Nothing to do here... for now.
+	// Ideas welcome... (Abdel, 17042006)
 }
 
-void QTocDialog::populateItem(QTreeWidgetItem * parentItem, toc::Toc::const_iterator & iter)
+
+void QTocDialog::hide()
 {
-	int curdepth = iter->depth + 1;
-	QTreeWidgetItem * item;
-
-	while (iter != form_->get_toclist().end()) {
-
-		++iter;
-
-		if (iter == form_->get_toclist().end())
-			break;
-
-		if (iter->depth < curdepth) {
-			--iter;
-			return;
-		}
-		if (iter->depth > curdepth) {
-//			--iter;
-			return;
-		}
-
-		item = new QTreeWidgetItem(parentItem);
-		item->setText(0, toqstr(iter->str));
-
-		if (iter->depth > depth_)
-			tocTW->collapseItem(item);
-		else if (iter->depth <= depth_)
-			tocTW->expandItem(item);
-
-		lyxerr[Debug::GUI]
-			<< "Table of contents: Added item " << iter->str
-			<< " at depth " << iter->depth
-			<< "  \", parent \""
-			<< fromqstr(parentItem->text(0)) << '"'
-			<< "expanded: " << tocTW->isItemExpanded(item)
-			<< endl;
-
-		populateItem(item, iter);
-	}
+	accept();
 }
 
 
-void QTocDialog::closeEvent(QCloseEvent * e)
+void QTocDialog::show()
 {
-	form_->slotWMHide();
-	e->accept();
+	form_->update();
+	update();
+	QDialog::show();
 }
+
+
+bool QTocDialog::isVisible() const
+{
+	return QDialog::isVisible();
+}
+
 
 } // namespace frontend
 } // namespace lyx

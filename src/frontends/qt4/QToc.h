@@ -14,47 +14,47 @@
 #ifndef QTOC_H
 #define QTOC_H
 
-#include "QDialogView.h"
-#include "toc.h"
+#include "ControlToc.h"
+
+#include <QStandardItemModel>
+#include <QStringListModel>
 
 namespace lyx {
 namespace frontend {
 
 class ControlToc;
-class QTocDialog;
+class TocModel;
 
-//template<class W>
-class QToc :
-	public QController<ControlToc, QView<QTocDialog> >
+class QToc : public ControlToc
 {
 public:
-	friend class QTocDialog;
 
 	QToc(Dialog &);
 
-	/// return the toc list
-	lyx::toc::Toc & get_toclist() { return toclist;}
+	void update();
 
-	void moveUp();
-	void moveDown();
-	void moveIn();
-	void moveOut();
+	void updateToc(int type);
+
+	bool canOutline();
+	
+	QStandardItemModel * tocModel();
+	QStandardItemModel * setTocModel(int type);
+
+	QStringListModel * typeModel()
+	{ return &type_model_; }
+
+	void goTo(QModelIndex const & index);
+
+	void move(toc::OutlineOp const operation, QModelIndex & index);
 
 private:
 
-	/// select an entry
-	void select(std::string const & text);
+	std::vector<TocModel *> toc_models_;
 
-	virtual void apply() {}
+	QStringListModel type_model_;
 
-	/// update dialog
-	virtual void update_contents();
-
-	/// build dialog
-	virtual void build_dialog();
-
-	/// the toc list
-	lyx::toc::Toc toclist;
+	int type_;
+	int outline_type_;
 };
 
 } // namespace frontend
