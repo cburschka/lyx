@@ -49,6 +49,8 @@ libgtk_la_SOURCES = \
 	GErrorList.h \
 	GERT.C \
 	GERT.h \
+	GExternal.C \
+	GExternal.h \
 	GFloat.C \
 	GFloat.h \
 	GInclude.C \

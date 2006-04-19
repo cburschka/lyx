@@ -67,7 +67,7 @@
 #include "GDocument.h"
 #include "GErrorList.h"
 #include "GERT.h"
-//#include "FormExternal.h"
+#include "GExternal.h"
 #include "GFloat.h"
 #include "GGraphics.h"
 #include "GInclude.h"
@@ -229,9 +229,9 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setView(new GERT(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "external") {
-//		dialog->bc().view(new xformsBC(dialog->bc()));
+		dialog->bc().view(new GBC(dialog->bc()));
 		dialog->setController(new ControlExternal(*dialog));
-//		dialog->setView(new FormExternal(*dialog));
+		dialog->setView(new GExternal(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "file") {
 		dialog->bc().view(new GBC(dialog->bc()));

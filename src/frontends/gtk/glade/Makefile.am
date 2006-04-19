@@ -15,6 +15,7 @@ dist_glade_DATA = \
 	document.glade \
 	errors.glade \
 	ERT.glade \
+	external.glade \
 	float.glade \
 	graphics.glade \
 	include.glade \
