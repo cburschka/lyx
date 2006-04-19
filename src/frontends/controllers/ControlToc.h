@@ -36,6 +36,10 @@ public:
 	/// Return the guiname from a given cmdName of the TOC param
 	std::string const getGuiName(std::string const & type) const;
 
+	/// Return the first TocItem before the cursor
+	toc::TocItem const getCurrentTocItem(
+		std::string const & type) const;
+
 	/// Given a type, returns the contents
 	toc::Toc const getContents(std::string const & type) const;
 

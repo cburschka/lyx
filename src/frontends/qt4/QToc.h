@@ -43,6 +43,9 @@ public:
 	QStringListModel * typeModel()
 	{ return &type_model_; }
 
+	///
+	QModelIndex const getCurrentIndex();
+	///
 	void goTo(QModelIndex const & index);
 
 	void move(toc::OutlineOp const operation, QModelIndex & index);

@@ -5,6 +5,7 @@
  *
  * \author Jean-Marc Lasgouttes
  * \author Angus Leeming
+ * \author Abdelrazak Younes
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -19,6 +20,8 @@
 #include "funcrequest.h"
 #include "LyXAction.h"
 #include "paragraph.h"
+#include "cursor.h"
+#include "debug.h"
 
 #include "frontends/LyXView.h"
 
@@ -133,6 +136,46 @@ TocList const getTocList(Buffer const & buf)
 		}
 	}
 	return toclist;
+}
+
+
+TocItem const getCurrentTocItem(Buffer const & buf, LCursor const & cur,
+								std::string const & type)
+{
+	// This should be cached:
+	TocList tmp = getTocList(buf);
+
+	// Is the type supported?
+	/// \todo TocItem() should create an invalid TocItem()
+	/// \todo create TocItem::isValid()
+	TocList::iterator toclist_it = tmp.find(type);
+	if (toclist_it == tmp.end())
+		return TocItem(-1, -1, string());
+
+	Toc const toc_vector = toclist_it->second;
+	ParConstIterator const current(cur);
+	int start = toc_vector.size() - 1;
+
+	/// \todo cache the ParConstIterator values inside TocItem
+	for (int i = start; i >= 0; --i) {
+		
+		ParConstIterator const it 
+			= buf.getParFromID(toc_vector[i].id_);
+
+		// A good solution for TocItems inside insets would be to do:
+		//
+		//if (std::distance(it, current) <= 0)
+		//	return toc_vector[i];
+		//
+		// But for an unknown reason, std::distance(current, it) always
+		// returns  a positive value and std::distance(it, current) takes forever...
+		// So for now, we do:
+		if (it.pit() <= current.pit())
+			return toc_vector[i];
+	}
+
+	// We are before the first TocItem:
+	return toc_vector[0];
 }
 
 

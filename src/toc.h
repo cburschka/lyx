@@ -26,6 +26,7 @@ class Buffer;
 class LyXView;
 class Paragraph;
 class FuncRequest;
+class LCursor;
 
 namespace lyx {
 namespace toc {
@@ -59,6 +60,10 @@ TocList const getTocList(Buffer const &);
 
 ///
 std::vector<std::string> const getTypes(Buffer const &);
+
+/// Return the first TocItem before the cursor
+TocItem const getCurrentTocItem(Buffer const &, LCursor const &,
+								std::string const & type);
 
 ///
 void asciiTocList(std::string const &, Buffer const &, std::ostream &);

@@ -15,6 +15,7 @@
 #include "ControlToc.h"
 #include "funcrequest.h"
 #include "gettext.h"
+#include "BufferView.h"
 
 using std::vector;
 using std::string;
@@ -54,6 +55,17 @@ void ControlToc::outline(toc::OutlineOp op)
 vector<string> const ControlToc::getTypes() const
 {
 	return toc::getTypes(kernel().buffer());
+}
+
+
+toc::TocItem const ControlToc::getCurrentTocItem(
+	string const & type) const
+{
+	BufferView const * const bv = kernel().bufferview();
+	if (!bv)
+		return toc::TocItem(-1, -1, "");
+
+	return toc::getCurrentTocItem(kernel().buffer(), bv->cursor(), type);
 }
 
 

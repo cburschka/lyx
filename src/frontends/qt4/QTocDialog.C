@@ -58,6 +58,7 @@ QTocDialog::~QTocDialog()
 	accept();
 }
 
+
 void QTocDialog::selectionChanged(const QModelIndex & current,
 								  const QModelIndex & previous)
 {
@@ -145,6 +146,7 @@ void QTocDialog::move(toc::OutlineOp const operation)
 {
 	enableButtons(false);
 	QModelIndex index = tocTV->selectionModel()->selectedIndexes()[0];
+	form_->goTo(index);
 	form_->move(operation, index);
 	select(index);
 	enableButtons();
@@ -154,10 +156,14 @@ void QTocDialog::select(QModelIndex const & index)
 {
 	tocTV->setModel(form_->tocModel());
 
-	if (index.isValid()) {
-		tocTV->scrollTo(index);
-		tocTV->selectionModel()->select(index, QItemSelectionModel::Select);
+	if (!index.isValid()) {
+		lyxerr[Debug::GUI]
+			<< "QTocDialog::select(): QModelIndex is invalid!" << endl;
+		return;
 	}
+
+	tocTV->scrollTo(index);
+	tocTV->selectionModel()->select(index, QItemSelectionModel::Select);
 }
 
 void QTocDialog::enableButtons(bool enable)
@@ -191,6 +197,8 @@ void QTocDialog::update()
 			const QModelIndex &)),
 		this, SLOT(selectionChanged(const QModelIndex &,
 			const QModelIndex &)));
+
+	select(form_->getCurrentIndex());
 
 	lyxerr[Debug::GUI]
 		<< "form_->tocModel()->rowCount " << form_->tocModel()->rowCount()

@@ -73,6 +73,23 @@ QStandardItemModel * QToc::setTocModel(int type)
 }
 
 
+QModelIndex const QToc::getCurrentIndex()
+{
+	vector<string> const & types = getTypes();
+	toc::TocItem const item = getCurrentTocItem(types[type_]);
+	if (item.id_ == -1) {
+		lyxerr[Debug::GUI]
+			<< "QToc::getCurrentIndex(): TocItem is invalid!" << endl;
+		return QModelIndex();
+	}
+
+	string toc_str = item.str;
+	toc_str.erase(0, toc_str.find(' ') + 1);
+
+	return toc_models_[type_]->index(toc_str);
+}
+
+
 void QToc::goTo(QModelIndex const & index)
 {
 	if (!index.isValid()) {
