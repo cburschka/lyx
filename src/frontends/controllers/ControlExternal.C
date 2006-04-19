@@ -140,22 +140,30 @@ external::Template ControlExternal::getTemplate(int i) const
 }
 
 
-string const ControlExternal::browse(string const & input,
-				     string const & template_name) const
+string const
+ControlExternal::getTemplateFilters(string const & template_name) const
 {
-	string const title =  _("Select external file");
-
-	string const bufpath = kernel().bufferFilepath();
-
 	/// Determine the template file extension
 	external::TemplateManager const & etm =
 		external::TemplateManager::get();
 	external::Template const * const et_ptr =
 		etm.getTemplateByName(template_name);
 
-	FileFilterList const filter = et_ptr ?
-		FileFilterList(et_ptr->fileRegExp) :
-		FileFilterList();
+	if (et_ptr) 
+		return et_ptr->fileRegExp;
+
+	return string();
+}
+
+
+string const ControlExternal::browse(string const & input,
+				     string const & template_name) const
+{
+	string const title =  _("Select external file");
+
+	string const bufpath = kernel().bufferFilepath();
+	FileFilterList const filter = 
+		FileFilterList(getTemplateFilters(template_name));
 
 	std::pair<string, string> dir1(N_("Documents|#o#O"),
 				       string(lyxrc.document_path));

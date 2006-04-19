@@ -65,8 +65,11 @@ public:
 	///
 	external::Template getTemplate(int) const;
 	///
+	std::string const 
+	getTemplateFilters(std::string const & template_name) const;
+	///
 	std::string const browse(std::string const & input_file,
-				 std::string const & tempalate_name) const;
+				 std::string const & template_name) const;
 
 	/// Read the Bounding Box from a eps or ps-file
 	std::string const readBB(std::string const & file);
