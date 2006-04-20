@@ -987,10 +987,10 @@ def convert_minipage(file):
 
         # convert the inner_position
         if file.body[i][:14] == "inner_position":
-            file.body[i] = 'inner_pos "%s"' %  inner_pos[int(file.body[i][15])]
+            innerpos = inner_pos[int(file.body[i][15])]
+            del file.body[i]    
         else:
-            file.body.insert('inner_pos "%s"' % inner_pos[0])
-        i = i + 1
+            innerpos = inner_pos[0]
 
         # We need this since the new file format has a height and width
         # in a different order.
@@ -1018,6 +1018,12 @@ def convert_minipage(file):
         else:
 	    status = "collapsed"
 
+        # Handle special default case:
+        if height == ' "1pt"' and innerpos == 'c':
+            innerpos = 't'
+
+        file.body.insert(i, 'inner_pos "' + innerpos + '"')
+        i = i + 1
         file.body.insert(i, 'use_parbox 0')
         i = i + 1
         file.body.insert(i, 'width' + width)
