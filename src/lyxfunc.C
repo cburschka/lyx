@@ -723,7 +723,11 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 	errorstat = false;
 	dispatch_buffer.erase();
 
-	bool update = false;
+	// redraw the screen at the end (first of the two drawing steps).
+	//This is done unless explicitely requested otherwise 
+	bool update = true;
+	// also do the second redrawing step. Only done if requested.
+	bool updateforce = false;
 
 	FuncStatus const flag = getStatus(cmd);
 	if (!flag.enabled()) {
@@ -815,10 +819,12 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				owner->message(str + _(" done."));
 			} else
 				writeAs(owner->buffer());
+			update = false;
 			break;
 
 		case LFUN_WRITEAS:
 			writeAs(owner->buffer(), argument);
+			update = false;
 			break;
 
 		case LFUN_MENURELOAD: {
@@ -1433,7 +1439,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			}
 			// ideally, the update flag should be set by the insets,
 			// but this is not possible currently
-			update = true;
+			updateforce = true;
 			break;
 		}
 
@@ -1457,7 +1463,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 					it->dispatch(tmpcur, fr);
 				}
 			}
-			update = true;
+			updateforce = true;
 			break;
 		}
 
@@ -1565,7 +1571,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			bufferErrors(*buffer, el);
 			view()->showErrorList(_("Class switch"));
 			updateLabels(*buffer);
-			update = true;
+			updateforce = true;
 			break;
 		}
 
@@ -1592,9 +1598,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		default: {
 			view()->cursor().dispatch(cmd);
-			update |= view()->cursor().result().update();
+			updateforce |= view()->cursor().result().update();
 			if (!view()->cursor().result().dispatched())
-				update |= view()->dispatch(cmd);
+				updateforce |= view()->dispatch(cmd);
 			break;
 		}
 		}
@@ -1603,9 +1609,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			// Redraw screen unless explicitly told otherwise.
 			// This also initializes the position cache for all insets
 			// in (at least partially) visible top-level paragraphs.
-			if (update)
+			if (updateforce)
 				view()->update(Update::FitCursor | Update::Force);
-			else
+			else if (update)
 				view()->update(Update::FitCursor);
 
 			// if we executed a mutating lfun, mark the buffer as dirty
