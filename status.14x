@@ -38,6 +38,8 @@ What's new
 
 
 
+- Fix conversion of minipages (default height and inner vertical position) from   1.3.7
+
 * User Interface:
 
 - When pasting contents to a tabular with the middle mouse, the language has sometimes
@@ -47,6 +49,8 @@ What's new
   tracking status (bug 2207).
 
 - Load the tipa package automatically when needed.
+
+- Fix undo in math matrices
 
 * Configuration/Installation:
 
