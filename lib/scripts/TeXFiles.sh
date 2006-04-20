@@ -41,15 +41,20 @@ types=$1
 test -z "$types" && types="cls sty bst bib"
 
 #
-# MS-DOS and MS-Windows define $COMSPEC or $ComSpec and use ';' to separate
-# directories in path lists whereas Unixes uses ':'.
-# $SEP holds the right character to be used by the scripts.
-#
-#???????????????
-# never used this one with windows and what happens with mac??
-#???????????????
-#
-if test -z "$COMSPEC" && test -z "$ComSpec"; then SEP=':'; else SEP=';'; fi
+# MS-DOS and MS-Windows define $COMSPEC or $ComSpec and use `;' to separate
+# directories in path lists whereas Unix uses `:'.  Make an exception for
+# Cygwin, where we could have either teTeX (using `:') or MikTeX (using `;').
+# Create a variable that holds the right character to be used by the scripts.
+DOSISH=no
+case `uname -s` in
+  CYGWIN*|Cygwin*|cygwin*)
+    # MikTeX's kpsewhich says "kpathsea emulation version x.x.x", whereas
+    # teTeX's simply "kpathsea version x.x.x".
+    if kpsewhich --version | grep emulation >/dev/null 2>&1; then DOSISH=yes; fi
+    ;;
+  *) if test -n "$COMSPEC" || test -n "$ComSpec"; then DOSISH=yes; fi
+esac
+if test "$DOSISH" = "no"; then SEP=':'; else SEP=';'; fi
 
 #
 # A copy of some stuff from mktex.opt, so we can run in the presence of
