@@ -24,6 +24,7 @@
 #include "funcrequest.h"
 #include "gettext.h"
 #include "insetiterator.h"
+#include "language.h"
 #include "lfuns.h"
 #include "lyxrc.h"
 #include "lyxtext.h"
@@ -73,12 +74,22 @@ CutStack theCuts(10);
 // when we (hopefully) have a one-for-all paste mechanism.
 bool dirty_tabular_stack_;
 
-class resetOwnerAndChanges : public std::unary_function<Paragraph, void> {
+class resetParagraph : public std::unary_function<Paragraph, Buffer const &> {
 public:
+	resetParagraph(Buffer const & b) : buffer_(b) {}
 	void operator()(Paragraph & p) const {
 		p.cleanChanges();
+		// ERT paragraphs have the Language latex_language.
+		// This is invalid outside of ERT, so we need to change it
+		// to the buffer language.
+		if (p.ownerCode() == InsetBase::ERT_CODE) {
+			p.changeLanguage(buffer_.params(), latex_language,
+			                 buffer_.getLanguage());
+		}
 		p.setInsetOwner(0);
 	}
+private:
+	Buffer const & buffer_;
 };
 
 
@@ -313,7 +324,7 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 }
 
 
-void copySelectionHelper(ParagraphList & pars,
+void copySelectionHelper(Buffer const & buf, ParagraphList & pars,
 	pit_type startpit, pit_type endpit,
 	int start, int end, textclass_type tc)
 {
@@ -325,7 +336,7 @@ void copySelectionHelper(ParagraphList & pars,
 	ParagraphList paragraphs(boost::next(pars.begin(), startpit),
 				 boost::next(pars.begin(), endpit + 1));
 
-	for_each(paragraphs.begin(), paragraphs.end(), resetOwnerAndChanges());
+	for_each(paragraphs.begin(), paragraphs.end(), resetParagraph(buf));
 
 	// Cut out the end of the last paragraph.
 	Paragraph & back = paragraphs.back();
@@ -491,7 +502,8 @@ void cutSelection(LCursor & cur, bool doclear, bool realcut)
 
 		BufferParams const & bp = cur.buffer().params();
 		if (realcut) {
-			copySelectionHelper(text->paragraphs(),
+			copySelectionHelper(cur.buffer(),
+				text->paragraphs(),
 				begpit, endpit,
 				cur.selBegin().pos(), endpos,
 				bp.textclass);
@@ -563,7 +575,7 @@ void copySelection(LCursor & cur)
 					 && (par != cur.selEnd().pit() || pos < cur.selEnd().pos()))
 			++pos;
 
-		copySelectionHelper(pars, par, cur.selEnd().pit(),
+		copySelectionHelper(cur.buffer(), pars, par, cur.selEnd().pit(),
 			pos, cur.selEnd().pos(), cur.buffer().params().textclass);
 	}
 
@@ -573,7 +585,7 @@ void copySelection(LCursor & cur)
 		pars.push_back(Paragraph());
 		BufferParams const & bp = cur.buffer().params();
 		pars.back().layout(bp.getLyXTextClass().defaultLayout());
-		for_each(pars.begin(), pars.end(), resetOwnerAndChanges());
+		for_each(pars.begin(), pars.end(), resetParagraph(cur.buffer()));
 		pars.back().insert(0, grabSelection(cur), LyXFont());
 		theCuts.push(make_pair(pars, bp.textclass));
 	}
