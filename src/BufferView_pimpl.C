@@ -1234,7 +1234,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		lyx::toc::OutlineOp const op =
 		    static_cast<lyx::toc::OutlineOp>(convert<int>(cmd.argument));
 		lyx::toc::outline(op, buffer_, cursor_.pit());
-		bv_->text()->setCursor(cursor_, cursor_.pit(), 0);
+		cursor_.text()->setCursor(cursor_, cursor_.pit(), 0);
 		buffer_->markDirty();
 		updateLabels(*buffer_);
 		update();
