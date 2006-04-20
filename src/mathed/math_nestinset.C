@@ -13,6 +13,7 @@
 #include "math_nestinset.h"
 
 #include "math_arrayinset.h"
+#include "math_biginset.h"
 #include "math_boxinset.h"
 #include "math_braceinset.h"
 #include "math_colorinset.h"
@@ -1142,6 +1143,36 @@ bool MathNestInset::interpret(LCursor & cur, char c)
 				cur.niceInsert(createMathInset(string(1, c)));
 			}
 			return true;
+		}
+
+		// One character big delimiters. The others are handled in
+		// LCursor::plainInsert.
+		latexkeys const * l = in_word_set(name.substr(1));
+		if (name[0] == '\\' && l && l->inset == "big") {
+			string delim;
+			switch (c) {
+			case '{':
+				delim = "\\{";
+				break;
+			case '}':
+				delim = "\\}";
+				break;
+			default:
+				delim = string(1, c);
+				break;
+			}
+			if (MathBigInset::isBigInsetDelim(delim)) {
+				// name + delim ared a valid MathBigInset.
+				// We can't use cur.macroModeClose() because
+				// it does not handle delim.
+				MathUnknownInset * p = cur.activeMacro();
+				p->finalize();
+				--cur.pos();
+				cur.cell().erase(cur.pos());
+				cur.plainInsert(MathAtom(
+					new MathBigInset(name.substr(1), delim)));
+				return true;
+			}
 		}
 
 		// leave macro mode and try again if necessary

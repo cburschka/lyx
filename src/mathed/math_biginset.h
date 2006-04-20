@@ -16,11 +16,13 @@
 
 #include <string>
 
-/// Inset for \bigl & Co.
+/// Inset for \\bigl & Co.
 class MathBigInset : public MathDimInset {
 public:
 	///
 	MathBigInset(std::string const & name, std::string const & delim);
+	///
+	std::string name() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
@@ -29,6 +31,8 @@ public:
 	void write(WriteStream & os) const;
 	///
 	void normalize(NormalStream & os) const;
+	///
+	static bool isBigInsetDelim(std::string const &);
 
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
@@ -37,9 +41,9 @@ private:
 	///
 	double increase() const;
 
-	/// \bigl or what?
+	/// \\bigl or what?
 	std::string const name_;
-	/// ( or [ or Vert...
+	/// ( or [ or \\Vert...
 	std::string const delim_;
 };
 

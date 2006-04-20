@@ -40,20 +40,11 @@ using std::string;
 
 // anonym namespace
 namespace {
-int findToken(char const * const str[], string const search_token)
+int findToken(char const * const str[], string const & search_token)
 {
-	int i = 0;
-
-	if (search_token != "default") {
-		while (str[i][0] && str[i] != search_token) {
-			++i;
-		}
-		if (!str[i][0]) {
-			i = -1;
-		}
-	}
-
-	return i;
+	return search_token == "default" ?
+		0 :
+		lyx::support::findToken(str, search_token);
 }
 
 }

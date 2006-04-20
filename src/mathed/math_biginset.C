@@ -15,6 +15,8 @@
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
 
+#include "support/lstrings.h"
+
 
 using std::string;
 using std::auto_ptr;
@@ -25,6 +27,12 @@ MathBigInset::MathBigInset(string const & name, string const & delim)
 {}
 
 
+string MathBigInset::name() const
+{
+	return name_;
+}
+
+
 auto_ptr<InsetBase> MathBigInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathBigInset(*this));
@@ -33,18 +41,21 @@ auto_ptr<InsetBase> MathBigInset::doClone() const
 
 MathBigInset::size_type MathBigInset::size() const
 {
-	return name_.size() - 4;
+	// order: big Big bigg Bigg biggg Biggg
+	//        0   1   2    3    4     5
+	return name_[0] == 'B' ?
+		2 * (name_.size() - 4) + 1:
+		2 * (name_.size() - 4);
 }
 
 
 double MathBigInset::increase() const
 {
-	switch (size()) {
-		case 1:  return 0.2;
-		case 2:  return 0.44;
-		case 3:  return 0.7;
-		default: return 0.0;
-	}
+	// The formula used in amsmath.sty is
+	// 1.2 * (1.0 + size() * 0.5) - 1.0.
+	// We use a smaller step and a bigger offset because our base size
+	// is different.
+	return (size() + 1) * 0.3;
 }
 
 
@@ -61,17 +72,43 @@ void MathBigInset::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void MathBigInset::draw(PainterInfo & pi, int x, int y) const
 {
-	mathed_draw_deco(pi, x + 1, y - dim_.ascent(), 4, dim_.height(), delim_);
+	// mathed_draw_deco does not use the leading backslash, so remove it.
+	// Replace \| by \Vert (equivalent in LaTeX), since mathed_draw_deco
+	// would treat it as |.
+	string const delim = (delim_ == "\\|") ?
+		"Vert" :
+		lyx::support::ltrim(delim_, "\\");
+	mathed_draw_deco(pi, x + 1, y - dim_.ascent(), 4, dim_.height(),
+	                 delim);
+	setPosCache(pi, x, y);
 }
 
 
 void MathBigInset::write(WriteStream & os) const
 {
 	os << '\\' << name_ << ' ' << delim_;
+	if (delim_[0] == '\\')
+		os.pendingSpace(true);
 }
 
 
 void MathBigInset::normalize(NormalStream & os) const
 {
 	os << '[' << name_ << ' ' <<  delim_ << ']';
+}
+
+
+bool MathBigInset::isBigInsetDelim(string const & delim)
+{
+	// mathed_draw_deco must handle these
+	static char const * const delimiters[] = {
+		"(", ")", "\\{", "\\}", "\\lbrace", "\\rbrace", "[", "]",
+		"|", "/", "\\|", "\\vert", "\\Vert", "'", "\\backslash",
+		"\\langle", "\\lceil", "\\lfloor",
+		"\\rangle", "\\rceil", "\\rfloor",
+		"\\downarrow", "\\Downarrow",
+		"\\uparrow", "\\Uparrow",
+		"\\updownarrow", "\\Updownarrow", ""
+	};
+	return (lyx::support::findToken(delimiters, delim) >= 0);
 }

@@ -276,6 +276,10 @@ MathAtom createMathInset(string const & s)
 			return MathAtom(new MathFontOldInset(l));
 		if (inset == "matrix")
 			return MathAtom(new MathAMSArrayInset(s));
+		if (inset == "big")
+			// we can't create a MathBigInset, since the argument
+			// is missing.
+			return MathAtom(new MathUnknownInset(s));
 		return MathAtom(new MathSymbolInset(l));
 	}
 
