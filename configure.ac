@@ -14,7 +14,7 @@ LYX_VERSION_SUFFIX
 AC_CANONICAL_TARGET
 LYX_USE_PACKAGING
 # We need to define these variables here and the no-define option of
-# AM_INIT_AUTOMAKE above because we alter $PACKAGE in LYX_USE_PACKAGING. 
+# AM_INIT_AUTOMAKE above because we alter $PACKAGE in LYX_USE_PACKAGING.
 AC_DEFINE_UNQUOTED(PACKAGE, "$PACKAGE", [Name of package])
 
 dnl default maintainer mode to true for development versions
@@ -309,9 +309,9 @@ save_LIBS="$LIBS"
 LIBS=
 AC_CHECK_FUNCS(fcntl,
   [AC_SEARCH_LIBS([gethostbyname], [nsl])
-   AC_SEARCH_LIBS([socket], [socket], [], 
+   AC_SEARCH_LIBS([socket], [socket], [],
      [AC_CHECK_LIB([socket], [socket], [LIBS="-lsocket -lnsl $LIBS"],
-                [], [-lnsl])])], 
+		[], [-lnsl])])],
   [lyx_client_subdir=false])
 AC_SUBST(SOCKET_LIBS,$LIBS)
 LIBS="$save_LIBS"
@@ -431,6 +431,8 @@ AC_CONFIG_FILES([Makefile  m4/Makefile \
        boost/libs/Makefile \
        boost/libs/filesystem/Makefile \
        boost/libs/filesystem/src/Makefile \
+       boost/libs/iostreams/Makefile \
+       boost/libs/iostreams/src/Makefile \
        boost/libs/regex/Makefile \
        boost/libs/regex/src/Makefile \
        boost/libs/signals/Makefile \
