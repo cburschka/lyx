@@ -266,10 +266,22 @@ def checkConverterEntries():
   ''' Check all converters (\converter entries) '''
   checkProg('the pdflatex program', ['pdflatex $$i'],
     rc_entry = [ r'\converter pdflatex   pdf2       "%%"	"latex"' ])
-  #
-  checkProg('a LaTeX -> LyX converter', [os.path.join('..','src','tex2lyx','tex2lyx') + ' -f $$i $$o', \
+  
+  ''' If we're running LyX in-place then tex2lyx will be found in
+      ../src/tex2lyx. Add this directory to the PATH temporarily and
+      search for tex2lyx.
+      Use PATH to avoid any problems with paths-with-spaces.
+  '''
+  path_orig = os.environ["PATH"]
+  os.environ["PATH"] = os.path.join('..','src','tex2lyx') + \
+    os.pathsep + path_orig
+
+  checkProg('a LaTeX -> LyX converter', ['tex2lyx -f $$i $$o', \
     'tex2lyx' +  version_suffix + ' -f $$i $$o' ],
     rc_entry = [ r'\converter latex      lyx        "%%"	""' ])
+
+  os.environ["PATH"] = path_orig
+
   #
   checkProg('a Noweb -> LyX converter', ['noweb2lyx' + version_suffix + ' $$i $$o'], path = ['./reLyX'],
     rc_entry = [ r'\converter literate   lyx        "%%"	""' ])
