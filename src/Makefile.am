@@ -25,7 +25,7 @@ LYX_POST_LIBS = frontends/controllers/libcontrollers.la \
 	graphics/libgraphics.la \
 	support/libsupport.la
 
-BOOST_LIBS = $(BOOST_REGEX) $(BOOST_SIGNALS) $(BOOST_FILESYSTEM)
+BOOST_LIBS = $(BOOST_REGEX) $(BOOST_SIGNALS) $(BOOST_FILESYSTEM) $(BOOST_IOSTREAMS)
 
 OTHERLIBS = $(BOOST_LIBS) $(INTLLIBS) $(AIKSAURUS_LIBS) @LIBS@ $(SOCKET_LIBS)
 

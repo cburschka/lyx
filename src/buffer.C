@@ -69,7 +69,10 @@
 #include "support/filetools.h"
 #include "support/fs_extras.h"
 #ifdef USE_COMPRESSION
-# include "support/gzstream.h"
+# include <boost/iostreams/filtering_stream.hpp>
+# include <boost/iostreams/filter/gzip.hpp>
+# include <boost/iostreams/device/file.hpp>
+namespace io = boost::iostreams;
 #endif
 #include "support/lyxlib.h"
 #include "support/os.h"
@@ -735,7 +738,7 @@ bool Buffer::writeFile(string const & fname) const
 
 	if (params().compressed) {
 #ifdef USE_COMPRESSION
-		gz::ogzstream ofs(fname.c_str(), ios::out|ios::trunc);
+		io::filtering_ostream ofs(io::gzip_compressor() | io::file_sink(fname));
 		if (!ofs)
 			return false;
 

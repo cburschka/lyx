@@ -144,14 +144,15 @@ bool LyXLex::Pimpl::setFile(string const & filename)
 		// The check only outputs a debug message, because it triggers
 		// a bug in compaq cxx 6.2, where is_open() returns 'true' for
 		// a fresh new filebuf.  (JMarc)
-		if (gz_.is_open() || istream::off_type(is.tellg()) > -1)
+		if (!gz_.empty() || istream::off_type(is.tellg()) > -1)
 			lyxerr[Debug::LYXLEX] << "Error in LyXLex::setFile: "
 				"file or stream already set." << endl;
-		gz_.open(filename.c_str(), ios::in);
+		gz_.push(io::gzip_decompressor());
+		gz_.push(io::file_source(filename));
 		is.rdbuf(&gz_);
 		name = filename;
 		lineno = 0;
-		return gz_.is_open() && is.good();
+		return gz_.component<io::file_source>(1)->is_open() && is.good();
 #else
 		return false;
 #endif
