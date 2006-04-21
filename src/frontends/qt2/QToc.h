@@ -33,6 +33,9 @@ private:
 	/// update the listview
 	void updateToc(int newdepth);
 
+	///
+	bool canOutline();
+
 	/// update the float types
 	void updateType();
 
@@ -67,6 +70,9 @@ private:
 
 	/// Store selected item's string
 	std::string text_;
+
+	/// Store ToC list type
+	std::string type_;
 };
 
 } // namespace frontend

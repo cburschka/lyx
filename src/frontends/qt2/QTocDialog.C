@@ -63,6 +63,20 @@ void QTocDialog::select_adaptor(QListViewItem * item)
 }
 
 
+void QTocDialog::enableButtons(bool enable)
+{
+	updatePB->setEnabled(enable);
+
+	if (!form_->canOutline())
+		enable = false;
+
+	moveupPB->setEnabled(enable);
+	movednPB->setEnabled(enable);
+	moveinPB->setEnabled(enable);
+	moveoutPB->setEnabled(enable);
+}
+
+
 void QTocDialog::update_adaptor()
 {
 	form_->update();

@@ -24,6 +24,8 @@ class QTocDialog : public QTocDialogBase {
 public:
 	QTocDialog(QToc * form);
 	~QTocDialog();
+	///
+	void enableButtons(bool enable = true);
 public slots:
 	void activate_adaptor(int);
 	void depth_adaptor(int);

@@ -48,6 +48,8 @@ void QToc::build_dialog()
 
 	// Manage the cancel/close button
 	bcview().setCancel(dialog_->closePB);
+	type_ = toc::getType(controller().params().getCmdName());
+	dialog_->enableButtons();
 }
 
 
@@ -67,6 +69,8 @@ void QToc::updateType()
 			setTitle(guiname);
 		}
 	}
+	type_ = type;
+	dialog_->enableButtons();
 }
 
 
@@ -83,6 +87,8 @@ void QToc::updateToc(int newdepth)
 	string type;
 	if (!choice.empty())
 		type = choice[dialog_->typeCO->currentItem()];
+	type_ = type;
+	dialog_->enableButtons();
 
 	toc::Toc const & contents = controller().getContents(type);
 
@@ -181,6 +187,12 @@ void QToc::updateToc(int newdepth)
 }
 
 
+bool QToc::canOutline()
+{
+	return controller().canOutline(type_);
+}
+
+
 void QToc::select(string const & text)
 {
 	toc::Toc::const_iterator iter = toclist.begin();
@@ -212,28 +224,28 @@ void QToc::set_depth(int depth)
 void QToc::moveup()
 {
 	controller().outline(toc::UP);
-	update_contents();
+	updateToc(depth_);
 }
 
 
 void QToc::movedn()
 {
 	controller().outline(toc::DOWN);
-	update_contents();
+	updateToc(depth_);
 }
 
 
 void QToc::movein()
 {
 	controller().outline(toc::IN);
-	update_contents();
+	updateToc(depth_);
 }
 
 
 void QToc::moveout()
 {
 	controller().outline(toc::OUT);
-	update_contents();
+	updateToc(depth_);
 }
 
 
