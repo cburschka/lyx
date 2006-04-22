@@ -117,10 +117,6 @@ private:
 	///
 	std::vector<std::string> types_;
 	///
-	Item const invalid_item_;
-	///
-	Toc const empty_toc_;
-	///
 	Buffer const * buffer_;
 
 }; // TocBackend

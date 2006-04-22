@@ -42,6 +42,8 @@ using std::endl;
 
 namespace lyx {
 
+static TocBackend::Toc empty_toc_;
+
 ///////////////////////////////////////////////////////////////////////////
 // TocBackend::Item implementation
 
