@@ -115,10 +115,7 @@ void showFileError(string const & error)
 
 void reconfigureUserLyXDir()
 {
-	string const configure_script =
-		addName(package().system_support(), "configure.py");
-	string const configure_command =
-		"python " + quoteName(configure_script);
+	string const configure_command = package().configure_command();
 
 	lyxerr << _("LyX: reconfiguring user directory") << endl;
 	Path p(package().user_support());

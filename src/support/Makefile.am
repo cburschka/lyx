@@ -84,7 +84,8 @@ build_package: package.C.in
 	@rm -f tmp_package ;\
 	sed "s,%LYX_DIR%,$(LYX_ABS_INSTALLED_DATADIR),;\
 s,%LOCALEDIR%,$(LYX_ABS_INSTALLED_LOCALEDIR),;\
-s,%TOP_SRCDIR%,$(LYX_ABS_TOP_SRCDIR)," \
+s,%TOP_SRCDIR%,$(LYX_ABS_TOP_SRCDIR),;\
+s,%PROGRAM_SUFFIX%,$(program_suffix)," \
 		$(srcdir)/package.C.in > tmp_package ;\
 	if cmp -s tmp_package package.C ; then \
 		rm -f tmp_package ;\

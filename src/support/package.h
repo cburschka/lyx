@@ -116,8 +116,12 @@ public:
 	 *  Used by the XForms file dialog.
 	 *  Used in emergencyWrite (bufferlist.C) as one possible location
 	 *  for the dump.
+	 *  This may be empty (e. g. when run under a CGI environment)
 	 */
 	std::string const & home_dir() const;
+
+	/// Command to run the configure script
+	std::string const & configure_command() const;
 
 private:
 	std::string binary_dir_;
@@ -128,6 +132,7 @@ private:
 	mutable std::string document_dir_;
 	mutable std::string temp_dir_;
 	std::string home_dir_;
+	std::string configure_command_;
 	bool explicit_user_support_dir_;
 };
 
@@ -187,6 +192,12 @@ inline
 std::string const & Package::home_dir() const
 {
 	return home_dir_;
+}
+
+inline
+std::string const & Package::configure_command() const
+{
+	return configure_command_;
 }
 
 } // namespace support
