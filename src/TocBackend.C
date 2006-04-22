@@ -42,8 +42,6 @@ using std::endl;
 
 namespace lyx {
 
-static TocBackend::Toc empty_toc_;
-
 ///////////////////////////////////////////////////////////////////////////
 // TocBackend::Item implementation
 
@@ -132,8 +130,7 @@ TocBackend::Toc const & TocBackend::toc(std::string const & type)
 {
 	// Is the type already supported?
 	TocList::const_iterator it = tocs_.find(type);
-	if (it == tocs_.end())
-		return empty_toc_;
+	BOOST_ASSERT(it != tocs_.end());
 
 	return it->second;
 }
