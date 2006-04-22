@@ -33,6 +33,7 @@
 #include "lyxvc.h"
 #include "texrow.h"
 #include "vc-backend.h"
+#include "toc.h"
 
 #include "frontends/Alert.h"
 
@@ -513,8 +514,11 @@ bool updateCurrentLabel(Buffer const & buf,
 	ParIterator & it)	
 {
     if (it == par_iterator_end(buf.inset()))
-        return true;
-	
+        return false;
+
+//	if (it.lastpit == 0 && LyXText::isMainText())
+//		return false;
+
 	switch (it->layout()->labeltype) {
 		
 	case LABEL_NO_LABEL:
@@ -582,6 +586,8 @@ void updateLabels(Buffer const & buf)
 		// set the counter for this paragraph
 		setLabel(buf, it);
 	}
+
+	lyx::toc::updateToc(buf);
 }
 
 

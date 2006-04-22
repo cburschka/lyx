@@ -31,32 +31,76 @@
 
 #include "support/convert.h"
 
+#include <iostream>
+#include <map>
+
+using std::map;
+using std::pair;
+using std::make_pair;
 using std::vector;
 using std::max;
 using std::ostream;
 using std::string;
+using std::cout;
+using std::endl;
 
 namespace lyx {
 namespace toc {
 
-string const TocItem::asString() const
+typedef map<Buffer const *, lyx::TocBackend> TocMap;
+static TocMap toc_backend_;
+
+///////////////////////////////////////////////////////////////////////////
+// Interface to toc_backend_
+
+void updateToc(Buffer const & buf)
 {
-	return string(4 * depth, ' ') + str;
+	TocMap::iterator it = toc_backend_.find(&buf);
+	if (it == toc_backend_.end()) {
+		pair<TocMap::iterator, bool> result
+			= toc_backend_.insert(make_pair(&buf, TocBackend(&buf)));
+		if (!result.second)
+			return;
+
+		it = result.first;
+	}
+
+	it->second.update();
 }
 
 
-void TocItem::goTo(LyXView & lv_) const
+TocList const & getTocList(Buffer const & buf)
 {
-	string const tmp = convert<string>(id_);
-	lv_.dispatch(FuncRequest(LFUN_GOTO_PARAGRAPH, tmp));
+	return toc_backend_[&buf].tocs();
 }
 
 
-FuncRequest TocItem::action() const
+Toc const & getToc(Buffer const & buf, std::string const & type)
 {
-	return FuncRequest(LFUN_GOTO_PARAGRAPH, convert<string>(id_));
+	return toc_backend_[&buf].toc(type);
 }
 
+
+TocIterator const getCurrentTocItem(Buffer const & buf, LCursor const & cur,
+								std::string const & type)
+{
+	return toc_backend_[&buf].item(type, ParConstIterator(cur));
+}
+
+
+vector<string> const & getTypes(Buffer const & buf)
+{
+	return toc_backend_[&buf].types();
+}
+
+
+void asciiTocList(string const & type, Buffer const & buf, ostream & os)
+{
+	toc_backend_[&buf].asciiTocList(type, os);
+}
+
+///////////////////////////////////////////////////////////////////////////
+// Other functions
 
 string const getType(string const & cmdName)
 {
@@ -76,136 +120,6 @@ string const getGuiName(string const & type, Buffer const & buffer)
 		return floats.getType(type).name();
 	else
 		return type;
-}
-
-
-TocList const getTocList(Buffer const & buf)
-{
-	TocList toclist;
-
-	BufferParams const & bufparams = buf.params();
-	const int min_toclevel = bufparams.getLyXTextClass().min_toclevel();
-
-	ParConstIterator pit = buf.par_iterator_begin();
-	ParConstIterator end = buf.par_iterator_end();
-	for (; pit != end; ++pit) {
-
-		// the string that goes to the toc (could be the optarg)
-		string tocstring;
-
-		// For each paragraph, traverse its insets and look for
-		// FLOAT_CODE or WRAP_CODE
-		InsetList::const_iterator it = pit->insetlist.begin();
-		InsetList::const_iterator end = pit->insetlist.end();
-		for (; it != end; ++it) {
-			switch (it->inset->lyxCode()) {
-			case InsetBase::FLOAT_CODE:
-				static_cast<InsetFloat*>(it->inset)
-					->addToToc(toclist, buf);
-				break;
-			case InsetBase::WRAP_CODE:
-				static_cast<InsetWrap*>(it->inset)
-					->addToToc(toclist, buf);
-				break;
-			case InsetBase::OPTARG_CODE: {
-				if (!tocstring.empty())
-					break;
-				Paragraph const & par = *static_cast<InsetOptArg*>(it->inset)->paragraphs().begin();
-				if (!pit->getLabelstring().empty())
-					tocstring = pit->getLabelstring()
-						+ ' ';
-				tocstring += par.asString(buf, false);
-				break;
-			}
-			default:
-				break;
-			}
-		}
-
-		/// now the toc entry for the paragraph
-		int const toclevel = pit->layout()->toclevel;
-		if (toclevel != LyXLayout::NOT_IN_TOC
-		    && toclevel >= min_toclevel
-		    && toclevel <= bufparams.tocdepth) {
-			// insert this into the table of contents
-			if (tocstring.empty())
-				tocstring = pit->asString(buf, true);
-			TocItem const item(pit->id(), toclevel - min_toclevel,
-					   tocstring);
-			toclist["TOC"].push_back(item);
-		}
-	}
-	return toclist;
-}
-
-
-TocItem const getCurrentTocItem(Buffer const & buf, LCursor const & cur,
-								std::string const & type)
-{
-	// This should be cached:
-	TocList tmp = getTocList(buf);
-
-	// Is the type supported?
-	/// \todo TocItem() should create an invalid TocItem()
-	/// \todo create TocItem::isValid()
-	TocList::iterator toclist_it = tmp.find(type);
-	if (toclist_it == tmp.end())
-		return TocItem(-1, -1, string());
-
-	Toc const toc_vector = toclist_it->second;
-	ParConstIterator const current(cur);
-	int start = toc_vector.size() - 1;
-
-	/// \todo cache the ParConstIterator values inside TocItem
-	for (int i = start; i >= 0; --i) {
-		
-		ParConstIterator const it 
-			= buf.getParFromID(toc_vector[i].id_);
-
-		// A good solution for TocItems inside insets would be to do:
-		//
-		//if (std::distance(it, current) <= 0)
-		//	return toc_vector[i];
-		//
-		// But for an unknown reason, std::distance(current, it) always
-		// returns  a positive value and std::distance(it, current) takes forever...
-		// So for now, we do:
-		if (it.pit() <= current.pit())
-			return toc_vector[i];
-	}
-
-	// We are before the first TocItem:
-	return toc_vector[0];
-}
-
-
-vector<string> const getTypes(Buffer const & buffer)
-{
-	vector<string> types;
-
-	TocList const tmp = getTocList(buffer);
-
-	TocList::const_iterator cit = tmp.begin();
-	TocList::const_iterator end = tmp.end();
-
-	for (; cit != end; ++cit) {
-		types.push_back(cit->first);
-	}
-
-	return types;
-}
-
-
-void asciiTocList(string const & type, Buffer const & buffer, ostream & os)
-{
-	TocList const toc_list = getTocList(buffer);
-	TocList::const_iterator cit = toc_list.find(type);
-	if (cit != toc_list.end()) {
-		Toc::const_iterator ccit = cit->second.begin();
-		Toc::const_iterator end = cit->second.end();
-		for (; ccit != end; ++ccit)
-			os << ccit->asString() << '\n';
-	}
 }
 
 

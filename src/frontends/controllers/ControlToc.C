@@ -16,6 +16,7 @@
 #include "funcrequest.h"
 #include "gettext.h"
 #include "BufferView.h"
+#include "debug.h"
 
 using std::vector;
 using std::string;
@@ -52,20 +53,19 @@ void ControlToc::outline(toc::OutlineOp op)
 }
 
 
-vector<string> const ControlToc::getTypes() const
+vector<string> const & ControlToc::getTypes() const
 {
 	return toc::getTypes(kernel().buffer());
 }
 
 
-toc::TocItem const ControlToc::getCurrentTocItem(
+toc::TocIterator const ControlToc::getCurrentTocItem(
 	string const & type) const
 {
-	BufferView const * const bv = kernel().bufferview();
-	if (!bv)
-		return toc::TocItem(-1, -1, "");
+	BOOST_ASSERT(kernel().bufferview());
 
-	return toc::getCurrentTocItem(kernel().buffer(), bv->cursor(), type);
+	return toc::getCurrentTocItem(kernel().buffer(),
+		kernel().bufferview()->cursor(), type);
 }
 
 
@@ -78,22 +78,16 @@ string const ControlToc::getGuiName(string const & type) const
 }
 
 
-toc::Toc const ControlToc::getContents(string const & type) const
-{
-	toc::Toc empty_list;
+toc::Toc const empty_list;
 
+toc::Toc const & ControlToc::getContents(string const & type) const
+{
 	// This shouldn't be possible...
 	if (!kernel().isBufferAvailable()) {
 		return empty_list;
 	}
 
-	toc::TocList tmp = toc::getTocList(kernel().buffer());
-	toc::TocList::iterator it = tmp.find(type);
-	if (it == tmp.end()) {
-		return empty_list;
-	}
-
-	return it->second;
+	return toc::getToc(kernel().buffer(), type);
 }
 
 } // namespace frontend

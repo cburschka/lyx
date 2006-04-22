@@ -246,7 +246,7 @@ void InsetWrap::addToToc(lyx::toc::TocList & toclist, Buffer const & buf) const
 			string const str =
 				convert<string>(toclist[type].size() + 1)
 				+ ". " + pit->asString(buf, false);
-			lyx::toc::TocItem const item(pit->id(), 0 , str);
+			lyx::toc::TocItem const item(pit, 0 , str);
 			toclist[type].push_back(item);
 		}
 	}

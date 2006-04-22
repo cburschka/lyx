@@ -27,78 +27,79 @@ namespace lyx {
 namespace frontend {
 
 
-TocModel::TocModel(toc::Toc const & toc_list)
+TocModel::TocModel(TocBackend::Toc const & toc)
 {
-	populate(toc_list);
+	populate(toc);
 }
 
 
-TocModel const & TocModel::operator=(toc::Toc const & toc_list)
+TocModel const & TocModel::operator=(TocBackend::Toc const & toc)
 {
-	populate(toc_list);
+	populate(toc);
 	return *this;
 }
 
-toc::TocItem const TocModel::item(QModelIndex const & index) const
+
+TocIterator const TocModel::tocIterator(QModelIndex const & index) const
 {
-	ItemMap::const_iterator it = item_map_.find(index);
-	BOOST_ASSERT(it != item_map_.end());
-	
-	return it->second;
+	TocMap::const_iterator map_it = toc_map_.find(index);
+	BOOST_ASSERT(map_it != toc_map_.end());	
+	return map_it->second;
 }
 
-QModelIndex const TocModel::index(string const & toc_str) const
-{
-	IndexMap::const_iterator it = index_map_.find(toc_str);
-	//BOOST_ASSERT(it != index_map_.end());
 
-	if (it == index_map_.end())
+QModelIndex const TocModel::modelIndex(TocIterator const & it) const
+{
+	ModelMap::const_iterator map_it = model_map_.find(it);
+	//BOOST_ASSERT(it != model_map_.end());
+
+	if (map_it == model_map_.end())
 		return QModelIndex();
 	
-	return it->second;
+	return map_it->second;
 }
+
 
 void TocModel::clear()
 {
 	QStandardItemModel::clear();
-	item_map_.clear();
-	index_map_.clear();
+	toc_map_.clear();
+	model_map_.clear();
 	removeRows(0, rowCount());
 	removeColumns(0, columnCount());
 }
 
 
-void TocModel::populate(toc::Toc const & toc_list)
+void TocModel::populate(TocBackend::Toc const & toc)
 {
 	clear();
 
-	if (toc_list.empty())
+	if (toc.empty())
 		return;
 
 	int current_row;
 	QModelIndex top_level_item;
 
-	toc::Toc::const_iterator iter = toc_list.begin();
-	toc::Toc::const_iterator end = toc_list.end();
+	TocIterator iter = toc.begin();
+	TocIterator end = toc.end();
 
     insertColumns(0, 1);
 
 	while (iter != end) {
 
-		if (iter->depth == 1) {
+		if (iter->depth() >= 1) {
 
 			current_row = rowCount();
 			insertRows(current_row, 1);
 			top_level_item = QStandardItemModel::index(current_row, 0);
-			//setData(top_level_item, toqstr(iter->str));
-			setData(top_level_item, toqstr(iter->str), Qt::DisplayRole);
-			item_map_.insert(make_pair(top_level_item, *iter));
-			index_map_.insert(make_pair(
-				iter->str.substr(iter->str.find(' ') + 1), top_level_item));
+			//setData(top_level_item, toqstr(iter->str()));
+			setData(top_level_item, toqstr(iter->str()), Qt::DisplayRole);
+			toc_map_.insert(make_pair(top_level_item, iter));
+			model_map_.insert(make_pair(iter, top_level_item));
 
 			lyxerr[Debug::GUI]
-				<< "Toc: at depth " << iter->depth
-				<< ", added item " << iter->str
+				<< "Toc: at depth " << iter->depth()
+				<< ", added item " << iter->str()
 				<< endl;
 
 			populate(iter, end, top_level_item);
@@ -115,11 +116,11 @@ void TocModel::populate(toc::Toc const & toc_list)
 }
 
 
-void TocModel::populate(toc::Toc::const_iterator & iter,
-						toc::Toc::const_iterator const & end,
+void TocModel::populate(TocIterator & iter,
+						TocIterator const & end,
 						QModelIndex const & parent)
 {
-	int curdepth = iter->depth + 1;
+	int curdepth = iter->depth() + 1;
 	int current_row;
 	QModelIndex child_item;
 
@@ -131,31 +132,31 @@ void TocModel::populate(toc::Toc::const_iterator & iter,
 		if (iter == end)
 			break;
 
-		if (iter->depth < curdepth) {
+		if (iter->depth() < curdepth) {
 			--iter;
 			return;
 		}
-		if (iter->depth > curdepth) {
+		if (iter->depth() > curdepth) {
 			return;
 		}
 		
 		current_row = rowCount(parent);
 		insertRows(current_row, 1, parent);
 		child_item = QStandardItemModel::index(current_row, 0, parent);
-		//setData(child_item, toqstr(iter->str));
-		setData(child_item, toqstr(iter->str), Qt::DisplayRole);
-		item_map_.insert(make_pair(child_item, *iter));
-		index_map_.insert(make_pair(
-			iter->str.substr(iter->str.find(' ') + 1), child_item));
+		//setData(child_item, toqstr(iter->str()));
+		setData(child_item, toqstr(iter->str()), Qt::DisplayRole);
+		toc_map_.insert(make_pair(child_item, iter));
+		model_map_.insert(make_pair(iter, child_item));
 
 //		lyxerr[Debug::GUI]
-//			<< "Toc: at depth " << iter->depth
-//			<< ", added item " << iter->str 
+//			<< "Toc: at depth " << iter->depth()
+//			<< ", added item " << iter->str()
 //			<< endl;
 
 		populate(iter, end, child_item);
 	}
 }
+
 
 } // namespace frontend
 } // namespace lyx

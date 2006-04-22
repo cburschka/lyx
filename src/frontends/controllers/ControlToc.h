@@ -31,17 +31,17 @@ public:
 	void goTo(toc::TocItem const &);
 
 	/// Return the list of types available
-	std::vector<std::string> const getTypes() const;
+	std::vector<std::string> const & getTypes() const;
 
 	/// Return the guiname from a given cmdName of the TOC param
 	std::string const getGuiName(std::string const & type) const;
 
 	/// Return the first TocItem before the cursor
-	toc::TocItem const getCurrentTocItem(
+	toc::TocIterator const getCurrentTocItem(
 		std::string const & type) const;
 
 	/// Given a type, returns the contents
-	toc::Toc const getContents(std::string const & type) const;
+	toc::Toc const & getContents(std::string const & type) const;
 
 	/// Apply the selected outlining operation
 	void outline(toc::OutlineOp op);

@@ -31,6 +31,7 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
+
 QToc::QToc(Dialog & parent)
 	: ControlToc(parent)
 {
@@ -76,17 +77,13 @@ QStandardItemModel * QToc::setTocModel(int type)
 QModelIndex const QToc::getCurrentIndex()
 {
 	vector<string> const & types = getTypes();
-	toc::TocItem const item = getCurrentTocItem(types[type_]);
-	if (item.id_ == -1) {
-		lyxerr[Debug::GUI]
-			<< "QToc::getCurrentIndex(): TocItem is invalid!" << endl;
+	TocIterator const it = getCurrentTocItem(types[type_]);
+	if (!it->isValid()) {
+		lyxerr[Debug::GUI] << "QToc::getCurrentIndex(): TocItem is invalid!" << endl;
 		return QModelIndex();
 	}
 
-	string toc_str = item.str;
-	toc_str.erase(0, toc_str.find(' ') + 1);
-
-	return toc_models_[type_]->index(toc_str);
+	return toc_models_[type_]->modelIndex(it);
 }
 
 
@@ -98,12 +95,14 @@ void QToc::goTo(QModelIndex const & index)
 			<< endl;
 		return;
 	}
+
+	TocIterator const it = toc_models_[type_]->tocIterator(index);
 	
 	lyxerr[Debug::GUI]
-		<< "QToc::goTo " << toc_models_[type_]->item(index).str
+		<< "QToc::goTo " << it->str()
 		<< endl;
 
-	ControlToc::goTo(toc_models_[type_]->item(index));
+	it->goTo(kernel().lyxview());
 }
 
 
@@ -139,27 +138,15 @@ void QToc::update()
 
 void QToc::updateToc(int type)
 {
-	vector<string> const & choice = getTypes();
-
-	toc_models_[type] = new TocModel(getContents(choice[type]));
+	toc_models_[type] = new TocModel(getContents(getTypes()[type]));
 }
 
 
-void QToc::move(toc::OutlineOp const operation, QModelIndex & index)
+void QToc::move(toc::OutlineOp const operation)
 {
-	int toc_id = toc_models_[type_]->item(index).id_;
-	string toc_str = toc_models_[type_]->item(index).str;
-	toc_str.erase(0, toc_str.find(' ') + 1);
-
 	outline(operation);
-	updateToc(type_);
-
-	lyxerr[Debug::GUI]
-		<< "Toc id " << toc_id
-		<< "  Toc str " << toc_str
-		<< endl;
-
-	index = toc_models_[type_]->index(toc_str);
+//	updateToc(type_);
+	update();
 }
 
 } // namespace frontend

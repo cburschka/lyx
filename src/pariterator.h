@@ -93,6 +93,8 @@ class ParConstIterator : public std::iterator<std::forward_iterator_tag,
 {
 public:
 	///
+	ParConstIterator(): DocIterator() {}
+	///
 	ParConstIterator(ParConstIterator const &);
 	///
 	ParConstIterator(DocIterator const &);

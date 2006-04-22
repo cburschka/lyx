@@ -122,21 +122,21 @@ void QToc::updateToc(int newdepth)
 
 	for (toc::Toc::const_iterator iter = toclist.begin();
 	     iter != toclist.end(); ++iter) {
-		if (iter->depth == curdepth) {
+		if (iter->depth() == curdepth) {
 			// insert it after the last one we processed
 			if (!parent)
 				item = (last ? new QListViewItem(dialog_->tocLV,last) : new QListViewItem(dialog_->tocLV));
 			else
 				item = (last ? new QListViewItem(parent,last) : new QListViewItem(parent));
-		} else if (iter->depth > curdepth) {
-			int diff = iter->depth - curdepth;
+		} else if (iter->depth() > curdepth) {
+			int diff = iter->depth() - curdepth;
 			// first save old parent and last
 			while (diff--)
 				istack.push(pair< QListViewItem *, QListViewItem * >(parent,last));
 			item = (last ? new QListViewItem(last) : new QListViewItem(dialog_->tocLV));
 			parent = last;
 		} else {
-			int diff = curdepth - iter->depth;
+			int diff = curdepth - iter->depth();
 			pair<QListViewItem *, QListViewItem * > top;
 			// restore context
 			while (diff--) {
@@ -154,20 +154,20 @@ void QToc::updateToc(int newdepth)
 
 		lyxerr[Debug::GUI]
 			<< "Table of contents\n"
-			<< "Added item " << iter->str
-			<< " at depth " << iter->depth
+			<< "Added item " << iter->str()
+			<< " at depth " << iter->depth()
 			<< ", previous sibling \""
 			<< (last ? fromqstr(last->text(0)) : "0")
 			<< "\", parent \""
 			<< (parent ? fromqstr(parent->text(0)) : "0") << '"'
 			<< endl;
-		item->setText(0, toqstr(iter->str));
-		item->setOpen(iter->depth < depth_);
-		curdepth = iter->depth;
+		item->setText(0, toqstr(iter->str()));
+		item->setOpen(iter->depth() < depth_);
+		curdepth = iter->depth();
 		last = item;
 
 		// Recognise part past the counter
-		if (iter->str.substr(iter->str.find(' ') + 1) == text_) {
+		if (iter->str().substr(iter->str().find(' ') + 1) == text_) {
 			if (selected_item == 0)
 				selected_item = item;
 			else
@@ -198,7 +198,7 @@ void QToc::select(string const & text)
 	toc::Toc::const_iterator iter = toclist.begin();
 
 	for (; iter != toclist.end(); ++iter) {
-		if (iter->str == text)
+		if (iter->str() == text)
 			break;
 	}
 

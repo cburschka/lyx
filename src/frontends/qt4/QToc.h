@@ -48,7 +48,7 @@ public:
 	///
 	void goTo(QModelIndex const & index);
 
-	void move(toc::OutlineOp const operation, QModelIndex & index);
+	void move(toc::OutlineOp const operation);
 
 private:
 

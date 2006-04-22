@@ -12,7 +12,7 @@
 #ifndef TOCMODEL_H
 #define TOCMODEL_H
 
-#include "toc.h"
+#include "TocBackend.h"
 
 #include "qt_helpers.h"
 
@@ -24,38 +24,42 @@
 namespace lyx {
 namespace frontend {
 
+typedef TocBackend::Toc::const_iterator TocIterator;
+
 class TocModel: public QStandardItemModel {
 	Q_OBJECT
+
 public:
 	///
 	TocModel() {}
 	///
-	TocModel(toc::Toc const & toc_list);
+	TocModel(TocBackend::Toc const & toc);
 	///
 	~TocModel() {}
 	///
-	TocModel const & operator=(toc::Toc const & toc_list);
+	TocModel const & operator=(TocBackend::Toc const & toc);
 	///
 	void clear();
 	///
-	void populate(toc::Toc const & toc_list);
+	void populate(TocBackend::Toc const & toc);
 	///
-	toc::TocItem const item(QModelIndex const & index) const;
+	TocIterator const tocIterator(QModelIndex const & index) const;
 	///
-	QModelIndex const index(std::string const & toc_str) const;
+	QModelIndex const modelIndex(TocIterator const & it) const;
 
 private:
 	///
-	void populate(toc::Toc::const_iterator & iter,
-		toc::Toc::const_iterator const & end,
+	void populate(TocIterator & it,
+		TocIterator const & end,
 		QModelIndex const & parent);
-
-	typedef std::map<QModelIndex, toc::TocItem> ItemMap;
 	///
-	typedef std::map<std::string, QModelIndex> IndexMap;
+	typedef std::map<QModelIndex, TocIterator> TocMap;
 	///
-	ItemMap item_map_;
-	IndexMap index_map_;
+	typedef std::map<TocIterator, QModelIndex> ModelMap;
+	///
+	TocMap toc_map_;
+	///
+	ModelMap model_map_;
 };
 
 } // namespace frontend

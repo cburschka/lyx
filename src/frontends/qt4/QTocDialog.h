@@ -46,6 +46,9 @@ public:
 	/// Update the display of the dialog whilst it is still visible.
 	void update();
 
+	/// Update Gui of the display.
+	void updateGui();
+
 	/// \return true if the dialog is visible.
 	bool isVisible() const;
 

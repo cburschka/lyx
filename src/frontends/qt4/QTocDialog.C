@@ -43,7 +43,7 @@ QTocDialog::QTocDialog(Dialog & dialog, QToc * form)
 {
 	setupUi(this);
 
-	update();
+	updateGui();
 
 	connect(tocTV->selectionModel(),
 		SIGNAL(currentChanged(const QModelIndex &,
@@ -88,7 +88,6 @@ void QTocDialog::on_closePB_clicked()
 
 void QTocDialog::on_updatePB_clicked()
 {
-	form_->update();
 	update();
 }
 
@@ -103,9 +102,9 @@ void QTocDialog::on_depthSL_valueChanged(int depth)
 /*
 	while (
 	tocTv->setExpanded();
-			if (iter->depth > depth_)
+			if (iter->depth() > depth_)
 				tocTV->collapseItem(topLevelItem);
-			else if (iter->depth <= depth_)
+			else if (iter->depth() <= depth_)
 				tocTV->expandItem(topLevelItem);
 */
 }
@@ -147,14 +146,16 @@ void QTocDialog::move(toc::OutlineOp const operation)
 	enableButtons(false);
 	QModelIndex index = tocTV->selectionModel()->selectedIndexes()[0];
 	form_->goTo(index);
-	form_->move(operation, index);
-	select(index);
-	enableButtons();
+	form_->move(operation);
+	updateGui();
+//	select(index);
+//	enableButtons();
 }
+
 
 void QTocDialog::select(QModelIndex const & index)
 {
-	tocTV->setModel(form_->tocModel());
+//	tocTV->setModel(form_->tocModel());
 
 	if (!index.isValid()) {
 		lyxerr[Debug::GUI]
@@ -165,6 +166,7 @@ void QTocDialog::select(QModelIndex const & index)
 	tocTV->scrollTo(index);
 	tocTV->selectionModel()->select(index, QItemSelectionModel::Select);
 }
+
 
 void QTocDialog::enableButtons(bool enable)
 {
@@ -181,6 +183,13 @@ void QTocDialog::enableButtons(bool enable)
 
 
 void QTocDialog::update()
+{
+	form_->update();
+	updateGui();
+}
+
+
+void QTocDialog::updateGui()
 {
 	typeCO->setModel(form_->typeModel());
 	tocTV->setModel(form_->tocModel());
@@ -223,7 +232,6 @@ void QTocDialog::hide()
 
 void QTocDialog::show()
 {
-	form_->update();
 	update();
 	QDialog::show();
 }

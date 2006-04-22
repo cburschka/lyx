@@ -615,16 +615,16 @@ void expandToc2(Menu & tomenu,
 	// check whether depth is smaller than the smallest depth in toc.
 	int min_depth = 1000;
 	for (lyx::toc::Toc::size_type i = from; i < to; ++i)
-		min_depth = std::min(min_depth, toc_list[i].depth);
+		min_depth = std::min(min_depth, toc_list[i].depth());
 	if (min_depth > depth)
 		depth = min_depth;
 
 
 	if (to - from <= max_number_of_items) {
 		for (lyx::toc::Toc::size_type i = from; i < to; ++i) {
-			string label(4 * max(0, toc_list[i].depth - depth),' ');
-			label += limit_string_length(toc_list[i].str);
-			if (toc_list[i].depth == depth
+			string label(4 * max(0, toc_list[i].depth() - depth),' ');
+			label += limit_string_length(toc_list[i].str());
+			if (toc_list[i].depth() == depth
 			    && shortcut_count < 9) {
 				if (label.find(convert<string>(shortcut_count + 1)) != string::npos)
 					label += '|' + convert<string>(++shortcut_count);
@@ -637,12 +637,12 @@ void expandToc2(Menu & tomenu,
 		while (pos < to) {
 			lyx::toc::Toc::size_type new_pos = pos + 1;
 			while (new_pos < to &&
-			       toc_list[new_pos].depth > depth)
+			       toc_list[new_pos].depth() > depth)
 				++new_pos;
 
-			string label(4 * max(0, toc_list[pos].depth - depth), ' ');
-			label += limit_string_length(toc_list[pos].str);
-			if (toc_list[pos].depth == depth &&
+			string label(4 * max(0, toc_list[pos].depth() - depth), ' ');
+			label += limit_string_length(toc_list[pos].str());
+			if (toc_list[pos].depth() == depth &&
 			    shortcut_count < 9) {
 				if (label.find(convert<string>(shortcut_count + 1)) != string::npos)
 					label += '|' + convert<string>(++shortcut_count);
@@ -681,7 +681,7 @@ void expandToc(Menu & tomenu, LyXView const * view)
 	}
 
 	FloatList const & floatlist = buf->params().getLyXTextClass().floats();
-	lyx::toc::TocList toc_list = lyx::toc::getTocList(*buf);
+	lyx::toc::TocList const & toc_list = lyx::toc::getTocList(*buf);
 	lyx::toc::TocList::const_iterator cit = toc_list.begin();
 	lyx::toc::TocList::const_iterator end = toc_list.end();
 	for (; cit != end; ++cit) {
@@ -694,7 +694,7 @@ void expandToc(Menu & tomenu, LyXView const * view)
 		lyx::toc::Toc::const_iterator ccit = cit->second.begin();
 		lyx::toc::Toc::const_iterator eend = cit->second.end();
 		for (; ccit != eend; ++ccit) {
-			string const label = limit_string_length(ccit->str);
+			string const label = limit_string_length(ccit->str());
 			menu->add(MenuItem(MenuItem::Command,
 					   label,
 					   FuncRequest(ccit->action())));
