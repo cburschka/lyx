@@ -1795,7 +1795,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 	case RC_USELASTFILEPOS:
 		if (ignore_system_lyxrc ||
 		    use_lastfilepos != system_lyxrc.use_lastfilepos) {
-			os << "\\use_session " << convert<string>(use_lastfilepos)
+			os << "\\use_lastfilepos " << convert<string>(use_lastfilepos)
 			   << '\n';
 		}
 	case RC_LOADSESSION:
