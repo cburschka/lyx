@@ -81,7 +81,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-04-06 15:16+0200\n"
+"POT-Creation-Date: 2006-04-22 10:48+0200\n"
 "PO-Revision-Date: 2006-04-01 21:47+0100\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
@@ -1675,7 +1675,7 @@ msgstr "Ungerade Seiten:"
 
 #: src/frontends/xforms/forms/form_preferences.fd:2782
 msgid "Collated:"
-msgstr "Wiederholt:"
+msgstr "Sortiert:"
 
 #: src/frontends/xforms/forms/form_preferences.fd:2800
 msgid "Landscape:"
@@ -4386,11 +4386,11 @@ msgstr "Anzahl der Kopien"
 
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:273
 msgid "&Collate"
-msgstr "&Wiederholen"
+msgstr "&Sortieren"
 
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:277
 msgid "Collate copies"
-msgstr "Wiederhole Kopien"
+msgstr "Kopien sortieren"
 
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:347
 msgid "&Print"
@@ -7500,7 +7500,7 @@ msgstr "\\Alph{chapter}"
 #: lib/layouts/scrlettr.layout:24 lib/layouts/scrlttr2.layout:25
 #: lib/layouts/scrclass.inc:32
 msgid "Labeling"
-msgstr "Labeling"
+msgstr "Liste"
 
 #: lib/layouts/scrlettr.layout:52
 msgid "L"
@@ -9535,7 +9535,7 @@ msgstr "Ausschneiden"
 msgid "Copy"
 msgstr "Kopieren"
 
-#: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:625
+#: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:643
 #: src/mathed/math_gridinset.C:1207 src/mathed/math_nestinset.C:417
 #: src/text3.C:841
 msgid "Paste"
@@ -9848,11 +9848,11 @@ msgstr "Extra"
 
 #: lib/ui/stdtoolbars.ui:66
 msgid "Numbered list"
-msgstr "Nummerierte Liste"
+msgstr "Aufzählung"
 
 #: lib/ui/stdtoolbars.ui:67
 msgid "Itemized list"
-msgstr "Unsortierte Liste"
+msgstr "Auflisting"
 
 #: lib/ui/stdtoolbars.ui:70
 msgid "Increase depth"
@@ -10220,7 +10220,7 @@ msgstr "ChkTeX-Warnung Nr. %1$d"
 msgid "ChkTeX warning id # "
 msgstr "ChkTeX-Warnung Nr. "
 
-#: src/CutAndPaste.C:379
+#: src/CutAndPaste.C:396
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -10233,11 +10233,11 @@ msgstr ""
 "da die Klasse von %3$s nach\n"
 "%4$s konvertiert wurde"
 
-#: src/CutAndPaste.C:383
+#: src/CutAndPaste.C:400
 msgid "Changed Layout"
 msgstr "Format geändert"
 
-#: src/CutAndPaste.C:402
+#: src/CutAndPaste.C:419
 #, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
@@ -10246,7 +10246,7 @@ msgstr ""
 "Der Zeichenstil %1$s ist aufgrund einer Klassenkonvertierung von\n"
 "%2$s nach %3$s undefiniert"
 
-#: src/CutAndPaste.C:408
+#: src/CutAndPaste.C:425
 msgid "Undefined character style"
 msgstr "Undefinierter Zeichenstil"
 
@@ -10280,7 +10280,7 @@ msgstr "Türkis"
 
 #: src/LColor.C:99
 msgid "magenta"
-msgstr "Magenta"
+msgstr "Purpurrot"
 
 #: src/LColor.C:100
 msgid "yellow"
@@ -10968,7 +10968,7 @@ msgstr "Externe Vorlagen/Einfügungs-Meldungen"
 
 #: src/debug.C:66
 msgid "RowPainter profiling"
-msgstr ""
+msgstr "RowPainter-Profiling"
 
 #: src/exporter.C:73
 #, c-format
@@ -11475,7 +11475,7 @@ msgstr "Türkis"
 
 #: src/frontends/controllers/character.C:247
 msgid "Magenta"
-msgstr "Magenta"
+msgstr "Purpurrot"
 
 #: src/frontends/controllers/character.C:251
 msgid "Yellow"
@@ -13663,12 +13663,12 @@ msgstr ""
 "%1$s\n"
 "konnte nicht in das temporäre Verzeichnis kopiert werden."
 
-#: src/insets/insetgraphics.C:695
+#: src/insets/insetgraphics.C:697
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr "Es ist keine Konvertierung von %1$s notwendig"
 
-#: src/insets/insetgraphics.C:799
+#: src/insets/insetgraphics.C:801
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "Grafikdatei: %1$s"
@@ -13734,7 +13734,7 @@ msgstr "Einfügung für optionales Argument geöffnet"
 
 #: src/insets/insetref.C:149 src/mathed/ref_inset.C:188
 msgid "Ref: "
-msgstr "Verweis: "
+msgstr "Querverweis: "
 
 #: src/insets/insetref.C:150 src/mathed/ref_inset.C:189
 msgid "Equation"
@@ -13742,7 +13742,7 @@ msgstr "Gleichung"
 
 #: src/insets/insetref.C:150 src/mathed/ref_inset.C:189
 msgid "EqRef: "
-msgstr "Gleichung: "
+msgstr "(Querverweis): "
 
 #: src/insets/insetref.C:151 src/mathed/ref_inset.C:190
 msgid "Page Number"
@@ -13766,7 +13766,7 @@ msgstr "Standard+Seite in Textform"
 
 #: src/insets/insetref.C:153 src/mathed/ref_inset.C:192
 msgid "Ref+Text: "
-msgstr "Verweis+Text: "
+msgstr "Querverweis+Text: "
 
 #: src/insets/insetref.C:154 src/mathed/ref_inset.C:193
 msgid "PrettyRef"
@@ -13780,11 +13780,11 @@ msgstr "PrettyRef: "
 msgid "Opened table"
 msgstr "Tabelle geöffnet"
 
-#: src/insets/insettabular.C:1568
+#: src/insets/insettabular.C:1510
 msgid "Error setting multicolumn"
 msgstr "Fehler beim Festlegen der Mehrfachspalte"
 
-#: src/insets/insettabular.C:1569
+#: src/insets/insettabular.C:1511
 msgid "You cannot set multicolumn vertically."
 msgstr "Sie können eine Mehrfachspalte nicht vertikal festlegen."
 
@@ -14804,7 +14804,7 @@ msgstr "Skaliere die Größe der Vorschau geeignet."
 
 #: src/lyxrc.C:2280
 msgid "The option for specifying whether the copies should be collated."
-msgstr "Die Option, um 'collate' für mehrere Kopien zu aktivieren."
+msgstr "Die Option, um Kopien zu sortieren."
 
 #: src/lyxrc.C:2284
 msgid "The option for specifying the number of copies to print."
@@ -15065,8 +15065,8 @@ msgstr "Zur gespeicherten Version des Dokuments zurückkehren?"
 msgid " Macro: %1$s: "
 msgstr " Makro: %1$s: "
 
-#: src/mathed/math_amsarrayinset.C:110 src/mathed/math_hullinset.C:1198
-#: src/mathed/math_splitinset.C:73 src/mathed/math_substackinset.C:69
+#: src/mathed/math_amsarrayinset.C:109 src/mathed/math_hullinset.C:1198
+#: src/mathed/math_splitinset.C:74 src/mathed/math_substackinset.C:69
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
 msgstr "Es können keine vertikalen Gitterlinien in '%1$s' hinzugefügt werden."
@@ -15124,11 +15124,11 @@ msgstr "Es können keine horizontalen Gitterlinien in '%1$s' hinzugefügt werden"
 msgid "Math editor mode"
 msgstr "Mathe-Editor-Modus"
 
-#: src/mathed/math_nestinset.C:810
+#: src/mathed/math_nestinset.C:814
 msgid "create new math text environment ($...$)"
 msgstr "Neue Mathe-Textumgebung erzeugen ($...$)"
 
-#: src/mathed/math_nestinset.C:813
+#: src/mathed/math_nestinset.C:817
 msgid "entered math text mode (textrm)"
 msgstr "Mathe-Textmodus betreten (textrm)"
 
