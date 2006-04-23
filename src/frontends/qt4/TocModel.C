@@ -87,7 +87,7 @@ void TocModel::populate(TocBackend::Toc const & toc)
 
 	while (iter != end) {
 
-		if (iter->depth() >= 1) {
+		if (iter->depth() >= 0) {
 
 			current_row = rowCount();
 			insertRows(current_row, 1);
@@ -136,9 +136,9 @@ void TocModel::populate(TocIterator & iter,
 			--iter;
 			return;
 		}
-		if (iter->depth() > curdepth) {
-			return;
-		}
+//		if (iter->depth() > curdepth) {
+//			return;
+//		}
 		
 		current_row = rowCount(parent);
 		insertRows(current_row, 1, parent);
