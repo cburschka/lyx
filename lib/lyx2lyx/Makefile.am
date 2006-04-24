@@ -2,6 +2,8 @@ include $(top_srcdir)/config/common.am
 
 CLEANFILES += *.pyc *.pyo
 
+EXTRA_DIST = lyx2lyx_version.py.in
+
 lyx2lyxdir = $(pkgdatadir)/lyx2lyx
 # We cannot use dist_lyx2lyx_SCRIPTS for lyx2lyx, since a possible
 # version-suffix would get appended to the names. So we use dist_scripts_DATA
