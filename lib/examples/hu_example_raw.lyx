@@ -1,0 +1,408 @@
+#LyX 1.4.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 245
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+%\def\magyarOptions{defaults=over-1.4,footnote=huplain}
+\usepackage{indentfirst}
+\frenchspacing
+\end_preamble
+\language magyar
+\inputencoding auto
+\fontscheme default
+\graphics dvips
+\paperfontsize 12
+\spacing single
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language polish
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+\tracking_changes false
+\output_changes true
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+EZ A DOKUMENTUM CÍME
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Standard
+Tanács: a címnek jobban CÍMNEK kell látszania
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+készítette egy LyX-es
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Standard
+Tanács: ide kerül a SZERZÕ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+1972.
+ június 12
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Standard
+Tanács: ez lesz a DÁTUM
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tartalomjegyzék
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Tanács: jó lenne nem kellene külön begépelni a tartalomjegyzéket
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+1.
+ Alap filozófia..................1
+\end_layout
+
+\begin_layout Standard
+1.1 Hogyan valósítja meg ezt a LyX...............1
+\end_layout
+
+\begin_layout Standard
+1.2 Miért jobb a LyX ...............1
+\end_layout
+
+\begin_layout Standard
+2.
+ A LyX jellemzõi
+\end_layout
+
+\begin_layout Standard
+3.
+ Gyenge próbálkozások más LyX-es cuccok használatához
+\end_layout
+
+\begin_layout Standard
+4.
+ Képletes dolgok
+\end_layout
+
+\begin_layout Standard
+---------------------------------------------------
+\end_layout
+
+\begin_layout Standard
+1.
+ Alap filozófia
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Tanács: a szakaszcímnek jobban ki kellene tûnnie
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A LyX alapfilozófiája az, hogy csak arra kell koncentrálnia amit le akarni
+ írni, nem arra hogyan fog kinézni.
+\end_layout
+
+\begin_layout Standard
+1.1 Hogyan valósítja meg ezt a LyX
+\end_layout
+
+\begin_layout Standard
+A LyX a LaTeX-et használja, ami egy dokumentum elkészítõ rendszer, amit
+ 1985-ben készített Leslie Lamport.
+ Ezt egy TeX nevû írásszedõ rendszerre építette, amit Donald Knuth készített
+ 1984-ben.
+ A LaTeX-et, a LyX-hez hasonló filozófia miatt készítették.
+ Leslie Lamport egyszer azt mondta (lásd a [2] hivatkozásban):
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Tanács: valószínûleg ennek az IDÉZET HIVATKOZÁSNAK nem kellene be betonozva
+ lennie.
+ Mi lenne, ha Lamport könyve a második elem lenne az irodalomjegyzéknek?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Quotes pld
+\end_inset
+
+A tipográfiai tervezés célja az, hogy segítsen az olvasónak megérteni a
+ szerzõ mondanivalóját.
+ Ahhoz, hogy egy mûvet könnyen el lehessen olvasni, a vizuális szerkezetének
+ követnie kell a logikai felépítését.
+ Az idézetek és számítógépprogramok teljesen különálló logikai elemek, ezért
+ meg kell tudni õket egymásól különböztetni...
+ Mivel a LyX nem érti az írott szöveget, ezért világosan meg kell adnia
+ a logikai struktúrát bizonyos parancsok használatával\SpecialChar \ldots{}
+ Miközben mûvét készíti,
+ a logikai felépítésével kell törõdnie, nem a megjelenésével.
+\begin_inset Quotes prd
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Standard
+Tanács: ez egy IDÉZET
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+1.2 Miért jobb a LyX 
+\end_layout
+
+\begin_layout Standard
+A LyX sokkal több embernek lehet hasznos, mint a LaTeX.
+ Meglehetõsen könnyebb megtanulni, mivel nem kell megtanulni a LaTeX-et
+ (ami gyakorlatilag egy programozási nyelv).
+ A LyX alapvetõen egy másik 
+\begin_inset Quotes pld
+\end_inset
+
+azt kapod amit látsz
+\begin_inset Quotes prd
+\end_inset
+
+ szövegszerkesztõ, bár inkább 
+\begin_inset Quotes pld
+\end_inset
+
+amit lát arra gondol
+\begin_inset Quotes prd
+\end_inset
+
+ típusú.
+ Ezáltal a word típusú szövegszerkesztõk könnyû használatát kombinálja,
+ a LaTeX hatékonyságával.
+ Ez egy jó dolog.
+ A fájl formátuma platform független.
+ De legfõképpen, ingyenes!
+\end_layout
+
+\begin_layout Standard
+2.
+ A LyX jellemzõi
+\end_layout
+
+\begin_layout Standard
+A LyX rengeteg olyan jellemzõvel rendelkezik, amelyek megkönnyítik az írást.
+ (Ezek után, miért ne akarná használni? 
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Tanács: a zárójelben lévõ sokkal jobban mutatna a LÁBJEGYZETben 
+\end_layout
+
+\end_inset
+
+).
+ 
+\shape italic
+\emph on
+NAGYON IZGATOTT
+\emph default
+ 
+\shape default
+
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Tanács: KIEMELÉS!
+\end_layout
+
+\end_inset
+
+ vagyok, hogy beszélhessek róluk.
+ Íme közülük néhány.
+\end_layout
+
+\begin_layout Standard
+*A LyX gondoskodik a margókról és a lábjegyzetek számozásáról
+\end_layout
+
+\begin_layout Standard
+*A LyX-el könnyen készíthet és szerkeszthet képleteket
+\end_layout
+
+\begin_layout Standard
+A filozófiai értekezést, hogy miért jobb a LyX a többi szövegszerkesztõnél,
+ megtalálja a 1.2 szakaszban, amit az 1.
+ oldalon talál.
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Tanács: ennek a KERESZT-HIVATKOZÁSNAK nem kellene fixnek lennie.
+ Mi történik, ha megváltoztatjuk a szakaszszámozást?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+3.
+ Gyenge próbálkozások más LyX-es cuccok használatához
+\end_layout
+
+\begin_layout Standard
+Egy nap írtam egy programot.
+ Így nézett ki.
+\end_layout
+
+\begin_layout Standard
+5 REMARK A FELEMETES PROGRAMOM
+\end_layout
+
+\begin_layout Standard
+10 PRINT 
+\begin_inset Quotes eld
+\end_inset
+
+FELEMETES VAGYOK!
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+20 GOTO 10
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Tanács: ez egy PROGRAM-KÓD
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A tudományos gondolkodás után, teljesen mûvészien éreztem magam, és írtam
+ egy haiku-t
+\end_layout
+
+\begin_layout Standard
+A LyX egy nagyon szuper
+\newline
+Szövegszedõ szövegszerkesztõ
+\newline
+Sok idõt takarít meg
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Tanács: ez így nem túl jó mivel egy költemény, azaz egy VERS
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+4.
+ Képletes dolgok
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Tanács: ezek a képletek normális módon kellene hogy megjelenjenek.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A kedvenc egyenletem a másodfokú egyenlet megoldóképlete.
+ Ha ax^2+bx+c=0 (1.
+ képlet), akkor x= -b plusz vagy mínusz a b^2-4ac négyzetgyöke, majd mindez
+ osztva 2a-val (2.
+ képlet).
+\end_layout
+
+\begin_layout Standard
+A másik kedvenc képletem egy elemi kalkulus: f'(x) határérték, amikor [f(x+delta
+x)- f(x)]-ben deltax tart a nullához és az egész osztva deltax-el (3.
+ képlet).
+\end_layout
+
+\begin_layout Standard
+------------------------------------------------
+\end_layout
+
+\begin_layout Standard
+HIVATKOZÁSOK
+\end_layout
+
+\begin_layout Standard
+[1] Lamport, Leslie.
+ 
+\emph on
+LaTeX: A Document Preparation System.
+
+\emph default
+ Addison-Wesley, Reading, Massachusetts, második kiadás, 1994.
+\end_layout
+
+\end_body
+\end_document
