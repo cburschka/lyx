@@ -1025,10 +1025,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	// Single-click on work area
 	case LFUN_MOUSE_PRESS: {
 		// Right click on a footnote flag opens float menu
-		if (cmd.button() == mouse_button::button3) {
+		if (cmd.button() == mouse_button::button3)
 			cur.clearSelection();
-			break;
-		}
 
 		// Middle button press pastes if we have a selection
 		// We do this here as if the selection was inside an inset

@@ -58,6 +58,9 @@ What's new
 - Text copied from an ERT box has no longer the pseudo "latex" language
   (bug 2476)
 
+- Don't jump back to previous cursor position when trying to click on
+  an inset (bug 2526)
+
 * Configuration/Installation:
 
 - Make LyX/Win work under windows 98.
