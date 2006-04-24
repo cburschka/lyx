@@ -59,7 +59,7 @@ QString const toqstr(std::string const & str);
 /**
  * qt_ - i18nize string and convert to unicode
  *
- * Use this in qt2/ instead of qt_()
+ * Use this in qt4/ instead of qt_()
  */
 QString const qt_(char const * str);
 
@@ -67,7 +67,7 @@ QString const qt_(char const * str);
 /**
  * qt_ - i18nize string and convert to unicode
  *
- * Use this in qt2/ instead of qt_()
+ * Use this in qt4/ instead of qt_()
  */
 QString const qt_(std::string const & str);
 

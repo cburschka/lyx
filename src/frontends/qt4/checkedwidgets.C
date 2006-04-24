@@ -1,5 +1,5 @@
 /**
- * \file qt2/checkedwidgets.C
+ * \file qt4/checkedwidgets.C
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *

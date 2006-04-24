@@ -1,5 +1,5 @@
 /**
- * \file qt2/FileDialog.C
+ * \file qt4/FileDialog.C
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
