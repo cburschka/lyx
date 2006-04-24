@@ -1,5 +1,5 @@
 /**
- * \file qt2/Alert_pimpl.C
+ * \file qt3/Alert_pimpl.C
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *

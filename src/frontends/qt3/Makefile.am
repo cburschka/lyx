@@ -7,10 +7,10 @@ EXTRA_DIST = pch.h Makefile.dialogs
 
 BUILT_SOURCES = $(PCH_FILE)
 
-noinst_LTLIBRARIES = libqt2.la
+noinst_LTLIBRARIES = libqt3.la
 
-libqt2_la_LDFLAGS = $(QT_LDFLAGS)
-libqt2_la_LIBADD = $(QT_LIB) ui/*.lo moc/*.lo ui/moc/*.lo
+libqt3_la_LDFLAGS = $(QT_LDFLAGS)
+libqt3_la_LIBADD = $(QT_LIB) ui/*.lo moc/*.lo ui/moc/*.lo
 
 AM_CPPFLAGS += \
 	$(QT_CPPFLAGS) \
@@ -21,7 +21,7 @@ AM_CPPFLAGS += \
 	$(QT_INCLUDES) $(BOOST_INCLUDES) \
 	-I$(top_srcdir)/src/frontends/controllers
 
-libqt2_la_SOURCES = \
+libqt3_la_SOURCES = \
 	QDialogView.C \
 	QDialogView.h \
 	Alert_pimpl.C \

@@ -39,7 +39,7 @@ lyx_xforms_LDADD = $(lyx_OBJECTS) $(LYX_PRE_LIBS) \
 lyx_xforms_SOURCES = main.C
 
 lyx_qt_LDADD = $(lyx_OBJECTS) $(LYX_PRE_LIBS) \
-	frontends/qt2/libqt2.la $(LYX_POST_LIBS) $(OTHERLIBS)
+	frontends/qt3/libqt3.la $(LYX_POST_LIBS) $(OTHERLIBS)
 lyx_qt_SOURCES = main.C
 
 lyx_qt4_LDADD = $(lyx_OBJECTS) $(LYX_PRE_LIBS) \

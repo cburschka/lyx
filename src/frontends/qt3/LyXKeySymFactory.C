@@ -1,5 +1,5 @@
 /**
- * \file qt2/LyXKeySymFactory.C
+ * \file qt3/LyXKeySymFactory.C
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *

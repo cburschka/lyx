@@ -16,11 +16,11 @@ AM_CPPFLAGS += \
 	$(QT_INCLUDES) \
 	$(BOOST_INCLUDES)
 
-noinst_LTLIBRARIES = libqt2uimoc.la
+noinst_LTLIBRARIES = libqt3uimoc.la
 
-nodist_libqt2uimoc_la_SOURCES = $(UIFILES:.ui=_moc.C)
+nodist_libqt3uimoc_la_SOURCES = $(UIFILES:.ui=_moc.C)
 # The trick.
-libqt2uimoc_la_LINK = touch libqt2uimoc.la ; echo
+libqt3uimoc_la_LINK = touch libqt3uimoc.la ; echo
 
 %_moc.C: ../%.h
 	$(MOC) -o $@ $<

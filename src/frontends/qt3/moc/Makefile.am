@@ -13,15 +13,15 @@ AM_CPPFLAGS += \
 	-I$(top_srcdir)/src \
 	-I$(top_srcdir)/src/frontends \
 	-I$(top_srcdir)/src/frontends/controllers \
-	-I$(top_builddir)/src/frontends/qt2 \
+	-I$(top_builddir)/src/frontends/qt3 \
 	$(QT_INCLUDES) \
 	$(BOOST_INCLUDES)
 
-noinst_LTLIBRARIES = libqt2moc.la
+noinst_LTLIBRARIES = libqt3moc.la
 
-nodist_libqt2moc_la_SOURCES = $(MOCFILES:.C=_moc.C)
+nodist_libqt3moc_la_SOURCES = $(MOCFILES:.C=_moc.C)
 # The trick.
-libqt2moc_la_LINK = touch libqt2moc.la ; echo
+libqt3moc_la_LINK = touch libqt3moc.la ; echo
 
 %_moc.C: $(srcdir)/../%.h
 	$(MOC) -o $@ $<

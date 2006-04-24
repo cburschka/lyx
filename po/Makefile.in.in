@@ -406,7 +406,7 @@ xforms_l10n.pot: $(top_srcdir)/src/frontends/xforms/forms/*.fd
 		}' \
 	${top_srcdir}/src/frontends/xforms/forms/*.fd > $@
 
-qt_l10n.pot: $(top_srcdir)/src/frontends/qt2/ui/*.ui
+qt_l10n.pot: $(top_srcdir)/src/frontends/qt3/ui/*.ui
 	LC_ALL=C ; export LC_ALL ; \
 	$(AWK) -v top_srcdir="$(top_srcdir)" ' \
 		function fixupfilename() \
@@ -426,7 +426,7 @@ qt_l10n.pot: $(top_srcdir)/src/frontends/qt2/ui/*.ui
 					fixupfilename(), FNR, line); \
 			} \
 		}' \
-	${top_srcdir}/src/frontends/qt2/ui/*.ui > $@
+	${top_srcdir}/src/frontends/qt3/ui/*.ui > $@
 
 layouts_l10n.pot: $(top_srcdir)/lib/layouts/*.layout $(top_srcdir)/lib/layouts/*.inc
 	LC_ALL=C ; export LC_ALL ; \

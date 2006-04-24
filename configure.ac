@@ -191,7 +191,7 @@ for frontend in $FRONTENDS ; do
     qt)
 	  QT_DO_IT_ALL
 	  FRONTENDS_PROGS="$FRONTENDS_PROGS lyx-qt\$(EXEEXT)"
-	  FRONTENDS_SUBDIRS="$FRONTENDS_SUBDIRS qt2"
+	  FRONTENDS_SUBDIRS="$FRONTENDS_SUBDIRS qt3"
 	  RPM_FRONTEND="qt"
 	  FRONTEND_INFO="${FRONTEND_INFO}\
   Qt Frontend:\n\
@@ -467,10 +467,10 @@ AC_CONFIG_FILES([Makefile  m4/Makefile \
        src/frontends/gtk/Makefile \
        src/frontends/gtk/gimages/Makefile \
        src/frontends/gtk/glade/Makefile \
-       src/frontends/qt2/Makefile \
-       src/frontends/qt2/moc/Makefile \
-       src/frontends/qt2/ui/Makefile \
-       src/frontends/qt2/ui/moc/Makefile \
+       src/frontends/qt3/Makefile \
+       src/frontends/qt3/moc/Makefile \
+       src/frontends/qt3/ui/Makefile \
+       src/frontends/qt3/ui/moc/Makefile \
        src/frontends/qt4/Makefile \
        src/frontends/qt4/moc/Makefile \
        src/frontends/qt4/ui/Makefile \
