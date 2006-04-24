@@ -150,7 +150,7 @@ void set_display(Gtk::CheckButton * show_check, Gtk::ComboBox * display_combo,
 			}
 		}
 
-//	scale_length->get_spin()->set_value(scale);
+	scale_length->get_spin()->set_value(scale);
 	show_check->set_active(!no_display);
 
 	display_label->set_sensitive(!no_display);
@@ -169,7 +169,7 @@ void get_display(external::DisplayType & display,
 	display = (*(display_combo->get_active()))[displayColumns().type];
 	if (!show_check->get_active())
 		display = external::NoDisplay;
-	//scale = scale_length->get_spin()->get_value_as_int();
+	scale = scale_length->get_spin()->get_value_as_int();
 }
 
 
@@ -207,16 +207,16 @@ void set_size(GtkLengthEntry * width_length,
 	}
 
 	if (using_scale) {
-//		width_length->get_spin()->set_value(scale);
-//		width_length->get_combo()->set_active_text(
-//			Glib::locale_to_utf8(_("Scale%")));
+		width_length->get_spin()->set_value(scale);
+		width_length->get_combo()->set_active_text(
+			Glib::locale_to_utf8(_("Scale%")));
 	} else {
 		width_length->set_length(data.width);
 	}
 
 	height_length->set_length(data.height);
-//	if (!data.width.zero()) 
-//		height_length->get_combo()->set_active(data.width.unit());
+	if (!data.width.zero()) 
+		height_length->get_combo()->set_active(data.width.unit());
 
 	height_length->set_sensitive(!using_scale);
 
@@ -233,16 +233,16 @@ void get_size(external::ResizeData & data,
 	      GtkLengthEntry * height_length,
 	      Gtk::CheckButton * ar_check)
 {
-//	if (width_length->get_combo()->get_active_text() != 
-//		Glib::locale_to_utf8(_("Scale%"))) {
+	if (width_length->get_combo()->get_active_text() != 
+		Glib::locale_to_utf8(_("Scale%"))) {
 
 		data.width = width_length->get_length();
 		data.scale = string();
-//	} else {
+	} else {
 		// scaling instead of a width
-//		data.scale = convert<string>(width_length->get_spin()->get_value());
-//		data.width = LyXLength();
-//	}
+		data.scale = convert<string>(width_length->get_spin()->get_value());
+		data.width = LyXLength();
+	}
 
 	data.height = height_length->get_length();
 
@@ -393,11 +393,11 @@ void GExternal::doBuild()
 	displaycombo_->pack_start(displayColumns().name);
 
 	xml_->get_widget_derived ("Scale", scalelength_);
-//	scalespin_ = scalelength_->get_spin();
+	scalespin_ = scalelength_->get_spin();
 	scalespin_->set_digits(0);
 	scalespin_->set_range(0,100);
 	scalespin_->set_increments(1,10);
-//	scalecombo_ = scalelength_->get_combo();
+	scalecombo_ = scalelength_->get_combo();
 	scalecombo_->clear();
 	scalecombo_->append_text(Glib::locale_to_utf8(_("Scale%")));
 	scalecombo_->set_active_text(Glib::locale_to_utf8(_("Scale%")));
@@ -427,12 +427,12 @@ void GExternal::doBuild()
 
 	// *** Start "Scale" Page ***
 	xml_->get_widget_derived ("Width", widthlength_);
-//	widthcombo_ = widthlength_->get_combo();
+	widthcombo_ = widthlength_->get_combo();
 	widthcombo_->prepend_text(Glib::locale_to_utf8(_("Scale%")));
 	widthcombo_->set_active_text(Glib::locale_to_utf8(_("Scale%")));
 
 	xml_->get_widget("WidthLabel", widthlabel_);
-//	widthlabel_->set_mnemonic_widget(*(widthlength_->get_spin()));
+	widthlabel_->set_mnemonic_widget(*(widthlength_->get_spin()));
 
 	xml_->get_widget_derived ("Height", heightlength_);
 
@@ -442,7 +442,7 @@ void GExternal::doBuild()
 		sigc::mem_fun(*this, &GExternal::size_changed));
 	
 	xml_->get_widget("HeightLabel", heightlabel_);
-//	heightlabel_->set_mnemonic_widget(*(heightlength_->get_spin()));
+	heightlabel_->set_mnemonic_widget(*(heightlength_->get_spin()));
 
 	xml_->get_widget ("AspectRatio", archeck_);
 	// *** End "Scale" Page ***
@@ -689,15 +689,15 @@ void GExternal::get_bb()
 
 bool GExternal::activate_ar() const
 {
-//	if (widthlength_->get_combo()->get_active_text() == 
-//		Glib::locale_to_utf8(_("Scale%")))
-//		return false;
+	if (widthlength_->get_combo()->get_active_text() == 
+		Glib::locale_to_utf8(_("Scale%")))
+		return false;
 
-//	if (widthlength_->get_spin()->get_value() < 0.05)
-//		return false;
+	if (widthlength_->get_spin()->get_value() < 0.05)
+		return false;
 
-//	if (heightlength_->get_spin()->get_value() < 0.05)
-//		return false;
+	if (heightlength_->get_spin()->get_value() < 0.05)
+		return false;
 
 	return true;
 }
@@ -720,10 +720,10 @@ void GExternal::size_changed()
 {
 	archeck_->set_sensitive(activate_ar());
 
-	//bool useHeight = widthlength_->get_combo()->get_active_text() != 
-//		Glib::locale_to_utf8(_("Scale%"));
+	bool useHeight = widthlength_->get_combo()->get_active_text() != 
+		Glib::locale_to_utf8(_("Scale%"));
 
-//	heightlength_->set_sensitive(useHeight);
+	heightlength_->set_sensitive(useHeight);
 }
 
 
