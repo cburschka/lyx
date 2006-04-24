@@ -1,20 +1,32 @@
-#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+#LyX 1.4.1 created this file. For more info see http://www.lyx.org/
 \lyxformat 245
 \begin_document
 \begin_header
-\textclass article
+\textclass book
+\begin_preamble
+%\def\magyarOptions{defaults=over-1.4,footnote=huplain}
+\usepackage{indentfirst}
+\frenchspacing
+\end_preamble
 \language magyar
 \inputencoding latin2
-\fontscheme default
+\fontscheme pslatex
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
-\use_amsmath 0
+\use_amsmath 1
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\headheight 2cm
+\headsep 1cm
+\footskip 2cm
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
@@ -30,20 +42,62 @@
 \begin_body
 
 \begin_layout Title
-Bevezetés a LyX használatába,
-\newline
-avagy
-\newline
-Hogyan használjuk ezeket a dokumentumokat
+Bevezetés a LyX használatába
 \end_layout
 
 \begin_layout Author
-John Weiss és a LyX Csapat
+Készítette: a LyX csapat
 \shape italic
 \size small
 
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+\InsetSpace ~
+Ezen dokumentum eredeti (angol) formájának a karbantartója: 
+\noun on
+John Weiss
+\noun default
+.
+ Amennyiben megjegyzése vagy hibajavítási javaslata van, kérem azt a LyX
+ dokumentációs levelezési listára
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+mbox{
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset LatexCommand \htmlurl{lyx-docs@lists.lyx.org}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+, vagy közvetlenül a kérdéses dokumentum fordítóinak.
+\end_layout
+
+\end_inset
+
+
 \newline
-Fordította: Zrubecz László
+Fordította: Zrubecz László és Szõke Sándor
 \end_layout
 
 \begin_layout Standard
@@ -54,51 +108,889 @@ Fordította: Zrubecz László
 
 \end_layout
 
+\begin_layout Chapter
+A LyX filozófiája
+\end_layout
+
 \begin_layout Section
-Eligazodás a dokumentumok között
+Mi a LyX?
 \end_layout
 
 \begin_layout Standard
-Üdvözöljük a LyX-ben!
+A LyX egy dokumentum elõkészítõ rendszer.
+ Segítségével, nagyméretû és bonyolult mûszaki és tudományos cikkeket készíthetü
+nk, képletekkel, keresztreferenciákkal, irodalomjegyzékkel, tárgymutatóval,
+ stb.
+ Nagyon jól használható bármilyen nagy méretû dokumentum készítéséhez, különösen
+ azokhoz amelyeknél szükség van: automatikus szakasz számozásra, laptördelésre,
+ helyesírás-ellenõrzésre és így tovább.
+ Használhatja arra is, hogy levelet írjon az édesanyjának, valószínû ezen
+ utóbbi célra léteznek egyszerûbb programok is.
+ Nem a legjobb segédeszköz transzparensek, röplapok, hirdetések készítésére
+ (késõbb megtárgyaljuk miért), habár egy kis idõráfordítással ezeket is
+ el tudjuk készíteni.
+ Néhány példa arra, mi mindent készítettek már vele: emlékeztetõket, leveleket,
+ disszertációkat, elõadás-jegyzeteket, tankönyveket, konferenciajegyzõkönyveket,
+ program dokumentációkat, könyveket (PostgreSQL-hez, távérzékeléshez, titkosítás
+hoz, novellák, irodalmi mûvek, valamint gyerek könyveket is, legalább kettõt),
+ újságcikkeket hivatkozott tudományos folyóiratokban, színházi és film forgatókö
+nyveket, üzleti javaslatokat \SpecialChar \ldots{}
+ önnek is lehet ötlete.
 \end_layout
 
 \begin_layout Standard
-Hogy könnyebb legyen megtalálnia a választ kérdéseire, és könnyebb legyen
- bemutatni a LyX összes sajátosságát, a dokumentációt több különbözõ részre
- bontottuk.
- Minden egyes résznek külön feladata van, ahogy azt késõbb majd részletezzük.
+A LyX, a számítógépes szövegszerkesztés egy modern megközelítését alkalmazza,
+ jelölõ nyelvet használva, amellyel megtöri a régi 
+\begin_inset Quotes pld
+\end_inset
+
+írógép
+\begin_inset Quotes prd
+\end_inset
+
+ elvet.
+ Azoknak a szerzõknek készült, akik mûvüknek professzionális kinézetet szeretnén
+ek minimális energiabefektetéssel anélkül, hogy nyomdai szakértõkké válnának.
+ A formázás munkáját a számítógép végezni el helyettünk, nem a szerz\i \H{o}
+.
+ A LyX használata közben a szerzõ, a mûvére tud koncentrálni.
+\end_layout
+
+\begin_layout Standard
+A használatból eredõ kezdeti kihívás, a LyX másfajta mûködésébõl adódik,
+ ezt kell önnek megértenie.
+ Régen, szövegíráshoz csak írógépeink voltak, megtanultuk hogyan tudjuk
+ kihozni belõlük amit csak lehet.
+ Az aláhúzás, ami egy kicsit több, mint felülírni a 
+\begin_inset Quotes pld
+\end_inset
+
+_
+\begin_inset Quotes prd
+\end_inset
+
+ betûvel, a szövegkiemelés módja lett.
+ Korábban, meg kellett tervezni a táblázatok oszlopméreteit és be kellett
+ állítani a tabulátorokat, mielõtt elkészítettük volna a táblázatot.
+ Ugyanez igaz, a levelekre, és a jobbra igazított szövegekre is.
+ Továbbá a sor végi elválasztás jó szemet és gondos elõrelátást követelt.
+\end_layout
+
+\begin_layout Standard
+Más szavakkal: mindannyian ki lettünk képezve arra, hogy aggódjunk az olyan
+ apró részletek miatt, mint: melyik betû hova kerül.
+ Következésképpen, majdnem minden szövegszerkesztõ ezt az elvet követi.
+ Még mindig tabulátor pozíciókat használnak szóköz beiktatásához.
+ Még mindig önnek kell aggódnia azon, mi hol jelenik meg a nyomtatott oldalon.
+ Szövegkiemelés alatt, betûkészlet váltást értünk, ami hasonló az írógép
+ tárcsájának cseréjéhez.
+ Ezt nevezzük a szövegszerkesztésben: 
+\begin_inset Quotes pld
+\end_inset
+
+azt kapja amit lát
+\begin_inset Quotes prd
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+\InsetSpace ~
+
+\begin_inset Quotes pld
+\end_inset
+
+What You See Is What You Get
+\begin_inset Quotes prd
+\end_inset
+
+, a továbbiakban 
+\begin_inset Quotes pld
+\end_inset
+
+WYSIWYG
+\begin_inset Quotes prd
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+ filozófiának.
+ Sajnos, ez rendszerint inkább azt jelenti: 
+\begin_inset Quotes pld
+\end_inset
+
+csak azt kapja amit lát
+\begin_inset Quotes prd
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+\InsetSpace ~
+
+\begin_inset Quotes pld
+\end_inset
+
+What You See Is All You Get
+\begin_inset Quotes prd
+\end_inset
+
+ - a továbbiakban 
+\begin_inset Quotes pld
+\end_inset
+
+WYSIAYG
+\begin_inset Quotes prd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Ez az, ahol a LyX különbözik egy szokásos szövegszerkesztõtõl.
+ Nem kell törõdnie azzal, melyik betû hova fog kerülni.
+ Elmondja a LyX-nek 
+\emph on
+mi az amit akar
+\emph default
+ és a LyX felügyeli a többit, követve a szabályok csoportját, amit 
+\emph on
+stílus
+\emph default
+nak hívunk
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+\InsetSpace ~
+Azért ne felejtsük el, hogy a népszerû irodai programok jelenlegi verziói
+ rendelkeznek valamilyen stílus oldalakkal, amelyek egyszerû jelzésmódot
+ alkalmaznak.
+ Habár, a tapasztalataink szerint ezek még mindig nincsenek használatban.
+\end_layout
+
+\end_inset
+
+.
+ Nézzünk meg egy példát:
+\end_layout
+
+\begin_layout Standard
+Tegyük fel, hogy készít egy jelentést.
+ A jelentés elkezdéséhez létre akar hozni egy bevezetõt, amit 
+\begin_inset Quotes pld
+\end_inset
+
+Bevezetés
+\begin_inset Quotes erd
+\end_inset
+
+-nek fog hívni.
+ Ezért, a programja valamelyik menüjében megváltoztatja az aktuális betûméretet
+ a kigondoltra, majd félkövérre vált és begépeli 
+\begin_inset Quotes pld
+\end_inset
+
+1.\InsetSpace ~
+\InsetSpace ~
+Bevezetés
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Természetesen, ha késõbb úgy dönt ez a bekezdés a dokumentumban valahova
+ máshova tartozik, vagy ha beszúr egy új bekezdést ez elé, meg kell változtatnia
+ a számozást itt és mindegyik bekezdésben, amelyik ezen bekezdés után áll,
+ csak úgy mint a tartalomjegyzékben egyaránt.
+\end_layout
+
+\begin_layout Standard
+A LyX-ben a legördülõ-menüben az eszköztár bal szélén kiválassza a 
+\family sans
+Szakasz
+\family default
+-t és beírja 
+\begin_inset Quotes pld
+\end_inset
+
+Bevezetés
+\begin_inset Quotes erd
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Igen, ez minden.
+ Amennyiben kivág és beilleszt valahova egy fejezetet, automatikusan újra
+ lesz számozva -- mindenütt.
+ Amennyiben a hivatkozásokat helyesen viszi be ehhez a szakaszhoz (beszúrva
+ a kereszt-referencia elem-et), a LyX automatikusan frissíteni fogja ezeket
+ az egész fájlban, így sohasem fog fejezet számot beírni, sehova.
+\end_layout
+
+\begin_layout Standard
+Most nézzük a következetesség problémáját.
+ Öt nappal késõbb, újra megnyitja egyik jelentését és elkezdi a 4.\InsetSpace ~
+fejezetet.
+ Azonban, azt már elfelejtette, hogy korábban 18-as félkövér betût használt,
+ a 16-os helyett, és beírja a 4.\InsetSpace ~
+fejezet címét egy másmilyen betûvel, mint
+ amit az 1.\InsetSpace ~
+fejezet-hez használt.
+ Ez a probléma a LyX-ben nem létezik.
+ A számítógép gondoskodik azon ostoba információk nyilvántartásáról, hogy
+ milyen dolognak, milyen méretûnek kell lennie, nem pedig ön.
+ Ebben a számítógép nagyon jó.
+\end_layout
+
+\begin_layout Standard
+Itt egy másik példa.
+ Tegyük fel egy listát készít.
+ Más szövegszerkesztõkben a lista csak rengeteg tabulátor és újsorjel.
+ Ki kell találnia hova rakja címkét a lista egyes elemeihez, annak milyen
+ címkéje kell legyen, és mennyi üres sort kell rakni az elemek közé, és
+ így tovább.
+ LyX használatakor, két dolgot kell észben tartania: milyen lista ez és
+ mi az amit bele akar írni.
+ Ez minden.
+\end_layout
+
+\begin_layout Standard
+A LyX alapötlete: add meg 
+\emph on
+mit
+\emph default
+ akarsz, és ne azt 
+\emph on
+hogyan
+\emph default
+ akarod.
+ Az 
+\begin_inset Quotes pld
+\end_inset
+
+azt kapja amit lát
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+\InsetSpace ~
+
+\begin_inset Quotes pld
+\end_inset
+
+What You See Is What You Get
+\begin_inset Quotes erd
+\end_inset
+
+, a továbbiakban: 
+\begin_inset Quotes pld
+\end_inset
+
+WYSIWYG
+\begin_inset Quotes prd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ helyett, a LyX modellje: 
+\begin_inset Quotes pld
+\end_inset
+
+azt kapja amire 
+\emph on
+gondol
+\emph default
+
+\begin_inset Quotes prd
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+\InsetSpace ~
+
+\begin_inset Quotes pld
+\end_inset
+
+What You See Is What You 
+\emph on
+Mean
+\emph default
+
+\begin_inset Quotes prd
+\end_inset
+
+, a továbbiakban: 
+\begin_inset Quotes pld
+\end_inset
+
+WYSIWYM
+\begin_inset Quotes prd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ Ez a nagyszerû ötlet, nagymértékben csökkenti a dokumentumok elkészítésének
+ a nehézségeit.
+ Szintén emiatt mondjuk, miért nem túl jó választás a LyX, poszterek és
+ röplapok készítésére -- ezekben az esetekben, ön 
+\emph on
+pontosan
+\emph default
+ akarja definiálni minden pontos elhelyezkedését, azonban nincsenek olyan
+ funkcionális egységek, mint bekezdések, fejezetek, stb.
+ Ez nem jelenti azt, hogy a LyX-bõl hiányoznak fontos funkciók.
+ Egyszerûen csak azt jelenti, hogy nem ez a legjobb eszköz erre a munkára
+ -- ne használja a csavarhúzóját szeget falba verni (kivéve, ha a csavarhúzó
+ végtelen garanciával rendelkezik ).
+\end_layout
+
+\begin_layout Section
+Eltérések a LyX és a többi szövegszerkesztõ között
+\begin_inset OptArg
+status open
+
+\begin_layout Standard
+LyX és a többi szövegszerkesztõ
+\end_layout
+
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+\InsetSpace ~
+Nem, mi most nem akarjuk elkezdeni (vagy megnyerni) a szövegszerkesztõk
+ szent háborúját.
+ De úgy gondoljuk fontos, hogy bemutassuk a LyX jellemzõit.
+ A LyX fõ jellemzõi közül a WYSIWYM alapvetõen mást jelent, mint a legtöbb
+ ember a szövegszerkesztésrõl alkotott képe.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A következõ dolgokat nem fogja megtalálni a LyX-ben:
+\end_layout
+
+\begin_layout Itemize
+Vonalzó
+\end_layout
+
+\begin_layout Itemize
+Tabulátor pozíció
+\end_layout
+
+\begin_layout Itemize
+További üres hely (az 
+\family sans
+Enter
+\family default
+ vagy 
+\family sans
+Szóköz
+\family default
+ kettõnél többszöri leütésével)
+\end_layout
+
+\begin_layout Standard
+Tabulátor pozíciók, a vonalzóval egyetemben a papíron elfoglalt pozíciókat
+ mutatva, haszontalan dolgok a LyX-ben.
+ A program gondoskodik arról, mi hova kerül a papíron, nem ön.
+ Az extra térköz szintén hasonló, a LyX szükség esetén beállítja, természetesen
+ a környezettõl függõen.
+ Két üres sor bevitelének lehetetlensége elõször kicsit bosszantóan hat,
+ azonban miután áttérünk a WYSIWYM gondolkodásra megértjük ezt.
+\end_layout
+
+\begin_layout Standard
+Néhány dolog, ami ugyan létezik a LyX-ben, de mégis másként használjuk õket,
+ mint ahogy elképzeli:
+\end_layout
+
+\begin_layout Itemize
+Függõ behúzás vezérlése
+\end_layout
+
+\begin_layout Itemize
+Laptörés
+\end_layout
+
+\begin_layout Itemize
+Sortávolság (például: egyszeres, kétszeres, stb.)
+\end_layout
+
+\begin_layout Itemize
+Térköz, vízszintes és függõleges
+\end_layout
+
+\begin_layout Itemize
+Betûk és betûméretek
+\end_layout
+
+\begin_layout Itemize
+Betûstílusok (félkövér, dõlt, aláhúzott, stb.)
+\end_layout
+
+\begin_layout Standard
+Habár mindezek léteznek a LyX-ben, általában nincs rájuk szüksége.
+ A LyX gondoskodni fog ezekrõl a dolgokról, függõen attól, hogy éppen mit
+ csinál.
+ A dokumentum különbözõ részeit magától beállítja a megfelelõ betûstílusokra
+ és méretekre.
+ A bekezdés behúzása függ az aktuális szövegkörnyezettõl, különbözõ típusú
+ bekezdésekhez különbözõ függõ behúzásokat fog használni.
+ A laptöréseket szintén automatikusan kezeli.
+ Általánosan: a sorok, szavak, betûk és bekezdések közötti térköz változó,
+ amit a LyX állít be
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+\InsetSpace ~
+Van rá mód, hogyan módosíthatjuk ezeket (közülük néhány LaTeX ismeretet
+ igényel), a teljes dokumentumra, vagy pedig a dokumentum egy bizonyos pontjára
+ vonatkozóan.
+ A részleteket megtalálja a 
+\shape italic
+Felhasználói kézikönyvben
+\shape default
+ vagy a 
+\shape italic
+Haladó szolgáltatások
+\shape default
+ kézikönyvben.
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Végül néhány terület, ahol hisszük a LyX (és a LaTeX) túltesz a legtöbb
+ szövegszerkesztõn:
+\end_layout
+
+\begin_layout Itemize
+Elválasztás
+\end_layout
+
+\begin_layout Itemize
+Tartalomjegyzék és bárminek a listája
+\end_layout
+
+\begin_layout Itemize
+Képletek
+\end_layout
+
+\begin_layout Itemize
+Táblázatok
+\end_layout
+
+\begin_layout Itemize
+Kereszthivatkozások
+\end_layout
+
+\begin_layout Standard
+Természetesen, sok modern szövegszerkesztõ kezeli a matematikai szimbólumokat,
+ táblázatokat és elválasztást.
+ Sokuk továbblépett a típusdefiníció a WYSIWYM-elv felé.
+ Habár mindezekre csak mostanában lettek képesek, amíg a LyX a LaTeX dokumentum
+ formázó rendszerre épül.
+ A LaTeX már több mint 15 éve létezik és 
+\shape italic
+mûködik
+\shape default
+.
+\end_layout
+
+\begin_layout Section
+Mi ez a LaTeX (és miért kell törõdnöm vele)?
+\end_layout
+
+\begin_layout Standard
+A LaTeX egy dokumentum elõkészítõ rendszer amit Leslie Lamport készített
+ 1985-ben
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+\InsetSpace ~
+Ezen információ forrása a Helmut Kopka és Patrick Daly által készített 
+\emph on
+
+\begin_inset Quotes pld
+\end_inset
+
+A Guide to LateX2e
+\begin_inset Quotes prd
+\end_inset
+
+
+\emph default
+.
+ Az utalást megtalálja a 
+\emph on
+Felhasználói kézikönyv
+\emph default
+ irodalomjegyzékei között.
+\end_layout
+
+\end_inset
+
+.
+ Ez a nyelv a TeX írásszedõ nyelvbõl lett kifejlesztve, melyet Donald Knuth
+ készített 1984-ben.
+ A 
+\begin_inset Quotes pld
+\end_inset
+
+TeX
+\begin_inset Quotes prd
+\end_inset
+
+ kiejtése: 
+\begin_inset Quotes pld
+\end_inset
+
+teh
+\begin_inset Quotes prd
+\end_inset
+
+, ez sok ember érzelmét is kifejezi.
+ A legtöbb ember nem tudja, pontosan mi is az a TeX.
+ A TeX egy szöveges (ASCII) fájlban tárolt írásszedõ parancsok sorozatát
+ fogadja, amiket sorban végrehajt.
+ Egy kicsit bonyolultabb mint az írógép, de nem annyival bonyolultabb mint
+ a nyomtatás; habár a nyomtatás legtöbb 
+\begin_inset Quotes pld
+\end_inset
+
+trükkjét
+\begin_inset Quotes prd
+\end_inset
+
+ Knuth lemodellezte számítógépes algoritmusok segítségével és beépítette
+ a TeX-be.
+ Innen származik a kiváló kinézet nyomtatáskor.
+ A TeX kimenete minden esetben egy eszközfüggetlen formátum fájl
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+\InsetSpace ~
+DVI -- Device Independent
+\end_layout
+
+\end_inset
+
+ vagy röviden dvi.
+ Ezt a fájlt átadhatjuk bárminek, ami ismeri ezt a formát vagy át tudja
+ azt alakítani, például PostScript
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+textregistered
+\end_layout
+
+\end_inset
+
+, PDF vagy egyéb formába.
+\end_layout
+
+\begin_layout Standard
+Ha nem lenne más egyéb jellemzõje, a TeX csak egy írásszedõ motor lenne.
+ A TeX-ben tudunk definiálni makrókat, ez az a pont ahol minden elkezdõdik.
+ 
+\end_layout
+
+\begin_layout Standard
+A legtöbb ember aki használja a TeX-et, valójában egy makrócsomagot használ,
+ amit Knuth készített az írásszedõ parancsok elrejtéséhez.
+ A legtöbben pontosan ezt értik TeX alatt.
+ Az átlag felhasználók nem használják a TeX elemi írásszedõ parancsait.
+ Akik új makrócsomagokat készítenek, azok viszont használják õket.
+ Itt lép be a történetünkbe Leslie Lamport.
+ Elképzelt egy makrócsomagot ami jobban felhasználóbarát, mint írásszedés
+ orientált.
+ Egy olyan parancskészlet, amivel következetesen szedhetünk például szakaszokat,
+ táblázatokat vagy képleteket egységes kinézetben a lehetõ legkevesebb problémáv
+al.
+ Hát így született a LaTeX.
+\end_layout
+
+\begin_layout Standard
+Most, a LaTeX növekedésével és fejlesztésével párhuzamosan, egyesek készítettek
+ saját TeX makrócsomagokat, fóliákhoz, matematikai folyóiratokba készülõ
+ cikkekhez és így tovább.
+ A megvalósításhoz néhány, a TeX elemi lehetõségeit használja, míg mások
+ elkezdték módosítani a LaTeX-et.
+ Hogy az így kialakult zûrzavar csökkenjen, a 80-as évek végén LaTeX mesterek
+ (természetesen Lamportot is beleértve) elkezdtek dolgozni a LaTeX2e-n,
+ ami az aktuális LaTeX.
+ Ezen új változat tartalmaz olyan új parancsokat, amelyek könnyen használható
+ felületet adnak a TeX makrókészítõ parancsaihoz (emlékszik még a TeX-re?),
+ hogy könnyen használhassunk például új betûkészleteket, stb.
+ Valójában a LaTeX egy igen hatékony nyelv a maga nemében.
+ Szerte a világban sok felhasználó elkészítette a saját LaTeX kiegészítõjét
+ a beépítetteken kívül.
+\end_layout
+
+\begin_layout Standard
+Kétféle módon lehet bõvíteni a LaTeX-et: osztályokkal
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+\InsetSpace ~
+LaTeX neve: class
+\end_layout
+
+\end_inset
+
+ és stílusokkal
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+\InsetSpace ~
+LaTeX neve: style
+\end_layout
+
+\end_inset
+
+.
+ Az 
+\emph on
+osztály
+\emph default
+, LaTeX (és TeX) makrók csoportja, ami leír egy dokumentum típust, mint
+ például könyv vagy újságcikk.
+ Készítettek osztályokat fóliákhoz, fizikai és matematikai folyóiratokhoz\SpecialChar \ldots{}
+
+ sok egyetem elkészítette saját osztályát disszertációhoz! A 
+\emph on
+stílus
+\emph default
+ abban különbözik az osztálytól, hogy nem határoz meg új dokumentum típust,
+ ellenben megad egy 
+\emph on
+viselkedés formát
+\emph default
+, amit bármely dokumentum használhat.
+ A LyX például a margót és a sortávolságot, két erre a célra tervezett LaTeX
+ stílus fájllal kezeli.
+ Létezik stílus fájl rengeteg dologhoz: címke vagy boríték nyomtatáshoz,
+ függõbehúzás módosításához, új betûkészlet felhasználásához, grafikák manipulác
+iójához, egyedi címlap tervezéshez, egyedi irodalomjegyzékhez, lábjegyzetek
+ helyének és kinézetének megváltoztatásához, táblázatok, ábrák, listák megváltoz
+tatásához, stb.
+\end_layout
+
+\begin_layout Standard
+Íme egy összefoglaló:
+\end_layout
+
+\begin_layout List
+\labelwidthstring 00.00.0000
+TeX: írásszedõ nyelv, makrózási képességekkel
+\end_layout
+
+\begin_layout List
+\labelwidthstring 00.00.0000
+LaTeX: TeX-re épülõ makrócsomag
+\end_layout
+
+\begin_layout List
+\labelwidthstring 00.00.0000
+osztályok: dokumentum típusok leírása, LaTeX felhasználásával
+\end_layout
+
+\begin_layout List
+\labelwidthstring 00.00.0000
+stílusok: a LaTeX viselkedésmódjának megváltoztatása valamilyen módon
+\end_layout
+
+\begin_layout List
+\labelwidthstring 00.00.0000
+LyX: vizuális WYSIWYM szövegszerkesztõ, ami a LaTeX-et használja, minden
+ jellemzõjével egyetemben, a professzionális végeredményhez.
+\end_layout
+
+\begin_layout Standard
+Ezen szakasz célja az volt, hogy elmagyarázza 
+\emph on
+miért
+\emph default
+ mûködik másképp a LyX, a többi szövegszerkesztõhöz képest.
+ A válasz egyszerû: a LyX a LaTeX-et úgy használja, mint egy nyomtatási
+ segédeszközt.
+ Ahogy a LaTeX, a LyX is a szövegkörnyezetre fókuszál -- arra 
+\emph on
+amit
+\emph default
+ gépel.
+ A számítógép késõbb lekezeli, hogyan kell kinéznie.
+\end_layout
+
+\begin_layout Standard
+Hoppá -- még egy utolsó dolog.
+ A TeX-et 
+\begin_inset Quotes pld
+\end_inset
+
+teh
+\begin_inset Quotes prd
+\end_inset
+
+-nek ejtjük, olyan 
+\begin_inset Quotes pld
+\end_inset
+
+h
+\begin_inset Quotes prd
+\end_inset
+
+-val, mint amilyen a magyar 
+\begin_inset Quotes pld
+\end_inset
+
+ihlet
+\begin_inset Quotes prd
+\end_inset
+
+, a német 
+\begin_inset Quotes pld
+\end_inset
+
+Ach
+\begin_inset Quotes prd
+\end_inset
+
+ vagy a skót 
+\begin_inset Quotes pld
+\end_inset
+
+Loch
+\begin_inset Quotes prd
+\end_inset
+
+ szóban van.
+ A LaTeX-et 
+\begin_inset Quotes pld
+\end_inset
+
+lateh
+\begin_inset Quotes prd
+\end_inset
+
+-nek ejtjük, a LaTeX2e ejtése 
+\begin_inset Quotes pld
+\end_inset
+
+lateh kettõ e
+\begin_inset Quotes prd
+\end_inset
+
+.
+ Ellenben a LyX-et ejthetjük 
+\begin_inset Quotes pld
+\end_inset
+
+liksz
+\begin_inset Quotes prd
+\end_inset
+
+, 
+\begin_inset Quotes pld
+\end_inset
+
+láksz
+\begin_inset Quotes prd
+\end_inset
+
+, 
+\begin_inset Quotes pld
+\end_inset
+
+looksz
+\begin_inset Quotes prd
+\end_inset
+
+-nak attól függõen milyen országból valók vagyunk\SpecialChar \ldots{}
+ Számtalan vita és összetûzés
+ volt már a levelezési listákon ebben a témában, szóval ejtse nyugodtan
+ úgy, ahogy akarja.
+ Csak egyre kérem: ne úgy ejtse ki 
+\begin_inset Quotes pld
+\end_inset
+
+word
+\begin_inset Quotes prd
+\end_inset
+
+.
+ 
+\family typewriter
+:-)
+\end_layout
+
+\begin_layout Chapter
+A dokumentumok közötti eligazodás
+\end_layout
+
+\begin_layout Standard
+Hogy kérdéseire könnyen megtalálja a választ, és könnyen tudjuk bemutatni
+ a LyX összes sajátosságát, a dokumentációt több különbözõ részre bontottuk.
+ Minden egyes résznek a maga feladata, ahogy azt késõbb majd részletezzük.
  Mielõtt nekilátna valamelyik olvasásának, elõször olvassa végig ezt a fájlt,
- ugyanis sok hasznos információt tartalmaz, aminek tudatában idõt spórolhat.
+ ugyanis sok hasznos információt tartalmaz, aminek tudatában idõt spórolhat
+ meg.
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align center
-FIGYELEM!!!!! FIGYELEM!!!!! FIGYELEM!!!!
-\end_layout
-
-\begin_layout Standard
-\align center
-Vigyázat, Will Robinson keze van a dologban!
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Habár a LyX verziószáma átlépte az 1.0-át, a dokumentáció néhány része lehet
- hogy nem teljes vagy elavult.
- Ahogy magát a programot is, a dokumentációt is önkéntesek készítik, akiknek
+Habár a LyX verziószáma jóval átlépte az 1.0-át, a dokumentáció néhány része
+ lehet, hogy kiegészítésre szorul vagy már elavult, azért igyekszünk azt
+ frissen tartani.
+ Ahogy magát a programot, a dokumentációt is önkéntesek készítik, akiknek
  ugye emellett van 
 \begin_inset Quotes pld
 \end_inset
@@ -108,14 +1000,14 @@ igazi
 \end_inset
 
  munkájuk, családjuk, mosogatásra váró szennyesedényük, stb.
- Mi megteszünk minden tõlünk telhetõt, hogy ez a dokumentáció mindig naprakész
+ Mi megteszünk, minden tõlünk telhetõt, hogy ez a dokumentáció mindig naprakész
  formában legyen, de ez nem mindig sikerül.
  Ha segíteni akar orvosolni ezt a problémát, mindenképpen olvassa el a 
 \begin_inset LatexCommand \ref{rész:Közremûködés}
 
 \end_inset
 
-\InsetSpace ~
+.\InsetSpace ~
 részt\SpecialChar \@.
 
 \end_layout
@@ -127,7 +1019,7 @@ Elõször is tegyen nekünk egy szívességet: ha valami nem tiszta, érthetetlen
 \family typewriter
 lyx-docs@lists.lyx.org
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Standard
 \InsetSpace ~
@@ -137,11 +1029,15 @@ Persze elõször érdemes nekünk (a fordítóknak) írni, hátha csak a fordítás
 
 \end_inset
 
- Ha olyan kérdése merülne fel, amit nem igazán a dokumentációhoz kapcsolódik,
- de sürgõsen szeretne választ kapni, írjon az aktív felhasználók listájára:
+
+\family default
+.
+ Ha olyan kérdése merülne fel, amire nem ad választ a dokumentáció, azonban
+ sürgõsen segítségre van szüksége, írjon a felhasználók listájára:
+\family typewriter
  lyx-users@lists.lyx.org
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Standard
 \InsetSpace ~
@@ -162,46 +1058,46 @@ Vannak akik nyomtatott formában olvassák a kézikönyvet, mások közvetlenül
  a LyX-bõl.
  Akik fájlból olvassák, néhány eltérést tapasztalhatnak a nyomtatott változathoz
  képest.
- Elõször is, a cím nincs külön oldalon, csak egyszerûen ott van a dokumentum
+ Elõször is, a cím nincs külön oldalon, egyszerûen csak ott van a dokumentum
  elején.
- Továbbá, a lábjegyzetek és a tartalomjegyzék sem látható.
- Ezeket felbukkanó-ablakokon keresztül lehet elérni.
- Ha meg akarja nézni a tartalomjegyzéket, kattintson a 
-\family sans
-Felé
-\bar under
-p
-\bar default
-ítés
-\family default
- menüpontra vagy a szürke dobozra a cím alatt.
- A lábjegyzet megtekintéséhez - ami így néz ki 
+ Továbbá, a lábjegyzet és a tartalomjegyzék sem látható.
+ Ahhoz, hogy kinyissa a lábjegyzetet ami így néz ki,
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Standard
 \InsetSpace ~
-Helló, én vagyok a lábjegyzet!
+Üdvözlöm! 
 \end_layout
 
 \end_inset
 
- - klikkeljen rá a bal egérgombbal.
+ a bal egérgombbal kattintson a gombra.
+ Ha meg akarja nézni a tartalomjegyzéket, kattintson a szürke gombra a cím
+ alatt vagy a 
+\bar under
+N
+\family sans
+\bar default
+avigáció
+\family default
+ menüpontra, ahol a tartalom automatikusan megjelenik.
+ (Próbálja ki!)
 \end_layout
 
 \begin_layout Standard
 A nyomtatott formában az összes kereszthivatkozásnál látható az aktuális
- szakasz száma.
- A fájlban minden ilyen helyen egy szürke doboz látható, mint ez: 
+ fejezet, szakasz, alszakasz száma.
+ A fájlban minden ilyen helyen egy szürke gomb látható, mint ez: 
 \begin_inset LatexCommand \ref{rész:Közremûködés}
 
 \end_inset
 
-\InsetSpace ~
+.\InsetSpace ~
 rész\SpecialChar \@.
- (A nyomtatott formában itt számok találhatóak.) Ha rákattint a bal egérgombb
-al, egy felbukkanó-ablak jelenik meg, ami a dokumentumban lévõ összes hivatkozás
-t tartalmazza.
+ (A nyomtatott formában itt szám jelenik meg.) Ha rákattint az utóbbira
+ bal egérgombbal, egy dialógusablak jelenik meg, ami a dokumentumban lévõ
+ összes hivatkozást tartalmazza.
  Ez a dokumentum csak egyet tartalmaz 
 \begin_inset Quotes pld
 \end_inset
@@ -211,30 +1107,38 @@ rész:Közremûködés
 \end_inset
 
  névvel.
- Ha rákattint a 
-\family sans
-Hivatkozásra ugrás
-\family default
+ Ha rákattint az 
+\begin_inset Quotes pld
+\end_inset
+
+Ugrás
+\begin_inset Quotes prd
+\end_inset
+
  gombra, rögtön a hivatkozott részre ugrik a kurzor.
- A 
-\family sans
+ A visszatérés ugyanilyen egyszerû.
+ Kattintson a 
+\begin_inset Quotes pld
+\end_inset
+
 Visszaugrás
-\family default
- gomb pedig visszarakja az eredeti pozíciójába.
- Leütve a következõ billentyûkombinációt: 
+\begin_inset Quotes prd
+\end_inset
+
+ gombra vagy használja következõ billentyûkombinációt: 
 \family sans
 C-<
 \family default
-, a kurzor szintén visszaugrik az eredeti pozíciójába.
+, a kurzor visszaugrik az eredeti pozíciójába.
  (Hogy mit jelent a 
 \family sans
 C-<
 \family default
-, lásd lejjebb.)
+, lásd lentebb.)
 \end_layout
 
 \begin_layout Standard
-Ezek után, hogy tisztáztunk néhány különbséget a nyomtatott és az elektronikus
+Most, hogy tisztáztunk néhány különbséget a nyomtatott és az elektronikus
  forma között, folytathatjuk ezen dokumentum formai vizsgálatát.
  Esetenként találkozhat különbözõ betûstílusokkal:
 \end_layout
@@ -245,13 +1149,13 @@ Ezek után, hogy tisztáztunk néhány különbséget a nyomtatott és az elektronikus
 Kiemelt Stílus
 \emph default
  - ezt az általános kiemelésekhez, érvelésekhez, könyv címekhez, más kézikönyvek
- egyes részeire való hivatkozáskor vagy a szerzõk megjegyzéseire használjuk.
+ egyes részeire való hivatkozáshoz vagy a szerzõk megjegyzéseihez használjuk
 \end_layout
 
 \begin_layout Itemize
 
 \family typewriter
-Typewriter
+Írógép
 \family default
  - ezt a programok és fájlok neveihez, LaTeX, LyX kódokhoz, funkciókhoz
  használjuk.
@@ -262,27 +1166,38 @@ Typewriter
 \family sans
 Sans Serif
 \family default
- - ezt a menük, gombok, felbukkanó-ablakok neveihez és a billentyûkhöz használju
-k.
+ - ezt a menük, gombok, dialógus-ablakok és a billentyûk neveihez használjuk.
 \end_layout
 
 \begin_layout Itemize
 
 \noun on
-Kapitális Stílus
+Kiskapitális Stílus
 \noun default
  - ezzel jelöljük a személyneveket.
 \end_layout
 
 \begin_layout Standard
-A billentyûkhöz, billentyû-kombinációkhoz elegendõ információt kaphat a
- 
+A menügyorsítókhoz, billentyû-kombinációkhoz elegendõ információt kaphat
+ a 
 \emph on
-Referencia Kézikönyv Billentyû-kombinációk 
+
+\begin_inset Quotes pld
+\end_inset
+
+Haladó szolgáltatások kézikönyv
+\begin_inset Quotes prd
+\end_inset
+
+ Billentyûzet-kombinációk 
 \emph default
-részében.
- Amikor a billentyû-kombináció használatára lesz szükség, mindig a következõ
- szabály szerint fogjuk jelölni:
+részében (a fájl neve 
+\family typewriter
+extended.lyx
+\family default
+).
+ Amikor a billentyûzet-kombinációkat ismertetjük, mindig a következõ jelölésmódo
+kat fogjuk használni:
 \end_layout
 
 \begin_layout Itemize
@@ -339,7 +1254,7 @@ M-
 \family sans
 Meta
 \family default
- billentyût, ami a legtöbb billentyûzeten az 
+ billentyût, ami a legtöbb billentyûzeten a (jobb oldali) 
 \family sans
 Alt
 \family default
@@ -437,7 +1352,7 @@ Le
 \begin_inset Quotes erd
 \end_inset
 
-: ez azt hiszem nyilvánvaló.
+: azt hiszem ezek nyilvánvalóak.
 \end_layout
 
 \begin_layout Itemize
@@ -512,7 +1427,7 @@ PageDown
 \begin_inset Quotes erd
 \end_inset
 
-: ez 6 billentyû, ami legtöbbször a kurzormozgató billentyûk felett található
+: ez 6 billentyû, ami legtöbbször a kurzor-mozgató billentyûk felett található
  egy PC billentyûzeten.
  A 
 \family sans
@@ -587,7 +1502,7 @@ Return
 \begin_inset Quotes erd
 \end_inset
 
- néven, mashol 
+ néven, máshol 
 \begin_inset Quotes pld
 \end_inset
 
@@ -609,26 +1524,35 @@ Enter
 \end_layout
 
 \begin_layout Standard
-Szintén találkozhat néhányszor a következõ formával 
+Szintén sokat fog találkozni a következõvel 
 \begin_inset Quotes pld
 \end_inset
 
-(Lásd 
+Lásd a
 \emph on
-Referencia Kézikönyv
+ Haladó szolgáltatások kézikönyv
 \emph default
-)
+
 \begin_inset Quotes prd
 \end_inset
 
 .
- Az összes alapértelmezett billentyû-kombináció megtalálható a 
+ Az összes lehetséges funkcióhoz tartozó alapértelmezett billentyûzet-kombináció
+ megtalálható a 
+\begin_inset Quotes pld
+\end_inset
+
+
 \emph on
-Referencia Kézikönyv
+Haladó szolgáltatások Kézikönyv
 \emph default
-ben, így ott utánanézhet.
- Észlelhette, hogy két különbözõ billentyû-kombináció gyûjtemény is megtalálható
- a LyX-ben.
+
+\begin_inset Quotes prd
+\end_inset
+
+-ben, nézzen utána ott is.
+ Észrevehette, hogy két különbözõ billentyû-kombináció gyûjtemény is megtalálhat
+ó a LyX-ben.
  Az egyik a 
 \begin_inset Quotes pld
 \end_inset
@@ -646,9 +1570,9 @@ emacs
 \begin_inset Quotes prd
 \end_inset
 
- stílusú, amelyiket fõleg azok használnak akik Unix-on nõttek fel és mindig
- az Emacs szövegszerkesztõt használták.
- Hacsak nincs külön jelezve, mi a dokumentációban mindig az alapértelmezett
+ stílusú, amelyiket fõleg azok használnak akik Unix-on nõttek fel és az
+ Emacs szövegszerkesztõt használták.
+ Ha nincs külön jelezve, mi a dokumentációban mindig az alapértelmezett
  
 \begin_inset Quotes pld
 \end_inset
@@ -657,9 +1581,9 @@ CUA
 \begin_inset Quotes prd
 \end_inset
 
- stílusút írtuk le.
+ stílusút használjuk.
  Ha önnek az Emacs jobban tetszik, valószínûleg egyedül is meg fogja találni
- az önre vonatkozó billentyûzet-kombinációkat a dokumentációkból.
+ az önre vonatkozó billentyûzet-kombinációt.
 \end_layout
 
 \begin_layout Section
@@ -667,7 +1591,7 @@ A kézikönyvek
 \end_layout
 
 \begin_layout Standard
-A következõ listából megtudhatja az összes kézikönyv tartalmát:
+A következõ listából megismerheti az összes kézikönyv tartalmát:
 \end_layout
 
 \begin_layout Description
@@ -675,38 +1599,51 @@ A következõ listából megtudhatja az összes kézikönyv tartalmát:
 \emph on
 Bevezetés
 \emph default
- \InsetSpace ~
-
-\newline
-Éppen ezt olvassa.
+ 
 \end_layout
 
+\begin_deeper
+\begin_layout Standard
+
+\series medium
+Éppen
+\series default
+ ezt olvassa.
+\end_layout
+
+\end_deeper
 \begin_layout Description
 
 \emph on
-Tankönyv \InsetSpace ~
+Tankönyv 
+\end_layout
 
+\begin_deeper
+\begin_layout Standard
+
+\series medium
+Ha 
+\series default
+ön most látja elõször a LyX-et, és még soha nem használta a LaTeX-et sem,
+ ez az a kézikönyv, amivel érdemes kezdenie.
+ Ha önnek a LaTeX csak egy olyan dolgot jelent, amibõl óvszert gyártanak,
+ mindenképpen olvassa el újra az elsõ fejezetet és utána olvassa el a 
+\emph on
+Tankönyvet
 \emph default
-
-\newline
-Ha ön most látja elõször a LyX-et, és még soha nem használta a LaTeX-et
- sem, ez az a kézikönyv, amivel érdemes elkezdenie.
- Ha önnek esetleg a LaTeX eddig csak egy olyan dolgot jelentett, amibõl
- óvszert gyártanak, mindenképpen ezzel kezdje az olvasást! Lehet hogy miután
- elolvasta a 
+! Lehet, hogy miután elolvasta a 
 \emph on
 Tankönyv
 \emph default
-et, még mindig csak valami nyúlós dolog jut eszébe a LaTeX-rõl, de 
+et, még mindig csak valami nyúlós dolog jut eszébe a LaTeX-rõl -- de 
 \emph on
 tudni fogja
 \emph default
 , hogyan kell használni a LyX-et.
 \end_layout
 
-\begin_deeper
 \begin_layout Standard
-Ha már használta a LaTeX-et, akkor is érdemes elolvasni a 
+Ha korábban már használta a LaTeX-et, akkor is érdemes elolvasni a 
 \emph on
 Tankönyv
 \emph default
@@ -720,13 +1657,13 @@ LyX a LaTeX felhasználóknak
 \end_inset
 
  fejezettel.
- (Egyébként senkinek nem árt, ha átnézni.)
+ (A dokumentum többi részének átfutása sem fog ártani.)
 \end_layout
 
 \begin_layout Standard
 Ha bármikor úgy érzi, hogy elvesztette a fonalat a LyX használata közben,
  érdemes újból átfutni, mielõtt fejest ugrana valamelyik másik dokumentumba.
- Ez egy jó ugródeszka a LyX mélyebb megismeréséhez is.
+ Ez egy jó ugródeszka a LyX mélyebb megismeréséhez.
 \end_layout
 
 \end_deeper
@@ -734,12 +1671,12 @@ Ha bármikor úgy érzi, hogy elvesztette a fonalat a LyX használata közben,
 
 \emph on
 Felhasználói\InsetSpace ~
-Kézikönyv \InsetSpace ~
+Kézikönyv
+\end_layout
 
-\newline
-
-\emph default
-Ez az elsõdleges dokumentáció.
+\begin_deeper
+\begin_layout Standard
+Az elsõdleges dokumentáció.
  Itt mutatjuk be a 
 \emph on
 legtöbb
@@ -750,110 +1687,74 @@ legtöbb
 Tankönyv
 \emph default
 et.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-\InsetSpace ~
-\SpecialChar \ldots{}
-vagy elegendõ tudása van a LaTeX-rõl.
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
+\end_deeper
 \begin_layout Description
 
 \emph on
 Haladó\InsetSpace ~
-Szolgáltatások \InsetSpace ~
+Szolgáltatások
+\end_layout
 
-\newline
-
-\emph default
+\begin_deeper
+\begin_layout Standard
 Ez egy kiterjesztése a 
 \emph on
 Felhasználói Kézikönyv
 \emph default
 nek.
- Itt ismerheti meg a további dokumentum osztályok használatát, speciális
- szerkesztési feladatok megoldását.
- Továbbá megtanulhat néhány trükköt az igazi LaTeX mesterektõl is.
+ Itt ismerheti meg, hogyan használhat alap LaTeX parancsokat, további dokumentum
+ osztályokat, speciális szerkesztési jellemzõket.
+ Továbbá megtanulhat néhány (jobbára bizarr, de elegáns) trükköt az valódi
+ LaTeX mesterektõl.
 \end_layout
 
+\end_deeper
 \begin_layout Description
 
 \emph on
-Testreszabás \InsetSpace ~
+Testreszabás
+\end_layout
 
-\emph default
-
-\newline
-Ez egy leírás haladó felhasználóknak, a LyX fejlettebb lehetõségeirõl, és
- a LyX viselkedésének, megjelenésének testreszabásáról.
- Szintén magába foglalja a konfigurációs fájlok leírását, nemzetközisítését,
- további billentyûzet-kombinációk használatát is.
- Semmiképpen sem javasolt elmélyülni ebben, mielõtt nincs tisztában a 
+\begin_deeper
+\begin_layout Standard
+Bemutatja a LyX fejlett képességeit, valamint a saját igényeinknek megfelelõ
+ beállítást.
+ Tartalmazza még a konfigurációs fájlok leírását, a honosítást, további
+ billentyûzet-kombinációk beállítását is.
+ Semmiképpen sem javasolt elmélyülni benne, mielõtt nincs tisztában a 
 \emph on
 Tankönyv
 \emph default
 ben leírtakkal!
 \end_layout
 
-\begin_layout Description
-
-\emph on
-Referencia\InsetSpace ~
-Kézikönyv \InsetSpace ~
-
-\emph default
-
-\newline
-Ez a dokumentum egy kimerítõ, részletes, de nyers leírást ad a LyX lehetõségeirõ
-l.
- Szemben a többi dokumentációval, itt a hasznos magyarázatok és használati
- javaslatok elmaradnak, a teljes részletességért cserébe.
-\end_layout
-
-\begin_layout Description
-
-\emph on
-Ismert\InsetSpace ~
-hibák \InsetSpace ~
-
-\emph default
-
-\newline
-Ez a dokumentum tartalmazza az ismert hibákat a LyX-ben, és információt
- szolgáltat a teendõkrõl, ha valaki hibát talál a programban.
-\end_layout
-
+\end_deeper
 \begin_layout Description
 
 \emph on
 LaTeX\InsetSpace ~
-beállítások \InsetSpace ~
+információ
+\end_layout
 
-\emph default
-
-\newline
-Ez a fájl az installáció vagy az újrakonfigurálás során jön létre.
+\begin_deeper
+\begin_layout Standard
+Ez a fájl a telepítés vagy az újrakonfigurálás során jön létre.
  Ebben a fájlban találhat információt a LyX aktuális beállításairól, az
  elérhetõ szolgáltatásokról.
- Ha megtekinti, láthatja, hogy mi az ami éppen hiányzik a rendszerébõl az
- adott szolgáltatás használatához, amire esetleg szüksége lehet.
+ Ha valamit hiányol elõször ezt érdemes megnéznie.
  
 \end_layout
 
+\end_deeper
 \begin_layout Standard
 Ezek a fájlok egymásra is hivatkoznak, ha ez szükséges.
  Például a 
 \emph on
 Felhasználói Kézikönyv
 \emph default
- tartalmaz némi információt az installálásról és testreszabásról, de bõvebb
+ tartalmaz némi információt az telepítésrõl és testreszabásról, de bõvebb
  információkért a 
 \emph on
 Testreszabás
@@ -863,7 +1764,7 @@ Testreszabás
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace 0.51cm
+\begin_inset VSpace bigskip
 \end_inset
 
 
@@ -872,114 +1773,270 @@ Testreszabás
 \begin_layout Standard
 \align center
 Ha most használja elõször a LyX-et, olvassa el a Tankönyvet.
- Most rögtön!
+ Most azonnal!
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace 0.51cm
+\begin_inset VSpace bigskip
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-Egyébként, feleslegesen csalódást okozhat magának.
+Különben felesleges csalódást okozhat önmagának.
  A LyX mindent tud, amit egy szövegszerkesztõtõl elvárhat, de másként közelíti
- meg a dolgokat, mint ahogy azt megszokhatta.
+ meg a dolgokat, mint ahogy azokat megszokhatta.
 \end_layout
 
-\begin_layout Section
+\begin_layout Chapter
+Közremûködés a dokumentációs projekthez
+\end_layout
+
+\begin_layout Standard
 \begin_inset LatexCommand \label{rész:Közremûködés}
 
 \end_inset
 
-Közremûködés a Dokumentációs Projektben
+
 \end_layout
 
-\begin_layout Subsection
-A kézikönyvben talált hibák jelentése
+\begin_layout Section
+Közremûködés a LyX-hez
 \end_layout
 
 \begin_layout Standard
-Ez nagyon egyszerû, csak küld egy levelet a Felhasználók Listájára vagy
- a Fejlesztõk Listájára.
- A dokumentációval foglalkozó csapat elérhetõ a következõ levelezõlistán:
+A LyX többnyire C++-ban készült.
+ Egy hatalmas projekt, aminek eredményeként nem mentes programhibáktól,
+ továbbá a továbbfejlesztésére is szükség van.
  
+\end_layout
+
+\begin_layout Subsection
+Hiba jelentése
+\end_layout
+
+\begin_layout Standard
+A LyX használata közben elõfordulhat, hogy a program valamire rosszul reagál
+ és ezt ön hibaként fogja értelmezni.
+ Váratlan programkilépések, bár ritkán de elõfordulhatnak.
+ A felhasználói felület hibáit a LyX csapat nagyon fontosnak tartja: különösen
+ fontosak a felhasználó felület utalásai, amelyek nem teljesen egyértelmûek
+ és világosak.
+\end_layout
+
+\begin_layout Standard
+A LyX rendelkezik egy hibakövetõ rendszerrel, amelyet a következõ web címen
+ található meg: 
+\begin_inset LatexCommand \htmlurl[LyX hibakövetõ]{http://bugzilla.lyx.org/}
+
+\end_inset
+
+.
+ Ellenõriznie kell a hibakövetõt mielõtt bejelentene egy hibát, mivel lehet,
+ hogy azt már valaki bejelentette! Amennyiben megjegyzése van egy hibához
+ vagy új hibát szeretne jelenteni, megteheti ezt a hibakövetõn vagy küldhet
+ egy levelet a fejlesztõi levelezõ listára a 
 \family typewriter
-lyx-docs@lists.lyx.org
+lyx-devel@lists.lyx.org
+\family default
+-címen.
+ A levelezõlista archívumának címe megtalálható a 
+\begin_inset LatexCommand \htmlurl{http://www.lyx.org}
+
+\end_inset
+
+-on.
+\end_layout
+
+\begin_layout Standard
+Egy jó (és hasznos) hibajelentésnek tartalmazni kell, hogy a LyX melyik
+ verziójában talált hibát.
+ Ajánlott pontosan és részletesen leírni a hibát - ellenben a fejlesztõknek
+ sok idõt kell a hiba helyének pontos meghatározására pazarolniuk, így kevesebb
+ idejük marad a fejlesztések kivitelezésére.
+ Írja le a LyX futtatásához használt operációs rendszert, adja meg annak
+ verziószámát.
+ Adja meg a rendszerére telepített függvénykönyvtárak verziószámait, valamint
+ szükség szerint a LyX által használt egyéb programok verziószámait.
+ Amennyiben ez egy forráskódból történõ fordítási vagy beállítási hiba,
+ csatolja a 
+\family typewriter
+config.log
+\family default
+-ot, valamint adja meg milyen fordítót használt.
+\end_layout
+
+\begin_layout Standard
+Amennyiben sikerül váratlan programkilépést produkálnia, szánjon idõt arra,
+ hogy elkészítse a programozók számára fontos 
+\begin_inset Quotes pld
+\end_inset
+
+backtrace
+\begin_inset Quotes prd
+\end_inset
+
+-et, egy szimbólumokat tartalmazó lyx programkóddal.
+ A LyX forráskód könyvtárában található, alapból tartalmazza a szimbólumokat,
+ míg a telepített nem.
+ Futtassa a LyX-et a gdb-bõl hasonlóképpen, mint most én 
+\begin_inset Quotes pld
+\end_inset
+
+
+\family typewriter
+\size small
+gdb /users/steve/lyx-1.0.x/src/lyx
+\family default
+\size default
+
+\begin_inset Quotes prd
+\end_inset
+
+ ezután adja ki a 
+\begin_inset Quotes pld
+\end_inset
+
+
+\family typewriter
+\size small
+run
+\family default
+\size default
+
+\begin_inset Quotes prd
+\end_inset
+
+ parancsot, majd reprodukálja a hibát.
+ Hiba esetén a LyX kilép, és visszatér a gdb-hez.
+ Használja a 
+\begin_inset Quotes pld
+\end_inset
+
+bt
+\begin_inset Quotes prd
+\end_inset
+
+ parancsot a backtrace létrehozásához, majd csatolja azt a hibajelentéshez
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Standard
 \InsetSpace ~
-Mielõtt ide írna jelezze a hibát nekünk a fordítóknak, mert lehet hogy csak
- a fordítás a hibás.
+Ha tökéletes munkát szeretne végezni, adja ki néhányszor az 
+\begin_inset Quotes pld
+\end_inset
+
+
+\family typewriter
+info locals
+\family default
+
+\begin_inset Quotes prd
+\end_inset
+
+ és 
+\begin_inset Quotes pld
+\end_inset
+
+
+\family typewriter
+up
+\family default
+
+\begin_inset Quotes prd
+\end_inset
+
+ parancsokat, hogy megismerhessük a lokális változók tartalmát a verem több
+ szintjén.
 \end_layout
 
 \end_inset
 
- Ha a javítás csekély mértékû, valaki ki fogja javítani, viszont ha komolyabb
- problémát észlel, javasolt felvenni a kapcsolatot a fejlesztõkkel mielõtt
- akármit is javítana.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace 1.06cm
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align center
-
-\emph on
-Soha ne változtassa meg a kézikönyvek tartalmát, a fejlesztõk hozzájárulása
- nélkül!
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace 1.06cm
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Egyébként a Dokumentációs Csapat folyamatosan, CVS-en keresztül karbantartja
- a dokumentációk prototípusát, így ezekben semmiféle zûrzavar nem keletkezhet
- a javítások során.
+.
+ Amennyiben lehetséges, csatolja a reprodukció pontos leírását is, ezen
+ leírás néha sokkal fontosabb, mint maga a backtrace; mert így mi fejlesztõk
+ tudjuk tanulmányozni a hiba pontos körülményeit.
+ Vannak esetek, amikor a hiba nagyon nehezen reprodukálható, ekkor az összes
+ információ amit megszerezhetünk, mindössze a backtrace.
 \end_layout
 
 \begin_layout Subsection
-Csatlakozás a Dokumentációs Csapathoz
+Javítások és új funkciók közreadása
 \end_layout
 
 \begin_layout Standard
-A LyX Dokumentációs Projekt, mint minden a LyX projekten belül, hasznosítani
+Ha megváltoztatta a LyX forráskódját, és úgy gondolja mindenképpen érdemes
+ azt a LyX részévé tenni, módosításait diff fájlként (egységes formátumban)
+ küldje el a fejlesztõi levelezõlistára, az elõbb említett címre.
+ Csatoljon hozzá a módosításról pár szót és egy leírást arról, hogy módosítása
+ mire vonatkozik.
+\end_layout
+
+\begin_layout Section
+Közremûködés a dokumentációhoz
+\end_layout
+
+\begin_layout Standard
+A LyX dokumentációja elég átfogó, habár folyamatos fejlesztés alatt van
+ és minden új kiadás valamilyen újítást is tartalmaz.
+ Úgy találhatja, a dokumentáció valamely részét ki kell javítani vagy ki
+ kell egészíteni.
+ Ez a szakasz leírja mit tegyen amennyiben hibát talál, vagy a dokumentáció
+ javításához, kiegészítéséhez van javaslata.
+\end_layout
+
+\begin_layout Subsection
+A kézikönyvekben talált hibák jelentése
+\end_layout
+
+\begin_layout Standard
+Amennyiben talál egy hibát a dokumentációban küldjön egy levelet a 
+\family typewriter
+lyx-docs@lists.lyx.org
+\family default
+
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+\InsetSpace ~
+Mielõtt ide írna jelezze a hibát nekünk a fordítóknak is, mert lehet hogy
+ csak a fordítás hibás.
+\end_layout
+
+\end_inset
+
+ levelezési listára.
+ A dokumentációs csapat el fogja végezni a szükséges javításokat.
+\end_layout
+
+\begin_layout Subsection
+Csatlakozás a dokumentációs csapathoz
+\end_layout
+
+\begin_layout Standard
+A LyX dokumentációs projekt, mint minden a LyX projekten belül, hasznosítani
  tudja az ön segítségét is.
- Ha ön szeretne közremûködni ebben, elõször is el kell végeznie a következõ
- feladatokat:
+ Ha szeretne közremûködni, elõször is el kell végeznie a következõ feladatokat:
 \end_layout
 
 \begin_layout Enumerate
 Töltse le a legfrissebb LyX forráskódot
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Standard
 \InsetSpace ~
-A vállalkozó szellemûek mindig letölthetik a legfrissebb forrást a LyX CVS
- szerverérõl.
+A vállalkozó szellemûek letölthetik a legfrissebb forráskódot a LyX CVS
+ szerverérõl -- a lyxdoc modulból
 \end_layout
 
 \end_inset
 
 , majd csomagolja ki.
-\end_layout
-
-\begin_layout Enumerate
-A kicsomagolt könyvtáron belül fog találni egy
+ A kicsomagolt könyvtáron belül fog találni egy
 \family typewriter
  DocStyle.lyx
 \family default
@@ -989,10 +2046,6 @@ A kicsomagolt könyvtáron belül fog találni egy
 \family default
  nevû alkönyvtárban.
  Olvassa végig, ez tartalmazza a dokumentációk formai szabályait.
-\end_layout
-
-\begin_layout Enumerate
-Tartson egy-két nap szünetet, aztán olvassa el újból!
 \end_layout
 
 \begin_layout Enumerate
@@ -1009,8 +2062,8 @@ et is.
 
 \begin_deeper
 \begin_layout Standard
-Ennek az a célja, hogy ötleteket adjon, hogyan is kell kinézni egy dokumentáción
-ak.
+Ennek az a célja, hogy ötleteket adjon, hogyan is kell kinéznie a dokumentációna
+k.
  A 
 \emph on
 Tankönyv 
@@ -1019,9 +2072,9 @@ Tankönyv
 \emph on
 Felhasználói Kézikönyv
 \emph default
- egyébként mindig a legnaprakészebb az összes közül.
+ egyébként mindig a legnaprakészebb
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Standard
 \InsetSpace ~
@@ -1030,20 +2083,13 @@ Ez a megállapítás természetesen csak az eredeti angol verzióra igaz.
 
 \end_inset
 
-
+ az összes közül.
+ Most már elmélyedhet az általunk kívánt formai követelményekben és tartalomban.
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-Olvassa el újra a 
-\family typewriter
-DocStyle.lyx
-\family default
- fájlt.
-\end_layout
-
-\begin_layout Enumerate
-Végül lépjen kapcsolatba a csapattal: 
+Lépjen kapcsolatba a csapattal: 
 \end_layout
 
 \begin_deeper
@@ -1054,13 +2100,8 @@ lyx-docs@lists.lyx.org
 \end_layout
 
 \begin_layout Standard
-Biztosak akarunk lenni abban, hogy ön megértette a formai, tartalmi követelménye
-ket, 
-\emph on
-mielõtt 
-\emph default
-elkezdene írni.
- Ellenkezõ esetben önnek muszáj lesz átírnia a követelményeknek megfelelõre!
+Itt megvitathatjuk a szükséges változtatásokat, és kapunk róluk visszajelzést
+ is.
 \end_layout
 
 \end_deeper
@@ -1072,32 +2113,31 @@ Semmi esetre se
 kezdjen dokumentációt írni, amíg nem lépett kapcsolatba a Dokumentációs
  Csapattal.
  A Dokumentációs Csapat honlapján: 
-\begin_inset LatexCommand \url{http://www.lyx.org}
+\begin_inset LatexCommand \htmlurl{http://www.lyx.org}
 
 \end_inset
 
- vagy a levelezási listánkon betekintést nyerhet az éppen aktuális tevékenységei
+ vagy a levelezési listánkon betekintést nyerhet az éppen aktuális tevékenységei
 nkbe.
  
 \end_layout
 
 \begin_layout Subsection
-Csatlakozás a dokumentációk fordításához
+Csatlakozás a dokumentációk fordításához, honosításához
 \end_layout
 
 \begin_layout Standard
-Ha ön esetleg a dokumentációk fordításába szeretne bekapcsolódni, vegye
- fel a kapcsolatot a fordítókkal a következõ e-mail címen: 
+Ha szeretne bekapcsolódni a dokumentációk fordításába, vegye fel a kapcsolatot
+ a fordítókkal a következõ e-mail címen: 
 \family typewriter
-zrubi@k2.jozsef.kando.hu
+alex@lyx.hu
+\family default
+.
 \end_layout
 
 \begin_layout Standard
 A fordítás állásáról pedig információkat kaphat a következõ honlapon: 
-\end_layout
-
-\begin_layout Itemize
-\begin_inset LatexCommand \url{http://k2.jozsef.kando.hu/~zrubi/LyX}
+\begin_inset LatexCommand \htmlurl{http://www.lyx.hu}
 
 \end_inset
 
