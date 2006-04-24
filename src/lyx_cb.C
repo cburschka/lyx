@@ -446,9 +446,7 @@ void Reconfigure(BufferView * bv)
 
 	// Run configure in user lyx directory
 	Path p(package().user_support());
-	string const configure_script =
-		AddName(package().system_support(), "configure");
-	string const configure_command = "sh " + QuoteName(configure_script);
+	string const configure_command = package().configure_command();
 	Systemcall one;
 	one.startscript(Systemcall::Wait, configure_command);
 	p.pop();

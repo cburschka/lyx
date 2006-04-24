@@ -63,3 +63,6 @@ What's new
 - Make LyX/Win work under windows 98.
 
 - Fix compilation on DragonFly BSD.
+
+- Fix lib/configure to find tex2lyx when compiling with --with-version-suffix
+  (bug 2285)

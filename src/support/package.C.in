@@ -111,6 +111,9 @@ std::pair<string, bool> const
 get_user_support_dir(string const & default_user_support_dir,
 		     string const & command_line_user_support_dir);
 
+
+string const & with_version_suffix();
+
 } // namespace anon
 
 
@@ -143,6 +146,10 @@ Package::Package(string const & command_line_arg0,
 	boost::tie(user_support_dir_, explicit_user_support_dir_) =
 		get_user_support_dir(default_user_support_dir,
 				     command_line_user_support_dir);
+
+	string const configure_script = AddName(system_support(), "configure");
+	configure_command_ = "sh " + QuoteName(configure_script)
+	                           + with_version_suffix();
 
 	lyxerr[Debug::INIT]
 		<< "<package>\n"
@@ -178,6 +185,15 @@ string const hardcoded_localedir()
 string const hardcoded_system_support_dir()
 {
 	return string("%LYX_DIR%");
+}
+
+
+string const & with_version_suffix()
+{
+	static string const program_suffix("%PROGRAM_SUFFIX%");
+	static string const
+		with_version_suffix(" --with-version-suffix=%PROGRAM_SUFFIX%");
+	return program_suffix.empty() ? program_suffix : with_version_suffix;
 }
 
 } // namespace anon

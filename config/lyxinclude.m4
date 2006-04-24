@@ -29,6 +29,7 @@ dnl
 dnl
 AC_DEFUN([LYX_VERSION_SUFFIX],[
 AC_MSG_CHECKING([for version suffix])
+dnl We need the literal double quotes in the rpm spec file
 RPM_VERSION_SUFFIX='""'
 AC_ARG_WITH(version-suffix,
   [  --with-version-suffix[=<version>]  install lyx files as lyx<version>],
@@ -609,6 +610,7 @@ case $lyx_use_packaging in
     *) LYX_ERROR([Unknown packaging type $lyx_use_packaging]) ;;
 esac
 AC_SUBST(pkgdatadir)
+AC_SUBST(program_suffix)
 ])
 
 
