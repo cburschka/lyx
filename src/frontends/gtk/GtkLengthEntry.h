@@ -37,6 +37,10 @@ public:
 
 	Gtk::SpinButton *get_spin();
 	Gtk::ComboBoxText *get_combo();
+
+	Gtk::SpinButton const *const get_spin() const;
+	Gtk::ComboBoxText const *const get_combo() const;
+
 	sigc::signal<void> &signal_changed();
 
 protected:

@@ -81,7 +81,7 @@ GtkLengthEntry::GtkLengthEntry(
 	pack_start (spin_, true, true, 0);
 	pack_start (combo_, false, false, 0);
 	show_all();
-	spin_.signal_changed().connect(sigc::mem_fun(changedsignal_, &sigc::signal<void>::emit));
+	spin_.signal_value_changed().connect(sigc::mem_fun(changedsignal_, &sigc::signal<void>::emit));
 	combo_.signal_changed().connect(sigc::mem_fun(changedsignal_, &sigc::signal<void>::emit));
 }
 
@@ -123,6 +123,29 @@ void GtkLengthEntry::set_relative(bool rel)
 		populateUnitCombo (combo_, rel);
 		relative_ = rel;
 	}
+}
+
+
+Gtk::ComboBoxText *GtkLengthEntry::get_combo()
+{
+	return &combo_;
+}
+
+
+Gtk::SpinButton *GtkLengthEntry::get_spin()
+{
+	return &spin_;
+}
+
+Gtk::ComboBoxText const *const GtkLengthEntry::get_combo() const
+{
+	return &combo_;
+}
+
+
+Gtk::SpinButton const *const GtkLengthEntry::get_spin() const
+{
+	return &spin_;
 }
 
 
