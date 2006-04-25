@@ -254,7 +254,7 @@ void LyXRC::setDefaults() {
 	num_lastfiles = maxlastfiles;
 	check_lastfiles = true;
 	use_lastfilepos = true;
-	load_session = true;
+	load_session = false;
 	make_backup = true;
 	backupdir_path.erase();
 	display_graphics = lyx::graphics::ColorDisplay;

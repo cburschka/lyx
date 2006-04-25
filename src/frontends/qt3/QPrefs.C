@@ -178,6 +178,8 @@ void QPrefs::apply()
 
 	rc.ui_file = internal_path(uimod->uiFileED->text());
 	rc.bind_file = internal_path(uimod->bindFileED->text());
+	rc.use_lastfilepos = uimod->restoreCursorCB->isChecked();
+	rc.load_session = uimod->loadSessionCB->isChecked();
 	rc.cursor_follows_scrollbar = uimod->cursorFollowsCB->isChecked();
 	rc.autosave = uimod->autoSaveSB->value() * 60;
 	rc.make_backup = uimod->autoSaveCB->isChecked();
@@ -504,6 +506,8 @@ void QPrefs::update_contents()
 
 	uimod->uiFileED->setText(external_path(rc.ui_file));
 	uimod->bindFileED->setText(external_path(rc.bind_file));
+	uimod->restoreCursorCB->setChecked(rc.use_lastfilepos);
+	uimod->loadSessionCB->setChecked(rc.load_session);
 	uimod->cursorFollowsCB->setChecked(rc.cursor_follows_scrollbar);
 	// convert to minutes
 	int mins(rc.autosave / 60);
