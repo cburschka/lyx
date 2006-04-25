@@ -540,6 +540,13 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 
 	string token;
 	while (getline(ifs, token)) {
+		// MikTeX sometimes inserts \0 in the log file. They can't be
+		// removed directly with the existing string utility
+		// functions, so convert them first to \r, and remove all
+		// \r's afterwards, since we need to remove them anyway.
+		token = subst(token, '\0', '\r');
+		token = subst(token, "\r", "");
+
 		lyxerr[Debug::LATEX] << "Log line: " << token << endl;
 
 		if (token.empty())
@@ -760,7 +767,12 @@ void LaTeX::deplog(DepTable & head)
 
 		string token;
 		getline(ifs, token);
-		token = rtrim(token, "\r");
+		// MikTeX sometimes inserts \0 in the log file. They can't be
+		// removed directly with the existing string utility
+		// functions, so convert them first to \r, and remove all
+		// \r's afterwards, since we need to remove them anyway.
+		token = subst(token, '\0', '\r');
+		token = subst(token, "\r", "");
 		if (token.empty())
 			continue;
 

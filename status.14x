@@ -37,6 +37,8 @@ What's new
   using the AMS-specific commands \xleftarrow, \xrightarrow or
   array constructs split, gathered, aligned and alignedat (bug 2149).
 
+- Don't get confused by 0-Characters in MikTeX logfiles anymore
+
 * Math editor:
 
 - Fix metrics of AMS array environments like bmatrix, vmatrix etc. (bug 2036)
