@@ -73,3 +73,6 @@ What's new
 
 - Fix lib/configure to find tex2lyx when compiling with --with-version-suffix
   (bug 2285)
+
+- Replace the old sh version of lib/configure with the new python version
+  lib/configure.py

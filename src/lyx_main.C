@@ -618,7 +618,7 @@ bool LyX::queryUserLyXDir(bool explicit_userdir)
 	    fs::is_directory(package().user_support())) {
 		first_start = false;
 		string const configure_script =
-			AddName(package().system_support(), "configure");
+			AddName(package().system_support(), "configure.py");
 		string const userDefaults =
 			AddName(package().user_support(), "lyxrc.defaults");
 		if (fs::exists(configure_script) &&

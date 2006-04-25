@@ -1,3 +1,8 @@
+2006-04-25  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* configure.m4: Remove
+	* Makefile.am: Remove configure.m4 and use configure.py
+
 2006-04-24  Bernhard Reiter  <ockham@gmx.net>
 
 	* languages: add naustrian; fix locale for austrian.

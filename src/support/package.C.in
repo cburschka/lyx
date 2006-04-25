@@ -147,9 +147,9 @@ Package::Package(string const & command_line_arg0,
 		get_user_support_dir(default_user_support_dir,
 				     command_line_user_support_dir);
 
-	string const configure_script = AddName(system_support(), "configure");
-	configure_command_ = "sh " + QuoteName(configure_script)
-	                           + with_version_suffix();
+	string const configure_script = AddName(system_support(), "configure.py");
+	configure_command_ = "python " + QuoteName(configure_script)
+	                               + with_version_suffix();
 
 	lyxerr[Debug::INIT]
 		<< "<package>\n"

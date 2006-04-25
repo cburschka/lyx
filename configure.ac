@@ -28,7 +28,7 @@ AM_INIT_AUTOMAKE([foreign dist-bzip2 tar-ustar no-define 1.9])
 PACKAGE=$save_PACKAGE
 
 ### Set the execute permissions of the various scripts correctly
-for file in config/install-sh config/mkinstalldirs lib/configure ; do
+for file in config/install-sh config/mkinstalldirs ; do
   chmod 755 ${srcdir}/${file}
 done
 
@@ -408,7 +408,6 @@ int mkstemp(char*);
 ])
 
 ### Finish the work.
-AC_CONFIG_SUBDIRS(lib)
 AC_CONFIG_FILES([Makefile  m4/Makefile \
        boost/Makefile \
        boost/libs/Makefile \
@@ -451,6 +450,8 @@ AC_CONFIG_FILES([Makefile  m4/Makefile \
        src/frontends/qt2/ui/Makefile \
        src/frontends/qt2/ui/moc/Makefile \
 ])
+echo "Running $LYX_ABS_TOP_SRCDIR/lib/configure.py --with-version-suffix=\"$version_suffix\""
+(test -d lib || mkdir lib; cd lib && python $LYX_ABS_TOP_SRCDIR/lib/configure.py --with-version-suffix="$version_suffix")
 
 AC_OUTPUT
 # show version information

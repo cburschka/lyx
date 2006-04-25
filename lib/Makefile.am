@@ -5,7 +5,6 @@ DISTCLEANFILES += texput.log textclass.lst packages.lst lyxrc.defaults
 SUBDIRS = doc lyx2lyx
 
 EXTRA_DIST = \
-	configure.m4 \
 	chkconfig.ltx
 
 CHMOD = chmod
@@ -13,7 +12,7 @@ CHMOD = chmod
 # We cannot use dist_pkgdata_SCRIPTS for configure, since a possible
 # version-suffix would get appended to the names. So we use dist_pkgdata_DATA
 # and chmod manually in install-data-hook.
-dist_pkgdata_DATA = lyxrc.example CREDITS chkconfig.ltx configure \
+dist_pkgdata_DATA = lyxrc.example CREDITS chkconfig.ltx configure.py \
 	       lyxrc.defaults textclass.lst packages.lst external_templates \
 	       encodings languages symbols syntax.default
 
@@ -898,15 +897,11 @@ dist_ui_DATA = \
 	ui/stdmenus.ui \
 	ui/stdtoolbars.ui
 
-$(srcdir)/configure: $(srcdir)/configure.m4
-	$(M4) $< > $@
-	$(CHMOD) 755 $@
-
-lyxrc.defaults: $(srcdir)/configure
-	$(SHELL) $<
+lyxrc.defaults: $(srcdir)/configure.py
+	python $<
 
 install-data-hook:
-	$(CHMOD) 755 $(DESTDIR)$(pkgdatadir)/configure
+	$(CHMOD) 755 $(DESTDIR)$(pkgdatadir)/configure.py
 	for i in $(dist_scripts_DATA); do \
 		$(CHMOD) 755 $(DESTDIR)$(pkgdatadir)/$$i; \
 	done
