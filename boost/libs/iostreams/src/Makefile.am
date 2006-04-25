@@ -12,7 +12,6 @@ AM_CPPFLAGS += \
        $(BOOST_INCLUDES)
 
 libboost_iostreams_la_SOURCES = \
-	bzip2.cpp \
 	file_descriptor.cpp \
 	mapped_file.cpp \
 	zlib.cpp
