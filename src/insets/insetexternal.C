@@ -753,9 +753,20 @@ void InsetExternal::validate(LaTeXFeatures & features) const
 		return;
 	external::Template const & et = *et_ptr;
 
-	// FIXME: This is wrong if we export to PDFLaTeX
+	string format;
+	switch (features.runparams().flavor) {
+	case OutputParams::LATEX:
+		format = "LaTeX";
+		break;
+	case OutputParams::PDFLATEX:
+		format = "PDFLaTeX";
+		break;
+	case OutputParams::XML:
+		format = "DocBook";
+		break;
+	}
 	external::Template::Formats::const_iterator cit =
-		et.formats.find("LaTeX");
+		et.formats.find(format);
 	if (cit == et.formats.end())
 		return;
 

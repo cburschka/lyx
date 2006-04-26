@@ -223,8 +223,9 @@ def checkFormatEntries():
 \Format docbook    sgml    DocBook                B  ""	"%%"
 \Format docbook-xml xml   "Docbook (XML)"         "" ""	"%%"
 \Format literate   nw      NoWeb                  N  ""	"%%"
-\Format latex      tex     LaTeX                  L  ""	"%%"
+\Format latex      tex    "LaTeX (plain)"         L  ""	"%%"
 \Format linuxdoc   sgml    LinuxDoc               x  ""	"%%"
+\Format pdflatex   tex    "LaTeX (pdflatex)"      "" ""	"%%"
 \Format text       txt    "Plain text"            a  ""	"%%"
 \Format textparagraph txt "Plain text (paragraphs)"    "" ""	"%%"''' ])
   #
@@ -264,7 +265,7 @@ def checkFormatEntries():
 def checkConverterEntries():
   ''' Check all converters (\converter entries) '''
   checkProg('the pdflatex program', ['pdflatex $$i'],
-    rc_entry = [ r'\converter latex   pdf2       "%%"	"latex"' ])
+    rc_entry = [ r'\converter pdflatex   pdf2       "%%"	"latex"' ])
   
   ''' If we're running LyX in-place then tex2lyx will be found in
       ../src/tex2lyx. Add this directory to the PATH temporarily and

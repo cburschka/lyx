@@ -885,7 +885,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 
 	LyXFont basefont;
 
-	LaTeXFeatures features(buf, bparams, runparams.nice);
+	LaTeXFeatures features(buf, bparams, runparams);
 
 	// output change tracking marks only if desired,
 	// if dvipost is installed,

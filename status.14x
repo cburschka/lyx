@@ -26,6 +26,10 @@ What's new
 
 - add support for Austrian (new spelling) as document language.
 
+- add "LaTeX (pdflatex)" output format. This new output format produces
+  .tex files that are suitable for pdflatex, including figure conversion
+  to png, pdf or jpeg instead of eps.
+
 ** Bug fixes
 
 * Document input/output:
@@ -38,6 +42,8 @@ What's new
   array constructs split, gathered, aligned and alignedat (bug 2149).
 
 - Don't get confused by 0-Characters in MikTeX logfiles anymore
+
+- Always honor the "Requirement" tag in External Template Definitions
 
 * Math editor:
 
