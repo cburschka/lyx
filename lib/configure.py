@@ -223,9 +223,9 @@ def checkFormatEntries():
 \Format docbook    sgml    DocBook                B  ""	"%%"
 \Format docbook-xml xml   "Docbook (XML)"         "" ""	"%%"
 \Format literate   nw      NoWeb                  N  ""	"%%"
-\Format latex      tex    "TeX (latex)"           l  ""	"%%"
+\Format latex      tex    "LaTeX (plain)"         L  ""	"%%"
 \Format linuxdoc   sgml    LinuxDoc               x  ""	"%%"
-\Format pdflatex   tex    "TeX (pdflatex)"        "" ""	"%%"
+\Format pdflatex   tex    "LaTeX (pdflatex)"      "" ""	"%%"
 \Format text       txt    "Plain text"            a  ""	"%%"
 \Format textparagraph txt "Plain text (paragraphs)"    "" ""	"%%"''' ])
   #
