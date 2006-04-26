@@ -35,11 +35,16 @@ What's new
 * Document input/output:
 
 - Convert definitions of itemize and enumerate environments in old layout
-  files correctly
+  files correctly.
+
+- Fix conversion of minipages (default height and inner vertical
+  position) from 1.3.
 
 - Make sure that the amsmath package is used in LaTeX output when
   using the AMS-specific commands \xleftarrow, \xrightarrow or
   array constructs split, gathered, aligned and alignedat (bug 2149).
+
+- Load the tipa package automatically when needed.
 
 - Don't get confused by 0-Characters in MikTeX logfiles anymore
 
@@ -49,27 +54,24 @@ What's new
 
 - Fix metrics of AMS array environments like bmatrix, vmatrix etc. (bug 2036)
 
-
-
-- Fix conversion of minipages (default height and inner vertical position) from   1.3.7
+- Fix undo in matrices.
 
 * User Interface:
 
-- When pasting contents to a tabular with the middle mouse, the language has sometimes
-  be changed. This is fixed now.
+- Don't jump back to previous cursor position when trying to click on
+  an inset (bug 2526).
 
-- Set change tracking marks properly when copying between documents with different change
-  tracking status (bug 2207).
-
-- Load the tipa package automatically when needed.
-
-- Fix undo in math matrices
+- When pasting contents to a tabular with the middle mouse button, the
+  language has sometimes be changed. This is fixed now.
 
 - Text copied from an ERT box has no longer the pseudo "latex" language
-  (bug 2476)
+  (bug 2476).
 
-- Don't jump back to previous cursor position when trying to click on
-  an inset (bug 2526)
+- Set change tracking marks properly when copying between documents
+  with different change tracking status (bug 2207).
+
+- Fix display of horizontal fill which appears at the end of a line
+  (bug 2508)
 
 * Configuration/Installation:
 

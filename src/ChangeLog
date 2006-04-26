@@ -1,3 +1,8 @@
+2006-04-24  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* text.C (numberOfHfills): do not forget to count the last hfill
+	(bug 2509).
+
 2006-04-25  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* lyx_main.C (reconfigureUserLyXDir): test lib/configure.py, not
