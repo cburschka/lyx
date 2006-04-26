@@ -8,10 +8,7 @@
 # Full author contact details are available in file CREDITS.
 
 # This is an experimental version of the configure script, written
-# in Python. It is not yet used by LyX but aims to replace the
-# configure script eventually. Part of the goal to reduce the
-# number of scripting languages used by an official LyX distribution
-# to just one --- Python.
+# in Python. 
 
 import sys, os, re, shutil, glob
 
