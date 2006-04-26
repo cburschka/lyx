@@ -135,7 +135,7 @@ int numberOfLabelHfills(Paragraph const & par, Row const & row)
 
 int numberOfHfills(Paragraph const & par, Row const & row)
 {
-	pos_type const last = row.endpos() - 1;
+	pos_type const last = row.endpos();
 	pos_type first = row.pos();
 
 	// hfill *DO* count at the beginning of paragraphs!
