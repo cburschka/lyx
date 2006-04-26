@@ -216,6 +216,8 @@
 \bind_file greekkeys.bind
 
 
+\bind "M-Up"			"paragraph-move-up"
+\bind "M-Down"			"paragraph-move-down"
 \bind "S-KP_Right"  			"forward-select"
 \bind "S-KP_Left"				"backward-select"
 \bind "S-KP_Up" 				"up-select"

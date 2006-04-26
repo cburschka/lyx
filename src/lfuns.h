@@ -362,6 +362,9 @@ enum kb_action {
 	LFUN_OUTLINE_DOWN,
 	LFUN_OUTLINE_IN,
 	LFUN_OUTLINE_OUT,
+	// 275
+	LFUN_PARAGRAPH_MOVE_DOWN,                // Edwin 20060408
+	LFUN_PARAGRAPH_MOVE_UP,                  // Edwin 20060408
 
 	LFUN_LASTACTION                  // end of the table
 };

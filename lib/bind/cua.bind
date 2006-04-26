@@ -102,6 +102,8 @@
 # Motion group
 #
 
+\bind "M-Up"			"paragraph-move-up"
+\bind "M-Down"			"paragraph-move-down"
 \bind "C-Right"			"word-forward"
 \bind "C-Left"			"word-backward"
 \bind "C-Up"			"paragraph-up"

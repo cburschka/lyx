@@ -356,6 +356,8 @@ void LyXAction::init()
 		{ LFUN_MOUSE_RELEASE, "", ReadOnly },
 		{ LFUN_MOUSE_DOUBLE, "", ReadOnly },
 		{ LFUN_MOUSE_TRIPLE, "", ReadOnly },
+		{ LFUN_PARAGRAPH_MOVE_DOWN, "paragraph-move-down", Noop },
+		{ LFUN_PARAGRAPH_MOVE_UP, "paragraph-move-up", Noop },
 		{ LFUN_NOACTION, "", Noop }
 	};
 

@@ -176,6 +176,8 @@
 \bind "C-period"		"end-of-sentence-period-insert"
 \bind "M-period"		"dots-insert"
 \bind "Escape"			"cancel"
+\bind "C-M-Up"          "paragraph-move-up"
+\bind "C-M-Down"        "paragraph-move-down"
 #\bind "F9"			"meta-prefix"
 
 

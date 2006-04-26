@@ -44,6 +44,7 @@
 #include "ParagraphParameters.h"
 #include "undo.h"
 #include "vspace.h"
+#include "pariterator.h"
 
 #include "frontends/Dialogs.h"
 #include "frontends/LyXView.h"
@@ -320,6 +321,34 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	Dimension olddim = cur.bottom().paragraph().dim();
 
 	switch (cmd.action) {
+
+	case LFUN_PARAGRAPH_MOVE_DOWN: {
+		pit_type const pit = cur.pit();
+		recUndo(pit, pit + 1);
+		finishUndo();
+		std::swap(pars_[pit], pars_[pit + 1]);
+		++cur.pit();
+
+		ParIterator parit(cur);
+		updateLabels(cur.buffer(), parit);
+
+		needsUpdate = true;
+		break;
+	}
+
+	case LFUN_PARAGRAPH_MOVE_UP: {
+		pit_type const pit = cur.pit();
+		recUndo(pit - 1, pit);
+		finishUndo();
+		std::swap(pars_[pit], pars_[pit - 1]);
+		--cur.pit();
+
+		ParIterator parit(cur);
+		updateLabels(cur.buffer(), parit);
+
+		needsUpdate = true;
+		break;
+	}
 
 	case LFUN_APPENDIX: {
 		Paragraph & par = cur.paragraph();
@@ -1776,6 +1805,16 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_PASTE:
 		enable = lyx::cap::numberOfSelections() > 0;
 		break;
+
+	case LFUN_PARAGRAPH_MOVE_UP: {
+		enable = cur.pit() > 0 && !cur.selection();
+		break;
+	}
+
+	case LFUN_PARAGRAPH_MOVE_DOWN: {
+		enable = cur.pit() < cur.lastpit() && !cur.selection();
+		break;
+	}
 
 	case LFUN_DELETE_WORD_FORWARD:
 	case LFUN_DELETE_WORD_BACKWARD:
