@@ -124,8 +124,7 @@ private:
 inline
 bool operator==(TocBackend::Item const & a, TocBackend::Item const & b)
 {
-	return a.id() == b.id() && a.str() == b.str();
-	// No need to compare depth.
+	return a.id() == b.id() && a.str() == b.str() && a.depth() == b.depth();
 }
 
 

@@ -1074,7 +1074,11 @@ FuncStatus BufferView::Pimpl::getStatus(FuncRequest const & cmd)
 	case LFUN_INSERT_LABEL:
 	case LFUN_BOOKMARK_SAVE:
 	case LFUN_GOTO_PARAGRAPH:
-	case LFUN_OUTLINE:
+	// FIXME handle non-trivially
+	case LFUN_OUTLINE_UP:
+	case LFUN_OUTLINE_DOWN:
+	case LFUN_OUTLINE_IN:
+	case LFUN_OUTLINE_OUT:
 	case LFUN_GOTOERROR:
 	case LFUN_GOTONOTE:
 	case LFUN_REFERENCE_GOTO:
@@ -1230,15 +1234,24 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		break;
 	}
 
-	case LFUN_OUTLINE: {
-		lyx::toc::OutlineOp const op =
-		    static_cast<lyx::toc::OutlineOp>(convert<int>(cmd.argument));
-		lyx::toc::outline(op, buffer_, cursor_.pit());
+	case LFUN_OUTLINE_UP:
+		lyx::toc::outline(lyx::toc::UP, cursor_);
 		cursor_.text()->setCursor(cursor_, cursor_.pit(), 0);
-		buffer_->markDirty();
 		updateLabels(*buffer_);
-		update();
-	}
+		break;
+	case LFUN_OUTLINE_DOWN:
+		lyx::toc::outline(lyx::toc::DOWN, cursor_);
+		cursor_.text()->setCursor(cursor_, cursor_.pit(), 0);
+		updateLabels(*buffer_);
+		break;
+	case LFUN_OUTLINE_IN:
+		lyx::toc::outline(lyx::toc::IN, cursor_);
+		updateLabels(*buffer_);
+		break;	
+	case LFUN_OUTLINE_OUT:
+		lyx::toc::outline(lyx::toc::OUT, cursor_);
+		updateLabels(*buffer_);
+		break;
 
 	case LFUN_GOTOERROR:
 		bv_funcs::gotoInset(bv_, InsetBase::ERROR_CODE, false);

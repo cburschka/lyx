@@ -357,7 +357,11 @@ enum kb_action {
 	LFUN_BIBDB_ADD,
 	LFUN_BIBDB_DEL,
 	LFUN_INSERT_CITATION,
-	LFUN_OUTLINE,			// Vermeer 20060323
+	LFUN_OUTLINE_UP,                 // Vermeer 20060323
+	// 275
+	LFUN_OUTLINE_DOWN,
+	LFUN_OUTLINE_IN,
+	LFUN_OUTLINE_OUT,
 
 	LFUN_LASTACTION                  // end of the table
 };

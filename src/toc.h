@@ -63,7 +63,7 @@ enum OutlineOp {
 };
 
 
-void outline(OutlineOp, Buffer *, pit_type &);
+void outline(OutlineOp, LCursor &);
 
 
 } // namespace toc

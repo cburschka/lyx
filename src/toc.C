@@ -22,6 +22,7 @@
 #include "paragraph.h"
 #include "cursor.h"
 #include "debug.h"
+#include "undo.h"
 
 #include "frontends/LyXView.h"
 
@@ -123,8 +124,11 @@ string const getGuiName(string const & type, Buffer const & buffer)
 }
 
 
-void outline(OutlineOp mode, Buffer * buf, pit_type & pit)
+void outline(OutlineOp mode,  LCursor & cur)
 {
+	recordUndo(cur);
+	Buffer * buf = & cur.buffer();
+	pit_type & pit = cur.pit();
 	ParagraphList & pars = buf->text().paragraphs();
 	ParagraphList::iterator bgn = pars.begin();
 	ParagraphList::iterator s = boost::next(bgn, pit);
@@ -204,7 +208,8 @@ void outline(OutlineOp mode, Buffer * buf, pit_type & pit)
 		}
 		case IN:
 			for (; lit != lend; ++lit) {
-				if ((*lit)->toclevel == thistoclevel + 1) {
+				if ((*lit)->toclevel == thistoclevel + 1 &&
+				    s->layout()->labeltype == (*lit)->labeltype) {
 					s->layout((*lit));
 					break;
 				}
@@ -212,7 +217,8 @@ void outline(OutlineOp mode, Buffer * buf, pit_type & pit)
 		break;
 		case OUT:
 			for (; lit != lend; ++lit) {
-				if ((*lit)->toclevel == thistoclevel - 1) {
+				if ((*lit)->toclevel == thistoclevel - 1 &&
+				    s->layout()->labeltype == (*lit)->labeltype) {
 					s->layout((*lit));
 					break;
 				}

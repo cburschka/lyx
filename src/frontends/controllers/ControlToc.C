@@ -47,9 +47,20 @@ bool ControlToc::canOutline(string const & type)
 
 void ControlToc::outline(toc::OutlineOp op)
 {
-	std::ostringstream o;
-	o << op << std::flush;
-	kernel().dispatch(FuncRequest(LFUN_OUTLINE, o.str()));
+	switch (op) {
+	case toc::UP:
+		kernel().dispatch(FuncRequest(LFUN_OUTLINE_UP));
+		break;
+	case toc::DOWN:
+		kernel().dispatch(FuncRequest(LFUN_OUTLINE_DOWN));
+		break;
+	case toc::IN:
+		kernel().dispatch(FuncRequest(LFUN_OUTLINE_IN));
+		break;
+	case toc::OUT:
+		kernel().dispatch(FuncRequest(LFUN_OUTLINE_OUT));
+		break;
+	}
 }
 
 
