@@ -76,3 +76,5 @@ What's new
 
 - Replace the old sh version of lib/configure with the new python version
   lib/configure.py
+
+- Enable lib/configure.py to find tex2lyx if the path to it contains spaces.
