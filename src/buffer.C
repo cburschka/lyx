@@ -68,12 +68,10 @@
 #include "support/lyxalgo.h"
 #include "support/filetools.h"
 #include "support/fs_extras.h"
-#ifdef USE_COMPRESSION
 # include <boost/iostreams/filtering_stream.hpp>
 # include <boost/iostreams/filter/gzip.hpp>
 # include <boost/iostreams/device/file.hpp>
 namespace io = boost::iostreams;
-#endif
 #include "support/lyxlib.h"
 #include "support/os.h"
 #include "support/path.h"
@@ -737,15 +735,11 @@ bool Buffer::writeFile(string const & fname) const
 	bool retval = false;
 
 	if (params().compressed) {
-#ifdef USE_COMPRESSION
 		io::filtering_ostream ofs(io::gzip_compressor() | io::file_sink(fname));
 		if (!ofs)
 			return false;
 
 		retval = do_writeFile(ofs);
-#else
-		return false;
-#endif
 	} else {
 		ofstream ofs(fname.c_str(), ios::out|ios::trunc);
 		if (!ofs)

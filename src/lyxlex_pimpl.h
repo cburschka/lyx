@@ -14,12 +14,10 @@
 
 #include "lyxlex.h"
 
-#ifdef USE_COMPRESSION
 # include <boost/iostreams/filtering_streambuf.hpp>
 # include <boost/iostreams/filter/gzip.hpp>
 # include <boost/iostreams/device/file.hpp>
 namespace io = boost::iostreams;
-#endif
 
 #include <boost/utility.hpp>
 
@@ -64,10 +62,8 @@ public:
 	/// fb_ is only used to open files, the stream is accessed through is.
 	std::filebuf fb_;
 
-#ifdef USE_COMPRESSION
 	/// gz_ is only used to open files, the stream is accessed through is.
 	io::filtering_istreambuf gz_;
-#endif
 
 	/// the stream that we use.
 	std::istream is;
