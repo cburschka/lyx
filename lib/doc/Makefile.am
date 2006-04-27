@@ -1,6 +1,6 @@
 include $(top_srcdir)/config/common.am
 
-DISTCLEANFILES += LyXConfig.lyx LaTeXConfig.lyx $(tocfiles)
+DISTCLEANFILES += $(tocfiles)
 
 EXTRA_DIST = depend.py doc_toc.py LyXConfig.lyx.in README.Documentation $(DEPENDFILE) $(docfiles)
 
@@ -66,9 +66,7 @@ docfiles = \
 	platypus.eps
 
 docdir = $(pkgdatadir)/doc
-doc_DATA = \
-	$(docfiles) \
-	LaTeXConfig.lyx
+doc_DATA = $(docfiles) 
 
 DEPENDFILE = $(srcdir)/Makefile.depend
 # include $(DEPENDFILE) does not work because automake is too limited.

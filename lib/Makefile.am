@@ -1,7 +1,5 @@
 include $(top_srcdir)/config/common.am
 
-DISTCLEANFILES += texput.log textclass.lst packages.lst lyxrc.defaults
-
 SUBDIRS = doc lyx2lyx
 
 EXTRA_DIST = \
@@ -13,8 +11,7 @@ CHMOD = chmod
 # version-suffix would get appended to the names. So we use dist_pkgdata_DATA
 # and chmod manually in install-data-hook.
 dist_pkgdata_DATA = lyxrc.example CREDITS chkconfig.ltx configure.py \
-	       lyxrc.defaults textclass.lst packages.lst external_templates \
-	       encodings languages symbols syntax.default
+	       external_templates encodings languages symbols syntax.default
 
 dist_noinst_DATA = \
 	images/README \
@@ -929,9 +926,6 @@ dist_ui_DATA = \
 	ui/default.ui \
 	ui/stdmenus.ui \
 	ui/stdtoolbars.ui
-
-lyxrc.defaults: $(srcdir)/configure.py
-	python $<
 
 install-data-hook:
 	$(CHMOD) 755 $(DESTDIR)$(pkgdatadir)/configure.py
