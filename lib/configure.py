@@ -624,31 +624,6 @@ def checkTeXAllowSpaces():
     removeFiles( [ 'a b.tex', 'a b.log', 'texput.log' ])
 
 
-def removeExtraFiles():
-  # Remove superfluous files if we are not writing in the main lib
-  # directory
-  for file in [outfile, 'textclass.lst', 'packages.lst', \
-    'doc/LaTeXConfig.lyx']:
-    try:
-      # we rename the file first, so that we avoid comparing a file with itself
-      os.rename(file, file + '.new')
-      syscfg = open( os.path.join(srcdir, file) ).read()
-      mycfg = open( file + '.new').read()
-      if mycfg == syscfg:
-        print "removing ", file, " which is identical to the system global version"
-        removeFiles( [file + '.new'] )
-      else:
-        os.rename( file + '.new', file )
-    except:  # use local version if anthing goes wrong.
-      os.rename( file + '.new', file )
-      pass
-  # Final clean-up
-  if not lyx_keep_temps:
-    removeFiles(['chkconfig.sed', 'chkconfig.vars',  \
-      'wrap_chkconfig.ltx', 'wrap_chkconfig.log', \
-      'chklayouts.tex', 'missfont.log'])
-
-
 if __name__ == '__main__':
   lyx_check_config = True
   outfile = 'lyxrc.defaults'
@@ -705,4 +680,3 @@ Options:
   # --without-latex-config can disable lyx_check_config
   checkLatexConfig( lyx_check_config and LATEX != '', bool_docbook, bool_linuxdoc)
   createLaTeXConfig()
-  removeExtraFiles()

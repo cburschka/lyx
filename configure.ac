@@ -450,8 +450,6 @@ AC_CONFIG_FILES([Makefile  m4/Makefile \
        src/frontends/qt2/ui/Makefile \
        src/frontends/qt2/ui/moc/Makefile \
 ])
-echo "Running $LYX_ABS_TOP_SRCDIR/lib/configure.py --with-version-suffix=\"$version_suffix\""
-(test -d lib || mkdir lib; cd lib && python $LYX_ABS_TOP_SRCDIR/lib/configure.py --with-version-suffix="$version_suffix")
 
 AC_OUTPUT
 # show version information

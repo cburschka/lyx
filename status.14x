@@ -85,6 +85,9 @@ What's new
 - Fix lib/configure.py to find tex2lyx when compiling with
   --with-version-suffix (bug 2285)
 
+- It is not needed anymore to run lib/configure.py in the main LyX
+  support directory.
+
 - Fix lib/configure.py to find tex2lyx if the path to it contains spaces.
 
 - Fix the code to find interface localization under Windows and Mac OS X.

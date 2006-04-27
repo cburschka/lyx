@@ -1,5 +1,8 @@
 2006-04-27  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	* package.C.in (get_build_dirs): Look at Makefile instead of
+	  lyxrc.defaults. Simplify the check for chkconfig.ltx.
+
 	* package.C.in (relative_locale_dir): fix for Windows and OSX.
 
 2006-04-25  Georg Baum  <Georg.Baum@post.rwth-aachen.de>

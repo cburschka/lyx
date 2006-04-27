@@ -1,3 +1,9 @@
+2006-04-27  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* configure.py (removeExtraFiles): remove.
+
+	* Makefile.am: no files are generated in there.
+
 2006-04-25  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* configure.m4: Remove

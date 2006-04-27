@@ -35,8 +35,10 @@ src/frontends/controllers/character.C
 src/frontends/controllers/frnt_lang.C
 src/frontends/controllers/helper_funcs.C
 src/frontends/gtk/Dialogs.C
+src/frontends/gtk/GAboutlyx.C
 src/frontends/gtk/GBC.h
 src/frontends/gtk/GBibItem.C
+src/frontends/gtk/GBibtex.C
 src/frontends/gtk/GBox.C
 src/frontends/gtk/GBranch.C
 src/frontends/gtk/GChanges.C
@@ -54,6 +56,7 @@ src/frontends/gtk/GMathPanel.C
 src/frontends/gtk/GMathsMatrix.C
 src/frontends/gtk/GNote.C
 src/frontends/gtk/GParagraph.C
+src/frontends/gtk/GPreferences.C
 src/frontends/gtk/GRef.C
 src/frontends/gtk/GSearch.C
 src/frontends/gtk/GSendto.C
