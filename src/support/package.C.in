@@ -250,10 +250,10 @@ get_build_dirs(string const & abs_binary,
 {
 	string const check_text = "Checking whether LyX is run in place...";
 
-	// We're looking for "lyxrc.defaults" in a directory
+	// We're looking for "Makefile" in a directory
 	//   binary_dir/../lib
 	// We're also looking for "chkconfig.ltx" in a directory
-	//   binary_dir/top_srcdir()/lib
+	//   top_srcdir()/lib
 	// If both are found, then we're running LyX in-place.
 
 	// Note that the name of the lyx binary may be a symbolic link.
@@ -265,11 +265,10 @@ get_build_dirs(string const & abs_binary,
 		string const build_support_dir =
 			get_build_support_dir(binary_dir, top_build_dir_location);
 
-		if (!FileSearch(build_support_dir, "lyxrc.defaults").empty()) {
+		if (!FileSearch(build_support_dir, "Makefile").empty()) {
 			// Try and find "chkconfig.ltx".
 			string const system_support_dir =
-				MakeAbsPath(AddPath(top_srcdir(), "lib"),
-					    AddPath(binary_dir, "support"));
+ 				AddPath(top_srcdir(), "lib");
 
 			if (!FileSearch(system_support_dir, "chkconfig.ltx").empty()) {
 				lyxerr[Debug::INIT] << check_text << " yes"
@@ -705,7 +704,11 @@ bool check_env_var_dir(string const & dir,
 // The locale directory relative to the LyX system directory.
 string const relative_locale_dir()
 {
+#if defined (USE_WINDOWS_PACKAGING) || defined (USE_MACOSX_PACKAGING)
+	return "locale/";
+#else
 	return "../locale/";
+#endif
 }
 
 
