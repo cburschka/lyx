@@ -418,6 +418,17 @@ Style Biography
 End
 
 
+Style BiographyNoPhoto
+	LaTeXType             Environment
+	LaTeXName             biographynophoto
+	Align                 Block
+	AlignPossible         Block
+	TextFont
+	  Size                Small
+	EndFont
+End
+
+
 ##
 ##  stdlayouts
 ##
