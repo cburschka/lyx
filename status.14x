@@ -79,14 +79,21 @@ What's new
 
 * Configuration/Installation:
 
+- Replace the old sh version of lib/configure with the new python version
+  lib/configure.py
+
+- Fix lib/configure.py to find tex2lyx when compiling with
+  --with-version-suffix (bug 2285)
+
+- Fix lib/configure.py to find tex2lyx if the path to it contains spaces.
+
+- Fix the code to find interface localization under Windows and Mac OS X.
+
+- When compiling with --with-version-suffix under windows, do not
+  rename the executable files.
+
 - Make LyX/Win work under windows 98.
 
 - Fix compilation on DragonFly BSD.
 
-- Fix lib/configure to find tex2lyx when compiling with --with-version-suffix
-  (bug 2285)
 
-- Replace the old sh version of lib/configure with the new python version
-  lib/configure.py
-
-- Enable lib/configure.py to find tex2lyx if the path to it contains spaces.
