@@ -705,7 +705,11 @@ bool check_env_var_dir(string const & dir,
 // The locale directory relative to the LyX system directory.
 string const relative_locale_dir()
 {
+#if defined (USE_WINDOWS_PACKAGING) || defined (USE_MACOSX_PACKAGING)
+	return "locale/";
+#else
 	return "../locale/";
+#endif
 }
 
 
