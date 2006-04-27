@@ -98,6 +98,12 @@ void MathBigInset::normalize(NormalStream & os) const
 }
 
 
+void MathBigInset::infoize2(std::ostream & os) const
+{
+	os << name_;
+}
+
+
 bool MathBigInset::isBigInsetDelim(string const & delim)
 {
 	// mathed_draw_deco must handle these

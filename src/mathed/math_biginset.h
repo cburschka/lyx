@@ -32,6 +32,8 @@ public:
 	///
 	void normalize(NormalStream & os) const;
 	///
+	void infoize2(std::ostream & os) const;
+	///
 	static bool isBigInsetDelim(std::string const &);
 
 private:
