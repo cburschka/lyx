@@ -50,6 +50,8 @@ What's new
 
 - Always honor the "Requirement" tag in External Template Definitions
 
+- Fix tex2lyx to handle whitespace in front of required arguments (bug 2546)
+
 * Math editor:
 
 - Fix metrics of AMS array environments like bmatrix, vmatrix etc. (bug 2036)

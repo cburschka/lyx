@@ -536,6 +536,7 @@ void parse_arguments(string const & command,
 		case required:
 			// This argument contains regular LaTeX
 			handle_ert(os, ert + '{', context);
+			eat_whitespace(p, os, context, false);
 			parse_text(p, os, FLAG_ITEM, outer, context);
 			ert = "}";
 			break;
