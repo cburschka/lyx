@@ -595,7 +595,6 @@ case $lyx_use_packaging in
 	   mandir='${datadir}/man' ;;
   windows) AC_DEFINE(USE_WINDOWS_PACKAGING, 1, [Define to 1 if LyX should use a Windows-style file layout])
 	   PACKAGE=LyX${version_suffix}
-	   program_suffix=$version_suffix
 	   default_prefix="C:/Program Files/${PACKAGE}"
 	   bindir='${prefix}/bin'
 	   libdir='${prefix}/Resources'

@@ -1,3 +1,8 @@
+2006-04-27  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyxinclude.m4 (LYX_USE_PACKAGING): do not set program_suffix for
+	windows packaging.
+
 2006-02-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyxinclude.m4 (LYX_USE_PACKAGING): do not set program_suffix for
