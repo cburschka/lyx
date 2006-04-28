@@ -95,6 +95,9 @@ What's new
 
 - Fix the code to find interface localization under Windows and Mac OS X.
 
+- remove --enable-compression-support option of configure. Compression
+  support via zlib is now a requirement.
+
 - When compiling with --with-version-suffix under windows, do not
   rename the executable files.
 

@@ -67,9 +67,7 @@
 #include "support/lyxalgo.h"
 #include "support/filetools.h"
 #include "support/fs_extras.h"
-#ifdef USE_COMPRESSION
 # include "support/gzstream.h"
-#endif
 #include "support/lyxlib.h"
 #include "support/os.h"
 #include "support/path.h"
@@ -734,15 +732,11 @@ bool Buffer::writeFile(string const & fname) const
 	bool retval = false;
 
 	if (params().compressed) {
-#ifdef USE_COMPRESSION
 		gz::ogzstream ofs(fname.c_str(), ios::out|ios::trunc);
 		if (!ofs)
 			return false;
 
 		retval = do_writeFile(ofs);
-#else
-		return false;
-#endif
 	} else {
 		ofstream ofs(fname.c_str(), ios::out|ios::trunc);
 		if (!ofs)

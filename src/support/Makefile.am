@@ -9,10 +9,6 @@ EXTRA_DIST = package.C.in pch.h \
 
 noinst_LTLIBRARIES = libsupport.la
 
-if USE_COMPRESSION
-COMPRESSION = gzstream.C gzstream.h
-endif
-
 BUILT_SOURCES = $(PCH_FILE) package.C
 
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
@@ -46,7 +42,9 @@ libsupport_la_SOURCES = \
 	fs_extras.C \
 	fs_extras.h \
 	getcwd.C \
-	$(COMPRESSION) kill.C \
+	gzstream.C \
+	gzstream.h \
+	kill.C \
 	limited_stack.h \
 	lstrings.C \
 	lstrings.h \
