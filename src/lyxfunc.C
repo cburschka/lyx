@@ -1011,8 +1011,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				// save cursor Position for opened files to .lyx/session
 				LyX::ref().session().saveFilePosition(owner->buffer()->fileName(),
 					boost::tie(view()->cursor().pit(), view()->cursor().pos()) );
-				// save opened file name to .lyx/session
-				LyX::ref().session().setLastOpenedFiles( bufferlist.getFileNames());
 				// save bookmarks to .lyx/session
 				view()->saveSavedPositions();
 			}

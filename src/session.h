@@ -82,10 +82,10 @@ public:
 	 */
 	void clearLastOpenedFiles();
 
-	/** set lastopened file list
-	    @param files filenames of a list of opened files
+	/** add file to lastopened file list
+	    @param file filename to add
 	*/
-	void setLastOpenedFiles(std::vector<std::string> const & files);
+	void addLastOpenedFile(std::string const & file);
 
 	/** load saved cursor position from the fname entry in the filepos map
 	    @param fname file entry for which to load position information

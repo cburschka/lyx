@@ -238,9 +238,9 @@ void LyX::priv_exec(int & argc, char * argv[])
 	if (files.empty() && lyxrc.load_session) {
 		vector<string> const & lastopened = session_->lastOpenedFiles();
 		files.insert(files.end(), lastopened.begin(), lastopened.end()  );
-		// clear this list to save a few bytes of RAM
-		session_->clearLastOpenedFiles();
 	}
+	// clear this list to save a few bytes of RAM
+	session_->clearLastOpenedFiles();
 
 	// Execute batch commands if available
 	if (!batch_command.empty()) {

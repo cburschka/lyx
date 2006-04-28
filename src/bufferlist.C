@@ -122,6 +122,15 @@ bool BufferList::quitWriteAll()
 		if (!quitWriteBuffer(*it))
 			return false;
 	}
+	// now, all buffers have been written sucessfully
+	// save file names to .lyx/session
+	it = bstore.begin();
+	for (; it != end; ++it) {
+		// if master/slave are both open, do not save slave since it 
+		// will be automatically loaded when the master is loaded
+		if ((*it)->getMasterBuffer() == (*it))
+			LyX::ref().session().addLastOpenedFile((*it)->fileName());
+	}
 
 	return true;
 }

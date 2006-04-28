@@ -247,9 +247,9 @@ void Session::clearLastOpenedFiles()
 }
 
 
-void Session::setLastOpenedFiles(vector<string> const & files)
+void Session::addLastOpenedFile(string const & file)
 {
-	lastopened = files;
+	lastopened.push_back(file);
 }
 
 
