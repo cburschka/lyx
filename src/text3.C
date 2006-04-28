@@ -327,10 +327,11 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		recUndo(pit, pit + 1);
 		finishUndo();
 		std::swap(pars_[pit], pars_[pit + 1]);
-		++cur.pit();
 
-		ParIterator parit(cur);
-		updateLabels(cur.buffer(), parit);
+		ParIterator begin(cur);
+		++cur.pit();
+		ParIterator end = boost::next(cur);
+		updateLabels(cur.buffer(), begin, end);
 
 		needsUpdate = true;
 		break;
@@ -341,10 +342,11 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		recUndo(pit - 1, pit);
 		finishUndo();
 		std::swap(pars_[pit], pars_[pit - 1]);
-		--cur.pit();
 
-		ParIterator parit(cur);
-		updateLabels(cur.buffer(), parit);
+		ParIterator end = boost::next(cur);
+		--cur.pit();
+		ParIterator begin(cur);
+		updateLabels(cur.buffer(), begin, end);
 
 		needsUpdate = true;
 		break;
