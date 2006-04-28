@@ -357,6 +357,7 @@ enum kb_action {
 	LFUN_BIBDB_ADD,
 	LFUN_BIBDB_DEL,
 	LFUN_INSERT_CITATION,
+	LFUN_TOGGLE_COMPRESSION,         // bpeng 20060427
 
 	LFUN_LASTACTION                  // end of the table
 };

@@ -24,13 +24,16 @@ What's new
 - Update translations for German (User Guide, Extended Features) and
   Hungarian (Introduction, splash document, new tutorial examples).
 
-- add support for Austrian (new spelling) as document language.
+- Add support for Austrian (new spelling) as document language.
 
-- add "LaTeX (pdflatex)" output format. This new output format produces
+- Add "LaTeX (pdflatex)" output format. This new output format produces
   .tex files that are suitable for pdflatex, including figure conversion
   to png, pdf or jpeg instead of eps.
 
-- add biographynophoto style to IEEEtran.layout
+- Add biographynophoto style to IEEEtran.layout.
+
+- Add new function buffer-toggle-compression (and entry in Document
+  menu) to change whether the file will be compressed on disk or not.
 
 ** Bug fixes
 

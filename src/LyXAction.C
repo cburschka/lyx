@@ -110,6 +110,7 @@ void LyXAction::init()
 		{ LFUN_BEGINNINGBUFSEL, "buffer-begin-select", ReadOnly },
 		{ LFUN_CHILDOPEN, "buffer-child-open", ReadOnly },
 		{ LFUN_RUNCHKTEX, "buffer-chktex", ReadOnly },
+		{ LFUN_TOGGLE_COMPRESSION, "buffer-toggle-compression", Noop},
 		{ LFUN_CLOSEBUFFER, "buffer-close", ReadOnly },
 		{ LFUN_ENDBUF, "buffer-end", ReadOnly },
 		{ LFUN_ENDBUFSEL, "buffer-end-select", ReadOnly },
