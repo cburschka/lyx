@@ -330,7 +330,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 		ParIterator begin(cur);
 		++cur.pit();
-		ParIterator end = boost::next(cur);
+		ParIterator end = boost::next(ParIterator(cur));
 		updateLabels(cur.buffer(), begin, end);
 
 		needsUpdate = true;
@@ -343,7 +343,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		finishUndo();
 		std::swap(pars_[pit], pars_[pit - 1]);
 
-		ParIterator end = boost::next(cur);
+		ParIterator end = boost::next(ParIterator(cur));
 		--cur.pit();
 		ParIterator begin(cur);
 		updateLabels(cur.buffer(), begin, end);
