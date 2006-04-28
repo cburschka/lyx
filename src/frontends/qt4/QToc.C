@@ -142,12 +142,5 @@ void QToc::updateToc(int type)
 }
 
 
-void QToc::move(toc::OutlineOp const operation)
-{
-	outline(operation);
-//	updateToc(type_);
-	update();
-}
-
 } // namespace frontend
 } // namespace lyx

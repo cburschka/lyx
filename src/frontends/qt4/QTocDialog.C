@@ -70,16 +70,6 @@ void QTocDialog::selectionChanged(const QModelIndex & current,
 }
 
 
-void QTocDialog::on_tocTV_clicked(const QModelIndex & index )
-{
-	lyxerr[Debug::GUI]
-		<< "on_tocTV_clicked index " << index.row() << ", " << index.column()
-		<< endl;
-
-	form_->goTo(index);
-}
-
-
 void QTocDialog::on_closePB_clicked()
 {
 	accept();
@@ -119,37 +109,41 @@ void QTocDialog::on_typeCO_activated(int value)
 
 void QTocDialog::on_moveUpPB_clicked()
 {
-	move(toc::UP);
+	enableButtons(false);
+	QModelIndex index = tocTV->selectionModel()->selectedIndexes()[0];
+	form_->goTo(index);
+	form_->outlineUp();
+	update();
 }
 
 
 void QTocDialog::on_moveDownPB_clicked()
 {
-	move(toc::DOWN);
+	enableButtons(false);
+	QModelIndex index = tocTV->selectionModel()->selectedIndexes()[0];
+	form_->goTo(index);
+	form_->outlineDown();
+	update();
 }
 
 
 void QTocDialog::on_moveInPB_clicked()
 {
-	move(toc::IN);
+	enableButtons(false);
+	QModelIndex index = tocTV->selectionModel()->selectedIndexes()[0];
+	form_->goTo(index);
+	form_->outlineIn();
+	update();
 }
 
 
 void QTocDialog::on_moveOutPB_clicked()
 {
-	move(toc::OUT);
-}
-
-
-void QTocDialog::move(toc::OutlineOp const operation)
-{
 	enableButtons(false);
 	QModelIndex index = tocTV->selectionModel()->selectedIndexes()[0];
 	form_->goTo(index);
-	form_->move(operation);
-	updateGui();
-//	select(index);
-//	enableButtons();
+	form_->outlineOut();
+	update();
 }
 
 

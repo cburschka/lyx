@@ -48,8 +48,6 @@ public:
 	///
 	void goTo(QModelIndex const & index);
 
-	void move(toc::OutlineOp const operation);
-
 private:
 
 	std::vector<TocModel *> toc_models_;

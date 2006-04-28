@@ -59,9 +59,6 @@ protected slots:
 	void selectionChanged(const QModelIndex & current,
 		const QModelIndex & previous);
 
-	/// Temporary until the slot above work.
-	void on_tocTV_clicked(const QModelIndex & index );
-
 	void on_closePB_clicked();
 	void on_updatePB_clicked();
 	void on_depthSL_valueChanged(int depth);
@@ -74,9 +71,6 @@ protected slots:
 protected:
 	///
 	void enableButtons(bool enable = true);
-	///
-	void move(toc::OutlineOp const operation);
-	///
 
 private:
 

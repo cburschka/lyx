@@ -83,19 +83,19 @@ void TocModel::populate(TocBackend::Toc const & toc)
 	TocIterator iter = toc.begin();
 	TocIterator end = toc.end();
 
-    insertColumns(0, 1);
+	insertColumns(0, 1);
 
 	while (iter != end) {
 
-		if (iter->depth() >= 0) {
+		if (iter->isValid()) {
 
 			current_row = rowCount();
 			insertRows(current_row, 1);
 			top_level_item = QStandardItemModel::index(current_row, 0);
 			//setData(top_level_item, toqstr(iter->str()));
 			setData(top_level_item, toqstr(iter->str()), Qt::DisplayRole);
-			toc_map_.insert(make_pair(top_level_item, iter));
-			model_map_.insert(make_pair(iter, top_level_item));
+			toc_map_[top_level_item] = iter;
+			model_map_[iter] = top_level_item;
 
 			lyxerr[Debug::GUI]
 				<< "Toc: at depth " << iter->depth()
@@ -124,7 +124,7 @@ void TocModel::populate(TocIterator & iter,
 	int current_row;
 	QModelIndex child_item;
 
-    insertColumns(0, 1, parent);
+	insertColumns(0, 1, parent);
 	while (iter != end) {
 
 		++iter;
@@ -136,23 +136,14 @@ void TocModel::populate(TocIterator & iter,
 			--iter;
 			return;
 		}
-//		if (iter->depth() > curdepth) {
-//			return;
-//		}
 		
 		current_row = rowCount(parent);
 		insertRows(current_row, 1, parent);
 		child_item = QStandardItemModel::index(current_row, 0, parent);
 		//setData(child_item, toqstr(iter->str()));
 		setData(child_item, toqstr(iter->str()), Qt::DisplayRole);
-		toc_map_.insert(make_pair(child_item, iter));
-		model_map_.insert(make_pair(iter, child_item));
-
-//		lyxerr[Debug::GUI]
-//			<< "Toc: at depth " << iter->depth()
-//			<< ", added item " << iter->str()
-//			<< endl;
-
+		toc_map_[child_item] = iter;
+		model_map_[iter] = child_item;
 		populate(iter, end, child_item);
 	}
 }
