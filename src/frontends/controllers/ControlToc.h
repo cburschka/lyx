@@ -44,7 +44,13 @@ public:
 	toc::Toc const & getContents(std::string const & type) const;
 
 	/// Apply the selected outlining operation
-	void outline(toc::OutlineOp op);
+	void outlineUp();
+	///
+	void outlineDown();
+	///
+	void outlineIn();
+	///
+	void outlineOut();
 	
 	/// Test if outlining operation is possible
 	bool canOutline(std::string const & type);
