@@ -1124,6 +1124,12 @@ FuncStatus BufferView::Pimpl::getStatus(FuncRequest const & cmd)
 	case LFUN_REJECT_ALL_CHANGES:
 		flag.enabled(buffer_ && buffer_->params().tracking_changes);
 		break;
+
+	case LFUN_TOGGLE_COMPRESSION: {
+		flag.setOnOff(buffer_->params().compressed);
+		break;
+	}
+
 	default:
 		flag.enabled(false);
 	}
@@ -1395,6 +1401,12 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		Alert::information(_("Count words"), message);
 	}
 		break;
+
+	case LFUN_TOGGLE_COMPRESSION:
+		// turn compression on/off
+		buffer_->params().compressed = !buffer_->params().compressed;
+		break;
+
 	default:
 		return false;
 	}
