@@ -1,3 +1,17 @@
+2006-04-28  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* BufferView_pimpl.C (dispatch): update bibfiles cache after adding 
+	or deleting a bib database
+
+	* buffer.C (readDocument): update bibfiles cache after the document 
+	was read
+	
+	* buffer.[Ch] (updateBibfilesCache): new method to build or update a 
+	cached vector with all used bibtex databases.
+	* buffer.[Ch] (getBibfilesCache): new method that returns the cache.
+	* buffer.[Ch] (getMasterBuffer): new (non-const) method to get the 
+	buffer of the master document (bug 2460).
+
 2006-04-24  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* text.C (numberOfHfills): do not forget to count the last hfill

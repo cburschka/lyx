@@ -128,9 +128,10 @@ void InsetInclude::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p;
 		InsetIncludeMailer::string2params(cmd.argument, p);
-		if (!p.getCmdName().empty())
+		if (!p.getCmdName().empty()) {
 			set(p, cur.buffer());
-		else
+			cur.buffer().updateBibfilesCache();
+		} else
 			cur.noUpdate();
 		break;
 	}
@@ -610,6 +611,34 @@ void InsetInclude::fillWithBibKeys(Buffer const & buffer,
 		tmp->fillWithBibKeys(keys);
 		tmp->setParentName(parentFilename(buffer));
 	}
+}
+
+
+void InsetInclude::updateBibfilesCache(Buffer const & buffer)
+{
+	if (loadIfNeeded(buffer, params_)) {
+		string const included_file = includedFilename(buffer, params_);
+		Buffer * tmp = bufferlist.getBuffer(included_file);
+		tmp->setParentName("");
+		tmp->updateBibfilesCache();
+		tmp->setParentName(parentFilename(buffer));
+	}
+}
+
+
+std::vector<string> const &
+InsetInclude::getBibfilesCache(Buffer const & buffer) const
+{
+	if (loadIfNeeded(buffer, params_)) {
+		string const included_file = includedFilename(buffer, params_);
+		Buffer * tmp = bufferlist.getBuffer(included_file);
+		tmp->setParentName("");
+		std::vector<string> const & cache = tmp->getBibfilesCache();
+		tmp->setParentName(parentFilename(buffer));
+		return cache;
+	}
+	static std::vector<string> const empty;
+	return empty;
 }
 
 

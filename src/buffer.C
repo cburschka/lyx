@@ -485,6 +485,7 @@ bool Buffer::readDocument(LyXLex & lex)
 	for_each(text().paragraphs().begin(),
 		 text().paragraphs().end(),
 		 bind(&Paragraph::setInsetOwner, _1, &inset()));
+	updateBibfilesCache();
 	return res;
 }
 
@@ -1247,6 +1248,53 @@ void Buffer::fillWithBibKeys(vector<pair<string, string> > & keys)
 }
 
 
+void Buffer::updateBibfilesCache()
+{
+	// if this is a child document and the parent is already loaded
+	// update the parent's cache instead
+	Buffer * tmp = getMasterBuffer();
+	BOOST_ASSERT(tmp);
+	if (tmp != this) {
+		tmp->updateBibfilesCache();
+		return;
+	}
+
+	bibfilesCache_.clear();
+	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {
+		if (it->lyxCode() == InsetBase::BIBTEX_CODE) {
+			InsetBibtex const & inset =
+				dynamic_cast<InsetBibtex const &>(*it);
+			vector<string> const bibfiles = inset.getFiles(*this);
+			bibfilesCache_.insert(bibfilesCache_.end(),
+				bibfiles.begin(),
+				bibfiles.end());
+		} else if (it->lyxCode() == InsetBase::INCLUDE_CODE) {
+			InsetInclude & inset =
+				dynamic_cast<InsetInclude &>(*it);
+			inset.updateBibfilesCache(*this);
+			vector<string> const & bibfiles =
+					inset.getBibfilesCache(*this);
+			bibfilesCache_.insert(bibfilesCache_.end(),
+				bibfiles.begin(),
+				bibfiles.end());
+		}
+	}
+}
+
+
+vector<string> const & Buffer::getBibfilesCache() const
+{
+	// if this is a child document and the parent is already loaded
+	// use the parent's cache instead
+	Buffer const * tmp = getMasterBuffer();
+	BOOST_ASSERT(tmp);
+	if (tmp != this)
+		return tmp->getBibfilesCache();
+
+	return bibfilesCache_;
+}
+
+
 bool Buffer::isDepClean(string const & name) const
 {
 	DepClean::const_iterator const it = pimpl_->dep_clean.find(name);
@@ -1482,6 +1530,19 @@ Buffer const * Buffer::getMasterBuffer() const
 	if (!params().parentname.empty()
 	    && bufferlist.exists(params().parentname)) {
 		Buffer const * buf = bufferlist.getBuffer(params().parentname);
+		if (buf)
+			return buf->getMasterBuffer();
+	}
+
+	return this;
+}
+
+
+Buffer * Buffer::getMasterBuffer()
+{
+	if (!params().parentname.empty()
+	    && bufferlist.exists(params().parentname)) {
+		Buffer * buf = bufferlist.getBuffer(params().parentname);
 		if (buf)
 			return buf->getMasterBuffer();
 	}

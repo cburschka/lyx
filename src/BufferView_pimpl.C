@@ -1297,8 +1297,10 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		bv_funcs::findInset(tmpcur, InsetBase::BIBTEX_CODE, false);
 		InsetBibtex * inset = getInsetByCode<InsetBibtex>(tmpcur,
 						InsetBase::BIBTEX_CODE);
-		if (inset)
-			inset->addDatabase(cmd.argument);
+		if (inset) {
+			if (inset->addDatabase(cmd.argument))
+				buffer_->updateBibfilesCache();
+		}
 		break;
 	}
 
@@ -1307,8 +1309,10 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		bv_funcs::findInset(tmpcur, InsetBase::BIBTEX_CODE, false);
 		InsetBibtex * inset = getInsetByCode<InsetBibtex>(tmpcur,
 						InsetBase::BIBTEX_CODE);
-		if (inset)
-			inset->delDatabase(cmd.argument);
+		if (inset) {
+			if (inset->delDatabase(cmd.argument))
+				buffer_->updateBibfilesCache();
+		}
 		break;
 	}
 

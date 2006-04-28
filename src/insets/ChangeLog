@@ -1,3 +1,19 @@
+2006-04-28  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* insetbibtex.C (doDispatch):
+	* insetinclude.C (doDispatch): 
+	update the bibfiles cache after the inset has been modified.
+
+	* insetinclude.[Ch] (updateBibfilesCache): new method to build or 
+	update a cached vector with all used bibtex databases.
+	* insetinclude.[Ch] (getBibfilesCache): new method that returns 
+	the actual cache.
+
+	* insetcite.C (getNatbibLabel): store a map of timestamps for all 
+	used bibtex files (buffer's bibfiles cache) and rebuild the list 
+	of keys only if the timestamps or the list of files have changed. 
+	This is the actual performance boost. (bug 2460)
+
 2006-04-24  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* insetcollapsable.C (doDispatch): undispatch cursor after lmb click.
