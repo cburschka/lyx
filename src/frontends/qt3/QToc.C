@@ -223,28 +223,28 @@ void QToc::set_depth(int depth)
 
 void QToc::moveup()
 {
-	controller().outline(toc::UP);
+	controller().outlineUp();
 	updateToc(depth_);
 }
 
 
 void QToc::movedn()
 {
-	controller().outline(toc::DOWN);
+	controller().outlineDown();
 	updateToc(depth_);
 }
 
 
 void QToc::movein()
 {
-	controller().outline(toc::IN);
+	controller().outlineIn();
 	updateToc(depth_);
 }
 
 
 void QToc::moveout()
 {
-	controller().outline(toc::OUT);
+	controller().outlineOut();
 	updateToc(depth_);
 }
 

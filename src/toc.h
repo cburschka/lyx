@@ -56,10 +56,10 @@ std::string const getGuiName(std::string const & type, Buffer const &);
 
 /// the type of outline operation
 enum OutlineOp {
-	UP, // Move this header with text down
-	DOWN,   // Move this header with text up
-	IN, // Make this header deeper
-	OUT // Make this header shallower
+	Up, // Move this header with text down
+	Down,   // Move this header with text up
+	In, // Make this header deeper
+	Out // Make this header shallower
 };
 
 

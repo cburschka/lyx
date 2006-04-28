@@ -45,22 +45,27 @@ bool ControlToc::canOutline(string const & type)
 }
 
 
-void ControlToc::outline(toc::OutlineOp op)
+void ControlToc::outlineUp()
 {
-	switch (op) {
-	case toc::UP:
-		kernel().dispatch(FuncRequest(LFUN_OUTLINE_UP));
-		break;
-	case toc::DOWN:
-		kernel().dispatch(FuncRequest(LFUN_OUTLINE_DOWN));
-		break;
-	case toc::IN:
-		kernel().dispatch(FuncRequest(LFUN_OUTLINE_IN));
-		break;
-	case toc::OUT:
-		kernel().dispatch(FuncRequest(LFUN_OUTLINE_OUT));
-		break;
-	}
+	kernel().dispatch(FuncRequest(LFUN_OUTLINE_UP));
+}
+
+
+void ControlToc::outlineDown()
+{
+	kernel().dispatch(FuncRequest(LFUN_OUTLINE_DOWN));
+}
+
+
+void ControlToc::outlineIn()
+{
+	kernel().dispatch(FuncRequest(LFUN_OUTLINE_IN));
+}
+
+
+void ControlToc::outlineOut()
+{
+	kernel().dispatch(FuncRequest(LFUN_OUTLINE_OUT));
 }
 
 

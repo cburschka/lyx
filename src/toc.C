@@ -143,7 +143,7 @@ void outline(OutlineOp mode,  LCursor & cur)
 	int const thistoclevel = s->layout()->toclevel;
 	int toclevel;
 	switch (mode) {
-		case UP: {
+		case Up: {
 			if (p != end)
 				++p;
 			for (; p != end; ++p) {
@@ -175,7 +175,7 @@ void outline(OutlineOp mode,  LCursor & cur)
 			pars.erase(s, t);
 		break;
 		}
-		case DOWN: {
+		case Down: {
 			   if (p != end)
 				++p;
 			for (; p != end; ++p) {
@@ -206,7 +206,7 @@ void outline(OutlineOp mode,  LCursor & cur)
 			pars.erase(s, t);
 		break;
 		}
-		case IN:
+		case In:
 			for (; lit != lend; ++lit) {
 				if ((*lit)->toclevel == thistoclevel + 1 &&
 				    s->layout()->labeltype == (*lit)->labeltype) {
@@ -215,7 +215,7 @@ void outline(OutlineOp mode,  LCursor & cur)
 				}
 			}
 		break;
-		case OUT:
+		case Out:
 			for (; lit != lend; ++lit) {
 				if ((*lit)->toclevel == thistoclevel - 1 &&
 				    s->layout()->labeltype == (*lit)->labeltype) {

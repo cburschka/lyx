@@ -1235,21 +1235,21 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_OUTLINE_UP:
-		lyx::toc::outline(lyx::toc::UP, cursor_);
+		lyx::toc::outline(lyx::toc::Up, cursor_);
 		cursor_.text()->setCursor(cursor_, cursor_.pit(), 0);
 		updateLabels(*buffer_);
 		break;
 	case LFUN_OUTLINE_DOWN:
-		lyx::toc::outline(lyx::toc::DOWN, cursor_);
+		lyx::toc::outline(lyx::toc::Down, cursor_);
 		cursor_.text()->setCursor(cursor_, cursor_.pit(), 0);
 		updateLabels(*buffer_);
 		break;
 	case LFUN_OUTLINE_IN:
-		lyx::toc::outline(lyx::toc::IN, cursor_);
+		lyx::toc::outline(lyx::toc::In, cursor_);
 		updateLabels(*buffer_);
 		break;	
 	case LFUN_OUTLINE_OUT:
-		lyx::toc::outline(lyx::toc::OUT, cursor_);
+		lyx::toc::outline(lyx::toc::Out, cursor_);
 		updateLabels(*buffer_);
 		break;
 
