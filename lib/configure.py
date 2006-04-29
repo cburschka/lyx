@@ -82,7 +82,7 @@ def checkCygwinPath(srcdir):
   ''' Adjust PATH for Win32 (Cygwin) '''
   if sys.platform == 'cygwin':
     from tempfile import mkstemp
-    fd, tmpfname = mkstemp(suffix='.ltx')
+    fd, tmpfname = mkstemp(suffix='.ltx', dir='/tmp')
     os.write(fd, r'''
 \documentstyle{article}
 \begin{document}\end{document}
@@ -90,7 +90,7 @@ def checkCygwinPath(srcdir):
     os.close(fd)
     inpname = cmdOutput('cygpath -m ' + tmpfname)
     # a wrapper file
-    wfd, wtmpfname = mkstemp(suffix='.ltx')
+    wfd, wtmpfname = mkstemp(suffix='.ltx', dir='/tmp')
     wtmpfname = cmdOutput('cygpath -m ' + wtmpfname)
     os.write(wfd, r'\input{' + inpname + '}' )
     os.close(wfd)
