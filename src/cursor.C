@@ -35,7 +35,6 @@
 #include "insets/insettabular.h"
 #include "insets/insettext.h"
 
-#include "mathed/math_biginset.h"
 #include "mathed/math_data.h"
 #include "mathed/math_inset.h"
 #include "mathed/math_scriptinset.h"
@@ -652,22 +651,6 @@ void LCursor::markErase()
 
 void LCursor::plainInsert(MathAtom const & t)
 {
-	// Create a MathBigInset from cell()[pos() - 1] and t if possible
-	if (!empty() && pos() > 0 && cell()[pos() - 1]->asUnknownInset()) {
-		string const name = asString(t);
-		if (MathBigInset::isBigInsetDelim(name)) {
-			string prev = asString(cell()[pos() - 1]);
-			if (prev[0] == '\\') {
-				prev = prev.substr(1);
-				latexkeys const * l = in_word_set(prev);
-				if (l && l->inset == "big") {
-					cell()[pos() - 1] =
-						MathAtom(new MathBigInset(prev, name));
-					return;
-				}
-			}
-		}
-	}
 	cell().insert(pos(), t);
 	++pos();
 }
@@ -877,6 +860,9 @@ bool LCursor::macroModeClose()
 	if (macro && macro->getInsetName() == name)
 		lyxerr << "can't enter recursive macro" << endl;
 
+	MathNestInset * const in = inset().asMathInset()->asNestInset();
+	if (in && in->interpret(*this, s))
+		return true;
 	plainInsert(createMathInset(name));
 	return true;
 }

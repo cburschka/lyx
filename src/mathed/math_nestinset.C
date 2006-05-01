@@ -664,7 +664,8 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_SELFINSERT:
 		if (cmd.argument.size() != 1) {
 			recordUndo(cur);
-			cur.insert(cmd.argument);
+			if (!interpret(cur, cmd.argument))
+				cur.insert(cmd.argument);
 			break;
 		}
 		// Don't record undo steps if we are in macro mode and
@@ -1146,7 +1147,7 @@ bool MathNestInset::interpret(LCursor & cur, char c)
 		}
 
 		// One character big delimiters. The others are handled in
-		// LCursor::plainInsert.
+		// the other interpret() method.
 		latexkeys const * l = in_word_set(name.substr(1));
 		if (name[0] == '\\' && l && l->inset == "big") {
 			string delim;
@@ -1251,8 +1252,8 @@ bool MathNestInset::interpret(LCursor & cur, char c)
 		}
 	}
 
-	if (c == '{' || c == '}' || c == '&' || c == '$' || c == '#' || c == '%'
-      || c == '_' || c == '^') {
+	if (c == '{' || c == '}' || c == '&' || c == '$' || c == '#' ||
+	    c == '%' || c == '_' || c == '^') {
 		cur.niceInsert(createMathInset(string(1, c)));
 		return true;
 	}
@@ -1266,6 +1267,29 @@ bool MathNestInset::interpret(LCursor & cur, char c)
 	cur.insert(c);
 	cur.autocorrect() = true;
 	return true;
+}
+
+
+bool MathNestInset::interpret(LCursor & cur, string const & str)
+{
+	// Create a MathBigInset from cur.cell()[cur.pos() - 1] and t if
+	// possible
+	if (!cur.empty() && cur.pos() > 0 &&
+	    cur.cell()[cur.pos() - 1]->asUnknownInset()) {
+		if (MathBigInset::isBigInsetDelim(str)) {
+			string prev = asString(cur.cell()[cur.pos() - 1]);
+			if (prev[0] == '\\') {
+				prev = prev.substr(1);
+				latexkeys const * l = in_word_set(prev);
+				if (l && l->inset == "big") {
+					cur.cell()[cur.pos() - 1] =
+						MathAtom(new MathBigInset(prev, str));
+					return true;
+				}
+			}
+		}
+	}
+	return false;
 }
 
 
