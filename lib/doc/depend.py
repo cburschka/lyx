@@ -68,7 +68,7 @@ def main(argv):
 
     # The default language is english and doesn't need any prefix
     print 'TOC.lyx: $(srcdir)/' + '.lyx $(srcdir)/'.join(possible_documents) + '.lyx'
-    print '\tpython $(srcdir)/doc_toc.py'
+    print '\tPYTHONPATH=$(top_builddir)/lib/lyx2lyx python $(srcdir)/doc_toc.py'
     print
     tocs = ['TOC.lyx']
 
@@ -82,7 +82,7 @@ def main(argv):
         languages[lang].sort()
 
         print toc_name + ': $(srcdir)/' + ' $(srcdir)/'.join(languages[lang])
-        print '\tpython $(srcdir)/doc_toc.py %s' % lang
+        print '\tPYTHONPATH=$(top_builddir)/lib/lyx2lyx python $(srcdir)/doc_toc.py %s' % lang
         print
 
     # Write meta-rule to call all the other rules

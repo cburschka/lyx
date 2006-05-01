@@ -5,60 +5,60 @@
 # TOCs target, which prints all the TOC files.
 
 TOC.lyx: $(srcdir)/Intro.lyx $(srcdir)/FAQ.lyx $(srcdir)/Tutorial.lyx $(srcdir)/UserGuide.lyx $(srcdir)/Extended.lyx $(srcdir)/Customization.lyx
-	python $(srcdir)/doc_toc.py
+	PYTHONPATH=$(top_builddir)/lib/lyx2lyx python $(srcdir)/doc_toc.py
 
 cs_TOC.lyx: $(srcdir)/cs_Tutorial.lyx
-	python $(srcdir)/doc_toc.py cs
+	PYTHONPATH=$(top_builddir)/lib/lyx2lyx python $(srcdir)/doc_toc.py cs
 
 da_TOC.lyx: $(srcdir)/da_Intro.lyx
-	python $(srcdir)/doc_toc.py da
+	PYTHONPATH=$(top_builddir)/lib/lyx2lyx python $(srcdir)/doc_toc.py da
 
 de_TOC.lyx: $(srcdir)/de_Customization.lyx $(srcdir)/de_Extended.lyx $(srcdir)/de_FAQ.lyx $(srcdir)/de_Intro.lyx $(srcdir)/de_Tutorial.lyx $(srcdir)/de_UserGuide.lyx
-	python $(srcdir)/doc_toc.py de
+	PYTHONPATH=$(top_builddir)/lib/lyx2lyx python $(srcdir)/doc_toc.py de
 
 es_TOC.lyx: $(srcdir)/es_Intro.lyx $(srcdir)/es_Tutorial.lyx
-	python $(srcdir)/doc_toc.py es
+	PYTHONPATH=$(top_builddir)/lib/lyx2lyx python $(srcdir)/doc_toc.py es
 
 eu_TOC.lyx: $(srcdir)/eu_Customization.lyx $(srcdir)/eu_Extended.lyx $(srcdir)/eu_FAQ.lyx $(srcdir)/eu_Intro.lyx $(srcdir)/eu_Tutorial.lyx $(srcdir)/eu_UserGuide.lyx
-	python $(srcdir)/doc_toc.py eu
+	PYTHONPATH=$(top_builddir)/lib/lyx2lyx python $(srcdir)/doc_toc.py eu
 
 fr_TOC.lyx: $(srcdir)/fr_Customization.lyx $(srcdir)/fr_Extended.lyx $(srcdir)/fr_FAQ.lyx $(srcdir)/fr_Intro.lyx $(srcdir)/fr_Tutorial.lyx $(srcdir)/fr_UserGuide.lyx
-	python $(srcdir)/doc_toc.py fr
+	PYTHONPATH=$(top_builddir)/lib/lyx2lyx python $(srcdir)/doc_toc.py fr
 
 he_TOC.lyx: $(srcdir)/he_Intro.lyx $(srcdir)/he_Tutorial.lyx
-	python $(srcdir)/doc_toc.py he
+	PYTHONPATH=$(top_builddir)/lib/lyx2lyx python $(srcdir)/doc_toc.py he
 
 hu_TOC.lyx: $(srcdir)/hu_Intro.lyx
-	python $(srcdir)/doc_toc.py hu
+	PYTHONPATH=$(top_builddir)/lib/lyx2lyx python $(srcdir)/doc_toc.py hu
 
 it_TOC.lyx: $(srcdir)/it_Customization.lyx $(srcdir)/it_Intro.lyx $(srcdir)/it_Tutorial.lyx $(srcdir)/it_UserGuide.lyx
-	python $(srcdir)/doc_toc.py it
+	PYTHONPATH=$(top_builddir)/lib/lyx2lyx python $(srcdir)/doc_toc.py it
 
 nb_TOC.lyx: $(srcdir)/nb_Intro.lyx
-	python $(srcdir)/doc_toc.py nb
+	PYTHONPATH=$(top_builddir)/lib/lyx2lyx python $(srcdir)/doc_toc.py nb
 
 nl_TOC.lyx: $(srcdir)/nl_Intro.lyx $(srcdir)/nl_Tutorial.lyx
-	python $(srcdir)/doc_toc.py nl
+	PYTHONPATH=$(top_builddir)/lib/lyx2lyx python $(srcdir)/doc_toc.py nl
 
 pl_TOC.lyx: $(srcdir)/pl_Extended.lyx $(srcdir)/pl_Intro.lyx $(srcdir)/pl_Tutorial.lyx
-	python $(srcdir)/doc_toc.py pl
+	PYTHONPATH=$(top_builddir)/lib/lyx2lyx python $(srcdir)/doc_toc.py pl
 
 pt_TOC.lyx: $(srcdir)/pt_Intro.lyx $(srcdir)/pt_Tutorial.lyx
-	python $(srcdir)/doc_toc.py pt
+	PYTHONPATH=$(top_builddir)/lib/lyx2lyx python $(srcdir)/doc_toc.py pt
 
 ro_TOC.lyx: $(srcdir)/ro_Intro.lyx
-	python $(srcdir)/doc_toc.py ro
+	PYTHONPATH=$(top_builddir)/lib/lyx2lyx python $(srcdir)/doc_toc.py ro
 
 ru_TOC.lyx: $(srcdir)/ru_FAQ.lyx $(srcdir)/ru_Intro.lyx $(srcdir)/ru_Tutorial.lyx
-	python $(srcdir)/doc_toc.py ru
+	PYTHONPATH=$(top_builddir)/lib/lyx2lyx python $(srcdir)/doc_toc.py ru
 
 sk_TOC.lyx: $(srcdir)/sk_Tutorial.lyx $(srcdir)/sk_UserGuide.lyx
-	python $(srcdir)/doc_toc.py sk
+	PYTHONPATH=$(top_builddir)/lib/lyx2lyx python $(srcdir)/doc_toc.py sk
 
 sl_TOC.lyx: $(srcdir)/sl_Intro.lyx $(srcdir)/sl_Tutorial.lyx
-	python $(srcdir)/doc_toc.py sl
+	PYTHONPATH=$(top_builddir)/lib/lyx2lyx python $(srcdir)/doc_toc.py sl
 
 sv_TOC.lyx: $(srcdir)/sv_Intro.lyx $(srcdir)/sv_Tutorial.lyx
-	python $(srcdir)/doc_toc.py sv
+	PYTHONPATH=$(top_builddir)/lib/lyx2lyx python $(srcdir)/doc_toc.py sv
 
 tocfiles = TOC.lyx cs_TOC.lyx da_TOC.lyx de_TOC.lyx es_TOC.lyx eu_TOC.lyx fr_TOC.lyx he_TOC.lyx hu_TOC.lyx it_TOC.lyx nb_TOC.lyx nl_TOC.lyx pl_TOC.lyx pt_TOC.lyx ro_TOC.lyx ru_TOC.lyx sk_TOC.lyx sl_TOC.lyx sv_TOC.lyx
