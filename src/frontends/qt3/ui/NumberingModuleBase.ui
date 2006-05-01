@@ -1,15 +1,10 @@
-<!DOCTYPE UI><UI>
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>NumberingModuleBase</class>
-<include location="global">config.h</include>
-<include location="local">qt_helpers.h</include>
-<widget>
-    <class>QWidget</class>
-    <property stdset="1">
-        <name>name</name>
+<widget class="QWidget">
+    <property name="name">
         <cstring>NumberingModuleBase</cstring>
     </property>
-    <property stdset="1">
-        <name>geometry</name>
+    <property name="geometry">
         <rect>
             <x>0</x>
             <y>0</y>
@@ -17,186 +12,147 @@
             <height>323</height>
         </rect>
     </property>
-    <property stdset="1">
-        <name>caption</name>
-        <string></string>
+    <property name="caption">
+        <string>NumberingModuleBase</string>
     </property>
     <vbox>
-        <property stdset="1">
-            <name>margin</name>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <property name="margin">
             <number>11</number>
         </property>
-        <property stdset="1">
-            <name>spacing</name>
+        <property name="spacing">
             <number>6</number>
         </property>
-        <widget>
-            <class>QLabel</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QLabel">
+            <property name="name">
                 <cstring>TextLabel1_2</cstring>
             </property>
-            <property stdset="1">
-                <name>text</name>
+            <property name="text">
                 <string>&amp;Numbering</string>
             </property>
-            <property>
-                <name>buddy</name>
+            <property name="buddy" stdset="0">
                 <cstring>depthSL</cstring>
             </property>
         </widget>
-        <widget>
-            <class>QLayoutWidget</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QLayoutWidget">
+            <property name="name">
                 <cstring>Layout5</cstring>
             </property>
             <hbox>
-                <property stdset="1">
-                    <name>margin</name>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
                     <number>0</number>
                 </property>
-                <property stdset="1">
-                    <name>spacing</name>
+                <property name="spacing">
                     <number>6</number>
                 </property>
-                <widget>
-                    <class>QSlider</class>
-                    <property stdset="1">
-                        <name>name</name>
+                <widget class="QSlider">
+                    <property name="name">
                         <cstring>depthSL</cstring>
                     </property>
-                    <property stdset="1">
-                        <name>minValue</name>
+                    <property name="minValue">
                         <number>-2</number>
                     </property>
-                    <property stdset="1">
-                        <name>maxValue</name>
+                    <property name="maxValue">
                         <number>5</number>
                     </property>
-                    <property stdset="1">
-                        <name>value</name>
+                    <property name="value">
                         <number>3</number>
                     </property>
-                    <property stdset="1">
-                        <name>orientation</name>
+                    <property name="orientation">
                         <enum>Horizontal</enum>
                     </property>
                 </widget>
             </hbox>
         </widget>
-        <widget>
-            <class>QLabel</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QLabel">
+            <property name="name">
                 <cstring>TextLabel1</cstring>
             </property>
-            <property stdset="1">
-                <name>text</name>
+            <property name="text">
                 <string>&amp;List in Table of Contents</string>
             </property>
-            <property>
-                <name>buddy</name>
+            <property name="buddy" stdset="0">
                 <cstring>tocSL</cstring>
             </property>
         </widget>
-        <widget>
-            <class>QSlider</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QSlider">
+            <property name="name">
                 <cstring>tocSL</cstring>
             </property>
-            <property stdset="1">
-                <name>minValue</name>
+            <property name="minValue">
                 <number>-1</number>
             </property>
-            <property stdset="1">
-                <name>maxValue</name>
+            <property name="maxValue">
                 <number>5</number>
             </property>
-            <property stdset="1">
-                <name>value</name>
+            <property name="value">
                 <number>3</number>
             </property>
-            <property stdset="1">
-                <name>orientation</name>
+            <property name="orientation">
                 <enum>Horizontal</enum>
             </property>
         </widget>
-        <widget>
-            <class>QListView</class>
+        <widget class="QListView">
             <column>
-                <property>
-                    <name>text</name>
+                <property name="text">
                     <string>Example</string>
                 </property>
-                <property>
-                    <name>clickable</name>
+                <property name="clickable">
                     <bool>true</bool>
                 </property>
-                <property>
-                    <name>resizeable</name>
+                <property name="resizable">
                     <bool>true</bool>
                 </property>
             </column>
             <column>
-                <property>
-                    <name>text</name>
+                <property name="text">
                     <string>Numbered</string>
                 </property>
-                <property>
-                    <name>clickable</name>
+                <property name="clickable">
                     <bool>true</bool>
                 </property>
-                <property>
-                    <name>resizeable</name>
+                <property name="resizable">
                     <bool>true</bool>
                 </property>
             </column>
             <column>
-                <property>
-                    <name>text</name>
+                <property name="text">
                     <string>Appears in TOC</string>
                 </property>
-                <property>
-                    <name>clickable</name>
+                <property name="clickable">
                     <bool>true</bool>
                 </property>
-                <property>
-                    <name>resizeable</name>
+                <property name="resizable">
                     <bool>true</bool>
                 </property>
             </column>
-            <property stdset="1">
-                <name>name</name>
+            <property name="name">
                 <cstring>tocLV</cstring>
             </property>
-            <property stdset="1">
-                <name>enabled</name>
+            <property name="enabled">
                 <bool>true</bool>
             </property>
-            <property stdset="1">
-                <name>focusPolicy</name>
+            <property name="focusPolicy">
                 <enum>NoFocus</enum>
             </property>
-            <property stdset="1">
-                <name>resizePolicy</name>
+            <property name="resizePolicy">
                 <enum>AutoOneFit</enum>
             </property>
-            <property stdset="1">
-                <name>vScrollBarMode</name>
+            <property name="vScrollBarMode">
                 <enum>AlwaysOff</enum>
             </property>
-            <property stdset="1">
-                <name>hScrollBarMode</name>
+            <property name="hScrollBarMode">
                 <enum>AlwaysOff</enum>
             </property>
-            <property stdset="1">
-                <name>rootIsDecorated</name>
+            <property name="rootIsDecorated">
                 <bool>false</bool>
             </property>
-            <property>
-                <name>toolTip</name>
+            <property name="toolTip" stdset="0">
                 <string>Example numbering and table of contents</string>
             </property>
         </widget>
@@ -207,4 +163,9 @@
     <tabstop>depthSL</tabstop>
     <tabstop>tocLV</tabstop>
 </tabstops>
+<includes>
+    <include location="global" impldecl="in declaration">config.h</include>
+    <include location="local" impldecl="in declaration">qt_helpers.h</include>
+</includes>
+<layoutdefaults spacing="6" margin="11"/>
 </UI>

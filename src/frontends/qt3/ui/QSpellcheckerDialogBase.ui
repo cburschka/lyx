@@ -1,15 +1,10 @@
-<!DOCTYPE UI><UI>
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>QSpellcheckerDialogBase</class>
-<include location="global">config.h</include>
-<include location="local">qt_helpers.h</include>
-<widget>
-    <class>QDialog</class>
-    <property stdset="1">
-        <name>name</name>
+<widget class="QDialog">
+    <property name="name">
         <cstring>QSpellcheckerDialogBase</cstring>
     </property>
-    <property stdset="1">
-        <name>geometry</name>
+    <property name="geometry">
         <rect>
             <x>0</x>
             <y>0</y>
@@ -17,249 +12,193 @@
             <height>389</height>
         </rect>
     </property>
-    <property stdset="1">
-        <name>caption</name>
-        <string></string>
+    <property name="caption">
+        <string>QSpellcheckerDialogBase</string>
     </property>
-    <property stdset="1">
-        <name>sizeGripEnabled</name>
+    <property name="sizeGripEnabled">
         <bool>true</bool>
     </property>
     <grid>
-        <property stdset="1">
-            <name>margin</name>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <property name="margin">
             <number>11</number>
         </property>
-        <property stdset="1">
-            <name>spacing</name>
+        <property name="spacing">
             <number>6</number>
         </property>
-        <widget row="4"  column="0"  rowspan="1"  colspan="2" >
-            <class>QLabel</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QLabel" row="4" column="0" rowspan="1" colspan="2">
+            <property name="name">
                 <cstring>TextLabel2</cstring>
             </property>
-            <property stdset="1">
-                <name>text</name>
+            <property name="text">
                 <string>Suggestions:</string>
             </property>
-            <property>
-                <name>buddy</name>
+            <property name="buddy" stdset="0">
                 <cstring>suggestionsLB</cstring>
             </property>
         </widget>
-        <widget row="3"  column="2" >
-            <class>QPushButton</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QPushButton" row="3" column="2">
+            <property name="name">
                 <cstring>replacePB</cstring>
             </property>
-            <property stdset="1">
-                <name>text</name>
+            <property name="text">
                 <string>&amp;Replace</string>
             </property>
-            <property>
-                <name>toolTip</name>
+            <property name="toolTip" stdset="0">
                 <string>Replace word with current choice</string>
             </property>
         </widget>
-        <widget row="7"  column="2" >
-            <class>QPushButton</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QPushButton" row="7" column="2">
+            <property name="name">
                 <cstring>addPB</cstring>
             </property>
-            <property stdset="1">
-                <name>text</name>
+            <property name="text">
                 <string>A&amp;dd</string>
             </property>
-            <property>
-                <name>toolTip</name>
+            <property name="toolTip" stdset="0">
                 <string>Add the word to your personal dictionary</string>
             </property>
         </widget>
-        <widget row="5"  column="2" >
-            <class>QPushButton</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QPushButton" row="5" column="2">
+            <property name="name">
                 <cstring>ignorePB</cstring>
             </property>
-            <property stdset="1">
-                <name>text</name>
+            <property name="text">
                 <string>&amp;Ignore</string>
             </property>
-            <property>
-                <name>toolTip</name>
+            <property name="toolTip" stdset="0">
                 <string>Ignore this word</string>
             </property>
         </widget>
-        <widget row="6"  column="2" >
-            <class>QPushButton</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QPushButton" row="6" column="2">
+            <property name="name">
                 <cstring>replacePB_3</cstring>
             </property>
-            <property stdset="1">
-                <name>text</name>
+            <property name="text">
                 <string>I&amp;gnore All</string>
             </property>
-            <property>
-                <name>toolTip</name>
+            <property name="toolTip" stdset="0">
                 <string>Ignore this word throughout this session</string>
             </property>
         </widget>
-        <spacer row="10"  column="1" >
-            <property>
-                <name>name</name>
+        <spacer row="10" column="1">
+            <property name="name">
                 <cstring>Spacer6</cstring>
             </property>
-            <property stdset="1">
-                <name>orientation</name>
+            <property name="orientation">
                 <enum>Horizontal</enum>
             </property>
-            <property stdset="1">
-                <name>sizeType</name>
+            <property name="sizeType">
                 <enum>Expanding</enum>
             </property>
-            <property>
-                <name>sizeHint</name>
+            <property name="sizeHint">
                 <size>
                     <width>20</width>
                     <height>20</height>
                 </size>
             </property>
         </spacer>
-        <widget row="10"  column="2" >
-            <class>QPushButton</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QPushButton" row="10" column="2">
+            <property name="name">
                 <cstring>closePB</cstring>
             </property>
-            <property stdset="1">
-                <name>text</name>
+            <property name="text">
                 <string>&amp;Close</string>
             </property>
         </widget>
-        <widget row="9"  column="0"  rowspan="1"  colspan="2" >
-            <class>QProgressBar</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QProgressBar" row="9" column="0" rowspan="1" colspan="2">
+            <property name="name">
                 <cstring>spellcheckPR</cstring>
             </property>
-            <property>
-                <name>toolTip</name>
+            <property name="toolTip" stdset="0">
                 <string>Proportion of document checked</string>
             </property>
         </widget>
-        <widget row="5"  column="0"  rowspan="4"  colspan="2" >
-            <class>QListBox</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QListBox" row="5" column="0" rowspan="4" colspan="2">
+            <property name="name">
                 <cstring>suggestionsLB</cstring>
             </property>
-            <property>
-                <name>toolTip</name>
+            <property name="toolTip" stdset="0">
                 <string>Suggestions</string>
             </property>
         </widget>
-        <spacer row="8"  column="2" >
-            <property>
-                <name>name</name>
+        <spacer row="8" column="2">
+            <property name="name">
                 <cstring>Spacer10</cstring>
             </property>
-            <property stdset="1">
-                <name>orientation</name>
+            <property name="orientation">
                 <enum>Vertical</enum>
             </property>
-            <property stdset="1">
-                <name>sizeType</name>
+            <property name="sizeType">
                 <enum>Expanding</enum>
             </property>
-            <property>
-                <name>sizeHint</name>
+            <property name="sizeHint">
                 <size>
                     <width>20</width>
                     <height>20</height>
                 </size>
             </property>
         </spacer>
-        <widget row="2"  column="0"  rowspan="1"  colspan="2" >
-            <class>QLabel</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QLabel" row="2" column="0" rowspan="1" colspan="2">
+            <property name="name">
                 <cstring>TextLabel1</cstring>
             </property>
-            <property stdset="1">
-                <name>text</name>
+            <property name="text">
                 <string>Replacement:</string>
             </property>
-            <property>
-                <name>buddy</name>
+            <property name="buddy" stdset="0">
                 <cstring>replaceCO</cstring>
             </property>
         </widget>
-        <widget row="1"  column="0"  rowspan="1"  colspan="2" >
-            <class>QLineEdit</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QLineEdit" row="1" column="0" rowspan="1" colspan="2">
+            <property name="name">
                 <cstring>wordED</cstring>
             </property>
-            <property>
-                <name>toolTip</name>
+            <property name="toolTip" stdset="0">
                 <string>Current word</string>
             </property>
         </widget>
-        <widget row="0"  column="0" >
-            <class>QLabel</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QLabel" row="0" column="0">
+            <property name="name">
                 <cstring>TextLabel3</cstring>
             </property>
-            <property stdset="1">
-                <name>text</name>
+            <property name="text">
                 <string>Unknown word:</string>
             </property>
-            <property>
-                <name>buddy</name>
+            <property name="buddy" stdset="0">
                 <cstring>wordED</cstring>
             </property>
         </widget>
-        <widget row="3"  column="0"  rowspan="1"  colspan="2" >
-            <class>QComboBox</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QComboBox" row="3" column="0" rowspan="1" colspan="2">
+            <property name="name">
                 <cstring>replaceCO</cstring>
             </property>
-            <property stdset="1">
-                <name>sizePolicy</name>
+            <property name="sizePolicy">
                 <sizepolicy>
                     <hsizetype>3</hsizetype>
                     <vsizetype>0</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
                 </sizepolicy>
             </property>
-            <property stdset="1">
-                <name>focusPolicy</name>
+            <property name="focusPolicy">
                 <enum>StrongFocus</enum>
             </property>
-            <property stdset="1">
-                <name>editable</name>
+            <property name="editable">
                 <bool>true</bool>
             </property>
-            <property stdset="1">
-                <name>insertionPolicy</name>
+            <property name="insertionPolicy">
                 <enum>AtTop</enum>
             </property>
-            <property stdset="1">
-                <name>autoCompletion</name>
+            <property name="autoCompletion">
                 <bool>true</bool>
             </property>
-            <property stdset="1">
-                <name>duplicatesEnabled</name>
+            <property name="duplicatesEnabled">
                 <bool>false</bool>
             </property>
-            <property>
-                <name>toolTip</name>
+            <property name="toolTip" stdset="0">
                 <string>Replace with selected word</string>
             </property>
         </widget>
@@ -270,7 +209,7 @@
         <sender>replaceCO</sender>
         <signal>highlighted(const QString&amp;)</signal>
         <receiver>QSpellcheckerDialogBase</receiver>
-        <slot>replaceChanged(const QString &amp;)</slot>
+        <slot>replaceChanged(const QString&amp;)</slot>
     </connection>
     <connection>
         <sender>replacePB</sender>
@@ -306,15 +245,8 @@
         <sender>suggestionsLB</sender>
         <signal>highlighted(const QString&amp;)</signal>
         <receiver>QSpellcheckerDialogBase</receiver>
-        <slot>suggestionChanged(const QString &amp;)</slot>
+        <slot>suggestionChanged(const QString&amp;)</slot>
     </connection>
-    <slot access="public">acceptClicked()</slot>
-    <slot access="public">addClicked()</slot>
-    <slot access="public">ignoreClicked()</slot>
-    <slot access="public">optionsClicked()</slot>
-    <slot access="public">replaceChanged(const QString &amp;)</slot>
-    <slot access="public">replaceClicked()</slot>
-    <slot access="public">suggestionChanged(const QString &amp;)</slot>
 </connections>
 <tabstops>
     <tabstop>wordED</tabstop>
@@ -326,4 +258,18 @@
     <tabstop>addPB</tabstop>
     <tabstop>closePB</tabstop>
 </tabstops>
+<includes>
+    <include location="global" impldecl="in declaration">config.h</include>
+    <include location="local" impldecl="in declaration">qt_helpers.h</include>
+</includes>
+<slots>
+    <slot>acceptClicked()</slot>
+    <slot>addClicked()</slot>
+    <slot>ignoreClicked()</slot>
+    <slot>optionsClicked()</slot>
+    <slot>replaceChanged(const QString &amp;)</slot>
+    <slot>replaceClicked()</slot>
+    <slot>suggestionChanged(const QString &amp;)</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
 </UI>

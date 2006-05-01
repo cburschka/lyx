@@ -1,308 +1,240 @@
-<!DOCTYPE UI><UI>
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>QSearchDialogBase</class>
-<include location="global">config.h</include>
-<include location="local">qt_helpers.h</include>
-<widget>
-    <class>QDialog</class>
-    <property stdset="1">
-        <name>name</name>
+<widget class="QDialog">
+    <property name="name">
         <cstring>QSearchDialogBase</cstring>
     </property>
-    <property stdset="1">
-        <name>geometry</name>
+    <property name="geometry">
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>379</width>
-            <height>168</height>
+            <width>483</width>
+            <height>184</height>
         </rect>
     </property>
-    <property stdset="1">
-        <name>caption</name>
-        <string></string>
+    <property name="caption">
+        <string>QSearchDialogBase</string>
     </property>
-    <property stdset="1">
-        <name>sizeGripEnabled</name>
+    <property name="sizeGripEnabled">
         <bool>true</bool>
     </property>
-    <property>
-        <name>layoutMargin</name>
+    <property name="layoutMargin" stdset="0">
     </property>
-    <property>
-        <name>layoutSpacing</name>
+    <property name="layoutSpacing" stdset="0">
     </property>
     <grid>
-        <property stdset="1">
-            <name>margin</name>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <property name="margin">
             <number>11</number>
         </property>
-        <property stdset="1">
-            <name>spacing</name>
+        <property name="spacing">
             <number>6</number>
         </property>
-        <widget row="0"  column="0" >
-            <class>QLabel</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QLabel" row="0" column="0">
+            <property name="name">
                 <cstring>findLA</cstring>
             </property>
-            <property stdset="1">
-                <name>text</name>
+            <property name="text">
                 <string>&amp;Find:</string>
             </property>
-            <property>
-                <name>buddy</name>
+            <property name="buddy" stdset="0">
                 <cstring>findCO</cstring>
             </property>
         </widget>
-        <widget row="0"  column="1"  rowspan="1"  colspan="2" >
-            <class>QComboBox</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QComboBox" row="0" column="1" rowspan="1" colspan="2">
+            <property name="name">
                 <cstring>findCO</cstring>
             </property>
-            <property stdset="1">
-                <name>sizePolicy</name>
+            <property name="sizePolicy">
                 <sizepolicy>
                     <hsizetype>3</hsizetype>
                     <vsizetype>0</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
                 </sizepolicy>
             </property>
-            <property stdset="1">
-                <name>focusPolicy</name>
+            <property name="focusPolicy">
                 <enum>StrongFocus</enum>
             </property>
-            <property stdset="1">
-                <name>editable</name>
+            <property name="editable">
                 <bool>true</bool>
             </property>
-            <property stdset="1">
-                <name>sizeLimit</name>
+            <property name="sizeLimit">
                 <number>10</number>
             </property>
-            <property stdset="1">
-                <name>maxCount</name>
+            <property name="maxCount">
                 <number>666</number>
             </property>
-            <property stdset="1">
-                <name>insertionPolicy</name>
+            <property name="insertionPolicy">
                 <enum>AtTop</enum>
             </property>
-            <property stdset="1">
-                <name>autoCompletion</name>
+            <property name="autoCompletion">
                 <bool>false</bool>
             </property>
-            <property stdset="1">
-                <name>duplicatesEnabled</name>
+            <property name="duplicatesEnabled">
                 <bool>false</bool>
             </property>
         </widget>
-        <widget row="1"  column="0" >
-            <class>QLabel</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QLabel" row="1" column="0">
+            <property name="name">
                 <cstring>replaceLA</cstring>
             </property>
-            <property stdset="1">
-                <name>text</name>
+            <property name="text">
                 <string>Replace &amp;with:</string>
             </property>
-            <property>
-                <name>buddy</name>
+            <property name="buddy" stdset="0">
                 <cstring>replaceCO</cstring>
             </property>
         </widget>
-        <widget row="1"  column="1"  rowspan="1"  colspan="2" >
-            <class>QComboBox</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QComboBox" row="1" column="1" rowspan="1" colspan="2">
+            <property name="name">
                 <cstring>replaceCO</cstring>
             </property>
-            <property stdset="1">
-                <name>sizePolicy</name>
+            <property name="sizePolicy">
                 <sizepolicy>
                     <hsizetype>3</hsizetype>
                     <vsizetype>0</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
                 </sizepolicy>
             </property>
-            <property stdset="1">
-                <name>editable</name>
+            <property name="editable">
                 <bool>true</bool>
             </property>
-            <property stdset="1">
-                <name>sizeLimit</name>
+            <property name="sizeLimit">
                 <number>10</number>
             </property>
-            <property stdset="1">
-                <name>maxCount</name>
+            <property name="maxCount">
                 <number>666</number>
             </property>
-            <property stdset="1">
-                <name>insertionPolicy</name>
+            <property name="insertionPolicy">
                 <enum>AtTop</enum>
             </property>
-            <property stdset="1">
-                <name>autoCompletion</name>
+            <property name="autoCompletion">
                 <bool>false</bool>
             </property>
-            <property stdset="1">
-                <name>duplicatesEnabled</name>
+            <property name="duplicatesEnabled">
                 <bool>false</bool>
             </property>
         </widget>
-        <widget row="2"  column="0"  rowspan="1"  colspan="2" >
-            <class>QCheckBox</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QCheckBox" row="2" column="0" rowspan="1" colspan="2">
+            <property name="name">
                 <cstring>caseCB</cstring>
             </property>
-            <property stdset="1">
-                <name>text</name>
+            <property name="text">
                 <string>Case &amp;sensitive</string>
             </property>
         </widget>
-        <widget row="3"  column="0"  rowspan="2"  colspan="2" >
-            <class>QCheckBox</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QCheckBox" row="3" column="0" rowspan="2" colspan="2">
+            <property name="name">
                 <cstring>wordsCB</cstring>
             </property>
-            <property stdset="1">
-                <name>text</name>
+            <property name="text">
                 <string>Match whole words onl&amp;y</string>
             </property>
         </widget>
-        <spacer row="2"  column="2" >
-            <property>
-                <name>name</name>
+        <spacer row="2" column="2">
+            <property name="name">
                 <cstring>HSpacer1</cstring>
             </property>
-            <property stdset="1">
-                <name>orientation</name>
+            <property name="orientation">
                 <enum>Horizontal</enum>
             </property>
-            <property stdset="1">
-                <name>sizeType</name>
+            <property name="sizeType">
                 <enum>Expanding</enum>
             </property>
-            <property>
-                <name>sizeHint</name>
+            <property name="sizeHint">
                 <size>
                     <width>20</width>
                     <height>20</height>
                 </size>
             </property>
         </spacer>
-        <spacer row="6"  column="0"  rowspan="1"  colspan="2" >
-            <property>
-                <name>name</name>
+        <spacer row="6" column="0" rowspan="1" colspan="2">
+            <property name="name">
                 <cstring>VSpacer1</cstring>
             </property>
-            <property stdset="1">
-                <name>orientation</name>
+            <property name="orientation">
                 <enum>Vertical</enum>
             </property>
-            <property stdset="1">
-                <name>sizeType</name>
+            <property name="sizeType">
                 <enum>Expanding</enum>
             </property>
-            <property>
-                <name>sizeHint</name>
+            <property name="sizeHint">
                 <size>
                     <width>20</width>
                     <height>20</height>
                 </size>
             </property>
         </spacer>
-        <spacer row="6"  column="3" >
-            <property>
-                <name>name</name>
+        <spacer row="6" column="3">
+            <property name="name">
                 <cstring>VSpacer2</cstring>
             </property>
-            <property stdset="1">
-                <name>orientation</name>
+            <property name="orientation">
                 <enum>Vertical</enum>
             </property>
-            <property stdset="1">
-                <name>sizeType</name>
+            <property name="sizeType">
                 <enum>Expanding</enum>
             </property>
-            <property>
-                <name>sizeHint</name>
+            <property name="sizeHint">
                 <size>
                     <width>20</width>
                     <height>20</height>
                 </size>
             </property>
         </spacer>
-        <widget row="0"  column="3" >
-            <class>QPushButton</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QPushButton" row="0" column="3">
+            <property name="name">
                 <cstring>findPB</cstring>
             </property>
-            <property stdset="1">
-                <name>enabled</name>
+            <property name="enabled">
                 <bool>false</bool>
             </property>
-            <property stdset="1">
-                <name>text</name>
+            <property name="text">
                 <string>Find &amp;Next</string>
             </property>
-            <property stdset="1">
-                <name>default</name>
+            <property name="default">
                 <bool>true</bool>
             </property>
         </widget>
-        <widget row="1"  column="3" >
-            <class>QPushButton</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QPushButton" row="1" column="3">
+            <property name="name">
                 <cstring>replacePB</cstring>
             </property>
-            <property stdset="1">
-                <name>enabled</name>
+            <property name="enabled">
                 <bool>false</bool>
             </property>
-            <property stdset="1">
-                <name>text</name>
+            <property name="text">
                 <string>&amp;Replace</string>
             </property>
         </widget>
-        <widget row="2"  column="3"  rowspan="2"  colspan="1" >
-            <class>QPushButton</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QPushButton" row="2" column="3" rowspan="2" colspan="1">
+            <property name="name">
                 <cstring>replaceallPB</cstring>
             </property>
-            <property stdset="1">
-                <name>enabled</name>
+            <property name="enabled">
                 <bool>false</bool>
             </property>
-            <property stdset="1">
-                <name>text</name>
+            <property name="text">
                 <string>Replace &amp;All</string>
             </property>
         </widget>
-        <widget row="5"  column="0"  rowspan="1"  colspan="2" >
-            <class>QCheckBox</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QCheckBox" row="5" column="0" rowspan="1" colspan="2">
+            <property name="name">
                 <cstring>backwardsCB</cstring>
             </property>
-            <property stdset="1">
-                <name>text</name>
+            <property name="text">
                 <string>Search &amp;backwards</string>
             </property>
         </widget>
-        <widget row="4"  column="3"  rowspan="2"  colspan="1" >
-            <class>QPushButton</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QPushButton" row="4" column="3" rowspan="2" colspan="1">
+            <property name="name">
                 <cstring>closePB</cstring>
             </property>
-            <property stdset="1">
-                <name>text</name>
+            <property name="text">
                 <string>&amp;Close</string>
             </property>
         </widget>
@@ -333,10 +265,6 @@
         <receiver>QSearchDialogBase</receiver>
         <slot>findChanged()</slot>
     </connection>
-    <slot access="protected">findClicked()</slot>
-    <slot access="public">findChanged()</slot>
-    <slot access="protected">replaceClicked()</slot>
-    <slot access="protected">replaceallClicked()</slot>
 </connections>
 <tabstops>
     <tabstop>findCO</tabstop>
@@ -349,4 +277,15 @@
     <tabstop>replaceallPB</tabstop>
     <tabstop>closePB</tabstop>
 </tabstops>
+<includes>
+    <include location="global" impldecl="in declaration">config.h</include>
+    <include location="local" impldecl="in declaration">qt_helpers.h</include>
+</includes>
+<slots>
+    <slot access="protected">findClicked()</slot>
+    <slot>findChanged()</slot>
+    <slot access="protected">replaceClicked()</slot>
+    <slot access="protected">replaceallClicked()</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
 </UI>

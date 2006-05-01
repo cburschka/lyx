@@ -1,15 +1,10 @@
-<!DOCTYPE UI><UI>
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>QSendtoDialogBase</class>
-<include location="global">config.h</include>
-<include location="local">qt_helpers.h</include>
-<widget>
-    <class>QDialog</class>
-    <property stdset="1">
-        <name>name</name>
+<widget class="QDialog">
+    <property name="name">
         <cstring>QSendtoDialogBase</cstring>
     </property>
-    <property stdset="1">
-        <name>geometry</name>
+    <property name="geometry">
         <rect>
             <x>0</x>
             <y>0</y>
@@ -17,184 +12,155 @@
             <height>262</height>
         </rect>
     </property>
-    <property stdset="1">
-        <name>caption</name>
-        <string></string>
+    <property name="caption">
+        <string>QSendtoDialogBase</string>
     </property>
-    <property stdset="1">
-        <name>sizeGripEnabled</name>
+    <property name="sizeGripEnabled">
         <bool>true</bool>
     </property>
     <grid>
-        <property stdset="1">
-            <name>margin</name>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <property name="margin">
             <number>11</number>
         </property>
-        <property stdset="1">
-            <name>spacing</name>
+        <property name="spacing">
             <number>6</number>
         </property>
-        <widget row="2"  column="0" >
-            <class>QLabel</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QLabel" row="2" column="0">
+            <property name="name">
                 <cstring>commandLA</cstring>
             </property>
-            <property stdset="1">
-                <name>text</name>
+            <property name="text">
                 <string>&amp;Command:</string>
             </property>
-            <property>
-                <name>buddy</name>
+            <property name="buddy" stdset="0">
                 <cstring>commandCO</cstring>
             </property>
         </widget>
-        <widget row="0"  column="0" >
-            <class>QLabel</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QLabel" row="0" column="0">
+            <property name="name">
                 <cstring>formatLA</cstring>
             </property>
-            <property stdset="1">
-                <name>text</name>
+            <property name="text">
                 <string>&amp;Export formats:</string>
             </property>
-            <property>
-                <name>buddy</name>
+            <property name="buddy" stdset="0">
                 <cstring>formatLB</cstring>
             </property>
         </widget>
-        <widget row="4"  column="0" >
-            <class>QLayoutWidget</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QLayoutWidget" row="4" column="0">
+            <property name="name">
                 <cstring>Layout6</cstring>
             </property>
             <hbox>
-                <property stdset="1">
-                    <name>margin</name>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
                     <number>0</number>
                 </property>
-                <property stdset="1">
-                    <name>spacing</name>
+                <property name="spacing">
                     <number>6</number>
                 </property>
-                <widget>
-                    <class>QPushButton</class>
-                    <property stdset="1">
-                        <name>name</name>
+                <widget class="QPushButton">
+                    <property name="name">
                         <cstring>okPB</cstring>
                     </property>
-                    <property stdset="1">
-                        <name>text</name>
+                    <property name="text">
                         <string>&amp;OK</string>
                     </property>
-                    <property stdset="1">
-                        <name>autoDefault</name>
+                    <property name="autoDefault">
                         <bool>true</bool>
                     </property>
-                    <property stdset="1">
-                        <name>default</name>
+                    <property name="default">
                         <bool>false</bool>
                     </property>
                 </widget>
-                <widget>
-                    <class>QPushButton</class>
-                    <property stdset="1">
-                        <name>name</name>
+                <widget class="QPushButton">
+                    <property name="name">
                         <cstring>applyPB</cstring>
                     </property>
-                    <property stdset="1">
-                        <name>text</name>
+                    <property name="text">
                         <string>&amp;Apply</string>
                     </property>
                 </widget>
-                <widget>
-                    <class>QPushButton</class>
-                    <property stdset="1">
-                        <name>name</name>
+                <widget class="QPushButton">
+                    <property name="name">
                         <cstring>closePB</cstring>
                     </property>
-                    <property stdset="1">
-                        <name>text</name>
+                    <property name="text">
                         <string>Cancel</string>
                     </property>
                 </widget>
             </hbox>
         </widget>
-        <widget row="3"  column="0" >
-            <class>QComboBox</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QComboBox" row="3" column="0">
+            <property name="name">
                 <cstring>commandCO</cstring>
             </property>
-            <property stdset="1">
-                <name>sizePolicy</name>
+            <property name="sizePolicy">
                 <sizepolicy>
                     <hsizetype>3</hsizetype>
                     <vsizetype>0</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
                 </sizepolicy>
             </property>
-            <property stdset="1">
-                <name>focusPolicy</name>
+            <property name="focusPolicy">
                 <enum>StrongFocus</enum>
             </property>
-            <property stdset="1">
-                <name>editable</name>
+            <property name="editable">
                 <bool>true</bool>
             </property>
-            <property stdset="1">
-                <name>sizeLimit</name>
+            <property name="sizeLimit">
                 <number>10</number>
             </property>
-            <property stdset="1">
-                <name>maxCount</name>
+            <property name="maxCount">
                 <number>666</number>
             </property>
-            <property stdset="1">
-                <name>insertionPolicy</name>
+            <property name="insertionPolicy">
                 <enum>AtTop</enum>
             </property>
-            <property stdset="1">
-                <name>autoCompletion</name>
+            <property name="autoCompletion">
                 <bool>true</bool>
             </property>
-            <property stdset="1">
-                <name>duplicatesEnabled</name>
+            <property name="duplicatesEnabled">
                 <bool>false</bool>
             </property>
-            <property>
-                <name>toolTip</name>
+            <property name="toolTip" stdset="0">
                 <string>Process the converted file with this command ($$FName = file name)</string>
             </property>
         </widget>
-        <widget row="1"  column="0" >
-            <class>QListBox</class>
+        <widget class="QListBox" row="1" column="0">
             <item>
-                <property>
-                    <name>text</name>
+                <property name="text">
                     <string>New Item</string>
                 </property>
             </item>
-            <property stdset="1">
-                <name>name</name>
+            <property name="name">
                 <cstring>formatLB</cstring>
             </property>
-            <property stdset="1">
-                <name>maximumSize</name>
+            <property name="maximumSize">
                 <size>
                     <width>32767</width>
                     <height>32767</height>
                 </size>
             </property>
-            <property>
-                <name>toolTip</name>
+            <property name="toolTip" stdset="0">
                 <string>Available export converters</string>
             </property>
         </widget>
     </grid>
 </widget>
 <connections>
+    <connection>
+        <sender>commandCO</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>QSendtoDialogBase</receiver>
+        <slot>changed_adaptor()</slot>
+    </connection>
     <connection>
         <sender>formatLB</sender>
         <signal>highlighted(const QString&amp;)</signal>
@@ -213,15 +179,6 @@
         <receiver>QSendtoDialogBase</receiver>
         <slot>changed_adaptor()</slot>
     </connection>
-    <connection>
-        <sender>commandCO</sender>
-        <signal>textChanged(const QString&amp;)</signal>
-        <receiver>QSendtoDialogBase</receiver>
-        <slot>changed_adaptor()</slot>
-    </connection>
-    <slot access="public">changed_adaptor()</slot>
-    <slot access="public">slotFormatHighlighted(const QString&amp;)</slot>
-    <slot access="public">slotFormatSelected(const QString&amp;)</slot>
 </connections>
 <tabstops>
     <tabstop>formatLB</tabstop>
@@ -229,4 +186,14 @@
     <tabstop>applyPB</tabstop>
     <tabstop>closePB</tabstop>
 </tabstops>
+<includes>
+    <include location="global" impldecl="in declaration">config.h</include>
+    <include location="local" impldecl="in declaration">qt_helpers.h</include>
+</includes>
+<slots>
+    <slot>changed_adaptor()</slot>
+    <slot>slotFormatHighlighted(const QString&amp;)</slot>
+    <slot>slotFormatSelected(const QString&amp;)</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
 </UI>

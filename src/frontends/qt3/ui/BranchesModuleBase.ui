@@ -1,15 +1,10 @@
-<!DOCTYPE UI><UI>
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>BranchesModuleBase</class>
-<include location="global">config.h</include>
-<include location="local">qt_helpers.h</include>
-<widget>
-    <class>QWidget</class>
-    <property stdset="1">
-        <name>name</name>
+<widget class="QWidget">
+    <property name="name">
         <cstring>BranchesModuleBase</cstring>
     </property>
-    <property stdset="1">
-        <name>geometry</name>
+    <property name="geometry">
         <rect>
             <x>0</x>
             <y>0</y>
@@ -17,267 +12,212 @@
             <height>297</height>
         </rect>
     </property>
-    <property stdset="1">
-        <name>caption</name>
-        <string></string>
+    <property name="caption">
+        <string>BranchesModuleBase</string>
     </property>
     <grid>
-        <property stdset="1">
-            <name>margin</name>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <property name="margin">
             <number>11</number>
         </property>
-        <property stdset="1">
-            <name>spacing</name>
+        <property name="spacing">
             <number>6</number>
         </property>
-        <widget row="1"  column="0"  rowspan="5"  colspan="1" >
-            <class>QLayoutWidget</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QLayoutWidget" row="1" column="0" rowspan="5" colspan="1">
+            <property name="name">
                 <cstring>Layout2</cstring>
             </property>
             <grid>
-                <property stdset="1">
-                    <name>margin</name>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
                     <number>0</number>
                 </property>
-                <property stdset="1">
-                    <name>spacing</name>
+                <property name="spacing">
                     <number>6</number>
                 </property>
-                <widget row="0"  column="0" >
-                    <class>QLabel</class>
-                    <property stdset="1">
-                        <name>name</name>
+                <widget class="QLabel" row="0" column="0">
+                    <property name="name">
                         <cstring>availableLB</cstring>
                     </property>
-                    <property stdset="1">
-                        <name>text</name>
+                    <property name="text">
                         <string>A&amp;vailable Branches:</string>
                     </property>
-                    <property>
-                        <name>buddy</name>
+                    <property name="buddy" stdset="0">
                         <cstring>branchesLV</cstring>
                     </property>
                 </widget>
-                <widget row="1"  column="0" >
-                    <class>QListView</class>
+                <widget class="QListView" row="1" column="0">
                     <column>
-                        <property>
-                            <name>text</name>
+                        <property name="text">
                             <string>Name</string>
                         </property>
-                        <property>
-                            <name>clickable</name>
+                        <property name="clickable">
                             <bool>true</bool>
                         </property>
-                        <property>
-                            <name>resizeable</name>
+                        <property name="resizable">
                             <bool>true</bool>
                         </property>
                     </column>
                     <column>
-                        <property>
-                            <name>text</name>
+                        <property name="text">
                             <string>Activated</string>
                         </property>
-                        <property>
-                            <name>clickable</name>
+                        <property name="clickable">
                             <bool>true</bool>
                         </property>
-                        <property>
-                            <name>resizeable</name>
+                        <property name="resizable">
                             <bool>true</bool>
                         </property>
                     </column>
                     <column>
-                        <property>
-                            <name>text</name>
+                        <property name="text">
                             <string>Color</string>
                         </property>
-                        <property>
-                            <name>clickable</name>
+                        <property name="clickable">
                             <bool>true</bool>
                         </property>
-                        <property>
-                            <name>resizeable</name>
+                        <property name="resizable">
                             <bool>true</bool>
                         </property>
                     </column>
-                    <property stdset="1">
-                        <name>name</name>
+                    <property name="name">
                         <cstring>branchesLV</cstring>
                     </property>
-                    <property stdset="1">
-                        <name>enabled</name>
+                    <property name="enabled">
                         <bool>true</bool>
                     </property>
-                    <property stdset="1">
-                        <name>focusPolicy</name>
+                    <property name="focusPolicy">
                         <enum>NoFocus</enum>
                     </property>
-                    <property stdset="1">
-                        <name>resizePolicy</name>
+                    <property name="resizePolicy">
                         <enum>AutoOneFit</enum>
                     </property>
-                    <property stdset="1">
-                        <name>vScrollBarMode</name>
+                    <property name="vScrollBarMode">
                         <enum>Auto</enum>
                     </property>
-                    <property stdset="1">
-                        <name>hScrollBarMode</name>
+                    <property name="hScrollBarMode">
                         <enum>Auto</enum>
                     </property>
-                    <property stdset="1">
-                        <name>allColumnsShowFocus</name>
+                    <property name="allColumnsShowFocus">
                         <bool>true</bool>
                     </property>
-                    <property stdset="1">
-                        <name>rootIsDecorated</name>
+                    <property name="rootIsDecorated">
                         <bool>false</bool>
                     </property>
-                    <property>
-                        <name>toolTip</name>
+                    <property name="toolTip" stdset="0">
                         <string>The available branches</string>
                     </property>
                 </widget>
             </grid>
         </widget>
-        <widget row="3"  column="1" >
-            <class>QPushButton</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QPushButton" row="3" column="1">
+            <property name="name">
                 <cstring>activatePB</cstring>
             </property>
-            <property stdset="1">
-                <name>text</name>
+            <property name="text">
                 <string>(&amp;De)activate</string>
             </property>
-            <property>
-                <name>toolTip</name>
+            <property name="toolTip" stdset="0">
                 <string>Toggle the selected branch</string>
             </property>
         </widget>
-        <widget row="4"  column="1" >
-            <class>QPushButton</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QPushButton" row="4" column="1">
+            <property name="name">
                 <cstring>colorPB</cstring>
             </property>
-            <property stdset="1">
-                <name>text</name>
+            <property name="text">
                 <string>Alter Co&amp;lor...</string>
             </property>
-            <property>
-                <name>toolTip</name>
+            <property name="toolTip" stdset="0">
                 <string>Define or change background color</string>
             </property>
         </widget>
-        <widget row="2"  column="1" >
-            <class>QPushButton</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QPushButton" row="2" column="1">
+            <property name="name">
                 <cstring>removePB</cstring>
             </property>
-            <property stdset="1">
-                <name>text</name>
+            <property name="text">
                 <string>&amp;Remove</string>
             </property>
-            <property>
-                <name>toolTip</name>
+            <property name="toolTip" stdset="0">
                 <string>Remove the selected branch</string>
             </property>
         </widget>
-        <spacer row="5"  column="1" >
-            <property>
-                <name>name</name>
+        <spacer row="5" column="1">
+            <property name="name">
                 <cstring>Spacer2</cstring>
             </property>
-            <property stdset="1">
-                <name>orientation</name>
+            <property name="orientation">
                 <enum>Vertical</enum>
             </property>
-            <property stdset="1">
-                <name>sizeType</name>
+            <property name="sizeType">
                 <enum>Expanding</enum>
             </property>
-            <property>
-                <name>sizeHint</name>
+            <property name="sizeHint">
                 <size>
                     <width>20</width>
                     <height>20</height>
                 </size>
             </property>
         </spacer>
-        <widget row="0"  column="0"  rowspan="1"  colspan="2" >
-            <class>QLayoutWidget</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QLayoutWidget" row="0" column="0" rowspan="1" colspan="2">
+            <property name="name">
                 <cstring>Layout5</cstring>
             </property>
             <hbox>
-                <property stdset="1">
-                    <name>margin</name>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
                     <number>0</number>
                 </property>
-                <property stdset="1">
-                    <name>spacing</name>
+                <property name="spacing">
                     <number>6</number>
                 </property>
-                <widget>
-                    <class>QLabel</class>
-                    <property stdset="1">
-                        <name>name</name>
+                <widget class="QLabel">
+                    <property name="name">
                         <cstring>newBranchLA</cstring>
                     </property>
-                    <property stdset="1">
-                        <name>text</name>
+                    <property name="text">
                         <string>&amp;New:</string>
                     </property>
-                    <property>
-                        <name>buddy</name>
+                    <property name="buddy" stdset="0">
                         <cstring>newBranchLE</cstring>
                     </property>
                 </widget>
-                <widget>
-                    <class>QLineEdit</class>
-                    <property stdset="1">
-                        <name>name</name>
+                <widget class="QLineEdit">
+                    <property name="name">
                         <cstring>newBranchLE</cstring>
                     </property>
                 </widget>
-                <widget>
-                    <class>QPushButton</class>
-                    <property stdset="1">
-                        <name>name</name>
+                <widget class="QPushButton">
+                    <property name="name">
                         <cstring>addBranchPB</cstring>
                     </property>
-                    <property stdset="1">
-                        <name>text</name>
+                    <property name="text">
                         <string>&amp;Add</string>
                     </property>
-                    <property>
-                        <name>toolTip</name>
+                    <property name="toolTip" stdset="0">
                         <string>Add a new branch to the list</string>
                     </property>
                 </widget>
             </hbox>
         </widget>
-        <spacer row="1"  column="1" >
-            <property>
-                <name>name</name>
+        <spacer row="1" column="1">
+            <property name="name">
                 <cstring>Spacer3</cstring>
             </property>
-            <property stdset="1">
-                <name>orientation</name>
+            <property name="orientation">
                 <enum>Vertical</enum>
             </property>
-            <property stdset="1">
-                <name>sizeType</name>
+            <property name="sizeType">
                 <enum>Expanding</enum>
             </property>
-            <property>
-                <name>sizeHint</name>
+            <property name="sizeHint">
                 <size>
                     <width>20</width>
                     <height>20</height>
@@ -289,4 +229,9 @@
 <tabstops>
     <tabstop>branchesLV</tabstop>
 </tabstops>
+<includes>
+    <include location="global" impldecl="in declaration">config.h</include>
+    <include location="local" impldecl="in declaration">qt_helpers.h</include>
+</includes>
+<layoutdefaults spacing="6" margin="11"/>
 </UI>
