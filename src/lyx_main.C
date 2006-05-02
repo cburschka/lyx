@@ -437,19 +437,19 @@ void LyX::init(bool gui)
 	// Read configuration files
 	//
 
+	// This one may have been distributed along with LyX.
+	readRcFile("lyxrc.dist");
+	// This one is generated in user_support directory by lib/configure.py.
 	readRcFile("lyxrc.defaults");
+
 	system_lyxrc = lyxrc;
 	system_formats = formats;
 	system_converters = converters;
 	system_movers = movers;
 	system_lcolor = lcolor;
 
-	string prefsfile = "preferences";
-	// back compatibility to lyxs < 1.1.6
-	if (LibFileSearch(string(), prefsfile).empty())
-		prefsfile = "lyxrc";
-	if (!LibFileSearch(string(), prefsfile).empty())
-		readRcFile(prefsfile);
+	// This one is edited through the preferences dialog.
+	readRcFile("preferences");
 
 	readEncodingsFile("encodings");
 	readLanguagesFile("languages");
@@ -666,19 +666,18 @@ bool LyX::queryUserLyXDir(bool explicit_userdir)
 
 void LyX::readRcFile(string const & name)
 {
-	lyxerr[Debug::INIT] << "About to read " << name << "..." << endl;
+	lyxerr[Debug::INIT] << "About to read " << name << "... ";
 
 	string const lyxrc_path = LibFileSearch(string(), name);
 	if (!lyxrc_path.empty()) {
 
-		lyxerr[Debug::INIT] << "Found " << name
-				    << " in " << lyxrc_path << endl;
+		lyxerr[Debug::INIT] << "Found in " << lyxrc_path << endl;
 
-		if (lyxrc.read(lyxrc_path) >= 0)
-			return;
-	}
+		if (lyxrc.read(lyxrc_path) < 0)
+			showFileError(name);
+	} else
+		lyxerr[Debug::INIT] << "Not found." << lyxrc_path << endl;
 
-	showFileError(name);
 }
 
 

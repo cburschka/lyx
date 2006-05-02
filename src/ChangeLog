@@ -1,3 +1,13 @@
+2006-04-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyx_main.C (readRcFile): do not report an error if file is not
+	found. 
+	(init): read lyxrc.dist before lyxrc.defaults; remove code to read
+	lyxrc (LyX 1.1.5 compatibility code).
+
+	* encoding.C (read): 
+	* language.C (read): set debug to the INFO channel.
+
 2006-04-28  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* BufferView_pimpl.C (dispatch): update bibfiles cache after adding 

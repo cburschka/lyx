@@ -87,11 +87,14 @@ What's new
 - Replace the old sh version of lib/configure with the new python version
   lib/configure.py
 
-- Fix lib/configure.py to find tex2lyx when compiling with
-  --with-version-suffix (bug 2285)
-
 - It is not needed anymore to run lib/configure.py in the main LyX
   support directory.
+
+- LyX now reads the file lyxrc.init (if it exists) before
+  lyxrc.defaults and preferences.
+
+- Fix lib/configure.py to find tex2lyx when compiling with
+  --with-version-suffix (bug 2285)
 
 - Fix lib/configure.py to find tex2lyx if the path to it contains spaces.
 
