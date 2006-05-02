@@ -336,7 +336,7 @@ void Encodings::read(string const & filename)
 			string const name = lex.getString();
 			lex.next();
 			string const latexname = lex.getString();
-			lyxerr[Debug::INIT] << "Reading encoding " << name << endl;
+			lyxerr[Debug::INFO] << "Reading encoding " << name << endl;
 			Uchar table[256];
 			for (unsigned int i = 0; i < 256; ++i) {
 				lex.next();
