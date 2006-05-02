@@ -22,12 +22,13 @@
 #include "controllers/ControlBibtex.h"
 #include "controllers/ButtonPolicies.h"
 
+#include "debug.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 
-#include <qpushbutton.h>
-#include <qlineedit.h>
-#include <q3listbox.h>
+#include <QPushButton>
+#include <QListWidget>
+#include <QLineEdit>
 
 using lyx::support::changeExtension;
 using lyx::support::trim;
@@ -42,19 +43,26 @@ QBibtexDialog::QBibtexDialog(QBibtex * form)
 	: form_(form)
 {
 	setupUi(this);
+	QDialog::setModal(true);
 
-	connect(okPB, SIGNAL(clicked()),
+	connect( okPB, SIGNAL(clicked()), 
 		form, SLOT(slotOK()));
-	connect(closePB, SIGNAL(clicked()),
+	connect( closePB, SIGNAL(clicked()), 
 		form, SLOT(slotClose()));
-
-    connect( stylePB, SIGNAL( clicked() ), this, SLOT( browsePressed() ) );
-    connect( deletePB, SIGNAL( clicked() ), this, SLOT( deletePressed() ) );
-    connect( styleCB, SIGNAL( textChanged(const QString&) ), this, SLOT( change_adaptor() ) );
-    connect( databaseLB, SIGNAL( selectionChanged() ), this, SLOT( databaseChanged() ) );
-    connect( bibtocCB, SIGNAL( toggled(bool) ), this, SLOT( change_adaptor() ) );
-    connect( btPrintCO, SIGNAL( activated(int) ), this, SLOT( change_adaptor() ) );
-    connect( addBibPB, SIGNAL( clicked() ), this, SLOT( addPressed() ) );
+	connect( stylePB, SIGNAL( clicked() ), 
+		this, SLOT( browsePressed() ) );
+	connect( deletePB, SIGNAL( clicked() ), 
+		this, SLOT( deletePressed() ) );
+	connect( styleCB, SIGNAL( textChanged(const QString&) ), 
+		this, SLOT( change_adaptor() ) );
+	connect( databaseLW, SIGNAL( selectionChanged() ), 
+		this, SLOT( databaseChanged() ) );
+	connect( bibtocCB, SIGNAL( toggled(bool) ), 
+		this, SLOT( change_adaptor() ) );
+	connect( btPrintCO, SIGNAL( activated(int) ), 
+		this, SLOT( change_adaptor() ) );
+	connect( addBibPB, SIGNAL( clicked() ), 
+		this, SLOT( addPressed() ) );
 
 	add_ = new UiDialog<Ui::QBibtexAddUi>(this, true);
 
@@ -68,21 +76,22 @@ QBibtexDialog::QBibtexDialog(QBibtex * form)
 	add_->bibED->setValidator(new PathValidator(false, add_->bibED));
 	addCheckedLineEdit(add_bc_.view(), add_->bibED, 0);
 
-	connect(add_->bibED, SIGNAL(textChanged(const QString&)),
+	connect( add_->bibED, SIGNAL(textChanged(const QString&)),
 		this, SLOT(bibEDChanged()));
-	connect(add_->addPB, SIGNAL(clicked()),
+	connect( add_->addPB, SIGNAL(clicked()), 
 		this, SLOT(addDatabase()));
-	connect(add_->bibLB, SIGNAL(selected(Q3ListBoxItem *)),
+	connect( add_->addPB, SIGNAL(clicked()), 
+		add_, SLOT(accept()) );
+	connect(add_->bibLW, SIGNAL(itemActivated(QListWidgetItem *)),
 		this, SLOT(addDatabase()));
-	connect(add_->bibLB, SIGNAL(selected(Q3ListBoxItem *)),
+	connect(add_->bibLW, SIGNAL(itemActivated(QListWidgetItem *)),
 		add_, SLOT(accept()));
-	connect(add_->bibLB, SIGNAL(currentChanged(Q3ListBoxItem *)),
+	connect(add_->bibLW, SIGNAL(itemChanged(QListWidgetItem *)),
 		this, SLOT(availableChanged()));
-	connect(add_->browsePB, SIGNAL(clicked()),
+	connect( add_->browsePB, SIGNAL(clicked()), 
 		this, SLOT(browseBibPressed()));
-
-    connect( add_->addPB, SIGNAL( clicked() ), this, SLOT( accept() ) );
-    connect( add_->closePB, SIGNAL( clicked() ), this, SLOT( reject() ) );
+	connect( add_->closePB, SIGNAL( clicked() ), 
+		add_, SLOT( reject() ) );
 
 }
 
@@ -139,13 +148,13 @@ void QBibtexDialog::browseBibPressed()
 		string const f = changeExtension(file, "");
 		bool present = false;
 
-		for (unsigned int i = 0; i != add_->bibLB->count(); i++) {
-			if (fromqstr(add_->bibLB->text(i)) == f)
+		for (unsigned int i = 0; i != add_->bibLW->count(); i++) {
+			if (fromqstr(add_->bibLW->item(i)->text()) == f)
 				present = true;
 		}
 
 		if (!present) {
-			add_->bibLB->insertItem(toqstr(f));
+			add_->bibLW->addItem(toqstr(f));
 			form_->changed();
 		}
 
@@ -163,7 +172,7 @@ void QBibtexDialog::addPressed()
 
 void QBibtexDialog::addDatabase()
 {
-	int const sel = add_->bibLB->currentItem();
+	int const sel = add_->bibLW->currentRow();
 	string const file = trim(fromqstr(add_->bibED->text()));
 
 	if (sel < 0 && file.empty())
@@ -171,18 +180,24 @@ void QBibtexDialog::addDatabase()
 
 	// Add the selected browser_bib keys to browser_database
 	// multiple selections are possible
-	for (unsigned int i = 0; i != add_->bibLB->count(); i++) {
-		if (add_->bibLB->isSelected(i)) {
-			// do not allow duplicates
-			if ((databaseLB->findItem(add_->bibLB->text(i))) == 0)
-				databaseLB->insertItem(add_->bibLB->text(i));
+	for (unsigned int i = 0; i != add_->bibLW->count(); i++) {
+		QListWidgetItem * const item = add_->bibLW->item(i);
+		if (add_->bibLW->isItemSelected(item)) {
+			add_->bibLW->setItemSelected(item, false);
+			QList<QListWidgetItem *> matches = 
+				databaseLW->findItems(item->text(), Qt::MatchExactly);
+			if (matches.empty())
+				databaseLW->addItem(item->text());
 		}
 	}
 
 	if (!file.empty()) {
+		add_->bibED->clear();
 		QString const f = toqstr(changeExtension(file, ""));
-		if ((databaseLB->findItem(f)) == 0)
-			databaseLB->insertItem(f);
+		QList<QListWidgetItem *> matches = 
+			databaseLW->findItems(f, Qt::MatchExactly);
+		if (matches.empty())
+			databaseLW->addItem(f);
 	}
 
 	form_->changed();
@@ -191,14 +206,14 @@ void QBibtexDialog::addDatabase()
 
 void QBibtexDialog::deletePressed()
 {
-	databaseLB->removeItem(databaseLB->currentItem());
+	databaseLW->takeItem(databaseLW->currentRow());
 }
 
 
 
 void QBibtexDialog::databaseChanged()
 {
-	deletePB->setEnabled(!form_->readOnly() && databaseLB->currentItem() != -1);
+	deletePB->setEnabled(!form_->readOnly() && databaseLW->currentRow() != -1);
 }
 
 
@@ -213,6 +228,7 @@ void QBibtexDialog::closeEvent(QCloseEvent *e)
 	form_->slotWMHide();
 	e->accept();
 }
+
 
 } // namespace frontend
 } // namespace lyx

@@ -28,70 +28,17 @@
   </property>
   <layout class="QGridLayout" >
    <property name="margin" >
-    <number>11</number>
+    <number>9</number>
    </property>
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="2" column="0" >
-    <widget class="QPushButton" name="browsePB" >
-     <property name="text" >
-      <string>&amp;Browse...</string>
-     </property>
-     <property name="autoDefault" >
-      <bool>false</bool>
-     </property>
-     <property name="default" >
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0" colspan="2" >
-    <widget class="QLineEdit" name="bibED" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>7</hsizetype>
-       <vsizetype>0</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="toolTip" >
-      <string>Enter BibTeX database name</string>
-     </property>
-    </widget>
-   </item>
    <item row="0" column="0" colspan="2" >
-    <widget class="Q3ListBox" name="bibLB" >
-     <property name="toolTip" >
-      <string>Available BibTeX databases</string>
-     </property>
-     <property name="vScrollBarMode" >
-      <enum>Q3ScrollView::AlwaysOn</enum>
-     </property>
-     <property name="hScrollBarMode" >
-      <enum>Q3ScrollView::AlwaysOff</enum>
-     </property>
+    <widget class="QListWidget" name="bibLW" >
      <property name="selectionMode" >
-      <enum>Q3ListBox::Extended</enum>
+      <enum>QAbstractItemView::ExtendedSelection</enum>
      </property>
     </widget>
-   </item>
-   <item row="2" column="1" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeType" >
-      <enum>QSizePolicy::Expanding</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>20</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
    </item>
    <item row="3" column="0" colspan="2" >
     <layout class="QHBoxLayout" >
@@ -142,20 +89,54 @@
      </item>
     </layout>
    </item>
+   <item row="2" column="1" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="0" colspan="2" >
+    <widget class="QLineEdit" name="bibED" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>7</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="toolTip" >
+      <string>Enter BibTeX database name</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" >
+    <widget class="QPushButton" name="browsePB" >
+     <property name="text" >
+      <string>&amp;Browse...</string>
+     </property>
+     <property name="autoDefault" >
+      <bool>false</bool>
+     </property>
+     <property name="default" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
- <customwidgets>
-  <customwidget>
-   <class>Q3ListBox</class>
-   <extends></extends>
-   <header>q3listbox.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
- </customwidgets>
  <tabstops>
-  <tabstop>bibLB</tabstop>
   <tabstop>bibED</tabstop>
   <tabstop>addPB</tabstop>
   <tabstop>closePB</tabstop>

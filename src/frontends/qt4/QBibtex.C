@@ -26,9 +26,9 @@
 #include "support/filetools.h" // changeExtension
 #include "support/lstrings.h"
 
-#include <qpushbutton.h>
-#include <q3listbox.h>
-#include <qcheckbox.h>
+#include <QPushButton>
+#include <QListWidget>
+#include <QCheckBox>
 
 
 using lyx::support::changeExtension;
@@ -55,7 +55,7 @@ void QBibtex::build_dialog()
 
 	bcview().setOK(dialog_->okPB);
 	bcview().setCancel(dialog_->closePB);
-	bcview().addReadOnly(dialog_->databaseLB);
+	bcview().addReadOnly(dialog_->databaseLW);
 	bcview().addReadOnly(dialog_->stylePB);
 	bcview().addReadOnly(dialog_->styleCB);
 	bcview().addReadOnly(dialog_->bibtocCB);
@@ -73,7 +73,7 @@ void QBibtex::update_contents()
 
 	bool bibtopic = controller().usingBibtopic();
 
-	dialog_->databaseLB->clear();
+	dialog_->databaseLW->clear();
 
 	string bibs(controller().params().getContents());
 	string bib;
@@ -82,17 +82,17 @@ void QBibtex::update_contents()
 		bibs = split(bibs, bib, ',');
 		bib = trim(bib);
 		if (!bib.empty())
-			dialog_->databaseLB->insertItem(toqstr(bib));
+			dialog_->databaseLW->addItem(toqstr(bib));
 	}
 
-	dialog_->add_->bibLB->clear();
+	dialog_->add_->bibLW->clear();
 
 	vector<string> bib_str;
 	controller().getBibFiles(bib_str);
 	for (vector<string>::const_iterator it = bib_str.begin();
 		it != bib_str.end(); ++it) {
 		string bibItem(changeExtension(*it, ""));
-		dialog_->add_->bibLB->insertItem(toqstr(bibItem));
+		dialog_->add_->bibLW->addItem(toqstr(bibItem));
 	}
 
 	string bibstyle(controller().getStylefile());
@@ -138,12 +138,12 @@ void QBibtex::update_contents()
 
 void QBibtex::apply()
 {
-	string dbs(fromqstr(dialog_->databaseLB->text(0)));
+	string dbs(fromqstr(dialog_->databaseLW->item(0)->text()));
 
-	unsigned int maxCount = dialog_->databaseLB->count();
+	unsigned int maxCount = dialog_->databaseLW->count();
 	for (unsigned int i = 1; i < maxCount; i++) {
 		dbs += ',';
-		dbs += fromqstr(dialog_->databaseLB->text(i));
+		dbs += fromqstr(dialog_->databaseLW->item(i)->text());
 	}
 
 	controller().params().setContents(dbs);
@@ -189,7 +189,7 @@ void QBibtex::apply()
 
 bool QBibtex::isValid()
 {
-	return dialog_->databaseLB->count() != 0;
+	return dialog_->databaseLW->count() != 0;
 }
 
 } // namespace frontend
