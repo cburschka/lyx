@@ -12,7 +12,6 @@ AM_CPPFLAGS += \
 	$(PCH_FLAGS) \
 	-I$(top_srcdir)/src \
 	-I$(top_srcdir)/src/frontends \
-	-I$(top_srcdir)/src/frontends/qt3 \
 	-I$(top_srcdir)/src/frontends/controllers \
 	$(QT_INCLUDES) \
 	$(BOOST_INCLUDES)
