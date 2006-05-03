@@ -19,8 +19,8 @@
 
 #include "controllers/ControlSendto.h"
 
-#include <q3listbox.h>
-#include <qpushbutton.h>
+#include <QListWidget>
+#include <QPushButton>
 
 using std::vector;
 using std::string;
@@ -65,11 +65,11 @@ void QSendto::update_contents()
 	}
 
 	// Reload the browser
-	dialog_->formatLB->clear();
+	dialog_->formatLW->clear();
 
 	for (vector<string>::const_iterator it = keys.begin();
 	     it < keys.end(); ++it) {
-		dialog_->formatLB->insertItem(toqstr(*it));
+		dialog_->formatLW->addItem(toqstr(*it));
 	}
 
 	dialog_->commandCO->insertItem(toqstr(controller().getCommand()));
@@ -78,9 +78,9 @@ void QSendto::update_contents()
 
 void QSendto::apply()
 {
-	int const line(dialog_->formatLB->currentItem());
+	int const line(dialog_->formatLW->currentRow());
 
-	if (line < 0 || line > int(dialog_->formatLB->count()))
+	if (line < 0 || line > int(dialog_->formatLW->count()))
 		return;
 
 	string const cmd(fromqstr(dialog_->commandCO->currentText()));
@@ -92,12 +92,12 @@ void QSendto::apply()
 
 bool QSendto::isValid()
 {
-	int const line(dialog_->formatLB->currentItem());
+	int const line(dialog_->formatLW->currentRow());
 
-	if (line < 0 || line > int(dialog_->formatLB->count()))
+	if (line < 0 || line > int(dialog_->formatLW->count()))
 		return false;
 
-	else return dialog_->formatLB->count() != 0 &&
+	else return dialog_->formatLW->count() != 0 &&
 		!dialog_->commandCO->currentText().isEmpty();
 }
 

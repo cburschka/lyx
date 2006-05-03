@@ -17,6 +17,8 @@
 #include <QDialog>
 #include <QCloseEvent>
 
+class QListWidgetItem;
+
 namespace lyx {
 namespace frontend {
 
@@ -27,7 +29,7 @@ class QSpellcheckerDialog: public QDialog, public Ui::QSpellcheckerUi {
 public:
 	QSpellcheckerDialog(QSpellchecker * form);
 public slots:
-	virtual void suggestionChanged(const QString &);
+	virtual void suggestionChanged(QListWidgetItem *);
 
 protected slots:
 	virtual void acceptClicked();

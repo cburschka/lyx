@@ -17,6 +17,8 @@
 #include <QDialog>
 #include <QCloseEvent>
 
+class QListWidgetItem;
+
 namespace lyx {
 namespace frontend {
 
@@ -28,8 +30,8 @@ public:
 	QSendtoDialog(QSendto * form);
 protected slots:
 	virtual void changed_adaptor();
-	virtual void slotFormatHighlighted(const QString&) {}
-	virtual void slotFormatSelected(const QString&) {}
+	virtual void slotFormatHighlighted(QListWidgetItem *) {}
+	virtual void slotFormatSelected(QListWidgetItem *) {}
 protected:
 	virtual void closeEvent(QCloseEvent * e);
 private:

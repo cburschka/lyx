@@ -18,6 +18,8 @@
 #include <QDialog>
 #include <QCloseEvent>
 
+class QListWidgetItem;
+
 namespace lyx {
 namespace frontend {
 
@@ -33,8 +35,8 @@ public:
 public slots:
 	void changed_adaptor();
 	void gotoClicked();
-	void refHighlighted(const QString &);
-	void refSelected(const QString &);
+	void refHighlighted(QListWidgetItem *);
+	void refSelected(QListWidgetItem *);
 	void sortToggled(bool);
 	void updateClicked();
 

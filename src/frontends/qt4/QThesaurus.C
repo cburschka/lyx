@@ -17,8 +17,8 @@
 
 #include "controllers/ControlThesaurus.h"
 
-#include <qlineedit.h>
-#include <qpushbutton.h>
+#include <QLineEdit>
+#include <QPushButton>
 
 namespace lyx {
 namespace frontend {

@@ -17,6 +17,8 @@
 #include <QDialog>
 #include <QCloseEvent>
 
+class QListWidgetItem;
+
 namespace lyx {
 namespace frontend {
 
@@ -28,7 +30,7 @@ public:
 	QErrorListDialog(QErrorList * form);
 	~QErrorListDialog();
 public slots:
-	void select_adaptor(int);
+	void select_adaptor(QListWidgetItem *);
 protected:
 	void closeEvent(QCloseEvent * e);
 private:

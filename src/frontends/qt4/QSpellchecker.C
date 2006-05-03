@@ -17,10 +17,11 @@
 
 #include "controllers/ControlSpellchecker.h"
 
-#include <q3progressbar.h>
-#include <qlineedit.h>
-#include <qpushbutton.h>
-#include <q3listbox.h>
+#include <QProgressBar>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QListWidget>
+#include <QListWidgetItem>
 
 using std::string;
 
@@ -81,23 +82,25 @@ void QSpellchecker::partialUpdate(int s)
 	switch (state) {
 
 	case ControlSpellchecker::SPELL_PROGRESSED:
-		dialog_->spellcheckPR->setProgress(controller().getProgress());
+		dialog_->spellcheckPR->setValue(controller().getProgress());
 		break;
 
 	case ControlSpellchecker::SPELL_FOUND_WORD: {
 		dialog_->wordED->setText(toqstr(controller().getWord()));
-		dialog_->suggestionsLB->clear();
+		dialog_->suggestionsLW->clear();
 
 		string w;
 		while (!(w = controller().getSuggestion()).empty()) {
-			dialog_->suggestionsLB->insertItem(toqstr(w));
+			dialog_->suggestionsLW->addItem(toqstr(w));
 		}
 
-		if (dialog_->suggestionsLB->count() == 0) {
-			dialog_->suggestionChanged(dialog_->wordED->text());
+		if (dialog_->suggestionsLW->count() == 0) {
+			dialog_->suggestionChanged(new QListWidgetItem(dialog_->wordED->text()));
 		} else {
-			dialog_->suggestionChanged(dialog_->suggestionsLB->text(0));
+			dialog_->suggestionChanged(dialog_->suggestionsLW->item(0));
 		}
+
+		dialog_->suggestionsLW->setCurrentRow(0);
 	}
 		break;
 

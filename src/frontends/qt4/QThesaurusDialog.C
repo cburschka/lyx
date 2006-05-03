@@ -13,14 +13,16 @@
 #include "QThesaurusDialog.h"
 #include "QThesaurus.h"
 #include "qt_helpers.h"
-//Added by qt3to4:
-#include <QCloseEvent>
+#include "debug.h"
 
 #include "controllers/ControlThesaurus.h"
 
-#include <qpushbutton.h>
-#include <q3listview.h>
-#include <qlineedit.h>
+#include <QCloseEvent>
+#include <QPushButton>
+#include <QTreeWidget>
+#include <QTreeWidgetItem>
+#include <QLineEdit>
+#include <QHeaderView>
 
 using std::string;
 
@@ -33,20 +35,25 @@ QThesaurusDialog::QThesaurusDialog(QThesaurus * form)
 {
 	setupUi(this);
 
-	// hide the pointless QHeader
-	QWidget * w = static_cast<QWidget*>(meaningsLV->child("list view header"));
-	if (w)
-		w->hide();
+	meaningsTV->setColumnCount(1);
+	meaningsTV->header()->hide();
 
 	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
-
-    connect( replaceED, SIGNAL( returnPressed() ), this, SLOT( replaceClicked() ) );
-    connect( replaceED, SIGNAL( textChanged(const QString&) ), this, SLOT( change_adaptor() ) );
-    connect( entryED, SIGNAL( returnPressed() ), this, SLOT( entryChanged() ) );
-    connect( replacePB, SIGNAL( clicked() ), this, SLOT( replaceClicked() ) );
-    connect( meaningsLV, SIGNAL( currentChanged(QListViewItem*) ), this, SLOT( selectionChanged(QListViewItem *) ) );
-    connect( meaningsLV, SIGNAL( doubleClicked(QListViewItem*) ), this, SLOT( selectionClicked(QListViewItem *) ) );
+	connect( replaceED, SIGNAL( returnPressed() ), 
+		this, SLOT( replaceClicked() ) );
+	connect( replaceED, SIGNAL( textChanged(const QString&) ), 
+		this, SLOT( change_adaptor() ) );
+	connect( entryED, SIGNAL( returnPressed() ), 
+		this, SLOT( entryChanged() ) );
+	connect( replacePB, SIGNAL( clicked() ), 
+		this, SLOT( replaceClicked() ) );
+	connect( meaningsTV, SIGNAL( itemClicked(QTreeWidgetItem * , int) ), 
+		this, SLOT( itemClicked(QTreeWidgetItem * , int) ) );
+	connect( meaningsTV, SIGNAL( itemSelectionChanged() ), 
+		this, SLOT( selectionChanged() ) );
+	connect( meaningsTV, SIGNAL( itemActivated(QTreeWidgetItem * , int) ), 
+		this, SLOT( selectionClicked(QTreeWidgetItem *, int) ) );
 }
 
 
@@ -75,51 +82,53 @@ void QThesaurusDialog::replaceClicked()
 }
 
 
-void QThesaurusDialog::selectionChanged(Q3ListViewItem * item)
+void QThesaurusDialog::selectionChanged()
 {
-	if (form_->readOnly())
+	int const col = meaningsTV->currentColumn();
+	if (col<0 || form_->readOnly())
 		return;
 
-	string const entry(fromqstr(item->text(0)));
-	replaceED->setText(toqstr(entry));
+	replaceED->setText(meaningsTV->currentItem()->text(col));
 	replacePB->setEnabled(true);
 	form_->changed();
 }
 
 
-void QThesaurusDialog::selectionClicked(Q3ListViewItem * item)
+void QThesaurusDialog::itemClicked(QTreeWidgetItem * item, int col)
 {
-	entryED->setText(item->text(0));
-	selectionChanged(item);
+	selectionChanged();
+}
+
+
+void QThesaurusDialog::selectionClicked(QTreeWidgetItem * item, int col)
+{
+	entryED->setText(item->text(col));
+	selectionChanged();
 	updateLists();
 }
 
 
 void QThesaurusDialog::updateLists()
 {
-	meaningsLV->clear();
-
-	std::vector<string> matches;
-
-	meaningsLV->setUpdatesEnabled(false);
+	meaningsTV->clear();
+	meaningsTV->setUpdatesEnabled(false);
 
 	Thesaurus::Meanings meanings = form_->controller().getMeanings(fromqstr(entryED->text()));
 
 	for (Thesaurus::Meanings::const_iterator cit = meanings.begin();
 		cit != meanings.end(); ++cit) {
-		Q3ListViewItem * i = new Q3ListViewItem(meaningsLV);
+		QTreeWidgetItem * i = new QTreeWidgetItem(meaningsTV);
 		i->setText(0, toqstr(cit->first));
-		i->setOpen(true);
+		meaningsTV->expandItem(i);
 		for (std::vector<string>::const_iterator cit2 = cit->second.begin();
 			cit2 != cit->second.end(); ++cit2) {
-				Q3ListViewItem * i2 = new Q3ListViewItem(i);
+				QTreeWidgetItem * i2 = new QTreeWidgetItem(i);
 				i2->setText(0, toqstr(*cit2));
-				i2->setOpen(true);
 			}
 	}
 
-	meaningsLV->setUpdatesEnabled(true);
-	meaningsLV->update();
+	meaningsTV->setUpdatesEnabled(true);
+	meaningsTV->update();
 }
 
 } // namespace frontend

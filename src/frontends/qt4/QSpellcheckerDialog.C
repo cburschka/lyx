@@ -13,9 +13,8 @@
 #include "QSpellcheckerDialog.h"
 #include "QSpellchecker.h"
 
-#include <Q3ListBox>
+#include <QListWidget>
 #include <QPushButton>
-//Added by qt3to4:
 #include <QCloseEvent>
 
 namespace lyx {
@@ -29,13 +28,20 @@ QSpellcheckerDialog::QSpellcheckerDialog(QSpellchecker * form)
 	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
 
-    connect( replaceCO, SIGNAL( highlighted(const QString&) ), this, SLOT( replaceChanged(const QString &) ) );
-    connect( replacePB, SIGNAL( clicked() ), this, SLOT( replaceClicked() ) );
-    connect( ignorePB, SIGNAL( clicked() ), this, SLOT( ignoreClicked() ) );
-    connect( replacePB_3, SIGNAL( clicked() ), this, SLOT( acceptClicked() ) );
-    connect( addPB, SIGNAL( clicked() ), this, SLOT( addClicked() ) );
-    connect( suggestionsLB, SIGNAL( doubleClicked(QListBoxItem*) ), this, SLOT( replaceClicked() ) );
-    connect( suggestionsLB, SIGNAL( highlighted(const QString&) ), this, SLOT( suggestionChanged(const QString &) ) );
+	connect( replaceCO, SIGNAL( highlighted(const QString&) ), 
+		this, SLOT( replaceChanged(const QString &) ) );
+	connect( replacePB, SIGNAL( clicked() ), 
+		this, SLOT( replaceClicked() ) );
+	connect( ignorePB, SIGNAL( clicked() ), 
+		this, SLOT( ignoreClicked() ) );
+	connect( replacePB_3, SIGNAL( clicked() ), 
+		this, SLOT( acceptClicked() ) );
+	connect( addPB, SIGNAL( clicked() ), 
+		this, SLOT( addClicked() ) );
+	connect( suggestionsLW, SIGNAL( itemDoubleClicked(QListWidgetItem*) ), 
+		this, SLOT( replaceClicked() ) );
+	connect( suggestionsLW, SIGNAL( itemClicked(QListWidgetItem*) ), 
+		this, SLOT( suggestionChanged(QListWidgetItem*) ) );
 }
 
 
@@ -59,29 +65,29 @@ void QSpellcheckerDialog::ignoreClicked()
 	form_->ignore();
 }
 
-void QSpellcheckerDialog::suggestionChanged(const QString & str)
+void QSpellcheckerDialog::suggestionChanged(QListWidgetItem * item)
 {
 	if (replaceCO->count() != 0)
-		replaceCO->changeItem(str, 0);
+		replaceCO->changeItem(item->text(), 0);
 	else
-		replaceCO->insertItem(str);
+		replaceCO->insertItem(item->text());
 
 	replaceCO->setCurrentItem(0);
 }
 
 void QSpellcheckerDialog::replaceChanged(const QString & str)
 {
-	if (suggestionsLB->currentText() == str)
+	if (suggestionsLW->currentItem()->text() == str)
 		return;
 
 	unsigned int i = 0;
-	for (; i < suggestionsLB->count(); ++i) {
-		if (suggestionsLB->text(i) == str)
+	for (; i < suggestionsLW->count(); ++i) {
+		if (suggestionsLW->item(i)->text() == str)
 			break;
 	}
 
-	if (i != suggestionsLB->count())
-		suggestionsLB->setCurrentItem(i);
+	if (i != suggestionsLW->count())
+		suggestionsLW->setCurrentRow(i);
 }
 
 

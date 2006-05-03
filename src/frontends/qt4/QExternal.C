@@ -33,11 +33,11 @@
 #include "qt_helpers.h"
 #include "validators.h"
 
-#include <qlineedit.h>
-#include <qpushbutton.h>
-#include <qcheckbox.h>
-#include <qtabwidget.h>
-#include <q3textview.h>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QCheckBox>
+#include <QTabWidget>
+#include <QTextBrowser>
 
 namespace external = lyx::external;
 
@@ -386,7 +386,7 @@ void QExternal::updateTemplate()
 {
 	external::Template templ =
 		controller().getTemplate(dialog_->externalCO->currentItem());
-	dialog_->externalTV->setText(toqstr(templ.helpText));
+	dialog_->externalTB->setPlainText(toqstr(templ.helpText));
 
 	// Ascertain which (if any) transformations the template supports
 	// and disable tabs hosting unsupported transforms.

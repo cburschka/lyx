@@ -14,10 +14,9 @@
 #include "QRefDialog.h"
 #include "QRef.h"
 
-#include <qlineedit.h>
-#include <q3listbox.h>
-#include <qpushbutton.h>
-//Added by qt3to4:
+#include <QLineEdit>
+#include <QListWidget>
+#include <QPushButton>
 #include <QCloseEvent>
 
 namespace lyx {
@@ -35,22 +34,31 @@ QRefDialog::QRefDialog(QRef * form)
 	connect(closePB, SIGNAL(clicked()),
 		form_, SLOT(slotClose()));
 
-    connect( typeCO, SIGNAL( activated(int) ), this, SLOT( changed_adaptor() ) );
-    connect( referenceED, SIGNAL( textChanged(const QString&) ), this, SLOT( changed_adaptor() ) );
-    connect( nameED, SIGNAL( textChanged(const QString&) ), this, SLOT( changed_adaptor() ) );
-    connect( refsLB, SIGNAL( highlighted(const QString&) ), this, SLOT( refHighlighted(const QString&) ) );
-    connect( refsLB, SIGNAL( selected(const QString&) ), this, SLOT( refSelected(const QString&) ) );
-    connect( sortCB, SIGNAL( toggled(bool) ), this, SLOT( sortToggled(bool) ) );
-    connect( gotoPB, SIGNAL( clicked() ), this, SLOT( gotoClicked() ) );
-    connect( updatePB, SIGNAL( clicked() ), this, SLOT( updateClicked() ) );
-    connect( bufferCO, SIGNAL( activated(int) ), this, SLOT( updateClicked() ) );
+	connect( typeCO, SIGNAL( activated(int) ), 
+		this, SLOT( changed_adaptor() ) );
+	connect( referenceED, SIGNAL( textChanged(const QString&) ), 
+		this, SLOT( changed_adaptor() ) );
+	connect( nameED, SIGNAL( textChanged(const QString&) ), 
+		this, SLOT( changed_adaptor() ) );
+	connect( refsLW, SIGNAL(  itemClicked(QListWidgetItem *) ), 
+		this, SLOT( refHighlighted(QListWidgetItem *) ) );
+	connect( refsLW, SIGNAL(  itemActivated(QListWidgetItem *) ), 
+		this, SLOT( refSelected(QListWidgetItem *) ) );
+	connect( sortCB, SIGNAL( toggled(bool) ),
+		this, SLOT( sortToggled(bool) ) );
+	connect( gotoPB, SIGNAL( clicked() ), 
+		this, SLOT( gotoClicked() ) );
+	connect( updatePB, SIGNAL( clicked() ), 
+		this, SLOT( updateClicked() ) );
+	connect( bufferCO, SIGNAL( activated(int) ), 
+		this, SLOT( updateClicked() ) );
 
 }
 
 void QRefDialog::show()
 {
 	QDialog::show();
-	refsLB->setFocus();
+	refsLW->setFocus();
 }
 
 
@@ -66,17 +74,18 @@ void QRefDialog::gotoClicked()
 }
 
 
-void QRefDialog::refHighlighted(const QString & sel)
+void QRefDialog::refHighlighted(QListWidgetItem * sel)
 {
 	if (form_->readOnly())
 		return;
 
-	int const cur_item = refsLB->currentItem();
+/*	int const cur_item = refsLW->currentRow();
 	bool const cur_item_selected = cur_item >= 0 ?
-		refsLB->isSelected(cur_item) : false;
+		refsLB->isSelected(cur_item) : false;*/
+	bool const cur_item_selected = refsLW->isItemSelected(sel);
 
 	if (cur_item_selected)
-		referenceED->setText(sel);
+		referenceED->setText(sel->text());
 
 	if (form_->at_ref_)
 		form_->gotoRef();
@@ -88,17 +97,18 @@ void QRefDialog::refHighlighted(const QString & sel)
 }
 
 
-void QRefDialog::refSelected(const QString & sel)
+void QRefDialog::refSelected(QListWidgetItem * sel)
 {
 	if (form_->readOnly())
 		return;
 
-	int const cur_item = refsLB->currentItem();
+/*	int const cur_item = refsLW->currentRow();
 	bool const cur_item_selected = cur_item >= 0 ?
-		refsLB->isSelected(cur_item) : false;
+		refsLB->isSelected(cur_item) : false;*/
+	bool const cur_item_selected = refsLW->isItemSelected(sel);
 
 	if (cur_item_selected)
-		referenceED->setText(sel);
+		referenceED->setText(sel->text());
 	// <enter> or double click, inserts ref and closes dialog
 	form_->slotOK();
 }

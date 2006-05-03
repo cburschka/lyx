@@ -17,9 +17,9 @@
 
 #include "controllers/ControlErrorList.h"
 
-#include <q3listbox.h>
-#include <q3textbrowser.h>
-#include <qpushbutton.h>
+#include <QListWidget>
+#include <QTextBrowser>
+#include <QPushButton>
 
 namespace lyx {
 namespace frontend {
@@ -38,26 +38,28 @@ void QErrorList::build_dialog()
 }
 
 
-void QErrorList::select(int item)
+void QErrorList::select(QListWidgetItem * wi)
 {
+	int const item = dialog_->errorsLW->row(wi);
 	controller().goTo(item);
-	dialog_->descriptionTB->setText(toqstr(controller().errorList()[item].description));
+	dialog_->descriptionTB->setPlainText(toqstr(controller().errorList()[item].description));
 }
 
 
 void QErrorList::update_contents()
 {
 	setTitle(controller().name());
-	dialog_->errorsLB->clear();
-	dialog_->descriptionTB->setText(QString());
+	dialog_->errorsLW->clear();
+	dialog_->descriptionTB->setPlainText(QString());
 
 	ErrorList::const_iterator it = controller().errorList().begin();
 	ErrorList::const_iterator end = controller().errorList().end();
 	for(; it != end; ++it) {
-		new Q3ListBoxText(dialog_->errorsLB, toqstr(it->error));
+		dialog_->errorsLW->addItem(toqstr(it->error));
 	}
 
-	dialog_->errorsLB->setSelected(0, true);
+	dialog_->errorsLW->setCurrentRow(0);
+	select(dialog_->errorsLW->item(0));
 }
 
 } // namespace frontend

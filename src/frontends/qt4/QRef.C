@@ -21,11 +21,12 @@
 
 #include "insets/insetref.h"
 
-#include <qlineedit.h>
-#include <qcheckbox.h>
-#include <q3listbox.h>
-#include <qpushbutton.h>
-#include <qtooltip.h>
+#include <QLineEdit>
+#include <QCheckBox>
+#include <QListWidget>
+#include <QListWidgetItem>
+#include <QPushButton>
+#include <QToolTip>
 
 
 using std::vector;
@@ -51,7 +52,7 @@ void QRef::build_dialog()
 	bcview().setOK(dialog_->okPB);
 	bcview().setApply(dialog_->applyPB);
 	bcview().setCancel(dialog_->closePB);
-	bcview().addReadOnly(dialog_->refsLB);
+	bcview().addReadOnly(dialog_->refsLW);
 	bcview().addReadOnly(dialog_->sortCB);
 	bcview().addReadOnly(dialog_->nameED);
 	bcview().addReadOnly(dialog_->referenceED);
@@ -168,13 +169,13 @@ void QRef::redoRefs()
 {
 	// Prevent these widgets from emitting any signals whilst
 	// we modify their state.
-	dialog_->refsLB->blockSignals(true);
+	dialog_->refsLW->blockSignals(true);
 	dialog_->referenceED->blockSignals(true);
 
-	int lastref = dialog_->refsLB->currentItem();
+	int lastref = dialog_->refsLW->currentRow();
 
-	dialog_->refsLB->setAutoUpdate(false);
-	dialog_->refsLB->clear();
+	dialog_->refsLW->setUpdatesEnabled(false);
+	dialog_->refsLW->clear();
 
 	// need this because Qt will send a highlight() here for
 	// the first item inserted
@@ -182,30 +183,33 @@ void QRef::redoRefs()
 
 	for (std::vector<string>::const_iterator iter = refs_.begin();
 		iter != refs_.end(); ++iter) {
-		dialog_->refsLB->insertItem(toqstr(*iter));
+		dialog_->refsLW->addItem(toqstr(*iter));
 	}
 
 	if (sort_)
-		dialog_->refsLB->sort();
+		dialog_->refsLW->sortItems();
 
 	dialog_->referenceED->setText(tmp);
 
 	// restore the last selection for new insets
 	if (tmp.isEmpty() && lastref != -1
-		&& lastref < int(dialog_->refsLB->count())) {
-		dialog_->refsLB->setCurrentItem(lastref);
-		dialog_->refsLB->clearSelection();
+		&& lastref < int(dialog_->refsLW->count())) {
+		dialog_->refsLW->setCurrentRow(lastref);
+		dialog_->refsLW->clearSelection();
 	} else
-		for (unsigned int i = 0; i < dialog_->refsLB->count(); ++i) {
-			if (tmp == dialog_->refsLB->text(i))
-				dialog_->refsLB->setSelected(i, true);
+		for (unsigned int i = 0; i < dialog_->refsLW->count(); ++i) {
+			if (tmp == dialog_->refsLW->item(i)->text()) {
+				QListWidgetItem * const item = dialog_->refsLW->item(i);
+				dialog_->refsLW->setItemSelected(item, true);
+
+			}
 		}
 
-	dialog_->refsLB->setAutoUpdate(true);
-	dialog_->refsLB->update();
+	dialog_->refsLW->setUpdatesEnabled(true);
+	dialog_->refsLW->update();
 
 	// Re-activate the emission of signals by these widgets.
-	dialog_->refsLB->blockSignals(false);
+	dialog_->refsLW->blockSignals(false);
 	dialog_->referenceED->blockSignals(false);
 }
 
@@ -218,7 +222,7 @@ void QRef::updateRefs()
 	string const name = controller().getBufferName(dialog_->bufferCO->currentItem());
 	refs_ = controller().getLabelList(name);
 	dialog_->sortCB->setEnabled(!refs_.empty());
-	dialog_->refsLB->setEnabled(!refs_.empty());
+	dialog_->refsLW->setEnabled(!refs_.empty());
 	dialog_->gotoPB->setEnabled(!refs_.empty());
 	redoRefs();
 }

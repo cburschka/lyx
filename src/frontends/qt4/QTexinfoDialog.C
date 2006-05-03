@@ -13,10 +13,9 @@
 #include "QTexinfoDialog.h"
 #include "QTexinfo.h"
 
-#include <qcheckbox.h>
-#include <q3listbox.h>
-#include <qpushbutton.h>
-//Added by qt3to4:
+#include <QCheckBox>
+#include <QListWidget>
+#include <QPushButton>
 #include <QCloseEvent>
 
 using std::vector;
@@ -40,7 +39,7 @@ QTexinfoDialog::QTexinfoDialog(QTexinfo * form)
     connect( path, SIGNAL( stateChanged(int) ), this, SLOT( update() ) );
     connect( rescanPB, SIGNAL( clicked() ), this, SLOT( enableViewPB() ) );
     connect( rescanPB, SIGNAL( clicked() ), this, SLOT( rescanClicked() ) );
-    connect( fileList, SIGNAL( highlighted(QListBoxItem*) ), this, SLOT( enableViewPB() ) );
+    connect( fileList, SIGNAL( itemClicked(QListWidgetItem*) ), this, SLOT( enableViewPB() ) );
 }
 
 
@@ -68,7 +67,7 @@ void QTexinfoDialog::rescanClicked()
 
 void QTexinfoDialog::viewClicked()
 {
-	vector<string>::size_type const fitem = fileList->currentItem();
+	vector<string>::size_type const fitem = fileList->currentRow();
 	vector<string> const & data = form_->texdata_[form_->activeStyle];
 	string file = data[fitem];
 	if (!path->isChecked())
@@ -100,7 +99,7 @@ void QTexinfoDialog::update()
 
 void QTexinfoDialog::enableViewPB()
 {
-	viewPB->setEnabled(fileList->currentItem() > -1);
+	viewPB->setEnabled(fileList->currentRow() > -1);
 }
 
 } // namespace frontend

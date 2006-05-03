@@ -17,9 +17,9 @@
 
 #include "support/filetools.h"
 
-#include <qcheckbox.h>
-#include <q3listbox.h>
-#include <qpushbutton.h>
+#include <QCheckBox>
+#include <QListWidget>
+#include <QPushButton>
 
 using std::string;
 
@@ -56,7 +56,7 @@ void QTexinfo::updateStyles(ControlTexinfo::texFileSuffix whichStyle)
 	ContentsType::const_iterator it  = data.begin();
 	ContentsType::const_iterator end = data.end();
 	for (; it != end; ++it)
-		dialog_->fileList->insertItem(toqstr(*it));
+		dialog_->fileList->addItem(toqstr(*it));
 
 	activeStyle = whichStyle;
 }

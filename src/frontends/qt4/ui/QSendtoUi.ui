@@ -20,28 +20,44 @@
   </property>
   <layout class="QGridLayout" >
    <property name="margin" >
-    <number>11</number>
+    <number>9</number>
    </property>
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="2" column="0" >
-    <widget class="QLabel" name="commandLA" >
-     <property name="text" >
-      <string>&amp;Command:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>commandCO</cstring>
-     </property>
-    </widget>
+   <item row="1" column="0" >
+    <widget class="QListWidget" name="formatLW" />
    </item>
-   <item row="0" column="0" >
-    <widget class="QLabel" name="formatLA" >
-     <property name="text" >
-      <string>&amp;Export formats:</string>
+   <item row="3" column="0" >
+    <widget class="QComboBox" name="commandCO" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>3</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
-     <property name="buddy" >
-      <cstring>formatLB</cstring>
+     <property name="focusPolicy" >
+      <enum>Qt::StrongFocus</enum>
+     </property>
+     <property name="toolTip" >
+      <string>Process the converted file with this command ($$FName = file name)</string>
+     </property>
+     <property name="editable" >
+      <bool>true</bool>
+     </property>
+     <property name="maxCount" >
+      <number>666</number>
+     </property>
+     <property name="insertPolicy" >
+      <enum>QComboBox::InsertAtTop</enum>
+     </property>
+     <property name="autoCompletion" >
+      <bool>true</bool>
+     </property>
+     <property name="duplicatesEnabled" >
+      <bool>false</bool>
      </property>
     </widget>
    </item>
@@ -82,66 +98,30 @@
      </item>
     </layout>
    </item>
-   <item row="3" column="0" >
-    <widget class="QComboBox" name="commandCO" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>3</hsizetype>
-       <vsizetype>0</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
+   <item row="0" column="0" >
+    <widget class="QLabel" name="formatLA" >
+     <property name="text" >
+      <string>&amp;Export formats:</string>
      </property>
-     <property name="focusPolicy" >
-      <enum>Qt::StrongFocus</enum>
-     </property>
-     <property name="toolTip" >
-      <string>Process the converted file with this command ($$FName = file name)</string>
-     </property>
-     <property name="editable" >
-      <bool>true</bool>
-     </property>
-     <property name="maxCount" >
-      <number>666</number>
-     </property>
-     <property name="insertPolicy" >
-      <enum>QComboBox::InsertAtTop</enum>
-     </property>
-     <property name="autoCompletion" >
-      <bool>true</bool>
-     </property>
-     <property name="duplicatesEnabled" >
-      <bool>false</bool>
+     <property name="buddy" >
+      <cstring>formatLW</cstring>
      </property>
     </widget>
    </item>
-   <item row="1" column="0" >
-    <widget class="Q3ListBox" name="formatLB" >
-     <property name="maximumSize" >
-      <size>
-       <width>32767</width>
-       <height>32767</height>
-      </size>
+   <item row="2" column="0" >
+    <widget class="QLabel" name="commandLA" >
+     <property name="text" >
+      <string>&amp;Command:</string>
      </property>
-     <property name="toolTip" >
-      <string>Available export converters</string>
+     <property name="buddy" >
+      <cstring>commandCO</cstring>
      </property>
     </widget>
    </item>
   </layout>
  </widget>
  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
- <customwidgets>
-  <customwidget>
-   <class>Q3ListBox</class>
-   <extends></extends>
-   <header>q3listbox.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
- </customwidgets>
  <tabstops>
-  <tabstop>formatLB</tabstop>
   <tabstop>okPB</tabstop>
   <tabstop>applyPB</tabstop>
   <tabstop>closePB</tabstop>

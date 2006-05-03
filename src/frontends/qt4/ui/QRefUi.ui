@@ -20,161 +20,33 @@
   </property>
   <layout class="QGridLayout" >
    <property name="margin" >
-    <number>11</number>
+    <number>9</number>
    </property>
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="2" column="1" colspan="2" >
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item>
-      <widget class="QPushButton" name="updatePB" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>3</hsizetype>
-         <vsizetype>0</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="toolTip" >
-        <string>Update the label list</string>
-       </property>
-       <property name="text" >
-        <string>&amp;Update</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="gotoPB" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>3</hsizetype>
-         <vsizetype>0</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="toolTip" >
-        <string>Jump to the label</string>
-       </property>
-       <property name="text" >
-        <string>&amp;Go to Label</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+   <item row="1" column="0" colspan="3" >
+    <widget class="QListWidget" name="refsLW" />
    </item>
-   <item row="2" column="0" >
-    <widget class="QCheckBox" name="sortCB" >
-     <property name="toolTip" >
-      <string>Sort labels in alphabetical order</string>
-     </property>
-     <property name="text" >
-      <string>&amp;Sort</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1" colspan="2" >
-    <widget class="QLineEdit" name="referenceED" />
-   </item>
-   <item row="4" column="1" colspan="2" >
-    <widget class="QComboBox" name="typeCO" >
+   <item row="0" column="2" >
+    <widget class="QComboBox" name="bufferCO" >
      <property name="sizePolicy" >
       <sizepolicy>
-       <hsizetype>1</hsizetype>
+       <hsizetype>7</hsizetype>
        <vsizetype>0</vsizetype>
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <property name="toolTip" >
-      <string>Cross-reference as it appears in output</string>
-     </property>
-     <item>
-      <property name="text" >
-       <string>&lt;reference></string>
-      </property>
-     </item>
-     <item>
-      <property name="text" >
-       <string>(&lt;reference>)</string>
-      </property>
-     </item>
-     <item>
-      <property name="text" >
-       <string>&lt;page></string>
-      </property>
-     </item>
-     <item>
-      <property name="text" >
-       <string>on page &lt;page></string>
-      </property>
-     </item>
-     <item>
-      <property name="text" >
-       <string>&lt;reference> on page &lt;page></string>
-      </property>
-     </item>
-     <item>
-      <property name="text" >
-       <string>Formatted reference</string>
-      </property>
-     </item>
     </widget>
    </item>
-   <item row="3" column="0" >
-    <widget class="QLabel" name="referenceL" >
+   <item row="0" column="0" colspan="2" >
+    <widget class="QLabel" name="refsL" >
      <property name="text" >
-      <string>&amp;Label:</string>
-     </property>
-     <property name="alignment" >
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      <string>La&amp;bels in:</string>
      </property>
      <property name="buddy" >
-      <cstring>referenceED</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0" >
-    <widget class="QLabel" name="typeLA" >
-     <property name="text" >
-      <string>&amp;Format:</string>
-     </property>
-     <property name="alignment" >
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-     </property>
-     <property name="buddy" >
-      <cstring>typeLA</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="0" >
-    <widget class="QLabel" name="nameL" >
-     <property name="enabled" >
-      <bool>false</bool>
-     </property>
-     <property name="text" >
-      <string>&amp;Name:</string>
-     </property>
-     <property name="alignment" >
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-     </property>
-     <property name="buddy" >
-      <cstring>nameED</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="1" colspan="2" >
-    <widget class="QLineEdit" name="nameED" >
-     <property name="enabled" >
-      <bool>false</bool>
+      <cstring>bufferCO</cstring>
      </property>
     </widget>
    </item>
@@ -231,61 +103,164 @@
      </item>
     </layout>
    </item>
-   <item row="1" column="0" colspan="3" >
-    <widget class="Q3ListBox" name="refsLB" >
+   <item row="5" column="1" colspan="2" >
+    <widget class="QLineEdit" name="nameED" >
      <property name="enabled" >
-      <bool>true</bool>
-     </property>
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>7</hsizetype>
-       <vsizetype>3</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="toolTip" >
-      <string>Available labels</string>
+      <bool>false</bool>
      </property>
     </widget>
    </item>
-   <item row="0" column="0" colspan="2" >
-    <widget class="QLabel" name="refsL" >
+   <item row="5" column="0" >
+    <widget class="QLabel" name="nameL" >
+     <property name="enabled" >
+      <bool>false</bool>
+     </property>
      <property name="text" >
-      <string>La&amp;bels in:</string>
+      <string>&amp;Name:</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
      </property>
      <property name="buddy" >
-      <cstring>bufferCO</cstring>
+      <cstring>nameED</cstring>
      </property>
     </widget>
    </item>
-   <item row="0" column="2" >
-    <widget class="QComboBox" name="bufferCO" >
+   <item row="4" column="0" >
+    <widget class="QLabel" name="typeLA" >
+     <property name="text" >
+      <string>&amp;Format:</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+     <property name="buddy" >
+      <cstring>typeLA</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" >
+    <widget class="QLabel" name="referenceL" >
+     <property name="text" >
+      <string>&amp;Label:</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+     <property name="buddy" >
+      <cstring>referenceED</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1" colspan="2" >
+    <widget class="QComboBox" name="typeCO" >
      <property name="sizePolicy" >
       <sizepolicy>
-       <hsizetype>7</hsizetype>
+       <hsizetype>1</hsizetype>
        <vsizetype>0</vsizetype>
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
+     <property name="toolTip" >
+      <string>Cross-reference as it appears in output</string>
+     </property>
+     <item>
+      <property name="text" >
+       <string>&lt;reference></string>
+      </property>
+     </item>
+     <item>
+      <property name="text" >
+       <string>(&lt;reference>)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text" >
+       <string>&lt;page></string>
+      </property>
+     </item>
+     <item>
+      <property name="text" >
+       <string>on page &lt;page></string>
+      </property>
+     </item>
+     <item>
+      <property name="text" >
+       <string>&lt;reference> on page &lt;page></string>
+      </property>
+     </item>
+     <item>
+      <property name="text" >
+       <string>Formatted reference</string>
+      </property>
+     </item>
     </widget>
+   </item>
+   <item row="3" column="1" colspan="2" >
+    <widget class="QLineEdit" name="referenceED" />
+   </item>
+   <item row="2" column="0" >
+    <widget class="QCheckBox" name="sortCB" >
+     <property name="toolTip" >
+      <string>Sort labels in alphabetical order</string>
+     </property>
+     <property name="text" >
+      <string>&amp;Sort</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1" colspan="2" >
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QPushButton" name="updatePB" >
+       <property name="sizePolicy" >
+        <sizepolicy>
+         <hsizetype>3</hsizetype>
+         <vsizetype>0</vsizetype>
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="toolTip" >
+        <string>Update the label list</string>
+       </property>
+       <property name="text" >
+        <string>&amp;Update</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="gotoPB" >
+       <property name="sizePolicy" >
+        <sizepolicy>
+         <hsizetype>3</hsizetype>
+         <vsizetype>0</vsizetype>
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="toolTip" >
+        <string>Jump to the label</string>
+       </property>
+       <property name="text" >
+        <string>&amp;Go to Label</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>
  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
- <customwidgets>
-  <customwidget>
-   <class>Q3ListBox</class>
-   <extends></extends>
-   <header>q3listbox.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
- </customwidgets>
  <tabstops>
   <tabstop>bufferCO</tabstop>
-  <tabstop>refsLB</tabstop>
   <tabstop>sortCB</tabstop>
   <tabstop>updatePB</tabstop>
   <tabstop>gotoPB</tabstop>

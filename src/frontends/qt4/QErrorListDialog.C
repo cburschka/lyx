@@ -13,9 +13,8 @@
 #include "QErrorListDialog.h"
 #include "QErrorList.h"
 
-#include <q3listbox.h>
-#include <qpushbutton.h>
-//Added by qt3to4:
+#include <QListWidget>
+#include <QPushButton>
 #include <QCloseEvent>
 
 namespace lyx {
@@ -27,10 +26,10 @@ QErrorListDialog::QErrorListDialog(QErrorList * form)
 	setupUi(this);
 	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
-	connect(errorsLB, SIGNAL(returnPressed(Q3ListBoxItem *)),
+	connect(errorsLW, SIGNAL( itemActivated(QListWidgetItem *)),
 		form, SLOT(slotClose()));
-
-    connect( errorsLB, SIGNAL( highlighted(int) ), this, SLOT( select_adaptor(int) ) );
+	connect( errorsLW, SIGNAL( itemClicked(QListWidgetItem *) ), 
+		this, SLOT( select_adaptor(QListWidgetItem *) ) );
 }
 
 
@@ -38,7 +37,7 @@ QErrorListDialog::~QErrorListDialog()
 {}
 
 
-void QErrorListDialog::select_adaptor(int item)
+void QErrorListDialog::select_adaptor(QListWidgetItem * item)
 {
 	form_->select(item);
 }

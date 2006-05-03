@@ -13,8 +13,7 @@
 #include "QSendtoDialog.h"
 #include "QSendto.h"
 
-#include <qpushbutton.h>
-//Added by qt3to4:
+#include <QPushButton>
 #include <QCloseEvent>
 
 
@@ -33,10 +32,14 @@ QSendtoDialog::QSendtoDialog(QSendto * form)
 	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
 
-    connect( formatLB, SIGNAL( highlighted(const QString&) ), this, SLOT( slotFormatHighlighted(const QString&) ) );
-    connect( formatLB, SIGNAL( selected(const QString&) ), this, SLOT( slotFormatSelected(const QString&) ) );
-    connect( formatLB, SIGNAL( highlighted(const QString&) ), this, SLOT( changed_adaptor() ) );
-    connect( commandCO, SIGNAL( textChanged(const QString&) ), this, SLOT( changed_adaptor() ) );
+	connect( formatLW, SIGNAL( itemClicked(QListWidgetItem *) ), 
+		this, SLOT( slotFormatHighlighted(QListWidgetItem *) ) );
+	connect( formatLW, SIGNAL( itemActivated(QListWidgetItem *) ), 
+		this, SLOT( slotFormatSelected(QListWidgetItem *) ) );
+	connect( formatLW, SIGNAL( itemClicked(QListWidgetItem *) ), 
+		this, SLOT( changed_adaptor() ) );
+	connect( commandCO, SIGNAL( textChanged(const QString&) ), 
+		this, SLOT( changed_adaptor() ) );
 }
 
 

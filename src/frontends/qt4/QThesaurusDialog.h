@@ -17,7 +17,7 @@
 #include <QDialog>
 #include <QCloseEvent>
 
-class Q3ListViewItem;
+class QTreeWidgetItem;
 
 namespace lyx {
 namespace frontend {
@@ -34,8 +34,9 @@ protected slots:
 	virtual void change_adaptor();
 	virtual void entryChanged();
 	virtual void replaceClicked();
-	virtual void selectionChanged(Q3ListViewItem *);
-	virtual void selectionClicked(Q3ListViewItem *);
+	virtual void selectionChanged();
+	virtual void selectionClicked(QTreeWidgetItem *, int);
+	virtual void itemClicked(QTreeWidgetItem *, int);
 protected:
 	virtual void closeEvent(QCloseEvent * e);
 private:

@@ -14,6 +14,8 @@
 
 #include "QDialogView.h"
 
+class QListWidgetItem;
+
 namespace lyx {
 namespace frontend {
 
@@ -29,7 +31,7 @@ public:
 	QErrorList(Dialog &);
 private:
 	/// select an entry
-	void select(int item);
+	void select(QListWidgetItem *);
 	/// required apply
 	virtual void apply() {}
 	/// build dialog
