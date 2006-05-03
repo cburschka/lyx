@@ -1,5 +1,11 @@
+2006-05-03  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* configure.py: reinstantiate part of removeExtraFiles that was
+	removed by mistake. Add removal of chklatex.{ltx,log}.
+
 2006-04-29  Enrico Forestieri <forenr@tlc.unipr.it>
-	* configure.py: fix a cygwin compatibility problem with configure.py
+	
+	* configure.py: fix a cygwin compatibility problem
 
 2006-04-27  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 

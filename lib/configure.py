@@ -624,6 +624,15 @@ def checkTeXAllowSpaces():
     removeFiles( [ 'a b.tex', 'a b.log', 'texput.log' ])
 
 
+def removeTempFiles():
+  # Final clean-up
+  if not lyx_keep_temps:
+    removeFiles(['chkconfig.sed', 'chkconfig.vars',  \
+      'wrap_chkconfig.ltx', 'wrap_chkconfig.log', \
+      'chklayouts.tex', 'missfont.log', 
+      'chklatex.ltx', 'chklatex.log'])
+
+
 if __name__ == '__main__':
   lyx_check_config = True
   outfile = 'lyxrc.defaults'
@@ -680,3 +689,4 @@ Options:
   # --without-latex-config can disable lyx_check_config
   checkLatexConfig( lyx_check_config and LATEX != '', bool_docbook, bool_linuxdoc)
   createLaTeXConfig()
+  removeTempFiles()
