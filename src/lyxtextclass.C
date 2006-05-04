@@ -34,6 +34,7 @@ using lyx::support::makeDisplayPath;
 using lyx::support::quoteName;
 using lyx::support::rtrim;
 using lyx::support::subst;
+using lyx::support::addName;
 
 using std::endl;
 using std::find_if;
@@ -917,15 +918,17 @@ bool LyXTextClass::load(string const & path) const
 	if (loaded_)
 		return true;
 
-	// Read style-file, current directory is searched before system ones
-	string real_file = path + "/" + name_ + ".layout";
-	if (!fs::exists(real_file))
-		real_file = libFileSearch("layouts", name_, "layout");
-	loaded_ = const_cast<LyXTextClass*>(this)->read(real_file) == 0;
+	// Read style-file, provided path is searched before the system ones
+	string layout_file;
+	if (!path.empty())
+		layout_file = addName(path, name_ + ".layout");
+	if (layout_file.empty() || !fs::exists(layout_file))
+		layout_file = libFileSearch("layouts", name_, "layout");
+	loaded_ = const_cast<LyXTextClass*>(this)->read(layout_file) == 0;
 
 	if (!loaded_) {
 		lyxerr << "Error reading `"
-		       << makeDisplayPath(real_file)
+		       << makeDisplayPath(layout_file)
 		       << "'\n(Check `" << name_
 		       << "')\nCheck your installation and "
 			"try Options/Reconfigure..." << endl;
