@@ -82,7 +82,6 @@
 #include "QTexinfo.h"
 #include "QToc.h"
 #include "QTocDialog.h"
-#include "q3url.h"
 #include "QVSpace.h"
 #include "QWrap.h"
 

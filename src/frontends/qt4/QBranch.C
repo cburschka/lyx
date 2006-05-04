@@ -21,7 +21,7 @@
 
 #include "insets/insetbranch.h"
 
-#include <qpushbutton.h>
+#include <QPushButton>
 
 using std::string;
 

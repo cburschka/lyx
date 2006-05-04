@@ -21,10 +21,9 @@
 #include "controllers/ControlParagraph.h"
 #include "controllers/helper_funcs.h"
 
-#include <q3buttongroup.h>
-#include <qcheckbox.h>
-#include <qlineedit.h>
-#include <qpushbutton.h>
+#include <QCheckBox>
+#include <QLineEdit>
+#include <QPushButton>
 
 
 using std::string;

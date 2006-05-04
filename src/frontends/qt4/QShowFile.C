@@ -17,8 +17,8 @@
 
 #include "controllers/ControlShowFile.h"
 
-#include <q3textview.h>
-#include <qpushbutton.h>
+#include <QTextBrowser>
+#include <QPushButton>
 
 using std::string;
 
@@ -51,7 +51,7 @@ void QShowFile::update_contents()
 		contents = "Error -> Cannot load file!";
 	}
 
-	dialog_->text->setText(toqstr(contents));
+	dialog_->textTB->setPlainText(toqstr(contents));
 }
 
 } // namespace frontend

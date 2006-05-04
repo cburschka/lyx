@@ -18,8 +18,8 @@
 
 #include <sstream>
 
-#include <q3textview.h>
-#include <qpushbutton.h>
+#include <QTextBrowser>
+#include <QPushButton>
 
 namespace lyx {
 namespace frontend {
@@ -44,7 +44,7 @@ void QLog::update_contents()
 	std::ostringstream ss;
 	controller().getContents(ss);
 
-	dialog_->logTV->setText(toqstr(ss.str()));
+	dialog_->logTB->setPlainText(toqstr(ss.str()));
 }
 
 } // namespace frontend

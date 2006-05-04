@@ -82,8 +82,10 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 		form, SLOT(slotRestore()));
 
 
-    connect( savePB, SIGNAL( clicked() ), this, SLOT( saveDefaultClicked() ) );
-    connect( defaultPB, SIGNAL( clicked() ), this, SLOT( useDefaultsClicked() ) );
+	connect(savePB, SIGNAL( clicked() ), 
+		this, SLOT( saveDefaultClicked() ) );
+	connect(defaultPB, SIGNAL( clicked() ), 
+		this, SLOT( useDefaultsClicked() ) );
 
 	// Manage the restore, ok, apply, restore and cancel/close buttons
 	form_->bcview().setOK(okPB);
@@ -280,13 +282,15 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	connect(numberingModule->tocSL, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
 	connect(numberingModule->depthSL, SIGNAL(valueChanged(int)), this, SLOT(updateNumbering()));
 	connect(numberingModule->tocSL, SIGNAL(valueChanged(int)), this, SLOT(updateNumbering()));
-	numberingModule->tocLV->setSorting(-1);
-
+	numberingModule->tocTW->setColumnCount(3);
+	numberingModule->tocTW->headerItem()->setText(0, qt_("Example"));
+	numberingModule->tocTW->headerItem()->setText(1, qt_("Numbered"));
+	numberingModule->tocTW->headerItem()->setText(2, qt_("Appears in TOC"));
 
 
 	biblioModule = new UiWidget<Ui::BiblioUi>;
-    connect( biblioModule->citeNatbibRB, SIGNAL( toggled(bool) ), biblioModule->citationStyleL, SLOT( setEnabled(bool) ) );
-    connect( biblioModule->citeNatbibRB, SIGNAL( toggled(bool) ), biblioModule->citeStyleCO, SLOT( setEnabled(bool) ) );
+	connect( biblioModule->citeNatbibRB, SIGNAL( toggled(bool) ), biblioModule->citationStyleL, SLOT( setEnabled(bool) ) );
+	connect( biblioModule->citeNatbibRB, SIGNAL( toggled(bool) ), biblioModule->citeStyleCO, SLOT( setEnabled(bool) ) );
 	// biblio
 	connect(biblioModule->citeDefaultRB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 	connect(biblioModule->citeNatbibRB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
@@ -346,7 +350,7 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	connect(bulletsModule, SIGNAL(changed()), this, SLOT(change_adaptor()));
 
 
-	floatModule = new FloatPlacement(this);
+	floatModule = new FloatPlacement;
 	// float
 	connect(floatModule, SIGNAL(changed()), this, SLOT(change_adaptor()));
 
@@ -542,29 +546,28 @@ void QDocumentDialog::updateNumbering()
 	LyXTextClass const & tclass =
 		form_->controller().params().getLyXTextClass();
 
-	//numberingModule->tocLV->setUpdatesEnabled(false);
+	numberingModule->tocTW->setUpdatesEnabled(false);
+	numberingModule->tocTW->clear();
 
-	// Update the example QListView
 	int const depth = numberingModule->depthSL->value();
 	int const toc = numberingModule->tocSL->value();
 	QString const no = qt_("No");
 	QString const yes = qt_("Yes");
 	LyXTextClass::const_iterator end = tclass.end();
 	LyXTextClass::const_iterator cit = tclass.begin();
-	numberingModule->tocLV->clear();
-	Q3ListViewItem * item = 0;
+	QTreeWidgetItem * item = 0;
 	for ( ; cit != end ; ++cit) {
 		int const toclevel = (*cit)->toclevel;
 		if (toclevel != LyXLayout::NOT_IN_TOC) {
-			item = new Q3ListViewItem(numberingModule->tocLV,
-						 item, qt_((*cit)->name()));
+			item = new QTreeWidgetItem(numberingModule->tocTW);
+			item->setText(0, qt_((*cit)->name()));
 			item->setText(1, (toclevel <= depth) ? yes : no);
 			item->setText(2, (toclevel <= toc) ? yes : no);
 		}
 	}
 
-	//numberingModule->tocLV->setUpdatesEnabled(true);
-	//numberingModule->tocLV->update();
+	numberingModule->tocTW->setUpdatesEnabled(true);
+	numberingModule->tocTW->update();
 }
 
 void QDocumentDialog::apply(BufferParams & params)
@@ -875,7 +878,7 @@ void QDocumentDialog::update(BufferParams const & params)
 		updateNumbering();
 	} else {
 		numberingModule->setEnabled(false);
-		numberingModule->tocLV->clear();
+		numberingModule->tocTW->clear();
 	}
 
 	// bullets

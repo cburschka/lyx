@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file QDocumentDialog.h
+ * \file QBranches.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -22,7 +22,7 @@
 #include <string>
 
 
-class Q3ListViewItem;
+class QTreeWidgetItem;
 
 class BufferParams;
 
@@ -44,14 +44,14 @@ signals:
 	void changed();
 
 protected:
-	void toggleBranch(Q3ListViewItem * selItem);
+	void toggleBranch(QTreeWidgetItem *);
 	void update();
 
 protected slots:
 	void on_addBranchPB_pressed();
 	void on_removePB_pressed();
 	void on_activatePB_pressed();
-	void on_branchesLV_doubleClicked(Q3ListViewItem *);
+	void on_branchesTW_itemDoubleClicked(QTreeWidgetItem *, int);
 	void on_colorPB_clicked();
 
 private:

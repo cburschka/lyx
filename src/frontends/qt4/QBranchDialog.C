@@ -13,8 +13,7 @@
 #include "QBranchDialog.h"
 #include "QBranch.h"
 
-#include <qpushbutton.h>
-//Added by qt3to4:
+#include <QPushButton>
 #include <QCloseEvent>
 
 namespace lyx {
@@ -28,8 +27,8 @@ QBranchDialog::QBranchDialog(QBranch * form)
 		form, SLOT(slotOK()));
 	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
-
-    connect( branchCO, SIGNAL( activated(int) ), this, SLOT( change_adaptor() ) );
+	connect(branchCO, SIGNAL( activated(int) ), 
+		this, SLOT( change_adaptor() ) );
 }
 
 

@@ -26,7 +26,7 @@ class FloatPlacement : public QWidget {
 	Q_OBJECT
 
 public:
-	FloatPlacement(QWidget * parent, char * name="");
+	FloatPlacement(QWidget * parent=0, char * name="");
 
 
 	void useWide();

@@ -13,8 +13,7 @@
 #include "QShowFileDialog.h"
 #include "QShowFile.h"
 
-#include <qpushbutton.h>
-//Added by qt3to4:
+#include <QPushButton>
 #include <QCloseEvent>
 
 namespace lyx {

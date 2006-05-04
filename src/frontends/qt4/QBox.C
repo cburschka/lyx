@@ -30,9 +30,8 @@
 
 #include "support/lstrings.h"
 
-#include <qpushbutton.h>
-#include <qlineedit.h>
-#include <q3buttongroup.h>
+#include <QPushButton>
+#include <QLineEdit>
 
 #include <vector>
 

@@ -8,8 +8,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>297</width>
-    <height>252</height>
+    <width>298</width>
+    <height>264</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -18,15 +18,25 @@
   <property name="sizeGripEnabled" >
    <bool>true</bool>
   </property>
-  <layout class="QVBoxLayout" >
+  <layout class="QGridLayout" >
    <property name="margin" >
-    <number>11</number>
+    <number>9</number>
    </property>
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item>
-    <layout class="QVBoxLayout" >
+   <item row="0" column="0" >
+    <widget class="QLabel" name="changeLA" >
+     <property name="text" >
+      <string>Change:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" >
+    <widget class="QTextBrowser" name="changeTB" />
+   </item>
+   <item row="3" column="0" >
+    <layout class="QHBoxLayout" >
      <property name="margin" >
       <number>0</number>
      </property>
@@ -34,25 +44,44 @@
       <number>6</number>
      </property>
      <item>
-      <widget class="QLabel" name="changeLA" >
+      <widget class="QPushButton" name="nextPB" >
+       <property name="toolTip" >
+        <string>Go to next change</string>
+       </property>
        <property name="text" >
-        <string>Change:</string>
+        <string>&amp;Next change</string>
+       </property>
+       <property name="default" >
+        <bool>true</bool>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="Q3TextView" name="changeTV" >
-       <property name="focusPolicy" >
-        <enum>Qt::WheelFocus</enum>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
        </property>
-       <property name="toolTip" >
-        <string>Details of the change</string>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="closePB" >
+       <property name="text" >
+        <string>Cancel</string>
        </property>
       </widget>
      </item>
     </layout>
    </item>
-   <item>
+   <item row="2" column="0" >
     <layout class="QHBoxLayout" >
      <property name="margin" >
       <number>0</number>
@@ -104,82 +133,10 @@
      </item>
     </layout>
    </item>
-   <item>
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeType" >
-      <enum>QSizePolicy::Expanding</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>20</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item>
-      <widget class="QPushButton" name="nextPB" >
-       <property name="toolTip" >
-        <string>Go to next change</string>
-       </property>
-       <property name="text" >
-        <string>&amp;Next change</string>
-       </property>
-       <property name="default" >
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType" >
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" >
-        <size>
-         <width>20</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="closePB" >
-       <property name="text" >
-        <string>Cancel</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
   </layout>
  </widget>
  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
- <customwidgets>
-  <customwidget>
-   <class>Q3TextView</class>
-   <extends>QWidget</extends>
-   <header>q3textview.h</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
- </customwidgets>
  <tabstops>
-  <tabstop>changeTV</tabstop>
   <tabstop>acceptPB</tabstop>
   <tabstop>rejectPB</tabstop>
   <tabstop>nextPB</tabstop>

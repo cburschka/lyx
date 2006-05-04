@@ -45,23 +45,23 @@ QBibtexDialog::QBibtexDialog(QBibtex * form)
 	setupUi(this);
 	QDialog::setModal(true);
 
-	connect( okPB, SIGNAL(clicked()), 
+	connect(okPB, SIGNAL(clicked()), 
 		form, SLOT(slotOK()));
-	connect( closePB, SIGNAL(clicked()), 
+	connect(closePB, SIGNAL(clicked()), 
 		form, SLOT(slotClose()));
-	connect( stylePB, SIGNAL( clicked() ), 
+	connect(stylePB, SIGNAL( clicked() ), 
 		this, SLOT( browsePressed() ) );
-	connect( deletePB, SIGNAL( clicked() ), 
+	connect(deletePB, SIGNAL( clicked() ), 
 		this, SLOT( deletePressed() ) );
-	connect( styleCB, SIGNAL( textChanged(const QString&) ), 
+	connect(styleCB, SIGNAL( textChanged(const QString&) ), 
 		this, SLOT( change_adaptor() ) );
-	connect( databaseLW, SIGNAL( selectionChanged() ), 
+	connect(databaseLW, SIGNAL( selectionChanged() ), 
 		this, SLOT( databaseChanged() ) );
-	connect( bibtocCB, SIGNAL( toggled(bool) ), 
+	connect(bibtocCB, SIGNAL( toggled(bool) ), 
 		this, SLOT( change_adaptor() ) );
-	connect( btPrintCO, SIGNAL( activated(int) ), 
+	connect(btPrintCO, SIGNAL( activated(int) ), 
 		this, SLOT( change_adaptor() ) );
-	connect( addBibPB, SIGNAL( clicked() ), 
+	connect(addBibPB, SIGNAL( clicked() ), 
 		this, SLOT( addPressed() ) );
 
 	add_ = new UiDialog<Ui::QBibtexAddUi>(this, true);
@@ -76,11 +76,11 @@ QBibtexDialog::QBibtexDialog(QBibtex * form)
 	add_->bibED->setValidator(new PathValidator(false, add_->bibED));
 	addCheckedLineEdit(add_bc_.view(), add_->bibED, 0);
 
-	connect( add_->bibED, SIGNAL(textChanged(const QString&)),
+	connect(add_->bibED, SIGNAL(textChanged(const QString&)),
 		this, SLOT(bibEDChanged()));
-	connect( add_->addPB, SIGNAL(clicked()), 
+	connect(add_->addPB, SIGNAL(clicked()), 
 		this, SLOT(addDatabase()));
-	connect( add_->addPB, SIGNAL(clicked()), 
+	connect(add_->addPB, SIGNAL(clicked()), 
 		add_, SLOT(accept()) );
 	connect(add_->bibLW, SIGNAL(itemActivated(QListWidgetItem *)),
 		this, SLOT(addDatabase()));
@@ -88,9 +88,9 @@ QBibtexDialog::QBibtexDialog(QBibtex * form)
 		add_, SLOT(accept()));
 	connect(add_->bibLW, SIGNAL(itemChanged(QListWidgetItem *)),
 		this, SLOT(availableChanged()));
-	connect( add_->browsePB, SIGNAL(clicked()), 
+	connect(add_->browsePB, SIGNAL(clicked()), 
 		this, SLOT(browseBibPressed()));
-	connect( add_->closePB, SIGNAL( clicked() ), 
+	connect(add_->closePB, SIGNAL( clicked() ), 
 		add_, SLOT( reject() ) );
 
 }
@@ -145,11 +145,11 @@ void QBibtexDialog::browseBibPressed()
 	string const file = trim(form_->controller().browseBib(""));
 
 	if (!file.empty()) {
-		string const f = changeExtension(file, "");
+		QString const f = toqstr(changeExtension(file, ""));
 		bool present = false;
 
 		for (unsigned int i = 0; i != add_->bibLW->count(); i++) {
-			if (fromqstr(add_->bibLW->item(i)->text()) == f)
+			if (add_->bibLW->item(i)->text() == f)
 				present = true;
 		}
 

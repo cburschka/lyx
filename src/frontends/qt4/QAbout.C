@@ -22,10 +22,10 @@
 
 #include <sstream>
 
-#include <qlabel.h>
-#include <qpushbutton.h>
-#include <qtextcodec.h>
-#include <q3textview.h>
+#include <QLabel>
+#include <QPushButton>
+#include <QTextCodec>
+#include <QTextBrowser>
 
 using lyx::support::prefixIs;
 
@@ -52,11 +52,11 @@ void QAbout::build_dialog()
 	connect(dialog_.get()->closePB, SIGNAL(clicked()),
 		this, SLOT(slotClose()));
 
-	dialog_->copyright->setText(toqstr(controller().getCopyright()));
-	dialog_->copyright->append("\n");
-	dialog_->copyright->append(toqstr(controller().getLicense()));
-	dialog_->copyright->append("\n");
-	dialog_->copyright->append(toqstr(controller().getDisclaimer()));
+	dialog_->copyrightTB->setPlainText(toqstr(controller().getCopyright()));
+	dialog_->copyrightTB->append("\n");
+	dialog_->copyrightTB->append(toqstr(controller().getLicense()));
+	dialog_->copyrightTB->append("\n");
+	dialog_->copyrightTB->append(toqstr(controller().getDisclaimer()));
 
 	dialog_->versionLA->setText(toqstr(controller().getVersion()));
 
@@ -114,12 +114,12 @@ void QAbout::build_dialog()
 	QString const qtext = codec ?
 		codec->toUnicode(out.str().c_str()) :
 		toqstr(out.str());
-	dialog_->creditsTV->setText(qtext);
+	dialog_->creditsTB->setPlainText(qtext);
 
 	// try to resize to a good size
-	dialog_->copyright->hide();
-	dialog_->setMinimumSize(dialog_->copyright->sizeHint());
-	dialog_->copyright->show();
+	dialog_->copyrightTB->hide();
+	dialog_->setMinimumSize(dialog_->copyrightTB->sizeHint());
+	dialog_->copyrightTB->show();
 	dialog_->setMinimumSize(dialog_->sizeHint());
 
 	// Manage the cancel/close button

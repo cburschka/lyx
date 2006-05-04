@@ -19,8 +19,8 @@
 
 #include "controllers/ControlChanges.h"
 
-#include <qpushbutton.h>
-#include <q3textview.h>
+#include <QPushButton>
+#include <QTextBrowser>
 
 using lyx::support::bformat;
 
@@ -67,7 +67,7 @@ void QChanges::next()
 	if (!date.empty())
 		text += bformat(_("Change made at %1$s\n"), date);
 
-	dialog_->changeTV->setText(toqstr(text));
+	dialog_->changeTB->setPlainText(toqstr(text));
 }
 
 

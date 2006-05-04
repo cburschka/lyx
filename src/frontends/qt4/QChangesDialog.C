@@ -25,10 +25,12 @@ QChangesDialog::QChangesDialog(QChanges * form)
 	setupUi(this);
 	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
-
-    connect( nextPB, SIGNAL( clicked() ), this, SLOT( nextPressed() ) );
-    connect( rejectPB, SIGNAL( clicked() ), this, SLOT( rejectPressed() ) );
-    connect( acceptPB, SIGNAL( clicked() ), this, SLOT( acceptPressed() ) );
+	connect(nextPB, SIGNAL( clicked() ), 
+		this, SLOT( nextPressed() ) );
+	connect(rejectPB, SIGNAL( clicked() ), 
+		this, SLOT( rejectPressed() ) );
+	connect(acceptPB, SIGNAL( clicked() ), 
+		this, SLOT( acceptPressed() ) );
 }
 
 

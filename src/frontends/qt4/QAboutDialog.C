@@ -20,7 +20,8 @@ QAboutDialog::QAboutDialog(QWidget * parent, const char * name,
 {
 	setupUi(this);
 
-    connect( closePB, SIGNAL( clicked() ), this, SLOT( reject() ) );
+	connect( closePB, SIGNAL( clicked() ), 
+		this, SLOT( reject() ) );
 }
 
 

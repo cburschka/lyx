@@ -14,14 +14,13 @@
 #include "QParagraphDialog.h"
 #include "QParagraph.h"
 
-#include <qlineedit.h>
-#include <qpushbutton.h>
-#include <qvalidator.h>
-#include <q3whatsthis.h>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QValidator>
+#include <QWhatsThis>
+#include <QCloseEvent>
 
 #include "qt_helpers.h"
-//Added by qt3to4:
-#include <QCloseEvent>
 
 namespace lyx {
 namespace frontend {
@@ -37,27 +36,32 @@ QParagraphDialog::QParagraphDialog(QParagraph * form)
 		form_, SLOT(slotApply()));
 	connect(closePB, SIGNAL(clicked()),
 		form_, SLOT(slotClose()));
-
-
-    connect( align, SIGNAL( activated(int) ), this, SLOT( change_adaptor() ) );
-    connect( linespacing, SIGNAL( activated(int) ), this, SLOT( change_adaptor() ) );
-    connect( linespacing, SIGNAL( activated(int) ), this, SLOT( enableLinespacingValue(int) ) );
-    connect( linespacingValue, SIGNAL( textChanged(const QString&) ), this, SLOT( change_adaptor() ) );
-    connect( indentCB, SIGNAL( toggled(bool) ), this, SLOT( change_adaptor() ) );
-    connect( labelWidth, SIGNAL( textChanged(const QString&) ), this, SLOT( change_adaptor() ) );
+	connect(align, SIGNAL( activated(int) ), 
+		this, SLOT( change_adaptor() ) );
+	connect(linespacing, SIGNAL( activated(int) ), 
+		this, SLOT( change_adaptor() ) );
+	connect(linespacing, SIGNAL( activated(int) ), 
+		this, SLOT( enableLinespacingValue(int) ) );
+	connect(linespacingValue, SIGNAL( textChanged(const QString&) ), 
+		this, SLOT( change_adaptor() ) );
+	connect(indentCB, SIGNAL( toggled(bool) ), 
+		this, SLOT( change_adaptor() ) );
+	connect(labelWidth, SIGNAL( textChanged(const QString&) ), 
+		this, SLOT( change_adaptor() ) );
 
 	linespacingValue->setValidator(new QDoubleValidator(linespacingValue));
 
-	Q3WhatsThis::add(labelWidth, qt_(
-"As described in the User Guide, the length of"
-" this text will determine how wide the label part"
-" of each item is in environments like List and"
-" Description.\n"
-"\n"
-" Normally you won't need to set this,"
-" since the largest label width of all the"
-" items is used. But if you need to, you can"
-" change it here."
+	//Q3WhatsThis::add(labelWidth, qt_(
+	labelWidth->setWhatsThis( qt_(
+		"As described in the User Guide, the length of"
+		" this text will determine how wide the label part"
+		" of each item is in environments like List and"
+		" Description.\n"
+		"\n"
+		" Normally you won't need to set this,"
+		" since the largest label width of all the"
+		" items is used. But if you need to, you can"
+		" change it here."
 	));
 }
 

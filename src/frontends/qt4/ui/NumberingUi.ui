@@ -15,60 +15,17 @@
   <property name="windowTitle" >
    <string/>
   </property>
-  <layout class="QVBoxLayout" >
+  <layout class="QGridLayout" >
    <property name="margin" >
-    <number>11</number>
+    <number>9</number>
    </property>
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item>
-    <widget class="QLabel" name="TextLabel1_2" >
-     <property name="text" >
-      <string>&amp;Numbering</string>
-     </property>
-     <property name="buddy" >
-      <cstring>depthSL</cstring>
-     </property>
-    </widget>
+   <item row="4" column="0" >
+    <widget class="QTreeWidget" name="tocTW" />
    </item>
-   <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item>
-      <widget class="QSlider" name="depthSL" >
-       <property name="minimum" >
-        <number>-2</number>
-       </property>
-       <property name="maximum" >
-        <number>5</number>
-       </property>
-       <property name="value" >
-        <number>3</number>
-       </property>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <widget class="QLabel" name="TextLabel1" >
-     <property name="text" >
-      <string>&amp;List in Table of Contents</string>
-     </property>
-     <property name="buddy" >
-      <cstring>tocSL</cstring>
-     </property>
-    </widget>
-   </item>
-   <item>
+   <item row="3" column="0" >
     <widget class="QSlider" name="tocSL" >
      <property name="minimum" >
       <number>-1</number>
@@ -84,62 +41,48 @@
      </property>
     </widget>
    </item>
-   <item>
-    <widget class="Q3ListView" name="tocLV" >
-     <property name="enabled" >
-      <bool>true</bool>
+   <item row="1" column="0" >
+    <widget class="QSlider" name="depthSL" >
+     <property name="minimum" >
+      <number>-2</number>
      </property>
-     <property name="focusPolicy" >
-      <enum>Qt::NoFocus</enum>
+     <property name="maximum" >
+      <number>5</number>
      </property>
-     <property name="toolTip" >
-      <string>Example numbering and table of contents</string>
+     <property name="value" >
+      <number>3</number>
      </property>
-     <property name="resizePolicy" >
-      <enum>Q3ScrollView::AutoOneFit</enum>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
      </property>
-     <property name="vScrollBarMode" >
-      <enum>Q3ScrollView::AlwaysOff</enum>
+    </widget>
+   </item>
+   <item row="2" column="0" >
+    <widget class="QLabel" name="TextLabel1" >
+     <property name="text" >
+      <string>&amp;List in Table of Contents</string>
      </property>
-     <property name="hScrollBarMode" >
-      <enum>Q3ScrollView::AlwaysOff</enum>
+     <property name="buddy" >
+      <cstring>tocSL</cstring>
      </property>
-     <property name="rootIsDecorated" >
-      <bool>false</bool>
+    </widget>
+   </item>
+   <item row="0" column="0" >
+    <widget class="QLabel" name="TextLabel1_2" >
+     <property name="text" >
+      <string>&amp;Numbering</string>
      </property>
-     <column>
-      <property name="text" >
-       <string>Example</string>
-      </property>
-     </column>
-     <column>
-      <property name="text" >
-       <string>Numbered</string>
-      </property>
-     </column>
-     <column>
-      <property name="text" >
-       <string>Appears in TOC</string>
-      </property>
-     </column>
+     <property name="buddy" >
+      <cstring>depthSL</cstring>
+     </property>
     </widget>
    </item>
   </layout>
  </widget>
  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
- <customwidgets>
-  <customwidget>
-   <class>Q3ListView</class>
-   <extends></extends>
-   <header>q3listview.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
- </customwidgets>
  <tabstops>
   <tabstop>tocSL</tabstop>
   <tabstop>depthSL</tabstop>
-  <tabstop>tocLV</tabstop>
  </tabstops>
  <resources/>
  <connections/>

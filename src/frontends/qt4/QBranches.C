@@ -1,5 +1,5 @@
 /**
- * \file QDocumentDialog.C
+ * \file QBranches.C
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -22,8 +22,10 @@
 
 #include "support/lstrings.h"
 
-#include <Q3ListView>
+#include <QTreeWidget>
+#include <QTreeWidgetItem>
 #include <QPixmap>
+#include <QIcon>
 #include <QColor>
 #include <QColorDialog>
 
@@ -37,7 +39,10 @@ QBranches::QBranches(QWidget * parent, Qt::WFlags f)
 	: QWidget(parent, f)
 {
 	setupUi(this);
-	branchesLV->setSorting(0);
+	branchesTW->setColumnCount(3);
+	branchesTW->headerItem()->setText(0, qt_("Name"));
+	branchesTW->headerItem()->setText(1, qt_("Activated"));
+	branchesTW->headerItem()->setText(2, qt_("Color"));
 }
 
 QBranches::~QBranches()
@@ -54,30 +59,35 @@ void QBranches::update()
 {
 
 	// store the selected branch
-	Q3ListViewItem * selItem =
-		branchesLV->selectedItem();
+	QTreeWidgetItem * item =
+		branchesTW->currentItem();
 	QString sel_branch;
-	if (selItem != 0)
-		sel_branch = selItem->text(0);
+	if (item != 0)
+		sel_branch = item->text(0);
 
-	branchesLV->clear();
+	branchesTW->clear();
 
 	BranchList::const_iterator it = branchlist_.begin();
 	BranchList::const_iterator const end = branchlist_.end();
 	for (; it != end; ++it) {
+		QTreeWidgetItem * newItem =
+			new QTreeWidgetItem(branchesTW);
+
 		QString const bname = toqstr(it->getBranch());
+		newItem->setText(0, bname);
+
 		QString const sel = it->getSelected() ? qt_("Yes") : qt_("No");
-		Q3ListViewItem * newItem =
-			new Q3ListViewItem(branchesLV, bname, sel);
+		newItem->setText(1, sel);
+
 		QColor const itemcolor = rgb2qcolor(it->getColor());
 		if (itemcolor.isValid()) {
 			QPixmap coloritem(30, 10);
 			coloritem.fill(itemcolor);
-			newItem->setPixmap(2, coloritem);
+			newItem->setIcon(2, QIcon(coloritem));
 		}
 		// restore selected branch
 		if (bname == sel_branch)
-			branchesLV->setSelected(newItem, true);
+			branchesTW->setItemSelected(newItem, true);
 	}
 	emit changed();
 }
@@ -100,8 +110,8 @@ void QBranches::on_addBranchPB_pressed()
 
 void QBranches::on_removePB_pressed()
 {
-	Q3ListViewItem * selItem =
-		branchesLV->selectedItem();
+	QTreeWidgetItem * selItem =
+		branchesTW->currentItem();
 	QString sel_branch;
 	if (selItem != 0)
 		sel_branch = selItem->text(0);
@@ -115,26 +125,24 @@ void QBranches::on_removePB_pressed()
 
 void QBranches::on_activatePB_pressed()
 {
-	Q3ListViewItem * selItem =
-		branchesLV->selectedItem();
-	toggleBranch(selItem);
+	toggleBranch(branchesTW->currentItem());
 }
 
 
-void QBranches::on_branchesLV_doubleClicked(Q3ListViewItem * selItem)
+void QBranches::on_branchesTW_itemDoubleClicked(QTreeWidgetItem * item, int col)
 {
-	toggleBranch(selItem);
+	toggleBranch(item);
 }
 
 
-void QBranches::toggleBranch(Q3ListViewItem * selItem)
+void QBranches::toggleBranch(QTreeWidgetItem * item)
 {
-	if (selItem == 0)
+	if (item == 0)
 		return;
 
-	QString sel_branch = selItem->text(0);
+	QString sel_branch = item->text(0);
 	if (!sel_branch.isEmpty()) {
-		bool const selected = selItem->text(1) == qt_("Yes");
+		bool const selected = item->text(1) == qt_("Yes");
 		Branch * branch = branchlist_.find(fromqstr(sel_branch));
 		if (branch && branch->setSelected(!selected)) {
 			newBranchLE->clear();
@@ -146,8 +154,8 @@ void QBranches::toggleBranch(Q3ListViewItem * selItem)
 
 void QBranches::on_colorPB_clicked()
 {
-	Q3ListViewItem * selItem =
-		branchesLV->selectedItem();
+	QTreeWidgetItem * selItem =
+		branchesTW->currentItem();
 	QString sel_branch;
 	if (selItem != 0)
 		sel_branch = selItem->text(0);

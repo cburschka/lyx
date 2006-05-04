@@ -18,21 +18,17 @@
   <property name="sizeGripEnabled" >
    <bool>true</bool>
   </property>
-  <layout class="QVBoxLayout" >
+  <layout class="QGridLayout" >
    <property name="margin" >
-    <number>11</number>
+    <number>9</number>
    </property>
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item>
-    <widget class="Q3TextView" name="text" >
-     <property name="toolTip" >
-      <string/>
-     </property>
-    </widget>
+   <item row="0" column="0" >
+    <widget class="QTextBrowser" name="textTB" />
    </item>
-   <item>
+   <item row="1" column="0" >
     <layout class="QHBoxLayout" >
      <property name="margin" >
       <number>0</number>
@@ -71,15 +67,6 @@
   </layout>
  </widget>
  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
- <customwidgets>
-  <customwidget>
-   <class>Q3TextView</class>
-   <extends>QWidget</extends>
-   <header>q3textview.h</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>
