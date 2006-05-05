@@ -128,7 +128,7 @@ bool findBackwards(DocIterator & cur, MatchString const & match)
 bool findChange(DocIterator & cur)
 {
 	for (; cur; cur.forwardPos())
-		if (cur.inTexted() && cur.paragraph().lookupChange(cur.pos())
+		if (cur.inTexted() && cur.paragraph().lookupChangeType(cur.pos())
 		    != Change::UNCHANGED)
 			return true;
 	return false;
@@ -346,11 +346,11 @@ bool findNextChange(BufferView * bv)
 	bv->cursor().setCursor(cur);
 	bv->cursor().resetAnchor();
 
-	Change orig_change = cur.paragraph().lookupChangeFull(cur.pos());
+	Change orig_change = cur.paragraph().lookupChange(cur.pos());
 
 	DocIterator et = doc_iterator_end(cur.inset());
 	for (; cur != et; cur.forwardPosNoDescend()) {
-		Change change = cur.paragraph().lookupChangeFull(cur.pos());
+		Change change = cur.paragraph().lookupChange(cur.pos());
 		if (change != orig_change) {
 			break;
 		}

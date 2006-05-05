@@ -1626,14 +1626,14 @@ void Paragraph::cleanChanges(ChangeTracking ct)
 }
 
 
-Change::Type Paragraph::lookupChange(lyx::pos_type pos) const
+Change::Type Paragraph::lookupChangeType(lyx::pos_type pos) const
 {
 	BOOST_ASSERT(pos <= size());
 	return pimpl_->lookupChange(pos);
 }
 
 
-Change const Paragraph::lookupChangeFull(lyx::pos_type pos) const
+Change const Paragraph::lookupChange(lyx::pos_type pos) const
 {
 	BOOST_ASSERT(pos <= size());
 	return pimpl_->lookupChangeFull(pos);

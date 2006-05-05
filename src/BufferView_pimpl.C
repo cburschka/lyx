@@ -771,7 +771,7 @@ Change const BufferView::Pimpl::getCurrentChange()
 		return Change(Change::UNCHANGED);
 
 	return text->getPar(cur.selBegin().pit()).
-			lookupChangeFull(cur.selBegin().pos());
+			lookupChange(cur.selBegin().pos());
 }
 
 

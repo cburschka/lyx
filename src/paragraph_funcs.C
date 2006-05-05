@@ -144,7 +144,7 @@ void breakParagraph(BufferParams const & bparams,
 		pos_type pos_end = par.size() - 1;
 
 		for (pos_type i = pos, j = pos; i <= pos_end; ++i) {
-			Change::Type change = par.lookupChange(i);
+			Change::Type change = par.lookupChangeType(i);
 			if (moveItem(par, *tmp, bparams, i, j - pos)) {
 				tmp->setChange(j - pos, change);
 				++j;
@@ -212,12 +212,12 @@ void breakParagraphConservative(BufferParams const & bparams,
 		pos_type pos_end = par.size() - 1;
 
 		for (pos_type i = pos, j = pos; i <= pos_end; ++i) {
-			Change::Type change = par.lookupChange(i);
+			Change::Type change = par.lookupChangeType(i);
 			if (moveItem(par, tmp, bparams, i, j - pos, change))
 				++j;
 		}
 		// Move over end-of-par change attr
-		tmp.setChange(tmp.size(), par.lookupChange(par.size()));
+		tmp.setChange(tmp.size(), par.lookupChangeType(par.size()));
 
 		// If tracking changes, set all the text that is to be
 		// erased to Type::INSERTED.
@@ -252,10 +252,10 @@ void mergeParagraph(BufferParams const & bparams,
 	// forcibly to "black" prevents this scenario. -- MV 13.3.2006
 	par.setChange(par.size(), Change::UNCHANGED);
 
-	Change::Type cr = next.lookupChange(next.size());
+	Change::Type cr = next.lookupChangeType(next.size());
 	// ok, now copy the paragraph
 	for (pos_type i = 0, j = 0; i <= pos_end; ++i) {
-		Change::Type change = next.lookupChange(i);
+		Change::Type change = next.lookupChangeType(i);
 		if (moveItem(next, par, bparams, i, pos_insert + j, change))
 			++j;
 	}

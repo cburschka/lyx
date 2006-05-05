@@ -205,7 +205,7 @@ public:
 	bool use_bibtopic;
 	/// revision tracking for this buffer ?
 	bool tracking_changes;
-	/** This param decides if change tracking marks should be output
+	/** This param decides whether change tracking marks should be output
 	 *  (using the dvipost package) or if the current "state" of the
 	 *  document should be output instead. Since dvipost needs dvi
 	 *  specials, it only works with dvi/ps output (the param will be

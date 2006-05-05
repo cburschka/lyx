@@ -183,7 +183,7 @@ bool getStatus(LCursor cursor,
  * footnote is deleted).
  * When \param outer is true, the top slice is not looked at.
  */
-Change::Type lookupChange(DocIterator const & dit, bool outer = false)
+Change::Type lookupChangeType(DocIterator const & dit, bool outer = false)
 {
 	size_t const depth = dit.depth() - (outer ? 1 : 0);
 
@@ -191,7 +191,7 @@ Change::Type lookupChange(DocIterator const & dit, bool outer = false)
 		CursorSlice const & slice = dit[i];
 		if (!slice.inset().inMathed()
 		    && slice.pos() < slice.paragraph().size()) {
-			Change::Type const ch = slice.paragraph().lookupChange(slice.pos());
+			Change::Type const ch = slice.paragraph().lookupChangeType(slice.pos());
 			if (ch != Change::UNCHANGED)
 				return ch;
 		}
@@ -635,7 +635,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 
 	// Are we in a DELETED change-tracking region?
 	if (buf && buf->params().tracking_changes
-	    && lookupChange(cur, true) == Change::DELETED
+	    && lookupChangeType(cur, true) == Change::DELETED
 	    && !lyxaction.funcHasFlag(cmd.action, LyXAction::ReadOnly)
 	    && !lyxaction.funcHasFlag(cmd.action, LyXAction::NoBuffer)) {
 		flag.message(N_("This portion of the document is deleted."));

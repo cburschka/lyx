@@ -221,10 +221,10 @@ public:
 	void cleanChanges(ChangeTracking ct = trackingUnknown);
 
 	/// look up change type at given pos
-	Change::Type lookupChange(lyx::pos_type pos) const;
+	Change::Type lookupChangeType(lyx::pos_type pos) const;
 
 	/// look up change at given pos
-	Change const lookupChangeFull(lyx::pos_type pos) const;
+	Change const lookupChange(lyx::pos_type pos) const;
 
 	/// is there a change within the given range ?
 	bool isChanged(lyx::pos_type start, lyx::pos_type end) const;
@@ -447,13 +447,13 @@ private:
 
 inline bool isInsertedText(Paragraph const & par, lyx::pos_type pos)
 {
-	return par.lookupChange(pos) == Change::INSERTED;
+	return par.lookupChangeType(pos) == Change::INSERTED;
 }
 
 
 inline bool isDeletedText(Paragraph const & par, lyx::pos_type pos)
 {
-	return par.lookupChange(pos) == Change::DELETED;
+	return par.lookupChangeType(pos) == Change::DELETED;
 }
 
 #endif // PARAGRAPH_H

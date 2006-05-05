@@ -1411,7 +1411,7 @@ void LyXText::acceptChange(LCursor & cur)
 	DocIterator it = cur.selectionBegin();
 	DocIterator et = cur.selectionEnd();
 	pit_type pit = it.pit();
-	Change::Type const type = pars_[pit].lookupChange(it.pos());
+	Change::Type const type = pars_[pit].lookupChangeType(it.pos());
 	for (; pit <= et.pit(); ++pit) {
 		pos_type left  = ( pit == it.pit() ? it.pos() : 0 );
 		pos_type right =
@@ -1448,7 +1448,7 @@ void LyXText::rejectChange(LCursor & cur)
 	DocIterator it = cur.selectionBegin();
 	DocIterator et = cur.selectionEnd();
 	pit_type pit = it.pit();
-	Change::Type const type = pars_[pit].lookupChange(it.pos());
+	Change::Type const type = pars_[pit].lookupChangeType(it.pos());
 	for (; pit <= et.pit(); ++pit) {
 		pos_type left  = ( pit == it.pit() ? it.pos() : 0 );
 		pos_type right =
@@ -2260,7 +2260,7 @@ string LyXText::currentState(LCursor & cur)
 		os << "[C] ";
 
 	if (show_change) {
-		Change change = par.lookupChangeFull(cur.pos());
+		Change change = par.lookupChange(cur.pos());
 		Author const & a = buf.params().authors().get(change.author);
 		os << _("Change: ") << a.name();
 		if (!a.email().empty())
