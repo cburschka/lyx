@@ -14,6 +14,7 @@
 
 
 #include "insettext.h"
+#include "lyxtextclass.h"
 
 /** A caption inset
 */
@@ -28,11 +29,22 @@ public:
 	///
 	virtual bool display() const;
 	///
+	virtual bool neverIndent() const { return true; }	
+	///
 	virtual InsetBase::Code lyxCode() const;
 	///
 	virtual std::string const editMessage() const;
 	///
+	virtual void cursorPos 
+		(CursorSlice const & sl, bool boundary, int & x, int & y) const;
+	///
+	virtual void metrics(MetricsInfo & mi, Dimension & dim) const;
+	///
 	virtual void draw(PainterInfo & pi, int x, int y) const;
+	///
+	virtual void edit(LCursor & cur, bool left);
+	///
+	virtual InsetBase * editXY(LCursor & cur, int x, int y);
 	///
 	virtual int latex(Buffer const & buf, std::ostream & os,
 			  OutputParams const &) const;
@@ -45,6 +57,12 @@ public:
 private:
 	///
 	virtual std::auto_ptr<InsetBase> doClone() const;
+	///
+	mutable std::string label;
+	///
+	mutable int labelwidth_;
+	///
+	LyXTextClass const & textclass_;
 };
 
 

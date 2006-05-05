@@ -16,6 +16,8 @@
 
 #include "buffer.h"
 #include "bufferparams.h"
+#include "counters.h"
+#include "cursor.h"
 #include "BufferView.h"
 #include "Floating.h"
 #include "FloatList.h"
@@ -28,6 +30,7 @@
 #include "frontends/Painter.h"
 
 #include "support/lstrings.h"
+#include "support/convert.h"
 
 #include <sstream>
 
@@ -42,7 +45,7 @@ using std::ostringstream;
 
 
 InsetCaption::InsetCaption(BufferParams const & bp)
-	: InsetText(bp)
+	: InsetText(bp), textclass_(bp.getLyXTextClass())
 {
 	setAutoBreakRows(true);
 	setDrawFrame(true);
@@ -78,6 +81,32 @@ string const InsetCaption::editMessage() const
 }
 
 
+void InsetCaption::cursorPos
+	(CursorSlice const & sl, bool boundary, int & x, int & y) const
+{
+	InsetText::cursorPos(sl, boundary, x, y);
+	x += labelwidth_;
+}
+
+
+void InsetCaption::metrics(MetricsInfo & mi, Dimension & dim) const
+{
+	mi.base.textwidth -= 2 * TEXT_TO_INSET_OFFSET;
+	labelwidth_ = font_metrics::width(label, mi.base.font);
+	dim.wid = labelwidth_;
+	Dimension textdim;
+	InsetText::metrics(mi, textdim);
+	dim.des = std::max(dim.des - textdim.asc + dim.asc, textdim.des);
+	dim.asc = textdim.asc;
+	dim.wid += textdim.wid;
+	dim.asc += TEXT_TO_INSET_OFFSET;
+	dim.des += TEXT_TO_INSET_OFFSET;
+	dim.wid += 2 * TEXT_TO_INSET_OFFSET;
+	mi.base.textwidth += 2 * TEXT_TO_INSET_OFFSET;
+	dim_ = dim;
+}
+
+
 void InsetCaption::draw(PainterInfo & pi, int x, int y) const
 {
 	// We must draw the label, we should get the label string
@@ -88,36 +117,50 @@ void InsetCaption::draw(PainterInfo & pi, int x, int y) const
 
 	// See if we can find the name of the float this caption
 	// belongs to.
-#if 0
-	InsetBase * i1 = owner();
-	InsetBase * i2 = i1 ? i1->owner() : 0;
-	string type;
-	if (i2->lyxCode() == FLOAT_CODE)
-#ifdef WITH_WARNINGS
-#warning Now, what happens for i2 == 0?
-#endif
-		type = static_cast<InsetFloat *>(i2)->params().type;
-	else if (i2->lyxCode() == WRAP_CODE)
-		type = static_cast<InsetWrap *>(i2)->params().type;
-	else
-		BOOST_ASSERT(false);
+	LCursor cur = pi.base.bv->cursor();
+	// Set caption label _only_ if the cursor is in _this_ float:
+	if (cur.top().text() == &text_) {
+		string s; 
+		size_t i = cur.depth();
+			while (i > 0) {
+				--i;
+				InsetBase * const in = &cur[i].inset();
+				if (in->lyxCode() == InsetBase::FLOAT_CODE
+				    || in->lyxCode() == InsetBase::WRAP_CODE) {
+					s = in->getInsetName();
+					break;
+				}
+			}
+		Floating const & fl = textclass_.floats().getType(s);
+		s = fl.name();
+		string num;
+		if (s.empty())
+			s = "Senseless";
+		else
+			num = convert<string>(textclass_.counters().value(fl.type()));
 
-	FloatList const & floats =
-		pi.base.bv->buffer()->params().getLyXTextClass().floats();
-	string const fl = i2 ? floats.getType(type).name() : N_("Float");
-#else
-	string type = "float";
-	string const fl = N_("Float");
-#endif
+		// Generate the label
+		label = bformat("%1$s %2$s:", _(s), num);
+	}
 
-	// Discover the number...
-	string const num = "#";
-
-	// Generate the label
-	string const label = bformat("%1$s %2$s:", _(fl), num);
-	int const w = font_metrics::width(label, pi.base.font);
+	labelwidth_ = font_metrics::width(label, pi.base.font);
 	pi.pain.text(x, y, label, pi.base.font);
-	InsetText::draw(pi, x + w, y);
+	InsetText::draw(pi, x + labelwidth_, y);
+	setPosCache(pi, x, y);
+}
+
+
+void InsetCaption::edit(LCursor & cur, bool left)
+{
+	cur.push(*this);
+	InsetText::edit(cur, left);
+}
+
+
+InsetBase * InsetCaption::editXY(LCursor & cur, int x, int y)
+{
+	cur.push(*this);
+	return InsetText::editXY(cur, x, y);
 }
 
 
