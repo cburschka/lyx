@@ -1,5 +1,5 @@
-#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
-\lyxformat 243
+#LyX 1.4.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 245
 \begin_document
 \begin_header
 \textclass docbook
@@ -20,7 +20,6 @@
 \paragraph_separation indent
 \defskip medskip
 \quotes_language english
-\quotes_times 2
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -30,7 +29,12 @@
 
 \begin_body
 
-\begin_layout SGML
+\begin_layout Standard
+\begin_inset ERT
+status inlined
+
+\begin_layout Standard
+
 
  
 \begin_inset Note Note
@@ -39,6 +43,11 @@ status collapsed
 \begin_layout Standard
 
 Here goes the information about the article:
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -619,7 +628,12 @@ It is also possible to insert margin notes inside some environments.
 \end_layout
 
 \begin_deeper
-\begin_layout SGML
+\begin_layout Standard
+\begin_inset ERT
+status inlined
+
+\begin_layout Standard
+
 
 
 \begin_inset Marginal
@@ -628,6 +642,11 @@ status collapsed
 \begin_layout Standard
 
 margin note
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -670,7 +689,12 @@ These environments are easily added to the docbook layout.
 \end_layout
 
 \begin_deeper
-\begin_layout SGML
+\begin_layout Standard
+\begin_inset ERT
+status inlined
+
+\begin_layout Standard
+
 
 
 \begin_inset Marginal
@@ -679,6 +703,11 @@ status collapsed
 \begin_layout Standard
 
 too marginal ;-)
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
