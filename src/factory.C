@@ -75,16 +75,16 @@ InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
 	BufferParams const & params = bv->buffer()->params();
 
 	switch (cmd.action) {
-	case LFUN_HFILL:
+	case LFUN_HFILL_INSERT:
 		return new InsetHFill;
 
-	case LFUN_INSERT_LINE:
+	case LFUN_LINE_INSERT:
 		return new InsetLine;
 
-	case LFUN_INSERT_PAGEBREAK:
+	case LFUN_PAGEBREAK_INSERT:
 		return new InsetPagebreak;
 
-	case LFUN_INSERT_CHARSTYLE: {
+	case LFUN_CHARSTYLE_INSERT: {
 		string s = cmd.getArg(0);
 		LyXTextClass tclass = params.getLyXTextClass();
 		CharStyles::iterator found_cs = tclass.charstyle(s);
@@ -94,50 +94,50 @@ InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
 			return new InsetCharStyle(params, s);
 	}
 
-	case LFUN_INSERT_NOTE: {
+	case LFUN_NOTE_INSERT: {
 		string arg = cmd.getArg(0);
 		if (arg.empty())
 			arg = "Note";
 		return new InsetNote(params, arg);
 	}
 
-	case LFUN_INSERT_BOX: {
+	case LFUN_BOX_INSERT: {
 		string arg = cmd.getArg(0);
 		if (arg.empty())
 			arg = "Boxed";
 		return new InsetBox(params, arg);
 	}
 
-	case LFUN_INSERT_BRANCH: {
+	case LFUN_BRANCH_INSERT: {
 		string arg = cmd.getArg(0);
 		if (arg.empty())
 			arg = "none";
 		return new InsetBranch(params, InsetBranchParams(arg));
 	}
 
-	case LFUN_INSET_ERT:
+	case LFUN_ERT_INSERT:
 		return new InsetERT(params);
 
-	case LFUN_INSET_FOOTNOTE:
+	case LFUN_FOOTNOTE_INSERT:
 		return new InsetFoot(params);
 
-	case LFUN_INSET_MARGINAL:
+	case LFUN_MARGINALNOTE_INSERT:
 		return new InsetMarginal(params);
 
-	case LFUN_INSET_OPTARG:
+	case LFUN_OPTIONAL_INSERT:
 		return new InsetOptArg(params);
 
-	case LFUN_INSERT_BIBITEM:
+	case LFUN_BIBITEM_INSERT:
 		return new InsetBibitem(InsetCommandParams("bibitem"));
 
-	case LFUN_INSET_FLOAT:
+	case LFUN_FLOAT_INSERT:
 		// check if the float type exists
 		if (params.getLyXTextClass().floats().typeExist(cmd.argument))
 			return new InsetFloat(params, cmd.argument);
 		lyxerr << "Non-existent float type: " << cmd.argument << endl;
 		return 0;
 
-	case LFUN_INSET_WIDE_FLOAT:
+	case LFUN_FLOAT_WIDE_INSERT:
 		// check if the float type exists
 		if (params.getLyXTextClass().floats().typeExist(cmd.argument)) {
 			auto_ptr<InsetFloat> p(new InsetFloat(params, cmd.argument));
@@ -147,7 +147,7 @@ InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
 		lyxerr << "Non-existent float type: " << cmd.argument << endl;
 		return 0;
 
-	case LFUN_INSET_WRAP:
+	case LFUN_WRAP_INSERT:
 		if (cmd.argument == "figure")
 			return new InsetWrap(params, cmd.argument);
 		lyxerr << "Non-existent floatflt type: " << cmd.argument << endl;
@@ -176,7 +176,7 @@ InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
 		return new InsetTabular(*bv->buffer(), r, c);
 	}
 
-	case LFUN_INSET_CAPTION: {
+	case LFUN_CAPTION_INSERT: {
 		auto_ptr<InsetCaption> inset(new InsetCaption(params));
 		inset->setAutoBreakRows(true);
 		inset->setDrawFrame(true);
@@ -194,10 +194,10 @@ InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
 		return new InsetEnvironment(params, cmd.argument);
 
 #if 0
-	case LFUN_INSET_LIST:
+	case LFUN_LIST_INSERT:
 		return new InsetList;
 
-	case LFUN_INSET_THEOREM:
+	case LFUN_THEOREM_INSERT:
 		return new InsetTheorem;
 #endif
 

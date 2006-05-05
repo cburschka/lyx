@@ -1071,25 +1071,25 @@ FuncStatus BufferView::Pimpl::getStatus(FuncRequest const & cmd)
 		flag.enabled(cursor_.inTexted());
 		break;
 	case LFUN_FONT_STATE:
-	case LFUN_INSERT_LABEL:
+	case LFUN_LABEL_INSERT:
 	case LFUN_BOOKMARK_SAVE:
-	case LFUN_GOTO_PARAGRAPH:
+	case LFUN_PARAGRAPH_GOTO:
 	// FIXME handle non-trivially
 	case LFUN_OUTLINE_UP:
 	case LFUN_OUTLINE_DOWN:
 	case LFUN_OUTLINE_IN:
 	case LFUN_OUTLINE_OUT:
-	case LFUN_GOTOERROR:
-	case LFUN_GOTONOTE:
-	case LFUN_REFERENCE_GOTO:
+	case LFUN_ERROR_NEXT:
+	case LFUN_NOTE_NEXT:
+	case LFUN_REFERENCE_NEXT:
 	case LFUN_WORD_FIND:
 	case LFUN_WORD_REPLACE:
 	case LFUN_MARK_OFF:
 	case LFUN_MARK_ON:
-	case LFUN_SETMARK:
-	case LFUN_CENTER:
-	case LFUN_BIBDB_ADD:
-	case LFUN_BIBDB_DEL:
+	case LFUN_MARK_TOGGLE:
+	case LFUN_SCREEN_RECENTER:
+	case LFUN_BIBTEX_DATABASE_ADD:
+	case LFUN_BIBTEX_DATABASE_DEL:
 	case LFUN_WORDS_COUNT:
 		flag.enabled(true);
 		break;
@@ -1125,7 +1125,7 @@ FuncStatus BufferView::Pimpl::getStatus(FuncRequest const & cmd)
 		flag.enabled(buffer_ && buffer_->params().tracking_changes);
 		break;
 
-	case LFUN_TOGGLE_COMPRESSION: {
+	case LFUN_BUFFER_TOGGLE_COMPRESSION: {
 		flag.setOnOff(buffer_->params().compressed);
 		break;
 	}
@@ -1220,7 +1220,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		break;
 	}
 
-	case LFUN_GOTO_PARAGRAPH: {
+	case LFUN_PARAGRAPH_GOTO: {
 		int const id = convert<int>(cmd.argument);
 		ParIterator par = buffer_->getParFromID(id);
 		if (par == buffer_->par_iterator_end()) {
@@ -1259,15 +1259,15 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		updateLabels(*buffer_);
 		break;
 
-	case LFUN_GOTOERROR:
+	case LFUN_ERROR_NEXT:
 		bv_funcs::gotoInset(bv_, InsetBase::ERROR_CODE, false);
 		break;
 
-	case LFUN_GOTONOTE:
+	case LFUN_NOTE_NEXT:
 		bv_funcs::gotoInset(bv_, InsetBase::NOTE_CODE, false);
 		break;
 
-	case LFUN_REFERENCE_GOTO: {
+	case LFUN_REFERENCE_NEXT: {
 		vector<InsetBase_code> tmp;
 		tmp.push_back(InsetBase::LABEL_CODE);
 		tmp.push_back(InsetBase::REF_CODE);
@@ -1332,7 +1332,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		cur.message(N_("Mark on"));
 		break;
 
-	case LFUN_SETMARK:
+	case LFUN_MARK_TOGGLE:
 		cur.clearSelection();
 		if (cur.mark()) {
 			cur.mark() = false;
@@ -1344,11 +1344,11 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		cur.resetAnchor();
 		break;
 
-	case LFUN_CENTER:
+	case LFUN_SCREEN_RECENTER:
 		center();
 		break;
 
-	case LFUN_BIBDB_ADD: {
+	case LFUN_BIBTEX_DATABASE_ADD: {
 		LCursor tmpcur = cursor_;
 		bv_funcs::findInset(tmpcur, InsetBase::BIBTEX_CODE, false);
 		InsetBibtex * inset = getInsetByCode<InsetBibtex>(tmpcur,
@@ -1360,7 +1360,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		break;
 	}
 
-	case LFUN_BIBDB_DEL: {
+	case LFUN_BIBTEX_DATABASE_DEL: {
 		LCursor tmpcur = cursor_;
 		bv_funcs::findInset(tmpcur, InsetBase::BIBTEX_CODE, false);
 		InsetBibtex * inset = getInsetByCode<InsetBibtex>(tmpcur,
@@ -1402,7 +1402,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 	}
 		break;
 
-	case LFUN_TOGGLE_COMPRESSION:
+	case LFUN_BUFFER_TOGGLE_COMPRESSION:
 		// turn compression on/off
 		buffer_->params().compressed = !buffer_->params().compressed;
 		break;

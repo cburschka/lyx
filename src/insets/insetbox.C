@@ -199,7 +199,7 @@ void InsetBox::doDispatch(LCursor & cur, FuncRequest & cmd)
 		InsetCollapsable::doDispatch(cur, cmd);
 		break;
 	case LFUN_PASTE:
-	case LFUN_PASTESELECTION:
+	case LFUN_PRIMARY_SELECTION_PASTE:
 		InsetCollapsable::doDispatch(cur, cmd);
 		if (!params_.inner_box)
 			forceParagraphsToDefault(cur);
@@ -221,7 +221,7 @@ bool InsetBox::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_INSET_DIALOG_UPDATE:
 		flag.enabled(true);
 		return true;
-	case LFUN_BREAKPARAGRAPH:
+	case LFUN_BREAK_PARAGRAPH:
 		if (params_.inner_box) {
 			return InsetCollapsable::getStatus(cur, cmd, flag);
 		} else {

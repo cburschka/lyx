@@ -124,7 +124,7 @@ void ControlParagraph::dispatchParams()
 {
 	ostringstream data;
 	params().write(data);
-	FuncRequest const fr(LFUN_PARAGRAPH_APPLY, data.str());
+	FuncRequest const fr(LFUN_PARAGRAPH_PARAMS_APPLY, data.str());
 	kernel().dispatch(fr);
 }
 

@@ -43,27 +43,27 @@ namespace frontend {
 Gtk::BuiltinStockID getGTKStockIcon(FuncRequest const & func)
 {
 	switch (func.action) {
-		case LFUN_MENUWRITE: return Gtk::Stock::SAVE;
-		case LFUN_MENUNEW: return Gtk::Stock::NEW;
-		case LFUN_WRITEAS: return Gtk::Stock::SAVE_AS;
-		case LFUN_MENURELOAD: return Gtk::Stock::REVERT_TO_SAVED;
-		case LFUN_CENTER: return Gtk::Stock::JUSTIFY_CENTER;
-		case LFUN_TOCVIEW: return Gtk::Stock::INDEX;
-		case LFUN_CLOSEBUFFER: return Gtk::Stock::CLOSE;
-		case LFUN_QUIT: return Gtk::Stock::QUIT;
+		case LFUN_BUFFER_WRITE: return Gtk::Stock::SAVE;
+		case LFUN_BUFFER_NEW: return Gtk::Stock::NEW;
+		case LFUN_BUFFER_WRITE_AS: return Gtk::Stock::SAVE_AS;
+		case LFUN_BUFFER_RELOAD: return Gtk::Stock::REVERT_TO_SAVED;
+		case LFUN_SCREEN_RECENTER: return Gtk::Stock::JUSTIFY_CENTER;
+		case LFUN_TOC_VIEW: return Gtk::Stock::INDEX;
+		case LFUN_BUFFER_CLOSE: return Gtk::Stock::CLOSE;
+		case LFUN_LYX_QUIT: return Gtk::Stock::QUIT;
 		case LFUN_UNDO: return Gtk::Stock::UNDO;
 		case LFUN_REDO: return Gtk::Stock::REDO;
 		case LFUN_PASTE: return Gtk::Stock::PASTE;
-		case LFUN_PASTESELECTION: return Gtk::Stock::PASTE;
+		case LFUN_PRIMARY_SELECTION_PASTE: return Gtk::Stock::PASTE;
 		case LFUN_CUT: return Gtk::Stock::CUT;
 		case LFUN_COPY: return Gtk::Stock::COPY;
-		case LFUN_BOLD: return Gtk::Stock::BOLD;
-		case LFUN_ITAL: return Gtk::Stock::ITALIC;
+		case LFUN_FONT_BOLD: return Gtk::Stock::BOLD;
+		case LFUN_FONT_ITAL: return Gtk::Stock::ITALIC;
 		case LFUN_FILE_OPEN: return Gtk::Stock::OPEN;
 		case LFUN_RECONFIGURE: return Gtk::Stock::REFRESH;
 		case LFUN_LABEL_GOTO:
 		case LFUN_BOOKMARK_GOTO: return Gtk::Stock::JUMP_TO;
-		case LFUN_GOTONOTE: return Gtk::Stock::GO_FORWARD;
+		case LFUN_NOTE_NEXT: return Gtk::Stock::GO_FORWARD;
 		case LFUN_ACCEPT_ALL_CHANGES: return Gtk::Stock::APPLY;
 		case LFUN_REJECT_ALL_CHANGES: return Gtk::Stock::CANCEL;
 		case LFUN_DIALOG_SHOW:
@@ -92,7 +92,7 @@ Glib::ustring getGTKThemeIcon(FuncRequest const & func)
 	switch (func.action) {
 		case LFUN_TABULAR_INSERT: return "stock_insert-table";
 		case LFUN_MATH_MODE: return "stock_insert-math-object";
-		case LFUN_EMPH: return "stock_text_italic";
+		case LFUN_FONT_EMPH: return "stock_text_italic";
 		case LFUN_DIALOG_SHOW_NEW_INSET:
 			if (func.argument == "graphics")
 				return "stock_placeholder-picture";
@@ -105,17 +105,17 @@ Glib::ustring getGTKThemeIcon(FuncRequest const & func)
 			else if (func.argument == "character")
 				return "stock_font";
 			break;
-		case LFUN_DEPTH_PLUS: return "format-indent-more";
-		case LFUN_DEPTH_MIN: return "format-indent-less";
+		case LFUN_DEPTH_INCREMENT: return "format-indent-more";
+		case LFUN_DEPTH_DECREMENT: return "format-indent-less";
 		case LFUN_LAYOUT:
 			if (func.argument == "Enumerate")
 				return "stock_list_enum";
 			else if (func.argument == "Itemize")
 				return "stock_list_bullet";
 			break;
-		case LFUN_FREEFONT_APPLY: return "stock_font-formatting-toggle";
+		case LFUN_FONT_FREE_APPLY: return "stock_font-formatting-toggle";
 		case LFUN_THESAURUS_ENTRY: return "stock_thesaurus";
-		case LFUN_URL: return "stock_insert-url";
+		case LFUN_URL_INSERT: return "stock_insert-url";
 		case LFUN_TABULAR_FEATURE:
 			if (func.argument == "append-row")
 				return "stock_insert-rows";
@@ -140,10 +140,10 @@ Glib::ustring getGTKThemeIcon(FuncRequest const & func)
 			break;
 
 			case LFUN_BOOKMARK_SAVE: return "stock_add-bookmark";
-			case LFUN_INSERT_NOTE: return "stock_insert-note";
+			case LFUN_NOTE_INSERT: return "stock_insert-note";
 			case LFUN_LAYOUT_PARAGRAPH: return "stock_format-paragraph";
-			case LFUN_MENUNEWTMPLT: return "stock_new-template";
-			//case LFUN_INSET_ERT: return "gnome-mime-application-x-tex";
+			case LFUN_BUFFER_NEWTMPLT: return "stock_new-template";
+			//case LFUN_ERT_INSERT: return "gnome-mime-application-x-tex";
 	}
 	return "";
 }

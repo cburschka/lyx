@@ -100,7 +100,7 @@ void ControlDocument::dispatchParams()
 	int const new_secnumdepth = bp_->secnumdepth;
 
 	// Apply the BufferParams.
-	dispatch_bufferparams(kernel(), params(), LFUN_BUFFERPARAMS_APPLY);
+	dispatch_bufferparams(kernel(), params(), LFUN_BUFFER_PARAMS_APPLY);
 
 	// redo the numbering if necessary
 	if (new_secnumdepth != old_secnumdepth)
@@ -137,7 +137,7 @@ void ControlDocument::setLanguage() const
 		return;
 
 	string const lang_name = newL->lang();
-	kernel().dispatch(FuncRequest(LFUN_LANGUAGE_BUFFER, lang_name));
+	kernel().dispatch(FuncRequest(LFUN_BUFFER_LANGUAGE, lang_name));
 }
 
 
@@ -154,7 +154,7 @@ bool ControlDocument::loadTextclass(textclass_type tc) const
 
 void ControlDocument::saveAsDefault() const
 {
-	dispatch_bufferparams(kernel(), params(), LFUN_SAVE_AS_DEFAULT);
+	dispatch_bufferparams(kernel(), params(), LFUN_BUFFER_SAVE_AS_DEFAULT);
 }
 
 } // namespace frontend

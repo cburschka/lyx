@@ -460,7 +460,7 @@ void expandDocuments(Menu & tomenu, LyXView const * view)
 		string label = makeDisplayPath(*docit, 20);
 		if (ii < 10)
 			label = convert<string>(ii) + ". " + label + '|' + convert<string>(ii);
-		tomenu.add(MenuItem(MenuItem::Command, label, FuncRequest(LFUN_SWITCHBUFFER, *docit)), view);
+		tomenu.add(MenuItem(MenuItem::Command, label, FuncRequest(LFUN_BUFFER_SWITCH, *docit)), view);
 	}
 }
 
@@ -482,19 +482,19 @@ void expandFormats(MenuItem::Kind kind, Menu & tomenu, LyXView const * view)
 	switch (kind) {
 	case MenuItem::ImportFormats:
 		formats = Importer::GetImportableFormats();
-		action = LFUN_IMPORT;
+		action = LFUN_BUFFER_IMPORT;
 		break;
 	case MenuItem::ViewFormats:
 		formats = Exporter::getExportableFormats(*view->buffer(), true);
-		action = LFUN_PREVIEW;
+		action = LFUN_BUFFER_VIEW;
 		break;
 	case MenuItem::UpdateFormats:
 		formats = Exporter::getExportableFormats(*view->buffer(), true);
-		action = LFUN_UPDATE;
+		action = LFUN_BUFFER_UPDATE;
 		break;
 	default:
 		formats = Exporter::getExportableFormats(*view->buffer(), false);
-		action = LFUN_EXPORT;
+		action = LFUN_BUFFER_EXPORT;
 	}
 	sort(formats.begin(), formats.end(), compare_format());
 
@@ -574,7 +574,7 @@ void expandFloatInsert(Menu & tomenu, LyXView const * view)
 		// normal float
 		string const label = _(cit->second.name());
 		tomenu.add(MenuItem(MenuItem::Command, label,
-				    FuncRequest(LFUN_INSET_FLOAT,
+				    FuncRequest(LFUN_FLOAT_INSERT,
 						cit->second.type())),
 			   view);
 	}
@@ -597,7 +597,7 @@ void expandCharStyleInsert(Menu & tomenu, LyXView const * view)
 	for (; cit != end; ++cit) {
 		string const label = cit->name;
 		tomenu.add(MenuItem(MenuItem::Command, label,
-				    FuncRequest(LFUN_INSERT_CHARSTYLE,
+				    FuncRequest(LFUN_CHARSTYLE_INSERT,
 						cit->name)), view);
 	}
 }
@@ -751,7 +751,7 @@ void expandBranches(Menu & tomenu, LyXView const * view)
 		if (ii < 10)
 			label = convert<string>(ii) + ". " + label + "|" + convert<string>(ii);
 		tomenu.add(MenuItem(MenuItem::Command, label,
-				    FuncRequest(LFUN_INSERT_BRANCH,
+				    FuncRequest(LFUN_BRANCH_INSERT,
 						cit->getBranch())), view);
 	}
 }

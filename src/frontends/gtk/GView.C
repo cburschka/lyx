@@ -143,10 +143,10 @@ bool GView::on_delete_event(GdkEventAny * /*event*/)
 	Gtk::Requisition req = workArea_->size_request();
 	LyX::ref().session().saveSessionInfo("WindowWidth", convert<string>(req.width));
 	LyX::ref().session().saveSessionInfo("WindowHeight", convert<string>(req.height));
-	// trigger LFUN_QUIT instead of quit directly
-	// since LFUN_QUIT may have more cleanup stuff
+	// trigger LFUN_LYX_QUIT instead of quit directly
+	// since LFUN_LYX_QUIT may have more cleanup stuff
 	//
-	getLyXFunc().dispatch(FuncRequest(LFUN_QUIT));
+	getLyXFunc().dispatch(FuncRequest(LFUN_LYX_QUIT));
 	return true;
 }
 

@@ -236,7 +236,7 @@ void InsetCharStyle::doDispatch(LCursor & cur, FuncRequest & cmd)
 				InsetText::doDispatch(cur, cmd);
 			break;
 	case LFUN_PASTE:
-	case LFUN_PASTESELECTION: {
+	case LFUN_PRIMARY_SELECTION_PASTE: {
 		InsetCollapsable::doDispatch(cur, cmd);
 		forceParagraphsToDefault(cur);
 		break;
@@ -253,9 +253,9 @@ bool InsetCharStyle::getStatus(LCursor & cur, FuncRequest const & cmd,
 {
 	switch (cmd.action) {
 		// paragraph breaks not allowed in charstyle insets
-		case LFUN_BREAKPARAGRAPH:
-		case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
-		case LFUN_BREAKPARAGRAPH_SKIP:
+		case LFUN_BREAK_PARAGRAPH:
+		case LFUN_BREAK_PARAGRAPHKEEPLAYOUT:
+		case LFUN_BREAK_PARAGRAPH_SKIP:
 			status.enabled(false);
 			return true;
 

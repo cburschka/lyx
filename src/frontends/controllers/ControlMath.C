@@ -43,33 +43,33 @@ void ControlMath::dispatchFunc(kb_action action, string const & arg) const
 
 void ControlMath::dispatchInsert(string const & name) const
 {
-	dispatchFunc(LFUN_INSERT_MATH, '\\' + name);
+	dispatchFunc(LFUN_MATH_INSERT, '\\' + name);
 }
 
 
 void ControlMath::dispatchSubscript() const
 {
-	dispatchFunc(LFUN_INSERT_MATH, "_");
+	dispatchFunc(LFUN_MATH_INSERT, "_");
 }
 
 
 void ControlMath::dispatchSuperscript() const
 {
-	dispatchFunc(LFUN_INSERT_MATH, "^");
+	dispatchFunc(LFUN_MATH_INSERT, "^");
 }
 
 
 void ControlMath::dispatchCubeRoot() const
 {
-	dispatchFunc(LFUN_INSERT_MATH, "\\root");
-	dispatchFunc(LFUN_SELFINSERT, "3");
-	dispatchFunc(LFUN_RIGHT);
+	dispatchFunc(LFUN_MATH_INSERT, "\\root");
+	dispatchFunc(LFUN_SELF_INSERT, "3");
+	dispatchFunc(LFUN_CHAR_FORWARD);
 }
 
 
 void ControlMath::dispatchMatrix(string const & str) const
 {
-	dispatchFunc(LFUN_INSERT_MATRIX, str);
+	dispatchFunc(LFUN_MATH_MATRIX, str);
 }
 
 

@@ -520,8 +520,8 @@ void LyX::init(bool gui)
 
 void LyX::defaultKeyBindings(kb_keymap  * kbmap)
 {
-	kbmap->bind("Right", FuncRequest(LFUN_RIGHT));
-	kbmap->bind("Left", FuncRequest(LFUN_LEFT));
+	kbmap->bind("Right", FuncRequest(LFUN_CHAR_FORWARD));
+	kbmap->bind("Left", FuncRequest(LFUN_CHAR_BACKWARD));
 	kbmap->bind("Up", FuncRequest(LFUN_UP));
 	kbmap->bind("Down", FuncRequest(LFUN_DOWN));
 
@@ -530,43 +530,43 @@ void LyX::defaultKeyBindings(kb_keymap  * kbmap)
 	kbmap->bind("~S-ISO_Left_Tab", FuncRequest(LFUN_CELL_BACKWARD));
 	kbmap->bind("~S-BackTab", FuncRequest(LFUN_CELL_BACKWARD));
 
-	kbmap->bind("Home", FuncRequest(LFUN_HOME));
-	kbmap->bind("End", FuncRequest(LFUN_END));
-	kbmap->bind("Prior", FuncRequest(LFUN_PRIOR));
-	kbmap->bind("Next", FuncRequest(LFUN_NEXT));
+	kbmap->bind("Home", FuncRequest(LFUN_LINE_BEGIN));
+	kbmap->bind("End", FuncRequest(LFUN_LINE_END));
+	kbmap->bind("Prior", FuncRequest(LFUN_SCREEN_UP));
+	kbmap->bind("Next", FuncRequest(LFUN_SCREEN_DOWN));
 
-	kbmap->bind("Return", FuncRequest(LFUN_BREAKPARAGRAPH));
+	kbmap->bind("Return", FuncRequest(LFUN_BREAK_PARAGRAPH));
 	//kbmap->bind("~C-~S-~M-nobreakspace", FuncRequest(LFUN_PROTECTEDSPACE));
 
-	kbmap->bind("Delete", FuncRequest(LFUN_DELETE));
-	kbmap->bind("BackSpace", FuncRequest(LFUN_BACKSPACE));
+	kbmap->bind("Delete", FuncRequest(LFUN_DELETE_FORWARD));
+	kbmap->bind("BackSpace", FuncRequest(LFUN_DELETE_FORWARD_BACKWARD));
 
 	// kbmap->bindings to enable the use of the numeric keypad
 	// e.g. Num Lock set
-	//kbmap->bind("KP_0", FuncRequest(LFUN_SELFINSERT));
-	//kbmap->bind("KP_Decimal", FuncRequest(LFUN_SELFINSERT));
-	kbmap->bind("KP_Enter", FuncRequest(LFUN_BREAKPARAGRAPH));
-	//kbmap->bind("KP_1", FuncRequest(LFUN_SELFINSERT));
-	//kbmap->bind("KP_2", FuncRequest(LFUN_SELFINSERT));
-	//kbmap->bind("KP_3", FuncRequest(LFUN_SELFINSERT));
-	//kbmap->bind("KP_4", FuncRequest(LFUN_SELFINSERT));
-	//kbmap->bind("KP_5", FuncRequest(LFUN_SELFINSERT));
-	//kbmap->bind("KP_6", FuncRequest(LFUN_SELFINSERT));
-	//kbmap->bind("KP_Add", FuncRequest(LFUN_SELFINSERT));
-	//kbmap->bind("KP_7", FuncRequest(LFUN_SELFINSERT));
-	//kbmap->bind("KP_8", FuncRequest(LFUN_SELFINSERT));
-	//kbmap->bind("KP_9", FuncRequest(LFUN_SELFINSERT));
-	//kbmap->bind("KP_Divide", FuncRequest(LFUN_SELFINSERT));
-	//kbmap->bind("KP_Multiply", FuncRequest(LFUN_SELFINSERT));
-	//kbmap->bind("KP_Subtract", FuncRequest(LFUN_SELFINSERT));
-	kbmap->bind("KP_Right", FuncRequest(LFUN_RIGHT));
-	kbmap->bind("KP_Left", FuncRequest(LFUN_LEFT));
+	//kbmap->bind("KP_0", FuncRequest(LFUN_SELF_INSERT));
+	//kbmap->bind("KP_Decimal", FuncRequest(LFUN_SELF_INSERT));
+	kbmap->bind("KP_Enter", FuncRequest(LFUN_BREAK_PARAGRAPH));
+	//kbmap->bind("KP_1", FuncRequest(LFUN_SELF_INSERT));
+	//kbmap->bind("KP_2", FuncRequest(LFUN_SELF_INSERT));
+	//kbmap->bind("KP_3", FuncRequest(LFUN_SELF_INSERT));
+	//kbmap->bind("KP_4", FuncRequest(LFUN_SELF_INSERT));
+	//kbmap->bind("KP_5", FuncRequest(LFUN_SELF_INSERT));
+	//kbmap->bind("KP_6", FuncRequest(LFUN_SELF_INSERT));
+	//kbmap->bind("KP_Add", FuncRequest(LFUN_SELF_INSERT));
+	//kbmap->bind("KP_7", FuncRequest(LFUN_SELF_INSERT));
+	//kbmap->bind("KP_8", FuncRequest(LFUN_SELF_INSERT));
+	//kbmap->bind("KP_9", FuncRequest(LFUN_SELF_INSERT));
+	//kbmap->bind("KP_Divide", FuncRequest(LFUN_SELF_INSERT));
+	//kbmap->bind("KP_Multiply", FuncRequest(LFUN_SELF_INSERT));
+	//kbmap->bind("KP_Subtract", FuncRequest(LFUN_SELF_INSERT));
+	kbmap->bind("KP_Right", FuncRequest(LFUN_CHAR_FORWARD));
+	kbmap->bind("KP_Left", FuncRequest(LFUN_CHAR_BACKWARD));
 	kbmap->bind("KP_Up", FuncRequest(LFUN_UP));
 	kbmap->bind("KP_Down", FuncRequest(LFUN_DOWN));
-	kbmap->bind("KP_Home", FuncRequest(LFUN_HOME));
-	kbmap->bind("KP_End", FuncRequest(LFUN_END));
-	kbmap->bind("KP_Prior", FuncRequest(LFUN_PRIOR));
-	kbmap->bind("KP_Next", FuncRequest(LFUN_NEXT));
+	kbmap->bind("KP_Home", FuncRequest(LFUN_LINE_BEGIN));
+	kbmap->bind("KP_End", FuncRequest(LFUN_LINE_END));
+	kbmap->bind("KP_Prior", FuncRequest(LFUN_SCREEN_UP));
+	kbmap->bind("KP_Next", FuncRequest(LFUN_SCREEN_DOWN));
 }
 
 
@@ -587,25 +587,25 @@ void LyX::deadKeyBindings(kb_keymap * kbmap)
 {
 	// bindKeyings for transparent handling of deadkeys
 	// The keysyms are gotten from XFree86 X11R6
-	kbmap->bind("~C-~S-~M-dead_acute", FuncRequest(LFUN_ACUTE));
-	kbmap->bind("~C-~S-~M-dead_breve", FuncRequest(LFUN_BREVE));
-	kbmap->bind("~C-~S-~M-dead_caron", FuncRequest(LFUN_CARON));
-	kbmap->bind("~C-~S-~M-dead_cedilla", FuncRequest(LFUN_CEDILLA));
-	kbmap->bind("~C-~S-~M-dead_abovering", FuncRequest(LFUN_CIRCLE));
-	kbmap->bind("~C-~S-~M-dead_circumflex", FuncRequest(LFUN_CIRCUMFLEX));
-	kbmap->bind("~C-~S-~M-dead_abovedot", FuncRequest(LFUN_DOT));
-	kbmap->bind("~C-~S-~M-dead_grave", FuncRequest(LFUN_GRAVE));
-	kbmap->bind("~C-~S-~M-dead_doubleacute", FuncRequest(LFUN_HUNG_UMLAUT));
-	kbmap->bind("~C-~S-~M-dead_macron", FuncRequest(LFUN_MACRON));
+	kbmap->bind("~C-~S-~M-dead_acute", FuncRequest(LFUN_ACCENT_ACUTE));
+	kbmap->bind("~C-~S-~M-dead_breve", FuncRequest(LFUN_ACCENT_BREVE));
+	kbmap->bind("~C-~S-~M-dead_caron", FuncRequest(LFUN_ACCENT_CARON));
+	kbmap->bind("~C-~S-~M-dead_cedilla", FuncRequest(LFUN_ACCENT_CEDILLA));
+	kbmap->bind("~C-~S-~M-dead_abovering", FuncRequest(LFUN_ACCENT_CIRCLE));
+	kbmap->bind("~C-~S-~M-dead_circumflex", FuncRequest(LFUN_ACCENT_CIRCUMFLEX));
+	kbmap->bind("~C-~S-~M-dead_abovedot", FuncRequest(LFUN_ACCENT_DOT));
+	kbmap->bind("~C-~S-~M-dead_grave", FuncRequest(LFUN_ACCENT_GRAVE));
+	kbmap->bind("~C-~S-~M-dead_doubleacute", FuncRequest(LFUN_ACCENT_HUNGARIAN_UMLAUT));
+	kbmap->bind("~C-~S-~M-dead_macron", FuncRequest(LFUN_ACCENT_MACRON));
 	// nothing with this name
-	// kbmap->bind("~C-~S-~M-dead_special_caron", LFUN_SPECIAL_CARON);
-	kbmap->bind("~C-~S-~M-dead_tilde", FuncRequest(LFUN_TILDE));
-	kbmap->bind("~C-~S-~M-dead_diaeresis", FuncRequest(LFUN_UMLAUT));
+	// kbmap->bind("~C-~S-~M-dead_special_caron", LFUN_ACCENT_SPECIAL_CARON);
+	kbmap->bind("~C-~S-~M-dead_tilde", FuncRequest(LFUN_ACCENT_TILDE));
+	kbmap->bind("~C-~S-~M-dead_diaeresis", FuncRequest(LFUN_ACCENT_UMLAUT));
 	// nothing with this name either...
-	//kbmap->bind("~C-~S-~M-dead_underbar", FuncRequest(LFUN_UNDERBAR));
-	kbmap->bind("~C-~S-~M-dead_belowdot", FuncRequest(LFUN_UNDERDOT));
-	kbmap->bind("~C-~S-~M-dead_tie", FuncRequest(LFUN_TIE));
-	kbmap->bind("~C-~S-~M-dead_ogonek",FuncRequest(LFUN_OGONEK));
+	//kbmap->bind("~C-~S-~M-dead_underbar", FuncRequest(LFUN_ACCENT_UNDERBAR));
+	kbmap->bind("~C-~S-~M-dead_belowdot", FuncRequest(LFUN_ACCENT_UNDERDOT));
+	kbmap->bind("~C-~S-~M-dead_tie", FuncRequest(LFUN_ACCENT_TIE));
+	kbmap->bind("~C-~S-~M-dead_ogonek",FuncRequest(LFUN_ACCENT_OGONEK));
 }
 
 

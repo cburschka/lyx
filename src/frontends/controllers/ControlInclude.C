@@ -101,7 +101,7 @@ void ControlInclude::load(string const & file)
 {
 	string const ext = support::getExtension(file);
 	if (ext == "lyx")
-		kernel().dispatch(FuncRequest(LFUN_CHILDOPEN, file));
+		kernel().dispatch(FuncRequest(LFUN_BUFFER_CHILD_OPEN, file));
 	else
 		// tex file or other text file in verbatim mode
 		formats.edit(kernel().buffer(), file, "text");

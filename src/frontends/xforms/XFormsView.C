@@ -184,10 +184,10 @@ int XFormsView::atCloseMainFormCB()
 	// save windows size
 	LyX::ref().session().saveSessionInfo("WindowWidth", convert<string>(form_->w));
 	LyX::ref().session().saveSessionInfo("WindowHeight", convert<string>(form_->h));
-	// trigger LFUN_QUIT instead of quit directly
-	// since LFUN_QUIT may have more cleanup stuff
+	// trigger LFUN_LYX_QUIT instead of quit directly
+	// since LFUN_LYX_QUIT may have more cleanup stuff
 	//
-	getLyXFunc().dispatch(FuncRequest(LFUN_QUIT));
+	getLyXFunc().dispatch(FuncRequest(LFUN_LYX_QUIT));
 	return FL_IGNORE;
 }
 

@@ -226,9 +226,9 @@ void InsetERT::doDispatch(LCursor & cur, FuncRequest & cmd)
 	//lyxerr << "\nInsetERT::doDispatch (begin): cmd: " << cmd << endl;
 	switch (cmd.action) {
 
-	case LFUN_QUOTE: {
+	case LFUN_QUOTE_INSERT: {
 		// We need to bypass the fancy quotes in LyXText
-		FuncRequest f(LFUN_SELFINSERT, "\"");
+		FuncRequest f(LFUN_SELF_INSERT, "\"");
 		dispatch(cur, f);
 		break;
 	}
@@ -239,7 +239,7 @@ void InsetERT::doDispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 	}
 	case LFUN_PASTE:
-	case LFUN_PASTESELECTION: {
+	case LFUN_PRIMARY_SELECTION_PASTE: {
 		InsetCollapsable::doDispatch(cur, cmd);
 
 		// Since we can only store plain text, we must reset all
@@ -287,106 +287,106 @@ bool InsetERT::getStatus(LCursor & cur, FuncRequest const & cmd,
 {
 	switch (cmd.action) {
 		// suppress these
-		case LFUN_ACUTE:
-		case LFUN_BREVE:
-		case LFUN_CARON:
-		case LFUN_CEDILLA:
-		case LFUN_CIRCLE:
-		case LFUN_CIRCUMFLEX:
-		case LFUN_DOT:
-		case LFUN_GRAVE:
-		case LFUN_HUNG_UMLAUT:
-		case LFUN_MACRON:
-		case LFUN_OGONEK:
-		case LFUN_SPECIAL_CARON:
-		case LFUN_TIE:
-		case LFUN_TILDE:
-		case LFUN_UMLAUT:
-		case LFUN_UNDERBAR:
-		case LFUN_UNDERDOT:
+		case LFUN_ACCENT_ACUTE:
+		case LFUN_ACCENT_BREVE:
+		case LFUN_ACCENT_CARON:
+		case LFUN_ACCENT_CEDILLA:
+		case LFUN_ACCENT_CIRCLE:
+		case LFUN_ACCENT_CIRCUMFLEX:
+		case LFUN_ACCENT_DOT:
+		case LFUN_ACCENT_GRAVE:
+		case LFUN_ACCENT_HUNGARIAN_UMLAUT:
+		case LFUN_ACCENT_MACRON:
+		case LFUN_ACCENT_OGONEK:
+		case LFUN_ACCENT_SPECIAL_CARON:
+		case LFUN_ACCENT_TIE:
+		case LFUN_ACCENT_TILDE:
+		case LFUN_ACCENT_UMLAUT:
+		case LFUN_ACCENT_UNDERBAR:
+		case LFUN_ACCENT_UNDERDOT:
 		case LFUN_APPENDIX:
-		case LFUN_BREAKLINE:
-		case LFUN_INSET_CAPTION:
-		case LFUN_DEPTH_MIN:
-		case LFUN_DEPTH_PLUS:
-		case LFUN_LDOTS:
-		case LFUN_END_OF_SENTENCE:
+		case LFUN_BREAK_LINE:
+		case LFUN_CAPTION_INSERT:
+		case LFUN_DEPTH_DECREMENT:
+		case LFUN_DEPTH_INCREMENT:
+		case LFUN_DOTS_INSERT:
+		case LFUN_LINE_END_OF_SENTENCE_PERIOD_INSERT:
 		case LFUN_ENVIRONMENT_INSERT:
-		case LFUN_INSET_ERT:
+		case LFUN_ERT_INSERT:
 		case LFUN_FILE_INSERT:
-		case LFUN_INSET_FLOAT:
-		case LFUN_INSET_WIDE_FLOAT:
-		case LFUN_INSET_WRAP:
-		case LFUN_BOLD:
-		case LFUN_CODE:
-		case LFUN_DEFAULT:
-		case LFUN_EMPH:
-		case LFUN_FREEFONT_APPLY:
-		case LFUN_FREEFONT_UPDATE:
-		case LFUN_NOUN:
-		case LFUN_ROMAN:
-		case LFUN_SANS:
-		case LFUN_FRAK:
-		case LFUN_ITAL:
+		case LFUN_FLOAT_INSERT:
+		case LFUN_FLOAT_WIDE_INSERT:
+		case LFUN_WRAP_INSERT:
+		case LFUN_FONT_BOLD:
+		case LFUN_FONT_CODE:
+		case LFUN_FONT_DEFAULT:
+		case LFUN_FONT_EMPH:
+		case LFUN_FONT_FREE_APPLY:
+		case LFUN_FONT_FREE_UPDATE:
+		case LFUN_FONT_NOUN:
+		case LFUN_FONT_ROMAN:
+		case LFUN_FONT_SANS:
+		case LFUN_FONT_FRAK:
+		case LFUN_FONT_ITAL:
 		case LFUN_FONT_SIZE:
 		case LFUN_FONT_STATE:
-		case LFUN_UNDERLINE:
-		case LFUN_INSET_FOOTNOTE:
-		case LFUN_HFILL:
-		case LFUN_HTMLURL:
-		case LFUN_HYPHENATION:
-		case LFUN_LIGATURE_BREAK:
+		case LFUN_FONT_UNDERLINE:
+		case LFUN_FOOTNOTE_INSERT:
+		case LFUN_HFILL_INSERT:
+		case LFUN_HTML_INSERT:
+		case LFUN_HYPHENATION_POINT_INSERT:
+		case LFUN_LIGATURE_BREAK_INSERT:
 		case LFUN_INDEX_INSERT:
 		case LFUN_INDEX_PRINT:
-		case LFUN_INSERT_LABEL:
-		case LFUN_INSET_OPTARG:
-		case LFUN_INSERT_BIBITEM:
-		case LFUN_INSERT_LINE:
-		case LFUN_INSERT_PAGEBREAK:
+		case LFUN_LABEL_INSERT:
+		case LFUN_OPTIONAL_INSERT:
+		case LFUN_BIBITEM_INSERT:
+		case LFUN_LINE_INSERT:
+		case LFUN_PAGEBREAK_INSERT:
 		case LFUN_LANGUAGE:
 		case LFUN_LAYOUT:
 		case LFUN_LAYOUT_PARAGRAPH:
 		case LFUN_LAYOUT_TABULAR:
-		case LFUN_INSET_MARGINAL:
+		case LFUN_MARGINALNOTE_INSERT:
 		case LFUN_MATH_DISPLAY:
-		case LFUN_INSERT_MATH:
-		case LFUN_INSERT_MATRIX:
+		case LFUN_MATH_INSERT:
+		case LFUN_MATH_MATRIX:
 		case LFUN_MATH_MODE:
-		case LFUN_MENU_OPEN_BY_NAME:
-		case LFUN_MENU_SEPARATOR:
-		case LFUN_INSERT_BRANCH:
-		case LFUN_INSERT_CHARSTYLE:
-		case LFUN_INSERT_NOTE:
-		case LFUN_INSERT_BOX:
-		case LFUN_GOTONOTE:
+		case LFUN_MENU_OPEN:
+		case LFUN_MENU_SEPARATOR_INSERT:
+		case LFUN_BRANCH_INSERT:
+		case LFUN_CHARSTYLE_INSERT:
+		case LFUN_NOTE_INSERT:
+		case LFUN_BOX_INSERT:
+		case LFUN_NOTE_NEXT:
 		case LFUN_PARAGRAPH_SPACING:
 		case LFUN_LABEL_GOTO:
-		case LFUN_REFERENCE_GOTO:
+		case LFUN_REFERENCE_NEXT:
 		case LFUN_SPACE_INSERT:
-		case LFUN_GOTOFILEROW:
-		case LFUN_NOTIFY:
-		case LFUN_SETXY:
+		case LFUN_SERVER_GOTO_FILE_ROW:
+		case LFUN_SERVER_NOTIFY:
+		case LFUN_SERVER_SET_XY:
 		case LFUN_TABULAR_INSERT:
 		case LFUN_TOC_INSERT:
-		case LFUN_URL:
+		case LFUN_URL_INSERT:
 		case LFUN_FLOAT_LIST:
 		case LFUN_INSET_INSERT:
-		case LFUN_PARAGRAPH_APPLY:
+		case LFUN_PARAGRAPH_PARAMS_APPLY:
 		case LFUN_PARAGRAPH_UPDATE:
 		case LFUN_NOACTION:
 			status.enabled(false);
 			return true;
 
-		case LFUN_QUOTE:
+		case LFUN_QUOTE_INSERT:
 		case LFUN_INSET_MODIFY:
 		case LFUN_PASTE:
-		case LFUN_PASTESELECTION:
+		case LFUN_PRIMARY_SELECTION_PASTE:
 			status.enabled(true);
 			return true;
 
 		// this one is difficult to get right. As a half-baked
 		// solution, we consider only the first action of the sequence
-		case LFUN_SEQUENCE: {
+		case LFUN_COMMAND_SEQUENCE: {
 			// argument contains ';'-terminated commands
 			string const firstcmd = token(cmd.argument, ';', 0);
 			FuncRequest func(lyxaction.lookupFunc(firstcmd));

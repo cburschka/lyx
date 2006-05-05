@@ -999,11 +999,11 @@ void MathHullInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		cur.undispatched();
 		break;
 
-	case LFUN_BREAKPARAGRAPH:
+	case LFUN_BREAK_PARAGRAPH:
 		// just swallow this
 		break;
 
-	case LFUN_BREAKLINE:
+	case LFUN_BREAK_LINE:
 		// some magic for the common case
 		if (type_ == "simple" || type_ == "equation") {
 			recordUndoInset(cur);
@@ -1040,7 +1040,7 @@ void MathHullInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	case LFUN_INSERT_LABEL: {
+	case LFUN_LABEL_INSERT: {
 		recordUndoInset(cur);
 		row_type r = (type_ == "multline") ? nrows() - 1 : cur.row();
 		string old_label = label(r);
@@ -1138,7 +1138,7 @@ bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_FINISHED_DOWN:
 		status.enabled(true);
 		return true;
-	case LFUN_BREAKLINE:
+	case LFUN_BREAK_LINE:
 	case LFUN_MATH_NUMBER:
 	case LFUN_MATH_NONUMBER:
 	case LFUN_MATH_EXTERN:
@@ -1147,7 +1147,7 @@ bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 		// we handle these
 		status.enabled(true);
 		return true;
-	case LFUN_INSERT_LABEL:
+	case LFUN_LABEL_INSERT:
 		status.enabled(type_ != "simple");
 		return true;
 	case LFUN_INSET_INSERT: {

@@ -217,7 +217,7 @@ string const ToolbarBackend::getIcon(FuncRequest const & f)
 
 	string fullname;
 
-	if (f.action == LFUN_INSERT_MATH) {
+	if (f.action == LFUN_MATH_INSERT) {
 		if (!f.argument.empty())
 			fullname = find_xpm(f.argument.substr(1));
 	} else if (f.action == LFUN_MATH_DELIM) {

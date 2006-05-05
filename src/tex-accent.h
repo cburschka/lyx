@@ -22,26 +22,26 @@
    |------------------|------------------|------------------|--------------|
    |      TeX         |     XWindows     |   \bind/LFUN     | used by intl |
    |------------------|------------------|------------------|--------------|
-   |    grave         |    grave         |LFUN_GRAVE        | grave
-   |    acute         |    acute         |LFUN_ACUTE        | acute
-   |    circumflex    |    circumflex    |LFUN_CIRCUMFLEX   | circumflex
-   | umlaut/dieresis  |    diaeresis     |LFUN_UMLAUT       | umlaut
-   |    tilde         |    tilde         |LFUN_TILDE        | tilde
-   |    macron        |    maron         |LFUN_MACRON       | macron
-   |    dot           |    abovedot      |LFUN_DOT          | dot
-   |    cedilla       |    cedilla       |LFUN_CEDILLA      | cedilla
-   |    underdot      |                  |LFUN_UNDERDOT     | underdot
-   |    underbar      |                  |LFUN_UNDERBAR     | underbar
-   |    hácek         |    caron         |LFUN_CARON        | caron
-   |    breve         |    breve         |LFUN_BREVE        | breve
-   |    tie           |                  |LFUN_TIE          | tie
-   | Hungarian umlaut |    doubleacute   |LFUN_HUNG_UMLAUT  | hungarian umlaut
-   |    circle        |    abovering     |LFUN_CIRCLE       | circle
+   |    grave         |    grave         |LFUN_ACCENT_GRAVE        | grave
+   |    acute         |    acute         |LFUN_ACCENT_ACUTE        | acute
+   |    circumflex    |    circumflex    |LFUN_ACCENT_CIRCUMFLEX   | circumflex
+   | umlaut/dieresis  |    diaeresis     |LFUN_ACCENT_UMLAUT       | umlaut
+   |    tilde         |    tilde         |LFUN_ACCENT_TILDE        | tilde
+   |    macron        |    maron         |LFUN_ACCENT_MACRON       | macron
+   |    dot           |    abovedot      |LFUN_ACCENT_DOT          | dot
+   |    cedilla       |    cedilla       |LFUN_ACCENT_CEDILLA      | cedilla
+   |    underdot      |                  |LFUN_ACCENT_UNDERDOT     | underdot
+   |    underbar      |                  |LFUN_ACCENT_UNDERBAR     | underbar
+   |    hácek         |    caron         |LFUN_ACCENT_CARON        | caron
+   |    breve         |    breve         |LFUN_ACCENT_BREVE        | breve
+   |    tie           |                  |LFUN_ACCENT_TIE          | tie
+   | Hungarian umlaut |    doubleacute   |LFUN_ACCENT_HUNGARIAN_UMLAUT  | hungarian umlaut
+   |    circle        |    abovering     |LFUN_ACCENT_CIRCLE       | circle
    |                  |    ogonek        |                  |
    |                  |    iota          |                  |
    |                  |    voiced_sound  |                  |
    |                  | semivoiced_sound |                  |
-   |                  |                  |LFUN_SPECIAL_CARON| special caron
+   |                  |                  |LFUN_ACCENT_SPECIAL_CARON| special caron
    */
 // I am not sure how some of the XWindows names coresponds to the TeX ones.
 

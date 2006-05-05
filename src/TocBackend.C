@@ -111,12 +111,12 @@ string const TocBackend::Item::asString() const
 void TocBackend::Item::goTo(LyXView & lv_) const
 {
 	string const tmp = convert<string>(id());
-	lv_.dispatch(FuncRequest(LFUN_GOTO_PARAGRAPH, tmp));
+	lv_.dispatch(FuncRequest(LFUN_PARAGRAPH_GOTO, tmp));
 }
 
 FuncRequest TocBackend::Item::action() const
 {
-	return FuncRequest(LFUN_GOTO_PARAGRAPH, convert<string>(id()));
+	return FuncRequest(LFUN_PARAGRAPH_GOTO, convert<string>(id()));
 }
 
 

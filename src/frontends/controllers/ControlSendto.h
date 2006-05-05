@@ -35,7 +35,7 @@ public:
 	///
 	virtual bool isBufferDependent() const { return true; }
 	///
-	virtual kb_action getLfun() const { return LFUN_EXPORT_CUSTOM; }
+	virtual kb_action getLfun() const { return LFUN_BUFFER_EXPORT_CUSTOM; }
 
 	/// Return a vector of those formats that can be exported from "lyx".
 	std::vector<Format const *> const allFormats() const;

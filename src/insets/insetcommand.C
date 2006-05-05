@@ -140,7 +140,7 @@ bool InsetCommand::getStatus(LCursor & cur, FuncRequest const & cmd,
 {
 	switch (cmd.action) {
 	// suppress these
-	case LFUN_INSET_ERT:
+	case LFUN_ERT_INSERT:
 		status.enabled(false);
 		return true;
 	// we handle these

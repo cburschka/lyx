@@ -1044,7 +1044,7 @@ void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	// insert file functions
-	case LFUN_DELETE_LINE_FORWARD:
+	case LFUN_DELETE_FORWARD_LINE_FORWARD:
 		// FIXME: We use recordUndoInset when a change reflects more
 		// than one cell, because recordUndo does not work for
 		// multiple cells. Unfortunately this puts the cursor in front
@@ -1089,7 +1089,7 @@ void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	case LFUN_BREAKLINE: {
+	case LFUN_BREAK_LINE: {
 		recordUndoInset(cur);
 		row_type const r = cur.row();
 		addRow(r);
@@ -1245,11 +1245,11 @@ void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_HOMESEL:
-	case LFUN_HOME:
-	case LFUN_WORDLEFTSEL:
-	case LFUN_WORDLEFT:
-		cur.selHandle(cmd.action == LFUN_WORDLEFTSEL || cmd.action == LFUN_HOMESEL);
+	case LFUN_LINE_BEGINSEL:
+	case LFUN_LINE_BEGIN:
+	case LFUN_WORD_BACKWARDSEL:
+	case LFUN_WORD_BACKWARD:
+		cur.selHandle(cmd.action == LFUN_WORD_BACKWARDSEL || cmd.action == LFUN_LINE_BEGINSEL);
 		cur.macroModeClose();
 		if (cur.pos() != 0) {
 			cur.pos() = 0;
@@ -1265,11 +1265,11 @@ void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	case LFUN_WORDRIGHTSEL:
-	case LFUN_WORDRIGHT:
-	case LFUN_ENDSEL:
-	case LFUN_END:
-		cur.selHandle(cmd.action == LFUN_WORDRIGHTSEL || cmd.action == LFUN_ENDSEL);
+	case LFUN_WORD_FORWARDSEL:
+	case LFUN_WORD_FORWARD:
+	case LFUN_LINE_ENDSEL:
+	case LFUN_LINE_END:
+		cur.selHandle(cmd.action == LFUN_WORD_FORWARDSEL || cmd.action == LFUN_LINE_ENDSEL);
 		cur.macroModeClose();
 		cur.clearTargetX();
 		if (cur.pos() != cur.lastpos()) {

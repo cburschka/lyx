@@ -35,7 +35,7 @@ public:
 	///
 	virtual bool isBufferDependent() const { return true; }
 	///
-	virtual kb_action getLfun() const { return LFUN_FREEFONT_UPDATE; }
+	virtual kb_action getLfun() const { return LFUN_FONT_FREE_UPDATE; }
 
 	///
 	void setFamily(LyXFont::FONT_FAMILY);

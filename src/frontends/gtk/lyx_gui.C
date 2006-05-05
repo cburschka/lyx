@@ -165,7 +165,7 @@ FuncStatus lyx_gui::getStatus(FuncRequest const & ev)
 		if (ev.argument == "preamble")
 			flag.unknown(true);
 		break;
-	case LFUN_TOOLTIPS_TOGGLE:
+	case LFUN_TOGGLE_TOOLTIPS:
 		flag.unknown(true);
 		break;
 	default:

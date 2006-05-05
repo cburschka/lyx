@@ -197,7 +197,7 @@ kb_keymap::lookup(LyXKeySymPtr key,
 			if (cit->table.get()) {
 				// this is a prefix key - set new map
 				seq->curmap = cit->table.get();
-				static FuncRequest prefix(LFUN_PREFIX);
+				static FuncRequest prefix(LFUN_COMMAND_PREFIX);
 				return prefix;
 			} else {
 				// final key - reset map

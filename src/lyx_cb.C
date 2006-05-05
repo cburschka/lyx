@@ -129,7 +129,7 @@ bool writeAs(Buffer * buffer, string const & filename)
 	if (filename.empty()) {
 
 		FileDialog fileDlg(_("Choose a filename to save document as"),
-			LFUN_WRITEAS,
+			LFUN_BUFFER_WRITE_AS,
 			make_pair(string(_("Documents|#o#O")),
 				  string(lyxrc.document_path)),
 			make_pair(string(_("Templates|#T#t")),

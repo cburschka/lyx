@@ -1323,7 +1323,7 @@ bool Buffer::dispatch(FuncRequest const & func, bool * result)
 	bool dispatched = true;
 
 	switch (func.action) {
-		case LFUN_EXPORT: {
+		case LFUN_BUFFER_EXPORT: {
 			bool const tmp = Exporter::Export(this, func.argument, false);
 			if (result)
 				*result = tmp;

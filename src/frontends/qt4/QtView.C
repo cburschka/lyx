@@ -186,9 +186,9 @@ void QtView::closeEvent(QCloseEvent *)
 		LyX::ref().session().saveSessionInfo("WindowPosX", convert<string>(x()));
 		LyX::ref().session().saveSessionInfo("WindowPosY", convert<string>(y()));
 	}
-	// trigger LFUN_QUIT instead of quit directly
-	// since LFUN_QUIT may have more cleanup stuff
-	getLyXFunc().dispatch(FuncRequest(LFUN_QUIT));
+	// trigger LFUN_LYX_QUIT instead of quit directly
+	// since LFUN_LYX_QUIT may have more cleanup stuff
+	getLyXFunc().dispatch(FuncRequest(LFUN_LYX_QUIT));
 }
 
 

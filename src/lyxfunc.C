@@ -262,7 +262,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 	// When not cancel or meta-fake, do the normal lookup.
 	// Note how the meta_fake Mod1 bit is OR-ed in and reset afterwards.
 	// Mostly, meta_fake_bit = key_modifier::none. RVDK_PATCH_5.
-	if ((func.action != LFUN_CANCEL) && (func.action != LFUN_META_FAKE)) {
+	if ((func.action != LFUN_CANCEL) && (func.action != LFUN_META_PREFIX)) {
 		// remove Caps Lock and Mod2 as a modifiers
 		func = keyseq.addkey(keysym, (state | meta_fake_bit));
 		lyxerr[Debug::KEY] << BOOST_CURRENT_FUNCTION
@@ -275,7 +275,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 
 	// Can this happen now ?
 	if (func.action == LFUN_NOACTION) {
-		func = FuncRequest(LFUN_PREFIX);
+		func = FuncRequest(LFUN_COMMAND_PREFIX);
 	}
 
 	if (lyxerr.debugging(Debug::KEY)) {
@@ -310,7 +310,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 		// by a binding
 		if (keysym->isText() && keyseq.length() == 1) {
 			lyxerr[Debug::KEY] << "isText() is true, inserting." << endl;
-			func = FuncRequest(LFUN_SELFINSERT,
+			func = FuncRequest(LFUN_SELF_INSERT,
 					   FuncRequest::KEYBOARD);
 		} else {
 			lyxerr[Debug::KEY] << "Unknown, !isText() - giving up" << endl;
@@ -319,10 +319,10 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 		}
 	}
 
-	if (func.action == LFUN_SELFINSERT) {
+	if (func.action == LFUN_SELF_INSERT) {
 		if (encoded_last_key != 0) {
 			string const arg(1, encoded_last_key);
-			dispatch(FuncRequest(LFUN_SELFINSERT, arg,
+			dispatch(FuncRequest(LFUN_SELF_INSERT, arg,
 					     FuncRequest::KEYBOARD));
 			lyxerr[Debug::KEY]
 				<< "SelfInsert arg[`" << arg << "']" << endl;
@@ -397,31 +397,31 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	// to handle (Andre')
 	bool enable = true;
 	switch (cmd.action) {
-	case LFUN_TOOLTIPS_TOGGLE:
+	case LFUN_TOGGLE_TOOLTIPS:
 		flag.setOnOff(owner->getDialogs().tooltipsEnabled());
 		break;
 
-	case LFUN_READ_ONLY_TOGGLE:
+	case LFUN_BUFFER_TOGGLE_READ_ONLY:
 		flag.setOnOff(buf->isReadonly());
 		break;
 
-	case LFUN_SWITCHBUFFER:
+	case LFUN_BUFFER_SWITCH:
 		// toggle on the current buffer, but do not toggle off
 		// the other ones (is that a good idea?)
 		if (cmd.argument == buf->fileName())
 			flag.setOnOff(true);
 		break;
 
-	case LFUN_EXPORT:
+	case LFUN_BUFFER_EXPORT:
 		enable = cmd.argument == "custom"
 			|| Exporter::isExportable(*buf, cmd.argument);
 		break;
 
-	case LFUN_RUNCHKTEX:
+	case LFUN_BUFFER_CHKTEX:
 		enable = buf->isLatex() && lyxrc.chktex_command != "none";
 		break;
 
-	case LFUN_BUILDPROG:
+	case LFUN_BUILD_PROGRAM:
 		enable = Exporter::isExportable(*buf, "program");
 		break;
 
@@ -437,17 +437,17 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_VC_REGISTER:
 		enable = !buf->lyxvc().inUse();
 		break;
-	case LFUN_VC_CHECKIN:
+	case LFUN_VC_CHECK_IN:
 		enable = buf->lyxvc().inUse() && !buf->isReadonly();
 		break;
-	case LFUN_VC_CHECKOUT:
+	case LFUN_VC_CHECK_OUT:
 		enable = buf->lyxvc().inUse() && buf->isReadonly();
 		break;
 	case LFUN_VC_REVERT:
-	case LFUN_VC_UNDO:
+	case LFUN_VC_UNDO_LAST:
 		enable = buf->lyxvc().inUse();
 		break;
-	case LFUN_MENURELOAD:
+	case LFUN_BUFFER_RELOAD:
 		enable = !buf->isUnnamed() && !buf->isClean();
 		break;
 
@@ -539,13 +539,13 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 	}
 
-	case LFUN_INSERT_CITATION: {
+	case LFUN_CITATION_INSERT: {
 		FuncRequest fr(LFUN_INSET_INSERT, "citation");
 		enable = getStatus(fr).enabled();
 		break;
 	}
 
-	case LFUN_MENUWRITE: {
+	case LFUN_BUFFER_WRITE: {
 		enable = view()->buffer()->isUnnamed()
 			|| !view()->buffer()->isClean();
 		break;
@@ -553,7 +553,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 
 	// this one is difficult to get right. As a half-baked
 	// solution, we consider only the first action of the sequence
-	case LFUN_SEQUENCE: {
+	case LFUN_COMMAND_SEQUENCE: {
 		// argument contains ';'-terminated commands
 		string const firstcmd = token(cmd.argument, ';', 0);
 		FuncRequest func(lyxaction.lookupFunc(firstcmd));
@@ -561,58 +561,58 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		flag = getStatus(func);
 	}
 
-	case LFUN_MENUNEW:
-	case LFUN_MENUNEWTMPLT:
-	case LFUN_WORDFINDFORWARD:
-	case LFUN_WORDFINDBACKWARD:
-	case LFUN_PREFIX:
-	case LFUN_EXEC_COMMAND:
+	case LFUN_BUFFER_NEW:
+	case LFUN_BUFFER_NEWTMPLT:
+	case LFUN_WORD_FIND_FORWARD:
+	case LFUN_WORD_FIND_BACKWARD:
+	case LFUN_COMMAND_PREFIX:
+	case LFUN_COMMAND_EXECUTE:
 	case LFUN_CANCEL:
-	case LFUN_META_FAKE:
-	case LFUN_CLOSEBUFFER:
-	case LFUN_WRITEAS:
-	case LFUN_UPDATE:
-	case LFUN_PREVIEW:
-	case LFUN_IMPORT:
-	case LFUN_QUIT:
-	case LFUN_TOCVIEW:
-	case LFUN_AUTOSAVE:
+	case LFUN_META_PREFIX:
+	case LFUN_BUFFER_CLOSE:
+	case LFUN_BUFFER_WRITE_AS:
+	case LFUN_BUFFER_UPDATE:
+	case LFUN_BUFFER_VIEW:
+	case LFUN_BUFFER_IMPORT:
+	case LFUN_LYX_QUIT:
+	case LFUN_TOC_VIEW:
+	case LFUN_BUFFER_AUTO_SAVE:
 	case LFUN_RECONFIGURE:
 	case LFUN_HELP_OPEN:
 	case LFUN_FILE_NEW:
 	case LFUN_FILE_OPEN:
 	case LFUN_DROP_LAYOUTS_CHOICE:
-	case LFUN_MENU_OPEN_BY_NAME:
-	case LFUN_GETNAME:
-	case LFUN_NOTIFY:
-	case LFUN_GOTOFILEROW:
+	case LFUN_MENU_OPEN:
+	case LFUN_SERVER_GET_NAME:
+	case LFUN_SERVER_NOTIFY:
+	case LFUN_SERVER_GOTO_FILE_ROW:
 	case LFUN_DIALOG_SHOW_NEXT_INSET:
 	case LFUN_DIALOG_HIDE:
 	case LFUN_DIALOG_DISCONNECT_INSET:
-	case LFUN_CHILDOPEN:
-	case LFUN_TOGGLECURSORFOLLOW:
-	case LFUN_KMAP_OFF:
-	case LFUN_KMAP_PRIM:
-	case LFUN_KMAP_SEC:
-	case LFUN_KMAP_TOGGLE:
+	case LFUN_BUFFER_CHILD_OPEN:
+	case LFUN_TOGGLE_CURSOR_FOLLOWS_SCROLLBAR:
+	case LFUN_KEYMAP_OFF:
+	case LFUN_KEYMAP_PRIMARY:
+	case LFUN_KEYMAP_SECONDARY:
+	case LFUN_KEYMAP_TOGGLE:
 	case LFUN_REPEAT:
-	case LFUN_EXPORT_CUSTOM:
-	case LFUN_PRINT:
-	case LFUN_SAVEPREFERENCES:
+	case LFUN_BUFFER_EXPORT_CUSTOM:
+	case LFUN_BUFFER_PRINT:
+	case LFUN_PREFERENCES_SAVE:
 	case LFUN_SCREEN_FONT_UPDATE:
 	case LFUN_SET_COLOR:
 	case LFUN_MESSAGE:
 	case LFUN_EXTERNAL_EDIT:
 	case LFUN_GRAPHICS_EDIT:
 	case LFUN_ALL_INSETS_TOGGLE:
-	case LFUN_LANGUAGE_BUFFER:
+	case LFUN_BUFFER_LANGUAGE:
 	case LFUN_TEXTCLASS_APPLY:
 	case LFUN_TEXTCLASS_LOAD:
-	case LFUN_SAVE_AS_DEFAULT:
-	case LFUN_BUFFERPARAMS_APPLY:
+	case LFUN_BUFFER_SAVE_AS_DEFAULT:
+	case LFUN_BUFFER_PARAMS_APPLY:
 	case LFUN_LYXRC_APPLY:
-	case LFUN_NEXTBUFFER:
-	case LFUN_PREVIOUSBUFFER:
+	case LFUN_SCREEN_DOWNBUFFER:
+	case LFUN_BUFFER_PREVIOUS:
 		// these are handled in our dispatch()
 		break;
 
@@ -667,7 +667,7 @@ bool ensureBufferClean(BufferView * bv)
 				      _("&Cancel"));
 
 	if (ret == 0)
-		bv->owner()->dispatch(FuncRequest(LFUN_MENUWRITE));
+		bv->owner()->dispatch(FuncRequest(LFUN_BUFFER_WRITE));
 
 	return buf.isClean();
 }
@@ -744,8 +744,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		switch (action) {
 
-		case LFUN_WORDFINDFORWARD:
-		case LFUN_WORDFINDBACKWARD: {
+		case LFUN_WORD_FIND_FORWARD:
+		case LFUN_WORD_FIND_BACKWARD: {
 			static string last_search;
 			string searched_string;
 
@@ -759,18 +759,18 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			if (searched_string.empty())
 				break;
 
-			bool const fw = action == LFUN_WORDFINDFORWARD;
+			bool const fw = action == LFUN_WORD_FIND_FORWARD;
 			string const data =
 				lyx::find::find2string(searched_string, true, false, fw);
 			lyx::find::find(view(), FuncRequest(LFUN_WORD_FIND, data));
 			break;
 		}
 
-		case LFUN_PREFIX:
+		case LFUN_COMMAND_PREFIX:
 			owner->message(keyseq.printOptions());
 			break;
 
-		case LFUN_EXEC_COMMAND:
+		case LFUN_COMMAND_EXECUTE:
 			owner->getToolbars().display("minibuffer", true);
 			owner->focus_command_buffer();
 			break;
@@ -784,12 +784,12 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			setMessage(N_("Cancel"));
 			break;
 
-		case LFUN_META_FAKE:
+		case LFUN_META_PREFIX:
 			meta_fake_bit = key_modifier::alt;
 			setMessage(keyseq.print());
 			break;
 
-		case LFUN_READ_ONLY_TOGGLE:
+		case LFUN_BUFFER_TOGGLE_READ_ONLY:
 			if (owner->buffer()->lyxvc().inUse())
 				owner->buffer()->lyxvc().toggleReadOnly();
 			else
@@ -798,19 +798,19 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		// --- Menus -----------------------------------------------
-		case LFUN_MENUNEW:
+		case LFUN_BUFFER_NEW:
 			menuNew(argument, false);
 			break;
 
-		case LFUN_MENUNEWTMPLT:
+		case LFUN_BUFFER_NEWTMPLT:
 			menuNew(argument, true);
 			break;
 
-		case LFUN_CLOSEBUFFER:
+		case LFUN_BUFFER_CLOSE:
 			closeBuffer();
 			break;
 
-		case LFUN_MENUWRITE:
+		case LFUN_BUFFER_WRITE:
 			if (!owner->buffer()->isUnnamed()) {
 				string const str = bformat(_("Saving document %1$s..."),
 					 makeDisplayPath(owner->buffer()->fileName()));
@@ -822,12 +822,12 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			update = false;
 			break;
 
-		case LFUN_WRITEAS:
+		case LFUN_BUFFER_WRITE_AS:
 			writeAs(owner->buffer(), argument);
 			update = false;
 			break;
 
-		case LFUN_MENURELOAD: {
+		case LFUN_BUFFER_RELOAD: {
 			string const file = makeDisplayPath(view()->buffer()->fileName(), 20);
 			string text = bformat(_("Any changes will be lost. Are you sure "
 				"you want to revert to the saved version of the document %1$s?"), file);
@@ -839,27 +839,27 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 		}
 
-		case LFUN_UPDATE:
+		case LFUN_BUFFER_UPDATE:
 			Exporter::Export(owner->buffer(), argument, true);
 			view()->showErrorList(bufferFormat(*owner->buffer()));
 			break;
 
-		case LFUN_PREVIEW:
+		case LFUN_BUFFER_VIEW:
 			Exporter::preview(owner->buffer(), argument);
 			view()->showErrorList(bufferFormat(*owner->buffer()));
 			break;
 
-		case LFUN_BUILDPROG:
+		case LFUN_BUILD_PROGRAM:
 			Exporter::Export(owner->buffer(), "program", true);
 			view()->showErrorList(_("Build"));
 			break;
 
-		case LFUN_RUNCHKTEX:
+		case LFUN_BUFFER_CHKTEX:
 			owner->buffer()->runChktex();
 			view()->showErrorList(_("ChkTeX"));
 			break;
 
-		case LFUN_EXPORT:
+		case LFUN_BUFFER_EXPORT:
 			if (argument == "custom")
 				owner->getDialogs().show("sendto");
 			else {
@@ -868,7 +868,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			}
 			break;
 
-		case LFUN_EXPORT_CUSTOM: {
+		case LFUN_BUFFER_EXPORT_CUSTOM: {
 			string format_name;
 			string command = split(argument, format_name, ' ');
 			Format const * format = formats.getFormat(format_name);
@@ -911,7 +911,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 		}
 
-		case LFUN_PRINT: {
+		case LFUN_BUFFER_PRINT: {
 			string target;
 			string target_name;
 			string command = split(split(argument, target, ' '),
@@ -1002,11 +1002,11 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 		}
 
-		case LFUN_IMPORT:
+		case LFUN_BUFFER_IMPORT:
 			doImport(argument);
 			break;
 
-		case LFUN_QUIT:
+		case LFUN_LYX_QUIT:
 			if (view()->available()) {
 				// save cursor Position for opened files to .lyx/session
 				LyX::ref().session().saveFilePosition(owner->buffer()->fileName(),
@@ -1017,14 +1017,14 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			quitLyX(argument == "force");
 			break;
 
-		case LFUN_TOCVIEW: {
+		case LFUN_TOC_VIEW: {
 			InsetCommandParams p("tableofcontents");
 			string const data = InsetCommandMailer::params2string("toc", p);
 			owner->getDialogs().show("toc", data, 0);
 			break;
 		}
 
-		case LFUN_AUTOSAVE:
+		case LFUN_BUFFER_AUTO_SAVE:
 			autoSave(view());
 			break;
 
@@ -1060,7 +1060,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			}
 			break;
 
-		case LFUN_VC_CHECKIN:
+		case LFUN_VC_CHECK_IN:
 			if (!ensureBufferClean(view()))
 				break;
 			if (owner->buffer()->lyxvc().inUse()
@@ -1070,7 +1070,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			}
 			break;
 
-		case LFUN_VC_CHECKOUT:
+		case LFUN_VC_CHECK_OUT:
 			if (!ensureBufferClean(view()))
 				break;
 			if (owner->buffer()->lyxvc().inUse()
@@ -1085,21 +1085,21 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			view()->reload();
 			break;
 
-		case LFUN_VC_UNDO:
+		case LFUN_VC_UNDO_LAST:
 			owner->buffer()->lyxvc().undoLast();
 			view()->reload();
 			break;
 
 		// --- buffers ----------------------------------------
-		case LFUN_SWITCHBUFFER:
+		case LFUN_BUFFER_SWITCH:
 			view()->setBuffer(bufferlist.getBuffer(argument));
 			break;
 
-		case LFUN_NEXTBUFFER:
+		case LFUN_SCREEN_DOWNBUFFER:
 			view()->setBuffer(bufferlist.next(view()->buffer()));
 			break;
 
-		case LFUN_PREVIOUSBUFFER:
+		case LFUN_BUFFER_PREVIOUS:
 			view()->setBuffer(bufferlist.previous(view()->buffer()));
 			break;
 
@@ -1115,24 +1115,24 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			owner->getToolbars().openLayoutList();
 			break;
 
-		case LFUN_MENU_OPEN_BY_NAME:
+		case LFUN_MENU_OPEN:
 			owner->getMenubar().openByName(argument);
 			break;
 
 		// --- lyxserver commands ----------------------------
-		case LFUN_GETNAME:
+		case LFUN_SERVER_GET_NAME:
 			setMessage(owner->buffer()->fileName());
 			lyxerr[Debug::INFO] << "FNAME["
 							 << owner->buffer()->fileName()
 							 << "] " << endl;
 			break;
 
-		case LFUN_NOTIFY:
+		case LFUN_SERVER_NOTIFY:
 			dispatch_buffer = keyseq.print();
 			lyxserver->notifyClient(dispatch_buffer);
 			break;
 
-		case LFUN_GOTOFILEROW: {
+		case LFUN_SERVER_GOTO_FILE_ROW: {
 			string file_name;
 			int row;
 			istringstream is(argument);
@@ -1270,7 +1270,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 
-		case LFUN_INSERT_CITATION: {
+		case LFUN_CITATION_INSERT: {
 			if (!argument.empty()) {
 				// we can have one optional argument, delimited by '|'
 				// citation-insert <key>|<text_before>
@@ -1293,7 +1293,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 		}
 
-		case LFUN_CHILDOPEN: {
+		case LFUN_BUFFER_CHILD_OPEN: {
 			string const filename =
 				makeAbsPath(argument, owner->buffer()->filePath());
 			setMessage(N_("Opening child document ") +
@@ -1311,23 +1311,23 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 		}
 
-		case LFUN_TOGGLECURSORFOLLOW:
+		case LFUN_TOGGLE_CURSOR_FOLLOWS_SCROLLBAR:
 			lyxrc.cursor_follows_scrollbar = !lyxrc.cursor_follows_scrollbar;
 			break;
 
-		case LFUN_KMAP_OFF:
+		case LFUN_KEYMAP_OFF:
 			owner->getIntl().keyMapOn(false);
 			break;
 
-		case LFUN_KMAP_PRIM:
+		case LFUN_KEYMAP_PRIMARY:
 			owner->getIntl().keyMapPrim();
 			break;
 
-		case LFUN_KMAP_SEC:
+		case LFUN_KEYMAP_SECONDARY:
 			owner->getIntl().keyMapSec();
 			break;
 
-		case LFUN_KMAP_TOGGLE:
+		case LFUN_KEYMAP_TOGGLE:
 			owner->getIntl().toggleKeyMap();
 			break;
 
@@ -1344,7 +1344,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 		}
 
-		case LFUN_SEQUENCE: {
+		case LFUN_COMMAND_SEQUENCE: {
 			// argument contains ';'-terminated commands
 			string arg = argument;
 			while (!arg.empty()) {
@@ -1357,7 +1357,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 		}
 
-		case LFUN_SAVEPREFERENCES: {
+		case LFUN_PREFERENCES_SAVE: {
 			Path p(package().user_support());
 			lyxrc.write("preferences", false);
 			break;
@@ -1409,7 +1409,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			owner->message(argument);
 			break;
 
-		case LFUN_TOOLTIPS_TOGGLE:
+		case LFUN_TOGGLE_TOOLTIPS:
 			owner->getDialogs().toggleTooltips();
 			break;
 
@@ -1465,7 +1465,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 		}
 
-		case LFUN_LANGUAGE_BUFFER: {
+		case LFUN_BUFFER_LANGUAGE: {
 			Buffer & buffer = *owner->buffer();
 			Language const * oldL = buffer.params().language;
 			Language const * newL = languages.getLanguage(argument);
@@ -1480,7 +1480,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 		}
 
-		case LFUN_SAVE_AS_DEFAULT: {
+		case LFUN_BUFFER_SAVE_AS_DEFAULT: {
 			string const fname =
 				addName(addPath(package().user_support(), "templates/"),
 					"defaults.lyx");
@@ -1492,7 +1492,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			int const unknown_tokens = defaults.readHeader(lex);
 
 			if (unknown_tokens != 0) {
-				lyxerr << "Warning in LFUN_SAVE_AS_DEFAULT!\n"
+				lyxerr << "Warning in LFUN_BUFFER_SAVE_AS_DEFAULT!\n"
 				       << unknown_tokens << " unknown token"
 				       << (unknown_tokens == 1 ? "" : "s")
 				       << endl;
@@ -1506,7 +1506,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 		}
 
-		case LFUN_BUFFERPARAMS_APPLY: {
+		case LFUN_BUFFER_PARAMS_APPLY: {
 			biblio::CiteEngine const engine =
 				owner->buffer()->params().cite_engine;
 
@@ -1517,7 +1517,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				owner->buffer()->readHeader(lex);
 
 			if (unknown_tokens != 0) {
-				lyxerr << "Warning in LFUN_BUFFERPARAMS_APPLY!\n"
+				lyxerr << "Warning in LFUN_BUFFER_PARAMS_APPLY!\n"
 				       << unknown_tokens << " unknown token"
 				       << (unknown_tokens == 1 ? "" : "s")
 				       << endl;
@@ -1642,7 +1642,7 @@ void LyXFunc::sendDispatchMessage(string const & msg, FuncRequest const & cmd)
 	const bool verbose = (cmd.origin == FuncRequest::UI
 			      || cmd.origin == FuncRequest::COMMANDBUFFER);
 
-	if (cmd.action == LFUN_SELFINSERT || !verbose) {
+	if (cmd.action == LFUN_SELF_INSERT || !verbose) {
 		lyxerr[Debug::ACTION] << "dispatch msg is " << msg << endl;
 		if (!msg.empty())
 			owner->message(msg);
@@ -1832,7 +1832,7 @@ void LyXFunc::doImport(string const & argument)
 			formats.prettyName(format));
 
 		FileDialog fileDlg(text,
-			LFUN_IMPORT,
+			LFUN_BUFFER_IMPORT,
 			make_pair(string(_("Documents|#o#O")),
 				  string(lyxrc.document_path)),
 			make_pair(string(_("Examples|#E#e")),

@@ -48,7 +48,7 @@ public:
 	 * @param key the keysym
 	 * @param mod the modifiers
 	 * @param seq the current key sequence so far
-	 * @return the action / LFUN_PREFIX / LFUN_UNKNOWN_ACTION
+	 * @return the action / LFUN_COMMAND_PREFIX / LFUN_UNKNOWN_ACTION
 	 */
 	FuncRequest const &
 	lookup(LyXKeySymPtr key,

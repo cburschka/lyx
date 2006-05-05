@@ -468,7 +468,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		}
 
 		if (cmd.button() == mouse_button::button2) {
-			cmd = FuncRequest(LFUN_PASTESELECTION, "paragraph");
+			cmd = FuncRequest(LFUN_PRIMARY_SELECTION_PASTE, "paragraph");
 			doDispatch(cur, cmd);
 			break;
 		}
@@ -507,8 +507,8 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		cur.selection() = false;
 		break;
 
-	case LFUN_RIGHTSEL:
-	case LFUN_RIGHT:
+	case LFUN_CHAR_FORWARDSEL:
+	case LFUN_CHAR_FORWARD:
 		cell(cur.idx())->dispatch(cur, cmd);
 		if (!cur.result().dispatched()) {
 			isRightToLeft(cur) ? movePrevCell(cur) : moveNextCell(cur);
@@ -519,8 +519,8 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	case LFUN_LEFTSEL:
-	case LFUN_LEFT:
+	case LFUN_BACKWARD_SELECT:
+	case LFUN_CHAR_BACKWARD:
 		cell(cur.idx())->dispatch(cur, cmd);
 		if (!cur.result().dispatched()) {
 			isRightToLeft(cur) ? moveNextCell(cur) : movePrevCell(cur);
@@ -531,7 +531,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	case LFUN_DOWNSEL:
+	case LFUN_DOWN_SELECT:
 	case LFUN_DOWN:
 		cell(cur.idx())->dispatch(cur, cmd);
 		cur.dispatched(); // override the cell's decision
@@ -553,7 +553,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	case LFUN_UPSEL:
+	case LFUN_UP_SELECT:
 	case LFUN_UP:
 		cell(cur.idx())->dispatch(cur, cmd);
 		cur.dispatched(); // override the cell's decision
@@ -576,7 +576,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-//	case LFUN_NEXT: {
+//	case LFUN_SCREEN_DOWN: {
 //		//if (hasSelection())
 //		//	cur.selection() = false;
 //		col_type const col = tabular.column_of_cell(cur.idx());
@@ -592,7 +592,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 //		break;
 //	}
 //
-//	case LFUN_PRIOR: {
+//	case LFUN_SCREEN_UP: {
 //		//if (hasSelection())
 //		//	cur.selection() = false;
 //		col_type const col = tabular.column_of_cell(cur.idx());
@@ -644,8 +644,8 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 			cell(cur.idx())->dispatch(cur, cmd);
 		break;
 
-	case LFUN_BACKSPACE:
-	case LFUN_DELETE:
+	case LFUN_DELETE_FORWARD_BACKWARD:
+	case LFUN_DELETE_FORWARD:
 		if (tablemode(cur)) {
 			recordUndoInset(cur, Undo::DELETE);
 			cutSelection(cur);
@@ -664,7 +664,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 			cell(cur.idx())->dispatch(cur, cmd);
 		break;
 
-	case LFUN_PASTESELECTION: {
+	case LFUN_PRIMARY_SELECTION_PASTE: {
 		string const clip = cur.bv().getClipboard();
 		if (clip.empty())
 			break;
@@ -673,7 +673,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		else {
 			// so that the clipboard is used and it goes on
 			// to default
-			// and executes LFUN_PASTESELECTION in insettext!
+			// and executes LFUN_PRIMARY_SELECTION_PASTE in insettext!
 			paste_tabular.reset();
 			dirtyTabularStack(false);
 		}
@@ -692,23 +692,23 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 			cell(cur.idx())->forceParagraphsToDefault(cur);
 		break;
 
-	case LFUN_EMPH:
-	case LFUN_BOLD:
-	case LFUN_ROMAN:
-	case LFUN_NOUN:
-	case LFUN_ITAL:
-	case LFUN_FRAK:
-	case LFUN_CODE:
-	case LFUN_SANS:
-	case LFUN_FREEFONT_APPLY:
-	case LFUN_FREEFONT_UPDATE:
+	case LFUN_FONT_EMPH:
+	case LFUN_FONT_BOLD:
+	case LFUN_FONT_ROMAN:
+	case LFUN_FONT_NOUN:
+	case LFUN_FONT_ITAL:
+	case LFUN_FONT_FRAK:
+	case LFUN_FONT_CODE:
+	case LFUN_FONT_SANS:
+	case LFUN_FONT_FREE_APPLY:
+	case LFUN_FONT_FREE_UPDATE:
 	case LFUN_FONT_SIZE:
-	case LFUN_UNDERLINE:
+	case LFUN_FONT_UNDERLINE:
 	case LFUN_LANGUAGE:
-	case LFUN_CAPITALIZE_WORD:
-	case LFUN_UPCASE_WORD:
-	case LFUN_LOWCASE_WORD:
-	case LFUN_TRANSPOSE_CHARS:
+	case LFUN_WORD_CAPITALIZE:
+	case LFUN_WORD_UPCASE:
+	case LFUN_WORD_LOWCASE:
+	case LFUN_CHARS_TRANSPOSE:
 		if (tablemode(cur)) {
 			row_type rs, re;
 			col_type cs, ce;
@@ -950,21 +950,21 @@ bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
 	// disable these with multiple cells selected
 	case LFUN_INSET_INSERT:
 	case LFUN_TABULAR_INSERT:
-	case LFUN_INSERT_CHARSTYLE:
-	case LFUN_INSET_FLOAT:
-	case LFUN_INSET_WIDE_FLOAT:
-	case LFUN_INSET_FOOTNOTE:
-	case LFUN_INSET_MARGINAL:
-	case LFUN_INSERT_MATH:
+	case LFUN_CHARSTYLE_INSERT:
+	case LFUN_FLOAT_INSERT:
+	case LFUN_FLOAT_WIDE_INSERT:
+	case LFUN_FOOTNOTE_INSERT:
+	case LFUN_MARGINALNOTE_INSERT:
+	case LFUN_MATH_INSERT:
 	case LFUN_MATH_MODE:
 	case LFUN_MATH_MUTATE:
 	case LFUN_MATH_DISPLAY:
-	case LFUN_INSERT_NOTE:
-	case LFUN_INSET_OPTARG:
-	case LFUN_INSERT_BOX:
-	case LFUN_INSERT_BRANCH:
-	case LFUN_INSET_WRAP:
-	case LFUN_INSET_ERT: {
+	case LFUN_NOTE_INSERT:
+	case LFUN_OPTIONAL_INSERT:
+	case LFUN_BOX_INSERT:
+	case LFUN_BRANCH_INSERT:
+	case LFUN_WRAP_INSERT:
+	case LFUN_ERT_INSERT: {
 		if (tablemode(cur)) {
 			status.enabled(false);
 			return true;
@@ -973,10 +973,10 @@ bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
 	}
 
 	// disable in non-fixed-width cells
-	case LFUN_BREAKLINE:
-	case LFUN_BREAKPARAGRAPH:
-	case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
-	case LFUN_BREAKPARAGRAPH_SKIP: {
+	case LFUN_BREAK_LINE:
+	case LFUN_BREAK_PARAGRAPH:
+	case LFUN_BREAK_PARAGRAPHKEEPLAYOUT:
+	case LFUN_BREAK_PARAGRAPH_SKIP: {
 		if (tabular.getPWidth(cur.idx()).zero()) {
 			status.enabled(false);
 			return true;

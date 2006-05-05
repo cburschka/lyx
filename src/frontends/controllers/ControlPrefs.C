@@ -97,7 +97,7 @@ void ControlPrefs::dispatchParams()
 
 	// The Save button has been pressed
 	if (dialog().isClosing()) {
-		kernel().dispatch(FuncRequest(LFUN_SAVEPREFERENCES));
+		kernel().dispatch(FuncRequest(LFUN_PREFERENCES_SAVE));
 	}
 }
 

@@ -472,9 +472,9 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		cur.bv().cursor() = cur;
 		break;
 
-	case LFUN_RIGHTSEL:
-	case LFUN_RIGHT:
-		cur.selHandle(cmd.action == LFUN_RIGHTSEL);
+	case LFUN_CHAR_FORWARDSEL:
+	case LFUN_CHAR_FORWARD:
+		cur.selHandle(cmd.action == LFUN_CHAR_FORWARDSEL);
 		cur.autocorrect() = false;
 		cur.clearTargetX();
 		cur.macroModeClose();
@@ -490,9 +490,9 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	case LFUN_LEFTSEL:
-	case LFUN_LEFT:
-		cur.selHandle(cmd.action == LFUN_LEFTSEL);
+	case LFUN_BACKWARD_SELECT:
+	case LFUN_CHAR_BACKWARD:
+		cur.selHandle(cmd.action == LFUN_BACKWARD_SELECT);
 		cur.autocorrect() = false;
 		cur.clearTargetX();
 		cur.macroModeClose();
@@ -509,7 +509,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	case LFUN_UPSEL:
+	case LFUN_UP_SELECT:
 	case LFUN_UP:
 		// FIXME Tried to use clearTargetX and macroModeClose, crashed on cur.up()
 		if (cur.inMacroMode()) {
@@ -517,7 +517,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 			cur.macroModeClose();
 			break;
 		}
-		cur.selHandle(cmd.action == LFUN_UPSEL);
+		cur.selHandle(cmd.action == LFUN_UP_SELECT);
 		if (!cur.up()) {
 			cmd = FuncRequest(LFUN_FINISHED_UP);
 			cur.undispatched();
@@ -526,13 +526,13 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		cur.normalize();
 		break;
 
-	case LFUN_DOWNSEL:
+	case LFUN_DOWN_SELECT:
 	case LFUN_DOWN:
 		if (cur.inMacroMode()) {
 			cur.macroModeClose();
 			break;
 		}
-		cur.selHandle(cmd.action == LFUN_DOWNSEL);
+		cur.selHandle(cmd.action == LFUN_DOWN_SELECT);
 		if (!cur.down()) {
 			cmd = FuncRequest(LFUN_FINISHED_DOWN);
 			cur.undispatched();
@@ -543,7 +543,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_MOUSE_DOUBLE:
 	case LFUN_MOUSE_TRIPLE:
-	case LFUN_WORDSEL:
+	case LFUN_WORD_SELECT:
 		cur.pos() = 0;
 		cur.idx() = 0;
 		cur.resetAnchor();
@@ -552,17 +552,17 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		cur.idx() = cur.lastidx();
 		break;
 
-	case LFUN_UP_PARAGRAPHSEL:
-	case LFUN_UP_PARAGRAPH:
-	case LFUN_DOWN_PARAGRAPHSEL:
-	case LFUN_DOWN_PARAGRAPH:
+	case LFUN_PARAGRAPH_UPSEL:
+	case LFUN_PARAGRAPH_UP:
+	case LFUN_PARAGRAPH_DOWNSEL:
+	case LFUN_PARAGRAPH_DOWN:
 		break;
 
-	case LFUN_HOMESEL:
-	case LFUN_HOME:
-	case LFUN_WORDLEFTSEL:
-	case LFUN_WORDLEFT:
-		cur.selHandle(cmd.action == LFUN_WORDLEFTSEL || cmd.action == LFUN_HOMESEL);
+	case LFUN_LINE_BEGINSEL:
+	case LFUN_LINE_BEGIN:
+	case LFUN_WORD_BACKWARDSEL:
+	case LFUN_WORD_BACKWARD:
+		cur.selHandle(cmd.action == LFUN_WORD_BACKWARDSEL || cmd.action == LFUN_LINE_BEGINSEL);
 		cur.macroModeClose();
 		if (cur.pos() != 0) {
 			cur.pos() = 0;
@@ -578,11 +578,11 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	case LFUN_WORDRIGHTSEL:
-	case LFUN_WORDRIGHT:
-	case LFUN_ENDSEL:
-	case LFUN_END:
-		cur.selHandle(cmd.action == LFUN_WORDRIGHTSEL || cmd.action == LFUN_ENDSEL);
+	case LFUN_WORD_FORWARDSEL:
+	case LFUN_WORD_FORWARD:
+	case LFUN_LINE_ENDSEL:
+	case LFUN_LINE_END:
+		cur.selHandle(cmd.action == LFUN_WORD_FORWARDSEL || cmd.action == LFUN_LINE_ENDSEL);
 		cur.macroModeClose();
 		cur.clearTargetX();
 		if (cur.pos() != cur.lastpos()) {
@@ -599,14 +599,14 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	case LFUN_PRIORSEL:
-	case LFUN_PRIOR:
+	case LFUN_SCREEN_UPSEL:
+	case LFUN_SCREEN_UP:
 		cmd = FuncRequest(LFUN_FINISHED_LEFT);
 		cur.undispatched();
 		break;
 
-	case LFUN_NEXTSEL:
-	case LFUN_NEXT:
+	case LFUN_SCREEN_DOWNSEL:
+	case LFUN_SCREEN_DOWN:
 		cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 		cur.undispatched();
 		break;
@@ -619,8 +619,8 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		cur.inset().idxPrev(cur);
 		break;
 
-	case LFUN_DELETE_WORD_BACKWARD:
-	case LFUN_BACKSPACE:
+	case LFUN_DELETE_FORWARD_WORD_BACKWARD:
+	case LFUN_DELETE_FORWARD_BACKWARD:
 		if (cur.pos() == 0)
 			// May affect external cell:
 			recordUndoInset(cur, Undo::ATOMIC);
@@ -629,8 +629,8 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		cur.backspace();
 		break;
 
-	case LFUN_DELETE_WORD_FORWARD:
-	case LFUN_DELETE:
+	case LFUN_DELETE_FORWARD_WORD_FORWARD:
+	case LFUN_DELETE_FORWARD:
 		if (cur.pos() == cur.lastpos())
 			// May affect external cell:
 			recordUndoInset(cur, Undo::ATOMIC);
@@ -661,7 +661,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	case LFUN_SELFINSERT:
+	case LFUN_SELF_INSERT:
 		if (cmd.argument.size() != 1) {
 			recordUndo(cur);
 			if (!interpret(cur, cmd.argument))
@@ -697,12 +697,12 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	//case LFUN_GETXY:
+	//case LFUN_SERVER_GET_XY:
 	//	sprintf(dispatch_buffer, "%d %d",);
 	//	break;
 
-	case LFUN_SETXY: {
-		lyxerr << "LFUN_SETXY broken!" << endl;
+	case LFUN_SERVER_SET_XY: {
+		lyxerr << "LFUN_SERVER_SET_XY broken!" << endl;
 		int x = 0;
 		int y = 0;
 		istringstream is(cmd.argument);
@@ -713,7 +713,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	// Special casing for superscript in case of LyX handling
 	// dead-keys:
-	case LFUN_CIRCUMFLEX:
+	case LFUN_ACCENT_CIRCUMFLEX:
 		if (cmd.argument.empty()) {
 			// do superscript if LyX handles
 			// deadkeys
@@ -722,78 +722,78 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	case LFUN_UMLAUT:
-	case LFUN_ACUTE:
-	case LFUN_GRAVE:
-	case LFUN_BREVE:
-	case LFUN_DOT:
-	case LFUN_MACRON:
-	case LFUN_CARON:
-	case LFUN_TILDE:
-	case LFUN_CEDILLA:
-	case LFUN_CIRCLE:
-	case LFUN_UNDERDOT:
-	case LFUN_TIE:
-	case LFUN_OGONEK:
-	case LFUN_HUNG_UMLAUT:
+	case LFUN_ACCENT_UMLAUT:
+	case LFUN_ACCENT_ACUTE:
+	case LFUN_ACCENT_GRAVE:
+	case LFUN_ACCENT_BREVE:
+	case LFUN_ACCENT_DOT:
+	case LFUN_ACCENT_MACRON:
+	case LFUN_ACCENT_CARON:
+	case LFUN_ACCENT_TILDE:
+	case LFUN_ACCENT_CEDILLA:
+	case LFUN_ACCENT_CIRCLE:
+	case LFUN_ACCENT_UNDERDOT:
+	case LFUN_ACCENT_TIE:
+	case LFUN_ACCENT_OGONEK:
+	case LFUN_ACCENT_HUNGARIAN_UMLAUT:
 		break;
 
 	//  Math fonts
-	case LFUN_FREEFONT_APPLY:
-	case LFUN_FREEFONT_UPDATE:
+	case LFUN_FONT_FREE_APPLY:
+	case LFUN_FONT_FREE_UPDATE:
 		handleFont2(cur, cmd.argument);
 		break;
 
-	case LFUN_BOLD:
+	case LFUN_FONT_BOLD:
 		if (currentMode() == TEXT_MODE)
 			handleFont(cur, cmd.argument, "textbf");
 		else
 			handleFont(cur, cmd.argument, "mathbf");
 		break;
-	case LFUN_SANS:
+	case LFUN_FONT_SANS:
 		if (currentMode() == TEXT_MODE)
 			handleFont(cur, cmd.argument, "textsf");
 		else
 			handleFont(cur, cmd.argument, "mathsf");
 		break;
-	case LFUN_EMPH:
+	case LFUN_FONT_EMPH:
 		if (currentMode() == TEXT_MODE)
 			handleFont(cur, cmd.argument, "emph");
 		else
 			handleFont(cur, cmd.argument, "mathcal");
 		break;
-	case LFUN_ROMAN:
+	case LFUN_FONT_ROMAN:
 		if (currentMode() == TEXT_MODE)
 			handleFont(cur, cmd.argument, "textrm");
 		else
 			handleFont(cur, cmd.argument, "mathrm");
 		break;
-	case LFUN_CODE:
+	case LFUN_FONT_CODE:
 		if (currentMode() == TEXT_MODE)
 			handleFont(cur, cmd.argument, "texttt");
 		else
 			handleFont(cur, cmd.argument, "mathtt");
 		break;
-	case LFUN_FRAK:
+	case LFUN_FONT_FRAK:
 		handleFont(cur, cmd.argument, "mathfrak");
 		break;
-	case LFUN_ITAL:
+	case LFUN_FONT_ITAL:
 		if (currentMode() == TEXT_MODE)
 			handleFont(cur, cmd.argument, "textit");
 		else
 			handleFont(cur, cmd.argument, "mathit");
 		break;
-	case LFUN_NOUN:
+	case LFUN_FONT_NOUN:
 		if (currentMode() == TEXT_MODE)
 			// FIXME: should be "noun"
 			handleFont(cur, cmd.argument, "textsc");
 		else
 			handleFont(cur, cmd.argument, "mathbb");
 		break;
-	//case LFUN_FREEFONT_APPLY:
+	//case LFUN_FONT_FREE_APPLY:
 		handleFont(cur, cmd.argument, "textrm");
 		break;
-	case LFUN_DEFAULT:
+	case LFUN_FONT_DEFAULT:
 		handleFont(cur, cmd.argument, "textnormal");
 		break;
 
@@ -829,7 +829,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 #endif
 		break;
 
-	case LFUN_INSERT_MATRIX: {
+	case LFUN_MATH_MATRIX: {
 		recordUndo(cur, Undo::ATOMIC);
 		unsigned int m = 1;
 		unsigned int n = 1;
@@ -869,19 +869,19 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		cur.insert(MathAtom(new MathSpaceInset(",")));
 		break;
 
-	case LFUN_INSET_ERT:
+	case LFUN_ERT_INSERT:
 		// interpret this as if a backslash was typed
 		recordUndo(cur, Undo::ATOMIC);
 		interpret(cur, '\\');
 		break;
 
-	case LFUN_SUBSCRIPT:
+	case LFUN_MATH_SUBSCRIPT:
 		// interpret this as if a _ was typed
 		recordUndo(cur, Undo::ATOMIC);
 		interpret(cur, '_');
 		break;
 
-	case LFUN_SUPERSCRIPT:
+	case LFUN_MATH_SUPERSCRIPT:
 		// interpret this as if a ^ was typed
 		recordUndo(cur, Undo::ATOMIC);
 		interpret(cur, '^');
@@ -890,7 +890,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 // FIXME: We probably should swap parts of "math-insert" and "self-insert"
 // handling such that "self-insert" works on "arbitrary stuff" too, and
 // math-insert only handles special math things like "matrix".
-	case LFUN_INSERT_MATH: {
+	case LFUN_MATH_INSERT: {
 		recordUndo(cur, Undo::ATOMIC);
 		if (cmd.argument == "^" || cmd.argument == "_") {
 			interpret(cur, cmd.argument[0]);
@@ -949,14 +949,14 @@ bool MathNestInset::getStatus(LCursor & /*cur*/, FuncRequest const & cmd,
 		break;
 #endif
 	/// We have to handle them since 1.4 blocks all unhandled actions
-	case LFUN_ITAL:
-	case LFUN_BOLD:
-	case LFUN_SANS:
-	case LFUN_EMPH:
-	case LFUN_CODE:
-	case LFUN_NOUN:
-	case LFUN_ROMAN:
-	case LFUN_DEFAULT:
+	case LFUN_FONT_ITAL:
+	case LFUN_FONT_BOLD:
+	case LFUN_FONT_SANS:
+	case LFUN_FONT_EMPH:
+	case LFUN_FONT_CODE:
+	case LFUN_FONT_NOUN:
+	case LFUN_FONT_ROMAN:
+	case LFUN_FONT_DEFAULT:
 		flag.enabled(true);
 		break;
 	case LFUN_MATH_MUTATE:
@@ -974,11 +974,11 @@ bool MathNestInset::getStatus(LCursor & /*cur*/, FuncRequest const & cmd,
 		flag.enabled(true);
 		break;
 
-	case LFUN_FRAK:
+	case LFUN_FONT_FRAK:
 		flag.enabled(currentMode() != TEXT_MODE);
 		break;
 
-	case LFUN_INSERT_MATH: {
+	case LFUN_MATH_INSERT: {
 		bool const textarg =
 			arg == "\\textbf"   || arg == "\\textsf" ||
 			arg == "\\textrm"   || arg == "\\textmd" ||
@@ -990,7 +990,7 @@ bool MathNestInset::getStatus(LCursor & /*cur*/, FuncRequest const & cmd,
 		break;
 	}
 
-	case LFUN_INSERT_MATRIX:
+	case LFUN_MATH_MATRIX:
 		flag.enabled(currentMode() == MATH_MODE);
 		break;
 	default:
