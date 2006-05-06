@@ -15,9 +15,6 @@
 #include <algorithm>
 #include <cmath>
 #include <iomanip>
-#ifdef HAVE_LIMITS_H
-# include <limits.h>
-#endif
 #include <map>
 #include <sstream>
 #include <stack>
