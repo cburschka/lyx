@@ -1,0 +1,32 @@
+# vi:filetype=python:expandtab:tabstop=2:shiftwidth=2
+
+# file SConscript
+#
+# This file is part of LyX, the document processor.
+# Licence details can be found in the file COPYING.
+# 
+# \author Bo Peng
+# Full author contact details are available in file CREDITS.
+
+Import('env')
+
+# This will be used by all boost libraries
+boostenv = env.Copy()
+boostenv.Append(CCFLAGS = '-DBOOST_USER_CONFIG="<config.h>"')
+# for config.h
+boostenv.Append(CPPPATH = ['#src'])
+Export('boostenv')
+
+print "Entering boost/libs..."
+
+boost = boostenv.SConscript( 
+  dirs = [
+    'filesystem/src',
+    'iostreams/src',
+    'regex/src',
+    'signals/src'
+  ]
+)
+
+# Return boost libraries 
+Return('boost')

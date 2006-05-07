@@ -1,0 +1,71 @@
+# vi:filetype=python:expandtab:tabstop=2:shiftwidth=2
+
+# file SConscript
+#
+# This file is part of LyX, the document processor.
+# Licence details can be found in the file COPYING.
+# 
+# \author Bo Peng
+# Full author contact details are available in file CREDITS.
+
+Import('env')
+
+print "Entering src/insets"
+
+insets = env.StaticLibrary(
+  target = '$LOCALLIBPATH/insets',
+  source = Split('''
+    mailinset.C 
+    ExternalSupport.C 
+    ExternalTemplate.C 
+    ExternalTransforms.C 
+    render_button.C 
+    render_graphic.C 
+    render_preview.C 
+    inset.C 
+    insetbase.C 
+    insetbibitem.C 
+    insetbibtex.C 
+    insetbox.C 
+    insetbranch.C 
+    insetcaption.C 
+    insetcharstyle.C 
+    insetcite.C 
+    insetcollapsable.C 
+    insetcommand.C 
+    insetcommandparams.C 
+    insetenv.C 
+    insetert.C 
+    insetexternal.C 
+    insetfloat.C 
+    insetfloatlist.C 
+    insetfoot.C 
+    insetfootlike.C 
+    insetgraphicsParams.C 
+    insetgraphics.C 
+    insethfill.C 
+    insetinclude.C 
+    insetindex.C 
+    insetlabel.C 
+    insetlatexaccent.C 
+    insetline.C 
+    insetmarginal.C 
+    insetnewline.C 
+    insetnote.C 
+    insetoptarg.C 
+    insetpagebreak.C 
+    insetquotes.C 
+    insetref.C 
+    insetspace.C 
+    insetspecialchar.C 
+    insettabular.C 
+    insettext.C 
+    insettoc.C 
+    inseturl.C 
+    insetvspace.C 
+    insetwrap.C 
+  ''')
+)
+
+# return the library
+Return('insets')

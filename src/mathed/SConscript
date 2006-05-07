@@ -1,0 +1,94 @@
+# vi:filetype=python:expandtab:tabstop=2:shiftwidth=2
+
+# file SConscript
+#
+# This file is part of LyX, the document processor.
+# Licence details can be found in the file COPYING.
+# 
+# \author Bo Peng
+# Full author contact details are available in file CREDITS.
+
+Import('env')
+
+print "Entering src/mathed"
+
+mathed = env.StaticLibrary( 
+  target = '$LOCALLIBPATH/mathed',
+  source = Split('''
+    textpainter.C 
+    math_amsarrayinset.C 
+    math_arrayinset.C 
+    math_atom.C 
+    math_autocorrect.C 
+    math_biginset.C 
+    math_binominset.C 
+    math_boldsymbolinset.C 
+    math_boxinset.C 
+    math_boxedinset.C 
+    math_braceinset.C 
+    math_casesinset.C 
+    math_charinset.C 
+    math_colorinset.C 
+    math_commentinset.C 
+    math_data.C 
+    math_decorationinset.C 
+    math_deliminset.C 
+    math_dfracinset.C 
+    math_diffinset.C 
+    math_diminset.C 
+    math_dotsinset.C 
+    math_envinset.C 
+    math_extern.C 
+    math_exfuncinset.C 
+    math_exintinset.C 
+    math_factory.C 
+    math_fboxinset.C 
+    math_frameboxinset.C 
+    math_fontinset.C 
+    math_fontoldinset.C 
+    math_fracinset.C 
+    math_fracbase.C 
+    math_gridinset.C 
+    math_hullinset.C 
+    math_inset.C 
+    math_kerninset.C 
+    math_lefteqninset.C 
+    math_liminset.C 
+    math_macro.C 
+    math_macroarg.C 
+    math_macrotemplate.C 
+    math_macrotable.C 
+    math_makeboxinset.C 
+    math_mathmlstream.C 
+    math_matrixinset.C 
+    math_nestinset.C 
+    math_numberinset.C 
+    math_oversetinset.C 
+    math_parinset.C 
+    math_parser.C 
+    math_phantominset.C 
+    math_rootinset.C 
+    math_scriptinset.C 
+    math_sizeinset.C 
+    math_spaceinset.C 
+    math_splitinset.C 
+    math_sqrtinset.C 
+    math_stackrelinset.C 
+    math_streamstr.C 
+    math_stringinset.C 
+    math_substackinset.C 
+    math_support.C 
+    math_symbolinset.C 
+    math_tabularinset.C 
+    math_tfracinset.C 
+    math_unknowninset.C 
+    math_undersetinset.C 
+    math_xarrowinset.C 
+    math_xymatrixinset.C 
+    command_inset.C 
+    ref_inset.C
+  ''')
+)
+
+# return the library
+Return('mathed')

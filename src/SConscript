@@ -1,0 +1,175 @@
+# vi:filetype=python:expandtab:tabstop=2:shiftwidth=2
+
+# file SConscript
+#
+# This file is part of LyX, the document processor.
+# Licence details can be found in the file COPYING.
+# 
+# \author Bo Peng
+# Full author contact details are available in file CREDITS.
+
+Import('env')
+
+print "Entering src"
+
+# building all the libraries
+env.SConscript(
+  dirs = [
+    'mathed',
+    'insets',
+    'frontends',
+    'frontends/controllers',
+    'graphics',
+    'support',
+    'frontends/$frontend'
+  ]
+)
+
+if env['INCLUDED_BOOST']:
+  env.SConscript(dirs = ['#boost/libs'])
+
+# 
+# Start in src directory
+# 
+env.substFile('version.C', 'version.C.in')
+
+lyx_source = Split('''
+  main.C
+  Bidi.C 
+  BufferView.C 
+  BufferView_pimpl.C 
+  Bullet.C 
+  BranchList.C 
+  Chktex.C 
+  Color.C 
+  CutAndPaste.C 
+  DepTable.C 
+  FloatList.C 
+  Floating.C 
+  FontIterator.C 
+  FuncStatus.C 
+  InsetList.C 
+  LColor.C 
+  LaTeX.C 
+  LaTeXFeatures.C 
+  LyXAction.C 
+  MenuBackend.C 
+  ParagraphParameters.C 
+  PrinterParams.C 
+  Spacing.C 
+  Thesaurus.C 
+  ToolbarBackend.C 
+  author.C 
+  boost.C 
+  box.C 
+  buffer.C 
+  buffer_funcs.C 
+  bufferlist.C 
+  bufferparams.C 
+  bufferview_funcs.C 
+  changes.C 
+  chset.C 
+  converter.C 
+  counters.C 
+  coordcache.C 
+  cursor.C 
+  cursor_slice.C 
+  debug.C 
+  dimension.C 
+  dociterator.C 
+  encoding.C 
+  errorlist.C 
+  exporter.C 
+  gettext.C 
+  factory.C 
+  format.C 
+  funcrequest.C 
+  graph.C 
+  importer.C 
+  intl.C 
+  insetiterator.C 
+  kbmap.C 
+  kbsequence.C 
+  language.C 
+  session.C 
+  lengthcommon.C 
+  lyx_cb.C 
+  lyx_main.C 
+  lyx_sty.C 
+  lyxfont.C 
+  lyxfind.C 
+  lyxfunc.C 
+  lyxgluelength.C 
+  lyxlayout.C 
+  lyxlength.C 
+  lyxlex.C 
+  lyxlex_pimpl.C 
+  lyxrc.C 
+  lyxrow.C 
+  lyxrow_funcs.C 
+  lyxserver.C 
+  lyxsocket.C 
+  lyxtextclass.C 
+  lyxtextclasslist.C 
+  lyxvc.C 
+  messages.C 
+  metricsinfo.C 
+  mover.C 
+  output.C 
+  outputparams.C 
+  output_docbook.C 
+  output_latex.C 
+  output_linuxdoc.C 
+  output_plaintext.C 
+  paragraph.C 
+  paragraph_funcs.C 
+  paragraph_pimpl.C 
+  pariterator.C 
+  SpellBase.C 
+  rowpainter.C 
+  sgml.C 
+  tabular.C 
+  tex-accent.C 
+  tex-strings.C 
+  texrow.C 
+  text.C 
+  text2.C 
+  text3.C 
+  TocBackend.C 
+  toc.C 
+  trans.C 
+  trans_mgr.C 
+  undo.C 
+  vc-backend.C 
+  version.C 
+  vspace.C 
+''')
+
+if env.has_key('USE_ASPELL') and env['USE_ASPELL']:
+  lyx_source += ['aspell.C']
+elif env.has_key('USE_PSPELL') and env['USE_PSPELL']:
+  lyx_source += ['pspell.C']
+elif env.has_key('USE_ISPELL') and env['USE_ISPELL']:
+  lyx_source += ['ispell.C']
+
+#
+# Build lyx with given frontend
+#
+lyx = env.Program(
+  target = 'lyx',
+  source = lyx_source,
+  LIBS = [
+    'mathed', 
+    'insets', 
+    'frontends', 
+    env['frontend'],
+    'controllers', 
+    'graphics', 
+    'supports',
+    'z' ] + 
+    env['EXTRA_LIBS'] +
+    env['BOOST_LIBRARIES']
+)
+
+# Return program
+Return('lyx')
