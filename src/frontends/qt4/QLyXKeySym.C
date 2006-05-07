@@ -14,15 +14,14 @@
 #include "QLyXKeySym.h"
 #include "qlkey.h"
 #include "qt_helpers.h"
-//Added by qt3to4:
-#include <QKeyEvent>
-#include <Q3CString>
+
 
 #include "debug.h"
 
-#include <q3accel.h>
-#include <qevent.h>
-#include <qtextcodec.h>
+#include <QKeyEvent>
+#include <QKeySequence>
+#include <QEvent>
+#include <QTextCodec>
 
 #include <map>
 #include "support/lstrings.h"
@@ -68,9 +67,7 @@ char const encode(string const & encoding, QString const & str)
 		return 0;
 	}
 
-	Q3CString tmpstr = codec->fromUnicode(str);
-	char const * tmpcstr = tmpstr;
-	return tmpcstr[0];
+	return codec->fromUnicode(str).data()[0];
 }
 
 }
@@ -220,7 +217,7 @@ QString const QLyXKeySym::qprint(key_modifier::state mod) const
 	if (mod & key_modifier::alt)
 		tmpkey += Qt::ALT;
 
-	return Q3Accel::keyToString(tmpkey);
+	return QKeySequence(tmpkey).toString();
 }
 
 

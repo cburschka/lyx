@@ -80,17 +80,16 @@ FileDialog::Result const FileDialog::save(string const & path,
 
 #ifdef USE_NATIVE_FILEDIALOG
 	string const startsWith = makeAbsPath(suggested, path);
-	result.second = fromqstr(
-		Q3FileDialog::getSaveFileName(toqstr(startsWith),
-					     toqstr(filters.as_string()),
-					     qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(),
-					     title_.c_str()));
+	result.second = fromqstr(QFileDialog::getSaveFileName(
+		qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(),
+		title_.c_str(), toqstr(startsWith), toqstr(filters.as_string()) ));
 #else
-	LyXFileDialog dlg(path, filters, title_, private_->b1, private_->b2);
-	dlg.setMode(Q3FileDialog::AnyFile);
+	LyXFileDialog dlg(title_, path, filters, private_->b1, private_->b2);
+	dlg.setFileMode(QFileDialog::AnyFile);
+	dlg.setAcceptMode(QFileDialog::AcceptSave);
 
 	if (!suggested.empty())
-		dlg.setSelection(toqstr(suggested));
+		dlg.selectFile(toqstr(suggested));
 
 	lyxerr[Debug::GUI] << "Synchronous FileDialog: " << endl;
 	int res = dlg.exec();
@@ -115,16 +114,14 @@ FileDialog::Result const FileDialog::open(string const & path,
 
 #ifdef USE_NATIVE_FILEDIALOG
 	string const startsWith = makeAbsPath(suggested, path);
-	result.second = fromqstr(
-		Q3FileDialog::getOpenFileName(toqstr(startsWith),
-					     toqstr(filters.as_string()),
-					     qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(),
-					     title_.c_str()));
+	result.second = fromqstr(QFileDialog::getOpenFileName(
+		qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(), 
+		title_.c_str(), toqstr(startsWith), toqstr(filters.as_string()) ));
 #else
-	LyXFileDialog dlg(path, filters, title_, private_->b1, private_->b2);
+	LyXFileDialog dlg(title_, path, filters, private_->b1, private_->b2);
 
 	if (!suggested.empty())
-		dlg.setSelection(toqstr(suggested));
+		dlg.selectFile(toqstr(suggested));
 
 	lyxerr[Debug::GUI] << "Synchronous FileDialog: " << endl;
 	int res = dlg.exec();
@@ -147,19 +144,18 @@ FileDialog::Result const FileDialog::opendir(string const & path,
 
 #ifdef USE_NATIVE_FILEDIALOG
 	string const startsWith = makeAbsPath(suggested, path);
-	result.second = fromqstr(
-		Q3FileDialog::getExistingDirectory(toqstr(startsWith),
-						  qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(),
-						  title_.c_str()));
+	result.second = fromqstr(QFileDialog::getExistingDirectory(
+		qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(),
+		title_.c_str(),toqstr(startsWith) ));
 #else
 	FileFilterList const filter(_("Directories"));
 
-	LyXFileDialog dlg(path, filter, title_, private_->b1, private_->b2);
+	LyXFileDialog dlg(title_, path, filter, private_->b1, private_->b2);
 
-	dlg.setMode(Q3FileDialog::DirectoryOnly);
+	dlg.setFileMode(QFileDialog::DirectoryOnly);
 
 	if (!suggested.empty())
-		dlg.setSelection(toqstr(suggested));
+		dlg.selectFile(toqstr(suggested));
 
 	lyxerr[Debug::GUI] << "Synchronous FileDialog: " << endl;
 	int res = dlg.exec();

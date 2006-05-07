@@ -18,124 +18,126 @@
   <property name="sizeGripEnabled" >
    <bool>true</bool>
   </property>
-  <widget class="QWidget" name="" >
-   <layout class="QHBoxLayout" >
-    <property name="margin" >
-     <number>0</number>
-    </property>
-    <property name="spacing" >
-     <number>6</number>
-    </property>
-    <item>
-     <spacer>
-      <property name="orientation" >
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeType" >
-       <enum>QSizePolicy::Expanding</enum>
-      </property>
-      <property name="sizeHint" >
-       <size>
-        <width>20</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item>
-     <widget class="QPushButton" name="closePB" >
-      <property name="sizePolicy" >
-       <sizepolicy>
-        <hsizetype>0</hsizetype>
-        <vsizetype>0</vsizetype>
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="text" >
-       <string>&amp;Close</string>
-      </property>
-      <property name="default" >
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QTabWidget" name="tab" >
-   <property name="geometry" >
-    <rect>
-     <x>11</x>
-     <y>11</y>
-     <width>305</width>
-     <height>171</height>
-    </rect>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>9</number>
    </property>
-   <widget class="QWidget" name="versiontab" >
-    <attribute name="title" >
-     <string>Version</string>
-    </attribute>
-    <layout class="QVBoxLayout" >
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item row="0" column="0" >
+    <widget class="QTabWidget" name="tab" >
+     <widget class="QWidget" name="versiontab" >
+      <attribute name="title" >
+       <string>Version</string>
+      </attribute>
+      <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>11</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="versionLA" >
+         <property name="frameShape" >
+          <enum>QFrame::Box</enum>
+         </property>
+         <property name="frameShadow" >
+          <enum>QFrame::Sunken</enum>
+         </property>
+         <property name="text" >
+          <string>Version goes here</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="margin" >
+          <number>6</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="creditstab" >
+      <attribute name="title" >
+       <string>Credits</string>
+      </attribute>
+      <layout class="QGridLayout" >
+       <property name="margin" >
+        <number>9</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item row="0" column="0" >
+        <widget class="QTextBrowser" name="creditsTB" />
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="copyrighttab" >
+      <attribute name="title" >
+       <string>Copyright</string>
+      </attribute>
+      <layout class="QGridLayout" >
+       <property name="margin" >
+        <number>9</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item row="0" column="0" >
+        <widget class="QTextBrowser" name="copyrightTB" />
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item row="1" column="0" >
+    <layout class="QHBoxLayout" >
      <property name="margin" >
-      <number>11</number>
+      <number>0</number>
      </property>
      <property name="spacing" >
       <number>6</number>
      </property>
      <item>
-      <widget class="QLabel" name="versionLA" >
-       <property name="frameShape" >
-        <enum>QFrame::Box</enum>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
        </property>
-       <property name="frameShadow" >
-        <enum>QFrame::Sunken</enum>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="closePB" >
+       <property name="sizePolicy" >
+        <sizepolicy>
+         <hsizetype>0</hsizetype>
+         <vsizetype>0</vsizetype>
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
        </property>
        <property name="text" >
-        <string>Version goes here</string>
+        <string>&amp;Close</string>
        </property>
-       <property name="alignment" >
-        <set>Qt::AlignCenter</set>
-       </property>
-       <property name="margin" >
-        <number>6</number>
+       <property name="default" >
+        <bool>true</bool>
        </property>
       </widget>
      </item>
     </layout>
-   </widget>
-   <widget class="QWidget" name="creditstab" >
-    <attribute name="title" >
-     <string>Credits</string>
-    </attribute>
-    <layout class="QGridLayout" >
-     <property name="margin" >
-      <number>9</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item row="0" column="0" >
-      <widget class="QTextBrowser" name="creditsTB" />
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="copyrighttab" >
-    <attribute name="title" >
-     <string>Copyright</string>
-    </attribute>
-    <layout class="QGridLayout" >
-     <property name="margin" >
-      <number>9</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item row="0" column="0" >
-      <widget class="QTextBrowser" name="copyrightTB" />
-     </item>
-    </layout>
-   </widget>
-  </widget>
+   </item>
+  </layout>
  </widget>
  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
  <resources/>

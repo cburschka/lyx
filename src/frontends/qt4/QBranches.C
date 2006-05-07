@@ -39,10 +39,9 @@ QBranches::QBranches(QWidget * parent, Qt::WFlags f)
 	: QWidget(parent, f)
 {
 	setupUi(this);
-	branchesTW->setColumnCount(3);
-	branchesTW->headerItem()->setText(0, qt_("Name"));
+	branchesTW->setColumnCount(2);
+	branchesTW->headerItem()->setText(0, qt_("Branch"));
 	branchesTW->headerItem()->setText(1, qt_("Activated"));
-	branchesTW->headerItem()->setText(2, qt_("Color"));
 }
 
 QBranches::~QBranches()
@@ -57,10 +56,8 @@ void QBranches::update(BufferParams const & params)
 
 void QBranches::update()
 {
-
 	// store the selected branch
-	QTreeWidgetItem * item =
-		branchesTW->currentItem();
+	QTreeWidgetItem * item = branchesTW->currentItem();
 	QString sel_branch;
 	if (item != 0)
 		sel_branch = item->text(0);
@@ -81,9 +78,9 @@ void QBranches::update()
 
 		QColor const itemcolor = rgb2qcolor(it->getColor());
 		if (itemcolor.isValid()) {
-			QPixmap coloritem(30, 10);
+			QPixmap coloritem(32, 32);
 			coloritem.fill(itemcolor);
-			newItem->setIcon(2, QIcon(coloritem));
+			newItem->setIcon(0, QIcon(coloritem));
 		}
 		// restore selected branch
 		if (bname == sel_branch)

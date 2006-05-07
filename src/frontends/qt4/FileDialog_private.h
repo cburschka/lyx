@@ -14,7 +14,7 @@
 
 
 #include "frontends/FileDialog.h"
-#include <Q3FileDialog>
+#include <QFileDialog>
 
 namespace lyx {
 namespace support {
@@ -27,13 +27,13 @@ class FileFilterList;
 
 class QToolButton;
 
-class LyXFileDialog : public Q3FileDialog
+class LyXFileDialog : public QFileDialog
 {
 	Q_OBJECT
 public:
-	LyXFileDialog(std::string const & path,
+	LyXFileDialog(std::string const & title,
+		      std::string const & path,
 		      lyx::support::FileFilterList const & filters,
-		      std::string const & title,
 		      FileDialog::Button const & b1,
 		      FileDialog::Button const & b2);
 public slots:

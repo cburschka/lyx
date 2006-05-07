@@ -79,7 +79,6 @@ libqt4_la_SOURCES = \
 	lyx_gui.C \
 	lcolorcache.h lcolorcache.C \
 	panelstack.h panelstack.C \
-	qcoloritem.h qcoloritem.C \
 	qfontexample.h qfontexample.C \
 	qfont_loader.h qfont_loader.C \
 	qfont_metrics.C \

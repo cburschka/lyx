@@ -8,8 +8,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>419</width>
-    <height>261</height>
+    <width>351</width>
+    <height>340</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -17,12 +17,71 @@
   </property>
   <layout class="QGridLayout" >
    <property name="margin" >
-    <number>11</number>
+    <number>9</number>
    </property>
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="0" column="1" colspan="2" >
+   <item row="1" column="4" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>91</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="2" column="1" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::MinimumExpanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>31</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="2" column="2" >
+    <widget class="QPushButton" name="formatNewPB" >
+     <property name="text" >
+      <string>&amp;Add</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="3" >
+    <widget class="QPushButton" name="formatModifyPB" >
+     <property name="text" >
+      <string>&amp;Modify</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1" colspan="3" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>129</width>
+       <height>31</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="1" colspan="3" >
     <layout class="QGridLayout" >
      <property name="margin" >
       <number>0</number>
@@ -110,7 +169,7 @@
      </item>
     </layout>
    </item>
-   <item row="1" column="1" colspan="2" >
+   <item row="4" column="0" >
     <layout class="QHBoxLayout" >
      <property name="margin" >
       <number>0</number>
@@ -119,26 +178,12 @@
       <number>6</number>
      </property>
      <item>
-      <widget class="QPushButton" name="formatNewPB" >
-       <property name="text" >
-        <string>&amp;Add</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="formatModifyPB" >
-       <property name="text" >
-        <string>&amp;Modify</string>
-       </property>
-      </widget>
-     </item>
-     <item>
       <spacer>
        <property name="orientation" >
         <enum>Qt::Horizontal</enum>
        </property>
        <property name="sizeType" >
-        <enum>QSizePolicy::MinimumExpanding</enum>
+        <enum>QSizePolicy::Preferred</enum>
        </property>
        <property name="sizeHint" >
         <size>
@@ -148,125 +193,32 @@
        </property>
       </spacer>
      </item>
-    </layout>
-   </item>
-   <item row="2" column="2" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeType" >
-      <enum>QSizePolicy::Expanding</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>20</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item rowspan="3" row="0" column="0" >
-    <layout class="QVBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
      <item>
-      <widget class="QLabel" name="formatsLA" >
+      <widget class="QPushButton" name="formatRemovePB" >
        <property name="text" >
-        <string>&amp;File formats</string>
-       </property>
-       <property name="buddy" >
-        <cstring>formatsLB</cstring>
+        <string>&amp;Remove</string>
        </property>
       </widget>
-     </item>
-     <item>
-      <widget class="Q3ListBox" name="formatsLB" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>5</hsizetype>
-         <vsizetype>7</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="vScrollBarMode" >
-        <enum>Q3ScrollView::AlwaysOn</enum>
-       </property>
-       <property name="hScrollBarMode" >
-        <enum>Q3ScrollView::AlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" >
-       <property name="margin" >
-        <number>0</number>
-       </property>
-       <property name="spacing" >
-        <number>6</number>
-       </property>
-       <item>
-        <spacer>
-         <property name="orientation" >
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeType" >
-          <enum>QSizePolicy::Preferred</enum>
-         </property>
-         <property name="sizeHint" >
-          <size>
-           <width>20</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QPushButton" name="formatRemovePB" >
-         <property name="text" >
-          <string>&amp;Remove</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
      </item>
     </layout>
    </item>
-   <item row="2" column="1" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
+   <item rowspan="3" row="1" column="0" >
+    <widget class="QListWidget" name="formatsLW" />
+   </item>
+   <item row="0" column="0" >
+    <widget class="QLabel" name="formatsLA" >
+     <property name="text" >
+      <string>&amp;File formats</string>
      </property>
-     <property name="sizeType" >
-      <enum>QSizePolicy::Minimum</enum>
+     <property name="buddy" >
+      <cstring>formatsLW</cstring>
      </property>
-     <property name="sizeHint" >
-      <size>
-       <width>20</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
+    </widget>
    </item>
   </layout>
  </widget>
  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
- <customwidgets>
-  <customwidget>
-   <class>Q3ListBox</class>
-   <extends></extends>
-   <header>q3listbox.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
- </customwidgets>
  <tabstops>
-  <tabstop>formatsLB</tabstop>
   <tabstop>formatNewPB</tabstop>
   <tabstop>formatRemovePB</tabstop>
   <tabstop>formatED</tabstop>

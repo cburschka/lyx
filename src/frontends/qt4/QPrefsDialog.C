@@ -36,7 +36,6 @@
 #include "QPrefs.h"
 
 #include "panelstack.h"
-#include "qcoloritem.h"
 #include "qfontexample.h"
 
 #include "ui/QPrefAsciiUi.h"
@@ -90,6 +89,7 @@ using std::ostringstream;
 using std::pair;
 using std::vector;
 
+
 namespace lyx {
 namespace frontend {
 
@@ -97,6 +97,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	: form_(form)
 {
 	setupUi(this);
+	QDialog::setModal(true);
 
 	connect(savePB, SIGNAL(clicked()),
 		form, SLOT(slotOK()));
@@ -201,11 +202,8 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	screenfontsModule->screenHugerED->setValidator(new QDoubleValidator(
 		screenfontsModule->screenHugerED));
 
-
-
-
-	colorsModule = new UiWidget<Ui::QPrefColorsUi>;
 	// FIXME: put in controller
+	colorsModule = new UiWidget<Ui::QPrefColorsUi>;
 	for (int i = 0; i < LColor::ignore; ++i) {
 		LColor::color lc = static_cast<LColor::color>(i);
 		if (lc == LColor::none
@@ -220,14 +218,20 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 			|| lc == LColor::inherit
 			|| lc == LColor::ignore) continue;
 
-		colors_.push_back(lc);
-		string const guiname(lcolor.getGUIName(lc));
-		QColorItem * ci(new QColorItem(lcolorcache.get(lc),
-				toqstr(guiname)));
-		colorsModule->lyxObjectsLB->insertItem(ci);
+		lcolors_.push_back(lc);
+		QColor color = QColor(lcolorcache.get(lc));
+		prefcolors_.push_back(color.name());
+		QPixmap coloritem(32, 32);
+		coloritem.fill(color);
+		QListWidgetItem * newItem = new QListWidgetItem(QIcon(coloritem),
+			toqstr(lcolor.getGUIName(lc)), colorsModule->lyxObjectsLW);
 	}
-	connect(colorsModule->colorChangePB, SIGNAL(clicked()), this, SLOT(change_color()));
-	connect(colorsModule->lyxObjectsLB, SIGNAL(selected(int)), this, SLOT(change_color()));
+	newcolors_ = prefcolors_;
+
+	connect(colorsModule->colorChangePB, SIGNAL(clicked()), 
+		this, SLOT(change_color()));
+	connect(colorsModule->lyxObjectsLW, SIGNAL(itemActivated(QListWidgetItem*)), 
+		this, SLOT(change_color()));
 
 
 
@@ -286,17 +290,28 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 
 
 	convertersModule = new UiWidget<Ui::QPrefConvertersUi>;
-	connect(convertersModule->converterNewPB, SIGNAL(clicked()), this, SLOT(new_converter()));
-	connect(convertersModule->converterRemovePB, SIGNAL(clicked()), this, SLOT(remove_converter()));
-	connect(convertersModule->converterModifyPB, SIGNAL(clicked()), this, SLOT(modify_converter()));
-	connect(convertersModule->convertersLB, SIGNAL(highlighted(int)), this, SLOT(switch_converter(int)));
-	connect(convertersModule->converterFromCO, SIGNAL(activated(const QString&)), this, SLOT(converter_changed()));
-	connect(convertersModule->converterToCO, SIGNAL(activated(const QString&)), this, SLOT(converter_changed()));
-	connect(convertersModule->converterED, SIGNAL(textChanged(const QString&)), this, SLOT(converter_changed()));
-	connect(convertersModule->converterFlagED, SIGNAL(textChanged(const QString&)), this, SLOT(converter_changed()));
-	connect(convertersModule->converterNewPB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(convertersModule->converterRemovePB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(convertersModule->converterModifyPB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(convertersModule->converterNewPB, SIGNAL(clicked()), 
+		this, SLOT(new_converter()));
+	connect(convertersModule->converterRemovePB, SIGNAL(clicked()), 
+		this, SLOT(remove_converter()));
+	connect(convertersModule->converterModifyPB, SIGNAL(clicked()), 
+		this, SLOT(modify_converter()));
+	connect(convertersModule->convertersLW, SIGNAL(currentRowChanged(int)), 
+		this, SLOT(switch_converter(int)));
+	connect(convertersModule->converterFromCO, SIGNAL(activated(const QString&)), 
+		this, SLOT(converter_changed()));
+	connect(convertersModule->converterToCO, SIGNAL(activated(const QString&)), 
+		this, SLOT(converter_changed()));
+	connect(convertersModule->converterED, SIGNAL(textChanged(const QString&)), 
+		this, SLOT(converter_changed()));
+	connect(convertersModule->converterFlagED, SIGNAL(textChanged(const QString&)), 
+		this, SLOT(converter_changed()));
+	connect(convertersModule->converterNewPB, SIGNAL(clicked()), 
+		this, SLOT(change_adaptor()));
+	connect(convertersModule->converterRemovePB, SIGNAL(clicked()), 
+		this, SLOT(change_adaptor()));
+	connect(convertersModule->converterModifyPB, SIGNAL(clicked()), 
+		this, SLOT(change_adaptor()));
 
 
 
@@ -304,7 +319,8 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	connect(copiersModule->copierNewPB, SIGNAL(clicked()), this, SLOT(new_copier()));
 	connect(copiersModule->copierRemovePB, SIGNAL(clicked()), this, SLOT(remove_copier()));
 	connect(copiersModule->copierModifyPB, SIGNAL(clicked()), this, SLOT(modify_copier()));
-	connect(copiersModule->AllCopiersLB, SIGNAL(highlighted(int)), this, SLOT(switch_copierLB(int)));
+	connect(copiersModule->AllCopiersLW, SIGNAL(currentRowChanged(int)), 
+		this, SLOT(switch_copierLB(int)));
 	connect(copiersModule->copierFormatCO, SIGNAL(activated(int)), this, SLOT(switch_copierCO(int)));
 	connect(copiersModule->copierNewPB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(copiersModule->copierRemovePB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
@@ -319,7 +335,8 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	connect(fileformatsModule->formatNewPB, SIGNAL(clicked()), this, SLOT(new_format()));
 	connect(fileformatsModule->formatRemovePB, SIGNAL(clicked()), this, SLOT(remove_format()));
 	connect(fileformatsModule->formatModifyPB, SIGNAL(clicked()), this, SLOT(modify_format()));
-	connect(fileformatsModule->formatsLB, SIGNAL(highlighted(int)), this, SLOT(switch_format(int)));
+	connect(fileformatsModule->formatsLW, SIGNAL(currentRowChanged(int)), 
+		this, SLOT(switch_format(int)));
 	connect(fileformatsModule->formatED, SIGNAL(textChanged(const QString&)), this, SLOT(fileformat_changed()));
 	connect(fileformatsModule->guiNameED, SIGNAL(textChanged(const QString&)), this, SLOT(fileformat_changed()));
 	connect(fileformatsModule->shortcutED, SIGNAL(textChanged(const QString&)), this, SLOT(fileformat_changed()));
@@ -387,9 +404,9 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 
 
 	uiModule = new UiWidget<Ui::QPrefUi>;
-    connect( uiModule->autoSaveCB, SIGNAL( toggled(bool) ), uiModule->autoSaveLA, SLOT( setEnabled(bool) ) );
-    connect( uiModule->autoSaveCB, SIGNAL( toggled(bool) ), uiModule->autoSaveSB, SLOT( setEnabled(bool) ) );
-    connect( uiModule->autoSaveCB, SIGNAL( toggled(bool) ), uiModule->TextLabel1, SLOT( setEnabled(bool) ) );
+	connect(uiModule->autoSaveCB, SIGNAL( toggled(bool) ), uiModule->autoSaveLA, SLOT( setEnabled(bool) ) );
+	connect(uiModule->autoSaveCB, SIGNAL( toggled(bool) ), uiModule->autoSaveSB, SLOT( setEnabled(bool) ) );
+	connect(uiModule->autoSaveCB, SIGNAL( toggled(bool) ), uiModule->TextLabel1, SLOT( setEnabled(bool) ) );
 	connect(uiModule->uiFilePB, SIGNAL(clicked()), this, SLOT(select_ui()));
 	connect(uiModule->bindFilePB, SIGNAL(clicked()), this, SLOT(select_bind()));
 	connect(uiModule->uiFileED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
@@ -408,8 +425,6 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	identityModule = new UiWidget<Ui::QPrefIdentityUi>;
 	connect(identityModule->nameED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(identityModule->emailED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-
-
 
 
 	string const laf = _("Look and feel");
@@ -442,7 +457,6 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	prefsPS->addPanel(copiersModule, _("Copiers"));
 
 	prefsPS->setCurrentPanel(_("User interface"));
-
 
 	form_->bcview().setOK(savePB);
 	form_->bcview().setApply(applyPB);
@@ -489,24 +503,27 @@ void QPrefsDialog::updateConverters()
 		convertmod->converterToCO->insertItem(toqstr(cit->prettyname()));
 	}
 
-	convertmod->convertersLB->clear();
+	convertmod->convertersLW->clear();
 
 	Converters::const_iterator ccit = form_->converters().begin();
 	Converters::const_iterator cend = form_->converters().end();
 	for (; ccit != cend; ++ccit) {
 		std::string const name = ccit->From->prettyname() + " -> "
 			+ ccit->To->prettyname();
-		convertmod->convertersLB->insertItem(toqstr(name));
+		convertmod->convertersLW->addItem(toqstr(name));
 	}
+	convertmod->convertersLW->sortItems(Qt::AscendingOrder);
 
 	// restore selection
 	if (!current.isEmpty()) {
-		Q3ListBoxItem * item = convertmod->convertersLB->findItem(current);
-		convertmod->convertersLB->setCurrentItem(item);
+		QList<QListWidgetItem *> const item = 
+			convertmod->convertersLW->findItems(current, Qt::MatchExactly);
+		if (item.size()>0)
+			convertmod->convertersLW->setCurrentItem(item.at(0));
 	}
 	// select first element if restoring failed
-	if (convertmod->convertersLB->currentItem() == -1)
-		convertmod->convertersLB->setCurrentItem(0);
+	if (convertmod->convertersLW->currentRow() == -1)
+		convertmod->convertersLW->setCurrentRow(0);
 
 	updateConverterButtons();
 }
@@ -514,9 +531,12 @@ void QPrefsDialog::updateConverters()
 
 void QPrefsDialog::switch_converter(int nr)
 {
+	if (nr<0)
+		return;
+
 	Converter const & c(form_->converters().get(nr));
-	convertersModule->converterFromCO->setCurrentItem(form_->formats().getNumber(c.from));
-	convertersModule->converterToCO->setCurrentItem(form_->formats().getNumber(c.to));
+	convertersModule->converterFromCO->setCurrentIndex(form_->formats().getNumber(c.from));
+	convertersModule->converterToCO->setCurrentIndex(form_->formats().getNumber(c.to));
 	convertersModule->converterED->setText(toqstr(c.command));
 	convertersModule->converterFlagED->setText(toqstr(c.flags));
 
@@ -542,7 +562,7 @@ void QPrefsDialog::updateConverterButtons()
 		|| from.name() == to.name());
 
 	Converter const & c(form_->converters().get(
-		convertersModule->convertersLB->currentItem()));
+		convertersModule->convertersLW->currentRow()));
 	string const old_command = c.command;
 	string const old_flag = c.flags;
 	string const new_command(fromqstr(convertersModule->converterED->text()));
@@ -571,15 +591,14 @@ void QPrefsDialog::new_converter()
 		form_->converters().updateLast(form_->formats());
 	}
 	updateConverters();
-	convertersModule->convertersLB->setCurrentItem(convertersModule->convertersLB->count() - 1);
+	convertersModule->convertersLW->setCurrentRow(convertersModule->convertersLW->count() - 1);
 }
 
 
 void QPrefsDialog::modify_converter()
 {
-	int const top_item = convertersModule->convertersLB->topItem();
 	QString const current_text =
-		convertersModule->convertersLB->currentText();
+		convertersModule->convertersLW->currentItem()->text();
 
 	Format const & from(form_->formats().get(convertersModule->converterFromCO->currentItem()));
 	Format const & to(form_->formats().get(convertersModule->converterToCO->currentItem()));
@@ -593,10 +612,10 @@ void QPrefsDialog::modify_converter()
 	}
 	updateConverters();
 
-	Q3ListBoxItem * const item =
-		convertersModule->convertersLB->findItem(current_text);
-	convertersModule->convertersLB->setCurrentItem(item);
-	convertersModule->convertersLB->setTopItem(top_item);
+	QList<QListWidgetItem *> const item =
+		convertersModule->convertersLW->findItems(current_text, Qt::MatchExactly);
+	if (item.size()>0)
+		convertersModule->convertersLW->setCurrentItem(item.at(0));
 }
 
 
@@ -623,7 +642,7 @@ void QPrefsDialog::updateCopiers()
 	}
 
 	// The browser widget
-	copiersModule->AllCopiersLB->clear();
+	copiersModule->AllCopiersLW->clear();
 
 	for (Movers::iterator it = form_->movers().begin(),
 		     end = form_->movers().end();
@@ -631,20 +650,21 @@ void QPrefsDialog::updateCopiers()
 		std::string const & command = it->second.command();
 		if (command.empty())
 			continue;
-		std::string const & fmt = it->first;
-		std::string const & pretty = form_->formats().prettyName(fmt);
-
-		copiersModule->AllCopiersLB->insertItem(toqstr(pretty));
+		QString const pretty = toqstr(form_->formats().prettyName(it->first));
+		copiersModule->AllCopiersLW->addItem(pretty);
 	}
+	copiersModule->AllCopiersLW->sortItems(Qt::AscendingOrder);
 
 	// restore selection
 	if (!current.isEmpty()) {
-		Q3ListBoxItem * item = copiersModule->AllCopiersLB->findItem(current);
-		copiersModule->AllCopiersLB->setCurrentItem(item);
+		QList<QListWidgetItem *> item = 
+			copiersModule->AllCopiersLW->findItems(current, Qt::MatchExactly);
+		if (item.size()>0)
+			copiersModule->AllCopiersLW->setCurrentItem(item.at(0));
 	}
 	// select first element if restoring failed
-	if (copiersModule->AllCopiersLB->currentItem() == -1)
-		copiersModule->AllCopiersLB->setCurrentItem(0);
+	if (copiersModule->AllCopiersLW->currentRow() == -1)
+		copiersModule->AllCopiersLW->setCurrentRow(0);
 }
 
 
@@ -674,26 +694,27 @@ Format const * getFormat(std::string const & prettyname)
 } // namespace anon
 
 
-void QPrefsDialog::switch_copierLB(int)
+void QPrefsDialog::switch_copierLB(int row)
 {
+	if (row<0)
+		return;
+
 	std::string const browser_text =
-		fromqstr(copiersModule->AllCopiersLB->currentText());
+		fromqstr(copiersModule->AllCopiersLW->currentItem()->text());
 	Format const * fmt = getFormat(browser_text);
 	if (fmt == 0)
 		return;
 
-	string const & fmt_name = fmt->name();
-	string const & gui_name = fmt->prettyname();
-	string const & command = form_->movers().command(fmt_name);
+	QString const gui_name = toqstr(fmt->prettyname());
+	QString const command = toqstr(form_->movers().command(fmt->name()));
 
 	copiersModule->copierED->clear();
 	int const combo_size = copiersModule->copierFormatCO->count();
 	for (int i = 0; i < combo_size; ++i) {
-		QString const qtext = copiersModule->copierFormatCO->text(i);
-		std::string const text = fromqstr(qtext);
+		QString const text = copiersModule->copierFormatCO->text(i);
 		if (text == gui_name) {
-			copiersModule->copierFormatCO->setCurrentItem(i);
-			copiersModule->copierED->setText(toqstr(command));
+			copiersModule->copierFormatCO->setCurrentIndex(i);
+			copiersModule->copierED->setText(command);
 			break;
 		}
 	}
@@ -701,32 +722,31 @@ void QPrefsDialog::switch_copierLB(int)
 }
 
 
-void QPrefsDialog::switch_copierCO(int)
+void QPrefsDialog::switch_copierCO(int row)
 {
+	if (row<0)
+		return;
+
 	std::string const combo_text =
 		fromqstr(copiersModule->copierFormatCO->currentText());
 	Format const * fmt = getFormat(combo_text);
 	if (fmt == 0)
 		return;
 
-	string const & fmt_name = fmt->name();
-	string const & gui_name = fmt->prettyname();
-	string const & command = form_->movers().command(fmt_name);
+	QString const command = toqstr(form_->movers().command(fmt->name()));
+	copiersModule->copierED->setText(command);
 
-	copiersModule->copierED->setText(toqstr(command));
-
-	int const index = copiersModule->AllCopiersLB->currentItem();
+	QListWidgetItem * const index = copiersModule->AllCopiersLW->currentItem();
 	if (index >= 0)
-		copiersModule->AllCopiersLB->setSelected(index, false);
+		copiersModule->AllCopiersLW->setItemSelected(index, false);
 
-	int const browser_size = copiersModule->AllCopiersLB->count();
+	QString const gui_name = toqstr(fmt->prettyname());
+	int const browser_size = copiersModule->AllCopiersLW->count();
 	for (int i = 0; i < browser_size; ++i) {
-		QString const qtext = copiersModule->AllCopiersLB->text(i);
-		std::string const text = fromqstr(qtext);
+		QString const text = copiersModule->AllCopiersLW->item(i)->text();
 		if (text == gui_name) {
-			copiersModule->AllCopiersLB->setSelected(i, true);
-			int top = std::max(i - 5, 0);
-			copiersModule->AllCopiersLB->setTopItem(top);
+			QListWidgetItem * item = copiersModule->AllCopiersLW->item(i);
+			copiersModule->AllCopiersLW->setItemSelected(item, true);
 			break;
 		}
 	}
@@ -744,8 +764,8 @@ void QPrefsDialog::updateCopierButtons()
 	QString selected = copiersModule->copierFormatCO->currentText();
 
 	bool known = false;
-	for (unsigned int i = 0; i != copiersModule->AllCopiersLB->count(); i++) {
-		if (copiersModule->AllCopiersLB->text(i) == selected)
+	for (unsigned int i = 0; i != copiersModule->AllCopiersLW->count(); i++) {
+		if (copiersModule->AllCopiersLW->item(i)->text() == selected)
 			known = true;
 	}
 
@@ -778,8 +798,8 @@ void QPrefsDialog::new_copier()
 	form_->movers().set(fmt->name(), command);
 
 	updateCopiers();
-	int const last = copiersModule->AllCopiersLB->count() - 1;
-	copiersModule->AllCopiersLB->setCurrentItem(last);
+	int const last = copiersModule->AllCopiersLW->count() - 1;
+	copiersModule->AllCopiersLW->setCurrentRow(last);
 
 	updateCopierButtons();
 }
@@ -824,27 +844,32 @@ void QPrefsDialog::updateFormats()
 	// save current selection
 	QString current = formatmod->guiNameED->text();
 
-	formatmod->formatsLB->clear();
+	formatmod->formatsLW->clear();
 
 	Formats::const_iterator cit = form_->formats().begin();
 	Formats::const_iterator end = form_->formats().end();
 	for (; cit != end; ++cit) {
-		formatmod->formatsLB->insertItem(toqstr(cit->prettyname()));
+		formatmod->formatsLW->addItem(toqstr(cit->prettyname()));
 	}
+	formatmod->formatsLW->sortItems(Qt::AscendingOrder);
 
 	// restore selection
 	if (!current.isEmpty()) {
-		Q3ListBoxItem * item = formatmod->formatsLB->findItem(current);
-		formatmod->formatsLB->setCurrentItem(item);
+		QList<QListWidgetItem *>  item = formatmod->formatsLW->findItems(current, Qt::MatchExactly);
+		if (item.size()>0)
+			formatmod->formatsLW->setCurrentItem(item.at(0));
 	}
 	// select first element if restoring failed
-	if (formatmod->formatsLB->currentItem() == -1)
-		formatmod->formatsLB->setCurrentItem(0);
+	if (formatmod->formatsLW->currentRow() == -1)
+		formatmod->formatsLW->setCurrentRow(0);
 }
 
 
 void QPrefsDialog::switch_format(int nr)
 {
+	if (nr<0)
+		return;
+
 	Format const & f(form_->formats().get(nr));
 	fileformatsModule->formatED->setText(toqstr(f.name()));
 	fileformatsModule->guiNameED->setText(toqstr(f.prettyname()));
@@ -872,8 +897,8 @@ void QPrefsDialog::updateFormatsButtons()
 	int const sel = form_->formats().getNumber(fromqstr(format));
 	bool gui_name_known = false;
 	int where = sel;
-	for (unsigned int i = 0; i != fileformatsModule->formatsLB->count(); i++) {
-		if (fileformatsModule->formatsLB->text(i) == gui_name) {
+	for (unsigned int i = 0; i != fileformatsModule->formatsLW->count(); i++) {
+		if (fileformatsModule->formatsLW->item(i)->text() == gui_name) {
 			gui_name_known = true;
 			where = i;
 		}
@@ -887,7 +912,7 @@ void QPrefsDialog::updateFormatsButtons()
 		&& !fileformatsModule->guiNameED->text().isEmpty());
 
 	Format const & f(form_->formats().get(
-		fileformatsModule->formatsLB->currentItem()));
+		fileformatsModule->formatsLW->currentRow()));
 	string const old_pretty(f.prettyname());
 	string const old_shortcut(f.shortcut());
 	string const old_extension(f.extension());
@@ -923,7 +948,7 @@ void QPrefsDialog::new_format()
 	form_->formats().add(name, extension, prettyname, shortcut, viewer, editor);
 	form_->formats().sort();
 	updateFormats();
-	fileformatsModule->formatsLB->setCurrentItem(form_->formats().getNumber(name));
+	fileformatsModule->formatsLW->setCurrentRow(form_->formats().getNumber(name));
 	form_->converters().update(form_->formats());
 
 	updateConverters();
@@ -933,10 +958,9 @@ void QPrefsDialog::new_format()
 
 void QPrefsDialog::modify_format()
 {
-	int const top_item = fileformatsModule->formatsLB->topItem();
-	int const current_item = fileformatsModule->formatsLB->currentItem();
+	int const current_item = fileformatsModule->formatsLW->currentRow();
 	QString const current_text =
-		fileformatsModule->formatsLB->currentText();
+		fileformatsModule->formatsLW->currentItem()->text();
 
 	Format const & oldformat(form_->formats().get(current_item));
 	string const oldpretty(oldformat.prettyname());
@@ -952,24 +976,24 @@ void QPrefsDialog::modify_format()
 	form_->formats().add(name, extension, prettyname, shortcut, viewer, editor);
 	form_->formats().sort();
 
-	fileformatsModule->formatsLB->setUpdatesEnabled(false);
+	fileformatsModule->formatsLW->setUpdatesEnabled(false);
 	updateFormats();
-	fileformatsModule->formatsLB->setUpdatesEnabled(true);
-	fileformatsModule->formatsLB->update();
+	fileformatsModule->formatsLW->setUpdatesEnabled(true);
+	fileformatsModule->formatsLW->update();
 
 	updateConverters();
 	updateFormatsButtons();
 
-	Q3ListBoxItem * const item =
-		fileformatsModule->formatsLB->findItem(current_text);
-	fileformatsModule->formatsLB->setCurrentItem(item);
-	fileformatsModule->formatsLB->setTopItem(top_item);
+	QList<QListWidgetItem *>  const item =
+		fileformatsModule->formatsLW->findItems(current_text, Qt::MatchExactly);
+	if (item.size()>0)
+		fileformatsModule->formatsLW->setCurrentItem(item.at(0));
 }
 
 
 void QPrefsDialog::remove_format()
 {
-	int const nr(fileformatsModule->formatsLB->currentItem());
+	int const nr(fileformatsModule->formatsLW->currentRow());
 	if (nr < 0)
 		return;
 	string const current_text = form_->formats().get(nr).name();
@@ -990,15 +1014,16 @@ void QPrefsDialog::remove_format()
 
 void QPrefsDialog::change_color()
 {
-	Q3ListBox * lb(colorsModule->lyxObjectsLB);
-	if (lb->currentItem() < 0)
-		return;
-	Q3ListBoxItem * ib(lb->item(lb->currentItem()));
-	QColorItem * ci(static_cast<QColorItem*>(ib));
-	QColor c(QColorDialog::getColor(ci->color(), qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget()));
-	if (c.isValid()) {
-		ci->color(c);
-		lb->triggerUpdate(true);
+	int const row = colorsModule->lyxObjectsLW->currentRow();
+	QString color = newcolors_[row];
+	QColor c(QColorDialog::getColor(QColor(color), 
+		qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget()));
+
+	if (c.name()!=color) {
+		newcolors_[row] = c.name();
+		QPixmap coloritem(32, 32);
+		coloritem.fill(c);
+		colorsModule->lyxObjectsLW->currentItem()->setIcon(QIcon(coloritem));
 		change_adaptor();
 	}
 }
@@ -1285,28 +1310,9 @@ void QPrefsDialog::apply(LyXRC & rc) const
 	}
 
 
-
-
-	unsigned int i;
-	for (i = 0; i < colorsModule->lyxObjectsLB->count(); ++i) {
-		Q3ListBoxItem * ib(colorsModule->lyxObjectsLB->item(i));
-		QColorItem * ci(static_cast<QColorItem*>(ib));
-
-		LColor::color const col(colors_[i]);
-		QColor const & qcol(lcolorcache.get(col));
-
-		// FIXME: dubious, but it's what xforms does
-		if (qcol != ci->color()) {
-			ostringstream ostr;
-
-			ostr << '#' << std::setbase(16) << setfill('0')
-			     << setw(2) << ci->color().red()
-			     << setw(2) << ci->color().green()
-			     << setw(2) << ci->color().blue();
-
-			string newhex(ostr.str());
-			form_->controller().setColor(col, newhex);
-		}
+	for (int i = 0; i < lcolors_.size(); ++i) {
+		if (prefcolors_[i]!=newcolors_[i])
+			form_->controller().setColor(lcolors_[i], fromqstr(newcolors_[i]));
 	}
 }
 
@@ -1421,7 +1427,7 @@ void QPrefsDialog::update(LyXRC const & rc)
 	languageModule->endCommandED->setText(toqstr(rc.language_command_end));
 
 	int const pos = int(findPos(lang_, rc.default_language));
-	languageModule->defaultLanguageCO->setCurrentItem(pos);
+	languageModule->defaultLanguageCO->setCurrentIndex(pos);
 
 	uiModule->uiFileED->setText(external_path(rc.ui_file));
 	uiModule->bindFileED->setText(external_path(rc.bind_file));
@@ -1476,20 +1482,20 @@ void QPrefsDialog::update(LyXRC const & rc)
 	latexModule->latexIndexED->setText(toqstr(rc.index_command));
 	latexModule->latexAutoresetCB->setChecked(rc.auto_reset_options);
 	latexModule->latexDviPaperED->setText(toqstr(rc.view_dvi_paper_option));
-	latexModule->latexPaperSizeCO->setCurrentItem(
+	latexModule->latexPaperSizeCO->setCurrentIndex(
 		form_->controller().fromPaperSize(rc.default_papersize));
 
 
 
 	switch (rc.preview) {
 	case LyXRC::PREVIEW_OFF:
-		displayModule->instantPreviewCO->setCurrentItem(0);
+		displayModule->instantPreviewCO->setCurrentIndex(0);
 		break;
 	case LyXRC::PREVIEW_NO_MATH :
-		displayModule->instantPreviewCO->setCurrentItem(1);
+		displayModule->instantPreviewCO->setCurrentIndex(1);
 		break;
 	case LyXRC::PREVIEW_ON :
-		displayModule->instantPreviewCO->setCurrentItem(2);
+		displayModule->instantPreviewCO->setCurrentIndex(2);
 		break;
 	}
 
@@ -1501,7 +1507,7 @@ void QPrefsDialog::update(LyXRC const & rc)
 		case lyx::graphics::MonochromeDisplay:	item = 0; break;
 		default: break;
 	}
-	displayModule->displayGraphicsCO->setCurrentItem(item);
+	displayModule->displayGraphicsCO->setCurrentIndex(item);
 
 
 
@@ -1515,19 +1521,19 @@ void QPrefsDialog::update(LyXRC const & rc)
 
 
 
-	spellcheckerModule->spellCommandCO->setCurrentItem(0);
+	spellcheckerModule->spellCommandCO->setCurrentIndex(0);
 
 	if (rc.isp_command == "ispell") {
-		spellcheckerModule->spellCommandCO->setCurrentItem(0);
+		spellcheckerModule->spellCommandCO->setCurrentIndex(0);
 	} else if (rc.isp_command == "aspell") {
-		spellcheckerModule->spellCommandCO->setCurrentItem(1);
+		spellcheckerModule->spellCommandCO->setCurrentIndex(1);
 	} else if (rc.isp_command == "hspell") {
-		spellcheckerModule->spellCommandCO->setCurrentItem(2);
+		spellcheckerModule->spellCommandCO->setCurrentIndex(2);
 	}
 
 	if (rc.use_spell_lib) {
 #if defined(USE_ASPELL) || defined(USE_PSPELL)
-		spellcheckerModule->spellCommandCO->setCurrentItem(3);
+		spellcheckerModule->spellCommandCO->setCurrentIndex(3);
 #endif
 	}
 

@@ -114,7 +114,7 @@ void QAbout::build_dialog()
 	QString const qtext = codec ?
 		codec->toUnicode(out.str().c_str()) :
 		toqstr(out.str());
-	dialog_->creditsTB->setPlainText(qtext);
+	dialog_->creditsTB->setHtml(qtext);
 
 	// try to resize to a good size
 	dialog_->copyrightTB->hide();

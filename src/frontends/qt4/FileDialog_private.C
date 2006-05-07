@@ -18,6 +18,7 @@
 
 #include <QApplication>
 #include <QToolButton>
+#include <QHBoxLayout>
 
 using lyx::support::split;
 
@@ -42,23 +43,25 @@ string const getLabel(string const & str) {
 } // namespace anon
 
 
-LyXFileDialog::LyXFileDialog(string const & p,
+LyXFileDialog::LyXFileDialog(string const & t,
+			     string const & p,
 			     lyx::support::FileFilterList const & filters,
-			     string const & t,
 			     FileDialog::Button const & b1,
 			     FileDialog::Button const & b2)
-	: Q3FileDialog(toqstr(p), toqstr(filters.as_string()),
-		      qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(), toqstr(t), true),
-	  b1_(0), b2_(0)
+	: QFileDialog(qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(),
+		      toqstr(t), toqstr(p), toqstr(filters.as_string())),
+		      b1_(0), b2_(0)
 {
 	setCaption(toqstr(t));
+
+	QList<QHBoxLayout *> layout = findChildren<QHBoxLayout *>();
 
 	if (!b1.first.empty()) {
 		b1_dir_ = b1.second;
 		b1_ = new QToolButton(this);
 		connect(b1_, SIGNAL(clicked()), this, SLOT(buttonClicked()));
 		b1_->setText(toqstr(getLabel(b1.first)));
-		addToolButton(b1_, true);
+		layout.at(0)->addWidget(b1_);
 	}
 
 	if (!b2.first.empty()) {
@@ -66,7 +69,7 @@ LyXFileDialog::LyXFileDialog(string const & p,
 		b2_ = new QToolButton(this);
 		connect(b2_, SIGNAL(clicked()), this, SLOT(buttonClicked()));
 		b2_->setText(toqstr(getLabel(b2.first)));
-		addToolButton(b2_);
+		layout.at(0)->addWidget(b2_);
 	}
 }
 

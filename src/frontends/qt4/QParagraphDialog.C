@@ -51,7 +51,6 @@ QParagraphDialog::QParagraphDialog(QParagraph * form)
 
 	linespacingValue->setValidator(new QDoubleValidator(linespacingValue));
 
-	//Q3WhatsThis::add(labelWidth, qt_(
 	labelWidth->setWhatsThis( qt_(
 		"As described in the User Guide, the length of"
 		" this text will determine how wide the label part"

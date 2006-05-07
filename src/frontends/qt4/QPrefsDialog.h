@@ -124,7 +124,9 @@ private:
 	/// languages
 	std::vector<std::string> lang_;
 
-	std::vector<LColor_color> colors_;
+	std::vector<LColor_color> lcolors_;
+	std::vector<QString> prefcolors_;
+	std::vector<QString> newcolors_;
 
 	UiWidget<Ui::QPrefAsciiUi> * asciiModule;
 	UiWidget<Ui::QPrefDateUi> * dateModule;

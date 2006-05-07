@@ -21,8 +21,8 @@
 #include <QDialog>
 #include <vector>
 
-class Q3ListBox;
-class Q3ListBoxItem;
+class QListWidget;
+class QListWidgetItem;
 
 class InsetCommandParams;
 
@@ -61,7 +61,7 @@ public:
 
 protected slots:
 
-//	void on_selectedLB_currentChanged(Q3ListBoxItem*);
+//	void on_selectedLB_currentChanged(QListWidgetItem*);
 	
 	void on_okPB_clicked();
 	void on_cancelPB_clicked();
@@ -118,8 +118,8 @@ signals:
 
 protected slots:
 
-	void on_availableLB_currentChanged(Q3ListBoxItem *);
-	void on_availableLB_selected(Q3ListBoxItem *);
+	void on_availableLW_currentItemChanged(QListWidgetItem *);
+	void on_availableLW_itemActivated(QListWidgetItem *);
 	void on_addPB_clicked();
 	virtual void previous();
 	virtual void next();

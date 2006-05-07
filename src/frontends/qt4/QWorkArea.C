@@ -29,7 +29,8 @@
 #include <QClipboard>
 #include <QLayout>
 #include <QMainWindow>
-#include <Q3UriDrag>
+#include <QMimeData>
+#include <QUrl>
 #include <QDragEnterEvent>
 #include <QPixmap>
 #include <QPainter>
@@ -274,8 +275,8 @@ void QWorkArea::putClipboard(string const & str) const
 
 void QWorkArea::dragEnterEvent(QDragEnterEvent * event)
 {
-	event->accept(Q3UriDrag::canDecode(event));
-
+	if (event->mimeData()->hasUrls())
+		event->accept();
 	/// \todo Ask lyx-devel is this is enough:
 	/// if (event->mimeData()->hasFormat("text/plain"))
 	///	event->acceptProposedAction();
@@ -285,16 +286,15 @@ void QWorkArea::dragEnterEvent(QDragEnterEvent * event)
 
 void QWorkArea::dropEvent(QDropEvent* event)
 {
-	QStringList files;
+	QList<QUrl> files = event->mimeData()->urls();
+	if (files.isEmpty())
+		return;
 
-	if (Q3UriDrag::decodeLocalFiles(event, files)) {
-		lyxerr[Debug::GUI] << "QWorkArea::dropEvent: got URIs!"
-				   << endl;
-		for (QStringList::Iterator i = files.begin();
-		     i!=files.end(); ++i) {
-			string const file = os::internal_path(fromqstr(*i));
+	lyxerr[Debug::GUI] << "QWorkArea::dropEvent: got URIs!" << endl;
+	for (int i = 0; i!=files.size(); ++i) {
+		string const file = os::internal_path(fromqstr(files.at(i).toString()));
+		if (!file.empty())
 			view_.view()->workAreaDispatch(FuncRequest(LFUN_FILE_OPEN, file));
-		}
 	}
 }
 

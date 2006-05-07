@@ -28,38 +28,165 @@
   </property>
   <layout class="QGridLayout" >
    <property name="margin" >
-    <number>11</number>
+    <number>9</number>
    </property>
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item rowspan="2" row="0" column="0" >
-    <layout class="QVBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item>
-      <widget class="Q3ListBox" name="availableLB" >
-       <property name="toolTip" >
-        <string>Available bibliography keys</string>
-       </property>
-       <property name="vScrollBarMode" >
-        <enum>Q3ScrollView::AlwaysOn</enum>
-       </property>
-       <property name="hScrollBarMode" >
-        <enum>Q3ScrollView::AlwaysOff</enum>
-       </property>
-       <property name="selectionMode" >
-        <enum>Q3ListBox::Extended</enum>
-       </property>
-      </widget>
-     </item>
-    </layout>
+   <item rowspan="5" row="0" column="0" >
+    <widget class="QListWidget" name="availableLW" />
    </item>
-   <item row="2" column="1" >
+   <item row="1" column="2" colspan="3" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>191</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="1" >
+    <widget class="QLabel" name="TextLabel1" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>0</hsizetype>
+       <vsizetype>1</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text" >
+      <string>&amp;Find:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>searchED</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1" colspan="3" >
+    <widget class="QCheckBox" name="searchTypeCB" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>1</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="toolTip" >
+      <string>Interpret search entry as a regular expression</string>
+     </property>
+     <property name="text" >
+      <string>&amp;Regular Expression</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="4" >
+    <widget class="QPushButton" name="nextPB" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>3</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text" >
+      <string>&amp;Next</string>
+     </property>
+     <property name="shortcut" >
+      <number>276824142</number>
+     </property>
+     <property name="autoDefault" >
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1" colspan="3" >
+    <widget class="QCheckBox" name="searchCaseCB" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>1</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="toolTip" >
+      <string>Make the search case-sensitive</string>
+     </property>
+     <property name="text" >
+      <string>Case &amp;sensitive</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1" colspan="4" >
+    <widget class="QLineEdit" name="searchED" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>7</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="toolTip" >
+      <string>Browse the available bibliography entries</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="4" >
+    <widget class="QPushButton" name="previousPB" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>3</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text" >
+      <string>&amp;Previous</string>
+     </property>
+     <property name="autoDefault" >
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1" colspan="4" >
+    <widget class="QTextEdit" name="infoML" />
+   </item>
+   <item row="5" column="3" >
+    <widget class="QPushButton" name="addPB" >
+     <property name="text" >
+      <string>&amp;Add</string>
+     </property>
+     <property name="autoDefault" >
+      <bool>false</bool>
+     </property>
+     <property name="default" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="4" >
+    <widget class="QPushButton" name="closePB" >
+     <property name="text" >
+      <string>Cancel</string>
+     </property>
+     <property name="autoDefault" >
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1" colspan="2" >
     <spacer>
      <property name="orientation" >
       <enum>Qt::Horizontal</enum>
@@ -75,190 +202,10 @@
      </property>
     </spacer>
    </item>
-   <item row="2" column="3" >
-    <widget class="QPushButton" name="closePB" >
-     <property name="text" >
-      <string>Cancel</string>
-     </property>
-     <property name="autoDefault" >
-      <bool>false</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="2" >
-    <widget class="QPushButton" name="addPB" >
-     <property name="text" >
-      <string>&amp;Add</string>
-     </property>
-     <property name="autoDefault" >
-      <bool>false</bool>
-     </property>
-     <property name="default" >
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1" colspan="3" >
-    <layout class="QGridLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item row="2" column="1" >
-      <widget class="QPushButton" name="previousPB" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>3</hsizetype>
-         <vsizetype>0</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text" >
-        <string>&amp;Previous</string>
-       </property>
-       <property name="autoDefault" >
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0" colspan="2" >
-      <widget class="QLineEdit" name="searchED" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>7</hsizetype>
-         <vsizetype>0</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="toolTip" >
-        <string>Browse the available bibliography entries</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0" >
-      <widget class="QCheckBox" name="searchCaseCB" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>1</hsizetype>
-         <vsizetype>0</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="toolTip" >
-        <string>Make the search case-sensitive</string>
-       </property>
-       <property name="text" >
-        <string>Case &amp;sensitive</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="1" >
-      <widget class="QPushButton" name="nextPB" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>3</hsizetype>
-         <vsizetype>0</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text" >
-        <string>&amp;Next</string>
-       </property>
-       <property name="shortcut" >
-        <number>276824142</number>
-       </property>
-       <property name="autoDefault" >
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="0" >
-      <layout class="QHBoxLayout" >
-       <property name="margin" >
-        <number>0</number>
-       </property>
-       <property name="spacing" >
-        <number>6</number>
-       </property>
-       <item>
-        <widget class="QLabel" name="TextLabel1" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>0</hsizetype>
-           <vsizetype>1</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="text" >
-          <string>&amp;Find:</string>
-         </property>
-         <property name="buddy" >
-          <cstring>searchED</cstring>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer>
-         <property name="orientation" >
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeType" >
-          <enum>QSizePolicy::Expanding</enum>
-         </property>
-         <property name="sizeHint" >
-          <size>
-           <width>20</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-      </layout>
-     </item>
-     <item row="3" column="0" >
-      <widget class="QCheckBox" name="searchTypeCB" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>1</hsizetype>
-         <vsizetype>0</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="toolTip" >
-        <string>Interpret search entry as a regular expression</string>
-       </property>
-       <property name="text" >
-        <string>&amp;Regular Expression</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="0" column="1" colspan="3" >
-    <widget class="QTextEdit" name="infoML" />
-   </item>
   </layout>
  </widget>
  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
- <customwidgets>
-  <customwidget>
-   <class>Q3ListBox</class>
-   <extends></extends>
-   <header>q3listbox.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
- </customwidgets>
  <tabstops>
-  <tabstop>availableLB</tabstop>
   <tabstop>searchED</tabstop>
   <tabstop>searchCaseCB</tabstop>
   <tabstop>searchTypeCB</tabstop>

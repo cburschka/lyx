@@ -8,90 +8,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>289</width>
-    <height>259</height>
+    <width>226</width>
+    <height>289</height>
    </rect>
   </property>
   <property name="windowTitle" >
    <string/>
   </property>
-  <layout class="QHBoxLayout" >
+  <layout class="QGridLayout" >
    <property name="margin" >
-    <number>11</number>
+    <number>9</number>
    </property>
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item>
-    <layout class="QVBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item>
-      <widget class="QLabel" name="lyxObjectsLA" >
-       <property name="text" >
-        <string>&amp;Colors</string>
-       </property>
-       <property name="buddy" >
-        <cstring>lyxObjectsLB</cstring>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="Q3ListBox" name="lyxObjectsLB" >
-       <property name="resizePolicy" >
-        <enum>Q3ScrollView::AutoOneFit</enum>
-       </property>
-       <property name="vScrollBarMode" >
-        <enum>Q3ScrollView::AlwaysOn</enum>
-       </property>
-       <property name="hScrollBarMode" >
-        <enum>Q3ScrollView::AlwaysOff</enum>
-       </property>
-       <property name="columnMode" >
-        <enum>Q3ListBox::FitToHeight</enum>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" >
-       <property name="margin" >
-        <number>0</number>
-       </property>
-       <property name="spacing" >
-        <number>6</number>
-       </property>
-       <item>
-        <widget class="QPushButton" name="colorChangePB" >
-         <property name="text" >
-          <string>&amp;Alter...</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer>
-         <property name="orientation" >
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeType" >
-          <enum>QSizePolicy::Expanding</enum>
-         </property>
-         <property name="sizeHint" >
-          <size>
-           <width>20</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-      </layout>
-     </item>
-    </layout>
-   </item>
-   <item>
+   <item rowspan="3" row="0" column="1" >
     <spacer>
      <property name="orientation" >
       <enum>Qt::Horizontal</enum>
@@ -101,24 +32,61 @@
      </property>
      <property name="sizeHint" >
       <size>
-       <width>20</width>
-       <height>20</height>
+       <width>116</width>
+       <height>271</height>
       </size>
      </property>
     </spacer>
    </item>
+   <item row="0" column="0" >
+    <widget class="QLabel" name="lyxObjectsLA" >
+     <property name="text" >
+      <string>&amp;Colors</string>
+     </property>
+     <property name="buddy" >
+      <cstring>lyxObjectsLW</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" >
+    <widget class="QListWidget" name="lyxObjectsLW" />
+   </item>
+   <item row="2" column="0" >
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QPushButton" name="colorChangePB" >
+       <property name="text" >
+        <string>&amp;Alter...</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
   </layout>
  </widget>
  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
- <customwidgets>
-  <customwidget>
-   <class>Q3ListBox</class>
-   <extends></extends>
-   <header>q3listbox.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>

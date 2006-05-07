@@ -252,12 +252,12 @@ void QCitationDialog::setButtons()
 }
 
 /*
-void QCitationDialog::on_selectedLV_currentChanged(Q3ListBoxItem*)
+void QCitationDialog::on_selectedLV_currentChanged(QListWidgetItem*)
 {
 	fillStyles();
 	infoML->document()->clear();
 
-	int const sel = selectedLB->currentItem();
+	int const sel = selectedLW->currentItem();
 	if (sel < 0) {
 		setButtons();
 		return;
@@ -321,7 +321,7 @@ void QCitationDialog::changed()
 }
 
 
-void updateBrowser(Q3ListBox * browser,
+void updateBrowser(QListWidget * browser,
 			      vector<string> const & keys)
 {
 	browser->clear();
@@ -331,7 +331,7 @@ void updateBrowser(Q3ListBox * browser,
 		string const key = trim(*it);
 		// FIXME: why the .empty() test ?
 		if (!key.empty())
-			browser->insertItem(toqstr(key));
+			browser->addItem(toqstr(key));
 	}
 }
 
@@ -340,22 +340,22 @@ QCitationFind::QCitationFind(QCitation * form, QWidget * parent, Qt::WFlags f)
 : form_(form), QDialog(parent, f)
 {
 	setupUi(this);
-    connect(addPB, SIGNAL(clicked()), this, SLOT(accept()));
-    connect(closePB, SIGNAL(clicked()), this, SLOT(reject()));
+	connect(addPB, SIGNAL(clicked()), this, SLOT(accept()));
+	connect(closePB, SIGNAL(clicked()), this, SLOT(reject()));
 	connect(previousPB, SIGNAL(clicked()), this, SLOT(previous()));
 	connect(nextPB, SIGNAL(clicked()), this, SLOT(next()));
 }
 
 void QCitationFind::update()
 {
-//	updateBrowser(availableLB, form_->availableKeys());
+//	updateBrowser(availableLW, form_->availableKeys());
 }
 
-void QCitationFind::on_availableLB_currentChanged(Q3ListBoxItem *)
+void QCitationFind::on_availableLW_currentItemChanged(QListWidgetItem *)
 {
 	infoML->document()->clear();
 
-	int const sel = availableLB->currentItem();
+	int const sel = availableLW->currentRow();
 	if (sel < 0) {
 		addPB->setEnabled(false);
 		return;
@@ -366,9 +366,9 @@ void QCitationFind::on_availableLB_currentChanged(Q3ListBoxItem *)
 }
 
 
-void QCitationFind::on_availableLB_selected(Q3ListBoxItem *)
+void QCitationFind::on_availableLW_itemActivated(QListWidgetItem *)
 {
-	int const sel = availableLB->currentItem();
+//	int const sel = availableLW->currentRow();
 	foundkeys.clear();
 //	foundkeys.push_back(form_->availableKeys()[sel]);
 	emit newCitations();
@@ -377,9 +377,9 @@ void QCitationFind::on_availableLB_selected(Q3ListBoxItem *)
 
 void QCitationFind::on_addPB_clicked()
 {
-//	form_->addKeys(availableLB->selectionModel()->selectedIndexes());
+//	form_->addKeys(availableLW->selectionModel()->selectedIndexes());
 
-	int const sel = availableLB->currentItem();
+	int const sel = availableLW->currentRow();
 
 	if (sel < 0)
 		return;
@@ -388,8 +388,8 @@ void QCitationFind::on_addPB_clicked()
 
 	// Add the selected browser_bib keys to browser_cite
 	// multiple selections are possible
-	for (unsigned int i = 0; i != availableLB->count(); i++) {
-		if (availableLB->isSelected(i)) {
+	for (unsigned int i = 0; i != availableLW->count(); i++) {
+		if (availableLW->isItemSelected(availableLW->item(i))) {
 				foundkeys.push_back(fromqstr(bibkeys[i]));
 		}
 	}
@@ -421,7 +421,7 @@ void QCitationFind::find(biblio::Direction dir)
 		? biblio::REGEX : biblio::SIMPLE;
 
 	vector<string>::const_iterator start = bibkeys.begin();
-	int const sel = availableLB->currentItem();
+	int const sel = availableLW->currentItem();
 	if (sel >= 0 && sel <= int(bibkeys.size()-1))
 		start += sel;
 
@@ -457,10 +457,10 @@ void QCitationFind::find(biblio::Direction dir)
 
 	// Update the display
 	// note that we have multi selection mode!
-	availableLB->setSelected(sel, false);
-	availableLB->setSelected(found, true);
-	availableLB->setCurrentItem(found);
-	availableLB->ensureCurrentVisible();
+	availableLW->setSelected(sel, false);
+	availableLW->setSelected(found, true);
+	availableLW->setCurrentItem(found);
+	availableLW->ensureCurrentVisible();
 */
 }
 
