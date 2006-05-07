@@ -848,7 +848,6 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_MATH_DELIM: {
-		lyxerr << "MathNestInset::LFUN_MATH_DELIM" << endl;
 		string ls;
 		string rs = lyx::support::split(cmd.argument, ls, ' ');
 		// Reasonable default values
@@ -857,9 +856,37 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		if (rs.empty())
 			rs = ')';
 		recordUndo(cur, Undo::ATOMIC);
-		// Don't do this with multi-cell selections
-		if (cur.selBegin().idx() == cur.selEnd().idx())
-			cur.handleNest(MathAtom(new MathDelimInset(ls, rs)));
+		cur.handleNest(MathAtom(new MathDelimInset(ls, rs)));
+		break;
+	}
+
+	case LFUN_MATH_BIGDELIM: {
+		string const lname = cmd.getArg(0);
+		string const ldelim = cmd.getArg(1);
+		string const rname = cmd.getArg(2);
+		string const rdelim = cmd.getArg(3);
+		latexkeys const * l = in_word_set(lname);
+		bool const have_l = l && l->inset == "big" &&
+		                    MathBigInset::isBigInsetDelim(ldelim);
+		l = in_word_set(rname);
+		bool const have_r = l && l->inset == "big" &&
+		                    MathBigInset::isBigInsetDelim(rdelim);
+		// We mimic LFUN_MATH_DELIM in case we have an empty left
+		// or right delimiter.
+		if (have_l || have_r) {
+			recordUndo(cur, Undo::ATOMIC);
+			string const selection = grabAndEraseSelection(cur);
+			selClearOrDel(cur);
+			if (have_l)
+				cur.insert(MathAtom(new MathBigInset(lname,
+								ldelim)));
+			cur.niceInsert(selection);
+			if (have_r)
+				cur.insert(MathAtom(new MathBigInset(rname,
+								rdelim)));
+		}
+		// Don't call cur.undispatched() if we did nothing, this would
+		// lead to infinite recursion via LyXText::dispatch().
 		break;
 	}
 
@@ -917,7 +944,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 }
 
 
-bool MathNestInset::getStatus(LCursor & /*cur*/, FuncRequest const & cmd,
+bool MathNestInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	// the font related toggles
@@ -993,6 +1020,13 @@ bool MathNestInset::getStatus(LCursor & /*cur*/, FuncRequest const & cmd,
 	case LFUN_MATH_MATRIX:
 		flag.enabled(currentMode() == MATH_MODE);
 		break;
+
+	case LFUN_MATH_DELIM:
+	case LFUN_MATH_BIGDELIM:
+		// Don't do this with multi-cell selections
+		flag.enabled(cur.selBegin().idx() == cur.selEnd().idx());
+		break;
+
 	default:
 		ret = false;
 		break;

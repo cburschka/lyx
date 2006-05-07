@@ -30,6 +30,7 @@ public:
 public slots:
 	void ldelim_clicked(const std::string & str);
 	void rdelim_clicked(const std::string & str);
+	void size_selected(int);
 	void insertClicked();
 protected:
 	//needed ? virtual void closeEvent(QCloseEvent * e);
@@ -41,6 +42,9 @@ private:
 
 	/// symbol of right delimiter
 	std::string right_;
+
+	/// size of delimiters
+	int size_;
 
 	/// owning form
 	QMathDelimiter * form_;

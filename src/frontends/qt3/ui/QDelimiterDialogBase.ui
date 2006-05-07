@@ -307,6 +307,22 @@
                         </size>
                     </property>
                 </spacer>
+                <widget class="QComboBox">
+                    <property name="name">
+                        <cstring>delimSize</cstring>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>7</hsizetype>
+                            <vsizetype>0</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                    <property name="toolTip" stdset="0">
+                        <string>Choose delimiter size</string>
+                    </property>
+                </widget>
             </hbox>
         </widget>
         <widget class="QLayoutWidget">

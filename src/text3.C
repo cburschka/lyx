@@ -1311,7 +1311,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_MATH_INSERT:
 	case LFUN_MATH_MATRIX:
-	case LFUN_MATH_DELIM: {
+	case LFUN_MATH_DELIM:
+	case LFUN_MATH_BIGDELIM: {
 		cur.insert(new MathHullInset("simple"));
 		cur.dispatch(FuncRequest(LFUN_CHAR_FORWARD));
 		cur.dispatch(cmd);
@@ -1878,6 +1879,7 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_MATH_INSERT:
 	case LFUN_MATH_MATRIX:
 	case LFUN_MATH_DELIM:
+	case LFUN_MATH_BIGDELIM:
 	case LFUN_MATH_SUBSCRIPT:
 	case LFUN_MATH_SUPERSCRIPT:
 	case LFUN_FONT_DEFAULT:

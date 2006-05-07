@@ -79,6 +79,12 @@ void ControlMath::dispatchDelim(string const & str) const
 }
 
 
+void ControlMath::dispatchBigDelim(string const & str) const
+{
+	dispatchFunc(LFUN_MATH_BIGDELIM, str);
+}
+
+
 void ControlMath::dispatchToggleDisplay() const
 {
 	dispatchFunc(LFUN_MATH_DISPLAY);
