@@ -250,7 +250,7 @@ void RowPainter::paintChars(pos_type & vpos, LyXFont font,
 	pos_type pos = text_.bidi.vis2log(vpos);
 	pos_type const end = row_.endpos();
 	FontSpan const font_span = par_.fontSpan(pos);
-	Change::Type const prev_change = par_.lookupChangeType(pos);
+	Change::Type const prev_change = par_.lookupChange(pos).type;
 
 	// first character
 	string str;

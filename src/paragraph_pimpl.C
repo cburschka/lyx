@@ -147,7 +147,7 @@ bool Paragraph::Pimpl::isChangeEdited(pos_type start, pos_type end) const
 }
 
 
-void Paragraph::Pimpl::setChange(pos_type pos, Change::Type type)
+void Paragraph::Pimpl::setChangeType(pos_type pos, Change::Type type)
 {
 	if (!tracking())
 		return;
@@ -156,7 +156,7 @@ void Paragraph::Pimpl::setChange(pos_type pos, Change::Type type)
 }
 
 
-void Paragraph::Pimpl::setChangeFull(pos_type pos, Change change)
+void Paragraph::Pimpl::setChange(pos_type pos, Change change)
 {
 	if (!tracking())
 		return;
@@ -164,21 +164,13 @@ void Paragraph::Pimpl::setChangeFull(pos_type pos, Change change)
 	changes_->set(change, pos);
 }
 
-Change::Type Paragraph::Pimpl::lookupChange(pos_type pos) const
-{
-	if (!tracking())
-		return Change::UNCHANGED;
 
-	return changes_->lookup(pos);
-}
-
-
-Change const Paragraph::Pimpl::lookupChangeFull(pos_type pos) const
+Change const Paragraph::Pimpl::lookupChange(pos_type pos) const
 {
 	if (!tracking())
 		return Change(Change::UNCHANGED);
 
-	return changes_->lookupFull(pos);
+	return changes_->lookup(pos);
 }
 
 
@@ -212,7 +204,7 @@ void Paragraph::Pimpl::acceptChange(pos_type start, pos_type end)
 	pos_type i = start;
 
 	for (; i < end; ++i) {
-		switch (lookupChange(i)) {
+		switch (lookupChange(i).type) {
 			case Change::UNCHANGED:
 				break;
 
@@ -251,7 +243,7 @@ void Paragraph::Pimpl::rejectChange(pos_type start, pos_type end)
 	pos_type i = start;
 
 	for (; i < end; ++i) {
-		switch (lookupChange(i)) {
+		switch (lookupChange(i).type) {
 			case Change::UNCHANGED:
 				break;
 
@@ -378,7 +370,7 @@ bool Paragraph::Pimpl::erase(pos_type pos)
 	BOOST_ASSERT(pos <= size());
 
 	if (tracking()) {
-		Change::Type changetype(changes_->lookup(pos));
+		Change::Type changetype(changes_->lookup(pos).type);
 		changes_->record(Change(Change::DELETED), pos);
 
 		// only allow the actual removal if it was /new/ text

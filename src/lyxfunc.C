@@ -191,7 +191,7 @@ Change::Type lookupChangeType(DocIterator const & dit, bool outer = false)
 		CursorSlice const & slice = dit[i];
 		if (!slice.inset().inMathed()
 		    && slice.pos() < slice.paragraph().size()) {
-			Change::Type const ch = slice.paragraph().lookupChangeType(slice.pos());
+			Change::Type const ch = slice.paragraph().lookupChange(slice.pos()).type;
 			if (ch != Change::UNCHANGED)
 				return ch;
 		}

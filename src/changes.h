@@ -72,11 +72,8 @@ public:
 	/// mark the given change and adjust
 	void record(Change, lyx::pos_type pos);
 
-	/// return the change type at the given position
-	Change::Type lookup(lyx::pos_type pos) const;
-
 	/// return the change at the given position
-	Change const lookupFull(lyx::pos_type pos) const;
+	Change const lookup(lyx::pos_type pos) const;
 
 	/// return true if there is a change in the given range
 	bool isChange(lyx::pos_type start, lyx::pos_type end) const;
@@ -110,7 +107,7 @@ private:
 		bool contains(lyx::pos_type pos) const;
 
 		// does this range contain pos, or can it be appended ?
-		bool loose_contains(lyx::pos_type pos) const;
+		bool containsOrPrecedes(lyx::pos_type pos) const;
 
 		// is this range contained within r ?
 		bool contained(Range const & r) const;

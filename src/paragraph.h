@@ -220,9 +220,6 @@ public:
 	/// set entire paragraph to new text for change tracking
 	void cleanChanges(ChangeTracking ct = trackingUnknown);
 
-	/// look up change type at given pos
-	Change::Type lookupChangeType(lyx::pos_type pos) const;
-
 	/// look up change at given pos
 	Change const lookupChange(lyx::pos_type pos) const;
 
@@ -232,11 +229,11 @@ public:
 	/// is there a non-addition in this range ?
 	bool isChangeEdited(lyx::pos_type start, lyx::pos_type end) const;
 
-	/// set change at pos
-	void setChange(lyx::pos_type pos, Change::Type type);
+	/// set change type at given pos
+	void setChangeType(lyx::pos_type pos, Change::Type type);
 
-	/// set full change at pos
-	void setChangeFull(lyx::pos_type pos, Change change);
+	/// set change at given pos
+	void setChange(lyx::pos_type pos, Change change);
 
 	/// accept change
 	void acceptChange(lyx::pos_type start, lyx::pos_type end);
@@ -447,13 +444,13 @@ private:
 
 inline bool isInsertedText(Paragraph const & par, lyx::pos_type pos)
 {
-	return par.lookupChangeType(pos) == Change::INSERTED;
+	return par.lookupChange(pos).type == Change::INSERTED;
 }
 
 
 inline bool isDeletedText(Paragraph const & par, lyx::pos_type pos)
 {
-	return par.lookupChangeType(pos) == Change::DELETED;
+	return par.lookupChange(pos).type == Change::DELETED;
 }
 
 #endif // PARAGRAPH_H

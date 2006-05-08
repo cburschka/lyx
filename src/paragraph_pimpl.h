@@ -44,18 +44,16 @@ public:
 	void untrackChanges();
 	/// set all text as new for change mode
 	void cleanChanges(Paragraph::ChangeTracking ct = Paragraph::trackingUnknown);
-	/// look up change type at given pos
-	Change::Type lookupChange(lyx::pos_type pos) const;
 	/// look up change at given pos
-	Change const lookupChangeFull(lyx::pos_type pos) const;
-	/// is there a change in the given range ?
+	Change const lookupChange(lyx::pos_type pos) const;
+	/// is there a change within the given range ?
 	bool isChanged(lyx::pos_type start, lyx::pos_type end) const;
 	/// is there a non-addition in this range ?
 	bool isChangeEdited(lyx::pos_type start, lyx::pos_type end) const;
-	/// set change at pos
-	void setChange(lyx::pos_type pos, Change::Type type);
-	/// set full change at pos
-	void setChangeFull(lyx::pos_type pos, Change change);
+	/// set change type at given pos
+	void setChangeType(lyx::pos_type pos, Change::Type type);
+	/// set change at given pos
+	void setChange(lyx::pos_type pos, Change change);
 	/// mark as erased
 	void markErased(bool);
 	/// accept change

@@ -157,7 +157,7 @@ void Paragraph::write(Buffer const & buf, ostream & os,
 	int column = 0;
 	for (pos_type i = 0; i <= size(); ++i) {
 
-		Change change = pimpl_->lookupChangeFull(i);
+		Change change = pimpl_->lookupChange(i);
 		Changes::lyxMarkChange(os, column, curtime, running_change, change);
 		running_change = change;
 
@@ -560,7 +560,7 @@ int Paragraph::stripLeadingSpaces()
 
 	int i = 0;
 	while (!empty() && (isNewline(0) || isLineSeparator(0))
-		&& (lookupChange(0) != Change::DELETED)) {
+		&& (lookupChange(0).type != Change::DELETED)) {
 		erase(0);
 		++i;
 	}
@@ -1001,7 +1001,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 			open_font = true;
 		}
 
-		Change::Type change = pimpl_->lookupChange(i);
+		Change::Type change = pimpl_->lookupChange(i).type;
 
 		column += Changes::latexMarkChange(os, running_change,
 			change, output);
@@ -1626,17 +1626,10 @@ void Paragraph::cleanChanges(ChangeTracking ct)
 }
 
 
-Change::Type Paragraph::lookupChangeType(lyx::pos_type pos) const
-{
-	BOOST_ASSERT(pos <= size());
-	return pimpl_->lookupChange(pos);
-}
-
-
 Change const Paragraph::lookupChange(lyx::pos_type pos) const
 {
 	BOOST_ASSERT(pos <= size());
-	return pimpl_->lookupChangeFull(pos);
+	return pimpl_->lookupChange(pos);
 }
 
 
@@ -1652,15 +1645,15 @@ bool Paragraph::isChangeEdited(pos_type start, pos_type end) const
 }
 
 
-void Paragraph::setChange(lyx::pos_type pos, Change::Type type)
+void Paragraph::setChangeType(lyx::pos_type pos, Change::Type type)
 {
-	pimpl_->setChange(pos, type);
+	pimpl_->setChangeType(pos, type);
 }
 
 
-void Paragraph::setChangeFull(lyx::pos_type pos, Change change)
+void Paragraph::setChange(lyx::pos_type pos, Change change)
 {
-	pimpl_->setChangeFull(pos, change);
+	pimpl_->setChange(pos, change);
 }
 
 

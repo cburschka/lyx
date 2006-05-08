@@ -380,7 +380,7 @@ void readParagraph(Buffer const & buf, Paragraph & par, LyXLex & lex)
 		}
 	}
 	// Final change goes to paragraph break:
-	par.setChangeFull(par.size(), change);
+	par.setChange(par.size(), change);
 
 	// Initialize begin_of_body_ on load; redoParagraph maintains
 	par.setBeginOfBody();
@@ -1411,7 +1411,7 @@ void LyXText::acceptChange(LCursor & cur)
 	DocIterator it = cur.selectionBegin();
 	DocIterator et = cur.selectionEnd();
 	pit_type pit = it.pit();
-	Change::Type const type = pars_[pit].lookupChangeType(it.pos());
+	Change::Type const type = pars_[pit].lookupChange(it.pos()).type;
 	for (; pit <= et.pit(); ++pit) {
 		pos_type left  = ( pit == it.pit() ? it.pos() : 0 );
 		pos_type right =
@@ -1448,7 +1448,7 @@ void LyXText::rejectChange(LCursor & cur)
 	DocIterator it = cur.selectionBegin();
 	DocIterator et = cur.selectionEnd();
 	pit_type pit = it.pit();
-	Change::Type const type = pars_[pit].lookupChangeType(it.pos());
+	Change::Type const type = pars_[pit].lookupChange(it.pos()).type;
 	for (; pit <= et.pit(); ++pit) {
 		pos_type left  = ( pit == it.pit() ? it.pos() : 0 );
 		pos_type right =

@@ -66,7 +66,7 @@ bool Changes::Range::contains(pos_type const pos) const
 }
 
 
-bool Changes::Range::loose_contains(pos_type const pos) const
+bool Changes::Range::containsOrPrecedes(pos_type const pos) const
 {
 	return pos >= start && pos <= end;
 }
@@ -274,7 +274,7 @@ void Changes::del(Change const change, ChangeTable::size_type const pos)
 				erase(pos);
 			}
 			break;
-		} else if (range.loose_contains(pos) && it + 1 == table_.end()) {
+		} else if (range.containsOrPrecedes(pos) && it + 1 == table_.end()) {
 			// this case happens when building from .lyx
 			set(change, pos);
 			break;
@@ -293,7 +293,7 @@ void Changes::add(Change const change, ChangeTable::size_type const pos)
 	for (; it != end; ++it) {
 		Range & range(it->range);
 
-		if (!found && range.loose_contains(pos)) {
+		if (!found && range.containsOrPrecedes(pos)) {
 			found = true;
 			if (lyxerr.debugging(Debug::CHANGES)) {
 				lyxerr[Debug::CHANGES] << "Found range of "
@@ -312,7 +312,7 @@ void Changes::add(Change const change, ChangeTable::size_type const pos)
 }
 
 
-Change const Changes::lookupFull(pos_type const pos) const
+Change const Changes::lookup(pos_type const pos) const
 {
 	if (!table_.size()) {
 		if (lyxerr.debugging(Debug::CHANGES))
@@ -331,28 +331,6 @@ Change const Changes::lookupFull(pos_type const pos) const
 	check();
 	BOOST_ASSERT(false && "missing changes for pos");
 	return Change(Change::UNCHANGED);
-}
-
-
-Change::Type Changes::lookup(pos_type const pos) const
-{
-	if (!table_.size()) {
-		if (lyxerr.debugging(Debug::CHANGES))
-			lyxerr[Debug::CHANGES] << "Empty, type is " << empty_type_ << endl;
-		return empty_type_;
-	}
-
-	ChangeTable::const_iterator it = table_.begin();
-	ChangeTable::const_iterator end = table_.end();
-
-	for (; it != end; ++it) {
-		if (it->range.contains(pos))
-			return it->change.type;
-	}
-
-	check();
-	BOOST_ASSERT(false && "missing changes for pos");
-	return Change::UNCHANGED;
 }
 
 
