@@ -346,6 +346,8 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 
 
 	bulletsModule = new BulletsModule;
+	// FIXME: disable until we fix browsebox in BulletsModule.[Ch]
+	bulletsModule->setEnabled(false);
 	// bullets
 	connect(bulletsModule, SIGNAL(changed()), this, SLOT(change_adaptor()));
 

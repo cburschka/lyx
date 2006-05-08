@@ -12,11 +12,10 @@
 
 #include "iconpalette.h"
 #include "qt_helpers.h"
-//Added by qt3to4:
 #include <QVBoxLayout>
 #include <QPixmap>
 #include <QHBoxLayout>
-#include <Q3GridLayout>
+#include <QGridLayout>
 #include <QResizeEvent>
 
 #include "debug.h"
@@ -40,7 +39,7 @@ IconPalette::IconPalette(QWidget * parent, char const * name)
 {
 	QVBoxLayout * top = new QVBoxLayout(this);
 	QHBoxLayout * row = new QHBoxLayout(top);
-	layout_ = new Q3GridLayout(row);
+	layout_ = new QGridLayout(row);
 	row->addStretch(0);
 	top->addStretch(0);
 }

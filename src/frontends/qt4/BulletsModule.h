@@ -19,7 +19,7 @@
 
 #include <QWidget>
 
-class QBrowseBox;
+// class QBrowseBox;
 class QPushButton;
 class QComboBox;
 class QPixmap;
@@ -81,12 +81,12 @@ private:
 	/// store results
 	boost::array<Bullet, 4> bullets_;
 
-	QBrowseBox * standard_;
+/*	QBrowseBox * standard_;
 	QBrowseBox * maths_;
 	QBrowseBox * ding1_;
 	QBrowseBox * ding2_;
 	QBrowseBox * ding3_;
-	QBrowseBox * ding4_;
+	QBrowseBox * ding4_;*/
 	Bullet * bullet_pressed_;
 };
 

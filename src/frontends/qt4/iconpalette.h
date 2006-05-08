@@ -14,9 +14,6 @@
 
 
 #include <QWidget>
-//#include <QPixmap>
-//#include <Q3GridLayout>
-//#include <QResizeEvent>
 
 #include <string>
 #include <utility>
@@ -25,7 +22,7 @@
 
 class QPixmap;
 class QPushButton;
-class Q3GridLayout;
+class QGridLayout;
 class QResizeEvent;
 
 /**
@@ -47,7 +44,7 @@ protected slots:
 private:
 	int maxcol_;
 
-	Q3GridLayout * layout_;
+	QGridLayout * layout_;
 
 	typedef std::pair<QPushButton *, std::string> Button;
 

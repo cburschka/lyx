@@ -12,17 +12,16 @@
 #include <config.h>
 
 #include "BulletsModule.h"
-#include "QBrowseBox.h"
+// #include "QBrowseBox.h"
 #include "qt_helpers.h"
-//Added by qt3to4:
-#include <QPixmap>
 
 #include "support/filetools.h"
 
-#include <qinputdialog.h>
-#include <qmenu.h>
-#include <qpushbutton.h>
+#include <QInputDialog>
+#include <QMenu>
+#include <QPushButton>
 #include <QComboBox>
+#include <QPixmap>
 
 #include <boost/assert.hpp>
 
@@ -49,6 +48,9 @@ BulletsModule::BulletsModule(QWidget * parent,  const char * name, Qt::WFlags fl
 	QMenu * pm5 = new QMenu(pm);
 	QMenu * pm6 = new QMenu(pm);
 
+// FIXME: We need a Qt4 compatible browsebox type widget
+// which can act as a popup to a toolbutton
+/*
 	standard_ = new QBrowseBox(6, 6, pm1);
 	maths_ = new QBrowseBox(6, 6, pm2);
 	ding1_ = new QBrowseBox(6, 6, pm3);
@@ -57,14 +59,13 @@ BulletsModule::BulletsModule(QWidget * parent,  const char * name, Qt::WFlags fl
 	ding4_ = new QBrowseBox(6, 6, pm6);
 
 	///\todo See how to insert those BrowseBox:
-/*
 	pm1->addMenu((QMenu*) standard_);
 	pm2->addMenu((QMenu*)maths_);
 	pm3->addMenu((QMenu*)ding1_);
 	pm4->addMenu((QMenu*)ding2_);
 	pm5->addMenu((QMenu*)ding3_);
 	pm6->addMenu((QMenu*)ding4_);
-*/
+
 	pm->insertItem(qt_("&Standard"), pm1, 0);
 	pm->insertItem(qt_("&Maths"), pm2, 1);
 	pm->insertItem(qt_("Dings &1"), pm3, 2);
@@ -137,6 +138,7 @@ BulletsModule::BulletsModule(QWidget * parent,  const char * name, Qt::WFlags fl
 	// update the view
 	for (int i = 0; i < 4; ++i)
 		setBullet(bullet1PB, bulletsize1CO, bullets_[i]);
+*/
 }
 
 
@@ -232,7 +234,7 @@ QPixmap BulletsModule::getPixmap(int font, int character)
 	int col = character % 6;
 	int row = (character - col) / 6;
 
-	switch (font) {
+/*	switch (font) {
 	case 0:
 		return standard_->pixmap(row,col);
 	case 1:
@@ -247,7 +249,7 @@ QPixmap BulletsModule::getPixmap(int font, int character)
 		return ding4_->pixmap(row,col);
 	default:
 		return standard_->pixmap(row,col);
-	}
+	}*/
 }
 
 
@@ -269,6 +271,8 @@ void BulletsModule::setBullet(QPushButton * pb, QComboBox * co, Bullet const & b
 void BulletsModule::setBullet(int level, const Bullet & bullet)
 {
 	bullets_[level] = bullet;
+	// FIXME: backout until we fixed the browsebox
+	return;
 
 	QPushButton * pb = 0;
 	QComboBox * co = 0;
