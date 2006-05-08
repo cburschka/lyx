@@ -543,6 +543,17 @@ SECTIONS
   return(ld_script)
 
 
+try:
+  # these will be used under win32
+  import win32file
+  import win32event
+  import win32process
+  import win32security
+except:
+  # does not matter if it fails on other systems
+  pass
+
+
 class loggedSpawn:
   def __init__(self, env, logfile, longarg, info):
     # save the spawn system
@@ -601,12 +612,6 @@ def setLoggedSpawn(env, logfile = '', longarg=False, info=''):
     commands to a logfile. If the argument is too long
     a win32 spawn will be used instead of the system one
   '''
-  if longarg:
-    import win32file
-    import win32event
-    import win32process
-    import win32security
-    import string
   #
   # create a new spwn object
   ls = loggedSpawn(env, logfile, longarg, info)

@@ -142,6 +142,7 @@ lyx_source = Split('''
   vc-backend.C 
   version.C 
   vspace.C 
+  main.C
 ''')
 
 if env.has_key('USE_ASPELL') and env['USE_ASPELL']:
@@ -151,22 +152,14 @@ elif env.has_key('USE_PSPELL') and env['USE_PSPELL']:
 elif env.has_key('USE_ISPELL') and env['USE_ISPELL']:
   lyx_source += ['ispell.C']
 
-#
-# Create a static library for this directory as well
-# 
-lyx_base = env.StaticLibrary(
-  target = '$LOCALLIBPATH/lyx_base',
-  source = lyx_source
-)
 
 #
 # Build lyx with given frontend
 #
 lyx = env.Program(
   target = 'lyx',
-  source = ['main.C'],
+  source = lyx_source,
   LIBS = [
-    'lyx_base',
     'mathed', 
     'insets', 
     'frontends', 

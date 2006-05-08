@@ -22,7 +22,7 @@ if SCons.Util.case_sensitive_suffixes('.h', '.H'):
 	header_extensions.append('.H')
 #cplusplus = __import__('c++', globals(), locals(), ['Scons.Tools'])
 #cxx_suffixes = cplusplus.CXXSuffixes
-cxx_suffixes = [".c", ".cxx", ".cpp", ".cc", ".C"]
+cxx_suffixes = [".C", ".c", ".cxx", ".cpp", ".cc"]
 
 def _checkMocIncluded(target, source, env):
 	moc = target[0]
@@ -173,8 +173,6 @@ def generate(env):
 	print "Loading qt4 tool..."
 
 	def locateQt4Command(env, command, qtdir) :
-		fullpath = env.Detect([command+'-qt4', command])
-		if not (fullpath is None) : return fullpath
 		fullpath1 = os.path.join(qtdir,'bin',command +'-qt4')
 		if os.access(fullpath1, os.X_OK) or \
 			os.access(fullpath1+".exe", os.X_OK):
@@ -183,6 +181,8 @@ def generate(env):
 		if os.access(fullpath2, os.X_OK) or \
 			os.access(fullpath2+".exe", os.X_OK):
 			return fullpath2
+		fullpath = env.Detect([command+'-qt4', command])
+		if not (fullpath is None) : return fullpath
 		raise "Qt4 command '" + command + "' not found. Tried: " + fullpath1 + " and "+ fullpath2
 		
 
@@ -259,14 +259,15 @@ def generate(env):
 	env.Append( BUILDERS = { 'Qrc': qrcbuilder } )
 
 	# Interface builder
-	env['QT4_UIC4COM'] = [
-		CLVar('$QT4_UIC $QT4_UICDECLFLAGS -o ${TARGETS[0]} $SOURCE'),
-		]
+	#env['QT4_UIC4COM'] = [
+	#	CLVar('$QT4_UIC $QT4_UICDECLFLAGS -o ${TARGETS[0]} $SOURCE'),
+	#	]
+	env['QT4_UIC4COM'] = '$QT4_UIC -o $TARGET $SOURCE'
 	uic4builder = Builder(
 		action='$QT4_UIC4COM',
 		src_suffix='$QT4_UISUFFIX',
 		suffix='$QT4_UICDECLSUFFIX',
-		prefix='$QT4_UICDECLPREFIX',
+		#prefix='$QT4_UICDECLPREFIX',
 		single_source = True
 		)
 	env.Append( BUILDERS = { 'Uic4': uic4builder } )
@@ -351,7 +352,6 @@ def enable_modules(self, modules, debug=False) :
 				self.AppendUnique(LIBPATH=[os.path.join(self["QTDIR"],"lib",module)])
 				self.AppendUnique(CPPPATH=[os.path.join(self["QTDIR"],"include","qt4",module)])
 				modules.remove(module)
-		# modified by Bo Peng (/lib/pkgconfig => /lib)
 		self.ParseConfig('PKG_CONFIG_PATH=%s/lib pkg-config %s --libs --cflags'%
 		(
 			self['QTDIR'],

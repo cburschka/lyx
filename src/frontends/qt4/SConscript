@@ -21,7 +21,7 @@ qtenv = env.Copy()
 # NOTE: I have to patch qt4.py since it does not automatically
 # process .C file!!! (add to cxx_suffixes )
 # 
-qtenv.Tool('qt4', ['$TOP_SRC_DIR'])
+qtenv.Tool('qt4', ['$TOP_SRC_DIR/config'])
 qtenv.EnableQt4Modules(env['QT_LIB'], debug = False)
 
 qtenv.Append(CPPPATH = [
@@ -133,7 +133,6 @@ moc_files = Split('''
   QBoxDialog.C
   QBranchDialog.C
   QBranches.C
-  QBrowseBox.C
   QChangesDialog.C
   QCharacterDialog.C
   QCitationDialog.C
@@ -244,9 +243,7 @@ source_files = Split('''
   checkedwidgets.C
   lyx_gui.C 
   lcolorcache.C 
-  panelstack.h
   panelstack.C 
-  qcoloritem.C 
   qfontexample.C 
   qfont_loader.C 
   qfont_metrics.C 

@@ -35,6 +35,7 @@
 #
 #   * use extra_inc_path, extra_lib_path, qt_dir, qt_inc_path
 #     qt_lib_path to help locate qt and other libraries
+#     (there are extra_inc_path1, extra_lib_path1 for now)
 #
 #   * (Important) use scons logfile=logfile.log to enable command line
 #     logging. (default is no logging)
@@ -63,7 +64,8 @@
 
 import os, sys
 
-# scons_util defines a few utility function
+# config/scons_utils.py defines a few utility function
+sys.path.append('config')
 import scons_utils as utils
 
 #----------------------------------------------------------
@@ -205,6 +207,8 @@ opts.AddOptions(
   # extra include and libpath
   PathOption('extra_inc_path', 'Extra include path', '.'),
   PathOption('extra_lib_path', 'Extra library path', '.'),
+  PathOption('extra_inc_path1', 'Extra include path', '.'),
+  PathOption('extra_lib_path1', 'Extra library path', '.'),
   # enable assertion, (config.h has  ENABLE_ASSERTIOS
   BoolOption('assertions', 'Use assertions', True),
   # enable warning, (config.h has  WITH_WARNINGS)
@@ -315,6 +319,10 @@ if ARGUMENTS.has_key('extra_inc_path'):
   env.Append(CPPPATH = [ARGUMENTS['extra_inc_path']])
 if ARGUMENTS.has_key('extra_lib_path'):
   env.Append(LIBPATH = [ARGUMENTS['extra_lib_path']])
+if ARGUMENTS.has_key('extra_inc_path1'):
+  env.Append(CPPPATH = [ARGUMENTS['extra_inc_path1']])
+if ARGUMENTS.has_key('extra_lib_path1'):
+  env.Append(LIBPATH = [ARGUMENTS['extra_lib_path1']])
 
 #
 # this is a bit out of place (after auto-configration)
@@ -362,13 +370,14 @@ elif env['frontend'] == 'qt4':
   succ = False
   # first: try pkg_config
   if env['HAS_PKG_CONFIG']:
-    succ = conf.CheckPackage('QtCore')
+    succ = conf.CheckPackage('QtCore') or conf.CheckPackage('QtCore4')
     env['QT4_PKG_CONFIG'] = succ
   # second: try to link to it
   if not succ:
     # FIXME: under linux, I can test the following perfectly
     # However, under windows, lib names need to passed as libXXX4.a ...
-    succ = conf.CheckLibWithHeader('QtCore', 'QtGui/QApplication', 'c++', 'QApplication qapp();')
+    succ = conf.CheckLibWithHeader('QtCore', 'QtGui/QApplication', 'c++', 'QApplication qapp();') or \
+      conf.CheckLibWithHeader('QtCore4', 'QtGui/QApplication', 'c++', 'QApplication qapp();')
   # third: try to look up the path
   if not succ:
     succ = True
@@ -379,7 +388,9 @@ elif env['frontend'] == 'qt4':
         succ = False
         break
   # still can not find it
-  if not succ:
+  if succ:
+    print "Qt4 libraries are found."
+  else:
     print 'Did not find qt libraries, exiting!'
     Exit(1)
 
@@ -660,7 +671,10 @@ try:
   elif frontend == 'qt4':
     # local qt4 toolset from 
     # http://www.iua.upf.es/~dgarcia/Codders/sconstools.html
-    env['QT_LIB'] = ['QtCore', 'QtGui', 'Qt3Support']
+    if platform_name == "win32":
+      env['QT_LIB'] = ['QtCore4', 'QtGui4', 'Qt3Support4']
+    else:
+      env['QT_LIB'] = ['QtCore', 'QtGui', 'Qt3Support']
     env['EXTRA_LIBS'] = env['QT_LIB']
 except:
   print "Can not locate qt tools"
