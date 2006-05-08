@@ -89,7 +89,6 @@ def checkPkgConfig(conf, version):
 def checkPackage(conf, pkg):
   ''' check if pkg is under the control of conf '''
   conf.Message('Checking for package %s...' % pkg)
-  print "pkg-config --exists %s" % pkg
   ret = conf.TryAction("pkg-config --print-errors --exists %s" % pkg)[0]
   conf.Result(ret)
   return ret
@@ -284,11 +283,9 @@ def checkBoostLibraries(conf, lib, pathes):
       conf.Result('yes')
       return (path, lib)
     # check things like libboost_iostreams-gcc.a
-    # I know, this does not look clever ...
-    files = glob.glob(os.path.join(path, 'lib%s-[a-z][a-z].a' % lib)) + \
-      glob.glob(os.path.join(path, 'lib%s-[a-z][a-z][a-z].a' % lib)) + \
-      glob.glob(os.path.join(path, 'lib%s-[a-z][a-z][a-z][a-z].a' % lib))
-    # and not clean 
+    files = glob.glob(os.path.join(path, 'lib%s-*.a' % lib))
+    # if there are more than one, choose the first one
+    # FIXME: choose the best one.
     if len(files) >= 1:
       # get xxx-gcc from /usr/local/lib/libboost_xxx-gcc.a
       conf.Result('yes')

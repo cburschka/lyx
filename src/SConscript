@@ -34,7 +34,6 @@ if env['INCLUDED_BOOST']:
 env.substFile('version.C', 'version.C.in')
 
 lyx_source = Split('''
-  main.C
   Bidi.C 
   BufferView.C 
   BufferView_pimpl.C 
@@ -153,12 +152,21 @@ elif env.has_key('USE_ISPELL') and env['USE_ISPELL']:
   lyx_source += ['ispell.C']
 
 #
+# Create a static library for this directory as well
+# 
+lyx_base = env.StaticLibrary(
+  target = '$LOCALLIBPATH/lyx_base',
+  source = lyx_source
+)
+
+#
 # Build lyx with given frontend
 #
 lyx = env.Program(
   target = 'lyx',
-  source = lyx_source,
+  source = ['main.C'],
   LIBS = [
+    'lyx_base',
     'mathed', 
     'insets', 
     'frontends', 

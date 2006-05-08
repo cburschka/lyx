@@ -697,8 +697,8 @@ env['BUILDERS']['fileCopy'] = Builder(action = utils.env_filecopy)
 if platform_name == 'cygwin' and env['frontend'] == 'qt3':
   ld_script_path = '/usr/lib/qt3/mkspecs/cygwin-g++'
   ld_script = utils.installCygwinLDScript(ld_script_path)
-  env.Append(LINKFLAGS = ['-Wl,--enable-runtime-pseudo-reloc -Wl,--script,%s -Wl,-s' % ld_script])
-
+  env.Append(LINKFLAGS = ['-Wl,--enable-runtime-pseudo-reloc', 
+    '-Wl,--script,%s' % ld_script, '-Wl,-s'])
 
 #
 # Report results
