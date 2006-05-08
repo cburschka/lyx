@@ -64,8 +64,8 @@ Gtk::BuiltinStockID getGTKStockIcon(FuncRequest const & func)
 		case LFUN_LABEL_GOTO:
 		case LFUN_BOOKMARK_GOTO: return Gtk::Stock::JUMP_TO;
 		case LFUN_NOTE_NEXT: return Gtk::Stock::GO_FORWARD;
-		case LFUN_ACCEPT_ALL_CHANGES: return Gtk::Stock::APPLY;
-		case LFUN_REJECT_ALL_CHANGES: return Gtk::Stock::CANCEL;
+		case LFUN_ALL_CHANGES_ACCEPT: return Gtk::Stock::APPLY;
+		case LFUN_ALL_CHANGES_REJECT: return Gtk::Stock::CANCEL;
 		case LFUN_DIALOG_SHOW:
 			if (func.argument == "findreplace")
 				return Gtk::Stock::FIND_AND_REPLACE;
@@ -142,7 +142,7 @@ Glib::ustring getGTKThemeIcon(FuncRequest const & func)
 			case LFUN_BOOKMARK_SAVE: return "stock_add-bookmark";
 			case LFUN_NOTE_INSERT: return "stock_insert-note";
 			case LFUN_LAYOUT_PARAGRAPH: return "stock_format-paragraph";
-			case LFUN_BUFFER_NEWTMPLT: return "stock_new-template";
+			case LFUN_BUFFER_NEW_TEMPLATE: return "stock_new-template";
 			//case LFUN_ERT_INSERT: return "gnome-mime-application-x-tex";
 	}
 	return "";

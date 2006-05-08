@@ -344,7 +344,7 @@ void LyXText::setLayout(LCursor & cur, string const & layout)
 		// move everything in a new environment inset
 		lyxerr[Debug::DEBUG] << "setting layout " << layout << endl;
 		bv.owner()->dispatch(FuncRequest(LFUN_LINE_BEGIN));
-		bv.owner()->dispatch(FuncRequest(LFUN_LINE_ENDSEL));
+		bv.owner()->dispatch(FuncRequest(LFUN_LINE_END_SELECT));
 		bv.owner()->dispatch(FuncRequest(LFUN_CUT));
 		InsetBase * inset = new InsetEnvironment(params, layout);
 		insertInset(cur, inset);

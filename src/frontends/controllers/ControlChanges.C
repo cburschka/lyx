@@ -77,14 +77,14 @@ string const ControlChanges::getChangeAuthor()
 
 bool ControlChanges::accept()
 {
-	kernel().dispatch(FuncRequest(LFUN_ACCEPT_CHANGE));
+	kernel().dispatch(FuncRequest(LFUN_CHANGE_ACCEPT));
 	return find::findNextChange(kernel().bufferview());
 }
 
 
 bool ControlChanges::reject()
 {
-	kernel().dispatch(FuncRequest(LFUN_REJECT_CHANGE));
+	kernel().dispatch(FuncRequest(LFUN_CHANGE_REJECT));
 	return find::findNextChange(kernel().bufferview());
 }
 

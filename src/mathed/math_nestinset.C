@@ -472,9 +472,9 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		cur.bv().cursor() = cur;
 		break;
 
-	case LFUN_CHAR_FORWARDSEL:
+	case LFUN_CHAR_FORWARD_SELECT:
 	case LFUN_CHAR_FORWARD:
-		cur.selHandle(cmd.action == LFUN_CHAR_FORWARDSEL);
+		cur.selHandle(cmd.action == LFUN_CHAR_FORWARD_SELECT);
 		cur.autocorrect() = false;
 		cur.clearTargetX();
 		cur.macroModeClose();
@@ -490,9 +490,9 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	case LFUN_BACKWARD_SELECT:
+	case LFUN_CHAR_BACKWARD_SELECT:
 	case LFUN_CHAR_BACKWARD:
-		cur.selHandle(cmd.action == LFUN_BACKWARD_SELECT);
+		cur.selHandle(cmd.action == LFUN_CHAR_BACKWARD_SELECT);
 		cur.autocorrect() = false;
 		cur.clearTargetX();
 		cur.macroModeClose();
@@ -552,17 +552,18 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		cur.idx() = cur.lastidx();
 		break;
 
-	case LFUN_PARAGRAPH_UPSEL:
+	case LFUN_PARAGRAPH_UP_SELECT:
 	case LFUN_PARAGRAPH_UP:
-	case LFUN_PARAGRAPH_DOWNSEL:
+	case LFUN_PARAGRAPH_DOWN_SELECT:
 	case LFUN_PARAGRAPH_DOWN:
 		break;
 
-	case LFUN_LINE_BEGINSEL:
+	case LFUN_LINE_BEGIN_SELECT:
 	case LFUN_LINE_BEGIN:
-	case LFUN_WORD_BACKWARDSEL:
+	case LFUN_WORD_BACKWARD_SELECT:
 	case LFUN_WORD_BACKWARD:
-		cur.selHandle(cmd.action == LFUN_WORD_BACKWARDSEL || cmd.action == LFUN_LINE_BEGINSEL);
+		cur.selHandle(cmd.action == LFUN_WORD_BACKWARD_SELECT ||
+				cmd.action == LFUN_LINE_BEGIN_SELECT);
 		cur.macroModeClose();
 		if (cur.pos() != 0) {
 			cur.pos() = 0;
@@ -578,11 +579,12 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	case LFUN_WORD_FORWARDSEL:
+	case LFUN_WORD_FORWARD_SELECT:
 	case LFUN_WORD_FORWARD:
-	case LFUN_LINE_ENDSEL:
+	case LFUN_LINE_END_SELECT:
 	case LFUN_LINE_END:
-		cur.selHandle(cmd.action == LFUN_WORD_FORWARDSEL || cmd.action == LFUN_LINE_ENDSEL);
+		cur.selHandle(cmd.action == LFUN_WORD_FORWARD_SELECT ||
+				cmd.action == LFUN_LINE_END_SELECT);
 		cur.macroModeClose();
 		cur.clearTargetX();
 		if (cur.pos() != cur.lastpos()) {
@@ -599,13 +601,13 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	case LFUN_SCREEN_UPSEL:
+	case LFUN_SCREEN_UP_SELECT:
 	case LFUN_SCREEN_UP:
 		cmd = FuncRequest(LFUN_FINISHED_LEFT);
 		cur.undispatched();
 		break;
 
-	case LFUN_SCREEN_DOWNSEL:
+	case LFUN_SCREEN_DOWN_SELECT:
 	case LFUN_SCREEN_DOWN:
 		cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 		cur.undispatched();
@@ -619,8 +621,8 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		cur.inset().idxPrev(cur);
 		break;
 
-	case LFUN_DELETE_FORWARD_WORD_BACKWARD:
-	case LFUN_DELETE_FORWARD_BACKWARD:
+	case LFUN_WORD_DELETE_BACKWARD:
+	case LFUN_CHAR_DELETE_BACKWARD:
 		if (cur.pos() == 0)
 			// May affect external cell:
 			recordUndoInset(cur, Undo::ATOMIC);
@@ -629,8 +631,8 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		cur.backspace();
 		break;
 
-	case LFUN_DELETE_FORWARD_WORD_FORWARD:
-	case LFUN_DELETE_FORWARD:
+	case LFUN_WORD_DELETE_FORWARD:
+	case LFUN_CHAR_DELETE_FORWARD:
 		if (cur.pos() == cur.lastpos())
 			// May affect external cell:
 			recordUndoInset(cur, Undo::ATOMIC);

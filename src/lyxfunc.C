@@ -397,7 +397,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	// to handle (Andre')
 	bool enable = true;
 	switch (cmd.action) {
-	case LFUN_TOGGLE_TOOLTIPS:
+	case LFUN_TOOLTIPS_TOGGLE:
 		flag.setOnOff(owner->getDialogs().tooltipsEnabled());
 		break;
 
@@ -562,7 +562,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	}
 
 	case LFUN_BUFFER_NEW:
-	case LFUN_BUFFER_NEWTMPLT:
+	case LFUN_BUFFER_NEW_TEMPLATE:
 	case LFUN_WORD_FIND_FORWARD:
 	case LFUN_WORD_FIND_BACKWARD:
 	case LFUN_COMMAND_PREFIX:
@@ -611,7 +611,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_BUFFER_SAVE_AS_DEFAULT:
 	case LFUN_BUFFER_PARAMS_APPLY:
 	case LFUN_LYXRC_APPLY:
-	case LFUN_SCREEN_DOWNBUFFER:
+	case LFUN_BUFFER_NEXT:
 	case LFUN_BUFFER_PREVIOUS:
 		// these are handled in our dispatch()
 		break;
@@ -802,7 +802,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			menuNew(argument, false);
 			break;
 
-		case LFUN_BUFFER_NEWTMPLT:
+		case LFUN_BUFFER_NEW_TEMPLATE:
 			menuNew(argument, true);
 			break;
 
@@ -1095,7 +1095,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			view()->setBuffer(bufferlist.getBuffer(argument));
 			break;
 
-		case LFUN_SCREEN_DOWNBUFFER:
+		case LFUN_BUFFER_NEXT:
 			view()->setBuffer(bufferlist.next(view()->buffer()));
 			break;
 
@@ -1409,7 +1409,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			owner->message(argument);
 			break;
 
-		case LFUN_TOGGLE_TOOLTIPS:
+		case LFUN_TOOLTIPS_TOGGLE:
 			owner->getDialogs().toggleTooltips();
 			break;
 

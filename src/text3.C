@@ -377,19 +377,19 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_DELETE_FORWARD_WORD_FORWARD:
+	case LFUN_WORD_DELETE_FORWARD:
 		cur.clearSelection();
 		deleteWordForward(cur);
 		finishChange(cur, false);
 		break;
 
-	case LFUN_DELETE_FORWARD_WORD_BACKWARD:
+	case LFUN_WORD_DELETE_BACKWARD:
 		cur.clearSelection();
 		deleteWordBackward(cur);
 		finishChange(cur, false);
 		break;
 
-	case LFUN_DELETE_FORWARD_LINE_FORWARD:
+	case LFUN_LINE_DELETE:
 		cur.clearSelection();
 		deleteLineForward(cur);
 		finishChange(cur, false);
@@ -426,7 +426,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	case LFUN_BUFFER_BEGINSEL:
+	case LFUN_BUFFER_BEGIN_SELECT:
 		if (cur.depth() == 1) {
 			if (!cur.selection())
 				cur.resetAnchor();
@@ -448,7 +448,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	case LFUN_BUFFER_ENDSEL:
+	case LFUN_BUFFER_END_SELECT:
 		if (cur.depth() == 1) {
 			if (!cur.selection())
 				cur.resetAnchor();
@@ -460,10 +460,10 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_CHAR_FORWARD:
-	case LFUN_CHAR_FORWARDSEL:
+	case LFUN_CHAR_FORWARD_SELECT:
 		//lyxerr << BOOST_CURRENT_FUNCTION
 		//       << " LFUN_CHAR_FORWARD[SEL]:\n" << cur << endl;
-		cur.selHandle(cmd.action == LFUN_CHAR_FORWARDSEL);
+		cur.selHandle(cmd.action == LFUN_CHAR_FORWARD_SELECT);
 		if (isRTL(cur.paragraph()))
 			needsUpdate = cursorLeft(cur);
 		else
@@ -477,9 +477,9 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_CHAR_BACKWARD:
-	case LFUN_BACKWARD_SELECT:
-		//lyxerr << "handle LFUN_CHAR_BACKWARD[SEL]:\n" << cur << endl;
-		cur.selHandle(cmd.action == LFUN_BACKWARD_SELECT);
+	case LFUN_CHAR_BACKWARD_SELECT:
+		//lyxerr << "handle LFUN_CHAR_BACKWARD[_SELECT]:\n" << cur << endl;
+		cur.selHandle(cmd.action == LFUN_CHAR_BACKWARD_SELECT);
 		if (isRTL(cur.paragraph()))
 			needsUpdate = cursorRight(cur);
 		else
@@ -527,7 +527,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		finishChange(cur, false);
 		break;
 
-	case LFUN_PARAGRAPH_UPSEL:
+	case LFUN_PARAGRAPH_UP_SELECT:
 		if (!cur.selection())
 			cur.resetAnchor();
 		cursorUpParagraph(cur);
@@ -541,14 +541,14 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		finishChange(cur, false);
 		break;
 
-	case LFUN_PARAGRAPH_DOWNSEL:
+	case LFUN_PARAGRAPH_DOWN_SELECT:
 		if (!cur.selection())
 			cur.resetAnchor();
 		cursorDownParagraph(cur);
 		finishChange(cur, true);
 		break;
 
-	case LFUN_SCREEN_UPSEL:
+	case LFUN_SCREEN_UP_SELECT:
 		update(cur);
 		if (!cur.selection())
 			cur.resetAnchor();
@@ -556,7 +556,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		finishChange(cur, true);
 		break;
 
-	case LFUN_SCREEN_DOWNSEL:
+	case LFUN_SCREEN_DOWN_SELECT:
 		update(cur);
 		if (!cur.selection())
 			cur.resetAnchor();
@@ -564,7 +564,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		finishChange(cur, true);
 		break;
 
-	case LFUN_LINE_BEGINSEL:
+	case LFUN_LINE_BEGIN_SELECT:
 		update(cur);
 		if (!cur.selection())
 			cur.resetAnchor();
@@ -572,7 +572,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		finishChange(cur, true);
 		break;
 
-	case LFUN_LINE_ENDSEL:
+	case LFUN_LINE_END_SELECT:
 		update(cur);
 		if (!cur.selection())
 			cur.resetAnchor();
@@ -580,7 +580,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		finishChange(cur, true);
 		break;
 
-	case LFUN_WORD_FORWARDSEL:
+	case LFUN_WORD_FORWARD_SELECT:
 		if (!cur.selection())
 			cur.resetAnchor();
 		if (isRTL(cur.paragraph()))
@@ -590,7 +590,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		finishChange(cur, true);
 		break;
 
-	case LFUN_WORD_BACKWARDSEL:
+	case LFUN_WORD_BACKWARD_SELECT:
 		if (!cur.selection())
 			cur.resetAnchor();
 		if (isRTL(cur.paragraph()))
@@ -658,7 +658,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_DELETE_FORWARD:
+	case LFUN_CHAR_DELETE_FORWARD:
 		if (!cur.selection()) {
 			if (cur.pos() == cur.paragraph().size())
 				// Par boundary, force full-screen update
@@ -689,7 +689,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 
-	case LFUN_DELETE_FORWARD_BACKWARD:
+	case LFUN_CHAR_DELETE_BACKWARD:
 		if (!cur.selection()) {
 			if (bv->owner()->getIntl().getTransManager().backspace()) {
 				// Par boundary, full-screen update
@@ -707,7 +707,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		bv->switchKeyMap();
 		break;
 
-	case LFUN_DELETE_FORWARD_BACKWARD_SKIP:
+	case LFUN_DELETE_BACKWARD_SKIP:
 		// Reverse the effect of LFUN_BREAK_PARAGRAPH_SKIP.
 		if (!cur.selection()) {
 #ifdef WITH_WARNINGS
@@ -728,7 +728,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		bv->switchKeyMap();
 		break;
 
-	case LFUN_BREAK_PARAGRAPHKEEPLAYOUT:
+	case LFUN_BREAK_PARAGRAPH_KEEP_LAYOUT:
 		lyx::cap::replaceSelection(cur);
 		breakParagraph(cur, 1);
 		cur.resetAnchor();
@@ -801,7 +801,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		cur.inset().showInsetDialog(bv);
 		break;
 
-	case LFUN_SCREEN_DOWN_INSET_TOGGLE: {
+	case LFUN_NEXT_INSET_TOGGLE: {
 		InsetBase * inset = cur.nextInset();
 		// this is the real function we want to invoke
 		cmd = FuncRequest(LFUN_INSET_TOGGLE);
@@ -845,7 +845,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		specialChar(cur, InsetSpecialChar::LDOTS);
 		break;
 
-	case LFUN_LINE_END_OF_SENTENCE_PERIOD_INSERT:
+	case LFUN_END_OF_SENTENCE_PERIOD_INSERT:
 		specialChar(cur, InsetSpecialChar::END_OF_SENTENCE);
 		break;
 
@@ -1499,12 +1499,12 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_ACCEPT_CHANGE: {
+	case LFUN_CHANGE_ACCEPT: {
 		acceptChange(cur);
 		break;
 	}
 
-	case LFUN_REJECT_CHANGE: {
+	case LFUN_CHANGE_REJECT: {
 		rejectChange(cur);
 		break;
 	}
@@ -1740,7 +1740,7 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_HFILL_INSERT:
 	case LFUN_MENU_SEPARATOR_INSERT:
 	case LFUN_DOTS_INSERT:
-	case LFUN_LINE_END_OF_SENTENCE_PERIOD_INSERT:
+	case LFUN_END_OF_SENTENCE_PERIOD_INSERT:
 		code = InsetBase::SPECIALCHAR_CODE;
 		break;
 	case LFUN_SPACE_INSERT:
@@ -1819,27 +1819,27 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 		break;
 	}
 
-	case LFUN_DELETE_FORWARD_WORD_FORWARD:
-	case LFUN_DELETE_FORWARD_WORD_BACKWARD:
-	case LFUN_DELETE_FORWARD_LINE_FORWARD:
+	case LFUN_WORD_DELETE_FORWARD:
+	case LFUN_WORD_DELETE_BACKWARD:
+	case LFUN_LINE_DELETE:
 	case LFUN_WORD_FORWARD:
 	case LFUN_WORD_BACKWARD:
 	case LFUN_CHAR_FORWARD:
-	case LFUN_CHAR_FORWARDSEL:
+	case LFUN_CHAR_FORWARD_SELECT:
 	case LFUN_CHAR_BACKWARD:
-	case LFUN_BACKWARD_SELECT:
+	case LFUN_CHAR_BACKWARD_SELECT:
 	case LFUN_UP:
 	case LFUN_UP_SELECT:
 	case LFUN_DOWN:
 	case LFUN_DOWN_SELECT:
-	case LFUN_PARAGRAPH_UPSEL:
-	case LFUN_PARAGRAPH_DOWNSEL:
-	case LFUN_SCREEN_UPSEL:
-	case LFUN_SCREEN_DOWNSEL:
-	case LFUN_LINE_BEGINSEL:
-	case LFUN_LINE_ENDSEL:
-	case LFUN_WORD_FORWARDSEL:
-	case LFUN_WORD_BACKWARDSEL:
+	case LFUN_PARAGRAPH_UP_SELECT:
+	case LFUN_PARAGRAPH_DOWN_SELECT:
+	case LFUN_SCREEN_UP_SELECT:
+	case LFUN_SCREEN_DOWN_SELECT:
+	case LFUN_LINE_BEGIN_SELECT:
+	case LFUN_LINE_END_SELECT:
+	case LFUN_WORD_FORWARD_SELECT:
+	case LFUN_WORD_BACKWARD_SELECT:
 	case LFUN_WORD_SELECT:
 	case LFUN_PARAGRAPH_UP:
 	case LFUN_PARAGRAPH_DOWN:
@@ -1848,16 +1848,16 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_LINE_BEGIN:
 	case LFUN_LINE_END:
 	case LFUN_BREAK_LINE:
-	case LFUN_DELETE_FORWARD:
+	case LFUN_CHAR_DELETE_FORWARD:
 	case LFUN_DELETE_FORWARD_SKIP:
-	case LFUN_DELETE_FORWARD_BACKWARD:
-	case LFUN_DELETE_FORWARD_BACKWARD_SKIP:
+	case LFUN_CHAR_DELETE_BACKWARD:
+	case LFUN_DELETE_BACKWARD_SKIP:
 	case LFUN_BREAK_PARAGRAPH:
-	case LFUN_BREAK_PARAGRAPHKEEPLAYOUT:
+	case LFUN_BREAK_PARAGRAPH_KEEP_LAYOUT:
 	case LFUN_BREAK_PARAGRAPH_SKIP:
 	case LFUN_PARAGRAPH_SPACING:
 	case LFUN_INSET_INSERT:
-	case LFUN_SCREEN_DOWN_INSET_TOGGLE:
+	case LFUN_NEXT_INSET_TOGGLE:
 	case LFUN_WORD_UPCASE:
 	case LFUN_WORD_LOWCASE:
 	case LFUN_WORD_CAPITALIZE:
@@ -1907,15 +1907,15 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_ACCENT_HUNGARIAN_UMLAUT:
 	case LFUN_ACCENT_CIRCLE:
 	case LFUN_ACCENT_OGONEK:
-	case LFUN_ACCEPT_CHANGE:
-	case LFUN_REJECT_CHANGE:
+	case LFUN_CHANGE_ACCEPT:
+	case LFUN_CHANGE_REJECT:
 	case LFUN_THESAURUS_ENTRY:
 	case LFUN_PARAGRAPH_PARAMS_APPLY:
 	case LFUN_ESCAPE:
 	case LFUN_BUFFER_END:
 	case LFUN_BUFFER_BEGIN:
-	case LFUN_BUFFER_BEGINSEL:
-	case LFUN_BUFFER_ENDSEL:
+	case LFUN_BUFFER_BEGIN_SELECT:
+	case LFUN_BUFFER_END_SELECT:
 		// these are handled in our dispatch()
 		enable = true;
 		break;

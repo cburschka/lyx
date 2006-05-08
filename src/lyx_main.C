@@ -538,8 +538,8 @@ void LyX::defaultKeyBindings(kb_keymap  * kbmap)
 	kbmap->bind("Return", FuncRequest(LFUN_BREAK_PARAGRAPH));
 	//kbmap->bind("~C-~S-~M-nobreakspace", FuncRequest(LFUN_PROTECTEDSPACE));
 
-	kbmap->bind("Delete", FuncRequest(LFUN_DELETE_FORWARD));
-	kbmap->bind("BackSpace", FuncRequest(LFUN_DELETE_FORWARD_BACKWARD));
+	kbmap->bind("Delete", FuncRequest(LFUN_CHAR_DELETE_FORWARD));
+	kbmap->bind("BackSpace", FuncRequest(LFUN_CHAR_DELETE_BACKWARD));
 
 	// kbmap->bindings to enable the use of the numeric keypad
 	// e.g. Num Lock set

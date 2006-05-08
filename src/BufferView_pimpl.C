@@ -1103,12 +1103,12 @@ FuncStatus BufferView::Pimpl::getStatus(FuncRequest const & cmd)
 	case LFUN_BOOKMARK_GOTO:
 		flag.enabled(isSavedPosition(convert<unsigned int>(cmd.argument)));
 		break;
-	case LFUN_TRACK_CHANGES:
+	case LFUN_CHANGES_TRACK:
 		flag.enabled(true);
 		flag.setOnOff(buffer_->params().tracking_changes);
 		break;
 
-	case LFUN_OUTPUT_CHANGES: {
+	case LFUN_CHANGES_OUTPUT: {
 		OutputParams runparams;
 		LaTeXFeatures features(*buffer_, buffer_->params(), runparams);
 		flag.enabled(buffer_ && buffer_->params().tracking_changes
@@ -1117,11 +1117,11 @@ FuncStatus BufferView::Pimpl::getStatus(FuncRequest const & cmd)
 		break;
 	}
 
-	case LFUN_MERGE_CHANGES:
-	case LFUN_ACCEPT_CHANGE: // what about these two
-	case LFUN_REJECT_CHANGE: // what about these two
-	case LFUN_ACCEPT_ALL_CHANGES:
-	case LFUN_REJECT_ALL_CHANGES:
+	case LFUN_CHANGES_MERGE:
+	case LFUN_CHANGE_ACCEPT: // what about these two
+	case LFUN_CHANGE_REJECT: // what about these two
+	case LFUN_ALL_CHANGES_ACCEPT:
+	case LFUN_ALL_CHANGES_REJECT:
 		flag.enabled(buffer_ && buffer_->params().tracking_changes);
 		break;
 
@@ -1275,22 +1275,22 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		break;
 	}
 
-	case LFUN_TRACK_CHANGES:
+	case LFUN_CHANGES_TRACK:
 		trackChanges();
 		break;
 
-	case LFUN_OUTPUT_CHANGES: {
+	case LFUN_CHANGES_OUTPUT: {
 		bool const state = buffer_->params().output_changes;
 		buffer_->params().output_changes = !state;
 		break;
 	}
 
-	case LFUN_MERGE_CHANGES:
+	case LFUN_CHANGES_MERGE:
 		if (lyx::find::findNextChange(bv_))
 			owner_->getDialogs().show("changes");
 		break;
 
-	case LFUN_ACCEPT_ALL_CHANGES: {
+	case LFUN_ALL_CHANGES_ACCEPT: {
 		cursor_.reset(buffer_->inset());
 #ifdef WITH_WARNINGS
 #warning FIXME changes
@@ -1301,7 +1301,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		break;
 	}
 
-	case LFUN_REJECT_ALL_CHANGES: {
+	case LFUN_ALL_CHANGES_REJECT: {
 		cursor_.reset(buffer_->inset());
 #ifdef WITH_WARNINGS
 #warning FIXME changes

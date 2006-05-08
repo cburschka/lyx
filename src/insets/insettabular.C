@@ -507,7 +507,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		cur.selection() = false;
 		break;
 
-	case LFUN_CHAR_FORWARDSEL:
+	case LFUN_CHAR_FORWARD_SELECT:
 	case LFUN_CHAR_FORWARD:
 		cell(cur.idx())->dispatch(cur, cmd);
 		if (!cur.result().dispatched()) {
@@ -519,7 +519,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	case LFUN_BACKWARD_SELECT:
+	case LFUN_CHAR_BACKWARD_SELECT:
 	case LFUN_CHAR_BACKWARD:
 		cell(cur.idx())->dispatch(cur, cmd);
 		if (!cur.result().dispatched()) {
@@ -644,8 +644,8 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 			cell(cur.idx())->dispatch(cur, cmd);
 		break;
 
-	case LFUN_DELETE_FORWARD_BACKWARD:
-	case LFUN_DELETE_FORWARD:
+	case LFUN_CHAR_DELETE_BACKWARD:
+	case LFUN_CHAR_DELETE_FORWARD:
 		if (tablemode(cur)) {
 			recordUndoInset(cur, Undo::DELETE);
 			cutSelection(cur);
@@ -975,7 +975,7 @@ bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
 	// disable in non-fixed-width cells
 	case LFUN_BREAK_LINE:
 	case LFUN_BREAK_PARAGRAPH:
-	case LFUN_BREAK_PARAGRAPHKEEPLAYOUT:
+	case LFUN_BREAK_PARAGRAPH_KEEP_LAYOUT:
 	case LFUN_BREAK_PARAGRAPH_SKIP: {
 		if (tabular.getPWidth(cur.idx()).zero()) {
 			status.enabled(false);

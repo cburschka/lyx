@@ -320,11 +320,11 @@ Menuset
 	End
 
 	Menu "edit_change"
-		Item "Track Changes|T" "track-changes"
-		Item "Merge Changes...|M" "merge-changes"
-		Item "Accept All Changes|A" "accept-all-changes"
-		Item "Reject All Changes|R" "reject-all-changes"
-		Item "Show Changes in Output|S" "output-changes"
+		Item "Track Changes|T" "changes-track"
+		Item "Merge Changes...|M" "changes-merge"
+		Item "Accept All Changes|A" "all-changes-accept"
+		Item "Reject All Changes|R" "all-changes-reject"
+		Item "Show Changes in Output|S" "changes-output"
 
 	End
 #
@@ -402,7 +402,7 @@ Menuset
 # HELP MENU
 #
 	Menu "help"
-		Item "Tooltips|o" "toggle-tooltips"
+		Item "Tooltips|o" "tooltips-toggle"
 	    Separator
 		Item "Introduction|I" "help-open Intro"
 		Item "Tutorial|T" "help-open Tutorial"
