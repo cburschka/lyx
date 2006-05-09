@@ -52,6 +52,7 @@
 #include "support/os.h"
 #include "support/package.h"
 #include "support/path.h"
+#include "support/systemcall.h"
 
 #include <boost/bind.hpp>
 #include <boost/filesystem/operations.hpp>
@@ -73,6 +74,7 @@ using lyx::support::Path;
 using lyx::support::prependEnvPath;
 using lyx::support::quoteName;
 using lyx::support::rtrim;
+using lyx::support::Systemcall;
 
 namespace os = lyx::support::os;
 namespace fs = boost::filesystem;
@@ -119,7 +121,8 @@ void reconfigureUserLyXDir()
 
 	lyxerr << _("LyX: reconfiguring user directory") << endl;
 	Path p(package().user_support());
-	::system(configure_command.c_str());
+	Systemcall one;
+	one.startscript(Systemcall::Wait, configure_command);
 	lyxerr << "LyX: " << _("Done!") << endl;
 }
 
@@ -408,16 +411,6 @@ void LyX::init(bool gui)
 	signal(SIGTERM, error_handler);
 	// SIGPIPE can be safely ignored.
 
-	// Check that user LyX directory is ok. We don't do that if
-	// running in batch mode.
-	bool reconfigure = false;
-	if (gui) {
-		reconfigure =
-			queryUserLyXDir(package().explicit_user_support());
-	} else {
-		first_start = false;
-	}
-
 	// Disable gui when easyparse says so
 	lyx_gui::use_gui = gui;
 
@@ -442,6 +435,26 @@ void LyX::init(bool gui)
 
 	// This one may have been distributed along with LyX.
 	readRcFile("lyxrc.dist");
+
+	// Set the PATH correctly.
+#if !defined (USE_POSIX_PACKAGING)
+	// Add the directory containing the LyX executable to the path
+	// so that LyX can find things like tex2lyx.
+	if (package().build_support().empty())
+		prependEnvPath("PATH", package().binary_dir());
+#endif
+	if (!lyxrc.path_prefix.empty())
+		prependEnvPath("PATH", lyxrc.path_prefix);
+
+	// Check that user LyX directory is ok. We don't do that if
+	// running in batch mode.
+	if (gui) {
+		if (queryUserLyXDir(package().explicit_user_support()))
+			reconfigureUserLyXDir();
+	} else {
+		first_start = false;
+	}
+
 	// This one is generated in user_support directory by lib/configure.py.
 	readRcFile("lyxrc.defaults");
 
@@ -477,18 +490,6 @@ void LyX::init(bool gui)
 	os::cygwin_path_fix(lyxrc.cygwin_path_fix);
 	if (!lyxrc.path_prefix.empty())
 		prependEnvPath("PATH", lyxrc.path_prefix);
-
-#if !defined (USE_POSIX_PACKAGING)
-	// Add the directory containing the LyX executable to the path
-	// so that LyX can find things like tex2lyx.
-	if (package().build_support().empty())
-		prependEnvPath("PATH", package().binary_dir());
-#endif
-
-	// Having reset the PATH we're now in a position to run configure
-	// if necessary.
-	if (reconfigure)
-		reconfigureUserLyXDir();
 
 	if (fs::exists(lyxrc.document_path) &&
 	    fs::is_directory(lyxrc.document_path))
@@ -609,25 +610,34 @@ void LyX::deadKeyBindings(kb_keymap * kbmap)
 }
 
 
+namespace {
+
+// return true if file does not exist or is older than configure.py.
+bool needsUpdate(string const & file)
+{
+	static string const configure_script =
+		addName(package().system_support(), "configure.py");
+	string const absfile =
+		addName(package().user_support(), file);
+
+	return (! fs::exists(absfile))
+		|| (fs::last_write_time(configure_script) 
+		    > fs::last_write_time(absfile));
+}
+
+}
+
+
 bool LyX::queryUserLyXDir(bool explicit_userdir)
 {
-	bool reconfigure = false;
-
 	// Does user directory exist?
 	if (fs::exists(package().user_support()) &&
 	    fs::is_directory(package().user_support())) {
 		first_start = false;
-		string const configure_script =
-			addName(package().system_support(), "configure.py");
-		string const userDefaults =
-			addName(package().user_support(), "lyxrc.defaults");
-		if (fs::exists(configure_script) &&
-		    fs::exists(userDefaults) &&
-		    fs::last_write_time(configure_script)
-		    > fs::last_write_time(userDefaults)) {
-			reconfigure = true;
-		}
-		return reconfigure;
+		
+		return needsUpdate("lyxrc.defaults") 
+			|| needsUpdate("textclass.lst") 
+			|| needsUpdate("packages.lst");
 	}
 
 	first_start = !explicit_userdir;
@@ -651,7 +661,6 @@ bool LyX::queryUserLyXDir(bool explicit_userdir)
 	lyxerr << bformat(_("LyX: Creating directory %1$s"),
 			  package().user_support())
 	       << endl;
-	reconfigure = true;
 
 	if (!createDirectory(package().user_support(), 0755)) {
 		// Failed, so let's exit.
@@ -660,7 +669,7 @@ bool LyX::queryUserLyXDir(bool explicit_userdir)
 		exit(1);
 	}
 
-	return reconfigure;
+	return true;
 }
 
 
