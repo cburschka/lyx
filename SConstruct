@@ -68,6 +68,8 @@ import os, sys
 sys.path.append('config')
 import scons_utils as utils
 
+SetOption('implicit_cache', 1)
+
 #----------------------------------------------------------
 # Required runtime environment
 #----------------------------------------------------------
@@ -168,6 +170,13 @@ else:  # unsupported system
 # options like --prefix will be accepted. Right now,
 # we have to use the KEY=VALUE style of scons
 # 
+if os.path.isfile('options.cache'):
+  print "Getting options from auto-saved options.cache..."
+  print open('options.cache').read()
+if os.path.isfile('config.py'):
+  print "Getting options from config.py..."
+  print open('config.py').read()
+
 opts = Options(['options.cache', 'config.py'])
 opts.AddOptions(
   # frontend, 
@@ -233,11 +242,20 @@ opts.AddOptions(
   PathOption('intl_prefix', '(NA) Path to intl library', '.'),
   # log file
   ('logfile', 'save commands (not outputs) to logfile', default_log_file),
-  # What is aiksaurus?
-  BoolOption('aikasurus', 'Whether or not use aikasurus library', False),
+  # Path to aikasurus
+  PathOption('aikasurus_path', 'Path to aikasurus library', '.'),
   #
   EnumOption('spell', 'Choose spell checker to use.', 'auto',
-    allowed_values = ('aspell', 'pspell', 'ispell', 'auto') )
+    allowed_values = ('aspell', 'pspell', 'ispell', 'auto') ),
+  # environment variable can be set as options
+  ('CC', '$CC', 'gcc'),
+  ('CPP', '$CPP', 'gcc'),
+  ('CXX', '$CXX', 'g++'),
+  ('CXXCPP', '$CXXCPP', 'g++'),
+  ('CCFLAGS', '$CCFLAGS', ''),
+  ('CPPFLAGS', '$CPPFLAGS', ''),
+  ('CPPPATH', '$CPPPATH', ''),
+  ('LDFLAGS', '$LDFLAGS', ''),
 )  
 
 # Determine the frontend to use
@@ -255,6 +273,29 @@ env = Environment(
 # set environment since I do not really like ENV = os.environ
 env['ENV']['PATH'] = os.environ.get('PATH')
 env['ENV']['HOME'] = os.environ.get('HOME')
+# speed up source file processing
+#env['CPPSUFFIXES'] = ['.C', '.cc', '.cpp']
+#env['CXXSUFFIX'] = ['.C']
+
+def getEnvVariable(env, name):
+  # first try command line argument (override environment settings)
+  if ARGUMENTS.has_key(name) and ARGUMENTS[name].strip() != '':
+    env[name] = ARGUMENTS[name]
+  # then try environment variable  
+  elif os.environ.has_key(name) and os.environ[name].strip() != '':
+    env[name] = os.environ[name]
+    print "Acquiring varaible %s from system environment: %s" % (name, env[name])
+
+getEnvVariable(env, 'CC')
+getEnvVariable(env, 'CPP')
+getEnvVariable(env, 'CXX')
+getEnvVariable(env, 'CXXCPP')
+getEnvVariable(env, 'CCFLAGS')
+getEnvVariable(env, 'CXXFLAGS')
+getEnvVariable(env, 'CPPFLAGS')
+getEnvVariable(env, 'CPPPATH')
+getEnvVariable(env, 'LDFLAGS')
+
 env['ENV']['PKG_CONFIG_PATH'] = os.environ.get('PKG_CONFIG_PATH')
 env['TOP_SRC_DIR'] = Dir('.').abspath
 
@@ -330,6 +371,8 @@ if ARGUMENTS.has_key('extra_inc_path1'):
   env.Append(CPPPATH = [ARGUMENTS['extra_inc_path1']])
 if ARGUMENTS.has_key('extra_lib_path1'):
   env.Append(LIBPATH = [ARGUMENTS['extra_lib_path1']])
+if ARGUMENTS.has_key('aikasurus_path'):
+  env.Append(LIBPATH = [ARGUMENTS['aikasurus_path']])
 
 #
 # this is a bit out of place (after auto-configration)
@@ -564,13 +607,12 @@ for val in values:
   else:
     utils.addToConfig('/* #undef %s */' % val[0])
 
+
+env['EXTRA_LIBS'] = []
 # AIKSAURUS_H_LOCATION
-if ARGUMENTS.get('aiksaurus'):
-  if conf.CheckLib('Aiksaurus'):
-    utils.addToConfig("#define AIKSAURUS_H_LOCATION")
-  else:
-    print 'Library Aiksaurus not found'
-    Exit(2)
+if conf.CheckLib('Aiksaurus'):
+  utils.addToConfig("#define AIKSAURUS_H_LOCATION")
+  env['EXTRA_LIBS'].append('Aiksaurus')
 
 # USE_ASPELL
 # USE_PSPELL
@@ -580,16 +622,19 @@ if ARGUMENTS.get('aiksaurus'):
 spell_engine = ARGUMENTS.get('spell', 'auto')
 spell_detected = False
 if spell_engine in ['auto', 'aspell'] and \
-  conf.CheckLibWithHeader('aspell', 'aspell.h', 'C'):
+  conf.CheckLib('aspell'):
   utils.addToConfig('#define USE_ASPELL 1')
+  env['EXTRA_LIBS'].appnend('aspell')
   spell_detected = True
 elif spell_engine in ['auto', 'pspell'] and \
-  conf.CheckLibWithHeader('pspell', 'pspell.h', 'C'):
+  conf.CheckLib('pspell'):
   utils.addToConfig('#define USE_PSPELL 1')
+  env['EXTRA_LIBS'].appnend('pspell')
   spell_detected = True
 elif spell_engine in ['auto', 'ispell'] and \
-  conf.CheckLibWithHeader('ispell', 'ispell.h', 'C'):
+  conf.CheckLib('ispell'):
   utils.addToConfig('#define USE_ISPELL 1')
+  env['EXTRA_LIBS'].appnend('ispell')
   spell_detected = False
 
 if not spell_detected:
@@ -669,7 +714,7 @@ try:
   if frontend == 'qt3':
     # note: env.Tool('qt') my set QT_LIB to qt
     env['QT_LIB'] = 'qt-mt'
-    env['EXTRA_LIBS'] = ['qt-mt']
+    env['EXTRA_LIBS'] += ['qt-mt']
     if platform_name == 'cygwin' and use_X11:
       env['EXTRA_LIBS'] += ['GL',  'Xmu', 'Xi', 'Xrender', 'Xrandr', 'Xcursor',
         'Xft', 'freetype', 'fontconfig', 'Xext', 'X11', 'SM', 'ICE', 'resolv',
@@ -682,7 +727,7 @@ try:
       env['QT_LIB'] = ['QtCore4', 'QtGui4', 'Qt3Support4']
     else:
       env['QT_LIB'] = ['QtCore', 'QtGui', 'Qt3Support']
-    env['EXTRA_LIBS'] = [x for x in env['QT_LIB']]
+    env['EXTRA_LIBS'] += [x for x in env['QT_LIB']]
 except:
   print "Can not locate qt tools"
   print "What I get is "
@@ -754,6 +799,8 @@ Build info:
   Local library directory:        %s
   Libraries pathes:               %s
   Boost libraries:                %s
+  Extra libraries:                %s
+  System libraries:               %s
 Frontend: 
   Frontend:                       %s
   Packaging:                      %s
@@ -767,6 +814,7 @@ Frontend:
   env.subst('$LINKFLAGS'), env.subst('$LINKFLAGS'),
   env.subst('$BUILDDIR'), env.subst('$LOCALLIBPATH'),
   str(env['LIBPATH']), str(env['BOOST_LIBRARIES']),
+  str(env['EXTRA_LIBS']), str(env['SYSTEM_LIBS']),
   env['frontend'], packaging_method)
 
 if env['frontend'] in ['qt3', 'qt4']:
@@ -813,9 +861,9 @@ Export('env')
 env.BuildDir('$BUILDDIR', 'src')
 print "Building all targets recursively"
 
-client = env.SConscript('#$BUILDDIR/client/SConscript')
-lyx = env.SConscript('#$BUILDDIR/SConscript')
-tex2lyx = env.SConscript('#$BUILDDIR/tex2lyx/SConscript')
+client = env.SConscript('#$BUILDDIR/client/SConscript', duplicate = 0)
+lyx = env.SConscript('#$BUILDDIR/SConscript', duplicate=0)
+tex2lyx = env.SConscript('#$BUILDDIR/tex2lyx/SConscript', duplicate = 0)
 
 # avoid using full path to build them
 Alias('client', client)

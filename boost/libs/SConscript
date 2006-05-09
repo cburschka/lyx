@@ -25,7 +25,8 @@ boost = boostenv.SConscript(
     'iostreams/src',
     'regex/src',
     'signals/src'
-  ]
+  ],
+  duplicate = 0
 )
 
 # Return boost libraries 

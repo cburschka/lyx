@@ -27,7 +27,7 @@ tex2lyx_env.fileCopy('lyxlayout.h', '#$BUILDDIR/lyxlayout.h')
 tex2lyx_env.fileCopy('lyxlayout.C', '#$BUILDDIR/lyxlayout.C')
 tex2lyx_env.fileCopy('lyxtextclass.h', '#$BUILDDIR/lyxtextclass.h')
 tex2lyx_env.fileCopy('lyxtextclass.C', '#$BUILDDIR/lyxtextclass.C')
-  
+
 tex2lyx = tex2lyx_env.Program(
   target = 'tex2lyx',
   LIBS = ['supports'] + env['BOOST_LIBRARIES'] + env['SYSTEM_LIBS'],

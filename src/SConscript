@@ -22,11 +22,12 @@ env.SConscript(
     'graphics',
     'support',
     'frontends/$frontend'
-  ]
+  ], 
+  duplicate=0
 )
 
 if env['INCLUDED_BOOST']:
-  env.SConscript(dirs = ['#boost/libs'])
+  env.SConscript(dirs = ['#boost/libs'], duplicate=0)
 
 # 
 # Start in src directory
@@ -167,9 +168,9 @@ lyx = env.Program(
     'controllers', 
     'graphics', 
     'supports'] + 
+    env['BOOST_LIBRARIES'] +
     env['EXTRA_LIBS'] +
-    env['SYSTEM_LIBS'] +
-    env['BOOST_LIBRARIES']
+    env['SYSTEM_LIBS']
 )
 
 # Return program
