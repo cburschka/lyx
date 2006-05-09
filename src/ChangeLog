@@ -1,3 +1,15 @@
+2006-05-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyx_main.C (init): call queryUserLyXDir just after reading
+	lyxrc.dist, but before reading lyxrc.defaults; add extra_prefix to
+	the PATH before reconfiguring.
+	(needsUpdate): new helper function; returns true if file does not
+	exist or is older than configure.py.
+	(queryUserLyXDir): check textclass.lst and packages.lst in
+	addition to lyxrc.defaults.
+	(reconfigureUserLyXDir): use SystemCall, since system() does not
+	wait on windows.
+
 2006-04-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyx_main.C (readRcFile): do not report an error if file is not

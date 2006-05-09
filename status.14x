@@ -92,8 +92,10 @@ What's new
 - It is not needed anymore to run lib/configure.py in the main LyX
   support directory.
 
-- LyX now reads the file lyxrc.init (if it exists) before
-  lyxrc.defaults and preferences.
+- Reading of configuration now goes like this: LyX first reads the file 
+  lyxrc.init (if it exists). If lib/configure.py is newer than
+  either lyxrc.defaults, textclass.lst or packages.lst, it is re-run
+  before loading lyxrc.defaults and preferences. 
 
 - Fix lib/configure.py to find tex2lyx when compiling with
   --with-version-suffix (bug 2285)
