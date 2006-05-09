@@ -30,10 +30,7 @@ tex2lyx_env.fileCopy('lyxtextclass.C', '#$BUILDDIR/lyxtextclass.C')
   
 tex2lyx = tex2lyx_env.Program(
   target = 'tex2lyx',
-  LIBS = [
-    'supports', 
-    'z',
-  ] + env['BOOST_LIBRARIES'],
+  LIBS = ['supports'] + env['BOOST_LIBRARIES'] + env['SYSTEM_LIBS'],
   source = Split('''
     FloatList.C 
     Floating.C 

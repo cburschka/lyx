@@ -258,6 +258,13 @@ env['ENV']['HOME'] = os.environ.get('HOME')
 env['ENV']['PKG_CONFIG_PATH'] = os.environ.get('PKG_CONFIG_PATH')
 env['TOP_SRC_DIR'] = Dir('.').abspath
 
+# under windows, scons is confused by .C/.c and uses gcc instead of 
+# g++. I am forcing the use of g++ here. This is expected to change
+# after lyx renames all .C files to .cpp
+if platform_name in ['win32', 'cygwin']:
+  env['CC'] = 'g++'
+  env['LINK'] = 'g++'
+
 #
 # frontend, mode, BUILDDIR and LOCALLIBPATH=BUILDDIR/libs
 # 
@@ -675,11 +682,18 @@ try:
       env['QT_LIB'] = ['QtCore4', 'QtGui4', 'Qt3Support4']
     else:
       env['QT_LIB'] = ['QtCore', 'QtGui', 'Qt3Support']
-    env['EXTRA_LIBS'] = env['QT_LIB']
+    env['EXTRA_LIBS'] = [x for x in env['QT_LIB']]
 except:
   print "Can not locate qt tools"
   print "What I get is "
   print "  QTDIR: ", env['QTDIR']
+
+if platform_name == 'win32':
+  env['SYSTEM_LIBS'] = ['shlwapi', 'zlib1']
+elif platform_name == 'cygwin':
+  env['SYSTEM_LIBS'] = ['shlwapi', 'z']
+else:
+  env['SYSTEM_LIBS'] = ['z']
 
 #
 # Build parameters CPPPATH etc

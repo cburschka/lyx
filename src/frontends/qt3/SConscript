@@ -9,6 +9,7 @@
 # Full author contact details are available in file CREDITS.
 
 Import('env')
+import os, sys
 
 print "Entering src/frontends/qt3"
 
@@ -97,6 +98,7 @@ ui_files = Split('''
   QVSpaceDialogBase.ui 
   QWrapDialogBase.ui
 ''')
+
   
 moc_files = Split('''
   BulletsModule.C
@@ -157,7 +159,15 @@ moc_files = Split('''
   socket_callback.C
   validators.C
 ''')
-  
+
+# under windows, because of the .C/.c confusion
+# moc_files are not moced automatically.
+# I am doing it manually here, until lyx changes
+# file extension from .C to .cpp
+moced_files = []
+if os.name == 'nt' or sys.platform == 'cygwin':
+  moced_files = [qtenv.Moc(x.replace('.C', '.h')) for x in moc_files]
+
 qt3 = qtenv.StaticLibrary(
   target = '$LOCALLIBPATH/qt3',
   source = Split('''
@@ -222,7 +232,7 @@ qt3 = qtenv.StaticLibrary(
     qscreen.C 
     qt_helpers.C 
   ''') +
-  moc_files + 
+  moc_files + moced_files + 
   ['ui/' + x for x in ui_files]
 )
 
