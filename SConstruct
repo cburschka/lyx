@@ -1372,6 +1372,10 @@ graphics = env.StaticLibrary(
 )
 
 
+# INCLUDED BOOST not really supported yet.
+#if env['INCLUDED_BOOST']:
+#  env.SConscript(dirs = ['#boost/libs'], duplicate=0)
+
 #
 # Start in src directory
 #
@@ -1489,6 +1493,13 @@ lyx_source = Split('''
   vspace.C
   main.C
 ''')
+
+if env.has_key('USE_ASPELL') and env['USE_ASPELL']:
+  lyx_source += ['aspell.C']
+elif env.has_key('USE_PSPELL') and env['USE_PSPELL']:
+  lyx_source += ['pspell.C']
+elif env.has_key('USE_ISPELL') and env['USE_ISPELL']:
+  lyx_source += ['ispell.C']
 
 #
 # Build lyx with given frontend
