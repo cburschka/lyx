@@ -79,6 +79,9 @@ EnsurePythonVersion(1, 5)
 # Please use at least 0.96.91 (not 0.96.1)
 EnsureSConsVersion(0, 96)
 
+# I am in TOP_SRC_DIR/developement/scons
+TOP_SRC_DIR = '../..'
+
 #----------------------------------------------------------
 # Global definitions
 #----------------------------------------------------------
@@ -272,8 +275,10 @@ env = Environment(
 )
 
 # set environment since I do not really like ENV = os.environ
-env['ENV']['PATH'] = os.environ.get('PATH')
+#env['ENV']['PATH'] = os.environ.get('PATH')
 env['ENV']['HOME'] = os.environ.get('HOME')
+env['TOP_SRC_DIR'] = TOP_SRC_DIR
+
 # speed up source file processing
 #env['CPPSUFFIXES'] = ['.C', '.cc', '.cpp']
 #env['CXXSUFFIX'] = ['.C']
@@ -297,8 +302,6 @@ getEnvVariable(env, 'CPPFLAGS')
 getEnvVariable(env, 'CPPPATH')
 getEnvVariable(env, 'LDFLAGS')
 
-env['TOP_SRC_DIR'] = Dir('.').abspath
-
 # under windows, scons is confused by .C/.c and uses gcc instead of 
 # g++. I am forcing the use of g++ here. This is expected to change
 # after lyx renames all .C files to .cpp
@@ -319,10 +322,7 @@ if ARGUMENTS.has_key('build_dir'):
   env['BUILDDIR'] = build_dir
 else:
   # Determine the name of the build (platform+frontend
-  build_dir = '%s-%s' % (platform_name, frontend)
-  if use_X11 and platform_name == 'cygwin':
-    build_dir += '-X11'
-  env['BUILDDIR'] = os.path.join(env['mode'], build_dir)
+  env['BUILDDIR'] = env['mode']
 # all built libraries will go to build_dir/libs
 # (This is different from the make file approach)
 env['LOCALLIBPATH'] = '#$BUILDDIR/libs'
@@ -494,7 +494,7 @@ print "Generating ", utils.config_h, "..."
 # of *used-by-lyx* macros compiled by Abdelrazak Younes <younes.a@free.fr> 
 # 
 # Note: addToConfig etc are defined in scons_util
-utils.startConfigH()
+utils.startConfigH(TOP_SRC_DIR)
 
 # HAVE_IO_H
 # HAVE_LIMITS_H
@@ -535,9 +535,9 @@ headers = [
 for header in headers:
   if (header[2] == 'c' and conf.CheckCHeader(header[0])) or \
     (header[2] == 'cxx' and conf.CheckCXXHeader(header[0])):
-    utils.addToConfig('#define %s 1' % header[1])
+    utils.addToConfig('#define %s 1' % header[1], TOP_SRC_DIR)
   else:
-    utils.addToConfig('/* #undef %s */' % header[1])
+    utils.addToConfig('/* #undef %s */' % header[1], TOP_SRC_DIR)
 
 # HAVE_OPEN
 # HAVE_CLOSE
@@ -576,17 +576,17 @@ functions = [
 
 for func in functions:
   if conf.CheckFunc(func[0]):
-    utils.addToConfig('#define %s 1' % func[1])
+    utils.addToConfig('#define %s 1' % func[1], TOP_SRC_DIR)
   else:
-    utils.addToConfig('/* #undef %s */' % func[1])
+    utils.addToConfig('/* #undef %s */' % func[1], TOP_SRC_DIR)
 
 # PACKAGE
 # PACKAGE_VERSION
 # DEVEL_VERSION
-utils.addToConfig('#define PACKAGE "%s"' % PACKAGE)
-utils.addToConfig('#define PACKAGE_VERSION "%s"' % PACKAGE_VERSION)
+utils.addToConfig('#define PACKAGE "%s"' % PACKAGE, TOP_SRC_DIR)
+utils.addToConfig('#define PACKAGE_VERSION "%s"' % PACKAGE_VERSION, TOP_SRC_DIR)
 if DEVEL_VERSION:
-  utils.addToConfig('#define DEVEL_VERSION 1')
+  utils.addToConfig('#define DEVEL_VERSION 1', TOP_SRC_DIR)
 
 # ENABLE_ASSERTIONS
 # ENABLE_NLS
@@ -604,22 +604,22 @@ values = [
 for val in values:
   if (env.has_key(val[0]) and env[val[0]]) or \
       ARGUMENTS.get(val[1]):
-    utils.addToConfig('#define %s 1' % val[0])
+    utils.addToConfig('#define %s 1' % val[0], TOP_SRC_DIR)
   else:
-    utils.addToConfig('/* #undef %s */' % val[0])
+    utils.addToConfig('/* #undef %s */' % val[0], TOP_SRC_DIR)
 
 
 env['EXTRA_LIBS'] = []
 # HAVE_LIBAIKSAURUS
 # AIKSAURUS_H_LOCATION
 if conf.CheckLib('Aiksaurus'):
-  utils.addToConfig("#define HAVE_LIBAIKSAURUS 1")
+  utils.addToConfig("#define HAVE_LIBAIKSAURUS 1", TOP_SRC_DIR)
   if (conf.CheckCXXHeader("Aiksaurus.h")):
-    utils.addToConfig("#define AIKSAURUS_H_LOCATION <Aiksaurus.h>")
+    utils.addToConfig("#define AIKSAURUS_H_LOCATION <Aiksaurus.h>", TOP_SRC_DIR)
   elif (conf.CheckCXXHeader("Aiksaurus/Aiksaurus.h")):
-    utils.addToConfig("#define AIKSAURUS_H_LOCATION <Aiksaurus/Aiksaurus.h>")
+    utils.addToConfig("#define AIKSAURUS_H_LOCATION <Aiksaurus/Aiksaurus.h>", TOP_SRC_DIR)
   else:
-    utils.addToConfig("#define AIKSAURUS_H_LOCATION")
+    utils.addToConfig("#define AIKSAURUS_H_LOCATION", TOP_SRC_DIR)
   env['EXTRA_LIBS'].append('Aiksaurus')
 
 # USE_ASPELL
@@ -631,19 +631,19 @@ spell_engine = ARGUMENTS.get('spell', 'auto')
 spell_detected = False
 if spell_engine in ['auto', 'aspell'] and \
   conf.CheckLib('aspell'):
-  utils.addToConfig('#define USE_ASPELL 1')
+  utils.addToConfig('#define USE_ASPELL 1', TOP_SRC_DIR)
   env['USE_ASPELL'] = True
   env['EXTRA_LIBS'].append('aspell')
   spell_detected = True
 elif spell_engine in ['auto', 'pspell'] and \
   conf.CheckLib('pspell'):
-  utils.addToConfig('#define USE_PSPELL 1')
+  utils.addToConfig('#define USE_PSPELL 1', TOP_SRC_DIR)
   env['USE_PSPELL'] = True
   env['EXTRA_LIBS'].append('pspell')
   spell_detected = True
 elif spell_engine in ['auto', 'ispell'] and \
   conf.CheckLib('ispell'):
-  utils.addToConfig('#define USE_ISPELL 1')
+  utils.addToConfig('#define USE_ISPELL 1', TOP_SRC_DIR)
   env['USE_ISPELL'] = True
   env['EXTRA_LIBS'].append('ispell')
   spell_detected = True
@@ -659,54 +659,54 @@ if not spell_detected:
 # USE_MACOSX_PACKAGING
 # USE_WINDOWS_PACKAGING
 if packaging_method == 'windows':
-  utils.addToConfig('#define USE_WINDOWS_PACKAGING 1')
+  utils.addToConfig('#define USE_WINDOWS_PACKAGING 1', TOP_SRC_DIR)
 elif packaging_method == 'posix':
-  utils.addToConfig('#define USE_POSIX_PACKAGING 1')
+  utils.addToConfig('#define USE_POSIX_PACKAGING 1', TOP_SRC_DIR)
 elif packaging_method == 'mac':
-  utils.addToConfig('#define USE_MACOSX_PACKAGING 1')
+  utils.addToConfig('#define USE_MACOSX_PACKAGING 1', TOP_SRC_DIR)
 
 # BOOST_POSIX
 if boost_posix:
-  utils.addToConfig('#define BOOST_POSIX 1')
+  utils.addToConfig('#define BOOST_POSIX 1', TOP_SRC_DIR)
 else:
-  utils.addToConfig('/* #undef BOOST_POSIX */')
+  utils.addToConfig('/* #undef BOOST_POSIX */', TOP_SRC_DIR)
 
 # HAVE_PUTENV
 if conf.CheckPutenv():
-  utils.addToConfig('#define HAVE_PUTENV 1')
+  utils.addToConfig('#define HAVE_PUTENV 1', TOP_SRC_DIR)
 else:
-  utils.addToConfig('/* #undef HAVE_PUTENV */')
+  utils.addToConfig('/* #undef HAVE_PUTENV */', TOP_SRC_DIR)
   
 # HAVE_DECL_ISTREAMBUF_ITERATOR
 if conf.CheckIstreambufIterator():
-  utils.addToConfig('#define HAVE_DECL_ISTREAMBUF_ITERATOR 1')
+  utils.addToConfig('#define HAVE_DECL_ISTREAMBUF_ITERATOR 1', TOP_SRC_DIR)
 else:
-  utils.addToConfig('/* #undef HAVE_DECL_ISTREAMBUF_ITERATOR */')
+  utils.addToConfig('/* #undef HAVE_DECL_ISTREAMBUF_ITERATOR */', TOP_SRC_DIR)
 
 # MKDIR_TAKES_ONE_ARG
 if conf.CheckMkdirOneArg():
-  utils.addToConfig('#define MKDIR_TAKES_ONE_ARG 1')
+  utils.addToConfig('#define MKDIR_TAKES_ONE_ARG 1', TOP_SRC_DIR)
 else:
-  utils.addToConfig('/* #undef MKDIR_TAKES_ONE_ARG */')
+  utils.addToConfig('/* #undef MKDIR_TAKES_ONE_ARG */', TOP_SRC_DIR)
 
 # HAVE_STD_COUNT
 if conf.CheckStdCount():
-  utils.addToConfig('#define HAVE_STD_COUNT 1')
+  utils.addToConfig('#define HAVE_STD_COUNT 1', TOP_SRC_DIR)
 else:
-  utils.addToConfig('/* #undef HAVE_STD_COUNT */')
+  utils.addToConfig('/* #undef HAVE_STD_COUNT */', TOP_SRC_DIR)
 
 # SELECT_TYPE_ARG1
 # SELECT_TYPE_ARG234
 # SELECT_TYPE_ARG5
 (arg1, arg234, arg5) = conf.CheckSelectArgType()
-utils.addToConfig('#define SELECT_TYPE_ARG1 %s' % arg1)
-utils.addToConfig('#define SELECT_TYPE_ARG234 %s' % arg234)
-utils.addToConfig('#define SELECT_TYPE_ARG5 %s' % arg5)
+utils.addToConfig('#define SELECT_TYPE_ARG1 %s' % arg1, TOP_SRC_DIR)
+utils.addToConfig('#define SELECT_TYPE_ARG234 %s' % arg234, TOP_SRC_DIR)
+utils.addToConfig('#define SELECT_TYPE_ARG5 %s' % arg5, TOP_SRC_DIR)
 
 # mkstemp
 # USE_BOOST_FORMAT
 # WANT_GETFILEATTRIBUTESEX_WRAPPER
-utils.endConfigH()
+utils.endConfigH(TOP_SRC_DIR)
 
 #
 # Finish auto-configuration
@@ -755,7 +755,7 @@ else:
 # Build parameters CPPPATH etc
 #
 # boost is always in
-env.AppendUnique(CPPPATH = ['#boost', '#src'])
+env.AppendUnique(CPPPATH = ['$TOP_SRC_DIR/boost', '$TOP_SRC_DIR/src'])
 
 # TODO: add (more) appropriate compiling options (-DNDEBUG etc)
 # for debug/release mode 
@@ -868,977 +868,17 @@ Help(opts.GenerateHelpText(env))
 #----------------------------------------------------------
 # Start building
 #----------------------------------------------------------
-#Export('env')
+Export('env')
+
 SConsignFile(os.path.abspath('%s/sconsign' % env['BUILDDIR']))
-BuildDir('#$BUILDDIR', 'src', duplicate = 0)
-env.BuildDir('#$BUILDDIR', 'src', duplicate = 0)
+
 print "Building all targets recursively"
 
-print "Entering src/support"
-
-env.Append(CPPPATH = ['.'])
-
-env['SUBST_KEYS'] = ['LYX_DIR', 'LOCALEDIR', 'TOP_SRCDIR', 'PROGRAM_SUFFIX']
-env.substFile('#$BUILDDIR/support/package.C', 'src/support/package.C.in')
-
-supports = env.StaticLibrary(
-  target = '$LOCALLIBPATH/supports',
-  source = map(lambda a: '#$BUILDDIR/support/%s' % a, Split('''
-    FileMonitor.C
-    abort.C
-    chdir.C
-    convert.C
-    copy.C
-    environment.C
-    filefilterlist.C
-    filename.C
-    filetools.C
-    forkedcall.C
-    forkedcallqueue.C
-    forkedcontr.C
-    fs_extras.C
-    getcwd.C
-    kill.C
-    lstrings.C
-    lyxtime.C
-    lyxsum.C
-    mkdir.C
-    os.C
-    path.C
-    package.C
-    rename.C
-    socktools.C
-    systemcall.C
-    tempname.C
-    userinfo.C
-    unlink.C
-  '''))
-)
-
-print "Entering src/mathed"
-
-mathed = env.StaticLibrary(
-  target = '$LOCALLIBPATH/mathed',
-  source = map(lambda a: "#$BUILDDIR/mathed/%s" % a, Split('''
-    textpainter.C
-    math_amsarrayinset.C
-    math_arrayinset.C
-    math_atom.C
-    math_autocorrect.C
-    math_biginset.C
-    math_binominset.C
-    math_boldsymbolinset.C
-    math_boxinset.C
-    math_boxedinset.C
-    math_braceinset.C
-    math_casesinset.C
-    math_charinset.C
-    math_colorinset.C
-    math_commentinset.C
-    math_data.C
-    math_decorationinset.C
-    math_deliminset.C
-    math_dfracinset.C
-    math_diffinset.C
-    math_diminset.C
-    math_dotsinset.C
-    math_envinset.C
-    math_extern.C
-    math_exfuncinset.C
-    math_exintinset.C
-    math_factory.C
-    math_fboxinset.C
-    math_frameboxinset.C
-    math_fontinset.C
-    math_fontoldinset.C
-    math_fracinset.C
-    math_fracbase.C
-    math_gridinset.C
-    math_hullinset.C
-    math_inset.C
-    math_kerninset.C
-    math_lefteqninset.C
-    math_liminset.C
-    math_macro.C
-    math_macroarg.C
-    math_macrotemplate.C
-    math_macrotable.C
-    math_makeboxinset.C
-    math_mathmlstream.C
-    math_matrixinset.C
-    math_nestinset.C
-    math_numberinset.C
-    math_oversetinset.C
-    math_parinset.C
-    math_parser.C
-    math_phantominset.C
-    math_rootinset.C
-    math_scriptinset.C
-    math_sizeinset.C
-    math_spaceinset.C
-    math_splitinset.C
-    math_sqrtinset.C
-    math_stackrelinset.C
-    math_streamstr.C
-    math_stringinset.C
-    math_substackinset.C
-    math_support.C
-    math_symbolinset.C
-    math_tabularinset.C
-    math_tfracinset.C
-    math_unknowninset.C
-    math_undersetinset.C
-    math_xarrowinset.C
-    math_xymatrixinset.C
-    command_inset.C
-    ref_inset.C
-  '''))
-)
-
-print "Entering src/insets"
-
-insets = env.StaticLibrary(
-  target = '$LOCALLIBPATH/insets',
-  source = map(lambda a: "#$BUILDDIR/insets/%s" % a, Split('''
-    mailinset.C
-    ExternalSupport.C
-    ExternalTemplate.C
-    ExternalTransforms.C
-    render_button.C
-    render_graphic.C
-    render_preview.C
-    inset.C
-    insetbase.C
-    insetbibitem.C
-    insetbibtex.C
-    insetbox.C
-    insetbranch.C
-    insetcaption.C
-    insetcharstyle.C
-    insetcite.C
-    insetcollapsable.C
-    insetcommand.C
-    insetcommandparams.C
-    insetenv.C
-    insetert.C
-    insetexternal.C
-    insetfloat.C
-    insetfloatlist.C
-    insetfoot.C
-    insetfootlike.C
-    insetgraphicsParams.C
-    insetgraphics.C
-    insethfill.C
-    insetinclude.C
-    insetindex.C
-    insetlabel.C
-    insetlatexaccent.C
-    insetline.C
-    insetmarginal.C
-    insetnewline.C
-    insetnote.C
-    insetoptarg.C
-    insetpagebreak.C
-    insetquotes.C
-    insetref.C
-    insetspace.C
-    insetspecialchar.C
-    insettabular.C
-    insettext.C
-    insettoc.C
-    inseturl.C
-    insetvspace.C
-    insetwrap.C
-  '''))
-)
-
-print "Entering src/frontends"
-
-frontends = env.StaticLibrary(
-  target = '$LOCALLIBPATH/frontends',
-  source = map(lambda a: "#$BUILDDIR/frontends/%s" % a, Split('''
-    Alert.C
-    Dialogs.C
-    LyXView.C
-    Painter.C
-    Timeout.C
-    Toolbars.C
-    guiapi.C
-    nullpainter.C
-    screen.C
-    screen.h
-  '''))
-)
-
-print "Entering src/frontends/qt3"
-
-qtenv = env.Copy()
-
-# load qt3 tools
-qtenv.Tool('qt')
-
-qtenv.Append(CPPPATH = [
-  '#$BUILDDIR',
-  '#$BUILDDIR/frontends',
-  '#$BUILDDIR/images',
-  '#$BUILDDIR/frontends/controllers',
-  '#$BUILDDIR/frontends/qt3',
-  '$QT_INC_DIR',
-  '.']
-)
-
-ui_files = Split('''
-  BiblioModuleBase.ui
-  BranchesModuleBase.ui
-  BulletsModuleBase.ui
-  TextLayoutModuleBase.ui
-  LanguageModuleBase.ui
-  LaTeXModuleBase.ui
-  MarginsModuleBase.ui
-  NumberingModuleBase.ui
-  MathsModuleBase.ui
-  PageLayoutModuleBase.ui
-  PreambleModuleBase.ui
-  QAboutDialogBase.ui
-  QAskForTextDialog.ui
-  QBibitemDialogBase.ui
-  QBibtexDialogBase.ui
-  QBibtexAddDialogBase.ui
-  QBoxDialogBase.ui
-  QBranchDialogBase.ui
-  QChangesDialogBase.ui
-  QCharacterDialogBase.ui
-  QCitationDialogBase.ui
-  QCitationFindDialogBase.ui
-  QDelimiterDialogBase.ui
-  QDocumentDialogBase.ui
-  QErrorListDialogBase.ui
-  QERTDialogBase.ui
-  QExternalDialogBase.ui
-  QFloatDialogBase.ui
-  QGraphicsDialogBase.ui
-  QIncludeDialogBase.ui
-  QIndexDialogBase.ui
-  QLogDialogBase.ui
-  QViewSourceDialogBase.ui
-  QMathDialogBase.ui
-  QMathMatrixDialogBase.ui
-  QNoteDialogBase.ui
-  QParagraphDialogBase.ui
-  QPrefAsciiModule.ui
-  QPrefColorsModule.ui
-  QPrefConvertersModule.ui
-  QPrefCopiersModule.ui
-  QPrefCygwinPathModule.ui
-  QPrefDateModule.ui
-  QPrefDisplayModule.ui
-  QPrefFileformatsModule.ui
-  QPrefIdentityModule.ui
-  QPrefKeyboardModule.ui
-  QPrefLanguageModule.ui
-  QPrefLatexModule.ui
-  QPrefPathsModule.ui
-  QPrefPrinterModule.ui
-  QPrefScreenFontsModule.ui
-  QPrefsDialogBase.ui
-  QPrefSpellcheckerModule.ui
-  QPrefUIModule.ui
-  QPrintDialogBase.ui
-  QRefDialogBase.ui
-  QSearchDialogBase.ui
-  QSendtoDialogBase.ui
-  QShowFileDialogBase.ui
-  QSpellcheckerDialogBase.ui
-  QTabularCreateDialogBase.ui
-  QTabularDialogBase.ui
-  QTexinfoDialogBase.ui
-  QThesaurusDialogBase.ui
-  QTocDialogBase.ui
-  QURLDialogBase.ui
-  QVSpaceDialogBase.ui
-  QWrapDialogBase.ui
-''')
-
-
-moc_files = map(lambda a: "#$BUILDDIR/frontends/qt3/%s" % a, Split('''
-  BulletsModule.C
-  emptytable.C
-  FileDialog_private.C
-  floatplacement.C
-  iconpalette.C
-  lengthcombo.C
-  panelstack.C
-  QAboutDialog.C
-  QBibitemDialog.C
-  QBibtexDialog.C
-  QBoxDialog.C
-  QBranchDialog.C
-  QBrowseBox.C
-  QChangesDialog.C
-  QCharacterDialog.C
-  QCitationDialog.C
-  QCommandBuffer.C
-  QCommandEdit.C
-  QContentPane.C
-  QDelimiterDialog.C
-  QDocumentDialog.C
-  QErrorListDialog.C
-  QERTDialog.C
-  QExternalDialog.C
-  QFloatDialog.C
-  QGraphicsDialog.C
-  QIncludeDialog.C
-  QIndexDialog.C
-  QLogDialog.C
-  QViewSourceDialog.C
-  QLPopupMenu.C
-  QLPrintDialog.C
-  QMathDialog.C
-  QMathMatrixDialog.C
-  QNoteDialog.C
-  QParagraphDialog.C
-  QPrefsDialog.C
-  QRefDialog.C
-  QSearchDialog.C
-  QSendtoDialog.C
-  qsetborder.C
-  QShowFileDialog.C
-  QSpellcheckerDialog.C
-  QDialogView.C
-  QTabularCreateDialog.C
-  QTabularDialog.C
-  QTexinfoDialog.C
-  QThesaurusDialog.C
-  QTocDialog.C
-  qttableview.C
-  QtView.C
-  QURLDialog.C
-  QVSpaceDialog.C
-  QWrapDialog.C
-  QLToolbar.C
-  socket_callback.C
-  validators.C
-'''))
-
-# under windows, because of the .C/.c confusion
-# moc_files are not moced automatically.
-# I am doing it manually here, until lyx changes
-# file extension from .C to .cpp
-moced_files = []
-if os.name == 'nt' or sys.platform == 'cygwin':
-  moced_files = [qtenv.Moc(x.replace('.C', '.h')) for x in moc_files]
-
-if frontend == "qt3":
-  qt3 = qtenv.StaticLibrary(
-    target = '$LOCALLIBPATH/qt3',
-    source = map(lambda a: "#$BUILDDIR/frontends/qt3/%s" % a, Split('''
-    QDialogView.C
-    Alert_pimpl.C
-    Dialogs.C
-    FileDialog.C
-    LyXKeySymFactory.C
-    LyXScreenFactory.C
-    QLMenubar.C
-    qtTimeout.C
-    QAbout.C
-    QBibitem.C
-    QBibtex.C
-    QBox.C
-    QBranch.C
-    QChanges.C
-    QCharacter.C
-    QCitation.C
-    QDocument.C
-    QErrorList.C
-    QERT.C
-    QExternal.C
-    QFloat.C
-    QGraphics.C
-    QInclude.C
-    QIndex.C
-    QLImage.C
-    QLog.C
-    QViewSource.C
-    QLPainter.C
-    QLyXKeySym.C
-    QMath.C
-    QNote.C
-    QParagraph.C
-    QPrefs.C
-    QPrint.C
-    QRef.C
-    QSearch.C
-    QSendto.C
-    QShowFile.C
-    QSpellchecker.C
-    QTabular.C
-    QTabularCreate.C
-    QTexinfo.C
-    QThesaurus.C
-    QToc.C
-    QURL.C
-    QVSpace.C
-    QWorkArea.C
-    QWrap.C
-    Qt2BC.C
-    WorkAreaFactory.C
-    checkedwidgets.C
-    lyx_gui.C
-    lcolorcache.C
-    panelstack.C
-    qcoloritem.C
-    qfontexample.C
-    qfont_loader.C
-    qfont_metrics.C
-    qscreen.C
-    qt_helpers.C
-  ''')) +
-  moc_files + moced_files +
-  ['#$BUILDDIR/frontends/qt3/ui/' + x for x in ui_files]
-)
-
-
-print "Entering src/frontends/qt4"
-
-qtenv = env.Copy()
-
-# local qt4 toolset from
-# http://www.iua.upf.es/~dgarcia/Codders/sconstools.html
+# Now, specification of targets is difficult
+# we can do this though:
 #
-# NOTE: I have to patch qt4.py since it does not automatically
-# process .C file!!! (add to cxx_suffixes )
-#
-if frontend == 'qt4':
-  qtenv.Tool('qt4', ['$TOP_SRC_DIR/config'])
-  qtenv.EnableQt4Modules(env['QT_LIB'], debug = False)
+env['BUILD_TARGETS'] = BUILD_TARGETS
 
-qtenv.Append(CPPPATH = [
-  '#$BUILDDIR',
-  '#$BUILDDIR/frontends',
-  '#$BUILDDIR/images',
-  '#$BUILDDIR/frontends/controllers',
-  '$QT_INC_PATH',
-  '$QT_INC_PATH/Qt',
-  '$QT_INC_PATH/QtCore',
-  '$QT_INC_PATH/QtGui',
-  '$QT_INC_PATH/Qt3Support',
-  '.']
-)
+env.SConscript('SConscript', duplicate = 0)
 
-# FIXME: replace by something from pkg_config
-qtenv.Append(CCFLAGS = [
-  '-DHAVE_CONFIG_H',
-  '-DQT_CLEAN_NAMESPACE',
-  '-DQT_GENUINE_STR',
-  '-DQT_NO_STL',
-  '-DQT3_SUPPORT',
-  '-Winvalid-pch']
-)
-ui_files = Split('''
-  BiblioUi
-  BranchesUi
-  BulletsUi
-  TextLayoutUi
-  LanguageUi
-  LaTeXUi
-  MarginsUi
-  NumberingUi
-  MathsUi
-  PageLayoutUi
-  PreambleUi
-  QAboutUi
-  QAskForTextUi
-  QBibitemUi
-  QBibtexUi
-  QBibtexAddUi
-  QBoxUi
-  QBranchUi
-  QChangesUi
-  QCharacterUi
-  QCitationUi
-  QCitationFindUi
-  QDelimiterUi
-  QDocumentUi
-  QErrorListUi
-  QERTUi
-  QExternalUi
-  QFloatUi
-  QGraphicsUi
-  QIncludeUi
-  QIndexUi
-  QLogUi
-  QViewSourceUi
-  QMathUi
-  QMathMatrixUi
-  QNoteUi
-  QParagraphUi
-  QPrefAsciiUi
-  QPrefColorsUi
-  QPrefConvertersUi
-  QPrefCopiersUi
-  QPrefCygwinPathUi
-  QPrefDateUi
-  QPrefDisplayUi
-  QPrefFileformatsUi
-  QPrefIdentityUi
-  QPrefKeyboardUi
-  QPrefLanguageUi
-  QPrefLatexUi
-  QPrefPathsUi
-  QPrefPrinterUi
-  QPrefScreenFontsUi
-  QPrefsUi
-  QPrefSpellcheckerUi
-  QPrefUi
-  QPrintUi
-  QRefUi
-  QSearchUi
-  QSendtoUi
-  QShowFileUi
-  QSpellcheckerUi
-  QTabularCreateUi
-  QTabularUi
-  QTexinfoUi
-  QThesaurusUi
-  QTocUi
-  QURLUi
-  QVSpaceUi
-  QWrapUi
-''')
-
-moc_files = Split('''
-  BulletsModule.C
-  emptytable.C
-  FileDialog_private.C
-  floatplacement.C
-  iconpalette.C
-  lengthcombo.C
-  panelstack.C
-  QAboutDialog.C
-  QBibitemDialog.C
-  QBibtexDialog.C
-  QBoxDialog.C
-  QBranchDialog.C
-  QBranches.C
-  QChangesDialog.C
-  QCharacterDialog.C
-  QCitationDialog.C
-  QCommandBuffer.C
-  QCommandEdit.C
-  QDelimiterDialog.C
-  QDocumentDialog.C
-  QErrorListDialog.C
-  QERTDialog.C
-  QExternalDialog.C
-  QFloatDialog.C
-  QGraphicsDialog.C
-  QIncludeDialog.C
-  QIndexDialog.C
-  QLAction.C
-  QLogDialog.C
-  QViewSourceDialog.C
-  QViewSource.C
-  QLMenubar.C
-  QLPopupMenu.C
-  QLPrintDialog.C
-  QMathDialog.C
-  QMathMatrixDialog.C
-  QNoteDialog.C
-  QParagraphDialog.C
-  QPrefsDialog.C
-  QRefDialog.C
-  QSearchDialog.C
-  QSendtoDialog.C
-  qsetborder.C
-  QShowFileDialog.C
-  QSpellcheckerDialog.C
-  QDialogView.C
-  QTabularCreateDialog.C
-  QTabularDialog.C
-  QTexinfoDialog.C
-  QThesaurusDialog.C
-  TocModel.C
-  QTocDialog.C
-  QtView.C
-  QURLDialog.C
-  QVSpaceDialog.C
-  QWorkArea.C
-  QWrapDialog.C
-  QLToolbar.C
-  socket_callback.C
-  validators.C
-''')
-
-#
-# Compile resources
-#
-if frontend == 'qt4':
-  resources = [qtenv.Uic4('ui/' + x) for x in ui_files]
-
-source_files = Split('''
-  QDialogView.C
-  Alert_pimpl.C
-  Dialogs.C
-  FileDialog.C
-  LyXKeySymFactory.C
-  LyXScreenFactory.C
-  QLMenubar.C
-  qtTimeout.C
-  QAbout.C
-  QBibitem.C
-  QBibtex.C
-  QBox.C
-  QBranch.C
-  QBranches.C
-  QChanges.C
-  QCharacter.C
-  QCitation.C
-  QDocument.C
-  QErrorList.C
-  QERT.C
-  QExternal.C
-  QFloat.C
-  QGraphics.C
-  QInclude.C
-  QIndex.C
-  QLAction.C
-  QLImage.C
-  QLog.C
-  QViewSource.C
-  QLPainter.C
-  QLyXKeySym.C
-  QMath.C
-  QNote.C
-  QParagraph.C
-  QPrefs.C
-  QPrint.C
-  QRef.C
-  QSearch.C
-  QSendto.C
-  QShowFile.C
-  QSpellchecker.C
-  QTabular.C
-  QTabularCreate.C
-  QTexinfo.C
-  QThesaurus.C
-  QToc.C
-  QURL.C
-  QVSpace.C
-  QWorkArea.C
-  QWrap.C
-  Qt2BC.C
-  WorkAreaFactory.C
-  checkedwidgets.C
-  lyx_gui.C
-  lcolorcache.C
-  panelstack.C
-  qfontexample.C
-  qfont_loader.C
-  qfont_metrics.C
-  qscreen.C
-  qt_helpers.C
-''')
-
-if frontend == 'qt4':
-  qt4 = qtenv.StaticLibrary(
-    target = '$LOCALLIBPATH/qt4',
-    LIBS = qtenv['QT_LIB'],
-    source = map(lambda a: "#$BUILDDIR/frontends/qt4/%s" % a, source_files + moc_files)
-   )
-
-print "Entering src/frontends/controllers"
-
-controllers = env.StaticLibrary(
-  target = '$LOCALLIBPATH/controllers',
-  source = map(lambda a: "#$BUILDDIR/frontends/controllers/%s" % a, Split('''
-    Dialog.C
-    Kernel.C
-    biblio.C
-    character.C
-    frnt_lang.C
-    tex_helpers.C
-    BCView.C
-    ButtonController.C
-    ButtonPolicies.C
-    ControlAboutlyx.C
-    ControlBibtex.C
-    ControlBox.C
-    ControlBranch.C
-    ControlCharacter.C
-    ControlChanges.C
-    ControlCitation.C
-    ControlCommand.C
-    ControlCommandBuffer.C
-    ControlDocument.C
-    ControlErrorList.C
-    ControlERT.C
-    ControlExternal.C
-    ControlFloat.C
-    ControlGraphics.C
-    ControlInclude.C
-    ControlLog.C
-    ControlViewSource.C
-    ControlMath.C
-    ControlNote.C
-    ControlParagraph.C
-    ControlPreamble.C
-    ControlPrefs.C
-    ControlPrint.C
-    ControlRef.C
-    ControlSearch.C
-    ControlSendto.C
-    ControlShowFile.C
-    ControlSpellchecker.C
-    ControlTabular.C
-    ControlTabularCreate.C
-    ControlTexinfo.C
-    ControlThesaurus.C
-    ControlToc.C
-    ControlVSpace.C
-    ControlWrap.C
-    helper_funcs.C
-    helper_funcs.h
-  '''))
-)
-
-print "Entering src/graphics"
-
-graphics = env.StaticLibrary(
-  target = '$LOCALLIBPATH/graphics',
-  source = map(lambda a: "#$BUILDDIR/graphics/%s" % a, Split('''
-    GraphicsCache.C
-    GraphicsCacheItem.C
-    GraphicsConverter.C
-    GraphicsImage.C
-    GraphicsLoader.C
-    GraphicsParams.C
-    LoaderQueue.C
-    GraphicsTypes.C
-    PreviewImage.C
-    PreviewLoader.C
-    Previews.C
-  '''))
-)
-
-
-# INCLUDED BOOST not really supported yet.
-#if env['INCLUDED_BOOST']:
-#  env.SConscript(dirs = ['#boost/libs'], duplicate=0)
-
-#
-# Start in src directory
-#
-env['SUBST_KEYS'] = ['PACKAGE_VERSION', 'VERSION_INFO']
-env.substFile('#$BUILDDIR/version.C', 'src/version.C.in')
-
-lyx_source = Split('''
-  Bidi.C
-  BufferView.C
-  BufferView_pimpl.C
-  Bullet.C
-  BranchList.C
-  Chktex.C
-  Color.C
-  CutAndPaste.C
-  DepTable.C
-  FloatList.C
-  Floating.C
-  FontIterator.C
-  FuncStatus.C
-  InsetList.C
-  LColor.C
-  LaTeX.C
-  LaTeXFeatures.C
-  LyXAction.C
-  MenuBackend.C
-  ParagraphParameters.C
-  PrinterParams.C
-  Spacing.C
-  Thesaurus.C
-  ToolbarBackend.C
-  author.C
-  boost.C
-  box.C
-  buffer.C
-  buffer_funcs.C
-  bufferlist.C
-  bufferparams.C
-  bufferview_funcs.C
-  changes.C
-  chset.C
-  converter.C
-  counters.C
-  coordcache.C
-  cursor.C
-  cursor_slice.C
-  debug.C
-  dimension.C
-  dociterator.C
-  encoding.C
-  errorlist.C
-  exporter.C
-  gettext.C
-  factory.C
-  format.C
-  funcrequest.C
-  graph.C
-  importer.C
-  intl.C
-  insetiterator.C
-  kbmap.C
-  kbsequence.C
-  language.C
-  session.C
-  lengthcommon.C
-  lyx_cb.C
-  lyx_main.C
-  lyx_sty.C
-  lyxfont.C
-  lyxfind.C
-  lyxfunc.C
-  lyxgluelength.C
-  lyxlayout.C
-  lyxlength.C
-  lyxlex.C
-  lyxlex_pimpl.C
-  lyxrc.C
-  lyxrow.C
-  lyxrow_funcs.C
-  lyxserver.C
-  lyxsocket.C
-  lyxtextclass.C
-  lyxtextclasslist.C
-  lyxvc.C
-  messages.C
-  metricsinfo.C
-  mover.C
-  output.C
-  outputparams.C
-  output_docbook.C
-  output_latex.C
-  output_linuxdoc.C
-  output_plaintext.C
-  paragraph.C
-  paragraph_funcs.C
-  paragraph_pimpl.C
-  pariterator.C
-  SpellBase.C
-  rowpainter.C
-  sgml.C
-  tabular.C
-  tex-accent.C
-  tex-strings.C
-  texrow.C
-  text.C
-  text2.C
-  text3.C
-  TocBackend.C
-  toc.C
-  trans.C
-  trans_mgr.C
-  undo.C
-  vc-backend.C
-  version.C
-  vspace.C
-  main.C
-''')
-
-if env.has_key('USE_ASPELL') and env['USE_ASPELL']:
-  lyx_source += ['aspell.C']
-elif env.has_key('USE_PSPELL') and env['USE_PSPELL']:
-  lyx_source += ['pspell.C']
-elif env.has_key('USE_ISPELL') and env['USE_ISPELL']:
-  lyx_source += ['ispell.C']
-
-#
-# Build lyx with given frontend
-#
-lyx = env.Program(
-  target = '#$BUILDDIR/lyx',
-  source = map(lambda a: "#$BUILDDIR/%s" % a, lyx_source),
-  LIBS = [
-    'mathed',
-    'insets',
-    'frontends',
-    env['frontend'],
-    'controllers',
-    'graphics',
-    'supports'] +
-    env['BOOST_LIBRARIES'] +
-    env['EXTRA_LIBS'] +
-    env['SYSTEM_LIBS']
-)
-
-print "Entering src/client"
-
-lyxclient = env.Program(
-  target = '#$BUILDDIR/client/lyxclient',
-  LIBS = [ 'boost_regex', 'boost_filesystem',
-    'supports' ] + env['socket_libs'],
-  source = map(lambda a: "#$BUILDDIR/client/%s" % a, Split('''
-    boost.C
-    client.C
-    debug.C
-    gettext.C
-    messages.C
-  '''))
-)
-
-print "Entering src/tex2lyx"
-
-tex2lyx_env = env.Copy()
-# the order is important here.
-tex2lyx_env.Prepend(CPPPATH = ['#$BUILDDIR/tex2lyx'])
-tex2lyx_env.Append(LIBPATH = ['#$LOCALLIBPATH'])
-
-tex2lyx_env.fileCopy('#$BUILDDIR/tex2lyx/FloatList.C', 'src/FloatList.C')
-tex2lyx_env.fileCopy('#$BUILDDIR/tex2lyx/Floating.C', 'src/Floating.C')
-tex2lyx_env.fileCopy('#$BUILDDIR/tex2lyx/counters.C', 'src/counters.C')
-# for some reason I do not know, I have to copy the header files as well.
-tex2lyx_env.fileCopy('#$BUILDDIR/tex2lyx/lyxlayout.h', 'src/lyxlayout.h')
-tex2lyx_env.fileCopy('#$BUILDDIR/tex2lyx/lyxlayout.C', 'src/lyxlayout.C')
-tex2lyx_env.fileCopy('#$BUILDDIR/tex2lyx/lyxtextclass.h', 'src/lyxtextclass.h')
-tex2lyx_env.fileCopy('#$BUILDDIR/tex2lyx/lyxtextclass.C', 'src/lyxtextclass.C')
-tex2lyx_env.fileCopy('#$BUILDDIR/tex2lyx/lyxlex.C', 'src/lyxlex.C')
-tex2lyx_env.fileCopy('#$BUILDDIR/tex2lyx/lyxlex_pimpl.C', 'src/lyxlex_pimpl.C')
-
-tex2lyx = tex2lyx_env.Program(
-  target = '#$BUILDDIR/tex2lyx/tex2lyx',
-  LIBS = ['supports'] + env['BOOST_LIBRARIES'] + env['SYSTEM_LIBS'],
-  source = map(lambda a: "#$BUILDDIR/tex2lyx/%s" % a, Split('''
-    FloatList.C
-    Floating.C
-    counters.C
-    lyxlayout.C
-    lyxtextclass.C
-    lyxlex.C
-    lyxlex_pimpl.C
-    boost.C
-    context.C
-    gettext.C
-    lengthcommon.C
-    lyxfont.C
-    texparser.C
-    tex2lyx.C
-    preamble.C
-    math.C
-    table.C
-    text.C
-  '''))
-)
-
-
-#client = env.SConscript('#$BUILDDIR/client/SConscript', duplicate = 0)
-#lyx = env.SConscript('#$BUILDDIR/SConscript', duplicate=0)
-#tex2lyx = env.SConscript('#$BUILDDIR/tex2lyx/SConscript', duplicate = 0)
-
-# avoid using full path to build them
-Alias('client', lyxclient)
-Alias('tex2lyx', tex2lyx)
-Alias('lyx', lyx)
-
-#Default('lyx', 'tex2lyx')
-#Default('lyx')
-
-print "Building lyx done with targets", map(str, BUILD_TARGETS)
 
