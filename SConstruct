@@ -322,7 +322,7 @@ else:
   build_dir = '%s-%s' % (platform_name, frontend)
   if use_X11 and platform_name == 'cygwin':
     build_dir += '-X11'
-  env['BUILDDIR'] = os.path.join('$mode', build_dir)
+  env['BUILDDIR'] = os.path.join(env['mode'], build_dir)
 # all built libraries will go to build_dir/libs
 # (This is different from the make file approach)
 env['LOCALLIBPATH'] = '#$BUILDDIR/libs'
@@ -473,7 +473,8 @@ if boost_opt in ['auto', 'system']:
   else:
     env['BOOST_LIBRARIES'] = [sig[1], reg[1], fil[1], ios[1]]
     # assume all boost libraries are in the same path...
-    env.AppendUnique(LIBPATH = sig[0])
+    print sig[0]
+    env.AppendUnique(LIBPATH = [sig[0]])
     env['INCLUDED_BOOST'] = False
     succ = True
 # now, auto and succ = false, or included
@@ -867,20 +868,717 @@ Help(opts.GenerateHelpText(env))
 #----------------------------------------------------------
 # Start building
 #----------------------------------------------------------
-Export('env')
-env.BuildDir('$BUILDDIR', 'src')
+#Export('env')
+SConsignFile(os.path.abspath('%s/sconsign' % env['BUILDDIR']))
+BuildDir('#$BUILDDIR', 'src', duplicate = 0)
+env.BuildDir('#$BUILDDIR', 'src', duplicate = 0)
 print "Building all targets recursively"
 
-client = env.SConscript('#$BUILDDIR/client/SConscript', duplicate = 0)
-lyx = env.SConscript('#$BUILDDIR/SConscript', duplicate=0)
-tex2lyx = env.SConscript('#$BUILDDIR/tex2lyx/SConscript', duplicate = 0)
+print "Entering src/support"
+
+env.Append(CPPPATH = ['.'])
+
+env['SUBST_KEYS'] = ['LYX_DIR', 'LOCALEDIR', 'TOP_SRCDIR', 'PROGRAM_SUFFIX']
+env.substFile('#$BUILDDIR/support/package.C', 'src/support/package.C.in')
+
+supports = env.StaticLibrary(
+  target = '$LOCALLIBPATH/supports',
+  source = map(lambda a: '#$BUILDDIR/support/%s' % a, Split('''
+    FileMonitor.C
+    abort.C
+    chdir.C
+    convert.C
+    copy.C
+    environment.C
+    filefilterlist.C
+    filename.C
+    filetools.C
+    forkedcall.C
+    forkedcallqueue.C
+    forkedcontr.C
+    fs_extras.C
+    getcwd.C
+    kill.C
+    lstrings.C
+    lyxtime.C
+    lyxsum.C
+    mkdir.C
+    os.C
+    path.C
+    package.C
+    rename.C
+    socktools.C
+    systemcall.C
+    tempname.C
+    userinfo.C
+    unlink.C
+  '''))
+)
+
+print "Entering src/mathed"
+
+mathed = env.StaticLibrary(
+  target = '$LOCALLIBPATH/mathed',
+  source = map(lambda a: "#$BUILDDIR/mathed/%s" % a, Split('''
+    textpainter.C
+    math_amsarrayinset.C
+    math_arrayinset.C
+    math_atom.C
+    math_autocorrect.C
+    math_biginset.C
+    math_binominset.C
+    math_boldsymbolinset.C
+    math_boxinset.C
+    math_boxedinset.C
+    math_braceinset.C
+    math_casesinset.C
+    math_charinset.C
+    math_colorinset.C
+    math_commentinset.C
+    math_data.C
+    math_decorationinset.C
+    math_deliminset.C
+    math_dfracinset.C
+    math_diffinset.C
+    math_diminset.C
+    math_dotsinset.C
+    math_envinset.C
+    math_extern.C
+    math_exfuncinset.C
+    math_exintinset.C
+    math_factory.C
+    math_fboxinset.C
+    math_frameboxinset.C
+    math_fontinset.C
+    math_fontoldinset.C
+    math_fracinset.C
+    math_fracbase.C
+    math_gridinset.C
+    math_hullinset.C
+    math_inset.C
+    math_kerninset.C
+    math_lefteqninset.C
+    math_liminset.C
+    math_macro.C
+    math_macroarg.C
+    math_macrotemplate.C
+    math_macrotable.C
+    math_makeboxinset.C
+    math_mathmlstream.C
+    math_matrixinset.C
+    math_nestinset.C
+    math_numberinset.C
+    math_oversetinset.C
+    math_parinset.C
+    math_parser.C
+    math_phantominset.C
+    math_rootinset.C
+    math_scriptinset.C
+    math_sizeinset.C
+    math_spaceinset.C
+    math_splitinset.C
+    math_sqrtinset.C
+    math_stackrelinset.C
+    math_streamstr.C
+    math_stringinset.C
+    math_substackinset.C
+    math_support.C
+    math_symbolinset.C
+    math_tabularinset.C
+    math_tfracinset.C
+    math_unknowninset.C
+    math_undersetinset.C
+    math_xarrowinset.C
+    math_xymatrixinset.C
+    command_inset.C
+    ref_inset.C
+  '''))
+)
+
+print "Entering src/insets"
+
+insets = env.StaticLibrary(
+  target = '$LOCALLIBPATH/insets',
+  source = map(lambda a: "#$BUILDDIR/insets/%s" % a, Split('''
+    mailinset.C
+    ExternalSupport.C
+    ExternalTemplate.C
+    ExternalTransforms.C
+    render_button.C
+    render_graphic.C
+    render_preview.C
+    inset.C
+    insetbase.C
+    insetbibitem.C
+    insetbibtex.C
+    insetbox.C
+    insetbranch.C
+    insetcaption.C
+    insetcharstyle.C
+    insetcite.C
+    insetcollapsable.C
+    insetcommand.C
+    insetcommandparams.C
+    insetenv.C
+    insetert.C
+    insetexternal.C
+    insetfloat.C
+    insetfloatlist.C
+    insetfoot.C
+    insetfootlike.C
+    insetgraphicsParams.C
+    insetgraphics.C
+    insethfill.C
+    insetinclude.C
+    insetindex.C
+    insetlabel.C
+    insetlatexaccent.C
+    insetline.C
+    insetmarginal.C
+    insetnewline.C
+    insetnote.C
+    insetoptarg.C
+    insetpagebreak.C
+    insetquotes.C
+    insetref.C
+    insetspace.C
+    insetspecialchar.C
+    insettabular.C
+    insettext.C
+    insettoc.C
+    inseturl.C
+    insetvspace.C
+    insetwrap.C
+  '''))
+)
+
+print "Entering src/frontends"
+
+frontends = env.StaticLibrary(
+  target = '$LOCALLIBPATH/frontends',
+  source = map(lambda a: "#$BUILDDIR/frontends/%s" % a, Split('''
+    Alert.C
+    Dialogs.C
+    LyXView.C
+    Painter.C
+    Timeout.C
+    Toolbars.C
+    guiapi.C
+    nullpainter.C
+    screen.C
+    screen.h
+  '''))
+)
+
+print "Entering src/frontends/qt3"
+
+qtenv = env.Copy()
+
+# load qt3 tools
+qtenv.Tool('qt')
+
+qtenv.Append(CPPPATH = [
+  '#$BUILDDIR',
+  '#$BUILDDIR/frontends',
+  '#$BUILDDIR/images',
+  '#$BUILDDIR/frontends/controllers',
+  '#$BUILDDIR/frontends/qt3',
+  '$QT_INC_DIR',
+  '.']
+)
+
+ui_files = Split('''
+  BiblioModuleBase.ui
+  BranchesModuleBase.ui
+  BulletsModuleBase.ui
+  TextLayoutModuleBase.ui
+  LanguageModuleBase.ui
+  LaTeXModuleBase.ui
+  MarginsModuleBase.ui
+  NumberingModuleBase.ui
+  MathsModuleBase.ui
+  PageLayoutModuleBase.ui
+  PreambleModuleBase.ui
+  QAboutDialogBase.ui
+  QAskForTextDialog.ui
+  QBibitemDialogBase.ui
+  QBibtexDialogBase.ui
+  QBibtexAddDialogBase.ui
+  QBoxDialogBase.ui
+  QBranchDialogBase.ui
+  QChangesDialogBase.ui
+  QCharacterDialogBase.ui
+  QCitationDialogBase.ui
+  QCitationFindDialogBase.ui
+  QDelimiterDialogBase.ui
+  QDocumentDialogBase.ui
+  QErrorListDialogBase.ui
+  QERTDialogBase.ui
+  QExternalDialogBase.ui
+  QFloatDialogBase.ui
+  QGraphicsDialogBase.ui
+  QIncludeDialogBase.ui
+  QIndexDialogBase.ui
+  QLogDialogBase.ui
+  QViewSourceDialogBase.ui
+  QMathDialogBase.ui
+  QMathMatrixDialogBase.ui
+  QNoteDialogBase.ui
+  QParagraphDialogBase.ui
+  QPrefAsciiModule.ui
+  QPrefColorsModule.ui
+  QPrefConvertersModule.ui
+  QPrefCopiersModule.ui
+  QPrefCygwinPathModule.ui
+  QPrefDateModule.ui
+  QPrefDisplayModule.ui
+  QPrefFileformatsModule.ui
+  QPrefIdentityModule.ui
+  QPrefKeyboardModule.ui
+  QPrefLanguageModule.ui
+  QPrefLatexModule.ui
+  QPrefPathsModule.ui
+  QPrefPrinterModule.ui
+  QPrefScreenFontsModule.ui
+  QPrefsDialogBase.ui
+  QPrefSpellcheckerModule.ui
+  QPrefUIModule.ui
+  QPrintDialogBase.ui
+  QRefDialogBase.ui
+  QSearchDialogBase.ui
+  QSendtoDialogBase.ui
+  QShowFileDialogBase.ui
+  QSpellcheckerDialogBase.ui
+  QTabularCreateDialogBase.ui
+  QTabularDialogBase.ui
+  QTexinfoDialogBase.ui
+  QThesaurusDialogBase.ui
+  QTocDialogBase.ui
+  QURLDialogBase.ui
+  QVSpaceDialogBase.ui
+  QWrapDialogBase.ui
+''')
+
+
+moc_files = map(lambda a: "#$BUILDDIR/frontends/qt3/%s" % a, Split('''
+  BulletsModule.C
+  emptytable.C
+  FileDialog_private.C
+  floatplacement.C
+  iconpalette.C
+  lengthcombo.C
+  panelstack.C
+  QAboutDialog.C
+  QBibitemDialog.C
+  QBibtexDialog.C
+  QBoxDialog.C
+  QBranchDialog.C
+  QBrowseBox.C
+  QChangesDialog.C
+  QCharacterDialog.C
+  QCitationDialog.C
+  QCommandBuffer.C
+  QCommandEdit.C
+  QContentPane.C
+  QDelimiterDialog.C
+  QDocumentDialog.C
+  QErrorListDialog.C
+  QERTDialog.C
+  QExternalDialog.C
+  QFloatDialog.C
+  QGraphicsDialog.C
+  QIncludeDialog.C
+  QIndexDialog.C
+  QLogDialog.C
+  QViewSourceDialog.C
+  QLPopupMenu.C
+  QLPrintDialog.C
+  QMathDialog.C
+  QMathMatrixDialog.C
+  QNoteDialog.C
+  QParagraphDialog.C
+  QPrefsDialog.C
+  QRefDialog.C
+  QSearchDialog.C
+  QSendtoDialog.C
+  qsetborder.C
+  QShowFileDialog.C
+  QSpellcheckerDialog.C
+  QDialogView.C
+  QTabularCreateDialog.C
+  QTabularDialog.C
+  QTexinfoDialog.C
+  QThesaurusDialog.C
+  QTocDialog.C
+  qttableview.C
+  QtView.C
+  QURLDialog.C
+  QVSpaceDialog.C
+  QWrapDialog.C
+  QLToolbar.C
+  socket_callback.C
+  validators.C
+'''))
+
+# under windows, because of the .C/.c confusion
+# moc_files are not moced automatically.
+# I am doing it manually here, until lyx changes
+# file extension from .C to .cpp
+moced_files = []
+if os.name == 'nt' or sys.platform == 'cygwin':
+  moced_files = [qtenv.Moc(x.replace('.C', '.h')) for x in moc_files]
+
+qt3 = qtenv.StaticLibrary(
+  target = '$LOCALLIBPATH/qt3',
+  source = map(lambda a: "#$BUILDDIR/frontends/qt3/%s" % a, Split('''
+    QDialogView.C
+    Alert_pimpl.C
+    Dialogs.C
+    FileDialog.C
+    LyXKeySymFactory.C
+    LyXScreenFactory.C
+    QLMenubar.C
+    qtTimeout.C
+    QAbout.C
+    QBibitem.C
+    QBibtex.C
+    QBox.C
+    QBranch.C
+    QChanges.C
+    QCharacter.C
+    QCitation.C
+    QDocument.C
+    QErrorList.C
+    QERT.C
+    QExternal.C
+    QFloat.C
+    QGraphics.C
+    QInclude.C
+    QIndex.C
+    QLImage.C
+    QLog.C
+    QViewSource.C
+    QLPainter.C
+    QLyXKeySym.C
+    QMath.C
+    QNote.C
+    QParagraph.C
+    QPrefs.C
+    QPrint.C
+    QRef.C
+    QSearch.C
+    QSendto.C
+    QShowFile.C
+    QSpellchecker.C
+    QTabular.C
+    QTabularCreate.C
+    QTexinfo.C
+    QThesaurus.C
+    QToc.C
+    QURL.C
+    QVSpace.C
+    QWorkArea.C
+    QWrap.C
+    Qt2BC.C
+    WorkAreaFactory.C
+    checkedwidgets.C
+    lyx_gui.C
+    lcolorcache.C
+    panelstack.C
+    qcoloritem.C
+    qfontexample.C
+    qfont_loader.C
+    qfont_metrics.C
+    qscreen.C
+    qt_helpers.C
+  ''')) +
+  moc_files + moced_files +
+  ['#$BUILDDIR/frontends/qt3/ui/' + x for x in ui_files]
+)
+
+
+print "Entering src/frontends/controllers"
+
+controllers = env.StaticLibrary(
+  target = '$LOCALLIBPATH/controllers',
+  source = map(lambda a: "#$BUILDDIR/frontends/controllers/%s" % a, Split('''
+    Dialog.C
+    Kernel.C
+    biblio.C
+    character.C
+    frnt_lang.C
+    tex_helpers.C
+    BCView.C
+    ButtonController.C
+    ButtonPolicies.C
+    ControlAboutlyx.C
+    ControlBibtex.C
+    ControlBox.C
+    ControlBranch.C
+    ControlCharacter.C
+    ControlChanges.C
+    ControlCitation.C
+    ControlCommand.C
+    ControlCommandBuffer.C
+    ControlDocument.C
+    ControlErrorList.C
+    ControlERT.C
+    ControlExternal.C
+    ControlFloat.C
+    ControlGraphics.C
+    ControlInclude.C
+    ControlLog.C
+    ControlViewSource.C
+    ControlMath.C
+    ControlNote.C
+    ControlParagraph.C
+    ControlPreamble.C
+    ControlPrefs.C
+    ControlPrint.C
+    ControlRef.C
+    ControlSearch.C
+    ControlSendto.C
+    ControlShowFile.C
+    ControlSpellchecker.C
+    ControlTabular.C
+    ControlTabularCreate.C
+    ControlTexinfo.C
+    ControlThesaurus.C
+    ControlToc.C
+    ControlVSpace.C
+    ControlWrap.C
+    helper_funcs.C
+    helper_funcs.h
+  '''))
+)
+
+print "Entering src/graphics"
+
+graphics = env.StaticLibrary(
+  target = '$LOCALLIBPATH/graphics',
+  source = map(lambda a: "#$BUILDDIR/graphics/%s" % a, Split('''
+    GraphicsCache.C
+    GraphicsCacheItem.C
+    GraphicsConverter.C
+    GraphicsImage.C
+    GraphicsLoader.C
+    GraphicsParams.C
+    LoaderQueue.C
+    GraphicsTypes.C
+    PreviewImage.C
+    PreviewLoader.C
+    Previews.C
+  '''))
+)
+
+
+#
+# Start in src directory
+#
+env['SUBST_KEYS'] = ['PACKAGE_VERSION', 'VERSION_INFO']
+env.substFile('#$BUILDDIR/version.C', 'src/version.C.in')
+
+lyx_source = Split('''
+  Bidi.C
+  BufferView.C
+  BufferView_pimpl.C
+  Bullet.C
+  BranchList.C
+  Chktex.C
+  Color.C
+  CutAndPaste.C
+  DepTable.C
+  FloatList.C
+  Floating.C
+  FontIterator.C
+  FuncStatus.C
+  InsetList.C
+  LColor.C
+  LaTeX.C
+  LaTeXFeatures.C
+  LyXAction.C
+  MenuBackend.C
+  ParagraphParameters.C
+  PrinterParams.C
+  Spacing.C
+  Thesaurus.C
+  ToolbarBackend.C
+  author.C
+  boost.C
+  box.C
+  buffer.C
+  buffer_funcs.C
+  bufferlist.C
+  bufferparams.C
+  bufferview_funcs.C
+  changes.C
+  chset.C
+  converter.C
+  counters.C
+  coordcache.C
+  cursor.C
+  cursor_slice.C
+  debug.C
+  dimension.C
+  dociterator.C
+  encoding.C
+  errorlist.C
+  exporter.C
+  gettext.C
+  factory.C
+  format.C
+  funcrequest.C
+  graph.C
+  importer.C
+  intl.C
+  insetiterator.C
+  kbmap.C
+  kbsequence.C
+  language.C
+  session.C
+  lengthcommon.C
+  lyx_cb.C
+  lyx_main.C
+  lyx_sty.C
+  lyxfont.C
+  lyxfind.C
+  lyxfunc.C
+  lyxgluelength.C
+  lyxlayout.C
+  lyxlength.C
+  lyxlex.C
+  lyxlex_pimpl.C
+  lyxrc.C
+  lyxrow.C
+  lyxrow_funcs.C
+  lyxserver.C
+  lyxsocket.C
+  lyxtextclass.C
+  lyxtextclasslist.C
+  lyxvc.C
+  messages.C
+  metricsinfo.C
+  mover.C
+  output.C
+  outputparams.C
+  output_docbook.C
+  output_latex.C
+  output_linuxdoc.C
+  output_plaintext.C
+  paragraph.C
+  paragraph_funcs.C
+  paragraph_pimpl.C
+  pariterator.C
+  SpellBase.C
+  rowpainter.C
+  sgml.C
+  tabular.C
+  tex-accent.C
+  tex-strings.C
+  texrow.C
+  text.C
+  text2.C
+  text3.C
+  TocBackend.C
+  toc.C
+  trans.C
+  trans_mgr.C
+  undo.C
+  vc-backend.C
+  version.C
+  vspace.C
+  main.C
+''')
+
+#
+# Build lyx with given frontend
+#
+lyx = env.Program(
+  target = '#$BUILDDIR/lyx',
+  source = map(lambda a: "#$BUILDDIR/%s" % a, lyx_source),
+  LIBS = [
+    'mathed',
+    'insets',
+    'frontends',
+    env['frontend'],
+    'controllers',
+    'graphics',
+    'supports'] +
+    env['BOOST_LIBRARIES'] +
+    env['EXTRA_LIBS'] +
+    env['SYSTEM_LIBS']
+)
+
+print "Entering src/client"
+
+lyxclient = env.Program(
+  target = '#$BUILDDIR/client/lyxclient',
+  LIBS = [ 'boost_regex', 'boost_filesystem',
+    'supports' ] + env['socket_libs'],
+  source = map(lambda a: "#$BUILDDIR/client/%s" % a, Split('''
+    boost.C
+    client.C
+    debug.C
+    gettext.C
+    messages.C
+  '''))
+)
+
+print "Entering src/tex2lyx"
+
+tex2lyx_env = env.Copy()
+# the order is important here.
+tex2lyx_env.Prepend(CPPPATH = ['#$BUILDDIR/tex2lyx'])
+tex2lyx_env.Append(LIBPATH = ['#$LOCALLIBPATH'])
+
+tex2lyx_env.fileCopy('#$BUILDDIR/tex2lyx/FloatList.C', 'src/FloatList.C')
+tex2lyx_env.fileCopy('#$BUILDDIR/tex2lyx/Floating.C', 'src/Floating.C')
+tex2lyx_env.fileCopy('#$BUILDDIR/tex2lyx/counters.C', 'src/counters.C')
+# for some reason I do not know, I have to copy the header files as well.
+tex2lyx_env.fileCopy('#$BUILDDIR/tex2lyx/lyxlayout.h', 'src/lyxlayout.h')
+tex2lyx_env.fileCopy('#$BUILDDIR/tex2lyx/lyxlayout.C', 'src/lyxlayout.C')
+tex2lyx_env.fileCopy('#$BUILDDIR/tex2lyx/lyxtextclass.h', 'src/lyxtextclass.h')
+tex2lyx_env.fileCopy('#$BUILDDIR/tex2lyx/lyxtextclass.C', 'src/lyxtextclass.C')
+tex2lyx_env.fileCopy('#$BUILDDIR/tex2lyx/lyxlex.C', 'src/lyxlex.C')
+tex2lyx_env.fileCopy('#$BUILDDIR/tex2lyx/lyxlex_pimpl.C', 'src/lyxlex_pimpl.C')
+
+tex2lyx = tex2lyx_env.Program(
+  target = '#$BUILDDIR/tex2lyx/tex2lyx',
+  LIBS = ['supports'] + env['BOOST_LIBRARIES'] + env['SYSTEM_LIBS'],
+  source = map(lambda a: "#$BUILDDIR/tex2lyx/%s" % a, Split('''
+    FloatList.C
+    Floating.C
+    counters.C
+    lyxlayout.C
+    lyxtextclass.C
+    lyxlex.C
+    lyxlex_pimpl.C
+    boost.C
+    context.C
+    gettext.C
+    lengthcommon.C
+    lyxfont.C
+    texparser.C
+    tex2lyx.C
+    preamble.C
+    math.C
+    table.C
+    text.C
+  '''))
+)
+
+
+#client = env.SConscript('#$BUILDDIR/client/SConscript', duplicate = 0)
+#lyx = env.SConscript('#$BUILDDIR/SConscript', duplicate=0)
+#tex2lyx = env.SConscript('#$BUILDDIR/tex2lyx/SConscript', duplicate = 0)
 
 # avoid using full path to build them
-Alias('client', client)
+Alias('client', lyxclient)
 Alias('tex2lyx', tex2lyx)
 Alias('lyx', lyx)
 
-Default('lyx', 'tex2lyx')
+#Default('lyx', 'tex2lyx')
+#Default('lyx')
 
-print "Buinging lyx done with targets", map(str, BUILD_TARGETS)
+print "Building lyx done with targets", map(str, BUILD_TARGETS)
 
