@@ -14,6 +14,7 @@ print "Entering src/supports"
 
 env.Append(CPPPATH = ['.'])
 
+env['SUBST_KEYS'] = ['LYX_DIR', 'LOCALEDIR', 'TOP_SRCDIR', 'PROGRAM_SUFFIX']
 env.substFile('package.C', 'package.C.in')
 
 supports = env.StaticLibrary(

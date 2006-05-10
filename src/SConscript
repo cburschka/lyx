@@ -32,6 +32,7 @@ if env['INCLUDED_BOOST']:
 # 
 # Start in src directory
 # 
+env['SUBST_KEYS'] = ['PACKAGE_VERSION', 'VERSION_INFO']
 env.substFile('version.C', 'version.C.in')
 
 lyx_source = Split('''

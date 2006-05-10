@@ -94,7 +94,6 @@ PACKAGE_NAME = 'LyX'
 PACKAGE_TARNAME = 'lyx'
 PACKAGE_STRING = '%s %s' % (PACKAGE_NAME, PACKAGE_VERSION)
 PROGRAM_SUFFIX = ''
-config_h = os.path.join('src', 'config.h')
 default_log_file = 'scons_lyx.log'
 
 # FIXME: what is this? (They are used in src/support/package.C.in
@@ -117,17 +116,19 @@ if os.name == 'nt':
   default_with_x = False
   spell_checker = 'auto'
   # FIXME: I need to know what exactly is boost_posix
+  # EF: It indicates to boost which API to use (posix or windows).
+  # If not specified, boost tries to figure out by itself, but it may fail.
   boost_posix = False
   packaging_method = 'windows'
 elif os.name == 'posix' and sys.platform != 'cygwin':
-  platform_name = 'linux'
+  platform_name = sys.platform
   default_frontend = 'qt3'
   # try to use system boost/gettext libraries
   default_boost_opt = 'auto'
   default_gettext_opt = 'auto'
   default_pch_opt = False
   default_with_x = True
-  boost_posix = False
+  boost_posix = True
   packaging_method = 'posix'
 elif os.name == 'posix' and sys.platform == 'cygwin':
   platform_name = 'cygwin'
@@ -147,7 +148,7 @@ elif os.name == 'darwin':
   default_gettext_opt = 'included'
   default_pch_opt = False
   default_with_x = False
-  boost_posix = False
+  boost_posix = True
   packaging_method = 'msc'
 else:  # unsupported system
   platform_name = 'others'
@@ -249,9 +250,9 @@ opts.AddOptions(
     allowed_values = ('aspell', 'pspell', 'ispell', 'auto') ),
   # environment variable can be set as options
   ('CC', '$CC', 'gcc'),
-  ('CPP', '$CPP', 'gcc'),
+  ('CPP', '$CPP', 'gcc -E'),
   ('CXX', '$CXX', 'g++'),
-  ('CXXCPP', '$CXXCPP', 'g++'),
+  ('CXXCPP', '$CXXCPP', 'g++ -E'),
   ('CCFLAGS', '$CCFLAGS', ''),
   ('CPPFLAGS', '$CPPFLAGS', ''),
   ('CPPPATH', '$CPPPATH', ''),
@@ -296,7 +297,6 @@ getEnvVariable(env, 'CPPFLAGS')
 getEnvVariable(env, 'CPPPATH')
 getEnvVariable(env, 'LDFLAGS')
 
-env['ENV']['PKG_CONFIG_PATH'] = os.environ.get('PKG_CONFIG_PATH')
 env['TOP_SRC_DIR'] = Dir('.').abspath
 
 # under windows, scons is confused by .C/.c and uses gcc instead of 
@@ -326,7 +326,7 @@ else:
 # all built libraries will go to build_dir/libs
 # (This is different from the make file approach)
 env['LOCALLIBPATH'] = '#$BUILDDIR/libs'
-env.Append(LIBPATH = ['$LOCALLIBPATH'])
+env.AppendUnique(LIBPATH = ['$LOCALLIBPATH'])
 
 #
 # QTDIR, QT_LIB_PATH, QT_INC_PATH
@@ -337,10 +337,10 @@ if platform_name == 'win32':
 if ARGUMENTS.has_key('qt_dir'):
   env['QTDIR'] = ARGUMENTS['qt_dir']
   # add path to the qt tools
-  env.Append(LIBPATH = [os.path.join(ARGUMENTS['qt_dir'], 'lib')])
-  env.Append(CPPPATH = [os.path.join(ARGUMENTS['qt_dir'], 'include')])
+  env.AppendUnique(LIBPATH = [os.path.join(ARGUMENTS['qt_dir'], 'lib')])
+  env.AppendUnique(CPPPATH = [os.path.join(ARGUMENTS['qt_dir'], 'include')])
   # set environment so that moc etc can be found even if its path is not set properly
-  env['ENV']['PATH'] = os.path.join(ARGUMENTS['qt_dir'], 'bin') + os.pathsep + env['ENV']['PATH']
+  env.PrependENVPath('PATH', os.path.join(ARGUMENTS['qt_dir'], 'bin'))
 else:
   env['QTDIR'] = os.environ.get('QTDIR', '/usr/lib/qt-3.3')
 
@@ -348,9 +348,9 @@ if ARGUMENTS.has_key('qt_lib_path'):
   env['QT_LIB_PATH'] = ARGUMENTS['qt_lib_path']
 else:
   env['QT_LIB_PATH'] = '$QTDIR/lib'
-env.Append(LIBPATH = ['$QT_LIB_PATH'])
+env.AppendUnique(LIBPATH = ['$QT_LIB_PATH'])
 # qt4 seems to be using pkg_config
-env['ENV']['PKG_CONFIG_PATH'] = env.subst('$QT_LIB_PATH')
+env.PrependENVPath('PKG_CONFIG_PATH', env.subst('$QT_LIB_PATH'))
 
 if ARGUMENTS.has_key('qt_inc_path'):
   env['QT_INC_PATH'] = ARGUMENTS['qt_inc_path']
@@ -358,27 +358,27 @@ elif os.path.isdir(os.path.join(env.subst('$QTDIR'), 'include')):
   env['QT_INC_PATH'] = '$QTDIR/include'
 else: # have to guess
   env['QT_INC_PATH'] = '/usr/include/$frontend/'
-env.Append(CPPPATH = env['QT_INC_PATH'])  
+env.AppendUnique(CPPPATH = env['QT_INC_PATH'])  
 
 #
 # extra_inc_path and extra_lib_path
 #
 if ARGUMENTS.has_key('extra_inc_path'):
-  env.Append(CPPPATH = [ARGUMENTS['extra_inc_path']])
+  env.AppendUnique(CPPPATH = [ARGUMENTS['extra_inc_path']])
 if ARGUMENTS.has_key('extra_lib_path'):
-  env.Append(LIBPATH = [ARGUMENTS['extra_lib_path']])
+  env.AppendUnique(LIBPATH = [ARGUMENTS['extra_lib_path']])
 if ARGUMENTS.has_key('extra_inc_path1'):
-  env.Append(CPPPATH = [ARGUMENTS['extra_inc_path1']])
+  env.AppendUnique(CPPPATH = [ARGUMENTS['extra_inc_path1']])
 if ARGUMENTS.has_key('extra_lib_path1'):
-  env.Append(LIBPATH = [ARGUMENTS['extra_lib_path1']])
+  env.AppendUnique(LIBPATH = [ARGUMENTS['extra_lib_path1']])
 if ARGUMENTS.has_key('aikasurus_path'):
-  env.Append(LIBPATH = [ARGUMENTS['aikasurus_path']])
+  env.AppendUnique(LIBPATH = [ARGUMENTS['aikasurus_path']])
 
 #
 # this is a bit out of place (after auto-configration)
 # but it is required to do the tests.
 if platform_name == 'win32':
-  env.Append(CPPPATH = ['#c:/MinGW/include'])
+  env.AppendUnique(CPPPATH = ['#c:/MinGW/include'])
 
 #----------------------------------------------------------
 # Autoconf business 
@@ -447,11 +447,11 @@ elif env['frontend'] == 'qt4':
 # check socket libs
 env['socket_libs'] = []
 if conf.CheckLib('socket'):
-  env.Append(socket_libs = ['socket'])
+  env.AppendUnique(socket_libs = ['socket'])
 
 # FIXME: What is nsl, is it related to socket?
 if conf.CheckLib('nsl'):
-  env.Append(socket_libs = ['nsl'])
+  env.AppendUnique(socket_libs = ['nsl'])
 
 # check boost libraries
 boost_opt = ARGUMENTS.get('boost', default_boost_opt)
@@ -473,7 +473,7 @@ if boost_opt in ['auto', 'system']:
   else:
     env['BOOST_LIBRARIES'] = [sig[1], reg[1], fil[1], ios[1]]
     # assume all boost libraries are in the same path...
-    env.Append(LIBPATH = sig[0])
+    env.AppendUnique(LIBPATH = sig[0])
     env['INCLUDED_BOOST'] = False
     succ = True
 # now, auto and succ = false, or included
@@ -487,13 +487,13 @@ if not succ:
 # Building config.h
 # 
 
-print "Generating ", config_h, "..."
+print "Generating ", utils.config_h, "..."
 
 # I do not handle all macros in src/config.h.in, rather I am following a list
 # of *used-by-lyx* macros compiled by Abdelrazak Younes <younes.a@free.fr> 
 # 
 # Note: addToConfig etc are defined in scons_util
-utils.startConfigH(config_h)
+utils.startConfigH()
 
 # HAVE_IO_H
 # HAVE_LIMITS_H
@@ -609,9 +609,16 @@ for val in values:
 
 
 env['EXTRA_LIBS'] = []
+# HAVE_LIBAIKSAURUS
 # AIKSAURUS_H_LOCATION
 if conf.CheckLib('Aiksaurus'):
-  utils.addToConfig("#define AIKSAURUS_H_LOCATION")
+  utils.addToConfig("#define HAVE_LIBAIKSAURUS 1")
+  if (conf.CheckCXXHeader("Aiksaurus.h")):
+    utils.addToConfig("#define AIKSAURUS_H_LOCATION <Aiksaurus.h>")
+  elif (conf.CheckCXXHeader("Aiksaurus/Aiksaurus.h")):
+    utils.addToConfig("#define AIKSAURUS_H_LOCATION <Aiksaurus/Aiksaurus.h>")
+  else:
+    utils.addToConfig("#define AIKSAURUS_H_LOCATION")
   env['EXTRA_LIBS'].append('Aiksaurus')
 
 # USE_ASPELL
@@ -624,18 +631,21 @@ spell_detected = False
 if spell_engine in ['auto', 'aspell'] and \
   conf.CheckLib('aspell'):
   utils.addToConfig('#define USE_ASPELL 1')
-  env['EXTRA_LIBS'].appnend('aspell')
+  env['USE_ASPELL'] = True
+  env['EXTRA_LIBS'].append('aspell')
   spell_detected = True
 elif spell_engine in ['auto', 'pspell'] and \
   conf.CheckLib('pspell'):
   utils.addToConfig('#define USE_PSPELL 1')
-  env['EXTRA_LIBS'].appnend('pspell')
+  env['USE_PSPELL'] = True
+  env['EXTRA_LIBS'].append('pspell')
   spell_detected = True
 elif spell_engine in ['auto', 'ispell'] and \
   conf.CheckLib('ispell'):
   utils.addToConfig('#define USE_ISPELL 1')
-  env['EXTRA_LIBS'].appnend('ispell')
-  spell_detected = False
+  env['USE_ISPELL'] = True
+  env['EXTRA_LIBS'].append('ispell')
+  spell_detected = True
 
 if not spell_detected:
   # FIXME: can lyx work without an spell engine
@@ -695,7 +705,7 @@ utils.addToConfig('#define SELECT_TYPE_ARG5 %s' % arg5)
 # mkstemp
 # USE_BOOST_FORMAT
 # WANT_GETFILEATTRIBUTESEX_WRAPPER
-utils.endConfigH(config_h)
+utils.endConfigH()
 
 #
 # Finish auto-configuration
@@ -719,7 +729,7 @@ try:
       env['EXTRA_LIBS'] += ['GL',  'Xmu', 'Xi', 'Xrender', 'Xrandr', 'Xcursor',
         'Xft', 'freetype', 'fontconfig', 'Xext', 'X11', 'SM', 'ICE', 'resolv',
         'pthread']
-      env.Append(LIBPATH = ['/usr/X11R6/lib'])
+      env.AppendUnique(LIBPATH = ['/usr/X11R6/lib'])
   elif frontend == 'qt4':
     # local qt4 toolset from 
     # http://www.iua.upf.es/~dgarcia/Codders/sconstools.html
@@ -744,14 +754,14 @@ else:
 # Build parameters CPPPATH etc
 #
 # boost is always in
-env.Append(CPPPATH = ['#boost', '#src'])
+env.AppendUnique(CPPPATH = ['#boost', '#src'])
 
 # TODO: add (more) appropriate compiling options (-DNDEBUG etc)
 # for debug/release mode 
 if ARGUMENTS.get('mode', default_build_mode) == 'debug':
-  env.Append(CCFLAGS = [])
+  env.AppendUnique(CCFLAGS = [])
 else:
-  env.Append(CCFLAGS = [])
+  env.AppendUnique(CCFLAGS = [])
 
 #
 # Customized builders
@@ -770,7 +780,7 @@ env['BUILDERS']['fileCopy'] = Builder(action = utils.env_filecopy)
 if platform_name == 'cygwin' and env['frontend'] == 'qt3':
   ld_script_path = '/usr/lib/qt3/mkspecs/cygwin-g++'
   ld_script = utils.installCygwinLDScript(ld_script_path)
-  env.Append(LINKFLAGS = ['-Wl,--enable-runtime-pseudo-reloc', 
+  env.AppendUnique(LINKFLAGS = ['-Wl,--enable-runtime-pseudo-reloc', 
     '-Wl,--script,%s' % ld_script, '-Wl,-s'])
 
 #
