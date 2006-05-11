@@ -325,7 +325,7 @@ getEnvVariable(env, 'LDFLAGS')
 # under windows, scons is confused by .C/.c and uses gcc instead of 
 # g++. I am forcing the use of g++ here. This is expected to change
 # after lyx renames all .C files to .cpp
-if platform_name in ['win32', 'cygwin']:
+if platform_name == 'cygwin':
   env['CC'] = 'g++'
   env['LINK'] = 'g++'
 
@@ -451,7 +451,7 @@ elif env['frontend'] == 'qt4':
   # third: try to look up the path
   if not succ:
     succ = True
-    for lib in ['QtCore', 'QtGui', 'Qt3Support']:
+    for lib in ['QtCore', 'QtGui']:
       # windows version has something like QtGui4 ...
       if not (os.path.isfile(os.path.join(env.subst('$QT_LIB_PATH'), 'lib%s.a' % lib)) or \
         os.path.isfile(os.path.join(env.subst('$QT_LIB_PATH'), 'lib%s4.a' % lib))):
@@ -755,18 +755,16 @@ try:
     # local qt4 toolset from 
     # http://www.iua.upf.es/~dgarcia/Codders/sconstools.html
     if platform_name == "win32":
-      env['QT_LIB'] = ['QtCore4', 'QtGui4', 'Qt3Support4']
+      env['QT_LIB'] = ['QtCore4', 'QtGui4']
     else:
-      env['QT_LIB'] = ['QtCore', 'QtGui', 'Qt3Support']
+      env['QT_LIB'] = ['QtCore', 'QtGui']
     env['EXTRA_LIBS'] += [x for x in env['QT_LIB']]
 except:
   print "Can not locate qt tools"
   print "What I get is "
   print "  QTDIR: ", env['QTDIR']
 
-if platform_name == 'win32':
-  env['SYSTEM_LIBS'] = ['shlwapi', 'zlib1']
-elif platform_name == 'cygwin':
+if platform_name in ['win32', 'cygwin']:
   env['SYSTEM_LIBS'] = ['shlwapi', 'z']
 else:
   env['SYSTEM_LIBS'] = ['z']
