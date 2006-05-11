@@ -16,7 +16,7 @@ Import('env')
 # boost libraries
 #
 if env['INCLUDED_BOOST']:
-  env.BuildDir('#$BUILDDIR/common', '$TOP_SRC_DIR/boost/libs', duplicate = 0)
+  env.BuildDir('$BUILDDIR/boost', '$TOP_SRC_DIR/boost/libs', duplicate = 0)
   
   boostenv = env.Copy()
   boostenv.Append(CCFLAGS = '-DBOOST_USER_CONFIG="<config.h>"')
@@ -27,7 +27,7 @@ if env['INCLUDED_BOOST']:
   
   filesystem = boostenv.StaticLibrary(
     target = '$LOCALLIBPATH/boost_filesystem',
-    source = ["#$BUILDDIR/common/filesystem/src/%s" % x for x in Split('''
+    source = ["$BUILDDIR/boost/filesystem/src/%s" % x for x in Split('''
       convenience.cpp
       exception.cpp
       operations_posix_windows.cpp
@@ -39,7 +39,7 @@ if env['INCLUDED_BOOST']:
   
   regex = boostenv.StaticLibrary(
     target = '$LOCALLIBPATH/boost_regex',
-    source = ["#$BUILDDIR/common/regex/src/%s" % x for x in Split('''
+    source = ["$BUILDDIR/boost/regex/src/%s" % x for x in Split('''
       cpp_regex_traits.cpp
       c_regex_traits.cpp
       cregex.cpp
@@ -52,16 +52,11 @@ if env['INCLUDED_BOOST']:
     ''')]
   )
   
-  # Return the library
-  Return('regex')
-  
-  Import('boostenv')
-  
   print 'Processing files in boost/libs/signals/src...'
   
   signals = boostenv.StaticLibrary(
     target = '$LOCALLIBPATH/boost_signals',
-    source = ["#$BUILDDIR/common/signals/src/%s" % x for x in Split('''
+    source = ["$BUILDDIR/boost/signals/src/%s" % x for x in Split('''
       connection.cpp
       named_slot_map.cpp
       signal_base.cpp
@@ -74,7 +69,7 @@ if env['INCLUDED_BOOST']:
   
   iostreams = boostenv.StaticLibrary(
     target = '$LOCALLIBPATH/boost_iostreams',
-    source = ["#$BUILDDIR/common/iostreams/src/%s" % x for x in Split('''
+    source = ["$BUILDDIR/boost/iostreams/src/%s" % x for x in Split('''
       file_descriptor.cpp
       mapped_file.cpp
       zlib.cpp
@@ -86,7 +81,7 @@ if env['INCLUDED_BOOST']:
 # Now, src code under src/
 #
 
-env.BuildDir('#$BUILDDIR/common', '$TOP_SRC_DIR/src', duplicate = 0)
+env.BuildDir('$BUILDDIR/common', '$TOP_SRC_DIR/src', duplicate = 0)
 
 #
 # src/support 
@@ -97,11 +92,11 @@ print "Processing files in src/support"
 env.Append(CPPPATH = ['.'])
 
 env['SUBST_KEYS'] = ['LYX_DIR', 'LOCALEDIR', 'TOP_SRCDIR', 'PROGRAM_SUFFIX']
-env.substFile('#$BUILDDIR/common/support/package.C', '$TOP_SRC_DIR/src/support/package.C.in')
+env.substFile('$BUILDDIR/common/support/package.C', '$TOP_SRC_DIR/src/support/package.C.in')
 
 supports = env.StaticLibrary(
   target = '$LOCALLIBPATH/supports',
-  source = ['#$BUILDDIR/common/support/%s' % x for x in Split('''
+  source = ['$BUILDDIR/common/support/%s' % x for x in Split('''
     FileMonitor.C
     abort.C
     chdir.C
@@ -141,7 +136,7 @@ print "Processing files in src/mathed"
 
 mathed = env.StaticLibrary(
   target = '$LOCALLIBPATH/mathed',
-  source = ["#$BUILDDIR/common/mathed/%s" % x for x in Split('''
+  source = ["$BUILDDIR/common/mathed/%s" % x for x in Split('''
     textpainter.C
     math_amsarrayinset.C
     math_arrayinset.C
@@ -225,7 +220,7 @@ print "Processing files in src/insets"
 
 insets = env.StaticLibrary(
   target = '$LOCALLIBPATH/insets',
-  source = ["#$BUILDDIR/common/insets/%s" % x for x in Split('''
+  source = ["$BUILDDIR/common/insets/%s" % x for x in Split('''
     mailinset.C
     ExternalSupport.C
     ExternalTemplate.C
@@ -287,7 +282,7 @@ print "Processing files in src/frontends"
 
 frontends = env.StaticLibrary(
   target = '$LOCALLIBPATH/frontends',
-  source = ["#$BUILDDIR/common/frontends/%s" % x for x in Split('''
+  source = ["$BUILDDIR/common/frontends/%s" % x for x in Split('''
     Alert.C
     Dialogs.C
     LyXView.C
@@ -309,7 +304,7 @@ print "Processing files in src/graphics"
 
 graphics = env.StaticLibrary(
   target = '$LOCALLIBPATH/graphics',
-  source = ["#$BUILDDIR/common/graphics/%s" % x for x in Split('''
+  source = ["$BUILDDIR/common/graphics/%s" % x for x in Split('''
     GraphicsCache.C
     GraphicsCacheItem.C
     GraphicsConverter.C
@@ -332,7 +327,7 @@ print "Processing files in src/frontends/controllers"
 
 controllers = env.StaticLibrary(
   target = '$LOCALLIBPATH/controllers',
-  source = ["#$BUILDDIR/common/frontends/controllers/%s" % x for x in Split('''
+  source = ["$BUILDDIR/common/frontends/controllers/%s" % x for x in Split('''
     Dialog.C
     Kernel.C
     biblio.C
@@ -389,7 +384,7 @@ controllers = env.StaticLibrary(
 #
 
 frontend = env['frontend']
-env.BuildDir('#$BUILDDIR/$frontend', '$TOP_SRC_DIR/src/frontend/$frontend', duplicate = 0)
+env.BuildDir('$BUILDDIR/$frontend', '$TOP_SRC_DIR/src/frontend/$frontend', duplicate = 0)
 
 if frontend == 'qt3':
   print "Processing files in src/frontends/qt3"
@@ -400,11 +395,11 @@ if frontend == 'qt3':
   qt3env.Tool('qt')
 
   qt3env.Append(CPPPATH = [
-    '#$BUILDDIR/common',
-    '#$BUILDDIR/common/frontends',
-    '#$BUILDDIR/common/images',
-    '#$BUILDDIR/common/frontends/controllers',
-    '#$BUILDDIR/common/frontends/qt3',
+    '$BUILDDIR/common',
+    '$BUILDDIR/common/frontends',
+    '$BUILDDIR/common/images',
+    '$BUILDDIR/common/frontends/controllers',
+    '$BUILDDIR/common/frontends/qt3',
     '$QT_INC_DIR',
     '.']
   )
@@ -482,7 +477,7 @@ if frontend == 'qt3':
   ''')
   
   
-  qt3_moc_files = ["#$BUILDDIR/common/frontends/qt3/%s" % x for x in Split('''
+  qt3_moc_files = ["$BUILDDIR/common/frontends/qt3/%s" % x for x in Split('''
     BulletsModule.C
     emptytable.C
     FileDialog_private.C
@@ -548,11 +543,11 @@ if frontend == 'qt3':
   # file extension from .C to .cpp
   qt3_moced_files = []
   if os.name == 'nt' or sys.platform == 'cygwin':
-    qt3_moced_files = [qt3env.Moc('$BUILDDIR/common/frontends/qt3/'+x.replace('.C', '.h')) for x in moc_files]
+    qt3_moced_files = [qt3env.Moc('$BUILDDIR/common/frontends/qt3/'+x.replace('.C', '.h')) for x in qt3_moc_files]
   
   qt3 = qt3env.StaticLibrary(
     target = '$LOCALLIBPATH/qt3',
-    source = ["#$BUILDDIR/common/frontends/qt3/%s" % x for x in Split('''
+    source = ["$BUILDDIR/common/frontends/qt3/%s" % x for x in Split('''
       QDialogView.C
       Alert_pimpl.C
       Dialogs.C
@@ -615,7 +610,7 @@ if frontend == 'qt3':
       qt_helpers.C
     ''')] +
     qt3_moc_files + qt3_moced_files +
-    ['#$BUILDDIR/common/frontends/qt3/ui/' + x for x in qt3_ui_files]
+    ['$BUILDDIR/common/frontends/qt3/ui/' + x for x in qt3_ui_files]
   )
 elif frontend == 'qt4':
   print "Processing files in src/frontends/qt4"
@@ -629,15 +624,15 @@ elif frontend == 'qt4':
   # process .C file!!! (add to cxx_suffixes )
   #
   if frontend == 'qt4':
-    qt4env.Tool('qt4', '.')
+    qt4env.Tool('qt4', [env['SCONS_DIR']])
     qt4env.EnableQt4Modules(env['QT_LIB'], debug = False)
   
   qt4env.Append(CPPPATH = [
-    '#$BUILDDIR/common',
-    '#$BUILDDIR/common/images',
-    '#$BUILDDIR/common/frontends',
-    '#$BUILDDIR/common/frontends/qt4',
-    '#$BUILDDIR/common/frontends/controllers',
+    '$BUILDDIR/common',
+    '$BUILDDIR/common/images',
+    '$BUILDDIR/common/frontends',
+    '$BUILDDIR/common/frontends/qt4',
+    '$BUILDDIR/common/frontends/controllers',
     '$QT_INC_PATH',
     '$QT_INC_PATH/Qt',
     '$QT_INC_PATH/QtCore',
@@ -793,7 +788,7 @@ elif frontend == 'qt4':
   # Compile resources
   #
   for x in qt4_ui_files:
-    qt4env.Uic4('#$BUILDDIR/common/frontends/qt4/ui/' + x)
+    qt4env.Uic4('$BUILDDIR/common/frontends/qt4/ui/' + x)
   
   qt4_source_files = Split('''
     QDialogView.C
@@ -862,8 +857,8 @@ elif frontend == 'qt4':
   qt4 = qt4env.StaticLibrary(
     target = '$LOCALLIBPATH/qt4',
     LIBS = qt4env['QT_LIB'],
-    source = ["#$BUILDDIR/common/frontends/qt4/%s" % x for x in qt4_source_files] + \
-       ["#$BUILDDIR/common/frontends/qt4/%s" % x for x in qt4_moc_files]
+    source = ["$BUILDDIR/common/frontends/qt4/%s" % x for x in qt4_source_files] + \
+       ["$BUILDDIR/common/frontends/qt4/%s" % x for x in qt4_moc_files]
    )
 
 
@@ -871,72 +866,71 @@ elif frontend == 'qt4':
 # src/client
 #
 
-if 'client' in env['BUILD_TARGETS']:
-  env.BuildDir('#$BUILDDIR/common', '$TOP_SRC_DIR/src', duplicate = 0)
-  
-  print "Processing files in src/client"
-  
-  lyxclient = env.Program(
-    target = '#$BUILDDIR/common/client/lyxclient',
-    LIBS = env['BOOST_LIBRARIES'] + env['socket_libs'],
-    source = ["#$BUILDDIR/common/client/%s" % x for x in Split('''
-      boost.C
-      client.C
-      debug.C
-      gettext.C
-      messages.C
-    ''')]
-  )
-  
-  env.copyFile('#$BUILDDIR/lyxclient', '#$BUILDDIR/common/client/lyxclient')
+env.BuildDir('$BUILDDIR/common', '$TOP_SRC_DIR/src', duplicate = 0)
+
+print "Processing files in src/client"
+
+lyxclient = env.Program(
+  target = '$BUILDDIR/common/client/lyxclient',
+  LIBS = env['BOOST_LIBRARIES'] + env['socket_libs'] + ['supports'],
+  source = ["$BUILDDIR/common/client/%s" % x for x in Split('''
+    boost.C
+    client.C
+    debug.C
+    gettext.C
+    messages.C
+  ''')]
+)
+env.fileCopy('$BUILDDIR/lyxclient', '$BUILDDIR/common/client/lyxclient')
+Alias('lyxclient', lyxclient)
  
 #
 # tex2lyx
 #
-if 'tex2lyx' in env['BUILD_TARGETS']:
-  print "Processing files in src/tex2lyx"
-  
-  tex2lyx_env = env.Copy()
-  # the order is important here.
-  tex2lyx_env.Prepend(CPPPATH = ['#$BUILDDIR/common/tex2lyx'])
-  tex2lyx_env.Append(LIBPATH = ['#$LOCALLIBPATH'])
-  
-  tex2lyx_env.fileCopy('#$BUILDDIR/common/tex2lyx/FloatList.C', 'src/FloatList.C')
-  tex2lyx_env.fileCopy('#$BUILDDIR/common/tex2lyx/Floating.C', 'src/Floating.C')
-  tex2lyx_env.fileCopy('#$BUILDDIR/common/tex2lyx/counters.C', 'src/counters.C')
-  # for some reason I do not know, I have to copy the header files as well.
-  tex2lyx_env.fileCopy('#$BUILDDIR/common/tex2lyx/lyxlayout.h', 'src/lyxlayout.h')
-  tex2lyx_env.fileCopy('#$BUILDDIR/common/tex2lyx/lyxlayout.C', 'src/lyxlayout.C')
-  tex2lyx_env.fileCopy('#$BUILDDIR/common/tex2lyx/lyxtextclass.h', 'src/lyxtextclass.h')
-  tex2lyx_env.fileCopy('#$BUILDDIR/common/tex2lyx/lyxtextclass.C', 'src/lyxtextclass.C')
-  tex2lyx_env.fileCopy('#$BUILDDIR/common/tex2lyx/lyxlex.C', 'src/lyxlex.C')
-  tex2lyx_env.fileCopy('#$BUILDDIR/common/tex2lyx/lyxlex_pimpl.C', 'src/lyxlex_pimpl.C')
-  
-  tex2lyx = tex2lyx_env.Program(
-    target = '#$BUILDDIR/common/tex2lyx/tex2lyx',
-    LIBS = ['supports'] + env['BOOST_LIBRARIES'] + env['SYSTEM_LIBS'],
-    source = ["#$BUILDDIR/common/tex2lyx/%s" % x for x in Split('''
-      FloatList.C
-      Floating.C
-      counters.C
-      lyxlayout.C
-      lyxtextclass.C
-      lyxlex.C
-      lyxlex_pimpl.C
-      boost.C
-      context.C
-      gettext.C
-      lengthcommon.C
-      lyxfont.C
-      texparser.C
-      tex2lyx.C
-      preamble.C
-      math.C
-      table.C
-      text.C
-    ''')]
-  )
+print "Processing files in src/tex2lyx"
 
+tex2lyx_env = env.Copy()
+# the order is important here.
+tex2lyx_env.Prepend(CPPPATH = ['$BUILDDIR/common/tex2lyx'])
+tex2lyx_env.Append(LIBPATH = ['#$LOCALLIBPATH'])
+
+tex2lyx_env.fileCopy('$BUILDDIR/common/tex2lyx/FloatList.C', '$TOP_SRC_DIR/src/FloatList.C')
+tex2lyx_env.fileCopy('$BUILDDIR/common/tex2lyx/Floating.C', '$TOP_SRC_DIR/src/Floating.C')
+tex2lyx_env.fileCopy('$BUILDDIR/common/tex2lyx/counters.C', '$TOP_SRC_DIR/src/counters.C')
+# for some reason I do not know, I have to copy the header files as well.
+tex2lyx_env.fileCopy('$BUILDDIR/common/tex2lyx/lyxlayout.h', '$TOP_SRC_DIR/src/lyxlayout.h')
+tex2lyx_env.fileCopy('$BUILDDIR/common/tex2lyx/lyxlayout.C', '$TOP_SRC_DIR/src/lyxlayout.C')
+tex2lyx_env.fileCopy('$BUILDDIR/common/tex2lyx/lyxtextclass.h', '$TOP_SRC_DIR/src/lyxtextclass.h')
+tex2lyx_env.fileCopy('$BUILDDIR/common/tex2lyx/lyxtextclass.C', '$TOP_SRC_DIR/src/lyxtextclass.C')
+tex2lyx_env.fileCopy('$BUILDDIR/common/tex2lyx/lyxlex.C', '$TOP_SRC_DIR/src/lyxlex.C')
+tex2lyx_env.fileCopy('$BUILDDIR/common/tex2lyx/lyxlex_pimpl.C', '$TOP_SRC_DIR/src/lyxlex_pimpl.C')
+
+tex2lyx = tex2lyx_env.Program(
+  target = '$BUILDDIR/common/tex2lyx/tex2lyx',
+  LIBS = ['supports'] + env['BOOST_LIBRARIES'] + env['SYSTEM_LIBS'],
+  source = ["$BUILDDIR/common/tex2lyx/%s" % x for x in Split('''
+    FloatList.C
+    Floating.C
+    counters.C
+    lyxlayout.C
+    lyxtextclass.C
+    lyxlex.C
+    lyxlex_pimpl.C
+    boost.C
+    context.C
+    gettext.C
+    lengthcommon.C
+    lyxfont.C
+    texparser.C
+    tex2lyx.C
+    preamble.C
+    math.C
+    table.C
+    text.C
+  ''')]
+)
+env.fileCopy('$BUILDDIR/tex2lyx', '$BUILDDIR/common/tex2lyx/tex2lyx')
+Alias('tex2lyx', tex2lyx)
 #
 # src/
 #
@@ -944,7 +938,7 @@ if 'tex2lyx' in env['BUILD_TARGETS']:
 print "Processing files in src"
 
 env['SUBST_KEYS'] = ['PACKAGE_VERSION', 'VERSION_INFO']
-env.substFile('#$BUILDDIR/common/version.C', '$TOP_SRC_DIR/src/version.C.in')
+env.substFile('$BUILDDIR/common/version.C', '$TOP_SRC_DIR/src/version.C.in')
 
 lyx_source = Split('''
   Bidi.C
@@ -1065,13 +1059,12 @@ elif env.has_key('USE_PSPELL') and env['USE_PSPELL']:
 elif env.has_key('USE_ISPELL') and env['USE_ISPELL']:
   lyx_source.append('ispell.C')
 
-env.BuildDir('#$BUILDDIR/common', '$TOP_SRC_DIR/src', duplicate = 0)
 #
 # Build lyx with given frontend
 #
 lyx = env.Program(
-  target = '#$BUILDDIR/$frontend/lyx',
-  source = ["#$BUILDDIR/common/%s" % x for x in lyx_source],
+  target = '$BUILDDIR/$frontend/lyx',
+  source = ["$BUILDDIR/common/%s" % x for x in lyx_source],
   LIBS = [
     'mathed',
     'insets',
@@ -1084,4 +1077,17 @@ lyx = env.Program(
     env['EXTRA_LIBS'] +
     env['SYSTEM_LIBS']
 )
+Alias('lyx', lyx)
 
+env.fileCopy('$BUILDDIR/lyx$frontend', '$BUILDDIR/$frontend/lyx')
+
+# other targets include client, tex2lyx
+Default('lyx')
+
+Alias('install', env.installProg(Dir(env['BIN_DIR']), 
+  [lyx, tex2lyx, lyxclient]))
+## Alias('install', env.installProg(Dir(os.path.join(env['PREFIX'], 'share/lyx/')), 
+##   [Dir(env.subst('$TOP_SRC_DIR/lib/') + dir) for dir in ['images', 'layouts', 'scripts', 'templates', \
+##   'examples', 'kbd', 'lyx2lyx', 'tex', 'clipart', 'doc',  'ui'] ] + \
+##   [File(env.subst('$TOP_SRC_DIR/lib/') + file) for file in ['configure.py', 'encodings', 'chkconfig.ltx', 'CREDITS', \
+##   'external_templates', 'symbols', 'languages', 'lyxrc.example', 'syntax.default']]))

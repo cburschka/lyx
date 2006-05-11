@@ -329,8 +329,6 @@ def processLang(env, folder):
     if not languages or country in languages:
       result = env.Transfiles(file)
   # FIXME
-  #    dir=env.join( getInstDirForResType(env, 'KDELOCALE'), country)
-  #    env.bksys_install(env.join(dir, 'LC_MESSAGES'), result, destfile=appname+'.mo')
 
 
 def installCygwinLDScript(path):
@@ -619,40 +617,48 @@ def setLoggedSpawn(env, logfile = '', longarg=False, info=''):
   # replace the old SPAWN by the new function
   env['SPAWN'] = ls.spawn
 
+#
+# Install program with permission
+# http://www.scons.org/cgi-sys/cgiwrap/scons/moin.cgi/InstallTargets
+# 
+import SCons
+from SCons.Script.SConscript import SConsEnvironment
 
-## def CheckPython(context, minver):
-##     context.Message('Checking for Python >= %s...' % '.'.join(str(x) for x in minver))
-##     try:
-##         python = context.env['PYTHON']
-##     except KeyError:
-##         try:
-##             python = os.environ['PYTHON']
-##         except KeyError:
-##             python = WhereIs("python")
-##             if not python:
-##                 python = python = WhereIs("python%i.%i" % (minver[0], minver[1]))
-##     minverhex = 0
-##     minver = list(minver) + [0, 0, 0, 0]
-##     for i in xrange(0, 4):
-##         minverhex = (minverhex << 8) + minver[i]
-##     prog = "import sys; sys.exit(sys.hexversion >= %s)" % minverhex
-##     if python is None:
-##         python = 'python'
-##     try:
-##         result = Popen([python, "-c", prog]).wait()
-##     except OSError:
-##         context.Result(False)
-##         return False
-##     context.Result(result)
-##     if result:
-##         context.env.Replace(PYTHON=python)
-##         proc = Popen([python, "-c", "import sys; print sys.version[:3]"], stdout=PIPE)
-##         pyver = proc.communicate()[0].rstrip()
-##         context.env.Replace(PYTHON_VERSION=pyver)
-##         context.env.Replace(pythondir="$prefix/lib/python$PYTHON_VERSION/site-packages")
-##         context.env.Replace(pyexecdir="${exec_prefix}/lib/python$PYTHON_VERSION/site-packages")
-##     return result
-## 
+SConsEnvironment.Chmod = SCons.Action.ActionFactory(os.chmod,
+  lambda dest, mode: 'Chmod("%s", 0%o)' % (dest, mode))
+
+def installPerm(target, source, env, perm):
+  ''' install program with permission, will copy
+    files recursively if needed '''
+  # FIXME: mixed use of scons and python interfaces?
+  target_dir = str(target[0])
+  if os.path.isfile(target_dir):
+    print "Target should be a directory: ", target_dir
+    return
+  if not os.path.isdir(target_dir):
+    os.makedirs(target_dir)
+  objs = []
+  for fnode in source:
+    fname = str(fnode)
+    print "Installing", fname, "to", target_dir
+    if os.path.isfile(fname):
+      objs.append(os.path.join(target_dir, fname))
+      shutil.copy(fname, target_dir)
+    elif os.path.isdir(fname):
+      # FIXME: directory permission is not set
+      if os.path.isdir(os.path.join(target_dir, fname)):
+        shutil.rmtree(os.path.join(target_dir, fname))
+      shutil.copytree(fname, target_dir)
+  #for i in objs:
+  #  env.AddPostAction(File(i), env.Chmod(i, perm))
+  return target
+
+def env_installProg(target, source, env):
+  installPerm(target, source, env, 0755)
+
+def env_installFile(target, source, env):
+  installPerm(target, source, env, 0644)
+
 ## def DistSources(env, node):
 ##     env.DistFiles(_get_sources(env, node))
 ## 

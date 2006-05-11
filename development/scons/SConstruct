@@ -12,19 +12,28 @@
 # This is a scons based building system for lyx, you can use it as follows:
 # (after of course installation of scons from www.scons.org)
 #  
-#    scons [frontend=qt3|gt4] [boost=included|auto] ...
+#   $ cd development/scons
+#   $ scons [options] [targets]
+# or:
+#   $ scons -f development/scons/SConstruct [options] [targets]
+#
+# After compiling, you can install lyx by
+#   $ scons [prefix=.] install
 #
 # Where:
-#   * use scons -h for details about parameters
-#   * qt3 is used by default on linux, cygwin and mac
-#   * qt4 is used by default on win32
+#   * targets can be one or more of lyx, tex2lyx, client, default to lyx
+#   * options: use scons -h for details about parameters, the most important 
+#     one is frontend=qt3|qt4.
+#     * qt3 is used by default on linux, cygwin and mac
+#     * qt4 is used by default on win32/mingw
 #
 # File layouts (Important):
 #   * Unless you specify builddir=dir, building will happen
-#     in $BUILDDIR = $mode/$platform-$frontend. E.g., something like
-#       debug/linux-qt3/
-#   * All shared libs will be put in $BUILDDIR/libs, e.g.
-#       debug/linux-qt3/libs
+#     in $BUILDDIR = $mode, which can be debug or release
+#   * $BUILDDIR has subdirectories
+#       libs:      all intermediate libraries
+#       boost:     boost libraries, if boost=included is used
+#       qt3:       build result
 #   * lyx executable will be in directories like debug/linux-qt3
 #  
 # Hints:
@@ -79,8 +88,16 @@ EnsurePythonVersion(1, 5)
 # Please use at least 0.96.91 (not 0.96.1)
 EnsureSConsVersion(0, 96)
 
-# I am in TOP_SRC_DIR/developement/scons
-TOP_SRC_DIR = '../..'
+# determine where I am ...
+#
+# called as 'scons -f development/scons/SConstruct'
+if os.path.isfile('SConstruct'):
+  TOP_SRC_DIR = '../..'
+  SCONS_DIR = '.'
+# called as 'cd development/scons; scons'
+else:
+  TOP_SRC_DIR = '.'
+  SCONS_DIR = 'development/scons'
 
 #----------------------------------------------------------
 # Global definitions
@@ -232,10 +249,10 @@ opts.AddOptions(
   BoolOption('nls', '(NA) Whether or not use native language support', False),
   # FIXME: not implemented
   BoolOption('profile', '(NA) Whether or not enable profiling', False),
-  # FIXME: not implemented
-  PathOption('prefix', '(NA) install architecture-independent files in PREFIX', '.'),
-  # FIXME: not implemented
-  PathOption('exec_prefix', '(NA) install architecture-independent executable files in PREFIX', '.'),
+  # 
+  PathOption('prefix', 'install architecture-independent files in PREFIX', '.'),
+  # 
+  PathOption('exec_prefix', 'install architecture-independent executable files in PREFIX', '.'),
   # FIXME: not implemented
   BoolOption('std_debug', '(NA) Whether or not turn on stdlib debug', False),
   # using x11?
@@ -270,14 +287,17 @@ use_X11 = ARGUMENTS.get('X11', default_with_x)
 # Setting up environment
 #---------------------------------------------------------
 
-env = Environment(
-  options = opts 
-)
+env = Environment(options = opts)
 
 # set environment since I do not really like ENV = os.environ
-#env['ENV']['PATH'] = os.environ.get('PATH')
+env['ENV']['PATH'] = os.environ.get('PATH')
 env['ENV']['HOME'] = os.environ.get('HOME')
 env['TOP_SRC_DIR'] = TOP_SRC_DIR
+env['SCONS_DIR'] = SCONS_DIR
+# install to current directory by default
+env['PREFIX'] = ARGUMENTS.get('prefix', '.')
+env['BIN_DIR'] = ARGUMENTS.get('exec_prefix', 
+  os.path.join(env['PREFIX'], 'bin'))
 
 # speed up source file processing
 #env['CPPSUFFIXES'] = ['.C', '.cc', '.cpp']
@@ -322,10 +342,10 @@ if ARGUMENTS.has_key('build_dir'):
   env['BUILDDIR'] = build_dir
 else:
   # Determine the name of the build (platform+frontend
-  env['BUILDDIR'] = env['mode']
+  env['BUILDDIR'] = '#' + env['mode']
 # all built libraries will go to build_dir/libs
 # (This is different from the make file approach)
-env['LOCALLIBPATH'] = '#$BUILDDIR/libs'
+env['LOCALLIBPATH'] = '$BUILDDIR/libs'
 env.AppendUnique(LIBPATH = ['$LOCALLIBPATH'])
 
 #
@@ -771,6 +791,9 @@ else:
 env['BUILDERS']['substFile'] = Builder(action = utils.env_subst)
 # FIXME: there must be a better way.
 env['BUILDERS']['fileCopy'] = Builder(action = utils.env_filecopy)
+# install
+env['BUILDERS']['installProg'] = Builder(action = utils.env_installProg)
+env['BUILDERS']['installFile'] = Builder(action = utils.env_installFile)
 
 #
 # A Link script for cygwin see
@@ -874,11 +897,6 @@ SConsignFile(os.path.abspath('%s/sconsign' % env['BUILDDIR']))
 
 print "Building all targets recursively"
 
-# Now, specification of targets is difficult
-# we can do this though:
-#
-env['BUILD_TARGETS'] = BUILD_TARGETS
-
-env.SConscript('SConscript', duplicate = 0)
+env.SConscript('$SCONS_DIR/SConscript', duplicate = 0)
 
 
