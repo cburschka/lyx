@@ -279,9 +279,6 @@ opts.AddOptions(
   ('LDFLAGS', '$LDFLAGS', ''),
 )  
 
-# Determine the frontend to use
-frontend = ARGUMENTS.get('frontend', default_frontend)
-use_X11 = ARGUMENTS.get('X11', default_with_x)
 
 #---------------------------------------------------------
 # Setting up environment
@@ -289,15 +286,22 @@ use_X11 = ARGUMENTS.get('X11', default_with_x)
 
 env = Environment(options = opts)
 
+# Determine the frontend to use, which may be loaded 
+# from option cache
+frontend = env.get('frontend', default_frontend)
+use_X11 = env.get('X11', default_with_x)
+
 # set environment since I do not really like ENV = os.environ
 env['ENV']['PATH'] = os.environ.get('PATH')
 env['ENV']['HOME'] = os.environ.get('HOME')
 env['TOP_SRC_DIR'] = TOP_SRC_DIR
 env['SCONS_DIR'] = SCONS_DIR
 # install to current directory by default
-env['PREFIX'] = ARGUMENTS.get('prefix', '.')
-env['BIN_DIR'] = ARGUMENTS.get('exec_prefix', 
-  os.path.join(env['PREFIX'], 'bin'))
+env['PREFIX'] = env.get('prefix', '.')
+if env.has_key('exec_prefix') and env['exec_prefix'] != '.':
+  env['BIN_DIR'] = env['exec_prefix']
+else:
+  env['BIN_DIR'] = os.path.join(env['PREFIX'], 'bin')
 
 # speed up source file processing
 #env['CPPSUFFIXES'] = ['.C', '.cc', '.cpp']
@@ -333,7 +337,7 @@ if platform_name == 'cygwin':
 # frontend, mode, BUILDDIR and LOCALLIBPATH=BUILDDIR/libs
 # 
 env['frontend'] = frontend
-env['mode'] = ARGUMENTS.get('mode', default_build_mode)
+env['mode'] = env.get('mode', default_build_mode)
 # lyx will be built to $build/build_dir so it is possible
 # to build multiple build_dirs using the same source 
 # $mode can be debug or release
@@ -354,26 +358,26 @@ env.AppendUnique(LIBPATH = ['$LOCALLIBPATH'])
 if platform_name == 'win32':
   env.Tool('mingw')
 
-if ARGUMENTS.has_key('qt_dir'):
-  env['QTDIR'] = ARGUMENTS['qt_dir']
+if env.has_key('qt_dir') and env['qt_dir'] != '.':
+  env['QTDIR'] = env['qt_dir']
   # add path to the qt tools
-  env.AppendUnique(LIBPATH = [os.path.join(ARGUMENTS['qt_dir'], 'lib')])
-  env.AppendUnique(CPPPATH = [os.path.join(ARGUMENTS['qt_dir'], 'include')])
+  env.AppendUnique(LIBPATH = [os.path.join(env['qt_dir'], 'lib')])
+  env.AppendUnique(CPPPATH = [os.path.join(env['qt_dir'], 'include')])
   # set environment so that moc etc can be found even if its path is not set properly
-  env.PrependENVPath('PATH', os.path.join(ARGUMENTS['qt_dir'], 'bin'))
+  env.PrependENVPath('PATH', os.path.join(env['qt_dir'], 'bin'))
 else:
   env['QTDIR'] = os.environ.get('QTDIR', '/usr/lib/qt-3.3')
 
-if ARGUMENTS.has_key('qt_lib_path'):
-  env['QT_LIB_PATH'] = ARGUMENTS['qt_lib_path']
+if env.has_key('qt_lib_path') and env['qt_lib_path'] != '.':
+  env['QT_LIB_PATH'] = env['qt_lib_path']
 else:
   env['QT_LIB_PATH'] = '$QTDIR/lib'
 env.AppendUnique(LIBPATH = ['$QT_LIB_PATH'])
 # qt4 seems to be using pkg_config
 env.PrependENVPath('PKG_CONFIG_PATH', env.subst('$QT_LIB_PATH'))
 
-if ARGUMENTS.has_key('qt_inc_path'):
-  env['QT_INC_PATH'] = ARGUMENTS['qt_inc_path']
+if env.has_key('qt_inc_path') and env['qt_inc_path'] != '.':
+  env['QT_INC_PATH'] = env['qt_inc_path']
 elif os.path.isdir(os.path.join(env.subst('$QTDIR'), 'include')):
   env['QT_INC_PATH'] = '$QTDIR/include'
 else: # have to guess
@@ -383,16 +387,16 @@ env.AppendUnique(CPPPATH = env['QT_INC_PATH'])
 #
 # extra_inc_path and extra_lib_path
 #
-if ARGUMENTS.has_key('extra_inc_path'):
-  env.AppendUnique(CPPPATH = [ARGUMENTS['extra_inc_path']])
-if ARGUMENTS.has_key('extra_lib_path'):
-  env.AppendUnique(LIBPATH = [ARGUMENTS['extra_lib_path']])
-if ARGUMENTS.has_key('extra_inc_path1'):
-  env.AppendUnique(CPPPATH = [ARGUMENTS['extra_inc_path1']])
-if ARGUMENTS.has_key('extra_lib_path1'):
-  env.AppendUnique(LIBPATH = [ARGUMENTS['extra_lib_path1']])
-if ARGUMENTS.has_key('aikasurus_path'):
-  env.AppendUnique(LIBPATH = [ARGUMENTS['aikasurus_path']])
+if env.has_key('extra_inc_path'):
+  env.AppendUnique(CPPPATH = [env['extra_inc_path']])
+if env.has_key('extra_lib_path'):
+  env.AppendUnique(LIBPATH = [env['extra_lib_path']])
+if env.has_key('extra_inc_path1'):
+  env.AppendUnique(CPPPATH = [env['extra_inc_path1']])
+if env.has_key('extra_lib_path1'):
+  env.AppendUnique(LIBPATH = [env['extra_lib_path1']])
+if env.has_key('aikasurus_path'):
+  env.AppendUnique(LIBPATH = [env['aikasurus_path']])
 
 #
 # this is a bit out of place (after auto-configration)
@@ -465,13 +469,14 @@ elif env['frontend'] == 'qt4':
     Exit(1)
 
 # check socket libs
-env['socket_libs'] = []
+env['SYSTEM_LIBS'] = []
 if conf.CheckLib('socket'):
-  env.AppendUnique(socket_libs = ['socket'])
+  env['SYSTEM_LIBS'].append('socket')
 
-# FIXME: What is nsl, is it related to socket?
+# EF: This is the network services library and provides a
+# transport-level interface to networking services.
 if conf.CheckLib('nsl'):
-  env.AppendUnique(socket_libs = ['nsl'])
+  env['SYSTEM_LIBS'].append('nsl')
 
 # check boost libraries
 boost_opt = ARGUMENTS.get('boost', default_boost_opt)
@@ -574,6 +579,7 @@ for header in headers:
 # HAVE_MKTEMP
 # HAVE_MKSTEMP
 # HAVE_STRERROR
+# HAVE_FCNTL
 
 # Check functions
 functions = [
@@ -591,7 +597,8 @@ functions = [
   ('_mkdir', 'HAVE__MKDIR'),
   ('mktemp', 'HAVE_MKTEMP'),
   ('mkstemp', 'HAVE_MKSTEMP'),
-  ('strerror', 'HAVE_STRERROR')
+  ('strerror', 'HAVE_STRERROR'),
+  ('fcntl', 'HAVE_FCNTL')
 ]
 
 for func in functions:
@@ -765,9 +772,9 @@ except:
   print "  QTDIR: ", env['QTDIR']
 
 if platform_name in ['win32', 'cygwin']:
-  env['SYSTEM_LIBS'] = ['shlwapi', 'z']
+  env['SYSTEM_LIBS'] += ['shlwapi', 'z']
 else:
-  env['SYSTEM_LIBS'] = ['z']
+  env['SYSTEM_LIBS'] += ['z']
 
 #
 # Build parameters CPPPATH etc
@@ -789,9 +796,6 @@ else:
 env['BUILDERS']['substFile'] = Builder(action = utils.env_subst)
 # FIXME: there must be a better way.
 env['BUILDERS']['fileCopy'] = Builder(action = utils.env_filecopy)
-# install
-env['BUILDERS']['installProg'] = Builder(action = utils.env_installProg)
-env['BUILDERS']['installFile'] = Builder(action = utils.env_installFile)
 
 #
 # A Link script for cygwin see

@@ -13,23 +13,7 @@ import os, sys
 Import('env')
 
 targets = env['BUILD_TARGETS']
-
-if targets == [] or 'lyx' in targets:
-  targets += ['supports', 'mathed', 'insets', 'frontends', \
-    'graphics', 'controllers', env['frontend'], 'lyx']
-  if env['INCLUDED_BOOST']:
-    targets.append('boost')
-elif 'client' in targets:
-  targets.append('supports')
-  if env['INCLUDED_BOOST']:
-    targets.append('boost')
-elif 'tex2lyx' in targets:
-  targets.append('supports')
-  if env['INCLUDED_BOOST']:
-    targets.append('boost')
-
-# unique target in the set (then I will need python 2.4)
-#targets = set(targets)
+build_lyx = (targets == [] or 'lyx' in targets or 'install' in targets)
 
 #
 # boost libraries
@@ -109,7 +93,7 @@ env.BuildDir('$BUILDDIR/common', '$TOP_SRC_DIR/src', duplicate = 0)
 # src/support 
 #
 
-if 'supports' in targets:
+if build_lyx or True in [x in targets for x in ['supports', 'client', 'tex2lyx']]:
   print "Processing files in src/support"
   
   env.Append(CPPPATH = ['.'])
@@ -156,7 +140,7 @@ if 'supports' in targets:
 # src/mathed
 #
   
-if 'mathed' in targets:
+if build_lyx or 'mathed' in targets:
   print "Processing files in src/mathed"
   
   mathed = env.StaticLibrary(
@@ -239,11 +223,10 @@ if 'mathed' in targets:
   Alias('mathed', mathed)
 
 
-if 'insets' in targets:
+if build_lyx or 'insets' in targets:
   #
   # src/insets
   #
-  
   print "Processing files in src/insets"
   
   insets = env.StaticLibrary(
@@ -300,8 +283,10 @@ if 'insets' in targets:
       insetwrap.C
     ''')]
   )
+  Alias('insets', insets)
+
   
-if 'frontends' in targets:
+if build_lyx or 'frontends' in targets:
   #
   # src/frontends
   #
@@ -325,7 +310,7 @@ if 'frontends' in targets:
   Alias('frontends', frontends)
 
 
-if 'graphics' in targets:  
+if build_lyx or 'graphics' in targets:  
   #
   # src/graphics
   #
@@ -351,7 +336,7 @@ if 'graphics' in targets:
   Alias('graphics', graphics)
 
 
-if 'controllers' in targets:
+if build_lyx or 'controllers' in targets:
   #
   # src/frontends/controllers
   #
@@ -415,7 +400,7 @@ if 'controllers' in targets:
 #
 # src/frontend/qt3/4
 #
-if env['frontend'] in targets:
+if build_lyx or env['frontend'] in targets:
   frontend = env['frontend']
   env.BuildDir('$BUILDDIR/$frontend', '$TOP_SRC_DIR/src/frontend/$frontend', duplicate = 0)
 else:
@@ -426,7 +411,8 @@ else:
     frontend = 'qt4'
   else:
     frontend = None
-  
+
+
 if frontend == 'qt3':
   print "Processing files in src/frontends/qt3"
 
@@ -906,7 +892,7 @@ elif frontend == 'qt4':
   Alias('qt4', qt4)
 
 
-if 'client' in targets:
+if 'client' in targets or 'install' in targets:
   #
   # src/client
   #
@@ -925,11 +911,11 @@ if 'client' in targets:
       messages.C
     ''')]
   )
-  env.fileCopy('$BUILDDIR/lyxclient', '$BUILDDIR/common/client/lyxclient')
+  Alias('client', env.fileCopy('$BUILDDIR/lyxclient', '$BUILDDIR/common/client/lyxclient'))
   Alias('client', client)
 
 
-if 'tex2lyx' in targets:
+if 'tex2lyx' in targets or 'install' in targets:
   #
   # tex2lyx
   #
@@ -975,19 +961,19 @@ if 'tex2lyx' in targets:
       text.C
     ''')]
   )
-  env.fileCopy('$BUILDDIR/tex2lyx', '$BUILDDIR/common/tex2lyx/tex2lyx')
+  Alias('tex2lyx', env.fileCopy('$BUILDDIR/tex2lyx', '$BUILDDIR/common/tex2lyx/tex2lyx'))
   Alias('tex2lyx', tex2lyx)
   #
   # src/
   #
   
-if 'lyx' in targets:
+if build_lyx or 'lyxbase' in targets:
   print "Processing files in src"
   
   env['SUBST_KEYS'] = ['PACKAGE_VERSION', 'VERSION_INFO']
   env.substFile('$BUILDDIR/common/version.C', '$TOP_SRC_DIR/src/version.C.in')
   
-  lyx_source = Split('''
+  lyx_source_pre = Split('''
     Bidi.C
     BufferView.C
     BufferView_pimpl.C
@@ -1008,13 +994,10 @@ if 'lyx' in targets:
     LyXAction.C
     MenuBackend.C
     ParagraphParameters.C
-    PrinterParams.C
     Spacing.C
-    Thesaurus.C
     ToolbarBackend.C
     author.C
     boost.C
-    box.C
     buffer.C
     buffer_funcs.C
     bufferlist.C
@@ -1028,7 +1011,6 @@ if 'lyx' in targets:
     cursor.C
     cursor_slice.C
     debug.C
-    dimension.C
     dociterator.C
     encoding.C
     errorlist.C
@@ -1078,10 +1060,8 @@ if 'lyx' in targets:
     paragraph_funcs.C
     paragraph_pimpl.C
     pariterator.C
-    SpellBase.C
     rowpainter.C
     sgml.C
-    tabular.C
     tex-accent.C
     tex-strings.C
     texrow.C
@@ -1099,43 +1079,95 @@ if 'lyx' in targets:
     main.C
   ''')
   
-  if env.has_key('USE_ASPELL') and env['USE_ASPELL']:
-    lyx_source.append('aspell.C')
-  elif env.has_key('USE_PSPELL') and env['USE_PSPELL']:
-    lyx_source.append('pspell.C')
-  elif env.has_key('USE_ISPELL') and env['USE_ISPELL']:
-    lyx_source.append('ispell.C')
+  lyx_source_post = Split('''
+    tabular.C
+    dimension.C
+    PrinterParams.C
+    box.C
+    Thesaurus.C
+    SpellBase.C
+  ''')
   
+  if env.has_key('USE_ASPELL') and env['USE_ASPELL']:
+    lyx_source_pre.append('aspell.C')
+  elif env.has_key('USE_PSPELL') and env['USE_PSPELL']:
+    lyx_source_pre.append('pspell.C')
+  elif env.has_key('USE_ISPELL') and env['USE_ISPELL']:
+    lyx_source_pre.append('ispell.C')
+  
+  lyxbase_pre = env.StaticLibrary(
+    target = '$LOCALLIBPATH/lyxbase_pre',
+    source = ["$BUILDDIR/common/%s" % x for x in lyx_source_pre]
+  )
+  lyxbase_post = env.StaticLibrary(
+    target = '$LOCALLIBPATH/lyxbase_post',
+    source = ["$BUILDDIR/common/%s" % x for x in lyx_source_post]
+  )
+  Alias('lyxbase', lyxbase_pre)
+  Alias('lyxbase', lyxbase_post)
+
+
+if build_lyx or 'lyx' in targets:
   #
   # Build lyx with given frontend
   #
   lyx = env.Program(
     target = '$BUILDDIR/$frontend/lyx',
-    source = ["$BUILDDIR/common/%s" % x for x in lyx_source],
+    source = [],
     LIBS = [
+      'lyxbase_pre',
       'mathed',
       'insets',
       'frontends',
       env['frontend'],
       'controllers',
       'graphics',
-      'supports'] +
+      'supports',
+      'lyxbase_post',
+      ] +
       env['BOOST_LIBRARIES'] +
       env['EXTRA_LIBS'] +
       env['SYSTEM_LIBS']
   )
+  Alias('lyx', env.fileCopy('$BUILDDIR/lyx-$frontend', '$BUILDDIR/$frontend/lyx'))
   Alias('lyx', lyx)
-  
+
+
 if 'install' in targets:
-  env.fileCopy('$BUILDDIR/lyx$frontend', '$BUILDDIR/$frontend/lyx')
-  
+  #
+  # This does not look clever right now. I am using the basic
+  # install builder of scons instead of fancier wiki solutions
+  # with the hope that scons can finish standarding this soon.
+  #
+  import glob
+
+  def install(dest, src):
+    ''' recusive installation of src '''
+    # separate file and directory
+    files = filter(os.path.isfile, [x for x in src])
+    dirs = filter(os.path.isdir, [x for x in src])
+    # install file
+    env.Install(dest, files)
+    # install directory
+    ins_dir = [dest]
+    for dir in dirs:
+      ins_dir.extend(install(os.path.join(dest, os.path.basename(dir)), 
+        glob.glob(os.path.join(dir, '*'))) )
+    return ins_dir
+  #
   # other targets include client, tex2lyx
-  Default('lyx')
-  
-  Alias('install', env.installProg(Dir(env['BIN_DIR']), 
-    [lyx, tex2lyx, lyxclient]))
-  ## Alias('install', env.installProg(Dir(os.path.join(env['PREFIX'], 'share/lyx/')), 
-  ##   [Dir(env.subst('$TOP_SRC_DIR/lib/') + dir) for dir in ['images', 'layouts', 'scripts', 'templates', \
-  ##   'examples', 'kbd', 'lyx2lyx', 'tex', 'clipart', 'doc',  'ui'] ] + \
-  ##   [File(env.subst('$TOP_SRC_DIR/lib/') + file) for file in ['configure.py', 'encodings', 'chkconfig.ltx', 'CREDITS', \
-  ##   'external_templates', 'symbols', 'languages', 'lyxrc.example', 'syntax.default']]))
+  env.Install(env['BIN_DIR'], [lyx, tex2lyx, client])
+  Alias('install', env['BIN_DIR'])
+  #
+  # copy files
+  dirs = install(os.path.join(env['PREFIX'], 'share/lyx/'), 
+    [env.subst('$TOP_SRC_DIR/lib/') + file for file in ['configure.py', 'encodings', 
+     'chkconfig.ltx', 'CREDITS', 'external_templates', 'symbols', 'languages',
+     'lyxrc.example', 'syntax.default', \
+     'images', 'layouts', 'scripts', 'templates', \
+     'examples', 'kbd', 'lyx2lyx', 'tex', 'clipart', 'doc',  'ui']]
+  )
+  Alias('install', dirs)
+
+Default('lyx')
+
