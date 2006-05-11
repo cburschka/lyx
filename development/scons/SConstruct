@@ -885,13 +885,14 @@ opts.Save('options.cache', env)
 Help(opts.GenerateHelpText(env))
 
 
-
 #----------------------------------------------------------
 # Start building
 #----------------------------------------------------------
 Export('env')
 
 SConsignFile(os.path.abspath('%s/sconsign' % env['BUILDDIR']))
+
+env['BUILD_TARGETS'] = BUILD_TARGETS
 
 print "Building all targets recursively"
 
