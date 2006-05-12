@@ -902,7 +902,7 @@ if 'client' in targets or 'install' in targets:
   
   client = env.Program(
     target = '$BUILDDIR/common/client/lyxclient',
-    LIBS = env['BOOST_LIBRARIES'] + env['socket_libs'] + ['supports'],
+    LIBS = env['BOOST_LIBRARIES'] + env['SOCKET_LIBS'] + ['supports'],
     source = ["$BUILDDIR/common/client/%s" % x for x in Split('''
       boost.C
       client.C
@@ -911,7 +911,8 @@ if 'client' in targets or 'install' in targets:
       messages.C
     ''')]
   )
-  Alias('client', env.fileCopy('$BUILDDIR/lyxclient', '$BUILDDIR/common/client/lyxclient'))
+  Alias('client', env.Command(os.path.join('$BUILDDIR', os.path.split(str(client[0]))[1]), 
+    client, [Copy('$TARGET', '$SOURCE')]))
   Alias('client', client)
 
 
@@ -961,13 +962,15 @@ if 'tex2lyx' in targets or 'install' in targets:
       text.C
     ''')]
   )
-  Alias('tex2lyx', env.fileCopy('$BUILDDIR/tex2lyx', '$BUILDDIR/common/tex2lyx/tex2lyx'))
+  Alias('tex2lyx', env.Command(os.path.join('$BUILDDIR', os.path.split(str(tex2lyx[0]))[1]), 
+    tex2lyx, [Copy('$TARGET', '$SOURCE')]))
   Alias('tex2lyx', tex2lyx)
+
+
+if build_lyx or 'lyxbase' in targets:
   #
   # src/
   #
-  
-if build_lyx or 'lyxbase' in targets:
   print "Processing files in src"
   
   env['SUBST_KEYS'] = ['PACKAGE_VERSION', 'VERSION_INFO']
@@ -1089,11 +1092,11 @@ if build_lyx or 'lyxbase' in targets:
   ''')
   
   if env.has_key('USE_ASPELL') and env['USE_ASPELL']:
-    lyx_source_pre.append('aspell.C')
+    lyx_source_post.append('aspell.C')
   elif env.has_key('USE_PSPELL') and env['USE_PSPELL']:
-    lyx_source_pre.append('pspell.C')
+    lyx_source_post.append('pspell.C')
   elif env.has_key('USE_ISPELL') and env['USE_ISPELL']:
-    lyx_source_pre.append('ispell.C')
+    lyx_source_post.append('ispell.C')
   
   lyxbase_pre = env.StaticLibrary(
     target = '$LOCALLIBPATH/lyxbase_pre',
@@ -1127,9 +1130,13 @@ if build_lyx or 'lyx' in targets:
       ] +
       env['BOOST_LIBRARIES'] +
       env['EXTRA_LIBS'] +
+      env['SOCKET_LIBS'] +
       env['SYSTEM_LIBS']
   )
-  Alias('lyx', env.fileCopy('$BUILDDIR/lyx-$frontend', '$BUILDDIR/$frontend/lyx'))
+  # [/path/to/lyx.ext] => lyx-qt3.ext
+  target_name = os.path.split(str(lyx[0]))[1].replace('lyx', 'lyx-%s' % frontend)
+  Alias('lyx', env.Command(os.path.join('$BUILDDIR', target_name), lyx,
+    [Copy('$TARGET', '$SOURCE')]))
   Alias('lyx', lyx)
 
 
@@ -1140,7 +1147,17 @@ if 'install' in targets:
   # with the hope that scons can finish standarding this soon.
   #
   import glob
-
+  
+  # windows: $PREFIX/Resources
+  # others:  $PREDIX/share/lyx
+  share_dir = env['SHARE_DIR']
+  # windows: $PREFIX/Resouces/man/man1
+  # others:  $PREFIX/man/man1
+  man_dir = env['MAN_DIR']
+  # windows: $PREFIX/Resources/locale
+  # others:  $PREFIX/share/locale
+  locale_dir = env['LOCALE_DIR']
+  
   def install(dest, src):
     ''' recusive installation of src '''
     # separate file and directory
@@ -1155,12 +1172,12 @@ if 'install' in targets:
         glob.glob(os.path.join(dir, '*'))) )
     return ins_dir
   #
-  # other targets include client, tex2lyx
+  # executables
   env.Install(env['BIN_DIR'], [lyx, tex2lyx, client])
   Alias('install', env['BIN_DIR'])
   #
-  # copy files
-  dirs = install(os.path.join(env['PREFIX'], 'share/lyx/'), 
+  # share/lyx
+  dirs = install(env['SHARE_DIR'], 
     [env.subst('$TOP_SRC_DIR/lib/') + file for file in ['configure.py', 'encodings', 
      'chkconfig.ltx', 'CREDITS', 'external_templates', 'symbols', 'languages',
      'lyxrc.example', 'syntax.default', \
@@ -1168,6 +1185,16 @@ if 'install' in targets:
      'examples', 'kbd', 'lyx2lyx', 'tex', 'clipart', 'doc',  'ui']]
   )
   Alias('install', dirs)
+  # man
+  env.InstallAs(os.path.join(env['MAN_DIR'], 'lyx.1'),
+    env.subst('$TOP_SRC_DIR/lyx.man'))
+  env.InstallAs(os.path.join(env['MAN_DIR'], 'tex2lyx.1'),
+    env.subst('$TOP_SRC_DIR/src/tex2lyx/tex2lyx.man'))
+  env.InstallAs(os.path.join(env['MAN_DIR'], 'lyxclient.1'),
+    env.subst('$TOP_SRC_DIR/src/client/lyxclient.man'))
+  Alias('install', [os.path.join(env['MAN_DIR'], x) for
+    x in ['lyx.1', 'tex2lyx.1', 'lyxclient.1']])
+
 
 Default('lyx')
 

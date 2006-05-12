@@ -72,6 +72,7 @@ def env_subst(target, source, env):
 
 
 def env_filecopy(target, source, env):
+  ''' target can be a directory '''
   shutil.copy(str(source[0]), str(target[0]))
 
 
@@ -617,47 +618,6 @@ def setLoggedSpawn(env, logfile = '', longarg=False, info=''):
   # replace the old SPAWN by the new function
   env['SPAWN'] = ls.spawn
 
-#
-# Install program with permission
-# http://www.scons.org/cgi-sys/cgiwrap/scons/moin.cgi/InstallTargets
-# 
-import SCons
-from SCons.Script.SConscript import SConsEnvironment
-
-SConsEnvironment.Chmod = SCons.Action.ActionFactory(os.chmod,
-  lambda dest, mode: 'Chmod("%s", 0%o)' % (dest, mode))
-
-def installPerm(target, source, env, perm):
-  ''' install program with permission, will copy
-    files recursively if needed '''
-  # FIXME: mixed use of scons and python interfaces?
-  target_dir = str(target[0])
-  if os.path.isfile(target_dir):
-    print "Target should be a directory: ", target_dir
-    return
-  if not os.path.isdir(target_dir):
-    os.makedirs(target_dir)
-  objs = []
-  for fnode in source:
-    fname = str(fnode)
-    print "Installing", fname, "to", target_dir
-    if os.path.isfile(fname):
-      objs.append(os.path.join(target_dir, fname))
-      shutil.copy(fname, target_dir)
-    elif os.path.isdir(fname):
-      # FIXME: directory permission is not set
-      if os.path.isdir(os.path.join(target_dir, fname)):
-        shutil.rmtree(os.path.join(target_dir, fname))
-      shutil.copytree(fname, target_dir)
-  #for i in objs:
-  #  env.AddPostAction(File(i), env.Chmod(i, perm))
-  return target
-
-def env_installProg(target, source, env):
-  installPerm(target, source, env, 0755)
-
-def env_installFile(target, source, env):
-  installPerm(target, source, env, 0644)
 
 ## def DistSources(env, node):
 ##     env.DistFiles(_get_sources(env, node))

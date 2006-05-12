@@ -140,6 +140,9 @@ if os.name == 'nt':
   # If not specified, boost tries to figure out by itself, but it may fail.
   boost_posix = False
   packaging_method = 'windows'
+  share_dir = 'Resources'
+  man_dir = 'Resouces/man/man1'
+  locale_dir = 'Resources/locale'
 elif os.name == 'posix' and sys.platform != 'cygwin':
   platform_name = sys.platform
   default_frontend = 'qt3'
@@ -150,6 +153,9 @@ elif os.name == 'posix' and sys.platform != 'cygwin':
   default_with_x = True
   boost_posix = True
   packaging_method = 'posix'
+  share_dir = 'share/lyx'
+  man_dir = 'man/man1'
+  locale_dir = 'share/locale'
 elif os.name == 'posix' and sys.platform == 'cygwin':
   platform_name = 'cygwin'
   default_frontend = 'qt3'
@@ -160,6 +166,9 @@ elif os.name == 'posix' and sys.platform == 'cygwin':
   default_with_x = True
   boost_posix = True
   packaging_method = 'posix'
+  share_dir = 'share/lyx'
+  man_dir = 'man/man1'
+  locale_dir = 'share/locale'
 elif os.name == 'darwin':
   platform_name = 'mac'
   default_frontend = 'qt3'
@@ -170,6 +179,9 @@ elif os.name == 'darwin':
   default_with_x = False
   boost_posix = True
   packaging_method = 'msc'
+  share_dir = 'Resources'
+  man_dir = 'Resouces/man/man1'
+  locale_dir = 'Resources/locale'
 else:  # unsupported system
   platform_name = 'others'
   default_frontend = 'qt3'
@@ -180,6 +192,9 @@ else:  # unsupported system
   default_with_x = True
   boost_posix = False
   packaging_method = 'posix'
+  share_dir = 'share/lyx'
+  man_dir = 'man/man1'
+  locale_dir = 'share/locale'
 
 #---------------------------------------------------------
 # Handling options
@@ -302,6 +317,9 @@ if env.has_key('exec_prefix') and env['exec_prefix'] != '.':
   env['BIN_DIR'] = env['exec_prefix']
 else:
   env['BIN_DIR'] = os.path.join(env['PREFIX'], 'bin')
+env['SHARE_DIR'] = os.path.join(env['PREFIX'], share_dir)
+env['MAN_DIR'] = os.path.join(env['PREFIX'], man_dir)
+env['LOCALE_DIR'] = os.path.join(env['PREFIX'], locale_dir)
 
 # speed up source file processing
 #env['CPPSUFFIXES'] = ['.C', '.cc', '.cpp']
@@ -329,7 +347,16 @@ getEnvVariable(env, 'LDFLAGS')
 # under windows, scons is confused by .C/.c and uses gcc instead of 
 # g++. I am forcing the use of g++ here. This is expected to change
 # after lyx renames all .C files to .cpp
-if platform_name == 'cygwin':
+#
+# Solaris seems to use gcc for the last step as well, so, to
+# make sure everyone uses a C++ compiler, linker, I do this for
+# all platform
+#
+# just to be safe
+if env.has_key('CXX') and env['CXX'] != '':
+  env['CC'] = env['CXX']
+  env['LINK'] = env['CXX']
+else:
   env['CC'] = 'g++'
   env['LINK'] = 'g++'
 
@@ -469,14 +496,14 @@ elif env['frontend'] == 'qt4':
     Exit(1)
 
 # check socket libs
-env['SYSTEM_LIBS'] = []
+env['SOCKET_LIBS'] = []
 if conf.CheckLib('socket'):
-  env['SYSTEM_LIBS'].append('socket')
+  env['SOCKET_LIBS'].append('socket')
 
 # EF: This is the network services library and provides a
 # transport-level interface to networking services.
 if conf.CheckLib('nsl'):
-  env['SYSTEM_LIBS'].append('nsl')
+  env['SOCKET_LIBS'].append('nsl')
 
 # check boost libraries
 boost_opt = ARGUMENTS.get('boost', default_boost_opt)
@@ -772,9 +799,9 @@ except:
   print "  QTDIR: ", env['QTDIR']
 
 if platform_name in ['win32', 'cygwin']:
-  env['SYSTEM_LIBS'] += ['shlwapi', 'z']
+  env['SYSTEM_LIBS'] = ['shlwapi', 'z']
 else:
-  env['SYSTEM_LIBS'] += ['z']
+  env['SYSTEM_LIBS'] = ['z']
 
 #
 # Build parameters CPPPATH etc
