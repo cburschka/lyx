@@ -2,7 +2,6 @@ include $(top_srcdir)/config/common.am
 
 EXTRA_DIST = \
 	common.am \
-	cygwin.m4 \
 	gnome--.m4 \
 	gnome.m4 \
 	gtk--.m4 \
