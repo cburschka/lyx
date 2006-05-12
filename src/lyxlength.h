@@ -102,10 +102,18 @@ private:
 bool operator==(LyXLength const & l1, LyXLength const & l2);
 ///
 bool operator!=(LyXLength const & l1, LyXLength const & l2);
-/** If "data" is valid, the length represented by it is
-    stored into "result", if that is not 0. */
+/** Test whether \p data represents a valid length.
+ * 
+ * \returns whether \p data is a valid length
+ * \param data Length in LyX format. Since the only difference between LyX
+ * and LaTeX format is the representation of length variables as units (e.g.
+ * \c text% vs. \c \\textwidth) you can actually use this function as well
+ * for testing LaTeX lengths as long as they only contain real units like pt.
+ * \param result Pointer to a LyXLength variable. If \p result is not 0 and
+ * \p data is valid, the length represented by it is stored into \p result.
+ */
 bool isValidLength(std::string const & data, LyXLength * result = 0);
-/// return the name of the given unit number
+/// return the LyX name of the given unit number
 char const * stringFromUnit(int unit);
 
 #endif // LYXLENGTH_H
