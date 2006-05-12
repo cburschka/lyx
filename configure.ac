@@ -117,6 +117,10 @@ LYX_LOOP_DIR($lyx_cv_extra_prefix,[
 LYX_ADD_INC_DIR(CPPFLAGS,$dir/include)
   LYX_ADD_LIB_DIR(LDFLAGS,$dir/lib)])
 
+### These are needed in windows
+AC_CHECK_LIB(shlwapi, main)
+AC_CHECK_LIB(gdi32, main)
+
 AC_ARG_WITH(aiksaurus,
   [  --without-aiksaurus     do not use the Aiksaurus library],
   [lyx_use_aiksaurus=$withval])
@@ -143,9 +147,6 @@ AC_DISABLE_SHARED
 AC_LIBTOOL_WIN32_DLL
 #AM_PROG_LIBTOOL
 LYX_PROG_LIBTOOL
-
-### Check for some Cygwin-specific details.
-CHECK_WITH_CYGWIN
 
 ### Check for X libraries
 AC_PATH_XTRA

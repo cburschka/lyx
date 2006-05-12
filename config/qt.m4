@@ -248,6 +248,14 @@ AC_DEFUN([QT_DO_IT_ALL],
 	case ${host} in
 	*mingw*) QT_CPPFLAGS="-DQT_DLL $QT_CPPFLAGS";;
 	esac
+
+	case ${host_os} in
+	cygwin* ) 
+		if test "x$with_x" = xno ; then 
+			QT_CPPFLAGS="$QT_CPPFLAGS -DQ_CYGWIN_WIN"
+		fi;;
+	esac
+
 	AC_SUBST(QT_CPPFLAGS)
 
 	if test -z "$MOC"; then

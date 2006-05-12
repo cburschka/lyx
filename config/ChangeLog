@@ -1,3 +1,10 @@
+2006-05-12  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* qt.m4 (QT_DO_IT_ALL): add test for Qt-without-X11-under-cygwin.
+
+	* Makefile.am:
+	* cygwin.m4: remove special cygwin tests
+
 2006-04-27  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyxinclude.m4 (LYX_USE_PACKAGING): do not set program_suffix for

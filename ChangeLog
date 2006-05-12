@@ -1,3 +1,8 @@
+2006-05-12  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* configure.ac: check for shlwapi and gdi32 libraries (needed in
+	windows); do not check special cygwin features.
+
 2006-04-27  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* configure.ac: do not run lib/configure.py
