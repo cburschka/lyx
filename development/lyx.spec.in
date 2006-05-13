@@ -73,18 +73,6 @@ rm -rf ${RPM_BUILD_ROOT}
 # Make TeX understand where LyX-specific packages are
 texhash
 
-# Before configuring lyx for the local system
-# PATH needs to be imported
-if [ -f /etc/profile ]; then
-    . /etc/profile
-fi
-#
-# Now configure LyX
-#
-echo "Configuring LyX for your system..."
-cd %{_datadir}/%{name}
-./configure --srcdir
-
 %postun
 # Fix the TeX file hash
 #
