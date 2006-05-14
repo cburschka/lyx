@@ -22,9 +22,7 @@
 
 int lyx::support::chdir(std::string const & name)
 {
-#ifdef __EMX__
-	return ::_chdir2(name.c_str());
-#elif defined(_WIN32)
+#ifdef _WIN32
 	return SetCurrentDirectory(name.c_str()) != 0 ? 0 : -1;
 #else
 	return ::chdir(name.c_str());

@@ -5,7 +5,7 @@ SUBDIRS = . tests
 CLEANFILES += $(BUILT_SOURCES)
 
 EXTRA_DIST = package.C.in pch.h \
-	os_cygwin.C os_os2.C os_unix.C os_win32.C os_win32.h
+	os_cygwin.C os_unix.C os_win32.C os_win32.h
 
 noinst_LTLIBRARIES = libsupport.la
 
@@ -55,8 +55,6 @@ libsupport_la_SOURCES = \
 	mkdir.C \
 	os.C \
 	os.h \
-	os2_defines.h \
-	os2_errortable.h \
 	path.C \
 	path.h \
 	package.C \

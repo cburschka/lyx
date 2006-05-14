@@ -10027,28 +10027,6 @@ Warning: if LyX crashes, it may not manage to remove the pipes; in this
 \end_layout
 
 \begin_layout Standard
-Other than this, there are a few points to consider:
-\end_layout
-
-\begin_layout Itemize
-Both server and clients must run on UNIX or OS/2 machines.
- Communications between LyX on UNIX and clients on OS/2 or vice versa is
- not possible right now.
-\end_layout
-
-\begin_layout Itemize
-On OS/2, only one client can connect to LyXServer at a time.
-\end_layout
-
-\begin_layout Itemize
-On OS/2, clients must open inpipe with 
-\family typewriter
-O_WRONLY
-\family default
- mode.
-\end_layout
-
-\begin_layout Standard
 You can find a complete example client written in C in the source distribution
  as 
 \family typewriter

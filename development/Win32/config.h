@@ -621,10 +621,6 @@ int mkstemp(char*);
 #endif
 #endif
 
-#ifdef __EMX__
-#include "support/os2_defines.h"
-#endif
-
 #if defined(HAVE_OSTREAM) && defined(HAVE_LOCALE) && defined(HAVE_SSTREAM)
 #define USE_BOOST_FORMAT 1
 #else

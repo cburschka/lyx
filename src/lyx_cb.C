@@ -338,15 +338,6 @@ void newFile(BufferView * bv, string const & filename)
 	// Split argument by :
 	string name;
 	string tmpname = split(filename, name, ':');
-#ifdef __EMX__ // Fix me! lyx_cb.C may not be low level enough to allow this.
-	if (name.length() == 1
-	    && isalpha(static_cast<unsigned char>(name[0]))
-	    && (prefixIs(tmpname, "/") || prefixIs(tmpname, "\\"))) {
-		name += ':';
-		name += token(tmpname, ':', 0);
-		tmpname = split(tmpname, ':');
-	}
-#endif
 	lyxerr[Debug::INFO] << "Arg is " << filename
 			    << "\nName is " << name
 			    << "\nTemplate is " << tmpname << endl;

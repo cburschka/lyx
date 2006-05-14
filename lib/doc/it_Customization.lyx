@@ -3239,28 +3239,6 @@ Attenzione: se LyX va in crash, non può gestire la rimozione dei canali,
 \end_layout
 
 \begin_layout Standard
-Oltre a questo, ci sono alcuni punti da considerare:
-\end_layout
-
-\begin_layout Itemize
-Sia il server che i clients devono girare su macchine UNIX o OS/2.
- Le comunicazioni tra LyX su UNIX e i clients su OS/2 o viceversa non sono
- attualmente possibili.
-\end_layout
-
-\begin_layout Itemize
-Su OS/2, solo un client per volta può connettersi al server LyX.
-\end_layout
-
-\begin_layout Itemize
-Su OS/2, i clients devono aprire il canale d'ingresso in modalità 
-\family typewriter
-O_WRONLY
-\family default
-.
-\end_layout
-
-\begin_layout Standard
 Potete trovare degli esempi completi scritti in C nella distribuzione dei
  codici come 
 \family typewriter

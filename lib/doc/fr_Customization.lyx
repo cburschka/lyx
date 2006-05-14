@@ -8434,33 +8434,6 @@ Attention : si LyX se plante, il peut ne pas avoir enlevé les tubes ; dans
 \end_layout
 
 \begin_layout Standard
-À part ça, il y a quelques points à savoir :
-\end_layout
-
-\begin_layout Itemize
-À la fois le client et le serveur doivent tourner sur des machines UNIX
- ou OS/2.
- Il n'est pour l'instant pas possible de communiquer entre LyX sur UNIX
- et des clients sur OS/2 ou vice versa.
-\end_layout
-
-\begin_layout Itemize
-Sur OS/2, un seul client à la fois peut se connecter sur le serveur LyX.
-\end_layout
-
-\begin_layout Itemize
-Sur OS/2, les clients doivent ouvrir le tube d'entrée (
-\family typewriter
-.lyxpipe.in
-\family default
-) en mode 
-\family typewriter
-O_WRONLY
-\family default
-.
-\end_layout
-
-\begin_layout Standard
 Vous pouvez trouver un exemple complet de client écrit en C dans la distribution
  source sous le nom 
 \family typewriter

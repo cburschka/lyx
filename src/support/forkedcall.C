@@ -361,10 +361,7 @@ int Forkedcall::generateChild()
 		lyxerr << "</command>" << std::endl;
 	}
 
-#if defined (__EMX__)
-	pid_t const cpid = spawnvp(P_SESSION|P_DEFAULT|P_MINIMIZE|P_BACKGROUND,
-				   argv[0], &*argv.begin());
-#elif defined (_WIN32)
+#ifdef _WIN32
 	pid_t const cpid = spawnvp(_P_NOWAIT, argv[0], &*argv.begin());
 #else // POSIX
 	pid_t const cpid = ::fork();

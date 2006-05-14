@@ -196,13 +196,6 @@ string const fileOpenSearch(string const & path, string const & name,
 			notfound = false;
 		}
 	}
-#ifdef __EMX__
-	if (ext.empty() && notfound) {
-		real_file = fileOpenSearch(path, name, "exe");
-		if (notfound)
-			real_file = fileOpenSearch(path, name, "cmd");
-	}
-#endif
 	return real_file;
 }
 
@@ -382,10 +375,6 @@ string const createTmpDir(string const & tempdir, string const & mask)
 
 bool destroyDir(string const & tmpdir)
 {
-
-#ifdef __EMX__
-	Path p(user_lyxdir());
-#endif
 	return fs::remove_all(tmpdir) > 0;
 }
 
@@ -413,9 +402,6 @@ string const createLyXTmpDir(string const & deflt)
 {
 	if (!deflt.empty() && deflt != "/tmp") {
 		if (mkdir(deflt, 0777)) {
-#ifdef __EMX__
-			Path p(package().user_support());
-#endif
 			if (isDirWriteable(deflt)) {
 				// deflt could not be created because it
 				// did exist already, so let's create our own
@@ -428,9 +414,6 @@ string const createLyXTmpDir(string const & deflt)
 		} else
 			return deflt;
 	} else {
-#ifdef __EMX__
-		Path p(package().user_support());
-#endif
 		return createTmpDir("/tmp", "lyx_tmpdir");
 	}
 }
@@ -494,19 +477,11 @@ string const makeAbsPath(string const & relPath, string const & basePath)
 		if (temp == "..") {
 			// Remove one level of TempBase
 			string::difference_type i = tempBase.length() - 2;
-#ifndef __EMX__
 			if (i < 0)
 				i = 0;
 			while (i > 0 && tempBase[i] != '/')
 				--i;
 			if (i > 0)
-#else
-			if (i < 2)
-				i = 2;
-			while (i > 2 && tempBase[i] != '/')
-				--i;
-			if (i > 2)
-#endif
 				tempBase.erase(i, string::npos);
 			else
 				tempBase += '/';

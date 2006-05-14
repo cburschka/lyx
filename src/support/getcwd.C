@@ -33,9 +33,7 @@ namespace {
 inline
 char * l_getcwd(char * buffer, size_t size)
 {
-#ifdef __EMX
-	return ::_getcwd2(buffer, size);
-#elif defined(_WIN32)
+#ifdef _WIN32
 	GetCurrentDirectory(size, buffer);
 	return buffer;
 #else
