@@ -4,7 +4,7 @@
 #
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
-# 
+#
 # \author Bo Peng
 # Full author contact details are available in file CREDITS.
 
@@ -13,21 +13,21 @@ import os, sys
 Import('env')
 
 targets = env['BUILD_TARGETS']
-build_lyx = (targets == [] or 'lyx' in targets or 'install' in targets)
+build_lyx = (targets == [] or 'lyx' in targets or 'install' in targets or 'all' in targets)
 
-#
-# boost libraries
-#
+
 if env['INCLUDED_BOOST'] or 'boost' in targets:
+  #
+  # boost libraries
+  #
+  # special builddir
   env.BuildDir('$BUILDDIR/boost', '$TOP_SRC_DIR/boost/libs', duplicate = 0)
-  
+
   boostenv = env.Copy()
-  boostenv.Append(CCFLAGS = '-DBOOST_USER_CONFIG="<config.h>"')
-  # for config.h
-  boostenv.Append(CPPPATH = ['$TOP_SRC_DIR/src'])
-  
+  boostenv.AppendUnique(CCFLAGS = '-DBOOST_USER_CONFIG="<config.h>"')
+
   print 'Processing files in boost/libs/filesystem/src...'
-  
+
   filesystem = boostenv.StaticLibrary(
     target = '$LOCALLIBPATH/boost_filesystem',
     source = ["$BUILDDIR/boost/filesystem/src/%s" % x for x in Split('''
@@ -37,9 +37,9 @@ if env['INCLUDED_BOOST'] or 'boost' in targets:
       path_posix_windows.cpp
     ''')]
   )
-  
+
   print 'Processing files in boost/libs/regex/src...'
-  
+
   regex = boostenv.StaticLibrary(
     target = '$LOCALLIBPATH/boost_regex',
     source = ["$BUILDDIR/boost/regex/src/%s" % x for x in Split('''
@@ -54,9 +54,9 @@ if env['INCLUDED_BOOST'] or 'boost' in targets:
       w32_regex_traits.cpp
     ''')]
   )
-  
+
   print 'Processing files in boost/libs/signals/src...'
-  
+
   signals = boostenv.StaticLibrary(
     target = '$LOCALLIBPATH/boost_signals',
     source = ["$BUILDDIR/boost/signals/src/%s" % x for x in Split('''
@@ -67,9 +67,9 @@ if env['INCLUDED_BOOST'] or 'boost' in targets:
       trackable.cpp
     ''')]
   )
-  
+
   print 'Processing files in boost/libs/iostreams/src...'
-  
+
   iostreams = boostenv.StaticLibrary(
     target = '$LOCALLIBPATH/boost_iostreams',
     source = ["$BUILDDIR/boost/iostreams/src/%s" % x for x in Split('''
@@ -82,25 +82,23 @@ if env['INCLUDED_BOOST'] or 'boost' in targets:
   Alias('boost', regex)
   Alias('boost', signals)
   Alias('boost', iostreams)
-  
+
+
 #
 # Now, src code under src/
 #
-
 env.BuildDir('$BUILDDIR/common', '$TOP_SRC_DIR/src', duplicate = 0)
 
-#
-# src/support 
-#
 
 if build_lyx or True in [x in targets for x in ['supports', 'client', 'tex2lyx']]:
+  #
+  # src/support
+  #
   print "Processing files in src/support"
-  
-  env.Append(CPPPATH = ['.'])
-  
+
   env['SUBST_KEYS'] = ['LYX_DIR', 'LOCALEDIR', 'TOP_SRCDIR', 'PROGRAM_SUFFIX']
   env.substFile('$BUILDDIR/common/support/package.C', '$TOP_SRC_DIR/src/support/package.C.in')
-  
+
   supports = env.StaticLibrary(
     target = '$LOCALLIBPATH/supports',
     source = ['$BUILDDIR/common/support/%s' % x for x in Split('''
@@ -136,13 +134,13 @@ if build_lyx or True in [x in targets for x in ['supports', 'client', 'tex2lyx']
   )
   Alias('supports', supports)
 
-#
-# src/mathed
-#
-  
+
 if build_lyx or 'mathed' in targets:
+  #
+  # src/mathed
+  #
   print "Processing files in src/mathed"
-  
+
   mathed = env.StaticLibrary(
     target = '$LOCALLIBPATH/mathed',
     source = ["$BUILDDIR/common/mathed/%s" % x for x in Split('''
@@ -228,7 +226,7 @@ if build_lyx or 'insets' in targets:
   # src/insets
   #
   print "Processing files in src/insets"
-  
+
   insets = env.StaticLibrary(
     target = '$LOCALLIBPATH/insets',
     source = ["$BUILDDIR/common/insets/%s" % x for x in Split('''
@@ -285,14 +283,13 @@ if build_lyx or 'insets' in targets:
   )
   Alias('insets', insets)
 
-  
+
 if build_lyx or 'frontends' in targets:
   #
   # src/frontends
   #
-  
   print "Processing files in src/frontends"
-  
+
   frontends = env.StaticLibrary(
     target = '$LOCALLIBPATH/frontends',
     source = ["$BUILDDIR/common/frontends/%s" % x for x in Split('''
@@ -310,13 +307,12 @@ if build_lyx or 'frontends' in targets:
   Alias('frontends', frontends)
 
 
-if build_lyx or 'graphics' in targets:  
+if build_lyx or 'graphics' in targets:
   #
   # src/graphics
   #
-  
   print "Processing files in src/graphics"
-  
+
   graphics = env.StaticLibrary(
     target = '$LOCALLIBPATH/graphics',
     source = ["$BUILDDIR/common/graphics/%s" % x for x in Split('''
@@ -340,9 +336,8 @@ if build_lyx or 'controllers' in targets:
   #
   # src/frontends/controllers
   #
-  
   print "Processing files in src/frontends/controllers"
-  
+
   controllers = env.StaticLibrary(
     target = '$LOCALLIBPATH/controllers',
     source = ["$BUILDDIR/common/frontends/controllers/%s" % x for x in Split('''
@@ -397,6 +392,7 @@ if build_lyx or 'controllers' in targets:
     )
   Alias('controllers', controllers)
 
+
 #
 # src/frontend/qt3/4
 #
@@ -417,20 +413,21 @@ if frontend == 'qt3':
   print "Processing files in src/frontends/qt3"
 
   qt3env = env.Copy()
+  # disable auto scan to speed up non build time
+  qt3env['QT_AUTOSCAN'] = 0
 
   # load qt3 tools
   qt3env.Tool('qt')
 
-  qt3env.Append(CPPPATH = [
+  qt3env.AppendUnique(CPPPATH = [
     '$BUILDDIR/common',
+    '$BUILDDIR/common/images',
     '$BUILDDIR/common/frontends',
     '$BUILDDIR/common/frontends/qt3',
-    '$BUILDDIR/common/images',
     '$BUILDDIR/common/frontends/controllers',
-    '$BUILDDIR/common/frontends/qt3',
-    '$QT_INC_DIR']
+    '$QT_INC_PATH']
   )
-  
+
   qt3_ui_files = Split('''
     BiblioModuleBase.ui
     BranchesModuleBase.ui
@@ -502,8 +499,7 @@ if frontend == 'qt3':
     QVSpaceDialogBase.ui
     QWrapDialogBase.ui
   ''')
-  
-  
+
   qt3_moc_files = ["$BUILDDIR/common/frontends/qt3/%s" % x for x in Split('''
     BulletsModule.C
     emptytable.C
@@ -563,15 +559,16 @@ if frontend == 'qt3':
     socket_callback.C
     validators.C
   ''')]
+
+  # manually moc and uic files for better performance 
+  # (stop autoscan, 13:20s->12:50s :-)
+  qt3_moced_files = [qt3env.Moc(x.replace('.C', '.h')) for x in qt3_moc_files]
   
-  # under windows, because of the .C/.c confusion
-  # moc_files are not moced automatically.
-  # I am doing it manually here, until lyx changes
-  # file extension from .C to .cpp
-  qt3_moced_files = []
-  if os.name == 'nt' or sys.platform == 'cygwin':
-    qt3_moced_files = [qt3env.Moc(x.replace('.C', '.h')) for x in qt3_moc_files]
-  
+  qt3_uiced_files = [qt3env.Uic('$BUILDDIR/common/frontends/qt3/ui/'+x) for x in qt3_ui_files]
+  qt3_uiced_cc_files = []
+  for x in qt3_uiced_files:
+    qt3_uiced_cc_files.extend(x[1:])
+
   qt3 = qt3env.StaticLibrary(
     target = '$LOCALLIBPATH/qt3',
     source = ["$BUILDDIR/common/frontends/qt3/%s" % x for x in Split('''
@@ -636,8 +633,7 @@ if frontend == 'qt3':
       qscreen.C
       qt_helpers.C
     ''')] +
-    qt3_moc_files + qt3_moced_files +
-    ['$BUILDDIR/common/frontends/qt3/ui/' + x for x in qt3_ui_files]
+    qt3_moc_files + qt3_moced_files + qt3_uiced_cc_files
   )
   Alias('qt3', qt3)
 
@@ -646,7 +642,8 @@ elif frontend == 'qt4':
   print "Processing files in src/frontends/qt4"
 
   qt4env = env.Copy()
-  
+  qt4env['QT_AUTOSCAN'] = 0
+
   # local qt4 toolset from
   # http://www.iua.upf.es/~dgarcia/Codders/sconstools.html
   #
@@ -655,8 +652,8 @@ elif frontend == 'qt4':
   #
   qt4env.Tool('qt4', [env['SCONS_DIR']])
   qt4env.EnableQt4Modules(env['QT_LIB'], debug = False)
-  
-  qt4env.Append(CPPPATH = [
+
+  qt4env.AppendUnique(CPPPATH = [
     '$BUILDDIR/common',
     '$BUILDDIR/common/images',
     '$BUILDDIR/common/frontends',
@@ -667,7 +664,7 @@ elif frontend == 'qt4':
     '$QT_INC_PATH/QtCore',
     '$QT_INC_PATH/QtGui']
   )
-  
+
   # FIXME: replace by something from pkg_config
   qt4env.Append(CCFLAGS = [
     '-DHAVE_CONFIG_H',
@@ -677,8 +674,8 @@ elif frontend == 'qt4':
     '-DQT3_SUPPORT',
     '-Winvalid-pch']
   )
-  
-  qt4_ui_files = Split('''
+
+  qt4_ui_files = ['$BUILDDIR/common/frontends/qt4/ui/%s' % x for x in Split('''
     BiblioUi
     BranchesUi
     BulletsUi
@@ -748,9 +745,9 @@ elif frontend == 'qt4':
     QURLUi
     QVSpaceUi
     QWrapUi
-  ''')
-  
-  qt4_moc_files = Split('''
+  ''')]
+
+  qt4_moc_files = ["$BUILDDIR/common/frontends/qt4/%s" % x for x in Split('''
     BulletsModule.C
     emptytable.C
     FileDialog_private.C
@@ -811,15 +808,9 @@ elif frontend == 'qt4':
     QLToolbar.C
     socket_callback.C
     validators.C
-  ''')
-  
-  #
-  # Compile resources
-  #
-  for x in qt4_ui_files:
-    qt4env.Uic4('$BUILDDIR/common/frontends/qt4/ui/' + x)
-  
-  qt4_source_files = Split('''
+  ''') ]
+
+  qt4_source_files = ["$BUILDDIR/common/frontends/qt4/%s" % x for x in Split('''
     QDialogView.C
     Alert_pimpl.C
     Dialogs.C
@@ -881,52 +872,67 @@ elif frontend == 'qt4':
     qfont_metrics.C
     qscreen.C
     qt_helpers.C
-  ''')
-  
+  ''')]
+
+  #
+  # Compile resources
+  #
+  resources = [qt4env.Uic4(x) for x in qt4_ui_files]
+
+  # 
+  # moc qt4_moc_files
+  #
+  qt4_moced_files = [qt4env.Moc4(x.replace('.C', '_moc.cpp'), x.replace('.C', '.h')) for x in qt4_moc_files]
+
+  # if the moced files are included in the .C file
+  # the Flatten(...) part will not be needed
   qt4 = qt4env.StaticLibrary(
     target = '$LOCALLIBPATH/qt4',
     LIBS = qt4env['QT_LIB'],
-    source = ["$BUILDDIR/common/frontends/qt4/%s" % x for x in qt4_source_files] + \
-       ["$BUILDDIR/common/frontends/qt4/%s" % x for x in qt4_moc_files]
-   )
+    source = qt4_source_files + qt4_moc_files + Flatten(qt4_moced_files)
+  )
   Alias('qt4', qt4)
 
 
-if 'client' in targets or 'install' in targets:
+if 'client' in targets or 'install' in targets or 'all' in targets:
   #
   # src/client
   #
   env.BuildDir('$BUILDDIR/common', '$TOP_SRC_DIR/src', duplicate = 0)
-  
+
   print "Processing files in src/client"
-  
-  client = env.Program(
-    target = '$BUILDDIR/common/client/lyxclient',
-    LIBS = env['BOOST_LIBRARIES'] + env['SOCKET_LIBS'] + ['supports'],
-    source = ["$BUILDDIR/common/client/%s" % x for x in Split('''
-      boost.C
-      client.C
-      debug.C
-      gettext.C
-      messages.C
-    ''')]
-  )
-  Alias('client', env.Command(os.path.join('$BUILDDIR', os.path.split(str(client[0]))[1]), 
-    client, [Copy('$TARGET', '$SOURCE')]))
+
+  try:
+    client = env.Program(
+      target = '$BUILDDIR/common/client/lyxclient',
+      LIBS = env['BOOST_LIBRARIES'] + env['SOCKET_LIBS'] + ['supports'],
+      source = ["$BUILDDIR/common/client/%s" % x for x in Split('''
+        boost.C
+        client.C
+        debug.C
+        gettext.C
+        messages.C
+      ''')]
+    )
+    Alias('client', env.Command(os.path.join('$BUILDDIR', os.path.split(str(client[0]))[1]),
+      client, [Copy('$TARGET', '$SOURCE')]))
+  except:
+    print "Building of program lyxclient failed"
+    client = None
   Alias('client', client)
 
 
-if 'tex2lyx' in targets or 'install' in targets:
+if 'tex2lyx' in targets or 'install' in targets or 'all' in targets:
   #
   # tex2lyx
   #
   print "Processing files in src/tex2lyx"
-  
+
   tex2lyx_env = env.Copy()
   # the order is important here.
   tex2lyx_env.Prepend(CPPPATH = ['$BUILDDIR/common/tex2lyx'])
-  tex2lyx_env.Append(LIBPATH = ['#$LOCALLIBPATH'])
-  
+  tex2lyx_env.AppendUnique(LIBPATH = ['#$LOCALLIBPATH'])
+
   tex2lyx_env.fileCopy('$BUILDDIR/common/tex2lyx/FloatList.C', '$TOP_SRC_DIR/src/FloatList.C')
   tex2lyx_env.fileCopy('$BUILDDIR/common/tex2lyx/Floating.C', '$TOP_SRC_DIR/src/Floating.C')
   tex2lyx_env.fileCopy('$BUILDDIR/common/tex2lyx/counters.C', '$TOP_SRC_DIR/src/counters.C')
@@ -937,33 +943,37 @@ if 'tex2lyx' in targets or 'install' in targets:
   tex2lyx_env.fileCopy('$BUILDDIR/common/tex2lyx/lyxtextclass.C', '$TOP_SRC_DIR/src/lyxtextclass.C')
   tex2lyx_env.fileCopy('$BUILDDIR/common/tex2lyx/lyxlex.C', '$TOP_SRC_DIR/src/lyxlex.C')
   tex2lyx_env.fileCopy('$BUILDDIR/common/tex2lyx/lyxlex_pimpl.C', '$TOP_SRC_DIR/src/lyxlex_pimpl.C')
-  
-  tex2lyx = tex2lyx_env.Program(
-    target = '$BUILDDIR/common/tex2lyx/tex2lyx',
-    LIBS = ['supports'] + env['BOOST_LIBRARIES'] + env['SYSTEM_LIBS'],
-    source = ["$BUILDDIR/common/tex2lyx/%s" % x for x in Split('''
-      FloatList.C
-      Floating.C
-      counters.C
-      lyxlayout.C
-      lyxtextclass.C
-      lyxlex.C
-      lyxlex_pimpl.C
-      boost.C
-      context.C
-      gettext.C
-      lengthcommon.C
-      lyxfont.C
-      texparser.C
-      tex2lyx.C
-      preamble.C
-      math.C
-      table.C
-      text.C
-    ''')]
-  )
-  Alias('tex2lyx', env.Command(os.path.join('$BUILDDIR', os.path.split(str(tex2lyx[0]))[1]), 
-    tex2lyx, [Copy('$TARGET', '$SOURCE')]))
+
+  try:
+    tex2lyx = tex2lyx_env.Program(
+      target = '$BUILDDIR/common/tex2lyx/tex2lyx',
+      LIBS = ['supports'] + env['BOOST_LIBRARIES'] + env['SYSTEM_LIBS'],
+      source = ["$BUILDDIR/common/tex2lyx/%s" % x for x in Split('''
+        FloatList.C
+        Floating.C
+        counters.C
+        lyxlayout.C
+        lyxtextclass.C
+        lyxlex.C
+        lyxlex_pimpl.C
+        boost.C
+        context.C
+        gettext.C
+        lengthcommon.C
+        lyxfont.C
+        texparser.C
+        tex2lyx.C
+        preamble.C
+        math.C
+        table.C
+        text.C
+      ''')]
+    )
+    Alias('tex2lyx', env.Command(os.path.join('$BUILDDIR', os.path.split(str(tex2lyx[0]))[1]),
+      tex2lyx, [Copy('$TARGET', '$SOURCE')]))
+  except:
+    print "Building of program tex2lyx failed"
+    tex2lyx = None
   Alias('tex2lyx', tex2lyx)
 
 
@@ -972,10 +982,10 @@ if build_lyx or 'lyxbase' in targets:
   # src/
   #
   print "Processing files in src"
-  
+
   env['SUBST_KEYS'] = ['PACKAGE_VERSION', 'VERSION_INFO']
   env.substFile('$BUILDDIR/common/version.C', '$TOP_SRC_DIR/src/version.C.in')
-  
+
   lyx_source_pre = Split('''
     Bidi.C
     BufferView.C
@@ -1081,7 +1091,7 @@ if build_lyx or 'lyxbase' in targets:
     vspace.C
     main.C
   ''')
-  
+
   lyx_source_post = Split('''
     tabular.C
     dimension.C
@@ -1090,14 +1100,14 @@ if build_lyx or 'lyxbase' in targets:
     Thesaurus.C
     SpellBase.C
   ''')
-  
+
   if env.has_key('USE_ASPELL') and env['USE_ASPELL']:
     lyx_source_post.append('aspell.C')
   elif env.has_key('USE_PSPELL') and env['USE_PSPELL']:
     lyx_source_post.append('pspell.C')
   elif env.has_key('USE_ISPELL') and env['USE_ISPELL']:
     lyx_source_post.append('ispell.C')
-  
+
   lyxbase_pre = env.StaticLibrary(
     target = '$LOCALLIBPATH/lyxbase_pre',
     source = ["$BUILDDIR/common/%s" % x for x in lyx_source_pre]
@@ -1114,40 +1124,83 @@ if build_lyx or 'lyx' in targets:
   #
   # Build lyx with given frontend
   #
-  lyx = env.Program(
-    target = '$BUILDDIR/$frontend/lyx',
-    source = [],
-    LIBS = [
-      'lyxbase_pre',
-      'mathed',
-      'insets',
-      'frontends',
-      env['frontend'],
-      'controllers',
-      'graphics',
-      'supports',
-      'lyxbase_post',
-      ] +
-      env['BOOST_LIBRARIES'] +
-      env['EXTRA_LIBS'] +
-      env['SOCKET_LIBS'] +
-      env['SYSTEM_LIBS']
-  )
-  # [/path/to/lyx.ext] => lyx-qt3.ext
-  target_name = os.path.split(str(lyx[0]))[1].replace('lyx', 'lyx-%s' % frontend)
-  Alias('lyx', env.Command(os.path.join('$BUILDDIR', target_name), lyx,
-    [Copy('$TARGET', '$SOURCE')]))
+  try:
+    lyx = env.Program(
+      target = '$BUILDDIR/$frontend/lyx',
+      source = [],
+      LIBS = [
+        'lyxbase_pre',
+        'mathed',
+        'insets',
+        'frontends',
+        env['frontend'],
+        'controllers',
+        'graphics',
+        'supports',
+        'lyxbase_post',
+        ] +
+        env['BOOST_LIBRARIES'] +
+        env['EXTRA_LIBS'] +
+        env['SOCKET_LIBS'] +
+        env['SYSTEM_LIBS']
+    )
+    # [/path/to/lyx.ext] => lyx-qt3.ext
+    target_name = os.path.split(str(lyx[0]))[1].replace('lyx', 'lyx-%s' % frontend)
+    Alias('lyx', env.Command(os.path.join('$BUILDDIR', target_name), lyx,
+      [Copy('$TARGET', '$SOURCE')]))
+  except:
+    print "Building of program lyx failed"
+    lyx = None
+    raise
   Alias('lyx', lyx)
 
 
-if 'install' in targets:
+if 'po' in targets or 'install' in targets or 'all' in targets:
   #
-  # This does not look clever right now. I am using the basic
-  # install builder of scons instead of fancier wiki solutions
-  # with the hope that scons can finish standarding this soon.
+  # po/
+  #
+  print 'Processing files in po...'
+
+  import glob
+  # handle po files
+  #
+  # files to translate
+  transfiles = glob.glob(os.path.join(env.subst('$TOP_SRC_DIR'), 'po', '*.po'))
+  # possibly *only* handle these languages
+  languages = None
+  if env.has_key('languages'):
+    languages = env.make_list(env['lanauges'])
+  # use defulat msgfmt
+  if not env['MSGFMT']:
+    print 'msgfmt does not exist. Can not process po files'
+  else:
+    # create a builder
+    env['BUILDERS']['Transfiles'] = Builder(action='$MSGFMT $SOURCE -o $TARGET',suffix='.gmo',src_suffix='.po')
+    #
+    gmo_files = []
+    for f in transfiles:
+      # get filename
+      fname = os.path.split(f)[1]
+      # country code
+      country = fname.split('.')[0]
+      #
+      if not languages or country in languages:
+        gmo_files.extend(env.Transfiles(f))
+
+
+if 'install' in targets:
+  # create the directory if needed
+  if not os.path.isdir(env['PREFIX']):
+    try:
+      os.makedirs(env['PREFIX'])
+    except:
+      pass
+    if not os.path.isdir(env['PREFIX']):
+      print 'Can not create directory', env['PREFIX']
+      Exit(3)
   #
   import glob
-  
+  #
   # windows: $PREFIX/Resources
   # others:  $PREDIX/share/lyx
   share_dir = env['SHARE_DIR']
@@ -1157,9 +1210,9 @@ if 'install' in targets:
   # windows: $PREFIX/Resources/locale
   # others:  $PREFIX/share/locale
   locale_dir = env['LOCALE_DIR']
-  
+
   def install(dest, src):
-    ''' recusive installation of src '''
+    ''' recusive installation of src to dest '''
     # separate file and directory
     files = filter(os.path.isfile, [x for x in src])
     dirs = filter(os.path.isdir, [x for x in src])
@@ -1168,21 +1221,20 @@ if 'install' in targets:
     # install directory
     ins_dir = [dest]
     for dir in dirs:
-      ins_dir.extend(install(os.path.join(dest, os.path.basename(dir)), 
+      ins_dir.extend(install(os.path.join(dest, os.path.basename(dir)),
         glob.glob(os.path.join(dir, '*'))) )
     return ins_dir
   #
-  # executables
-  env.Install(env['BIN_DIR'], [lyx, tex2lyx, client])
+  # executables (some of them may be none)
+  env.Install(env['BIN_DIR'], filter(lambda x: x != None, [lyx, tex2lyx, client]))
   Alias('install', env['BIN_DIR'])
   #
   # share/lyx
-  dirs = install(env['SHARE_DIR'], 
-    [env.subst('$TOP_SRC_DIR/lib/') + file for file in ['configure.py', 'encodings', 
+  dirs = install(env['SHARE_DIR'],
+    [env.subst('$TOP_SRC_DIR/lib/') + file for file in ['configure.py', 'encodings',
      'chkconfig.ltx', 'CREDITS', 'external_templates', 'symbols', 'languages',
-     'lyxrc.example', 'syntax.default', \
-     'images', 'layouts', 'scripts', 'templates', \
-     'examples', 'kbd', 'lyx2lyx', 'tex', 'clipart', 'doc',  'ui']]
+     'lyxrc.example', 'syntax.default', 'bind', 'images', 'layouts', 'scripts', 
+     'templates', 'examples', 'kbd', 'lyx2lyx', 'tex', 'clipart', 'doc',  'ui']]
   )
   Alias('install', dirs)
   # man
@@ -1194,7 +1246,14 @@ if 'install' in targets:
     env.subst('$TOP_SRC_DIR/src/client/lyxclient.man'))
   Alias('install', [os.path.join(env['MAN_DIR'], x) for
     x in ['lyx.1', 'tex2lyx.1', 'lyxclient.1']])
+  # locale files?
+  # ru.gmo ==> ru/LC_MESSAGES/lyx.mo
+  for gmo in gmo_files:
+    lan = os.path.split(str(gmo))[1].split('.')[0]
+    dest_file = os.path.join(env['LOCALE_DIR'], lan, 'LC_MESSAGES', 'lyx.mo')
+    env.InstallAs(dest_file, gmo)
+    Alias('install', dest_file)
 
 
 Default('lyx')
-
+Alias('all', ['lyx', 'client', 'tex2lyx', 'po'])

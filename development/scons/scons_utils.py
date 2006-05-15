@@ -292,40 +292,15 @@ def checkBoostLibraries(conf, lib, pathes):
   return ('','')
 
 
-import SCons.Node
-def processLang(env, folder):
-  """ Process translations (.po files) in a po/ dir 
-    This is copied from KDE knetstats-1.5/admin/kde.py
-
-	FIXME: imcomplete
-  """
-  import glob
-  dir=SCons.Node.FS.default_fs.Dir(folder).srcnode()
-  fld=dir.srcnode()
-  tmptransfiles = glob.glob(str(fld)+'/*.po')
-  
-  transfiles=[]
-  if env.has_key('_BUILDDIR_'):
-    bdir=env['_BUILDDIR_']
-    for dir in env.make_list(tmptransfiles):
-      transfiles.append( env.join(bdir, dir) )
-  else: 
-    transfiles=tmptransfiles
-
-  env['MSGFMT'] = 'msgfmt'
-  env['BUILDERS']['Transfiles']=SCons.Builder.Builder(action='$MSGFMT $SOURCE -o $TARGET',suffix='.gmo',src_suffix='.po')
-  languages=None
-  # FIXME: KDE has this ARGS thing...
-  #if env['ARGS'] and env['ARGS'].has_key('languages'):
-  #  languages=env.make_list(env['ARGS']['languages'])
-  mydir=SCons.Node.FS.default_fs.Dir('.')
-  for f in transfiles:
-    fname=f.replace(mydir.abspath, '')
-    file=SCons.Node.FS.default_fs.File(fname)
-    country = SCons.Util.splitext(file.name)[0]
-    if not languages or country in languages:
-      result = env.Transfiles(file)
-  # FIXME
+def checkMsgFmt(conf):
+  ''' check the existence of command msgfmt '''
+  conf.Message('Checking for gettext command msgfmt...')
+  res = conf.TryAction('msgfmt --help')
+  conf.Result(res[0])
+  if res[0]:
+    return 'msgfmt'
+  else:
+    return None
 
 
 def installCygwinLDScript(path):
