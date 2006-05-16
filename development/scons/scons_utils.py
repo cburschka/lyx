@@ -211,12 +211,25 @@ int main()
   mkdir("somedir");
 }
 """
+
+  check_mkdir_one_arg_source2 = """
+#include <unistd.h>
+int main()
+{
+  mkdir("somedir");
+}
+"""
+
   conf.Message('Checking for the number of args for mkdir... ')
   ret = conf.TryLink(check_mkdir_one_arg_source, '.c')
   if ret:
     conf.Result('one')
   else:
-    conf.Result('two')
+    ret = conf.TryLink(check_mkdir_one_arg_source2, '.c')
+    if ret:
+      conf.Result('one')
+    else:     
+      conf.Result('two')
   return ret
 
 
