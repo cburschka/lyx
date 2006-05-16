@@ -64,7 +64,10 @@ def env_subst(target, source, env):
     if not env.has_key(k):
       print "Failed to subst key ", k, " from file", str(source[0])
       raise
-    contents = re.sub('@'+k+'@', env.subst('$'+k).replace('\n',r'\\n\\\n'), contents)
+    try:
+      contents = re.sub('@'+k+'@', env[k].replace('\n',r'\\n\\\n'), contents)
+    except:
+      print "Can not substitute %s with %s" % ('@'+k+'@', env[k])
   target_file.write(contents + "\n")
   target_file.close()
   #st = os.stat(str(source[0]))
@@ -211,25 +214,13 @@ int main()
   mkdir("somedir");
 }
 """
-
-  check_mkdir_one_arg_source2 = """
-#include <unistd.h>
-int main()
-{
-  mkdir("somedir");
-}
-"""
-
   conf.Message('Checking for the number of args for mkdir... ')
-  ret = conf.TryLink(check_mkdir_one_arg_source, '.c')
+  ret = conf.TryLink(check_mkdir_one_arg_source, '.c') or \
+    conf.TryLink('#include <unistd.h>' + check_mkdir_one_arg_source, '.c')
   if ret:
     conf.Result('one')
   else:
-    ret = conf.TryLink(check_mkdir_one_arg_source2, '.c')
-    if ret:
-      conf.Result('one')
-    else:     
-      conf.Result('two')
+    conf.Result('two')
   return ret
 
 

@@ -902,7 +902,7 @@ if 'client' in targets or 'install' in targets or 'all' in targets:
 
   print "Processing files in src/client"
 
-  try:
+  if env['HAS_SOCKET_LIB']:
     client = env.Program(
       target = '$BUILDDIR/common/client/lyxclient',
       LIBS = env['BOOST_LIBRARIES'] + env['SOCKET_LIBS'] + ['supports'],
@@ -916,8 +916,7 @@ if 'client' in targets or 'install' in targets or 'all' in targets:
     )
     Alias('client', env.Command(os.path.join('$BUILDDIR', os.path.split(str(client[0]))[1]),
       client, [Copy('$TARGET', '$SOURCE')]))
-  except:
-    print "Building of program lyxclient failed"
+  else:
     client = None
   Alias('client', client)
 
@@ -944,36 +943,32 @@ if 'tex2lyx' in targets or 'install' in targets or 'all' in targets:
   tex2lyx_env.fileCopy('$BUILDDIR/common/tex2lyx/lyxlex.C', '$TOP_SRC_DIR/src/lyxlex.C')
   tex2lyx_env.fileCopy('$BUILDDIR/common/tex2lyx/lyxlex_pimpl.C', '$TOP_SRC_DIR/src/lyxlex_pimpl.C')
 
-  try:
-    tex2lyx = tex2lyx_env.Program(
-      target = '$BUILDDIR/common/tex2lyx/tex2lyx',
-      LIBS = ['supports'] + env['BOOST_LIBRARIES'] + env['SYSTEM_LIBS'],
-      source = ["$BUILDDIR/common/tex2lyx/%s" % x for x in Split('''
-        FloatList.C
-        Floating.C
-        counters.C
-        lyxlayout.C
-        lyxtextclass.C
-        lyxlex.C
-        lyxlex_pimpl.C
-        boost.C
-        context.C
-        gettext.C
-        lengthcommon.C
-        lyxfont.C
-        texparser.C
-        tex2lyx.C
-        preamble.C
-        math.C
-        table.C
-        text.C
-      ''')]
-    )
-    Alias('tex2lyx', env.Command(os.path.join('$BUILDDIR', os.path.split(str(tex2lyx[0]))[1]),
-      tex2lyx, [Copy('$TARGET', '$SOURCE')]))
-  except:
-    print "Building of program tex2lyx failed"
-    tex2lyx = None
+  tex2lyx = tex2lyx_env.Program(
+    target = '$BUILDDIR/common/tex2lyx/tex2lyx',
+    LIBS = ['supports'] + env['BOOST_LIBRARIES'] + env['SYSTEM_LIBS'],
+    source = ["$BUILDDIR/common/tex2lyx/%s" % x for x in Split('''
+      FloatList.C
+      Floating.C
+      counters.C
+      lyxlayout.C
+      lyxtextclass.C
+      lyxlex.C
+      lyxlex_pimpl.C
+      boost.C
+      context.C
+      gettext.C
+      lengthcommon.C
+      lyxfont.C
+      texparser.C
+      tex2lyx.C
+      preamble.C
+      math.C
+      table.C
+      text.C
+    ''')]
+  )
+  Alias('tex2lyx', env.Command(os.path.join('$BUILDDIR', os.path.split(str(tex2lyx[0]))[1]),
+    tex2lyx, [Copy('$TARGET', '$SOURCE')]))
   Alias('tex2lyx', tex2lyx)
 
 
@@ -1124,34 +1119,29 @@ if build_lyx or 'lyx' in targets:
   #
   # Build lyx with given frontend
   #
-  try:
-    lyx = env.Program(
-      target = '$BUILDDIR/$frontend/lyx',
-      source = [],
-      LIBS = [
-        'lyxbase_pre',
-        'mathed',
-        'insets',
-        'frontends',
-        env['frontend'],
-        'controllers',
-        'graphics',
-        'supports',
-        'lyxbase_post',
-        ] +
-        env['BOOST_LIBRARIES'] +
-        env['EXTRA_LIBS'] +
-        env['SOCKET_LIBS'] +
-        env['SYSTEM_LIBS']
-    )
-    # [/path/to/lyx.ext] => lyx-qt3.ext
-    target_name = os.path.split(str(lyx[0]))[1].replace('lyx', 'lyx-%s' % frontend)
-    Alias('lyx', env.Command(os.path.join('$BUILDDIR', target_name), lyx,
-      [Copy('$TARGET', '$SOURCE')]))
-  except:
-    print "Building of program lyx failed"
-    lyx = None
-    raise
+  lyx = env.Program(
+    target = '$BUILDDIR/$frontend/lyx',
+    source = [],
+    LIBS = [
+      'lyxbase_pre',
+      'mathed',
+      'insets',
+      'frontends',
+      env['frontend'],
+      'controllers',
+      'graphics',
+      'supports',
+      'lyxbase_post',
+      ] +
+      env['BOOST_LIBRARIES'] +
+      env['EXTRA_LIBS'] +
+      env['SOCKET_LIBS'] +
+      env['SYSTEM_LIBS']
+  )
+  # [/path/to/lyx.ext] => lyx-qt3.ext
+  target_name = os.path.split(str(lyx[0]))[1].replace('lyx', 'lyx-%s' % frontend)
+  Alias('lyx', env.Command(os.path.join('$BUILDDIR', target_name), lyx,
+    [Copy('$TARGET', '$SOURCE')]))
   Alias('lyx', lyx)
 
 

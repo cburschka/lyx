@@ -411,7 +411,7 @@ else: # have to guess
   env['QT_INC_PATH'] = '/usr/include/$frontend/'
 # Note that this CPPPATH is for testing only
 # it will be removed before calling SConscript
-env.AppendUnique(CPPPATH = env['QT_INC_PATH'])
+env['CPPPATH'] = [env['QT_INC_PATH']]
 
 #
 # extra_inc_path and extra_lib_path
@@ -525,6 +525,9 @@ if not fast_start:
   env['SOCKET_LIBS'] = []
   if conf.CheckLib('socket'):
     env['SOCKET_LIBS'].append('socket')
+    env['HAS_SOCKET_LIB'] = True
+  else:
+    env['HAS_SOCKET_LIB'] = False
 
   # nsl is the network services library and provides a
   # transport-level interface to networking services.
@@ -532,8 +535,10 @@ if not fast_start:
     env['SOCKET_LIBS'].append('nsl')
 
   env_cache['SOCKET_LIBS'] = env['SOCKET_LIBS']
+  env_cache['HAS_SOCKET_LIB'] = env['HAS_SOCKET_LIB']
 else:
   env['SOCKET_LIBS'] = env_cache['SOCKET_LIBS']
+  env['HAS_SOCKET_LIB'] = env_cache['HAS_SOCKET_LIB']
 
 if not fast_start:
   # check boost libraries
@@ -762,13 +767,6 @@ if not fast_start:
     else:
       print "Warning: Can not locate specified spell checker:", spell_engine
 
-  # env['EXTRA_LIBS'] will be modified later, so a unique copy is needed
-  # NOTE that we do *not* save qt_libs in environment.
-  env_cache['EXTRA_LIBS'] = copy.copy(env['EXTRA_LIBS'])
-  env_cache['USE_ASPELL'] = env['USE_ASPELL']
-  env_cache['USE_PSPELL'] = env['USE_PSPELL']
-  env_cache['USE_ISPELL'] = env['USE_ISPELL']
-
   # USE_POSIX_PACKAGING
   # USE_MACOSX_PACKAGING
   # USE_WINDOWS_PACKAGING
@@ -821,6 +819,13 @@ if not fast_start:
   # USE_BOOST_FORMAT
   # WANT_GETFILEATTRIBUTESEX_WRAPPER
   utils.endConfigH(TOP_SRC_DIR)
+
+  # env['EXTRA_LIBS'] will be modified later, so a unique copy is needed
+  # NOTE that we do *not* save qt_libs in environment.
+  env_cache['EXTRA_LIBS'] = copy.copy(env['EXTRA_LIBS'])
+  env_cache['USE_ASPELL'] = env['USE_ASPELL']
+  env_cache['USE_PSPELL'] = env['USE_PSPELL']
+  env_cache['USE_ISPELL'] = env['USE_ISPELL']
 
 else:
   # only a few variables need to be rescanned
@@ -876,9 +881,9 @@ else:
 #
 # boost is always in, src is needed for config.h
 # 
-# Note that previously added QT_DIR/include etc is removed
-# they will be added when processing for example src/qt3
-env['CPPPATH'] = ['$TOP_SRC_DIR/boost', '$TOP_SRC_DIR/src']
+# QT_INC_PATH is not needed for *every* source file
+env['CPPPATH'].remove(env['QT_INC_PATH'])
+env['CPPPATH'] += ['$TOP_SRC_DIR/boost', '$TOP_SRC_DIR/src']
 
 # TODO: add (more) appropriate compiling options (-DNDEBUG etc)
 # for debug/release mode
@@ -937,11 +942,13 @@ Build info:
   Boost libraries:                %s
   Extra libraries:                %s
   System libraries:               %s
+  include search path:            %s
 Frontend:
   Frontend:                       %s
   Packaging:                      %s
-  LyX binary dir:                 FIXME
-  LyX files dir:                  FIXME
+  LyX dir:                        %s
+  LyX binary dir:                 %s
+  LyX files dir:                  %s
 ''' % (platform_name,
   env.subst('$CCFLAGS'), env.subst('$CC'),
   env.subst('$CPPFLAGS'), env.subst('$CFLAGS'),
@@ -950,8 +957,9 @@ Frontend:
   env.subst('$LINKFLAGS'), env.subst('$LINKFLAGS'),
   env.subst('$BUILDDIR'), env.subst('$LOCALLIBPATH'),
   str(env['LIBPATH']), str(env['BOOST_LIBRARIES']),
-  str(env['EXTRA_LIBS']), str(env['SYSTEM_LIBS']),
-  env['frontend'], packaging_method)
+  str(env['EXTRA_LIBS']), str(env['SYSTEM_LIBS']), str(env['CPPPATH']),
+  env['frontend'], packaging_method,
+  env['PREFIX'], env['BIN_DIR'], env['SHARE_DIR'])
 
 if env['frontend'] in ['qt3', 'qt4']:
   env['VERSION_INFO'] += '''  include dir:                    %s
@@ -996,9 +1004,9 @@ cache_file.close()
 #----------------------------------------------------------
 Export('env')
 
-# this has been the source of problem on some platforms...
-# needs more testing
-env.SConsignFile('%s/.sconsign' % env['BUILDDIR'][1:])
+# this has been the source of problems on some platforms...
+# I find that I need to supply it with full path name
+env.SConsignFile(os.path.join(Dir(env['BUILDDIR']).abspath, '.sconsign'))
 # this usage needs further investigation.
 #env.CacheDir('%s/Cache/%s' % (env['BUILDDIR'], frontend))
 

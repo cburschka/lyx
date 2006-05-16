@@ -210,7 +210,7 @@ def generate(env):
 	env['QT4_QRCFLAGS'] = ''
 
 	# suffixes/prefixes for the headers / sources to generate
-	env['QT4_MOCHPREFIX'] = 'moc_'
+	env['QT4_MOCHPREFIX'] = ''
 	env['QT4_MOCHSUFFIX'] = '$CXXFILESUFFIX'
 	env['QT4_MOCCXXPREFIX'] = 'moc_'
 	env['QT4_MOCCXXSUFFIX'] = '.moc'
