@@ -21,8 +21,12 @@
 #include "frontends/Alert.h" //to be removed?
 
 #include "support/filetools.h"
+#include "support/lstrings.h"
+#include "support/os.h"
 #include "support/path.h"
 #include "support/systemcall.h"
+
+#include <boost/filesystem/operations.hpp>
 
 using lyx::support::bformat;
 using lyx::support::compare_ascii_no_case;
@@ -35,9 +39,13 @@ using lyx::support::Path;
 using lyx::support::quoteName;
 using lyx::support::subst;
 using lyx::support::Systemcall;
+using lyx::support::token;
 
 using std::string;
 using std::distance;
+
+namespace fs = boost::filesystem;
+namespace os = lyx::support::os;
 
 extern LyXServerSocket * lyxsocket;
 
@@ -151,6 +159,39 @@ string Formats::getFormatFromFile(string const & filename) const
 	return string();
 }
 
+namespace {
+
+string fixCommand(string const & cmd, string const & ext, 
+		  os::auto_open_mode mode)
+{
+	// configure.py says we do not want a viewer/editor
+	if (cmd.empty())
+		return cmd;
+
+	// Does the OS manage this format?
+	if (os::canAutoOpenFile(ext, mode))
+		return "auto";
+
+	// if configure.py found nothing, clear the command
+	if (token(cmd, ' ', 0) == "none")
+		return string();
+
+	// use the command found by configure.py
+	return cmd;
+}
+
+}
+
+void Formats::setAutoOpen()
+{
+	FormatList::iterator fit = formatlist.begin();
+	FormatList::iterator const fend = formatlist.end();
+	for ( ; fit != fend ; ++fit) {
+		fit->setViewer(fixCommand(fit->viewer(), fit->extension(), os::VIEW));
+		fit->setEditor(fixCommand(fit->editor(), fit->extension(), os::EDIT));
+	}
+}
+
 
 int Formats::getNumber(string const & name) const
 {
@@ -216,20 +257,35 @@ void Formats::setViewer(string const & name, string const & command)
 bool Formats::view(Buffer const & buffer, string const & filename,
 		   string const & format_name) const
 {
-	if (filename.empty())
+	if (filename.empty() || !fs::exists(filename)) {
+		Alert::error(_("Cannot view file"),
+			bformat(_("File does not exist: %1$s"),
+				filename));
 		return false;
+	}
 
 	Format const * format = getFormat(format_name);
 	if (format && format->viewer().empty() &&
 	    format->isChildFormat())
 		format = getFormat(format->parentFormat());
 	if (!format || format->viewer().empty()) {
-// I believe this is the wrong place to show alerts, it should be done by
-// the caller (this should be "utility" code)
+// FIXME: I believe this is the wrong place to show alerts, it should be done
+// by the caller (this should be "utility" code)
 		Alert::error(_("Cannot view file"),
 			bformat(_("No information for viewing %1$s"),
 				prettyName(format_name)));
 		return false;
+	}
+	// viewer is 'auto'
+	if (format->viewer() == "auto") {
+		if (os::autoOpenFile(filename, os::VIEW))
+			return true;
+		else {
+			Alert::error(_("Cannot view file"),
+				bformat(_("Auto-view file %1$s failed"),
+					filename));
+			return false;
+		}
 	}
 
 	string command = libScriptSearch(format->viewer());
@@ -272,20 +328,35 @@ bool Formats::view(Buffer const & buffer, string const & filename,
 bool Formats::edit(Buffer const & buffer, string const & filename,
 			 string const & format_name) const
 {
-	if (filename.empty())
+	if (filename.empty() || !fs::exists(filename)) {
+		Alert::error(_("Cannot edit file"),
+			bformat(_("File does not exist: %1$s"),
+				filename));
 		return false;
+	}
 
 	Format const * format = getFormat(format_name);
 	if (format && format->editor().empty() &&
 	    format->isChildFormat())
 		format = getFormat(format->parentFormat());
 	if (!format || format->editor().empty()) {
-// I believe this is the wrong place to show alerts, it should be done by
-// the caller (this should be "utility" code)
+// FIXME: I believe this is the wrong place to show alerts, it should
+// be done by the caller (this should be "utility" code)
 		Alert::error(_("Cannot edit file"),
 			bformat(_("No information for editing %1$s"),
 				prettyName(format_name)));
 		return false;
+	}
+	// editor is 'auto'
+	if (format->editor() == "auto") {
+		if (os::autoOpenFile(filename, os::EDIT))
+			return true;
+		else {
+			Alert::error(_("Cannot edit file"),
+				bformat(_("Auto-edit file %1$s failed"),
+					filename));
+			return false;
+		}
 	}
 
 	string command = format->editor();

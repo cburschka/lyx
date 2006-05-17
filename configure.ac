@@ -118,7 +118,8 @@ LYX_ADD_INC_DIR(CPPFLAGS,$dir/include)
   LYX_ADD_LIB_DIR(LDFLAGS,$dir/lib)])
 
 ### These are needed in windows
-AC_CHECK_LIB(shlwapi, main)
+AC_CHECK_LIB(shlwapi, main, [LIBSHLWAPI=-lshlwapi])
+AC_SUBST(LIBSHLWAPI)
 AC_CHECK_LIB(gdi32, main)
 
 AC_ARG_WITH(aiksaurus,

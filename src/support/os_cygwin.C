@@ -21,6 +21,9 @@
 
 #include <windows.h>
 #include <io.h>
+#include <windef.h>
+#include <shellapi.h>	
+#include <shlwapi.h>
 
 #include <sys/cygwin.h>
 
@@ -33,36 +36,6 @@ using lyx::support::contains;
 namespace lyx {
 namespace support {
 namespace os {
-
-void os::init(int, char *[])
-{}
-
-
-string current_root()
-{
-	return string("/");
-}
-
-
-string::size_type common_path(string const & p1, string const & p2)
-{
-	string::size_type i = 0;
-	string::size_type	p1_len = p1.length();
-	string::size_type	p2_len = p2.length();
-	while (i < p1_len && i < p2_len && uppercase(p1[i]) == uppercase(p2[i]))
-		++i;
-	if ((i < p1_len && i < p2_len)
-	    || (i < p1_len && p1[i] != '/' && i == p2_len)
-	    || (i < p2_len && p2[i] != '/' && i == p1_len))
-	{
-		if (i)
-			--i;     // here was the last match
-		while (i && p1[i] != '/')
-			--i;
-	}
-	return i;
-}
-
 
 namespace {
 
@@ -88,8 +61,8 @@ bool is_windows_path(string const & p)
 
 
 enum PathStyle {
-    posix,
-    windows
+	posix,
+	windows
 };
 
 
@@ -140,6 +113,75 @@ string convert_path_list(string const & p, PathStyle const & target)
 }
 
 } // namespace anon
+
+void os::init(int, char *[])
+{
+	// Copy cygwin environment variables to the Windows environment
+	// if they're not already there.
+
+	char **envp = environ;
+	char curval[2];
+	string var;
+	string val;
+	bool temp_seen = false;
+
+	while (envp && *envp) {
+		val = split(*envp++, var, '=');
+
+		if (var == "TEMP")
+			temp_seen = true;
+		
+		if (GetEnvironmentVariable(var.c_str(), curval, 2) == 0
+				&& GetLastError() == ERROR_ENVVAR_NOT_FOUND) {
+			/* Convert to Windows style where necessary */
+			if (var == "PATH" || var == "LD_LIBRARY_PATH") {
+				string const winpathlist =
+				    convert_path_list(val, PathStyle(windows));
+				if (!winpathlist.empty()) {
+					SetEnvironmentVariable(var.c_str(),
+						winpathlist.c_str());
+				}
+			} else if (var == "HOME" || var == "TMPDIR" ||
+					var == "TMP" || var == "TEMP") {
+				string const winpath =
+					convert_path(val, PathStyle(windows));
+				SetEnvironmentVariable(var.c_str(), winpath.c_str());
+			} else {
+				SetEnvironmentVariable(var.c_str(), val.c_str());
+			}
+		}
+	}
+	if (!temp_seen) {
+		string const winpath = convert_path("/tmp", PathStyle(windows));
+		SetEnvironmentVariable("TEMP", winpath.c_str());
+	}
+}
+
+
+string current_root()
+{
+	return string("/");
+}
+
+
+string::size_type common_path(string const & p1, string const & p2)
+{
+	string::size_type i = 0;
+	string::size_type	p1_len = p1.length();
+	string::size_type	p2_len = p2.length();
+	while (i < p1_len && i < p2_len && uppercase(p1[i]) == uppercase(p2[i]))
+		++i;
+	if ((i < p1_len && i < p2_len)
+	    || (i < p1_len && p1[i] != '/' && i == p2_len)
+	    || (i < p2_len && p2[i] != '/' && i == p1_len))
+	{
+		if (i)
+			--i;     // here was the last match
+		while (i && p1[i] != '/')
+			--i;
+	}
+	return i;
+}
 
 
 string external_path(string const & p)
@@ -230,6 +272,39 @@ void cygwin_path_fix(bool use_cygwin_paths)
 {
 	cygwin_path_fix_ = use_cygwin_paths;
 }
+
+
+bool canAutoOpenFile(string const & ext, auto_open_mode const mode)
+{
+	if (ext.empty())
+		return false;
+	
+	string full_ext = ext;
+	// if the extension is passed without leading dot
+	if (full_ext[0] != '.')
+		full_ext = "." + ext;
+
+	DWORD bufSize = MAX_PATH + 100;
+	TCHAR buf[MAX_PATH + 100];
+	// reference: http://msdn.microsoft.com/library/default.asp?url=/library/en-us/shellcc
+	//                 /platform/shell/reference/shlwapi/registry/assocquerystring.asp
+	char const * action = (mode == VIEW) ? "open" : "edit";
+	return S_OK == AssocQueryString(0, ASSOCSTR_EXECUTABLE,
+		full_ext.c_str(), action, buf, &bufSize);
+}
+
+
+bool autoOpenFile(string const & filename, auto_open_mode const mode)
+{
+	// reference: http://msdn.microsoft.com/library/default.asp?url=/library/en-us/shellcc
+	//                 /platform/shell/reference/functions/shellexecute.asp
+	string const win_path =
+		os::convert_path(filename, os::PathStyle(os::windows));
+	char const * action = (mode == VIEW) ? "open" : "edit";
+	return reinterpret_cast<int>(ShellExecute(NULL, action, 
+		win_path.c_str(), NULL, NULL, 1)) > 32;
+}
+
 
 } // namespace os
 } // namespace support
