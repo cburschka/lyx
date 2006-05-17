@@ -60,14 +60,12 @@ def env_subst(target, source, env):
   source_file = file(str(source[0]), "r")
   
   contents = source_file.read()
-  for k in env.get('SUBST_KEYS', []):
-    if not env.has_key(k):
-      print "Failed to subst key ", k, " from file", str(source[0])
-      raise
+  for k, v in env.items():
     try:
-      contents = re.sub('@'+k+'@', env[k].replace('\n',r'\\n\\\n'), contents)
+      contents = re.sub('@'+k+'@', env.subst('$'+k).replace('\n',r'\\n\\\n'), contents)
+      contents = re.sub('%'+k+'%', env.subst('$'+k).replace('\n',r'\\n\\\n'), contents)
     except:
-      print "Can not substitute %s with %s" % ('@'+k+'@', env[k])
+      pass
   target_file.write(contents + "\n")
   target_file.close()
   #st = os.stat(str(source[0]))

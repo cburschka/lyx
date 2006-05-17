@@ -96,7 +96,6 @@ if build_lyx or True in [x in targets for x in ['supports', 'client', 'tex2lyx']
   #
   print "Processing files in src/support"
 
-  env['SUBST_KEYS'] = ['LYX_DIR', 'LOCALEDIR', 'TOP_SRCDIR', 'PROGRAM_SUFFIX']
   env.substFile('$BUILDDIR/common/support/package.C', '$TOP_SRC_DIR/src/support/package.C.in')
 
   supports = env.StaticLibrary(
@@ -902,7 +901,7 @@ if 'client' in targets or 'install' in targets or 'all' in targets:
 
   print "Processing files in src/client"
 
-  if env['HAS_SOCKET_LIB']:
+  if env['HAVE_FCNTL']:
     client = env.Program(
       target = '$BUILDDIR/common/client/lyxclient',
       LIBS = env['BOOST_LIBRARIES'] + env['SOCKET_LIBS'] + ['supports'],
@@ -978,7 +977,6 @@ if build_lyx or 'lyxbase' in targets:
   #
   print "Processing files in src"
 
-  env['SUBST_KEYS'] = ['PACKAGE_VERSION', 'VERSION_INFO']
   env.substFile('$BUILDDIR/common/version.C', '$TOP_SRC_DIR/src/version.C.in')
 
   lyx_source_pre = Split('''
@@ -1200,12 +1198,15 @@ if 'install' in targets:
   # windows: $PREFIX/Resources/locale
   # others:  $PREFIX/share/locale
   locale_dir = env['LOCALE_DIR']
+  # do not install these files
+  execlude_list = ['Makefile.am', 'Makefile.in', 'Makefile', 
+    'lyx2lyx_version.py', 'lyx2lyx_version.py.in']
 
   def install(dest, src):
     ''' recusive installation of src to dest '''
     # separate file and directory
-    files = filter(os.path.isfile, [x for x in src])
-    dirs = filter(os.path.isdir, [x for x in src])
+    files = filter(lambda x: os.path.isfile(x) and not os.path.split(x)[1] in execlude_list, src)
+    dirs = filter(os.path.isdir, src)
     # install file
     env.Install(dest, files)
     # install directory
@@ -1226,6 +1227,8 @@ if 'install' in targets:
      'lyxrc.example', 'syntax.default', 'bind', 'images', 'layouts', 'scripts', 
      'templates', 'examples', 'kbd', 'lyx2lyx', 'tex', 'clipart', 'doc',  'ui']]
   )
+  env.substFile('$SHARE_DIR/lyx2lyx/lyx2lyx_version.py', 
+    '$TOP_SRC_DIR/lib/lyx2lyx/lyx2lyx_version.py.in')
   Alias('install', dirs)
   # man
   env.InstallAs(os.path.join(env['MAN_DIR'], 'lyx.1'),

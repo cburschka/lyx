@@ -111,7 +111,6 @@ PACKAGE_BUGREPORT = 'lyx-devel@lists.lyx.org'
 PACKAGE_NAME = 'LyX'
 PACKAGE_TARNAME = 'lyx'
 PACKAGE_STRING = '%s %s' % (PACKAGE_NAME, PACKAGE_VERSION)
-PROGRAM_SUFFIX = ''
 
 # various cache/log files
 default_log_file = 'scons_lyx.log'
@@ -238,8 +237,6 @@ opts.AddOptions(
   BoolOption('fast_start', 'Whether or not use cached tests and keep current config.h', True),
   # FIXME: I do not know how pch is working. Ignore this option now.
   BoolOption('pch', '(NA) Whether or not use pch', default_pch_opt),
-  # FIXME: Not implemented yet.
-  BoolOption('version_suffix', '(NA) Whether or not add version suffix', False),
   # enable assertion, (config.h has ENABLE_ASSERTIOS
   BoolOption('assertions', 'Use assertions', True),
   # enable warning, (config.h has WITH_WARNINGS)
@@ -274,6 +271,8 @@ opts.AddOptions(
   PathOption('extra_lib_path1', 'Extra library path', None),
   # can be set to a non-existing directory
   ('prefix', 'install architecture-independent files in PREFIX', None),
+  # version suffix
+  ('version_suffix', 'install lyx as lyx-suffix', ''),
   #
   PathOption('exec_prefix', 'install architecture-independent executable files in PREFIX', None),
   # FIXME: not implemented
@@ -525,9 +524,6 @@ if not fast_start:
   env['SOCKET_LIBS'] = []
   if conf.CheckLib('socket'):
     env['SOCKET_LIBS'].append('socket')
-    env['HAS_SOCKET_LIB'] = True
-  else:
-    env['HAS_SOCKET_LIB'] = False
 
   # nsl is the network services library and provides a
   # transport-level interface to networking services.
@@ -535,10 +531,8 @@ if not fast_start:
     env['SOCKET_LIBS'].append('nsl')
 
   env_cache['SOCKET_LIBS'] = env['SOCKET_LIBS']
-  env_cache['HAS_SOCKET_LIB'] = env['HAS_SOCKET_LIB']
 else:
   env['SOCKET_LIBS'] = env_cache['SOCKET_LIBS']
-  env['HAS_SOCKET_LIB'] = env_cache['HAS_SOCKET_LIB']
 
 if not fast_start:
   # check boost libraries
@@ -674,7 +668,6 @@ if not fast_start:
     ('mktemp', 'HAVE_MKTEMP'),
     ('mkstemp', 'HAVE_MKSTEMP'),
     ('strerror', 'HAVE_STRERROR'),
-    ('fcntl', 'HAVE_FCNTL')
   ]
 
   for func in functions:
@@ -682,6 +675,13 @@ if not fast_start:
       utils.addToConfig('#define %s 1' % func[1], TOP_SRC_DIR)
     else:
       utils.addToConfig('/* #undef %s */' % func[1], TOP_SRC_DIR)
+
+  if conf.CheckFunc('fcntl'):
+    utils.addToConfig('#define HAVE_FCNTL 1', TOP_SRC_DIR)
+    env['HAVE_FCNTL'] = True
+  else:
+    utils.addToConfig('/* #undef HAVE_FCNTL */', TOP_SRC_DIR)
+    env['HAVE_FCNTL'] = False
 
   # PACKAGE
   # PACKAGE_VERSION
@@ -826,13 +826,21 @@ if not fast_start:
   env_cache['USE_ASPELL'] = env['USE_ASPELL']
   env_cache['USE_PSPELL'] = env['USE_PSPELL']
   env_cache['USE_ISPELL'] = env['USE_ISPELL']
+  env_cache['HAVE_FCNTL'] = env['HAVE_FCNTL']
 
 else:
+  #
+  # this comes as a big surprise, without this line 
+  # (doing nothing obvious), adding fast_start=yes
+  # to a build with fast_start=no will result in a rebuild
+  # Note that the exact header file to check does not matter
+  conf.CheckCHeader('io.h')
   # only a few variables need to be rescanned
   env['EXTRA_LIBS'] = copy.copy(env_cache['EXTRA_LIBS'])
   env['USE_ASPELL'] = env_cache['USE_ASPELL']
   env['USE_PSPELL'] = env_cache['USE_PSPELL']
   env['USE_ISPELL'] = env_cache['USE_ISPELL']
+  env['HAVE_FCNTL'] = env_cache['HAVE_FCNTL']
 
 #
 # Finish auto-configuration
@@ -921,7 +929,11 @@ env['LYX_DIR'] = env['SHARE_DIR']
 #  LYX_ABS_INSTALLED_LOCALEDIR
 env['LOCALEDIR'] = env['LOCALE_DIR']
 env['TOP_SRCDIR'] = env['TOP_SRC_DIR']
-env['PROGRAM_SUFFIX'] = PROGRAM_SUFFIX
+# program suffix
+if env.has_key('version_suffix'):
+  env['PROGRAM_SUFFIX'] = env['version_suffix']
+else:
+  env['PROGRAM_SUFFIX'] = ''
 # needed by src/version.C.in => src/version.C
 env['PACKAGE_VERSION'] = PACKAGE_VERSION
 # fill in the version info
