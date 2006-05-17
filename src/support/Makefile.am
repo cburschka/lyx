@@ -9,6 +9,8 @@ EXTRA_DIST = package.C.in pch.h \
 
 noinst_LTLIBRARIES = libsupport.la
 
+libsupport_la_LIBADD = $(LIBSHLWAPI)
+
 BUILT_SOURCES = $(PCH_FILE) package.C
 
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)

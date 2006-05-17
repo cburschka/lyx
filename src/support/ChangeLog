@@ -1,3 +1,15 @@
+2006-05-16  Bo Peng  <ben.bob@gmail.com>
+
+	* Makefile.am: under win32, link against shlwapi.dll.
+	
+	* os_*.C (canAutoOpenFile, autoOpenFile): new functions, used
+	to let the OS handle viewers and editors it knows about.
+
+2006-05-16  Enrico Forestieri  <forenr@tlc.unipr.it>
+
+	* os_cygwin.C (init): Copy cygwin environment variables to the
+	Windows environment if they're not already there.
+	
 2006-04-27  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* package.C.in (get_build_dirs): Look at Makefile instead of

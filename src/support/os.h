@@ -80,6 +80,25 @@ char path_separator();
  */
 void cygwin_path_fix(bool use_cygwin_paths);
 
+enum auto_open_mode {
+	VIEW,
+	EDIT
+};
+
+/** Check whether or not a file can be viewed by a default viewer 
+ *  \param extension (without leading .)
+ *  \mode can be opened in VIEW or EDIT mode
+ *  \returns whether or not the format can be viewed
+ */
+bool canAutoOpenFile(std::string const & ext, auto_open_mode const mode=VIEW);
+
+/** view a file, with given command and parameter.
+ *  \param filename
+ *  \param mode open in VIEW or EDIT mode
+ *  \returns whether or not the file is viewed (or edited) successfully.
+ */
+bool autoOpenFile(std::string const & filename, auto_open_mode const mode=VIEW);
+
 } // namespace os
 } // namespace support
 } // namespace lyx

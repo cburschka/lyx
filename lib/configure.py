@@ -119,15 +119,17 @@ def checkProg(description, progs, rc_entry = [], path = [] ):
       for searching but the whole string is used to replace
       %% for a rc_entry. So, feel free to add '$$i' etc for programs.
 
-    path: additional path
+    path: additional pathes
 
-    rc_entry: entry to outfile, can be emtpy, one pattern (%% for chosen
-       prog or 'none'), or one for each prog and 'none'.
+    rc_entry: entry to outfile, can be
+      1. emtpy: no rc entry will be added
+      2. one pattern: %% will be replaced by the first found program,
+         or 'none' is no program is found.
+      3. several patterns for each prog and 'none'. This is used 
+         when different programs have different usages. If you do not 
+         want 'none' entry to be added to the RC file, you can specify 
+         an entry for each prog and use '' for the 'none' entry.
 
-    NOTE: if you do not want 'none' entry to be added to the RC file,
-      specify an entry for each prog and use '' for 'none' entry.
-
-    FIXME: under windows, we should check registry instead of $PATH
   '''
   # one rc entry for each progs plus none entry
   if len(rc_entry) > 1 and len(rc_entry) != len(progs) + 1:
@@ -231,17 +233,17 @@ def checkFormatEntries():
   #
   #checkProg('a Postscript interpreter', ['gs'],
   #  rc_entry = [ r'\ps_command "%%"' ])
-  checkProg('a Postscript previewer', ['gsview32', 'gv', 'ghostview -swap', 'kghostview'],
+  checkProg('a Postscript previewer', ['gv', 'ghostview -swap', 'kghostview'],
     rc_entry = [ r'''\Format eps        eps     EPS                    "" "%%"	""
 \Format ps         ps      Postscript             t  "%%"	""''' ])
   #
-  checkProg('a PDF previewer', ['acrobat', 'acrord32', 'gsview32', \
-    'acroread', 'gv', 'ghostview', 'xpdf', 'kpdf', 'kghostview'],
+  checkProg('a PDF previewer', ['acrobat', 'acroread', 'gv', 'ghostview', \
+              'xpdf', 'kpdf', 'kghostview'],
     rc_entry = [ r'''\Format pdf        pdf    "PDF (ps2pdf)"          P  "%%"	""
 \Format pdf2       pdf    "PDF (pdflatex)"        F  "%%"	""
 \Format pdf3       pdf    "PDF (dvipdfm)"         m  "%%"	""''' ])
   #
-  checkProg('a DVI previewer', ['xdvi', 'windvi', 'yap', 'kdvi'],
+  checkProg('a DVI previewer', ['xdvi', 'kdvi'],
     rc_entry = [ r'\Format dvi        dvi     DVI                    D  "%%"	""' ])
   #
   checkProg('a HTML previewer', ['mozilla file://$$p$$i', 'netscape'],
@@ -273,7 +275,7 @@ def checkConverterEntries():
       Use PATH to avoid any problems with paths-with-spaces.
   '''
   path_orig = os.environ["PATH"]
-  os.environ["PATH"] = os.path.join('..','src','tex2lyx') + \
+  os.environ["PATH"] = os.path.join('..', 'src', 'tex2lyx') + \
     os.pathsep + path_orig
 
   checkProg('a LaTeX -> LyX converter', ['tex2lyx -f $$i $$o', \

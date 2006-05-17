@@ -49,6 +49,9 @@
 #include <io.h>
 #include <direct.h> // _getdrive
 #include <shlobj.h>  // SHGetFolderPath
+#include <windef.h>
+#include <shellapi.h>	
+#include <shlwapi.h>
 
 // Must define SHGFP_TYPE_CURRENT for older versions of MinGW.
 #if defined(__MINGW32__)  || defined(__CYGWIN__) || defined(__CYGWIN32__)
@@ -346,6 +349,37 @@ string const GetFolderPath::operator()(folder_id _id) const
 						   folder_path);
 	return (result == 0) ? os::internal_path(folder_path) : string();
 }
+
+
+bool canAutoOpenFile(string const & ext, auto_open_mode const mode)
+{
+	if (ext.empty())
+		return false;
+	
+	string full_ext = ext;
+	// if the extension is passed without leading dot
+	if (full_ext[0] != '.')
+		full_ext = "." + ext;
+
+	DWORD bufSize = MAX_PATH + 100;
+	TCHAR buf[MAX_PATH + 100];
+	// reference: http://msdn.microsoft.com/library/default.asp?url=/library/en-us/shellcc
+	//                 /platform/shell/reference/shlwapi/registry/assocquerystring.asp
+	char const * action = (mode == VIEW) ? "open" : "edit";
+	return S_OK == AssocQueryString(0, ASSOCSTR_EXECUTABLE,
+		full_ext.c_str(), action, buf, &bufSize);
+}
+
+
+bool autoOpenFile(string const & filename, auto_open_mode const mode)
+{
+	// reference: http://msdn.microsoft.com/library/default.asp?url=/library/en-us/shellcc
+	//                 /platform/shell/reference/functions/shellexecute.asp
+	char const * action = (mode == VIEW) ? "open" : "edit";
+	return reinterpret_cast<int>(ShellExecute(NULL, action, 
+		filename.c_str(), NULL, NULL, 1)) > 32;
+}
+
 
 } // namespace os
 } // namespace support

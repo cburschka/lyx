@@ -1,3 +1,18 @@
+2006-05-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyx_main.C (init): call Formats::setAutoOpen.
+	
+	* lyxrc.C (read): do not reset editor/viewer values of "none".
+
+	* format.C (fixCommand): helper function: tweak command depending
+	of the availability of OS viewer/editor.
+	(setAutoOpen): run fixCommand over all the formats.
+
+2006-05-16  Bo Peng  <ben.bob@gmail.com>
+
+	* format.C (edit, view): call autoOpenFile if editor/viewer is
+	"auto"; add more alerts for errors.
+
 2006-05-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyx_main.C (init): call queryUserLyXDir just after reading

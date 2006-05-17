@@ -455,6 +455,9 @@ void LyX::init(bool gui)
 	// This one is generated in user_support directory by lib/configure.py.
 	readRcFile("lyxrc.defaults");
 
+	// Query the OS to know what formats are viewed natively
+	formats.setAutoOpen();
+
 	system_lyxrc = lyxrc;
 	system_formats = formats;
 	system_converters = converters;

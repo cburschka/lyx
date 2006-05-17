@@ -56,6 +56,10 @@ public:
 	std::string const & editor() const {
 		return editor_;
 	}
+	///
+	void setEditor(std::string const & v) {
+		editor_ = v;
+	}
 private:
 	std::string name_;
 	///
@@ -93,6 +97,9 @@ public:
 	 * string.
 	 */
 	std::string getFormatFromFile(std::string const & filename) const;
+	/// Set editor and/or viewer to "auto" for formats that can be
+	/// opened by the OS.
+	void setAutoOpen();
 	///
 	int getNumber(std::string const & name) const;
 	///

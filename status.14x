@@ -72,6 +72,9 @@ What's new
 - Don't jump back to previous cursor position when trying to click on
   an inset (bug 2526).
 
+- LyX now automatically uses file viewers and editors set at OS level
+  [windows only]
+
 - When pasting contents to a tabular with the middle mouse button, the
   language has sometimes be changed. This is fixed now.
 

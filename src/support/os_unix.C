@@ -115,6 +115,21 @@ char path_separator()
 void cygwin_path_fix(bool)
 {}
 
+bool canAutoOpenFile(string const & /*ext*/, auto_open_mode const /*mode*/)
+{
+	// currently, no default viewer is tried for non-windows system
+	// support for KDE/Gnome/Macintosh may be added later
+	return false;
+}
+
+
+bool autoOpenFile(string const & /*filename*/, auto_open_mode const /*mode*/)
+{
+	// currently, no default viewer is tried for non-windows system
+	// support for KDE/Gnome/Macintosh may be added later
+	return false;
+}
+
 } // namespace os
 } // namespace support
 } // namespace lyx

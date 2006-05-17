@@ -1034,8 +1034,6 @@ int LyXRC::read(LyXLex & lexrc)
 			}
 			if (lexrc.next()) {
 				command = lexrc.getString();
-				if (token(command, ' ', 0) == "none")
-					command.erase();
 			}
 			formats.setViewer(format, command);
 			break;
@@ -1061,12 +1059,8 @@ int LyXRC::read(LyXLex & lexrc)
 			if (le != LyXLex::LEX_FEOF && le != LyXLex::LEX_UNDEF) {
 				viewer = lexrc.getString();
 				if (le == LyXLex::LEX_DATA) {
-					if (token(viewer, ' ', 0) == "none")
-						viewer.erase();
 					if (lexrc.next()) {
 						editor = lexrc.getString();
-						if (token(editor, ' ', 0) == "none")
-							editor.erase();
 					}
 				} else {
 					// We have got a known token.
