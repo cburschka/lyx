@@ -132,3 +132,5 @@ void PanelStack::switchPanel(QTreeWidgetItem * item, QTreeWidgetItem* previous)
 
 	stack_->setCurrentWidget(cit->second);
 }
+
+#include "panelstack_moc.cpp"

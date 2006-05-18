@@ -232,3 +232,5 @@ void XMiniBuffer::suffix_timeout()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QCommandBuffer_moc.cpp"

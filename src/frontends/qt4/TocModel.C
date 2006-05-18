@@ -151,3 +151,5 @@ void TocModel::populate(TocIterator & iter,
 
 } // namespace frontend
 } // namespace lyx
+
+#include "TocModel_moc.cpp"

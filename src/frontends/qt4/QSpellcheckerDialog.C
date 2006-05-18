@@ -106,3 +106,5 @@ void QSpellcheckerDialog::reject()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QSpellcheckerDialog_moc.cpp"

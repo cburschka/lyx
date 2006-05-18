@@ -239,3 +239,5 @@ bool QTocDialog::isVisible() const
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QTocDialog_moc.cpp"

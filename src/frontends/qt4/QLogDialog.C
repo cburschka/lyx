@@ -46,3 +46,5 @@ void QLogDialog::updateClicked()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QLogDialog_moc.cpp"

@@ -113,3 +113,5 @@ void QMathMatrixDialog::slotClose()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QMathMatrixDialog_moc.cpp"

@@ -176,3 +176,5 @@ void QBranches::on_colorPB_clicked()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QBranches_moc.cpp"

@@ -86,3 +86,5 @@ void QParagraphDialog::enableLinespacingValue(int)
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QParagraphDialog_moc.cpp"

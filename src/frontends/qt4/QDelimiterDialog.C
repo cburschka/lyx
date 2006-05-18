@@ -145,3 +145,5 @@ void QDelimiterDialog::rdelim_clicked(const string & str)
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QDelimiterDialog_moc.cpp"

@@ -277,3 +277,5 @@ void FloatPlacement::checkAllowed()
 		heredefinitelyCB->setEnabled(!defaults);
 	}
 }
+
+#include "floatplacement_moc.cpp"

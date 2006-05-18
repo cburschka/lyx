@@ -103,3 +103,5 @@ void QIncludeDialog::browseClicked()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QIncludeDialog_moc.cpp"

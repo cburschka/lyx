@@ -455,7 +455,6 @@ AC_CONFIG_FILES([Makefile  m4/Makefile \
        src/frontends/qt3/ui/Makefile \
        src/frontends/qt3/ui/moc/Makefile \
        src/frontends/qt4/Makefile \
-       src/frontends/qt4/moc/Makefile \
        src/frontends/qt4/ui/Makefile \
 ])
 

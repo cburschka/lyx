@@ -72,3 +72,5 @@ void QCharacterDialog::closeEvent(QCloseEvent * e)
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QCharacterDialog_moc.cpp"

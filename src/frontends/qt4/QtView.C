@@ -209,3 +209,5 @@ void QtView::busy(bool yes) const
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QtView_moc.cpp"

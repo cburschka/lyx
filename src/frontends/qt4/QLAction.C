@@ -87,3 +87,5 @@ void QLAction::action()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QLAction_moc.cpp"

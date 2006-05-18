@@ -261,3 +261,5 @@ void QMathDialog::insertCubeRoot()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QMathDialog_moc.cpp"

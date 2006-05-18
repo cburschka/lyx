@@ -104,3 +104,5 @@ void QTexinfoDialog::enableViewPB()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QTexinfoDialog_moc.cpp"

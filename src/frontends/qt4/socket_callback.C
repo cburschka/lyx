@@ -27,3 +27,5 @@ void socket_callback::data_received()
 {
 	func_();
 }
+
+#include "socket_callback_moc.cpp"

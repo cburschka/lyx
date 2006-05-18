@@ -135,3 +135,5 @@ void QRefDialog::closeEvent(QCloseEvent * e)
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QRefDialog_moc.cpp"

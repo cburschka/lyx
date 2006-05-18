@@ -1,16 +1,25 @@
 include $(top_srcdir)/config/common.am
 include $(srcdir)/Makefile.dialogs
 
-SUBDIRS = ui moc
+DISTCLEANFILES += *_moc.cpp
+
+libqt4_la_DEPENDENCIES = $(MOCEDFILES)
+
+MOCEDFILES = $(MOCFILES:.C=_moc.cpp)
+
+%_moc.cpp: %.h
+	$(MOC4) -o $@ $<
+
+SUBDIRS = ui
 
 EXTRA_DIST = pch.h Makefile.dialogs
 
-BUILT_SOURCES = $(PCH_FILE)
+BUILT_SOURCES = $(PCH_FILE) $(MOCEDFILES)
 
 noinst_LTLIBRARIES = libqt4.la
 
 libqt4_la_LDFLAGS = $(QT4_LDFLAGS)
-libqt4_la_LIBADD = $(QT4_LIB) moc/*.lo 
+libqt4_la_LIBADD = $(QT4_LIB) 
 AM_CPPFLAGS += \
 	$(QT4_CPPFLAGS) \
 	$(PCH_FLAGS) \

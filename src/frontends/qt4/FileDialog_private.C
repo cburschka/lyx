@@ -81,3 +81,5 @@ void LyXFileDialog::buttonClicked()
 	else if (sender() == b2_)
 		setDir(toqstr(b2_dir_));
 }
+
+#include "FileDialog_private_moc.cpp"

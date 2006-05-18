@@ -63,3 +63,5 @@ bool QCommandEdit::event(QEvent * e)
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QCommandEdit_moc.cpp"

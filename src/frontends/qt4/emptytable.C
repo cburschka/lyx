@@ -110,3 +110,5 @@ void EmptyTable::mouseMoveEvent(QMouseEvent *ev)
 		setNumberRows(y / cellsize + rowCount()-1);
 }
 */
+
+#include "emptytable_moc.cpp"

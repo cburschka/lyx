@@ -171,3 +171,5 @@ void QLMenubar::macxMenuBarInit()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QLMenubar_moc.cpp"

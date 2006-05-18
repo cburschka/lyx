@@ -224,3 +224,5 @@ void QExternalDialog::widthUnitChanged()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QExternalDialog_moc.cpp"

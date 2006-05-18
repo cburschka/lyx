@@ -1605,3 +1605,5 @@ void QPrefsDialog::update(LyXRC const & rc)
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QPrefsDialog_moc.cpp"

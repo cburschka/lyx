@@ -234,3 +234,5 @@ bool QSetBorder::getBottom()
 {
 	return bottom_.set;
 }
+
+#include "qsetborder_moc.cpp"

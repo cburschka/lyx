@@ -1035,3 +1035,5 @@ void QDocumentDialog::update(BufferParams const & params)
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QDocumentDialog_moc.cpp"

@@ -50,3 +50,5 @@ void QNoteDialog::change_adaptor()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QNoteDialog_moc.cpp"

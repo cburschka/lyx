@@ -108,3 +108,5 @@ void QViewSource::update_contents()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QViewSource_moc.cpp"

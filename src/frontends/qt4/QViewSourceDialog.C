@@ -38,3 +38,5 @@ void QViewSourceDialog::closeEvent(QCloseEvent * e)
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QViewSourceDialog_moc.cpp"

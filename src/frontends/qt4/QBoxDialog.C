@@ -111,3 +111,5 @@ void QBoxDialog::restoreClicked()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QBoxDialog_moc.cpp"

@@ -671,3 +671,5 @@ pascal OSErr handleOpenDocuments(const AppleEvent* inEvent,
 	return err;
 }
 #endif  // Q_WS_MACX
+
+#include "QWorkArea_moc.cpp"

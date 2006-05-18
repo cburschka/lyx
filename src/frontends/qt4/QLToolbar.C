@@ -270,3 +270,5 @@ void QLToolbar::update()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QLToolbar_moc.cpp"

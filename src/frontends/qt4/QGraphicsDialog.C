@@ -165,3 +165,5 @@ void QGraphicsDialog::filenameChanged(const QString & filename)
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QGraphicsDialog_moc.cpp"

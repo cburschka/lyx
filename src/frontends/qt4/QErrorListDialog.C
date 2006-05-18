@@ -51,3 +51,5 @@ void QErrorListDialog::closeEvent(QCloseEvent * e)
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QErrorListDialog_moc.cpp"

@@ -200,3 +200,5 @@ void QLPopupMenu::specialMacXmenuHack()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QLPopupMenu_moc.cpp"

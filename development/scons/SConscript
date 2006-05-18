@@ -879,7 +879,7 @@ elif frontend == 'qt4':
   resources = [qt4env.Uic4(x) for x in qt4_ui_files]
 
   # 
-  # moc qt4_moc_files
+  # moc qt4_moc_files, the moced files are included in the original files
   #
   qt4_moced_files = [qt4env.Moc4(x.replace('.C', '_moc.cpp'), x.replace('.C', '.h')) for x in qt4_moc_files]
 
@@ -888,7 +888,7 @@ elif frontend == 'qt4':
   qt4 = qt4env.StaticLibrary(
     target = '$LOCALLIBPATH/qt4',
     LIBS = qt4env['QT_LIB'],
-    source = qt4_source_files + qt4_moc_files + Flatten(qt4_moced_files)
+    source = qt4_source_files + qt4_moc_files
   )
   Alias('qt4', qt4)
 
