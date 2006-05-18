@@ -114,7 +114,7 @@ char const * latex_deco[] = {
 	"underleftrightarrow", "overleftrightarrow",
 	"hat", "acute", "bar", "dot",
 	"check", "grave", "vec", "ddot",
-	"breve", "tilde", ""
+	"breve", "tilde", "overset", "underset", ""
 };
 
 int const nr_latex_deco = sizeof(latex_deco) / sizeof(char const *) - 1;

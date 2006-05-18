@@ -515,6 +515,7 @@ dist_imagesmath_DATA = \
 	images/math/overleftrightarrow.xpm \
 	images/math/overline.xpm \
 	images/math/overrightarrow.xpm \
+	images/math/overset.xpm \
 	images/math/parallel.xpm \
 	images/math/partial.xpm \
 	images/math/perp.xpm \
@@ -630,6 +631,7 @@ dist_imagesmath_DATA = \
 	images/math/underline.xpm \
 	images/math/underrightarrow.xpm \
 	images/math/underscore.xpm \
+	images/math/underset.xpm \
 	images/math/uparrow.xpm \
 	images/math/uparrow2.xpm \
 	images/math/updownarrow.xpm \
