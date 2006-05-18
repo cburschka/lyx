@@ -85,19 +85,19 @@ enum auto_open_mode {
 	EDIT
 };
 
-/** Check whether or not a file can be viewed by a default viewer 
+/** Check whether or not a file can be opened by a default viewer or editor.
  *  \param extension (without leading .)
- *  \mode can be opened in VIEW or EDIT mode
- *  \returns whether or not the format can be viewed
+ *  \param mode can be opened in VIEW or EDIT mode
+ *  \returns whether or not the format can be opened according to \p mode
  */
-bool canAutoOpenFile(std::string const & ext, auto_open_mode const mode=VIEW);
+bool canAutoOpenFile(std::string const & ext, auto_open_mode const mode = VIEW);
 
-/** view a file, with given command and parameter.
- *  \param filename
+/** View or edit a file with the default viewer or editor.
+ *  \param filename file to open
  *  \param mode open in VIEW or EDIT mode
  *  \returns whether or not the file is viewed (or edited) successfully.
  */
-bool autoOpenFile(std::string const & filename, auto_open_mode const mode=VIEW);
+bool autoOpenFile(std::string const & filename, auto_open_mode const mode = VIEW);
 
 } // namespace os
 } // namespace support

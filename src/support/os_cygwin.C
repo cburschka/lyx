@@ -278,11 +278,8 @@ bool canAutoOpenFile(string const & ext, auto_open_mode const mode)
 {
 	if (ext.empty())
 		return false;
-	
-	string full_ext = ext;
-	// if the extension is passed without leading dot
-	if (full_ext[0] != '.')
-		full_ext = "." + ext;
+
+	string const full_ext = "." + ext;
 
 	DWORD bufSize = MAX_PATH + 100;
 	TCHAR buf[MAX_PATH + 100];
@@ -301,7 +298,7 @@ bool autoOpenFile(string const & filename, auto_open_mode const mode)
 	string const win_path =
 		os::convert_path(filename, os::PathStyle(os::windows));
 	char const * action = (mode == VIEW) ? "open" : "edit";
-	return reinterpret_cast<int>(ShellExecute(NULL, action, 
+	return reinterpret_cast<int>(ShellExecute(NULL, action,
 		win_path.c_str(), NULL, NULL, 1)) > 32;
 }
 
