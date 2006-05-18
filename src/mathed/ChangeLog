@@ -1,3 +1,8 @@
+2006-05-18  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* math_hullinset.h (canTrackChanges): remove, since math insets do
+	not implement (yet) change tracking (bug 2214).
+
 2006-04-14  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* math_fonzinset.C (validate): textipa requires tipa.

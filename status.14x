@@ -53,13 +53,16 @@ What's new
 
 - Load the tipa package automatically when needed.
 
+- Properly strike out deleted math formulas when change tracking is
+  active (bug 2214).
+
 - Don't get confused by 0-Characters in MikTeX logfiles anymore
 
 - Always honor the "Requirement" tag in External Template Definitions
 
-- Fix tex2lyx to handle whitespace in front of required arguments (bug 2546)
+- Fix tex2lyx to handle whitespace in front of required arguments (bug 2546).
 
-- Update templates and examples to latest file format
+- Update templates and examples to latest file format.
 
 * Math editor:
 
