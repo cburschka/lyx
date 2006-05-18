@@ -1,6 +1,10 @@
 include $(top_srcdir)/config/common.am
 include $(srcdir)/Makefile.dialogs
 
+SUBDIRS = ui
+
+EXTRA_DIST = pch.h Makefile.dialogs
+
 DISTCLEANFILES += *_moc.cpp
 
 libqt4_la_DEPENDENCIES = $(MOCEDFILES)
@@ -9,10 +13,6 @@ MOCEDFILES = $(MOCFILES:.C=_moc.cpp)
 
 %_moc.cpp: %.h
 	$(MOC4) -o $@ $<
-
-SUBDIRS = ui
-
-EXTRA_DIST = pch.h Makefile.dialogs
 
 BUILT_SOURCES = $(PCH_FILE) $(MOCEDFILES)
 
