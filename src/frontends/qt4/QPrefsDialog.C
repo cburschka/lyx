@@ -509,8 +509,9 @@ void QPrefsDialog::updateConverters()
 	Converters::const_iterator cend = form_->converters().end();
 	for (; ccit != cend; ++ccit) {
 		std::string const name = ccit->From->prettyname() + " -> "
-			+ ccit->To->prettyname();
-		convertmod->convertersLW->addItem(toqstr(name));
+								+ ccit->To->prettyname();
+		new QListWidgetItem(toqstr(name), convertmod->convertersLW,
+							form_->converters().getNumber(ccit->From->name(), ccit->To->name()));
 	}
 	convertmod->convertersLW->sortItems(Qt::AscendingOrder);
 
@@ -534,7 +535,8 @@ void QPrefsDialog::switch_converter(int nr)
 	if (nr<0)
 		return;
 
-	Converter const & c(form_->converters().get(nr));
+	int const cnr = convertersModule->convertersLW->currentItem()->type();
+	Converter const & c(form_->converters().get(cnr));
 	convertersModule->converterFromCO->setCurrentIndex(form_->formats().getNumber(c.from));
 	convertersModule->converterToCO->setCurrentIndex(form_->formats().getNumber(c.to));
 	convertersModule->converterED->setText(toqstr(c.command));
@@ -561,8 +563,8 @@ void QPrefsDialog::updateConverterButtons()
 	bool const valid = !(convertersModule->converterED->text().isEmpty()
 		|| from.name() == to.name());
 
-	Converter const & c(form_->converters().get(
-		convertersModule->convertersLW->currentRow()));
+	int const cnr = convertersModule->convertersLW->currentItem()->type();
+	Converter const & c(form_->converters().get(cnr));
 	string const old_command = c.command;
 	string const old_flag = c.flags;
 	string const new_command(fromqstr(convertersModule->converterED->text()));
@@ -591,7 +593,12 @@ void QPrefsDialog::new_converter()
 		form_->converters().updateLast(form_->formats());
 	}
 	updateConverters();
-	convertersModule->convertersLW->setCurrentRow(convertersModule->convertersLW->count() - 1);
+
+	QString const name = toqstr(from.name() + " -> " + to.name());
+	QList<QListWidgetItem *> const item =
+		convertersModule->convertersLW->findItems(name, Qt::MatchExactly);
+	if (item.size()>0)
+		convertersModule->convertersLW->setCurrentItem(item.at(0));
 }
 
 
@@ -849,7 +856,9 @@ void QPrefsDialog::updateFormats()
 	Formats::const_iterator cit = form_->formats().begin();
 	Formats::const_iterator end = form_->formats().end();
 	for (; cit != end; ++cit) {
-		formatmod->formatsLW->addItem(toqstr(cit->prettyname()));
+		new QListWidgetItem(toqstr(cit->prettyname()),
+							formatmod->formatsLW,
+							form_->formats().getNumber(cit->name()) );
 	}
 	formatmod->formatsLW->sortItems(Qt::AscendingOrder);
 
@@ -870,7 +879,9 @@ void QPrefsDialog::switch_format(int nr)
 	if (nr<0)
 		return;
 
-	Format const & f(form_->formats().get(nr));
+	int const ftype = fileformatsModule->formatsLW->item(nr)->type();
+	Format const f(form_->formats().get(ftype));
+
 	fileformatsModule->formatED->setText(toqstr(f.name()));
 	fileformatsModule->guiNameED->setText(toqstr(f.prettyname()));
 	fileformatsModule->extensionED->setText(toqstr(f.extension()));
@@ -900,7 +911,7 @@ void QPrefsDialog::updateFormatsButtons()
 	for (unsigned int i = 0; i != fileformatsModule->formatsLW->count(); i++) {
 		if (fileformatsModule->formatsLW->item(i)->text() == gui_name) {
 			gui_name_known = true;
-			where = i;
+			where = fileformatsModule->formatsLW->item(i)->type();
 		}
 	}
 
@@ -911,8 +922,8 @@ void QPrefsDialog::updateFormatsButtons()
 	bool const valid = (!fileformatsModule->formatED->text().isEmpty()
 		&& !fileformatsModule->guiNameED->text().isEmpty());
 
-	Format const & f(form_->formats().get(
-		fileformatsModule->formatsLW->currentRow()));
+	int const ftype = fileformatsModule->formatsLW->currentItem()->type();
+	Format const & f(form_->formats().get(ftype));
 	string const old_pretty(f.prettyname());
 	string const old_shortcut(f.shortcut());
 	string const old_extension(f.extension());
@@ -948,7 +959,12 @@ void QPrefsDialog::new_format()
 	form_->formats().add(name, extension, prettyname, shortcut, viewer, editor);
 	form_->formats().sort();
 	updateFormats();
-	fileformatsModule->formatsLW->setCurrentRow(form_->formats().getNumber(name));
+
+	QList<QListWidgetItem *>  const item =
+		fileformatsModule->formatsLW->findItems(toqstr(prettyname), Qt::MatchExactly);
+	if (item.size()>0)
+		fileformatsModule->formatsLW->setCurrentItem(item.at(0));
+
 	form_->converters().update(form_->formats());
 
 	updateConverters();
@@ -958,7 +974,7 @@ void QPrefsDialog::new_format()
 
 void QPrefsDialog::modify_format()
 {
-	int const current_item = fileformatsModule->formatsLW->currentRow();
+	int const current_item = fileformatsModule->formatsLW->currentItem()->type();
 	QString const current_text =
 		fileformatsModule->formatsLW->currentItem()->text();
 
@@ -993,7 +1009,7 @@ void QPrefsDialog::modify_format()
 
 void QPrefsDialog::remove_format()
 {
-	int const nr(fileformatsModule->formatsLW->currentRow());
+	int const nr = fileformatsModule->formatsLW->currentItem()->type();
 	if (nr < 0)
 		return;
 	string const current_text = form_->formats().get(nr).name();
