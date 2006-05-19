@@ -305,7 +305,7 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 		pars[pit].erase(left, right);
 		// Separate handling of para break:
 		if (merge && pit != endpit &&
-		   pars[pit].hasSameLayout(pars[pit + 1])) {
+		   (pit + 1 != endpit || pars[pit].hasSameLayout(pars[pit + 1]))) {
 			pos_type const thissize = pars[pit].size();
 			if (doclear)
 				pars[pit + 1].stripLeadingSpaces();
