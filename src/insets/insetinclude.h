@@ -56,11 +56,14 @@ public:
 		std::vector<std::pair<std::string,std::string> > & keys) const;
 	/** Update the cache with all bibfiles in use of the child buffer
 	 *  (including bibfiles of grandchild documents).
+	 *  Does nothing if the child document is not loaded to prevent
+	 *  automatic loading of all child documents upon loading the master.
 	 *  \param buffer the Buffer containing this inset.
 	 */
 	void updateBibfilesCache(Buffer const & buffer);
 	/** Return the cache with all bibfiles in use of the child buffer
 	 *  (including bibfiles of grandchild documents).
+	 *  Return an empty vector if the child doc is not loaded.
 	 *  \param buffer the Buffer containing this inset.
 	 */
 	std::vector<std::string> const &

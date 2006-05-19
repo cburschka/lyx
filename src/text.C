@@ -1573,31 +1573,26 @@ void LyXText::changeCase(LCursor & cur, LyXText::TextCase action)
 bool LyXText::Delete(LCursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
-	bool needsUpdate = false;
 
 	if (cur.pos() != cur.lastpos()) {
-		recordUndo(cur, Undo::DELETE, cur.pit());
+		// move right, avoiding dEPM
 		setCursorIntern(cur, cur.pit(), cur.pos() + 1, false, cur.boundary());
-		needsUpdate = backspace(cur);
-		if (cur.paragraph().lookupChange(cur.pos()) == Change::DELETED)
-			cur.posRight();
 	} else if (cur.pit() != cur.lastpit()) {
-		LCursor scur = cur;
-
+		// move to next paragraph, avoiding dEPM
 		setCursorIntern(cur, cur.pit() + 1, 0, false, false);
-		if (pars_[cur.pit()].layout() == pars_[scur.pit()].layout()) {
-			recordUndo(scur, Undo::DELETE, scur.pit());
-			needsUpdate = backspace(cur);
-			if (cur.buffer().params().tracking_changes) {
-				// move forward after the paragraph break is DELETED
-				Paragraph & par = cur.paragraph();
-				if (par.lookupChange(par.size()) == Change::DELETED)
-					setCursorIntern(cur, cur.pit() + 1, 0);
-				}
-		} else {
-			setCursorIntern(scur, scur.pit(), scur.pos(), false, scur.boundary());
-		}
+	} else {
+		// nothing to do
+		return false;
 	}
+
+	// Delegate the real work to backspace.
+	bool needsUpdate = backspace(cur);
+
+	// if in CT mode, go one step to the right
+	if (cur.buffer().params().tracking_changes && 
+	    cur.paragraph().lookupChange(cur.pos()) == Change::DELETED)
+		cur.posRight();
+
 	return needsUpdate;
 }
 
@@ -1613,7 +1608,7 @@ bool LyXText::backspacePos0(LCursor & cur)
 	if (lastpos == 0 || (lastpos == 1 && par.isSeparator(0))) {
 		// This is an empty paragraph and we delete it just
 		// by moving the cursor one step
-		// left and let the DeleteEmptyParagraphMechanism
+		// left and let the deleteEmptyParagraphMechanism
 		// handle the actual deletion of the paragraph.
 
 		if (cur.pit() != 0) {

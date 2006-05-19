@@ -255,10 +255,10 @@ public:
 	/// return all bibkeys from buffer and its childs
 	void fillWithBibKeys(std::vector<std::pair<std::string, std::string> > & keys) const;
 	/// Update the cache with all bibfiles in use (including bibfiles
-	/// of child documents).
+	/// of loaded child documents).
 	void updateBibfilesCache();
 	/// Return the cache with all bibfiles in use (including bibfiles
-	/// of child documents).
+	/// of loaded child documents).
 	std::vector<std::string> const & getBibfilesCache() const;
 	///
 	void getLabelList(std::vector<std::string> &) const;
@@ -363,8 +363,8 @@ private:
 	/// it's BufferView, this should be FIXED in future.
 	StableDocIterator cursor_;
 	StableDocIterator anchor_;
-	/// A cache for the bibfiles (including bibfiles of child documents),
-	/// needed for appropriate update of natbib labels.
+	/// A cache for the bibfiles (including bibfiles of loaded child
+	/// documents), needed for appropriate update of natbib labels.
 	std::vector<std::string> bibfilesCache_;
 };
 
