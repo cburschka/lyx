@@ -301,6 +301,20 @@ string const InsetInclude::getScreenLabel(Buffer const &) const
 
 namespace {
 
+/// return the child buffer if the file is a LyX doc and is loaded
+Buffer * getChildBuffer(Buffer const & buffer, InsetCommandParams const & params)
+{
+	if (isVerbatim(params))
+		return 0;
+
+	string const included_file = includedFilename(buffer, params);
+	if (!isLyXFilename(included_file))
+		return 0;
+
+	return bufferlist.getBuffer(included_file);
+}
+
+
 /// return true if the file is or got loaded.
 bool loadIfNeeded(Buffer const & buffer, InsetCommandParams const & params)
 {
@@ -616,9 +630,8 @@ void InsetInclude::fillWithBibKeys(Buffer const & buffer,
 
 void InsetInclude::updateBibfilesCache(Buffer const & buffer)
 {
-	if (loadIfNeeded(buffer, params_)) {
-		string const included_file = includedFilename(buffer, params_);
-		Buffer * tmp = bufferlist.getBuffer(included_file);
+	Buffer * const tmp = getChildBuffer(buffer, params_);
+	if (tmp) {
 		tmp->setParentName("");
 		tmp->updateBibfilesCache();
 		tmp->setParentName(parentFilename(buffer));
@@ -629,9 +642,8 @@ void InsetInclude::updateBibfilesCache(Buffer const & buffer)
 std::vector<string> const &
 InsetInclude::getBibfilesCache(Buffer const & buffer) const
 {
-	if (loadIfNeeded(buffer, params_)) {
-		string const included_file = includedFilename(buffer, params_);
-		Buffer * tmp = bufferlist.getBuffer(included_file);
+	Buffer * const tmp = getChildBuffer(buffer, params_);
+	if (tmp) {
 		tmp->setParentName("");
 		std::vector<string> const & cache = tmp->getBibfilesCache();
 		tmp->setParentName(parentFilename(buffer));
