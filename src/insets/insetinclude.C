@@ -308,7 +308,7 @@ Buffer * getChildBuffer(Buffer const & buffer, InsetCommandParams const & params
 		return 0;
 
 	string const included_file = includedFilename(buffer, params);
-	if (!isLyXFilename(included_file))
+	if (!IsLyXFilename(included_file))
 		return 0;
 
 	return bufferlist.getBuffer(included_file);
