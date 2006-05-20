@@ -74,7 +74,13 @@ void PanelStack::addCategory(string const & n, string const & parent)
 	}
 	else {
 		PanelMap::iterator it = panel_map_.find(parent);
+		//BOOST_ASSERT(it != panel_map_.end());
+		if (it == panel_map_.end()) {
+			addCategory(parent);
+			it = panel_map_.find(parent);
+		}
 		BOOST_ASSERT(it != panel_map_.end());
+
 		item = new QTreeWidgetItem(it->second);
 		item->setText(0, name);
 		//it->second->addChild(item);

@@ -29,9 +29,7 @@
 #include "ui/QPrefLatexUi.h"
 #include "ui/QPrefScreenFontsUi.h"
 #include "ui/QPrefColorsUi.h"
-#if defined(__CYGWIN__) || defined(__CYGWIN32__)
 #include "ui/QPrefCygwinPathUi.h"
-#endif
 #include "ui/QPrefDisplayUi.h"
 #include "ui/QPrefPathsUi.h"
 #include "ui/QPrefSpellcheckerUi.h"
@@ -47,7 +45,7 @@ template<class UI>
 	class UiWidget: public QWidget, public UI
 	{
 	public:
-		UiWidget(QWidget * Parent = 0): QWidget(Parent)
+		UiWidget(QWidget * parent = 0): QWidget(parent)
 		{
 			UI::setupUi(this);
 		}
@@ -58,8 +56,327 @@ namespace frontend {
 
 class QPrefs;
 
+class PrefModule : public QWidget
+{
+	Q_OBJECT
+public:
+	PrefModule(std::string const & cat, std::string const & t, QPrefs * form = 0, QWidget * parent = 0)
+		: category_(cat), title_(t), form_(form), QWidget(parent)
+	{
+	}
+	virtual ~PrefModule() {}
+
+	virtual void apply(LyXRC & rc) const = 0;
+	virtual void update(LyXRC const & rc) = 0;
+
+	std::string const & category() {
+		return category_;
+	}
+
+	std::string const & title() {
+		return title_;
+	}
+
+protected:
+	std::string category_;
+	std::string title_;
+	QPrefs * form_;
+
+signals:
+	void changed();
+};
+
+
+class PrefAscii :  public PrefModule, public Ui::QPrefAsciiUi
+{
+	Q_OBJECT
+public:
+	PrefAscii(QWidget * parent = 0);
+	~PrefAscii() {}
+
+	virtual void apply(LyXRC & rc) const;
+	virtual void update(LyXRC const & rc);
+};
+
+
+class PrefDate :  public PrefModule, public Ui::QPrefDateUi
+{
+	Q_OBJECT
+public:
+	PrefDate(QWidget * parent = 0);
+	~PrefDate() {}
+
+	virtual void apply(LyXRC & rc) const;
+	virtual void update(LyXRC const & rc);
+};
+
+
+class PrefKeyboard :  public PrefModule, public Ui::QPrefKeyboardUi
+{
+	Q_OBJECT
+public:
+	PrefKeyboard(QPrefs * form, QWidget * parent = 0);
+	~PrefKeyboard() {}
+
+	virtual void apply(LyXRC & rc) const;
+	virtual void update(LyXRC const & rc);
+
+private slots:
+	void on_firstKeymapED_clicked();
+	void on_secondKeymapED_clicked();
+
+private:
+	QString testKeymap(QString keymap);
+};
+
+
+class PrefLatex :  public PrefModule, public Ui::QPrefLatexUi
+{
+	Q_OBJECT
+public:
+	PrefLatex(QPrefs * form, QWidget * parent = 0);
+	~PrefLatex() {}
+
+	virtual void apply(LyXRC & rc) const;
+	virtual void update(LyXRC const & rc);
+};
+
+
+class PrefScreenFonts :  public PrefModule, public Ui::QPrefScreenFontsUi
+{
+	Q_OBJECT
+public:
+	PrefScreenFonts(QPrefs * form, QWidget * parent = 0);
+	~PrefScreenFonts() {}
+
+	virtual void apply(LyXRC & rc) const;
+	virtual void update(LyXRC const & rc);
+
+private slots:
+	void select_roman(const QString&);
+	void select_sans(const QString&);
+	void select_typewriter(const QString&);
+};
+
+
+class PrefColors :  public PrefModule, public Ui::QPrefColorsUi
+{
+	Q_OBJECT
+public:
+	PrefColors(QPrefs * form, QWidget * parent = 0);
+	~PrefColors() {}
+
+	void apply(LyXRC & rc) const;
+	void update(LyXRC const & rc);
+
+private slots:
+	void change_color();
+
+private:
+	std::vector<LColor_color> lcolors_;
+	std::vector<QString> prefcolors_;
+	std::vector<QString> newcolors_;
+
+};
+
+
+class PrefCygwinPath :  public PrefModule, public Ui::QPrefCygwinPathUi
+{
+	Q_OBJECT
+public:
+	PrefCygwinPath(QWidget * parent = 0);
+	~PrefCygwinPath() {}
+
+	void apply(LyXRC & rc) const;
+	void update(LyXRC const & rc);
+};
+
+
+class PrefDisplay :  public PrefModule, public Ui::QPrefDisplayUi
+{
+	Q_OBJECT
+public:
+	PrefDisplay(QWidget * parent = 0);
+	~PrefDisplay() {}
+
+	void apply(LyXRC & rc) const;
+	void update(LyXRC const & rc);
+};
+
+
+class PrefPaths :  public PrefModule, public Ui::QPrefPathsUi
+{
+	Q_OBJECT
+public:
+	PrefPaths(QPrefs * form, QWidget * parent = 0);
+	~PrefPaths() {}
+
+	void apply(LyXRC & rc) const;
+	void update(LyXRC const & rc);
+
+private slots:
+	void select_templatedir();
+	void select_tempdir();
+	void select_backupdir();
+	void select_workingdir();
+	void select_lyxpipe();
+
+};
+
+
+class PrefSpellchecker :  public PrefModule, public Ui::QPrefSpellcheckerUi
+{
+	Q_OBJECT
+public:
+	PrefSpellchecker(QPrefs * form, QWidget * parent = 0);
+	~PrefSpellchecker() {}
+
+	void apply(LyXRC & rc) const;
+	void update(LyXRC const & rc);
+
+private slots:
+	void select_dict();
+};
+
+
+class PrefConverters :  public PrefModule, public Ui::QPrefConvertersUi
+{
+	Q_OBJECT
+public:
+	PrefConverters(QPrefs * form, QWidget * parent = 0);
+	~PrefConverters() {}
+
+	void apply(LyXRC & rc) const;
+	void update(LyXRC const & rc);
+
+	void updateGui();
+
+private slots:
+	void switch_converter(int);
+	void converter_changed();
+	void new_converter();
+	void modify_converter();
+	void remove_converter();
+
+private:
+	void updateButtons();
+};
+
+
+class PrefCopiers :  public PrefModule, public Ui::QPrefCopiersUi
+{
+	Q_OBJECT
+public:
+	PrefCopiers(QPrefs * form, QWidget * parent = 0);
+	~PrefCopiers() {}
+
+	void apply(LyXRC & rc) const;
+	void update(LyXRC const & rc);
+
+	void update();
+
+private slots:
+	void switch_copierLB(int nr);
+	void switch_copierCO(int nr);
+	void copiers_changed();
+	void new_copier();
+	void modify_copier();
+	void remove_copier();
+
+private:
+	void updateButtons();
+};
+
+
+class PrefFileformats :  public PrefModule, public Ui::QPrefFileformatsUi
+{
+	Q_OBJECT
+public:
+	PrefFileformats(QPrefs * form, QWidget * parent = 0);
+	~PrefFileformats() {}
+
+	void apply(LyXRC & rc) const;
+	void update(LyXRC const & rc);
+
+	void update();
+
+	void setConverters(PrefConverters *);
+
+private:
+	void updateButtons();
+
+private slots:
+	void switch_format(int);
+	void fileformat_changed();
+	void new_format();
+	void modify_format();
+	void remove_format();
+
+private:
+	PrefConverters * converters_;
+
+};
+
+
+class PrefLanguage :  public PrefModule, public Ui::QPrefLanguageUi
+{
+	Q_OBJECT
+public:
+	PrefLanguage(QWidget * parent = 0);
+	~PrefLanguage() {}
+
+	void apply(LyXRC & rc) const;
+	void update(LyXRC const & rc);
+
+private:
+	std::vector<std::string> lang_;
+
+};
+
+
+class PrefPrinter :  public PrefModule, public Ui::QPrefPrinterUi
+{
+	Q_OBJECT
+public:
+	PrefPrinter(QWidget * parent = 0);
+	~PrefPrinter() {}
+
+	void apply(LyXRC & rc) const;
+	void update(LyXRC const & rc);
+};
+
+
+class PrefUserInterface :  public PrefModule, public Ui::QPrefUi
+{
+	Q_OBJECT
+public:
+	PrefUserInterface(QPrefs * form, QWidget * parent = 0);
+	~PrefUserInterface() {}
+
+	void apply(LyXRC & rc) const;
+	void update(LyXRC const & rc);
+
+public slots:
+	void select_ui();
+	void select_bind();
+
+};
+
+
+class PrefIdentity :  public PrefModule, public Ui::QPrefIdentityUi
+{
+	Q_OBJECT
+public:
+	PrefIdentity(QWidget * parent = 0);
+	~PrefIdentity() {}
+
+	void apply(LyXRC & rc) const;
+	void update(LyXRC const & rc);
+};
+
 ///
-class QPrefsDialog : public QDialog, public Ui::QPrefsUi {
+class QPrefsDialog : public QDialog, public Ui::QPrefsUi
+{
 	Q_OBJECT
 public:
 	QPrefsDialog(QPrefs *);
@@ -69,86 +386,18 @@ public:
 	void apply(LyXRC & rc) const;
 	void update(LyXRC const & rc);
 
-protected:
-	void updateConverters();
-	void updateConverterButtons();
-	void updateCopiers();
-	void updateCopierButtons();
-	void updateFormats();
-	void updateFormatsButtons();
-
 public slots:
 	void change_adaptor();
-
-	void switch_format(int);
-	void fileformat_changed();
-	void new_format();
-	void modify_format();
-	void remove_format();
-
-	void switch_converter(int);
-	void converter_changed();
-	void new_converter();
-	void modify_converter();
-	void remove_converter();
-
-	void switch_copierLB(int nr);
-	void switch_copierCO(int nr);
-	void copiers_changed();
-	void new_copier();
-	void modify_copier();
-	void remove_copier();
-
-	void change_color();
-
-	void select_ui();
-	void select_bind();
-	void select_keymap1();
-	void select_keymap2();
-	void select_dict();
-	void select_templatedir();
-	void select_tempdir();
-	void select_backupdir();
-	void select_workingdir();
-	void select_lyxpipe();
-
-	void select_roman(const QString&);
-	void select_sans(const QString&);
-	void select_typewriter(const QString&);
 
 protected:
 	void closeEvent(QCloseEvent * e);
 
 private:
+	void add(PrefModule * module);
 
-	/// languages
-	std::vector<std::string> lang_;
-
-	std::vector<LColor_color> lcolors_;
-	std::vector<QString> prefcolors_;
-	std::vector<QString> newcolors_;
-
-	UiWidget<Ui::QPrefAsciiUi> * asciiModule;
-	UiWidget<Ui::QPrefDateUi> * dateModule;
-	UiWidget<Ui::QPrefKeyboardUi> * keyboardModule;
-	UiWidget<Ui::QPrefLatexUi> * latexModule;
-	UiWidget<Ui::QPrefScreenFontsUi> * screenfontsModule;
-	UiWidget<Ui::QPrefColorsUi> * colorsModule;
-#if defined(__CYGWIN__) || defined(__CYGWIN32__)
-	UiWidget<Ui::QPrefCygwinPathUi> * cygwinpathModule;
-#endif
-	UiWidget<Ui::QPrefDisplayUi> * displayModule;
-	UiWidget<Ui::QPrefPathsUi> * pathsModule;
-	UiWidget<Ui::QPrefSpellcheckerUi> * spellcheckerModule;
-	UiWidget<Ui::QPrefConvertersUi> * convertersModule;
-	UiWidget<Ui::QPrefCopiersUi> * copiersModule;
-	UiWidget<Ui::QPrefFileformatsUi> * fileformatsModule;
-	UiWidget<Ui::QPrefLanguageUi> * languageModule;
-	UiWidget<Ui::QPrefPrinterUi> * printerModule;
-	UiWidget<Ui::QPrefUi> * uiModule;
-	UiWidget<Ui::QPrefIdentityUi> * identityModule;
-
+private:	
 	QPrefs * form_;
+	std::vector<PrefModule *> modules_;
 };
 
 } // namespace frontend
