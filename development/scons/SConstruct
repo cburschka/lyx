@@ -133,6 +133,7 @@ if os.name == 'nt':
   # If not specified, boost tries to figure out by itself, but it may fail.
   boost_posix = False
   packaging_method = 'windows'
+  add_suffix_to_executables = False
   default_prefix = 'c:/program files/lyx'
   share_dir = 'Resources'
   man_dir = 'Resources/man/man1'
@@ -147,6 +148,7 @@ elif os.name == 'posix' and sys.platform != 'cygwin':
   default_with_x = True
   boost_posix = True
   packaging_method = 'posix'
+  add_suffix_to_executables = True
   default_prefix = '/usr/local/'
   share_dir = 'share/lyx'
   man_dir = 'man/man1'
@@ -161,6 +163,7 @@ elif os.name == 'posix' and sys.platform == 'cygwin':
   default_with_x = True
   boost_posix = True
   packaging_method = 'posix'
+  add_suffix_to_executables = True
   default_prefix = '/usr/local/'
   share_dir = 'share/lyx'
   man_dir = 'man/man1'
@@ -175,6 +178,7 @@ elif os.name == 'darwin':
   default_with_x = False
   boost_posix = True
   packaging_method = 'mac'
+  add_suffix_to_executables = True
   # FIXME: where to install?
   default_prefix = '/usr/local/'
   share_dir = 'Resources'
@@ -190,6 +194,7 @@ else:  # unsupported system
   default_with_x = True
   boost_posix = False
   packaging_method = 'posix'
+  add_suffix_to_executables = True
   default_prefix = '/usr/local/'
   share_dir = 'share/lyx'
   man_dir = 'man/man1'
@@ -243,16 +248,14 @@ opts.AddOptions(
   BoolOption('warnings', 'Use warnings', True),
   # enable glib, (config.h has _GLIBCXX_CONCEPT_CHECKS)
   BoolOption('concept_checks', 'Enable concept checks', True),
-  # FIXME: I do not know what is nls
-  BoolOption('nls', '(NA) Whether or not use native language support', False),
+  # 
+  BoolOption('nls', 'Whether or not use native language support', True),
   # FIXME: not implemented
   BoolOption('profile', '(NA) Whether or not enable profiling', False),
   # FIXME: not implemented
   BoolOption('std_debug', '(NA) Whether or not turn on stdlib debug', False),
   # using x11?
   BoolOption('X11', 'Use x11 windows system', default_with_x),
-  # FIXME: not implemented
-  BoolOption('libintl', '(NA) Use libintl library', False),
   # 
   PathOption('qt_dir', 'Path to qt directory', None),
   #
@@ -275,8 +278,6 @@ opts.AddOptions(
   ('version_suffix', 'install lyx as lyx-suffix', ''),
   #
   PathOption('exec_prefix', 'install architecture-independent executable files in PREFIX', None),
-  # FIXME: not implemented
-  PathOption('intl_prefix', '(NA) Path to intl library', None),
   # log file
   ('logfile', 'save commands (not outputs) to logfile', default_log_file),
   # Path to aikasurus
@@ -334,9 +335,24 @@ if env.has_key('exec_prefix'):
   env['BIN_DIR'] = env['exec_prefix']
 else:
   env['BIN_DIR'] = os.path.join(env['PREFIX'], 'bin')
-env['SHARE_DIR'] = os.path.join(env['PREFIX'], share_dir)
+# program suffix
+if env.has_key('version_suffix'):
+  env['PROGRAM_SUFFIX'] = env['version_suffix']
+else:
+  env['PROGRAM_SUFFIX'] = ''
+env['ADD_SUFFIX_TO_EXECUTABLES'] = add_suffix_to_executables
+env['SHARE_DIR'] = os.path.join(env['PREFIX'], share_dir + env['PROGRAM_SUFFIX'])
 env['MAN_DIR'] = os.path.join(env['PREFIX'], man_dir)
 env['LOCALE_DIR'] = os.path.join(env['PREFIX'], locale_dir)
+
+#
+# this is a bit out of place (after auto-configration) but 
+# it is required to do the tests. Since Tool('mingw') will 
+# reset CCFLAGS etc, this should be before getEnvVariable
+if platform_name == 'win32':
+  env.Tool('mingw')
+  env.AppendUnique(CPPPATH = ['#c:/MinGW/include'])
+
 
 # speed up source file processing
 #env['CPPSUFFIXES'] = ['.C', '.cc', '.cpp']
@@ -426,12 +442,6 @@ if env.has_key('extra_lib_path1') and env['extra_lib_path1']:
 if env.has_key('aikasurus_path') and env['aikasurus_path']:
   env.AppendUnique(LIBPATH = [env['aikasurus_path']])
 
-#
-# this is a bit out of place (after auto-configration)
-# but it is required to do the tests.
-if platform_name == 'win32':
-  env.AppendUnique(CPPPATH = ['#c:/MinGW/include'])
-  env.Tool('mingw')
 
 # under windows, scons is confused by .C/.c and uses gcc instead of
 # g++. I am forcing the use of g++ here. This is expected to change
@@ -440,6 +450,8 @@ if platform_name == 'win32':
 # Note that this step has to be after env.Tool('mingw') step
 # since env.Tool('mingw') will set env['CC'] etc.
 #
+# save the old c compiler
+env['C_COMPILER'] = env['CC']
 if env.has_key('CXX') and env['CXX']:
   env['CC'] = env['CXX']
   env['LINK'] = env['CXX']
@@ -456,13 +468,10 @@ conf = Configure(env,
   custom_tests = {
     'CheckPkgConfig' : utils.checkPkgConfig,
     'CheckPackage' : utils.checkPackage,
-    'CheckPutenv' : utils.checkPutenv,
-    'CheckIstreambufIterator' : utils.checkIstreambufIterator,
     'CheckMkdirOneArg' : utils.checkMkdirOneArg,
-    'CheckStdCount' : utils.checkStdCount,
     'CheckSelectArgType' : utils.checkSelectArgType,
     'CheckBoostLibraries' : utils.checkBoostLibraries,
-    'CheckMsgFmt' : utils.checkMsgFmt,
+    'CheckCommand' : utils.checkCommand,
   }
 )
 
@@ -570,10 +579,44 @@ else:
   env['BOOST_LIBRARIES'] = env_cache['BOOST_LIBRARIES']
   env['INCLUDED_BOOST'] = env_cache['INCLUDED_BOOST']
 
+
+if not env.has_key('nls') or env['nls']:
+  env['ENABLE_NLS'] = True
+
+if not fast_start:
+  if not env['ENABLE_NLS']:
+    env['INTL_LIB'] = []
+    env['INCLUDED_GETTEXT'] = False
+  else:
+    # check gettext libraries
+    gettext_opt = ARGUMENTS.get('gettext', default_gettext_opt)
+    # check for system gettext
+    succ = False
+    if gettext_opt in ['auto', 'system']:
+      if conf.CheckLib('intl'):
+        env['INCLUDED_GETTEXT'] = False
+        succ = True
+      else: # no found
+        if gettext_opt == 'system':
+          print "Can not find system gettext library"
+          print "Please supply a path through extra_lib_path and try again."
+          print "Or use gettext=included to use included gettext libraries."
+          Exit(2)
+    # now, auto and succ = false, or gettext=included
+    if not succ:
+      # we do not need to set LIBPATH now.
+      env['INCLUDED_GETTEXT'] = True
+    env['INTL_LIB'] = ['intl']
+  env_cache['INCLUDED_GETTEXT'] = env['INCLUDED_GETTEXT']
+  env_cache['INTL_LIB'] = env['INTL_LIB']
+else:
+  env['INTL_LIB'] = env_cache['INTL_LIB']
+  env['INCLUDED_GETTEXT'] = env_cache['INCLUDED_GETTEXT']
+
 #
 # check for msgfmt command
 if not fast_start:
-  env['MSGFMT'] = conf.CheckMsgFmt()
+  env['MSGFMT'] = conf.CheckCommand('msgfmt')
   env_cache['MSGFMT'] = env['MSGFMT']
 else:
   env['MSGFMT'] = env_cache['MSGFMT']
@@ -621,6 +664,7 @@ if not fast_start:
     ('sys/utime.h', 'HAVE_SYS_UTIME_H', 'c'),
     ('sys/socket.h', 'HAVE_SYS_SOCKET_H', 'c'),
     ('unistd.h', 'HAVE_UNISTD_H', 'c'),
+    ('inttypes.h', 'HAVE_INTTYPES_H', 'c'),
     ('utime.h', 'HAVE_UTIME_H', 'c'),
     ('istream', 'HAVE_ISTREAM', 'cxx'),
     ('ostream', 'HAVE_OSTREAM', 'cxx'),
@@ -646,47 +690,93 @@ if not fast_start:
   # HAVE__GETPID
   # HAVE_MKDIR
   # HAVE__MKDIR
+  # HAVE_PUTENV
   # HAVE_MKTEMP
   # HAVE_MKSTEMP
   # HAVE_STRERROR
-  # HAVE_FCNTL
+  # HAVE_STD_COUNT
 
   # Check functions
   functions = [
-    ('open', 'HAVE_OPEN'),
-    ('close', 'HAVE_CLOSE'),
-    ('popen', 'HAVE_POPEN'),
-    ('pclose', 'HAVE_PCLOSE'),
-    ('_open', 'HAVE__OPEN'),
-    ('_close', 'HAVE__CLOSE'),
-    ('_popen', 'HAVE__POPEN'),
-    ('_pclose', 'HAVE__PCLOSE'),
-    ('getpid', 'HAVE_GETPID'),
-    ('_getpid', 'HAVE__GETPID'),
-    ('mkdir', 'HAVE_MKDIR'),
-    ('_mkdir', 'HAVE__MKDIR'),
-    ('mktemp', 'HAVE_MKTEMP'),
-    ('mkstemp', 'HAVE_MKSTEMP'),
-    ('strerror', 'HAVE_STRERROR'),
+    ('open', 'HAVE_OPEN', None),
+    ('close', 'HAVE_CLOSE', None),
+    ('popen', 'HAVE_POPEN', None),
+    ('pclose', 'HAVE_PCLOSE', None),
+    ('_open', 'HAVE__OPEN', None),
+    ('_close', 'HAVE__CLOSE', None),
+    ('_popen', 'HAVE__POPEN', None),
+    ('_pclose', 'HAVE__PCLOSE', None),
+    ('getpid', 'HAVE_GETPID', None),
+    ('_getpid', 'HAVE__GETPID', None),
+    ('mkdir', 'HAVE_MKDIR', None),
+    ('_mkdir', 'HAVE__MKDIR', None),
+    ('putenv', 'HAVE_PUTENV', None),
+    ('mktemp', 'HAVE_MKTEMP', None),
+    ('mkstemp', 'HAVE_MKSTEMP', None),
+    ('strerror', 'HAVE_STRERROR', None),
+    ('count', 'HAVE_STD_COUNT', '''
+#include <algorithm>
+int count()
+{
+  char a[] = "hello";
+  return std::count(a, a+5, 'l');
+}
+''')
   ]
 
+  # HAVE_ASPRINTF
+  # HAVE_WPRINTF
+  # HAVE_SNPRINTF
+  # HAVE_POSIX_PRINTF
+  # HAVE_FCNTL
+  
   for func in functions:
-    if conf.CheckFunc(func[0]):
+    if conf.CheckFunc(func[0], header=func[2]):
       utils.addToConfig('#define %s 1' % func[1], TOP_SRC_DIR)
     else:
       utils.addToConfig('/* #undef %s */' % func[1], TOP_SRC_DIR)
 
-  if conf.CheckFunc('fcntl'):
-    utils.addToConfig('#define HAVE_FCNTL 1', TOP_SRC_DIR)
-    env['HAVE_FCNTL'] = True
-  else:
-    utils.addToConfig('/* #undef HAVE_FCNTL */', TOP_SRC_DIR)
-    env['HAVE_FCNTL'] = False
+  env_functions = [
+    ('asprintf', 'HAVE_ASPRINTF'),
+    ('wprintf', 'HAVE_WPRINTF'),
+    ('snprintf', 'HAVE_SNPRINTF'),
+    ('printf', 'HAVE_POSIX_PRINTF'),
+    ('fcntl', 'HAVE_FCNTL')
+  ]
 
+  for func in env_functions:
+    if conf.CheckFunc(func[0]):
+      utils.addToConfig('#define %s 1' % func[1], TOP_SRC_DIR)
+      env[func[1]] = 1
+    else:
+      utils.addToConfig('/* #undef %s */' % func[1], TOP_SRC_DIR)
+      env[func[1]] = 0
+
+  # HAVE_INTMAX_T
+  # HAVE_INTTYPES_H_WITH_UINTMAX 
+  # HAVE_DECL_ISTREAMBUF_ITERATOR
+  if conf.CheckType('intmax_t', includes='#include <stdint.h>') or \
+    conf.CheckType('intmax_t', includes='#include <inttypes.h>'):
+    utils.addToConfig('#define HAVE_INTMAX_T 1', TOP_SRC_DIR)
+  else:
+    utils.addToConfig('/* #undef HAVE_INTMAX_T */', TOP_SRC_DIR)
+
+  if conf.CheckType('uintmax_t', includes='#include <inttypes.h>'):
+    utils.addToConfig('#define HAVE_INTTYPES_H_WITH_UINTMAX  1', TOP_SRC_DIR)
+  else:
+    utils.addToConfig('/* #undef HAVE_INTTYPES_H_WITH_UINTMAX  */', TOP_SRC_DIR)
+    
+  if conf.CheckType('std::istreambuf_iterator<std::istream>', 
+    includes='#include <streambuf>\n#include <istream>'):
+    utils.addToConfig('#define HAVE_DECL_ISTREAMBUF_ITERATOR 1', TOP_SRC_DIR)
+  else:
+    utils.addToConfig('/* #undef HAVE_DECL_ISTREAMBUF_ITERATOR */', TOP_SRC_DIR)
+      
+  
   # PACKAGE
   # PACKAGE_VERSION
   # DEVEL_VERSION
-  utils.addToConfig('#define PACKAGE "%s"' % PACKAGE, TOP_SRC_DIR)
+  utils.addToConfig('#define PACKAGE "%s%s"' % (PACKAGE, env['PROGRAM_SUFFIX']), TOP_SRC_DIR)
   utils.addToConfig('#define PACKAGE_VERSION "%s"' % PACKAGE_VERSION, TOP_SRC_DIR)
   if DEVEL_VERSION:
     utils.addToConfig('#define DEVEL_VERSION 1', TOP_SRC_DIR)
@@ -783,29 +873,11 @@ if not fast_start:
   else:
     utils.addToConfig('/* #undef BOOST_POSIX */', TOP_SRC_DIR)
 
-  # HAVE_PUTENV
-  if conf.CheckPutenv():
-    utils.addToConfig('#define HAVE_PUTENV 1', TOP_SRC_DIR)
-  else:
-    utils.addToConfig('/* #undef HAVE_PUTENV */', TOP_SRC_DIR)
-
-  # HAVE_DECL_ISTREAMBUF_ITERATOR
-  if conf.CheckIstreambufIterator():
-    utils.addToConfig('#define HAVE_DECL_ISTREAMBUF_ITERATOR 1', TOP_SRC_DIR)
-  else:
-    utils.addToConfig('/* #undef HAVE_DECL_ISTREAMBUF_ITERATOR */', TOP_SRC_DIR)
-
   # MKDIR_TAKES_ONE_ARG
   if conf.CheckMkdirOneArg():
     utils.addToConfig('#define MKDIR_TAKES_ONE_ARG 1', TOP_SRC_DIR)
   else:
     utils.addToConfig('/* #undef MKDIR_TAKES_ONE_ARG */', TOP_SRC_DIR)
-
-  # HAVE_STD_COUNT
-  if conf.CheckStdCount():
-    utils.addToConfig('#define HAVE_STD_COUNT 1', TOP_SRC_DIR)
-  else:
-    utils.addToConfig('/* #undef HAVE_STD_COUNT */', TOP_SRC_DIR)
 
   # SELECT_TYPE_ARG1
   # SELECT_TYPE_ARG234
@@ -826,6 +898,10 @@ if not fast_start:
   env_cache['USE_ASPELL'] = env['USE_ASPELL']
   env_cache['USE_PSPELL'] = env['USE_PSPELL']
   env_cache['USE_ISPELL'] = env['USE_ISPELL']
+  env_cache['HAVE_ASPRINTF'] = env['HAVE_ASPRINTF']
+  env_cache['HAVE_WPRINTF'] = env['HAVE_WPRINTF']
+  env_cache['HAVE_SNPRINTF'] = env['HAVE_SNPRINTF']
+  env_cache['HAVE_POSIX_PRINTF'] = env['HAVE_POSIX_PRINTF']
   env_cache['HAVE_FCNTL'] = env['HAVE_FCNTL']
 
 else:
@@ -840,6 +916,10 @@ else:
   env['USE_ASPELL'] = env_cache['USE_ASPELL']
   env['USE_PSPELL'] = env_cache['USE_PSPELL']
   env['USE_ISPELL'] = env_cache['USE_ISPELL']
+  env['HAVE_ASPRINTF'] = env_cache['HAVE_ASPRINTF']
+  env['HAVE_WPRINTF'] = env_cache['HAVE_WPRINTF']
+  env['HAVE_SNPRINTF'] = env_cache['HAVE_SNPRINTF']
+  env['HAVE_POSIX_PRINTF'] = env_cache['HAVE_POSIX_PRINTF']
   env['HAVE_FCNTL'] = env_cache['HAVE_FCNTL']
 
 #
@@ -905,8 +985,6 @@ else:
 #
 # install customized builders
 env['BUILDERS']['substFile'] = Builder(action = utils.env_subst)
-# FIXME: there must be a better way.
-env['BUILDERS']['fileCopy'] = Builder(action = utils.env_filecopy)
 
 #
 # A Link script for cygwin see
@@ -929,11 +1007,6 @@ env['LYX_DIR'] = env['SHARE_DIR']
 #  LYX_ABS_INSTALLED_LOCALEDIR
 env['LOCALEDIR'] = env['LOCALE_DIR']
 env['TOP_SRCDIR'] = env['TOP_SRC_DIR']
-# program suffix
-if env.has_key('version_suffix'):
-  env['PROGRAM_SUFFIX'] = env['version_suffix']
-else:
-  env['PROGRAM_SUFFIX'] = ''
 # needed by src/version.C.in => src/version.C
 env['PACKAGE_VERSION'] = PACKAGE_VERSION
 # fill in the version info

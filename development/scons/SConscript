@@ -84,6 +84,72 @@ if env['INCLUDED_BOOST'] or 'boost' in targets:
   Alias('boost', iostreams)
 
 
+if env['INCLUDED_GETTEXT'] or 'intl' in targets:
+  # 
+  # intl
+  # 
+  print "Processing files in intl"
+
+  env.BuildDir('$BUILDDIR/intl', '$TOP_SRC_DIR/intl', duplicate = 0)
+
+  intlenv = env.Copy()
+  # we need the original C compiler for these files
+  intlenv['CC'] = intlenv['C_COMPILER']
+  intlenv['CPPPATH'] += ['intl']
+  
+  intlenv.Append(CCFLAGS = [
+    r'-DLOCALEDIR=\"' + env['LOCALE_DIR'] + r'\"',
+    r'-DLOCALE_ALIAS_PATH=\"' + env['LOCALE_DIR'] + r'\"',
+    r'-DLIBDIR=\"' + env['TOP_SRC_DIR'] + r'/lib\"',
+    '-DIN_LIBINTL',
+    '-DENABLE_RELOCATABLE=1',
+    '-DIN_LIBRARY',
+    r'-DINSTALLDIR=\"' + env['PREFIX'] + r'/lib\"',
+    '-DNO_XMALLOC',
+    '-Dset_relocation_prefix=libintl_set_relocation_prefix',
+    '-Drelocate=libintl_relocate',
+    '-DDEPENDS_ON_LIBICONV=1',
+    '-DHAVE_CONFIG_H'
+    ]
+  )
+
+  # libgnuintl.h.in => libintl.h
+  env.substFile('$TOP_SRC_DIR/intl/libintl.h', '$TOP_SRC_DIR/intl/libgnuintl.h.in')
+  env.Command('$TOP_SRC_DIR/intl/libgnuintl.h', '$TOP_SRC_DIR/intl/libintl.h',
+      [Copy('$TARGET', '$SOURCE')])
+  
+  intl = intlenv.StaticLibrary(
+    target = '$LOCALLIBPATH/intl',
+    LIBS = ['c'],
+    source = ["$BUILDDIR/intl/%s" % x for x in Split('''
+      bindtextdom.c
+      dcgettext.c
+      dgettext.c
+      gettext.c
+      finddomain.c
+      loadmsgcat.c
+      localealias.c
+      textdomain.c
+      l10nflist.c
+      explodename.c
+      dcigettext.c
+      dcngettext.c
+      dngettext.c
+      ngettext.c
+      plural.c
+      plural-exp.c
+      localcharset.c
+      relocatable.c
+      localename.c
+      log.c
+      printf.c
+      osdep.c
+      os2compat.c
+      intl-compat.c
+    ''')]
+  )
+  Alias('intl', intl)
+
 #
 # Now, src code under src/
 #
@@ -414,6 +480,7 @@ if frontend == 'qt3':
   qt3env = env.Copy()
   # disable auto scan to speed up non build time
   qt3env['QT_AUTOSCAN'] = 0
+  qt3env['QT_MOCHPREFIX'] = ''
 
   # load qt3 tools
   qt3env.Tool('qt')
@@ -560,9 +627,8 @@ if frontend == 'qt3':
   ''')]
 
   # manually moc and uic files for better performance 
-  # (stop autoscan, 13:20s->12:50s :-)
-  qt3_moced_files = [qt3env.Moc(x.replace('.C', '.h')) for x in qt3_moc_files]
-  
+  qt3_moced_files = [qt3env.Moc(x.replace('.C', '_moc.cpp'), x.replace('.C', '.h')) for x in qt3_moc_files]
+
   qt3_uiced_files = [qt3env.Uic('$BUILDDIR/common/frontends/qt3/ui/'+x) for x in qt3_ui_files]
   qt3_uiced_cc_files = []
   for x in qt3_uiced_files:
@@ -883,8 +949,6 @@ elif frontend == 'qt4':
   #
   qt4_moced_files = [qt4env.Moc4(x.replace('.C', '_moc.cpp'), x.replace('.C', '.h')) for x in qt4_moc_files]
 
-  # if the moced files are included in the .C file
-  # the Flatten(...) part will not be needed
   qt4 = qt4env.StaticLibrary(
     target = '$LOCALLIBPATH/qt4',
     LIBS = qt4env['QT_LIB'],
@@ -904,7 +968,8 @@ if 'client' in targets or 'install' in targets or 'all' in targets:
   if env['HAVE_FCNTL']:
     client = env.Program(
       target = '$BUILDDIR/common/client/lyxclient',
-      LIBS = env['BOOST_LIBRARIES'] + env['SOCKET_LIBS'] + ['supports'],
+      LIBS = ['supports'] + env['INTL_LIB'] + env['SYSTEM_LIBS'] + 
+        env['SOCKET_LIBS'] + env['BOOST_LIBRARIES'],
       source = ["$BUILDDIR/common/client/%s" % x for x in Split('''
         boost.C
         client.C
@@ -931,16 +996,10 @@ if 'tex2lyx' in targets or 'install' in targets or 'all' in targets:
   tex2lyx_env.Prepend(CPPPATH = ['$BUILDDIR/common/tex2lyx'])
   tex2lyx_env.AppendUnique(LIBPATH = ['#$LOCALLIBPATH'])
 
-  tex2lyx_env.fileCopy('$BUILDDIR/common/tex2lyx/FloatList.C', '$TOP_SRC_DIR/src/FloatList.C')
-  tex2lyx_env.fileCopy('$BUILDDIR/common/tex2lyx/Floating.C', '$TOP_SRC_DIR/src/Floating.C')
-  tex2lyx_env.fileCopy('$BUILDDIR/common/tex2lyx/counters.C', '$TOP_SRC_DIR/src/counters.C')
-  # for some reason I do not know, I have to copy the header files as well.
-  tex2lyx_env.fileCopy('$BUILDDIR/common/tex2lyx/lyxlayout.h', '$TOP_SRC_DIR/src/lyxlayout.h')
-  tex2lyx_env.fileCopy('$BUILDDIR/common/tex2lyx/lyxlayout.C', '$TOP_SRC_DIR/src/lyxlayout.C')
-  tex2lyx_env.fileCopy('$BUILDDIR/common/tex2lyx/lyxtextclass.h', '$TOP_SRC_DIR/src/lyxtextclass.h')
-  tex2lyx_env.fileCopy('$BUILDDIR/common/tex2lyx/lyxtextclass.C', '$TOP_SRC_DIR/src/lyxtextclass.C')
-  tex2lyx_env.fileCopy('$BUILDDIR/common/tex2lyx/lyxlex.C', '$TOP_SRC_DIR/src/lyxlex.C')
-  tex2lyx_env.fileCopy('$BUILDDIR/common/tex2lyx/lyxlex_pimpl.C', '$TOP_SRC_DIR/src/lyxlex_pimpl.C')
+  for file in ['FloatList.C', 'Floating.C', 'counters.C', 'lyxlayout.h', 'lyxlayout.C', 
+    'lyxtextclass.h', 'lyxtextclass.C', 'lyxlex.C', 'lyxlex_pimpl.C']:
+    env.Command('$BUILDDIR/common/tex2lyx/'+file, '$TOP_SRC_DIR/src/'+file,
+      [Copy('$TARGET', '$SOURCE')])
 
   tex2lyx = tex2lyx_env.Program(
     target = '$BUILDDIR/common/tex2lyx/tex2lyx',
@@ -1133,6 +1192,7 @@ if build_lyx or 'lyx' in targets:
       ] +
       env['BOOST_LIBRARIES'] +
       env['EXTRA_LIBS'] +
+      env['INTL_LIB'] + 
       env['SOCKET_LIBS'] +
       env['SYSTEM_LIBS']
   )
@@ -1199,13 +1259,13 @@ if 'install' in targets:
   # others:  $PREFIX/share/locale
   locale_dir = env['LOCALE_DIR']
   # do not install these files
-  execlude_list = ['Makefile.am', 'Makefile.in', 'Makefile', 
+  exclude_list = ['Makefile.am', 'Makefile.in', 'Makefile', 
     'lyx2lyx_version.py', 'lyx2lyx_version.py.in']
 
   def install(dest, src):
     ''' recusive installation of src to dest '''
     # separate file and directory
-    files = filter(lambda x: os.path.isfile(x) and not os.path.split(x)[1] in execlude_list, src)
+    files = filter(lambda x: os.path.isfile(x) and not os.path.split(x)[1] in exclude_list, src)
     dirs = filter(os.path.isdir, src)
     # install file
     env.Install(dest, files)
@@ -1217,8 +1277,35 @@ if 'install' in targets:
     return ins_dir
   #
   # executables (some of them may be none)
-  env.Install(env['BIN_DIR'], filter(lambda x: x != None, [lyx, tex2lyx, client]))
-  Alias('install', env['BIN_DIR'])
+  #
+  if env['ADD_SUFFIX_TO_EXECUTABLES']:
+    program_suffix = env['PROGRAM_SUFFIX']
+  else:
+    program_suffix = ''
+  #
+  # install lyx
+  target_name = os.path.split(str(lyx[0]))[1].replace('lyx', 'lyx%s' % program_suffix)
+  target = os.path.join(env['BIN_DIR'], target_name)
+  env.InstallAs(target, lyx)
+  Alias('install', target)
+  # install lyx as lyx-qt3
+  target_name = os.path.split(str(lyx[0]))[1].replace('lyx', 'lyx-%s%s' % (frontend, program_suffix))
+  target = os.path.join(env['BIN_DIR'], target_name)
+  env.InstallAs(target, lyx)
+  Alias('install', target)
+  #
+  # install tex2lyx
+  target_name = os.path.split(str(tex2lyx[0]))[1].replace('tex2lyx', 'tex2lyx%s' % program_suffix)
+  target = os.path.join(env['BIN_DIR'], target_name)
+  env.InstallAs(target, tex2lyx)
+  Alias('install', target)
+  #
+  # install lyxclient, may not exist
+  if client != None:
+    target_name = os.path.split(str(client[0]))[1].replace('client', 'client%s' % program_suffix)
+    target = os.path.join(env['BIN_DIR'], target_name)
+    env.InstallAs(target, client)
+    Alias('install', target)
   #
   # share/lyx
   dirs = install(env['SHARE_DIR'],
@@ -1240,10 +1327,10 @@ if 'install' in targets:
   Alias('install', [os.path.join(env['MAN_DIR'], x) for
     x in ['lyx.1', 'tex2lyx.1', 'lyxclient.1']])
   # locale files?
-  # ru.gmo ==> ru/LC_MESSAGES/lyx.mo
+  # ru.gmo ==> ru/LC_MESSAGES/lyxSUFFIX.mo
   for gmo in gmo_files:
     lan = os.path.split(str(gmo))[1].split('.')[0]
-    dest_file = os.path.join(env['LOCALE_DIR'], lan, 'LC_MESSAGES', 'lyx.mo')
+    dest_file = os.path.join(env['LOCALE_DIR'], lan, 'LC_MESSAGES', 'lyx' + env['PROGRAM_SUFFIX'] + '.mo')
     env.InstallAs(dest_file, gmo)
     Alias('install', dest_file)
 
