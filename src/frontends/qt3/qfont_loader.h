@@ -55,6 +55,9 @@ class FontLoader {
 public:
 	///
 	FontLoader();
+	
+	/// Destructor
+	~FontLoader();
 
 	/// Update fonts after zoom, dpi, font names, or norm change
 	void update();
