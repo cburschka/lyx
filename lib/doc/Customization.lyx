@@ -1,4 +1,4 @@
-#LyX 1.4.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 245
 \begin_document
 \begin_header
@@ -1846,6 +1846,45 @@ For example, the file may reference other files with relative filenames,
  directory and may modify it in the process.
 \end_layout
 
+\begin_layout Standard
+With the checkbox 
+\family sans
+Document Format
+\family default
+ you can choose whether the format is a document format or not.
+ The difference between document and non--document formats is that you can
+ export your LyX document only to document formats.
+ Non--document formats are used for included graphics.
+ Examples for document formats are 
+\family typewriter
+dvi
+\family default
+ or 
+\family typewriter
+ps.
+ 
+\family default
+Examples for non--document formats are 
+\family typewriter
+png
+\family default
+ or 
+\family typewriter
+jpeg
+\family default
+.
+ Some formats like 
+\family typewriter
+pdf
+\family default
+ are both document formats and non--document formats.
+ The checkbox 
+\family sans
+Document Format
+\family default
+ should be checked for these formats.
+\end_layout
+
 \begin_layout Section
 BibTeX and makeindex
 \end_layout
@@ -2902,6 +2941,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 begin{sloppypar}
 \end_layout
@@ -3046,6 +3086,7 @@ xx
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 end{sloppypar}
@@ -3474,6 +3515,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 b o
 \end_layout
@@ -3497,6 +3539,7 @@ underdot (underd)
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 d o
@@ -3530,6 +3573,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 t o
 \end_layout
@@ -3548,6 +3592,7 @@ breve (bre)
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 u o
@@ -3590,6 +3635,7 @@ dot (dot)
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 .s
@@ -5507,6 +5553,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 begin{sloppypar}
 \end_layout
@@ -5998,6 +6045,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 end{sloppypar}
 \end_layout
@@ -6147,6 +6195,7 @@ where the following commands are allowed:
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 begin{sloppypar}
@@ -7441,6 +7490,7 @@ Note that, besides that functionality, there is no way to ensure any ordering
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 end{sloppypar}

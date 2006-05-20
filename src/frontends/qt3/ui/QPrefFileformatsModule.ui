@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>419</width>
-            <height>261</height>
+            <height>286</height>
         </rect>
     </property>
     <property name="caption">
@@ -47,6 +47,20 @@
                 <widget class="QLineEdit" row="5" column="1">
                     <property name="name">
                         <cstring>editorED</cstring>
+                    </property>
+                </widget>
+                <widget class="QCheckBox" row="6" column="1">
+                    <property name="name">
+                        <cstring>documentCB</cstring>
+                    </property>
+                    <property name="text">
+                        <string>&amp;Document format</string>
+                    </property>
+                    <property name="accel">
+                        <string>Alt+D</string>
+                    </property>
+                    <property name="toolTip" stdset="0">
+                        <string>Tell whether this format is a document format. A document can not be exported to or viewed in a non-document format.</string>
                     </property>
                 </widget>
                 <widget class="QLineEdit" row="2" column="1">
@@ -324,6 +338,7 @@
     <tabstop>extensionED</tabstop>
     <tabstop>viewerED</tabstop>
     <tabstop>editorED</tabstop>
+    <tabstop>documentCB</tabstop>
 </tabstops>
 <includes>
     <include location="global" impldecl="in implementation">config.h</include>

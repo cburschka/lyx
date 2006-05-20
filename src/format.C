@@ -92,9 +92,12 @@ bool operator<(Format const & a, Format const & b)
 	return compare_ascii_no_case(a.prettyname(), b.prettyname()) < 0;
 }
 
+
 Format::Format(string const & n, string const & e, string const & p,
-	       string const & s, string const & v, string const & ed)
-	: name_(n), extension_(e), prettyname_(p), shortcut_(s), viewer_(v), editor_(ed)
+	       string const & s, string const & v, string const & ed,
+               bool d)
+	: name_(n), extension_(e), prettyname_(p), shortcut_(s), viewer_(v),
+	  editor_(ed), document_(d)
 {}
 
 
@@ -208,22 +211,24 @@ int Formats::getNumber(string const & name) const
 void Formats::add(string const & name)
 {
 	if (!getFormat(name))
-		add(name, name, name, string(), string(), string());
+		add(name, name, name, string(), string(), string(), true);
 }
 
 
 void Formats::add(string const & name, string const & extension,
 		  string const & prettyname, string const & shortcut,
-		  string const & viewer, string const & editor)
+		  string const & viewer, string const & editor, bool document)
 {
 	FormatList::iterator it =
 		find_if(formatlist.begin(), formatlist.end(),
 			FormatNamesEqual(name));
 	if (it == formatlist.end())
 		formatlist.push_back(Format(name, extension, prettyname,
-					    shortcut, viewer, editor));
+					    shortcut, viewer, editor,
+		                            document));
 	else
-		*it = Format(name, extension, prettyname, shortcut, viewer, editor);
+		*it = Format(name, extension, prettyname, shortcut, viewer,
+		             editor, document);
 }
 
 

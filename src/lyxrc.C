@@ -48,6 +48,7 @@ using lyx::support::expandPath;
 using lyx::support::getEnv;
 using lyx::support::libFileSearch;
 using lyx::support::token;
+using lyx::support::tokenPos;
 
 using std::cout;
 using std::endl;
@@ -1086,24 +1087,35 @@ int LyXRC::read(LyXLex & lexrc)
 				shortcut = lexrc.getString();
 			}
 			string viewer, editor;
+			if (lexrc.next())
+				viewer = lexrc.getString();
+			if (lexrc.next())
+				editor = lexrc.getString();
+			// The only supported flag for now is "document".
+			// More flags could be added in the future.
+			// Therefore we use tokenPos below to read the flag.
+			string flags;
 			// Hack to ensure compatibility with versions older
-			// than 1.4.0
+			// than 1.5.0
 			int le = lexrc.lex();
 			if (le != LyXLex::LEX_FEOF && le != LyXLex::LEX_UNDEF) {
-				viewer = lexrc.getString();
-				if (le == LyXLex::LEX_DATA) {
-					if (lexrc.next()) {
-						editor = lexrc.getString();
-					}
-				} else {
+				flags = lexrc.getString();
+				if (le != LyXLex::LEX_DATA) {
 					// We have got a known token.
 					// Therefore this is an old style
 					// format definition without
-					// viewer and editor.
-					lexrc.pushToken(viewer);
-					viewer.erase();
+					// flags.
+					lexrc.pushToken(flags);
+					flags.erase();
 				}
 			}
+			bool const document =
+				(tokenPos(flags, ',', "document") >= 0);
+			if (!flags.empty() && flags != "document")
+				lyxerr << "Ignoring flags other than "
+				          "`document' in `" << flags
+				       << "' for format `" << format << "'."
+				       << endl;
 			if (prettyname.empty()) {
 				if (converters.formatIsUsed(format)) {
 					lyxerr << "Can't delete format "
@@ -1113,7 +1125,7 @@ int LyXRC::read(LyXLex & lexrc)
 				}
 			} else {
 				formats.add(format, extension, prettyname,
-					    shortcut, viewer, editor);
+					    shortcut, viewer, editor, document);
 			}
 			break;
 		}
@@ -2007,7 +2019,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 		   << "#\n\n";
 
 	case RC_FORMAT:
-		// New/modifed formats
+		// New/modified formats
 		for (Formats::const_iterator cit = formats.begin();
 		     cit != formats.end(); ++cit) {
 			Format const * format =
@@ -2017,13 +2029,18 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 			    format->prettyname() != cit->prettyname() ||
 			    format->shortcut() != cit->shortcut() ||
 			    format->viewer() != cit->viewer() ||
-			    format->editor() != cit->editor())
+			    format->editor() != cit->editor() ||
+			    format->documentFormat() != cit->documentFormat()) {
 				os << "\\format \"" << cit->name() << "\" \""
 				   << cit->extension() << "\" \""
 				   << cit->prettyname() << "\" \""
 				   << cit->shortcut() << "\" \""
 				   << cit->viewer() << "\" \""
-				   << cit->editor() << "\"\n";
+				   << cit->editor() << "\" \"";
+				if (cit->documentFormat())
+					os << "document";
+				os << "\"\n";
+			}
 		}
 
 		// Look for deleted formats
@@ -2031,7 +2048,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 		     cit != system_formats.end(); ++cit)
 			if (!formats.getFormat(cit->name()))
 				os << "\\format \"" << cit->name()
-				   << "\" \"\" \"\" \"\" \"\" \"\"\n";
+				   << "\" \"\" \"\" \"\" \"\" \"\" \"\"\n";
 	case RC_VIEWER:
 		// Ignore it
 

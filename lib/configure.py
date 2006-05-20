@@ -194,76 +194,76 @@ def checkLatex():
 def checkFormatEntries():  
   ''' Check all formats (\Format entries) '''
   checkProg('a Tgif viewer and editor', ['tgif'],
-    rc_entry = [ r'\Format tgif       obj     Tgif                   "" "%%"	"%%"'])
+    rc_entry = [ r'\Format tgif       obj     Tgif                   "" "%%"	"%%"	""'])
   #
   checkProg('a FIG viewer and editor', ['xfig'],
-    rc_entry = [ r'\Format fig        fig     FIG                    "" "%%"	"%%"'] )
+    rc_entry = [ r'\Format fig        fig     FIG                    "" "%%"	"%%"	""'] )
   #
   checkProg('a Grace viewer and editor', ['xmgrace'],
-    rc_entry = [ r'\Format agr        agr     Grace                  "" "%%"	"%%"'] )
+    rc_entry = [ r'\Format agr        agr     Grace                  "" "%%"	"%%"	""'] )
   #
   checkProg('a FEN viewer and editor', ['xboard -lpf $$i -mode EditPosition'],
-    rc_entry = [ r'\Format fen        fen     FEN                    "" "%%"	"%%"' ])
+    rc_entry = [ r'\Format fen        fen     FEN                    "" "%%"	"%%"	""' ])
   #
   path, iv = checkProg('a raster image viewer', ['xv', 'kview', 'gimp'])
   path, ie = checkProg('a raster image editor', ['gimp'])
-  addToRC(r'''\Format bmp        bmp     BMP                    "" "%s"	"%s"
-\Format gif        gif     GIF                    "" "%s"	"%s"
-\Format jpg        jpg     JPEG                   "" "%s"	"%s"
-\Format pbm        pbm     PBM                    "" "%s"	"%s"
-\Format pgm        pgm     PGM                    "" "%s"	"%s"
-\Format png        png     PNG                    "" "%s"	"%s"
-\Format ppm        ppm     PPM                    "" "%s"	"%s"
-\Format tiff       tif     TIFF                   "" "%s"	"%s"
-\Format xbm        xbm     XBM                    "" "%s"	"%s"
-\Format xpm        xpm     XPM                    "" "%s"	"%s"''' % \
+  addToRC(r'''\Format bmp        bmp     BMP                    "" "%s"	"%s"	""
+\Format gif        gif     GIF                    "" "%s"	"%s"	""
+\Format jpg        jpg     JPEG                   "" "%s"	"%s"	""
+\Format pbm        pbm     PBM                    "" "%s"	"%s"	""
+\Format pgm        pgm     PGM                    "" "%s"	"%s"	""
+\Format png        png     PNG                    "" "%s"	"%s"	""
+\Format ppm        ppm     PPM                    "" "%s"	"%s"	""
+\Format tiff       tif     TIFF                   "" "%s"	"%s"	""
+\Format xbm        xbm     XBM                    "" "%s"	"%s"	""
+\Format xpm        xpm     XPM                    "" "%s"	"%s"	""''' % \
     (iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie) )
   #
   checkProg('a text editor', ['xemacs', 'gvim', 'kedit', 'kwrite', 'kate', \
     'nedit', 'gedit', 'notepad'],
-    rc_entry = [ r'''\Format asciichess asc    "Plain text (chess output)"  "" ""	"%%"
-\Format asciiimage asc    "Plain text (image)"         "" ""	"%%"
-\Format asciixfig  asc    "Plain text (Xfig output)"   "" ""	"%%"
-\Format dateout    tmp    "date (output)"         "" ""	"%%"
-\Format docbook    sgml    DocBook                B  ""	"%%"
-\Format docbook-xml xml   "Docbook (XML)"         "" ""	"%%"
-\Format literate   nw      NoWeb                  N  ""	"%%"
-\Format latex      tex    "LaTeX (plain)"         L  ""	"%%"
-\Format linuxdoc   sgml    LinuxDoc               x  ""	"%%"
-\Format pdflatex   tex    "LaTeX (pdflatex)"      "" ""	"%%"
-\Format text       txt    "Plain text"            a  ""	"%%"
-\Format textparagraph txt "Plain text (paragraphs)"    "" ""	"%%"''' ])
+    rc_entry = [ r'''\Format asciichess asc    "Plain text (chess output)"  "" ""	"%%"	""
+\Format asciiimage asc    "Plain text (image)"         "" ""	"%%"	""
+\Format asciixfig  asc    "Plain text (Xfig output)"   "" ""	"%%"	""
+\Format dateout    tmp    "date (output)"         "" ""	"%%"	""
+\Format docbook    sgml    DocBook                B  ""	"%%"	"document"
+\Format docbook-xml xml   "Docbook (XML)"         "" ""	"%%"	"document"
+\Format literate   nw      NoWeb                  N  ""	"%%"	"document"
+\Format latex      tex    "LaTeX (plain)"         L  ""	"%%"	"document"
+\Format linuxdoc   sgml    LinuxDoc               x  ""	"%%"	"document"
+\Format pdflatex   tex    "LaTeX (pdflatex)"      "" ""	"%%"	"document"
+\Format text       txt    "Plain text"            a  ""	"%%"	"document"
+\Format textparagraph txt "Plain text (paragraphs)"    "" ""	"%%"	"document"''' ])
   #
   #checkProg('a Postscript interpreter', ['gs'],
   #  rc_entry = [ r'\ps_command "%%"' ])
   checkProg('a Postscript previewer', ['gv', 'ghostview -swap', 'kghostview'],
-    rc_entry = [ r'''\Format eps        eps     EPS                    "" "%%"	""
-\Format ps         ps      Postscript             t  "%%"	""''' ])
+    rc_entry = [ r'''\Format eps        eps     EPS                    "" "%%"	""	""
+\Format ps         ps      Postscript             t  "%%"	""	"document"''' ])
   #
   checkProg('a PDF previewer', ['acrobat', 'acroread', 'gv', 'ghostview', \
               'xpdf', 'kpdf', 'kghostview'],
-    rc_entry = [ r'''\Format pdf        pdf    "PDF (ps2pdf)"          P  "%%"	""
-\Format pdf2       pdf    "PDF (pdflatex)"        F  "%%"	""
-\Format pdf3       pdf    "PDF (dvipdfm)"         m  "%%"	""''' ])
+    rc_entry = [ r'''\Format pdf        pdf    "PDF (ps2pdf)"          P  "%%"	""	"document"
+\Format pdf2       pdf    "PDF (pdflatex)"        F  "%%"	""	"document"
+\Format pdf3       pdf    "PDF (dvipdfm)"         m  "%%"	""	"document"''' ])
   #
   checkProg('a DVI previewer', ['xdvi', 'kdvi'],
-    rc_entry = [ r'\Format dvi        dvi     DVI                    D  "%%"	""' ])
+    rc_entry = [ r'\Format dvi        dvi     DVI                    D  "%%"	""	"document"' ])
   #
   checkProg('a HTML previewer', ['mozilla file://$$p$$i', 'netscape'],
-    rc_entry = [ r'\Format html       html    HTML                   H  "%%"	""' ])
+    rc_entry = [ r'\Format html       html    HTML                   H  "%%"	""	"document"' ])
   #
   # entried that do not need checkProg
-  addToRC(r'''\Format date       ""     "date command"          "" ""	""
-\Format fax        ""      Fax                    "" ""	""
-\Format lyx        lyx     LyX                    "" ""	""
-\Format lyx13x     lyx13  "LyX 1.3.x"             "" ""	""
-\Format lyxpreview lyxpreview "LyX Preview"       "" ""	""
-\Format pdftex     pdftex_t PDFTEX                "" ""	""
-\Format program    ""      Program                "" ""	""
-\Format pstex      pstex_t PSTEX                  "" ""	""
-\Format sxw        sxw    "OpenOffice.Org Writer" O  ""	""
-\Format word       doc    "MS Word"               W  ""	""
-\Format wordhtml   html   "MS Word (HTML)"        "" ""        ""
+  addToRC(r'''\Format date       ""     "date command"          "" ""	""	""
+\Format fax        ""      Fax                    "" ""	""	"document"
+\Format lyx        lyx     LyX                    "" ""	""	""
+\Format lyx13x     lyx13  "LyX 1.3.x"             "" ""	""	"document"
+\Format lyxpreview lyxpreview "LyX Preview"       "" ""	""	""
+\Format pdftex     pdftex_t PDFTEX                "" ""	""	""
+\Format program    ""      Program                "" ""	""	""
+\Format pstex      pstex_t PSTEX                  "" ""	""	""
+\Format sxw        sxw    "OpenOffice.Org Writer" O  ""	""	"document"
+\Format word       doc    "MS Word"               W  ""	""	"document"
+\Format wordhtml   html   "MS Word (HTML)"        "" ""        ""	"document"
 ''')
 
 

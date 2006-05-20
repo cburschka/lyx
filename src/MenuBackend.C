@@ -504,23 +504,22 @@ void expandFormats(MenuItem::Kind kind, Menu & tomenu, LyXView const * view)
 		if ((*fit)->dummy())
 			continue;
 		string label = (*fit)->prettyname();
-		// we need to hide the default graphic export formats
-		// from the external menu, because we need them only
-		// for the internal lyx-view and external latex run
-		if (label == "EPS" || label == "XPM" || label == "PNG")
-			continue;
 
-		if (kind == MenuItem::ImportFormats) {
+		switch (kind) {
+		case MenuItem::ImportFormats:
 			if ((*fit)->name() == "text")
 				label = _("Plain Text as Lines");
 			else if ((*fit)->name() == "textparagraph")
 				label = _("Plain Text as Paragraphs");
 			label += "...";
-		} else if (kind == MenuItem::ExportFormats) {
-			// exporting to LyX does not make sense
-			// FIXME: Introduce noexport flag
-			if ((*fit)->name() == "lyx")
+			break;
+		case MenuItem::ViewFormats:
+		case MenuItem::ExportFormats:
+			if (!(*fit)->documentFormat())
 				continue;
+			break;
+		case MenuItem::UpdateFormats:
+			break;
 		}
 		if (!(*fit)->shortcut().empty())
 			label += '|' + (*fit)->shortcut();

@@ -1313,6 +1313,7 @@ void FormPreferences::Formats::build()
 	setPrehandler(dialog_->input_viewer);
 	setPrehandler(dialog_->input_editor);
 	setPrehandler(dialog_->input_shrtcut);
+	setPrehandler(dialog_->check_document);
 }
 
 
@@ -1345,6 +1346,10 @@ FormPreferences::Formats::feedback(FL_OBJECT const * const ob) const
 		return  _("Remove the current format from the list of available "
 			  "formats. Note: you must then \"Apply\" the change.");
 
+	if (ob == dialog_->check_document)
+		return  _("Tell whether this format is a document format. "
+		          "A document can not be exported to or viewed in a non-document format.");
+
 	if (ob == dialog_->button_add) {
 		if (string(ob->label) == _("Add"))
 			return  _("Add the current format to the list of available "
@@ -1368,7 +1373,8 @@ bool FormPreferences::Formats::input(FL_OBJECT const * const ob)
 	    || ob == dialog_->input_shrtcut
 	    || ob == dialog_->input_extension
 	    || ob == dialog_->input_viewer
-	    || ob == dialog_->input_editor)
+	    || ob == dialog_->input_editor
+	    || ob == dialog_->check_document)
 		return Input();
 
 	if (ob == dialog_->button_add)
@@ -1416,10 +1422,12 @@ bool FormPreferences::Formats::Add()
 	string const shortcut =  getString(dialog_->input_shrtcut);
 	string const viewer =  getString(dialog_->input_viewer);
 	string const editor =  getString(dialog_->input_editor);
+	bool const document = fl_get_button(dialog_->check_document);
 
 	Format const * old = formats().getFormat(name);
 	string const old_prettyname = old ? old->prettyname() : string();
-	formats().add(name, extension, prettyname, shortcut, viewer, editor);
+	formats().add(name, extension, prettyname, shortcut, viewer, editor,
+	              document);
 	if (!old || prettyname != old_prettyname) {
 		UpdateBrowser();
 		if (old)
@@ -1447,6 +1455,7 @@ bool FormPreferences::Formats::Browser()
 	fl_set_input(dialog_->input_extension, f.extension().c_str());
 	fl_set_input(dialog_->input_viewer, f.viewer().c_str());
 	fl_set_input(dialog_->input_editor, f.editor().c_str());
+	fl_set_button(dialog_->check_document, f.documentFormat());
 
 	fl_set_object_label(dialog_->button_add,
 			    idex(_("Modify|#M")).c_str());

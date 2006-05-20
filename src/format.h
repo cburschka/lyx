@@ -21,12 +21,14 @@ class Format {
 public:
 	///
 	Format(std::string const & n, std::string const & e, std::string const & p,
-	       std::string const & s, std::string const & v, std::string const & ed);
+	       std::string const & s, std::string const & v, std::string const & ed,
+	       bool ex);
 	///
 	bool dummy() const;
-	///
+	/// Tell whether this format is a child format.
+	/// Child formats inherit settings like the viewer from their parent.
 	bool isChildFormat() const;
-	///
+	/// Name fo the parent format
 	std::string const parentFormat() const;
 	///
 	std::string const & name() const {
@@ -60,18 +62,32 @@ public:
 	void setEditor(std::string const & v) {
 		editor_ = v;
 	}
+	///
+	bool documentFormat() const {
+		return document_;
+	}
 private:
+	/// Internal name. Needs to be unique.
 	std::string name_;
-	///
+	/// Filename extension
 	std::string extension_;
-	///
+	/// Name presented to the user. Needs to be unique.
 	std::string prettyname_;
-	///
+	/// Keyboard shortcut for the View and Export menu.
 	std::string shortcut_;
-	///
+	/*!
+	 * Viewer for this format. Needs to be in the PATH or an absolute
+	 * filename.
+	 * This format cannot be viewed if \c viewer_ is empty.
+	 * If it is \c auto the default viewer of the OS for this format is
+	 * used.
+	 */
 	std::string viewer_;
-	///
+	/// Editor for this format. \sa viewer_.
 	std::string editor_;
+	/// Is this format a document format? (as opposed to e.g. image formats)
+	/// Some formats are both (e.g. pdf), they have this flag set.
+	bool document_;
 };
 
 
@@ -106,8 +122,9 @@ public:
 	void add(std::string const & name);
 	///
 	void add(std::string const & name, std::string const & extension,
-		 std::string const & prettyname, std::string const & shortcut,
-		 std::string const & viewer, std::string const & editor);
+	         std::string const & prettyname, std::string const & shortcut,
+	         std::string const & viewer, std::string const & editor,
+	         bool document);
 	///
 	void erase(std::string const & name);
 	///

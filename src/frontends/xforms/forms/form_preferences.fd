@@ -1704,8 +1704,8 @@ argument:
 =============== FORM ===============
 Name: form_preferences_formats
 Width: 450
-Height: 400
-Number of Objects: 10
+Height: 440
+Number of Objects: 11
 
 --------------------
 class: FL_BOX
@@ -1852,9 +1852,27 @@ callback: C_FormDialogView_InputCB
 argument: 0
 
 --------------------
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 200 270 150 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Document format|#D
+shortcut:
+resize: FL_RESIZE_NONE
+gravity: FL_West FL_West
+name: check_document
+callback: C_FormDialogView_InputCB
+argument: 0
+
+--------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 240 300 90 30
+box: 240 340 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -1872,7 +1890,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 340 300 90 30
+box: 340 340 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
