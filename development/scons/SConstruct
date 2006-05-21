@@ -361,11 +361,17 @@ if platform_name == 'win32':
 def getEnvVariable(env, name):
   # first try command line argument (override environment settings)
   if ARGUMENTS.has_key(name) and ARGUMENTS[name].strip() != '':
-    env[name] = ARGUMENTS[name]
+    # multiple options may be passed like "-02 -g"
+    env[name] = ARGUMENTS[name].split()
+    # it does not seem necessary, but it is safer to change ['a'] back to 'a'
+    if len(env[name]) == 1:
+      env[name] = env[name][0]
   # then use environment default
   elif os.environ.has_key(name) and os.environ[name].strip() != '':
-    env[name] = os.environ[name]
     print "Acquiring varaible %s from system environment: %s" % (name, env[name])
+    env[name] = os.environ[name].split()
+    if len(env[name]) == 1:
+      env[name] = env[name][0]
   # finally, env['CC'] etc is set to the default values of Options.
   # and env['CPP'] etc does not exist
 
@@ -570,8 +576,8 @@ if not fast_start:
   # now, auto and succ = false, or boost=included
   if not succ:
     # we do not need to set LIBPATH now.
-    env['BOOST_LIBRARIES'] = ['boost_signals', 'boost_regex',
-      'boost_filesystem', 'boost_iostreams']
+    env['BOOST_LIBRARIES'] = ['included_boost_signals', 'included_boost_regex',
+      'included_boost_filesystem', 'included_boost_iostreams']
     env['INCLUDED_BOOST'] = True
   env_cache['BOOST_LIBRARIES'] = env['BOOST_LIBRARIES']
   env_cache['INCLUDED_BOOST'] = env['INCLUDED_BOOST']
@@ -585,7 +591,7 @@ if not env.has_key('nls') or env['nls']:
 
 if not fast_start:
   if not env['ENABLE_NLS']:
-    env['INTL_LIB'] = []
+    env['INTL_LIBS'] = []
     env['INCLUDED_GETTEXT'] = False
   else:
     # check gettext libraries
@@ -595,6 +601,7 @@ if not fast_start:
     if gettext_opt in ['auto', 'system']:
       if conf.CheckLib('intl'):
         env['INCLUDED_GETTEXT'] = False
+        env['INTL_LIBS'] = ['intl']
         succ = True
       else: # no found
         if gettext_opt == 'system':
@@ -606,11 +613,14 @@ if not fast_start:
     if not succ:
       # we do not need to set LIBPATH now.
       env['INCLUDED_GETTEXT'] = True
-    env['INTL_LIB'] = ['intl']
+      env['INTL_LIBS'] = ['included_intl']
+    if platform_name == 'win32':
+      # for functions AddFontResouceA, RemoveFontResourceA
+      env['INTL_LIBS'].append('gdi32')
   env_cache['INCLUDED_GETTEXT'] = env['INCLUDED_GETTEXT']
-  env_cache['INTL_LIB'] = env['INTL_LIB']
+  env_cache['INTL_LIBS'] = env['INTL_LIBS']
 else:
-  env['INTL_LIB'] = env_cache['INTL_LIB']
+  env['INTL_LIBS'] = env_cache['INTL_LIBS']
   env['INCLUDED_GETTEXT'] = env_cache['INCLUDED_GETTEXT']
 
 #
@@ -672,6 +682,7 @@ if not fast_start:
   ]
 
   for header in headers:
+    utils.addToConfig("/* Define to 1 if you have the <%s> header file. */" % header[0], TOP_SRC_DIR, newline=1)
     if (header[2] == 'c' and conf.CheckCHeader(header[0])) or \
       (header[2] == 'cxx' and conf.CheckCXXHeader(header[0])):
       utils.addToConfig('#define %s 1' % header[1], TOP_SRC_DIR)
@@ -695,6 +706,7 @@ if not fast_start:
   # HAVE_MKSTEMP
   # HAVE_STRERROR
   # HAVE_STD_COUNT
+  # HAVE_GETCWD
 
   # Check functions
   functions = [
@@ -721,7 +733,8 @@ int count()
   char a[] = "hello";
   return std::count(a, a+5, 'l');
 }
-''')
+'''),
+    ('getcwd', 'HAVE_GETCWD', None),
   ]
 
   # HAVE_ASPRINTF
@@ -731,6 +744,7 @@ int count()
   # HAVE_FCNTL
   
   for func in functions:
+    utils.addToConfig("/* Define to 1 if you have the `%s' function. */" % func[0], TOP_SRC_DIR, newline=1)
     if conf.CheckFunc(func[0], header=func[2]):
       utils.addToConfig('#define %s 1' % func[1], TOP_SRC_DIR)
     else:
@@ -745,6 +759,7 @@ int count()
   ]
 
   for func in env_functions:
+    utils.addToConfig("/* Define to 1 if you have the `%s' function. */" % func[0], TOP_SRC_DIR, newline=1)
     if conf.CheckFunc(func[0]):
       utils.addToConfig('#define %s 1' % func[1], TOP_SRC_DIR)
       env[func[1]] = 1
@@ -755,17 +770,20 @@ int count()
   # HAVE_INTMAX_T
   # HAVE_INTTYPES_H_WITH_UINTMAX 
   # HAVE_DECL_ISTREAMBUF_ITERATOR
+  utils.addToConfig("/* Define to 1 if you have the `intmax_t' type. */", TOP_SRC_DIR, newline=1)
   if conf.CheckType('intmax_t', includes='#include <stdint.h>') or \
     conf.CheckType('intmax_t', includes='#include <inttypes.h>'):
     utils.addToConfig('#define HAVE_INTMAX_T 1', TOP_SRC_DIR)
   else:
     utils.addToConfig('/* #undef HAVE_INTMAX_T */', TOP_SRC_DIR)
 
+  utils.addToConfig("/* Define to 1 if you have the `uintmax_t' type. */", TOP_SRC_DIR, newline=1)
   if conf.CheckType('uintmax_t', includes='#include <inttypes.h>'):
     utils.addToConfig('#define HAVE_INTTYPES_H_WITH_UINTMAX  1', TOP_SRC_DIR)
   else:
     utils.addToConfig('/* #undef HAVE_INTTYPES_H_WITH_UINTMAX  */', TOP_SRC_DIR)
     
+  utils.addToConfig("/* Define to 1 if you have the `istreambug_iterator' type. */", TOP_SRC_DIR, newline=1)
   if conf.CheckType('std::istreambuf_iterator<std::istream>', 
     includes='#include <streambuf>\n#include <istream>'):
     utils.addToConfig('#define HAVE_DECL_ISTREAMBUF_ITERATOR 1', TOP_SRC_DIR)

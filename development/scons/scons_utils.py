@@ -108,13 +108,13 @@ def startConfigH(top_src_dir):
 '''
 
 
-def addToConfig(lines, top_src_dir):
+def addToConfig(lines, top_src_dir, newline=2):
   ''' utility function: shortcut for appending lines to outfile
     add newline at the end of lines.
   '''
   global config_content
   if lines.strip() != '':
-    config_content += lines + '\n\n'
+    config_content += lines + '\n'*newline
 
 
 def endConfigH(top_src_dir):

@@ -29,7 +29,7 @@ if env['INCLUDED_BOOST'] or 'boost' in targets:
   print 'Processing files in boost/libs/filesystem/src...'
 
   filesystem = boostenv.StaticLibrary(
-    target = '$LOCALLIBPATH/boost_filesystem',
+    target = '$LOCALLIBPATH/included_boost_filesystem',
     source = ["$BUILDDIR/boost/filesystem/src/%s" % x for x in Split('''
       convenience.cpp
       exception.cpp
@@ -41,7 +41,7 @@ if env['INCLUDED_BOOST'] or 'boost' in targets:
   print 'Processing files in boost/libs/regex/src...'
 
   regex = boostenv.StaticLibrary(
-    target = '$LOCALLIBPATH/boost_regex',
+    target = '$LOCALLIBPATH/included_boost_regex',
     source = ["$BUILDDIR/boost/regex/src/%s" % x for x in Split('''
       cpp_regex_traits.cpp
       c_regex_traits.cpp
@@ -58,7 +58,7 @@ if env['INCLUDED_BOOST'] or 'boost' in targets:
   print 'Processing files in boost/libs/signals/src...'
 
   signals = boostenv.StaticLibrary(
-    target = '$LOCALLIBPATH/boost_signals',
+    target = '$LOCALLIBPATH/included_boost_signals',
     source = ["$BUILDDIR/boost/signals/src/%s" % x for x in Split('''
       connection.cpp
       named_slot_map.cpp
@@ -71,7 +71,7 @@ if env['INCLUDED_BOOST'] or 'boost' in targets:
   print 'Processing files in boost/libs/iostreams/src...'
 
   iostreams = boostenv.StaticLibrary(
-    target = '$LOCALLIBPATH/boost_iostreams',
+    target = '$LOCALLIBPATH/included_boost_iostreams',
     source = ["$BUILDDIR/boost/iostreams/src/%s" % x for x in Split('''
       file_descriptor.cpp
       mapped_file.cpp
@@ -88,7 +88,7 @@ if env['INCLUDED_GETTEXT'] or 'intl' in targets:
   # 
   # intl
   # 
-  print "Processing files in intl"
+  print "Processing files in intl..."
 
   env.BuildDir('$BUILDDIR/intl', '$TOP_SRC_DIR/intl', duplicate = 0)
 
@@ -98,13 +98,13 @@ if env['INCLUDED_GETTEXT'] or 'intl' in targets:
   intlenv['CPPPATH'] += ['intl']
   
   intlenv.Append(CCFLAGS = [
-    r'-DLOCALEDIR=\"' + env['LOCALE_DIR'] + r'\"',
-    r'-DLOCALE_ALIAS_PATH=\"' + env['LOCALE_DIR'] + r'\"',
-    r'-DLIBDIR=\"' + env['TOP_SRC_DIR'] + r'/lib\"',
+    r'-DLOCALEDIR=\"' + env['LOCALE_DIR'].replace('\\', '\\\\') + r'\"',
+    r'-DLOCALE_ALIAS_PATH=\"' + env['LOCALE_DIR'].replace('\\', '\\\\') + r'\"',
+    r'-DLIBDIR=\"' + env['TOP_SRC_DIR'].replace('\\', '\\\\') + r'/lib\"',
     '-DIN_LIBINTL',
     '-DENABLE_RELOCATABLE=1',
     '-DIN_LIBRARY',
-    r'-DINSTALLDIR=\"' + env['PREFIX'] + r'/lib\"',
+    r'-DINSTALLDIR=\"' + env['PREFIX'].replace('\\', '\\\\') + r'/lib\"',
     '-DNO_XMALLOC',
     '-Dset_relocation_prefix=libintl_set_relocation_prefix',
     '-Drelocate=libintl_relocate',
@@ -119,7 +119,7 @@ if env['INCLUDED_GETTEXT'] or 'intl' in targets:
       [Copy('$TARGET', '$SOURCE')])
   
   intl = intlenv.StaticLibrary(
-    target = '$LOCALLIBPATH/intl',
+    target = '$LOCALLIBPATH/included_intl',
     LIBS = ['c'],
     source = ["$BUILDDIR/intl/%s" % x for x in Split('''
       bindtextdom.c
@@ -160,7 +160,7 @@ if build_lyx or True in [x in targets for x in ['supports', 'client', 'tex2lyx']
   #
   # src/support
   #
-  print "Processing files in src/support"
+  print "Processing files in src/support..."
 
   env.substFile('$BUILDDIR/common/support/package.C', '$TOP_SRC_DIR/src/support/package.C.in')
 
@@ -204,7 +204,7 @@ if build_lyx or 'mathed' in targets:
   #
   # src/mathed
   #
-  print "Processing files in src/mathed"
+  print "Processing files in src/mathed..."
 
   mathed = env.StaticLibrary(
     target = '$LOCALLIBPATH/mathed',
@@ -290,7 +290,7 @@ if build_lyx or 'insets' in targets:
   #
   # src/insets
   #
-  print "Processing files in src/insets"
+  print "Processing files in src/insets..."
 
   insets = env.StaticLibrary(
     target = '$LOCALLIBPATH/insets',
@@ -353,7 +353,7 @@ if build_lyx or 'frontends' in targets:
   #
   # src/frontends
   #
-  print "Processing files in src/frontends"
+  print "Processing files in src/frontends..."
 
   frontends = env.StaticLibrary(
     target = '$LOCALLIBPATH/frontends',
@@ -376,7 +376,7 @@ if build_lyx or 'graphics' in targets:
   #
   # src/graphics
   #
-  print "Processing files in src/graphics"
+  print "Processing files in src/graphics..."
 
   graphics = env.StaticLibrary(
     target = '$LOCALLIBPATH/graphics',
@@ -401,7 +401,7 @@ if build_lyx or 'controllers' in targets:
   #
   # src/frontends/controllers
   #
-  print "Processing files in src/frontends/controllers"
+  print "Processing files in src/frontends/controllers..."
 
   controllers = env.StaticLibrary(
     target = '$LOCALLIBPATH/controllers',
@@ -475,7 +475,7 @@ else:
 
 
 if frontend == 'qt3':
-  print "Processing files in src/frontends/qt3"
+  print "Processing files in src/frontends/qt3..."
 
   qt3env = env.Copy()
   # disable auto scan to speed up non build time
@@ -704,7 +704,7 @@ if frontend == 'qt3':
 
 
 elif frontend == 'qt4':
-  print "Processing files in src/frontends/qt4"
+  print "Processing files in src/frontends/qt4..."
 
   qt4env = env.Copy()
   qt4env['QT_AUTOSCAN'] = 0
@@ -723,11 +723,8 @@ elif frontend == 'qt4':
     '$BUILDDIR/common/images',
     '$BUILDDIR/common/frontends',
     '$BUILDDIR/common/frontends/qt4',
-    '$BUILDDIR/common/frontends/controllers',
-    '$QT_INC_PATH',
-    '$QT_INC_PATH/Qt',
-    '$QT_INC_PATH/QtCore',
-    '$QT_INC_PATH/QtGui']
+    '$BUILDDIR/common/frontends/controllers' 
+    ]
   )
 
   # FIXME: replace by something from pkg_config
@@ -963,12 +960,12 @@ if 'client' in targets or 'install' in targets or 'all' in targets:
   #
   env.BuildDir('$BUILDDIR/common', '$TOP_SRC_DIR/src', duplicate = 0)
 
-  print "Processing files in src/client"
+  print "Processing files in src/client..."
 
   if env['HAVE_FCNTL']:
     client = env.Program(
       target = '$BUILDDIR/common/client/lyxclient',
-      LIBS = ['supports'] + env['INTL_LIB'] + env['SYSTEM_LIBS'] + 
+      LIBS = ['supports'] + env['INTL_LIBS'] + env['SYSTEM_LIBS'] + 
         env['SOCKET_LIBS'] + env['BOOST_LIBRARIES'],
       source = ["$BUILDDIR/common/client/%s" % x for x in Split('''
         boost.C
@@ -989,7 +986,7 @@ if 'tex2lyx' in targets or 'install' in targets or 'all' in targets:
   #
   # tex2lyx
   #
-  print "Processing files in src/tex2lyx"
+  print "Processing files in src/tex2lyx..."
 
   tex2lyx_env = env.Copy()
   # the order is important here.
@@ -1034,7 +1031,7 @@ if build_lyx or 'lyxbase' in targets:
   #
   # src/
   #
-  print "Processing files in src"
+  print "Processing files in src..."
 
   env.substFile('$BUILDDIR/common/version.C', '$TOP_SRC_DIR/src/version.C.in')
 
@@ -1192,7 +1189,7 @@ if build_lyx or 'lyx' in targets:
       ] +
       env['BOOST_LIBRARIES'] +
       env['EXTRA_LIBS'] +
-      env['INTL_LIB'] + 
+      env['INTL_LIBS'] + 
       env['SOCKET_LIBS'] +
       env['SYSTEM_LIBS']
   )

@@ -366,7 +366,7 @@ def enable_modules(self, modules, debug=False) :
 		self.AppendUnique(LIBS=[lib+'4'+debugSuffix for lib in modules])
 		if 'QtOpenGL' in modules:
 			self.AppendUnique(LIBS=['opengl32'])
-		self.AppendUnique(CPPPATH=[ '$QTDIR/include/'+module
+		self.AppendUnique(CPPPATH=[ '$QTDIR/include/'+module[:-1]
 			for module in modules])
 		self.AppendUnique(LIBPATH=['$QTDIR/lib'])
 
