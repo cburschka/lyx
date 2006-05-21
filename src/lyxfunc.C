@@ -1563,7 +1563,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			ErrorList el;
 			lyx::cap::switchBetweenClasses(
 				old_class, new_class,
-				buffer->paragraphs(), el);
+				static_cast<InsetText &>(buffer->inset()), el);
 
 			view()->setCursor(backcur.asDocIterator(&(buffer->inset())));
 			bufferErrors(*buffer, el);

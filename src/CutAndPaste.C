@@ -150,7 +150,14 @@ pasteSelectionHelper(Buffer const & buffer,
 	}
 
 	// Make sure there is no class difference.
-	lyx::cap::switchBetweenClasses(textclass, tc, insertion, errorlist);
+	InsetText in;
+	// This works without copying any paragraph data because we have
+	// a specialized swap method for ParagraphList. This is important
+	// since we store pointers to insets at some places and we don't
+	// want to invalidate them.
+	insertion.swap(in.paragraphs());
+	lyx::cap::switchBetweenClasses(textclass, tc, in, errorlist);
+	insertion.swap(in.paragraphs());
 
 	ParagraphList::iterator tmpbuf = insertion.begin();
 	int depth_delta = pars[pit].params().depth() - tmpbuf->params().depth();
@@ -200,8 +207,7 @@ pasteSelectionHelper(Buffer const & buffer,
 
 	// Prepare the paragraphs and insets for insertion.
 	// A couple of insets store buffer references so need updating.
-	InsetText in;
-	std::swap(in.paragraphs(), insertion);
+	insertion.swap(in.paragraphs());
 
 	ParIterator fpit = par_iterator_begin(in);
 	ParIterator fend = par_iterator_end(in);
@@ -223,7 +229,7 @@ pasteSelectionHelper(Buffer const & buffer,
 			}
 		}
 	}
-	std::swap(in.paragraphs(), insertion);
+	insertion.swap(in.paragraphs());
 
 	// Split the paragraph for inserting the buf if necessary.
 	if (!empty)
@@ -368,17 +374,14 @@ string grabAndEraseSelection(LCursor & cur)
 
 
 void switchBetweenClasses(textclass_type c1, textclass_type c2,
-	ParagraphList & pars, ErrorList & errorlist)
+	InsetText & in, ErrorList & errorlist)
 {
-	BOOST_ASSERT(!pars.empty());
+	BOOST_ASSERT(!in.paragraphs().empty());
 	if (c1 == c2)
 		return;
 
 	LyXTextClass const & tclass1 = textclasslist[c1];
 	LyXTextClass const & tclass2 = textclasslist[c2];
-
-	InsetText in;
-	std::swap(in.paragraphs(), pars);
 
 	// layouts
 	ParIterator end = par_iterator_end(in);
@@ -432,8 +435,6 @@ void switchBetweenClasses(textclass_type c1, textclass_type c2,
 			}
 		}
 	}
-
-	std::swap(in.paragraphs(), pars);
 }
 
 

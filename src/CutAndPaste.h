@@ -23,6 +23,7 @@
 
 class Buffer;
 class ErrorList;
+class InsetText;
 class LyXTextClass;
 class LCursor;
 
@@ -67,9 +68,8 @@ void pasteParagraphList(LCursor & cur, ParagraphList const & parlist,
  *  It changes layouts and character styles.
  */
 void switchBetweenClasses(lyx::textclass_type c1,
-				lyx::textclass_type c2,
-				ParagraphList & par,
-				ErrorList &);
+                          lyx::textclass_type c2,
+                          InsetText & in, ErrorList &);
 
 // only used by the spellchecker
 void replaceWord(LCursor & cur, std::string const & replacestring);
