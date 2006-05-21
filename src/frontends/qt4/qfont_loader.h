@@ -83,10 +83,13 @@ public:
 
 	/// Get font info (font + metrics) for the given LyX font.
 	QLFontInfo & fontinfo(LyXFont const & f) {
-		QLFontInfo * & fi =
+		QLFontInfo * fi =
 			fontinfo_[f.family()][f.series()][f.realShape()][f.size()];
-		if (!fi)
+		if (!fi) {
 			fi = new QLFontInfo(f);
+			fontinfo_[f.family()][f.series()][f.realShape()][f.size()]
+				= fi;
+		}
 		return *fi;
 	}
 

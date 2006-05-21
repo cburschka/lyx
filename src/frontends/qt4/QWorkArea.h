@@ -208,10 +208,11 @@ private:
 	SyntheticMouseEvent synthetic_mouse_event_;
 
 	/// Our client side painting device.
-	QImage paint_device_;
+	//QImage paint_device_;
+	QPixmap paint_device_;
 
 	/// Our server side painting device.
-	QPixmap screen_device_;
+	//QPixmap screen_device_;
 
 	/// \todo remove
 	QTimer step_timer_;
