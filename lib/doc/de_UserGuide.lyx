@@ -1,4 +1,4 @@
-#LyX 1.4.1 created this file. For more info see http://www.lyx.org/
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 245
 \begin_document
 \begin_header
@@ -15,7 +15,8 @@
 % stellt fehlende Zeichen zur Verfügung,
 % siehe Notiz im Kapitel Zeichentabellen
 \usepackage{textcomp}
-\usepackage [chapter,nottoc]{tocbibind}
+% siehe Notiz am Ende des Dokuments
+%\usepackage [chapter,nottoc]{tocbibind}
 % Damit der Index den Namen "Stichwortverzeichnis" erhält
 \usepackage[ngerman]{babel}
 \addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
@@ -88,8 +89,8 @@ Uwe Stöhr
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 21.
- April 2006
+letzte Änderung: 20.
+ Mai 2006
 \end_layout
 
 \begin_layout Standard
@@ -127,12 +128,23 @@ status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
-X?
+X
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+?
 \end_layout
 
 \begin_layout Standard
@@ -196,9 +208,7 @@ Einführung
  Wenn Sie sie noch nicht gelesen haben, sollten Sie das jetzt tun.
  Ja, wir meinen 
 \emph on
-jetzt
-\emph default
-.
+jetzt.
 \end_layout
 
 \begin_layout Standard
@@ -230,12 +240,23 @@ status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
 X
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -269,12 +290,23 @@ status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
-X aussieht
+X
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ aussieht
 \end_layout
 
 \begin_layout Subsubsection
@@ -601,6 +633,36 @@ Befehle in den Menüs und Schalter in den Werkzeugleisten sind nur dann aktiviert
 , wenn sie benutzt werden können.
  Ansonsten erscheinen sie in den Menüs grau-in-grau und in den Werkzeugleisten
  als graue Bildchen und können nicht angeklickt werden.
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+
+\noun on
+HHa
+\noun default
+: Wenn von Farben die Rede ist, sind die voreingestellten Farben gemeint,
+ die in 
+\family sans
+\bar under
+W
+\bar default
+erkzeuge\SpecialChar \menuseparator
+
+\bar under
+E
+\bar default
+instellungen\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+Aussehen\SpecialChar \menuseparator
+Farben
+\family default
+ zu finden sind.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -634,12 +696,23 @@ status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
-X-Schnittstelle
+X
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+-Schnittstelle
 \end_layout
 
 \begin_layout Subsection
@@ -1094,21 +1167,28 @@ Ersetzen\SpecialChar \ldots{}
  öffnet das Dialogfenster 
 \family sans
 Ly
-\family default
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
+X
+\begin_inset ERT
+status collapsed
 
-\family sans
-X:\InsetSpace ~
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+:\InsetSpace ~
 Suchen\InsetSpace ~
 und\InsetSpace ~
 Ersetzen
@@ -1255,11 +1335,8 @@ Treffer
 \end_layout
 
 \begin_layout Subsection
-
-\family sans
-\bar under
 R
-\bar default
+\family sans
 ückgängig
 \family default
 
@@ -1267,11 +1344,8 @@ R
 
 \end_inset
 
- machen und 
+ machen und W
 \family sans
-\bar under
-W
-\bar default
 iederholen
 \family default
 
@@ -1323,7 +1397,8 @@ earbeiten\SpecialChar \menuseparator
 \bar under
 W
 \bar default
-iederholen
+iederho\SpecialChar \-
+len
 \family default
  (
 \family sans
@@ -4168,12 +4243,23 @@ status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
-X zusammen mit anderen Programmen benutzt
+X
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ zusammen mit anderen Programmen benutzt
 \end_layout
 
 \begin_layout Subsection
@@ -4265,12 +4351,23 @@ status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
-X und anderen Programmen
+X
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ und anderen Programmen
 \begin_inset OptArg
 status open
 
@@ -4355,12 +4452,23 @@ status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
-X-Einrichtung und unterstützende Anwendungen
+X
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+-Einrichtung und unterstützende Anwendungen
 \end_layout
 
 \begin_layout Section
@@ -4389,22 +4497,29 @@ ilfe\SpecialChar \menuseparator
 \bar under
 L
 \bar default
-aT
-\family default
-
+aTe
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
+X
+\begin_inset ERT
+status collapsed
 
-\family sans
-eX\InsetSpace ~
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+\InsetSpace ~
 Konfiguration
 \family default
 .
@@ -4436,12 +4551,23 @@ status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
-X-Grundeinstellungen
+X
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+-Grundeinstellungen
 \begin_inset LatexCommand \index{Grundeinstellungen}
 
 \end_inset
@@ -4522,22 +4648,29 @@ ilfe\SpecialChar \menuseparator
 \bar under
 L
 \bar default
-aT
-\family default
-
+aTe
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
+X
+\begin_inset ERT
+status collapsed
 
-\family sans
-eX-Konfiguration
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+-Konfiguration
 \family default
 .
 \end_layout
@@ -4649,12 +4782,23 @@ status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
 X
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
 \begin_inset LatexCommand \index{LaTeX}
 
 \end_inset
@@ -5129,12 +5273,23 @@ status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
-X-Grundlagen
+X
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+-Grundlagen
 \end_layout
 
 \begin_layout Section
@@ -5298,12 +5453,23 @@ status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
-X) Artikel für Veröffentlichungen der American Physical Society (APS), des
+X
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+) Artikel für Veröffentlichungen der American Physical Society (APS), des
  American Institute of Physics (AIP) und der Optical Society of America
  (OSA).
  Diese Klasse ist nicht mit allen LyX-Funktionen kompatibel.
@@ -5414,19 +5580,6 @@ Jede Dokumentklasse hat Standardwerte, Tabelle
 wide false
 sideways false
 status open
-
-\begin_layout Caption
-\begin_inset LatexCommand \label{table:Dokumentklassen}
-
-\end_inset
-
-Dokumentklassen
-\begin_inset LatexCommand \index{Dokument!-klassen}
-
-\end_inset
-
-
-\end_layout
 
 \begin_layout Standard
 
@@ -5937,6 +6090,19 @@ Abschnitt
 </cell>
 </row>
 </lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Caption
+\begin_inset LatexCommand \label{table:Dokumentklassen}
+
+\end_inset
+
+Dokumentklassen
+\begin_inset LatexCommand \index{Dokument!-klassen}
 
 \end_inset
 
@@ -6639,7 +6805,8 @@ Um eine Standardmethode für die Absatztrennung festzulegen, wählen Sie das
 \bar under
 D
 \bar default
-okument\SpecialChar \menuseparator
+oku\SpecialChar \-
+ment\SpecialChar \menuseparator
 
 \bar under
 E
@@ -6713,7 +6880,8 @@ Einstellungen
 
 , um das Menü 
 \family sans
-Absatz-Einstellungen
+Absatz-Einstellun\SpecialChar \-
+gen
 \family default
  anzuzeigen.
  Dort können Sie den 
@@ -6988,7 +7156,7 @@ Auflistung
 
 , 
 \family sans
-Liste/Labeling
+Liste
 \family default
  
 \begin_inset Graphics
@@ -6998,32 +7166,7 @@ Liste/Labeling
 
 \end_inset
 
-,
-\begin_inset Foot
-status open
-
-\begin_layout Standard
-Je nachdem, ob sie die Dokumentklasse 
-\family sans
-book
-\family default
- oder 
-\family sans
-book\InsetSpace ~
-(koma-script)
-\family default
- verwenden, steht Ihnen 
-\family sans
-Liste
-\family default
- oder 
-\family sans
-Labeling zur Verfügung.
-\end_layout
-
-\end_inset
-
- 
+, 
 \family sans
 Beschreibung
 \family default
@@ -7181,7 +7324,7 @@ Beschreibung
 \begin_layout Itemize
 
 \family sans
-Liste/Labeling
+Liste
 \begin_inset LatexCommand \index{Liste}
 
 \end_inset
@@ -7190,11 +7333,6 @@ Liste/Labeling
 \family default
 -- LaTeX-Bezeichnung: List
 \begin_inset LatexCommand \index{List}
-
-\end_inset
-
-/Labeling
-\begin_inset LatexCommand \label{Labeling}
 
 \end_inset
 
@@ -7638,7 +7776,8 @@ Also, wenn Sie die
 \family sans
 Unterunterabschn.
 \family default
--Umgebung benutzen, um einen neuen Unter-Unterabschnitt zu markieren, markiert
+-Umgebung benutzen, um einen neuen Unter-Unter\SpecialChar \-
+abschnitt zu markieren, markiert
  LyX die Überschrift mit der zugehörigen Nummer und den Nummern des Unterabschni
 ttes
 \family sans
@@ -8240,7 +8379,7 @@ Beschreibung
 \family default
 - und 
 \family sans
-Liste/Labeling
+Liste
 \family default
 -Umgebungen lässt LyX Sie Ihre eigenen Marken verwenden.
 \end_layout
@@ -8836,12 +8975,23 @@ status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
-X-
+X
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+-
 \family sans
 Liste
 \family default
@@ -8865,7 +9015,7 @@ Liste
 
 Die 
 \family sans
-Liste/Labeling
+Liste
 \family default
 -Umgebung ist eine LyX-Erweiterung von LaTeX.
  Wenn Sie direkt hierher gelangt sind, ohne die Abschnitte 
@@ -8898,22 +9048,12 @@ Aufzählung
 \end_inset
 
  beschrieben.
- Die 
-\family sans
-Labeling
-\family default
--Umgebung gehört zu 
-\family sans
-book\InsetSpace ~
-(koma-script)
-\family default
-.
 \end_layout
 
 \begin_layout Standard
 Die 
 \family sans
-Liste/Labeling
+Liste
 \family default
 -Umgebung hat ebenso wie die 
 \family sans
@@ -8996,7 +9136,7 @@ Standardbreite
  Diese können Sie sehr leicht setzen und damit sicherstellen, dass die Texte
  aller Elemente der 
 \family sans
-Liste/Labeling
+Liste
 \family default
 -Umgebung denselben linken Rand haben.
 \end_layout
@@ -9005,7 +9145,7 @@ Liste/Labeling
 \labelwidthstring 00.00.0000
 Gebrauch Die 
 \family sans
-Liste/Labeling
+Liste
 \family default
 -Umgebung sollten Sie wie die 
 \family sans
@@ -9015,7 +9155,7 @@ Beschreibung
  hervorgehoben wird.
  Mit der 
 \family sans
-Liste/Labeling
+Liste
 \family default
 -Umgebung haben Sie eine weitere Möglichkeit, das zu tun, aber mit einem
  anderen Aussehen.
@@ -9043,7 +9183,7 @@ Schachtelung
 
  Sie können 
 \family sans
-Liste/Labeling
+Liste
 \family default
 -Umgebungen ineinander oder in andere schachteln usw., wie bei den anderen
  Listen-Umgebungen auch.
@@ -9146,7 +9286,7 @@ Marke
 \begin_layout Standard
 Es gibt noch eine Funktion der 
 \family sans
-Liste/Labeling
+Liste
 \family default
 -Umgebung, von der wir Ihnen erzählen müssen.
  Wie Sie in den Beispielen sehen können, richtet LyX die Marken standardmäßig
@@ -9179,13 +9319,11 @@ s später in Abschnitt
  Hier sind einige Beispiele:
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Standard
 Links Die Standardausrichtung.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Standard
 
 \hfill
 R Ein 
@@ -9195,8 +9333,7 @@ HFill
  am Anfang der Marke richtet Sie nach rechts aus.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Standard
 
 \hfill
 Z
@@ -9337,10 +9474,9 @@ rechts
  nicht nur für Briefe benutzen.
  
 \family sans
-Adress
+Adresse
 \family default
-e\InsetSpace ~
-
+ 
 \family sans
 rechts
 \family default
@@ -10028,6 +10164,29 @@ HHa
 Gleitobjekt-Abbildungen und Gleitobjekt-Tabellen.
 \end_layout
 
+\begin_layout Standard
+Bei koma-script-Dokumenten benutzt man vielleicht besser 
+\family sans
+Legende\InsetSpace ~
+Oben
+\family default
+ und
+\family sans
+ Legende\InsetSpace ~
+Unten
+\family default
+ an Stelle von 
+\family sans
+Legende
+\family default
+, damit der Abstand zwischne der Legende und der Tabelle besser aussieht.
+ Siehe auch 
+\emph on
+Handbuchergänzungen
+\emph default
+.
+\end_layout
+
 \begin_layout Subsubsection
 
 \family sans
@@ -10039,12 +10198,23 @@ status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
-X-Code
+X
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+-Code
 \begin_inset LatexCommand \index{LyX-Code}
 
 \end_inset
@@ -10061,12 +10231,23 @@ status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
-X-Code
+X
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+-Code
 \family default
 -Umgebung ist noch eine LyX-Erweiterung.
  Sie setzt Text in einem Schreibmaschinenfont.
@@ -10077,22 +10258,29 @@ status open
 \begin_layout Standard
 In der 
 \family sans
-L
-\family default
-
+Ly
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
-{}
+{
+\end_layout
+
+\end_inset
+
+X
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
 \end_layout
 
 \end_inset
 
 
-\family sans
-yX
 \family default
 -Code-Umgebung wird die Leertaste als geschütztes Leerzeichen behandelt
  anstatt als 
@@ -10139,12 +10327,23 @@ status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
-X-Code
+X
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+-Code
 \family default
 -Umgebung beenden will, muss man das durch Wahl einer anderen Umgebung machen.
  
@@ -10155,12 +10354,23 @@ status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
-X-Code
+X
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+-Code
 \family default
 -Umgebungen kann man auch in andere schachteln.
 \end_layout
@@ -10263,12 +10473,23 @@ status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
-X-Code
+X
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+-Code
 \family default
 hat einen Zweck: Code zu schreiben, zum Beispiel Quellprogramme, Shell-Skripte,
  rc-Dateien usw.
@@ -10600,41 +10821,29 @@ schachtelbar
 Gedicht, Zitat\InsetSpace ~
 (kurz), Zitat\InsetSpace ~
 (lang), Auflistung, Aufzählung, Beschreibung,
- Liste/
+ Liste, Ly
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
-
-\backslash
- 
+{
 \end_layout
 
 \end_inset
 
-Labeling
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-Trennmöglichkeit ohne -
-\end_layout
-
-\end_inset
-
-, Ly
+X
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
-{}
+}
 \end_layout
 
 \end_inset
 
-X-Code
+-Code
 \family default
 .
 \end_layout
@@ -11353,12 +11562,11 @@ Beispiel 1: Sechsfache und gemischte Schachtelung
 
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Standard
 1-a Dies ist die äußerste Stufe.
  Es ist eine 
 \family sans
-Liste/Labeling
+Liste
 \family default
 -Umgebung.
 \begin_inset ERT
@@ -11376,9 +11584,7 @@ begin{sloppypar}
 
 \end_layout
 
-\begin_deeper
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Standard
 2-a Dies ist Stufe 2.
  Wir haben 
 \family sans
@@ -11395,9 +11601,7 @@ Alt+Eingabe
 .
 \end_layout
 
-\begin_deeper
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Standard
 3-a Dies ist Stufe 3.
  Diesmal haben wir nur 
 \family sans
@@ -11429,7 +11633,6 @@ gabe
 .
 \end_layout
 
-\begin_deeper
 \begin_layout Standard
 Dies ist eine 
 \family sans
@@ -11494,8 +11697,7 @@ gabe
  erzeugt.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Standard
 4-a Dies ist Stufe 4.
  Wir haben 
 \family sans
@@ -11505,7 +11707,7 @@ gabe
  gedrückt und die Absatz\SpecialChar \-
 umgebung auf 
 \family sans
-Liste/Labeling
+Liste
 \family default
  zurückgesetzt.
  Denken Sie daran -- innerhalb einer 
@@ -11529,24 +11731,18 @@ innerhalb von
  weiterschachteln.
 \end_layout
 
-\begin_deeper
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Standard
 5-a Dies ist Stufe 5\SpecialChar \ldots{}
 
 \end_layout
 
-\begin_deeper
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Standard
 6-a \SpecialChar \ldots{}
 und dies ist Stufe 6.
  Inzwischen sollten Sie wissen, wie wir diese beiden erzeugt haben.
 \end_layout
 
-\end_deeper
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Standard
 5-b Zurück zu Stufe 5.
  Drücken Sie nur 
 \family sans
@@ -11563,9 +11759,7 @@ Alt+Eingabe
 .
 \end_layout
 
-\end_deeper
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Standard
 4-b Nach noch einem 
 \family sans
 Alt+Eingabe
@@ -11581,23 +11775,17 @@ Alt+Eingabe
 , sind wir zurück auf Stufe 4.
 \end_layout
 
-\end_deeper
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Standard
 3-b Zurück zu Stufe 3.
  Inzwischen sollte klar sein, wie wir das taten.
 \end_layout
 
-\end_deeper
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Standard
 2-b Zurück zu Stufe 2.
  
 \end_layout
 
-\end_deeper
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Standard
 1-b Und schließlich zurück zur äußersten Stufe 1.
  Nach diesem Satz drücken wir 
 \family sans
@@ -11644,7 +11832,7 @@ Gedicht
 \family default
 -Umgebung anstatt der 
 \family sans
-Liste/Labeling
+Liste
 \family default
 -Umgebung benutzen können.
  Das Beispiel hätte sehr ähnlich ausgesehen.
@@ -11708,21 +11896,28 @@ stel\SpecialChar \-
 lung der Elternumgebung (
 \family sans
 Ly
-\family default
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
+X
+\begin_inset ERT
+status collapsed
 
-\family sans
-X-Code
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+-Code
 \family default
 ) erbt, sondern auch Font und Leerzeichen!
 \end_layout
@@ -12882,8 +13077,7 @@ allgemeine Aussehen
 \end_layout
 
 \begin_deeper
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Standard
 
 \family sans
 Roman
@@ -13092,7 +13286,7 @@ color
 \family typewriter
 xdvi
 \family default
- kann keine Farben darstellen.
+ kann keine Farben und Grautöne darstellen.
  Sie können zwischen 
 \family sans
 Schwarz
@@ -13119,7 +13313,7 @@ Türkis
 \family default
 , 
 \family sans
-Magenta
+Purpurrot
 \family default
  und 
 \family sans
@@ -13128,8 +13322,7 @@ Gelb
  wählen.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Standard
 
 \family sans
 \bar under
@@ -13171,11 +13364,7 @@ al zur Standardfontgröße.
 
 \begin_deeper
 \begin_layout Standard
-Die 
-\size footnotesize
-Optionen
-\size default
- (und ihre Tastenkürzel) sind:
+Die Optionen (und ihre Tastenkürzel) sind:
 \end_layout
 
 \begin_layout Labeling
@@ -13352,10 +13541,7 @@ normale
 \end_inset
 
  oder normal
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
+\newline
 Dies ist auch die Standardgröße (Tastenkürzel = 
 \family sans
 Alt+S\InsetSpace ~
@@ -13368,7 +13554,6 @@ Alt+S 5
 )
 \end_layout
 
-\end_deeper
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 
@@ -13559,7 +13744,8 @@ Alt+S\InsetSpace ~
 )
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \family sans
 Vergrößern
@@ -13567,7 +13753,8 @@ Vergrößern
  vergrößert den markierten Text schrittweise
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \family sans
 Verkleinern
@@ -13847,6 +14034,10 @@ xdvi
 \begin_layout Enumerate
 Einige Drucker und Unix-Systeme verstehen Dvi und können Ihre dvi-Datei
  direkt drucken.
+\end_layout
+
+\begin_layout Enumerate
+
 \end_layout
 
 \begin_layout Enumerate
@@ -14168,8 +14359,7 @@ drucken
 Hier sind die verschiedenen Optionen aufgelistet:
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Standard
 
 \family sans
 Druck-Ziel 
@@ -14194,9 +14384,7 @@ egen Sie fest, ob Sie auf einem Drucker oder in eine Datei drucken wollen:
  
 \end_layout
 
-\begin_deeper
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Standard
 
 \family sans
 D
@@ -14230,8 +14418,7 @@ lyxrc
 Script®-fähig sein.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Standard
 
 \family sans
 \bar under
@@ -14246,9 +14433,7 @@ Script®-Format sein.
  haben einen anderen Pfad angegeben.
 \end_layout
 
-\end_deeper
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Standard
 
 \family sans
 Seiten 
@@ -14257,7 +14442,6 @@ Es gibt fünf Knöpfe, die bestimmen, welche Seiten wie gedruckt werden sollen.
  Sie können wählen zwischen:
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
 
 \family sans
@@ -14267,6 +14451,7 @@ A
 lle
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
 
 \family sans
@@ -14341,8 +14526,7 @@ drucken
 \end_layout
 
 \end_deeper
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Standard
 
 \family sans
 Kopien
@@ -15043,7 +15227,8 @@ doppelt
 Wenn Sie die einfache Form des Anführungszeichens schreiben wollen, müssen
  Sie 
 \family sans
-Alt+Umschalt+"
+Alt+Um\SpecialChar \-
+schalt+"
 \family default
  benutzen.
  Wenn Sie aber ein 
@@ -15569,7 +15754,7 @@ Ein Dialogfenster erscheint, in dem Sie einen Dateinamen zum Laden eingeben
  Außerdem können Sie in diesem Dialogfenster einige Einstellungen ändern.
  
 \begin_inset Graphics
-	filename mobius.eps
+	filename ../14x/mobius.eps
 	lyxscale 30
 	scale 30
 
@@ -15624,14 +15809,6 @@ r auch, wenn Sie mit der linken Mausfenster in die Abbildung klicken.
 wide false
 sideways false
 status open
-
-\begin_layout Caption
-\begin_inset LatexCommand \label{cap:Maßeinheiten-zur-Bildskalierung}
-
-\end_inset
-
-Maßeinheiten zur Bildskalierung
-\end_layout
 
 \begin_layout Standard
 \align center
@@ -16104,6 +16281,19 @@ Math Unit (1 mu =
 
 \end_layout
 
+\begin_layout Caption
+\begin_inset LatexCommand \label{cap:Maßeinheiten-zur-Bildskalierung}
+
+\end_inset
+
+Maßeinheiten zur Bildskalierung
+\begin_inset LatexCommand \index{Bildskalierung}
+
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -16130,21 +16320,28 @@ Ihre Bilddatei eingeben.
  Bemerken Sie auch, dass die Darstellungen in LyX (
 \family sans
 Ly
-\family default
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
+X
+\begin_inset ERT
+status collapsed
 
-\family sans
-X-Anzeige
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+-Anzeige
 \family default
 ) und im gedruckten Dokument (
 \family sans
@@ -16260,7 +16457,8 @@ Um Gleitobjekt-Abbildungen anzulegen, wählen Sie aus der Menüleiste den
 \bar under
 E
 \bar default
-infügen\SpecialChar \menuseparator
+infü\SpecialChar \-
+gen\SpecialChar \menuseparator
 Gleit
 \bar under
 o
@@ -16304,7 +16502,7 @@ M.C.
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename escher-lsd.eps
+	filename ../14x/escher-lsd.eps
 	display color
 	rotateOrigin center
 
@@ -16325,7 +16523,7 @@ status open
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename platypus.eps
+	filename ../14x/platypus.eps
 	lyxscale 50
 	display color
 	rotateOrigin center
@@ -16625,18 +16823,29 @@ Gleitobjekt-Platzierung
 Wenn Sie eine Möglichkeit angekreuzt haben, können Sie zusätzlich 
 \family sans
 Ignoriere\InsetSpace ~
-LaT
+LaTe
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
-eX-Regeln
+X
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+-Regeln
 \family default
  ankreuzen.
  Ihre Reihenfolge ist nicht maßgeblich -- LaTeX gibt intern die Suchreihenfolge
@@ -16990,18 +17199,29 @@ Drehen der gesamten Tabelle oder einzelner Zellen um 90 Grad
 \begin_layout Itemize
 
 \family sans
-LaT
+LaTe
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
-eX-Argument 
+X
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+-Argument 
 \family default
 eingeben
 \end_layout
@@ -18879,19 +19099,6 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
-\begin_inset LatexCommand \label{table:Mehrzeilige-Tabelle}
-
-\end_inset
-
-Mehrzeilige Tabelle
-\begin_inset LatexCommand \index{Tabelle!mehrzeilig}
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Standard
 \noindent
 \align center
@@ -19052,6 +19259,19 @@ newline
 </cell>
 </row>
 </lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Caption
+\begin_inset LatexCommand \label{table:Mehrzeilige-Tabelle}
+
+\end_inset
+
+Mehrzeilige Tabelle
+\begin_inset LatexCommand \index{Tabelle!mehrzeilig}
 
 \end_inset
 
@@ -19313,21 +19533,28 @@ Hilfe\SpecialChar \menuseparator
 L
 \bar default
 aTe
-\family default
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
+X
+\begin_inset ERT
+status collapsed
 
-\family sans
-X\InsetSpace \space{}
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+\InsetSpace \space{}
 Kon\SpecialChar \-
 f\SpecialChar \textcompwordmark{}
 i\SpecialChar \-
@@ -19427,14 +19654,6 @@ placement htbp
 wide false
 sideways false
 status open
-
-\begin_layout Caption
-\begin_inset LatexCommand \label{table:a table float}
-
-\end_inset
-
-Eine gleitende Tabelle.
-\end_layout
 
 \begin_layout Standard
 \align center
@@ -19547,6 +19766,14 @@ c & d\end{array}\right]$
 \end_inset
 
 
+\end_layout
+
+\begin_layout Caption
+\begin_inset LatexCommand \label{table:a table float}
+
+\end_inset
+
+Eine gleitende Tabelle
 \end_layout
 
 \end_inset
@@ -20816,12 +21043,38 @@ Die Summen- und Integralzeichen
 
 \end_inset
 
+
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+begin{sloppypar}
+\end_layout
+
+\end_inset
+
 Bei Integralen werden die Grenzen immer neben dem Integralzeichen platziert
  wie in 
 \begin_inset Formula $\int_{a}^{x}f(t)dt:=F(x)$
 \end_inset
 
 , bei abgesetzten Formeln sieht es so aus:
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+end{sloppypar}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula \[
 \int_{-\infty}^{\infty}\frac{dx}{1+x^{2}}=\pi.\]
 
@@ -21205,7 +21458,8 @@ Operatoren, große Operatoren, Relationen, griechische Buchstaben, Pfeile
 \family sans
 ,
 \family default
- Punkte, Rahmen-Dekorationen, Verschiedenes, AMS Operatoren, AMS Relationen,
+ Punkte, Rah\SpecialChar \-
+men-Dekorationen, Verschiedenes, AMS Operatoren, AMS Relationen,
  AMS Negierte Relationen, AMS Pfeile und AMS Verschiedenes.
 \end_layout
 
@@ -21546,19 +21800,6 @@ hat{a
 wide false
 sideways false
 status open
-
-\begin_layout Caption
-\begin_inset LatexCommand \label{table:Akzente}
-
-\end_inset
-
-Akzente
-\begin_inset LatexCommand \index{Akzente}
-
-\end_inset
-
-
-\end_layout
 
 \begin_layout Standard
 \align center
@@ -21930,6 +22171,19 @@ vector
 
 \end_layout
 
+\begin_layout Caption
+\begin_inset LatexCommand \label{table:Akzente}
+
+\end_inset
+
+Akzente
+\begin_inset LatexCommand \index{Akzente}
+
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -22213,7 +22467,8 @@ Mathe-Matrix
 Die Klammern werden nicht automatisch eingefügt, sondern müssen mit dem
  
 \family sans
-Mathe-Trennzeichen
+Mathe-Trenn\SpecialChar \-
+zeichen
 \family default
 -Menü hinzugefügt werden.
  Das können Sie nachträglich machen (siehe 
@@ -23003,7 +23258,20 @@ macrowarg
 
 
 \family typewriter
-math-macro macrowarg 1
+math-
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+macro macrowarg 1
 \family default
 
 \begin_inset Quotes grd
@@ -23189,14 +23457,6 @@ placement h
 wide false
 sideways false
 status open
-
-\begin_layout Caption
-\begin_inset LatexCommand \label{table:Mathematik-Schriftstile}
-
-\end_inset
-
-Mathematik-Schriftstile
-\end_layout
 
 \begin_layout Standard
 \align center
@@ -23685,6 +23945,19 @@ mathsf
 
 \end_layout
 
+\begin_layout Caption
+\begin_inset LatexCommand \label{table:Mathematik-Schriftstile}
+
+\end_inset
+
+Mathematik-Schriftstile
+\begin_inset LatexCommand \index{mathematische!Schriftstile}
+
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -24016,12 +24289,23 @@ status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
 X
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
 \begin_inset LatexCommand \index{AMS-TeX}
 
 \end_inset
@@ -24192,7 +24476,9 @@ Wer aber viele Formeln zu schreiben hat, wird feststellen, dass man mit
 Die Dokumentation ist unter 
 \family typewriter
 http://wiki.lyx.org/pmwiki.php/LyX/LyXMathe\SpecialChar \-
-befehle
+be\SpecialChar \-
+feh\SpecialChar \-
+le
 \family default
  zu finden.
  Die Datei 
@@ -24775,11 +25061,6 @@ urztitel
 
 \begin_layout Section
 Notizen
-\begin_inset LatexCommand \index{Notizen}
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -24789,40 +25070,7 @@ Notizen
 
 Notizen in LyX sind nur für den Verfasser eines Dokumentes da, um sich,
  wie der Name sagt, Notizen zu machen, und werden nicht gedruckt.
- Es gibt drei Arten: 
-\family sans
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X-
-\bar under
-N
-\bar default
-otiz
-\family default
-, 
-\family sans
-\bar under
-K
-\bar default
-ommentar
-\family default
- und 
-\family sans
-\bar under
-G
-\bar default
-rauschrift
-\family default
-, die über 
+ Es gibt drei Arten, die über 
 \family sans
 \bar under
 E
@@ -24834,34 +25082,128 @@ N
 \bar default
 otiz
 \family default
- ausgewählt werden können.
+ ausgewählt werden können:
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+X
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+-
+\bar under
+N
+\bar default
+otiz: 
+\family default
+
 \begin_inset Note Note
 status open
 
 \begin_layout Standard
-xxx
+LyX-Notiz
 \end_layout
 
 \end_inset
 
- 
+ sie erscheint nur in LyX.
+\begin_inset LatexCommand \index{Notiz!LyX}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+\bar under
+K
+\bar default
+ommentar: 
+\family default
+
 \begin_inset Note Comment
 status open
 
 \begin_layout Standard
-yyy
+Kommentar
 \end_layout
 
 \end_inset
 
- Worin sie sich unterscheiden, ist unklar, und 
+ wir auch beim Exportieren nach LaTeX und plain text mit exportiert.
+\begin_inset LatexCommand \index{Notiz!Kommentar}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
 \family sans
 \bar under
 G
 \bar default
-rauschrift
+rauschrift: 
 \family default
- liefert LaTeX-Fehler.
+wird, wie der Name sagt, als 
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+grauer
+\end_layout
+
+\end_inset
+
+ Text gedruckt.
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+
+\noun on
+HHa
+\noun default
+: Wenn Sie Grauschrift-Notizen nicht drucken können, kann es daran liegen,
+ dass Ihr Dokument ein Inhaltsverzeichnis 
+\emph on
+und
+\emph default
+ Sonderzeichen wie unterstreichen oder {} in Überschriften oder Fußnoten
+ enthält.
+\end_layout
+
+\end_inset
+
+
+\begin_inset LatexCommand \index{Notiz!Grauschrift}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -25016,8 +25358,7 @@ Liste
 -Umgebung:
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Standard
 eins
 \hfill
 zwei :drei
@@ -25029,8 +25370,7 @@ fünf
 sechs
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Standard
 eins :zwei drei vier fünf sechs
 \end_layout
 
@@ -25158,7 +25498,7 @@ Absatz
 -Einstellungen
 \family default
 
-\begin_inset LatexCommand \index{Absatz!-Einstellungen}
+\begin_inset LatexCommand \index{Absatz!-einstellungen@-Einstellungen}
 
 \end_inset
 
@@ -25523,7 +25863,8 @@ schütztes\InsetSpace ~
 \bar under
 L
 \bar default
-eerzeichen
+eerzei\SpecialChar \-
+chen
 \family default
  oder einfach mit 
 \family sans
@@ -25573,7 +25914,8 @@ Formatierung
 \bar under
 Z
 \bar default
-eilenumbruch.
+eilen\SpecialChar \-
+umbruch.
 
 \family default
  Sie sollten ihn aber nicht benutzen, um den Zeilenumbruch von LaTeX zu
@@ -26087,12 +26429,23 @@ status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
-X-default
+X
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+-default
 \family default
  setzen, bevor Sie die Rechtschreibprüfung starten (was sicher ärgerlich
  ist).
@@ -26344,7 +26697,9 @@ Dokument-Einstellungen
  hat Optionen für Sprache, Papiergröße und Zeichenkodierung.
  Um Ihre Sprache auszuwählen, klicken Sie im Dialogfenster 
 \family sans
-Dokument-Einstellungen\SpecialChar \menuseparator
+Dokument-Ein\SpecialChar \-
+stel\SpecialChar \-
+lungen\SpecialChar \menuseparator
 Sprache
 \family default
  auf den Pfeil rechts neben dem 
@@ -26496,12 +26851,7 @@ Tastatur
 T
 \bar default
 astatur\SpecialChar \-
-tabelle
-\family default
-\InsetSpace ~
-
-\family sans
-verwenden
+tabelle verwenden
 \family default
  aktivieren, mit dem Sie die Sprache für Ihre Tastatur auswählen können.
  Sie können 
@@ -26549,7 +26899,8 @@ latin1
  eingeben können.
  Beachten Sie, dass Sie über 
 \family sans
-Dokument-Einstellungen\SpecialChar \menuseparator
+Dokument-Einstellun\SpecialChar \-
+gen\SpecialChar \menuseparator
 Sprache\SpecialChar \menuseparator
 
 \bar under
@@ -26700,18 +27051,6 @@ textcomp
 wide false
 sideways false
 status open
-
-\begin_layout Caption
-\begin_inset LatexCommand \label{cap:Der-latin1-Zeichensatz}
-
-\end_inset
-
-Der 
-\family typewriter
-latin1
-\family default
--Zeichensatz
-\end_layout
 
 \begin_layout Standard
 \align center
@@ -29556,6 +29895,18 @@ o
 
 \end_layout
 
+\begin_layout Caption
+\begin_inset LatexCommand \label{cap:Der-latin1-Zeichensatz}
+
+\end_inset
+
+Der 
+\family typewriter
+latin1
+\family default
+-Zeichensatz
+\end_layout
+
 \end_inset
 
 
@@ -29635,7 +29986,7 @@ Die
 \end_inset
 
 dead macron
-\begin_inset Quotes prd
+\begin_inset Quotes grd
 \end_inset
 
  wird normalerweise nicht benötigt, weil Sie eine 
@@ -29643,7 +29994,7 @@ dead macron
 \end_inset
 
 non--dead
-\begin_inset Quotes prd
+\begin_inset Quotes grd
 \end_inset
 
 -Taste benutzen werden.
@@ -29651,19 +30002,7 @@ non--dead
 \family sans
 Umschalt+Alt+
 \family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-/
-\end_layout
-
-\end_inset
-
+\InsetSpace \thinspace{}
 - oder 
 \family sans
 Umschalt+Alt+macron
@@ -30348,10 +30687,6 @@ Auflistung
 \family sans
 Liste
 \family default
-/
-\family sans
-Labeling
-\family default
 -Umgebung
 \end_layout
 
@@ -30607,21 +30942,28 @@ N
 \bar default
 otiz\SpecialChar \menuseparator
 Ly
-\family default
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
+X
+\begin_inset ERT
+status collapsed
 
-\family sans
-X-
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+-
 \bar under
 N
 \bar default
@@ -30660,18 +31002,48 @@ RL
 
 \end_inset
 
-: (La)T
+:
+\family sans
+ 
+\bar under
+E
+\bar default
+infügen\SpecialChar \menuseparator
+Te
+\family default
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
-eX-Code einfügen (
+
+\family sans
+\bar under
+X
+\family default
+\bar default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
+\family sans
+-Code
+\family default
+ (
 \family sans
 Strg+L
 \family default
@@ -30782,10 +31154,7 @@ Handbuchergänzungen
 \begin_layout Section
 
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
+Datei\SpecialChar \menuseparator
 
 \family default
  \SpecialChar \ldots{}
@@ -30796,20 +31165,16 @@ atei\SpecialChar \menuseparator
 
 \family sans
 Versions
-\bar under
+\family default
 k
-\bar default
+\family sans
 ontrolle
 \begin_inset LatexCommand \index{Versionskontrolle}
 
 \end_inset
 
 \SpecialChar \menuseparator
-
-\bar under
-R
-\bar default
-egistrieren\SpecialChar \ldots{}
+Registrieren\SpecialChar \ldots{}
 
 \end_layout
 
@@ -30822,35 +31187,31 @@ Handbuchergänzungen.
 \begin_layout Subsection
 
 \family sans
-\bar under
-I
-\bar default
-mportieren\SpecialChar \menuseparator
-
-\bar under
-L
-\bar default
-aT
-\family default
-
+Importieren\SpecialChar \menuseparator
+LaTe
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
+X
+\begin_inset ERT
+status collapsed
 
-\family sans
-eX\SpecialChar \ldots{}
-/
-\bar under
-N
-\bar default
-oWeb\SpecialChar \ldots{}
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+\SpecialChar \ldots{}
+/NoWeb\SpecialChar \ldots{}
 
 \begin_inset LatexCommand \index{Datei!importieren}
 
@@ -30868,42 +31229,34 @@ Handbuchergänzungen.
 \begin_layout Subsection
 
 \family sans
-\bar under
-E
-\bar default
-xportieren\SpecialChar \menuseparator
-
-\bar under
-D
-\bar default
-VI/
-\bar under
-H
-\bar default
-TML/
-\bar under
-L
-\bar default
-aT
-\family default
-
+Exportieren\SpecialChar \menuseparator
+DVI/HTML/LaTe
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
+X
+\begin_inset ERT
+status collapsed
 
-\family sans
-eX/PDF\InsetSpace ~
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+/PDF\InsetSpace ~
 (dvipdf
-\bar under
+\family default
 m
-\bar default
+\family sans
 )/
 \begin_inset ERT
 status collapsed
@@ -30917,37 +31270,22 @@ status collapsed
 
 \end_inset
 
-
+PDF
 \family default
-PD
-\bar under
-F
-\family sans
-\bar default
 \InsetSpace ~
 
-\family default
-(pdflatex)/
-\bar under
-P
-\bar default
-DF
 \family sans
+(pdflatex)/PDF
+\family default
 \InsetSpace ~
 
-\family default
-(ps2pdf)/
 \family sans
-Pos
-\bar under
+(ps2pdf)/Pos
+\family default
 t
-\bar default
+\family sans
 \SpecialChar \-
-script/
-\bar under
-B
-\bar default
-e\SpecialChar \-
+script/Be\SpecialChar \-
 nut\SpecialChar \-
 zer\SpecialChar \-
 de\SpecialChar \-
@@ -30963,11 +31301,8 @@ niert\SpecialChar \ldots{}
 status open
 
 \begin_layout Standard
-
-\family sans
-\bar under
 E
-\bar default
+\family sans
 xportieren
 \end_layout
 
@@ -30989,24 +31324,30 @@ Welche Typen in der Liste auftauchen, hängt davon ab, welche Pakete zusätzlich
 \begin_layout Subsubsection
 
 \family sans
-\bar under
-E
-\bar default
-xportieren\SpecialChar \menuseparator
-
-\family default
+Exportieren\SpecialChar \menuseparator
 Ly
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
-X\InsetSpace ~
+X
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+\InsetSpace ~
 1.3.x
 \end_layout
 
@@ -31021,17 +31362,8 @@ gewandelt werden, das LyX-Versionen 1.3.x bearbeiten können.
 \begin_layout Subsubsection
 
 \family sans
-\bar under
-E
-\bar default
-xportieren\SpecialChar \menuseparator
-
-\family default
-Pl
-\bar under
-a
-\bar default
-in\InsetSpace ~
+Exportieren\SpecialChar \menuseparator
+Plain\InsetSpace ~
 text
 \end_layout
 
@@ -31043,11 +31375,7 @@ Damit wird die Datei als einfacher ASCII-Text nach datei.txt exportiert.
 \begin_layout Subsection
 
 \family sans
-Fa
-\bar under
-x
-\bar default
-en
+Faxen
 \family default
 \SpecialChar \ldots{}
 
@@ -31077,10 +31405,7 @@ Fax
 \begin_layout Section
 
 \family sans
-\bar under
-B
-\bar default
-earbeiten\SpecialChar \menuseparator
+Bearbeiten\SpecialChar \menuseparator
 
 \family default
  \SpecialChar \ldots{}
@@ -31091,20 +31416,11 @@ earbeiten\SpecialChar \menuseparator
 
 \family sans
 Externe A
-\bar under
-u
-\bar default
-swahl einfügen\SpecialChar \menuseparator
-Auswahl\InsetSpace ~
-als 
-\bar under
-Z
-\bar default
-eilen/
 \family default
-A
+u
 \family sans
-bsätze
+swahl einfügen\SpecialChar \menuseparator
+Auswahl als Zeilen/Absätze
 \end_layout
 
 \begin_layout Standard
@@ -31138,10 +31454,7 @@ ze\SpecialChar \ldots{}
 \begin_layout Subsection
 
 \family sans
-\bar under
-M
-\bar default
-athe\SpecialChar \menuseparator
+Mathe\SpecialChar \menuseparator
 
 \family default
  \SpecialChar \ldots{}
@@ -31161,17 +31474,14 @@ matik
  nach.
 \end_layout
 
-\begin_layout Standard
-
-\end_layout
-
 \begin_layout Section
 
 \family sans
-\bar under
-E
-\bar default
-infügen\SpecialChar \menuseparator
+Ans
+\family default
+i
+\family sans
+cht\SpecialChar \menuseparator
 
 \family default
  \SpecialChar \ldots{}
@@ -31181,15 +31491,143 @@ infügen\SpecialChar \menuseparator
 \begin_layout Subsection
 
 \family sans
-\bar under
-M
-\bar default
-athe\SpecialChar \menuseparator
+HTML 
+\family default
+und
+\family sans
+ Aktualisieren\SpecialChar \menuseparator
+HTML
+\begin_inset LatexCommand \index{HTML}
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Datei wird in HTML umgewandelt und mit dem in 
+\family sans
 \bar under
-C
+W
 \bar default
-ases/AMS align, alignat, f\SpecialChar \textcompwordmark{}
+erkzeuge\SpecialChar \menuseparator
+Einstellungen\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+Datei\SpecialChar \-
+formate\SpecialChar \menuseparator
+HTML
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Betrachter
+\family default
+ definierten Programm dargestellt.
+\end_layout
+
+\begin_layout Subsection
+
+\family sans
+PDF (dvipdf
+\family default
+m
+\family sans
+)
+\family default
+ und 
+\family sans
+Aktualisieren\SpecialChar \menuseparator
+PDF (dvipdf
+\family default
+m
+\family sans
+)
+\family default
+ 
+\family sans
+
+\begin_inset LatexCommand \index{PDF!dvipdfm}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dieser Menüpunkt ist noch nirgends näher beschrieben.
+\end_layout
+
+\begin_layout Subsection
+
+\family sans
+PDF (pdf
+\family default
+l
+\family sans
+atex)
+\family default
+ und 
+\family sans
+Aktualisieren
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+PDF (pdf
+\family default
+l
+\family sans
+atex)
+\family default
+
+\begin_inset LatexCommand \index{PDF!pdflatex}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dieser Menüpunkt ist noch nirgends näher beschrieben.
+\end_layout
+
+\begin_layout Subsection
+
+\family sans
+PDF (ps2pdf)
+\family default
+ und 
+\family sans
+Aktualisieren\SpecialChar \menuseparator
+PDF (ps2pdf)
+\begin_inset LatexCommand \index{PDF!ps2pdf}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Siehe 
+\emph on
+Handbuchergänzungen.
+\end_layout
+
+\begin_layout Section
+
+\family sans
+Einfügen\SpecialChar \menuseparator
+
+\family default
+ \SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout Subsection
+
+\family sans
+Mathe\SpecialChar \menuseparator
+Cases/AMS align, alignat, f\SpecialChar \textcompwordmark{}
 lalign
 \family default
 , 
@@ -31206,6 +31644,8 @@ gebung
 status open
 
 \begin_layout Standard
+
+\family sans
 Mathe
 \end_layout
 
@@ -31227,9 +31667,9 @@ Diese Menüpunkte sind noch nirgends näher beschrieben außer in
 
 \family sans
 Stich
-\bar under
+\family default
 w
-\bar default
+\family sans
 ort
 \begin_inset LatexCommand \index{Stichwort}
 
@@ -31255,16 +31695,24 @@ status collapsed
 
 \begin_layout Standard
 
-{}
+{
+\end_layout
+
+\end_inset
+
+X
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
 \end_layout
 
 \end_inset
 
 
 \family sans
-\bar under
-X
-\bar default
 -Code
 \begin_inset LatexCommand \index{TeX}
 
@@ -31310,9 +31758,9 @@ Handbuchergänzungen.
 
 \family sans
 Gleit
-\bar under
+\family default
 o
-\bar default
+\family sans
 bjekte\SpecialChar \menuseparator
 Algorithmus
 \begin_inset LatexCommand \index{Algorithmus}
@@ -31332,10 +31780,7 @@ Funktioniert ähnlich wie die anderen Gleitobjekte, ist aber noch nirgends
 \begin_layout Subsection
 
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
+Datei\SpecialChar \menuseparator
 
 \family default
  \SpecialChar \ldots{}
@@ -31353,14 +31798,25 @@ status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
+X
+\begin_inset ERT
+status collapsed
 
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
 \family sans
-X Dokument\SpecialChar \ldots{}
+Dokument\SpecialChar \ldots{}
 
 \end_layout
 
@@ -31378,16 +31834,8 @@ Einfacher Text
 
 \end_inset
 
- als 
-\bar under
-Z
-\bar default
-eilen\SpecialChar \ldots{}
-/
-\bar under
-A
-\bar default
-bsätze\SpecialChar \ldots{}
+ als Zeilen\SpecialChar \ldots{}
+/Absätze\SpecialChar \ldots{}
 
 \end_layout
 
@@ -31445,10 +31893,7 @@ end{sloppypar}
 \begin_layout Subsubsection
 
 \family sans
-\bar under
-E
-\bar default
-xternes Material\SpecialChar \ldots{}
+Externes Material\SpecialChar \ldots{}
 
 \end_layout
 
@@ -31520,10 +31965,10 @@ Dieser Menüpunkt ist aber noch nirgends näher beschrieben.
 
 \begin_layout Subsubsection
 
-\bar under
-U
-\bar default
-nterdokument\SpecialChar \ldots{}
+\family sans
+Unterdokument
+\family default
+\SpecialChar \ldots{}
 
 \end_layout
 
@@ -31552,11 +31997,7 @@ Handbuchergänzungen
 \begin_layout Section
 
 \family sans
-Ans
-\bar under
-i
-\bar default
-cht\SpecialChar \menuseparator
+Navigieren\SpecialChar \menuseparator
 
 \family default
  \SpecialChar \ldots{}
@@ -31566,190 +32007,7 @@ cht\SpecialChar \menuseparator
 \begin_layout Subsection
 
 \family sans
-\bar under
-H
-\bar default
-TML 
-\family default
-und
-\family sans
- 
-\bar under
-A
-\bar default
-ktualisieren\SpecialChar \menuseparator
-
-\bar under
-H
-\bar default
-TML
-\begin_inset LatexCommand \index{HTML}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Die Datei wird in HTML umgewandelt und mit dem in 
-\family sans
-\bar under
-W
-\bar default
-erkzeuge\SpecialChar \menuseparator
-Einstellungen\SpecialChar \ldots{}
-\SpecialChar \menuseparator
-Dateiformate\SpecialChar \menuseparator
-HTML
-\family default
-\SpecialChar \menuseparator
-
-\family sans
-Betrachter
-\family default
- definierten Programm dargestellt.
-\end_layout
-
-\begin_layout Subsection
-P
-\family sans
-DF (dvipdf
-\bar under
-m
-\bar default
-)
-\family default
- und 
-\family sans
-\bar under
-A
-\bar default
-ktualisieren\SpecialChar \menuseparator
-
-\family default
-P
-\family sans
-DF (dvipdf
-\bar under
-m
-\bar default
-)
-\family default
- 
-\family sans
-
-\begin_inset LatexCommand \index{PDF!dvipdfm}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Dieser Menüpunkt ist noch nirgends näher beschrieben.
-\end_layout
-
-\begin_layout Subsection
-P
-\family sans
-D
-\family default
-\bar under
-F
-\family sans
-\bar default
- (pdf
-\family default
-l
-\family sans
-atex)
-\family default
- und 
-\family sans
-\bar under
-A
-\bar default
-ktualisieren
-\family default
-\SpecialChar \menuseparator
-P
-\family sans
-D
-\family default
-\bar under
-F
-\family sans
-\bar default
- (pdf
-\family default
-l
-\family sans
-atex)
-\family default
-
-\begin_inset LatexCommand \index{PDF!pdflatex}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Dieser Menüpunkt ist noch nirgends näher beschrieben.
-\end_layout
-
-\begin_layout Subsection
-
-\family sans
-\bar under
-P
-\bar default
-DF (ps2pdf)
-\family default
- und 
-\family sans
-\bar under
-A
-\bar default
-ktualisieren\SpecialChar \menuseparator
-
-\bar under
-P
-\bar default
-DF (ps2pdf)
-\begin_inset LatexCommand \index{PDF!ps2pdf}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Siehe 
-\emph on
-Handbuchergänzungen.
-\end_layout
-
-\begin_layout Section
-
-\family sans
-\bar under
-N
-\bar default
-avigieren\SpecialChar \menuseparator
-
-\family default
- \SpecialChar \ldots{}
-
-\end_layout
-
-\begin_layout Subsection
-
-\family sans
-\bar under
-L
-\bar default
-esezeichen
+Lesezeichen
 \begin_inset LatexCommand \index{Lesezeichen}
 
 \end_inset
@@ -31768,10 +32026,7 @@ Damit können Sie bis zu fünf Lesezeichen setzen und dorthin gehen.
 \begin_layout Subsection
 
 \family sans
-\bar under
-N
-\bar default
-ächste Notiz
+Nächste Notiz
 \begin_inset LatexCommand \index{Notiz!nächste}
 
 \end_inset
@@ -31819,18 +32074,14 @@ Damit können Sie durch anklicken zu einem in den Verzeichnissen genannten
 \begin_layout Section
 
 \family sans
-D
-\bar under
-o
-\bar default
-kument\SpecialChar \menuseparator
+Dokument\SpecialChar \menuseparator
 
 \family default
  \SpecialChar \ldots{}
 
 \family sans
 
-\begin_inset LatexCommand \index{Dokument!-Menü}
+\begin_inset LatexCommand \index{Dokument!-menü@-Menü}
 
 \end_inset
 
@@ -31838,6 +32089,8 @@ kument\SpecialChar \menuseparator
 \end_layout
 
 \begin_layout Subsection
+
+\family sans
 Änderungsverfolgung
 \end_layout
 
@@ -31846,18 +32099,31 @@ Dieser Menüpunkt ist noch nirgends näher beschrieben.
 \end_layout
 
 \begin_layout Subsection
+
+\family sans
 LaTe
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
-X-Protokoll
+X
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+-Protokoll
 \end_layout
 
 \begin_layout Standard
@@ -31866,6 +32132,8 @@ hau erstellen usw.
 \end_layout
 
 \begin_layout Subsection
+
+\family sans
 Inhaltsverzeichnis
 \end_layout
 
@@ -31885,9 +32153,9 @@ Inhaltsverzeichnis
 \end_layout
 
 \begin_layout Section
-Werkzeuge
+
 \family sans
-\SpecialChar \menuseparator
+Werkzeuge\SpecialChar \menuseparator
 
 \family default
  \SpecialChar \ldots{}
@@ -31896,10 +32164,8 @@ Werkzeuge
 
 \begin_layout Subsection
 
-\bar under
-W
-\bar default
-örter zählen
+\family sans
+Wörter zählen
 \end_layout
 
 \begin_layout Standard
@@ -31907,18 +32173,35 @@ Zählt die Wörter im Dokument oder der Auswahl, die Sie getroffen haben.
 \end_layout
 
 \begin_layout Subsection
+
+\family sans
 Te
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
-X-Informationen
+X
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
+\family default
+-
+\family sans
+Informationen
 \end_layout
 
 \begin_layout Standard
@@ -31930,53 +32213,100 @@ status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
-X-Klassen
+X
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+-Klassen
 \family default
 , 
 \family sans
 LaTe
+\family default
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
-X-Stile
+
+\family sans
+X
+\family default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
+\family sans
+-Stile
 \family default
  und 
 \family sans
 BibTe
+\family default
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
-X-Stile
+
+\family sans
+X
+\family default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
+\family sans
+-Stile
 \family default
 , zeigt den Inhalt einer ausgewählten Datei an und liest die Informationen
  auf Wunsch neu ein.
 \end_layout
 
 \begin_layout Subsection
-Neu k
-\bar under
-o
-\bar default
-nfigurieren
+
+\family sans
+Neu konfigurieren
 \end_layout
 
 \begin_layout Standard
@@ -32346,6 +32676,11 @@ Nach dem Herbst 1997 übernahm das LyX-Team als Ganzes die Betreuung der
  Dokumentation.
 \end_layout
 
+\begin_layout Chapter
+\start_of_appendix
+Literatur- und Stichwortverzeichnis
+\end_layout
+
 \begin_layout Bibliography
 
 \bibitem {lyxcredit}
@@ -32528,7 +32863,7 @@ captions<Dokumentsprache>
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Standard
 Das LaTeX-Paket 
@@ -32547,7 +32882,8 @@ usepackage[nottoc]{tocbibind}
 \end_layout
 
 \begin_layout Standard
-geladen wurde, sorgt dafür, dass der Index im Inhaltsverzeichnis erscheint.
+geladen wurde, sorgt dafür, dass das Stichwortverzeichnis im Inhaltsverzeichnis
+ erscheint.
 \end_layout
 
 \begin_layout Standard
