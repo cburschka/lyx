@@ -1067,12 +1067,12 @@ FuncStatus BufferView::Pimpl::getStatus(FuncRequest const & cmd)
 	case LFUN_FILE_INSERT:
 	case LFUN_FILE_INSERT_ASCII_PARA:
 	case LFUN_FILE_INSERT_ASCII:
+	case LFUN_BOOKMARK_SAVE:
 		// FIXME: Actually, these LFUNS should be moved to LyXText
 		flag.enabled(cursor_.inTexted());
 		break;
 	case LFUN_FONT_STATE:
 	case LFUN_LABEL_INSERT:
-	case LFUN_BOOKMARK_SAVE:
 	case LFUN_PARAGRAPH_GOTO:
 	// FIXME handle non-trivially
 	case LFUN_OUTLINE_UP:
