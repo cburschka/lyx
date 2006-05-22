@@ -21,8 +21,8 @@ What's new
 
 - Update Hungarian localization of the interface.
 
-- Update translations for German (User Guide, Extended Features) and
-  Hungarian (Introduction, splash document, new tutorial examples).
+- Update translations of documentation for German (all) and Hungarian
+  (Introduction, splash document, new tutorial examples).
 
 - Add support for Austrian (new spelling) as document language.
 
@@ -56,20 +56,20 @@ What's new
 - Properly strike out deleted math formulas when change tracking is
   active (bug 2214).
 
-- Don't get confused by 0-Characters in MikTeX logfiles anymore
+- Don't get confused by 0-Characters in MikTeX logfiles anymore.
 
-- Always honor the "Requirement" tag in External Template Definitions
+- Always honor the "Requirement" tag in External Template Definitions.
 
 - Fix tex2lyx to handle whitespace in front of required arguments (bug 2546).
 
 - Update templates and examples to latest file format.
 
 - Make jpeg graphics with suffix in capital letters (.JPG) work with
-  pdflatex (bug 2235)
+  pdflatex (bug 2235).
 
 * Math editor:
 
-- Fix metrics of AMS array environments like bmatrix, vmatrix etc. (bug 2036)
+- Fix metrics of AMS array environments like bmatrix, vmatrix etc. (bug 2036).
 
 - Fix undo in matrices.
 
@@ -81,7 +81,7 @@ What's new
   an inset (bug 2526).
 
 - LyX now automatically uses file viewers and editors set at OS level
-  [windows only]
+  [windows only].
 
 - Automatically use fonts in the fonts/ subdirectory of LyX support
   directory in windows.
@@ -92,21 +92,21 @@ What's new
 - Text copied from an ERT box has no longer the pseudo "latex" language
   (bug 2476).
 
+- Fix crash when selecting and deleting "blue" paragraph break in CT mode.
+
 - Set change tracking marks properly when copying between documents
   with different change tracking status (bug 2207).
 
-- Fix display of horizontal fill which appears at the end of a line
-  (bug 2508)
-
 - Fix remaining "ghost" empty paragraphs when selecting and deleting multiple
-  paragraphs
+  paragraphs (bug 2516).
 
-- Fix crash when selecting and deleting "blue" paragraph break in CT mode
+- Fix display of horizontal fill which appears at the end of a line
+  (bug 2508).
 
 * Configuration/Installation:
 
 - Replace the old sh version of lib/configure with the new python version
-  lib/configure.py
+  lib/configure.py.
 
 - It is not needed anymore to run lib/configure.py in the main LyX
   support directory.
@@ -117,7 +117,7 @@ What's new
   before loading lyxrc.defaults and preferences. 
 
 - Fix lib/configure.py to find tex2lyx when compiling with
-  --with-version-suffix (bug 2285)
+  --with-version-suffix (bug 2285).
 
 - Fix lib/configure.py to find tex2lyx if the path to it contains spaces.
 

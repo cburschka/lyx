@@ -1,4 +1,4 @@
-#LyX 1.4.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 245
 \begin_document
 \begin_header
@@ -72,8 +72,8 @@ Peter Sütterlin
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 2.
- April 2006
+letzte Änderung: 20.
+ Mai 2006
 \end_layout
 
 \begin_layout Standard
@@ -763,29 +763,29 @@ n den eigenen Wünschen anzupassen, Erscheinungsbild und Position von Fußnoten,
 Hier eine kurze Zusammenfassung:
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 TeX: Makrofähige Programmiersprache für Schriftsatz.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 LaTeX: Makropaket auf der Basis von TeX.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 Klasse: Beschreibung eines Dokumententyps, verwendet LaTeX.
  
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 Stil: Verändert die Standardeinstellungen von LaTeX.
  
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 LyX: Visuelle WYSIWYM-Textverarbeitung, die LaTeX mit all seinen Fähigkeiten
  zum Ausdruck verwendet.
@@ -910,9 +910,10 @@ Und noch eine Bitte: Wenn Ihnen in dieser Dokumentation irgendetwas unklar
  Falls Sie dringende Fragen haben, die in der Dokumentation offensichtlich
  nicht beantwortet werden, gibt es eine sehr aktive Mailing-Liste, die Sie
  unter 
-\family typewriter
-lyx-users@lists.lyx.org
-\family default
+\begin_inset LatexCommand \url{lyx-users@lists.lyx.org}
+
+\end_inset
+
  erreichen können.
 \end_layout
 
@@ -1051,7 +1052,7 @@ Hervorgehoben
 \family typewriter
 Schreibmaschine
 \family default
- kennzeichnet Programmtext und Dateinamen, LaTeX- und/oder LyX-Code und
+ kennzeichnet Programmtext und Dateinamen, LaTeX- und/ oder LyX-Code und
  Funktionen.
 \end_layout
 
@@ -1368,7 +1369,9 @@ Erweiterung des
 Benutzerhandbuches
 \emph default
 .
- Es erläutert die Verwendung von LaTeX-Kommandos, zusätzliche Layouts und
+ Es erläutert die Verwendung von LaTeX-Kom\SpecialChar \-
+man\SpecialChar \-
+dos, zusätzliche Layouts und
  erweiterte Bearbeitungsmöglichkeiten, inklusive einiger Tricks der LaTeX-Profis.
 \end_layout
 
@@ -1585,7 +1588,20 @@ gdb
 
 
 \family typewriter
-gdb /usr/src/lyx-1.4.0/src/lyx
+gdb /usr/src/lyx-1.4.0/src/
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+lyx
 \family default
 
 \begin_inset Quotes grd

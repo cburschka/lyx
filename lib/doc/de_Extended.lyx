@@ -1,4 +1,4 @@
-#LyX 1.4.1 created this file. For more info see http://www.lyx.org/
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 245
 \begin_document
 \begin_header
@@ -16,8 +16,8 @@
 \usepackage{multicol}
 
 % Befehl aus Kapitel 7.4
-\newcommand{\extratablespace}[1]{\noalign{vskip#1}} 
-\usepackage [chapter,nottoc]{tocbibind}
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+%\usepackage [chapter,nottoc]{tocbibind}
 % Damit der Index den Namen "Stichwortverzeichnis" erhält
 \usepackage[german]{babel}
 \addto\captionsgerman
@@ -102,8 +102,8 @@ Sütterlin
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 16.
- April 2006
+letzte Änderung: 20.
+ Mai 2006
 \end_layout
 
 \begin_layout Standard
@@ -2000,7 +2000,8 @@ V
 ertikaler\InsetSpace ~
 Abstand
 \family default
-), wird zwischen zwei Absätze ein Standard-Zwischenraum eingefügt.
+), wird zwischen zwei Absätze ein Standard-Zwischen\SpecialChar \-
+raum eingefügt.
 \end_layout
 
 \begin_layout LyX-Code
@@ -2114,8 +2115,7 @@ status collapsed
 
 \end_inset
 
-X\InsetSpace ~
-
+X 
 \bar under
 P
 \bar default
@@ -2380,7 +2380,8 @@ k
 \bar under
 o
 \bar default
-nfigurieren
+nfigurie\SpecialChar \-
+ren
 \family default
 ), und sagt Ihnen, welche Pakete gefunden wurden und was sie machen.
 \end_layout
@@ -2831,9 +2832,11 @@ makeindex
 \begin_layout Standard
 Das Einfügen eines Stichwortverzeichnisses und das Markieren von Worten,
  die in diesem Stichwortverzeichnis erscheinen sollen, funktioniert ähnlich
- wie das Erstellen eines Literaturver\SpecialChar \-
+ wie das Erstellen eines Literatur\SpecialChar \-
+ver\SpecialChar \-
 zeich\SpecialChar \-
-nisses, das im vorigen Abschnitt
+nis\SpecialChar \-
+ses, das im vorigen Abschnitt
  beschrieben wurde.
 \end_layout
 
@@ -2975,7 +2978,8 @@ captionsgerman{
 \backslash
 renewcommand{
 \backslash
-indexname}{Stichwortver-zeichnis}}
+indexname}{Stichwortver\SpecialChar \-
+zeichnis}}
 \end_layout
 
 \begin_layout Standard
@@ -3586,7 +3590,20 @@ Die Einstellungen für Kopf- und Fußzeile können durch die Befehle
 
 \backslash
 thispage\SpecialChar \-
-style{empty}
+style
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+{empty}
 \family default
 , 
 \family typewriter
@@ -3658,7 +3675,8 @@ Wenn Sie teTeX installiert haben, finden Sie diese typischerweise als
 
 \begin_layout Standard
 Als letztes Beispiel soll gezeigt werden, wie man eine Abbildung im Encapsulated
--PostScript®-Format in die Kopf- oder Fußzeile einbinden kann.
+-Post\SpecialChar \-
+Script®-Format in die Kopf- oder Fußzeile einbinden kann.
  Angenommen, Sie wollen Ihr Firmenlogo in die obere linke Ecke setzen, dann
  sollten Sie etwa folgendes versuchen:
 \end_layout
@@ -3740,7 +3758,8 @@ Wenn Sie zwei Minipages horizontal nebeneinandersetzen, kann zwischen ihnen
 \bar under
 V
 \bar default
-ariabler\InsetSpace ~
+ari\SpecialChar \-
+abler\InsetSpace ~
 horiz.\InsetSpace ~
 Abstand
 \family default
@@ -4832,6 +4851,19 @@ atei
 ffnen
 \family default
 \SpecialChar \ldots{}
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+ 
+\end_layout
+
+\end_inset
+
 \SpecialChar \menuseparator
 
 \family sans
@@ -5926,7 +5958,8 @@ orlage
 \SpecialChar \ldots{}
 , 
 \family sans
-Strg+Umschalt+N
+Strg+Um\SpecialChar \-
+schalt+N
 \family default
 ) finden Sie ein Beispiel als Vorlage.
 \end_layout
@@ -7102,7 +7135,8 @@ makeatletter
 \family typewriter
 
 \backslash
-makeatother
+makeat\SpecialChar \-
+other
 \family default
 , mit Ausnahme derjenigen Einträge, die Sie selber in den LaTeX-Vorspann
  eingefügt haben (diese sollten direkt nach den 
@@ -7962,7 +7996,8 @@ Dokumentklasse\SpecialChar \menuseparator
 \bar under
 D
 \bar default
-okumentklasse
+okumentklas\SpecialChar \-
+se
 \family default
 ?
 \end_layout
@@ -8843,7 +8878,20 @@ book.cls
 \family default
  und 
 \family typewriter
-letter.cls
+letter.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+cls
 \family default
  und entsprechen in einigen Punkten besser den europäischen typographischen
  Konventionen.
@@ -8988,7 +9036,12 @@ tion
 \emph on
 scrguide
 \emph default
- (zum Beispiel /usr/share/texmf/doc/latex/koma-script/scrguide.pdf).
+ (zum Beispiel 
+\begin_inset LatexCommand \url{/usr/share/texmf/doc/latex/koma-script/scrguide.pdf}
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Itemize
@@ -9004,7 +9057,16 @@ Eine ausführliche deutsche Beschreibung der LaTeX-Dokumentenklassen der
 \emph on
 scrguide 
 \emph default
-(zum Beispiel /usr/share/texmf/doc/latex/koma-script/scrguide.pdf) zu finden.
+(zum Beispiel 
+\family typewriter
+
+\begin_inset LatexCommand \url{/usr/share/texmf/doc/latex/koma-script/scrguide.pdf}
+
+\end_inset
+
+
+\family default
+) zu finden.
 \begin_inset Foot
 status open
 
@@ -9019,7 +9081,8 @@ screnggu
 \end_inset
 
  In den folgenden Abschnitten werden nur diejenigen Aspekte beschrieben,
- die für die LyX-Dokumentenklassen relevant sind.
+ die für die LyX-Dokumenten\SpecialChar \-
+klassen relevant sind.
 \end_layout
 
 \begin_layout Subsection
@@ -9224,7 +9287,8 @@ Unten
  Alternativ kann man die Klassenoption 
 \family typewriter
 table\SpecialChar \-
-captionsabove
+captions\SpecialChar \-
+above
 \family default
  verwenden, welche die Standardumgebung 
 \family sans
@@ -9704,20 +9768,12 @@ Eine genaue deutsche Beschreibung solcher LaTeX-Befehle findet sich in der
 \emph on
 scrguide
 \emph default
- (zum Beispiel /usr/share/texmf/doc/latex/
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-koma-script/scrguide.pdf).
+ (zum Beispiel 
+\family typewriter
+/usr/share/texmf/doc/latex/koma\SpecialChar \-
+script/scrguide.pdf
+\family default
+).
  Damit kann der Briefautor ein persönliches Brief\SpecialChar \textcompwordmark{}
 format erzeugen.
 \end_layout
@@ -10513,7 +10569,8 @@ svjour
 svjog
 \family default
  sind Bestandteil der LyX-Standarddistribution.
- Installieren Sie die benötigten Klassen-Dateien, die Sie bei Springer herunterg
+ Installieren Sie die benötigten Klas\SpecialChar \-
+sen-Dateien, die Sie bei Springer herunterg
 eladen haben, in ein geeignetes Verzeichnis, konfigurieren LaTeX im teTeX-Fall
  mit 
 \family typewriter
@@ -11034,7 +11091,8 @@ eiten-Stil
 \family default
  des Dialogfensters 
 \family sans
-Dokument-Einstellungen
+Dokument-Einstellun\SpecialChar \-
+gen
 \family default
  unterscheiden sich etwas von dem normalen Verhalten.
  Sie können unter folgenden Versionen wählen:
@@ -11112,7 +11170,8 @@ Dokument-Einstellungen
 \SpecialChar \menuseparator
 
 \family sans
-Dokumentklasse
+Dokumentklas\SpecialChar \-
+se
 \family default
  ein.
  Damit können Sie Zeitmarken für Ihren Vortrag einfügen.
@@ -12096,7 +12155,8 @@ Die Argumente für beide Befehle müssen in Sekunden angegeben werden.
 \family typewriter
 
 \backslash
-settime{}
+set\SpecialChar \-
+time{}
 \family default
  stellt die Zeitmarke auf den angegebenen Wert, 
 \family typewriter
@@ -12147,7 +12207,20 @@ slides}
 \family typewriter
 
 \backslash
-onlynotes{
+onlynotes
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+{
 \backslash
 notes}
 \family default
@@ -12641,7 +12714,7 @@ immer
 
 \begin_deeper
 \begin_layout Labeling
-\labelwidthstring MMMMMMM
+\labelwidthstring 00.00.0000
 
 \family sans
 empty
@@ -12651,7 +12724,7 @@ empty
 \end_layout
 
 \begin_layout Labeling
-\labelwidthstring MMMMMMM
+\labelwidthstring 00.00.0000
 
 \family sans
 plain
@@ -12661,7 +12734,7 @@ plain
 \end_layout
 
 \begin_layout Labeling
-\labelwidthstring MMMMMMM
+\labelwidthstring 00.00.0000
 
 \family sans
 foilheadings
@@ -12672,7 +12745,7 @@ foilheadings
 \end_layout
 
 \begin_layout Labeling
-\labelwidthstring MMMMMMM
+\labelwidthstring 00.00.0000
 
 \family sans
 fancy
@@ -12730,7 +12803,7 @@ Dokumentklasse
 \end_layout
 
 \begin_layout Labeling
-\labelwidthstring MMMMMMx
+\labelwidthstring 00.00.0000
 35mmSlide Damit wird das Seitenformat auf 18,62
 \begin_inset Formula $\times$
 \end_inset
@@ -12746,18 +12819,18 @@ mm Dia, wodurch die
 \end_layout
 
 \begin_layout Labeling
-\labelwidthstring MMMMMMx
+\labelwidthstring 00.00.0000
 headrule Erzeugt einen Strich unter der Kopfzeile jeder Seite außer der
  Titelseite.
 \end_layout
 
 \begin_layout Labeling
-\labelwidthstring MMMMMMx
+\labelwidthstring 00.00.0000
 footrule Erzeugt einen Strich über der Fußzeile jeder Seite außer der Titelseite.
 \end_layout
 
 \begin_layout Labeling
-\labelwidthstring MMMMMMx
+\labelwidthstring 00.00.0000
 dvips Diese Option wird automatisch aktiviert, wenn Sie ein neues Dokument
  der Klasse 
 \family sans
@@ -12788,7 +12861,7 @@ X
 \end_layout
 
 \begin_layout Labeling
-\labelwidthstring MMMMMMx
+\labelwidthstring 00.00.0000
 landscape Dadurch wird lediglich das Papierformat auf Querformat eingestellt,
  ohne die Seite zu drehen.
  Deshalb benötigen Sie ein externes Programm, um die Seiten zu drehen, bevor
@@ -12805,12 +12878,12 @@ Rotatefoilhead
 \end_layout
 
 \begin_layout Labeling
-\labelwidthstring MMMMMMx
+\labelwidthstring 00.00.0000
 leqno Gleichungsnummerierung auf der linken Seite.
 \end_layout
 
 \begin_layout Labeling
-\labelwidthstring MMMMMMx
+\labelwidthstring 00.00.0000
 fleqn Gleichungen werden linksbündig ausgegeben.
 \end_layout
 
@@ -13913,7 +13986,7 @@ ionen verändert werden:
 \end_layout
 
 \begin_layout Labeling
-\labelwidthstring MMMMMMMMMMM
+\labelwidthstring 00.00.0000
 
 \family typewriter
 
@@ -13924,7 +13997,7 @@ Abstand zwischen Text und Oberkante des Gleitobjektes.
 \end_layout
 
 \begin_layout Labeling
-\labelwidthstring MMMMMMMMMMM
+\labelwidthstring 00.00.0000
 
 \family typewriter
 
@@ -13935,7 +14008,7 @@ Abstand zwischen Gleitobjekt und Unterschrift.
 \end_layout
 
 \begin_layout Labeling
-\labelwidthstring MMMMMMMMMMM
+\labelwidthstring 00.00.0000
 
 \family typewriter
 
@@ -13946,7 +14019,7 @@ Abstand zwischen Unterschrift und folgendem Text.
 \end_layout
 
 \begin_layout Labeling
-\labelwidthstring MMMMMMMMMMM
+\labelwidthstring 00.00.0000
 
 \family typewriter
 
@@ -13970,7 +14043,7 @@ Es gibt auch einige Größen, die sich auf die Titelseite beziehen und nützlich
 \end_layout
 
 \begin_layout Labeling
-\labelwidthstring MMMMMMMMMMM
+\labelwidthstring 00.00.0000
 
 \family typewriter
 
@@ -13981,7 +14054,7 @@ abovetitleskip
 \end_layout
 
 \begin_layout Labeling
-\labelwidthstring MMMMMMMMMMM
+\labelwidthstring 00.00.0000
 
 \family typewriter
 
@@ -13992,7 +14065,7 @@ titleauthorskip
 \end_layout
 
 \begin_layout Labeling
-\labelwidthstring MMMMMMMMMMM
+\labelwidthstring 00.00.0000
 
 \family typewriter
 
@@ -14003,7 +14076,7 @@ authorauthorskip
 \end_layout
 
 \begin_layout Labeling
-\labelwidthstring MMMMMMMMMMM
+\labelwidthstring 00.00.0000
 
 \family typewriter
 
@@ -14014,7 +14087,7 @@ authordateskip
 \end_layout
 
 \begin_layout Labeling
-\labelwidthstring MMMMMMMMMMM
+\labelwidthstring 00.00.0000
 
 \family typewriter
 
@@ -15428,7 +15501,20 @@ Rod Pinna
 Elsevier Science Publishers B.V.
  stellt eine Standard-LaTeX-Dokumentenklasse (
 \family typewriter
-elsart.cls
+elsart.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+cls
 \family default
 ) zur Verfügung, mit der man Artikel für ihre verschiedenen Journale einreichen
  kann.
@@ -15616,8 +15702,7 @@ Einf
 \bar under
 a
 \bar default
-cher\InsetSpace ~
-Text\InsetSpace ~
+cher Text\InsetSpace ~
 als\InsetSpace ~
 Zeilen
 \family default
@@ -15939,11 +16024,7 @@ atei
 \bar under
 E
 \bar default
-xportieren
-\family default
-\InsetSpace ~
-
-\family sans
+xportieren\SpecialChar \menuseparator
 PDF\InsetSpace ~
 (dvipdf
 \bar under
@@ -16190,7 +16271,8 @@ einzige
 \begin_layout Standard
 Wenn Sie die PostScript®-Fonts benutzen, werden die PDF-Dateien kleiner,
  weil die Fonts nicht gespeichert werden.
- Außerdem enthalten die PostScript®-Fonts alle T1-Sonderzeichen.
+ Außerdem enthalten die PostScript®-Fonts alle T1-Sonder\SpecialChar \-
+zeichen.
  Andererseits haben die Post\SpecialChar \-
 Script®-Fonts keine Fett-Fonts, so dass ein
  Ersatz benutzt werden muss (siehe Abschnitt 
@@ -16457,6 +16539,18 @@ PostScript®
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+begin{sloppypar}
+\end_layout
+
+\end_inset
+
 Den letzten Schritt macht normalerweise das Programm 
 \family typewriter
 dvips
@@ -16491,6 +16585,19 @@ dvips
 -r
 \family default
  setzen.
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+end{sloppypar}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -16959,6 +17066,18 @@ dir/foo.lyx
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+begin{sloppypar}
+\end_layout
+
+\end_inset
+
 Als Dateiendungen sind 
 \family typewriter
 .tex
@@ -16979,6 +17098,19 @@ Eingabedatei.tex
 \family default
  zu übersetzen.
  (Dies entspricht dem Verhalten von LaTeX.)
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+end{sloppypar}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -17586,7 +17718,20 @@ reLyX wird auch sämtliche Befehle des LaTeX-Vorspanns (das heißt alles vor
 \family typewriter
 
 \backslash
-begin{docu\SpecialChar \-
+begin
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+{docu\SpecialChar \-
 ment}
 \family default
 ) unverändert kopieren, so dass sich dort gemachte Einträge in der 
@@ -17779,7 +17924,20 @@ Wenn reLyX sich an irgendetwas verschluckt, oder wenn LyX die übersetzte
 \family typewriter
 
 \backslash
-begin{reLyX\SpecialChar \-
+begin
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+{reLyX\SpecialChar \-
 skip}
 \family default
  und 
@@ -17881,6 +18039,23 @@ okument\SpecialChar \menuseparator
 E
 \bar default
 instellungen\SpecialChar \ldots{}
+
+\family typewriter
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+
+\family sans
 \SpecialChar \menuseparator
 Dokumentklasse\SpecialChar \menuseparator
 
@@ -18097,7 +18272,8 @@ width
 \family default
  in der Umgebung 
 \family typewriter
-thebibliography
+thebibliogra\SpecialChar \-
+phy
 \family default
 .
 \end_layout
@@ -18173,7 +18349,8 @@ my/dir/foo.lyx
 begin{myenv} ...
  
 \backslash
-end{myenv}
+end{my\SpecialChar \-
+env}
 \family default
 -Block gefunden, so wird der Inhalt dieses Blockes zwar übersetzt, die 
 \family typewriter
@@ -18246,7 +18423,20 @@ Senden Sie solche Fehlerberichte bitte an die Mailingliste der LyX-Entwickler,
 
  (Sie können diese Adresse auf der LyX-Seite 
 \family typewriter
-http://www.lyx.org
+http://www.lyx.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+org
 \family default
  nachsehen).
  Wenn Sie eine sehr große Datei mit reLyX übersetzen -- bitte senden Sie
@@ -19116,12 +19306,56 @@ status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
-X-Funktionen, die zusätzliche Programme benötigen
+X
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+-Funktionen, die zusätzliche Programme benötigen
+\begin_inset OptArg
+status open
+
+\begin_layout Standard
+Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+X
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+-Funktionen, die zusätzliche Programme\SpecialChar \ldots{}
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -19131,12 +19365,23 @@ status collapsed
 
 \begin_layout Standard
 
-{}
+{
 \end_layout
 
 \end_inset
 
-X mit den SGML-Tools (DocBook)
+X
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ mit den SGML-Tools (DocBook)
 \end_layout
 
 \begin_layout Standard
@@ -20630,7 +20875,8 @@ preferences
 \family typewriter
 
 \backslash
-literate_extension
+literate_exten\SpecialChar \-
+sion
 \family default
  (standardmäßig 
 \family typewriter
@@ -21981,7 +22227,8 @@ Damit man mehrspaltige Dokumente drucken kann, muss in den LaTeX-Vorspann
 \family typewriter
 
 \backslash
-usepackage{multicol}
+use\SpecialChar \-
+package{multicol}
 \family default
  eingefügt werden.
 \end_layout
@@ -22464,7 +22711,8 @@ end{multicols}
 Für fortgeschrittenere Beispiele (Abstände, Trennlinien) lesen Sie bitte
  die Datei 
 \family typewriter
-de_multicols.lyx
+de_mul\SpecialChar \-
+ticols.lyx
 \family default
  im Verzeichnis mit den Beispielen.
 \end_layout
@@ -22753,9 +23001,8 @@ Mike Ressler
 \end_layout
 
 \begin_layout Standard
-In LaTeX ist es einfach möglich, zwischen zwei Zeilen einer Tabelle einen
- etwas größeren Zwischenraum einzufügen, indem man dem Zeilenende-Befehl
- (
+In LaTeX ist es einfach, zwischen zwei Zeilen einer Tabelle einen etwas
+ größeren Zwischenraum einzufügen, indem man dem Zeilenende-Befehl (
 \family typewriter
 
 \backslash
@@ -22775,16 +23022,14 @@ Der erste ist der formal richtige, aber etwas umständliche Weg.
 
 \begin_layout LyX-Code
 
-\family typewriter
-
 \backslash
 newcommand{
 \backslash
 extratablespace}[1]{
 \backslash
-noalign{vskip#1}}
-\family default
- 
+noalign{
+\backslash
+vskip#1}}
 \end_layout
 
 \begin_layout Standard
@@ -23680,6 +23925,14 @@ Morgenstern
 
 \begin_layout Standard
 Viel Spaß beim LyXen!
+\end_layout
+
+\begin_layout Chapter
+\start_of_appendix
+Stichwortverzeichnis
+\end_layout
+
+\begin_layout Standard
 \begin_inset LatexCommand \printindex{}
 
 \end_inset

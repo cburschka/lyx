@@ -1,15 +1,15 @@
-#LyX 1.4.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 245
 \begin_document
 \begin_header
 \textclass scrbook
 \begin_preamble
-\usepackage{graphics}
+%\usepackage{graphics}
 \end_preamble
 \language ngerman
 \inputencoding latin1
 \fontscheme default
-\graphics none
+\graphics default
 \paperfontsize default
 \spacing single
 \papersize a4paper
@@ -67,8 +67,8 @@ Peter Sütterlin
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 3.
- April 2006
+letzte Änderung: 20.
+ Mai 2006
 \end_layout
 
 \begin_layout Standard
@@ -474,7 +474,8 @@ Die Beispieldateien finden Sie im Verzeichnis
 \family typewriter
 examples
 \family default
- des systemweiten LyX-Verzeichnisses.
+ des systemweiten LyX-Verzeichnis\SpecialChar \-
+ses.
  Sie finden es im Menü 
 \family sans
 \bar under
@@ -762,7 +763,8 @@ B
 ear\SpecialChar \-
 beiten\SpecialChar \menuseparator
 Aus\SpecialChar \-
-schneiden, 
+schnei\SpecialChar \-
+den, 
 \bar under
 B
 \bar default
@@ -802,7 +804,8 @@ Ersetzen\SpecialChar \ldots{}
 
 \family default
  gelangen Sie in einen Dialog, in dem Sie Begriffe (wahlweise unter Berücksichti
-gung von Groß/Kleinschreibung sowie als ganzes Wort) suchen und ersetzen
+gung von Groß/Klein\SpecialChar \-
+schreibung sowie als ganzes Wort) suchen und ersetzen
  können.
 \begin_inset Foot
 status open
@@ -1146,6 +1149,19 @@ Umgebungen
  in einer Zeitschrift hat Überschrift und Zusammenfassung, ein Brief wird
  keine davon verwenden, hat dafür aber vielleicht eine andere Umgebung,
  in der die Adresse angegeben wird.
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+begin{sloppypar}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1159,6 +1175,19 @@ Derartige Umgebungen bilden den Hauptteil des WYSIWYM-Konzeptes von LyX.
  Und die Formate für Bibliographien variieren sehr stark.
  Mit LyX können Sie vermeiden, all diese unterschiedlichen Formate lernen
  zu müssen.
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+end{sloppypar}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1904,7 +1933,8 @@ Verse
 \family default
  in der Datei 
 \family typewriter
-de_beispiel_roh.lyx
+de_bei\SpecialChar \-
+spiel_roh.lyx
 \family default
  richtig.
 \end_layout
@@ -2908,6 +2938,8 @@ ußnote
  oder über das Symbol 
 \begin_inset Graphics
 	filename ../images/footnote-insert.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
@@ -3032,6 +3064,8 @@ andnotiz
  oder das Symbol 
 \begin_inset Graphics
 	filename ../images/marginalnote-insert.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
@@ -3273,7 +3307,7 @@ Benutzerhandbuch
 \series default
 Korrigieren Sie Literaturverzeichnis und Zitate in der Datei 
 \family typewriter
-de_beispiel_roh.lyx
+de_beispiel_ roh.lyx
 \family default
 .
 \end_layout
@@ -4516,13 +4550,11 @@ Klicken Sie auf den
 \family sans
 Anzeige
 \family default
--Schalter
-\family sans
- 
-\family default
-
+-Schalter 
 \begin_inset Graphics
 	filename ../images/equation.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
@@ -4991,6 +5023,8 @@ abelle\SpecialChar \ldots{}
  oder einen Klick auf 
 \begin_inset Graphics
 	filename ../images/tabular-insert.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
@@ -5031,6 +5065,8 @@ rafik\SpecialChar \ldots{}
 oder ein Klick auf 
 \begin_inset Graphics
 	filename ../images/dialog-show-new-inset_graphics.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
@@ -5268,6 +5304,8 @@ X
  oder durch Klicken auf 
 \begin_inset Graphics
 	filename /home/haase/EigeneDateien/LyX/Dokumentation/images/ert-insert.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
@@ -5386,7 +5424,20 @@ en wie WYSIWYG-Tabellen und -Abbildungen bieten.
 \family typewriter
 
 \backslash
-usepackage{foo}
+usepackage
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+{foo}
 \family default
  eingeben, können Sie aber auch solche Pakete verwenden -- wenn auch nicht
  mit Unterstützung von WYSIWYG.
@@ -5633,7 +5684,7 @@ instellungen
 \SpecialChar \ldots{}
 
 \family sans
-\SpecialChar \menuseparator
+ \SpecialChar \menuseparator
 LaT
 \begin_inset ERT
 status collapsed
@@ -5845,6 +5896,11 @@ Fehler
  Diese sollten aber extrem selten sein.
  Meist hat LaTeX ein Problem (das fast immer durch Einfügungen im TeX-Modus
  verursacht wird), dann wird die entsprechende LaTeX-Fehlermeldung angezeigt.
+\end_layout
+
+\begin_layout Chapter
+\start_of_appendix
+Literaturverzeichnis
 \end_layout
 
 \begin_layout Bibliography
