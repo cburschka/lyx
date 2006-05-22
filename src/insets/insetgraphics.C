@@ -681,6 +681,21 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 		<< "\tthe orig file is: " << orig_file << endl;
 
 	if (from == to) {
+		if (!runparams.nice && GetExtension(temp_file) != ext) {
+			// The LaTeX compiler will not be able to determine
+			// the file format from the extension, so we must
+			// change it.
+			string const new_file = ChangeExtension(temp_file, ext);
+			if (lyx::support::rename(temp_file, new_file)) {
+				temp_file = new_file;
+				output_file = ChangeExtension(output_file, ext);
+				source_file = ChangeExtension(output_file, ext);
+			} else
+				lyxerr[Debug::GRAPHICS]
+					<< "Could not rename file `"
+					<< temp_file << "' to `" << new_file
+					<< "'." << endl;
+		}
 		// The extension of temp_file might be != ext!
 		runparams.exportdata->addExternalFile(tex_format, source_file,
 		                                      output_file);

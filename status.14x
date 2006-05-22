@@ -64,6 +64,9 @@ What's new
 
 - Update templates and examples to latest file format.
 
+- Make jpeg graphics with suffix in capital letters (.JPG) work with
+  pdflatex (bug 2235)
+
 * Math editor:
 
 - Fix metrics of AMS array environments like bmatrix, vmatrix etc. (bug 2036)
