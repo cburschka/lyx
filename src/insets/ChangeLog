@@ -1,5 +1,9 @@
 2006-05-22  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
+	* insettabular.C (doDispatch): do not mark the cursor undispatched
+	after mouse (button 3) press (prevents the cursor from leaving the 
+	tabular when opening the dialog).
+
 	* insettabular.C (doDispatch): fix crash due to invalidated
 	cursor after insertAciiString (bug 2603).
 

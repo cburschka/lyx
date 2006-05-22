@@ -92,6 +92,9 @@ What's new
 - When pasting contents to a tabular with the middle mouse button, the
   language has sometimes be changed. This is fixed now.
 
+- Fix unconditional movement of the cursor outside of a tabular when 
+  opening the tabular dialog.
+
 - Text copied from an ERT box has no longer the pseudo "latex" language
   (bug 2476).
 
