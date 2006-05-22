@@ -86,6 +86,9 @@ What's new
 - Automatically use fonts in the fonts/ subdirectory of LyX support
   directory in windows.
 
+- Disable saving of bookmarks in mathed for it is not yet supported
+  and makes LyX crash (bug 2597).
+
 - Fix crash when pasting contents from the clipboard to a tabular
   (bug 2603).
 
