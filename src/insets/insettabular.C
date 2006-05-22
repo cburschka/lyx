@@ -668,9 +668,17 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		string const clip = cur.bv().getClipboard();
 		if (clip.empty())
 			break;
-		if (insertAsciiString(cur.bv(), clip, false))
-			break;
-		else {
+		// pass to InsertAsciiString, but
+		// only if we have multi-cell content
+		if (clip.find_first_of("\t\n") != string::npos) {
+			if (insertAsciiString(cur.bv(), clip, false)) {
+				// content has been replaced,
+				// so cursor might be invalid
+				cur.pos() = cur.lastpos();
+				bvcur.setCursor(cur);
+				break;
+			}
+		} else {
 			// so that the clipboard is used and it goes on
 			// to default
 			// and executes LFUN_PASTESELECTION in insettext!

@@ -86,6 +86,9 @@ What's new
 - Automatically use fonts in the fonts/ subdirectory of LyX support
   directory in windows.
 
+- Fix crash when pasting contents from the clipboard to a tabular
+  (bug 2603).
+
 - When pasting contents to a tabular with the middle mouse button, the
   language has sometimes be changed. This is fixed now.
 
