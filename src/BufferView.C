@@ -54,7 +54,6 @@ using lyx::cap::setSelectionRange;
 using std::distance;
 using std::find;
 using std::string;
-using std::swap;
 using std::vector;
 
 

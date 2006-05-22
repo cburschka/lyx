@@ -61,7 +61,6 @@ using std::endl;
 using std::isalpha;
 #endif
 using std::min;
-using std::swap;
 
 namespace {
 

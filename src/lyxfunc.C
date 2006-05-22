@@ -1547,9 +1547,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			buffer->params().textclass = new_class;
 			StableDocIterator backcur(view()->cursor());
 			ErrorList el;
-			lyx::cap::SwitchBetweenClasses(
+			lyx::cap::switchBetweenClasses(
 				old_class, new_class,
-				buffer->paragraphs(), el);
+				static_cast<InsetText &>(buffer->inset()), el);
 
 			view()->setCursor(backcur.asDocIterator(&(buffer->inset())));
 			bufferErrors(*buffer, el);
