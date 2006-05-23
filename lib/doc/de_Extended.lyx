@@ -1,4 +1,4 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.4.1 created this file. For more info see http://www.lyx.org/
 \lyxformat 245
 \begin_document
 \begin_header
@@ -23,6 +23,8 @@
 \addto\captionsgerman
 {\renewcommand{\indexname}
 {Stichwortverzeichnis}}
+% für Initalen
+\usepackage{picins}
 \end_preamble
 \language ngerman
 \inputencoding latin1
@@ -102,7 +104,7 @@ Sütterlin
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 20.
+letzte Änderung: 23.
  Mai 2006
 \end_layout
 
@@ -3914,7 +3916,7 @@ status open
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename ../13x/mobius.eps
+	filename ../15x/mobius.eps
 	lyxscale 50
 	width 60col%
 	BoundingBox 0bp 0bp 367bp 158bp
@@ -3925,7 +3927,12 @@ status open
 \end_layout
 
 \begin_layout Caption
-Dies ist eine umflossene Abbildung und seine Bildunterschrift 
+Dies ist eine umflossene Abbildung und seine Bildunterschrift
+\begin_inset LatexCommand \label{fig:Dies-ist-eine}
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3950,8 +3957,13 @@ begin{sloppypar}
 \end_layout
 
 \begin_layout Standard
-Sie sehen hier ein Bild eines Möbius-Bandes --- Sie kennen es vermutlich
- schon aus dem 
+Sie sehen in Abbildung 
+\begin_inset LatexCommand \vref{fig:Dies-ist-eine}
+
+\end_inset
+
+ ein Bild eines Möbius-Bandes --- Sie kennen es vermutlich schon aus dem
+ 
 \emph on
 Benutzerhandbuch
 \emph default
@@ -4076,7 +4088,7 @@ bsatz-Einstellungen\SpecialChar \ldots{}
 \begin_layout Standard
 
 \series bold
-Hinweis
+Hinweis 1
 \series default
 : Diese umflossenen Abbildungen sind ziemlich 
 \emph on
@@ -4119,6 +4131,44 @@ end{sloppypar}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+parpic[r]{
+\backslash
+includegraphics[width=50mm]{mobius}}
+\end_layout
+
+\end_inset
+
+
+\series bold
+Hinweis 2
+\series default
+: Wenn Sie eine textumflossene Abbildung in dem Absatz haben wollen, in
+ dem Sie gerade Ihren Text schreiben, sollten Sie vielleicht mit dem LaTex-Paket
+ 
+\family typewriter
+picins
+\family default
+ arbeiten (siehe 
+\family typewriter
+\SpecialChar \ldots{}
+ /texmf/doc/latex/styles/picins.txt
+\family default
+ oder 
+\begin_inset LatexCommand \cite[Seite 185ff]{latex-praxis}
+
+\end_inset
+
+) , so wie hier: 
 \end_layout
 
 \begin_layout Section
@@ -23417,7 +23467,7 @@ hangafter=-3
 
 \end_inset
 
- iejenigen unter Ihnen, denen der Stil alter Bücher gefällt, würden sicherlich
+iejenigen unter Ihnen, denen der Stil alter Bücher gefällt, würden sicherlich
  in Ihren Texten auch gerne jene abgesetzten großen Buchstaben am Anfang
  eines Kapitels verwenden.
  Mit etwas Kenntnis von TeX ist dies durchaus möglich --- allerdings etwas
@@ -23561,11 +23611,7 @@ tfm
 \end_layout
 
 \begin_layout Standard
-Sehr schön ist zum Beispiel
-\begin_inset Quotes gld
-\end_inset
-
-
+Sehr schön ist zum Beispiel 
 \family typewriter
 yinit
 \family default
@@ -23590,6 +23636,49 @@ bigdrop
 dropping
 \family default
 .
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+parpic(2em,3em){
+\backslash
+fontsize{4em}{3em}
+\backslash
+selectfont
+\backslash
+textbf{E}}
+\end_layout
+
+\end_inset
+
+s gibt noch weitere Pakete wie zum Beispiel 
+\family typewriter
+picins
+\family default
+, dashier benutzt wurde und zu 
+\family typewriter
+tetex
+\family default
+ gehört.
+ Genaueres können Sie in der Datei 
+\family typewriter
+\SpecialChar \ldots{}
+/texmf/ doc/latex/styles/picins.txt
+\family default
+ oder in 
+\begin_inset LatexCommand \cite[Seite 185ff]{latex-praxis}
+
+\end_inset
+
+ nachlesen.
+ Das Paket eigenet sich auch für textumflossene Bilder.
 \end_layout
 
 \begin_layout Section
@@ -23929,7 +24018,18 @@ Viel Spaß beim LyXen!
 
 \begin_layout Chapter
 \start_of_appendix
-Stichwortverzeichnis
+Literatur- und Stichwortverzeichnis
+\end_layout
+
+\begin_layout Bibliography
+
+\bibitem {latex-praxis}
+Elke & Michael Niedermair: 
+\emph on
+LaTeX-Praxisbuch -- Studienausgabe
+\emph default
+.
+ Francis Verlag GmbH, 2004
 \end_layout
 
 \begin_layout Standard
