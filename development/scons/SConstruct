@@ -274,6 +274,8 @@ opts.AddOptions(
   PathOption('extra_lib_path1', 'Extra library path', None),
   # can be set to a non-existing directory
   ('prefix', 'install architecture-independent files in PREFIX', None),
+  # will install to dest_dir if defined. Otherwise, prefix will be used.
+  ('dest_dir', 'install to dest_dir', None),
   # version suffix
   ('version_suffix', 'install lyx as lyx-suffix', ''),
   #
@@ -293,6 +295,38 @@ opts.AddOptions(
   ('LDFLAGS', '$LDFLAGS', None),
 )
 
+# whether or not use current config.h, and cached tests
+if (not ARGUMENTS.has_key('fast_start') or \
+  ARGUMENTS['fast_start'] in ['y', 'yes', 't', 'true', '1', 'all']) \
+  and os.path.isfile(env_cache_file):
+  fast_start = True
+  cache_file = open(env_cache_file)
+  env_cache = cPickle.load(cache_file)
+  cache_file.close()
+  # import cached options, but we should ignore qt_dir when frontend changes
+  if ARGUMENTS.has_key('frontend') and env_cache['arg_cache'].has_key('frontend') \
+    and ARGUMENTS['frontend'] != env_cache['arg_cache']['frontend'] \
+    and env_cache['arg_cache'].has_key('qt_dir'):
+    env_cache['arg_cache'].pop('qt_dir')
+  # and we do not cache fast_start
+  if env_cache['arg_cache'].has_key('fast_start'):
+    env_cache['arg_cache'].pop('fast_start')
+  print '------------ fast_start mode --------------------'
+  print '  Use cached test results and current config.h'
+  print '  use fast_start=no to override'
+  print
+  for key in env_cache['arg_cache'].keys():
+    if not ARGUMENTS.has_key(key):
+      ARGUMENTS[key] = env_cache['arg_cache'][key]
+      print "Restoring cached option  %s=%s" % (key, ARGUMENTS[key])
+  print '-------------------------------------------------'
+else:
+  fast_start = False
+  env_cache = {}
+
+# save arguments
+env_cache['arg_cache'] = ARGUMENTS
+
 
 #---------------------------------------------------------
 # Setting up environment
@@ -308,21 +342,6 @@ env['frontend'] = frontend
 #
 use_X11 = env.get('X11', default_with_x)
 
-# whether or not use current config.h, and cached tests
-if env['fast_start'] and os.path.isfile(env_cache_file):
-  fast_start = True
-  SetOption('implicit_cache', 1)
-  cache_file = open(env_cache_file)
-  env_cache = cPickle.load(cache_file)
-  cache_file.close()
-  print '------------ fast_start mode --------------------'
-  print '  Use cached test results and current config.h'
-  print '  use fast_start=no to override'
-  print '-------------------------------------------------'
-else:
-  fast_start = False
-  SetOption('implicit_cache', 0)
-  env_cache = {}
 
 # set individual variables since I do not really like ENV = os.environ
 env['ENV']['PATH'] = os.environ.get('PATH')
@@ -331,10 +350,6 @@ env['TOP_SRC_DIR'] = TOP_SRC_DIR
 env['SCONS_DIR'] = SCONS_DIR
 # install to default_prefix by default
 env['PREFIX'] = env.get('prefix', default_prefix)
-if env.has_key('exec_prefix'):
-  env['BIN_DIR'] = env['exec_prefix']
-else:
-  env['BIN_DIR'] = os.path.join(env['PREFIX'], 'bin')
 # program suffix
 if env.has_key('version_suffix'):
   env['PROGRAM_SUFFIX'] = env['version_suffix']
@@ -342,8 +357,17 @@ else:
   env['PROGRAM_SUFFIX'] = ''
 env['ADD_SUFFIX_TO_EXECUTABLES'] = add_suffix_to_executables
 env['SHARE_DIR'] = os.path.join(env['PREFIX'], share_dir + env['PROGRAM_SUFFIX'])
-env['MAN_DIR'] = os.path.join(env['PREFIX'], man_dir)
 env['LOCALE_DIR'] = os.path.join(env['PREFIX'], locale_dir)
+#
+# if dest_dir is different from prefix.
+env['DEST_DIR'] = env.get('dest_dir', env['PREFIX'])
+if env.has_key('exec_prefix'):
+  env['BIN_DEST_DIR'] = env['exec_prefix']
+else:
+  env['BIN_DEST_DIR'] = os.path.join(env['DEST_DIR'], 'bin')
+env['SHARE_DEST_DIR'] = os.path.join(env['DEST_DIR'], share_dir + env['PROGRAM_SUFFIX'])
+env['MAN_DEST_DIR'] = os.path.join(env['DEST_DIR'], man_dir)
+env['LOCALE_DEST_DIR'] = os.path.join(env['DEST_DIR'], locale_dir)
 
 #
 # this is a bit out of place (after auto-configration) but 
@@ -656,6 +680,8 @@ if not fast_start:
   # HAVE_SYS_UTIME_H
   # HAVE_UNISTD_H
   # HAVE_UTIME_H
+  # HAVE_STRING_H
+  # HAVE_STRINGS_H
   # HAVE_ISTREAM
   # HAVE_OSTREAM
   # HAVE_IOS
@@ -676,9 +702,11 @@ if not fast_start:
     ('unistd.h', 'HAVE_UNISTD_H', 'c'),
     ('inttypes.h', 'HAVE_INTTYPES_H', 'c'),
     ('utime.h', 'HAVE_UTIME_H', 'c'),
+    ('string.h', 'HAVE_STRING_H', 'c'),
+    ('strings.h', 'HAVE_STRINGS_H', 'c'),
     ('istream', 'HAVE_ISTREAM', 'cxx'),
     ('ostream', 'HAVE_OSTREAM', 'cxx'),
-    ('ios', 'HAVE_IOS', 'cxx')
+    ('ios', 'HAVE_IOS', 'cxx'),
   ]
 
   for header in headers:
@@ -707,6 +735,10 @@ if not fast_start:
   # HAVE_STRERROR
   # HAVE_STD_COUNT
   # HAVE_GETCWD
+  # HAVE_STRCPY
+  # HAVE_STRCASECMP 
+  # HAVE_STRDUP
+  # HAVE_STRTOUL
 
   # Check functions
   functions = [
@@ -735,6 +767,10 @@ int count()
 }
 '''),
     ('getcwd', 'HAVE_GETCWD', None),
+    ('stpcpy', 'HAVE_STPCPY', None),
+    ('strcasecmp', 'HAVE_STRCASECMP', None),
+    ('strdup', 'HAVE_STRDUP', None),
+    ('strtoul', 'HAVE_STRTOUL', None)
   ]
 
   # HAVE_ASPRINTF
@@ -1062,7 +1098,7 @@ Frontend:
   str(env['LIBPATH']), str(env['BOOST_LIBRARIES']),
   str(env['EXTRA_LIBS']), str(env['SYSTEM_LIBS']), str(env['CPPPATH']),
   env['frontend'], packaging_method,
-  env['PREFIX'], env['BIN_DIR'], env['SHARE_DIR'])
+  env['PREFIX'], env['BIN_DEST_DIR'], env['SHARE_DIR'])
 
 if env['frontend'] in ['qt3', 'qt4']:
   env['VERSION_INFO'] += '''  include dir:                    %s

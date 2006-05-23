@@ -1235,26 +1235,17 @@ if 'po' in targets or 'install' in targets or 'all' in targets:
 
 if 'install' in targets:
   # create the directory if needed
-  if not os.path.isdir(env['PREFIX']):
+  if not os.path.isdir(env['DEST_DIR']):
     try:
-      os.makedirs(env['PREFIX'])
+      os.makedirs(env['DEST_DIR'])
     except:
       pass
-    if not os.path.isdir(env['PREFIX']):
-      print 'Can not create directory', env['PREFIX']
+    if not os.path.isdir(env['DEST_DIR']):
+      print 'Can not create directory', env['DEST_DIR']
       Exit(3)
   #
   import glob
   #
-  # windows: $PREFIX/Resources
-  # others:  $PREDIX/share/lyx
-  share_dir = env['SHARE_DIR']
-  # windows: $PREFIX/Resouces/man/man1
-  # others:  $PREFIX/man/man1
-  man_dir = env['MAN_DIR']
-  # windows: $PREFIX/Resources/locale
-  # others:  $PREFIX/share/locale
-  locale_dir = env['LOCALE_DIR']
   # do not install these files
   exclude_list = ['Makefile.am', 'Makefile.in', 'Makefile', 
     'lyx2lyx_version.py', 'lyx2lyx_version.py.in']
@@ -1282,52 +1273,52 @@ if 'install' in targets:
   #
   # install lyx
   target_name = os.path.split(str(lyx[0]))[1].replace('lyx', 'lyx%s' % program_suffix)
-  target = os.path.join(env['BIN_DIR'], target_name)
+  target = os.path.join(env['BIN_DEST_DIR'], target_name)
   env.InstallAs(target, lyx)
   Alias('install', target)
   # install lyx as lyx-qt3
   target_name = os.path.split(str(lyx[0]))[1].replace('lyx', 'lyx-%s%s' % (frontend, program_suffix))
-  target = os.path.join(env['BIN_DIR'], target_name)
+  target = os.path.join(env['BIN_DEST_DIR'], target_name)
   env.InstallAs(target, lyx)
   Alias('install', target)
   #
   # install tex2lyx
   target_name = os.path.split(str(tex2lyx[0]))[1].replace('tex2lyx', 'tex2lyx%s' % program_suffix)
-  target = os.path.join(env['BIN_DIR'], target_name)
+  target = os.path.join(env['BIN_DEST_DIR'], target_name)
   env.InstallAs(target, tex2lyx)
   Alias('install', target)
   #
   # install lyxclient, may not exist
   if client != None:
     target_name = os.path.split(str(client[0]))[1].replace('client', 'client%s' % program_suffix)
-    target = os.path.join(env['BIN_DIR'], target_name)
+    target = os.path.join(env['BIN_DEST_DIR'], target_name)
     env.InstallAs(target, client)
     Alias('install', target)
   #
   # share/lyx
-  dirs = install(env['SHARE_DIR'],
+  dirs = install(env['SHARE_DEST_DIR'],
     [env.subst('$TOP_SRC_DIR/lib/') + file for file in ['configure.py', 'encodings',
      'chkconfig.ltx', 'CREDITS', 'external_templates', 'symbols', 'languages',
      'lyxrc.example', 'syntax.default', 'bind', 'images', 'layouts', 'scripts', 
      'templates', 'examples', 'kbd', 'lyx2lyx', 'tex', 'clipart', 'doc',  'ui']]
   )
-  env.substFile('$SHARE_DIR/lyx2lyx/lyx2lyx_version.py', 
+  env.substFile('$SHARE_DEST_DIR/lyx2lyx/lyx2lyx_version.py', 
     '$TOP_SRC_DIR/lib/lyx2lyx/lyx2lyx_version.py.in')
   Alias('install', dirs)
   # man
-  env.InstallAs(os.path.join(env['MAN_DIR'], 'lyx.1'),
+  env.InstallAs(os.path.join(env['MAN_DEST_DIR'], 'lyx.1'),
     env.subst('$TOP_SRC_DIR/lyx.man'))
-  env.InstallAs(os.path.join(env['MAN_DIR'], 'tex2lyx.1'),
+  env.InstallAs(os.path.join(env['MAN_DEST_DIR'], 'tex2lyx.1'),
     env.subst('$TOP_SRC_DIR/src/tex2lyx/tex2lyx.man'))
-  env.InstallAs(os.path.join(env['MAN_DIR'], 'lyxclient.1'),
+  env.InstallAs(os.path.join(env['MAN_DEST_DIR'], 'lyxclient.1'),
     env.subst('$TOP_SRC_DIR/src/client/lyxclient.man'))
-  Alias('install', [os.path.join(env['MAN_DIR'], x) for
+  Alias('install', [os.path.join(env['MAN_DEST_DIR'], x) for
     x in ['lyx.1', 'tex2lyx.1', 'lyxclient.1']])
   # locale files?
   # ru.gmo ==> ru/LC_MESSAGES/lyxSUFFIX.mo
   for gmo in gmo_files:
     lan = os.path.split(str(gmo))[1].split('.')[0]
-    dest_file = os.path.join(env['LOCALE_DIR'], lan, 'LC_MESSAGES', 'lyx' + env['PROGRAM_SUFFIX'] + '.mo')
+    dest_file = os.path.join(env['LOCALE_DEST_DIR'], lan, 'LC_MESSAGES', 'lyx' + env['PROGRAM_SUFFIX'] + '.mo')
     env.InstallAs(dest_file, gmo)
     Alias('install', dest_file)
 
