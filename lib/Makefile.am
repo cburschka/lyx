@@ -845,6 +845,7 @@ scriptsdir = $(pkgdatadir)/scripts
 # in install-data-hook.
 dist_scripts_DATA = \
 	scripts/TeXFiles.sh \
+	scripts/clean_dvi.py \
 	scripts/convertDefault.sh \
 	scripts/fen2ascii.py \
 	scripts/fig2pdftex.sh \

@@ -12,7 +12,7 @@
 
 # It asks whether the Qt and LyX cvs trees are up to date.
 # It asks whether the Qt library has been compiled.
-# It checks that qt-mt3.dll, mingw10.dll and clean_dvi.py exist.
+# It checks that qt-mt3.dll and mingw10.dll exist.
 # It compiles the dv2dt and dt2dv utilites.
 # It compiles and installs LyX.
 
@@ -30,7 +30,6 @@ QT_DIR="${HOME}"/Qt/3x-msys
 LYX_DIR="../../.."
 PACKAGING_DIR="$LYX_DIR/development/Win32/packaging"
 DTL_DIR="$PACKAGING_DIR/dtl"
-CLEAN_DVI_DIR="$PACKAGING_DIR"
 
 ASPELL_INSTALL_DIR="c:/Aspell"
 LYX_ASPELL_DIR="/c/Aspell" # the Autotools don't like "C:/" syntax.
@@ -43,7 +42,6 @@ MINGW_DLL="${MINGW_DIR}/bin/mingwm10.dll"
 
 DT2DV="${DTL_DIR}/dt2dv.exe"
 DV2DT="${DTL_DIR}/dv2dt.exe"
-CLEAN_DVI_PY="${CLEAN_DVI_DIR}/clean_dvi.py"
 
 # Change this to 'mv -f' when you are confident that
 # the various sed scripts are working correctly.
@@ -72,8 +70,8 @@ query_qt()
 
 check_files_exist()
 {
-    # Check that the dlls and clean_dvi.py exist
-    for file in "${QT_DLL}" "${MINGW_DLL}" "${CLEAN_DVI_PY}"
+    # Check that the dlls exist
+    for file in "${QT_DLL}" "${MINGW_DLL}"
     do
       test -r "${file}" || {
 	  echo "$file does not exist" >&2

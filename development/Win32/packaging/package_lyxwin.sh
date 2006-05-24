@@ -7,7 +7,6 @@
 #   qt-mt3.dll
 #   iconv.dll
 #   mingw10.dll
-#   clean_dvi.py
 #   dv2dt.exe
 #   dt2dv.exe
 
@@ -28,7 +27,6 @@
 QT_DLL="$HOME/Qt/3x-msys/bin/qt-mt3.dll"
 ICONV_DLL="/j/MinGW/bin/iconv.dll"
 MINGW_DLL="/j/MinGW/bin/mingwm10.dll"
-CLEAN_DVI_PY="clean_dvi.py"
 DTL_DIR=dtl
 DT2DV="$DTL_DIR/dt2dv.exe"
 DV2DT="$DTL_DIR/dv2dt.exe"
@@ -41,7 +39,7 @@ MV='mv -f'
 
 windows_packaging()
 {
-    # Install the necessary .dlls and clean_dvi stuff.
+    # Install the necessary .dlls.
     for file in "${QT_DLL}" "${ICONV_DLL}" "${MINGW_DLL}" "${DT2DV}" "${DV2DT}"
     do
       cp "${file}" "$LYX_INSTALL_DIR"/bin/. || {
@@ -49,11 +47,6 @@ windows_packaging()
 	  exit 1
       }
     done
-
-    cp "${CLEAN_DVI_PY}" "$LYX_INSTALL_DIR"/Resources/scripts/. || {
-	echo "Failed to copy ${CLEAN_DVI_PY} to the LyX package" >&2
-	exit 1
-    }
 
     # Strip the executables
     (
@@ -63,36 +56,6 @@ windows_packaging()
 	  strip $file
 	done
     )
-
-    # Modify the configure script,
-    # * add a dvi2 format
-    # * change the latex->dvi converter to latex->dvi2
-    # * add a dvi2->dvi converter
-    # * fix the generated chkconfig.sed so that it works with versions of
-    #   sed that get confused by sed scripts with DOS line endings.
-    TMP=tmp.$$
-    CONFIGURE="${LYX_INSTALL_DIR}"/Resources/configure
-    # Do this to make it easy to compare the before and after files.
-    dos2unix "${CONFIGURE}"
-    sed '
-# (Note that this sed script contains TAB characters.)
-# Append the dvi2 format after the dvi format.
-/^ *\\\\Format[	 ]\{1,\}dvi[	 ]\{1,\}/a\
-\\\\Format dvi2	  dvi	DraftDVI	""
-
-# Change the latex->dvi converter to latex->dvi2
-# and append the dvi2->dvi converter
-/^ *\\\\converter[	 ]\{1,\}latex[	 ]\{1,\}dvi[	 ]\{1,\}/{
-s/dvi/dvi2/
-a\
-\\\\converter dvi2 dvi "python \\\$\\\$s/scripts/clean_dvi.py \\\$\\\$i \\\$\\\$o" ""
-}
-' "${CONFIGURE}" > "${TMP}"
-    cmp -s "${CONFIGURE}" "${TMP}" || {
-	diff -u "${CONFIGURE}" "${TMP}"
-	${MV} "${TMP}" "${CONFIGURE}"
-    }
-    rm -f "${TMP}"
 
     # Strip the executables
     (
