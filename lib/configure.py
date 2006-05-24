@@ -168,8 +168,17 @@ def checkProg(description, progs, rc_entry = [], path = [] ):
 def checkLatex():
   ''' Check latex, return lyx_check_config '''
   # Find programs! Returned path is not used now
-  path, LATEX = checkProg( 'a Latex2e program', ['pplatex $$i', 'latex $$i', 'latex2e $$i'],
-    rc_entry = [ r'\converter latex      dvi        "%%"	"latex"' ] )
+  if os.name == 'nt' or sys.platform == 'cygwin':
+    # Windows only: DraftDVI
+    if checkProg('DVI to DTL converter', ['dv2dt']) != ['', 'none'] and checkProg('DTL to DVI converter', ['dt2dv']) != ['', 'none']:
+      converter_entry = r'''\converter latex      dvi2       "%%"	"latex"
+\converter dvi2       dvi        "python $$s/scripts/clean_dvi.py $$i $$o"	""'''
+    else:
+      converter_entry = r'\converter latex      dvi        "%%"	"latex"'
+  else:
+    converter_entry = r'\converter latex      dvi        "%%"	"latex"'
+  path, LATEX = checkProg('a Latex2e program', ['pplatex $$i', 'latex $$i', 'latex2e $$i'],
+    rc_entry = [converter_entry])
   # no latex
   if LATEX != 'none':
     # Check if latex is usable
@@ -248,6 +257,10 @@ def checkFormatEntries():
   #
   checkProg('a DVI previewer', ['xdvi', 'kdvi'],
     rc_entry = [ r'\Format dvi        dvi     DVI                    D  "%%"	""	"document"' ])
+  if os.name == 'nt' or sys.platform == 'cygwin':
+    # Windows only: DraftDVI
+    if checkProg('DVI to DTL converter', ['dv2dt']) != ['', 'none'] and checkProg('DTL to DVI converter', ['dt2dv']) != ['', 'none']:
+      addToRC(r'\Format dvi2       dvi     DraftDVI               "" ""	"document"')
   #
   checkProg('a HTML previewer', ['mozilla file://$$p$$i', 'netscape'],
     rc_entry = [ r'\Format html       html    HTML                   H  "%%"	""	"document"' ])
