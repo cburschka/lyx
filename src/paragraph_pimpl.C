@@ -379,10 +379,10 @@ bool Paragraph::Pimpl::erase(pos_type pos)
 
 	if (tracking()) {
 		Change::Type changetype(changes_->lookup(pos));
-
+		if (pos < size())
+			changes_->record(Change(Change::DELETED), pos);
 		// only allow the actual removal if it was /new/ text
 		if (changetype != Change::INSERTED) {
-			changes_->record(Change(Change::DELETED), pos);
 			if (pos < size() && owner_->isInset(pos))
 				owner_->getInset(pos)->markErased(true);
 			return false;
