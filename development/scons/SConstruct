@@ -666,7 +666,7 @@ if not fast_start:
   # of *used-by-lyx* macros compiled by Abdelrazak Younes <younes.a@free.fr>
   #
   # Note: addToConfig etc are defined in scons_util
-  utils.startConfigH(TOP_SRC_DIR)
+  utils.startConfigH()
 
   # HAVE_IO_H
   # HAVE_LIMITS_H
@@ -680,11 +680,26 @@ if not fast_start:
   # HAVE_SYS_UTIME_H
   # HAVE_UNISTD_H
   # HAVE_UTIME_H
-  # HAVE_STRING_H
   # HAVE_STRINGS_H
   # HAVE_ISTREAM
   # HAVE_OSTREAM
   # HAVE_IOS
+
+  # for libintl % grep HAVE * | grep _H | cut -d: -f2 | sort -u
+  
+  # HAVE_STDINT_H_WITH_UINTMAX
+  # HAVE_INTTYPES_H_WITH_UINTMAX
+  # 
+  # HAVE_INTTYPES_H
+  # HAVE_STDINT_H
+  # HAVE_ALLOCA_H
+  # HAVE_STDLIB_H
+  # HAVE_STRING_H
+  # HAVE_STDDEF_H
+  # HAVE_LIMITS_H
+  # HAVE_ARGZ_H
+  # HAVE_UNISTD_H
+  # HAVE_SYS_PARAM_H
 
   # Check header files
   headers = [
@@ -707,15 +722,21 @@ if not fast_start:
     ('istream', 'HAVE_ISTREAM', 'cxx'),
     ('ostream', 'HAVE_OSTREAM', 'cxx'),
     ('ios', 'HAVE_IOS', 'cxx'),
+    ('argz.h', 'HAVE_ARGZ_H', 'c'),
+    ('limits.h', 'HAVE_LIMITS_H', 'c'),
+    ('alloca.h', 'HAVE_ALLOCA_H', 'c'),
+    ('stddef.h', 'HAVE_STDDEF_H', 'c'),
+    ('stdint.h', 'HAVE_STDINT_H', 'c'),
+    ('sys/param.h', 'HAVE_SYS_PARAM_H', 'c')
   ]
 
   for header in headers:
-    utils.addToConfig("/* Define to 1 if you have the <%s> header file. */" % header[0], TOP_SRC_DIR, newline=1)
+    utils.addToConfig("/* Define to 1 if you have the <%s> header file. */" % header[0], newline=1)
     if (header[2] == 'c' and conf.CheckCHeader(header[0])) or \
       (header[2] == 'cxx' and conf.CheckCXXHeader(header[0])):
-      utils.addToConfig('#define %s 1' % header[1], TOP_SRC_DIR)
+      utils.addToConfig('#define %s 1' % header[1])
     else:
-      utils.addToConfig('/* #undef %s */' % header[1], TOP_SRC_DIR)
+      utils.addToConfig('/* #undef %s */' % header[1])
 
   # HAVE_OPEN
   # HAVE_CLOSE
@@ -739,6 +760,21 @@ if not fast_start:
   # HAVE_STRCASECMP 
   # HAVE_STRDUP
   # HAVE_STRTOUL
+  # HAVE_WCSLEN
+  # HAVE_MMAP ?
+  # HAVE_ALLOCA
+  # HAVE___FSETLOCKING
+  # HAVE_MEMPCPY
+  # HAVE_STRCASECMP
+  # HAVE___ARGZ_COUNT
+  # HAVE___ARGZ_NEXT
+  # HAVE___ARGZ_STRINGIFY
+  # HAVE___FSETLOCKING
+  # HAVE_GETCWD 
+  # HAVE_STRTOUL  
+  # HAVE_STRCASECMP
+  # HAVE_STRDUP
+  # HAVE_TSEARCH 
 
   # Check functions
   functions = [
@@ -770,7 +806,19 @@ int count()
     ('stpcpy', 'HAVE_STPCPY', None),
     ('strcasecmp', 'HAVE_STRCASECMP', None),
     ('strdup', 'HAVE_STRDUP', None),
-    ('strtoul', 'HAVE_STRTOUL', None)
+    ('strtoul', 'HAVE_STRTOUL', None),
+    ('alloca', 'HAVE_ALLOCA', None),
+    ('__fsetlocking', 'HAVE___FSETLOCKING', None),
+    ('mempcpy', 'HAVE_MEMPCPY', None),
+    ('__argz_count', 'HAVE___ARGZ_COUNT', None),
+    ('__argz_next', 'HAVE___ARGZ_NEXT', None),
+    ('__argz_stringify', 'HAVE___ARGZ_STRINGIFY', None),
+    ('setlocale', 'HAVE_SETLOCALE', None),
+    ('tsearch', 'HAVE_TSEARCH', None),
+    ('getegid', 'HAVE_GETEGID', None),
+    ('getgid', 'HAVE_GETGID', None),
+    ('getuid', 'HAVE_GETUID', None),
+    ('wcslen', 'HAVE_WCSLEN', None)
   ]
 
   # HAVE_ASPRINTF
@@ -780,11 +828,11 @@ int count()
   # HAVE_FCNTL
   
   for func in functions:
-    utils.addToConfig("/* Define to 1 if you have the `%s' function. */" % func[0], TOP_SRC_DIR, newline=1)
+    utils.addToConfig("/* Define to 1 if you have the `%s' function. */" % func[0], newline=1)
     if conf.CheckFunc(func[0], header=func[2]):
-      utils.addToConfig('#define %s 1' % func[1], TOP_SRC_DIR)
+      utils.addToConfig('#define %s 1' % func[1])
     else:
-      utils.addToConfig('/* #undef %s */' % func[1], TOP_SRC_DIR)
+      utils.addToConfig('/* #undef %s */' % func[1])
 
   env_functions = [
     ('asprintf', 'HAVE_ASPRINTF'),
@@ -795,45 +843,55 @@ int count()
   ]
 
   for func in env_functions:
-    utils.addToConfig("/* Define to 1 if you have the `%s' function. */" % func[0], TOP_SRC_DIR, newline=1)
+    utils.addToConfig("/* Define to 1 if you have the `%s' function. */" % func[0], newline=1)
     if conf.CheckFunc(func[0]):
-      utils.addToConfig('#define %s 1' % func[1], TOP_SRC_DIR)
+      utils.addToConfig('#define %s 1' % func[1])
       env[func[1]] = 1
     else:
-      utils.addToConfig('/* #undef %s */' % func[1], TOP_SRC_DIR)
+      utils.addToConfig('/* #undef %s */' % func[1])
       env[func[1]] = 0
 
   # HAVE_INTMAX_T
   # HAVE_INTTYPES_H_WITH_UINTMAX 
   # HAVE_DECL_ISTREAMBUF_ITERATOR
-  utils.addToConfig("/* Define to 1 if you have the `intmax_t' type. */", TOP_SRC_DIR, newline=1)
+  utils.addToConfig("/* Define to 1 if you have the `intmax_t' type. */", newline=1)
   if conf.CheckType('intmax_t', includes='#include <stdint.h>') or \
     conf.CheckType('intmax_t', includes='#include <inttypes.h>'):
-    utils.addToConfig('#define HAVE_INTMAX_T 1', TOP_SRC_DIR)
+    utils.addToConfig('#define HAVE_INTMAX_T 1')
   else:
-    utils.addToConfig('/* #undef HAVE_INTMAX_T */', TOP_SRC_DIR)
+    utils.addToConfig('/* #undef HAVE_INTMAX_T */')
 
-  utils.addToConfig("/* Define to 1 if you have the `uintmax_t' type. */", TOP_SRC_DIR, newline=1)
-  if conf.CheckType('uintmax_t', includes='#include <inttypes.h>'):
-    utils.addToConfig('#define HAVE_INTTYPES_H_WITH_UINTMAX  1', TOP_SRC_DIR)
-  else:
-    utils.addToConfig('/* #undef HAVE_INTTYPES_H_WITH_UINTMAX  */', TOP_SRC_DIR)
-    
-  utils.addToConfig("/* Define to 1 if you have the `istreambug_iterator' type. */", TOP_SRC_DIR, newline=1)
-  if conf.CheckType('std::istreambuf_iterator<std::istream>', 
-    includes='#include <streambuf>\n#include <istream>'):
-    utils.addToConfig('#define HAVE_DECL_ISTREAMBUF_ITERATOR 1', TOP_SRC_DIR)
-  else:
-    utils.addToConfig('/* #undef HAVE_DECL_ISTREAMBUF_ITERATOR */', TOP_SRC_DIR)
-      
+  # HAVE_INTMAX_T
+  # HAVE_LONG_DOUBLE
+  # HAVE_LONG_LONG
+  # HAVE_WCHAR_T
+  # HAVE_WINT_T
+  # HAVE_INTTYPES_H_WITH_UINTMAX 
+  
+  types = [
+    ('intmax_t', 'HAVE_INTMAX_T', None),
+    ('long double', 'HAVE_LONG_DOUBLE', None),
+    ('long long', 'HAVE_LONG_LONG', None),
+    ('wchar_t', 'HAVE_WCHAR_T', None),
+    ('wint_t', 'HAVE_WINT_T', None),
+    ('uintmax_t', 'HAVE_INTTYPES_H_WITH_UINTMAX', '#include <inttypes.h>'),
+    ('std::istreambuf_iterator<std::istream>', 'HAVE_DECL_ISTREAMBUF_ITERATOR',
+      '#include <streambuf>\n#include <istream>')
+  ]
+  for t in types: 
+    utils.addToConfig("/* Define to 1 if you have the `%s' type. */" % t[0], newline=1)
+    if conf.CheckType(t[0], includes=t[2]):
+      utils.addToConfig('#define %s 1' % t[1])
+    else:
+      utils.addToConfig('/* #undef %s */' % t[1])
   
   # PACKAGE
   # PACKAGE_VERSION
   # DEVEL_VERSION
-  utils.addToConfig('#define PACKAGE "%s%s"' % (PACKAGE, env['PROGRAM_SUFFIX']), TOP_SRC_DIR)
-  utils.addToConfig('#define PACKAGE_VERSION "%s"' % PACKAGE_VERSION, TOP_SRC_DIR)
+  utils.addToConfig('#define PACKAGE "%s%s"' % (PACKAGE, env['PROGRAM_SUFFIX']))
+  utils.addToConfig('#define PACKAGE_VERSION "%s"' % PACKAGE_VERSION)
   if DEVEL_VERSION:
-    utils.addToConfig('#define DEVEL_VERSION 1', TOP_SRC_DIR)
+    utils.addToConfig('#define DEVEL_VERSION 1')
 
   # ENABLE_ASSERTIONS
   # ENABLE_NLS
@@ -851,22 +909,22 @@ int count()
   for val in values:
     if (env.has_key(val[0]) and env[val[0]]) or \
         ARGUMENTS.get(val[1]):
-      utils.addToConfig('#define %s 1' % val[0], TOP_SRC_DIR)
+      utils.addToConfig('#define %s 1' % val[0])
     else:
-      utils.addToConfig('/* #undef %s */' % val[0], TOP_SRC_DIR)
+      utils.addToConfig('/* #undef %s */' % val[0])
 
 
   env['EXTRA_LIBS'] = []
   # HAVE_LIBAIKSAURUS
   # AIKSAURUS_H_LOCATION
   if conf.CheckLib('Aiksaurus'):
-    utils.addToConfig("#define HAVE_LIBAIKSAURUS 1", TOP_SRC_DIR)
+    utils.addToConfig("#define HAVE_LIBAIKSAURUS 1")
     if (conf.CheckCXXHeader("Aiksaurus.h")):
-      utils.addToConfig("#define AIKSAURUS_H_LOCATION <Aiksaurus.h>", TOP_SRC_DIR)
+      utils.addToConfig("#define AIKSAURUS_H_LOCATION <Aiksaurus.h>")
     elif (conf.CheckCXXHeader("Aiksaurus/Aiksaurus.h")):
-      utils.addToConfig("#define AIKSAURUS_H_LOCATION <Aiksaurus/Aiksaurus.h>", TOP_SRC_DIR)
+      utils.addToConfig("#define AIKSAURUS_H_LOCATION <Aiksaurus/Aiksaurus.h>")
     else:
-      utils.addToConfig("#define AIKSAURUS_H_LOCATION", TOP_SRC_DIR)
+      utils.addToConfig("#define AIKSAURUS_H_LOCATION")
     env['EXTRA_LIBS'].append('Aiksaurus')
 
   # USE_ASPELL
@@ -878,7 +936,7 @@ int count()
   spell_detected = False
   if spell_engine in ['auto', 'aspell'] and \
     conf.CheckLib('aspell'):
-    utils.addToConfig('#define USE_ASPELL 1', TOP_SRC_DIR)
+    utils.addToConfig('#define USE_ASPELL 1')
     env['USE_ASPELL'] = True
     env['USE_PSPELL'] = False
     env['USE_ISPELL'] = False
@@ -886,7 +944,7 @@ int count()
     spell_detected = True
   elif spell_engine in ['auto', 'pspell'] and \
     conf.CheckLib('pspell'):
-    utils.addToConfig('#define USE_PSPELL 1', TOP_SRC_DIR)
+    utils.addToConfig('#define USE_PSPELL 1')
     env['USE_ASPELL'] = False
     env['USE_PSPELL'] = True
     env['USE_ISPELL'] = False
@@ -894,7 +952,7 @@ int count()
     spell_detected = True
   elif spell_engine in ['auto', 'ispell'] and \
     conf.CheckLib('ispell'):
-    utils.addToConfig('#define USE_ISPELL 1', TOP_SRC_DIR)
+    utils.addToConfig('#define USE_ISPELL 1')
     env['USE_ASPELL'] = False
     env['USE_PSPELL'] = False
     env['USE_ISPELL'] = True
@@ -915,31 +973,31 @@ int count()
   # USE_MACOSX_PACKAGING
   # USE_WINDOWS_PACKAGING
   if packaging_method == 'windows':
-    utils.addToConfig('#define USE_WINDOWS_PACKAGING 1', TOP_SRC_DIR)
+    utils.addToConfig('#define USE_WINDOWS_PACKAGING 1')
   elif packaging_method == 'posix':
-    utils.addToConfig('#define USE_POSIX_PACKAGING 1', TOP_SRC_DIR)
+    utils.addToConfig('#define USE_POSIX_PACKAGING 1')
   elif packaging_method == 'mac':
-    utils.addToConfig('#define USE_MACOSX_PACKAGING 1', TOP_SRC_DIR)
+    utils.addToConfig('#define USE_MACOSX_PACKAGING 1')
 
   # BOOST_POSIX
   if boost_posix:
-    utils.addToConfig('#define BOOST_POSIX 1', TOP_SRC_DIR)
+    utils.addToConfig('#define BOOST_POSIX 1')
   else:
-    utils.addToConfig('/* #undef BOOST_POSIX */', TOP_SRC_DIR)
+    utils.addToConfig('/* #undef BOOST_POSIX */')
 
   # MKDIR_TAKES_ONE_ARG
   if conf.CheckMkdirOneArg():
-    utils.addToConfig('#define MKDIR_TAKES_ONE_ARG 1', TOP_SRC_DIR)
+    utils.addToConfig('#define MKDIR_TAKES_ONE_ARG 1')
   else:
-    utils.addToConfig('/* #undef MKDIR_TAKES_ONE_ARG */', TOP_SRC_DIR)
+    utils.addToConfig('/* #undef MKDIR_TAKES_ONE_ARG */')
 
   # SELECT_TYPE_ARG1
   # SELECT_TYPE_ARG234
   # SELECT_TYPE_ARG5
   (arg1, arg234, arg5) = conf.CheckSelectArgType()
-  utils.addToConfig('#define SELECT_TYPE_ARG1 %s' % arg1, TOP_SRC_DIR)
-  utils.addToConfig('#define SELECT_TYPE_ARG234 %s' % arg234, TOP_SRC_DIR)
-  utils.addToConfig('#define SELECT_TYPE_ARG5 %s' % arg5, TOP_SRC_DIR)
+  utils.addToConfig('#define SELECT_TYPE_ARG1 %s' % arg1)
+  utils.addToConfig('#define SELECT_TYPE_ARG234 %s' % arg234)
+  utils.addToConfig('#define SELECT_TYPE_ARG5 %s' % arg5)
 
   # mkstemp
   # USE_BOOST_FORMAT
