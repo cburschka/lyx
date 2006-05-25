@@ -689,7 +689,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 			if (lyx::support::rename(temp_file, new_file)) {
 				temp_file = new_file;
 				output_file = ChangeExtension(output_file, ext);
-				source_file = ChangeExtension(output_file, ext);
+				source_file = ChangeExtension(source_file, ext);
 			} else
 				lyxerr[Debug::GRAPHICS]
 					<< "Could not rename file `"
