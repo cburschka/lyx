@@ -176,7 +176,7 @@ string fixCommand(string const & cmd, string const & ext,
 		return "auto";
 
 	// if configure.py found nothing, clear the command
-	if (token(cmd, ' ', 0) == "none")
+	if (token(cmd, ' ', 0) == "auto")
 		return string();
 
 	// use the command found by configure.py

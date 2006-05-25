@@ -1794,6 +1794,25 @@ odify
 \end_layout
 
 \begin_layout Standard
+If the operating system has a default viewer associated to a format it is
+ used instead of the one you can define via the 
+\family sans
+\bar under
+T
+\bar default
+ools\SpecialChar \menuseparator
+
+\bar under
+P
+\bar default
+references:Conversion
+\family default
+ dialog.
+ This does currently only work in the Windows® port of LyX, but it is planned
+ to implement this feature on all other ports that can support it, too.
+\end_layout
+
+\begin_layout Standard
 Editors are like viewers: Each Format can have an Editor associated to it,
  and they can be altered via the 
 \family sans
