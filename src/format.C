@@ -165,15 +165,15 @@ string fixCommand(string const & cmd, string const & ext,
 		  os::auto_open_mode mode)
 {
 	// configure.py says we do not want a viewer/editor
-	if (cmd.empty())
-		return cmd;
+	if (cmd.empty() || cmd == "none")
+		return string();
 
 	// Does the OS manage this format?
 	if (os::canAutoOpenFile(ext, mode))
 		return "auto";
 
 	// if configure.py found nothing, clear the command
-	if (token(cmd, ' ', 0) == "none")
+	if (token(cmd, ' ', 0) == "auto")
 		return string();
 
 	// use the command found by configure.py

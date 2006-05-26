@@ -111,7 +111,7 @@ def checkCygwinPath(srcdir):
 
 
 ## Searching some useful programs
-def checkProg(description, progs, rc_entry = [], path = [] ):
+def checkProg(description, progs, rc_entry = [], path = [], not_found = ''):
   '''
     This function will search a program in $PATH plus given path
     If found, return directory and program name (not the options).
@@ -127,16 +127,19 @@ def checkProg(description, progs, rc_entry = [], path = [] ):
     rc_entry: entry to outfile, can be
       1. emtpy: no rc entry will be added
       2. one pattern: %% will be replaced by the first found program,
-         or 'none' is no program is found.
-      3. several patterns for each prog and 'none'. This is used 
+         or '' if no program is found.
+      3. several patterns for each prog and not_found. This is used 
          when different programs have different usages. If you do not 
-         want 'none' entry to be added to the RC file, you can specify 
-         an entry for each prog and use '' for the 'none' entry.
+         want not_found entry to be added to the RC file, you can specify 
+         an entry for each prog and use '' for the not_found entry.
+
+    not_found: the value that should be used instead of '' if no program
+      was found
 
   '''
-  # one rc entry for each progs plus none entry
+  # one rc entry for each progs plus not_found entry
   if len(rc_entry) > 1 and len(rc_entry) != len(progs) + 1:
-    print "rc entry should have one item or item for each prog and none."
+    print "rc entry should have one item or item for each prog and not_found."
     sys.exit(2)
   print 'checking for ' + description + '...'
   ## print '(' + ','.join(progs) + ')',
@@ -161,26 +164,30 @@ def checkProg(description, progs, rc_entry = [], path = [] ):
     print ' no'
   # write rc entries for 'not found'
   if len(rc_entry) > 0:  # the last one.
-    addToRC(rc_entry[-1].replace('%%', 'none'))
-  return ['', 'none']
+    addToRC(rc_entry[-1].replace('%%', not_found))
+  return ['', not_found]
+
+
+def checkViewer(description, progs, rc_entry = [], path = []):
+  ''' The same as checkProg, but for viewers and editors '''
+  return checkProg(description, progs, rc_entry, path, not_found = 'auto')
 
 
 def checkLatex():
   ''' Check latex, return lyx_check_config '''
   # Find programs! Returned path is not used now
-  if os.name == 'nt' or sys.platform == 'cygwin':
+  if ((os.name == 'nt' or sys.platform == 'cygwin') and
+      checkProg('DVI to DTL converter', ['dv2dt']) != ['', ''] and
+      checkProg('DTL to DVI converter', ['dt2dv']) != ['', '']):
     # Windows only: DraftDVI
-    if checkProg('DVI to DTL converter', ['dv2dt']) != ['', 'none'] and checkProg('DTL to DVI converter', ['dt2dv']) != ['', 'none']:
-      converter_entry = r'''\converter latex      dvi2       "%%"	"latex"
+    converter_entry = r'''\converter latex      dvi2       "%%"	"latex"
 \converter dvi2       dvi        "python $$s/scripts/clean_dvi.py $$i $$o"	""'''
-    else:
-      converter_entry = r'\converter latex      dvi        "%%"	"latex"'
   else:
     converter_entry = r'\converter latex      dvi        "%%"	"latex"'
   path, LATEX = checkProg('a Latex2e program', ['pplatex $$i', 'latex $$i', 'latex2e $$i'],
     rc_entry = [converter_entry])
   # no latex
-  if LATEX != 'none':
+  if LATEX != '':
     # Check if latex is usable
     writeToFile('chklatex.ltx', '''
 \\nonstopmode\\makeatletter
@@ -202,20 +209,20 @@ def checkLatex():
 
 def checkFormatEntries():  
   ''' Check all formats (\Format entries) '''
-  checkProg('a Tgif viewer and editor', ['tgif'],
-    rc_entry = [ r'\Format tgif       obj     Tgif                   "" "%%"	"%%"'])
+  checkViewer('a Tgif viewer and editor', ['tgif'],
+    rc_entry = [r'\Format tgif       obj     Tgif                   "" "%%"	"%%"'])
   #
-  checkProg('a FIG viewer and editor', ['xfig'],
-    rc_entry = [ r'\Format fig        fig     FIG                    "" "%%"	"%%"'] )
+  checkViewer('a FIG viewer and editor', ['xfig'],
+    rc_entry = [r'\Format fig        fig     FIG                    "" "%%"	"%%"'])
   #
-  checkProg('a Grace viewer and editor', ['xmgrace'],
-    rc_entry = [ r'\Format agr        agr     Grace                  "" "%%"	"%%"'] )
+  checkViewer('a Grace viewer and editor', ['xmgrace'],
+    rc_entry = [r'\Format agr        agr     Grace                  "" "%%"	"%%"'])
   #
-  checkProg('a FEN viewer and editor', ['xboard -lpf $$i -mode EditPosition'],
-    rc_entry = [ r'\Format fen        fen     FEN                    "" "%%"	"%%"' ])
+  checkViewer('a FEN viewer and editor', ['xboard -lpf $$i -mode EditPosition'],
+    rc_entry = [r'\Format fen        fen     FEN                    "" "%%"	"%%"'])
   #
-  path, iv = checkProg('a raster image viewer', ['xv', 'kview', 'gimp'])
-  path, ie = checkProg('a raster image editor', ['gimp'])
+  path, iv = checkViewer('a raster image viewer', ['xv', 'kview', 'gimp'])
+  path, ie = checkViewer('a raster image editor', ['gimp'])
   addToRC(r'''\Format bmp        bmp     BMP                    "" "%s"	"%s"
 \Format gif        gif     GIF                    "" "%s"	"%s"
 \Format jpg        jpg     JPEG                   "" "%s"	"%s"
@@ -228,9 +235,9 @@ def checkFormatEntries():
 \Format xpm        xpm     XPM                    "" "%s"	"%s"''' % \
     (iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie) )
   #
-  checkProg('a text editor', ['xemacs', 'gvim', 'kedit', 'kwrite', 'kate', \
+  checkViewer('a text editor', ['xemacs', 'gvim', 'kedit', 'kwrite', 'kate', \
     'nedit', 'gedit', 'notepad'],
-    rc_entry = [ r'''\Format asciichess asc    "Plain text (chess output)"  "" ""	"%%"
+    rc_entry = [r'''\Format asciichess asc    "Plain text (chess output)"  "" ""	"%%"
 \Format asciiimage asc    "Plain text (image)"         "" ""	"%%"
 \Format asciixfig  asc    "Plain text (Xfig output)"   "" ""	"%%"
 \Format dateout    tmp    "date (output)"         "" ""	"%%"
@@ -245,25 +252,26 @@ def checkFormatEntries():
   #
   #checkProg('a Postscript interpreter', ['gs'],
   #  rc_entry = [ r'\ps_command "%%"' ])
-  checkProg('a Postscript previewer', ['gv', 'ghostview -swap', 'kghostview'],
-    rc_entry = [ r'''\Format eps        eps     EPS                    "" "%%"	""
-\Format ps         ps      Postscript             t  "%%"	""''' ])
+  checkViewer('a Postscript previewer', ['gv', 'ghostview -swap', 'kghostview'],
+    rc_entry = [r'''\Format eps        eps     EPS                    "" "%%"	""
+\Format ps         ps      Postscript             t  "%%"	""'''])
   #
-  checkProg('a PDF previewer', ['acrobat', 'acroread', 'gv', 'ghostview', \
+  checkViewer('a PDF previewer', ['acrobat', 'acroread', 'gv', 'ghostview', \
               'xpdf', 'kpdf', 'kghostview'],
-    rc_entry = [ r'''\Format pdf        pdf    "PDF (ps2pdf)"          P  "%%"	""
+    rc_entry = [r'''\Format pdf        pdf    "PDF (ps2pdf)"          P  "%%"	""
 \Format pdf2       pdf    "PDF (pdflatex)"        F  "%%"	""
-\Format pdf3       pdf    "PDF (dvipdfm)"         m  "%%"	""''' ])
+\Format pdf3       pdf    "PDF (dvipdfm)"         m  "%%"	""'''])
   #
-  checkProg('a DVI previewer', ['xdvi', 'kdvi'],
-    rc_entry = [ r'\Format dvi        dvi     DVI                    D  "%%"	""' ])
-  if os.name == 'nt' or sys.platform == 'cygwin':
+  checkViewer('a DVI previewer', ['xdvi', 'kdvi'],
+    rc_entry = [r'\Format dvi        dvi     DVI                    D  "%%"	""'])
+  if ((os.name == 'nt' or sys.platform == 'cygwin') and
+      checkProg('DVI to DTL converter', ['dv2dt']) != ['', ''] and
+      checkProg('DTL to DVI converter', ['dt2dv']) != ['', '']):
     # Windows only: DraftDVI
-    if checkProg('DVI to DTL converter', ['dv2dt']) != ['', 'none'] and checkProg('DTL to DVI converter', ['dt2dv']) != ['', 'none']:
-      addToRC(r'\Format dvi2       dvi     DraftDVI               "" ""	""')
+    addToRC(r'\Format dvi2       dvi     DraftDVI               ""	""')
   #
-  checkProg('a HTML previewer', ['mozilla file://$$p$$i', 'netscape'],
-    rc_entry = [ r'\Format html       html    HTML                   H  "%%"	""' ])
+  checkViewer('a HTML previewer', ['mozilla file://$$p$$i', 'netscape'],
+    rc_entry = [r'\Format html       html    HTML                   H  "%%"	""'])
   #
   # entried that do not need checkProg
   addToRC(r'''\Format date       ""     "date command"          "" ""	""
@@ -394,11 +402,11 @@ def checkLinuxDoc():
 \converter linuxdoc   latex      "sgml2latex $$i"	""
 \converter linuxdoc   dvi        "sgml2latex -o dvi $$i"	""
 \converter linuxdoc   html       "sgml2html $$i"	""''',
-    r'''\converter linuxdoc   lyx        "none"	""
-\converter linuxdoc   latex      "none"	""
-\converter linuxdoc   dvi        "none"	""
-\converter linuxdoc   html       "none"	""''' ])
-  if LINUXDOC != 'none':
+    r'''\converter linuxdoc   lyx        ""	""
+\converter linuxdoc   latex      ""	""
+\converter linuxdoc   dvi        ""	""
+\converter linuxdoc   html       ""	""''' ])
+  if LINUXDOC != '':
     return ('yes', 'true', '\\def\\haslinuxdoc{yes}')
   else:
     return ('no', 'false', '')
@@ -412,10 +420,10 @@ def checkDocBook():
 \converter docbook    html       "sgmltools -b html $$i"	""''',
       r'''\converter docbook    dvi        "db2dvi $$i"	""
 \converter docbook    html       "db2html $$i"	""''',
-      r'''\converter docbook    dvi        "none"	""
-\converter docbook    html       "none"	""'''])
+      r'''\converter docbook    dvi        ""	""
+\converter docbook    html       ""	""'''])
   #
-  if DOCBOOK != 'none':
+  if DOCBOOK != '':
     return ('yes', 'true', '\\def\\hasdocbook{yes}')
   else:
     return ('no', 'false', '')
@@ -427,7 +435,7 @@ def checkOtherEntries():
     rc_entry = [
       r'\ascii_roff_command "groff -t -Tlatin1 $$FName"',
       r'\ascii_roff_command "tbl $$FName | nroff"',
-      r'\ascii_roff_command "none"' ])
+      r'\ascii_roff_command ""' ])
   checkProg('ChkTeX', ['chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38'],
     rc_entry = [ r'\chktex_command "%%"' ])
   checkProg('a spellchecker', ['ispell'],

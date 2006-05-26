@@ -2926,7 +2926,7 @@ void FormPreferences::SpellOptions::apply(LyXRC & rc)
 	rc.isp_command = choice;
 
 #if 0
-	// If spellchecker == "none", all other input set to off.
+	// If spellchecker == "", all other input set to off.
 	if (fl_get_choice(dialog_->choice_spell_command) == 1) {
 		rc.isp_use_alt_lang = false;
 		rc.isp_alt_lang.erase();
@@ -3040,7 +3040,7 @@ bool FormPreferences::SpellOptions::input(FL_OBJECT const * const ob)
 	// otherwise the function is called by an xforms CB via input().
 
 #if 0
-	// If spellchecker == "none", disable all input.
+	// If spellchecker == "", disable all input.
 	if (!ob || ob == dialog_->choice_spell_command) {
 		if (fl_get_choice(dialog_->choice_spell_command) == 1) {
 			fl_deactivate_object(dialog_->check_alt_lang);
@@ -3091,7 +3091,7 @@ void FormPreferences::SpellOptions::update(LyXRC const & rc)
 {
 	int choice = 1;
 #if 0
-	if (rc.isp_command == "none")
+	if (rc.isp_command == "" || rc.isp_command == "none")
 		choice = 1;
 	else if (rc.isp_command == "ispell")
 		choice = 2;
