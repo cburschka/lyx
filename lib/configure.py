@@ -336,7 +336,7 @@ def checkConverterEntries():
   checkProg('a DVI to PS converter', ['dvips -o $$o $$i'],
     rc_entry = [ r'\converter dvi        ps         "%%"	""' ])
   #
-  checkProg('a DVI to PDF converter', ['dvipdfm $$i'],
+  checkProg('a DVI to PDF converter', ['dvipdfmx $$i', 'dvipdfm $$i'],
     rc_entry = [ r'\converter dvi        pdf3       "%%"	""' ])
   #
   path, dvipng = checkProg('dvipng', ['dvipng'])
