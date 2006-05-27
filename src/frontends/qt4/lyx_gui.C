@@ -152,6 +152,13 @@ bool LQApplication::macEventFilter(EventRef event)
 #endif
 
 
+namespace {
+
+LQApplication * app = 0;
+
+}
+
+
 namespace lyx_gui {
 
 bool use_gui = true;
@@ -161,16 +168,16 @@ void parse_init(int & argc, char * argv[])
 	// Force adding of font path _before_ QApplication is initialized
 	FontLoader::initFontPath();
 
-	static LQApplication app(argc, argv);
+	app = new LQApplication(argc, argv);
 
 	// install translation file for Qt built-in dialogs
 	// These are only installed since Qt 3.2.x
 	static QTranslator qt_trans(0);
 	if (qt_trans.load(QString("qt_") + QTextCodec::locale(),
 			  qInstallPathTranslations())) {
-		app.installTranslator(&qt_trans);
+		qApp->installTranslator(&qt_trans);
 		// even if the language calls for RtL, don't do that
-		app.setReverseLayout(false);
+		qApp->setReverseLayout(false);
 		lyxerr[Debug::GUI]
 			<< "Successfully installed Qt translations for locale "
 			<< QTextCodec::locale() << std::endl;
@@ -274,6 +281,7 @@ void start(string const & batch, vector<string> const & files)
 	delete lyxsocket;
 	delete lyxserver;
 	lyxserver = 0;
+	delete app;
 }
 
 
