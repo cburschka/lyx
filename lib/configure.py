@@ -209,7 +209,7 @@ def checkLatex():
 
 def checkFormatEntries():  
   ''' Check all formats (\Format entries) '''
-  checkViewer('a Tif viewer and editor', ['tgif'],
+  checkViewer('a Tgif viewer and editor', ['tgif'],
     rc_entry = [r'\Format tgif       obj     Tgif                   "" "%%"	"%%"	""'])
   #
   checkViewer('a FIG viewer and editor', ['xfig'],
