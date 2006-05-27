@@ -74,8 +74,12 @@ LyXServerSocket::LyXServerSocket(LyXFunc * f, string const & addr)
 // Close the socket and remove the address of the filesystem.
 LyXServerSocket::~LyXServerSocket()
 {
-	lyx_gui::unregister_socket_callback(fd_);
-	::close(fd_);
+	if (fd_ != -1) {
+		lyx_gui::unregister_socket_callback(fd_);
+		if (::close(fd_) != 0)
+			lyxerr << "lyx: Server socket " << fd_
+			       << " IO error on closing: " << strerror(errno);
+	}
 	lyx::support::unlink(address_);
 	lyxerr[Debug::LYXSERVER] << "lyx: Server socket quitting" << endl;
 }
@@ -201,7 +205,9 @@ LyXDataSocket::LyXDataSocket(int fd)
 
 LyXDataSocket::~LyXDataSocket()
 {
-	::close(fd_);
+	if (::close(fd_) != 0)
+		lyxerr << "lyx: Data socket " << fd_
+		       << " IO error on closing: " << strerror(errno);
 
 	lyx_gui::unregister_socket_callback(fd_);
 	lyxerr[Debug::LYXSERVER] << "lyx: Data socket " << fd_ << " quitting."
