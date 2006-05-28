@@ -38,6 +38,8 @@ public:
 	virtual void cursorPos 
 		(CursorSlice const & sl, bool boundary, int & x, int & y) const;
 	///
+	bool descendable() const { return true; }
+	///
 	virtual void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	virtual void draw(PainterInfo & pi, int x, int y) const;
@@ -54,13 +56,19 @@ public:
 	///
 	int docbook(Buffer const & buf, std::ostream & os,
 		    OutputParams const & runparams) const;
+	///
+	void setCount(int c) { counter_ = c; }
 private:
+	///
+	void setLabel(LCursor & cur) const;
 	///
 	virtual std::auto_ptr<InsetBase> doClone() const;
 	///
 	mutable std::string label;
 	///
 	mutable int labelwidth_;
+	///
+	mutable int counter_;
 	///
 	LyXTextClass const & textclass_;
 };
