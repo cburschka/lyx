@@ -168,7 +168,12 @@ void parse_init(int & argc, char * argv[])
 	// Force adding of font path _before_ QApplication is initialized
 	FontLoader::initFontPath();
 
+
+#ifdef Q_WS_WIN
+	static QApplication win_app(argc, argv);
+#else
 	app = new LQApplication(argc, argv);
+#endif
 
 	// install translation file for Qt built-in dialogs
 	// These are only installed since Qt 3.2.x
