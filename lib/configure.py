@@ -268,7 +268,7 @@ def checkFormatEntries():
       checkProg('DVI to DTL converter', ['dv2dt']) != ['', ''] and
       checkProg('DTL to DVI converter', ['dt2dv']) != ['', '']):
     # Windows only: DraftDVI
-    addToRC(r'\Format dvi2       dvi     DraftDVI               ""	""')
+    addToRC(r'\Format dvi2       dvi     DraftDVI               ""	""	""')
   #
   checkViewer('a HTML previewer', ['mozilla file://$$p$$i', 'netscape'],
     rc_entry = [r'\Format html       html    HTML                   H  "%%"	""'])
