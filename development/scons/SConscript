@@ -14,9 +14,57 @@ Import('env')
 
 targets = env['BUILD_TARGETS']
 build_lyx = (targets == [] or 'lyx' in targets or 'install' in targets or 'all' in targets)
+build_boost = env['INCLUDED_BOOST'] or 'boost' in targets
+build_intl = env['INCLUDED_GETTEXT'] or 'intl' in targets
+build_supports = build_lyx or True in [x in targets for x in ['supports', 'client', 'tex2lyx']]
+build_mathed = build_lyx or 'mathed' in targets
+build_insets = build_lyx or 'insets' in targets
+build_frontends = build_lyx or 'frontends' in targets
+build_graphics = build_lyx or 'graphics' in targets
+build_controllers = build_lyx or 'controllers' in targets
+build_client = 'client' in targets or 'install' in targets or 'all' in targets
+build_tex2lyx = 'tex2lyx' in targets or 'install' in targets or 'all' in targets
+build_lyxbase = build_lyx or 'lyxbase' in targets
+build_po = 'po' in targets or 'install' in targets or 'all' in targets
+build_qt3 = (build_lyx and env['frontend'] == 'qt3') or 'qt3' in targets
+build_qt4 = (build_lyx and env['frontend'] == 'qt4') or 'qt4' in targets
 
 
-if env['INCLUDED_BOOST'] or 'boost' in targets:
+# now, if rebuild_targets is specified, do not rebuild some targets
+rebuild_targets = env['REBUILD_TARGETS']
+if rebuild_targets:
+  def ifBuildLib(name, libname, old_value):
+    # explicitly asked to rebuild
+    if name in rebuild_targets:
+      return True
+    # else if not rebuild, and if the library already exists
+    elif os.path.isfile(File(env.subst('$LOCALLIBPATH/${LIBPREFIX}%s$LIBSUFFIX'%libname)).abspath):
+      return False
+    # do not change the original value
+    else:
+      return old_value
+  build_boost = ifBuildLib('boost', 'included_boost_filesystem', build_boost)
+  build_intl = ifBuildLib('intl', 'included_intl', build_intl)
+  build_supports = ifBuildLib('supports', 'supports', build_supports)
+  build_mathed = ifBuildLib('mathed', 'mathed', build_mathed)
+  build_insets = ifBuildLib('insets', 'insets', build_insets)
+  build_frontends = ifBuildLib('frontends', 'frontends', build_frontends)
+  build_graphics = ifBuildLib('graphics', 'graphics', build_graphics)
+  build_controllers = ifBuildLib('controllers', 'controllers', build_controllers)
+  build_lyxbase = ifBuildLib('lyxbase', 'lyxbase_pre', build_lyxbase)
+  build_qt3 = ifBuildLib('qt3', 'qt3', build_qt3)
+  build_qt4 = ifBuildLib('qt4', 'qt4', build_qt4)
+
+# sync frontend and env['frontend'] (maybe build qt4 with frontend=qt3)
+if build_qt3:
+  frontend = 'qt3'
+  env['frontend'] = 'qt4'
+elif build_qt4:
+  frontend = 'qt4'
+  env['frontend'] = 'qt4'
+
+
+if build_boost:
   #
   # boost libraries
   #
@@ -84,7 +132,7 @@ if env['INCLUDED_BOOST'] or 'boost' in targets:
   Alias('boost', iostreams)
 
 
-if env['INCLUDED_GETTEXT'] or 'intl' in targets:
+if build_intl:
   # 
   # intl
   # 
@@ -156,7 +204,7 @@ if env['INCLUDED_GETTEXT'] or 'intl' in targets:
 env.BuildDir('$BUILDDIR/common', '$TOP_SRC_DIR/src', duplicate = 0)
 
 
-if build_lyx or True in [x in targets for x in ['supports', 'client', 'tex2lyx']]:
+if build_supports:
   #
   # src/support
   #
@@ -200,7 +248,7 @@ if build_lyx or True in [x in targets for x in ['supports', 'client', 'tex2lyx']
   Alias('supports', supports)
 
 
-if build_lyx or 'mathed' in targets:
+if build_mathed:
   #
   # src/mathed
   #
@@ -286,7 +334,7 @@ if build_lyx or 'mathed' in targets:
   Alias('mathed', mathed)
 
 
-if build_lyx or 'insets' in targets:
+if build_insets:
   #
   # src/insets
   #
@@ -349,7 +397,7 @@ if build_lyx or 'insets' in targets:
   Alias('insets', insets)
 
 
-if build_lyx or 'frontends' in targets:
+if build_frontends:
   #
   # src/frontends
   #
@@ -372,7 +420,7 @@ if build_lyx or 'frontends' in targets:
   Alias('frontends', frontends)
 
 
-if build_lyx or 'graphics' in targets:
+if build_graphics:
   #
   # src/graphics
   #
@@ -397,7 +445,7 @@ if build_lyx or 'graphics' in targets:
   Alias('graphics', graphics)
 
 
-if build_lyx or 'controllers' in targets:
+if build_controllers:
   #
   # src/frontends/controllers
   #
@@ -461,20 +509,10 @@ if build_lyx or 'controllers' in targets:
 #
 # src/frontend/qt3/4
 #
-if build_lyx or env['frontend'] in targets:
-  frontend = env['frontend']
+if build_qt3 or build_qt4:
   env.BuildDir('$BUILDDIR/$frontend', '$TOP_SRC_DIR/src/frontend/$frontend', duplicate = 0)
-else:
-  # frontend is qt3, but specify target qt4, OK
-  if 'qt3' in targets:
-    frontned = 'qt3'
-  elif 'qt4' in targets:
-    frontend = 'qt4'
-  else:
-    frontend = None
 
-
-if frontend == 'qt3':
+if build_qt3:
   print "Processing files in src/frontends/qt3..."
 
   qt3env = env.Copy()
@@ -703,7 +741,7 @@ if frontend == 'qt3':
   Alias('qt3', qt3)
 
 
-elif frontend == 'qt4':
+if build_qt4:
   print "Processing files in src/frontends/qt4..."
 
   qt4env = env.Copy()
@@ -954,7 +992,7 @@ elif frontend == 'qt4':
   Alias('qt4', qt4)
 
 
-if 'client' in targets or 'install' in targets or 'all' in targets:
+if build_client:
   #
   # src/client
   #
@@ -982,7 +1020,7 @@ if 'client' in targets or 'install' in targets or 'all' in targets:
   Alias('client', client)
 
 
-if 'tex2lyx' in targets or 'install' in targets or 'all' in targets:
+if build_tex2lyx:
   #
   # tex2lyx
   #
@@ -1027,7 +1065,7 @@ if 'tex2lyx' in targets or 'install' in targets or 'all' in targets:
   Alias('tex2lyx', tex2lyx)
 
 
-if build_lyx or 'lyxbase' in targets:
+if build_lyxbase:
   #
   # src/
   #
@@ -1169,7 +1207,7 @@ if build_lyx or 'lyxbase' in targets:
   Alias('lyxbase', lyxbase_post)
 
 
-if build_lyx or 'lyx' in targets:
+if build_lyx:
   #
   # Build lyx with given frontend
   #
@@ -1200,7 +1238,7 @@ if build_lyx or 'lyx' in targets:
   Alias('lyx', lyx)
 
 
-if 'po' in targets or 'install' in targets or 'all' in targets:
+if build_po:
   #
   # po/
   #

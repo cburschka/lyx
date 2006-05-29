@@ -272,6 +272,8 @@ opts.AddOptions(
   PathOption('extra_inc_path1', 'Extra include path', None),
   #
   PathOption('extra_lib_path1', 'Extra library path', None),
+  # rebuild only specifed, comma separated targets
+  ('rebuild', 'rebuild only specifed, comma separated targets', None),
   # can be set to a non-existing directory
   ('prefix', 'install architecture-independent files in PREFIX', None),
   # will install to dest_dir if defined. Otherwise, prefix will be used.
@@ -610,8 +612,7 @@ else:
   env['INCLUDED_BOOST'] = env_cache['INCLUDED_BOOST']
 
 
-if not env.has_key('nls') or env['nls']:
-  env['ENABLE_NLS'] = True
+env['ENABLE_NLS'] = not env.has_key('nls') or env['nls']
 
 if not fast_start:
   if not env['ENABLE_NLS']:
@@ -1208,6 +1209,10 @@ env.SConsignFile(os.path.join(Dir(env['BUILDDIR']).abspath, '.sconsign'))
 #env.CacheDir('%s/Cache/%s' % (env['BUILDDIR'], frontend))
 
 env['BUILD_TARGETS'] = BUILD_TARGETS
+if env.has_key('rebuild'):
+  env['REBUILD_TARGETS'] = env['rebuild'].split(',')
+else:
+  env['REBUILD_TARGETS'] = None
 
 print "Building all targets recursively"
 
