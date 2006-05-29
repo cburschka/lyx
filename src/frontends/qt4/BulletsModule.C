@@ -250,6 +250,8 @@ QPixmap BulletsModule::getPixmap(int font, int character)
 	default:
 		return standard_->pixmap(row,col);
 	}*/
+	// make qt4 frontend at least compilable now.
+	return QPixmap();
 }
 
 

@@ -54,6 +54,10 @@ int make_tempfile(char * templ)
 	// This probably just barely works...
 	::mktemp(templ);
 # if defined (HAVE_OPEN)
+# if (!defined S_IRUSR)
+#   define S_IRUSR S_IREAD
+#   define S_IWUSR S_IWRITE
+# endif
 	return ::open(templ, O_RDWR | O_CREAT | O_EXCL, S_IRUSR | S_IWUSR);
 # elif defined (HAVE__OPEN)
 	return ::_open(templ,

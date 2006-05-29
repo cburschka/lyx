@@ -38,6 +38,7 @@
 #include <boost/bind.hpp>
 
 #include <vector>
+#include <cerrno>
 
 #ifdef _WIN32
 # define SIGHUP 1
@@ -46,7 +47,6 @@
 # include <windows.h>
 
 #else
-# include <cerrno>
 # include <csignal>
 # include <cstdlib>
 # ifdef HAVE_UNISTD_H

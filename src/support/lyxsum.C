@@ -103,8 +103,8 @@ unsigned long do_crc(InputIterator first, InputIterator last)
 
 } // namespace
 
-#if HAVE_DECL_ISTREAMBUF_ITERATOR
 using std::ifstream;
+#if HAVE_DECL_ISTREAMBUF_ITERATOR
 using std::istreambuf_iterator;
 
 unsigned long lyx::support::sum(string const & file)

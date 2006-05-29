@@ -44,6 +44,10 @@
 # include <CoreServices/CoreServices.h> // FSFindFolder, FSRefMakePath
 #endif
 
+#ifndef PATH_MAX
+# define PATH_MAX 256
+#endif
+
 using std::string;
 
 namespace fs = boost::filesystem;
