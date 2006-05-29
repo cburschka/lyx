@@ -16,8 +16,8 @@
 # MISC SECTION ######################################
 #
 
-\path_prefix "/usr/bin:/usr/local/bin:/usr/local/teTeX/bin/powerpc-apple-darwin-current:/usr/local/teTeX/bin/i386-apple-darwin-current:/usr/X11R6/bin:/sw/bin:/opt/local/teTeX/bin:/opt/local/bin"
-\serverpipe "~/Library/Application Support/LyX/.lyxpipe"
+\path_prefix "/usr/bin:/usr/local/bin:/usr/local/teTeX/bin/powerpc-apple-darwin-current:/usr/X11R6/bin:/sw/bin:/opt/local/teTeX/bin:/opt/local/bin"
+\serverpipe "~/Library/Application Support/LyX-1.4/.lyxpipe"
 \preview on
 
 #
@@ -52,7 +52,7 @@
 # FILE SECTION ######################################
 #
 
-\template_path "~/Library/Application Support/LyX/templates"
+\template_path "~/Library/Application Support/LyX-1.4/templates"
 
 #
 # ASCII EXPORT SECTION ##############################
@@ -79,21 +79,15 @@
 # FORMATS SECTION ##########################
 #
 
-\format "dvi" "dvi" "DVI" "D" "open" ""
-\format "html" "html" "HTML" "H" "open" ""
-\format "latex" "tex" "LaTeX" "L" "open" ""
-\format "pdf" "pdf" "PDF (ps2pdf)" "P" "open" ""
-\format "ps" "ps" "Postscript" "t" "open" ""
-\format "sxw" "sxw" "OpenOffice.Org Writer" "O" "open" ""
-\format "text" "txt" "ASCII" "A" "open" ""
-\format "textparagraph" "txt" "ASCII (paragraphs)" "" "open" ""
-\format "word" "doc" "Word" "W" "open" ""
-\format "rtf" "rtf" "RTF" "" "open" ""
+\format "fig" "fig" "FIG" "" "open /Applications/Utilities/X11.app && export DISPLAY=:0.0 && xfig" "open /Applications/Utilities/X11.app && export DISPLAY=:0.0 && xfig"
+\format "rtf" "rtf" "Rich Text Format" "" "auto" "auto"
 
 #
 # CONVERTERS SECTION ##########################
 #
 
+\converter "rtf" "latex" "rtf2latex2e $$i" ""
+\converter "latex" "rtf" "latex2rtf $$i" ""
 \converter "latex" "lyx" "$$s/../MacOS/tex2lyx -f $$i $$o" ""
 
 #
