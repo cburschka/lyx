@@ -1,4 +1,9 @@
-2006-05-26  Enrico Forestieri <forenr@tlc.unipr.it>
+2006-05-29  Jürgen Spitzmüller <j.spitzmueller@gmx.de>
+
+	* configure.py: use $$o where appropriate (still some
+	cases pending).
+
+2006-05-26  Jürgen Spitzmüller <j.spitzmueller@gmx.de>
 
 	* configure.py: look for dvipdfmx before dvipdfm.
 

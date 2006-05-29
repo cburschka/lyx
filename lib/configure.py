@@ -330,13 +330,13 @@ def checkConverterEntries():
   checkProg('an LaTeX -> OpenOffice.org LaTeX converter', ['oolatex $$i', 'oolatex.sh $$i'],
     rc_entry = [ r'\converter latex      sxw        "%%"	"latex"' ])
   #
-  checkProg('a PS to PDF converter', ['ps2pdf13 $$i'],
+  checkProg('a PS to PDF converter', ['ps2pdf13 $$i $$o'],
     rc_entry = [ r'\converter ps         pdf        "%%"	""' ])
   #
   checkProg('a DVI to PS converter', ['dvips -o $$o $$i'],
     rc_entry = [ r'\converter dvi        ps         "%%"	""' ])
   #
-  checkProg('a DVI to PDF converter', ['dvipdfmx $$i', 'dvipdfm $$i'],
+  checkProg('a DVI to PDF converter', ['dvipdfmx -o $$o $$i', 'dvipdfm -o $$o $$i'],
     rc_entry = [ r'\converter dvi        pdf3       "%%"	""' ])
   #
   path, dvipng = checkProg('dvipng', ['dvipng'])
