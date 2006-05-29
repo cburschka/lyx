@@ -19,6 +19,9 @@ What's new
 
 ** Updates
 
+- LyX now automatically uses file viewers and editors set at OS level
+  [Windows and Mac OS X only].
+
 - Update Hungarian localization of the interface.
 
 - Update translations of documentation for German (all) and Hungarian
@@ -81,9 +84,6 @@ What's new
 
 - Don't jump back to previous cursor position when trying to click on
   an inset (bug 2526).
-
-- LyX now automatically uses file viewers and editors set at OS level
-  [windows only].
 
 - Automatically use fonts in the fonts/ subdirectory of LyX support
   directory in windows.
