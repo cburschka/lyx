@@ -240,6 +240,8 @@ opts.AddOptions(
     allowed_values = ('aspell', 'pspell', 'ispell', 'auto') ),
   #
   BoolOption('fast_start', 'Whether or not use cached tests and keep current config.h', True),
+  #
+  BoolOption('load_option', 'load option from previous scons run', True),
   # FIXME: I do not know how pch is working. Ignore this option now.
   BoolOption('pch', '(NA) Whether or not use pch', default_pch_opt),
   # enable assertion, (config.h has ENABLE_ASSERTIOS
@@ -256,7 +258,9 @@ opts.AddOptions(
   BoolOption('std_debug', '(NA) Whether or not turn on stdlib debug', False),
   # using x11?
   BoolOption('X11', 'Use x11 windows system', default_with_x),
-  # 
+  # use MS VC++ to build lyx
+  BoolOption('use_vc', 'Use MS VC++ to build lyx', False),
+  #
   PathOption('qt_dir', 'Path to qt directory', None),
   #
   PathOption('qt_include_path', 'Path to qt include directory', None),
@@ -305,26 +309,33 @@ if (not ARGUMENTS.has_key('fast_start') or \
   cache_file = open(env_cache_file)
   env_cache = cPickle.load(cache_file)
   cache_file.close()
-  # import cached options, but we should ignore qt_dir when frontend changes
-  if ARGUMENTS.has_key('frontend') and env_cache['arg_cache'].has_key('frontend') \
-    and ARGUMENTS['frontend'] != env_cache['arg_cache']['frontend'] \
-    and env_cache['arg_cache'].has_key('qt_dir'):
-    env_cache['arg_cache'].pop('qt_dir')
-  # and we do not cache fast_start
-  if env_cache['arg_cache'].has_key('fast_start'):
-    env_cache['arg_cache'].pop('fast_start')
   print '------------ fast_start mode --------------------'
   print '  Use cached test results and current config.h'
   print '  use fast_start=no to override'
   print
-  for key in env_cache['arg_cache'].keys():
-    if not ARGUMENTS.has_key(key):
-      ARGUMENTS[key] = env_cache['arg_cache'][key]
-      print "Restoring cached option  %s=%s" % (key, ARGUMENTS[key])
-  print '-------------------------------------------------'
 else:
   fast_start = False
   env_cache = {}
+
+if (not ARGUMENTS.has_key('load_option') or \
+  ARGUMENTS['load_option'] in ['y', 'yes', 't', 'true', '1', 'all']) \
+  and os.path.isfile(env_cache_file):
+  cache_file = open(env_cache_file)
+  opt_cache = cPickle.load(cache_file)['arg_cache']
+  cache_file.close()
+  # import cached options, but we should ignore qt_dir when frontend changes
+  if ARGUMENTS.has_key('frontend') and opt_cache.has_key('frontend') \
+    and ARGUMENTS['frontend'] != opt_cache['frontend'] \
+    and opt_cache.has_key('qt_dir'):
+    opt_cache.pop('qt_dir')
+  # and we do not cache fast_start
+  if opt_cache.has_key('fast_start'):
+    opt_cache.pop('fast_start')
+  for key in opt_cache.keys():
+    if not ARGUMENTS.has_key(key):
+      ARGUMENTS[key] = opt_cache[key]
+      print "Restoring cached option  %s=%s" % (key, ARGUMENTS[key])
+  print
 
 # save arguments
 env_cache['arg_cache'] = ARGUMENTS
@@ -334,6 +345,8 @@ env_cache['arg_cache'] = ARGUMENTS
 # Setting up environment
 #---------------------------------------------------------
 
+# Note that I do not really like ENV=os.environ, but you may 
+# add it here if you experience some environment related problem
 env = Environment(options = opts)
 
 # Determine the frontend to use, which may be loaded
@@ -343,11 +356,17 @@ frontend = env.get('frontend', default_frontend)
 env['frontend'] = frontend
 #
 use_X11 = env.get('X11', default_with_x)
+use_vc = env.get('use_vc', False)
+# use it only once for s scons-bug, will remove it later.
+env['USE_VC'] = use_vc
 
 
 # set individual variables since I do not really like ENV = os.environ
 env['ENV']['PATH'] = os.environ.get('PATH')
 env['ENV']['HOME'] = os.environ.get('HOME')
+# these are defined for MSVC
+env['ENV']['LIB'] = os.environ.get('LIB')
+env['ENV']['INCLUDE'] = os.environ.get('INCLUDE')
 env['TOP_SRC_DIR'] = TOP_SRC_DIR
 env['SCONS_DIR'] = SCONS_DIR
 # install to default_prefix by default
@@ -374,10 +393,13 @@ env['LOCALE_DEST_DIR'] = os.path.join(env['DEST_DIR'], locale_dir)
 #
 # this is a bit out of place (after auto-configration) but 
 # it is required to do the tests. Since Tool('mingw') will 
-# reset CCFLAGS etc, this should be before getEnvVariable
-if platform_name == 'win32':
+# reset CCFLAGS etc, this should be done before getEnvVariable
+if platform_name == 'win32' and not use_vc:
   env.Tool('mingw')
   env.AppendUnique(CPPPATH = ['#c:/MinGW/include'])
+elif use_vc:
+  env.Tool('msvc')
+  env.Tool('mslink')
 
 
 # speed up source file processing
@@ -482,14 +504,23 @@ if env.has_key('aikasurus_path') and env['aikasurus_path']:
 # Note that this step has to be after env.Tool('mingw') step
 # since env.Tool('mingw') will set env['CC'] etc.
 #
-# save the old c compiler
-env['C_COMPILER'] = env['CC']
-if env.has_key('CXX') and env['CXX']:
-  env['CC'] = env['CXX']
-  env['LINK'] = env['CXX']
-else:
-  env['CC'] = 'g++'
-  env['LINK'] = 'g++'
+# save the old c compiler and CCFLAGS (used by libintl)
+env['C_COMPILER'] = env.subst('$CC')
+env['C_CCFLAGS'] = env.subst('$CCFLAGS')
+# if we use ms vc, the commands are fine (cl.exe and link.exe)
+if not use_vc:
+  if env.has_key('CXX') and env['CXX']:
+    env['CC'] = env.subst('$CXX')
+    env['LINK'] = env.subst('$CXX')
+  else:
+    env['CC'] = 'g++'
+    env['LINK'] = 'g++'
+else: 
+  # /TP treat all source code as C++
+  # C4819: The file contains a character that cannot be represented 
+  #   in the current code page (number)
+  # C4996: foo was decleared deprecated
+  env.Append(CCFLAGS=['/TP', '/EHsc', '/wd4819', '/wd4996'])
 
 
 #----------------------------------------------------------
@@ -504,6 +535,7 @@ conf = Configure(env,
     'CheckSelectArgType' : utils.checkSelectArgType,
     'CheckBoostLibraries' : utils.checkBoostLibraries,
     'CheckCommand' : utils.checkCommand,
+    'CheckCXXGlobalCstd' : utils.checkCXXGlobalCstd,
   }
 )
 
@@ -639,8 +671,9 @@ if not fast_start:
       # we do not need to set LIBPATH now.
       env['INCLUDED_GETTEXT'] = True
       env['INTL_LIBS'] = ['included_intl']
-    if platform_name == 'win32':
+    if platform_name == 'win32' and not use_vc:
       # for functions AddFontResouceA, RemoveFontResourceA
+      # if use_vc, gdi32 will be added anyway later
       env['INTL_LIBS'].append('gdi32')
   env_cache['INCLUDED_GETTEXT'] = env['INCLUDED_GETTEXT']
   env_cache['INTL_LIBS'] = env['INTL_LIBS']
@@ -682,6 +715,7 @@ if not fast_start:
   # HAVE_UNISTD_H
   # HAVE_UTIME_H
   # HAVE_STRINGS_H
+  # HAVE_DIRECT_H
   # HAVE_ISTREAM
   # HAVE_OSTREAM
   # HAVE_IOS
@@ -720,6 +754,7 @@ if not fast_start:
     ('utime.h', 'HAVE_UTIME_H', 'c'),
     ('string.h', 'HAVE_STRING_H', 'c'),
     ('strings.h', 'HAVE_STRINGS_H', 'c'),
+    ('direct.h', 'HAVE_DIRECT_H', 'c'),
     ('istream', 'HAVE_ISTREAM', 'cxx'),
     ('ostream', 'HAVE_OSTREAM', 'cxx'),
     ('ios', 'HAVE_IOS', 'cxx'),
@@ -885,7 +920,18 @@ int count()
       utils.addToConfig('#define %s 1' % t[1])
     else:
       utils.addToConfig('/* #undef %s */' % t[1])
+
+  # windows/msvc sys/types.h does not have pid_t
+  # FIXME: #include <windows.h> is the right way?
+  if not conf.CheckType('pid_t', includes='#include <sys/types.h>'):
+    utils.addToConfig('#define pid_t int')
   
+  # determine the use of std::tolower or tolower
+  if conf.CheckCXXGlobalCstd():
+    utils.addToConfig('#define CXX_GLOBAL_CSTD 1')
+  else:
+    utils.addToConfig('/* #undef CXX_GLOBAL_CSTD */')
+
   # PACKAGE
   # PACKAGE_VERSION
   # DEVEL_VERSION
@@ -909,11 +955,16 @@ int count()
 
   for val in values:
     if (env.has_key(val[0]) and env[val[0]]) or \
-        ARGUMENTS.get(val[1]):
+       (env.has_key(val[1]) and env[val[1]]):
       utils.addToConfig('#define %s 1' % val[0])
     else:
       utils.addToConfig('/* #undef %s */' % val[0])
 
+  # disable automatic linking of boost libraries.
+  # This is an interesting feature that is supposed to be useful under
+  # windows but since I can not find a way to use it on all platforms, 
+  # I disable it for now.
+  utils.addToConfig('#define BOOST_ALL_NO_LIB 1')
 
   env['EXTRA_LIBS'] = []
   # HAVE_LIBAIKSAURUS
@@ -1073,7 +1124,11 @@ except:
 if platform_name in ['win32', 'cygwin']:
   # the final link step needs stdc++ to succeed under mingw
   # FIXME: shouldn't g++ automatically link to stdc++?
-  env['SYSTEM_LIBS'] = ['shlwapi', 'z', 'stdc++']
+  env['SYSTEM_LIBS'] = ['shlwapi', 'z']
+  if use_vc:
+    env['SYSTEM_LIBS'].extend(['gdi32', 'shell32', 'advapi32'])
+  else:
+    env['SYSTEM_LIBS'].append('stdc++')
 else:
   env['SYSTEM_LIBS'] = ['z']
 

@@ -62,6 +62,8 @@ if build_qt3:
 elif build_qt4:
   frontend = 'qt4'
   env['frontend'] = 'qt4'
+else:
+  frontend = env['frontend']
 
 
 if build_boost:
@@ -143,6 +145,7 @@ if build_intl:
   intlenv = env.Copy()
   # we need the original C compiler for these files
   intlenv['CC'] = intlenv['C_COMPILER']
+  intlenv['CCFLAGS'] = intlenv['C_CCFLAGS']
   intlenv['CPPPATH'] += ['intl']
   
   intlenv.Append(CCFLAGS = [
@@ -500,7 +503,6 @@ if build_controllers:
       ControlVSpace.C
       ControlWrap.C
       helper_funcs.C
-      helper_funcs.h
     ''')]
     )
   Alias('controllers', controllers)
@@ -772,7 +774,7 @@ if build_qt4:
     '-DQT_GENUINE_STR',
     '-DQT_NO_STL',
     '-DQT3_SUPPORT',
-    '-Winvalid-pch']
+    ]
   )
 
   qt4_ui_files = ['$BUILDDIR/common/frontends/qt4/ui/%s' % x for x in Split('''
@@ -1176,8 +1178,11 @@ if build_lyxbase:
     vc-backend.C
     version.C
     vspace.C
-    main.C
   ''')
+
+  # temporary fix for MSVC, will remove later.
+  if not env['USE_VC']:
+    lyx_source_pre.append('main.C')
 
   lyx_source_post = Split('''
     tabular.C
@@ -1211,9 +1216,14 @@ if build_lyx:
   #
   # Build lyx with given frontend
   #
+  # temporary fix for MSVC, will remove later.
+  if env['USE_VC']:
+    lyx_source = ['$BUILDDIR/common/main.C']
+  else:
+    lyx_source = []
   lyx = env.Program(
     target = '$BUILDDIR/$frontend/lyx',
-    source = [],
+    source = lyx_source,
     LIBS = [
       'lyxbase_pre',
       'mathed',

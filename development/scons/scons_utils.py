@@ -56,8 +56,13 @@ def env_subst(target, source, env):
   contents = source_file.read()
   for k, v in env.items():
     try:
-      contents = re.sub('@'+k+'@', env.subst('$'+k).replace('\n',r'\\n\\\n'), contents)
-      contents = re.sub('%'+k+'%', env.subst('$'+k).replace('\n',r'\\n\\\n'), contents)
+      val = env.subst('$'+k)
+      # temporary fix for the \Resource backslash problem
+      val = val.replace('\\', '/')
+      # multi-line replacement
+      val = val.replace('\n',r'\\n\\\n')
+      contents = re.sub('@'+k+'@', val, contents)
+      contents = re.sub('%'+k+'%', val, contents)
     except:
       pass
   target_file.write(contents + "\n")
@@ -180,11 +185,29 @@ int main()
 """
   conf.Message('Checking for the number of args for mkdir... ')
   ret = conf.TryLink(check_mkdir_one_arg_source, '.c') or \
-    conf.TryLink('#include <unistd.h>' + check_mkdir_one_arg_source, '.c')
+    conf.TryLink('#include <unistd.h>' + check_mkdir_one_arg_source, '.c') or \
+    conf.TryLink('#include <direct.h>' + check_mkdir_one_arg_source, '.c')
   if ret:
     conf.Result('one')
   else:
     conf.Result('two')
+  return ret
+
+
+# CXX_GLOBAL_CSTD
+def checkCXXGlobalCstd(conf):
+  ''' Check the use of std::tolower or tolower '''
+  check_global_cstd_source = '''
+#include <cctype>
+using std::tolower;
+int main()
+{
+  return 0;
+}
+'''
+  conf.Message('Check for the use of global cstd... ')
+  ret = conf.TryLink(check_global_cstd_source, '.c')
+  conf.Result(ret)
   return ret
 
 
