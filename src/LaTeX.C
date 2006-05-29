@@ -271,15 +271,15 @@ int LaTeX::run(TeXErrors & terr)
 
 	// memoir (at least) writes an empty *idx file in the first place.
 	// A second latex run is needed.
-	rerun = fs::exists(ChangeExtension(file, ".idx"))
-		&& fs::is_empty(ChangeExtension(file, ".idx"));
+	rerun = fs::exists(changeExtension(file, ".idx"))
+		&& fs::is_empty(changeExtension(file, ".idx"));
 
 	// run makeindex
 	if (head.haschanged(onlyFilename(changeExtension(file, ".idx")))) {
 		// no checks for now
 		lyxerr[Debug::LATEX] << "Running MakeIndex." << endl;
 		message(_("Running MakeIndex."));
-		rerun = runMakeIndex(onlyFilename(changeExtension(file, ".idx")), runparams);
+		rerun |= runMakeIndex(onlyFilename(changeExtension(file, ".idx")), runparams);
 	}
 
 	// run bibtex
