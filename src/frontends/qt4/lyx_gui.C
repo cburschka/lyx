@@ -164,10 +164,28 @@ namespace lyx_gui {
 bool use_gui = true;
 
 void parse_init(int & argc, char * argv[])
-{
+{	
+	/*
+	FIXME : Abdel 29/05/2006 (younes.a@free.fr)
+	reorganize this code. In particular make sure that this
+	advise from Qt documentation is respected:
+	
+		Since the QApplication object does so much initialization, it
+		must be created before any other objects related to the user
+		interface are created.
+	
+	Right now this is not the case. For example, the call to
+	"FontLoader::initFontPath()" below is doned before the QApplication
+	creation. Moreover, I suspect that a number of global variables
+	contains Qt object that are initialized before the passage through
+	parse_init(). This might also explain the message displayed by Qt
+	that caused the hanging:
+
+	QObject::killTimer: timers cannot be stopped from another thread
+	*/
+
 	// Force adding of font path _before_ QApplication is initialized
 	FontLoader::initFontPath();
-
 
 #ifdef Q_WS_WIN
 	static QApplication win_app(argc, argv);
