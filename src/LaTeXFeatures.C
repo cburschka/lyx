@@ -293,7 +293,7 @@ string const LaTeXFeatures::getPackages() const
 
 	// makeidx.sty
 	if (isRequired("makeidx")) {
-		if (! tclass.provides(LyXTextClass::makeidx))
+		if (!tclass.provides(LyXTextClass::makeidx))
 			packages << "\\usepackage{makeidx}\n";
 		packages << "\\makeindex\n";
 	}

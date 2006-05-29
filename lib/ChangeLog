@@ -1,5 +1,9 @@
 2006-05-29  Jürgen Spitzmüller <j.spitzmueller@gmx.de>
 
+	* layouts/memoir.layout: add providesMakeindex (bug 2623).
+
+2006-05-29  Jürgen Spitzmüller <j.spitzmueller@gmx.de>
+
 	* configure.py: use $$o where appropriate (still some
 	cases pending).
 

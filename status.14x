@@ -72,6 +72,8 @@ What's new
 - Make jpeg graphics with suffix in capital letters (.JPG) work with
   pdflatex (bug 2235).
 
+- Fix LaTeX errors with memoir and makeindex (bug 2623).
+
 * Math editor:
 
 - Fix metrics of AMS array environments like bmatrix, vmatrix etc. (bug 2036).
