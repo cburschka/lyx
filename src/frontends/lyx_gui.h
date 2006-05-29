@@ -59,7 +59,8 @@ void parse_lyxrc();
  * Start the main event loop, after executing the given
  * batch commands, and loading the given documents
  */
-void start(std::string const & batch, std::vector<std::string> const & files);
+void start(std::string const & batch, std::vector<std::string> const & files,
+	        int width, int height, int posx, int posy);
 
 /**
  * Synchronise all pending events.

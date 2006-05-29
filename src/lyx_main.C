@@ -49,6 +49,7 @@
 #include "support/environment.h"
 #include "support/filetools.h"
 #include "support/lyxlib.h"
+#include "support/convert.h"
 #include "support/os.h"
 #include "support/package.h"
 #include "support/path.h"
@@ -283,9 +284,38 @@ void LyX::priv_exec(int & argc, char * argv[])
 		files.clear(); // the files are already loaded
 	}
 
-	if (want_gui)
-		lyx_gui::start(batch_command, files);
-	else {
+	if (want_gui) {
+		// determine windows size and position, from lyxrc and/or session
+		// initial geometry
+		unsigned int width = 690;
+		unsigned int height = 510;
+		// first try lyxrc
+		if (lyxrc.geometry_width != 0 && lyxrc.geometry_height != 0 ) {
+			width = lyxrc.geometry_width;
+			height = lyxrc.geometry_height;
+		}
+		// if lyxrc returns (0,0), then use session info
+		else {
+			string val = LyX::ref().session().loadSessionInfo("WindowWidth");
+			if (!val.empty())
+				width = convert<unsigned int>(val);
+			val = LyX::ref().session().loadSessionInfo("WindowHeight");
+			if (!val.empty())
+				height = convert<unsigned int>(val);
+		}
+		// if user wants to restore window position
+		int posx = -1;
+		int posy = -1;
+		if (lyxrc.geometry_xysaved) {
+			string val = LyX::ref().session().loadSessionInfo("WindowPosX");
+			if (!val.empty())
+				posx = convert<int>(val);
+			val = LyX::ref().session().loadSessionInfo("WindowPosY");
+			if (!val.empty())
+				posy = convert<int>(val);
+		}
+		lyx_gui::start(batch_command, files, width, height, posx, posy);
+	} else {
 		// Something went wrong above
 		quitLyX(false);
 		exit(EXIT_FAILURE);

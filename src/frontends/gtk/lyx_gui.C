@@ -120,7 +120,8 @@ void lyx_gui::parse_lyxrc()
 }
 
 
-void lyx_gui::start(string const & batch, std::vector<string> const & files)
+void lyx_gui::start(string const & batch, std::vector<string> const & files,
+	        int width, int height, int posx, int posy)
 {
 	boost::shared_ptr<GView> view_ptr(new GView);
 	LyX::ref().addLyXView(view_ptr);

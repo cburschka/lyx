@@ -28,7 +28,6 @@
 #include "LyXAction.h"
 #include "lyxfunc.h"
 #include "lyxrc.h"
-#include "session.h"
 #include "lyxserver.h"
 #include "lyxsocket.h"
 
@@ -38,7 +37,6 @@
 #include "support/lyxlib.h"
 #include "support/os.h"
 #include "support/package.h"
-#include "support/convert.h"
 
 #include "lyx_forms.h"
 
@@ -254,28 +252,9 @@ void parse_lyxrc()
 }
 
 
-void start(string const & batch, vector<string> const & files)
+void start(string const & batch, vector<string> const & files,
+	        int width, int height, int posx, int posy)
 {
-	// initial geometry
-	int xpos = -1;
-	int ypos = -1;
-	unsigned int width = 690;
-	unsigned int height = 510;
-	// first try lyxrc
-	if (lyxrc.geometry_width != 0 && lyxrc.geometry_height != 0 ) {
-		width = lyxrc.geometry_width;
-		height = lyxrc.geometry_height;
-	}
-	// if lyxrc returns (0,0), then use session info
-	else {
-		string val = LyX::ref().session().loadSessionInfo("WindowWidth");
-		if (val != "")
-			width = convert<unsigned int>(val);
-		val = LyX::ref().session().loadSessionInfo("WindowHeight");
-		if (val != "")
-			height = convert<unsigned int>(val);
-	}
-
 	int const geometryBitmask =
 		XParseGeometry(geometry,
 			       &xpos, &ypos, &width, &height);
@@ -296,21 +275,14 @@ void start(string const & batch, vector<string> const & files)
 
 	Screen * s = ScreenOfDisplay(fl_get_display(), fl_screen);
 
-	// recalculate xpos if it's not set
-	if (xpos == -1)
-		xpos = (WidthOfScreen(s) - width) / 2;
-
-	// recalculate ypos if it's not set
-	if (ypos == -1)
-		ypos = (HeightOfScreen(s) - height) / 2;
-
 	lyxerr[Debug::GUI] << "Creating view: " << width << 'x' << height
-			   << '+' << xpos << '+' << ypos << endl;
+			   << '+' << posx << '+' << posy << endl;
 
 	boost::shared_ptr<XFormsView> view(new XFormsView(width, height));
 	LyX::ref().addLyXView(view);
 
-	view->show(xpos, ypos, "LyX");
+	view->show(posx == -1 ? (WidthOfScreen(s) - width) / 2 : posx, 
+		       posy == -1 ? (HeightOfScreen(s) - height) / 2 : posy, "LyX");
 	view->init();
 
 	// FIXME: some code below needs moving
