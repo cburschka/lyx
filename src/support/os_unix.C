@@ -14,6 +14,10 @@
 
 #include "support/os.h"
 
+#ifdef __APPLE__
+#include <Carbon/Carbon.h>
+#endif
+
 using std::string;
 
 
@@ -115,19 +119,69 @@ char path_separator()
 void cygwin_path_fix(bool)
 {}
 
-bool canAutoOpenFile(string const & /*ext*/, auto_open_mode const /*mode*/)
+bool canAutoOpenFile(string const & ext, auto_open_mode const mode)
 {
+#ifdef __APPLE__
+// Reference: http://developer.apple.com/documentation/Carbon/Reference/LaunchServicesReference/
+	CFStringRef cfs_ext = CFStringCreateWithBytes(kCFAllocatorDefault,
+					(UInt8 *) ext.c_str(), ext.length(),
+					kCFStringEncodingISOLatin1, false);
+	LSRolesMask role = (mode == VIEW) ? kLSRolesViewer :  kLSRolesEditor;
+	FSRef outAppRef;
+	OSStatus status = 
+		LSGetApplicationForInfo(kLSUnknownType, kLSUnknownCreator,
+					cfs_ext, role, &outAppRef, NULL);
+	CFRelease(cfs_ext);
+
+	return status != kLSApplicationNotFoundErr;
+#else
+	// silence compiler warnings
+	(void)ext;
+	(void)mode;
+
 	// currently, no default viewer is tried for non-windows system
 	// support for KDE/Gnome/Macintosh may be added later
 	return false;
+#endif
 }
 
 
-bool autoOpenFile(string const & /*filename*/, auto_open_mode const /*mode*/)
+bool autoOpenFile(string const & filename, auto_open_mode const mode)
 {
+#ifdef __APPLE__
+// Reference: http://developer.apple.com/documentation/Carbon/Reference/LaunchServicesReference/
+    FSRef fileref;
+    OSStatus status = 
+        FSPathMakeRef((UInt8 *) filename.c_str(), &fileref, NULL);
+    if (status != 0)
+        return false;
+        
+	LSRolesMask role = (mode == VIEW) ? kLSRolesViewer :  kLSRolesEditor;
+	FSRef outAppRef;
+
+	status = LSGetApplicationForItem(&fileref, role, &outAppRef, NULL);
+	if (status == kLSApplicationNotFoundErr)
+		return false;
+
+	LSLaunchFSRefSpec inLaunchSpec;
+	inLaunchSpec.appRef = &outAppRef;
+	inLaunchSpec.numDocs = 1;
+	inLaunchSpec.itemRefs = &fileref;
+	inLaunchSpec.passThruParams = NULL;
+	inLaunchSpec.launchFlags = kLSLaunchDefaults;
+	inLaunchSpec.asyncRefCon = NULL;
+	status = LSOpenFromRefSpec(&inLaunchSpec, NULL);
+
+	return status != kLSApplicationNotFoundErr;	
+#else
+	// silence compiler warnings
+	(void)filename;
+	(void)mode;
+
 	// currently, no default viewer is tried for non-windows system
 	// support for KDE/Gnome/Macintosh may be added later
 	return false;
+#endif
 }
 
 } // namespace os
