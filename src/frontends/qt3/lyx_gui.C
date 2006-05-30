@@ -217,7 +217,7 @@ void parse_lyxrc()
 
 
 void start(string const & batch, vector<string> const & files,
-	        int width, int height, int posx, int posy)
+	   unsigned int width, unsigned int height, int posx, int posy)
 {
 	// this can't be done before because it needs the Languages object
 	initEncodings();

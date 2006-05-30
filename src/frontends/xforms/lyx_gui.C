@@ -253,11 +253,10 @@ void parse_lyxrc()
 
 
 void start(string const & batch, vector<string> const & files,
-	        int width, int height, int posx, int posy)
+	   unsigned int width, unsigned int height, int posx, int posy)
 {
 	int const geometryBitmask =
-		XParseGeometry(geometry,
-			       &xpos, &ypos, &width, &height);
+		XParseGeometry(geometry, &posx, &posx, &width, &height);
 
 	// if width is not set by geometry, check it against monitor width
 	if (!(geometryBitmask & WidthValue)) {

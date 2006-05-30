@@ -60,7 +60,7 @@ void parse_lyxrc();
  * batch commands, and loading the given documents
  */
 void start(std::string const & batch, std::vector<std::string> const & files,
-	        int width, int height, int posx, int posy);
+	        unsigned int width, unsigned int height, int posx, int posy);
 
 /**
  * Synchronise all pending events.
