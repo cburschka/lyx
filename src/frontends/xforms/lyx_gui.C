@@ -256,7 +256,7 @@ void start(string const & batch, vector<string> const & files,
 	   unsigned int width, unsigned int height, int posx, int posy)
 {
 	int const geometryBitmask =
-		XParseGeometry(geometry, &posx, &posx, &width, &height);
+		XParseGeometry(geometry, &posx, &posy, &width, &height);
 
 	// if width is not set by geometry, check it against monitor width
 	if (!(geometryBitmask & WidthValue)) {
