@@ -515,10 +515,12 @@ void expandFormats(MenuItem::Kind kind, Menu & tomenu, LyXView const * view)
 			break;
 		case MenuItem::ViewFormats:
 		case MenuItem::ExportFormats:
+		case MenuItem::UpdateFormats:
 			if (!(*fit)->documentFormat())
 				continue;
 			break;
-		case MenuItem::UpdateFormats:
+		default:
+			BOOST_ASSERT(false);
 			break;
 		}
 		if (!(*fit)->shortcut().empty())
