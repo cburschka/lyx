@@ -77,6 +77,12 @@ void Intl::initKeyMapper(bool on)
 {
 	lyxerr[Debug::INIT] << "Initializing key mappings..." << endl;
 
+	if (trans.setPrimary(prim_lang) == -1)
+		prim_lang.erase();
+	if (trans.setSecondary(sec_lang) == -1)
+		sec_lang.erase();
+	trans.setCharset(lyxrc.font_norm);
+
 	if (prim_lang.empty() && sec_lang.empty())
 		keymapon = false;
 	else
@@ -86,8 +92,4 @@ void Intl::initKeyMapper(bool on)
 
 	if (keymapon)
 		keyMapPrim();
-
-	trans.setPrimary(prim_lang);
-	trans.setSecondary(sec_lang);
-	trans.setCharset(lyxrc.font_norm);
 }
