@@ -81,7 +81,9 @@ def createDirectories():
 def checkCygwinPath(srcdir):
   ''' Adjust PATH for Win32 (Cygwin) '''
   cygwin_path_fix = ''
-  if sys.platform == 'cygwin':
+  if os.name == 'nt':
+    cygwin_path_fix = 'true'
+  elif sys.platform == 'cygwin':
     from tempfile import mkstemp
     fd, tmpfname = mkstemp(suffix='.ltx', dir='/tmp')
     os.write(fd, r'''
