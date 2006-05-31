@@ -26,7 +26,6 @@ QTabularCreateDialog::QTabularCreateDialog(QTabularCreate * form)
 {
 	setupUi(this);
 
-	table->setMinimumSize(100,100);
 	rowsSB->setValue(5);
 	columnsSB->setValue(5);
 
@@ -34,13 +33,10 @@ QTabularCreateDialog::QTabularCreateDialog(QTabularCreate * form)
 		form_, SLOT(slotOK()));
 	connect(closePB, SIGNAL(clicked()),
 		form_, SLOT(slotClose()));
-
-    connect( table, SIGNAL( rowsChanged(int) ), rowsSB, SLOT( setValue(int) ) );
-    connect( table, SIGNAL( colsChanged(int) ), columnsSB, SLOT( setValue(int) ) );
-    connect( rowsSB, SIGNAL( valueChanged(int) ), table, SLOT( setNumberRows(int) ) );
-    connect( columnsSB, SIGNAL( valueChanged(int) ), table, SLOT( setNumberColumns(int) ) );
-    connect( rowsSB, SIGNAL( valueChanged(int) ), this, SLOT( rowsChanged(int) ) );
-    connect( columnsSB, SIGNAL( valueChanged(int) ), this, SLOT( columnsChanged(int) ) );
+    connect(rowsSB, SIGNAL(valueChanged(int)),
+		this, SLOT( rowsChanged(int)));
+    connect(columnsSB, SIGNAL(valueChanged(int)),
+		this, SLOT(columnsChanged(int)));
 }
 
 

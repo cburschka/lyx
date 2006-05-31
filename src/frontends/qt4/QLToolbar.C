@@ -26,12 +26,12 @@
 #include "QLToolbar.h"
 #include "QLAction.h"
 #include "qt_helpers.h"
+#include "InsertTableWidget.h"
 
 #include <QComboBox>
 #include <QToolBar>
 #include <QToolButton>
 #include <QAction>
-//Added by qt3to4:
 #include <QPixmap>
 
 using std::endl;
@@ -235,6 +235,19 @@ void QLToolbar::add(FuncRequest const & func, string const & tooltip)
 		/// \todo find a Qt4 equivalent to setHorizontalStretchable(true);
 		//toolbar_->setHorizontalStretchable(true);
 		break;
+	case LFUN_TABULAR_INSERT: {
+		QToolButton * tb = new QToolButton;
+		tb->setCheckable(true);
+		tb->setIcon(QPixmap(toqstr(toolbarbackend.getIcon(func))));
+		tb->setToolTip(toqstr(tooltip));
+		tb->setFocusPolicy(Qt::NoFocus);
+		InsertTableWidget * iv = new InsertTableWidget(owner_, func, tb);
+		connect(tb, SIGNAL(toggled(bool)), iv, SLOT(show(bool)));
+		connect(iv, SIGNAL(visible(bool)), tb, SLOT(setChecked(bool)));
+		connect(this, SIGNAL(updated()), iv, SLOT(updateParent()));
+		toolbar_->addWidget(tb);
+		break;
+		}
 	default: {
 		if (owner_.getLyXFunc().getStatus(func).unknown())
 			break;
@@ -242,9 +255,8 @@ void QLToolbar::add(FuncRequest const & func, string const & tooltip)
 		QLAction * action = new QLAction(owner_, toolbarbackend.getIcon(func), "", func, tooltip);
 		toolbar_->addAction(action);
 		ActionVector.push_back(action);
-
 		break;
-	}
+		}
 	}
 }
 
@@ -265,6 +277,8 @@ void QLToolbar::update()
 {
 	for (size_t i=0; i<ActionVector.size(); ++i)
 		ActionVector[i]->update();
+
+	emit updated();
 }
 
 

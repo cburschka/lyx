@@ -71,6 +71,9 @@ public:
 	void update();
 	LayoutBox * layout() const { return layout_.get(); }
 
+signals:
+	void updated();
+
 private:
 
 	std::vector<QLAction *> ActionVector;
