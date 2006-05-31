@@ -1,7 +1,12 @@
+2006-05-30  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* intl.C (InitKeyMapper): reset kbmap file names if the files
+	could not be read (bug 2604).
+
 2006-05-29  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
-	* LaTeX.C (run): rerun latex im idx file is empty (needed by memoir)
-        fix typo in comment (bug 2623).
+	* LaTeX.C (run): rerun latex if idx file is empty (needed by memoir)
+	fix typo in comment (bug 2623).
 
 	* LaTeXFeatures.C (getPackages): whitespace.
 

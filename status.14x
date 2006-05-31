@@ -113,7 +113,10 @@ What's new
 - Fix display of horizontal fill which appears at the end of a line
   (bug 2508).
 
-- Fix crash when changing document class while the cursor is inside a table
+- Fix crash when changing document class while the cursor is inside a
+  table.
+
+- Fix crash when there is a syntax error in a keyboard map file (bug 2604).
 
 * Configuration/Installation:
 
