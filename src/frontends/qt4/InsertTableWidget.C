@@ -103,24 +103,30 @@ void InsertTableWidget::mouseMoveEvent(QMouseEvent * event)
 
 bool InsertTableWidget::event(QEvent * event)
 {
-	if (event->type() == QEvent::MouseMove) {
+	switch (event->type()) {
+	case QEvent::MouseMove: {
 		QMouseEvent * me = dynamic_cast<QMouseEvent *>(event);
 		mouseMoveEvent(me);
 		return true;
-	} else if (event->type() == QEvent::MouseButtonRelease) {
+		}
+	case QEvent::MouseButtonRelease: {
 		QMouseEvent * me = dynamic_cast<QMouseEvent *>(event);
 		mouseReleaseEvent(me);
 		return true;
-	} else if (event->type() == QEvent::MouseButtonPress) {
+		}
+	case QEvent::MouseButtonPress: {
 		// swallow this one...
 		return true;
-	} else if (event->type() == QEvent::Leave) {
+		}
+	case QEvent::Leave: {
 		bottom_ = 0;
 		right_ = 0;
 		update();
 		return true;
+		}
+	default:
+		return QWidget::event(event);
 	}
-	return QWidget::event(event);
 }
 
 
