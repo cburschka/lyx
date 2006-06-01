@@ -814,6 +814,7 @@ dist_layouts_DATA =\
 	layouts/heb-article.layout \
 	layouts/heb-letter.layout \
 	layouts/hollywood.layout \
+	layouts/ijmpc.layout \
 	layouts/ijmpd.layout \
 	layouts/jgrga.layout \
 	layouts/kluwer.layout \
@@ -911,6 +912,7 @@ dist_templates_DATA = \
 	templates/revtex.lyx \
 	templates/revtex4.lyx \
 	templates/slides.lyx \
+	templates/ijmpc.lyx \
 	templates/ijmpd.lyx \
 	templates/agu_article.lyx
 
