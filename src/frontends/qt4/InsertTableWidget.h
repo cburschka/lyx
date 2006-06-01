@@ -26,7 +26,7 @@ class InsertTableWidget : public QWidget {
 	Q_OBJECT
 public:
 
-	InsertTableWidget(LyXView &, FuncRequest const &, QWidget *);
+	InsertTableWidget(LyXView &, QWidget *);
 
 signals:
 	//! widget is visible
@@ -64,8 +64,6 @@ private:
 	int bottom_;
 	//! column of pointer
 	int right_;	
-	//! the tabular_insert funcrequest
-	FuncRequest const & func_ ;
 	//! the lyxview we need to dispatch the funcrequest
 	LyXView & lyxView_;
 	//! widget under mouse

@@ -31,8 +31,8 @@
 namespace lyx {
 namespace frontend {
 
-InsertTableWidget::InsertTableWidget(LyXView & lyxView, FuncRequest const & func, QWidget * parent)
-	: QWidget(parent, Qt::Popup), colwidth_(20), rowheight_(12), lyxView_(lyxView), func_(func)
+InsertTableWidget::InsertTableWidget(LyXView & lyxView, QWidget * parent)
+	: QWidget(parent, Qt::Popup), colwidth_(20), rowheight_(12), lyxView_(lyxView)
 {
 	init();
 	setMouseTracking(true);
@@ -93,11 +93,11 @@ void InsertTableWidget::mouseMoveEvent(QMouseEvent * event)
 		resetGeometry();
 	}
 
-	if (bottom_ != b0 || right_ != r0)
+	if (bottom_ != b0 || right_ != r0) {
 		update();
-
-	QString status = QString("%1x%2").arg(bottom_).arg(right_);
-	QToolTip::showText(event->globalPos(), status , this); 
+		QString status = QString("%1x%2").arg(bottom_).arg(right_);
+		QToolTip::showText(event->globalPos(), status , this);
+	}
 }
 
 
@@ -166,8 +166,8 @@ void InsertTableWidget::drawGrid(int const rows, int const cols, Qt::GlobalColor
 
 void InsertTableWidget::updateParent()
 {
-	FuncStatus const status = lyxView_.getLyXFunc().getStatus(func_);
-	parentWidget()->setEnabled(status.enabled());
+	bool status = lyxView_.getLyXFunc().getStatus(FuncRequest(LFUN_TABULAR_INSERT)).enabled();
+	parentWidget()->setEnabled(status);
 }
 
 
