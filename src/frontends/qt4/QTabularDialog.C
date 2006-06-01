@@ -14,13 +14,12 @@
 
 #include "QTabularDialog.h"
 #include "QTabular.h"
-//Added by qt3to4:
-#include <QCloseEvent>
 #include "validators.h"
 #include "qt_helpers.h"
 
 #include "controllers/ControlTabular.h"
 
+#include <QCloseEvent>
 #include <QCheckBox>
 #include <QPushButton>
 #include <QLineEdit>
@@ -35,9 +34,6 @@ QTabularDialog::QTabularDialog(QTabular * form)
 	: form_(form)
 {
 	setupUi(this);
-
-	connect(closePB, SIGNAL(clicked()),
-		form, SLOT(slotClose()));
 
 	widthED->setValidator(unsignedLengthValidator(widthED));
 
@@ -93,6 +89,7 @@ void QTabularDialog::closeEvent(QCloseEvent * e)
 void QTabularDialog::close_clicked()
 {
 	form_->closeGUI();
+	form_->slotClose();
 }
 
 
