@@ -1,4 +1,4 @@
-#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+#LyX 1.4.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 245
 \begin_document
 \begin_header
@@ -594,6 +594,7 @@ inlined
 status inlined
 
 \begin_layout Standard
+
 % like this
 \end_layout
 
@@ -685,17 +686,20 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 begin{tabular}{ll}
 \end_layout
 
 \begin_layout Standard
 
+
 \backslash
 begin{minipage}{5cm}
 \end_layout
 
 \begin_layout Standard
+
 This is an example for a minipage environment.
  You can put nearly everything in it, even (non-floating) figures and tables.
  
@@ -703,21 +707,25 @@ This is an example for a minipage environment.
 
 \begin_layout Standard
 
+
 \backslash
 end{minipage}
 \end_layout
 
 \begin_layout Standard
+
 &
 \end_layout
 
 \begin_layout Standard
+
 
 \backslash
 begin{minipage}{5cm}
 \end_layout
 
 \begin_layout Standard
+
 
 \backslash
 begin{verbatim}
@@ -725,22 +733,26 @@ begin{verbatim}
 
 \begin_layout Standard
 
+
 \backslash
 begin{minipage}{5cm}
 \end_layout
 
 \begin_layout Standard
+
 This ...
  
 \end_layout
 
 \begin_layout Standard
 
+
 \backslash
 end{minipage}
 \end_layout
 
 \begin_layout Standard
+
 
 \backslash
 end{verbatim}
@@ -748,11 +760,13 @@ end{verbatim}
 
 \begin_layout Standard
 
+
 \backslash
 end{minipage}
 \end_layout
 
 \begin_layout Standard
+
 
 \backslash
 end{tabular}
@@ -4878,6 +4892,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 let
 \backslash
@@ -4896,6 +4911,7 @@ labelitemi
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 renewcommand
@@ -4974,6 +4990,7 @@ labelitem
 status inlined
 
 \begin_layout Standard
+
 [
 \backslash
 (
@@ -5005,6 +5022,7 @@ star
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 renewcommand
@@ -5617,6 +5635,7 @@ If you want to place footnotes in the header block, e.g.
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
  
@@ -6339,6 +6358,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 begin{sloppypar}
 \end_layout
@@ -6549,6 +6569,7 @@ Document
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 end{sloppypar}
@@ -6795,6 +6816,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 begin{sloppypar}
 \end_layout
@@ -6935,6 +6957,7 @@ twocolumn
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 end{sloppypar}
@@ -7221,7 +7244,7 @@ Your mileage may vary.
 \end_layout
 
 \begin_layout Section
-ijmpd
+qijmpc and ijmpd
 \end_layout
 
 \begin_layout Standard
@@ -7235,25 +7258,41 @@ Overview
 \end_layout
 
 \begin_layout Standard
-The ijmpd package is a set of macros that facilitates electronic manuscript
+The ijmpc package is a set of macros that facilitates electronic manuscript
  submission to the 
+\emph on
+International Journal of Modern Physics C
+\emph default
+.
+ Similarly, the ijmpd package is for creating manuscripts to be submitted
+ to the 
 \emph on
 International Journal of Modern Physics D
 \emph default
- published by World Scientific.
- The name of the document class is 
+.
+ Both journals are published by World Scientific.
+ The corresponding document classes are named 
+\family typewriter
+ws-ijmpc.cls
+\family default
+ and 
 \family typewriter
 ws-ijmpd.cls
 \family default
-.
- This file, together with instructions for the authors, can be downloaded
- from the site 
+, respectively.
+ These files, together with instructions for the authors, can be downloaded
+ from the sites 
+\begin_inset LatexCommand \url{http://www.worldscinet.com/ijmpc/mkt/guidelines.shtml}
+
+\end_inset
+
+ and 
 \begin_inset LatexCommand \url{http://www.worldscinet.com/ijmpd/mkt/guidelines.shtml}
 
 \end_inset
 
 .
- The ijmpd package is a modified version of the standard 
+ Both packages are modified versions of the standard 
 \begin_inset Quotes eld
 \end_inset
 
@@ -7261,14 +7300,10 @@ article
 \begin_inset Quotes erd
 \end_inset
 
- package.
- Most of its features are supported by LyX.
- I have recently used LyX successfully to write an article submitted to
- the 
-\emph on
-International Journal of Modern Physics D
-\emph default
-.
+ package, and they are almost (but not exactly) identical.
+ Most of their features are supported by LyX.
+ I have used LyX successfully to write articles submitted to both journals
+ without any problem.
 \end_layout
 
 \begin_layout Subsection
@@ -7291,6 +7326,10 @@ emplate
 \family default
 , then choose the 
 \family typewriter
+ijmpc.lyx
+\family default
+ or 
+\family typewriter
 ijmpd.lyx
 \family default
  template.
@@ -7300,18 +7339,17 @@ ijmpd.lyx
 \family typewriter
 <>
 \family default
-) with the correct information.
+) with your text.
  You should keep in mind the following remarks.
 \end_layout
 
 \begin_layout Enumerate
 LyX won't let you change the font size and the page style of the document,
- because the ijmpd package does not allow such modifications.
+ because such modifications are not allowed by both packages.
 \end_layout
 
 \begin_layout Enumerate
-The ijmpd package requires that the language of the document should not
- be changed.
+The language of the document should not be changed.
  Before previewing your paper, be sure that the babel package is not used.
  To do this, click on 
 \family sans
@@ -7325,7 +7363,11 @@ P
 \bar default
 references
 \family default
-, deselect the 
+, select the 
+\family sans
+Lang Opts
+\family default
+ tab, deselect the 
 \family sans
 \bar under
 U
@@ -7347,7 +7389,72 @@ Save
 \end_layout
 
 \begin_layout Enumerate
-Two new environments, named 
+The 
+\begin_inset Quotes eld
+\end_inset
+
+Keywords
+\begin_inset Quotes erd
+\end_inset
+
+ style must be used to define keywords.
+\end_layout
+
+\begin_layout Enumerate
+The ijmpc package provides a style named 
+\begin_inset Quotes eld
+\end_inset
+
+Classification Codes
+\begin_inset Quotes erd
+\end_inset
+
+, which can be used to define classification codes, such as PACS numbers.
+ Note that this facility is not supported by the ijmpd package.
+\end_layout
+
+\begin_layout Enumerate
+Several new environments are available: 
+\begin_inset Quotes eld
+\end_inset
+
+Definition
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Step
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Example
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Remark
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Notation
+\begin_inset Quotes erd
+\end_inset
+
+, 
 \begin_inset Quotes eld
 \end_inset
 
@@ -7355,7 +7462,7 @@ Theorem
 \begin_inset Quotes erd
 \end_inset
 
- and 
+, 
 \begin_inset Quotes eld
 \end_inset
 
@@ -7363,12 +7470,137 @@ Proof
 \begin_inset Quotes erd
 \end_inset
 
- are available (their use is obvious).
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Corollary
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Lemma
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Proposition
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Prop
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Question
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Claim
+\begin_inset Quotes erd
+\end_inset
+
+, and 
+\begin_inset Quotes eld
+\end_inset
+
+Conjecture
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Their use is more or less obvious.
+ LyX supports all these environments; it will use the proper label, text
+ style, and numbering scheme for each of them.
 \end_layout
 
 \begin_layout Enumerate
-Appendices may be added to the paper.
- LyX offers a special environment, called 
+Both packages use basic citations; the natbib package should not be used.
+ In LyX, citation references are shown as usual; in the output, citations
+ are shown as superscripts.
+ If you want to use a citation as normal text, you should use the 
+\family typewriter
+refcite
+\family default
+ command, e.g., 
+\begin_inset Quotes eld
+\end_inset
+
+See Ref.\InsetSpace ~
+
+\family typewriter
+
+\backslash
+refcite{key}
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+There is no 
+\begin_inset Quotes eld
+\end_inset
+
+Acknowledgments
+\begin_inset Quotes erd
+\end_inset
+
+ section in both packages.
+ To put acknowledgments, just use the 
+\begin_inset Quotes eld
+\end_inset
+
+Section*
+\begin_inset Quotes erd
+\end_inset
+
+ environment.
+\end_layout
+
+\begin_layout Enumerate
+Appendices may be added to the paper, 
+\emph on
+after
+\emph default
+ the Acknowledgments and 
+\shape italic
+before
+\shape default
+ the References.
+ LyX provides a special environment, called 
+\begin_inset Quotes eld
+\end_inset
+
+Appendices Section
+\begin_inset Quotes erd
+\end_inset
+
+ which marks the beginning of the appendices.
+ This environment should be left blank; it just sends a LaTeX command, but
+ nothing is really printed.
+ In LyX, the word 
 \begin_inset Quotes eld
 \end_inset
 
@@ -7376,16 +7608,65 @@ Appendix
 \begin_inset Quotes erd
 \end_inset
 
- which marks the beginning of the appendix.
- An appendix can contain normal sections, subsections, or subsubsections.
+ is printed with blue letters, as a signal that all sections after that
+ point are appendices.
+ To write an appendix, use the 
+\begin_inset Quotes eld
+\end_inset
+
+Appendix
+\begin_inset Quotes erd
+\end_inset
+
+ environment.
+ LyX will number each appendix with capital letters, as required by both
+ journals.
+ Note that 
+\begin_inset Quotes eld
+\end_inset
+
+Appendices Section
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\emph on
+must
+\emph default
+ be present before the first appendix; if not, all appendices will be numbered
+ as normal sections in the output.
 \end_layout
 
 \begin_layout Enumerate
-The ijmpd package implements table captions quite differently than LyX does.
+The ijmpc and the ijmpd packages use the 
+\family typewriter
+tbl
+\family default
+ command to implement table captions.
  As a result, a table created by LyX is printed correctly, but its caption
  is ignored.
- If you need table captions, you should implement the whole table float
- in a 
+ However, you can use some ERT to overpass this problem, so that captions
+ are printed as expected.
+ To do so, create a float table as usual, remove the caption, and replace
+ it with the ERT 
+\family typewriter
+
+\backslash
+tbl{
+\emph on
+your table caption
+\emph default
+}{
+\family default
+ (sic); you must also the ERT 
+\family typewriter
+}
+\family default
+ immediately after the tabular material.
+ Study the example table included in the template files to see how this
+ trick is implemented.
+ Alternatively, If you need table captions, you should implement the whole
+ table float in a 
 \family typewriter
 .tex
 \family default
@@ -7395,6 +7676,11 @@ The ijmpd package implements table captions quite differently than LyX does.
 I
 \bar default
 nsert\SpecialChar \menuseparator
+Fil
+\bar under
+e
+\bar default
+\SpecialChar \menuseparator
 Chil
 \bar under
 d
@@ -7403,12 +7689,15 @@ d
 Document
 \family default
 ).
- Details on how to create an ijmpd table float can be found in the file
- 
+ Details on how to create a table float can be found in the files 
+\family typewriter
+ws-ijmpc.tex
+\family default
+ and 
 \family typewriter
 ws-ijmpd.tex
 \family default
-, which is included in the ijmpd package.
+, included in the corresponding packages.
 \end_layout
 
 \begin_layout Subsection
@@ -7485,15 +7774,19 @@ Use of ERT
 \end_layout
 
 \begin_layout Standard
-The use of ERT is optional, and is reduced to three commands, which affect
- the look of the page.
+The use of ERT is reduced to two commands, which must be placed at the top
+ of the document.
  If you started writing your paper by using the 
+\family typewriter
+ijmpc.lyx
+\family default
+ or the 
 \family typewriter
 ijmpd.lyx
 \family default
  template, the ERT needed is already in its place; you usually don't need
  to delete it.
- You may only change the first ERT to specify the information printed to
+ You may only modify the first ERT to specify the information printed to
  the top of odd and even pages (authors' names and short paper's title,
  respectively).
  This ERT must have the form 
@@ -8327,6 +8620,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 ,
 \end_layout
@@ -8338,6 +8632,7 @@ g.
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
  
@@ -8620,6 +8915,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 begin{sloppypar}
 \end_layout
@@ -8688,6 +8984,7 @@ Verse
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 end{sloppypar}
@@ -9374,6 +9671,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 ,
 \end_layout
@@ -9385,6 +9683,7 @@ e.
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
  
@@ -12502,6 +12801,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 begin{multicols}{2}
 \end_layout
@@ -12625,6 +12925,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 end{multicols}
 \end_layout
@@ -12690,6 +12991,7 @@ TeX also provides a comprehensive box of goodies for presenting them:
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 begin{multicols}{2}
@@ -12772,6 +13074,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 end{multicols}
 \end_layout
@@ -12828,6 +13131,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 begin{multicols}{2}
 \end_layout
@@ -12883,6 +13187,7 @@ Header
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 end{multicols}
@@ -14664,6 +14969,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 LaTeX
 \end_layout
@@ -14739,6 +15045,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
  
 \end_layout
@@ -14770,6 +15077,7 @@ Cf.
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
  
@@ -14833,6 +15141,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 ,
 \end_layout
@@ -14844,6 +15153,7 @@ g.
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
  
@@ -14905,6 +15215,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 ,
 \end_layout
@@ -14916,6 +15227,7 @@ e.
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
  
@@ -14968,6 +15280,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 ,
 \end_layout
@@ -14979,6 +15292,7 @@ g.
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
  
@@ -15028,6 +15342,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
  
 \end_layout
@@ -15064,6 +15379,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 ,
 \end_layout
@@ -15075,6 +15391,7 @@ g.
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
  
@@ -21439,6 +21756,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 setcounter{footnote}{0}
 \end_layout
@@ -21471,6 +21789,7 @@ The following command will change the numbering to small letters.
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 renewcommand{
@@ -21540,6 +21859,7 @@ arabic.
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
 renewcommand {
@@ -21631,6 +21951,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 marginpar{
 \backslash
@@ -21657,6 +21978,7 @@ command does to the following margin note.
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 reversemarginpar
@@ -21782,6 +22104,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 begin{multicols}{2}
 \end_layout
@@ -21837,6 +22160,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 end{multicols}
 \end_layout
@@ -21859,6 +22183,7 @@ The same pattern is used when you want more than two columns:
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 begin{multicols}{3}
@@ -21899,6 +22224,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 end{multicols}
 \end_layout
@@ -21927,6 +22253,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 begin{multicols}{2}
 \end_layout
@@ -21951,6 +22278,7 @@ The Honourable Ronald Adair was the second son of the Earl of Maynooth,
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 begin{multicols}{2}
@@ -21981,6 +22309,7 @@ The youth moved in the best society--had, so far as was known, no enemies
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 end{multicols}
@@ -22023,6 +22352,7 @@ The evidence of those who had played with him-- Mr.
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 end{multicols}
@@ -22543,6 +22873,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 extratablespace{2ex}
 \end_layout
@@ -22785,6 +23116,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 
 \backslash
@@ -22919,6 +23251,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 newfont{
 \backslash
@@ -22940,6 +23273,7 @@ vspace*{-8.4ex}
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 hangindent=3.3em 
@@ -22969,6 +23303,7 @@ dropped capitals
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 verb+
@@ -23098,6 +23433,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 begin{sloppypar}
 \end_layout
@@ -23113,6 +23449,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 newdimen
 \backslash
@@ -23120,6 +23457,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 
 \backslash
 setlength{
@@ -23139,6 +23477,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 parshape 19 0.45
 \backslash
@@ -23148,6 +23487,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 0.40
 \backslash
 varunit 0.300
@@ -23156,6 +23496,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 0.35
 \backslash
 varunit 0.293
@@ -23164,6 +23505,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 0.30
 \backslash
 varunit 0.300
@@ -23172,6 +23514,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 0.25
 \backslash
 varunit 0.317
@@ -23180,6 +23523,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 0.20
 \backslash
 varunit 0.342
@@ -23188,6 +23532,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 0.15
 \backslash
 varunit 0.373
@@ -23196,6 +23541,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 0.10
 \backslash
 varunit 0.410
@@ -23204,6 +23550,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 0.05
 \backslash
 varunit 0.453
@@ -23212,6 +23559,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 0.00
 \backslash
 varunit 0.500
@@ -23220,6 +23568,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 0.05
 \backslash
 varunit 0.453
@@ -23228,6 +23577,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 0.10
 \backslash
 varunit 0.410
@@ -23236,6 +23586,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 0.15
 \backslash
 varunit 0.373
@@ -23244,6 +23595,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 0.20
 \backslash
 varunit 0.342
@@ -23252,6 +23604,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 0.25
 \backslash
 varunit 0.317
@@ -23260,6 +23613,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 0.30
 \backslash
 varunit 0.300
@@ -23268,6 +23622,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 0.35
 \backslash
 varunit 0.293
@@ -23276,6 +23631,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 0.40
 \backslash
 varunit 0.300
@@ -23284,6 +23640,7 @@ varunit
 \end_layout
 
 \begin_layout Standard
+
 0.45
 \backslash
 varunit 0.332
@@ -23355,6 +23712,7 @@ numlines
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 end{sloppypar}

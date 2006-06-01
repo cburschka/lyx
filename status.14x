@@ -33,7 +33,9 @@ What's new
   .tex files that are suitable for pdflatex, including figure conversion
   to png, pdf or jpeg instead of eps.
 
-- Add biographynophoto style to IEEEtran.layout.
+- Add biographynophoto style to IEEEtran.layout; add new textclass for
+  International Journal of Modern Physics C (and update support for
+  IJMP D).
 
 - Add new function buffer-toggle-compression (and entry in Document
   menu) to change whether the file will be compressed on disk or not.
