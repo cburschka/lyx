@@ -58,7 +58,7 @@ if rebuild_targets:
 # sync frontend and env['frontend'] (maybe build qt4 with frontend=qt3)
 if build_qt3:
   frontend = 'qt3'
-  env['frontend'] = 'qt4'
+  env['frontend'] = 'qt3'
 elif build_qt4:
   frontend = 'qt4'
   env['frontend'] = 'qt4'
@@ -145,7 +145,7 @@ if build_intl:
   intlenv = env.Copy()
   # we need the original C compiler for these files
   intlenv['CC'] = intlenv['C_COMPILER']
-  intlenv['CCFLAGS'] = intlenv['C_CCFLAGS']
+  intlenv['CCFLAGS'] = intlenv['C_CCFLAGS'].split()
   intlenv['CPPPATH'] += ['intl']
   
   intlenv.Append(CCFLAGS = [

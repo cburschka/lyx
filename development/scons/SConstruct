@@ -521,6 +521,9 @@ else:
   #   in the current code page (number)
   # C4996: foo was decleared deprecated
   env.Append(CCFLAGS=['/TP', '/EHsc', '/wd4819', '/wd4996'])
+  env['LINKFLAGS'] = [env['LINKFLAGS'], '/MANIFEST']
+  env['LINKCOM' ] = [env['LINKCOM'], 'mt /manifest ${TARGET}.manifest /outputresource:$TARGET']
+  env['SHLINKCOM'] = [env['SHLINKCOM'], 'mt /manifest ${TARGET}.manifest -outputresource:$TARGET;#2']
 
 
 #----------------------------------------------------------
@@ -551,8 +554,10 @@ else:
   env['HAS_PKG_CONFIG'] = env_cache['HAS_PKG_CONFIG']
 
 # zlib? This is required. (fast_start assumes the existance of zlib)
-if not fast_start and not conf.CheckLibWithHeader('z', 'zlib.h', 'C'):
-    print 'Did not find libz or zlib.h, exiting!'
+if not fast_start:
+  if (not use_vc and not conf.CheckLibWithHeader('z', 'zlib.h', 'C')) \
+    or (use_vc and not conf.CheckLibWithHeader('zdll', 'zlib.h', 'C')):
+    print 'Did not find zdll.lib or zlib.h, exiting!'
     Exit(1)
 
 # qt libraries?
@@ -1124,11 +1129,10 @@ except:
 if platform_name in ['win32', 'cygwin']:
   # the final link step needs stdc++ to succeed under mingw
   # FIXME: shouldn't g++ automatically link to stdc++?
-  env['SYSTEM_LIBS'] = ['shlwapi', 'z']
   if use_vc:
-    env['SYSTEM_LIBS'].extend(['gdi32', 'shell32', 'advapi32'])
+    env['SYSTEM_LIBS'] = ['shlwapi', 'gdi32', 'shell32', 'advapi32', 'zdll']
   else:
-    env['SYSTEM_LIBS'].append('stdc++')
+    env['SYSTEM_LIBS'] = ['shlwapi', 'stdc++', 'z']
 else:
   env['SYSTEM_LIBS'] = ['z']
 
