@@ -71,7 +71,7 @@
 #   features.
 #
 
-import os, sys, copy, cPickle
+import os, sys, copy, cPickle, glob
 
 # config/scons_utils.py defines a few utility function
 sys.path.append('config')
@@ -105,6 +105,7 @@ else:
 PACKAGE_VERSION = '1.5.0svn'
 DEVEL_VERSION = True
 default_build_mode = 'debug'
+lyx_ext = '*.C'
 
 PACKAGE = 'lyx'
 PACKAGE_BUGREPORT = 'lyx-devel@lists.lyx.org'
@@ -354,6 +355,7 @@ env = Environment(options = opts)
 frontend = env.get('frontend', default_frontend)
 # make sure the key exists
 env['frontend'] = frontend
+env['LYX_EXT'] = lyx_ext
 #
 use_X11 = env.get('X11', default_with_x)
 use_vc = env.get('use_vc', False)
@@ -506,7 +508,7 @@ if env.has_key('aikasurus_path') and env['aikasurus_path']:
 #
 # save the old c compiler and CCFLAGS (used by libintl)
 env['C_COMPILER'] = env.subst('$CC')
-env['C_CCFLAGS'] = env.subst('$CCFLAGS')
+env['C_CCFLAGS'] = env.subst('$CCFLAGS').split()
 # if we use ms vc, the commands are fine (cl.exe and link.exe)
 if not use_vc:
   if env.has_key('CXX') and env['CXX']:
@@ -521,9 +523,7 @@ else:
   #   in the current code page (number)
   # C4996: foo was decleared deprecated
   env.Append(CCFLAGS=['/TP', '/EHsc', '/wd4819', '/wd4996'])
-  env['LINKFLAGS'] = [env['LINKFLAGS'], '/MANIFEST']
-  env['LINKCOM' ] = [env['LINKCOM'], 'mt /manifest ${TARGET}.manifest /outputresource:$TARGET']
-  env['SHLINKCOM'] = [env['SHLINKCOM'], 'mt /manifest ${TARGET}.manifest -outputresource:$TARGET;#2']
+  env.Append(C_CCFLAGS=['/Dinline#', '/D__attribute__(x)#', '/Duintmax_t=UINT_MAX'])
 
 
 #----------------------------------------------------------
@@ -596,6 +596,12 @@ if not fast_start:
       print 'Did not find qt libraries, exiting!'
       Exit(1)
 
+# now, if msvc2005 is used, we will need that QT_LIB_PATH/QT_LIB.manifest file
+if use_vc:
+  # glob file xxx.dll.manifest (msvc 2003 may not have it)
+  manifests = glob.glob(os.path.join(env.subst('$QT_LIB_PATH'), '*.dll.manifest'))
+  if manifests != []:
+    env['LINKCOM'] = [env['LINKCOM'], 'mt.exe /MANIFEST %s /outputresource:$TARGET;1' % manifests[0]]
 
 # check socket libs
 if not fast_start:
@@ -727,8 +733,6 @@ if not fast_start:
 
   # for libintl % grep HAVE * | grep _H | cut -d: -f2 | sort -u
   
-  # HAVE_STDINT_H_WITH_UINTMAX
-  # HAVE_INTTYPES_H_WITH_UINTMAX
   # 
   # HAVE_INTTYPES_H
   # HAVE_STDINT_H
@@ -893,7 +897,6 @@ int count()
       env[func[1]] = 0
 
   # HAVE_INTMAX_T
-  # HAVE_INTTYPES_H_WITH_UINTMAX 
   # HAVE_DECL_ISTREAMBUF_ITERATOR
   utils.addToConfig("/* Define to 1 if you have the `intmax_t' type. */", newline=1)
   if conf.CheckType('intmax_t', includes='#include <stdint.h>') or \
@@ -908,6 +911,7 @@ int count()
   # HAVE_WCHAR_T
   # HAVE_WINT_T
   # HAVE_INTTYPES_H_WITH_UINTMAX 
+  # HAVE_STDINT_H_WITH_UINTMAX
   
   types = [
     ('intmax_t', 'HAVE_INTMAX_T', None),
@@ -916,6 +920,7 @@ int count()
     ('wchar_t', 'HAVE_WCHAR_T', None),
     ('wint_t', 'HAVE_WINT_T', None),
     ('uintmax_t', 'HAVE_INTTYPES_H_WITH_UINTMAX', '#include <inttypes.h>'),
+    ('uintmax_t', 'HAVE_STDINT_H_WITH_UINTMAX', '#include <stdint.h>'),
     ('std::istreambuf_iterator<std::istream>', 'HAVE_DECL_ISTREAMBUF_ITERATOR',
       '#include <streambuf>\n#include <istream>')
   ]

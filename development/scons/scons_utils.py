@@ -70,6 +70,16 @@ def env_subst(target, source, env):
   #st = os.stat(str(source[0]))
   #os.chmod(str(target[0]), stat.S_IMODE(st[stat.ST_MODE]) | stat.S_IWRITE)
 
+#
+# glob filenames
+#
+def globSource(dir, pattern, build_dir=None, exclude=[], include=[]):
+  ''' glob files, in dir and use build_dir as returned path name '''
+  files = filter(lambda x: x not in exclude, glob.glob1(dir, pattern)) + include
+  if build_dir is None:
+    return files
+  else:
+    return ['%s/%s' % (build_dir, x) for x in files]
 
 #
 # autoconf tests

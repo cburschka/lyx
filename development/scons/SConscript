@@ -9,6 +9,8 @@
 # Full author contact details are available in file CREDITS.
 
 import os, sys
+sys.path.append('config')
+from scons_utils import globSource
 
 Import('env')
 
@@ -28,6 +30,7 @@ build_lyxbase = build_lyx or 'lyxbase' in targets
 build_po = 'po' in targets or 'install' in targets or 'all' in targets
 build_qt3 = (build_lyx and env['frontend'] == 'qt3') or 'qt3' in targets
 build_qt4 = (build_lyx and env['frontend'] == 'qt4') or 'qt4' in targets
+build_msvc_projects = env['USE_VC'] and 'msvc_projects' in targets
 
 
 # now, if rebuild_targets is specified, do not rebuild some targets
@@ -80,53 +83,32 @@ if build_boost:
 
   filesystem = boostenv.StaticLibrary(
     target = '$LOCALLIBPATH/included_boost_filesystem',
-    source = ["$BUILDDIR/boost/filesystem/src/%s" % x for x in Split('''
-      convenience.cpp
-      exception.cpp
-      operations_posix_windows.cpp
-      path_posix_windows.cpp
-    ''')]
+    source = globSource(dir = env.subst('$TOP_SRC_DIR/boost/libs/filesystem/src'), 
+      pattern = '*.cpp', build_dir = '$BUILDDIR/boost/filesystem/src')
   )
 
   print 'Processing files in boost/libs/regex/src...'
 
   regex = boostenv.StaticLibrary(
     target = '$LOCALLIBPATH/included_boost_regex',
-    source = ["$BUILDDIR/boost/regex/src/%s" % x for x in Split('''
-      cpp_regex_traits.cpp
-      c_regex_traits.cpp
-      cregex.cpp
-      fileiter.cpp
-      instances.cpp
-      regex.cpp
-      regex_raw_buffer.cpp
-      regex_traits_defaults.cpp
-      w32_regex_traits.cpp
-    ''')]
+    source = globSource(dir = env.subst('$TOP_SRC_DIR/boost/libs/regex/src'), pattern = '*.cpp',
+      build_dir = '$BUILDDIR/boost/regex/src')
   )
 
   print 'Processing files in boost/libs/signals/src...'
 
   signals = boostenv.StaticLibrary(
     target = '$LOCALLIBPATH/included_boost_signals',
-    source = ["$BUILDDIR/boost/signals/src/%s" % x for x in Split('''
-      connection.cpp
-      named_slot_map.cpp
-      signal_base.cpp
-      slot.cpp
-      trackable.cpp
-    ''')]
+    source = globSource(dir = env.subst('$TOP_SRC_DIR/boost/libs/signals/src'), pattern = '*.cpp',
+      build_dir = '$BUILDDIR/boost/signals/src')
   )
 
   print 'Processing files in boost/libs/iostreams/src...'
 
   iostreams = boostenv.StaticLibrary(
     target = '$LOCALLIBPATH/included_boost_iostreams',
-    source = ["$BUILDDIR/boost/iostreams/src/%s" % x for x in Split('''
-      file_descriptor.cpp
-      mapped_file.cpp
-      zlib.cpp
-    ''') ]
+    source = globSource(dir = env.subst('$TOP_SRC_DIR/boost/libs/iostreams/src'), pattern = '*.cpp',
+      build_dir = '$BUILDDIR/boost/iostreams/src')
   )
   Alias('boost', filesystem)
   Alias('boost', regex)
@@ -145,7 +127,7 @@ if build_intl:
   intlenv = env.Copy()
   # we need the original C compiler for these files
   intlenv['CC'] = intlenv['C_COMPILER']
-  intlenv['CCFLAGS'] = intlenv['C_CCFLAGS'].split()
+  intlenv['CCFLAGS'] = intlenv['C_CCFLAGS']
   intlenv['CPPPATH'] += ['intl']
   
   intlenv.Append(CCFLAGS = [
@@ -172,32 +154,9 @@ if build_intl:
   intl = intlenv.StaticLibrary(
     target = '$LOCALLIBPATH/included_intl',
     LIBS = ['c'],
-    source = ["$BUILDDIR/intl/%s" % x for x in Split('''
-      bindtextdom.c
-      dcgettext.c
-      dgettext.c
-      gettext.c
-      finddomain.c
-      loadmsgcat.c
-      localealias.c
-      textdomain.c
-      l10nflist.c
-      explodename.c
-      dcigettext.c
-      dcngettext.c
-      dngettext.c
-      ngettext.c
-      plural.c
-      plural-exp.c
-      localcharset.c
-      relocatable.c
-      localename.c
-      log.c
-      printf.c
-      osdep.c
-      os2compat.c
-      intl-compat.c
-    ''')]
+    source = globSource(dir = env.subst('$TOP_SRC_DIR/intl'), pattern = '*.c',
+      exclude = ['vasnprintf.c', 'printf-parse.c', 'printf-args.c', 'os2compat.c'],
+      build_dir = '$BUILDDIR/intl')
   )
   Alias('intl', intl)
 
@@ -217,36 +176,9 @@ if build_supports:
 
   supports = env.StaticLibrary(
     target = '$LOCALLIBPATH/supports',
-    source = ['$BUILDDIR/common/support/%s' % x for x in Split('''
-      FileMonitor.C
-      abort.C
-      chdir.C
-      convert.C
-      copy.C
-      environment.C
-      filefilterlist.C
-      filename.C
-      filetools.C
-      forkedcall.C
-      forkedcallqueue.C
-      forkedcontr.C
-      fs_extras.C
-      getcwd.C
-      kill.C
-      lstrings.C
-      lyxtime.C
-      lyxsum.C
-      mkdir.C
-      os.C
-      path.C
-      package.C
-      rename.C
-      socktools.C
-      systemcall.C
-      tempname.C
-      userinfo.C
-      unlink.C
-    ''')]
+    source =  globSource(dir = env.subst('$TOP_SRC_DIR/src/support'), pattern = env['LYX_EXT'], 
+      exclude = ['os_win32.C', 'os_unix.C', 'os_cygwin.C', 'atexit.c'],
+      include = ['package.C'], build_dir = '$BUILDDIR/common/support')
   )
   Alias('supports', supports)
 
@@ -259,80 +191,9 @@ if build_mathed:
 
   mathed = env.StaticLibrary(
     target = '$LOCALLIBPATH/mathed',
-    source = ["$BUILDDIR/common/mathed/%s" % x for x in Split('''
-      textpainter.C
-      math_amsarrayinset.C
-      math_arrayinset.C
-      math_atom.C
-      math_autocorrect.C
-      math_biginset.C
-      math_binominset.C
-      math_boldsymbolinset.C
-      math_boxinset.C
-      math_boxedinset.C
-      math_braceinset.C
-      math_casesinset.C
-      math_charinset.C
-      math_colorinset.C
-      math_commentinset.C
-      math_data.C
-      math_decorationinset.C
-      math_deliminset.C
-      math_dfracinset.C
-      math_diffinset.C
-      math_diminset.C
-      math_dotsinset.C
-      math_envinset.C
-      math_extern.C
-      math_exfuncinset.C
-      math_exintinset.C
-      math_factory.C
-      math_fboxinset.C
-      math_frameboxinset.C
-      math_fontinset.C
-      math_fontoldinset.C
-      math_fracinset.C
-      math_fracbase.C
-      math_gridinset.C
-      math_hullinset.C
-      math_inset.C
-      math_kerninset.C
-      math_lefteqninset.C
-      math_liminset.C
-      math_macro.C
-      math_macroarg.C
-      math_macrotemplate.C
-      math_macrotable.C
-      math_makeboxinset.C
-      math_mathmlstream.C
-      math_matrixinset.C
-      math_nestinset.C
-      math_numberinset.C
-      math_oversetinset.C
-      math_parinset.C
-      math_parser.C
-      math_phantominset.C
-      math_rootinset.C
-      math_scriptinset.C
-      math_sizeinset.C
-      math_spaceinset.C
-      math_splitinset.C
-      math_sqrtinset.C
-      math_stackrelinset.C
-      math_streamstr.C
-      math_stringinset.C
-      math_substackinset.C
-      math_support.C
-      math_symbolinset.C
-      math_tabularinset.C
-      math_tfracinset.C
-      math_unknowninset.C
-      math_undersetinset.C
-      math_xarrowinset.C
-      math_xymatrixinset.C
-      command_inset.C
-      ref_inset.C
-    ''')]
+    source = globSource(dir = env.subst('$TOP_SRC_DIR/src/mathed'), pattern = env['LYX_EXT'],
+      exclude = ['math_xyarrowinset.C', 'math_mboxinset.C', 'formulamacro.C'],
+      build_dir = '$BUILDDIR/common/mathed')
   )
   Alias('mathed', mathed)
 
@@ -345,57 +206,8 @@ if build_insets:
 
   insets = env.StaticLibrary(
     target = '$LOCALLIBPATH/insets',
-    source = ["$BUILDDIR/common/insets/%s" % x for x in Split('''
-      mailinset.C
-      ExternalSupport.C
-      ExternalTemplate.C
-      ExternalTransforms.C
-      render_button.C
-      render_graphic.C
-      render_preview.C
-      inset.C
-      insetbase.C
-      insetbibitem.C
-      insetbibtex.C
-      insetbox.C
-      insetbranch.C
-      insetcaption.C
-      insetcharstyle.C
-      insetcite.C
-      insetcollapsable.C
-      insetcommand.C
-      insetcommandparams.C
-      insetenv.C
-      insetert.C
-      insetexternal.C
-      insetfloat.C
-      insetfloatlist.C
-      insetfoot.C
-      insetfootlike.C
-      insetgraphicsParams.C
-      insetgraphics.C
-      insethfill.C
-      insetinclude.C
-      insetindex.C
-      insetlabel.C
-      insetlatexaccent.C
-      insetline.C
-      insetmarginal.C
-      insetnewline.C
-      insetnote.C
-      insetoptarg.C
-      insetpagebreak.C
-      insetquotes.C
-      insetref.C
-      insetspace.C
-      insetspecialchar.C
-      insettabular.C
-      insettext.C
-      insettoc.C
-      inseturl.C
-      insetvspace.C
-      insetwrap.C
-    ''')]
+    source = globSource(dir = env.subst('$TOP_SRC_DIR/src/insets'), pattern = env['LYX_EXT'],
+      exclude = ['insettheorem.C'], build_dir = '$BUILDDIR/common/insets')
   )
   Alias('insets', insets)
 
@@ -408,17 +220,8 @@ if build_frontends:
 
   frontends = env.StaticLibrary(
     target = '$LOCALLIBPATH/frontends',
-    source = ["$BUILDDIR/common/frontends/%s" % x for x in Split('''
-      Alert.C
-      Dialogs.C
-      LyXView.C
-      Painter.C
-      Timeout.C
-      Toolbars.C
-      guiapi.C
-      nullpainter.C
-      screen.C
-    ''')]
+    source = globSource(dir = env.subst('$TOP_SRC_DIR/src/frontends'), pattern = env['LYX_EXT'],
+      build_dir = '$BUILDDIR/common/frontends')
   )
   Alias('frontends', frontends)
 
@@ -431,19 +234,8 @@ if build_graphics:
 
   graphics = env.StaticLibrary(
     target = '$LOCALLIBPATH/graphics',
-    source = ["$BUILDDIR/common/graphics/%s" % x for x in Split('''
-      GraphicsCache.C
-      GraphicsCacheItem.C
-      GraphicsConverter.C
-      GraphicsImage.C
-      GraphicsLoader.C
-      GraphicsParams.C
-      LoaderQueue.C
-      GraphicsTypes.C
-      PreviewImage.C
-      PreviewLoader.C
-      Previews.C
-    ''')]
+    source = globSource(dir = env.subst('$TOP_SRC_DIR/src/graphics'), pattern = env['LYX_EXT'],
+      build_dir = '$BUILDDIR/common/graphics')
   )
   Alias('graphics', graphics)
 
@@ -456,55 +248,9 @@ if build_controllers:
 
   controllers = env.StaticLibrary(
     target = '$LOCALLIBPATH/controllers',
-    source = ["$BUILDDIR/common/frontends/controllers/%s" % x for x in Split('''
-      Dialog.C
-      Kernel.C
-      biblio.C
-      character.C
-      frnt_lang.C
-      tex_helpers.C
-      BCView.C
-      ButtonController.C
-      ButtonPolicies.C
-      ControlAboutlyx.C
-      ControlBibtex.C
-      ControlBox.C
-      ControlBranch.C
-      ControlCharacter.C
-      ControlChanges.C
-      ControlCitation.C
-      ControlCommand.C
-      ControlCommandBuffer.C
-      ControlDocument.C
-      ControlErrorList.C
-      ControlERT.C
-      ControlExternal.C
-      ControlFloat.C
-      ControlGraphics.C
-      ControlInclude.C
-      ControlLog.C
-      ControlViewSource.C
-      ControlMath.C
-      ControlNote.C
-      ControlParagraph.C
-      ControlPreamble.C
-      ControlPrefs.C
-      ControlPrint.C
-      ControlRef.C
-      ControlSearch.C
-      ControlSendto.C
-      ControlShowFile.C
-      ControlSpellchecker.C
-      ControlTabular.C
-      ControlTabularCreate.C
-      ControlTexinfo.C
-      ControlThesaurus.C
-      ControlToc.C
-      ControlVSpace.C
-      ControlWrap.C
-      helper_funcs.C
-    ''')]
-    )
+    source = globSource(dir = env.subst('$TOP_SRC_DIR/src/frontends/controllers'), pattern = env['LYX_EXT'],
+      build_dir = '$BUILDDIR/common/frontends/controllers')
+  )
   Alias('controllers', controllers)
 
 
@@ -533,78 +279,6 @@ if build_qt3:
     '$BUILDDIR/common/frontends/controllers',
     '$QT_INC_PATH']
   )
-
-  qt3_ui_files = Split('''
-    BiblioModuleBase.ui
-    BranchesModuleBase.ui
-    BulletsModuleBase.ui
-    TextLayoutModuleBase.ui
-    LanguageModuleBase.ui
-    LaTeXModuleBase.ui
-    MarginsModuleBase.ui
-    NumberingModuleBase.ui
-    MathsModuleBase.ui
-    PageLayoutModuleBase.ui
-    PreambleModuleBase.ui
-    QAboutDialogBase.ui
-    QAskForTextDialog.ui
-    QBibitemDialogBase.ui
-    QBibtexDialogBase.ui
-    QBibtexAddDialogBase.ui
-    QBoxDialogBase.ui
-    QBranchDialogBase.ui
-    QChangesDialogBase.ui
-    QCharacterDialogBase.ui
-    QCitationDialogBase.ui
-    QCitationFindDialogBase.ui
-    QDelimiterDialogBase.ui
-    QDocumentDialogBase.ui
-    QErrorListDialogBase.ui
-    QERTDialogBase.ui
-    QExternalDialogBase.ui
-    QFloatDialogBase.ui
-    QGraphicsDialogBase.ui
-    QIncludeDialogBase.ui
-    QIndexDialogBase.ui
-    QLogDialogBase.ui
-    QViewSourceDialogBase.ui
-    QMathDialogBase.ui
-    QMathMatrixDialogBase.ui
-    QNoteDialogBase.ui
-    QParagraphDialogBase.ui
-    QPrefAsciiModule.ui
-    QPrefColorsModule.ui
-    QPrefConvertersModule.ui
-    QPrefCopiersModule.ui
-    QPrefCygwinPathModule.ui
-    QPrefDateModule.ui
-    QPrefDisplayModule.ui
-    QPrefFileformatsModule.ui
-    QPrefIdentityModule.ui
-    QPrefKeyboardModule.ui
-    QPrefLanguageModule.ui
-    QPrefLatexModule.ui
-    QPrefPathsModule.ui
-    QPrefPrinterModule.ui
-    QPrefScreenFontsModule.ui
-    QPrefsDialogBase.ui
-    QPrefSpellcheckerModule.ui
-    QPrefUIModule.ui
-    QPrintDialogBase.ui
-    QRefDialogBase.ui
-    QSearchDialogBase.ui
-    QSendtoDialogBase.ui
-    QShowFileDialogBase.ui
-    QSpellcheckerDialogBase.ui
-    QTabularCreateDialogBase.ui
-    QTabularDialogBase.ui
-    QTexinfoDialogBase.ui
-    QThesaurusDialogBase.ui
-    QTocDialogBase.ui
-    QURLDialogBase.ui
-    QVSpaceDialogBase.ui
-    QWrapDialogBase.ui
-  ''')
 
   qt3_moc_files = ["$BUILDDIR/common/frontends/qt3/%s" % x for x in Split('''
     BulletsModule.C
@@ -669,76 +343,17 @@ if build_qt3:
   # manually moc and uic files for better performance 
   qt3_moced_files = [qt3env.Moc(x.replace('.C', '_moc.cpp'), x.replace('.C', '.h')) for x in qt3_moc_files]
 
-  qt3_uiced_files = [qt3env.Uic('$BUILDDIR/common/frontends/qt3/ui/'+x) for x in qt3_ui_files]
+  qt3_uiced_files = [qt3env.Uic('$BUILDDIR/common/frontends/qt3/ui/'+x) for x in \
+     globSource(dir = env.subst('$TOP_SRC_DIR/src/frontends/qt3/ui'), pattern = '*.ui')]
+
   qt3_uiced_cc_files = []
   for x in qt3_uiced_files:
     qt3_uiced_cc_files.extend(x[1:])
 
   qt3 = qt3env.StaticLibrary(
     target = '$LOCALLIBPATH/qt3',
-    source = ["$BUILDDIR/common/frontends/qt3/%s" % x for x in Split('''
-      QDialogView.C
-      Alert_pimpl.C
-      Dialogs.C
-      FileDialog.C
-      LyXKeySymFactory.C
-      LyXScreenFactory.C
-      QLMenubar.C
-      qtTimeout.C
-      QAbout.C
-      QBibitem.C
-      QBibtex.C
-      QBox.C
-      QBranch.C
-      QChanges.C
-      QCharacter.C
-      QCitation.C
-      QDocument.C
-      QErrorList.C
-      QERT.C
-      QExternal.C
-      QFloat.C
-      QGraphics.C
-      QInclude.C
-      QIndex.C
-      QLImage.C
-      QLog.C
-      QViewSource.C
-      QLPainter.C
-      QLyXKeySym.C
-      QMath.C
-      QNote.C
-      QParagraph.C
-      QPrefs.C
-      QPrint.C
-      QRef.C
-      QSearch.C
-      QSendto.C
-      QShowFile.C
-      QSpellchecker.C
-      QTabular.C
-      QTabularCreate.C
-      QTexinfo.C
-      QThesaurus.C
-      QToc.C
-      QURL.C
-      QVSpace.C
-      QWorkArea.C
-      QWrap.C
-      Qt2BC.C
-      WorkAreaFactory.C
-      checkedwidgets.C
-      lyx_gui.C
-      lcolorcache.C
-      panelstack.C
-      qcoloritem.C
-      qfontexample.C
-      qfont_loader.C
-      qfont_metrics.C
-      qscreen.C
-      qt_helpers.C
-    ''')] +
-    qt3_moc_files + qt3_moced_files + qt3_uiced_cc_files
+    source = globSource(dir = env.subst('$TOP_SRC_DIR/src/frontends/qt3/'), pattern = env['LYX_EXT'],
+      build_dir = '$BUILDDIR/common/frontends/qt3') + qt3_moced_files + qt3_uiced_cc_files
   )
   Alias('qt3', qt3)
 
@@ -777,77 +392,6 @@ if build_qt4:
     ]
   )
 
-  qt4_ui_files = ['$BUILDDIR/common/frontends/qt4/ui/%s' % x for x in Split('''
-    BiblioUi
-    BranchesUi
-    BulletsUi
-    TextLayoutUi
-    LanguageUi
-    LaTeXUi
-    MarginsUi
-    NumberingUi
-    MathsUi
-    PageLayoutUi
-    PreambleUi
-    QAboutUi
-    QAskForTextUi
-    QBibitemUi
-    QBibtexUi
-    QBibtexAddUi
-    QBoxUi
-    QBranchUi
-    QChangesUi
-    QCharacterUi
-    QCitationUi
-    QCitationFindUi
-    QDelimiterUi
-    QDocumentUi
-    QErrorListUi
-    QERTUi
-    QExternalUi
-    QFloatUi
-    QGraphicsUi
-    QIncludeUi
-    QIndexUi
-    QLogUi
-    QViewSourceUi
-    QMathUi
-    QMathMatrixUi
-    QNoteUi
-    QParagraphUi
-    QPrefAsciiUi
-    QPrefColorsUi
-    QPrefConvertersUi
-    QPrefCopiersUi
-    QPrefCygwinPathUi
-    QPrefDateUi
-    QPrefDisplayUi
-    QPrefFileformatsUi
-    QPrefIdentityUi
-    QPrefKeyboardUi
-    QPrefLanguageUi
-    QPrefLatexUi
-    QPrefPathsUi
-    QPrefPrinterUi
-    QPrefScreenFontsUi
-    QPrefsUi
-    QPrefSpellcheckerUi
-    QPrefUi
-    QPrintUi
-    QRefUi
-    QSearchUi
-    QSendtoUi
-    QShowFileUi
-    QSpellcheckerUi
-    QTabularCreateUi
-    QTabularUi
-    QTexinfoUi
-    QThesaurusUi
-    QTocUi
-    QURLUi
-    QVSpaceUi
-    QWrapUi
-  ''')]
 
   qt4_moc_files = ["$BUILDDIR/common/frontends/qt4/%s" % x for x in Split('''
     BulletsModule.C
@@ -856,7 +400,7 @@ if build_qt4:
     floatplacement.C
     iconpalette.C
     lengthcombo.C
-	InsertTableWidget.C
+    InsertTableWidget.C
     panelstack.C
     QAboutDialog.C
     QBibitemDialog.C
@@ -913,73 +457,12 @@ if build_qt4:
     validators.C
   ''') ]
 
-  qt4_source_files = ["$BUILDDIR/common/frontends/qt4/%s" % x for x in Split('''
-    QDialogView.C
-    Alert_pimpl.C
-    Dialogs.C
-    FileDialog.C
-    LyXKeySymFactory.C
-    LyXScreenFactory.C
-    QLMenubar.C
-    qtTimeout.C
-    QAbout.C
-    QBibitem.C
-    QBibtex.C
-    QBox.C
-    QBranch.C
-    QBranches.C
-    QChanges.C
-    QCharacter.C
-    QCitation.C
-    QDocument.C
-    QErrorList.C
-    QERT.C
-    QExternal.C
-    QFloat.C
-    QGraphics.C
-    QInclude.C
-    QIndex.C
-    QLAction.C
-    QLImage.C
-    QLog.C
-    QViewSource.C
-    QLPainter.C
-    QLyXKeySym.C
-    QMath.C
-    QNote.C
-    QParagraph.C
-    QPrefs.C
-    QPrint.C
-    QRef.C
-    QSearch.C
-    QSendto.C
-    QShowFile.C
-    QSpellchecker.C
-    QTabular.C
-    QTabularCreate.C
-    QTexinfo.C
-    QThesaurus.C
-    QToc.C
-    QURL.C
-    QVSpace.C
-    QWorkArea.C
-    QWrap.C
-    Qt2BC.C
-    WorkAreaFactory.C
-    checkedwidgets.C
-    lyx_gui.C
-    lcolorcache.C
-    panelstack.C
-    qfontexample.C
-    qfont_loader.C
-    qfont_metrics.C
-    qt_helpers.C
-  ''')]
-
   #
   # Compile resources
   #
-  resources = [qt4env.Uic4(x) for x in qt4_ui_files]
+  resources = [qt4env.Uic4(x.split('.')[0]) for x in \
+    globSource(dir = env.subst('$TOP_SRC_DIR/src/frontends/qt4/ui'), pattern = '*.ui',
+      build_dir = '$BUILDDIR/common/frontends/qt4/ui')]
 
   # 
   # moc qt4_moc_files, the moced files are included in the original files
@@ -989,7 +472,8 @@ if build_qt4:
   qt4 = qt4env.StaticLibrary(
     target = '$LOCALLIBPATH/qt4',
     LIBS = qt4env['QT_LIB'],
-    source = qt4_source_files + qt4_moc_files
+    source =  globSource(dir = env.subst('$TOP_SRC_DIR/src/frontends/qt4'), pattern = env['LYX_EXT'],
+      exclude = ['QBrowseBox.C'], build_dir = '$BUILDDIR/common/frontends/qt4')
   )
   Alias('qt4', qt4)
 
@@ -1007,13 +491,8 @@ if build_client:
       target = '$BUILDDIR/common/client/lyxclient',
       LIBS = ['supports'] + env['INTL_LIBS'] + env['SYSTEM_LIBS'] + 
         env['SOCKET_LIBS'] + env['BOOST_LIBRARIES'],
-      source = ["$BUILDDIR/common/client/%s" % x for x in Split('''
-        boost.C
-        client.C
-        debug.C
-        gettext.C
-        messages.C
-      ''')]
+      source = globSource(dir = env.subst('$TOP_SRC_DIR/src/client'), pattern = env['LYX_EXT'],
+        build_dir = '$BUILDDIR/common/client')
     )
     Alias('client', env.Command(os.path.join('$BUILDDIR', os.path.split(str(client[0]))[1]),
       client, [Copy('$TARGET', '$SOURCE')]))
@@ -1041,26 +520,10 @@ if build_tex2lyx:
   tex2lyx = tex2lyx_env.Program(
     target = '$BUILDDIR/common/tex2lyx/tex2lyx',
     LIBS = ['supports'] + env['BOOST_LIBRARIES'] + env['SYSTEM_LIBS'],
-    source = ["$BUILDDIR/common/tex2lyx/%s" % x for x in Split('''
-      FloatList.C
-      Floating.C
-      counters.C
-      lyxlayout.C
-      lyxtextclass.C
-      lyxlex.C
-      lyxlex_pimpl.C
-      boost.C
-      context.C
-      gettext.C
-      lengthcommon.C
-      lyxfont.C
-      texparser.C
-      tex2lyx.C
-      preamble.C
-      math.C
-      table.C
-      text.C
-    ''')]
+    source = globSource(dir = env.subst('$TOP_SRC_DIR/src/tex2lyx'), pattern = env['LYX_EXT'], 
+      include = ['FloatList.C', 'Floating.C', 'counters.C', 'lyxlayout.C', 
+        'lyxtextclass.C', 'lyxlex.C', 'lyxlex_pimpl.C'],
+      build_dir = '$BUILDDIR/common/tex2lyx')
   )
   Alias('tex2lyx', env.Command(os.path.join('$BUILDDIR', os.path.split(str(tex2lyx[0]))[1]),
     tex2lyx, [Copy('$TARGET', '$SOURCE')]))
@@ -1075,116 +538,7 @@ if build_lyxbase:
 
   env.substFile('$BUILDDIR/common/version.C', '$TOP_SRC_DIR/src/version.C.in')
 
-  lyx_source_pre = Split('''
-    Bidi.C
-    BufferView.C
-    BufferView_pimpl.C
-    Bullet.C
-    BranchList.C
-    Chktex.C
-    Color.C
-    CutAndPaste.C
-    DepTable.C
-    FloatList.C
-    Floating.C
-    FontIterator.C
-    FuncStatus.C
-    InsetList.C
-    LColor.C
-    LaTeX.C
-    LaTeXFeatures.C
-    LyXAction.C
-    MenuBackend.C
-    ParagraphParameters.C
-    Spacing.C
-    ToolbarBackend.C
-    author.C
-    boost.C
-    buffer.C
-    buffer_funcs.C
-    bufferlist.C
-    bufferparams.C
-    bufferview_funcs.C
-    changes.C
-    chset.C
-    converter.C
-    counters.C
-    coordcache.C
-    cursor.C
-    cursor_slice.C
-    debug.C
-    dociterator.C
-    encoding.C
-    errorlist.C
-    exporter.C
-    gettext.C
-    factory.C
-    format.C
-    funcrequest.C
-    graph.C
-    importer.C
-    intl.C
-    insetiterator.C
-    kbmap.C
-    kbsequence.C
-    language.C
-    session.C
-    lengthcommon.C
-    lyx_cb.C
-    lyx_main.C
-    lyx_sty.C
-    lyxfont.C
-    lyxfind.C
-    lyxfunc.C
-    lyxgluelength.C
-    lyxlayout.C
-    lyxlength.C
-    lyxlex.C
-    lyxlex_pimpl.C
-    lyxrc.C
-    lyxrow.C
-    lyxrow_funcs.C
-    lyxserver.C
-    lyxsocket.C
-    lyxtextclass.C
-    lyxtextclasslist.C
-    lyxvc.C
-    messages.C
-    metricsinfo.C
-    mover.C
-    output.C
-    outputparams.C
-    output_docbook.C
-    output_latex.C
-    output_linuxdoc.C
-    output_plaintext.C
-    paragraph.C
-    paragraph_funcs.C
-    paragraph_pimpl.C
-    pariterator.C
-    rowpainter.C
-    sgml.C
-    tex-accent.C
-    tex-strings.C
-    texrow.C
-    text.C
-    text2.C
-    text3.C
-    TocBackend.C
-    toc.C
-    trans.C
-    trans_mgr.C
-    undo.C
-    vc-backend.C
-    version.C
-    vspace.C
-  ''')
-
-  # temporary fix for MSVC, will remove later.
-  if not env['USE_VC']:
-    lyx_source_pre.append('main.C')
-
-  lyx_source_post = Split('''
+  lyx_post_source = Split('''
     tabular.C
     dimension.C
     PrinterParams.C
@@ -1192,21 +546,29 @@ if build_lyxbase:
     Thesaurus.C
     SpellBase.C
   ''')
-
+  
   if env.has_key('USE_ASPELL') and env['USE_ASPELL']:
-    lyx_source_post.append('aspell.C')
+    lyx_post_source.append('aspell.C')
   elif env.has_key('USE_PSPELL') and env['USE_PSPELL']:
-    lyx_source_post.append('pspell.C')
+    lyx_post_source.append('pspell.C')
   elif env.has_key('USE_ISPELL') and env['USE_ISPELL']:
-    lyx_source_post.append('ispell.C')
+    lyx_post_source.append('ispell.C')
 
+  # temporary fix for MSVC, will remove later.
+  if not env['USE_VC']:
+    main_source = ['main.C']
+  else:
+    main_source = []
+  
   lyxbase_pre = env.StaticLibrary(
     target = '$LOCALLIBPATH/lyxbase_pre',
-    source = ["$BUILDDIR/common/%s" % x for x in lyx_source_pre]
+    source =  globSource(dir = env.subst('$TOP_SRC_DIR/src'), pattern = env['LYX_EXT'], 
+      exclude = lyx_post_source + ['main.C', 'aspell.C', 'pspell.C', 'ispell.C', 'Variables.C', 'Sectioning.C'],
+      include = ['version.C'] + main_source, build_dir = '$BUILDDIR/common')
   )
   lyxbase_post = env.StaticLibrary(
     target = '$LOCALLIBPATH/lyxbase_post',
-    source = ["$BUILDDIR/common/%s" % x for x in lyx_source_post]
+    source = ["$BUILDDIR/common/%s" % x for x in lyx_post_source]
   )
   Alias('lyxbase', lyxbase_pre)
   Alias('lyxbase', lyxbase_post)
@@ -1246,6 +608,7 @@ if build_lyx:
   Alias('lyx', env.Command(os.path.join('$BUILDDIR', target_name), lyx,
     [Copy('$TARGET', '$SOURCE')]))
   Alias('lyx', lyx)
+
 
 
 if build_po:
