@@ -13,13 +13,12 @@
 #include "frontends/LyXScreenFactory.h"
 
 #include "QWorkArea.h"
-#include "qscreen.h"
 
 namespace LyXScreenFactory {
 
 LyXScreen * create(WorkArea & owner)
 {
-	return new QScreen(static_cast<QWorkArea &>(owner));
+	return &(static_cast<QWorkArea &>(owner));
 }
 
 } // namespace LyXScreenFactory

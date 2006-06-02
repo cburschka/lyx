@@ -59,7 +59,7 @@ XScreen::~XScreen()
 }
 
 
-WorkArea & XScreen::workarea() const
+WorkArea & XScreen::workarea()
 {
 	return owner_;
 }

@@ -42,7 +42,7 @@ QScreen::~QScreen()
 }
 
 
-WorkArea & QScreen::workarea() const
+WorkArea & QScreen::workarea()
 {
 	return owner_;
 }

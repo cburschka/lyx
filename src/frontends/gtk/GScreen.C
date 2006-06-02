@@ -58,7 +58,7 @@ GScreen::~GScreen()
 }
 
 
-WorkArea & GScreen::workarea() const
+WorkArea & GScreen::workarea()
 {
 	return owner_;
 }

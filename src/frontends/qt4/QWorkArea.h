@@ -25,6 +25,7 @@
 #include "WorkArea.h"
 #include "QLPainter.h"
 #include "LyXView.h"
+#include "screen.h"
 
 #include "funcrequest.h"
 #include "frontends/Timeout.h"
@@ -95,7 +96,7 @@ public:
  * Qt-specific implementation of the work area
  * (buffer view GUI)
 */
-class QWorkArea : public QAbstractScrollArea, public WorkArea {
+class QWorkArea : public QAbstractScrollArea, public WorkArea, public LyXScreen {
 
 	Q_OBJECT
 
@@ -144,11 +145,23 @@ public:
 	QPixmap is implicitely shared so no need to pass by reference.
 	*/
 	void drawScreen(int x, int y, QPixmap pixmap);
+	
+	LyXView & view() { return view_; }
 
-        LyXView & view()
-        {
-                return view_;
-        }
+	// LyXScreen overloaded methods:
+
+	/// get the work area
+	virtual WorkArea & workarea();
+
+	/// copies specified area of pixmap to screen
+	virtual void expose(int x, int y, int exp_width, int exp_height);
+
+	/// paint the cursor and store the background
+	virtual void showCursor(int x, int y, int h, Cursor_Shape shape);
+
+	/// hide the cursor
+	virtual void removeCursor();
+
 protected:
 
 	/// repaint part of the widget
@@ -221,6 +234,29 @@ private:
 	std::queue<boost::shared_ptr<QKeyEvent> > keyeventQueue_;
 
 	double_click dc_event_;
+
+	///
+	int cursor_x_;
+	///
+	int cursor_y_;
+	///
+	int cursor_w_;
+	///
+	int cursor_h_;
+	///
+	QPixmap hcursor_;
+	///
+	QPixmap vcursor_;
+	///
+	bool show_hcursor_;
+	///
+	bool show_vcursor_;
+	///
+	bool lshape_cursor_;
+	///
+	QColor cursor_color_;
+	///
+	Cursor_Shape cursor_shape_;
 };
 
 #endif // QWORKAREA_H

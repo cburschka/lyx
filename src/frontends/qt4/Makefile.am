@@ -92,6 +92,5 @@ libqt4_la_SOURCES = \
 	qfont_loader.h qfont_loader.C \
 	qfont_metrics.C \
 	qlkey.h \
-	qscreen.h qscreen.C \
 	qt_helpers.h qt_helpers.C \
 	$(MOCFILES)

@@ -63,7 +63,7 @@ protected:
 	virtual void expose(int x, int y, int w, int h) = 0;
 
 	/// get the work area
-	virtual WorkArea & workarea() const = 0;
+	virtual WorkArea & workarea() = 0;
 
 	/// types of cursor in work area
 	enum Cursor_Shape {

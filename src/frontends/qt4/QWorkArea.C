@@ -216,6 +216,7 @@ void QWorkArea::setScrollbarParams(int h, int scroll_pos, int scroll_line_step)
 
 void QWorkArea::adjustViewWithScrollBar(int action)
 {
+	/*
 	lyxerr[Debug::GUI] << BOOST_CURRENT_FUNCTION
 		<< " verticalScrollBar val=" << verticalScrollBar()->value()
 		<< " verticalScrollBar pos=" << verticalScrollBar()->sliderPosition()
@@ -224,7 +225,7 @@ void QWorkArea::adjustViewWithScrollBar(int action)
 		<< " pagestep=" << verticalScrollBar()->pageStep()
 		<< " linestep=" << verticalScrollBar()->lineStep()
 		<< endl;
-
+	*/
 	view_.view()->scrollDocView(verticalScrollBar()->sliderPosition());
 }
 
@@ -538,6 +539,12 @@ void QWorkArea::paintEvent(QPaintEvent * e)
 	*/
 	QPainter q(viewport());
 	q.drawPixmap(e->rect(), paint_device_, e->rect());
+
+	if (show_vcursor_)
+		q.drawPixmap(cursor_x_, cursor_y_, vcursor_);
+
+	if (show_hcursor_)
+		q.drawPixmap(cursor_x_, cursor_y_ + cursor_h_ - 1, hcursor_);
 }
 
 
@@ -553,6 +560,92 @@ void QWorkArea::drawScreen(int x, int y, QPixmap pixmap)
 	viewport()->update(x, y, pixmap.width(), pixmap.height());
 }
 
+///////////////////////////////////////////////////////////////
+// LyXSreen overloaded methods:
+
+WorkArea & QWorkArea::workarea()
+{
+//	return static_cast<QWorkArea &> (*this);
+	return *this;
+}
+
+
+void QWorkArea::expose(int x, int y, int w, int h)
+{
+//	lyxerr[Debug::GUI] << "expose " << w << 'x' << h
+//		<< '+' << x << '+' << y << std::endl;
+
+	update(x, y, w, h);
+}
+
+
+void QWorkArea::showCursor(int x, int y, int h, Cursor_Shape shape)
+{
+	if (!qApp->focusWidget())
+		return;
+
+	show_vcursor_ = true;
+
+	QColor const & required_color = lcolorcache.get(LColor::cursor);
+
+	if (x==cursor_x_ && y==cursor_y_ && h==cursor_h_
+		&& cursor_color_ == required_color
+		&& cursor_shape_ == shape) {
+		show_hcursor_ = lshape_cursor_;
+		viewport()->update(cursor_x_, cursor_y_, cursor_w_, cursor_h_);
+		return;
+	}
+
+	// Cache the dimensions of the cursor.
+	cursor_x_ = x;
+	cursor_y_ = y;
+	cursor_h_ = h;
+	cursor_color_ = required_color;
+	cursor_shape_ = shape;
+
+	switch (cursor_shape_) {
+	case BAR_SHAPE:
+		// FIXME the cursor width shouldn't be hard-coded!
+		cursor_w_ = 2;
+		lshape_cursor_ = false;
+		break;
+	case L_SHAPE:
+		cursor_w_ = cursor_h_ / 3;
+		lshape_cursor_ = true;
+		break;
+	case REVERSED_L_SHAPE:
+		cursor_w_ = cursor_h_ / 3;
+		cursor_x_ -= cursor_w_ - 1;
+		lshape_cursor_ = true;
+		break;
+	}
+
+	// We cache two pixmaps:
+	// 1 the vertical line of the cursor.
+	// 2 the horizontal line of the L-shaped cursor (if necessary).
+	
+	// Draw the new (vertical) cursor.
+	vcursor_ = QPixmap(cursor_w_, cursor_h_);
+	vcursor_.fill(cursor_color_);
+
+	// Draw the new (horizontal) cursor if necessary.
+	if (lshape_cursor_) {
+		hcursor_ = QPixmap(cursor_w_, 1);
+		hcursor_.fill(cursor_color_);
+		show_hcursor_ = true;
+	}
+
+	viewport()->update(cursor_x_, cursor_y_, cursor_w_, cursor_h_);
+}
+
+
+void QWorkArea::removeCursor()
+{
+	show_vcursor_ = false;
+	show_hcursor_ = false;
+
+	viewport()->update(cursor_x_, cursor_y_, cursor_w_, cursor_h_);
+}
 
 ///////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////

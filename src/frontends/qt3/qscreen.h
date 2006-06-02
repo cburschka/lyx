@@ -31,7 +31,7 @@ public:
 
 protected:
 	/// get the work area
-	virtual WorkArea & workarea() const;
+	virtual WorkArea & workarea();
 
 	/// repaint the whole content immediately
 	void repaint();
