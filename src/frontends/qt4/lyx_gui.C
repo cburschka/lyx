@@ -110,7 +110,6 @@ class LQApplication : public QApplication
 {
 public:
 	LQApplication(int & argc, char ** argv);
-	~LQApplication();
 #ifdef Q_WS_X11
 	bool x11EventFilter (XEvent * ev) { return lyxX11EventFilter(ev); }
 #endif
@@ -129,10 +128,6 @@ LQApplication::LQApplication(int & argc, char ** argv)
 			      0, false);
 #endif
 }
-
-
-LQApplication::~LQApplication()
-{}
 
 
 #ifdef Q_WS_MACX
