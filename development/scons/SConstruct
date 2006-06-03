@@ -329,9 +329,10 @@ if (not ARGUMENTS.has_key('load_option') or \
     and ARGUMENTS['frontend'] != opt_cache['frontend'] \
     and opt_cache.has_key('qt_dir'):
     opt_cache.pop('qt_dir')
-  # and we do not cache fast_start
-  if opt_cache.has_key('fast_start'):
-    opt_cache.pop('fast_start')
+  # and we do not cache some options
+  for arg in ['fast_start']:
+    if opt_cache.has_key(arg):
+      opt_cache.pop(arg)
   for key in opt_cache.keys():
     if not ARGUMENTS.has_key(key):
       ARGUMENTS[key] = opt_cache[key]
@@ -369,7 +370,11 @@ env['ENV']['HOME'] = os.environ.get('HOME')
 # these are defined for MSVC
 env['ENV']['LIB'] = os.environ.get('LIB')
 env['ENV']['INCLUDE'] = os.environ.get('INCLUDE')
-env['TOP_SRC_DIR'] = TOP_SRC_DIR
+if use_vc:
+  # full path name is used to build msvs project files
+  env['TOP_SRC_DIR'] = Dir(TOP_SRC_DIR).abspath
+else:
+  env['TOP_SRC_DIR'] = TOP_SRC_DIR
 env['SCONS_DIR'] = SCONS_DIR
 # install to default_prefix by default
 env['PREFIX'] = env.get('prefix', default_prefix)
@@ -452,6 +457,8 @@ else:
 # all built libraries will go to build_dir/libs
 # (This is different from the make file approach)
 env['LOCALLIBPATH'] = '$BUILDDIR/libs'
+# to make use of local cached parameters, this one has to be '.'
+env['MSVSPATH'] = '.'
 env.AppendUnique(LIBPATH = ['$LOCALLIBPATH'])
 
 #
