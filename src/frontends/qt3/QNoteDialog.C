@@ -14,6 +14,7 @@
 #include "QNote.h"
 
 #include <qpushbutton.h>
+#include <qradiobutton.h>
 
 namespace lyx {
 namespace frontend {
@@ -26,8 +27,9 @@ QNoteDialog::QNoteDialog(QNote * form)
 		form, SLOT(slotOK()));
 	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
+	connect(framedRB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(shadedRB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 }
-
 
 void QNoteDialog::closeEvent(QCloseEvent * e)
 {

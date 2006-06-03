@@ -110,6 +110,7 @@ LColor::LColor()
 	{ commentbg, N_("comment background"), "commentbg", "linen", "commentbg" },
 	{ greyedout, N_("greyedout inset"), "greyedout", "red", "greyedout" },
 	{ greyedoutbg, N_("greyedout inset background"), "greyedoutbg", "linen", "greyedoutbg" },
+	{ shadedbg, N_("shaded box"), "shaded", "#ff0000", "shaded" },
 	{ depthbar, N_("depth bar"), "depthbar", "IndianRed", "depthbar" },
 	{ language, N_("language"), "language", "Blue", "language" },
 	{ command, N_("command inset"), "command", "black", "command" },

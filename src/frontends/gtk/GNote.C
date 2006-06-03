@@ -48,6 +48,7 @@ void GNote::doBuild()
 	xml_->get_widget("LyXNote", lyxnoteradio_);
 	xml_->get_widget("Comment", commentradio_);
 	xml_->get_widget("GreyedOut", greyedoutradio_);
+	// FIXME add Framed, Shaded
 
 	lyxnoteradio_->signal_toggled().connect(
 		sigc::mem_fun(*this, &GNote::apply));
@@ -78,6 +79,7 @@ void GNote::update()
 	case InsetNoteParams::Greyedout:
 		greyedoutradio_->set_active(true);
 		break;
+	// FIXME add Framed, Shaded
 	}
 
 	applylock_ = false;
@@ -97,6 +99,7 @@ void GNote::apply()
 		type = InsetNoteParams::Greyedout;
 	else
 		type = InsetNoteParams::Comment;
+	// FIXME add Framed, Shaded
 
 	controller().params().type = type;
 	controller().dispatchParams();

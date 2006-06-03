@@ -100,6 +100,28 @@
                         <string>Print as grey text</string>
                     </property>
                 </widget>
+                <widget class="QRadioButton">
+                    <property name="name">
+                        <cstring>framedRB</cstring>
+                    </property>
+                    <property name="text">
+                        <string>&amp;Framed</string>
+                    </property>
+                    <property name="toolTip" stdset="0">
+                        <string>Framed box</string>
+                    </property>
+                </widget>
+                <widget class="QRadioButton">
+                    <property name="name">
+                        <cstring>shadedRB</cstring>
+                    </property>
+                    <property name="text">
+                        <string>&amp;Shaded</string>
+                    </property>
+                    <property name="toolTip" stdset="0">
+                        <string>Shaded box</string>
+                    </property>
+                </widget>
             </vbox>
         </widget>
     </grid>

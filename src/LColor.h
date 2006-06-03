@@ -93,7 +93,8 @@ public:
 		greyedout,
 		/// Background color of greyedout inset
 		greyedoutbg,
-
+		/// Shaded box background
+		shadedbg,
 
 		/// Color for the depth bars in the margin
 		depthbar,

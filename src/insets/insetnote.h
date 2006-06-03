@@ -20,7 +20,9 @@ public:
 	enum Type {
 		Note,
 		Comment,
-		Greyedout
+		Greyedout,
+		Framed,
+		Shaded
 	};
 	/// \c type defaults to Note
 	InsetNoteParams();

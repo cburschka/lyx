@@ -49,6 +49,8 @@ NoteTranslator const init_notetranslator() {
 	NoteTranslator translator("Note", InsetNoteParams::Note);
 	translator.addPair("Comment", InsetNoteParams::Comment);
 	translator.addPair("Greyedout", InsetNoteParams::Greyedout);
+	translator.addPair("Framed", InsetNoteParams::Framed);
+	translator.addPair("Shaded", InsetNoteParams::Shaded);
 	return translator;
 }
 
@@ -57,6 +59,8 @@ NoteTranslator const init_notetranslator_loc() {
 	NoteTranslator translator(_("Note"), InsetNoteParams::Note);
 	translator.addPair(_("Comment"), InsetNoteParams::Comment);
 	translator.addPair(_("Greyed out"), InsetNoteParams::Greyedout);
+	translator.addPair(_("Framed"), InsetNoteParams::Framed);
+	translator.addPair(_("Shaded"), InsetNoteParams::Shaded);
 	return translator;
 }
 
@@ -175,6 +179,14 @@ void InsetNote::setButtonLabel()
 		font.setColor(LColor::greyedout);
 		setBackgroundColor(LColor::greyedoutbg);
 		break;
+	case InsetNoteParams::Framed:
+		font.setColor(LColor::greyedout);
+		setBackgroundColor(LColor::greyedoutbg);
+		break;
+	case InsetNoteParams::Shaded:
+		font.setColor(LColor::greyedout);
+		setBackgroundColor(LColor::shadedbg);
+		break;
 	}
 	setLabelFont(font);
 }
@@ -245,6 +257,10 @@ int InsetNote::latex(Buffer const & buf, ostream & os,
 		runparams.exportdata.reset(new ExportData);
 	} else if (params_.type == InsetNoteParams::Greyedout)
 		type = "lyxgreyedout";
+	else if (params_.type == InsetNoteParams::Framed)
+		type = "framed";
+	else if (params_.type == InsetNoteParams::Shaded)
+		type = "shaded";
 
 	ostringstream ss;
 	ss << "%\n\\begin{" << type << "}\n";
@@ -344,6 +360,12 @@ void InsetNote::validate(LaTeXFeatures & features) const
 		features.require("color");
 		features.require("lyxgreyedout");
 	}
+	if (params_.type == InsetNoteParams::Shaded) {
+		features.require("color");
+		features.require("framed");
+	}		
+	if (params_.type == InsetNoteParams::Framed)
+		features.require("framed");
 	InsetText::validate(features);
 }
 

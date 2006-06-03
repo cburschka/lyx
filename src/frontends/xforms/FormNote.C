@@ -44,6 +44,7 @@ void FormNote::build()
 			_("Export to LaTeX/Docbook but don't print"));
 	tooltips().init(dialog_->radio_greyedout,
 			_("Print as grey text"));
+	// FIXME add Framed, Shaded
 
 	bcview().setOK(dialog_->button_ok);
 	bcview().setCancel(dialog_->button_cancel);
@@ -64,6 +65,7 @@ void FormNote::update()
 	case InsetNoteParams::Greyedout:
 		rb = dialog_->radio_greyedout;
 		break;
+	// FIXME add Framed, Shaded
 	}
 
 	fl_set_button(rb, 1);

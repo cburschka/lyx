@@ -17,10 +17,12 @@
 #include "LaTeXFeatures.h"
 
 #include "bufferparams.h"
+#include "Color.h"
 #include "debug.h"
 #include "encoding.h"
 #include "Floating.h"
 #include "FloatList.h"
+#include "LColor.h"
 #include "language.h"
 #include "lyxlex.h"
 #include "lyx_sty.h"
@@ -244,6 +246,7 @@ char const * simplefeatures[] = {
 	"calc",
 	"nicefrac",
 	"tipa",
+	"framed",
 };
 
 int const nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);
@@ -307,6 +310,12 @@ string const LaTeXFeatures::getPackages() const
 			packages << "\\usepackage["
 				 << params_.graphicsDriver
 				 << "]{graphicx}\n";
+	}
+	// shadecolor for shaded
+	if (isRequired("framed")) {
+	lyx::RGBColor c = lyx::RGBColor(lcolor.getX11Name(LColor::shadedbg));
+		packages << "\\definecolor{shadecolor}{rgb}{" 
+			<< c.r/255 << ',' << c.g/255 << ',' << c.b/255 << "}\n";
 	}
 
 	//if (algorithm) {

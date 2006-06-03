@@ -16,10 +16,28 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-# convert = [[246, [convert_function1]]]
-convert = []
-revert  = []
+from parser_tools import find_tokens
 
+##
+#  Notes: Framed/Shaded
+#
+
+def revert_framed(file):
+    i = 0
+    while 1:
+        i = find_tokens(file.body, ["\\begin_inset Note Framed", "\\begin_inset Note Shaded"], i)
+
+        if i == -1:
+            return
+        file.body[i] = "\\begin_inset Note"
+        i = i + 1
+
+##
+# Conversion hub
+#
+
+convert = [[246, []]]
+revert  = [[245, [revert_framed]]]
 
 if __name__ == "__main__":
     pass

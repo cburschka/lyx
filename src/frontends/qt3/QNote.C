@@ -58,6 +58,12 @@ void QNote::update_contents()
 	case InsetNoteParams::Greyedout:
 		rb = dialog_->greyedoutRB;
 		break;
+	case InsetNoteParams::Framed:
+		rb = dialog_->framedRB;
+		break;
+	case InsetNoteParams::Shaded:
+		rb = dialog_->shadedRB;
+		break;
 	}
 
 	rb->setChecked(true);
@@ -72,8 +78,12 @@ void QNote::apply()
 		type = InsetNoteParams::Greyedout;
 	else if (dialog_->commentRB->isChecked())
 		type = InsetNoteParams::Comment;
-	else
+	else if (dialog_->noteRB->isChecked())
 		type = InsetNoteParams::Note;
+	else if (dialog_->framedRB->isChecked())
+		type = InsetNoteParams::Framed;
+	else if (dialog_->shadedRB->isChecked())
+		type = InsetNoteParams::Shaded;
 
 	controller().params().type = type;
 }
