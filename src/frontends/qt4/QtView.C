@@ -10,6 +10,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
+#undef QT3_SUPPORT
+
 #include <config.h>
 
 #include "BufferView.h"
@@ -43,8 +45,8 @@
 #include <QToolBar>
 #include <QCloseEvent>
 #include <QAction>
-#include <QMenu>
-#include <QMenuBar>
+//#include <QMenu>
+//#include <QMenuBar>
 
 #include "support/lstrings.h"
 
@@ -73,7 +75,7 @@ QtView::QtView(unsigned int width, unsigned int height)
 {
 	resize(width, height);
 
-	qApp->setMainWidget(this);
+	mainWidget_ = this;
 
 //	setToolButtonStyle(Qt::ToolButtonIconOnly);
 //	setIconSize(QSize(12,12));
@@ -95,7 +97,7 @@ QtView::QtView(unsigned int width, unsigned int height)
 	//  since the icon is provided in the application bundle.
 	string const iconname = libFileSearch("images", "lyx", "xpm");
 	if (!iconname.empty())
-		setIcon(QPixmap(toqstr(iconname)));
+		setWindowIcon(QPixmap(toqstr(iconname)));
 #endif
 
 	// make sure the buttons are disabled if needed
@@ -129,7 +131,7 @@ void QtView::addCommandBuffer(QToolBar * toolbar)
 
 void QtView::message(string const & str)
 {
-	statusBar()->message(toqstr(str));
+	statusBar()->showMessage(toqstr(str));
 	statusbar_timer_.stop();
 	statusbar_timer_.start(statusbar_timer_value);
 }
@@ -150,7 +152,7 @@ void QtView::focus_command_widget()
 
 void QtView::update_view_state_qt()
 {
-	statusBar()->message(toqstr(getLyXFunc().viewStatusMessage()));
+	statusBar()->showMessage(toqstr(getLyXFunc().viewStatusMessage()));
 	statusbar_timer_.stop();
 }
 
@@ -161,7 +163,7 @@ void QtView::update_view_state()
 	if (statusbar_timer_.isActive())
 		return;
 
-	statusBar()->message(toqstr(getLyXFunc().viewStatusMessage()));
+	statusBar()->showMessage(toqstr(getLyXFunc().viewStatusMessage()));
 }
 
 
@@ -194,7 +196,7 @@ void QtView::closeEvent(QCloseEvent *)
 
 void QtView::show()
 {
-	setCaption(qt_("LyX"));
+	QMainWindow::setWindowTitle(qt_("LyX"));
 	QMainWindow::show();
 }
 
@@ -202,10 +204,18 @@ void QtView::show()
 void QtView::busy(bool yes) const
 {
 	if (yes)
-		QApplication::setOverrideCursor(Qt::waitCursor);
+		QApplication::setOverrideCursor(Qt::WaitCursor);
 	else
 		QApplication::restoreOverrideCursor();
 }
+
+QMainWindow* QtView::mainWidget()
+{
+	return mainWidget_;
+}
+
+QMainWindow* QtView::mainWidget_ = 0;
+
 
 } // namespace frontend
 } // namespace lyx

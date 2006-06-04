@@ -36,6 +36,7 @@ namespace frontend {
 
 class QCommandBuffer;
 
+QWidget* mainWindow();
 
 /**
  * QtView - Qt implementation of LyXView
@@ -71,6 +72,8 @@ public:
 	// returns true if this view has the focus.
 	virtual bool hasFocus() const;
 
+	static QMainWindow* mainWidget();
+
 public slots:
 	/// idle timeout
 	void update_view_state_qt();
@@ -99,6 +102,9 @@ private:
 
 	/// command buffer
 	QCommandBuffer * commandbuffer_;
+
+	///
+	static QMainWindow* mainWidget_;
 };
 
 } // namespace frontend

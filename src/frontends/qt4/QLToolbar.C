@@ -12,6 +12,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
+#undef QT3_SUPPORT
+
 #include <config.h>
 
 #include "buffer.h"
@@ -47,6 +49,7 @@ LyXTextClass const & getTextClass(LyXView const & lv)
 	return lv.buffer()->params().getLyXTextClass();
 }
 
+/*
 /// \todo Remove Qt::Dock getPosition(ToolbarBackend::Flags const & flags) if not needed anymore
 Qt::Dock getPosition(ToolbarBackend::Flags const & flags)
 {
@@ -60,6 +63,7 @@ Qt::Dock getPosition(ToolbarBackend::Flags const & flags)
 		return Qt::DockRight;
 	return Qt::DockTop;
 }
+*/
 
 Qt::ToolBarArea getToolBarPosition(ToolbarBackend::Flags const & flags)
 {
@@ -101,7 +105,7 @@ void QLayoutBox::set(string const & layout)
 
 	int i = 0;
 	for (; i < combo_->count(); ++i) {
-		if (name == combo_->text(i))
+		if (name == combo_->itemText(i))
 			break;
 	}
 
@@ -111,7 +115,7 @@ void QLayoutBox::set(string const & layout)
 		return;
 	}
 
-	combo_->setCurrentItem(i);
+	combo_->setCurrentIndex(i);
 }
 
 
@@ -128,7 +132,7 @@ void QLayoutBox::update()
 	for (; it != end; ++it) {
 		// ignore obsolete entries
 		if ((*it)->obsoleted_by().empty())
-			combo_->insertItem(qt_((*it)->name()));
+			combo_->addItem(qt_((*it)->name()));
 	}
 
 	// needed to recalculate size hint
@@ -149,7 +153,7 @@ void QLayoutBox::clear()
 
 void QLayoutBox::open()
 {
-	combo_->popup();
+	combo_->showPopup();
 }
 
 
