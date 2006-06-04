@@ -84,10 +84,10 @@ QCommandBuffer::QCommandBuffer(QtView * view, ControlCommandBuffer & control, QW
 	QHBoxLayout * layout = new QHBoxLayout(0);
 
 	QPushButton * up = new QPushButton(qpup, "", this);
-	QToolTip::add(up, qt_("Previous command"));
+	up->setToolTip(qt_("Previous command"));
 	connect(up, SIGNAL(clicked()), this, SLOT(up()));
 	QPushButton * down = new QPushButton(qpdown, "", this);
-	QToolTip::add(down, qt_("Next command"));
+	down->setToolTip(qt_("Next command"));
 	connect(down, SIGNAL(clicked()), this, SLOT(down()));
 
 	edit_ = new QCommandEdit(this);
