@@ -70,9 +70,9 @@ private:
 };
 
 
+#if 0
 /** A controller for Citation dialogs.
  */
-/*
 class Citation {
 public:
 	///
@@ -87,7 +87,7 @@ public:
 	/** Disconnect from the inset when the Apply button is pressed.
 	 *  Allows easy insertion of multiple citations.
 	 */
-/*	virtual bool disconnectOnApply() const { return true; }
+	virtual bool disconnectOnApply() const { return true; }
 
 	/// Returns a reference to the map of stored keys
 	biblio::InfoMap const & bibkeysInfo() const;
@@ -109,7 +109,7 @@ private:
 	///
 	static std::vector<biblio::CiteStyle> citeStyles_;
 };
-*/
+#endif
 } // namespace frontend
 } // namespace lyx
 
