@@ -23,4 +23,5 @@ dist_lyx2lyx_PYTHON = \
 	lyx_1_2.py \
 	lyx_1_3.py \
 	lyx_1_4.py \
+	lyx_1_5.py \
 	profiling.py
