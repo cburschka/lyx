@@ -1142,6 +1142,14 @@ contributers = [
                  "22 February 2005",
                  u"Gnome frontend"),
 
+     contributer(u"Joost Verburg",
+                 "joostverburg () users ! sourceforge ! net",
+                 "GPL",
+                 "Re: New Windows Installer",
+                 "m=114957884100403",
+                 "6 June 2006",
+                 u"A new and improved Windows installer"),
+
      contributer(u"Martin Vermeer",
                  "martin.vermeer () hut ! fi",
                  "GPL",
@@ -1230,6 +1238,14 @@ contributers = [
                  "28 February 2005",
                  u"Gtk frontend"),
 
+     contributer(u"Abdelrazak Younes",
+                 "younes.a () free ! fr",
+                 "GPL",
+                 "Re: [Patch] RFQ: ParagraphList Rewrite",
+                 "m=113993670602439",
+                 "14 February 2006",
+                 u"Qt4 frontend, editing optimisations"),
+
      contributer(u"Henner Zeller",
                  "henner.zeller () freiheit ! com",
                  "GPL",
@@ -1244,16 +1260,7 @@ contributers = [
                  "",
                  "",
                  "",
-                 u"bug reports and small fixes"),
-
-     contributer(u"Abdelrazak Younes",
-                 "younes.a () free ! fr",
-                 "GPL",
-                 "Re: [Patch] RFQ: ParagraphList Rewrite",
-                 "m=113993670602439",
-                 "14 February 2006",
-                 u"Qt4 frontend, editing optimisations") ]
-
+                 u"bug reports and small fixes") ]
 
 if __name__ == "__main__":
      main(sys.argv, contributers)
