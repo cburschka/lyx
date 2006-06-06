@@ -23,8 +23,9 @@ class ControlRef;
 class QRefDialog;
 
 
+// full qualification because qt4 has also a ControlRef type
 class QRef
-	: public QController<ControlRef, QView<QRefDialog> >
+	: public QController<lyx::frontend::ControlRef, QView<QRefDialog> >
 {
 public:
 	friend class QRefDialog;

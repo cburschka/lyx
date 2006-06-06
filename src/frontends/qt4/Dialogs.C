@@ -278,7 +278,8 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setView(new QPrint(*dialog));
 		dialog->bc().bp(new OkApplyCancelPolicy);
 	} else if (name == "ref") {
-		dialog->setController(new ControlRef(*dialog));
+		// full qualification because qt4 has also a ControlRef type
+		dialog->setController(new lyx::frontend::ControlRef(*dialog));
 		dialog->setView(new QRef(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "sendto") {

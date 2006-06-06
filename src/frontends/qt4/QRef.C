@@ -35,7 +35,8 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlRef, QView<QRefDialog> > base_class;
+// full qualification because qt4 has also a ControlRef type
+typedef QController<lyx::frontend::ControlRef, QView<QRefDialog> > base_class;
 
 
 QRef::QRef(Dialog & parent)
