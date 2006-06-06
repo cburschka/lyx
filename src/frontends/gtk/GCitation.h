@@ -108,8 +108,6 @@ private:
 	Gtk::TextView * infoview_;
 
 	Gtk::Entry * findentry_;
-	Gtk::CheckButton * citeradio_;
-	Gtk::CheckButton * bibradio_;
 	Gtk::CheckButton * casecheck_;
 	Gtk::CheckButton * regexpcheck_;
 

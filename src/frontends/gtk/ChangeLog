@@ -1,6 +1,9 @@
 2006-06-06  John Spray <spray@lyx.org>
 	* Alert_pimpl.C: escape special characters in strings before 
 	  passing them to Gtk::Dialog as markup
+	* GCitation.[Ch]: text encoding hack to avoid crashing with
+		special characters in bibtex database.  Simplify UI by removing
+		searching in cited keys.
 
 2006-04-19  Bernhard Reiter <ockham@gmx.net>
 	* GExternal.[Ch], glade/external.glade: implement external dialog

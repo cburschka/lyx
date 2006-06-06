@@ -98,8 +98,6 @@ void GCitation::doBuild()
 	xml_->get_widget("Info", infoview_);
 	xml_->get_widget("CaseSensitive", casecheck_);
 
-	xml_->get_widget("SearchCite", citeradio_);
-	xml_->get_widget("SearchBib", bibradio_);
 	xml_->get_widget("SearchString", findentry_);
 	xml_->get_widget("CaseSensitive", casecheck_);
 	xml_->get_widget("RegularExpression", regexpcheck_);
@@ -149,10 +147,6 @@ void GCitation::doBuild()
 	forwardbutton_->signal_clicked().connect(
 		sigc::mem_fun(*this, &GCitation::next));
 
-	bibradio_->signal_toggled().connect(
-		sigc::mem_fun(*this, &GCitation::set_search_buttons));
-	citeradio_->signal_toggled().connect(
-		sigc::mem_fun(*this, &GCitation::set_search_buttons));
 	findentry_->signal_changed().connect(
 		sigc::mem_fun(*this, &GCitation::set_search_buttons));
 
@@ -279,11 +273,13 @@ void GCitation::update_contents()
 		cit != bibkeys.end(); ++cit) {
 
 		Gtk::TreeModel::iterator iter = allListStore_->append();
-		(*iter)[bibColumns.name] = Glib::locale_to_utf8(*cit);
+		// ENCODING, FIXME: assuming ISO-8859 only for key name and info fields
+		// This is a hack to avoid a crash when populating the dialog from bibtex
+		// files containing non-ASCII characters.
+		(*iter)[bibColumns.name] = Glib::convert(*cit, "UTF-8", "ISO-8859-1");
 		(*iter)[bibColumns.cite] = false; //reset state
 		(*iter)[bibColumns.bib_order] = ++bib_order;
-		(*iter)[bibColumns.info] = Glib::locale_to_utf8(
-			biblio::getInfo(theMap,*cit));
+		(*iter)[bibColumns.info] = Glib::convert(biblio::getInfo(theMap,*cit), "UTF-8", "ISO-8859-1");
 	}
 
 	// Now mark cite keys by setting their bibColumns.cite property to true
@@ -309,11 +305,11 @@ void GCitation::update_contents()
 			// working on a document away from the bibtex file
 			// we should keep it anyway.
 			Gtk::TreeModel::iterator iter = allListStore_->append();
-			(*iter)[bibColumns.name] = Glib::locale_to_utf8(*ccit);
+			(*iter)[bibColumns.name] = Glib::convert(*ccit, "UTF-8", "ISO-8859-1");
 			(*iter)[bibColumns.cite] = true;
 			(*iter)[bibColumns.bib_order] = ++bib_order;
-			(*iter)[bibColumns.info] = Glib::locale_to_utf8(
-				biblio::getInfo(theMap,*ccit));
+			(*iter)[bibColumns.info] = Glib::convert(
+				biblio::getInfo(theMap,*ccit), "UTF-8", "ISO-8859-1");
 		}
 	}
 }
@@ -540,7 +536,9 @@ void GCitation::apply()
 	for (Gtk::TreeModel::const_iterator cit=children.begin();
 		cit!=children.end(); ++cit) {
 
-		string item(support::trim(Glib::locale_from_utf8((*cit)[bibColumns.name])));
+		string item(support::trim(Glib::convert(
+			static_cast<Glib::ustring>((*cit)[bibColumns.name]),
+			"ISO-8859-1", "UTF-8")));
 		if (item.empty())
 			continue;
 		if (i++ > 0)
@@ -567,37 +565,23 @@ void GCitation::find(biblio::Direction dir)
 
 	vector<string>::const_iterator start;
 
-	bool search_cite = citeradio_->get_active();
 	bool const casesens = casecheck_->get_active();
 	string const str = Glib::locale_from_utf8(findentry_->get_text());
 
 	Gtk::TreeModel::iterator iter;
 	Gtk::TreeModel::Children::difference_type sel = 0;
 
-	if (search_cite) {
-		for (iter = (citeFilter_->children()).begin();
-			iter != (citeFilter_->children()).end(); ++iter) {
+	for (iter = (bibFilter_->children()).begin();
+		iter != (bibFilter_->children()).end(); ++iter) {
 
-			bibkeys.push_back(Glib::locale_from_utf8(
-				(*iter)[bibColumns.name]));
-		}
-
-		iter = citeselection_->get_selected();
-		if (iter)
-			sel = std::distance((citeFilter_->children()).begin(), iter);
-	} else {
-		for (iter = (bibFilter_->children()).begin();
-			iter != (bibFilter_->children()).end(); ++iter) {
-
-			bibkeys.push_back(Glib::locale_from_utf8(
-				(*iter)[bibColumns.name]));
-		}
-
-		iter = bibselection_->get_selected();
-		if (iter)
-			sel = std::distance(
-				(bibFilter_->children()).begin(), iter);
+		bibkeys.push_back(Glib::locale_from_utf8(
+			(*iter)[bibColumns.name]));
 	}
+
+	iter = bibselection_->get_selected();
+	if (iter)
+		sel = std::distance(
+			(bibFilter_->children()).begin(), iter);
 
 	start = bibkeys.begin();
 
@@ -605,68 +589,51 @@ void GCitation::find(biblio::Direction dir)
 		Gtk::TreeModel::Children::size_type(sel) < bibkeys.size())
 			std::advance(start, sel);
 
-	bool is_cite = !search_cite;
-	while(is_cite != search_cite) {
+	// Find the NEXT instance...
+	if (dir == biblio::FORWARD)
+		++start;
 
-		// Find the NEXT instance...
-		if (dir == biblio::FORWARD)
-			++start;
+	vector<string>::const_iterator cit =
+		biblio::searchKeys(theMap, bibkeys, str,
+			   start, type, dir, casesens);
 
-		vector<string>::const_iterator cit =
-			biblio::searchKeys(theMap, bibkeys, str,
-				   start, type, dir, casesens);
+	if (cit == bibkeys.end()) {
+		if (dir == biblio::FORWARD) {
+			start = bibkeys.begin();
+		}
+		else {
+			start = bibkeys.end();
+			--start;
+		}
+
+		cit = biblio::searchKeys(theMap, bibkeys, str,
+			 start, type, dir, casesens);
 
 		if (cit == bibkeys.end()) {
-			if (dir == biblio::FORWARD) {
-				start = bibkeys.begin();
-			}
-			else {
-				start = bibkeys.end();
-				--start;
-			}
-
-			cit = biblio::searchKeys(theMap, bibkeys, str,
-				 start, type, dir, casesens);
-
-			if (cit == bibkeys.end()) {
-				return;
-			}
-		}
-		vector<string>::const_iterator bibstart = bibkeys.begin();
-		vector<string>::difference_type const found =
-			std::distance(bibstart, cit);
-		if (found == sel)
 			return;
-
-		start = cit;
-		if (search_cite)
-			iter = (citeFilter_->children()).begin();
-		else
-			iter = (bibFilter_->children()).begin();
-		std::advance(iter, found);
-		is_cite = (*iter)[bibColumns.cite];
+		}
 	}
+	vector<string>::const_iterator bibstart = bibkeys.begin();
+	vector<string>::difference_type const found =
+		std::distance(bibstart, cit);
+	if (found == sel)
+		return;
+
+	start = cit;
+	iter = (bibFilter_->children()).begin();
+	std::advance(iter, found);
 
 	// Highlight and scroll to the key that was found
-	if (search_cite) {
-		citeselection_->select(iter);
-		citekeysview_->set_cursor(Gtk::TreePath(iter));
-		citekeysview_->scroll_to_row(Gtk::TreePath(iter));
-		cite_selected();
-	} else {
-		bibselection_->select(iter);
-		bibkeysview_->set_cursor(Gtk::TreePath(iter));
-		bibkeysview_->scroll_to_row(Gtk::TreePath(iter));
-		bib_selected();
-	}
+	bibselection_->select(iter);
+	bibkeysview_->set_cursor(Gtk::TreePath(iter));
+	bibkeysview_->scroll_to_row(Gtk::TreePath(iter));
+	bib_selected();
 }
 
 void GCitation::set_search_buttons()
 {
-	bool val = findentry_->get_text_length() && (
-		(citeradio_->get_active() && !(citeFilter_->children()).empty())
-		|| (bibradio_->get_active() && !(bibFilter_->children()).empty())
-		);
+	bool val = findentry_->get_text_length()
+		&& !(bibFilter_->children()).empty();
 	backbutton_->set_sensitive(val);
 	forwardbutton_->set_sensitive(val);
 }
