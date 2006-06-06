@@ -1,3 +1,7 @@
+2006-06-06  John Spray <spray@lyx.org>
+	* Alert_pimpl.C: escape special characters in strings before 
+	  passing them to Gtk::Dialog as markup
+
 2006-04-19  Bernhard Reiter <ockham@gmx.net>
 	* GExternal.[Ch], glade/external.glade: implement external dialog
 

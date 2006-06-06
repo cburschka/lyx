@@ -45,7 +45,7 @@ string translateShortcut(string const & str)
 
 void warning_pimpl(string const & title, string const & message)
 {
-	Gtk::MessageDialog dlg(Glib::locale_to_utf8(message),
+	Gtk::MessageDialog dlg(Glib::Markup::escape_text(Glib::locale_to_utf8(message)),
 			       true, Gtk::MESSAGE_WARNING,
 			       Gtk::BUTTONS_CLOSE, true);
 	dlg.set_title(title);
@@ -55,7 +55,7 @@ void warning_pimpl(string const & title, string const & message)
 
 void error_pimpl(string const & title, string const & message)
 {
-	Gtk::MessageDialog dlg(Glib::locale_to_utf8(message),
+	Gtk::MessageDialog dlg(Glib::Markup::escape_text(Glib::locale_to_utf8(message)),
 			       true, Gtk::MESSAGE_ERROR,
 			       Gtk::BUTTONS_CLOSE, true);
 	dlg.set_title(title);
@@ -65,7 +65,7 @@ void error_pimpl(string const & title, string const & message)
 
 void information_pimpl(string const & title, string const & message)
 {
-	Gtk::MessageDialog dlg(Glib::locale_to_utf8(message),
+	Gtk::MessageDialog dlg(Glib::Markup::escape_text(Glib::locale_to_utf8(message)),
 			       true, Gtk::MESSAGE_INFO,
 			       Gtk::BUTTONS_CLOSE, true);
 	dlg.set_title(title);
@@ -82,7 +82,7 @@ int prompt_pimpl(string const & title, string const & question,
 	Glib::ustring gb3;
 	if (!b3.empty())
 		gb3 = Glib::locale_to_utf8(translateShortcut(b3));
-	Gtk::MessageDialog dlg(Glib::locale_to_utf8(question),
+	Gtk::MessageDialog dlg(Glib::Markup::escape_text(Glib::locale_to_utf8(question)),
 			       true, Gtk::MESSAGE_QUESTION,
 			       Gtk::BUTTONS_NONE, true);
 	dlg.set_title(title);
@@ -98,7 +98,7 @@ int prompt_pimpl(string const & title, string const & question,
 std::pair<bool, string> const askForText_pimpl(string const & msg,
 					       string const & dflt)
 {
-	Gtk::MessageDialog dlg(Glib::locale_to_utf8(msg),
+	Gtk::MessageDialog dlg(Glib::Markup::escape_text(Glib::locale_to_utf8(msg)),
 			       true, Gtk::MESSAGE_QUESTION,
 			       Gtk::BUTTONS_OK_CANCEL,
 			       true);
