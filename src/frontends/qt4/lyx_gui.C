@@ -76,6 +76,10 @@ using std::string;
 
 extern BufferList bufferlist;
 
+// FIXME: wrong place !
+LyXServer * lyxserver;
+LyXServerSocket * lyxsocket;
+
 namespace {
 
 int getDPI()
@@ -86,11 +90,15 @@ int getDPI()
 
 map<int, shared_ptr<socket_callback> > socket_callbacks;
 
-} // namespace anon
+void cleanup()
+{
+	delete lyxsocket;
+	lyxsocket = 0;
+	delete lyxserver;
+	lyxserver = 0;
+}
 
-// FIXME: wrong place !
-LyXServer * lyxserver;
-LyXServerSocket * lyxsocket;
+} // namespace anon
 
 // in QLyXKeySym.C
 extern void initEncodings();
@@ -145,50 +153,21 @@ bool LQApplication::macEventFilter(EventRef event)
 #endif
 
 
-namespace {
-
-LQApplication * app = 0;
-
-}
-
-
 namespace lyx_gui {
 
 bool use_gui = true;
 
-void parse_init(int & argc, char * argv[])
+
+void exec(int & argc, char * argv[])
 {	
-	/*
-	FIXME : Abdel 29/05/2006 (younes.a@free.fr)
-	reorganize this code. In particular make sure that this
-	advise from Qt documentation is respected:
-	
-		Since the QApplication object does so much initialization, it
-		must be created before any other objects related to the user
-		interface are created.
-	
-	Right now this is not the case. For example, the call to
-	"FontLoader::initFontPath()" below is doned before the QApplication
-	creation. Moreover, I suspect that a number of global variables
-	contains Qt object that are initialized before the passage through
-	parse_init(). This might also explain the message displayed by Qt
-	that caused the hanging:
-
-	QObject::killTimer: timers cannot be stopped from another thread
-	*/
-
 	// Force adding of font path _before_ QApplication is initialized
 	FontLoader::initFontPath();
 
-#ifdef Q_WS_WIN
-	static QApplication win_app(argc, argv);
-#else
-	app = new LQApplication(argc, argv);
-#endif
+	LQApplication app(argc, argv);
 
 	// install translation file for Qt built-in dialogs
 	// These are only installed since Qt 3.2.x
-	static QTranslator qt_trans(0);
+	QTranslator qt_trans(0);
 	if (qt_trans.load(QString("qt_") + QTextCodec::locale(),
 			  qInstallPathTranslations())) {
 		qApp->installTranslator(&qt_trans);
@@ -206,7 +185,7 @@ void parse_init(int & argc, char * argv[])
 	// These translations are meant to break Qt/Mac menu merging
 	// algorithm on some entries. It lists the menu names that
 	// should not be moved to the LyX menu
-	static QTranslator aqua_trans(0);
+	QTranslator aqua_trans(0);
 	aqua_trans.insert(QTranslatorMessage("QMenuBar", "Setting", 0,
 					     "do_not_merge_me"));
 	aqua_trans.insert(QTranslatorMessage("QMenuBar", "Config", 0,
@@ -228,6 +207,8 @@ void parse_init(int & argc, char * argv[])
 	lyxrc.dpi = getDPI();
 
 	LoaderQueue::setPriority(10,100);
+
+	LyX::ref().exec2(argc, argv);
 }
 
 
@@ -269,10 +250,7 @@ void start(string const & batch, vector<string> const & files,
 	qApp->exec();
 
 	// FIXME
-	delete lyxsocket;
-	delete lyxserver;
-	lyxserver = 0;
-	delete app;
+	cleanup();
 }
 
 
@@ -288,18 +266,16 @@ void sync_events()
 }
 
 
-void exit()
+void exit(int status)
 {
-	delete lyxsocket;
-	delete lyxserver;
-	lyxserver = 0;
+	cleanup();
 
-	// we cannot call qApp->exit(0) - that could return us
+	// we cannot call QApplication::exit(status) - that could return us
 	// into a static dialog return in the lyx code (for example,
 	// load autosave file QMessageBox. We have to just get the hell
 	// out.
 
-	::exit(0);
+	::exit(status);
 }
 
 

@@ -100,7 +100,7 @@ int getDPI()
 } // namespace anon
 
 
-void lyx_gui::parse_init(int & argc, char * argv[])
+void lyx_gui::exec(int & argc, char * argv[])
 {
 	new Gtk::Main(argc, argv);
 
@@ -112,6 +112,8 @@ void lyx_gui::parse_init(int & argc, char * argv[])
 
 	// must do this /before/ lyxrc gets read
 	lyxrc.dpi = getDPI();
+
+	LyX::ref().exec2(argc, argv);
 }
 
 
@@ -152,8 +154,9 @@ void lyx_gui::start(string const & batch, std::vector<string> const & files,
 }
 
 
-void lyx_gui::exit()
+void lyx_gui::exit(int /*status*/)
 {
+	// FIXME: Don't ignore status
 	Gtk::Main::quit();
 }
 

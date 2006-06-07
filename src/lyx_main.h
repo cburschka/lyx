@@ -34,7 +34,21 @@ namespace lyx {
 /// initial startup
 class LyX : boost::noncopyable {
 public:
+	/**
+	 * Execute LyX. The startup sequence is as follows:
+	 * -# LyX::exec()
+	 * -# LyX::priv_exec()
+	 * -# lyx_gui::exec()
+	 * -# LyX::exec2()
+	 * Step 3 is omitted if no gui is wanted. We need lyx_gui::exec()
+	 * only to create the QApplication object in the qt frontend. All
+	 * attempts with static and dynamically allocated QApplication
+	 * objects lead either to harmless error messages on exit
+	 * ("Mutex destroy failure") or crashes (OS X).
+	 */
 	static void exec(int & argc, char * argv[]);
+	/// Execute LyX (inner execution loop, \sa exec)
+	void exec2(int & argc, char * argv[]);
 	static LyX & ref();
 	static LyX const & cref();
 
@@ -58,7 +72,7 @@ private:
 	void priv_exec(int & argc, char * argv[]);
 
 	/// initial LyX set up
-	void init(bool);
+	void init();
 	/// set up the default key bindings
 	void defaultKeyBindings(kb_keymap * kbmap);
 	/// set up the default dead key bindings if requested

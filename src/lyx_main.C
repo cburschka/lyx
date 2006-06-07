@@ -107,12 +107,23 @@ string cl_system_support;
 string cl_user_support;
 
 
+void lyx_exit(int status)
+{
+	// FIXME: We should not directly call exit(), since it only
+	// guarantees a return to the system, no application cleanup.
+	// This may cause troubles with not executed destructors.
+	if (lyx_gui::use_gui)
+		lyx_gui::exit(status);
+	exit(status);
+}
+
+
 void showFileError(string const & error)
 {
 	Alert::warning(_("Could not read configuration file"),
 		   bformat(_("Error while reading the configuration file\n%1$s.\n"
 		     "Please check your installation."), error));
-	exit(EXIT_FAILURE);
+	lyx_exit(EXIT_FAILURE);
 }
 
 
@@ -204,14 +215,21 @@ void LyX::priv_exec(int & argc, char * argv[])
 {
 	// Here we need to parse the command line. At least
 	// we need to parse for "-dbg" and "-help"
-	bool const want_gui = easyParse(argc, argv);
+	lyx_gui::use_gui = easyParse(argc, argv);
 
 	lyx::support::init_package(argv[0], cl_system_support, cl_user_support,
 				   lyx::support::top_build_dir_is_one_level_up);
 
-	if (want_gui)
-		lyx_gui::parse_init(argc, argv);
+	// Start the real execution loop.
+	if (lyx_gui::use_gui)
+		lyx_gui::exec(argc, argv);
+	else
+		exec2(argc, argv);
+}
 
+
+void LyX::exec2(int & argc, char * argv[])
+{
 	// check for any spurious extra arguments
 	// other than documents
 	for (int argi = 1; argi < argc ; ++argi) {
@@ -224,10 +242,10 @@ void LyX::priv_exec(int & argc, char * argv[])
 
 	// Initialization of LyX (reads lyxrc and more)
 	lyxerr[Debug::INIT] << "Initializing LyX::init..." << endl;
-	init(want_gui);
+	init();
 	lyxerr[Debug::INIT] << "Initializing LyX::init...done" << endl;
 
-	if (want_gui)
+	if (lyx_gui::use_gui)
 		lyx_gui::parse_lyxrc();
 
 	vector<string> files;
@@ -278,13 +296,13 @@ void LyX::priv_exec(int & argc, char * argv[])
 			bool success = false;
 			if (last_loaded->dispatch(batch_command, &success)) {
 				quitLyX(false);
-				exit(!success);
+				lyx_exit(!success);
 			}
 		}
 		files.clear(); // the files are already loaded
 	}
 
-	if (want_gui) {
+	if (lyx_gui::use_gui) {
 		// determine windows size and position, from lyxrc and/or session
 		// initial geometry
 		unsigned int width = 690;
@@ -296,10 +314,10 @@ void LyX::priv_exec(int & argc, char * argv[])
 		}
 		// if lyxrc returns (0,0), then use session info
 		else {
-			string val = LyX::ref().session().loadSessionInfo("WindowWidth");
+			string val = session().loadSessionInfo("WindowWidth");
 			if (!val.empty())
 				width = convert<unsigned int>(val);
-			val = LyX::ref().session().loadSessionInfo("WindowHeight");
+			val = session().loadSessionInfo("WindowHeight");
 			if (!val.empty())
 				height = convert<unsigned int>(val);
 		}
@@ -307,10 +325,10 @@ void LyX::priv_exec(int & argc, char * argv[])
 		int posx = -1;
 		int posy = -1;
 		if (lyxrc.geometry_xysaved) {
-			string val = LyX::ref().session().loadSessionInfo("WindowPosX");
+			string val = session().loadSessionInfo("WindowPosX");
 			if (!val.empty())
 				posx = convert<int>(val);
-			val = LyX::ref().session().loadSessionInfo("WindowPosY");
+			val = session().loadSessionInfo("WindowPosY");
 			if (!val.empty())
 				posy = convert<int>(val);
 		}
@@ -318,7 +336,7 @@ void LyX::priv_exec(int & argc, char * argv[])
 	} else {
 		// Something went wrong above
 		quitLyX(false);
-		exit(EXIT_FAILURE);
+		lyx_exit(EXIT_FAILURE);
 	}
 }
 
@@ -430,7 +448,7 @@ void LyX::printError(ErrorItem const & ei)
 }
 
 
-void LyX::init(bool gui)
+void LyX::init()
 {
 #ifdef SIGHUP
 	signal(SIGHUP, error_handler);
@@ -440,9 +458,6 @@ void LyX::init(bool gui)
 	signal(SIGINT, error_handler);
 	signal(SIGTERM, error_handler);
 	// SIGPIPE can be safely ignored.
-
-	// Disable gui when easyparse says so
-	lyx_gui::use_gui = gui;
 
 	lyxrc.tempdir_path = package().temp_dir();
 	lyxrc.document_path = package().document_dir();
@@ -478,7 +493,7 @@ void LyX::init(bool gui)
 
 	// Check that user LyX directory is ok. We don't do that if
 	// running in batch mode.
-	if (gui) {
+	if (lyx_gui::use_gui) {
 		if (queryUserLyXDir(package().explicit_user_support()))
 			reconfigureUserLyXDir();
 	} else {
@@ -507,7 +522,7 @@ void LyX::init(bool gui)
 	lyxerr[Debug::INIT] << "Reading layouts..." << endl;
 	LyXSetStyle();
 
-	if (gui) {
+	if (lyx_gui::use_gui) {
 		// Set up bindings
 		toplevel_keymap.reset(new kb_keymap);
 		defaultKeyBindings(toplevel_keymap.get());
@@ -540,7 +555,7 @@ void LyX::init(bool gui)
 		// close to zero. We therefore don't try to overcome this
 		// problem with e.g. asking the user for a new path and
 		// trying again but simply exit.
-		exit(EXIT_FAILURE);
+		lyx_exit(EXIT_FAILURE);
 	}
 
 	if (lyxerr.debugging(Debug::INIT)) {
@@ -688,7 +703,7 @@ bool LyX::queryUserLyXDir(bool explicit_userdir)
 		    _("&Create directory"),
 		    _("&Exit LyX"))) {
 		lyxerr << _("No user LyX directory. Exiting.") << endl;
-		exit(1);
+		lyx_exit(EXIT_FAILURE);
 	}
 
 	lyxerr << bformat(_("LyX: Creating directory %1$s"),
@@ -699,7 +714,7 @@ bool LyX::queryUserLyXDir(bool explicit_userdir)
 		// Failed, so let's exit.
 		lyxerr << _("Failed to create directory. Exiting.")
 		       << endl;
-		exit(1);
+		lyx_exit(EXIT_FAILURE);
 	}
 
 	return true;

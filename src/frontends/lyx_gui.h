@@ -46,9 +46,6 @@ std::string const sans_font_name();
 /// return a suitable monospaced font name (called from non-gui context too !)
 std::string const typewriter_font_name();
 
-/// parse command line and do basic initialisation
-void parse_init(int & argc, char * argv[]);
-
 /**
  * set up GUI parameters. At this point lyxrc may
  * be used.
@@ -60,7 +57,12 @@ void parse_lyxrc();
  * batch commands, and loading the given documents
  */
 void start(std::string const & batch, std::vector<std::string> const & files,
-	        unsigned int width, unsigned int height, int posx, int posy);
+           unsigned int width, unsigned int height, int posx, int posy);
+
+/**
+ * Enter the main event loop (\sa LyX::exec2)
+ */
+void exec(int & argc, char * argv[]);
 
 /**
  * Synchronise all pending events.
@@ -70,7 +72,7 @@ void sync_events();
 /**
  * quit running LyX
  */
-void exit();
+void exit(int);
 
 /**
  * return the status flag for a given action. This can be used to tell
