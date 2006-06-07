@@ -223,7 +223,7 @@ public:
 	AuthorList const & authors() const;
 
 	/// map of the file's author IDs to buffer author IDs
-	std::vector<int> author_map;
+	std::vector<unsigned int> author_map;
 	///
 	std::string const dvips_options() const;
 	///

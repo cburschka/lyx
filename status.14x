@@ -111,6 +111,9 @@ What's new
 - Set change tracking marks properly when copying between documents
   with different change tracking status (bug 2207).
 
+- Fix crash when reading documents containing bogus change tracking
+  markup due to the bug above (bug 2614).
+
 - Fix remaining "ghost" empty paragraphs when selecting and deleting multiple
   paragraphs (bug 2516).
 

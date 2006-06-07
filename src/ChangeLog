@@ -1,3 +1,11 @@
+2006-06-07  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* bufferparams.h: make author_map use an unsigned index, to avoid
+	a warning.
+
+	* text.C (readParToken): handle \change_inserted and
+	\change_deleted tokens with wrong author index (bug 2614).
+
 2006-05-30  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* intl.C (InitKeyMapper): reset kbmap file names if the files

@@ -326,14 +326,28 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 		int aid;
 		lyx::time_type ct;
 		is >> aid >> ct;
-		change = Change(Change::INSERTED, bp.author_map[aid], ct);
+		if (aid >= bp.author_map.size()) {
+			buf.error(ErrorItem(_("Change tracking error"),
+					    bformat(_("Unknown author index for insertion: %1$d\n"), aid),
+					    par.id(), 0, par.size()));
+			
+			change = Change(Change::UNCHANGED);
+		} else
+			change = Change(Change::INSERTED, bp.author_map[aid], ct);
 	} else if (token == "\\change_deleted") {
 		lex.eatLine();
 		std::istringstream is(lex.getString());
 		int aid;
 		lyx::time_type ct;
 		is >> aid >> ct;
-		change = Change(Change::DELETED, bp.author_map[aid], ct);
+		if (aid >= bp.author_map.size()) {
+			buf.error(ErrorItem(_("Change tracking error"),
+					    bformat(_("Unknown author index for deletion: %1$d\n"), aid),
+					    par.id(), 0, par.size()));
+			
+			change = Change(Change::UNCHANGED);
+		} else
+			change = Change(Change::DELETED, bp.author_map[aid], ct);
 	} else {
 		lex.eatLine();
 		buf.error(ErrorItem(_("Unknown token"),
