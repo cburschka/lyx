@@ -686,6 +686,14 @@ contributers = [
                  "",
                  u"Hungarian translation and bind file for menu shortcuts"),
 
+     contributer(u"Peter Kümmel",
+                 "syntheticpp () gmx ! net",
+                 "GPL",
+                 "License",
+                 "m=114968828021007",
+                 "7 June 2006",
+                 u"Testing, clean ups and profiling"),
+
      contributer(u"Bernd Kümmerlen",
                  "bkuemmer () gmx ! net",
                  "GPL",
