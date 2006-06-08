@@ -9,6 +9,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
+#undef QT3_SUPPORT
+
 #include <config.h>
 
 #include "lyx_gui.h"
@@ -55,6 +57,8 @@
 #include <QEventLoop>
 #include <QTranslator>
 #include <QTextCodec>
+#include <QLocale>
+#include <QLibraryInfo>
 
 using lyx::support::ltrim;
 using lyx::support::package;
@@ -167,19 +171,22 @@ void exec(int & argc, char * argv[])
 
 	// install translation file for Qt built-in dialogs
 	// These are only installed since Qt 3.2.x
-	QTranslator qt_trans(0);
-	if (qt_trans.load(QString("qt_") + QTextCodec::locale(),
-			  qInstallPathTranslations())) {
+	QTranslator qt_trans;
+	QString language_name = QString("qt_") + QLocale::system().name();
+	language_name.truncate(5);
+	if (qt_trans.load(language_name, 
+		QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
+	{
 		qApp->installTranslator(&qt_trans);
 		// even if the language calls for RtL, don't do that
-		qApp->setReverseLayout(false);
+		qApp->setLayoutDirection(Qt::LeftToRight);
 		lyxerr[Debug::GUI]
 			<< "Successfully installed Qt translations for locale "
-			<< QTextCodec::locale() << std::endl;
+			<< fromqstr(language_name) << std::endl;
 	} else
 		lyxerr[Debug::GUI]
 			<< "Could not find  Qt translations for locale "
-			<< QTextCodec::locale() << std::endl;
+			<< fromqstr(language_name) << std::endl;
 
 /*#ifdef Q_WS_MACX
 	// These translations are meant to break Qt/Mac menu merging
@@ -260,9 +267,7 @@ void sync_events()
 	// During screen update/ redraw, this method is disabled to
 	// prevent keyboard events being handed to the LyX core, where
 	// they could cause re-entrant calls to screen update.
-#if QT_VERSION >= 0x030100
-	qApp->processEvents(QEventLoop::ExcludeUserInput);
-#endif
+	qApp->processEvents(QEventLoop::ExcludeUserInputEvents);
 }
 
 
