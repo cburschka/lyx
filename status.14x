@@ -143,6 +143,8 @@ What's new
 
 - Fix lib/configure.py to find tex2lyx if the path to it contains spaces.
 
+- Use the clean_dvi.py script on windows not only in the installer but also
+  in the source package.
 - Fix the code to find interface localization under Windows and Mac OS X.
 
 - remove --enable-compression-support option of configure. Compression
@@ -151,10 +153,6 @@ What's new
 - When compiling with --with-version-suffix under windows, do not
   rename the executable files.
 
-- Make LyX/Win work under windows 98.
-
 - Fix compilation on DragonFly BSD.
 
-- Use the clean_dvi.py script on windows not only in the installer but also
-  in the source package.
 
