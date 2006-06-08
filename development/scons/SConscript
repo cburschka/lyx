@@ -801,4 +801,4 @@ if 'install' in targets:
 
 
 Default('lyx')
-Alias('all', ['lyx', 'client', 'tex2lyx', 'po'])
+Alias('all', ['lyx', 'client', 'tex2lyx'])
