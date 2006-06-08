@@ -195,7 +195,7 @@ void exec(int & argc, char * argv[])
 	aqua_trans.insert(QTranslatorMessage("QMenuBar", "Setup", 0,
 					     "do_not_merge_me"));
 
-	app.installTranslator(&aqua_trans);
+	qApp->installTranslator(&aqua_trans);
 #endif
 */
 	using namespace lyx::graphics;
