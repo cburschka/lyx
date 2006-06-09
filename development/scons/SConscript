@@ -547,7 +547,7 @@ if build_lyxbase:
     Thesaurus.C
     SpellBase.C
   ''')
-  
+
   if env.has_key('USE_ASPELL') and env['USE_ASPELL']:
     lyx_post_source.append('aspell.C')
   elif env.has_key('USE_PSPELL') and env['USE_PSPELL']:
@@ -560,7 +560,7 @@ if build_lyxbase:
     main_source = ['main.C']
   else:
     main_source = []
-  
+
   lyxbase_pre = env.StaticLibrary(
     target = '$LOCALLIBPATH/lyxbase_pre',
     source = globSource(dir = env.subst('$TOP_SRC_DIR/src'), pattern = env['LYX_EXT'], 
@@ -609,7 +609,7 @@ if build_lyx:
   Alias('lyx', env.Command(os.path.join('$BUILDDIR', target_name), lyx,
     [Copy('$TARGET', '$SOURCE')]))
   Alias('lyx', lyx)
- 
+
 
 if build_msvs_projects:
   def build_project(target, dir, src_pattern = env['LYX_EXT'], include=[], 
@@ -783,14 +783,14 @@ if 'install' in targets:
     '$TOP_SRC_DIR/lib/lyx2lyx/lyx2lyx_version.py.in')
   Alias('install', dirs)
   # man
-  env.InstallAs(os.path.join(env['MAN_DEST_DIR'], 'lyx.1'),
+  env.InstallAs(os.path.join(env['MAN_DEST_DIR'], 'lyx' + env['PROGRAM_SUFFIX'] + '.1'),
     env.subst('$TOP_SRC_DIR/lyx.man'))
-  env.InstallAs(os.path.join(env['MAN_DEST_DIR'], 'tex2lyx.1'),
+  env.InstallAs(os.path.join(env['MAN_DEST_DIR'], 'tex2lyx' + env['PROGRAM_SUFFIX'] + '.1'),
     env.subst('$TOP_SRC_DIR/src/tex2lyx/tex2lyx.man'))
-  env.InstallAs(os.path.join(env['MAN_DEST_DIR'], 'lyxclient.1'),
+  env.InstallAs(os.path.join(env['MAN_DEST_DIR'], 'lyxclient' + env['PROGRAM_SUFFIX'] + '.1'),
     env.subst('$TOP_SRC_DIR/src/client/lyxclient.man'))
-  Alias('install', [os.path.join(env['MAN_DEST_DIR'], x) for
-    x in ['lyx.1', 'tex2lyx.1', 'lyxclient.1']])
+  Alias('install', [os.path.join(env['MAN_DEST_DIR'], x + env['PROGRAM_SUFFIX'] + '.1') for
+    x in ['lyx', 'tex2lyx', 'lyxclient']])
   # locale files?
   # ru.gmo ==> ru/LC_MESSAGES/lyxSUFFIX.mo
   for gmo in gmo_files:

@@ -52,7 +52,7 @@ def env_subst(target, source, env):
   assert len(source) == 1
   target_file = file(str(target[0]), "w")
   source_file = file(str(source[0]), "r")
-  
+
   contents = source_file.read()
   for k, v in env.items():
     try:
@@ -123,13 +123,15 @@ def startConfigH():
 '''
 
 
-def addToConfig(lines, newline=2):
+def addToConfig(lines, desc=''):
   ''' utility function: shortcut for appending lines to outfile
     add newline at the end of lines.
   '''
   global config_content
   if lines.strip() != '':
-    config_content += lines + '\n'*newline
+    if desc != '':
+      config_content += desc + '\n'
+    config_content += lines + '\n\n'
 
 
 def endConfigH(top_src_dir):

@@ -81,8 +81,8 @@ import scons_utils as utils
 # Required runtime environment
 #----------------------------------------------------------
 
-# FIXME: I remember lyx requires higher version of python?
-EnsurePythonVersion(1, 5)
+# scons asks for 1.5.2, lyx requires 2.2
+EnsurePythonVersion(2, 2)
 # Please use at least 0.96.91 (not 0.96.1)
 EnsureSConsVersion(0, 96)
 
@@ -329,6 +329,15 @@ if (not ARGUMENTS.has_key('load_option') or \
     and ARGUMENTS['frontend'] != opt_cache['frontend'] \
     and opt_cache.has_key('qt_dir'):
     opt_cache.pop('qt_dir')
+  # some options will require full rebuild
+  # these are in general things that will change src/config.h
+  for arg in ['version_suffix', 'nls']:
+    if ARGUMENTS.has_key(arg) and ((not opt_cache.has_key(arg)) or \
+      ARGUMENTS[arg] != opt_cache[arg]):
+      if fast_start:
+        print "  ** fast_start is disabled because of the change of option", arg
+        print
+        fast_start = False
   # and we do not cache some options
   for arg in ['fast_start']:
     if opt_cache.has_key(arg):
@@ -380,7 +389,10 @@ env['SCONS_DIR'] = SCONS_DIR
 env['PREFIX'] = env.get('prefix', default_prefix)
 # program suffix
 if env.has_key('version_suffix'):
-  env['PROGRAM_SUFFIX'] = env['version_suffix']
+  if env['version_suffix'] in ['y', 'yes', 't', 'true', '1', 'all']:
+    env['PROGRAM_SUFFIX'] = PACKAGE_VERSION
+  else:
+    env['PROGRAM_SUFFIX'] = env['version_suffix']
 else:
   env['PROGRAM_SUFFIX'] = ''
 env['ADD_SUFFIX_TO_EXECUTABLES'] = add_suffix_to_executables
@@ -782,12 +794,13 @@ if not fast_start:
   ]
 
   for header in headers:
-    utils.addToConfig("/* Define to 1 if you have the <%s> header file. */" % header[0], newline=1)
     if (header[2] == 'c' and conf.CheckCHeader(header[0])) or \
       (header[2] == 'cxx' and conf.CheckCXXHeader(header[0])):
-      utils.addToConfig('#define %s 1' % header[1])
+      utils.addToConfig('#define %s 1' % header[1],
+        desc="/* Define to 1 if you have the <%s> header file. */" % header[0])
     else:
-      utils.addToConfig('/* #undef %s */' % header[1])
+      utils.addToConfig('/* #undef %s */' % header[1],
+        desc="/* Define to 1 if you have the <%s> header file. */" % header[0])
 
   # HAVE_OPEN
   # HAVE_CLOSE
@@ -873,11 +886,12 @@ int count()
   ]
 
   for func in functions:
-    utils.addToConfig("/* Define to 1 if you have the `%s' function. */" % func[0], newline=1)
     if conf.CheckFunc(func[0], header=func[2]):
-      utils.addToConfig('#define %s 1' % func[1])
+      utils.addToConfig('#define %s 1' % func[1],
+        desc = "/* Define to 1 if you have the `%s' function. */" % func[0])
     else:
-      utils.addToConfig('/* #undef %s */' % func[1])
+      utils.addToConfig('/* #undef %s */' % func[1],
+        desc = "/* Define to 1 if you have the `%s' function. */" % func[0])
 
 
   # HAVE_ASPRINTF
@@ -895,22 +909,24 @@ int count()
   ]
 
   for func in env_functions:
-    utils.addToConfig("/* Define to 1 if you have the `%s' function. */" % func[0], newline=1)
     if conf.CheckFunc(func[0]):
-      utils.addToConfig('#define %s 1' % func[1])
+      utils.addToConfig('#define %s 1' % func[1],
+        desc = "/* Define to 1 if you have the `%s' function. */" % func[0])
       env[func[1]] = 1
     else:
-      utils.addToConfig('/* #undef %s */' % func[1])
+      utils.addToConfig('/* #undef %s */' % func[1],
+        desc = "/* Define to 1 if you have the `%s' function. */" % func[0])
       env[func[1]] = 0
 
   # HAVE_INTMAX_T
   # HAVE_DECL_ISTREAMBUF_ITERATOR
-  utils.addToConfig("/* Define to 1 if you have the `intmax_t' type. */", newline=1)
   if conf.CheckType('intmax_t', includes='#include <stdint.h>') or \
     conf.CheckType('intmax_t', includes='#include <inttypes.h>'):
-    utils.addToConfig('#define HAVE_INTMAX_T 1')
+    utils.addToConfig('#define HAVE_INTMAX_T 1',
+      desc = "/* Define to 1 if you have the `intmax_t' type. */")
   else:
-    utils.addToConfig('/* #undef HAVE_INTMAX_T */')
+    utils.addToConfig('/* #undef HAVE_INTMAX_T */',
+      desc = "/* Define to 1 if you have the `intmax_t' type. */")
 
   # HAVE_INTMAX_T
   # HAVE_LONG_DOUBLE
@@ -932,11 +948,12 @@ int count()
       '#include <streambuf>\n#include <istream>')
   ]
   for t in types: 
-    utils.addToConfig("/* Define to 1 if you have the `%s' type. */" % t[0], newline=1)
     if conf.CheckType(t[0], includes=t[2]):
-      utils.addToConfig('#define %s 1' % t[1])
+      utils.addToConfig('#define %s 1' % t[1],
+        desc = "/* Define to 1 if you have the `%s' type. */" % t[0])
     else:
-      utils.addToConfig('/* #undef %s */' % t[1])
+      utils.addToConfig('/* #undef %s */' % t[1],
+        desc = "/* Define to 1 if you have the `%s' type. */" % t[0])
 
   # windows/msvc sys/types.h does not have pid_t
   # FIXME: #include <windows.h> is the right way?
@@ -981,9 +998,28 @@ int count()
 
   # PACKAGE
   # PACKAGE_VERSION
+  # PACKAGE_BUGREPORT
+  # PACKAGE_NAME
+  # PACKAGE_STRING
   # DEVEL_VERSION
-  utils.addToConfig('#define PACKAGE "%s%s"' % (PACKAGE, env['PROGRAM_SUFFIX']))
-  utils.addToConfig('#define PACKAGE_VERSION "%s"' % PACKAGE_VERSION)
+  utils.addToConfig('#define PACKAGE "%s%s"' % (PACKAGE, env['PROGRAM_SUFFIX']),
+    desc = "/* Name of package */")
+
+  utils.addToConfig('#define PACKAGE_BUGREPORT "%s"' % PACKAGE_BUGREPORT,
+    desc = '/* Define to the address where bug reports for this package should be sent. */')
+
+  utils.addToConfig('#define PACKAGE_NAME "%s"' % PACKAGE_NAME,
+      desc = '/* Define to the full name of this package. */')
+
+  utils.addToConfig('#define PACKAGE_STRING "%s"' % PACKAGE_STRING,
+      desc = "/* Define to the full name and version of this package. */")
+
+  utils.addToConfig('#define PACKAGE_TARNAME "%s"' % PACKAGE_TARNAME,
+      desc = "/* Define to the one symbol short name of this package. */")
+
+  utils.addToConfig('#define PACKAGE_VERSION "%s"' % PACKAGE_VERSION,
+    desc = "/* Define to the version of this package. */")
+
   if DEVEL_VERSION:
     utils.addToConfig('#define DEVEL_VERSION 1')
 
@@ -1231,10 +1267,11 @@ if platform_name == 'cygwin':
 #
 # src/support/package.C.in needs the following to replace
 #  LYX_ABS_INSTALLED_DATADIR (e.g. /usr/local/lyx/share/lyx)
-env['LYX_DIR'] = env['SHARE_DIR']
+env['LYX_DIR'] = Dir(env['SHARE_DIR']).abspath
 #  LYX_ABS_INSTALLED_LOCALEDIR
-env['LOCALEDIR'] = env['LOCALE_DIR']
-env['TOP_SRCDIR'] = env['TOP_SRC_DIR']
+env['LOCALEDIR'] = Dir(env['LOCALE_DIR']).abspath
+# during variable substitution, absolute path is needed.
+env['TOP_SRCDIR'] = Dir(env['TOP_SRC_DIR']).abspath
 # needed by src/version.C.in => src/version.C
 env['PACKAGE_VERSION'] = PACKAGE_VERSION
 # fill in the version info
