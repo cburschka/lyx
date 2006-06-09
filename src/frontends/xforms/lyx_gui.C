@@ -84,6 +84,7 @@ namespace {
 
 /// quit lyx
 bool finished = false;
+int exit_status = 0;
 
 /// estimate DPI from X server
 int getDPI()
@@ -153,7 +154,7 @@ namespace lyx_gui {
 bool use_gui = true;
 
 
-void parse_init(int & argc, char * argv[])
+void exec(int & argc, char * argv[])
 {
 	setDefaults();
 
@@ -198,6 +199,8 @@ void parse_init(int & argc, char * argv[])
 	lyxrc.dpi = getDPI();
 
 	LoaderQueue::setPriority(10,100);
+
+	LyX::ref().exec2(argc, argv);
 }
 
 
@@ -327,12 +330,14 @@ void start(string const & batch, vector<string> const & files)
 	// FIXME: breaks emergencyCleanup
 	delete lyxsocket;
 	delete lyxserver;
+	::exit(exit_status);
 }
 
 
-void exit()
+void exit(int status)
 {
 	finished = true;
+	exit_status = status;
 }
 
 

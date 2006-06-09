@@ -78,6 +78,10 @@ using std::string;
 
 extern BufferList bufferlist;
 
+// FIXME: wrong place !
+LyXServer * lyxserver;
+LyXServerSocket * lyxsocket;
+
 namespace {
 
 int getDPI()
@@ -89,11 +93,15 @@ int getDPI()
 
 map<int, shared_ptr<socket_callback> > socket_callbacks;
 
-} // namespace anon
+void cleanup()
+{
+	delete lyxsocket;
+	lyxsocket = 0;
+	delete lyxserver;
+	lyxserver = 0;
+}
 
-// FIXME: wrong place !
-LyXServer * lyxserver;
-LyXServerSocket * lyxsocket;
+} // namespace anon
 
 // in QLyXKeySym.C
 extern void initEncodings();
@@ -103,7 +111,6 @@ extern bool lyxX11EventFilter(XEvent * xev);
 #endif
 
 #ifdef Q_WS_MACX
-extern bool macEventFilter(EventRef event);
 extern pascal OSErr
 handleOpenDocuments(const AppleEvent* inEvent, AppleEvent* /*reply*/,
 		    long /*refCon*/);
@@ -113,7 +120,6 @@ class LQApplication : public QApplication
 {
 public:
 	LQApplication(int & argc, char ** argv);
-	~LQApplication();
 #ifdef Q_WS_X11
 	bool x11EventFilter (XEvent * ev) { return lyxX11EventFilter(ev); }
 #endif
@@ -132,10 +138,6 @@ LQApplication::LQApplication(int & argc, char ** argv)
 			      0, false);
 #endif
 }
-
-
-LQApplication::~LQApplication()
-{}
 
 
 #ifdef Q_WS_MACX
@@ -157,22 +159,23 @@ namespace lyx_gui {
 
 bool use_gui = true;
 
-void parse_init(int & argc, char * argv[])
+
+void exec(int & argc, char * argv[])
 {
 	// Force adding of font path _before_ QApplication is initialized
 	FontLoader::initFontPath();
 
-	static LQApplication app(argc, argv);
+	LQApplication app(argc, argv);
 
 #if QT_VERSION >= 0x030200
 	// install translation file for Qt built-in dialogs
 	// These are only installed since Qt 3.2.x
-	static QTranslator qt_trans(0);
+	QTranslator qt_trans(0);
 	if (qt_trans.load(QString("qt_") + QTextCodec::locale(),
 			  qInstallPathTranslations())) {
-		app.installTranslator(&qt_trans);
+		qApp->installTranslator(&qt_trans);
 		// even if the language calls for RtL, don't do that
-		app.setReverseLayout(false);
+		qApp->setReverseLayout(false);
 		lyxerr[Debug::GUI]
 			<< "Successfully installed Qt translations for locale "
 			<< QTextCodec::locale() << std::endl;
@@ -186,7 +189,7 @@ void parse_init(int & argc, char * argv[])
 	// These translations are meant to break Qt/Mac menu merging
 	// algorithm on some entries. It lists the menu names that
 	// should not be moved to the LyX menu
-	static QTranslator aqua_trans(0);
+	QTranslator aqua_trans(0);
 	aqua_trans.insert(QTranslatorMessage("QMenuBar", "Setting", 0,
 					     "do_not_merge_me"));
 	aqua_trans.insert(QTranslatorMessage("QMenuBar", "Config", 0,
@@ -196,7 +199,7 @@ void parse_init(int & argc, char * argv[])
 	aqua_trans.insert(QTranslatorMessage("QMenuBar", "Setup", 0,
 					     "do_not_merge_me"));
 
-	app.installTranslator(&aqua_trans);
+	qApp->installTranslator(&aqua_trans);
 #endif
 
 	using namespace lyx::graphics;
@@ -208,6 +211,8 @@ void parse_init(int & argc, char * argv[])
 	lyxrc.dpi = getDPI();
 
 	LoaderQueue::setPriority(10,100);
+
+	LyX::ref().exec2(argc, argv);
 }
 
 
@@ -248,9 +253,7 @@ void start(string const & batch, vector<string> const & files)
 	qApp->exec();
 
 	// FIXME
-	delete lyxsocket;
-	delete lyxserver;
-	lyxserver = 0;
+	cleanup();
 }
 
 
@@ -266,18 +269,16 @@ void sync_events()
 }
 
 
-void exit()
+void exit(int status)
 {
-	delete lyxsocket;
-	delete lyxserver;
-	lyxserver = 0;
+	cleanup();
 
-	// we cannot call qApp->exit(0) - that could return us
+	// we cannot call QApplication::exit(status) - that could return us
 	// into a static dialog return in the lyx code (for example,
 	// load autosave file QMessageBox. We have to just get the hell
 	// out.
 
-	::exit(0);
+	::exit(status);
 }
 
 

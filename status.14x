@@ -127,6 +127,9 @@ What's new
 
 - Fix crash when there is a syntax error in a keyboard map file (bug 2604).
 
+- Fix crash on exit on MacOS X, and the well known "Mutex destroy failure"
+  error message on linux (qt frontend, bugs 2549 and 1029).
+
 * Configuration/Installation:
 
 - Replace the old sh version of lib/configure with the new python version

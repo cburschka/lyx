@@ -216,7 +216,7 @@ void QuitLyX(bool noask)
 		Alert::warning(_("Unable to remove temporary directory"), msg);
 	}
 
-	lyx_gui::exit();
+	lyx_gui::exit(0);
 }
 
 
