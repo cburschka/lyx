@@ -546,8 +546,11 @@ conf = Configure(env,
     'CheckBoostLibraries' : utils.checkBoostLibraries,
     'CheckCommand' : utils.checkCommand,
     'CheckCXXGlobalCstd' : utils.checkCXXGlobalCstd,
+    'CheckLC_MESSAGES' : utils.checkLC_MESSAGES,
+    'CheckIconvConst' : utils.checkIconvConst,
   }
 )
+
 
 # pkg-config? (if not, we use hard-coded options)
 if not fast_start:
@@ -689,10 +692,6 @@ if not fast_start:
       # we do not need to set LIBPATH now.
       env['INCLUDED_GETTEXT'] = True
       env['INTL_LIBS'] = ['included_intl']
-    if platform_name == 'win32' and not use_vc:
-      # for functions AddFontResouceA, RemoveFontResourceA
-      # if use_vc, gdi32 will be added anyway later
-      env['INTL_LIBS'].append('gdi32')
   env_cache['INCLUDED_GETTEXT'] = env['INCLUDED_GETTEXT']
   env_cache['INTL_LIBS'] = env['INTL_LIBS']
 else:
@@ -873,18 +872,19 @@ int count()
     ('wcslen', 'HAVE_WCSLEN', None)
   ]
 
-  # HAVE_ASPRINTF
-  # HAVE_WPRINTF
-  # HAVE_SNPRINTF
-  # HAVE_POSIX_PRINTF
-  # HAVE_FCNTL
-  
   for func in functions:
     utils.addToConfig("/* Define to 1 if you have the `%s' function. */" % func[0], newline=1)
     if conf.CheckFunc(func[0], header=func[2]):
       utils.addToConfig('#define %s 1' % func[1])
     else:
       utils.addToConfig('/* #undef %s */' % func[1])
+
+
+  # HAVE_ASPRINTF
+  # HAVE_WPRINTF
+  # HAVE_SNPRINTF
+  # HAVE_POSIX_PRINTF
+  # HAVE_FCNTL
 
   env_functions = [
     ('asprintf', 'HAVE_ASPRINTF'),
@@ -919,7 +919,7 @@ int count()
   # HAVE_WINT_T
   # HAVE_INTTYPES_H_WITH_UINTMAX 
   # HAVE_STDINT_H_WITH_UINTMAX
-  
+
   types = [
     ('intmax_t', 'HAVE_INTMAX_T', None),
     ('long double', 'HAVE_LONG_DOUBLE', None),
@@ -942,12 +942,42 @@ int count()
   # FIXME: #include <windows.h> is the right way?
   if not conf.CheckType('pid_t', includes='#include <sys/types.h>'):
     utils.addToConfig('#define pid_t int')
-  
+
   # determine the use of std::tolower or tolower
   if conf.CheckCXXGlobalCstd():
     utils.addToConfig('#define CXX_GLOBAL_CSTD 1')
   else:
     utils.addToConfig('/* #undef CXX_GLOBAL_CSTD */')
+
+  # HAVE_LIBGDI32
+  # HAVE_ICONV
+  # HAVE_LIBC
+  libs = [
+    ('gdi32', 'HAVE_LIBGDI32'),
+    ('iconv', 'HAVE_ICONV'),
+    ('c', 'HAVE_LIBC')
+  ]
+  for lib in libs:
+    if conf.CheckLib(lib[0]):
+      utils.addToConfig('#define %s 1' % lib[1])
+      env[lib[1]] = True
+      env_cache[lib[1]] = env[lib[1]]
+    else:
+      utils.addToConfig('/* #undef %s */' % lib[1])
+      env[lib[1]] = False
+      env_cache[lib[1]] = env[lib[1]]
+
+  # HAVE_LC_MESSAGES
+  if conf.CheckLC_MESSAGES():
+    utils.addToConfig('#define HAVE_LC_MESSAGES 1')
+  else:
+    utils.addToConfig('/* #undef HAVE_LC_MESSAGES */')
+
+  # ICONV_CONST
+  if conf.CheckIconvConst():
+    utils.addToConfig('#define ICONV_CONST')
+  else:
+    utils.addToConfig('/* #undef ICONV_CONST */')
 
   # PACKAGE
   # PACKAGE_VERSION
@@ -1102,6 +1132,9 @@ else:
   env['HAVE_SNPRINTF'] = env_cache['HAVE_SNPRINTF']
   env['HAVE_POSIX_PRINTF'] = env_cache['HAVE_POSIX_PRINTF']
   env['HAVE_FCNTL'] = env_cache['HAVE_FCNTL']
+  env['HAVE_ICONV'] = env_cache['HAVE_ICONV']
+  env['HAVE_LIBGDI32'] = env_cache['HAVE_LIBGDI32']
+  env['HAVE_LIBC'] = env_cache['HAVE_LIBC']
 
 #
 # Finish auto-configuration
@@ -1142,11 +1175,16 @@ if platform_name in ['win32', 'cygwin']:
   # the final link step needs stdc++ to succeed under mingw
   # FIXME: shouldn't g++ automatically link to stdc++?
   if use_vc:
-    env['SYSTEM_LIBS'] = ['shlwapi', 'gdi32', 'shell32', 'advapi32', 'zdll']
+    env['SYSTEM_LIBS'] = ['shlwapi', 'shell32', 'advapi32', 'zdll']
   else:
     env['SYSTEM_LIBS'] = ['shlwapi', 'stdc++', 'z']
 else:
   env['SYSTEM_LIBS'] = ['z']
+
+if env['HAVE_ICONV']:
+  env['SYSTEM_LIBS'].append('iconv')
+if env['HAVE_LIBGDI32']:
+  env['SYSTEM_LIBS'].append('gdi32')
 
 #
 # Build parameters CPPPATH etc
@@ -1157,12 +1195,18 @@ else:
 env['CPPPATH'].remove(env['QT_INC_PATH'])
 env['CPPPATH'] += ['$TOP_SRC_DIR/boost', '$TOP_SRC_DIR/src']
 
-# TODO: add (more) appropriate compiling options (-DNDEBUG etc)
+# add appropriate compiling options (-DNDEBUG etc)
 # for debug/release mode
 if ARGUMENTS.get('mode', default_build_mode) == 'debug':
-  env.AppendUnique(CCFLAGS = [])
+  if use_vc:
+    env.AppendUnique(CCFLAGS = [])
+  else:
+    env.AppendUnique(CCFLAGS = ['-Wall', '-g'])
 else:
-  env.AppendUnique(CCFLAGS = [])
+  if use_vc:
+    env.AppendUnique(CCFLAGS = ['/O2'])
+  else:
+    env.AppendUnique(CCFLAGS = ['-Wall', '-O2'])
 
 #
 # Customized builders

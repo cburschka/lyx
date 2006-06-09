@@ -281,6 +281,48 @@ def checkCommand(conf, cmd):
   return res
 
 
+def checkLC_MESSAGES(conf):
+  ''' check the definition of LC_MESSAGES '''
+  check_LC_MESSAGES = '''
+#include <locale.h>
+int main()
+{
+  return LC_MESSAGES;
+}
+'''
+  conf.Message('Check for LC_MESSAGES in locale.h... ')
+  ret = conf.TryLink(check_LC_MESSAGES, '.c')
+  conf.Result(ret)
+  return ret
+
+
+# FIXME: not quite sure about this part.
+def checkIconvConst(conf):
+  ''' check the declaration of iconv '''
+  check_iconv_const = '''
+#include <stdlib.h>
+#include <iconv.h>
+extern
+#ifdef __cplusplus
+"C"
+#endif
+#if defined(__STDC__) || defined(__cplusplus)
+size_t iconv (iconv_t cd, char * *inbuf, size_t *inbytesleft, char * *outbuf, size_t *outbytesleft);
+#else
+size_t iconv();
+#endif
+extern size_t iconv(iconv_t cd, const char * *inbuf, size_t *inbytesleft, char * *outbuf, size_t *outbytesleft);
+int main()
+{
+  return 1;
+}
+'''
+  conf.Message('Check if the declaration of iconv needs const... ')
+  ret = conf.TryLink(check_iconv_const, '.c')
+  conf.Result(ret)
+  return ret
+
+
 def installCygwinLDScript(path):
   ''' Install i386pe.x-no-rdata '''
   ld_script = os.path.join(path, 'i386pe.x-no-rdata')
