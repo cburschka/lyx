@@ -80,6 +80,8 @@ public:
 	///
 	bool neverIndent() const { return true; }
 	///
+	bool noFontChange() const { return true; }
+	///
 	int latex(Buffer const &, std::ostream &,
 			OutputParams const &) const;
 	///
