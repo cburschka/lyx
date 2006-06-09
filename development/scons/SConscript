@@ -743,31 +743,31 @@ if 'install' in targets:
   #
   # executables (some of them may be none)
   #
-  if env['ADD_SUFFIX_TO_EXECUTABLES']:
-    program_suffix = env['PROGRAM_SUFFIX']
+  if env['ADD_SUFFIX']:
+    version_suffix = env['PROGRAM_SUFFIX']
   else:
-    program_suffix = ''
+    version_suffix = ''
   #
   # install lyx
-  target_name = os.path.split(str(lyx[0]))[1].replace('lyx', 'lyx%s' % program_suffix)
+  target_name = os.path.split(str(lyx[0]))[1].replace('lyx', 'lyx%s' % version_suffix)
   target = os.path.join(env['BIN_DEST_DIR'], target_name)
   env.InstallAs(target, lyx)
   Alias('install', target)
   # install lyx as lyx-qt3
-  target_name = os.path.split(str(lyx[0]))[1].replace('lyx', 'lyx-%s%s' % (frontend, program_suffix))
+  target_name = os.path.split(str(lyx[0]))[1].replace('lyx', 'lyx-%s%s' % (frontend, version_suffix))
   target = os.path.join(env['BIN_DEST_DIR'], target_name)
   env.InstallAs(target, lyx)
   Alias('install', target)
   #
   # install tex2lyx
-  target_name = os.path.split(str(tex2lyx[0]))[1].replace('tex2lyx', 'tex2lyx%s' % program_suffix)
+  target_name = os.path.split(str(tex2lyx[0]))[1].replace('tex2lyx', 'tex2lyx%s' % version_suffix)
   target = os.path.join(env['BIN_DEST_DIR'], target_name)
   env.InstallAs(target, tex2lyx)
   Alias('install', target)
   #
   # install lyxclient, may not exist
   if client != None:
-    target_name = os.path.split(str(client[0]))[1].replace('client', 'client%s' % program_suffix)
+    target_name = os.path.split(str(client[0]))[1].replace('client', 'client%s' % version_suffix)
     target = os.path.join(env['BIN_DEST_DIR'], target_name)
     env.InstallAs(target, client)
     Alias('install', target)
@@ -783,19 +783,19 @@ if 'install' in targets:
     '$TOP_SRC_DIR/lib/lyx2lyx/lyx2lyx_version.py.in')
   Alias('install', dirs)
   # man
-  env.InstallAs(os.path.join(env['MAN_DEST_DIR'], 'lyx' + env['PROGRAM_SUFFIX'] + '.1'),
+  env.InstallAs(os.path.join(env['MAN_DEST_DIR'], 'lyx' + version_suffix + '.1'),
     env.subst('$TOP_SRC_DIR/lyx.man'))
-  env.InstallAs(os.path.join(env['MAN_DEST_DIR'], 'tex2lyx' + env['PROGRAM_SUFFIX'] + '.1'),
+  env.InstallAs(os.path.join(env['MAN_DEST_DIR'], 'tex2lyx' + version_suffix + '.1'),
     env.subst('$TOP_SRC_DIR/src/tex2lyx/tex2lyx.man'))
-  env.InstallAs(os.path.join(env['MAN_DEST_DIR'], 'lyxclient' + env['PROGRAM_SUFFIX'] + '.1'),
+  env.InstallAs(os.path.join(env['MAN_DEST_DIR'], 'lyxclient' + version_suffix + '.1'),
     env.subst('$TOP_SRC_DIR/src/client/lyxclient.man'))
-  Alias('install', [os.path.join(env['MAN_DEST_DIR'], x + env['PROGRAM_SUFFIX'] + '.1') for
+  Alias('install', [os.path.join(env['MAN_DEST_DIR'], x + version_suffix + '.1') for
     x in ['lyx', 'tex2lyx', 'lyxclient']])
   # locale files?
   # ru.gmo ==> ru/LC_MESSAGES/lyxSUFFIX.mo
   for gmo in gmo_files:
     lan = os.path.split(str(gmo))[1].split('.')[0]
-    dest_file = os.path.join(env['LOCALE_DEST_DIR'], lan, 'LC_MESSAGES', 'lyx' + env['PROGRAM_SUFFIX'] + '.mo')
+    dest_file = os.path.join(env['LOCALE_DEST_DIR'], lan, 'LC_MESSAGES', 'lyx' + version_suffix + '.mo')
     env.InstallAs(dest_file, gmo)
     Alias('install', dest_file)
 

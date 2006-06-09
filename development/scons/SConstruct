@@ -134,7 +134,6 @@ if os.name == 'nt':
   # If not specified, boost tries to figure out by itself, but it may fail.
   boost_posix = False
   packaging_method = 'windows'
-  add_suffix_to_executables = False
   default_prefix = 'c:/program files/lyx'
   share_dir = 'Resources'
   man_dir = 'Resources/man/man1'
@@ -149,7 +148,6 @@ elif os.name == 'posix' and sys.platform != 'cygwin':
   default_with_x = True
   boost_posix = True
   packaging_method = 'posix'
-  add_suffix_to_executables = True
   default_prefix = '/usr/local/'
   share_dir = 'share/lyx'
   man_dir = 'man/man1'
@@ -164,7 +162,6 @@ elif os.name == 'posix' and sys.platform == 'cygwin':
   default_with_x = True
   boost_posix = True
   packaging_method = 'posix'
-  add_suffix_to_executables = True
   default_prefix = '/usr/local/'
   share_dir = 'share/lyx'
   man_dir = 'man/man1'
@@ -179,7 +176,6 @@ elif os.name == 'darwin':
   default_with_x = False
   boost_posix = True
   packaging_method = 'mac'
-  add_suffix_to_executables = True
   # FIXME: where to install?
   default_prefix = '/usr/local/'
   share_dir = 'Resources'
@@ -195,7 +191,6 @@ else:  # unsupported system
   default_with_x = True
   boost_posix = False
   packaging_method = 'posix'
-  add_suffix_to_executables = True
   default_prefix = '/usr/local/'
   share_dir = 'share/lyx'
   man_dir = 'man/man1'
@@ -395,8 +390,13 @@ if env.has_key('version_suffix'):
     env['PROGRAM_SUFFIX'] = env['version_suffix']
 else:
   env['PROGRAM_SUFFIX'] = ''
-env['ADD_SUFFIX_TO_EXECUTABLES'] = add_suffix_to_executables
-env['SHARE_DIR'] = os.path.join(env['PREFIX'], share_dir + env['PROGRAM_SUFFIX'])
+
+# whether or not add suffix to file and directory names
+env['ADD_SUFFIX'] = packaging_method != 'windows'
+if env['ADD_SUFFIX']:
+  env['SHARE_DIR'] = os.path.join(env['PREFIX'], share_dir + env['PROGRAM_SUFFIX'])
+else:  
+  env['SHARE_DIR'] = os.path.join(env['PREFIX'], share_dir)
 env['LOCALE_DIR'] = os.path.join(env['PREFIX'], locale_dir)
 #
 # if dest_dir is different from prefix.
@@ -405,7 +405,10 @@ if env.has_key('exec_prefix'):
   env['BIN_DEST_DIR'] = env['exec_prefix']
 else:
   env['BIN_DEST_DIR'] = os.path.join(env['DEST_DIR'], 'bin')
-env['SHARE_DEST_DIR'] = os.path.join(env['DEST_DIR'], share_dir + env['PROGRAM_SUFFIX'])
+if env['ADD_SUFFIX']:
+  env['SHARE_DEST_DIR'] = os.path.join(env['DEST_DIR'], share_dir + env['PROGRAM_SUFFIX'])
+else:
+  env['SHARE_DEST_DIR'] = os.path.join(env['DEST_DIR'], share_dir)
 env['MAN_DEST_DIR'] = os.path.join(env['DEST_DIR'], man_dir)
 env['LOCALE_DEST_DIR'] = os.path.join(env['DEST_DIR'], locale_dir)
 
