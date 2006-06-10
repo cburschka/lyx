@@ -15,7 +15,9 @@ from scons_utils import globSource
 Import('env')
 
 targets = env['BUILD_TARGETS']
-build_lyx = (targets == [] or 'lyx' in targets or 'install' in targets or 'all' in targets)
+# msvc need to pass full target name, so I have to look for path/lyx etc
+build_lyx = targets == [] or True in ['lyx' in x for x in targets] \
+  or 'install' in targets or 'all' in targets
 build_boost = env['INCLUDED_BOOST'] or 'boost' in targets
 build_intl = env['INCLUDED_GETTEXT'] or 'intl' in targets
 build_support = build_lyx or True in [x in targets for x in ['support', 'client', 'tex2lyx']]
@@ -24,8 +26,10 @@ build_insets = build_lyx or 'insets' in targets
 build_frontends = build_lyx or 'frontends' in targets
 build_graphics = build_lyx or 'graphics' in targets
 build_controllers = build_lyx or 'controllers' in targets
-build_client = 'client' in targets or 'install' in targets or 'all' in targets
-build_tex2lyx = 'tex2lyx' in targets or 'install' in targets or 'all' in targets
+build_client = True in ['client' in x for x in targets] \
+  or 'install' in targets or 'all' in targets
+build_tex2lyx = True in ['tex2lyx' in x for x in targets] \
+  or 'install' in targets or 'all' in targets
 build_lyxbase = build_lyx or 'lyxbase' in targets
 build_po = 'po' in targets or 'install' in targets or 'all' in targets
 build_qt3 = (build_lyx and env['frontend'] == 'qt3') or 'qt3' in targets
@@ -612,8 +616,21 @@ if build_lyx:
 
 
 if build_msvs_projects:
-  def build_project(target, dir, src_pattern = env['LYX_EXT'], include=[], 
-    resource=None, rebuild=True):
+  def build_project(target, dir, full_target = None, 
+    src_pattern = env['LYX_EXT'], include=[], resource=None, rebuild=True):
+    ''' build mavs project files 
+      target:      alias (correspond to directory name)
+      dir:         source directory or directories (a list)
+      full_target: full path/filename of the target
+      src_pattern: glob pattern
+      include:     files to include into source
+      resource:    directory or directories with resource (.ui) files
+      rebuild:     whether or not only rebuild this target
+
+    For non-debug-able targets like static libraries, target (alias) is 
+    enough to build the target. For executable targets, msvs need to know
+    the full path to start debug them.
+    '''
     if resource is not None:
       res = globSource(dir = env.subst('$TOP_SRC_DIR/'+resource), pattern = '*.ui', 
         build_dir = env.subst('$TOP_SRC_DIR/'+resource))
@@ -629,52 +646,74 @@ if build_msvs_projects:
       for d in dir:
         src.extend(globSource(dir = env.subst('$TOP_SRC_DIR/' + d), 
           pattern = src_pattern, include = include,
-          build_dir = boostenv.subst('$TOP_SRC_DIR/' + d) ))
+          build_dir = env.subst('$TOP_SRC_DIR/' + d) ))
         inc.extend(globSource(dir = env.subst('$TOP_SRC_DIR/' + d), 
           pattern = '*.h', 
           build_dir = env.subst('$TOP_SRC_DIR/' + d) ))
     else:
       src = globSource(dir = env.subst('$TOP_SRC_DIR/' + dir), 
         pattern = src_pattern, include = include,
-        build_dir = boostenv.subst('$TOP_SRC_DIR/' + dir) )
+        build_dir = env.subst('$TOP_SRC_DIR/' + dir) )
       inc = globSource(dir = env.subst('$TOP_SRC_DIR/' + dir), 
         pattern = '*.h', 
         build_dir = env.subst('$TOP_SRC_DIR/' + dir) )
+    if full_target is None:
+      build_target = target
+    else:
+      build_target = full_target
     # project
-    proj = boostenv.MSVSProject(
+    proj = env.MSVSProject(
       target = '$MSVSPATH/' + target + env['MSVSPROJECTSUFFIX'],
       srcs = src,
-      incs = [boostenv.subst('$TOP_SRC_DIR/src/config.h')],
+      incs = [env.subst('$TOP_SRC_DIR/src/config.h')],
       localincs = inc,
       resources = res,
-      buildtarget = target,
+      buildtarget = build_target,
       cmdargs = cmds,
-      variant = 'Release'
+      variant = 'Debug'
     )
     Alias('msvs_projects', proj)
+  #
   build_project('boost', ['boost/libs/filesystem/src',
     'boost/libs/regex/src', 'boost/libs/signals/src',
     'boost/libs/iostreams/src'], src_pattern = '*.cpp')
+  #
   build_project('intl', 'intl', src_pattern = '*.c')
+  #
   build_project('support', 'src/support', include=['package.C.in'])
+  #
   build_project('mathed', 'src/mathed')
+  #
   build_project('insets', 'src/insets')
+  #
   build_project('frontends', 'src/frontends')
+  #
   build_project('graphics', 'src/graphics')
+  #
   build_project('controllers', 'src/frontends/controllers')
+  #
   build_project('qt3', 'src/frontends/qt3', resource = 'src/frontends/qt3/ui')
+  #
   build_project('qt4', 'src/frontends/qt4', resource = 'src/frontends/qt4/ui')
-  build_project('client', 'src/client', rebuild=False)
-  build_project('tex2lyx', 'src/tex2lyx', rebuild=False)
+  #
+  build_project('client', 'src/client', rebuild=False, 
+    full_target = File(env.subst('$BUILDDIR/common/client/lyxclient$PROGSUFFIX')).abspath)
+  #
+  build_project('tex2lyx', 'src/tex2lyx', rebuild=False,
+    full_target = File(env.subst('$BUILDDIR/common/tex2lyx/tex2lyx$PROGSUFFIX')).abspath)
+  #
   build_project('lyxbase', 'src')
+  #
   if frontend == 'qt3':
     build_project('lyx', ['src', 'src/support', 'src/mathed', 'src/insets',
       'src/frontends', 'src/graphics', 'src/frontends/controllers', 
-      'src/frontends/qt3'], resource = 'src/frontends/qt3/ui')
+      'src/frontends/qt3'], resource = 'src/frontends/qt3/ui',
+      full_target = File(env.subst('$BUILDDIR/$frontend/lyx$PROGSUFFIX')).abspath)
   else:
     build_project('lyx', ['src', 'src/support', 'src/mathed', 'src/insets',
       'src/frontends', 'src/graphics', 'src/frontends/controllers', 
-      'src/frontends/qt4'], resource = 'src/frontends/qt4/ui')
+      'src/frontends/qt4'], resource = 'src/frontends/qt4/ui',
+      full_target = File(env.subst('$BUILDDIR/$frontend/lyx$PROGSUFFIX')).abspath)
 
 
 if build_po:

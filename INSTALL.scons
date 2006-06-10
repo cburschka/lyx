@@ -42,7 +42,7 @@ Prerequisites:
   in the near future.
  
 * Other libraries:
-  These include zlib (required), qt3 or qt4 (required), gettext 
+  These include zlib (required), qt3 or qt4 (required), gettext
   (optional), boost (optional), aspell (optional) and Aiksaurus 
   (optional). Please refer to the system-specific sections regarding the 
   availability and installation of them.
@@ -87,6 +87,7 @@ Components to use/build:
   * nls=yes/no whether or not enable natural language support.
   * spell=aspell/pspell/ispell/auto: spell engine
 
+
 Paths: Most of them will be probed if not specified.
 
   * qt_dir: top level directory of qt (with subdirectory include, lib)
@@ -96,6 +97,7 @@ Paths: Most of them will be probed if not specified.
     $qt_dir/include
   * extra_inc_path, extra_inc_path1, extra_lib_path, extra_lib_path1:
     additional paths to other libraries
+  * extra_bin_path: a convenient way to add an extra path to $PATH
 
 
 Convenience options:
@@ -140,6 +142,18 @@ You can specify one or more of the following targets:
   Misc:
     msvs_projects
 
+Your built targets are put into $build_dir, which is debug (mode=debug),
+release (mode=release) or any name specified via build_dir=name. The
+directory structure is:
+  $build_dir
+    - common: most of the intermediate files, mostly object files
+    - libs: all static libraries
+    - qt3/qt4: lyx built with the frontend
+    - executables: lyxclient, tex2lyx, lyx 
+
+ MSVS projects will be put to development/scons (and you should invoke
+ scons from there for this target).
+
 
 A typical working sequence:
 ---------------------------
@@ -169,27 +183,53 @@ problems.
 
 
 3. Windows/mingw
-=======================
+================
 
   * install mingw with the following packages:
-    - FIXME
-  
+    FIXME: we only need gcc/g++ and win32 api.
+      binutils-2.16.91-...tar.gz
+      gcc-core-3.4.5-...tar.gz
+      gcc-g++-3.4.5-...tar.gz
+      mingw-runtime-3.9.tar.gz
+      mingw-utils-0.3.tar.gz
+      MSYS-1.0.11-...exe
+      msysDTK-1.0.1.exe
+      msys-libtool-1.5.tar.bz2
+      w32api-3.6.tar.g 
+
   * install the latest Qt official "open source" binary package for
     Windows/Mingw
 
-  * install iconv: latest gnuwin32 package installed in mingw tree 
-    (or elsewhere)
+  * install iconv (libiconv): 
+    Download the windows binary (libiconv-x.x.x.bin.woe32.zip) of iconv
+    from one of the GNU mirrors listed in http://www.gnu.org/prep/ftp.html.
 
-  * install mingw/zlib: ditto
+    You may also try gnuwin32/libiconv from 
+    http://gnuwin32.sourceforge.net/packages/libiconv.htm
+
+  * install gettext (libintl):
+    Download the windows binary (gettext-runtime-x.x.x.bin.woe32.zip and
+    gettext-tools-x.x.x.bin.woe32.zip) from one of the GNU mirrors 
+    (e.g. http://mirrors.usc.edu/pub/gnu/gettext/) and decompress.
+    
+    You may also try gnuwin32/libintl from
+    http://gnuwin32.sourceforge.net/packages/libintl.htm
+
+  * install mingw/zlib:
+    Download zlib binaries and developer files (zlib-1.2.3-bin.zip and 
+    zlib-1.2.3-lib.zip) from http://gnuwin32.sourceforge.net/packages/zlib.htm .
 
   * aspell: this is difficult. Everybody has his own compiled library.
     Mine is in D:\program\Aspell-0.60.4.
 
   * Open a mingw xterm, and start scons as usual.
 
+Note: gettext, iconv and zlib are usually decompressed to c:/mingw so no 
+extra_inc_path etc is needed.
+
 
 4. Windows/cygwin
-=======================
+=================
 
 LyX should be easy to compile, but the qt3 library in the cygwin
 distribution does not work with the current cygwin dll (version 1.5.19-4
@@ -203,7 +243,7 @@ To build lyx for cygwin, you should
     packages and all other packages pulled in by dependencies:
 
     aspell        grep       libintl1       qt3-bin      tar
-    coreutils     jbigkit    libintl2       qt3-devel
+    coreutils     jbigkit    libintl2       qt3-devel    libiconv
     diffutils     jpeg       libpng         python
     gettext       libintl    libpng2        sed
 
@@ -211,7 +251,7 @@ To build lyx for cygwin, you should
 
 
 5. Windows/msvc
-=====================
+===============
 
 To build lyx with msvc, you should 
 
@@ -220,7 +260,12 @@ To build lyx with msvc, you should
     freely available from microsoft.
 
   * get windows platform SDK
-    Please follow the link in the MSVC webpage to download and configure
+    Please follow the link in the MSVC webpage to download and configure.
+    It is important that you add SDK paths to %INCLUDE% and %LIB% in, e.g.,
+    C:\Program Files\Microsoft Visual Studio 8\Common7\Tools\vsvars32.bat.
+    If you plan to use the MSVS IDE, you should also update the Visual C++ 
+    directories in VCProjectEngine.dll.express.config, as suggested in
+    http://msdn.microsoft.com/vstudio/express/visualc/usingpsdk/.
 
   * build qt4
     - download qt4 source from trolltech (not the binary version, which
@@ -229,6 +274,21 @@ To build lyx with msvc, you should
     - compile qt4 as instructed
 
   * download and install the official zlib library from www.zlib.org.
+
+  * install iconv (libiconv): 
+    Download the windows binary (libiconv-x.x.x.bin.woe32.zip) of iconv
+    from one of the GNU mirrors listed in http://www.gnu.org/prep/ftp.html.
+
+    You may also try gnuwin32/libiconv from 
+    http://gnuwin32.sourceforge.net/packages/libiconv.htm
+
+  * install gettext (libintl):
+    Download the windows binary (gettext-runtime-x.x.x.bin.woe32.zip and
+    gettext-tools-x.x.x.bin.woe32.zip) from one of the GNU mirrors 
+    (e.g. http://mirrors.usc.edu/pub/gnu/gettext/) and decompress.
+    
+    You may also try gnuwin32/libintl from
+    http://gnuwin32.sourceforge.net/packages/libintl.htm
 
   * set up other optional libraries like aspell (following mingw
     instructions)
@@ -242,9 +302,10 @@ To build lyx with msvc, you should
       - run 
         > scons [other options] msvs_projects
     Note that 
-      - the resulting project files will use scons to build lyx
-      - all command line options are used as usual (when msvs invoke
-        scons)
+      - The resulting project files will use scons to build lyx
+      - All command line options, including rebuild, can be used as usual 
+        (when msvs invoke scons).
+      - To use the msvc debugger, you have to use mode=debug (default).
 
 
 6. Troubleshooting

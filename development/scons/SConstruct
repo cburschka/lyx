@@ -269,6 +269,8 @@ opts.AddOptions(
   #
   PathOption('extra_lib_path', 'Extra library path', None),
   #
+  PathOption('extra_bin_path', 'A convenient way to add a path to $PATH', None),
+  #
   PathOption('extra_inc_path1', 'Extra include path', None),
   #
   PathOption('extra_lib_path1', 'Extra library path', None),
@@ -351,7 +353,7 @@ env_cache['arg_cache'] = ARGUMENTS
 # Setting up environment
 #---------------------------------------------------------
 
-# Note that I do not really like ENV=os.environ, but you may 
+# I do not really like ENV=os.environ, but you may 
 # add it here if you experience some environment related problem
 env = Environment(options = opts)
 
@@ -517,6 +519,10 @@ if env.has_key('extra_inc_path1') and env['extra_inc_path1']:
   env.AppendUnique(CPPPATH = [env['extra_inc_path1']])
 if env.has_key('extra_lib_path1') and env['extra_lib_path1']:
   env.AppendUnique(LIBPATH = [env['extra_lib_path1']])
+if env.has_key('extra_bin_path') and env['extra_bin_path']:
+  # maybe only one of them is needed
+  os.environ['PATH'] += os.pathsep + env['extra_bin_path']
+  env['ENV']['PATH'] += os.pathsep + env['extra_bin_path']
 if env.has_key('aikasurus_path') and env['aikasurus_path']:
   env.AppendUnique(LIBPATH = [env['aikasurus_path']])
 
@@ -1225,9 +1231,11 @@ env['CPPPATH'] += ['$TOP_SRC_DIR/boost', '$TOP_SRC_DIR/src']
 
 # add appropriate compiling options (-DNDEBUG etc)
 # for debug/release mode
+# /Zi: debug info
 if ARGUMENTS.get('mode', default_build_mode) == 'debug':
   if use_vc:
-    env.AppendUnique(CCFLAGS = [])
+    env.AppendUnique(CCFLAGS = ['/Zi'])
+    env.AppendUnique(LINKFLAGS = ['/debug', '/map'])
   else:
     env.AppendUnique(CCFLAGS = ['-Wall', '-g'])
 else:
