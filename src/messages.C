@@ -90,7 +90,10 @@ public:
 		: lang_(l)
 	{
 		if ( lang_.empty() ) {
-			char const * lc_msgs = setlocale(LC_MESSAGES, NULL);
+			char const * lc_msgs = 0;
+#ifdef HAVE_LC_MESSAGES
+			lc_msgs = setlocale(LC_MESSAGES, NULL);
+#endif
 			lang_ = lc_msgs ? lc_msgs : "";
 		}
 		// strip off any encoding suffix, i.e., assume 8-bit po files
@@ -117,8 +120,9 @@ public:
 					lang = "C";
 			}
 		}
-
+#ifdef HAVE_LC_MESSAGES
 		char const * lc_msgs = setlocale(LC_MESSAGES, lang_.c_str());
+#endif
 		// setlocale fails (returns NULL) if the corresponding locale
 		// is not installed.
 		// On windows (mingw) it always returns NULL.
@@ -164,7 +168,9 @@ public:
 		boost::smatch sub;
 		if (regex_match(translated, sub, reg))
 			translated = sub.str(1);
+#ifdef HAVE_LC_MESSAGES
 		setlocale(LC_MESSAGES, lang.c_str());
+#endif
 		setlocale(LC_CTYPE, oldCTYPE.c_str());
 		return translated;
 	}
