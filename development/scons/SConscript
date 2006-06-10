@@ -599,7 +599,7 @@ if build_lyx:
       'lyxbase_post',
       ] +
       env['BOOST_LIBRARIES'] +
-      env['EXTRA_LIBS'] +
+      env['FRONTEND_LIBS'] +
       env['INTL_LIBS'] + 
       env['SOCKET_LIBS'] +
       env['SYSTEM_LIBS']

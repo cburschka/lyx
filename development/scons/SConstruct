@@ -797,13 +797,12 @@ if not fast_start:
   ]
 
   for header in headers:
+    description = "Define to 1 if you have the <%s> header file." % header[0]
     if (header[2] == 'c' and conf.CheckCHeader(header[0])) or \
       (header[2] == 'cxx' and conf.CheckCXXHeader(header[0])):
-      utils.addToConfig('#define %s 1' % header[1],
-        desc="/* Define to 1 if you have the <%s> header file. */" % header[0])
+      utils.addToConfig('#define %s 1' % header[1], desc = description)
     else:
-      utils.addToConfig('/* #undef %s */' % header[1],
-        desc="/* Define to 1 if you have the <%s> header file. */" % header[0])
+      utils.addToConfig('/* #undef %s */' % header[1], desc = description)
 
   # HAVE_OPEN
   # HAVE_CLOSE
@@ -889,12 +888,11 @@ int count()
   ]
 
   for func in functions:
+    description = "Define to 1 if you have the `%s' function." % func[0]
     if conf.CheckFunc(func[0], header=func[2]):
-      utils.addToConfig('#define %s 1' % func[1],
-        desc = "/* Define to 1 if you have the `%s' function. */" % func[0])
+      utils.addToConfig('#define %s 1' % func[1], desc = description)
     else:
-      utils.addToConfig('/* #undef %s */' % func[1],
-        desc = "/* Define to 1 if you have the `%s' function. */" % func[0])
+      utils.addToConfig('/* #undef %s */' % func[1], desc = description)
 
 
   # HAVE_ASPRINTF
@@ -912,24 +910,22 @@ int count()
   ]
 
   for func in env_functions:
+    description = "Define to 1 if you have the `%s' function." % func[0]
     if conf.CheckFunc(func[0]):
-      utils.addToConfig('#define %s 1' % func[1],
-        desc = "/* Define to 1 if you have the `%s' function. */" % func[0])
+      utils.addToConfig('#define %s 1' % func[1], desc = description)
       env[func[1]] = 1
     else:
-      utils.addToConfig('/* #undef %s */' % func[1],
-        desc = "/* Define to 1 if you have the `%s' function. */" % func[0])
+      utils.addToConfig('/* #undef %s */' % func[1], desc = description)
       env[func[1]] = 0
 
   # HAVE_INTMAX_T
   # HAVE_DECL_ISTREAMBUF_ITERATOR
+  description = "Define to 1 if you have the `intmax_t' type."
   if conf.CheckType('intmax_t', includes='#include <stdint.h>') or \
     conf.CheckType('intmax_t', includes='#include <inttypes.h>'):
-    utils.addToConfig('#define HAVE_INTMAX_T 1',
-      desc = "/* Define to 1 if you have the `intmax_t' type. */")
+    utils.addToConfig('#define HAVE_INTMAX_T 1', desc = description)
   else:
-    utils.addToConfig('/* #undef HAVE_INTMAX_T */',
-      desc = "/* Define to 1 if you have the `intmax_t' type. */")
+    utils.addToConfig('/* #undef HAVE_INTMAX_T */',desc = description)
 
   # HAVE_INTMAX_T
   # HAVE_LONG_DOUBLE
@@ -951,53 +947,56 @@ int count()
       '#include <streambuf>\n#include <istream>')
   ]
   for t in types: 
+    description = "Define to 1 if you have the `%s' type." % t[0]
     if conf.CheckType(t[0], includes=t[2]):
-      utils.addToConfig('#define %s 1' % t[1],
-        desc = "/* Define to 1 if you have the `%s' type. */" % t[0])
+      utils.addToConfig('#define %s 1' % t[1], desc = description)
     else:
-      utils.addToConfig('/* #undef %s */' % t[1],
-        desc = "/* Define to 1 if you have the `%s' type. */" % t[0])
+      utils.addToConfig('/* #undef %s */' % t[1],  desc = description)
 
   # windows/msvc sys/types.h does not have pid_t
   # FIXME: #include <windows.h> is the right way?
   if not conf.CheckType('pid_t', includes='#include <sys/types.h>'):
-    utils.addToConfig('#define pid_t int')
+    utils.addToConfig('#define pid_t int', desc = 'Define is sys/types.h does not have pid_t')
 
   # determine the use of std::tolower or tolower
+  description = 'Define if your C++ compiler puts C library functions in the global namespace'
   if conf.CheckCXXGlobalCstd():
-    utils.addToConfig('#define CXX_GLOBAL_CSTD 1')
+    utils.addToConfig('#define CXX_GLOBAL_CSTD 1', desc = description)
   else:
-    utils.addToConfig('/* #undef CXX_GLOBAL_CSTD */')
+    utils.addToConfig('/* #undef CXX_GLOBAL_CSTD */', desc = description)
 
   # HAVE_LIBGDI32
   # HAVE_ICONV
   # HAVE_LIBC
+  # HAVE_LIBAIKSAURUS
   libs = [
     ('gdi32', 'HAVE_LIBGDI32'),
     ('iconv', 'HAVE_ICONV'),
-    ('c', 'HAVE_LIBC')
+    ('c', 'HAVE_LIBC'),
+    ('Aiksaurus', 'HAVE_LIBAIKSAURUS'),
   ]
   for lib in libs:
+    description = "Define to 1 if you have the `%s' library (-l%s)." % (lib[0], lib[0])
     if conf.CheckLib(lib[0]):
-      utils.addToConfig('#define %s 1' % lib[1])
+      utils.addToConfig('#define %s 1' % lib[1], desc = description)
       env[lib[1]] = True
-      env_cache[lib[1]] = env[lib[1]]
     else:
-      utils.addToConfig('/* #undef %s */' % lib[1])
+      utils.addToConfig('/* #undef %s */' % lib[1], desc = description)
       env[lib[1]] = False
-      env_cache[lib[1]] = env[lib[1]]
 
   # HAVE_LC_MESSAGES
+  description = 'Define if your <locale.h> file defines LC_MESSAGES.'
   if conf.CheckLC_MESSAGES():
-    utils.addToConfig('#define HAVE_LC_MESSAGES 1')
+    utils.addToConfig('#define HAVE_LC_MESSAGES 1', desc = description)
   else:
-    utils.addToConfig('/* #undef HAVE_LC_MESSAGES */')
+    utils.addToConfig('/* #undef HAVE_LC_MESSAGES */', desc = description)
 
   # ICONV_CONST
+  description = 'Define as const if the declaration of iconv() needs const.'
   if conf.CheckIconvConst():
-    utils.addToConfig('#define ICONV_CONST')
+    utils.addToConfig('#define ICONV_CONST', desc = description)
   else:
-    utils.addToConfig('/* #undef ICONV_CONST */')
+    utils.addToConfig('/* #undef ICONV_CONST */', desc = description)
 
   # PACKAGE
   # PACKAGE_VERSION
@@ -1006,22 +1005,22 @@ int count()
   # PACKAGE_STRING
   # DEVEL_VERSION
   utils.addToConfig('#define PACKAGE "%s%s"' % (PACKAGE, env['PROGRAM_SUFFIX']),
-    desc = "/* Name of package */")
+    desc = "Name of package")
 
   utils.addToConfig('#define PACKAGE_BUGREPORT "%s"' % PACKAGE_BUGREPORT,
-    desc = '/* Define to the address where bug reports for this package should be sent. */')
+    desc = 'Define to the address where bug reports for this package should be sent.')
 
   utils.addToConfig('#define PACKAGE_NAME "%s"' % PACKAGE_NAME,
-      desc = '/* Define to the full name of this package. */')
+      desc = 'Define to the full name of this package.')
 
   utils.addToConfig('#define PACKAGE_STRING "%s"' % PACKAGE_STRING,
-      desc = "/* Define to the full name and version of this package. */")
+      desc = "Define to the full name and version of this package.")
 
   utils.addToConfig('#define PACKAGE_TARNAME "%s"' % PACKAGE_TARNAME,
-      desc = "/* Define to the one symbol short name of this package. */")
+      desc = "Define to the one symbol short name of this package.")
 
   utils.addToConfig('#define PACKAGE_VERSION "%s"' % PACKAGE_VERSION,
-    desc = "/* Define to the version of this package. */")
+    desc = "Define to the version of this package.")
 
   if DEVEL_VERSION:
     utils.addToConfig('#define DEVEL_VERSION 1')
@@ -1033,18 +1032,18 @@ int count()
 
   # items are (ENV, ARGUMENTS)
   values = [
-    ('ENABLE_ASSERTIONS', 'assertions'),
-    ('ENABLE_NLS', 'nls'),
-    ('WITH_WARNINGS', 'warnings'),
-    ('_GLIBCXX_CONCEPT_CHECKS', 'concept_checks'),
+    ('ENABLE_ASSERTIONS', 'assertions', 'Define if you want assertions to be enabled in the code'),
+    ('ENABLE_NLS', 'nls', "Define to 1 if translation of program messages to the user's native anguage is requested."),
+    ('WITH_WARNINGS', 'warnings', 'Define this if you want to see the warning directives put here and there by the developpers to get attention'),
+    ('_GLIBCXX_CONCEPT_CHECKS', 'concept_checks', 'libstdc++ concept checking'),
   ]
 
   for val in values:
     if (env.has_key(val[0]) and env[val[0]]) or \
        (env.has_key(val[1]) and env[val[1]]):
-      utils.addToConfig('#define %s 1' % val[0])
+      utils.addToConfig('#define %s 1' % val[0], desc = val[2])
     else:
-      utils.addToConfig('/* #undef %s */' % val[0])
+      utils.addToConfig('/* #undef %s */' % val[0], desc = val[2])
 
   # disable automatic linking of boost libraries.
   # This is an interesting feature that is supposed to be useful under
@@ -1052,18 +1051,13 @@ int count()
   # I disable it for now.
   utils.addToConfig('#define BOOST_ALL_NO_LIB 1')
 
-  env['EXTRA_LIBS'] = []
-  # HAVE_LIBAIKSAURUS
   # AIKSAURUS_H_LOCATION
-  if conf.CheckLib('Aiksaurus'):
-    utils.addToConfig("#define HAVE_LIBAIKSAURUS 1")
-    if (conf.CheckCXXHeader("Aiksaurus.h")):
-      utils.addToConfig("#define AIKSAURUS_H_LOCATION <Aiksaurus.h>")
-    elif (conf.CheckCXXHeader("Aiksaurus/Aiksaurus.h")):
-      utils.addToConfig("#define AIKSAURUS_H_LOCATION <Aiksaurus/Aiksaurus.h>")
-    else:
-      utils.addToConfig("#define AIKSAURUS_H_LOCATION")
-    env['EXTRA_LIBS'].append('Aiksaurus')
+  if (conf.CheckCXXHeader("Aiksaurus.h")):
+    utils.addToConfig("#define AIKSAURUS_H_LOCATION <Aiksaurus.h>")
+  elif (conf.CheckCXXHeader("Aiksaurus/Aiksaurus.h")):
+    utils.addToConfig("#define AIKSAURUS_H_LOCATION <Aiksaurus/Aiksaurus.h>")
+  else:
+    utils.addToConfig("#define AIKSAURUS_H_LOCATION")
 
   # USE_ASPELL
   # USE_PSPELL
@@ -1074,27 +1068,24 @@ int count()
   spell_detected = False
   if spell_engine in ['auto', 'aspell'] and \
     conf.CheckLib('aspell'):
-    utils.addToConfig('#define USE_ASPELL 1')
+    utils.addToConfig('#define USE_ASPELL 1', desc = 'Define as 1 to use the aspell library')
     env['USE_ASPELL'] = True
     env['USE_PSPELL'] = False
     env['USE_ISPELL'] = False
-    env['EXTRA_LIBS'].append('aspell')
     spell_detected = True
   elif spell_engine in ['auto', 'pspell'] and \
     conf.CheckLib('pspell'):
-    utils.addToConfig('#define USE_PSPELL 1')
+    utils.addToConfig('#define USE_PSPELL 1', desc = 'Define as 1 to use the pspell library')
     env['USE_ASPELL'] = False
     env['USE_PSPELL'] = True
     env['USE_ISPELL'] = False
-    env['EXTRA_LIBS'].append('pspell')
     spell_detected = True
   elif spell_engine in ['auto', 'ispell'] and \
     conf.CheckLib('ispell'):
-    utils.addToConfig('#define USE_ISPELL 1')
+    utils.addToConfig('#define USE_ISPELL 1', desc = 'Define as 1 to use the ispell library')
     env['USE_ASPELL'] = False
     env['USE_PSPELL'] = False
     env['USE_ISPELL'] = True
-    env['EXTRA_LIBS'].append('ispell')
     spell_detected = True
 
   if not spell_detected:
@@ -1124,36 +1115,32 @@ int count()
     utils.addToConfig('/* #undef BOOST_POSIX */')
 
   # MKDIR_TAKES_ONE_ARG
+  description = 'Define if mkdir takes only one argument.'
   if conf.CheckMkdirOneArg():
-    utils.addToConfig('#define MKDIR_TAKES_ONE_ARG 1')
+    utils.addToConfig('#define MKDIR_TAKES_ONE_ARG 1', desc = description)
   else:
-    utils.addToConfig('/* #undef MKDIR_TAKES_ONE_ARG */')
+    utils.addToConfig('/* #undef MKDIR_TAKES_ONE_ARG */', desc = description)
 
   # SELECT_TYPE_ARG1
   # SELECT_TYPE_ARG234
   # SELECT_TYPE_ARG5
   (arg1, arg234, arg5) = conf.CheckSelectArgType()
-  utils.addToConfig('#define SELECT_TYPE_ARG1 %s' % arg1)
-  utils.addToConfig('#define SELECT_TYPE_ARG234 %s' % arg234)
-  utils.addToConfig('#define SELECT_TYPE_ARG5 %s' % arg5)
+  utils.addToConfig('#define SELECT_TYPE_ARG1 %s' % arg1,
+    desc = "Define to the type of arg 1 for `select'.")
+  utils.addToConfig('#define SELECT_TYPE_ARG234 %s' % arg234,
+    desc = "Define to the type of arg 2, 3, 4 for `select'.")
+  utils.addToConfig('#define SELECT_TYPE_ARG5 %s' % arg5,
+    desc = "Define to the type of arg 5 for `select'.")
 
   # mkstemp
   # USE_BOOST_FORMAT
   # WANT_GETFILEATTRIBUTESEX_WRAPPER
   utils.endConfigH(TOP_SRC_DIR)
 
-  # env['EXTRA_LIBS'] will be modified later, so a unique copy is needed
-  # NOTE that we do *not* save qt_libs in environment.
-  env_cache['EXTRA_LIBS'] = copy.copy(env['EXTRA_LIBS'])
-  env_cache['USE_ASPELL'] = env['USE_ASPELL']
-  env_cache['USE_PSPELL'] = env['USE_PSPELL']
-  env_cache['USE_ISPELL'] = env['USE_ISPELL']
-  env_cache['HAVE_ASPRINTF'] = env['HAVE_ASPRINTF']
-  env_cache['HAVE_WPRINTF'] = env['HAVE_WPRINTF']
-  env_cache['HAVE_SNPRINTF'] = env['HAVE_SNPRINTF']
-  env_cache['HAVE_POSIX_PRINTF'] = env['HAVE_POSIX_PRINTF']
-  env_cache['HAVE_FCNTL'] = env['HAVE_FCNTL']
-
+  for key in ['USE_ASPELL', 'USE_PSPELL', 'USE_ISPELL', 'HAVE_ASPRINTF', \
+    'HAVE_WPRINTF', 'HAVE_SNPRINTF', 'HAVE_POSIX_PRINTF', 'HAVE_FCNTL', \
+    'HAVE_ICONV', 'HAVE_LIBGDI32', 'HAVE_LIBC', 'HAVE_LIBAIKSAURUS']:
+    env_cache[key] = env[key]
 else:
   #
   # this comes as a big surprise, without this line 
@@ -1162,18 +1149,11 @@ else:
   # Note that the exact header file to check does not matter
   conf.CheckCHeader('io.h')
   # only a few variables need to be rescanned
-  env['EXTRA_LIBS'] = copy.copy(env_cache['EXTRA_LIBS'])
-  env['USE_ASPELL'] = env_cache['USE_ASPELL']
-  env['USE_PSPELL'] = env_cache['USE_PSPELL']
-  env['USE_ISPELL'] = env_cache['USE_ISPELL']
-  env['HAVE_ASPRINTF'] = env_cache['HAVE_ASPRINTF']
-  env['HAVE_WPRINTF'] = env_cache['HAVE_WPRINTF']
-  env['HAVE_SNPRINTF'] = env_cache['HAVE_SNPRINTF']
-  env['HAVE_POSIX_PRINTF'] = env_cache['HAVE_POSIX_PRINTF']
-  env['HAVE_FCNTL'] = env_cache['HAVE_FCNTL']
-  env['HAVE_ICONV'] = env_cache['HAVE_ICONV']
-  env['HAVE_LIBGDI32'] = env_cache['HAVE_LIBGDI32']
-  env['HAVE_LIBC'] = env_cache['HAVE_LIBC']
+  for key in ['USE_ASPELL', 'USE_PSPELL', 'USE_ISPELL', 'HAVE_ASPRINTF', \
+    'HAVE_WPRINTF', 'HAVE_SNPRINTF', 'HAVE_POSIX_PRINTF', 'HAVE_FCNTL', \
+    'HAVE_ICONV', 'HAVE_LIBGDI32', 'HAVE_LIBC', 'HAVE_LIBAIKSAURUS']:
+    env[key] = env_cache[key]
+
 
 #
 # Finish auto-configuration
@@ -1184,7 +1164,7 @@ env = conf.Finish()
 #----------------------------------------------------------
 
 #
-# QT_LIB etc (EXTRA_LIBS holds lib for each frontend)
+# QT_LIB
 #
 # NOTE: Tool('qt') or Tool('qt4') will be loaded later
 # in their respective directory and specialized env.
@@ -1192,18 +1172,15 @@ try:
   if frontend == 'qt3':
     # note: env.Tool('qt') my set QT_LIB to qt
     env['QT_LIB'] = 'qt-mt'
-    env['EXTRA_LIBS'].append('qt-mt')
+    env['FRONTEND_LIBS'] = ['qt-mt']
     if platform_name == 'cygwin' and use_X11:
-      env['EXTRA_LIBS'].extend(['GL',  'Xmu', 'Xi', 'Xrender', 'Xrandr', 'Xcursor',
-        'Xft', 'freetype', 'fontconfig', 'Xext', 'X11', 'SM', 'ICE', 'resolv',
-        'pthread'])
       env.AppendUnique(LIBPATH = ['/usr/X11R6/lib'])
   elif frontend == 'qt4':
     if platform_name == "win32":
       env['QT_LIB'] = ['QtCore4', 'QtGui4']
     else:
       env['QT_LIB'] = ['QtCore', 'QtGui']
-    env['EXTRA_LIBS'] += env['QT_LIB']
+    env['FRONTEND_LIBS'] = env['QT_LIB']
 except:
   print "Can not locate qt tools"
   print "What I get is "
@@ -1217,13 +1194,25 @@ if platform_name in ['win32', 'cygwin']:
     env['SYSTEM_LIBS'] = ['shlwapi', 'shell32', 'advapi32', 'zdll']
   else:
     env['SYSTEM_LIBS'] = ['shlwapi', 'stdc++', 'z']
+elif platform_name == 'cygwin' and use_X11:
+  env['SYSTEM_LIBS'] = ['GL',  'Xmu', 'Xi', 'Xrender', 'Xrandr', 'Xcursor',
+    'Xft', 'freetype', 'fontconfig', 'Xext', 'X11', 'SM', 'ICE', 'resolv',
+    'pthread', 'z']
 else:
   env['SYSTEM_LIBS'] = ['z']
 
-if env['HAVE_ICONV']:
-  env['SYSTEM_LIBS'].append('iconv')
-if env['HAVE_LIBGDI32']:
-  env['SYSTEM_LIBS'].append('gdi32')
+libs = [
+  ('HAVE_ICONV', 'iconv'),
+  ('HAVE_LIBGDI32', 'gdi32'),
+  ('HAVE_LIBAIKSAURUS', 'Aiksaurus'),
+  ('USE_ASPELL', 'aspell'),
+  ('USE_ISPELL', 'ispell'),
+  ('USE_PSPELL', 'pspell'),
+]
+
+for lib in libs:
+  if env[lib[0]]:
+    env['SYSTEM_LIBS'].append(lib[1])
 
 #
 # Build parameters CPPPATH etc
@@ -1293,7 +1282,7 @@ Build info:
   Local library directory:        %s
   Libraries pathes:               %s
   Boost libraries:                %s
-  Extra libraries:                %s
+  Frontend libraries:             %s
   System libraries:               %s
   include search path:            %s
 Frontend:
@@ -1310,7 +1299,7 @@ Frontend:
   env.subst('$LINKFLAGS'), env.subst('$LINKFLAGS'),
   env.subst('$BUILDDIR'), env.subst('$LOCALLIBPATH'),
   str(env['LIBPATH']), str(env['BOOST_LIBRARIES']),
-  str(env['EXTRA_LIBS']), str(env['SYSTEM_LIBS']), str(env['CPPPATH']),
+  str(env['FRONTEND_LIBS']), str(env['SYSTEM_LIBS']), str(env['CPPPATH']),
   env['frontend'], packaging_method,
   env['PREFIX'], env['BIN_DEST_DIR'], env['SHARE_DIR'])
 
