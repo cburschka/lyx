@@ -286,8 +286,8 @@ opts.AddOptions(
   PathOption('exec_prefix', 'install architecture-independent executable files in PREFIX', None),
   # log file
   ('logfile', 'save commands (not outputs) to logfile', default_log_file),
-  # Path to aikasurus
-  PathOption('aikasurus_path', 'Path to aikasurus library', None),
+  # Path to aiksaurus
+  PathOption('aiksaurus_path', 'Path to aiksaurus library', None),
   # environment variable can be set as options. (DO NOT set defaults)
   ('CC', '$CC', None),
   ('LINK', '$LINK', None),
@@ -523,8 +523,8 @@ if env.has_key('extra_bin_path') and env['extra_bin_path']:
   # maybe only one of them is needed
   os.environ['PATH'] += os.pathsep + env['extra_bin_path']
   env['ENV']['PATH'] += os.pathsep + env['extra_bin_path']
-if env.has_key('aikasurus_path') and env['aikasurus_path']:
-  env.AppendUnique(LIBPATH = [env['aikasurus_path']])
+if env.has_key('aiksaurus_path') and env['aiksaurus_path']:
+  env.AppendUnique(LIBPATH = [env['aiksaurus_path']])
 
 
 # under windows, scons is confused by .C/.c and uses gcc instead of
@@ -654,12 +654,13 @@ if not fast_start:
   boost_opt = ARGUMENTS.get('boost', default_boost_opt)
   # check for system boost
   succ = False
+  boost_libpath = None
   if boost_opt in ['auto', 'system']:
-    pathes = env['LIBPATH'] + ['/usr/lib', '/usr/local/lib']
-    sig = conf.CheckBoostLibraries('boost_signals', pathes)
-    reg = conf.CheckBoostLibraries('boost_regex', pathes)
-    fil = conf.CheckBoostLibraries('boost_filesystem', pathes)
-    ios = conf.CheckBoostLibraries('boost_iostreams', pathes)
+    paths = env['LIBPATH'] + ['/usr/lib', '/usr/local/lib']
+    sig = conf.CheckBoostLibraries('boost_signals', paths)
+    reg = conf.CheckBoostLibraries('boost_regex', paths)
+    fil = conf.CheckBoostLibraries('boost_filesystem', paths)
+    ios = conf.CheckBoostLibraries('boost_iostreams', paths)
     # if any of them is not found
     if ('' in [sig[0], reg[0], fil[0], ios[0]]):
       if boost_opt == 'system':
@@ -670,6 +671,7 @@ if not fast_start:
     else:
       env['BOOST_LIBRARIES'] = [sig[1], reg[1], fil[1], ios[1]]
       # assume all boost libraries are in the same path...
+      boost_libpath = sig[0]
       env.AppendUnique(LIBPATH = [sig[0]])
       env['INCLUDED_BOOST'] = False
       succ = True
@@ -681,8 +683,11 @@ if not fast_start:
     env['INCLUDED_BOOST'] = True
   env_cache['BOOST_LIBRARIES'] = env['BOOST_LIBRARIES']
   env_cache['INCLUDED_BOOST'] = env['INCLUDED_BOOST']
+  env_cache['BOOST_LIBPATH'] = boost_libpath
 else:
   env['BOOST_LIBRARIES'] = env_cache['BOOST_LIBRARIES']
+  if env_cache['BOOST_LIBPATH'] is not None:
+    env.AppendUnique(LIBPATH = [env_cache['BOOST_LIBPATH']])
   env['INCLUDED_BOOST'] = env_cache['INCLUDED_BOOST']
 
 
@@ -1288,7 +1293,7 @@ env['VERSION_INFO'] = '''Configuration
 Build info:
   Builing directory:              %s
   Local library directory:        %s
-  Libraries pathes:               %s
+  Libraries paths:                %s
   Boost libraries:                %s
   Frontend libraries:             %s
   System libraries:               %s
