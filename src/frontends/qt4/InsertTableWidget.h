@@ -16,8 +16,6 @@
 #include "frontends/LyXView.h"
 #include <QWidget>
 
-class QSize;
-
 namespace lyx {
 namespace frontend {
 
@@ -39,9 +37,9 @@ public slots:
 	void updateParent();
 
 protected slots:
-	bool event(QEvent *);
 	void mouseMoveEvent(QMouseEvent *);
 	void mouseReleaseEvent(QMouseEvent *);
+	void mousePressEvent(QMouseEvent *);
 	void paintEvent(QPaintEvent *);
 	
 private:

@@ -16,7 +16,6 @@
 #include "FuncStatus.h"
 #include "funcrequest.h"
 #include "LyXView.h"
-#include "debug.h"
 
 #include "qt_helpers.h"
 
@@ -25,7 +24,6 @@
 #include <QString>
 #include <QToolTip>
 #include <QPainter>
-#include <QCoreApplication>
 
 
 namespace lyx {
@@ -75,13 +73,17 @@ void InsertTableWidget::mouseMoveEvent(QMouseEvent * event)
 	// do this ourselves because when the mouse leaves the app
 	// we get an enter event (ie underMouse() is true)!!
 	underMouse_ = geometry().contains(event->globalPos());
-	if (!underMouse_)
+	if (!underMouse_) {
+		bottom_ = 0;
+		right_ = 0;
+		update();
 		return;
+	}
 
 	int const r0 = right_;
 	int const b0 = bottom_;
-	right_ = event->x()/colwidth_ + 1;
-	bottom_ = event->y()/rowheight_ + 1;
+	right_ = event->x() / colwidth_ + 1;
+	bottom_ = event->y() / rowheight_ + 1;
 
 	if (bottom_ == rows_) {
 		++rows_;
@@ -95,37 +97,8 @@ void InsertTableWidget::mouseMoveEvent(QMouseEvent * event)
 
 	if (bottom_ != b0 || right_ != r0) {
 		update();
-		QString status = QString("%1x%2").arg(bottom_).arg(right_);
+		QString const status = QString("%1x%2").arg(bottom_).arg(right_);
 		QToolTip::showText(event->globalPos(), status , this);
-	}
-}
-
-
-bool InsertTableWidget::event(QEvent * event)
-{
-	switch (event->type()) {
-	case QEvent::MouseMove: {
-		QMouseEvent * me = dynamic_cast<QMouseEvent *>(event);
-		mouseMoveEvent(me);
-		return true;
-		}
-	case QEvent::MouseButtonRelease: {
-		QMouseEvent * me = dynamic_cast<QMouseEvent *>(event);
-		mouseReleaseEvent(me);
-		return true;
-		}
-	case QEvent::MouseButtonPress: {
-		// swallow this one...
-		return true;
-		}
-	case QEvent::Leave: {
-		bottom_ = 0;
-		right_ = 0;
-		update();
-		return true;
-		}
-	default:
-		return QWidget::event(event);
 	}
 }
 
@@ -138,6 +111,12 @@ void InsertTableWidget::mouseReleaseEvent(QMouseEvent * event)
 	}
 	emit visible(false);
 	close();
+}
+
+
+void InsertTableWidget::mousePressEvent(QMouseEvent * event)
+{
+	// swallow this one
 }
 
 
