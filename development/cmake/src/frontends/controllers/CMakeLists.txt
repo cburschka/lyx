@@ -1,0 +1,110 @@
+project(controllers)
+
+set(controllers_sources
+	Dialog.C
+	Dialog.h
+	Kernel.C
+	Kernel.h
+	biblio.C
+	biblio.h
+	character.C
+	character.h
+	frnt_lang.C
+	frnt_lang.h
+	tex_helpers.C
+	tex_helpers.h
+	BCView.h
+	BCView.C
+	ButtonController.C
+	ButtonController.h
+	ButtonPolicies.C
+	ButtonPolicies.h
+	ControlAboutlyx.C
+	ControlAboutlyx.h
+	ControlBibtex.C
+	ControlBibtex.h
+	ControlBox.C
+	ControlBox.h
+	ControlBranch.C
+	ControlBranch.h
+	ControlCharacter.C
+	ControlCharacter.h
+	ControlChanges.C
+	ControlChanges.h
+	ControlCitation.C
+	ControlCitation.h
+	ControlCommand.C
+	ControlCommand.h
+	ControlCommandBuffer.C
+	ControlCommandBuffer.h
+	ControlDocument.C
+	ControlDocument.h
+	ControlErrorList.C
+	ControlErrorList.h
+	ControlERT.C
+	ControlERT.h
+	ControlExternal.C
+	ControlExternal.h
+	ControlFloat.C
+	ControlFloat.h
+	ControlGraphics.C
+	ControlGraphics.h
+	ControlInclude.C
+	ControlInclude.h
+	ControlLog.C
+	ControlLog.h
+	ControlViewSource.C
+	ControlViewSource.h
+	ControlMath.C
+	ControlMath.h
+	ControlNote.C
+	ControlNote.h
+	ControlParagraph.C
+	ControlParagraph.h
+	ControlPreamble.C
+	ControlPreamble.h
+	ControlPrefs.C
+	ControlPrefs.h
+	ControlPrint.C
+	ControlPrint.h
+	ControlRef.C
+	ControlRef.h
+	ControlSearch.C
+	ControlSearch.h
+	ControlSendto.C
+	ControlSendto.h
+	ControlShowFile.C
+	ControlShowFile.h
+	ControlSpellchecker.C
+	ControlSpellchecker.h
+	ControlTabular.C
+	ControlTabular.h
+	ControlTabularCreate.C
+	ControlTabularCreate.h
+	ControlTexinfo.C
+	ControlTexinfo.h
+	ControlThesaurus.C
+	ControlThesaurus.h
+	ControlToc.C
+	ControlToc.h
+	ControlVSpace.C
+	ControlVSpace.h
+	ControlWrap.C
+	ControlWrap.h
+	helper_funcs.C
+	helper_funcs.h
+)
+
+lyx_add_path(controllers_sources ${TOP_SRC_DIR}/src/frontends/controllers)
+
+include_directories(${TOP_SRC_DIR}/src/frontends/controllers)
+
+add_library(controllers STATIC ${controllers_sources})
+
+target_link_libraries(controllers boost_regex boost_filesystem)
+
+
+
+
+
+

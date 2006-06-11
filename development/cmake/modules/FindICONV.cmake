@@ -1,0 +1,56 @@
+
+if (ICONV_INCLUDE_DIR)
+  # Already in cache, be silent
+  set(ICONV_FIND_QUIETLY TRUE)
+endif (ICONV_INCLUDE_DIR)
+
+FIND_PATH(ICONV_INCLUDE_DIR iconv.h
+ /usr/include
+ /usr/local/include
+)
+
+set(POTENTIAL_ICONV_LIBS iconv libiconv)
+FIND_LIBRARY(ICONV_LIBRARY NAMES ${POTENTIAL_ICONV_LIBS}
+PATHS
+ /usr/lib
+ /usr/local/lib
+)
+
+if(WIN32)
+	FIND_FILE(ICONV_DLL iconv.dll NO_DEFAULT_PATH ENV PATH)
+	FIND_FILE(ICONV_DLL_HELP iconv.dll)
+	IF(ICONV_FIND_REQUIRED)
+		IF(NOT ICONV_DLL AND NOT ICONV_DLL_HELP)
+			MESSAGE(FATAL_ERROR "Could not find iconv.dll, please add correct your PATH environment variable")
+		ENDIF(NOT ICONV_DLL AND NOT ICONV_DLL_HELP)
+		IF(NOT ICONV_DLL AND ICONV_DLL_HELP)
+			GET_FILENAME_COMPONENT(ICONV_DLL_HELP ${ICONV_DLL_HELP} PATH)
+			MESSAGE("Could not find iconv.dll in standard search path, please add ")
+			MESSAGE("${ICONV_DLL_HELP}  to your PATH environment variable.")
+			MESSAGE(FATAL_ERROR)
+		ENDIF(NOT ICONV_DLL AND ICONV_DLL_HELP)
+	ENDIF(ICONV_FIND_REQUIRED)
+ELSE(WIN32)
+	set(ICONV_DLL TRUE)
+endif(WIN32)
+
+
+IF (ICONV_INCLUDE_DIR AND ICONV_LIBRARY AND ICONV_DLL)
+   SET(ICONV_FOUND TRUE)
+ENDIF (ICONV_INCLUDE_DIR AND ICONV_LIBRARY AND ICONV_DLL)
+
+IF (ICONV_FOUND)
+   IF (NOT ICONV_FIND_QUIETLY)
+      MESSAGE(STATUS "Found iconv: ${ICONV_LIBRARY}")
+   ENDIF (NOT ICONV_FIND_QUIETLY)
+ELSE (ICONV_FOUND)
+   IF (ICONV_FIND_REQUIRED)
+      MESSAGE(STATUS "Looked for iconv library named ${POTENTIAL_ICONV_LIBS}.")
+      MESSAGE(STATUS "Found no acceptable iconv library. This is fatal.")
+      message("iconv header: ${ICONV_INCLUDE_DIR}")
+      message("iconv lib   : ${ICONV_LIBRARY}")
+      MESSAGE(FATAL_ERROR "Could NOT find iconv library")
+   ENDIF (ICONV_FIND_REQUIRED)
+ENDIF (ICONV_FOUND)
+
+MARK_AS_ADVANCED(ICONV_LIBRARY ICONV_INCLUDE_DIR)

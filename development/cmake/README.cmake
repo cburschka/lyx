@@ -1,0 +1,21 @@
+Building LyX with CMake
+
+CMake 2.4.2 or CVS version from www.cmake.org
+
+
+Building Visual C++ 2005 project files:
+
+- install Visual C++ 2005
+- install Platform SDK 2005, "Core" and "Web Workshop"
+- add include and library paths of the SDK to the IDE search paths,
+  menu: Tools->Options->VC++ directories->Library files + Include files
+- install zlib (www.zlib.net) into %ProgramFiles%/GnuWin32/include+lib
+  or %ProgramFiles%/zlib/include+lib
+- create a build directory, e.g. .../trunk/../build
+- call in the build directory 'cmake ..\trunk\development\cmake'
+- start lyx.sln
+
+
+To generate other build files call 'cmake'
+which shows a list of possibilities.
+
