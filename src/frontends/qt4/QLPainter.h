@@ -147,6 +147,10 @@ private:
 
 	/// the working area
 	QWorkArea * qwa_;
+
+	LColor::color current_color_;
+	Painter::line_style current_ls_;
+	Painter::line_width current_lw_;
 };
 
 #endif // QLPAINTER_H

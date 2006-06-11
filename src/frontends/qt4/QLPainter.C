@@ -58,6 +58,13 @@ int QLPainter::paperHeight() const
 QPainter & QLPainter::setQPainterPen(QPainter & qp, LColor_color c,
 	Painter::line_style ls, Painter::line_width lw)
 {
+	if (c == current_color_ && ls == current_ls_ && lw == current_lw_)
+		return qp;
+
+	current_color_ = c;
+	current_ls_ = ls;
+	current_lw_ = lw;
+
 	QPen pen = qp.pen();
 
 	pen.setColor(lcolorcache.get(c));
