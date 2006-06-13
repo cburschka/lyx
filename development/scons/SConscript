@@ -36,6 +36,7 @@ build_tex2lyx = True in ['tex2lyx' in x for x in targets] \
   or 'install' in targets or 'all' in targets
 build_lyxbase = build_lyx or 'lyxbase' in targets
 build_po = 'po' in targets or 'install' in targets or 'all' in targets
+build_qt2 = (build_lyx and env['frontend'] == 'qt2') or 'qt2' in targets
 build_qt3 = (build_lyx and env['frontend'] == 'qt3') or 'qt3' in targets
 build_qt4 = (build_lyx and env['frontend'] == 'qt4') or 'qt4' in targets
 build_msvs_projects = env['USE_VC'] and 'msvs_projects' in targets
@@ -63,11 +64,15 @@ if rebuild_targets:
   build_graphics = ifBuildLib('graphics', 'graphics', build_graphics)
   build_controllers = ifBuildLib('controllers', 'controllers', build_controllers)
   build_lyxbase = ifBuildLib('lyxbase', 'lyxbase_pre', build_lyxbase)
+  build_qt2 = ifBuildLib('qt2', 'qt2', build_qt2)
   build_qt3 = ifBuildLib('qt3', 'qt3', build_qt3)
   build_qt4 = ifBuildLib('qt4', 'qt4', build_qt4)
 
 # sync frontend and env['frontend'] (maybe build qt4 with frontend=qt3)
-if build_qt3:
+if build_qt2:
+  frontend = 'qt2'
+  env['frontend'] = 'qt2'
+elif build_qt3:
   frontend = 'qt3'
   env['frontend'] = 'qt3'
 elif build_qt4:
@@ -87,41 +92,19 @@ if build_boost:
   boostenv = env.Copy()
   boostenv.AppendUnique(CCFLAGS = '-DBOOST_USER_CONFIG="<config.h>"')
 
-  print 'Processing files in boost/libs/filesystem/src...'
+  for lib in ['filesystem', 'regex', 'signals', 'iostreams']:
+    # lyx 1.4 does not have iostreams
+    if not os.path.isdir(os.path.join(env.subst('$TOP_SRC_DIR'), 'boost', 'libs', lib)):
+      continue
+      
+    print 'Processing files in boost/libs/%s/src...' % lib
 
-  filesystem = boostenv.StaticLibrary(
-    target = '$LOCALLIBPATH/included_boost_filesystem',
-    source = globSource(dir = env.subst('$TOP_SRC_DIR/boost/libs/filesystem/src'), 
-      pattern = '*.cpp', build_dir = '$BUILDDIR/boost/filesystem/src')
-  )
-
-  print 'Processing files in boost/libs/regex/src...'
-
-  regex = boostenv.StaticLibrary(
-    target = '$LOCALLIBPATH/included_boost_regex',
-    source = globSource(dir = env.subst('$TOP_SRC_DIR/boost/libs/regex/src'), 
-      pattern = '*.cpp', build_dir = '$BUILDDIR/boost/regex/src')
-  )
-
-  print 'Processing files in boost/libs/signals/src...'
-
-  signals = boostenv.StaticLibrary(
-    target = '$LOCALLIBPATH/included_boost_signals',
-    source = globSource(dir = env.subst('$TOP_SRC_DIR/boost/libs/signals/src'), 
-      pattern = '*.cpp', build_dir = '$BUILDDIR/boost/signals/src')
-  )
-
-  print 'Processing files in boost/libs/iostreams/src...'
-
-  iostreams = boostenv.StaticLibrary(
-    target = '$LOCALLIBPATH/included_boost_iostreams',
-    source = globSource(dir = env.subst('$TOP_SRC_DIR/boost/libs/iostreams/src'), 
-      pattern = '*.cpp', build_dir = '$BUILDDIR/boost/iostreams/src')
-  )
-  Alias('boost', filesystem)
-  Alias('boost', regex)
-  Alias('boost', signals)
-  Alias('boost', iostreams)
+    boostlib = boostenv.StaticLibrary(
+      target = '$LOCALLIBPATH/included_boost_%s' % lib,
+      source = globSource(dir = env.subst('$TOP_SRC_DIR/boost/libs/%s/src' % lib), 
+        pattern = '*.cpp', build_dir = '$BUILDDIR/boost/%s/src' % lib)
+    )
+    Alias('boost', boostlib)
 
 
 if build_intl:
@@ -186,7 +169,7 @@ if build_support:
   support = env.StaticLibrary(
     target = '$LOCALLIBPATH/support',
     source = globSource(dir = env.subst('$TOP_SRC_DIR/src/support'), pattern = env['LYX_EXT'], 
-      exclude = ['os_win32.C', 'os_unix.C', 'os_cygwin.C', 'atexit.c'],
+      exclude = ['os_win32.C', 'os_unix.C', 'os_cygwin.C', 'os_os2.C', 'atexit.c'],
       include = ['package.C'], build_dir = '$BUILDDIR/common/support')
   )
   Alias('support', support)
@@ -264,10 +247,108 @@ if build_controllers:
 
 
 #
-# src/frontend/qt3/4
+# src/frontend/qt2/3/4
 #
-if build_qt3 or build_qt4:
+if build_qt2 or build_qt3 or build_qt4:
   env.BuildDir('$BUILDDIR/$frontend', '$TOP_SRC_DIR/src/frontend/$frontend', duplicate = 0)
+
+
+if build_qt2:
+  print "Processing files in src/frontends/qt2..."
+
+  qt2env = env.Copy()
+  # disable auto scan to speed up non build time
+  qt2env['QT_AUTOSCAN'] = 0
+  qt2env['QT_MOCHPREFIX'] = ''
+
+  # load qt2 tools
+  qt2env.Tool('qt')
+
+  qt2env.AppendUnique(CPPPATH = [
+    '$BUILDDIR/common',
+    '$BUILDDIR/common/images',
+    '$BUILDDIR/common/frontends',
+    '$BUILDDIR/common/frontends/qt2',
+    '$BUILDDIR/common/frontends/controllers',
+    '$QT_INC_PATH']
+  )
+
+  qt2_moc_files = ["$BUILDDIR/common/frontends/qt2/%s" % x for x in Split('''
+    BulletsModule.C
+    emptytable.C
+    FileDialog_private.C
+    floatplacement.C
+    iconpalette.C
+    lengthcombo.C
+    panelstack.C
+    QAboutDialog.C
+    QBibitemDialog.C
+    QBibtexDialog.C
+    QBoxDialog.C
+    QBranchDialog.C
+    QBrowseBox.C
+    QChangesDialog.C
+    QCharacterDialog.C
+    QCitationDialog.C
+    QCommandBuffer.C
+    QCommandEdit.C
+    QContentPane.C
+    QDelimiterDialog.C
+    QDocumentDialog.C
+    QErrorListDialog.C
+    QERTDialog.C
+    QExternalDialog.C
+    QFloatDialog.C
+    QGraphicsDialog.C
+    QIncludeDialog.C
+    QIndexDialog.C
+    QLogDialog.C
+    QLPopupMenu.C
+    QLPrintDialog.C
+    QMathDialog.C
+    QMathMatrixDialog.C
+    QNoteDialog.C
+    QParagraphDialog.C
+    QPrefsDialog.C
+    QRefDialog.C
+    QSearchDialog.C
+    QSendtoDialog.C
+    qsetborder.C
+    QShowFileDialog.C
+    QSpellcheckerDialog.C
+    QDialogView.C
+    QTabularCreateDialog.C
+    QTabularDialog.C
+    QTexinfoDialog.C
+    QThesaurusDialog.C
+    QTocDialog.C
+    qttableview.C
+    QtView.C
+    QURLDialog.C
+    QVSpaceDialog.C
+    QWrapDialog.C
+    QLToolbar.C
+    socket_callback.C
+    validators.C
+  ''')]
+
+  # manually moc and uic files for better performance 
+  qt2_moced_files = [qt2env.Moc(x.replace('.C', '_moc.cpp'), x.replace('.C', '.h')) for x in qt2_moc_files]
+
+  qt2_uiced_files = [qt2env.Uic('$BUILDDIR/common/frontends/qt2/ui/'+x) for x in \
+     globSource(dir = env.subst('$TOP_SRC_DIR/src/frontends/qt2/ui'), pattern = '*.ui')]
+
+  qt2_uiced_cc_files = []
+  for x in qt2_uiced_files:
+    qt2_uiced_cc_files.extend(x[1:])
+
+  qt2 = qt2env.StaticLibrary(
+    target = '$LOCALLIBPATH/qt2',
+    source = globSource(dir = env.subst('$TOP_SRC_DIR/src/frontends/qt2/'), pattern = env['LYX_EXT'],
+      build_dir = '$BUILDDIR/common/frontends/qt2') + qt2_moced_files + qt2_uiced_cc_files
+  )
+  Alias('qt2', qt2)
+
 
 if build_qt3:
   print "Processing files in src/frontends/qt3..."

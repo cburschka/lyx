@@ -23,7 +23,8 @@
 #     default to lyx, you can use 'scons all' to build all targets except 
 #     for install
 #   * options: use scons -h for details about options, the most important
-#     one is frontend=qt3|qt4.
+#     one is frontend=qt2|qt3|qt4.
+#     - qt2 is used by lyx1.4.x
 #     - qt3 is used by default on linux, cygwin and mac
 #     - qt4 is used by default on win32/mingw
 #
@@ -102,7 +103,14 @@ else:
 #----------------------------------------------------------
 
 # some global settings
-PACKAGE_VERSION = '1.5.0svn'
+#
+# detect version of lyx
+# only 1.4.x has frontends/qt2
+if os.path.isdir(os.path.join(TOP_SRC_DIR, 'src', 'frontends', 'qt2')):
+  PACKAGE_VERSION = '1.4.2svn'
+else:
+  PACKAGE_VERSION = '1.5.0svn'
+
 DEVEL_VERSION = True
 default_build_mode = 'debug'
 lyx_ext = '*.C'
@@ -209,7 +217,7 @@ opts = Options(['config.py'])
 opts.AddOptions(
   # frontend,
   EnumOption('frontend', 'Main GUI', default_frontend,
-    allowed_values = ('xform', 'qt3', 'qt4', 'gtk') ),
+    allowed_values = ('xform', 'qt2', 'qt3', 'qt4', 'gtk') ),
   # debug or release build
   EnumOption('mode', 'Building method', default_build_mode,
     allowed_values = ('debug', 'release') ),
@@ -328,7 +336,7 @@ if (not ARGUMENTS.has_key('load_option') or \
     opt_cache.pop('qt_dir')
   # some options will require full rebuild
   # these are in general things that will change src/config.h
-  for arg in ['version_suffix', 'nls']:
+  for arg in ['version_suffix', 'nls', 'boost']:
     if ARGUMENTS.has_key(arg) and ((not opt_cache.has_key(arg)) or \
       ARGUMENTS[arg] != opt_cache[arg]):
       if fast_start:
@@ -336,7 +344,7 @@ if (not ARGUMENTS.has_key('load_option') or \
         print
         fast_start = False
   # and we do not cache some options
-  for arg in ['fast_start']:
+  for arg in ['fast_start', 'load_option']:
     if opt_cache.has_key(arg):
       opt_cache.pop(arg)
   for key in opt_cache.keys():
@@ -595,7 +603,7 @@ if not fast_start:
 if not fast_start:
   #
   # qt3 does not use pkg_config
-  if frontend == 'qt3':
+  if frontend in ['qt2', 'qt3']:
     if not conf.CheckLibWithHeader('qt-mt', 'qapp.h', 'c++', 'QApplication qapp();'):
       print 'Did not find qt libraries, exiting!'
       Exit(1)
@@ -653,34 +661,38 @@ if not fast_start:
   # check boost libraries
   boost_opt = ARGUMENTS.get('boost', default_boost_opt)
   # check for system boost
-  succ = False
+  paths = env['LIBPATH'] + ['/usr/lib', '/usr/local/lib']
+  env['BOOST_LIBRARIES'] = []
   boost_libpath = None
-  if boost_opt in ['auto', 'system']:
-    paths = env['LIBPATH'] + ['/usr/lib', '/usr/local/lib']
-    sig = conf.CheckBoostLibraries('boost_signals', paths)
-    reg = conf.CheckBoostLibraries('boost_regex', paths)
-    fil = conf.CheckBoostLibraries('boost_filesystem', paths)
-    ios = conf.CheckBoostLibraries('boost_iostreams', paths)
-    # if any of them is not found
-    if ('' in [sig[0], reg[0], fil[0], ios[0]]):
-      if boost_opt == 'system':
+  # here I assume that all libraries are in the same directory
+  for lib in ['signals', 'regex', 'filesystem', 'iostreams']:
+    # lyx1.4 does not use iostreams
+    if not os.path.isdir(os.path.join(env.subst('$TOP_SRC_DIR'), 'boost', 'libs', lib)):
+      continue
+    if boost_opt == 'included':
+      env['BOOST_LIBRARIES'].append('included_boost_%s' % lib)
+      env['INCLUDED_BOOST'] = True
+    elif boost_opt == 'auto':
+      res = conf.CheckBoostLibraries('boost_%s' % lib , paths)
+      # if not found
+      if res[0] == '':
+        env['BOOST_LIBRARIES'].append('included_boost_%s' % lib)
+        env['INCLUDED_BOOST'] = True
+      else:
+        env['BOOST_LIBRARIES'].append(res[1])
+        env['INCLUDED_BOOST'] = False
+        boost_libpath = res[0]
+    elif boost_opt == 'system':
+      res = conf.CheckBoostLibraries('boost_%s' % lib , paths)
+      if res[0] == '':
         print "Can not find system boost libraries"
         print "Please supply a path through extra_lib_path and try again."
         print "Or use boost=included to use included boost libraries."
         Exit(2)
-    else:
-      env['BOOST_LIBRARIES'] = [sig[1], reg[1], fil[1], ios[1]]
-      # assume all boost libraries are in the same path...
-      boost_libpath = sig[0]
-      env.AppendUnique(LIBPATH = [sig[0]])
-      env['INCLUDED_BOOST'] = False
-      succ = True
-  # now, auto and succ = false, or boost=included
-  if not succ:
-    # we do not need to set LIBPATH now.
-    env['BOOST_LIBRARIES'] = ['included_boost_signals', 'included_boost_regex',
-      'included_boost_filesystem', 'included_boost_iostreams']
-    env['INCLUDED_BOOST'] = True
+      else:
+        env['BOOST_LIBRARIES'].append(res[1])
+        env.AppendUnique(LIBPATH = [res[0]])
+        boost_libpath = res[0]
   env_cache['BOOST_LIBRARIES'] = env['BOOST_LIBRARIES']
   env_cache['INCLUDED_BOOST'] = env['INCLUDED_BOOST']
   env_cache['BOOST_LIBPATH'] = boost_libpath
@@ -804,7 +816,7 @@ if not fast_start:
     ('alloca.h', 'HAVE_ALLOCA_H', 'c'),
     ('stddef.h', 'HAVE_STDDEF_H', 'c'),
     ('stdint.h', 'HAVE_STDINT_H', 'c'),
-    ('sys/param.h', 'HAVE_SYS_PARAM_H', 'c')
+    ('sys/param.h', 'HAVE_SYS_PARAM_H', 'c'),
   ]
 
   for header in headers:
@@ -1180,7 +1192,7 @@ env = conf.Finish()
 # NOTE: Tool('qt') or Tool('qt4') will be loaded later
 # in their respective directory and specialized env.
 try:
-  if frontend == 'qt3':
+  if frontend in ['qt2', 'qt3']:
     # note: env.Tool('qt') my set QT_LIB to qt
     env['QT_LIB'] = 'qt-mt'
     env['FRONTEND_LIBS'] = ['qt-mt']
@@ -1316,7 +1328,7 @@ Frontend:
   env['frontend'], packaging_method,
   env['PREFIX'], env['BIN_DEST_DIR'], env['SHARE_DIR'])
 
-if env['frontend'] in ['qt3', 'qt4']:
+if env['frontend'] in ['qt2', 'qt3', 'qt4']:
   env['VERSION_INFO'] += '''  include dir:                    %s
   library dir:                    %s
   X11:                            %s
