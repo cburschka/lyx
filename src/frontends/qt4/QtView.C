@@ -70,12 +70,12 @@ int const statusbar_timer_value = 3000;
 } // namespace anon
 
 
-QtView::QtView(unsigned int width, unsigned int height, bool isMax)
+QtView::QtView(unsigned int width, unsigned int height, bool maximize)
 	: QMainWindow(), LyXView(), commandbuffer_(0)
 {
 	resize(width, height);
 
-	if(isMax)
+	if (maximize)
 		this->setWindowState(Qt::WindowMaximized);
 
 	mainWidget_ = this;
