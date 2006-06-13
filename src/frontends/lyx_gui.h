@@ -57,7 +57,7 @@ void parse_lyxrc();
  * batch commands, and loading the given documents
  */
 void start(std::string const & batch, std::vector<std::string> const & files,
-           unsigned int width, unsigned int height, int posx, int posy);
+           unsigned int width, unsigned int height, int posx, int posy, bool isMax);
 
 /**
  * Enter the main event loop (\sa LyX::exec2)

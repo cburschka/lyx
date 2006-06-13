@@ -256,7 +256,7 @@ void parse_lyxrc()
 
 
 void start(string const & batch, vector<string> const & files,
-	   unsigned int width, unsigned int height, int posx, int posy)
+	   unsigned int width, unsigned int height, int posx, int posy, bool)
 {
 	int const geometryBitmask =
 		XParseGeometry(geometry, &posx, &posy, &width, &height);

@@ -222,12 +222,12 @@ void parse_lyxrc()
 
 
 void start(string const & batch, vector<string> const & files,
-	   unsigned int width, unsigned int height, int posx, int posy)
+	   unsigned int width, unsigned int height, int posx, int posy, bool isMax)
 {
 	// this can't be done before because it needs the Languages object
 	initEncodings();
 
-	boost::shared_ptr<QtView> view_ptr(new QtView(width, height));
+	boost::shared_ptr<QtView> view_ptr(new QtView(width, height, isMax));
 	LyX::ref().addLyXView(view_ptr);
 
 	QtView & view = *view_ptr.get();

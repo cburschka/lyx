@@ -307,6 +307,7 @@ void LyX::exec2(int & argc, char * argv[])
 		// initial geometry
 		unsigned int width = 690;
 		unsigned int height = 510;
+		bool isMax = false;
 		// first try lyxrc
 		if (lyxrc.geometry_width != 0 && lyxrc.geometry_height != 0 ) {
 			width = lyxrc.geometry_width;
@@ -320,6 +321,8 @@ void LyX::exec2(int & argc, char * argv[])
 			val = session().loadSessionInfo("WindowHeight");
 			if (!val.empty())
 				height = convert<unsigned int>(val);
+			if (session().loadSessionInfo("WindowIsMaximized") == "yes")
+				isMax = true;
 		}
 		// if user wants to restore window position
 		int posx = -1;
@@ -332,7 +335,7 @@ void LyX::exec2(int & argc, char * argv[])
 			if (!val.empty())
 				posy = convert<int>(val);
 		}
-		lyx_gui::start(batch_command, files, width, height, posx, posy);
+		lyx_gui::start(batch_command, files, width, height, posx, posy, isMax);
 	} else {
 		// Something went wrong above
 		quitLyX(false);
