@@ -227,16 +227,19 @@ void start(string const & batch, vector<string> const & files,
 	// this can't be done before because it needs the Languages object
 	initEncodings();
 
-	boost::shared_ptr<QtView> view_ptr(new QtView(width, height, maximize));
+	boost::shared_ptr<QtView> view_ptr(new QtView(width, height));
 	LyX::ref().addLyXView(view_ptr);
 
 	QtView & view = *view_ptr.get();
 
-	if (posx != -1 && posy != -1)
-		view.move(QPoint(posx, posy));
+	view.init();
+		
+	view.setGeometry(posx, posy, width, height);
+
+	if (maximize)
+		view.setWindowState(WindowMaximized);
 
 	view.show();
-	view.init();
 
 	// FIXME: some code below needs moving
 
