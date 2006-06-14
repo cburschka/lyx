@@ -9,67 +9,8 @@
 # Full author contact details are available in file CREDITS.
 #
 #
-# This is a scons based building system for lyx, you can use it as follows:
-#
-#   $ cd development/scons
-#   $ scons [options] [targets]
-# or:
-#   $ scons -f development/scons/SConstruct [options] [targets]
-# and:
-#   $ scons [prefix=.] install
-#
-# Where:
-#   * targets can be one or more of lyx, tex2lyx, client, po, install.
-#     default to lyx, you can use 'scons all' to build all targets except 
-#     for install
-#   * options: use scons -h for details about options, the most important
-#     one is frontend=qt2|qt3|qt4.
-#     - qt2 is used by lyx1.4.x
-#     - qt3 is used by default on linux, cygwin and mac
-#     - qt4 is used by default on win32/mingw
-#
-# File layouts (Important):
-#   * Unless you specify builddir=dir, building will happen
-#     in $BUILDDIR = $mode, which can be debug or release
-#   * $BUILDDIR has subdirectories
-#       libs:      all intermediate libraries
-#       boost:     boost libraries, if boost=included is used
-#       qt3/4:     frontend-specific objects
-#   * executables will be copied to $BUILDDIR/
-#
-# Hints:
-#   * scons fast_start=yes
-#     If env.cache exists, bypass all tests and use existing src/config.h
-#
-#   * scons --config=force
-#     force re-configuration (use scons -H for details)
-#
-#   * check config.log to see why config has failed
-#
-#   * use extra_inc_path, extra_lib_path, qt_dir, qt_inc_path
-#     qt_lib_path to help locate qt and other libraries.
-#     There are also extra_inc_path1, extra_lib_path1 if you need to spacify
-#     more than one extra paths.
-#
-#   * executed commands will be logged in scons_lyx.log. You can use logfile=
-#     option to save log to another file.
-#
-# Notes:
-#
-#   * scons dist etc may be added later. Interested contributors can follow
-#       http://www.scons.org/cgi-sys/cgiwrap/scons/moin.cgi/AccumulateBuilder
-#     or
-#       http://www.scons.org/cgi-sys/cgiwrap/scons/moin.cgi/DistTarBuilder
-#     Please also see the commented out code in scons_utils.py
-#   
-#   * NSIS support can be found here.
-#     http://www.scons.org/cgi-sys/cgiwrap/scons/moin.cgi/NsisSconsTool
-#
-#   * rpm support?
-#     http://www.scons.org/cgi-sys/cgiwrap/scons/moin.cgi/RpmHonchoTemp
-#
-#   However, I decide to wait since scons seems to be standardizing these
-#   features.
+# This is a scons based building system for lyx, please refer
+# to INSTALL.scons for detailed instructions.
 #
 
 import os, sys, copy, cPickle, glob
@@ -97,6 +38,7 @@ if os.path.isfile('SConstruct'):
 else:
   TOP_SRC_DIR = '.'
   SCONS_DIR = 'development/scons'
+
 
 #----------------------------------------------------------
 # Global definitions
@@ -132,83 +74,35 @@ env_cache_file = 'env.cache'
 if os.name == 'nt':
   platform_name = 'win32'
   default_frontend = 'qt4'
-  # boost and gettext are unlikely to be installed already
-  default_boost_opt = 'included'
-  default_gettext_opt = 'included'
-  default_pch_opt = False
   default_with_x = False
-  spell_checker = 'auto'
-  # boost_posix indicates to boost which API to use (posix or windows).
-  # If not specified, boost tries to figure out by itself, but it may fail.
-  boost_posix = False
   packaging_method = 'windows'
-  default_prefix = 'c:/program files/lyx'
-  share_dir = 'Resources'
-  man_dir = 'Resources/man/man1'
-  locale_dir = 'Resources/locale'
 elif os.name == 'posix' and sys.platform != 'cygwin':
   platform_name = sys.platform
   default_frontend = 'qt3'
-  # try to use system boost/gettext libraries
-  default_boost_opt = 'auto'
-  default_gettext_opt = 'auto'
-  default_pch_opt = False
   default_with_x = True
-  boost_posix = True
   packaging_method = 'posix'
-  default_prefix = '/usr/local/'
-  share_dir = 'share/lyx'
-  man_dir = 'man/man1'
-  locale_dir = 'share/locale'
 elif os.name == 'posix' and sys.platform == 'cygwin':
   platform_name = 'cygwin'
   default_frontend = 'qt3'
-  # force the use of cygwin/boost/gettext
-  default_boost_opt = 'system'
-  default_gettext_opt = 'system'
-  default_pch_opt = False
   default_with_x = True
-  boost_posix = True
   packaging_method = 'posix'
-  default_prefix = '/usr/local/'
-  share_dir = 'share/lyx'
-  man_dir = 'man/man1'
-  locale_dir = 'share/locale'
 elif os.name == 'darwin':
   platform_name = 'mac'
   default_frontend = 'qt3'
-  # to be safe
-  default_boost_opt = 'included'
-  default_gettext_opt = 'included'
-  default_pch_opt = False
   default_with_x = False
-  boost_posix = True
   packaging_method = 'mac'
-  # FIXME: where to install?
-  default_prefix = '/usr/local/'
-  share_dir = 'Resources'
-  man_dir = 'Resources/man/man1'
-  locale_dir = 'Resources/locale'
-else:  # unsupported system
+else:  # unsupported system, assume posix behavior
   platform_name = 'others'
   default_frontend = 'qt3'
-  # to be safe
-  default_boost_opt = 'included'
-  default_gettext_opt = 'included'
-  default_pch_opt = False
   default_with_x = True
-  boost_posix = False
   packaging_method = 'posix'
-  default_prefix = '/usr/local/'
-  share_dir = 'share/lyx'
-  man_dir = 'man/man1'
-  locale_dir = 'share/locale'
 
 
 #---------------------------------------------------------
 # Handling options
 #----------------------------------------------------------
 #
+# You can set perminant default values in config.py
 if os.path.isfile('config.py'):
   print "Getting options from config.py..."
   print open('config.py').read()
@@ -224,17 +118,15 @@ opts.AddOptions(
   # boost libraries
   EnumOption('boost',
     'Use included, system boost library, or try sytem boost first.',
-    default_boost_opt,
-    allowed_values = (
+    'auto', allowed_values = (
       'auto',       # detect boost, if not found, use included
       'included',   # always use included boost
       'system',     # always use system boost, fail if can not find
       ) ),
-  # FIXME: not implemented yet.
+  # 
   EnumOption('gettext',
     'Use included, system gettext library, or try sytem gettext first',
-    default_gettext_opt,
-    allowed_values = (
+    'auto', allowed_values = (
       'auto',       # detect gettext, if not found, use included
       'included',   # always use included gettext
       'system',     # always use system gettext, fail if can not find
@@ -244,14 +136,13 @@ opts.AddOptions(
     allowed_values = ('aspell', 'pspell', 'ispell', 'auto') ),
   #
   BoolOption('fast_start', 'Whether or not use cached tests and keep current config.h', True),
-  #
-  BoolOption('load_option', 'load option from previous scons run', True),
   # FIXME: I do not know how pch is working. Ignore this option now.
-  BoolOption('pch', '(NA) Whether or not use pch', default_pch_opt),
+  BoolOption('pch', '(NA) Whether or not use pch', None),
   # enable assertion, (config.h has ENABLE_ASSERTIOS
   BoolOption('assertions', 'Use assertions', True),
   # enable warning, (config.h has WITH_WARNINGS)
-  BoolOption('warnings', 'Use warnings', True),
+  # default to False since MSVC does not have #warning
+  BoolOption('warnings', 'Use warnings', False),
   # enable glib, (config.h has _GLIBCXX_CONCEPT_CHECKS)
   BoolOption('concept_checks', 'Enable concept checks', True),
   # 
@@ -263,6 +154,7 @@ opts.AddOptions(
   # using x11?
   BoolOption('X11', 'Use x11 windows system', default_with_x),
   # use MS VC++ to build lyx
+  # FIXME: detect mavc automatically (check for cl.exe)
   BoolOption('use_vc', 'Use MS VC++ to build lyx', False),
   #
   PathOption('qt_dir', 'Path to qt directory', None),
@@ -290,26 +182,40 @@ opts.AddOptions(
   ('dest_dir', 'install to dest_dir', None),
   # version suffix
   ('version_suffix', 'install lyx as lyx-suffix', ''),
+  # how to load options
+  ('load_option', '''load option from previous scons run. option can be
+    yes (default): load all options
+    no: do not load any option
+    opt1,opt2: load specified options
+    -opt1,opt2: load all options other than specified ones''', 'yes'),
+  #
+  ('optimization', 'optimization CCFLAGS option.', None),
   #
   PathOption('exec_prefix', 'install architecture-independent executable files in PREFIX', None),
   # log file
   ('logfile', 'save commands (not outputs) to logfile', default_log_file),
-  # Path to aiksaurus
-  PathOption('aiksaurus_path', 'Path to aiksaurus library', None),
-  # environment variable can be set as options. (DO NOT set defaults)
-  ('CC', '$CC', None),
-  ('LINK', '$LINK', None),
-  ('CPP', '$CPP', None),
-  ('CXX', '$CXX', None),
-  ('CXXCPP', '$CXXCPP', None),
-  ('CCFLAGS', '$CCFLAGS', None),
-  ('CPPFLAGS', '$CPPFLAGS', None),
-  ('LDFLAGS', '$LDFLAGS', None),
+  # environment variable can be set as options.
+  ('CC', 'replace default $CC', None),
+  ('LINK', 'replace default $LINK', None),
+  ('CPP', 'replace default $CPP', None),
+  ('CXX', 'replace default $CXX', None),
+  ('CXXCPP', 'replace default $CXXCPP', None),
+  ('CCFLAGS', 'replace default $CCFLAGS', None),
+  ('CPPFLAGS', 'replace default $CPPFLAGS', None),
+  ('LUBKFLAGS', 'replace default $LINKFLAGS', None),
 )
 
+# copied from SCons/Options/BoolOption.py
+true_strings  = ('y', 'yes', 'true', 't', '1', 'on' , 'all' )
+false_strings = ('n', 'no', 'false', 'f', '0', 'off', 'none')
+
 # whether or not use current config.h, and cached tests
+# note that env is not defined yet, so we have to use ARGUMENTS
+# and raw values of 'yes', 'no' etc.
+#
+# if fast_start=yes (default), load variables from env_cache_file
 if (not ARGUMENTS.has_key('fast_start') or \
-  ARGUMENTS['fast_start'] in ['y', 'yes', 't', 'true', '1', 'all']) \
+  ARGUMENTS['fast_start'] in true_strings) \
   and os.path.isfile(env_cache_file):
   fast_start = True
   cache_file = open(env_cache_file)
@@ -323,8 +229,12 @@ else:
   fast_start = False
   env_cache = {}
 
+# if load_option=yes (default), load saved comand line options
+#
+# This option can take values yes/no/opt1,opt2/-opt1,opt2
+# and tries to be clever in choosing options to load
 if (not ARGUMENTS.has_key('load_option') or \
-  ARGUMENTS['load_option'] in ['y', 'yes', 't', 'true', '1', 'all']) \
+  ARGUMENTS['load_option'] not in false_strings) \
   and os.path.isfile(env_cache_file):
   cache_file = open(env_cache_file)
   opt_cache = cPickle.load(cache_file)['arg_cache']
@@ -347,6 +257,21 @@ if (not ARGUMENTS.has_key('load_option') or \
   for arg in ['fast_start', 'load_option']:
     if opt_cache.has_key(arg):
       opt_cache.pop(arg)
+  # now, if load_option=opt1,opt2
+  if ARGUMENTS.has_key('load_option') and \
+    ARGUMENTS['load_option'] not in true_strings + false_strings:
+    # if -opt1,opt2 is specified, do not load these options
+    if ARGUMENTS['load_option'][0] == '-':
+      for arg in ARGUMENTS['load_option'][1:].split(','):
+        if opt_cache.has_key(arg):
+          opt_cache.pop(arg)
+    # if opt1,opt2 is specified, only load specified options
+    else:
+      args = ARGUMENTS['load_option'].split(',')
+      for arg in opt_cache.keys():
+        if arg not in args:
+          opt_cache.pop(arg)
+  # now restore options as if entered from command line
   for key in opt_cache.keys():
     if not ARGUMENTS.has_key(key):
       ARGUMENTS[key] = opt_cache[key]
@@ -361,22 +286,23 @@ env_cache['arg_cache'] = ARGUMENTS
 # Setting up environment
 #---------------------------------------------------------
 
-# I do not really like ENV=os.environ, but you may 
-# add it here if you experience some environment related problem
+# I do not really like ENV=os.environ, but you may add it 
+# here if you experience some environment related problem
 env = Environment(options = opts)
 
 # Determine the frontend to use, which may be loaded
 # from option cache
 frontend = env.get('frontend', default_frontend)
-# make sure the key exists
+# make sure the key exists (when using default_frontend)
 env['frontend'] = frontend
+# FIXME: will remove after lyx change file extension to .cpp
 env['LYX_EXT'] = lyx_ext
 #
 use_X11 = env.get('X11', default_with_x)
+# FIXME: determine the use of vc automatically
 use_vc = env.get('use_vc', False)
-# use it only once for s scons-bug, will remove it later.
+# FIXME: use it only once for s scons-bug, will remove it later.
 env['USE_VC'] = use_vc
-
 
 # set individual variables since I do not really like ENV = os.environ
 env['ENV']['PATH'] = os.environ.get('PATH')
@@ -390,11 +316,24 @@ if use_vc:
 else:
   env['TOP_SRC_DIR'] = TOP_SRC_DIR
 env['SCONS_DIR'] = SCONS_DIR
+
+# determine share_dir etc
+if packaging_method == 'windows':
+  share_dir = 'Resources'
+  man_dir = 'Resources/man/man1'
+  locale_dir = 'Resources/locale'
+  default_prefix = 'c:/program files/lyx'
+else:
+  share_dir = 'share/lyx'
+  man_dir = 'man/man1'
+  locale_dir = 'share/locale'
+  default_prefix = '/usr/local/'
+
 # install to default_prefix by default
 env['PREFIX'] = env.get('prefix', default_prefix)
-# program suffix
+# program suffix: can be yes, or a string
 if env.has_key('version_suffix'):
-  if env['version_suffix'] in ['y', 'yes', 't', 'true', '1', 'all']:
+  if env['version_suffix'] in true_strings:
     env['PROGRAM_SUFFIX'] = PACKAGE_VERSION
   else:
     env['PROGRAM_SUFFIX'] = env['version_suffix']
@@ -422,53 +361,7 @@ else:
 env['MAN_DEST_DIR'] = os.path.join(env['DEST_DIR'], man_dir)
 env['LOCALE_DEST_DIR'] = os.path.join(env['DEST_DIR'], locale_dir)
 
-#
-# this is a bit out of place (after auto-configration) but 
-# it is required to do the tests. Since Tool('mingw') will 
-# reset CCFLAGS etc, this should be done before getEnvVariable
-if platform_name == 'win32' and not use_vc:
-  env.Tool('mingw')
-  env.AppendUnique(CPPPATH = ['#c:/MinGW/include'])
-elif use_vc:
-  env.Tool('msvc')
-  env.Tool('mslink')
-
-
-# speed up source file processing
-#env['CPPSUFFIXES'] = ['.C', '.cc', '.cpp']
-#env['CXXSUFFIX'] = ['.C']
-
-def getEnvVariable(env, name):
-  # first try command line argument (override environment settings)
-  if ARGUMENTS.has_key(name) and ARGUMENTS[name].strip() != '':
-    # multiple options may be passed like "-02 -g"
-    env[name] = ARGUMENTS[name].split()
-    # it does not seem necessary, but it is safer to change ['a'] back to 'a'
-    if len(env[name]) == 1:
-      env[name] = env[name][0]
-  # then use environment default
-  elif os.environ.has_key(name) and os.environ[name].strip() != '':
-    print "Acquiring varaible %s from system environment: %s" % (name, env[name])
-    env[name] = os.environ[name].split()
-    if len(env[name]) == 1:
-      env[name] = env[name][0]
-  # finally, env['CC'] etc is set to the default values of Options.
-  # and env['CPP'] etc does not exist
-
-getEnvVariable(env, 'CC')
-getEnvVariable(env, 'LINK')
-getEnvVariable(env, 'CPP')
-getEnvVariable(env, 'CXX')
-getEnvVariable(env, 'CXXCPP')
-getEnvVariable(env, 'CCFLAGS')
-getEnvVariable(env, 'CXXFLAGS')
-getEnvVariable(env, 'CPPFLAGS')
-getEnvVariable(env, 'LDFLAGS')
-
-
-#
 # frontend, mode, BUILDDIR and LOCALLIBPATH=BUILDDIR/libs
-#
 env['mode'] = env.get('mode', default_build_mode)
 # lyx will be built to $build/build_dir so it is possible
 # to build multiple build_dirs using the same source
@@ -486,9 +379,109 @@ env['LOCALLIBPATH'] = '$BUILDDIR/libs'
 env['MSVSPATH'] = '.'
 env.AppendUnique(LIBPATH = ['$LOCALLIBPATH'])
 
+
+#---------------------------------------------------------
+# Setting building environment (Tools, compiler flags etc)
+#---------------------------------------------------------
+
+# Since Tool('mingw') will reset CCFLAGS etc, this should be 
+# done before getEnvVariable
+if platform_name == 'win32' and not use_vc:
+  env.Tool('mingw')
+  # FIXME: set this as option?
+  env.AppendUnique(CPPPATH = ['#c:/MinGW/include'])
+elif use_vc:
+  env.Tool('msvc')
+  env.Tool('mslink')
+
+# we differentiate between hard-coded options and default options
+# hard-coded options are required and will always be there
+# default options can be replaced by enviromental variables or command line options
+CCFLAGS_required = []
+LINKFLAGS_required = []
+CCFLAGS_default = []
+
+# under windows, scons is confused by .C/.c and uses gcc instead of
+# g++. I am forcing the use of g++ here. This is expected to change
+# after lyx renames all .C files to .cpp
 #
-# QTDIR, QT_LIB_PATH, QT_INC_PATH
+# Note that this step has to be after env.Tool('mingw') step
+# since env.Tool('mingw') will set env['CC'] etc.
 #
+# save the old c compiler and CCFLAGS (used by libintl)
+env['C_COMPILER'] = env.subst('$CC')
+env['C_CCFLAGS'] = env.subst('$CCFLAGS').split()
+# if we use ms vc, the commands are fine (cl.exe and link.exe)
+if not use_vc:
+  if env.has_key('CXX') and env['CXX']:
+    env['CC'] = env.subst('$CXX')
+    env['LINK'] = env.subst('$CXX')
+  else:
+    env['CC'] = 'g++'
+    env['LINK'] = 'g++'
+else: 
+  # /TP treat all source code as C++
+  # C4819: The file contains a character that cannot be represented 
+  #   in the current code page (number)
+  # C4996: foo was decleared deprecated
+  CCFLAGS_required.extend(['/TP', '/EHsc'])
+  CCFLAGS_default.extend(['/wd4819', '/wd4996'])
+  env.Append(C_CCFLAGS=['/Dinline#', '/D__attribute__(x)#', '/Duintmax_t=UINT_MAX'])
+
+# for debug/release mode
+if env.has_key('optimization') and env['optimization'] is not None:
+  # if user supplies optimization flags, use it anyway
+  CCFLAGS_required.extend(env['optimization'].split())
+  # and do not use default
+  set_default_optimization_flags = False
+else:
+  set_default_optimization_flags = True
+
+if env['mode'] == 'debug':
+  if use_vc:
+    CCFLAGS_required.append('/Zi')
+    LINKFLAGS_required.extend(['/debug', '/map'])
+  else:
+    CCFLAGS_required.append('-g')
+    CCFLAGS_default.append('-Wall')
+elif env['mode'] == 'release' and set_default_optimization_flags:
+  if use_vc:
+    CCFLAGS_default.append('/O2')
+  else:
+    CCFLAGS_default.append('-O2')
+
+# Now, set the variables as follows:
+# 1. if command line option exists: replace default
+# 2. then if s envronment variable exists: replace default
+# 3. set variable to required + default
+def setEnvVariable(env, name, required=[], default=[]):
+  # first try command line argument (override environment settings)
+  if ARGUMENTS.has_key(name):
+    # multiple options may be passed like "-02 -g"
+    default = ARGUMENTS[name].split()
+  # then use environment default
+  elif os.environ.has_key(name):
+    print "Acquiring varaible %s from system environment: %s" % (name, env[name])
+    default = os.environ[name].split()
+  # set variable
+  if required != [] or default != []:
+    env[name] = required + default
+
+setEnvVariable(env, 'CC')
+setEnvVariable(env, 'LINK')
+setEnvVariable(env, 'CPP')
+setEnvVariable(env, 'CXX')
+setEnvVariable(env, 'CXXCPP')
+setEnvVariable(env, 'CCFLAGS', CCFLAGS_required, CCFLAGS_default)
+setEnvVariable(env, 'CXXFLAGS')
+setEnvVariable(env, 'CPPFLAGS')
+setEnvVariable(env, 'LINKFLAGS', LINKFLAGS_required)
+
+
+#---------------------------------------------------------
+# Frontend related variables (QTDIR etc)
+#---------------------------------------------------------
+
 if env.has_key('qt_dir') and env['qt_dir']:
   env['QTDIR'] = env['qt_dir']
   # add path to the qt tools
@@ -531,35 +524,6 @@ if env.has_key('extra_bin_path') and env['extra_bin_path']:
   # maybe only one of them is needed
   os.environ['PATH'] += os.pathsep + env['extra_bin_path']
   env['ENV']['PATH'] += os.pathsep + env['extra_bin_path']
-if env.has_key('aiksaurus_path') and env['aiksaurus_path']:
-  env.AppendUnique(LIBPATH = [env['aiksaurus_path']])
-
-
-# under windows, scons is confused by .C/.c and uses gcc instead of
-# g++. I am forcing the use of g++ here. This is expected to change
-# after lyx renames all .C files to .cpp
-#
-# Note that this step has to be after env.Tool('mingw') step
-# since env.Tool('mingw') will set env['CC'] etc.
-#
-# save the old c compiler and CCFLAGS (used by libintl)
-env['C_COMPILER'] = env.subst('$CC')
-env['C_CCFLAGS'] = env.subst('$CCFLAGS').split()
-# if we use ms vc, the commands are fine (cl.exe and link.exe)
-if not use_vc:
-  if env.has_key('CXX') and env['CXX']:
-    env['CC'] = env.subst('$CXX')
-    env['LINK'] = env.subst('$CXX')
-  else:
-    env['CC'] = 'g++'
-    env['LINK'] = 'g++'
-else: 
-  # /TP treat all source code as C++
-  # C4819: The file contains a character that cannot be represented 
-  #   in the current code page (number)
-  # C4996: foo was decleared deprecated
-  env.Append(CCFLAGS=['/TP', '/EHsc', '/wd4819', '/wd4996'])
-  env.Append(C_CCFLAGS=['/Dinline#', '/D__attribute__(x)#', '/Duintmax_t=UINT_MAX'])
 
 
 #----------------------------------------------------------
@@ -1132,7 +1096,9 @@ int count()
     utils.addToConfig('#define USE_MACOSX_PACKAGING 1')
 
   # BOOST_POSIX
-  if boost_posix:
+  # boost_posix indicates to boost which API to use (posix or windows).
+  # If not specified, boost tries to figure out by itself, but it may fail.
+  if os.name != 'nt':
     utils.addToConfig('#define BOOST_POSIX 1')
   else:
     utils.addToConfig('/* #undef BOOST_POSIX */')
@@ -1245,21 +1211,6 @@ for lib in libs:
 # QT_INC_PATH is not needed for *every* source file
 env['CPPPATH'].remove(env['QT_INC_PATH'])
 env['CPPPATH'] += ['$TOP_SRC_DIR/boost', '$TOP_SRC_DIR/src']
-
-# add appropriate compiling options (-DNDEBUG etc)
-# for debug/release mode
-# /Zi: debug info
-if ARGUMENTS.get('mode', default_build_mode) == 'debug':
-  if use_vc:
-    env.AppendUnique(CCFLAGS = ['/Zi'])
-    env.AppendUnique(LINKFLAGS = ['/debug', '/map'])
-  else:
-    env.AppendUnique(CCFLAGS = ['-Wall', '-g'])
-else:
-  if use_vc:
-    env.AppendUnique(CCFLAGS = ['/O2'])
-  else:
-    env.AppendUnique(CCFLAGS = ['-Wall', '-O2'])
 
 #
 # Customized builders
