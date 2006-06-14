@@ -82,7 +82,6 @@ libqt4_la_SOURCES = \
 	QWorkArea.C QWorkArea.h \
 	QWrap.C QWrap.h \
 	Qt2BC.C	Qt2BC.h	\
-	QtLyXView.h \
 	WorkAreaFactory.C \
 	checkedwidgets.C checkedwidgets.h \
 	lyx_gui.C \

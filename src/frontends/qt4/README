@@ -41,8 +41,6 @@ Never call buttoncontroller functions directly from dialogs. In general, you
 should use Qt2Base::changed() in all circumstances. However, if you must call
 the buttoncontroller, make sure to respect Qt2Base::updating_
 
-Don't #undef emit - #include "QtLyXView.h" instead
-
 Naming conventions
 ------------------
 
