@@ -1,10 +1,11 @@
 Building LyX with CMake
 
-CMake 2.4.2 or CVS version from www.cmake.org
+For all builds:
+- CMake 2.4.2 or CVS version from www.cmake.org
+- install Qt 4 and make sure qmake 4 is found
 
 
 Building Visual C++ 2005 project files:
-
 - install Visual C++ 2005
 - install Platform SDK 2005, "Core" and "Web Workshop"
 - add include and library paths of the SDK to the IDE search paths,
@@ -15,7 +16,25 @@ Building Visual C++ 2005 project files:
 - call in the build directory 'cmake ..\trunk\development\cmake'
 - start lyx.sln
 
+TIPS: - rename Microsoft Visual Studio 8\VC\vcpackages\feacp.dll 
+        to disable Intellisense
+      - the Release build links much faster
+
+
+Building with GCC/Linux:
+- create a build directory, e.g. .../trunk/../build
+- call in the build directory 'cmake ..\trunk\development\cmake'
+
+Building with GCC/Windows:
+- install zlib (www.zlib.net) into %ProgramFiles%/GnuWin32/include+lib
+- create a build directory, e.g. .../trunk/../build
+- call in the build directory 'cmake ..\trunk\development\cmake'
+
 
 To generate other build files call 'cmake'
 which shows a list of possibilities.
 
+
+The build process tries to find aspell and iconv on Windows 
+in %ProgramFiles%/GnuWin32/ and in /usr/ or in /usr/local 
+under Linux. If they are not found the support is disabled.
