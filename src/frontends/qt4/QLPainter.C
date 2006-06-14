@@ -55,19 +55,19 @@ int QLPainter::paperHeight() const
 	return qwa_->viewport()->height();
 }
 
-QPainter & QLPainter::setQPainterPen(QPainter & qp, LColor_color c,
+void QLPainter::setQPainterPen(QPainter & qp, LColor_color col,
 	Painter::line_style ls, Painter::line_width lw)
 {
-	if (c == current_color_ && ls == current_ls_ && lw == current_lw_)
-		return qp;
+	if (col == current_color_ && ls == current_ls_ && lw == current_lw_)
+		return;
 
-	current_color_ = c;
+	current_color_ = col;
 	current_ls_ = ls;
 	current_lw_ = lw;
 
 	QPen pen = qp.pen();
 
-	pen.setColor(lcolorcache.get(c));
+	pen.setColor(lcolorcache.get(col));
 
 	switch (ls) {
 		case line_solid: pen.setStyle(Qt::SolidLine); break;
@@ -80,14 +80,13 @@ QPainter & QLPainter::setQPainterPen(QPainter & qp, LColor_color c,
 	}
 
 	qp.setPen(pen);
-
-	return qp;
 }
 
-void QLPainter::point(int x, int y, LColor_color c)
+void QLPainter::point(int x, int y, LColor_color col)
 {
 	QPainter qp(qwa_->paintDevice());
-	setQPainterPen(qp, c).drawPoint(x, y);
+	setQPainterPen(qp, col);
+	qp.drawPoint(x, y);
 }
 
 
@@ -97,7 +96,8 @@ void QLPainter::line(int x1, int y1, int x2, int y2,
 	line_width lw)
 {
 	QPainter qp(qwa_->paintDevice());
-	setQPainterPen(qp, col, ls, lw).drawLine(x1, y1, x2, y2);
+	setQPainterPen(qp, col, ls, lw);
+	qp.drawLine(x1, y1, x2, y2);
 }
 
 
@@ -117,7 +117,8 @@ void QLPainter::lines(int const * xp, int const * yp, int np,
 	}
 
 	QPainter qp(qwa_->paintDevice());
-	setQPainterPen(qp, col, ls, lw).drawPolyline(points.get(), np);
+	setQPainterPen(qp, col, ls, lw);
+	qp.drawPolyline(points.get(), np);
 }
 
 
@@ -127,7 +128,8 @@ void QLPainter::rectangle(int x, int y, int w, int h,
 	line_width lw)
 {
 	QPainter qp(qwa_->paintDevice());
-	setQPainterPen(qp, col, ls, lw).drawRect(x, y, w, h);
+	setQPainterPen(qp, col, ls, lw);
+	qp.drawRect(x, y, w, h);
 }
 
 
@@ -162,7 +164,8 @@ void QLPainter::arc(int x, int y, unsigned int w, unsigned int h,
 {
 	// LyX usings 1/64ths degree, Qt usings 1/16th
 	QPainter qp(qwa_->paintDevice());
-	setQPainterPen(qp, col).drawArc(x, y, w, h, a1 / 4, a2 / 4);
+	setQPainterPen(qp, col);
+	qp.drawArc(x, y, w, h, a1 / 4, a2 / 4);
 }
 
 
@@ -204,11 +207,11 @@ void QLPainter::smallCapsText(int x, int y,
 	QFontMetrics const & qsmallfontm = QFontMetrics(qsmallfont);
 
 	QPainter qp(qwa_->paintDevice());
+	setQPainterPen(qp, f.realColor());
 	int tmpx = x;
 	size_t ls = s.length();
 	for (size_t i = 0; i < ls; ++i) {
-		// Brain-dead MSVC wants at(i) rather than operator[]
-		QChar const c = s.at(i).upper();
+		QChar const c = s[i].upper();
 		if (c != s.at(i)) {
 			qp.setFont(qsmallfont);
 			qp.drawText(tmpx, y, c);
@@ -225,9 +228,6 @@ void QLPainter::smallCapsText(int x, int y,
 void QLPainter::text(int x, int y, char const * s, size_t ls,
 	LyXFont const & f)
 {
-	QPainter qp(qwa_->paintDevice());
-	setQPainterPen(qp, f.realColor());
-
 	Encoding const * encoding = f.language()->encoding();
 	if (f.isSymbolFont())
 		encoding = encodings.symbol_encoding();
@@ -235,16 +235,18 @@ void QLPainter::text(int x, int y, char const * s, size_t ls,
 	QString str;
 	str.setLength(ls);
 	for (int i = 0; i < ls; ++i)
-		// Brain-dead MSVC wants at(i) rather than operator[]
 		str[i] = QChar(encoding->ucs(s[i]));
+
 	// HACK: QT3 refuses to show single compose characters
+	//       Still needed with Qt4?
 	if (ls == 1 && str[0].unicode() >= 0x05b0 && str[0].unicode() <= 0x05c2)
 		str = ' ' + str;
 
 	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
+		QPainter qp(qwa_->paintDevice());
+		setQPainterPen(qp, f.realColor());
 		qp.setFont(fontloader.get(f));
-		// We need to draw the text as LTR as we use our own bidi
-		// code.
+		// We need to draw the text as LTR as we use our own bidi code.
 		qp.setLayoutDirection(Qt::LeftToRight);
 		qp.drawText(x, y, str, -1);
 	} else {
