@@ -47,7 +47,7 @@ class QtView : public QMainWindow, public LyXView {
 	Q_OBJECT
 public:
 	/// create a main window of the given dimensions
-	QtView(unsigned int w, unsigned int h, bool maximize);
+	QtView(unsigned int w, unsigned int h);
 
 	~QtView();
 
