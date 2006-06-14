@@ -32,9 +32,7 @@
 // standard C++ with new header file names and std:: namespace
 #include <iostream>
 #include <fstream>
-#ifdef HAVE_ZLIB_H
-# include <zlib.h>
-#endif
+#include <zlib.h>
 
 // For LyX
 #define GZSTREAM_NAMESPACE gz

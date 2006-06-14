@@ -1,3 +1,8 @@
+2006-06-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* gzstream.h: do not test for HAVE_ZLIB_H, since we require it
+	anyway. 
+
 2006-05-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* os_unix.C (canAutoOpenFile, autoOpenFile): add support for Mac
