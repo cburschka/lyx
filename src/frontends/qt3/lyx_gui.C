@@ -237,7 +237,7 @@ void start(string const & batch, vector<string> const & files,
 	view.setGeometry(posx, posy, width, height);
 
 	if (maximize)
-		view.setWindowState(WindowMaximized);
+		view.setWindowState(Qt::WindowMaximized);
 
 	view.show();
 
