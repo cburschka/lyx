@@ -55,14 +55,9 @@ int const statusbar_timer_value = 3000;
 
 
 
-QtView::QtView(unsigned int width, unsigned int height, bool maximize)
+QtView::QtView(unsigned int width, unsigned int height)
 	: QMainWindow(), LyXView(), commandbuffer_(0)
 {
-	resize(width, height);
-	
-	if (maximize)
-		this->setWindowState(WindowMaximized);
-
 	qApp->setMainWidget(this);
 
 	bufferview_.reset(new BufferView(this, width, height));
@@ -163,15 +158,16 @@ bool QtView::hasFocus() const
 
 void QtView::closeEvent(QCloseEvent *)
 {
-	LyX::ref().session().saveSessionInfo("WindowIsMaximized", (this->isMaximized() ? "yes" : "no"));
+	Session & session = LyX::ref().session();
+	session.saveSessionInfo("WindowIsMaximized", (isMaximized() ? "yes" : "no"));
 	// don't save maximized values
-	this->showNormal();
+	showNormal();
 	// save windows size and position
-	LyX::ref().session().saveSessionInfo("WindowWidth", convert<string>(width()));
-	LyX::ref().session().saveSessionInfo("WindowHeight", convert<string>(height()));
+	session.saveSessionInfo("WindowWidth", convert<string>(width()));
+	session.saveSessionInfo("WindowHeight", convert<string>(height()));
 	if (lyxrc.geometry_xysaved) {
-		LyX::ref().session().saveSessionInfo("WindowPosX", convert<string>(x()));
-		LyX::ref().session().saveSessionInfo("WindowPosY", convert<string>(y()));
+		session.saveSessionInfo("WindowPosX", convert<string>(x()));
+		session.saveSessionInfo("WindowPosY", convert<string>(y()));
 	}
 	// trigger LFUN_LYX_QUIT instead of quit directly
 	// since LFUN_LYX_QUIT may have more cleanup stuff
