@@ -240,10 +240,11 @@ void start(string const & batch, vector<string> const & files,
 
 	view.init();
 		
-	view.setGeometry(posx, posy, width, height);
-
-	if (maximize)
-		view.setWindowState(Qt::WindowMaximized);
+	if (posx != -1 && posy != -1) { 	
+		view.setGeometry(posx, posy, width, height);
+		if (maximize)
+			view.setWindowState(Qt::WindowMaximized);
+	}
 
 	view.show();
 
