@@ -81,7 +81,7 @@ count (Iterator first, Iterator last, T const & value)
 #ifdef HAVE_STD_COUNT
 	return std::count(first, last, value);
 #else
-	std::iterator_traits<Iterator>::difference_type n = 0;
+	typename std::iterator_traits<Iterator>::difference_type n = 0;
 	while (first != last)
 		if (*first++ == value) ++n;
 	return n;
