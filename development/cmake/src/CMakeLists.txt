@@ -265,5 +265,5 @@ target_link_libraries(lyx-qt4
 )
 
 if(ASPELL_FOUND)
-	target_link_libraries(lyx-qt4 ${ASPELL_LIBRARIES})
+	target_link_libraries(lyx-qt4 ${ASPELL_LIBRARY})
 endif(ASPELL_FOUND)

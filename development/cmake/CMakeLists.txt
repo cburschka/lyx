@@ -6,6 +6,11 @@ set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/modules")
 include(LyXPaths)
 include(LyXMacros)
 
+if(release)
+	set(CMAKE_BUILD_TYPE TRUE)
+	set(release)
+endif(release)	
+
 find_package(Qt4 REQUIRED)
 find_package(ZLIB REQUIRED)
 
