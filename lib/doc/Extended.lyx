@@ -15721,7 +15721,7 @@ HTML
 \begin_layout Standard
 LyX documents can be converted to hypertext markup, usually by converting
  to LaTeX first, then converting that to HTML\SpecialChar \@.
- Three LaTeX
+ Four LaTeX
 \begin_inset Formula $\rightarrow$
 \end_inset
 
@@ -15733,9 +15733,13 @@ tth
 \family typewriter
 latex2html
 \family default
-, and 
+, 
 \family typewriter
 hevea
+\family default
+ and 
+\family typewriter
+htlatex
 \family default
 .
  Though they are autodetected, you can overide the selection in preferences.
