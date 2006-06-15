@@ -15841,7 +15841,7 @@ H
 TML
 \family default
  nach HTML konvertiert werden.
- LyX kennt zur Zeit drei LaTeX 
+ LyX kennt zur Zeit vier LaTeX 
 \begin_inset Formula $\rightarrow$
 \end_inset
 
@@ -15854,9 +15854,13 @@ tth
 latex2\SpecialChar \-
 html
 \family default
- und 
+, 
 \family typewriter
 hevea
+\family default
+ und 
+\family typewriter
+htlatex
 \family default
 .
  
