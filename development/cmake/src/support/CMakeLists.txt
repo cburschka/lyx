@@ -10,7 +10,8 @@ list(REMOVE_ITEM support_sources
 	${TOP_SRC_DIR}/src/support/os_unix.C
 	${TOP_SRC_DIR}/src/support/os_cygwin.C
 	${TOP_SRC_DIR}/src/support/os_os2.C
-	${TOP_SRC_DIR}/src/support/atexit.c)
+	${TOP_SRC_DIR}/src/support/atexit.c
+	${TOP_SRC_DIR}/src/support/strerror.c)
 	
 
 include_directories(${TOP_SRC_DIR}/src/support)
