@@ -18,7 +18,7 @@
 #include <qfont.h>
 #include <qfontmetrics.h>
 
-#if QT_VERSION < 0x030100
+#if QT_VERSION < 0x030100 || defined(Q_WS_MACX)
 #define USE_LYX_FONTCACHE
 #endif
 
@@ -35,7 +35,7 @@ public:
 	QLFontInfo(LyXFont const & f);
 
 	/// Return pixel width for the given unicode char
-	int width(Uchar val) const;
+	int width(Uchar val);
 
 	/// The font instance
 	QFont font;
