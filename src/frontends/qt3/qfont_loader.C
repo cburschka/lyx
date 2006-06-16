@@ -359,7 +359,7 @@ QLFontInfo::QLFontInfo(LyXFont const & f)
 }
 
 
-int QLFontInfo::width(Uchar val) const
+int QLFontInfo::width(Uchar val)
 {
 // Starting with version 3.1.0, Qt/X11 does its own caching of
 // character width, so it is not necessary to provide ours.
