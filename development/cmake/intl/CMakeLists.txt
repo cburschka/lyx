@@ -36,7 +36,7 @@ else(MSVC_IDE)
 endif(MSVC_IDE)
 
     
-
+file(GLOB intl_headers ${TOP_SRC_DIR}/intl/*.h)
 
 set(intl_sources 
       bindtextdom.c
@@ -72,7 +72,7 @@ if(ICONV_FOUND)
 	include_directories(${ICONV_INCLUDE_DIR})
 endif(ICONV_FOUND)
 
-add_library(intl STATIC ${intl_sources})
+add_library(intl STATIC ${intl_sources} ${intl_headers})
 
 if(ICONV_FOUND)
 	target_link_libraries(intl ${ICONV_LIBRARY})
