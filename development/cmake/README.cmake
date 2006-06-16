@@ -25,9 +25,10 @@ Building with GCC/Linux:
 - create a build directory, e.g. .../trunk/../build
 - call in the build directory 'cmake ..\trunk\development\cmake'
 
-Building with GCC/Windows:
+Building with GCC/Windows (Win2k only works with MSYS, XP?):
 - install zlib (www.zlib.net) into %ProgramFiles%/GnuWin32/include+lib
 - create a build directory, e.g. .../trunk/../build
+- call: export QMAKESPEC=win32-g++ (MSYS) or set QMAKESPEC=win32-g++ (CMD)
 - call in the build directory 'cmake ..\trunk\development\cmake'
 
 
