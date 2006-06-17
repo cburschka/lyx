@@ -1,5 +1,5 @@
 /**
- * \file QLAction.C
+ * \file Action.C
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -22,7 +22,7 @@
 #include "LyXView.h"
 #include "qt_helpers.h"
 
-#include "QLAction.h"
+#include "Action.h"
 
 #include "support/lstrings.h"
 
@@ -39,7 +39,7 @@ int const statusbar_timer_value = 3000;
 
 } // namespace anon
 
-QLAction::QLAction(LyXView & lyxView, string const & text,
+Action::Action(LyXView & lyxView, string const & text,
 		FuncRequest const & func, string const & tooltip)
 		: QAction(this), lyxView_(lyxView), func_(func)
 {
@@ -50,7 +50,7 @@ QLAction::QLAction(LyXView & lyxView, string const & text,
 	this->setCheckable(true);
 }
 
-QLAction::QLAction(LyXView & lyxView, string const & icon, string const & text,
+Action::Action(LyXView & lyxView, string const & icon, string const & text,
 		FuncRequest const & func, string const & tooltip)
 		: QAction(this), lyxView_(lyxView), func_(func)
 {
@@ -63,13 +63,13 @@ QLAction::QLAction(LyXView & lyxView, string const & icon, string const & text,
 }
 
 /*
-void QLAction::setAction(FuncRequest const & func)
+void Action::setAction(FuncRequest const & func)
 {
 	func_=func;
 }
 */
 
-void QLAction::update()
+void Action::update()
 {
 	FuncStatus const status = lyxView_.getLyXFunc().getStatus(func_);
 
@@ -78,7 +78,7 @@ void QLAction::update()
 }
 
 
-void QLAction::action()
+void Action::action()
 {
 //	lyxerr[Debug::ACTION] << "calling LyXFunc::dispatch: func_: " << func_ << endl;
 
@@ -88,4 +88,4 @@ void QLAction::action()
 } // namespace frontend
 } // namespace lyx
 
-#include "QLAction_moc.cpp"
+#include "Action_moc.cpp"

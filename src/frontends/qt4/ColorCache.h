@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file lcolorcache.h
+ * \file ColorCache.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -9,8 +9,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef LCOLORCACHE_H
-#define LCOLORCACHE_H
+#ifndef COLORCACHE_H
+#define COLORCACHE_H
 
 #include "LColor.h"
 
@@ -29,9 +29,9 @@ struct RGBColor;
 /**
  * Cache from LColor to QColor.
  */
-class LColorCache {
+class ColorCache {
 public:
-	LColorCache();
+	ColorCache();
 
 	/// get the given color
 	QColor const & get(LColor_color color) const;
@@ -46,8 +46,8 @@ private:
 };
 
 /// singleton instance
-extern LColorCache lcolorcache;
+extern ColorCache lcolorcache;
 
 ///
 QColor const rgb2qcolor(lyx::RGBColor const &);
-#endif // LCOLORCACHE_H
+#endif // COLORCACHE_H

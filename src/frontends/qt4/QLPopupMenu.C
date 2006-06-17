@@ -17,7 +17,7 @@
 // All is well if the namespace is visible first.
 #include "QtView.h"
 
-#include "QLAction.h"
+#include "Action.h"
 #include "QLPopupMenu.h"
 #include "QLMenubar.h"
 #include "qt_helpers.h"
@@ -120,7 +120,7 @@ void QLPopupMenu::populate(QMenu* qMenu, Menu * menu)
 			string label = getLabel(*m);
 			addBinding(label, *m);
 
-			QLAction * action = new QLAction(*(owner_->view()), label, m->func());
+			Action * action = new Action(*(owner_->view()), label, m->func());
 			action->setEnabled(m->status().enabled());
 			action->setChecked(m->status().onoff(true));
 			// Actually insert the menu item

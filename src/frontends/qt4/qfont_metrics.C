@@ -14,7 +14,7 @@
 #include "frontends/font_metrics.h"
 #include "frontends/lyx_gui.h"
 
-#include "qfont_loader.h"
+#include "FontLoader.h"
 
 #include "language.h"
 

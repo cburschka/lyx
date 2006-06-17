@@ -72,6 +72,7 @@ UIFILES = \
 	QWrapUi.ui
 
 MOCFILES = \
+	Action.C Action.h \
 	BulletsModule.C BulletsModule.h \
 	emptytable.C emptytable.h \
 	FileDialog_private.C FileDialog_private.h \
@@ -100,7 +101,6 @@ MOCFILES = \
 	QGraphicsDialog.C QGraphicsDialog.h \
 	QIncludeDialog.C QIncludeDialog.h \
 	QIndexDialog.C QIndexDialog.h \
-	QLAction.C QLAction.h \
 	QLogDialog.C QLogDialog.h \
 	QViewSourceDialog.C QViewSourceDialog.h \
 	QViewSource.C QViewSource.h \

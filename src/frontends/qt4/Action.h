@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file QLAction.h
+ * \file Action.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -9,8 +9,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QLACTION_H
-#define QLACTION_H
+#ifndef ACTION_H
+#define ACTION_H
 
 // Must be here because of moc.
 #include <config.h>
@@ -28,18 +28,18 @@ namespace lyx {
 namespace frontend {
 
 /**
- * QLAction - Qt interface with LyX' FuncRequest.
+ * Action - Qt interface with LyX' FuncRequest.
  *
- * QLAction can be used in LyX menubar and/or toolbars.
+ * Action can be used in LyX menubar and/or toolbars.
  */
-class QLAction: public QAction {
+class Action: public QAction {
 	Q_OBJECT
 public:
 
-	QLAction(LyXView & lyxView, std::string const & text,
+	Action(LyXView & lyxView, std::string const & text,
 		FuncRequest const & func, std::string const & tooltip="");
 
-	QLAction(LyXView & lyxView, std::string const & icon, std::string const & text,
+	Action(LyXView & lyxView, std::string const & icon, std::string const & text,
 		FuncRequest const & func, std::string const & tooltip="");
 
 	void update();
@@ -59,4 +59,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // QLACTION_H
+#endif // ACTION_H

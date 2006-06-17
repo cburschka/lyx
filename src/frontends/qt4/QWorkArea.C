@@ -18,7 +18,7 @@
 #include "QLyXKeySym.h"
 #include "QtView.h"
 
-#include "lcolorcache.h"
+#include "ColorCache.h"
 #include "qt_helpers.h"
 #include "BufferView.h"
 #include "debug.h"

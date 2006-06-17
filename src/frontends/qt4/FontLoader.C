@@ -11,7 +11,7 @@
 
 #include <config.h>
 
-#include "qfont_loader.h"
+#include "FontLoader.h"
 #include "qt_helpers.h"
 
 #include "debug.h"

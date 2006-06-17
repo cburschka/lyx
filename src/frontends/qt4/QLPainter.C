@@ -16,8 +16,8 @@
 #include "QWorkArea.h"
 #include "QLImage.h"
 
-#include "lcolorcache.h"
-#include "qfont_loader.h"
+#include "ColorCache.h"
+#include "FontLoader.h"
 
 #include "debug.h"
 #include "language.h"

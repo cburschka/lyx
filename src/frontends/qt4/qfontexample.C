@@ -12,8 +12,7 @@
 
 #include "qfontexample.h"
 
-#include <qpainter.h>
-//Added by qt3to4:
+#include <QPainter>
 #include <QPaintEvent>
 
 void QFontExample::set(QFont const & font, QString const & text)

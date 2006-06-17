@@ -35,7 +35,7 @@
 
 #include "QtView.h"
 #include "QLMenubar.h"
-#include "qfont_loader.h"
+#include "FontLoader.h"
 #include "QCommandBuffer.h"
 #include "qt_helpers.h"
 

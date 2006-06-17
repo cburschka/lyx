@@ -32,7 +32,9 @@ AM_CPPFLAGS += \
 libqt4_la_SOURCES = \
 	QDialogView.C \
 	QDialogView.h \
+	Action.C Action.h \
 	Alert_pimpl.C \
+	ColorCache.h ColorCache.C \
 	Dialogs.C \
 	FileDialog.C \
 	LyXKeySymFactory.C \
@@ -56,7 +58,6 @@ libqt4_la_SOURCES = \
 	QGraphics.C QGraphics.h \
 	QInclude.C QInclude.h \
 	QIndex.C QIndex.h \
-	QLAction.C QLAction.h \
 	QLImage.C QLImage.h \
 	QLog.C QLog.h \
 	QViewSource.C QViewSource.h \
@@ -85,10 +86,9 @@ libqt4_la_SOURCES = \
 	WorkAreaFactory.C \
 	checkedwidgets.C checkedwidgets.h \
 	lyx_gui.C \
-	lcolorcache.h lcolorcache.C \
 	panelstack.h panelstack.C \
 	qfontexample.h qfontexample.C \
-	qfont_loader.h qfont_loader.C \
+	FontLoader.h FontLoader.C \
 	qfont_metrics.C \
 	qlkey.h \
 	qt_helpers.h qt_helpers.C \

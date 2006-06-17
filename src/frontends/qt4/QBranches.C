@@ -13,7 +13,7 @@
 
 #include "QBranches.h"
 
-#include "lcolorcache.h"
+#include "ColorCache.h"
 #include "validators.h"
 #include "qt_helpers.h"
 

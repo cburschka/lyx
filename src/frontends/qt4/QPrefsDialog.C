@@ -13,7 +13,7 @@
 #include "debug.h"
 #include "qt_helpers.h"
 
-#include "lcolorcache.h"
+#include "ColorCache.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
 
@@ -40,7 +40,7 @@
 
 #include "gettext.h"
 #include "LColor.h"
-#include "lcolorcache.h"
+#include "ColorCache.h"
 
 #include "controllers/ControlPrefs.h"
 

@@ -43,8 +43,8 @@
 #include <boost/shared_ptr.hpp>
 
 #include "QtView.h"
-#include "lcolorcache.h"
-#include "qfont_loader.h"
+#include "ColorCache.h"
+#include "FontLoader.h"
 #include "QLImage.h"
 #include "qt_helpers.h"
 #include "socket_callback.h"

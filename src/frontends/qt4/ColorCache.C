@@ -1,5 +1,5 @@
 /**
- * \file lcolorcache.C
+ * \file ColorCache.C
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,11 +11,11 @@
 #include <config.h>
 
 #include "Color.h"
-#include "lcolorcache.h"
+#include "ColorCache.h"
 
 #include "LColor.h"
 
-LColorCache lcolorcache;
+ColorCache lcolorcache;
 
 const QColor grey40(0x66, 0x66, 0x66);
 const QColor grey60(0x99, 0x99, 0x99);
@@ -24,11 +24,11 @@ const QColor grey90(0xe5, 0xe5, 0xe5);
 const QColor none = Qt::black;
 
 
-LColorCache::LColorCache()
+ColorCache::ColorCache()
 {
 }
 
-QColor const & LColorCache::get(LColor_color col) const
+QColor const & ColorCache::get(LColor_color col) const
 {
 	lcolor_map::const_iterator cit = colormap.find(col);
 	if (cit != colormap.end())
@@ -51,7 +51,7 @@ QColor const & LColorCache::get(LColor_color col) const
 }
 
 
-void LColorCache::clear()
+void ColorCache::clear()
 {
 	colormap.clear();
 }

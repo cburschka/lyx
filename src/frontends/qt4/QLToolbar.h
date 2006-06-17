@@ -30,7 +30,7 @@ namespace frontend {
 
 class QLayoutBox;
 class QtView;
-class QLAction;
+class Action;
 
 
 class QLayoutBox : public QObject, public LayoutBox {
@@ -76,7 +76,7 @@ signals:
 
 private:
 
-	std::vector<QLAction *> ActionVector;
+	std::vector<Action *> ActionVector;
 	QtView & owner_;
 	QToolBar * toolbar_;
 
