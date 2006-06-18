@@ -222,7 +222,7 @@ void parse_lyxrc()
 
 
 void start(string const & batch, vector<string> const & files,
-	   unsigned int width, unsigned int height, int posx, int posy, bool maximize)
+	   unsigned int width, unsigned int height, int posx, int posy, bool)
 {
 	// this can't be done before because it needs the Languages object
 	initEncodings();
@@ -232,15 +232,11 @@ void start(string const & batch, vector<string> const & files,
 
 	QtView & view = *view_ptr.get();
 
-	view.init();
-		
-	if (posx != -1 && posy != -1) {
-		view.setGeometry(posx, posy, width, height);
-		if (maximize)
-			view.setWindowState(Qt::WindowMaximized);
-	}
+	if (posx != -1 && posy != -1)
+		view.move(QPoint(posx, posy));
 
 	view.show();
+	view.init();
 
 	// FIXME: some code below needs moving
 

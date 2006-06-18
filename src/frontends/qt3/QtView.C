@@ -58,6 +58,8 @@ int const statusbar_timer_value = 3000;
 QtView::QtView(unsigned int width, unsigned int height)
 	: QMainWindow(), LyXView(), commandbuffer_(0)
 {
+	resize(width, height);
+
 	qApp->setMainWidget(this);
 
 	bufferview_.reset(new BufferView(this, width, height));
@@ -160,8 +162,6 @@ void QtView::closeEvent(QCloseEvent *)
 {
 	Session & session = LyX::ref().session();
 	session.saveSessionInfo("WindowIsMaximized", (isMaximized() ? "yes" : "no"));
-	// don't save maximized values
-	showNormal();
 	// save windows size and position
 	session.saveSessionInfo("WindowWidth", convert<string>(width()));
 	session.saveSessionInfo("WindowHeight", convert<string>(height()));
