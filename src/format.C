@@ -23,19 +23,17 @@
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/os.h"
-#include "support/path.h"
 #include "support/systemcall.h"
 
 #include <boost/filesystem/operations.hpp>
 
+using lyx::support::absolutePath;
 using lyx::support::bformat;
 using lyx::support::compare_ascii_no_case;
 using lyx::support::contains;
 using lyx::support::libScriptSearch;
 using lyx::support::makeDisplayPath;
-using lyx::support::onlyFilename;
 using lyx::support::onlyPath;
-using lyx::support::Path;
 using lyx::support::quoteName;
 using lyx::support::subst;
 using lyx::support::Systemcall;
@@ -262,6 +260,7 @@ void Formats::setViewer(string const & name, string const & command)
 bool Formats::view(Buffer const & buffer, string const & filename,
 		   string const & format_name) const
 {
+	BOOST_ASSERT(absolutePath(filename));
 	if (filename.empty() || !fs::exists(filename)) {
 		Alert::error(_("Cannot view file"),
 			bformat(_("File does not exist: %1$s"),
@@ -309,14 +308,12 @@ bool Formats::view(Buffer const & buffer, string const & filename,
 	if (!contains(command, token_from))
 		command += ' ' + token_from;
 
-	command = subst(command, token_from,
-			quoteName(onlyFilename(filename)));
+	command = subst(command, token_from, quoteName(filename));
 	command = subst(command, token_path, quoteName(onlyPath(filename)));
 	command = subst(command, token_socket, quoteName(lyxsocket->address()));
 	lyxerr[Debug::FILES] << "Executing command: " << command << std::endl;
 	buffer.message(_("Executing command: ") + command);
 
-	Path p(onlyPath(filename));
 	Systemcall one;
 	int const res = one.startscript(Systemcall::DontWait, command);
 
@@ -333,6 +330,7 @@ bool Formats::view(Buffer const & buffer, string const & filename,
 bool Formats::edit(Buffer const & buffer, string const & filename,
 			 string const & format_name) const
 {
+	BOOST_ASSERT(absolutePath(filename));
 	if (filename.empty() || !fs::exists(filename)) {
 		Alert::error(_("Cannot edit file"),
 			bformat(_("File does not exist: %1$s"),
@@ -369,14 +367,12 @@ bool Formats::edit(Buffer const & buffer, string const & filename,
 	if (!contains(command, token_from))
 		command += ' ' + token_from;
 
-	command = subst(command, token_from,
-			quoteName(onlyFilename(filename)));
+	command = subst(command, token_from, quoteName(filename));
 	command = subst(command, token_path, quoteName(onlyPath(filename)));
 	command = subst(command, token_socket, quoteName(lyxsocket->address()));
 	lyxerr[Debug::FILES] << "Executing command: " << command << std::endl;
 	buffer.message(_("Executing command: ") + command);
 
-	Path p(onlyPath(filename));
 	Systemcall one;
 	int const res = one.startscript(Systemcall::DontWait, command);
 
