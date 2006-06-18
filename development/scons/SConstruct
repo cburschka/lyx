@@ -145,8 +145,8 @@ opts.AddOptions(
     allowed_values = ('windows', 'posix', 'macosx')),
   #
   BoolOption('fast_start', 'Whether or not use cached tests and keep current config.h', True),
-  # FIXME: I do not know how pch is working. Ignore this option now.
-  BoolOption('pch', '(NA) Whether or not use pch', None),
+  # 
+  BoolOption('pch', 'Whether or not use pch', False),
   # enable assertion, (config.h has ENABLE_ASSERTIOS
   BoolOption('assertions', 'Use assertions', True),
   # enable warning, (config.h has WITH_WARNINGS)
@@ -309,6 +309,8 @@ env['ENV']['INCLUDE'] = os.environ.get('INCLUDE')
 # for simplicity, use var instead of env[var]
 frontend = env['frontend']
 prefix = env['prefix']
+mode = env['mode']
+use_pch = env['pch']
 
 if platform_name == 'win32':
   if env.has_key('use_vc'):
@@ -330,7 +332,7 @@ if env.has_key('build_dir') and env['build_dir'] is not None:
   env['BUILDDIR'] = env['build_dir']
 else:
   # Determine the name of the build $mode
-  env['BUILDDIR'] = '#' + env['mode']
+  env['BUILDDIR'] = '#' + mode
 
 # all built libraries will go to build_dir/libs
 # (This is different from the make file approach)
@@ -443,6 +445,10 @@ else:
     env['CC'] = 'g++'
     env['LINK'] = 'g++'
 
+# only support gcc now
+if use_pch and not use_vc:
+  CCFLAGS_required.extend(['-Winvalid-pch'])
+  
 # for debug/release mode
 if env.has_key('optimization') and env['optimization'] is not None:
   # if user supplies optimization flags, use it anyway
@@ -452,14 +458,14 @@ if env.has_key('optimization') and env['optimization'] is not None:
 else:
   set_default_optimization_flags = True
 
-if env['mode'] == 'debug':
+if mode == 'debug':
   if use_vc:
     CCFLAGS_required.append('/Zi')
     LINKFLAGS_required.extend(['/debug', '/map'])
   else:
     CCFLAGS_required.append('-g')
-    CCFLAGS_default.append('-Wall')
-elif env['mode'] == 'release' and set_default_optimization_flags:
+    CCFLAGS_default.extend(['-Wall', '-O'])
+elif mode == 'release' and set_default_optimization_flags:
   if use_vc:
     CCFLAGS_default.append('/O2')
   else:
@@ -754,6 +760,11 @@ else:
 #----------------------------------------------------------
 # Generating config.h
 #----------------------------------------------------------
+aspell_lib = 'aspell'
+# assume that we use aspell, aspelld compiled for msvc
+if platform_name == 'win32' and mode == 'debug':
+  aspell_lib = 'aspelld'
+
 if not fast_start:
   print "Generating src/config.h..."
 
@@ -770,7 +781,7 @@ if not fast_start:
   env['USE_ASPELL'] = False
   env['USE_PSPELL'] = False
   env['USE_ISPELL'] = False
-  if spell_opt in ['auto', 'aspell'] and conf.CheckLib('aspell'):
+  if spell_opt in ['auto', 'aspell'] and conf.CheckLib(aspell_lib):
     spell_engine = 'USE_ASPELL'
   elif spell_opt in ['auto', 'pspell'] and conf.CheckLib('pspell'):
     spell_engine = 'USE_PSPELL'
@@ -1000,7 +1011,7 @@ else:
   # (doing nothing obvious), adding fast_start=yes
   # to a build with fast_start=no will result in a rebuild
   # Note that the exact header file to check does not matter
-  conf.CheckCHeader('io.h')
+  # conf.CheckCHeader('io.h')
   # only a few variables need to be rescanned
   for key in ['USE_ASPELL', 'USE_PSPELL', 'USE_ISPELL', 'HAVE_FCNTL',\
     'HAVE_ICONV', 'HAVE_LIBGDI32', 'HAVE_LIBAIKSAURUS',
@@ -1026,11 +1037,19 @@ try:
     qt_libs = ['qt-mt']
     frontend_libs = ['qt-mt']
   elif frontend == 'qt4':
-    if platform_name == "win32":
-      qt_libs = ['QtCore4', 'QtGui4']
+    qt_libs = ['QtCore', 'QtGui']
+    # set the right lib names
+    if platform_name == 'win32':
+      if mode == 'debug':
+        qt_lib_suffix = 'd4'
+      else:
+        qt_lib_suffix = '4'
     else:
-      qt_libs = ['QtCore', 'QtGui']
-    frontend_libs = qt_libs
+      if mode == 'debug':
+        qt_lib_suffix = '_debug'
+      else:
+        qt_lib_suffix = ''
+    frontend_libs = [x + qt_lib_suffix for x in qt_libs]
 except:
   print "Can not locate qt tools"
   print "What I get is "
@@ -1055,7 +1074,7 @@ libs = [
   ('HAVE_ICONV', env['ICONV_LIB']),
   ('HAVE_LIBGDI32', 'gdi32'),
   ('HAVE_LIBAIKSAURUS', env['AIKSAURUS_LIB']),
-  ('USE_ASPELL', 'aspell'),
+  ('USE_ASPELL', aspell_lib),
   ('USE_ISPELL', 'ispell'),
   ('USE_PSPELL', 'pspell'),
 ]
@@ -1082,6 +1101,17 @@ env['CPPPATH'] += ['$TOP_SRCDIR/boost', '$TOP_SRCDIR/src']
 #
 # install customized builders
 env['BUILDERS']['substFile'] = Builder(action = utils.env_subst)
+if use_pch and not use_vc:
+  env['CCPCHFLAGS'] =  '-x c++-header'
+  env['BUILDERS']['PCH'] = Builder(
+    action = '$CXX $CPPFLAGS $_CPPDEFFLAGS $_CPPINCFLAGS $CCPCHFLAGS $SOURCES -o $TARGET',
+    suffix = '.h.pch', src_suffix = '.h'
+  )
+else:
+  # do nothing
+  def emptyTarget(target, source, env):
+    return [], source
+  env['BUILDERS']['PCH'] = Builder(action = '', emitter = emptyTarget)
 
 #
 # A Link script for cygwin see
@@ -1588,10 +1618,13 @@ if build_mathed:
   # src/mathed
   #
   print "Processing files in src/mathed..."
-
+  env['PCH_H'] = '$TOP_SRCDIR/src/mathed/pch.h'
+  env['PCH_FILE'] = env.PCH(env['PCH_H'])
+  #
   mathed = env.StaticLibrary(
     target = '$LOCALLIBPATH/mathed',
-    source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/mathed'), pattern = lyx_ext,
+    source = env['PCH_FILE'] + utils.globSource(dir = env.subst('$TOP_SRCDIR/src/mathed'), 
+      pattern = lyx_ext,
       exclude = ['math_xyarrowinset.C', 'math_mboxinset.C', 'formulamacro.C'],
       build_dir = '$BUILDDIR/common/mathed')
   )
@@ -1603,10 +1636,11 @@ if build_insets:
   # src/insets
   #
   print "Processing files in src/insets..."
-
+  #
   insets = env.StaticLibrary(
     target = '$LOCALLIBPATH/insets',
-    source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/insets'), pattern = lyx_ext,
+    source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/insets'), 
+      pattern = lyx_ext,
       exclude = ['insettheorem.C'], build_dir = '$BUILDDIR/common/insets')
   )
   Alias('insets', insets)
@@ -1869,7 +1903,7 @@ if build_qt4:
   # process .C file!!! (add to cxx_suffixes )
   #
   qt4env.Tool('qt4', [scons_dir])
-  qt4env.EnableQt4Modules(qt_libs, debug = False)
+  qt4env.EnableQt4Modules(qt_libs, debug = (mode == 'debug'))
 
   qt4env.AppendUnique(CPPPATH = [
     '$BUILDDIR/common',
@@ -1921,7 +1955,7 @@ if build_qt4:
     QGraphicsDialog.C
     QIncludeDialog.C
     QIndexDialog.C
-    QLAction.C
+    Action.C
     QLogDialog.C
     QViewSourceDialog.C
     QViewSource.C
@@ -1970,7 +2004,6 @@ if build_qt4:
 
   qt4 = qt4env.StaticLibrary(
     target = '$LOCALLIBPATH/qt4',
-    LIBS = qt_libs,
     source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/frontends/qt4'), pattern = lyx_ext,
       exclude = ['QBrowseBox.C'], build_dir = '$BUILDDIR/common/frontends/qt4')
   )

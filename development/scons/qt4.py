@@ -332,9 +332,6 @@ def enable_modules(self, modules, debug=False) :
 		'QtUiTools',
 		'QtUiTools_debug',
 	]
-	# under windows, they are named QtCore4 etc
-	validModules += [x+'4' for x in validModules]
-	pclessModules += [x+'4' for x in pclessModules]
 	invalidModules=[]
 	for module in modules:
 		if module not in validModules :
@@ -366,7 +363,7 @@ def enable_modules(self, modules, debug=False) :
 		self.AppendUnique(LIBS=[lib+'4'+debugSuffix for lib in modules])
 		if 'QtOpenGL' in modules:
 			self.AppendUnique(LIBS=['opengl32'])
-		self.AppendUnique(CPPPATH=[ '$QTDIR/include/'+module[:-1]
+		self.AppendUnique(CPPPATH=[ '$QTDIR/include/'+module
 			for module in modules])
 		self.AppendUnique(LIBPATH=['$QTDIR/lib'])
 
