@@ -10,6 +10,8 @@ lyx_automoc(${frontends_qt4_sources})
 
 lyx_add_qt4_ui_files(frontends_qt4_sources ${frontend_qt4_UI})
 
+source_group("Uic files" FILES ${frontend_qt4_UI})
+
 add_definitions(-DQT3_SUPPORT -DQT_NO_STL)
 
 include_directories(	${TOP_SRC_DIR}/src/frontends/qt4 
