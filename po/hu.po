@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2006-06-08 13:02+0200\n"
-"PO-Revision-Date: 2006-06-04 23:33+0100\n"
+"PO-Revision-Date: 2006-06-10 23:41+0100\n"
 "Last-Translator: Szõke Sándor <alex@lyx.hu>\n"
 "Language-Team:  <hu@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -310,24 +310,24 @@ msgstr "Család:|#C"
 
 #: src/frontends/xforms/forms/form_character.fd:80
 msgid "Series:|#S"
-msgstr "Testesség:|#T"
+msgstr "Testesség:|#s"
 
 #: src/frontends/xforms/forms/form_character.fd:98
 msgid "Shape:|#H"
-msgstr "Alak:|#l"
+msgstr "Alak:|#k"
 
 #: src/frontends/xforms/forms/form_character.fd:116
 msgid "Color:|#C"
-msgstr "Szín:|#S"
+msgstr "Szín:|#n"
 
 #: src/frontends/xforms/forms/form_character.fd:134
 #: src/frontends/xforms/forms/form_document.fd:1233
 msgid "Language:|#L"
-msgstr "Nyelv:|#N"
+msgstr "Nyelv:|#l"
 
 #: src/frontends/xforms/forms/form_character.fd:152
 msgid "Toggle on all these|#T"
-msgstr "A fentiek mindegyikét állítsa|#F"
+msgstr "A fentiek mindegyikét állítsa|#t"
 
 #: src/frontends/xforms/forms/form_character.fd:170
 msgid "These are never toggled"
@@ -344,7 +344,7 @@ msgstr "Mindig váltsa"
 
 #: src/frontends/xforms/forms/form_character.fd:224
 msgid "Misc:|#M"
-msgstr "Egyéb:|#E"
+msgstr "Egyéb:|#b"
 
 #: src/frontends/xforms/forms/form_citation.fd:44
 msgid "Inset keys:|#I"
@@ -386,7 +386,7 @@ msgstr "Reguláris kifejezés|#R"
 #: src/frontends/xforms/forms/form_citation.fd:242
 #: src/frontends/xforms/forms/form_search.fd:134
 msgid "Case sensitive|#C"
-msgstr "Kis- és nagybetû sz.|#n"
+msgstr "Kis- és nagybetû sz.|#e"
 
 #: src/frontends/xforms/forms/form_citation.fd:260
 msgid "Previous|#P"
@@ -873,7 +873,7 @@ msgstr "Alternatívák|#l"
 
 #: src/frontends/xforms/forms/form_float.fd:278
 msgid "Here, definitely!|#H"
-msgstr "Feltétlenül itt|#F"
+msgstr "Feltétlenül itt!|#F"
 
 #: src/frontends/xforms/forms/form_float.fd:296
 msgid "Document default|#D"
@@ -1113,11 +1113,11 @@ msgstr "Sorköz:|#S"
 
 #: src/frontends/xforms/forms/form_paragraph.fd:116
 msgid "Maximum label width:|#M"
-msgstr "Leghosszabb címke|#c"
+msgstr "Leghosszabb címke|#m"
 
 #: src/frontends/xforms/forms/form_paragraph.fd:134
 msgid "No Indent|#d"
-msgstr "Nincs behúzás|#h"
+msgstr "Nincs behúzás|#b"
 
 #: src/frontends/xforms/forms/form_paragraph.fd:242
 msgid "Right|#R"
@@ -1688,7 +1688,7 @@ msgstr "Utolsó:|#t"
 
 #: src/frontends/xforms/forms/form_print.fd:224
 msgid "Reverse order|#R"
-msgstr "Utolsó oldallal kezd|#U"
+msgstr "Utolsó oldallal kezd|#d"
 
 #: src/frontends/xforms/forms/form_print.fd:242
 msgid "Number:|#N"
@@ -1696,7 +1696,7 @@ msgstr "Példányszám:|#P"
 
 #: src/frontends/xforms/forms/form_print.fd:301
 msgid "Odd numbered pages|#O"
-msgstr "Páratlan oldalak nyomtatása|#r"
+msgstr "Páratlan oldalak nyomtatása|#s"
 
 #: src/frontends/xforms/forms/form_print.fd:319
 msgid "Even numbered pages|#E"
@@ -1704,7 +1704,7 @@ msgstr "Páros oldalak nyomtatása|#o"
 
 #: src/frontends/xforms/forms/form_print.fd:355
 msgid "Printer:|#P"
-msgstr "Nyomtató:|#N"
+msgstr "Nyomtatóra:|#N"
 
 #: src/frontends/xforms/forms/form_print.fd:427
 msgid "All|#l"
@@ -1737,11 +1737,11 @@ msgstr "Ugrás|#g"
 
 #: src/frontends/xforms/forms/form_search.fd:44
 msgid "Find:|#F"
-msgstr "Mit keres:|#i"
+msgstr "Mit keres:|#M"
 
 #: src/frontends/xforms/forms/form_search.fd:62
 msgid "Replace with:|#w"
-msgstr "Mire cseréli:|#s"
+msgstr "Mire cseréli:|#c"
 
 #: src/frontends/xforms/forms/form_search.fd:80
 msgid "Find next"
@@ -1750,7 +1750,7 @@ msgstr "Következõ ..."
 #: src/frontends/xforms/forms/form_search.fd:98
 #: src/frontends/xforms/forms/form_spellchecker.fd:206
 msgid "Replace|#R"
-msgstr "Cseréli|#C"
+msgstr "Cserél|#r"
 
 #: src/frontends/xforms/forms/form_search.fd:152
 msgid "Match word|#M"
@@ -1758,7 +1758,7 @@ msgstr "Egész szavak|#E"
 
 #: src/frontends/xforms/forms/form_search.fd:170
 msgid "Replace all|#a"
-msgstr "Mindet cseréli|#M"
+msgstr "Mindet cseréli|#i"
 
 #: src/frontends/xforms/forms/form_search.fd:188
 msgid "Search backwards|#S"
@@ -2085,7 +2085,7 @@ msgstr "Natbib stílusok használata természettudományokhoz és mûvészetekhez"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:90
 msgid "&Default (numerical)"
-msgstr "&Alapérték (numerikus)"
+msgstr "Alapé&rték (numerikus)"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:94
 msgid "Use BibTeX's default numerical styles"
@@ -2135,7 +2135,7 @@ msgstr "Az elérhetõ változatok"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:154
 msgid "(&De)activate"
-msgstr "(&De)aktivál"
+msgstr "(De)a&ktivál"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:158
 msgid "Toggle the selected branch"
@@ -2143,7 +2143,7 @@ msgstr "Kiválasztott változat (de)aktiválása"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:169
 msgid "Alter Co&lor..."
-msgstr "Szín módosítás&a ..."
+msgstr "&Szín módosítása ..."
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:173
 msgid "Define or change background color"
@@ -2154,7 +2154,7 @@ msgstr "Háttérszín meghatározása vagy változtatása"
 #: src/frontends/qt2/ui/QPrefCopiersModule.ui:120
 #: src/frontends/qt2/ui/QPrefFileformatsModule.ui:365
 msgid "&Remove"
-msgstr "&Eltávolít"
+msgstr "E&ltávolít"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:188
 msgid "Remove the selected branch"
@@ -2277,11 +2277,11 @@ msgstr "Legnagyobb"
 
 #: src/frontends/qt2/ui/BulletsModuleBase.ui:353
 msgid "&Second level"
-msgstr "&Második szint"
+msgstr "Má&sodik szint"
 
 #: src/frontends/qt2/ui/BulletsModuleBase.ui:609
 msgid "&Third level"
-msgstr "&Harmadik szint"
+msgstr "Ha&rmadik szint"
 
 #: src/frontends/qt2/ui/BulletsModuleBase.ui:901
 msgid "Fou&rth level"
@@ -2297,11 +2297,11 @@ msgstr "Osztály beállítások"
 
 #: src/frontends/qt2/ui/LaTeXModuleBase.ui:157
 msgid "&Options:"
-msgstr "Kap&csolók:"
+msgstr "&Kapcsolók:"
 
 #: src/frontends/qt2/ui/LaTeXModuleBase.ui:204
 msgid "Postscript &driver:"
-msgstr "PostScript &meghajtó:"
+msgstr "&PostScript meghajtó:"
 
 #: src/frontends/qt2/ui/LanguageModuleBase.ui:22
 msgid "LanguageModuleBase"
@@ -2314,7 +2314,7 @@ msgstr "Nye&lv:"
 
 #: src/frontends/qt2/ui/LanguageModuleBase.ui:108
 msgid "&Use language's default encoding"
-msgstr "A nyelv alapértelmezett kódolásának használata"
+msgstr "A &nyelv alapértelmezett kódolásának használata"
 
 #: src/frontends/qt2/ui/LanguageModuleBase.ui:170
 msgid "&Encoding:"
@@ -2326,7 +2326,7 @@ msgstr "&Idézõjel stílusa:"
 
 #: src/frontends/qt2/ui/MarginsModuleBase.ui:41
 msgid "&Default Margins"
-msgstr "A&lapértelmezett margók"
+msgstr "Ala&pértelmezett margók"
 
 #: src/frontends/qt2/ui/MarginsModuleBase.ui:45
 msgid "Use the margin settings provided by the document class"
@@ -2358,7 +2358,7 @@ msgstr "Fejlé&c magasság:"
 
 #: src/frontends/qt2/ui/MarginsModuleBase.ui:246
 msgid "&Foot skip:"
-msgstr "Láb ki&hagyás:"
+msgstr "Láb kihagyá&s:"
 
 #: src/frontends/qt2/ui/MathsModuleBase.ui:41
 msgid "&Use AMS math package automatically"
@@ -2374,7 +2374,7 @@ msgstr "&Számozás"
 
 #: src/frontends/qt2/ui/NumberingModuleBase.ui:96
 msgid "&List in Table of Contents"
-msgstr "&Mutassa a tartalomjegyzékben"
+msgstr "Mutassa a &tartalomjegyzékben"
 
 #: src/frontends/qt2/ui/NumberingModuleBase.ui:131
 #: lib/layouts/IEEEtran.layout:161 lib/layouts/amsart-plain.layout:85
@@ -2407,7 +2407,7 @@ msgstr "Papírméret"
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:698
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:562
 msgid "&Height:"
-msgstr "&Magasság:"
+msgstr "Ma&gasság:"
 
 #: src/frontends/qt2/ui/PageLayoutModuleBase.ui:87
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:189
@@ -2432,7 +2432,7 @@ msgstr "&Fekvõ"
 
 #: src/frontends/qt2/ui/PageLayoutModuleBase.ui:242
 msgid "Page &style:"
-msgstr "Oldal&stílus:"
+msgstr "Ol&dalstílus:"
 
 #: src/frontends/qt2/ui/PageLayoutModuleBase.ui:264
 msgid "Style used for the page header and footer"
@@ -2440,7 +2440,7 @@ msgstr "Az oldal fejlécéhez és láblécéhez használt stílus"
 
 #: src/frontends/qt2/ui/PageLayoutModuleBase.ui:277
 msgid "&Two-sided document"
-msgstr "Kétoldalas &dokumentum"
+msgstr "&Kétoldalas dokumentum"
 
 #: src/frontends/qt2/ui/PageLayoutModuleBase.ui:281
 msgid "Lay out the page for double-sided printing"
@@ -2563,7 +2563,7 @@ msgstr "LyX: BibTeX fájl hozzáadása"
 #: src/frontends/qt2/ui/QIncludeDialogBase.ui:90
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:473
 msgid "&Browse..."
-msgstr "T&allózás ..."
+msgstr "&Tallózás ..."
 
 #: src/frontends/qt2/ui/QBibtexAddDialogBase.ui:78
 msgid "Enter BibTeX database name"
@@ -2795,7 +2795,7 @@ msgstr "A doboz függõleges igazítása (az alapvonal figyelembevételével)"
 
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:468
 msgid "Content hori&zontal:"
-msgstr "Tartalom &vízszintesen:"
+msgstr "Tartalom ví&zszintesen:"
 
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:487
 msgid "Content &vertical:"
@@ -2803,7 +2803,7 @@ msgstr "Tartalom Fü&ggõleges:"
 
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:506
 msgid "&Box vertical:"
-msgstr "D&oboz függõleges:"
+msgstr "Doboz &függõleges:"
 
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:650
 #: src/frontends/controllers/ControlBox.C:79 src/frontends/gtk/GBox.C:291
@@ -3030,7 +3030,7 @@ msgstr "Szöveg &elõtte:"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:473
 msgid "&Full author list"
-msgstr "&Teljes szerzõ lista"
+msgstr "Teljes sze&rzõ lista"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:477
 msgid "List all authors"
@@ -3142,7 +3142,7 @@ msgstr "Csak a helyét mutatja"
 
 #: src/frontends/qt2/ui/QERTDialogBase.ui:94
 msgid "O&pen"
-msgstr "Nyit&ott"
+msgstr "&Nyitott"
 
 #: src/frontends/qt2/ui/QERTDialogBase.ui:98
 msgid "Show ERT contents"
@@ -3193,7 +3193,7 @@ msgstr "Fájl szerkesztése külsõleg"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:308
 msgid "Sca&le:"
-msgstr "&Méretarány:"
+msgstr "Mé&retarány:"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:316
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:353
@@ -3321,7 +3321,7 @@ msgstr "&Bal alsó sarok:"
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:978
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:797
 msgid "Clip to &bounding box"
-msgstr "Vágás bef&oglaló keretbe"
+msgstr "Vágás be&foglaló keretbe"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:982
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:801
@@ -3345,11 +3345,11 @@ msgstr "Opciók"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:1065
 msgid "Forma&t:"
-msgstr "F&ormátum:"
+msgstr "Fo&rmátum:"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:1108
 msgid "O&ption:"
-msgstr "&Opciók:"
+msgstr "Op&ciók:"
 
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:186
 msgid "&Graphics"
@@ -3745,7 +3745,7 @@ msgstr "S&zínek"
 
 #: src/frontends/qt2/ui/QPrefColorsModule.ui:109
 msgid "&Alter..."
-msgstr "Módosítás&a ..."
+msgstr "&Módosítása ..."
 
 #: src/frontends/qt2/ui/QPrefConvertersModule.ui:85
 msgid "C&onverter:"
@@ -3784,12 +3784,12 @@ msgstr "Má&solók"
 
 #: src/frontends/qt2/ui/QPrefCopiersModule.ui:254
 msgid "&Copier:"
-msgstr "Máso&ló:"
+msgstr "Más&oló:"
 
 #: src/frontends/qt2/ui/QPrefCopiersModule.ui:269
 #: src/frontends/qt2/ui/QRefDialogBase.ui:204
 msgid "&Format:"
-msgstr "F&ormátum:"
+msgstr "Formá&tum:"
 
 #: src/frontends/qt2/ui/QPrefCygwinPathModule.ui:66
 msgid "&Use Cygwin-style paths"
@@ -3898,7 +3898,7 @@ msgstr "&Elsõ:"
 #: src/frontends/qt2/ui/QPrefKeyboardModule.ui:121
 #: src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:125
 msgid "Br&owse..."
-msgstr "T&allózás ..."
+msgstr "Ta&llózás ..."
 
 #: src/frontends/qt2/ui/QPrefKeyboardModule.ui:136
 msgid "Use &keyboard map"
@@ -3979,7 +3979,7 @@ msgstr "Tárgymutató parancs és kapcsolók (makeindex, xindy)"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:174
 msgid "Index command:"
-msgstr "Tárgymutató parancs:"
+msgstr "Tárgymutató parancsa:"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:189
 msgid "DVI viewer paper size options:"
@@ -3987,7 +3987,7 @@ msgstr "DVI-nézõ papírméret-beállítások:"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:204
 msgid "Optional paper size flag (-paper) for some DVI viewers"
-msgstr "Papírméret-opciók megadása, ha a DVI-nézõ igényli"
+msgstr "Papírméret-opciók megadása (-paper), ha a DVI-nézõ igényli"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:250
 #: src/frontends/gtk/GDocument.C:172 src/frontends/qt2/QDocument.C:113
@@ -4234,7 +4234,7 @@ msgstr "&Utoljára használt fájlok száma:"
 
 #: src/frontends/qt2/ui/QPrefUIModule.ui:289
 msgid "B&rowse..."
-msgstr "T&allózás ..."
+msgstr "Ta&llózás ..."
 
 #: src/frontends/qt2/ui/QPrefUIModule.ui:300
 msgid "&User interface file:"
@@ -4288,7 +4288,7 @@ msgstr "Páro&s oldalak nyomtatása"
 
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:214
 msgid "Re&verse order"
-msgstr "Utolsó oldallal kez&d"
+msgstr "Utolsó ol&dallal kezd"
 
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:218
 msgid "Print in reverse order"
@@ -4566,7 +4566,7 @@ msgstr "Minden szegély"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:709
 msgid "&Set"
-msgstr "Mind &be"
+msgstr "&Mind be"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:713
 msgid "Set all borders of the current (selected) cell(s)"
@@ -4880,7 +4880,7 @@ msgstr "&Betûkészlet:"
 
 #: src/frontends/qt2/ui/TextLayoutModuleBase.ui:118
 msgid "&Size:"
-msgstr "&Méret:"
+msgstr "Mé&ret:"
 
 #: src/frontends/qt2/ui/TextLayoutModuleBase.ui:137
 msgid "Separate Paragraphs With"
@@ -4888,7 +4888,7 @@ msgstr "Bekezdések elválasztása"
 
 #: src/frontends/qt2/ui/TextLayoutModuleBase.ui:156
 msgid "&Indentation"
-msgstr "&Behúzás"
+msgstr "Behúzá&s"
 
 #: src/frontends/qt2/ui/TextLayoutModuleBase.ui:160
 msgid "Indent consecutive paragraphs"
@@ -4942,11 +4942,11 @@ msgstr "Tétel-sablon"
 #: lib/layouts/llncs.layout:375 lib/layouts/siamltex.layout:252
 #: lib/layouts/amsdefs.inc:28 lib/layouts/svjour.inc:437
 msgid "Proof"
-msgstr ""
+msgstr "Demonstráció"
 
 #: lib/layouts/IEEEtran.layout:66 lib/layouts/heb-article.layout:110
 msgid "Proof:"
-msgstr ""
+msgstr "Demonstráció:"
 
 #: lib/layouts/IEEEtran.layout:71 lib/layouts/amsart-plain.layout:26
 #: lib/layouts/amsart-seq.layout:137 lib/layouts/elsart.layout:263
@@ -5334,7 +5334,7 @@ msgstr "Lábjegyzet"
 
 #: lib/layouts/IEEEtran.layout:469
 msgid "MarkBoth"
-msgstr ""
+msgstr "Mindkettõ jelölése"
 
 #: lib/layouts/aa.layout:46 lib/layouts/aapaper.layout:48
 #: lib/layouts/aastex.layout:76 lib/layouts/apa.layout:294
@@ -5435,7 +5435,7 @@ msgstr "Cím"
 #: lib/layouts/aa.layout:73 lib/layouts/aa.layout:147
 #: lib/layouts/aapaper.layout:90 lib/layouts/aapaper.inc:65
 msgid "Offprint"
-msgstr ""
+msgstr "Offprint"
 
 #: lib/layouts/aa.layout:76 lib/layouts/aa.layout:170
 #: lib/layouts/svjour.inc:237
@@ -5980,23 +5980,23 @@ msgstr "Elbeszélés"
 
 #: lib/layouts/broadway.layout:56
 msgid "ACT"
-msgstr ""
+msgstr "Cselekvés"
 
 #: lib/layouts/broadway.layout:69
 msgid "ACT \\arabic{act}"
-msgstr ""
+msgstr "\\arabic{act}. cselekvés"
 
 #: lib/layouts/broadway.layout:73 lib/layouts/broadway.layout:102
 msgid "SCENE"
-msgstr ""
+msgstr "SZÍNHELY"
 
 #: lib/layouts/broadway.layout:86
 msgid "SCENE \\arabic{scene}"
-msgstr ""
+msgstr "\\arabic{scene}. SZÍNHELY "
 
 #: lib/layouts/broadway.layout:90
 msgid "SCENE*"
-msgstr ""
+msgstr "SZÍNHELY*"
 
 #: lib/layouts/broadway.layout:106 lib/layouts/broadway.layout:118
 msgid "AT RISE:"
@@ -6008,7 +6008,7 @@ msgstr "Beszélõ"
 
 #: lib/layouts/broadway.layout:137 lib/layouts/hollywood.layout:166
 msgid "Parenthetical"
-msgstr ""
+msgstr "Közbevetett"
 
 #: lib/layouts/broadway.layout:149 lib/layouts/hollywood.layout:178
 msgid "("
@@ -6025,11 +6025,11 @@ msgstr "FÜGGÖNY"
 #: lib/layouts/broadway.layout:216 lib/layouts/egs.layout:221
 #: lib/layouts/hollywood.layout:320 lib/layouts/lyxmacros.inc:63
 msgid "Right Address"
-msgstr ""
+msgstr "Jobb cím"
 
 #: lib/layouts/chess.layout:33
 msgid "Mainline"
-msgstr ""
+msgstr "Fõjáték"
 
 #: lib/layouts/chess.layout:40
 msgid "Mainline:"
@@ -6101,15 +6101,15 @@ msgstr "[Sakktábla]"
 
 #: lib/layouts/chess.layout:137
 msgid "BoardCentered"
-msgstr ""
+msgstr "Tábla középen"
 
 #: lib/layouts/chess.layout:142
 msgid "[centered board]"
-msgstr ""
+msgstr "[tábla középen]"
 
 #: lib/layouts/chess.layout:152
 msgid "HighLight"
-msgstr ""
+msgstr "Kiemel"
 
 #: lib/layouts/chess.layout:157
 msgid "Highlights:"
@@ -6222,7 +6222,7 @@ msgstr "UI:"
 #: lib/layouts/g-brief2.layout:912 lib/layouts/stdletter.inc:101
 #: src/lengthcommon.C:48
 msgid "cc"
-msgstr ""
+msgstr "cc"
 
 #: lib/layouts/dinbrief.layout:121 lib/layouts/g-brief-de.layout:226
 msgid "Verteiler:"
@@ -6294,7 +6294,7 @@ msgstr "Szerzõ:"
 
 #: lib/layouts/egs.layout:312
 msgid "Affil"
-msgstr ""
+msgstr "Eggyesít"
 
 #: lib/layouts/egs.layout:326
 msgid "Affilation:"
@@ -6306,7 +6306,7 @@ msgstr "Folyóirat:"
 
 #: lib/layouts/egs.layout:358
 msgid "msnumber"
-msgstr ""
+msgstr "ms szám"
 
 #: lib/layouts/egs.layout:373
 msgid "MS_number:"
@@ -6911,7 +6911,7 @@ msgstr "Csatolva:"
 #: lib/layouts/scrlettr.layout:106 lib/layouts/scrlttr2.layout:134
 #: lib/layouts/stdletter.inc:114
 msgid "cc:"
-msgstr ""
+msgstr "cc:"
 
 #: lib/layouts/g-brief-en.layout:235 lib/layouts/g-brief2.layout:946
 #: lib/layouts/scrlttr2.layout:118 lib/layouts/stdletter.inc:97
@@ -7523,11 +7523,11 @@ msgstr "Címkézés"
 
 #: lib/layouts/scrlettr.layout:52
 msgid "L"
-msgstr ""
+msgstr "L"
 
 #: lib/layouts/scrlettr.layout:65
 msgid "O"
-msgstr ""
+msgstr "O"
 
 #: lib/layouts/scrlettr.layout:84 lib/layouts/scrlttr2.layout:122
 msgid "PS"
@@ -7535,7 +7535,7 @@ msgstr "UI"
 
 #: lib/layouts/scrlettr.layout:95 lib/layouts/scrlttr2.layout:130
 msgid "CC"
-msgstr ""
+msgstr "CC"
 
 #: lib/layouts/scrlettr.layout:110 lib/layouts/scrlttr2.layout:138
 msgid "Encl"
@@ -7978,7 +7978,7 @@ msgstr "Postázási sorrend:"
 
 #: lib/layouts/agu_stdtitle.inc:279
 msgid "AGU-pages"
-msgstr ""
+msgstr "AGU-oldalak"
 
 #: lib/layouts/agu_stdtitle.inc:282
 msgid "AGU-pages:"
@@ -8454,11 +8454,11 @@ msgstr ""
 
 #: lib/layouts/svjour.inc:245
 msgid "Offprints"
-msgstr ""
+msgstr "Offprints"
 
 #: lib/layouts/svjour.inc:249
 msgid "Offprints:"
-msgstr ""
+msgstr "Offprints:"
 
 #: lib/languages:2
 msgid "Afrikaans"
@@ -8726,7 +8726,7 @@ msgstr "Mentés másként ...|t"
 
 #: lib/ui/classic.ui:54 lib/ui/stdmenus.ui:43
 msgid "Revert|R"
-msgstr "Visszatér|i"
+msgstr "Visszatér|r"
 
 #: lib/ui/classic.ui:55 lib/ui/stdmenus.ui:44
 msgid "Version Control|V"
@@ -8778,11 +8778,11 @@ msgstr "Elõzmények|E"
 
 #: lib/ui/classic.ui:82 lib/ui/stdmenus.ui:73
 msgid "Custom...|C"
-msgstr "Egyéb ..."
+msgstr "Egyéb ...|E"
 
 #: lib/ui/classic.ui:90 lib/ui/stdmenus.ui:81
 msgid "Undo|U"
-msgstr "Visszavonás|s"
+msgstr "Visszavonás|n"
 
 #: lib/ui/classic.ui:91
 msgid "Redo|d"
@@ -8822,7 +8822,7 @@ msgstr "Helyesírás-ellenõrzõ ...|H"
 
 #: lib/ui/classic.ui:105
 msgid "Thesaurus..."
-msgstr "Szinonimák ..."
+msgstr "Szinonímák ..."
 
 #: lib/ui/classic.ui:106 lib/ui/stdmenus.ui:427
 msgid "Count Words|W"
@@ -8926,7 +8926,7 @@ msgstr "Fent|F"
 
 #: lib/ui/classic.ui:146 lib/ui/stdmenus.ui:146
 msgid "Middle|M"
-msgstr "Középre|K"
+msgstr "Középen|n"
 
 #: lib/ui/classic.ui:147 lib/ui/stdmenus.ui:147
 msgid "Bottom|B"
@@ -9051,7 +9051,7 @@ msgstr "Képlet|l"
 
 #: lib/ui/classic.ui:216 lib/ui/stdmenus.ui:238
 msgid "Special Character|S"
-msgstr "Speciális jel|S"
+msgstr "Speciális jel|c"
 
 #: lib/ui/classic.ui:217 lib/ui/stdmenus.ui:249
 msgid "Citation...|C"
@@ -9067,11 +9067,11 @@ msgstr "Címke ...|m"
 
 #: lib/ui/classic.ui:220 lib/ui/stdmenus.ui:258
 msgid "Footnote|F"
-msgstr "Lábjegyzet|t"
+msgstr "Lábjegyzet|b"
 
 #: lib/ui/classic.ui:221 lib/ui/stdmenus.ui:259
 msgid "Marginal Note|M"
-msgstr "Széljegyzet|g"
+msgstr "Széljegyzet|e"
 
 #: lib/ui/classic.ui:222 lib/ui/stdmenus.ui:260
 msgid "Short Title"
@@ -9103,7 +9103,7 @@ msgstr "Minilap|p"
 
 #: lib/ui/classic.ui:230 lib/ui/stdmenus.ui:256
 msgid "Graphics...|G"
-msgstr "Grafika ...|f"
+msgstr "Grafika ...|G"
 
 #: lib/ui/classic.ui:231
 msgid "Tabular Material...|b"
@@ -9151,11 +9151,11 @@ msgstr "Védett szóköz|s"
 
 #: lib/ui/classic.ui:246 lib/ui/stdmenus.ui:277
 msgid "Inter-word Space|w"
-msgstr "Betûköz|k"
+msgstr "Betûköz|B"
 
 #: lib/ui/classic.ui:247 lib/ui/stdmenus.ui:278
 msgid "Thin Space|T"
-msgstr "Keskeny köz|k"
+msgstr "Keskeny köz|K"
 
 #: lib/ui/classic.ui:248 lib/ui/stdmenus.ui:281
 msgid "Vertical Space..."
@@ -9195,7 +9195,7 @@ msgstr "Oldaltörés"
 
 #: lib/ui/classic.ui:261 lib/ui/stdmenus.ui:291
 msgid "Display Formula|D"
-msgstr "Képlet megjelenítése"
+msgstr "Képlet megjelenítése|K"
 
 #: lib/ui/classic.ui:262 lib/ui/stdmenus.ui:292
 msgid "Eqnarray Environment|E"
@@ -9215,11 +9215,11 @@ msgstr "AMS flalign környezet|f"
 
 #: lib/ui/classic.ui:268 lib/ui/stdmenus.ui:204 lib/ui/stdmenus.ui:296
 msgid "AMS gather Environment|g"
-msgstr "AMS gather környezet|S"
+msgstr "AMS gather környezet|A"
 
 #: lib/ui/classic.ui:269 lib/ui/stdmenus.ui:205 lib/ui/stdmenus.ui:297
 msgid "AMS multline Environment|m"
-msgstr "AMS többsoros környezet|S"
+msgstr "AMS többsoros környezet|r"
 
 #: lib/ui/classic.ui:271 lib/ui/stdmenus.ui:299
 msgid "Array Environment|y"
@@ -9231,7 +9231,7 @@ msgstr "Esetek környezet|s"
 
 #: lib/ui/classic.ui:273 lib/ui/stdmenus.ui:304
 msgid "Split Environment|S"
-msgstr "Környezet felosztása|K"
+msgstr "Környezet felosztása|o"
 
 #: lib/ui/classic.ui:275 lib/ui/stdmenus.ui:306
 msgid "Font Change|o"
@@ -9339,19 +9339,19 @@ msgstr "Változások követése|V"
 
 #: lib/ui/classic.ui:324 lib/ui/stdmenus.ui:389
 msgid "Merge Changes...|M"
-msgstr "Változások elfogadása ...|V"
+msgstr "Változások elfogadása ...|s"
 
 #: lib/ui/classic.ui:325 lib/ui/stdmenus.ui:390
 msgid "Accept All Changes|A"
-msgstr "Minden változás elfogadása|e"
+msgstr "Minden változás elfogadása|f"
 
 #: lib/ui/classic.ui:326 lib/ui/stdmenus.ui:391
 msgid "Reject All Changes|R"
-msgstr "Minden változás elvetése|v"
+msgstr "Minden változás elvetése|M"
 
 #: lib/ui/classic.ui:327 lib/ui/stdmenus.ui:392
 msgid "Show Changes in Output|S"
-msgstr "Változások mutatása a kimenetben|m"
+msgstr "Változások mutatása a kimenetben|k"
 
 #: lib/ui/classic.ui:334
 msgid "Character...|C"
@@ -9407,7 +9407,7 @@ msgstr "Frissítés|i"
 
 #: lib/ui/classic.ui:359 lib/ui/stdmenus.ui:378
 msgid "LaTeX Log|L"
-msgstr "LaTeX napló|l"
+msgstr "LaTeX napló|X"
 
 #: lib/ui/classic.ui:361
 msgid "TeX Information|X"
@@ -9536,7 +9536,7 @@ msgstr "Új, sablon alapján ...|l"
 
 #: lib/ui/stdmenus.ui:38
 msgid "Open recent|t"
-msgstr "Legutóbbi dokumentum megnyitása|t"
+msgstr "Legutóbbi dokumentum megnyitása|b"
 
 #: lib/ui/stdmenus.ui:82
 msgid "Redo|R"
@@ -9564,7 +9564,7 @@ msgstr "Utolsó beillesztések"
 
 #: lib/ui/stdmenus.ui:88
 msgid "Paste External Selection"
-msgstr "Külsõ kijelõlés beillesztése"
+msgstr "Külsõ kijelölés beillesztése"
 
 #: lib/ui/stdmenus.ui:92
 msgid "Text Style...|S"
@@ -9580,7 +9580,7 @@ msgstr "Táblázat|T"
 
 #: lib/ui/stdmenus.ui:98
 msgid "Rows & Columns|C"
-msgstr "Sorok és Oszlopok|S"
+msgstr "Sorok és Oszlopok|o"
 
 #: lib/ui/stdmenus.ui:100
 msgid "Increase List Depth|I"
@@ -9688,7 +9688,7 @@ msgstr "Ötletek|t"
 
 #: lib/ui/stdmenus.ui:239
 msgid "Special Formatting|o"
-msgstr "Különleges formázások|o"
+msgstr "Különleges formázások|K"
 
 #: lib/ui/stdmenus.ui:240
 msgid "List / TOC|i"
@@ -9733,7 +9733,7 @@ msgstr "Hagyományos idézõjel|H"
 
 #: lib/ui/stdmenus.ui:268
 msgid "Single Quote|S"
-msgstr "Aposztrof|S"
+msgstr "Aposztrof|p"
 
 #: lib/ui/stdmenus.ui:301
 msgid "Aligned Environment"
@@ -9741,11 +9741,11 @@ msgstr "Igazítás környezet"
 
 #: lib/ui/stdmenus.ui:302
 msgid "AlignedAt Environment"
-msgstr "AlignAt környezet"
+msgstr "AlignedAt környezet"
 
 #: lib/ui/stdmenus.ui:303
 msgid "Gathered Environment"
-msgstr "Gather környezet"
+msgstr "Gathered környezet"
 
 #: lib/ui/stdmenus.ui:307
 msgid "Math Panel|P"
@@ -9761,7 +9761,7 @@ msgstr "Külsõ anyag ...|K"
 
 #: lib/ui/stdmenus.ui:354
 msgid "Child Document...|d"
-msgstr "Aldokumentum ...|D"
+msgstr "Aldokumentum ...|d"
 
 #: lib/ui/stdmenus.ui:358
 msgid "LyX Note|N"
@@ -9801,7 +9801,7 @@ msgstr "Beállítások ...|B"
 
 #: lib/ui/stdmenus.ui:426
 msgid "Thesaurus...|T"
-msgstr "Szinonimák ...|S"
+msgstr "Szinonímák ...|n"
 
 #: lib/ui/stdmenus.ui:429
 msgid "TeX Information|I"
@@ -10151,7 +10151,7 @@ msgstr "Válassza ki a beszúrandó LyX dokumentumot"
 #: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:133
 #: src/lyxfunc.C:1710 src/lyxfunc.C:1747 src/lyxfunc.C:1822
 msgid "Documents|#o#O"
-msgstr "Dokumentumok|#o#O"
+msgstr "Dokumentumok|#d#D"
 
 #: src/BufferView_pimpl.C:868 src/lyxfunc.C:1749 src/lyxfunc.C:1824
 msgid "Examples|#E#e"
@@ -12326,7 +12326,7 @@ msgstr "Ha&sábok áthidalása"
 
 #: src/frontends/qt2/floatplacement.C:94
 msgid "&Rotate sideways"
-msgstr "Elforgatás &oldalra"
+msgstr "Elfor&gatás oldalra"
 
 #: src/frontends/qt2/validators.C:112
 #: src/frontends/xforms/checkedwidgets.C:162
@@ -12970,7 +12970,7 @@ msgstr "Alapértelmezés|Egyszeres|Másfélszeres|Kétszeres|Egyéb"
 #: src/frontends/xforms/FormParagraph.C:189
 #: src/frontends/xforms/FormParagraph.C:196
 msgid " (default)"
-msgstr "(alapérték)"
+msgstr " (alapérték)"
 
 #: src/frontends/xforms/FormPreferences.C:207
 msgid "Look & Feel"
@@ -14058,7 +14058,7 @@ msgstr "Mentés másként ..."
 
 #: src/lyx_cb.C:135 src/lyxfunc.C:1712
 msgid "Templates|#T#t"
-msgstr "Sablonok|#A#a"
+msgstr "Sablonok|#a#A"
 
 #: src/lyx_cb.C:165 src/lyxfunc.C:1866
 #, c-format
@@ -15238,19 +15238,18 @@ msgid "Unknown Inset"
 msgstr "Ismeretlen betét"
 
 #: src/text.C:330 src/text.C:344
-#, fuzzy
 msgid "Change tracking error"
-msgstr "Változások követése"
+msgstr "Változás követési hiba"
 
 #: src/text.C:331
 #, c-format
 msgid "Unknown author index for insertion: %1$d\n"
-msgstr ""
+msgstr "Ismeretlen szerzõlista beszúráshoz: %1$d\n"
 
 #: src/text.C:345
 #, c-format
 msgid "Unknown author index for deletion: %1$d\n"
-msgstr ""
+msgstr "Ismeretlen szerzõlista törléshez: %1$d\n"
 
 #: src/text.C:353
 msgid "Unknown token"
@@ -15376,6 +15375,3 @@ msgstr "Függõleges kitöltés"
 #: src/vspace.C:506
 msgid "protected"
 msgstr "védett"
-
-#~ msgid "Theorem:"
-#~ msgstr "Tétel:"
