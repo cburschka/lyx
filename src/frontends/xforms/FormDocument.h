@@ -29,6 +29,7 @@ class ControlDocument;
 class FormColorpicker;
 struct FD_document;
 struct FD_document_paper;
+struct FD_document_font;
 struct FD_document_class;
 struct FD_document_language;
 struct FD_document_options;
@@ -81,6 +82,8 @@ private:
 	///
 	void class_update(BufferParams const &);
 	///
+	void font_update(BufferParams const &);
+	///
 	void language_update(BufferParams const &);
 	///
 	void options_update(BufferParams const &);
@@ -93,6 +96,8 @@ private:
 	void paper_apply(BufferParams &);
 	///
 	bool class_apply(BufferParams &);
+	///
+	void font_apply(BufferParams &);
 	///
 	bool language_apply(BufferParams &);
 	///
@@ -109,6 +114,8 @@ private:
 	boost::scoped_ptr<FD_document_paper>    paper_;
 	///
 	boost::scoped_ptr<FD_document_class>    class_;
+	///
+	boost::scoped_ptr<FD_document_font>     font_;
 	///
 	boost::scoped_ptr<FD_document_language> language_;
 	///

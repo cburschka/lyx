@@ -23,6 +23,7 @@
 #include "bufferparams.h"
 #include "gettext.h"
 #include "lyxrc.h"
+#include "tex-strings.h"
 
 #include "controllers/ControlDocument.h"
 
@@ -36,6 +37,7 @@
 #include <qradiobutton.h>
 #include <qcheckbox.h>
 #include <qslider.h>
+#include <qspinbox.h>
 #include <qpixmap.h>
 #include <qcolor.h>
 #include <qcolordialog.h>
@@ -61,6 +63,7 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	connect(restorePB, SIGNAL(clicked()),
 		form, SLOT(slotRestore()));
 
+	fontModule = new FontModuleBase(this);
 	textLayoutModule = new TextLayoutModuleBase(this);
 	pageLayoutModule = new PageLayoutModuleBase(this);
 	marginsModule = new MarginsModuleBase(this);
@@ -75,6 +78,7 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	preambleModule = new PreambleModuleBase(this);
 
 	docPS->addPanel(latexModule, _("Document Class"));
+	docPS->addPanel(fontModule, _("Fonts"));
 	docPS->addPanel(textLayoutModule, _("Text Layout"));
 	docPS->addPanel(pageLayoutModule, _("Page Layout"));
 	docPS->addPanel(marginsModule, _("Page Margins"));
@@ -118,8 +122,6 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	connect(latexModule->psdriverCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(latexModule->classCO, SIGNAL(activated(int)), this, SLOT(classChanged()));
 	// text layout
-	connect(textLayoutModule->fontsCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(textLayoutModule->fontsizeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(textLayoutModule->lspacingCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(textLayoutModule->lspacingCO, SIGNAL(activated(int)), this, SLOT(setLSpacing(int)));
 	connect(textLayoutModule->lspacingLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
@@ -131,6 +133,20 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	connect(textLayoutModule->skipCO, SIGNAL(activated(int)), this, SLOT(setSkip(int)));
 	connect(textLayoutModule->skipRB, SIGNAL(toggled(bool)), this, SLOT(enableSkip(bool)));
 	connect(textLayoutModule->twoColumnCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+
+	// fonts
+	connect(fontModule->fontsRomanCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(fontModule->fontsRomanCO, SIGNAL(activated(int)), this, SLOT(romanChanged(int)));
+	connect(fontModule->fontsSansCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(fontModule->fontsSansCO, SIGNAL(activated(int)), this, SLOT(sansChanged(int)));
+	connect(fontModule->fontsTypewriterCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(fontModule->fontsTypewriterCO, SIGNAL(activated(int)), this, SLOT(ttChanged(int)));
+	connect(fontModule->fontsDefaultCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(fontModule->fontsizeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(fontModule->scaleSansSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
+	connect(fontModule->scaleTypewriterSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
+	connect(fontModule->fontScCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(fontModule->fontOsfCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 
 	// margins
 	connect(marginsModule->marginCB, SIGNAL(toggled(bool)), this, SLOT(setCustomMargins(bool)));
@@ -321,19 +337,48 @@ void QDocumentDialog::setCustomMargins(bool custom)
 
 void QDocumentDialog::updateFontsize(string const & items, string const & sel)
 {
-	textLayoutModule->fontsizeCO->clear();
-	textLayoutModule->fontsizeCO->insertItem("default");
+	fontModule->fontsizeCO->clear();
+	fontModule->fontsizeCO->insertItem(qt_("default"));
 
 	for (int n = 0; !token(items,'|',n).empty(); ++n)
-		textLayoutModule->fontsizeCO->
+		fontModule->fontsizeCO->
 			insertItem(toqstr(token(items,'|',n)));
 
-	for (int n = 0; n<textLayoutModule->fontsizeCO->count(); ++n) {
-		if (fromqstr(textLayoutModule->fontsizeCO->text(n)) == sel) {
-			textLayoutModule->fontsizeCO->setCurrentItem(n);
+	for (int n = 0; n < fontModule->fontsizeCO->count(); ++n) {
+		if (fromqstr(fontModule->fontsizeCO->text(n)) == sel) {
+			fontModule->fontsizeCO->setCurrentItem(n);
 			break;
 		}
 	}
+}
+
+
+void QDocumentDialog::romanChanged(int item)
+{
+	string const font = tex_fonts_roman[item];
+	
+	fontModule->fontScCB->setEnabled(
+		form_->controller().providesSC(font));
+	fontModule->fontOsfCB->setEnabled(
+		form_->controller().providesOSF(font));
+}
+
+
+void QDocumentDialog::sansChanged(int item)
+{
+	string const font = tex_fonts_sans[item];
+	
+	fontModule->scaleSansSB->setEnabled(
+		form_->controller().providesScale(font));
+}
+
+
+void QDocumentDialog::ttChanged(int item)
+{
+	string const font = tex_fonts_monospaced[item];
+	
+	fontModule->scaleTypewriterSB->setEnabled(
+		form_->controller().providesScale(font));
 }
 
 

@@ -481,8 +481,8 @@ int LyXText::leftMargin(pit_type const pit, pos_type const pos) const
 	BOOST_ASSERT(pos >= 0);
 	BOOST_ASSERT(pos <= par.size());
 	//lyxerr << "LyXText::leftMargin: pit: " << pit << " pos: " << pos << endl;
-	LyXTextClass const & tclass =
-		bv()->buffer()->params().getLyXTextClass();
+	BufferParams const & params = bv()->buffer()->params();
+	LyXTextClass const & tclass = params.getLyXTextClass();
 	LyXLayout_ptr const & layout = par.layout();
 
 	string parindent = layout->parindent;
@@ -492,7 +492,7 @@ int LyXText::leftMargin(pit_type const pit, pos_type const pos) const
 	if (isMainText())
 		l_margin += changebarMargin();
 
-	l_margin += font_metrics::signedWidth(tclass.leftmargin(), tclass.defaultfont());
+	l_margin += font_metrics::signedWidth(tclass.leftmargin(), params.getFont());
 
 	if (par.getDepth() != 0) {
 		// find the next level paragraph
@@ -521,8 +521,8 @@ int LyXText::leftMargin(pit_type const pit, pos_type const pos) const
 	switch (layout->margintype) {
 	case MARGIN_DYNAMIC:
 		if (!layout->leftmargin.empty())
-			l_margin += font_metrics::signedWidth(layout->leftmargin,
-						  tclass.defaultfont());
+			l_margin += font_metrics::signedWidth(layout->leftmargin, 
+					params.getFont());
 		if (!par.getLabelstring().empty()) {
 			l_margin += font_metrics::signedWidth(layout->labelindent,
 						  labelfont);
@@ -545,7 +545,7 @@ int LyXText::leftMargin(pit_type const pit, pos_type const pos) const
 		break;
 
 	case MARGIN_STATIC:
-		l_margin += font_metrics::signedWidth(layout->leftmargin, tclass.defaultfont()) * 4
+		l_margin += font_metrics::signedWidth(layout->leftmargin, params.getFont()) * 4
 			/ (par.getDepth() + 4);
 		break;
 
@@ -592,7 +592,7 @@ int LyXText::leftMargin(pit_type const pit, pos_type const pos) const
 			if (rit->fill() < minfill)
 				minfill = rit->fill();
 		l_margin += font_metrics::signedWidth(layout->leftmargin,
-			tclass.defaultfont());
+			params.getFont());
 		l_margin += minfill;
 #endif
 		// also wrong, but much shorter.
@@ -631,7 +631,7 @@ int LyXText::leftMargin(pit_type const pit, pos_type const pos) const
 		|| bv()->buffer()->params().paragraph_separation ==
 		   BufferParams::PARSEP_INDENT))
 	{
-		l_margin += font_metrics::signedWidth(parindent, tclass.defaultfont());
+		l_margin += font_metrics::signedWidth(parindent, params.getFont());
 	}
 
 	return l_margin;
@@ -644,13 +644,14 @@ int LyXText::rightMargin(Paragraph const & par) const
 	if (bv()->text() != this)
 		return 0;
 
-	LyXTextClass const & tclass = bv()->buffer()->params().getLyXTextClass();
+	BufferParams const & params = bv()->buffer()->params();
+	LyXTextClass const & tclass = params.getLyXTextClass();
 	int const r_margin =
 		::rightMargin()
 		+ font_metrics::signedWidth(tclass.rightmargin(),
-					    tclass.defaultfont())
+					    params.getFont())
 		+ font_metrics::signedWidth(par.layout()->rightmargin,
-					    tclass.defaultfont())
+					    params.getFont())
 		* 4 / (par.getDepth() + 4);
 
 	return r_margin;

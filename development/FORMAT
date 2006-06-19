@@ -1,6 +1,44 @@
 LyX file-format changes
 -----------------------
 
+2006-06-10  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* format incremented to 247. The Grand Font Interface Rewrite.
+	(1) Split font selection to rm, sf, tt:
+		\fontscheme -> \font_roman, \font_sans, \font_typewriter
+		Change 246->247:
+			\fontscheme	\font_roman	\font_sans	\font_typewriter
+			default		default		default		default
+			ae		ae		default		default
+			times		times		default		default
+			palatino	palatino	default		default
+			helvet		default		helvet		default
+			avant		default		avant		default
+			newcent		newcent		default		default
+			bookman		bookman		default		default
+			pslatex		times		(or \usepackage{pslatex})
+		New 246->247:
+			\font_roman: cmr (-> \renewcommand{\rmdefault}{cmr}), 
+				     lmodern, charter, utopia, ccfonts, chancery, beraserif
+					(-> \usepackage{<name>})
+			\font_sans: cmss, lmss, cmbr 
+					(-> \renewcommand{\sfdefault}{<name>})
+				    berasans (-> \usepackage{<name>})
+			\font_typewriter: cmtt, lmtt, cmtl,
+					(-> \renewcommand{\sfdefault}{<name>})
+					courier, luximono, beramono
+					(-> \usepackage{<name>})
+	(2) New param \font_default_family (rmdefault, sfdefault, ttdefault)
+	(3) New param \font_sc (true, false).
+	(4) New param \font_osf (true, false).
+	(5) New param \font_sf_scale (float)
+	(6) New param \font_tt_scale (float)
+	Support for the following fonts has been added:
+		bera, ccfonts, chancery, charter, cmbright, computer modern (explicitely),
+		courier, lmodern, luximono, utopia.
+	Support for the following font has been removed:
+		pslatex (it's superseded by mathptmx (times)).
+
 2006-06-03  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* format incremented to 246. The framed.sty package is 

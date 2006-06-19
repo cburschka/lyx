@@ -12,6 +12,7 @@
 #include <config.h>
 
 #include "tex-strings.h"
+#include "gettext.h"
 
 
 // this file should perhaps be split into even smaller parts
@@ -52,8 +53,37 @@ char const * const string_align[] = {
 // 27 times in the object file. (Asger)
 
 char const * const tex_graphics[] = {"default", "dvips", "dvitops", "emtex",
-		      "ln", "oztex", "textures", "none", ""};
+		      "ln", "oztex", "textures", "none", ""
+};
 
 
-char const * const tex_fonts[] = {"default", "ae", "pslatex", "times", "palatino",
-			    "helvet", "avant", "newcent", "bookman", ""};
+char const * const tex_fonts_roman[] = {"default", "cmr", "lmodern", "ae", "times", "palatino",
+			    "charter", "newcent", "bookman", "utopia", "beraserif", "ccfonts", "chancery", ""
+};
+
+
+char const * tex_fonts_roman_gui[] = { N_("Default"), N_("Computer Modern Roman"), N_("Latin Modern Roman"),
+			    N_("AE (Almost European)"), N_("Times Roman"), N_("Palatino"), N_("Bitstream Charter"),
+			    N_("New Century Schoolbook"), N_("Bookman"), N_("Utopia"),  N_("Bera Serif"),
+			    N_("Concrete Roman"), N_("Zapf Chancery"), ""
+};
+
+
+char const * const tex_fonts_sans[] = {"default", "cmss", "lmss", "helvet", "avant", "berasans", "cmbr", ""
+};
+
+
+char const * tex_fonts_sans_gui[] = { N_("Default"), N_("Computer Modern Sans"), N_("Latin Modern Sans"), 
+			    N_("Helvetica"), N_("Avant Garde"), N_("Bera Sans"), N_("CM Bright"), ""
+};
+
+
+char const * const tex_fonts_monospaced[] = {"default", "cmtt", "lmtt", "courier", "beramono", 
+			    "luximono", "cmtl", ""
+};
+
+
+char const * tex_fonts_monospaced_gui[] = { N_("Default"), N_("Computer Modern Typewriter"),
+			    N_("Latin Modern Typewriter"), N_("Courier"), N_("Bera Mono"), N_("LuxiMono"),
+			    N_("CM Typewriter Light"), ""
+};

@@ -1,4 +1,4 @@
-#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+#LyX 1.4.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 245
 \begin_document
 \begin_header
@@ -4761,6 +4761,7 @@ If you are in one of these environments:
 status collapsed
 
 \begin_layout Standard
+
  
 \end_layout
 
@@ -4774,6 +4775,7 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
 vspace{-2ex} 
@@ -4803,6 +4805,7 @@ Quotation
 status collapsed
 
 \begin_layout Standard
+
 }
 \backslash
 parbox[t]{3cm}{
@@ -4830,6 +4833,7 @@ Itemize
 status collapsed
 
 \begin_layout Standard
+
 }
 \backslash
 parbox[t]{3cm}{
@@ -4857,6 +4861,7 @@ Description
 status collapsed
 
 \begin_layout Standard
+
 }
 \backslash
 parbox[t]{3cm}{
@@ -4878,6 +4883,7 @@ List
 status collapsed
 
 \begin_layout Standard
+
 }
 \end_layout
 
@@ -6419,6 +6425,7 @@ Itemize
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
 linebreak 
@@ -10211,29 +10218,24 @@ S
 ettings
 \family default
  dialog.
- There are two options of interest here, 
+ The 
 \family sans
-\bar under
-F
-\bar default
-onts
+Fonts
+\family default
+ tabfolder/pane offers you a variety of possibilities to set up and adjust
+ your document fonts.
+ The most important ones are those in the 
+\family sans
+Font Families
 \family default
  and 
 \family sans
-Font\InsetSpace ~
-
-\bar under
-S
-\bar default
-ize
+Font Sizes
 \family default
-.
+ group.
  The possible options under 
 \family sans
-\bar under
-F
-\bar default
-onts
+Font Families
 \family default
  include 
 \begin_inset Quotes eld
@@ -10241,26 +10243,52 @@ onts
 
 
 \family sans
-default
+Default
 \family default
 
 \begin_inset Quotes erd
 \end_inset
 
- and a list of fonts available on your system.
+ and a list of fonts available on your system, each for the 
+\family sans
+\bar under
+R
+\bar default
+oman
+\family default
+, 
+\family sans
+\bar under
+S
+\bar default
+ans Serif
+\family default
+ and 
+\family sans
+T
+\bar under
+y
+\bar default
+pewriter
+\family default
+ (a.\InsetSpace \thinspace{}
+k.\InsetSpace \thinspace{}
+a.
+ Monospaced) family of fonts.
  The option 
 \begin_inset Quotes eld
 \end_inset
 
 
 \family sans
-default
+Default
 \family default
 
 \begin_inset Quotes erd
 \end_inset
 
- uses the standard TeX fonts, known as 
+ uses the fonts that are specified by the document class you are using.
+ Often, these are the standard TeX fonts, known as 
 \begin_inset Quotes eld
 \end_inset
 
@@ -10277,24 +10305,125 @@ European modern
 \end_inset
 
  (ec).
- Most systems will typically have some version of a Times and Helvetica
- font, with other variants.
- You'll have to examine this for yourself.
+ Depending on the document class, however, it might as well be another font.
+ Most fonts in the list should be installed on your system.
+ For others, you might have to get and install the fonts first (LyX indicates
+ if a font is not installed).
+ Please have a look at 
+\family sans
+\bar under
+H
+\bar default
+elp\SpecialChar \menuseparator
+
+\bar under
+L
+\bar default
+aTeX Configuration 
+\family default
+about where to get the fonts.
+ Installing a new font for LaTeX is, unfortunately, not as easy as installing
+ a new font to common operation systems.
+ However, most font packages include a step-by-step instruction.
 \end_layout
 
 \begin_layout Standard
-As for the 
+In most cases, the default family of a document class is roman (a.\InsetSpace \thinspace{}
+k.\InsetSpace \thinspace{}
+a.
+ serif), so the roman font (e.\InsetSpace \thinspace{}
+g.
+ Times) will be used all over, unless you select 
+\begin_inset Quotes eld
+\end_inset
+
+Sans Serif
+\begin_inset Quotes erd
+\end_inset
+
+ od 
+\begin_inset Quotes eld
+\end_inset
+
+Typewriter
+\begin_inset Quotes erd
+\end_inset
+
+ from 
+\family sans
+\bar under
+E
+\bar default
+dit\SpecialChar \menuseparator
+Text St
+\bar under
+y
+\bar default
+le 
+\family default
+for specific selections of the text (see below section 
+\begin_inset LatexCommand \ref{sub:Text-Style-Dialog}
+
+\end_inset
+
+).
+
+\family sans
+ 
+\family default
+The 
+\family sans
+Default\InsetSpace ~
+Family
+\family default
+ option lets you change this.
+ So if you want your document (including footnotes etc.), say, all over in
+ Helvetica, chose 
+\begin_inset Quotes eld
+\end_inset
+
+Helvetica
+\begin_inset Quotes erd
+\end_inset
+
+ as 
+\family sans
+Sans Serif
+\family default
+ Font and 
+\begin_inset Quotes eld
+\end_inset
+
+Sans Serif
+\begin_inset Quotes erd
+\end_inset
+
+ as 
+\family sans
+Default\InsetSpace ~
+Family
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+In the 
 \family sans
 Font\InsetSpace ~
 
 \bar under
 S
 \bar default
-ize
+izes
 \family default
- option, there are three possible values: 
+ group, you can usually select from four possible 
 \family sans
-10
+Base\InsetSpace ~
+Size
+\family default
+ values: 
+\family sans
+default, 10
 \family default
 , 
 \family sans
@@ -10304,7 +10433,7 @@ ize
 \family sans
 12
 \family default
-.
+ (some document classes provide more, some less choices).
  Remember, this is the 
 \emph on
 base
@@ -10319,7 +10448,76 @@ base
 \end_layout
 
 \begin_layout Standard
-Note that once you choose a new value for 
+Some Sans Serif and Typewriter Fonts provide the possibility to be scaled.
+ This might be useful, if a Sans Serif or Typewriter Font has a different
+ height than the Roman Font.
+ Please be careful with this option, it can be easily misused.
+\end_layout
+
+\begin_layout Standard
+In the 
+\family sans
+Advanced Options
+\family default
+ group box, you'll finally find possibilities for using so-called 
+\begin_inset Quotes eld
+\end_inset
+
+expert settings
+\begin_inset Quotes erd
+\end_inset
+
+, given that they are provided by a certain font.
+ 
+\family sans
+Use true S
+\bar under
+m
+\bar default
+all Caps
+\family default
+ indicates that lots of fonts do not use real, but 
+\emph on
+faked
+\emph default
+ Small Caps.
+ True Small Caps are specifically designed characters, whereas faked Small
+ Caps are just scaled Capital letters.
+ The former looks way better, so if a font offers you the choice, you should
+ check this option.
+ 
+\family sans
+Use 
+\bar under
+O
+\bar default
+ld Style Figures
+\family default
+ finally lets you select so called Old Style Figures (a.\InsetSpace \thinspace{}
+k.\InsetSpace \thinspace{}
+a.
+ Medieval Figures, i.\InsetSpace \thinspace{}
+e.
+ figures with ascending or descending form) instead of the standard Lining
+ Figures.
+ Old Style Figures are often preferred due to better legibility in the text,
+ but it's certainly also a matter of taste.
+ Just try it out, if it is provided for your font of choice.
+ Note that math figures are 
+\emph on
+not
+\emph default
+ affected by this choice.
+\end_layout
+
+\begin_layout Standard
+Please note that even if LyX tries its best in guessing what fonts are installed
+ and which options are provided by a given font, it might fail if the fonts
+ are not set up correctly.
+\end_layout
+
+\begin_layout Standard
+Note further that once you choose a new value for 
 \family sans
 \bar under
 F
@@ -10342,8 +10540,29 @@ not
  change the screen.
  You'll only see a difference once you generate the final output.
  This is part of the WYSIWYM concept.
- Besides, you have certainly noticed that "Roman" text on the LyX screen
- corresponds to the default font.
+ The only visible change is caused by a change of the default font family.
+ However, you certainly noticed that, for instance, the roman font on screen
+ is just a representation of 
+\begin_inset Quotes eld
+\end_inset
+
+Roman
+\begin_inset Quotes erd
+\end_inset
+
+ (as set up in the 
+\family sans
+\bar under
+T
+\bar default
+ools\SpecialChar \menuseparator
+
+\bar under
+P
+\bar default
+references
+\family default
+ dialog), not of the actual roman document font.
 \end_layout
 
 \begin_layout Subsection
@@ -10495,6 +10714,11 @@ Fine-Tuning with the
 Character Layout
 \family default
  dialog
+\begin_inset LatexCommand \label{sub:Text-Style-Dialog}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -12019,6 +12243,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 /
 \end_layout
@@ -12051,6 +12276,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 /
 \end_layout
@@ -12062,6 +12288,7 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
 /
@@ -24340,6 +24567,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 textcent
 \end_layout
@@ -24873,6 +25101,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 textcurrency
 \end_layout
@@ -25146,6 +25375,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 textyen
 \end_layout
@@ -25418,6 +25648,7 @@ v
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
 textbrokenbar
@@ -27254,6 +27485,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 textendash
 \end_layout
@@ -28447,6 +28679,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 href{http://www.lyx.org/about/credits.php}{
 \end_layout
@@ -28462,6 +28695,7 @@ CREDITS
 status collapsed
 
 \begin_layout Standard
+
 }
 \end_layout
 

@@ -1,4 +1,5 @@
 uic BranchesUi.ui -o BranchesUi.h
+uic FontUi.ui -o FontUi.h
 uic LaTeXUi.ui -o LaTeXUi.h
 uic MathsUi.ui -o MathsUi.h
 uic PageLayoutUi.ui -o PageLayoutUi.h

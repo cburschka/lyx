@@ -45,6 +45,7 @@
 
 using lyx::support::token;
 using lyx::support::bformat;
+using lyx::support::findToken;
 using lyx::support::getVectorFromString;
 
 using std::distance;
@@ -96,8 +97,6 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 
 	textLayoutModule = new UiWidget<Ui::TextLayoutUi>;
 	// text layout
-	connect(textLayoutModule->fontsCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(textLayoutModule->fontsizeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(textLayoutModule->lspacingCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(textLayoutModule->lspacingCO, SIGNAL(activated(int)), this, SLOT(setLSpacing(int)));
 	connect(textLayoutModule->lspacingLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
@@ -113,16 +112,6 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 		textLayoutModule->lspacingLE));
 	textLayoutModule->skipLE->setValidator(unsignedLengthValidator(
 		textLayoutModule->skipLE));
-
-	for (int n = 0; tex_fonts[n][0]; ++n) {
-		QString font = tex_fonts[n];
-		textLayoutModule->fontsCO->insertItem(font);
-	}
-
-	textLayoutModule->fontsizeCO->insertItem(qt_("default"));
-	textLayoutModule->fontsizeCO->insertItem(qt_("10"));
-	textLayoutModule->fontsizeCO->insertItem(qt_("11"));
-	textLayoutModule->fontsizeCO->insertItem(qt_("12"));
 
 	textLayoutModule->skipCO->insertItem(qt_("SmallSkip"));
 	textLayoutModule->skipCO->insertItem(qt_("MedSkip"));
@@ -141,6 +130,52 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 
 	// initialize the length validator
 	addCheckedLineEdit(form_->bcview(), textLayoutModule->skipLE);
+
+
+
+
+	fontModule = new UiWidget<Ui::FontUi>;
+	// fonts
+	connect(fontModule->fontsRomanCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(fontModule->fontsRomanCO, SIGNAL(activated(int)), this, SLOT(romanChanged(int)));
+	connect(fontModule->fontsSansCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(fontModule->fontsSansCO, SIGNAL(activated(int)), this, SLOT(sansChanged(int)));
+	connect(fontModule->fontsTypewriterCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(fontModule->fontsTypewriterCO, SIGNAL(activated(int)), this, SLOT(ttChanged(int)));
+	connect(fontModule->fontsDefaultCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(fontModule->fontsizeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(fontModule->scaleSansSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
+	connect(fontModule->scaleTypewriterSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
+	connect(fontModule->fontScCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(fontModule->fontOsfCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+
+	for (int n = 0; tex_fonts_roman[n][0]; ++n) {
+		QString font = toqstr(tex_fonts_roman_gui[n]);
+		if (!form_->controller().isFontAvailable(tex_fonts_roman[n]))
+			font += qt_(" (not installed)");
+		fontModule->fontsRomanCO->insertItem(font);
+	}
+	for (int n = 0; tex_fonts_sans[n][0]; ++n) {
+		QString font = toqstr(tex_fonts_sans_gui[n]);
+		if (!form_->controller().isFontAvailable(tex_fonts_sans[n]))
+			font += qt_(" (not installed)");
+		fontModule->fontsSansCO->insertItem(font);
+	}
+	for (int n = 0; tex_fonts_monospaced[n][0]; ++n) {
+		QString font = toqstr(tex_fonts_monospaced_gui[n]);
+		if (!form_->controller().isFontAvailable(tex_fonts_monospaced[n]))
+			font += qt_(" (not installed)");
+		fontModule->fontsTypewriterCO->insertItem(font);
+	}
+
+	fontModule->fontsizeCO->insertItem(qt_("default"));
+	fontModule->fontsizeCO->insertItem(qt_("10"));
+	fontModule->fontsizeCO->insertItem(qt_("11"));
+	fontModule->fontsizeCO->insertItem(qt_("12"));
+
+	for (int n = 0; ControlDocument::fontfamilies_gui[n][0]; ++n)
+		fontModule->fontsDefaultCO->insertItem(
+			qt_(ControlDocument::fontfamilies_gui[n]));
 
 
 
@@ -357,6 +392,7 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	connect(floatModule, SIGNAL(changed()), this, SLOT(change_adaptor()));
 
 	docPS->addPanel(latexModule, _("Document Class"));
+	docPS->addPanel(fontModule, _("Fonts"));
 	docPS->addPanel(textLayoutModule, _("Text Layout"));
 	docPS->addPanel(pageLayoutModule, _("Page Layout"));
 	docPS->addPanel(marginsModule, _("Page Margins"));
@@ -491,19 +527,48 @@ void QDocumentDialog::setCustomMargins(bool custom)
 
 void QDocumentDialog::updateFontsize(string const & items, string const & sel)
 {
-	textLayoutModule->fontsizeCO->clear();
-	textLayoutModule->fontsizeCO->insertItem("default");
+	fontModule->fontsizeCO->clear();
+	fontModule->fontsizeCO->insertItem(qt_("default"));
 
 	for (int n = 0; !token(items,'|',n).empty(); ++n)
-		textLayoutModule->fontsizeCO->
+		fontModule->fontsizeCO->
 			insertItem(toqstr(token(items,'|',n)));
 
-	for (int n = 0; n<textLayoutModule->fontsizeCO->count(); ++n) {
-		if (fromqstr(textLayoutModule->fontsizeCO->text(n)) == sel) {
-			textLayoutModule->fontsizeCO->setCurrentItem(n);
+	for (int n = 0; n < fontModule->fontsizeCO->count(); ++n) {
+		if (fromqstr(fontModule->fontsizeCO->text(n)) == sel) {
+			fontModule->fontsizeCO->setCurrentItem(n);
 			break;
 		}
 	}
+}
+
+
+void QDocumentDialog::romanChanged(int item)
+{
+	string const font = tex_fonts_roman[item];
+	
+	fontModule->fontScCB->setEnabled(
+		form_->controller().providesSC(font));
+	fontModule->fontOsfCB->setEnabled(
+		form_->controller().providesOSF(font));
+}
+
+
+void QDocumentDialog::sansChanged(int item)
+{
+	string const font = tex_fonts_sans[item];
+	
+	fontModule->scaleSansSB->setEnabled(
+		form_->controller().providesScale(font));
+}
+
+
+void QDocumentDialog::ttChanged(int item)
+{
+	string const font = tex_fonts_monospaced[item];
+	
+	fontModule->scaleTypewriterSB->setEnabled(
+		form_->controller().providesScale(font));
 }
 
 
@@ -658,15 +723,9 @@ void QDocumentDialog::apply(BufferParams & params)
 			params.use_amsmath = BufferParams::AMS_OFF;
 	}
 
-	// layout
+	// text layout
 	params.textclass =
 		latexModule->classCO->currentItem();
-
-	params.fonts =
-		fromqstr(textLayoutModule->fontsCO->currentText());
-
-	params.fontsize =
-		fromqstr(textLayoutModule->fontsizeCO->currentText());
 
 	params.pagestyle =
 		fromqstr(pageLayoutModule->pagestyleCO->currentText());
@@ -727,6 +786,33 @@ void QDocumentDialog::apply(BufferParams & params)
 		fromqstr(latexModule->optionsLE->text());
 
 	params.float_placement = floatModule->get();
+
+	// fonts
+	params.fontsRoman =
+		tex_fonts_roman[fontModule->fontsRomanCO->currentItem()];
+
+	params.fontsSans =
+		tex_fonts_sans[fontModule->fontsSansCO->currentItem()];
+
+	params.fontsTypewriter =
+		tex_fonts_monospaced[fontModule->fontsTypewriterCO->currentItem()];
+
+	params.fontsSansScale = fontModule->scaleSansSB->value();
+
+	params.fontsTypewriterScale = fontModule->scaleTypewriterSB->value();
+
+	params.fontsSC = fontModule->fontScCB->isChecked();
+
+	params.fontsOSF = fontModule->fontOsfCB->isChecked();
+
+	params.fontsDefaultFamily = ControlDocument::fontfamilies[
+		fontModule->fontsDefaultCO->currentItem()];
+
+	if (fontModule->fontsizeCO->currentItem() == 0)
+		params.fontsize = "default";
+	else
+		params.fontsize =
+			fromqstr(fontModule->fontsizeCO->currentText());
 
 	// paper
 	params.papersize = PAPER_SIZE(
@@ -912,21 +998,11 @@ void QDocumentDialog::update(BufferParams const & params)
 		case Spacing::Default: case Spacing::Single: nitem = 0; break;
 	}
 
-	// layout
+	// text layout
 	latexModule->classCO->setCurrentItem(params.textclass);
-
-	updateFontsize(form_->controller().textClass().opt_fontsize(),
-				params.fontsize);
 
 	updatePagestyle(form_->controller().textClass().opt_pagestyle(),
 				 params.pagestyle);
-
-	for (int n = 0; tex_fonts[n][0]; ++n) {
-		if (tex_fonts[n] == params.fonts) {
-			textLayoutModule->fontsCO->setCurrentItem(n);
-			break;
-		}
-	}
 
 	textLayoutModule->lspacingCO->setCurrentItem(nitem);
 	if (params.spacing().getSpace() == Spacing::Other) {
@@ -980,6 +1056,39 @@ void QDocumentDialog::update(BufferParams const & params)
 	}
 
 	floatModule->set(params.float_placement);
+
+	//fonts
+	updateFontsize(form_->controller().textClass().opt_fontsize(),
+			params.fontsize);
+
+	int n = findToken(tex_fonts_roman, params.fontsRoman);
+	if (n >= 0)
+		fontModule->fontsRomanCO->setCurrentItem(n);
+
+	n = findToken(tex_fonts_sans, params.fontsSans);
+	if (n >= 0)
+		fontModule->fontsSansCO->setCurrentItem(n);
+
+	n = findToken(tex_fonts_monospaced, params.fontsTypewriter);
+	if (n >= 0)
+		fontModule->fontsTypewriterCO->setCurrentItem(n);
+
+	fontModule->fontScCB->setChecked(params.fontsSC);
+	fontModule->fontOsfCB->setChecked(params.fontsOSF);
+	fontModule->fontScCB->setEnabled(
+		form_->controller().providesSC(params.fontsRoman));
+	fontModule->fontOsfCB->setEnabled(
+		form_->controller().providesOSF(params.fontsRoman));
+	fontModule->scaleSansSB->setValue(params.fontsSansScale);
+	fontModule->scaleTypewriterSB->setValue(
+		params.fontsTypewriterScale);
+	fontModule->scaleSansSB->setEnabled(
+		form_->controller().providesScale(params.fontsSans));
+	fontModule->scaleTypewriterSB->setEnabled(
+		form_->controller().providesScale(params.fontsTypewriter));
+	n = findToken(ControlDocument::fontfamilies, params.fontsDefaultFamily);
+	if (n >= 0)
+		fontModule->fontsDefaultCO->setCurrentItem(n);
 
 	// paper
 	int const psize = params.papersize;

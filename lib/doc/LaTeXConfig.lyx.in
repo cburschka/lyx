@@ -1,4 +1,4 @@
-#LyX 1.4.1svn created this file. For more info see http://www.lyx.org/
+#LyX 1.4.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 245
 \begin_document
 \begin_header
@@ -283,6 +283,88 @@ ec
 \end_layout
 
 \begin_layout Subsection
+Latin Modern
+\end_layout
+
+\begin_layout Description
+Found: @chk_lmodern@
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family sans
+fonts/lm/
+\end_layout
+
+\begin_layout Description
+Notes: The 
+\family sans
+Latin Modern
+\family default
+ fonts are PostScript® versions of LaTeX' standard font (Computer Modern).
+ They aim to become the default LaTeX font eventually.
+ We recommend to use them instead of other PostScript® versions of Computer
+ Modern (like AE).
+ 
+\end_layout
+
+\begin_layout Subsection
+Almost European (AE)
+\end_layout
+
+\begin_layout Description
+Found: @chk_ae@
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family sans
+fonts/ae/
+\end_layout
+
+\begin_layout Description
+Notes: The 
+\family sans
+AE
+\family default
+ package provide virtual PostScript® versions of LaTeX' standard font (Computer
+ Modern).
+ Unless you rely on special characters, we recommend to use 
+\family sans
+Latin Modern
+\family default
+ instead.
+ 
+\end_layout
+
+\begin_layout Subsection
+Eco
+\end_layout
+
+\begin_layout Description
+Found: @chk_eco@
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family sans
+fonts/eco/
+\end_layout
+
+\begin_layout Description
+Notes: The 
+\family sans
+eco
+\family default
+ package is used by LyX to access the old style numerals of the 
+\family sans
+Computer Modern
+\family default
+ font family.
+ 
+\end_layout
+
+\begin_layout Subsection
 psnfss
 \end_layout
 
@@ -297,12 +379,12 @@ macros/latex/required/psnfss/
 \end_layout
 
 \begin_layout Description
-Notes: The package 
+Notes: The 
 \family sans
 psnfss
 \family default
- allows you to change the fonts used by LyX to one of the 35 classical fonts
- available on PostScript® printers.
+ bundle allows you to change the fonts used by LyX to one of the 35 classical
+ fonts available on PostScript® printers.
  Currently, the support for 
 \family sans
 psnfss
@@ -315,6 +397,303 @@ Layout->Document
 \family default
 \size default
 .
+\end_layout
+
+\begin_layout Standard
+Different versions of 
+\family sans
+psnfss
+\family default
+ provide different font packages.
+ Even if LyX supports the deprecated packages as well, we recommend that
+ you take care to have the newest ones installed.
+ A recent
+\family sans
+ psnfss
+\family default
+ bundle should at least include:
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+mathpazo
+\family default
+ (newest Palatino support).
+ 
+\series bold
+Found:
+\series default
+ @chk_mathpazo@
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+mathpple
+\family default
+ (deprecated Palatino support).
+ 
+\series bold
+Found:
+\series default
+ @chk_mathpple@
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+mathptmx
+\family default
+ (newest Times support).
+ 
+\series bold
+Found:
+\series default
+ @chk_mathptmx@
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+mathptm
+\family default
+ (deprecated Times support).
+ 
+\series bold
+Found:
+\series default
+ @chk_mathptm@
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+utopia
+\family default
+ (Utopia).
+ 
+\series bold
+Found:
+\series default
+ @chk_utopia@
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+avant
+\family default
+ (Avant Garde).
+ 
+\series bold
+Found:
+\series default
+ @chk_avant@
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+bookman
+\family default
+ (Bookman).
+ 
+\series bold
+Found:
+\series default
+ @chk_bookman@
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+charter
+\family default
+ (Charter).
+ 
+\series bold
+Found:
+\series default
+ @chk_charter@
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+newcent
+\family default
+ (New Century Gothic).
+ 
+\series bold
+Found:
+\series default
+ @chk_newcent@
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+chancery
+\family default
+ (Zapf Chancery).
+ 
+\series bold
+Found:
+\series default
+ @chk_chancery@
+\end_layout
+
+\begin_layout Subsection
+fourier-GUTenberg
+\end_layout
+
+\begin_layout Description
+Found: @chk_fourier@
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family sans
+fonts/fourier-GUT
+\end_layout
+
+\begin_layout Description
+Notes: The 
+\family sans
+fourier 
+\family default
+package provides support for the Utopia PostScript® font.
+ Contrary to the 
+\family sans
+utopia
+\family default
+ package that ships with 
+\family sans
+PSNFSS
+\family default
+ bundle, it also provides suitable math fonts.
+ If this package is installed, it will be used instead of 
+\family sans
+utopia
+\family default
+ if you select the Utopia font.
+\end_layout
+
+\begin_layout Subsection
+CM bright
+\end_layout
+
+\begin_layout Description
+Found: @chk_cmbright@
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family sans
+fonts/cmbright
+\end_layout
+
+\begin_layout Description
+Notes: CM bright is a sans serif font that also provides nice sans serif
+ math fonts.
+\end_layout
+
+\begin_layout Subsection
+Bera
+\end_layout
+
+\begin_layout Description
+Found: @chk_bera@
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family sans
+fonts/bera
+\end_layout
+
+\begin_layout Description
+Notes: The bera fonts are a clone of Bitstream Vera, including Bera Serif
+ (a slab-serif Roman), Bera Sans (a Frutiger descendant), and Bera Mono
+ (monospaced/typewriter).
+\end_layout
+
+\begin_layout Subsection
+Concrete
+\end_layout
+
+\begin_layout Description
+Found: @chk_ccfonts@
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family sans
+macros/latex/contrib/ccfonts/
+\end_layout
+
+\begin_layout Description
+Notes: The 
+\family sans
+ccfonts 
+\family default
+package provides support for the font that has been designed by Donald Knuth
+ for his 
+\emph on
+Concrete Mathematics
+\emph default
+ book, hence called concrete fonts.
+\end_layout
+
+\begin_layout Subsection
+LuxiMono
+\end_layout
+
+\begin_layout Description
+Found: @chk_luximono@
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family sans
+fonts/LuxiMono/
+\end_layout
+
+\begin_layout Description
+Notes: The 
+\family sans
+luximono 
+\family default
+package provides support for the monospaced Luxida Mono font.
+\end_layout
+
+\begin_layout Subsection
+TIPA
+\end_layout
+
+\begin_layout Description
+Found: @chk_tipa@
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family sans
+fonts/tipa/
+\end_layout
+
+\begin_layout Description
+Notes: The 
+\family sans
+tipa 
+\family default
+package provides comprehensive support and fonts for typesetting phonetic
+ symbols, as defined in the 
+\emph on
+International Phonetic Alphabet
+\emph default
+ (IPA).
+ The input of these symbols is provided by LyX's math editor.
 \end_layout
 
 \begin_layout Section
@@ -1167,9 +1546,10 @@ CTAN: N/A
 
 \begin_layout Description
 WWW: available from the site
-\begin_inset LatexCommand \url{http://www.worldscinet.com/ijmpc/mkt/guidelines.s
-html}
+\begin_inset LatexCommand \url{http://www.worldscinet.com/ijmpc/mkt/guidelines.s}
+
 \end_inset
+
 .
 \end_layout
 

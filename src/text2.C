@@ -173,10 +173,19 @@ LyXFont LyXText::getFont(Paragraph const & par, pos_type const pos) const
 		LyXFont f = par.getFontSettings(params, pos);
 		if (!isMainText())
 			applyOuterFont(f);
-		if (layout->labeltype == LABEL_MANUAL && pos < body_pos)
-			return f.realize(layout->reslabelfont);
-		else
-			return f.realize(layout->resfont);
+		LyXFont lf;
+		LyXFont rlf;
+		if (layout->labeltype == LABEL_MANUAL && pos < body_pos) {
+			lf = layout->labelfont;
+			rlf = layout->reslabelfont;
+		} else {
+			lf = layout->font;
+			rlf = layout->resfont;
+		}
+		// In case the default family has been customized
+		if (lf.family() == LyXFont::INHERIT_FAMILY)
+			rlf.setFamily(params.getFont().family());
+		return f.realize(rlf);
 	}
 
 	// The uncommon case need not be optimized as much
@@ -232,8 +241,13 @@ LyXFont LyXText::getLayoutFont(pit_type const pit) const
 {
 	LyXLayout_ptr const & layout = pars_[pit].layout();
 
-	if (!pars_[pit].getDepth())
-		return layout->resfont;
+	if (!pars_[pit].getDepth())  {
+		LyXFont lf = layout->resfont;
+		// In case the default family has been customized
+		if (layout->font.family() == LyXFont::INHERIT_FAMILY)
+			lf.setFamily(bv()->buffer()->params().getFont().family());
+		return lf;
+	}
 
 	LyXFont font = layout->font;
 	// Realize with the fonts of lesser depth.
@@ -248,8 +262,13 @@ LyXFont LyXText::getLabelFont(Paragraph const & par) const
 {
 	LyXLayout_ptr const & layout = par.layout();
 
-	if (!par.getDepth())
-		return layout->reslabelfont;
+	if (!par.getDepth()) {
+		LyXFont lf = layout->reslabelfont;
+		// In case the default family has been customized
+		if (layout->labelfont.family() == LyXFont::INHERIT_FAMILY)
+			lf.setFamily(bv()->buffer()->params().getFont().family());
+		return lf;
+	}
 
 	LyXFont font = layout->labelfont;
 	// Realize with the fonts of lesser depth.

@@ -16,6 +16,7 @@
 
 #include "BulletsModule.h"
 
+#include "ui/FontModuleBase.h"
 #include "ui/TextLayoutModuleBase.h"
 #include "ui/MathsModuleBase.h"
 #include "ui/LaTeXModuleBase.h"
@@ -60,6 +61,9 @@ protected slots:
 	void setMargins(bool);
 	void setCustomPapersize(int);
 	void setCustomMargins(bool);
+	void romanChanged(int);
+	void sansChanged(int);
+	void ttChanged(int);
 	void setSkip(int);
 	void enableSkip(bool);
 	void portraitChanged();
@@ -74,6 +78,7 @@ protected:
 	void closeEvent(QCloseEvent * e);
 
 private:
+	FontModuleBase * fontModule;
 	TextLayoutModuleBase * textLayoutModule;
 	PageLayoutModuleBase * pageLayoutModule;
 	MarginsModuleBase * marginsModule;

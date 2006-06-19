@@ -60,6 +60,7 @@ namespace lyx {
 
 using support::bformat;
 using support::contains;
+using lyx::support::findToken;
 using support::getStringFromVector;
 using support::getVectorFromString;
 using support::libFileSearch;
@@ -131,8 +132,6 @@ void FormDocument::build()
 	bcview().addReadOnly(class_->radio_indent);
 	bcview().addReadOnly(class_->radio_skip);
 	bcview().addReadOnly(class_->choice_pagestyle);
-	bcview().addReadOnly(class_->choice_fonts);
-	bcview().addReadOnly(class_->choice_fontsize);
 	bcview().addReadOnly(class_->radio_sides_one);
 	bcview().addReadOnly(class_->radio_sides_two);
 	bcview().addReadOnly(class_->radio_columns_one);
@@ -174,10 +173,6 @@ void FormDocument::build()
 
 	fl_addto_choice(class_->choice_spacing,
 			_(" Single | OneHalf | Double | Custom ").c_str());
-	fl_addto_choice(class_->choice_fontsize, "default|10|11|12");
-	for (int n = 0; tex_fonts[n][0]; ++n) {
-		fl_addto_choice(class_->choice_fonts,tex_fonts[n]);
-	}
 
 	// Create the contents of the unit choices; don't include the
 	// "%" terms...
@@ -204,6 +199,48 @@ void FormDocument::build()
 	// disable for read-only documents
 	bcview().addReadOnly(dialog_->button_save_defaults);
 	bcview().addReadOnly(dialog_->button_reset_defaults);
+
+	// the fonts form
+	font_.reset(build_document_font(this));
+
+	// disable for read-only documents
+	bcview().addReadOnly(font_->choice_fonts_roman);
+	bcview().addReadOnly(font_->choice_fontsize);
+	bcview().addReadOnly(font_->choice_fonts_sans);
+	bcview().addReadOnly(font_->choice_fonts_typewriter);
+	bcview().addReadOnly(font_->choice_fonts_defaultfamily);
+	bcview().addReadOnly(font_->counter_sf_scale);
+	bcview().addReadOnly(font_->counter_tt_scale);
+	bcview().addReadOnly(font_->check_use_sc);
+	bcview().addReadOnly(font_->check_use_osf);
+
+	fl_addto_choice(font_->choice_fontsize, "default|10|11|12");
+
+	for (int n = 0; tex_fonts_roman[n][0]; ++n) {
+		string font = tex_fonts_roman_gui[n];
+		if (!controller().isFontAvailable(tex_fonts_roman[n]))
+			font += _(" (not installed)");
+		fl_addto_choice(font_->choice_fonts_roman,font.c_str());
+	}
+	for (int n = 0; tex_fonts_sans[n][0]; ++n) {
+		string font = tex_fonts_sans_gui[n];
+		if (!controller().isFontAvailable(tex_fonts_sans[n]))
+			font += _(" (not installed)");
+		fl_addto_choice(font_->choice_fonts_sans,font.c_str());
+	}
+	for (int n = 0; tex_fonts_monospaced[n][0]; ++n) {
+		string font = tex_fonts_monospaced_gui[n];
+		if (!controller().isFontAvailable(tex_fonts_monospaced[n]))
+			font += _(" (not installed)");
+		fl_addto_choice(font_->choice_fonts_typewriter,font.c_str());
+	}
+
+	for (int n = 0; ControlDocument::fontfamilies_gui[n][0]; ++n)
+		fl_addto_choice(font_->choice_fonts_defaultfamily,
+			_(ControlDocument::fontfamilies_gui[n]).c_str());
+
+	fl_set_counter_bounds(font_->counter_sf_scale, 10, 200);
+	fl_set_counter_bounds(font_->counter_tt_scale, 10, 200);
 
 	// the document paper form
 	paper_.reset(build_document_paper(this));
@@ -314,7 +351,7 @@ void FormDocument::build()
 		_(" Basic | Natbib author-year | Natbib numerical | Jurabib ");
 	fl_addto_choice(options_->choice_cite_engine, cite_choices.c_str());
 
-	// set up the tooltips for optionss form
+	// set up the tooltips for options form
 	string str = _("Natbib is used often for natural sciences and arts\n"
 		"Jurabib is more common in law and humanities");
 	tooltips().init(options_->choice_cite_engine, str);
@@ -416,6 +453,8 @@ void FormDocument::build()
 	// Stack tabs
 	fl_addto_tabfolder(dialog_->tabfolder,_("Document").c_str(),
 			   class_->form);
+	fl_addto_tabfolder(dialog_->tabfolder,_("Fonts").c_str(),
+			   font_->form);
 	fl_addto_tabfolder(dialog_->tabfolder,_("Paper").c_str(),
 			   paper_->form);
 	fl_addto_tabfolder(dialog_->tabfolder,_("Language").c_str(),
@@ -443,6 +482,7 @@ void FormDocument::apply()
 	BufferParams & params = controller().params();
 
 	class_apply(params);
+	font_apply(params);
 	paper_apply(params);
 	language_apply(params);
 	options_apply(params);
@@ -461,6 +501,7 @@ void FormDocument::update()
 	BufferParams const & params = controller().params();
 
 	class_update(params);
+	font_update(params);
 	paper_update(params);
 	language_update(params);
 	options_update(params);
@@ -540,6 +581,29 @@ ButtonPolicy::SMInput FormDocument::input(FL_OBJECT * ob, long)
 		params.textclass = fl_get_combox(class_->combox_class) - 1;
 		params.useClassDefaults();
 		UpdateLayoutDocument(params);
+
+	} else if (ob == font_->choice_fonts_roman) {
+		string const font =
+			tex_fonts_roman[fl_get_choice(
+				font_->choice_fonts_roman) - 1];
+		setEnabled(font_->check_use_sc,
+			controller().providesSC(font));
+		setEnabled(font_->check_use_osf,
+			controller().providesOSF(font));
+
+	} else if (ob == font_->choice_fonts_sans) {
+		string const font =
+			tex_fonts_sans[fl_get_choice(
+				font_->choice_fonts_sans) - 1];
+		setEnabled(font_->counter_sf_scale,
+			controller().providesScale(font));
+
+	} else if (ob == font_->choice_fonts_typewriter) {
+		string const font =
+			tex_fonts_monospaced[fl_get_choice(
+				font_->choice_fonts_typewriter) - 1];
+		setEnabled(font_->counter_tt_scale,
+			controller().providesScale(font));
 
 	} else if (ob == paper_->choice_papersize) {
 		int const paperchoice = fl_get_choice(paper_->choice_papersize);
@@ -781,8 +845,6 @@ bool FormDocument::class_apply(BufferParams &params)
 	    getString(class_->input_skip).empty()) {
 		fl_set_choice(class_->choice_skip, 2);
 	}
-	params.fonts = getString(class_->choice_fonts);
-	params.fontsize = getString(class_->choice_fontsize);
 	params.pagestyle = getString(class_->choice_pagestyle);
 
 	params.textclass = fl_get_combox(class_->combox_class) - 1;
@@ -858,6 +920,33 @@ bool FormDocument::class_apply(BufferParams &params)
 	params.options = getString(class_->input_extra);
 
 	return redo;
+}
+
+
+void FormDocument::font_apply(BufferParams & params)
+{
+	params.fontsRoman =
+		tex_fonts_roman[fl_get_choice(font_->choice_fonts_roman) - 1];
+
+	params.fontsSans =
+		tex_fonts_sans[fl_get_choice(font_->choice_fonts_sans) - 1];
+
+	params.fontsTypewriter =
+		tex_fonts_monospaced[fl_get_choice(font_->choice_fonts_typewriter) - 1];
+
+	params.fontsSansScale = int(fl_get_counter_value(font_->counter_sf_scale));
+
+	params.fontsTypewriterScale = int(fl_get_counter_value(font_->counter_tt_scale));
+
+	params.fontsSC = fl_get_button(font_->check_use_sc);
+
+	params.fontsOSF = fl_get_button(font_->check_use_osf);
+
+	params.fontsDefaultFamily = ControlDocument::fontfamilies[
+		fl_get_choice(font_->choice_fonts_defaultfamily) - 1];
+
+	params.fontsize =
+			params.fontsize = getString(font_->choice_fontsize);
 }
 
 
@@ -1009,11 +1098,11 @@ void FormDocument::UpdateClassParams(BufferParams const & params)
 	LyXTextClass const & tclass = params.getLyXTextClass();
 
 	fl_set_combox(class_->combox_class, params.textclass + 1);
-	fl_clear_choice(class_->choice_fontsize);
-	fl_addto_choice(class_->choice_fontsize, "default");
-	fl_addto_choice(class_->choice_fontsize,
+	fl_clear_choice(font_->choice_fontsize);
+	fl_addto_choice(font_->choice_fontsize, "default");
+	fl_addto_choice(font_->choice_fontsize,
 			tclass.opt_fontsize().c_str());
-	fl_set_choice_text(class_->choice_fontsize,
+	fl_set_choice_text(font_->choice_fontsize,
 			   params.fontsize.c_str());
 	fl_clear_choice(class_->choice_pagestyle);
 	fl_addto_choice(class_->choice_pagestyle, "default");
@@ -1033,8 +1122,6 @@ void FormDocument::class_update(BufferParams const & params)
 		return;
 
 	UpdateClassParams(params);
-
-	fl_set_choice_text(class_->choice_fonts, params.fonts.c_str());
 
 	bool const indent = params.paragraph_separation == BufferParams::PARSEP_INDENT;
 	fl_set_button(class_->radio_indent, indent);
@@ -1112,6 +1199,43 @@ void FormDocument::class_update(BufferParams const & params)
 	setEnabled(class_->input_spacing, spacing_input);
 	string const input = spacing_input ? params.spacing().getValueAsString() : string();
 	fl_set_input(class_->input_spacing, input.c_str());
+}
+
+
+void FormDocument::font_update(BufferParams const & params)
+{
+	if (!font_.get())
+		return;
+
+	int n = findToken(tex_fonts_roman, params.fontsRoman);
+	if (n >= 0)
+		fl_set_choice(font_->choice_fonts_roman, n + 1);
+
+	n = findToken(tex_fonts_sans, params.fontsSans);
+	if (n >= 0)
+		fl_set_choice(font_->choice_fonts_sans, n + 1);
+
+	n = findToken(tex_fonts_monospaced, params.fontsTypewriter);
+	if (n >= 0)
+		fl_set_choice(font_->choice_fonts_typewriter, n + 1);
+
+	fl_set_button(font_->check_use_sc, params.fontsSC);
+	fl_set_button(font_->check_use_osf, params.fontsOSF);
+	setEnabled(font_->check_use_sc,
+		controller().providesSC(params.fontsRoman));
+	setEnabled(font_->check_use_osf,
+		controller().providesOSF(params.fontsRoman));
+	fl_set_counter_value(font_->counter_sf_scale, params.fontsSansScale);
+	fl_set_counter_value(font_->counter_tt_scale,
+			params.fontsTypewriterScale);
+	setEnabled(font_->counter_sf_scale,
+		controller().providesScale(params.fontsSans));
+	setEnabled(font_->counter_tt_scale,
+		controller().providesScale(params.fontsTypewriter));
+
+	n = findToken(ControlDocument::fontfamilies, params.fontsDefaultFamily);
+	if (n >= 0)
+		fl_set_choice(font_->choice_fonts_defaultfamily, n + 1);
 }
 
 
@@ -1485,6 +1609,7 @@ void FormDocument::UpdateLayoutDocument(BufferParams const & params)
 
 	checkReadOnly();
 	class_update(params);
+	font_update(params);
 	paper_update(params);
 	language_update(params);
 	options_update(params);

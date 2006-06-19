@@ -26,6 +26,10 @@ namespace frontend {
  */
 class ControlDocument : public Dialog::Controller {
 public:
+	/// font family names for BufferParams::fontsDefaultFamily
+	static char const * const fontfamilies[5];
+	/// GUI names corresponding fontfamilies
+	static char const * fontfamilies_gui[5];
 	///
 	ControlDocument(Dialog &);
 	///
@@ -50,6 +54,14 @@ public:
 	void saveAsDefault() const;
 	///
 	bool loadTextclass(textclass_type tc) const;
+	///
+	bool const isFontAvailable(std::string const & font) const;
+	/// does this font provide Old Style figures?
+	bool const providesOSF(std::string const & font) const;
+	/// does this font provide true Small Caps?
+	bool const providesSC(std::string const & font) const;
+	/// does this font provide size adjustment?
+	bool const providesScale(std::string const & font) const;
 private:
 	///
 	boost::scoped_ptr<BufferParams> bp_;

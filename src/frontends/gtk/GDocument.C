@@ -41,6 +41,7 @@ namespace lyx {
 using support::bformat;
 using support::token;
 using support::contains;
+using support::findToken;
 
 namespace frontend {
 
@@ -117,18 +118,65 @@ void GDocument::doBuild()
 		psdrivercombo_.append_text(tex_graphics[i]);
 	}
 
-	xml_->get_widget("Font", box);
-	box->pack_start(fontcombo_, true, true, 0);
+	xml_->get_widget("FontSans", box);
+	box->pack_start(fontsanscombo_, true, true, 0);
 	box->show_all();
 
-	// Populate font combo
-	for (int i = 0; tex_fonts[i][0]; ++i) {
-		fontcombo_.append_text(tex_fonts[i]);
+	// Populate sans font combo
+	for (int i = 0; tex_fonts_sans_gui[i][0]; ++i) {
+		string font = _(tex_fonts_sans_gui[i]);
+		if (!controller().isFontAvailable(tex_fonts_sans[i]))
+			font += _(" (not installed)");
+		fontsanscombo_.append_text(font);
 	}
+
+	xml_->get_widget("FontRoman", box);
+	box->pack_start(fontromancombo_, true, true, 0);
+	box->show_all();
+
+	// Populate roman font combo
+	for (int i = 0; tex_fonts_roman_gui[i][0]; ++i) {
+		string font = _(tex_fonts_roman_gui[i]);
+		if (!controller().isFontAvailable(tex_fonts_roman[i]))
+			font += _(" (not installed)");
+		fontsanscombo_.append_text(font);
+	}
+
+	xml_->get_widget("FontTypewriter", box);
+	box->pack_start(fonttypewritercombo_, true, true, 0);
+	box->show_all();
+
+	// Populate typewriter font combo
+	for (int i = 0; tex_fonts_monospaced_gui[i][0]; ++i) {
+		string font = _(tex_fonts_monospaced_gui[i]);
+		if (!controller().isFontAvailable(tex_fonts_monospaced[i]))
+			font += _(" (not installed)");
+		fontsanscombo_.append_text(font);
+	}
+
+	xml_->get_widget("FontDefaultFamily", box);
+	box->pack_start(fontdefaultfamilycombo_, true, true, 0);
+	box->show_all();
+
+	// Populate font default family combo
+	for (int i = 0; ControlDocument::fontfamilies_gui[i][0]; ++i)
+		fontdefaultfamilycombo_.append_text(_(ControlDocument::fontfamilies_gui[i]));
 
 	xml_->get_widget("FontSize", box);
 	box->pack_start(fontsizecombo_, true, true, 0);
 	box->show_all();
+
+	xml_->get_widget("fontScCB", fontScCB_);
+
+	xml_->get_widget("fontOsfCB", fontOsfCB_);
+
+	xml_->get_widget("scaleSansSB", scaleSansSB_);
+	scaleSansSB_->set_range(10, 200);
+	scaleSansSB_->set_digits(0);
+
+	xml_->get_widget("scaleTypewriterSB", scaleTypewriterSB_);
+	scaleTypewriterSB_->set_range(10, 200);
+	scaleTypewriterSB_->set_digits(0);
 
 	Gtk::SpinButton * spin;
 	xml_->get_widget("LineSpacing", spin);
@@ -352,8 +400,24 @@ void GDocument::update()
 	psdrivercombo_.set_active_text (params.graphicsDriver);
 
 	// Font & Size
-	fontcombo_.set_active_text (params.fonts);
+	int i = findToken(tex_fonts_sans, params.fontsSans);
+	if (i >= 0)
+		fontsanscombo_.set_active_text(_(tex_fonts_sans_gui[i]));
+	i = findToken(tex_fonts_sans, params.fontsRoman);
+	if (i >= 0)
+		fontromancombo_.set_active_text(_(tex_fonts_roman_gui[i]));
+	i = findToken(tex_fonts_monospaced, params.fontsTypewriter);
+	if (i >= 0)
+		fonttypewritercombo_.set_active_text(tex_fonts_monospaced_gui[i]);
+	i = findToken(ControlDocument::fontfamilies, params.fontsDefaultFamily);
+	if (i >= 0)
+		fontdefaultfamilycombo_.set_active_text(
+				_(ControlDocument::fontfamilies_gui[i]));
 	fontsizecombo_.set_active_text (params.fontsize);
+	scaleSansSB_->set_value(params.fontsSansScale);
+	scaleTypewriterSB_->set_value(params.fontsTypewriterScale);
+	fontScCB_->set_active(params.fontsSC);
+	fontOsfCB_->set_active(params.fontsOSF);
 
 	// Line Spacing
 	linespacingadj_->set_value(params.spacing().getValue());
@@ -558,8 +622,16 @@ void GDocument::apply()
 	params.graphicsDriver = psdrivercombo_.get_active_text();
 
 	// Font & Size
-	params.fonts = fontcombo_.get_active_text();
+	params.fontsSans = tex_fonts_sans[fontsanscombo_.get_active_row_number()];
+	params.fontsRoman = tex_fonts_roman[fontromancombo_.get_active_row_number()];
+	params.fontsTypewriter = tex_fonts_monospaced[fonttypewritercombo_.get_active_row_number()];
+	params.fontsDefaultFamily =
+		ControlDocument::fontfamilies[fontdefaultfamilycombo_.get_active_row_number()];
 	params.fontsize = fontsizecombo_.get_active_text();
+	params.fontsSansScale = int(scaleSansSB_->get_adjustment()->get_value());
+	params.fontsTypewriterScale = int(scaleTypewriterSB_->get_adjustment()->get_value());
+	params.fontsSC = fontScCB_->get_active();
+	params.fontsOSF = fontOsfCB_->get_active();
 
 	// Line Spacing
 	params.spacing().set(Spacing::Other, linespacingadj_->get_value());

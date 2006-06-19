@@ -23,75 +23,6 @@
     <number>6</number>
    </property>
    <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item>
-      <widget class="QGroupBox" name="GroupBox3" >
-       <property name="title" >
-        <string>Document Font</string>
-       </property>
-       <layout class="QGridLayout" >
-        <property name="margin" >
-         <number>11</number>
-        </property>
-        <property name="spacing" >
-         <number>6</number>
-        </property>
-        <item row="0" column="0" >
-         <widget class="QLabel" name="TextLabel2" >
-          <property name="text" >
-           <string>&amp;Font:</string>
-          </property>
-          <property name="buddy" >
-           <cstring>fontsCO</cstring>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1" >
-         <widget class="QComboBox" name="fontsizeCO" >
-          <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>5</hsizetype>
-            <vsizetype>0</vsizetype>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1" >
-         <widget class="QComboBox" name="fontsCO" >
-          <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>5</hsizetype>
-            <vsizetype>0</vsizetype>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0" >
-         <widget class="QLabel" name="TextLabel2_2" >
-          <property name="text" >
-           <string>&amp;Size:</string>
-          </property>
-          <property name="buddy" >
-           <cstring>fontsizeCO</cstring>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item>
     <widget class="QGroupBox" name="ButtonGroup6" >
      <property name="title" >
       <string>Separate Paragraphs With</string>
@@ -326,8 +257,6 @@
   </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>fontsCO</tabstop>
-  <tabstop>fontsizeCO</tabstop>
   <tabstop>indentRB</tabstop>
   <tabstop>skipRB</tabstop>
   <tabstop>skipCO</tabstop>

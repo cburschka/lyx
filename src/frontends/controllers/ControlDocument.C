@@ -19,9 +19,13 @@
 #include "BufferView.h"
 #include "buffer_funcs.h"
 #include "funcrequest.h"
+#include "gettext.h"
 #include "language.h"
+#include "LaTeXFeatures.h"
 #include "LColor.h"
+#include "outputparams.h"
 #include "lyxtextclasslist.h"
+#include "tex-strings.h"
 
 #include <sstream>
 
@@ -30,6 +34,16 @@ using std::string;
 
 namespace lyx {
 namespace frontend {
+
+char const * const ControlDocument::fontfamilies[5] = {
+	"default", "rmdefault", "sfdefault", "ttdefault", ""
+};
+
+
+char const * ControlDocument::fontfamilies_gui[5] = {
+	N_("Default"), N_("Roman"), N_("Sans Serif"), N_("Typewriter"), ""
+};
+
 
 ControlDocument::ControlDocument(Dialog & parent)
 	: Dialog::Controller(parent)
@@ -101,7 +115,7 @@ void ControlDocument::dispatchParams()
 
 	// Apply the BufferParams.
 	dispatch_bufferparams(kernel(), params(), LFUN_BUFFER_PARAMS_APPLY);
-
+	
 	// redo the numbering if necessary
 	if (new_secnumdepth != old_secnumdepth)
 		updateLabels(kernel().buffer());
@@ -156,6 +170,62 @@ void ControlDocument::saveAsDefault() const
 {
 	dispatch_bufferparams(kernel(), params(), LFUN_BUFFER_SAVE_AS_DEFAULT);
 }
+
+
+bool const ControlDocument::isFontAvailable(std::string const & font) const
+{
+	OutputParams runparams;
+	LaTeXFeatures features(kernel().buffer(), kernel().buffer().params(), runparams);
+	if (font == "default" || font == "cmr" 
+	    || font == "cmss" || font == "cmtt")
+		// these are standard
+		return true;
+	else if (font == "lmodern" || font == "lmss" || font == "lmtt")
+		return features.isAvailable("lmodern");
+	else if (font == "times" || font == "palatino" 
+		 || font == "helvet" || font == "courier")
+		return (features.isAvailable("psnfss"));
+	else if (font == "cmbr" || font == "cmtl")
+		return features.isAvailable("cmbright");
+	else if (font == "utopia")
+		return (features.isAvailable("utopia")
+			|| features.isAvailable("fourier"));
+	else if (font == "beraserif" || font == "berasans" 
+		|| font == "beramono")
+		return features.isAvailable("bera");
+	else
+		return features.isAvailable(font);
+}
+
+
+bool const ControlDocument::providesOSF(std::string const & font) const
+{
+	if (font == "cmr")
+		return isFontAvailable("eco");
+	else if (font == "palatino")
+		return isFontAvailable("mathpazo");
+	else
+		return false;
+}
+
+
+bool const ControlDocument::providesSC(std::string const & font) const
+{
+	if (font == "palatino")
+		return isFontAvailable("mathpazo");
+	else if (font == "utopia")
+		return isFontAvailable("fourier");
+	else
+		return false;
+}
+
+
+bool const ControlDocument::providesScale(std::string const & font) const
+{
+	return (font == "helvet" || font == "luximono"
+		|| font == "berasans"  || font == "beramono");
+}
+
 
 } // namespace frontend
 } // namespace lyx

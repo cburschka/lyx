@@ -1,0 +1,266 @@
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>FontUi</class>
+ <widget class="QWidget" name="FontUi" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>344</width>
+    <height>394</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>FontUi</string>
+  </property>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>9</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item row="3" column="0" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>326</width>
+       <height>16</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="2" column="0" >
+    <widget class="QGroupBox" name="fontAdvancedGB" >
+     <property name="title" >
+      <string>Advanced Options</string>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="0" column="0" >
+       <widget class="QCheckBox" name="fontScCB" >
+        <property name="text" >
+         <string>Use true S&amp;mall Caps</string>
+        </property>
+        <property name="shortcut" >
+         <string>Alt+M</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QCheckBox" name="fontOsfCB" >
+        <property name="text" >
+         <string>Use &amp;Old Style Figures</string>
+        </property>
+        <property name="shortcut" >
+         <string>Alt+O</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="0" >
+    <widget class="QGroupBox" name="fontSizesGB" >
+     <property name="title" >
+      <string>Sizes</string>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="0" column="1" colspan="2" >
+       <widget class="QComboBox" name="fontsizeCO" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>5</hsizetype>
+          <vsizetype>0</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="TextLabel2_2" >
+        <property name="text" >
+         <string>&amp;Base Size:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>fontsizeCO</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" colspan="2" >
+       <widget class="QLabel" name="scaleTypewriterLA" >
+        <property name="text" >
+         <string>Sc&amp;ale Typewriter %:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>scaleTypewriterSB</cstring>
+        </property>
+       </widget>
+      </item>
+      <item rowspan="2" row="2" column="2" >
+       <widget class="QSpinBox" name="scaleTypewriterSB" >
+        <property name="maximum" >
+         <number>200</number>
+        </property>
+        <property name="minimum" >
+         <number>10</number>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2" >
+       <widget class="QSpinBox" name="scaleSansSB" >
+        <property name="maximum" >
+         <number>200</number>
+        </property>
+        <property name="minimum" >
+         <number>10</number>
+        </property>
+       </widget>
+      </item>
+      <item rowspan="2" row="1" column="0" colspan="2" >
+       <widget class="QLabel" name="scaleSansLA" >
+        <property name="text" >
+         <string>S&amp;cale Sans Serif %:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>scaleSansSB</cstring>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="0" >
+    <widget class="QGroupBox" name="fontsGB" >
+     <property name="title" >
+      <string>Families</string>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="0" column="1" >
+       <widget class="QComboBox" name="fontsRomanCO" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>5</hsizetype>
+          <vsizetype>0</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" >
+       <widget class="QComboBox" name="fontsSansCO" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>5</hsizetype>
+          <vsizetype>0</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1" >
+       <widget class="QComboBox" name="fontsDefaultCO" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>5</hsizetype>
+          <vsizetype>0</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1" >
+       <widget class="QComboBox" name="fontsTypewriterCO" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>5</hsizetype>
+          <vsizetype>0</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" >
+       <widget class="QLabel" name="fontsDefaultLA" >
+        <property name="text" >
+         <string>&amp;Default Family:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>fontsDefaultCO</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" >
+       <widget class="QLabel" name="fontsTypewriterLA" >
+        <property name="text" >
+         <string>&amp;Typewriter:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>fontsRomanCO</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QLabel" name="fontsSansLA" >
+        <property name="text" >
+         <string>&amp;Sans Serif:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>fontsRomanCO</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="fontsRomanLA" >
+        <property name="text" >
+         <string>&amp;Roman:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>fontsRomanCO</cstring>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11" />
+ <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ <tabstops>
+  <tabstop>fontsRomanCO</tabstop>
+  <tabstop>fontsizeCO</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

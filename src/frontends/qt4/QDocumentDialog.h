@@ -14,6 +14,7 @@
 #define QDOCUMENTDIALOG_H
 
 #include "ui/QDocumentUi.h"
+#include "ui/FontUi.h"
 #include "ui/TextLayoutUi.h"
 #include "ui/MathsUi.h"
 #include "ui/LaTeXUi.h"
@@ -77,6 +78,9 @@ protected slots:
 	void setMargins(bool);
 	void setCustomPapersize(int);
 	void setCustomMargins(bool);
+	void romanChanged(int);
+	void sansChanged(int);
+	void ttChanged(int);
 	void setSkip(int);
 	void enableSkip(bool);
 	void portraitChanged();
@@ -88,6 +92,7 @@ protected:
 private:
 
 	UiWidget<Ui::TextLayoutUi> *textLayoutModule;
+	UiWidget<Ui::FontUi> *fontModule;
 	UiWidget<Ui::PageLayoutUi> *pageLayoutModule;
 	UiWidget<Ui::MarginsUi> *marginsModule;
 	UiWidget<Ui::LanguageUi> *langModule;

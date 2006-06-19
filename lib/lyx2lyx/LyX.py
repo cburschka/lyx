@@ -48,8 +48,8 @@ format_relation = [("0_10",  [210], ["0.10.7","0.10"]),
                    ("1_1_6fix3", [218], ["1.1.6fix3","1.1.6fix4","1.1"]),
                    ("1_2", [220], ["1.2.0","1.2.1","1.2.3","1.2.4","1.2"]),
                    ("1_3", [221], ["1.3.0","1.3.1","1.3.2","1.3.3","1.3.4","1.3.5","1.3.6","1.3"]),
-                   ("1_4", range(222,245), ["1.4.0", "1.4.1", "1.4.2svn"]),
-                   ("1_5",  [245,246], ["1.5.0svn"])]
+                   ("1_4", range(222,246), ["1.4.0", "1.4.1", "1.4.2svn"]),
+                   ("1_5", range(246,248), ["1.5.0svn"])]
 
 
 def formats_list():
@@ -484,7 +484,14 @@ class NewFile(LyX_Base):
             "\\textclass article",
             "\\language english",
             "\\inputencoding auto",
-            "\\fontscheme default",
+            "\\font_roman default",
+            "\\font_sans default",
+            "\\font_typewriter default",
+            "\\font_default_family default",
+            "\\font_sc false",
+            "\\font_osf false",
+            "\\font_sf_scale 100",
+            "\\font_tt_scale 100",
             "\\graphics default",
             "\\paperfontsize default",
             "\\papersize default",

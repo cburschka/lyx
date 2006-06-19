@@ -49,8 +49,15 @@ private:
 	Gtk::ComboBoxText classcombo_;
 	Gtk::Entry * extraoptionsentry_;
 	Gtk::ComboBoxText psdrivercombo_;
-	Gtk::ComboBoxText fontcombo_;
+	Gtk::ComboBoxText fontsanscombo_;
+	Gtk::ComboBoxText fontromancombo_;
+	Gtk::ComboBoxText fonttypewritercombo_;
+	Gtk::ComboBoxText fontdefaultfamilycombo_;
 	Gtk::ComboBoxText fontsizecombo_;
+	Gtk::CheckButton * fontScCB_;
+	Gtk::CheckButton * fontOsfCB_;
+	Gtk::SpinButton * scaleSansSB_;
+	Gtk::SpinButton * scaleTypewriterSB_;
 	Gtk::Adjustment * linespacingadj_;
 	Gtk::RadioButton * indentradio_;
 	Gtk::RadioButton * vspaceradio_;

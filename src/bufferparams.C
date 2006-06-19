@@ -26,6 +26,7 @@
 #include "language.h"
 #include "LaTeXFeatures.h"
 #include "LColor.h"
+#include "lyxfont.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
 #include "lyxtextclasslist.h"
@@ -302,7 +303,14 @@ BufferParams::BufferParams()
 	secnumdepth = 3;
 	tocdepth = 3;
 	language = default_language;
-	fonts = "default";
+	fontsRoman = "default";
+	fontsSans = "default";
+	fontsTypewriter = "default";
+	fontsDefaultFamily = "default";
+	fontsSC = false;
+	fontsOSF = false;
+	fontsSansScale = 100;
+	fontsTypewriterScale = 100;
 	inputenc = "auto";
 	graphicsDriver = "default";
 	sides = LyXTextClass::OneSide;
@@ -436,8 +444,22 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 		lex >> inputenc;
 	} else if (token == "\\graphics") {
 		readGraphicsDriver(lex);
-	} else if (token == "\\fontscheme") {
-		lex >> fonts;
+	} else if (token == "\\font_roman") {
+		lex >> fontsRoman;
+	} else if (token == "\\font_sans") {
+		lex >> fontsSans;
+	} else if (token == "\\font_typewriter") {
+		lex >> fontsTypewriter;
+	} else if (token == "\\font_default_family") {
+		lex >> fontsDefaultFamily;
+	} else if (token == "\\font_sc") {
+		lex >> fontsSC;
+	} else if (token == "\\font_osf") {
+		lex >> fontsOSF;
+	} else if (token == "\\font_sf_scale") {
+		lex >> fontsSansScale;
+	} else if (token == "\\font_tt_scale") {
+		lex >> fontsTypewriterScale;
 	} else if (token == "\\paragraph_separation") {
 		string parsep;
 		lex >> parsep;
@@ -587,7 +609,14 @@ void BufferParams::writeFile(ostream & os) const
 	if (language != ignore_language)
 		os << "\\language " << language->lang() << '\n';
 	os << "\\inputencoding " << inputenc
-	   << "\n\\fontscheme " << fonts
+	   << "\n\\font_roman " << fontsRoman
+	   << "\n\\font_sans " << fontsSans
+	   << "\n\\font_typewriter " << fontsTypewriter
+	   << "\n\\font_default_family " << fontsDefaultFamily
+	   << "\n\\font_sc " << convert<string>(fontsSC)
+	   << "\n\\font_osf " << convert<string>(fontsOSF)
+	   << "\n\\font_sf_scale " << fontsSansScale
+	   << "\n\\font_tt_scale " << fontsTypewriterScale
 	   << "\n\\graphics " << graphicsDriver << '\n';
 
 	if (!float_placement.empty()) {
@@ -786,16 +815,17 @@ bool BufferParams::writeLaTeX(ostream & os, LaTeXFeatures & features,
 	// end of \documentclass defs
 
 	// font selection must be done before loading fontenc.sty
-	// The ae package is not needed when using OT1 font encoding.
-	if (fonts != "default" &&
-	    (fonts != "ae" || lyxrc.fontenc != "default")) {
-		os << "\\usepackage{" << fonts << "}\n";
+	string const fonts = 
+		loadFonts(features, fontsRoman, fontsSans,
+			  fontsTypewriter, fontsSC, fontsOSF,
+			  fontsSansScale, fontsTypewriterScale);
+	if (!fonts.empty()) {
+		os << fonts;
 		texrow.newline();
-		if (fonts == "ae") {
-			os << "\\usepackage{aecompl}\n";
-			texrow.newline();
-		}
 	}
+	if (fontsDefaultFamily != "default")
+		os << "\\renewcommand{\\familydefault}{\\" 
+		   << fontsDefaultFamily << "}\n";
 	// this one is not per buffer
 	if (lyxrc.fontenc != "default") {
 		os << "\\usepackage[" << lyxrc.fontenc
@@ -1111,6 +1141,12 @@ LyXFont const BufferParams::getFont() const
 {
 	LyXFont f = getLyXTextClass().defaultfont();
 	f.setLanguage(language);
+	if (fontsDefaultFamily == "rmdefault")
+		f.setFamily(LyXFont::ROMAN_FAMILY);
+	else if (fontsDefaultFamily == "sfdefault")
+		f.setFamily(LyXFont::SANS_FAMILY);
+	else if (fontsDefaultFamily == "ttdefault")
+		f.setFamily(LyXFont::TYPEWRITER_FAMILY);
 	return f;
 }
 
@@ -1261,4 +1297,141 @@ string const BufferParams::babelCall(string const & lang_opts) const
 	if (!lyxrc.language_global_options && tmp == "\\usepackage{babel}")
 		tmp = string("\\usepackage[") + lang_opts + "]{babel}";
 	return tmp;
+}
+
+
+string const BufferParams::loadFonts(LaTeXFeatures & features, string const & rm,
+				     string const & sf, string const & tt,
+				     bool const & sc, bool const & osf,
+				     int const & sfscale, int const & ttscale) const
+{
+	/* The LaTeX font world is in a flux. In the PSNFSS font interface,
+	   several packages have been replaced by others, that might not
+	   be installed on every system. We have to take care for that
+	   (see psnfss.pdf). We try to support all psnfss fonts as well
+	   as the fonts that have become de facto standard in the LaTeX
+	   world (e.g. Latin Modern). We do not support obsolete fonts
+	   (like PSLatex). In general, it should be possible to mix any
+	   rm font with any sf or tt font, respectively. (JSpitzm)
+	   TODO:
+		-- separate math fonts.
+	*/
+
+	if (rm == "default" && sf == "default" && tt == "default")
+		//nothing to do
+		return string();
+
+	ostringstream os;
+
+	// ROMAN FONTS
+	// Computer Modern (must be explicitely selectable -- there might be classes
+	// that define a different default font!
+	if (rm == "cmr") {
+		os << "\\renewcommand{\\rmdefault}{cmr}\n";
+		// osf for Computer Modern needs eco.sty
+		if (osf)
+			os << "\\usepackage{eco}\n";
+	}
+	// Latin Modern Roman
+	else if (rm == "lmodern")
+		os << "\\usepackage{lmodern}\n";
+	// AE
+	else if (rm == "ae") {
+		// not needed when using OT1 font encoding.
+		if (lyxrc.fontenc != "default")
+			os << "\\usepackage{ae,aecompl}\n";
+	}
+	// Times
+	else if (rm == "times") {
+		// try to load the best available package
+		if (features.isAvailable("mathptmx"))
+			os << "\\usepackage{mathptmx}\n";
+		else if (features.isAvailable("mathptm"))
+			os << "\\usepackage{mathptm}\n";
+		else
+			os << "\\usepackage{times}\n";
+	}
+	// Palatino
+	else if (rm == "palatino") {
+		// try to load the best available package
+		if (features.isAvailable("mathpazo")) {
+			os << "\\usepackage";
+			if (osf || sc) {
+				os << '[';
+				if (!osf)
+					os << "sc";
+				else
+					// "osf" includes "sc"!
+					os << "osf";
+				os << ']';
+			}
+			os << "{mathpazo}\n";
+		}
+		else if (features.isAvailable("mathpple"))
+			os << "\\usepackage{mathpple}\n";
+		else
+			os << "\\usepackage{palatino}\n";
+	}
+	// Utopia
+	else if (rm == "utopia") {
+		// fourier supersedes utopia.sty, but does
+		// not work with OT1 encoding.
+		if (features.isAvailable("fourier")
+		    && lyxrc.fontenc != "default") {
+			os << "\\usepackage";
+			if (osf || sc) {
+				os << '[';
+				if (sc)
+					os << "expert";
+				if (osf && sc)
+					os << ',';
+				if (osf)
+					os << "oldstyle";
+				os << ']';
+			}
+			os << "{fourier}\n";
+		}
+		else
+			os << "\\usepackage{utopia}\n";
+	}
+	// Bera (complete fontset)
+	else if (rm == "bera" && sf == "default" && tt == "default")
+		os << "\\usepackage{bera}\n";
+	// everything else
+	else if (rm != "default")
+		os << "\\usepackage" << "{" << rm << "}\n";
+
+	// SANS SERIF
+	// Helvetica, Bera Sans
+	if (sf == "helvet" || sf == "berasans") {
+		if (sfscale != 100)
+			os << "\\usepackage[scaled=" << float(sfscale) / 100
+			   << "]{" << sf << "}\n";
+		else
+			os << "\\usepackage{" << sf << "}\n";
+	}
+	// Avant Garde
+	else if (sf == "avant")
+		os << "\\usepackage{" << sf << "}\n";
+	// Computer Modern, Latin Modern, CM Bright
+	else if (sf != "default")
+		os << "\\renewcommand{\\sfdefault}{" << sf << "}\n";
+
+	// monospaced/typewriter
+	// Courier, LuxiMono
+	if (tt == "luximono" || tt == "beramono") {
+		if (ttscale != 100)
+			os << "\\usepackage[scaled=" << float(ttscale) / 100
+			   << "]{" << tt << "}\n";
+		else
+			os << "\\usepackage{" << tt << "}\n";
+	}
+	// Courier
+	else if (tt == "courier" )
+		os << "\\usepackage{" << tt << "}\n";
+	// Computer Modern, Latin Modern, CM Bright
+	else if  (tt != "default")
+		os << "\\renewcommand{\\ttdefault}{" << tt << "}\n";
+
+	return os.str();
 }

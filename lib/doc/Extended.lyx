@@ -15855,18 +15855,70 @@ If the default LaTeX font encoding (OT1) is used, nothing else need to be
  done.
  However, if the T1 font encoding is used, then LaTeX uses the newer EC
  fonts, for which there are no Type1 version.
- The solution is to use the ae package which emulates T1 coded fonts using
- the standard CM fonts.
- This is done by adding 
-\family typewriter
+ There are two solutions in this case: Either use the 
+\begin_inset Quotes eld
+\end_inset
 
-\backslash
-usepackage{ae,aecompl}
+ae font
+\begin_inset Quotes erd
+\end_inset
+
+ (which is in fact a 
+\begin_inset Quotes eld
+\end_inset
+
+virtual
+\begin_inset Quotes erd
+\end_inset
+
+ font that emulates T1 coded fonts using the standard CM fonts).
+ This is done by selecting 
+\begin_inset Quotes eld
+\end_inset
+
+AE (Almost European)
+\begin_inset Quotes erd
+\end_inset
+
+ from 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+ Fonts\SpecialChar \menuseparator
+Roman
 \family default
- to the preamble of the LyX file.
+.
  However, some glyphs are missing from the CM fonts (e.g.
  eth, thorn), and they are taken from the EC fonts.
  Therefore you get these glyphs as bitmaps.
+ Or use the 
+\begin_inset Quotes eld
+\end_inset
+
+Latin Modern
+\begin_inset Quotes erd
+\end_inset
+
+ font from 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+ Fonts\SpecialChar \menuseparator
+Roman
+\family default
+.
+ It is a newer and probably the best Postscript® Type 1 version of cm.
+ Basically, we recommend this over the 
+\begin_inset Quotes eld
+\end_inset
+
+ae
+\begin_inset Quotes erd
+\end_inset
+
+ solution.
+ However, the Latin Modern fonts differ from cm in some visual aspects,
+ which does not please everybody.
 \end_layout
 
 \begin_layout Standard
@@ -15895,11 +15947,24 @@ Misc
 \begin_layout Standard
 An alternate option is to use the standard Postscript® fonts instead of
  the Computer Modern fonts.
- To do that, you need to select 
-\family sans
-pslatex
-\family default
- as the global font in the document layout dialog.
+ To do that, you just need to select one of the fonts listed in the document
+ layout dialog (except for 
+\begin_inset Quotes eld
+\end_inset
+
+default
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+computer modern
+\begin_inset Quotes erd
+\end_inset
+
+, they're all Postscript® fonts).
  When using the Postscript® fonts, the result PDF file is smaller as the
  fonts are not saved into the file.
  Furthermore, the Postscript® fonts include all T1 glyphs.

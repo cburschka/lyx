@@ -3,7 +3,7 @@ Magic: 13000
 Internal Form Definition File
     (do not change)
 
-Number of forms: 7
+Number of forms: 8
 Unit of measure: FL_COORD_PIXEL
 SnapGrid: 5
 
@@ -688,13 +688,13 @@ argument: 0
 =============== FORM ===============
 Name: form_document_class
 Width: 395
-Height: 310
-Number of Objects: 26
+Height: 305
+Number of Objects: 24
 
 --------------------
 class: FL_BOX
 type: FLAT_BOX
-box: 0 0 395 310
+box: 0 0 395 305
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -730,7 +730,7 @@ argument:
 --------------------
 class: FL_LABELFRAME
 type: ENGRAVED_FRAME
-box: 5 225 385 80
+box: 5 210 385 80
 boxtype: FL_NO_BOX
 colors: FL_BLACK FL_COL1
 alignment: FL_ALIGN_TOP_LEFT
@@ -762,42 +762,6 @@ gravity: FL_NoGravity FL_NoGravity
 name: 
 callback: 
 argument: 
-
---------------------
-class: FL_CHOICE
-type: NORMAL_CHOICE
-box: 110 80 160 25
-boxtype: FL_FRAME_BOX
-colors: FL_COL1 FL_BLACK
-alignment: FL_ALIGN_LEFT
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Fonts:|#F
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: choice_fonts
-callback: C_FormDialogView_InputCB
-argument: 0
-
---------------------
-class: FL_CHOICE
-type: NORMAL_CHOICE
-box: 110 115 160 25
-boxtype: FL_FRAME_BOX
-colors: FL_COL1 FL_BLACK
-alignment: FL_ALIGN_LEFT
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Font Size:|#O
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: choice_fontsize
-callback: C_FormDialogView_InputCB
-argument: 0
 
 --------------------
 class: FL_CHOICE
@@ -838,7 +802,7 @@ argument: 0
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 110 185 160 25
+box: 110 170 160 25
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
@@ -856,7 +820,7 @@ argument: 0
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 110 150 160 25
+box: 110 80 160 25
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -874,7 +838,7 @@ argument: 0
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 250 270 65 25
+box: 245 255 65 25
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -892,7 +856,7 @@ argument: 0
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 115 270 125 25
+box: 110 255 125 25
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_TOP
@@ -1072,7 +1036,7 @@ argument:
 --------------------
 class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
-box: 25 240 100 25
+box: 20 225 100 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -1090,7 +1054,7 @@ argument: 0
 --------------------
 class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
-box: 25 270 100 25
+box: 20 255 100 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -1127,7 +1091,7 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 275 185 115 25
+box: 275 170 115 25
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -1145,7 +1109,7 @@ argument: 0
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 315 270 50 25
+box: 310 255 50 25
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
@@ -1931,6 +1895,254 @@ gravity: FL_NoGravity FL_NoGravity
 name: button_modify
 callback: C_FormDialogView_InputCB
 argument: 0
+
+=============== FORM ===============
+Name: form_document_font
+Width: 395
+Height: 365
+Number of Objects: 13
+
+--------------------
+class: FL_BOX
+type: UP_BOX
+box: 0 0 395 365
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_CHOICE
+type: NORMAL_CHOICE
+box: 205 25 160 25
+boxtype: FL_FRAME_BOX
+colors: FL_COL1 FL_BLACK
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Roman:|#R
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: choice_fonts_roman
+callback: C_FormDialogView_InputCB
+argument: 0
+
+--------------------
+class: FL_CHOICE
+type: NORMAL_CHOICE
+box: 205 170 160 25
+boxtype: FL_FRAME_BOX
+colors: FL_COL1 FL_BLACK
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Base Size:|#B
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: choice_fontsize
+callback: C_FormDialogView_InputCB
+argument: 0
+
+--------------------
+class: FL_CHOICE
+type: NORMAL_CHOICE
+box: 205 55 160 25
+boxtype: FL_FRAME_BOX
+colors: FL_COL1 FL_BLACK
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Sans Serif:|#S
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: choice_fonts_sans
+callback: C_FormDialogView_InputCB
+argument: 0
+
+--------------------
+class: FL_CHOICE
+type: NORMAL_CHOICE
+box: 205 85 160 25
+boxtype: FL_FRAME_BOX
+colors: FL_COL1 FL_BLACK
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Typewriter:|#T
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: choice_fonts_typewriter
+callback: C_FormDialogView_InputCB
+argument: 0
+
+--------------------
+class: FL_CHOICE
+type: NORMAL_CHOICE
+box: 205 115 160 25
+boxtype: FL_FRAME_BOX
+colors: FL_COL1 FL_BLACK
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Default Family:|#F
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: choice_fonts_defaultfamily
+callback: C_FormDialogView_InputCB
+argument: 0
+
+--------------------
+class: FL_LABELFRAME
+type: ENGRAVED_FRAME
+box: 25 15 355 135
+boxtype: FL_NO_BOX
+colors: FL_BLACK FL_COL1
+alignment: FL_ALIGN_TOP_LEFT
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: Fonts
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_COUNTER
+type: SIMPLE_COUNTER
+box: 265 200 100 25
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_BLUE
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Scale Sans Serif %:|#c:
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: counter_sf_scale
+callback: C_FormDialogView_InputCB
+argument: 0
+  bounds: -2 5
+  precision: 0
+  value: 1
+  sstep: 1
+
+--------------------
+class: FL_COUNTER
+type: SIMPLE_COUNTER
+box: 265 230 100 25
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_BLUE
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Scale Typewriter %:|#y
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: counter_tt_scale
+callback: C_FormDialogView_InputCB
+argument: 0
+  bounds: -2 5
+  precision: 0
+  value: 1
+  sstep: 1
+
+--------------------
+class: FL_LABELFRAME
+type: ENGRAVED_FRAME
+box: 25 160 355 100
+boxtype: FL_NO_BOX
+colors: FL_BLACK FL_COL1
+alignment: FL_ALIGN_TOP_LEFT
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: Sizes
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 340 280 25 25
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Use True Small Caps|#m
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: check_use_sc
+callback: C_FormDialogView_InputCB
+argument: 0
+
+--------------------
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 340 310 25 25
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Use Old Style Figures|#O
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: check_use_osf
+callback: C_FormDialogView_InputCB
+argument: 0
+
+--------------------
+class: FL_LABELFRAME
+type: ENGRAVED_FRAME
+box: 25 270 355 75
+boxtype: FL_NO_BOX
+colors: FL_BLACK FL_COL1
+alignment: FL_ALIGN_TOP_LEFT
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: Advanced Options
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
 
 ==============================
 create_the_forms

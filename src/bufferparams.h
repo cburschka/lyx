@@ -147,8 +147,22 @@ public:
 	/* some LaTeX options */
 	/// The graphics driver
 	std::string graphicsDriver;
-	///
-	std::string fonts;
+	/// the rm font
+	std::string fontsRoman;
+	/// the sf font
+	std::string fontsSans;
+	/// the tt font
+	std::string fontsTypewriter;
+	/// the default family (rm, sf, tt)
+	std::string fontsDefaultFamily;
+	/// use expert Small Caps
+	bool fontsSC;
+	/// use Old Style Figures
+	bool fontsOSF;
+	/// the scale factor of the sf font
+	int fontsSansScale;
+	/// the scale factor of the tt font
+	int fontsTypewriterScale;
 	///
 	Spacing & spacing();
 	Spacing const & spacing() const;
@@ -230,6 +244,11 @@ public:
 	std::string const paperSizeName() const;
 	///
 	std::string const babelCall(std::string const & lang_opts) const;
+	/// set up the document fonts
+	std::string const loadFonts(LaTeXFeatures & features, std::string const & rm,
+				     std::string const & sf, std::string const & tt,
+				     bool const & sc, bool const & osf,
+				     int const & sfscale, int const & ttscale) const;
 	/// path of the current buffer
 	std::string filepath;
 

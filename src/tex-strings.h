@@ -36,6 +36,16 @@ extern char const * const string_align[];
 extern char const * const tex_graphics[];
 
 ///
-extern char const * const tex_fonts[];
+extern char const * const tex_fonts_roman[];
+///
+extern char const * tex_fonts_roman_gui[];
+///
+extern char const * const tex_fonts_sans[];
+///
+extern char const * tex_fonts_sans_gui[];
+///
+extern char const * const tex_fonts_monospaced[];
+///
+extern char const * tex_fonts_monospaced_gui[];
 
 #endif
