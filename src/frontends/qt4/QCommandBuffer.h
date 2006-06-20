@@ -20,13 +20,13 @@ namespace lyx {
 namespace frontend {
 
 class QCommandEdit;
-class QtView;
+class GuiView;
 class ControlCommandBuffer;
 
 class QCommandBuffer : public QWidget {
 	Q_OBJECT
 public:
-	QCommandBuffer(QtView * view, ControlCommandBuffer & control, QWidget * parent=NULL);
+	QCommandBuffer(GuiView * view, ControlCommandBuffer & control, QWidget * parent=NULL);
 
 	/// focus the edit widget
 	void focus_command();
@@ -45,7 +45,7 @@ public slots:
 	void down();
 private:
 	/// owning view
-	QtView * view_;
+	GuiView * view_;
 
 	/// controller
 	ControlCommandBuffer & controller_;

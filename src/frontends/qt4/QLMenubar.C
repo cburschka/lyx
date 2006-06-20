@@ -12,7 +12,7 @@
 
 // Qt defines a macro 'signals' that clashes with a boost namespace.
 // All is well if the namespace is visible first.
-#include "QtView.h"
+#include "GuiView.h"
 
 #include "QLMenubar.h"
 #include "QLPopupMenu.h"
@@ -43,7 +43,7 @@ namespace frontend {
 // MacOSX specific stuff is at the end.
 
 QLMenubar::QLMenubar(LyXView * view, MenuBackend & mbe)
-	: owner_(static_cast<QtView*>(view)), menubackend_(mbe)
+	: owner_(static_cast<GuiView*>(view)), menubackend_(mbe)
 {
 	macxMenuBarInit();
 
@@ -114,7 +114,7 @@ void QLMenubar::openByName(string const & name)
 void QLMenubar::update()
 { }
 
-QtView * QLMenubar::view()
+GuiView * QLMenubar::view()
 {
 	return owner_;
 }

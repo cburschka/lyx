@@ -1,5 +1,5 @@
 /**
- * \file QtView.C
+ * \file GuiView.C
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -33,7 +33,7 @@
 #include "support/convert.h"
 #include <boost/bind.hpp>
 
-#include "QtView.h"
+#include "GuiView.h"
 #include "QLMenubar.h"
 #include "FontLoader.h"
 #include "QCommandBuffer.h"
@@ -70,7 +70,7 @@ int const statusbar_timer_value = 3000;
 } // namespace anon
 
 
-QtView::QtView(unsigned int width, unsigned int height)
+GuiView::GuiView(unsigned int width, unsigned int height)
 	: QMainWindow(), LyXView(), commandbuffer_(0), frontend_(*this)
 {
 	mainWidget_ = this;
@@ -87,7 +87,7 @@ QtView::QtView(unsigned int width, unsigned int height)
 
 	statusBar()->setSizeGripEnabled(false);
 
-	view_state_changed.connect(boost::bind(&QtView::update_view_state, this));
+	view_state_changed.connect(boost::bind(&GuiView::update_view_state, this));
 	connect(&statusbar_timer_, SIGNAL(timeout()), this, SLOT(update_view_state_qt()));
 
 #ifndef Q_WS_MACX
@@ -103,31 +103,31 @@ QtView::QtView(unsigned int width, unsigned int height)
 }
 
 
-QtView::~QtView()
+GuiView::~GuiView()
 {
 }
 
-void QtView::updateMenu(QAction *action)
+void GuiView::updateMenu(QAction *action)
 {
 	menubar_->update();
 }
 
-void QtView::setWindowTitle(string const & t, string const & it)
+void GuiView::setWindowTitle(string const & t, string const & it)
 {
 	QMainWindow::setWindowTitle(toqstr(t));
 	QMainWindow::setWindowIconText(toqstr(it));
 }
 
 
-void QtView::addCommandBuffer(QToolBar * toolbar)
+void GuiView::addCommandBuffer(QToolBar * toolbar)
 {
 	commandbuffer_ = new QCommandBuffer(this, *controlcommand_);
-	focus_command_buffer.connect(boost::bind(&QtView::focus_command_widget, this));
+	focus_command_buffer.connect(boost::bind(&GuiView::focus_command_widget, this));
 	toolbar->addWidget(commandbuffer_);
 }
 
 
-void QtView::message(string const & str)
+void GuiView::message(string const & str)
 {
 	statusBar()->showMessage(toqstr(str));
 	statusbar_timer_.stop();
@@ -135,27 +135,27 @@ void QtView::message(string const & str)
 }
 
 
-void QtView::clearMessage()
+void GuiView::clearMessage()
 {
 	update_view_state_qt();
 }
 
 
-void QtView::focus_command_widget()
+void GuiView::focus_command_widget()
 {
 	if (commandbuffer_)
 		commandbuffer_->focus_command();
 }
 
 
-void QtView::update_view_state_qt()
+void GuiView::update_view_state_qt()
 {
 	statusBar()->showMessage(toqstr(getLyXFunc().viewStatusMessage()));
 	statusbar_timer_.stop();
 }
 
 
-void QtView::update_view_state()
+void GuiView::update_view_state()
 {
 	// let the user see the explicit message
 	if (statusbar_timer_.isActive())
@@ -165,19 +165,19 @@ void QtView::update_view_state()
 }
 
 
-void QtView::activated(FuncRequest const & func)
+void GuiView::activated(FuncRequest const & func)
 {
 	getLyXFunc().dispatch(func);
 }
 
 
-bool QtView::hasFocus() const
+bool GuiView::hasFocus() const
 {
 	return qApp->activeWindow() == this;
 }
 
 
-void QtView::closeEvent(QCloseEvent *)
+void GuiView::closeEvent(QCloseEvent *)
 {
 	QRect geometry = normalGeometry();
 	Session & session = LyX::ref().session();
@@ -195,14 +195,14 @@ void QtView::closeEvent(QCloseEvent *)
 }
 
 
-void QtView::show()
+void GuiView::show()
 {
 	QMainWindow::setWindowTitle(qt_("LyX"));
 	QMainWindow::show();
 }
 
 
-void QtView::busy(bool yes) const
+void GuiView::busy(bool yes) const
 {
 	if (yes)
 		QApplication::setOverrideCursor(Qt::WaitCursor);
@@ -210,15 +210,15 @@ void QtView::busy(bool yes) const
 		QApplication::restoreOverrideCursor();
 }
 
-QMainWindow* QtView::mainWidget()
+QMainWindow* GuiView::mainWidget()
 {
 	return mainWidget_;
 }
 
-QMainWindow* QtView::mainWidget_ = 0;
+QMainWindow* GuiView::mainWidget_ = 0;
 
 
 } // namespace frontend
 } // namespace lyx
 
-#include "QtView_moc.cpp"
+#include "GuiView_moc.cpp"

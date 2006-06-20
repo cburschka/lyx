@@ -15,7 +15,7 @@
 
 // Qt defines a macro 'signals' that clashes with a boost namespace.
 // All is well if the namespace is visible first.
-#include "QtView.h"
+#include "GuiView.h"
 
 #include "Action.h"
 #include "QLPopupMenu.h"

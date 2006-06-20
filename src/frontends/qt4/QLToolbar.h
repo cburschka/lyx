@@ -29,14 +29,14 @@ namespace lyx {
 namespace frontend {
 
 class QLayoutBox;
-class QtView;
+class GuiView;
 class Action;
 
 
 class QLayoutBox : public QObject, public LayoutBox {
 	Q_OBJECT
 public:
-	QLayoutBox(QToolBar *, QtView &);
+	QLayoutBox(QToolBar *, GuiView &);
 
 	/// select the right layout in the combox.
 	void set(std::string const & layout);
@@ -54,7 +54,7 @@ private slots:
 
 private:
 	QComboBox * combo_;
-	QtView & owner_;
+	GuiView & owner_;
 };
 
 
@@ -77,7 +77,7 @@ signals:
 private:
 
 	std::vector<Action *> ActionVector;
-	QtView & owner_;
+	GuiView & owner_;
 	QToolBar * toolbar_;
 
 	boost::scoped_ptr<QLayoutBox> layout_;

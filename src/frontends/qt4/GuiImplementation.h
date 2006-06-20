@@ -24,7 +24,7 @@ namespace lyx {
 namespace frontend {
 
 class GuiWorkArea;
-class QtView;
+class GuiView;
 
 /**
  * The GuiImplementation class is the interface to all Qt4 components.
@@ -32,7 +32,7 @@ class QtView;
 class GuiImplementation: public Gui
 {
 public:
-	GuiImplementation(QtView & owner);
+	GuiImplementation(GuiView & owner);
 	virtual ~GuiImplementation() {}
 
 	Clipboard& clipboard();
@@ -47,7 +47,7 @@ private:
 	///
 	std::map<int, boost::shared_ptr<GuiWorkArea> > work_areas_;
 	///
-	QtView & owner_;
+	GuiView & owner_;
 	///
 	size_t max_id_;
 };

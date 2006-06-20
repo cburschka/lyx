@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file QtView.h
+ * \file GuiView.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,8 +11,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QTVIEW_H
-#define QTVIEW_H
+#ifndef GUIVIEW_H
+#define GUIVIEW_H
 
 // Must be here because of moc.
 #include <config.h>
@@ -41,17 +41,17 @@ class QCommandBuffer;
 QWidget* mainWindow();
 
 /**
- * QtView - Qt implementation of LyXView
+ * GuiView - Qt4 implementation of LyXView
  *
  * Qt-private implementation of the main LyX window.
  */
-class QtView : public QMainWindow, public LyXView {
+class GuiView : public QMainWindow, public LyXView {
 	Q_OBJECT
 public:
 	/// create a main window of the given dimensions
-	QtView(unsigned int w, unsigned int h);
+	GuiView(unsigned int w, unsigned int h);
 
-	~QtView();
+	~GuiView();
 
 	/// show - display the top-level window
 	void show();
@@ -117,4 +117,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // QTVIEW_H
+#endif // GUIVIEW_H

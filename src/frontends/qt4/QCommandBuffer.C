@@ -12,7 +12,7 @@
 
 // Qt defines a macro 'signals' that clashes with a boost namespace.
 // All is well if the namespace is visible first.
-#include "QtView.h"
+#include "GuiView.h"
 
 #include "QCommandBuffer.h"
 #include "QCommandEdit.h"
@@ -74,7 +74,7 @@ protected:
 } // end of anon
 
 
-QCommandBuffer::QCommandBuffer(QtView * view, ControlCommandBuffer & control, QWidget * parent)
+QCommandBuffer::QCommandBuffer(GuiView * view, ControlCommandBuffer & control, QWidget * parent)
 	: QWidget(parent), view_(view), controller_(control)
 {
 	QPixmap qpup(toqstr(libFileSearch("images", "up", "xpm")));

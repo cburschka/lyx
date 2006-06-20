@@ -39,7 +39,7 @@
 #include <boost/bind.hpp>
 #include <boost/shared_ptr.hpp>
 
-#include "QtView.h"
+#include "GuiView.h"
 #include "ColorCache.h"
 #include "FontLoader.h"
 #include "QLImage.h"
@@ -59,7 +59,7 @@
 using lyx::support::ltrim;
 using lyx::support::package;
 
-using lyx::frontend::QtView;
+using lyx::frontend::GuiView;
 using lyx::frontend::Application;
 
 namespace os = lyx::support::os;
@@ -194,10 +194,10 @@ void start(string const & batch, vector<string> const & files,
 	// this can't be done before because it needs the Languages object
 	initEncodings();
 
-	boost::shared_ptr<QtView> view_ptr(new QtView(width, height));
+	boost::shared_ptr<GuiView> view_ptr(new GuiView(width, height));
 	LyX::ref().addLyXView(view_ptr);
 
-	QtView & view = *view_ptr.get();
+	GuiView & view = *view_ptr.get();
 
 	view.init();
 		

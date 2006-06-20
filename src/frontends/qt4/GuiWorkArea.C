@@ -16,7 +16,7 @@
 #include "GuiWorkArea.h"
 #include "QLPainter.h"
 #include "QLyXKeySym.h"
-#include "QtView.h"
+#include "GuiView.h"
 
 #include "ColorCache.h"
 #include "qt_helpers.h"
@@ -112,12 +112,12 @@ SyntheticMouseEvent::SyntheticMouseEvent()
 
 
 GuiWorkArea::GuiWorkArea(LyXView & owner, int w, int h)
-: QAbstractScrollArea(QtView::mainWidget()), WorkArea(owner, w, h), view_(owner), painter_(this)
+: QAbstractScrollArea(GuiView::mainWidget()), WorkArea(owner, w, h), view_(owner), painter_(this)
 {
 	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-	QtView::mainWidget()->setCentralWidget(this);
+	GuiView::mainWidget()->setCentralWidget(this);
 
 	setAcceptDrops(true);
 

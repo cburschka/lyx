@@ -12,14 +12,14 @@
 
 #include "GuiImplementation.h"
 #include "GuiWorkArea.h"
-#include "QtView.h"
+#include "GuiView.h"
 
 using boost::shared_ptr;
 
 namespace lyx {
 namespace frontend {
 
-GuiImplementation::GuiImplementation(QtView & owner): owner_(owner), max_id_(0)
+GuiImplementation::GuiImplementation(GuiView & owner): owner_(owner), max_id_(0)
 {
 }
 

@@ -33,7 +33,7 @@ namespace lyx {
 
 namespace frontend {
 
-class QtView;
+class GuiView;
 
 class QLMenubar : public QObject, public Menubar {
 	Q_OBJECT
@@ -44,7 +44,7 @@ public:
 	void openByName(std::string const &);
 
 	/// return the owning view
-	QtView * view();
+	GuiView * view();
 
 	/// return the menu controller
 	MenuBackend const & backend();
@@ -64,7 +64,7 @@ private:
 	void macxMenuBarInit();
 
 	/// owning view
-	QtView * owner_;
+	GuiView * owner_;
 
 	/// menu controller
 	MenuBackend & menubackend_;

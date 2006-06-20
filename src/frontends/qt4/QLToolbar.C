@@ -24,7 +24,7 @@
 #include "gettext.h"
 #include "lyxfunc.h"
 
-#include "QtView.h"
+#include "GuiView.h"
 #include "QLToolbar.h"
 #include "Action.h"
 #include "qt_helpers.h"
@@ -81,7 +81,7 @@ Qt::ToolBarArea getToolBarPosition(ToolbarBackend::Flags const & flags)
 } // namespace anon
 
 
-QLayoutBox::QLayoutBox(QToolBar * toolbar, QtView & owner)
+QLayoutBox::QLayoutBox(QToolBar * toolbar, GuiView & owner)
 	: owner_(owner)
 {
 	combo_ = new QComboBox;
@@ -189,7 +189,7 @@ namespace lyx {
 namespace frontend {
 
 QLToolbar::QLToolbar(ToolbarBackend::Toolbar const & tbb, LyXView & owner)
-	: owner_(dynamic_cast<QtView &>(owner)),
+	: owner_(dynamic_cast<GuiView &>(owner)),
 	  toolbar_(new QToolBar(qt_(tbb.gui_name), (QWidget*) &owner_)) //, getPosition(tbb.flags)))
 {
 	/// \toto Move \a addToolBar call into QView because, in Qt4,
