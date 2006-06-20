@@ -337,32 +337,11 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 
 	x += scx_ + ADD_TO_TABULAR_WIDTH;
 
-	// Here we take the cursor slice that is the tabular.
-	lyx::size_type d = 0; 
-	bool found = false;
-	for (; d < cur.depth(); d++) {
-		if (ptr_cmp(&cur[d].inset(), this)) {
-			found = true;
-			break;
-		}
-	}
-
-	if (found) {
-		CursorSlice const & sl = cur[d];
-		// Paint background of current cell
-		int const w = tabular.getWidthOfColumn(sl.idx());
-		int yy = y - tabular.getAscentOfRow(0) + ADD_TO_HEIGHT;
-		row_type j = 0;
-		for (; tabular.getCellNumber(j, tabular.columns() - 1) < sl.idx(); ++j) {
-			int const a = tabular.getAscentOfRow(j);
-			int const h = a + tabular.getDescentOfRow(j);
-			yy += h;
-			yy += tabular.getAdditionalHeight(j + 1);
-		}
-		int const h = tabular.getAscentOfRow(j) + tabular.getDescentOfRow(j);
-		pi.pain.fillRectangle(x + getCellXPos(sl.idx()), yy, w, h,
-			backgroundColor());
-	}
+	// Paint background of current tabular
+	int const w = tabular.getWidthOfTabular();
+	int const h = tabular.getHeightOfTabular();
+	int yy = y - tabular.getAscentOfRow(0);
+	pi.pain.fillRectangle(x, yy, w, h, backgroundColor());
 
 	if (!cur.selection())
 		return;
