@@ -142,8 +142,6 @@ public:
 	///
 	bool & Wide() const { return wide_inset_; }
 	///
-	bool const Tall() const;
-	///
 	void forceParagraphsToDefault(LCursor & cur);
 
 protected:

@@ -819,8 +819,7 @@ void paintPar
 			if (in) {
 				InsetText const * const t = in->asTextInset();
 				if (t)
-					t->Wide() = in_inset_alone_on_row &&
-						    t->Tall();
+					t->Wide() = in_inset_alone_on_row;
 			}
 		}
 
@@ -838,8 +837,8 @@ void paintPar
 			// (if paragraph background was not cleared)
 			if (!repaintAll &&
 			    (!in_inset_alone_on_row || row_has_changed)) {
-				pi.pain.fillRectangle(( rowno ? 0 : x - 10 ), y - rit->ascent(),
-				    pi.base.bv->workWidth(), rit->height(),
+				pi.pain.fillRectangle(x, y - rit->ascent(),
+				    text.maxwidth_, rit->height(),
 				    text.backgroundColor());
 				// If outer row has changed, force nested
 				// insets to repaint completely
