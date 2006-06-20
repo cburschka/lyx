@@ -145,7 +145,7 @@ opts.AddOptions(
     allowed_values = ('windows', 'posix', 'macosx')),
   #
   BoolOption('fast_start', 'Whether or not use cached tests and keep current config.h', True),
-  # 
+  #
   BoolOption('pch', 'Whether or not use pch', False),
   # enable assertion, (config.h has ENABLE_ASSERTIOS
   BoolOption('assertions', 'Use assertions', True),
@@ -346,7 +346,7 @@ env.AppendUnique(LIBPATH = ['$LOCALLIBPATH'])
 # 3. compiler commands and flags like CCFLAGS.
 #     MSGFMT used to process po files
 # 4. Variables that will be used to replace variables in some_file.in
-#     src/support/package.C.in: 
+#     src/support/package.C.in:
 #       TOP_SRCDIR, LOCALEDIR, LYX_DIR, PROGRAM_SUFFIX
 #     lib/lyx2lyx/lyx2lyx_version.py.in
 #       PACKAGE_VERSION
@@ -448,7 +448,7 @@ else:
 # only support gcc now
 if use_pch and not use_vc:
   CCFLAGS_required.extend(['-Winvalid-pch'])
-  
+
 # for debug/release mode
 if env.has_key('optimization') and env['optimization'] is not None:
   # if user supplies optimization flags, use it anyway
@@ -520,6 +520,7 @@ if env.has_key('dest_dir'):
   env['DESTDIR'] = env['dest_dir']
 dest_dir = env.get('DESTDIR', prefix)
 
+
 #---------------------------------------------------------
 # Frontend related variables (QTDIR etc)
 #---------------------------------------------------------
@@ -548,7 +549,7 @@ elif os.path.isdir(os.path.join(env.subst('$QTDIR'), 'include')):
 # this is the path for cygwin.
 elif os.path.isdir('/usr/include/' + frontend):
   qt_inc_path = '/usr/include/$frontend'
-else: 
+else:
   print "Qt include directory not found. Please specify it using qt_inc_path"
   Exit(1)
 # Note that this CPPPATH is for testing only
@@ -623,11 +624,12 @@ if not fast_start:
     # first: try pkg_config
     if env['HAS_PKG_CONFIG']:
       succ = conf.CheckPackage('QtCore') or conf.CheckPackage('QtCore4')
-      env['QT4_PKG_CONFIG'] = succ
+      # FIXME: use pkg_config information?
+      #env['QT4_PKG_CONFIG'] = succ
     # second: try to link to it
     if not succ:
-      # FIXME: under linux, I can test the following perfectly
-      # However, under windows, lib names need to passed as libXXX4.a ...
+      # Under linux, I can test the following perfectly
+      # Under windows, lib names need to passed as libXXX4.a ...
       succ = conf.CheckLibWithHeader('QtCore', 'QtGui/QApplication', 'c++', 'QApplication qapp();') or \
         conf.CheckLibWithHeader('QtCore4', 'QtGui/QApplication', 'c++', 'QApplication qapp();')
     # third: try to look up the path
@@ -679,6 +681,7 @@ if not fast_start:
   boost_opt = ARGUMENTS.get('boost', 'auto')
   # check for system boost
   paths = env['LIBPATH'] + ['/usr/lib', '/usr/local/lib']
+  # real libraries (included or system)
   boost_libraries = []
   boost_libpath = None
   # here I assume that all libraries are in the same directory
@@ -712,9 +715,11 @@ if not fast_start:
   env_cache['BOOST_LIBPATH'] = boost_libpath
 else:
   boost_libraries = env_cache['BOOST_LIBRARIES']
-  if env_cache['BOOST_LIBPATH'] is not None:
-    env.AppendUnique(LIBPATH = [env_cache['BOOST_LIBPATH']])
   env['INCLUDED_BOOST'] = env_cache['INCLUDED_BOOST']
+  boost_libpath = env_cache['BOOST_LIBPATH']
+
+if boost_libpath is not None:
+  env.AppendUnique(LIBPATH = [boost_libpath])
 
 
 env['ENABLE_NLS'] = env['nls']
@@ -747,8 +752,8 @@ if not fast_start:
   env_cache['INCLUDED_GETTEXT'] = included_gettext
   env_cache['INTL_LIBS'] = intl_libs
 else:
-  intl_libs = env_cache['INTL_LIBS']
   included_gettext = env_cache['INCLUDED_GETTEXT']
+  intl_libs = env_cache['INTL_LIBS']
 
 #
 # check for msgfmt command
@@ -806,8 +811,6 @@ if not fast_start:
     ],
     config_post = '''
 
-#define BOOST_USER_CONFIG <config.h>
-
 #if defined(HAVE_OSTREAM) && defined(HAVE_LOCALE) && defined(HAVE_SSTREAM)
 #  define USE_BOOST_FORMAT 1
 #else
@@ -839,7 +842,7 @@ if not fast_start:
   #
   # config.h for each build
   config_h = os.path.join(env.Dir('$BUILDDIR/common').path, 'config.h')
-  
+
   print "\nGenerating %s..." % config_h
 
   # AIKSAURUS_H_LOCATION
@@ -872,7 +875,7 @@ if not fast_start:
     elif spell_opt != 'no':
       print "Warning: Can not locate specified spell checker:", spell_opt
       Exit(1)
-  
+
   # check arg types of select function
   (select_arg1, select_arg234, select_arg5) = conf.CheckSelectArgType()
 
@@ -1056,7 +1059,7 @@ else:
   # (doing nothing obvious), adding fast_start=yes
   # to a build with fast_start=no will result in a rebuild
   # Note that the exact header file to check does not matter
-  # conf.CheckCHeader('io.h')
+  conf.CheckCHeader('io.h')
   # only a few variables need to be rescanned
   for key in ['USE_ASPELL', 'USE_PSPELL', 'USE_ISPELL', 'HAVE_FCNTL',\
     'HAVE_ICONV', 'HAVE_LIBGDI32', 'HAVE_LIBAIKSAURUS',
@@ -1334,7 +1337,7 @@ if build_boost:
 
   boostenv = env.Copy()
   #
-  # 
+  #
   # boost use its own config.h
   boostenv['CPPPATH'] = ['$TOP_SRCDIR/boost', '$BUILDDIR/boost'] + extra_inc_paths
   boostenv.AppendUnique(CCFLAGS = ['-DBOOST_USER_CONFIG="<config.h>"'])
@@ -1457,7 +1460,7 @@ if build_intl:
           "Define to 1 if translation of program messages to the user's native anguage is requested.",
         ),
       ],
-      config_post = '#endif'   
+      config_post = '#endif'
     )
     conf.Finish()
     # these keys are needed in env
@@ -1549,7 +1552,7 @@ if build_mathed:
   #
   mathed = env.StaticLibrary(
     target = '$LOCALLIBPATH/mathed',
-    source = env['PCH_FILE'] + utils.globSource(dir = env.subst('$TOP_SRCDIR/src/mathed'), 
+    source = env['PCH_FILE'] + utils.globSource(dir = env.subst('$TOP_SRCDIR/src/mathed'),
       pattern = lyx_ext,
       exclude = ['math_xyarrowinset.C', 'math_mboxinset.C', 'formulamacro.C'],
       build_dir = '$BUILDDIR/common/mathed')
@@ -1565,7 +1568,7 @@ if build_insets:
   #
   insets = env.StaticLibrary(
     target = '$LOCALLIBPATH/insets',
-    source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/insets'), 
+    source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/insets'),
       pattern = lyx_ext,
       exclude = ['insettheorem.C'], build_dir = '$BUILDDIR/common/insets')
   )
@@ -2017,7 +2020,7 @@ if build_lyxbase:
   lyxbase_pre = env.StaticLibrary(
     target = '$LOCALLIBPATH/lyxbase_pre',
     source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src'), pattern = lyx_ext,
-      exclude = lyx_post_source + ['main.C', 'aspell.C', 'pspell.C', 
+      exclude = lyx_post_source + ['main.C', 'aspell.C', 'pspell.C',
         'ispell.C', 'Variables.C', 'Sectioning.C'],
       include = ['version.C'], build_dir = '$BUILDDIR/common')
   )
