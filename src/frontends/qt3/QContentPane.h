@@ -12,12 +12,14 @@
 #ifndef QCONTENTPANE_H
 #define QCONTENTPANE_H
 
+#include "funcrequest.h"
 #ifdef emit
 #undef emit
-#endif
-
-#include "funcrequest.h"
 #include "frontends/Timeout.h"
+#define emit
+#else
+#include "frontends/Timeout.h"
+#endif
 
 #include <qwidget.h>
 #include <qpixmap.h>
@@ -31,7 +33,6 @@
 #define USE_INPUT_METHODS 1
 #endif
 
-class QWorkArea;
 
 /// for emulating triple click
 class double_click {
@@ -54,6 +55,11 @@ public:
 		state(e->button()), active(true) {}
 };
 
+
+namespace lyx {
+namespace frontend {
+
+class QWorkArea;
 
 /** Qt only emits mouse events when the mouse is being moved, but
  *  we want to generate 'pseudo' mouse events when the mouse button is
@@ -138,5 +144,8 @@ private:
 
 	double_click dc_event_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QCONTENTPANE_H

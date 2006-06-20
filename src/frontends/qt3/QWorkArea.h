@@ -13,7 +13,6 @@
 #ifndef QWORKAREA_H
 #define QWORKAREA_H
 
-#include "WorkArea.h"
 #include "QLPainter.h"
 #include "QContentPane.h"
 
@@ -23,6 +22,9 @@ class LyXView;
 class QPixmap;
 class QWidget;
 
+namespace lyx {
+namespace frontend {
+
 
 /**
  * Qt-specific implementation of the work area
@@ -31,7 +33,7 @@ class QWidget;
  * It consists of a content pane widget, and a scrollbar.
  * Hopefully soon we can just use QScrollView ...
  */
-class QWorkArea : public WorkArea, public QWidget {
+class QWorkArea : public QWidget {
 public:
 	friend class QContentPane;
 
@@ -39,7 +41,7 @@ public:
 
 	virtual ~QWorkArea();
 	/// return this widget's painter
-	virtual Painter & getPainter() { return painter_; }
+	virtual lyx::frontend::Painter & getPainter() { return painter_; }
 	/// return the width of the content pane
 	virtual int workWidth() const { return content_->width(); }
 	/// return the height of the content pane
@@ -48,11 +50,11 @@ public:
 	virtual void setScrollbarParams(int height, int pos, int line_height);
 
 	/// a selection exists
-	virtual void haveSelection(bool) const;
+	virtual void haveSelection(bool);
 	///
 	virtual std::string const getClipboard() const;
 	///
-	virtual void putClipboard(std::string const &) const;
+	virtual void putClipboard(std::string const &);
 	///
 	virtual void dragEnterEvent(QDragEnterEvent * event);
 	///
@@ -80,5 +82,9 @@ private:
 	/// our painter
 	QLPainter painter_;
 };
+
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QWORKAREA_H

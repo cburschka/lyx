@@ -39,9 +39,10 @@
 #include "WordLangTuple.h"
 
 #include "frontends/Alert.h"
+#include "frontends/Clipboard.h"
 #include "frontends/Dialogs.h"
 #include "frontends/LyXView.h"
-#include "frontends/screen.h"
+#include "frontends/Gui.h"
 #include "frontends/WorkArea.h"
 
 #include "insets/insetcommand.h" // ChangeRefs
@@ -83,19 +84,13 @@ Buffer * BufferView::buffer() const
 }
 
 
-LyXScreen & BufferView::screen() const
-{
-	return pimpl_->screen();
-}
-
-
 LyXView * BufferView::owner() const
 {
 	return pimpl_->owner_;
 }
 
 
-Painter & BufferView::painter() const
+lyx::frontend::Painter & BufferView::painter() const
 {
 	return pimpl_->painter();
 }
@@ -200,7 +195,7 @@ void BufferView::switchKeyMap()
 
 int BufferView::workWidth() const
 {
-	return pimpl_->workarea().workWidth();
+	return pimpl_->workarea().width();
 }
 
 
@@ -212,7 +207,7 @@ void BufferView::center()
 
 string const BufferView::getClipboard() const
 {
-	return pimpl_->workarea().getClipboard();
+	return pimpl_->clipboard().get();
 }
 
 
@@ -317,7 +312,7 @@ void BufferView::gotoLabel(string const & label)
 
 void BufferView::hideCursor()
 {
-	screen().hideCursor();
+	pimpl_->gui().guiCursor().hide();
 }
 
 LyXText * BufferView::getLyXText()
@@ -338,13 +333,13 @@ LyXText const * BufferView::getLyXText() const
 
 void BufferView::haveSelection(bool sel)
 {
-	pimpl_->workarea().haveSelection(sel);
+	pimpl_->clipboard().haveSelection(sel);
 }
 
 
 int BufferView::workHeight() const
 {
-	return pimpl_->workarea().workHeight();
+	return pimpl_->workarea().height();
 }
 
 

@@ -23,14 +23,18 @@ class QPainter;
 class QString;
 class QPixmap;
 class QImage;
-class QWorkArea;
+
+namespace lyx {
+namespace frontend {
+
+class GuiWorkArea;
 
 /**
  * QLPainter - a painter implementation for Qt4
  */
 class QLPainter : public Painter {
 public:
-	QLPainter(QWorkArea *);
+	QLPainter(GuiWorkArea *);
 
 	~QLPainter();
 
@@ -146,11 +150,14 @@ private:
 	boost::scoped_ptr<QPainter> qp_;
 
 	/// the working area
-	QWorkArea * qwa_;
+	GuiWorkArea * qwa_;
 
 	LColor::color current_color_;
 	Painter::line_style current_ls_;
 	Painter::line_width current_lw_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QLPAINTER_H

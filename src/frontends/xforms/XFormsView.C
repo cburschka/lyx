@@ -74,7 +74,7 @@ void print_metrics(std::ostream & os, std::string const & name, Box const & box)
 XFormsView::XFormsView(int width, int height)
 	: LyXView(),
 	  window_(Box(width, height)),
-	  icon_pixmap_(0), icon_mask_(0)
+	  icon_pixmap_(0), icon_mask_(0), frontend_(*this)
 {
 	int const air = 2;
 

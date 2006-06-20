@@ -27,6 +27,7 @@
 #include <map>
 #include <sstream>
 
+using lyx::frontend::Painter;
 
 using std::string;
 using std::max;

@@ -21,6 +21,8 @@
 #include "frontends/Painter.h"
 #include "frontends/font_metrics.h"
 
+using lyx::frontend::Painter;
+
 using std::endl;
 using std::ostream;
 

@@ -58,14 +58,14 @@
 #include "insets/insettext.h"
 
 #include "frontends/Alert.h"
+#include "frontends/Clipboard.h"
 #include "frontends/Dialogs.h"
 #include "frontends/FileDialog.h"
 #include "frontends/font_metrics.h"
+#include "frontends/Gui.h"
 #include "frontends/LyXView.h"
-#include "frontends/LyXScreenFactory.h"
-#include "frontends/screen.h"
+#include "frontends/Painter.h"
 #include "frontends/WorkArea.h"
-#include "frontends/WorkAreaFactory.h"
 
 #include "graphics/Previews.h"
 
@@ -81,6 +81,10 @@
 
 #include <functional>
 #include <vector>
+
+using lyx::frontend::WorkArea;
+using lyx::frontend::Clipboard;
+using lyx::frontend::Gui;
 
 using lyx::pos_type;
 
@@ -102,7 +106,6 @@ using std::max;
 using std::string;
 using std::mem_fun_ref;
 using std::vector;
-
 
 extern BufferList bufferlist;
 
@@ -142,13 +145,13 @@ BufferView::Pimpl::Pimpl(BufferView & bv, LyXView * owner,
 {
 	xsel_cache_.set = false;
 
-	workarea_.reset(WorkAreaFactory::create(*owner_, width, height));
-	screen_.reset(LyXScreenFactory::create(workarea()));
+	workAreaId_ = owner_->gui().newWorkArea(width, height);
+	workArea_ = & owner_->gui().workArea(workAreaId_);
 
 	// Setup the signals
 	timecon = cursor_timeout.timeout
 		.connect(boost::bind(&BufferView::Pimpl::cursorToggle, this));
-        
+	
 	cursor_timeout.start();
         
 	saved_positions.resize(saved_positions_num);
@@ -314,21 +317,27 @@ bool BufferView::Pimpl::loadLyXFile(string const & filename, bool tolastfiles)
 }
 
 
-WorkArea & BufferView::Pimpl::workarea() const
+lyx::frontend::Gui & BufferView::Pimpl::gui() const
 {
-	return *workarea_.get();
+	return owner_->gui();
 }
 
 
-LyXScreen & BufferView::Pimpl::screen() const
+lyx::frontend::WorkArea & BufferView::Pimpl::workarea() const
 {
-	return *screen_.get();
+	return *workArea_;
 }
 
 
-Painter & BufferView::Pimpl::painter() const
+lyx::frontend::Clipboard & BufferView::Pimpl::clipboard() const
 {
-	return workarea().getPainter();
+	return owner_->gui().clipboard();
+}
+
+
+lyx::frontend::Painter & BufferView::Pimpl::painter() const
+{
+	return workArea_->getPainter();
 }
 
 
@@ -451,7 +460,7 @@ void BufferView::Pimpl::updateScrollbar()
 	if (!bv_->text()) {
 		lyxerr[Debug::DEBUG] << BOOST_CURRENT_FUNCTION
 				     << " no text in updateScrollbar" << endl;
-		workarea().setScrollbarParams(0, 0, 0);
+		workArea_->setScrollbarParams(0, 0, 0);
 		return;
 	}
 
@@ -473,7 +482,7 @@ void BufferView::Pimpl::updateScrollbar()
 
 	// estimated average paragraph height:
 	if (wh_ == 0)
-		wh_ = workarea().workHeight() / 4;
+		wh_ = workArea_->height() / 4;
 	int h = t.getPar(anchor_ref_).height();
 
 	// Normalize anchor/offset (MV):
@@ -486,7 +495,7 @@ void BufferView::Pimpl::updateScrollbar()
 	int sumh = 0;
 	int nh = 0;
 	for (lyx::pit_type pit = anchor_ref_; pit <= parsize; ++pit) {
-		if (sumh > workarea().workHeight())
+		if (sumh > workArea_->height())
 			break;
 		int const h2 = t.getPar(pit).height();
 		sumh += h2;
@@ -497,7 +506,7 @@ void BufferView::Pimpl::updateScrollbar()
 	if (hav > wh_)
 		wh_ = hav;
 
-	workarea().setScrollbarParams((parsize + 1) * wh_,
+	workArea_->setScrollbarParams((parsize + 1) * wh_,
 		anchor_ref_ * wh_ + int(offset_ref_ * wh_ / float(h)),
 		int(wh_ * defaultRowHeight() / float(h)));
 }
@@ -511,7 +520,7 @@ void BufferView::Pimpl::scrollDocView(int value)
 	if (!buffer_)
 		return;
 
-	screen().hideCursor();
+	owner_->gui().guiCursor().hide();
 
 	LyXText & t = *bv_->text();
 
@@ -530,7 +539,7 @@ void BufferView::Pimpl::scrollDocView(int value)
 
 	int const height = 2 * defaultRowHeight();
 	int const first = height;
-	int const last = workarea().workHeight() - height;
+	int const last = workArea_->height() - height;
 	LCursor & cur = cursor_;
 
 	bv_funcs::CurStatus st = bv_funcs::status(bv_, cur);
@@ -574,7 +583,7 @@ void BufferView::Pimpl::scroll(int /*lines*/)
 //	scrollDocView(new_top_y);
 //
 //	// Update the scrollbar.
-//	workarea().setScrollbarParams(t->height(), top_y(), defaultRowHeight());
+//	workArea_->.setScrollbarParams(t->height(), top_y(), defaultRowHeight());
 }
 
 
@@ -591,7 +600,7 @@ void BufferView::Pimpl::workAreaKeyPress(LyXKeySymPtr key,
 	 * dispatch() itself, because that's called recursively.
 	 */
 	if (available())
-		screen().showCursor(*bv_);
+		owner_->gui().guiCursor().show(*bv_);
 }
 
 
@@ -618,7 +627,7 @@ void BufferView::Pimpl::selectionRequested()
 		xsel_cache_.set = cur.selection();
 		sel = cur.selectionAsString(false);
 		if (!sel.empty())
-			workarea().putClipboard(sel);
+			clipboard().put(sel);
 	}
 }
 
@@ -626,7 +635,7 @@ void BufferView::Pimpl::selectionRequested()
 void BufferView::Pimpl::selectionLost()
 {
 	if (available()) {
-		screen().hideCursor();
+		owner_->gui().guiCursor().hide();
 		cursor_.clearSelection();
 		xsel_cache_.set = false;
 	}
@@ -635,15 +644,15 @@ void BufferView::Pimpl::selectionLost()
 
 void BufferView::Pimpl::workAreaResize()
 {
-	static int work_area_width;
-	static int work_area_height;
+	static int workArea_width;
+	static int workArea_height;
 
-	bool const widthChange = workarea().workWidth() != work_area_width;
-	bool const heightChange = workarea().workHeight() != work_area_height;
+	bool const widthChange = workArea_->width() != workArea_width;
+	bool const heightChange = workArea_->height() != workArea_height;
 
 	// Update from work area
-	work_area_width = workarea().workWidth();
-	work_area_height = workarea().workHeight();
+	workArea_width = workArea_->width();
+	workArea_height = workArea_->height();
 
 	if (buffer_ && widthChange) {
 		// The visible LyXView need a resize
@@ -666,7 +675,7 @@ bool BufferView::Pimpl::fitCursor()
 		int const asc = font_metrics::maxAscent(font);
 		int const des = font_metrics::maxDescent(font);
 		Point const p = bv_funcs::getPos(cursor_, cursor_.boundary());
-		if (p.y_ - asc >= 0 && p.y_ + des < workarea().workHeight())
+		if (p.y_ - asc >= 0 && p.y_ + des < workArea_->height())
 			return false;
 	}
 	center();
@@ -721,14 +730,14 @@ void BufferView::Pimpl::update(Update::flags flags)
 		}
 		if (forceupdate) {
 			// Second drawing step
-			screen().redraw(*bv_, vi);
+			workArea_->redraw(*bv_, vi);
 		} else {
 			// Abort updating of the coord
 			// cache - just restore the old one
 			std::swap(theCoords, backup);
 		}
 	} else
-		screen().greyOut();
+		workArea_->greyOut();
 
 	// And the scrollbar
 	updateScrollbar();
@@ -740,7 +749,7 @@ void BufferView::Pimpl::update(Update::flags flags)
 void BufferView::Pimpl::cursorToggle()
 {
 	if (buffer_) {
-		screen().toggleCursor(*bv_);
+		owner_->gui().guiCursor().toggle(*bv_);
 
 		// Use this opportunity to deal with any child processes that
 		// have finished but are waiting to communicate this fact
@@ -867,13 +876,13 @@ void BufferView::Pimpl::center()
 	Paragraph const & par = bot.text()->paragraphs()[pit];
 	anchor_ref_ = pit;
 	offset_ref_ = bv_funcs::coordOffset(cursor_, cursor_.boundary()).y_
-		+ par.ascent() - workarea().workHeight() / 2;
+		+ par.ascent() - workArea_->height() / 2;
 }
 
 
 void BufferView::Pimpl::stuffClipboard(string const & content) const
 {
-	workarea().putClipboard(content);
+	clipboard().put(content);
 }
 
 
@@ -998,13 +1007,13 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 	if (!available())
 		return false;
 
-	screen().hideCursor();
+	owner_->gui().guiCursor().hide();
 
 	// Either the inset under the cursor or the
 	// surrounding LyXText will handle this event.
 
 	// Build temporary cursor.
-	cmd.y = min(max(cmd.y,-1), workarea().workHeight());
+	cmd.y = min(max(cmd.y, -1), workArea_->height());
 	InsetBase * inset = bv_->text()->editXY(cur, cmd.x, cmd.y);
 	//lyxerr << BOOST_CURRENT_FUNCTION
 	//       << " * hit inset at tip: " << inset << endl;
@@ -1036,7 +1045,7 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 
 	// See workAreaKeyPress
 	cursor_timeout.restart();
-	screen().showCursor(*bv_);
+	owner_->gui().guiCursor().show(*bv_);
 
 	// Skip these when selecting
 	if (cmd.action != LFUN_MOUSE_MOTION) {

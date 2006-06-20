@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file QWorkArea.h
+ * \file GuiWorkArea.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,8 +11,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QWORKAREA_H
-#define QWORKAREA_H
+#ifndef WORKAREA_H
+#define WORKAREA_H
 
 #if (defined(Q_WS_X11) && QT_VERSION >= 0x030200)
 #define USE_INPUT_METHODS 1
@@ -22,10 +22,10 @@
 #undef emit
 #endif
 
-#include "WorkArea.h"
+#include "frontends/LyXView.h"
+#include "frontends/WorkArea.h"
+
 #include "QLPainter.h"
-#include "LyXView.h"
-#include "screen.h"
 
 #include "funcrequest.h"
 #include "frontends/Timeout.h"
@@ -49,6 +49,9 @@ class QDragEnterEvent;
 class QDropEvent;
 class QMouseEvent;
 
+namespace lyx {
+namespace frontend {
+
 /// for emulating triple click
 class double_click {
 public:
@@ -69,7 +72,6 @@ public:
 		: x(e->x()), y(e->y()),
 		state(e->button()), active(true) {}
 };
-
 
 /** Qt only emits mouse events when the mouse is being moved, but
  *  we want to generate 'pseudo' mouse events when the mouse button is
@@ -96,31 +98,22 @@ public:
  * Qt-specific implementation of the work area
  * (buffer view GUI)
 */
-class QWorkArea : public QAbstractScrollArea, public WorkArea, public LyXScreen {
+class GuiWorkArea: public QAbstractScrollArea, public WorkArea {
 
 	Q_OBJECT
 
 public:
 
-	QWorkArea(LyXView & owner, int w, int h);
+	GuiWorkArea(LyXView & owner, int w, int h);
 
-	virtual ~QWorkArea();
+	virtual ~GuiWorkArea();
 	/// return the width of the content pane
-	virtual int workWidth() const { return workWidth_; }
+	virtual int width() const { return workWidth_; }
 
 	/// return the height of the content pane
-	virtual int workHeight() const { return workHeight_; }
+	virtual int height() const { return workHeight_; }
 	///
 	virtual void setScrollbarParams(int height, int pos, int line_height);
-
-	/// a selection exists
-	virtual void haveSelection(bool) const;
-
-	///
-	virtual std::string const getClipboard() const;
-
-	///
-	virtual void putClipboard(std::string const &) const;
 
 	///
 	virtual void dragEnterEvent(QDragEnterEvent * event);
@@ -147,11 +140,6 @@ public:
 	void drawScreen(int x, int y, QPixmap pixmap);
 	
 	LyXView & view() { return view_; }
-
-	// LyXScreen overloaded methods:
-
-	/// get the work area
-	virtual WorkArea & workarea();
 
 	/// copies specified area of pixmap to screen
 	virtual void expose(int x, int y, int exp_width, int exp_height);
@@ -184,7 +172,7 @@ protected:
 #if USE_INPUT_METHODS
 protected:
 	/// IM events
-	void QWorkArea::inputMethodEvent(QInputMethodEvent * e)
+	void inputMethodEvent(QInputMethodEvent * e);
 #endif
 
 public slots:
@@ -259,4 +247,7 @@ private:
 	Cursor_Shape cursor_shape_;
 };
 
-#endif // QWORKAREA_H
+} // namespace frontend
+} // namespace lyx
+
+#endif // WORKAREA_H

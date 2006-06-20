@@ -12,7 +12,7 @@
 #ifndef GSCREEN_H
 #define GSCREEN_H
 
-#include "screen.h"
+#include "frontends/GuiCursor.h"
 
 #include <gtkmm.h>
 
@@ -26,7 +26,7 @@ class GWorkArea;
     date and used to optimize drawing on the screen.
     This class also handles the drawing of the cursor and partly the selection.
  */
-class GScreen : public LyXScreen {
+class GScreen {
 public:
 	///
 	GScreen(GWorkArea &);
@@ -40,9 +40,6 @@ public:
 	virtual void removeCursor();
 	///
 	virtual void showCursor(int x, int y, int h, Cursor_Shape shape);
-protected:
-	/// get the work area
-	virtual WorkArea & workarea();
 
 	/// Copies specified area of pixmap to screen
 	virtual void expose(int x, int y, int w, int h);

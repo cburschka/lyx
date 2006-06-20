@@ -6,32 +6,39 @@
  *
  * \author unknown
  * \author John Levon
+ * \author Abdelrazak Younes
  *
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef WORKAREA_H
-#define WORKAREA_H
+#ifndef BASE_WORKAREA_H
+#define BASE_WORKAREA_H
+
+#include "frontends/GuiCursor.h"
 
 #include "frontends/key_state.h"
 #include "frontends/LyXKeySym.h"
 
-#include <boost/signal.hpp>
+class LyXView;
+class FuncRequest;
+class BufferView;
+class ViewMetricsInfo;
 
+namespace lyx {
+namespace frontend {
 
 class Painter;
-class FuncRequest;
 
 /**
  * The work area class represents the widget that provides the
  * view onto a document. It is owned by the BufferView, and
  * is responsible for handing events back to its owning BufferView.
- * It works in concert with the LyXScreen class to update the
+ * It works in concert with the BaseScreen class to update the
  * widget view of a document.
  */
 class WorkArea {
 public:
-	WorkArea() {}
+	WorkArea(LyXView & owner, int w, int h);
 
 	virtual ~WorkArea() {}
 
@@ -39,9 +46,10 @@ public:
 	virtual Painter & getPainter() = 0;
 
 	/// return the width of the work area in pixels
-	virtual int workWidth() const = 0;
+	virtual int width() const = 0;
+
 	/// return the height of the work area in pixels
-	virtual int workHeight() const = 0;
+	virtual int height() const = 0;
 
 	/**
 	 * Update the scrollbar.
@@ -51,13 +59,31 @@ public:
 	 */
 	virtual void setScrollbarParams(int height, int pos, int line_height) = 0;
 
-	// FIXME: this is an odd place to have it, but xforms needs it here ...
-	/// a selection exists
-	virtual void haveSelection(bool) const = 0;
-	/// get the X clipboard contents
-	virtual std::string const getClipboard() const = 0;
-	/// fill the clipboard
-	virtual void putClipboard(std::string const &) const = 0;
+	/// redraw the screen, without using existing pixmap
+	virtual void redraw(BufferView & bv, ViewMetricsInfo const & vi);
+
+	/// grey out (no buffer)
+	void greyOut();
+
+	/// paint the cursor and store the background
+	virtual void showCursor(int x, int y, int h, Cursor_Shape shape) = 0;
+
+	/// hide the cursor
+	virtual void removeCursor() = 0;
+
+protected:
+	/// cause the display of the given area of the work area
+	virtual void expose(int x, int y, int w, int h) = 0;
+
+private:
+	///
+	void checkAndGreyOut();
+
+	///
+	bool greyed_out_;
 };
 
-#endif // WORKAREA_H
+} // namespace frontend
+} // namespace lyx
+
+#endif // BASE_WORKAREA_H

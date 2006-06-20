@@ -111,6 +111,8 @@ libgtk_la_SOURCES = \
 	GToolbar.h \
 	GUrl.C \
 	GUrl.h \
+	GuiClipboard.h \
+	GuiWorkArea.h \
 	GView.C \
 	GView.h \
 	GViewBase.C \
@@ -133,10 +135,9 @@ libgtk_la_SOURCES = \
 	LyXGdkImage.C \
 	LyXGdkImage.h \
 	LyXKeySymFactory.C \
-	LyXScreenFactory.C \
-	WorkAreaFactory.C \
 	ghelpers.C \
 	ghelpers.h \
+	GuiImplementation.h \
 	io_callback.C \
 	io_callback.h \
 	lyx_gui.C \

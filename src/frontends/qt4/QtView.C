@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Lars Gullik BjÃ¸nnes
+ * \author Lars Gullik Bjønnes
  * \author John Levon
  * \author Abdelrazak Younes
  *
@@ -71,7 +71,7 @@ int const statusbar_timer_value = 3000;
 
 
 QtView::QtView(unsigned int width, unsigned int height)
-	: QMainWindow(), LyXView(), commandbuffer_(0)
+	: QMainWindow(), LyXView(), commandbuffer_(0), frontend_(*this)
 {
 	mainWidget_ = this;
 

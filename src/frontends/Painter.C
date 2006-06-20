@@ -13,7 +13,6 @@
 
 #include "Painter.h"
 #include "font_metrics.h"
-#include "WorkArea.h"
 
 #include "LColor.h"
 #include "lyxfont.h"
@@ -21,6 +20,8 @@
 using std::max;
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 void Painter::button(int x, int y, int w, int h)
 {
@@ -92,3 +93,6 @@ void Painter::underline(LyXFont const & f, int x, int y, int width)
 	else
 		fillRectangle(x, y + below, width, below + height, f.color());
 }
+
+} // namespace frontend
+} // namespace lyx

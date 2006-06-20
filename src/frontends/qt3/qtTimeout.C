@@ -14,6 +14,9 @@
 
 #include "debug.h"
 
+// stupid Qt
+#undef emit
+
 
 Timeout::Timeout(unsigned int msec, Type t)
 	: pimpl_(new qtTimeout(*this)), type(t), timeout_ms(msec)

@@ -613,7 +613,7 @@ int XWorkArea::event_cb(XEvent * xev)
 }
 
 
-void XWorkArea::haveSelection(bool yes) const
+void XWorkArea::haveSelection(bool yes)
 {
 	Window const owner = yes ? FL_ObjWin(work_area) : None;
 	XSetSelectionOwner(fl_get_display(), XA_PRIMARY, owner, CurrentTime);
@@ -642,7 +642,7 @@ string const XWorkArea::getClipboard() const
 }
 
 
-void XWorkArea::putClipboard(string const & s) const
+void XWorkArea::putClipboard(string const & s)
 {
 	static string hold;
 	hold = s;

@@ -504,7 +504,7 @@ void GWorkArea::onClipboardClear()
 }
 
 
-void GWorkArea::haveSelection(bool toHave) const
+void GWorkArea::haveSelection(bool toHave)
 {
 	if (toHave) {
 		Glib::RefPtr<Gtk::Clipboard> clipboard =
@@ -533,7 +533,7 @@ string const GWorkArea::getClipboard() const
 
 // ENCODING: we assume that the backend passes us ISO-8859-1 and
 // convert from that to UTF-8 before passing to GTK
-void GWorkArea::putClipboard(string const & str) const
+void GWorkArea::putClipboard(string const & str)
 {
 	Glib::RefPtr<Gtk::Clipboard> clipboard =
 		Gtk::Clipboard::get(GDK_SELECTION_PRIMARY);

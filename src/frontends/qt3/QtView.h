@@ -18,6 +18,8 @@
 
 #include "frontends/LyXView.h"
 
+#include "GuiImplementation.h"
+
 #include <qmainwindow.h>
 #include <qtimer.h>
 
@@ -62,6 +64,9 @@ public:
 	// returns true if this view has the focus.
 	virtual bool hasFocus() const;
 
+	//
+	lyx::frontend::Gui & gui() { return frontend_; }
+
 public slots:
 	/// idle timeout
 	void update_view_state_qt();
@@ -86,6 +91,9 @@ private:
 
 	/// command buffer
 	QCommandBuffer * commandbuffer_;
+	
+	///
+	GuiImplementation frontend_;
 };
 
 } // namespace frontend

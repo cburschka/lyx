@@ -38,22 +38,24 @@
 #include <Carbon/Carbon.h>
 #endif
 
-#ifdef Q_OS_MAC
 #include <support/lstrings.h>
 
-using lyx::support::subst;
-#endif
+using lyx::support::internalLineEnding;
+using lyx::support::externalLineEnding;
 using std::endl;
 using std::string;
 
 namespace os = lyx::support::os;
 
 namespace {
-QWorkArea * wa_ptr = 0;
+lyx::frontend::QWorkArea * wa_ptr = 0;
 }
 
+namespace lyx {
+namespace frontend {
+
 QWorkArea::QWorkArea(LyXView & owner, int, int)
-        : WorkArea(), QWidget(qApp->mainWidget()), owner_(owner), painter_(*this)
+        : QWidget(qApp->mainWidget()), owner_(owner), painter_(*this)
 {
 	scrollbar_ = new QScrollBar(QScrollBar::Vertical, this);
 	content_ = new QContentPane(this);
@@ -98,6 +100,10 @@ void QWorkArea::setScrollbarParams(int h, int pos, int line_h)
 	scrollbar_->setLineStep(line_h);
 	scrollbar_->setPageStep(height());
 }
+
+} // namespace frontend
+} // namespace lyx
+
 
 #ifdef Q_WS_X11
 bool lyxX11EventFilter(XEvent * xev)
@@ -184,7 +190,11 @@ pascal OSErr handleOpenDocuments(const AppleEvent* inEvent,
 }
 #endif  // Q_WS_MACX
 
-void QWorkArea::haveSelection(bool own) const
+
+namespace lyx {
+namespace frontend {
+
+void QWorkArea::haveSelection(bool own)
 {
 	wa_ptr = const_cast<QWorkArea*>(this);
 
@@ -206,24 +216,14 @@ string const QWorkArea::getClipboard() const
 	QString str = QApplication::clipboard()->text();
 	if (str.isNull())
 		return string();
-#ifdef Q_OS_MAC
-	// The MAC clipboard uses \r for lineendings, and we use \n
-	return subst(fromqstr(str), '\r', '\n');
-#else
-	return fromqstr(str);
-#endif
+	return internalLineEnding(fromqstr(str));
 }
 
 
-void QWorkArea::putClipboard(string const & str) const
+void QWorkArea::putClipboard(string const & str)
 {
 	QApplication::clipboard()->setSelectionMode(true);
-#ifdef Q_OS_MAC
-	// The MAC clipboard uses \r for lineendings, and we use \n
-	QApplication::clipboard()->setText(toqstr(subst(str, '\n', '\r')));
-#else
-	QApplication::clipboard()->setText(toqstr(str));
-#endif
+	QApplication::clipboard()->setText(toqstr(externalLineEnding(str)));
 }
 
 
@@ -247,3 +247,6 @@ void QWorkArea::dropEvent(QDropEvent * event)
 		}
 	}
 }
+
+} // namespace frontend
+} // namespace lyx

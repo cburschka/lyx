@@ -17,6 +17,8 @@
 // Must be here because of moc.
 #include <config.h>
 
+#include "GuiImplementation.h"
+
 #include "frontends/LyXView.h"
 #include "funcrequest.h"
 
@@ -72,6 +74,9 @@ public:
 	// returns true if this view has the focus.
 	virtual bool hasFocus() const;
 
+	//
+	Gui & gui() { return frontend_; }
+
 	static QMainWindow* mainWidget();
 
 public slots:
@@ -105,6 +110,8 @@ private:
 
 	///
 	static QMainWindow* mainWidget_;
+
+	GuiImplementation frontend_;
 };
 
 } // namespace frontend

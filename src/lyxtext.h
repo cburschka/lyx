@@ -334,9 +334,6 @@ public:
 	/// delete double space or empty paragraphs around old cursor
 	bool deleteEmptyParagraphMechanism(LCursor & cur, LCursor & old);
 
-	///
-	friend class LyXScreen;
-
 public:
 	///
 	Dimension dim_;

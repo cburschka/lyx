@@ -18,7 +18,13 @@
 #include <limits>
 
 
+namespace lyx {
+namespace frontend {
+
 int NullPainter::paperHeight() const
 {
 	return std::numeric_limits<int>::max();
 }
+
+} // namespace frontend
+} // namespace lyx

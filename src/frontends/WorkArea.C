@@ -1,9 +1,10 @@
 /**
- * \file screen.C
+ * \file WorkArea.C
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
  * \author John Levon
+ * \author Abdelrazak Younes
  *
  * Full author contact details are available in file CREDITS.
  *
@@ -12,11 +13,11 @@
 
 #include <config.h>
 
-#include "screen.h"
+#include "WorkArea.h"
+
 #include "font_metrics.h"
 #include "lyx_gui.h"
 #include "Painter.h"
-#include "WorkArea.h"
 
 #include "BufferView.h"
 #include "buffer.h"
@@ -52,7 +53,8 @@ using std::max;
 using std::string;
 
 
-namespace {
+namespace lyx {
+namespace frontend {
 
 class SplashScreen : boost::noncopyable, boost::signals::trackable {
 public:
@@ -116,126 +118,48 @@ SplashScreen::SplashScreen()
 	loader_.reset(file);
 }
 
-} // namespace anon
-
-
-LyXScreen::LyXScreen()
-	: greyed_out_(true), cursor_visible_(false)
+WorkArea::WorkArea(LyXView & owner, int w, int h)
+	: greyed_out_(true)
 {
 	// Start loading the pixmap as soon as possible
 	if (lyxrc.show_banner) {
 		SplashScreen const & splash = SplashScreen::get();
-		splash.connect(boost::bind(&LyXScreen::checkAndGreyOut, this));
+		splash.connect(boost::bind(&WorkArea::checkAndGreyOut, this));
 		splash.startLoading();
 	}
 }
 
 
-LyXScreen::~LyXScreen()
-{
-}
-
-
-void LyXScreen::checkAndGreyOut()
+void WorkArea::checkAndGreyOut()
 {
 	if (greyed_out_)
 		greyOut();
 }
 
 
-void LyXScreen::showCursor(BufferView & bv)
-{
-	if (cursor_visible_)
-		return;
-
-	if (!bv.available())
-		return;
-
-	Cursor_Shape shape = BAR_SHAPE;
-
-	LyXText const & text = *bv.getLyXText();
-	LyXFont const & realfont = text.real_current_font;
-	BufferParams const & bp = bv.buffer()->params();
-	bool const samelang = realfont.language() == bp.language;
-	bool const isrtl = realfont.isVisibleRightToLeft();
-
-	if (!samelang || isrtl != bp.language->rightToLeft()) {
-		shape = L_SHAPE;
-		if (isrtl)
-			shape = REVERSED_L_SHAPE;
-	}
-
-	// The ERT language hack needs fixing up
-	if (realfont.language() == latex_language)
-		shape = BAR_SHAPE;
-
-	LyXFont const font = bv.cursor().getFont();
-	int const asc = font_metrics::maxAscent(font);
-	int const des = font_metrics::maxDescent(font);
-	int h = asc + des;
-	int x = 0;
-	int y = 0;
-	bv.cursor().getPos(x, y);
-	y -= asc;
-	//lyxerr << "LyXScreen::showCursor x: " << x << " y: " << y << endl;
-
-	// if it doesn't touch the screen, don't try to show it
-	if (y + h < 0 || y >= workarea().workHeight())
-		return;
-
-	cursor_visible_ = true;
-	showCursor(x, y, h, shape);
-}
-
-
-void LyXScreen::hideCursor()
-{
-	if (!cursor_visible_)
-		return;
-
-	cursor_visible_ = false;
-	removeCursor();
-}
-
-
-void LyXScreen::toggleCursor(BufferView & bv)
-{
-	if (cursor_visible_)
-		hideCursor();
-	else
-		showCursor(bv);
-}
-
-
-void LyXScreen::prepareCursor()
-{
-	cursor_visible_ = false;
-}
-
-
-void LyXScreen::redraw(BufferView & bv, ViewMetricsInfo const & vi)
+void WorkArea::redraw(BufferView & bv, ViewMetricsInfo const & vi)
 {
 	greyed_out_ = false;
-	workarea().getPainter().start();
+	getPainter().start();
 	paintText(bv, vi);
 	lyxerr[Debug::DEBUG] << "Redraw screen" << endl;
 	int const ymin = std::max(vi.y1, 0);
 	int const ymax =
-		( vi.p2 < vi.size - 1 ?  vi.y2 : workarea().workHeight() );
-	expose(0, ymin, workarea().workWidth(), ymax - ymin);
-	workarea().getPainter().end();
+		( vi.p2 < vi.size - 1 ?  vi.y2 : height() );
+	expose(0, ymin, width(), ymax - ymin);
+	getPainter().end();
 	theCoords.doneUpdating();
 }
 
 
-void LyXScreen::greyOut()
+void WorkArea::greyOut()
 {
 	greyed_out_ = true;
-	workarea().getPainter().start();
+	getPainter().start();
 
-	workarea().getPainter().fillRectangle(0, 0,
-		workarea().workWidth(),
-		workarea().workHeight(),
+	getPainter().fillRectangle(0, 0,
+		width(),
+		height(),
 		LColor::bottomarea);
 
 	// Add a splash screen to the centre of the work area
@@ -245,16 +169,19 @@ void LyXScreen::greyOut()
 		int const w = splash_image->getWidth();
 		int const h = splash_image->getHeight();
 
-		int x = (workarea().workWidth() - w) / 2;
-		int y = (workarea().workHeight() - h) / 2;
+		int x = (width() - w) / 2;
+		int y = (height() - h) / 2;
 
-		workarea().getPainter().image(x, y, w, h, *splash_image);
+		getPainter().image(x, y, w, h, *splash_image);
 
 		x += 260;
 		y += 265;
 
-		workarea().getPainter().text(x, y, splash.text(), splash.font());
+		getPainter().text(x, y, splash.text(), splash.font());
 	}
-	expose(0, 0, workarea().workWidth(), workarea().workHeight());
-	workarea().getPainter().end();
+	expose(0, 0, width(), height());
+	getPainter().end();
 }
+
+} // namespace frontend
+} // namespace lyx

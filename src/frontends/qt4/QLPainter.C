@@ -13,7 +13,7 @@
 
 #include "QLPainter.h"
 
-#include "QWorkArea.h"
+#include "GuiWorkArea.h"
 #include "QLImage.h"
 
 #include "ColorCache.h"
@@ -33,12 +33,14 @@
 using std::endl;
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 QLPainter::~QLPainter()
 {
 }
 
-QLPainter::QLPainter(QWorkArea * qwa)
+QLPainter::QLPainter(GuiWorkArea * qwa)
 	: Painter(), qwa_(qwa)
 {
 }
@@ -234,7 +236,7 @@ void QLPainter::text(int x, int y, char const * s, size_t ls,
 
 	QString str;
 	str.setLength(ls);
-	for (int i = 0; i < ls; ++i)
+	for (size_t i = 0; i < ls; ++i)
 		str[i] = QChar(encoding->ucs(s[i]));
 
 	// HACK: QT3 refuses to show single compose characters
@@ -248,7 +250,7 @@ void QLPainter::text(int x, int y, char const * s, size_t ls,
 		qp.setFont(fontloader.get(f));
 		// We need to draw the text as LTR as we use our own bidi code.
 		qp.setLayoutDirection(Qt::LeftToRight);
-		qp.drawText(x, y, str, -1);
+		qp.drawText(x, y, str);
 	} else {
 		smallCapsText(x, y, str, f);
 	}
@@ -270,3 +272,7 @@ void QLPainter::drawImage(int x, int y, QImage const & image)
 	QPainter qp(qwa_->paintDevice());
 	qp.drawImage(x, y, image);
 }
+
+} // namespace frontend
+} // namespace lyx
+

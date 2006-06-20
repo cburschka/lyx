@@ -12,27 +12,27 @@
 #ifndef QSCREEN_H
 #define QSCREEN_H
 
-#include "screen.h"
+#include "frontends/GuiCursor.h"
+
 #include <qcolor.h>
 #include <qpixmap.h>
 
+namespace lyx {
+namespace frontend {
+
 class QWorkArea;
-class WorkArea;
 
 
 /**
  * Qt implementation of toolkit-specific parts of LyXScreen.
  */
-class QScreen : public LyXScreen {
+class QScreen {
 public:
 	QScreen(QWorkArea &);
 
 	virtual ~QScreen();
 
-protected:
-	/// get the work area
-	virtual WorkArea & workarea();
-
+public:
 	/// repaint the whole content immediately
 	void repaint();
 
@@ -40,7 +40,7 @@ protected:
 	virtual void expose(int x, int y, int exp_width, int exp_height);
 
 	/// paint the cursor and store the background
-	virtual void showCursor(int x, int y, int h, Cursor_Shape shape);
+	virtual void showCursor(int x, int y, int h, lyx::frontend::Cursor_Shape shape);
 
 	/// hide the cursor
 	virtual void removeCursor();
@@ -62,5 +62,8 @@ private:
 
 	QColor cursor_color_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QSCREEN_H

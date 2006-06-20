@@ -20,10 +20,16 @@
 #include "box.h"
 #include "lyxfont.h"
 
-class Painter;
 class LyXText;
 class Paragraph;
 class CursorSlice;
+
+namespace lyx {
+namespace frontend {
+class Painter;
+}
+}
+
 
 /** A collapsable text inset
 

@@ -12,11 +12,15 @@
 #ifndef QTTIMEOUT_H
 #define QTTIMEOUT_H
 
+#ifdef emit
+#undef emit
 #include "frontends/Timeout.h"
+#define emit
+#else
+#include "frontends/Timeout.h"
+#endif
 #include <qobject.h>
 
-// stupid Qt
-#undef emit
 
 /**
  * This class executes the callback when the timeout expires

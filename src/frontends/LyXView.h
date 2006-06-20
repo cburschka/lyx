@@ -33,9 +33,15 @@ class Timeout;
 class FuncRequest;
 
 namespace lyx {
+
+namespace frontend {
+class Gui;
+} // namespace frontend
+
 namespace frontend {
 class ControlCommandBuffer;
 } // namespace frontend
+
 } // namespace lyx
 
 /**
@@ -144,6 +150,8 @@ public:
 
 	// returns true if this view has the focus.
 	virtual bool hasFocus() const = 0;
+
+	virtual lyx::frontend::Gui & gui() = 0;
 
 protected:
 	/// view of a buffer. Eventually there will be several.

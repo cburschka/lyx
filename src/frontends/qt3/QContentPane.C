@@ -78,6 +78,9 @@ mouse_button::state q_motion_state(Qt::ButtonState state)
 } // namespace anon
 
 
+namespace lyx {
+namespace frontend {
+
 // This is a 'heartbeat' generating synthetic mouse move events when the
 // cursor is at the top or bottom edge of the viewport. One scroll per 0.2 s
 SyntheticMouseEvent::SyntheticMouseEvent()
@@ -358,3 +361,6 @@ void QContentPane::trackScrollbar(bool track_on)
 {
 	track_scrollbar_ = track_on;
 }
+
+} // namespace frontend
+} // namespace lyx

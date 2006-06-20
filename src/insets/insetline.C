@@ -21,6 +21,8 @@
 
 #include "frontends/Painter.h"
 
+using lyx::frontend::Painter;
+
 using std::endl;
 using std::ostream;
 

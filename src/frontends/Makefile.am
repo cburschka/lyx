@@ -21,7 +21,6 @@ libfrontends_la_SOURCES = \
 	FileDialog.h \
 	LyXKeySym.h \
 	LyXKeySymFactory.h \
-	LyXScreenFactory.h \
 	LyXView.C \
 	LyXView.h \
 	Menubar.h \
@@ -31,8 +30,12 @@ libfrontends_la_SOURCES = \
 	Timeout.h \
 	Toolbars.C \
 	Toolbars.h \
+	Clipboard.h \
+	Gui.h \
+	GuiCursor.C \
+	GuiCursor.h \
+	WorkArea.C \
 	WorkArea.h \
-	WorkAreaFactory.h \
 	font_metrics.h \
 	guiapi.h \
 	guiapi.C \
@@ -40,6 +43,4 @@ libfrontends_la_SOURCES = \
 	lyx_gui.h \
 	mouse_state.h \
 	nullpainter.C \
-	nullpainter.h \
-	screen.C \
-	screen.h
+	nullpainter.h

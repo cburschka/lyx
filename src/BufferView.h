@@ -32,11 +32,14 @@ class FuncStatus;
 class Language;
 class LCursor;
 class LyXText;
-class LyXScreen;
 class LyXView;
-class Painter;
 class ParIterator;
 
+namespace lyx {
+namespace frontend {
+class Painter;
+}
+}
 
 namespace Update {
 	enum flags {
@@ -83,9 +86,8 @@ public:
 	Buffer * buffer() const;
 
 	/// return the painter object for drawing onto the view
-	Painter & painter() const;
-	/// return the screen object for handling re-drawing
-	LyXScreen & screen() const;
+	lyx::frontend::Painter & painter() const;
+
 	/// return the owning main view
 	LyXView * owner() const;
 

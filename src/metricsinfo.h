@@ -17,8 +17,13 @@
 
 #include <string>
 
-class Painter;
 class BufferView;
+
+namespace lyx {
+namespace frontend {
+class Painter;
+}
+}
 
 
 /// Standard Sizes (mode styles)
@@ -80,7 +85,7 @@ public:
 class PainterInfo {
 public:
 	///
-	PainterInfo(BufferView * bv, Painter & pain);
+	PainterInfo(BufferView * bv, lyx::frontend::Painter & pain);
 	///
 	void draw(int x, int y, char c);
 	///
@@ -89,7 +94,7 @@ public:
 	///
 	MetricsBase base;
 	///
-	Painter & pain;
+	lyx::frontend::Painter & pain;
 	/// Whether the text at this point is right-to-left (for InsetNewline)
 	bool ltr_pos;
 	/// Whether the parent is deleted (change tracking)

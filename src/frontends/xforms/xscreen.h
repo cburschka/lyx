@@ -13,7 +13,8 @@
 #ifndef XSCREEN_H
 #define XSCREEN_H
 
-#include "screen.h"
+#include "frontends/GuiCursor.h"
+
 #include <X11/Xlib.h> // for Pixmap, GC
 
 class WorkArea;
@@ -28,7 +29,7 @@ class XWorkArea;
     date and used to optimize drawing on the screen.
     This class also handles the drawing of the cursor and partly the selection.
  */
-class XScreen : public LyXScreen {
+class XScreen {
 public:
 	///
 	XScreen(XWorkArea &);
@@ -38,10 +39,6 @@ public:
 
 	/// Sets the cursor color to LColor::cursor.
 	virtual	void setCursorColor();
-
-protected:
-	/// get the work area
-	virtual WorkArea & workarea();
 
 	/// Copies specified area of pixmap to screen
 	virtual void expose(int x, int y, int w, int h);

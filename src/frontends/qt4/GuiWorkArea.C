@@ -1,5 +1,5 @@
 /**
- * \file QWorkArea.C
+ * \file GuiWorkArea.C
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -13,21 +13,20 @@
 
 #include <boost/current_function.hpp>
 
-#include "QWorkArea.h"
+#include "GuiWorkArea.h"
 #include "QLPainter.h"
 #include "QLyXKeySym.h"
 #include "QtView.h"
 
 #include "ColorCache.h"
 #include "qt_helpers.h"
+#include "Application.h"
 #include "BufferView.h"
 #include "debug.h"
 #include "funcrequest.h"
 #include "LColor.h"
 #include "support/os.h"
 
-#include <QApplication>
-#include <QClipboard>
 #include <QLayout>
 #include <QMainWindow>
 #include <QMimeData>
@@ -39,21 +38,10 @@
 
 #include <boost/bind.hpp>
 
-///////////////////////////////////////////////////////////////
-// Specific stuff
-#ifdef Q_WS_X11
-#include <X11/Xlib.h>
-#endif
-
-#ifdef Q_WS_MACX
-#include <Carbon/Carbon.h>
-#include <support/lstrings.h>
-using lyx::support::subst;
-#endif
-
-// You can find other qt-immodule, X11 and MACX specific stuff
-// at the end of this file...
-///////////////////////////////////////////////////////////////
+// Abdel (09/06/2006):
+// I want the drawing to be fast without Keyboard buffering so when working
+// on optimization, please set the following macro to 0:
+#define USE_KEY_BUFFERING 0
 
 using std::endl;
 using std::string;
@@ -61,8 +49,6 @@ using std::string;
 namespace os = lyx::support::os;
 
 namespace {
-
-QWorkArea * wa_ptr = 0;
 
 /// return the LyX key state from Qt's
 key_modifier::state q_key_state(Qt::ButtonState state)
@@ -114,6 +100,9 @@ mouse_button::state q_motion_state(Qt::ButtonState state)
 
 } // namespace anon
 
+namespace lyx {
+namespace frontend {
+
 // This is a 'heartbeat' generating synthetic mouse move events when the
 // cursor is at the top or bottom edge of the viewport. One scroll per 0.2 s
 SyntheticMouseEvent::SyntheticMouseEvent()
@@ -122,13 +111,13 @@ SyntheticMouseEvent::SyntheticMouseEvent()
 {}
 
 
-QWorkArea::QWorkArea(LyXView & owner, int w, int h)
-    : QAbstractScrollArea(lyx::frontend::QtView::mainWidget()), WorkArea(), view_(owner), painter_(this)
+GuiWorkArea::GuiWorkArea(LyXView & owner, int w, int h)
+: QAbstractScrollArea(QtView::mainWidget()), WorkArea(owner, w, h), view_(owner), painter_(this)
 {
 	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-	lyx::frontend::QtView::mainWidget()->setCentralWidget(this);
+	QtView::mainWidget()->setCentralWidget(this);
 
 	setAcceptDrops(true);
 
@@ -149,7 +138,7 @@ QWorkArea::QWorkArea(LyXView & owner, int w, int h)
 	workHeight_ = h;
 
 	synthetic_mouse_event_.timeout.timeout.connect(
-		boost::bind(&QWorkArea::generateSyntheticMouseEvent,
+		boost::bind(&GuiWorkArea::generateSyntheticMouseEvent,
 			    this));
 
 	// Initialize the vertical Scroll Bar
@@ -166,18 +155,18 @@ QWorkArea::QWorkArea(LyXView & owner, int w, int h)
 		<< "\n viewport height\t" << viewport()->height()
 		<< endl;
 
-/*
-	// This is the keyboard buffering stuff...
-	// I don't see any need for this under windows. The keyboard is reactive
-    // enough...
+	if (USE_KEY_BUFFERING) {
+		// This is the keyboard buffering stuff...
+		// I don't see any need for this under windows. The keyboard is reactive
+		// enough...
 
-	if ( !QObject::connect(&step_timer_, SIGNAL(timeout()),
-		this, SLOT(keyeventTimeout())) )
+		if ( !QObject::connect(&step_timer_, SIGNAL(timeout()),
+			this, SLOT(keyeventTimeout())) )
 			lyxerr[Debug::GUI] << "ERROR: keyeventTimeout cannot connect!" << endl;
 
-	// Start the timer, one-shot.
-	step_timer_.start(50, true);
-*/
+		// Start the timer, one-shot.
+		step_timer_.start(50, true);
+	}
 
 	///////////////////////////////////////////////////////////////////////
 	// Specific stuff goes here...
@@ -187,24 +176,13 @@ QWorkArea::QWorkArea(LyXView & owner, int w, int h)
 	setInputMethodEnabled(true);
 #endif
 
-#ifdef Q_WS_X11
-	// doubleClickInterval() is 400 ms on X11 witch is just too long.
-	// On Windows and Mac OS X, the operating system's value is used.
-	// On Microsoft Windows, calling this function sets the double
-	// click interval for all applications. So we don't!
-	QApplication::setDoubleClickInterval(300);
-#endif
-
-#ifdef Q_WS_MACX
-	wa_ptr = this;
-#endif
 }
 
-QWorkArea::~QWorkArea()
+GuiWorkArea::~GuiWorkArea()
 {
 }
 
-void QWorkArea::setScrollbarParams(int h, int scroll_pos, int scroll_line_step)
+void GuiWorkArea::setScrollbarParams(int h, int scroll_pos, int scroll_line_step)
 {
 	// do what cursor movement does (some grey)
 	h += height() / 4;
@@ -215,7 +193,7 @@ void QWorkArea::setScrollbarParams(int h, int scroll_pos, int scroll_line_step)
 	verticalScrollBar()->setLineStep(scroll_line_step);
 }
 
-void QWorkArea::adjustViewWithScrollBar(int action)
+void GuiWorkArea::adjustViewWithScrollBar(int)
 {
 	/*
 	lyxerr[Debug::GUI] << BOOST_CURRENT_FUNCTION
@@ -231,68 +209,23 @@ void QWorkArea::adjustViewWithScrollBar(int action)
 }
 
 
-void QWorkArea::haveSelection(bool own) const
-{
-	/// \todo ask X11 and MAC devels why this wa_ptr is useful.
-	wa_ptr = const_cast<QWorkArea*>(this);
-
-	if (!QApplication::clipboard()->supportsSelection())
-		return;
-
-	if (own) {
-		QApplication::clipboard()->setText(QString(), QClipboard::Selection);
-	}
-	// We don't need to do anything if own = false, as this case is
-	// handled by QT.
-}
-
-
-string const QWorkArea::getClipboard() const
-{
-	QString str = QApplication::clipboard()->text(QClipboard::Selection);
-	lyxerr[Debug::ACTION] << "getClipboard: " << (const char*) str << endl;
-	if (str.isNull())
-		return string();
-#ifdef Q_WS_MACX
-	// The MAC clipboard uses \r for lineendings, and we use \n
-	return subst(fromqstr(str), '\r', '\n');
-#else
-	return fromqstr(str);
-#endif
-}
-
-
-void QWorkArea::putClipboard(string const & str) const
-{
-#ifdef Q_WS_MACX
-	// The MAC clipboard uses \r for lineendings, and we use \n
-	QApplication::clipboard()->setText(toqstr(subst(str, '\n', '\r')),
-					   QClipboard::Selection);
-#else
-	QApplication::clipboard()->setText(toqstr(str), QClipboard::Selection);
-#endif
-	lyxerr[Debug::ACTION] << "putClipboard: " << str << endl;
-}
-
-
-void QWorkArea::dragEnterEvent(QDragEnterEvent * event)
+void GuiWorkArea::dragEnterEvent(QDragEnterEvent * event)
 {
 	if (event->mimeData()->hasUrls())
 		event->accept();
 	/// \todo Ask lyx-devel is this is enough:
 	/// if (event->mimeData()->hasFormat("text/plain"))
 	///	event->acceptProposedAction();
-
 }
 
 
-void QWorkArea::dropEvent(QDropEvent* event)
+void GuiWorkArea::dropEvent(QDropEvent* event)
 {
 	QList<QUrl> files = event->mimeData()->urls();
 	if (files.isEmpty())
 		return;
 
-	lyxerr[Debug::GUI] << "QWorkArea::dropEvent: got URIs!" << endl;
+	lyxerr[Debug::GUI] << "GuiWorkArea::dropEvent: got URIs!" << endl;
 	for (int i = 0; i!=files.size(); ++i) {
 		string const file = os::internal_path(fromqstr(files.at(i).toString()));
 		if (!file.empty())
@@ -301,7 +234,7 @@ void QWorkArea::dropEvent(QDropEvent* event)
 }
 
 
-void QWorkArea::mousePressEvent(QMouseEvent * e)
+void GuiWorkArea::mousePressEvent(QMouseEvent * e)
 {
 	if (dc_event_.active && dc_event_ == *e) {
 		dc_event_.active = false;
@@ -318,7 +251,7 @@ void QWorkArea::mousePressEvent(QMouseEvent * e)
 }
 
 
-void QWorkArea::mouseReleaseEvent(QMouseEvent * e)
+void GuiWorkArea::mouseReleaseEvent(QMouseEvent * e)
 {
 	if (synthetic_mouse_event_.timeout.running())
 		synthetic_mouse_event_.timeout.stop();
@@ -329,7 +262,7 @@ void QWorkArea::mouseReleaseEvent(QMouseEvent * e)
 }
 
 
-void QWorkArea::mouseMoveEvent(QMouseEvent * e)
+void GuiWorkArea::mouseMoveEvent(QMouseEvent * e)
 {
 	FuncRequest cmd(LFUN_MOUSE_MOTION, e->x(), e->y(),
 			      q_motion_state(e->state()));
@@ -390,18 +323,18 @@ void QWorkArea::mouseMoveEvent(QMouseEvent * e)
 }
 
 
-void QWorkArea::wheelEvent(QWheelEvent * e)
+void GuiWorkArea::wheelEvent(QWheelEvent * e)
 {
 	// Wheel rotation by one notch results in a delta() of 120 (see
 	// documentation of QWheelEvent)
-	int const lines = QApplication::wheelScrollLines() * e->delta() / 120;
+	int const lines = qApp->wheelScrollLines() * e->delta() / 120;
 	verticalScrollBar()->setValue(verticalScrollBar()->value() -
 			lines *  verticalScrollBar()->lineStep());
 	adjustViewWithScrollBar();
 }
 
 
-void QWorkArea::generateSyntheticMouseEvent()
+void GuiWorkArea::generateSyntheticMouseEvent()
 {
 	// Set things off to generate the _next_ 'pseudo' event.
 	if (synthetic_mouse_event_.restart_timeout)
@@ -419,7 +352,8 @@ void QWorkArea::generateSyntheticMouseEvent()
 	}
 }
 
-void QWorkArea::keyPressEvent(QKeyEvent * e)
+
+void GuiWorkArea::keyPressEvent(QKeyEvent * e)
 {
 	lyxerr[Debug::KEY] << BOOST_CURRENT_FUNCTION
 		<< " count=" << e->count()
@@ -428,16 +362,18 @@ void QWorkArea::keyPressEvent(QKeyEvent * e)
 		<< " key=" << e->key()
 		<< endl;
 
-//	keyeventQueue_.push(boost::shared_ptr<QKeyEvent>(new QKeyEvent(*e)));
-
-    boost::shared_ptr<QLyXKeySym> sym(new QLyXKeySym);
-    sym->set(e);
-    view_.view()->workAreaKeyPress(sym, q_key_state(e->state()));
-
+	if (USE_KEY_BUFFERING) {
+		keyeventQueue_.push(boost::shared_ptr<QKeyEvent>(new QKeyEvent(*e)));
+	}
+	else {
+		boost::shared_ptr<QLyXKeySym> sym(new QLyXKeySym);
+		sym->set(e);
+		view_.view()->workAreaKeyPress(sym, q_key_state(e->state()));
+	}
 }
 
-// This is not used for now...
-void QWorkArea::keyeventTimeout()
+// This is used only if USE_KEY_BUFFERING is defined...
+void GuiWorkArea::keyeventTimeout()
 {
 	bool handle_autos = true;
 
@@ -472,7 +408,7 @@ void QWorkArea::keyeventTimeout()
 }
 
 
-void QWorkArea::mouseDoubleClickEvent(QMouseEvent * e)
+void GuiWorkArea::mouseDoubleClickEvent(QMouseEvent * e)
 {
 	dc_event_ = double_click(e);
 
@@ -488,7 +424,7 @@ void QWorkArea::mouseDoubleClickEvent(QMouseEvent * e)
 }
 
 
-void QWorkArea::resizeEvent(QResizeEvent * resizeEvent)
+void GuiWorkArea::resizeEvent(QResizeEvent *)
 {
 	workWidth_ = viewport()->width();
 	workHeight_ = viewport()->height();
@@ -513,7 +449,8 @@ void QWorkArea::resizeEvent(QResizeEvent * resizeEvent)
 		*/
 }
 
-void QWorkArea::update(int x, int y, int w, int h)
+
+void GuiWorkArea::update(int x, int y, int w, int h)
 {
 	//screen_device_.fromImage(paint_device_);
 	//QPainter q(&screen_device_);
@@ -522,7 +459,8 @@ void QWorkArea::update(int x, int y, int w, int h)
 	viewport()->update(x, y, w, h);
 }
 
-void QWorkArea::paintEvent(QPaintEvent * e)
+
+void GuiWorkArea::paintEvent(QPaintEvent * e)
 {
 	/*
 	lyxerr[Debug::GUI] << BOOST_CURRENT_FUNCTION
@@ -549,29 +487,21 @@ void QWorkArea::paintEvent(QPaintEvent * e)
 }
 
 
-QPixmap QWorkArea::copyScreen(int x, int y, int w, int h) const
+QPixmap GuiWorkArea::copyScreen(int x, int y, int w, int h) const
 {
 	return paint_device_.copy(x, y, w, h);
 }
 
-void QWorkArea::drawScreen(int x, int y, QPixmap pixmap)
+
+void GuiWorkArea::drawScreen(int x, int y, QPixmap pixmap)
 {
 	QPainter q(&paint_device_);
 	q.drawPixmap(x, y, pixmap);
 	viewport()->update(x, y, pixmap.width(), pixmap.height());
 }
 
-///////////////////////////////////////////////////////////////
-// LyXSreen overloaded methods:
 
-WorkArea & QWorkArea::workarea()
-{
-//	return static_cast<QWorkArea &> (*this);
-	return *this;
-}
-
-
-void QWorkArea::expose(int x, int y, int w, int h)
+void GuiWorkArea::expose(int x, int y, int w, int h)
 {
 //	lyxerr[Debug::GUI] << "expose " << w << 'x' << h
 //		<< '+' << x << '+' << y << std::endl;
@@ -580,7 +510,7 @@ void QWorkArea::expose(int x, int y, int w, int h)
 }
 
 
-void QWorkArea::showCursor(int x, int y, int h, Cursor_Shape shape)
+void GuiWorkArea::showCursor(int x, int y, int h, Cursor_Shape shape)
 {
 	if (!qApp->focusWidget())
 		return;
@@ -640,7 +570,7 @@ void QWorkArea::showCursor(int x, int y, int h, Cursor_Shape shape)
 }
 
 
-void QWorkArea::removeCursor()
+void GuiWorkArea::removeCursor()
 {
 	show_vcursor_ = false;
 	show_hcursor_ = false;
@@ -658,7 +588,7 @@ void QWorkArea::removeCursor()
 #if USE_INPUT_METHODS
 // to make qt-immodule work
 
-void QWorkArea::inputMethodEvent(QInputMethodEvent * e)
+void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 {
 	QString const text = e->text();
 	if (!text.isEmpty()) {
@@ -674,97 +604,7 @@ void QWorkArea::inputMethodEvent(QInputMethodEvent * e)
 }
 #endif
 
+} // namespace frontend
+} // namespace lyx
 
-////////////////////////////////////////////////////////////////////////
-// X11 specific stuff goes here...
-
-#ifdef Q_WS_X11
-bool lyxX11EventFilter(XEvent * xev)
-{
-	switch (xev->type) {
-	case SelectionRequest:
-		lyxerr[Debug::GUI] << "X requested selection." << endl;
-		if (wa_ptr)
-			wa_ptr->view().view()->selectionRequested();
-		break;
-	case SelectionClear:
-		lyxerr[Debug::GUI] << "Lost selection." << endl;
-		if (wa_ptr)
-			wa_ptr->view().view()->selectionLost();
-		break;
-	}
-	return false;
-}
-#endif
-
-
-////////////////////////////////////////////////////////////////////////
-// Mac OSX specific stuff goes here...
-
-#ifdef Q_WS_MACX
-namespace{
-OSErr checkAppleEventForMissingParams(const AppleEvent& theAppleEvent)
- {
-	DescType returnedType;
-	Size actualSize;
-	OSErr err = AEGetAttributePtr(&theAppleEvent, keyMissedKeywordAttr,
-				      typeWildCard, &returnedType, nil, 0,
-				      &actualSize);
-	switch (err) {
-	case errAEDescNotFound:
-		return noErr;
-	case noErr:
-		return errAEEventNotHandled;
-	default:
-		return err;
-	}
- }
-}
-
-pascal OSErr handleOpenDocuments(const AppleEvent* inEvent,
-				 AppleEvent* /*reply*/, long /*refCon*/)
-{
-	QString s_arg;
-	AEDescList documentList;
-	OSErr err = AEGetParamDesc(inEvent, keyDirectObject, typeAEList,
-				   &documentList);
-	if (err != noErr)
-		return err;
-
-	err = checkAppleEventForMissingParams(*inEvent);
-	if (err == noErr) {
-		long documentCount;
-		err = AECountItems(&documentList, &documentCount);
-		for (long documentIndex = 1;
-		     err == noErr && documentIndex <= documentCount;
-		     documentIndex++) {
-			DescType returnedType;
-			Size actualSize;
-			AEKeyword keyword;
-			FSRef ref;
-			char qstr_buf[1024];
-			err = AESizeOfNthItem(&documentList, documentIndex,
-					      &returnedType, &actualSize);
-			if (err == noErr) {
-				err = AEGetNthPtr(&documentList, documentIndex,
-						  typeFSRef, &keyword,
-						  &returnedType, (Ptr)&ref,
-						  sizeof(FSRef), &actualSize);
-				if (err == noErr) {
-					FSRefMakePath(&ref, (UInt8*)qstr_buf,
-						      1024);
-					s_arg=QString::fromUtf8(qstr_buf);
-					wa_ptr->view().view()->workAreaDispatch(
-						FuncRequest(LFUN_FILE_OPEN,
-							    fromqstr(s_arg)));
-					break;
-				}
-			}
-		} // for ...
-	}
-	AEDisposeDesc(&documentList);
-	return err;
-}
-#endif  // Q_WS_MACX
-
-#include "QWorkArea_moc.cpp"
+#include "GuiWorkArea_moc.cpp"

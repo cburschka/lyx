@@ -14,6 +14,7 @@
 #define XWORKAREA_H
 
 #include "frontends/WorkArea.h"
+#include "frontends/Clipboard.h"
 #include "XPainter.h"
 
 #include "LayoutEngine.h"
@@ -25,7 +26,7 @@ class LyXView;
 namespace lyx {
 namespace frontend {
 
-class XWorkArea : public WorkArea {
+class XWorkArea {
 public:
 	///
 	XWorkArea(LyXView & owner, int width, int height);
@@ -56,11 +57,11 @@ public:
 	/// xforms callback from scrollbar
 	void scroll_cb();
 	/// a selection exists
-	virtual void haveSelection(bool) const;
+	virtual void haveSelection(bool);
 	///
 	virtual std::string const getClipboard() const;
 	///
-	virtual void putClipboard(std::string const &) const;
+	virtual void putClipboard(std::string const &);
 
 	/// handles SelectionRequest X Event, to fill the clipboard
 	int event_cb(XEvent * xev);

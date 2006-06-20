@@ -30,21 +30,17 @@ void copyInPixmap(QPixmap * p, int dest_y, int src_y, int src_w, int src_h)
 
 } // namespace anon
 
+namespace lyx {
+namespace frontend {
 
 QScreen::QScreen(QWorkArea & o)
-	: LyXScreen(), owner_(o)
+	: owner_(o)
 {
 }
 
 
 QScreen::~QScreen()
 {
-}
-
-
-WorkArea & QScreen::workarea()
-{
-	return owner_;
 }
 
 
@@ -162,3 +158,7 @@ void QScreen::removeCursor()
 	owner_.getContent()
 		->update(cursor_x_, cursor_y_, cursor_w_, cursor_h_);
 }
+
+
+} // namespace frontend
+} // namespace lyx

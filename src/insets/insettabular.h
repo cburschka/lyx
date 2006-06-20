@@ -37,12 +37,17 @@
 
 class FuncStatus;
 class LyXLex;
-class Painter;
 class BufferView;
 class Buffer;
 class BufferParams;
 class Paragraph;
 class CursorSlice;
+
+namespace lyx {
+namespace frontend {
+class Painter;
+}
+}
 
 
 class InsetTabular : public InsetOld {
@@ -154,7 +159,7 @@ private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 
 	///
-	void drawCellLines(Painter &, int x, int y, row_type row,
+	void drawCellLines(lyx::frontend::Painter &, int x, int y, row_type row,
 			   idx_type cell, bool erased) const;
 	///
 	void setCursorFromCoordinates(LCursor & cur, int x, int y) const;

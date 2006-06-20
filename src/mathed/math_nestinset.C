@@ -229,7 +229,7 @@ void MathNestInset::drawSelection(PainterInfo & pi, int x, int y) const
 		return;
 
 	// FIXME: hack to get position cache warm
-	static NullPainter nop;
+	static lyx::frontend::NullPainter nop;
 	PainterInfo pinop(pi);
 	pinop.pain = nop;
 	draw(pinop, x, y);

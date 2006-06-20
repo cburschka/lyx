@@ -546,6 +546,27 @@ int findToken(char const * const str[], string const & search_token)
 }
 
 
+string const externalLineEnding(string const & str)
+{
+#if defined(__APPLE__)
+	// The MAC clipboard uses \r for lineendings, and we use \n
+	return subst(str, '\n', '\r');
+#elif defined (_WIN32) || (defined (__CYGWIN__) && defined (X_DISPLAY_MISSING))
+	// Windows clipboard uses \r\n for lineendings, and we use \n
+	return subst(str, "\n", "\r\n");
+#else
+	return str;
+#endif
+}
+
+
+string const internalLineEnding(string const & str)
+{
+	string s = subst(str, "\r\n", "\n");
+	return subst(s, '\r', '\n');
+}
+
+
 #ifndef I_AM_NOT_AFRAID_OF_HEADER_LIBRARIES
 #if USE_BOOST_FORMAT
 

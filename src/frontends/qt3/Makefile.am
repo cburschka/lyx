@@ -27,8 +27,10 @@ libqt3_la_SOURCES = \
 	Alert_pimpl.C \
 	Dialogs.C \
 	FileDialog.C \
+	GuiClipboard.h \
+	GuiImplementation.h \
+	GuiWorkArea.h \
 	LyXKeySymFactory.C \
-	LyXScreenFactory.C \
 	QLMenubar.C QLMenubar.h \
 	qtTimeout.C qtTimeout.h \
 	QAbout.C QAbout.h \
@@ -73,7 +75,6 @@ libqt3_la_SOURCES = \
 	QWrap.C QWrap.h \
 	Qt2BC.C	Qt2BC.h	\
 	QtLyXView.h \
-	WorkAreaFactory.C \
 	checkedwidgets.C checkedwidgets.h \
 	lyx_gui.C \
 	lcolorcache.h lcolorcache.C \

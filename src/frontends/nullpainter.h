@@ -15,6 +15,10 @@
 #include "LColor.h"
 #include "Painter.h"
 
+
+namespace lyx {
+namespace frontend {
+
 class NullPainter : public Painter {
 public:
 	///
@@ -70,5 +74,8 @@ public:
 	///
 	void buttonFrame(int, int, int, int) {}
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // NULLPAINTER_H

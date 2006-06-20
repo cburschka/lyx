@@ -30,10 +30,8 @@
 #include "lyxtext.h"
 #include "lyxrow.h"
 
-#include "frontends/screen.h"
 #include "frontends/font_metrics.h"
 #include "frontends/Painter.h"
-#include "frontends/WorkArea.h"
 
 #include "insets/insettext.h"
 
@@ -43,7 +41,7 @@ namespace lyx {
 namespace frontend {
 
 GScreen::GScreen(GWorkArea & o)
-	: LyXScreen(), owner_(o)
+	: owner_(o)
 {
 	// the cursor isnt yet visible
 	cursorX_ = 0;
@@ -55,12 +53,6 @@ GScreen::GScreen(GWorkArea & o)
 
 GScreen::~GScreen()
 {
-}
-
-
-WorkArea & GScreen::workarea()
-{
-	return owner_;
 }
 
 

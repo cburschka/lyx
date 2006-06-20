@@ -156,10 +156,12 @@ libxforms_la_SOURCES = \
 	FormVSpace.h \
 	FormWrap.C \
 	FormWrap.h \
+	GuiClipboard.h \
+	GuiImplementation.h \
+	GuiWorkArea.h \
 	LayoutEngine.C \
 	LayoutEngine.h \
 	LyXKeySymFactory.C \
-	LyXScreenFactory.C \
 	XFormsMenubar.C \
 	XFormsMenubar.h \
 	RadioButtonGroup.C \
@@ -168,7 +170,6 @@ libxforms_la_SOURCES = \
 	XFormsToolbar.h \
 	Tooltips.C \
 	Tooltips.h \
-	WorkAreaFactory.C \
 	XFormsView.C \
 	XFormsView.h \
 	XLyXKeySym.C \

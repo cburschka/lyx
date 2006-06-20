@@ -5,6 +5,7 @@
  *
  * \author unknown
  * \author John Levon
+ * \author Abdelrazak Younes
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -35,10 +36,6 @@
 #include "support/package.h"
 #include "debug.h"
 
-// Dear Lord, deliver us from Evil, aka the Qt headers
-// Qt defines a macro 'signals' that clashes with a boost namespace.
-// All is well if the namespace is visible first.
-#include <boost/signal.hpp> // FIXME: Is this needed? (Lgb)
 #include <boost/bind.hpp>
 #include <boost/shared_ptr.hpp>
 
@@ -48,10 +45,7 @@
 #include "QLImage.h"
 #include "qt_helpers.h"
 #include "socket_callback.h"
-
-#ifdef Q_WS_MACX
-#include <Carbon/Carbon.h>
-#endif
+#include "Application.h"
 
 #include <QApplication>
 #include <QEventLoop>
@@ -60,10 +54,13 @@
 #include <QLocale>
 #include <QLibraryInfo>
 
+
+
 using lyx::support::ltrim;
 using lyx::support::package;
 
 using lyx::frontend::QtView;
+using lyx::frontend::Application;
 
 namespace os = lyx::support::os;
 
@@ -76,9 +73,6 @@ using std::exit;
 using std::map;
 using std::vector;
 using std::string;
-
-
-extern BufferList bufferlist;
 
 // FIXME: wrong place !
 LyXServer * lyxserver;
@@ -107,78 +101,45 @@ void cleanup()
 // in QLyXKeySym.C
 extern void initEncodings();
 
-#ifdef Q_WS_X11
-extern bool lyxX11EventFilter(XEvent * xev);
-#endif
-
-#ifdef Q_WS_MACX
-extern bool macEventFilter(EventRef event);
-extern pascal OSErr
-handleOpenDocuments(const AppleEvent* inEvent, AppleEvent* /*reply*/,
-		    long /*refCon*/);
-#endif
-
-class LQApplication : public QApplication
-{
-public:
-	LQApplication(int & argc, char ** argv);
-#ifdef Q_WS_X11
-	bool x11EventFilter (XEvent * ev) { return lyxX11EventFilter(ev); }
-#endif
-#ifdef Q_WS_MACX
-	bool macEventFilter(EventRef event);
-#endif
-};
-
-
-LQApplication::LQApplication(int & argc, char ** argv)
-	: QApplication(argc, argv)
-{
-#ifdef Q_WS_MACX
-	AEInstallEventHandler(kCoreEventClass, kAEOpenDocuments,
-			      NewAEEventHandlerUPP(handleOpenDocuments),
-			      0, false);
-#endif
-}
-
-
-#ifdef Q_WS_MACX
-bool LQApplication::macEventFilter(EventRef event)
-{
-	if (GetEventClass(event) == kEventClassAppleEvent) {
-		EventRecord eventrec;
-		ConvertEventRefToEventRecord(event, &eventrec);
-		AEProcessAppleEvent(&eventrec);
-
-		return false;
-	}
-	return false;
-}
-#endif
-
-
 namespace lyx_gui {
 
 bool use_gui = true;
 
-
 void exec(int & argc, char * argv[])
 {	
+	/*
+	FIXME : Abdel 29/05/2006 (younes.a@free.fr)
+	reorganize this code. In particular make sure that this
+	advice from Qt documentation is respected:
+	
+		Since the QApplication object does so much initialization, it
+		must be created before any other objects related to the user
+		interface are created.
+	
+	Right now this is not the case, I suspect that a number of global variables
+	contains Qt object that are initialized before the passage through
+	parse_init(). This might also explain the message displayed by Qt
+	that caused the hanging:
+
+	QObject::killTimer: timers cannot be stopped from another thread
+	*/
+
 	// Force adding of font path _before_ QApplication is initialized
 	FontLoader::initFontPath();
 
 #ifdef Q_WS_WIN
-	static LQApplication app(argc, argv);
+	static Application app(argc, argv);
 #else
-	LQApplication app(argc, argv);
+	Application app(argc, argv);
 #endif
+
 
 	// install translation file for Qt built-in dialogs
 	// These are only installed since Qt 3.2.x
 	QTranslator qt_trans;
 	QString language_name = QString("qt_") + QLocale::system().name();
 	language_name.truncate(5);
-	if (qt_trans.load(language_name, 
+	if (qt_trans.load(language_name,
 		QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
 	{
 		qApp->installTranslator(&qt_trans);

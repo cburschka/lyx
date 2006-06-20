@@ -30,17 +30,16 @@ AM_CPPFLAGS += \
 	-I$(top_srcdir)/src/frontends/controllers
 
 libqt4_la_SOURCES = \
-	QDialogView.C \
-	QDialogView.h \
-	Action.C Action.h \
 	Alert_pimpl.C \
+	Application.C Application.h \
 	ColorCache.h ColorCache.C \
 	Dialogs.C \
 	FileDialog.C \
+	FontLoader.h FontLoader.C \
+	GuiClipboard.h GuiClipboard.C \
+	GuiImplementation.h GuiImplementation.C \
 	LyXKeySymFactory.C \
-	LyXScreenFactory.C \
 	QLMenubar.C QLMenubar.h \
-	qtTimeout.C qtTimeout.h \
 	QAbout.C QAbout.h \
 	QBibitem.C QBibitem.h \
 	QBibtex.C QBibtex.h \
@@ -51,6 +50,7 @@ libqt4_la_SOURCES = \
 	QCharacter.C QCharacter.h \
 	QCitation.C QCitation.h \
 	QDocument.C QDocument.h \
+	QDialogView.C QDialogView.h \
 	QErrorList.C QErrorList.h \
 	QERT.C QERT.h \
 	QExternal.C QExternal.h \
@@ -80,16 +80,14 @@ libqt4_la_SOURCES = \
 	QToc.C QToc.h \
 	QURL.C QURL.h \
 	QVSpace.C QVSpace.h \
-	QWorkArea.C QWorkArea.h \
 	QWrap.C QWrap.h \
 	Qt2BC.C	Qt2BC.h	\
-	WorkAreaFactory.C \
 	checkedwidgets.C checkedwidgets.h \
 	lyx_gui.C \
 	panelstack.h panelstack.C \
 	qfontexample.h qfontexample.C \
-	FontLoader.h FontLoader.C \
 	qfont_metrics.C \
 	qlkey.h \
 	qt_helpers.h qt_helpers.C \
+	qtTimeout.C qtTimeout.h \
 	$(MOCFILES)

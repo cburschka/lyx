@@ -34,15 +34,23 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/signals/trackable.hpp>
 
-
 class Change;
 class LyXKeySym;
 class LyXView;
-class WorkArea;
-class LyXScreen;
+
 class FuncRequest;
 class FuncStatus;
 class ViewMetricsInfo;
+
+namespace lyx {
+namespace frontend {
+class Gui;
+class WorkArea;
+class Clipboard;
+class Painter;
+class GuiCursor;
+}
+}
 
 
 ///
@@ -51,9 +59,7 @@ public:
 	///
 	Pimpl(BufferView & bv, LyXView * owner, int width, int height);
 	///
-	Painter & painter() const;
-	/// return the screen for this bview
-	LyXScreen & screen() const;
+	lyx::frontend::Painter & painter() const;
 	///
 	void setBuffer(Buffer * buf);
 	///
@@ -110,6 +116,14 @@ public:
 	bool repaintAll() { return refresh_inside_; }
 	///
 	void repaintAll(bool r) {refresh_inside_ = r; }
+
+	/// the frontend
+	lyx::frontend::Gui & gui() const;
+	/// our workarea
+	lyx::frontend::WorkArea & workarea() const;
+	/// the clipboard
+	lyx::frontend::Clipboard & clipboard() const;
+
 private:
 	/// An error list (replaces the error insets)
 	ErrorList errorlist_;
@@ -148,10 +162,7 @@ private:
 	LyXView * owner_;
 	///
 	Buffer * buffer_;
-	///
-	boost::scoped_ptr<LyXScreen> screen_;
-	///
-	boost::scoped_ptr<WorkArea> workarea_;
+
 	/// Estimated average par height for scrollbar
 	int wh_;
 	///
@@ -179,8 +190,10 @@ private:
 	std::vector<Position> saved_positions;
 	///
 	void menuInsertLyXFile(std::string const & filen);
-	/// our workarea
-	WorkArea & workarea() const;
+
+	lyx::frontend::WorkArea * workArea_;
+	int workAreaId_;
+
 	/// this is used to handle XSelection events in the right manner
 	struct {
 		CursorSlice cursor;

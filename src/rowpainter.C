@@ -42,6 +42,8 @@
 
 #include <boost/crc.hpp>
 
+using lyx::frontend::Painter;
+using lyx::frontend::NullPainter;
 using lyx::char_type;
 using lyx::pos_type;
 using lyx::pit_type;

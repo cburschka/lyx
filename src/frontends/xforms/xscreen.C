@@ -45,7 +45,7 @@ GC createGC()
 
 
 XScreen::XScreen(XWorkArea & o)
-	: LyXScreen(), owner_(o), nocursor_pixmap_(0),
+	: owner_(o), nocursor_pixmap_(0),
 	cursor_x_(0), cursor_y_(0), cursor_w_(0), cursor_h_(0)
 {
 	// We need this GC
@@ -56,12 +56,6 @@ XScreen::XScreen(XWorkArea & o)
 XScreen::~XScreen()
 {
 	XFreeGC(fl_get_display(), gc_copy);
-}
-
-
-WorkArea & XScreen::workarea()
-{
-	return owner_;
 }
 
 

@@ -28,6 +28,8 @@
 using std::endl;
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 QLPainter::QLPainter(QWorkArea & qwa)
 	: Painter(), owner_(qwa), paint_check_(0)
@@ -248,3 +250,7 @@ void QLPainter::text(int x, int y, char const * s, size_t ls,
 		underline(f, x, y, font_metrics::width(s, ls, f));
 	}
 }
+
+} // namespace frontend
+} // namespace lyx
+

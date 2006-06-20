@@ -12,19 +12,24 @@
 #ifndef QLPAINTER_H
 #define QLPAINTER_H
 
-#include "Painter.h"
+#include "frontends/Painter.h"
 
 #include <boost/scoped_ptr.hpp>
 
+
 class LyXFont;
-class QWorkArea;
 class QPainter;
 class QString;
+
+namespace lyx {
+namespace frontend {
+
+class QWorkArea;
 
 /**
  * QLPainter - a painter implementation for Xlib
  */
-class QLPainter : public Painter {
+class QLPainter : public lyx::frontend::Painter {
 public:
 	QLPainter(QWorkArea &);
 
@@ -132,5 +137,8 @@ private:
 	/// recursion check
 	int paint_check_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QLPAINTER_H

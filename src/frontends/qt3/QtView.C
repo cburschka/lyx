@@ -56,7 +56,7 @@ int const statusbar_timer_value = 3000;
 
 
 QtView::QtView(unsigned int width, unsigned int height)
-	: QMainWindow(), LyXView(), commandbuffer_(0)
+       : QMainWindow(), LyXView(), commandbuffer_(0), frontend_(*this)
 {
 	resize(width, height);
 

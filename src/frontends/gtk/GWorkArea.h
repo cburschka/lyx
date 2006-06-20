@@ -14,7 +14,7 @@
 
 #include "GPainter.h"
 
-#include "frontends/WorkArea.h"
+#include <boost/shared_ptr.hpp>
 
 #include <gtkmm.h>
 #include <gtk/gtk.h>
@@ -55,7 +55,7 @@ private:
 };
 
 
-class GWorkArea : public WorkArea, public sigc::trackable {
+class GWorkArea : public sigc::trackable {
 public:
 	GWorkArea(LyXView & owner, int width, int height);
 	~GWorkArea();
@@ -80,11 +80,11 @@ public:
 
 	virtual void setScrollbarParams(int height, int pos, int line_height);
 	/// a selection exists
-	virtual void haveSelection(bool) const;
+	virtual void haveSelection(bool);
 	///
 	virtual std::string const getClipboard() const;
 	///
-	virtual void putClipboard(std::string const &) const;
+	virtual void putClipboard(std::string const &);
 	void inputCommit(gchar * str);
 private:
 	bool onExpose(GdkEventExpose * event);

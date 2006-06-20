@@ -53,6 +53,8 @@ using lyx::graphics::PreviewLoader;
 
 using lyx::support::ltrim;
 
+using lyx::frontend::Painter;
+
 using boost::shared_ptr;
 
 using std::auto_ptr;
@@ -284,7 +286,7 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 	//lyxerr << "InsetTabular::draw: " << x << " " << y << endl;
 	BufferView * bv = pi.base.bv;
 
-	static NullPainter nop;
+	static lyx::frontend::NullPainter nop;
 	static PainterInfo nullpi(bv, nop);
 
 	//resetPos(bv->cursor());

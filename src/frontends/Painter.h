@@ -26,8 +26,8 @@ namespace lyx {
 namespace graphics {
 	class Image;
 }
-}
 
+namespace frontend {
 
 /**
  * Painter - A painter class to encapsulate all graphics parameters and operations
@@ -181,5 +181,8 @@ protected:
 	/// draw a bevelled button border
 	virtual void buttonFrame(int x, int y, int w, int h);
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // PAINTER_H

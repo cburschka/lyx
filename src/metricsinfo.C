@@ -46,7 +46,7 @@ MetricsInfo::MetricsInfo(BufferView * bv, LyXFont const & font, int textwidth)
 
 
 
-PainterInfo::PainterInfo(BufferView * bv, Painter & painter)
+PainterInfo::PainterInfo(BufferView * bv, lyx::frontend::Painter & painter)
 	: pain(painter), ltr_pos(false), erased_(false)
 {
 	base.bv = bv;
