@@ -18,6 +18,10 @@ from SCons.Util import WhereIs
 
 def writeToFile(filename, lines, append = False):
   " utility function: write or append lines to filename "
+  # create directory if needed
+  dir = os.path.split(filename)[0]
+  if dir != '' and not os.path.isdir(dir):
+    os.makedirs(dir)
   if append:
     file = open(filename, 'a')
   else:
