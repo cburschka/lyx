@@ -1,4 +1,4 @@
-project(lyx-qt4)
+project(lyx-${qt_postfix})
 
 include_directories(${TOP_SRC_DIR}/src)
 
@@ -30,17 +30,17 @@ endif(ASPELL_FOUND)
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-add_executable(lyx-qt4 
+add_executable(lyx-${qt_postfix}
 	${lyx_sources} 
 	${lyx_headers}
 	${CMAKE_CURRENT_BINARY_DIR}/version.C
 	)
 
-target_link_libraries(lyx-qt4 
+target_link_libraries(lyx-${qt_postfix}
 	mathed
 	insets
 	frontends
-	frontend_qt4
+	frontend_${qt_postfix}
 	graphics
 	support
 	intl
@@ -48,6 +48,7 @@ target_link_libraries(lyx-qt4
 	boost_iostreams
 )
 
+
 if(ASPELL_FOUND)
-	target_link_libraries(lyx-qt4 ${ASPELL_LIBRARY})
+	target_link_libraries(lyx-${qt_postfix} ${ASPELL_LIBRARY})
 endif(ASPELL_FOUND)

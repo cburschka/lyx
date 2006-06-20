@@ -11,7 +11,7 @@ endmacro(lyx_add_path _out _prefix)
 
 #create the implementation files from the ui files and add them to the list of sources
 #usage: LYX_ADD_QT4_UI_FILES(foo_SRCS ${ui_files})
-macro (LYX_ADD_QT4_UI_FILES _sources )
+macro (LYX_ADD_UI_FILES _sources )
    foreach (_current_FILE ${ARGN})
 
       get_filename_component(_tmp_FILE ${_current_FILE} ABSOLUTE)
@@ -33,12 +33,14 @@ macro (LYX_ADD_QT4_UI_FILES _sources )
       )
       set(${_sources} ${${_sources}} ${_header})
    endforeach (_current_FILE)
-endmacro (LYX_ADD_QT4_UI_FILES)
+endmacro (LYX_ADD_UI_FILES)
 
 
 
 MACRO (LYX_AUTOMOC)
-   QT4_GET_MOC_INC_DIRS(_moc_INCS)
+   if(QT4_GET_MOC_INC_DIRS)
+      QT4_GET_MOC_INC_DIRS(_moc_INCS)
+   endif(QT4_GET_MOC_INC_DIRS)
 
    set(_matching_FILES )
    foreach (_current_FILE ${ARGN})

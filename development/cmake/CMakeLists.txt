@@ -1,5 +1,3 @@
-project(lyx)
-
 # where to look first for cmake modules, before ${CMAKE_ROOT}/Modules/ is checked
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/modules")
 
@@ -11,7 +9,26 @@ if(release)
 	set(release)
 endif(release)	
 
-find_package(Qt4 REQUIRED)
+
+if(qt3)
+	set(qt_postfix qt3)
+	project(lyx-${qt_postfix})
+	set(QT_MT_REQUIRED TRUE)
+	find_package(Qt3 REQUIRED)
+	set(qt3)
+	set(build_qt3_frontend TRUE)
+	if(QT_FOUND)
+		message("-- Found Qt3: ${QT_QT_LIBRARY}")
+	else(QT_FOUND)
+		 MESSAGE( FATAL_ERROR "Qt3 not found")
+	endif(QT_FOUND)
+else(qt3)
+	set(qt_postfix qt4)
+	project(lyx-${qt_postfix})
+	find_package(Qt4 REQUIRED)
+	
+endif(qt3)	
+
 find_package(ZLIB REQUIRED)
 
 
@@ -50,7 +67,6 @@ include(ConfigureChecks.cmake)
 configure_file(config.h.cmake ${CMAKE_BINARY_DIR}/config.h )
 
 
-
 if(MSVC)
 	if(MSVC_IDE)
 		add_definitions(-DBOOST_USER_CONFIG=&lt\;config.h&gt\;)
@@ -74,7 +90,6 @@ include_directories(
 	${TOP_SRC_DIR}/boost 
 	${QT_INCLUDES} 
 )
-
 
 add_subdirectory(boost)
 add_subdirectory(intl)
