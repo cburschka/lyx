@@ -78,6 +78,7 @@ MOCFILES = \
 	emptytable.C emptytable.h \
 	FileDialog_private.C FileDialog_private.h \
 	floatplacement.C floatplacement.h \
+	GuiView.C GuiView.h \
 	GuiWorkArea.C GuiWorkArea.h \
 	iconpalette.C iconpalette.h \
 	InsertTableWidget.C InsertTableWidget.h \
@@ -127,7 +128,6 @@ MOCFILES = \
 	QThesaurusDialog.C QThesaurusDialog.h \
 	TocModel.C TocModel.h \
 	QTocDialog.C QTocDialog.h \
-	QtView.C QtView.h \
 	QURLDialog.C QURLDialog.h \
 	QVSpaceDialog.C QVSpaceDialog.h \
 	QWrapDialog.C QWrapDialog.h \
