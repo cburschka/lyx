@@ -3,7 +3,8 @@ Building LyX with CMake
 For all builds:
 - CMake 2.4.2 or CVS version from www.cmake.org
 - install Qt 4 and make sure qmake 4 is found
-
+- by default it builds the Qt4 frontend
+- to build the Qt3 frontend set QTDIR and call cmake with '-Dqt3=1'
 
 Building Visual C++ 2005 project files:
 - install Visual C++ 2005
