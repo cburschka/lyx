@@ -55,6 +55,7 @@ public:
 		work_area_.reset(new GuiWorkArea(owner_, w, h, old_screen_.get(), old_work_area_.get()));
 		clipboard_.reset(new GuiClipboard(old_work_area_.get()));
 		guiCursor().connect(work_area_.get());
+		return 0;
 	}
 
 	lyx::frontend::WorkArea& workArea(int id)
