@@ -5,7 +5,7 @@ include(LyXPaths)
 include(LyXMacros)
 
 if(release)
-	set(CMAKE_BUILD_TYPE TRUE)
+	set(CMAKE_BUILD_TYPE Release)
 	set(release)
 endif(release)	
 
