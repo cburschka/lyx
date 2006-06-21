@@ -141,8 +141,6 @@ public:
 	InsetText(InsetText const &);
 	///
 	bool & Wide() const { return wide_inset_; }
-	///
-	bool const Tall() const;
 
 protected:
 	///

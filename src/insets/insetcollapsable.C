@@ -140,6 +140,9 @@ void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 			InsetText::metrics(mi, textdim_);
 			openinlined_ = textdim_.wid + 2 * dim.wid <= mi.base.textwidth;
 			if (openinlined_) {
+				// Correct for button width, and re-fit
+				mi.base.textwidth -= dim.wid;
+				InsetText::metrics(mi, textdim_);
 				dim.wid += textdim_.wid;
 				dim.des = max(dim.des - textdim_.asc + dim.asc, textdim_.des);
 				dim.asc = textdim_.asc;
