@@ -222,21 +222,28 @@ void parse_lyxrc()
 
 
 void start(string const & batch, vector<string> const & files,
-	   unsigned int width, unsigned int height, int posx, int posy, bool)
+	   unsigned int width, unsigned int height, int posx, int posy, bool maximize)
 {
 	// this can't be done before because it needs the Languages object
 	initEncodings();
 
-	boost::shared_ptr<QtView> view_ptr(new QtView(width, height));
+	boost::shared_ptr<QtView> view_ptr(new QtView);
 	LyX::ref().addLyXView(view_ptr);
 
 	QtView & view = *view_ptr.get();
 
-	if (posx != -1 && posy != -1)
-		view.move(QPoint(posx, posy));
-
-	view.show();
 	view.init();
+
+	if (width != -1 && height != -1) { 
+		view.initFloatingGeometry(QRect(posx, posy, width, height));
+		view.resize(width, height);
+		if (posx != -1 && posy != -1)
+			view.move(posx, posy);
+		view.show();
+		if (maximize)
+			view.setWindowState(Qt::WindowMaximized);
+	} else
+		view.show();
 
 	// FIXME: some code below needs moving
 

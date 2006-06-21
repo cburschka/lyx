@@ -107,6 +107,10 @@ private:
 	///
 	typedef std::list<boost::shared_ptr<LyXView> > ViewList;
 	ViewList views_;
+
+	/// 
+	bool geometryOption_;
+
 };
 
 #endif // LYX_MAIN_H

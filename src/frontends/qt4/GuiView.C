@@ -45,8 +45,6 @@
 #include <QToolBar>
 #include <QCloseEvent>
 #include <QAction>
-//#include <QMenu>
-//#include <QMenuBar>
 
 #include "support/lstrings.h"
 
@@ -70,7 +68,7 @@ int const statusbar_timer_value = 3000;
 } // namespace anon
 
 
-GuiView::GuiView(unsigned int width, unsigned int height)
+GuiView::GuiView()
 	: QMainWindow(), LyXView(), commandbuffer_(0), frontend_(*this)
 {
 	mainWidget_ = this;
@@ -78,7 +76,8 @@ GuiView::GuiView(unsigned int width, unsigned int height)
 //	setToolButtonStyle(Qt::ToolButtonIconOnly);
 //	setIconSize(QSize(12,12));
 
-	bufferview_.reset(new BufferView(this, width, height));
+	// -geometry could set the width and hight
+	bufferview_.reset(new BufferView(this, geometry().width(), geometry().height()));
 
 	menubar_.reset(new QLMenubar(this, menubackend));
 	connect(menuBar(), SIGNAL(triggered(QAction *)), this, SLOT(updateMenu(QAction *)));
@@ -176,12 +175,45 @@ bool GuiView::hasFocus() const
 	return qApp->activeWindow() == this;
 }
 
+void  GuiView::updateFloatingGeometry() 
+{
+	if (!isMaximized()) {
+		// setX/Y changes the size!
+		floatingGeometry_.setX(x()); 
+		floatingGeometry_.setY(y()); 
+		floatingGeometry_.setWidth(width()); 
+		floatingGeometry_.setHeight(height());
+	}
+}
+
+void GuiView::resizeEvent(QResizeEvent *)
+{
+	updateFloatingGeometry();
+}
+
+void GuiView::moveEvent(QMoveEvent *)
+{
+	updateFloatingGeometry();
+}
+
 
 void GuiView::closeEvent(QCloseEvent *)
 {
+	// FIXME: 
+	// change the ifdef to 'geometry = normalGeometry();' only
+	// when Trolltech has fixed the broken normalGeometry on X11.
+	// Then also the moveEvent, resizeEvent, and the
+	// code for floatingGeometry_ can be removed;
+	// adjust lyx_gui::start
+#ifdef Q_OS_WIN32
 	QRect geometry = normalGeometry();
-	Session & session = LyX::ref().session();
+#else
+	updateFloatingGeometry();
+	QRect geometry = floatingGeometry_;	
+#endif
+	
 	// save windows size and position
+	Session & session = LyX::ref().session();
 	session.saveSessionInfo("WindowWidth", convert<string>(geometry.width()));
 	session.saveSessionInfo("WindowHeight", convert<string>(geometry.height()));
 	session.saveSessionInfo("WindowIsMaximized", (isMaximized() ? "yes" : "no"));
@@ -199,6 +231,7 @@ void GuiView::show()
 {
 	QMainWindow::setWindowTitle(qt_("LyX"));
 	QMainWindow::show();
+	updateFloatingGeometry();
 }
 
 

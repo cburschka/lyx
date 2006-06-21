@@ -48,8 +48,8 @@ QWidget* mainWindow();
 class GuiView : public QMainWindow, public LyXView {
 	Q_OBJECT
 public:
-	/// create a main window of the given dimensions
-	GuiView(unsigned int w, unsigned int h);
+	/// create a main window
+	GuiView();
 
 	~GuiView();
 
@@ -89,6 +89,13 @@ public slots:
 protected:
 	/// make sure we quit cleanly
 	virtual void closeEvent(QCloseEvent * e);
+
+	///
+	virtual void resizeEvent(QResizeEvent * e);
+
+	///
+	virtual void moveEvent(QMoveEvent * e);
+
 private:
 	/// focus the command buffer widget
 	void focus_command_widget();
@@ -112,6 +119,11 @@ private:
 	static QMainWindow* mainWidget_;
 
 	GuiImplementation frontend_;
+
+	///
+	void updateFloatingGeometry();
+	///
+	QRect floatingGeometry_;
 };
 
 } // namespace frontend

@@ -37,6 +37,8 @@
 #include <qpixmap.h>
 #include <qstatusbar.h>
 
+#include <algorithm>
+
 using std::string;
 
 FontLoader fontloader;
@@ -55,14 +57,12 @@ int const statusbar_timer_value = 3000;
 
 
 
-QtView::QtView(unsigned int width, unsigned int height)
+QtView::QtView()
        : QMainWindow(), LyXView(), commandbuffer_(0), frontend_(*this)
 {
-	resize(width, height);
-
 	qApp->setMainWidget(this);
 
-	bufferview_.reset(new BufferView(this, width, height));
+	bufferview_.reset(new BufferView(this, width(), height()));
 
 	menubar_.reset(new QLMenubar(this, menubackend));
 	getToolbars().init();
@@ -157,17 +157,49 @@ bool QtView::hasFocus() const
 	return qApp->activeWindow() == this;
 }
 
+void QtView::initFloatingGeometry(QRect const & g)
+{
+	floatingGeometry_ = g;
+	maxWidth = QApplication::desktop()->width() - 20;
+}
+
+void QtView::updateFloatingGeometry()
+{
+	if (width() < maxWidth && frameGeometry().x() > 0)
+	{
+		// setX/Y changes the size!
+		floatingGeometry_.setX(x());
+		floatingGeometry_.setY(y());
+		floatingGeometry_.setWidth(width());
+		floatingGeometry_.setHeight(height());
+	}
+}
+
+void QtView::resizeEvent(QResizeEvent *)
+{
+	maxWidth = std::max(width(), maxWidth);
+		
+	updateFloatingGeometry();			
+}
+
+void QtView::moveEvent(QMoveEvent *)
+{
+	updateFloatingGeometry();	
+}
 
 void QtView::closeEvent(QCloseEvent *)
 {
+	updateFloatingGeometry();	
+	QRect geometry = floatingGeometry_;
+
 	Session & session = LyX::ref().session();
 	session.saveSessionInfo("WindowIsMaximized", (isMaximized() ? "yes" : "no"));
 	// save windows size and position
-	session.saveSessionInfo("WindowWidth", convert<string>(width()));
-	session.saveSessionInfo("WindowHeight", convert<string>(height()));
+	session.saveSessionInfo("WindowWidth", convert<string>(geometry.width()));
+	session.saveSessionInfo("WindowHeight", convert<string>(geometry.height()));
 	if (lyxrc.geometry_xysaved) {
-		session.saveSessionInfo("WindowPosX", convert<string>(x()));
-		session.saveSessionInfo("WindowPosY", convert<string>(y()));
+		session.saveSessionInfo("WindowPosX", convert<string>(geometry.x()));
+		session.saveSessionInfo("WindowPosY", convert<string>(geometry.y()));
 	}
 	// trigger LFUN_LYX_QUIT instead of quit directly
 	// since LFUN_LYX_QUIT may have more cleanup stuff
@@ -179,6 +211,7 @@ void QtView::show()
 {
 	setCaption(qt_("LyX"));
 	QMainWindow::show();
+	updateFloatingGeometry();
 }
 
 

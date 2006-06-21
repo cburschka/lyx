@@ -38,8 +38,8 @@ class QCommandBuffer;
 class QtView : public QMainWindow, public LyXView {
 	Q_OBJECT
 public:
-	/// create a main window of the given dimensions
-	QtView(unsigned int w, unsigned int h);
+	/// create a main window
+	QtView();
 
 	~QtView();
 
@@ -67,9 +67,19 @@ public:
 	//
 	lyx::frontend::Gui & gui() { return frontend_; }
 
+	///
+	void initFloatingGeometry(QRect const &);
+
 public slots:
 	/// idle timeout
 	void update_view_state_qt();
+
+	///
+	virtual void resizeEvent(QResizeEvent * e);
+
+	///
+	virtual void moveEvent(QMoveEvent * e);
+
 protected:
 	/// make sure we quit cleanly
 	virtual void closeEvent(QCloseEvent * e);
@@ -94,6 +104,13 @@ private:
 	
 	///
 	GuiImplementation frontend_;
+
+	///
+	void updateFloatingGeometry();
+	///
+	QRect floatingGeometry_;
+	///
+	int maxWidth;
 };
 
 } // namespace frontend

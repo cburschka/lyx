@@ -170,7 +170,7 @@ LyX const & LyX::cref()
 
 
 LyX::LyX()
-	: first_start(false)
+	: first_start(false), geometryOption_(false)
 {}
 
 
@@ -335,7 +335,14 @@ void LyX::exec2(int & argc, char * argv[])
 			if (!val.empty())
 				posy = convert<int>(val);
 		}
+
+		if (geometryOption_) {
+			width = -1;
+			height = -1;
+		}
+
 		lyx_gui::start(batch_command, files, width, height, posx, posy, maximize);
+
 	} else {
 		// Something went wrong above
 		quitLyX(false);
@@ -994,6 +1001,10 @@ bool LyX::easyParse(int & argc, char * argv[])
 	for (int i = 1; i < argc; ++i) {
 		std::map<string, cmd_helper>::const_iterator it
 			= cmdmap.find(argv[i]);
+
+		// check for X11 -geometry option
+		if (lyx::support::compare(argv[i], "-geometry") == 0)
+			geometryOption_ = true;
 
 		// don't complain if not found - may be parsed later
 		if (it == cmdmap.end())

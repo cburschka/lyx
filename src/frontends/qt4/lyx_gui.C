@@ -194,15 +194,31 @@ void start(string const & batch, vector<string> const & files,
 	// this can't be done before because it needs the Languages object
 	initEncodings();
 
-	boost::shared_ptr<GuiView> view_ptr(new GuiView(width, height));
+	boost::shared_ptr<GuiView> view_ptr(new GuiView);
+
 	LyX::ref().addLyXView(view_ptr);
 
 	GuiView & view = *view_ptr.get();
 
 	view.init();
-		
-	if (posx != -1 && posy != -1) { 	
-		view.setGeometry(posx, posy, width, height);
+
+	// only true when the -geometry option was NOT used
+	if (width != -1 && height != -1)
+	{
+		if (posx != -1 && posy != -1)
+		{
+#ifdef Q_OS_WIN32
+			// FIXME: use only setGeoemtry when Trolltech has
+			// fixed the qt4/X11 bug
+			view.setGeometry(posx, posy,width, height);
+#else
+			view.resize(width, height);
+			view.move(posx, posy);
+#endif
+		} else {
+			view.resize(width, height);
+		}
+
 		if (maximize)
 			view.setWindowState(Qt::WindowMaximized);
 	}
