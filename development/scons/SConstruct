@@ -2065,7 +2065,7 @@ if build_lyx:
 
 if build_msvs_projects:
   def build_project(target, dir, full_target = None,
-    src_pattern = lyx_ext, include = [], resource = None, rebuild = True):
+    src_pattern = lyx_ext, include = [], resource = None, rebuildTargetOnly = True):
     ''' build mavs project files
       target:      alias (correspond to directory name)
       dir:         source directory or directories (a list)
@@ -2073,7 +2073,7 @@ if build_msvs_projects:
       src_pattern: glob pattern
       include:     files to include into source
       resource:    directory or directories with resource (.ui) files
-      rebuild:     whether or not only rebuild this target
+      rebuildTargetOnly:     whether or not only rebuild this target
 
     For non-debug-able targets like static libraries, target (alias) is
     enough to build the target. For executable targets, msvs need to know
@@ -2084,7 +2084,7 @@ if build_msvs_projects:
         build_dir = env.subst('$TOP_SRCDIR/'+resource))
     else:
       res = []
-    if rebuild:
+    if rebuildTargetOnly:
       cmds = 'faststart=yes rebuild='+target
     else:
       cmds = 'faststart=yes'
@@ -2143,10 +2143,10 @@ if build_msvs_projects:
   #
   build_project('qt4', 'src/frontends/qt4', resource = 'src/frontends/qt4/ui')
   #
-  build_project('client', 'src/client', rebuild=False,
+  build_project('client', 'src/client', rebuildTargetOnly = False,
     full_target = File(env.subst('$BUILDDIR/common/client/lyxclient$PROGSUFFIX')).abspath)
   #
-  build_project('tex2lyx', 'src/tex2lyx', rebuild=False,
+  build_project('tex2lyx', 'src/tex2lyx', rebuildTargetOnly = False,
     full_target = File(env.subst('$BUILDDIR/common/tex2lyx/tex2lyx$PROGSUFFIX')).abspath)
   #
   build_project('lyxbase', 'src')
@@ -2155,11 +2155,13 @@ if build_msvs_projects:
     build_project('lyx', ['src', 'src/support', 'src/mathed', 'src/insets',
       'src/frontends', 'src/graphics', 'src/frontends/controllers',
       'src/frontends/qt3'], resource = 'src/frontends/qt3/ui',
+      rebuildTargetOnly = False,
       full_target = File(env.subst('$BUILDDIR/$frontend/lyx$PROGSUFFIX')).abspath)
   else:
     build_project('lyx', ['src', 'src/support', 'src/mathed', 'src/insets',
       'src/frontends', 'src/graphics', 'src/frontends/controllers',
       'src/frontends/qt4'], resource = 'src/frontends/qt4/ui',
+      rebuildTargetOnly = False,
       full_target = File(env.subst('$BUILDDIR/$frontend/lyx$PROGSUFFIX')).abspath)
 
 
