@@ -60,7 +60,7 @@ namespace lyx {
 
 using support::bformat;
 using support::contains;
-using lyx::support::findToken;
+using support::findToken;
 using support::getStringFromVector;
 using support::getVectorFromString;
 using support::libFileSearch;

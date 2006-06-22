@@ -688,6 +688,11 @@ void QDocument::update_contents()
 	if (n >= 0)
 		dialog_->fontModule->fontsDefaultCO->setCurrentItem(n);
 
+	// paper
+	int const psize = params.papersize;
+	dialog_->pageLayoutModule->papersizeCO->setCurrentItem(psize);
+	dialog_->setCustomPapersize(psize);
+
 	// margins
 	MarginsModuleBase * m = dialog_->marginsModule;
 
