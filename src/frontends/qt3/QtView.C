@@ -58,7 +58,7 @@ int const statusbar_timer_value = 3000;
 
 
 QtView::QtView()
-       : QMainWindow(), LyXView(), commandbuffer_(0), frontend_(*this)
+	: QMainWindow(), LyXView(), commandbuffer_(0), frontend_(*this)
 {
 	qApp->setMainWidget(this);
 
@@ -157,35 +157,34 @@ bool QtView::hasFocus() const
 	return qApp->activeWindow() == this;
 }
 
+
 void QtView::initFloatingGeometry(QRect const & g)
 {
 	floatingGeometry_ = g;
 	maxWidth = QApplication::desktop()->width() - 20;
 }
 
+
 void QtView::updateFloatingGeometry()
 {
 	if (width() < maxWidth && frameGeometry().x() > 0)
-	{
-		// setX/Y changes the size!
-		floatingGeometry_.setX(x());
-		floatingGeometry_.setY(y());
-		floatingGeometry_.setWidth(width());
-		floatingGeometry_.setHeight(height());
-	}
+		floatingGeometry_ = QRect(x(), y(), width(), height());
 }
+
 
 void QtView::resizeEvent(QResizeEvent *)
 {
 	maxWidth = std::max(width(), maxWidth);
-		
-	updateFloatingGeometry();			
+
+	updateFloatingGeometry();
 }
+
 
 void QtView::moveEvent(QMoveEvent *)
 {
 	updateFloatingGeometry();	
 }
+
 
 void QtView::closeEvent(QCloseEvent *)
 {

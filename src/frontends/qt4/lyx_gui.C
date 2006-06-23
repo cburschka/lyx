@@ -203,10 +203,8 @@ void start(string const & batch, vector<string> const & files,
 	view.init();
 
 	// only true when the -geometry option was NOT used
-	if (width != -1 && height != -1)
-	{
-		if (posx != -1 && posy != -1)
-		{
+	if (width != -1 && height != -1) {
+		if (posx != -1 && posy != -1) {
 #ifdef Q_OS_WIN32
 			// FIXME: use only setGeoemtry when Trolltech has
 			// fixed the qt4/X11 bug

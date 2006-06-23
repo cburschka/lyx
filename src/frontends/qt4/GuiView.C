@@ -111,6 +111,7 @@ void GuiView::updateMenu(QAction *action)
 	menubar_->update();
 }
 
+
 void GuiView::setWindowTitle(string const & t, string const & it)
 {
 	QMainWindow::setWindowTitle(toqstr(t));
@@ -175,21 +176,19 @@ bool GuiView::hasFocus() const
 	return qApp->activeWindow() == this;
 }
 
+
 void  GuiView::updateFloatingGeometry() 
 {
-	if (!isMaximized()) {
-		// setX/Y changes the size!
-		floatingGeometry_.setX(x()); 
-		floatingGeometry_.setY(y()); 
-		floatingGeometry_.setWidth(width()); 
-		floatingGeometry_.setHeight(height());
-	}
+	if (!isMaximized())
+		floatingGeometry_ = QRect(x(), y(), width(), height());
 }
+
 
 void GuiView::resizeEvent(QResizeEvent *)
 {
 	updateFloatingGeometry();
 }
+
 
 void GuiView::moveEvent(QMoveEvent *)
 {
@@ -242,6 +241,7 @@ void GuiView::busy(bool yes) const
 	else
 		QApplication::restoreOverrideCursor();
 }
+
 
 QMainWindow* GuiView::mainWidget()
 {
