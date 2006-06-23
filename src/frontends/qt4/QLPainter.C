@@ -46,6 +46,18 @@ QLPainter::QLPainter(GuiWorkArea * qwa)
 }
 
 
+void QLPainter::start()
+{
+	qp_.reset(new QPainter(qwa_->paintDevice()));
+}
+
+
+void QLPainter::end()
+{
+	qp_->end();
+}
+
+
 int QLPainter::paperWidth() const
 {
 	return qwa_->viewport()->width();
@@ -86,9 +98,8 @@ void QLPainter::setQPainterPen(QPainter & qp, LColor_color col,
 
 void QLPainter::point(int x, int y, LColor_color col)
 {
-	QPainter qp(qwa_->paintDevice());
-	setQPainterPen(qp, col);
-	qp.drawPoint(x, y);
+	setQPainterPen(*qp_.get(), col);
+	qp_->drawPoint(x, y);
 }
 
 
@@ -97,9 +108,8 @@ void QLPainter::line(int x1, int y1, int x2, int y2,
 	line_style ls,
 	line_width lw)
 {
-	QPainter qp(qwa_->paintDevice());
-	setQPainterPen(qp, col, ls, lw);
-	qp.drawLine(x1, y1, x2, y2);
+	setQPainterPen(*qp_.get(), col, ls, lw);
+	qp_->drawLine(x1, y1, x2, y2);
 }
 
 
@@ -118,9 +128,8 @@ void QLPainter::lines(int const * xp, int const * yp, int np,
 		points[i].setY(yp[i]);
 	}
 
-	QPainter qp(qwa_->paintDevice());
-	setQPainterPen(qp, col, ls, lw);
-	qp.drawPolyline(points.get(), np);
+	setQPainterPen(*qp_.get(), col, ls, lw);
+	qp_->drawPolyline(points.get(), np);
 }
 
 
@@ -129,16 +138,14 @@ void QLPainter::rectangle(int x, int y, int w, int h,
 	line_style ls,
 	line_width lw)
 {
-	QPainter qp(qwa_->paintDevice());
-	setQPainterPen(qp, col, ls, lw);
-	qp.drawRect(x, y, w, h);
+	setQPainterPen(*qp_.get(), col, ls, lw);
+	qp_->drawRect(x, y, w, h);
 }
 
 
 void QLPainter::fillRectangle(int x, int y, int w, int h, LColor_color col)
 {
-	QPainter qp(qwa_->paintDevice());
-	qp.fillRect(x, y, w, h, lcolorcache.get(col));
+	qp_->fillRect(x, y, w, h, lcolorcache.get(col));
 }
 
 
@@ -153,11 +160,10 @@ void QLPainter::fillPolygon(int const * xp, int const * yp,
 		points[i].setY(yp[i]);
 	}
 
-	QPainter qp(qwa_->paintDevice());
-	setQPainterPen(qp, col);
-	qp.setBrush(lcolorcache.get(col));
-	qp.drawPolygon(points.get(), np);
-	qp.setBrush(Qt::NoBrush);
+	setQPainterPen(*qp_.get(), col);
+	qp_->setBrush(lcolorcache.get(col));
+	qp_->drawPolygon(points.get(), np);
+	qp_->setBrush(Qt::NoBrush);
 }
 
 
@@ -165,9 +171,8 @@ void QLPainter::arc(int x, int y, unsigned int w, unsigned int h,
 	int a1, int a2, LColor_color col)
 {
 	// LyX usings 1/64ths degree, Qt usings 1/16th
-	QPainter qp(qwa_->paintDevice());
-	setQPainterPen(qp, col);
-	qp.drawArc(x, y, w, h, a1 / 4, a2 / 4);
+	setQPainterPen(*qp_.get(), col);
+	qp_->drawArc(x, y, w, h, a1 / 4, a2 / 4);
 }
 
 
@@ -179,8 +184,7 @@ void QLPainter::image(int x, int y, int w, int h,
 
 	fillRectangle(x, y, w, h, LColor::graphicsbg);
 
-	QPainter qp(qwa_->paintDevice());
-	qp.drawImage(x, y, qlimage.qimage(), 0, 0, w, h);
+	qp_->drawImage(x, y, qlimage.qimage(), 0, 0, w, h);
 }
 
 
@@ -208,19 +212,18 @@ void QLPainter::smallCapsText(int x, int y,
 	QFontMetrics const & qfontm = QFontMetrics(qfont);
 	QFontMetrics const & qsmallfontm = QFontMetrics(qsmallfont);
 
-	QPainter qp(qwa_->paintDevice());
-	setQPainterPen(qp, f.realColor());
+	setQPainterPen(*qp_.get(), f.realColor());
 	int tmpx = x;
 	size_t ls = s.length();
 	for (size_t i = 0; i < ls; ++i) {
 		QChar const c = s[i].upper();
 		if (c != s.at(i)) {
-			qp.setFont(qsmallfont);
-			qp.drawText(tmpx, y, c);
+			qp_->setFont(qsmallfont);
+			qp_->drawText(tmpx, y, c);
 			tmpx += qsmallfontm.width(c);
 		} else {
-			qp.setFont(qfont);
-			qp.drawText(tmpx, y, c);
+			qp_->setFont(qfont);
+			qp_->drawText(tmpx, y, c);
 			tmpx += qfontm.width(c);
 		}
 	}
@@ -245,12 +248,11 @@ void QLPainter::text(int x, int y, char const * s, size_t ls,
 		str = ' ' + str;
 
 	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
-		QPainter qp(qwa_->paintDevice());
-		setQPainterPen(qp, f.realColor());
-		qp.setFont(fontloader.get(f));
+		setQPainterPen(*qp_.get(), f.realColor());
+		qp_->setFont(fontloader.get(f));
 		// We need to draw the text as LTR as we use our own bidi code.
-		qp.setLayoutDirection(Qt::LeftToRight);
-		qp.drawText(x, y, str);
+		qp_->setLayoutDirection(Qt::LeftToRight);
+		qp_->drawText(x, y, str);
 	} else {
 		smallCapsText(x, y, str, f);
 	}
@@ -263,14 +265,12 @@ void QLPainter::text(int x, int y, char const * s, size_t ls,
 /// draw a pixmap from the image cache
 void QLPainter::drawPixmap(int x, int y, QPixmap const & pixmap)
 {
-	QPainter qp(qwa_->paintDevice());
-	qp.drawPixmap(x, y, pixmap);
+	qp_->drawPixmap(x, y, pixmap);
 }
 
 void QLPainter::drawImage(int x, int y, QImage const & image)
 {
-	QPainter qp(qwa_->paintDevice());
-	qp.drawImage(x, y, image);
+	qp_->drawImage(x, y, image);
 }
 
 } // namespace frontend

@@ -39,16 +39,10 @@ public:
 	~QLPainter();
 
 	/// begin painting
-	/**
-	Not used in the the Qt4 frontend.
-	*/
-	virtual void start() {}
+	virtual void start();
 
 	/// end painting
-	/**
-	Not used in the the Qt4 frontend.
-	*/
-	virtual void end() {}
+	virtual void end();
 
 	/// return the width of the work area in pixels
 	virtual int paperWidth() const;
