@@ -1134,7 +1134,7 @@ void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		else if (s == "delete-row") {
 			for (int i = 0, n = extractInt(is); i < n; ++i) {
 				delRow(cur.row());
-				if (cur.idx() > nargs())
+				if (cur.idx() >= nargs())
 					cur.idx() -= ncols();
 			}
 			cur.pos() = 0; // trick, see below
