@@ -14,7 +14,7 @@
 
 import os, sys, copy, cPickle, glob
 
-# config/scons_utils.py defines a few utility function
+# scons_utils.py defines a few utility function
 sys.path.append('config')
 import scons_utils as utils
 
@@ -29,11 +29,11 @@ EnsureSConsVersion(0, 96)
 
 # determine where I am ...
 #
-# called as 'scons -f development/scons/SConstruct'
+# called as 'cd development/scons; scons'
 if os.path.isfile('SConstruct'):
   top_src_dir = '../..'
   scons_dir = '.'
-# called as 'cd development/scons; scons'
+# called as 'scons -f development/scons/SConstruct'
 else:
   top_src_dir = '.'
   scons_dir = 'development/scons'
@@ -115,7 +115,7 @@ if os.path.isfile('config.py'):
 
 opts = Options(['config.py'])
 opts.AddOptions(
-  # frontend,
+  # frontend
   EnumOption('frontend', 'Main GUI', default_frontend,
     allowed_values = ('xform', 'qt2', 'qt3', 'qt4', 'gtk') ),
   # debug or release build
@@ -145,21 +145,22 @@ opts.AddOptions(
     allowed_values = ('windows', 'posix', 'macosx')),
   #
   BoolOption('fast_start', 'Whether or not use cached tests and keep current config.h', True),
-  #
-  BoolOption('pch', 'Whether or not use pch', False),
+  # No precompiled header support (too troublesome to make it work for msvc)
+  # BoolOption('pch', 'Whether or not use pch', False),
   # enable assertion, (config.h has ENABLE_ASSERTIOS
   BoolOption('assertions', 'Use assertions', True),
   # enable warning, (config.h has WITH_WARNINGS)
   # default to False since MSVC does not have #warning
   BoolOption('warnings', 'Use warnings', False),
-  # enable glib, (config.h has _GLIBCXX_CONCEPT_CHECKS)
+  # config.h define _GLIBCXX_CONCEPT_CHECKS
+  # Note: for earlier version of gcc (3.3) define _GLIBCPP_CONCEPT_CHECKS
   BoolOption('concept_checks', 'Enable concept checks', True),
   #
   BoolOption('nls', 'Whether or not use native language support', True),
-  # FIXME: not implemented
-  BoolOption('profile', '(NA) Whether or not enable profiling', False),
-  # FIXME: not implemented
-  BoolOption('std_debug', '(NA) Whether or not turn on stdlib debug', False),
+  #
+  BoolOption('profiling', 'Whether or not enable profiling', False),
+  # config.h define _GLIBCXX_DEBUG and _GLIBCXX_DEBUG_PEDANTIC
+  BoolOption('stdlib_debug', 'Whether or not turn on stdlib debug', False),
   # using x11?
   BoolOption('X11', 'Use x11 windows system', default_with_x),
   # use MS VC++ to build lyx
@@ -310,7 +311,6 @@ env['ENV']['INCLUDE'] = os.environ.get('INCLUDE')
 frontend = env['frontend']
 prefix = env['prefix']
 mode = env['mode']
-use_pch = env['pch']
 
 if platform_name == 'win32':
   if env.has_key('use_vc'):
@@ -445,10 +445,6 @@ else:
     env['CC'] = 'g++'
     env['LINK'] = 'g++'
 
-# only support gcc now
-if use_pch and not use_vc:
-  CCFLAGS_required.extend(['-Winvalid-pch'])
-
 # for debug/release mode
 if env.has_key('optimization') and env['optimization'] is not None:
   # if user supplies optimization flags, use it anyway
@@ -464,12 +460,28 @@ if mode == 'debug':
     LINKFLAGS_required.extend(['/debug', '/map'])
   else:
     CCFLAGS_required.append('-g')
-    CCFLAGS_default.extend(['-Wall', '-O'])
+    CCFLAGS_default.append('-O')
 elif mode == 'release' and set_default_optimization_flags:
   if use_vc:
     CCFLAGS_default.append('/O2')
   else:
     CCFLAGS_default.append('-O2')
+
+# msvc uses separate tools for profiling
+if env.has_key('profiling') and env['profiling']:
+  if use_vc:
+    print 'Visual C++ does not use profiling options'
+  else:
+    CCFLAGS_required.append('-pg')
+    LINKFLAGS_required.append('-pg')
+
+if env.has_key('warnings') and env['warnings']:
+  if use_vc:
+    CCFLAGS_default.append('/W2')
+  else:
+    # Note: autotools detect gxx version and pass -W for 3.x
+    # and -Wextra for other versions of gcc
+    CCFLAGS_default.append('-Wall')
 
 # Now, set the variables as follows:
 # 1. if command line option exists: replace default
@@ -987,6 +999,14 @@ int count()
         '_GLIBCXX_CONCEPT_CHECKS',
         'libstdc++ concept checking'
       ),
+      (env.has_key('stdlib_debug') and env['stdlib_debug'],
+        '_GLIBCXX_DEBUG',
+        'libstdc++ debug mode'
+      ),
+      (env.has_key('stdlib_debug') and env['stdlib_debug'],
+        '_GLIBCXX_DEBUG_PEDANTIC',
+        'libstdc++ pedantic debug mode'
+      ),
       (os.name != 'nt', 'BOOST_POSIX',
         'Indicates to boost which API to use (posix or windows).'
       ),
@@ -1152,17 +1172,6 @@ env['CPPPATH'].remove(qt_inc_path)
 #
 # install customized builders
 env['BUILDERS']['substFile'] = Builder(action = utils.env_subst)
-if use_pch and not use_vc:
-  env['CCPCHFLAGS'] =  '-x c++-header'
-  env['BUILDERS']['PCH'] = Builder(
-    action = '$CXX $CPPFLAGS $_CPPDEFFLAGS $_CPPINCFLAGS $CCPCHFLAGS $SOURCES -o $TARGET',
-    suffix = '.h.pch', src_suffix = '.h'
-  )
-else:
-  # do nothing
-  def emptyTarget(target, source, env):
-    return [], source
-  env['BUILDERS']['PCH'] = Builder(action = '', emitter = emptyTarget)
 
 #
 # A Link script for cygwin see
@@ -1547,12 +1556,10 @@ if build_mathed:
   # src/mathed
   #
   print "Processing files in src/mathed..."
-  env['PCH_H'] = '$TOP_SRCDIR/src/mathed/pch.h'
-  env['PCH_FILE'] = env.PCH(env['PCH_H'])
   #
   mathed = env.StaticLibrary(
     target = '$LOCALLIBPATH/mathed',
-    source = env['PCH_FILE'] + utils.globSource(dir = env.subst('$TOP_SRCDIR/src/mathed'),
+    source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/mathed'),
       pattern = lyx_ext,
       exclude = ['math_xyarrowinset.C', 'math_mboxinset.C', 'formulamacro.C'],
       build_dir = '$BUILDDIR/common/mathed')
