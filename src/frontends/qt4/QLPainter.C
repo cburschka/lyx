@@ -19,7 +19,6 @@
 #include "ColorCache.h"
 #include "FontLoader.h"
 
-#include "debug.h"
 #include "language.h"
 #include "LColor.h"
 
@@ -40,6 +39,7 @@ QLPainter::~QLPainter()
 {
 }
 
+
 QLPainter::QLPainter(GuiWorkArea * qwa)
 	: Painter(), qwa_(qwa)
 {
@@ -49,6 +49,10 @@ QLPainter::QLPainter(GuiWorkArea * qwa)
 void QLPainter::start()
 {
 	qp_.reset(new QPainter(qwa_->paintDevice()));
+	// new QPainter has default QPen:
+	current_color_ = LColor::black;	
+	current_ls_ = line_solid;
+	current_lw_ = line_thin;
 }
 
 
@@ -69,7 +73,7 @@ int QLPainter::paperHeight() const
 	return qwa_->viewport()->height();
 }
 
-void QLPainter::setQPainterPen(QPainter & qp, LColor_color col,
+void QLPainter::setQPainterPen(LColor_color col,
 	Painter::line_style ls, Painter::line_width lw)
 {
 	if (col == current_color_ && ls == current_ls_ && lw == current_lw_)
@@ -79,7 +83,7 @@ void QLPainter::setQPainterPen(QPainter & qp, LColor_color col,
 	current_ls_ = ls;
 	current_lw_ = lw;
 
-	QPen pen = qp.pen();
+	QPen pen = qp_.get()->pen();
 
 	pen.setColor(lcolorcache.get(col));
 
@@ -93,12 +97,13 @@ void QLPainter::setQPainterPen(QPainter & qp, LColor_color col,
 		case line_thick: pen.setWidth(3); break;
 	}
 
-	qp.setPen(pen);
+	qp_.get()->setPen(pen);
 }
+
 
 void QLPainter::point(int x, int y, LColor_color col)
 {
-	setQPainterPen(*qp_.get(), col);
+	setQPainterPen(col);
 	qp_->drawPoint(x, y);
 }
 
@@ -108,7 +113,7 @@ void QLPainter::line(int x1, int y1, int x2, int y2,
 	line_style ls,
 	line_width lw)
 {
-	setQPainterPen(*qp_.get(), col, ls, lw);
+	setQPainterPen(col, ls, lw);
 	qp_->drawLine(x1, y1, x2, y2);
 }
 
@@ -128,7 +133,7 @@ void QLPainter::lines(int const * xp, int const * yp, int np,
 		points[i].setY(yp[i]);
 	}
 
-	setQPainterPen(*qp_.get(), col, ls, lw);
+	setQPainterPen(col, ls, lw);
 	qp_->drawPolyline(points.get(), np);
 }
 
@@ -138,7 +143,7 @@ void QLPainter::rectangle(int x, int y, int w, int h,
 	line_style ls,
 	line_width lw)
 {
-	setQPainterPen(*qp_.get(), col, ls, lw);
+	setQPainterPen(col, ls, lw);
 	qp_->drawRect(x, y, w, h);
 }
 
@@ -160,7 +165,7 @@ void QLPainter::fillPolygon(int const * xp, int const * yp,
 		points[i].setY(yp[i]);
 	}
 
-	setQPainterPen(*qp_.get(), col);
+	setQPainterPen(col);
 	qp_->setBrush(lcolorcache.get(col));
 	qp_->drawPolygon(points.get(), np);
 	qp_->setBrush(Qt::NoBrush);
@@ -171,7 +176,7 @@ void QLPainter::arc(int x, int y, unsigned int w, unsigned int h,
 	int a1, int a2, LColor_color col)
 {
 	// LyX usings 1/64ths degree, Qt usings 1/16th
-	setQPainterPen(*qp_.get(), col);
+	setQPainterPen(col);
 	qp_->drawArc(x, y, w, h, a1 / 4, a2 / 4);
 }
 
@@ -212,7 +217,7 @@ void QLPainter::smallCapsText(int x, int y,
 	QFontMetrics const & qfontm = QFontMetrics(qfont);
 	QFontMetrics const & qsmallfontm = QFontMetrics(qsmallfont);
 
-	setQPainterPen(*qp_.get(), f.realColor());
+	setQPainterPen(f.realColor());
 	int tmpx = x;
 	size_t ls = s.length();
 	for (size_t i = 0; i < ls; ++i) {
@@ -248,7 +253,7 @@ void QLPainter::text(int x, int y, char const * s, size_t ls,
 		str = ' ' + str;
 
 	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
-		setQPainterPen(*qp_.get(), f.realColor());
+		setQPainterPen(f.realColor());
 		qp_->setFont(fontloader.get(f));
 		// We need to draw the text as LTR as we use our own bidi code.
 		qp_->setLayoutDirection(Qt::LeftToRight);
@@ -262,11 +267,13 @@ void QLPainter::text(int x, int y, char const * s, size_t ls,
 	}
 
 }
-/// draw a pixmap from the image cache
+
+
 void QLPainter::drawPixmap(int x, int y, QPixmap const & pixmap)
 {
 	qp_->drawPixmap(x, y, pixmap);
 }
+
 
 void QLPainter::drawImage(int x, int y, QImage const & image)
 {

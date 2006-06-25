@@ -136,7 +136,7 @@ private:
 		QString const & str, LyXFont const & f);
 
 	/// set pen parameters
-	void setQPainterPen(QPainter & qp, LColor_color col,
+	void setQPainterPen(LColor_color col,
 		line_style ls = line_solid,
 		line_width lw = line_thin);
 
