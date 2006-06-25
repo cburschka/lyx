@@ -220,7 +220,7 @@ void QLPainter::smallCapsText(int x, int y,
 	setQPainterPen(f.realColor());
 	int tmpx = x;
 	size_t ls = s.length();
-	for (size_t i = 0; i < ls; ++i) {
+	for (unsigned int i = 0; i < ls; ++i) {
 		QChar const c = s[i].upper();
 		if (c != s.at(i)) {
 			qp_->setFont(qsmallfont);
@@ -244,7 +244,7 @@ void QLPainter::text(int x, int y, char const * s, size_t ls,
 
 	QString str;
 	str.setLength(ls);
-	for (size_t i = 0; i < ls; ++i)
+	for (unsigned int i = 0; i < ls; ++i)
 		str[i] = QChar(encoding->ucs(s[i]));
 
 	// HACK: QT3 refuses to show single compose characters
@@ -282,4 +282,3 @@ void QLPainter::drawImage(int x, int y, QImage const & image)
 
 } // namespace frontend
 } // namespace lyx
-
