@@ -292,10 +292,14 @@ bool MathScriptInset::hasLimits() const
 	if (!nuc().back()->isScriptable())
 		return false;
 
-	// per default \int has limits beside the \int even in displayed formulas
-	if (nuc().back()->asSymbolInset())
+	if (nuc().back()->asSymbolInset()) {
+		// \intop is an alias for \int\limits, \ointop == \oint\limits
+		if (nuc().back()->asSymbolInset()->name().find("intop") != string::npos)
+			return true;
+		// per default \int has limits beside the \int even in displayed formulas
 		if (nuc().back()->asSymbolInset()->name().find("int") != string::npos)
 			return false;
+	}
 
 	// assume "real" limits for everything else
 	return true;
