@@ -54,6 +54,9 @@ void rescanTexStyles()
 	one.startscript(Systemcall::Wait,
 			"sh " +
 			quoteName(libFileSearch("scripts", "TeXFiles.sh")));
+	// To be changed to
+	//		"python " +
+	//		quoteName(libFileSearch("scripts", "TeXFiles.py")));
 }
 
 

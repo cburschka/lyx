@@ -298,8 +298,8 @@ bool Converters::convert(Buffer const * buffer,
 				getExtension(from_file) :
 				formats.extension(from_format);
 			string const command =
-				"sh " +
-				quoteName(libFileSearch("scripts", "convertDefault.sh")) +
+				"python " +
+				quoteName(libFileSearch("scripts", "convertDefault.py")) +
 				' ' +
 				quoteName(from_ext + ':' + from_file) +
 				' ' +

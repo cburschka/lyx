@@ -161,14 +161,22 @@ Converter::Impl::Impl(string const & from_file,   string const & to_file_base,
 
 	// The conversion commands are stored in a stringstream
 	ostringstream script;
-	script << "#!/bin/sh\n";
+	script << "#!/usr/bin/env python\n"
+		   << "import os, sys\n\n"
+		   << "def unlinkNoThrow(file):\n"
+		   << "  ''' remove a file, do not throw if an error occurs '''\n"
+		   << "  try:\n"
+		   << "    os.unlink(file)\n"
+		   << "  except:\n"
+		   << "    pass\n\n";
+
 	bool const success = build_script(from_file, to_file_base,
 					  from_format, to_format, script);
 
 	if (!success) {
 		script_command_ =
-			"sh " +
-			quoteName(libFileSearch("scripts", "convertDefault.sh")) +
+			"python " +
+			quoteName(libFileSearch("scripts", "convertDefault.py")) +
 			' ' +
 			quoteName((from_format.empty() ? "" : from_format + ':') + from_file) +
 			' ' +
@@ -188,7 +196,7 @@ Converter::Impl::Impl(string const & from_file,   string const & to_file_base,
 		// Output the script to file.
 		static int counter = 0;
 		script_file_ = onlyPath(to_file_base) + "lyxconvert" +
-			convert<string>(counter++) + ".sh";
+			convert<string>(counter++) + ".py";
 
 		std::ofstream fs(script_file_.c_str());
 		if (!fs.good()) {
@@ -206,7 +214,7 @@ Converter::Impl::Impl(string const & from_file,   string const & to_file_base,
 		// We create a dummy command for ease of understanding of the
 		// list of forked processes.
 		// Note: 'sh ' is absolutely essential, or execvp will fail.
-		script_command_ = "sh " + quoteName(script_file_) + ' ' +
+		script_command_ = "python " + quoteName(script_file_) + ' ' +
 			quoteName(onlyFilename(from_file)) + ' ' +
 			quoteName(to_format);
 	}
@@ -259,21 +267,66 @@ string const move_file(string const & from_file, string const & to_file)
 		return string();
 
 	ostringstream command;
-	command << "fromfile=" << from_file << "\n"
-		<< "tofile="   << to_file << "\n\n"
-		<< "'mv' -f \"${fromfile}\" \"${tofile}\" ||\n"
-		<< "{\n"
-		<< "\t'cp' -f \"${fromfile}\" \"${tofile}\" ||\n"
-		<< "\t{\n"
-		<< "\t\texit 1\n"
-		<< "\t}\n"
-		<< "\t'rm' -f \"${fromfile}\"\n"
-		<< "}\n";
+	command << "fromfile = " << from_file << "\n"
+		<< "tofile = "   << to_file << "\n\n"
+		<< "try:\n"
+		<< "  os.rename(fromfile, tofile)\n"
+		<< "except:\n"
+		<< "  import shutil\n"
+		<< "  try:\n"
+		<< "    shutil.copy(fromfile, tofile)\n"
+		<< "  except:\n"
+		<< "    sys.exit(1)\n"
+		<< "  unlinkNoThrow(fromfile)\n";
 
 	return command.str();
 }
 
 
+/*
+A typical script looks like:
+
+#!/usr/bin/env python
+import os, sys
+
+def unlinkNoThrow(file):
+  ''' remove a file, do not throw if error occurs '''
+  try:
+    os.unlink(file)
+  except:
+    pass
+
+infile = '/home/username/Figure3a.eps'
+infile_base = '/home/username/Figure3a'
+outfile = '/tmp/lyx_tmpdir12992hUwBqt/gconvert0129929eUBPm.pdf'
+
+if os.system(r'epstopdf ' + '"' + infile + '"' + ' --output ' + '"' + outfile + '"' + '') != 0:
+  unlinkNoThrow(outfile)
+  sys.exit(1)
+
+if not os.path.isfile(outfile):
+  if os.path.isfile(outfile + '.0'):
+    os.rename(outfile + '.0', outfile)
+    import glob
+    for file in glob.glob(outfile + '.?'):
+      unlinkNoThrow(file)
+  else:
+    sys.exit(1)
+
+fromfile = outfile
+tofile = '/tmp/lyx_tmpdir12992hUwBqt/Figure3a129927ByaCl.ppm'
+
+try:
+  os.rename(fromfile, tofile)
+except:
+  import shutil
+  try:
+    shutil.copy(fromfile, tofile)
+  except:
+    sys.exit(1)
+  unlinkNoThrow(fromfile)
+
+*/
 bool build_script(string const & from_file,
 		  string const & to_file_base,
 		  string const & from_format,
@@ -331,48 +384,46 @@ bool build_script(string const & from_file,
 		outfile = changeExtension(to_base, conv.To->extension());
 
 		// Store these names in the shell script
-		script << "infile="      << quoteName(infile) << '\n'
-		       << "infile_base=" << quoteName(infile_base) << '\n'
-		       << "outfile="     << quoteName(outfile) << '\n';
+		script << "infile = "      << quoteName(infile) << '\n'
+		       << "infile_base = " << quoteName(infile_base) << '\n'
+		       << "outfile = "     << quoteName(outfile) << '\n';
 
 		string command = conv.command;
-		command = subst(command, token_from, "\"${infile}\"");
-		command = subst(command, token_base, "\"${infile_base}\"");
-		command = subst(command, token_to,   "\"${outfile}\"");
+		command = subst(command, token_from, "' + '\"' + infile + '\"' + '");
+		command = subst(command, token_base, "' + '\"' + infile_base + '\"' + '");
+		command = subst(command, token_to,   "' + '\"' + outfile + '\"' + '");
 		command = libScriptSearch(command);
 
 		// Store in the shell script
-		script << "\n" << command << " ||\n";
+		script << "\nif os.system(r'" << command << "') != 0:\n";
 
 		// Test that this was successful. If not, remove
 		// ${outfile} and exit the shell script
-		script << "{\n"
-		       << "\t'rm' -f \"${outfile}\"\n"
-		       << "\texit 1\n"
-		       << "}\n\n";
+		script << "  unlinkNoThrow(outfile)\n"
+		       << "  sys.exit(1)\n\n";
 
 		// Test that the outfile exists.
 		// ImageMagick's convert will often create ${outfile}.0,
 		// ${outfile}.1.
 		// If this occurs, move ${outfile}.0 to ${outfile}
-		// and delete ${outfile}.?
-		script << "if [ ! -f \"${outfile}\" ]; then\n"
-		       << "\tif [ -f \"${outfile}\".0 ]; then\n"
-		       << "\t\t'mv' -f \"${outfile}\".0 \"${outfile}\"\n"
-		       << "\t\t'rm' -f \"${outfile}\".?\n"
-		       << "\telse\n"
-		       << "\t\texit 1\n"
-		       << "\tfi\n"
-		       << "fi\n\n";
+		// and delete ${outfile}.? (ignore errors)
+		script << "if not os.path.isfile(outfile):\n"
+		       << "  if os.path.isfile(outfile + '.0'):\n"
+		       << "    os.rename(outfile + '.0', outfile)\n"
+			   << "    import glob\n"
+		       << "    for file in glob.glob(outfile + '.?'):\n"
+			   << "      unlinkNoThrow(file)\n"
+		       << "  else:\n"
+		       << "    sys.exit(1)\n\n";
 
 		// Delete the infile, if it isn't the original, from_file.
 		if (infile != from_file) {
-			script << "'rm' -f \"${infile}\"\n\n";
+			script << "unlinkNoThrow(infile)\n\n";
 		}
 	}
 
 	// Move the final outfile to to_file
-	script << move_file("\"${outfile}\"", quoteName(to_file));
+	script << move_file("outfile", quoteName(to_file));
 	lyxerr[Debug::GRAPHICS] << "ready!" << endl;
 
 	return true;
