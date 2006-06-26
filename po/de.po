@@ -81,7 +81,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-06-08 13:02+0200\n"
+"POT-Creation-Date: 2006-06-26 20:12+0200\n"
 "PO-Revision-Date: 2006-04-01 21:47+0100\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
@@ -13934,15 +13934,15 @@ msgstr "PrettyRef: "
 msgid "Opened table"
 msgstr "Tabelle geöffnet"
 
-#: src/insets/insettabular.C:1518
+#: src/insets/insettabular.C:1514
 msgid "Error setting multicolumn"
 msgstr "Fehler beim Festlegen der Mehrfachspalte"
 
-#: src/insets/insettabular.C:1519
+#: src/insets/insettabular.C:1515
 msgid "You cannot set multicolumn vertically."
 msgstr "Sie können eine Mehrfachspalte nicht vertikal festlegen."
 
-#: src/insets/insettext.C:239
+#: src/insets/insettext.C:229
 msgid "Opened Text Inset"
 msgstr "Text-Einfügung geöffnet"
 
@@ -14258,11 +14258,11 @@ msgstr ""
 "Sie müssen LyX neu starten, um die aktualisierten Dokumentklassen-"
 "Spezifikationen zu nutzen."
 
-#: src/lyx_main.C:112
+#: src/lyx_main.C:123
 msgid "Could not read configuration file"
 msgstr "Die Konfigurationsdatei konnte nicht gelesen werden"
 
-#: src/lyx_main.C:113
+#: src/lyx_main.C:124
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -14273,28 +14273,28 @@ msgstr ""
 "%1$s.\n"
 "Bitte prüfen Sie Ihre Installation."
 
-#: src/lyx_main.C:123
+#: src/lyx_main.C:134
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: Konfiguriere das Benutzerverzeichnis neu"
 
-#: src/lyx_main.C:127
+#: src/lyx_main.C:138
 msgid "Done!"
 msgstr "Fertig!"
 
-#: src/lyx_main.C:219
+#: src/lyx_main.C:237
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Falsche Befehlszeilenoption `%1$s'. Das Programm terminiert."
 
-#: src/lyx_main.C:390
+#: src/lyx_main.C:408
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/lyx_main.C:500
+#: src/lyx_main.C:515
 msgid "Could not create temporary directory"
 msgstr "Das temporäre Verzeichnis konnte nicht erstellt werden"
 
-#: src/lyx_main.C:501
+#: src/lyx_main.C:516
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -14305,11 +14305,11 @@ msgstr ""
 "%1$s erstellt werden. Stellen Sie sicher, dass dieser\n"
 "Pfad existiert und beschreibbar ist und versuchen Sie es noch einmal."
 
-#: src/lyx_main.C:652
+#: src/lyx_main.C:667
 msgid "Missing user LyX directory"
 msgstr "Kein LyX-Benutzerverzeichnis"
 
-#: src/lyx_main.C:653
+#: src/lyx_main.C:668
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -14318,37 +14318,37 @@ msgstr ""
 "Sie haben ein nicht vorhandenes LyX-Benutzerverzeichnis angegeben, %1$s.\n"
 "Es wird benötigt, um Ihre persönliche Konfiguration abzulegen."
 
-#: src/lyx_main.C:658
+#: src/lyx_main.C:673
 msgid "&Create directory"
 msgstr "Verzeichnis &erstellen"
 
-#: src/lyx_main.C:659
+#: src/lyx_main.C:674
 msgid "&Exit LyX"
 msgstr "LyX &beenden"
 
-#: src/lyx_main.C:660
+#: src/lyx_main.C:675
 msgid "No user LyX directory. Exiting."
 msgstr "Kein LyX-Benutzerverzeichnis. LyX wird beendet."
 
-#: src/lyx_main.C:664
+#: src/lyx_main.C:679
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Erstellen des Verzeichnisses %1$s"
 
-#: src/lyx_main.C:670
+#: src/lyx_main.C:685
 msgid "Failed to create directory. Exiting."
 msgstr "Das Erstellen des Verzeichnisses ist fehlgeschlagen. LyX wird beendet."
 
-#: src/lyx_main.C:819
+#: src/lyx_main.C:834
 msgid "List of supported debug flags:"
 msgstr "Liste der unterstützten Testoptionen:"
 
-#: src/lyx_main.C:823
+#: src/lyx_main.C:838
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Festlegen des Test-Levels auf %1$s"
 
-#: src/lyx_main.C:834
+#: src/lyx_main.C:849
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -14391,29 +14391,29 @@ msgstr ""
 "\n"
 "Weitere Optionen sind in der Online-Hilfe (man lyx) aufgeführt."
 
-#: src/lyx_main.C:870
+#: src/lyx_main.C:885
 msgid "Missing directory for -sysdir switch"
 msgstr "Die Option -sysdir verlangt die Angabe eines Verzeichnisses"
 
-#: src/lyx_main.C:880
+#: src/lyx_main.C:895
 msgid "Missing directory for -userdir switch"
 msgstr "Die Option -userdir verlangt die Angabe eines Verzeichnisses"
 
-#: src/lyx_main.C:890
+#: src/lyx_main.C:905
 msgid "Missing command string after --execute switch"
 msgstr "Die Option --execute verlangt die Angabe eines Befehls"
 
-#: src/lyx_main.C:900
+#: src/lyx_main.C:915
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr ""
 "Die Option --export verlangt die Angabe eines Dateityps [z.B. latex, ps...]"
 
-#: src/lyx_main.C:912
+#: src/lyx_main.C:927
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr ""
 "Die Option --import verlangt die Angabe eines Dateityps [z.B. latex, ps...]"
 
-#: src/lyx_main.C:917
+#: src/lyx_main.C:932
 msgid "Missing filename for --import"
 msgstr "Die Option --import verlangt die Angabe eines Dateinamens"
 

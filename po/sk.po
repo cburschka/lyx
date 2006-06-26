@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.3.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-06-08 13:02+0200\n"
+"POT-Creation-Date: 2006-06-26 20:12+0200\n"
 "PO-Revision-Date: 2003-02-10 21:20+0100\n"
 "Last-Translator: Zdenko Podobný <zdpo@mailbox.sk>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
@@ -14591,15 +14591,15 @@ msgstr "PeknáRef: "
 msgid "Opened table"
 msgstr "Otvori» súbor"
 
-#: src/insets/insettabular.C:1518
+#: src/insets/insettabular.C:1514
 msgid "Error setting multicolumn"
 msgstr ""
 
-#: src/insets/insettabular.C:1519
+#: src/insets/insettabular.C:1515
 msgid "You cannot set multicolumn vertically."
 msgstr ""
 
-#: src/insets/insettext.C:239
+#: src/insets/insettext.C:229
 msgid "Opened Text Inset"
 msgstr "Otvorený text prílohy"
 
@@ -14904,12 +14904,12 @@ msgid ""
 "updated document class specifications."
 msgstr ""
 
-#: src/lyx_main.C:112
+#: src/lyx_main.C:123
 #, fuzzy
 msgid "Could not read configuration file"
 msgstr "Nemô¾em pracova» so súborom:"
 
-#: src/lyx_main.C:113
+#: src/lyx_main.C:124
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -14917,29 +14917,29 @@ msgid ""
 "Please check your installation."
 msgstr ""
 
-#: src/lyx_main.C:123
+#: src/lyx_main.C:134
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: rekonfigurujem pou¾ívateµov prieèinok"
 
-#: src/lyx_main.C:127
+#: src/lyx_main.C:138
 msgid "Done!"
 msgstr "Hotovo!"
 
-#: src/lyx_main.C:219
+#: src/lyx_main.C:237
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Zlá mo¾nos» príkazového riadku `%1$s'. Ukonèujem."
 
-#: src/lyx_main.C:390
+#: src/lyx_main.C:408
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/lyx_main.C:500
+#: src/lyx_main.C:515
 #, fuzzy
 msgid "Could not create temporary directory"
 msgstr "Chyba! Nemô¾em vytvori» doèasný prieèinok:"
 
-#: src/lyx_main.C:501
+#: src/lyx_main.C:516
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -14947,52 +14947,52 @@ msgid ""
 "path exists and is writable and try again."
 msgstr ""
 
-#: src/lyx_main.C:652
+#: src/lyx_main.C:667
 #, fuzzy
 msgid "Missing user LyX directory"
 msgstr "Spú¹»am bez osobného prieèinku LyXu."
 
-#: src/lyx_main.C:653
+#: src/lyx_main.C:668
 #, fuzzy, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr "©pecifikovali ste neplatný LyX prieèinok."
 
-#: src/lyx_main.C:658
+#: src/lyx_main.C:673
 #, fuzzy
 msgid "&Create directory"
 msgstr "LyX: Vytváram prieèinok "
 
-#: src/lyx_main.C:659
+#: src/lyx_main.C:674
 #, fuzzy
 msgid "&Exit LyX"
 msgstr "Koniec"
 
-#: src/lyx_main.C:660
+#: src/lyx_main.C:675
 msgid "No user LyX directory. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:664
+#: src/lyx_main.C:679
 #, fuzzy, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Vytváram prieèinok "
 
-#: src/lyx_main.C:670
+#: src/lyx_main.C:685
 #, fuzzy
 msgid "Failed to create directory. Exiting."
 msgstr "Volanie na vytvorenie prieèinku s neplatným názvom"
 
-#: src/lyx_main.C:819
+#: src/lyx_main.C:834
 msgid "List of supported debug flags:"
 msgstr "Zoznam podporovaných ladiacich parametrov: "
 
-#: src/lyx_main.C:823
+#: src/lyx_main.C:838
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Nastavenie úrovne ladenia na %1$s"
 
-#: src/lyx_main.C:834
+#: src/lyx_main.C:849
 #, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -15032,27 +15032,27 @@ msgstr ""
 "                  and file.xxx is the file to be imported.\n"
 "Viac informácií nájdete v manuálovej stránke LyXu"
 
-#: src/lyx_main.C:870
+#: src/lyx_main.C:885
 msgid "Missing directory for -sysdir switch"
 msgstr "Chýba prieèinok pre prepínaè -sysdir!"
 
-#: src/lyx_main.C:880
+#: src/lyx_main.C:895
 msgid "Missing directory for -userdir switch"
 msgstr "Chýba prieèinok pre prepínaè -userdir!"
 
-#: src/lyx_main.C:890
+#: src/lyx_main.C:905
 msgid "Missing command string after --execute switch"
 msgstr "Chýba príkazový re»azec po prepínaèi -x!"
 
-#: src/lyx_main.C:900
+#: src/lyx_main.C:915
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Chýba typ súboru [napr. latex, ps...] po prepínaèi  --export"
 
-#: src/lyx_main.C:912
+#: src/lyx_main.C:927
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Chýba typ súboru [napr. latex, ps...] po prepínaèi --import"
 
-#: src/lyx_main.C:917
+#: src/lyx_main.C:932
 msgid "Missing filename for --import"
 msgstr "Chýba názov súboru pre --import"
 

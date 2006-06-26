@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jean_marck_eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-06-08 13:02+0200\n"
+"POT-Creation-Date: 2006-06-26 20:12+0200\n"
 "PO-Revision-Date: 2006-04-10 16:53+0000\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@zundan.com>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -13855,15 +13855,15 @@ msgstr "ErrefGisakoa: "
 msgid "Opened table"
 msgstr "Irekitako taula"
 
-#: src/insets/insettabular.C:1518
+#: src/insets/insettabular.C:1514
 msgid "Error setting multicolumn"
 msgstr "Errorea zutabe anitza ezartzean"
 
-#: src/insets/insettabular.C:1519
+#: src/insets/insettabular.C:1515
 msgid "You cannot set multicolumn vertically."
 msgstr "Ezin duzu zutabe anitza bertikalki ezarri."
 
-#: src/insets/insettext.C:239
+#: src/insets/insettext.C:229
 msgid "Opened Text Inset"
 msgstr "Testuen barnekoa irekita"
 
@@ -14175,11 +14175,11 @@ msgstr ""
 "LyX berrabiarazi behar duzu eguneratutako \n"
 "dokumentu-klasearen zehaztasunak erabiltzeko."
 
-#: src/lyx_main.C:112
+#: src/lyx_main.C:123
 msgid "Could not read configuration file"
 msgstr "Ezin izan da konfigurazioko fitxategia irakurri"
 
-#: src/lyx_main.C:113
+#: src/lyx_main.C:124
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -14190,28 +14190,28 @@ msgstr ""
 "%1$s.\n"
 "Egiaztatu instalazioa."
 
-#: src/lyx_main.C:123
+#: src/lyx_main.C:134
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: erabiltzaile-direktorioa birkonfiguratzen"
 
-#: src/lyx_main.C:127
+#: src/lyx_main.C:138
 msgid "Done!"
 msgstr "Eginda!"
 
-#: src/lyx_main.C:219
+#: src/lyx_main.C:237
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Komandoaren `%1$s' aukera okerra. Irteten."
 
-#: src/lyx_main.C:390
+#: src/lyx_main.C:408
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/lyx_main.C:500
+#: src/lyx_main.C:515
 msgid "Could not create temporary directory"
 msgstr "Ezin izan da aldi-baterako direktorioa sortu:"
 
-#: src/lyx_main.C:501
+#: src/lyx_main.C:516
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -14222,11 +14222,11 @@ msgstr ""
 "Ziurtatu bide-izen hori existitzen dela eta idazteko \n"
 "baimenak dituela, eta saiatu berriro."
 
-#: src/lyx_main.C:652
+#: src/lyx_main.C:667
 msgid "Missing user LyX directory"
 msgstr "Erabiltzailearen LyX direktorioa falta da"
 
-#: src/lyx_main.C:653
+#: src/lyx_main.C:668
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -14235,37 +14235,37 @@ msgstr ""
 "Existitzen ez den erabiltzailearen LyX direktorioa zehaztu duzu: %1$s.\n"
 "Zure konfigurazioa gordetzeko behar da."
 
-#: src/lyx_main.C:658
+#: src/lyx_main.C:673
 msgid "&Create directory"
 msgstr "&Sortu direktorioa"
 
-#: src/lyx_main.C:659
+#: src/lyx_main.C:674
 msgid "&Exit LyX"
 msgstr "&Irten LyX-etik"
 
-#: src/lyx_main.C:660
+#: src/lyx_main.C:675
 msgid "No user LyX directory. Exiting."
 msgstr "Ez dago erabiltzailearen LyX direktoriorik. Irtetzen."
 
-#: src/lyx_main.C:664
+#: src/lyx_main.C:679
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: %1$s direktorioa sortzen"
 
-#: src/lyx_main.C:670
+#: src/lyx_main.C:685
 msgid "Failed to create directory. Exiting."
 msgstr "Huts egin du direktorioa sortzean. Irtetzen."
 
-#: src/lyx_main.C:819
+#: src/lyx_main.C:834
 msgid "List of supported debug flags:"
 msgstr "Onartutako arazte-ikurren zerrenda:"
 
-#: src/lyx_main.C:823
+#: src/lyx_main.C:838
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Arazte-maila %1$s-ra ezartzen"
 
-#: src/lyx_main.C:834
+#: src/lyx_main.C:849
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -14306,29 +14306,29 @@ msgstr ""
 "\t-version        bertsioa eta konpilatze-informazioaren laburpena\n"
 "Ikus LyX-en man eskuliburua xehetasun gehiagorako (exekutatu: man lyx)."
 
-#: src/lyx_main.C:870
+#: src/lyx_main.C:885
 msgid "Missing directory for -sysdir switch"
 msgstr "'-sysdir' aukeraren direktorioa falta da"
 
-#: src/lyx_main.C:880
+#: src/lyx_main.C:895
 msgid "Missing directory for -userdir switch"
 msgstr "'-userdir' aukeraren direktorioa falta da"
 
-#: src/lyx_main.C:890
+#: src/lyx_main.C:905
 msgid "Missing command string after --execute switch"
 msgstr "'--execute' aukeraren ondoren komandoa falta da"
 
-#: src/lyx_main.C:900
+#: src/lyx_main.C:915
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr ""
 "'--export' aukeraren ondoren fitxategi-mota falta da (adib. latex, ps...)"
 
-#: src/lyx_main.C:912
+#: src/lyx_main.C:927
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr ""
 "'--import' aukeraren ondoren fitxategi-mota falta da (adib. latex, ps...)"
 
-#: src/lyx_main.C:917
+#: src/lyx_main.C:932
 msgid "Missing filename for --import"
 msgstr "'--import' aukeraren fitxategi-izena falta da"
 

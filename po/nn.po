@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nn_1.4pre3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-06-08 13:02+0200\n"
+"POT-Creation-Date: 2006-06-26 20:12+0200\n"
 "PO-Revision-Date: 2006-01-04 21:27+0100\n"
 "Last-Translator: Ingar Pareliussen <ingar_ved_samfundet.no>\n"
 "Language-Team:  <nn@li.org>\n"
@@ -14155,15 +14155,15 @@ msgstr "PrettyRef: "
 msgid "Opened table"
 msgstr "Opna Tabell"
 
-#: src/insets/insettabular.C:1518
+#: src/insets/insettabular.C:1514
 msgid "Error setting multicolumn"
 msgstr "Feil ved multikolonne"
 
-#: src/insets/insettabular.C:1519
+#: src/insets/insettabular.C:1515
 msgid "You cannot set multicolumn vertically."
 msgstr "Du kan ikkje bruke multikolonne loddrett."
 
-#: src/insets/insettext.C:239
+#: src/insets/insettext.C:229
 msgid "Opened Text Inset"
 msgstr "Opna tekst innskot"
 
@@ -14476,11 +14476,11 @@ msgstr ""
 "Du må starte LyX på nytt for å\n"
 "kunne nytte endringane."
 
-#: src/lyx_main.C:112
+#: src/lyx_main.C:123
 msgid "Could not read configuration file"
 msgstr "Kan ikkje lese fila med innstillingar"
 
-#: src/lyx_main.C:113
+#: src/lyx_main.C:124
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -14491,28 +14491,28 @@ msgstr ""
 "%1$s.\n"
 "Sjekk LyX installasjonen din."
 
-#: src/lyx_main.C:123
+#: src/lyx_main.C:134
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: Set opp brukarstig"
 
-#: src/lyx_main.C:127
+#: src/lyx_main.C:138
 msgid "Done!"
 msgstr "Ferdig!"
 
-#: src/lyx_main.C:219
+#: src/lyx_main.C:237
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Feil kommandolinje val:`%1$s'. Farvel."
 
-#: src/lyx_main.C:390
+#: src/lyx_main.C:408
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/lyx_main.C:500
+#: src/lyx_main.C:515
 msgid "Could not create temporary directory"
 msgstr "Klarte ikkje å laga mellombelskatalog"
 
-#: src/lyx_main.C:501
+#: src/lyx_main.C:516
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -14523,11 +14523,11 @@ msgstr ""
 "%1$s. Ver sikker på at stigen eksisterar \n"
 "og er skrivbar og prøv igjen."
 
-#: src/lyx_main.C:652
+#: src/lyx_main.C:667
 msgid "Missing user LyX directory"
 msgstr "Manglar brukerstig for LyX"
 
-#: src/lyx_main.C:653
+#: src/lyx_main.C:668
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -14536,39 +14536,39 @@ msgstr ""
 "Du har sett ein brukarstig for LyX som ikkje eksisterar  %1$s.\n"
 "LyX treng den for å lagre vala dine."
 
-#: src/lyx_main.C:658
+#: src/lyx_main.C:673
 #, fuzzy
 msgid "&Create directory"
 msgstr "&amp;Lag katalog."
 
-#: src/lyx_main.C:659
+#: src/lyx_main.C:674
 #, fuzzy
 msgid "&Exit LyX"
 msgstr "&amp;Skru av LyX."
 
-#: src/lyx_main.C:660
+#: src/lyx_main.C:675
 msgid "No user LyX directory. Exiting."
 msgstr "Ingen brukarstig for LyX. Stoppar."
 
-#: src/lyx_main.C:664
+#: src/lyx_main.C:679
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Lagar katalogen %1$s"
 
-#: src/lyx_main.C:670
+#: src/lyx_main.C:685
 msgid "Failed to create directory. Exiting."
 msgstr "Klarte ikkje å lage katalog. Stoppar."
 
-#: src/lyx_main.C:819
+#: src/lyx_main.C:834
 msgid "List of supported debug flags:"
 msgstr "Liste over val ved avlusing:"
 
-#: src/lyx_main.C:823
+#: src/lyx_main.C:838
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Set nivået til avlusinga til %1$s"
 
-#: src/lyx_main.C:834
+#: src/lyx_main.C:849
 #, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -14609,27 +14609,27 @@ msgstr ""
 "\t-version        samandrag av versjon og byggje info\n"
 "Sjå `man' sida til LyX for meir informasjon."
 
-#: src/lyx_main.C:870
+#: src/lyx_main.C:885
 msgid "Missing directory for -sysdir switch"
 msgstr "Manglar katalog for -sysdir val"
 
-#: src/lyx_main.C:880
+#: src/lyx_main.C:895
 msgid "Missing directory for -userdir switch"
 msgstr "Manglarkatalog for -userdir val"
 
-#: src/lyx_main.C:890
+#: src/lyx_main.C:905
 msgid "Missing command string after --execute switch"
 msgstr "Manglar kommando etter --execute val"
 
-#: src/lyx_main.C:900
+#: src/lyx_main.C:915
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Manglar filtype [t.d. latex, ps...] etter --export val"
 
-#: src/lyx_main.C:912
+#: src/lyx_main.C:927
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Manglar filtype [t.d. latex, ps...] etter --import val"
 
-#: src/lyx_main.C:917
+#: src/lyx_main.C:932
 msgid "Missing filename for --import"
 msgstr "Manglar filnamn for --import"
 
