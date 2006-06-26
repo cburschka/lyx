@@ -247,7 +247,7 @@ void start(string const & batch, vector<string> const & files,
 
 	view.init();
 
-	if (width != -1 && height != -1) {
+	if (width != 0 && height != 0) {
 		view.initFloatingGeometry(QRect(posx, posy, width, height));
 		view.resize(width, height);
 		if (posx != -1 && posy != -1)

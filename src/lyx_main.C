@@ -337,8 +337,8 @@ void LyX::exec2(int & argc, char * argv[])
 		}
 
 		if (geometryOption_) {
-			width = -1;
-			height = -1;
+			width = 0;
+			height = 0;
 		}
 
 		lyx_gui::start(batch_command, files, width, height, posx, posy, maximize);
