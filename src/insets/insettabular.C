@@ -459,7 +459,8 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_MOUSE_PRESS:
 		//lyxerr << "# InsetTabular::MousePress\n" << cur.bv().cursor() << endl;
 
-		if (cmd.button() == mouse_button::button1) {
+		if (cmd.button() == mouse_button::button1 
+		    || cmd.button() == mouse_button::button3) {
 			cur.selection() = false;
 			setCursorFromCoordinates(cur, cmd.x, cmd.y);
 			cur.resetAnchor();
@@ -470,12 +471,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		if (cmd.button() == mouse_button::button2) {
 			cmd = FuncRequest(LFUN_PASTESELECTION, "paragraph");
 			doDispatch(cur, cmd);
-			break;
 		}
-
-		if (cmd.button() == mouse_button::button3)
-			bvcur.setCursor(cur);
-
 		break;
 
 	case LFUN_MOUSE_MOTION:
