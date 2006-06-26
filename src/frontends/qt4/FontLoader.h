@@ -97,6 +97,4 @@ private:
 	QLFontInfo * fontinfo_[LyXFont::NUM_FAMILIES][2][4][10];
 };
 
-extern FontLoader fontloader;
-
 #endif // QFONT_LOADER_H

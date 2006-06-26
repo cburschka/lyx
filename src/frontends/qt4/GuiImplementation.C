@@ -10,16 +10,21 @@
  * Full author contact details are available in file CREDITS.
  */
 
+// This include must be declared before everything else because
+// of boost/Qt/LyX clash...
+#include "GuiView.h"
+
 #include "GuiImplementation.h"
 #include "GuiWorkArea.h"
-#include "GuiView.h"
+
+#include "BufferView.h"
 
 using boost::shared_ptr;
 
 namespace lyx {
 namespace frontend {
 
-GuiImplementation::GuiImplementation(GuiView & owner): owner_(owner), max_id_(0)
+GuiImplementation::GuiImplementation(): max_view_id_(0), max_wa_id_(0)
 {
 }
 
@@ -30,19 +35,56 @@ Clipboard& GuiImplementation::clipboard()
 }
 
 
-int GuiImplementation::newWorkArea(int w, int h)
+int GuiImplementation::newView(unsigned int /*w*/, unsigned int /*h*/)
 {
-	size_t const id = max_id_;
-	++max_id_;
-	work_areas_[id].reset(new GuiWorkArea(owner_, w, h));
+	size_t const id = max_view_id_;
+	++max_view_id_;
+
+	views_[id].reset(new GuiView(*this));
+
 	return id;
 }
+
+
+LyXView& GuiImplementation::view(int id)
+{
+	BOOST_ASSERT(views_.find(id) != views_.end());
+
+	return *views_[id].get();
+}
+
+
+void GuiImplementation::destroyView(int id)
+{
+	views_.erase(id);
+}
+
+
+int GuiImplementation::newWorkArea(unsigned int w, unsigned int h, int view_id)
+{
+	size_t const id = max_wa_id_;
+	++max_wa_id_;
+
+	GuiView * view = views_[view_id].get();
+
+	work_areas_[id].reset(new GuiWorkArea(w, h, view));
+
+	// FIXME BufferView creation should be independant of WorkArea creation
+	buffer_views_[id].reset(new BufferView(view, work_areas_[id].get()));
+	work_areas_[id]->setBufferView(buffer_views_[id].get());
+	view->setBufferView(buffer_views_[id].get());
+
+	view->mainWidget()->setCentralWidget(work_areas_[id].get());
+
+	guiCursor().connect(work_areas_[id].get());
+
+	return id;
+}
+
 
 WorkArea& GuiImplementation::workArea(int id)
 {
 	BOOST_ASSERT(work_areas_.find(id) != work_areas_.end());
-
-	guiCursor().connect(work_areas_[id].get());
 
 	return *work_areas_[id].get();
 }

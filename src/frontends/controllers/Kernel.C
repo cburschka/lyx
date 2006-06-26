@@ -49,7 +49,7 @@ void Kernel::disconnect(string const & name) const
 
 bool Kernel::isBufferAvailable() const
 {
-	if (!lyxview_.view().get())
+	if (!lyxview_.view())
 		return false;
 	return lyxview_.view()->available();
 }
@@ -90,13 +90,13 @@ void Kernel::redrawGUI() const
 
 BufferView * Kernel::bufferview()
 {
-	return lyxview_.view().get();
+	return lyxview_.view();
 }
 
 
 BufferView const * Kernel::bufferview() const
 {
-	return lyxview_.view().get();
+	return lyxview_.view();
 }
 
 

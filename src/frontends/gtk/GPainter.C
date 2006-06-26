@@ -232,7 +232,7 @@ void GPainter::text(int x, int y, char const * s, size_t ls, LyXFont const & f)
 		XftFont * fontS = getXftFont(smallfont);
 		char c;
 		int tmpx = x;
-		for (int i = 0; i < ls; ++i) {
+		for (unsigned int i = 0; i < ls; ++i) {
 			c = lyx::support::uppercase(s[i]);
 			if (c != s[i]) {
 				XftDrawString8(draw, xftClr, fontS, tmpx, y,

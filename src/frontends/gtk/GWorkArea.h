@@ -58,7 +58,7 @@ private:
 class GWorkArea : public sigc::trackable {
 public:
 	GWorkArea(LyXView & owner, int width, int height);
-	~GWorkArea();
+	virtual ~GWorkArea();
 
 	virtual Painter & getPainter();
 	///
@@ -97,7 +97,7 @@ private:
 	bool onKeyPress(GdkEventKey * event);
 	void onClipboardGet(Gtk::SelectionData & selection_data, guint info);
 	void onClipboardClear();
-        LyXView & view_;
+	LyXView & view_;
 	Gtk::HBox hbox_;
 	Gtk::DrawingArea workArea_;
 	Gtk::VScrollbar vscrollbar_;

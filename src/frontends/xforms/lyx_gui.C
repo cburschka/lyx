@@ -16,6 +16,7 @@
 #include "xfont_loader.h"
 #include "xforms_helpers.h"
 #include "xformsImage.h"
+#include "GuiImplementation.h"
 #include "XFormsView.h"
 
 #include "bufferlist.h"
@@ -54,6 +55,8 @@ using lyx::frontend::fontloader;
 using lyx::frontend::lyxColorHandler;
 using lyx::frontend::LyXColorHandler;
 using lyx::frontend::XformsColor;
+using lyx::frontend::Gui;
+using lyx::frontend::GuiImplementation;
 using lyx::frontend::XFormsView;
 
 namespace os = lyx::support::os;
@@ -280,25 +283,30 @@ void start(string const & batch, vector<string> const & files,
 	lyxerr[Debug::GUI] << "Creating view: " << width << 'x' << height
 			   << '+' << posx << '+' << posy << endl;
 
-	boost::shared_ptr<XFormsView> view(new XFormsView(width, height));
-	LyX::ref().addLyXView(view);
+	GuiImplementation * gui = new GuiImplementation;
 
-	view->show(posx == -1 ? (WidthOfScreen(s) - width) / 2 : posx, 
+	int view_id = gui->newView(width, height);
+	XFormsView & view = static_cast<XFormsView &> (gui->view(view_id));
+	int workArea_id_ = gui->newWorkArea(width, height, 0);
+
+	LyX::ref().addLyXView(&view);
+
+	view.show(posx == -1 ? (WidthOfScreen(s) - width) / 2 : posx, 
 		       posy == -1 ? (HeightOfScreen(s) - height) / 2 : posy, "LyX");
-	view->init();
+	view.init();
 
 	// FIXME: some code below needs moving
 
-	lyxserver = new LyXServer(&view->getLyXFunc(), lyxrc.lyxpipes);
-	lyxsocket = new LyXServerSocket(&view->getLyXFunc(),
+	lyxserver = new LyXServer(&view.getLyXFunc(), lyxrc.lyxpipes);
+	lyxsocket = new LyXServerSocket(&view.getLyXFunc(),
 			  os::internal_path(package().temp_dir() + "/lyxsocket"));
 
 	for_each(files.begin(), files.end(),
-		bind(&BufferView::loadLyXFile, view->view(), _1, true));
+		bind(&BufferView::loadLyXFile, view.view(), _1, true));
 
 	// handle the batch commands the user asked for
 	if (!batch.empty())
-		view->getLyXFunc().dispatch(lyxaction.lookupFunc(batch));
+		view.getLyXFunc().dispatch(lyxaction.lookupFunc(batch));
 
 	// enter the event loop
 	while (!finished) {

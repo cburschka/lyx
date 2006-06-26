@@ -82,7 +82,7 @@ GMiniBuffer::GMiniBuffer(GView * view, ControlCommandBuffer & control) :
 	focusTimer_->timeout.connect(
 		boost::bind(&GMiniBuffer::focusTimeout, this));
 	idleTimer_->start();
-	messageMode();
+	//messageMode();
 }
 
 

@@ -73,7 +73,7 @@ void XScreen::setCursorColor()
 }
 
 
-void XScreen::showCursor(int x, int y, int h, Cursor_Shape shape)
+void XScreen::showCursor(int x, int y, int h, CursorShape shape)
 {
 	// Update the cursor color. (a little slow doing it like this ??)
 	setCursorColor();

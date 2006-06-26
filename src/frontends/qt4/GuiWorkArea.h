@@ -14,15 +14,10 @@
 #ifndef WORKAREA_H
 #define WORKAREA_H
 
-#if (defined(Q_WS_X11) && QT_VERSION >= 0x030200)
-#define USE_INPUT_METHODS 1
-#endif
-
 #ifdef emit
 #undef emit
 #endif
 
-#include "frontends/LyXView.h"
 #include "frontends/WorkArea.h"
 
 #include "QLPainter.h"
@@ -51,6 +46,8 @@ class QMouseEvent;
 
 namespace lyx {
 namespace frontend {
+
+class GuiView;
 
 /// for emulating triple click
 class double_click {
@@ -104,7 +101,7 @@ class GuiWorkArea: public QAbstractScrollArea, public WorkArea {
 
 public:
 
-	GuiWorkArea(LyXView & owner, int w, int h);
+	GuiWorkArea(int width, int height, QWidget * parent, BufferView * buffer_view = 0);
 
 	virtual ~GuiWorkArea();
 	/// return the width of the content pane
@@ -138,14 +135,12 @@ public:
 	QPixmap is implicitely shared so no need to pass by reference.
 	*/
 	void drawScreen(int x, int y, QPixmap pixmap);
-	
-	LyXView & view() { return view_; }
 
 	/// copies specified area of pixmap to screen
 	virtual void expose(int x, int y, int exp_width, int exp_height);
 
 	/// paint the cursor and store the background
-	virtual void showCursor(int x, int y, int h, Cursor_Shape shape);
+	virtual void showCursor(int x, int y, int h, CursorShape shape);
 
 	/// hide the cursor
 	virtual void removeCursor();
@@ -169,11 +164,9 @@ protected:
 	/// key press
 	void keyPressEvent(QKeyEvent * e);
 
-#if USE_INPUT_METHODS
 protected:
 	/// IM events
 	void inputMethodEvent(QInputMethodEvent * e);
-#endif
 
 public slots:
 
@@ -190,9 +183,6 @@ public slots:
 	void adjustViewWithScrollBar(int action = 0);
 
 private:
-        ///
-        LyXView & view_;
-        
 	/// Buffer view width.
 	int workWidth_;
 
@@ -244,7 +234,7 @@ private:
 	///
 	QColor cursor_color_;
 	///
-	Cursor_Shape cursor_shape_;
+	CursorShape cursor_shape_;
 };
 
 } // namespace frontend

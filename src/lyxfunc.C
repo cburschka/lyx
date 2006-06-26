@@ -724,7 +724,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 	dispatch_buffer.erase();
 
 	// redraw the screen at the end (first of the two drawing steps).
-	//This is done unless explicitely requested otherwise 
+	//This is done unless explicitely requested otherwise
 	bool update = true;
 	// also do the second redrawing step. Only done if requested.
 	bool updateforce = false;
@@ -1157,7 +1157,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 			view()->center();
 			// see BufferView_pimpl::center()
-			view()->updateScrollbar();
 			break;
 		}
 
@@ -1950,7 +1949,7 @@ string const LyXFunc::viewStatusMessage()
 BufferView * LyXFunc::view() const
 {
 	BOOST_ASSERT(owner);
-	return owner->view().get();
+	return owner->view();
 }
 
 

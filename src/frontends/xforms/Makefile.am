@@ -158,6 +158,7 @@ libxforms_la_SOURCES = \
 	FormWrap.h \
 	GuiClipboard.h \
 	GuiImplementation.h \
+	GuiImplementation.C \
 	GuiWorkArea.h \
 	LayoutEngine.C \
 	LayoutEngine.h \

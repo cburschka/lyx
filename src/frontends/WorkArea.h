@@ -19,8 +19,6 @@
 #include "frontends/key_state.h"
 #include "frontends/LyXKeySym.h"
 
-class LyXView;
-class FuncRequest;
 class BufferView;
 class ViewMetricsInfo;
 
@@ -38,9 +36,11 @@ class Painter;
  */
 class WorkArea {
 public:
-	WorkArea(LyXView & owner, int w, int h);
+	WorkArea(BufferView * buffer_view = 0);
 
 	virtual ~WorkArea() {}
+
+	void setBufferView(BufferView * buffer_view);
 
 	/// return the painter object for this work area
 	virtual Painter & getPainter() = 0;
@@ -66,7 +66,7 @@ public:
 	void greyOut();
 
 	/// paint the cursor and store the background
-	virtual void showCursor(int x, int y, int h, Cursor_Shape shape) = 0;
+	virtual void showCursor(int x, int y, int h, CursorShape shape) = 0;
 
 	/// hide the cursor
 	virtual void removeCursor() = 0;
@@ -74,6 +74,9 @@ public:
 protected:
 	/// cause the display of the given area of the work area
 	virtual void expose(int x, int y, int w, int h) = 0;
+
+	///
+	BufferView * buffer_view_;
 
 private:
 	///

@@ -48,6 +48,7 @@
 #include "insets/insetcommand.h" // ChangeRefs
 #include "insets/insettext.h"
 
+
 using lyx::support::bformat;
 
 using lyx::cap::setSelectionRange;
@@ -61,8 +62,8 @@ using std::vector;
 extern BufferList bufferlist;
 
 
-BufferView::BufferView(LyXView * owner, int width, int height)
-	: pimpl_(new Pimpl(*this, owner, width, height))
+BufferView::BufferView(LyXView * owner, lyx::frontend::WorkArea * workArea)
+	: pimpl_(new Pimpl(*this, owner, workArea))
 {}
 
 
@@ -147,6 +148,12 @@ void BufferView::updateScrollbar()
 }
 
 
+ScrollbarParameters const & BufferView::scrollbarParameters() const
+{
+	return pimpl_->scrollbarParameters();
+}
+
+
 void BufferView::scrollDocView(int value)
 {
 	pimpl_->scrollDocView(value);
@@ -195,7 +202,7 @@ void BufferView::switchKeyMap()
 
 int BufferView::workWidth() const
 {
-	return pimpl_->workarea().width();
+	return pimpl_->width();
 }
 
 
@@ -241,9 +248,9 @@ void BufferView::selectionLost()
 }
 
 
-void BufferView::workAreaResize()
+void BufferView::workAreaResize(int width, int height)
 {
-        pimpl_->workAreaResize();
+        pimpl_->workAreaResize(width, height);
 }
 
 
@@ -339,7 +346,7 @@ void BufferView::haveSelection(bool sel)
 
 int BufferView::workHeight() const
 {
-	return pimpl_->workarea().height();
+	return pimpl_->height();
 }
 
 

@@ -213,7 +213,6 @@ bool LyXText::cursorPrevious(LCursor & cur)
 		updated |= cursorUp(cur);
 	}
 
-	cur.bv().updateScrollbar();
 	finishUndo();
 	return updated;
 }
@@ -236,7 +235,6 @@ bool LyXText::cursorNext(LCursor & cur)
 		updated |= cursorDown(cur);
 	}
 
-	cur.bv().updateScrollbar();
 	finishUndo();
 	return updated;
 }
@@ -1167,7 +1165,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 		cur.resetAnchor();
 		moveCursor(cur, false);
-		bv->updateScrollbar();
 		break;
 	}
 

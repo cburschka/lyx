@@ -57,7 +57,7 @@ class GuiCursor;
 class BufferView::Pimpl : public boost::signals::trackable {
 public:
 	///
-	Pimpl(BufferView & bv, LyXView * owner, int width, int height);
+	Pimpl(BufferView & bv, LyXView * owner, lyx::frontend::WorkArea * workArea);
 	///
 	lyx::frontend::Painter & painter() const;
 	///
@@ -75,9 +75,11 @@ public:
 	///
 	bool loadLyXFile(std::string const &, bool);
 	///
-	void workAreaResize();
+	void workAreaResize(int width, int height);
 	///
 	void updateScrollbar();
+	///
+	ScrollbarParameters const & scrollbarParameters() const;
 	///
 	void scrollDocView(int value);
 	/// Wheel mouse scroll, move by multiples of text->defaultRowHeight().
@@ -124,7 +126,25 @@ public:
 	/// the clipboard
 	lyx::frontend::Clipboard & clipboard() const;
 
+	/// Width and height of the BufferView in Pixels
+	/**
+	This is set externally by the workAreaResize method.
+	*/
+	int width() const;
+	/// Height of the BufferView in Pixels
+	/**
+	This is set externally by the workAreaResize method.
+	*/
+	int height() const;
+
 private:
+	///
+	int width_;
+	///
+	int height_;
+	///
+	ScrollbarParameters scrollbarParameters_;
+
 	/// An error list (replaces the error insets)
 	ErrorList errorlist_;
 	/// add an error to the list
@@ -192,7 +212,6 @@ private:
 	void menuInsertLyXFile(std::string const & filen);
 
 	lyx::frontend::WorkArea * workArea_;
-	int workAreaId_;
 
 	/// this is used to handle XSelection events in the right manner
 	struct {

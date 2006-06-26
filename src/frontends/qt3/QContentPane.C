@@ -337,15 +337,17 @@ void QContentPane::resizeEvent(QResizeEvent *)
 	}
 
 	pixmap_->resize(width(), height());
-        wa_->view().view()->workAreaResize();
+	wa_->view().view()->workAreaResize(width(), height());
 }
 
 
 void QContentPane::paintEvent(QPaintEvent * e)
 {
+	BufferView * buffer_view_ = wa_->view().view();
+
 	if (!pixmap_.get()) {
 		pixmap_.reset(new QPixmap(width(), height()));
-                wa_->view().view()->workAreaResize();
+		buffer_view_->workAreaResize(width(), height());
 		return;
 	}
 
@@ -354,6 +356,14 @@ void QContentPane::paintEvent(QPaintEvent * e)
 	QPainter q(this);
 	q.drawPixmap(QPoint(r.x(), r.y()),
 		*pixmap_.get(), r);
+
+	buffer_view_->updateScrollbar();
+	ScrollbarParameters const & scroll_ = buffer_view_->scrollbarParameters();
+
+	wa_->scrollbar_->setTracking(false);
+	wa_->setScrollbarParams(scroll_.height, scroll_.position,
+		scroll_.lineScrollHeight);
+	wa_->scrollbar_->setTracking(true);
 }
 
 

@@ -59,6 +59,7 @@
 using lyx::support::ltrim;
 using lyx::support::package;
 
+using lyx::frontend::GuiImplementation;
 using lyx::frontend::GuiView;
 using lyx::frontend::Application;
 
@@ -77,6 +78,8 @@ using std::string;
 // FIXME: wrong place !
 LyXServer * lyxserver;
 LyXServerSocket * lyxsocket;
+
+lyx::frontend::Application * theApp;
 
 namespace {
 
@@ -132,6 +135,8 @@ void exec(int & argc, char * argv[])
 #else
 	Application app(argc, argv);
 #endif
+
+	theApp = &app;
 
 
 	// install translation file for Qt built-in dialogs
@@ -194,14 +199,17 @@ void start(string const & batch, vector<string> const & files,
 	// this can't be done before because it needs the Languages object
 	initEncodings();
 
-	boost::shared_ptr<GuiView> view_ptr(new GuiView);
+	int view_id = theApp->gui().newView(width, height);
+	GuiView & view = static_cast<GuiView &> (theApp->gui().view(view_id));
 
-	LyX::ref().addLyXView(view_ptr);
+	// FIXME: for now we assume that there is only one LyXView with id = 0.
+	int workArea_id_ = theApp->gui().newWorkArea(width, height, 0);
+	//WorkArea * workArea_ = & theApp->gui().workArea(workArea_id_);
 
-	GuiView & view = *view_ptr.get();
+	LyX::ref().addLyXView(&view);
 
 	view.init();
-
+		
 	// only true when the -geometry option was NOT used
 	if (width != -1 && height != -1) {
 		if (posx != -1 && posy != -1) {
@@ -317,13 +325,13 @@ void update_color(LColor_color)
 
 void update_fonts()
 {
-	fontloader.update();
+	theApp->fontLoader().update();
 }
 
 
 bool font_available(LyXFont const & font)
 {
-	return fontloader.available(font);
+	return theApp->fontLoader().available(font);
 }
 
 

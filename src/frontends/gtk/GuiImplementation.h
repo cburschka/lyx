@@ -23,13 +23,8 @@
 
 #include <boost/shared_ptr.hpp>
 
-#include <map>
-
 namespace lyx {
 namespace frontend {
-
-typedef GScreen FScreen;
-typedef GWorkArea FWorkArea;
 
 /**
  * The Gui class is the interface to all GTK components.
@@ -37,7 +32,7 @@ typedef GWorkArea FWorkArea;
 class GuiImplementation: public lyx::frontend::Gui
 {
 public:
-	GuiImplementation(LyXView & owner): owner_(owner)
+	GuiImplementation()
 	{
 	}
 
@@ -45,33 +40,31 @@ public:
 	{
 	}
 
-	lyx::frontend::Clipboard& clipboard()
+	lyx::frontend::Clipboard & clipboard()
 	{
 		return *clipboard_;
 	}
 
-	int newWorkArea(int w, int h)
+	int newView(unsigned int w, unsigned int h);
+
+	LyXView & view(int /*id*/)
 	{
-		old_work_area_.reset(new FWorkArea(owner_, w, h));
-		old_screen_.reset(new FScreen(*old_work_area_.get()));
-		work_area_.reset(new GuiWorkArea(owner_, w, h, old_screen_.get(), old_work_area_.get()));
-		clipboard_.reset(new GuiClipboard(old_work_area_.get()));
-		guiCursor().connect(work_area_.get());
-		return 0;
+		return *view_;
 	}
 
-	lyx::frontend::WorkArea& workArea(int id)
+	void destroyView(int /*id*/)
+	{
+		view_.reset();
+	}
+
+	int newWorkArea(unsigned int w, unsigned int h, int /*view_id*/);
+
+	lyx::frontend::WorkArea & workArea(int /*id*/)
 	{
 		return *work_area_;
 	}
 
-	void destroyWorkArea(int id)
-	{
-		clipboard_.reset();
-		work_area_.reset();
-		old_work_area_.reset();
-		old_screen_.reset();
-	}
+	void destroyWorkArea(int /*id*/);
 
 private:
 	///
@@ -79,11 +72,11 @@ private:
 	///
 	boost::shared_ptr<GuiWorkArea> work_area_;
 	///
-	boost::shared_ptr<FWorkArea> old_work_area_;
+	boost::shared_ptr<LyXView> view_;
 	///
-	boost::shared_ptr<FScreen> old_screen_;
+	boost::shared_ptr<GWorkArea> old_work_area_;
 	///
-	LyXView & owner_;
+	boost::shared_ptr<GScreen> old_screen_;
 };
 
 } // namespace frontend

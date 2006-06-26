@@ -12,7 +12,6 @@
 #ifndef LyXView_H
 #define LyXView_H
 
-#include "GuiImplementation.h"
 #include "LayoutEngine.h"
 #include "forms_fwd.h"
 
@@ -44,7 +43,7 @@ public:
 	};
 
 	/// create a main window of the given dimensions
-	XFormsView(int w, int h);
+	XFormsView(Gui & owner, int w, int h);
 
 	~XFormsView();
 
@@ -83,9 +82,6 @@ public:
 	// returns true if this view has the focus.
 	virtual bool hasFocus() const;
 
-	///
-	Gui & gui() { return frontend_; }
-
 private:
 	/**
 	 * setWindowTitle - set title of window
@@ -120,8 +116,6 @@ private:
 	Pixmap icon_pixmap_;
 	///
 	Pixmap icon_mask_;
-	///
-	GuiImplementation frontend_;
 };
 
 } // namespace frontend

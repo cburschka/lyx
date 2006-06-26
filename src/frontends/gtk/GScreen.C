@@ -32,6 +32,7 @@
 
 #include "frontends/font_metrics.h"
 #include "frontends/Painter.h"
+#include "frontends/GuiCursor.h"
 
 #include "insets/insettext.h"
 
@@ -64,7 +65,7 @@ void GScreen::setCursorColor(Glib::RefPtr<Gdk::GC> gc)
 }
 
 
-void GScreen::showCursor(int x, int y, int h, Cursor_Shape shape)
+void GScreen::showCursor(int x, int y, int h, CursorShape shape)
 {
 	// Update the cursor color.
 	setCursorColor(owner_.getGC());

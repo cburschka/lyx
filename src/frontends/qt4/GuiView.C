@@ -34,6 +34,7 @@
 #include <boost/bind.hpp>
 
 #include "GuiView.h"
+#include "GuiImplementation.h"
 #include "QLMenubar.h"
 #include "FontLoader.h"
 #include "QCommandBuffer.h"
@@ -45,14 +46,14 @@
 #include <QToolBar>
 #include <QCloseEvent>
 #include <QAction>
+//#include <QMenu>
+//#include <QMenuBar>
 
 #include "support/lstrings.h"
 
 
 using std::string;
 using std::endl;
-
-FontLoader fontloader;
 
 namespace lyx {
 
@@ -68,26 +69,15 @@ int const statusbar_timer_value = 3000;
 } // namespace anon
 
 
-GuiView::GuiView()
-	: QMainWindow(), LyXView(), commandbuffer_(0), frontend_(*this)
+GuiView::GuiView(Gui & owner)
+	: QMainWindow(), LyXView(owner), commandbuffer_(0)
 {
 	mainWidget_ = this;
 
 //	setToolButtonStyle(Qt::ToolButtonIconOnly);
 //	setIconSize(QSize(12,12));
 
-	// -geometry could set the width and hight
-	bufferview_.reset(new BufferView(this, geometry().width(), geometry().height()));
-
-	menubar_.reset(new QLMenubar(this, menubackend));
-	connect(menuBar(), SIGNAL(triggered(QAction *)), this, SLOT(updateMenu(QAction *)));
-
-	getToolbars().init();
-
-	statusBar()->setSizeGripEnabled(false);
-
-	view_state_changed.connect(boost::bind(&GuiView::update_view_state, this));
-	connect(&statusbar_timer_, SIGNAL(timeout()), this, SLOT(update_view_state_qt()));
+//	bufferview_.reset(new BufferView(this, width, height));
 
 #ifndef Q_WS_MACX
 	//  assign an icon to main form. We do not do it under Qt/Mac,
@@ -96,14 +86,30 @@ GuiView::GuiView()
 	if (!iconname.empty())
 		setWindowIcon(QPixmap(toqstr(iconname)));
 #endif
-
-	// make sure the buttons are disabled if needed
-	updateToolbars();
 }
 
 
 GuiView::~GuiView()
 {
+}
+
+
+void GuiView::init()
+{
+	menubar_.reset(new QLMenubar(this, menubackend));
+	QObject::connect(menuBar(), SIGNAL(triggered(QAction *)), this, SLOT(updateMenu(QAction *)));
+
+	getToolbars().init();
+
+	statusBar()->setSizeGripEnabled(false);
+
+	view_state_changed.connect(boost::bind(&GuiView::update_view_state, this));
+	QObject::connect(&statusbar_timer_, SIGNAL(timeout()), this, SLOT(update_view_state_qt()));
+
+	// make sure the buttons are disabled if needed
+	updateToolbars();
+	
+	LyXView::init();
 }
 
 void GuiView::updateMenu(QAction *action)

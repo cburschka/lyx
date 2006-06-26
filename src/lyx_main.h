@@ -58,7 +58,7 @@ public:
 	lyx::Session & session();
 	lyx::Session const & session() const;
 
-	void addLyXView(boost::shared_ptr<LyXView> const & lyxview);
+	void addLyXView(LyXView * lyxview);
 
 	/** redraw \c inset in all the BufferViews in which it is currently
 	 *  visible. If successful return a pointer to the owning Buffer.
@@ -105,10 +105,10 @@ private:
 	/// lyx session, containing lastfiles, lastfilepos, and lastopened
 	boost::scoped_ptr<lyx::Session> session_;
 	///
-	typedef std::list<boost::shared_ptr<LyXView> > ViewList;
+	typedef std::list<LyXView *> ViewList;
 	ViewList views_;
 
-	/// 
+	///
 	bool geometryOption_;
 
 };

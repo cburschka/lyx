@@ -15,6 +15,7 @@
 #include "frontends/lyx_gui.h"
 
 #include "FontLoader.h"
+#include "Application.h"
 
 #include "language.h"
 
@@ -28,7 +29,7 @@ int maxAscent(LyXFont const & f)
 {
 	if (!lyx_gui::use_gui)
 		return 1;
-	return fontloader.metrics(f).ascent();
+	return theApp->fontLoader().metrics(f).ascent();
 }
 
 
@@ -38,7 +39,7 @@ int maxDescent(LyXFont const & f)
 		return 1;
 	// We add 1 as the value returned by QT is different than X
 	// See http://doc.trolltech.com/2.3/qfontmetrics.html#200b74
-	return fontloader.metrics(f).descent() + 1;
+	return theApp->fontLoader().metrics(f).descent() + 1;
 }
 
 
@@ -46,7 +47,7 @@ int ascent(char c, LyXFont const & f)
 {
 	if (!lyx_gui::use_gui)
 		return 1;
-	QRect const & r = fontloader.metrics(f).boundingRect(c);
+	QRect const & r = theApp->fontLoader().metrics(f).boundingRect(c);
 	// Qt/Win 3.2.1nc (at least) corrects the GetGlyphOutlineA|W y
 	// value by the height: (x, -y-height, width, height).
 	// Other versions return: (x, -y, width, height)
@@ -62,7 +63,7 @@ int descent(char c, LyXFont const & f)
 {
 	if (!lyx_gui::use_gui)
 		return 1;
-	QRect const & r = fontloader.metrics(f).boundingRect(c);
+	QRect const & r = theApp->fontLoader().metrics(f).boundingRect(c);
 	// Qt/Win 3.2.1nc (at least) corrects the GetGlyphOutlineA|W y
 	// value by the height: (x, -y-height, width, height).
 	// Other versions return: (x, -y, width, height)
@@ -78,7 +79,7 @@ int lbearing(char c, LyXFont const & f)
 {
 	if (!lyx_gui::use_gui)
 		return 1;
-	return fontloader.metrics(f).leftBearing(c);
+	return theApp->fontLoader().metrics(f).leftBearing(c);
 }
 
 
@@ -86,7 +87,7 @@ int rbearing(char c, LyXFont const & f)
 {
 	if (!lyx_gui::use_gui)
 		return 1;
-	QFontMetrics const & m = fontloader.metrics(f);
+	QFontMetrics const & m = theApp->fontLoader().metrics(f);
 
 	// Qt rbearing is from the right edge of the char's width().
 	return m.width(c) - m.rightBearing(c);
@@ -111,8 +112,8 @@ int smallcapswidth(char const * s, size_t ls, LyXFont const & f)
 	LyXFont smallfont = f;
 	smallfont.decSize().decSize().setShape(LyXFont::UP_SHAPE);
 
-	QFontMetrics const & qm = fontloader.metrics(f);
-	QFontMetrics const & qsmallm = fontloader.metrics(smallfont);
+	QFontMetrics const & qm = theApp->fontLoader().metrics(f);
+	QFontMetrics const & qsmallm = theApp->fontLoader().metrics(smallfont);
 
 	Encoding const * encoding = fontencoding(f);
 
@@ -139,7 +140,7 @@ int width(char const * s, size_t ls, LyXFont const & f)
 		return smallcapswidth(s, ls, f);
 
 	Encoding const * encoding = fontencoding(f);
-	QLFontInfo & fi = fontloader.fontinfo(f);
+	QLFontInfo & fi = theApp->fontLoader().fontinfo(f);
 
 	if (ls == 1)
 		return fi.width(encoding->ucs(s[0]));
@@ -164,7 +165,7 @@ int signedWidth(string const & s, LyXFont const & f)
 void rectText(string const & str, LyXFont const & f,
 	int & w, int & ascent, int & descent)
 {
-	QFontMetrics const & m = fontloader.metrics(f);
+	QFontMetrics const & m = theApp->fontLoader().metrics(f);
 	static int const d = 2;
 	w = width(str, f) + d * 2 + 2;
 	ascent = m.ascent() + d;
@@ -176,7 +177,7 @@ void rectText(string const & str, LyXFont const & f,
 void buttonText(string const & str, LyXFont const & f,
 	int & w, int & ascent, int & descent)
 {
-	QFontMetrics const & m = fontloader.metrics(f);
+	QFontMetrics const & m = theApp->fontLoader().metrics(f);
 	static int const d = 3;
 	w = width(str, f) + d * 2 + 2;
 	ascent = m.ascent() + d;

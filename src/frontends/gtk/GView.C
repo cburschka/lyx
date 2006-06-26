@@ -57,7 +57,7 @@ void add_el(Gtk::Box::BoxList & list, Gtk::Box & box, bool shrink)
 } // namespace anon
 
 
-GView::GView() : frontend_(*this)
+GView::GView(Gui & owner) : LyXView(owner)
 {
 	// The physical store for the boxes making up the layout.
 	box_store_.push_back(BoxPtr(new Gtk::VBox));
@@ -93,7 +93,6 @@ GView::GView() : frontend_(*this)
 	// Define the components making up the window.
 	menubar_.reset(new GMenubar(this, menubackend));
 	getToolbars().init();
-	bufferview_.reset(new BufferView(this, 300, 300));
 	minibuffer_.reset(new GMiniBuffer(this, *controlcommand_));
 
 	focus_command_buffer.connect(
@@ -119,7 +118,7 @@ GView::GView() : frontend_(*this)
 	}
 	set_default_size(width, height);
 	// Make sure the buttons are disabled if needed.
-	updateToolbars();
+	//updateToolbars();
 	string const iconName =
 		support::libFileSearch("images", "lyx", "xpm");
 	if (!iconName.empty())

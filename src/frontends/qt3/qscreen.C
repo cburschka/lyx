@@ -60,7 +60,7 @@ void QScreen::expose(int x, int y, int w, int h)
 }
 
 
-void QScreen::showCursor(int x, int y, int h, Cursor_Shape shape)
+void QScreen::showCursor(int x, int y, int h, CursorShape shape)
 {
 	if (!qApp->focusWidget())
 		return;

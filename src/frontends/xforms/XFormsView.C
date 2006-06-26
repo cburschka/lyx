@@ -71,10 +71,10 @@ void print_metrics(std::ostream & os, std::string const & name, Box const & box)
 }
 
 
-XFormsView::XFormsView(int width, int height)
-	: LyXView(),
+XFormsView::XFormsView(Gui & owner, int width, int height)
+	: LyXView(owner),
 	  window_(Box(width, height)),
-	  icon_pixmap_(0), icon_mask_(0), frontend_(*this)
+	  icon_pixmap_(0), icon_mask_(0)
 {
 	int const air = 2;
 
@@ -108,7 +108,6 @@ XFormsView::XFormsView(int width, int height)
 
 	menubar_.reset(new XFormsMenubar(this, menubackend));
 	getToolbars().init();
-	bufferview_.reset(new BufferView(this, width, height));
 	minibuffer_.reset(new XMiniBuffer(*this, *controlcommand_));
 
 	//  Assign an icon to the main form.
@@ -138,7 +137,7 @@ XFormsView::XFormsView(int width, int height)
 		focus_command_buffer.connect(boost::bind(&XMiniBuffer::focus, minibuffer_.get()));
 
 	// Make sure the buttons are disabled if needed.
-	updateToolbars();
+	//updateToolbars();
 	redraw_con =
 		getDialogs().redrawGUI().connect(boost::bind(&XFormsView::redraw, this));
 }

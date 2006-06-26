@@ -13,9 +13,9 @@
 #ifndef XSCREEN_H
 #define XSCREEN_H
 
-#include "frontends/GuiCursor.h"
-
 #include <X11/Xlib.h> // for Pixmap, GC
+
+#include "frontends/GuiCursor.h"
 
 class WorkArea;
 
@@ -44,7 +44,7 @@ public:
 	virtual void expose(int x, int y, int w, int h);
 
 	/// paint the cursor and store the background
-	virtual void showCursor(int x, int y, int h, Cursor_Shape shape);
+	virtual void showCursor(int x, int y, int h, CursorShape shape);
 
 	/// hide the cursor
 	virtual void removeCursor();

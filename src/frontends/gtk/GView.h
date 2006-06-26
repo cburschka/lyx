@@ -16,8 +16,6 @@
 
 #include "frontends/LyXView.h"
 
-#include "GuiImplementation.h"
-
 #include <gtkmm.h>
 
 #include <map>
@@ -37,7 +35,7 @@ public:
 		Center
 	};
 
-	GView();
+	GView(Gui & owner);
 	~GView();
 
 	Gtk::Box & getBox(Position pos);
@@ -58,9 +56,6 @@ public:
 	// returns true if this view has the focus.
 	virtual bool hasFocus() const;
 
-	///
-	Gui & gui() { return frontend_; }
-
 private:
 	void showViewState();
 	bool onFocusIn(GdkEventFocus * event);
@@ -79,8 +74,6 @@ private:
 
 	boost::scoped_ptr<GMiniBuffer> minibuffer_;
 	Gtk::Widget * workArea_;
-	///
-	GuiImplementation frontend_;
 };
 
 } // namespace frontend

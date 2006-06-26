@@ -40,6 +40,7 @@
 #include <boost/bind.hpp>
 #include <boost/shared_ptr.hpp>
 
+#include "GuiImplementation.h"
 #include "QtView.h"
 #include "lcolorcache.h"
 #include "qfont_loader.h"
@@ -62,6 +63,8 @@
 using lyx::support::ltrim;
 using lyx::support::package;
 
+using lyx::frontend::Gui;
+using lyx::frontend::GuiImplementation;
 using lyx::frontend::QtView;
 
 namespace os = lyx::support::os;
@@ -121,12 +124,19 @@ class LQApplication : public QApplication
 {
 public:
 	LQApplication(int & argc, char ** argv);
+	//
+	Gui & gui() { return gui_; }
+
 #ifdef Q_WS_X11
 	bool x11EventFilter (XEvent * ev) { return lyxX11EventFilter(ev); }
 #endif
 #ifdef Q_WS_MACX
 	bool macEventFilter(EventRef event);
 #endif
+
+private:
+	///
+	GuiImplementation gui_;
 };
 
 
@@ -155,6 +165,7 @@ bool LQApplication::macEventFilter(EventRef event)
 }
 #endif
 
+LQApplication * theApp;
 
 namespace lyx_gui {
 
@@ -167,6 +178,7 @@ void exec(int & argc, char * argv[])
 	FontLoader::initFontPath();
 
 	LQApplication app(argc, argv);
+	theApp = &app;
 
 #if QT_VERSION >= 0x030200
 	// install translation file for Qt built-in dialogs
@@ -227,14 +239,15 @@ void start(string const & batch, vector<string> const & files,
 	// this can't be done before because it needs the Languages object
 	initEncodings();
 
-	boost::shared_ptr<QtView> view_ptr(new QtView);
-	LyX::ref().addLyXView(view_ptr);
+	int view_id = theApp->gui().newView(width, height);
+	QtView & view = static_cast<QtView &> (theApp->gui().view(view_id));
+	theApp->gui().newWorkArea(width, height, 0);
 
-	QtView & view = *view_ptr.get();
+	LyX::ref().addLyXView(&view);
 
 	view.init();
 
-	if (width != -1 && height != -1) { 
+	if (width != -1 && height != -1) {
 		view.initFloatingGeometry(QRect(posx, posy, width, height));
 		view.resize(width, height);
 		if (posx != -1 && posy != -1)

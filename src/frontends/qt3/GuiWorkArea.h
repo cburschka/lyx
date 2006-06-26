@@ -29,10 +29,8 @@ typedef QWorkArea FWorkArea;
  */
 class GuiWorkArea: public lyx::frontend::WorkArea {
 public:
-	GuiWorkArea(LyXView & owner, int w, int h,
-		FScreen * screen, FWorkArea * work_area)
-		: lyx::frontend::WorkArea(owner, w, h),
-		old_screen_(screen), old_work_area_(work_area)
+	GuiWorkArea(FScreen * screen, FWorkArea * work_area)
+		: old_screen_(screen), old_work_area_(work_area)
 	{
 	}
 
@@ -69,7 +67,7 @@ public:
 
 
 	/// paint the cursor and store the background
-	virtual void showCursor(int x, int y, int h, Cursor_Shape shape)
+	virtual void showCursor(int x, int y, int h, CursorShape shape)
 	{
 		old_screen_->showCursor(x, y, h, shape);
 	}

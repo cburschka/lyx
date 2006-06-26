@@ -10,8 +10,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef GUI_IMPLEMENTATION_H
-#define GUI_IMPLEMENTATION_H
+#ifndef GUI_H
+#define GUI_H
 
 #include "frontends/Gui.h"
 #include "GuiClipboard.h"
@@ -19,6 +19,8 @@
 #include <boost/shared_ptr.hpp>
 
 #include <map>
+
+class LyXView;
 
 namespace lyx {
 namespace frontend {
@@ -32,27 +34,34 @@ class GuiView;
 class GuiImplementation: public Gui
 {
 public:
-	GuiImplementation(GuiView & owner);
+	GuiImplementation();
 	virtual ~GuiImplementation() {}
 
 	Clipboard& clipboard();
 
+	int newView(unsigned int width, unsigned int height);
+	LyXView& view(int id);
+	void destroyView(int id);
+	int newWorkArea(unsigned int width, unsigned int height, int view_id);
 	int newWorkArea(int w, int h);
 	WorkArea& workArea(int id);
 	void destroyWorkArea(int id);
+
 
 private:
 	///
 	GuiClipboard clipboard_;
 	///
+	std::map<int, boost::shared_ptr<GuiView> > views_;
+	///
 	std::map<int, boost::shared_ptr<GuiWorkArea> > work_areas_;
 	///
-	GuiView & owner_;
+	size_t max_view_id_;
 	///
-	size_t max_id_;
+	size_t max_wa_id_;
 };
 
 } // namespace frontend
 } // namespace lyx
 
-#endif // GUI_IMPLEMENTATION_H
+#endif // GUI_H

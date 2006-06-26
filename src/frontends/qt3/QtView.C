@@ -37,8 +37,6 @@
 #include <qpixmap.h>
 #include <qstatusbar.h>
 
-#include <algorithm>
-
 using std::string;
 
 FontLoader fontloader;
@@ -56,21 +54,10 @@ int const statusbar_timer_value = 3000;
 } // namespace anon
 
 
-
-QtView::QtView()
-	: QMainWindow(), LyXView(), commandbuffer_(0), frontend_(*this)
+QtView::QtView(Gui & owner)
+	: QMainWindow(), LyXView(owner), commandbuffer_(0)
 {
 	qApp->setMainWidget(this);
-
-	bufferview_.reset(new BufferView(this, width(), height()));
-
-	menubar_.reset(new QLMenubar(this, menubackend));
-	getToolbars().init();
-
-	statusBar()->setSizeGripEnabled(false);
-
-	view_state_changed.connect(boost::bind(&QtView::update_view_state, this));
-	connect(&statusbar_timer_, SIGNAL(timeout()), this, SLOT(update_view_state_qt()));
 
 #ifndef Q_WS_MACX
 	//  assign an icon to main form. We do not do it under Qt/Mac,
@@ -79,6 +66,23 @@ QtView::QtView()
 	if (!iconname.empty())
 		setIcon(QPixmap(toqstr(iconname)));
 #endif
+}
+
+
+QtView::~QtView()
+{
+}
+
+
+void QtView::init()
+{
+	menubar_.reset(new QLMenubar(this, menubackend));
+	getToolbars().init();
+
+	statusBar()->setSizeGripEnabled(false);
+
+	view_state_changed.connect(boost::bind(&QtView::update_view_state, this));
+	connect(&statusbar_timer_, SIGNAL(timeout()), this, SLOT(update_view_state_qt()));
 
 	// make sure the buttons are disabled if needed
 	updateToolbars();
@@ -86,11 +90,8 @@ QtView::QtView()
 	// allowing the toolbars to tear off is too easily done,
 	// and we don't save their orientation anyway. Disable the handle.
 	setToolBarsMovable(false);
-}
-
-
-QtView::~QtView()
-{
+	
+	LyXView::init();
 }
 
 
@@ -182,13 +183,13 @@ void QtView::resizeEvent(QResizeEvent *)
 
 void QtView::moveEvent(QMoveEvent *)
 {
-	updateFloatingGeometry();	
+	updateFloatingGeometry();
 }
 
 
 void QtView::closeEvent(QCloseEvent *)
 {
-	updateFloatingGeometry();	
+	updateFloatingGeometry();
 	QRect geometry = floatingGeometry_;
 
 	Session & session = LyX::ref().session();

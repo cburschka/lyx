@@ -19,15 +19,13 @@
 namespace lyx {
 namespace frontend {
 
-typedef XWorkArea FWorkArea;
-
 /**
  * The XForms version of the Clipboard.
  */
 class GuiClipboard: public lyx::frontend::Clipboard
 {
 public:
-	GuiClipboard(FWorkArea * work_area)
+	GuiClipboard(XWorkArea * work_area)
 		: old_work_area_(work_area)
 	{
 	}
@@ -54,7 +52,7 @@ public:
 	//@}
 
 private:
-	FWorkArea * old_work_area_;
+	XWorkArea * old_work_area_;
 };
 
 } // namespace frontend

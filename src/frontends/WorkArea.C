@@ -118,8 +118,8 @@ SplashScreen::SplashScreen()
 	loader_.reset(file);
 }
 
-WorkArea::WorkArea(LyXView & owner, int w, int h)
-	: greyed_out_(true)
+WorkArea::WorkArea(BufferView * buffer_view)
+	:  buffer_view_(buffer_view), greyed_out_(true)
 {
 	// Start loading the pixmap as soon as possible
 	if (lyxrc.show_banner) {
@@ -127,6 +127,12 @@ WorkArea::WorkArea(LyXView & owner, int w, int h)
 		splash.connect(boost::bind(&WorkArea::checkAndGreyOut, this));
 		splash.startLoading();
 	}
+}
+
+
+void WorkArea::setBufferView(BufferView * buffer_view)
+{
+	buffer_view_ = buffer_view;
 }
 
 
@@ -141,7 +147,7 @@ void WorkArea::redraw(BufferView & bv, ViewMetricsInfo const & vi)
 {
 	greyed_out_ = false;
 	getPainter().start();
-	paintText(bv, vi);
+	paintText(*buffer_view_, vi);
 	lyxerr[Debug::DEBUG] << "Redraw screen" << endl;
 	int const ymin = std::max(vi.y1, 0);
 	int const ymax =

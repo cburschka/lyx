@@ -109,12 +109,19 @@ int C_event_cb(FL_FORM * form, void * xev)
 
 
 XWorkArea::XWorkArea(LyXView & owner, int w, int h)
-        : view_(owner), workareapixmap(0), painter_(*this)
+	: view_(owner), workareapixmap(0), painter_(*this)
 {
 	fl_freeze_all_forms();
 
 	FL_OBJECT * obj;
 	FL_OBJECT * frame;
+
+	XFormsView & xview = dynamic_cast<XFormsView &>(owner);
+
+	// Set the current form so that objects have something to get
+	// added to.
+	//fl_addto_form(fl_current_form);
+	fl_addto_form(xview.getForm());
 
 	// A frame around the work area.
 	frame = obj = fl_add_box(FL_BORDER_BOX, 0, 0, w, h, "");
@@ -150,7 +157,6 @@ XWorkArea::XWorkArea(LyXView & owner, int w, int h)
 
 	// Hand control of the layout of these widgets to the
 	// Layout Engine.
-	XFormsView & xview = dynamic_cast<XFormsView &>(owner);
 	BoxList & boxlist = xview.getBox(XFormsView::Center)->children();
 
 	wa_box_ = boxlist.push_back(Box(0,0));
@@ -179,6 +185,8 @@ XWorkArea::XWorkArea(LyXView & owner, int w, int h)
 	val.function = GXcopy;
 	copy_gc = XCreateGC(fl_get_display(), RootWindow(fl_get_display(), 0),
 			    GCFunction, &val);
+
+	fl_end_form();
 }
 
 
@@ -220,7 +228,7 @@ void XWorkArea::redraw(int width, int height)
 				       height,
 				       fl_get_visual_depth());
 
-	view_.view()->workAreaResize();
+	view_.view()->workAreaResize(width, height);
 }
 
 

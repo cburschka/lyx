@@ -138,10 +138,10 @@ libgtk_la_SOURCES = \
 	ghelpers.C \
 	ghelpers.h \
 	GuiImplementation.h \
+	GuiImplementation.C \
 	io_callback.C \
 	io_callback.h \
 	lyx_gui.C \
 	xftFontLoader.C \
 	xftFontLoader.h \
 	xftFontMetrics.C
-

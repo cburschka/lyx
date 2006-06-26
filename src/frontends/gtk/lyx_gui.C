@@ -43,6 +43,7 @@
 #include "lyxsocket.h"
 #include "BufferView.h"
 
+#include "GuiImplementation.h"
 #include "GView.h"
 #include "GtkmmX.h"
 
@@ -75,6 +76,8 @@ using std::string;
 using lyx::support::package;
 
 using lyx::frontend::colorCache;
+using lyx::frontend::Gui;
+using lyx::frontend::GuiImplementation;
 using lyx::frontend::GView;
 
 
@@ -99,10 +102,25 @@ int getDPI()
 
 } // namespace anon
 
+class Application: public Gtk::Main
+{
+public:
+	///
+	Application(int & argc, char * argv[]): Gtk::Main(argc, argv)
+	{}
+	///
+	Gui & gui() { return gui_; }
+
+private:
+	///
+	GuiImplementation gui_;
+};
+
+Application * theApp;
 
 void lyx_gui::exec(int & argc, char * argv[])
 {
-	new Gtk::Main(argc, argv);
+	theApp = new Application(argc, argv);
 
 	using namespace lyx::graphics;
 	Image::newImage = boost::bind(&LyXGdkImage::newImage);
@@ -125,10 +143,12 @@ void lyx_gui::parse_lyxrc()
 void lyx_gui::start(string const & batch, std::vector<string> const & files,
 		    unsigned int width, unsigned int height, int posx, int posy, bool)
 {
-	boost::shared_ptr<GView> view_ptr(new GView);
-	LyX::ref().addLyXView(view_ptr);
+	int view_id = theApp->gui().newView(width, height);
+	GView & view = static_cast<GView &> (theApp->gui().view(view_id));
+	theApp->gui().newWorkArea(width, height, 0);
 
-	GView & view = *view_ptr.get();
+	LyX::ref().addLyXView(&view);
+
 	view.show();
 	view.init();
 
@@ -146,7 +166,7 @@ void lyx_gui::start(string const & batch, std::vector<string> const & files,
 		view.getLyXFunc().dispatch(lyxaction.lookupFunc(batch));
 	}
 
-	Gtk::Main::run();
+	theApp->run();
 
 	// FIXME: breaks emergencyCleanup
 	delete lyxsocket;
@@ -157,7 +177,7 @@ void lyx_gui::start(string const & batch, std::vector<string> const & files,
 void lyx_gui::exit(int /*status*/)
 {
 	// FIXME: Don't ignore status
-	Gtk::Main::quit();
+	theApp->quit();
 }
 
 

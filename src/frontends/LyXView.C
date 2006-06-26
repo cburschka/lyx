@@ -12,6 +12,7 @@
 #include <config.h>
 
 #include "LyXView.h"
+#include "Gui.h"
 #include "Dialogs.h"
 #include "Timeout.h"
 #include "Toolbars.h"
@@ -46,6 +47,8 @@
 # include <unistd.h>
 #endif
 
+using lyx::frontend::Gui;
+
 using lyx::support::makeDisplayPath;
 using lyx::support::onlyFilename;
 
@@ -56,16 +59,27 @@ using lyx::frontend::ControlCommandBuffer;
 
 string current_layout;
 
+Gui & LyXView::gui()
+{
+	return owner_;
+}
 
-LyXView::LyXView()
-	: toolbars_(new Toolbars(*this)),
+LyXView::LyXView(Gui & owner)
+	: owner_(owner),
+	  toolbars_(new Toolbars(*this)),
 	  intl_(new Intl),
 	  autosave_timeout_(new Timeout(5000)),
 	  lyxfunc_(new LyXFunc(this)),
 	  dialogs_(new Dialogs(*this)),
-	  controlcommand_(new ControlCommandBuffer(*this))
+	  controlcommand_(new ControlCommandBuffer(*this)),
+	  bufferview_(0)
 {
 	lyxerr[Debug::INIT] << "Initializing LyXFunc" << endl;
+}
+
+void LyXView::setBufferView(BufferView * buffer_view)
+{
+	bufferview_ = buffer_view;
 }
 
 
@@ -96,7 +110,7 @@ Buffer * LyXView::buffer() const
 }
 
 
-boost::shared_ptr<BufferView> const & LyXView::view() const
+BufferView * LyXView::view() const
 {
 	return bufferview_;
 }
@@ -132,7 +146,7 @@ void LyXView::autoSave()
 	lyxerr[Debug::INFO] << "Running autoSave()" << endl;
 
 	if (view()->available()) {
-		::autoSave(view().get());
+		::autoSave(view());
 	}
 }
 

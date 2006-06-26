@@ -42,10 +42,6 @@
 
 #include "support/filetools.h" // LibFileSearch
 
-#include <boost/utility.hpp>
-#include <boost/bind.hpp>
-#include <boost/signals/trackable.hpp>
-
 using lyx::support::libFileSearch;
 
 using std::endl;
@@ -57,7 +53,7 @@ namespace lyx {
 namespace frontend {
 
 GuiCursor::GuiCursor()
-	: cursor_visible_(false), work_area_(NULL)
+	: cursor_visible_(false), work_area_(0)
 {
 }
 
@@ -80,7 +76,7 @@ void GuiCursor::show(BufferView & bv)
 	if (!bv.available())
 		return;
 
-	Cursor_Shape shape = BAR_SHAPE;
+	CursorShape shape = BAR_SHAPE;
 
 	LyXText const & text = *bv.getLyXText();
 	LyXFont const & realfont = text.real_current_font;
@@ -146,4 +142,3 @@ void GuiCursor::prepare()
 
 } // namespace frontend
 } // namespace lyx
-

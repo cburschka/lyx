@@ -19,7 +19,7 @@
 
 #include <boost/bind.hpp>
 
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "qt_helpers.h"
 
 #include "Action.h"

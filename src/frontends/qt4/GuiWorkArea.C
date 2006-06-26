@@ -13,10 +13,13 @@
 
 #include <boost/current_function.hpp>
 
+// This include must be declared before everything else because
+// of boost/Qt/LyX clash...
+#include "GuiView.h"
+
 #include "GuiWorkArea.h"
 #include "QLPainter.h"
 #include "QLyXKeySym.h"
-#include "GuiView.h"
 
 #include "ColorCache.h"
 #include "qt_helpers.h"
@@ -38,10 +41,14 @@
 
 #include <boost/bind.hpp>
 
-// Abdel (09/06/2006):
-// I want the drawing to be fast without Keyboard buffering so when working
-// on optimization, please set the following macro to 0:
-#define USE_KEY_BUFFERING 0
+// Abdel (26/06/2006):
+// On windows-XP the UserGuide PageDown scroll test is faster without event pruning (16 s)
+// than with it (23 s).
+#ifdef Q_WS_WIN
+ #define USE_EVENT_PRUNING 0
+#else
+ #define USE_EVENT_PRUNING 0
+#endif
 
 using std::endl;
 using std::string;
@@ -111,13 +118,11 @@ SyntheticMouseEvent::SyntheticMouseEvent()
 {}
 
 
-GuiWorkArea::GuiWorkArea(LyXView & owner, int w, int h)
-: QAbstractScrollArea(GuiView::mainWidget()), WorkArea(owner, w, h), view_(owner), painter_(this)
+GuiWorkArea::GuiWorkArea(int w, int h, QWidget * parent, BufferView * buffer_view)
+: QAbstractScrollArea(parent), WorkArea(buffer_view), painter_(this)
 {
 	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-
-	GuiView::mainWidget()->setCentralWidget(this);
 
 	setAcceptDrops(true);
 
@@ -155,7 +160,7 @@ GuiWorkArea::GuiWorkArea(LyXView & owner, int w, int h)
 		<< "\n viewport height\t" << viewport()->height()
 		<< endl;
 
-	if (USE_KEY_BUFFERING) {
+	if (USE_EVENT_PRUNING) {
 		// This is the keyboard buffering stuff...
 		// I don't see any need for this under windows. The keyboard is reactive
 		// enough...
@@ -168,19 +173,15 @@ GuiWorkArea::GuiWorkArea(LyXView & owner, int w, int h)
 		step_timer_.start(50, true);
 	}
 
-	///////////////////////////////////////////////////////////////////////
-	// Specific stuff goes here...
-
-#if USE_INPUT_METHODS
-	// to make qt-immodule work
-	setInputMethodEnabled(true);
-#endif
-
+	// Enables input methods for asian languages.
+	// Must be set when creating custom text editing widgets.
+	setAttribute(Qt::WA_InputMethodEnabled, true);
 }
 
 GuiWorkArea::~GuiWorkArea()
 {
 }
+
 
 void GuiWorkArea::setScrollbarParams(int h, int scroll_pos, int scroll_line_step)
 {
@@ -192,6 +193,7 @@ void GuiWorkArea::setScrollbarParams(int h, int scroll_pos, int scroll_line_step
 	verticalScrollBar()->setSliderPosition(scroll_pos);
 	verticalScrollBar()->setLineStep(scroll_line_step);
 }
+
 
 void GuiWorkArea::adjustViewWithScrollBar(int)
 {
@@ -205,7 +207,7 @@ void GuiWorkArea::adjustViewWithScrollBar(int)
 		<< " linestep=" << verticalScrollBar()->lineStep()
 		<< endl;
 	*/
-	view_.view()->scrollDocView(verticalScrollBar()->sliderPosition());
+	buffer_view_->scrollDocView(verticalScrollBar()->sliderPosition());
 }
 
 
@@ -229,7 +231,7 @@ void GuiWorkArea::dropEvent(QDropEvent* event)
 	for (int i = 0; i!=files.size(); ++i) {
 		string const file = os::internal_path(fromqstr(files.at(i).toString()));
 		if (!file.empty())
-			view_.view()->workAreaDispatch(FuncRequest(LFUN_FILE_OPEN, file));
+			buffer_view_->workAreaDispatch(FuncRequest(LFUN_FILE_OPEN, file));
 	}
 }
 
@@ -241,13 +243,13 @@ void GuiWorkArea::mousePressEvent(QMouseEvent * e)
 		FuncRequest cmd(LFUN_MOUSE_TRIPLE,
 			dc_event_.x, dc_event_.y,
 			q_button_state(dc_event_.state));
-		view_.view()->workAreaDispatch(cmd);
+		buffer_view_->workAreaDispatch(cmd);
 		return;
 	}
 
 	FuncRequest const cmd(LFUN_MOUSE_PRESS, e->x(), e->y(),
 			      q_button_state(e->button()));
-	view_.view()->workAreaDispatch(cmd);
+	buffer_view_->workAreaDispatch(cmd);
 }
 
 
@@ -258,7 +260,7 @@ void GuiWorkArea::mouseReleaseEvent(QMouseEvent * e)
 
 	FuncRequest const cmd(LFUN_MOUSE_RELEASE, e->x(), e->y(),
 			      q_button_state(e->button()));
-	view_.view()->workAreaDispatch(cmd);
+	buffer_view_->workAreaDispatch(cmd);
 }
 
 
@@ -318,7 +320,7 @@ void GuiWorkArea::mouseMoveEvent(QMouseEvent * e)
 		synthetic_mouse_event_.scrollbar_value_old = scrollbar_value;
 
 		// ... and dispatch the event to the LyX core.
-		view_.view()->workAreaDispatch(cmd);
+		buffer_view_->workAreaDispatch(cmd);
 	}
 }
 
@@ -348,7 +350,7 @@ void GuiWorkArea::generateSyntheticMouseEvent()
 		synthetic_mouse_event_.scrollbar_value_old = scrollbar_value;
 
 		// ... and dispatch the event to the LyX core.
-		view_.view()->workAreaDispatch(synthetic_mouse_event_.cmd);
+		buffer_view_->workAreaDispatch(synthetic_mouse_event_.cmd);
 	}
 }
 
@@ -362,17 +364,18 @@ void GuiWorkArea::keyPressEvent(QKeyEvent * e)
 		<< " key=" << e->key()
 		<< endl;
 
-	if (USE_KEY_BUFFERING) {
+	if (USE_EVENT_PRUNING) {
 		keyeventQueue_.push(boost::shared_ptr<QKeyEvent>(new QKeyEvent(*e)));
 	}
 	else {
 		boost::shared_ptr<QLyXKeySym> sym(new QLyXKeySym);
 		sym->set(e);
-		view_.view()->workAreaKeyPress(sym, q_key_state(e->state()));
+		buffer_view_->workAreaKeyPress(sym, q_key_state(e->state()));
 	}
 }
 
-// This is used only if USE_KEY_BUFFERING is defined...
+
+// This is used only if USE_EVENT_PRUNING is defined...
 void GuiWorkArea::keyeventTimeout()
 {
 	bool handle_autos = true;
@@ -387,17 +390,17 @@ void GuiWorkArea::keyeventTimeout()
 			continue;
 		}
 
-                boost::shared_ptr<QLyXKeySym> sym(new QLyXKeySym);
+		boost::shared_ptr<QLyXKeySym> sym(new QLyXKeySym);
 		sym->set(ev.get());
 
-                lyxerr[Debug::GUI] << BOOST_CURRENT_FUNCTION
-                                   << " count=" << ev->count()
-                                   << " text=" << (const char *) ev->text()
-                                   << " isAutoRepeat=" << ev->isAutoRepeat()
-                                   << " key=" << ev->key()
-                                   << endl;
+		lyxerr[Debug::GUI] << BOOST_CURRENT_FUNCTION
+				   << " count=" << ev->count()
+				   << " text=" << (const char *) ev->text()
+				   << " isAutoRepeat=" << ev->isAutoRepeat()
+				   << " key=" << ev->key()
+				   << endl;
 
-                view_.view()->workAreaKeyPress(sym, q_key_state(ev->state()));
+		buffer_view_->workAreaKeyPress(sym, q_key_state(ev->state()));
 		keyeventQueue_.pop();
 
 		handle_autos = false;
@@ -420,7 +423,7 @@ void GuiWorkArea::mouseDoubleClickEvent(QMouseEvent * e)
 	FuncRequest cmd(LFUN_MOUSE_DOUBLE,
 		dc_event_.x, dc_event_.y,
 		q_button_state(dc_event_.state));
-	view_.view()->workAreaDispatch(cmd);
+	buffer_view_->workAreaDispatch(cmd);
 }
 
 
@@ -435,7 +438,7 @@ void GuiWorkArea::resizeEvent(QResizeEvent *)
 //	paint_device_ = QImage(viewport()->width(), viewport()->height(), QImage::Format_RGB32);
 	paint_device_ = QPixmap(viewport()->width(), viewport()->height());
 
-	view_.view()->workAreaResize();
+	buffer_view_->workAreaResize(viewport()->width(), viewport()->height());
 
 	/*
 	lyxerr[Debug::GUI] << BOOST_CURRENT_FUNCTION
@@ -484,6 +487,15 @@ void GuiWorkArea::paintEvent(QPaintEvent * e)
 
 	if (show_hcursor_)
 		q.drawPixmap(cursor_x_, cursor_y_ + cursor_h_ - 1, hcursor_);
+
+	buffer_view_->updateScrollbar();
+
+	ScrollbarParameters const & scroll_ = buffer_view_->scrollbarParameters();
+
+	verticalScrollBar()->setTracking(false);
+	setScrollbarParams(scroll_.height, scroll_.position,
+		scroll_.lineScrollHeight);
+	verticalScrollBar()->setTracking(true);
 }
 
 
@@ -510,7 +522,7 @@ void GuiWorkArea::expose(int x, int y, int w, int h)
 }
 
 
-void GuiWorkArea::showCursor(int x, int y, int h, Cursor_Shape shape)
+void GuiWorkArea::showCursor(int x, int y, int h, CursorShape shape)
 {
 	if (!qApp->focusWidget())
 		return;
@@ -554,7 +566,7 @@ void GuiWorkArea::showCursor(int x, int y, int h, Cursor_Shape shape)
 	// We cache two pixmaps:
 	// 1 the vertical line of the cursor.
 	// 2 the horizontal line of the L-shaped cursor (if necessary).
-	
+
 	// Draw the new (vertical) cursor.
 	vcursor_ = QPixmap(cursor_w_, cursor_h_);
 	vcursor_.fill(cursor_color_);
@@ -578,20 +590,17 @@ void GuiWorkArea::removeCursor()
 	viewport()->update(cursor_x_, cursor_y_, cursor_w_, cursor_h_);
 }
 
-///////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////
-// Specific stuff
-
-////////////////////////////////////////////////////////////////////////
-// qt-immodule specific stuff goes here...
-
-#if USE_INPUT_METHODS
-// to make qt-immodule work
 
 void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 {
-	QString const text = e->text();
+	QString const & text = e->commitString();
 	if (!text.isEmpty()) {
+
+		lyxerr[Debug::KEY] << BOOST_CURRENT_FUNCTION
+			<< " preeditString =" << (const char *) e->preeditString()
+			<< " commitString  =" << (const char *) e->commitString()
+			<< endl;
+
 		int key = 0;
 		// needed to make math superscript work on some systems
 		// ideally, such special coding should not be necessary
@@ -602,7 +611,7 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 	}
 	e->accept();
 }
-#endif
+
 
 } // namespace frontend
 } // namespace lyx

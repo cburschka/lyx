@@ -39,7 +39,7 @@ public:
 	///
 	virtual void removeCursor();
 	///
-	virtual void showCursor(int x, int y, int h, Cursor_Shape shape);
+	virtual void showCursor(int x, int y, int h, CursorShape shape);
 
 	/// Copies specified area of pixmap to screen
 	virtual void expose(int x, int y, int w, int h);

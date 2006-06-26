@@ -38,6 +38,7 @@ class ParIterator;
 namespace lyx {
 namespace frontend {
 class Painter;
+class WorkArea;
 }
 }
 
@@ -61,6 +62,23 @@ inline flags operator&(flags const f, flags const g)
 
 } // namespace
 
+/// Scrollbar Parameters
+struct ScrollbarParameters
+{
+	void reset(int h = 0, int p = 0, int l = 0)
+	{
+		height = h;
+		position = p;
+		lineScrollHeight = l;
+	}
+
+	/// The total document height in pixels
+	int height;
+	/// The current position in the document, in pixels
+	int position;
+	/// the line-scroll amount, in pixels
+	int lineScrollHeight;
+};
 
 /**
  * A buffer view encapsulates a view onto a particular
@@ -76,7 +94,7 @@ public:
 	 * Create a view with the given owner main window,
 	 * of the given dimensions.
 	 */
-	BufferView(LyXView * owner, int w, int h);
+	BufferView(LyXView * owner, lyx::frontend::WorkArea * workArea);
 
 	~BufferView();
 
@@ -114,6 +132,8 @@ public:
 	bool fitCursor();
 	/// reset the scrollbar to reflect current view position
 	void updateScrollbar();
+	/// return the Scrollbar Parameters
+	ScrollbarParameters const & scrollbarParameters() const;
 
 	/// FIXME
 	bool available() const;
@@ -185,10 +205,10 @@ public:
 	void selectionLost();
 
 	///
-	void workAreaResize();
+	void workAreaResize(int width, int height);
 
-        /// Receive a keypress
-        void workAreaKeyPress(LyXKeySymPtr key, key_modifier::state state);
+	/// Receive a keypress
+	void workAreaKeyPress(LyXKeySymPtr key, key_modifier::state state);
 
 	/// a function should be executed from the workarea
 	bool workAreaDispatch(FuncRequest const & ev);

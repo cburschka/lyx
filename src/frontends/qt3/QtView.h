@@ -13,12 +13,9 @@
 #ifndef QTVIEW_H
 #define QTVIEW_H
 
-// Must be here because of moc.
 #include <config.h>
 
 #include "frontends/LyXView.h"
-
-#include "GuiImplementation.h"
 
 #include <qmainwindow.h>
 #include <qtimer.h>
@@ -38,10 +35,13 @@ class QCommandBuffer;
 class QtView : public QMainWindow, public LyXView {
 	Q_OBJECT
 public:
-	/// create a main window
-	QtView();
+	/// create a main window of the given dimensions
+	QtView(Gui & owner);
 
 	~QtView();
+
+	/// initialise the object members (menubars, toolbars, etc..)
+	void init();
 
 	/// show - display the top-level window
 	void show();
@@ -63,9 +63,6 @@ public:
 
 	// returns true if this view has the focus.
 	virtual bool hasFocus() const;
-
-	//
-	lyx::frontend::Gui & gui() { return frontend_; }
 
 	///
 	void initFloatingGeometry(QRect const &);
@@ -102,9 +99,6 @@ private:
 	/// command buffer
 	QCommandBuffer * commandbuffer_;
 	
-	///
-	GuiImplementation frontend_;
-
 	///
 	void updateFloatingGeometry();
 	///

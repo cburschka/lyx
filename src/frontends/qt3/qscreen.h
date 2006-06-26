@@ -40,7 +40,7 @@ public:
 	virtual void expose(int x, int y, int exp_width, int exp_height);
 
 	/// paint the cursor and store the background
-	virtual void showCursor(int x, int y, int h, lyx::frontend::Cursor_Shape shape);
+	virtual void showCursor(int x, int y, int h, lyx::frontend::CursorShape shape);
 
 	/// hide the cursor
 	virtual void removeCursor();

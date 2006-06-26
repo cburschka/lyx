@@ -11,13 +11,11 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef GUIVIEW_H
-#define GUIVIEW_H
+#ifndef GUI_VIEW_H
+#define GUI_VIEW_H
 
 // Must be here because of moc.
 #include <config.h>
-
-#include "GuiImplementation.h"
 
 #include "frontends/LyXView.h"
 #include "funcrequest.h"
@@ -43,15 +41,18 @@ QWidget* mainWindow();
 /**
  * GuiView - Qt4 implementation of LyXView
  *
- * Qt-private implementation of the main LyX window.
+ * qt4-private implementation of the main LyX window.
  */
 class GuiView : public QMainWindow, public LyXView {
 	Q_OBJECT
 public:
-	/// create a main window
-	GuiView();
+	/// create a main window of the given dimensions
+	GuiView(Gui & owner);
 
 	~GuiView();
+
+	/// initialize the object
+	virtual void init();
 
 	/// show - display the top-level window
 	void show();
@@ -71,12 +72,10 @@ public:
 	/// menu item has been selected
 	void activated(FuncRequest const &);
 
-	// returns true if this view has the focus.
+	/// returns true if this view has the focus.
 	virtual bool hasFocus() const;
 
-	//
-	Gui & gui() { return frontend_; }
-
+	///
 	static QMainWindow* mainWidget();
 
 public slots:
@@ -117,8 +116,6 @@ private:
 
 	///
 	static QMainWindow* mainWidget_;
-
-	GuiImplementation frontend_;
 
 	///
 	void updateFloatingGeometry();

@@ -33,12 +33,8 @@ class Timeout;
 class FuncRequest;
 
 namespace lyx {
-
 namespace frontend {
 class Gui;
-} // namespace frontend
-
-namespace frontend {
 class ControlCommandBuffer;
 } // namespace frontend
 
@@ -60,9 +56,11 @@ class ControlCommandBuffer;
 class LyXView : public boost::signals::trackable, boost::noncopyable {
 public:
 
-	LyXView();
+	LyXView(lyx::frontend::Gui & owner);
 
 	virtual ~LyXView();
+
+	void setBufferView(BufferView * buffer_view);
 
 	/**
 	 * This is called after the concrete view has been created.
@@ -80,7 +78,7 @@ public:
 	    Returned as a shared_ptr so that anything wanting to cache the
 	    buffer view can do so safely using a boost::weak_ptr.
 	 */
-	boost::shared_ptr<BufferView> const & view() const;
+	BufferView * view() const;
 
 	/// return the buffer currently shown in this window
 	Buffer * buffer() const;
@@ -148,19 +146,24 @@ public:
 	 */
 	Buffer const * const updateInset(InsetBase const *) const;
 
-	// returns true if this view has the focus.
+	/// returns true if this view has the focus.
 	virtual bool hasFocus() const = 0;
 
-	virtual lyx::frontend::Gui & gui() = 0;
+	///
+	virtual lyx::frontend::Gui & gui();
 
 protected:
-	/// view of a buffer. Eventually there will be several.
-	boost::shared_ptr<BufferView> bufferview_;
+	/// current bufferview (view of a buffer).
+	/**
+	\todo FIXME: this should be moved out of LyXView.
+	*/
+	BufferView * bufferview_;
 
 	/// view's menubar
 	boost::scoped_ptr<Menubar> menubar_;
 
 private:
+	lyx::frontend::Gui & owner_;
 	/**
 	 * setWindowTitle - set title of window
 	 * @param t main window title

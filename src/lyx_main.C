@@ -188,7 +188,7 @@ lyx::Session const & LyX::session() const
 }
 
 
-void LyX::addLyXView(boost::shared_ptr<LyXView> const & lyxview)
+void LyX::addLyXView(LyXView * lyxview)
 {
 	views_.push_back(lyxview);
 }

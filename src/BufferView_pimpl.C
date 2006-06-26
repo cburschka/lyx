@@ -137,23 +137,19 @@ T * getInsetByCode(LCursor & cur, InsetBase::Code code)
 } // anon namespace
 
 
-BufferView::Pimpl::Pimpl(BufferView & bv, LyXView * owner,
-			 int width, int height)
-	: bv_(&bv), owner_(owner), buffer_(0), wh_(0), cursor_timeout(400),
+BufferView::Pimpl::Pimpl(BufferView & bv, LyXView * owner, WorkArea * workArea)
+	: bv_(&bv), owner_(owner), workArea_(workArea), buffer_(0), wh_(0), cursor_timeout(400),
 	  using_xterm_cursor(false), cursor_(bv),
 	  anchor_ref_(0), offset_ref_(0)
 {
 	xsel_cache_.set = false;
 
-	workAreaId_ = owner_->gui().newWorkArea(width, height);
-	workArea_ = & owner_->gui().workArea(workAreaId_);
-
 	// Setup the signals
 	timecon = cursor_timeout.timeout
 		.connect(boost::bind(&BufferView::Pimpl::cursorToggle, this));
-	
+
 	cursor_timeout.start();
-        
+	
 	saved_positions.resize(saved_positions_num);
 	// load saved bookmarks
 	lyx::Session::BookmarkList & bmList = LyX::ref().session().loadBookmarks();
@@ -341,6 +337,18 @@ lyx::frontend::Painter & BufferView::Pimpl::painter() const
 }
 
 
+int BufferView::Pimpl::width() const
+{
+	return width_;
+}
+
+
+int BufferView::Pimpl::height() const
+{
+	return height_;
+}
+
+
 void BufferView::Pimpl::setBuffer(Buffer * b)
 {
 	lyxerr[Debug::INFO] << BOOST_CURRENT_FUNCTION
@@ -405,7 +413,6 @@ void BufferView::Pimpl::setBuffer(Buffer * b)
 	}
 
 	update();
-	updateScrollbar();
 	owner_->updateMenubar();
 	owner_->updateToolbars();
 	owner_->updateLayoutChoice();
@@ -450,8 +457,6 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 
 	// Reset the "Formatting..." message
 	owner_->clearMessage();
-
-	updateScrollbar();
 }
 
 
@@ -460,7 +465,7 @@ void BufferView::Pimpl::updateScrollbar()
 	if (!bv_->text()) {
 		lyxerr[Debug::DEBUG] << BOOST_CURRENT_FUNCTION
 				     << " no text in updateScrollbar" << endl;
-		workArea_->setScrollbarParams(0, 0, 0);
+		scrollbarParameters_.reset();
 		return;
 	}
 
@@ -482,7 +487,7 @@ void BufferView::Pimpl::updateScrollbar()
 
 	// estimated average paragraph height:
 	if (wh_ == 0)
-		wh_ = workArea_->height() / 4;
+		wh_ = height_ / 4;
 	int h = t.getPar(anchor_ref_).height();
 
 	// Normalize anchor/offset (MV):
@@ -495,7 +500,7 @@ void BufferView::Pimpl::updateScrollbar()
 	int sumh = 0;
 	int nh = 0;
 	for (lyx::pit_type pit = anchor_ref_; pit <= parsize; ++pit) {
-		if (sumh > workArea_->height())
+		if (sumh > height_)
 			break;
 		int const h2 = t.getPar(pit).height();
 		sumh += h2;
@@ -506,9 +511,15 @@ void BufferView::Pimpl::updateScrollbar()
 	if (hav > wh_)
 		wh_ = hav;
 
-	workArea_->setScrollbarParams((parsize + 1) * wh_,
-		anchor_ref_ * wh_ + int(offset_ref_ * wh_ / float(h)),
-		int(wh_ * defaultRowHeight() / float(h)));
+	scrollbarParameters_.height = (parsize + 1) * wh_;
+	scrollbarParameters_.position = anchor_ref_ * wh_ + int(offset_ref_ * wh_ / float(h));
+	scrollbarParameters_.lineScrollHeight = int(wh_ * defaultRowHeight() / float(h));
+}
+
+
+ScrollbarParameters const & BufferView::Pimpl::scrollbarParameters() const
+{
+	return scrollbarParameters_;
 }
 
 
@@ -539,7 +550,7 @@ void BufferView::Pimpl::scrollDocView(int value)
 
 	int const height = 2 * defaultRowHeight();
 	int const first = height;
-	int const last = workArea_->height() - height;
+	int const last = height_ - height;
 	LCursor & cur = cursor_;
 
 	bv_funcs::CurStatus st = bv_funcs::status(bv_, cur);
@@ -583,7 +594,7 @@ void BufferView::Pimpl::scroll(int /*lines*/)
 //	scrollDocView(new_top_y);
 //
 //	// Update the scrollbar.
-//	workArea_->.setScrollbarParams(t->height(), top_y(), defaultRowHeight());
+//	workArea_->setScrollbarParams(t->height(), top_y(), defaultRowHeight());
 }
 
 
@@ -642,17 +653,14 @@ void BufferView::Pimpl::selectionLost()
 }
 
 
-void BufferView::Pimpl::workAreaResize()
+void BufferView::Pimpl::workAreaResize(int width, int height)
 {
-	static int workArea_width;
-	static int workArea_height;
-
-	bool const widthChange = workArea_->width() != workArea_width;
-	bool const heightChange = workArea_->height() != workArea_height;
+	bool const widthChange = width != width_;
+	bool const heightChange = height != height_;
 
 	// Update from work area
-	workArea_width = workArea_->width();
-	workArea_height = workArea_->height();
+	width_ = width;
+	height_ = height;
 
 	if (buffer_ && widthChange) {
 		// The visible LyXView need a resize
@@ -662,8 +670,6 @@ void BufferView::Pimpl::workAreaResize()
 	if (widthChange || heightChange)
 		update();
 
-	// Always make sure that the scrollbar is sane.
-	updateScrollbar();
 	owner_->updateLayoutChoice();
 }
 
@@ -675,7 +681,7 @@ bool BufferView::Pimpl::fitCursor()
 		int const asc = font_metrics::maxAscent(font);
 		int const des = font_metrics::maxDescent(font);
 		Point const p = bv_funcs::getPos(cursor_, cursor_.boundary());
-		if (p.y_ - asc >= 0 && p.y_ + des < workArea_->height())
+		if (p.y_ - asc >= 0 && p.y_ + des < height_)
 			return false;
 	}
 	center();
@@ -739,8 +745,6 @@ void BufferView::Pimpl::update(Update::flags flags)
 	} else
 		workArea_->greyOut();
 
-	// And the scrollbar
-	updateScrollbar();
 	owner_->view_state_changed();
 }
 
@@ -876,7 +880,7 @@ void BufferView::Pimpl::center()
 	Paragraph const & par = bot.text()->paragraphs()[pit];
 	anchor_ref_ = pit;
 	offset_ref_ = bv_funcs::coordOffset(cursor_, cursor_.boundary()).y_
-		+ par.ascent() - workArea_->height() / 2;
+		+ par.ascent() - height_ / 2;
 }
 
 
@@ -1013,7 +1017,7 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 	// surrounding LyXText will handle this event.
 
 	// Build temporary cursor.
-	cmd.y = min(max(cmd.y, -1), workArea_->height());
+	cmd.y = min(max(cmd.y, -1), height_);
 	InsetBase * inset = bv_->text()->editXY(cur, cmd.x, cmd.y);
 	//lyxerr << BOOST_CURRENT_FUNCTION
 	//       << " * hit inset at tip: " << inset << endl;

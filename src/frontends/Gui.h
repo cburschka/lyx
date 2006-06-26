@@ -16,6 +16,12 @@
 
 #include "frontends/GuiCursor.h"
 
+#include <boost/shared_ptr.hpp>
+
+#include <map>
+
+class LyXView;
+
 namespace lyx {
 namespace frontend {
 
@@ -32,18 +38,31 @@ public:
 	virtual ~Gui() {}
 
 	///
-	virtual Clipboard& clipboard() = 0;
+	virtual Clipboard & clipboard() = 0;
+
 	///
-	virtual int newWorkArea(int w, int h) = 0;
+	virtual int newView(unsigned int width, unsigned int height) = 0;
 	///
-	virtual WorkArea& workArea(int id) = 0;
+	virtual LyXView & view(int id) = 0;
+	///
+	virtual void destroyView(int id) = 0;
+
+	///
+	virtual int newWorkArea(unsigned int width, unsigned int height, int view_id) = 0;
+	///
+	virtual WorkArea & workArea(int id) = 0;
 	///
 	virtual void destroyWorkArea(int id) = 0;
 
 	///
 	GuiCursor & guiCursor() {return cursor_;}
 
+protected:
+	/// view of a buffer. Eventually there will be several.
+	std::map<int, boost::shared_ptr<BufferView> > buffer_views_;
+
 private:
+	///
 	GuiCursor cursor_;
 };
 
