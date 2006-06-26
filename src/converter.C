@@ -306,7 +306,7 @@ bool Converters::convert(Buffer const * buffer,
 				quoteName(to_ext + ':' + to_file);
 			lyxerr[Debug::FILES]
 				<< "No converter defined! "
-				   "I use convertDefault.sh:\n\t"
+				   "I use convertDefault.py:\n\t"
 				<< command << endl;
 			Systemcall one;
 			one.startscript(Systemcall::Wait, command);

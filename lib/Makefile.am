@@ -880,7 +880,7 @@ scriptsdir = $(pkgdatadir)/scripts
 dist_scripts_DATA = \
 	scripts/TeXFiles.sh \
 	scripts/clean_dvi.py \
-	scripts/convertDefault.sh \
+	scripts/convertDefault.py \
 	scripts/fen2ascii.py \
 	scripts/fig2pdftex.sh \
 	scripts/fig2pstex.sh \

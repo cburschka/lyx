@@ -183,7 +183,7 @@ Converter::Impl::Impl(string const & from_file,   string const & to_file_base,
 			quoteName(to_format + ':' + to_file_);
 
 		lyxerr[Debug::GRAPHICS]
-			<< "\tNo converter defined! I use convertDefault.sh\n\t"
+			<< "\tNo converter defined! I use convertDefault.py\n\t"
 			<< script_command_ << endl;
 
 	} else {
