@@ -3149,11 +3149,11 @@ alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Use Cygwin Paths|#s
+label: Use Windows Paths for LaTeX|#s
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: check_cygwin_path
+name: check_windows_style_tex_paths
 callback: C_FormDialogView_InputCB
 argument: 0
 

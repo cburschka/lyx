@@ -545,7 +545,7 @@ void LyX::init()
 	if (lyxerr.debugging(Debug::LYXRC))
 		lyxrc.print();
 
-	os::cygwin_path_fix(lyxrc.cygwin_path_fix);
+	os::windows_style_tex_paths(lyxrc.windows_style_tex_paths);
 	if (!lyxrc.path_prefix.empty())
 		prependEnvPath("PATH", lyxrc.path_prefix);
 

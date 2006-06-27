@@ -23,7 +23,7 @@
 #include "ui/QPrefLatexModule.h"
 #include "ui/QPrefScreenFontsModule.h"
 #include "ui/QPrefColorsModule.h"
-#if defined(__CYGWIN__) || defined(__CYGWIN32__)
+#if defined(__CYGWIN__) || defined(_WIN32)
 #include "ui/QPrefCygwinPathModule.h"
 #endif
 #include "ui/QPrefDisplayModule.h"
@@ -204,9 +204,9 @@ void QPrefs::apply()
 
 	rc.date_insert_format = fromqstr(datemod->DateED->text());
 
-#if defined(__CYGWIN__) || defined(__CYGWIN32__)
+#if defined(__CYGWIN__) || defined(_WIN32)
 	QPrefCygwinPathModule * cygwinmod(dialog_->cygwinpathModule);
-	rc.cygwin_path_fix = !cygwinmod->pathCB->isChecked();
+	rc.windows_style_tex_paths = cygwinmod->pathCB->isChecked();
 #endif
 
 	QPrefLatexModule * latexmod(dialog_->latexModule);
@@ -548,9 +548,9 @@ void QPrefs::update_contents()
 
 	datemod->DateED->setText(toqstr(rc.date_insert_format));
 
-#if defined(__CYGWIN__) || defined(__CYGWIN32__)
+#if defined(__CYGWIN__) || defined(_WIN32)
 	QPrefCygwinPathModule * cygwinmod(dialog_->cygwinpathModule);
-	cygwinmod->pathCB->setChecked(!rc.cygwin_path_fix);
+	cygwinmod->pathCB->setChecked(rc.windows_style_tex_paths);
 #endif
 
 	QPrefLatexModule * latexmod(dialog_->latexModule);

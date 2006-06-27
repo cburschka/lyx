@@ -22,6 +22,7 @@ src/frontends/LyXView.C
 src/frontends/controllers/ControlAboutlyx.C
 src/frontends/controllers/ControlBibtex.C
 src/frontends/controllers/ControlBox.C
+src/frontends/controllers/ControlDocument.C
 src/frontends/controllers/ControlExternal.C
 src/frontends/controllers/ControlGraphics.C
 src/frontends/controllers/ControlInclude.C
@@ -122,6 +123,7 @@ src/frontends/qt4/Alert_pimpl.C
 src/frontends/qt4/BulletsModule.C
 src/frontends/qt4/Dialogs.C
 src/frontends/qt4/FileDialog.C
+src/frontends/qt4/GuiView.C
 src/frontends/qt4/QAbout.C
 src/frontends/qt4/QBibitem.C
 src/frontends/qt4/QBibtex.C
@@ -161,7 +163,6 @@ src/frontends/qt4/QURL.C
 src/frontends/qt4/QVSpace.C
 src/frontends/qt4/QWrap.C
 src/frontends/qt4/Qt2BC.h
-src/frontends/qt4/QtView.C
 src/frontends/qt4/floatplacement.C
 src/frontends/qt4/validators.C
 src/frontends/xforms/Alert_pimpl.C
@@ -273,6 +274,7 @@ src/rowpainter.C
 src/support/filefilterlist.C
 src/support/package.C.in
 src/support/userinfo.C
+src/tex-strings.C
 src/text.C
 src/text2.C
 src/text3.C

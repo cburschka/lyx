@@ -76,7 +76,7 @@ namespace os {
 
 namespace {
 
-bool cygwin_path_fix_ = false;
+bool windows_style_tex_paths_ = true;
 
 string cygdrive = "/cygdrive";
 
@@ -260,15 +260,15 @@ string internal_path_list(string const & p)
 string latex_path(string const & p)
 {
 	// We may need a posix style path or a windows style path (depending
-	// on cygwin_path_fix_), but we use always forward slashes, since it
-	// gets written into a .tex file.
+	// on windows_style_tex_paths_), but we use always forward slashes,
+	// since it gets written into a .tex file.
 
-	if (cygwin_path_fix_ && is_absolute_path(p)) {
+	if (!windows_style_tex_paths_ && is_absolute_path(p)) {
 		string const drive = p.substr(0, 2);
 		string const cygprefix = cygdrive + "/" + drive.substr(0, 1);
 		string const cygpath = subst(subst(p, '\\', '/'), drive, cygprefix);
 		lyxerr[Debug::LATEX]
-			<< "<Cygwin path correction> ["
+			<< "<Path correction for LaTeX> ["
 			<< p << "]->>["
 			<< cygpath << ']' << endl;
 		return cygpath;
@@ -322,9 +322,9 @@ char path_separator()
 }
 
 
-void cygwin_path_fix(bool use_cygwin_paths)
+void windows_style_tex_paths(bool use_windows_paths)
 {
-	cygwin_path_fix_ = !use_cygwin_paths;
+	windows_style_tex_paths_ = use_windows_paths;
 }
 
 

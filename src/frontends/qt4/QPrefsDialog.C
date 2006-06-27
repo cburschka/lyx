@@ -576,13 +576,13 @@ PrefCygwinPath::PrefCygwinPath(QWidget * parent)
 
 void PrefCygwinPath::apply(LyXRC & rc) const
 {
-	rc.cygwin_path_fix = pathCB->isChecked();
+	rc.windows_style_tex_paths = pathCB->isChecked();
 }
 
 
 void PrefCygwinPath::update(LyXRC const & rc)
 {
-	pathCB->setChecked(rc.cygwin_path_fix);
+	pathCB->setChecked(rc.windows_style_tex_paths);
 }
 
 
@@ -1801,7 +1801,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	add(new PrefScreenFonts(form_));
 	add(new PrefColors(form_));
 
-#if defined(__CYGWIN__) || defined(__CYGWIN32__)
+#if defined(__CYGWIN__) || defined(_WIN32)
 	add(new PrefCygwinPath);
 #endif
 

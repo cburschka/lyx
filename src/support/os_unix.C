@@ -116,7 +116,7 @@ char path_separator()
 }
 
 
-void cygwin_path_fix(bool)
+void windows_style_tex_paths(bool)
 {}
 
 bool canAutoOpenFile(string const & ext, auto_open_mode const mode)
