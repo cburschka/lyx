@@ -1,9 +1,16 @@
+2006-06-27  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* QSpellchecker.C (update_contents): fix bug 2218: Spellchecker
+	doesn't pop up dialogue window for the first misspelled word.
+
 2006-06-27  Enrico Forestieri  <forenr@tlc.unipr.it>
 
 	* QPrefs.C (apply, update_contents): rename cygwin_path_fix as
-	windows_style_tex_paths taking into account updated checkbutton label.
+	windows_style_tex_paths taking into account updated checkbutton
+	label.
 
-	* ui/QPrefCygwinPathModule.ui: update checkbutton label and description.
+	* ui/QPrefCygwinPathModule.ui: update checkbutton label and
+	description.
 
 2006-06-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 

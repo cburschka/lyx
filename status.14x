@@ -137,6 +137,9 @@ What's new
 - Fix crash on exit on MacOS X, and the well known "Mutex destroy failure"
   error message on linux (qt frontend, bugs 2549 and 1029).
 
+- Fix bug where the spellchecker doesn't pop up dialogue window for
+  the first misspelled word (bug 2218).
+
 * Configuration/Installation:
 
 - Replace the old sh version of lib/configure with the new python version

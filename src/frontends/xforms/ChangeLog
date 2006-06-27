@@ -1,3 +1,8 @@
+2006-06-27  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* FormSpellchecker.C (update): fix bug 2218: Spellchecker doesn't
+	pop up dialogue window for the first misspelled word.
+
 2006-06-27  Enrico Forestieri  <forenr@tlc.unipr.it>
 
 	* FormPreferences.C (apply): rename cygwin_path_fix as
