@@ -1972,11 +1972,6 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_CURSOR_FOLLOWS_SCROLLBAR:
 	case LyXRC::RC_CUSTOM_EXPORT_COMMAND:
 	case LyXRC::RC_CUSTOM_EXPORT_FORMAT:
-	case LyXRC::RC_CYGWIN_PATH_FIX:
-		if (lyxrc_orig.cygwin_path_fix != lyxrc_new.cygwin_path_fix) {
-			namespace os = lyx::support::os;
-			os::cygwin_path_fix(lyxrc_new.cygwin_path_fix);
-		}
 	case LyXRC::RC_DATE_INSERT_FORMAT:
 	case LyXRC::RC_DEFAULT_LANGUAGE:
 	case LyXRC::RC_DEFAULT_PAPERSIZE:
@@ -2060,6 +2055,11 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_TEMPDIRPATH:
 	case LyXRC::RC_TEMPLATEPATH:
 	case LyXRC::RC_TEX_ALLOWS_SPACES:
+	case LyXRC::RC_TEX_EXPECTS_WINDOWS_PATHS:
+		if (lyxrc_orig.windows_style_tex_paths != lyxrc_new.windows_style_tex_paths) {
+			namespace os = lyx::support::os;
+			os::windows_style_tex_paths(lyxrc_new.windows_style_tex_paths);
+		}
 	case LyXRC::RC_UIFILE:
 	case LyXRC::RC_USER_EMAIL:
 	case LyXRC::RC_USER_NAME:

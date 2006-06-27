@@ -63,7 +63,7 @@
         </property>
         <property stdset="1">
             <name>text</name>
-            <string>&amp;Use Cygwin-style paths</string>
+            <string>&amp;Use Windows-style paths in LaTeX files</string>
         </property>
         <property>
             <name>toolTip</name>
@@ -71,7 +71,7 @@
         </property>
         <property>
             <name>whatsThis</name>
-            <string>Select if LyX should output Cygwin-style paths rather than Windows-style paths. Useful if you're using the Cygwin teTeX rather than a native Windows MikTeX. Note, however, that you'll need to write shell script wrappers for all your converters.</string>
+            <string>Select if LyX should output Windows-style paths rather than Posix-style paths to LaTeX files. Useful if you're using the native Windows MikTeX rather than the Cygwin teTeX.</string>
         </property>
     </widget>
 </widget>

@@ -1,3 +1,11 @@
+2006-06-27  Enrico Forestieri  <forenr@tlc.unipr.it>
+
+	* os.h: rename cygwin_path_fix as windows_style_tex_paths.
+
+	* os_*.C: rename cygwin_path_fix as windows_style_tex_paths.
+	* os_cygwin.C (external_path, external_path_list): make returned
+	path-style independent of checkbutton for latex path-styles.
+
 2006-06-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* gzstream.h: do not test for HAVE_ZLIB_H, since we require it

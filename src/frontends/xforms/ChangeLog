@@ -1,3 +1,13 @@
+2006-06-27  Enrico Forestieri  <forenr@tlc.unipr.it>
+
+	* FormPreferences.C (apply): rename cygwin_path_fix as
+	windows_style_tex_paths.
+	(build): rename check_cygwin_path as check_windows_style_tex_paths.
+	(update): rename check_cygwin_path as check_windows_style_tex_paths.
+	(feedback): ditto, update checkbutton description.
+
+	* forms/form_preferences.fd: update label and name of checkbutton.
+
 2006-03-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* FormDocument.C (options_apply): do not return a bool anymore

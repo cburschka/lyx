@@ -204,7 +204,7 @@ void QPrefs::apply()
 
 #if defined(__CYGWIN__) || defined(__CYGWIN32__)
 	QPrefCygwinPathModule * cygwinmod(dialog_->cygwinpathModule);
-	rc.cygwin_path_fix = !cygwinmod->pathCB->isChecked();
+	rc.windows_style_tex_paths = cygwinmod->pathCB->isChecked();
 #endif
 
 	QPrefLatexModule * latexmod(dialog_->latexModule);
@@ -546,7 +546,7 @@ void QPrefs::update_contents()
 
 #if defined(__CYGWIN__) || defined(__CYGWIN32__)
 	QPrefCygwinPathModule * cygwinmod(dialog_->cygwinpathModule);
-	cygwinmod->pathCB->setChecked(!rc.cygwin_path_fix);
+	cygwinmod->pathCB->setChecked(rc.windows_style_tex_paths);
 #endif
 
 	QPrefLatexModule * latexmod(dialog_->latexModule);

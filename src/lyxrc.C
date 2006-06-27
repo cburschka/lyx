@@ -80,7 +80,6 @@ keyword_item lyxrcTags[] = {
 	{ "\\cursor_follows_scrollbar", LyXRC::RC_CURSOR_FOLLOWS_SCROLLBAR },
 	{ "\\custom_export_command", LyXRC::RC_CUSTOM_EXPORT_COMMAND },
 	{ "\\custom_export_format", LyXRC::RC_CUSTOM_EXPORT_FORMAT },
-	{ "\\cygwin_path_fix_needed", LyXRC::RC_CYGWIN_PATH_FIX },
 	{ "\\date_insert_format", LyXRC::RC_DATE_INSERT_FORMAT },
 	{ "\\default_language", LyXRC::RC_DEFAULT_LANGUAGE },
 	{ "\\default_papersize", LyXRC::RC_DEFAULT_PAPERSIZE },
@@ -159,6 +158,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\tempdir_path", LyXRC::RC_TEMPDIRPATH },
 	{ "\\template_path", LyXRC::RC_TEMPLATEPATH },
 	{ "\\tex_allows_spaces", LyXRC::RC_TEX_ALLOWS_SPACES },
+	{ "\\tex_expects_windows_paths", LyXRC::RC_TEX_EXPECTS_WINDOWS_PATHS },
 	{ "\\ui_file", LyXRC::RC_UIFILE },
 	{ "\\use_alt_language", LyXRC::RC_USE_ALT_LANG },
 	{ "\\use_escape_chars", LyXRC::RC_USE_ESC_CHARS },
@@ -270,7 +270,7 @@ void LyXRC::setDefaults() {
 	language_command_local = "\\foreignlanguage{$$lang}{";
 	default_language = "english";
 	show_banner = true;
-	cygwin_path_fix = false;
+	windows_style_tex_paths = false;
 	tex_allows_spaces = false;
 	date_insert_format = "%A, %e %B %Y";
 	cursor_follows_scrollbar = false;
@@ -388,9 +388,9 @@ int LyXRC::read(LyXLex & lexrc)
 			}
 			break;
 
-		case RC_CYGWIN_PATH_FIX:
+		case RC_TEX_EXPECTS_WINDOWS_PATHS:
 			if (lexrc.next()) {
-				cygwin_path_fix = lexrc.getBool();
+				windows_style_tex_paths = lexrc.getBool();
  			}
  			break;
 
@@ -1330,11 +1330,11 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 		    index_command != system_lyxrc.index_command) {
 			os << "\\index_command \"" << index_command << "\"\n";
 		}
-	case RC_CYGWIN_PATH_FIX:
+	case RC_TEX_EXPECTS_WINDOWS_PATHS:
 		if (ignore_system_lyxrc ||
-		    cygwin_path_fix != system_lyxrc.cygwin_path_fix) {
-			os << "\\cygwin_path_fix_needed "
-			   << convert<string>(cygwin_path_fix) << '\n';
+		    windows_style_tex_paths != system_lyxrc.windows_style_tex_paths) {
+			os << "\\tex_expects_windows_paths "
+			   << convert<string>(windows_style_tex_paths) << '\n';
 		}
 	case RC_TEX_ALLOWS_SPACES:
 		if (tex_allows_spaces != system_lyxrc.tex_allows_spaces) {
@@ -2130,9 +2130,6 @@ string const LyXRC::getDescription(LyXRCTags tag)
 	case RC_CUSTOM_EXPORT_FORMAT:
 		break;
 
-	case RC_CYGWIN_PATH_FIX:
-		break;
-
 	case RC_DATE_INSERT_FORMAT:
 		//xgettext:no-c-format
 		str = _("This accepts the normal strftime formats; see man strftime for full details. E.g.\"%A, %e. %B %Y\".");
@@ -2399,6 +2396,9 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_TEMPLATEPATH:
 		str = _("The path that LyX will set when offering to choose a template. An empty value selects the directory LyX was started from.");
+		break;
+
+	case RC_TEX_EXPECTS_WINDOWS_PATHS:
 		break;
 
 	case RC_TEX_ALLOWS_SPACES:

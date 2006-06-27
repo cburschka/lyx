@@ -2074,7 +2074,8 @@ void FormPreferences::OutputsMisc::apply(LyXRC & rc) const
 	rc.auto_reset_options = fl_get_button(dialog_->check_autoreset_classopt);
 
 #if defined(__CYGWIN__) || defined(__CYGWIN32__)
-	rc.cygwin_path_fix = fl_get_button(dialog_->check_cygwin_path);
+	rc.windows_style_tex_paths =
+		fl_get_button(dialog_->check_windows_style_tex_paths);
 #endif
 }
 
@@ -2095,7 +2096,7 @@ void FormPreferences::OutputsMisc::build()
 
 #if defined(__CYGWIN__) || defined(__CYGWIN32__)
 #else
-	setEnabled(dialog_->check_cygwin_path, false);
+	setEnabled(dialog_->check_windows_style_tex_paths, false);
 #endif
 
 	fl_addto_choice(dialog_->choice_default_papersize,
@@ -2113,7 +2114,7 @@ void FormPreferences::OutputsMisc::build()
 	setPrehandler(dialog_->input_paperoption);
 	setPrehandler(dialog_->check_autoreset_classopt);
 #if defined(__CYGWIN__) || defined(__CYGWIN32__)
-	setPrehandler(dialog_->check_cygwin_path);
+	setPrehandler(dialog_->check_windows_style_tex_paths);
 #endif
 }
 
@@ -2140,12 +2141,11 @@ FormPreferences::OutputsMisc::feedback(FL_OBJECT const * const ob) const
 	if (ob == dialog_->check_autoreset_classopt)
 		return LyXRC::getDescription(LyXRC::RC_AUTORESET_OPTIONS);
 #if defined(__CYGWIN__) || defined(__CYGWIN32__)
-	if (ob == dialog_->check_cygwin_path)
-		return _("Select if LyX should output Cygwin-style paths "
-			 "rather than Windows-style paths. Useful if you're "
-			 "using the Cygwin teTeX rather than a native Windows "
-			 "MikTeX. Note, however, that you'll need to write "
-			 "shell script wrappers for all your converters.");
+	if (ob == dialog_->check_windows_style_tex_paths)
+		return _("Select if LyX should output Windows-style paths "
+			 "rather than Posix-style paths to LaTeX files. "
+			 "Useful if you're using the native Windows MikTeX "
+			 "rather than the Cygwin teTeX.");
 #endif
 	return string();
 }
@@ -2172,7 +2172,8 @@ void FormPreferences::OutputsMisc::update(LyXRC const & rc)
 	fl_set_button(dialog_->check_autoreset_classopt,
 		      rc.auto_reset_options);
 #if defined(__CYGWIN__) || defined(__CYGWIN32__)
-	fl_set_button(dialog_->check_cygwin_path, rc.cygwin_path_fix);
+	fl_set_button(dialog_->check_windows_style_tex_paths,
+		      rc.windows_style_tex_paths);
 #endif
 }
 

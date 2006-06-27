@@ -74,11 +74,11 @@ char const * popen_read_mode();
  */
 char path_separator();
 
-/** If @c use_cygwin_paths is true, LyX will output cygwin style paths
- *  rather than native Win32 ones. Obviously, this option is used only
+/** If @c use_windows_paths is true, LyX will output Windows-style paths to
+ *  latex files rather than posix ones. Currently, this option is used only
  *  under Cygwin.
  */
-void cygwin_path_fix(bool use_cygwin_paths);
+void windows_style_tex_paths(bool use_windows_paths);
 
 enum auto_open_mode {
 	VIEW,

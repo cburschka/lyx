@@ -282,7 +282,7 @@ char path_separator()
 }
 
 
-void cygwin_path_fix(bool)
+void windows_style_tex_paths(bool)
 {}
 
 

@@ -146,9 +146,12 @@ What's new
   support directory.
 
 - Reading of configuration now goes like this: LyX first reads the file 
-  lyxrc.init (if it exists). If lib/configure.py is newer than
+  lyxrc.dist (if it exists). If lib/configure.py is newer than
   either lyxrc.defaults, textclass.lst or packages.lst, it is re-run
   before loading lyxrc.defaults and preferences. 
+
+- When compiling with --with-version-suffix under windows, do not
+  rename the executable files.
 
 - Fix lib/configure.py to find tex2lyx when compiling with
   --with-version-suffix (bug 2285).
@@ -157,13 +160,15 @@ What's new
 
 - Use the clean_dvi.py script on windows not only in the installer but also
   in the source package.
+
 - Fix the code to find interface localization under Windows and Mac OS X.
+
+- replace the \cygwin_path_fix_needed preference with the better named
+  \tex_expects_windows_paths; this is autodetected and only matters in
+  windows. 
 
 - remove --enable-compression-support option of configure. Compression
   support via zlib is now a requirement.
-
-- When compiling with --with-version-suffix under windows, do not
-  rename the executable files.
 
 - Fix compilation on DragonFly BSD.
 

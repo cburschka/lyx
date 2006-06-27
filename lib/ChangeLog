@@ -1,3 +1,9 @@
+2006-06-27  Enrico Forestieri  <forenr@tlc.unipr.it>
+
+	* configure.py: rename checkCygwinPath -> checkTeXPaths,
+	cygwin_path_fix -> windows_style_tex_paths,
+	\cygwin_path_fix_needed -> \tex_expects_windows_paths.
+
 2006-06-01  Panayotis Papasotiriou  <papasot@physics.upatras.gr>
 
 	* Makefile.am:

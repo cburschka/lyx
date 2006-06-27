@@ -1,3 +1,10 @@
+2006-06-27  Enrico Forestieri  <forenr@tlc.unipr.it>
+
+	* QPrefs.C (apply, update_contents): rename cygwin_path_fix as
+	windows_style_tex_paths taking into account updated checkbutton label.
+
+	* ui/QPrefCygwinPathModule.ui: update checkbutton label and description.
+
 2006-06-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* qfont_loader.[Ch]: use our own font width cache with Qt/Mac.

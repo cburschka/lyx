@@ -1,3 +1,12 @@
+2006-06-27  Enrico Forestieri <forenr@tlc.unipr.it>
+
+	* lyxrc.h: rename RC_CYGWIN_PATH_FIX as RC_TEX_EXPECTS_WINDOWS_PATHS
+	and cygwin_path_fix as windows_style_tex_paths.
+	* lyxfunc.C (actOnUpdatedPrefs): ditto.
+	* lyxrc.C: ditto; also rename \cygwin_path_fix_needed as
+	\tex_expects_windows_paths.
+	* lyx_main.C (init): rename cygwin_path_fix as windows_style_tex_paths.
+
 2006-06-07  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* bufferparams.h: make author_map use an unsigned index, to avoid

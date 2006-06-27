@@ -51,7 +51,6 @@ public:
 		RC_CURSOR_FOLLOWS_SCROLLBAR,
 		RC_CUSTOM_EXPORT_COMMAND,
 		RC_CUSTOM_EXPORT_FORMAT,
-		RC_CYGWIN_PATH_FIX,
 		RC_DATE_INSERT_FORMAT,
 		RC_DEFAULT_LANGUAGE,
 		RC_DEFAULT_PAPERSIZE,
@@ -124,6 +123,7 @@ public:
 		RC_TEMPDIRPATH,
 		RC_TEMPLATEPATH,
 		RC_TEX_ALLOWS_SPACES,
+		RC_TEX_EXPECTS_WINDOWS_PATHS,
 		RC_UIFILE,
 		RC_USER_EMAIL,
 		RC_USER_NAME,
@@ -376,8 +376,8 @@ public:
 	std::string user_name;
 	/// user email
 	std::string user_email;
-	///
-	bool cygwin_path_fix;
+	/// True if the TeX engine cannot handle posix paths
+	bool windows_style_tex_paths;
 	/// True if the TeX engine can handle file names containing spaces
 	bool tex_allows_spaces;
 	/** Prepend paths to the PATH environment variable.

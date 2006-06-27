@@ -39,7 +39,7 @@ namespace os {
 
 namespace {
 
-bool cygwin_path_fix_ = false;
+bool windows_style_tex_paths_ = false;
 
 // In both is_posix_path() and is_windows_path() it is assumed that
 // a valid posix or pseudo-windows path is passed. They simply tell
@@ -186,8 +186,7 @@ string::size_type common_path(string const & p1, string const & p2)
 
 string external_path(string const & p)
 {
-	return convert_path(p, cygwin_path_fix_ ? PathStyle(windows)
-						: PathStyle(posix));
+	return convert_path(p, PathStyle(windows));
 }
 
 
@@ -199,8 +198,7 @@ string internal_path(string const & p)
 
 string external_path_list(string const & p)
 {
-	return convert_path_list(p, cygwin_path_fix_ ? PathStyle(windows)
-						     : PathStyle(posix));
+	return convert_path_list(p, PathStyle(windows));
 }
 
 
@@ -213,13 +211,13 @@ string internal_path_list(string const & p)
 string latex_path(string const & p)
 {
 	// We may need a posix style path or a windows style path (depending
-	// on cygwin_path_fix_), but we use always forward slashes, since it
-	// gets written into a .tex file.
+	// on windows_style_tex_paths_), but we use always forward slashes,
+	// since it gets written into a .tex file.
 
-	if (cygwin_path_fix_ && is_absolute_path(p)) {
+	if (windows_style_tex_paths_ && is_absolute_path(p)) {
 		string dos_path = convert_path(p, PathStyle(windows));
 		lyxerr[Debug::LATEX]
-			<< "<Cygwin path correction> ["
+			<< "<Path correction for LaTeX> ["
 			<< p << "]->>["
 			<< dos_path << ']' << endl;
 		return dos_path;
@@ -268,9 +266,9 @@ char path_separator()
 }
 
 
-void cygwin_path_fix(bool use_cygwin_paths)
+void windows_style_tex_paths(bool use_windows_paths)
 {
-	cygwin_path_fix_ = use_cygwin_paths;
+	windows_style_tex_paths_ = use_windows_paths;
 }
 
 
@@ -298,8 +296,7 @@ bool autoOpenFile(string const & filename, auto_open_mode const mode)
 {
 	// reference: http://msdn.microsoft.com/library/default.asp?url=/library/en-us/shellcc
 	//                 /platform/shell/reference/functions/shellexecute.asp
-	string const win_path =
-		os::convert_path(filename, os::PathStyle(os::windows));
+	string const win_path = convert_path(filename, PathStyle(windows));
 	char const * action = (mode == VIEW) ? "open" : "edit";
 	return reinterpret_cast<int>(ShellExecute(NULL, action, 
 		win_path.c_str(), NULL, NULL, 1)) > 32;
