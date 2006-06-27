@@ -1,4 +1,3 @@
-# translation of pl.po to Polski
 # translation of pl.po to Polish
 # Polskie teksty dla LyX-a (2001).
 # Polish messages for LyX (2001).
@@ -6,20 +5,20 @@
 # Pawe³ Dziekoñski <p.dziekonski@mml.ch.pwr.wroc.pl>
 # Tomasz £uczak <tlu@technodat.com.pl>
 # Arkadiusz Lipiec <alipiec@elka.pw.edu.pl>
-# Tomasz £uczak <tlu@technodat.com.pl>, 2005, 2006.
 #
+# Tomasz £uczak <tlu@technodat.com.pl>, 2005, 2006.
 msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-02-10 09:25+0100\n"
-"PO-Revision-Date: 2006-01-30 22:49+0100\n"
+"POT-Creation-Date: 2006-03-06 11:08+0100\n"
+"PO-Revision-Date: 2006-03-31 21:31+0200\n"
 "Last-Translator: Tomasz £uczak <tlu@technodat.com.pl>\n"
-"Language-Team: Polski <pl@li.org>\n"
+"Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-2\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.10.2\n"
+"X-Generator: KBabel 1.11.1\n"
 
 #: src/frontends/xforms/forms/form_aboutlyx.fd:44
 #: src/frontends/xforms/forms/form_changes.fd:98
@@ -211,7 +210,8 @@ msgstr "Jednostka szeroko¶ci"
 
 #: src/frontends/xforms/forms/form_box.fd:188
 #: src/frontends/controllers/ControlBox.C:83 src/frontends/qt2/QBox.C:196
-#: src/frontends/qt2/QBox.C:230
+#: src/frontends/qt2/QBox.C:230 src/frontends/qt4/QBox.C:195
+#: src/frontends/qt4/QBox.C:229
 msgid "Width"
 msgstr "Szeroko¶æ"
 
@@ -230,7 +230,8 @@ msgstr "Wyrównanie w poziomie"
 
 #: src/frontends/xforms/forms/form_box.fd:260
 #: src/frontends/controllers/ControlBox.C:80 src/frontends/qt2/QBox.C:187
-#: src/frontends/qt2/QBox.C:221
+#: src/frontends/qt2/QBox.C:221 src/frontends/qt4/QBox.C:186
+#: src/frontends/qt4/QBox.C:220
 msgid "Height"
 msgstr "Wysoko¶æ"
 
@@ -254,14 +255,17 @@ msgstr "Od¶wie¿"
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:656 src/frontends/gtk/GBox.C:279
 #: src/frontends/gtk/GBox.C:292 src/frontends/gtk/GBox.C:317
 #: src/frontends/qt2/QBox.C:174 src/frontends/qt2/QBox.C:281
-#: src/frontends/qt2/QBox.C:289 src/insets/insetbox.C:144
+#: src/frontends/qt2/QBox.C:289 src/frontends/qt4/QBox.C:173
+#: src/frontends/qt4/QBox.C:280 src/frontends/qt4/QBox.C:288
+#: src/insets/insetbox.C:144
 msgid "Parbox"
 msgstr "Parbox"
 
 #: src/frontends/xforms/forms/form_box.fd:368
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:662 src/frontends/gtk/GBox.C:280
 #: src/frontends/gtk/GBox.C:293 src/frontends/qt2/QBox.C:282
-#: src/frontends/qt2/QBox.C:290 src/insets/insetbox.C:146
+#: src/frontends/qt2/QBox.C:290 src/frontends/qt4/QBox.C:281
+#: src/frontends/qt4/QBox.C:289 src/insets/insetbox.C:146
 msgid "Minipage"
 msgstr "Ministrona"
 
@@ -985,7 +989,7 @@ msgstr "Do³±cz|#D"
 
 #: src/frontends/xforms/forms/form_include.fd:261
 msgid "Preview|#P"
-msgstr "Podgl±d|#o"
+msgstr "Podgl±d|#g"
 
 #: src/frontends/xforms/forms/form_maths_delim.fd:152
 msgid ""
@@ -1966,7 +1970,8 @@ msgstr "Z³am stronê na bie¿±cym wierszu|#Z"
 #: src/frontends/xforms/forms/form_tabular.fd:1638
 #: src/frontends/xforms/forms/form_tabular.fd:1656
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:60
-#: src/frontends/qt2/QDocument.C:166 src/text.C:2231
+#: src/frontends/qt2/QDocument.C:166 src/frontends/qt4/QDocumentDialog.C:157
+#: src/text.C:2229
 msgid "Double"
 msgstr "Podwójna"
 
@@ -2196,6 +2201,8 @@ msgstr "Wielko¶æ:"
 #: src/frontends/qt2/ui/BulletsModuleBase.ui:681
 #: src/frontends/qt2/ui/BulletsModuleBase.ui:975
 #: src/frontends/qt2/QDocument.C:143 src/frontends/qt2/QDocument.C:155
+#: src/frontends/qt4/QDocumentDialog.C:141
+#: src/frontends/qt4/QDocumentDialog.C:181
 msgid "default"
 msgstr "Domy¶lny"
 
@@ -2550,6 +2557,7 @@ msgstr "Klucz bibliografii"
 
 #: src/frontends/qt2/ui/QBibitemDialogBase.ui:114
 #: src/frontends/qt2/ui/QRefDialogBase.ui:182 src/frontends/qt2/Dialogs.C:239
+#: src/frontends/qt4/Dialogs.C:240
 msgid "&Label:"
 msgstr "&Etykieta:"
 
@@ -2599,7 +2607,8 @@ msgstr "Dostêpne bazy BibTeX-a"
 #: src/frontends/qt2/ui/QIndexDialogBase.ui:143
 #: src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/BufferView_pimpl.C:286
 #: src/frontends/gtk/GBC.h:27 src/frontends/qt2/Qt2BC.h:36
-#: src/frontends/xforms/xformsBC.h:29 src/lyxfunc.C:770
+#: src/frontends/qt4/Qt2BC.h:36 src/frontends/xforms/xformsBC.h:29
+#: src/lyxfunc.C:770
 msgid "Cancel"
 msgstr "Anuluj"
 
@@ -2729,7 +2738,8 @@ msgstr "&Zastosuj"
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:366
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:100
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:100
-#: src/frontends/qt2/ui/QWrapDialogBase.ui:93 src/frontends/qt2/QTabular.C:184
+#: src/frontends/qt2/ui/QWrapDialogBase.ui:93 src/frontends/gtk/GTabular.C:353
+#: src/frontends/qt2/QTabular.C:184 src/frontends/qt4/QTabular.C:184
 #: src/frontends/xforms/FormBox.C:90 src/frontends/xforms/FormParagraph.C:187
 msgid "Left"
 msgstr "Lewy"
@@ -2739,7 +2749,8 @@ msgstr "Lewy"
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:106
 #: src/frontends/controllers/ControlExternal.C:228
 #: src/frontends/controllers/ControlGraphics.C:171
-#: src/frontends/qt2/QTabular.C:185 src/frontends/xforms/FormBox.C:91
+#: src/frontends/gtk/GTabular.C:354 src/frontends/qt2/QTabular.C:185
+#: src/frontends/qt4/QTabular.C:185 src/frontends/xforms/FormBox.C:91
 #: src/frontends/xforms/FormParagraph.C:180
 msgid "Center"
 msgstr "¦rodkowane"
@@ -2747,7 +2758,8 @@ msgstr "¦rodkowane"
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:378
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:106
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:112
-#: src/frontends/qt2/ui/QWrapDialogBase.ui:99 src/frontends/qt2/QTabular.C:186
+#: src/frontends/qt2/ui/QWrapDialogBase.ui:99 src/frontends/gtk/GTabular.C:355
+#: src/frontends/qt2/QTabular.C:186 src/frontends/qt4/QTabular.C:186
 #: src/frontends/xforms/FormBox.C:92 src/frontends/xforms/FormParagraph.C:194
 msgid "Right"
 msgstr "Prawy"
@@ -2813,6 +2825,8 @@ msgstr "&Pude³ko w pionie:"
 #: src/frontends/controllers/ControlBox.C:79 src/frontends/gtk/GBox.C:291
 #: src/frontends/gtk/GBox.C:319 src/frontends/qt2/QBox.C:172
 #: src/frontends/qt2/QBox.C:288 src/frontends/qt2/QBoxDialog.C:60
+#: src/frontends/qt4/QBox.C:171 src/frontends/qt4/QBox.C:287
+#: src/frontends/qt4/QBoxDialog.C:74
 msgid "None"
 msgstr "Brak"
 
@@ -2896,6 +2910,8 @@ msgstr "Seria czcionki"
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:162
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:217
 #: src/frontends/qt2/QDocumentDialog.C:80 src/frontends/qt2/QPrefsDialog.C:104
+#: src/frontends/qt4/QDocumentDialog.C:377
+#: src/frontends/qt4/QPrefsDialog.C:134
 #: src/frontends/xforms/FormDocument.C:421
 #: src/frontends/xforms/FormPreferences.C:273
 msgid "Language"
@@ -2964,7 +2980,8 @@ msgstr "Zastosuj automatycznie ka¿d± zmianê"
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:366
 #: src/frontends/qt2/ui/QTabularCreateDialogBase.ui:323
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:1252 src/frontends/gtk/GBC.h:28
-#: src/frontends/qt2/Qt2BC.h:36 src/frontends/xforms/xformsBC.h:29
+#: src/frontends/qt2/Qt2BC.h:36 src/frontends/qt4/Qt2BC.h:36
+#: src/frontends/xforms/xformsBC.h:29
 msgid "Close"
 msgstr "Zamknij"
 
@@ -3223,7 +3240,7 @@ msgstr "Wy¶wietlanie na ekranie"
 #: src/frontends/controllers/ControlExternal.C:226
 #: src/frontends/controllers/ControlGraphics.C:169
 #: src/frontends/gtk/GDocument.C:170 src/frontends/qt2/QDocument.C:111
-#: src/lyxfont.C:516
+#: src/frontends/qt4/QDocumentDialog.C:193 src/lyxfont.C:516
 msgid "Default"
 msgstr "Domy¶lny"
 
@@ -3682,7 +3699,8 @@ msgid "Print as grey text"
 msgstr "Drukuj jako szary tekst"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:48
-#: src/frontends/qt2/QDocument.C:162 src/text.C:2225
+#: src/frontends/qt2/QDocument.C:162 src/frontends/qt4/QDocumentDialog.C:153
+#: src/text.C:2223
 msgid "Single"
 msgstr "Pojedyñczy"
 
@@ -3694,6 +3712,8 @@ msgstr "1.5"
 #: src/frontends/qt2/ui/QVSpaceDialogBase.ui:151
 #: src/frontends/gtk/GDocument.C:150 src/frontends/gtk/GDocument.C:171
 #: src/frontends/qt2/QDocument.C:112 src/frontends/qt2/QDocument.C:168
+#: src/frontends/qt4/QDocumentDialog.C:159
+#: src/frontends/qt4/QDocumentDialog.C:194
 msgid "Custom"
 msgstr "W³asne"
 
@@ -3993,36 +4013,43 @@ msgstr "Dodatkowe opcje rozmiaru papieru dla przegl±darek DVI"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:250
 #: src/frontends/gtk/GDocument.C:172 src/frontends/qt2/QDocument.C:113
+#: src/frontends/qt4/QDocumentDialog.C:195
 msgid "US letter"
 msgstr "US letter"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:256
 #: src/frontends/gtk/GDocument.C:173 src/frontends/qt2/QDocument.C:114
+#: src/frontends/qt4/QDocumentDialog.C:196
 msgid "US legal"
 msgstr "US legal"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:262
 #: src/frontends/gtk/GDocument.C:174 src/frontends/qt2/QDocument.C:115
+#: src/frontends/qt4/QDocumentDialog.C:197
 msgid "US executive"
 msgstr "US executive"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:268
 #: src/frontends/gtk/GDocument.C:175 src/frontends/qt2/QDocument.C:116
+#: src/frontends/qt4/QDocumentDialog.C:198
 msgid "A3"
 msgstr "A3"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:274
 #: src/frontends/gtk/GDocument.C:176 src/frontends/qt2/QDocument.C:117
+#: src/frontends/qt4/QDocumentDialog.C:199
 msgid "A4"
 msgstr "A4"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:280
 #: src/frontends/gtk/GDocument.C:177 src/frontends/qt2/QDocument.C:118
+#: src/frontends/qt4/QDocumentDialog.C:200
 msgid "A5"
 msgstr "A5"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:286
 #: src/frontends/gtk/GDocument.C:180 src/frontends/qt2/QDocument.C:121
+#: src/frontends/qt4/QDocumentDialog.C:203
 msgid "B5"
 msgstr "B5"
 
@@ -4342,6 +4369,7 @@ msgid "Update the label list"
 msgstr "Aktualizacja listy etykiet"
 
 #: src/frontends/qt2/ui/QRefDialogBase.ui:89 src/frontends/qt2/QRef.C:145
+#: src/frontends/qt4/QRef.C:144
 msgid "&Go to Label"
 msgstr "Id¼ do &etykiety"
 
@@ -4492,7 +4520,8 @@ msgid "&Horizontal alignment:"
 msgstr "&Justowanie:"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:94
-#: src/frontends/qt2/QTabular.C:188 src/frontends/xforms/FormParagraph.C:173
+#: src/frontends/gtk/GTabular.C:357 src/frontends/qt2/QTabular.C:188
+#: src/frontends/qt4/QTabular.C:188 src/frontends/xforms/FormParagraph.C:173
 msgid "Block"
 msgstr "Blok"
 
@@ -4732,7 +4761,7 @@ msgstr "Od¶wie¿a listê plików"
 
 #: src/frontends/qt2/ui/QTexinfoDialogBase.ui:199
 msgid "&View"
-msgstr "P&odgl±d"
+msgstr "Pod&gl±d"
 
 #: src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
 msgid ""
@@ -4746,7 +4775,7 @@ msgid "Close this dialog"
 msgstr "Zamyka okno"
 
 #: src/frontends/qt2/ui/QThesaurusDialogBase.ui:60
-#: src/frontends/qt2/Dialogs.C:233
+#: src/frontends/qt2/Dialogs.C:233 src/frontends/qt4/Dialogs.C:234
 msgid "&Keyword:"
 msgstr "&S³owo kluczowe:"
 
@@ -4790,7 +4819,8 @@ msgstr "&URL:"
 #: src/frontends/qt2/ui/QURLDialogBase.ui:53
 #: src/frontends/qt2/ui/QURLDialogBase.ui:94 lib/layouts/scrlttr2.layout:213
 #: lib/layouts/amsdefs.inc:184 src/frontends/gtk/GUrl.C:37
-#: src/frontends/qt2/QURL.C:33 src/frontends/xforms/FormUrl.C:27
+#: src/frontends/qt2/QURL.C:33 src/frontends/qt4/QURL.C:33
+#: src/frontends/xforms/FormUrl.C:27
 msgid "URL"
 msgstr "URL"
 
@@ -4832,17 +4862,17 @@ msgid "DefSkip"
 msgstr "Domy¶lny odstêp"
 
 #: src/frontends/qt2/ui/QVSpaceDialogBase.ui:127
-#: src/frontends/qt2/QDocument.C:148
+#: src/frontends/qt2/QDocument.C:148 src/frontends/qt4/QDocumentDialog.C:146
 msgid "SmallSkip"
 msgstr "Ma³y odstêp"
 
 #: src/frontends/qt2/ui/QVSpaceDialogBase.ui:133
-#: src/frontends/qt2/QDocument.C:149
+#: src/frontends/qt2/QDocument.C:149 src/frontends/qt4/QDocumentDialog.C:147
 msgid "MedSkip"
 msgstr "¦redni odstêp"
 
 #: src/frontends/qt2/ui/QVSpaceDialogBase.ui:139
-#: src/frontends/qt2/QDocument.C:150
+#: src/frontends/qt2/QDocument.C:150 src/frontends/qt4/QDocumentDialog.C:148
 msgid "BigSkip"
 msgstr "Du¿y odstêp"
 
@@ -5281,6 +5311,7 @@ msgstr "Has³o indeksu---"
 #: lib/layouts/aguplus.inc:171 lib/layouts/amsdefs.inc:227
 #: lib/layouts/scrclass.inc:223 lib/layouts/stdstruct.inc:39
 #: lib/layouts/svjour.inc:327 src/frontends/qt2/QDocumentDialog.C:82
+#: src/frontends/qt4/QDocumentDialog.C:379
 msgid "Bibliography"
 msgstr "Bibliografia"
 
@@ -5288,7 +5319,7 @@ msgstr "Bibliografia"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:411
 #: lib/layouts/ijmpd.layout:163 lib/layouts/ijmpd.layout:171
 #: lib/layouts/kluwer.layout:324 lib/layouts/kluwer.layout:337
-#: src/rowpainter.C:426
+#: src/rowpainter.C:425
 msgid "Appendix"
 msgstr "Dodatek"
 
@@ -5460,7 +5491,7 @@ msgid "Acknowledgements."
 msgstr ""
 
 #: lib/layouts/aapaper.layout:63 lib/layouts/egs.layout:637
-#: src/frontends/qt2/QPrefsDialog.C:111
+#: src/frontends/qt2/QPrefsDialog.C:111 src/frontends/qt4/QPrefsDialog.C:141
 msgid "LaTeX"
 msgstr "LaTeX"
 
@@ -5473,7 +5504,8 @@ msgstr "E-mail"
 
 #: lib/layouts/aapaper.layout:93 lib/layouts/aapaper.inc:107
 #: lib/ui/stdtoolbars.ui:91 src/frontends/gtk/GThesaurus.C:47
-#: src/frontends/qt2/QThesaurus.C:29 src/frontends/xforms/FormThesaurus.C:44
+#: src/frontends/qt2/QThesaurus.C:29 src/frontends/qt4/QThesaurus.C:29
+#: src/frontends/xforms/FormThesaurus.C:44
 msgid "Thesaurus"
 msgstr "S³ownik synonimów"
 
@@ -5743,92 +5775,91 @@ msgstr "Konkluzja."
 
 #: lib/layouts/amsart-seq.layout:139
 msgid "Theorem \\arabic{theorem}."
-msgstr ""
+msgstr "Theorem \\arabic{theorem}."
 
 #: lib/layouts/amsart-seq.layout:145
 msgid "Corollary \\arabic{corollary}."
-msgstr ""
+msgstr "Corollary \\arabic{corollary}."
 
 #: lib/layouts/amsart-seq.layout:151
 msgid "Lemma \\arabic{lemma}."
-msgstr ""
+msgstr "Lemma \\arabic{lemma}."
 
 #: lib/layouts/amsart-seq.layout:157
 msgid "Proposition \\arabic{proposition}."
-msgstr "Propozycja \\arabic{proposition}."
+msgstr "Proposition \\arabic{proposition}."
 
 #: lib/layouts/amsart-seq.layout:163
 msgid "Conjecture \\arabic{conjecture}."
-msgstr ""
+msgstr "Conjecture \\arabic{conjecture}."
 
 #: lib/layouts/amsart-seq.layout:169
 msgid "Criterion \\arabic{criterion}."
-msgstr "Kryterium \\arabic{criterion}."
+msgstr "Criterion \\arabic{criterion}."
 
 #: lib/layouts/amsart-seq.layout:175
 msgid "Algorithm \\arabic{algorithm}."
-msgstr "Algorytm \\arabic{algorithm}."
+msgstr "Algorithm \\arabic{algorithm}."
 
 #: lib/layouts/amsart-seq.layout:181
 msgid "Fact \\arabic{fact}."
-msgstr "Fakt \\arabic{fact}."
+msgstr "Fact \\arabic{fact}."
 
 #: lib/layouts/amsart-seq.layout:187
 msgid "Axiom \\arabic{axiom}."
-msgstr "Aksjomat \\arabic{axiom}."
+msgstr "Axiom \\arabic{axiom}."
 
 #: lib/layouts/amsart-seq.layout:193
 msgid "Definition \\arabic{definition}."
-msgstr "Definicja \\arabic{definition}."
+msgstr "Definition \\arabic{definition}."
 
 #: lib/layouts/amsart-seq.layout:199
 msgid "Example \\arabic{example}."
-msgstr "Przyk³ad \\arabic{example}."
+msgstr "Example \\arabic{example}."
 
 #: lib/layouts/amsart-seq.layout:205
 msgid "Condition \\arabic{condition}."
-msgstr "Warunek \\arabic{condition}."
+msgstr "Condition \\arabic{condition}."
 
 #: lib/layouts/amsart-seq.layout:211
 msgid "Problem \\arabic{problem}."
 msgstr "Problem \\arabic{problem}."
 
 #: lib/layouts/amsart-seq.layout:217
-#, fuzzy
 msgid "Exercise \\arabic{exercise}."
-msgstr "Æwiczenie \\arabic{execise}."
+msgstr "Exercise \\arabic{exercise}."
 
 #: lib/layouts/amsart-seq.layout:223
 msgid "Remark \\arabic{remark}."
-msgstr ""
+msgstr "Remark \\arabic{remark}."
 
 #: lib/layouts/amsart-seq.layout:229
 msgid "Claim \\arabic{claim}."
-msgstr ""
+msgstr "Claim \\arabic{claim}."
 
 #: lib/layouts/amsart-seq.layout:235
 msgid "Note \\arabic{note}."
-msgstr ""
+msgstr "Note \\arabic{note}."
 
 #: lib/layouts/amsart-seq.layout:241
 msgid "Notation \\arabic{notation}."
-msgstr ""
+msgstr "Notation \\arabic{notation}."
 
 #: lib/layouts/amsart-seq.layout:247
 msgid "Summary \\arabic{summary}."
-msgstr "Podsumowanie \\arabic{summary}."
+msgstr "Summary \\arabic{summary}."
 
 #: lib/layouts/amsart-seq.layout:253
 msgid "Acknowledgement \\arabic{acknowledgement}."
-msgstr ""
+msgstr "Acknowledgement \\arabic{acknowledgement}."
 
 #: lib/layouts/amsart-seq.layout:259
 msgid "Case \\arabic{case}."
-msgstr "Przypadek \\arabic{case}."
+msgstr "Case \\arabic{case}."
 
 #: lib/layouts/amsart-seq.layout:265
 msgid "Conclusion \\arabic{conclusion}."
-msgstr "Konkluzja \\arabic{conclusion}."
+msgstr "Conclusion \\arabic{conclusion}."
 
 #: lib/layouts/amsbook.layout:96 lib/layouts/amsbook.layout:97
 #: lib/layouts/numarticle.inc:16
@@ -5965,7 +5996,7 @@ msgstr "AKT"
 
 #: lib/layouts/broadway.layout:69
 msgid "ACT \\arabic{act}"
-msgstr "AKT \\arabic{act}"
+msgstr "ACT \\arabic{act}"
 
 #: lib/layouts/broadway.layout:73 lib/layouts/broadway.layout:102
 msgid "SCENE"
@@ -5973,7 +6004,7 @@ msgstr "SCENA"
 
 #: lib/layouts/broadway.layout:86
 msgid "SCENE \\arabic{scene}"
-msgstr "SCENA \\arabic{scene}"
+msgstr "SCENE \\arabic{scene}"
 
 #: lib/layouts/broadway.layout:90
 msgid "SCENE*"
@@ -6385,35 +6416,35 @@ msgstr "DOWÓD."
 
 #: lib/layouts/elsart.layout:322
 msgid "Lemma \\arabic{theorem}"
-msgstr ""
+msgstr "Lemma \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:329
 msgid "Corollary \\arabic{theorem}"
-msgstr ""
+msgstr "Corollary \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:336
 msgid "Proposition \\arabic{theorem}"
-msgstr "Propozycja \\arabic{theorem}"
+msgstr "Proposition \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:343
 msgid "Criterion \\arabic{theorem}"
-msgstr "Kryterium \\arabic{theorem}"
+msgstr "Criterion \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:350
 msgid "Algorithm \\arabic{theorem}"
-msgstr "Algorytm \\arabic{theorem}"
+msgstr "Algorithm \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:357
 msgid "Definition \\arabic{theorem}"
-msgstr "Definicja \\arabic{theorem}"
+msgstr "Definition \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:371
 msgid "Conjecture \\arabic{theorem}"
-msgstr ""
+msgstr "Conjecture \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:378
 msgid "Example \\arabic{theorem}"
-msgstr "Przyk³ad \\arabic{theorem}"
+msgstr "Example \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:385
 msgid "Problem \\arabic{theorem}"
@@ -6421,27 +6452,27 @@ msgstr "Problem \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:392
 msgid "Remark \\arabic{theorem}"
-msgstr ""
+msgstr "Remark \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:399
 msgid "Note \\arabic{theorem}"
-msgstr ""
+msgstr "Note \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:406
 msgid "Claim \\arabic{theorem}"
-msgstr ""
+msgstr "Claim \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:414
 msgid "Summary \\arabic{summ}"
-msgstr "Podsumowanie \\arabic{summ}"
+msgstr "Summary \\arabic{summ}"
 
 #: lib/layouts/elsart.layout:422
 msgid "Case \\arabic{case}"
-msgstr "Przypadek \\arabic{case}"
+msgstr "Case \\arabic{case}"
 
 #: lib/layouts/elsart.layout:434
 msgid "Acknowledgement \\arabic{theorem}"
-msgstr ""
+msgstr "Acknowledgement \\arabic{theorem}"
 
 #: lib/layouts/entcs.layout:72
 msgid "FrontMatter"
@@ -7855,7 +7886,8 @@ msgid "Published-online:"
 msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:263 src/frontends/gtk/GCitation.C:71
-#: src/frontends/qt2/QCitation.C:50 src/frontends/xforms/FormCitation.C:100
+#: src/frontends/qt2/QCitation.C:50 src/frontends/qt4/QCitation.C:49
+#: src/frontends/xforms/FormCitation.C:101
 msgid "Citation"
 msgstr "Cytowanie"
 
@@ -8005,23 +8037,23 @@ msgstr "Algorytm #."
 
 #: lib/layouts/amsmaths.inc:79
 msgid "Theorem @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Theorem @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:106
 msgid "Corollary @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Corollary @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:128
 msgid "Lemma @Section@.\\arabic{theorem}."
-msgstr "Lemat @Section@.\\arabic{theorem}."
+msgstr "Lemma @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:150
 msgid "Proposition @Section@.\\arabic{theorem}."
-msgstr "Propozycja @Section@.\\arabic{theorem}."
+msgstr "Proposition @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:172
 msgid "Conjecture @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Conjecture @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:180
 msgid "Conjecture*"
@@ -8029,15 +8061,15 @@ msgstr ""
 
 #: lib/layouts/amsmaths.inc:194
 msgid "Criterion @Section@.\\arabic{theorem}."
-msgstr "Kryterium @Section@.\\arabic{theorem}."
+msgstr "Criterion @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:205
 msgid "Algorithm @Section@.\\arabic{theorem}."
-msgstr "Algorytm @Section@.\\arabic{theorem}."
+msgstr "Algorithm @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:216
 msgid "Fact @Section@.\\arabic{theorem}."
-msgstr "Fakt @Section@.\\arabic{theorem}."
+msgstr "Fact @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:224
 msgid "Fact*"
@@ -8045,15 +8077,15 @@ msgstr "Fakt*"
 
 #: lib/layouts/amsmaths.inc:238
 msgid "Axiom @Section@.\\arabic{theorem}."
-msgstr "Aksjomat @Section@.\\arabic{theorem}."
+msgstr "Axiom @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:249
 msgid "Definition @Section@.\\arabic{theorem}."
-msgstr "Definicja @Section@.\\arabic{theorem}."
+msgstr "Definition @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:279
 msgid "Example @Section@.\\arabic{theorem}."
-msgstr "Przyk³ad @Section@.\\arabic{theorem}."
+msgstr "Example @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:287
 msgid "Example*"
@@ -8061,7 +8093,7 @@ msgstr "Przyk³ad*"
 
 #: lib/layouts/amsmaths.inc:301
 msgid "Condition @Section@.\\arabic{theorem}."
-msgstr "Warunek @Section@.\\arabic{theorem}."
+msgstr "Condition @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:309
 msgid "Condition*"
@@ -8077,7 +8109,7 @@ msgstr "Problem*"
 
 #: lib/layouts/amsmaths.inc:345
 msgid "Exercise @Section@.\\arabic{theorem}."
-msgstr "Æwiczenie @Section@.\\arabic{theorem}."
+msgstr "Exercise @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:354
 msgid "Exercise*"
@@ -8085,7 +8117,7 @@ msgstr "Æwiczenie*"
 
 #: lib/layouts/amsmaths.inc:368
 msgid "Remark @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Remark @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:384
 msgid "Remark*"
@@ -8093,7 +8125,7 @@ msgstr ""
 
 #: lib/layouts/amsmaths.inc:399
 msgid "Claim @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Claim @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:407
 msgid "Claim*"
@@ -8101,7 +8133,7 @@ msgstr ""
 
 #: lib/layouts/amsmaths.inc:421
 msgid "Note @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Note @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:429
 msgid "Note*"
@@ -8109,7 +8141,7 @@ msgstr ""
 
 #: lib/layouts/amsmaths.inc:443
 msgid "Notation @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Notation @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:451
 msgid "Notation*"
@@ -8117,11 +8149,11 @@ msgstr ""
 
 #: lib/layouts/amsmaths.inc:465
 msgid "Summary @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Summary @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:476
 msgid "Acknowledgement @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Acknowledgement @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:484
 msgid "Acknowledgement*"
@@ -8129,11 +8161,11 @@ msgstr ""
 
 #: lib/layouts/amsmaths.inc:498
 msgid "Case @Section@.\\arabic{theorem}."
-msgstr "Przypadek @Section@.\\arabic{theorem}."
+msgstr "Case @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:509
 msgid "Conclusion @Section@.\\arabic{theorem}."
-msgstr "Konkluzja @Section@.\\arabic{theorem}."
+msgstr "Conclusion @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:517
 msgid "Conclusion*"
@@ -8193,27 +8225,27 @@ msgstr "\\Alph{section}"
 
 #: lib/layouts/numarticle.inc:25 lib/layouts/numarticle.inc:26
 msgid "@Section@.\\arabic{subsection}"
-msgstr "@Sekcja@.\\arabic{subsection}"
+msgstr "@Section@.\\arabic{subsection}"
 
 #: lib/layouts/numarticle.inc:34 lib/layouts/numarticle.inc:35
 msgid "@Subsection@.\\arabic{subsubsection}"
-msgstr "@Podsekcja@.\\arabic{subsubsection}"
+msgstr "@Subsection@.\\arabic{subsubsection}"
 
 #: lib/layouts/numarticle.inc:43 lib/layouts/numarticle.inc:44
 msgid "@Subsubsection@.\\arabic{paragraph}"
-msgstr "@Podpodsekcja@.\\arabic{paragraph}"
+msgstr "@Subsubsection@.\\arabic{paragraph}"
 
 #: lib/layouts/numarticle.inc:52 lib/layouts/numarticle.inc:53
 msgid "@Paragraph@.\\arabic{subparagraph}"
-msgstr "@Akapit@.\\arabic{subparagraph}"
+msgstr "@Paragraph@.\\arabic{subparagraph}"
 
 #: lib/layouts/numreport.inc:15
 msgid "Chapter \\arabic{chapter}"
-msgstr "Rozdzia³ \\arabic{chapter}"
+msgstr "Chapter \\arabic{chapter}"
 
 #: lib/layouts/numreport.inc:16
 msgid "Appendix \\Alph{chapter}"
-msgstr "Dodatek \\Alph{chapter}"
+msgstr "Appendix \\Alph{chapter}"
 
 #: lib/layouts/numreport.inc:22
 msgid "\\arabic{chapter}.\\arabic{section}"
@@ -8229,7 +8261,7 @@ msgstr "\\Roman{section}."
 
 #: lib/layouts/numrevtex.inc:10
 msgid "Appendix \\Alph{section}:"
-msgstr "Dodatek \\Alph{section}:"
+msgstr "Appendix \\Alph{section}:"
 
 #: lib/layouts/numrevtex.inc:18
 msgid "\\Alph{subsection}."
@@ -8581,7 +8613,7 @@ msgstr "Formatowanie|F"
 
 #: lib/ui/classic.ui:36 lib/ui/stdmenus.ui:21
 msgid "View|V"
-msgstr "Podgl±d|o"
+msgstr "Podgl±d|g"
 
 #: lib/ui/classic.ui:37 lib/ui/stdmenus.ui:23
 msgid "Navigate|N"
@@ -8593,7 +8625,7 @@ msgstr "Dokumenty|D"
 
 #: lib/ui/classic.ui:39 lib/ui/stdmenus.ui:26
 msgid "Help|H"
-msgstr "Pomoc|m"
+msgstr "Pomoc|o"
 
 #: lib/ui/classic.ui:47 lib/ui/stdmenus.ui:34
 msgid "New|N"
@@ -9401,7 +9433,7 @@ msgid "About LyX|X"
 msgstr "O LyX-ie|X"
 
 #: lib/ui/classic.ui:425 lib/ui/stdmenus.ui:458 src/frontends/qt2/QAbout.C:44
-#: src/frontends/xforms/FormAboutlyx.C:45
+#: src/frontends/qt4/QAbout.C:44 src/frontends/xforms/FormAboutlyx.C:45
 msgid "About LyX"
 msgstr "O LyX-ie"
 
@@ -9423,7 +9455,7 @@ msgstr "Dokument|D"
 
 #: lib/ui/stdmenus.ui:25
 msgid "Tools|T"
-msgstr "Narzêdzia|a"
+msgstr "Narzêdzia|r"
 
 #: lib/ui/stdmenus.ui:35
 msgid "New from Template...|m"
@@ -9438,18 +9470,18 @@ msgid "Redo|R"
 msgstr "Ponów|P"
 
 #: lib/ui/stdmenus.ui:84 lib/ui/stdtoolbars.ui:51
-#: src/mathed/math_nestinset.C:433 src/text3.C:839
+#: src/mathed/math_nestinset.C:433 src/text3.C:846
 msgid "Cut"
 msgstr "Wytnij"
 
 #: lib/ui/stdmenus.ui:85 lib/ui/stdtoolbars.ui:52
-#: src/mathed/math_nestinset.C:441 src/text3.C:844
+#: src/mathed/math_nestinset.C:441 src/text3.C:851
 msgid "Copy"
 msgstr "Kopiuj"
 
 #: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:650
 #: src/mathed/math_gridinset.C:1204 src/mathed/math_nestinset.C:417
-#: src/text3.C:826
+#: src/text3.C:833
 msgid "Paste"
 msgstr "Wklej"
 
@@ -9474,6 +9506,7 @@ msgid "Table|T"
 msgstr "Tabela|T"
 
 #: lib/ui/stdmenus.ui:98
+#, fuzzy
 msgid "Rows & Cols|C"
 msgstr "Wiersze i kolumny|W"
 
@@ -9959,8 +9992,9 @@ msgid "Insert { }"
 msgstr "Wstaw{ }"
 
 #: lib/ui/stdtoolbars.ui:137
+#, fuzzy
 msgid "Insert cases"
-msgstr ""
+msgstr "Wstaw tabelê"
 
 #: lib/ui/stdtoolbars.ui:144
 msgid "minibuffer"
@@ -10007,7 +10041,7 @@ msgstr ""
 
 #: src/BufferView_pimpl.C:285
 msgid "Create new document?"
-msgstr "Utworzyæ nowy dokument ?"
+msgstr "Utworzyæ nowy dokument?"
 
 #: src/BufferView_pimpl.C:286
 msgid "&Create"
@@ -10438,92 +10472,92 @@ msgstr "Nieznana klasa dokumentu"
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr "U¿yto domy¶lnej klasy dokumentu, poniewa¿ klasa %1$s jest nieznana."
 
-#: src/buffer.C:444 src/text.C:338
+#: src/buffer.C:445 src/text.C:338
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Nieznany token %1$s %2$s\n"
 
-#: src/buffer.C:448 src/buffer.C:455 src/buffer.C:470
+#: src/buffer.C:449 src/buffer.C:456 src/buffer.C:471
 msgid "Document header error"
 msgstr "B³±d nag³ówka dokumentu"
 
-#: src/buffer.C:454
+#: src/buffer.C:455
 msgid "\\begin_header is missing"
 msgstr "Brakuje \\begin_header"
 
-#: src/buffer.C:469
+#: src/buffer.C:470
 msgid "\\begin_document is missing"
 msgstr "Brakuje \\begin_document"
 
-#: src/buffer.C:479
+#: src/buffer.C:480
 msgid "Can't load document class"
 msgstr "Nie mo¿na wczytaæ klasy"
 
-#: src/buffer.C:587 src/buffer.C:596
+#: src/buffer.C:588 src/buffer.C:597
 msgid "Document could not be read"
 msgstr "Nie mo¿na wczytaæ dokumentu"
 
-#: src/buffer.C:588 src/buffer.C:597
+#: src/buffer.C:589 src/buffer.C:598
 #, c-format
 msgid "%1$s could not be read."
 msgstr "%1$s nie mog± byæ wczytane."
 
-#: src/buffer.C:605 src/buffer.C:671
+#: src/buffer.C:606 src/buffer.C:672
 msgid "Document format failure"
 msgstr "Niepoprawny format dokumentu"
 
-#: src/buffer.C:606
+#: src/buffer.C:607
 #, c-format
 msgid "%1$s is not a LyX document."
 msgstr "%1$s nie jest dokumentem LyX-a"
 
-#: src/buffer.C:625
+#: src/buffer.C:626
 msgid "Conversion failed"
 msgstr "Nieudana konwersja"
 
-#: src/buffer.C:626
+#: src/buffer.C:627
 #, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but a temporary file for converting "
 "it could not be created."
 msgstr ""
 
-#: src/buffer.C:635
+#: src/buffer.C:636
 msgid "Conversion script not found"
 msgstr "Nie znaleziono skryptu konwersji"
 
-#: src/buffer.C:636
+#: src/buffer.C:637
 #, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but the conversion script lyx2lyx "
 "could not be found."
 msgstr ""
 
-#: src/buffer.C:656
+#: src/buffer.C:657
 msgid "Conversion script failed"
 msgstr "Niepoprawny skryptu konwersji"
 
-#: src/buffer.C:657
+#: src/buffer.C:658
 #, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but the lyx2lyx script failed to "
 "convert it."
 msgstr ""
 
-#: src/buffer.C:672
+#: src/buffer.C:673
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr ""
 
-#: src/buffer.C:1129
+#: src/buffer.C:1130
 msgid "Running chktex..."
 msgstr "chktex zosta³ uruchomiony"
 
-#: src/buffer.C:1142
+#: src/buffer.C:1143
 msgid "chktex failure"
 msgstr ""
 
-#: src/buffer.C:1143
+#: src/buffer.C:1144
 msgid "Could not run chktex successfully."
 msgstr "Nie mo¿na pomy¶lnie uruchomiæ chktex."
 
@@ -10672,7 +10706,7 @@ msgstr "Dokument u¿ywa brakuj±cej klasy TeX-a \"%1$s'\".\n"
 
 #: src/bufferparams.C:416
 msgid "Document class not available"
-msgstr "Niedostêpna klasa dokumentu!"
+msgstr "Niedostêpna klasa dokumentu"
 
 #: src/bufferparams.C:417
 msgid "LyX will not be able to produce output."
@@ -10912,7 +10946,7 @@ msgstr "¦cie¿ka do dokumentu nie mo¿e zawieraæ spacji."
 
 #: src/exporter.C:233
 msgid "Document export cancelled."
-msgstr "Przerwano eksport dokumentu"
+msgstr "Przerwano eksport dokumentu."
 
 #: src/exporter.C:239
 #, c-format
@@ -11057,13 +11091,16 @@ msgid "Double box"
 msgstr "Podwójne pude³ko"
 
 #: src/frontends/controllers/ControlBox.C:81 src/frontends/qt2/QBox.C:190
-#: src/frontends/qt2/QBox.C:224
+#: src/frontends/qt2/QBox.C:224 src/frontends/qt4/QBox.C:189
+#: src/frontends/qt4/QBox.C:223
 msgid "Depth"
 msgstr "G³êboko¶æ"
 
 #: src/frontends/controllers/ControlBox.C:82 src/frontends/qt2/QBox.C:193
 #: src/frontends/qt2/QBox.C:227 src/frontends/qt2/QBox.C:260
-#: src/frontends/qt2/QBoxDialog.C:93
+#: src/frontends/qt2/QBoxDialog.C:93 src/frontends/qt4/QBox.C:192
+#: src/frontends/qt4/QBox.C:226 src/frontends/qt4/QBox.C:259
+#: src/frontends/qt4/QBoxDialog.C:107
 msgid "Total Height"
 msgstr "Ca³kowita wysoko¶æ"
 
@@ -11242,8 +11279,8 @@ msgid "Spelling check completed"
 msgstr "Zakoñczono sprawdzanie pisowni"
 
 #: src/frontends/controllers/ControlToc.C:46 src/frontends/gtk/GToc.C:33
-#: src/frontends/qt2/QToc.C:41 src/frontends/xforms/FormToc.C:36
-#: src/insets/insettoc.C:42
+#: src/frontends/qt2/QToc.C:41 src/frontends/qt4/QToc.C:35
+#: src/frontends/xforms/FormToc.C:36 src/insets/insettoc.C:42
 msgid "Table of Contents"
 msgstr "Spis tre¶ci"
 
@@ -11376,32 +11413,43 @@ msgid "User files|#U#u"
 msgstr "Pliki u¿ytkownika|#U#u"
 
 #: src/frontends/gtk/Dialogs.C:265 src/frontends/qt2/Dialogs.C:232
-#: src/frontends/xforms/Dialogs.C:246
+#: src/frontends/qt4/Dialogs.C:233 src/frontends/xforms/Dialogs.C:246
 msgid "Index Entry"
 msgstr "Has³o indeksu"
 
 #: src/frontends/gtk/Dialogs.C:271 src/frontends/gtk/GRef.C:89
-#: src/frontends/qt2/Dialogs.C:238 src/frontends/xforms/Dialogs.C:251
+#: src/frontends/qt2/Dialogs.C:238 src/frontends/qt4/Dialogs.C:239
+#: src/frontends/xforms/Dialogs.C:251
 msgid "Label"
 msgstr "Etykieta"
 
+#: src/frontends/gtk/GAboutlyx.C:200
+#, fuzzy
+msgid "C_redits"
+msgstr "Autorzy"
+
 #: src/frontends/gtk/GBibItem.C:33 src/frontends/qt2/QBibitem.C:31
-#: src/frontends/xforms/FormBibitem.C:38
+#: src/frontends/qt4/QBibitem.C:31 src/frontends/xforms/FormBibitem.C:38
 msgid "Bibliography Entry Settings"
 msgstr "Ustawienia pozycji bibliografii"
 
+#: src/frontends/gtk/GBibtex.C:43 src/frontends/qt2/QBibtex.C:50
+#: src/frontends/qt4/QBibtex.C:49 src/frontends/xforms/FormBibtex.C:51
+msgid "BibTeX Bibliography"
+msgstr "Bibliografia BibTeX"
+
 #: src/frontends/gtk/GBox.C:42 src/frontends/qt2/QBox.C:51
-#: src/frontends/xforms/FormBox.C:47
+#: src/frontends/qt4/QBox.C:50 src/frontends/xforms/FormBox.C:47
 msgid "Box Settings"
 msgstr "Ustawienia pude³ka"
 
 #: src/frontends/gtk/GBranch.C:38 src/frontends/qt2/QBranch.C:36
-#: src/frontends/xforms/FormBranch.C:35
+#: src/frontends/qt4/QBranch.C:35 src/frontends/xforms/FormBranch.C:35
 msgid "Branch Settings"
 msgstr "Ustawienia ga³êzi"
 
 #: src/frontends/gtk/GChanges.C:33 src/frontends/qt2/QChanges.C:36
-#: src/frontends/xforms/FormChanges.C:32
+#: src/frontends/qt4/QChanges.C:36 src/frontends/xforms/FormChanges.C:32
 msgid "Merge Changes"
 msgstr "£±czenie zmian"
 
@@ -11422,7 +11470,7 @@ msgid "Done merging changes"
 msgstr "Wykonano ³±czenie zmian"
 
 #: src/frontends/gtk/GCharacter.C:40 src/frontends/qt2/QCharacter.C:35
-#: src/frontends/xforms/FormCharacter.C:41
+#: src/frontends/qt4/QCharacter.C:34 src/frontends/xforms/FormCharacter.C:41
 msgid "Text Style"
 msgstr "Styl tekstu"
 
@@ -11435,11 +11483,12 @@ msgid "BibKeys"
 msgstr ""
 
 #: src/frontends/gtk/GDocument.C:58 src/frontends/qt2/QDocument.C:68
-#: src/frontends/xforms/FormDocument.C:93
+#: src/frontends/qt4/QDocument.C:48 src/frontends/xforms/FormDocument.C:93
 msgid "Document Settings"
 msgstr "Styl dokumentu"
 
 #: src/frontends/gtk/GDocument.C:104 src/frontends/qt2/QDocument.C:133
+#: src/frontends/qt4/QDocumentDialog.C:349
 #: src/frontends/xforms/FormDocument.C:169
 #, c-format
 msgid "Unavailable: %1$s"
@@ -11458,75 +11507,74 @@ msgid "Big Skip"
 msgstr "Du¿y odstêp"
 
 #: src/frontends/gtk/GDocument.C:178 src/frontends/qt2/QDocument.C:119
+#: src/frontends/qt4/QDocumentDialog.C:201
 msgid "B3"
 msgstr "B3"
 
 #: src/frontends/gtk/GDocument.C:179 src/frontends/qt2/QDocument.C:120
+#: src/frontends/qt4/QDocumentDialog.C:202
 msgid "B4"
 msgstr "B4"
 
 #: src/frontends/gtk/GDocument.C:832
-#, fuzzy
 msgid "No headings numbered"
 msgstr "Bez numeracji"
 
 #: src/frontends/gtk/GDocument.C:833
 msgid "Only parts numbered"
-msgstr ""
+msgstr "Tylko numeracja czê¶ci"
 
 #: src/frontends/gtk/GDocument.C:834
 msgid "Chapters and above numbered"
-msgstr ""
+msgstr "Numeracja od rozdzia³ów"
 
 #: src/frontends/gtk/GDocument.C:835
-#, fuzzy
 msgid "Sections and above numbered"
-msgstr "G³êboko¶æ num. rozdzia³ów:"
+msgstr "Numeracja od sekcji"
 
 #: src/frontends/gtk/GDocument.C:836
 msgid "Subsections and above numbered"
-msgstr ""
+msgstr "Numeracja od podsekcji"
 
 #: src/frontends/gtk/GDocument.C:837
 msgid "Subsubsections and above numbered"
-msgstr ""
+msgstr "Numeracja od podpodsekcji"
 
 #: src/frontends/gtk/GDocument.C:838
 msgid "Paragraphs and above numbered"
-msgstr ""
+msgstr "Numeracja od paragrafów"
 
 #: src/frontends/gtk/GDocument.C:839
 msgid "All headings numbered"
-msgstr ""
+msgstr "Numeracja wszystkich tytulariów"
 
 #: src/frontends/gtk/GDocument.C:850
-#, fuzzy
 msgid "Only Parts appear in TOC"
-msgstr "W spisie tre¶ci"
+msgstr "Tylko czê¶ci w spisie tre¶ci"
 
 #: src/frontends/gtk/GDocument.C:851
 msgid "Chapters and above appear in TOC"
-msgstr ""
+msgstr "Spis tre¶ci od rozdzia³ów"
 
 #: src/frontends/gtk/GDocument.C:852
 msgid "Sections and above appear in TOC"
-msgstr ""
+msgstr "Spis tre¶ci od sekcji"
 
 #: src/frontends/gtk/GDocument.C:853
 msgid "Subsections and above appear in TOC"
-msgstr ""
+msgstr "Spis tre¶ci od podsekcji"
 
 #: src/frontends/gtk/GDocument.C:854
 msgid "Subsubsections and above appear in TOC"
-msgstr ""
+msgstr "Spis tre¶ci od podpodsekcji"
 
 #: src/frontends/gtk/GDocument.C:855
 msgid "Paragraphs and above appear in TOC"
-msgstr ""
+msgstr "Spis tre¶ci od paragrafów"
 
 #: src/frontends/gtk/GDocument.C:856
 msgid "TOC contains all headings"
-msgstr ""
+msgstr "Spis tre¶ci zawiera wszystkie tytularia"
 
 #: src/frontends/gtk/GERT.C:33
 msgid "TeX Settings"
@@ -11541,17 +11589,18 @@ msgid "*** No Errors ***"
 msgstr "*** Brak b³êdów ***"
 
 #: src/frontends/gtk/GFloat.C:41 src/frontends/qt2/QFloat.C:31
-#: src/frontends/xforms/FormFloat.C:51
+#: src/frontends/qt4/QFloat.C:31 src/frontends/xforms/FormFloat.C:51
 msgid "Float Settings"
 msgstr "Opcje wstawek"
 
 #: src/frontends/gtk/GGraphics.C:53 src/frontends/qt2/QGraphics.C:60
-#: src/frontends/qt2/QPrefsDialog.C:99 src/frontends/xforms/FormGraphics.C:78
+#: src/frontends/qt2/QPrefsDialog.C:99 src/frontends/qt4/QGraphics.C:59
+#: src/frontends/qt4/QPrefsDialog.C:129 src/frontends/xforms/FormGraphics.C:78
 msgid "Graphics"
 msgstr "Rysunek"
 
 #: src/frontends/gtk/GInclude.C:34 src/frontends/qt2/QInclude.C:39
-#: src/frontends/xforms/FormInclude.C:41
+#: src/frontends/qt4/QInclude.C:38 src/frontends/xforms/FormInclude.C:41
 msgid "Child Document"
 msgstr "Dokument podrzêdny"
 
@@ -11568,32 +11617,48 @@ msgid "Math Delimiters"
 msgstr "Ograniczniki matematyczne"
 
 #: src/frontends/gtk/GMathPanel.C:107 src/frontends/qt2/QMath.C:27
-#: src/frontends/xforms/FormMathsPanel.C:41
+#: src/frontends/qt4/QMath.C:27 src/frontends/xforms/FormMathsPanel.C:41
 msgid "Math Panel"
 msgstr "Panel symboli matematycznych"
 
 #: src/frontends/gtk/GMathsMatrix.C:38 src/frontends/qt2/QMath.C:41
-#: src/frontends/xforms/FormMathsMatrix.C:63
+#: src/frontends/qt4/QMath.C:41 src/frontends/xforms/FormMathsMatrix.C:63
 msgid "Math Matrix"
 msgstr "Macierz"
 
 #: src/frontends/gtk/GNote.C:35 src/frontends/qt2/QNote.C:34
-#: src/frontends/xforms/FormNote.C:32
+#: src/frontends/qt4/QNote.C:34 src/frontends/xforms/FormNote.C:32
 msgid "Note Settings"
 msgstr "Ustawienia wstawek"
 
 #: src/frontends/gtk/GParagraph.C:44 src/frontends/qt2/QParagraph.C:40
-#: src/frontends/xforms/FormParagraph.C:55
+#: src/frontends/qt4/QParagraph.C:39 src/frontends/xforms/FormParagraph.C:55
 msgid "Paragraph Settings"
 msgstr "Ustawienia akapitu"
 
 #: src/frontends/gtk/GParagraph.C:99 src/frontends/qt2/QParagraph.C:120
-#: src/frontends/xforms/FormParagraph.C:165 src/paragraph.C:622
+#: src/frontends/qt4/QParagraph.C:119 src/frontends/xforms/FormParagraph.C:165
+#: src/paragraph.C:618
 msgid "Senseless with this layout!"
 msgstr "Bez sensu w tej konfiguracji!"
 
+#: src/frontends/gtk/GPreferences.C:38 src/frontends/qt2/QPrefs.C:81
+#: src/frontends/qt4/QPrefs.C:82 src/frontends/xforms/FormPreferences.C:94
+msgid "Preferences"
+msgstr "Ustawienia"
+
+#: src/frontends/gtk/GPreferences.C:152 src/frontends/qt2/QPrefs.C:135
+#: src/frontends/qt4/QPrefs.C:136
+msgid "pspell (library)"
+msgstr "pspell (biblioteka)"
+
+#: src/frontends/gtk/GPreferences.C:155 src/frontends/qt2/QPrefs.C:138
+#: src/frontends/qt4/QPrefs.C:139
+msgid "aspell (library)"
+msgstr "aspell (biblioteka)"
+
 #: src/frontends/gtk/GRef.C:65 src/frontends/qt2/QRef.C:42
-#: src/frontends/xforms/FormRef.C:42
+#: src/frontends/qt4/QRef.C:41 src/frontends/xforms/FormRef.C:42
 msgid "Cross-reference"
 msgstr "Odno¶nik wewnêtrzny"
 
@@ -11602,7 +11667,7 @@ msgid "No labels found."
 msgstr "Nie znaleziono etykiet."
 
 #: src/frontends/gtk/GSearch.C:36 src/frontends/qt2/QSearch.C:31
-#: src/frontends/xforms/FormSearch.C:30
+#: src/frontends/qt4/QSearch.C:30 src/frontends/xforms/FormSearch.C:30
 msgid "Find and Replace"
 msgstr "Znajd¼ i Zast±p"
 
@@ -11611,12 +11676,13 @@ msgid "Send document to command"
 msgstr "Przeka¿ dokument do polecenia"
 
 #: src/frontends/gtk/GShowFile.C:32 src/frontends/qt2/QShowFile.C:32
-#: src/frontends/xforms/FormShowFile.C:27
+#: src/frontends/qt4/QShowFile.C:32 src/frontends/xforms/FormShowFile.C:27
 msgid "Show File"
 msgstr "Podgl±d pliku"
 
 #: src/frontends/gtk/GSpellchecker.C:35 src/frontends/qt2/QPrefsDialog.C:105
-#: src/frontends/qt2/QSpellchecker.C:35
+#: src/frontends/qt2/QSpellchecker.C:35 src/frontends/qt4/QPrefsDialog.C:135
+#: src/frontends/qt4/QSpellchecker.C:33
 #: src/frontends/xforms/FormPreferences.C:270
 #: src/frontends/xforms/FormSpellchecker.C:34
 msgid "Spellchecker"
@@ -11627,17 +11693,18 @@ msgid "checked"
 msgstr "sprawdzono"
 
 #: src/frontends/gtk/GTableCreate.C:34 src/frontends/qt2/QTabularCreate.C:29
+#: src/frontends/qt4/QTabularCreate.C:29
 #: src/frontends/xforms/FormTabularCreate.C:31
 msgid "Insert Table"
 msgstr "Wstaw tabelê"
 
-#: src/frontends/gtk/GTabular.C:67 src/frontends/qt2/QTabular.C:41
-#: src/frontends/xforms/FormTabular.C:57
+#: src/frontends/gtk/GTabular.C:38 src/frontends/qt2/QTabular.C:41
+#: src/frontends/qt4/QTabular.C:41 src/frontends/xforms/FormTabular.C:57
 msgid "Table Settings"
 msgstr "Ustawienia tabeli"
 
 #: src/frontends/gtk/GTexinfo.C:37 src/frontends/qt2/QTexinfo.C:34
-#: src/frontends/xforms/FormTexinfo.C:35
+#: src/frontends/qt4/QTexinfo.C:34 src/frontends/xforms/FormTexinfo.C:35
 msgid "TeX Information"
 msgstr "Konfiguracja TeX-a"
 
@@ -11663,64 +11730,64 @@ msgid "VSpace Settings"
 msgstr ""
 
 #: src/frontends/gtk/GWrap.C:35 src/frontends/qt2/QWrap.C:39
-#: src/frontends/xforms/FormWrap.C:40
+#: src/frontends/qt4/QWrap.C:39 src/frontends/xforms/FormWrap.C:40
 msgid "Text Wrap Settings"
 msgstr "Ustawienia oblewania tekstem"
 
 #: src/frontends/qt2/Alert_pimpl.C:39 src/frontends/qt2/Alert_pimpl.C:64
 #: src/frontends/qt2/Alert_pimpl.C:76 src/frontends/qt2/Alert_pimpl.C:88
-#: src/frontends/qt2/Alert_pimpl.C:101
+#: src/frontends/qt2/Alert_pimpl.C:101 src/frontends/qt4/Alert_pimpl.C:42
+#: src/frontends/qt4/Alert_pimpl.C:67 src/frontends/qt4/Alert_pimpl.C:79
+#: src/frontends/qt4/Alert_pimpl.C:91 src/frontends/qt4/Alert_pimpl.C:104
 #, c-format
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
 
-#: src/frontends/qt2/BulletsModule.C:63
+#: src/frontends/qt2/BulletsModule.C:63 src/frontends/qt4/BulletsModule.C:68
 msgid "&Standard"
 msgstr "&Standard"
 
-#: src/frontends/qt2/BulletsModule.C:64
+#: src/frontends/qt2/BulletsModule.C:64 src/frontends/qt4/BulletsModule.C:69
 msgid "&Maths"
 msgstr "&Matematyka"
 
-#: src/frontends/qt2/BulletsModule.C:65
+#: src/frontends/qt2/BulletsModule.C:65 src/frontends/qt4/BulletsModule.C:70
 msgid "Dings &1"
 msgstr "Dings &1"
 
-#: src/frontends/qt2/BulletsModule.C:66
+#: src/frontends/qt2/BulletsModule.C:66 src/frontends/qt4/BulletsModule.C:71
 msgid "Dings &2"
 msgstr "Dings &2"
 
-#: src/frontends/qt2/BulletsModule.C:67
+#: src/frontends/qt2/BulletsModule.C:67 src/frontends/qt4/BulletsModule.C:72
 msgid "Dings &3"
 msgstr "Dings &3"
 
-#: src/frontends/qt2/BulletsModule.C:68
+#: src/frontends/qt2/BulletsModule.C:68 src/frontends/qt4/BulletsModule.C:73
 msgid "Dings &4"
 msgstr "Dings &4"
 
-#: src/frontends/qt2/BulletsModule.C:71
+#: src/frontends/qt2/BulletsModule.C:71 src/frontends/qt4/BulletsModule.C:76
 msgid "&Custom..."
 msgstr "&W³asne..."
 
 #: src/frontends/qt2/BulletsModule.C:340
 #: src/frontends/qt2/QDocumentDialog.C:85
+#: src/frontends/qt4/BulletsModule.C:345
+#: src/frontends/qt4/QDocumentDialog.C:382
 #: src/frontends/xforms/FormDocument.C:425
 msgid "Bullets"
 msgstr "Wyró¿nienia"
 
-#: src/frontends/qt2/BulletsModule.C:341
+#: src/frontends/qt2/BulletsModule.C:341 src/frontends/qt4/BulletsModule.C:346
 msgid "Enter a custom bullet"
 msgstr "Podaj w³asny znak wyliczenia"
 
-#: src/frontends/qt2/FileDialog.C:155
+#: src/frontends/qt2/FileDialog.C:155 src/frontends/qt4/FileDialog.C:155
 msgid "Directories"
 msgstr "Katalogi"
 
-#: src/frontends/qt2/QBibtex.C:50 src/frontends/xforms/FormBibtex.C:51
-msgid "BibTeX Bibliography"
-msgstr "Bibliografia BibTeX"
-
-#: src/frontends/qt2/QChanges.C:66
+#: src/frontends/qt2/QChanges.C:66 src/frontends/qt4/QChanges.C:66
 #, c-format
 msgid ""
 "Change by %1$s\n"
@@ -11729,460 +11796,472 @@ msgstr ""
 "Zmieniony przez %1$s\n"
 "\n"
 
-#: src/frontends/qt2/QChanges.C:68
+#: src/frontends/qt2/QChanges.C:68 src/frontends/qt4/QChanges.C:68
 #, c-format
 msgid "Change made at %1$s\n"
 msgstr "Zmieniono %1$s\n"
 
-#: src/frontends/qt2/QCommandBuffer.C:79
+#: src/frontends/qt2/QCommandBuffer.C:79 src/frontends/qt4/QCommandBuffer.C:87
 msgid "Previous command"
 msgstr "Poprzednie polecenie"
 
-#: src/frontends/qt2/QCommandBuffer.C:82
+#: src/frontends/qt2/QCommandBuffer.C:82 src/frontends/qt4/QCommandBuffer.C:90
 msgid "Next command"
 msgstr "Nastêpne polecenie"
 
 #: src/frontends/qt2/QDelimiterDialog.C:80
+#: src/frontends/qt4/QDelimiterDialog.C:84
 msgid "LyX: Delimiters"
 msgstr "LyX: Ograniczniki"
 
-#: src/frontends/qt2/QDocument.C:78
+#: src/frontends/qt2/QDocument.C:78 src/frontends/qt4/QDocumentDialog.C:318
 msgid "Author-year"
 msgstr "Autor-Rok"
 
-#: src/frontends/qt2/QDocument.C:79
+#: src/frontends/qt2/QDocument.C:79 src/frontends/qt4/QDocumentDialog.C:319
 msgid "Numerical"
 msgstr "Numerycznie"
 
-#: src/frontends/qt2/QDocument.C:96
+#: src/frontends/qt2/QDocument.C:96 src/frontends/qt4/QDocumentDialog.C:289
 msgid "``text''"
 msgstr "``tekst''"
 
-#: src/frontends/qt2/QDocument.C:97
+#: src/frontends/qt2/QDocument.C:97 src/frontends/qt4/QDocumentDialog.C:290
 msgid "''text''"
 msgstr "''tekst''"
 
-#: src/frontends/qt2/QDocument.C:98
+#: src/frontends/qt2/QDocument.C:98 src/frontends/qt4/QDocumentDialog.C:291
 msgid ",,text``"
 msgstr ",,tekst``"
 
-#: src/frontends/qt2/QDocument.C:99
+#: src/frontends/qt2/QDocument.C:99 src/frontends/qt4/QDocumentDialog.C:292
 msgid ",,text''"
 msgstr ",,tekst''"
 
-#: src/frontends/qt2/QDocument.C:100
+#: src/frontends/qt2/QDocument.C:100 src/frontends/qt4/QDocumentDialog.C:293
 msgid "<<text>>"
 msgstr "<<tekst>>"
 
-#: src/frontends/qt2/QDocument.C:101
+#: src/frontends/qt2/QDocument.C:101 src/frontends/qt4/QDocumentDialog.C:294
 msgid ">>text<<"
 msgstr ">>tekst<<"
 
-#: src/frontends/qt2/QDocument.C:144
+#: src/frontends/qt2/QDocument.C:144 src/frontends/qt4/QDocumentDialog.C:142
 msgid "10"
 msgstr "10"
 
-#: src/frontends/qt2/QDocument.C:145
+#: src/frontends/qt2/QDocument.C:145 src/frontends/qt4/QDocumentDialog.C:143
 msgid "11"
 msgstr "11"
 
-#: src/frontends/qt2/QDocument.C:146
+#: src/frontends/qt2/QDocument.C:146 src/frontends/qt4/QDocumentDialog.C:144
 msgid "12"
 msgstr "12"
 
-#: src/frontends/qt2/QDocument.C:151
+#: src/frontends/qt2/QDocument.C:151 src/frontends/qt4/QDocumentDialog.C:149
 msgid "Length"
 msgstr "Odleg³o¶æ"
 
-#: src/frontends/qt2/QDocument.C:156
+#: src/frontends/qt2/QDocument.C:156 src/frontends/qt4/QDocumentDialog.C:182
 msgid "empty"
 msgstr "pusty"
 
-#: src/frontends/qt2/QDocument.C:157
+#: src/frontends/qt2/QDocument.C:157 src/frontends/qt4/QDocumentDialog.C:183
 msgid "plain"
 msgstr "plain"
 
-#: src/frontends/qt2/QDocument.C:158
+#: src/frontends/qt2/QDocument.C:158 src/frontends/qt4/QDocumentDialog.C:184
 msgid "headings"
 msgstr "headings"
 
-#: src/frontends/qt2/QDocument.C:159
+#: src/frontends/qt2/QDocument.C:159 src/frontends/qt4/QDocumentDialog.C:185
 msgid "fancy"
 msgstr "fancy"
 
-#: src/frontends/qt2/QDocument.C:164 src/text.C:2228
+#: src/frontends/qt2/QDocument.C:164 src/frontends/qt4/QDocumentDialog.C:155
+#: src/text.C:2226
 msgid "OneHalf"
 msgstr "Pó³tora"
 
 #: src/frontends/qt2/QDocumentDialog.C:76
 #: src/frontends/qt2/QDocumentDialog.C:88
+#: src/frontends/qt4/QDocumentDialog.C:373
+#: src/frontends/qt4/QDocumentDialog.C:385
 msgid "Document Class"
 msgstr "Klasa dokumentu"
 
 #: src/frontends/qt2/QDocumentDialog.C:77
+#: src/frontends/qt4/QDocumentDialog.C:374
 msgid "Text Layout"
 msgstr "Uk³ad tekstu"
 
 #: src/frontends/qt2/QDocumentDialog.C:78
+#: src/frontends/qt4/QDocumentDialog.C:375
 msgid "Page Layout"
 msgstr "Uk³ad strony"
 
 #: src/frontends/qt2/QDocumentDialog.C:79
+#: src/frontends/qt4/QDocumentDialog.C:376
 msgid "Page Margins"
 msgstr "Marginesy"
 
 #: src/frontends/qt2/QDocumentDialog.C:81
+#: src/frontends/qt4/QDocumentDialog.C:378
 msgid "Numbering & TOC"
 msgstr "Numeracja i spis tre¶ci"
 
 #: src/frontends/qt2/QDocumentDialog.C:83
+#: src/frontends/qt4/QDocumentDialog.C:380
 msgid "Math Options"
 msgstr "Opcje matematyki"
 
 #: src/frontends/qt2/QDocumentDialog.C:84
+#: src/frontends/qt4/QDocumentDialog.C:381
 msgid "Float Placement"
 msgstr "Umieszczanie wstawek"
 
 #: src/frontends/qt2/QDocumentDialog.C:86
+#: src/frontends/qt4/QDocumentDialog.C:383
 #: src/frontends/xforms/FormDocument.C:436
 msgid "Branches"
 msgstr "Ga³êzie"
 
 #: src/frontends/qt2/QDocumentDialog.C:87
 #: src/frontends/qt2/QDocumentDialog.C:211
+#: src/frontends/qt4/QDocumentDialog.C:384
+#: src/frontends/qt4/QDocumentDialog.C:396
 #: src/frontends/xforms/FormPreamble.C:29
 msgid "LaTeX Preamble"
 msgstr "Preambu³a LaTeX-a"
 
 #: src/frontends/qt2/QDocumentDialog.C:385
-#: src/frontends/qt2/QDocumentDialog.C:421
+#: src/frontends/qt2/QDocumentDialog.C:421 src/frontends/qt4/QBranches.C:68
+#: src/frontends/qt4/QDocumentDialog.C:570
 msgid "No"
 msgstr "Nie"
 
 #: src/frontends/qt2/QDocumentDialog.C:386
 #: src/frontends/qt2/QDocumentDialog.C:421
-#: src/frontends/qt2/QDocumentDialog.C:488
+#: src/frontends/qt2/QDocumentDialog.C:488 src/frontends/qt4/QBranches.C:68
+#: src/frontends/qt4/QBranches.C:138 src/frontends/qt4/QDocumentDialog.C:571
 msgid "Yes"
 msgstr "Tak"
 
-#: src/frontends/qt2/QERT.C:30 src/frontends/xforms/FormERT.C:27
+#: src/frontends/qt2/QERT.C:30 src/frontends/qt4/QERT.C:30
+#: src/frontends/xforms/FormERT.C:27
 msgid "TeX Code Settings"
 msgstr "Ustawienia kodu TeX-a"
 
-#: src/frontends/qt2/QExternal.C:280 src/frontends/xforms/FormExternal.C:322
+#: src/frontends/qt2/QExternal.C:280 src/frontends/qt4/QExternal.C:279
+#: src/frontends/xforms/FormExternal.C:322
 msgid "External Material"
 msgstr "¬ród³o zewnêtrzne"
 
 #: src/frontends/qt2/QExternal.C:340 src/frontends/qt2/QGraphics.C:252
+#: src/frontends/qt4/QExternal.C:339 src/frontends/qt4/QGraphics.C:251
 msgid "Scale%"
 msgstr "Skala %"
 
-#: src/frontends/qt2/QMath.C:55
+#: src/frontends/qt2/QMath.C:55 src/frontends/qt4/QMath.C:55
 msgid "Math Delimiter"
 msgstr "Ograniczniki matematyczne"
 
-#: src/frontends/qt2/QMathDialog.C:107
+#: src/frontends/qt2/QMathDialog.C:107 src/frontends/qt4/QMathDialog.C:120
 msgid "LyX: Math Spacing"
 msgstr "LyX: Odstêpy w trybie matematycznym"
 
-#: src/frontends/qt2/QMathDialog.C:109
+#: src/frontends/qt2/QMathDialog.C:109 src/frontends/qt4/QMathDialog.C:122
 msgid "Thin space\t\\,"
 msgstr "Ma³y odstêp\t\\,"
 
-#: src/frontends/qt2/QMathDialog.C:110
+#: src/frontends/qt2/QMathDialog.C:110 src/frontends/qt4/QMathDialog.C:123
 msgid "Medium space\t\\:"
 msgstr "¦redni odstêp\t\\:"
 
-#: src/frontends/qt2/QMathDialog.C:111
+#: src/frontends/qt2/QMathDialog.C:111 src/frontends/qt4/QMathDialog.C:124
 msgid "Thick space\t\\;"
 msgstr "Du¿y odstêp\t\\;"
 
-#: src/frontends/qt2/QMathDialog.C:112
+#: src/frontends/qt2/QMathDialog.C:112 src/frontends/qt4/QMathDialog.C:125
 msgid "Quadratin space\t\\quad"
 msgstr "Odstêp kwadrat\t\\quad"
 
-#: src/frontends/qt2/QMathDialog.C:113
+#: src/frontends/qt2/QMathDialog.C:113 src/frontends/qt4/QMathDialog.C:126
 msgid "Double quadratin space\t\\qquad"
 msgstr "Odstêp podwójny kwadrat\t\\qquad"
 
-#: src/frontends/qt2/QMathDialog.C:114
+#: src/frontends/qt2/QMathDialog.C:114 src/frontends/qt4/QMathDialog.C:127
 msgid "Negative space\t\\!"
 msgstr "Odstêp ujemny\t\\!"
 
-#: src/frontends/qt2/QMathDialog.C:119
+#: src/frontends/qt2/QMathDialog.C:119 src/frontends/qt4/QMathDialog.C:132
 msgid "LyX: Math Roots"
 msgstr "LyX: Pierwiastki w trybie matematycznym"
 
-#: src/frontends/qt2/QMathDialog.C:121
+#: src/frontends/qt2/QMathDialog.C:121 src/frontends/qt4/QMathDialog.C:134
 msgid "Square root\t\\sqrt"
 msgstr "Pierwiastek kwadratowy\t\\sqrt"
 
-#: src/frontends/qt2/QMathDialog.C:122
+#: src/frontends/qt2/QMathDialog.C:122 src/frontends/qt4/QMathDialog.C:135
 msgid "Cube root\t\\root"
 msgstr "Pierwiastek sze¶cienny\t\\root"
 
-#: src/frontends/qt2/QMathDialog.C:123
+#: src/frontends/qt2/QMathDialog.C:123 src/frontends/qt4/QMathDialog.C:136
 msgid "Other root\t\\root"
 msgstr "Inne pierwiastki\t\\root"
 
-#: src/frontends/qt2/QMathDialog.C:128
+#: src/frontends/qt2/QMathDialog.C:128 src/frontends/qt4/QMathDialog.C:141
 msgid "LyX: Math Styles"
 msgstr "LyX: Style matematyczne"
 
-#: src/frontends/qt2/QMathDialog.C:130
+#: src/frontends/qt2/QMathDialog.C:130 src/frontends/qt4/QMathDialog.C:143
 msgid "Display style\t\\displaystyle"
 msgstr "Styl eksponowany\t\\displaystyle"
 
-#: src/frontends/qt2/QMathDialog.C:131
+#: src/frontends/qt2/QMathDialog.C:131 src/frontends/qt4/QMathDialog.C:144
 msgid "Normal text style\t\\textstyle"
 msgstr "Normalny tryb tekstowy\t\\textstyle"
 
-#: src/frontends/qt2/QMathDialog.C:132
+#: src/frontends/qt2/QMathDialog.C:132 src/frontends/qt4/QMathDialog.C:145
 msgid "Script (small) style\t\\scriptstyle"
 msgstr "Styl skryptowy (ma³y)\t\\scriptstyle"
 
-#: src/frontends/qt2/QMathDialog.C:133
+#: src/frontends/qt2/QMathDialog.C:133 src/frontends/qt4/QMathDialog.C:146
 msgid "Scriptscript (smaller) style\t\\scriptscriptstyle"
 msgstr "Styl skryptowy (ma³yma³y)\t\\scriptscriptstyle"
 
-#: src/frontends/qt2/QMathDialog.C:138
+#: src/frontends/qt2/QMathDialog.C:138 src/frontends/qt4/QMathDialog.C:151
 msgid "LyX: Math Fonts"
 msgstr "LyX: Czcionki matematyczne"
 
-#: src/frontends/qt2/QMathDialog.C:140
+#: src/frontends/qt2/QMathDialog.C:140 src/frontends/qt4/QMathDialog.C:153
 msgid "Roman\t\\mathrm"
 msgstr "Szeryfowa\t\\mathrm"
 
-#: src/frontends/qt2/QMathDialog.C:141
+#: src/frontends/qt2/QMathDialog.C:141 src/frontends/qt4/QMathDialog.C:154
 msgid "Bold\t\\mathbf"
 msgstr "Pogrubiona\t\\mathbf"
 
-#: src/frontends/qt2/QMathDialog.C:142
+#: src/frontends/qt2/QMathDialog.C:142 src/frontends/qt4/QMathDialog.C:155
 msgid "Bold symbol\t\\boldsymbol"
 msgstr ""
 
-#: src/frontends/qt2/QMathDialog.C:143
+#: src/frontends/qt2/QMathDialog.C:143 src/frontends/qt4/QMathDialog.C:156
 msgid "Sans serif\t\\mathsf"
 msgstr "Bezszeryfowa\t\\mathsf"
 
-#: src/frontends/qt2/QMathDialog.C:144
+#: src/frontends/qt2/QMathDialog.C:144 src/frontends/qt4/QMathDialog.C:157
 msgid "Italic\t\\mathit"
 msgstr "Kursywa\t\\mathit"
 
-#: src/frontends/qt2/QMathDialog.C:145
+#: src/frontends/qt2/QMathDialog.C:145 src/frontends/qt4/QMathDialog.C:158
 msgid "Typewriter\t\\mathtt"
 msgstr "Maszynowa\t\\mathtt"
 
-#: src/frontends/qt2/QMathDialog.C:146
+#: src/frontends/qt2/QMathDialog.C:146 src/frontends/qt4/QMathDialog.C:159
 msgid "Blackboard\t\\mathbb"
 msgstr ""
 
-#: src/frontends/qt2/QMathDialog.C:147
+#: src/frontends/qt2/QMathDialog.C:147 src/frontends/qt4/QMathDialog.C:160
 msgid "Fraktur\t\\mathfrak"
 msgstr ""
 
-#: src/frontends/qt2/QMathDialog.C:148
+#: src/frontends/qt2/QMathDialog.C:148 src/frontends/qt4/QMathDialog.C:161
 msgid "Calligraphic\t\\mathcal"
 msgstr "Kaligraficzna\t\\mathcal"
 
-#: src/frontends/qt2/QMathDialog.C:149
+#: src/frontends/qt2/QMathDialog.C:149 src/frontends/qt4/QMathDialog.C:162
 msgid "Normal text mode\t\\textrm"
 msgstr "Normalny tryb tekstowy\t\\textrm"
 
 #: src/frontends/qt2/QMathMatrixDialog.C:46
+#: src/frontends/qt4/QMathMatrixDialog.C:46
 msgid "LyX: Insert Matrix"
 msgstr "LyX: Wstawianie macierzy"
 
-#: src/frontends/qt2/QPrefs.C:81 src/frontends/xforms/FormPreferences.C:94
-msgid "Preferences"
-msgstr "Ustawienia"
-
-#: src/frontends/qt2/QPrefs.C:131
+#: src/frontends/qt2/QPrefs.C:131 src/frontends/qt4/QPrefs.C:132
 msgid "ispell"
 msgstr "ispell"
 
-#: src/frontends/qt2/QPrefs.C:132
+#: src/frontends/qt2/QPrefs.C:132 src/frontends/qt4/QPrefs.C:133
 msgid "aspell"
 msgstr "aspell"
 
-#: src/frontends/qt2/QPrefs.C:133
+#: src/frontends/qt2/QPrefs.C:133 src/frontends/qt4/QPrefs.C:134
 msgid "hspell"
 msgstr "hspell"
 
-#: src/frontends/qt2/QPrefs.C:135
-msgid "pspell (library)"
-msgstr "pspell (biblioteka)"
-
-#: src/frontends/qt2/QPrefs.C:138
-msgid "aspell (library)"
-msgstr "aspell (biblioteka)"
-
-#: src/frontends/qt2/QPrefsDialog.C:94
+#: src/frontends/qt2/QPrefsDialog.C:94 src/frontends/qt4/QPrefsDialog.C:124
 msgid "Look and feel"
 msgstr "Wygl±d"
 
 #: src/frontends/qt2/QPrefsDialog.C:96 src/frontends/qt2/QPrefsDialog.C:123
+#: src/frontends/qt4/QPrefsDialog.C:126 src/frontends/qt4/QPrefsDialog.C:153
 msgid "User interface"
 msgstr "Plik w³asnego interfejsu"
 
-#: src/frontends/qt2/QPrefsDialog.C:97
+#: src/frontends/qt2/QPrefsDialog.C:97 src/frontends/qt4/QPrefsDialog.C:127
 msgid "Screen fonts"
 msgstr "Czcionki ekranowe"
 
-#: src/frontends/qt2/QPrefsDialog.C:98
+#: src/frontends/qt2/QPrefsDialog.C:98 src/frontends/qt4/QPrefsDialog.C:128
 #: src/frontends/xforms/FormPreferences.C:231
 msgid "Colors"
 msgstr "Kolory"
 
-#: src/frontends/qt2/QPrefsDialog.C:100
+#: src/frontends/qt2/QPrefsDialog.C:100 src/frontends/qt4/QPrefsDialog.C:130
 msgid "Keyboard"
 msgstr "Klawiatura"
 
-#: src/frontends/qt2/QPrefsDialog.C:102
+#: src/frontends/qt2/QPrefsDialog.C:102 src/frontends/qt4/QPrefsDialog.C:132
 msgid "Language settings"
 msgstr "Ustawienia jêzyka"
 
-#: src/frontends/qt2/QPrefsDialog.C:107
+#: src/frontends/qt2/QPrefsDialog.C:107 src/frontends/qt4/QPrefsDialog.C:137
 #: src/frontends/xforms/FormPreferences.C:219
 msgid "Outputs"
 msgstr "Dane wyj¶ciowe"
 
-#: src/frontends/qt2/QPrefsDialog.C:109
+#: src/frontends/qt2/QPrefsDialog.C:109 src/frontends/qt4/QPrefsDialog.C:139
 msgid "Plain text"
 msgstr "Tekst ASCII"
 
-#: src/frontends/qt2/QPrefsDialog.C:110
+#: src/frontends/qt2/QPrefsDialog.C:110 src/frontends/qt4/QPrefsDialog.C:140
 msgid "Date format"
 msgstr "Format daty"
 
 #: src/frontends/qt2/QPrefsDialog.C:113 src/frontends/qt2/QPrefsDialog.C:118
+#: src/frontends/qt4/QPrefsDialog.C:143 src/frontends/qt4/QPrefsDialog.C:148
 #: src/frontends/xforms/FormPreferences.C:254
 msgid "Paths"
 msgstr "¦cie¿ki"
 
-#: src/frontends/qt2/QPrefsDialog.C:115
+#: src/frontends/qt2/QPrefsDialog.C:115 src/frontends/qt4/QPrefsDialog.C:145
 #: src/frontends/xforms/FormPreferences.C:262
 msgid "Printer"
 msgstr "Drukowanie"
 
-#: src/frontends/qt2/QPrefsDialog.C:117
+#: src/frontends/qt2/QPrefsDialog.C:117 src/frontends/qt4/QPrefsDialog.C:147
 #: src/frontends/xforms/FormPreferences.C:237
 msgid "Identity"
 msgstr "Identyfikacja"
 
-#: src/frontends/qt2/QPrefsDialog.C:119
+#: src/frontends/qt2/QPrefsDialog.C:119 src/frontends/qt4/QPrefsDialog.C:149
 msgid "File formats"
 msgstr "Formaty plików"
 
-#: src/frontends/qt2/QPrefsDialog.C:120
+#: src/frontends/qt2/QPrefsDialog.C:120 src/frontends/qt4/QPrefsDialog.C:150
 #: src/frontends/xforms/FormPreferences.C:245
 msgid "Converters"
 msgstr "Konwertery"
 
-#: src/frontends/qt2/QPrefsDialog.C:121
+#: src/frontends/qt2/QPrefsDialog.C:121 src/frontends/qt4/QPrefsDialog.C:151
 #: src/frontends/xforms/FormPreferences.C:248
 msgid "Copiers"
 msgstr ""
 
-#: src/frontends/qt2/QPrefsDialog.C:918
+#: src/frontends/qt2/QPrefsDialog.C:918 src/frontends/qt4/QPrefsDialog.C:948
 msgid "Select a document templates directory"
 msgstr "Wybierz katalog szablonów dokumentów"
 
-#: src/frontends/qt2/QPrefsDialog.C:926
+#: src/frontends/qt2/QPrefsDialog.C:926 src/frontends/qt4/QPrefsDialog.C:956
 msgid "Select a temporary directory"
 msgstr "Wybierz katalog plików tymczasowych"
 
-#: src/frontends/qt2/QPrefsDialog.C:934
+#: src/frontends/qt2/QPrefsDialog.C:934 src/frontends/qt4/QPrefsDialog.C:964
 msgid "Select a backups directory"
 msgstr "Wybierz katalog kopii zapasowych"
 
-#: src/frontends/qt2/QPrefsDialog.C:942
+#: src/frontends/qt2/QPrefsDialog.C:942 src/frontends/qt4/QPrefsDialog.C:972
 msgid "Select a document directory"
 msgstr "Wybierz katalog dokumentów"
 
-#: src/frontends/qt2/QPrefsDialog.C:950
+#: src/frontends/qt2/QPrefsDialog.C:950 src/frontends/qt4/QPrefsDialog.C:980
 msgid "Give a filename for the LyX server pipe"
 msgstr "Podaj nazwê serwera potoku LyX-a"
 
-#: src/frontends/qt2/QPrint.C:36 src/frontends/xforms/FormPrint.C:39
+#: src/frontends/qt2/QPrint.C:36 src/frontends/qt4/QPrint.C:36
+#: src/frontends/xforms/FormPrint.C:39
 msgid "Print Document"
 msgstr "Drukuj dokument"
 
-#: src/frontends/qt2/QRef.C:137
+#: src/frontends/qt2/QRef.C:137 src/frontends/qt4/QRef.C:136
 msgid "&Go Back"
 msgstr "&Powrót"
 
-#: src/frontends/qt2/QRef.C:139
+#: src/frontends/qt2/QRef.C:139 src/frontends/qt4/QRef.C:138
 msgid "Jump back"
 msgstr "Powrót"
 
-#: src/frontends/qt2/QRef.C:147
+#: src/frontends/qt2/QRef.C:147 src/frontends/qt4/QRef.C:146
 msgid "Jump to label"
 msgstr "Skok do etykiety"
 
-#: src/frontends/qt2/QSendto.C:36 src/frontends/xforms/FormSendto.C:39
+#: src/frontends/qt2/QSendto.C:36 src/frontends/qt4/QSendto.C:35
+#: src/frontends/xforms/FormSendto.C:39
 msgid "Send Document to Command"
 msgstr "Wy¶lij dokument do polecenia"
 
-#: src/frontends/qt2/QVSpace.C:133 src/frontends/xforms/FormVSpace.C:166
+#: src/frontends/qt2/QVSpace.C:133 src/frontends/qt4/QVSpace.C:132
+#: src/frontends/xforms/FormVSpace.C:166
 msgid "Vertical Space Settings"
 msgstr "Ustawienia odstêpów pionowych"
 
-#: src/frontends/qt2/QtView.C:164
+#: src/frontends/qt2/QtView.C:164 src/frontends/qt4/QtView.C:182
 msgid "LyX"
 msgstr "LyX"
 
-#: src/frontends/qt2/floatplacement.C:36
+#: src/frontends/qt2/floatplacement.C:36 src/frontends/qt4/floatplacement.C:39
 msgid "Advanced Placement Options"
 msgstr "Zaawansowane opcje umieszczania"
 
-#: src/frontends/qt2/floatplacement.C:38
+#: src/frontends/qt2/floatplacement.C:38 src/frontends/qt4/floatplacement.C:41
 msgid "Use &default placement"
 msgstr "U¿yj &domy¶lnej pozycji wstawki"
 
-#: src/frontends/qt2/floatplacement.C:39
+#: src/frontends/qt2/floatplacement.C:39 src/frontends/qt4/floatplacement.C:42
 msgid "&Top of page"
 msgstr "U &góry strony"
 
-#: src/frontends/qt2/floatplacement.C:40
+#: src/frontends/qt2/floatplacement.C:40 src/frontends/qt4/floatplacement.C:43
 msgid "&Bottom of page"
 msgstr "U &do³u strony"
 
-#: src/frontends/qt2/floatplacement.C:41
+#: src/frontends/qt2/floatplacement.C:41 src/frontends/qt4/floatplacement.C:44
 msgid "&Page of floats"
 msgstr "&Strona ze wstawkami"
 
-#: src/frontends/qt2/floatplacement.C:42
+#: src/frontends/qt2/floatplacement.C:42 src/frontends/qt4/floatplacement.C:45
 msgid "&Here if possible"
 msgstr "Tutaj, je¶li &to mo¿liwe"
 
-#: src/frontends/qt2/floatplacement.C:43
+#: src/frontends/qt2/floatplacement.C:43 src/frontends/qt4/floatplacement.C:46
 msgid "Here definitely"
 msgstr "Tutaj bezwzglêdnie"
 
-#: src/frontends/qt2/floatplacement.C:44
+#: src/frontends/qt2/floatplacement.C:44 src/frontends/qt4/floatplacement.C:47
 msgid "&Ignore LaTeX rules"
 msgstr "&Ignoruj zasady LaTeX-a"
 
-#: src/frontends/qt2/floatplacement.C:84
+#: src/frontends/qt2/floatplacement.C:84 src/frontends/qt4/floatplacement.C:87
 msgid "&Span columns"
 msgstr "&Ca³a szeroko¶æ"
 
-#: src/frontends/qt2/floatplacement.C:94
+#: src/frontends/qt2/floatplacement.C:94 src/frontends/qt4/floatplacement.C:97
 msgid "&Rotate sideways"
 msgstr "&Obrót"
 
-#: src/frontends/qt2/validators.C:112
+#: src/frontends/qt2/validators.C:112 src/frontends/qt4/validators.C:112
 #: src/frontends/xforms/checkedwidgets.C:162
 msgid "space"
 msgstr "odstêp"
 
-#: src/frontends/qt2/validators.C:141
+#: src/frontends/qt2/validators.C:141 src/frontends/qt4/validators.C:141
 #: src/frontends/xforms/checkedwidgets.C:200
 msgid "Invalid filename"
 msgstr "Niepoprawna nazwa pliku"
 
-#: src/frontends/qt2/validators.C:142
+#: src/frontends/qt2/validators.C:142 src/frontends/qt4/validators.C:142
 #: src/frontends/xforms/checkedwidgets.C:201
 msgid ""
 "LyX does not provide LateX support for file names containing any of these "
@@ -12348,79 +12427,79 @@ msgstr ""
 msgid "Invalid length!"
 msgstr "Niepoprawna d³ugo¶æ!"
 
-#: src/frontends/xforms/FormCitation.C:175
+#: src/frontends/xforms/FormCitation.C:176
 msgid "Add citation of the selected bibliography entry."
 msgstr "Dodaj cytowanie wybranej pozycji bibliografii"
 
-#: src/frontends/xforms/FormCitation.C:178
+#: src/frontends/xforms/FormCitation.C:179
 msgid "Delete citation of the selected bibliography entry."
 msgstr "Usuñ cytowanie wybranej pozycji bibliografii"
 
-#: src/frontends/xforms/FormCitation.C:181
+#: src/frontends/xforms/FormCitation.C:182
 msgid "Move the selected entry upwards (in the current list)."
 msgstr "Przesuñ zaznaczony wpis w górê."
 
-#: src/frontends/xforms/FormCitation.C:184
+#: src/frontends/xforms/FormCitation.C:185
 msgid "Move the selected entry downwards (in the current list)."
 msgstr "Przesuñ zaznaczony wpis w dó³."
 
-#: src/frontends/xforms/FormCitation.C:187
+#: src/frontends/xforms/FormCitation.C:188
 msgid ""
 "The entries which will be cited. Select them with the arrow buttons from the "
 "right browser window."
 msgstr ""
 
-#: src/frontends/xforms/FormCitation.C:194
+#: src/frontends/xforms/FormCitation.C:195
 msgid ""
 "All entries in the database you have loaded (via \"Insert->List / TOC-"
 ">BibTeX Bibliography\"). Move the ones you want to cite with the arrow "
 "buttons into the left browser window."
 msgstr ""
 
-#: src/frontends/xforms/FormCitation.C:201
+#: src/frontends/xforms/FormCitation.C:202
 msgid "Information about the selected bibliography entry"
 msgstr "Informacja na temat wybranej pozycji bibliografii"
 
-#: src/frontends/xforms/FormCitation.C:208
+#: src/frontends/xforms/FormCitation.C:209
 msgid ""
 "Here you may select how the citation label should look inside the text "
 "(Natbib)."
 msgstr ""
 
-#: src/frontends/xforms/FormCitation.C:211
+#: src/frontends/xforms/FormCitation.C:212
 msgid ""
 "Activate if you want to print all authors in a citation with more than three "
 "authors, and not \"<First Author> et al.\" (Natbib)."
 msgstr ""
 
-#: src/frontends/xforms/FormCitation.C:214
+#: src/frontends/xforms/FormCitation.C:215
 msgid ""
 "Activate if you want to print the first character of the author name as "
 "uppercase (\"Van Gogh\", not \"van Gogh\"). Useful at the beginning of "
 "sentences (Natbib)."
 msgstr ""
 
-#: src/frontends/xforms/FormCitation.C:217
+#: src/frontends/xforms/FormCitation.C:218
 msgid ""
 "Optional text which appears before the citation, e.g. \"see <Citation>\""
 msgstr ""
 "Opcjonalny tekst, który pojawi siê przed cytowaniem np. \"patrz <Cytat>\""
 
-#: src/frontends/xforms/FormCitation.C:220
+#: src/frontends/xforms/FormCitation.C:221
 msgid "Optional text which appears after the citation, e.g. \"pp. 12\""
 msgstr "Opcjonalny tekst, który pojawi siê za cytowaniemkiem, np. \"pp. 12\""
 
-#: src/frontends/xforms/FormCitation.C:223
+#: src/frontends/xforms/FormCitation.C:224
 msgid "Search your database (all fields will be searched)."
 msgstr "Szukaj w bazie (wszystkie pola bêd± przeszukiwane)"
 
-#: src/frontends/xforms/FormCitation.C:226
+#: src/frontends/xforms/FormCitation.C:227
 msgid ""
 "Activate if you want to have case sensitive search: \"bibtex\" finds \"bibtex"
 "\", but not \"BibTeX\"."
 msgstr ""
 
-#: src/frontends/xforms/FormCitation.C:229
+#: src/frontends/xforms/FormCitation.C:230
 msgid "Activate if you want to enter Regular Expressions."
 msgstr "Zaznacz je¶li chcesz podaæ wyra¿enie regularne."
 
@@ -12585,7 +12664,7 @@ msgstr "Ostrze¿enie! Nie mo¿na otworzyæ katalogu."
 
 #: src/frontends/xforms/FormFloat.C:82
 msgid "Use the document's default settings."
-msgstr "U¿yto domy¶lnego styl dokumentu."
+msgstr "U¿yj domy¶lnych ustawieñ dokumentu."
 
 #: src/frontends/xforms/FormFloat.C:84
 msgid "Enforce placement of float here."
@@ -13458,11 +13537,11 @@ msgstr ""
 msgid "Opened Environment Inset: "
 msgstr ""
 
-#: src/insets/insetert.C:120
+#: src/insets/insetert.C:142
 msgid "Opened ERT Inset"
 msgstr "Otwarta wstawka ERT"
 
-#: src/insets/insetert.C:368
+#: src/insets/insetert.C:399
 msgid "ERT"
 msgstr "ERT"
 
@@ -13864,7 +13943,7 @@ msgstr ""
 
 #: src/lyx_cb.C:167 src/lyxfunc.C:1863
 msgid "Over-write document?"
-msgstr "Zastapiæ dokument?"
+msgstr "Zast±piæ dokument?"
 
 #: src/lyx_cb.C:214
 #, c-format
@@ -14000,10 +14079,12 @@ msgid ""
 msgstr ""
 
 #: src/lyx_main.C:648
+#, fuzzy
 msgid "&Create directory."
 msgstr "&Tworzenie katalogu."
 
 #: src/lyx_main.C:649
+#, fuzzy
 msgid "&Exit LyX."
 msgstr "&Koniec programu."
 
@@ -14030,6 +14111,7 @@ msgid "Setting debug level to %1$s"
 msgstr "Poziom debugowania ustawiony na %1$s"
 
 #: src/lyx_main.C:826
+#, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -14247,7 +14329,7 @@ msgstr ""
 msgid "ChkTeX"
 msgstr "ChkTeX"
 
-#: src/lyxfunc.C:1015 src/text3.C:1247
+#: src/lyxfunc.C:1015 src/text3.C:1254
 msgid "Missing argument"
 msgstr "Brakuje argumentu"
 
@@ -14298,7 +14380,7 @@ msgstr "Wybierz dokument do otwarcia"
 #: src/lyxfunc.C:1781
 #, c-format
 msgid "Opening document %1$s..."
-msgstr "Otwieranie dokumentu %1$s"
+msgstr "Otwieranie dokumentu %1$s..."
 
 #: src/lyxfunc.C:1785
 #, c-format
@@ -14595,7 +14677,7 @@ msgstr "Opcja pozwalaj±ca wydrukowaæ kopie po³±czone stronami."
 
 #: src/lyxrc.C:2285
 msgid "The option for specifying the number of copies to print."
-msgstr "Opcja pozwalaj±ca wydrukowaæ okre¶lona ilo¶æ kopii dokumentu."
+msgstr "Opcja pozwalaj±ca wydrukowaæ okre¶lon± liczbê kopii dokumentu."
 
 #: src/lyxrc.C:2289
 msgid ""
@@ -14885,7 +14967,7 @@ msgstr ""
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_hullinset.C:1297 src/text3.C:170
+#: src/mathed/math_hullinset.C:1297 src/text3.C:177
 msgid "Math editor mode"
 msgstr "Tryb edytora matematycznego"
 
@@ -14933,7 +15015,7 @@ msgstr ""
 "$s"
 
 #: src/support/package.C.in:545
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "Unable to determine the system directory having searched\n"
 "\t%1$s\n"
@@ -15007,49 +15089,49 @@ msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Nie mo¿na wstawiæ dwu spacji w ten sposób. Przeczytaj, proszê, Samouczek."
 
-#: src/text.C:2193
+#: src/text.C:2191
 msgid "Change: "
 msgstr "Zmiana: "
 
-#: src/text.C:2197
+#: src/text.C:2195
 msgid " at "
 msgstr " na "
 
-#: src/text.C:2209
+#: src/text.C:2207
 #, c-format
 msgid "Font: %1$s"
 msgstr "Czcionka: %1$s"
 
-#: src/text.C:2216
+#: src/text.C:2214
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", G³êboko¶æ: %1$d"
 
-#: src/text.C:2222
+#: src/text.C:2220
 msgid ", Spacing: "
 msgstr ", Odstêp: "
 
-#: src/text.C:2234
+#: src/text.C:2232
 msgid "Other ("
 msgstr "Inny ("
 
-#: src/text.C:2243
+#: src/text.C:2241
 msgid ", Inset: "
 msgstr ""
 
-#: src/text.C:2244
+#: src/text.C:2242
 msgid ", Paragraph: "
 msgstr ", Akapit: "
 
-#: src/text.C:2245
+#: src/text.C:2243
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/text.C:2246
+#: src/text.C:2244
 msgid ", Position: "
 msgstr ", Pozycja: "
 
-#: src/text.C:2247
+#: src/text.C:2245
 msgid ", Boundary: "
 msgstr ""
 
@@ -15069,27 +15151,27 @@ msgstr "Brak obiektów do indeksowania!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Nie mo¿na indeksowaæ wiêcej ni¿ jednego akapitu"
 
-#: src/text3.C:735
+#: src/text3.C:742
 msgid "Unknown spacing argument: "
 msgstr ""
 
-#: src/text3.C:888
+#: src/text3.C:895
 msgid "LyX function 'layout' needs an argument."
 msgstr ""
 
-#: src/text3.C:906
+#: src/text3.C:913
 msgid "Layout "
 msgstr "Ustawienia "
 
-#: src/text3.C:907
+#: src/text3.C:914
 msgid " not known"
 msgstr " nieznane"
 
-#: src/text3.C:1351 src/text3.C:1363
+#: src/text3.C:1358 src/text3.C:1370
 msgid "Character set"
 msgstr "Kodowanie"
 
-#: src/text3.C:1495
+#: src/text3.C:1502
 msgid "Paragraph layout set"
 msgstr "Styl akapitu ustawiony"
 
@@ -15116,3 +15198,107 @@ msgstr "Wype³nij pionowo"
 #: src/vspace.C:506
 msgid "protected"
 msgstr "chronione"
+
+#, fuzzy
+#~ msgid "BiographyNoPhoto"
+#~ msgstr "Biografia"
+
+#, fuzzy
+#~ msgid "Step"
+#~ msgstr "Styl"
+
+#, fuzzy
+#~ msgid "Step \\arabic{step}."
+#~ msgstr "Note \\arabic{note}."
+
+#, fuzzy
+#~ msgid "Prop"
+#~ msgstr "W³asno¶æ"
+
+#, fuzzy
+#~ msgid "Prop \\arabic{prop}."
+#~ msgstr "Problem \\arabic{problem}."
+
+#, fuzzy
+#~ msgid "Question \\arabic{question}."
+#~ msgstr "Definition \\arabic{definition}."
+
+#, fuzzy
+#~ msgid "Appendices Section"
+#~ msgstr "Dodatki"
+
+#, fuzzy
+#~ msgid "--- Appendices ---"
+#~ msgstr "Dodatki"
+
+#, fuzzy
+#~ msgid "Appendix \\Alph{appendix}."
+#~ msgstr "Appendix \\Alph{chapter}"
+
+#, fuzzy
+#~ msgid "Definition @Section@.\\arabic{definition}."
+#~ msgstr "Definition \\arabic{definition}."
+
+#, fuzzy
+#~ msgid "Example @Section@.\\arabic{example}."
+#~ msgstr "Example @Section@.\\arabic{theorem}."
+
+#, fuzzy
+#~ msgid "Remark @Section@.\\arabic{remark}."
+#~ msgstr "Remark @Section@.\\arabic{theorem}."
+
+#, fuzzy
+#~ msgid "Notation @Section@.\\arabic{notation}."
+#~ msgstr "Notation @Section@.\\arabic{theorem}."
+
+#, fuzzy
+#~ msgid "Corollary @Section@.\\arabic{corollary}."
+#~ msgstr "Corollary \\arabic{corollary}."
+
+#, fuzzy
+#~ msgid "Lemma @Section@.\\arabic{lemma}."
+#~ msgstr "Lemma @Section@.\\arabic{theorem}."
+
+#, fuzzy
+#~ msgid "Proposition @Section@.\\arabic{proposition}."
+#~ msgstr "Proposition \\arabic{proposition}."
+
+#, fuzzy
+#~ msgid "Prop @Section@.\\arabic{prop}."
+#~ msgstr "Problem @Section@.\\arabic{theorem}."
+
+#, fuzzy
+#~ msgid "Question @Section@.\\arabic{question}."
+#~ msgstr "@Section@.\\arabic{subsection}"
+
+#, fuzzy
+#~ msgid "Claim @Section@.\\arabic{claim}."
+#~ msgstr "Claim @Section@.\\arabic{theorem}."
+
+#, fuzzy
+#~ msgid "Conjecture @Section@.\\arabic{conjecture}."
+#~ msgstr "Conjecture \\arabic{conjecture}."
+
+#, fuzzy
+#~ msgid "Austrian (new spelling)"
+#~ msgstr "Niemiecki (nowa pisownia)"
+
+#, fuzzy
+#~ msgid "Insert cases environment"
+#~ msgstr "¦rodowisko Cases|C"
+
+#, fuzzy
+#~ msgid "File does not exist: %1$s"
+#~ msgstr "Plik nie istnieje"
+
+#, fuzzy
+#~ msgid "Auto-view file %1$s failed"
+#~ msgstr "Nieudany autozapis!"
+
+#, fuzzy
+#~ msgid "Format in use"
+#~ msgstr "Formaty"
+
+#, fuzzy
+#~ msgid "Change tracking error"
+#~ msgstr "¦ledzenie zmian"
