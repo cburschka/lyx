@@ -206,7 +206,8 @@ void GuiView::closeEvent(QCloseEvent *)
 {
 	// FIXME: 
 	// change the ifdef to 'geometry = normalGeometry();' only
-	// when Trolltech has fixed the broken normalGeometry on X11.
+	// when Trolltech has fixed the broken normalGeometry on X11:
+	// http://www.trolltech.com/developer/task-tracker/index_html?id=119684+&method=entry
 	// Then also the moveEvent, resizeEvent, and the
 	// code for floatingGeometry_ can be removed;
 	// adjust lyx_gui::start
