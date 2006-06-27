@@ -19,6 +19,6 @@
 # converts an image from $1 to $2 format
 import os, sys
 if os.system(r'convert -depth 8 "%s" "%s"' % (sys.argv[1], sys.argv[2])) != 0:
-  print >> sys.stderr, sys.argv[0], 'ERROR'
-  print >> sys.stderr, 'Execution of "convert" failed.'
-  sys.exit(1)
+    print >> sys.stderr, sys.argv[0], 'ERROR'
+    print >> sys.stderr, 'Execution of "convert" failed.'
+    sys.exit(1)

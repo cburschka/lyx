@@ -1,4 +1,4 @@
-# vi:filetype=python:expandtab:tabstop=2:shiftwidth=2
+# vi:filetype=python:expandtab:tabstop=4:shiftwidth=4
 #
 # file scons_utils.py
 #
@@ -17,122 +17,122 @@ from SCons.Util import WhereIs
 
 
 def writeToFile(filename, lines, append = False):
-  " utility function: write or append lines to filename "
-  # create directory if needed
-  dir = os.path.split(filename)[0]
-  if dir != '' and not os.path.isdir(dir):
-    os.makedirs(dir)
-  if append:
-    file = open(filename, 'a')
-  else:
-    file = open(filename, 'w')
-  file.write(lines)
-  file.close()
+    " utility function: write or append lines to filename "
+    # create directory if needed
+    dir = os.path.split(filename)[0]
+    if dir != '' and not os.path.isdir(dir):
+        os.makedirs(dir)
+    if append:
+        file = open(filename, 'a')
+    else:
+        file = open(filename, 'w')
+    file.write(lines)
+    file.close()
 
 
 def env_subst(target, source, env):
-  ''' subst variables in source by those in env, and output to target
-    source and target are scons File() objects
+    ''' subst variables in source by those in env, and output to target
+        source and target are scons File() objects
 
-    %key% (not key itself) is an indication of substitution
-  '''
-  assert len(target) == 1
-  assert len(source) == 1
-  target_file = file(str(target[0]), "w")
-  source_file = file(str(source[0]), "r")
+        %key% (not key itself) is an indication of substitution
+    '''
+    assert len(target) == 1
+    assert len(source) == 1
+    target_file = file(str(target[0]), "w")
+    source_file = file(str(source[0]), "r")
 
-  contents = source_file.read()
-  for k, v in env.items():
-    try:
-      val = env.subst('$'+k)
-      # temporary fix for the \Resource backslash problem
-      val = val.replace('\\', '/')
-      # multi-line replacement
-      val = val.replace('\n',r'\\n\\\n')
-      contents = re.sub('@'+k+'@', val, contents)
-      contents = re.sub('%'+k+'%', val, contents)
-    except:
-      pass
-  target_file.write(contents + "\n")
-  target_file.close()
-  #st = os.stat(str(source[0]))
-  #os.chmod(str(target[0]), stat.S_IMODE(st[stat.ST_MODE]) | stat.S_IWRITE)
+    contents = source_file.read()
+    for k, v in env.items():
+        try:
+            val = env.subst('$'+k)
+            # temporary fix for the \Resource backslash problem
+            val = val.replace('\\', '/')
+            # multi-line replacement
+            val = val.replace('\n',r'\\n\\\n')
+            contents = re.sub('@'+k+'@', val, contents)
+            contents = re.sub('%'+k+'%', val, contents)
+        except:
+            pass
+    target_file.write(contents + "\n")
+    target_file.close()
+    #st = os.stat(str(source[0]))
+    #os.chmod(str(target[0]), stat.S_IMODE(st[stat.ST_MODE]) | stat.S_IWRITE)
 
 
 #
 # glob filenames
 #
 def globSource(dir, pattern, build_dir = None, exclude = [], include = []):
-  ''' glob files, in dir and use build_dir as returned path name '''
-  # exclude 'exclude+include' to avoid duplicate items in files
-  files = include + filter(lambda x: x not in exclude + include, glob.glob1(dir, pattern))
-  if build_dir is None:
-    return files
-  else:
-    return ['%s/%s' % (build_dir, x) for x in files]
+    ''' glob files, in dir and use build_dir as returned path name '''
+    # exclude 'exclude+include' to avoid duplicate items in files
+    files = include + filter(lambda x: x not in exclude + include, glob.glob1(dir, pattern))
+    if build_dir is None:
+        return files
+    else:
+        return ['%s/%s' % (build_dir, x) for x in files]
 
 #
 # autoconf tests
 #
 
 def checkPkgConfig(conf, version):
-  ''' Return false if pkg_config does not exist, or is too old '''
-  conf.Message('Checking for pkg-config...')
-  ret = conf.TryAction('pkg-config --atleast-pkgconfig-version=%s' % version)[0]
-  conf.Result(ret)
-  return ret
+    ''' Return false if pkg_config does not exist, or is too old '''
+    conf.Message('Checking for pkg-config...')
+    ret = conf.TryAction('pkg-config --atleast-pkgconfig-version=%s' % version)[0]
+    conf.Result(ret)
+    return ret
 
 
 def checkPackage(conf, pkg):
-  ''' check if pkg is under the control of conf '''
-  conf.Message('Checking for package %s...' % pkg)
-  ret = conf.TryAction("pkg-config --print-errors --exists %s" % pkg)[0]
-  conf.Result(ret)
-  return ret
+    ''' check if pkg is under the control of conf '''
+    conf.Message('Checking for package %s...' % pkg)
+    ret = conf.TryAction("pkg-config --print-errors --exists %s" % pkg)[0]
+    conf.Result(ret)
+    return ret
 
 
 def checkMkdirOneArg(conf):
-  check_mkdir_one_arg_source = """
+    check_mkdir_one_arg_source = """
 #include <sys/stat.h>
 int main()
 {
-  mkdir("somedir");
+    mkdir("somedir");
 }
 """
-  conf.Message('Checking for the number of args for mkdir... ')
-  ret = conf.TryLink(check_mkdir_one_arg_source, '.c') or \
-    conf.TryLink('#include <unistd.h>' + check_mkdir_one_arg_source, '.c') or \
-    conf.TryLink('#include <direct.h>' + check_mkdir_one_arg_source, '.c')
-  if ret:
-    conf.Result('one')
-  else:
-    conf.Result('two')
-  return ret
+    conf.Message('Checking for the number of args for mkdir... ')
+    ret = conf.TryLink(check_mkdir_one_arg_source, '.c') or \
+        conf.TryLink('#include <unistd.h>' + check_mkdir_one_arg_source, '.c') or \
+        conf.TryLink('#include <direct.h>' + check_mkdir_one_arg_source, '.c')
+    if ret:
+        conf.Result('one')
+    else:
+        conf.Result('two')
+    return ret
 
 
 def checkCXXGlobalCstd(conf):
-  ''' Check the use of std::tolower or tolower '''
-  check_global_cstd_source = '''
+    ''' Check the use of std::tolower or tolower '''
+    check_global_cstd_source = '''
 #include <cctype>
 using std::tolower;
 int main()
 {
-  return 0;
+    return 0;
 }
 '''
-  conf.Message('Check for the use of global cstd... ')
-  ret = conf.TryLink(check_global_cstd_source, '.c')
-  conf.Result(ret)
-  return ret
+    conf.Message('Check for the use of global cstd... ')
+    ret = conf.TryLink(check_global_cstd_source, '.c')
+    conf.Result(ret)
+    return ret
 
 
 def checkSelectArgType(conf):
-  ''' Adapted from autoconf '''
-  conf.Message('Checking for arg types for select... ')
-  for arg234 in ['fd_set *', 'int *', 'void *']:
-    for arg1 in ['int', 'size_t', 'unsigned long', 'unsigned']:
-      for arg5 in ['struct timeval *', 'const struct timeval *']:
-        check_select_source = '''
+    ''' Adapted from autoconf '''
+    conf.Message('Checking for arg types for select... ')
+    for arg234 in ['fd_set *', 'int *', 'void *']:
+        for arg1 in ['int', 'size_t', 'unsigned long', 'unsigned']:
+            for arg5 in ['struct timeval *', 'const struct timeval *']:
+                check_select_source = '''
 #if HAVE_SYS_SELECT_H
 # include <sys/select.h>
 #endif
@@ -142,65 +142,65 @@ def checkSelectArgType(conf):
 extern int select (%s, %s, %s, %s, %s);
 int main()
 {
-  return(0);
+    return(0);
 }
 ''' % (arg1, arg234, arg234, arg234, arg5)
-        ret = conf.TryLink(check_select_source, '.c')
-        if ret:
-          conf.Result(ret)
-          return (arg1, arg234, arg5)
-  conf.Result('no (use default)')
-  return ('int', 'int *', 'struct timeval *')
+                ret = conf.TryLink(check_select_source, '.c')
+                if ret:
+                    conf.Result(ret)
+                    return (arg1, arg234, arg5)
+    conf.Result('no (use default)')
+    return ('int', 'int *', 'struct timeval *')
 
 
 def checkBoostLibraries(conf, lib, pathes):
-  ''' look for boost libraries '''
-  conf.Message('Checking for boost library %s... ' % lib)
-  for path in pathes:
-    # direct form: e.g. libboost_iostreams.a
-    if os.path.isfile(os.path.join(path, 'lib%s.a' % lib)):
-      conf.Result('yes')
-      return (path, lib)
-    # check things like libboost_iostreams-gcc.a
-    files = glob.glob(os.path.join(path, 'lib%s-*.a' % lib))
-    # if there are more than one, choose the first one
-    # FIXME: choose the best one.
-    if len(files) >= 1:
-      # get xxx-gcc from /usr/local/lib/libboost_xxx-gcc.a
-      conf.Result('yes')
-      return (path, files[0].split(os.sep)[-1][3:-2])
-  conf.Result('n')
-  return ('','')
+    ''' look for boost libraries '''
+    conf.Message('Checking for boost library %s... ' % lib)
+    for path in pathes:
+        # direct form: e.g. libboost_iostreams.a
+        if os.path.isfile(os.path.join(path, 'lib%s.a' % lib)):
+            conf.Result('yes')
+            return (path, lib)
+        # check things like libboost_iostreams-gcc.a
+        files = glob.glob(os.path.join(path, 'lib%s-*.a' % lib))
+        # if there are more than one, choose the first one
+        # FIXME: choose the best one.
+        if len(files) >= 1:
+            # get xxx-gcc from /usr/local/lib/libboost_xxx-gcc.a
+            conf.Result('yes')
+            return (path, files[0].split(os.sep)[-1][3:-2])
+    conf.Result('n')
+    return ('','')
 
 
 def checkCommand(conf, cmd):
-  ''' check the existence of a command
-    return full path to the command, or none
-  '''
-  conf.Message('Checking for command %s...' % cmd)
-  res = WhereIs(cmd)
-  conf.Result(res is not None)
-  return res
+    ''' check the existence of a command
+        return full path to the command, or none
+    '''
+    conf.Message('Checking for command %s...' % cmd)
+    res = WhereIs(cmd)
+    conf.Result(res is not None)
+    return res
 
 
 def checkLC_MESSAGES(conf):
-  ''' check the definition of LC_MESSAGES '''
-  check_LC_MESSAGES = '''
+    ''' check the definition of LC_MESSAGES '''
+    check_LC_MESSAGES = '''
 #include <locale.h>
 int main()
 {
-  return LC_MESSAGES;
+    return LC_MESSAGES;
 }
 '''
-  conf.Message('Check for LC_MESSAGES in locale.h... ')
-  ret = conf.TryLink(check_LC_MESSAGES, '.c')
-  conf.Result(ret)
-  return ret
+    conf.Message('Check for LC_MESSAGES in locale.h... ')
+    ret = conf.TryLink(check_LC_MESSAGES, '.c')
+    conf.Result(ret)
+    return ret
 
 
 def checkIconvConst(conf):
-  ''' check the declaration of iconv '''
-  check_iconv_const = '''
+    ''' check the declaration of iconv '''
+    check_iconv_const = '''
 #include <stdlib.h>
 #include <iconv.h>
 extern
@@ -208,144 +208,144 @@ extern
 "C"
 #endif
 #if defined(__STDC__) || defined(__cplusplus)
- #ifndef LIBICONV_DLL_EXPORTED
- size_t iconv (iconv_t cd, char * *inbuf, size_t *inbytesleft, char * *outbuf, size_t *outbytesleft);
- #endif
+#ifndef LIBICONV_DLL_EXPORTED
+size_t iconv (iconv_t cd, char * *inbuf, size_t *inbytesleft, char * *outbuf, size_t *outbytesleft);
+#endif
 #else
 size_t iconv();
 #endif
 
 int main()
 {
-  return 1;
+    return 1;
 }
 '''
-  conf.Message('Check if the declaration of iconv needs const... ')
-  ret = conf.TryLink(check_iconv_const, '.c')
-  conf.Result(ret)
-  return ret
+    conf.Message('Check if the declaration of iconv needs const... ')
+    ret = conf.TryLink(check_iconv_const, '.c')
+    conf.Result(ret)
+    return ret
 
 
 def createConfigFile(conf, config_file,
-  config_pre = '', config_post = '',
-  headers = [], functions = [], types = [], libs = [],
-  custom_tests = [], extra_items = []):
-  ''' create a configuration file, with options
-    config_file: which file to create
-    config_pre: first part of the config file
-    config_post: last part of the config file
-    headers: header files to check, in the form of a list of
-      ('file', 'HAVE_FILE', 'c'/'c++')
-    functions: functions to check, in the form of a list of
-      ('func', 'HAVE_func', 'include lines'/None)
-    types: types to check, in the form of a list of
-      ('type', 'HAVE_TYPE', 'includelines'/None)
-    libs: libraries to check, in the form of a list of
-      ('lib', 'HAVE_LIB', 'LIB_NAME'). HAVE_LIB will be set if 'lib' exists,
-      or any of the libs exists if 'lib' is a list of libs.
-      Optionally, user can provide another key LIB_NAME, that will
-      be set to the detected lib (or None otherwise).
-    custom_tests: extra tests to perform, in the form of a list of
-      (test (True/False), 'key', 'desc', 'true config line', 'false config line')
-      If the last two are ignored, '#define key 1' '/*#undef key */'
-      will be used.
-    extra_items: extra configuration lines, in the form of a list of
-      ('config', 'description')
-  Return:
-    The result of each test, as a dictioanry of
-      res['XXX'] = True/False
-    XXX are keys defined in each argument.
-  '''
-  cont = config_pre + '\n'
-  result = {}
-  # add to this string, in appropriate format
-  def configString(lines, desc=''):
-    text = ''
-    if lines.strip() != '':
-      if desc != '':
-        text += '/* ' + desc + ' */\n'
-      text += lines + '\n\n'
-    return text
-  #
-  # headers
-  for header in headers:
-    description = "Define to 1 if you have the <%s> header file." % header[0]
-    if (header[2] == 'c' and conf.CheckCHeader(header[0])) or \
-      (header[2] == 'cxx' and conf.CheckCXXHeader(header[0])):
-      result[header[1]] = True
-      cont += configString('#define %s 1' % header[1], desc = description)
-    else:
-      result[header[1]] = False
-      cont += configString('/* #undef %s */' % header[1], desc = description)
-  # functions
-  for func in functions:
-    description = "Define to 1 if you have the `%s' function." % func[0]
-    if conf.CheckFunc(func[0], header=func[2]):
-      result[func[1]] = True
-      cont += configString('#define %s 1' % func[1], desc = description)
-    else:
-      result[func[1]] = False
-      cont += configString('/* #undef %s */' % func[1], desc = description)
-  # types
-  for t in types:
-    description = "Define to 1 if you have the `%s' type." % t[0]
-    if conf.CheckType(t[0], includes=t[2]):
-      result[t[1]] = True
-      cont += configString('#define %s 1' % t[1], desc = description)
-    else:
-      result[t[1]] = False
-      cont += configString('/* #undef %s */' % t[1],  desc = description)
-  # libraries
-  for lib in libs:
-    description = "Define to 1 if you have the `%s' library (-l%s)." % (lib[0], lib[0])
-    if type(lib[0]) is type(''):
-      lib_list = [lib[0]]
-    else:
-      lib_list = lib[0]
-    # check if any of the lib exists
-    result[lib[1]] = False
-    # if user want the name of the lib detected
-    if len(lib) == 3:
-      result[lib[2]] = None
-    for ll in lib_list:
-      if conf.CheckLib(ll):
-        result[lib[1]] = True
+    config_pre = '', config_post = '',
+    headers = [], functions = [], types = [], libs = [],
+    custom_tests = [], extra_items = []):
+    ''' create a configuration file, with options
+        config_file: which file to create
+        config_pre: first part of the config file
+        config_post: last part of the config file
+        headers: header files to check, in the form of a list of
+            ('file', 'HAVE_FILE', 'c'/'c++')
+        functions: functions to check, in the form of a list of
+            ('func', 'HAVE_func', 'include lines'/None)
+        types: types to check, in the form of a list of
+            ('type', 'HAVE_TYPE', 'includelines'/None)
+        libs: libraries to check, in the form of a list of
+            ('lib', 'HAVE_LIB', 'LIB_NAME'). HAVE_LIB will be set if 'lib' exists,
+            or any of the libs exists if 'lib' is a list of libs.
+            Optionally, user can provide another key LIB_NAME, that will
+            be set to the detected lib (or None otherwise).
+        custom_tests: extra tests to perform, in the form of a list of
+            (test (True/False), 'key', 'desc', 'true config line', 'false config line')
+            If the last two are ignored, '#define key 1' '/*#undef key */'
+            will be used.
+        extra_items: extra configuration lines, in the form of a list of
+            ('config', 'description')
+    Return:
+        The result of each test, as a dictioanry of
+            res['XXX'] = True/False
+        XXX are keys defined in each argument.
+    '''
+    cont = config_pre + '\n'
+    result = {}
+    # add to this string, in appropriate format
+    def configString(lines, desc=''):
+        text = ''
+        if lines.strip() != '':
+            if desc != '':
+                text += '/* ' + desc + ' */\n'
+            text += lines + '\n\n'
+        return text
+    #
+    # headers
+    for header in headers:
+        description = "Define to 1 if you have the <%s> header file." % header[0]
+        if (header[2] == 'c' and conf.CheckCHeader(header[0])) or \
+            (header[2] == 'cxx' and conf.CheckCXXHeader(header[0])):
+            result[header[1]] = True
+            cont += configString('#define %s 1' % header[1], desc = description)
+        else:
+            result[header[1]] = False
+            cont += configString('/* #undef %s */' % header[1], desc = description)
+    # functions
+    for func in functions:
+        description = "Define to 1 if you have the `%s' function." % func[0]
+        if conf.CheckFunc(func[0], header=func[2]):
+            result[func[1]] = True
+            cont += configString('#define %s 1' % func[1], desc = description)
+        else:
+            result[func[1]] = False
+            cont += configString('/* #undef %s */' % func[1], desc = description)
+    # types
+    for t in types:
+        description = "Define to 1 if you have the `%s' type." % t[0]
+        if conf.CheckType(t[0], includes=t[2]):
+            result[t[1]] = True
+            cont += configString('#define %s 1' % t[1], desc = description)
+        else:
+            result[t[1]] = False
+            cont += configString('/* #undef %s */' % t[1],  desc = description)
+    # libraries
+    for lib in libs:
+        description = "Define to 1 if you have the `%s' library (-l%s)." % (lib[0], lib[0])
+        if type(lib[0]) is type(''):
+            lib_list = [lib[0]]
+        else:
+            lib_list = lib[0]
+        # check if any of the lib exists
+        result[lib[1]] = False
+        # if user want the name of the lib detected
         if len(lib) == 3:
-          result[lib[2]] = ll
-        cont += configString('#define %s 1' % lib[1], desc = description)
-        break
-    # if not found        
-    if not result[lib[1]]:
-      cont += configString('/* #undef %s */' % lib[1], desc = description)
-  # custom tests
-  for test in custom_tests:
-    if test[0]:
-      result[test[1]] = True
-      if len(test) == 3:
-        cont += configString('#define %s 1' % test[1], desc = test[2])
-      else:
-        cont += configString(test[3], desc = test[2])
-    else:
-      result[test[1]] = False
-      if len(test) == 3:
-        cont += configString('/* #undef %s */' % test[1], desc = test[2])
-      else:
-        cont += configString(test[4], desc = test[2])
-  # extra items (no key is returned)
-  for item in extra_items:
-    cont += configString(item[0], desc = item[1])
-  # add the last part
-  cont += '\n' + config_post + '\n'
-  # write to file
-  writeToFile(config_file, cont)
-  return result
+            result[lib[2]] = None
+        for ll in lib_list:
+            if conf.CheckLib(ll):
+                result[lib[1]] = True
+                if len(lib) == 3:
+                    result[lib[2]] = ll
+                cont += configString('#define %s 1' % lib[1], desc = description)
+                break
+        # if not found        
+        if not result[lib[1]]:
+            cont += configString('/* #undef %s */' % lib[1], desc = description)
+    # custom tests
+    for test in custom_tests:
+        if test[0]:
+            result[test[1]] = True
+            if len(test) == 3:
+                cont += configString('#define %s 1' % test[1], desc = test[2])
+            else:
+                cont += configString(test[3], desc = test[2])
+        else:
+            result[test[1]] = False
+            if len(test) == 3:
+                cont += configString('/* #undef %s */' % test[1], desc = test[2])
+            else:
+                cont += configString(test[4], desc = test[2])
+    # extra items (no key is returned)
+    for item in extra_items:
+        cont += configString(item[0], desc = item[1])
+    # add the last part
+    cont += '\n' + config_post + '\n'
+    # write to file
+    writeToFile(config_file, cont)
+    return result
 
 
 def installCygwinLDScript(path):
-  ''' Install i386pe.x-no-rdata '''
-  ld_script = os.path.join(path, 'i386pe.x-no-rdata')
-  script = open(ld_script, 'w')
-  script.write('''/* specific linker script avoiding .rdata sections, for normal executables
+    ''' Install i386pe.x-no-rdata '''
+    ld_script = os.path.join(path, 'i386pe.x-no-rdata')
+    script = open(ld_script, 'w')
+    script.write('''/* specific linker script avoiding .rdata sections, for normal executables
 for a reference see
 http://www.cygwin.com/ml/cygwin/2004-09/msg01101.html
 http://www.cygwin.com/ml/cygwin-apps/2004-09/msg00309.html
@@ -357,26 +357,26 @@ SECTIONS
 {
   .text  __image_base__ + __section_alignment__  :
   {
-     *(.init)
+    *(.init)
     *(.text)
     *(SORT(.text$*))
     *(.glue_7t)
     *(.glue_7)
-     ___CTOR_LIST__ = .; __CTOR_LIST__ = . ;
+    ___CTOR_LIST__ = .; __CTOR_LIST__ = . ;
 			LONG (-1);*(.ctors); *(.ctor); *(SORT(.ctors.*));  LONG (0);
-     ___DTOR_LIST__ = .; __DTOR_LIST__ = . ;
+    ___DTOR_LIST__ = .; __DTOR_LIST__ = . ;
 			LONG (-1); *(.dtors); *(.dtor); *(SORT(.dtors.*));  LONG (0);
-     *(.fini)
+    *(.fini)
     /* ??? Why is .gcc_exc here?  */
-     *(.gcc_exc)
+    *(.gcc_exc)
     PROVIDE (etext = .);
     *(.gcc_except_table)
   }
   /* The Cygwin32 library uses a section to avoid copying certain data
-     on fork.  This used to be named ".data".  The linker used
-     to include this between __data_start__ and __data_end__, but that
-     breaks building the cygwin32 dll.  Instead, we name the section
-     ".data_cygwin_nocopy" and explictly include it after __data_end__. */
+    on fork.  This used to be named ".data".  The linker used
+    to include this between __data_start__ and __data_end__, but that
+    breaks building the cygwin32 dll.  Instead, we name the section
+    ".data_cygwin_nocopy" and explictly include it after __data_end__. */
   .data BLOCK(__section_alignment__) :
   {
     __data_start__ = . ;
@@ -463,7 +463,7 @@ SECTIONS
     /* end is deprecated, don't use it */
     PROVIDE (end = .);
     PROVIDE ( _end = .);
-     __end__ = .;
+    __end__ = .;
   }
   .rsrc BLOCK(__section_alignment__) :
   {
@@ -483,9 +483,9 @@ SECTIONS
     *(.stabstr)
   }
   /* DWARF debug sections.
-     Symbols in the DWARF debugging sections are relative to the beginning
-     of the section.  Unlike other targets that fake this by putting the
-     section VMA at 0, the PE format will not allow it.  */
+    Symbols in the DWARF debugging sections are relative to the beginning
+    of the section.  Unlike other targets that fake this by putting the
+    section VMA at 0, the PE format will not allow it.  */
   /* DWARF 1.1 and DWARF 2.  */
   .debug_aranges BLOCK(__section_alignment__) (NOLOAD) :
   {
@@ -548,82 +548,82 @@ SECTIONS
   }
 }
 ''')
-  script.close()
-  return(ld_script)
+    script.close()
+    return(ld_script)
 
 
 try:
-  # these will be used under win32
-  import win32file
-  import win32event
-  import win32process
-  import win32security
+    # these will be used under win32
+    import win32file
+    import win32event
+    import win32process
+    import win32security
 except:
-  # does not matter if it fails on other systems
-  pass
+    # does not matter if it fails on other systems
+    pass
 
 
 class loggedSpawn:
-  def __init__(self, env, logfile, longarg, info):
-    # save the spawn system
-    self.env = env
-    self.logfile = logfile
-    # clear the logfile (it may not exist)
-    if logfile != '':
-      # this will overwrite existing content.
-      writeToFile(logfile, info, append=False)
-    #
-    self.longarg = longarg
-    # get hold of the old spawn? (necessary?)
-    self._spawn = env['SPAWN']
+    def __init__(self, env, logfile, longarg, info):
+        # save the spawn system
+        self.env = env
+        self.logfile = logfile
+        # clear the logfile (it may not exist)
+        if logfile != '':
+            # this will overwrite existing content.
+            writeToFile(logfile, info, append=False)
+        #
+        self.longarg = longarg
+        # get hold of the old spawn? (necessary?)
+        self._spawn = env['SPAWN']
 
-  # define new SPAWN
-  def spawn(self, sh, escape, cmd, args, spawnenv):
-    # get command line
-    newargs = ' '.join(map(escape, args[1:]))
-    cmdline = cmd + " " + newargs
-    #
-    # if log is not empty, write to it
-    if self.logfile != '':
-      # this tend to be slow (?) but ensure correct output
-      # Note that cmdline may be long so I do not escape it
-      try:
-        # since this is not an essential operation, proceed if things go wrong here.
-        writeToFile(self.logfile, cmd + " " + ' '.join(args[1:]) + '\n', append=True)
-      except:
-        print "Warning: can not write to log file ", self.logfile
-    #
-    # if the command is not too long, use the old
-    if not self.longarg or len(cmdline) < 8000:
-      exit_code = self._spawn(sh, escape, cmd, args, spawnenv)
-    else:
-      sAttrs = win32security.SECURITY_ATTRIBUTES()
-      StartupInfo = win32process.STARTUPINFO()
-      for var in spawnenv:
-        spawnenv[var] = spawnenv[var].encode('ascii', 'replace')
-      # check for any special operating system commands
-      if cmd == 'del':
-        for arg in args[1:]:
-          win32file.DeleteFile(arg)
-        exit_code = 0
-      else:
-        # otherwise execute the command.
-        hProcess, hThread, dwPid, dwTid = win32process.CreateProcess(None, cmdline, None, None, 1, 0, spawnenv, None, StartupInfo)
-        win32event.WaitForSingleObject(hProcess, win32event.INFINITE)
-        exit_code = win32process.GetExitCodeProcess(hProcess)
-        win32file.CloseHandle(hProcess);
-        win32file.CloseHandle(hThread);
-    return exit_code
+    # define new SPAWN
+    def spawn(self, sh, escape, cmd, args, spawnenv):
+        # get command line
+        newargs = ' '.join(map(escape, args[1:]))
+        cmdline = cmd + " " + newargs
+        #
+        # if log is not empty, write to it
+        if self.logfile != '':
+            # this tend to be slow (?) but ensure correct output
+            # Note that cmdline may be long so I do not escape it
+            try:
+                # since this is not an essential operation, proceed if things go wrong here.
+                writeToFile(self.logfile, cmd + " " + ' '.join(args[1:]) + '\n', append=True)
+            except:
+                print "Warning: can not write to log file ", self.logfile
+        #
+        # if the command is not too long, use the old
+        if not self.longarg or len(cmdline) < 8000:
+            exit_code = self._spawn(sh, escape, cmd, args, spawnenv)
+        else:
+            sAttrs = win32security.SECURITY_ATTRIBUTES()
+            StartupInfo = win32process.STARTUPINFO()
+            for var in spawnenv:
+                spawnenv[var] = spawnenv[var].encode('ascii', 'replace')
+            # check for any special operating system commands
+            if cmd == 'del':
+                for arg in args[1:]:
+                    win32file.DeleteFile(arg)
+                exit_code = 0
+            else:
+                # otherwise execute the command.
+                hProcess, hThread, dwPid, dwTid = win32process.CreateProcess(None, cmdline, None, None, 1, 0, spawnenv, None, StartupInfo)
+                win32event.WaitForSingleObject(hProcess, win32event.INFINITE)
+                exit_code = win32process.GetExitCodeProcess(hProcess)
+                win32file.CloseHandle(hProcess);
+                win32file.CloseHandle(hThread);
+        return exit_code
 
 
 def setLoggedSpawn(env, logfile = '', longarg=False, info=''):
-  ''' This function modify env and allow logging of
-    commands to a logfile. If the argument is too long
-    a win32 spawn will be used instead of the system one
-  '''
-  #
-  # create a new spwn object
-  ls = loggedSpawn(env, logfile, longarg, info)
-  # replace the old SPAWN by the new function
-  env['SPAWN'] = ls.spawn
+    ''' This function modify env and allow logging of
+        commands to a logfile. If the argument is too long
+        a win32 spawn will be used instead of the system one
+    '''
+    #
+    # create a new spwn object
+    ls = loggedSpawn(env, logfile, longarg, info)
+    # replace the old SPAWN by the new function
+    env['SPAWN'] = ls.spawn
 

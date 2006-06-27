@@ -1,4 +1,4 @@
-# vi:filetype=python:expandtab:tabstop=2:shiftwidth=2
+# vi:filetype=python:expandtab:tabstop=4:shiftwidth=4
 #
 # file SConstruct
 #
@@ -31,12 +31,12 @@ EnsureSConsVersion(0, 96)
 #
 # called as 'cd development/scons; scons'
 if os.path.isfile('SConstruct'):
-  top_src_dir = '../..'
-  scons_dir = '.'
+    top_src_dir = '../..'
+    scons_dir = '.'
 # called as 'scons -f development/scons/SConstruct'
 else:
-  top_src_dir = '.'
-  scons_dir = 'development/scons'
+    top_src_dir = '.'
+    scons_dir = 'development/scons'
 
 
 #----------------------------------------------------------
@@ -48,9 +48,9 @@ else:
 # detect version of lyx
 # only 1.4.x has frontends/qt2
 if os.path.isdir(os.path.join(top_src_dir, 'src', 'frontends', 'qt2')):
-  package_version = '1.4.2svn'
+    package_version = '1.4.2svn'
 else:
-  package_version = '1.5.0svn'
+    package_version = '1.5.0svn'
 
 devel_version = True
 default_build_mode = 'debug'
@@ -72,36 +72,36 @@ env_cache_file = 'env.cache'
 #----------------------------------------------------------
 
 if os.name == 'nt':
-  platform_name = 'win32'
-  default_frontend = 'qt4'
-  default_prefix = 'c:/program files/lyx'
-  default_with_x = False
-  default_packaging_method = 'windows'
+    platform_name = 'win32'
+    default_frontend = 'qt4'
+    default_prefix = 'c:/program files/lyx'
+    default_with_x = False
+    default_packaging_method = 'windows'
 elif os.name == 'posix' and sys.platform != 'cygwin':
-  platform_name = sys.platform
-  default_frontend = 'qt3'
-  default_prefix = '/usr/local'
-  default_with_x = True
-  default_packaging_method = 'posix'
+    platform_name = sys.platform
+    default_frontend = 'qt3'
+    default_prefix = '/usr/local'
+    default_with_x = True
+    default_packaging_method = 'posix'
 elif os.name == 'posix' and sys.platform == 'cygwin':
-  platform_name = 'cygwin'
-  default_frontend = 'qt3'
-  default_prefix = '/usr/local'
-  default_with_x = True
-  default_packaging_method = 'posix'
+    platform_name = 'cygwin'
+    default_frontend = 'qt3'
+    default_prefix = '/usr/local'
+    default_with_x = True
+    default_packaging_method = 'posix'
 elif os.name == 'darwin':
-  platform_name = 'macosx'
-  default_frontend = 'qt3'
-  # FIXME: macOSX default prefix?
-  default_prefix = '.'
-  default_with_x = False
-  default_packaging_method = 'macosx'
+    platform_name = 'macosx'
+    default_frontend = 'qt3'
+    # FIXME: macOSX default prefix?
+    default_prefix = '.'
+    default_with_x = False
+    default_packaging_method = 'macosx'
 else:  # unsupported system, assume posix behavior
-  platform_name = 'others'
-  default_frontend = 'qt3'
-  default_prefix = '.'
-  default_with_x = True
-  default_packaging_method = 'posix'
+    platform_name = 'others'
+    default_frontend = 'qt3'
+    default_prefix = '.'
+    default_with_x = True
+    default_packaging_method = 'posix'
 
 
 #---------------------------------------------------------
@@ -110,109 +110,109 @@ else:  # unsupported system, assume posix behavior
 #
 # You can set perminant default values in config.py
 if os.path.isfile('config.py'):
-  print "Getting options from config.py..."
-  print open('config.py').read()
+    print "Getting options from config.py..."
+    print open('config.py').read()
 
 opts = Options(['config.py'])
 opts.AddOptions(
-  # frontend
-  EnumOption('frontend', 'Main GUI', default_frontend,
-    allowed_values = ('xform', 'qt2', 'qt3', 'qt4', 'gtk') ),
-  # debug or release build
-  EnumOption('mode', 'Building method', default_build_mode,
-    allowed_values = ('debug', 'release') ),
-  # boost libraries
-  EnumOption('boost',
-    'Use included, system boost library, or try sytem boost first.',
-    'auto', allowed_values = (
-      'auto',       # detect boost, if not found, use included
-      'included',   # always use included boost
-      'system',     # always use system boost, fail if can not find
-      ) ),
-  #
-  EnumOption('gettext',
-    'Use included, system gettext library, or try sytem gettext first',
-    'auto', allowed_values = (
-      'auto',       # detect gettext, if not found, use included
-      'included',   # always use included gettext
-      'system',     # always use system gettext, fail if can not find
-      ) ),
-  #
-  EnumOption('spell', 'Choose spell checker to use.', 'auto',
-    allowed_values = ('aspell', 'pspell', 'ispell', 'auto', 'no') ),
-  # packaging method
-  EnumOption('packaging', 'Packaging method to use.', default_packaging_method,
-    allowed_values = ('windows', 'posix', 'macosx')),
-  #
-  BoolOption('fast_start', 'Whether or not use cached tests and keep current config.h', True),
-  # No precompiled header support (too troublesome to make it work for msvc)
-  # BoolOption('pch', 'Whether or not use pch', False),
-  # enable assertion, (config.h has ENABLE_ASSERTIOS
-  BoolOption('assertions', 'Use assertions', True),
-  # enable warning, (config.h has WITH_WARNINGS)
-  # default to False since MSVC does not have #warning
-  BoolOption('warnings', 'Use warnings', False),
-  # config.h define _GLIBCXX_CONCEPT_CHECKS
-  # Note: for earlier version of gcc (3.3) define _GLIBCPP_CONCEPT_CHECKS
-  BoolOption('concept_checks', 'Enable concept checks', True),
-  #
-  BoolOption('nls', 'Whether or not use native language support', True),
-  #
-  BoolOption('profiling', 'Whether or not enable profiling', False),
-  # config.h define _GLIBCXX_DEBUG and _GLIBCXX_DEBUG_PEDANTIC
-  BoolOption('stdlib_debug', 'Whether or not turn on stdlib debug', False),
-  # using x11?
-  BoolOption('X11', 'Use x11 windows system', default_with_x),
-  # use MS VC++ to build lyx
-  BoolOption('use_vc', 'Use MS VC++ to build lyx (cl.exe will be probed)', None),
-  #
-  PathOption('qt_dir', 'Path to qt directory', None),
-  #
-  PathOption('qt_include_path', 'Path to qt include directory', None),
-  #
-  PathOption('qt_lib_path', 'Path to qt library directory', None),
-  # build directory, will use $mode if not set
-  PathOption('build_dir', 'Build directory', None),
-  # extra include and libpath
-  PathOption('extra_inc_path', 'Extra include path', None),
-  #
-  PathOption('extra_lib_path', 'Extra library path', None),
-  #
-  PathOption('extra_bin_path', 'A convenient way to add a path to $PATH', None),
-  #
-  PathOption('extra_inc_path1', 'Extra include path', None),
-  #
-  PathOption('extra_lib_path1', 'Extra library path', None),
-  # rebuild only specifed, comma separated targets
-  ('rebuild', 'rebuild only specifed, comma separated targets', None),
-  # can be set to a non-existing directory
-  ('prefix', 'install architecture-independent files in PREFIX', default_prefix),
-  # version suffix
-  ('version_suffix', 'install lyx as lyx-suffix', None),
-  # how to load options
-  ('load_option', '''load option from previous scons run. option can be
-    yes (default): load all options
-    no: do not load any option
-    opt1,opt2: load specified options
-    -opt1,opt2: load all options other than specified ones''', 'yes'),
-  #
-  ('optimization', 'optimization CCFLAGS option.', None),
-  #
-  PathOption('exec_prefix', 'install architecture-independent executable files in PREFIX', None),
-  # log file
-  ('logfile', 'save commands (not outputs) to logfile', default_log_file),
-  # provided for backward compatibility
-  ('dest_dir', 'install to DESTDIR. (Provided for backward compatibility only)', None),
-  # environment variable can be set as options.
-  ('DESTDIR', 'install to DESTDIR', None),
-  ('CC', 'replace default $CC', None),
-  ('LINK', 'replace default $LINK', None),
-  ('CPP', 'replace default $CPP', None),
-  ('CXX', 'replace default $CXX', None),
-  ('CXXCPP', 'replace default $CXXCPP', None),
-  ('CCFLAGS', 'replace default $CCFLAGS', None),
-  ('CPPFLAGS', 'replace default $CPPFLAGS', None),
-  ('LINKFLAGS', 'replace default $LINKFLAGS', None),
+    # frontend
+    EnumOption('frontend', 'Main GUI', default_frontend,
+        allowed_values = ('xform', 'qt2', 'qt3', 'qt4', 'gtk') ),
+    # debug or release build
+    EnumOption('mode', 'Building method', default_build_mode,
+        allowed_values = ('debug', 'release') ),
+    # boost libraries
+    EnumOption('boost',
+        'Use included, system boost library, or try sytem boost first.',
+        'auto', allowed_values = (
+            'auto',       # detect boost, if not found, use included
+            'included',   # always use included boost
+            'system',     # always use system boost, fail if can not find
+            ) ),
+    #
+    EnumOption('gettext',
+        'Use included, system gettext library, or try sytem gettext first',
+        'auto', allowed_values = (
+            'auto',       # detect gettext, if not found, use included
+            'included',   # always use included gettext
+            'system',     # always use system gettext, fail if can not find
+            ) ),
+    #
+    EnumOption('spell', 'Choose spell checker to use.', 'auto',
+        allowed_values = ('aspell', 'pspell', 'ispell', 'auto', 'no') ),
+    # packaging method
+    EnumOption('packaging', 'Packaging method to use.', default_packaging_method,
+        allowed_values = ('windows', 'posix', 'macosx')),
+    #
+    BoolOption('fast_start', 'Whether or not use cached tests and keep current config.h', True),
+    # No precompiled header support (too troublesome to make it work for msvc)
+    # BoolOption('pch', 'Whether or not use pch', False),
+    # enable assertion, (config.h has ENABLE_ASSERTIOS
+    BoolOption('assertions', 'Use assertions', True),
+    # enable warning, (config.h has WITH_WARNINGS)
+    # default to False since MSVC does not have #warning
+    BoolOption('warnings', 'Use warnings', False),
+    # config.h define _GLIBCXX_CONCEPT_CHECKS
+    # Note: for earlier version of gcc (3.3) define _GLIBCPP_CONCEPT_CHECKS
+    BoolOption('concept_checks', 'Enable concept checks', True),
+    #
+    BoolOption('nls', 'Whether or not use native language support', True),
+    #
+    BoolOption('profiling', 'Whether or not enable profiling', False),
+    # config.h define _GLIBCXX_DEBUG and _GLIBCXX_DEBUG_PEDANTIC
+    BoolOption('stdlib_debug', 'Whether or not turn on stdlib debug', False),
+    # using x11?
+    BoolOption('X11', 'Use x11 windows system', default_with_x),
+    # use MS VC++ to build lyx
+    BoolOption('use_vc', 'Use MS VC++ to build lyx (cl.exe will be probed)', None),
+    #
+    PathOption('qt_dir', 'Path to qt directory', None),
+    #
+    PathOption('qt_include_path', 'Path to qt include directory', None),
+    #
+    PathOption('qt_lib_path', 'Path to qt library directory', None),
+    # build directory, will use $mode if not set
+    PathOption('build_dir', 'Build directory', None),
+    # extra include and libpath
+    PathOption('extra_inc_path', 'Extra include path', None),
+    #
+    PathOption('extra_lib_path', 'Extra library path', None),
+    #
+    PathOption('extra_bin_path', 'A convenient way to add a path to $PATH', None),
+    #
+    PathOption('extra_inc_path1', 'Extra include path', None),
+    #
+    PathOption('extra_lib_path1', 'Extra library path', None),
+    # rebuild only specifed, comma separated targets
+    ('rebuild', 'rebuild only specifed, comma separated targets', None),
+    # can be set to a non-existing directory
+    ('prefix', 'install architecture-independent files in PREFIX', default_prefix),
+    # version suffix
+    ('version_suffix', 'install lyx as lyx-suffix', None),
+    # how to load options
+    ('load_option', '''load option from previous scons run. option can be
+        yes (default): load all options
+        no: do not load any option
+        opt1,opt2: load specified options
+        -opt1,opt2: load all options other than specified ones''', 'yes'),
+    #
+    ('optimization', 'optimization CCFLAGS option.', None),
+    #
+    PathOption('exec_prefix', 'install architecture-independent executable files in PREFIX', None),
+    # log file
+    ('logfile', 'save commands (not outputs) to logfile', default_log_file),
+    # provided for backward compatibility
+    ('dest_dir', 'install to DESTDIR. (Provided for backward compatibility only)', None),
+    # environment variable can be set as options.
+    ('DESTDIR', 'install to DESTDIR', None),
+    ('CC', 'replace default $CC', None),
+    ('LINK', 'replace default $LINK', None),
+    ('CPP', 'replace default $CPP', None),
+    ('CXX', 'replace default $CXX', None),
+    ('CXXCPP', 'replace default $CXXCPP', None),
+    ('CCFLAGS', 'replace default $CCFLAGS', None),
+    ('CPPFLAGS', 'replace default $CPPFLAGS', None),
+    ('LINKFLAGS', 'replace default $LINKFLAGS', None),
 )
 
 # copied from SCons/Options/BoolOption.py
@@ -225,68 +225,68 @@ false_strings = ('n', 'no', 'false', 'f', '0', 'off', 'none')
 #
 # if fast_start=yes (default), load variables from env_cache_file
 if (not ARGUMENTS.has_key('fast_start') or \
-  ARGUMENTS['fast_start'] in true_strings) \
-  and os.path.isfile(env_cache_file):
-  fast_start = True
-  cache_file = open(env_cache_file)
-  env_cache = cPickle.load(cache_file)
-  cache_file.close()
-  print '------------ fast_start mode --------------------'
-  print '  Use cached test results and current config.h'
-  print '  use fast_start=no to override'
-  print
+    ARGUMENTS['fast_start'] in true_strings) \
+    and os.path.isfile(env_cache_file):
+    fast_start = True
+    cache_file = open(env_cache_file)
+    env_cache = cPickle.load(cache_file)
+    cache_file.close()
+    print '------------ fast_start mode --------------------'
+    print '  Use cached test results and current config.h'
+    print '  use fast_start=no to override'
+    print
 else:
-  fast_start = False
-  env_cache = {}
+    fast_start = False
+    env_cache = {}
 
 # if load_option=yes (default), load saved comand line options
 #
 # This option can take value yes/no/opt1,opt2/-opt1,opt2
 # and tries to be clever in choosing options to load
 if (not ARGUMENTS.has_key('load_option') or \
-  ARGUMENTS['load_option'] not in false_strings) \
-  and os.path.isfile(env_cache_file):
-  cache_file = open(env_cache_file)
-  opt_cache = cPickle.load(cache_file)['arg_cache']
-  cache_file.close()
-  # import cached options, but we should ignore qt_dir when frontend changes
-  if ARGUMENTS.has_key('frontend') and opt_cache.has_key('frontend') \
-    and ARGUMENTS['frontend'] != opt_cache['frontend'] \
-    and opt_cache.has_key('qt_dir'):
-    opt_cache.pop('qt_dir')
-  # some options will require full rebuild
-  # these are in general things that will change config.h
-  for arg in ['version_suffix', 'nls', 'boost', 'spell']:
-    if ARGUMENTS.has_key(arg) and ((not opt_cache.has_key(arg)) or \
-      ARGUMENTS[arg] != opt_cache[arg]):
-      if fast_start:
-        print "  ** fast_start is disabled because of the change of option", arg
-        print
-        fast_start = False
-  # and we do not cache some options
-  for arg in ['fast_start', 'load_option']:
-    if opt_cache.has_key(arg):
-      opt_cache.pop(arg)
-  # now, if load_option=opt1,opt2 or -opt1,opt2
-  if ARGUMENTS.has_key('load_option') and \
-    ARGUMENTS['load_option'] not in true_strings + false_strings:
-    # if -opt1,opt2 is specified, do not load these options
-    if ARGUMENTS['load_option'][0] == '-':
-      for arg in ARGUMENTS['load_option'][1:].split(','):
+    ARGUMENTS['load_option'] not in false_strings) \
+    and os.path.isfile(env_cache_file):
+    cache_file = open(env_cache_file)
+    opt_cache = cPickle.load(cache_file)['arg_cache']
+    cache_file.close()
+    # import cached options, but we should ignore qt_dir when frontend changes
+    if ARGUMENTS.has_key('frontend') and opt_cache.has_key('frontend') \
+        and ARGUMENTS['frontend'] != opt_cache['frontend'] \
+        and opt_cache.has_key('qt_dir'):
+        opt_cache.pop('qt_dir')
+    # some options will require full rebuild
+    # these are in general things that will change config.h
+    for arg in ['version_suffix', 'nls', 'boost', 'spell']:
+        if ARGUMENTS.has_key(arg) and ((not opt_cache.has_key(arg)) or \
+            ARGUMENTS[arg] != opt_cache[arg]):
+            if fast_start:
+                print "  ** fast_start is disabled because of the change of option", arg
+                print
+                fast_start = False
+    # and we do not cache some options
+    for arg in ['fast_start', 'load_option']:
         if opt_cache.has_key(arg):
-          opt_cache.pop(arg)
-    # if opt1,opt2 is specified, only load specified options
-    else:
-      args = ARGUMENTS['load_option'].split(',')
-      for arg in opt_cache.keys():
-        if arg not in args:
-          opt_cache.pop(arg)
-  # now restore options as if entered from command line
-  for key in opt_cache.keys():
-    if not ARGUMENTS.has_key(key):
-      ARGUMENTS[key] = opt_cache[key]
-      print "Restoring cached option  %s=%s" % (key, ARGUMENTS[key])
-  print
+            opt_cache.pop(arg)
+    # now, if load_option=opt1,opt2 or -opt1,opt2
+    if ARGUMENTS.has_key('load_option') and \
+        ARGUMENTS['load_option'] not in true_strings + false_strings:
+        # if -opt1,opt2 is specified, do not load these options
+        if ARGUMENTS['load_option'][0] == '-':
+            for arg in ARGUMENTS['load_option'][1:].split(','):
+                if opt_cache.has_key(arg):
+                    opt_cache.pop(arg)
+        # if opt1,opt2 is specified, only load specified options
+        else:
+            args = ARGUMENTS['load_option'].split(',')
+            for arg in opt_cache.keys():
+                if arg not in args:
+                    opt_cache.pop(arg)
+    # now restore options as if entered from command line
+    for key in opt_cache.keys():
+        if not ARGUMENTS.has_key(key):
+            ARGUMENTS[key] = opt_cache[key]
+            print "Restoring cached option  %s=%s" % (key, ARGUMENTS[key])
+    print
 
 # save arguments
 env_cache['arg_cache'] = ARGUMENTS
@@ -313,26 +313,26 @@ prefix = env['prefix']
 mode = env['mode']
 
 if platform_name == 'win32':
-  if env.has_key('use_vc'):
-    use_vc = env['use_vc']
-    if WhereIs('cl.exe') is None:
-      print "cl.exe is not found. Are you using the MSVC environment?"
-      Exit(2)
-  elif WhereIs('cl.exe') is not None:
-    use_vc = True
-  else:
-    use_vc = False
+    if env.has_key('use_vc'):
+        use_vc = env['use_vc']
+        if WhereIs('cl.exe') is None:
+            print "cl.exe is not found. Are you using the MSVC environment?"
+            Exit(2)
+    elif WhereIs('cl.exe') is not None:
+        use_vc = True
+    else:
+        use_vc = False
 else:
-  use_vc = False
+    use_vc = False
 
 # lyx will be built to $build/build_dir so it is possible
 # to build multiple build_dirs using the same source
 # $mode can be debug or release
 if env.has_key('build_dir') and env['build_dir'] is not None:
-  env['BUILDDIR'] = env['build_dir']
+    env['BUILDDIR'] = env['build_dir']
 else:
-  # Determine the name of the build $mode
-  env['BUILDDIR'] = '#' + mode
+    # Determine the name of the build $mode
+    env['BUILDDIR'] = '#' + mode
 
 # all built libraries will go to build_dir/libs
 # (This is different from the make file approach)
@@ -366,27 +366,27 @@ env['PACKAGE_VERSION'] = package_version
 # determine share_dir etc
 packaging_method = env.get('packaging')
 if packaging_method == 'windows':
-  share_dir = 'Resources'
-  man_dir = 'Resources/man/man1'
-  locale_dir = 'Resources/locale'
-  default_prefix = 'c:/program files/lyx'
+    share_dir = 'Resources'
+    man_dir = 'Resources/man/man1'
+    locale_dir = 'Resources/locale'
+    default_prefix = 'c:/program files/lyx'
 else:
-  share_dir = 'share/lyx'
-  man_dir = 'man/man1'
-  locale_dir = 'share/locale'
-  default_prefix = '/usr/local/'
+    share_dir = 'share/lyx'
+    man_dir = 'man/man1'
+    locale_dir = 'share/locale'
+    default_prefix = '/usr/local/'
 
 # install to default_prefix by default
 # program suffix: can be yes, or a string
 if env.has_key('version_suffix'):
-  if env['version_suffix'] in true_strings:
-    program_suffix = package_version
-  elif env['version_suffix'] in false_strings:
-    program_suffix = ''
-  else:
-    program_suffix = env['version_suffix']
+    if env['version_suffix'] in true_strings:
+        program_suffix = package_version
+    elif env['version_suffix'] in false_strings:
+        program_suffix = ''
+    else:
+        program_suffix = env['version_suffix']
 else:
-  program_suffix = ''
+    program_suffix = ''
 # used by package.C.in
 env['PROGRAM_SUFFIX'] = program_suffix
 
@@ -394,9 +394,9 @@ env['PROGRAM_SUFFIX'] = program_suffix
 add_suffix = packaging_method != 'windows'
 # LYX_DIR are different (used in package.C.in)
 if add_suffix:
-  env['LYX_DIR'] = Dir(os.path.join(prefix, share_dir + program_suffix)).abspath
+    env['LYX_DIR'] = Dir(os.path.join(prefix, share_dir + program_suffix)).abspath
 else:
-  env['LYX_DIR'] = Dir(os.path.join(prefix, share_dir)).abspath
+    env['LYX_DIR'] = Dir(os.path.join(prefix, share_dir)).abspath
 # we need absolute path for package.C
 env['LOCALEDIR'] = Dir(os.path.join(prefix, locale_dir)).abspath
 
@@ -408,12 +408,12 @@ env['LOCALEDIR'] = Dir(os.path.join(prefix, locale_dir)).abspath
 # Since Tool('mingw') will reset CCFLAGS etc, this should be
 # done before getEnvVariable
 if platform_name == 'win32':
-  if use_vc:
-    env.Tool('msvc')
-    env.Tool('mslink')
-  else:
-    env.Tool('mingw')
-    env.AppendUnique(CPPPATH = ['#c:/MinGW/include'])
+    if use_vc:
+        env.Tool('msvc')
+        env.Tool('mslink')
+    else:
+        env.Tool('mingw')
+        env.AppendUnique(CPPPATH = ['#c:/MinGW/include'])
 
 # we differentiate between hard-coded options and default options
 # hard-coded options are required and will always be there
@@ -431,89 +431,89 @@ C_COMPILER = env.subst('$CC')
 C_CCFLAGS = env.subst('$CCFLAGS').split()
 # if we use ms vc, the commands are fine (cl.exe and link.exe)
 if use_vc:
-  # /TP treat all source code as C++
-  # C4819: The file contains a character that cannot be represented
-  #   in the current code page (number)
-  # C4996: foo was decleared deprecated
-  CCFLAGS_required.extend(['/TP', '/EHsc'])
-  CCFLAGS_default.extend(['/wd4819', '/wd4996', '/nologo'])
+    # /TP treat all source code as C++
+    # C4819: The file contains a character that cannot be represented
+    #   in the current code page (number)
+    # C4996: foo was decleared deprecated
+    CCFLAGS_required.extend(['/TP', '/EHsc'])
+    CCFLAGS_default.extend(['/wd4819', '/wd4996', '/nologo'])
 else:
-  if env.has_key('CXX') and env['CXX']:
-    env['CC'] = env.subst('$CXX')
-    env['LINK'] = env.subst('$CXX')
-  else:
-    env['CC'] = 'g++'
-    env['LINK'] = 'g++'
+    if env.has_key('CXX') and env['CXX']:
+        env['CC'] = env.subst('$CXX')
+        env['LINK'] = env.subst('$CXX')
+    else:
+        env['CC'] = 'g++'
+        env['LINK'] = 'g++'
 
 # for debug/release mode
 if env.has_key('optimization') and env['optimization'] is not None:
-  # if user supplies optimization flags, use it anyway
-  CCFLAGS_required.extend(env['optimization'].split())
-  # and do not use default
-  set_default_optimization_flags = False
+    # if user supplies optimization flags, use it anyway
+    CCFLAGS_required.extend(env['optimization'].split())
+    # and do not use default
+    set_default_optimization_flags = False
 else:
-  set_default_optimization_flags = True
+    set_default_optimization_flags = True
 
 if mode == 'debug':
-  if use_vc:
-    CCFLAGS_required.append('/Zi')
-    LINKFLAGS_required.extend(['/debug', '/map'])
-  else:
-    CCFLAGS_required.append('-g')
-    CCFLAGS_default.append('-O')
+    if use_vc:
+        CCFLAGS_required.append('/Zi')
+        LINKFLAGS_required.extend(['/debug', '/map'])
+    else:
+        CCFLAGS_required.append('-g')
+        CCFLAGS_default.append('-O')
 elif mode == 'release' and set_default_optimization_flags:
-  if use_vc:
-    CCFLAGS_default.append('/O2')
-  else:
-    CCFLAGS_default.append('-O2')
+    if use_vc:
+        CCFLAGS_default.append('/O2')
+    else:
+        CCFLAGS_default.append('-O2')
 
 # msvc uses separate tools for profiling
 if env.has_key('profiling') and env['profiling']:
-  if use_vc:
-    print 'Visual C++ does not use profiling options'
-  else:
-    CCFLAGS_required.append('-pg')
-    LINKFLAGS_required.append('-pg')
+    if use_vc:
+        print 'Visual C++ does not use profiling options'
+    else:
+        CCFLAGS_required.append('-pg')
+        LINKFLAGS_required.append('-pg')
 
 if env.has_key('warnings') and env['warnings']:
-  if use_vc:
-    CCFLAGS_default.append('/W2')
-  else:
-    # Note: autotools detect gxx version and pass -W for 3.x
-    # and -Wextra for other versions of gcc
-    CCFLAGS_default.append('-Wall')
+    if use_vc:
+        CCFLAGS_default.append('/W2')
+    else:
+        # Note: autotools detect gxx version and pass -W for 3.x
+        # and -Wextra for other versions of gcc
+        CCFLAGS_default.append('-Wall')
 
 # Now, set the variables as follows:
 # 1. if command line option exists: replace default
 # 2. then if s envronment variable exists: replace default
 # 3. set variable to required + default
 def setEnvVariable(env, name, required = None, default = None, split = True):
-  ''' env: environment to set variable
-      name: variable
-      required: hardcoded options
-      default: default options that can be replaced by command line or
-        environment variables
-      split: whether or not split obtained variable like '-02 -g'
-  '''
-  # first try command line argument (override environment settings)
-  if ARGUMENTS.has_key(name):
-    default = ARGUMENTS[name]
-    if split:
-      default = default.split()
-  # then use environment default
-  elif os.environ.has_key(name):
-    print "Acquiring varaible %s from system environment: %s" % (name, os.environ[name])
-    default = os.environ[name]
-    if split:
-      default = default.split()
-  # set variable
-  if required is not None:
-    env[name] = required
-  if default is not None:
-    if env.has_key(name) and env[name] != default:
-      env[name] += default
-    else:
-      env[name] = default
+    ''' env: environment to set variable
+            name: variable
+            required: hardcoded options
+            default: default options that can be replaced by command line or
+                environment variables
+            split: whether or not split obtained variable like '-02 -g'
+    '''
+    # first try command line argument (override environment settings)
+    if ARGUMENTS.has_key(name):
+        default = ARGUMENTS[name]
+        if split:
+            default = default.split()
+    # then use environment default
+    elif os.environ.has_key(name):
+        print "Acquiring varaible %s from system environment: %s" % (name, os.environ[name])
+        default = os.environ[name]
+        if split:
+            default = default.split()
+    # set variable
+    if required is not None:
+        env[name] = required
+    if default is not None:
+        if env.has_key(name) and env[name] != default:
+            env[name] += default
+        else:
+            env[name] = default
 
 setEnvVariable(env, 'DESTDIR', split=False)
 setEnvVariable(env, 'CC')
@@ -528,8 +528,8 @@ setEnvVariable(env, 'LINKFLAGS', LINKFLAGS_required)
 
 # if DESTDIR is not set...
 if env.has_key('dest_dir'):
-  print "This option is obsolete. Please use DESTDIR instead."
-  env['DESTDIR'] = env['dest_dir']
+    print "This option is obsolete. Please use DESTDIR instead."
+    env['DESTDIR'] = env['dest_dir']
 
 
 #---------------------------------------------------------
@@ -537,32 +537,32 @@ if env.has_key('dest_dir'):
 #---------------------------------------------------------
 
 if env.has_key('qt_dir') and env['qt_dir']:
-  env['QTDIR'] = env['qt_dir']
-  # add path to the qt tools
-  env.AppendUnique(LIBPATH = [os.path.join(env['qt_dir'], 'lib')])
-  # set environment so that moc etc can be found even if its path is not set properly
-  env.PrependENVPath('PATH', os.path.join(env['qt_dir'], 'bin'))
+    env['QTDIR'] = env['qt_dir']
+    # add path to the qt tools
+    env.AppendUnique(LIBPATH = [os.path.join(env['qt_dir'], 'lib')])
+    # set environment so that moc etc can be found even if its path is not set properly
+    env.PrependENVPath('PATH', os.path.join(env['qt_dir'], 'bin'))
 else:
-  env['QTDIR'] = os.environ.get('QTDIR', '/usr/lib/qt-3.3')
+    env['QTDIR'] = os.environ.get('QTDIR', '/usr/lib/qt-3.3')
 
 if env.has_key('qt_lib_path') and env['qt_lib_path']:
-  qt_lib_path = env.subst('$qt_lib_path')
+    qt_lib_path = env.subst('$qt_lib_path')
 else:
-  qt_lib_path = env.subst('$QTDIR/lib')
+    qt_lib_path = env.subst('$QTDIR/lib')
 env.AppendUnique(LIBPATH = [qt_lib_path])
 # qt4 seems to be using pkg_config
 env.PrependENVPath('PKG_CONFIG_PATH', qt_lib_path)
 
 if env.has_key('qt_inc_path') and env['qt_inc_path']:
-  qt_inc_path = env['qt_inc_path']
+    qt_inc_path = env['qt_inc_path']
 elif os.path.isdir(os.path.join(env.subst('$QTDIR'), 'include')):
-  qt_inc_path = '$QTDIR/include'
+    qt_inc_path = '$QTDIR/include'
 # this is the path for cygwin.
 elif os.path.isdir('/usr/include/' + frontend):
-  qt_inc_path = '/usr/include/$frontend'
+    qt_inc_path = '/usr/include/$frontend'
 else:
-  print "Qt include directory not found. Please specify it using qt_inc_path"
-  Exit(1)
+    print "Qt include directory not found. Please specify it using qt_inc_path"
+    Exit(1)
 # Note that this CPPPATH is for testing only
 # it will be removed before calling SConscript
 env['CPPPATH'] = [qt_inc_path]
@@ -572,17 +572,17 @@ env['CPPPATH'] = [qt_inc_path]
 #
 extra_inc_paths = []
 if env.has_key('extra_inc_path') and env['extra_inc_path']:
-  extra_inc_paths.append(env['extra_inc_path'])
+    extra_inc_paths.append(env['extra_inc_path'])
 if env.has_key('extra_lib_path') and env['extra_lib_path']:
-  env.AppendUnique(LIBPATH = [env['extra_lib_path']])
+    env.AppendUnique(LIBPATH = [env['extra_lib_path']])
 if env.has_key('extra_inc_path1') and env['extra_inc_path1']:
-  extra_inc_paths.append(env['extra_inc_path1'])
+    extra_inc_paths.append(env['extra_inc_path1'])
 if env.has_key('extra_lib_path1') and env['extra_lib_path1']:
-  env.AppendUnique(LIBPATH = [env['extra_lib_path1']])
+    env.AppendUnique(LIBPATH = [env['extra_lib_path1']])
 if env.has_key('extra_bin_path') and env['extra_bin_path']:
-  # maybe only one of them is needed
-  os.environ['PATH'] += os.pathsep + env['extra_bin_path']
-  env['ENV']['PATH'] += os.pathsep + env['extra_bin_path']
+    # maybe only one of them is needed
+    os.environ['PATH'] += os.pathsep + env['extra_bin_path']
+    env['ENV']['PATH'] += os.pathsep + env['extra_bin_path']
 # extra_inc_paths will be used later by intlenv etc
 env.AppendUnique(CPPPATH = extra_inc_paths)
 
@@ -592,188 +592,188 @@ env.AppendUnique(CPPPATH = extra_inc_paths)
 #----------------------------------------------------------
 
 conf = Configure(env,
-  custom_tests = {
-    'CheckPkgConfig' : utils.checkPkgConfig,
-    'CheckPackage' : utils.checkPackage,
-    'CheckMkdirOneArg' : utils.checkMkdirOneArg,
-    'CheckSelectArgType' : utils.checkSelectArgType,
-    'CheckBoostLibraries' : utils.checkBoostLibraries,
-    'CheckCommand' : utils.checkCommand,
-    'CheckCXXGlobalCstd' : utils.checkCXXGlobalCstd,
-    'CheckLC_MESSAGES' : utils.checkLC_MESSAGES,
-    'CheckIconvConst' : utils.checkIconvConst,
-  }
+    custom_tests = {
+        'CheckPkgConfig' : utils.checkPkgConfig,
+        'CheckPackage' : utils.checkPackage,
+        'CheckMkdirOneArg' : utils.checkMkdirOneArg,
+        'CheckSelectArgType' : utils.checkSelectArgType,
+        'CheckBoostLibraries' : utils.checkBoostLibraries,
+        'CheckCommand' : utils.checkCommand,
+        'CheckCXXGlobalCstd' : utils.checkCXXGlobalCstd,
+        'CheckLC_MESSAGES' : utils.checkLC_MESSAGES,
+        'CheckIconvConst' : utils.checkIconvConst,
+    }
 )
 
 # pkg-config? (if not, we use hard-coded options)
 if not fast_start:
-  if conf.CheckPkgConfig('0.15.0'):
-    env['HAS_PKG_CONFIG'] = True
-  else:
-    print 'pkg-config >= 0.1.50 is not found'
-    env['HAS_PKG_CONFIG'] = False
-  env_cache['HAS_PKG_CONFIG'] = env['HAS_PKG_CONFIG']
+    if conf.CheckPkgConfig('0.15.0'):
+        env['HAS_PKG_CONFIG'] = True
+    else:
+        print 'pkg-config >= 0.1.50 is not found'
+        env['HAS_PKG_CONFIG'] = False
+    env_cache['HAS_PKG_CONFIG'] = env['HAS_PKG_CONFIG']
 else:
-  env['HAS_PKG_CONFIG'] = env_cache['HAS_PKG_CONFIG']
+    env['HAS_PKG_CONFIG'] = env_cache['HAS_PKG_CONFIG']
 
 # zlib? This is required. (fast_start assumes the existance of zlib)
 if not fast_start:
-  if (not use_vc and not conf.CheckLibWithHeader('z', 'zlib.h', 'C')) \
-    or (use_vc and not conf.CheckLibWithHeader('zdll', 'zlib.h', 'C')):
-    print 'Did not find zdll.lib or zlib.h, exiting!'
-    Exit(1)
+    if (not use_vc and not conf.CheckLibWithHeader('z', 'zlib.h', 'C')) \
+        or (use_vc and not conf.CheckLibWithHeader('zdll', 'zlib.h', 'C')):
+        print 'Did not find zdll.lib or zlib.h, exiting!'
+        Exit(1)
 
 # qt libraries?
 if not fast_start:
-  #
-  # qt3 does not use pkg_config
-  if frontend in ['qt2', 'qt3']:
-    if not conf.CheckLibWithHeader('qt-mt', 'qapp.h', 'c++', 'QApplication qapp();'):
-      print 'Did not find qt libraries, exiting!'
-      Exit(1)
-  elif frontend == 'qt4':
-    succ = False
-    # first: try pkg_config
-    if env['HAS_PKG_CONFIG']:
-      succ = conf.CheckPackage('QtCore') or conf.CheckPackage('QtCore4')
-      # FIXME: use pkg_config information?
-      #env['QT4_PKG_CONFIG'] = succ
-    # second: try to link to it
-    if not succ:
-      # Under linux, I can test the following perfectly
-      # Under windows, lib names need to passed as libXXX4.a ...
-      succ = conf.CheckLibWithHeader('QtCore', 'QtGui/QApplication', 'c++', 'QApplication qapp();') or \
-        conf.CheckLibWithHeader('QtCore4', 'QtGui/QApplication', 'c++', 'QApplication qapp();')
-    # third: try to look up the path
-    if not succ:
-      succ = True
-      for lib in ['QtCore', 'QtGui']:
-        # windows version has something like QtGui4 ...
-        if not (os.path.isfile(os.path.join(qt_lib_path, 'lib%s.a' % lib)) or \
-          os.path.isfile(os.path.join(qt_lib_path, 'lib%s4.a' % lib))):
-          succ = False
-          break
-    # still can not find it
-    if succ:
-      print "Qt4 libraries are found."
-    else:
-      print 'Did not find qt libraries, exiting!'
-      Exit(1)
+    #
+    # qt3 does not use pkg_config
+    if frontend in ['qt2', 'qt3']:
+        if not conf.CheckLibWithHeader('qt-mt', 'qapp.h', 'c++', 'QApplication qapp();'):
+            print 'Did not find qt libraries, exiting!'
+            Exit(1)
+    elif frontend == 'qt4':
+        succ = False
+        # first: try pkg_config
+        if env['HAS_PKG_CONFIG']:
+            succ = conf.CheckPackage('QtCore') or conf.CheckPackage('QtCore4')
+            # FIXME: use pkg_config information?
+            #env['QT4_PKG_CONFIG'] = succ
+        # second: try to link to it
+        if not succ:
+            # Under linux, I can test the following perfectly
+            # Under windows, lib names need to passed as libXXX4.a ...
+            succ = conf.CheckLibWithHeader('QtCore', 'QtGui/QApplication', 'c++', 'QApplication qapp();') or \
+                conf.CheckLibWithHeader('QtCore4', 'QtGui/QApplication', 'c++', 'QApplication qapp();')
+        # third: try to look up the path
+        if not succ:
+            succ = True
+            for lib in ['QtCore', 'QtGui']:
+                # windows version has something like QtGui4 ...
+                if not (os.path.isfile(os.path.join(qt_lib_path, 'lib%s.a' % lib)) or \
+                    os.path.isfile(os.path.join(qt_lib_path, 'lib%s4.a' % lib))):
+                    succ = False
+                    break
+        # still can not find it
+        if succ:
+            print "Qt4 libraries are found."
+        else:
+            print 'Did not find qt libraries, exiting!'
+            Exit(1)
 
 # now, if msvc2005 is used, we will need that QT_LIB_PATH/QT_LIB.manifest file
 if use_vc:
-  if mode == 'debug':
-    manifest = os.path.join(qt_lib_path, 'QtGuid4.dll.manifest')
-  else:
-    manifest = os.path.join(qt_lib_path, 'QtGui4.dll.manifest')
-  if os.path.isfile(manifest):
-    env['LINKCOM'] = [env['LINKCOM'], 'mt.exe /MANIFEST %s /outputresource:$TARGET;1' % manifest]
+    if mode == 'debug':
+        manifest = os.path.join(qt_lib_path, 'QtGuid4.dll.manifest')
+    else:
+        manifest = os.path.join(qt_lib_path, 'QtGui4.dll.manifest')
+    if os.path.isfile(manifest):
+        env['LINKCOM'] = [env['LINKCOM'], 'mt.exe /MANIFEST %s /outputresource:$TARGET;1' % manifest]
 
 # check socket libs
 if not fast_start:
-  socket_libs = []
-  if conf.CheckLib('socket'):
-    socket_libs.append('socket')
-  # nsl is the network services library and provides a
-  # transport-level interface to networking services.
-  if conf.CheckLib('nsl'):
-    socket_libs.append('nsl')
-  env_cache['SOCKET_LIBS'] = socket_libs
+    socket_libs = []
+    if conf.CheckLib('socket'):
+        socket_libs.append('socket')
+    # nsl is the network services library and provides a
+    # transport-level interface to networking services.
+    if conf.CheckLib('nsl'):
+        socket_libs.append('nsl')
+    env_cache['SOCKET_LIBS'] = socket_libs
 else:
-  socket_libs = env_cache['SOCKET_LIBS']
+    socket_libs = env_cache['SOCKET_LIBS']
 
 # check available boost libs (since lyx1.4 does not use iostream)
 boost_libs = []
 for lib in ['signals', 'regex', 'filesystem', 'iostreams']:
-  if os.path.isdir(os.path.join(top_src_dir, 'boost', 'libs', lib)):
-    boost_libs.append(lib)
+    if os.path.isdir(os.path.join(top_src_dir, 'boost', 'libs', lib)):
+        boost_libs.append(lib)
 
 if not fast_start:
-  # check boost libraries
-  boost_opt = ARGUMENTS.get('boost', 'auto')
-  # check for system boost
-  paths = env['LIBPATH'] + ['/usr/lib', '/usr/local/lib']
-  # real libraries (included or system)
-  boost_libraries = []
-  boost_libpath = None
-  # here I assume that all libraries are in the same directory
-  for lib in boost_libs:
-    if boost_opt == 'included':
-      boost_libraries.append('included_boost_%s' % lib)
-      env['INCLUDED_BOOST'] = True
-    elif boost_opt == 'auto':
-      res = conf.CheckBoostLibraries('boost_%s' % lib , paths)
-      # if not found
-      if res[0] == '':
-        boost_libraries.append('included_boost_%s' % lib)
-        env['INCLUDED_BOOST'] = True
-      else:
-        boost_libraries.append(res[1])
-        env['INCLUDED_BOOST'] = False
-        boost_libpath = res[0]
-    elif boost_opt == 'system':
-      res = conf.CheckBoostLibraries('boost_%s' % lib , paths)
-      if res[0] == '':
-        print "Can not find system boost libraries"
-        print "Please supply a path through extra_lib_path and try again."
-        print "Or use boost=included to use included boost libraries."
-        Exit(2)
-      else:
-        boost_libraries.append(res[1])
-        env.AppendUnique(LIBPATH = [res[0]])
-        boost_libpath = res[0]
-  env_cache['BOOST_LIBRARIES'] = boost_libraries
-  env_cache['INCLUDED_BOOST'] = env['INCLUDED_BOOST']
-  env_cache['BOOST_LIBPATH'] = boost_libpath
+    # check boost libraries
+    boost_opt = ARGUMENTS.get('boost', 'auto')
+    # check for system boost
+    paths = env['LIBPATH'] + ['/usr/lib', '/usr/local/lib']
+    # real libraries (included or system)
+    boost_libraries = []
+    boost_libpath = None
+    # here I assume that all libraries are in the same directory
+    for lib in boost_libs:
+        if boost_opt == 'included':
+            boost_libraries.append('included_boost_%s' % lib)
+            env['INCLUDED_BOOST'] = True
+        elif boost_opt == 'auto':
+            res = conf.CheckBoostLibraries('boost_%s' % lib , paths)
+            # if not found
+            if res[0] == '':
+                boost_libraries.append('included_boost_%s' % lib)
+                env['INCLUDED_BOOST'] = True
+            else:
+                boost_libraries.append(res[1])
+                env['INCLUDED_BOOST'] = False
+                boost_libpath = res[0]
+        elif boost_opt == 'system':
+            res = conf.CheckBoostLibraries('boost_%s' % lib , paths)
+            if res[0] == '':
+                print "Can not find system boost libraries"
+                print "Please supply a path through extra_lib_path and try again."
+                print "Or use boost=included to use included boost libraries."
+                Exit(2)
+            else:
+                boost_libraries.append(res[1])
+                env.AppendUnique(LIBPATH = [res[0]])
+                boost_libpath = res[0]
+    env_cache['BOOST_LIBRARIES'] = boost_libraries
+    env_cache['INCLUDED_BOOST'] = env['INCLUDED_BOOST']
+    env_cache['BOOST_LIBPATH'] = boost_libpath
 else:
-  boost_libraries = env_cache['BOOST_LIBRARIES']
-  env['INCLUDED_BOOST'] = env_cache['INCLUDED_BOOST']
-  boost_libpath = env_cache['BOOST_LIBPATH']
+    boost_libraries = env_cache['BOOST_LIBRARIES']
+    env['INCLUDED_BOOST'] = env_cache['INCLUDED_BOOST']
+    boost_libpath = env_cache['BOOST_LIBPATH']
 
 if boost_libpath is not None:
-  env.AppendUnique(LIBPATH = [boost_libpath])
+    env.AppendUnique(LIBPATH = [boost_libpath])
 
 
 env['ENABLE_NLS'] = env['nls']
 
 if not fast_start:
-  if not env['ENABLE_NLS']:
-    intl_libs = []
-    included_gettext = False
-  else:
-    # check gettext libraries
-    gettext_opt = ARGUMENTS.get('gettext', 'auto')
-    # check for system gettext
-    succ = False
-    if gettext_opt in ['auto', 'system']:
-      if conf.CheckLib('intl'):
+    if not env['ENABLE_NLS']:
+        intl_libs = []
         included_gettext = False
-        intl_libs = ['intl']
-        succ = True
-      else: # no found
-        if gettext_opt == 'system':
-          print "Can not find system gettext library"
-          print "Please supply a path through extra_lib_path and try again."
-          print "Or use gettext=included to use included gettext libraries."
-          Exit(2)
-    # now, auto and succ = false, or gettext=included
-    if not succ:
-      # we do not need to set LIBPATH now.
-      included_gettext = True
-      intl_libs = ['included_intl']
-  env_cache['INCLUDED_GETTEXT'] = included_gettext
-  env_cache['INTL_LIBS'] = intl_libs
+    else:
+        # check gettext libraries
+        gettext_opt = ARGUMENTS.get('gettext', 'auto')
+        # check for system gettext
+        succ = False
+        if gettext_opt in ['auto', 'system']:
+            if conf.CheckLib('intl'):
+                included_gettext = False
+                intl_libs = ['intl']
+                succ = True
+            else: # no found
+                if gettext_opt == 'system':
+                    print "Can not find system gettext library"
+                    print "Please supply a path through extra_lib_path and try again."
+                    print "Or use gettext=included to use included gettext libraries."
+                    Exit(2)
+        # now, auto and succ = false, or gettext=included
+        if not succ:
+            # we do not need to set LIBPATH now.
+            included_gettext = True
+            intl_libs = ['included_intl']
+    env_cache['INCLUDED_GETTEXT'] = included_gettext
+    env_cache['INTL_LIBS'] = intl_libs
 else:
-  included_gettext = env_cache['INCLUDED_GETTEXT']
-  intl_libs = env_cache['INTL_LIBS']
+    included_gettext = env_cache['INCLUDED_GETTEXT']
+    intl_libs = env_cache['INTL_LIBS']
 
 #
 # check for msgfmt command
 if not fast_start:
-  env['MSGFMT'] = conf.CheckCommand('msgfmt')
-  env_cache['MSGFMT'] = env['MSGFMT']
+    env['MSGFMT'] = conf.CheckCommand('msgfmt')
+    env_cache['MSGFMT'] = env['MSGFMT']
 else:
-  env['MSGFMT'] = env_cache['MSGFMT']
+    env['MSGFMT'] = env_cache['MSGFMT']
 
 #
 # Customized builders
@@ -788,48 +788,48 @@ env['BUILDERS']['substFile'] = Builder(action = utils.env_subst)
 aspell_lib = 'aspell'
 # assume that we use aspell, aspelld compiled for msvc
 if platform_name == 'win32' and mode == 'debug' and use_vc:
-  aspell_lib = 'aspelld'
+    aspell_lib = 'aspelld'
 
 # check the existence of config.h
 config_h = os.path.join(env.Dir('$BUILDDIR/common').path, 'config.h')
 boost_config_h = os.path.join(env.Dir('$BUILDDIR/boost').path, 'config.h')
 if not fast_start or not os.path.isfile(boost_config_h) \
-  or not os.path.isfile(config_h):
-  #
-  print "Creating %s..." % boost_config_h
-  #
-  utils.createConfigFile(conf,
-    config_file = boost_config_h,
-    config_pre = '''/* boost/config.h.  Generated by SCons.  */
+    or not os.path.isfile(config_h):
+    #
+    print "Creating %s..." % boost_config_h
+    #
+    utils.createConfigFile(conf,
+        config_file = boost_config_h,
+        config_pre = '''/* boost/config.h.  Generated by SCons.  */
 
 /* -*- C++ -*- */
 /*
- * \file config.h
- * This file is part of LyX, the document processor.
- * Licence details can be found in the file COPYING.
- *
- * This is the compilation configuration file for LyX.
- * It was generated by scon.
- * You might want to change some of the defaults if something goes wrong
- * during the compilation.
- */
+* \file config.h
+* This file is part of LyX, the document processor.
+* Licence details can be found in the file COPYING.
+*
+* This is the compilation configuration file for LyX.
+* It was generated by scon.
+* You might want to change some of the defaults if something goes wrong
+* during the compilation.
+*/
 
 #ifndef _BOOST_CONFIG_H
 #define _BOOST_CONFIG_H
 ''',
-    headers = [
-      ('ostream', 'HAVE_OSTREAM', 'cxx'),
-      ('locale', 'HAVE_LOCALE', 'cxx'),
-      ('sstream', 'HAVE_SSTREAM', 'cxx'),
-      #('newapis.h', 'HAVE_NEWAPIS_H', 'c'),
-    ],
-    custom_tests = [
-      (env.has_key('assertions') and env['assertions'],
-        'ENABLE_ASSERTIONS',
-        'Define if you want assertions to be enabled in the code'
-      ),
-    ],
-    config_post = '''
+        headers = [
+            ('ostream', 'HAVE_OSTREAM', 'cxx'),
+            ('locale', 'HAVE_LOCALE', 'cxx'),
+            ('sstream', 'HAVE_SSTREAM', 'cxx'),
+            #('newapis.h', 'HAVE_NEWAPIS_H', 'c'),
+        ],
+        custom_tests = [
+            (env.has_key('assertions') and env['assertions'],
+                'ENABLE_ASSERTIONS',
+                'Define if you want assertions to be enabled in the code'
+            ),
+        ],
+        config_post = '''
 
 #if defined(HAVE_OSTREAM) && defined(HAVE_LOCALE) && defined(HAVE_SSTREAM)
 #  define USE_BOOST_FORMAT 1
@@ -858,199 +858,199 @@ if not fast_start or not os.path.isfile(boost_config_h) \
 
 #endif
 '''
-  )
-  #
-  print "\nGenerating %s..." % config_h
+    )
+    #
+    print "\nGenerating %s..." % config_h
 
-  # AIKSAURUS_H_LOCATION
-  if (conf.CheckCXXHeader("Aiksaurus.h")):
-    aik_location = '<Aiksaurus.h>'
-  elif (conf.CheckCXXHeader("Aiksaurus/Aiksaurus.h")):
-    aik_location = '<Aiksaurus/Aiksaurus.h>'
-  else:
-    aik_location = ''
+    # AIKSAURUS_H_LOCATION
+    if (conf.CheckCXXHeader("Aiksaurus.h")):
+        aik_location = '<Aiksaurus.h>'
+    elif (conf.CheckCXXHeader("Aiksaurus/Aiksaurus.h")):
+        aik_location = '<Aiksaurus/Aiksaurus.h>'
+    else:
+        aik_location = ''
 
-  # determine headers to use
-  spell_opt = ARGUMENTS.get('spell', 'auto')
-  env['USE_ASPELL'] = False
-  env['USE_PSPELL'] = False
-  env['USE_ISPELL'] = False
-  if spell_opt in ['auto', 'aspell'] and conf.CheckLib(aspell_lib):
-    spell_engine = 'USE_ASPELL'
-  elif spell_opt in ['auto', 'pspell'] and conf.CheckLib('pspell'):
-    spell_engine = 'USE_PSPELL'
-  elif spell_opt in ['auto', 'ispell'] and conf.CheckLib('ispell'):
-    spell_engine = 'USE_ISPELL'
-  else:
-    spell_engine = None
+    # determine headers to use
+    spell_opt = ARGUMENTS.get('spell', 'auto')
+    env['USE_ASPELL'] = False
+    env['USE_PSPELL'] = False
+    env['USE_ISPELL'] = False
+    if spell_opt in ['auto', 'aspell'] and conf.CheckLib(aspell_lib):
+        spell_engine = 'USE_ASPELL'
+    elif spell_opt in ['auto', 'pspell'] and conf.CheckLib('pspell'):
+        spell_engine = 'USE_PSPELL'
+    elif spell_opt in ['auto', 'ispell'] and conf.CheckLib('ispell'):
+        spell_engine = 'USE_ISPELL'
+    else:
+        spell_engine = None
 
-  if spell_engine is not None:
-    env[spell_engine] = True
-  else:
-    if spell_opt == 'auto':
-      print "Warning: Can not locate any spell checker"
-    elif spell_opt != 'no':
-      print "Warning: Can not locate specified spell checker:", spell_opt
-      Exit(1)
+    if spell_engine is not None:
+        env[spell_engine] = True
+    else:
+        if spell_opt == 'auto':
+            print "Warning: Can not locate any spell checker"
+        elif spell_opt != 'no':
+            print "Warning: Can not locate specified spell checker:", spell_opt
+            Exit(1)
 
-  # check arg types of select function
-  (select_arg1, select_arg234, select_arg5) = conf.CheckSelectArgType()
+    # check arg types of select function
+    (select_arg1, select_arg234, select_arg5) = conf.CheckSelectArgType()
 
-  #
-  # create config.h
-  result = utils.createConfigFile(conf,
-    config_file = config_h,
-    config_pre = '''/* config.h.  Generated by SCons.  */
+    #
+    # create config.h
+    result = utils.createConfigFile(conf,
+        config_file = config_h,
+        config_pre = '''/* config.h.  Generated by SCons.  */
 
 /* -*- C++ -*- */
 /*
- * \file config.h
- * This file is part of LyX, the document processor.
- * Licence details can be found in the file COPYING.
- *
- * This is the compilation configuration file for LyX.
- * It was generated by scon.
- * You might want to change some of the defaults if something goes wrong
- * during the compilation.
- */
+* \file config.h
+* This file is part of LyX, the document processor.
+* Licence details can be found in the file COPYING.
+*
+* This is the compilation configuration file for LyX.
+* It was generated by scon.
+* You might want to change some of the defaults if something goes wrong
+* during the compilation.
+*/
 
 #ifndef _CONFIG_H
 #define _CONFIG_H
 ''',
-    headers = [
-      ('io.h', 'HAVE_IO_H', 'c'),
-      ('limits.h', 'HAVE_LIMITS_H', 'c'),
-      ('locale.h', 'HAVE_LOCALE_H', 'c'),
-      ('process.h', 'HAVE_PROCESS_H', 'c'),
-      ('stdlib.h', 'HAVE_STDLIB_H', 'c'),
-      ('sys/stat.h', 'HAVE_SYS_STAT_H', 'c'),
-      ('sys/time.h', 'HAVE_SYS_TIME_H', 'c'),
-      ('sys/types.h', 'HAVE_SYS_TYPES_H', 'c'),
-      ('sys/utime.h', 'HAVE_SYS_UTIME_H', 'c'),
-      ('sys/socket.h', 'HAVE_SYS_SOCKET_H', 'c'),
-      ('unistd.h', 'HAVE_UNISTD_H', 'c'),
-      ('utime.h', 'HAVE_UTIME_H', 'c'),
-      ('direct.h', 'HAVE_DIRECT_H', 'c'),
-      ('istream', 'HAVE_ISTREAM', 'cxx'),
-      ('ios', 'HAVE_IOS', 'cxx'),
-    ],
-    functions = [
-      ('open', 'HAVE_OPEN', None),
-      ('close', 'HAVE_CLOSE', None),
-      ('popen', 'HAVE_POPEN', None),
-      ('pclose', 'HAVE_PCLOSE', None),
-      ('_open', 'HAVE__OPEN', None),
-      ('_close', 'HAVE__CLOSE', None),
-      ('_popen', 'HAVE__POPEN', None),
-      ('_pclose', 'HAVE__PCLOSE', None),
-      ('getpid', 'HAVE_GETPID', None),
-      ('_getpid', 'HAVE__GETPID', None),
-      ('mkdir', 'HAVE_MKDIR', None),
-      ('_mkdir', 'HAVE__MKDIR', None),
-      ('mktemp', 'HAVE_MKTEMP', None),
-      ('mkstemp', 'HAVE_MKSTEMP', None),
-      ('strerror', 'HAVE_STRERROR', None),
-      ('count', 'HAVE_STD_COUNT', '''
+        headers = [
+            ('io.h', 'HAVE_IO_H', 'c'),
+            ('limits.h', 'HAVE_LIMITS_H', 'c'),
+            ('locale.h', 'HAVE_LOCALE_H', 'c'),
+            ('process.h', 'HAVE_PROCESS_H', 'c'),
+            ('stdlib.h', 'HAVE_STDLIB_H', 'c'),
+            ('sys/stat.h', 'HAVE_SYS_STAT_H', 'c'),
+            ('sys/time.h', 'HAVE_SYS_TIME_H', 'c'),
+            ('sys/types.h', 'HAVE_SYS_TYPES_H', 'c'),
+            ('sys/utime.h', 'HAVE_SYS_UTIME_H', 'c'),
+            ('sys/socket.h', 'HAVE_SYS_SOCKET_H', 'c'),
+            ('unistd.h', 'HAVE_UNISTD_H', 'c'),
+            ('utime.h', 'HAVE_UTIME_H', 'c'),
+            ('direct.h', 'HAVE_DIRECT_H', 'c'),
+            ('istream', 'HAVE_ISTREAM', 'cxx'),
+            ('ios', 'HAVE_IOS', 'cxx'),
+        ],
+        functions = [
+            ('open', 'HAVE_OPEN', None),
+            ('close', 'HAVE_CLOSE', None),
+            ('popen', 'HAVE_POPEN', None),
+            ('pclose', 'HAVE_PCLOSE', None),
+            ('_open', 'HAVE__OPEN', None),
+            ('_close', 'HAVE__CLOSE', None),
+            ('_popen', 'HAVE__POPEN', None),
+            ('_pclose', 'HAVE__PCLOSE', None),
+            ('getpid', 'HAVE_GETPID', None),
+            ('_getpid', 'HAVE__GETPID', None),
+            ('mkdir', 'HAVE_MKDIR', None),
+            ('_mkdir', 'HAVE__MKDIR', None),
+            ('mktemp', 'HAVE_MKTEMP', None),
+            ('mkstemp', 'HAVE_MKSTEMP', None),
+            ('strerror', 'HAVE_STRERROR', None),
+            ('count', 'HAVE_STD_COUNT', '''
 #include <algorithm>
 int count()
 {
-  char a[] = "hello";
-  return std::count(a, a+5, 'l');
+    char a[] = "hello";
+    return std::count(a, a+5, 'l');
 }
 '''),
-      ('getcwd', 'HAVE_GETCWD', None),
-      ('setenv', 'HAVE_SETENV', None),
-      ('putenv', 'HAVE_PUTENV', None),
-      ('fcntl', 'HAVE_FCNTL', None),
-    ],
-    types = [
-      ('std::istreambuf_iterator<std::istream>', 'HAVE_DECL_ISTREAMBUF_ITERATOR',
-        '#include <streambuf>\n#include <istream>')
-    ],
-    libs = [
-      ('gdi32', 'HAVE_LIBGDI32'),
-      (('iconv', 'libiconv'), 'HAVE_ICONV', 'ICONV_LIB'),
-      (('Aiksaurus', 'libAiksaurus'), 'HAVE_LIBAIKSAURUS', 'AIKSAURUS_LIB'),
-    ],
-    custom_tests = [
-      (conf.CheckType('pid_t', includes='#include <sys/types.h>'),
-        'HAVE_PID_T',
-        'Define is sys/types.h does not have pid_t',
-        '',
-        '#define pid_t int',
-      ),
-      (conf.CheckCXXGlobalCstd(),
-        'CXX_GLOBAL_CSTD',
-        'Define if your C++ compiler puts C library functions in the global namespace'
-      ),
-      (conf.CheckMkdirOneArg(),
-        'MKDIR_TAKES_ONE_ARG',
-        'Define if mkdir takes only one argument.'
-      ),
-      (conf.CheckLC_MESSAGES(),
-        'HAVE_LC_MESSAGES',
-        'Define if your <locale.h> file defines LC_MESSAGES.'
-      ),
-      (devel_version, 'DEVEL_VERSION', 'Whether or not a development version'),
-      (env['nls'],
-        'ENABLE_NLS',
-        "Define to 1 if translation of program messages to the user's native anguage is requested.",
-      ),
-      (env['nls'] and not included_gettext,
-        'HAVE_GETTEXT',
-        'Define to 1 if using system gettext library'
-      ),
-      (env.has_key('warnings') and env['warnings'],
-        'WITH_WARNINGS',
-        'Define this if you want to see the warning directives put here and there by the developpers to get attention'
-      ),
-      (env.has_key('concept_checks') and env['concept_checks'],
-        '_GLIBCXX_CONCEPT_CHECKS',
-        'libstdc++ concept checking'
-      ),
-      (env.has_key('stdlib_debug') and env['stdlib_debug'],
-        '_GLIBCXX_DEBUG',
-        'libstdc++ debug mode'
-      ),
-      (env.has_key('stdlib_debug') and env['stdlib_debug'],
-        '_GLIBCXX_DEBUG_PEDANTIC',
-        'libstdc++ pedantic debug mode'
-      ),
-      (os.name != 'nt', 'BOOST_POSIX',
-        'Indicates to boost which API to use (posix or windows).'
-      ),
-      (spell_engine is not None, spell_engine,
-        'Spell engine to use'
-      ),
-    ],
-    extra_items = [
-      ('#define PACKAGE "%s%s"' % (package, program_suffix),
-        'Name of package'),
-      ('#define PACKAGE_BUGREPORT "%s"' % package_bugreport,
-        'Define to the address where bug reports for this package should be sent.'),
-      ('#define PACKAGE_NAME "%s"' % package_name,
-        'Define to the full name of this package.'),
-      ('#define PACKAGE_STRING "%s"' % package_string,
-        'Define to the full name and version of this package.'),
-      ('#define PACKAGE_TARNAME "%s"' % package_tarname,
-        'Define to the one symbol short name of this package.'),
-      ('#define PACKAGE_VERSION "%s"' % package_version,
-        'Define to the version of this package.'),
-      ('#define BOOST_ALL_NO_LIB 1',
-        'disable automatic linking of boost libraries.'),
-      ('#define USE_%s_PACKAGING 1' % packaging_method.upper(),
-        'Packaging method'),
-      ('#define AIKSAURUS_H_LOCATION ' + aik_location,
-        'Aiksaurus include file'),
-      ('#define SELECT_TYPE_ARG1 %s' % select_arg1,
-        "Define to the type of arg 1 for `select'."),
-      ('#define SELECT_TYPE_ARG234 %s' % select_arg234,
-        "Define to the type of arg 2, 3, 4 for `select'."),
-      ('#define SELECT_TYPE_ARG5 %s' % select_arg5,
-        "Define to the type of arg 5 for `select'."),
-    ],
-    config_post = '''/************************************************************
- ** You should not need to change anything beyond this point */
+            ('getcwd', 'HAVE_GETCWD', None),
+            ('setenv', 'HAVE_SETENV', None),
+            ('putenv', 'HAVE_PUTENV', None),
+            ('fcntl', 'HAVE_FCNTL', None),
+        ],
+        types = [
+            ('std::istreambuf_iterator<std::istream>', 'HAVE_DECL_ISTREAMBUF_ITERATOR',
+                '#include <streambuf>\n#include <istream>')
+        ],
+        libs = [
+            ('gdi32', 'HAVE_LIBGDI32'),
+            (('iconv', 'libiconv'), 'HAVE_ICONV', 'ICONV_LIB'),
+            (('Aiksaurus', 'libAiksaurus'), 'HAVE_LIBAIKSAURUS', 'AIKSAURUS_LIB'),
+        ],
+        custom_tests = [
+            (conf.CheckType('pid_t', includes='#include <sys/types.h>'),
+                'HAVE_PID_T',
+                'Define is sys/types.h does not have pid_t',
+                '',
+                '#define pid_t int',
+            ),
+            (conf.CheckCXXGlobalCstd(),
+                'CXX_GLOBAL_CSTD',
+                'Define if your C++ compiler puts C library functions in the global namespace'
+            ),
+            (conf.CheckMkdirOneArg(),
+                'MKDIR_TAKES_ONE_ARG',
+                'Define if mkdir takes only one argument.'
+            ),
+            (conf.CheckLC_MESSAGES(),
+                'HAVE_LC_MESSAGES',
+                'Define if your <locale.h> file defines LC_MESSAGES.'
+            ),
+            (devel_version, 'DEVEL_VERSION', 'Whether or not a development version'),
+            (env['nls'],
+                'ENABLE_NLS',
+                "Define to 1 if translation of program messages to the user's native anguage is requested.",
+            ),
+            (env['nls'] and not included_gettext,
+                'HAVE_GETTEXT',
+                'Define to 1 if using system gettext library'
+            ),
+            (env.has_key('warnings') and env['warnings'],
+                'WITH_WARNINGS',
+                'Define this if you want to see the warning directives put here and there by the developpers to get attention'
+            ),
+            (env.has_key('concept_checks') and env['concept_checks'],
+                '_GLIBCXX_CONCEPT_CHECKS',
+                'libstdc++ concept checking'
+            ),
+            (env.has_key('stdlib_debug') and env['stdlib_debug'],
+                '_GLIBCXX_DEBUG',
+                'libstdc++ debug mode'
+            ),
+            (env.has_key('stdlib_debug') and env['stdlib_debug'],
+                '_GLIBCXX_DEBUG_PEDANTIC',
+                'libstdc++ pedantic debug mode'
+            ),
+            (os.name != 'nt', 'BOOST_POSIX',
+                'Indicates to boost which API to use (posix or windows).'
+            ),
+            (spell_engine is not None, spell_engine,
+                'Spell engine to use'
+            ),
+        ],
+        extra_items = [
+            ('#define PACKAGE "%s%s"' % (package, program_suffix),
+                'Name of package'),
+            ('#define PACKAGE_BUGREPORT "%s"' % package_bugreport,
+                'Define to the address where bug reports for this package should be sent.'),
+            ('#define PACKAGE_NAME "%s"' % package_name,
+                'Define to the full name of this package.'),
+            ('#define PACKAGE_STRING "%s"' % package_string,
+                'Define to the full name and version of this package.'),
+            ('#define PACKAGE_TARNAME "%s"' % package_tarname,
+                'Define to the one symbol short name of this package.'),
+            ('#define PACKAGE_VERSION "%s"' % package_version,
+                'Define to the version of this package.'),
+            ('#define BOOST_ALL_NO_LIB 1',
+                'disable automatic linking of boost libraries.'),
+            ('#define USE_%s_PACKAGING 1' % packaging_method.upper(),
+                'Packaging method'),
+            ('#define AIKSAURUS_H_LOCATION ' + aik_location,
+                'Aiksaurus include file'),
+            ('#define SELECT_TYPE_ARG1 %s' % select_arg1,
+                "Define to the type of arg 1 for `select'."),
+            ('#define SELECT_TYPE_ARG234 %s' % select_arg234,
+                "Define to the type of arg 2, 3, 4 for `select'."),
+            ('#define SELECT_TYPE_ARG5 %s' % select_arg5,
+                "Define to the type of arg 5 for `select'."),
+        ],
+        config_post = '''/************************************************************
+** You should not need to change anything beyond this point */
 
 #ifndef HAVE_STRERROR
 #if defined(__cplusplus)
@@ -1072,153 +1072,153 @@ int mkstemp(char*);
 
 #endif
 '''
-  )
+    )
 
-  # these keys are needed in env
-  for key in ['USE_ASPELL', 'USE_PSPELL', 'USE_ISPELL', 'HAVE_FCNTL',\
-    'HAVE_ICONV', 'HAVE_LIBGDI32', 'HAVE_LIBAIKSAURUS',
-    'ICONV_LIB', 'AIKSAURUS_LIB']:
-    # USE_ASPELL etc does not go through result
-    if result.has_key(key):
-      env[key] = result[key]
-    env_cache[key] = env[key]
+    # these keys are needed in env
+    for key in ['USE_ASPELL', 'USE_PSPELL', 'USE_ISPELL', 'HAVE_FCNTL',\
+        'HAVE_ICONV', 'HAVE_LIBGDI32', 'HAVE_LIBAIKSAURUS',
+        'ICONV_LIB', 'AIKSAURUS_LIB']:
+        # USE_ASPELL etc does not go through result
+        if result.has_key(key):
+            env[key] = result[key]
+        env_cache[key] = env[key]
 
-  #
-  # if nls=yes and gettext=included, create intl/config.h
-  # intl/libintl.h etc
-  #
-  intl_config_h = os.path.join(env.Dir('$BUILDDIR/intl').path, 'config.h')
-  if env['nls'] and included_gettext:
     #
-    print "Creating %s..." % intl_config_h
+    # if nls=yes and gettext=included, create intl/config.h
+    # intl/libintl.h etc
     #
-    # create intl/config.h
-    result = utils.createConfigFile(conf,
-      config_file = intl_config_h,
-      config_pre = '''/* intl/config.h.  Generated by SCons.  */
+    intl_config_h = os.path.join(env.Dir('$BUILDDIR/intl').path, 'config.h')
+    if env['nls'] and included_gettext:
+        #
+        print "Creating %s..." % intl_config_h
+        #
+        # create intl/config.h
+        result = utils.createConfigFile(conf,
+            config_file = intl_config_h,
+            config_pre = '''/* intl/config.h.  Generated by SCons.  */
 
 /* -*- C++ -*- */
 /*
- * \file config.h
- * This file is part of LyX, the document processor.
- * Licence details can be found in the file COPYING.
- *
- * This is the compilation configuration file for LyX.
- * It was generated by scon.
- * You might want to change some of the defaults if something goes wrong
- * during the compilation.
- */
+* \file config.h
+* This file is part of LyX, the document processor.
+* Licence details can be found in the file COPYING.
+*
+* This is the compilation configuration file for LyX.
+* It was generated by scon.
+* You might want to change some of the defaults if something goes wrong
+* during the compilation.
+*/
 
 #ifndef _CONFIG_H
 #define _CONFIG_H
 ''',
-      headers = [
-        ('unistd.h', 'HAVE_UNISTD_H', 'c'),
-        ('inttypes.h', 'HAVE_INTTYPES_H', 'c'),
-        ('string.h', 'HAVE_STRING_H', 'c'),
-        ('strings.h', 'HAVE_STRINGS_H', 'c'),
-        ('argz.h', 'HAVE_ARGZ_H', 'c'),
-        ('limits.h', 'HAVE_LIMITS_H', 'c'),
-        ('alloca.h', 'HAVE_ALLOCA_H', 'c'),
-        ('stddef.h', 'HAVE_STDDEF_H', 'c'),
-        ('stdint.h', 'HAVE_STDINT_H', 'c'),
-        ('sys/param.h', 'HAVE_SYS_PARAM_H', 'c'),
-      ],
-      functions = [
-        ('getcwd', 'HAVE_GETCWD', None),
-        ('stpcpy', 'HAVE_STPCPY', None),
-        ('strcasecmp', 'HAVE_STRCASECMP', None),
-        ('strdup', 'HAVE_STRDUP', None),
-        ('strtoul', 'HAVE_STRTOUL', None),
-        ('alloca', 'HAVE_ALLOCA', None),
-        ('__fsetlocking', 'HAVE___FSETLOCKING', None),
-        ('mempcpy', 'HAVE_MEMPCPY', None),
-        ('__argz_count', 'HAVE___ARGZ_COUNT', None),
-        ('__argz_next', 'HAVE___ARGZ_NEXT', None),
-        ('__argz_stringify', 'HAVE___ARGZ_STRINGIFY', None),
-        ('setlocale', 'HAVE_SETLOCALE', None),
-        ('tsearch', 'HAVE_TSEARCH', None),
-        ('getegid', 'HAVE_GETEGID', None),
-        ('getgid', 'HAVE_GETGID', None),
-        ('getuid', 'HAVE_GETUID', None),
-        ('wcslen', 'HAVE_WCSLEN', None),
-        ('asprintf', 'HAVE_ASPRINTF', None),
-        ('wprintf', 'HAVE_WPRINTF', None),
-        ('snprintf', 'HAVE_SNPRINTF', None),
-        ('printf', 'HAVE_POSIX_PRINTF', None),
-        ('fcntl', 'HAVE_FCNTL', None),
-      ],
-      types = [
-        ('intmax_t', 'HAVE_INTMAX_T', None),
-        ('long double', 'HAVE_LONG_DOUBLE', None),
-        ('long long', 'HAVE_LONG_LONG', None),
-        ('wchar_t', 'HAVE_WCHAR_T', None),
-        ('wint_t', 'HAVE_WINT_T', None),
-        ('uintmax_t', 'HAVE_INTTYPES_H_WITH_UINTMAX', '#include <inttypes.h>'),
-        ('uintmax_t', 'HAVE_STDINT_H_WITH_UINTMAX', '#include <stdint.h>'),
-      ],
-      libs = [
-        (('iconv', 'libiconv'), 'HAVE_ICONV', 'ICONV_LIB'),
-        ('c', 'HAVE_LIBC'),
-      ],
-      custom_tests = [
-        (conf.CheckLC_MESSAGES(),
-          'HAVE_LC_MESSAGES',
-          'Define if your <locale.h> file defines LC_MESSAGES.'
-        ),
-        (conf.CheckIconvConst(),
-          'ICONV_CONST',
-          'Define as const if the declaration of iconv() needs const.',
-          '#define ICONV_CONST',
-          '#define ICONV_CONST const',
-        ),
-        (conf.CheckType('intmax_t', includes='#include <stdint.h>') or \
-         conf.CheckType('intmax_t', includes='#include <inttypes.h>'),
-          'HAVE_INTMAX_T',
-          "Define to 1 if you have the `intmax_t' type."
-        ),
-        (env.has_key('nls') and env['nls'],
-          'ENABLE_NLS',
-          "Define to 1 if translation of program messages to the user's native anguage is requested.",
-        ),
-      ],
-      config_post = '#endif'
-    )
+            headers = [
+                ('unistd.h', 'HAVE_UNISTD_H', 'c'),
+                ('inttypes.h', 'HAVE_INTTYPES_H', 'c'),
+                ('string.h', 'HAVE_STRING_H', 'c'),
+                ('strings.h', 'HAVE_STRINGS_H', 'c'),
+                ('argz.h', 'HAVE_ARGZ_H', 'c'),
+                ('limits.h', 'HAVE_LIMITS_H', 'c'),
+                ('alloca.h', 'HAVE_ALLOCA_H', 'c'),
+                ('stddef.h', 'HAVE_STDDEF_H', 'c'),
+                ('stdint.h', 'HAVE_STDINT_H', 'c'),
+                ('sys/param.h', 'HAVE_SYS_PARAM_H', 'c'),
+            ],
+            functions = [
+                ('getcwd', 'HAVE_GETCWD', None),
+                ('stpcpy', 'HAVE_STPCPY', None),
+                ('strcasecmp', 'HAVE_STRCASECMP', None),
+                ('strdup', 'HAVE_STRDUP', None),
+                ('strtoul', 'HAVE_STRTOUL', None),
+                ('alloca', 'HAVE_ALLOCA', None),
+                ('__fsetlocking', 'HAVE___FSETLOCKING', None),
+                ('mempcpy', 'HAVE_MEMPCPY', None),
+                ('__argz_count', 'HAVE___ARGZ_COUNT', None),
+                ('__argz_next', 'HAVE___ARGZ_NEXT', None),
+                ('__argz_stringify', 'HAVE___ARGZ_STRINGIFY', None),
+                ('setlocale', 'HAVE_SETLOCALE', None),
+                ('tsearch', 'HAVE_TSEARCH', None),
+                ('getegid', 'HAVE_GETEGID', None),
+                ('getgid', 'HAVE_GETGID', None),
+                ('getuid', 'HAVE_GETUID', None),
+                ('wcslen', 'HAVE_WCSLEN', None),
+                ('asprintf', 'HAVE_ASPRINTF', None),
+                ('wprintf', 'HAVE_WPRINTF', None),
+                ('snprintf', 'HAVE_SNPRINTF', None),
+                ('printf', 'HAVE_POSIX_PRINTF', None),
+                ('fcntl', 'HAVE_FCNTL', None),
+            ],
+            types = [
+                ('intmax_t', 'HAVE_INTMAX_T', None),
+                ('long double', 'HAVE_LONG_DOUBLE', None),
+                ('long long', 'HAVE_LONG_LONG', None),
+                ('wchar_t', 'HAVE_WCHAR_T', None),
+                ('wint_t', 'HAVE_WINT_T', None),
+                ('uintmax_t', 'HAVE_INTTYPES_H_WITH_UINTMAX', '#include <inttypes.h>'),
+                ('uintmax_t', 'HAVE_STDINT_H_WITH_UINTMAX', '#include <stdint.h>'),
+            ],
+            libs = [
+                (('iconv', 'libiconv'), 'HAVE_ICONV', 'ICONV_LIB'),
+                ('c', 'HAVE_LIBC'),
+            ],
+            custom_tests = [
+                (conf.CheckLC_MESSAGES(),
+                    'HAVE_LC_MESSAGES',
+                    'Define if your <locale.h> file defines LC_MESSAGES.'
+                ),
+                (conf.CheckIconvConst(),
+                    'ICONV_CONST',
+                    'Define as const if the declaration of iconv() needs const.',
+                    '#define ICONV_CONST',
+                    '#define ICONV_CONST const',
+                ),
+                (conf.CheckType('intmax_t', includes='#include <stdint.h>') or \
+                conf.CheckType('intmax_t', includes='#include <inttypes.h>'),
+                    'HAVE_INTMAX_T',
+                    "Define to 1 if you have the `intmax_t' type."
+                ),
+                (env.has_key('nls') and env['nls'],
+                    'ENABLE_NLS',
+                    "Define to 1 if translation of program messages to the user's native anguage is requested.",
+                ),
+            ],
+            config_post = '#endif'
+        )
 
-    # these keys are needed in env
-    for key in ['HAVE_ASPRINTF', 'HAVE_WPRINTF', 'HAVE_SNPRINTF', \
-      'HAVE_POSIX_PRINTF', 'HAVE_ICONV', 'HAVE_LIBC']:
-      # USE_ASPELL etc does not go through result
-      if result.has_key(key):
-        env[key] = result[key]
-      env_cache[key] = env[key]
+        # these keys are needed in env
+        for key in ['HAVE_ASPRINTF', 'HAVE_WPRINTF', 'HAVE_SNPRINTF', \
+            'HAVE_POSIX_PRINTF', 'HAVE_ICONV', 'HAVE_LIBC']:
+            # USE_ASPELL etc does not go through result
+            if result.has_key(key):
+                env[key] = result[key]
+            env_cache[key] = env[key]
 
 else:
-  #
-  # this comes as a big surprise, without this line
-  # (doing nothing obvious), adding fast_start=yes
-  # to a build with fast_start=no will result in a rebuild
-  # Note that the exact header file to check does not matter
-  conf.CheckCHeader('io.h')
-  # only a few variables need to be rescanned
-  for key in ['USE_ASPELL', 'USE_PSPELL', 'USE_ISPELL', 'HAVE_FCNTL',\
-    'HAVE_ICONV', 'HAVE_LIBGDI32', 'HAVE_LIBAIKSAURUS',
-    'ICONV_LIB', 'AIKSAURUS_LIB']:
-    env[key] = env_cache[key]
-  #
-  # nls related keys
-  if env['nls'] and included_gettext:
+    #
+    # this comes as a big surprise, without this line
+    # (doing nothing obvious), adding fast_start=yes
+    # to a build with fast_start=no will result in a rebuild
+    # Note that the exact header file to check does not matter
+    conf.CheckCHeader('io.h')
     # only a few variables need to be rescanned
-    for key in ['HAVE_ASPRINTF', 'HAVE_WPRINTF', 'HAVE_SNPRINTF', \
-      'HAVE_POSIX_PRINTF', 'HAVE_ICONV', 'HAVE_LIBC']:
-      env[key] = env_cache[key]
+    for key in ['USE_ASPELL', 'USE_PSPELL', 'USE_ISPELL', 'HAVE_FCNTL',\
+        'HAVE_ICONV', 'HAVE_LIBGDI32', 'HAVE_LIBAIKSAURUS',
+        'ICONV_LIB', 'AIKSAURUS_LIB']:
+        env[key] = env_cache[key]
+    #
+    # nls related keys
+    if env['nls'] and included_gettext:
+        # only a few variables need to be rescanned
+        for key in ['HAVE_ASPRINTF', 'HAVE_WPRINTF', 'HAVE_SNPRINTF', \
+            'HAVE_POSIX_PRINTF', 'HAVE_ICONV', 'HAVE_LIBC']:
+            env[key] = env_cache[key]
 
 # this looks misplaced, but intl/libintl.h is needed by src/message.C
 if env['nls'] and included_gettext:
-  # libgnuintl.h.in => libintl.h
-  env.substFile('$BUILDDIR/intl/libintl.h', '$TOP_SRCDIR/intl/libgnuintl.h.in')
-  env.Command('$BUILDDIR/intl/libgnuintl.h', '$BUILDDIR/intl/libintl.h',
-    [Copy('$TARGET', '$SOURCE')])
+    # libgnuintl.h.in => libintl.h
+    env.substFile('$BUILDDIR/intl/libintl.h', '$TOP_SRCDIR/intl/libgnuintl.h.in')
+    env.Command('$BUILDDIR/intl/libgnuintl.h', '$BUILDDIR/intl/libintl.h',
+        [Copy('$TARGET', '$SOURCE')])
 
 #
 # Finish auto-configuration
@@ -1234,62 +1234,62 @@ env = conf.Finish()
 # NOTE: Tool('qt') or Tool('qt4') will be loaded later
 # in their respective directory and specialized env.
 try:
-  if frontend in ['qt2', 'qt3']:
-    # note: env.Tool('qt') my set QT_LIB to qt
-    qt_libs = ['qt-mt']
-    frontend_libs = ['qt-mt']
-  elif frontend == 'qt4':
-    qt_libs = ['QtCore', 'QtGui']
-    # set the right lib names
-    if platform_name == 'win32':
-      if mode == 'debug' and use_vc:
-        qt_lib_suffix = 'd4'
-      else:
-        qt_lib_suffix = '4'
-    else:
-      if mode == 'debug':
-        qt_lib_suffix = '_debug'
-      else:
-        qt_lib_suffix = ''
-    frontend_libs = [x + qt_lib_suffix for x in qt_libs]
+    if frontend in ['qt2', 'qt3']:
+        # note: env.Tool('qt') my set QT_LIB to qt
+        qt_libs = ['qt-mt']
+        frontend_libs = ['qt-mt']
+    elif frontend == 'qt4':
+        qt_libs = ['QtCore', 'QtGui']
+        # set the right lib names
+        if platform_name == 'win32':
+            if mode == 'debug' and use_vc:
+                qt_lib_suffix = 'd4'
+            else:
+                qt_lib_suffix = '4'
+        else:
+            if mode == 'debug':
+                qt_lib_suffix = '_debug'
+            else:
+                qt_lib_suffix = ''
+        frontend_libs = [x + qt_lib_suffix for x in qt_libs]
 except:
-  print "Can not locate qt tools"
-  print "What I get is "
-  print "  QTDIR: ", env['QTDIR']
+    print "Can not locate qt tools"
+    print "What I get is "
+    print "  QTDIR: ", env['QTDIR']
 
 
 if platform_name in ['win32', 'cygwin']:
-  # the final link step needs stdc++ to succeed under mingw
-  # FIXME: shouldn't g++ automatically link to stdc++?
-  if use_vc:
-    system_libs = ['shlwapi', 'shell32', 'advapi32', 'zdll']
-  else:
-    system_libs = ['shlwapi', 'stdc++', 'z']
+    # the final link step needs stdc++ to succeed under mingw
+    # FIXME: shouldn't g++ automatically link to stdc++?
+    if use_vc:
+        system_libs = ['shlwapi', 'shell32', 'advapi32', 'zdll']
+    else:
+        system_libs = ['shlwapi', 'stdc++', 'z']
 elif platform_name == 'cygwin' and env['X11']:
-  system_libs = ['GL',  'Xmu', 'Xi', 'Xrender', 'Xrandr', 'Xcursor',
-    'Xft', 'freetype', 'fontconfig', 'Xext', 'X11', 'SM', 'ICE', 'resolv',
-    'pthread', 'z']
+    system_libs = ['GL',  'Xmu', 'Xi', 'Xrender', 'Xrandr', 'Xcursor',
+        'Xft', 'freetype', 'fontconfig', 'Xext', 'X11', 'SM', 'ICE', 'resolv',
+        'pthread', 'z']
 else:
-  system_libs = ['z']
+    system_libs = ['z']
 
 libs = [
-  ('HAVE_ICONV', env['ICONV_LIB']),
-  ('HAVE_LIBGDI32', 'gdi32'),
-  ('HAVE_LIBAIKSAURUS', env['AIKSAURUS_LIB']),
-  ('USE_ASPELL', aspell_lib),
-  ('USE_ISPELL', 'ispell'),
-  ('USE_PSPELL', 'pspell'),
+    ('HAVE_ICONV', env['ICONV_LIB']),
+    ('HAVE_LIBGDI32', 'gdi32'),
+    ('HAVE_LIBAIKSAURUS', env['AIKSAURUS_LIB']),
+    ('USE_ASPELL', aspell_lib),
+    ('USE_ISPELL', 'ispell'),
+    ('USE_PSPELL', 'pspell'),
 ]
 
 for lib in libs:
-  if env[lib[0]]:
-    system_libs.append(lib[1])
+    if env[lib[0]]:
+        system_libs.append(lib[1])
 
 #
 # Build parameters CPPPATH etc
 #
 if env['X11']:
-  env.AppendUnique(LIBPATH = ['/usr/X11R6/lib'])
+    env.AppendUnique(LIBPATH = ['/usr/X11R6/lib'])
 
 #
 # boost: for boost header files
@@ -1299,7 +1299,7 @@ if env['X11']:
 env['CPPPATH'] += ['$TOP_SRCDIR/boost', '$BUILDDIR/common', '$TOP_SRCDIR/src']
 # for intl/config.h, intl/libintl.h and intl/libgnuintl.h
 if env['nls'] and included_gettext:
-  env['CPPPATH'].append('$BUILDDIR/intl')
+    env['CPPPATH'].append('$BUILDDIR/intl')
 #
 # QT_INC_PATH is not needed for *every* source file
 env['CPPPATH'].remove(qt_inc_path)
@@ -1311,10 +1311,10 @@ env['CPPPATH'].remove(qt_inc_path)
 # for details
 #
 if platform_name == 'cygwin':
-  ld_script_path = '/usr/lib/qt3/mkspecs/cygwin-g++'
-  ld_script = utils.installCygwinLDScript(ld_script_path)
-  env.AppendUnique(LINKFLAGS = ['-Wl,--enable-runtime-pseudo-reloc',
-    '-Wl,--script,%s' % ld_script, '-Wl,-s'])
+    ld_script_path = '/usr/lib/qt3/mkspecs/cygwin-g++'
+    ld_script = utils.installCygwinLDScript(ld_script_path)
+    env.AppendUnique(LINKFLAGS = ['-Wl,--enable-runtime-pseudo-reloc',
+        '-Wl,--script,%s' % ld_script, '-Wl,-s'])
 
 #
 # Report results
@@ -1344,25 +1344,25 @@ Frontend:
   LyX dir:                        %s
   LyX files dir:                  %s
 ''' % (platform_name,
-  env.subst('$CCFLAGS'), env.subst('$CC'),
-  env.subst('$CPPFLAGS'), env.subst('$CFLAGS'),
-  env.subst('$CXX'), env.subst('$CXXFLAGS'),
-  env.subst('$CPPFLAGS'), env.subst('$CXXFLAGS'),
-  env.subst('$LINKFLAGS'), env.subst('$LINKFLAGS'),
-  env.subst('$BUILDDIR'), env.subst('$LOCALLIBPATH'),
-  str(env['LIBPATH']), str(boost_libraries),
-  str(frontend_libs), str(system_libs), str(env['CPPPATH']),
-  frontend, packaging_method,
-  prefix, env['LYX_DIR'])
+    env.subst('$CCFLAGS'), env.subst('$CC'),
+    env.subst('$CPPFLAGS'), env.subst('$CFLAGS'),
+    env.subst('$CXX'), env.subst('$CXXFLAGS'),
+    env.subst('$CPPFLAGS'), env.subst('$CXXFLAGS'),
+    env.subst('$LINKFLAGS'), env.subst('$LINKFLAGS'),
+    env.subst('$BUILDDIR'), env.subst('$LOCALLIBPATH'),
+    str(env['LIBPATH']), str(boost_libraries),
+    str(frontend_libs), str(system_libs), str(env['CPPPATH']),
+    frontend, packaging_method,
+    prefix, env['LYX_DIR'])
 
 if frontend in ['qt2', 'qt3', 'qt4']:
-  env['VERSION_INFO'] += '''  include dir:                    %s
+    env['VERSION_INFO'] += '''  include dir:                    %s
   library dir:                    %s
   X11:                            %s
 ''' % (qt_inc_path, qt_lib_path, env['X11'])
 
 if not fast_start:
-  print env['VERSION_INFO']
+    print env['VERSION_INFO']
 
 #
 # Mingw command line may be too short for our link usage,
@@ -1373,14 +1373,14 @@ if not fast_start:
 # spawn system.
 logfile = env.get('logfile', default_log_file)
 if logfile != '' or platform_name == 'win32':
-  import time
-  utils.setLoggedSpawn(env, logfile, longarg = (platform_name == 'win32'),
-    info = '''# This is a log of commands used by scons to build lyx
+    import time
+    utils.setLoggedSpawn(env, logfile, longarg = (platform_name == 'win32'),
+        info = '''# This is a log of commands used by scons to build lyx
 # Time: %s
 # Command: %s
 # Info: %s
 ''' % (time.asctime(), ' '.join(sys.argv),
-  env['VERSION_INFO'].replace('\n','\n# ')) )
+    env['VERSION_INFO'].replace('\n','\n# ')) )
 
 
 # Cleanup stuff
@@ -1406,18 +1406,18 @@ env.SConsignFile(os.path.join(Dir(env['BUILDDIR']).abspath, '.sconsign'))
 print "Building all targets recursively"
 
 if env.has_key('rebuild'):
-  rebuild_targets = env['rebuild'].split(',')
+    rebuild_targets = env['rebuild'].split(',')
 else:
-  rebuild_targets = None
+    rebuild_targets = None
 
 def libExists(libname):
-  ''' Check whether or not lib $LOCALLIBNAME/libname already exists'''
-  return os.path.isfile(File(env.subst('$LOCALLIBPATH/${LIBPREFIX}%s$LIBSUFFIX'%libname)).abspath)
+    ''' Check whether or not lib $LOCALLIBNAME/libname already exists'''
+    return os.path.isfile(File(env.subst('$LOCALLIBPATH/${LIBPREFIX}%s$LIBSUFFIX'%libname)).abspath)
 
 targets = BUILD_TARGETS
 # msvc need to pass full target name, so I have to look for path/lyx etc
 build_lyx = targets == [] or True in ['lyx' in x for x in targets] \
-  or 'install' in targets or 'all' in targets
+    or 'install' in targets or 'all' in targets
 build_boost = (env['INCLUDED_BOOST'] and not libExists('boost_regex')) or 'boost' in targets
 build_intl = (included_gettext and not libExists('included_intl')) or 'intl' in targets
 build_support = build_lyx or True in [x in targets for x in ['support', 'client', 'tex2lyx']]
@@ -1427,9 +1427,9 @@ build_frontends = build_lyx or 'frontends' in targets
 build_graphics = build_lyx or 'graphics' in targets
 build_controllers = build_lyx or 'controllers' in targets
 build_client = True in ['client' in x for x in targets] \
-  or 'install' in targets or 'all' in targets
+    or 'install' in targets or 'all' in targets
 build_tex2lyx = True in ['tex2lyx' in x for x in targets] \
-  or 'install' in targets or 'all' in targets
+    or 'install' in targets or 'all' in targets
 build_lyxbase = build_lyx or 'lyxbase' in targets
 build_po = 'po' in targets or 'install' in targets or 'all' in targets
 build_qt2 = (build_lyx and frontend == 'qt2') or 'qt2' in targets
@@ -1441,104 +1441,103 @@ build_msvs_projects = use_vc and 'msvs_projects' in targets
 # now, if rebuild_targets is specified, do not rebuild some targets
 rebuild_targets = rebuild_targets
 if rebuild_targets:
-  def ifBuildLib(name, libname, old_value):
-    # explicitly asked to rebuild
-    if name in rebuild_targets:
-      return True
-    # else if not rebuild, and if the library already exists
-    elif libExists(libname):
-      return False
-    # do not change the original value
-    else:
-      return old_value
-  build_boost = ifBuildLib('boost', 'included_boost_filesystem', build_boost)
-  build_intl = ifBuildLib('intl', 'included_intl', build_intl)
-  build_support = ifBuildLib('support', 'support', build_support)
-  build_mathed = ifBuildLib('mathed', 'mathed', build_mathed)
-  build_insets = ifBuildLib('insets', 'insets', build_insets)
-  build_frontends = ifBuildLib('frontends', 'frontends', build_frontends)
-  build_graphics = ifBuildLib('graphics', 'graphics', build_graphics)
-  build_controllers = ifBuildLib('controllers', 'controllers', build_controllers)
-  build_lyxbase = ifBuildLib('lyxbase', 'lyxbase_pre', build_lyxbase)
-  build_qt2 = ifBuildLib('qt2', 'qt2', build_qt2)
-  build_qt3 = ifBuildLib('qt3', 'qt3', build_qt3)
-  build_qt4 = ifBuildLib('qt4', 'qt4', build_qt4)
+    def ifBuildLib(name, libname, old_value):
+        # explicitly asked to rebuild
+        if name in rebuild_targets:
+            return True
+        # else if not rebuild, and if the library already exists
+        elif libExists(libname):
+            return False
+        # do not change the original value
+        else:
+            return old_value
+    build_boost = ifBuildLib('boost', 'included_boost_filesystem', build_boost)
+    build_intl = ifBuildLib('intl', 'included_intl', build_intl)
+    build_support = ifBuildLib('support', 'support', build_support)
+    build_mathed = ifBuildLib('mathed', 'mathed', build_mathed)
+    build_insets = ifBuildLib('insets', 'insets', build_insets)
+    build_frontends = ifBuildLib('frontends', 'frontends', build_frontends)
+    build_graphics = ifBuildLib('graphics', 'graphics', build_graphics)
+    build_controllers = ifBuildLib('controllers', 'controllers', build_controllers)
+    build_lyxbase = ifBuildLib('lyxbase', 'lyxbase_pre', build_lyxbase)
+    build_qt2 = ifBuildLib('qt2', 'qt2', build_qt2)
+    build_qt3 = ifBuildLib('qt3', 'qt3', build_qt3)
+    build_qt4 = ifBuildLib('qt4', 'qt4', build_qt4)
 
 # sync frontend and frontend (maybe build qt4 with frontend=qt3)
 if build_qt2:
-  frontend = 'qt2'
+    frontend = 'qt2'
 elif build_qt3:
-  frontend = 'qt3'
+    frontend = 'qt3'
 elif build_qt4:
-  frontend = 'qt4'
+    frontend = 'qt4'
 
 
 if build_boost:
-  #
-  # boost libraries
-  #
-  # special builddir
-  env.BuildDir('$BUILDDIR/boost', '$TOP_SRCDIR/boost/libs', duplicate = 0)
+    #
+    # boost libraries
+    #
+    # special builddir
+    env.BuildDir('$BUILDDIR/boost', '$TOP_SRCDIR/boost/libs', duplicate = 0)
 
-  boostenv = env.Copy()
-  #
-  #
-  # boost use its own config.h
-  boostenv['CPPPATH'] = ['$TOP_SRCDIR/boost', '$BUILDDIR/boost'] + extra_inc_paths
-  boostenv.AppendUnique(CCFLAGS = ['-DBOOST_USER_CONFIG="<config.h>"'])
+    boostenv = env.Copy()
+    #
+    # boost use its own config.h
+    boostenv['CPPPATH'] = ['$TOP_SRCDIR/boost', '$BUILDDIR/boost'] + extra_inc_paths
+    boostenv.AppendUnique(CCFLAGS = ['-DBOOST_USER_CONFIG="<config.h>"'])
 
-  for lib in boost_libs:
-    print 'Processing files in boost/libs/%s/src...' % lib
-    boostlib = boostenv.StaticLibrary(
-      target = '$LOCALLIBPATH/included_boost_%s' % lib,
-      source = utils.globSource(dir = env.subst('$TOP_SRCDIR/boost/libs/%s/src' % lib),
-        pattern = '*.cpp', build_dir = '$BUILDDIR/boost/%s/src' % lib)
-    )
-    Alias('boost', boostlib)
+    for lib in boost_libs:
+        print 'Processing files in boost/libs/%s/src...' % lib
+        boostlib = boostenv.StaticLibrary(
+            target = '$LOCALLIBPATH/included_boost_%s' % lib,
+            source = utils.globSource(dir = env.subst('$TOP_SRCDIR/boost/libs/%s/src' % lib),
+                pattern = '*.cpp', build_dir = '$BUILDDIR/boost/%s/src' % lib)
+        )
+        Alias('boost', boostlib)
 
 
 if build_intl:
-  #
-  # intl
-  #
-  intlenv = env.Copy()
+    #
+    # intl
+    #
+    intlenv = env.Copy()
 
-  print "Processing files in intl..."
+    print "Processing files in intl..."
 
-  env.BuildDir('$BUILDDIR/intl', '$TOP_SRCDIR/intl', duplicate = 0)
+    env.BuildDir('$BUILDDIR/intl', '$TOP_SRCDIR/intl', duplicate = 0)
 
-  # we need the original C compiler for these files
-  intlenv['CC'] = C_COMPILER
-  intlenv['CCFLAGS'] = C_CCFLAGS
-  if use_vc:
-    intlenv.Append(CCFLAGS=['/Dinline#', '/D__attribute__(x)#', '/Duintmax_t=UINT_MAX'])
-  # intl does not use global config.h
-  intlenv['CPPPATH'] = ['$BUILDDIR/intl'] + extra_inc_paths
+    # we need the original C compiler for these files
+    intlenv['CC'] = C_COMPILER
+    intlenv['CCFLAGS'] = C_CCFLAGS
+    if use_vc:
+        intlenv.Append(CCFLAGS=['/Dinline#', '/D__attribute__(x)#', '/Duintmax_t=UINT_MAX'])
+    # intl does not use global config.h
+    intlenv['CPPPATH'] = ['$BUILDDIR/intl'] + extra_inc_paths
 
-  intlenv.Append(CCFLAGS = [
-    r'-DLOCALEDIR=\"' + env['LOCALEDIR'].replace('\\', '\\\\') + r'\"',
-    r'-DLOCALE_ALIAS_PATH=\"' + env['LOCALEDIR'].replace('\\', '\\\\') + r'\"',
-    r'-DLIBDIR=\"' + env['TOP_SRCDIR'].replace('\\', '\\\\') + r'/lib\"',
-    '-DIN_LIBINTL',
-    '-DENABLE_RELOCATABLE=1',
-    '-DIN_LIBRARY',
-    r'-DINSTALLDIR=\"' + prefix.replace('\\', '\\\\') + r'/lib\"',
-    '-DNO_XMALLOC',
-    '-Dset_relocation_prefix=libintl_set_relocation_prefix',
-    '-Drelocate=libintl_relocate',
-    '-DDEPENDS_ON_LIBICONV=1',
-    '-DHAVE_CONFIG_H'
-    ]
-  )
+    intlenv.Append(CCFLAGS = [
+        r'-DLOCALEDIR=\"' + env['LOCALEDIR'].replace('\\', '\\\\') + r'\"',
+        r'-DLOCALE_ALIAS_PATH=\"' + env['LOCALEDIR'].replace('\\', '\\\\') + r'\"',
+        r'-DLIBDIR=\"' + env['TOP_SRCDIR'].replace('\\', '\\\\') + r'/lib\"',
+        '-DIN_LIBINTL',
+        '-DENABLE_RELOCATABLE=1',
+        '-DIN_LIBRARY',
+        r'-DINSTALLDIR=\"' + prefix.replace('\\', '\\\\') + r'/lib\"',
+        '-DNO_XMALLOC',
+        '-Dset_relocation_prefix=libintl_set_relocation_prefix',
+        '-Drelocate=libintl_relocate',
+        '-DDEPENDS_ON_LIBICONV=1',
+        '-DHAVE_CONFIG_H'
+        ]
+    )
 
-  intl = intlenv.StaticLibrary(
-    target = '$LOCALLIBPATH/included_intl',
-    LIBS = ['c'],
-    source = utils.globSource(dir = env.subst('$TOP_SRCDIR/intl'), pattern = '*.c',
-      exclude = ['vasnprintf.c', 'printf-parse.c', 'printf-args.c', 'os2compat.c'],
-      build_dir = '$BUILDDIR/intl')
-  )
-  Alias('intl', intl)
+    intl = intlenv.StaticLibrary(
+        target = '$LOCALLIBPATH/included_intl',
+        LIBS = ['c'],
+        source = utils.globSource(dir = env.subst('$TOP_SRCDIR/intl'), pattern = '*.c',
+            exclude = ['vasnprintf.c', 'printf-parse.c', 'printf-args.c', 'os2compat.c'],
+            build_dir = '$BUILDDIR/intl')
+    )
+    Alias('intl', intl)
 
 
 #
@@ -1548,778 +1547,778 @@ env.BuildDir('$BUILDDIR/common', '$TOP_SRCDIR/src', duplicate = 0)
 
 
 if build_support:
-  #
-  # src/support
-  #
-  print "Processing files in src/support..."
+    #
+    # src/support
+    #
+    print "Processing files in src/support..."
 
-  env.substFile('$BUILDDIR/common/support/package.C', '$TOP_SRCDIR/src/support/package.C.in')
+    env.substFile('$BUILDDIR/common/support/package.C', '$TOP_SRCDIR/src/support/package.C.in')
 
-  support = env.StaticLibrary(
-    target = '$LOCALLIBPATH/support',
-    source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/support'), pattern = lyx_ext,
-      exclude = ['os_win32.C', 'os_unix.C', 'os_cygwin.C', 'os_os2.C', 'atexit.c'],
-      include = ['package.C'], build_dir = '$BUILDDIR/common/support')
-  )
-  Alias('support', support)
+    support = env.StaticLibrary(
+        target = '$LOCALLIBPATH/support',
+        source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/support'), pattern = lyx_ext,
+            exclude = ['os_win32.C', 'os_unix.C', 'os_cygwin.C', 'os_os2.C', 'atexit.c'],
+            include = ['package.C'], build_dir = '$BUILDDIR/common/support')
+    )
+    Alias('support', support)
 
 
 if build_mathed:
-  #
-  # src/mathed
-  #
-  print "Processing files in src/mathed..."
-  #
-  mathed = env.StaticLibrary(
-    target = '$LOCALLIBPATH/mathed',
-    source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/mathed'),
-      pattern = lyx_ext,
-      exclude = ['math_xyarrowinset.C', 'math_mboxinset.C', 'formulamacro.C'],
-      build_dir = '$BUILDDIR/common/mathed')
-  )
-  Alias('mathed', mathed)
+    #
+    # src/mathed
+    #
+    print "Processing files in src/mathed..."
+    #
+    mathed = env.StaticLibrary(
+        target = '$LOCALLIBPATH/mathed',
+        source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/mathed'),
+            pattern = lyx_ext,
+            exclude = ['math_xyarrowinset.C', 'math_mboxinset.C', 'formulamacro.C'],
+            build_dir = '$BUILDDIR/common/mathed')
+    )
+    Alias('mathed', mathed)
 
 
 if build_insets:
-  #
-  # src/insets
-  #
-  print "Processing files in src/insets..."
-  #
-  insets = env.StaticLibrary(
-    target = '$LOCALLIBPATH/insets',
-    source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/insets'),
-      pattern = lyx_ext,
-      exclude = ['insettheorem.C'], build_dir = '$BUILDDIR/common/insets')
-  )
-  Alias('insets', insets)
+    #
+    # src/insets
+    #
+    print "Processing files in src/insets..."
+    #
+    insets = env.StaticLibrary(
+        target = '$LOCALLIBPATH/insets',
+        source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/insets'),
+            pattern = lyx_ext,
+            exclude = ['insettheorem.C'], build_dir = '$BUILDDIR/common/insets')
+    )
+    Alias('insets', insets)
 
 
 if build_frontends:
-  #
-  # src/frontends
-  #
-  print "Processing files in src/frontends..."
+    #
+    # src/frontends
+    #
+    print "Processing files in src/frontends..."
 
-  frontends = env.StaticLibrary(
-    target = '$LOCALLIBPATH/frontends',
-    source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/frontends'), pattern = lyx_ext,
-      build_dir = '$BUILDDIR/common/frontends')
-  )
-  Alias('frontends', frontends)
+    frontends = env.StaticLibrary(
+        target = '$LOCALLIBPATH/frontends',
+        source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/frontends'), pattern = lyx_ext,
+            build_dir = '$BUILDDIR/common/frontends')
+    )
+    Alias('frontends', frontends)
 
 
 if build_graphics:
-  #
-  # src/graphics
-  #
-  print "Processing files in src/graphics..."
+    #
+    # src/graphics
+    #
+    print "Processing files in src/graphics..."
 
-  graphics = env.StaticLibrary(
-    target = '$LOCALLIBPATH/graphics',
-    source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/graphics'), pattern = lyx_ext,
-      build_dir = '$BUILDDIR/common/graphics')
-  )
-  Alias('graphics', graphics)
+    graphics = env.StaticLibrary(
+        target = '$LOCALLIBPATH/graphics',
+        source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/graphics'), pattern = lyx_ext,
+            build_dir = '$BUILDDIR/common/graphics')
+    )
+    Alias('graphics', graphics)
 
 
 if build_controllers:
-  #
-  # src/frontends/controllers
-  #
-  print "Processing files in src/frontends/controllers..."
+    #
+    # src/frontends/controllers
+    #
+    print "Processing files in src/frontends/controllers..."
 
-  controllers = env.StaticLibrary(
-    target = '$LOCALLIBPATH/controllers',
-    source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/frontends/controllers'), pattern = lyx_ext,
-      build_dir = '$BUILDDIR/common/frontends/controllers')
-  )
-  Alias('controllers', controllers)
+    controllers = env.StaticLibrary(
+        target = '$LOCALLIBPATH/controllers',
+        source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/frontends/controllers'), pattern = lyx_ext,
+            build_dir = '$BUILDDIR/common/frontends/controllers')
+    )
+    Alias('controllers', controllers)
 
 
 #
 # src/frontend/qt2/3/4
 #
 if build_qt2 or build_qt3 or build_qt4:
-  env.BuildDir('$BUILDDIR/$frontend', '$TOP_SRCDIR/src/frontend/$frontend', duplicate = 0)
+    env.BuildDir('$BUILDDIR/$frontend', '$TOP_SRCDIR/src/frontend/$frontend', duplicate = 0)
 
 
 if build_qt2:
-  print "Processing files in src/frontends/qt2..."
+    print "Processing files in src/frontends/qt2..."
 
-  qt2env = env.Copy()
-  # disable auto scan to speed up non build time
-  qt2env['QT_AUTOSCAN'] = 0
-  qt2env['QT_MOCHPREFIX'] = ''
+    qt2env = env.Copy()
+    # disable auto scan to speed up non build time
+    qt2env['QT_AUTOSCAN'] = 0
+    qt2env['QT_MOCHPREFIX'] = ''
 
-  # load qt2 tools
-  qt2env.Tool('qt')
+    # load qt2 tools
+    qt2env.Tool('qt')
 
-  qt2env.AppendUnique(CPPPATH = [
-    '$BUILDDIR/common',
-    '$BUILDDIR/common/images',
-    '$BUILDDIR/common/frontends',
-    '$BUILDDIR/common/frontends/qt2',
-    '$BUILDDIR/common/frontends/controllers',
-    qt_inc_path]
-  )
+    qt2env.AppendUnique(CPPPATH = [
+        '$BUILDDIR/common',
+        '$BUILDDIR/common/images',
+        '$BUILDDIR/common/frontends',
+        '$BUILDDIR/common/frontends/qt2',
+        '$BUILDDIR/common/frontends/controllers',
+        qt_inc_path]
+    )
 
-  qt2_moc_files = ["$BUILDDIR/common/frontends/qt2/%s" % x for x in Split('''
-    BulletsModule.C
-    emptytable.C
-    FileDialog_private.C
-    floatplacement.C
-    iconpalette.C
-    lengthcombo.C
-    panelstack.C
-    QAboutDialog.C
-    QBibitemDialog.C
-    QBibtexDialog.C
-    QBoxDialog.C
-    QBranchDialog.C
-    QBrowseBox.C
-    QChangesDialog.C
-    QCharacterDialog.C
-    QCitationDialog.C
-    QCommandBuffer.C
-    QCommandEdit.C
-    QContentPane.C
-    QDelimiterDialog.C
-    QDocumentDialog.C
-    QErrorListDialog.C
-    QERTDialog.C
-    QExternalDialog.C
-    QFloatDialog.C
-    QGraphicsDialog.C
-    QIncludeDialog.C
-    QIndexDialog.C
-    QLogDialog.C
-    QLPopupMenu.C
-    QLPrintDialog.C
-    QMathDialog.C
-    QMathMatrixDialog.C
-    QNoteDialog.C
-    QParagraphDialog.C
-    QPrefsDialog.C
-    QRefDialog.C
-    QSearchDialog.C
-    QSendtoDialog.C
-    qsetborder.C
-    QShowFileDialog.C
-    QSpellcheckerDialog.C
-    QDialogView.C
-    QTabularCreateDialog.C
-    QTabularDialog.C
-    QTexinfoDialog.C
-    QThesaurusDialog.C
-    QTocDialog.C
-    qttableview.C
-    QtView.C
-    QURLDialog.C
-    QVSpaceDialog.C
-    QWrapDialog.C
-    QLToolbar.C
-    socket_callback.C
-    validators.C
-  ''')]
+    qt2_moc_files = ["$BUILDDIR/common/frontends/qt2/%s" % x for x in Split('''
+        BulletsModule.C
+        emptytable.C
+        FileDialog_private.C
+        floatplacement.C
+        iconpalette.C
+        lengthcombo.C
+        panelstack.C
+        QAboutDialog.C
+        QBibitemDialog.C
+        QBibtexDialog.C
+        QBoxDialog.C
+        QBranchDialog.C
+        QBrowseBox.C
+        QChangesDialog.C
+        QCharacterDialog.C
+        QCitationDialog.C
+        QCommandBuffer.C
+        QCommandEdit.C
+        QContentPane.C
+        QDelimiterDialog.C
+        QDocumentDialog.C
+        QErrorListDialog.C
+        QERTDialog.C
+        QExternalDialog.C
+        QFloatDialog.C
+        QGraphicsDialog.C
+        QIncludeDialog.C
+        QIndexDialog.C
+        QLogDialog.C
+        QLPopupMenu.C
+        QLPrintDialog.C
+        QMathDialog.C
+        QMathMatrixDialog.C
+        QNoteDialog.C
+        QParagraphDialog.C
+        QPrefsDialog.C
+        QRefDialog.C
+        QSearchDialog.C
+        QSendtoDialog.C
+        qsetborder.C
+        QShowFileDialog.C
+        QSpellcheckerDialog.C
+        QDialogView.C
+        QTabularCreateDialog.C
+        QTabularDialog.C
+        QTexinfoDialog.C
+        QThesaurusDialog.C
+        QTocDialog.C
+        qttableview.C
+        QtView.C
+        QURLDialog.C
+        QVSpaceDialog.C
+        QWrapDialog.C
+        QLToolbar.C
+        socket_callback.C
+        validators.C
+    ''')]
 
-  # manually moc and uic files for better performance
-  qt2_moced_files = [qt2env.Moc(x.replace('.C', '_moc.cpp'), x.replace('.C', '.h')) for x in qt2_moc_files]
+    # manually moc and uic files for better performance
+    qt2_moced_files = [qt2env.Moc(x.replace('.C', '_moc.cpp'), x.replace('.C', '.h')) for x in qt2_moc_files]
 
-  qt2_uiced_files = [qt2env.Uic('$BUILDDIR/common/frontends/qt2/ui/'+x) for x in \
-     utils.globSource(dir = env.subst('$TOP_SRCDIR/src/frontends/qt2/ui'), pattern = '*.ui')]
+    qt2_uiced_files = [qt2env.Uic('$BUILDDIR/common/frontends/qt2/ui/'+x) for x in \
+        utils.globSource(dir = env.subst('$TOP_SRCDIR/src/frontends/qt2/ui'), pattern = '*.ui')]
 
-  qt2_uiced_cc_files = []
-  for x in qt2_uiced_files:
-    qt2_uiced_cc_files.extend(x[1:])
+    qt2_uiced_cc_files = []
+    for x in qt2_uiced_files:
+        qt2_uiced_cc_files.extend(x[1:])
 
-  qt2 = qt2env.StaticLibrary(
-    target = '$LOCALLIBPATH/qt2',
-    source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/frontends/qt2/'), pattern = lyx_ext,
-      build_dir = '$BUILDDIR/common/frontends/qt2') + qt2_moced_files + qt2_uiced_cc_files
-  )
-  Alias('qt2', qt2)
+    qt2 = qt2env.StaticLibrary(
+        target = '$LOCALLIBPATH/qt2',
+        source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/frontends/qt2/'), pattern = lyx_ext,
+            build_dir = '$BUILDDIR/common/frontends/qt2') + qt2_moced_files + qt2_uiced_cc_files
+    )
+    Alias('qt2', qt2)
 
 
 if build_qt3:
-  print "Processing files in src/frontends/qt3..."
+    print "Processing files in src/frontends/qt3..."
 
-  qt3env = env.Copy()
-  # disable auto scan to speed up non build time
-  qt3env['QT_AUTOSCAN'] = 0
-  qt3env['QT_MOCHPREFIX'] = ''
+    qt3env = env.Copy()
+    # disable auto scan to speed up non build time
+    qt3env['QT_AUTOSCAN'] = 0
+    qt3env['QT_MOCHPREFIX'] = ''
 
-  # load qt3 tools
-  qt3env.Tool('qt')
+    # load qt3 tools
+    qt3env.Tool('qt')
 
-  qt3env.AppendUnique(CPPPATH = [
-    '$BUILDDIR/common',
-    '$BUILDDIR/common/images',
-    '$BUILDDIR/common/frontends',
-    '$BUILDDIR/common/frontends/qt3',
-    '$BUILDDIR/common/frontends/controllers',
-    qt_inc_path]
-  )
+    qt3env.AppendUnique(CPPPATH = [
+        '$BUILDDIR/common',
+        '$BUILDDIR/common/images',
+        '$BUILDDIR/common/frontends',
+        '$BUILDDIR/common/frontends/qt3',
+        '$BUILDDIR/common/frontends/controllers',
+        qt_inc_path]
+    )
 
-  qt3_moc_files = ["$BUILDDIR/common/frontends/qt3/%s" % x for x in Split('''
-    BulletsModule.C
-    emptytable.C
-    FileDialog_private.C
-    floatplacement.C
-    iconpalette.C
-    lengthcombo.C
-    panelstack.C
-    QAboutDialog.C
-    QBibitemDialog.C
-    QBibtexDialog.C
-    QBoxDialog.C
-    QBranchDialog.C
-    QBrowseBox.C
-    QChangesDialog.C
-    QCharacterDialog.C
-    QCitationDialog.C
-    QCommandBuffer.C
-    QCommandEdit.C
-    QContentPane.C
-    QDelimiterDialog.C
-    QDocumentDialog.C
-    QErrorListDialog.C
-    QERTDialog.C
-    QExternalDialog.C
-    QFloatDialog.C
-    QGraphicsDialog.C
-    QIncludeDialog.C
-    QIndexDialog.C
-    QLogDialog.C
-    QViewSourceDialog.C
-    QLPopupMenu.C
-    QLPrintDialog.C
-    QMathDialog.C
-    QMathMatrixDialog.C
-    QNoteDialog.C
-    QParagraphDialog.C
-    QPrefsDialog.C
-    QRefDialog.C
-    QSearchDialog.C
-    QSendtoDialog.C
-    qsetborder.C
-    QShowFileDialog.C
-    QSpellcheckerDialog.C
-    QDialogView.C
-    QTabularCreateDialog.C
-    QTabularDialog.C
-    QTexinfoDialog.C
-    QThesaurusDialog.C
-    QTocDialog.C
-    qttableview.C
-    QtView.C
-    QURLDialog.C
-    QVSpaceDialog.C
-    QWrapDialog.C
-    QLToolbar.C
-    socket_callback.C
-    validators.C
-  ''')]
+    qt3_moc_files = ["$BUILDDIR/common/frontends/qt3/%s" % x for x in Split('''
+        BulletsModule.C
+        emptytable.C
+        FileDialog_private.C
+        floatplacement.C
+        iconpalette.C
+        lengthcombo.C
+        panelstack.C
+        QAboutDialog.C
+        QBibitemDialog.C
+        QBibtexDialog.C
+        QBoxDialog.C
+        QBranchDialog.C
+        QBrowseBox.C
+        QChangesDialog.C
+        QCharacterDialog.C
+        QCitationDialog.C
+        QCommandBuffer.C
+        QCommandEdit.C
+        QContentPane.C
+        QDelimiterDialog.C
+        QDocumentDialog.C
+        QErrorListDialog.C
+        QERTDialog.C
+        QExternalDialog.C
+        QFloatDialog.C
+        QGraphicsDialog.C
+        QIncludeDialog.C
+        QIndexDialog.C
+        QLogDialog.C
+        QViewSourceDialog.C
+        QLPopupMenu.C
+        QLPrintDialog.C
+        QMathDialog.C
+        QMathMatrixDialog.C
+        QNoteDialog.C
+        QParagraphDialog.C
+        QPrefsDialog.C
+        QRefDialog.C
+        QSearchDialog.C
+        QSendtoDialog.C
+        qsetborder.C
+        QShowFileDialog.C
+        QSpellcheckerDialog.C
+        QDialogView.C
+        QTabularCreateDialog.C
+        QTabularDialog.C
+        QTexinfoDialog.C
+        QThesaurusDialog.C
+        QTocDialog.C
+        qttableview.C
+        QtView.C
+        QURLDialog.C
+        QVSpaceDialog.C
+        QWrapDialog.C
+        QLToolbar.C
+        socket_callback.C
+        validators.C
+    ''')]
 
-  # manually moc and uic files for better performance
-  qt3_moced_files = [qt3env.Moc(x.replace('.C', '_moc.cpp'), x.replace('.C', '.h')) for x in qt3_moc_files]
+    # manually moc and uic files for better performance
+    qt3_moced_files = [qt3env.Moc(x.replace('.C', '_moc.cpp'), x.replace('.C', '.h')) for x in qt3_moc_files]
 
-  qt3_uiced_files = [qt3env.Uic('$BUILDDIR/common/frontends/qt3/ui/'+x) for x in \
-     utils.globSource(dir = env.subst('$TOP_SRCDIR/src/frontends/qt3/ui'), pattern = '*.ui')]
+    qt3_uiced_files = [qt3env.Uic('$BUILDDIR/common/frontends/qt3/ui/'+x) for x in \
+        utils.globSource(dir = env.subst('$TOP_SRCDIR/src/frontends/qt3/ui'), pattern = '*.ui')]
 
-  qt3_uiced_cc_files = []
-  for x in qt3_uiced_files:
-    qt3_uiced_cc_files.extend(x[1:])
+    qt3_uiced_cc_files = []
+    for x in qt3_uiced_files:
+        qt3_uiced_cc_files.extend(x[1:])
 
-  qt3 = qt3env.StaticLibrary(
-    target = '$LOCALLIBPATH/qt3',
-    source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/frontends/qt3/'), pattern = lyx_ext,
-      build_dir = '$BUILDDIR/common/frontends/qt3') + qt3_moced_files + qt3_uiced_cc_files
-  )
-  Alias('qt3', qt3)
+    qt3 = qt3env.StaticLibrary(
+        target = '$LOCALLIBPATH/qt3',
+        source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/frontends/qt3/'), pattern = lyx_ext,
+            build_dir = '$BUILDDIR/common/frontends/qt3') + qt3_moced_files + qt3_uiced_cc_files
+    )
+    Alias('qt3', qt3)
 
 
 if build_qt4:
-  print "Processing files in src/frontends/qt4..."
+    print "Processing files in src/frontends/qt4..."
 
-  qt4env = env.Copy()
-  qt4env['QT_AUTOSCAN'] = 0
+    qt4env = env.Copy()
+    qt4env['QT_AUTOSCAN'] = 0
 
-  # local qt4 toolset from
-  # http://www.iua.upf.es/~dgarcia/Codders/sconstools.html
-  #
-  # NOTE: I have to patch qt4.py since it does not automatically
-  # process .C file!!! (add to cxx_suffixes )
-  #
-  qt4env.Tool('qt4', [scons_dir])
-  qt4env.EnableQt4Modules(qt_libs, debug = (mode == 'debug'))
+    # local qt4 toolset from
+    # http://www.iua.upf.es/~dgarcia/Codders/sconstools.html
+    #
+    # NOTE: I have to patch qt4.py since it does not automatically
+    # process .C file!!! (add to cxx_suffixes )
+    #
+    qt4env.Tool('qt4', [scons_dir])
+    qt4env.EnableQt4Modules(qt_libs, debug = (mode == 'debug'))
 
-  qt4env.AppendUnique(CPPPATH = [
-    '$BUILDDIR/common',
-    '$BUILDDIR/common/images',
-    '$BUILDDIR/common/frontends',
-    '$BUILDDIR/common/frontends/qt4',
-    '$BUILDDIR/common/frontends/controllers',
-    qt_inc_path
-    ]
-  )
+    qt4env.AppendUnique(CPPPATH = [
+        '$BUILDDIR/common',
+        '$BUILDDIR/common/images',
+        '$BUILDDIR/common/frontends',
+        '$BUILDDIR/common/frontends/qt4',
+        '$BUILDDIR/common/frontends/controllers',
+        qt_inc_path
+        ]
+    )
 
-  # FIXME: replace by something from pkg_config
-  qt4env.Append(CCFLAGS = [
-    '-DHAVE_CONFIG_H',
-    '-DQT_CLEAN_NAMESPACE',
-    '-DQT_GENUINE_STR',
-    '-DQT_NO_STL',
-    '-DQT3_SUPPORT',
-    ]
-  )
+    # FIXME: replace by something from pkg_config
+    qt4env.Append(CCFLAGS = [
+        '-DHAVE_CONFIG_H',
+        '-DQT_CLEAN_NAMESPACE',
+        '-DQT_GENUINE_STR',
+        '-DQT_NO_STL',
+        '-DQT3_SUPPORT',
+        ]
+    )
 
 
-  qt4_moc_files = ["$BUILDDIR/common/frontends/qt4/%s" % x for x in Split('''
-    BulletsModule.C
-    emptytable.C
-    FileDialog_private.C
-    floatplacement.C
-    iconpalette.C
-    lengthcombo.C
-    InsertTableWidget.C
-    panelstack.C
-    QAboutDialog.C
-    QBibitemDialog.C
-    QBibtexDialog.C
-    QBoxDialog.C
-    QBranchDialog.C
-    QBranches.C
-    QChangesDialog.C
-    QCharacterDialog.C
-    QCitationDialog.C
-    QCommandBuffer.C
-    QCommandEdit.C
-    QDelimiterDialog.C
-    QDocumentDialog.C
-    QErrorListDialog.C
-    QERTDialog.C
-    QExternalDialog.C
-    QFloatDialog.C
-    QGraphicsDialog.C
-    QIncludeDialog.C
-    QIndexDialog.C
-    Action.C
-    QLogDialog.C
-    QViewSourceDialog.C
-    QViewSource.C
-    QLMenubar.C
-    QLPopupMenu.C
-    QLPrintDialog.C
-    QMathDialog.C
-    QMathMatrixDialog.C
-    QNoteDialog.C
-    QParagraphDialog.C
-    QPrefsDialog.C
-    QRefDialog.C
-    QSearchDialog.C
-    QSendtoDialog.C
-    qsetborder.C
-    QShowFileDialog.C
-    QSpellcheckerDialog.C
-    QDialogView.C
-    QTabularCreateDialog.C
-    QTabularDialog.C
-    QTexinfoDialog.C
-    QThesaurusDialog.C
-    TocModel.C
-    QTocDialog.C
-    GuiView.C
-    QURLDialog.C
-    QVSpaceDialog.C
-    GuiWorkArea.C
-    QWrapDialog.C
-    QLToolbar.C
-    socket_callback.C
-    validators.C
-  ''') ]
+    qt4_moc_files = ["$BUILDDIR/common/frontends/qt4/%s" % x for x in Split('''
+        BulletsModule.C
+        emptytable.C
+        FileDialog_private.C
+        floatplacement.C
+        iconpalette.C
+        lengthcombo.C
+        InsertTableWidget.C
+        panelstack.C
+        QAboutDialog.C
+        QBibitemDialog.C
+        QBibtexDialog.C
+        QBoxDialog.C
+        QBranchDialog.C
+        QBranches.C
+        QChangesDialog.C
+        QCharacterDialog.C
+        QCitationDialog.C
+        QCommandBuffer.C
+        QCommandEdit.C
+        QDelimiterDialog.C
+        QDocumentDialog.C
+        QErrorListDialog.C
+        QERTDialog.C
+        QExternalDialog.C
+        QFloatDialog.C
+        QGraphicsDialog.C
+        QIncludeDialog.C
+        QIndexDialog.C
+        Action.C
+        QLogDialog.C
+        QViewSourceDialog.C
+        QViewSource.C
+        QLMenubar.C
+        QLPopupMenu.C
+        QLPrintDialog.C
+        QMathDialog.C
+        QMathMatrixDialog.C
+        QNoteDialog.C
+        QParagraphDialog.C
+        QPrefsDialog.C
+        QRefDialog.C
+        QSearchDialog.C
+        QSendtoDialog.C
+        qsetborder.C
+        QShowFileDialog.C
+        QSpellcheckerDialog.C
+        QDialogView.C
+        QTabularCreateDialog.C
+        QTabularDialog.C
+        QTexinfoDialog.C
+        QThesaurusDialog.C
+        TocModel.C
+        QTocDialog.C
+        GuiView.C
+        QURLDialog.C
+        QVSpaceDialog.C
+        GuiWorkArea.C
+        QWrapDialog.C
+        QLToolbar.C
+        socket_callback.C
+        validators.C
+    ''') ]
 
-  #
-  # Compile resources
-  #
-  resources = [qt4env.Uic4(x.split('.')[0]) for x in \
-    utils.globSource(dir = env.subst('$TOP_SRCDIR/src/frontends/qt4/ui'), pattern = '*.ui',
-      build_dir = '$BUILDDIR/common/frontends/qt4/ui')]
+    #
+    # Compile resources
+    #
+    resources = [qt4env.Uic4(x.split('.')[0]) for x in \
+        utils.globSource(dir = env.subst('$TOP_SRCDIR/src/frontends/qt4/ui'), pattern = '*.ui',
+            build_dir = '$BUILDDIR/common/frontends/qt4/ui')]
 
-  #
-  # moc qt4_moc_files, the moced files are included in the original files
-  #
-  qt4_moced_files = [qt4env.Moc4(x.replace('.C', '_moc.cpp'), x.replace('.C', '.h')) for x in qt4_moc_files]
+    #
+    # moc qt4_moc_files, the moced files are included in the original files
+    #
+    qt4_moced_files = [qt4env.Moc4(x.replace('.C', '_moc.cpp'), x.replace('.C', '.h')) for x in qt4_moc_files]
 
-  qt4 = qt4env.StaticLibrary(
-    target = '$LOCALLIBPATH/qt4',
-    source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/frontends/qt4'), pattern = lyx_ext,
-      exclude = ['QBrowseBox.C'], build_dir = '$BUILDDIR/common/frontends/qt4')
-  )
-  Alias('qt4', qt4)
+    qt4 = qt4env.StaticLibrary(
+        target = '$LOCALLIBPATH/qt4',
+        source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/frontends/qt4'), pattern = lyx_ext,
+            exclude = ['QBrowseBox.C'], build_dir = '$BUILDDIR/common/frontends/qt4')
+    )
+    Alias('qt4', qt4)
 
 
 if build_client:
-  #
-  # src/client
-  #
-  env.BuildDir('$BUILDDIR/common', '$TOP_SRCDIR/src', duplicate = 0)
+    #
+    # src/client
+    #
+    env.BuildDir('$BUILDDIR/common', '$TOP_SRCDIR/src', duplicate = 0)
 
-  print "Processing files in src/client..."
+    print "Processing files in src/client..."
 
-  if env['HAVE_FCNTL']:
-    client = env.Program(
-      target = '$BUILDDIR/common/client/lyxclient',
-      LIBS = ['support'] + intl_libs + system_libs +
-        socket_libs + boost_libraries,
-      source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/client'), pattern = lyx_ext,
-        build_dir = '$BUILDDIR/common/client')
-    )
-    Alias('client', env.Command(os.path.join('$BUILDDIR', os.path.split(str(client[0]))[1]),
-      client, [Copy('$TARGET', '$SOURCE')]))
-  else:
-    client = None
-  Alias('client', client)
+    if env['HAVE_FCNTL']:
+        client = env.Program(
+            target = '$BUILDDIR/common/client/lyxclient',
+            LIBS = ['support'] + intl_libs + system_libs +
+                socket_libs + boost_libraries,
+            source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/client'), pattern = lyx_ext,
+                build_dir = '$BUILDDIR/common/client')
+        )
+        Alias('client', env.Command(os.path.join('$BUILDDIR', os.path.split(str(client[0]))[1]),
+            client, [Copy('$TARGET', '$SOURCE')]))
+    else:
+        client = None
+    Alias('client', client)
 
 
 if build_tex2lyx:
-  #
-  # tex2lyx
-  #
-  print "Processing files in src/tex2lyx..."
+    #
+    # tex2lyx
+    #
+    print "Processing files in src/tex2lyx..."
 
-  tex2lyx_env = env.Copy()
-  #
-  tex2lyx_env.Prepend(CPPPATH = ['$BUILDDIR/common/tex2lyx'])
-  tex2lyx_env.AppendUnique(LIBPATH = ['#$LOCALLIBPATH'])
+    tex2lyx_env = env.Copy()
+    #
+    tex2lyx_env.Prepend(CPPPATH = ['$BUILDDIR/common/tex2lyx'])
+    tex2lyx_env.AppendUnique(LIBPATH = ['#$LOCALLIBPATH'])
 
-  for file in ['FloatList.C', 'Floating.C', 'counters.C', 'lyxlayout.h', 'lyxlayout.C',
-    'lyxtextclass.h', 'lyxtextclass.C', 'lyxlex.C', 'lyxlex_pimpl.C']:
-    env.Command('$BUILDDIR/common/tex2lyx/'+file, '$TOP_SRCDIR/src/'+file,
-      [Copy('$TARGET', '$SOURCE')])
+    for file in ['FloatList.C', 'Floating.C', 'counters.C', 'lyxlayout.h', 'lyxlayout.C',
+        'lyxtextclass.h', 'lyxtextclass.C', 'lyxlex.C', 'lyxlex_pimpl.C']:
+        env.Command('$BUILDDIR/common/tex2lyx/'+file, '$TOP_SRCDIR/src/'+file,
+            [Copy('$TARGET', '$SOURCE')])
 
-  tex2lyx = tex2lyx_env.Program(
-    target = '$BUILDDIR/common/tex2lyx/tex2lyx',
-    LIBS = ['support'] + boost_libraries + system_libs,
-    source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/tex2lyx'), pattern = lyx_ext,
-      include = ['FloatList.C', 'Floating.C', 'counters.C', 'lyxlayout.C',
-        'lyxtextclass.C', 'lyxlex.C', 'lyxlex_pimpl.C'],
-      build_dir = '$BUILDDIR/common/tex2lyx')
-  )
-  Alias('tex2lyx', env.Command(os.path.join('$BUILDDIR', os.path.split(str(tex2lyx[0]))[1]),
-    tex2lyx, [Copy('$TARGET', '$SOURCE')]))
-  Alias('tex2lyx', tex2lyx)
+    tex2lyx = tex2lyx_env.Program(
+        target = '$BUILDDIR/common/tex2lyx/tex2lyx',
+        LIBS = ['support'] + boost_libraries + system_libs,
+        source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/tex2lyx'), pattern = lyx_ext,
+            include = ['FloatList.C', 'Floating.C', 'counters.C', 'lyxlayout.C',
+                'lyxtextclass.C', 'lyxlex.C', 'lyxlex_pimpl.C'],
+            build_dir = '$BUILDDIR/common/tex2lyx')
+    )
+    Alias('tex2lyx', env.Command(os.path.join('$BUILDDIR', os.path.split(str(tex2lyx[0]))[1]),
+        tex2lyx, [Copy('$TARGET', '$SOURCE')]))
+    Alias('tex2lyx', tex2lyx)
 
 
 if build_lyxbase:
-  #
-  # src/
-  #
-  print "Processing files in src..."
+    #
+    # src/
+    #
+    print "Processing files in src..."
 
-  env.substFile('$BUILDDIR/common/version.C', '$TOP_SRCDIR/src/version.C.in')
+    env.substFile('$BUILDDIR/common/version.C', '$TOP_SRCDIR/src/version.C.in')
 
-  lyx_post_source = Split('''
-    tabular.C
-    dimension.C
-    PrinterParams.C
-    box.C
-    Thesaurus.C
-    SpellBase.C
-  ''')
+    lyx_post_source = Split('''
+        tabular.C
+        dimension.C
+        PrinterParams.C
+        box.C
+        Thesaurus.C
+        SpellBase.C
+    ''')
 
-  if env.has_key('USE_ASPELL') and env['USE_ASPELL']:
-    lyx_post_source.append('aspell.C')
-  elif env.has_key('USE_PSPELL') and env['USE_PSPELL']:
-    lyx_post_source.append('pspell.C')
-  elif env.has_key('USE_ISPELL') and env['USE_ISPELL']:
-    lyx_post_source.append('ispell.C')
+    if env.has_key('USE_ASPELL') and env['USE_ASPELL']:
+        lyx_post_source.append('aspell.C')
+    elif env.has_key('USE_PSPELL') and env['USE_PSPELL']:
+        lyx_post_source.append('pspell.C')
+    elif env.has_key('USE_ISPELL') and env['USE_ISPELL']:
+        lyx_post_source.append('ispell.C')
 
-  # msvc requires at least one source file with main()
-  # so I exclude main.C from lyxbase
-  lyxbase_pre = env.StaticLibrary(
-    target = '$LOCALLIBPATH/lyxbase_pre',
-    source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src'), pattern = lyx_ext,
-      exclude = lyx_post_source + ['main.C', 'aspell.C', 'pspell.C',
-        'ispell.C', 'Variables.C', 'Sectioning.C'],
-      include = ['version.C'], build_dir = '$BUILDDIR/common')
-  )
-  lyxbase_post = env.StaticLibrary(
-    target = '$LOCALLIBPATH/lyxbase_post',
-    source = ["$BUILDDIR/common/%s" % x for x in lyx_post_source]
-  )
-  Alias('lyxbase', lyxbase_pre)
-  Alias('lyxbase', lyxbase_post)
+    # msvc requires at least one source file with main()
+    # so I exclude main.C from lyxbase
+    lyxbase_pre = env.StaticLibrary(
+        target = '$LOCALLIBPATH/lyxbase_pre',
+        source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src'), pattern = lyx_ext,
+            exclude = lyx_post_source + ['main.C', 'aspell.C', 'pspell.C',
+                'ispell.C', 'Variables.C', 'Sectioning.C'],
+            include = ['version.C'], build_dir = '$BUILDDIR/common')
+    )
+    lyxbase_post = env.StaticLibrary(
+        target = '$LOCALLIBPATH/lyxbase_post',
+        source = ["$BUILDDIR/common/%s" % x for x in lyx_post_source]
+    )
+    Alias('lyxbase', lyxbase_pre)
+    Alias('lyxbase', lyxbase_post)
 
 
 if build_lyx:
-  #
-  # Build lyx with given frontend
-  #
-  lyx = env.Program(
-    target = '$BUILDDIR/$frontend/lyx',
-    source = ['$BUILDDIR/common/main.C'],
-    LIBS = [
-      'lyxbase_pre',
-      'mathed',
-      'insets',
-      'frontends',
-      frontend,
-      'controllers',
-      'graphics',
-      'support',
-      'lyxbase_post',
-      ] +
-      boost_libraries +
-      frontend_libs +
-      intl_libs +
-      socket_libs +
-      system_libs
-  )
-  # [/path/to/lyx.ext] => lyx-qt3.ext
-  target_name = os.path.split(str(lyx[0]))[1].replace('lyx', 'lyx-%s' % frontend)
-  Alias('lyx', env.Command(os.path.join('$BUILDDIR', target_name), lyx,
-    [Copy('$TARGET', '$SOURCE')]))
-  Alias('lyx', lyx)
+    #
+    # Build lyx with given frontend
+    #
+    lyx = env.Program(
+        target = '$BUILDDIR/$frontend/lyx',
+        source = ['$BUILDDIR/common/main.C'],
+        LIBS = [
+            'lyxbase_pre',
+            'mathed',
+            'insets',
+            'frontends',
+            frontend,
+            'controllers',
+            'graphics',
+            'support',
+            'lyxbase_post',
+            ] +
+            boost_libraries +
+            frontend_libs +
+            intl_libs +
+            socket_libs +
+            system_libs
+    )
+    # [/path/to/lyx.ext] => lyx-qt3.ext
+    target_name = os.path.split(str(lyx[0]))[1].replace('lyx', 'lyx-%s' % frontend)
+    Alias('lyx', env.Command(os.path.join('$BUILDDIR', target_name), lyx,
+        [Copy('$TARGET', '$SOURCE')]))
+    Alias('lyx', lyx)
 
 
 if build_msvs_projects:
-  def build_project(target, dir, full_target = None,
-    src_pattern = lyx_ext, include = [], resource = None, rebuildTargetOnly = True):
-    ''' build mavs project files
-      target:      alias (correspond to directory name)
-      dir:         source directory or directories (a list)
-      full_target: full path/filename of the target
-      src_pattern: glob pattern
-      include:     files to include into source
-      resource:    directory or directories with resource (.ui) files
-      rebuildTargetOnly:     whether or not only rebuild this target
+    def build_project(target, dir, full_target = None,
+        src_pattern = lyx_ext, include = [], resource = None, rebuildTargetOnly = True):
+        ''' build mavs project files
+            target:      alias (correspond to directory name)
+            dir:         source directory or directories (a list)
+            full_target: full path/filename of the target
+            src_pattern: glob pattern
+            include:     files to include into source
+            resource:    directory or directories with resource (.ui) files
+            rebuildTargetOnly:     whether or not only rebuild this target
 
-    For non-debug-able targets like static libraries, target (alias) is
-    enough to build the target. For executable targets, msvs need to know
-    the full path to start debug them.
-    '''
-    if resource is not None:
-      res = utils.globSource(dir = env.subst('$TOP_SRCDIR/'+resource), pattern = '*.ui',
-        build_dir = env.subst('$TOP_SRCDIR/'+resource))
+        For non-debug-able targets like static libraries, target (alias) is
+        enough to build the target. For executable targets, msvs need to know
+        the full path to start debug them.
+        '''
+        if resource is not None:
+            res = utils.globSource(dir = env.subst('$TOP_SRCDIR/'+resource), pattern = '*.ui',
+                build_dir = env.subst('$TOP_SRCDIR/'+resource))
+        else:
+            res = []
+        if rebuildTargetOnly:
+            cmds = 'faststart=yes rebuild='+target
+        else:
+            cmds = 'faststart=yes'
+        if type(dir) == type([]):
+            src = []
+            inc = []
+            for d in dir:
+                src.extend(utils.globSource(dir = env.subst('$TOP_SRCDIR/' + d),
+                    pattern = src_pattern, include = include,
+                    build_dir = env.subst('$TOP_SRCDIR/' + d) ))
+                inc.extend(utils.globSource(dir = env.subst('$TOP_SRCDIR/' + d),
+                    pattern = '*.h',
+                    build_dir = env.subst('$TOP_SRCDIR/' + d) ))
+        else:
+            src = utils.globSource(dir = env.subst('$TOP_SRCDIR/' + dir),
+                pattern = src_pattern, include = include,
+                build_dir = env.subst('$TOP_SRCDIR/' + dir) )
+            inc = utils.globSource(dir = env.subst('$TOP_SRCDIR/' + dir),
+                pattern = '*.h',
+                build_dir = env.subst('$TOP_SRCDIR/' + dir) )
+        if full_target is None:
+            build_target = target
+        else:
+            build_target = full_target
+        # project
+        proj = env.MSVSProject(
+            target = target + env['MSVSPROJECTSUFFIX'],
+            srcs = src,
+            incs = [env.subst('$TOP_SRCDIR/src/config.h')],
+            localincs = inc,
+            resources = res,
+            buildtarget = build_target,
+            cmdargs = cmds,
+            variant = 'Debug'
+        )
+        Alias('msvs_projects', proj)
+    #
+    build_project('boost', ['boost/libs/%s/src' % x for x in boost_libs],
+        src_pattern = '*.cpp')
+    #
+    build_project('intl', 'intl', src_pattern = '*.c')
+    #
+    build_project('support', 'src/support', include=['package.C.in'])
+    #
+    build_project('mathed', 'src/mathed')
+    #
+    build_project('insets', 'src/insets')
+    #
+    build_project('frontends', 'src/frontends')
+    #
+    build_project('graphics', 'src/graphics')
+    #
+    build_project('controllers', 'src/frontends/controllers')
+    #
+    build_project('qt3', 'src/frontends/qt3', resource = 'src/frontends/qt3/ui')
+    #
+    build_project('qt4', 'src/frontends/qt4', resource = 'src/frontends/qt4/ui')
+    #
+    build_project('client', 'src/client', rebuildTargetOnly = False,
+        full_target = File(env.subst('$BUILDDIR/common/client/lyxclient$PROGSUFFIX')).abspath)
+    #
+    build_project('tex2lyx', 'src/tex2lyx', rebuildTargetOnly = False,
+        full_target = File(env.subst('$BUILDDIR/common/tex2lyx/tex2lyx$PROGSUFFIX')).abspath)
+    #
+    build_project('lyxbase', 'src')
+    #
+    if frontend == 'qt3':
+        build_project('lyx', ['src', 'src/support', 'src/mathed', 'src/insets',
+            'src/frontends', 'src/graphics', 'src/frontends/controllers',
+            'src/frontends/qt3'], resource = 'src/frontends/qt3/ui',
+            rebuildTargetOnly = False,
+            full_target = File(env.subst('$BUILDDIR/$frontend/lyx$PROGSUFFIX')).abspath)
     else:
-      res = []
-    if rebuildTargetOnly:
-      cmds = 'faststart=yes rebuild='+target
-    else:
-      cmds = 'faststart=yes'
-    if type(dir) == type([]):
-      src = []
-      inc = []
-      for d in dir:
-        src.extend(utils.globSource(dir = env.subst('$TOP_SRCDIR/' + d),
-          pattern = src_pattern, include = include,
-          build_dir = env.subst('$TOP_SRCDIR/' + d) ))
-        inc.extend(utils.globSource(dir = env.subst('$TOP_SRCDIR/' + d),
-          pattern = '*.h',
-          build_dir = env.subst('$TOP_SRCDIR/' + d) ))
-    else:
-      src = utils.globSource(dir = env.subst('$TOP_SRCDIR/' + dir),
-        pattern = src_pattern, include = include,
-        build_dir = env.subst('$TOP_SRCDIR/' + dir) )
-      inc = utils.globSource(dir = env.subst('$TOP_SRCDIR/' + dir),
-        pattern = '*.h',
-        build_dir = env.subst('$TOP_SRCDIR/' + dir) )
-    if full_target is None:
-      build_target = target
-    else:
-      build_target = full_target
-    # project
-    proj = env.MSVSProject(
-      target = target + env['MSVSPROJECTSUFFIX'],
-      srcs = src,
-      incs = [env.subst('$TOP_SRCDIR/src/config.h')],
-      localincs = inc,
-      resources = res,
-      buildtarget = build_target,
-      cmdargs = cmds,
-      variant = 'Debug'
-    )
-    Alias('msvs_projects', proj)
-  #
-  build_project('boost', ['boost/libs/%s/src' % x for x in boost_libs],
-    src_pattern = '*.cpp')
-  #
-  build_project('intl', 'intl', src_pattern = '*.c')
-  #
-  build_project('support', 'src/support', include=['package.C.in'])
-  #
-  build_project('mathed', 'src/mathed')
-  #
-  build_project('insets', 'src/insets')
-  #
-  build_project('frontends', 'src/frontends')
-  #
-  build_project('graphics', 'src/graphics')
-  #
-  build_project('controllers', 'src/frontends/controllers')
-  #
-  build_project('qt3', 'src/frontends/qt3', resource = 'src/frontends/qt3/ui')
-  #
-  build_project('qt4', 'src/frontends/qt4', resource = 'src/frontends/qt4/ui')
-  #
-  build_project('client', 'src/client', rebuildTargetOnly = False,
-    full_target = File(env.subst('$BUILDDIR/common/client/lyxclient$PROGSUFFIX')).abspath)
-  #
-  build_project('tex2lyx', 'src/tex2lyx', rebuildTargetOnly = False,
-    full_target = File(env.subst('$BUILDDIR/common/tex2lyx/tex2lyx$PROGSUFFIX')).abspath)
-  #
-  build_project('lyxbase', 'src')
-  #
-  if frontend == 'qt3':
-    build_project('lyx', ['src', 'src/support', 'src/mathed', 'src/insets',
-      'src/frontends', 'src/graphics', 'src/frontends/controllers',
-      'src/frontends/qt3'], resource = 'src/frontends/qt3/ui',
-      rebuildTargetOnly = False,
-      full_target = File(env.subst('$BUILDDIR/$frontend/lyx$PROGSUFFIX')).abspath)
-  else:
-    build_project('lyx', ['src', 'src/support', 'src/mathed', 'src/insets',
-      'src/frontends', 'src/graphics', 'src/frontends/controllers',
-      'src/frontends/qt4'], resource = 'src/frontends/qt4/ui',
-      rebuildTargetOnly = False,
-      full_target = File(env.subst('$BUILDDIR/$frontend/lyx$PROGSUFFIX')).abspath)
+        build_project('lyx', ['src', 'src/support', 'src/mathed', 'src/insets',
+            'src/frontends', 'src/graphics', 'src/frontends/controllers',
+            'src/frontends/qt4'], resource = 'src/frontends/qt4/ui',
+            rebuildTargetOnly = False,
+            full_target = File(env.subst('$BUILDDIR/$frontend/lyx$PROGSUFFIX')).abspath)
 
 
 if build_po:
-  #
-  # po/
-  #
-  print 'Processing files in po...'
-
-  import glob
-  # handle po files
-  #
-  # files to translate
-  transfiles = glob.glob(os.path.join(env.subst('$TOP_SRCDIR'), 'po', '*.po'))
-  # possibly *only* handle these languages
-  languages = None
-  if env.has_key('languages'):
-    languages = env.make_list(env['lanauges'])
-  # use defulat msgfmt
-  if not env['MSGFMT']:
-    print 'msgfmt does not exist. Can not process po files'
-  else:
-    # create a builder
-    env['BUILDERS']['Transfiles'] = Builder(action='$MSGFMT $SOURCE -o $TARGET',suffix='.gmo',src_suffix='.po')
     #
-    gmo_files = []
-    for f in transfiles:
-      # get filename
-      fname = os.path.split(f)[1]
-      # country code
-      country = fname.split('.')[0]
-      #
-      if not languages or country in languages:
-        gmo_files.extend(env.Transfiles(f))
+    # po/
+    #
+    print 'Processing files in po...'
+
+    import glob
+    # handle po files
+    #
+    # files to translate
+    transfiles = glob.glob(os.path.join(env.subst('$TOP_SRCDIR'), 'po', '*.po'))
+    # possibly *only* handle these languages
+    languages = None
+    if env.has_key('languages'):
+        languages = env.make_list(env['lanauges'])
+    # use defulat msgfmt
+    if not env['MSGFMT']:
+        print 'msgfmt does not exist. Can not process po files'
+    else:
+        # create a builder
+        env['BUILDERS']['Transfiles'] = Builder(action='$MSGFMT $SOURCE -o $TARGET',suffix='.gmo',src_suffix='.po')
+        #
+        gmo_files = []
+        for f in transfiles:
+            # get filename
+            fname = os.path.split(f)[1]
+            # country code
+            country = fname.split('.')[0]
+            #
+            if not languages or country in languages:
+                gmo_files.extend(env.Transfiles(f))
 
 
 if 'install' in targets:
-  #
-  # install to DESTDIR or prefix
-  dest_dir = env.Dir(env.get('DESTDIR', prefix)).abspath
-  # if dest_dir is different from prefix.
-  if env.has_key('exec_prefix'):
-    bin_dest_dir = Dir(env['exec_prefix']).abspath
-  else:
-    bin_dest_dir = os.path.join(dest_dir, 'bin')
-  if add_suffix:
-    share_dest_dir = os.path.join(dest_dir, share_dir + program_suffix)
-  else:
-    share_dest_dir = os.path.join(dest_dir, share_dir)
-  man_dest_dir = os.path.join(dest_dir, man_dir)
-  locale_dest_dir = os.path.join(dest_dir, locale_dir)
-  # create the directory if needed
-  if not os.path.isdir(dest_dir):
-    try:
-      os.makedirs(dest_dir)
-    except:
-      pass
+    #
+    # install to DESTDIR or prefix
+    dest_dir = env.Dir(env.get('DESTDIR', prefix)).abspath
+    # if dest_dir is different from prefix.
+    if env.has_key('exec_prefix'):
+        bin_dest_dir = Dir(env['exec_prefix']).abspath
+    else:
+        bin_dest_dir = os.path.join(dest_dir, 'bin')
+    if add_suffix:
+        share_dest_dir = os.path.join(dest_dir, share_dir + program_suffix)
+    else:
+        share_dest_dir = os.path.join(dest_dir, share_dir)
+    man_dest_dir = os.path.join(dest_dir, man_dir)
+    locale_dest_dir = os.path.join(dest_dir, locale_dir)
+    # create the directory if needed
     if not os.path.isdir(dest_dir):
-      print 'Can not create directory', dest_dir
-      Exit(3)
-  #
-  import glob
-  #
-  # do not install these files
-  exclude_list = ['Makefile.am', 'Makefile.in', 'Makefile',
-    'lyx2lyx_version.py', 'lyx2lyx_version.py.in']
+        try:
+            os.makedirs(dest_dir)
+        except:
+            pass
+        if not os.path.isdir(dest_dir):
+            print 'Can not create directory', dest_dir
+            Exit(3)
+    #
+    import glob
+    #
+    # do not install these files
+    exclude_list = ['Makefile.am', 'Makefile.in', 'Makefile',
+        'lyx2lyx_version.py', 'lyx2lyx_version.py.in']
 
-  def install(dest, src):
-    ''' recusive installation of src to dest '''
-    # separate file and directory
-    files = filter(lambda x: os.path.isfile(x) and not os.path.split(x)[1] in exclude_list, src)
-    dirs = filter(os.path.isdir, src)
-    # install file
-    env.Install(dest, files)
-    # install directory
-    ins_dir = [dest]
-    for dir in dirs:
-      ins_dir.extend(install(os.path.join(dest, os.path.basename(dir)),
-        glob.glob(os.path.join(dir, '*'))) )
-    return ins_dir
-  #
-  # executables (some of them may be none)
-  #
-  if add_suffix:
-    version_suffix = program_suffix
-  else:
-    version_suffix = ''
-  #
-  # install lyx
-  target_name = os.path.split(str(lyx[0]))[1].replace('lyx', 'lyx%s' % version_suffix)
-  target = os.path.join(bin_dest_dir, target_name)
-  env.InstallAs(target, lyx)
-  Alias('install', target)
-  # install lyx as lyx-qt3
-  target_name = os.path.split(str(lyx[0]))[1].replace('lyx', 'lyx-%s%s' % (frontend, version_suffix))
-  target = os.path.join(bin_dest_dir, target_name)
-  env.InstallAs(target, lyx)
-  Alias('install', target)
-  #
-  # install tex2lyx
-  target_name = os.path.split(str(tex2lyx[0]))[1].replace('tex2lyx', 'tex2lyx%s' % version_suffix)
-  target = os.path.join(bin_dest_dir, target_name)
-  env.InstallAs(target, tex2lyx)
-  Alias('install', target)
-  #
-  # install lyxclient, may not exist
-  if client != None:
-    target_name = os.path.split(str(client[0]))[1].replace('client', 'client%s' % version_suffix)
+    def install(dest, src):
+        ''' recusive installation of src to dest '''
+        # separate file and directory
+        files = filter(lambda x: os.path.isfile(x) and not os.path.split(x)[1] in exclude_list, src)
+        dirs = filter(os.path.isdir, src)
+        # install file
+        env.Install(dest, files)
+        # install directory
+        ins_dir = [dest]
+        for dir in dirs:
+            ins_dir.extend(install(os.path.join(dest, os.path.basename(dir)),
+                glob.glob(os.path.join(dir, '*'))) )
+        return ins_dir
+    #
+    # executables (some of them may be none)
+    #
+    if add_suffix:
+        version_suffix = program_suffix
+    else:
+        version_suffix = ''
+    #
+    # install lyx
+    target_name = os.path.split(str(lyx[0]))[1].replace('lyx', 'lyx%s' % version_suffix)
     target = os.path.join(bin_dest_dir, target_name)
-    env.InstallAs(target, client)
+    env.InstallAs(target, lyx)
     Alias('install', target)
-  #
-  # share/lyx
-  dirs = install(share_dest_dir,
-    [env.subst('$TOP_SRCDIR/lib/') + file for file in ['configure.py', 'encodings',
-     'chkconfig.ltx', 'CREDITS', 'external_templates', 'symbols', 'languages',
-     'lyxrc.example', 'syntax.default', 'bind', 'images', 'layouts', 'scripts',
-     'templates', 'examples', 'kbd', 'lyx2lyx', 'tex', 'clipart', 'doc',  'ui']]
-  )
-  env.substFile(share_dest_dir + '/lyx2lyx/lyx2lyx_version.py',
-    '$TOP_SRCDIR/lib/lyx2lyx/lyx2lyx_version.py.in')
-  Alias('install', dirs)
-  # man
-  env.InstallAs(os.path.join(man_dest_dir, 'lyx' + version_suffix + '.1'),
-    env.subst('$TOP_SRCDIR/lyx.man'))
-  env.InstallAs(os.path.join(man_dest_dir, 'tex2lyx' + version_suffix + '.1'),
-    env.subst('$TOP_SRCDIR/src/tex2lyx/tex2lyx.man'))
-  env.InstallAs(os.path.join(man_dest_dir, 'lyxclient' + version_suffix + '.1'),
-    env.subst('$TOP_SRCDIR/src/client/lyxclient.man'))
-  Alias('install', [os.path.join(man_dest_dir, x + version_suffix + '.1') for
-    x in ['lyx', 'tex2lyx', 'lyxclient']])
-  # locale files?
-  # ru.gmo ==> ru/LC_MESSAGES/lyxSUFFIX.mo
-  for gmo in gmo_files:
-    lan = os.path.split(str(gmo))[1].split('.')[0]
-    dest_file = os.path.join(locale_dest_dir, lan, 'LC_MESSAGES', 'lyx' + version_suffix + '.mo')
-    env.InstallAs(dest_file, gmo)
-    Alias('install', dest_file)
+    # install lyx as lyx-qt3
+    target_name = os.path.split(str(lyx[0]))[1].replace('lyx', 'lyx-%s%s' % (frontend, version_suffix))
+    target = os.path.join(bin_dest_dir, target_name)
+    env.InstallAs(target, lyx)
+    Alias('install', target)
+    #
+    # install tex2lyx
+    target_name = os.path.split(str(tex2lyx[0]))[1].replace('tex2lyx', 'tex2lyx%s' % version_suffix)
+    target = os.path.join(bin_dest_dir, target_name)
+    env.InstallAs(target, tex2lyx)
+    Alias('install', target)
+    #
+    # install lyxclient, may not exist
+    if client != None:
+        target_name = os.path.split(str(client[0]))[1].replace('client', 'client%s' % version_suffix)
+        target = os.path.join(bin_dest_dir, target_name)
+        env.InstallAs(target, client)
+        Alias('install', target)
+    #
+    # share/lyx
+    dirs = install(share_dest_dir,
+        [env.subst('$TOP_SRCDIR/lib/') + file for file in ['configure.py', 'encodings',
+        'chkconfig.ltx', 'CREDITS', 'external_templates', 'symbols', 'languages',
+        'lyxrc.example', 'syntax.default', 'bind', 'images', 'layouts', 'scripts',
+        'templates', 'examples', 'kbd', 'lyx2lyx', 'tex', 'clipart', 'doc',  'ui']]
+    )
+    env.substFile(share_dest_dir + '/lyx2lyx/lyx2lyx_version.py',
+        '$TOP_SRCDIR/lib/lyx2lyx/lyx2lyx_version.py.in')
+    Alias('install', dirs)
+    # man
+    env.InstallAs(os.path.join(man_dest_dir, 'lyx' + version_suffix + '.1'),
+        env.subst('$TOP_SRCDIR/lyx.man'))
+    env.InstallAs(os.path.join(man_dest_dir, 'tex2lyx' + version_suffix + '.1'),
+        env.subst('$TOP_SRCDIR/src/tex2lyx/tex2lyx.man'))
+    env.InstallAs(os.path.join(man_dest_dir, 'lyxclient' + version_suffix + '.1'),
+        env.subst('$TOP_SRCDIR/src/client/lyxclient.man'))
+    Alias('install', [os.path.join(man_dest_dir, x + version_suffix + '.1') for
+        x in ['lyx', 'tex2lyx', 'lyxclient']])
+    # locale files?
+    # ru.gmo ==> ru/LC_MESSAGES/lyxSUFFIX.mo
+    for gmo in gmo_files:
+        lan = os.path.split(str(gmo))[1].split('.')[0]
+        dest_file = os.path.join(locale_dest_dir, lan, 'LC_MESSAGES', 'lyx' + version_suffix + '.mo')
+        env.InstallAs(dest_file, gmo)
+        Alias('install', dest_file)
 
 
 Default('lyx')
