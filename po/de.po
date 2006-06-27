@@ -1627,7 +1627,7 @@ msgstr "Name:"
 
 #: src/frontends/xforms/forms/form_preferences.fd:2566
 msgid "Adapt output"
-msgstr "Namen angeben"
+msgstr "Ausgabe anpassen"
 
 #: src/frontends/xforms/forms/form_preferences.fd:2584
 msgid "Printer Command and Flags"
@@ -1738,9 +1738,8 @@ msgid "Index:|#I"
 msgstr "Stichwortverzeichnis:|#S"
 
 #: src/frontends/xforms/forms/form_preferences.fd:3134
-#, fuzzy
 msgid "Use Windows Paths for LaTeX|#s"
-msgstr "Verwende Cygwin-Pfade|#C"
+msgstr "Verwende Windows-Pfade für LaTeX|#W"
 
 #: src/frontends/xforms/forms/form_print.fd:44
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:45
@@ -3488,7 +3487,7 @@ msgstr "Beim Exportieren nicht &entpacken"
 
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:1081
 msgid "Don't uncompress image before exporting to LaTeX"
-msgstr "Bild vor dem Exportieren nach LaTeX nicht entpacken"
+msgstr "Bild vor dem Exportieren nach LaTeX nicht dekomprimieren"
 
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:1092
 msgid "LaTeX &options:"
@@ -3876,22 +3875,19 @@ msgid "&Format:"
 msgstr "&Format:"
 
 #: src/frontends/qt2/ui/QPrefCygwinPathModule.ui:66
-#, fuzzy
 msgid "&Use Windows-style paths in LaTeX files"
-msgstr "Verwende &Cygwin-konforme Pfade"
+msgstr "Verwende &Windows-konforme Pfade in LaTeX-Dateien"
 
 #: src/frontends/qt2/ui/QPrefCygwinPathModule.ui:74
 #: src/frontends/xforms/FormPreferences.C:2145
-#, fuzzy
 msgid ""
 "Select if LyX should output Windows-style paths rather than Posix-style "
 "paths to LaTeX files. Useful if you're using the native Windows MikTeX "
 "rather than the Cygwin teTeX."
 msgstr ""
-"Bitte wählen, wenn LyX anstelle von Windows-konformen Pfaden Cygwin-konforme "
-"Pfade ausgeben soll. Dies ist nützlich, wenn Sie Cygwin teTeX anstelle des "
-"nativen Windows MikTeX verwenden. Beachten Sie aber, dass Sie für alle Ihre "
-"Konverter Shell-Skript-Wrapper schreiben müssen."
+"Bitte wählen, wenn LyX anstelle von Posix-konformen Pfaden Windows-konforme "
+"Pfade in LaTex-Dateien ausgeben soll. Dies ist nützlich, wenn Sie "
+"das native Windows MikTeX anstelle von Cygwin teTeX verwenden."
 
 #: src/frontends/qt2/ui/QPrefDateModule.ui:56
 msgid "&Date format:"
@@ -4065,7 +4061,7 @@ msgstr "Befehl und Optionen für Stichwortverzeichnis (makeindex, xindy)"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:174
 msgid "Index command:"
-msgstr "Befehl für Stichwortverz.:"
+msgstr "Befehl für Stichwortverzeichnis:"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:189
 msgid "DVI viewer paper size options:"
@@ -4156,7 +4152,7 @@ msgstr "Name des Standard-Druckers"
 
 #: src/frontends/qt2/ui/QPrefPrinterModule.ui:119
 msgid "Adapt outp&ut"
-msgstr "&Namen angeben"
+msgstr "&Ausgabe anpassen"
 
 #: src/frontends/qt2/ui/QPrefPrinterModule.ui:123
 msgid "Use printer name explicitely"
@@ -5404,9 +5400,8 @@ msgid "Biography"
 msgstr "Biographie"
 
 #: lib/layouts/IEEEtran.layout:421
-#, fuzzy
 msgid "BiographyNoPhoto"
-msgstr "Biographie"
+msgstr "Biographie ohne Foto"
 
 #: lib/layouts/IEEEtran.layout:439 lib/layouts/aa.layout:58
 #: lib/layouts/aa.layout:217 lib/layouts/aa.layout:228
@@ -7334,27 +7329,23 @@ msgstr "Stichwörter:"
 
 #: lib/layouts/ijmpc.layout:95
 msgid "Classification Codes"
-msgstr ""
+msgstr "Klassifikationscodes"
 
 #: lib/layouts/ijmpc.layout:164 lib/layouts/ijmpd.layout:161
-#, fuzzy
 msgid "Step"
-msgstr "Staat"
+msgstr "Schritt"
 
 #: lib/layouts/ijmpc.layout:168 lib/layouts/ijmpd.layout:165
-#, fuzzy
 msgid "Step \\arabic{step}."
-msgstr "Notiz \\arabic{note}."
+msgstr "Schritt \\arabic{step}."
 
 #: lib/layouts/ijmpc.layout:280 lib/layouts/ijmpd.layout:287
-#, fuzzy
 msgid "Prop"
-msgstr "Zuschneiden"
+msgstr "Eigenschaft"
 
 #: lib/layouts/ijmpc.layout:284
-#, fuzzy
 msgid "Prop \\arabic{prop}."
-msgstr "Problem \\arabic{problem}."
+msgstr "Eigenschaft \\arabic{prop}."
 
 #: lib/layouts/ijmpc.layout:290 lib/layouts/ijmpd.layout:298
 #: lib/layouts/llncs.layout:395 lib/layouts/svjour.inc:458
@@ -7362,88 +7353,72 @@ msgid "Question"
 msgstr "Frage"
 
 #: lib/layouts/ijmpc.layout:294
-#, fuzzy
 msgid "Question \\arabic{question}."
-msgstr "Definition \\arabic{definition}."
+msgstr "Frage \\arabic{question}."
 
 #: lib/layouts/ijmpc.layout:310 lib/layouts/ijmpd.layout:320
-#, fuzzy
 msgid "Conjecture "
-msgstr "Vermutung"
+msgstr "Vermutung "
 
 #: lib/layouts/ijmpc.layout:317 lib/layouts/ijmpd.layout:327
-#, fuzzy
 msgid "Appendices Section"
-msgstr "Anhänge"
+msgstr "Abschnitt Anhänge"
 
 #: lib/layouts/ijmpc.layout:327 lib/layouts/ijmpd.layout:337
-#, fuzzy
 msgid "--- Appendices ---"
-msgstr "Anhänge"
+msgstr "--- Anhänge ---"
 
 #: lib/layouts/ijmpc.layout:349 lib/layouts/ijmpd.layout:360
-#, fuzzy
 msgid "Appendix \\Alph{appendix}."
-msgstr "Anhang \\Alph{chapter}"
+msgstr "Anhang \\Alph{appendix}."
 
 #: lib/layouts/ijmpd.layout:150
-#, fuzzy
 msgid "Definition @Section@.\\arabic{definition}."
-msgstr "Definition \\arabic{definition}."
+msgstr "Definition @Section@.\\arabic{definition}."
 
 #: lib/layouts/ijmpd.layout:179
-#, fuzzy
 msgid "Example @Section@.\\arabic{example}."
-msgstr "Beispiel @Section@.\\arabic{theorem}."
+msgstr "Beispiel @Section@.\\arabic{example}."
 
 #: lib/layouts/ijmpd.layout:190
-#, fuzzy
 msgid "Remark @Section@.\\arabic{remark}."
-msgstr "Bemerkung @Section@.\\arabic{theorem}."
+msgstr "Bemerkung @Section@.\\arabic{remark}."
 
 #: lib/layouts/ijmpd.layout:201
-#, fuzzy
 msgid "Notation @Section@.\\arabic{notation}."
-msgstr "Notation @Section@.\\arabic{theorem}."
+msgstr "Notation @Section@.\\arabic{notation}."
 
 #: lib/layouts/ijmpd.layout:222 lib/layouts/amsmaths.inc:79
 msgid "Theorem @Section@.\\arabic{theorem}."
 msgstr "Theorem @Section@.\\arabic{theorem}."
 
 #: lib/layouts/ijmpd.layout:255
-#, fuzzy
 msgid "Corollary @Section@.\\arabic{corollary}."
-msgstr "Korollar \\arabic{corollary}."
+msgstr "Korollar @Section@.\\arabic{corollary}."
 
 #: lib/layouts/ijmpd.layout:269
-#, fuzzy
 msgid "Lemma @Section@.\\arabic{lemma}."
-msgstr "Lemma @Section@.\\arabic{theorem}."
+msgstr "Lemma @Section@.\\arabic{lemma}."
 
 #: lib/layouts/ijmpd.layout:280
-#, fuzzy
 msgid "Proposition @Section@.\\arabic{proposition}."
-msgstr "Feststellung \\arabic{proposition}."
+msgstr "Feststellung @Section@.\\arabic{proposition}."
 
 #: lib/layouts/ijmpd.layout:291
-#, fuzzy
 msgid "Prop @Section@.\\arabic{prop}."
-msgstr "Problem @Section@.\\arabic{theorem}."
+msgstr "Eigenschaft @Section@.\\arabic{prop}."
 
 #: lib/layouts/ijmpd.layout:302
-#, fuzzy
 msgid "Question @Section@.\\arabic{question}."
-msgstr "@Section@.\\arabic{subsection}"
+msgstr "Frage @Section@.\\arabic{question}."
 
 #: lib/layouts/ijmpd.layout:313
-#, fuzzy
 msgid "Claim @Section@.\\arabic{claim}."
-msgstr "Behauptung @Section@.\\arabic{theorem}."
+msgstr "Behauptung @Section@.\\arabic{claim}."
 
 #: lib/layouts/ijmpd.layout:324
-#, fuzzy
 msgid "Conjecture @Section@.\\arabic{conjecture}."
-msgstr "Vermutung \\arabic{conjecture}."
+msgstr "Vermutung @Section@.\\arabic{conjecture}."
 
 #: lib/layouts/kluwer.layout:195
 msgid "AddressForOffprints"
@@ -8588,9 +8563,8 @@ msgid "Austrian"
 msgstr "Deutsch (Österreich)"
 
 #: lib/languages:6
-#, fuzzy
 msgid "Austrian (new spelling)"
-msgstr "Deutsch (neue Rechtschreibung)"
+msgstr "Deutsch (Österreich, neue Rechtschreibung)"
 
 #: lib/languages:7
 msgid "Bahasa"
@@ -9907,7 +9881,7 @@ msgstr "Anhang hier beginnen|A"
 
 #: lib/ui/stdmenus.ui:383
 msgid "Compressed|o"
-msgstr ""
+msgstr "Komprimiert|K"
 
 #: lib/ui/stdmenus.ui:384
 msgid "Settings...|S"
@@ -11177,9 +11151,9 @@ msgid "Cannot view file"
 msgstr "Die Datei kann nicht angesehen werden."
 
 #: src/format.C:262 src/format.C:333
-#, fuzzy, c-format
+#, c-format
 msgid "File does not exist: %1$s"
-msgstr "Die Datei existiert nicht."
+msgstr "Die Datei existiert nicht: %1$s"
 
 #: src/format.C:275
 #, c-format
@@ -11187,9 +11161,9 @@ msgid "No information for viewing %1$s"
 msgstr "Keine Informationen vorhanden, um %1$s anzusehen"
 
 #: src/format.C:285
-#, fuzzy, c-format
+#, c-format
 msgid "Auto-view file %1$s failed"
-msgstr "Die automatische Speicherung ist fehlgeschlagen!"
+msgstr "Die automatische Ansicht der Datei %1$s ist fehlgeschlagen"
 
 #: src/format.C:332 src/format.C:345 src/format.C:355 src/format.C:379
 msgid "Cannot edit file"
@@ -11203,7 +11177,7 @@ msgstr "Keine Informationen vorhanden, um %1$s zu bearbeiten"
 #: src/format.C:356
 #, c-format
 msgid "Auto-edit file %1$s failed"
-msgstr ""
+msgstr "Das automatische Bearbeiten der Datei %1$s ist fehlgeschlagen"
 
 #: src/frontends/LyXView.C:185
 msgid " (changed)"
@@ -11701,11 +11675,11 @@ msgstr "Textstil"
 
 #: src/frontends/gtk/GCitation.C:122
 msgid "CiteKeys"
-msgstr ""
+msgstr "Zitatschlüssel"
 
 #: src/frontends/gtk/GCitation.C:128
 msgid "BibKeys"
-msgstr ""
+msgstr "Literaturschlüssel"
 
 #: src/frontends/gtk/GDocument.C:58 src/frontends/qt2/QDocument.C:68
 #: src/frontends/xforms/FormDocument.C:93
@@ -14666,7 +14640,6 @@ msgstr ""
 "verwendet wird. Voreingestellt ist die Sprache des Dokuments."
 
 #: src/lyxrc.C:2075
-#, fuzzy
 msgid ""
 "Use to define an external program to render tables in plain text output. E."
 "g. \"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"\" is "
@@ -14674,8 +14647,8 @@ msgid ""
 msgstr ""
 "Hier können Sie ein externes Programm festlegen, das zur Formatierung von "
 "Tabellen in der Text-Ausgabe verwendet wird. Beispiel: \"groff -t -Tlatin1 $"
-"$FName\" wobei $$FName die Eingabedatei ist. Wird \"none\" angegeben, "
-"verwendet LyX eine interne Routine."
+"$FName\", wobei $$FName die Eingabedatei ist. Wird \"\" angegeben, verwendet "
+"LyX eine interne Routine."
 
 #: src/lyxrc.C:2079
 msgid ""
@@ -15389,19 +15362,18 @@ msgid "Unknown Inset"
 msgstr "Unbekannte Einfügung"
 
 #: src/text.C:330 src/text.C:344
-#, fuzzy
 msgid "Change tracking error"
-msgstr "Änderungsverfolgung"
+msgstr "Fehler der Änderungsverfolgung"
 
 #: src/text.C:331
 #, c-format
 msgid "Unknown author index for insertion: %1$d\n"
-msgstr ""
+msgstr "Unbekannter Autor-Index für die Einfügung: %1$d\n"
 
 #: src/text.C:345
 #, c-format
 msgid "Unknown author index for deletion: %1$d\n"
-msgstr ""
+msgstr "Unbekannter Autor-Index für die Löschung: %1$d\n"
 
 #: src/text.C:353
 msgid "Unknown token"
