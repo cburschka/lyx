@@ -509,14 +509,18 @@ void GuiWorkArea::drawScreen(int x, int y, QPixmap pixmap)
 {
 	QPainter q(&paint_device_);
 	q.drawPixmap(x, y, pixmap);
-	viewport()->update(x, y, pixmap.width(), pixmap.height());
+	update(x, y, pixmap.width(), pixmap.height());
 }
 
 
 void GuiWorkArea::expose(int x, int y, int w, int h)
 {
-//	lyxerr[Debug::GUI] << "expose " << w << 'x' << h
-//		<< '+' << x << '+' << y << std::endl;
+	/*
+	if (x == 0 && y == 0 && w == viewport()->width() && h == viewport()->height()) {
+		viewport()->repaint(x, y, w, h);
+		return;
+	}
+	*/
 
 	update(x, y, w, h);
 }
@@ -535,7 +539,7 @@ void GuiWorkArea::showCursor(int x, int y, int h, CursorShape shape)
 		&& cursor_color_ == required_color
 		&& cursor_shape_ == shape) {
 		show_hcursor_ = lshape_cursor_;
-		viewport()->update(cursor_x_, cursor_y_, cursor_w_, cursor_h_);
+		update(cursor_x_, cursor_y_, cursor_w_, cursor_h_);
 		return;
 	}
 
@@ -578,7 +582,7 @@ void GuiWorkArea::showCursor(int x, int y, int h, CursorShape shape)
 		show_hcursor_ = true;
 	}
 
-	viewport()->update(cursor_x_, cursor_y_, cursor_w_, cursor_h_);
+	update(cursor_x_, cursor_y_, cursor_w_, cursor_h_);
 }
 
 
@@ -587,7 +591,7 @@ void GuiWorkArea::removeCursor()
 	show_vcursor_ = false;
 	show_hcursor_ = false;
 
-	viewport()->update(cursor_x_, cursor_y_, cursor_w_, cursor_h_);
+	update(cursor_x_, cursor_y_, cursor_w_, cursor_h_);
 }
 
 
