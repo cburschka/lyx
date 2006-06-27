@@ -80,7 +80,8 @@ void FormSpellchecker::build()
 
 void FormSpellchecker::update()
 {
-	controller().check();
+	if (isVisible() || controller().exitEarly())
+		controller().check();
 }
 
 
