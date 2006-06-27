@@ -52,11 +52,8 @@ void rescanTexStyles()
 	Path p(package().user_support());
 	Systemcall one;
 	one.startscript(Systemcall::Wait,
-			"sh " +
-			quoteName(libFileSearch("scripts", "TeXFiles.sh")));
-	// To be changed to
-	//		"python " +
-	//		quoteName(libFileSearch("scripts", "TeXFiles.py")));
+			"python " +
+			quoteName(libFileSearch("scripts", "TeXFiles.py")));
 }
 
 

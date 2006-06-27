@@ -878,7 +878,7 @@ scriptsdir = $(pkgdatadir)/scripts
 # get appended to the names. So we use dist_scripts_DATA and chmod manually
 # in install-data-hook.
 dist_scripts_DATA = \
-	scripts/TeXFiles.sh \
+	scripts/TeXFiles.py \
 	scripts/clean_dvi.py \
 	scripts/convertDefault.py \
 	scripts/fen2ascii.py \

@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: iso-8859-15 -*-
 
 # file convertDefault.py
 # This file is part of LyX, the document processor.
@@ -21,4 +22,3 @@ if os.system(r'convert -depth 8 "%s" "%s"' % (sys.argv[1], sys.argv[2])) != 0:
   print >> sys.stderr, sys.argv[0], 'ERROR'
   print >> sys.stderr, 'Execution of "convert" failed.'
   sys.exit(1)
-
