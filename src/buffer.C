@@ -1342,8 +1342,6 @@ void Buffer::changeLanguage(Language const * from, Language const * to)
 	BOOST_ASSERT(from);
 	BOOST_ASSERT(to);
 
-	lyxerr << "Changing Language!" << endl;
-
 	// Take care of l10n/i18n
 	updateDocLang(to);
 
