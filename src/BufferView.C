@@ -214,7 +214,7 @@ void BufferView::center()
 
 string const BufferView::getClipboard() const
 {
-	return pimpl_->clipboard().get();
+	return pimpl_->gui().clipboard().get();
 }
 
 
@@ -340,7 +340,7 @@ LyXText const * BufferView::getLyXText() const
 
 void BufferView::haveSelection(bool sel)
 {
-	pimpl_->clipboard().haveSelection(sel);
+	pimpl_->gui().clipboard().haveSelection(sel);
 }
 
 

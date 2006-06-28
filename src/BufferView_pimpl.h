@@ -22,20 +22,14 @@
 #include "cursor.h"
 #include "errorlist.h"
 
-#include "insets/inset.h"
-
-#include "frontends/key_state.h"
 #include "frontends/LyXKeySym.h"
 #include "frontends/Timeout.h"
 
 #include "support/types.h"
 
-#include <boost/scoped_ptr.hpp>
-#include <boost/shared_ptr.hpp>
 #include <boost/signals/trackable.hpp>
 
 class Change;
-class LyXKeySym;
 class LyXView;
 
 class FuncRequest;
@@ -46,9 +40,7 @@ namespace lyx {
 namespace frontend {
 class Gui;
 class WorkArea;
-class Clipboard;
 class Painter;
-class GuiCursor;
 }
 }
 
@@ -121,10 +113,6 @@ public:
 
 	/// the frontend
 	lyx::frontend::Gui & gui() const;
-	/// our workarea
-	lyx::frontend::WorkArea & workarea() const;
-	/// the clipboard
-	lyx::frontend::Clipboard & clipboard() const;
 
 	/// Width and height of the BufferView in Pixels
 	/**

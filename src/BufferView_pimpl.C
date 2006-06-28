@@ -319,18 +319,6 @@ lyx::frontend::Gui & BufferView::Pimpl::gui() const
 }
 
 
-lyx::frontend::WorkArea & BufferView::Pimpl::workarea() const
-{
-	return *workArea_;
-}
-
-
-lyx::frontend::Clipboard & BufferView::Pimpl::clipboard() const
-{
-	return owner_->gui().clipboard();
-}
-
-
 lyx::frontend::Painter & BufferView::Pimpl::painter() const
 {
 	return workArea_->getPainter();
@@ -638,7 +626,7 @@ void BufferView::Pimpl::selectionRequested()
 		xsel_cache_.set = cur.selection();
 		sel = cur.selectionAsString(false);
 		if (!sel.empty())
-			clipboard().put(sel);
+			owner_->gui().clipboard().put(sel);
 	}
 }
 
@@ -886,7 +874,7 @@ void BufferView::Pimpl::center()
 
 void BufferView::Pimpl::stuffClipboard(string const & content) const
 {
-	clipboard().put(content);
+	owner_->gui().clipboard().put(content);
 }
 
 
