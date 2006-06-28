@@ -25,35 +25,51 @@ class QCitation : public ControlCitation
 public:
 	///
 	QCitation(Dialog &);
-
+	/// Available keys
 	QStringListModel * available()
 	{ return &available_keys_; }
 
+	/// Selected keys
 	QStringListModel * selected()
 	{ return &selected_keys_; }
 
+	/// Found keys
 	QStringListModel * found()
 	{ return &found_keys_; }
 
+	/// Text before cite
 	QString textBefore();
+
+	/// Text after cite
 	QString textAfter();
 
-	QModelIndex findKey(QString const & str, QModelIndex const & index) const;
-	QModelIndex findKey(QString const & str) const;
+	/// Get key description
+	QString getKeyInfo(QString const &);
 
-	void addKeys(QModelIndexList const & indexes);
-	void deleteKeys(QModelIndexList const & indexes);
-	void upKey(QModelIndexList const & indexes);
-	void downKey(QModelIndexList const & indexes);
+	/// Find keys containing the string (not case-sens)
+	void findKey(QString const &);
 
-	QStringList citationStyles(int sel);
+	/// Add key to selected keys
+	void addKey(QModelIndex const &);
 
+	/// Delete key from selected keys
+	void deleteKey(QModelIndex const &);
 
+	/// Move selected key one place up
+	void upKey(QModelIndex const &);
+
+	/// Move selected key one place down
+	void downKey(QModelIndex const &);
+
+	/// List of example cite strings
+	QStringList citationStyles(int);
+
+	/// Check whether there are keys to select
 	virtual bool isValid();
 
 	/// Set the Params variable for the Controller.
 	virtual void apply(int const choice, bool const full, bool const force,
-					  QString before, QString After);
+					  QString before, QString after);
 
 	/// Update dialog before/whilst showing it.
 	virtual void updateModel();
@@ -70,46 +86,6 @@ private:
 };
 
 
-#if 0
-/** A controller for Citation dialogs.
- */
-class Citation {
-public:
-	///
-	Citation();
-
-	///
-	virtual bool initialiseParams(std::string const & data);
-
-	/// clean-up on hide.
-	virtual void clearParams();
-
-	/** Disconnect from the inset when the Apply button is pressed.
-	 *  Allows easy insertion of multiple citations.
-	 */
-	virtual bool disconnectOnApply() const { return true; }
-
-	/// Returns a reference to the map of stored keys
-	biblio::InfoMap const & bibkeysInfo() const;
-
-	///
-	biblio::CiteEngine_enum getEngine() const;
-
-	/// Possible citations based on this key
-	std::vector<std::string> const getCiteStrings(std::string const & key) const;
-
-	/// available CiteStyle-s (depends on availability of Natbib/Jurabib)
-	static std::vector<biblio::CiteStyle> const & getCiteStyles() {
-		return citeStyles_;
-	}
-private:
-	/// The info associated with each key
-	biblio::InfoMap bibkeysInfo_;
-
-	///
-	static std::vector<biblio::CiteStyle> citeStyles_;
-};
-#endif
 } // namespace frontend
 } // namespace lyx
 

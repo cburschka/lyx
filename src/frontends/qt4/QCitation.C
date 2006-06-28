@@ -25,9 +25,6 @@
 
 #include <vector>
 #include <string>
-#include <iostream>
-using std::cout;
-using std::endl;
 
 using std::vector;
 using std::string;
@@ -46,15 +43,6 @@ QStringList toQStringList(vector<string> const & v)
 }
 
 
-void toVector(vector<string> & v, const QStringList & qlist)
-{
-	v.clear();
-
-	for (size_t i=0; i != qlist.size(); ++i)
-		v.push_back(fromqstr(qlist[i]));
-}
-
-
 namespace lyx {
 namespace frontend {
 
@@ -68,7 +56,8 @@ QCitation::QCitation(Dialog & parent)
 void QCitation::apply(int const choice, bool const full, bool const force,
 					  QString before, QString after)
 {
-//	InsetCommandParams & params = params();
+	if (!isValid())
+		return;
 
 	vector<biblio::CiteStyle> const & styles =
 		ControlCitation::getCiteStyles();
@@ -77,25 +66,11 @@ void QCitation::apply(int const choice, bool const full, bool const force,
 		biblio::CitationStyle(styles[choice], full, force)
 		.asLatexStr();
 
+	params().setCmdName(command);
 	params().setContents(fromqstr(selected_keys_.stringList().join(",")));
 	params().setSecOptions(fromqstr(before));
 	params().setOptions(fromqstr(after));
 	dispatchParams();
-
-/*
-	if (dialog().controller().isBufferDependent()) {
-		if (!dialog().kernel().isBufferAvailable() ||
-		    dialog().kernel().isBufferReadonly())
-			return;
-	}
-	dialog().controller().dispatchParams();
-
-	if (dialog().controller().disconnectOnApply()) {
-		dialog().kernel().disconnect(name());
-		dialog().controller().initialiseParams(string());
-		dialog().view().update();
-	}
-*/
 }
 
 
@@ -132,95 +107,43 @@ bool QCitation::isValid()
 }
 
 
-QModelIndex QCitation::findKey(QString const & str, QModelIndex const & index) const
+void QCitation::findKey(QString const & str)
 {
-	QStringList const avail = available_keys_.stringList();
-	int const pos = avail.indexOf(str, index.row());
-	if (pos == -1)
-		return index;
-	return available_keys_.index(pos);
+	QStringList sl = available_keys_.stringList().filter(str, Qt::CaseInsensitive);
+	found_keys_.setStringList(sl);
 }
 
 
-QModelIndex QCitation::findKey(QString const & str) const
+void QCitation::addKey(QModelIndex const & index)
 {
-	cout << "Find text " << fromqstr(str) << endl;
-
-	QStringList const avail = available_keys_.stringList();
-	QRegExp reg_exp(str);
-
-	int const pos = avail.indexOf(reg_exp);
-	if (pos == -1)
-		return QModelIndex();
-
-	cout << "found key " << fromqstr(avail[pos]) << " at pos " << pos << endl;
-	return available_keys_.index(pos);
-}
-
-
-void QCitation::addKeys(QModelIndexList const & indexes)
-{
-	QModelIndex index;
-
-	if (indexes.empty())
-		return;
-
 	QStringList keys = selected_keys_.stringList();
-
-	foreach(index, indexes) {
-		if (keys.indexOf(index.data().toString()) == -1)
-			keys.append(index.data().toString());
-	}
-
+	keys.append(index.data().toString());
 	selected_keys_.setStringList(keys);
 }
 
 
-void QCitation::deleteKeys(QModelIndexList const & indexes)
+void QCitation::deleteKey(QModelIndex const & index)
 {
-	QModelIndex index;
-
-	if (indexes.empty())
-		return;
-
 	QStringList keys = selected_keys_.stringList();
-
-	foreach(index, indexes) {
-		int const pos = keys.indexOf(index.data().toString());
-		if (pos != -1)
-			keys.removeAt(pos);
-	}
-
+	keys.removeAt(index.row());
 	selected_keys_.setStringList(keys);
 }
 
 
-void QCitation::upKey(QModelIndexList const & indexes)
+void QCitation::upKey(QModelIndex const & index)
 {
-	if (indexes.empty() || indexes.size() > 1)
-		return;
-
-	int pos = indexes[0].row();
-	if (pos < 1)
-		return;
-
 	QStringList keys = selected_keys_.stringList();
-	keys.swap(pos, pos-1);
+	int pos = index.row();
+	keys.swap(pos, pos - 1);
 	selected_keys_.setStringList(keys);
 }
 
 
-void QCitation::downKey(QModelIndexList const & indexes)
+void QCitation::downKey(QModelIndex const & index)
 {
-	if (indexes.empty() || indexes.size() > 1)
-		return;
-
-	int pos = indexes[0].row();
-	if (pos >= selected_keys_.rowCount() - 1)
-		return;
-
 	QStringList keys = selected_keys_.stringList();
-	keys.swap(pos, pos+1);
+	int pos = index.row();
+	keys.swap(pos, pos + 1);
 	selected_keys_.setStringList(keys);
 }
 
@@ -228,9 +151,18 @@ void QCitation::downKey(QModelIndexList const & indexes)
 QStringList QCitation::citationStyles(int sel)
 {
 	string key = fromqstr(selected_keys_.stringList()[sel]);
-
 	return toQStringList(getCiteStrings(key));
 }
+
+
+QString QCitation::getKeyInfo(QString const & sel)
+{
+	if (!bibkeysInfo().empty())
+		return toqstr(biblio::getInfo(bibkeysInfo(), fromqstr(sel) ));
+
+	return QString();
+}
+
 
 } // namespace frontend
 } // namespace lyx

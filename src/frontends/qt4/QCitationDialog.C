@@ -13,32 +13,25 @@
 #include <config.h>
 
 #include "QCitationDialog.h"
-#include "ui/QCitationFindUi.h"
 #include "QCitation.h"
-#include "Qt2BC.h"
 #include "qt_helpers.h"
 
 #include "bufferparams.h"
 
 #include "controllers/ControlCitation.h"
-#include "controllers/ButtonController.h"
 
 #include "support/lstrings.h"
 
-#include <iostream>
-using std::cout;
-using std::endl;
+#include <vector>
+#include <string>
 
-using std::find;
-using std::string;
 using std::vector;
-
+using std::string;
 
 namespace lyx {
 
 using support::getStringFromVector;
 using support::getVectorFromString;
-using support::trim;
 
 namespace frontend {
 
@@ -50,50 +43,31 @@ QCitationDialog::QCitationDialog(Dialog & dialog, QCitation * form)
 
 	setCaption(toqstr("LyX: " + getTitle()));
 
-/*
-
-	// Manage the ok, apply, restore and cancel/close buttons
-	bcview().setOK(okPB);
-	bcview().setApply(applyPB);
-	bcview().setCancel(closePB);
-	bcview().setRestore(restorePB);
-
-	bcview().addReadOnly(addPB);
-	bcview().addReadOnly(deletePB);
-	bcview().addReadOnly(upPB);
-	bcview().addReadOnly(downPB);
-	bcview().addReadOnly(citationStyleCO);
-	bcview().addReadOnly(forceuppercaseCB);
-	bcview().addReadOnly(fulllistCB);
-	bcview().addReadOnly(textBeforeED);
-	bcview().addReadOnly(textAfterED);
-*/
-
-	selectedLV->setModel(form_->selected());
+ 	selectedLV->setModel(form_->selected());
 	availableLV->setModel(form_->available());
 
-//	foundLV.setModel(form_->found());
-
-    connect( citationStyleCO, SIGNAL( activated(int) ), this, SLOT( changed() ) );
-    connect( fulllistCB, SIGNAL( clicked() ), this, SLOT( changed() ) );
-    connect( forceuppercaseCB, SIGNAL( clicked() ), this, SLOT( changed() ) );
-    connect( textBeforeED, SIGNAL( textChanged(const QString&) ), this, SLOT( changed() ) );
-    connect( textAfterED, SIGNAL( textChanged(const QString&) ), this, SLOT( changed() ) );
-
-
-//	find_ = new QCitationFind(form_, this);
-	
-//	connect(selectedLV, SIGNAL(doubleClicked(const QModelIndex & index)),
-//		form_, SLOT(on_okPB_clicked()));//SLOT(slotOK()));
+    connect(citationStyleCO, SIGNAL(activated(int)),
+		this, SLOT(changed()));
+    connect(fulllistCB, SIGNAL(clicked()),
+		this, SLOT(changed()));
+    connect(forceuppercaseCB, SIGNAL(clicked()),
+		this, SLOT(changed()));
+    connect(textBeforeED, SIGNAL(textChanged(const QString&)),
+		this, SLOT(changed()));
+    connect(textAfterED, SIGNAL(textChanged(const QString&)),
+		this, SLOT(changed()));
 }
+
 
 QCitationDialog::~QCitationDialog()
 {
 }
 
+
 void QCitationDialog::apply()
 {
 	int  const choice = std::max(0, citationStyleCO->currentItem());
+	style_ = choice;
 	bool const full  = fulllistCB->isChecked();
 	bool const force = forceuppercaseCB->isChecked();
 
@@ -128,29 +102,40 @@ void QCitationDialog::on_okPB_clicked()
 	accept();
 }
 
+
 void QCitationDialog::on_cancelPB_clicked()
 {
 	accept();
-//	reject();
 }
+
 
 void QCitationDialog::on_applyPB_clicked()
 {
 	apply();
 }
 
+
 void QCitationDialog::on_restorePB_clicked()
 {
 	update();
-	bc().valid(form_->isValid() );
 }
+
 
 void QCitationDialog::update()
 {
 	form_->updateModel();
 
-	// No keys have been selected yet, so...
-	infoML->document()->clear();
+	QModelIndex idxa = availableLV->currentIndex();
+	if (!idxa.isValid())
+		availableLV->setCurrentIndex(availableLV->model()->index(0,0));
+
+	QModelIndex idx = selectedLV->currentIndex();
+	if (form_->isValid() && !idx.isValid()) {
+		selectedLV->setCurrentIndex(selectedLV->model()->index(0,0));
+		updateInfo(selectedLV->currentIndex());
+	} else
+		updateInfo(availableLV->currentIndex());
+
 	setButtons();
 
 	textBeforeED->setText(form_->textBefore());
@@ -159,6 +144,7 @@ void QCitationDialog::update()
 	fillStyles();
 	updateStyle();
 }
+
 
 void QCitationDialog::updateStyle()
 {
@@ -233,83 +219,110 @@ void QCitationDialog::fillStyles()
 }
 
 
+bool QCitationDialog::isSelected(const QModelIndex & idx)
+{
+	QString const str = idx.data().toString();
+	return !form_->selected()->stringList().filter(str).isEmpty();
+}
+
+
 void QCitationDialog::setButtons()
 {
-//	if (form_->readOnly())
-//		return;
+	int const arows = availableLV->model()->rowCount();
+	addPB->setEnabled(arows>0 && !isSelected(availableLV->currentIndex()));
 
-	int const row_count = selectedLV->model()->rowCount();
-
-	int sel_nr=-1;
-	if (! selectedLV->selectionModel()->selectedIndexes().empty()) {
-		sel_nr = 
-		selectedLV->selectionModel()->selectedIndexes()[0].row();
-	}
-
+	int const srows = selectedLV->model()->rowCount();
+	int const sel_nr = selectedLV->currentIndex().row();
 	deletePB->setEnabled(sel_nr >= 0);
 	upPB->setEnabled(sel_nr > 0);
-	downPB->setEnabled(sel_nr >= 0 && sel_nr < row_count - 1);
+	downPB->setEnabled(sel_nr >= 0 && sel_nr < srows - 1);
+	applyPB->setEnabled(srows>0);
+	okPB->setEnabled(srows>0);
 }
 
-/*
-void QCitationDialog::on_selectedLV_currentChanged(QListWidgetItem*)
+
+void QCitationDialog::updateInfo(const QModelIndex & idx)
 {
-	fillStyles();
-	infoML->document()->clear();
+	if (idx.isValid()) {
+		QString const keytxt = form_->getKeyInfo(idx.data().toString());
+		infoML->document()->setPlainText(keytxt);
+	} else
+		infoML->document()->clear();
+}
 
-	int const sel = selectedLW->currentItem();
-	if (sel < 0) {
-		setButtons();
-		return;
-	}
 
-	infoML->document()->setPlainText(form_->getKeyInfo(sel));
+void QCitationDialog::on_selectedLV_clicked(const QModelIndex & idx)
+{
+	updateInfo(idx);
+	changed();
+}
 
+void QCitationDialog::on_availableLV_clicked(const QModelIndex & idx)
+{
+	updateInfo(idx);
 	setButtons();
 }
-*/
+
+
+void QCitationDialog::on_availableLV_activated(const QModelIndex & idx)
+{
+	if (isSelected(idx))
+		return;
+
+	on_addPB_clicked();		
+}
 
 
 void QCitationDialog::on_addPB_clicked()
 {
-	form_->addKeys(availableLV->selectionModel()->selectedIndexes());
+	QModelIndex idx = selectedLV->currentIndex();
+	form_->addKey(availableLV->currentIndex());
+	if (idx.isValid())
+		selectedLV->setCurrentIndex(idx);
 	changed();
 }
 
+
 void QCitationDialog::on_deletePB_clicked()
 {
-	form_->deleteKeys(selectedLV->selectionModel()->selectedIndexes());
+	QModelIndex idx = selectedLV->currentIndex();
+	int nrows = selectedLV->model()->rowCount();
+	
+	form_->deleteKey(idx);
+
+	if (idx.row() == nrows - 1)	
+		idx = idx.sibling(idx.row() - 1, idx.column());
+
+	if (nrows>1)
+		selectedLV->setCurrentIndex(idx);
+
+	updateInfo(selectedLV->currentIndex());
 	changed();
 }
 
 
 void QCitationDialog::on_upPB_clicked()
 {
-	form_->upKey(selectedLV->selectionModel()->selectedIndexes());
+	QModelIndex idx = selectedLV->currentIndex();
+	form_->upKey(idx);
+	selectedLV->setCurrentIndex(idx.sibling(idx.row() - 1, idx.column()));
 	changed();
 }
 
 
 void QCitationDialog::on_downPB_clicked()
 {
-	form_->downKey(selectedLV->selectionModel()->selectedIndexes());
+	QModelIndex idx = selectedLV->currentIndex();
+	form_->downKey(idx);
+	selectedLV->setCurrentIndex(idx.sibling(idx.row() + 1, idx.column()));
 	changed();
 }
+
 
 void QCitationDialog::on_findLE_textChanged(const QString & text)
 {
-	QModelIndex const index = form_->findKey(text);
-	if (! index.isValid())
-		return;
-
-//	QItemSelection selection(index, index);
-	availableLV->selectionModel()->select(index, QItemSelectionModel::Select);
-	changed();
-}
-
-void QCitationDialog::on_advancedSearchPB_clicked()
-{
-//	find_->exec();
+	form_->findKey(text);
+	availableLV->setModel(form_->found());
 	changed();
 }
 
@@ -320,149 +333,6 @@ void QCitationDialog::changed()
 	setButtons();
 }
 
-
-void updateBrowser(QListWidget * browser,
-			      vector<string> const & keys)
-{
-	browser->clear();
-
-	for (vector<string>::const_iterator it = keys.begin();
-		it < keys.end(); ++it) {
-		string const key = trim(*it);
-		// FIXME: why the .empty() test ?
-		if (!key.empty())
-			browser->addItem(toqstr(key));
-	}
-}
-
-
-QCitationFind::QCitationFind(QCitation * form, QWidget * parent, Qt::WFlags f)
-: form_(form), QDialog(parent, f)
-{
-	setupUi(this);
-	connect(addPB, SIGNAL(clicked()), this, SLOT(accept()));
-	connect(closePB, SIGNAL(clicked()), this, SLOT(reject()));
-	connect(previousPB, SIGNAL(clicked()), this, SLOT(previous()));
-	connect(nextPB, SIGNAL(clicked()), this, SLOT(next()));
-}
-
-void QCitationFind::update()
-{
-//	updateBrowser(availableLW, form_->availableKeys());
-}
-
-void QCitationFind::on_availableLW_currentItemChanged(QListWidgetItem *)
-{
-	infoML->document()->clear();
-
-	int const sel = availableLW->currentRow();
-	if (sel < 0) {
-		addPB->setEnabled(false);
-		return;
-	}
-
-	addPB->setEnabled(true);
-//	infoML->document()->setPlainText(form_->getKeyInfo(sel));
-}
-
-
-void QCitationFind::on_availableLW_itemActivated(QListWidgetItem *)
-{
-//	int const sel = availableLW->currentRow();
-	foundkeys.clear();
-//	foundkeys.push_back(form_->availableKeys()[sel]);
-	emit newCitations();
-	accept();
-}
-
-void QCitationFind::on_addPB_clicked()
-{
-//	form_->addKeys(availableLW->selectionModel()->selectedIndexes());
-
-	int const sel = availableLW->currentRow();
-
-	if (sel < 0)
-		return;
-
-	QStringList bibkeys = form_->available()->stringList();
-
-	// Add the selected browser_bib keys to browser_cite
-	// multiple selections are possible
-	for (unsigned int i = 0; i != availableLW->count(); i++) {
-		if (availableLW->isItemSelected(availableLW->item(i))) {
-				foundkeys.push_back(fromqstr(bibkeys[i]));
-		}
-	}
-
-	emit newCitations();
-	accept();
-}
-
-
-void QCitationFind::previous()
-{
-	find(biblio::BACKWARD);
-}
-
-
-void QCitationFind::next()
-{
-	find(biblio::FORWARD);
-}
-
-
-void QCitationFind::find(biblio::Direction dir)
-{
-/*	QStringList bibkeys = form_->available()->stringList();
-
-	biblio::InfoMap const & theMap = form_->bibkeysInfo();
-
-	biblio::Search const type = searchTypeCB->isChecked()
-		? biblio::REGEX : biblio::SIMPLE;
-
-	vector<string>::const_iterator start = bibkeys.begin();
-	int const sel = availableLW->currentItem();
-	if (sel >= 0 && sel <= int(bibkeys.size()-1))
-		start += sel;
-
-	// Find the NEXT instance...
-	if (dir == biblio::FORWARD)
-		start += 1;
-
-	bool const casesens = searchCaseCB->isChecked();
-	string const str = fromqstr(searchED->text());
-
-	vector<string>::const_iterator cit =
-		biblio::searchKeys(theMap, bibkeys, str,
-				   start, type, dir, casesens);
-
-	// not found. let's loop round
-	if (cit == bibkeys.end()) {
-		if (dir == biblio::FORWARD) {
-			start = bibkeys.begin();
-		}
-		else start = bibkeys.end() - 1;
-
-		cit = biblio::searchKeys(theMap, bibkeys, str,
-					 start, type, dir, casesens);
-
-		if (cit == bibkeys.end())
-			return;
-	}
-
-	int const found = int(cit - bibkeys.begin());
-	if (found == sel) {
-		return;
-	}
-
-	// Update the display
-	// note that we have multi selection mode!
-	availableLW->setSelected(sel, false);
-	availableLW->setSelected(found, true);
-	availableLW->setCurrentItem(found);
-	availableLW->ensureCurrentVisible();
-*/
-}
 
 } // namespace frontend
 } // namespace lyx

@@ -13,32 +13,18 @@
 #define QCITATIONDIALOG_H
 
 #include "Dialog.h"
-
 #include "ui/QCitationUi.h"
-#include "ui/QCitationFindUi.h"
-#include "controllers/biblio.h"
-
-#include <QDialog>
-#include <vector>
-
-class QListWidget;
-class QListWidgetItem;
-
-class InsetCommandParams;
 
 namespace lyx {
 namespace frontend {
 
 class QCitation;
-class QCitationFind;
 
 class QCitationDialog: public QDialog, public Ui::QCitationUi, public Dialog::View {
 	Q_OBJECT
 
 public:
 	QCitationDialog(Dialog &, QCitation * form );
-
-	//QCitationDialog(QCitation * form);
 
 	virtual ~QCitationDialog();
 
@@ -61,26 +47,27 @@ public:
 
 protected slots:
 
-//	void on_selectedLB_currentChanged(QListWidgetItem*);
-	
 	void on_okPB_clicked();
 	void on_cancelPB_clicked();
 	void on_restorePB_clicked();
 	void on_applyPB_clicked();
 	void on_addPB_clicked();
-
 	void on_deletePB_clicked();
 	void on_upPB_clicked();
 	void on_downPB_clicked();
 	void on_findLE_textChanged(const QString & text);
-	void on_advancedSearchPB_clicked();
-
+	void on_selectedLV_clicked(const QModelIndex &);
+	void on_availableLV_clicked(const QModelIndex &);
+	void on_availableLV_activated(const QModelIndex &);
 	virtual void changed();
+	/// check whether key is already selected
+	bool isSelected(const QModelIndex &);
+	/// update infobox
+	void updateInfo(const QModelIndex &);
 
 private:
+	/// enable/disable buttons
 	void setButtons();
-	/// open the find dialog if nothing selected
-	void openFind();
 
 	/// fill the styles combo
 	void fillStyles();
@@ -88,50 +75,12 @@ private:
 	/// set the styles combo
 	void updateStyle();
 
-	/// check if apply has been pressed
-	bool open_find_;
-
-	/// selected keys
-	std::vector<std::string> citekeys;
-
-	/// selected natbib style
+	/// last used citation style
 	int style_;
 
 	QCitation * form_;
-	QCitationFind * find_;
 };
 
-
-class QCitationFind: public QDialog, public Ui::QCitationFindUi {
-	Q_OBJECT
-
-public:
-	QCitationFind(QCitation * form, QWidget * parent = 0, Qt::WFlags f = 0);
-
-	void update();
-
-	std::vector<std::string> const & foundCitations()
-	{ return foundkeys;	}
-
-signals:
-	void newCitations();
-
-protected slots:
-
-	void on_availableLW_currentItemChanged(QListWidgetItem *);
-	void on_availableLW_itemActivated(QListWidgetItem *);
-	void on_addPB_clicked();
-	virtual void previous();
-	virtual void next();
-
-private:
-	void find(biblio::Direction dir);
-
-	/// selected keys
-	std::vector<std::string> foundkeys;
-
-	QCitation * form_;
-};
 
 } // namespace frontend
 } // namespace lyx
