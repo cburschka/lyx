@@ -1,3 +1,7 @@
+2006-06-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* buffer.C (changeLanguage): remove debug message.
+
 2006-06-27  Enrico Forestieri <forenr@tlc.unipr.it>
 
 	* lyxrc.h: rename RC_CYGWIN_PATH_FIX as RC_TEX_EXPECTS_WINDOWS_PATHS

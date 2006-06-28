@@ -1,3 +1,9 @@
+2006-06-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* ControlCitation.C (initialiseParams): remove debug message.
+
+	* ControlSpellchecker.C (replace): make message conditional. 
+
 2006-03-20  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* ControlBibtex.[Ch]: new members bibtotoc(), getStylefile(), 

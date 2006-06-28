@@ -295,8 +295,8 @@ void ControlSpellchecker::showSummary()
 
 void ControlSpellchecker::replace(string const & replacement)
 {
-	lyxerr << "ControlSpellchecker::replace("
-	       << replacement << ")" << std::endl;
+	lyxerr[Debug::GUI] << "ControlSpellchecker::replace("
+			   << replacement << ")" << std::endl;
 	BufferView & bufferview = *kernel().bufferview();
 	cap::replaceWord(bufferview.cursor(), replacement);
 	kernel().buffer().markDirty();
