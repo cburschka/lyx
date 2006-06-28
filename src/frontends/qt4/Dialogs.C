@@ -82,6 +82,7 @@
 #include "QTexinfo.h"
 #include "QToc.h"
 #include "QTocDialog.h"
+#include "UrlView.h"
 #include "QVSpace.h"
 #include "QWrap.h"
 
@@ -91,7 +92,6 @@
 #endif
 
 #include "qt_helpers.h"
-#include "QURL.h"
 
 #include <boost/assert.hpp>
 
@@ -315,7 +315,7 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "url") {
 		dialog->setController(new ControlCommand(*dialog, name));
-		dialog->setView(new QURL(*dialog));
+		dialog->setView(new UrlView(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "vspace") {
 		dialog->setController(new ControlVSpace(*dialog));

@@ -1,5 +1,5 @@
 /**
- * \file QURL.C
+ * \file UrlView.C
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "QURL.h"
+#include "UrlView.h"
 #include "QURLDialog.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
@@ -29,13 +29,13 @@ namespace frontend {
 
 typedef QController< ControlCommand, QView<QURLDialog> > base_class;
 
-QURL::QURL(Dialog & parent)
+UrlView::UrlView(Dialog & parent)
 	: base_class(parent, _("URL"))
 {
 }
 
 
-void QURL::build_dialog()
+void UrlView::build_dialog()
 {
 	dialog_.reset(new QURLDialog(this));
 
@@ -47,7 +47,7 @@ void QURL::build_dialog()
 }
 
 
-void QURL::update_contents()
+void UrlView::update_contents()
 {
 	InsetCommandParams const & params = controller().params();
 
@@ -59,7 +59,7 @@ void QURL::update_contents()
 }
 
 
-void QURL::apply()
+void UrlView::apply()
 {
 	InsetCommandParams & params = controller().params();
 
@@ -73,7 +73,7 @@ void QURL::apply()
 }
 
 
-bool QURL::isValid()
+bool UrlView::isValid()
 {
 	string const u(fromqstr(dialog_->urlED->text()));
 	string const n(fromqstr(dialog_->nameED->text()));

@@ -78,7 +78,6 @@ libqt4_la_SOURCES = \
 	QTexinfo.C QTexinfo.h \
 	QThesaurus.C QThesaurus.h \
 	QToc.C QToc.h \
-	QURL.C QURL.h \
 	QVSpace.C QVSpace.h \
 	QWrap.C QWrap.h \
 	Qt2BC.C	Qt2BC.h	\
@@ -90,4 +89,5 @@ libqt4_la_SOURCES = \
 	qlkey.h \
 	qt_helpers.h qt_helpers.C \
 	qtTimeout.C qtTimeout.h \
+	UrlView.C UrlView.h \
 	$(MOCFILES)

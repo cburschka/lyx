@@ -20,12 +20,12 @@
 namespace lyx {
 namespace frontend {
 
-class QURL;
+class UrlView;
 
 class QURLDialog : public QDialog, public Ui::QURLUi {
 	Q_OBJECT
 public:
-	QURLDialog(QURL * form);
+	QURLDialog(UrlView * form);
 	~QURLDialog();
 
 	virtual void show();
@@ -34,7 +34,7 @@ public slots:
 protected:
 	void closeEvent(QCloseEvent *);
 private:
-	QURL * form_;
+	UrlView * form_;
 };
 
 } // namespace frontend

@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file QURL.h
+ * \file UrlView.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -9,8 +9,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QURL_H
-#define QURL_H
+#ifndef QT4_URL_VIEW_H
+#define QT4_URL_VIEW_H
 
 #include "QDialogView.h"
 
@@ -20,12 +20,12 @@ namespace frontend {
 class ControlCommand;
 class QURLDialog;
 
-class QURL :
+class UrlView :
 	public QController<ControlCommand, QView<QURLDialog> >
 {
 public:
 	friend class QURLDialog;
-	QURL(Dialog &);
+	UrlView(Dialog &);
 protected:
 	virtual bool isValid();
 private:
@@ -40,4 +40,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // QURL_H
+#endif // QT4_URL_VIEW_H

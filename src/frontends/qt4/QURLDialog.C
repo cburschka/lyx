@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "QURLDialog.h"
-#include "QURL.h"
+#include "UrlView.h"
 
 #include <QLineEdit>
 #include <QPushButton>
@@ -20,7 +20,7 @@
 namespace lyx {
 namespace frontend {
 
-QURLDialog::QURLDialog(QURL * form)
+QURLDialog::QURLDialog(UrlView * form)
 	: form_(form)
 {
 	setupUi(this);
