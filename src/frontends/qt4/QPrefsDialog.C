@@ -184,7 +184,7 @@ PrefAscii::PrefAscii(QWidget * parent)
 {
 	setupUi(this);
 	connect(asciiLinelengthSB, SIGNAL(valueChanged(int)),
-		this, SIGNAL(changed));
+		this, SIGNAL(changed()));
 	connect(asciiRoffED, SIGNAL(textChanged(const QString&)),
 		this, SIGNAL(changed()));
 }
@@ -283,7 +283,7 @@ QString PrefKeyboard::testKeymap(QString keymap)
 }
 
 
-void PrefKeyboard::on_firstKeymapED_clicked()
+void PrefKeyboard::on_firstKeymapPB_clicked(bool)
 {
 	QString file = testKeymap(firstKeymapED->text());
 	if (!file.isEmpty())
@@ -291,7 +291,7 @@ void PrefKeyboard::on_firstKeymapED_clicked()
 }
 
 
-void PrefKeyboard::on_secondKeymapED_clicked()
+void PrefKeyboard::on_secondKeymapPB_clicked(bool)
 {
 	QString file = testKeymap(secondKeymapED->text());
 	if (!file.isEmpty())

@@ -122,8 +122,8 @@ public:
 	virtual void update(LyXRC const & rc);
 
 private slots:
-	void on_firstKeymapED_clicked();
-	void on_secondKeymapED_clicked();
+	void on_firstKeymapPB_clicked(bool);
+	void on_secondKeymapPB_clicked(bool);
 
 private:
 	QString testKeymap(QString keymap);
