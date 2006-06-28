@@ -456,7 +456,7 @@ def checkOtherEntries():
 \print_spool_command "lpr"''',
             ''])
     # Add the rest of the entries (no checkProg is required)
-    addToRC(r'''\copier    fig        "sh $$s/scripts/fig_copy.sh $$i $$o"
+    addToRC(r'''\copier    fig        "python $$s/scripts/fig_copy.py $$i $$o"
 \copier    pstex      "python $$s/scripts/tex_copy.py $$i $$o $$l"
 \copier    pdftex     "python $$s/scripts/tex_copy.py $$i $$o $$l"
 ''')
