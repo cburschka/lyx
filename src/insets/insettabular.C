@@ -332,6 +332,15 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 	setPosCache(pi, x, y);
 
 	LCursor & cur = pi.base.bv->cursor();
+
+	x += scx_ + ADD_TO_TABULAR_WIDTH;
+
+	// Paint background of current tabular
+	int const w = tabular.getWidthOfTabular();
+	int const h = tabular.getHeightOfTabular();
+	int yy = y - tabular.getAscentOfRow(0);
+	pi.pain.fillRectangle(x, yy, w, h, backgroundColor());
+
 	if (!cur.selection())
 		return;
 	if (!ptr_cmp(&cur.inset(), this))
@@ -339,7 +348,6 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 
 	//resetPos(cur);
 
-	x += scx_ + ADD_TO_TABULAR_WIDTH;
 
 	if (tablemode(cur)) {
 		row_type rs, re;

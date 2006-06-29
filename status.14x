@@ -95,7 +95,8 @@ What's new
 
 - Much better performance when using natbib/jurabib citations (bug 2460).
 
-- Much better performance of screen updating in LyX/Mac.
+- Much better performance of screen updating in LyX/Mac, and with an 
+  acceptable UI.
 
 - Don't jump back to previous cursor position when trying to click on
   an inset (bug 2526).
@@ -136,6 +137,8 @@ What's new
 
 - Fix crash on exit on MacOS X, and the well known "Mutex destroy failure"
   error message on linux (qt frontend, bugs 2549 and 1029).
+
+- Paint tabular background (bug fix)
 
 - Fix bug where the spellchecker doesn't pop up dialogue window for
   the first misspelled word (bug 2218).
