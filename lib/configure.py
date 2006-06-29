@@ -391,8 +391,8 @@ def checkConverterEntries():
 \converter date       dateout    "date +%d-%m-%Y > $$o"	""
 \converter docbook    docbook-xml "cp $$i $$o"	"xml"
 \converter fen        asciichess "python $$s/scripts/fen2ascii.py $$i $$o"	""
-\converter fig        pdftex     "sh $$s/scripts/fig2pdftex.sh $$i $$o"	""
-\converter fig        pstex      "sh $$s/scripts/fig2pstex.sh $$i $$o"	""
+\converter fig        pdftex     "python $$s/scripts/fig2pdftex.py $$i $$o"	""
+\converter fig        pstex      "python $$s/scripts/fig2pstex.py $$i $$o"	""
 \converter lyx        lyx13x     "python $$s/lyx2lyx/lyx2lyx -t 221 $$i > $$o"	""
 ''')
 
