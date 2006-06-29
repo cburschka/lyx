@@ -22,7 +22,8 @@ What's new
 - LyX now automatically uses file viewers and editors set at OS level
   [Windows and Mac OS X only] (bug 2017).
 
-- Update Hungarian and Italian (see bug 2650) localization of the interface.
+- Update Hungarian, Italian (see bug 2650), and German localization
+  of the interface.
 
 - Update translations of documentation for German (all) and Hungarian
   (Introduction, splash document, new tutorial examples).
@@ -33,7 +34,7 @@ What's new
   .tex files that are suitable for pdflatex, including figure conversion
   to png, pdf or jpeg instead of eps.
 
-- Add biographynophoto style to IEEEtran.layout; add new textclass for
+- Add biographynophoto style to IEEEtran.layout; add new text class for
   International Journal of Modern Physics C (and update support for
   IJMP D).
 
@@ -102,7 +103,7 @@ What's new
   an inset (bug 2526).
 
 - Automatically use fonts in the fonts/ subdirectory of LyX support
-  directory in windows.
+  directory on Windows.
 
 - Disable saving of bookmarks in mathed for it is not yet supported
   and makes LyX crash (bug 2597).
@@ -136,11 +137,11 @@ What's new
 - Fix crash when there is a syntax error in a keyboard map file (bug 2604).
 
 - Fix crash on exit on MacOS X, and the well known "Mutex destroy failure"
-  error message on linux (qt frontend, bugs 2549 and 1029).
+  error message on Linux (qt frontend, bugs 2549 and 1029).
 
 - Paint tabular background (bug fix)
 
-- Fix bug where the spellchecker doesn't pop up dialogue window for
+- Fix bug where the spellchecker doesn't pop up dialog window for
   the first misspelled word (bug 2218).
 
 * Configuration/Installation:
@@ -156,7 +157,7 @@ What's new
   either lyxrc.defaults, textclass.lst or packages.lst, it is re-run
   before loading lyxrc.defaults and preferences. 
 
-- When compiling with --with-version-suffix under windows, do not
+- When compiling with --with-version-suffix on Windows, do not
   rename the executable files.
 
 - Fix lib/configure.py to find tex2lyx when compiling with
@@ -164,14 +165,14 @@ What's new
 
 - Fix lib/configure.py to find tex2lyx if the path to it contains spaces.
 
-- Use the clean_dvi.py script on windows not only in the installer but also
+- Use the clean_dvi.py script on Windows not only in the installer but also
   in the source package.
 
-- Fix the code to find interface localization under Windows and Mac OS X.
+- Fix the code to find interface localization on Windows and Mac OS X.
 
 - replace the \cygwin_path_fix_needed preference with the better named
-  \tex_expects_windows_paths; this is autodetected and only matters in
-  windows. 
+  \tex_expects_windows_paths; this is auto-detected and only matters on
+  Windows. 
 
 - remove --enable-compression-support option of configure. Compression
   support via zlib is now a requirement.
