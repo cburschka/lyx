@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-06-27 22:08+0200\n"
-"PO-Revision-Date: 2006-06-10 23:41+0100\n"
+"POT-Creation-Date: 2006-06-29 21:58+0200\n"
+"PO-Revision-Date: 2006-06-29 00:05+0100\n"
 "Last-Translator: Szõke Sándor <alex@lyx.hu>\n"
 "Language-Team:  <hu@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1661,9 +1661,8 @@ msgid "Index:|#I"
 msgstr "Tárgyszó:|#T"
 
 #: src/frontends/xforms/forms/form_preferences.fd:3134
-#, fuzzy
 msgid "Use Windows Paths for LaTeX|#s"
-msgstr "Cygwin stílusú elérési utat használjon"
+msgstr "Windows sítlusú elérési út LaTeX-hez|#s"
 
 #: src/frontends/xforms/forms/form_print.fd:44
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:45
@@ -3793,22 +3792,19 @@ msgid "&Format:"
 msgstr "Formá&tum:"
 
 #: src/frontends/qt2/ui/QPrefCygwinPathModule.ui:66
-#, fuzzy
 msgid "&Use Windows-style paths in LaTeX files"
-msgstr "Cygwin stílusú elérési utat használjon"
+msgstr "&Windows sítlusú elérési út LaTeX-hez"
 
 #: src/frontends/qt2/ui/QPrefCygwinPathModule.ui:74
 #: src/frontends/xforms/FormPreferences.C:2145
-#, fuzzy
 msgid ""
 "Select if LyX should output Windows-style paths rather than Posix-style "
 "paths to LaTeX files. Useful if you're using the native Windows MikTeX "
 "rather than the Cygwin teTeX."
 msgstr ""
-"Válassza, amennyiben a LyX-nek Cygwin stílusú elérési utat kell generálnia "
-"Windows stílusú helyett. Ez akkor jó, ha nem Windowsra készült MikTeX-et "
-"használ, hanem Cygwin-féle teTeX-et. Megjegyzem, ebben az esetben minden "
-"átalakítóhoz segédparancsfájlt kell írnia (wrapper)."
+"Válassza, amennyiben a LyX-nek, Windows-stílusú elérési utat kell generálnia "
+"a LaTeX fájlokhoz posix-stílus helyett. Ez akkor jó, ha a Windowsra készült "
+"MikTeX-et használja, Cygwin-féle teTeX helyett."
 
 #: src/frontends/qt2/ui/QPrefDateModule.ui:56
 msgid "&Date format:"
@@ -3885,7 +3881,7 @@ msgid "Your E-mail address"
 msgstr "Az ön E-mail címe"
 
 #: src/frontends/qt2/ui/QPrefKeyboardModule.ui:76
-#: src/frontends/qt2/ui/QPrefUIModule.ui:337
+#: src/frontends/qt2/ui/QPrefUIModule.ui:111
 msgid "Bro&wse..."
 msgstr "Talló&zás ..."
 
@@ -4214,41 +4210,41 @@ msgstr "Beviteli &kódolás használata"
 msgid "QPrefUIModule"
 msgstr "QPrefUIModule"
 
-#: src/frontends/qt2/ui/QPrefUIModule.ui:78
-msgid "Documents"
-msgstr "Dokumentumok"
-
-#: src/frontends/qt2/ui/QPrefUIModule.ui:97
-msgid "B&ackup documents "
-msgstr "Biztonsági &mentés"
-
-#: src/frontends/qt2/ui/QPrefUIModule.ui:153
-msgid " every"
-msgstr " minden"
-
-#: src/frontends/qt2/ui/QPrefUIModule.ui:183
-msgid "minutes"
-msgstr "percben"
-
-#: src/frontends/qt2/ui/QPrefUIModule.ui:220
-msgid "&Maximum last files:"
-msgstr "&Utoljára használt fájlok száma:"
-
-#: src/frontends/qt2/ui/QPrefUIModule.ui:289
+#: src/frontends/qt2/ui/QPrefUIModule.ui:63
 msgid "B&rowse..."
 msgstr "Ta&llózás ..."
 
-#: src/frontends/qt2/ui/QPrefUIModule.ui:300
+#: src/frontends/qt2/ui/QPrefUIModule.ui:74
 msgid "&User interface file:"
 msgstr "&Felhasználóifelület-fájl:"
 
-#: src/frontends/qt2/ui/QPrefUIModule.ui:315
+#: src/frontends/qt2/ui/QPrefUIModule.ui:89
 msgid "&Bind file:"
 msgstr "&Billentyûzetkiosztás-fájl:"
 
-#: src/frontends/qt2/ui/QPrefUIModule.ui:357
+#: src/frontends/qt2/ui/QPrefUIModule.ui:131
 msgid "Cursor follows &scrollbar"
 msgstr "A &kurzor követi a görgetõsávot"
+
+#: src/frontends/qt2/ui/QPrefUIModule.ui:178
+msgid "Documents"
+msgstr "Dokumentumok"
+
+#: src/frontends/qt2/ui/QPrefUIModule.ui:197
+msgid "B&ackup documents "
+msgstr "Biztonsági &mentés"
+
+#: src/frontends/qt2/ui/QPrefUIModule.ui:244
+msgid " every"
+msgstr " minden"
+
+#: src/frontends/qt2/ui/QPrefUIModule.ui:274
+msgid "minutes"
+msgstr "percben"
+
+#: src/frontends/qt2/ui/QPrefUIModule.ui:302
+msgid "&Maximum last files:"
+msgstr "&Utoljára használt fájlok száma:"
 
 #: src/frontends/qt2/ui/QPrefsDialogBase.ui:110 src/bufferlist.C:84
 #: src/bufferlist.C:183 src/lyxfunc.C:661
@@ -13831,15 +13827,15 @@ msgstr "PrettyRef"
 msgid "PrettyRef: "
 msgstr "PrettyRef: "
 
-#: src/insets/insettabular.C:419
+#: src/insets/insettabular.C:427
 msgid "Opened table"
 msgstr "Táblázat megnyitása"
 
-#: src/insets/insettabular.C:1514
+#: src/insets/insettabular.C:1522
 msgid "Error setting multicolumn"
 msgstr "Hiba cellaegyesítés közben"
 
-#: src/insets/insettabular.C:1515
+#: src/insets/insettabular.C:1523
 msgid "You cannot set multicolumn vertically."
 msgstr "Függõlegesen nem lehet cellát egyesíteni!"
 
