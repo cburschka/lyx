@@ -143,7 +143,7 @@ T * getInsetByCode(LCursor & cur, InsetBase::Code code)
 BufferView::Pimpl::Pimpl(BufferView & bv, LyXView * owner,
 			 int width, int height)
 	: bv_(&bv), owner_(owner), buffer_(0), wh_(0), cursor_timeout(400),
-	  using_xterm_cursor(false), cursor_(bv), 
+	  using_xterm_cursor(false), cursor_(bv), multiparsel_cache_(false),
 	  anchor_ref_(0), offset_ref_(0)
 {
 	xsel_cache_.set = false;

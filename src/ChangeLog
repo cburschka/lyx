@@ -1,3 +1,8 @@
+2006-06-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* BufferView_pimpl.C (Pimpl): initialize correctly
+	multiparsel_cache_ (may fix bug 2630).
+
 2006-06-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* buffer.C (changeLanguage): remove debug message.
