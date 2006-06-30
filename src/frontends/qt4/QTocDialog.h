@@ -52,7 +52,7 @@ public:
 	/// \return true if the dialog is visible.
 	bool isVisible() const;
 
-protected slots:
+protected Q_SLOTS:
 	///
 	void select(QModelIndex const & index);
 	///

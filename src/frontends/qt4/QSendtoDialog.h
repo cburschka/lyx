@@ -28,7 +28,7 @@ class QSendtoDialog : public QDialog, public Ui::QSendtoUi {
 	Q_OBJECT
 public:
 	QSendtoDialog(QSendto * form);
-protected slots:
+protected Q_SLOTS:
 	virtual void changed_adaptor();
 	virtual void slotFormatHighlighted(QListWidgetItem *) {}
 	virtual void slotFormatSelected(QListWidgetItem *) {}

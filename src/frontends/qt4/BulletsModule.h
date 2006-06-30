@@ -38,10 +38,10 @@ public:
 	/// get bullet setting
 	Bullet const & getBullet(int level) const;
 
-signals:
+Q_SIGNALS:
 	void changed();
 
-protected slots:
+protected Q_SLOTS:
 
 	/// menu callbacks
 	void standard(int row, int col);

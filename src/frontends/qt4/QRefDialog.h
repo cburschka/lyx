@@ -32,7 +32,7 @@ public:
 
 	virtual void show();
 
-public slots:
+public Q_SLOTS:
 	void changed_adaptor();
 	void gotoClicked();
 	void refHighlighted(QListWidgetItem *);

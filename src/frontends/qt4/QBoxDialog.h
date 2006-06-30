@@ -26,7 +26,7 @@ class QBoxDialog : public QDialog, public Ui::QBoxUi {
 	Q_OBJECT
 public:
 	QBoxDialog(QBox * form);
-protected slots:
+protected Q_SLOTS:
 	virtual void change_adaptor();
 	virtual void innerBoxChanged(const QString &);
 	virtual void typeChanged(int);

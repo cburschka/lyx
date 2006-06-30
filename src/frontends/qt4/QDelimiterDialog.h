@@ -30,7 +30,7 @@ class QDelimiterDialog : public QDialog, public Ui::QDelimiterUi {
 	Q_OBJECT
 public:
 	QDelimiterDialog(QMathDelimiter * form);
-public slots:
+public Q_SLOTS:
 	void ldelim_clicked(const std::string & str);
 	void rdelim_clicked(const std::string & str);
 	void insertClicked();

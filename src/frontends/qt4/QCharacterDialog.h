@@ -33,7 +33,7 @@ protected:
 	void closeEvent(QCloseEvent * e);
 private:
 	QCharacter * form_;
-protected slots:
+protected Q_SLOTS:
 	void change_adaptor();
 };
 

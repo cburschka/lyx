@@ -30,7 +30,7 @@ public:
 
 	/// focus the edit widget
 	void focus_command();
-public slots:
+public Q_SLOTS:
 	/// cancel command compose
 	void cancel();
 	/// dispatch a command

@@ -29,10 +29,10 @@ class QVSpaceDialog : public QDialog, public Ui::QVSpaceUi {
 public:
 	QVSpaceDialog(QVSpace * form);
 
-public slots:
+public Q_SLOTS:
 	void change_adaptor();
 
-protected slots:
+protected Q_SLOTS:
 	void closeEvent(QCloseEvent *);
 	void enableCustom(int);
 

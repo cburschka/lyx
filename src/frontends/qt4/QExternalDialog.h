@@ -28,7 +28,7 @@ public:
 	QExternalDialog(QExternal * form);
 
 	virtual void show();
-protected slots:
+protected Q_SLOTS:
 	virtual void bbChanged();
 	virtual void browseClicked();
 	virtual void change_adaptor();

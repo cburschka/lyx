@@ -26,7 +26,7 @@ class QBranchDialog : public QDialog, public Ui::QBranchUi {
 	Q_OBJECT
 public:
 	QBranchDialog(QBranch * form);
-protected slots:
+protected Q_SLOTS:
 	virtual void change_adaptor();
 protected:
 	virtual void closeEvent(QCloseEvent * e);

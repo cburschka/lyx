@@ -26,7 +26,7 @@ class QNoteDialog : public QDialog, public Ui::QNoteUi {
 	Q_OBJECT
 public:
 	QNoteDialog(QNote * form);
-protected slots:
+protected Q_SLOTS:
 	virtual void change_adaptor();
 protected:
 	virtual void closeEvent(QCloseEvent * e);

@@ -29,7 +29,7 @@ class QTabularDialog : public QDialog, public Ui::QTabularUi {
 public:
 	QTabularDialog(QTabular * form);
 
-protected slots:
+protected Q_SLOTS:
 	virtual void change_adaptor();
 
 	virtual void close_clicked();

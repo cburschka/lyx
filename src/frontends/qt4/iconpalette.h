@@ -35,11 +35,11 @@ public:
 
 	/// add a button
 	void add(QPixmap const & pixmap, std::string name, std::string tooltip);
-signals:
+Q_SIGNALS:
 	void button_clicked(const std::string &);
 protected:
 	virtual void resizeEvent(QResizeEvent * e);
-protected slots:
+protected Q_SLOTS:
 	virtual void clicked();
 private:
 	int maxcol_;

@@ -26,7 +26,7 @@ class QERTDialog : public QDialog, public Ui::QERTUi {
 	Q_OBJECT
 public:
 	QERTDialog(QERT * form);
-protected slots:
+protected Q_SLOTS:
 	virtual void change_adaptor();
 protected:
 	virtual void closeEvent(QCloseEvent * e);

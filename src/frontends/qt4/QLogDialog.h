@@ -26,7 +26,7 @@ class QLogDialog : public QDialog, public Ui::QLogUi {
 	Q_OBJECT
 public:
 	QLogDialog(QLog * form);
-protected slots:
+protected Q_SLOTS:
 	virtual void updateClicked();
 protected:
 	virtual void closeEvent(QCloseEvent * e);

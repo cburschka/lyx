@@ -46,7 +46,7 @@ public:
 
 //	void setAction(FuncRequest const & func);
 
-private slots:
+private Q_SLOTS:
 	void action();
 
 private:

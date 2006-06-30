@@ -63,7 +63,7 @@ protected:
 	/// are we updating ?
 	bool updating_;
 
-public slots:
+public Q_SLOTS:
 	// dialog closed from WM
 	void slotWMHide();
 

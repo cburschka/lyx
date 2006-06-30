@@ -45,7 +45,7 @@ public:
 
 	UiDialog<Ui::QBibtexAddUi> * add_;
 
-protected slots:
+protected Q_SLOTS:
 	virtual void change_adaptor();
 	virtual void browsePressed();
 	virtual void browseBibPressed();

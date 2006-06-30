@@ -30,7 +30,7 @@ public:
 	QGraphicsDialog(QGraphics * form);
 
 	virtual void show();
-protected slots:
+protected Q_SLOTS:
 	virtual void change_adaptor();
 	virtual void change_bb();
 	virtual void change_WUnit();

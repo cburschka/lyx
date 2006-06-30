@@ -30,7 +30,7 @@ public:
 	QThesaurusDialog(QThesaurus * form);
 
 	void updateLists();
-protected slots:
+protected Q_SLOTS:
 	virtual void change_adaptor();
 	virtual void entryChanged();
 	virtual void replaceClicked();

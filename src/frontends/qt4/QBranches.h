@@ -40,14 +40,14 @@ public:
 	void update(BufferParams const & params);
 	void apply(BufferParams & params) const;
 
-signals:
+Q_SIGNALS:
 	void changed();
 
 protected:
 	void toggleBranch(QTreeWidgetItem *);
 	void update();
 
-protected slots:
+protected Q_SLOTS:
 	void on_addBranchPB_pressed();
 	void on_removePB_pressed();
 	void on_activatePB_pressed();

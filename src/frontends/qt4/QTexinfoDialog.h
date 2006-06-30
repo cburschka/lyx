@@ -26,7 +26,7 @@ class QTexinfoDialog : public QDialog, public Ui::QTexinfoUi {
 	Q_OBJECT
 public:
 	QTexinfoDialog(QTexinfo * form);
-protected slots:
+protected Q_SLOTS:
 	virtual void change_adaptor();
 	virtual void rescanClicked();
 	virtual void viewClicked();

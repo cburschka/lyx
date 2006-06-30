@@ -26,7 +26,7 @@ class QTabularCreateDialog : public QDialog, public Ui::QTabularCreateUi {
 	Q_OBJECT
 public:
 	QTabularCreateDialog(QTabularCreate * form);
-protected slots:
+protected Q_SLOTS:
 	virtual void columnsChanged(int);
 	virtual void rowsChanged(int);
 private:

@@ -55,7 +55,7 @@ public:
 	/// update the state of the menuitems - not needed
 	void update();
 
-public slots:
+public Q_SLOTS:
 	/// populate a toplevel menu and all its children on demand
 //	void updateMenu();
 

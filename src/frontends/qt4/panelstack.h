@@ -36,7 +36,7 @@ public:
 	/// set current panel by logical name
 	void setCurrentPanel(std::string const &);
 
-public slots:
+public Q_SLOTS:
 	/// set current panel from an item
 	void switchPanel(QTreeWidgetItem * i, QTreeWidgetItem* previous=0);
 

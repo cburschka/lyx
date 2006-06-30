@@ -168,7 +168,7 @@ protected:
 	/// IM events
 	void inputMethodEvent(QInputMethodEvent * e);
 
-public slots:
+public Q_SLOTS:
 
 	/// Timeout event Slot for keyboard bufferring.
 	/// \todo This is not used currently in the code, remove?

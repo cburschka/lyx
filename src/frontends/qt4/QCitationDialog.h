@@ -45,7 +45,7 @@ public:
 	/// \return true if the dialog is visible.
 	bool isVisible() const;
 
-protected slots:
+protected Q_SLOTS:
 
 	void on_okPB_clicked();
 	void on_cancelPB_clicked();

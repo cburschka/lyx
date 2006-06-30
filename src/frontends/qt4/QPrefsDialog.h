@@ -82,7 +82,7 @@ protected:
 	std::string title_;
 	QPrefs * form_;
 
-signals:
+Q_SIGNALS:
 	void changed();
 };
 
@@ -121,7 +121,7 @@ public:
 	virtual void apply(LyXRC & rc) const;
 	virtual void update(LyXRC const & rc);
 
-private slots:
+private Q_SLOTS:
 	void on_firstKeymapPB_clicked(bool);
 	void on_secondKeymapPB_clicked(bool);
 
@@ -152,7 +152,7 @@ public:
 	virtual void apply(LyXRC & rc) const;
 	virtual void update(LyXRC const & rc);
 
-private slots:
+private Q_SLOTS:
 	void select_roman(const QString&);
 	void select_sans(const QString&);
 	void select_typewriter(const QString&);
@@ -169,7 +169,7 @@ public:
 	void apply(LyXRC & rc) const;
 	void update(LyXRC const & rc);
 
-private slots:
+private Q_SLOTS:
 	void change_color();
 
 private:
@@ -214,7 +214,7 @@ public:
 	void apply(LyXRC & rc) const;
 	void update(LyXRC const & rc);
 
-private slots:
+private Q_SLOTS:
 	void select_templatedir();
 	void select_tempdir();
 	void select_backupdir();
@@ -234,7 +234,7 @@ public:
 	void apply(LyXRC & rc) const;
 	void update(LyXRC const & rc);
 
-private slots:
+private Q_SLOTS:
 	void select_dict();
 };
 
@@ -251,7 +251,7 @@ public:
 
 	void updateGui();
 
-private slots:
+private Q_SLOTS:
 	void switch_converter(int);
 	void converter_changed();
 	void new_converter();
@@ -275,7 +275,7 @@ public:
 
 	void update();
 
-private slots:
+private Q_SLOTS:
 	void switch_copierLB(int nr);
 	void switch_copierCO(int nr);
 	void copiers_changed();
@@ -305,7 +305,7 @@ public:
 private:
 	void updateButtons();
 
-private slots:
+private Q_SLOTS:
 	void switch_format(int);
 	void fileformat_changed();
 	void new_format();
@@ -356,7 +356,7 @@ public:
 	void apply(LyXRC & rc) const;
 	void update(LyXRC const & rc);
 
-public slots:
+public Q_SLOTS:
 	void select_ui();
 	void select_bind();
 
@@ -386,7 +386,7 @@ public:
 	void apply(LyXRC & rc) const;
 	void update(LyXRC const & rc);
 
-public slots:
+public Q_SLOTS:
 	void change_adaptor();
 
 protected:

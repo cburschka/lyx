@@ -26,7 +26,7 @@ class QWrapDialog : public QDialog, public Ui::QWrapUi {
 	Q_OBJECT
 public:
 	QWrapDialog(QWrap * form);
-protected slots:
+protected Q_SLOTS:
 	virtual void change_adaptor();
 protected:
 	virtual void closeEvent(QCloseEvent * e);

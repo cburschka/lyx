@@ -38,9 +38,9 @@ public:
 	/// use the %-items?
 	virtual void noPercents();
 
-protected slots:
+protected Q_SLOTS:
 	virtual void has_activated(int index);
-signals:
+Q_SIGNALS:
 	/// the current selection has changed
 	void selectionChanged(LyXLength::UNIT unit);
 

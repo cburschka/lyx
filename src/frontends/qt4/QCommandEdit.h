@@ -23,7 +23,7 @@ class QCommandEdit : public QLineEdit {
 	Q_OBJECT
 public:
 	QCommandEdit(QWidget * parent);
-signals:
+Q_SIGNALS:
 	/// cancel
 	void escapePressed();
 

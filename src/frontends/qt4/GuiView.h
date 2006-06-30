@@ -78,7 +78,7 @@ public:
 	///
 	static QMainWindow* mainWidget();
 
-public slots:
+public Q_SLOTS:
 	/// idle timeout
 	void update_view_state_qt();
 

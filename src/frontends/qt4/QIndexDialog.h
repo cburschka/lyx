@@ -28,7 +28,7 @@ public:
 	QIndexDialog(QIndex * form);
 
 	virtual void show();
-protected slots:
+protected Q_SLOTS:
 	virtual void change_adaptor();
 	virtual void reject();
 protected:

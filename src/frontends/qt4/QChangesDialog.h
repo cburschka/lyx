@@ -29,7 +29,7 @@ public:
 
 	QChangesDialog(QChanges * form);
 
-protected slots:
+protected Q_SLOTS:
 
 	virtual void nextPressed();
 	virtual void acceptPressed();

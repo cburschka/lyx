@@ -31,7 +31,7 @@ protected:
 	void closeEvent (QCloseEvent * e);
 private:
 	QParagraph * form_;
-protected slots:
+protected Q_SLOTS:
 	void change_adaptor();
 	void enableLinespacingValue(int);
 };

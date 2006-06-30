@@ -29,7 +29,7 @@ public:
 	~QURLDialog();
 
 	virtual void show();
-public slots:
+public Q_SLOTS:
 	void changed_adaptor();
 protected:
 	void closeEvent(QCloseEvent *);

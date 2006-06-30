@@ -36,7 +36,7 @@ public:
 	/// This is used as a recursive function
 	void populate(QMenu* qMenu, Menu * menu);
 
-public slots:
+public Q_SLOTS:
 	/// populate the toplevel menu and all children
 	void update();
 

@@ -29,12 +29,12 @@ public:
 	~EmptyTable() {}
 
 	virtual QSize sizeHint() const;
-public slots:
+public Q_SLOTS:
 	/// set the number of columns in the table and emit colsChanged() signal
 	void setNumberColumns(int nr_cols);
 	/// set the number of rows in the table and emit rowsChanged() signal
 	void setNumberRows(int nr_rows);
-signals:
+Q_SIGNALS:
 	/// the number of columns changed
 	void colsChanged(int);
 	/// the number of rows changed

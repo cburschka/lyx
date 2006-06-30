@@ -30,9 +30,9 @@ public:
 	: QAction(text,parent), action_(action) {
 		connect(this, SIGNAL(triggered()), this, SLOT(action()));
 	}
-signals:
+Q_SIGNALS:
 	void action(const std::string &);
-protected slots:
+protected Q_SLOTS:
 	void action() {
                 // emit signal
 		action(action_);
@@ -49,7 +49,7 @@ class QMathDialog : public QDialog, public Ui::QMathUi
 	Q_OBJECT
 public:
 	QMathDialog(QMath * form);
-public slots:
+public Q_SLOTS:
 	virtual void delimiterClicked();
 	virtual void expandClicked();
 	virtual void fracClicked();

@@ -30,7 +30,7 @@ public:
 	void updateLists();
 
 	virtual void show();
-protected slots:
+protected Q_SLOTS:
 	virtual void change_adaptor();
 	virtual void loadClicked();
 	virtual void browseClicked();

@@ -39,14 +39,14 @@ public:
 	std::string const get(bool & wide, bool & sideways) const;
 	std::string const get() const;
 
-public slots:
+public Q_SLOTS:
 	void tbhpClicked();
 	void heredefinitelyClicked();
 	void spanClicked();
 	void sidewaysClicked();
 	void changedSlot();
 
-signals:
+Q_SIGNALS:
 	void changed();
 
 private:

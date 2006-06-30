@@ -27,10 +27,10 @@ class QMathMatrixDialog : public QDialog, public Ui::QMathMatrixUi {
 	Q_OBJECT
 public:
 	QMathMatrixDialog(QMathMatrix * form);
-public slots:
+public Q_SLOTS:
 	void slotOK();
 	void slotClose();
-protected slots:
+protected Q_SLOTS:
 	virtual void columnsChanged(int);
 	virtual void rowsChanged(int);
 	virtual void change_adaptor();

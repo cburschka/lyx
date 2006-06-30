@@ -26,7 +26,7 @@ class QLPrintDialog : public QDialog, public Ui::QPrintUi {
 	Q_OBJECT
 public:
 	QLPrintDialog(QPrint * f);
-protected slots:
+protected Q_SLOTS:
 	virtual void change_adaptor();
 	virtual void browseClicked();
 	virtual void fileChanged();

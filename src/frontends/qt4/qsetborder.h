@@ -35,14 +35,14 @@ public:
 	bool getTop();
 	bool getBottom();
 
-signals:
+Q_SIGNALS:
 	void rightSet(bool);
 	void leftSet(bool);
 	void topSet(bool);
 	void bottomSet(bool);
 	void clicked();
 
-public slots:
+public Q_SLOTS:
 	void setLeftEnabled(bool);
 	void setRightEnabled(bool);
 	void setTopEnabled(bool);

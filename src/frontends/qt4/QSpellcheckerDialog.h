@@ -28,10 +28,10 @@ class QSpellcheckerDialog: public QDialog, public Ui::QSpellcheckerUi {
 	Q_OBJECT
 public:
 	QSpellcheckerDialog(QSpellchecker * form);
-public slots:
+public Q_SLOTS:
 	virtual void suggestionChanged(QListWidgetItem *);
 
-protected slots:
+protected Q_SLOTS:
 	virtual void acceptClicked();
 	virtual void addClicked();
 	virtual void replaceClicked();

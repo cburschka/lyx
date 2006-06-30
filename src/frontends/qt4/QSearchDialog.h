@@ -32,7 +32,7 @@ public:
 	QSearchDialog(QSearch * form);
 
 	virtual void show();
-protected slots:
+protected Q_SLOTS:
 	void findChanged();
 	void findClicked();
 	void replaceClicked();

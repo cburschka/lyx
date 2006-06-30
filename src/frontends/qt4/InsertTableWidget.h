@@ -26,17 +26,17 @@ public:
 
 	InsertTableWidget(LyXView &, QWidget *);
 
-signals:
+Q_SIGNALS:
 	//! widget is visible
 	void visible(bool);
 
-public slots:
+public Q_SLOTS:
 	//! show the widget
 	void show(bool);
 	//! enable/disable parent
 	void updateParent();
 
-protected slots:
+protected Q_SLOTS:
 	void mouseMoveEvent(QMouseEvent *);
 	void mouseReleaseEvent(QMouseEvent *);
 	void mousePressEvent(QMouseEvent *);

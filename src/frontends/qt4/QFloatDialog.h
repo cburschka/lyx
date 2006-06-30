@@ -27,7 +27,7 @@ class QFloatDialog : public QDialog, public Ui::QFloatUi {
 public:
 	QFloatDialog(QFloat * form);
 
-protected slots:
+protected Q_SLOTS:
 	virtual void change_adaptor();
 
 protected:

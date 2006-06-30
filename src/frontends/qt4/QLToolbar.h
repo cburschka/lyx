@@ -49,7 +49,7 @@ public:
 	///
 	void setEnabled(bool);
 
-private slots:
+private Q_SLOTS:
 	void selected(const QString & str);
 
 private:
@@ -71,7 +71,7 @@ public:
 	void update();
 	LayoutBox * layout() const { return layout_.get(); }
 
-signals:
+Q_SIGNALS:
 	void updated();
 
 private:

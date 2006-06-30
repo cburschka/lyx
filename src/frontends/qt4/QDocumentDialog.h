@@ -67,13 +67,13 @@ public:
 
 	void showPreamble();
 
-public slots:
+public Q_SLOTS:
 	void updateNumbering();
 	void change_adaptor();
 	void saveDefaultClicked();
 	void useDefaultsClicked();
 
-protected slots:
+protected Q_SLOTS:
 	void setLSpacing(int);
 	void setMargins(bool);
 	void setCustomPapersize(int);
