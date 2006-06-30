@@ -163,17 +163,25 @@ void init(int /* argc */, char * argv[])
 	}
 
 	// If cygwin is detected, query the cygdrive prefix
-	cmd_ret const c = runCommand("sh -c uname");
-	if (c.first != -1 && prefixIs(c.second, "CYGWIN")) {
-		cmd_ret const p = runCommand("mount --show-cygdrive-prefix");
-		// The output of the mount command is as follows:
-		// Prefix              Type         Flags
-		// /cygdrive           system       binmode
-		// So, we use the inner split to pass the second line to the
-		// outer split which sets cygdrive with its contents until
-		// the first blank, discarding the unneeded return value.
-		if (p.first != -1 && prefixIs(p.second, "Prefix"))
-			(void) split(split(p.second, '\n'), cygdrive, ' ');
+	HKEY regKey;
+	char buf[MAX_PATH];
+	DWORD bufSize = sizeof(buf);
+	LONG retVal;
+
+	retVal = RegOpenKeyEx(HKEY_LOCAL_MACHINE,
+			"Software\\Cygnus Solutions\\Cygwin\\mounts v2",
+			0, KEY_QUERY_VALUE, &regKey);
+	if (retVal != ERROR_SUCCESS) {
+		retVal = RegOpenKeyEx(HKEY_CURRENT_USER,
+				"Software\\Cygnus Solutions\\Cygwin\\mounts v2",
+				0, KEY_QUERY_VALUE, &regKey);
+	}
+	if (retVal == ERROR_SUCCESS) {
+		retVal = RegQueryValueEx(regKey, "cygdrive prefix", NULL, NULL,
+				(LPBYTE) buf, &bufSize);
+		RegCloseKey(regKey);
+		if ((retVal == ERROR_SUCCESS) && (bufSize <= MAX_PATH))
+			cygdrive = buf;
 	}
 }
 
