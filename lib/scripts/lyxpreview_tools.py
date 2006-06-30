@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python -tt
 
 # file lyxpreview_tools.py
 # This file is part of LyX, the document processor.

@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python -tt
 # -*- coding: iso-8859-1 -*-
 # This file is part of the LyX Documentation
 # Copyright (C) 2004 José Matos <jamatos@lyx.org>
@@ -68,7 +68,7 @@ def main(argv):
 
     # The default language is english and doesn't need any prefix
     print 'TOC.lyx: $(srcdir)/' + '.lyx $(srcdir)/'.join(possible_documents) + '.lyx'
-    print '\tPYTHONPATH=$(top_builddir)/lib/lyx2lyx python $(srcdir)/doc_toc.py'
+    print '\tPYTHONPATH=$(top_builddir)/lib/lyx2lyx python -tt $(srcdir)/doc_toc.py'
     print
     tocs = ['TOC.lyx']
 
@@ -82,7 +82,7 @@ def main(argv):
         languages[lang].sort()
 
         print toc_name + ': $(srcdir)/' + ' $(srcdir)/'.join(languages[lang])
-        print '\tPYTHONPATH=$(top_builddir)/lib/lyx2lyx python $(srcdir)/doc_toc.py %s' % lang
+        print '\tPYTHONPATH=$(top_builddir)/lib/lyx2lyx python -tt $(srcdir)/doc_toc.py %s' % lang
         print
 
     # Write meta-rule to call all the other rules

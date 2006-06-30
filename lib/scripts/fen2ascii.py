@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python -tt
 
 # file fen2ascii.py
 # This file is part of LyX, the document processor.

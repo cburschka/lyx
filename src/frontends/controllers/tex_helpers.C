@@ -17,6 +17,7 @@
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/lyxalgo.h"
+#include "support/os.h"
 #include "support/package.h"
 #include "support/path.h"
 #include "support/systemcall.h"
@@ -52,7 +53,7 @@ void rescanTexStyles()
 	Path p(package().user_support());
 	Systemcall one;
 	one.startscript(Systemcall::Wait,
-			"python " +
+			lyx::support::os::python() + ' ' +
 			quoteName(libFileSearch("scripts", "TeXFiles.py")));
 }
 

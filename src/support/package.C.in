@@ -152,7 +152,7 @@ Package::Package(string const & command_line_arg0,
 				     command_line_user_support_dir);
 
 	string const configure_script = addName(system_support(), "configure.py");
-	configure_command_ = "python " + quoteName(configure_script)
+	configure_command_ = os::python() + ' ' + quoteName(configure_script)
 	                               + with_version_suffix();
 
 	lyxerr[Debug::INIT]

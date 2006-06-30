@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python -tt
 # -*- coding: iso-8859-1 -*-
 
 # file layout2layout.py

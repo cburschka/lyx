@@ -21,6 +21,7 @@
 #include "support/convert.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
+#include "support/os.h"
 
 #include <boost/bind.hpp>
 
@@ -161,7 +162,7 @@ Converter::Impl::Impl(string const & from_file,   string const & to_file_base,
 
 	// The conversion commands are stored in a stringstream
 	ostringstream script;
-	script << "#!/usr/bin/env python\n"
+	script << "#!/usr/bin/env python -tt\n"
 		   << "import os, sys\n\n"
 		   << "def unlinkNoThrow(file):\n"
 		   << "  ''' remove a file, do not throw if an error occurs '''\n"
@@ -175,7 +176,7 @@ Converter::Impl::Impl(string const & from_file,   string const & to_file_base,
 
 	if (!success) {
 		script_command_ =
-			"python " +
+			support::os::python() + ' ' +
 			quoteName(libFileSearch("scripts", "convertDefault.py")) +
 			' ' +
 			quoteName((from_format.empty() ? "" : from_format + ':') + from_file) +
@@ -214,7 +215,8 @@ Converter::Impl::Impl(string const & from_file,   string const & to_file_base,
 		// We create a dummy command for ease of understanding of the
 		// list of forked processes.
 		// Note: 'sh ' is absolutely essential, or execvp will fail.
-		script_command_ = "python " + quoteName(script_file_) + ' ' +
+		script_command_ = support::os::python() + ' ' +
+			quoteName(script_file_) + ' ' +
 			quoteName(onlyFilename(from_file)) + ' ' +
 			quoteName(to_format);
 	}
@@ -286,7 +288,7 @@ string const move_file(string const & from_file, string const & to_file)
 /*
 A typical script looks like:
 
-#!/usr/bin/env python
+#!/usr/bin/env python -tt
 import os, sys
 
 def unlinkNoThrow(file):

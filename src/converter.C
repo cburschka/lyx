@@ -26,6 +26,7 @@
 
 #include "support/filetools.h"
 #include "support/lyxlib.h"
+#include "support/os.h"
 #include "support/path.h"
 #include "support/systemcall.h"
 
@@ -298,7 +299,7 @@ bool Converters::convert(Buffer const * buffer,
 				getExtension(from_file) :
 				formats.extension(from_format);
 			string const command =
-				"python " +
+				lyx::support::os::python() + ' ' +
 				quoteName(libFileSearch("scripts", "convertDefault.py")) +
 				' ' +
 				quoteName(from_ext + ':' + from_file) +

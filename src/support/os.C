@@ -17,3 +17,19 @@
 #else
 #include "os_unix.C"
 #endif
+
+namespace lyx {
+namespace support {
+namespace os {
+
+std::string const python()
+{
+	// Use the -tt switch so that mixed tab/whitespace indentation is
+	// an error
+	static std::string const command("python -tt");
+	return command;
+}
+
+}
+}
+}

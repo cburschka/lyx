@@ -643,7 +643,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename)
 			return false;
 		}
 		ostringstream command;
-		command << "python " << quoteName(lyx2lyx)
+		command << os::python() << ' ' << quoteName(lyx2lyx)
 			<< " -t " << convert<string>(LYX_FORMAT)
 			<< " -o " << quoteName(tmpfile) << ' '
 			<< quoteName(filename);

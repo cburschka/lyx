@@ -139,9 +139,9 @@ def revert_font_settings(file):
             file.header.insert(insert_line, '\\fontscheme %s' % font_scheme)
             if font_default_family != 'default':
                 file.preamble.append('\\renewcommand{\\familydefault}{\\%s}' % font_default_family)
-	    if font_osf == 'true':
+            if font_osf == 'true':
                 file.warning("Ignoring `\\font_osf = true'")
-	    return
+            return
     font_scheme = 'default'
     file.header.insert(insert_line, '\\fontscheme %s' % font_scheme)
     if fonts['roman'] == 'cmr':

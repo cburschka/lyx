@@ -268,7 +268,7 @@ listerrors
 
 <<listerrors>>=
 \newline
-#!/usr/bin/python
+#!/usr/bin/python -tt
 \newline
 """reformat noweb and compiler errors for LyX.
 \newline

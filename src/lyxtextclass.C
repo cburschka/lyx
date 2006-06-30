@@ -24,6 +24,8 @@
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 #include "support/filetools.h"
+#include "support/os.h"
+
 #include <boost/filesystem/operations.hpp>
 namespace fs = boost::filesystem;
 
@@ -72,7 +74,7 @@ bool layout2layout(string const & filename, string const & tempfile)
 	}
 
 	std::ostringstream command;
-	command << "python " << quoteName(script)
+	command << lyx::support::os::python() << ' ' << quoteName(script)
 		<< ' ' << quoteName(filename)
 		<< ' ' << quoteName(tempfile);
 	string const command_str = command.str();

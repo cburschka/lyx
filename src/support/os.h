@@ -38,6 +38,9 @@ std::string current_root();
 ///
 shell_type shell();
 
+/// Name of the python interpreter
+std::string const python();
+
 /// Extract the path common to both @c p1 and @c p2. DBCS aware!
 std::string::size_type common_path(std::string const & p1, std::string const & p2);
 
