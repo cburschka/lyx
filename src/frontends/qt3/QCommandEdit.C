@@ -26,15 +26,15 @@ void QCommandEdit::keyPressEvent(QKeyEvent * e)
 {
 	switch (e->key()) {
 	case Key_Escape:
-		emit escapePressed();
+		escapePressed();
 		break;
 
 	case Key_Up:
-		emit upPressed();
+		upPressed();
 		break;
 
 	case Key_Down:
-		emit downPressed();
+		downPressed();
 		break;
 
 	default:
@@ -54,7 +54,7 @@ bool QCommandEdit::event(QEvent * e)
 	if (ev->key() != Key_Tab)
 		return QLineEdit::event(e);
 
-	emit tabPressed();
+	tabPressed();
 	return true;
 }
 

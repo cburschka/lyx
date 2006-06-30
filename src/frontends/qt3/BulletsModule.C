@@ -142,7 +142,7 @@ BulletsModule::~BulletsModule()
 
 void BulletsModule::updateSizes()
 {
-	emit changed();
+	changed();
 
 	// -1 apparently means default...
 	bullets_[0].setSize(bulletsize1CO->currentItem() - 1);
@@ -185,7 +185,7 @@ void BulletsModule::selected1()
 	tmpbulletset = false;
 	bullets_[0] = tmpbullet;
 	setBullet(bullet1PB, bulletsize1CO, bullets_[0]);
-	emit changed();
+	changed();
 }
 
 
@@ -196,7 +196,7 @@ void BulletsModule::selected2()
 	tmpbulletset = false;
 	bullets_[1] = tmpbullet;
 	setBullet(bullet2PB, bulletsize2CO, bullets_[1]);
-	emit changed();
+	changed();
 }
 
 
@@ -207,7 +207,7 @@ void BulletsModule::selected3()
 	tmpbulletset = false;
 	bullets_[2] = tmpbullet;
 	setBullet(bullet3PB, bulletsize3CO, bullets_[2]);
-	emit changed();
+	changed();
 }
 
 
@@ -218,7 +218,7 @@ void BulletsModule::selected4()
 	tmpbulletset = false;
 	bullets_[3] = tmpbullet;
 	setBullet(bullet4PB, bulletsize4CO, bullets_[3]);
-	emit changed();
+	changed();
 }
 
 

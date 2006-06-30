@@ -560,7 +560,7 @@ void PrefColors::change_color()
 		QPixmap coloritem(32, 32);
 		coloritem.fill(c);
 		lyxObjectsLW->currentItem()->setIcon(QIcon(coloritem));
-		emit changed();
+		changed();
 	}
 }
 

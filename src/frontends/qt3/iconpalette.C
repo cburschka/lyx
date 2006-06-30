@@ -57,7 +57,7 @@ void IconPalette::clicked()
 	vector<Button>::const_iterator const end(buttons_.end());
 	for (; it != end; ++it) {
 		if (sender() == it->first) {
-			emit button_clicked(it->second);
+			 button_clicked(it->second);
 			return;
 		}
 	}

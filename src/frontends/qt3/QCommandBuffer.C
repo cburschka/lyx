@@ -50,7 +50,7 @@ protected:
 		    || e->x() > width() || e->y() > height()) {
 			hide();
 		} else {
-			emit selected(currentText());
+			selected(currentText());
 		}
 	}
 

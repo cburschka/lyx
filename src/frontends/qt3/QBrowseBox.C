@@ -161,7 +161,7 @@ void QBrowseBox::keyPressEvent(QKeyEvent * e)
 		moveRight();
 		break;
 	case Key_Return:
-		emit selected(activecell_.x(), activecell_.y());
+		selected(activecell_.x(), activecell_.y());
 		if ( isVisible() && parentWidget() &&
 		     parentWidget()->inherits("QPopupMenu") )
 			parentWidget()->close();
@@ -186,7 +186,7 @@ void QBrowseBox::contentsMouseReleaseEvent(QMouseEvent *)
 	if (firstrelease_)
 		firstrelease_ = false;
 	else {
-		emit selected( activecell_.x(), activecell_.y());
+		selected( activecell_.x(), activecell_.y());
 		if ( isVisible() && parentWidget() &&
 		     parentWidget()->inherits("QPopupMenu") )
 			parentWidget()->close();
