@@ -282,7 +282,8 @@ void QLToolbar::update()
 	for (size_t i=0; i<ActionVector.size(); ++i)
 		ActionVector[i]->update();
 
-	emit updated();
+        // emit signal
+	updated();
 }
 
 

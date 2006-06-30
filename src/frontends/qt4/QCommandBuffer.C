@@ -58,7 +58,8 @@ protected:
 		    || e->x() > width() || e->y() > height()) {
 			hide();
 		} else {
-			emit itemPressed(currentItem());
+                        // emit signal
+			itemPressed(currentItem());
 		}
 	}
 

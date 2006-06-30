@@ -161,6 +161,7 @@ void QBrowseBox::keyPressEvent(QKeyEvent * e)
 		moveRight();
 		break;
 	case Key_Return:
+                // emit signal
 		selected(activecell_.x(), activecell_.y());
 		if ( isVisible() && parentWidget() &&
 		     parentWidget()->inherits("QPopupMenu") )

@@ -55,7 +55,8 @@ void InsertTableWidget::show(bool show)
 	init();
 	resetGeometry();
 	setVisible(true);
-	emit visible(true);
+        // emit signal
+	visible(true);
 }
 
 
@@ -109,7 +110,8 @@ void InsertTableWidget::mouseReleaseEvent(QMouseEvent * event)
 		QString const data = QString("%1 %2").arg(bottom_).arg(right_);
 		lyxView_.getLyXFunc().dispatch(FuncRequest(LFUN_TABULAR_INSERT, fromqstr(data)));
 	}
-	emit visible(false);
+        // emit signal
+	visible(false);
 	close();
 }
 

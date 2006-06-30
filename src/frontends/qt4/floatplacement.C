@@ -104,7 +104,8 @@ void FloatPlacement::useSideways()
 
 void FloatPlacement::changedSlot()
 {
-	emit changed();
+        // emit signal
+	changed();
 }
 
 

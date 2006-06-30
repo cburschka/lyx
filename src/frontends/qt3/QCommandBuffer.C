@@ -50,6 +50,7 @@ protected:
 		    || e->x() > width() || e->y() > height()) {
 			hide();
 		} else {
+                        // emit signal
 			selected(currentText());
 		}
 	}

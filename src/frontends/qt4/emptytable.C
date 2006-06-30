@@ -81,7 +81,8 @@ void EmptyTable::setNumberColumns(int nr_cols)
 	setColumnCount(nr_cols);
 	resetCellSize();
 	updateGeometry();
-	emit colsChanged(nr_cols);
+        // emit signal
+	colsChanged(nr_cols);
 }
 
 
@@ -94,7 +95,8 @@ void EmptyTable::setNumberRows(int nr_rows)
 	setRowCount(nr_rows);
 	resetCellSize();
 	updateGeometry();
-	emit rowsChanged(nr_rows);
+        // emit signal
+	rowsChanged(nr_rows);
 }
 
 /*

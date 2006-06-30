@@ -34,7 +34,8 @@ signals:
 	void action(const std::string &);
 protected slots:
 	void action() {
-		emit action(action_);
+                // emit signal
+		action(action_);
 	}
 private:
 	std::string action_;

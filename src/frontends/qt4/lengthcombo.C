@@ -44,7 +44,8 @@ LyXLength::UNIT LengthCombo::currentLengthItem() const
 
 void LengthCombo::has_activated(int)
 {
-	emit selectionChanged(currentLengthItem());
+        // emit signal
+	selectionChanged(currentLengthItem());
 }
 
 

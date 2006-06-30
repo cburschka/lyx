@@ -75,6 +75,7 @@ void EmptyTable::setNumberColumns(int nr_cols)
 	updateGeometry();
 	setAutoUpdate(true);
 	update();
+        // emit signal
 	colsChanged(nr_cols);
 }
 
@@ -90,6 +91,7 @@ void EmptyTable::setNumberRows(int nr_rows)
 	updateGeometry();
 	setAutoUpdate(true);
 	update();
+        // emit signal
 	rowsChanged(nr_rows);
 }
 
