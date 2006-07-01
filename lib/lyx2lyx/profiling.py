@@ -29,10 +29,10 @@ import os
 """
 This program profiles lyx2lyx.
 Usage:
-	./profiling.py option_to_lyx2lyx
+        ./profiling.py option_to_lyx2lyx
 
 Example:
-	./profiling.py -ou.lyx ../doc/UserGuide.lyx
+        ./profiling.py -ou.lyx ../doc/UserGuide.lyx
 """
 
 def main(argv):

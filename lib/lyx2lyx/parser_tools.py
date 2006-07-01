@@ -21,7 +21,7 @@ import re
 
 def check_token(line, token):
     if line[:len(token)] == token:
-	return 1
+        return 1
     return 0
 
 
@@ -29,17 +29,17 @@ def check_token(line, token):
 # we can ignore this
 def find_token(lines, token, start, end = 0):
     if end == 0:
-	end = len(lines)
+        end = len(lines)
     m = len(token)
     for i in xrange(start, end):
-	if lines[i][:m] == token:
-	    return i
+        if lines[i][:m] == token:
+            return i
     return -1
 
 
 def find_token_exact(lines, token, start, end = 0):
     if end == 0:
-	end = len(lines)
+        end = len(lines)
     for i in xrange(start, end):
         x = string.split(lines[i])
         y = string.split(token)
@@ -52,17 +52,17 @@ def find_token_exact(lines, token, start, end = 0):
 
 def find_tokens(lines, tokens, start, end = 0):
     if end == 0:
-	end = len(lines)
+        end = len(lines)
     for i in xrange(start, end):
-	for token in tokens:
-	    if lines[i][:len(token)] == token:
-		return i
+        for token in tokens:
+            if lines[i][:len(token)] == token:
+                return i
     return -1
 
 
 def find_tokens_exact(lines, tokens, start, end = 0):
     if end == 0:
-	end = len(lines)
+        end = len(lines)
     for i in xrange(start, end):
         for token in tokens:
             x = string.split(lines[i])
@@ -76,35 +76,35 @@ def find_tokens_exact(lines, tokens, start, end = 0):
 
 def find_re(lines, rexp, start, end = 0):
     if end == 0:
-	end = len(lines)
+        end = len(lines)
     for i in xrange(start, end):
-	if rexp.match(lines[i]):
-		return i
+        if rexp.match(lines[i]):
+                return i
     return -1
 
 
 def find_token_backwards(lines, token, start):
     m = len(token)
     for i in xrange(start, -1, -1):
-	line = lines[i]
-	if line[:m] == token:
-	    return i
+        line = lines[i]
+        if line[:m] == token:
+            return i
     return -1
 
 
 def find_tokens_backwards(lines, tokens, start):
     for i in xrange(start, -1, -1):
-	line = lines[i]
-	for token in tokens:
-	    if line[:len(token)] == token:
-		return i
+        line = lines[i]
+        for token in tokens:
+            if line[:len(token)] == token:
+                return i
     return -1
 
 
 def get_value(lines, token, start, end = 0):
     i = find_token_exact(lines, token, start, end)
     if i == -1:
-	return ""
+        return ""
     if len(string.split(lines[i])) > 1:
         return string.split(lines[i])[1]
     else:
@@ -121,10 +121,10 @@ def get_layout(line, default_layout):
 def del_token(lines, token, i, j):
     k = find_token_exact(lines, token, i, j)
     if k == -1:
-	return j
+        return j
     else:
-	del lines[k]
-	return j-1
+        del lines[k]
+        return j-1
 
 
 # Finds the paragraph that contains line i.
@@ -134,11 +134,11 @@ def get_paragraph(lines, i, format):
     else:
         begin_layout = "\\begin_layout"
     while i != -1:
-	i = find_tokens_backwards(lines, ["\\end_inset", begin_layout], i)
+        i = find_tokens_backwards(lines, ["\\end_inset", begin_layout], i)
         if i == -1: return -1
-	if check_token(lines[i], begin_layout):
-	    return i
-	i = find_beginning_of_inset(lines, i)
+        if check_token(lines[i], begin_layout):
+            return i
+        i = find_beginning_of_inset(lines, i)
     return -1
 
 
@@ -151,10 +151,10 @@ def get_next_paragraph(lines, i, format):
     else:
         tokens = ["\\begin_inset", "\\begin_layout", "\\end_float", "\\end_body", "\\end_document"]
     while i != -1:
-	i = find_tokens(lines, tokens, i)
-	if not check_token(lines[i], "\\begin_inset"):
-	    return i
-	i = find_end_of_inset(lines, i)
+        i = find_tokens(lines, tokens, i)
+        if not check_token(lines[i], "\\begin_inset"):
+            return i
+        i = find_end_of_inset(lines, i)
     return -1
 
 
@@ -162,13 +162,13 @@ def find_end_of(lines, i, start_token, end_token):
     count = 1
     n = len(lines)
     while i < n:
-	i = find_tokens(lines, [end_token, start_token], i+1)
-	if check_token(lines[i], start_token):
-	    count = count+1
-	else:
-	    count = count-1
-	if count == 0:
-	    return i
+        i = find_tokens(lines, [end_token, start_token], i+1)
+        if check_token(lines[i], start_token):
+            count = count+1
+        else:
+            count = count-1
+        if count == 0:
+            return i
     return -1
 
 
@@ -176,13 +176,13 @@ def find_end_of(lines, i, start_token, end_token):
 def find_beginning_of(lines, i, start_token, end_token):
     count = 1
     while i > 0:
-	i = find_tokens_backwards(lines, [start_token, end_token], i-1)
-	if check_token(lines[i], end_token):
-	    count = count+1
-	else:
-	    count = count-1
-	if count == 0:
-	    return i
+        i = find_tokens_backwards(lines, [start_token, end_token], i-1)
+        if check_token(lines[i], end_token):
+            count = count+1
+        else:
+            count = count-1
+        if count == 0:
+            return i
     return -1
 
 
@@ -205,14 +205,14 @@ def get_tabular_lines(lines, i):
     i = i+1
     j = find_end_of_tabular(lines, i)
     if j == -1:
-	return []
+        return []
 
     while i <= j:
-	if check_token(lines[i], "\\begin_inset"):
-	    i = find_end_of_inset(lines, i)+1
-	else:
-	    result.append(i)
-	    i = i+1
+        if check_token(lines[i], "\\begin_inset"):
+            i = find_end_of_inset(lines, i)+1
+        else:
+            result.append(i)
+            i = i+1
     return result
 
 
@@ -222,8 +222,8 @@ def is_nonempty_line(line):
 
 def find_nonempty_line(lines, start, end = 0):
     if end == 0:
-	end = len(lines)
+        end = len(lines)
     for i in xrange(start, end):
-	if is_nonempty_line(lines[i]):
-	    return i
+        if is_nonempty_line(lines[i]):
+            return i
     return -1

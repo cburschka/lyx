@@ -23,7 +23,7 @@ from os import access, F_OK
 import os.path
 from parser_tools import find_token, find_end_of_inset, get_next_paragraph, \
                          get_paragraph, get_value, del_token, is_nonempty_line,\
-			 find_tokens, find_end_of, find_token_exact, find_tokens_exact,\
+                         find_tokens, find_end_of, find_token_exact, find_tokens_exact,\
                          find_re, get_layout
 from sys import stdin
 from string import replace, split, find, strip, join
@@ -113,15 +113,15 @@ def revert_spaces(file):
         if i == -1:
             break
         space = regexp.match(file.body[i]).group(3)
-	prepend = regexp.match(file.body[i]).group(1)
+        prepend = regexp.match(file.body[i]).group(1)
         if space == '~':
             file.body[i] = regexp.sub(prepend + '\\SpecialChar ~', file.body[i])
             i = i + 1
         else:
             file.body[i] = regexp.sub(prepend, file.body[i])
             file.body[i+1:i+1] = ''
-	    if space == "\\space":
-		space = "\\ "
+            if space == "\\space":
+                space = "\\ "
             i = insert_ert(file.body, i+1, 'Collapsed', space, file.format - 1, file.default_layout)
 
 ##
@@ -131,13 +131,13 @@ def revert_spaces(file):
 def rename_spaces(file):
     for i in range(len(file.body)):
         file.body[i] = replace(file.body[i],"\\InsetSpace \\space","\\InsetSpace \\space{}")
-	file.body[i] = replace(file.body[i],"\\InsetSpace \,","\\InsetSpace \\thinspace{}")
+        file.body[i] = replace(file.body[i],"\\InsetSpace \,","\\InsetSpace \\thinspace{}")
 
 
 def revert_space_names(file):
     for i in range(len(file.body)):
         file.body[i] = replace(file.body[i],"\\InsetSpace \\space{}","\\InsetSpace \\space")
-	file.body[i] = replace(file.body[i],"\\InsetSpace \\thinspace{}","\\InsetSpace \\,")
+        file.body[i] = replace(file.body[i],"\\InsetSpace \\thinspace{}","\\InsetSpace \\,")
 
 
 ##
@@ -300,7 +300,7 @@ def convert_comment(file):
 
         while 1:
                 old_i = i
-            	i = find_token(file.body, "\\layout", i)
+                i = find_token(file.body, "\\layout", i)
                 if i == -1:
                     i = len(file.body) - 1
                     file.body[i:i] = ["\\end_inset","",""]
@@ -1011,12 +1011,12 @@ def convert_minipage(file):
 
         if file.body[i][:9] == "collapsed":
             if file.body[i][9:] == "true":
-		status = "collapsed"
+                status = "collapsed"
             else:
-		status = "open"
+                status = "open"
             del file.body[i]
         else:
-	    status = "collapsed"
+            status = "collapsed"
 
         # Handle special default case:
         if height == ' "1pt"' and innerpos == 'c':
@@ -1043,19 +1043,19 @@ def convert_minipage(file):
 # text to body[i] and return the (maybe incremented) line index i
 def convert_ertbackslash(body, i, ert, format, default_layout):
     for c in ert:
-	if c == '\\':
-	    body[i] = body[i] + '\\backslash '
-	    i = i + 1
-	    body.insert(i, '')
-	elif c == '\n':
+        if c == '\\':
+            body[i] = body[i] + '\\backslash '
+            i = i + 1
+            body.insert(i, '')
+        elif c == '\n':
             if format <= 240:
                 body[i+1:i+1] = ['\\newline ', '']
                 i = i + 2
             else:
                 body[i+1:i+1] = ['\\end_layout', '', '\\begin_layout %s' % default_layout, '']
                 i = i + 4
-	else:
-	    body[i] = body[i] + c
+        else:
+            body[i] = body[i] + c
     return i
 
 
@@ -1098,7 +1098,7 @@ def get_par_params(lines, i):
     params = ''
     while lines[i][:1] == '\\' and split(lines[i][1:])[0] in par_params:
         params = params + ' ' + strip(lines[i])
-	i = i + 1
+        i = i + 1
     return strip(params)
 
 
@@ -1427,13 +1427,13 @@ def convert_len(len, special):
 
     # Convert special lengths
     if special != 'none':
-	len = '%f\\' % len2value(len) + special
+        len = '%f\\' % len2value(len) + special
 
     # Convert LyX units to LaTeX units
     for unit in units.keys():
-	if find(len, unit) != -1:
-	    len = '%f' % (len2value(len) / 100) + units[unit]
-	    break
+        if find(len, unit) != -1:
+            len = '%f' % (len2value(len) / 100) + units[unit]
+            break
 
     return len
 
@@ -1449,7 +1449,7 @@ def convert_ertlen(body, i, len, special, format, default_layout):
 def len2value(len):
     result = re.search('([+-]?[0-9.]+)', len)
     if result:
-	return float(result.group(1))
+        return float(result.group(1))
     # No number means 1.0
     return 1.0
 
@@ -1490,50 +1490,50 @@ def convert_frameless_box(file):
         i = find_token(file.body, '\\begin_inset Frameless', i)
         if i == -1:
             return
-	j = find_end_of_inset(file.body, i)
-	if j == -1:
-	    file.warning("Malformed LyX file: Missing '\\end_inset'.")
-	    i = i + 1
-	    continue
-	del file.body[i]
-	j = j - 1
+        j = find_end_of_inset(file.body, i)
+        if j == -1:
+            file.warning("Malformed LyX file: Missing '\\end_inset'.")
+            i = i + 1
+            continue
+        del file.body[i]
+        j = j - 1
 
-	# Gather parameters
-	params = {'position':0, 'hor_pos':'c', 'has_inner_box':'1',
+        # Gather parameters
+        params = {'position':0, 'hor_pos':'c', 'has_inner_box':'1',
                   'inner_pos':1, 'use_parbox':'0', 'width':'100col%',
-	          'special':'none', 'height':'1in',
-	          'height_special':'totalheight', 'collapsed':'false'}
-	for key in params.keys():
-	    value = replace(get_value(file.body, key, i, j), '"', '')
-	    if value != "":
-		if key == 'position':
-		    # convert new to old position: 'position "t"' -> 0
-		    value = find_token(pos, value, 0)
-		    if value != -1:
-			params[key] = value
-		elif key == 'inner_pos':
-		    # convert inner position
-		    value = find_token(inner_pos, value, 0)
-		    if value != -1:
-			params[key] = value
-		else:
-		    params[key] = value
-		j = del_token(file.body, key, i, j)
-	i = i + 1
+                  'special':'none', 'height':'1in',
+                  'height_special':'totalheight', 'collapsed':'false'}
+        for key in params.keys():
+            value = replace(get_value(file.body, key, i, j), '"', '')
+            if value != "":
+                if key == 'position':
+                    # convert new to old position: 'position "t"' -> 0
+                    value = find_token(pos, value, 0)
+                    if value != -1:
+                        params[key] = value
+                elif key == 'inner_pos':
+                    # convert inner position
+                    value = find_token(inner_pos, value, 0)
+                    if value != -1:
+                        params[key] = value
+                else:
+                    params[key] = value
+                j = del_token(file.body, key, i, j)
+        i = i + 1
 
-	# Convert to minipage or ERT?
-	# Note that the inner_position and height parameters of a minipage
-	# inset are ignored and not accessible for the user, although they
-	# are present in the file format and correctly read in and written.
-	# Therefore we convert to ERT if they do not have their LaTeX
-	# defaults. These are:
-	# - the value of "position" for "inner_pos"
-	# - "\totalheight"          for "height"
-	if (params['use_parbox'] != '0' or
-	    params['has_inner_box'] != '1' or
-	    params['special'] != 'none' or
-	    params['height_special'] != 'totalheight' or
-	    len2value(params['height']) != 1.0):
+        # Convert to minipage or ERT?
+        # Note that the inner_position and height parameters of a minipage
+        # inset are ignored and not accessible for the user, although they
+        # are present in the file format and correctly read in and written.
+        # Therefore we convert to ERT if they do not have their LaTeX
+        # defaults. These are:
+        # - the value of "position" for "inner_pos"
+        # - "\totalheight"          for "height"
+        if (params['use_parbox'] != '0' or
+            params['has_inner_box'] != '1' or
+            params['special'] != 'none' or
+            params['height_special'] != 'totalheight' or
+            len2value(params['height']) != 1.0):
 
             # Here we know that this box is not supported in file format 224.
             # Therefore we need to convert it to ERT. We can't simply convert
@@ -1635,9 +1635,9 @@ def convert_frameless_box(file):
             j = j + 2
             ert = '\\let\\endminipage\\endlyxtolyxminipage'
             j = insert_ert(file.body, j, 'Collapsed', ert, file.format - 1, file.default_layout)
-	    j = j + 1
+            j = j + 1
             file.body.insert(j, '')
-	    j = j + 1
+            j = j + 1
 
             # LyX writes '%\n' after each box. Therefore we need to end our
             # ERT with '%\n', too, since this may swallow a following space.
@@ -1650,16 +1650,16 @@ def convert_frameless_box(file):
             # We don't need to restore the original minipage after the inset
             # end because the scope of the redefinition is the original box.
 
-	else:
+        else:
 
-	    # Convert to minipage
-	    file.body[i:i] = ['\\begin_inset Minipage',
-	                      'position %d' % params['position'],
-			      'inner_position %d' % params['inner_pos'],
-			      'height "' + params['height'] + '"',
-	                      'width "' + params['width'] + '"',
-	                      'collapsed ' + params['collapsed']]
-	    i = i + 6
+            # Convert to minipage
+            file.body[i:i] = ['\\begin_inset Minipage',
+                              'position %d' % params['position'],
+                              'inner_position %d' % params['inner_pos'],
+                              'height "' + params['height'] + '"',
+                              'width "' + params['width'] + '"',
+                              'collapsed ' + params['collapsed']]
+            i = i + 6
 
 
 def remove_branches(file):
@@ -1805,31 +1805,31 @@ def convert_graphics(file):
         if i == -1:
             return
 
-	j = find_token_exact(file.body, "filename", i)
+        j = find_token_exact(file.body, "filename", i)
         if j == -1:
             return
         i = i + 1
-	filename = split(file.body[j])[1]
-	absname = os.path.normpath(os.path.join(file.dir, filename))
-	if file.input == stdin and not os.path.isabs(filename):
-	    # We don't know the directory and cannot check the file.
-	    # We could use a heuristic and take the current directory,
-	    # and we could try to find out if filename has an extension,
-	    # but that would be just guesses and could be wrong.
-	    file.warning("""Warning: Can not determine whether file
+        filename = split(file.body[j])[1]
+        absname = os.path.normpath(os.path.join(file.dir, filename))
+        if file.input == stdin and not os.path.isabs(filename):
+            # We don't know the directory and cannot check the file.
+            # We could use a heuristic and take the current directory,
+            # and we could try to find out if filename has an extension,
+            # but that would be just guesses and could be wrong.
+            file.warning("""Warning: Can not determine whether file
          %s
          needs an extension when reading from standard input.
          You may need to correct the file manually or run
          lyx2lyx again with the .lyx file as commandline argument.""" % filename)
-	    continue
-	# This needs to be the same algorithm as in pre 233 insetgraphics
-	if access(absname, F_OK):
-	    continue
-	if access(absname + ".ps", F_OK):
-	    file.body[j] = replace(file.body[j], filename, filename + ".ps")
-	    continue
-	if access(absname + ".eps", F_OK):
-	    file.body[j] = replace(file.body[j], filename, filename + ".eps")
+            continue
+        # This needs to be the same algorithm as in pre 233 insetgraphics
+        if access(absname, F_OK):
+            continue
+        if access(absname + ".ps", F_OK):
+            file.body[j] = replace(file.body[j], filename, filename + ".ps")
+            continue
+        if access(absname + ".eps", F_OK):
+            file.body[j] = replace(file.body[j], filename, filename + ".eps")
 
 
 ##
@@ -2419,12 +2419,12 @@ convert = [[222, [insert_tracking_changes, add_end_header, convert_amsmath]],
            [241, [convert_ert_paragraphs]],
            [242, [convert_french]],
            [243, [remove_paperpackage]],
-	   [244, [rename_spaces]],
-	   [245, [remove_quotestimes, convert_sgml_paragraphs]]]
+           [244, [rename_spaces]],
+           [245, [remove_quotestimes, convert_sgml_paragraphs]]]
 
 revert =  [[244, []],
-	   [243, [revert_space_names]],
-	   [242, []],
+           [243, [revert_space_names]],
+           [242, []],
            [241, []],
            [240, [revert_ert_paragraphs]],
            [239, [revert_output_changes]],

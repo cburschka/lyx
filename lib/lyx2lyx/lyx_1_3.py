@@ -26,58 +26,58 @@ def change_insetgraphics(file):
     lines = file.body
     i = 0
     while 1:
-	i = find_token(lines, "\\begin_inset Graphics", i)
-	if i == -1:
-	    break
-	j = find_end_of_inset(lines, i)
+        i = find_token(lines, "\\begin_inset Graphics", i)
+        if i == -1:
+            break
+        j = find_end_of_inset(lines, i)
 
-	lines[i] = "\\begin_inset Graphics"
+        lines[i] = "\\begin_inset Graphics"
 
-	if get_value(lines, "display", i, j) == "default":
-	    j = del_token(lines, "display", i, j)
-	if get_value(lines, "rotateOrigin", i, j) == "leftBaseline":
-	    j = del_token(lines, "rotateOrigin", i, j)
+        if get_value(lines, "display", i, j) == "default":
+            j = del_token(lines, "display", i, j)
+        if get_value(lines, "rotateOrigin", i, j) == "leftBaseline":
+            j = del_token(lines, "rotateOrigin", i, j)
 
-	k = find_token_exact(lines, "rotate", i, j)
-	if k != -1:
-	    del lines[k]
-	    j = j-1
-	else:
-	    j = del_token(lines, "rotateAngle", i, j)
+        k = find_token_exact(lines, "rotate", i, j)
+        if k != -1:
+            del lines[k]
+            j = j-1
+        else:
+            j = del_token(lines, "rotateAngle", i, j)
 
-	k = find_token_exact(lines, "size_type", i, j)
-	if k == -1:
-	    k = find_token_exact(lines, "size_kind", i, j)
-	if k != -1:
-	    size_type = string.split(lines[k])[1]
-	    del lines[k]
-	    j = j-1
-	    if size_type in ["0", "original"]:
-		j = del_token(lines, "width", i, j)
-		j = del_token(lines, "height", i, j)
-		j = del_token(lines, "scale", i, j)
-	    elif size_type in ["2", "scale"]:
-		j = del_token(lines, "width", i, j)
-		j = del_token(lines, "height", i, j)
-		if get_value(lines, "scale", i, j) == "100":
-		    j = del_token(lines, "scale", i, j)
-	    else:
-		j = del_token(lines, "scale", i, j)
+        k = find_token_exact(lines, "size_type", i, j)
+        if k == -1:
+            k = find_token_exact(lines, "size_kind", i, j)
+        if k != -1:
+            size_type = string.split(lines[k])[1]
+            del lines[k]
+            j = j-1
+            if size_type in ["0", "original"]:
+                j = del_token(lines, "width", i, j)
+                j = del_token(lines, "height", i, j)
+                j = del_token(lines, "scale", i, j)
+            elif size_type in ["2", "scale"]:
+                j = del_token(lines, "width", i, j)
+                j = del_token(lines, "height", i, j)
+                if get_value(lines, "scale", i, j) == "100":
+                    j = del_token(lines, "scale", i, j)
+            else:
+                j = del_token(lines, "scale", i, j)
 
-	k = find_token_exact(lines, "lyxsize_type", i, j)
-	if k == -1:
-	    k = find_token_exact(lines, "lyxsize_kind", i, j)
-	if k != -1:
-	    lyxsize_type = string.split(lines[k])[1]
-	    del lines[k]
-	    j = j-1
-	    j = del_token(lines, "lyxwidth", i, j)
-	    j = del_token(lines, "lyxheight", i, j)
-	    if lyxsize_type not in ["2", "scale"] or \
-	       get_value(lines, "lyxscale", i, j) == "100":
-		j = del_token(lines, "lyxscale", i, j)
+        k = find_token_exact(lines, "lyxsize_type", i, j)
+        if k == -1:
+            k = find_token_exact(lines, "lyxsize_kind", i, j)
+        if k != -1:
+            lyxsize_type = string.split(lines[k])[1]
+            del lines[k]
+            j = j-1
+            j = del_token(lines, "lyxwidth", i, j)
+            j = del_token(lines, "lyxheight", i, j)
+            if lyxsize_type not in ["2", "scale"] or \
+               get_value(lines, "lyxscale", i, j) == "100":
+                j = del_token(lines, "lyxscale", i, j)
 
-	i = i+1
+        i = i+1
 
 
 def change_tabular(file):
