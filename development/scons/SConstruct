@@ -168,7 +168,7 @@ opts.AddOptions(
     #
     PathOption('qt_dir', 'Path to qt directory', None),
     #
-    PathOption('qt_include_path', 'Path to qt include directory', None),
+    PathOption('qt_inc_path', 'Path to qt include directory', None),
     #
     PathOption('qt_lib_path', 'Path to qt library directory', None),
     # build directory, will use $mode if not set
