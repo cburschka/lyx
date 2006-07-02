@@ -542,8 +542,11 @@ if env.has_key('qt_dir') and env['qt_dir']:
     env.AppendUnique(LIBPATH = [os.path.join(env['qt_dir'], 'lib')])
     # set environment so that moc etc can be found even if its path is not set properly
     env.PrependENVPath('PATH', os.path.join(env['qt_dir'], 'bin'))
-else:
+elif os.path.isdir(os.environ.get('QTDIR', '/usr/lib/qt-3.3')):
     env['QTDIR'] = os.environ.get('QTDIR', '/usr/lib/qt-3.3')
+else:
+    # QTDIR is not always used so no warning is issued.
+    env['QTDIR'] = 'QTDIR_is_not_defined'
 
 if env.has_key('qt_lib_path') and env['qt_lib_path']:
     qt_lib_path = env.subst('$qt_lib_path')
@@ -780,6 +783,13 @@ if not fast_start:
     env_cache['MSGFMT'] = env['MSGFMT']
 else:
     env['MSGFMT'] = env_cache['MSGFMT']
+
+# check uic and moc commands for qt frontends
+if not fast_start:
+    if frontend[:2] == 'qt' and (conf.CheckCommand('uic') == None \
+        or conf.CheckCommand('moc') == None):
+        print 'uic or moc command is not found for frontend', frontend
+        Exit(1)
 
 #
 # Customized builders
