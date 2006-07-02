@@ -99,7 +99,7 @@ def checkTeXPaths():
         os.close(fd)
         os.write(wfd, r'\input{' + inpname.replace('~', '\\string~') + '}' )
         os.close(wfd)
-        if cmdOutput('latex ' + wtmpfname).find('Error') != -1:
+        if cmdOutput('latex -interaction=nonstopmode ' + wtmpfname).find('Error') != -1:
             print "configure: TeX engine needs posix-style paths in latex files"
             windows_style_tex_paths = 'false'
         else:
