@@ -550,7 +550,7 @@ if env.has_key('qt_lib_path') and env['qt_lib_path']:
 elif os.path.isdir(os.path.join(env.subst('$QTDIR'), 'lib')):
     qt_lib_path = env.subst('$QTDIR/lib')
 # this is the path for cygwin.
-elif os.path.idsir(os.path.join('/usr/lib/', frontend, 'lib')):
+elif os.path.isdir(os.path.join('/usr/lib/', frontend, 'lib')):
     qt_lib_path = env.subst('/usr/lib/$frontend/lib')
 else:
     print "Qt library directory is not found. Please specify it using qt_lib_path"
