@@ -85,17 +85,16 @@ def checkTeXPaths():
     from tempfile import mkstemp
     fd, tmpfname = mkstemp(suffix='.ltx', dir='/tmp')
     os.write(fd, r'''
-\documentstyle{article}
-\begin{document}\end{document}
+\relax
   ''')
     os.close(fd)
     inpname = cmdOutput('cygpath -m ' + tmpfname)
     # a wrapper file
     wfd, wtmpfname = mkstemp(suffix='.ltx', dir='/tmp')
     wtmpfname = cmdOutput('cygpath -m ' + wtmpfname)
-    os.write(wfd, r'\input{' + inpname + '}' )
+    os.write(wfd, r'\nonstopmode\input{' + inpname + '}' )
     os.close(wfd)
-    if cmdOutput('latex -interaction=nonstopmode %s' % wtmpfname).find('Error') != -1:
+    if cmdOutput('latex %s' % wtmpfname).find('Error') != -1:
       print "configure: TeX engine needs posix-style paths in latex files"
       windows_style_tex_paths = 'false'
     else:
@@ -637,11 +636,8 @@ def checkTeXAllowSpaces():
   tex_allows_spaces = 'false'
   if lyx_check_config:
     print "Checking whether TeX allows spaces in file names... ",
-    writeToFile('a b.tex', r'\message{working^^J}' )
-    # FIXME: the bsh version uses < /dev/null which is not portable.
-    # Can anyone confirm if this option (-interaction) is available
-    # at other flavor of latex as well? (MikTex/win, Web2C/linux are fine.) 
-    if ''.join(cmdOutput(LATEX + ' -interaction=nonstopmode "a b"')).find('working') != -1:
+    writeToFile('a b.tex', r'\nonstopmode\message{working^^J}' )
+    if ''.join(cmdOutput(LATEX + ' "a b"')).find('working') != -1:
       print 'yes'
       tex_allows_spaces = 'true'
     else:
