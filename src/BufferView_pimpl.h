@@ -106,10 +106,6 @@ public:
 	FuncStatus getStatus(FuncRequest const & cmd);
 	/// a function should be executed
 	bool dispatch(FuncRequest const & ev);
-	/// Flag: do a full redraw of inside text of inset
-	bool repaintAll() { return refresh_inside_; }
-	///
-	void repaintAll(bool r) {refresh_inside_ = r; }
 
 	/// the frontend
 	lyx::frontend::Gui & gui() const;
@@ -215,7 +211,5 @@ private:
 	int offset_ref_;
 	///
 	ViewMetricsInfo metrics(bool singlepar = false);
-	/// Working variable indicating a full screen refresh
-	mutable bool refresh_inside_;
 };
 #endif // BUFFERVIEW_PIMPL_H

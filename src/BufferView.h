@@ -232,10 +232,6 @@ public:
 	 */
 	void putSelectionAt(DocIterator const & cur,
 		int length, bool backwards);
-	///
-	bool const repaintAll() const;
-	///
-	void const repaintAll(bool r) const;
 
 private:
 	///

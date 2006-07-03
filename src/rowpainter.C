@@ -56,6 +56,10 @@ using std::string;
 
 namespace {
 
+/// Flag: do a full redraw of inside text of inset
+/// Working variable indicating a full screen refresh
+bool refreshInside;
+
 /**
  * A class used for painting an individual row of text.
  */
@@ -169,15 +173,15 @@ void RowPainter::paintInset(pos_type const pos, LyXFont const & font)
 	theCoords.insets().add(inset, int(x_), yo_);
 	InsetText const * const in = inset->asTextInset();
 	// non-wide insets are painted completely. Recursive
-	bool tmp = bv_.repaintAll();
+	bool tmp = refreshInside;
 	if (!in || !in->Wide()) {
-		bv_.repaintAll(true);
+		refreshInside = true;
 		lyxerr[Debug::PAINTING] << endl << "Paint inset fully" << endl;
 	}
-	if (bv_.repaintAll())
+	if (refreshInside)
 		inset->drawSelection(pi, int(x_), yo_);
 	inset->draw(pi, int(x_), yo_);
-	bv_.repaintAll(tmp);
+	refreshInside = tmp;
 	x_ += inset->width();
 }
 
@@ -801,9 +805,9 @@ void paintPar
 	lyx::size_type rowno(0);
 	for (RowList::const_iterator rit = rb; rit != re; ++rit, ++rowno) {
 		y += rit->ascent();
-		// Allow setting of bv->repaintAll() for nested insets in
+		// Allow setting of refreshInside for nested insets in
 		// this row only
-		bool tmp = pi.base.bv->repaintAll();
+		bool tmp = refreshInside;
 
 		// Row signature; has row changed since last paint?
 		lyx::size_type const row_sig = calculateRowSignature(*rit, par, x, y);
@@ -843,7 +847,7 @@ void paintPar
 				// If outer row has changed, force nested
 				// insets to repaint completely
 				if (row_has_changed)
-					pi.base.bv->repaintAll(true);
+					refreshInside = true;
 			}
 
 			// Instrumentation for testing row cache (see also
@@ -865,7 +869,7 @@ void paintPar
 		}
 		y += rit->descent();
 		// Restore, see above
-		pi.base.bv->repaintAll(tmp);
+		refreshInside = tmp;
 	}
 	lyxerr[Debug::PAINTING] << "." << endl;
 }
@@ -881,7 +885,7 @@ void paintText(BufferView const & bv, ViewMetricsInfo const & vi)
 
 	PainterInfo pi(const_cast<BufferView *>(&bv), pain);
 	// Should the whole screen, including insets, be refreshed?
-	bool repaintAll(select || !vi.singlepar);
+	bool repaintAll = select || !vi.singlepar;
 
 	if (repaintAll) {
 		// Clear background (if not delegated to rows)
@@ -895,7 +899,7 @@ void paintText(BufferView const & bv, ViewMetricsInfo const & vi)
 	int yy = vi.y1;
 	// draw contents
 	for (pit_type pit = vi.p1; pit <= vi.p2; ++pit) {
-		bv.repaintAll(repaintAll);
+		refreshInside = repaintAll;
 		Paragraph const & par = text->getPar(pit);
 		yy += par.ascent();
 		paintPar(pi, *bv.text(), pit, 0, yy, repaintAll);
@@ -936,7 +940,7 @@ void paintTextInset(LyXText const & text, PainterInfo & pi, int x, int y)
 
 	y -= text.getPar(0).ascent();
 	// This flag can not be set from within same inset:
-	bool repaintAll = pi.base.bv->repaintAll();
+	bool repaintAll = refreshInside;
 	for (int pit = 0; pit < int(text.paragraphs().size()); ++pit) {
 		y += text.getPar(pit).ascent();
 		paintPar(pi, text, pit, x, y, repaintAll);
