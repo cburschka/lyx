@@ -187,13 +187,6 @@ public:
 	/// switch between primary and secondary keymaps for RTL entry
 	void switchKeyMap();
 
-	/// get the contents of the window system clipboard
-	std::string const getClipboard() const;
-	/// fill the window system clipboard
-	void stuffClipboard(std::string const &) const;
-	/// tell the window system we have a selection
-	void haveSelection(bool sel);
-
 	/// return true for events that will handle
 	FuncStatus getStatus(FuncRequest const & cmd);
 	/// execute the given function

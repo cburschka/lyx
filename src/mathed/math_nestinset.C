@@ -50,7 +50,9 @@
 #include "support/lstrings.h"
 
 #include "frontends/Dialogs.h"
+#include "frontends/Gui.h"
 #include "frontends/LyXView.h"
+#include "frontends/Clipboard.h"
 #include "frontends/Painter.h"
 #include "frontends/nullpainter.h"
 
@@ -61,6 +63,9 @@ using lyx::cap::grabAndEraseSelection;
 using lyx::cap::cutSelection;
 using lyx::cap::replaceSelection;
 using lyx::cap::selClearOrDel;
+
+using lyx::frontend::Gui;
+using lyx::frontend::Clipboard;
 
 using std::endl;
 using std::string;
@@ -1083,7 +1088,7 @@ void MathNestInset::lfunMousePress(LCursor & cur, FuncRequest & cmd)
 
 	if (cmd.button() == mouse_button::button2) {
 		MathArray ar;
-		asArray(cur.bv().getClipboard(), ar);
+		asArray(cur.bv().owner()->gui().clipboard().get(), ar);
 		cur.clearSelection();
 		editXY(cur, cmd.x, cmd.y);
 		cur.insert(ar);
@@ -1116,7 +1121,7 @@ void MathNestInset::lfunMouseRelease(LCursor & cur, FuncRequest & cmd)
 	//lyxerr << "## lfunMouseRelease: buttons: " << cmd.button() << endl;
 
 	if (cmd.button() == mouse_button::button1) {
-		//cur.bv().stuffClipboard(cur.grabSelection());
+		//cur.bv().owner()->gui().clipboard().put(cur.grabSelection());
 		return;
 	}
 

@@ -872,11 +872,6 @@ void BufferView::Pimpl::center()
 }
 
 
-void BufferView::Pimpl::stuffClipboard(string const & content) const
-{
-	owner_->gui().clipboard().put(content);
-}
-
 
 void BufferView::Pimpl::menuInsertLyXFile(string const & filenm)
 {

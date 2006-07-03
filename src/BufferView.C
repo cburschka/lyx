@@ -212,18 +212,6 @@ void BufferView::center()
 }
 
 
-string const BufferView::getClipboard() const
-{
-	return pimpl_->gui().clipboard().get();
-}
-
-
-void BufferView::stuffClipboard(string const & stuff) const
-{
-	pimpl_->stuffClipboard(stuff);
-}
-
-
 FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 {
 	return pimpl_->getStatus(cmd);
@@ -238,31 +226,31 @@ bool BufferView::dispatch(FuncRequest const & ev)
 
 void BufferView::selectionRequested()
 {
-        pimpl_->selectionRequested();
+	pimpl_->selectionRequested();
 }
 
 
 void BufferView::selectionLost()
 {
-        pimpl_->selectionLost();
+	pimpl_->selectionLost();
 }
 
 
 void BufferView::workAreaResize(int width, int height)
 {
-        pimpl_->workAreaResize(width, height);
+	pimpl_->workAreaResize(width, height);
 }
 
 
 void BufferView::workAreaKeyPress(LyXKeySymPtr key, key_modifier::state state)
 {
-        pimpl_->workAreaKeyPress(key, state);
+	pimpl_->workAreaKeyPress(key, state);
 }
 
 
 bool BufferView::workAreaDispatch(FuncRequest const & ev)
 {
-        return pimpl_->workAreaDispatch(ev);
+	return pimpl_->workAreaDispatch(ev);
 }
 
 
@@ -335,12 +323,6 @@ LyXText const * BufferView::getLyXText() const
 	LyXText const * text = cursor().innerText();
 	BOOST_ASSERT(text);
 	return text;
-}
-
-
-void BufferView::haveSelection(bool sel)
-{
-	pimpl_->gui().clipboard().haveSelection(sel);
 }
 
 

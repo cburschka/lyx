@@ -176,8 +176,6 @@ private:
 	///
 	Timeout cursor_timeout;
 	///
-	void stuffClipboard(std::string const &) const;
-	///
 	bool using_xterm_cursor;
 	///
 	class Position {
@@ -219,6 +217,5 @@ private:
 	ViewMetricsInfo metrics(bool singlepar = false);
 	/// Working variable indicating a full screen refresh
 	mutable bool refresh_inside_;
-
 };
 #endif // BUFFERVIEW_PIMPL_H
