@@ -188,7 +188,7 @@ def revert_booktabs(file):
         j = find_end_of_inset(file.body, i + 1)
         if j == -1:
             file.warning("Malformed LyX file: Could not find end of tabular.")
-	    continue
+            continue
         for k in range(i, j):
             if re.search('^<features.* booktabs="true".*>$', file.body[k]):
                 file.warning("Converting 'booktabs' table to normal table.")
