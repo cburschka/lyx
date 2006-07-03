@@ -2,7 +2,7 @@
 Building LyX with SCons
 =========================
 
-June, 2006 
+June, 2006
 
 
 The GNU Build System (autoconf, automake and make) has been used to build
@@ -19,7 +19,8 @@ This file is organized as follows:
 3. Windows/mingw
 4. Windows/cygwin
 5. windows/msvc
-6. Troubleshooting
+6. Other versions of lyx (1.4.x)
+7. Troubleshooting
 
 
 1. General usage of scons
@@ -37,21 +38,21 @@ Prerequisites:
 * SCons:
   scons >= 0.96.92 is needed. You can either use a full system-wide scons
   distribution or a light-weight one (called scons-local) installed along
-  with the lyx source tree. Both variants of scons are freely available 
+  with the lyx source tree. Both variants of scons are freely available
   from http://www.scons.org. Note that LyX source may ship with scons-base
   in the near future.
- 
+
 * Other libraries:
   These include zlib (required), qt3 or qt4 (required), gettext
-  (optional), boost (optional), aspell (optional) and Aiksaurus 
-  (optional). Please refer to the system-specific sections regarding the 
+  (optional), boost (optional), aspell (optional) and Aiksaurus
+  (optional). Please refer to the system-specific sections regarding the
   availability and installation of them.
 
 
 Start scons:
 ------------
 
-The scons system resides under development/scons. You can invoke it from 
+The scons system resides under development/scons. You can invoke it from
 either development/scons by, for example:
   > cd development/scons
   > scons frontend=qt4 qt_dir=d:/qt4 -j3 lyx
@@ -60,7 +61,7 @@ or from top source directory by:
 
 There are three types of command line options:
   * key=value are user options. They are used to tell scons which
-    frontend to use, whether or not use included boost libraries etc. 
+    frontend to use, whether or not use included boost libraries etc.
     You can use 'scons -h' to list all of the options.
   * parameters start with - or -- are scons options. Useful ones include
     -j3 (with three threads) and --config=force (force reconfiguration).
@@ -79,10 +80,12 @@ Components to use/build:
   * frontend=qt3/qt4: qt3 is the default for all *nix systems including
     windows cygwin. qt4 is the default for windows/mingw and windows/
     msvc. xform and gtk are not currently supported.
-  * mode=debug/release: lyx will be built under the debug or release 
+  * mode=debug/release: lyx will be built under the debug or release
     directory, with different default build options.
   * boost=included/system/auto: whether or not use included boost, system
-    boost, or try to detect system boost first
+    boost, or try to detect system boost first. Note that boost=included
+    is safer if system boost has a different version from the included
+    one.
   * gettext=included/system/auto
   * nls=yes/no whether or not enable natural language support.
   * spell=aspell/pspell/ispell/auto: spell engine
@@ -90,10 +93,11 @@ Components to use/build:
 
 Paths: Most of them will be probed if not specified.
 
-  * qt_dir: top level directory of qt (with subdirectory include, lib)
-  * qt_lib_path: path to the qt library, use only if there is no 
+  * qt_dir: top level directory of qt (with at least subdirectory bin
+    containing commands uic and moc)
+  * qt_lib_path: path to the qt library, use only if there is no
     $qt_dir/lib
-  * qt_inc_path: path to qt include directory, use only if there is no 
+  * qt_inc_path: path to qt include directory, use only if there is no
     $qt_dir/include
   * extra_inc_path, extra_inc_path1, extra_lib_path, extra_lib_path1:
     additional paths to other libraries
@@ -105,10 +109,10 @@ Convenience options:
   * fast_start=yes/no: if true, bypass initial configuration step and use
     existing src/config.h
   * load_option=yes/no/opt1,opt2/-opt1,opt2: if true, load previously saved
-    command line options so you can run 'scons install' directly after a 
+    command line options so you can run 'scons install' directly after a
     long 'scons all' building command. You can load selected options using
     load_option=opt1,opt2,... or exclude options using the - version of it.
-  * rebuild=target1,target2... By default, scons will exam all components 
+  * rebuild=target1,target2... By default, scons will exam all components
     when you build lyx. You can free scons from some hard work and save
     yourself some time by telling scons to rebuild only specified
     component(s).
@@ -118,7 +122,7 @@ Convenience options:
 Installation options:
 
   * prefix: directory where lyx will be installed
-  * exec_dir: directory where lyx binaries will be installed. 
+  * exec_dir: directory where lyx binaries will be installed.
     Default to $prefix/bin
   * dest_dir: if specified, install to this directory instead of $prefix.
 
@@ -126,7 +130,7 @@ Installation options:
 Compiler choice and flags:
   * use_vc: use msvc instead of mingw g++ under windows
   * optimization: optimization flag to use (e.g. -O2)
-  * CC, LINK, CPP, CXX, CCFLAGS, LINKFLAGS etc: compiler commands and 
+  * CC, LINK, CPP, CXX, CCFLAGS, LINKFLAGS etc: compiler commands and
     flags. Setting CCFLAGS etc will replace default flags. These variables
     can be set as environment variables as well.
 
@@ -136,8 +140,8 @@ Targets:
 
 You can specify one or more of the following targets:
 
-  Static libraries (names correspond to their directories): 
-    boost, intl, support, mathed, insets, frontends, graphics, 
+  Static libraries (names correspond to their directories):
+    boost, intl, support, mathed, insets, frontends, graphics,
     controllers, client, qt3, qt4, lyxbase
   Programs:
     tex2lyx, client, lyx, all = tex2lyx + client + lyx
@@ -153,7 +157,7 @@ directory structure is:
     - common: most of the intermediate files, mostly object files
     - libs: all static libraries
     - qt3 etc: lyx executable built with the frontend
-    - executables: lyxclient, tex2lyx, lyx 
+    - executables: lyxclient, tex2lyx, lyx
 
 MSVS projects will be put to development/scons (and you should invoke
 scons from there for this target).
@@ -196,13 +200,13 @@ problems.
       mingw-utils-0.3.tar.gz
       MSYS-1.0.11-...exe
       msysDTK-1.0.1.exe
-      w32api-3.6.tar.g 
+      w32api-3.6.tar.gz
 
   * install the latest Qt official "open source" binary package for
     Windows/Mingw (required)
 
   * install mingw/zlib (required):
-    Download zlib binaries and developer files (zlib-1.2.3-bin.zip and 
+    Download zlib binaries and developer files (zlib-1.2.3-bin.zip and
     zlib-1.2.3-lib.zip) from http://gnuwin32.sourceforge.net/packages/zlib.htm .
 
   * install iconv (optional):
@@ -217,7 +221,7 @@ problems.
     The complete package (without source) is recommended.
 
     You may also try the windows binary (gettext-runtime-x.x.x.bin.woe32.zip
-    and gettext-tools-x.x.x.bin.woe32.zip) from one of the GNU mirrors 
+    and gettext-tools-x.x.x.bin.woe32.zip) from one of the GNU mirrors
     (e.g. http://mirrors.usc.edu/pub/gnu/gettext/).
 
   * install aspell (optional):
@@ -233,7 +237,7 @@ problems.
 
   * Open a mingw xterm, and start scons as usual.
 
-Note: gettext, iconv and zlib are usually decompressed to c:/mingw so no 
+Note: gettext, iconv and zlib are usually decompressed to c:/mingw so no
 extra_inc_path etc is needed.
 
 
@@ -258,11 +262,18 @@ To build lyx for cygwin, you should
 
   * run scons as you would do under linux.
 
+Note: cygwin/qt does not follow the usual $qt_dir/include, $qt_dir/bin,
+$qt_dir/lib directory structure. For example, cygwin/qt3 uses directories
+/usr/include/qt3, /usr/lib/qt3/bin and /usr/lib/qt3/lib. If these
+directories can not be detected automatically, use options, for example,
+  qt_dir=/usr/lib/qt3 qt_inc_path=/usr/include/qt3
+
+
 
 5. Windows/msvc
 ===============
 
-To build lyx with msvc, you should 
+To build lyx with msvc, you should
 
   * install msvc
     It is recommended that you use MSVC2005 Express edition which is
@@ -272,7 +283,7 @@ To build lyx with msvc, you should
     Please follow the link in the MSVC webpage to download and configure.
     It is important that you add SDK paths to %INCLUDE% and %LIB% in, e.g.,
     C:\Program Files\Microsoft Visual Studio 8\Common7\Tools\vsvars32.bat.
-    If you plan to use the MSVS IDE, you should also update the Visual C++ 
+    If you plan to use the MSVS IDE, you should also update the Visual C++
     directories in VCProjectEngine.dll.express.config, as suggested in
     http://msdn.microsoft.com/vstudio/express/visualc/usingpsdk/.
 
@@ -284,25 +295,40 @@ To build lyx with msvc, you should
 
   * download and install the official zlib library from www.zlib.org.
 
-  * optionally install iconv, gettext, aspell, aiksaurus following 
+  * optionally install iconv, gettext, aspell, aiksaurus following
     the mingw instructions.
 
   * start from msvc command prompt, use the use_vc option to build lyx.
     You may need to use extra_inc_path etc to point to zlib paths.
 
-  * you can use the msvs_projects target to obtain msvc project files 
-    for each lyx component.   
+  * you can use the msvs_projects target to obtain msvc project files
+    for each lyx component.
       - go to development/scons (important)
-      - run 
+      - run
         > scons [other options] msvs_projects
-    Note that 
+    Note that
       - The resulting project files will use scons to build lyx
-      - All command line options, including rebuild, can be used as usual 
+      - All command line options, including rebuild, can be used as usual
         (when msvs invoke scons).
       - To use the msvc debugger, you have to use mode=debug (default).
 
 
-6. Troubleshooting
+6. Other versions of lyx (1.4.x)
+================================
+
+The scons build system is not yet distributed with lyx1.4.x. Support for
+the qt2 frontend of lyx1.4.x is, however, added to the trunk (1.5.x). If
+you have checked out both 1.4.x and the trunk, you can build lyx 1.4.x
+using commands similar to
+
+  > cd lyx-1.4.x
+  > scons -f ../lyx-1.5.x/development/scons/SConstruct
+
+Note that lyx 1.4.x does not use the latest version of the boost library
+so option boost=included is recommended.
+
+
+7. Troubleshooting
 ==================
 
 When you get an error:

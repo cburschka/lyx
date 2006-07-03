@@ -103,6 +103,9 @@ else:  # unsupported system, assume posix behavior
     default_with_x = True
     default_packaging_method = 'posix'
 
+# 1.4.2 only has qt2 frontend
+if package_version == '1.4.2svn':
+    default_frontend = 'qt2'
 
 #---------------------------------------------------------
 # Handling options
@@ -544,13 +547,10 @@ if env.has_key('qt_dir') and env['qt_dir']:
     env.PrependENVPath('PATH', os.path.join(env['qt_dir'], 'bin'))
 elif os.path.isdir(os.environ.get('QTDIR', '/usr/lib/qt-3.3')):
     env['QTDIR'] = os.environ.get('QTDIR', '/usr/lib/qt-3.3')
-else:
-    # QTDIR is not always used so no warning is issued.
-    env['QTDIR'] = 'QTDIR_is_not_defined'
 
 if env.has_key('qt_lib_path') and env['qt_lib_path']:
     qt_lib_path = env.subst('$qt_lib_path')
-elif os.path.isdir(os.path.join(env.subst('$QTDIR'), 'lib')):
+elif env.has_key('QTDIR') and os.path.isdir(os.path.join(env.subst('$QTDIR'), 'lib')):
     qt_lib_path = env.subst('$QTDIR/lib')
 # this is the path for cygwin.
 elif os.path.isdir(os.path.join('/usr/lib/', frontend, 'lib')):
@@ -564,7 +564,7 @@ env.PrependENVPath('PKG_CONFIG_PATH', qt_lib_path)
 
 if env.has_key('qt_inc_path') and env['qt_inc_path']:
     qt_inc_path = env['qt_inc_path']
-elif os.path.isdir(os.path.join(env.subst('$QTDIR'), 'include')):
+elif env.has_key('QTDIR') and os.path.isdir(os.path.join(env.subst('$QTDIR'), 'include')):
     qt_inc_path = '$QTDIR/include'
 # this is the path for cygwin.
 elif os.path.isdir('/usr/include/' + frontend):
@@ -1249,29 +1249,24 @@ env = conf.Finish()
 #
 # NOTE: Tool('qt') or Tool('qt4') will be loaded later
 # in their respective directory and specialized env.
-try:
-    if frontend in ['qt2', 'qt3']:
-        # note: env.Tool('qt') my set QT_LIB to qt
-        qt_libs = ['qt-mt']
-        frontend_libs = ['qt-mt']
-    elif frontend == 'qt4':
-        qt_libs = ['QtCore', 'QtGui']
-        # set the right lib names
-        if platform_name == 'win32':
-            if mode == 'debug' and use_vc:
-                qt_lib_suffix = 'd4'
-            else:
-                qt_lib_suffix = '4'
+if frontend in ['qt2', 'qt3']:
+    # note: env.Tool('qt') my set QT_LIB to qt
+    qt_libs = ['qt-mt']
+    frontend_libs = ['qt-mt']
+elif frontend == 'qt4':
+    qt_libs = ['QtCore', 'QtGui']
+    # set the right lib names
+    if platform_name == 'win32':
+        if mode == 'debug' and use_vc:
+            qt_lib_suffix = 'd4'
         else:
-            if mode == 'debug':
-                qt_lib_suffix = '_debug'
-            else:
-                qt_lib_suffix = ''
-        frontend_libs = [x + qt_lib_suffix for x in qt_libs]
-except:
-    print "Can not locate qt tools"
-    print "What I get is "
-    print "  QTDIR: ", env['QTDIR']
+            qt_lib_suffix = '4'
+    else:
+        if mode == 'debug':
+            qt_lib_suffix = '_debug'
+        else:
+            qt_lib_suffix = ''
+    frontend_libs = [x + qt_lib_suffix for x in qt_libs]
 
 
 if platform_name in ['win32', 'cygwin']:
@@ -2262,7 +2257,7 @@ if 'install' in targets:
     #
     # do not install these files
     exclude_list = ['Makefile.am', 'Makefile.in', 'Makefile',
-        'lyx2lyx_version.py', 'lyx2lyx_version.py.in']
+        'lyx2lyx_version.py.in']
 
     def install(dest, src):
         ''' recusive installation of src to dest '''
@@ -2316,8 +2311,12 @@ if 'install' in targets:
         'lyxrc.example', 'syntax.default', 'bind', 'images', 'layouts', 'scripts',
         'templates', 'examples', 'kbd', 'lyx2lyx', 'tex', 'clipart', 'doc',  'ui']]
     )
-    env.substFile(share_dest_dir + '/lyx2lyx/lyx2lyx_version.py',
-        '$TOP_SRCDIR/lib/lyx2lyx/lyx2lyx_version.py.in')
+    # lyx1.4.x does not have lyx2lyx_version.py.in
+    if os.path.isfile('$TOP_SRCDIR/lib/lyx2lyx/lyx2lyx_version.py.in'):
+        # subst and install this file
+        env.substFile(share_dest_dir + '/lyx2lyx/lyx2lyx_version.py',
+            '$TOP_SRCDIR/lib/lyx2lyx/lyx2lyx_version.py.in')
+        Alias('install', share_dest_dir + '/lyx2lyx/lyx2lyx_version.py')
     Alias('install', dirs)
     # man
     env.InstallAs(os.path.join(man_dest_dir, 'lyx' + version_suffix + '.1'),
