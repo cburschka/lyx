@@ -34,6 +34,8 @@
 
 #include "frontends/font_metrics.h"
 #include "frontends/nullpainter.h"
+#include "frontends/LyXView.h"
+#include "frontends/WorkArea.h"
 #include "frontends/Painter.h"
 
 #include "insets/insettext.h"
@@ -879,7 +881,7 @@ void paintPar
 
 void paintText(BufferView const & bv, ViewMetricsInfo const & vi)
 {
-	Painter & pain = bv.painter();
+	Painter & pain = bv.owner()->workArea()->getPainter();
 	LyXText * const text = bv.text();
 	bool const select = bv.cursor().selection();
 

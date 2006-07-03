@@ -39,7 +39,6 @@ class ViewMetricsInfo;
 namespace lyx {
 namespace frontend {
 class Gui;
-class Painter;
 }
 }
 
@@ -49,8 +48,6 @@ class BufferView::Pimpl : public boost::signals::trackable {
 public:
 	///
 	Pimpl(BufferView & bv, LyXView * owner);
-	///
-	lyx::frontend::Painter & painter() const;
 	///
 	void setBuffer(Buffer * buf);
 	///

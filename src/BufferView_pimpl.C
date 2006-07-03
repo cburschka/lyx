@@ -64,7 +64,6 @@
 #include "frontends/font_metrics.h"
 #include "frontends/Gui.h"
 #include "frontends/LyXView.h"
-#include "frontends/Painter.h"
 #include "frontends/WorkArea.h"
 
 #include "graphics/Previews.h"
@@ -316,12 +315,6 @@ bool BufferView::Pimpl::loadLyXFile(string const & filename, bool tolastfiles)
 lyx::frontend::Gui & BufferView::Pimpl::gui() const
 {
 	return owner_->gui();
-}
-
-
-lyx::frontend::Painter & BufferView::Pimpl::painter() const
-{
-	return owner_->workArea()->getPainter();
 }
 
 

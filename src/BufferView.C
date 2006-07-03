@@ -90,12 +90,6 @@ LyXView * BufferView::owner() const
 }
 
 
-lyx::frontend::Painter & BufferView::painter() const
-{
-	return pimpl_->painter();
-}
-
-
 void BufferView::setBuffer(Buffer * b)
 {
 	pimpl_->setBuffer(b);

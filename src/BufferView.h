@@ -35,12 +35,6 @@ class LyXText;
 class LyXView;
 class ParIterator;
 
-namespace lyx {
-namespace frontend {
-class Painter;
-}
-}
-
 namespace Update {
 	enum flags {
 		FitCursor = 1,
@@ -101,9 +95,6 @@ public:
 	void setBuffer(Buffer * b);
 	/// return the buffer being viewed
 	Buffer * buffer() const;
-
-	/// return the painter object for drawing onto the view
-	lyx::frontend::Painter & painter() const;
 
 	/// return the owning main view
 	LyXView * owner() const;
