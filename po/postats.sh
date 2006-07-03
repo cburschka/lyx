@@ -18,7 +18,7 @@
 # modifiy this when you change version
 # Note that an empty lyx_branch variable (ie cvs HEAD)
 # will "do the right thing".
-lyx_version=1.4.0cvs
+lyx_version=1.5.0svn
 lyx_branch=
 
 
@@ -181,9 +181,9 @@ EOF
 dump_tail () {
 
 test "$lyx_branch" = "" && {
-	branch_tag=""
+	branch_tag="trunk"
 } || {
-	branch_tag="?only_with_tag=$lyx_branch"
+	branch_tag="branches/$lyx_branch"
 }
 
 cat <<EOF
@@ -270,7 +270,7 @@ while (list(\$foo,\$info) = each(\$podata)) {
 	}
 	print "<td \$style>" ;
 
-	print "<a href=\"http://www.lyx.org/cgi-bin/viewcvs.cgi/lyx-devel/po/" . \$info['langcode'] . ".po$branch_tag\">" . \$lang[\$info['langcode']] . "</a></td>";
+	print "<a href=\"http://www.lyx.org/trac/browser/lyx-devel/$branch_tag/po/" . \$info['langcode'] . ".po?format=raw\">" . \$lang[\$info['langcode']] . "</a></td>";
 
 	print "<td \$style align=\"right\">" . \$info['msg_tr'] . "</td>";
 
