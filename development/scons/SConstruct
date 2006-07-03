@@ -2312,7 +2312,7 @@ if 'install' in targets:
         'templates', 'examples', 'kbd', 'lyx2lyx', 'tex', 'clipart', 'doc',  'ui']]
     )
     # lyx1.4.x does not have lyx2lyx_version.py.in
-    if os.path.isfile('$TOP_SRCDIR/lib/lyx2lyx/lyx2lyx_version.py.in'):
+    if os.path.isfile(env.subst('$TOP_SRCDIR/lib/lyx2lyx/lyx2lyx_version.py.in')):
         # subst and install this file
         env.substFile(share_dest_dir + '/lyx2lyx/lyx2lyx_version.py',
             '$TOP_SRCDIR/lib/lyx2lyx/lyx2lyx_version.py.in')
