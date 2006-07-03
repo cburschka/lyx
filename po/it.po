@@ -1,48 +1,14 @@
-# translation of lyx-1.4xx_it.po to italiano
-# translation of lyx_1-4x_it.po to Italiano
-# translation of lyx_it_prova.po to Italiano
-# translation of it.po to Italiano
-# translation of lyx-1.4x_it.po to Italiano
+# translation of lyx-1.4.2_dev_it.po to italiano
 # This file is distributed under the same license as the PACKAGE package.
 # Grazie a Lele Gaifax  (leleATnautilus.homeip.net) per tutti i suoi suggerimenti e consigli
-# Kostantino <inverness1ATalice.it>, 2005.
-# Kostantino <ciclope10ATalice.it>, 2006.
-# Kostantino <ciclope10ATalice.it>, 2006.
-# Kostantino <ciclope10ATalice.it>, 2006.
-# Kostantino <ciclope10ATalice.it>, 2006.
-# Kostantino <ciclope10ATalice.it>, 2006.
-# Kostantino <ciclope10ATalice.it>, 2006.
-# Kostantino <ciclope10ATalice.it>, 2006.
-# Kostantino <ciclope10ATalice.it>, 2006.
-# Kostantino <ciclope10ATalice.it>, 2006.
-# Kostantino <ciclope10ATalice.it>, 2006.
-# Kostantino <ciclope10ATalice.it>, 2006.
-# Kostantino <ciclope10ATalice.it>, 2006.
-# Kostantino <ciclope10ATalice.it>, 2006.
-# Kostantino <ciclope10ATalice.it>, 2006.
-# Kostantino <ciclope10ATalice.it>, 2006.
-# Kostantino <ciclope10ATalice.it>, 2006.
-# Kostantino <ciclope10ATalice.it>, 2006.
-# Kostantino <ciclope10ATalice.it>, 2006.
-# Kostantino <ciclope10ATalice.it>, 2006.
-# Kostantino <ciclope10ATalice.it>, 2006.
-# Kostantino <ciclope10ATalice.it>, 2006.
-# Kostantino <ciclope10ATalice.it>, 2006.
-# Kostantino <ciclope10ATalice.it>, 2006.
-# Kostantino <ciclope10ATalice.it>, 2006.
-# Kostantino <ciclope10ATalice.it>, 2006.
-# Kostantino <ciclope10ATalice.it>, 2006.
-# Kostantino <ciclope10ATalice.it>, 2006.
-# Kostantino <ciclope10ATalice.it>, 2006.
-# Kostantino <ciclope10ATalice.it>, 2006.
 # Kostantino <ciclope10ATalice.it>, 2006.
 # Kostantino <ciclope10ATalice.it>, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: lyx-1.4xx_it\n"
+"Project-Id-Version: lyx-1.4.2_dev_it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2006-06-27 22:08+0200\n"
-"PO-Revision-Date: 2006-06-23 19:18+0200\n"
+"PO-Revision-Date: 2006-06-30 16:35+0200\n"
 "Last-Translator: Kostantino <ciclope10ATalice.it>\n"
 "Language-Team: italiano <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -818,9 +784,8 @@ msgid "y"
 msgstr "y"
 
 #: src/frontends/xforms/forms/form_external.fd:578
-#, fuzzy
 msgid "Clip to bounding box|#b"
-msgstr "Attacca alla casella di legame|#A"
+msgstr "Unisci alla casella delimitante|#A"
 
 #: src/frontends/xforms/forms/form_external.fd:596
 msgid "Get from File|#G"
@@ -962,7 +927,7 @@ msgstr "Unità|#U"
 
 #: src/frontends/xforms/forms/form_graphics.fd:578
 msgid "Clip to bounding box|#C"
-msgstr "Attacca alla alla casella di legame|#A"
+msgstr "Unisci alla casella delimitante|#A"
 
 #: src/frontends/xforms/forms/form_graphics.fd:596
 msgid "Get from file|#G"
@@ -1128,9 +1093,8 @@ msgid "Comment|#o"
 msgstr "Commento|#o"
 
 #: src/frontends/xforms/forms/form_note.fd:116
-#, fuzzy
 msgid "Greyed out|#G"
-msgstr "Ombreggiato|#G"
+msgstr "Ombreggiato grigio|#G"
 
 #: src/frontends/xforms/forms/form_paragraph.fd:44
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:350
@@ -1632,7 +1596,6 @@ msgid "Odd pages:"
 msgstr "Pagine dispari:"
 
 #: src/frontends/xforms/forms/form_preferences.fd:2782
-#, fuzzy
 msgid "Collated:"
 msgstr "Confrontato:"
 
@@ -1697,9 +1660,8 @@ msgid "Index:|#I"
 msgstr "Indice:|#I"
 
 #: src/frontends/xforms/forms/form_preferences.fd:3134
-#, fuzzy
 msgid "Use Windows Paths for LaTeX|#s"
-msgstr "Usa Percorsi Cygwin|#s"
+msgstr "Usa Percorsi Windows per LaTex|#s"
 
 #: src/frontends/xforms/forms/form_print.fd:44
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:45
@@ -2139,8 +2101,7 @@ msgstr "Bibliografia a s&ezioni"
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:186
 #: src/frontends/xforms/FormDocument.C:321
 msgid "Select this if you want to split your bibliography into sections"
-msgstr ""
-"Seleziona questa opzione se vuoi dividere la tua bibliografia in sezioni"
+msgstr "Seleziona questa opzione se vuoi dividere la tua bibliografia in sezioni"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:56
 msgid "A&vailable Branches:"
@@ -2831,8 +2792,7 @@ msgstr "Allineamento verticale del contenuto dentro la casella"
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:457
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:514
 msgid "Vertical alignment of the box (with regard to baseline)"
-msgstr ""
-"Allineamento verticale della casella (con attenzione alla linea di base)"
+msgstr "Allineamento verticale della casella (con attenzione alla linea di base)"
 
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:468
 msgid "Content hori&zontal:"
@@ -2856,8 +2816,7 @@ msgstr "Nessuno"
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:671
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:690
 msgid "Inner box -- needed for fixed width & line breaks"
-msgstr ""
-"Casella interna -- necessaria per larghezze fisse ed interruzioni di linea"
+msgstr "Casella interna -- necessaria per larghezze fisse ed interruzioni di linea"
 
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:682
 msgid "&Inner Box:"
@@ -3361,13 +3320,12 @@ msgstr "In basso a &sinistra:"
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:978
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:797
 msgid "Clip to &bounding box"
-msgstr "Attacca alla &casella di legame"
+msgstr "Unisci alla &casella delimitante"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:982
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:801
-#, fuzzy
 msgid "Clip to bounding box values"
-msgstr "Attacca ai valori della cesella di legame"
+msgstr "Unisci dentro i valori della casella delimitante"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:993
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:833
@@ -3376,9 +3334,8 @@ msgstr "&Ottieni da file"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:997
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:837
-#, fuzzy
 msgid "Get bounding box from the (EPS) file"
-msgstr "Ottieni casella di legame dal file (EPS)"
+msgstr "Ottieni la casella delimitante da file (EPS)"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:1012
 #: src/frontends/xforms/FormExternal.C:463
@@ -3712,9 +3669,8 @@ msgid "Export to LaTeX/Docbook but don't print"
 msgstr "Esporta come LaTeX/Docbook ma non stampare"
 
 #: src/frontends/qt2/ui/QNoteDialogBase.ui:124
-#, fuzzy
 msgid "&Greyed out"
-msgstr "&Ingrigito"
+msgstr "&Ombreggiato grigio"
 
 #: src/frontends/qt2/ui/QNoteDialogBase.ui:128
 #: src/frontends/xforms/FormNote.C:46
@@ -3835,22 +3791,18 @@ msgid "&Format:"
 msgstr "&Formato:"
 
 #: src/frontends/qt2/ui/QPrefCygwinPathModule.ui:66
-#, fuzzy
 msgid "&Use Windows-style paths in LaTeX files"
-msgstr "&Usa i percorsi in stile Cygwin"
+msgstr "&Usa percorsi in stile Windows nei file LaTeX"
 
 #: src/frontends/qt2/ui/QPrefCygwinPathModule.ui:74
 #: src/frontends/xforms/FormPreferences.C:2145
-#, fuzzy
 msgid ""
 "Select if LyX should output Windows-style paths rather than Posix-style "
 "paths to LaTeX files. Useful if you're using the native Windows MikTeX "
 "rather than the Cygwin teTeX."
 msgstr ""
-"Seleziona se LyX debba produrre percorsi in stile Cygwin piuttosto che in "
-"stile Windows. Questa opzione è utile se stai usando il teTeX Cygwin "
-"piuttosto che un MikTeX nativo di Windows. Nota, comunque, che dovrai "
-"scrivere dei wrapper di script shell per ognuno dei tuoi convertitori."
+"Seleziona se LyX debba produrre percorsi in stile Windows piuttosto che in "
+"stile Posix. Questa opzione è utile se stai usando il MikTeX nativo di Windows piuttosto che il teTeX Cygwin."
 
 #: src/frontends/qt2/ui/QPrefDateModule.ui:56
 msgid "&Date format:"
@@ -3990,13 +3942,11 @@ msgstr "Evidenzia linguaggi &stranieri"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:77
 msgid "&Reset class options when document class changes"
-msgstr ""
-"&Reimposta le opzioni della classe quando cambia la classe del documento"
+msgstr "&Reimposta le opzioni della classe quando cambia la classe del documento"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:81
 msgid "Set class options to default on class change"
-msgstr ""
-"Imposta le opzioni della classe a quelle prestabilite quando cambia la classe"
+msgstr "Imposta le opzioni della classe a quelle prestabilite quando cambia la classe"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:92
 msgid "External Applications"
@@ -4237,8 +4187,7 @@ msgstr "Ca&ratteri di fuga:"
 
 #: src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:172
 msgid "Specify a personal dictionary file other than the default"
-msgstr ""
-"Specifica un dizionario personale alternativo diverso da quello prestabilito"
+msgstr "Specifica un dizionario personale alternativo diverso da quello prestabilito"
 
 #: src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:183
 msgid "Personal &dictionary:"
@@ -4289,9 +4238,8 @@ msgid "&User interface file:"
 msgstr "File interfaccia &utente:"
 
 #: src/frontends/qt2/ui/QPrefUIModule.ui:315
-#, fuzzy
 msgid "&Bind file:"
-msgstr "&Lega file:"
+msgstr "&Vincola file:"
 
 #: src/frontends/qt2/ui/QPrefUIModule.ui:357
 msgid "Cursor follows &scrollbar"
@@ -4685,8 +4633,7 @@ msgstr "Questa riga è l'intestazione della prima pagina"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:968
 msgid "Repeat this row as footer on every (except the last) page"
-msgstr ""
-"Ripeti questa riga come piè di pagina per ogni pagina (eccetto l'ultima)"
+msgstr "Ripeti questa riga come piè di pagina per ogni pagina (eccetto l'ultima)"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:983
 msgid "This row is the footer of the last page"
@@ -4780,8 +4727,7 @@ msgid "&View"
 msgstr "&Vista"
 
 #: src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
+msgid "Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 "Mostra i contenuti del file segnato. E' possibile solo quando i file sono "
 "mostrati con il loro percorso."
@@ -4870,8 +4816,7 @@ msgstr "Inserisci uno spazio anche dopo un'interruzione di pagina"
 
 #: src/frontends/qt2/ui/QVSpaceDialogBase.ui:113
 msgid "Custom value. Needs spacing type \"Custom\"."
-msgstr ""
-"Valore personalizzato. Necessita una spaziatura come \"Personalizzato\"."
+msgstr "Valore personalizzato. Necessita una spaziatura come \"Personalizzato\"."
 
 #: src/frontends/qt2/ui/QVSpaceDialogBase.ui:121
 msgid "DefSkip"
@@ -7994,12 +7939,10 @@ msgid "Ident-line:"
 msgstr "Indenta (linea):"
 
 #: lib/layouts/agu_stdtitle.inc:230
-#, fuzzy
 msgid "Runhead"
 msgstr "Runhead"
 
 #: lib/layouts/agu_stdtitle.inc:233
-#, fuzzy
 msgid "Runhead:"
 msgstr "Runhead:"
 
@@ -8017,14 +7960,12 @@ msgid "Citation:"
 msgstr "Citazione:"
 
 #: lib/layouts/agu_stdtitle.inc:271
-#, fuzzy
 msgid "Posting-order"
-msgstr "Ordine di posizionamento"
+msgstr "Ordine posizionamento"
 
 #: lib/layouts/agu_stdtitle.inc:274
-#, fuzzy
 msgid "Posting-order:"
-msgstr "Ordine di posizionamento:"
+msgstr "Ordine posizionamento:"
 
 #: lib/layouts/agu_stdtitle.inc:279
 msgid "AGU-pages"
@@ -8859,7 +8800,6 @@ msgid "Find & Replace...|F"
 msgstr "Trova e sostituisci...|s"
 
 #: lib/ui/classic.ui:100
-#, fuzzy
 msgid "Tabular|T"
 msgstr "Tabulare|b"
 
@@ -9189,12 +9129,10 @@ msgid "Horizontal Fill|H"
 msgstr "Allineamento orizzontale|o"
 
 #: lib/ui/classic.ui:243 lib/ui/stdmenus.ui:283
-#, fuzzy
 msgid "Hyphenation Point|P"
-msgstr "Aggiungi punto d'unione|p"
+msgstr "Punto d'unione|p"
 
 #: lib/ui/classic.ui:244 lib/ui/stdmenus.ui:284
-#, fuzzy
 msgid "Ligature Break|k"
 msgstr "Interruzione di collegamento|z"
 
@@ -10121,7 +10059,6 @@ msgid "Insert { }"
 msgstr "Inserisci { }"
 
 #: lib/ui/stdtoolbars.ui:137
-#, fuzzy
 msgid "Insert cases environment"
 msgstr "Inserisci contesto casi"
 
@@ -10249,22 +10186,18 @@ msgid "No further redo information"
 msgstr "Nessun altra operazione da rifare"
 
 #: src/BufferView_pimpl.C:1269
-#, fuzzy
 msgid "Mark off"
 msgstr "Evidenziazione disattivata"
 
 #: src/BufferView_pimpl.C:1276
-#, fuzzy
 msgid "Mark on"
 msgstr "Evidenziazione attivata"
 
 #: src/BufferView_pimpl.C:1283
-#, fuzzy
 msgid "Mark removed"
 msgstr "L'evidenziazione è stato rimossa"
 
 #: src/BufferView_pimpl.C:1286
-#, fuzzy
 msgid "Mark set"
 msgstr "L'evidenziazione è stato impostata"
 
@@ -10407,14 +10340,12 @@ msgid "comment background"
 msgstr "sfondo commento"
 
 #: src/LColor.C:111
-#, fuzzy
 msgid "greyedout inset"
-msgstr "ombreggia inserisci"
+msgstr "ombreggia in grigio l'inserto"
 
 #: src/LColor.C:112
-#, fuzzy
 msgid "greyedout inset background"
-msgstr "ombreggia inserisci sfondo"
+msgstr "ombreggia in grigio l'inserto sfondo"
 
 #: src/LColor.C:113
 msgid "depth bar"
@@ -10489,9 +10420,8 @@ msgid "end-of-line marker"
 msgstr "marcatore di fine linea"
 
 #: src/LColor.C:132
-#, fuzzy
 msgid "appendix marker"
-msgstr "marcatore appendice"
+msgstr "evidenziatore di appendice"
 
 #: src/LColor.C:133
 msgid "change bar"
@@ -10506,9 +10436,8 @@ msgid "Added text"
 msgstr "Testo aggiunto"
 
 #: src/LColor.C:136
-#, fuzzy
 msgid "added space markers"
-msgstr "sono stati aggiunti i marcatori di spazio"
+msgstr "sono stati aggiunti gli evidenziatori di spazio"
 
 #: src/LColor.C:137
 msgid "top/bottom line"
@@ -11048,7 +10977,6 @@ msgid "External template/inset messages"
 msgstr "Modello esterno/inserisci messaggi"
 
 #: src/debug.C:66
-#, fuzzy
 msgid "RowPainter profiling"
 msgstr "Creazione profilo RowPainter"
 
@@ -11170,8 +11098,7 @@ msgstr "Per favore, installa LyX correttamente per avere un'idea dell'enorme\n"
 
 #: src/frontends/controllers/ControlAboutlyx.C:59
 msgid "amount of work other people have done for the LyX project."
-msgstr ""
-"lavoro che altre persone hanno fatto e stanno facendo per il progetto LyX!"
+msgstr "lavoro che altre persone hanno fatto e stanno facendo per il progetto LyX!"
 
 #: src/frontends/controllers/ControlAboutlyx.C:66
 msgid ""
@@ -11351,7 +11278,6 @@ msgid "LaTeX Log"
 msgstr "Registro di LaTeX"
 
 #: src/frontends/controllers/ControlLog.C:77
-#, fuzzy
 msgid "Literate Programming Build Log"
 msgstr "Registro compilato di programmazione esperta"
 
@@ -11368,10 +11294,8 @@ msgid "No LaTeX log file found."
 msgstr "Non ho trovato alcun file di registro di LaTeX."
 
 #: src/frontends/controllers/ControlLog.C:109
-#, fuzzy
 msgid "No literate programming build log file found."
-msgstr ""
-"Non è stato trovato alcun registro compilato di programmazione esperta."
+msgstr "Non è stato trovato alcun registro compilato di programmazione esperta."
 
 #: src/frontends/controllers/ControlLog.C:112
 msgid "No lyx2lyx error log file found."
@@ -11382,14 +11306,12 @@ msgid "No version control log file found."
 msgstr "Non è stato trovato nessun registro di controllo versione."
 
 #: src/frontends/controllers/ControlPrefs.C:125
-#, fuzzy
 msgid "Choose bind file"
 msgstr "Scegli file di collegamento"
 
 #: src/frontends/controllers/ControlPrefs.C:126
-#, fuzzy
 msgid "LyX bind files (*.bind)"
-msgstr "File bind di LyX (*.bind)"
+msgstr "File di collegamento di LyX (*.bind)"
 
 #: src/frontends/controllers/ControlPrefs.C:132
 msgid "Choose UI file"
@@ -11889,12 +11811,10 @@ msgstr "Non è stata trovata alcun sinonimo"
 
 #: src/frontends/gtk/GToc.C:122 src/frontends/xforms/FormErrorList.C:83
 #: src/frontends/xforms/FormToc.C:109 src/frontends/xforms/FormToc.C:127
-#, fuzzy
 msgid "*** No Lists ***"
 msgstr "*** Nessuna lista ***"
 
 #: src/frontends/gtk/GToc.C:145
-#, fuzzy
 msgid "*** No Items ***"
 msgstr "*** Nessun elenco ***"
 
@@ -12544,8 +12464,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormBibtex.C:101
 msgid "Select if the bibliography should appear in the Table of Contents"
-msgstr ""
-"Da selezionare se la bibliografia dovesse apparire nell'indice generale"
+msgstr "Da selezionare se la bibliografia dovesse apparire nell'indice generale"
 
 #: src/frontends/xforms/FormBibtex.C:105
 msgid "Double click to choose a BibTeX style from the list."
@@ -12656,8 +12575,7 @@ msgstr ""
 "frase (Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:218
-msgid ""
-"Optional text which appears before the citation, e.g. \"see <Citation>\""
+msgid "Optional text which appears before the citation, e.g. \"see <Citation>\""
 msgstr ""
 "Testo facoltativo come appare prima della citazione e cioè \" vedi "
 "<Citazione>\""
@@ -12717,8 +12635,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormDocument.C:298
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | <<text>> | >>text<< "
-msgstr ""
-" ``testo'' | ''testo'' | ,,testo`` | ,,testo'' | <<testo>> | >>testo<< "
+msgstr " ``testo'' | ''testo'' | ,,testo`` | ,,testo'' | <<testo>> | >>testo<< "
 
 #: src/frontends/xforms/FormDocument.C:314
 msgid " Basic | Natbib author-year | Natbib numerical | Jurabib "
@@ -12770,8 +12687,7 @@ msgstr "Rami disponibili per questo documento."
 
 #: src/frontends/xforms/FormDocument.C:401
 msgid "Activated branches. Content will occur in the document's output"
-msgstr ""
-"Sono i rami attivati. Il contenuto sarà mostrato nel documento prodotto"
+msgstr "Sono i rami attivati. Il contenuto sarà mostrato nel documento prodotto"
 
 #: src/frontends/xforms/FormDocument.C:403
 msgid "Modify background color of branch inset"
@@ -12894,8 +12810,7 @@ msgstr "Imposta la larghezza dell'immagine al valore inserito."
 #: src/frontends/xforms/FormGraphics.C:163
 #, no-c-format
 msgid "Select unit for width; Scale% for scaling whole image."
-msgstr ""
-"Seleziona l'unità di lunghezza e varia per ridimensionare l'intera immagine."
+msgstr "Seleziona l'unità di lunghezza e varia per ridimensionare l'intera immagine."
 
 #: src/frontends/xforms/FormGraphics.C:165
 msgid "Set the image height to the inserted value."
@@ -12919,59 +12834,45 @@ msgid ""
 "should unzip the file. Needs an additional file like \"file.eps.bb\" which "
 "holds the values for the bounding box."
 msgstr ""
-"Passa un nome di file tipo \"file.eps.gz\" a LaTeX. Utile qualora LaTeX "
-"dovesse decomprimere il file. E' necessario un file addizionale come \"file."
-"eps.bb\" che contenga i valori per la casella di legame."
+"Passa un nome di file tipo \"file.eps.gz\" all'output LaTeX. Utile qual'ora LaTeX "
+"dovesse decomprimere il file. E' necessario un file addizionale come \"file.eps.bb\" che contenga i valori per la casella delimitante."
 
 #: src/frontends/xforms/FormGraphics.C:178
 msgid "Show image only as a rectangle of the original size."
 msgstr "Mostra l'immagine solo come un rettangolo della dimensione originale."
 
 #: src/frontends/xforms/FormGraphics.C:211
-#, fuzzy
 msgid "The lower left x-value of the bounding box."
-msgstr "E' il valore inferiore sinistro dell'ascissa della casella di legame."
+msgstr "E' il valore inferiore sinistro dell'ascissa della casella delimitante."
 
 #: src/frontends/xforms/FormGraphics.C:213
-#, fuzzy
 msgid "The lower left y-value of the bounding box."
-msgstr "E il valore inferiore sinistro dell'ordinata della casella di legame."
+msgstr "E il valore inferiore sinistro dell'ordinata della casella delimitante."
 
 #: src/frontends/xforms/FormGraphics.C:215
-#, fuzzy
 msgid ""
 "The upper right x-value of the bounding box; only this input field allows "
 "length + unit, e.g. 5cm and sets the unit for the other input fields."
-msgstr ""
-"E' il valore superiore destro dell'ascissa della casella contornante; solo "
-"questo campo d'immissione permette di definire sia la lunghezza che la sua "
-"unità di misura. Cioè: 5cm e così imposta l'unità di misura per gli altri "
-"campi di immissione."
+msgstr "E' il valore superiore destro dell'ascissa della casella delimitante; solo questo campo d'immissione permette di definire sia la lunghezza che la sua unità di misura. Cioè: 5cm e così imposta l'unità di misura per gli altri campi di immissione."
 
 #: src/frontends/xforms/FormGraphics.C:219
 msgid "The upper right y-value of the bounding box."
-msgstr "E' il valore superiore destro dell'ordinata della casella contornante."
+msgstr "E' il valore superiore destro dell'ordinata della casella delimitante."
 
 #: src/frontends/xforms/FormGraphics.C:221
-#, fuzzy
 msgid "Select unit for the bounding box values."
-msgstr "Seleziona l'unità per i valori della casella contornante."
+msgstr "Seleziona l'unità per i valori della casella delimitante."
 
 #: src/frontends/xforms/FormGraphics.C:224
-#, fuzzy
 msgid ""
 "Read the image coordinates new from file. For (e)ps-file the bounding box is "
 "read, otherwise the imagesize in pixels. Default unit is \"bp\", the "
 "PostScript's b(ig) p(oint)."
-msgstr ""
-"Leggi le coordinate dell'immagine di nuovo da file. Per i file (e)ps la "
-"casella contornante è letta automaticamente in pixel. L'unità di misura "
-"predefinita è \"bp\", il PostScript b(ig) p(oint)."
+msgstr "Leggi le coordinate dell'immagine di nuovo da file. Per i file (e)ps la casella delimitante è letta automaticamente in pixel. L'unità di misura predefinita è \"bp\", il PostScript b(ig) p(oint)."
 
 #: src/frontends/xforms/FormGraphics.C:229
-#, fuzzy
 msgid "Clip image to the bounding box values."
-msgstr "Attacca l'immagine nei limiti della casella contornante."
+msgstr "Attacca l'immagine nei limiti della casella delimitante."
 
 #: src/frontends/xforms/FormGraphics.C:261
 msgid ""
@@ -13002,9 +12903,8 @@ msgstr ""
 "graphicx e non menzionata nei dialoghi dell'interfaccia grafica utente."
 
 #: src/frontends/xforms/FormGraphics.C:282
-#, fuzzy
 msgid "Bounding Box"
-msgstr "Casella contornante"
+msgstr "Casella delimitante"
 
 #: src/frontends/xforms/FormInclude.C:72
 msgid "File name to include."
@@ -13090,8 +12990,7 @@ msgid "LyX objects that can be assigned a color."
 msgstr "Oggetti di LyX a cui può essere assegnato un colore."
 
 #: src/frontends/xforms/FormPreferences.C:509
-msgid ""
-"Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgid "Modify the LyX object's color. Note: you must then \"Apply\" the change."
 msgstr ""
 "Modifica il colore dell'oggetto di LyX. Nota che allora devi premere il "
 "pulsante \"Applica\" per attivare il cambiamento."
@@ -13280,8 +13179,7 @@ msgstr "No|Niente matematica|Sì"
 
 #: src/frontends/xforms/FormPreferences.C:2103
 msgid " default | US letter | US legal | US executive | A3 | A4 | A5 | B5 "
-msgstr ""
-" predefinito | Lettera US | Legale US | Esecutivo US | A3 | A4 | A5 | B5 "
+msgstr " predefinito | Lettera US | Legale US | Esecutivo US | A3 | A4 | A5 | B5 "
 
 #: src/frontends/xforms/FormPreferences.C:2359
 msgid "Default path"
@@ -13445,8 +13343,7 @@ msgid "Search backwards."
 msgstr "Ricerca all'indietro."
 
 #: src/frontends/xforms/FormSendto.C:56
-msgid ""
-"Export the buffer to this format before running the command below on it."
+msgid "Export the buffer to this format before running the command below on it."
 msgstr ""
 "Esporta il buffer in questo formato prima di eseguire il comando contenuto "
 "in esso."
@@ -13683,9 +13580,8 @@ msgid "imported."
 msgstr "importato."
 
 #: src/insets/insetbase.C:265
-#, fuzzy
 msgid "Opened inset"
-msgstr "E' stato aperto l'oggetto inserito"
+msgstr "E' stato aperto l'inserto"
 
 #: src/insets/insetbibtex.C:105
 msgid "BibTeX Generated Bibliography"
@@ -13728,12 +13624,10 @@ msgid "Doublebox"
 msgstr "Doublebox"
 
 #: src/insets/insetbox.C:116
-#, fuzzy
 msgid "Opened Box Inset"
 msgstr "E' stato aperto l'inserto Casella"
 
 #: src/insets/insetbranch.C:72
-#, fuzzy
 msgid "Opened Branch Inset"
 msgstr "E' stato aperto l'inserto Ramo"
 
@@ -13747,7 +13641,6 @@ msgid "Undef: "
 msgstr "Non definito: "
 
 #: src/insets/insetcaption.C:77
-#, fuzzy
 msgid "Opened Caption Inset"
 msgstr "E' stato aperto l'inserto Didascalia"
 
@@ -13756,17 +13649,14 @@ msgid "Float"
 msgstr "Oggetto mobile"
 
 #: src/insets/insetcharstyle.C:118
-#, fuzzy
 msgid "Opened CharStyle Inset"
 msgstr "E' stato aperto l'inserto StileCarattere"
 
 #: src/insets/insetenv.C:65
-#, fuzzy
 msgid "Opened Environment Inset: "
 msgstr "E' stato aperto l'inserto Ambiente:"
 
 #: src/insets/insetert.C:142
-#, fuzzy
 msgid "Opened ERT Inset"
 msgstr "E' stato aperto l'inserto ERT"
 
@@ -13785,7 +13675,6 @@ msgid "float: "
 msgstr "mobile: "
 
 #: src/insets/insetfloat.C:291
-#, fuzzy
 msgid "Opened Float Inset"
 msgstr "E' stato aperto l'inserto Oggetto mobile"
 
@@ -13807,7 +13696,6 @@ msgid "foot"
 msgstr "piede"
 
 #: src/insets/insetfoot.C:56
-#, fuzzy
 msgid "Opened Footnote Inset"
 msgstr "E' stato aperto l'inserto Nota a piè di pagina"
 
@@ -13868,7 +13756,6 @@ msgid "margin"
 msgstr "margine"
 
 #: src/insets/insetmarginal.C:51
-#, fuzzy
 msgid "Opened Marginal Note Inset"
 msgstr "E' stato aperto l'inserto Nota a margine"
 
@@ -13878,10 +13765,9 @@ msgstr "Commento"
 
 #: src/insets/insetnote.C:59
 msgid "Greyed out"
-msgstr "Ombreggiato"
+msgstr "Ombreggiato grigio"
 
 #: src/insets/insetnote.C:137
-#, fuzzy
 msgid "Opened Note Inset"
 msgstr "E' stato aperto l'inserto Nota"
 
@@ -13890,7 +13776,6 @@ msgid "opt"
 msgstr "opz"
 
 #: src/insets/insetoptarg.C:56
-#, fuzzy
 msgid "Opened Optional Argument Inset"
 msgstr "E' stato aperto l'inserto Argomento opzionale"
 
@@ -13951,7 +13836,6 @@ msgid "You cannot set multicolumn vertically."
 msgstr "Non puoi impostare le multicolonne verticalmente."
 
 #: src/insets/insettext.C:229
-#, fuzzy
 msgid "Opened Text Inset"
 msgstr "E' stato aperto l'inserto Testo"
 
@@ -13984,7 +13868,6 @@ msgid "wrap: "
 msgstr "rientro: "
 
 #: src/insets/insetwrap.C:189
-#, fuzzy
 msgid "Opened Wrap Inset"
 msgstr "E' stato aperto l'inserto Rientro"
 
@@ -14018,8 +13901,7 @@ msgstr "Non è stato trovato alcun file!"
 
 #: src/insets/render_graphic.C:107
 msgid "Error converting to loadable format"
-msgstr ""
-"Si è verificato un errore durante la conversione ad un formato caricabile"
+msgstr "Si è verificato un errore durante la conversione ad un formato caricabile"
 
 #: src/insets/render_graphic.C:109
 msgid "Error loading file into memory"
@@ -14071,8 +13953,7 @@ msgstr ""
 
 #: src/ispell.C:377
 msgid "Could not communicate with the ispell spellchecker process."
-msgstr ""
-"Non riesco a comunicare con il processo di controllo ortografico ispell"
+msgstr "Non riesco a comunicare con il processo di controllo ortografico ispell"
 
 #: src/kbsequence.C:160
 msgid "   options: "
@@ -14415,8 +14296,7 @@ msgstr "Manca il tipo di file [esempio latex, ps...] dopo l'opzione --export"
 
 #: src/lyx_main.C:927
 msgid "Missing file type [eg latex, ps...] after --import switch"
-msgstr ""
-"Manca il tipo di file [per esempio. latex, ps...] dopo l'opzione --import"
+msgstr "Manca il tipo di file [per esempio. latex, ps...] dopo l'opzione --import"
 
 #: src/lyx_main.C:932
 msgid "Missing filename for --import"
@@ -14704,8 +14584,7 @@ msgstr ""
 "prestabilite dopo il cambiamento di classe."
 
 #: src/lyxrc.C:2091
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "E' l'intervallo di tempo tra due autosalvataggi (in secondi): 0 significa "
 "nessun autosalvataggio."
@@ -14736,8 +14615,7 @@ msgstr ""
 
 #: src/lyxrc.C:2110
 msgid "Select to check whether the lastfiles still exist."
-msgstr ""
-"Da selezionare per controllare se esiste ancora l'elenco degli ultimi file."
+msgstr "Da selezionare per controllare se esiste ancora l'elenco degli ultimi file."
 
 #: src/lyxrc.C:2114
 msgid ""
@@ -14795,8 +14673,7 @@ msgstr ""
 
 #: src/lyxrc.C:2160
 msgid "Specify additional chars that can be part of a word."
-msgstr ""
-"Specifica i caratteri addizionali che possono essere parte di una parola."
+msgstr "Specifica i caratteri addizionali che possono essere parte di una parola."
 
 #: src/lyxrc.C:2164
 msgid ""
@@ -14839,8 +14716,7 @@ msgstr ""
 "documento."
 
 #: src/lyxrc.C:2192
-msgid ""
-"Select if a language switching command is needed at the end of the document."
+msgid "Select if a language switching command is needed at the end of the document."
 msgstr ""
 "Da selezionare se un comando di cambio lingua è richiesto alla fine del "
 "documento."
@@ -14921,8 +14797,7 @@ msgstr ""
 "d'ambiente PERCORSO. Usa il formato nativo del sistema operativo."
 
 #: src/lyxrc.C:2243
-msgid ""
-"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
 "Specifica un dizionario personale alternativo. Per esempio:\".ispell_english"
 "\"."
@@ -15050,8 +14925,7 @@ msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "E' il tuo programma di stampa preferito, cioè \"dvips\", \"dvilj4\"."
 
 #: src/lyxrc.C:2343
-msgid ""
-"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "Da selezionare per abilitare il supporto per i linguaggi da destra a "
 "sinistra (cioè: Ebreo, Arabo)."
@@ -15311,8 +15185,7 @@ msgstr "Tutti i file (*)"
 
 #: src/support/package.C.in:439
 #, c-format
-msgid ""
-"Unable to determine the path to the LyX binary from the command line %1$s"
+msgid "Unable to determine the path to the LyX binary from the command line %1$s"
 msgstr ""
 "Non riesco a determinare il percorso all'eseguibile di LyX dalla linea di "
 "comando %1$s"
@@ -15376,7 +15249,6 @@ msgstr ""
 "Cerco di usare quella predefinita al suo posto.\n"
 
 #: src/text.C:213
-#, fuzzy
 msgid "Unknown Inset"
 msgstr "Inserto sconosciuto"
 
@@ -15408,8 +15280,7 @@ msgstr ""
 
 #: src/text.C:1196
 msgid "You cannot type two spaces this way. Please read the Tutorial."
-msgstr ""
-"Non puoi usare due spazi in questo modo. Per favore, leggi il Tutorial!"
+msgstr "Non puoi usare due spazi in questo modo. Per favore, leggi il Tutorial!"
 
 #: src/text.C:2270
 msgid "Change: "
@@ -15438,7 +15309,6 @@ msgid "Other ("
 msgstr "Altro ("
 
 #: src/text.C:2320
-#, fuzzy
 msgid ", Inset: "
 msgstr ", inserto: "
 
@@ -15521,3 +15391,4 @@ msgstr "Riempimento verticale "
 #: src/vspace.C:506
 msgid "protected"
 msgstr "protetto"
+

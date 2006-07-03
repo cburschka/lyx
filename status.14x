@@ -22,8 +22,11 @@ What's new
 - LyX now automatically uses file viewers and editors set at OS level
   [Windows and Mac OS X only] (bug 2017).
 
-- Update Hungarian, Italian (see bug 2650), and German localization
-  of the interface.
+- Add new function buffer-toggle-compression (and entry in Document
+  menu) to change whether the file will be compressed on disk or not.
+
+- Update German, Hungarian, Italian (bug 2650), and Spanish
+  localization of the interface.
 
 - Update translations of documentation for German (all) and Hungarian
   (Introduction, splash document, new tutorial examples).
@@ -37,9 +40,6 @@ What's new
 - Add biographynophoto style to IEEEtran.layout; add new text class for
   International Journal of Modern Physics C (and update support for
   IJMP D).
-
-- Add new function buffer-toggle-compression (and entry in Document
-  menu) to change whether the file will be compressed on disk or not.
 
 - Add buttons for \overset and \underset to the math panel (bug 2533)
 
