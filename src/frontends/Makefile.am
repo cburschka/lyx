@@ -2,7 +2,7 @@ include $(top_srcdir)/config/common.am
 
 SUBDIRS = controllers $(FRONTENDS_SUBDIRS)
 
-DIST_SUBDIRS = controllers xforms qt3 gtk qt4
+DIST_SUBDIRS = controllers qt3 gtk qt4
 
 EXTRA_DIST = pch.h
 

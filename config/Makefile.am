@@ -10,5 +10,4 @@ EXTRA_DIST = \
 	lyxinclude.m4 \
 	pkg.m4 \
 	qt.m4 \
-	spell.m4 \
-	xforms.m4
+	spell.m4

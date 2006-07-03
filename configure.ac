@@ -167,16 +167,6 @@ dnl The code below is not in a macro, because this would cause big
 dnl problems with the AC_REQUIRE contained in QT_DO_IT_ALL.
 for frontend in $FRONTENDS ; do
   case "$frontend" in
-    xforms)
-	  XFORMS_DO_IT_ALL
-	  FRONTENDS_PROGS="$FRONTENDS_PROGS lyx-xforms\$(EXEEXT)"
-	  FRONTENDS_SUBDIRS="$FRONTENDS_SUBDIRS xforms"
-	  RPM_FRONTEND="xforms"
-	  FRONTEND_INFO="${FRONTEND_INFO}\
-  XForms Frontend:\n\
-      libXpm version:\t\t${XPM_VERSION}\n\
-      libforms version:\t\t${XFORMS_VERSION}\n"
-	  ;;
     gtk)
 	  PKG_CHECK_MODULES(GTK_FRONTEND, gtkmm-2.4 libglademm-2.4 xft)
 	  FRONTENDS_PROGS="$FRONTENDS_PROGS lyx-gtk\$(EXEEXT)"
@@ -443,10 +433,6 @@ AC_CONFIG_FILES([Makefile  m4/Makefile \
        src/frontends/Makefile \
        src/frontends/controllers/Makefile \
        src/frontends/controllers/tests/Makefile \
-       src/frontends/xforms/Makefile \
-       src/frontends/xforms/lyx_forms.h-tmp:src/frontends/xforms/lyx_forms.h.in \
-       src/frontends/xforms/lyx_xpm.h-tmp:src/frontends/xforms/lyx_xpm.h.in \
-       src/frontends/xforms/forms/Makefile \
        src/frontends/gtk/Makefile \
        src/frontends/gtk/gimages/Makefile \
        src/frontends/gtk/glade/Makefile \
