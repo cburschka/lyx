@@ -28,6 +28,7 @@
 #include <qcheckbox.h>
 #include <qlineedit.h>
 #include <qpushbutton.h>
+#include <qradiobutton.h>
 #include "qsetborder.h"
 
 using std::string;
@@ -48,6 +49,18 @@ void QTabular::build_dialog()
 	dialog_.reset(new QTabularDialog(this));
 
 	bcview().setCancel(dialog_->closePB);
+
+	bcview().addReadOnly(dialog_->topspaceED);
+	bcview().addReadOnly(dialog_->topspaceUnit);
+	bcview().addReadOnly(dialog_->topspaceCO);
+	bcview().addReadOnly(dialog_->bottomspaceED);
+	bcview().addReadOnly(dialog_->bottomspaceUnit);
+	bcview().addReadOnly(dialog_->bottomspaceCO);
+	bcview().addReadOnly(dialog_->interlinespaceED);
+	bcview().addReadOnly(dialog_->interlinespaceUnit);
+	bcview().addReadOnly(dialog_->interlinespaceCO);
+	bcview().addReadOnly(dialog_->borderDefaultRB);
+	bcview().addReadOnly(dialog_->booktabsRB);
 
 	bcview().addReadOnly(dialog_->multicolumnCB);
 	bcview().addReadOnly(dialog_->rotateCellCB);
@@ -80,6 +93,12 @@ void QTabular::build_dialog()
 	// initialize the length validator
 	addCheckedLineEdit(bcview(), dialog_->widthED,
 		dialog_->fixedWidthColLA);
+	addCheckedLineEdit(bcview(), dialog_->topspaceED,
+		dialog_->topspaceLA);
+	addCheckedLineEdit(bcview(), dialog_->bottomspaceED,
+		dialog_->bottomspaceLA);
+	addCheckedLineEdit(bcview(), dialog_->interlinespaceED,
+		dialog_->interlinespaceLA);
 }
 
 
@@ -170,6 +189,63 @@ void QTabular::update_contents()
 	dialog_->specialAlignmentED->setEnabled(!isReadonly);
 
 	LyXLength::UNIT default_unit = controller().useMetricUnits() ? LyXLength::CM : LyXLength::IN;
+
+	dialog_->borderDefaultRB->setChecked(!tabular.useBookTabs());
+	dialog_->booktabsRB->setChecked(tabular.useBookTabs());
+
+	if (tabular.row_info[row].top_space.empty()
+	    && !tabular.row_info[row].top_space_default) {
+		dialog_->topspaceCO->setCurrentItem(0);
+	} else if (tabular.row_info[row].top_space_default) {
+		dialog_->topspaceCO->setCurrentItem(1);
+	} else {
+		dialog_->topspaceCO->setCurrentItem(2);
+		lengthToWidgets(dialog_->topspaceED, 
+				dialog_->topspaceUnit,
+				tabular.row_info[row].top_space.asString(),
+				default_unit);
+	}
+	dialog_->topspaceED->setEnabled(!isReadonly 
+		&& (dialog_->topspaceCO->currentItem() == 2));
+	dialog_->topspaceUnit->setEnabled(!isReadonly 
+		&& (dialog_->topspaceCO->currentItem() == 2));
+	dialog_->topspaceCO->setEnabled(!isReadonly);
+
+	if (tabular.row_info[row].bottom_space.empty()
+	    && !tabular.row_info[row].bottom_space_default) {
+		dialog_->bottomspaceCO->setCurrentItem(0);
+	} else if (tabular.row_info[row].bottom_space_default) {
+		dialog_->bottomspaceCO->setCurrentItem(1);
+	} else {
+		dialog_->bottomspaceCO->setCurrentItem(2);
+		lengthToWidgets(dialog_->bottomspaceED, 
+				dialog_->bottomspaceUnit,
+				tabular.row_info[row].bottom_space.asString(),
+				default_unit);
+	}
+	dialog_->bottomspaceED->setEnabled(!isReadonly 
+		&& (dialog_->bottomspaceCO->currentItem() == 2));
+	dialog_->bottomspaceUnit->setEnabled(!isReadonly 
+		&& (dialog_->bottomspaceCO->currentItem() == 2));
+	dialog_->bottomspaceCO->setEnabled(!isReadonly);
+
+	if (tabular.row_info[row].interline_space.empty()
+	    && !tabular.row_info[row].interline_space_default) {
+		dialog_->interlinespaceCO->setCurrentItem(0);
+	} else if (tabular.row_info[row].interline_space_default) {
+		dialog_->interlinespaceCO->setCurrentItem(1);
+	} else {
+		dialog_->interlinespaceCO->setCurrentItem(2);
+		lengthToWidgets(dialog_->interlinespaceED, 
+				dialog_->interlinespaceUnit,
+				tabular.row_info[row].interline_space.asString(),
+				default_unit);
+	}
+	dialog_->interlinespaceED->setEnabled(!isReadonly 
+		&& (dialog_->interlinespaceCO->currentItem() == 2));
+	dialog_->interlinespaceUnit->setEnabled(!isReadonly 
+		&& (dialog_->interlinespaceCO->currentItem() == 2));
+	dialog_->interlinespaceCO->setEnabled(!isReadonly);
 
 	string colwidth;
 	if (!pwidth.zero())
@@ -369,6 +445,50 @@ void QTabular::closeGUI()
 		else
 			controller().set(LyXTabular::SET_PWIDTH, width);
 	}
+
+	/* DO WE NEED THIS?
+	switch (dialog_->topspaceCO->currentItem()) {
+		case 0:
+			controller().set(LyXTabular::SET_TOP_SPACE, "");
+			break;
+		case 1:
+			controller().set(LyXTabular::SET_TOP_SPACE, "default");
+			break;
+		case 2:
+			controller().set(LyXTabular::SET_TOP_SPACE,
+				widgetsToLength(dialog_->topspaceED, 
+					dialog_->topspaceUnit));
+			break;
+	}
+
+	switch (dialog_->bottomspaceCO->currentItem()) {
+		case 0:
+			controller().set(LyXTabular::SET_BOTTOM_SPACE, "");
+			break;
+		case 1:
+			controller().set(LyXTabular::SET_BOTTOM_SPACE, "default");
+			break;
+		case 2:
+			controller().set(LyXTabular::SET_BOTTOM_SPACE,
+				widgetsToLength(dialog_->bottomspaceED, 
+					dialog_->bottomspaceUnit));
+			break;
+	}
+
+	switch (dialog_->interlinespaceCO->currentItem()) {
+		case 0:
+			controller().set(LyXTabular::SET_INTERLINE_SPACE, "");
+			break;
+		case 1:
+			controller().set(LyXTabular::SET_INTERLINE_SPACE, "default");
+			break;
+		case 2:
+			controller().set(LyXTabular::SET_INTERLINE_SPACE,
+				widgetsToLength(dialog_->interlinespaceED, 
+					dialog_->interlinespaceUnit));
+			break;
+	}
+*/
 }
 
 } // namespace frontend

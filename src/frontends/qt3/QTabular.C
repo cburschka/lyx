@@ -28,6 +28,7 @@
 #include <qcheckbox.h>
 #include <qlineedit.h>
 #include <qpushbutton.h>
+#include <qradiobutton.h>
 #include "qsetborder.h"
 
 using std::string;
@@ -60,6 +61,8 @@ void QTabular::build_dialog()
 	bcview().addReadOnly(dialog_->borderSetPB);
 	bcview().addReadOnly(dialog_->borderUnsetPB);
 	bcview().addReadOnly(dialog_->borders);
+	bcview().addReadOnly(dialog_->booktabsRB);
+	bcview().addReadOnly(dialog_->borderDefaultRB);
 	bcview().addReadOnly(dialog_->longTabularCB);
 	bcview().addReadOnly(dialog_->headerStatusCB);
 	bcview().addReadOnly(dialog_->headerBorderAboveCB);
@@ -76,10 +79,25 @@ void QTabular::build_dialog()
 	bcview().addReadOnly(dialog_->lastfooterBorderBelowCB);
 	bcview().addReadOnly(dialog_->lastfooterNoContentsCB);
 	bcview().addReadOnly(dialog_->newpageCB);
+	bcview().addReadOnly(dialog_->topspaceED);
+	bcview().addReadOnly(dialog_->topspaceUnit);
+	bcview().addReadOnly(dialog_->topspaceCO);
+	bcview().addReadOnly(dialog_->bottomspaceED);
+	bcview().addReadOnly(dialog_->bottomspaceUnit);
+	bcview().addReadOnly(dialog_->bottomspaceCO);
+	bcview().addReadOnly(dialog_->interlinespaceED);
+	bcview().addReadOnly(dialog_->interlinespaceUnit);
+	bcview().addReadOnly(dialog_->interlinespaceCO);
 
 	// initialize the length validator
 	addCheckedLineEdit(bcview(), dialog_->widthED,
 		dialog_->fixedWidthColLA);
+	addCheckedLineEdit(bcview(), dialog_->topspaceED,
+		dialog_->topspaceLA);
+	addCheckedLineEdit(bcview(), dialog_->bottomspaceED,
+		dialog_->bottomspaceLA);
+	addCheckedLineEdit(bcview(), dialog_->interlinespaceED,
+		dialog_->interlinespaceLA);
 }
 
 
@@ -94,10 +112,11 @@ void QTabular::update_borders()
 	LyXTabular const & tabular = controller().tabular();
 	LyXTabular::idx_type const cell = controller().getActiveCell();
 	bool const isMulticolumnCell = tabular.isMultiColumn(cell);
+	bool const useBookTabs = tabular.useBookTabs();
 
 	if (!isMulticolumnCell) {
-		dialog_->borders->setLeftEnabled(true);
-		dialog_->borders->setRightEnabled(true);
+		dialog_->borders->setLeftEnabled(!useBookTabs);
+		dialog_->borders->setRightEnabled(!useBookTabs);
 		dialog_->borders->setTop(tabular.topLine(cell, true));
 		dialog_->borders->setBottom(tabular.bottomLine(cell, true));
 		dialog_->borders->setLeft(tabular.leftLine(cell, true));
@@ -109,18 +128,18 @@ void QTabular::update_borders()
 
 	dialog_->borders->setTop(tabular.topLine(cell));
 	dialog_->borders->setBottom(tabular.bottomLine(cell));
-	// pay attention to left/right lines: they are only allowed
-	// to set if we are in first/last cell of row or if the left/right
-	// cell is also a multicolumn.
+	// pay attention to left/right lines: they are only allowed to set
+	// if we don't use booktabs and if we are in first/last cell of row
+	// or if the left/right cell is also a multicolumn.
 	if (tabular.isFirstCellInRow(cell) || tabular.isMultiColumn(cell - 1)) {
-		dialog_->borders->setLeftEnabled(true);
+		dialog_->borders->setLeftEnabled(!useBookTabs);
 		dialog_->borders->setLeft(tabular.leftLine(cell));
 	} else {
 		dialog_->borders->setLeft(false);
 		dialog_->borders->setLeftEnabled(false);
 	}
 	if (tabular.isLastCellInRow(cell) || tabular.isMultiColumn(cell + 1)) {
-		dialog_->borders->setRightEnabled(true);
+		dialog_->borders->setRightEnabled(!useBookTabs);
 		dialog_->borders->setRight(tabular.rightLine(cell));
 	} else {
 		dialog_->borders->setRight(false);
@@ -150,6 +169,10 @@ void QTabular::update_contents()
 	dialog_->rotateTabularCB->setChecked(tabular.getRotateTabular());
 
 	dialog_->longTabularCB->setChecked(tabular.isLongTabular());
+
+	dialog_->borderDefaultRB->setChecked(!tabular.useBookTabs());
+
+	dialog_->booktabsRB->setChecked(tabular.useBookTabs());
 
 	update_borders();
 
@@ -231,6 +254,60 @@ void QTabular::update_contents()
 
 	dialog_->hAlignCB->setEnabled(true);
 	dialog_->vAlignCB->setEnabled(!pwidth.zero());
+
+	if (tabular.row_info[row].top_space.empty()
+	    && !tabular.row_info[row].top_space_default) {
+		dialog_->topspaceCO->setCurrentItem(0);
+	} else if (tabular.row_info[row].top_space_default) {
+		dialog_->topspaceCO->setCurrentItem(1);
+	} else {
+		dialog_->topspaceCO->setCurrentItem(2);
+		lengthToWidgets(dialog_->topspaceED, 
+				dialog_->topspaceUnit,
+				tabular.row_info[row].top_space.asString(),
+				default_unit);
+	}
+	dialog_->topspaceED->setEnabled(!isReadonly 
+		&& (dialog_->topspaceCO->currentItem() == 2));
+	dialog_->topspaceUnit->setEnabled(!isReadonly 
+		&& (dialog_->topspaceCO->currentItem() == 2));
+	dialog_->topspaceCO->setEnabled(!isReadonly);
+
+	if (tabular.row_info[row].bottom_space.empty()
+	    && !tabular.row_info[row].bottom_space_default) {
+		dialog_->bottomspaceCO->setCurrentItem(0);
+	} else if (tabular.row_info[row].bottom_space_default) {
+		dialog_->bottomspaceCO->setCurrentItem(1);
+	} else {
+		dialog_->bottomspaceCO->setCurrentItem(2);
+		lengthToWidgets(dialog_->bottomspaceED, 
+				dialog_->bottomspaceUnit,
+				tabular.row_info[row].bottom_space.asString(),
+				default_unit);
+	}
+	dialog_->bottomspaceED->setEnabled(!isReadonly 
+		&& (dialog_->bottomspaceCO->currentItem() == 2));
+	dialog_->bottomspaceUnit->setEnabled(!isReadonly 
+		&& (dialog_->bottomspaceCO->currentItem() == 2));
+	dialog_->bottomspaceCO->setEnabled(!isReadonly);
+
+	if (tabular.row_info[row].interline_space.empty()
+	    && !tabular.row_info[row].interline_space_default) {
+		dialog_->interlinespaceCO->setCurrentItem(0);
+	} else if (tabular.row_info[row].interline_space_default) {
+		dialog_->interlinespaceCO->setCurrentItem(1);
+	} else {
+		dialog_->interlinespaceCO->setCurrentItem(2);
+		lengthToWidgets(dialog_->interlinespaceED, 
+				dialog_->interlinespaceUnit,
+				tabular.row_info[row].interline_space.asString(),
+				default_unit);
+	}
+	dialog_->interlinespaceED->setEnabled(!isReadonly 
+		&& (dialog_->interlinespaceCO->currentItem() == 2));
+	dialog_->interlinespaceUnit->setEnabled(!isReadonly 
+		&& (dialog_->interlinespaceCO->currentItem() == 2));
+	dialog_->interlinespaceCO->setEnabled(!isReadonly);
 
 	if (!tabular.isLongTabular()) {
 		dialog_->headerStatusCB->setChecked(false);
@@ -368,6 +445,48 @@ void QTabular::closeGUI()
 			controller().set(LyXTabular::SET_MPWIDTH, width);
 		else
 			controller().set(LyXTabular::SET_PWIDTH, width);
+	}
+
+	switch (dialog_->topspaceCO->currentItem()) {
+		case 0:
+			controller().set(LyXTabular::SET_TOP_SPACE, "");
+			break;
+		case 1:
+			controller().set(LyXTabular::SET_TOP_SPACE, "default");
+			break;
+		case 2:
+			controller().set(LyXTabular::SET_TOP_SPACE,
+				widgetsToLength(dialog_->topspaceED, 
+					dialog_->topspaceUnit));
+			break;
+	}
+
+	switch (dialog_->bottomspaceCO->currentItem()) {
+		case 0:
+			controller().set(LyXTabular::SET_BOTTOM_SPACE, "");
+			break;
+		case 1:
+			controller().set(LyXTabular::SET_BOTTOM_SPACE, "default");
+			break;
+		case 2:
+			controller().set(LyXTabular::SET_BOTTOM_SPACE,
+				widgetsToLength(dialog_->bottomspaceED, 
+					dialog_->bottomspaceUnit));
+			break;
+	}
+
+	switch (dialog_->interlinespaceCO->currentItem()) {
+		case 0:
+			controller().set(LyXTabular::SET_INTERLINE_SPACE, "");
+			break;
+		case 1:
+			controller().set(LyXTabular::SET_INTERLINE_SPACE, "default");
+			break;
+		case 2:
+			controller().set(LyXTabular::SET_INTERLINE_SPACE,
+				widgetsToLength(dialog_->interlinespaceED, 
+					dialog_->interlinespaceUnit));
+			break;
 	}
 }
 

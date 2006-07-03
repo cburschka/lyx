@@ -31,6 +31,10 @@ using std::string;
 using std::vector;
 
 
+#ifdef WITH_WARNINGS
+#warning Implement booktabs settings
+#endif
+
 namespace lyx {
 namespace frontend {
 

@@ -69,6 +69,8 @@ public:
 
 	void valign(VALIGN h);
 
+	void booktabs(bool yes);
+
 	void longTabular(bool yes);
 
 private:

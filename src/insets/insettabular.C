@@ -72,6 +72,7 @@ namespace {
 
 int const ADD_TO_HEIGHT = 2;
 int const ADD_TO_TABULAR_WIDTH = 2;
+int const default_line_space = 10;
 
 ///
 boost::scoped_ptr<LyXTabular> paste_tabular;
@@ -133,6 +134,11 @@ TabularFeature tabularFeature[] =
 	{ LyXTabular::SET_LTNEWPAGE, "set-ltnewpage" },
 	{ LyXTabular::SET_SPECIAL_COLUMN, "set-special-column" },
 	{ LyXTabular::SET_SPECIAL_MULTI, "set-special-multi" },
+	{ LyXTabular::SET_BOOKTABS, "set-booktabs" },
+	{ LyXTabular::UNSET_BOOKTABS, "unset-booktabs" },
+	{ LyXTabular::SET_TOP_SPACE, "set-top-space" },
+	{ LyXTabular::SET_BOTTOM_SPACE, "set-bottom-space" },
+	{ LyXTabular::SET_INTERLINE_SPACE, "set-interline-space" },
 	{ LyXTabular::LAST_ACTION, "" }
 };
 
@@ -268,8 +274,14 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 			tabular.setWidthOfCell(cell, dim.wid);
 			++cell;
 		}
-		tabular.setAscentOfRow(i, maxAsc + ADD_TO_HEIGHT);
-		tabular.setDescentOfRow(i, maxDesc + ADD_TO_HEIGHT);
+		int const top_space = tabular.row_info[i].top_space_default ?
+			default_line_space :
+			tabular.row_info[i].top_space.inPixels(mi.base.textwidth);
+		tabular.setAscentOfRow(i, maxAsc + ADD_TO_HEIGHT + top_space);
+		int const bottom_space = tabular.row_info[i].bottom_space_default ?
+			default_line_space :
+			tabular.row_info[i].bottom_space.inPixels(mi.base.textwidth);
+		tabular.setDescentOfRow(i, maxDesc + ADD_TO_HEIGHT + bottom_space);
 	}
 
 	dim.asc = tabular.getAscentOfRow(0);
@@ -808,6 +820,9 @@ bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
 		case LyXTabular::DELETE_COLUMN:
 		case LyXTabular::SET_ALL_LINES:
 		case LyXTabular::UNSET_ALL_LINES:
+		case LyXTabular::SET_TOP_SPACE:
+		case LyXTabular::SET_BOTTOM_SPACE:
+		case LyXTabular::SET_INTERLINE_SPACE:
 			status.clear();
 			return true;
 
@@ -945,6 +960,14 @@ bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
 
 		case LyXTabular::SET_LTNEWPAGE:
 			status.setOnOff(tabular.getLTNewPage(sel_row_start));
+			break;
+			
+		case LyXTabular::SET_BOOKTABS:
+			status.setOnOff(tabular.useBookTabs());
+			break;
+			
+		case LyXTabular::UNSET_BOOKTABS:
+			status.setOnOff(!tabular.useBookTabs());
 			break;
 
 		default:
@@ -1127,11 +1150,10 @@ int InsetTabular::dist(idx_type const cell, int x, int y) const
 	Point o = theCoords.getInsets().xy(&inset);
 	int const xbeg = o.x_ - tabular.getBeginningOfTextInCell(cell);
 	int const xend = xbeg + tabular.getWidthOfColumn(cell);
-	int const ybeg = o.y_ - inset.ascent();
 	row_type const row = tabular.row_of_cell(cell);
-	int const rowheight = tabular.getAscentOfRow(row)
-			+ tabular.getDescentOfRow(row);
-	int const yend = ybeg + rowheight;
+	int const ybeg = o.y_ - tabular.getAscentOfRow(row) -
+	                 tabular.getAdditionalHeight(row);
+	int const yend = o.y_ + tabular.getDescentOfRow(row);
 
 	if (x < xbeg)
 		xx = xbeg - x;
@@ -1633,6 +1655,68 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 	case LyXTabular::SET_LTNEWPAGE:
 		tabular.setLTNewPage(row, !tabular.getLTNewPage(row));
 		break;
+
+	case LyXTabular::SET_BOOKTABS:
+		tabular.setBookTabs(true);
+		break;
+
+	case LyXTabular::UNSET_BOOKTABS:
+		tabular.setBookTabs(false);
+		break;
+
+	case LyXTabular::SET_TOP_SPACE: {
+		LyXLength len;
+		if (value == "default")
+			for (row_type i = sel_row_start; i <= sel_row_end; ++i)
+				tabular.row_info[i].top_space_default = true;
+		else if (isValidLength(value, &len))
+			for (row_type i = sel_row_start; i <= sel_row_end; ++i) {
+				tabular.row_info[i].top_space_default = false;
+				tabular.row_info[i].top_space = len;
+			}
+		else
+			for (row_type i = sel_row_start; i <= sel_row_end; ++i) {
+				tabular.row_info[i].top_space_default = false;
+				tabular.row_info[i].top_space = len;
+			}
+		break;
+	}
+
+	case LyXTabular::SET_BOTTOM_SPACE: {
+		LyXLength len;
+		if (value == "default")
+			for (row_type i = sel_row_start; i <= sel_row_end; ++i)
+				tabular.row_info[i].bottom_space_default = true;
+		else if (isValidLength(value, &len))
+			for (row_type i = sel_row_start; i <= sel_row_end; ++i) {
+				tabular.row_info[i].bottom_space_default = false;
+				tabular.row_info[i].bottom_space = len;
+			}
+		else
+			for (row_type i = sel_row_start; i <= sel_row_end; ++i) {
+				tabular.row_info[i].bottom_space_default = false;
+				tabular.row_info[i].bottom_space = len;
+			}
+		break;
+	}
+
+	case LyXTabular::SET_INTERLINE_SPACE: {
+		LyXLength len;
+		if (value == "default")
+			for (row_type i = sel_row_start; i <= sel_row_end; ++i)
+				tabular.row_info[i].interline_space_default = true;
+		else if (isValidLength(value, &len))
+			for (row_type i = sel_row_start; i <= sel_row_end; ++i) {
+				tabular.row_info[i].interline_space_default = false;
+				tabular.row_info[i].interline_space = len;
+			}
+		else
+			for (row_type i = sel_row_start; i <= sel_row_end; ++i) {
+				tabular.row_info[i].interline_space_default = false;
+				tabular.row_info[i].interline_space = len;
+			}
+		break;
+	}
 
 	// dummy stuff just to avoid warnings
 	case LyXTabular::LAST_ACTION:

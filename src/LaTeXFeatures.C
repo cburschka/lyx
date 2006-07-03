@@ -241,6 +241,7 @@ char const * simplefeatures[] = {
 	"varioref",
 	"prettyref",
 	"float",
+	"booktabs",
 	"dvipost",
 	"fancybox",
 	"calc",

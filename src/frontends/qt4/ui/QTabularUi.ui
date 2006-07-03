@@ -8,8 +8,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>447</width>
-    <height>408</height>
+    <width>439</width>
+    <height>360</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -18,14 +18,14 @@
   <property name="sizeGripEnabled" >
    <bool>true</bool>
   </property>
-  <layout class="QVBoxLayout" >
+  <layout class="QGridLayout" >
    <property name="margin" >
-    <number>11</number>
+    <number>9</number>
    </property>
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item>
+   <item row="0" column="0" >
     <widget class="QTabWidget" name="TabWidget" >
      <property name="toolTip" >
       <string/>
@@ -33,18 +33,94 @@
      <property name="tabShape" >
       <enum>QTabWidget::Rounded</enum>
      </property>
+     <property name="currentIndex" >
+      <number>2</number>
+     </property>
      <widget class="QWidget" name="Settings" >
       <attribute name="title" >
        <string>&amp;Table Settings</string>
       </attribute>
       <layout class="QGridLayout" >
        <property name="margin" >
-        <number>11</number>
+        <number>9</number>
        </property>
        <property name="spacing" >
         <number>6</number>
        </property>
-       <item row="0" column="0" colspan="2" >
+       <item row="1" column="0" colspan="3" >
+        <widget class="QGroupBox" name="GroupBox12" >
+         <property name="title" >
+          <string>Column Width</string>
+         </property>
+         <layout class="QGridLayout" >
+          <property name="margin" >
+           <number>9</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item row="0" column="2" >
+           <widget class="LengthCombo" name="widthUnit" />
+          </item>
+          <item row="0" column="1" >
+           <widget class="QLineEdit" name="widthED" >
+            <property name="enabled" >
+             <bool>true</bool>
+            </property>
+            <property name="toolTip" >
+             <string>Fixed width of the column</string>
+            </property>
+            <property name="text" >
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1" colspan="2" >
+           <widget class="QComboBox" name="vAlignCB" >
+            <property name="toolTip" >
+             <string>Vertical alignment for fixed width columns</string>
+            </property>
+            <item>
+             <property name="text" >
+              <string>Top</string>
+             </property>
+            </item>
+            <item>
+             <property name="text" >
+              <string>Middle</string>
+             </property>
+            </item>
+            <item>
+             <property name="text" >
+              <string>Bottom</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="0" column="0" >
+           <widget class="QLabel" name="fixedWidthColLA" >
+            <property name="text" >
+             <string>&amp;Width:</string>
+            </property>
+            <property name="buddy" >
+             <cstring>widthED</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" >
+           <widget class="QLabel" name="vAlignCO" >
+            <property name="text" >
+             <string>&amp;Vertical alignment:</string>
+            </property>
+            <property name="buddy" >
+             <cstring>vAlignCB</cstring>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="0" column="0" >
         <widget class="QLabel" name="hAlignCO" >
          <property name="text" >
           <string>&amp;Horizontal alignment:</string>
@@ -54,7 +130,7 @@
          </property>
         </widget>
        </item>
-       <item row="0" column="2" >
+       <item row="0" column="1" >
         <widget class="QComboBox" name="hAlignCB" >
          <property name="toolTip" >
           <string>Horizontal alignment in column</string>
@@ -81,546 +157,6 @@
          </item>
         </widget>
        </item>
-       <item row="3" column="0" colspan="4" >
-        <widget class="QCheckBox" name="rotateTabularCB" >
-         <property name="enabled" >
-          <bool>true</bool>
-         </property>
-         <property name="toolTip" >
-          <string>Rotate the table by 90 degrees</string>
-         </property>
-         <property name="text" >
-          <string>&amp;Rotate table 90 degrees</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0" colspan="4" >
-        <widget class="QCheckBox" name="rotateCellCB" >
-         <property name="toolTip" >
-          <string>Rotate this cell by 90 degrees</string>
-         </property>
-         <property name="text" >
-          <string>Rotate &amp;cell 90 degrees</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="0" colspan="2" >
-        <widget class="QLabel" name="specialAlignmentLA" >
-         <property name="text" >
-          <string>LaTe&amp;X argument:</string>
-         </property>
-         <property name="buddy" >
-          <cstring>specialAlignmentED</cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="2" colspan="2" >
-        <widget class="QLineEdit" name="specialAlignmentED" >
-         <property name="toolTip" >
-          <string>Custom column format (LaTeX)</string>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="2" >
-        <spacer>
-         <property name="orientation" >
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeType" >
-          <enum>QSizePolicy::Expanding</enum>
-         </property>
-         <property name="sizeHint" >
-          <size>
-           <width>20</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="0" column="3" >
-        <spacer>
-         <property name="orientation" >
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeType" >
-          <enum>QSizePolicy::Expanding</enum>
-         </property>
-         <property name="sizeHint" >
-          <size>
-           <width>20</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="2" column="0" >
-        <widget class="QCheckBox" name="multicolumnCB" >
-         <property name="toolTip" >
-          <string>Merge cells</string>
-         </property>
-         <property name="text" >
-          <string>&amp;Multicolumn</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0" colspan="4" >
-        <widget class="QGroupBox" name="GroupBox12" >
-         <property name="title" >
-          <string>Column Width</string>
-         </property>
-         <layout class="QGridLayout" >
-          <property name="margin" >
-           <number>11</number>
-          </property>
-          <property name="spacing" >
-           <number>6</number>
-          </property>
-          <item row="1" column="0" >
-           <widget class="QLabel" name="vAlignCO" >
-            <property name="text" >
-             <string>&amp;Vertical alignment:</string>
-            </property>
-            <property name="buddy" >
-             <cstring>vAlignCB</cstring>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="2" >
-           <widget class="LengthCombo" name="widthUnit" >
-            <property name="enabled" >
-             <bool>true</bool>
-            </property>
-            <property name="minimumSize" >
-             <size>
-              <width>50</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="focusPolicy" >
-             <enum>Qt::StrongFocus</enum>
-            </property>
-            <property name="toolTip" >
-             <string>Width unit</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1" >
-           <widget class="QLineEdit" name="widthED" >
-            <property name="enabled" >
-             <bool>true</bool>
-            </property>
-            <property name="toolTip" >
-             <string>Fixed width of the column</string>
-            </property>
-            <property name="text" >
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="0" >
-           <widget class="QLabel" name="fixedWidthColLA" >
-            <property name="text" >
-             <string>&amp;Width:</string>
-            </property>
-            <property name="buddy" >
-             <cstring>widthED</cstring>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1" >
-           <widget class="QComboBox" name="vAlignCB" >
-            <property name="toolTip" >
-             <string>Vertical alignment for fixed width columns</string>
-            </property>
-            <item>
-             <property name="text" >
-              <string>Top</string>
-             </property>
-            </item>
-            <item>
-             <property name="text" >
-              <string>Middle</string>
-             </property>
-            </item>
-            <item>
-             <property name="text" >
-              <string>Bottom</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="Borders" >
-      <attribute name="title" >
-       <string>&amp;Borders</string>
-      </attribute>
-      <layout class="QGridLayout" >
-       <property name="margin" >
-        <number>11</number>
-       </property>
-       <property name="spacing" >
-        <number>6</number>
-       </property>
-       <item row="0" column="0" >
-        <widget class="QGroupBox" name="setBordersGB" >
-         <property name="title" >
-          <string>Set Borders</string>
-         </property>
-         <layout class="QGridLayout" >
-          <property name="margin" >
-           <number>11</number>
-          </property>
-          <property name="spacing" >
-           <number>6</number>
-          </property>
-          <item row="0" column="0" >
-           <widget class="QFrame" name="bordersF" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>5</hsizetype>
-              <vsizetype>5</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="palette" >
-             <palette>
-              <active>
-               <color>
-                <red>0</red>
-                <green>0</green>
-                <blue>0</blue>
-               </color>
-               <color>
-                <red>230</red>
-                <green>240</green>
-                <blue>249</blue>
-               </color>
-               <color>
-                <red>255</red>
-                <green>255</green>
-                <blue>255</blue>
-               </color>
-               <color>
-                <red>242</red>
-                <green>247</green>
-                <blue>252</blue>
-               </color>
-               <color>
-                <red>115</red>
-                <green>120</green>
-                <blue>124</blue>
-               </color>
-               <color>
-                <red>154</red>
-                <green>160</green>
-                <blue>166</blue>
-               </color>
-               <color>
-                <red>0</red>
-                <green>0</green>
-                <blue>0</blue>
-               </color>
-               <color>
-                <red>255</red>
-                <green>255</green>
-                <blue>255</blue>
-               </color>
-               <color>
-                <red>0</red>
-                <green>0</green>
-                <blue>0</blue>
-               </color>
-               <color>
-                <red>255</red>
-                <green>255</green>
-                <blue>255</blue>
-               </color>
-               <color>
-                <red>255</red>
-                <green>255</green>
-                <blue>255</blue>
-               </color>
-               <color>
-                <red>0</red>
-                <green>0</green>
-                <blue>0</blue>
-               </color>
-               <color>
-                <red>16</red>
-                <green>145</green>
-                <blue>210</blue>
-               </color>
-               <color>
-                <red>255</red>
-                <green>255</green>
-                <blue>255</blue>
-               </color>
-               <color>
-                <red>0</red>
-                <green>0</green>
-                <blue>255</blue>
-               </color>
-               <color>
-                <red>255</red>
-                <green>0</green>
-                <blue>255</blue>
-               </color>
-               <color>
-                <red>232</red>
-                <green>232</green>
-                <blue>232</blue>
-               </color>
-              </active>
-              <inactive>
-               <color>
-                <red>0</red>
-                <green>0</green>
-                <blue>0</blue>
-               </color>
-               <color>
-                <red>230</red>
-                <green>240</green>
-                <blue>249</blue>
-               </color>
-               <color>
-                <red>255</red>
-                <green>255</green>
-                <blue>255</blue>
-               </color>
-               <color>
-                <red>255</red>
-                <green>255</green>
-                <blue>255</blue>
-               </color>
-               <color>
-                <red>115</red>
-                <green>120</green>
-                <blue>124</blue>
-               </color>
-               <color>
-                <red>154</red>
-                <green>160</green>
-                <blue>166</blue>
-               </color>
-               <color>
-                <red>0</red>
-                <green>0</green>
-                <blue>0</blue>
-               </color>
-               <color>
-                <red>255</red>
-                <green>255</green>
-                <blue>255</blue>
-               </color>
-               <color>
-                <red>0</red>
-                <green>0</green>
-                <blue>0</blue>
-               </color>
-               <color>
-                <red>255</red>
-                <green>255</green>
-                <blue>255</blue>
-               </color>
-               <color>
-                <red>255</red>
-                <green>255</green>
-                <blue>255</blue>
-               </color>
-               <color>
-                <red>0</red>
-                <green>0</green>
-                <blue>0</blue>
-               </color>
-               <color>
-                <red>16</red>
-                <green>145</green>
-                <blue>210</blue>
-               </color>
-               <color>
-                <red>255</red>
-                <green>255</green>
-                <blue>255</blue>
-               </color>
-               <color>
-                <red>0</red>
-                <green>0</green>
-                <blue>255</blue>
-               </color>
-               <color>
-                <red>255</red>
-                <green>0</green>
-                <blue>255</blue>
-               </color>
-               <color>
-                <red>232</red>
-                <green>232</green>
-                <blue>232</blue>
-               </color>
-              </inactive>
-              <disabled>
-               <color>
-                <red>128</red>
-                <green>128</green>
-                <blue>128</blue>
-               </color>
-               <color>
-                <red>230</red>
-                <green>240</green>
-                <blue>249</blue>
-               </color>
-               <color>
-                <red>255</red>
-                <green>255</green>
-                <blue>255</blue>
-               </color>
-               <color>
-                <red>255</red>
-                <green>255</green>
-                <blue>255</blue>
-               </color>
-               <color>
-                <red>115</red>
-                <green>120</green>
-                <blue>124</blue>
-               </color>
-               <color>
-                <red>154</red>
-                <green>160</green>
-                <blue>166</blue>
-               </color>
-               <color>
-                <red>0</red>
-                <green>0</green>
-                <blue>0</blue>
-               </color>
-               <color>
-                <red>255</red>
-                <green>255</green>
-                <blue>255</blue>
-               </color>
-               <color>
-                <red>128</red>
-                <green>128</green>
-                <blue>128</blue>
-               </color>
-               <color>
-                <red>255</red>
-                <green>255</green>
-                <blue>255</blue>
-               </color>
-               <color>
-                <red>255</red>
-                <green>255</green>
-                <blue>255</blue>
-               </color>
-               <color>
-                <red>0</red>
-                <green>0</green>
-                <blue>0</blue>
-               </color>
-               <color>
-                <red>16</red>
-                <green>145</green>
-                <blue>210</blue>
-               </color>
-               <color>
-                <red>255</red>
-                <green>255</green>
-                <blue>255</blue>
-               </color>
-               <color>
-                <red>0</red>
-                <green>0</green>
-                <blue>255</blue>
-               </color>
-               <color>
-                <red>255</red>
-                <green>0</green>
-                <blue>255</blue>
-               </color>
-               <color>
-                <red>232</red>
-                <green>232</green>
-                <blue>232</blue>
-               </color>
-              </disabled>
-             </palette>
-            </property>
-            <property name="frameShape" >
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow" >
-             <enum>QFrame::Sunken</enum>
-            </property>
-            <layout class="QGridLayout" >
-             <property name="margin" >
-              <number>3</number>
-             </property>
-             <property name="spacing" >
-              <number>6</number>
-             </property>
-             <item row="0" column="0" >
-              <widget class="QSetBorder" name="borders" >
-               <property name="sizePolicy" >
-                <sizepolicy>
-                 <hsizetype>1</hsizetype>
-                 <vsizetype>1</vsizetype>
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="toolTip" >
-                <string>Set borders of the current (selected) cell(s)</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item row="0" column="1" >
-        <widget class="QGroupBox" name="allBordersGB" >
-         <property name="title" >
-          <string>All Borders</string>
-         </property>
-         <layout class="QGridLayout" >
-          <property name="margin" >
-           <number>11</number>
-          </property>
-          <property name="spacing" >
-           <number>6</number>
-          </property>
-          <item row="0" column="0" >
-           <widget class="QPushButton" name="borderSetPB" >
-            <property name="toolTip" >
-             <string>Set all borders of the current (selected) cell(s)</string>
-            </property>
-            <property name="text" >
-             <string>&amp;Set</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0" >
-           <widget class="QPushButton" name="borderUnsetPB" >
-            <property name="toolTip" >
-             <string>Unset all borders of the current (selected) cell(s)</string>
-            </property>
-            <property name="text" >
-             <string>C&amp;lear</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
        <item row="0" column="2" >
         <spacer>
          <property name="orientation" >
@@ -637,21 +173,618 @@
          </property>
         </spacer>
        </item>
-       <item row="1" column="0" >
-        <spacer>
-         <property name="orientation" >
-          <enum>Qt::Vertical</enum>
+       <item row="3" column="0" colspan="2" >
+        <widget class="QCheckBox" name="rotateTabularCB" >
+         <property name="enabled" >
+          <bool>true</bool>
          </property>
-         <property name="sizeType" >
-          <enum>QSizePolicy::Expanding</enum>
+         <property name="toolTip" >
+          <string>Rotate the table by 90 degrees</string>
          </property>
-         <property name="sizeHint" >
-          <size>
-           <width>20</width>
-           <height>20</height>
-          </size>
+         <property name="text" >
+          <string>&amp;Rotate table 90 degrees</string>
          </property>
-        </spacer>
+        </widget>
+       </item>
+       <item row="4" column="0" colspan="2" >
+        <widget class="QCheckBox" name="rotateCellCB" >
+         <property name="toolTip" >
+          <string>Rotate this cell by 90 degrees</string>
+         </property>
+         <property name="text" >
+          <string>Rotate &amp;cell 90 degrees</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0" >
+        <widget class="QCheckBox" name="multicolumnCB" >
+         <property name="toolTip" >
+          <string>Merge cells</string>
+         </property>
+         <property name="text" >
+          <string>&amp;Multicolumn</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0" >
+        <widget class="QLabel" name="specialAlignmentLA" >
+         <property name="text" >
+          <string>LaTe&amp;X argument:</string>
+         </property>
+         <property name="buddy" >
+          <cstring>specialAlignmentED</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1" colspan="2" >
+        <widget class="QLineEdit" name="specialAlignmentED" >
+         <property name="toolTip" >
+          <string>Custom column format (LaTeX)</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="Borders" >
+      <attribute name="title" >
+       <string>&amp;Borders</string>
+      </attribute>
+      <layout class="QGridLayout" >
+       <property name="margin" >
+        <number>9</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item row="0" column="0" >
+        <layout class="QGridLayout" >
+         <property name="margin" >
+          <number>0</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item row="0" column="1" >
+          <widget class="QGroupBox" name="allBordersGB" >
+           <property name="title" >
+            <string>All Borders</string>
+           </property>
+           <layout class="QGridLayout" >
+            <property name="margin" >
+             <number>11</number>
+            </property>
+            <property name="spacing" >
+             <number>6</number>
+            </property>
+            <item row="0" column="0" >
+             <widget class="QPushButton" name="borderSetPB" >
+              <property name="toolTip" >
+               <string>Set all borders of the current (selected) cell(s)</string>
+              </property>
+              <property name="text" >
+               <string>&amp;Set</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0" >
+             <widget class="QPushButton" name="borderUnsetPB" >
+              <property name="toolTip" >
+               <string>Unset all borders of the current (selected) cell(s)</string>
+              </property>
+              <property name="text" >
+               <string>C&amp;lear</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item row="0" column="2" >
+          <spacer>
+           <property name="orientation" >
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType" >
+            <enum>QSizePolicy::Expanding</enum>
+           </property>
+           <property name="sizeHint" >
+            <size>
+             <width>20</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="0" column="3" >
+          <widget class="QGroupBox" name="borderStyleGB" >
+           <property name="title" >
+            <string>Style</string>
+           </property>
+           <layout class="QGridLayout" >
+            <property name="margin" >
+             <number>9</number>
+            </property>
+            <property name="spacing" >
+             <number>6</number>
+            </property>
+            <item row="1" column="0" >
+             <widget class="QRadioButton" name="booktabsRB" >
+              <property name="toolTip" >
+               <string>Use formal (a.k.a. booktabs) border style (no vertical borders)</string>
+              </property>
+              <property name="text" >
+               <string>Fo&amp;rmal</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0" >
+             <widget class="QRadioButton" name="borderDefaultRB" >
+              <property name="toolTip" >
+               <string>Use default (grid-like) border style</string>
+              </property>
+              <property name="text" >
+               <string>De&amp;fault</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item row="1" column="1" >
+          <spacer>
+           <property name="orientation" >
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" >
+            <size>
+             <width>20</width>
+             <height>31</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="0" column="0" >
+          <widget class="QGroupBox" name="setBordersGB" >
+           <property name="title" >
+            <string>Set Borders</string>
+           </property>
+           <layout class="QGridLayout" >
+            <property name="margin" >
+             <number>11</number>
+            </property>
+            <property name="spacing" >
+             <number>6</number>
+            </property>
+            <item row="0" column="0" >
+             <widget class="QFrame" name="bordersF" >
+              <property name="sizePolicy" >
+               <sizepolicy>
+                <hsizetype>5</hsizetype>
+                <vsizetype>5</vsizetype>
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="palette" >
+               <palette>
+                <active>
+                 <color>
+                  <red>0</red>
+                  <green>0</green>
+                  <blue>0</blue>
+                 </color>
+                 <color>
+                  <red>230</red>
+                  <green>240</green>
+                  <blue>249</blue>
+                 </color>
+                 <color>
+                  <red>255</red>
+                  <green>255</green>
+                  <blue>255</blue>
+                 </color>
+                 <color>
+                  <red>242</red>
+                  <green>247</green>
+                  <blue>252</blue>
+                 </color>
+                 <color>
+                  <red>115</red>
+                  <green>120</green>
+                  <blue>124</blue>
+                 </color>
+                 <color>
+                  <red>154</red>
+                  <green>160</green>
+                  <blue>166</blue>
+                 </color>
+                 <color>
+                  <red>0</red>
+                  <green>0</green>
+                  <blue>0</blue>
+                 </color>
+                 <color>
+                  <red>255</red>
+                  <green>255</green>
+                  <blue>255</blue>
+                 </color>
+                 <color>
+                  <red>0</red>
+                  <green>0</green>
+                  <blue>0</blue>
+                 </color>
+                 <color>
+                  <red>255</red>
+                  <green>255</green>
+                  <blue>255</blue>
+                 </color>
+                 <color>
+                  <red>255</red>
+                  <green>255</green>
+                  <blue>255</blue>
+                 </color>
+                 <color>
+                  <red>0</red>
+                  <green>0</green>
+                  <blue>0</blue>
+                 </color>
+                 <color>
+                  <red>16</red>
+                  <green>145</green>
+                  <blue>210</blue>
+                 </color>
+                 <color>
+                  <red>255</red>
+                  <green>255</green>
+                  <blue>255</blue>
+                 </color>
+                 <color>
+                  <red>0</red>
+                  <green>0</green>
+                  <blue>255</blue>
+                 </color>
+                 <color>
+                  <red>255</red>
+                  <green>0</green>
+                  <blue>255</blue>
+                 </color>
+                 <color>
+                  <red>232</red>
+                  <green>232</green>
+                  <blue>232</blue>
+                 </color>
+                </active>
+                <inactive>
+                 <color>
+                  <red>0</red>
+                  <green>0</green>
+                  <blue>0</blue>
+                 </color>
+                 <color>
+                  <red>230</red>
+                  <green>240</green>
+                  <blue>249</blue>
+                 </color>
+                 <color>
+                  <red>255</red>
+                  <green>255</green>
+                  <blue>255</blue>
+                 </color>
+                 <color>
+                  <red>255</red>
+                  <green>255</green>
+                  <blue>255</blue>
+                 </color>
+                 <color>
+                  <red>115</red>
+                  <green>120</green>
+                  <blue>124</blue>
+                 </color>
+                 <color>
+                  <red>154</red>
+                  <green>160</green>
+                  <blue>166</blue>
+                 </color>
+                 <color>
+                  <red>0</red>
+                  <green>0</green>
+                  <blue>0</blue>
+                 </color>
+                 <color>
+                  <red>255</red>
+                  <green>255</green>
+                  <blue>255</blue>
+                 </color>
+                 <color>
+                  <red>0</red>
+                  <green>0</green>
+                  <blue>0</blue>
+                 </color>
+                 <color>
+                  <red>255</red>
+                  <green>255</green>
+                  <blue>255</blue>
+                 </color>
+                 <color>
+                  <red>255</red>
+                  <green>255</green>
+                  <blue>255</blue>
+                 </color>
+                 <color>
+                  <red>0</red>
+                  <green>0</green>
+                  <blue>0</blue>
+                 </color>
+                 <color>
+                  <red>16</red>
+                  <green>145</green>
+                  <blue>210</blue>
+                 </color>
+                 <color>
+                  <red>255</red>
+                  <green>255</green>
+                  <blue>255</blue>
+                 </color>
+                 <color>
+                  <red>0</red>
+                  <green>0</green>
+                  <blue>255</blue>
+                 </color>
+                 <color>
+                  <red>255</red>
+                  <green>0</green>
+                  <blue>255</blue>
+                 </color>
+                 <color>
+                  <red>232</red>
+                  <green>232</green>
+                  <blue>232</blue>
+                 </color>
+                </inactive>
+                <disabled>
+                 <color>
+                  <red>128</red>
+                  <green>128</green>
+                  <blue>128</blue>
+                 </color>
+                 <color>
+                  <red>230</red>
+                  <green>240</green>
+                  <blue>249</blue>
+                 </color>
+                 <color>
+                  <red>255</red>
+                  <green>255</green>
+                  <blue>255</blue>
+                 </color>
+                 <color>
+                  <red>255</red>
+                  <green>255</green>
+                  <blue>255</blue>
+                 </color>
+                 <color>
+                  <red>115</red>
+                  <green>120</green>
+                  <blue>124</blue>
+                 </color>
+                 <color>
+                  <red>154</red>
+                  <green>160</green>
+                  <blue>166</blue>
+                 </color>
+                 <color>
+                  <red>0</red>
+                  <green>0</green>
+                  <blue>0</blue>
+                 </color>
+                 <color>
+                  <red>255</red>
+                  <green>255</green>
+                  <blue>255</blue>
+                 </color>
+                 <color>
+                  <red>128</red>
+                  <green>128</green>
+                  <blue>128</blue>
+                 </color>
+                 <color>
+                  <red>255</red>
+                  <green>255</green>
+                  <blue>255</blue>
+                 </color>
+                 <color>
+                  <red>255</red>
+                  <green>255</green>
+                  <blue>255</blue>
+                 </color>
+                 <color>
+                  <red>0</red>
+                  <green>0</green>
+                  <blue>0</blue>
+                 </color>
+                 <color>
+                  <red>16</red>
+                  <green>145</green>
+                  <blue>210</blue>
+                 </color>
+                 <color>
+                  <red>255</red>
+                  <green>255</green>
+                  <blue>255</blue>
+                 </color>
+                 <color>
+                  <red>0</red>
+                  <green>0</green>
+                  <blue>255</blue>
+                 </color>
+                 <color>
+                  <red>255</red>
+                  <green>0</green>
+                  <blue>255</blue>
+                 </color>
+                 <color>
+                  <red>232</red>
+                  <green>232</green>
+                  <blue>232</blue>
+                 </color>
+                </disabled>
+               </palette>
+              </property>
+              <property name="frameShape" >
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow" >
+               <enum>QFrame::Sunken</enum>
+              </property>
+              <layout class="QGridLayout" >
+               <property name="margin" >
+                <number>3</number>
+               </property>
+               <property name="spacing" >
+                <number>6</number>
+               </property>
+               <item row="0" column="0" >
+                <widget class="QSetBorder" name="borders" >
+                 <property name="sizePolicy" >
+                  <sizepolicy>
+                   <hsizetype>1</hsizetype>
+                   <vsizetype>1</vsizetype>
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="toolTip" >
+                  <string>Set borders of the current (selected) cell(s)</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item row="2" column="0" colspan="4" >
+          <widget class="QGroupBox" name="SpaceGB" >
+           <property name="title" >
+            <string>Additional Space</string>
+           </property>
+           <layout class="QGridLayout" >
+            <property name="margin" >
+             <number>9</number>
+            </property>
+            <property name="spacing" >
+             <number>6</number>
+            </property>
+            <item row="0" column="0" >
+             <widget class="QLabel" name="topspaceLA" >
+              <property name="text" >
+               <string>T&amp;op of row:</string>
+              </property>
+              <property name="buddy" >
+               <cstring>topspaceCO</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="2" >
+             <widget class="QLineEdit" name="topspaceED" />
+            </item>
+            <item row="0" column="3" >
+             <widget class="LengthCombo" name="topspaceUnit" />
+            </item>
+            <item row="0" column="1" >
+             <widget class="QComboBox" name="topspaceCO" >
+              <item>
+               <property name="text" >
+                <string>None</string>
+               </property>
+              </item>
+              <item>
+               <property name="text" >
+                <string>Default</string>
+               </property>
+              </item>
+              <item>
+               <property name="text" >
+                <string>Custom</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item row="1" column="1" >
+             <widget class="QComboBox" name="bottomspaceCO" >
+              <item>
+               <property name="text" >
+                <string>None</string>
+               </property>
+              </item>
+              <item>
+               <property name="text" >
+                <string>Default</string>
+               </property>
+              </item>
+              <item>
+               <property name="text" >
+                <string>Custom</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item row="1" column="3" >
+             <widget class="LengthCombo" name="bottomspaceUnit" />
+            </item>
+            <item row="1" column="2" >
+             <widget class="QLineEdit" name="bottomspaceED" />
+            </item>
+            <item row="1" column="0" >
+             <widget class="QLabel" name="bottomspaceLA" >
+              <property name="text" >
+               <string>Botto&amp;m of row:</string>
+              </property>
+              <property name="buddy" >
+               <cstring>bottomspaceCO</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="2" >
+             <widget class="QLineEdit" name="interlinespaceED" />
+            </item>
+            <item row="2" column="0" >
+             <widget class="QLabel" name="interlinespaceLA" >
+              <property name="text" >
+               <string>Bet&amp;ween rows:</string>
+              </property>
+              <property name="buddy" >
+               <cstring>interlinespaceCO</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1" >
+             <widget class="QComboBox" name="interlinespaceCO" >
+              <item>
+               <property name="text" >
+                <string>None</string>
+               </property>
+              </item>
+              <item>
+               <property name="text" >
+                <string>Default</string>
+               </property>
+              </item>
+              <item>
+               <property name="text" >
+                <string>Custom</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item row="2" column="3" >
+             <widget class="LengthCombo" name="interlinespaceUnit" />
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
        </item>
       </layout>
      </widget>
@@ -661,18 +794,34 @@
       </attribute>
       <layout class="QGridLayout" >
        <property name="margin" >
-        <number>11</number>
+        <number>9</number>
        </property>
        <property name="spacing" >
         <number>6</number>
        </property>
-       <item row="0" column="0" >
-        <widget class="QCheckBox" name="longTabularCB" >
+       <item row="3" column="0" >
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="2" column="0" >
+        <widget class="QCheckBox" name="newpageCB" >
+         <property name="enabled" >
+          <bool>false</bool>
+         </property>
          <property name="toolTip" >
-          <string>Select for tables that span multiple pages</string>
+          <string>Set a page break on the current row</string>
          </property>
          <property name="text" >
-          <string>&amp;Use long table</string>
+          <string>Page &amp;break on current row</string>
          </property>
         </widget>
        </item>
@@ -872,16 +1021,13 @@
          </layout>
         </widget>
        </item>
-       <item row="2" column="0" >
-        <widget class="QCheckBox" name="newpageCB" >
-         <property name="enabled" >
-          <bool>false</bool>
-         </property>
+       <item row="0" column="0" >
+        <widget class="QCheckBox" name="longTabularCB" >
          <property name="toolTip" >
-          <string>Set a page break on the current row</string>
+          <string>Select for tables that span multiple pages</string>
          </property>
          <property name="text" >
-          <string>Page &amp;break on current row</string>
+          <string>&amp;Use long table</string>
          </property>
         </widget>
        </item>
@@ -889,7 +1035,7 @@
      </widget>
     </widget>
    </item>
-   <item>
+   <item row="1" column="0" >
     <layout class="QHBoxLayout" >
      <property name="margin" >
       <number>0</number>
@@ -993,16 +1139,16 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>QSetBorder</class>
-   <extends></extends>
-   <header>qsetborder.h</header>
+   <class>LengthCombo</class>
+   <extends>QComboBox</extends>
+   <header>lengthcombo.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>LengthCombo</class>
-   <extends></extends>
-   <header>lengthcombo.h</header>
+   <class>QSetBorder</class>
+   <extends>QWidget</extends>
+   <header>qsetborder.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -1017,8 +1163,20 @@
   <tabstop>rotateTabularCB</tabstop>
   <tabstop>rotateCellCB</tabstop>
   <tabstop>specialAlignmentED</tabstop>
+  <tabstop>closePB</tabstop>
   <tabstop>borderSetPB</tabstop>
   <tabstop>borderUnsetPB</tabstop>
+  <tabstop>borderDefaultRB</tabstop>
+  <tabstop>booktabsRB</tabstop>
+  <tabstop>topspaceCO</tabstop>
+  <tabstop>bottomspaceCO</tabstop>
+  <tabstop>interlinespaceCO</tabstop>
+  <tabstop>topspaceED</tabstop>
+  <tabstop>bottomspaceED</tabstop>
+  <tabstop>interlinespaceED</tabstop>
+  <tabstop>topspaceUnit</tabstop>
+  <tabstop>bottomspaceUnit</tabstop>
+  <tabstop>interlinespaceUnit</tabstop>
   <tabstop>longTabularCB</tabstop>
   <tabstop>headerStatusCB</tabstop>
   <tabstop>headerBorderAboveCB</tabstop>
@@ -1035,7 +1193,6 @@
   <tabstop>lastfooterBorderBelowCB</tabstop>
   <tabstop>lastfooterNoContentsCB</tabstop>
   <tabstop>newpageCB</tabstop>
-  <tabstop>closePB</tabstop>
  </tabstops>
  <resources/>
  <connections/>

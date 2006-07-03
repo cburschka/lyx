@@ -358,6 +358,11 @@
 	* FormFileDialog.C: add #include "filefilterlist.h"
 	* FormBibtex.C: remove #include "globbing.h".
 
+2004-11-16  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* FormTabular.C (update): disable vertical rules if using
+	booktabs
+
 2004-11-16  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* Layoutengine.[Ch]: Break up circular dependency between Box and
@@ -381,6 +386,11 @@
 2004-11-15  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* XFormsView.C (hasFocus): new method, always returns true for now
+
+2004-11-11  Edwin Leuven
+
+	* FormTabular.C (update, input): handle check_booktabs
+	* forms/form_tabular.fd (check_booktabs): new checkbox
 
 2004-11-08  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 

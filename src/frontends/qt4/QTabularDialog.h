@@ -32,6 +32,10 @@ public:
 protected Q_SLOTS:
 	virtual void change_adaptor();
 
+	virtual void topspace_changed();
+	virtual void bottomspace_changed();
+	virtual void interlinespace_changed();
+	virtual void on_booktabsRB_toggled();
 	virtual void close_clicked();
 	virtual void borderSet_clicked();
 	virtual void borderUnset_clicked();

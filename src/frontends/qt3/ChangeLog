@@ -697,12 +697,25 @@
 	* QPrefsDialog.h: include LColor.h to satisfy concept checks.
 	* lcolorcache.h: ditto
 
+2004-11-16  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* QTabular.C (update_borders): disable vertical rules if using
+	booktabs
+	* QTabularDialog.C (booktabs_clicked): add a missing call to
+	form_->changed() and update the borders
+
 2004-11-15  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* QtView.C (hasFocus): new method
 
 	* QLPopupMenu.C (populate): remove a Qt/Mac hack to disable some
 	menu entries when the main window does not have focus
+
+2004-11-11  Edwin Leuven
+
+	* QTabular.C (build_dialog, update_contents): handle booktabsCB
+	* QTabularDialog.[Ch] (booktabs_clicked): new
+	* ui/QTabularDialogBase.ui (booktabsCB): new checkbox
 
 2004-11-08  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 

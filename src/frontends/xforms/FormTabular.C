@@ -100,14 +100,29 @@ void FormTabular::build()
 
 	fl_set_input_return(column_options_->input_column_width,
 			    FL_RETURN_END);
+	fl_set_input_return(column_options_->input_topspace,
+			    FL_RETURN_END);
+	fl_set_input_return(column_options_->input_bottomspace,
+			    FL_RETURN_END);
+	fl_set_input_return(column_options_->input_interlinespace,
+			    FL_RETURN_END);
 	fl_set_input_return(column_options_->input_special_alignment,
 			    FL_RETURN_END);
 
 	// trigger an input event for cut&paste with middle mouse button.
 	setPrehandler(column_options_->input_column_width);
+	setPrehandler(column_options_->input_topspace);
+	setPrehandler(column_options_->input_bottomspace);
+	setPrehandler(column_options_->input_interlinespace);
 	setPrehandler(column_options_->input_special_alignment);
 
 	fl_addto_choice(column_options_->choice_value_column_width,
+			units.c_str());
+	fl_addto_choice(column_options_->choice_value_topspace,
+			units.c_str());
+	fl_addto_choice(column_options_->choice_value_bottomspace,
+			units.c_str());
+	fl_addto_choice(column_options_->choice_value_interlinespace,
 			units.c_str());
 
 	// cell options form
@@ -164,6 +179,12 @@ void FormTabular::update()
 	fl_activate_object(cell_options_->input_special_multialign);
 	fl_activate_object(column_options_->input_column_width);
 	fl_activate_object(column_options_->choice_value_column_width);
+	fl_activate_object(column_options_->input_topspace);
+	fl_activate_object(column_options_->choice_value_topspace);
+	fl_activate_object(column_options_->input_bottomspace);
+	fl_activate_object(column_options_->choice_value_bottomspace);
+	fl_activate_object(column_options_->input_interlinespace);
+	fl_activate_object(column_options_->choice_value_interlinespace);
 	fl_set_input(dialog_->input_tabular_column,
 		     convert<string>(column).c_str());
 	fl_deactivate_object(dialog_->input_tabular_column);
@@ -180,13 +201,15 @@ void FormTabular::update()
 			      tabular.bottomLine(cell)?1:0);
 		setEnabled(cell_options_->check_border_bottom, true);
 		// pay attention to left/right lines they are only allowed
-		// to set if we are in first/last cell of row or if the left/right
-		// cell is also a multicolumn.
+		// to set if we don't use booktabs and if we are in
+		// first/last cell of row or if the left/right cell is also a
+		// multicolumn.
 		if (tabular.isFirstCellInRow(cell) ||
 		    tabular.isMultiColumn(cell-1)) {
 			fl_set_button(cell_options_->check_border_left,
 				      tabular.leftLine(cell)?1:0);
-			setEnabled(cell_options_->check_border_left, true);
+			setEnabled(cell_options_->check_border_left,
+			           !tabular.useBookTabs());
 		} else {
 			fl_set_button(cell_options_->check_border_left, 0);
 			setEnabled(cell_options_->check_border_left, false);
@@ -195,7 +218,8 @@ void FormTabular::update()
 		    tabular.isMultiColumn(cell+1)) {
 			fl_set_button(cell_options_->check_border_right,
 				      tabular.rightLine(cell)?1:0);
-			setEnabled(cell_options_->check_border_right, true);
+			setEnabled(cell_options_->check_border_right,
+			           !tabular.useBookTabs());
 		} else {
 			fl_set_button(cell_options_->check_border_right, 0);
 			setEnabled(cell_options_->check_border_right, false);
@@ -320,6 +344,39 @@ void FormTabular::update()
 	setEnabled(column_options_->input_column_width, !isReadonly);
 	setEnabled(column_options_->choice_value_column_width, !isReadonly);
 
+	if (tabular.row_info[row].top_space_default)
+		fl_set_input(column_options_->input_topspace, "default");
+	else {
+		updateWidgetsFromLength(column_options_->input_topspace,
+				column_options_->choice_value_topspace,
+				tabular.row_info[row].top_space,
+				default_unit);
+	}
+	setEnabled(column_options_->input_topspace, !isReadonly);
+	setEnabled(column_options_->choice_value_topspace, !isReadonly);
+
+	if (tabular.row_info[row].bottom_space_default)
+		fl_set_input(column_options_->input_bottomspace, "default");
+	else {
+		updateWidgetsFromLength(column_options_->input_bottomspace,
+				column_options_->choice_value_bottomspace,
+				tabular.row_info[row].bottom_space,
+				default_unit);
+	}
+	setEnabled(column_options_->input_bottomspace, !isReadonly);
+	setEnabled(column_options_->choice_value_bottomspace, !isReadonly);
+
+	if (tabular.row_info[row].interline_space_default)
+		fl_set_input(column_options_->input_interlinespace, "default");
+	else {
+		updateWidgetsFromLength(column_options_->input_interlinespace,
+				column_options_->choice_value_interlinespace,
+				tabular.row_info[row].interline_space,
+				default_unit);
+	}
+	setEnabled(column_options_->input_interlinespace, !isReadonly);
+	setEnabled(column_options_->choice_value_interlinespace, !isReadonly);
+
 	setEnabled(cell_options_->check_useminipage, !pwidth.zero());
 	if (!pwidth.zero()) {
 		if (tabular.getUsebox(cell) == 2)
@@ -360,6 +417,9 @@ void FormTabular::update()
 	setEnabled(column_options_->radio_valign_top,    !pwidth.zero());
 	setEnabled(column_options_->radio_valign_bottom, !pwidth.zero());
 	setEnabled(column_options_->radio_valign_middle, !pwidth.zero());
+
+	fl_set_button(tabular_options_->check_booktabs,
+	              tabular.useBookTabs());
 
 	fl_set_button(tabular_options_->check_longtable,
 		      tabular.isLongTabular());
@@ -564,6 +624,72 @@ ButtonPolicy::SMInput FormTabular::input(FL_OBJECT * ob, long)
 		return ButtonPolicy::SMI_VALID;
 	}
 
+	if ((ob == column_options_->input_topspace) ||
+	    (ob == column_options_->choice_value_topspace)) {
+		string const input = getString(column_options_->input_topspace);
+		if (input == "default")
+			controller().set(LyXTabular::SET_TOP_SPACE, "default");
+		else {
+			string const str = getLengthFromWidgets(
+				column_options_->input_topspace,
+				column_options_->choice_value_topspace);
+			controller().set(LyXTabular::SET_TOP_SPACE, str);
+
+			//check if the input is valid
+			if (!input.empty() && !isValidLength(input) && !isStrDbl(input)) {
+				postWarning(_("Invalid Length (valid example: 10mm)"));
+				return ButtonPolicy::SMI_INVALID;
+			}
+		}
+
+		update(); // update for alignment
+		return ButtonPolicy::SMI_VALID;
+	}
+
+	if ((ob == column_options_->input_bottomspace) ||
+	    (ob == column_options_->choice_value_bottomspace)) {
+		string const input = getString(column_options_->input_bottomspace);
+		if (input == "default")
+			controller().set(LyXTabular::SET_BOTTOM_SPACE, "default");
+		else {
+			string const str = getLengthFromWidgets(
+				column_options_->input_bottomspace,
+				column_options_->choice_value_bottomspace);
+			controller().set(LyXTabular::SET_BOTTOM_SPACE, str);
+
+			//check if the input is valid
+			if (!input.empty() && !isValidLength(input) && !isStrDbl(input)) {
+				postWarning(_("Invalid Length (valid example: 10mm)"));
+				return ButtonPolicy::SMI_INVALID;
+			}
+		}
+
+		update(); // update for alignment
+		return ButtonPolicy::SMI_VALID;
+	}
+
+	if ((ob == column_options_->input_interlinespace) ||
+	    (ob == column_options_->choice_value_interlinespace)) {
+		string const input = getString(column_options_->input_interlinespace);
+		if (input == "default")
+			controller().set(LyXTabular::SET_INTERLINE_SPACE, "default");
+		else {
+			string const str = getLengthFromWidgets(
+				column_options_->input_interlinespace,
+				column_options_->choice_value_interlinespace);
+			controller().set(LyXTabular::SET_INTERLINE_SPACE, str);
+
+			//check if the input is valid
+			if (!input.empty() && !isValidLength(input) && !isStrDbl(input)) {
+				postWarning(_("Invalid Length (valid example: 10mm)"));
+				return ButtonPolicy::SMI_INVALID;
+			}
+		}
+
+		update(); // update for alignment
+		return ButtonPolicy::SMI_VALID;
+	}
+
 	if ((ob == cell_options_->input_mcolumn_width) ||
 	    (ob == cell_options_->choice_value_mcolumn_width)) {
 		string const str =
@@ -622,6 +748,11 @@ ButtonPolicy::SMInput FormTabular::input(FL_OBJECT * ob, long)
 			num = LyXTabular::SET_LONGTABULAR;
 		else
 			num = LyXTabular::UNSET_LONGTABULAR;
+	} else if (ob == tabular_options_->check_booktabs) {
+		if (fl_get_button(tabular_options_->check_booktabs))
+			num = LyXTabular::SET_BOOKTABS;
+		else
+			num = LyXTabular::UNSET_BOOKTABS;
 	} else if (ob == tabular_options_->check_rotate_tabular) {
 		s = fl_get_button(tabular_options_->check_rotate_tabular);
 		if (s)

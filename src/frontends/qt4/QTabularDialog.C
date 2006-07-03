@@ -17,11 +17,13 @@
 #include "validators.h"
 #include "qt_helpers.h"
 
+#include "controllers/ButtonController.h"
 #include "controllers/ControlTabular.h"
 
 #include <QCloseEvent>
 #include <QCheckBox>
 #include <QPushButton>
+#include <QRadioButton>
 #include <QLineEdit>
 
 using std::string;
@@ -36,40 +38,59 @@ QTabularDialog::QTabularDialog(QTabular * form)
 	setupUi(this);
 
 	widthED->setValidator(unsignedLengthValidator(widthED));
+	topspaceED->setValidator(new LengthValidator(topspaceED));
+	bottomspaceED->setValidator(new LengthValidator(bottomspaceED));
+	interlinespaceED->setValidator(new LengthValidator(interlinespaceED));
 
-    connect( borderSetPB, SIGNAL( clicked() ), this, SLOT( borderSet_clicked() ) );
-    connect( borderUnsetPB, SIGNAL( clicked() ), this, SLOT( borderUnset_clicked() ) );
-    connect( longTabularCB, SIGNAL( toggled(bool) ), longtableGB, SLOT( setEnabled(bool) ) );
-    connect( longTabularCB, SIGNAL( toggled(bool) ), newpageCB, SLOT( setEnabled(bool) ) );
-    connect( hAlignCB, SIGNAL( activated(int) ), this, SLOT( hAlign_changed(int) ) );
-    connect( vAlignCB, SIGNAL( activated(int) ), this, SLOT( vAlign_changed(int) ) );
-    connect( multicolumnCB, SIGNAL( clicked() ), this, SLOT( multicolumn_clicked() ) );
-    connect( newpageCB, SIGNAL( clicked() ), this, SLOT( ltNewpage_clicked() ) );
-    connect( headerStatusCB, SIGNAL( clicked() ), this, SLOT( ltHeaderStatus_clicked() ) );
-    connect( headerBorderAboveCB, SIGNAL( clicked() ), this, SLOT( ltHeaderBorderAbove_clicked() ) );
-    connect( headerBorderBelowCB, SIGNAL( clicked() ), this, SLOT( ltHeaderBorderBelow_clicked() ) );
-    connect( firstheaderStatusCB, SIGNAL( clicked() ), this, SLOT( ltFirstHeaderStatus_clicked() ) );
-    connect( firstheaderBorderAboveCB, SIGNAL( clicked() ), this, SLOT( ltFirstHeaderBorderAbove_clicked() ) );
-    connect( firstheaderBorderBelowCB, SIGNAL( clicked() ), this, SLOT( ltFirstHeaderBorderBelow_clicked() ) );
-    connect( firstheaderNoContentsCB, SIGNAL( clicked() ), this, SLOT( ltFirstHeaderEmpty_clicked() ) );
-    connect( footerStatusCB, SIGNAL( clicked() ), this, SLOT( ltFooterStatus_clicked() ) );
-    connect( footerBorderAboveCB, SIGNAL( clicked() ), this, SLOT( ltFooterBorderAbove_clicked() ) );
-    connect( footerBorderBelowCB, SIGNAL( clicked() ), this, SLOT( ltFooterBorderBelow_clicked() ) );
-    connect( lastfooterStatusCB, SIGNAL( clicked() ), this, SLOT( ltLastFooterStatus_clicked() ) );
-    connect( lastfooterBorderAboveCB, SIGNAL( clicked() ), this, SLOT( ltLastFooterBorderAbove_clicked() ) );
-    connect( lastfooterBorderBelowCB, SIGNAL( clicked() ), this, SLOT( ltLastFooterBorderBelow_clicked() ) );
-    connect( lastfooterNoContentsCB, SIGNAL( clicked() ), this, SLOT( ltLastFooterEmpty_clicked() ) );
-    connect( specialAlignmentED, SIGNAL( returnPressed() ), this, SLOT( specialAlignment_changed() ) );
-    connect( widthED, SIGNAL( returnPressed() ), this, SLOT( width_changed() ) );
-    connect( widthUnit, SIGNAL( selectionChanged(LyXLength::UNIT) ), this, SLOT( width_changed() ) );
-    connect( closePB, SIGNAL( clicked() ), this, SLOT( close_clicked() ) );
-    connect( borders, SIGNAL( topSet(bool) ), this, SLOT( topBorder_changed() ) );
-    connect( borders, SIGNAL( bottomSet(bool) ), this, SLOT( bottomBorder_changed() ) );
-    connect( borders, SIGNAL( rightSet(bool) ), this, SLOT( rightBorder_changed() ) );
-    connect( borders, SIGNAL( leftSet(bool) ), this, SLOT( leftBorder_changed() ) );
-    connect( rotateTabularCB, SIGNAL( clicked() ), this, SLOT( rotateTabular() ) );
-    connect( rotateCellCB, SIGNAL( clicked() ), this, SLOT( rotateCell() ) );
-    connect( longTabularCB, SIGNAL( clicked() ), this, SLOT( longTabular() ) );
+	connect(topspaceED, SIGNAL(returnPressed()),
+	        this, SLOT(topspace_changed()));
+	connect(topspaceUnit, SIGNAL(selectionChanged(LyXLength::UNIT)),
+	        this, SLOT(topspace_changed()));
+	connect(topspaceCO, SIGNAL(activated(int)), this, SLOT(topspace_changed()));
+	connect(bottomspaceED, SIGNAL(returnPressed()),
+	        this, SLOT(bottomspace_changed()));
+	connect(bottomspaceUnit, SIGNAL(selectionChanged(LyXLength::UNIT)),
+	        this, SLOT(bottomspace_changed()));
+	connect(bottomspaceCO, SIGNAL(activated(int)), this, SLOT(bottomspace_changed()));
+	connect(interlinespaceED, SIGNAL(returnPressed()),
+	        this, SLOT(interlinespace_changed()));
+	connect(interlinespaceUnit, SIGNAL(selectionChanged(LyXLength::UNIT)),
+	        this, SLOT(interlinespace_changed()));
+	connect(interlinespaceCO, SIGNAL(activated(int)), this, SLOT(interlinespace_changed()));
+	connect(booktabsRB, SIGNAL(clicked()), this, SLOT(on_booktabsRB_toggled()));
+	connect(borderSetPB, SIGNAL(clicked()), this, SLOT(borderSet_clicked()));
+	connect(borderUnsetPB, SIGNAL(clicked()), this, SLOT(borderUnset_clicked()));
+	connect(longTabularCB, SIGNAL(toggled(bool)), longtableGB, SLOT(setEnabled(bool)));
+	connect(longTabularCB, SIGNAL(toggled(bool)), newpageCB, SLOT(setEnabled(bool)));
+	connect(hAlignCB, SIGNAL(activated(int)), this, SLOT(hAlign_changed(int)));
+	connect(vAlignCB, SIGNAL(activated(int)), this, SLOT(vAlign_changed(int)));
+	connect(multicolumnCB, SIGNAL(clicked()), this, SLOT(multicolumn_clicked()));
+	connect(newpageCB, SIGNAL(clicked()), this, SLOT(ltNewpage_clicked()));
+	connect(headerStatusCB, SIGNAL(clicked()), this, SLOT(ltHeaderStatus_clicked()));
+	connect(headerBorderAboveCB, SIGNAL(clicked()), this, SLOT(ltHeaderBorderAbove_clicked()));
+	connect(headerBorderBelowCB, SIGNAL(clicked()), this, SLOT(ltHeaderBorderBelow_clicked()));
+	connect(firstheaderStatusCB, SIGNAL(clicked()), this, SLOT(ltFirstHeaderStatus_clicked()));
+	connect(firstheaderBorderAboveCB, SIGNAL(clicked()), this, SLOT(ltFirstHeaderBorderAbove_clicked()));
+	connect(firstheaderBorderBelowCB, SIGNAL(clicked()), this, SLOT(ltFirstHeaderBorderBelow_clicked()));
+	connect(firstheaderNoContentsCB, SIGNAL(clicked()), this, SLOT(ltFirstHeaderEmpty_clicked()));
+	connect(footerStatusCB, SIGNAL(clicked()), this, SLOT(ltFooterStatus_clicked()));
+	connect(footerBorderAboveCB, SIGNAL(clicked()), this, SLOT(ltFooterBorderAbove_clicked()));
+	connect(footerBorderBelowCB, SIGNAL(clicked()), this, SLOT(ltFooterBorderBelow_clicked()));
+	connect(lastfooterStatusCB, SIGNAL(clicked()), this, SLOT(ltLastFooterStatus_clicked()));
+	connect(lastfooterBorderAboveCB, SIGNAL(clicked()), this, SLOT(ltLastFooterBorderAbove_clicked()));
+	connect(lastfooterBorderBelowCB, SIGNAL(clicked()), this, SLOT(ltLastFooterBorderBelow_clicked()));
+	connect(lastfooterNoContentsCB, SIGNAL(clicked()), this, SLOT(ltLastFooterEmpty_clicked()));
+	connect(specialAlignmentED, SIGNAL(returnPressed()), this, SLOT(specialAlignment_changed()));
+	connect(widthED, SIGNAL(returnPressed()), this, SLOT(width_changed()));
+	connect(widthUnit, SIGNAL(selectionChanged(LyXLength::UNIT)), this, SLOT(width_changed()));
+	connect(closePB, SIGNAL(clicked()), this, SLOT(close_clicked()));
+	connect(borders, SIGNAL(topSet(bool)), this, SLOT(topBorder_changed()));
+	connect(borders, SIGNAL(bottomSet(bool)), this, SLOT(bottomBorder_changed()));
+	connect(borders, SIGNAL(rightSet(bool)), this, SLOT(rightBorder_changed()));
+	connect(borders, SIGNAL(leftSet(bool)), this, SLOT(leftBorder_changed()));
+	connect(rotateTabularCB, SIGNAL(clicked()), this, SLOT(rotateTabular()));
+	connect(rotateCellCB, SIGNAL(clicked()), this, SLOT(rotateCell()));
+	connect(longTabularCB, SIGNAL(clicked()), this, SLOT(longTabular()));
 }
 
 
@@ -83,6 +104,104 @@ void QTabularDialog::closeEvent(QCloseEvent * e)
 {
 	form_->slotWMHide();
 	e->accept();
+}
+
+
+void QTabularDialog::on_booktabsRB_toggled()
+{
+	form_->changed();
+	form_->controller().booktabs(booktabsRB->isChecked());
+	form_->update_borders();
+}
+
+
+void QTabularDialog::topspace_changed()
+{
+	switch(topspaceCO->currentItem()) {
+		case 0: {
+			form_->controller().set(LyXTabular::SET_TOP_SPACE, "");
+				topspaceED->setEnabled(false);
+				topspaceUnit->setEnabled(false);
+			break;
+		}
+		case 1: {
+			form_->controller().set(LyXTabular::SET_TOP_SPACE, "default");
+			topspaceED->setEnabled(false);
+			topspaceUnit->setEnabled(false);
+			break;
+		}
+		case 2: {
+			if (!topspaceED->text().isEmpty())
+				form_->controller().set(LyXTabular::SET_TOP_SPACE,
+					widgetsToLength(topspaceED, topspaceUnit));
+			if (!form_->bc().bp().isReadOnly()) {
+				topspaceED->setEnabled(true);
+				topspaceUnit->setEnabled(true);
+			}
+			break;
+		}
+	}
+	form_->changed();
+}
+
+
+void QTabularDialog::bottomspace_changed()
+{
+	switch(bottomspaceCO->currentItem()) {
+		case 0: {
+			form_->controller().set(LyXTabular::SET_BOTTOM_SPACE, "");
+				bottomspaceED->setEnabled(false);
+				bottomspaceUnit->setEnabled(false);
+			break;
+		}
+		case 1: {
+			form_->controller().set(LyXTabular::SET_BOTTOM_SPACE, "default");
+			bottomspaceED->setEnabled(false);
+			bottomspaceUnit->setEnabled(false);
+			break;
+		}
+		case 2: {
+			if (!bottomspaceED->text().isEmpty())
+				form_->controller().set(LyXTabular::SET_BOTTOM_SPACE,
+					widgetsToLength(bottomspaceED, bottomspaceUnit));
+			if (!form_->bc().bp().isReadOnly()) {
+				bottomspaceED->setEnabled(true);
+				bottomspaceUnit->setEnabled(true);
+			}
+			break;
+		}
+	}
+	form_->changed();
+}
+
+
+void QTabularDialog::interlinespace_changed()
+{
+	switch(interlinespaceCO->currentItem()) {
+		case 0: {
+			form_->controller().set(LyXTabular::SET_INTERLINE_SPACE, "");
+				interlinespaceED->setEnabled(false);
+				interlinespaceUnit->setEnabled(false);
+			break;
+		}
+		case 1: {
+			form_->controller().set(LyXTabular::SET_INTERLINE_SPACE, "default");
+			interlinespaceED->setEnabled(false);
+			interlinespaceUnit->setEnabled(false);
+			break;
+		}
+		case 2: {
+			if (!interlinespaceED->text().isEmpty())
+				form_->controller().set(LyXTabular::SET_INTERLINE_SPACE,
+					widgetsToLength(interlinespaceED, interlinespaceUnit));
+			if (!form_->bc().bp().isReadOnly()) {
+				interlinespaceED->setEnabled(true);
+				interlinespaceUnit->setEnabled(true);
+			}
+			break;
+		}
+	}
+	form_->changed();
 }
 
 

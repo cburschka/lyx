@@ -222,6 +222,15 @@ void ControlTabular::valign(ControlTabular::VALIGN v)
 }
 
 
+void ControlTabular::booktabs(bool yes)
+{
+	if (yes)
+		set(LyXTabular::SET_BOOKTABS);
+	else
+		set(LyXTabular::UNSET_BOOKTABS);
+}
+
+
 void ControlTabular::longTabular(bool yes)
 {
 	if (yes)

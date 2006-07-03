@@ -38,6 +38,10 @@
 
 	* MenuBackend.h (clear): new method.
 
+2006-03-14  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* buffer.C: format up to 246.
+
 2006-03-13  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* rowpainter.C (paintChangeBar): fix painting of change bar with
@@ -2247,6 +2251,10 @@
 
 	* main.C: (main): no longer pass pointers to os::init.
 
+2004-12-06  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* buffer.C: format up to 239.
+
 2004-12-06  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* undo.C (textUndoOrRedo): simplify logic, fix a crash
@@ -2492,6 +2500,16 @@
 2004-11-14  John Spray  <spray_john@users.sourceforge.net>
 
 	* vspace.C: fix off-by-one-error, related to fix #1682
+
+2004-11-11  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* buffer.C: format up to 238.
+
+2004-11-11  Edwin Leuven
+
+	* LaTeXFeatures.C: add booktabs package
+	* tabular.[Ch] (use_booktabs, setBookTabs, useBookTabs): new members,
+	use them in several places
 
 2004-11-11  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 

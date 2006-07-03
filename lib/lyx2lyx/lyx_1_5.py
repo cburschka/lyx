@@ -1,6 +1,7 @@
 # This file is part of lyx2lyx
 # -*- coding: iso-8859-1 -*-
 # Copyright (C) 2006 José Matos <jamatos@lyx.org>
+# Copyright (C) 2004-2006 Georg Baum <Georg.Baum@post.rwth-aachen.de>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -16,7 +17,10 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-from parser_tools import find_token_exact, find_tokens, get_value
+import re
+from parser_tools import find_token, find_token_exact, find_tokens, find_end_of_inset, get_value
+from string import replace
+
 
 ##
 #  Notes: Framed/Shaded
@@ -170,15 +174,45 @@ def revert_font_settings(file):
         file.warning("Ignoring `\\font_osf = true'")
 
 
+def revert_booktabs(file):
+# we just remove the booktabs flag, everything else will become a mess.
+    re_row = re.compile(r'^<row.*space="[^"]+".*>$')
+    re_tspace = re.compile(r'\s+topspace="[^"]+"')
+    re_bspace = re.compile(r'\s+bottomspace="[^"]+"')
+    re_ispace = re.compile(r'\s+interlinespace="[^"]+"')
+    i = 0
+    while 1:
+        i = find_token(file.body, "\\begin_inset Tabular", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(file.body, i + 1)
+        if j == -1:
+            file.warning("Malformed LyX file: Could not find end of tabular.")
+	    continue
+        for k in range(i, j):
+            if re.search('^<features.* booktabs="true".*>$', file.body[k]):
+                file.warning("Converting 'booktabs' table to normal table.")
+                file.body[k] = replace(file.body[k], ' booktabs="true"', '')
+            if re.search(re_row, file.body[k]):
+                file.warning("Removing extra row space.")
+                file.body[k] = re_tspace.sub('', file.body[k])
+                file.body[k] = re_bspace.sub('', file.body[k])
+                file.body[k] = re_ispace.sub('', file.body[k])
+        i = i + 1
+
+
 ##
 # Conversion hub
 #
 
 convert = [[246, []],
-           [247, [convert_font_settings]]]
+           [247, [convert_font_settings]],
+           [248, []]]
 
-revert  = [[246, [revert_font_settings]],
+revert =  [[247, [revert_booktabs]],
+           [246, [revert_font_settings]],
            [245, [revert_framed]]]
+
 
 if __name__ == "__main__":
     pass

@@ -18,7 +18,7 @@
     <property name="sizeGripEnabled">
         <bool>true</bool>
     </property>
-    <vbox>
+    <grid>
         <property name="name">
             <cstring>unnamed</cstring>
         </property>
@@ -28,7 +28,117 @@
         <property name="spacing">
             <number>6</number>
         </property>
-        <widget class="QTabWidget">
+        <widget class="QLayoutWidget" row="1" column="0">
+            <property name="name">
+                <cstring>Layout2</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>0</number>
+                </property>
+                <property name="spacing">
+                    <number>6</number>
+                </property>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>TextLabel1</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Current cell:</string>
+                    </property>
+                </widget>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>tabularRowED</cstring>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>1</hsizetype>
+                            <vsizetype>0</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                    <property name="maximumSize">
+                        <size>
+                            <width>40</width>
+                            <height>32767</height>
+                        </size>
+                    </property>
+                    <property name="focusPolicy">
+                        <enum>NoFocus</enum>
+                    </property>
+                    <property name="toolTip" stdset="0">
+                        <string>Current row position</string>
+                    </property>
+                </widget>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>tabularColumnED</cstring>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>1</hsizetype>
+                            <vsizetype>0</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                    <property name="maximumSize">
+                        <size>
+                            <width>40</width>
+                            <height>32767</height>
+                        </size>
+                    </property>
+                    <property name="focusPolicy">
+                        <enum>NoFocus</enum>
+                    </property>
+                    <property name="toolTip" stdset="0">
+                        <string>Current column position</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property name="name">
+                        <cstring>Spacer1</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>closePB</cstring>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>1</hsizetype>
+                            <vsizetype>0</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                    <property name="text">
+                        <string>Close</string>
+                    </property>
+                    <property name="autoDefault">
+                        <bool>false</bool>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget class="QTabWidget" row="0" column="0">
             <property name="name">
                 <cstring>TabWidget</cstring>
             </property>
@@ -97,7 +207,7 @@
                             <string>Horizontal alignment in column</string>
                         </property>
                     </widget>
-                    <widget class="QCheckBox" row="3" column="0" rowspan="1" colspan="4">
+                    <widget class="QCheckBox" row="4" column="0" rowspan="1" colspan="4">
                         <property name="name">
                             <cstring>rotateTabularCB</cstring>
                         </property>
@@ -107,22 +217,28 @@
                         <property name="text">
                             <string>&amp;Rotate table 90 degrees</string>
                         </property>
+                        <property name="accel">
+                            <string>Alt+R</string>
+                        </property>
                         <property name="toolTip" stdset="0">
                             <string>Rotate the table by 90 degrees</string>
                         </property>
                     </widget>
-                    <widget class="QCheckBox" row="4" column="0" rowspan="1" colspan="4">
+                    <widget class="QCheckBox" row="5" column="0" rowspan="1" colspan="4">
                         <property name="name">
                             <cstring>rotateCellCB</cstring>
                         </property>
                         <property name="text">
                             <string>Rotate &amp;cell 90 degrees</string>
                         </property>
+                        <property name="accel">
+                            <string>Alt+C</string>
+                        </property>
                         <property name="toolTip" stdset="0">
                             <string>Rotate this cell by 90 degrees</string>
                         </property>
                     </widget>
-                    <widget class="QLabel" row="5" column="0" rowspan="1" colspan="2">
+                    <widget class="QLabel" row="6" column="0" rowspan="1" colspan="2">
                         <property name="name">
                             <cstring>specialAlignmentLA</cstring>
                         </property>
@@ -133,7 +249,7 @@
                             <cstring>specialAlignmentED</cstring>
                         </property>
                     </widget>
-                    <widget class="QLineEdit" row="5" column="2" rowspan="1" colspan="2">
+                    <widget class="QLineEdit" row="6" column="2" rowspan="1" colspan="2">
                         <property name="name">
                             <cstring>specialAlignmentED</cstring>
                         </property>
@@ -141,7 +257,7 @@
                             <string>Custom column format (LaTeX)</string>
                         </property>
                     </widget>
-                    <spacer row="6" column="2">
+                    <spacer row="7" column="2">
                         <property name="name">
                             <cstring>Spacer5</cstring>
                         </property>
@@ -297,390 +413,9 @@
                     <property name="name">
                         <cstring>unnamed</cstring>
                     </property>
-                    <property name="margin">
-                        <number>11</number>
-                    </property>
-                    <property name="spacing">
-                        <number>6</number>
-                    </property>
-                    <widget class="QGroupBox" row="0" column="0">
-                        <property name="name">
-                            <cstring>setBordersGB</cstring>
-                        </property>
-                        <property name="title">
-                            <string>Set Borders</string>
-                        </property>
-                        <grid>
-                            <property name="name">
-                                <cstring>unnamed</cstring>
-                            </property>
-                            <property name="margin">
-                                <number>11</number>
-                            </property>
-                            <property name="spacing">
-                                <number>6</number>
-                            </property>
-                            <widget class="QFrame" row="0" column="0">
-                                <property name="name">
-                                    <cstring>bordersF</cstring>
-                                </property>
-                                <property name="sizePolicy">
-                                    <sizepolicy>
-                                        <hsizetype>5</hsizetype>
-                                        <vsizetype>5</vsizetype>
-                                        <horstretch>0</horstretch>
-                                        <verstretch>0</verstretch>
-                                    </sizepolicy>
-                                </property>
-                                <property name="palette">
-                                    <palette>
-                                        <active>
-                                            <color>
-                                                <red>0</red>
-                                                <green>0</green>
-                                                <blue>0</blue>
-                                            </color>
-                                            <color>
-                                                <red>230</red>
-                                                <green>240</green>
-                                                <blue>249</blue>
-                                            </color>
-                                            <color>
-                                                <red>255</red>
-                                                <green>255</green>
-                                                <blue>255</blue>
-                                            </color>
-                                            <color>
-                                                <red>242</red>
-                                                <green>247</green>
-                                                <blue>252</blue>
-                                            </color>
-                                            <color>
-                                                <red>115</red>
-                                                <green>120</green>
-                                                <blue>124</blue>
-                                            </color>
-                                            <color>
-                                                <red>154</red>
-                                                <green>160</green>
-                                                <blue>166</blue>
-                                            </color>
-                                            <color>
-                                                <red>0</red>
-                                                <green>0</green>
-                                                <blue>0</blue>
-                                            </color>
-                                            <color>
-                                                <red>255</red>
-                                                <green>255</green>
-                                                <blue>255</blue>
-                                            </color>
-                                            <color>
-                                                <red>0</red>
-                                                <green>0</green>
-                                                <blue>0</blue>
-                                            </color>
-                                            <color>
-                                                <red>255</red>
-                                                <green>255</green>
-                                                <blue>255</blue>
-                                            </color>
-                                            <color>
-                                                <red>255</red>
-                                                <green>255</green>
-                                                <blue>255</blue>
-                                            </color>
-                                            <color>
-                                                <red>0</red>
-                                                <green>0</green>
-                                                <blue>0</blue>
-                                            </color>
-                                            <color>
-                                                <red>16</red>
-                                                <green>145</green>
-                                                <blue>210</blue>
-                                            </color>
-                                            <color>
-                                                <red>255</red>
-                                                <green>255</green>
-                                                <blue>255</blue>
-                                            </color>
-                                            <color>
-                                                <red>0</red>
-                                                <green>0</green>
-                                                <blue>0</blue>
-                                            </color>
-                                            <color>
-                                                <red>0</red>
-                                                <green>0</green>
-                                                <blue>0</blue>
-                                            </color>
-                                        </active>
-                                        <disabled>
-                                            <color>
-                                                <red>128</red>
-                                                <green>128</green>
-                                                <blue>128</blue>
-                                            </color>
-                                            <color>
-                                                <red>230</red>
-                                                <green>240</green>
-                                                <blue>249</blue>
-                                            </color>
-                                            <color>
-                                                <red>255</red>
-                                                <green>255</green>
-                                                <blue>255</blue>
-                                            </color>
-                                            <color>
-                                                <red>255</red>
-                                                <green>255</green>
-                                                <blue>255</blue>
-                                            </color>
-                                            <color>
-                                                <red>115</red>
-                                                <green>120</green>
-                                                <blue>124</blue>
-                                            </color>
-                                            <color>
-                                                <red>154</red>
-                                                <green>160</green>
-                                                <blue>166</blue>
-                                            </color>
-                                            <color>
-                                                <red>0</red>
-                                                <green>0</green>
-                                                <blue>0</blue>
-                                            </color>
-                                            <color>
-                                                <red>255</red>
-                                                <green>255</green>
-                                                <blue>255</blue>
-                                            </color>
-                                            <color>
-                                                <red>128</red>
-                                                <green>128</green>
-                                                <blue>128</blue>
-                                            </color>
-                                            <color>
-                                                <red>255</red>
-                                                <green>255</green>
-                                                <blue>255</blue>
-                                            </color>
-                                            <color>
-                                                <red>255</red>
-                                                <green>255</green>
-                                                <blue>255</blue>
-                                            </color>
-                                            <color>
-                                                <red>0</red>
-                                                <green>0</green>
-                                                <blue>0</blue>
-                                            </color>
-                                            <color>
-                                                <red>16</red>
-                                                <green>145</green>
-                                                <blue>210</blue>
-                                            </color>
-                                            <color>
-                                                <red>255</red>
-                                                <green>255</green>
-                                                <blue>255</blue>
-                                            </color>
-                                            <color>
-                                                <red>0</red>
-                                                <green>0</green>
-                                                <blue>0</blue>
-                                            </color>
-                                            <color>
-                                                <red>0</red>
-                                                <green>0</green>
-                                                <blue>0</blue>
-                                            </color>
-                                        </disabled>
-                                        <inactive>
-                                            <color>
-                                                <red>0</red>
-                                                <green>0</green>
-                                                <blue>0</blue>
-                                            </color>
-                                            <color>
-                                                <red>230</red>
-                                                <green>240</green>
-                                                <blue>249</blue>
-                                            </color>
-                                            <color>
-                                                <red>255</red>
-                                                <green>255</green>
-                                                <blue>255</blue>
-                                            </color>
-                                            <color>
-                                                <red>255</red>
-                                                <green>255</green>
-                                                <blue>255</blue>
-                                            </color>
-                                            <color>
-                                                <red>115</red>
-                                                <green>120</green>
-                                                <blue>124</blue>
-                                            </color>
-                                            <color>
-                                                <red>154</red>
-                                                <green>160</green>
-                                                <blue>166</blue>
-                                            </color>
-                                            <color>
-                                                <red>0</red>
-                                                <green>0</green>
-                                                <blue>0</blue>
-                                            </color>
-                                            <color>
-                                                <red>255</red>
-                                                <green>255</green>
-                                                <blue>255</blue>
-                                            </color>
-                                            <color>
-                                                <red>0</red>
-                                                <green>0</green>
-                                                <blue>0</blue>
-                                            </color>
-                                            <color>
-                                                <red>255</red>
-                                                <green>255</green>
-                                                <blue>255</blue>
-                                            </color>
-                                            <color>
-                                                <red>255</red>
-                                                <green>255</green>
-                                                <blue>255</blue>
-                                            </color>
-                                            <color>
-                                                <red>0</red>
-                                                <green>0</green>
-                                                <blue>0</blue>
-                                            </color>
-                                            <color>
-                                                <red>16</red>
-                                                <green>145</green>
-                                                <blue>210</blue>
-                                            </color>
-                                            <color>
-                                                <red>255</red>
-                                                <green>255</green>
-                                                <blue>255</blue>
-                                            </color>
-                                            <color>
-                                                <red>0</red>
-                                                <green>0</green>
-                                                <blue>0</blue>
-                                            </color>
-                                            <color>
-                                                <red>0</red>
-                                                <green>0</green>
-                                                <blue>0</blue>
-                                            </color>
-                                        </inactive>
-                                    </palette>
-                                </property>
-                                <property name="frameShape">
-                                    <enum>StyledPanel</enum>
-                                </property>
-                                <property name="frameShadow">
-                                    <enum>Sunken</enum>
-                                </property>
-                                <property name="layoutMargin" stdset="0">
-                                </property>
-                                <grid>
-                                    <property name="name">
-                                        <cstring>unnamed</cstring>
-                                    </property>
-                                    <property name="margin">
-                                        <number>3</number>
-                                    </property>
-                                    <property name="spacing">
-                                        <number>6</number>
-                                    </property>
-                                    <widget class="QSetBorder" row="0" column="0">
-                                        <property name="name">
-                                            <cstring>borders</cstring>
-                                        </property>
-                                        <property name="sizePolicy">
-                                            <sizepolicy>
-                                                <hsizetype>1</hsizetype>
-                                                <vsizetype>1</vsizetype>
-                                                <horstretch>0</horstretch>
-                                                <verstretch>0</verstretch>
-                                            </sizepolicy>
-                                        </property>
-                                        <property name="toolTip" stdset="0">
-                                            <string>Set borders of the current (selected) cell(s)</string>
-                                        </property>
-                                    </widget>
-                                </grid>
-                            </widget>
-                        </grid>
-                    </widget>
-                    <widget class="QGroupBox" row="0" column="1">
-                        <property name="name">
-                            <cstring>allBordersGB</cstring>
-                        </property>
-                        <property name="title">
-                            <string>All Borders</string>
-                        </property>
-                        <grid>
-                            <property name="name">
-                                <cstring>unnamed</cstring>
-                            </property>
-                            <property name="margin">
-                                <number>11</number>
-                            </property>
-                            <property name="spacing">
-                                <number>6</number>
-                            </property>
-                            <widget class="QPushButton" row="0" column="0">
-                                <property name="name">
-                                    <cstring>borderSetPB</cstring>
-                                </property>
-                                <property name="text">
-                                    <string>&amp;Set</string>
-                                </property>
-                                <property name="toolTip" stdset="0">
-                                    <string>Set all borders of the current (selected) cell(s)</string>
-                                </property>
-                            </widget>
-                            <widget class="QPushButton" row="1" column="0">
-                                <property name="name">
-                                    <cstring>borderUnsetPB</cstring>
-                                </property>
-                                <property name="text">
-                                    <string>C&amp;lear</string>
-                                </property>
-                                <property name="toolTip" stdset="0">
-                                    <string>Unset all borders of the current (selected) cell(s)</string>
-                                </property>
-                            </widget>
-                        </grid>
-                    </widget>
-                    <spacer row="0" column="2">
-                        <property name="name">
-                            <cstring>Spacer6</cstring>
-                        </property>
-                        <property name="orientation">
-                            <enum>Horizontal</enum>
-                        </property>
-                        <property name="sizeType">
-                            <enum>Expanding</enum>
-                        </property>
-                        <property name="sizeHint">
-                            <size>
-                                <width>20</width>
-                                <height>20</height>
-                            </size>
-                        </property>
-                    </spacer>
                     <spacer row="1" column="0">
                         <property name="name">
-                            <cstring>Spacer7</cstring>
+                            <cstring>spacer7</cstring>
                         </property>
                         <property name="orientation">
                             <enum>Vertical</enum>
@@ -690,11 +425,668 @@
                         </property>
                         <property name="sizeHint">
                             <size>
-                                <width>20</width>
-                                <height>20</height>
+                                <width>31</width>
+                                <height>50</height>
                             </size>
                         </property>
                     </spacer>
+                    <widget class="QLayoutWidget" row="0" column="0">
+                        <property name="name">
+                            <cstring>layout3</cstring>
+                        </property>
+                        <grid>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <widget class="QLayoutWidget" row="0" column="0">
+                                <property name="name">
+                                    <cstring>layout2</cstring>
+                                </property>
+                                <hbox>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <widget class="QGroupBox">
+                                        <property name="name">
+                                            <cstring>setBordersGB</cstring>
+                                        </property>
+                                        <property name="title">
+                                            <string>Set Borders</string>
+                                        </property>
+                                        <grid>
+                                            <property name="name">
+                                                <cstring>unnamed</cstring>
+                                            </property>
+                                            <property name="margin">
+                                                <number>11</number>
+                                            </property>
+                                            <property name="spacing">
+                                                <number>6</number>
+                                            </property>
+                                            <widget class="QFrame" row="0" column="0">
+                                                <property name="name">
+                                                    <cstring>bordersF</cstring>
+                                                </property>
+                                                <property name="sizePolicy">
+                                                    <sizepolicy>
+                                                        <hsizetype>5</hsizetype>
+                                                        <vsizetype>5</vsizetype>
+                                                        <horstretch>0</horstretch>
+                                                        <verstretch>0</verstretch>
+                                                    </sizepolicy>
+                                                </property>
+                                                <property name="palette">
+                                                    <palette>
+                                                        <active>
+                                                            <color>
+                                                                <red>0</red>
+                                                                <green>0</green>
+                                                                <blue>0</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>230</red>
+                                                                <green>240</green>
+                                                                <blue>249</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>255</red>
+                                                                <green>255</green>
+                                                                <blue>255</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>242</red>
+                                                                <green>247</green>
+                                                                <blue>252</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>115</red>
+                                                                <green>120</green>
+                                                                <blue>124</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>154</red>
+                                                                <green>160</green>
+                                                                <blue>166</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>0</red>
+                                                                <green>0</green>
+                                                                <blue>0</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>255</red>
+                                                                <green>255</green>
+                                                                <blue>255</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>0</red>
+                                                                <green>0</green>
+                                                                <blue>0</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>255</red>
+                                                                <green>255</green>
+                                                                <blue>255</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>255</red>
+                                                                <green>255</green>
+                                                                <blue>255</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>0</red>
+                                                                <green>0</green>
+                                                                <blue>0</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>16</red>
+                                                                <green>145</green>
+                                                                <blue>210</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>255</red>
+                                                                <green>255</green>
+                                                                <blue>255</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>0</red>
+                                                                <green>0</green>
+                                                                <blue>0</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>0</red>
+                                                                <green>0</green>
+                                                                <blue>0</blue>
+                                                            </color>
+                                                        </active>
+                                                        <disabled>
+                                                            <color>
+                                                                <red>128</red>
+                                                                <green>128</green>
+                                                                <blue>128</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>230</red>
+                                                                <green>240</green>
+                                                                <blue>249</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>255</red>
+                                                                <green>255</green>
+                                                                <blue>255</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>255</red>
+                                                                <green>255</green>
+                                                                <blue>255</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>115</red>
+                                                                <green>120</green>
+                                                                <blue>124</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>154</red>
+                                                                <green>160</green>
+                                                                <blue>166</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>0</red>
+                                                                <green>0</green>
+                                                                <blue>0</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>255</red>
+                                                                <green>255</green>
+                                                                <blue>255</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>128</red>
+                                                                <green>128</green>
+                                                                <blue>128</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>255</red>
+                                                                <green>255</green>
+                                                                <blue>255</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>255</red>
+                                                                <green>255</green>
+                                                                <blue>255</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>0</red>
+                                                                <green>0</green>
+                                                                <blue>0</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>16</red>
+                                                                <green>145</green>
+                                                                <blue>210</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>255</red>
+                                                                <green>255</green>
+                                                                <blue>255</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>0</red>
+                                                                <green>0</green>
+                                                                <blue>0</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>0</red>
+                                                                <green>0</green>
+                                                                <blue>0</blue>
+                                                            </color>
+                                                        </disabled>
+                                                        <inactive>
+                                                            <color>
+                                                                <red>0</red>
+                                                                <green>0</green>
+                                                                <blue>0</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>230</red>
+                                                                <green>240</green>
+                                                                <blue>249</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>255</red>
+                                                                <green>255</green>
+                                                                <blue>255</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>255</red>
+                                                                <green>255</green>
+                                                                <blue>255</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>115</red>
+                                                                <green>120</green>
+                                                                <blue>124</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>154</red>
+                                                                <green>160</green>
+                                                                <blue>166</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>0</red>
+                                                                <green>0</green>
+                                                                <blue>0</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>255</red>
+                                                                <green>255</green>
+                                                                <blue>255</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>0</red>
+                                                                <green>0</green>
+                                                                <blue>0</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>255</red>
+                                                                <green>255</green>
+                                                                <blue>255</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>255</red>
+                                                                <green>255</green>
+                                                                <blue>255</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>0</red>
+                                                                <green>0</green>
+                                                                <blue>0</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>16</red>
+                                                                <green>145</green>
+                                                                <blue>210</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>255</red>
+                                                                <green>255</green>
+                                                                <blue>255</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>0</red>
+                                                                <green>0</green>
+                                                                <blue>0</blue>
+                                                            </color>
+                                                            <color>
+                                                                <red>0</red>
+                                                                <green>0</green>
+                                                                <blue>0</blue>
+                                                            </color>
+                                                        </inactive>
+                                                    </palette>
+                                                </property>
+                                                <property name="frameShape">
+                                                    <enum>StyledPanel</enum>
+                                                </property>
+                                                <property name="frameShadow">
+                                                    <enum>Sunken</enum>
+                                                </property>
+                                                <property name="layoutMargin" stdset="0">
+                                                </property>
+                                                <grid>
+                                                    <property name="name">
+                                                        <cstring>unnamed</cstring>
+                                                    </property>
+                                                    <property name="margin">
+                                                        <number>3</number>
+                                                    </property>
+                                                    <property name="spacing">
+                                                        <number>6</number>
+                                                    </property>
+                                                    <widget class="QSetBorder" row="0" column="0">
+                                                        <property name="name">
+                                                            <cstring>borders</cstring>
+                                                        </property>
+                                                        <property name="sizePolicy">
+                                                            <sizepolicy>
+                                                                <hsizetype>1</hsizetype>
+                                                                <vsizetype>1</vsizetype>
+                                                                <horstretch>0</horstretch>
+                                                                <verstretch>0</verstretch>
+                                                            </sizepolicy>
+                                                        </property>
+                                                        <property name="toolTip" stdset="0">
+                                                            <string>Set borders of the current (selected) cell(s)</string>
+                                                        </property>
+                                                    </widget>
+                                                </grid>
+                                            </widget>
+                                        </grid>
+                                    </widget>
+                                    <widget class="QGroupBox">
+                                        <property name="name">
+                                            <cstring>allBordersGB</cstring>
+                                        </property>
+                                        <property name="title">
+                                            <string>All Borders</string>
+                                        </property>
+                                        <grid>
+                                            <property name="name">
+                                                <cstring>unnamed</cstring>
+                                            </property>
+                                            <property name="margin">
+                                                <number>11</number>
+                                            </property>
+                                            <property name="spacing">
+                                                <number>6</number>
+                                            </property>
+                                            <widget class="QPushButton" row="0" column="0">
+                                                <property name="name">
+                                                    <cstring>borderSetPB</cstring>
+                                                </property>
+                                                <property name="text">
+                                                    <string>&amp;Set</string>
+                                                </property>
+                                                <property name="toolTip" stdset="0">
+                                                    <string>Set all borders of the current (selected) cell(s)</string>
+                                                </property>
+                                            </widget>
+                                            <widget class="QPushButton" row="1" column="0">
+                                                <property name="name">
+                                                    <cstring>borderUnsetPB</cstring>
+                                                </property>
+                                                <property name="text">
+                                                    <string>C&amp;lear</string>
+                                                </property>
+                                                <property name="toolTip" stdset="0">
+                                                    <string>Unset all borders of the current (selected) cell(s)</string>
+                                                </property>
+                                            </widget>
+                                        </grid>
+                                    </widget>
+                                </hbox>
+                            </widget>
+                            <widget class="QButtonGroup" row="0" column="2">
+                                <property name="name">
+                                    <cstring>borderStyleBG</cstring>
+                                </property>
+                                <property name="title">
+                                    <string>Style</string>
+                                </property>
+                                <grid>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <widget class="QRadioButton" row="1" column="0">
+                                        <property name="name">
+                                            <cstring>booktabsRB</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Fo&amp;rmal</string>
+                                        </property>
+                                        <property name="accel">
+                                            <string>Alt+R</string>
+                                        </property>
+                                        <property name="toolTip" stdset="0">
+                                            <string>Use formal (a.k.a. booktabs) border style (no vertical borders)</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QRadioButton" row="0" column="0">
+                                        <property name="name">
+                                            <cstring>borderDefaultRB</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>De&amp;fault</string>
+                                        </property>
+                                        <property name="accel">
+                                            <string>Alt+F</string>
+                                        </property>
+                                        <property name="toolTip" stdset="0">
+                                            <string>Use default (grid-like) border style</string>
+                                        </property>
+                                    </widget>
+                                </grid>
+                            </widget>
+                            <spacer row="1" column="0">
+                                <property name="name">
+                                    <cstring>spacer8</cstring>
+                                </property>
+                                <property name="orientation">
+                                    <enum>Vertical</enum>
+                                </property>
+                                <property name="sizeType">
+                                    <enum>Expanding</enum>
+                                </property>
+                                <property name="sizeHint">
+                                    <size>
+                                        <width>21</width>
+                                        <height>30</height>
+                                    </size>
+                                </property>
+                            </spacer>
+                            <widget class="QGroupBox" row="2" column="0" rowspan="1" colspan="3">
+                                <property name="name">
+                                    <cstring>spacesGB</cstring>
+                                </property>
+                                <property name="sizePolicy">
+                                    <sizepolicy>
+                                        <hsizetype>3</hsizetype>
+                                        <vsizetype>3</vsizetype>
+                                        <horstretch>0</horstretch>
+                                        <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                </property>
+                                <property name="title">
+                                    <string>Additional Space</string>
+                                </property>
+                                <grid>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <widget class="LengthCombo" row="0" column="3">
+                                        <property name="name">
+                                            <cstring>topspaceUnit</cstring>
+                                        </property>
+                                        <property name="enabled">
+                                            <bool>true</bool>
+                                        </property>
+                                        <property name="minimumSize">
+                                            <size>
+                                                <width>50</width>
+                                                <height>0</height>
+                                            </size>
+                                        </property>
+                                        <property name="focusPolicy">
+                                            <enum>StrongFocus</enum>
+                                        </property>
+                                    </widget>
+                                    <widget class="LengthCombo" row="1" column="3">
+                                        <property name="name">
+                                            <cstring>bottomspaceUnit</cstring>
+                                        </property>
+                                        <property name="enabled">
+                                            <bool>true</bool>
+                                        </property>
+                                        <property name="minimumSize">
+                                            <size>
+                                                <width>50</width>
+                                                <height>0</height>
+                                            </size>
+                                        </property>
+                                        <property name="focusPolicy">
+                                            <enum>StrongFocus</enum>
+                                        </property>
+                                    </widget>
+                                    <widget class="LengthCombo" row="2" column="3">
+                                        <property name="name">
+                                            <cstring>interlinespaceUnit</cstring>
+                                        </property>
+                                        <property name="enabled">
+                                            <bool>true</bool>
+                                        </property>
+                                        <property name="minimumSize">
+                                            <size>
+                                                <width>50</width>
+                                                <height>0</height>
+                                            </size>
+                                        </property>
+                                        <property name="focusPolicy">
+                                            <enum>StrongFocus</enum>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLineEdit" row="2" column="2">
+                                        <property name="name">
+                                            <cstring>interlinespaceED</cstring>
+                                        </property>
+                                        <property name="enabled">
+                                            <bool>true</bool>
+                                        </property>
+                                        <property name="text">
+                                            <string></string>
+                                        </property>
+                                        <property name="" stdset="0">
+                                        </property>
+                                    </widget>
+                                    <widget class="QLineEdit" row="1" column="2">
+                                        <property name="name">
+                                            <cstring>bottomspaceED</cstring>
+                                        </property>
+                                        <property name="enabled">
+                                            <bool>true</bool>
+                                        </property>
+                                        <property name="text">
+                                            <string></string>
+                                        </property>
+                                        <property name="" stdset="0">
+                                        </property>
+                                    </widget>
+                                    <widget class="QLineEdit" row="0" column="2">
+                                        <property name="name">
+                                            <cstring>topspaceED</cstring>
+                                        </property>
+                                        <property name="enabled">
+                                            <bool>true</bool>
+                                        </property>
+                                        <property name="text">
+                                            <string></string>
+                                        </property>
+                                        <property name="" stdset="0">
+                                        </property>
+                                    </widget>
+                                    <widget class="QComboBox" row="0" column="1">
+                                        <item>
+                                            <property name="text">
+                                                <string>None</string>
+                                            </property>
+                                        </item>
+                                        <item>
+                                            <property name="text">
+                                                <string>Default</string>
+                                            </property>
+                                        </item>
+                                        <item>
+                                            <property name="text">
+                                                <string>Custom</string>
+                                            </property>
+                                        </item>
+                                        <property name="name">
+                                            <cstring>topspaceCO</cstring>
+                                        </property>
+                                    </widget>
+                                    <widget class="QComboBox" row="1" column="1">
+                                        <item>
+                                            <property name="text">
+                                                <string>None</string>
+                                            </property>
+                                        </item>
+                                        <item>
+                                            <property name="text">
+                                                <string>Default</string>
+                                            </property>
+                                        </item>
+                                        <item>
+                                            <property name="text">
+                                                <string>Custom</string>
+                                            </property>
+                                        </item>
+                                        <property name="name">
+                                            <cstring>bottomspaceCO</cstring>
+                                        </property>
+                                    </widget>
+                                    <widget class="QComboBox" row="2" column="1">
+                                        <item>
+                                            <property name="text">
+                                                <string>None</string>
+                                            </property>
+                                        </item>
+                                        <item>
+                                            <property name="text">
+                                                <string>Default</string>
+                                            </property>
+                                        </item>
+                                        <item>
+                                            <property name="text">
+                                                <string>Custom</string>
+                                            </property>
+                                        </item>
+                                        <property name="name">
+                                            <cstring>interlinespaceCO</cstring>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="0" column="0">
+                                        <property name="name">
+                                            <cstring>topspaceLA</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>T&amp;op of row:</string>
+                                        </property>
+                                        <property name="buddy" stdset="0">
+                                            <cstring>topspaceED</cstring>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="1" column="0">
+                                        <property name="name">
+                                            <cstring>bottomspaceLA</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Botto&amp;m of row:</string>
+                                        </property>
+                                        <property name="buddy" stdset="0">
+                                            <cstring>bottomspaceED</cstring>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="2" column="0">
+                                        <property name="name">
+                                            <cstring>interlinespaceLA</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Bet&amp;ween rows:</string>
+                                        </property>
+                                        <property name="buddy" stdset="0">
+                                            <cstring>interlinespaceED</cstring>
+                                        </property>
+                                    </widget>
+                                </grid>
+                            </widget>
+                            <spacer row="0" column="1">
+                                <property name="name">
+                                    <cstring>spacer9</cstring>
+                                </property>
+                                <property name="orientation">
+                                    <enum>Horizontal</enum>
+                                </property>
+                                <property name="sizeType">
+                                    <enum>Expanding</enum>
+                                </property>
+                                <property name="sizeHint">
+                                    <size>
+                                        <width>171</width>
+                                        <height>31</height>
+                                    </size>
+                                </property>
+                            </spacer>
+                        </grid>
+                    </widget>
                 </grid>
             </widget>
             <widget class="QWidget">
@@ -964,117 +1356,7 @@
                 </grid>
             </widget>
         </widget>
-        <widget class="QLayoutWidget">
-            <property name="name">
-                <cstring>Layout2</cstring>
-            </property>
-            <hbox>
-                <property name="name">
-                    <cstring>unnamed</cstring>
-                </property>
-                <property name="margin">
-                    <number>0</number>
-                </property>
-                <property name="spacing">
-                    <number>6</number>
-                </property>
-                <widget class="QLabel">
-                    <property name="name">
-                        <cstring>TextLabel1</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Current cell:</string>
-                    </property>
-                </widget>
-                <widget class="QLineEdit">
-                    <property name="name">
-                        <cstring>tabularRowED</cstring>
-                    </property>
-                    <property name="sizePolicy">
-                        <sizepolicy>
-                            <hsizetype>1</hsizetype>
-                            <vsizetype>0</vsizetype>
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                        </sizepolicy>
-                    </property>
-                    <property name="maximumSize">
-                        <size>
-                            <width>40</width>
-                            <height>32767</height>
-                        </size>
-                    </property>
-                    <property name="focusPolicy">
-                        <enum>NoFocus</enum>
-                    </property>
-                    <property name="toolTip" stdset="0">
-                        <string>Current row position</string>
-                    </property>
-                </widget>
-                <widget class="QLineEdit">
-                    <property name="name">
-                        <cstring>tabularColumnED</cstring>
-                    </property>
-                    <property name="sizePolicy">
-                        <sizepolicy>
-                            <hsizetype>1</hsizetype>
-                            <vsizetype>0</vsizetype>
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                        </sizepolicy>
-                    </property>
-                    <property name="maximumSize">
-                        <size>
-                            <width>40</width>
-                            <height>32767</height>
-                        </size>
-                    </property>
-                    <property name="focusPolicy">
-                        <enum>NoFocus</enum>
-                    </property>
-                    <property name="toolTip" stdset="0">
-                        <string>Current column position</string>
-                    </property>
-                </widget>
-                <spacer>
-                    <property name="name">
-                        <cstring>Spacer1</cstring>
-                    </property>
-                    <property name="orientation">
-                        <enum>Horizontal</enum>
-                    </property>
-                    <property name="sizeType">
-                        <enum>Expanding</enum>
-                    </property>
-                    <property name="sizeHint">
-                        <size>
-                            <width>20</width>
-                            <height>20</height>
-                        </size>
-                    </property>
-                </spacer>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>closePB</cstring>
-                    </property>
-                    <property name="sizePolicy">
-                        <sizepolicy>
-                            <hsizetype>1</hsizetype>
-                            <vsizetype>0</vsizetype>
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                        </sizepolicy>
-                    </property>
-                    <property name="text">
-                        <string>Close</string>
-                    </property>
-                    <property name="autoDefault">
-                        <bool>false</bool>
-                    </property>
-                </widget>
-            </hbox>
-        </widget>
-    </vbox>
+    </grid>
 </widget>
 <customwidgets>
     <customwidget>
@@ -1122,21 +1404,111 @@
 </customwidgets>
 <images>
     <image name="image0">
-        <data format="PNG" length="256">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b000000c749444154388dad55db1184200c4c180bb81a28c73aad811228c356f42b3792db3cc0db2fc724bb7901dc7b270f27ed17fa5fa9b117b7cd90211f4ba0ac906a7f1453b4d30ca917bb590681552af23f69bfc4ffa71519d2c8f62546ea5ea03738b1c18c33a4d156f0d13f43b61952e4af6d6e8fb3a408f080448419a433d6486d85052fdba892a295f5d45785cd8c51a9d6de6a814a8d2131da51f98e7a3b64ec9da04a8db53d43be3c3c0b22cacf17e4cdb5a931649ceddf34b190cf0aa019f03f1fd3e7457f03b5a66c9ed26e86130000000049454e44ae426082</data>
+        <data format="PNG" length="256">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b000000c749444154388dad55db1184200c4c180bb005eab1cd6b8112b40d4bf1bee2486ef3006fbf1c93ece605f07eece4e1a4ed42ff2b35f6e2961132e46309941952ed8f628a761a21f56217cb20b04a45fe276d97f8ffb422431ad96e62a4ee057a83131bcc38431a6d057f8eb5cb36438afcb5cded719614011e9088308374c61aa9adb0e0651b5552b4b29efaacb099312ad5da5b2d50a93124463b2adf516fbb8cbd1354a9b1b667c8a787674144f9f982bcb93635ba8cb3fd1b2616f251013403fee763fabce8bff0aa6c98500331e50000000049454e44ae426082</data>
     </image>
 </images>
 <connections>
     <connection>
-        <sender>borderSetPB</sender>
+        <sender>closePB</sender>
         <signal>clicked()</signal>
         <receiver>QTabularDialogBase</receiver>
-        <slot>borderSet_clicked()</slot>
+        <slot>close_clicked()</slot>
     </connection>
     <connection>
-        <sender>borderUnsetPB</sender>
+        <sender>longTabularCB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>newpageCB</receiver>
+        <slot>setEnabled(bool)</slot>
+    </connection>
+    <connection>
+        <sender>newpageCB</sender>
         <signal>clicked()</signal>
         <receiver>QTabularDialogBase</receiver>
-        <slot>borderUnset_clicked()</slot>
+        <slot>ltNewpage_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>firstheaderNoContentsCB</sender>
+        <signal>clicked()</signal>
+        <receiver>QTabularDialogBase</receiver>
+        <slot>ltFirstHeaderEmpty_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>lastfooterNoContentsCB</sender>
+        <signal>clicked()</signal>
+        <receiver>QTabularDialogBase</receiver>
+        <slot>ltLastFooterEmpty_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>headerBorderBelowCB</sender>
+        <signal>clicked()</signal>
+        <receiver>QTabularDialogBase</receiver>
+        <slot>ltHeaderBorderBelow_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>firstheaderBorderBelowCB</sender>
+        <signal>clicked()</signal>
+        <receiver>QTabularDialogBase</receiver>
+        <slot>ltFirstHeaderBorderBelow_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>footerBorderBelowCB</sender>
+        <signal>clicked()</signal>
+        <receiver>QTabularDialogBase</receiver>
+        <slot>ltFooterBorderBelow_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>lastfooterBorderBelowCB</sender>
+        <signal>clicked()</signal>
+        <receiver>QTabularDialogBase</receiver>
+        <slot>ltLastFooterBorderBelow_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>lastfooterBorderAboveCB</sender>
+        <signal>clicked()</signal>
+        <receiver>QTabularDialogBase</receiver>
+        <slot>ltLastFooterBorderAbove_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>footerBorderAboveCB</sender>
+        <signal>clicked()</signal>
+        <receiver>QTabularDialogBase</receiver>
+        <slot>ltFooterBorderAbove_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>firstheaderBorderAboveCB</sender>
+        <signal>clicked()</signal>
+        <receiver>QTabularDialogBase</receiver>
+        <slot>ltFirstHeaderBorderAbove_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>headerBorderAboveCB</sender>
+        <signal>clicked()</signal>
+        <receiver>QTabularDialogBase</receiver>
+        <slot>ltHeaderBorderAbove_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>lastfooterStatusCB</sender>
+        <signal>clicked()</signal>
+        <receiver>QTabularDialogBase</receiver>
+        <slot>ltLastFooterStatus_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>footerStatusCB</sender>
+        <signal>clicked()</signal>
+        <receiver>QTabularDialogBase</receiver>
+        <slot>ltFooterStatus_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>firstheaderStatusCB</sender>
+        <signal>clicked()</signal>
+        <receiver>QTabularDialogBase</receiver>
+        <slot>ltFirstHeaderStatus_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>headerStatusCB</sender>
+        <signal>clicked()</signal>
+        <receiver>QTabularDialogBase</receiver>
+        <slot>ltHeaderStatus_clicked()</slot>
     </connection>
     <connection>
         <sender>longTabularCB</sender>
@@ -1146,141 +1518,21 @@
     </connection>
     <connection>
         <sender>longTabularCB</sender>
-        <signal>toggled(bool)</signal>
-        <receiver>newpageCB</receiver>
-        <slot>setEnabled(bool)</slot>
-    </connection>
-    <connection>
-        <sender>hAlignCB</sender>
-        <signal>activated(int)</signal>
-        <receiver>QTabularDialogBase</receiver>
-        <slot>hAlign_changed(int)</slot>
-    </connection>
-    <connection>
-        <sender>vAlignCB</sender>
-        <signal>activated(int)</signal>
-        <receiver>QTabularDialogBase</receiver>
-        <slot>vAlign_changed(int)</slot>
-    </connection>
-    <connection>
-        <sender>multicolumnCB</sender>
         <signal>clicked()</signal>
         <receiver>QTabularDialogBase</receiver>
-        <slot>multicolumn_clicked()</slot>
+        <slot>longTabular()</slot>
     </connection>
     <connection>
-        <sender>newpageCB</sender>
+        <sender>borderUnsetPB</sender>
         <signal>clicked()</signal>
         <receiver>QTabularDialogBase</receiver>
-        <slot>ltNewpage_clicked()</slot>
+        <slot>borderUnset_clicked()</slot>
     </connection>
     <connection>
-        <sender>headerStatusCB</sender>
+        <sender>borderSetPB</sender>
         <signal>clicked()</signal>
         <receiver>QTabularDialogBase</receiver>
-        <slot>ltHeaderStatus_clicked()</slot>
-    </connection>
-    <connection>
-        <sender>headerBorderAboveCB</sender>
-        <signal>clicked()</signal>
-        <receiver>QTabularDialogBase</receiver>
-        <slot>ltHeaderBorderAbove_clicked()</slot>
-    </connection>
-    <connection>
-        <sender>headerBorderBelowCB</sender>
-        <signal>clicked()</signal>
-        <receiver>QTabularDialogBase</receiver>
-        <slot>ltHeaderBorderBelow_clicked()</slot>
-    </connection>
-    <connection>
-        <sender>firstheaderStatusCB</sender>
-        <signal>clicked()</signal>
-        <receiver>QTabularDialogBase</receiver>
-        <slot>ltFirstHeaderStatus_clicked()</slot>
-    </connection>
-    <connection>
-        <sender>firstheaderBorderAboveCB</sender>
-        <signal>clicked()</signal>
-        <receiver>QTabularDialogBase</receiver>
-        <slot>ltFirstHeaderBorderAbove_clicked()</slot>
-    </connection>
-    <connection>
-        <sender>firstheaderBorderBelowCB</sender>
-        <signal>clicked()</signal>
-        <receiver>QTabularDialogBase</receiver>
-        <slot>ltFirstHeaderBorderBelow_clicked()</slot>
-    </connection>
-    <connection>
-        <sender>firstheaderNoContentsCB</sender>
-        <signal>clicked()</signal>
-        <receiver>QTabularDialogBase</receiver>
-        <slot>ltFirstHeaderEmpty_clicked()</slot>
-    </connection>
-    <connection>
-        <sender>footerStatusCB</sender>
-        <signal>clicked()</signal>
-        <receiver>QTabularDialogBase</receiver>
-        <slot>ltFooterStatus_clicked()</slot>
-    </connection>
-    <connection>
-        <sender>footerBorderAboveCB</sender>
-        <signal>clicked()</signal>
-        <receiver>QTabularDialogBase</receiver>
-        <slot>ltFooterBorderAbove_clicked()</slot>
-    </connection>
-    <connection>
-        <sender>footerBorderBelowCB</sender>
-        <signal>clicked()</signal>
-        <receiver>QTabularDialogBase</receiver>
-        <slot>ltFooterBorderBelow_clicked()</slot>
-    </connection>
-    <connection>
-        <sender>lastfooterStatusCB</sender>
-        <signal>clicked()</signal>
-        <receiver>QTabularDialogBase</receiver>
-        <slot>ltLastFooterStatus_clicked()</slot>
-    </connection>
-    <connection>
-        <sender>lastfooterBorderAboveCB</sender>
-        <signal>clicked()</signal>
-        <receiver>QTabularDialogBase</receiver>
-        <slot>ltLastFooterBorderAbove_clicked()</slot>
-    </connection>
-    <connection>
-        <sender>lastfooterBorderBelowCB</sender>
-        <signal>clicked()</signal>
-        <receiver>QTabularDialogBase</receiver>
-        <slot>ltLastFooterBorderBelow_clicked()</slot>
-    </connection>
-    <connection>
-        <sender>lastfooterNoContentsCB</sender>
-        <signal>clicked()</signal>
-        <receiver>QTabularDialogBase</receiver>
-        <slot>ltLastFooterEmpty_clicked()</slot>
-    </connection>
-    <connection>
-        <sender>specialAlignmentED</sender>
-        <signal>returnPressed()</signal>
-        <receiver>QTabularDialogBase</receiver>
-        <slot>specialAlignment_changed()</slot>
-    </connection>
-    <connection>
-        <sender>widthED</sender>
-        <signal>returnPressed()</signal>
-        <receiver>QTabularDialogBase</receiver>
-        <slot>width_changed()</slot>
-    </connection>
-    <connection>
-        <sender>widthUnit</sender>
-        <signal>selectionChanged(LyXLength::UNIT)</signal>
-        <receiver>QTabularDialogBase</receiver>
-        <slot>width_changed()</slot>
-    </connection>
-    <connection>
-        <sender>closePB</sender>
-        <signal>clicked()</signal>
-        <receiver>QTabularDialogBase</receiver>
-        <slot>close_clicked()</slot>
+        <slot>borderSet_clicked()</slot>
     </connection>
     <connection>
         <sender>borders</sender>
@@ -1307,10 +1559,34 @@
         <slot>leftBorder_changed()</slot>
     </connection>
     <connection>
-        <sender>rotateTabularCB</sender>
+        <sender>vAlignCB</sender>
+        <signal>activated(int)</signal>
+        <receiver>QTabularDialogBase</receiver>
+        <slot>vAlign_changed(int)</slot>
+    </connection>
+    <connection>
+        <sender>widthED</sender>
+        <signal>returnPressed()</signal>
+        <receiver>QTabularDialogBase</receiver>
+        <slot>width_changed()</slot>
+    </connection>
+    <connection>
+        <sender>widthUnit</sender>
+        <signal>selectionChanged(LyXLength::UNIT)</signal>
+        <receiver>QTabularDialogBase</receiver>
+        <slot>width_changed()</slot>
+    </connection>
+    <connection>
+        <sender>multicolumnCB</sender>
         <signal>clicked()</signal>
         <receiver>QTabularDialogBase</receiver>
-        <slot>rotateTabular()</slot>
+        <slot>multicolumn_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>specialAlignmentED</sender>
+        <signal>returnPressed()</signal>
+        <receiver>QTabularDialogBase</receiver>
+        <slot>specialAlignment_changed()</slot>
     </connection>
     <connection>
         <sender>rotateCellCB</sender>
@@ -1319,10 +1595,82 @@
         <slot>rotateCell()</slot>
     </connection>
     <connection>
-        <sender>longTabularCB</sender>
+        <sender>rotateTabularCB</sender>
         <signal>clicked()</signal>
         <receiver>QTabularDialogBase</receiver>
-        <slot>longTabular()</slot>
+        <slot>rotateTabular()</slot>
+    </connection>
+    <connection>
+        <sender>hAlignCB</sender>
+        <signal>activated(int)</signal>
+        <receiver>QTabularDialogBase</receiver>
+        <slot>hAlign_changed(int)</slot>
+    </connection>
+    <connection>
+        <sender>topspaceCO</sender>
+        <signal>activated(int)</signal>
+        <receiver>QTabularDialogBase</receiver>
+        <slot>topspace_changed()</slot>
+    </connection>
+    <connection>
+        <sender>bottomspaceCO</sender>
+        <signal>activated(int)</signal>
+        <receiver>QTabularDialogBase</receiver>
+        <slot>bottomspace_changed()</slot>
+    </connection>
+    <connection>
+        <sender>interlinespaceCO</sender>
+        <signal>activated(int)</signal>
+        <receiver>QTabularDialogBase</receiver>
+        <slot>interlinespace_changed()</slot>
+    </connection>
+    <connection>
+        <sender>topspaceED</sender>
+        <signal>returnPressed()</signal>
+        <receiver>QTabularDialogBase</receiver>
+        <slot>topspace_changed()</slot>
+    </connection>
+    <connection>
+        <sender>bottomspaceED</sender>
+        <signal>returnPressed()</signal>
+        <receiver>QTabularDialogBase</receiver>
+        <slot>bottomspace_changed()</slot>
+    </connection>
+    <connection>
+        <sender>interlinespaceED</sender>
+        <signal>returnPressed()</signal>
+        <receiver>QTabularDialogBase</receiver>
+        <slot>interlinespace_changed()</slot>
+    </connection>
+    <connection>
+        <sender>topspaceUnit</sender>
+        <signal>selectionChanged(LyXLength::UNIT)</signal>
+        <receiver>QTabularDialogBase</receiver>
+        <slot>topspace_changed()</slot>
+    </connection>
+    <connection>
+        <sender>bottomspaceUnit</sender>
+        <signal>selectionChanged(LyXLength::UNIT)</signal>
+        <receiver>QTabularDialogBase</receiver>
+        <slot>bottomspace_changed()</slot>
+    </connection>
+    <connection>
+        <sender>interlinespaceUnit</sender>
+        <signal>selectionChanged(LyXLength::UNIT)</signal>
+        <receiver>QTabularDialogBase</receiver>
+        <slot>interlinespace_changed()</slot>
+    </connection>
+    <connection>
+        <sender>booktabsRB</sender>
+        <signal>clicked()</signal>
+        <receiver>QTabularDialogBase</receiver>
+        <slot>booktabs_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>borderDefaultRB</sender>
+        <signal>clicked()</signal>
+        <receiver>QTabularDialogBase</receiver>
+        <slot>booktabs_clicked()</slot>
     </connection>
 </connections>
 <tabstops>
@@ -1335,8 +1683,20 @@
     <tabstop>rotateTabularCB</tabstop>
     <tabstop>rotateCellCB</tabstop>
     <tabstop>specialAlignmentED</tabstop>
+    <tabstop>closePB</tabstop>
     <tabstop>borderSetPB</tabstop>
     <tabstop>borderUnsetPB</tabstop>
+    <tabstop>borderDefaultRB</tabstop>
+    <tabstop>booktabsRB</tabstop>
+    <tabstop>topspaceCO</tabstop>
+    <tabstop>bottomspaceCO</tabstop>
+    <tabstop>interlinespaceCO</tabstop>
+    <tabstop>topspaceED</tabstop>
+    <tabstop>bottomspaceED</tabstop>
+    <tabstop>interlinespaceED</tabstop>
+    <tabstop>topspaceUnit</tabstop>
+    <tabstop>bottomspaceUnit</tabstop>
+    <tabstop>interlinespaceUnit</tabstop>
     <tabstop>longTabularCB</tabstop>
     <tabstop>headerStatusCB</tabstop>
     <tabstop>headerBorderAboveCB</tabstop>
@@ -1353,13 +1713,13 @@
     <tabstop>lastfooterBorderBelowCB</tabstop>
     <tabstop>lastfooterNoContentsCB</tabstop>
     <tabstop>newpageCB</tabstop>
-    <tabstop>closePB</tabstop>
 </tabstops>
 <includes>
     <include location="global" impldecl="in implementation">config.h</include>
     <include location="local" impldecl="in implementation">qt_helpers.h</include>
 </includes>
 <slots>
+    <slot access="protected">booktabs_clicked()</slot>
     <slot access="protected">borderSet_clicked()</slot>
     <slot access="protected">borderUnset_clicked()</slot>
     <slot access="protected">bottomBorder_changed()</slot>
@@ -1391,10 +1751,16 @@
     <slot access="protected">topBorder_changed()</slot>
     <slot access="protected">vAlign_changed(int)</slot>
     <slot access="protected">width_changed()</slot>
+    <slot access="protected">topspace_changed()</slot>
+    <slot access="protected">bottomspace_changed()</slot>
+    <slot access="protected">interlinespace_changed()</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 <includehints>
     <includehint>lengthcombo.h</includehint>
     <includehint>qsetborder.h</includehint>
+    <includehint>lengthcombo.h</includehint>
+    <includehint>lengthcombo.h</includehint>
+    <includehint>lengthcombo.h</includehint>
 </includehints>
 </UI>

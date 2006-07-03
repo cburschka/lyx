@@ -14,13 +14,16 @@
 
 #include "QTabularDialog.h"
 #include "QTabular.h"
+#include "lengthcombo.h"
 #include "validators.h"
 #include "qt_helpers.h"
 
+#include "controllers/ButtonController.h"
 #include "controllers/ControlTabular.h"
 
 #include <qcheckbox.h>
 #include <qpushbutton.h>
+#include <qradiobutton.h>
 #include <qlineedit.h>
 
 using std::string;
@@ -37,6 +40,9 @@ QTabularDialog::QTabularDialog(QTabular * form)
 		form, SLOT(slotClose()));
 
 	widthED->setValidator(unsignedLengthValidator(widthED));
+	topspaceED->setValidator(new LengthValidator(topspaceED));
+	bottomspaceED->setValidator(new LengthValidator(bottomspaceED));
+	interlinespaceED->setValidator(new LengthValidator(interlinespaceED));
 }
 
 
@@ -116,6 +122,96 @@ void QTabularDialog::width_changed()
 	form_->changed();
 	string const width = widgetsToLength(widthED, widthUnit);
 	form_->controller().setWidth(width);
+}
+
+
+void QTabularDialog::topspace_changed()
+{
+	switch(topspaceCO->currentItem()) {
+		case 0: {
+			form_->controller().set(LyXTabular::SET_TOP_SPACE, "");
+			topspaceED->setEnabled(false);
+			topspaceUnit->setEnabled(false);
+			break;
+		}
+		case 1: {
+			form_->controller().set(LyXTabular::SET_TOP_SPACE, "default");
+			topspaceED->setEnabled(false);
+			topspaceUnit->setEnabled(false);
+			break;
+		}
+		case 2: {
+			if (!topspaceED->text().isEmpty())
+				form_->controller().set(LyXTabular::SET_TOP_SPACE,
+					widgetsToLength(topspaceED, topspaceUnit));
+			if (!form_->bc().bp().isReadOnly()) {
+				topspaceED->setEnabled(true);
+				topspaceUnit->setEnabled(true);
+			}
+			break;
+		}
+	}
+	form_->changed();
+}
+
+
+void QTabularDialog::bottomspace_changed()
+{
+	switch(bottomspaceCO->currentItem()) {
+		case 0: {
+			form_->controller().set(LyXTabular::SET_BOTTOM_SPACE, "");
+				bottomspaceED->setEnabled(false);
+				bottomspaceUnit->setEnabled(false);
+			break;
+		}
+		case 1: {
+			form_->controller().set(LyXTabular::SET_BOTTOM_SPACE, "default");
+			bottomspaceED->setEnabled(false);
+			bottomspaceUnit->setEnabled(false);
+			break;
+		}
+		case 2: {
+			if (!bottomspaceED->text().isEmpty())
+				form_->controller().set(LyXTabular::SET_BOTTOM_SPACE,
+					widgetsToLength(bottomspaceED, bottomspaceUnit));
+			if (!form_->bc().bp().isReadOnly()) {
+				bottomspaceED->setEnabled(true);
+				bottomspaceUnit->setEnabled(true);
+			}
+			break;
+		}
+	}
+	form_->changed();
+}
+
+
+void QTabularDialog::interlinespace_changed()
+{
+	switch(interlinespaceCO->currentItem()) {
+		case 0: {
+			form_->controller().set(LyXTabular::SET_INTERLINE_SPACE, "");
+				interlinespaceED->setEnabled(false);
+				interlinespaceUnit->setEnabled(false);
+			break;
+		}
+		case 1: {
+			form_->controller().set(LyXTabular::SET_INTERLINE_SPACE, "default");
+			interlinespaceED->setEnabled(false);
+			interlinespaceUnit->setEnabled(false);
+			break;
+		}
+		case 2: {
+			if (!interlinespaceED->text().isEmpty())
+				form_->controller().set(LyXTabular::SET_INTERLINE_SPACE,
+					widgetsToLength(interlinespaceED, interlinespaceUnit));
+			if (!form_->bc().bp().isReadOnly()) {
+				interlinespaceED->setEnabled(true);
+				interlinespaceUnit->setEnabled(true);
+			}
+			break;
+		}
+	}
+	form_->changed();
 }
 
 
@@ -341,6 +437,17 @@ void QTabularDialog::ltLastFooterEmpty_clicked()
 	lastfooterStatusCB->setEnabled(!enable);
 	lastfooterBorderAboveCB->setEnabled(!enable);
 	lastfooterBorderBelowCB->setEnabled(!enable);
+	form_->changed();
+}
+
+
+void QTabularDialog::booktabs_clicked()
+{
+	if (booktabsRB->isChecked())
+		form_->controller().set(LyXTabular::SET_BOOKTABS);
+	else
+		form_->controller().set(LyXTabular::UNSET_BOOKTABS);
+	form_->update_borders();
 	form_->changed();
 }
 

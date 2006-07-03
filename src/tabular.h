@@ -127,6 +127,16 @@ public:
 		///
 		SET_SPECIAL_MULTI,
 		///
+		SET_BOOKTABS,
+		///
+		UNSET_BOOKTABS,
+		///
+		SET_TOP_SPACE,
+		///
+		SET_BOTTOM_SPACE,
+		///
+		SET_INTERLINE_SPACE,
+		///
 		LAST_ACTION
 	};
 	///
@@ -203,7 +213,8 @@ public:
 	///
 	bool isLastRow(idx_type cell) const;
 
-	///
+	/// return space occupied by the second horizontal line and
+	/// interline space above row \p row in pixels
 	int getAdditionalHeight(row_type row) const;
 	///
 	int getAdditionalWidth(idx_type cell) const;
@@ -320,6 +331,10 @@ public:
 	col_type column_of_cell(idx_type cell) const;
 	///
 	col_type right_column_of_cell(idx_type cell) const;
+	///
+	void setBookTabs(bool);
+	///
+	bool useBookTabs() const;
 	///
 	void setLongTabular(bool);
 	///
@@ -458,6 +473,18 @@ public:
 		bool top_line;
 		///
 		bool bottom_line;
+		/// Extra space between the top line and this row
+		LyXLength top_space;
+		/// Ignore top_space if true and use the default top space
+		bool top_space_default;
+		/// Extra space between this row and the bottom line
+		LyXLength bottom_space;
+		/// Ignore bottom_space if true and use the default bottom space
+		bool bottom_space_default;
+		/// Extra space between the bottom line and the next top line
+		LyXLength interline_space;
+		/// Ignore interline_space if true and use the default interline space
+		bool interline_space_default;
 		/// This are for longtabulars only
 		/// a row of endhead
 		bool endhead;
@@ -514,6 +541,8 @@ public:
 	mutable cell_vvector cell_info;
 	///
 	int width_of_tabular;
+	///
+	bool use_booktabs;
 	///
 	bool rotate;
 	//

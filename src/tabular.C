@@ -64,6 +64,8 @@ using std::strlen;
 namespace {
 
 int const WIDTH_OF_LINE = 5;
+int const default_line_space = 10;
+
 
 template <class T>
 string const write_attribute(string const & name, T const & t)
@@ -299,6 +301,21 @@ bool getTokenValue(string const & str, char const * token, LyXLength & len)
 }
 
 
+bool getTokenValue(string const & str, char const * token, LyXLength & len, bool & flag)
+{
+	len = LyXLength();
+	flag = false;
+	string tmp;
+	if (!getTokenValue(str, token, tmp))
+		return false;
+	if (tmp == "default") {
+		flag = true;
+		return  true;
+	}
+	return isValidLength(tmp, &len);
+}
+
+
 void l_getline(istream & is, string & str)
 {
 	str.erase();
@@ -380,6 +397,9 @@ LyXTabular::rowstruct::rowstruct()
 	  descent_of_row(0),
 	  top_line(true),
 	  bottom_line(false),
+	  top_space_default(false),
+	  bottom_space_default(false),
+	  interline_space_default(false),
 	  endhead(false),
 	  endfirsthead(false),
 	  endfoot(false),
@@ -432,6 +452,7 @@ void LyXTabular::init(BufferParams const & bp, row_type rows_arg,
 	column_info.back().right_line = true;
 	is_long_tabular = false;
 	rotate = false;
+	use_booktabs = false;
 }
 
 
@@ -607,10 +628,10 @@ LyXTabular::idx_type LyXTabular::numberOfCellsInRow(idx_type const cell) const
 }
 
 
-// returns 1 if there is a topline, returns 0 if not
 bool LyXTabular::topLine(idx_type const cell, bool const onlycolumn) const
 {
-	if (!onlycolumn && isMultiColumn(cell))
+	if (!onlycolumn && isMultiColumn(cell) &&
+	    !(use_booktabs && row_of_cell(cell) == 0))
 		return cellinfo_of_cell(cell).top_line;
 	return row_info[row_of_cell(cell)].top_line;
 }
@@ -618,7 +639,8 @@ bool LyXTabular::topLine(idx_type const cell, bool const onlycolumn) const
 
 bool LyXTabular::bottomLine(idx_type const cell, bool onlycolumn) const
 {
-	if (!onlycolumn && isMultiColumn(cell))
+	if (!onlycolumn && isMultiColumn(cell) &&
+	    !(use_booktabs && isLastRow(cell)))
 		return cellinfo_of_cell(cell).bottom_line;
 	return row_info[row_of_cell(cell)].bottom_line;
 }
@@ -626,6 +648,8 @@ bool LyXTabular::bottomLine(idx_type const cell, bool onlycolumn) const
 
 bool LyXTabular::leftLine(idx_type cell, bool onlycolumn) const
 {
+	if (use_booktabs)
+		return false;
 	if (!onlycolumn && isMultiColumn(cell) &&
 		(isFirstCellInRow(cell) || isMultiColumn(cell-1)))
 	{
@@ -641,6 +665,8 @@ bool LyXTabular::leftLine(idx_type cell, bool onlycolumn) const
 
 bool LyXTabular::rightLine(idx_type cell, bool onlycolumn) const
 {
+	if (use_booktabs)
+		return false;
 	if (!onlycolumn && isMultiColumn(cell) &&
 		(isLastCellInRow(cell) || isMultiColumn(cell + 1)))
 	{
@@ -721,9 +747,12 @@ int LyXTabular::getAdditionalHeight(row_type row) const
 			top = row_info[row].top_line;
 		}
 	}
+	int const interline_space = row_info[row - 1].interline_space_default ?
+		default_line_space :
+		row_info[row - 1].interline_space.inPixels(width_of_tabular);
 	if (top && bottom)
-		return WIDTH_OF_LINE;
-	return 0;
+		return interline_space + WIDTH_OF_LINE;
+	return interline_space;
 }
 
 
@@ -1193,6 +1222,7 @@ void LyXTabular::write(Buffer const & buf, ostream & os) const
 	// global longtable options
 	os << "<features"
 	   << write_attribute("rotate", rotate)
+	   << write_attribute("booktabs", use_booktabs)
 	   << write_attribute("islongtable", is_long_tabular)
 	   << write_attribute("firstHeadTopDL", endfirsthead.topDL)
 	   << write_attribute("firstHeadBottomDL", endfirsthead.bottomDL)
@@ -1218,8 +1248,21 @@ void LyXTabular::write(Buffer const & buf, ostream & os) const
 	for (row_type i = 0; i < rows_; ++i) {
 		os << "<row"
 		   << write_attribute("topline", row_info[i].top_line)
-		   << write_attribute("bottomline", row_info[i].bottom_line)
-		   << write_attribute("endhead", row_info[i].endhead)
+		   << write_attribute("bottomline", row_info[i].bottom_line);
+		static const string def("default");
+		if (row_info[i].top_space_default)
+			os << write_attribute("topspace", def);
+		else
+			os << write_attribute("topspace", row_info[i].top_space);
+		if (row_info[i].bottom_space_default)
+			os << write_attribute("bottomspace", def);
+		else
+			os << write_attribute("bottomspace", row_info[i].bottom_space);
+		if (row_info[i].interline_space_default)
+			os << write_attribute("interlinespace", def);
+		else
+			os << write_attribute("interlinespace", row_info[i].interline_space);
+		os << write_attribute("endhead", row_info[i].endhead)
 		   << write_attribute("endfirsthead", row_info[i].endfirsthead)
 		   << write_attribute("endfoot", row_info[i].endfoot)
 		   << write_attribute("endlastfoot", row_info[i].endlastfoot)
@@ -1281,6 +1324,7 @@ void LyXTabular::read(Buffer const & buf, LyXLex & lex)
 		return;
 	}
 	getTokenValue(line, "rotate", rotate);
+	getTokenValue(line, "booktabs", use_booktabs);
 	getTokenValue(line, "islongtable", is_long_tabular);
 	getTokenValue(line, "firstHeadTopDL", endfirsthead.topDL);
 	getTokenValue(line, "firstHeadBottomDL", endfirsthead.bottomDL);
@@ -1317,6 +1361,12 @@ void LyXTabular::read(Buffer const & buf, LyXLex & lex)
 		}
 		getTokenValue(line, "topline", row_info[i].top_line);
 		getTokenValue(line, "bottomline", row_info[i].bottom_line);
+		getTokenValue(line, "topspace", row_info[i].top_space,
+		              row_info[i].top_space_default);
+		getTokenValue(line, "bottomspace", row_info[i].bottom_space,
+		              row_info[i].bottom_space_default);
+		getTokenValue(line, "interlinespace", row_info[i].interline_space,
+		              row_info[i].interline_space_default);
 		getTokenValue(line, "endfirsthead", row_info[i].endfirsthead);
 		getTokenValue(line, "endhead", row_info[i].endhead);
 		getTokenValue(line, "endfoot", row_info[i].endfoot);
@@ -1440,6 +1490,18 @@ LyXTabular::idx_type LyXTabular::unsetMultiColumn(idx_type cell)
 	}
 	set_row_column_number_info();
 	return result;
+}
+
+
+void LyXTabular::setBookTabs(bool what)
+{
+	use_booktabs = what;
+}
+
+
+bool LyXTabular::useBookTabs() const
+{
+	return use_booktabs;
 }
 
 
@@ -1743,12 +1805,14 @@ int LyXTabular::TeXTopHLine(ostream & os, row_type row) const
 		if (topLine(i))
 			++tmp;
 	}
-	if (tmp == n - fcell) {
-		os << "\\hline ";
+	if (use_booktabs && row == 0) {
+		os << "\\toprule ";
+	} else if (tmp == n - fcell) {
+		os << (use_booktabs ? "\\midrule " : "\\hline ");
 	} else if (tmp) {
 		for (idx_type i = fcell; i < n; ++i) {
 			if (topLine(i)) {
-				os << "\\cline{"
+				os << (use_booktabs ? "\\cmidrule{" : "\\cline{")
 				   << column_of_cell(i) + 1
 				   << '-'
 				   << right_column_of_cell(i) + 1
@@ -1777,12 +1841,14 @@ int LyXTabular::TeXBottomHLine(ostream & os, row_type row) const
 		if (bottomLine(i))
 			++tmp;
 	}
-	if (tmp == n - fcell) {
-		os << "\\hline";
+	if (use_booktabs && row == rows_ - 1) {
+		os << "\\bottomrule";
+	} else if (tmp == n - fcell) {
+		os << (use_booktabs ? "\\midrule" : "\\hline");
 	} else if (tmp) {
 		for (idx_type i = fcell; i < n; ++i) {
 			if (bottomLine(i)) {
-				os << "\\cline{"
+				os << (use_booktabs ? "\\cmidrule{" : "\\cline{")
 				   << column_of_cell(i) + 1
 				   << '-'
 				   << right_column_of_cell(i) + 1
@@ -2013,8 +2079,23 @@ int LyXTabular::TeXRow(ostream & os, row_type i, Buffer const & buf,
 		       OutputParams const & runparams) const
 {
 	idx_type cell = getCellNumber(i, 0);
-
 	int ret = TeXTopHLine(os, i);
+	if (row_info[i].top_space_default) {
+		if (use_booktabs)
+			os << "\\addlinespace\n";
+		else
+			os << "\\noalign{\\vskip\\doublerulesep}\n";
+	} else if(!row_info[i].top_space.zero()) {
+		if (use_booktabs)
+			os << "\\addlinespace["
+			   << row_info[i].top_space.asLatexString() << "]\n";
+		else {
+			os << "\\noalign{\\vskip"
+			   << row_info[i].top_space.asLatexString() << "}\n";
+		}
+		++ret;
+	}
+	
 	for (col_type j = 0; j < columns_; ++j) {
 		if (isPartOfMultiColumn(i, j))
 			continue;
@@ -2039,9 +2120,36 @@ int LyXTabular::TeXRow(ostream & os, row_type i, Buffer const & buf,
 		}
 		++cell;
 	}
-	os << "\\tabularnewline\n";
+	os << "\\tabularnewline";
+	if (row_info[i].bottom_space_default) {
+		if (use_booktabs)
+			os << "\\addlinespace";
+		else
+			os << "[\\doublerulesep]";
+	} else if (!row_info[i].bottom_space.zero()) {
+		if (use_booktabs)
+			os << "\\addlinespace";
+		os << '[' << row_info[i].bottom_space.asLatexString() << ']';
+	}
+	os << '\n';
 	++ret;
 	ret += TeXBottomHLine(os, i);
+	if (row_info[i].interline_space_default) {
+		if (use_booktabs)
+			os << "\\addlinespace\n";
+		else
+			os << "\\noalign{\\vskip\\doublerulesep}\n";
+	} else if (!row_info[i].interline_space.zero()) {
+		if (use_booktabs)
+			os << "\\addlinespace["
+			   << row_info[i].interline_space.asLatexString()
+			   << "]\n";
+		else
+			os << "\\noalign{\\vskip"
+			   << row_info[i].interline_space.asLatexString()
+			   << "}\n";
+		++ret;
+	}
 	return ret;
 }
 
@@ -2067,7 +2175,7 @@ int LyXTabular::latex(Buffer const & buf, ostream & os,
 		if (!column_info[i].align_special.empty()) {
 			os << column_info[i].align_special;
 		} else {
-			if (column_info[i].left_line)
+			if (!use_booktabs && column_info[i].left_line)
 				os << '|';
 			if (!column_info[i].p_width.zero()) {
 				switch (column_info[i].alignment) {
@@ -2114,7 +2222,7 @@ int LyXTabular::latex(Buffer const & buf, ostream & os,
 					break;
 				}
 			}
-			if (column_info[i].right_line)
+			if (!use_booktabs && column_info[i].right_line)
 				os << '|';
 		}
 	}
@@ -2594,6 +2702,8 @@ LyXTabular::getCellFromInset(InsetBase const * inset) const
 void LyXTabular::validate(LaTeXFeatures & features) const
 {
 	features.require("NeedTabularnewline");
+	if (useBookTabs())
+		features.require("booktabs");
 	if (isLongTabular())
 		features.require("longtable");
 	if (needRotating())

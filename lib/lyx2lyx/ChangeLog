@@ -1,3 +1,9 @@
+2006-03-14  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* lyx_1_5.py: new file, handle new format 246
+	* LyX.py: handle new format 246
+	* lyx_1_4.py (revert_booktabs): move to lyx_1_5.py
+
 2006-03-06  José Matos  <jamatos@lyx.org>
 
 	* lyx_1_4.py (remove_paperpackage): Only reset the papersize for
@@ -332,6 +338,11 @@
 	* lyx_1_4.py: unify the call convention of convertion
 	functions. Now they all accept a file.
 
+2004-12-06  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* lyx_1_4.py, LyX.py: handle new format 239
+	* lyx_1_4.py (revert_booktabs): move to 239 -> 238 conversion
+
 2004-12-03  José Matos  <jamatos@lyx.org>
 
 	* LyX.py: format up to 238.
@@ -350,6 +361,11 @@
 2004-11-29  José Matos  <jamatos@lyx.org>
 
 	* lyx_1_2.py (convert): rename opt to file, as in all other files.
+
+2004-12-06  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* lyx_1_4.py, LyX.py: handle new format 238
+	* lyx_1_4.py (revert_booktabs): new
 
 2004-10-28  José Matos  <jamatos@lyx.org>
 

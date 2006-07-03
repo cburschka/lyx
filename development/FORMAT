@@ -1,6 +1,19 @@
 LyX file-format changes
 -----------------------
 
+2006-07-03  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* format incremented to 248: Basic booktabs support
+
+	The <features> tag has a new switch: booktabs="true|false".
+	An absent switch is equivalent to booktabs="false".
+	Horizontal lines are set with the booktabs package if this switch
+	is on.
+
+	The <row> tag of tabulars has the following new attributes:
+	topspace, bottomspace and interlinespace. All take a LyXLength
+	as value, or the special keyword "default".
+
 2006-06-10  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* format incremented to 247. The Grand Font Interface Rewrite.

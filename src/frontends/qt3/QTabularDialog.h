@@ -43,6 +43,9 @@ protected slots:
 	virtual void vAlign_changed(int align);
 	virtual void specialAlignment_changed();
 	virtual void width_changed();
+	virtual void topspace_changed();
+	virtual void bottomspace_changed();
+	virtual void interlinespace_changed();
 	virtual void longTabular();
 	virtual void ltNewpage_clicked();
 	virtual void ltHeaderStatus_clicked();
@@ -59,6 +62,7 @@ protected slots:
 	virtual void ltLastFooterBorderAbove_clicked();
 	virtual void ltLastFooterBorderBelow_clicked();
 	virtual void ltLastFooterEmpty_clicked();
+	virtual void booktabs_clicked();
 
 protected:
 	virtual void closeEvent(QCloseEvent * e);
