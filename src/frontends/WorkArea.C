@@ -136,6 +136,18 @@ void WorkArea::setBufferView(BufferView * buffer_view)
 }
 
 
+BufferView & WorkArea::bufferView()
+{
+	return *buffer_view_;
+}
+
+
+BufferView const & WorkArea::bufferView() const
+{
+	return *buffer_view_;
+}
+
+
 void WorkArea::checkAndGreyOut()
 {
 	if (greyed_out_)

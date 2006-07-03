@@ -43,7 +43,6 @@
 #include "frontends/Dialogs.h"
 #include "frontends/LyXView.h"
 #include "frontends/Gui.h"
-#include "frontends/WorkArea.h"
 
 #include "insets/insetcommand.h" // ChangeRefs
 #include "insets/insettext.h"
@@ -62,8 +61,8 @@ using std::vector;
 extern BufferList bufferlist;
 
 
-BufferView::BufferView(LyXView * owner, lyx::frontend::WorkArea * workArea)
-	: pimpl_(new Pimpl(*this, owner, workArea))
+BufferView::BufferView(LyXView * owner)
+	: pimpl_(new Pimpl(*this, owner))
 {}
 
 

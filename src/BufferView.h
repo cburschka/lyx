@@ -38,7 +38,6 @@ class ParIterator;
 namespace lyx {
 namespace frontend {
 class Painter;
-class WorkArea;
 }
 }
 
@@ -94,7 +93,7 @@ public:
 	 * Create a view with the given owner main window,
 	 * of the given dimensions.
 	 */
-	BufferView(LyXView * owner, lyx::frontend::WorkArea * workArea);
+	BufferView(LyXView * owner);
 
 	~BufferView();
 

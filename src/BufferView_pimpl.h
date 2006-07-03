@@ -39,7 +39,6 @@ class ViewMetricsInfo;
 namespace lyx {
 namespace frontend {
 class Gui;
-class WorkArea;
 class Painter;
 }
 }
@@ -49,7 +48,7 @@ class Painter;
 class BufferView::Pimpl : public boost::signals::trackable {
 public:
 	///
-	Pimpl(BufferView & bv, LyXView * owner, lyx::frontend::WorkArea * workArea);
+	Pimpl(BufferView & bv, LyXView * owner);
 	///
 	lyx::frontend::Painter & painter() const;
 	///
@@ -192,8 +191,6 @@ private:
 	std::vector<Position> saved_positions;
 	///
 	void menuInsertLyXFile(std::string const & filen);
-
-	lyx::frontend::WorkArea * workArea_;
 
 	/// this is used to handle XSelection events in the right manner
 	struct {

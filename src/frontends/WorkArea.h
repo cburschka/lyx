@@ -42,6 +42,11 @@ public:
 
 	void setBufferView(BufferView * buffer_view);
 
+	///
+	BufferView & bufferView();
+	///
+	BufferView const & bufferView() const;
+
 	/// return the painter object for this work area
 	virtual Painter & getPainter() = 0;
 

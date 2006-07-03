@@ -17,6 +17,7 @@
 #include "Timeout.h"
 #include "Toolbars.h"
 #include "Menubar.h"
+#include "WorkArea.h"
 
 #include "buffer.h"
 #include "bufferparams.h"
@@ -48,6 +49,7 @@
 #endif
 
 using lyx::frontend::Gui;
+using lyx::frontend::WorkArea;
 
 using lyx::support::makeDisplayPath;
 using lyx::support::onlyFilename;
@@ -64,6 +66,7 @@ Gui & LyXView::gui()
 	return owner_;
 }
 
+
 LyXView::LyXView(Gui & owner)
 	: owner_(owner),
 	  toolbars_(new Toolbars(*this)),
@@ -72,14 +75,15 @@ LyXView::LyXView(Gui & owner)
 	  lyxfunc_(new LyXFunc(this)),
 	  dialogs_(new Dialogs(*this)),
 	  controlcommand_(new ControlCommandBuffer(*this)),
-	  bufferview_(0)
+	  work_area_(0)
 {
 	lyxerr[Debug::INIT] << "Initializing LyXFunc" << endl;
 }
 
-void LyXView::setBufferView(BufferView * buffer_view)
+
+void LyXView::setWorkArea(WorkArea * work_area)
 {
-	bufferview_ = buffer_view;
+	work_area_ = work_area;
 }
 
 
@@ -106,13 +110,13 @@ void LyXView::init()
 
 Buffer * LyXView::buffer() const
 {
-	return bufferview_->buffer();
+	return work_area_->bufferView().buffer();
 }
 
 
 BufferView * LyXView::view() const
 {
-	return bufferview_;
+	return &work_area_->bufferView();
 }
 
 
@@ -124,7 +128,7 @@ void LyXView::setLayout(string const & layout)
 
 void LyXView::updateToolbars()
 {
-	bool const math = bufferview_->cursor().inMathed();
+	bool const math = work_area_->bufferView().cursor().inMathed();
 	bool const table =
 		getLyXFunc().getStatus(FuncRequest(LFUN_LAYOUT_TABULAR)).enabled();
 	toolbars_->update(math, table);
@@ -171,11 +175,11 @@ void LyXView::updateLayoutChoice()
 		current_layout = buffer()->params().getLyXTextClass().defaultLayoutName();
 	}
 
-	if (bufferview_->cursor().inMathed())
+	if (work_area_->bufferView().cursor().inMathed())
 		return;
 
 	string const & layout =
-		bufferview_->cursor().paragraph().layout()->name();
+		work_area_->bufferView().cursor().paragraph().layout()->name();
 
 	if (layout != current_layout) {
 		toolbars_->setLayout(layout);
@@ -221,9 +225,9 @@ Buffer const * const LyXView::updateInset(InsetBase const * inset) const
 {
 	Buffer const * buffer_ptr = 0;
 	if (inset) {
-		buffer_ptr = bufferview_->buffer();
+		buffer_ptr = work_area_->bufferView().buffer();
 		// No FitCursor:
-		bufferview_->update(Update::Force);
+		work_area_->bufferView().update(Update::Force);
 	}
 	return buffer_ptr;
 }

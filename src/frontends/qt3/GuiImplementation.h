@@ -78,9 +78,9 @@ public:
 		guiCursor().connect(work_area_.get());
 
 		// FIXME BufferView creation should be independant of WorkArea creation
-		buffer_views_[0].reset(new BufferView(view_.get(), work_area_.get()));
+		buffer_views_[0].reset(new BufferView(view_.get()));
 		work_area_->setBufferView(buffer_views_[0].get());
-		view_->setBufferView(buffer_views_[0].get());
+		view_->setWorkArea(work_area_.get());
 		return 0;
 	}
 

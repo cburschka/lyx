@@ -35,6 +35,7 @@ class FuncRequest;
 namespace lyx {
 namespace frontend {
 class Gui;
+class WorkArea;
 class ControlCommandBuffer;
 } // namespace frontend
 
@@ -60,8 +61,7 @@ public:
 
 	virtual ~LyXView();
 
-	void setBufferView(BufferView * buffer_view);
-
+	void setWorkArea(lyx::frontend::WorkArea * work_area);
 	/**
 	 * This is called after the concrete view has been created.
 	 * We have to have the toolbar and the other stuff created
@@ -152,12 +152,13 @@ public:
 	///
 	virtual lyx::frontend::Gui & gui();
 
+	lyx::frontend::WorkArea * workArea() const { return work_area_; }
 protected:
-	/// current bufferview (view of a buffer).
+	/// current work area (screen view of a BufferView).
 	/**
-	\todo FIXME: this should be moved out of LyXView.
+	\todo FIXME: there is only one workArea per LyXView for now.
 	*/
-	BufferView * bufferview_;
+	lyx::frontend::WorkArea * work_area_;
 
 	/// view's menubar
 	boost::scoped_ptr<Menubar> menubar_;

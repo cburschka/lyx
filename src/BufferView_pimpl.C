@@ -137,9 +137,9 @@ T * getInsetByCode(LCursor & cur, InsetBase::Code code)
 } // anon namespace
 
 
-BufferView::Pimpl::Pimpl(BufferView & bv, LyXView * owner, WorkArea * workArea)
-	: bv_(&bv), owner_(owner), buffer_(0), wh_(0), cursor_timeout(400), 
-	  using_xterm_cursor(false), workArea_(workArea), cursor_(bv), 
+BufferView::Pimpl::Pimpl(BufferView & bv, LyXView * owner)
+	: bv_(&bv), owner_(owner), buffer_(0), wh_(0), cursor_timeout(400),
+	  using_xterm_cursor(false), cursor_(bv),
 	  multiparsel_cache_(false), anchor_ref_(0), offset_ref_(0)
 {
 	xsel_cache_.set = false;
@@ -149,7 +149,7 @@ BufferView::Pimpl::Pimpl(BufferView & bv, LyXView * owner, WorkArea * workArea)
 		.connect(boost::bind(&BufferView::Pimpl::cursorToggle, this));
 
 	cursor_timeout.start();
-	
+
 	saved_positions.resize(saved_positions_num);
 	// load saved bookmarks
 	lyx::Session::BookmarkList & bmList = LyX::ref().session().loadBookmarks();
@@ -321,7 +321,7 @@ lyx::frontend::Gui & BufferView::Pimpl::gui() const
 
 lyx::frontend::Painter & BufferView::Pimpl::painter() const
 {
-	return workArea_->getPainter();
+	return owner_->workArea()->getPainter();
 }
 
 
@@ -724,14 +724,14 @@ void BufferView::Pimpl::update(Update::flags flags)
 		}
 		if (forceupdate) {
 			// Second drawing step
-			workArea_->redraw(*bv_, vi);
+			owner_->workArea()->redraw(*bv_, vi);
 		} else {
 			// Abort updating of the coord
 			// cache - just restore the old one
 			std::swap(theCoords, backup);
 		}
 	} else
-		workArea_->greyOut();
+		owner_->workArea()->greyOut();
 
 	owner_->view_state_changed();
 }
@@ -1249,7 +1249,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 	case LFUN_OUTLINE_IN:
 		lyx::toc::outline(lyx::toc::In, cursor_);
 		updateLabels(*buffer_);
-		break;	
+		break;
 	case LFUN_OUTLINE_OUT:
 		lyx::toc::outline(lyx::toc::Out, cursor_);
 		updateLabels(*buffer_);
