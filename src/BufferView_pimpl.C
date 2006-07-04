@@ -689,12 +689,15 @@ ViewMetricsInfo const & BufferView::Pimpl::viewMetricsInfo()
 
 void BufferView::Pimpl::update(Update::flags flags)
 {
-	lyxerr[Debug::DEBUG]
-		<< BOOST_CURRENT_FUNCTION
-		<< "[fitcursor = " << (flags & Update::FitCursor)
-		<< ", forceupdate = " << (flags & Update::Force)
-		<< ", singlepar = " << (flags & Update::SinglePar)
-		<< "]  buffer: " << buffer_ << endl;
+	// This is close to a hot-path.
+	if (lyxerr.debugging(Debug::DEBUG)) {
+		lyxerr[Debug::DEBUG]
+			<< BOOST_CURRENT_FUNCTION
+			<< "[fitcursor = " << (flags & Update::FitCursor)
+			<< ", forceupdate = " << (flags & Update::Force)
+			<< ", singlepar = " << (flags & Update::SinglePar)
+			<< "]  buffer: " << buffer_ << endl;
+	}
 
 	// Check needed to survive LyX startup
 	if (buffer_) {
