@@ -636,8 +636,12 @@ def checkTeXAllowSpaces():
   tex_allows_spaces = 'false'
   if lyx_check_config:
     print "Checking whether TeX allows spaces in file names... ",
-    writeToFile('a b.tex', r'\nonstopmode\message{working^^J}' )
-    if ''.join(cmdOutput(LATEX + ' "a b"')).find('working') != -1:
+    writeToFile('a b.tex', r'\message{working^^J}' )
+    if os.name == 'nt':
+      latex_out = cmdOutput(LATEX + r""" "\nonstopmode\input{\"a b\"}" """)
+    else:
+      latex_out = cmdOutput(LATEX + r""" '\nonstopmode\input{"a b"}' """)
+    if 'working' in latex_out:
       print 'yes'
       tex_allows_spaces = 'true'
     else:
