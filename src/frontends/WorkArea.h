@@ -20,7 +20,6 @@
 #include "frontends/LyXKeySym.h"
 
 class BufferView;
-class ViewMetricsInfo;
 
 namespace lyx {
 namespace frontend {
@@ -65,7 +64,7 @@ public:
 	virtual void setScrollbarParams(int height, int pos, int line_height) = 0;
 
 	/// redraw the screen, without using existing pixmap
-	virtual void redraw(BufferView & bv, ViewMetricsInfo const & vi);
+	virtual void redraw(BufferView & bv);
 
 	/// grey out (no buffer)
 	void greyOut();

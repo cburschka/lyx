@@ -681,6 +681,12 @@ bool BufferView::Pimpl::multiParSel()
 }
 
 
+ViewMetricsInfo const & BufferView::Pimpl::viewMetricsInfo()
+{
+	return metrics_info_;
+}
+
+
 void BufferView::Pimpl::update(Update::flags flags)
 {
 	lyxerr[Debug::DEBUG]
@@ -704,20 +710,20 @@ void BufferView::Pimpl::update(Update::flags flags)
 		theCoords.startUpdating();
 
 		// First drawing step
-		ViewMetricsInfo vi = metrics(flags & Update::SinglePar);
+		updateMetrics(flags & Update::SinglePar);
 		bool forceupdate(flags & (Update::Force | Update::SinglePar));
 
 		if ((flags & Update::FitCursor) && fitCursor()) {
 			forceupdate = true;
-			vi = metrics();
+			updateMetrics();
 		}
 		if ((flags & Update::MultiParSel) && multiParSel()) {
 			forceupdate = true;
-			vi = metrics();
+			updateMetrics();
 		}
 		if (forceupdate) {
 			// Second drawing step
-			owner_->workArea()->redraw(*bv_, vi);
+			owner_->workArea()->redraw(*bv_);
 		} else {
 			// Abort updating of the coord
 			// cache - just restore the old one
@@ -1404,7 +1410,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 }
 
 
-ViewMetricsInfo BufferView::Pimpl::metrics(bool singlepar)
+void BufferView::Pimpl::updateMetrics(bool singlepar)
 {
 	// Remove old position cache
 	theCoords.clear();
@@ -1501,5 +1507,5 @@ ViewMetricsInfo BufferView::Pimpl::metrics(bool singlepar)
 		<< "size: " << size
 		<< endl;
 
-	return ViewMetricsInfo(pit1, pit2, y1, y2, singlepar, size);
+	metrics_info_ = ViewMetricsInfo(pit1, pit2, y1, y2, singlepar, size);
 }

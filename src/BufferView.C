@@ -37,6 +37,7 @@
 #include "texrow.h"
 #include "undo.h"
 #include "WordLangTuple.h"
+#include "metricsinfo.h"
 
 #include "frontends/Alert.h"
 #include "frontends/Clipboard.h"
@@ -400,4 +401,10 @@ lyx::pit_type BufferView::anchor_ref() const
 int BufferView::offset_ref() const
 {
 	return pimpl_->offset_ref_;
+}
+
+
+ViewMetricsInfo const & BufferView::viewMetricsInfo()
+{
+	return pimpl_->viewMetricsInfo();
 }

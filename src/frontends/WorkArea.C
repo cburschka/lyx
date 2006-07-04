@@ -155,9 +155,10 @@ void WorkArea::checkAndGreyOut()
 }
 
 
-void WorkArea::redraw(BufferView & bv, ViewMetricsInfo const & vi)
+void WorkArea::redraw(BufferView & bv)
 {
 	greyed_out_ = false;
+	ViewMetricsInfo const & vi = bv.viewMetricsInfo();
 	getPainter().start();
 	paintText(*buffer_view_, vi);
 	lyxerr[Debug::DEBUG] << "Redraw screen" << endl;

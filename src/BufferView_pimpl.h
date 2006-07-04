@@ -21,6 +21,7 @@
 #include "BufferView.h"
 #include "cursor.h"
 #include "errorlist.h"
+#include "metricsinfo.h"
 
 #include "frontends/LyXKeySym.h"
 #include "frontends/Timeout.h"
@@ -117,6 +118,8 @@ public:
 	*/
 	int height() const;
 
+	///
+	ViewMetricsInfo const & viewMetricsInfo();
 private:
 	///
 	int width_;
@@ -155,6 +158,11 @@ private:
 
 	///
 	friend class BufferView;
+
+	///
+	ViewMetricsInfo metrics_info_;
+	///
+	void updateMetrics(bool singlepar = false);
 
 	///
 	BufferView * bv_;
@@ -203,7 +211,5 @@ private:
 	lyx::pit_type anchor_ref_;
 	///
 	int offset_ref_;
-	///
-	ViewMetricsInfo metrics(bool singlepar = false);
 };
 #endif // BUFFERVIEW_PIMPL_H

@@ -34,6 +34,7 @@ class LCursor;
 class LyXText;
 class LyXView;
 class ParIterator;
+class ViewMetricsInfo;
 
 namespace Update {
 	enum flags {
@@ -223,6 +224,8 @@ public:
 	void putSelectionAt(DocIterator const & cur,
 		int length, bool backwards);
 
+	///
+	ViewMetricsInfo const & viewMetricsInfo();
 private:
 	///
 	class Pimpl;
