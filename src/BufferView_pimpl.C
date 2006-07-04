@@ -701,33 +701,29 @@ void BufferView::Pimpl::update(Update::flags flags)
 		// Update macro store
 		buffer_->buildMacros();
 
-		CoordCache backup;
-		std::swap(theCoords, backup);
-
 		// This, together with doneUpdating(), verifies (using
 		// asserts) that screen redraw is not called from
 		// within itself.
 		theCoords.startUpdating();
 
 		// First drawing step
-		updateMetrics(flags & Update::SinglePar);
+		bool singlePar = flags & Update::SinglePar;
 		bool forceupdate(flags & (Update::Force | Update::SinglePar));
 
-		if ((flags & Update::FitCursor) && fitCursor()) {
+		if ((flags & (Update::FitCursor | Update::MultiParSel))
+		    && (fitCursor() || multiParSel())) {
 			forceupdate = true;
-			updateMetrics();
+			singlePar = false;
 		}
-		if ((flags & Update::MultiParSel) && multiParSel()) {
-			forceupdate = true;
-			updateMetrics();
-		}
+
 		if (forceupdate) {
 			// Second drawing step
+			updateMetrics(singlePar);
 			owner_->workArea()->redraw(*bv_);
 		} else {
 			// Abort updating of the coord
 			// cache - just restore the old one
-			std::swap(theCoords, backup);
+			theCoords.doneUpdating();
 		}
 	} else
 		owner_->workArea()->greyOut();
