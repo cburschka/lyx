@@ -24,7 +24,7 @@
 class LyXLayout;
 
 /// Reads the style files
-extern void LyXSetStyle();
+extern bool LyXSetStyle();
 
 ///
 class LyXTextClassList : boost::noncopyable {

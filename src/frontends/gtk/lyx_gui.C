@@ -118,7 +118,7 @@ private:
 
 Application * theApp;
 
-void lyx_gui::exec(int & argc, char * argv[])
+int lyx_gui::exec(int & argc, char * argv[])
 {
 	theApp = new Application(argc, argv);
 
@@ -131,7 +131,7 @@ void lyx_gui::exec(int & argc, char * argv[])
 	// must do this /before/ lyxrc gets read
 	lyxrc.dpi = getDPI();
 
-	LyX::ref().exec2(argc, argv);
+	return LyX::ref().exec2(argc, argv);
 }
 
 
@@ -140,8 +140,9 @@ void lyx_gui::parse_lyxrc()
 }
 
 
-void lyx_gui::start(string const & batch, std::vector<string> const & files,
-		    unsigned int width, unsigned int height, int posx, int posy, bool)
+int lyx_gui::start(string const & batch, std::vector<string> const & files,
+                   unsigned int width, unsigned int height, int posx,
+                   int posy, bool)
 {
 	int view_id = theApp->gui().newView(width, height);
 	GView & view = static_cast<GView &> (theApp->gui().view(view_id));
@@ -171,6 +172,7 @@ void lyx_gui::start(string const & batch, std::vector<string> const & files,
 	// FIXME: breaks emergencyCleanup
 	delete lyxsocket;
 	delete lyxserver;
+	return EXIT_SUCCESS;
 }
 
 

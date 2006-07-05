@@ -46,9 +46,9 @@ public:
 	 * objects lead either to harmless error messages on exit
 	 * ("Mutex destroy failure") or crashes (OS X).
 	 */
-	static void exec(int & argc, char * argv[]);
+	static int exec(int & argc, char * argv[]);
 	/// Execute LyX (inner execution loop, \sa exec)
-	void exec2(int & argc, char * argv[]);
+	int exec2(int & argc, char * argv[]);
 	static LyX & ref();
 	static LyX const & cref();
 
@@ -69,10 +69,10 @@ private:
 	static boost::scoped_ptr<LyX> singleton_;
 
 	LyX();
-	void priv_exec(int & argc, char * argv[]);
+	int priv_exec(int & argc, char * argv[]);
 
 	/// initial LyX set up
-	void init();
+	bool init();
 	/// set up the default key bindings
 	void defaultKeyBindings(kb_keymap * kbmap);
 	/// set up the default dead key bindings if requested
@@ -85,13 +85,13 @@ private:
 	 */
 	bool queryUserLyXDir(bool explicit_userdir);
 	/// read lyxrc/preferences
-	void readRcFile(std::string const & name);
+	bool readRcFile(std::string const & name);
 	/// read the given ui (menu/toolbar) file
-	void readUIFile(std::string const & name);
+	bool readUIFile(std::string const & name);
 	/// read the given languages file
-	void readLanguagesFile(std::string const & name);
+	bool readLanguagesFile(std::string const & name);
 	/// read the given encodings file
-	void readEncodingsFile(std::string const & name);
+	bool readEncodingsFile(std::string const & name);
 	/// parsing of non-gui LyX options. Returns true if gui
 	bool easyParse(int & argc, char * argv[]);
 	/// shows up a parsing error on screen

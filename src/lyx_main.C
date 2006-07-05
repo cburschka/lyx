@@ -113,6 +113,7 @@ void lyx_exit(int status)
 	// guarantees a return to the system, no application cleanup.
 	// This may cause troubles with not executed destructors.
 	if (lyx_gui::use_gui)
+		// lyx_gui::exit may return and only schedule the exit
 		lyx_gui::exit(status);
 	exit(status);
 }
@@ -123,7 +124,6 @@ void showFileError(string const & error)
 	Alert::warning(_("Could not read configuration file"),
 		   bformat(_("Error while reading the configuration file\n%1$s.\n"
 		     "Please check your installation."), error));
-	lyx_exit(EXIT_FAILURE);
 }
 
 
@@ -143,7 +143,7 @@ void reconfigureUserLyXDir()
 
 boost::scoped_ptr<LyX> LyX::singleton_;
 
-void LyX::exec(int & argc, char * argv[])
+int LyX::exec(int & argc, char * argv[])
 {
 	BOOST_ASSERT(!singleton_.get());
 	// We must return from this before launching the gui so that
@@ -151,7 +151,7 @@ void LyX::exec(int & argc, char * argv[])
 	// LyX::ref and LyX::cref.
 	singleton_.reset(new LyX);
 	// Start the real execution loop.
-	singleton_->priv_exec(argc, argv);
+	return singleton_->priv_exec(argc, argv);
 }
 
 
@@ -211,7 +211,7 @@ Buffer const * const LyX::updateInset(InsetBase const * inset) const
 }
 
 
-void LyX::priv_exec(int & argc, char * argv[])
+int LyX::priv_exec(int & argc, char * argv[])
 {
 	// Here we need to parse the command line. At least
 	// we need to parse for "-dbg" and "-help"
@@ -222,13 +222,13 @@ void LyX::priv_exec(int & argc, char * argv[])
 
 	// Start the real execution loop.
 	if (lyx_gui::use_gui)
-		lyx_gui::exec(argc, argv);
+		return lyx_gui::exec(argc, argv);
 	else
-		exec2(argc, argv);
+		return exec2(argc, argv);
 }
 
 
-void LyX::exec2(int & argc, char * argv[])
+int LyX::exec2(int & argc, char * argv[])
 {
 	// check for any spurious extra arguments
 	// other than documents
@@ -236,14 +236,16 @@ void LyX::exec2(int & argc, char * argv[])
 		if (argv[argi][0] == '-') {
 			lyxerr << bformat(_("Wrong command line option `%1$s'. Exiting."),
 				argv[argi]) << endl;
-			exit(1);
+			return EXIT_FAILURE;
 		}
 	}
 
 	// Initialization of LyX (reads lyxrc and more)
 	lyxerr[Debug::INIT] << "Initializing LyX::init..." << endl;
-	init();
+	bool const success = init();
 	lyxerr[Debug::INIT] << "Initializing LyX::init...done" << endl;
+	if (!success)
+		return EXIT_FAILURE;
 
 	if (lyx_gui::use_gui)
 		lyx_gui::parse_lyxrc();
@@ -296,7 +298,7 @@ void LyX::exec2(int & argc, char * argv[])
 			bool success = false;
 			if (last_loaded->dispatch(batch_command, &success)) {
 				quitLyX(false);
-				lyx_exit(!success);
+				return !success;
 			}
 		}
 		files.clear(); // the files are already loaded
@@ -341,12 +343,12 @@ void LyX::exec2(int & argc, char * argv[])
 			height = 0;
 		}
 
-		lyx_gui::start(batch_command, files, width, height, posx, posy, maximize);
+		return lyx_gui::start(batch_command, files, width, height, posx, posy, maximize);
 
 	} else {
 		// Something went wrong above
 		quitLyX(false);
-		lyx_exit(EXIT_FAILURE);
+		return EXIT_FAILURE;
 	}
 }
 
@@ -458,7 +460,7 @@ void LyX::printError(ErrorItem const & ei)
 }
 
 
-void LyX::init()
+bool LyX::init()
 {
 #ifdef SIGHUP
 	signal(SIGHUP, error_handler);
@@ -489,7 +491,8 @@ void LyX::init()
 	//
 
 	// This one may have been distributed along with LyX.
-	readRcFile("lyxrc.dist");
+	if (!readRcFile("lyxrc.dist"))
+		return false;
 
 	// Set the PATH correctly.
 #if !defined (USE_POSIX_PACKAGING)
@@ -511,7 +514,8 @@ void LyX::init()
 	}
 
 	// This one is generated in user_support directory by lib/configure.py.
-	readRcFile("lyxrc.defaults");
+	if (!readRcFile("lyxrc.defaults"))
+		return false;
 
 	// Query the OS to know what formats are viewed natively
 	formats.setAutoOpen();
@@ -523,14 +527,18 @@ void LyX::init()
 	system_lcolor = lcolor;
 
 	// This one is edited through the preferences dialog.
-	readRcFile("preferences");
+	if (!readRcFile("preferences"))
+		return false;
 
-	readEncodingsFile("encodings");
-	readLanguagesFile("languages");
+	if (!readEncodingsFile("encodings"))
+		return false;
+	if (!readLanguagesFile("languages"))
+		return false;
 
 	// Load the layouts
 	lyxerr[Debug::INIT] << "Reading layouts..." << endl;
-	LyXSetStyle();
+	if (!LyXSetStyle())
+		return false;
 
 	if (lyx_gui::use_gui) {
 		// Set up bindings
@@ -539,7 +547,8 @@ void LyX::init()
 		toplevel_keymap->read(lyxrc.bind_file);
 
 		// Read menus
-		readUIFile(lyxrc.ui_file);
+		if (!readUIFile(lyxrc.ui_file))
+			return false;
 	}
 
 	if (lyxerr.debugging(Debug::LYXRC))
@@ -565,7 +574,7 @@ void LyX::init()
 		// close to zero. We therefore don't try to overcome this
 		// problem with e.g. asking the user for a new path and
 		// trying again but simply exit.
-		lyx_exit(EXIT_FAILURE);
+		return false;
 	}
 
 	if (lyxerr.debugging(Debug::INIT)) {
@@ -574,6 +583,7 @@ void LyX::init()
 
 	lyxerr[Debug::INIT] << "Reading session information '.lyx/session'..." << endl;
 	session_.reset(new lyx::Session(lyxrc.num_lastfiles));
+	return true;
 }
 
 
@@ -731,7 +741,7 @@ bool LyX::queryUserLyXDir(bool explicit_userdir)
 }
 
 
-void LyX::readRcFile(string const & name)
+bool LyX::readRcFile(string const & name)
 {
 	lyxerr[Debug::INIT] << "About to read " << name << "... ";
 
@@ -740,16 +750,19 @@ void LyX::readRcFile(string const & name)
 
 		lyxerr[Debug::INIT] << "Found in " << lyxrc_path << endl;
 
-		if (lyxrc.read(lyxrc_path) < 0)
+		if (lyxrc.read(lyxrc_path) < 0) {
 			showFileError(name);
+			return false;
+		}
 	} else
 		lyxerr[Debug::INIT] << "Not found." << lyxrc_path << endl;
+	return true;
 
 }
 
 
 // Read the ui file `name'
-void LyX::readUIFile(string const & name)
+bool LyX::readUIFile(string const & name)
 {
 	enum Uitags {
 		ui_menuset = 1,
@@ -776,7 +789,7 @@ void LyX::readUIFile(string const & name)
 				    << "' has been read already. "
 				    << "Is this an include loop?"
 				    << endl;
-		return;
+		return false;
 	}
 
 	lyxerr[Debug::INIT] << "About to read " << name << "..." << endl;
@@ -786,7 +799,7 @@ void LyX::readUIFile(string const & name)
 	if (ui_path.empty()) {
 		lyxerr[Debug::INIT] << "Could not find " << name << endl;
 		showFileError(name);
-		return;
+		return false;
 	}
 	uifiles.push_back(name);
 
@@ -807,7 +820,8 @@ void LyX::readUIFile(string const & name)
 		case ui_include: {
 			lex.next(true);
 			string const file = lex.getString();
-			readUIFile(file);
+			if (!readUIFile(file))
+				return false;
 			break;
 		}
 		case ui_menuset:
@@ -829,34 +843,37 @@ void LyX::readUIFile(string const & name)
 			break;
 		}
 	}
+	return true;
 }
 
 
 // Read the languages file `name'
-void LyX::readLanguagesFile(string const & name)
+bool LyX::readLanguagesFile(string const & name)
 {
 	lyxerr[Debug::INIT] << "About to read " << name << "..." << endl;
 
 	string const lang_path = libFileSearch(string(), name);
 	if (lang_path.empty()) {
 		showFileError(name);
-		return;
+		return false;
 	}
 	languages.read(lang_path);
+	return true;
 }
 
 
 // Read the encodings file `name'
-void LyX::readEncodingsFile(string const & name)
+bool LyX::readEncodingsFile(string const & name)
 {
 	lyxerr[Debug::INIT] << "About to read " << name << "..." << endl;
 
 	string const enc_path = libFileSearch(string(), name);
 	if (enc_path.empty()) {
 		showFileError(name);
-		return;
+		return false;
 	}
 	encodings.read(enc_path);
+	return true;
 }
 
 

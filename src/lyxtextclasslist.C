@@ -217,15 +217,16 @@ LyXTextClassList textclasslist;
 
 
 // Reads the style files
-void LyXSetStyle()
+bool LyXSetStyle()
 {
 	lyxerr[Debug::TCLASS] << "LyXSetStyle: parsing configuration..." << endl;
 
 	if (!textclasslist.read()) {
 		lyxerr[Debug::TCLASS] << "LyXSetStyle: an error occured "
 			"during parsing.\n             Exiting." << endl;
-		exit(1);
+		return false;
 	}
 
 	lyxerr[Debug::TCLASS] << "LyXSetStyle: configuration parsed." << endl;
+	return true;
 }

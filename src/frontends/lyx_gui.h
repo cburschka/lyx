@@ -56,13 +56,14 @@ void parse_lyxrc();
  * Start the main event loop, after executing the given
  * batch commands, and loading the given documents
  */
-void start(std::string const & batch, std::vector<std::string> const & files,
-           unsigned int width, unsigned int height, int posx, int posy, bool maximize);
+int start(std::string const & batch, std::vector<std::string> const & files,
+          unsigned int width, unsigned int height, int posx, int posy,
+          bool maximize);
 
 /**
  * Enter the main event loop (\sa LyX::exec2)
  */
-void exec(int & argc, char * argv[]);
+int exec(int & argc, char * argv[]);
 
 /**
  * Synchronise all pending events.
@@ -70,7 +71,8 @@ void exec(int & argc, char * argv[]);
 void sync_events();
 
 /**
- * quit running LyX
+ * Quit running LyX. This may either quit directly or record the exit status
+ * and only stop the event loop.
  */
 void exit(int);
 

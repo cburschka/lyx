@@ -172,7 +172,7 @@ namespace lyx_gui {
 bool use_gui = true;
 
 
-void exec(int & argc, char * argv[])
+int exec(int & argc, char * argv[])
 {
 	// Force adding of font path _before_ QApplication is initialized
 	FontLoader::initFontPath();
@@ -225,7 +225,7 @@ void exec(int & argc, char * argv[])
 
 	LoaderQueue::setPriority(10,100);
 
-	LyX::ref().exec2(argc, argv);
+	return LyX::ref().exec2(argc, argv);
 }
 
 
@@ -233,8 +233,8 @@ void parse_lyxrc()
 {}
 
 
-void start(string const & batch, vector<string> const & files,
-	   unsigned int width, unsigned int height, int posx, int posy, bool maximize)
+int start(string const & batch, vector<string> const & files,
+          unsigned int width, unsigned int height, int posx, int posy, bool maximize)
 {
 	// this can't be done before because it needs the Languages object
 	initEncodings();
@@ -272,10 +272,11 @@ void start(string const & batch, vector<string> const & files,
 		view.getLyXFunc().dispatch(lyxaction.lookupFunc(batch));
 	}
 
-	qApp->exec();
+	int const status = qApp->exec();
 
 	// FIXME
 	cleanup();
+	return status;
 }
 
 
@@ -294,13 +295,7 @@ void sync_events()
 void exit(int status)
 {
 	cleanup();
-
-	// we cannot call QApplication::exit(status) - that could return us
-	// into a static dialog return in the lyx code (for example,
-	// load autosave file QMessageBox. We have to just get the hell
-	// out.
-
-	::exit(status);
+	QApplication::exit(status);
 }
 
 
