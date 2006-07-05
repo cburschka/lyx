@@ -1311,12 +1311,16 @@ if env['X11']:
 env['CPPPATH'] += ['$BUILDDIR/common', '$TOP_SRCDIR/src']
 #
 # Separating boost directories from CPPPATH stops scons from building
-# the dependency tree of boost header files, and effectively reduce
-# the null build time of lyx from 29s to 16s.
-if use_vc:
-    env.AppendUnique(CCFLAGS = ['/I$BOOST_INC_PATH'])
+# the dependency tree for boost header files, and effectively reduce
+# the null build time of lyx from 29s to 16s. Since lyx may tweak local
+# boost headers, this is only done for system boost headers.
+if included_boost:
+    env.AppendUnique(CPPPATH = ['$BOOST_INC_PATH'])
 else:
-    env.AppendUnique(CCFLAGS = ['-I$BOOST_INC_PATH'])
+    if use_vc:
+        env.PrependUnique(CCFLAGS = ['/I$BOOST_INC_PATH'])
+    else:
+        env.PrependUnique(CCFLAGS = ['-I$BOOST_INC_PATH'])
 
 # for intl/config.h, intl/libintl.h and intl/libgnuintl.h
 if env['nls'] and included_gettext:

@@ -20,7 +20,8 @@ This file is organized as follows:
 4. Windows/cygwin
 5. windows/msvc
 6. Other versions of lyx (1.4.x)
-7. Troubleshooting
+7. Tips and hints
+8. Troubleshooting
 
 
 1. General usage of scons
@@ -328,7 +329,16 @@ Note that lyx 1.4.x does not use the latest version of the boost library
 so option boost=included is recommended.
 
 
-7. Troubleshooting
+7. Tips and hints
+=================
+
+  * Using external boost libraries (install boost libraries and use
+    option boost=system) can speed up scons' starting time a lot, since
+    the boost headers will then be considered as system headers and will
+    not be included in the dependency tree.
+
+
+8. Troubleshooting
 ==================
 
 When you get an error:
