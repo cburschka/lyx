@@ -153,24 +153,69 @@ int main()
     return ('int', 'int *', 'struct timeval *')
 
 
-def checkBoostLibraries(conf, lib, pathes):
-    ''' look for boost libraries '''
-    conf.Message('Checking for boost library %s... ' % lib)
-    for path in pathes:
+def checkBoostLibraries(conf, libs, lib_paths, inc_paths, isDebug):
+    ''' look for boost libraries
+      libs: library names
+      lib_paths: try these paths for boost libraries
+      inc_paths: try these paths for boost headers
+      isDebug:   if true, use debug libraries
+    '''
+    conf.Message('Checking for boost library %s... ' % ', '.join(libs))
+    found_lib = False
+    found_inc = False
+    lib_names = []
+    lib_path = None
+    inc_path = None
+    for path in lib_paths:
         # direct form: e.g. libboost_iostreams.a
-        if os.path.isfile(os.path.join(path, 'lib%s.a' % lib)):
+        # ignore isDebug
+        if False not in [os.path.isfile(os.path.join(path, 'libboost_%s.a' % lib)) for lib in libs]:
             conf.Result('yes')
-            return (path, lib)
-        # check things like libboost_iostreams-gcc.a
-        files = glob.glob(os.path.join(path, 'lib%s-*.a' % lib))
-        # if there are more than one, choose the first one
-        # FIXME: choose the best one.
-        if len(files) >= 1:
-            # get xxx-gcc from /usr/local/lib/libboost_xxx-gcc.a
-            conf.Result('yes')
-            return (path, files[0].split(os.sep)[-1][3:-2])
-    conf.Result('n')
-    return ('','')
+            found_lib = True
+            lib_path = path
+            lib_names = libs
+            break
+        for lib in libs:
+            # get all the libs, then filter for the right library
+            files = glob.glob(os.path.join(path, 'libboost_%s-*.a' % lib))
+            # check things like libboost_iostreams-gcc-mt-d-1_33_1.a
+            if len(files) > 0:
+                if isDebug:
+                    files = filter(lambda x: re.search('libboost_%s-\w+-mt-d-[\d-]+' % lib, x), files)
+                else:
+                    files = filter(lambda x: re.search('libboost_%s-\w+-mt-[\d-]+' % lib, x), files)
+                if len(files) == 0:
+                    print 'Warning: %s directory seems to have the boost libraries, but ' % path
+                    print 'I can not find one that has the form lib%s-xxx-mt[-d]-x_xx_x.a' % lib
+                    print 'Check your boost installation, or change select criteria in scons_util.py'
+            if len(files) > 0:
+                # get xxx-gcc-1_33_1 from /usr/local/lib/libboost_xxx-gcc-1_33_1.a
+                lib_names.append(files[0].split(os.sep)[-1][3:-2])
+        if len(lib_names) == len(libs):
+            found_lib = True
+            lib_path = path
+            break
+    if not found_lib:
+        conf.Result('no')
+        return (None, None, None)
+    # check for boost header file
+    for path in inc_paths:
+        # check path/boost/regex.h
+        if os.path.isfile(os.path.join(path, 'boost', 'regex.h')):
+            inc_path = path
+            found_inc = True
+        else: # check path/boost_1_xx_x/boost
+            dirs = glob.glob(os.path.join(path, 'boost-*'))
+            if len(dirs) > 0 and os.path.isfile(os.path.join(dirs[0], 'boost', 'regex.h')):
+                inc_path = dirs[0]
+                found_inc = True
+    # return result
+    if found_inc:
+        conf.Result('yes')
+        return (lib_names, lib_path, inc_path)
+    else:
+        conf.Result('no')
+        return (None, None, None)
 
 
 def checkCommand(conf, cmd):
@@ -314,7 +359,7 @@ def createConfigFile(conf, config_file,
                     result[lib[2]] = ll
                 cont += configString('#define %s 1' % lib[1], desc = description)
                 break
-        # if not found        
+        # if not found
         if not result[lib[1]]:
             cont += configString('/* #undef %s */' % lib[1], desc = description)
     # custom tests

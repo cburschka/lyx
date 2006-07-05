@@ -701,42 +701,43 @@ if not fast_start:
     # check boost libraries
     boost_opt = ARGUMENTS.get('boost', 'auto')
     # check for system boost
-    paths = env['LIBPATH'] + ['/usr/lib', '/usr/local/lib']
-    # real libraries (included or system)
-    boost_libraries = []
+    lib_paths = env['LIBPATH'] + ['/usr/lib', '/usr/local/lib']
+    inc_paths = env['CPPPATH'] + ['/usr/include', '/usr/local/include']
+    # default to $BUILDDIR/libs (use None since this path will be added anyway)
     boost_libpath = None
     # here I assume that all libraries are in the same directory
-    for lib in boost_libs:
-        if boost_opt == 'included':
-            boost_libraries.append('included_boost_%s' % lib)
-            env['INCLUDED_BOOST'] = True
-        elif boost_opt == 'auto':
-            res = conf.CheckBoostLibraries('boost_%s' % lib , paths)
-            # if not found
-            if res[0] == '':
-                boost_libraries.append('included_boost_%s' % lib)
-                env['INCLUDED_BOOST'] = True
-            else:
-                boost_libraries.append(res[1])
-                env['INCLUDED_BOOST'] = False
-                boost_libpath = res[0]
-        elif boost_opt == 'system':
-            res = conf.CheckBoostLibraries('boost_%s' % lib , paths)
-            if res[0] == '':
-                print "Can not find system boost libraries"
-                print "Please supply a path through extra_lib_path and try again."
-                print "Or use boost=included to use included boost libraries."
-                Exit(2)
-            else:
-                boost_libraries.append(res[1])
-                env.AppendUnique(LIBPATH = [res[0]])
-                boost_libpath = res[0]
+    if boost_opt == 'included':
+        boost_libraries = ['included_boost_%s' % x for x in boost_libs]
+        included_boost = True
+        env['BOOST_INC_PATH'] = '$TOP_SRCDIR/boost'
+    elif boost_opt == 'auto':
+        res = conf.CheckBoostLibraries(boost_libs, lib_paths, inc_paths, mode == 'debug')
+        # if not found, use local boost
+        if res[0] is None:
+            boost_libraries = ['included_boost_%s' % x for x in boost_libs]
+            included_boost = True
+            env['BOOST_INC_PATH'] = '$TOP_SRCDIR/boost'
+        else:
+            included_boost = False
+            (boost_libraries, boost_libpath, env['BOOST_INC_PATH']) = res
+    elif boost_opt == 'system':
+        res = conf.CheckBoostLibraries(boost_libs, lib_paths, inc_paths, mode == 'debug')
+        if res[0] is None:
+            print "Can not find system boost libraries"
+            print "Please supply a path through extra_lib_path and try again."
+            print "Or use boost=included to use included boost libraries."
+            Exit(2)
+        else:
+            included_boost = False
+            (boost_libraries, boost_libpath, env['BOOST_INC_PATH']) = res
     env_cache['BOOST_LIBRARIES'] = boost_libraries
-    env_cache['INCLUDED_BOOST'] = env['INCLUDED_BOOST']
+    env_cache['INCLUDED_BOOST'] = included_boost
+    env_cache['BOOST_INC_PATH'] = env['BOOST_INC_PATH']
     env_cache['BOOST_LIBPATH'] = boost_libpath
 else:
     boost_libraries = env_cache['BOOST_LIBRARIES']
-    env['INCLUDED_BOOST'] = env_cache['INCLUDED_BOOST']
+    included_boost = env_cache['INCLUDED_BOOST']
+    env['BOOST_INC_PATH'] = env_cache['BOOST_INC_PATH']
     boost_libpath = env_cache['BOOST_LIBPATH']
 
 if boost_libpath is not None:
@@ -1307,7 +1308,16 @@ if env['X11']:
 # BUILDDIR/common: for config.h
 # TOP_SRCDIR/src: for support/* etc
 #
-env['CPPPATH'] += ['$TOP_SRCDIR/boost', '$BUILDDIR/common', '$TOP_SRCDIR/src']
+env['CPPPATH'] += ['$BUILDDIR/common', '$TOP_SRCDIR/src']
+#
+# Separating boost directories from CPPPATH stops scons from building
+# the dependency tree of boost header files, and effectively reduce
+# the null build time of lyx from 29s to 16s.
+if use_vc:
+    env.AppendUnique(CCFLAGS = ['/I$BOOST_INC_PATH'])
+else:
+    env.AppendUnique(CCFLAGS = ['-I$BOOST_INC_PATH'])
+
 # for intl/config.h, intl/libintl.h and intl/libgnuintl.h
 if env['nls'] and included_gettext:
     env['CPPPATH'].append('$BUILDDIR/intl')
@@ -1429,7 +1439,7 @@ targets = BUILD_TARGETS
 # msvc need to pass full target name, so I have to look for path/lyx etc
 build_lyx = targets == [] or True in ['lyx' in x for x in targets] \
     or 'install' in targets or 'all' in targets
-build_boost = (env['INCLUDED_BOOST'] and not libExists('boost_regex')) or 'boost' in targets
+build_boost = (included_boost and not libExists('boost_regex')) or 'boost' in targets
 build_intl = (included_gettext and not libExists('included_intl')) or 'intl' in targets
 build_support = build_lyx or True in [x in targets for x in ['support', 'client', 'tex2lyx']]
 build_mathed = build_lyx or 'mathed' in targets
