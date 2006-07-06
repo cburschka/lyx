@@ -523,7 +523,7 @@ PrefColors::PrefColors(QPrefs * form, QWidget * parent)
 		prefcolors_.push_back(color.name());
 		QPixmap coloritem(32, 32);
 		coloritem.fill(color);
-#warning Is this a leak or not? (Lgb)
+		// This is not a memory leak:
 		/*QListWidgetItem * newItem =*/ new QListWidgetItem(QIcon(coloritem),
 			toqstr(lcolor.getGUIName(lc)), lyxObjectsLW);
 	}
