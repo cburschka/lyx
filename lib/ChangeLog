@@ -1,3 +1,9 @@
+2006-07-04  Bo Peng <ben.bob@gmail.com>
+
+	* Makefile.am (dist_scripts_DATA): update.
+	* scripts/TeXFiles.sh: removed.
+	* scripts/TeXFiles.py: new script.
+
 2006-07-04  Enrico Forestieri <forenr@tlc.unipr.it>
 	* configure.py: fix checkTeXAllowSpaces
 

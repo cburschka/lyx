@@ -1,3 +1,8 @@
+2006-07-04  Bo Peng  <ben.bob@gmail.com>
+
+	* tex_helpers.C (rescanTexStyles): invoke the new TeXFiles.py
+	python script.
+
 2006-06-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* ControlCitation.C (initialiseParams): remove debug message.

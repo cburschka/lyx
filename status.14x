@@ -149,7 +149,8 @@ What's new
 * Configuration/Installation:
 
 - Replace the old sh version of lib/configure with the new python version
-  lib/configure.py.
+  lib/configure.py. The TexFiles.sh script (which crashed on windows)
+  has also been pythonified.
 
 - It is not needed anymore to run lib/configure.py in the main LyX
   support directory.
