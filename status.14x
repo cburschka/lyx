@@ -146,7 +146,7 @@ What's new
 
 - Cosmetic fixes to the document dialog (qt only).
 
-* Configuration/Installation:
+* Miscellaneous:
 
 - Replace the old sh version of lib/configure with the new python version
   lib/configure.py. The TexFiles.sh script (which crashed on windows)
@@ -173,11 +173,13 @@ What's new
 
 - Fix the code to find interface localization on Windows and Mac OS X.
 
-- replace the \cygwin_path_fix_needed preference with the better named
+- Fix hyphens in man pages.
+
+- Replace the \cygwin_path_fix_needed preference with the better named
   \tex_expects_windows_paths; this is auto-detected and only matters on
   Windows. 
 
-- remove --enable-compression-support option of configure. Compression
+- Remove --enable-compression-support option of configure. Compression
   support via zlib is now a requirement.
 
 - Fix compilation on DragonFly BSD.
