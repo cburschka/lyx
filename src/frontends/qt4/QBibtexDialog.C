@@ -45,23 +45,23 @@ QBibtexDialog::QBibtexDialog(QBibtex * form)
 	setupUi(this);
 	QDialog::setModal(true);
 
-	connect(okPB, SIGNAL(clicked()), 
+	connect(okPB, SIGNAL(clicked()),
 		form, SLOT(slotOK()));
-	connect(closePB, SIGNAL(clicked()), 
+	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
-	connect(stylePB, SIGNAL( clicked() ), 
+	connect(stylePB, SIGNAL( clicked() ),
 		this, SLOT( browsePressed() ) );
-	connect(deletePB, SIGNAL( clicked() ), 
+	connect(deletePB, SIGNAL( clicked() ),
 		this, SLOT( deletePressed() ) );
-	connect(styleCB, SIGNAL( textChanged(const QString&) ), 
+	connect(styleCB, SIGNAL( textChanged(const QString&) ),
 		this, SLOT( change_adaptor() ) );
-	connect(databaseLW, SIGNAL( selectionChanged() ), 
+	connect(databaseLW, SIGNAL( selectionChanged() ),
 		this, SLOT( databaseChanged() ) );
-	connect(bibtocCB, SIGNAL( toggled(bool) ), 
+	connect(bibtocCB, SIGNAL( toggled(bool) ),
 		this, SLOT( change_adaptor() ) );
-	connect(btPrintCO, SIGNAL( activated(int) ), 
+	connect(btPrintCO, SIGNAL( activated(int) ),
 		this, SLOT( change_adaptor() ) );
-	connect(addBibPB, SIGNAL( clicked() ), 
+	connect(addBibPB, SIGNAL( clicked() ),
 		this, SLOT( addPressed() ) );
 
 	add_ = new UiDialog<Ui::QBibtexAddUi>(this, true);
@@ -78,9 +78,9 @@ QBibtexDialog::QBibtexDialog(QBibtex * form)
 
 	connect(add_->bibED, SIGNAL(textChanged(const QString&)),
 		this, SLOT(bibEDChanged()));
-	connect(add_->addPB, SIGNAL(clicked()), 
+	connect(add_->addPB, SIGNAL(clicked()),
 		this, SLOT(addDatabase()));
-	connect(add_->addPB, SIGNAL(clicked()), 
+	connect(add_->addPB, SIGNAL(clicked()),
 		add_, SLOT(accept()) );
 	connect(add_->bibLW, SIGNAL(itemActivated(QListWidgetItem *)),
 		this, SLOT(addDatabase()));
@@ -88,9 +88,9 @@ QBibtexDialog::QBibtexDialog(QBibtex * form)
 		add_, SLOT(accept()));
 	connect(add_->bibLW, SIGNAL(itemChanged(QListWidgetItem *)),
 		this, SLOT(availableChanged()));
-	connect(add_->browsePB, SIGNAL(clicked()), 
+	connect(add_->browsePB, SIGNAL(clicked()),
 		this, SLOT(browseBibPressed()));
-	connect(add_->closePB, SIGNAL( clicked() ), 
+	connect(add_->closePB, SIGNAL( clicked() ),
 		add_, SLOT( reject() ) );
 
 }
@@ -148,7 +148,7 @@ void QBibtexDialog::browseBibPressed()
 		QString const f = toqstr(changeExtension(file, ""));
 		bool present = false;
 
-		for (unsigned int i = 0; i != add_->bibLW->count(); i++) {
+		for (int i = 0; i < add_->bibLW->count(); ++i) {
 			if (add_->bibLW->item(i)->text() == f)
 				present = true;
 		}
@@ -180,11 +180,11 @@ void QBibtexDialog::addDatabase()
 
 	// Add the selected browser_bib keys to browser_database
 	// multiple selections are possible
-	for (unsigned int i = 0; i != add_->bibLW->count(); i++) {
+	for (int i = 0; i != add_->bibLW->count(); ++i) {
 		QListWidgetItem * const item = add_->bibLW->item(i);
 		if (add_->bibLW->isItemSelected(item)) {
 			add_->bibLW->setItemSelected(item, false);
-			QList<QListWidgetItem *> matches = 
+			QList<QListWidgetItem *> matches =
 				databaseLW->findItems(item->text(), Qt::MatchExactly);
 			if (matches.empty())
 				databaseLW->addItem(item->text());
@@ -194,7 +194,7 @@ void QBibtexDialog::addDatabase()
 	if (!file.empty()) {
 		add_->bibED->clear();
 		QString const f = toqstr(changeExtension(file, ""));
-		QList<QListWidgetItem *> matches = 
+		QList<QListWidgetItem *> matches =
 			databaseLW->findItems(f, Qt::MatchExactly);
 		if (matches.empty())
 			databaseLW->addItem(f);

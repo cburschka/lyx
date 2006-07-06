@@ -68,14 +68,14 @@ Gui & LyXView::gui()
 
 
 LyXView::LyXView(Gui & owner)
-	: owner_(owner),
+	: work_area_(0),
+	  owner_(owner),
 	  toolbars_(new Toolbars(*this)),
 	  intl_(new Intl),
 	  autosave_timeout_(new Timeout(5000)),
 	  lyxfunc_(new LyXFunc(this)),
 	  dialogs_(new Dialogs(*this)),
-	  controlcommand_(new ControlCommandBuffer(*this)),
-	  work_area_(0)
+	  controlcommand_(new ControlCommandBuffer(*this))
 {
 	lyxerr[Debug::INIT] << "Initializing LyXFunc" << endl;
 }

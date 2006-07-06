@@ -325,28 +325,28 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 	} else if (token == "\\change_inserted") {
 		lex.eatLine();
 		std::istringstream is(lex.getString());
-		int aid;
+		unsigned int aid;
 		lyx::time_type ct;
 		is >> aid >> ct;
 		if (aid >= bp.author_map.size()) {
 			buf.error(ErrorItem(_("Change tracking error"),
 					    bformat(_("Unknown author index for insertion: %1$d\n"), aid),
 					    par.id(), 0, par.size()));
-			
+
 			change = Change(Change::UNCHANGED);
 		} else
 			change = Change(Change::INSERTED, bp.author_map[aid], ct);
 	} else if (token == "\\change_deleted") {
 		lex.eatLine();
 		std::istringstream is(lex.getString());
-		int aid;
+		unsigned int aid;
 		lyx::time_type ct;
 		is >> aid >> ct;
 		if (aid >= bp.author_map.size()) {
 			buf.error(ErrorItem(_("Change tracking error"),
 					    bformat(_("Unknown author index for deletion: %1$d\n"), aid),
 					    par.id(), 0, par.size()));
-			
+
 			change = Change(Change::UNCHANGED);
 		} else
 			change = Change(Change::DELETED, bp.author_map[aid], ct);
@@ -521,7 +521,7 @@ int LyXText::leftMargin(pit_type const pit, pos_type const pos) const
 	switch (layout->margintype) {
 	case MARGIN_DYNAMIC:
 		if (!layout->leftmargin.empty())
-			l_margin += font_metrics::signedWidth(layout->leftmargin, 
+			l_margin += font_metrics::signedWidth(layout->leftmargin,
 					params.getFont());
 		if (!par.getLabelstring().empty()) {
 			l_margin += font_metrics::signedWidth(layout->labelindent,

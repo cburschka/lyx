@@ -30,7 +30,8 @@ using lyx::support::libFileSearch;
 using std::string;
 
 
-BulletsModule::BulletsModule(QWidget * parent,  const char * name, Qt::WFlags fl)
+BulletsModule::BulletsModule(QWidget * /*parent*/,
+			     char const * /*name*/, Qt::WFlags /*fl*/)
 	: bullet_pressed_(0)
 {
 	setupUi(this);
@@ -41,12 +42,13 @@ BulletsModule::BulletsModule(QWidget * parent,  const char * name, Qt::WFlags fl
 
 	QMenu * pm = new QMenu(this);
 
-	QMenu * pm1 = new QMenu(pm);
-	QMenu * pm2 = new QMenu(pm);
-	QMenu * pm3 = new QMenu(pm);
-	QMenu * pm4 = new QMenu(pm);
-	QMenu * pm5 = new QMenu(pm);
-	QMenu * pm6 = new QMenu(pm);
+	// FIXME: Need to verify that this does not leak memory.
+	/*QMenu * pm1 =*/ new QMenu(pm);
+	/*QMenu * pm2 =*/ new QMenu(pm);
+	/*QMenu * pm3 =*/ new QMenu(pm);
+	/*QMenu * pm4 =*/ new QMenu(pm);
+	/*QMenu * pm5 =*/ new QMenu(pm);
+	/*QMenu * pm6 =*/ new QMenu(pm);
 
 // FIXME: We need a Qt4 compatible browsebox type widget
 // which can act as a popup to a toolbutton
@@ -149,7 +151,7 @@ BulletsModule::~BulletsModule()
 
 void BulletsModule::updateSizes()
 {
-        // emit signal
+	// emit signal
 	changed();
 
 	// -1 apparently means default...
@@ -193,7 +195,7 @@ void BulletsModule::selected1()
 	tmpbulletset = false;
 	bullets_[0] = tmpbullet;
 	setBullet(bullet1PB, bulletsize1CO, bullets_[0]);
-        // emit signal
+	// emit signal
 	changed();
 }
 
@@ -205,7 +207,7 @@ void BulletsModule::selected2()
 	tmpbulletset = false;
 	bullets_[1] = tmpbullet;
 	setBullet(bullet2PB, bulletsize2CO, bullets_[1]);
-        // emit signal
+	// emit signal
 	changed();
 }
 
@@ -217,7 +219,7 @@ void BulletsModule::selected3()
 	tmpbulletset = false;
 	bullets_[2] = tmpbullet;
 	setBullet(bullet3PB, bulletsize3CO, bullets_[2]);
-        // emit signal
+	// emit signal
 	changed();
 }
 
@@ -229,15 +231,15 @@ void BulletsModule::selected4()
 	tmpbulletset = false;
 	bullets_[3] = tmpbullet;
 	setBullet(bullet4PB, bulletsize4CO, bullets_[3]);
-        // emit signal
+	// emit signal
 	changed();
 }
 
 
-QPixmap BulletsModule::getPixmap(int font, int character)
+QPixmap BulletsModule::getPixmap(int /*font*/, int /*character*/)
 {
-	int col = character % 6;
-	int row = (character - col) / 6;
+	//int col = character % 6;
+	//int row = (character - col) / 6;
 
 /*	switch (font) {
 	case 0:

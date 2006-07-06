@@ -40,19 +40,19 @@ QThesaurusDialog::QThesaurusDialog(QThesaurus * form)
 
 	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
-	connect( replaceED, SIGNAL( returnPressed() ), 
+	connect( replaceED, SIGNAL( returnPressed() ),
 		this, SLOT( replaceClicked() ) );
-	connect( replaceED, SIGNAL( textChanged(const QString&) ), 
+	connect( replaceED, SIGNAL( textChanged(const QString&) ),
 		this, SLOT( change_adaptor() ) );
-	connect( entryED, SIGNAL( returnPressed() ), 
+	connect( entryED, SIGNAL( returnPressed() ),
 		this, SLOT( entryChanged() ) );
-	connect( replacePB, SIGNAL( clicked() ), 
+	connect( replacePB, SIGNAL( clicked() ),
 		this, SLOT( replaceClicked() ) );
-	connect( meaningsTV, SIGNAL( itemClicked(QTreeWidgetItem * , int) ), 
+	connect( meaningsTV, SIGNAL( itemClicked(QTreeWidgetItem * , int) ),
 		this, SLOT( itemClicked(QTreeWidgetItem * , int) ) );
-	connect( meaningsTV, SIGNAL( itemSelectionChanged() ), 
+	connect( meaningsTV, SIGNAL( itemSelectionChanged() ),
 		this, SLOT( selectionChanged() ) );
-	connect( meaningsTV, SIGNAL( itemActivated(QTreeWidgetItem * , int) ), 
+	connect( meaningsTV, SIGNAL( itemActivated(QTreeWidgetItem * , int) ),
 		this, SLOT( selectionClicked(QTreeWidgetItem *, int) ) );
 }
 
@@ -94,7 +94,7 @@ void QThesaurusDialog::selectionChanged()
 }
 
 
-void QThesaurusDialog::itemClicked(QTreeWidgetItem * item, int col)
+void QThesaurusDialog::itemClicked(QTreeWidgetItem * /*item*/, int /*col*/)
 {
 	selectionChanged();
 }

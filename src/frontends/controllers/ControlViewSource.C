@@ -31,14 +31,14 @@ ControlViewSource::ControlViewSource(Dialog & parent)
 {}
 
 
-bool ControlViewSource::initialiseParams(string const & source)
+bool ControlViewSource::initialiseParams(string const & /*source*/)
 {
 	return true;
 }
 
 string const ControlViewSource::updateContent()
-{	
-	// get the *top* level paragraphs that contain the cursor, 
+{
+	// get the *top* level paragraphs that contain the cursor,
 	// or the selected text
 	lyx::pit_type par_begin;
 	lyx::pit_type par_end;
@@ -67,7 +67,7 @@ void ControlViewSource::clearParams()
 string const ControlViewSource::title() const
 {
 	string source_type;
-	
+
 	Kernel::DocType doctype = kernel().docType();
 	switch (doctype) {
 	case Kernel::LATEX:

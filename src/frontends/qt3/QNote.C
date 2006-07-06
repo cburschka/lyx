@@ -84,6 +84,9 @@ void QNote::apply()
 		type = InsetNoteParams::Framed;
 	else if (dialog_->shadedRB->isChecked())
 		type = InsetNoteParams::Shaded;
+	else
+		// Something bad in the gui, nothing set
+		type = InsetNoteParams::Note;
 
 	controller().params().type = type;
 }

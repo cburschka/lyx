@@ -28,19 +28,19 @@ QSpellcheckerDialog::QSpellcheckerDialog(QSpellchecker * form)
 	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
 
-	connect( replaceCO, SIGNAL( highlighted(const QString&) ), 
+	connect( replaceCO, SIGNAL( highlighted(const QString&) ),
 		this, SLOT( replaceChanged(const QString &) ) );
-	connect( replacePB, SIGNAL( clicked() ), 
+	connect( replacePB, SIGNAL( clicked() ),
 		this, SLOT( replaceClicked() ) );
-	connect( ignorePB, SIGNAL( clicked() ), 
+	connect( ignorePB, SIGNAL( clicked() ),
 		this, SLOT( ignoreClicked() ) );
-	connect( replacePB_3, SIGNAL( clicked() ), 
+	connect( replacePB_3, SIGNAL( clicked() ),
 		this, SLOT( acceptClicked() ) );
-	connect( addPB, SIGNAL( clicked() ), 
+	connect( addPB, SIGNAL( clicked() ),
 		this, SLOT( addClicked() ) );
-	connect( suggestionsLW, SIGNAL( itemDoubleClicked(QListWidgetItem*) ), 
+	connect( suggestionsLW, SIGNAL( itemDoubleClicked(QListWidgetItem*) ),
 		this, SLOT( replaceClicked() ) );
-	connect( suggestionsLW, SIGNAL( itemClicked(QListWidgetItem*) ), 
+	connect( suggestionsLW, SIGNAL( itemClicked(QListWidgetItem*) ),
 		this, SLOT( suggestionChanged(QListWidgetItem*) ) );
 }
 
@@ -80,14 +80,12 @@ void QSpellcheckerDialog::replaceChanged(const QString & str)
 	if (suggestionsLW->currentItem()->text() == str)
 		return;
 
-	unsigned int i = 0;
-	for (; i < suggestionsLW->count(); ++i) {
-		if (suggestionsLW->item(i)->text() == str)
+	for (int i = 0; i < suggestionsLW->count(); ++i) {
+		if (suggestionsLW->item(i)->text() == str) {
+			suggestionsLW->setCurrentRow(i);
 			break;
+		}
 	}
-
-	if (i != suggestionsLW->count())
-		suggestionsLW->setCurrentRow(i);
 }
 
 

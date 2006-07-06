@@ -198,11 +198,10 @@ void QRef::redoRefs()
 		dialog_->refsLW->setCurrentRow(lastref);
 		dialog_->refsLW->clearSelection();
 	} else
-		for (unsigned int i = 0; i < dialog_->refsLW->count(); ++i) {
-			if (tmp == dialog_->refsLW->item(i)->text()) {
-				QListWidgetItem * const item = dialog_->refsLW->item(i);
+		for (int i = 0; i < dialog_->refsLW->count(); ++i) {
+			QListWidgetItem * item = dialog_->refsLW->item(i);
+			if (tmp == item->text()) {
 				dialog_->refsLW->setItemSelected(item, true);
-
 			}
 		}
 

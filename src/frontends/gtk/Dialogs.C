@@ -567,12 +567,13 @@ void Dialogs::toggleTooltips()
 {
 	// Turning off tooltips is not necessary and will
 	// not be implemented by me - jcs
-//	Tooltips::toggleEnabled();
+	//Tooltips::toggleEnabled();
 }
 
 
 /// Are the tooltips on or off?
 bool Dialogs::tooltipsEnabled()
 {
-//	return Tooltips::enabled();
+	//return Tooltips::enabled();
+	return true;
 }

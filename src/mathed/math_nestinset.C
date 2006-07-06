@@ -350,7 +350,7 @@ int MathNestInset::latex(Buffer const &, std::ostream & os,
 }
 
 
-void MathNestInset::notifyCursorLeaves(LCursor & cur)
+void MathNestInset::notifyCursorLeaves(LCursor & /*cur*/)
 {
 #ifdef WITH_WARNINGS
 #warning look here
@@ -874,10 +874,10 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		string const rdelim = cmd.getArg(3);
 		latexkeys const * l = in_word_set(lname);
 		bool const have_l = l && l->inset == "big" &&
-		                    MathBigInset::isBigInsetDelim(ldelim);
+				    MathBigInset::isBigInsetDelim(ldelim);
 		l = in_word_set(rname);
 		bool const have_r = l && l->inset == "big" &&
-		                    MathBigInset::isBigInsetDelim(rdelim);
+				    MathBigInset::isBigInsetDelim(rdelim);
 		// We mimic LFUN_MATH_DELIM in case we have an empty left
 		// or right delimiter.
 		if (have_l || have_r) {

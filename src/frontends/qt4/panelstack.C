@@ -130,7 +130,8 @@ void PanelStack::setCurrentPanel(string const & name)
 }
 
 
-void PanelStack::switchPanel(QTreeWidgetItem * item, QTreeWidgetItem* previous)
+void PanelStack::switchPanel(QTreeWidgetItem * item,
+			     QTreeWidgetItem * /*previous*/)
 {
 	WidgetMap::const_iterator cit = widget_map_.find(item);
 	if (cit == widget_map_.end())

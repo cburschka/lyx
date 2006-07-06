@@ -41,7 +41,7 @@ int const statusbar_timer_value = 3000;
 
 Action::Action(LyXView & lyxView, string const & text,
 		FuncRequest const & func, string const & tooltip)
-		: QAction(this), lyxView_(lyxView), func_(func)
+	: QAction(this), func_(func), lyxView_(lyxView)
 {
 	setText(tr(toqstr(text)));
 	setToolTip(tr(toqstr(tooltip)));
@@ -52,7 +52,7 @@ Action::Action(LyXView & lyxView, string const & text,
 
 Action::Action(LyXView & lyxView, string const & icon, string const & text,
 		FuncRequest const & func, string const & tooltip)
-		: QAction(this), lyxView_(lyxView), func_(func)
+		: QAction(this), func_(func), lyxView_(lyxView)
 {
 	setIcon(QPixmap(icon.c_str()));
 	setText(tr(toqstr(text)));

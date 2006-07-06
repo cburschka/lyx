@@ -112,7 +112,7 @@ void GTexinfo::onItemActivate(
 		file = getTexFileFromList(data[choice],
 				controller().getFileType(activeStyle));
 
-	if (choice >= 0 && choice <= data.size() - 1)
+	if (choice >= 0 && choice <= int(data.size() - 1))
 		controller().viewFile(file);
 }
 

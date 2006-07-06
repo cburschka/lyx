@@ -60,10 +60,11 @@ QTocDialog::~QTocDialog()
 
 
 void QTocDialog::selectionChanged(const QModelIndex & current,
-								  const QModelIndex & previous)
+				  const QModelIndex & /*previous*/)
 {
 	lyxerr[Debug::GUI]
-		<< "selectionChanged index " << current.row() << ", " << current.column()
+		<< "selectionChanged index " << current.row()
+		<< ", " << current.column()
 		<< endl;
 
 	form_->goTo(current);
@@ -189,7 +190,7 @@ void QTocDialog::updateGui()
 	tocTV->setModel(form_->tocModel());
 	tocTV->showColumn(0);
 	// hide the pointless QHeader for now
-	// in the future, new columns may appear 
+	// in the future, new columns may appear
 	// like labels, bookmarks, etc...
 	// tocTV->header()->hide();
 	tocTV->header()->setVisible(true);

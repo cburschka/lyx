@@ -212,7 +212,9 @@ LyXFont LyXText::getFont(Paragraph const & par, pos_type const pos) const
 			break;
 		}
 	// Realize against environment font information
-	if (pit < pars_.size())
+	// NOTE: the cast to pit_type should be removed when pit_type
+	// changes to a unsigned integer.
+	if (pit < pit_type(pars_.size()))
 		font.realize(outerFont(pit, pars_));
 
 	// Realize with the fonts of lesser depth.

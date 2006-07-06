@@ -352,7 +352,7 @@ void GTabular::updateHorzAlignCombo(bool extraoption)
 
 	//FIXME: check if we really need to completely rewrite combo data
 	// Deprecated in favor of clear_items in gtkmm >= 2.8
-	int const oldselection = horzaligncombo_->get_active_row_number();
+	unsigned int const oldselection = horzaligncombo_->get_active_row_number();
 	horzaligncombo_->clear();
 	horzaligncombo_->append_text(_("Left"));
 	horzaligncombo_->append_text(_("Center"));

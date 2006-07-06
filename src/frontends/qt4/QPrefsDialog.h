@@ -61,7 +61,7 @@ class PrefModule : public QWidget
 	Q_OBJECT
 public:
 	PrefModule(std::string const & cat, std::string const & t, QPrefs * form = 0, QWidget * parent = 0)
-		: category_(cat), title_(t), form_(form), QWidget(parent)
+		: QWidget(parent), category_(cat), title_(t), form_(form)
 	{
 	}
 	virtual ~PrefModule() {}
@@ -395,7 +395,7 @@ protected:
 private:
 	void add(PrefModule * module);
 
-private:	
+private:
 	QPrefs * form_;
 	std::vector<PrefModule *> modules_;
 };

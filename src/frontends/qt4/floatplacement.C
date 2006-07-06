@@ -31,7 +31,7 @@ using std::string;
 
 // FIXME: set disabled doesn't work properly
 // should be fixed now (jspitzm)
-FloatPlacement::FloatPlacement(QWidget * parent, char * name)
+FloatPlacement::FloatPlacement(QWidget * parent, char * /*name*/)
 	: QWidget(parent)
 {
 	QHBoxLayout * toplayout = new QHBoxLayout(this, 11, 6);
@@ -104,7 +104,7 @@ void FloatPlacement::useSideways()
 
 void FloatPlacement::changedSlot()
 {
-        // emit signal
+	// emit signal
 	changed();
 }
 

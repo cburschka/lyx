@@ -86,7 +86,7 @@ void QBranches::update()
 		if (bname == sel_branch)
 			branchesTW->setItemSelected(newItem, true);
 	}
-        // emit signal
+	// emit signal
 	changed();
 }
 
@@ -127,7 +127,7 @@ void QBranches::on_activatePB_pressed()
 }
 
 
-void QBranches::on_branchesTW_itemDoubleClicked(QTreeWidgetItem * item, int col)
+void QBranches::on_branchesTW_itemDoubleClicked(QTreeWidgetItem * item, int /*col*/)
 {
 	toggleBranch(item);
 }

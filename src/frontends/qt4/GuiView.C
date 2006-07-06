@@ -108,11 +108,11 @@ void GuiView::init()
 
 	// make sure the buttons are disabled if needed
 	updateToolbars();
-	
+
 	LyXView::init();
 }
 
-void GuiView::updateMenu(QAction *action)
+void GuiView::updateMenu(QAction * /*action*/)
 {
 	menubar_->update();
 }
@@ -183,7 +183,7 @@ bool GuiView::hasFocus() const
 }
 
 
-void  GuiView::updateFloatingGeometry() 
+void  GuiView::updateFloatingGeometry()
 {
 	if (!isMaximized())
 		floatingGeometry_ = QRect(x(), y(), width(), height());
@@ -204,7 +204,7 @@ void GuiView::moveEvent(QMoveEvent *)
 
 void GuiView::closeEvent(QCloseEvent *)
 {
-	// FIXME: 
+	// FIXME:
 	// change the ifdef to 'geometry = normalGeometry();' only
 	// when Trolltech has fixed the broken normalGeometry on X11:
 	// http://www.trolltech.com/developer/task-tracker/index_html?id=119684+&method=entry
@@ -215,9 +215,9 @@ void GuiView::closeEvent(QCloseEvent *)
 	QRect geometry = normalGeometry();
 #else
 	updateFloatingGeometry();
-	QRect geometry = floatingGeometry_;	
+	QRect geometry = floatingGeometry_;
 #endif
-	
+
 	// save windows size and position
 	Session & session = LyX::ref().session();
 	session.saveSessionInfo("WindowWidth", convert<string>(geometry.width()));

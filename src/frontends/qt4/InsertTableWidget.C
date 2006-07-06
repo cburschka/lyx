@@ -55,7 +55,7 @@ void InsertTableWidget::show(bool show)
 	init();
 	resetGeometry();
 	setVisible(true);
-        // emit signal
+	// emit signal
 	visible(true);
 }
 
@@ -63,7 +63,7 @@ void InsertTableWidget::show(bool show)
 void InsertTableWidget::resetGeometry()
 {
 	QPoint p = parentWidget()->mapToGlobal(parentWidget()->geometry().bottomLeft());
-	setGeometry(p.x() - parentWidget()->pos().x(), 
+	setGeometry(p.x() - parentWidget()->pos().x(),
 				p.y() - parentWidget()->pos().y(),
 				cols_ * colwidth_ + 1, rows_ * rowheight_ + 1);
 }
@@ -104,25 +104,25 @@ void InsertTableWidget::mouseMoveEvent(QMouseEvent * event)
 }
 
 
-void InsertTableWidget::mouseReleaseEvent(QMouseEvent * event)
+void InsertTableWidget::mouseReleaseEvent(QMouseEvent * /*event*/)
 {
 	if (underMouse_) {
 		QString const data = QString("%1 %2").arg(bottom_).arg(right_);
 		lyxView_.getLyXFunc().dispatch(FuncRequest(LFUN_TABULAR_INSERT, fromqstr(data)));
 	}
-        // emit signal
+	// emit signal
 	visible(false);
 	close();
 }
 
 
-void InsertTableWidget::mousePressEvent(QMouseEvent * event)
+void InsertTableWidget::mousePressEvent(QMouseEvent * /*event*/)
 {
 	// swallow this one
 }
 
 
-void InsertTableWidget::paintEvent(QPaintEvent * event)
+void InsertTableWidget::paintEvent(QPaintEvent * /*event*/)
 {
 	drawGrid(rows_, cols_, Qt::white);
 	if (underMouse_)

@@ -1,4 +1,3 @@
-
 /**
  * \file GtkLengthEntry.C
  * This file is part of LyX, the document processor.
@@ -71,7 +70,7 @@ void populateUnitCombo(Gtk::ComboBoxText & combo, bool const userelative)
 
 GtkLengthEntry::GtkLengthEntry(
 	BaseObjectType* cobject,
-	const Glib::RefPtr<Gnome::Glade::Xml>& refGlade)
+	const Glib::RefPtr<Gnome::Glade::Xml>& /*refGlade*/)
 : Gtk::HBox(cobject), adj_(666.0, 0.0, 99999.0, 0.1, 1, 0.0), spin_(adj_, 0.1, 2)
 {
 	populateUnitCombo (combo_, true);

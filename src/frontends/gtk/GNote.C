@@ -70,6 +70,14 @@ void GNote::update()
 	bc().refreshReadOnly();
 
 	switch (controller().params().type) {
+	case InsetNoteParams::Framed:
+		//framedradio_->set_active(true);
+		greyedoutradio_->set_active(true);
+		break;
+	case InsetNoteParams::Shaded:
+		//shadedradio_->set_active(true);
+		greyedoutradio_->set_active(true);
+		break;
 	case InsetNoteParams::Note:
 		lyxnoteradio_->set_active(true);
 		break;
@@ -79,7 +87,7 @@ void GNote::update()
 	case InsetNoteParams::Greyedout:
 		greyedoutradio_->set_active(true);
 		break;
-	// FIXME add Framed, Shaded
+	// FIXME: Framed and Shaded not handled properly
 	}
 
 	applylock_ = false;

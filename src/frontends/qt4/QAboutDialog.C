@@ -15,12 +15,12 @@
 namespace lyx {
 namespace frontend {
 
-QAboutDialog::QAboutDialog(QWidget * parent, const char * name,
-			   bool modal, Qt::WFlags fl)
+QAboutDialog::QAboutDialog(QWidget * /*parent*/, char const * /*name*/,
+			   bool /*modal*/, Qt::WFlags /*fl*/)
 {
 	setupUi(this);
 
-	connect( closePB, SIGNAL( clicked() ), 
+	connect( closePB, SIGNAL( clicked() ),
 		this, SLOT( reject() ) );
 }
 

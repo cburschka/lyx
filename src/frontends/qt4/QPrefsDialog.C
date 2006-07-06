@@ -523,28 +523,29 @@ PrefColors::PrefColors(QPrefs * form, QWidget * parent)
 		prefcolors_.push_back(color.name());
 		QPixmap coloritem(32, 32);
 		coloritem.fill(color);
-		QListWidgetItem * newItem = new QListWidgetItem(QIcon(coloritem),
+#warning Is this a leak or not? (Lgb)
+		/*QListWidgetItem * newItem =*/ new QListWidgetItem(QIcon(coloritem),
 			toqstr(lcolor.getGUIName(lc)), lyxObjectsLW);
 	}
 	newcolors_ = prefcolors_;
 
-	connect(colorChangePB, SIGNAL(clicked()), 
+	connect(colorChangePB, SIGNAL(clicked()),
 		this, SLOT(change_color()));
-	connect(lyxObjectsLW, SIGNAL(itemActivated(QListWidgetItem*)), 
+	connect(lyxObjectsLW, SIGNAL(itemActivated(QListWidgetItem*)),
 		this, SLOT(change_color()));
 }
 
 
-void PrefColors::apply(LyXRC & rc) const
+void PrefColors::apply(LyXRC & /*rc*/) const
 {
-	for (int i = 0; i < lcolors_.size(); ++i) {
+	for (unsigned int i = 0; i < lcolors_.size(); ++i) {
 		if (prefcolors_[i]!=newcolors_[i])
 			form_->controller().setColor(lcolors_[i], fromqstr(newcolors_[i]));
 	}
 }
 
 
-void PrefColors::update(LyXRC const & rc)
+void PrefColors::update(LyXRC const & /*rc*/)
 {
 }
 
@@ -552,7 +553,7 @@ void PrefColors::change_color()
 {
 	int const row = lyxObjectsLW->currentRow();
 	QString color = newcolors_[row];
-	QColor c(QColorDialog::getColor(QColor(color), 
+	QColor c(QColorDialog::getColor(QColor(color),
 		qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget()));
 
 	if (c.name()!=color) {
@@ -560,7 +561,7 @@ void PrefColors::change_color()
 		QPixmap coloritem(32, 32);
 		coloritem.fill(c);
 		lyxObjectsLW->currentItem()->setIcon(QIcon(coloritem));
-                // emit signal
+		// emit signal
 		changed();
 	}
 }
@@ -849,37 +850,37 @@ PrefConverters::PrefConverters(QPrefs * form, QWidget * parent)
 {
 	setupUi(this);
 
-	connect(converterNewPB, SIGNAL(clicked()), 
+	connect(converterNewPB, SIGNAL(clicked()),
 		this, SLOT(new_converter()));
-	connect(converterRemovePB, SIGNAL(clicked()), 
+	connect(converterRemovePB, SIGNAL(clicked()),
 		this, SLOT(remove_converter()));
-	connect(converterModifyPB, SIGNAL(clicked()), 
+	connect(converterModifyPB, SIGNAL(clicked()),
 		this, SLOT(modify_converter()));
-	connect(convertersLW, SIGNAL(currentRowChanged(int)), 
+	connect(convertersLW, SIGNAL(currentRowChanged(int)),
 		this, SLOT(switch_converter(int)));
-	connect(converterFromCO, SIGNAL(activated(const QString&)), 
+	connect(converterFromCO, SIGNAL(activated(const QString&)),
 		this, SLOT(converter_changed()));
-	connect(converterToCO, SIGNAL(activated(const QString&)), 
+	connect(converterToCO, SIGNAL(activated(const QString&)),
 		this, SLOT(converter_changed()));
-	connect(converterED, SIGNAL(textChanged(const QString&)), 
+	connect(converterED, SIGNAL(textChanged(const QString&)),
 		this, SLOT(converter_changed()));
-	connect(converterFlagED, SIGNAL(textChanged(const QString&)), 
+	connect(converterFlagED, SIGNAL(textChanged(const QString&)),
 		this, SLOT(converter_changed()));
-	connect(converterNewPB, SIGNAL(clicked()), 
+	connect(converterNewPB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
-	connect(converterRemovePB, SIGNAL(clicked()), 
+	connect(converterRemovePB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
-	connect(converterModifyPB, SIGNAL(clicked()), 
+	connect(converterModifyPB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
 }
 
 
-void PrefConverters::apply(LyXRC & rc) const
+void PrefConverters::apply(LyXRC & /*rc*/) const
 {
 }
 
 
-void PrefConverters::update(LyXRC const & rc)
+void PrefConverters::update(LyXRC const & /*rc*/)
 {
 	updateGui();
 }
@@ -915,7 +916,7 @@ void PrefConverters::updateGui()
 
 	// restore selection
 	if (!current.isEmpty()) {
-		QList<QListWidgetItem *> const item = 
+		QList<QListWidgetItem *> const item =
 			convertersLW->findItems(current, Qt::MatchExactly);
 		if (item.size()>0)
 			convertersLW->setCurrentItem(item.at(0));
@@ -1041,7 +1042,7 @@ PrefCopiers::PrefCopiers(QPrefs * form, QWidget * parent)
 	connect(copierNewPB, SIGNAL(clicked()), this, SLOT(new_copier()));
 	connect(copierRemovePB, SIGNAL(clicked()), this, SLOT(remove_copier()));
 	connect(copierModifyPB, SIGNAL(clicked()), this, SLOT(modify_copier()));
-	connect(AllCopiersLW, SIGNAL(currentRowChanged(int)), 
+	connect(AllCopiersLW, SIGNAL(currentRowChanged(int)),
 		this, SLOT(switch_copierLB(int)));
 	connect(copierFormatCO, SIGNAL(activated(int)), this, SLOT(switch_copierCO(int)));
 	connect(copierNewPB, SIGNAL(clicked()),
@@ -1055,12 +1056,12 @@ PrefCopiers::PrefCopiers(QPrefs * form, QWidget * parent)
 }
 
 
-void PrefCopiers::apply(LyXRC & rc) const
+void PrefCopiers::apply(LyXRC & /*rc*/) const
 {
 }
 
 
-void PrefCopiers::update(LyXRC const & rc)
+void PrefCopiers::update(LyXRC const & /*rc*/)
 {
 	update();
 }
@@ -1095,7 +1096,7 @@ void PrefCopiers::update()
 
 	// restore selection
 	if (!current.isEmpty()) {
-		QList<QListWidgetItem *> item = 
+		QList<QListWidgetItem *> item =
 			AllCopiersLW->findItems(current, Qt::MatchExactly);
 		if (item.size()>0)
 			AllCopiersLW->setCurrentItem(item.at(0));
@@ -1202,7 +1203,7 @@ void PrefCopiers::updateButtons()
 	QString selected = copierFormatCO->currentText();
 
 	bool known = false;
-	for (unsigned int i = 0; i != AllCopiersLW->count(); i++) {
+	for (int i = 0; i < AllCopiersLW->count(); ++i) {
 		if (AllCopiersLW->item(i)->text() == selected)
 			known = true;
 	}
@@ -1284,7 +1285,7 @@ PrefFileformats::PrefFileformats(QPrefs * form, QWidget * parent)
 	connect(formatNewPB, SIGNAL(clicked()), this, SLOT(new_format()));
 	connect(formatRemovePB, SIGNAL(clicked()), this, SLOT(remove_format()));
 	connect(formatModifyPB, SIGNAL(clicked()), this, SLOT(modify_format()));
-	connect(formatsLW, SIGNAL(currentRowChanged(int)), 
+	connect(formatsLW, SIGNAL(currentRowChanged(int)),
 		this, SLOT(switch_format(int)));
 	connect(formatED, SIGNAL(textChanged(const QString&)), this, SLOT(fileformat_changed()));
 	connect(guiNameED, SIGNAL(textChanged(const QString&)), this, SLOT(fileformat_changed()));
@@ -1302,12 +1303,12 @@ PrefFileformats::PrefFileformats(QPrefs * form, QWidget * parent)
 }
 
 
-void PrefFileformats::apply(LyXRC & rc) const
+void PrefFileformats::apply(LyXRC & /*rc*/) const
 {
 }
 
 
-void PrefFileformats::update(LyXRC const & rc)
+void PrefFileformats::update(LyXRC const & /*rc*/)
 {
 	update();
 }
@@ -1376,7 +1377,7 @@ void PrefFileformats::updateButtons()
 	int const sel = form_->formats().getNumber(fromqstr(format));
 	bool gui_name_known = false;
 	int where = sel;
-	for (unsigned int i = 0; i != formatsLW->count(); i++) {
+	for (int i = 0; i < formatsLW->count(); ++i) {
 		if (formatsLW->item(i)->text() == gui_name) {
 			gui_name_known = true;
 			where = formatsLW->item(i)->type();
@@ -1432,7 +1433,7 @@ void PrefFileformats::new_format()
 	bool const document = documentCB->isChecked();
 
 	form_->formats().add(name, extension, prettyname, shortcut, viewer,
-	                     editor, document);
+			     editor, document);
 	form_->formats().sort();
 	update();
 
@@ -1467,7 +1468,7 @@ void PrefFileformats::modify_format()
 	bool const document = documentCB->isChecked();
 
 	form_->formats().add(name, extension, prettyname, shortcut, viewer,
-	                     editor, document);
+			     editor, document);
 	form_->formats().sort();
 
 	formatsLW->setUpdatesEnabled(false);
@@ -1817,7 +1818,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	add(formats);
 
 	add(new PrefCopiers(form_));
-	
+
 	add(new PrefLanguage);
 	add(new PrefPrinter);
 	add(new PrefUserInterface(form_));

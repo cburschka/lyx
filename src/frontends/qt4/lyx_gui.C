@@ -109,16 +109,16 @@ namespace lyx_gui {
 bool use_gui = true;
 
 int exec(int & argc, char * argv[])
-{	
+{
 	/*
 	FIXME : Abdel 29/05/2006 (younes.a@free.fr)
 	reorganize this code. In particular make sure that this
 	advice from Qt documentation is respected:
-	
+
 		Since the QApplication object does so much initialization, it
 		must be created before any other objects related to the user
 		interface are created.
-	
+
 	Right now this is not the case, I suspect that a number of global variables
 	contains Qt object that are initialized before the passage through
 	parse_init(). This might also explain the message displayed by Qt
@@ -204,13 +204,13 @@ int start(string const & batch, vector<string> const & files,
 	GuiView & view = static_cast<GuiView &> (theApp->gui().view(view_id));
 
 	// FIXME: for now we assume that there is only one LyXView with id = 0.
-	int workArea_id_ = theApp->gui().newWorkArea(width, height, 0);
+	/*int workArea_id_ =*/ theApp->gui().newWorkArea(width, height, 0);
 	//WorkArea * workArea_ = & theApp->gui().workArea(workArea_id_);
 
 	LyX::ref().addLyXView(&view);
 
 	view.init();
-		
+
 	// only true when the -geometry option was NOT used
 	if (width != 0 && height != 0) {
 		if (posx != -1 && posy != -1) {

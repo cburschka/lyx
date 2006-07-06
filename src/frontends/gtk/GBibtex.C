@@ -245,7 +245,7 @@ void GBibtex::browse()
 		string const filen = changeExtension(file, "");
 		bool present = false;
 
-		for (int i = 0; i < stylecombo_.get_model()->children().size(); ++i) {
+		for (unsigned int i = 0; i < stylecombo_.get_model()->children().size(); ++i) {
 			stylecombo_.set_active(i);
 			Glib::ustring const item = stylecombo_.get_active_text ();
 			if (item == filen) {

@@ -141,8 +141,8 @@ void lyx_gui::parse_lyxrc()
 
 
 int lyx_gui::start(string const & batch, std::vector<string> const & files,
-                   unsigned int width, unsigned int height, int posx,
-                   int posy, bool)
+		   unsigned int width, unsigned int height,
+		   int /*posx*/, int /*posy*/, bool)
 {
 	int view_id = theApp->gui().newView(width, height);
 	GView & view = static_cast<GView &> (theApp->gui().view(view_id));
