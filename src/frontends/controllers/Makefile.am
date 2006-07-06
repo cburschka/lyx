@@ -71,8 +71,6 @@ libcontrollers_la_SOURCES= \
 	ControlNote.h \
 	ControlParagraph.C \
 	ControlParagraph.h \
-	ControlPreamble.C \
-	ControlPreamble.h \
 	ControlPrefs.C \
 	ControlPrefs.h \
 	ControlPrint.C \

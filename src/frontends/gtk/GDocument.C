@@ -793,7 +793,7 @@ void GDocument::apply()
 			newbranch->setSelected((*row)[branchColActivated_]);
 			Glib::ustring const color = (*row)[branchColColor_];
 			// FIXME: The color should be editable via a color
-			// chooser, not a text field (see qt/xforms frontends)
+			// chooser, not a text field (see qt frontends)
 			// setColor will silently ignore an invalid color and
 			// use the normal background color for now.
 			newbranch->setColor(color);

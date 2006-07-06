@@ -554,7 +554,7 @@ AC_DEFUN([LYX_USE_FRONTENDS],
 [AC_MSG_CHECKING([what frontend should be used for the GUI])
 AC_ARG_WITH(frontend,
   [  --with-frontend=THIS    Use THIS frontend as main GUI:
-			    Possible values: xforms, qt, gtk(EXPERIMENTAL)],
+			    Possible values: qt, gtk(EXPERIMENTAL)],
   [FRONTENDS="$withval"])
 if test "x$FRONTENDS" = x ; then
   AC_MSG_RESULT(none)

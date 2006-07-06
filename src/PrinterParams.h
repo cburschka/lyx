@@ -70,9 +70,8 @@ public:
 	// bool duplex;
 
 	/** Test that all the fields contain valid entries.  It's unlikely
-	    that the internal code will get this wrong (at least for the
-	    xforms code anyway) however new ports and external scripts
-	    might drive the wrong values in.
+	    that the internal code will get this wrong however new ports 
+	    and external scripts might drive the wrong values in.
 	 */
 	void testInvariant() const;
 	///

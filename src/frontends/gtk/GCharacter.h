@@ -5,7 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author John Spray
- * Based on version from xforms frontend
+ * Based on version from former xforms frontend
  *
  * Full author contact details are available in file CREDITS.
  */

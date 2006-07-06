@@ -279,26 +279,6 @@ Note that if Qt is using Xft2/fontconfig, you may need to install the
 latex-xft-fonts package at ftp://ftp.lyx.org/pub/lyx/contrib to get maths
 symbols displayed properly.
 
-** Xforms frontend
-
-The advent of the Qt frontend does not mean that the historical xforms
-frontend is dead. Actually, it is still the one which is the best
-implemented, because we have had more time to polish it. In this release,
-most of the dialogs have been redesigned to be tighter.
-
-Note also that the xforms library has been very recently updated to
-version 1.0. This version has been released under the LGPL (Lesser
-General Public License), and the availability of the source means that
-many bugs that have been plaguing LyX have been fixed in xforms. You
-are advised to upgrade to xforms 1.0 to enjoy all these new fixes.
-In fact, LyX 1.3.0 no longer supports versions of xforms older than 0.89.5.
-
-In most cases the dialogs have been designed to make it impossible to input
-invalid parameters. The exception to this rule is the input of length data.
-Power LaTeX users can still input obtuse "glue lengths", but the widgets are
-highlighted in red if this input is invalid or incomplete. This visual
-feedback makes it easy to see why LyX won't allow you to Apply your changes.
-
 ** Gnome frontend
 
 Unfortunately, the development of the Gnome frontend has mostly
