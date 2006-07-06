@@ -13,7 +13,7 @@ lyx \- A Document Processor
 .el \(co
 ..
 .SH SYNOPSIS
-\fBlyx\fR [ \fIcommand-line switches\fR ] [ \fIname[.lyx] ...\fR ]
+\fBlyx\fR [ \fIcommand\-line switches\fR ] [ \fIname[.lyx] ...\fR ]
 .br
 .SH DESCRIPTION
 \fBLyX\fR is too complex to be described completely in the "man" page
@@ -22,7 +22,7 @@ documentation within \fBLyX\fR under the Help menu.
 
 \fBLyX\fR is a document preparation system. It excels at letting you
 create complex technical and scientific articles with mathematics,
-cross-references, bibliographies, indices, etc. It is very good at
+cross\-references, bibliographies, indices, etc. It is very good at
 documents of any length in which the usual processing abilities are
 required: automatic sectioning and pagination, spellchecking, and so
 forth. It can also be used to write a letter to your mom, though
@@ -41,7 +41,7 @@ toolkit. \fBLyX\fR should run everywhere, where these libraries run.
 This is on all major Unix platforms as well as Windows and Mac OS X
 (which actually is a unix platform).
 .SH OPTIONS
-\fBLyX\fR supports the following command-line switches.
+\fBLyX\fR supports the following command\-line switches.
 .TP 6
 .BI \-help
 summarizes LyX usage
@@ -58,15 +58,15 @@ settings.
 .TP
 .BI \-dbg " feature[,feature...]"
 where feature is a name or number.
-Use "\fBlyx -dbg\fR" to see the list of available debug features.
+Use "\fBlyx \-dbg\fR" to see the list of available debug features.
 .TP
-\fB -x [--execute]\fP \fIcommand
+\fB \-x [\-\-execute]\fP \fIcommand
 where command is a lyx command.
 .TP
-\fB -e [--export]\fP \fIfmt
+\fB \-e [\-\-export]\fP \fIfmt
 where fmt is the export format of choice.
 .TP
-\fB -i [--import]\fP \fIfmt file.xxx
+\fB \-i [\-\-import]\fP \fIfmt file.xxx
 where fmt is the import format of choice and file.xxx is the file to be imported.
 
 .SH XFORMS FRONTEND OPTIONS
@@ -83,7 +83,7 @@ window; see \fIX(1)\fR.
 specifies the server to connect to.
 .TP
 .BI \-bw " borderwidth"
-specifies the border width to use to built-in objects.
+specifies the border width to use to built\-in objects.
 .TP
 .BI \-visual " visualName"
 requests a visual by name such as TrueColor etc. By default the
@@ -91,7 +91,7 @@ requests a visual by name such as TrueColor etc. By default the
 always selects the visual that has the most depth.
 .TP
 .BI \-depth " depth"
-requests a specific depth. Try "\fB-depth\fR best" or "\fB-depth\fR
+requests a specific depth. Try "\fB\-depth\fR best" or "\fB\-depth\fR
 8" if you get a bad match.
 .TP
 .BI \-debug " level"
@@ -99,7 +99,7 @@ generates some info about the state of the
 .B XForms.
 where
 .I level
-is an integer between 1-5 and controls the amount of
+is an integer between 1\-5 and controls the amount of
 information to output. Depending on the options used
 when the
 .B Forms Library
@@ -131,7 +131,7 @@ can be used to specify which system directory to use.
 The system directory is determined by searching for the file
 "chkconfig.ltx". Directories are searched in this order:
 .br
-1) -sysdir command line parameter
+1) \-sysdir command line parameter
 .br
 2) LYX_DIR_14x environment variable
 .br
@@ -146,7 +146,7 @@ can be used to specify which user directory to use.
 .PP
 The user directory is, in order of precedence:
 .br
-1) -userdir command line parameter
+1) \-userdir command line parameter
 .br
 2) LYX_USERDIR_14x environment variable
 .br
@@ -187,7 +187,7 @@ There are still some bugs in \fBLyX\fR. To report one, read if
 possible the Introduction found under the Help menu in LyX. You'll
 find detailed info on submitting bug reports there. If you can't do
 that, send details to the LyX Developers mailing list
-lyx-devel@lists.lyx.org, or use the LyX bug tracker at
+lyx\-devel@lists.lyx.org, or use the LyX bug tracker at
 http://bugzilla.lyx.org/. Don't forget to mention which version you
 are having problems with!
 
@@ -198,5 +198,5 @@ files. Consult the \fBtex2lyx\fR documentation.
 Copyright       
 .Cr
 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002 by Matthias Ettrich
-(ettrich@informatik.uni-tuebingen.de) and the rest of the \fBLyX
+(ettrich@informatik.uni\-tuebingen.de) and the rest of the \fBLyX
 Team\fR (See About LyX under the Help menu item).
