@@ -26,7 +26,7 @@ DITROFF		= ditroff
 DITROFF		= groff
 
 # This is a GNU make extension.
-# If you're flavour of make refuses to accept it,
+# If your flavour of make refuses to accept it,
 # then simply hardcode EXEEXT.
 ifeq ($(WINDIR),)
   EXEEXT =
