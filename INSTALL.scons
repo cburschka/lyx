@@ -2,7 +2,7 @@
 Building LyX with SCons
 =========================
 
-June, 2006
+July, 2006
 
 
 The GNU Build System (autoconf, automake and make) has been used to build
@@ -18,7 +18,7 @@ This file is organized as follows:
 2. *nix systems (Linux, Solaris and Mac OSX)
 3. Windows/mingw
 4. Windows/cygwin
-5. windows/msvc
+5. Windows/msvc
 6. Other versions of lyx (1.4.x)
 7. Tips and hints
 8. Troubleshooting
@@ -245,21 +245,25 @@ extra_inc_path etc is needed.
 4. Windows/cygwin
 =================
 
-LyX should be easy to compile, but the qt3 library in the cygwin
-distribution does not work with the current cygwin dll (version 1.5.19-4
-as of June 2006) due to broken threading support. You should either wait
-for the forthcoming 1.5.20 version or install a recent snapshot from
-http://cygwin.com/snapshots.
+LyX should be easy to compile, but you must use the most recent cygwin
+dll (version 1.5.20-1 as of July 2006) because the qt3 library in the
+cygwin distribution does not work with previous versions due to broken
+threading support.
 
 To build lyx for cygwin, you should
 
   * install (using the cygwin setup program) at least the following
     packages and all other packages pulled in by dependencies:
 
-    aspell        grep       libintl1       qt3-bin      tar
-    coreutils     jbigkit    libintl2       qt3-devel    libiconv
-    diffutils     jpeg       libpng         python
-    gettext       libintl    libpng2        sed
+    aspell        gzip       libiconv     qt3-bin
+    aspell-dev    jpeg       libpng       qt3-devel
+    gcc           libintl    libpng2
+    gettext       libintl1   jpeg
+    gettext-devel libintl2   python
+
+  * install aiksaurus (http://aiksaurus.sourceforge.net/, optional):
+    There is no cygwin package for aiksaurus, so you should build it from
+    source. However, aiksaurus builds smoothly on cygwin.
 
   * run scons as you would do under linux.
 
@@ -268,7 +272,6 @@ $qt_dir/lib directory structure. For example, cygwin/qt3 uses directories
 /usr/include/qt3, /usr/lib/qt3/bin and /usr/lib/qt3/lib. If these
 directories can not be detected automatically, use options, for example,
   qt_dir=/usr/lib/qt3 qt_inc_path=/usr/include/qt3
-
 
 
 5. Windows/msvc
