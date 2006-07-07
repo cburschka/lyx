@@ -126,6 +126,8 @@ Installation options:
   * exec_dir: directory where lyx binaries will be installed.
     Default to $prefix/bin
   * dest_dir: if specified, install to this directory instead of $prefix.
+  * version_suffix=yes/no/something : if specified, this suffix will be 
+    appended to the user data directory.
 
 
 Compiler choice and flags:
