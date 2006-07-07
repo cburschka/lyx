@@ -176,8 +176,6 @@ opts.AddOptions(
     PathOption('qt_inc_path', 'Path to qt include directory', None),
     #
     PathOption('qt_lib_path', 'Path to qt library directory', None),
-    # build directory, will use $mode if not set
-    PathOption('build_dir', 'Build directory', None),
     # extra include and libpath
     PathOption('extra_inc_path', 'Extra include path', None),
     #
@@ -192,6 +190,8 @@ opts.AddOptions(
     ('rebuild', 'rebuild only specifed, comma separated targets', None),
     # can be set to a non-existing directory
     ('prefix', 'install architecture-independent files in PREFIX', default_prefix),
+    # build directory, will use $mode if not set
+    ('build_dir', 'Build directory', None),
     # version suffix
     ('version_suffix', 'install lyx as lyx-suffix', None),
     # how to load options
@@ -334,6 +334,15 @@ else:
 # to build multiple build_dirs using the same source
 # $mode can be debug or release
 if env.has_key('build_dir') and env['build_dir'] is not None:
+    # create the directory if needed
+    if not os.path.isdir(env['build_dir']):
+        try:
+            os.makedirs(env['build_dir'])
+        except:
+            pass
+        if not os.path.isdir(env['build_dir']):
+            print 'Can not create directory', env['build_dir']
+            Exit(3)
     env['BUILDDIR'] = env['build_dir']
 else:
     # Determine the name of the build $mode
@@ -543,13 +552,18 @@ if env.has_key('dest_dir'):
 
 if env.has_key('qt_dir') and env['qt_dir']:
     env['QTDIR'] = env['qt_dir']
-    # add path to the qt tools
-    env.AppendUnique(LIBPATH = [os.path.join(env['qt_dir'], 'lib')])
-    # set environment so that moc etc can be found even if its path is not set properly
-    os.environ['PATH'] += os.pathsep + os.path.join(env['qt_dir'], 'bin')
-    env.PrependENVPath('PATH', os.path.join(env['qt_dir'], 'bin'))
 elif os.path.isdir(os.environ.get('QTDIR', '/usr/lib/qt-3.3')):
     env['QTDIR'] = os.environ.get('QTDIR', '/usr/lib/qt-3.3')
+
+# if there is a valid QTDIR, set path for lib and bin directories
+if env.has_key('QTDIR'):
+    # add path to the qt tools
+    if os.path.isdir(os.path.join(env['QTDIR'], 'lib')):
+        env.AppendUnique(LIBPATH = [os.path.join(env['QTDIR'], 'lib')])
+    # set environment so that moc etc can be found even if its path is not set properly
+    if os.path.isdir(os.path.join(env['QTDIR'], 'bin')):
+        os.environ['PATH'] += os.pathsep + os.path.join(env['QTDIR'], 'bin')
+        env.PrependENVPath('PATH', os.path.join(env['QTDIR'], 'bin'))
 
 # allow qt2 frontend to locate qt3 libs.
 frontend_lib = {'qt2':'qt3', 'qt3':'qt3', 'qt4':'qt4'}[frontend]
