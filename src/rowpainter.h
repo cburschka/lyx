@@ -35,7 +35,7 @@ inline int nestMargin() { return 15; }
 inline int changebarMargin() { return 10; }
 
 /// right margin
-inline int rightMargin() { return 30; }
+inline int rightMargin() { return 10; }
 
 
 #endif // ROWPAINTER_H
