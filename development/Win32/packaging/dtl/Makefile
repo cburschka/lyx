@@ -60,12 +60,11 @@ DTL_DBN		= $(DOCS) $(SRC) $(TESTS)
 	$(DITROFF) -man -Tascii $< | $(COL) >$@
 
 .man.ps:
-	$(MAN2PS) < $< > $@
+	$(MAN2PS) $< > $@
 
 #=======================================================================
 
-#all:  dtl check doc
-all:  dtl check
+all:  dtl check doc
 
 doc:  dt2dv.hlp dv2dt.hlp dt2dv.ps dv2dt.ps
 
