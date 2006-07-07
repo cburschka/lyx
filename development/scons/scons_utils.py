@@ -153,11 +153,12 @@ int main()
     return ('int', 'int *', 'struct timeval *')
 
 
-def checkBoostLibraries(conf, libs, lib_paths, inc_paths, isDebug):
+def checkBoostLibraries(conf, libs, lib_paths, inc_paths, version, isDebug):
     ''' look for boost libraries
       libs: library names
       lib_paths: try these paths for boost libraries
       inc_paths: try these paths for boost headers
+      version:   required boost version
       isDebug:   if true, use debug libraries
     '''
     conf.Message('Checking for boost library %s... ' % ', '.join(libs))
@@ -180,17 +181,20 @@ def checkBoostLibraries(conf, libs, lib_paths, inc_paths, isDebug):
             files = glob.glob(os.path.join(path, 'libboost_%s-*.a' % lib))
             # check things like libboost_iostreams-gcc-mt-d-1_33_1.a
             if len(files) > 0:
+                # runtime code includes s,g,y,d,p,n, where we should look for
+                # d,g,y for debug, s,p,n for release
                 if isDebug:
-                    files = filter(lambda x: re.search('libboost_%s-\w+-mt-d-[\d-]+' % lib, x), files)
+                    lib_files = filter(lambda x: re.search('libboost_%s-\w+-mt-[^spn]+-%s.a' % (lib, version), x), files)
                 else:
-                    files = filter(lambda x: re.search('libboost_%s-\w+-mt-[\d-]+' % lib, x), files)
-                if len(files) == 0:
-                    print 'Warning: %s directory seems to have the boost libraries, but ' % path
-                    print 'I can not find one that has the form lib%s-xxx-mt[-d]-x_xx_x.a' % lib
-                    print 'Check your boost installation, or change select criteria in scons_util.py'
-            if len(files) > 0:
-                # get xxx-gcc-1_33_1 from /usr/local/lib/libboost_xxx-gcc-1_33_1.a
-                lib_names.append(files[0].split(os.sep)[-1][3:-2])
+                    lib_files = filter(lambda x: re.search('libboost_%s-\w+-mt-([^dgy]+-)*%s.a' % (lib, version), x), files)
+                if len(lib_files) == 0:
+                    print 'Warning: Can not find an appropriate boost library in %s.' % path
+                    lib_files = filter(lambda x: re.search('libboost_%s-[\w-]+%s.a' % (lib, version), x), files)
+                    if len(lib_files) > 0:
+                        print 'Use library ' % lib_files[0]
+                if len(lib_files) > 0:
+                    # get xxx-gcc-1_33_1 from /usr/local/lib/libboost_xxx-gcc-1_33_1.a
+                    lib_names.append(lib_files[0].split(os.sep)[-1][3:-2])
         if len(lib_names) == len(libs):
             found_lib = True
             lib_path = path
@@ -198,15 +202,19 @@ def checkBoostLibraries(conf, libs, lib_paths, inc_paths, isDebug):
     if not found_lib:
         conf.Result('no')
         return (None, None, None)
+    # check version number in boost/version.hpp
+    def isValidBoostDir(dir):
+        file = os.path.join(dir, 'boost', 'version.hpp')
+        version_string = '#define BOOST_LIB_VERSION "%s"' % version
+        return os.path.isfile(file) and version_string in open(file).read()
     # check for boost header file
     for path in inc_paths:
-        # check path/boost/regex.h
-        if os.path.isfile(os.path.join(path, 'boost', 'regex.h')):
+        if isValidBoostDir(path):
             inc_path = path
             found_inc = True
-        else: # check path/boost_1_xx_x/boost
+        else:   # check path/boost_1_xx_x/boost
             dirs = glob.glob(os.path.join(path, 'boost-*'))
-            if len(dirs) > 0 and os.path.isfile(os.path.join(dirs[0], 'boost', 'regex.h')):
+            if len(dirs) > 0 and isValidBoostDir(dirs[0]):
                 inc_path = dirs[0]
                 found_inc = True
     # return result

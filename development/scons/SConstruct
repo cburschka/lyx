@@ -49,8 +49,10 @@ else:
 # only 1.4.x has frontends/qt2
 if os.path.isdir(os.path.join(top_src_dir, 'src', 'frontends', 'qt2')):
     package_version = '1.4.2svn'
+    boost_version = '1_32'
 else:
     package_version = '1.5.0svn'
+    boost_version = '1_33_1'
 
 devel_version = True
 default_build_mode = 'debug'
@@ -544,17 +546,20 @@ if env.has_key('qt_dir') and env['qt_dir']:
     # add path to the qt tools
     env.AppendUnique(LIBPATH = [os.path.join(env['qt_dir'], 'lib')])
     # set environment so that moc etc can be found even if its path is not set properly
+    os.environ['PATH'] += os.pathsep + os.path.join(env['qt_dir'], 'bin')
     env.PrependENVPath('PATH', os.path.join(env['qt_dir'], 'bin'))
 elif os.path.isdir(os.environ.get('QTDIR', '/usr/lib/qt-3.3')):
     env['QTDIR'] = os.environ.get('QTDIR', '/usr/lib/qt-3.3')
 
+# allow qt2 frontend to locate qt3 libs.
+frontend_lib = {'qt2':'qt3', 'qt3':'qt3', 'qt4':'qt4'}[frontend]
 if env.has_key('qt_lib_path') and env['qt_lib_path']:
     qt_lib_path = env.subst('$qt_lib_path')
 elif env.has_key('QTDIR') and os.path.isdir(os.path.join(env.subst('$QTDIR'), 'lib')):
     qt_lib_path = env.subst('$QTDIR/lib')
 # this is the path for cygwin.
-elif os.path.isdir(os.path.join('/usr/lib/', frontend, 'lib')):
-    qt_lib_path = env.subst('/usr/lib/$frontend/lib')
+elif os.path.isdir(os.path.join('/usr/lib/', frontend_lib, 'lib')):
+    qt_lib_path = '/usr/lib/%s/lib' % frontend_lib
 else:
     print "Qt library directory is not found. Please specify it using qt_lib_path"
     Exit(1)
@@ -567,8 +572,8 @@ if env.has_key('qt_inc_path') and env['qt_inc_path']:
 elif env.has_key('QTDIR') and os.path.isdir(os.path.join(env.subst('$QTDIR'), 'include')):
     qt_inc_path = '$QTDIR/include'
 # this is the path for cygwin.
-elif os.path.isdir('/usr/include/' + frontend):
-    qt_inc_path = '/usr/include/$frontend'
+elif os.path.isdir('/usr/include/' + frontend_lib):
+    qt_inc_path = '/usr/include/' + frontend_lib
 else:
     print "Qt include directory not found. Please specify it using qt_inc_path"
     Exit(1)
@@ -589,9 +594,9 @@ if env.has_key('extra_inc_path1') and env['extra_inc_path1']:
 if env.has_key('extra_lib_path1') and env['extra_lib_path1']:
     env.AppendUnique(LIBPATH = [env['extra_lib_path1']])
 if env.has_key('extra_bin_path') and env['extra_bin_path']:
-    # maybe only one of them is needed
+    # only the first one is needed (a scons bug?)
     os.environ['PATH'] += os.pathsep + env['extra_bin_path']
-    env['ENV']['PATH'] += os.pathsep + env['extra_bin_path']
+    env.PrependENVPath('PATH', env['extra_bin_path'])
 # extra_inc_paths will be used later by intlenv etc
 env.AppendUnique(CPPPATH = extra_inc_paths)
 
@@ -711,7 +716,7 @@ if not fast_start:
         included_boost = True
         env['BOOST_INC_PATH'] = '$TOP_SRCDIR/boost'
     elif boost_opt == 'auto':
-        res = conf.CheckBoostLibraries(boost_libs, lib_paths, inc_paths, mode == 'debug')
+        res = conf.CheckBoostLibraries(boost_libs, lib_paths, inc_paths, boost_version, mode == 'debug')
         # if not found, use local boost
         if res[0] is None:
             boost_libraries = ['included_boost_%s' % x for x in boost_libs]
@@ -721,9 +726,9 @@ if not fast_start:
             included_boost = False
             (boost_libraries, boost_libpath, env['BOOST_INC_PATH']) = res
     elif boost_opt == 'system':
-        res = conf.CheckBoostLibraries(boost_libs, lib_paths, inc_paths, mode == 'debug')
+        res = conf.CheckBoostLibraries(boost_libs, lib_paths, inc_paths, boost_version, mode == 'debug')
         if res[0] is None:
-            print "Can not find system boost libraries"
+            print "Can not find system boost libraries with version %s " % boost_version
             print "Please supply a path through extra_lib_path and try again."
             print "Or use boost=included to use included boost libraries."
             Exit(2)
