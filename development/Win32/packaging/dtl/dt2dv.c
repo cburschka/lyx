@@ -1,7 +1,7 @@
 /* dt2dv - convert human-readable "DTL" file to DVI format
          - this is intended to invert dv2dt version 0.6.0
    - version 0.6.2 - 27 July 2005
-   - Geoffrey Tobin    G.Tobin@ee.latrobe.edu.au
+   - Geoffrey Tobin    G.Tobin@latrobe.edu.au
    - fixes:  Michal Tomczak-Jaegermann    ntomczak@vm.ucs.ualberta.ca
              Nelson H. F. Beebe    beebe@math.utah.edu
 	     Angus Leeming leeming@lyx.org: Enable dt2dv to handle

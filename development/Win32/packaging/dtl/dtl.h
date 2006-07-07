@@ -2,7 +2,7 @@
    - header for dv2dt.c and dt2dv.c, conversion programs
      for human-readable "DTL" <-> DVI.
    - (ANSI C) version 0.6.0 - 18:31 GMT +11  Wed 8 March 1995
-   - author: Geoffrey Tobin    G.Tobin@ee.latrobe.edu.au
+   - author: Geoffrey Tobin    G.Tobin@latrobe.edu.au
    - patch:  Michal Tomczak-Jaegermann   ntomczak@vm.ucs.ualberta.ca
    - Reference:  "The DVI Driver Standard, Level 0",
                  by  The TUG DVI Driver Standards Committee.
