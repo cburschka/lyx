@@ -74,6 +74,8 @@ public:
 	///
 	bool insetAllowed(InsetBase::Code) const { return true; }
 	///
+	bool allowSpellCheck() const { return true; }
+	///
 	bool canTrackChanges() const { return true; }
 	/** returns true if, when outputing LaTeX, font changes should
 	    be closed before generating this inset. This is needed for
