@@ -36,7 +36,7 @@ FileName::FileName()
 
 
 FileName::FileName(string const & abs_filename, bool save_abs)
-	: name_(abs_filename), save_abs_path_(save_abs)
+	: name_(abs_filename), save_abs_path_(save_abs), zipped_valid_(false)
 {
 	BOOST_ASSERT(absolutePath(name_));
 }
@@ -46,12 +46,14 @@ void FileName::set(string const & name, string const & buffer_path)
 {
 	save_abs_path_ = absolutePath(name);
 	name_ = save_abs_path_ ? name : makeAbsPath(name, buffer_path);
+	zipped_valid_ = false;
 }
 
 
 void FileName::erase()
 {
 	name_.erase();
+	zipped_valid_ = false;
 }
 
 
@@ -125,7 +127,11 @@ string const FileName::mangledFilename(std::string const & dir) const
 
 bool FileName::isZipped() const
 {
-	return zippedFile(name_);
+	if (!zipped_valid_) {
+		zipped_ = zippedFile(name_);
+		zipped_valid_ = true;
+	}
+	return zipped_;
 }
 
 

@@ -484,25 +484,24 @@ copyFileIfNeeded(string const & file_in, string const & file_out)
 
 
 std::pair<CopyStatus, string> const
-copyToDirIfNeeded(string const & file_in, string const & dir, bool zipped)
+copyToDirIfNeeded(FileName const & file, string const & dir)
 {
 	using support::rtrim;
 
-	BOOST_ASSERT(absolutePath(file_in));
-
+	string const file_in = file.absFilename();
 	string const only_path = support::onlyPath(file_in);
 	if (rtrim(support::onlyPath(file_in) , "/") == rtrim(dir, "/"))
 		return std::make_pair(IDENTICAL_PATHS, file_in);
 
-	string mangled = FileName(file_in).mangledFilename();
-	if (zipped) {
+	string mangled = file.mangledFilename();
+	if (file.isZipped()) {
 		// We need to change _eps.gz to .eps.gz. The mangled name is
 		// still unique because of the counter in mangledFilename().
 		// We can't just call mangledFilename() with the zip
 		// extension removed, because base.eps and base.eps.gz may
 		// have different content but would get the same mangled
 		// name in this case.
-		string const base = removeExtension(unzippedFileName(file_in));
+		string const base = removeExtension(file.unzippedFilename());
 		string::size_type const ext_len = file_in.length() - base.length();
 		mangled[mangled.length() - ext_len] = '.';
 	}
@@ -563,11 +562,6 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	if (runparams.dryrun)
 		return stripExtensionIfPossible(rel_file);
 
-	// If the file is compressed and we have specified that it
-	// should not be uncompressed, then just return its name and
-	// let LaTeX do the rest!
-	bool const zipped = params().filename.isZipped();
-
 	// temp_file will contain the file for LaTeX to act on if, for example,
 	// we move it to a temp dir or uncompress it.
 	string temp_file = orig_file;
@@ -590,7 +584,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 
 	CopyStatus status;
 	boost::tie(status, temp_file) =
-			copyToDirIfNeeded(orig_file, temp_path, zipped);
+			copyToDirIfNeeded(params().filename, temp_path);
 
 	if (status == FAILURE)
 		return orig_file;
@@ -606,7 +600,10 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	string const tex_format = (runparams.flavor == OutputParams::LATEX) ?
 			"latex" : "pdflatex";
 
-	if (zipped) {
+	// If the file is compressed and we have specified that it
+	// should not be uncompressed, then just return its name and
+	// let LaTeX do the rest!
+	if (params().filename.isZipped()) {
 		if (params().noUnzip) {
 			// We don't know whether latex can actually handle
 			// this file, but we can't check, because that would

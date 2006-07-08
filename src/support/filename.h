@@ -75,6 +75,10 @@ public:
 private:
 	std::string name_;
 	bool save_abs_path_;
+	/// Cache for isZipped() because zippedFile() is expensive
+	mutable bool zipped_;
+	/// Is zipped_ valid?
+	mutable bool zipped_valid_;
 };
 
 
