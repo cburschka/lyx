@@ -187,8 +187,6 @@ private:
 	///
 	Timeout cursor_timeout;
 	///
-	bool using_xterm_cursor;
-	///
 	class Position {
 	public:
 		/// Filename
