@@ -362,7 +362,7 @@ void QPrefs::apply()
 		LColor::color const col(dialog_->colors_[i]);
 		QColor const & qcol(lcolorcache.get(col));
 
-		// FIXME: dubious, but it's what xforms does
+		// FIXME: dubious, but it's what xforms did
 		if (qcol != ci->color()) {
 			ostringstream ostr;
 

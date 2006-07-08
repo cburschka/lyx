@@ -81,18 +81,9 @@ foreach $pofilename ( @ARGV )
           $warn++;
         }
 
-        # Check for "|..." shortcut(s)
-        if ( ( $msgid =~ m/\|[^ ]/ ) != ( $msgstr =~ m/\|[^ ]/ ) ) {
-          print( "Missing or unexpected xforms shortcut:\n" );
-          print( "  '$msgid' => '$msgstr'\n" );
-          $warn++;
-        }
-
         $msgid_clean  = lc($msgid);
         $msgstr_clean = lc($msgstr);
 
-        $msgid_clean  =~ s/(.*)\|.*?$/$1/;  # strip xforms shortcuts
-        $msgstr_clean =~ s/(.*)\|.*?$/$1/;
         $msgid_clean  =~ s/&([^ ])/$1/;     # strip Qt shortcuts
         $msgstr_clean =~ s/&([^ ])/$1/;
 
