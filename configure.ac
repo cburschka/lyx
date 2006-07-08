@@ -180,7 +180,7 @@ for frontend in $FRONTENDS ; do
     libglademm version:\t\t${LIBGLADEMM_VERSION}\n"
 	  ;;
 
-    qt)
+    qt3)
 	  QT_DO_IT_ALL
 	  FRONTENDS_PROGS="$FRONTENDS_PROGS lyx-qt\$(EXEEXT)"
 	  FRONTENDS_SUBDIRS="$FRONTENDS_SUBDIRS qt3"

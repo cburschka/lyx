@@ -9,7 +9,7 @@ These four steps will compile, test and install LyX:
 	0) Linux users beware: if compiling the Qt frontend, you need
            qt and qt-devel packages of the same version to compile LyX.
 
-	1) ./configure --with-frontend=[qt or xforms]
+	1) ./configure --with-frontend=[qt3, qt4, or gtk]
 	   configures LyX according to your system. 
 	   When compiling for Qt, you may have to set
              --with-qt-dir=<path-to-your-qt-installation>
@@ -73,29 +73,6 @@ to use fontconfig.
 If, however, your version of Qt does not use fontconfig, then TeX
 fonts should be added to the font path. 'man xset' is your friend.
 
-* xforms frontend
-
-Both an Xforms and Xpm libraries should be installed to compile LyX.
-It is imperative that you have the correct versions of these
-libraries, and their associated header files.
-
-The xforms library has been very recently updated to version 1.0.
-This version has been released under the LGPL (Lesser General Public
-License), and the availability of the source means that many bugs that
-have been plaguing LyX have been fixed in xforms. You are advised to
-upgrade to xforms 1.0 to enjoy all these new fixes.
-In fact, LyX 1.4.x no longer supports versions of xforms older than 1.0.
-
-You can get the source from
-	http://savannah.nongnu.org/download/xforms/
-
-If you use a rpm-based linux distribution, such as RedHat or Mandrake,
-we recommend that you grab a version of xforms from
-	ftp://ftp.lyx.org/pub/lyx/contrib
-Look for the xforms-1.0-release.src.rpm or the binary libforms*.i386.rpm.
-
-In addition, you must have libXpm version 4.7 or newer.
-
 * Other things to note
 
 If you make modifications to files in src/ (for example by applying a
@@ -136,7 +113,7 @@ flags:
     want to use. There is no default value: this switch is required.
 
   o --with-extra-lib=DIRECTORY that specifies the path where LyX will
-    find extra libraries (Xpm, xforms, qt) it needs. Defaults to NONE
+    find extra libraries (qt3, qt4, gtk) it needs. Defaults to NONE
     (i.e. search in standard places). You can specify several
     directories, separated by colons.
 
