@@ -40,18 +40,31 @@
 #include "graphics/GraphicsLoader.h"
 
 #include "support/filetools.h" // LibFileSearch
+#include "support/forkedcontr.h"
 
 #include <boost/utility.hpp>
 #include <boost/bind.hpp>
 #include <boost/signals/trackable.hpp>
 
 using lyx::support::libFileSearch;
+using lyx::support::ForkedcallsController;
 
 using std::endl;
 using std::min;
 using std::max;
 using std::string;
 
+
+namespace {
+
+// All the below connection objects are needed because of a bug in some
+// versions of GCC (<=2.96 are on the suspects list.) By having and assigning
+// to these connections we avoid a segfault upon startup, and also at exit.
+// (Lgb)
+
+boost::signals::connection timecon;
+
+} // anon namespace
 
 namespace lyx {
 namespace frontend {
@@ -119,7 +132,8 @@ SplashScreen::SplashScreen()
 }
 
 WorkArea::WorkArea(BufferView * buffer_view)
-	:  buffer_view_(buffer_view), greyed_out_(true)
+	: buffer_view_(buffer_view), greyed_out_(true),
+	  cursor_visible_(false), cursor_timeout_(400)
 {
 	// Start loading the pixmap as soon as possible
 	if (lyxrc.show_banner) {
@@ -127,6 +141,12 @@ WorkArea::WorkArea(BufferView * buffer_view)
 		splash.connect(boost::bind(&WorkArea::checkAndGreyOut, this));
 		splash.startLoading();
 	}
+
+	// Setup the signals
+	timecon = cursor_timeout_.timeout
+		.connect(boost::bind(&WorkArea::toggleCursor, this));
+
+	cursor_timeout_.start();
 }
 
 
@@ -193,7 +213,19 @@ void WorkArea::redraw()
 
 void WorkArea::processKeySym(LyXKeySymPtr key, key_modifier::state state)
 {
+	hideCursor();
+
 	buffer_view_->workAreaKeyPress(key, state);
+	/* This is perhaps a bit of a hack. When we move
+	 * around, or type, it's nice to be able to see
+	 * the cursor immediately after the keypress. So
+	 * we reset the toggle timeout and force the visibility
+	 * of the cursor. Note we cannot do this inside
+	 * dispatch() itself, because that's called recursively.
+	 */
+	//     if (buffer_view_->available())
+	toggleCursor();
+
 }
 
 
@@ -227,6 +259,81 @@ void WorkArea::greyOut()
 	expose(0, 0, width(), height());
 	getPainter().end();
 }
+
+
+void WorkArea::showCursor()
+{
+	if (cursor_visible_)
+		return;
+
+	if (!buffer_view_->available())
+		return;
+
+	CursorShape shape = BAR_SHAPE;
+
+	LyXText const & text = *buffer_view_->getLyXText();
+	LyXFont const & realfont = text.real_current_font;
+	BufferParams const & bp = buffer_view_->buffer()->params();
+	bool const samelang = realfont.language() == bp.language;
+	bool const isrtl = realfont.isVisibleRightToLeft();
+
+	if (!samelang || isrtl != bp.language->rightToLeft()) {
+		shape = L_SHAPE;
+		if (isrtl)
+			shape = REVERSED_L_SHAPE;
+	}
+
+	// The ERT language hack needs fixing up
+	if (realfont.language() == latex_language)
+		shape = BAR_SHAPE;
+
+	LyXFont const font = buffer_view_->cursor().getFont();
+	int const asc = font_metrics::maxAscent(font);
+	int const des = font_metrics::maxDescent(font);
+	int h = asc + des;
+	int x = 0;
+	int y = 0;
+	buffer_view_->cursor().getPos(x, y);
+	y -= asc;
+
+	// if it doesn't touch the screen, don't try to show it
+	if (y + h < 0 || y >= height())
+		return;
+
+	cursor_visible_ = true;
+	showCursor(x, y, h, shape);
+}
+
+
+void WorkArea::hideCursor()
+{
+	if (!cursor_visible_)
+		return;
+
+	cursor_visible_ = false;
+	removeCursor();
+}
+
+
+void WorkArea::toggleCursor()
+{
+	if (buffer_view_->buffer()) {
+
+		if (cursor_visible_)
+			hideCursor();
+		else
+			showCursor();
+
+		// Use this opportunity to deal with any child processes that
+		// have finished but are waiting to communicate this fact
+		// to the rest of LyX.
+		ForkedcallsController & fcc = ForkedcallsController::get();
+		fcc.handleCompletedProcesses();
+	}
+
+	cursor_timeout_.restart();
+}
+
 
 } // namespace frontend
 } // namespace lyx

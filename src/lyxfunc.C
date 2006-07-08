@@ -738,10 +738,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		       << endl;
 		setErrorMessage(flag.message());
 	} else {
-
-		if (view()->available())
-			view()->hideCursor();
-
 		switch (action) {
 
 		case LFUN_WORD_FIND_FORWARD:

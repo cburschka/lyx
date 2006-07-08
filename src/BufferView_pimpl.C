@@ -48,7 +48,6 @@
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "pariterator.h"
-#include "rowpainter.h"
 #include "toc.h"
 #include "undo.h"
 #include "vspace.h"
@@ -64,14 +63,12 @@
 #include "frontends/font_metrics.h"
 #include "frontends/Gui.h"
 #include "frontends/LyXView.h"
-#include "frontends/WorkArea.h"
 
 #include "graphics/Previews.h"
 
 #include "support/convert.h"
 #include "support/filefilterlist.h"
 #include "support/filetools.h"
-#include "support/forkedcontr.h"
 #include "support/package.h"
 #include "support/types.h"
 
@@ -81,7 +78,6 @@
 #include <functional>
 #include <vector>
 
-using lyx::frontend::WorkArea;
 using lyx::frontend::Clipboard;
 using lyx::frontend::Gui;
 
@@ -91,7 +87,6 @@ using lyx::support::addPath;
 using lyx::support::bformat;
 using lyx::support::FileFilterList;
 using lyx::support::fileSearch;
-using lyx::support::ForkedcallsController;
 using lyx::support::isDirWriteable;
 using lyx::support::makeDisplayPath;
 using lyx::support::makeAbsPath;
@@ -113,13 +108,6 @@ namespace {
 
 unsigned int const saved_positions_num = 20;
 
-// All the below connection objects are needed because of a bug in some
-// versions of GCC (<=2.96 are on the suspects list.) By having and assigning
-// to these connections we avoid a segfault upon startup, and also at exit.
-// (Lgb)
-
-boost::signals::connection timecon;
-
 /// Return an inset of this class if it exists at the current cursor position
 template <class T>
 T * getInsetByCode(LCursor & cur, InsetBase::Code code)
@@ -137,17 +125,11 @@ T * getInsetByCode(LCursor & cur, InsetBase::Code code)
 
 
 BufferView::Pimpl::Pimpl(BufferView & bv, LyXView * owner)
-	: bv_(&bv), owner_(owner), buffer_(0), wh_(0), cursor_timeout(400),
+	: bv_(&bv), owner_(owner), buffer_(0), wh_(0),
 	  cursor_(bv),
 	  multiparsel_cache_(false), anchor_ref_(0), offset_ref_(0), needs_redraw_(false)
 {
 	xsel_cache_.set = false;
-
-	// Setup the signals
-	timecon = cursor_timeout.timeout
-		.connect(boost::bind(&BufferView::Pimpl::cursorToggle, this));
-
-	cursor_timeout.start();
 
 	saved_positions.resize(saved_positions_num);
 	// load saved bookmarks
@@ -512,8 +494,6 @@ void BufferView::Pimpl::scrollDocView(int value)
 	if (!buffer_)
 		return;
 
-	owner_->gui().guiCursor().hide();
-
 	LyXText & t = *bv_->text();
 
 	float const bar = value / float(wh_ * t.paragraphs().size());
@@ -583,16 +563,6 @@ void BufferView::Pimpl::workAreaKeyPress(LyXKeySymPtr key,
 					 key_modifier::state state)
 {
 	owner_->getLyXFunc().processKeySym(key, state);
-
-	/* This is perhaps a bit of a hack. When we move
-	 * around, or type, it's nice to be able to see
-	 * the cursor immediately after the keypress. So
-	 * we reset the toggle timeout and force the visibility
-	 * of the cursor. Note we cannot do this inside
-	 * dispatch() itself, because that's called recursively.
-	 */
-	if (available())
-		owner_->gui().guiCursor().show(*bv_);
 }
 
 
@@ -627,7 +597,6 @@ void BufferView::Pimpl::selectionRequested()
 void BufferView::Pimpl::selectionLost()
 {
 	if (available()) {
-		owner_->gui().guiCursor().hide();
 		cursor_.clearSelection();
 		xsel_cache_.set = false;
 	}
@@ -722,23 +691,6 @@ void BufferView::Pimpl::update(Update::flags flags)
 
 	owner_->redrawWorkArea();
 	owner_->view_state_changed();
-}
-
-
-// Callback for cursor timer
-void BufferView::Pimpl::cursorToggle()
-{
-	if (buffer_) {
-		owner_->gui().guiCursor().toggle(*bv_);
-
-		// Use this opportunity to deal with any child processes that
-		// have finished but are waiting to communicate this fact
-		// to the rest of LyX.
-		ForkedcallsController & fcc = ForkedcallsController::get();
-		fcc.handleCompletedProcesses();
-	}
-
-	cursor_timeout.restart();
 }
 
 
@@ -982,8 +934,6 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 	if (!available())
 		return false;
 
-	owner_->gui().guiCursor().hide();
-
 	// Either the inset under the cursor or the
 	// surrounding LyXText will handle this event.
 
@@ -1017,10 +967,6 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 		else
 			update(Update::FitCursor | Update::MultiParSel);
 	}
-
-	// See workAreaKeyPress
-	cursor_timeout.restart();
-	owner_->gui().guiCursor().show(*bv_);
 
 	// Skip these when selecting
 	if (cmd.action != LFUN_MOUSE_MOTION) {

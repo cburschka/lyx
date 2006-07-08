@@ -18,6 +18,7 @@
 
 #include "frontends/key_state.h"
 #include "frontends/LyXKeySym.h"
+#include "frontends/Timeout.h"
 
 class BufferView;
 
@@ -78,6 +79,13 @@ public:
 	/// hide the cursor
 	virtual void removeCursor() = 0;
 
+	/// Show the cursor
+	void showCursor();
+	/// Hide the cursor
+	void hideCursor();
+	/// toggle the cursor's visibility
+	void toggleCursor();
+
 protected:
 	/// cause the display of the given area of the work area
 	virtual void expose(int x, int y, int w, int h) = 0;
@@ -91,6 +99,12 @@ private:
 
 	///
 	bool greyed_out_;
+
+	///
+	bool cursor_visible_;
+
+	///
+	Timeout cursor_timeout_;
 };
 
 } // namespace frontend

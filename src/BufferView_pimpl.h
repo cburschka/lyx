@@ -24,7 +24,6 @@
 #include "metricsinfo.h"
 
 #include "frontends/LyXKeySym.h"
-#include "frontends/Timeout.h"
 
 #include "support/types.h"
 
@@ -79,8 +78,6 @@ public:
 	void selectionRequested();
 	///
 	void selectionLost();
-	///
-	void cursorToggle();
 	///
 	bool available() const;
 	/// get the change at the cursor position
@@ -184,8 +181,6 @@ private:
 
 	/// Estimated average par height for scrollbar
 	int wh_;
-	///
-	Timeout cursor_timeout;
 	///
 	class Position {
 	public:
