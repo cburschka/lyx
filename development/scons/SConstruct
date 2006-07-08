@@ -88,7 +88,7 @@ elif os.name == 'posix' and sys.platform != 'cygwin':
 elif os.name == 'posix' and sys.platform == 'cygwin':
     platform_name = 'cygwin'
     default_frontend = 'qt3'
-    default_prefix = '/usr/local'
+    default_prefix = '/usr'
     default_with_x = True
     default_packaging_method = 'posix'
 elif os.name == 'darwin':
@@ -2263,28 +2263,44 @@ if build_po:
 
 if 'install' in targets:
     #
-    # install to DESTDIR or prefix
-    dest_dir = env.Dir(env.get('DESTDIR', prefix)).abspath
-    # if dest_dir is different from prefix.
-    if env.has_key('exec_prefix'):
-        bin_dest_dir = Dir(env['exec_prefix']).abspath
-    else:
-        bin_dest_dir = os.path.join(dest_dir, 'bin')
-    if add_suffix:
-        share_dest_dir = os.path.join(dest_dir, share_dir + program_suffix)
-    else:
-        share_dest_dir = os.path.join(dest_dir, share_dir)
-    man_dest_dir = os.path.join(dest_dir, man_dir)
-    locale_dest_dir = os.path.join(dest_dir, locale_dir)
+    # this part is a bit messy right now. Since scons will provide
+    # --DESTDIR option soon, at least the dest_dir handling can be 
+    # removed later.
+    #
+    # how to join dest_dir and prefix
+    def joinPaths(path1, path2):
+        ''' join path1 and path2, do not use os.path.join because
+            under window, c:\destdir\d:\program is invalid '''
+        if path1 is None:
+            return os.path.normpath(path2)
+        # separate drive letter
+        (drive, path) = os.path.splitdrive(os.path.normpath(path2))
+        # ignore drive letter, so c:\destdir + c:\program = c:\destdir\program
+        return os.path.join(os.path.normpath(path1), path[1:])
+    #
+    # install to dest_dir/prefix
+    dest_dir = env.get('DESTDIR', None)
+    dest_prefix_dir = joinPaths(dest_dir, env.Dir(prefix).abspath)
     # create the directory if needed
-    if not os.path.isdir(dest_dir):
+    if not os.path.isdir(dest_prefix_dir):
         try:
-            os.makedirs(dest_dir)
+            os.makedirs(dest_prefix_dir)
         except:
             pass
-        if not os.path.isdir(dest_dir):
-            print 'Can not create directory', dest_dir
+        if not os.path.isdir(dest_prefix_dir):
+            print 'Can not create directory', dest_prefix_dir
             Exit(3)
+    #
+    if env.has_key('exec_prefix'):
+        bin_dest_dir = joinPaths(dest_dir, Dir(env['exec_prefix']).abspath)
+    else:
+        bin_dest_dir = os.path.join(dest_prefix_dir, 'bin')
+    if add_suffix:
+        share_dest_dir = os.path.join(dest_prefix_dir, share_dir + program_suffix)
+    else:
+        share_dest_dir = os.path.join(dest_prefix_dir, share_dir)
+    man_dest_dir = os.path.join(dest_prefix_dir, man_dir)
+    locale_dest_dir = os.path.join(dest_prefix_dir, locale_dir)
     #
     import glob
     #
@@ -2306,7 +2322,7 @@ if 'install' in targets:
                 glob.glob(os.path.join(dir, '*'))) )
         return ins_dir
     #
-    # executables (some of them may be none)
+    # install executables (lyxclient may be None)
     #
     if add_suffix:
         version_suffix = program_suffix
