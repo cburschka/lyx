@@ -370,7 +370,7 @@ void GuiWorkArea::keyPressEvent(QKeyEvent * e)
 	else {
 		boost::shared_ptr<QLyXKeySym> sym(new QLyXKeySym);
 		sym->set(e);
-		buffer_view_->workAreaKeyPress(sym, q_key_state(e->state()));
+		processKeySym(sym, q_key_state(e->state()));
 	}
 }
 
@@ -400,7 +400,7 @@ void GuiWorkArea::keyeventTimeout()
 				   << " key=" << ev->key()
 				   << endl;
 
-		buffer_view_->workAreaKeyPress(sym, q_key_state(ev->state()));
+		processKeySym(sym, q_key_state(ev->state()));
 		keyeventQueue_.pop();
 
 		handle_autos = false;

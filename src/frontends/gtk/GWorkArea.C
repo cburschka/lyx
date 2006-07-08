@@ -27,6 +27,7 @@
 #include "debug.h"
 #include "funcrequest.h"
 #include "LColor.h"
+#include "WorkArea.h"
 
 using boost::shared_ptr;
 
@@ -432,7 +433,7 @@ bool GWorkArea::onButtonPress(GdkEventButton * event)
 
 bool GWorkArea::onButtonRelease(GdkEventButton * event)
 {
-        view_.view()->workAreaDispatch(FuncRequest(LFUN_MOUSE_RELEASE,
+	view_.view()->workAreaDispatch(FuncRequest(LFUN_MOUSE_RELEASE,
 			     static_cast<int>(event->x),
 			     static_cast<int>(event->y),
 			     gButtonToLyx(event->button)));
@@ -481,8 +482,8 @@ bool GWorkArea::onKeyPress(GdkEventKey * event)
 	    !inputGet) {
 #endif
 		GLyXKeySym *glk = new GLyXKeySym(event->keyval);
-		view_.view()->workAreaKeyPress(LyXKeySymPtr(glk),
-				 gtkKeyState(event->state));
+		view_.workArea()->processKeySym(LyXKeySymPtr(glk),
+					    gtkKeyState(event->state));
 #ifdef I18N
 	} else if (!inputCache_.empty())
 		workAreaCJK_IMprocess(inputCache_.size(), inputCache_.data());

@@ -66,6 +66,9 @@ public:
 	/// redraw the screen, without using existing pixmap
 	virtual void redraw();
 
+	///
+	void processKeySym(LyXKeySymPtr key, key_modifier::state state);
+
 	/// grey out (no buffer)
 	void greyOut();
 

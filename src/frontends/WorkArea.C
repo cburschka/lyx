@@ -188,6 +188,12 @@ void WorkArea::redraw()
 }
 
 
+void WorkArea::processKeySym(LyXKeySymPtr key, key_modifier::state state)
+{
+	buffer_view_->workAreaKeyPress(key, state);
+}
+
+
 void WorkArea::greyOut()
 {
 	greyed_out_ = true;
