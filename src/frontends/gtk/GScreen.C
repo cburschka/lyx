@@ -32,7 +32,7 @@
 
 #include "frontends/font_metrics.h"
 #include "frontends/Painter.h"
-#include "frontends/GuiCursor.h"
+#include "frontends/WorkArea.h"
 
 #include "insets/insettext.h"
 
@@ -40,6 +40,8 @@
 
 namespace lyx {
 namespace frontend {
+
+using lyx::frontend::CursorShape;
 
 GScreen::GScreen(GWorkArea & o)
 	: owner_(o)

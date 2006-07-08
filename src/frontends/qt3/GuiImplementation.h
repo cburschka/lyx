@@ -75,7 +75,6 @@ public:
 		old_screen_.reset(new FScreen(*old_work_area_.get()));
 		work_area_.reset(new GuiWorkArea(old_screen_.get(), old_work_area_.get()));
 		clipboard_.reset(new GuiClipboard(old_work_area_.get()));
-		guiCursor().connect(work_area_.get());
 
 		// FIXME BufferView creation should be independant of WorkArea creation
 		buffer_views_[0].reset(new BufferView(view_.get()));

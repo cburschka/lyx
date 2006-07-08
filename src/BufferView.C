@@ -43,7 +43,6 @@
 #include "frontends/Clipboard.h"
 #include "frontends/Dialogs.h"
 #include "frontends/LyXView.h"
-#include "frontends/Gui.h"
 
 #include "insets/insetcommand.h" // ChangeRefs
 #include "insets/insettext.h"
@@ -298,11 +297,6 @@ void BufferView::gotoLabel(string const & label)
 	}
 }
 
-
-void BufferView::hideCursor()
-{
-	pimpl_->gui().guiCursor().hide();
-}
 
 LyXText * BufferView::getLyXText()
 {

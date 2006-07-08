@@ -12,7 +12,7 @@
 #ifndef GSCREEN_H
 #define GSCREEN_H
 
-#include "frontends/GuiCursor.h"
+#include "frontends/WorkArea.h"
 
 #include <gtkmm.h>
 

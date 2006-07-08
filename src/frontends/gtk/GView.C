@@ -32,6 +32,7 @@
 #include "funcrequest.h"
 
 #include "frontends/Toolbars.h"
+#include "frontends/WorkArea.h"
 
 #include "support/filetools.h"
 #include "support/convert.h"
@@ -159,7 +160,7 @@ bool GView::onFocusIn(GdkEventFocus * /*event*/)
 
 void GView::prohibitInput() const
 {
-	view()->hideCursor();
+	workArea()->hideCursor();
 	const_cast<GView*>(this)->set_sensitive(false);
 }
 
@@ -191,7 +192,7 @@ void GView::setWindowTitle(string const & t, string const & /*it*/)
 void GView::busy(bool yes) const
 {
 	if (yes ) {
-		view()->hideCursor();
+		workArea()->hideCursor();
 		Gdk::Cursor cursor(Gdk::WATCH);
 		const_cast<GView *>(this)->get_window()->set_cursor(cursor);
 		const_cast<GView *>(this)->set_sensitive(false);

@@ -160,9 +160,6 @@ public:
 	/// set the cursor based on the given TeX source row
 	void setCursorFromRow(int row);
 
-	/// hide the cursor if it is visible
-	void hideCursor();
-
 	/// center the document view around the cursor
 	void center();
 	/// scroll document by the given number of lines of default height

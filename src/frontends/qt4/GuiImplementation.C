@@ -78,8 +78,6 @@ int GuiImplementation::newWorkArea(unsigned int w, unsigned int h, int view_id)
 
 	view->mainWidget()->setCentralWidget(work_areas_[id].get());
 
-	guiCursor().connect(work_areas_[id].get());
-
 	return id;
 }
 

@@ -14,13 +14,12 @@
 #ifndef BASE_GUI_H
 #define BASE_GUI_H
 
-#include "frontends/GuiCursor.h"
-
 #include <boost/shared_ptr.hpp>
 
 #include <map>
 
 class LyXView;
+class BufferView;
 
 namespace lyx {
 namespace frontend {
@@ -54,16 +53,9 @@ public:
 	///
 	virtual void destroyWorkArea(int id) = 0;
 
-	///
-	GuiCursor & guiCursor() {return cursor_;}
-
 protected:
 	/// view of a buffer. Eventually there will be several.
 	std::map<int, boost::shared_ptr<BufferView> > buffer_views_;
-
-private:
-	///
-	GuiCursor cursor_;
 };
 
 } // namespace frontend
