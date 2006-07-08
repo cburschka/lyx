@@ -210,23 +210,6 @@ void QWorkArea::haveSelection(bool own)
 }
 
 
-string const QWorkArea::getClipboard() const
-{
-	QApplication::clipboard()->setSelectionMode(true);
-	QString str = QApplication::clipboard()->text();
-	if (str.isNull())
-		return string();
-	return internalLineEnding(fromqstr(str));
-}
-
-
-void QWorkArea::putClipboard(string const & str)
-{
-	QApplication::clipboard()->setSelectionMode(true);
-	QApplication::clipboard()->setText(toqstr(externalLineEnding(str)));
-}
-
-
 void QWorkArea::dragEnterEvent(QDragEnterEvent * event)
 {
 	event->accept(QUriDrag::canDecode(event));

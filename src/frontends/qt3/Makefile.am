@@ -27,7 +27,7 @@ libqt3_la_SOURCES = \
 	Alert_pimpl.C \
 	Dialogs.C \
 	FileDialog.C \
-	GuiClipboard.h \
+	GuiClipboard.C GuiClipboard.h \
 	GuiImplementation.h \
 	GuiWorkArea.h \
 	LyXKeySymFactory.C \

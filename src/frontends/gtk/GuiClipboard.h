@@ -40,15 +40,9 @@ public:
 		old_work_area_->haveSelection(own);
 	}
 
-	std::string const get() const
-	{
-		return old_work_area_->getClipboard();
-	}
+	std::string const get() const;
 
-	void put(std::string const & str)
-	{
-		old_work_area_->putClipboard(str);
-	}
+	void put(std::string const & str);
 	//@}
 
 private:

@@ -52,10 +52,6 @@ public:
 	/// a selection exists
 	virtual void haveSelection(bool);
 	///
-	virtual std::string const getClipboard() const;
-	///
-	virtual void putClipboard(std::string const &);
-	///
 	virtual void dragEnterEvent(QDragEnterEvent * event);
 	///
 	virtual void dropEvent(QDropEvent* event);

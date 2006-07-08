@@ -19,15 +19,13 @@
 namespace lyx {
 namespace frontend {
 
-typedef QWorkArea FWorkArea;
-
 /**
  * The Qt3 version of the Clipboard.
  */
 class GuiClipboard: public lyx::frontend::Clipboard
 {
 public:
-	GuiClipboard(FWorkArea * work_area)
+	GuiClipboard(QWorkArea * work_area)
 		: old_work_area_(work_area)
 	{
 	}
@@ -42,19 +40,13 @@ public:
 		old_work_area_->haveSelection(own);
 	}
 
-	std::string const get() const
-	{
-		return old_work_area_->getClipboard();
-	}
+	std::string const get() const;
 
-	void put(std::string const & str)
-	{
-		old_work_area_->putClipboard(str);
-	}
+	void put(std::string const & str);
 	//@}
 
 private:
-	FWorkArea * old_work_area_;
+	QWorkArea * old_work_area_;
 };
 
 } // namespace frontend

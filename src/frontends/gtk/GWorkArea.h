@@ -81,10 +81,6 @@ public:
 	virtual void setScrollbarParams(int height, int pos, int line_height);
 	/// a selection exists
 	virtual void haveSelection(bool);
-	///
-	virtual std::string const getClipboard() const;
-	///
-	virtual void putClipboard(std::string const &);
 	void inputCommit(gchar * str);
 private:
 	bool onExpose(GdkEventExpose * event);
