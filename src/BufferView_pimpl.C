@@ -139,7 +139,7 @@ T * getInsetByCode(LCursor & cur, InsetBase::Code code)
 BufferView::Pimpl::Pimpl(BufferView & bv, LyXView * owner)
 	: bv_(&bv), owner_(owner), buffer_(0), wh_(0), cursor_timeout(400),
 	  using_xterm_cursor(false), cursor_(bv),
-	  multiparsel_cache_(false), anchor_ref_(0), offset_ref_(0)
+	  multiparsel_cache_(false), anchor_ref_(0), offset_ref_(0), needs_redraw_(false)
 {
 	xsel_cache_.set = false;
 
@@ -699,39 +699,38 @@ void BufferView::Pimpl::update(Update::flags flags)
 			<< "]  buffer: " << buffer_ << endl;
 	}
 
+	// This, together with doneUpdating(), verifies (using
+	// asserts) that screen redraw is not called from
+	// within itself.
+	theCoords.startUpdating();
+
 	// Check needed to survive LyX startup
 	if (buffer_) {
 		// Update macro store
 		buffer_->buildMacros();
 
-		// This, together with doneUpdating(), verifies (using
-		// asserts) that screen redraw is not called from
-		// within itself.
-		theCoords.startUpdating();
-
 		// First drawing step
 		bool singlePar = flags & Update::SinglePar;
-		bool forceupdate(flags & (Update::Force | Update::SinglePar));
+		needs_redraw_ = flags & (Update::Force | Update::SinglePar);
 
 		if ((flags & (Update::FitCursor | Update::MultiParSel))
 		    && (fitCursor() || multiParSel())) {
-			forceupdate = true;
+			needs_redraw_ = true;
 			singlePar = false;
 		}
 
-		if (forceupdate) {
+		if (needs_redraw_) {
 			// Second drawing step
 			updateMetrics(singlePar);
-			owner_->workArea()->redraw(*bv_);
-		} else {
-			// Abort updating of the coord
-			// cache - just restore the old one
-			theCoords.doneUpdating();
 		}
-	} else
-		owner_->workArea()->greyOut();
+	}
 
+	owner_->redrawWorkArea();
 	owner_->view_state_changed();
+
+	// Abort updating of the coord
+	// cache - just restore the old one
+	theCoords.doneUpdating();
 }
 
 

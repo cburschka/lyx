@@ -226,6 +226,10 @@ public:
 
 	///
 	ViewMetricsInfo const & viewMetricsInfo();
+
+	///
+	bool needsRedraw() const;
+	void needsRedraw(bool redraw_needed);
 private:
 	///
 	class Pimpl;

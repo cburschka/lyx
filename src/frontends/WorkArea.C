@@ -155,10 +155,20 @@ void WorkArea::checkAndGreyOut()
 }
 
 
-void WorkArea::redraw(BufferView & bv)
+void WorkArea::redraw()
 {
+	BOOST_ASSERT(buffer_view_);
+
+	if (!buffer_view_->buffer()) {
+		greyOut();
+		return;
+	}
+
+	if (!buffer_view_->needsRedraw())
+		return;
+
 	greyed_out_ = false;
-	ViewMetricsInfo const & vi = bv.viewMetricsInfo();
+	ViewMetricsInfo const & vi = buffer_view_->viewMetricsInfo();
 	getPainter().start();
 	paintText(*buffer_view_, vi);
 	lyxerr[Debug::DEBUG] << "Redraw screen" << endl;
@@ -167,7 +177,14 @@ void WorkArea::redraw(BufferView & bv)
 		( vi.p2 < vi.size - 1 ?  vi.y2 : height() );
 	expose(0, ymin, width(), ymax - ymin);
 	getPainter().end();
-	theCoords.doneUpdating();
+	//theCoords.doneUpdating();
+	buffer_view_->needsRedraw(false);
+
+	if (lyxerr.debugging(Debug::DEBUG)) {
+		lyxerr[Debug::DEBUG]
+			<< "  ymin = " << ymin << "  width() = " << width()
+			<< "  ymax-ymin = " << ymax-ymin << std::endl;
+	}
 }
 
 

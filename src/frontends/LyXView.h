@@ -153,6 +153,9 @@ public:
 	virtual lyx::frontend::Gui & gui();
 
 	lyx::frontend::WorkArea * workArea() const { return work_area_; }
+
+	/// Temporary method used by the kernel to redraw the work area.
+	virtual void redrawWorkArea();
 protected:
 	/// current work area (screen view of a BufferView).
 	/**

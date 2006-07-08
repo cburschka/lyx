@@ -64,7 +64,7 @@ public:
 	virtual void setScrollbarParams(int height, int pos, int line_height) = 0;
 
 	/// redraw the screen, without using existing pixmap
-	virtual void redraw(BufferView & bv);
+	virtual void redraw();
 
 	/// grey out (no buffer)
 	void greyOut();

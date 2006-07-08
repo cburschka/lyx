@@ -120,6 +120,15 @@ public:
 
 	///
 	ViewMetricsInfo const & viewMetricsInfo();
+	///
+	bool needsRedraw() const
+	{
+		return needs_redraw_;
+	}
+	void needsRedraw(bool redraw_needed)
+	{
+		needs_redraw_ = redraw_needed;
+	}
 private:
 	///
 	int width_;
@@ -127,6 +136,8 @@ private:
 	int height_;
 	///
 	ScrollbarParameters scrollbarParameters_;
+	///
+	bool needs_redraw_;
 
 	/// An error list (replaces the error insets)
 	ErrorList errorlist_;

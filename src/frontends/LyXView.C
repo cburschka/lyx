@@ -81,14 +81,20 @@ LyXView::LyXView(Gui & owner)
 }
 
 
+LyXView::~LyXView()
+{
+}
+
+
 void LyXView::setWorkArea(WorkArea * work_area)
 {
 	work_area_ = work_area;
 }
 
 
-LyXView::~LyXView()
+void LyXView::redrawWorkArea()
 {
+	work_area_->redraw();
 }
 
 

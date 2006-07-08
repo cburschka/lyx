@@ -408,3 +408,15 @@ ViewMetricsInfo const & BufferView::viewMetricsInfo()
 {
 	return pimpl_->viewMetricsInfo();
 }
+
+
+bool BufferView::needsRedraw() const
+{
+	return pimpl_->needsRedraw();
+}
+
+
+void BufferView::needsRedraw(bool redraw_needed)
+{
+	pimpl_->needsRedraw(redraw_needed);
+}
