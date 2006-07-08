@@ -21,9 +21,16 @@ class BufferView;
 class PainterInfo;
 class ViewMetricsInfo;
 
+namespace lyx {
+namespace frontend {
+class Painter;
+}
+}
+
 
 /// paint visible paragraph of main text
-void paintText(BufferView const & bv, ViewMetricsInfo const & vi);
+void paintText(BufferView const & bv, ViewMetricsInfo const & vi,
+	       lyx::frontend::Painter & pain);
 
 /// paint the rows of a text inset
 void paintTextInset(LyXText const & text, PainterInfo & pi, int x, int y);

@@ -882,9 +882,9 @@ void paintPar
 } // namespace anon
 
 
-void paintText(BufferView const & bv, ViewMetricsInfo const & vi)
+void paintText(BufferView const & bv, ViewMetricsInfo const & vi,
+	       Painter & pain)
 {
-	Painter & pain = bv.owner()->workArea()->getPainter();
 	LyXText * const text = bv.text();
 	bool const select = bv.cursor().selection();
 

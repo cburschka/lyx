@@ -169,14 +169,17 @@ void WorkArea::redraw()
 
 	greyed_out_ = false;
 	ViewMetricsInfo const & vi = buffer_view_->viewMetricsInfo();
-	getPainter().start();
-	paintText(*buffer_view_, vi);
+
+	Painter & pain = getPainter();
+
+	pain.start();
+	paintText(*buffer_view_, vi, pain);
 	lyxerr[Debug::DEBUG] << "Redraw screen" << endl;
 	int const ymin = std::max(vi.y1, 0);
 	int const ymax =
 		( vi.p2 < vi.size - 1 ?  vi.y2 : height() );
 	expose(0, ymin, width(), ymax - ymin);
-	getPainter().end();
+	pain.end();
 	//theCoords.doneUpdating();
 	buffer_view_->needsRedraw(false);
 
