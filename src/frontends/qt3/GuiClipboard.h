@@ -34,7 +34,7 @@ public:
 
 	virtual ~GuiClipboard() {}
 
-	/** ClipBoard overloaded methods
+	/** Clipboard overloaded methods
 	 */
 	//@{
 	void haveSelection(bool own)

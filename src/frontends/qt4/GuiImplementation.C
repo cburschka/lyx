@@ -10,6 +10,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
+#include <config.h>
+
 // This include must be declared before everything else because
 // of boost/Qt/LyX clash...
 #include "GuiView.h"

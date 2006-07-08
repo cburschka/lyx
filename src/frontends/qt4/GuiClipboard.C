@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file GuiClipboard.C
+ * \file qt4/GuiClipboard.C
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -9,6 +9,8 @@
  *
  * Full author contact details are available in file CREDITS.
  */
+
+#include <config.h>
 
 #include "GuiClipboard.h"
 #include "qt_helpers.h"

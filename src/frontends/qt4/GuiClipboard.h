@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file GuiClipboard.h
+ * \file qt4/GuiClipboard.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -29,7 +29,7 @@ public:
 
 	virtual ~GuiClipboard() {}
 
-	/** ClipBoard overloaded methods
+	/** Clipboard overloaded methods
 	 */
 	//@{
 	void haveSelection(bool own);
