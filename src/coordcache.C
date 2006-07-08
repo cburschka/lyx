@@ -33,26 +33,11 @@ void lyxbreaker(void const * data, const char * hint, int size)
 
 void CoordCache::clear()
 {
-	BOOST_ASSERT(updating);
 	arrays_.clear();
 	insets_.clear();
 	pars_.clear();
 	slices0_.clear();
 	slices1_.clear();
-}
-
-
-void CoordCache::startUpdating()
-{
-	BOOST_ASSERT(!updating);
-	updating = true;
-}
-
-
-void CoordCache::doneUpdating()
-{
-	BOOST_ASSERT(updating);
-	updating = false;
 }
 
 

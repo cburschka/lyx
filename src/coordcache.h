@@ -108,12 +108,6 @@ private:
  */
 class CoordCache {
 public:
-	CoordCache() : updating(false) { }
-	/// In order to find bugs, we record when we start updating the cache
-	void startUpdating();
-	/// When we are done, we record that to help find bugs
-	void doneUpdating();
-
 	void clear();
 	Point get(LyXText const *, lyx::pit_type);
 
@@ -125,18 +119,17 @@ public:
 	typedef std::map<LyXText const *, InnerParPosCache> SliceCache;
 
 	/// A map from MathArray to position on the screen
-	CoordCacheBase<MathArray> & arrays() { BOOST_ASSERT(updating); return arrays_; }
+	CoordCacheBase<MathArray> & arrays() { return arrays_; }
 	CoordCacheBase<MathArray> const & getArrays() const { return arrays_; }
 	/// A map from insets to positions on the screen
-	CoordCacheBase<InsetBase> & insets() { BOOST_ASSERT(updating); return insets_; }
+	CoordCacheBase<InsetBase> & insets() { return insets_; }
 	CoordCacheBase<InsetBase> const & getInsets() const { return insets_; }
 	/// A map from (LyXText, paragraph) pair to screen positions
-	ParPosCache & parPos() { BOOST_ASSERT(updating); return pars_; }
+	ParPosCache & parPos() { return pars_; }
 	ParPosCache const & getParPos() const { return pars_; }
 	///
 	SliceCache & slice(bool boundary)
 	{
-		BOOST_ASSERT(updating);
 		return boundary ? slices1_ : slices0_;
 	}
 	SliceCache const & getSlice(bool boundary) const
@@ -155,12 +148,6 @@ private:
 	SliceCache slices0_;
 	/// Used with boundary == 1
 	SliceCache slices1_;
-
-	/**
-	 * Debugging flag only: Set to true while the cache is being built.
-	 * No changes to the structure are allowed unless we are updating.
-	 */
-	bool updating;
 };
 
 extern CoordCache theCoords;

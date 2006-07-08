@@ -699,11 +699,6 @@ void BufferView::Pimpl::update(Update::flags flags)
 			<< "]  buffer: " << buffer_ << endl;
 	}
 
-	// This, together with doneUpdating(), verifies (using
-	// asserts) that screen redraw is not called from
-	// within itself.
-	theCoords.startUpdating();
-
 	// Check needed to survive LyX startup
 	if (buffer_) {
 		// Update macro store
@@ -727,10 +722,6 @@ void BufferView::Pimpl::update(Update::flags flags)
 
 	owner_->redrawWorkArea();
 	owner_->view_state_changed();
-
-	// Abort updating of the coord
-	// cache - just restore the old one
-	theCoords.doneUpdating();
 }
 
 
