@@ -184,7 +184,7 @@ for frontend in $FRONTENDS ; do
 	  QT_DO_IT_ALL
 	  FRONTENDS_PROGS="$FRONTENDS_PROGS lyx-qt\$(EXEEXT)"
 	  FRONTENDS_SUBDIRS="$FRONTENDS_SUBDIRS qt3"
-	  RPM_FRONTEND="qt"
+	  RPM_FRONTEND="qt3"
 	  FRONTEND_INFO="${FRONTEND_INFO}\
   Qt Frontend:\n\
       Qt version:\t\t${QT_VERSION}\n"
