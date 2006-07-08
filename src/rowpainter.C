@@ -797,11 +797,14 @@ void paintPar
 	static PainterInfo nullpi(pi.base.bv, nop);
 	int const ww = pi.base.bv->workHeight();
 
+	theCoords.parPos()[&text][pit] = Point(x, y);
+
 	Paragraph const & par = text.paragraphs()[pit];
+	if (par.rows().empty())
+		return;
 
 	RowList::const_iterator const rb = par.rows().begin();
 	RowList::const_iterator const re = par.rows().end();
-	theCoords.parPos()[&text][pit] = Point(x, y);
 
 	y -= rb->ascent();
 	lyx::size_type rowno(0);

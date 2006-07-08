@@ -2245,6 +2245,9 @@ int LyXText::cursorY(CursorSlice const & sl, bool boundary) const
 {
 	//lyxerr << "LyXText::cursorY: boundary: " << boundary << std::endl;
 	Paragraph const & par = getPar(sl.pit());
+	if (par.rows().empty())
+		return 0;
+
 	int h = 0;
 	h -= pars_[0].rows()[0].ascent();
 	for (pit_type pit = 0; pit < sl.pit(); ++pit)

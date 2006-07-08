@@ -201,8 +201,12 @@ Point coordOffset(DocIterator const & dit, bool boundary)
 Point getPos(DocIterator const & dit, bool boundary)
 {
 	CursorSlice const & bot = dit.bottom();
-	CoordCache::InnerParPosCache const & cache =
-		theCoords.getParPos().find(bot.text())->second;
+	CoordCache::ParPosCache::const_iterator cache_it = 
+		theCoords.getParPos().find(bot.text());
+	if (cache_it == theCoords.getParPos().end())
+		return Point(-1, -1);
+
+	CoordCache::InnerParPosCache const & cache = cache_it->second;
 	CoordCache::InnerParPosCache::const_iterator it = cache.find(bot.pit());
 	if (it == cache.end()) {
 		//lyxerr << "cursor out of view" << std::endl;
