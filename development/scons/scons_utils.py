@@ -191,7 +191,7 @@ def checkBoostLibraries(conf, libs, lib_paths, inc_paths, version, isDebug):
                     print 'Warning: Can not find an appropriate boost library in %s.' % path
                     lib_files = filter(lambda x: re.search('libboost_%s-[\w-]+%s.a' % (lib, version), x), files)
                     if len(lib_files) > 0:
-                        print 'Use library ' % lib_files[0]
+                        print 'Use library %s' % lib_files[0]
                 if len(lib_files) > 0:
                     # get xxx-gcc-1_33_1 from /usr/local/lib/libboost_xxx-gcc-1_33_1.a
                     lib_names.append(lib_files[0].split(os.sep)[-1][3:-2])
