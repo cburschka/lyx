@@ -36,7 +36,6 @@ using support::onlyFilename;
 using support::tempName;
 using support::unlink;
 using support::unzipFile;
-using support::unzippedFileName;
 using support::zippedFile;
 
 using std::endl;
