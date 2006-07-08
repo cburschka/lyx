@@ -84,30 +84,21 @@ def checkTeXPaths():
     if os.name == 'nt' or sys.platform == 'cygwin':
         from tempfile import mkstemp
         fd, tmpfname = mkstemp(suffix='.ltx')
-        # a wrapper file
-        wfd, wtmpfname = mkstemp(suffix='.ltx')
         if os.name == 'nt':
             inpname = tmpfname.replace('\\', '/')
-            wtmpfname = wtmpfname.replace('\\', '/')
         else:
             inpname = cmdOutput('cygpath -m ' + tmpfname)
-            wtmpfname = cmdOutput('cygpath -m ' + wtmpfname)
-        os.write(fd, r'''
-\relax
-    ''')
+        inpname = inpname.replace('~', '\\string~')
+        os.write(fd, r'\relax')
         os.close(fd)
-        os.write(wfd, r'\nonstopmode\input{' + inpname.replace('~', '\\string~') + '}' )
-        os.close(wfd)
-        if cmdOutput('latex ' + wtmpfname).find('Error') != -1:
+        latex_out = cmdOutput(r'latex "\nonstopmode\input{%s}"' % inpname)
+        if 'Error' in latex_out:
             print "configure: TeX engine needs posix-style paths in latex files"
             windows_style_tex_paths = 'false'
         else:
             print "configure: TeX engine needs windows-style paths in latex files"
             windows_style_tex_paths = 'true'
-        tmpbname,ext = os.path.splitext(os.path.basename(tmpfname))
-        wtmpbname,ext = os.path.splitext(os.path.basename(wtmpfname))
-        removeFiles( [ tmpfname, wtmpfname, tmpbname + '.log', \
-	    tmpbname + '.aux', wtmpbname + '.log', wtmpbname + '.aux' ] )
+        removeFiles([tmpfname, 'texput.log'])
     return windows_style_tex_paths
 
 
