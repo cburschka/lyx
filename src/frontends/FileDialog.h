@@ -81,15 +81,11 @@ public:
 			  lyx::support::FileFilterList const & filters,
 			  std::string const & suggested);
 
-	/* This *has* to be public because there is no way to specify
-	 * extern "C" functions as friends of Private implementation for
-	 * the xforms implementation ... grr
-	 */
+private:
 	class Private;
 	friend class Private;
 	Private * private_;
 
-private:
 	/// the dialog title
 	std::string title_;
 
