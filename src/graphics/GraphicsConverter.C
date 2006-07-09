@@ -162,15 +162,6 @@ Converter::Impl::Impl(string const & from_file,   string const & to_file_base,
 
 	// The conversion commands are stored in a stringstream
 	ostringstream script;
-	script << "#!/usr/bin/env python -tt\n"
-		   << "import os, sys\n\n"
-		   << "def unlinkNoThrow(file):\n"
-		   << "  ''' remove a file, do not throw if an error occurs '''\n"
-		   << "  try:\n"
-		   << "    os.unlink(file)\n"
-		   << "  except:\n"
-		   << "    pass\n\n";
-
 	bool const success = build_script(from_file, to_file_base,
 					  from_format, to_format, script);
 
@@ -341,6 +332,15 @@ bool build_script(string const & from_file,
 	if (from_format.empty())
 		return false;
 
+	script << "#!/usr/bin/env python -tt\n"
+	          "import os, sys\n\n"
+	          "def unlinkNoThrow(file):\n"
+	          "  ''' remove a file, do not throw if an error occurs '''\n"
+	          "  try:\n"
+	          "    os.unlink(file)\n"
+	          "  except:\n"
+	          "    pass\n\n";
+
 	// we do not use ChangeExtension because this is a basename
 	// which may nevertheless contain a '.'
 	string const to_file = to_file_base + '.'
@@ -410,18 +410,17 @@ bool build_script(string const & from_file,
 		// If this occurs, move ${outfile}.0 to ${outfile}
 		// and delete ${outfile}.? (ignore errors)
 		script << "if not os.path.isfile(outfile):\n"
-		       << "  if os.path.isfile(outfile + '.0'):\n"
-		       << "    os.rename(outfile + '.0', outfile)\n"
-			   << "    import glob\n"
-		       << "    for file in glob.glob(outfile + '.?'):\n"
-			   << "      unlinkNoThrow(file)\n"
-		       << "  else:\n"
-		       << "    sys.exit(1)\n\n";
+		          "  if os.path.isfile(outfile + '.0'):\n"
+		          "    os.rename(outfile + '.0', outfile)\n"
+		          "    import glob\n"
+		          "    for file in glob.glob(outfile + '.?'):\n"
+		          "      unlinkNoThrow(file)\n"
+		          "  else:\n"
+		          "    sys.exit(1)\n\n";
 
 		// Delete the infile, if it isn't the original, from_file.
-		if (infile != from_file) {
+		if (infile != from_file)
 			script << "unlinkNoThrow(infile)\n\n";
-		}
 	}
 
 	// Move the final outfile to to_file
