@@ -12,6 +12,7 @@
 
 #include "BufferView.h"
 #include "frontends/LyXView.h"
+#include "frontends/WorkArea.h"
 
 // Qt defines a macro 'signals' that clashes with a boost namespace.
 // All is well if the namespace is visible first.
@@ -295,7 +296,7 @@ void QContentPane::keyeventTimeout()
 	boost::shared_ptr<QLyXKeySym> sym(new QLyXKeySym);
 		sym->set(ev.get());
 
-		wa_->processKeySym(sym, q_key_state(ev->state()));
+		wa_->view().workArea()->processKeySym(sym, q_key_state(ev->state()));
 		keyeventQueue_.pop();
 
 		handle_autos = false;

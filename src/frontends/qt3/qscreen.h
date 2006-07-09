@@ -12,7 +12,7 @@
 #ifndef QSCREEN_H
 #define QSCREEN_H
 
-#include "frontends/GuiCursor.h"
+#include "frontends/WorkArea.h"
 
 #include <qcolor.h>
 #include <qpixmap.h>
