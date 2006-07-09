@@ -178,8 +178,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\user_name", LyXRC::RC_USER_NAME },
 	{ "\\view_dvi_paper_option", LyXRC::RC_VIEWDVI_PAPEROPTION },
 	// compatibility with versions older than 1.4.0 only
-	{ "\\viewer" ,LyXRC::RC_VIEWER},
-	{ "\\wheel_jump", LyXRC::RC_WHEEL_JUMP }
+	{ "\\viewer" ,LyXRC::RC_VIEWER}
 };
 
 const int lyxrcCount = sizeof(lyxrcTags) / sizeof(keyword_item);
@@ -227,7 +226,6 @@ void LyXRC::setDefaults() {
 	geometry_width = 0;
 	geometry_height = 0;
 	geometry_xysaved = true;
-	wheel_jump = 5;
 	// Default LaTeX font size:
 	font_sizes[LyXFont::SIZE_TINY] = "5.0";
 	font_sizes[LyXFont::SIZE_SCRIPT] = "7.0";
@@ -654,12 +652,6 @@ int LyXRC::read(LyXLex & lexrc)
 		case RC_SCREEN_GEOMETRY_XYSAVED:
 			if (lexrc.next()) {
 				geometry_xysaved = lexrc.getBool();
-			}
-			break;
-
-		case RC_WHEEL_JUMP:
-			if (lexrc.next()) {
-				wheel_jump = lexrc.getInteger();
 			}
 			break;
 
@@ -1515,11 +1507,6 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 		    geometry_xysaved != system_lyxrc.geometry_xysaved) {
 			os << "\\screen_geometry_xysaved " << convert<string>(geometry_xysaved)
 			   << '\n';
-		}
-	case RC_WHEEL_JUMP:
-		if (ignore_system_lyxrc ||
-		    wheel_jump != system_lyxrc.wheel_jump) {
-			os << "\\wheel_jump " << wheel_jump << '\n';
 		}
 	case RC_CURSOR_FOLLOWS_SCROLLBAR:
 		if (ignore_system_lyxrc ||
@@ -2515,10 +2502,6 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 
 	case RC_VIEWER:
-		break;
-
-	case RC_WHEEL_JUMP:
-		str = _("The number of lines that are scrolled by mice with wheels or five button mice.");
 		break;
 
 	case RC_LAST:

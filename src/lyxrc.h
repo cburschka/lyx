@@ -249,9 +249,6 @@ public:
 	bool geometry_xysaved;
 	/// Zoom factor for screen fonts
 	unsigned int zoom;
-	/// parameter for button_4 and button_5 (scrollwheel)
-	/// Only used by the xforms frontend
-	unsigned int wheel_jump;
 	/// Screen font sizes in points for each font size
 	std::string font_sizes[10];
 	/// Allow the use of scalable fonts? Default is yes.
