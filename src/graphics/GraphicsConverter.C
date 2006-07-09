@@ -326,6 +326,7 @@ bool build_script(string const & from_file,
 		  string const & to_format,
 		  ostream & script)
 {
+	BOOST_ASSERT(from_format != to_format);
 	lyxerr[Debug::GRAPHICS] << "build_script ... ";
 	typedef Converters::EdgePath EdgePath;
 
@@ -345,12 +346,6 @@ bool build_script(string const & from_file,
 	// which may nevertheless contain a '.'
 	string const to_file = to_file_base + '.'
 		+ formats.extension(to_format);
-
-	if (from_format == to_format) {
-		script << move_file(quoteName(from_file), quoteName(to_file));
-		lyxerr[Debug::GRAPHICS] << "ready (from == to)" << endl;
-		return true;
-	}
 
 	EdgePath edgepath = converters.getPath(from_format, to_format);
 
