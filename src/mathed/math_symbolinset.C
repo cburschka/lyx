@@ -26,17 +26,17 @@ using std::auto_ptr;
 
 
 MathSymbolInset::MathSymbolInset(latexkeys const * l)
-	: sym_(l), h_(0)
+	: sym_(l), h_(0), width_(0), scriptable_(false)
 {}
 
 
 MathSymbolInset::MathSymbolInset(char const * name)
-	: sym_(in_word_set(name)), h_(0)
+	: sym_(in_word_set(name)), h_(0), width_(0), scriptable_(false)
 {}
 
 
 MathSymbolInset::MathSymbolInset(string const & name)
-	: sym_(in_word_set(name.c_str())), h_(0)
+	: sym_(in_word_set(name.c_str())), h_(0), width_(0), scriptable_(false)
 {}
 
 
