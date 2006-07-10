@@ -677,6 +677,8 @@ void BufferView::Pimpl::update(Update::flags flags)
 		bool singlePar = flags & Update::SinglePar;
 		needs_redraw_ = flags & (Update::Force | Update::SinglePar);
 
+		updateMetrics(singlePar);
+
 		if ((flags & (Update::FitCursor | Update::MultiParSel))
 		    && (fitCursor() || multiParSel())) {
 			needs_redraw_ = true;
@@ -1413,7 +1415,7 @@ void BufferView::Pimpl::updateMetrics(bool singlepar)
 
 	// The coordinates of all these paragraphs are correct, cache them
 	int y = y1;
-	CoordCache::InnerParPosCache parPos = theCoords.parPos()[text];
+	CoordCache::InnerParPosCache & parPos = theCoords.parPos()[text];
 	for (lyx::pit_type pit = pit1; pit <= pit2; ++pit) {
 		Paragraph & par = text->getPar(pit);
 		y += par.ascent();
