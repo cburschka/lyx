@@ -138,26 +138,6 @@ void QLPainter::fillRectangle(int x, int y, int w, int h, LColor_color col)
 }
 
 
-void QLPainter::fillPolygon(int const * xp, int const * yp,
-	int np, LColor_color col)
-{
-	// Must use new as np is not known at compile time.
-	boost::scoped_array<QCOORD> points(new QCOORD[np * 2]);
-
-	//if (1) return;
-
-	for (int i = 0, j = 0; i < np; ++i) {
-		points[j++] = xp[i];
-		points[j++] = yp[i];
-	}
-
-	setPen(col);
-	qp_->setBrush(lcolorcache.get(col));
-	qp_->drawPolygon(QPointArray(np, points.get()));
-	qp_->setBrush(Qt::NoBrush);
-}
-
-
 void QLPainter::arc(int x, int y, unsigned int w, unsigned int h,
 	int a1, int a2, LColor_color col)
 {

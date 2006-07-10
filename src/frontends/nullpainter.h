@@ -48,8 +48,6 @@ public:
 	///
 	void fillRectangle(int, int, int, int, LColor_color) {}
 	///
-	void fillPolygon(int const *, int const *, int, LColor_color) {}
-	///
 	void arc(int, int,	unsigned int, unsigned int,
 		int, int, LColor_color) {}
 	///

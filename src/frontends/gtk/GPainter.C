@@ -170,20 +170,6 @@ void GPainter::fillRectangle(int x, int y, int w, int h,
 }
 
 
-void GPainter::fillPolygon(int const * xp, int const * yp,
-	int np, LColor_color col)
-{
-	setForeground(col);
-	std::vector<Gdk::Point> points(np);
-
-	for (int i = 0; i < np; ++i) {
-		points[i].set_x(xp[i]);
-		points[i].set_y(yp[i]);
-	}
-	pixmap_->draw_polygon(gc_, true, points);
-}
-
-
 void GPainter::arc(int x, int y, unsigned int w, unsigned int h,
 	int a1, int a2, LColor_color col)
 {

@@ -85,13 +85,6 @@ public:
 		int w, int h,
 		LColor_color);
 
-	/// draw a filled (irregular) polygon
-	virtual void fillPolygon(
-		int const * xp,
-		int const * yp,
-		int np,
-		LColor_color);
-
 	/// draw an arc
 	virtual void arc(
 		int x, int y,
