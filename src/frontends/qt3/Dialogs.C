@@ -105,7 +105,7 @@ char const * const dialognames[] = {
 "aboutlyx", "bibitem", "bibtex", "box", "branch", "changes", "character",
 "citation", "document", "errorlist", "ert", "external", "file",
 "findreplace", "float", "graphics", "include", "index", "label", "log", "view-source",
-"mathpanel", "mathdelimiter", "mathmatrix", "note", "paragraph", "preamble",
+"mathpanel", "mathdelimiter", "mathmatrix", "note", "paragraph",
 "prefs", "print", "ref", "sendto", "spellchecker","tabular", "tabularcreate",
 
 #ifdef HAVE_LIBAIKSAURUS
@@ -177,25 +177,10 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setController(new ControlCitation(*dialog));
 		dialog->setView(new QCitation(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
-	} else if (name == "document" || name == "preamble") {
-
-		// This nastiness will exist only as long as xforms
-		// has a separate preamble dialog.
-
-		string const other = (name == "document") ?
-			"preamble" : "document";
-
-		std::map<string, DialogPtr>::iterator it =
-			dialogs_.find(other);
-
-		if (it != dialogs_.end())
-			dialog = it->second;
-		else {
-			dialog->setController(new ControlDocument(*dialog));
-			dialog->setView(new QDocument(*dialog));
-			dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
-		}
-
+	} else if (name == "document") {
+		dialog->setController(new ControlDocument(*dialog));
+		dialog->setView(new QDocument(*dialog));
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "errorlist") {
 		dialog->setController(new ControlErrorList(*dialog));
 		dialog->setView(new QErrorList(*dialog));
