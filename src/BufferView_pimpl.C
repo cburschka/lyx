@@ -1417,7 +1417,7 @@ void BufferView::Pimpl::updateMetrics(bool singlepar)
 	int y = y1;
 	CoordCache::InnerParPosCache & parPos = theCoords.parPos()[text];
 	for (lyx::pit_type pit = pit1; pit <= pit2; ++pit) {
-		Paragraph & par = text->getPar(pit);
+		Paragraph const & par = text->getPar(pit);
 		y += par.ascent();
 		parPos[pit] = Point(0, y);
 		if (singlepar && pit == cursor_.bottom().pit()) {
