@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file qt3/GuiClipboard.C
+ * \file qt3/GuiSelection.C
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,7 +12,7 @@
 
 #include <config.h>
 
-#include "GuiClipboard.h"
+#include "GuiSelection.h"
 #include "qt_helpers.h"
 
 #include "debug.h"
@@ -31,10 +31,10 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-string const GuiClipboard::get() const
+string const GuiSelection::get() const
 {
-	QString const str = qApp->clipboard()->text(QClipboard::Clipboard);
-	lyxerr[Debug::ACTION] << "GuiClipboard::get: " << (const char*) str
+	QString const str = qApp->clipboard()->text(QClipboard::Selection);
+	lyxerr[Debug::ACTION] << "GuiSelection::get: " << (const char*) str
 	                      << endl;
 	if (str.isNull())
 		return string();
@@ -43,12 +43,12 @@ string const GuiClipboard::get() const
 }
 
 
-void GuiClipboard::put(string const & str)
+void GuiSelection::put(string const & str)
 {
-	lyxerr[Debug::ACTION] << "GuiClipboard::put: " << str << endl;
+	lyxerr[Debug::ACTION] << "GuiSelection::put: " << str << endl;
 
 	qApp->clipboard()->setText(toqstr(externalLineEnding(str)),
-	                           QClipboard::Clipboard);
+	                           QClipboard::Selection);
 }
 
 } // namespace frontend

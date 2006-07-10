@@ -50,6 +50,7 @@
 #include "frontends/Gui.h"
 #include "frontends/LyXView.h"
 #include "frontends/Clipboard.h"
+#include "frontends/Selection.h"
 
 #include "insets/insetcommand.h"
 #include "insets/insetfloatlist.h"
@@ -124,7 +125,7 @@ namespace {
 		if (selecting || cur.mark())
 			cur.setSelection();
 		if (!cur.selection())
-			cur.bv().owner()->gui().clipboard().haveSelection(false);
+			cur.bv().owner()->gui().selection().haveSelection(false);
 		cur.bv().switchKeyMap();
 	}
 
@@ -983,9 +984,22 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_PRIMARY_SELECTION_PASTE: {
+	case LFUN_CLIPBOARD_PASTE: {
 		cur.clearSelection();
 		string const clip = bv->owner()->gui().clipboard().get();
+		if (!clip.empty()) {
+			recordUndo(cur);
+			if (cmd.argument == "paragraph")
+				insertStringAsParagraphs(cur, clip);
+			else
+				insertStringAsLines(cur, clip);
+		}
+		break;
+	}
+
+	case LFUN_PRIMARY_SELECTION_PASTE: {
+		cur.clearSelection();
+		string const clip = bv->owner()->gui().selection().get();
 		if (!clip.empty()) {
 			recordUndo(cur);
 			if (cmd.argument == "paragraph")
@@ -1045,7 +1059,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			cursorEnd(cur);
 			cur.setSelection();
 			bv->cursor() = cur;
-			bv->owner()->gui().clipboard().haveSelection(cur.selection());
+			bv->owner()->gui().selection().haveSelection(cur.selection());
 		}
 		break;
 
@@ -1053,7 +1067,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		if (cmd.button() == mouse_button::button1) {
 			selectWord(cur, lyx::WHOLE_WORD_STRICT);
 			bv->cursor() = cur;
-			bv->owner()->gui().clipboard().haveSelection(cur.selection());
+			bv->owner()->gui().selection().haveSelection(cur.selection());
 		}
 		break;
 
@@ -1135,7 +1149,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 		// finish selection
 		if (cmd.button() == mouse_button::button1)
-			bv->owner()->gui().clipboard().haveSelection(cur.selection());
+			bv->owner()->gui().selection().haveSelection(cur.selection());
 
 		bv->switchKeyMap();
 		bv->owner()->updateMenubar();
@@ -1156,7 +1170,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		if (lyxrc.auto_region_delete) {
 			if (cur.selection())
 				cutSelection(cur, false, false);
-			bv->owner()->gui().clipboard().haveSelection(false);
+			bv->owner()->gui().selection().haveSelection(false);
 		}
 
 		cur.clearSelection();
@@ -1869,6 +1883,7 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_SERVER_GET_FONT:
 	case LFUN_SERVER_GET_LAYOUT:
 	case LFUN_LAYOUT:
+	case LFUN_CLIPBOARD_PASTE:
 	case LFUN_PRIMARY_SELECTION_PASTE:
 	case LFUN_DATE_INSERT:
 	case LFUN_SELF_INSERT:

@@ -54,6 +54,7 @@ Gtk::BuiltinStockID getGTKStockIcon(FuncRequest const & func)
 		case LFUN_UNDO: return Gtk::Stock::UNDO;
 		case LFUN_REDO: return Gtk::Stock::REDO;
 		case LFUN_PASTE: return Gtk::Stock::PASTE;
+		case LFUN_CLIPBOARD_PASTE: return Gtk::Stock::PASTE;
 		case LFUN_PRIMARY_SELECTION_PASTE: return Gtk::Stock::PASTE;
 		case LFUN_CUT: return Gtk::Stock::CUT;
 		case LFUN_COPY: return Gtk::Stock::COPY;

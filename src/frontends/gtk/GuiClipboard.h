@@ -14,8 +14,6 @@
 
 #include "frontends/Clipboard.h"
 
-#include "GWorkArea.h"
-
 namespace lyx {
 namespace frontend {
 
@@ -25,28 +23,16 @@ namespace frontend {
 class GuiClipboard: public lyx::frontend::Clipboard
 {
 public:
-	GuiClipboard(GWorkArea * work_area)
-		: old_work_area_(work_area)
-	{
-	}
-
 	virtual ~GuiClipboard() {}
 
 	/** Clipboard overloaded methods
 	 */
 	//@{
-	void haveSelection(bool own)
-	{
-		old_work_area_->haveSelection(own);
-	}
 
 	std::string const get() const;
 
 	void put(std::string const & str);
 	//@}
-
-private:
-	GWorkArea * old_work_area_;
 };
 
 } // namespace frontend

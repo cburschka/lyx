@@ -25,14 +25,11 @@ namespace frontend {
 class GuiClipboard: public Clipboard
 {
 public:
-	GuiClipboard() {}
-
 	virtual ~GuiClipboard() {}
 
 	/** Clipboard overloaded methods
 	 */
 	//@{
-	void haveSelection(bool own);
 	std::string const get() const;
 	void put(std::string const & str);
 	//@}

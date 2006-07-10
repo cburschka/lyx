@@ -32,6 +32,7 @@ libfrontends_la_SOURCES = \
 	Toolbars.h \
 	Clipboard.h \
 	Gui.h \
+	Selection.h \
 	WorkArea.C \
 	WorkArea.h \
 	font_metrics.h \

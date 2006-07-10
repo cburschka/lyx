@@ -19,6 +19,7 @@
 #include "GWorkArea.h"
 
 #include "GuiClipboard.h"
+#include "GuiSelection.h"
 #include "GuiWorkArea.h"
 
 #include <boost/shared_ptr.hpp>
@@ -42,7 +43,12 @@ public:
 
 	lyx::frontend::Clipboard & clipboard()
 	{
-		return *clipboard_;
+		return clipboard_;
+	}
+
+	lyx::frontend::Selection & selection()
+	{
+		return *selection_;
 	}
 
 	int newView(unsigned int w, unsigned int h);
@@ -68,7 +74,9 @@ public:
 
 private:
 	///
-	boost::shared_ptr<GuiClipboard> clipboard_;
+	GuiClipboard clipboard_;
+	///
+	boost::shared_ptr<GuiSelection> selection_;
 	///
 	boost::shared_ptr<GuiWorkArea> work_area_;
 	///

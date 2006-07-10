@@ -31,31 +31,9 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-#ifdef Q_WS_X11
-QClipboard::Mode const CLIPBOARD_MODE = QClipboard::Selection;
-#else
-// FIXME external clipboard support is mostly broken for windows
-// because the following fixe would involves too much side effects WRT mouse selection.
-//QClipboard::Mode const CLIPBOARD_MODE = QClipboard::Clipboard;
-QClipboard::Mode const CLIPBOARD_MODE = QClipboard::Selection;
-#endif
-
-void GuiClipboard::haveSelection(bool own)
-{
-	if (!qApp->clipboard()->supportsSelection())
-		return;
-
-	if (own) {
-		qApp->clipboard()->setText(QString(), CLIPBOARD_MODE);
-	}
-	// We don't need to do anything if own = false, as this case is
-	// handled by QT.
-}
-
-
 string const GuiClipboard::get() const
 {
-	QString str = qApp->clipboard()->text(CLIPBOARD_MODE);
+	QString const str = qApp->clipboard()->text(QClipboard::Clipboard);
 	lyxerr[Debug::ACTION] << "GuiClipboard::get: " << (const char*) str
 	                      << endl;
 	if (str.isNull())
@@ -69,7 +47,8 @@ void GuiClipboard::put(string const & str)
 {
 	lyxerr[Debug::ACTION] << "GuiClipboard::put: " << str << endl;
 
-	qApp->clipboard()->setText(toqstr(externalLineEnding(str)), CLIPBOARD_MODE);
+	qApp->clipboard()->setText(toqstr(externalLineEnding(str)),
+	                           QClipboard::Clipboard);
 }
 
 } // namespace frontend

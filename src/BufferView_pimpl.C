@@ -57,12 +57,12 @@
 #include "insets/insettext.h"
 
 #include "frontends/Alert.h"
-#include "frontends/Clipboard.h"
 #include "frontends/Dialogs.h"
 #include "frontends/FileDialog.h"
 #include "frontends/font_metrics.h"
 #include "frontends/Gui.h"
 #include "frontends/LyXView.h"
+#include "frontends/Selection.h"
 
 #include "graphics/Previews.h"
 
@@ -589,7 +589,7 @@ void BufferView::Pimpl::selectionRequested()
 		xsel_cache_.set = cur.selection();
 		sel = cur.selectionAsString(false);
 		if (!sel.empty())
-			owner_->gui().clipboard().put(sel);
+			owner_->gui().selection().put(sel);
 	}
 }
 

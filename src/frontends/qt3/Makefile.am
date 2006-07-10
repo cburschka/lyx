@@ -29,6 +29,7 @@ libqt3_la_SOURCES = \
 	FileDialog.C \
 	GuiClipboard.C GuiClipboard.h \
 	GuiImplementation.h \
+	GuiSelection.C GuiSelection.h \
 	GuiWorkArea.h \
 	LyXKeySymFactory.C \
 	QLMenubar.C QLMenubar.h \

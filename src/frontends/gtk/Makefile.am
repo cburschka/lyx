@@ -112,6 +112,7 @@ libgtk_la_SOURCES = \
 	GUrl.C \
 	GUrl.h \
 	GuiClipboard.C GuiClipboard.h \
+	GuiSelection.C GuiSelection.h \
 	GuiWorkArea.h \
 	GView.C \
 	GView.h \

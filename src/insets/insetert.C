@@ -239,6 +239,7 @@ void InsetERT::doDispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 	}
 	case LFUN_PASTE:
+	case LFUN_CLIPBOARD_PASTE:
 	case LFUN_PRIMARY_SELECTION_PASTE: {
 		InsetCollapsable::doDispatch(cur, cmd);
 
@@ -380,6 +381,7 @@ bool InsetERT::getStatus(LCursor & cur, FuncRequest const & cmd,
 		case LFUN_QUOTE_INSERT:
 		case LFUN_INSET_MODIFY:
 		case LFUN_PASTE:
+		case LFUN_CLIPBOARD_PASTE:
 		case LFUN_PRIMARY_SELECTION_PASTE:
 			status.enabled(true);
 			return true;

@@ -498,8 +498,8 @@ void cutSelection(LCursor & cur, bool doclear, bool realcut)
 		// solved by running the line below only when the selection has
 		// finished. The solution used currently just works, to make it
 		// faster we need to be more clever and probably also have more
-		// calls to stuffClipboard. (Lgb)
-//		cur.bv().owner()->gui().clipboard().put(cur.selectionAsString(true));
+		// calls to cur.bv().owner()->gui().selection().put. (Lgb)
+//		cur.bv().owner()->gui().selection().put(cur.selectionAsString(true));
 	
 
 		// make sure that the depth behind the selection are restored, too

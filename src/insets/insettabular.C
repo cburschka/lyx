@@ -42,6 +42,7 @@
 #include "frontends/LyXView.h"
 #include "frontends/Clipboard.h"
 #include "frontends/Painter.h"
+#include "frontends/Selection.h"
 #include "frontends/nullpainter.h"
 
 #include <sstream>
@@ -686,8 +687,11 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 			cell(cur.idx())->dispatch(cur, cmd);
 		break;
 
+	case LFUN_CLIPBOARD_PASTE:
 	case LFUN_PRIMARY_SELECTION_PASTE: {
-		string const clip = cur.bv().owner()->gui().clipboard().get();
+		string const clip = (cmd.action == LFUN_CLIPBOARD_PASTE) ?
+			cur.bv().owner()->gui().clipboard().get() :
+			cur.bv().owner()->gui().selection().get();
 		if (clip.empty())
 			break;
 		// pass to InsertAsciiString, but

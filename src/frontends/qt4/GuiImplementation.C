@@ -37,6 +37,12 @@ Clipboard& GuiImplementation::clipboard()
 }
 
 
+Selection& GuiImplementation::selection()
+{
+	return selection_;
+}
+
+
 int GuiImplementation::newView(unsigned int /*w*/, unsigned int /*h*/)
 {
 	size_t const id = max_view_id_;

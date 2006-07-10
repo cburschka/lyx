@@ -27,11 +27,17 @@ class Clipboard
 public:
 	virtual ~Clipboard() {}
 
-	/// a selection exists
-	virtual void haveSelection(bool) = 0;
-	/// get the X clipboard contents
+	/**
+	 * Get the window system clipboard contents.
+	 * This should be called when the user requests to paste from the
+	 * clipboard.
+	 */
 	virtual std::string const get() const = 0;
-	/// fill the clipboard
+	/**
+	 * Fill the window system clipboard.
+	 * This should be called when the user requests to cut or copy to
+	 * the clipboard.
+	 */
 	virtual void put(std::string const &) = 0;
 };
 

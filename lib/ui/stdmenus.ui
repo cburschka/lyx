@@ -85,7 +85,7 @@ Menuset
 		Item "Copy" "copy"
 		Item "Paste" "paste"
 		Submenu "Paste Recent" "pasterecent"
-		Submenu "Paste External Selection" "edit_paste"
+		Submenu "Paste External Clipboard/Selection" "edit_paste"
 		Separator
 		Item "Find & Replace...|F" "dialog-show findreplace"
 		Separator
@@ -118,6 +118,8 @@ Menuset
 	End
 
 	Menu "edit_paste"
+		Item "Clipboard as Lines|C" "clipboard-paste"
+		Item "Clipboard as Paragraphs|a" "clipboard-paste paragraph"
 		Item "Selection as Lines|L" "primary-selection-paste"
 		Item "Selection as Paragraphs|P" "primary-selection-paste paragraph"
 	End

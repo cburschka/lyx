@@ -37,6 +37,7 @@ libqt4_la_SOURCES = \
 	FileDialog.C \
 	FontLoader.h FontLoader.C \
 	GuiClipboard.h GuiClipboard.C \
+	GuiSelection.h GuiSelection.C \
 	GuiImplementation.h GuiImplementation.C \
 	LyXKeySymFactory.C \
 	QLMenubar.C QLMenubar.h \

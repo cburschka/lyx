@@ -236,6 +236,7 @@ void InsetCharStyle::doDispatch(LCursor & cur, FuncRequest & cmd)
 				InsetText::doDispatch(cur, cmd);
 			break;
 	case LFUN_PASTE:
+	case LFUN_CLIPBOARD_PASTE:
 	case LFUN_PRIMARY_SELECTION_PASTE: {
 		InsetCollapsable::doDispatch(cur, cmd);
 		forceParagraphsToDefault(cur);

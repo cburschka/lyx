@@ -52,8 +52,8 @@
 #include "frontends/Dialogs.h"
 #include "frontends/Gui.h"
 #include "frontends/LyXView.h"
-#include "frontends/Clipboard.h"
 #include "frontends/Painter.h"
+#include "frontends/Selection.h"
 #include "frontends/nullpainter.h"
 
 #include <sstream>
@@ -1088,7 +1088,7 @@ void MathNestInset::lfunMousePress(LCursor & cur, FuncRequest & cmd)
 
 	if (cmd.button() == mouse_button::button2) {
 		MathArray ar;
-		asArray(cur.bv().owner()->gui().clipboard().get(), ar);
+		asArray(cur.bv().owner()->gui().selection().get(), ar);
 		cur.clearSelection();
 		editXY(cur, cmd.x, cmd.y);
 		cur.insert(ar);
@@ -1121,7 +1121,7 @@ void MathNestInset::lfunMouseRelease(LCursor & cur, FuncRequest & cmd)
 	//lyxerr << "## lfunMouseRelease: buttons: " << cmd.button() << endl;
 
 	if (cmd.button() == mouse_button::button1) {
-		//cur.bv().owner()->gui().clipboard().put(cur.grabSelection());
+		//cur.bv().owner()->gui().selection().put(cur.grabSelection());
 		return;
 	}
 

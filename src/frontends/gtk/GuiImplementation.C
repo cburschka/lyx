@@ -39,7 +39,7 @@ int GuiImplementation::newWorkArea(unsigned int w, unsigned int h, int /*view_id
 	old_work_area_.reset(new GWorkArea(*view_.get(), w, h));
 	old_screen_.reset(new GScreen(*old_work_area_.get()));
 	work_area_.reset(new GuiWorkArea(old_screen_.get(), old_work_area_.get()));
-	clipboard_.reset(new GuiClipboard(old_work_area_.get()));
+	selection_.reset(new GuiSelection(old_work_area_.get()));
 
 	// FIXME BufferView creation should be independant of WorkArea creation
 	buffer_views_[0].reset(new BufferView(view_.get()));
@@ -51,7 +51,7 @@ int GuiImplementation::newWorkArea(unsigned int w, unsigned int h, int /*view_id
 
 void GuiImplementation::destroyWorkArea(int /*id*/)
 {
-	clipboard_.reset();
+	selection_.reset();
 	work_area_.reset();
 	old_work_area_.reset();
 	old_screen_.reset();

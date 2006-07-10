@@ -134,6 +134,7 @@ void LyXAction::init()
 		{ LFUN_CHAR_DELETE_FORWARD, "delete-forward", SingleParUpdate },
 		{ LFUN_CHAR_FORWARD, "char-forward", ReadOnly | NoUpdate},
 		{ LFUN_CHAR_FORWARD_SELECT, "forward-select", ReadOnly | SingleParUpdate },
+		{ LFUN_CLIPBOARD_PASTE, "clipboard-paste", Noop },
 		{ LFUN_COMMAND_EXECUTE, "command-execute", NoBuffer },
 		{ LFUN_COMMAND_PREFIX, "command-prefix", NoBuffer },
 		{ LFUN_COMMAND_SEQUENCE, "command-sequence", NoBuffer },

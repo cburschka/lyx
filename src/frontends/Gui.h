@@ -25,6 +25,7 @@ namespace lyx {
 namespace frontend {
 
 class Clipboard;
+class Selection;
 class WorkArea;
 
 
@@ -38,6 +39,8 @@ public:
 
 	///
 	virtual Clipboard & clipboard() = 0;
+	///
+	virtual Selection & selection() = 0;
 
 	///
 	virtual int newView(unsigned int width, unsigned int height) = 0;

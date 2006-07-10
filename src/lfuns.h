@@ -367,6 +367,7 @@ enum kb_action {
 	// 280
 	LFUN_BUFFER_TOGGLE_COMPRESSION,                 // bpeng 20060427
 	LFUN_MATH_BIGDELIM,
+	LFUN_CLIPBOARD_PASTE,
 
 	LFUN_LASTACTION                  // end of the table
 };
