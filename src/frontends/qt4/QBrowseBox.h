@@ -39,7 +39,7 @@ public:
 	int exec(int x, int y);
 	int exec(const QWidget * trigger);
 
-signals:
+Q_SIGNALS:
 	void selected(int, int);
 
 protected:

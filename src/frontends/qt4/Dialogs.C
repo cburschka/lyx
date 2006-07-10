@@ -58,10 +58,6 @@
 #include "QERT.h"
 #include "QExternal.h"
 #include "QFloat.h"
-// Here would be an appropriate point to lecture on the evils
-// of the Qt headers, those most fucked up of disgusting ratholes.
-// But I won't.
-#undef signals
 #include "QGraphics.h"
 #include "QInclude.h"
 #include "QIndex.h"
