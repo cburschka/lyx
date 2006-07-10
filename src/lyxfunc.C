@@ -2087,7 +2087,6 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_USE_SPELL_LIB:
 	case LyXRC::RC_VIEWDVI_PAPEROPTION:
 	case LyXRC::RC_VIEWER:
-	case LyXRC::RC_WHEEL_JUMP:
 	case LyXRC::RC_LAST:
 		break;
 	}
