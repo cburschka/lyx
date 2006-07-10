@@ -1914,6 +1914,7 @@ if build_qt4:
         '-DQT_GENUINE_STR',
         '-DQT_NO_STL',
         '-DQT3_SUPPORT',
+        '-DQT_NO_KEYWORDS',
         ]
     )
 
