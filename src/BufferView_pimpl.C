@@ -1413,16 +1413,18 @@ void BufferView::Pimpl::updateMetrics(bool singlepar)
 
 	// The coordinates of all these paragraphs are correct, cache them
 	int y = y1;
+	CoordCache::InnerParPosCache parPos = theCoords.parPos()[text];
 	for (lyx::pit_type pit = pit1; pit <= pit2; ++pit) {
-		y += text->getPar(pit).ascent();
-		theCoords.parPos()[text][pit] = Point(0, y);
+		Paragraph & par = text->getPar(pit);
+		y += par.ascent();
+		parPos[pit] = Point(0, y);
 		if (singlepar && pit == cursor_.bottom().pit()) {
 			// In Single Paragraph mode, collect here the
 			// y1 and y2 of the (one) paragraph the cursor is in
-			y1 = y - text->getPar(pit).ascent();
-			y2 = y + text->getPar(pit).descent();
+			y1 = y - par.ascent();
+			y2 = y + par.descent();
 		}
-		y += text->getPar(pit).descent();
+		y += par.descent();
 	}
 
 	if (singlepar) {
