@@ -1,126 +1,56 @@
-=================
-INSTALL for Win32
-=================
+COMPILING LyX for Win32
+=======================
 
-LyX can be built with either MinGW/MSYS or Microsoft Visual Studio. The
-instructions below describe the detailed steps needed to set up a MinGW/MSYS
-environment ready to compile LyX. Several of these steps (installation of the
-third-party libraries) need to be performed for a MSVS build also but, of
-course, the details of how to do so are different. Nonetheless, we hope that
-the description below provides the MSVS developer with enough info to get
-started.
+LyX 1.4 can be build with MinGW/MSYS. To compile LyX, follow these steps:
 
-Building LyX the first time can appear to be a daunting task but much of that
-is knowing which packages to download in the first place. Once you've set up
-the build environment, actually building LyX should be straightforward. 
+1	Install a MSYS/MinGW environment
+	
+	Download from http://sourceforge.net/projects/mingw/
+	
+	* MSYS 1.0.10 or later	
+	* MinGW Installer 5.0.3 or later
+	
+	Install MSYS in c:\msys and MinGW in c:\msys\mingw. When installing MinGW,
+	select the Candidate package and a Full installation.
+	
+2	Install the dependencies
+	
+	Download ftp://ftp.lyx.org/pub/lyx/contrib/lyx-windows-deps-mingw.zip
+	and extract in c:\msys
+	
+3	Compile
+	
+	First, copy the LyX source code to c:\msys\home\lyx-14
+	
+	Then, start MSYS and enter:
+	
+	cd /home/lyx-14/development/Win32/packaging
+	./build_lyxwin.sh
+	
+	Compilation will start and take quite some time.
+	
+	NOTE:
+	
+	If you are compiling a development (SVN) version, you will be asked to run
+	autogen.sh in a Cygwin environment. Download and install Cygwin
+	(www.cygwin.com) with automake/autoconf, start the Cygwin console and
+	enter:
+	
+	cd /cygdrive/c/msys/home/lyx-14
+	./autogen.sh
+	
+	Then follow step 3 again.
+	
+4	Create the installer
+	
+	To create an installer with LyX and all related components, download
+	and install the latest NSIS.
+	
+	Also download the latest Python from www.python.org and install in
+	C:\Python24
+	
+	Finally, go to C:\msys\home\lyx-14\development\Win32\packaging\installer
+	(in a normal Windows Explorer), right-click on lyx.nsi and click
+	"Compile NSIS Script".
 
-The instructions below should guide you through the installation of the 
-MinGW/MSYS build environment, together with details on how to grab and build
-gettext, libiconv, qtwin, and aspell.
-
-Once you've done all that, you should go read the README in 
-development/Win32/packaging/ (MSVS users just open up development/Win32/lyx.sln
-and click Build) The two scripts in the same directory, build_lyxwin.sh and
-package_lyxwin.sh should automate the entire build process. If not and you
-really can't figure out what to do next, then please, please drop a mail to
-lyx-devel@lists.lyx.org.
-
-Enjoy!
-The LyX Team
-
-=============================================================================
-
-1 MinGW & MSYS
-
-1.1 Download the following packages from http://www.mingw.org/download.shtml:
-
-      binutils-2.16.91-...tar.gz
-      gcc-core-3.4.5-...tar.gz
-      gcc-g++-3.4.5-...tar.gz
-      mingw32-make-3.80.0-3.tar.gz
-      mingw-runtime-3.9.tar.gz
-      mingw-utils-0.3.tar.gz
-      MSYS-1.0.11-...exe
-      msys-autoconf-2.59.tar.bz2
-      msys-automake-1.8.2.tar.bz2
-      msysDTK-1.0.1.exe
-      msys-libtool-1.5.tar.bz2
-      w32api-3.6.tar.gz
-
-1.2 Install in C:\MinGW
-
-      binutils, gcc-core, gcc-g++, mingw32-make, mingw-runtime,
-      mingw-utils, w32api
-
-1.3 Install in C:\msys
-
-      MSYS, msys-autoconf, msys-automake, msysDTK, msys-libtool
-
-
-2 Gettext 
-
-2.1 Download the following package from http://www.gnu.org/software/gettext:
-
-      gettext-0.14.5.tar.gz
-
-2.2 Extract the package in your home directory and run
-
-      ./configure --disable-shared --prefix=/mingw
-      make
-      make install
-
-
-3 Libiconv
-
-3.1 Download the following package from http://www.gnu.org/software/libiconv:
-
-      libiconv-1.10.tar.gz
-
-3.2 Extract the package in your home directory and run
-
-      ./configure --prefix=/mingw
-      make
-      make install
-
-
-4 QTWIN (see http://sourceforge.net/projects/qtwin)
-
-4.1 Get the latest CVS version
-
-    Using the cvs executable that is packaged with MSYS,
-    from the MSYS command prompt:
-
-      cvs -d :pserver:anonymous@cvs.sourceforge.net:/cvsroot/qtwin login
-      <return> (i.e., no password)
-      cvs -z3 -d :pserver:anonymous@cvs.sourceforge.net:/cvsroot/qtwin co \
-         -r QT_WIN32_3_3_BRANCH qt-3
-
-4.2 Compile the qtwin library
-
-    Open a Windows command line (run cmd.exe) and enter 
-
-      cd <path_to_your_qtwin_dir>
-      set QMAKESPEC=win32-g++
-      setenv.bat
-      configure.bat -release
-
-
-5. Aspell
-
-5.1 Download the following package from http://aspell.net/
-
-      aspell-0.60.4.tar.gz
-
-5.2 Extract the package in your home directory. 
-
-    Use development/Win32/packaging/build_aspell.sh to build Aspell now. 
-
-5.3 You can download pre-compiled aspell dictionaries from 
-    http://wiki.lyx.org/Windows/Aspell6
-
-
-6. LyX
-
-6.1 As mentioned above, read the README in development/Win32/packaging.
-
-=============================================================================
+	
