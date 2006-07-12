@@ -1,3 +1,23 @@
+What's new in version 1.4.2?
+----------------------------
+
+This is a bug fix release that improves performance, stability and
+native OS support. Notable new features include:
+
+- LyX now automatically uses file viewers and editors set at OS level
+  [Windows and Mac OS X only].
+
+- The windows installer has been completely rewritten.
+
+- A new function buffer-toggle-compression (and corresponding entry in
+  the Document menu) has been added to change whether the file will be
+  compressed on disk or not.
+
+- A "LaTeX (pdflatex)" output format has been added. This new output
+  format produces .tex files that are suitable for pdflatex, including
+  figure conversion to png, pdf or jpeg instead of eps.
+
+
 What's new in version 1.4.1?
 ----------------------------
 
