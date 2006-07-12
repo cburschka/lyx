@@ -52,46 +52,6 @@ What's new
 
 ** Bug fixes
 
-* Document input/output:
-
-- Convert definitions of itemize and enumerate environments in old layout
-  files correctly.
-
-- Fix conversion of minipages (default height and inner vertical
-  position) from 1.3.
-
-- Make sure that the amsmath package is used in LaTeX output when
-  using the AMS-specific commands \xleftarrow, \xrightarrow or
-  array constructs split, gathered, aligned and alignedat (bug 2149).
-
-- Load the tipa package automatically when needed.
-
-- Properly strike out deleted math formulas when change tracking is
-  active (bug 2214).
-
-- Don't get confused by 0-Characters in MikTeX logfiles anymore.
-
-- Always honor the "Requirement" tag in External Template Definitions.
-
-- Fix tex2lyx to handle whitespace in front of required arguments (bug 2546).
-
-- Update templates and examples to latest file format.
-
-- Make jpeg graphics with suffix in capital letters (.JPG) work with
-  pdflatex (bug 2235).
-
-- Fix LaTeX crash on multi-paragraph boxes
-
-- Fix LaTeX errors with memoir and makeindex (bug 2623).
-
-* Math editor:
-
-- Fix metrics of AMS array environments like bmatrix, vmatrix etc. (bug 2036).
-
-- Fix undo in matrices.
-
-- Fix crash when deleting last row of an equation (bug 2655)
-
 * User Interface:
 
 - Much better performance when using natbib/jurabib citations (bug 2460).
@@ -149,6 +109,46 @@ What's new
 - Cosmetic fixes to the document dialog (qt only).
 
 - Reduce the right margin on screen from 30 pixels to 10.
+
+* Math editor:
+
+- Fix metrics of AMS array environments like bmatrix, vmatrix etc. (bug 2036).
+
+- Fix undo in matrices.
+
+- Fix crash when deleting last row of an equation (bug 2655)
+
+* Document input/output:
+
+- Convert definitions of itemize and enumerate environments in old layout
+  files correctly.
+
+- Fix conversion of minipages (default height and inner vertical
+  position) from 1.3.
+
+- Make sure that the amsmath package is used in LaTeX output when
+  using the AMS-specific commands \xleftarrow, \xrightarrow or
+  array constructs split, gathered, aligned and alignedat (bug 2149).
+
+- Load the tipa package automatically when needed.
+
+- Properly strike out deleted math formulas when change tracking is
+  active (bug 2214).
+
+- Don't get confused by 0-Characters in MikTeX logfiles anymore.
+
+- Always honor the "Requirement" tag in External Template Definitions.
+
+- Fix tex2lyx to handle whitespace in front of required arguments (bug 2546).
+
+- Update templates and examples to latest file format.
+
+- Make jpeg graphics with suffix in capital letters (.JPG) work with
+  pdflatex (bug 2235).
+
+- Fix LaTeX crash on multi-paragraph boxes
+
+- Fix LaTeX errors with memoir and makeindex (bug 2623).
 
 * Miscellaneous:
 
