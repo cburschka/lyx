@@ -6,18 +6,17 @@ release that improves perfromance, stability and native OS support.
 Notable new features include:
 
 - LyX now automatically uses file viewers and editors set at OS level
-  [Windows and Mac OS X only]
+  [Windows and Mac OS X only].
 
 - The windows installer has been completely rewritten.
 
-- Add new function buffer-toggle-compression (and entry in Document
-  menu) to change whether the file will be compressed on disk or not.
+- A new function buffer-toggle-compression (and corresponding entry in
+  the Document menu) has been added to change whether the file will be
+  compressed on disk or not.
 
-- Add "LaTeX (pdflatex)" output format. This new output format produces
-  .tex files that are suitable for pdflatex, including figure conversion
-  to png, pdf or jpeg instead of eps.
-
-Also, this will be the first 1.4 release with a windows installer.
+- A "LaTeX (pdflatex)" output format has been added. This new output
+  format produces .tex files that are suitable for pdflatex, including
+  figure conversion to png, pdf or jpeg instead of eps.
 
 See the file RELEASE-NOTES for some known problems in this release.
 
@@ -94,33 +93,34 @@ What's new in version 1.4.2?
 - LyX now automatically uses file viewers and editors set at OS level
   [Windows and Mac OS X only] (bug 2017).
 
-- Add new function buffer-toggle-compression (and entry in Document
-  menu) to change whether the file will be compressed on disk or not.
+- Add a new function buffer-toggle-compression (and corresponding entry
+  in the Document menu) to change whether the file will be compressed
+  on disk or not.
 
-- Update German, Hungarian, Italian (bug 2650), Polish, Slovak,
+- Update the German, Hungarian, Italian (bug 2650), Polish, Slovak,
   Spanish and Turkish localizations of the interface.
 
 - Update translations of documentation for German (all) and Hungarian
   (Introduction, splash document, new tutorial examples).
 
-- Add support for Austrian (new spelling) as document language.
+- Add support for Austrian (new spelling) as a document language.
 
-- Add "LaTeX (pdflatex)" output format. This new output format produces
+- Add the "LaTeX (pdflatex)" output format. This new output format produces
   .tex files that are suitable for pdflatex, including figure conversion
   to png, pdf or jpeg instead of eps.
 
-- Add biographynophoto style to IEEEtran.layout; add new text class for
+- Add biographynophoto style to IEEEtran.layout; add a new text class for
   International Journal of Modern Physics C (and update support for
   IJMP D).
 
-- Add buttons for \overset and \underset to the math panel (bug 2533)
+- Add buttons for \overset and \underset to the math panel (bug 2533).
 
 - Add support for the dvipdfmx converter.
 
-- Add tgif->ppm and tgif->png converters for preview of tgif figures
+- Add tgif->ppm and tgif->png converters for preview of tgif figures.
 
-- Native support for \intop and \ointop (only display, not in the math panel
-  yet)
+- Add native support for \intop and \ointop. (Display only; not in
+  the math panel yet.)
 
 ** Bug fixes
 
@@ -131,75 +131,77 @@ What's new in version 1.4.2?
 - Much better performance of screen updating in LyX/Mac, and with an 
   acceptable UI.
 
-- Don't jump back to previous cursor position when trying to click on
+- Don't jump back to the previous cursor position when trying to click on
   an inset (bug 2526).
 
-- Automatically use fonts in the fonts/ subdirectory of LyX support
+- Automatically use fonts in the fonts/ subdirectory of the LyX support
   directory on Windows.
 
-- Disable saving of bookmarks in mathed for it is not yet supported
+- Disable saving of bookmarks in mathed because it is not yet supported
   and makes LyX crash (bug 2597).
 
-- Fix crash when pasting contents from the clipboard to a tabular
+- Fix a crash when pasting contents from the clipboard to a tabular
   (bug 2603).
 
 - When pasting contents to a tabular with the middle mouse button, the
-  language has sometimes be changed. This is fixed now.
+  language could sometimes be changed. This is fixed now.
 
-- Text copied from an ERT box has no longer the pseudo "latex" language
+- Text copied from an ERT box no longer has the pseudo "latex" language
   (bug 2476).
 
-- Fix crash when selecting and deleting "blue" paragraph break in CT mode.
+- Fix a crash when selecting and deleting "blue" paragraph break in
+  change tracking mode.
 
 - Set change tracking marks properly when copying between documents
   with different change tracking status (bug 2207).
 
-- Fix crash when reading documents containing bogus change tracking
+- Fix a crash when reading documents containing bogus change tracking
   markup due to the bug above (bug 2614).
 
-- Fix remaining "ghost" empty paragraphs when selecting and deleting multiple
-  paragraphs (bug 2516).
+- Fix any remaining "ghost" empty paragraphs when selecting and deleting
+  multiple paragraphs (bug 2516).
 
-- Fix display of horizontal fill which appears at the end of a line
+- Fix the display of horizontal fill which appears at the end of a line
   (bug 2508).
 
-- Fix crash when changing document class while the cursor is inside a
+- Fix a crash when changing document class while the cursor is inside a
   table.
 
-- Fix crash when there is a syntax error in a keyboard map file (bug 2604).
+- Fix a crash when there is a syntax error in a keyboard map file (bug 2604).
 
-- Fix crash on exit on MacOS X, and the well known "Mutex destroy failure"
+- Fix a crash on exit on MacOS X, and the well known "Mutex destroy failure"
   error message on Linux (qt frontend, bugs 2549 and 1029).
 
-- Paint tabular background (bug fix)
+- Paint the tabular background (bug fix).
 
-- Fix bug where the spellchecker doesn't pop up dialog window for
+- Fix a bug where the spellchecker doesn't pop up the dialog window for
   the first misspelled word (bug 2218).
 
 - Fix spell checking in tables (bug 2675).
 
-- Cosmetic fixes to the document dialog (qt only).
+- Cosmetic fixes to the document dialog (Qt only).
 
 - Reduce the right margin on screen from 30 pixels to 10.
 
 * Math editor:
 
-- Fix metrics of AMS array environments like bmatrix, vmatrix etc. (bug 2036).
+- Fix the metrics of AMS array environments like bmatrix, vmatrix etc.
+  (bug 2036).
 
 - Fix undo in matrices.
 
-- Fix crash when deleting last row of an equation (bug 2655)
+- Fix a crash when deleting the last row of an equation (bug 2655).
 
 * Document input/output:
 
 - Convert definitions of itemize and enumerate environments in old layout
   files correctly.
 
-- Fix conversion of minipages (default height and inner vertical
-  position) from 1.3.
+- Fix the conversion of minipages (default height and inner vertical
+  position) from LyX 1.3 documents.
 
 - Make sure that the amsmath package is used in LaTeX output when
-  using the AMS-specific commands \xleftarrow, \xrightarrow or
+  using the AMS-specific commands \xleftarrow, \xrightarrow or the
   array constructs split, gathered, aligned and alignedat (bug 2149).
 
 - Load the tipa package automatically when needed.
@@ -213,27 +215,27 @@ What's new in version 1.4.2?
 
 - Fix tex2lyx to handle whitespace in front of required arguments (bug 2546).
 
-- Update templates and examples to latest file format.
+- Update templates and examples to the latest file format.
 
-- Make jpeg graphics with suffix in capital letters (.JPG) work with
+- Enable jpeg graphics whose suffix is in capital letters (.JPG) work with
   pdflatex (bug 2235).
 
-- Fix LaTeX crash on multi-paragraph boxes
+- Fix a LaTeX crash on multi-paragraph boxes.
 
 - Fix LaTeX errors with memoir and makeindex (bug 2623).
 
 * Miscellaneous:
 
 - Replace the old sh version of lib/configure with the new python version
-  lib/configure.py. The TexFiles.sh script (which crashed on windows)
+  lib/configure.py. The TexFiles.sh script (which crashed on Windows)
   has also been pythonified.
 
-- It is not needed anymore to run lib/configure.py in the main LyX
+- It is  longer necessary to run lib/configure.py in the main LyX
   support directory.
 
 - Reading of configuration now goes like this: LyX first reads the file 
   lyxrc.dist (if it exists). If lib/configure.py is newer than
-  either lyxrc.defaults, textclass.lst or packages.lst, it is re-run
+  any of lyxrc.defaults, textclass.lst or packages.lst, it is re-run
   before loading lyxrc.defaults and preferences. 
 
 - When compiling with --with-version-suffix on Windows, do not
@@ -247,17 +249,16 @@ What's new in version 1.4.2?
 - Use the clean_dvi.py script on Windows not only in the installer but also
   in the source package.
 
-- Fix the code to find interface localization on Windows and Mac OS X.
+- Fix the code to find the localization of the interface on Windows
+  and Mac OS X.
 
 - Fix hyphens in man pages.
 
 - Replace the \cygwin_path_fix_needed preference with the better named
-  \tex_expects_windows_paths; this is auto-detected and only matters on
+  \tex_expects_windows_paths; this is auto-detected and matters only on
   Windows. 
 
-- Remove --enable-compression-support option of configure. Compression
+- Remove the --enable-compression-support option of configure. Compression
   support via zlib is now a requirement.
 
 - Fix compilation on DragonFly BSD.
-
-
