@@ -261,9 +261,15 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 			tabular.getCellInset(cell)->metrics(m, dim);
 			if (!p_width.zero())
 				dim.wid = m.base.textwidth;
+			tabular.setWidthOfCell(cell, dim.wid);
+			if (p_width.zero()) {
+				m.base.textwidth = dim.wid + 2 * ADD_TO_TABULAR_WIDTH;
+				// FIXME there must be a way to get rid of 
+				// the second metrics call
+				tabular.getCellInset(cell)->metrics(m, dim);
+			}
 			maxAsc  = max(maxAsc, dim.asc);
 			maxDesc = max(maxDesc, dim.des);
-			tabular.setWidthOfCell(cell, dim.wid);
 			++cell;
 		}
 		tabular.setAscentOfRow(i, maxAsc + ADD_TO_HEIGHT);

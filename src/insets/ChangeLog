@@ -1,3 +1,11 @@
+2006-07-12  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* insettabular.C (metrics): fix width of insets inside tabular
+	cells. 
+
+	* insetcollapsable.C (metrics): make sure that the openinlined_
+	descsion does not depend on mi.base.texwidth.
+
 2006-07-07  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* insettabular.h: return true for allowSpellcheck (bug 2675).
