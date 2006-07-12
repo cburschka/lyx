@@ -44,13 +44,6 @@ private:
 };
 
 
-boost::signal<void()> & Dialogs::redrawGUI()
-{
-	static BugfixSignal<boost::signal<void()> > thesignal;
-	return thesignal();
-}
-
-
 namespace {
 
 BugfixSignal<boost::signal<void(string const &, InsetBase*)> > hideSignal;
@@ -68,7 +61,6 @@ Dialogs::Dialogs(LyXView & lyxview)
 	: lyxview_(lyxview), in_show_(false)
 {
 	// Connect signals
-	redrawGUI().connect(boost::bind(&Dialogs::redraw, this));
 	hideSignal().connect(boost::bind(&Dialogs::hideSlot, this, _1, _2));
 }
 

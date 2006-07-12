@@ -64,9 +64,6 @@ public:
 	std::string const browsedir(std::string const & path,
 				    std::string const & title) const;
 
-	/// redraw widgets (for xforms color change)
-	void redrawGUI();
-
 	/// set a color
 	void setColor(LColor_color col, std::string const & hex);
 

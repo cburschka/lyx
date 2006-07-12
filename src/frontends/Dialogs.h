@@ -34,14 +34,6 @@ public:
 	///
 	Dialogs(LyXView &);
 
-	/** Redraw all visible dialogs because, for example, the GUI colours
-	 *  have been re-mapped.
-	 *
-	 *  Note that static boost signals break some compilers, so we return a
-	 *  reference to some hidden magic ;-)
-	 */
-	static boost::signal<void()> & redrawGUI();
-
 	/** Check the status of all visible dialogs and disable or reenable
 	 *  them as appropriate.
 	 *

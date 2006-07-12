@@ -42,7 +42,6 @@ namespace frontend {
 
 ControlPrefs::ControlPrefs(Dialog & parent)
 	: Dialog::Controller(parent),
-	  redraw_gui_(false),
 	  update_screen_font_(false)
 {}
 
@@ -55,7 +54,6 @@ bool ControlPrefs::initialiseParams(std::string const &)
 	converters_.update(formats_);
 	movers_ = ::movers;
 	colors_.clear();
-	redraw_gui_ = false;
 	update_screen_font_ = false;
 
 	return true;
@@ -85,11 +83,6 @@ void ControlPrefs::dispatchParams()
 		kernel().dispatch(FuncRequest(LFUN_SET_COLOR, *it));
 	colors_.clear();
 
-	if (redraw_gui_) {
-		kernel().redrawGUI();
-		redraw_gui_ = false;
-	}
-
 	if (update_screen_font_) {
 		kernel().dispatch(FuncRequest(LFUN_SCREEN_FONT_UPDATE));
 		update_screen_font_ = false;
@@ -99,12 +92,6 @@ void ControlPrefs::dispatchParams()
 	if (dialog().isClosing()) {
 		kernel().dispatch(FuncRequest(LFUN_PREFERENCES_SAVE));
 	}
-}
-
-
-void ControlPrefs::redrawGUI()
-{
-	redraw_gui_ = true;
 }
 
 
