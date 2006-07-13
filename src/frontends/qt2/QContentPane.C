@@ -32,7 +32,7 @@ key_modifier::state q_key_state(Qt::ButtonState state)
 		k |= key_modifier::ctrl;
 	if (state & Qt::ShiftButton)
 		k |= key_modifier::shift;
-	if (state & Qt::AltButton)
+	if (state & Qt::AltButton || state & Qt::MetaButton)
 		k |= key_modifier::alt;
 	return k;
 }
