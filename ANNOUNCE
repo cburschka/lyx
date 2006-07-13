@@ -134,8 +134,8 @@ What's new in version 1.4.2?
 - Don't jump back to the previous cursor position when trying to click on
   an inset (bug 2526).
 
-- Automatically use fonts in the fonts/ subdirectory of the LyX support
-  directory on Windows.
+- Fix several cursor movement functions when initiating a selection
+  (bugs 2119 and 2259, and a crash).
 
 - Disable saving of bookmarks in mathed because it is not yet supported
   and makes LyX crash (bug 2597).
@@ -237,6 +237,9 @@ What's new in version 1.4.2?
   lyxrc.dist (if it exists). If lib/configure.py is newer than
   any of lyxrc.defaults, textclass.lst or packages.lst, it is re-run
   before loading lyxrc.defaults and preferences. 
+
+- Automatically use fonts in the fonts/ subdirectory of the LyX support
+  directory on Windows.
 
 - When compiling with --with-version-suffix on Windows, do not
   rename the executable files.
