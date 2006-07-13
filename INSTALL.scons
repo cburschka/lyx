@@ -116,7 +116,7 @@ Convenience options:
   * rebuild=target1,target2... By default, scons will exam all components
     when you build lyx. You can free scons from some hard work and save
     yourself some time by telling scons to rebuild only specified
-    component(s).
+    component(s). rebuild=no, none, yes or all can be used as well.
   * log_file: a log file of executed commands, default to scons_lyx.log
 
 

@@ -187,7 +187,10 @@ opts.AddOptions(
     #
     PathOption('extra_lib_path1', 'Extra library path', None),
     # rebuild only specifed, comma separated targets
-    ('rebuild', 'rebuild only specifed, comma separated targets', None),
+    ('rebuild', '''rebuild only specifed, comma separated targets.
+        yes or all (default): rebuild everything
+        no or none: rebuild nothing (usually used for installation)
+        comp1,comp2,...: rebuild specified targets''', None),
     # can be set to a non-existing directory
     ('prefix', 'install architecture-independent files in PREFIX', default_prefix),
     # build directory, will use $mode if not set
@@ -219,6 +222,9 @@ opts.AddOptions(
     ('CPPFLAGS', 'replace default $CPPFLAGS', None),
     ('LINKFLAGS', 'replace default $LINKFLAGS', None),
 )
+
+# allowed options
+all_options = [x.key for x in opts.options]
 
 # copied from SCons/Options/BoolOption.py
 # We need to use them before a boolean ARGUMENTS option is available
@@ -268,9 +274,14 @@ if (not ARGUMENTS.has_key('load_option') or \
                 print "  ** fast_start is disabled because of the change of option", arg
                 print
                 fast_start = False
-    # and we do not cache some options
-    for arg in ['fast_start', 'load_option']:
+    # and we do not cache some options (dest_dir is obsolete)
+    for arg in ['fast_start', 'load_option', 'dest_dir']:
         if opt_cache.has_key(arg):
+            opt_cache.pop(arg)
+    # remove obsolete cached keys (well, SConstruct is evolving. :-)
+    for arg in opt_cache.keys():
+        if arg not in all_options:
+            print 'Option %s is obsolete, do not load it' % arg
             opt_cache.pop(arg)
     # now, if load_option=opt1,opt2 or -opt1,opt2
     if ARGUMENTS.has_key('load_option') and \
@@ -292,6 +303,16 @@ if (not ARGUMENTS.has_key('load_option') or \
             ARGUMENTS[key] = opt_cache[key]
             print "Restoring cached option  %s=%s" % (key, ARGUMENTS[key])
     print
+
+# check if there is unused (or misspelled) argument
+for arg in ARGUMENTS.keys():
+    if arg not in all_options:
+        import textwrap
+        print "Unknown option '%s'... exiting." % arg
+        print
+        print "Available options are (check 'scons -help' for details):"
+        print '    ' + '\n    '.join(textwrap.wrap(',  '.join(all_options)))
+        Exit(1)
 
 # save arguments
 env_cache['arg_cache'] = ARGUMENTS
@@ -1447,12 +1468,22 @@ print "Building all targets recursively"
 
 if env.has_key('rebuild'):
     rebuild_targets = env['rebuild'].split(',')
+    if 'none' in rebuild_targets or 'no' in rebuild_targets:
+        rebuild_targets = []
+    elif 'all' in rebuild_targets or 'yes' in rebuild_targets:
+        # None: let scons decide which components to build
+        # Forcing all components to be rebuilt is in theory not necessary
+        rebuild_targets = None    
 else:
     rebuild_targets = None
 
 def libExists(libname):
     ''' Check whether or not lib $LOCALLIBNAME/libname already exists'''
     return os.path.isfile(File(env.subst('$LOCALLIBPATH/${LIBPREFIX}%s$LIBSUFFIX'%libname)).abspath)
+
+def appExists(apppath, appname):
+    ''' Check whether or not application already exists'''
+    return os.path.isfile(File(env.subst('$BUILDDIR/common/%s/${PROGPREFIX}%s$PROGSUFFIX' % (apppath, appname))).abspath)
 
 targets = BUILD_TARGETS
 # msvc need to pass full target name, so I have to look for path/lyx etc
@@ -1479,8 +1510,8 @@ build_msvs_projects = use_vc and 'msvs_projects' in targets
 
 
 # now, if rebuild_targets is specified, do not rebuild some targets
-rebuild_targets = rebuild_targets
-if rebuild_targets:
+if rebuild_targets is not None:
+    #
     def ifBuildLib(name, libname, old_value):
         # explicitly asked to rebuild
         if name in rebuild_targets:
@@ -1503,6 +1534,19 @@ if rebuild_targets:
     build_qt2 = ifBuildLib('qt2', 'qt2', build_qt2)
     build_qt3 = ifBuildLib('qt3', 'qt3', build_qt3)
     build_qt4 = ifBuildLib('qt4', 'qt4', build_qt4)
+    #
+    def ifBuildApp(name, appname, old_value):
+        # explicitly asked to rebuild
+        if name in rebuild_targets:
+            return True
+        # else if not rebuild, and if the library already exists
+        elif appExists(name, appname):
+            return False
+        # do not change the original value
+        else:
+            return old_value
+    build_tex2lyx = ifBuildApp('tex2lyx', 'tex2lyx', build_tex2lyx)
+    build_client = ifBuildApp('client', 'lyxclient', build_client)
 
 # sync frontend and frontend (maybe build qt4 with frontend=qt3)
 if build_qt2:
@@ -2020,6 +2064,12 @@ if build_client:
     else:
         client = None
     Alias('client', client)
+else:
+    if env['HAVE_FCNTL']:
+        # define client even if lyxclient is not built with rebuild=no
+        client = [env.subst('$BUILDDIR/common/client/${PROGPREFIX}lyxclient$PROGSUFFIX')]
+    else:
+        client = None
 
 
 if build_tex2lyx:
@@ -2049,6 +2099,9 @@ if build_tex2lyx:
     Alias('tex2lyx', env.Command(os.path.join('$BUILDDIR', os.path.split(str(tex2lyx[0]))[1]),
         tex2lyx, [Copy('$TARGET', '$SOURCE')]))
     Alias('tex2lyx', tex2lyx)
+else:
+    # define tex2lyx even if tex2lyx is not built with rebuild=no
+    tex2lyx = [env.subst('$BUILDDIR/common/tex2lyx/${PROGPREFIX}tex2lyx$PROGSUFFIX')]
 
 
 if build_lyxbase:
@@ -2121,6 +2174,9 @@ if build_lyx:
     Alias('lyx', env.Command(os.path.join('$BUILDDIR', target_name), lyx,
         [Copy('$TARGET', '$SOURCE')]))
     Alias('lyx', lyx)
+else:
+    # define lyx even if lyx is not built with rebuild=no
+    lyx = [env.subst('$BUILDDIR/$frontend/${PROGPREFIX}lyx$PROGSUFFIX')]
 
 
 if build_msvs_projects:
