@@ -55,9 +55,10 @@ public:
 
 	// returns true if this view has the focus.
 	virtual bool hasFocus() const;
+	///
+	void updateStatusBar();
 
 private:
-	void showViewState();
 	bool onFocusIn(GdkEventFocus * event);
 	virtual void setWindowTitle(std::string const & t, std::string const & it);
 

@@ -44,6 +44,7 @@
 
 #include <boost/utility.hpp>
 #include <boost/bind.hpp>
+#include <boost/current_function.hpp>
 #include <boost/signals/trackable.hpp>
 
 using lyx::support::libFileSearch;
@@ -55,20 +56,12 @@ using std::max;
 using std::string;
 
 
-namespace {
-
-// All the below connection objects are needed because of a bug in some
-// versions of GCC (<=2.96 are on the suspects list.) By having and assigning
-// to these connections we avoid a segfault upon startup, and also at exit.
-// (Lgb)
-
-boost::signals::connection timecon;
-
-} // anon namespace
-
 namespace lyx {
 namespace frontend {
 
+// FIXME: The SplashScreen should be transfered to the
+// LyXView and create a WorkArea only when a new buffer exists. This
+// will allow to call WorkArea::redraw() in the constructor.
 class SplashScreen : boost::noncopyable, boost::signals::trackable {
 public:
 	/// This is a singleton class. Get the instance.
@@ -131,9 +124,20 @@ SplashScreen::SplashScreen()
 	loader_.reset(file);
 }
 
+namespace {
+
+// All the below connection objects are needed because of a bug in some
+// versions of GCC (<=2.96 are on the suspects list.) By having and assigning
+// to these connections we avoid a segfault upon startup, and also at exit.
+// (Lgb)
+
+boost::signals::connection timecon;
+
+} // anon namespace
+
 WorkArea::WorkArea(BufferView * buffer_view)
-	: buffer_view_(buffer_view), greyed_out_(true),
-	  cursor_visible_(false), cursor_timeout_(400)
+	:  buffer_view_(buffer_view), greyed_out_(true),
+	cursor_visible_(false), cursor_timeout_(400)
 {
 	// Start loading the pixmap as soon as possible
 	if (lyxrc.show_banner) {
@@ -177,7 +181,8 @@ void WorkArea::checkAndGreyOut()
 
 void WorkArea::redraw()
 {
-	BOOST_ASSERT(buffer_view_);
+	if (!buffer_view_)
+		return;
 
 	if (!buffer_view_->buffer()) {
 		greyOut();
@@ -187,35 +192,30 @@ void WorkArea::redraw()
 	if (!buffer_view_->needsRedraw())
 		return;
 
-	greyed_out_ = false;
 	ViewMetricsInfo const & vi = buffer_view_->viewMetricsInfo();
-
-	Painter & pain = getPainter();
-
-	pain.start();
-	paintText(*buffer_view_, vi, pain);
+	greyed_out_ = false;
+	getPainter().start();
+	paintText(*buffer_view_, vi, getPainter());
 	lyxerr[Debug::DEBUG] << "Redraw screen" << endl;
 	int const ymin = std::max(vi.y1, 0);
 	int const ymax =
 		( vi.p2 < vi.size - 1 ?  vi.y2 : height() );
 	expose(0, ymin, width(), ymax - ymin);
-	pain.end();
-	//theCoords.doneUpdating();
+	getPainter().end();
 	buffer_view_->needsRedraw(false);
 
-	if (lyxerr.debugging(Debug::DEBUG)) {
-		lyxerr[Debug::DEBUG]
-			<< "  ymin = " << ymin << "  width() = " << width()
-			<< "  ymax-ymin = " << ymax-ymin << std::endl;
-	}
+	lyxerr[Debug::DEBUG]
+	<< "  ymin = " << ymin << "  width() = " << width()
+		<< "  ymax-ymin = " << ymax-ymin << std::endl;
 }
 
 
-void WorkArea::processKeySym(LyXKeySymPtr key, key_modifier::state state)
+void WorkArea::processKeySym(LyXKeySymPtr key,
+							 key_modifier::state state)
 {
 	hideCursor();
-
 	buffer_view_->workAreaKeyPress(key, state);
+
 	/* This is perhaps a bit of a hack. When we move
 	 * around, or type, it's nice to be able to see
 	 * the cursor immediately after the keypress. So
@@ -223,9 +223,23 @@ void WorkArea::processKeySym(LyXKeySymPtr key, key_modifier::state state)
 	 * of the cursor. Note we cannot do this inside
 	 * dispatch() itself, because that's called recursively.
 	 */
-	//     if (buffer_view_->available())
+//	if (buffer_view_->available())
 	toggleCursor();
+	redraw();
+}
 
+
+void WorkArea::dispatch(FuncRequest const & cmd0)
+{
+	buffer_view_->workAreaDispatch(cmd0);
+	redraw();
+}
+
+
+void WorkArea::resizeBufferView()
+{
+	buffer_view_->workAreaResize(width(), height());
+	redraw();
 }
 
 
@@ -333,7 +347,6 @@ void WorkArea::toggleCursor()
 
 	cursor_timeout_.restart();
 }
-
 
 } // namespace frontend
 } // namespace lyx

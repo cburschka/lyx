@@ -108,6 +108,7 @@ namespace {
 
 unsigned int const saved_positions_num = 20;
 
+
 /// Return an inset of this class if it exists at the current cursor position
 template <class T>
 T * getInsetByCode(LCursor & cur, InsetBase::Code code)
@@ -187,7 +188,7 @@ void BufferView::Pimpl::connectBuffer(Buffer & buf)
 
 	closingConnection_ =
 		buf.closing.connect(
-			boost::bind(&BufferView::Pimpl::setBuffer, this, (Buffer *)0));
+			boost::bind(&LyXView::setBuffer, owner_, (Buffer *)0));
 }
 
 
@@ -200,13 +201,6 @@ void BufferView::Pimpl::disconnectBuffer()
 	timerConnection_.disconnect();
 	readonlyConnection_.disconnect();
 	closingConnection_.disconnect();
-}
-
-
-void BufferView::Pimpl::newFile(string const & filename, string const & tname,
-	bool isNamed)
-{
-	setBuffer(::newFile(filename, tname, isNamed));
 }
 
 
@@ -257,7 +251,7 @@ bool BufferView::Pimpl::loadLyXFile(string const & filename, bool tolastfiles)
 			 text, 0, 1, _("&Create"), _("Cancel"));
 
 		if (ret == 0)
-			b = ::newFile(s, string(), true);
+			b = newFile(s, string(), true);
 		else
 			return false;
 	}
@@ -376,10 +370,14 @@ void BufferView::Pimpl::setBuffer(Buffer * b)
 	}
 
 	update();
-	owner_->updateMenubar();
-	owner_->updateToolbars();
-	owner_->updateLayoutChoice();
-	owner_->updateWindowTitle();
+
+	if (buffer_ && lyx::graphics::Previews::status() != LyXRC::PREVIEW_OFF)
+		lyx::graphics::Previews::get().generateBufferPreviews(*buffer_);
+}
+
+string BufferView::Pimpl::firstLayout()
+{
+	string firstlayout;
 
 	// This is done after the layout combox has been populated
 	if (buffer_) {
@@ -389,16 +387,14 @@ void BufferView::Pimpl::setBuffer(Buffer * b)
 			CursorSlice const & slice = cursor_[i];
 			if (!slice.inset().inMathed()) {
 				LyXLayout_ptr const layout = slice.paragraph().layout();
-				owner_->setLayout(layout->name());
+				firstlayout = layout->name();
 				break;
 			}
 			BOOST_ASSERT(i>0);
 			--i;
 		}
 	}
-
-	if (buffer_ && lyx::graphics::Previews::status() != LyXRC::PREVIEW_OFF)
-		lyx::graphics::Previews::get().generateBufferPreviews(*buffer_);
+	return firstlayout;
 }
 
 
@@ -555,7 +551,7 @@ void BufferView::Pimpl::scroll(int /*lines*/)
 //	scrollDocView(new_top_y);
 //
 //	// Update the scrollbar.
-//	workArea_->setScrollbarParams(t->height(), top_y(), defaultRowHeight());
+//	workArea_->setScrollbarParams(t->height(), top_y(), defaultRowHeight());}
 }
 
 
@@ -669,30 +665,32 @@ void BufferView::Pimpl::update(Update::flags flags)
 	}
 
 	// Check needed to survive LyX startup
-	if (buffer_) {
-		// Update macro store
-		buffer_->buildMacros();
+	if (!buffer_)
+		return;
+	
+	// Check if there is already a redraw waiting in the queue.
+	if (needs_redraw_)
+		return;
 
-		// First drawing step
-		bool singlePar = flags & Update::SinglePar;
-		needs_redraw_ = flags & (Update::Force | Update::SinglePar);
+	// Update macro store
+	buffer_->buildMacros();
 
-		updateMetrics(singlePar);
+	// First drawing step
+	bool singlePar = flags & Update::SinglePar;
+	needs_redraw_ = (flags & (Update::Force | Update::SinglePar));
 
-		if ((flags & (Update::FitCursor | Update::MultiParSel))
-		    && (fitCursor() || multiParSel())) {
+	updateMetrics(singlePar);
+
+	if ((flags & (Update::FitCursor | Update::MultiParSel))
+		&& (fitCursor() || multiParSel())) {
 			needs_redraw_ = true;
 			singlePar = false;
-		}
-
-		if (needs_redraw_) {
-			// Second drawing step
-			updateMetrics(singlePar);
-		}
 	}
 
-	owner_->redrawWorkArea();
-	owner_->view_state_changed();
+	if (needs_redraw_) {
+		// Second drawing step
+		updateMetrics(singlePar);
+	}
 }
 
 
@@ -825,7 +823,7 @@ void BufferView::Pimpl::menuInsertLyXFile(string const & filenm)
 		string initpath = lyxrc.document_path;
 
 		if (available()) {
-			string const trypath = owner_->buffer()->filePath();
+			string const trypath = buffer_->filePath();
 			// If directory is writeable, use this as default.
 			if (isDirWriteable(trypath))
 				initpath = trypath;

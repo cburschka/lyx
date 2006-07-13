@@ -27,14 +27,16 @@
 #include "debug.h"
 
 #include "frontends/Toolbars.h"
-
+#include "frontends/WorkArea.h"
 #include "support/filetools.h"
-
 #include "support/convert.h"
-#include <boost/bind.hpp>
+#include "support/lstrings.h"
+
+// This include must be declared before everything else because
+// of boost/Qt/LyX clash...
+#include "GuiImplementation.h"
 
 #include "GuiView.h"
-#include "GuiImplementation.h"
 #include "QLMenubar.h"
 #include "FontLoader.h"
 #include "QCommandBuffer.h"
@@ -46,10 +48,9 @@
 #include <QToolBar>
 #include <QCloseEvent>
 #include <QAction>
-//#include <QMenu>
-//#include <QMenuBar>
 
-#include "support/lstrings.h"
+
+#include <boost/bind.hpp>
 
 
 using std::string;
@@ -103,7 +104,6 @@ void GuiView::init()
 
 	statusBar()->setSizeGripEnabled(false);
 
-	view_state_changed.connect(boost::bind(&GuiView::update_view_state, this));
 	QObject::connect(&statusbar_timer_, SIGNAL(timeout()), this, SLOT(update_view_state_qt()));
 
 	// make sure the buttons are disabled if needed
@@ -161,7 +161,7 @@ void GuiView::update_view_state_qt()
 }
 
 
-void GuiView::update_view_state()
+void GuiView::updateStatusBar()
 {
 	// let the user see the explicit message
 	if (statusbar_timer_.isActive())

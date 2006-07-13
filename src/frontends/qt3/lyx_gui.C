@@ -265,7 +265,7 @@ int start(string const & batch, vector<string> const & files,
 			  os::internal_path(package().temp_dir() + "/lyxsocket"));
 
 	for_each(files.begin(), files.end(),
-		 bind(&BufferView::loadLyXFile, view.view(), _1, true));
+		 bind(&LyXView::loadLyXFile, &view, _1, true));
 
 	// handle the batch commands the user asked for
 	if (!batch.empty()) {

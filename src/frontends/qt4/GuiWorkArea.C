@@ -11,13 +11,9 @@
 
 #include <config.h>
 
-#include <boost/current_function.hpp>
-
-// This include must be declared before everything else because
-// of boost/Qt/LyX clash...
-#include "GuiView.h"
 
 #include "GuiWorkArea.h"
+
 #include "QLPainter.h"
 #include "QLyXKeySym.h"
 
@@ -40,6 +36,7 @@
 #include <QScrollBar>
 
 #include <boost/bind.hpp>
+#include <boost/current_function.hpp>
 
 // Abdel (26/06/2006):
 // On windows-XP the UserGuide PageDown scroll test is faster without event pruning (16 s)
@@ -208,6 +205,7 @@ void GuiWorkArea::adjustViewWithScrollBar(int)
 		<< endl;
 	*/
 	buffer_view_->scrollDocView(verticalScrollBar()->sliderPosition());
+	redraw();
 }
 
 
@@ -231,7 +229,7 @@ void GuiWorkArea::dropEvent(QDropEvent* event)
 	for (int i = 0; i!=files.size(); ++i) {
 		string const file = os::internal_path(fromqstr(files.at(i).toString()));
 		if (!file.empty())
-			buffer_view_->workAreaDispatch(FuncRequest(LFUN_FILE_OPEN, file));
+			dispatch(FuncRequest(LFUN_FILE_OPEN, file));
 	}
 }
 
@@ -243,13 +241,13 @@ void GuiWorkArea::mousePressEvent(QMouseEvent * e)
 		FuncRequest cmd(LFUN_MOUSE_TRIPLE,
 			dc_event_.x, dc_event_.y,
 			q_button_state(dc_event_.state));
-		buffer_view_->workAreaDispatch(cmd);
+		dispatch(cmd);
 		return;
 	}
 
 	FuncRequest const cmd(LFUN_MOUSE_PRESS, e->x(), e->y(),
 			      q_button_state(e->button()));
-	buffer_view_->workAreaDispatch(cmd);
+	dispatch(cmd);
 }
 
 
@@ -260,7 +258,7 @@ void GuiWorkArea::mouseReleaseEvent(QMouseEvent * e)
 
 	FuncRequest const cmd(LFUN_MOUSE_RELEASE, e->x(), e->y(),
 			      q_button_state(e->button()));
-	buffer_view_->workAreaDispatch(cmd);
+	dispatch(cmd);
 }
 
 
@@ -320,7 +318,7 @@ void GuiWorkArea::mouseMoveEvent(QMouseEvent * e)
 		synthetic_mouse_event_.scrollbar_value_old = scrollbar_value;
 
 		// ... and dispatch the event to the LyX core.
-		buffer_view_->workAreaDispatch(cmd);
+		dispatch(cmd);
 	}
 }
 
@@ -350,7 +348,7 @@ void GuiWorkArea::generateSyntheticMouseEvent()
 		synthetic_mouse_event_.scrollbar_value_old = scrollbar_value;
 
 		// ... and dispatch the event to the LyX core.
-		buffer_view_->workAreaDispatch(synthetic_mouse_event_.cmd);
+		dispatch(synthetic_mouse_event_.cmd);
 	}
 }
 
@@ -423,7 +421,7 @@ void GuiWorkArea::mouseDoubleClickEvent(QMouseEvent * e)
 	FuncRequest cmd(LFUN_MOUSE_DOUBLE,
 		dc_event_.x, dc_event_.y,
 		q_button_state(dc_event_.state));
-	buffer_view_->workAreaDispatch(cmd);
+	dispatch(cmd);
 }
 
 
@@ -438,7 +436,7 @@ void GuiWorkArea::resizeEvent(QResizeEvent *)
 //	paint_device_ = QImage(viewport()->width(), viewport()->height(), QImage::Format_RGB32);
 	paint_device_ = QPixmap(viewport()->width(), viewport()->height());
 
-	buffer_view_->workAreaResize(viewport()->width(), viewport()->height());
+	resizeBufferView();
 
 	/*
 	lyxerr[Debug::GUI] << BOOST_CURRENT_FUNCTION
@@ -479,6 +477,7 @@ void GuiWorkArea::paintEvent(QPaintEvent * e)
 		<< "\n QPaintEvent h\t" << e->rect().height()
 		<< endl;
 	*/
+
 	QPainter q(viewport());
 	q.drawPixmap(e->rect(), paint_device_, e->rect());
 

@@ -34,7 +34,9 @@ int const CursorShape = CursorShape;
 #include "frontends/LyXKeySym.h"
 #include "frontends/Timeout.h"
 
+
 class BufferView;
+class FuncRequest;
 
 namespace lyx {
 namespace frontend {
@@ -50,7 +52,6 @@ enum CursorShape {
 	/// reverse L-shape for RTL text
 	REVERSED_L_SHAPE
 };
-
 
 /**
  * The work area class represents the widget that provides the
@@ -72,6 +73,7 @@ public:
 	///
 	BufferView const & bufferView() const;
 
+
 	/// return the painter object for this work area
 	virtual Painter & getPainter() = 0;
 
@@ -92,28 +94,38 @@ public:
 	/// redraw the screen, without using existing pixmap
 	virtual void redraw();
 
-	///
-	void processKeySym(LyXKeySymPtr key, key_modifier::state state);
-
 	/// grey out (no buffer)
 	void greyOut();
 
-	/// paint the cursor and store the background
-	virtual void showCursor(int x, int y, int h, CursorShape shape) = 0;
-
-	/// hide the cursor
-	virtual void removeCursor() = 0;
-
-	/// Show the cursor
-	void showCursor();
-	/// Hide the cursor
-	void hideCursor();
-	/// toggle the cursor's visibility
-	void toggleCursor();
+	/// FIXME: should be protected, public until the qt3 and gtk frontends are
+	/// cleaned up.
+	void processKeySym(LyXKeySymPtr key, key_modifier::state state);
 
 protected:
 	/// cause the display of the given area of the work area
 	virtual void expose(int x, int y, int w, int h) = 0;
+
+	///
+	void dispatch(FuncRequest const & cmd0);
+
+	///
+	void resizeBufferView();
+
+
+	/// hide the visible cursor, if it is visible
+	void hideCursor();
+
+	/// show the cursor if it is not visible
+	void showCursor();
+
+	/// toggle the cursor's visibility
+	void toggleCursor();
+
+	/// hide the cursor
+	virtual void removeCursor() = 0;
+
+	/// paint the cursor and store the background
+	virtual void showCursor(int x, int y, int h, CursorShape shape) = 0;
 
 	///
 	BufferView * buffer_view_;
@@ -125,7 +137,7 @@ private:
 	///
 	bool greyed_out_;
 
-	///
+	/// is the cursor currently displayed
 	bool cursor_visible_;
 
 	///

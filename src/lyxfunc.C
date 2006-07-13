@@ -1042,7 +1042,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			}
 			owner->message(bformat(_("Opening help file %1$s..."),
 				makeDisplayPath(fname)));
-			view()->loadLyXFile(fname, false);
+			owner->loadLyXFile(fname, false);
 			break;
 		}
 
@@ -1088,15 +1088,15 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		// --- buffers ----------------------------------------
 		case LFUN_BUFFER_SWITCH:
-			view()->setBuffer(bufferlist.getBuffer(argument));
+			owner->setBuffer(bufferlist.getBuffer(argument));
 			break;
 
 		case LFUN_BUFFER_NEXT:
-			view()->setBuffer(bufferlist.next(view()->buffer()));
+			owner->setBuffer(bufferlist.next(view()->buffer()));
 			break;
 
 		case LFUN_BUFFER_PREVIOUS:
-			view()->setBuffer(bufferlist.previous(view()->buffer()));
+			owner->setBuffer(bufferlist.previous(view()->buffer()));
 			break;
 
 		case LFUN_FILE_NEW:
@@ -1136,16 +1136,16 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			if (prefixIs(file_name, package().temp_dir())) {
 				// Needed by inverse dvi search. If it is a file
 				// in tmpdir, call the apropriated function
-				view()->setBuffer(bufferlist.getBufferFromTmp(file_name));
+				owner->setBuffer(bufferlist.getBufferFromTmp(file_name));
 			} else {
 				// Must replace extension of the file to be .lyx
 				// and get full path
 				string const s = changeExtension(file_name, ".lyx");
 				// Either change buffer or load the file
 				if (bufferlist.exists(s)) {
-					view()->setBuffer(bufferlist.getBuffer(s));
+					owner->setBuffer(bufferlist.getBuffer(s));
 				} else {
-					view()->loadLyXFile(s);
+					owner->loadLyXFile(s);
 				}
 			}
 
@@ -1296,9 +1296,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			view()->savePosition(0);
 			string const parentfilename = owner->buffer()->fileName();
 			if (bufferlist.exists(filename))
-				view()->setBuffer(bufferlist.getBuffer(filename));
+				owner->setBuffer(bufferlist.getBuffer(filename));
 			else
-				view()->loadLyXFile(filename);
+				owner->loadLyXFile(filename);
 			// Set the parent name of the child document.
 			// This makes insertion of citations and references in the child work,
 			// when the target is in the parent or another child document.
@@ -1607,6 +1607,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			else if (update)
 				view()->update(Update::FitCursor);
 
+			owner->redrawWorkArea();
+
 			// if we executed a mutating lfun, mark the buffer as dirty
 			if (flag.enabled()
 			    && !lyxaction.funcHasFlag(cmd.action, LyXAction::NoBuffer)
@@ -1733,7 +1735,7 @@ void LyXFunc::menuNew(string const & name, bool fromTemplate)
 		templname = result.second;
 	}
 
-	view()->newFile(filename, templname, !name.empty());
+	owner->setBuffer(newFile(filename, templname, !name.empty()));
 }
 
 
@@ -1787,15 +1789,15 @@ void LyXFunc::open(string const & fname)
 
 	// if the file doesn't exist, let the user create one
 	if (!fs::exists(filename)) {
-		// the user specifically chose this name. Believe them.
-		view()->newFile(filename, "", true);
+		// the user specifically chose this name. Believe him.
+		owner->setBuffer(newFile(filename, "", true));
 		return;
 	}
 
 	owner->message(bformat(_("Opening document %1$s..."), disp_fn));
 
 	string str2;
-	if (view()->loadLyXFile(filename)) {
+	if (owner->loadLyXFile(filename)) {
 		str2 = bformat(_("Document %1$s opened."), disp_fn);
 	} else {
 		str2 = bformat(_("Could not open document %1$s"), disp_fn);
@@ -1899,7 +1901,7 @@ void LyXFunc::closeBuffer()
 			// since there's no current buffer
 			owner->getDialogs().hideBufferDependent();
 		} else {
-			view()->setBuffer(bufferlist.first());
+			owner->setBuffer(bufferlist.first());
 		}
 	}
 }

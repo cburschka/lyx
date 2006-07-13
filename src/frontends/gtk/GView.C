@@ -98,7 +98,6 @@ GView::GView(Gui & owner) : LyXView(owner)
 
 	focus_command_buffer.connect(
 		boost::bind(&GMiniBuffer::editMode, minibuffer_.get()));
-	view_state_changed.connect(boost::bind(&GView::showViewState, this));
 	signal_focus_in_event().connect(sigc::mem_fun(*this, &GView::onFocusIn));
 	//
 	int width = 750;
@@ -177,7 +176,7 @@ void GView::message(string const & msg)
 }
 
 
-void GView::showViewState()
+void GView::updateStatusBar()
 {
 	message(getLyXFunc().viewStatusMessage());
 }

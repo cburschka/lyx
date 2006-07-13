@@ -80,7 +80,6 @@ LyXView::LyXView(Gui & owner)
 	lyxerr[Debug::INIT] << "Initializing LyXFunc" << endl;
 }
 
-
 LyXView::~LyXView()
 {
 }
@@ -95,6 +94,13 @@ void LyXView::setWorkArea(WorkArea * work_area)
 void LyXView::redrawWorkArea()
 {
 	work_area_->redraw();
+	updateStatusBar();
+}
+
+
+WorkArea * LyXView::workArea()
+{
+	return work_area_;
 }
 
 
@@ -119,6 +125,32 @@ Buffer * LyXView::buffer() const
 	return work_area_->bufferView().buffer();
 }
 
+
+void LyXView::setBuffer(Buffer * b)
+{
+	work_area_->bufferView().setBuffer(b);
+	updateMenubar();
+	updateToolbars();
+	updateLayoutChoice();
+	updateWindowTitle();
+	if (b)
+		setLayout(work_area_->bufferView().firstLayout());
+	redrawWorkArea();
+}
+
+
+bool LyXView::loadLyXFile(string const & filename, bool tolastfiles)
+{
+	bool loaded = work_area_->bufferView().loadLyXFile(filename, tolastfiles);
+	updateMenubar();
+	updateToolbars();
+	updateLayoutChoice();
+	updateWindowTitle();
+	if (loaded)
+		setLayout(work_area_->bufferView().firstLayout());
+	redrawWorkArea();
+	return loaded;
+}
 
 BufferView * LyXView::view() const
 {

@@ -96,9 +96,9 @@ void BufferView::setBuffer(Buffer * b)
 }
 
 
-void BufferView::newFile(string const & fn, string const & tn, bool named)
+string BufferView::firstLayout()
 {
-	pimpl_->newFile(fn, tn, named);
+	return pimpl_->firstLayout();
 }
 
 

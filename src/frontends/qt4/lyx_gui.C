@@ -29,6 +29,7 @@
 #include "lyxserver.h"
 #include "lyxsocket.h"
 
+
 #include "graphics/LoaderQueue.h"
 
 #include "support/lstrings.h"
@@ -36,8 +37,6 @@
 #include "support/package.h"
 #include "debug.h"
 
-#include <boost/bind.hpp>
-#include <boost/shared_ptr.hpp>
 
 #include "GuiView.h"
 #include "ColorCache.h"
@@ -54,6 +53,8 @@
 #include <QLocale>
 #include <QLibraryInfo>
 
+#include <boost/bind.hpp>
+#include <boost/shared_ptr.hpp>
 
 
 using lyx::support::ltrim;
@@ -239,7 +240,7 @@ int start(string const & batch, vector<string> const & files,
 			  os::internal_path(package().temp_dir() + "/lyxsocket"));
 
 	for_each(files.begin(), files.end(),
-		 bind(&BufferView::loadLyXFile, view.view(), _1, true));
+		 bind(&LyXView::loadLyXFile, &view, _1, true));
 
 	// handle the batch commands the user asked for
 	if (!batch.empty()) {

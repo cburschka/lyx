@@ -66,6 +66,9 @@ public:
 	/// clear status message
 	virtual void clearMessage();
 
+	/// update the status bar
+	virtual void updateStatusBar();
+
 	/// add the command buffer
 	void addCommandBuffer(QToolBar * toolbar);
 
@@ -98,9 +101,6 @@ protected:
 private:
 	/// focus the command buffer widget
 	void focus_command_widget();
-
-	/// update status bar
-	void update_view_state();
 
 	/**
 	 * setWindowTitle - set title of window

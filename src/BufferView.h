@@ -15,6 +15,8 @@
 #ifndef BUFFER_VIEW_H
 #define BUFFER_VIEW_H
 
+#include "metricsinfo.h"
+
 #include "frontends/LyXKeySym.h"
 
 #include "support/types.h"
@@ -96,6 +98,8 @@ public:
 	void setBuffer(Buffer * b);
 	/// return the buffer being viewed
 	Buffer * buffer() const;
+	/// return the first layout of the Buffer.
+	std::string firstLayout();
 
 	/// return the owning main view
 	LyXView * owner() const;
@@ -105,9 +109,6 @@ public:
 
 	/// reload the contained buffer
 	void reload();
-	/// create a new buffer based on template
-	void newFile(std::string const & fname, std::string const & tname,
-		     bool named = true);
 	/// load a buffer into the view
 	bool loadLyXFile(std::string const & name, bool tolastfiles = true);
 
@@ -220,7 +221,6 @@ public:
 	 */
 	void putSelectionAt(DocIterator const & cur,
 		int length, bool backwards);
-
 	///
 	ViewMetricsInfo const & viewMetricsInfo();
 

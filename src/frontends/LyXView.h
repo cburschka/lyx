@@ -62,6 +62,7 @@ public:
 	virtual ~LyXView();
 
 	void setWorkArea(lyx::frontend::WorkArea * work_area);
+
 	/**
 	 * This is called after the concrete view has been created.
 	 * We have to have the toolbar and the other stuff created
@@ -110,6 +111,12 @@ public:
 
 	//@}
 
+	/// load a buffer into the current workarea
+	bool loadLyXFile(std::string const &  name, bool tolastfiles = true);
+
+	/// set a buffer to the current workarea
+	void setBuffer(Buffer * b);
+
 	/// sets the layout in the toolbar layout selection
 	void setLayout(std::string const & layout);
 	/// updates the possible layouts selectable
@@ -119,12 +126,11 @@ public:
 	void updateToolbars();
 	/// update the menubar
 	void updateMenubar();
+	/// update the status bar
+	virtual void updateStatusBar() = 0;
 
 	/// focus the command buffer (minibuffer)
 	boost::signal<void()> focus_command_buffer;
-
-	/// view state string changed
-	boost::signal<void()> view_state_changed;
 
 	/// display a message in the view
 	virtual void message(std::string const &) = 0;
@@ -152,10 +158,13 @@ public:
 	///
 	virtual lyx::frontend::Gui & gui();
 
-	lyx::frontend::WorkArea * workArea() const { return work_area_; }
-
 	/// Temporary method used by the kernel to redraw the work area.
 	virtual void redrawWorkArea();
+
+	/// Temporary method to access the current workArea.
+	/// This is needed for the qt3 and gtk frontend.
+	lyx::frontend::WorkArea * workArea();
+
 protected:
 	/// current work area (screen view of a BufferView).
 	/**

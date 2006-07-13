@@ -34,7 +34,6 @@ class LyXView;
 
 class FuncRequest;
 class FuncStatus;
-class ViewMetricsInfo;
 
 namespace lyx {
 namespace frontend {
@@ -50,6 +49,8 @@ public:
 	Pimpl(BufferView & bv, LyXView * owner);
 	///
 	void setBuffer(Buffer * buf);
+	/// return the first layout of the Buffer.
+	std::string firstLayout();
 	///
 	void resizeCurrentBuffer();
 	//
@@ -58,9 +59,7 @@ public:
 	bool multiParSel();
 	///
 	void update(Update::flags flags = Update::Force);
-	///
-	void newFile(std::string const &, std::string const &, bool);
-	///
+	/// load a buffer into the view
 	bool loadLyXFile(std::string const &, bool);
 	///
 	void workAreaResize(int width, int height);
@@ -163,14 +162,13 @@ private:
 	/// notify readonly status
 	void showReadonly(bool);
 
-
-	///
-	friend class BufferView;
-
 	///
 	ViewMetricsInfo metrics_info_;
 	///
 	void updateMetrics(bool singlepar = false);
+
+	///
+	friend class BufferView;
 
 	///
 	BufferView * bv_;
@@ -215,5 +213,6 @@ private:
 	lyx::pit_type anchor_ref_;
 	///
 	int offset_ref_;
+
 };
 #endif // BUFFERVIEW_PIMPL_H

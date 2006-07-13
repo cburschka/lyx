@@ -603,7 +603,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 //		//if (hasSelection())
 //		//	cur.selection() = false;
 //		col_type const col = tabular.column_of_cell(cur.idx());
-//		int const t =	cur.bv().top_y() + cur.bv().painter().paperHeight();
+//		int const t =	cur.bv().top_y() + cur.bv().height();
 //		if (t < yo() + tabular.getHeightOfTabular()) {
 //			cur.bv().scrollDocView(t);
 //			cur.idx() = tabular.getCellBelow(first_visible_cell) + col;
@@ -619,7 +619,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 //		//if (hasSelection())
 //		//	cur.selection() = false;
 //		col_type const col = tabular.column_of_cell(cur.idx());
-//		int const t =	cur.bv().top_y() + cur.bv().painter().paperHeight();
+//		int const t =	cur.bv().top_y() + cur.bv().height();
 //		if (yo() < 0) {
 //			cur.bv().scrollDocView(t);
 //			if (yo() > 0)

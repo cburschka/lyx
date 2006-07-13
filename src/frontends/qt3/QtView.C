@@ -81,7 +81,6 @@ void QtView::init()
 
 	statusBar()->setSizeGripEnabled(false);
 
-	view_state_changed.connect(boost::bind(&QtView::update_view_state, this));
 	connect(&statusbar_timer_, SIGNAL(timeout()), this, SLOT(update_view_state_qt()));
 
 	// make sure the buttons are disabled if needed
@@ -137,7 +136,7 @@ void QtView::update_view_state_qt()
 }
 
 
-void QtView::update_view_state()
+void QtView::updateStatusBar()
 {
 	// let the user see the explicit message
 	if (statusbar_timer_.isActive())

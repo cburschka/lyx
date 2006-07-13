@@ -80,12 +80,11 @@ public slots:
 protected:
 	/// make sure we quit cleanly
 	virtual void closeEvent(QCloseEvent * e);
+	/// update status bar
+	void updateStatusBar();
 private:
 	/// focus the command buffer widget
 	void focus_command_widget();
-
-	/// update status bar
-	void update_view_state();
 
 	/**
 	 * setWindowTitle - set title of window

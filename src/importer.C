@@ -24,6 +24,7 @@
 #include "frontends/Alert.h"
 #include "gettext.h"
 #include "BufferView.h"
+#include "buffer_funcs.h"
 
 using lyx::support::bformat;
 using lyx::support::changeExtension;
@@ -69,9 +70,9 @@ bool Importer::Import(LyXView * lv, string const & filename,
 
 
 	if (loader_format == "lyx") {
-		lv->view()->loadLyXFile(lyxfile);
+		lv->loadLyXFile(lyxfile);
 	} else {
-		lv->view()->newFile(lyxfile, string(), true);
+		lv->setBuffer(newFile(lyxfile, string(), true));
 		bool as_paragraphs = loader_format == "textparagraph";
 		string filename2 = (loader_format == format) ? filename
 			: changeExtension(filename,

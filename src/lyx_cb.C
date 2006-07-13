@@ -19,6 +19,7 @@
 #include "buffer.h"
 #include "bufferlist.h"
 #include "BufferView.h"
+#include "buffer_funcs.h"
 #include "cursor.h"
 #include "debug.h"
 #include "gettext.h"
@@ -342,7 +343,7 @@ void newFile(BufferView * bv, string const & filename)
 			    << "\nName is " << name
 			    << "\nTemplate is " << tmpname << endl;
 
-	bv->newFile(name, tmpname);
+	bv->setBuffer(newFile(name, tmpname));
 }
 
 
