@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-06-27 22:08+0200\n"
+"POT-Creation-Date: 2006-07-13 10:00+0200\n"
 "PO-Revision-Date: 2006-06-28 13:18+0200\n"
 "Last-Translator: Eulogio Serradilla <eulogio.sr@terra.es>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -2333,7 +2333,8 @@ msgstr "&Márgenes predeterminados"
 
 #: src/frontends/qt2/ui/MarginsModuleBase.ui:45
 msgid "Use the margin settings provided by the document class"
-msgstr "Usar la configuración del margen proporcionada por la clase del documento"
+msgstr ""
+"Usar la configuración del margen proporcionada por la clase del documento"
 
 #: src/frontends/qt2/ui/MarginsModuleBase.ui:132
 msgid "&Top:"
@@ -3121,7 +3122,8 @@ msgstr "Guardar como valores predeterminados"
 
 #: src/frontends/qt2/ui/QDocumentDialogBase.ui:107
 msgid "Save settings as LyX's default document settings"
-msgstr "Guardar configuración como configuración de documento predeterminado de LyX"
+msgstr ""
+"Guardar configuración como configuración de documento predeterminado de LyX"
 
 #: src/frontends/qt2/ui/QERTDialogBase.ui:45
 msgid "Display"
@@ -3732,7 +3734,8 @@ msgstr "Comando &roff:"
 
 #: src/frontends/qt2/ui/QPrefAsciiModule.ui:90
 msgid "Max. line length of exported plain text/LaTeX/SGML files"
-msgstr "Longitud de línea máx. de los archivos de texto simple/LaTeX/SGML exportados"
+msgstr ""
+"Longitud de línea máx. de los archivos de texto simple/LaTeX/SGML exportados"
 
 #: src/frontends/qt2/ui/QPrefAsciiModule.ui:124
 msgid "Output &line length:"
@@ -3805,9 +3808,9 @@ msgid ""
 "paths to LaTeX files. Useful if you're using the native Windows MikTeX "
 "rather than the Cygwin teTeX."
 msgstr ""
-"Seleccionar si LyX debería poner rutas estilo-Windows en vez de rutas estilo-POSIX "
-"en los archivos LaTeX. Útil si está usando el MikTeX nativo de Windows en vez del "
-"teTeX Cygwin."
+"Seleccionar si LyX debería poner rutas estilo-Windows en vez de rutas estilo-"
+"POSIX en los archivos LaTeX. Útil si está usando el MikTeX nativo de Windows "
+"en vez del teTeX Cygwin."
 
 #: src/frontends/qt2/ui/QPrefDateModule.ui:56
 msgid "&Date format:"
@@ -3884,7 +3887,7 @@ msgid "Your E-mail address"
 msgstr "Su dirección de correo-e"
 
 #: src/frontends/qt2/ui/QPrefKeyboardModule.ui:76
-#: src/frontends/qt2/ui/QPrefUIModule.ui:337
+#: src/frontends/qt2/ui/QPrefUIModule.ui:111
 msgid "Bro&wse..."
 msgstr "E&xaminar..."
 
@@ -3987,7 +3990,8 @@ msgstr "Opciones del tamaño del papel para el visor DVI:"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:204
 msgid "Optional paper size flag (-paper) for some DVI viewers"
-msgstr "Indicador opcional del tamaño del papel (-paper) para algunos visores DVI"
+msgstr ""
+"Indicador opcional del tamaño del papel (-paper) para algunos visores DVI"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:250
 #: src/frontends/gtk/GDocument.C:172 src/frontends/qt2/QDocument.C:113
@@ -4190,7 +4194,8 @@ msgstr "Usar caracteres de &escape:"
 
 #: src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:172
 msgid "Specify a personal dictionary file other than the default"
-msgstr "Especificar un archivo diccionario personal distinto del predeterminado"
+msgstr ""
+"Especificar un archivo diccionario personal distinto del predeterminado"
 
 #: src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:183
 msgid "Personal &dictionary:"
@@ -4212,41 +4217,41 @@ msgstr "Usar cod&ificación de entrada"
 msgid "QPrefUIModule"
 msgstr "QPrefUIModule"
 
-#: src/frontends/qt2/ui/QPrefUIModule.ui:78
-msgid "Documents"
-msgstr "Documentos"
-
-#: src/frontends/qt2/ui/QPrefUIModule.ui:97
-msgid "B&ackup documents "
-msgstr "Copias de se&guridad "
-
-#: src/frontends/qt2/ui/QPrefUIModule.ui:153
-msgid " every"
-msgstr " cada"
-
-#: src/frontends/qt2/ui/QPrefUIModule.ui:183
-msgid "minutes"
-msgstr "minutos"
-
-#: src/frontends/qt2/ui/QPrefUIModule.ui:220
-msgid "&Maximum last files:"
-msgstr "Documentos &recientes:"
-
-#: src/frontends/qt2/ui/QPrefUIModule.ui:289
+#: src/frontends/qt2/ui/QPrefUIModule.ui:63
 msgid "B&rowse..."
 msgstr "E&xaminar..."
 
-#: src/frontends/qt2/ui/QPrefUIModule.ui:300
+#: src/frontends/qt2/ui/QPrefUIModule.ui:74
 msgid "&User interface file:"
 msgstr "Archivo interfaz de &usuario:"
 
-#: src/frontends/qt2/ui/QPrefUIModule.ui:315
+#: src/frontends/qt2/ui/QPrefUIModule.ui:89
 msgid "&Bind file:"
 msgstr "&Archivo de asociaciones:"
 
-#: src/frontends/qt2/ui/QPrefUIModule.ui:357
+#: src/frontends/qt2/ui/QPrefUIModule.ui:131
 msgid "Cursor follows &scrollbar"
 msgstr "El &cursor sigue a la barra de desplazamiento"
+
+#: src/frontends/qt2/ui/QPrefUIModule.ui:178
+msgid "Documents"
+msgstr "Documentos"
+
+#: src/frontends/qt2/ui/QPrefUIModule.ui:197
+msgid "B&ackup documents "
+msgstr "Copias de se&guridad "
+
+#: src/frontends/qt2/ui/QPrefUIModule.ui:244
+msgid " every"
+msgstr " cada"
+
+#: src/frontends/qt2/ui/QPrefUIModule.ui:274
+msgid "minutes"
+msgstr "minutos"
+
+#: src/frontends/qt2/ui/QPrefUIModule.ui:302
+msgid "&Maximum last files:"
+msgstr "Documentos &recientes:"
 
 #: src/frontends/qt2/ui/QPrefsDialogBase.ui:110 src/bufferlist.C:84
 #: src/bufferlist.C:183 src/lyxfunc.C:661
@@ -4423,7 +4428,8 @@ msgstr "Formatos de &exportación:"
 
 #: src/frontends/qt2/ui/QSendtoDialogBase.ui:168
 msgid "Process the converted file with this command ($$FName = file name)"
-msgstr "Procesar el archivo convertido con este comando ($$FName = nombre de archivo)"
+msgstr ""
+"Procesar el archivo convertido con este comando ($$FName = nombre de archivo)"
 
 #: src/frontends/qt2/ui/QSendtoDialogBase.ui:192
 msgid "Available export converters"
@@ -4628,7 +4634,8 @@ msgstr "activado"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:934
 msgid "Repeat this row as header on every (except the first) page"
-msgstr "Repetir esta fila como encabezamiento en cada página (excepto en la primera)"
+msgstr ""
+"Repetir esta fila como encabezamiento en cada página (excepto en la primera)"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:949
 msgid "This row is the header of the first page"
@@ -4730,7 +4737,8 @@ msgid "&View"
 msgstr "&Ver"
 
 #: src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
-msgid "Show contents of marked file. Only possible when files are shown with path"
+msgid ""
+"Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 "Mostrar contenidos del archivo marcado. Solo posible cuando los archivos son "
 "mostrados con su ruta"
@@ -9537,18 +9545,18 @@ msgid "Redo|R"
 msgstr "Rehacer|R"
 
 #: lib/ui/stdmenus.ui:84 lib/ui/stdtoolbars.ui:51
-#: src/mathed/math_nestinset.C:433 src/text3.C:854
+#: src/mathed/math_nestinset.C:433 src/text3.C:759
 msgid "Cut"
 msgstr "Cortar"
 
 #: lib/ui/stdmenus.ui:85 lib/ui/stdtoolbars.ui:52
-#: src/mathed/math_nestinset.C:441 src/text3.C:859
+#: src/mathed/math_nestinset.C:441 src/text3.C:764
 msgid "Copy"
 msgstr "Copiar"
 
 #: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:644
 #: src/mathed/math_gridinset.C:1207 src/mathed/math_nestinset.C:417
-#: src/text3.C:841
+#: src/text3.C:746
 msgid "Paste"
 msgstr "Pegar"
 
@@ -11295,7 +11303,8 @@ msgstr "Ningún archivo de registro LaTeX encontrado."
 
 #: src/frontends/controllers/ControlLog.C:109
 msgid "No literate programming build log file found."
-msgstr "Ningún archivo de registro de construcción de programación culta encontrado."
+msgstr ""
+"Ningún archivo de registro de construcción de programación culta encontrado."
 
 #: src/frontends/controllers/ControlLog.C:112
 msgid "No lyx2lyx error log file found."
@@ -12574,7 +12583,8 @@ msgstr ""
 "oraciones. (Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:218
-msgid "Optional text which appears before the citation, e.g. \"see <Citation>\""
+msgid ""
+"Optional text which appears before the citation, e.g. \"see <Citation>\""
 msgstr "Texto opcional que aparece antes de la cita, p. ej. \"ver <cita>\""
 
 #: src/frontends/xforms/FormCitation.C:221
@@ -12805,7 +12815,8 @@ msgstr "Cambiar el ancho de la imagen al valor especificado."
 #: src/frontends/xforms/FormGraphics.C:163
 #, no-c-format
 msgid "Select unit for width; Scale% for scaling whole image."
-msgstr "Seleccionar la unidad para el ancho; Escala% para redimensionar la imagen."
+msgstr ""
+"Seleccionar la unidad para el ancho; Escala% para redimensionar la imagen."
 
 #: src/frontends/xforms/FormGraphics.C:165
 msgid "Set the image height to the inserted value."
@@ -12993,7 +13004,8 @@ msgid "LyX objects that can be assigned a color."
 msgstr "Objetos de LyX a los que puede ser asignado un color."
 
 #: src/frontends/xforms/FormPreferences.C:509
-msgid "Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgid ""
+"Modify the LyX object's color. Note: you must then \"Apply\" the change."
 msgstr ""
 "Modificar el color del objeto de LyX. Nota: debe entonces \"Aplicar\" el "
 "cambio."
@@ -13131,7 +13143,8 @@ msgstr "El nombre del formato tal como aparecerá en los menús."
 
 #: src/frontends/xforms/FormPreferences.C:1329
 msgid "The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
-msgstr "Acelerador del teclado. Usar una letra en el nombre. Distingue mayúsculas."
+msgstr ""
+"Acelerador del teclado. Usar una letra en el nombre. Distingue mayúsculas."
 
 #: src/frontends/xforms/FormPreferences.C:1333
 msgid "Used to recognize the file. E.g., ps, pdf, tex."
@@ -13179,7 +13192,8 @@ msgstr "Desactivado|Sin ecuaciones|Activado"
 
 #: src/frontends/xforms/FormPreferences.C:2103
 msgid " default | US letter | US legal | US executive | A3 | A4 | A5 | B5 "
-msgstr " predeterminado | carta US | oficio US | ejecutivo US | A3 | A4 | A5 | B5 "
+msgstr ""
+" predeterminado | carta US | oficio US | ejecutivo US | A3 | A4 | A5 | B5 "
 
 #: src/frontends/xforms/FormPreferences.C:2359
 msgid "Default path"
@@ -13343,8 +13357,10 @@ msgid "Search backwards."
 msgstr "Buscar hacia atrás."
 
 #: src/frontends/xforms/FormSendto.C:56
-msgid "Export the buffer to this format before running the command below on it."
-msgstr "Exportar el búfer a este formato antes de ejecutar el comando debajo de él."
+msgid ""
+"Export the buffer to this format before running the command below on it."
+msgstr ""
+"Exportar el búfer a este formato antes de ejecutar el comando debajo de él."
 
 #: src/frontends/xforms/FormSendto.C:59
 msgid ""
@@ -13356,7 +13372,8 @@ msgstr ""
 
 #: src/frontends/xforms/FormSpellchecker.C:61
 msgid "Type replacement for unknown word or select from suggestions."
-msgstr "Introducir reemplazo para palabra desconocida o seleccionar de sugerencias."
+msgstr ""
+"Introducir reemplazo para palabra desconocida o seleccionar de sugerencias."
 
 #: src/frontends/xforms/FormSpellchecker.C:64
 msgid "List of replacement suggestions from dictionary."
@@ -13429,7 +13446,8 @@ msgstr "Mostrar ruta completa o solo nombre de archivo."
 
 #: src/frontends/xforms/FormTexinfo.C:60
 msgid "Runs the script \"TexFiles.sh\" to rebuild the file lists."
-msgstr "Ejecuta el guión \"TexFiles.sh\" para reconstruir las listas de archivos."
+msgstr ""
+"Ejecuta el guión \"TexFiles.sh\" para reconstruir las listas de archivos."
 
 #: src/frontends/xforms/FormTexinfo.C:63
 msgid "Double click to view contents of file."
@@ -13816,15 +13834,15 @@ msgstr "PrettyRef"
 msgid "PrettyRef: "
 msgstr "PrettyRef: "
 
-#: src/insets/insettabular.C:419
+#: src/insets/insettabular.C:433
 msgid "Opened table"
 msgstr "Tabla abierta"
 
-#: src/insets/insettabular.C:1514
+#: src/insets/insettabular.C:1528
 msgid "Error setting multicolumn"
 msgstr "Error al poner multicolumna"
 
-#: src/insets/insettabular.C:1515
+#: src/insets/insettabular.C:1529
 msgid "You cannot set multicolumn vertically."
 msgstr "No se puede poner una multicolumna verticalmente."
 
@@ -14283,7 +14301,8 @@ msgstr "Falta comando después de la opción --execute"
 
 #: src/lyx_main.C:915
 msgid "Missing file type [eg latex, ps...] after --export switch"
-msgstr "Falta tipo de archivo [p. ej. latex, ps...] después de la opción --export"
+msgstr ""
+"Falta tipo de archivo [p. ej. latex, ps...] después de la opción --export"
 
 #: src/lyx_main.C:927
 msgid "Missing file type [eg latex, ps...] after --import switch"
@@ -14451,7 +14470,7 @@ msgstr "Construir"
 msgid "ChkTeX"
 msgstr "ChkTeX"
 
-#: src/lyxfunc.C:1020 src/text3.C:1260
+#: src/lyxfunc.C:1020 src/text3.C:1165
 msgid "Missing argument"
 msgstr "Falta argumento"
 
@@ -14471,7 +14490,8 @@ msgstr "Sintaxis: set-color <nombre_lyx> <nombre_x11>"
 #: src/lyxfunc.C:1375
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
-msgstr "set-color \"%1$s\" falló - el color no está definido o no pudo ser redefinido"
+msgstr ""
+"set-color \"%1$s\" falló - el color no está definido o no pudo ser redefinido"
 
 #: src/lyxfunc.C:1488
 msgid "Document defaults saved in "
@@ -14543,9 +14563,9 @@ msgid ""
 "g. \"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"\" is "
 "specified, an internal routine is used."
 msgstr ""
-"Usar para definir un programa externo para que dibuje las tablas en la salida "
-"de texto simple. P. ej. \"groff -t -Tlatin1 $$FName\" donde $$FName es el "
-"archivo de entrada. Si se especifica \"\", se usa una rutina interna."
+"Usar para definir un programa externo para que dibuje las tablas en la "
+"salida de texto simple. P. ej. \"groff -t -Tlatin1 $$FName\" donde $$FName "
+"es el archivo de entrada. Si se especifica \"\", se usa una rutina interna."
 
 #: src/lyxrc.C:2079
 msgid ""
@@ -14572,7 +14592,8 @@ msgstr ""
 "valores predeterminados después de un cambio de clase."
 
 #: src/lyxrc.C:2091
-msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid ""
+"The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Intervalo temporal entre autoguardados (en segundos). 0 significa no "
 "autoguardado."
@@ -14661,7 +14682,8 @@ msgstr ""
 
 #: src/lyxrc.C:2160
 msgid "Specify additional chars that can be part of a word."
-msgstr "Especificar caracteres adicionales que pueden ser parte de una palabra."
+msgstr ""
+"Especificar caracteres adicionales que pueden ser parte de una palabra."
 
 #: src/lyxrc.C:2164
 msgid ""
@@ -14704,7 +14726,8 @@ msgstr ""
 "documento."
 
 #: src/lyxrc.C:2192
-msgid "Select if a language switching command is needed at the end of the document."
+msgid ""
+"Select if a language switching command is needed at the end of the document."
 msgstr ""
 "Seleccionar si un comando de cambio de idioma se necesita al final del "
 "documento."
@@ -14753,7 +14776,8 @@ msgstr ""
 
 #: src/lyxrc.C:2220
 msgid "The file where the last-files information should be stored."
-msgstr "Archivo donde la información de archivos recientes debería ser almacenada."
+msgstr ""
+"Archivo donde la información de archivos recientes debería ser almacenada."
 
 #: src/lyxrc.C:2224
 msgid "De-select if you don't want LyX to create backup files."
@@ -14783,8 +14807,10 @@ msgstr ""
 "entorno PATH. Use el formato nativo del OS."
 
 #: src/lyxrc.C:2243
-msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
-msgstr "Especificar diccionario personal alternativo. P. ej. \".ispell_english\"."
+msgid ""
+"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgstr ""
+"Especificar diccionario personal alternativo. P. ej. \".ispell_english\"."
 
 #: src/lyxrc.C:2247
 msgid "The bold font in the dialogs."
@@ -14856,7 +14882,8 @@ msgstr "Opción para imprimir solo páginas impares."
 
 #: src/lyxrc.C:2303
 msgid "The option for specifying a comma-separated list of pages to print."
-msgstr "Opción para especificar una lista separada por comas de páginas a imprimir."
+msgstr ""
+"Opción para especificar una lista separada por comas de páginas a imprimir."
 
 #: src/lyxrc.C:2307
 msgid "Option to specify the dimensions of the print paper."
@@ -14912,8 +14939,10 @@ msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "Programa favorito de impresión, p. ej. \"dvips\", \"dvilj4\"."
 
 #: src/lyxrc.C:2343
-msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
-msgstr "Seleccionar para idiomas de derecha-a-izquierda (p. ej. hebreo, árabe)."
+msgid ""
+"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgstr ""
+"Seleccionar para idiomas de derecha-a-izquierda (p. ej. hebreo, árabe)."
 
 #: src/lyxrc.C:2347
 msgid ""
@@ -14944,7 +14973,8 @@ msgstr ""
 
 #: src/lyxrc.C:2370
 msgid "The font sizes used for calculating the scaling of the screen fonts."
-msgstr "Tamaños de fuentes usados para calcular la escala de las fuentes de pantalla."
+msgstr ""
+"Tamaños de fuentes usados para calcular la escala de las fuentes de pantalla."
 
 #: src/lyxrc.C:2375
 #, no-c-format
@@ -15163,8 +15193,10 @@ msgstr "Todos los archivos (*)"
 
 #: src/support/package.C.in:439
 #, c-format
-msgid "Unable to determine the path to the LyX binary from the command line %1$s"
-msgstr "No se pudo determinar la ruta al binario LyX desde la línea de comandos %1$s"
+msgid ""
+"Unable to determine the path to the LyX binary from the command line %1$s"
+msgstr ""
+"No se pudo determinar la ruta al binario LyX desde la línea de comandos %1$s"
 
 #: src/support/package.C.in:560
 #, c-format
@@ -15256,7 +15288,8 @@ msgstr ""
 
 #: src/text.C:1196
 msgid "You cannot type two spaces this way. Please read the Tutorial."
-msgstr "No se puede introducir dos espacios de esa manera. Por favor lea el Tutorial."
+msgstr ""
+"No se puede introducir dos espacios de esa manera. Por favor lea el Tutorial."
 
 #: src/text.C:2270
 msgid "Change: "
@@ -15320,27 +15353,27 @@ msgstr "¡Nada que indexar!"
 msgid "Cannot index more than one paragraph!"
 msgstr "¡No se puede indexar más de un párrafo!"
 
-#: src/text3.C:750
+#: src/text3.C:655
 msgid "Unknown spacing argument: "
 msgstr "Argumento de espaciado desconocido: "
 
-#: src/text3.C:903
+#: src/text3.C:808
 msgid "LyX function 'layout' needs an argument."
 msgstr "La función 'layout' de LyX necesita un argumento."
 
-#: src/text3.C:921
+#: src/text3.C:826
 msgid "Layout "
 msgstr "Estilo "
 
-#: src/text3.C:922
+#: src/text3.C:827
 msgid " not known"
 msgstr " no conocido"
 
-#: src/text3.C:1364 src/text3.C:1376
+#: src/text3.C:1269 src/text3.C:1281
 msgid "Character set"
 msgstr "Conjunto de caracteres"
 
-#: src/text3.C:1508
+#: src/text3.C:1413
 msgid "Paragraph layout set"
 msgstr "Estilo de párrafo"
 
@@ -15367,4 +15400,3 @@ msgstr "Relleno vertical"
 #: src/vspace.C:506
 msgid "protected"
 msgstr "protegido"
-

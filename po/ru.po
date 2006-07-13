@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-06-27 22:08+0200\n"
+"POT-Creation-Date: 2006-07-13 10:00+0200\n"
 "PO-Revision-Date: 2005-04-01 13:42MSK\n"
 "Last-Translator: Vitaly Lipatov <lav@altlinux.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -4062,7 +4062,7 @@ msgid "Your E-mail address"
 msgstr ""
 
 #: src/frontends/qt2/ui/QPrefKeyboardModule.ui:76
-#: src/frontends/qt2/ui/QPrefUIModule.ui:337
+#: src/frontends/qt2/ui/QPrefUIModule.ui:111
 msgid "Bro&wse..."
 msgstr "&Выбрать..."
 
@@ -4399,42 +4399,42 @@ msgstr "Входная ко&дировка"
 msgid "QPrefUIModule"
 msgstr ""
 
-#: src/frontends/qt2/ui/QPrefUIModule.ui:78
-msgid "Documents"
-msgstr "Документы"
-
-#: src/frontends/qt2/ui/QPrefUIModule.ui:97
-msgid "B&ackup documents "
-msgstr "Создавать &резервные копии документов "
-
-#: src/frontends/qt2/ui/QPrefUIModule.ui:153
-msgid " every"
-msgstr " каждые"
-
-#: src/frontends/qt2/ui/QPrefUIModule.ui:183
-msgid "minutes"
-msgstr "минут"
-
-#: src/frontends/qt2/ui/QPrefUIModule.ui:220
-msgid "&Maximum last files:"
-msgstr "&Количество недавних файлов:"
-
-#: src/frontends/qt2/ui/QPrefUIModule.ui:289
+#: src/frontends/qt2/ui/QPrefUIModule.ui:63
 msgid "B&rowse..."
 msgstr "&Выбрать..."
 
-#: src/frontends/qt2/ui/QPrefUIModule.ui:300
+#: src/frontends/qt2/ui/QPrefUIModule.ui:74
 msgid "&User interface file:"
 msgstr "&Файл пользовательского интерфейса:"
 
-#: src/frontends/qt2/ui/QPrefUIModule.ui:315
+#: src/frontends/qt2/ui/QPrefUIModule.ui:89
 msgid "&Bind file:"
 msgstr "&Файл клавиатурных сокращений:"
 
-#: src/frontends/qt2/ui/QPrefUIModule.ui:357
+#: src/frontends/qt2/ui/QPrefUIModule.ui:131
 #, fuzzy
 msgid "Cursor follows &scrollbar"
 msgstr "&Перемещать курсор при прокрутке"
+
+#: src/frontends/qt2/ui/QPrefUIModule.ui:178
+msgid "Documents"
+msgstr "Документы"
+
+#: src/frontends/qt2/ui/QPrefUIModule.ui:197
+msgid "B&ackup documents "
+msgstr "Создавать &резервные копии документов "
+
+#: src/frontends/qt2/ui/QPrefUIModule.ui:244
+msgid " every"
+msgstr " каждые"
+
+#: src/frontends/qt2/ui/QPrefUIModule.ui:274
+msgid "minutes"
+msgstr "минут"
+
+#: src/frontends/qt2/ui/QPrefUIModule.ui:302
+msgid "&Maximum last files:"
+msgstr "&Количество недавних файлов:"
 
 #: src/frontends/qt2/ui/QPrefsDialogBase.ui:110 src/bufferlist.C:84
 #: src/bufferlist.C:183 src/lyxfunc.C:661
@@ -10152,18 +10152,18 @@ msgid "Redo|R"
 msgstr "Повторить|П"
 
 #: lib/ui/stdmenus.ui:84 lib/ui/stdtoolbars.ui:51
-#: src/mathed/math_nestinset.C:433 src/text3.C:854
+#: src/mathed/math_nestinset.C:433 src/text3.C:759
 msgid "Cut"
 msgstr "Вырезать"
 
 #: lib/ui/stdmenus.ui:85 lib/ui/stdtoolbars.ui:52
-#: src/mathed/math_nestinset.C:441 src/text3.C:859
+#: src/mathed/math_nestinset.C:441 src/text3.C:764
 msgid "Copy"
 msgstr "Запомнить"
 
 #: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:644
 #: src/mathed/math_gridinset.C:1207 src/mathed/math_nestinset.C:417
-#: src/text3.C:841
+#: src/text3.C:746
 msgid "Paste"
 msgstr "Вставить"
 
@@ -14699,16 +14699,16 @@ msgstr "Красивая ссылка"
 msgid "PrettyRef: "
 msgstr "Красивая ссылка: "
 
-#: src/insets/insettabular.C:419
+#: src/insets/insettabular.C:433
 #, fuzzy
 msgid "Opened table"
 msgstr "Открыть документ"
 
-#: src/insets/insettabular.C:1514
+#: src/insets/insettabular.C:1528
 msgid "Error setting multicolumn"
 msgstr ""
 
-#: src/insets/insettabular.C:1515
+#: src/insets/insettabular.C:1529
 msgid "You cannot set multicolumn vertically."
 msgstr ""
 
@@ -15327,7 +15327,7 @@ msgstr "Создать журнал сообщений"
 msgid "ChkTeX"
 msgstr "Проверить TeX"
 
-#: src/lyxfunc.C:1020 src/text3.C:1260
+#: src/lyxfunc.C:1020 src/text3.C:1165
 msgid "Missing argument"
 msgstr "Отсутствует аргумент"
 
@@ -16207,27 +16207,27 @@ msgstr "Нечего индексировать!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Нельзя индексировать более чем один абзац!"
 
-#: src/text3.C:750
+#: src/text3.C:655
 msgid "Unknown spacing argument: "
 msgstr "Неизвестный межстрочный промежуток: "
 
-#: src/text3.C:903
+#: src/text3.C:808
 msgid "LyX function 'layout' needs an argument."
 msgstr "Функции LyX 'layout' необходим аргумент."
 
-#: src/text3.C:921
+#: src/text3.C:826
 msgid "Layout "
 msgstr "Формат "
 
-#: src/text3.C:922
+#: src/text3.C:827
 msgid " not known"
 msgstr " неизвестен"
 
-#: src/text3.C:1364 src/text3.C:1376
+#: src/text3.C:1269 src/text3.C:1281
 msgid "Character set"
 msgstr "Кодировка символов"
 
-#: src/text3.C:1508
+#: src/text3.C:1413
 msgid "Paragraph layout set"
 msgstr "Установлено размещение абзаца"
 

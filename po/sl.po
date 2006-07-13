@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-06-27 22:08+0200\n"
+"POT-Creation-Date: 2006-07-13 10:00+0200\n"
 "PO-Revision-Date: 2004-01-02 23:55+0100\n"
 "Last-Translator:  Roman Maurer <roman@lugos.si>\n"
 "Language-Team: Slovenian <translation-team-sl@lists.sourceforge.net>\n"
@@ -4078,7 +4078,7 @@ msgid "Your E-mail address"
 msgstr ""
 
 #: src/frontends/qt2/ui/QPrefKeyboardModule.ui:76
-#: src/frontends/qt2/ui/QPrefUIModule.ui:337
+#: src/frontends/qt2/ui/QPrefUIModule.ui:111
 msgid "Bro&wse..."
 msgstr "Br&skaj..."
 
@@ -4414,42 +4414,42 @@ msgstr "Uporabi vhodno &kodiranje"
 msgid "QPrefUIModule"
 msgstr ""
 
-#: src/frontends/qt2/ui/QPrefUIModule.ui:78
-msgid "Documents"
-msgstr "Spisi"
-
-#: src/frontends/qt2/ui/QPrefUIModule.ui:97
-msgid "B&ackup documents "
-msgstr "S&amoshranjevanje dokumentov "
-
-#: src/frontends/qt2/ui/QPrefUIModule.ui:153
-msgid " every"
-msgstr " vsakih"
-
-#: src/frontends/qt2/ui/QPrefUIModule.ui:183
-msgid "minutes"
-msgstr "minut"
-
-#: src/frontends/qt2/ui/QPrefUIModule.ui:220
-msgid "&Maximum last files:"
-msgstr "&Najveè zadnjih datotek:"
-
-#: src/frontends/qt2/ui/QPrefUIModule.ui:289
+#: src/frontends/qt2/ui/QPrefUIModule.ui:63
 msgid "B&rowse..."
 msgstr "B&rskaj..."
 
-#: src/frontends/qt2/ui/QPrefUIModule.ui:300
+#: src/frontends/qt2/ui/QPrefUIModule.ui:74
 msgid "&User interface file:"
 msgstr "Datoteka z &uporabni¹kim vmesnikom:"
 
-#: src/frontends/qt2/ui/QPrefUIModule.ui:315
+#: src/frontends/qt2/ui/QPrefUIModule.ui:89
 msgid "&Bind file:"
 msgstr "Datoteka s &povezavami:"
 
-#: src/frontends/qt2/ui/QPrefUIModule.ui:357
+#: src/frontends/qt2/ui/QPrefUIModule.ui:131
 #, fuzzy
 msgid "Cursor follows &scrollbar"
 msgstr "Kurzor &sledi pomiènici"
+
+#: src/frontends/qt2/ui/QPrefUIModule.ui:178
+msgid "Documents"
+msgstr "Spisi"
+
+#: src/frontends/qt2/ui/QPrefUIModule.ui:197
+msgid "B&ackup documents "
+msgstr "S&amoshranjevanje dokumentov "
+
+#: src/frontends/qt2/ui/QPrefUIModule.ui:244
+msgid " every"
+msgstr " vsakih"
+
+#: src/frontends/qt2/ui/QPrefUIModule.ui:274
+msgid "minutes"
+msgstr "minut"
+
+#: src/frontends/qt2/ui/QPrefUIModule.ui:302
+msgid "&Maximum last files:"
+msgstr "&Najveè zadnjih datotek:"
 
 #: src/frontends/qt2/ui/QPrefsDialogBase.ui:110 src/bufferlist.C:84
 #: src/bufferlist.C:183 src/lyxfunc.C:661
@@ -10214,18 +10214,18 @@ msgid "Redo|R"
 msgstr "Ponovi|o"
 
 #: lib/ui/stdmenus.ui:84 lib/ui/stdtoolbars.ui:51
-#: src/mathed/math_nestinset.C:433 src/text3.C:854
+#: src/mathed/math_nestinset.C:433 src/text3.C:759
 msgid "Cut"
 msgstr "Izre¾i"
 
 #: lib/ui/stdmenus.ui:85 lib/ui/stdtoolbars.ui:52
-#: src/mathed/math_nestinset.C:441 src/text3.C:859
+#: src/mathed/math_nestinset.C:441 src/text3.C:764
 msgid "Copy"
 msgstr "Prepi¹i"
 
 #: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:644
 #: src/mathed/math_gridinset.C:1207 src/mathed/math_nestinset.C:417
-#: src/text3.C:841
+#: src/text3.C:746
 msgid "Paste"
 msgstr "Prilepi"
 
@@ -14840,16 +14840,16 @@ msgstr "LepSkl"
 msgid "PrettyRef: "
 msgstr "LepSkl"
 
-#: src/insets/insettabular.C:419
+#: src/insets/insettabular.C:433
 #, fuzzy
 msgid "Opened table"
 msgstr "Odpira se datoteko s pomoèjo"
 
-#: src/insets/insettabular.C:1514
+#: src/insets/insettabular.C:1528
 msgid "Error setting multicolumn"
 msgstr ""
 
-#: src/insets/insettabular.C:1515
+#: src/insets/insettabular.C:1529
 msgid "You cannot set multicolumn vertically."
 msgstr ""
 
@@ -15494,7 +15494,7 @@ msgstr "Zgradi program"
 msgid "ChkTeX"
 msgstr "Preveri TeX"
 
-#: src/lyxfunc.C:1020 src/text3.C:1260
+#: src/lyxfunc.C:1020 src/text3.C:1165
 msgid "Missing argument"
 msgstr "Manjkajoèi argument"
 
@@ -16274,29 +16274,29 @@ msgstr "Nièesar ni moè storiti"
 msgid "Cannot index more than one paragraph!"
 msgstr "Celica tabele ne more obsegati veè kot enega odstavka!"
 
-#: src/text3.C:750
+#: src/text3.C:655
 #, fuzzy
 msgid "Unknown spacing argument: "
 msgstr "Manjkajoèi argument"
 
-#: src/text3.C:903
+#: src/text3.C:808
 msgid "LyX function 'layout' needs an argument."
 msgstr ""
 
-#: src/text3.C:921
+#: src/text3.C:826
 msgid "Layout "
 msgstr "Videz "
 
-#: src/text3.C:922
+#: src/text3.C:827
 msgid " not known"
 msgstr " ni znan"
 
-#: src/text3.C:1364 src/text3.C:1376
+#: src/text3.C:1269 src/text3.C:1281
 #, fuzzy
 msgid "Character set"
 msgstr "Znakovni nabor:|#Z"
 
-#: src/text3.C:1508
+#: src/text3.C:1413
 msgid "Paragraph layout set"
 msgstr "Nastavljen videz odstavka"
 

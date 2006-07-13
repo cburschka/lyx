@@ -170,7 +170,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.2.0cvs\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-06-27 22:08+0200\n"
+"POT-Creation-Date: 2006-07-13 10:00+0200\n"
 "PO-Revision-Date: 2005-12-18 15:11+0100\n"
 "Last-Translator:  Adrien Rebollo <adrien.rebollo@wanadoo.fr>\n"
 "Language-Team: lyxfr <http://perso.wanadoo.fr/adrien.rebollo/lyxfr/lyxfr."
@@ -4052,7 +4052,7 @@ msgid "Your E-mail address"
 msgstr "Votre adresse électronique"
 
 #: src/frontends/qt2/ui/QPrefKeyboardModule.ui:76
-#: src/frontends/qt2/ui/QPrefUIModule.ui:337
+#: src/frontends/qt2/ui/QPrefUIModule.ui:111
 msgid "Bro&wse..."
 msgstr "&Parcourir..."
 
@@ -4382,41 +4382,41 @@ msgstr "Utiliser l'&encodage d'entrée"
 msgid "QPrefUIModule"
 msgstr ""
 
-#: src/frontends/qt2/ui/QPrefUIModule.ui:78
-msgid "Documents"
-msgstr "Documents"
-
-#: src/frontends/qt2/ui/QPrefUIModule.ui:97
-msgid "B&ackup documents "
-msgstr "&Sauvegarde automatique "
-
-#: src/frontends/qt2/ui/QPrefUIModule.ui:153
-msgid " every"
-msgstr "toutes les"
-
-#: src/frontends/qt2/ui/QPrefUIModule.ui:183
-msgid "minutes"
-msgstr "minutes"
-
-#: src/frontends/qt2/ui/QPrefUIModule.ui:220
-msgid "&Maximum last files:"
-msgstr "&Nombre maximum de fichiers :"
-
-#: src/frontends/qt2/ui/QPrefUIModule.ui:289
+#: src/frontends/qt2/ui/QPrefUIModule.ui:63
 msgid "B&rowse..."
 msgstr "P&arcourir..."
 
-#: src/frontends/qt2/ui/QPrefUIModule.ui:300
+#: src/frontends/qt2/ui/QPrefUIModule.ui:74
 msgid "&User interface file:"
 msgstr "Fichier d'&interface :"
 
-#: src/frontends/qt2/ui/QPrefUIModule.ui:315
+#: src/frontends/qt2/ui/QPrefUIModule.ui:89
 msgid "&Bind file:"
 msgstr "Fichier de &raccourcis :"
 
-#: src/frontends/qt2/ui/QPrefUIModule.ui:357
+#: src/frontends/qt2/ui/QPrefUIModule.ui:131
 msgid "Cursor follows &scrollbar"
 msgstr "Le curseur suit la barre de &défilement"
+
+#: src/frontends/qt2/ui/QPrefUIModule.ui:178
+msgid "Documents"
+msgstr "Documents"
+
+#: src/frontends/qt2/ui/QPrefUIModule.ui:197
+msgid "B&ackup documents "
+msgstr "&Sauvegarde automatique "
+
+#: src/frontends/qt2/ui/QPrefUIModule.ui:244
+msgid " every"
+msgstr "toutes les"
+
+#: src/frontends/qt2/ui/QPrefUIModule.ui:274
+msgid "minutes"
+msgstr "minutes"
+
+#: src/frontends/qt2/ui/QPrefUIModule.ui:302
+msgid "&Maximum last files:"
+msgstr "&Nombre maximum de fichiers :"
 
 #: src/frontends/qt2/ui/QPrefsDialogBase.ui:110 src/bufferlist.C:84
 #: src/bufferlist.C:183 src/lyxfunc.C:661
@@ -9734,18 +9734,18 @@ msgid "Redo|R"
 msgstr "Refaire|R"
 
 #: lib/ui/stdmenus.ui:84 lib/ui/stdtoolbars.ui:51
-#: src/mathed/math_nestinset.C:433 src/text3.C:854
+#: src/mathed/math_nestinset.C:433 src/text3.C:759
 msgid "Cut"
 msgstr "Couper"
 
 #: lib/ui/stdmenus.ui:85 lib/ui/stdtoolbars.ui:52
-#: src/mathed/math_nestinset.C:441 src/text3.C:859
+#: src/mathed/math_nestinset.C:441 src/text3.C:764
 msgid "Copy"
 msgstr "Copier"
 
 #: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:644
 #: src/mathed/math_gridinset.C:1207 src/mathed/math_nestinset.C:417
-#: src/text3.C:841
+#: src/text3.C:746
 msgid "Paste"
 msgstr "Coller"
 
@@ -14038,15 +14038,15 @@ msgstr "PrettyRef"
 msgid "PrettyRef: "
 msgstr "PrettyRef : "
 
-#: src/insets/insettabular.C:419
+#: src/insets/insettabular.C:433
 msgid "Opened table"
 msgstr "Tableau ouvert"
 
-#: src/insets/insettabular.C:1514
+#: src/insets/insettabular.C:1528
 msgid "Error setting multicolumn"
 msgstr "Erreur de paramétrage de multi-colonnes"
 
-#: src/insets/insettabular.C:1515
+#: src/insets/insettabular.C:1529
 msgid "You cannot set multicolumn vertically."
 msgstr "Vous ne pouvez pas paramétrer multi-colonnes verticalement."
 
@@ -14685,7 +14685,7 @@ msgstr "Compilation"
 msgid "ChkTeX"
 msgstr "ChkTeX"
 
-#: src/lyxfunc.C:1020 src/text3.C:1260
+#: src/lyxfunc.C:1020 src/text3.C:1165
 msgid "Missing argument"
 msgstr "Paramètre manquant"
 
@@ -15574,27 +15574,27 @@ msgstr "Rien à faire !"
 msgid "Cannot index more than one paragraph!"
 msgstr "Impossible d'indexer plus d'un paragraphe !"
 
-#: src/text3.C:750
+#: src/text3.C:655
 msgid "Unknown spacing argument: "
 msgstr "Paramètre d'espacement inconnu : "
 
-#: src/text3.C:903
+#: src/text3.C:808
 msgid "LyX function 'layout' needs an argument."
 msgstr "La fonction 'layout' nécessite un argument."
 
-#: src/text3.C:921
+#: src/text3.C:826
 msgid "Layout "
 msgstr "Environnement "
 
-#: src/text3.C:922
+#: src/text3.C:827
 msgid " not known"
 msgstr " inconnu"
 
-#: src/text3.C:1364 src/text3.C:1376
+#: src/text3.C:1269 src/text3.C:1281
 msgid "Character set"
 msgstr "Encodage"
 
-#: src/text3.C:1508
+#: src/text3.C:1413
 msgid "Paragraph layout set"
 msgstr "Style du paragraphe redéfini"
 

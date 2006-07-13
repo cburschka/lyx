@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-06-29 21:58+0200\n"
+"POT-Creation-Date: 2006-07-13 10:00+0200\n"
 "PO-Revision-Date: 2006-06-29 00:05+0100\n"
 "Last-Translator: Szõke Sándor <alex@lyx.hu>\n"
 "Language-Team:  <hu@li.org>\n"
@@ -9541,18 +9541,18 @@ msgid "Redo|R"
 msgstr "Mégis alkalmaz|M"
 
 #: lib/ui/stdmenus.ui:84 lib/ui/stdtoolbars.ui:51
-#: src/mathed/math_nestinset.C:433 src/text3.C:854
+#: src/mathed/math_nestinset.C:433 src/text3.C:759
 msgid "Cut"
 msgstr "Kivágás"
 
 #: lib/ui/stdmenus.ui:85 lib/ui/stdtoolbars.ui:52
-#: src/mathed/math_nestinset.C:441 src/text3.C:859
+#: src/mathed/math_nestinset.C:441 src/text3.C:764
 msgid "Copy"
 msgstr "Másolás"
 
 #: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:644
 #: src/mathed/math_gridinset.C:1207 src/mathed/math_nestinset.C:417
-#: src/text3.C:841
+#: src/text3.C:746
 msgid "Paste"
 msgstr "Beillesztés"
 
@@ -13827,15 +13827,15 @@ msgstr "PrettyRef"
 msgid "PrettyRef: "
 msgstr "PrettyRef: "
 
-#: src/insets/insettabular.C:427
+#: src/insets/insettabular.C:433
 msgid "Opened table"
 msgstr "Táblázat megnyitása"
 
-#: src/insets/insettabular.C:1522
+#: src/insets/insettabular.C:1528
 msgid "Error setting multicolumn"
 msgstr "Hiba cellaegyesítés közben"
 
-#: src/insets/insettabular.C:1523
+#: src/insets/insettabular.C:1529
 msgid "You cannot set multicolumn vertically."
 msgstr "Függõlegesen nem lehet cellát egyesíteni!"
 
@@ -14463,7 +14463,7 @@ msgstr "Build"
 msgid "ChkTeX"
 msgstr "ChkTeX"
 
-#: src/lyxfunc.C:1020 src/text3.C:1260
+#: src/lyxfunc.C:1020 src/text3.C:1165
 msgid "Missing argument"
 msgstr "Hiányzó paraméter"
 
@@ -15326,27 +15326,27 @@ msgstr "Nincs mit a szójegyzékbe rakni!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Nem tudok szójegyzékbe rakni többet, mint egy bekezdés!"
 
-#: src/text3.C:750
+#: src/text3.C:655
 msgid "Unknown spacing argument: "
 msgstr "Ismeretlen térköz paraméter: "
 
-#: src/text3.C:903
+#: src/text3.C:808
 msgid "LyX function 'layout' needs an argument."
 msgstr "A 'layout' LyX funkciónak szüksége van egy paraméterre."
 
-#: src/text3.C:921
+#: src/text3.C:826
 msgid "Layout "
 msgstr "Elrendezés "
 
-#: src/text3.C:922
+#: src/text3.C:827
 msgid " not known"
 msgstr " ismeretlen"
 
-#: src/text3.C:1364 src/text3.C:1376
+#: src/text3.C:1269 src/text3.C:1281
 msgid "Character set"
 msgstr "Betûkészlet"
 
-#: src/text3.C:1508
+#: src/text3.C:1413
 msgid "Paragraph layout set"
 msgstr "Bekezdés kinézetének beállítása"
 
