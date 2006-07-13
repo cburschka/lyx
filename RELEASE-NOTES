@@ -1,15 +1,11 @@
-Known issues with version 1.4.1
+Known issues with version 1.4.2
 --------------------------------
 
-This file describes some known problems in LyX 1.4.1 that did not
+This file describes some known problems in LyX 1.4.2 that did not
 occur in 1.3.7. Note that fixes are available for many of these, but
 they have not yet been applied because of incomplete testing. 
 
 ** User Interface
-
-- Shift-PageDown and Shift-PageUp key combinations work only if there
-  is an already active selection.
-  http://bugzilla.lyx.org/show_bug.cgi?id=2119
 
 - Font changes do not apply to tables inside the selection when
   making latex.
