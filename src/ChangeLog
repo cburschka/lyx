@@ -1,3 +1,13 @@
+2006-07-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* text3.C (dispatch): merge the SEL and non-SEL cursor movement
+	LFUNs; use LCursor::selHandle consistently (fixes bugs 2119 and
+	2259, and also a crash related to with dEPM)
+
+2006-07-12  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* version.C.in: set release date.
+
 2006-07-07  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* rowpainter.h (rightMargin): reduce to 10 pixels, like the left
