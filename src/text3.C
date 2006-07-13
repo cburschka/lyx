@@ -399,65 +399,21 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		finishChange(cur, false);
 		break;
 
-	case LFUN_WORD_FORWARD:
-		if (!cur.mark())
-			cur.clearSelection();
-		if (isRTL(cur.paragraph()))
-			needsUpdate = cursorLeftOneWord(cur);
-		else
-			needsUpdate = cursorRightOneWord(cur);
-		finishChange(cur, false);
-		break;
-
-	case LFUN_WORD_BACKWARD:
-		if (!cur.mark())
-			cur.clearSelection();
-		if (isRTL(cur.paragraph()))
-			needsUpdate = cursorRightOneWord(cur);
-		else
-			needsUpdate = cursorLeftOneWord(cur);
-		finishChange(cur, false);
-		break;
-
 	case LFUN_BUFFER_BEGIN:
-		if (cur.depth() == 1) {
-			if (!cur.mark())
-				cur.clearSelection();
-			needsUpdate = cursorTop(cur);
-			finishChange(cur, false);
-		} else {
-			cur.undispatched();
-		}
-		break;
-
 	case LFUN_BUFFER_BEGIN_SELECT:
+		cur.selHandle(cmd.action == LFUN_BUFFER_BEGIN_SELECT);
 		if (cur.depth() == 1) {
-			if (!cur.selection())
-				cur.resetAnchor();
 			needsUpdate = cursorTop(cur);
-			finishChange(cur, true);
 		} else {
 			cur.undispatched();
 		}
 		break;
 
 	case LFUN_BUFFER_END:
-		if (cur.depth() == 1) {
-			if (!cur.mark())
-				cur.clearSelection();
-			needsUpdate = cursorBottom(cur);
-			finishChange(cur, false);
-		} else {
-			cur.undispatched();
-		}
-		break;
-
 	case LFUN_BUFFER_END_SELECT:
+		cur.selHandle(cmd.action == LFUN_BUFFER_END_SELECT);
 		if (cur.depth() == 1) {
-			if (!cur.selection())
-				cur.resetAnchor();
 			needsUpdate = cursorBottom(cur);
-			finishChange(cur, true);
 		} else {
 			cur.undispatched();
 		}
@@ -525,96 +481,21 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_PARAGRAPH_UP:
-		if (!cur.mark())
-			cur.clearSelection();
-		needsUpdate = cursorUpParagraph(cur);
-		finishChange(cur, false);
-		break;
-
 	case LFUN_PARAGRAPH_UP_SELECT:
-		if (!cur.selection())
-			cur.resetAnchor();
-		cursorUpParagraph(cur);
-		finishChange(cur, true);
+		cur.selHandle(cmd.action == LFUN_PARAGRAPH_UP_SELECT);
+		needsUpdate = cursorUpParagraph(cur);
 		break;
 
 	case LFUN_PARAGRAPH_DOWN:
-		if (!cur.mark())
-			cur.clearSelection();
-		needsUpdate = cursorDownParagraph(cur);
-		finishChange(cur, false);
-		break;
-
 	case LFUN_PARAGRAPH_DOWN_SELECT:
-		if (!cur.selection())
-			cur.resetAnchor();
-		cursorDownParagraph(cur);
-		finishChange(cur, true);
+		cur.selHandle(cmd.action == LFUN_PARAGRAPH_DOWN_SELECT);
+		needsUpdate = cursorDownParagraph(cur);
 		break;
-
-	case LFUN_SCREEN_UP_SELECT:
-		update(cur);
-		if (!cur.selection())
-			cur.resetAnchor();
-		needsUpdate = cursorPrevious(cur);
-		finishChange(cur, true);
-		break;
-
-	case LFUN_SCREEN_DOWN_SELECT:
-		update(cur);
-		if (!cur.selection())
-			cur.resetAnchor();
-		needsUpdate = cursorNext(cur);
-		finishChange(cur, true);
-		break;
-
-	case LFUN_LINE_BEGIN_SELECT:
-		update(cur);
-		if (!cur.selection())
-			cur.resetAnchor();
-		needsUpdate = cursorHome(cur);
-		finishChange(cur, true);
-		break;
-
-	case LFUN_LINE_END_SELECT:
-		update(cur);
-		if (!cur.selection())
-			cur.resetAnchor();
-		needsUpdate = cursorEnd(cur);
-		finishChange(cur, true);
-		break;
-
-	case LFUN_WORD_FORWARD_SELECT:
-		if (!cur.selection())
-			cur.resetAnchor();
-		if (isRTL(cur.paragraph()))
-			cursorLeftOneWord(cur);
-		else
-			cursorRightOneWord(cur);
-		finishChange(cur, true);
-		break;
-
-	case LFUN_WORD_BACKWARD_SELECT:
-		if (!cur.selection())
-			cur.resetAnchor();
-		if (isRTL(cur.paragraph()))
-			cursorRightOneWord(cur);
-		else
-			cursorLeftOneWord(cur);
-		finishChange(cur, true);
-		break;
-
-	case LFUN_WORD_SELECT: {
-		selectWord(cur, lyx::WHOLE_WORD);
-		finishChange(cur, true);
-		break;
-	}
 
 	case LFUN_SCREEN_UP:
+	case LFUN_SCREEN_UP_SELECT:
 		update(cur);
-		if (!cur.mark())
-			cur.clearSelection();
-		finishChange(cur, false);
+		cur.selHandle(cmd.action == LFUN_SCREEN_UP_SELECT);
 		if (cur.pit() == 0 && cur.textRow().pos() == 0) {
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_UP);
@@ -624,10 +505,9 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_SCREEN_DOWN:
+	case LFUN_SCREEN_DOWN_SELECT:
 		update(cur);
-		if (!cur.mark())
-			cur.clearSelection();
-		finishChange(cur, false);
+		cur.selHandle(cmd.action == LFUN_SCREEN_DOWN_SELECT);
 		if (cur.pit() == cur.lastpit()
 			  && cur.textRow().endpos() == cur.lastpos()) {
 			cur.undispatched();
@@ -638,18 +518,42 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_LINE_BEGIN:
-		if (!cur.mark())
-			cur.clearSelection();
+	case LFUN_LINE_BEGIN_SELECT:
+		update(cur);
+		cur.selHandle(cmd.action == LFUN_LINE_BEGIN_SELECT);
 		needsUpdate = cursorHome(cur);
-		finishChange(cur, false);
 		break;
 
 	case LFUN_LINE_END:
-		if (!cur.mark())
-			cur.clearSelection();
+	case LFUN_LINE_END_SELECT:
+		update(cur);
+		cur.selHandle(cmd.action == LFUN_LINE_END_SELECT);
 		needsUpdate = cursorEnd(cur);
-		finishChange(cur, false);
 		break;
+
+	case LFUN_WORD_FORWARD:
+	case LFUN_WORD_FORWARD_SELECT:
+		cur.selHandle(cmd.action == LFUN_WORD_FORWARD_SELECT);
+		if (isRTL(cur.paragraph()))
+			needsUpdate = cursorLeftOneWord(cur);
+		else
+			needsUpdate = cursorRightOneWord(cur);
+		break;
+
+	case LFUN_WORD_BACKWARD:
+	case LFUN_WORD_BACKWARD_SELECT:
+		cur.selHandle(cmd.action == LFUN_WORD_BACKWARD_SELECT);
+		if (isRTL(cur.paragraph()))
+			needsUpdate = cursorRightOneWord(cur);
+		else
+			needsUpdate = cursorLeftOneWord(cur);
+		break;
+
+	case LFUN_WORD_SELECT: {
+		selectWord(cur, lyx::WHOLE_WORD);
+		finishChange(cur, true);
+		break;
+	}
 
 	case LFUN_BREAK_LINE: {
 		// Not allowed by LaTeX (labels or empty par)
