@@ -39,6 +39,7 @@ InstallDir "${SETUP_DEFAULT_DIRECTORY}"
 
 ;Installer
 
+!define MUI_WELCOMEPAGE_TITLE_3LINES
 !define MUI_WELCOMEPAGE_TEXT $(TEXT_WELCOME_${SETUPTYPE_NAME})
 !insertmacro MUI_PAGE_WELCOME
 !insertmacro MUI_PAGE_LICENSE "${FILES_LICENSE}"
@@ -71,6 +72,7 @@ Page custom PageLanguage PageLanguageValidate
 
 ;Uninstaller
 
+!define MUI_WELCOMEPAGE_TITLE_3LINES
 !define MUI_WELCOMEPAGE_TEXT $(UNTEXT_WELCOME)
 !insertmacro MUI_UNPAGE_WELCOME
 !insertmacro MUI_UNPAGE_CONFIRM
@@ -83,6 +85,7 @@ Page custom PageLanguage PageLanguageValidate
 ;Languages
 
 !insertmacro IncludeLang "english"
+!insertmacro IncludeLang "italian"
 
 ;--------------------------------
 ;Macros

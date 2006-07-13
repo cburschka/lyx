@@ -6,7 +6,9 @@ Language file handling
 
 !macro LanguageString name text
 
-  !insertmacro ReDef "${name}" "${text}"
+  !ifndef "${name}"
+    !define "${name}" "${text}"
+  !endif
   
 !macroend
 

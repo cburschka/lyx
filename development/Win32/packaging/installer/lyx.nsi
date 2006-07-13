@@ -17,7 +17,7 @@ OutFile "${SETUP_EXE}"
 ;Functions
 
 Function .onInit
-  ;!insertmacro MUI_LANGDLL_DISPLAY
+  !insertmacro MUI_LANGDLL_DISPLAY
   Call CheckWindows
   Call SearchAll
 FunctionEnd
