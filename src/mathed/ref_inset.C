@@ -78,7 +78,6 @@ void RefInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_INSET_DIALOG_SHOW:
 	case LFUN_MOUSE_RELEASE:
 		if (cmd.button() == mouse_button::button3) {
 			lyxerr << "trying to goto ref '" << asString(cell(0)) << "'" << endl;
@@ -113,7 +112,6 @@ bool RefInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 	// we handle these
 	case LFUN_INSET_MODIFY:
 	case LFUN_INSET_DIALOG_UPDATE:
-	case LFUN_INSET_DIALOG_SHOW:
 	case LFUN_MOUSE_RELEASE:
 	case LFUN_MOUSE_PRESS:
 	case LFUN_MOUSE_MOTION:

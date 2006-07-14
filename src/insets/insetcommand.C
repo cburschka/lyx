@@ -120,7 +120,6 @@ void InsetCommand::doDispatch(LCursor & cur, FuncRequest & cmd)
 		InsetCommandMailer(cmd.argument, *this).updateDialog(&cur.bv());
 		break;
 
-	case LFUN_INSET_DIALOG_SHOW:
 	case LFUN_MOUSE_RELEASE: {
 		if (!mailer_name_.empty())
 			InsetCommandMailer(mailer_name_, *this).showDialog(&cur.bv());
@@ -147,7 +146,6 @@ bool InsetCommand::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_INSET_REFRESH:
 	case LFUN_INSET_MODIFY:
 	case LFUN_INSET_DIALOG_UPDATE:
-	case LFUN_INSET_DIALOG_SHOW:
 		status.enabled(true);
 		return true;
 	default:

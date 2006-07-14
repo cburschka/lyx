@@ -1462,15 +1462,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_INSET_DIALOG_SHOW: {
-		InsetBase * inset = cur.nextInset();
-		if (inset) {
-			FuncRequest fr(LFUN_INSET_DIALOG_SHOW);
-			inset->dispatch(cur, fr);
-		}
-		break;
-	}
-
 	case LFUN_ESCAPE:
 		if (cur.selection()) {
 			cur.selection() = false;
@@ -1668,25 +1659,6 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 		if (cur.inTexted())
 			code = InsetBase::SPACE_CODE;
 		break;
-
-#ifdef WITH_WARNINGS
-#warning This LFUN is not used anymore and should be nuked (JMarc 29/10/2005)
-#endif
-#if 0
-	case LFUN_INSET_DIALOG_SHOW: {
-		InsetBase * inset = cur.nextInset();
-		enable = inset;
-		if (inset) {
-			code = inset->lyxCode();
-			if (!(code == InsetBase::INCLUDE_CODE
-				|| code == InsetBase::BIBTEX_CODE
-				|| code == InsetBase::FLOAT_LIST_CODE
-				|| code == InsetBase::TOC_CODE))
-				enable = false;
-		}
-		break;
-	}
-#endif
 
 	case LFUN_INSET_MODIFY:
 		// We need to disable this, because we may get called for a

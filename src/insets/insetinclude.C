@@ -141,7 +141,6 @@ void InsetInclude::doDispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_MOUSE_RELEASE:
-	case LFUN_INSET_DIALOG_SHOW:
 		InsetIncludeMailer(*this).showDialog(&cur.bv());
 		break;
 
@@ -159,7 +158,6 @@ bool InsetInclude::getStatus(LCursor & cur, FuncRequest const & cmd,
 
 	case LFUN_INSET_MODIFY:
 	case LFUN_INSET_DIALOG_UPDATE:
-	case LFUN_INSET_DIALOG_SHOW:
 		flag.enabled(true);
 		return true;
 
