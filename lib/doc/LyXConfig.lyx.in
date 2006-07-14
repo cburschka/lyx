@@ -1718,57 +1718,6 @@ Note: if you use a Linux distribution, such as RedHat or Debian, most of
 \end_layout
 
 \begin_layout Subsection
-XForms
-\end_layout
-
-\begin_layout Description
-Found: @chk_xforms@
-\end_layout
-
-\begin_layout Description
-URL: 
-\begin_inset LatexCommand \url[The XForms home page]{http://world.std.com/~xforms/}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-Notes: XForms is the underlying GUI toolkit.
- You'll need to 
-\begin_inset LatexCommand \url[get a version]{http://world.std.com/~xforms/ftp/ftp.html}
-
-\end_inset
-
- for your architechture, if you want to compile your own version of LyX.
-\end_layout
-
-\begin_layout Subsection
-libXpm
-\end_layout
-
-\begin_layout Description
-Found: @chk_libxpm@
-\end_layout
-
-\begin_layout Description
-URL: 
-\begin_inset LatexCommand \url[libXpm]{http://www.inria.fr/koala/lehors/xpm.html}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-Notes: libXpm is a library used to display pixmaps.
- If you want to compile LyX yourself, you'll also need libXpm.
- You'll have to get version 4.7 or newer.
- Older versions are incompatible with the current XForms library.
-\end_layout
-
-\begin_layout Subsection
 teTeX
 \end_layout
 
@@ -1974,7 +1923,7 @@ Found: @chk_gv@
 
 \begin_layout Description
 URL: 
-\begin_inset LatexCommand \url[The XForms home page]{http://world.std.com/~xforms/}
+\begin_inset LatexCommand \url[The gv home page]{http://wwwthep.physik.uni-mainz.de/~plass/gv/}
 
 \end_inset
 
@@ -1983,14 +1932,6 @@ URL:
 
 \begin_layout Description
 Notes: 
-\end_layout
-
-\begin_layout Standard
-\begin_inset LatexCommand \url[gv]{http://wwwthep.physik.uni-mainz.de/~plass/gv/}
-
-\end_inset
-
-- an alternative PostScript viewer.
 \end_layout
 
 \begin_layout Standard
