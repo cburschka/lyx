@@ -155,10 +155,6 @@ public:
 	/// move cursor to the named label
 	void gotoLabel(std::string const & label);
 
-	/// get the stored error list
-	ErrorList const & getErrorList() const;
-	/// show the error list to the user
-	void showErrorList(std::string const &) const;
 	/// set the cursor based on the given TeX source row
 	void setCursorFromRow(int row);
 

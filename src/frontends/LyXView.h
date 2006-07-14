@@ -13,6 +13,8 @@
 #ifndef LYXVIEW_H
 #define LYXVIEW_H
 
+#include "errorlist.h"
+
 #include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/signal.hpp>
@@ -165,6 +167,16 @@ public:
 	/// This is needed for the qt3 and gtk frontend.
 	lyx::frontend::WorkArea * workArea();
 
+	/// get the stored error list
+	ErrorList const & getErrorList() const;
+	/// show the error list to the user
+	void showErrorList(std::string const &);
+	/// add an error to the list
+	/** FIXME: public method until the signal connection in
+	* BufferView::menuInsertLyXFile() is removed.
+	*/
+	void addError(ErrorItem const &);
+
 protected:
 	/// current work area (screen view of a BufferView).
 	/**
@@ -197,6 +209,30 @@ private:
 	boost::scoped_ptr<LyXFunc> lyxfunc_;
 	/// dialogs for this view
 	boost::scoped_ptr<Dialogs> dialogs_;
+
+	/// An error list (replaces the error insets)
+	ErrorList errorlist_;
+
+	/// buffer errors signal connection
+	boost::signals::connection errorConnection_;
+	/// buffer messages signal connection
+	boost::signals::connection messageConnection_;
+	/// buffer busy status signal connection
+	boost::signals::connection busyConnection_;
+	/// buffer title changed signal connection
+	boost::signals::connection titleConnection_;
+	/// buffer reset timers signal connection
+	boost::signals::connection timerConnection_;
+	/// buffer readonly status changed signal connection
+	boost::signals::connection readonlyConnection_;
+	/// buffer closing signal connection
+	boost::signals::connection closingConnection_;
+	/// connect to signals in the given buffer
+	void connectBuffer(Buffer & buf);
+	/// disconnect from signals in the given buffer
+	void disconnectBuffer();
+	/// notify readonly status
+	void showReadonly(bool);
 
 protected:
 	/// view's command buffer controller

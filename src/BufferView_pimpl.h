@@ -20,14 +20,11 @@
 
 #include "BufferView.h"
 #include "cursor.h"
-#include "errorlist.h"
 #include "metricsinfo.h"
 
 #include "frontends/LyXKeySym.h"
 
 #include "support/types.h"
-
-#include <boost/signals/trackable.hpp>
 
 class Change;
 class LyXView;
@@ -43,7 +40,7 @@ class Gui;
 
 
 ///
-class BufferView::Pimpl : public boost::signals::trackable {
+class BufferView::Pimpl {
 public:
 	///
 	Pimpl(BufferView & bv, LyXView * owner);
@@ -127,32 +124,8 @@ private:
 	///
 	ScrollbarParameters scrollbarParameters_;
 
-	/// An error list (replaces the error insets)
-	ErrorList errorlist_;
-	/// add an error to the list
-	void addError(ErrorItem const &);
-	/// buffer errors signal connection
-	boost::signals::connection errorConnection_;
-	/// buffer messages signal connection
-	boost::signals::connection messageConnection_;
-	/// buffer busy status signal connection
-	boost::signals::connection busyConnection_;
-	/// buffer title changed signal connection
-	boost::signals::connection titleConnection_;
-	/// buffer reset timers signal connection
-	boost::signals::connection timerConnection_;
-	/// buffer readonly status changed signal connection
-	boost::signals::connection readonlyConnection_;
-	/// buffer closing signal connection
-	boost::signals::connection closingConnection_;
-	/// connect to signals in the given buffer
-	void connectBuffer(Buffer & buf);
-	/// disconnect from signals in the given buffer
-	void disconnectBuffer();
 	/// track changes for the document
 	void trackChanges();
-	/// notify readonly status
-	void showReadonly(bool);
 
 	///
 	ViewMetricsInfo metrics_info_;

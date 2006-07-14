@@ -253,23 +253,6 @@ void BufferView::scroll(int lines)
 }
 
 
-void BufferView::showErrorList(string const & action) const
-{
-	if (getErrorList().size()) {
-		string const title = bformat(_("%1$s Errors (%2$s)"),
-			action, buffer()->fileName());
-		owner()->getDialogs().show("errorlist", title);
-		pimpl_->errorlist_.clear();
-	}
-}
-
-
-ErrorList const & BufferView::getErrorList() const
-{
-	return pimpl_->errorlist_;
-}
-
-
 void BufferView::setCursorFromRow(int row)
 {
 	int tmpid = -1;

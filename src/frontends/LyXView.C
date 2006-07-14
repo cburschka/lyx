@@ -37,6 +37,7 @@
 
 #include "controllers/ControlCommandBuffer.h"
 
+#include "support/lstrings.h"
 #include "support/filetools.h" // OnlyFilename()
 
 #include <boost/bind.hpp>
@@ -51,6 +52,7 @@
 using lyx::frontend::Gui;
 using lyx::frontend::WorkArea;
 
+using lyx::support::bformat;
 using lyx::support::makeDisplayPath;
 using lyx::support::onlyFilename;
 
@@ -128,29 +130,117 @@ Buffer * LyXView::buffer() const
 
 void LyXView::setBuffer(Buffer * b)
 {
+	if (work_area_->bufferView().buffer())
+		disconnectBuffer();
+
 	work_area_->bufferView().setBuffer(b);
 	updateMenubar();
 	updateToolbars();
 	updateLayoutChoice();
 	updateWindowTitle();
-	if (b)
+	if (b) {
+		connectBuffer(*b);
 		setLayout(work_area_->bufferView().firstLayout());
+	}
 	redrawWorkArea();
 }
 
 
 bool LyXView::loadLyXFile(string const & filename, bool tolastfiles)
 {
+	if (work_area_->bufferView().buffer())
+		disconnectBuffer();
+
 	bool loaded = work_area_->bufferView().loadLyXFile(filename, tolastfiles);
 	updateMenubar();
 	updateToolbars();
 	updateLayoutChoice();
 	updateWindowTitle();
-	if (loaded)
+	if (loaded) {
+		connectBuffer(*work_area_->bufferView().buffer());
 		setLayout(work_area_->bufferView().firstLayout());
+	}
 	redrawWorkArea();
 	return loaded;
 }
+
+
+void LyXView::connectBuffer(Buffer & buf)
+{
+	if (errorConnection_.connected())
+		disconnectBuffer();
+
+	errorConnection_ =
+		buf.error.connect(
+			boost::bind(&LyXView::addError, this, _1));
+
+	messageConnection_ =
+		buf.message.connect(
+			boost::bind(&LyXView::message, this, _1));
+
+	busyConnection_ =
+		buf.busy.connect(
+			boost::bind(&LyXView::busy, this, _1));
+
+	titleConnection_ =
+		buf.updateTitles.connect(
+			boost::bind(&LyXView::updateWindowTitle, this));
+
+	timerConnection_ =
+		buf.resetAutosaveTimers.connect(
+			boost::bind(&LyXView::resetAutosaveTimer, this));
+
+	readonlyConnection_ =
+		buf.readonly.connect(
+			boost::bind(&LyXView::showReadonly, this, _1));
+
+	closingConnection_ =
+		buf.closing.connect(
+			boost::bind(&LyXView::setBuffer, this, (Buffer *)0));
+}
+
+
+void LyXView::disconnectBuffer()
+{
+	errorConnection_.disconnect();
+	messageConnection_.disconnect();
+	busyConnection_.disconnect();
+	titleConnection_.disconnect();
+	timerConnection_.disconnect();
+	readonlyConnection_.disconnect();
+	closingConnection_.disconnect();
+}
+
+
+void LyXView::addError(ErrorItem const & ei)
+{
+	errorlist_.push_back(ei);
+}
+
+
+void LyXView::showErrorList(string const & action)
+{
+	if (errorlist_.size()) {
+		string const title = bformat(_("%1$s Errors (%2$s)"),
+			action, buffer()->fileName());
+		getDialogs().show("errorlist", title);
+		errorlist_.clear();
+	}
+}
+
+
+ErrorList const & LyXView::getErrorList() const
+{
+	return errorlist_;
+}
+
+
+void LyXView::showReadonly(bool)
+{
+	updateWindowTitle();
+	getDialogs().updateBufferDependent(false);
+}
+
 
 BufferView * LyXView::view() const
 {

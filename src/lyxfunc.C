@@ -837,22 +837,22 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_BUFFER_UPDATE:
 			Exporter::Export(owner->buffer(), argument, true);
-			view()->showErrorList(bufferFormat(*owner->buffer()));
+			owner->showErrorList(bufferFormat(*owner->buffer()));
 			break;
 
 		case LFUN_BUFFER_VIEW:
 			Exporter::preview(owner->buffer(), argument);
-			view()->showErrorList(bufferFormat(*owner->buffer()));
+			owner->showErrorList(bufferFormat(*owner->buffer()));
 			break;
 
 		case LFUN_BUILD_PROGRAM:
 			Exporter::Export(owner->buffer(), "program", true);
-			view()->showErrorList(_("Build"));
+			owner->showErrorList(_("Build"));
 			break;
 
 		case LFUN_BUFFER_CHKTEX:
 			owner->buffer()->runChktex();
-			view()->showErrorList(_("ChkTeX"));
+			owner->showErrorList(_("ChkTeX"));
 			break;
 
 		case LFUN_BUFFER_EXPORT:
@@ -860,7 +860,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				owner->getDialogs().show("sendto");
 			else {
 				Exporter::Export(owner->buffer(), argument, false);
-				view()->showErrorList(bufferFormat(*owner->buffer()));
+				owner->showErrorList(bufferFormat(*owner->buffer()));
 			}
 			break;
 
@@ -1562,7 +1562,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 			view()->setCursor(backcur.asDocIterator(&(buffer->inset())));
 			bufferErrors(*buffer, el);
-			view()->showErrorList(_("Class switch"));
+			owner->showErrorList(_("Class switch"));
 			updateLabels(*buffer);
 			updateforce = true;
 			break;

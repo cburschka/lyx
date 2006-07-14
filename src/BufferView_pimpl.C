@@ -144,66 +144,6 @@ BufferView::Pimpl::Pimpl(BufferView & bv, LyXView * owner)
 }
 
 
-void BufferView::Pimpl::addError(ErrorItem const & ei)
-{
-	errorlist_.push_back(ei);
-}
-
-
-void BufferView::Pimpl::showReadonly(bool)
-{
-	owner_->updateWindowTitle();
-	owner_->getDialogs().updateBufferDependent(false);
-}
-
-
-void BufferView::Pimpl::connectBuffer(Buffer & buf)
-{
-	if (errorConnection_.connected())
-		disconnectBuffer();
-
-	errorConnection_ =
-		buf.error.connect(
-			boost::bind(&BufferView::Pimpl::addError, this, _1));
-
-	messageConnection_ =
-		buf.message.connect(
-			boost::bind(&LyXView::message, owner_, _1));
-
-	busyConnection_ =
-		buf.busy.connect(
-			boost::bind(&LyXView::busy, owner_, _1));
-
-	titleConnection_ =
-		buf.updateTitles.connect(
-			boost::bind(&LyXView::updateWindowTitle, owner_));
-
-	timerConnection_ =
-		buf.resetAutosaveTimers.connect(
-			boost::bind(&LyXView::resetAutosaveTimer, owner_));
-
-	readonlyConnection_ =
-		buf.readonly.connect(
-			boost::bind(&BufferView::Pimpl::showReadonly, this, _1));
-
-	closingConnection_ =
-		buf.closing.connect(
-			boost::bind(&LyXView::setBuffer, owner_, (Buffer *)0));
-}
-
-
-void BufferView::Pimpl::disconnectBuffer()
-{
-	errorConnection_.disconnect();
-	messageConnection_.disconnect();
-	busyConnection_.disconnect();
-	titleConnection_.disconnect();
-	timerConnection_.disconnect();
-	readonlyConnection_.disconnect();
-	closingConnection_.disconnect();
-}
-
-
 bool BufferView::Pimpl::loadLyXFile(string const & filename, bool tolastfiles)
 {
 	// Get absolute path of file and add ".lyx"
@@ -238,7 +178,6 @@ bool BufferView::Pimpl::loadLyXFile(string const & filename, bool tolastfiles)
 
 	if (found) {
 		b = bufferlist.newBuffer(s);
-		connectBuffer(*b);
 		if (!::loadLyXFile(b, s)) {
 			bufferlist.release(b);
 			return false;
@@ -257,7 +196,7 @@ bool BufferView::Pimpl::loadLyXFile(string const & filename, bool tolastfiles)
 	}
 
 	setBuffer(b);
-	bv_->showErrorList(_("Parse"));
+	owner_->showErrorList(_("Parse"));
 
 	// scroll to the position when the file was last closed
 	if (lyxrc.use_lastfilepos) {
@@ -312,7 +251,6 @@ void BufferView::Pimpl::setBuffer(Buffer * b)
 			    << "[ b = " << b << "]" << endl;
 
 	if (buffer_) {
-		disconnectBuffer();
 		// Save the actual cursor position and anchor inside the
 		// buffer so that it can be restored in case we rechange
 		// to this buffer later on.
@@ -349,7 +287,6 @@ void BufferView::Pimpl::setBuffer(Buffer * b)
 	if (buffer_) {
 		lyxerr[Debug::INFO] << BOOST_CURRENT_FUNCTION
 				    << "Buffer addr: " << buffer_ << endl;
-		connectBuffer(*buffer_);
 		cursor_.push(buffer_->inset());
 		cursor_.resetAnchor();
 		buffer_->text().init(bv_);
@@ -801,7 +738,6 @@ void BufferView::Pimpl::center()
 }
 
 
-
 void BufferView::Pimpl::menuInsertLyXFile(string const & filenm)
 {
 	BOOST_ASSERT(cursor_.inTexted());
@@ -851,7 +787,7 @@ void BufferView::Pimpl::menuInsertLyXFile(string const & filenm)
 
 	string res;
 	Buffer buf("", false);
-	buf.error.connect(boost::bind(&BufferView::Pimpl::addError, this, _1));
+	buf.error.connect(boost::bind(&LyXView::addError, owner_, _1));
 	if (::loadLyXFile(&buf, makeAbsPath(filename))) {
 		lyx::cap::pasteParagraphList(cursor_, buf.paragraphs(),
 					     buf.params().textclass);
@@ -860,7 +796,7 @@ void BufferView::Pimpl::menuInsertLyXFile(string const & filenm)
 		res = _("Could not insert document %1$s");
 
 	owner_->message(bformat(res, disp_fn));
-	bv_->showErrorList(_("Document insertion"));
+	owner_->showErrorList(_("Document insertion"));
 	resizeCurrentBuffer();
 }
 

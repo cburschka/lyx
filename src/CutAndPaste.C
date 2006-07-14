@@ -649,7 +649,7 @@ void pasteSelection(LCursor & cur, size_t sel_index)
 
 	pasteParagraphList(cur, theCuts[sel_index].first,
 			   theCuts[sel_index].second);
-	cur.bv().showErrorList(_("Paste"));
+	cur.bv().owner()->showErrorList(_("Paste"));
 	cur.setSelection();
 }
 

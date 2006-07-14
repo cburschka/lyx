@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "ControlErrorList.h"
+#include "frontends/LyXView.h"
 #include "buffer.h"
 #include "BufferView.h"
 #include "debug.h"
@@ -41,7 +42,7 @@ ErrorList const & ControlErrorList::errorList() const
 
 bool ControlErrorList::initialiseParams(string const & name)
 {
-	errorlist_ = kernel().bufferview()->getErrorList();
+	errorlist_ = kernel().lyxview().getErrorList();
 	name_ = name;
 	return true;
 }
