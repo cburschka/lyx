@@ -47,7 +47,7 @@ char const ** panels[] = {
 
 int const nr_panels = sizeof(panels)/sizeof(panels[0]);
 
-bool panel_initialised[nr_panels];
+int  panel_index[nr_panels];
 
 } // namespace anon
 
@@ -135,6 +135,17 @@ QMathDialog::QMathDialog(QMath * form)
 	addMenuItem(m, qt_("Scriptscript (smaller) style	\\scriptscriptstyle"), "scriptscriptstyle");
 	stylePB->setPopup(m);
 
+	m = new QMenu(fracPB);
+	m->setTitle(qt_("LyX: Fractions"));
+	m->setTearOffEnabled(true);
+	addMenuItem(m, qt_("Standard	\\frac"), "frac");
+	addMenuItem(m, qt_("No hor. line	\\atop"), "atop");
+	addMenuItem(m, qt_("Nice	\\nicefrac"), "nicefrac");
+	addMenuItem(m, qt_("Text frac (amsmath)	\\tfrac"), "tfrac");
+	addMenuItem(m, qt_("Display frac (amsmath)	\\dfrac"), "dfrac");
+	addMenuItem(m, qt_("Binomial	\\choose"),  "choose");
+	fracPB->setPopup(m);
+
 	m = new QMenu(fontPB);
 	m->setTitle(qt_("LyX: Math Fonts"));
 	m->setTearOffEnabled(true);
@@ -160,10 +171,10 @@ void QMathDialog::addMenuItem(QMenu * menu, const QString & label, const std::st
 
 void QMathDialog::showingPanel(int num)
 {
-	if (!panel_initialised[num])
+	if (!panel_index[num])
 		addPanel(num);
 
-	symbolWS->setCurrentIndex(num);
+	symbolWS->setCurrentIndex(panel_index[num]);
 }
 
 
@@ -187,8 +198,7 @@ void QMathDialog::addPanel(int num)
 	IconPalette * p = makePanel(this, panels[num]);
 	p->resize(40 * 5, p->height());
 	sc->setWidget(p);
-	symbolWS->insertWidget(num,sc);
-	panel_initialised[num] = true;
+	panel_index[num] = symbolWS->addWidget(sc);
 }
 
 
