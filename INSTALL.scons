@@ -80,7 +80,7 @@ Components to use/build:
 
   * frontend=qt3/qt4: qt3 is the default for all *nix systems including
     windows cygwin. qt4 is the default for windows/mingw and windows/
-    msvc. xform and gtk are not currently supported.
+    msvc. gtk is not currently supported.
   * mode=debug/release: lyx will be built under the debug or release
     directory, with different default build options.
   * boost=included/system/auto: whether or not use included boost, system
