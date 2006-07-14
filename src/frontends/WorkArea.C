@@ -189,9 +189,7 @@ void WorkArea::redraw()
 		return;
 	}
 
-	if (!buffer_view_->needsRedraw())
-		return;
-
+	buffer_view_->updateMetrics(false);
 	ViewMetricsInfo const & vi = buffer_view_->viewMetricsInfo();
 	greyed_out_ = false;
 	getPainter().start();
@@ -202,7 +200,6 @@ void WorkArea::redraw()
 		( vi.p2 < vi.size - 1 ?  vi.y2 : height() );
 	expose(0, ymin, width(), ymax - ymin);
 	getPainter().end();
-	buffer_view_->needsRedraw(false);
 
 	lyxerr[Debug::DEBUG]
 	<< "  ymin = " << ymin << "  width() = " << width()
@@ -225,7 +222,11 @@ void WorkArea::processKeySym(LyXKeySymPtr key,
 	 */
 //	if (buffer_view_->available())
 	toggleCursor();
-	redraw();
+	
+	// uneeded "redraw()" call commented out for now.
+	// When/if the call to LyXView::redrawWorkArea() in "lyxfunc.C:1610"
+	// is not needed anymore, this line should be uncommented out
+	//redraw();
 }
 
 

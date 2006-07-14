@@ -58,7 +58,7 @@ public:
 	//
 	bool multiParSel();
 	///
-	void update(Update::flags flags = Update::Force);
+	bool update(Update::flags flags = Update::Force);
 	/// load a buffer into the view
 	bool loadLyXFile(std::string const &, bool);
 	///
@@ -117,14 +117,8 @@ public:
 	///
 	ViewMetricsInfo const & viewMetricsInfo();
 	///
-	bool needsRedraw() const
-	{
-		return needs_redraw_;
-	}
-	void needsRedraw(bool redraw_needed)
-	{
-		needs_redraw_ = redraw_needed;
-	}
+	void updateMetrics(bool singlepar = false);
+
 private:
 	///
 	int width_;
@@ -132,8 +126,6 @@ private:
 	int height_;
 	///
 	ScrollbarParameters scrollbarParameters_;
-	///
-	bool needs_redraw_;
 
 	/// An error list (replaces the error insets)
 	ErrorList errorlist_;
@@ -164,8 +156,6 @@ private:
 
 	///
 	ViewMetricsInfo metrics_info_;
-	///
-	void updateMetrics(bool singlepar = false);
 
 	///
 	friend class BufferView;

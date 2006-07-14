@@ -116,9 +116,10 @@ public:
 	 *  to do a fitcursor, and to force an update if screen
 	 *  position changes. \c forceupdate means to force an update
 	 *  in any case.
+	 * \return true if a full updateMetrics() is needed.
 	 */
+	bool update(Update::flags flags = Update::FitCursor | Update::Force);
 
-	void update(Update::flags flags = Update::FitCursor | Update::Force);
 	/// move the screen to fit the cursor. Only to be called with
 	/// good y coordinates (after a bv::metrics)
 	bool fitCursor();
@@ -223,10 +224,9 @@ public:
 		int length, bool backwards);
 	///
 	ViewMetricsInfo const & viewMetricsInfo();
-
 	///
-	bool needsRedraw() const;
-	void needsRedraw(bool redraw_needed);
+	void updateMetrics(bool singlepar = false);
+
 private:
 	///
 	class Pimpl;

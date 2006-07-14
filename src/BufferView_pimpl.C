@@ -128,7 +128,7 @@ T * getInsetByCode(LCursor & cur, InsetBase::Code code)
 BufferView::Pimpl::Pimpl(BufferView & bv, LyXView * owner)
 	: bv_(&bv), owner_(owner), buffer_(0), wh_(0),
 	  cursor_(bv),
-	  multiparsel_cache_(false), anchor_ref_(0), offset_ref_(0), needs_redraw_(false)
+	  multiparsel_cache_(false), anchor_ref_(0), offset_ref_(0)
 {
 	xsel_cache_.set = false;
 
@@ -652,7 +652,7 @@ ViewMetricsInfo const & BufferView::Pimpl::viewMetricsInfo()
 }
 
 
-void BufferView::Pimpl::update(Update::flags flags)
+bool BufferView::Pimpl::update(Update::flags flags)
 {
 	// This is close to a hot-path.
 	if (lyxerr.debugging(Debug::DEBUG)) {
@@ -666,31 +666,20 @@ void BufferView::Pimpl::update(Update::flags flags)
 
 	// Check needed to survive LyX startup
 	if (!buffer_)
-		return;
-	
-	// Check if there is already a redraw waiting in the queue.
-	if (needs_redraw_)
-		return;
+		return false;
 
 	// Update macro store
 	buffer_->buildMacros();
 
 	// First drawing step
-	bool singlePar = flags & Update::SinglePar;
-	needs_redraw_ = (flags & (Update::Force | Update::SinglePar));
+	updateMetrics(flags & Update::SinglePar);
 
-	updateMetrics(singlePar);
-
-	if ((flags & (Update::FitCursor | Update::MultiParSel))
-		&& (fitCursor() || multiParSel())) {
-			needs_redraw_ = true;
-			singlePar = false;
-	}
-
-	if (needs_redraw_) {
-		// Second drawing step
-		updateMetrics(singlePar);
-	}
+	// The second drawing step is done in WorkArea::redraw() if needed.
+	bool const need_second_step =
+		(flags & (Update::Force | Update::FitCursor | Update::MultiParSel))
+		&& (fitCursor() || multiParSel());
+	
+	return need_second_step;
 }
 
 

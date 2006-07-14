@@ -129,9 +129,9 @@ bool BufferView::fitCursor()
 }
 
 
-void BufferView::update(Update::flags flags)
+bool BufferView::update(Update::flags flags)
 {
-	pimpl_->update(flags);
+	return pimpl_->update(flags);
 }
 
 
@@ -404,13 +404,7 @@ ViewMetricsInfo const & BufferView::viewMetricsInfo()
 }
 
 
-bool BufferView::needsRedraw() const
+void BufferView::updateMetrics(bool singlepar)
 {
-	return pimpl_->needsRedraw();
-}
-
-
-void BufferView::needsRedraw(bool redraw_needed)
-{
-	pimpl_->needsRedraw(redraw_needed);
+	pimpl_->updateMetrics(singlepar);
 }
