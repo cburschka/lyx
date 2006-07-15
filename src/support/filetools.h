@@ -94,7 +94,7 @@ std::string const
 i18nLibFileSearch(std::string const & dir, std::string const & name,
 		  std::string const & ext = std::string());
 
-/** Takes a command such as "sh $$s/scripts/convertDefault.sh file.in file.out"
+/** Takes a command such as "python $$s/scripts/convertDefault.py file.in file.out"
  *  and replaces "$$s/" with the path to the LyX support directory containing
  *  this script. If the script is not found, "$$s/" is removed. Executing the
  *  command will still fail, but the error message will make some sort of

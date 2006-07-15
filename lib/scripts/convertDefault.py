@@ -1,10 +1,12 @@
-#! /bin/sh
+#!/usr/bin/env python -tt
+# -*- coding: iso-8859-15 -*-
 
-# file convertDefault.sh
+# file convertDefault.py
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
 
-# author Herbert Voß
+# \author Herbert Voß
+# \author Bo Peng
 
 # Full author contact details are available in file CREDITS.
 
@@ -15,8 +17,8 @@
 # replacement in ~/.lyx/scripts
 
 # converts an image from $1 to $2 format
-convert -depth 8 "$1" "$2" || {
-	echo "$0 ERROR" >&2
-	echo "Execution of \"convert\" failed." >&2
-	exit 1
-}
+import os, sys
+if os.system(r'convert -depth 8 "%s" "%s"' % (sys.argv[1], sys.argv[2])) != 0:
+    print >> sys.stderr, sys.argv[0], 'ERROR'
+    print >> sys.stderr, 'Execution of "convert" failed.'
+    sys.exit(1)
