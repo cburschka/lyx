@@ -222,7 +222,7 @@ void WorkArea::processKeySym(LyXKeySymPtr key,
 	 */
 //	if (buffer_view_->available())
 	toggleCursor();
-	
+
 	// uneeded "redraw()" call commented out for now.
 	// When/if the call to LyXView::redrawWorkArea() in "lyxfunc.C:1610"
 	// is not needed anymore, this line should be uncommented out
