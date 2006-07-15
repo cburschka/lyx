@@ -27,45 +27,45 @@ from parser_tools import find_token, find_token_backwards, get_next_paragraph,\
 
 floats = {
     "footnote": ["\\begin_inset Foot",
-		 "collapsed true"],
+                 "collapsed true"],
     "margin":   ["\\begin_inset Marginal",
-		 "collapsed true"],
+                 "collapsed true"],
     "fig":      ["\\begin_inset Float figure",
-		 "wide false",
-		 "collapsed false"],
+                 "wide false",
+                 "collapsed false"],
     "tab":      ["\\begin_inset Float table",
-		 "wide false",
-		 "collapsed false"],
+                 "wide false",
+                 "collapsed false"],
     "alg":      ["\\begin_inset Float algorithm",
-		 "wide false",
-		 "collapsed false"],
+                 "wide false",
+                 "collapsed false"],
     "wide-fig": ["\\begin_inset Float figure",
-		 "wide true",
-		 "collapsed false"],
+                 "wide true",
+                 "collapsed false"],
     "wide-tab": ["\\begin_inset Float table",
-		 "wide true",
-		 "collapsed false"]
+                 "wide true",
+                 "collapsed false"]
 }
 
 font_tokens = ["\\family", "\\series", "\\shape", "\\size", "\\emph",
-	       "\\bar", "\\noun", "\\color", "\\lang", "\\latex"]
+               "\\bar", "\\noun", "\\color", "\\lang", "\\latex"]
 
 pextra_type3_rexp = re.compile(r".*\\pextra_type\s+3")
 pextra_rexp = re.compile(r"\\pextra_type\s+(\S+)"+\
-			 r"(\s+\\pextra_alignment\s+(\S+))?"+\
-			 r"(\s+\\pextra_hfill\s+(\S+))?"+\
-			 r"(\s+\\pextra_start_minipage\s+(\S+))?"+\
-			 r"(\s+(\\pextra_widthp?)\s+(\S*))?")
+                         r"(\s+\\pextra_alignment\s+(\S+))?"+\
+                         r"(\s+\\pextra_hfill\s+(\S+))?"+\
+                         r"(\s+\\pextra_start_minipage\s+(\S+))?"+\
+                         r"(\s+(\\pextra_widthp?)\s+(\S*))?")
 
 
 def get_width(mo):
     if mo.group(10):
-	if mo.group(9) == "\\pextra_widthp":
-	    return mo.group(10)+"col%"
-	else:
-	    return mo.group(10)
+        if mo.group(9) == "\\pextra_widthp":
+            return mo.group(10)+"col%"
+        else:
+            return mo.group(10)
     else:
-	return "100col%"
+        return "100col%"
 
 
 #
@@ -75,63 +75,63 @@ def remove_oldfloat(file):
     lines = file.body
     i = 0
     while 1:
-	i = find_token(lines, "\\begin_float", i)
-	if i == -1:
-	    break
-	# There are no nested floats, so finding the end of the float is simple
-	j = find_token(lines, "\\end_float", i+1)
+        i = find_token(lines, "\\begin_float", i)
+        if i == -1:
+            break
+        # There are no nested floats, so finding the end of the float is simple
+        j = find_token(lines, "\\end_float", i+1)
 
-	floattype = string.split(lines[i])[1]
-	if not floats.has_key(floattype):
-	    file.warning("Error! Unknown float type " + floattype)
-	    floattype = "fig"
+        floattype = string.split(lines[i])[1]
+        if not floats.has_key(floattype):
+            file.warning("Error! Unknown float type " + floattype)
+            floattype = "fig"
 
-	# skip \end_deeper tokens
-	i2 = i+1
-	while check_token(lines[i2], "\\end_deeper"):
-	    i2 = i2+1
-	if i2 > i+1:
-	    j2 = get_next_paragraph(lines, j + 1, file.format + 1)
-	    lines[j2:j2] = ["\\end_deeper "]*(i2-(i+1))
+        # skip \end_deeper tokens
+        i2 = i+1
+        while check_token(lines[i2], "\\end_deeper"):
+            i2 = i2+1
+        if i2 > i+1:
+            j2 = get_next_paragraph(lines, j + 1, file.format + 1)
+            lines[j2:j2] = ["\\end_deeper "]*(i2-(i+1))
 
-	new = floats[floattype]+[""]
+        new = floats[floattype]+[""]
 
-	# Check if the float is floatingfigure
-	k = find_re(lines, pextra_type3_rexp, i, j)
-	if k != -1:
-	    mo = pextra_rexp.search(lines[k])
-	    width = get_width(mo)
-	    lines[k] = re.sub(pextra_rexp, "", lines[k])
-	    new = ["\\begin_inset Wrap figure",
-		   'width "%s"' % width,
-		   "collapsed false",
-		   ""]
+        # Check if the float is floatingfigure
+        k = find_re(lines, pextra_type3_rexp, i, j)
+        if k != -1:
+            mo = pextra_rexp.search(lines[k])
+            width = get_width(mo)
+            lines[k] = re.sub(pextra_rexp, "", lines[k])
+            new = ["\\begin_inset Wrap figure",
+                   'width "%s"' % width,
+                   "collapsed false",
+                   ""]
 
-	new = new+lines[i2:j]+["\\end_inset ", ""]
+        new = new+lines[i2:j]+["\\end_inset ", ""]
 
-	# After a float, all font attributes are reseted.
-	# We need to output '\foo default' for every attribute foo
-	# whose value is not default before the float.
-	# The check here is not accurate, but it doesn't matter
-	# as extra '\foo default' commands are ignored.
-	# In fact, it might be safer to output '\foo default' for all
-	# font attributes.
-	k = get_paragraph(lines, i, file.format + 1)
-	flag = 0
-	for token in font_tokens:
-	    if find_token(lines, token, k, i) != -1:
-		if not flag:
-		    # This is not necessary, but we want the output to be
-		    # as similar as posible to the lyx format
-		    flag = 1
-		    new.append("")
-		if token == "\\lang":
-		    new.append(token+" "+ file.language)
-		else:
-		    new.append(token+" default ")
+        # After a float, all font attributes are reseted.
+        # We need to output '\foo default' for every attribute foo
+        # whose value is not default before the float.
+        # The check here is not accurate, but it doesn't matter
+        # as extra '\foo default' commands are ignored.
+        # In fact, it might be safer to output '\foo default' for all
+        # font attributes.
+        k = get_paragraph(lines, i, file.format + 1)
+        flag = 0
+        for token in font_tokens:
+            if find_token(lines, token, k, i) != -1:
+                if not flag:
+                    # This is not necessary, but we want the output to be
+                    # as similar as posible to the lyx format
+                    flag = 1
+                    new.append("")
+                if token == "\\lang":
+                    new.append(token+" "+ file.language)
+                else:
+                    new.append(token+" default ")
 
-	lines[i:j+1] = new
-	i = i+1
+        lines[i:j+1] = new
+        i = i+1
 
 
 pextra_type2_rexp = re.compile(r".*\\pextra_type\s+[12]")
@@ -143,9 +143,9 @@ def remove_pextra(file):
     i = 0
     flag = 0
     while 1:
-	i = find_re(lines, pextra_type2_rexp, i)
-	if i == -1:
-	    break
+        i = find_re(lines, pextra_type2_rexp, i)
+        if i == -1:
+            break
 
         # Sometimes the \pextra_widthp argument comes in it own
         # line. If that happens insert it back in this line.
@@ -153,7 +153,7 @@ def remove_pextra(file):
             lines[i] = lines[i] + ' ' + lines[i+1]
             del lines[i+1]
 
-	mo = pextra_rexp.search(lines[i])
+        mo = pextra_rexp.search(lines[i])
         width = get_width(mo)
 
         if mo.group(1) == "1":
@@ -163,50 +163,50 @@ def remove_pextra(file):
             continue
 
         # handle \pextra_type 2 (minipage)
-	position = mo.group(3)
-	hfill = mo.group(5)
-	lines[i] = re.sub(pextra_rexp, "", lines[i])
+        position = mo.group(3)
+        hfill = mo.group(5)
+        lines[i] = re.sub(pextra_rexp, "", lines[i])
 
-	start = ["\\begin_inset Minipage",
-		 "position " + position,
-		 "inner_position 0",
-		 'height "0pt"',
-		 'width "%s"' % width,
-		 "collapsed false"
-		 ]
-	if flag:
-	    flag = 0
-	    if hfill:
-		start = ["","\hfill",""]+start
-	else:
-	    start = ['\\layout %s' % file.default_layout,''] + start
+        start = ["\\begin_inset Minipage",
+                 "position " + position,
+                 "inner_position 0",
+                 'height "0pt"',
+                 'width "%s"' % width,
+                 "collapsed false"
+                 ]
+        if flag:
+            flag = 0
+            if hfill:
+                start = ["","\hfill",""]+start
+        else:
+            start = ['\\layout %s' % file.default_layout,''] + start
 
-	j0 = find_token_backwards(lines,"\\layout", i-1)
-	j = get_next_paragraph(lines, i, file.format + 1)
+        j0 = find_token_backwards(lines,"\\layout", i-1)
+        j = get_next_paragraph(lines, i, file.format + 1)
 
-	count = 0
-	while 1:
-	    # collect more paragraphs to the minipage
-	    count = count+1
-	    if j == -1 or not check_token(lines[j], "\\layout"):
-		break
-	    i = find_re(lines, pextra_type2_rexp2, j+1)
-	    if i == -1:
-		break
-	    mo = pextra_rexp.search(lines[i])
-	    if not mo:
-		break
-	    if mo.group(7) == "1":
-		flag = 1
-		break
-	    lines[i] = re.sub(pextra_rexp, "", lines[i])
-	    j = find_tokens(lines, ["\\layout", "\\end_float"], i+1)
+        count = 0
+        while 1:
+            # collect more paragraphs to the minipage
+            count = count+1
+            if j == -1 or not check_token(lines[j], "\\layout"):
+                break
+            i = find_re(lines, pextra_type2_rexp2, j+1)
+            if i == -1:
+                break
+            mo = pextra_rexp.search(lines[i])
+            if not mo:
+                break
+            if mo.group(7) == "1":
+                flag = 1
+                break
+            lines[i] = re.sub(pextra_rexp, "", lines[i])
+            j = find_tokens(lines, ["\\layout", "\\end_float"], i+1)
 
-	mid = lines[j0:j]
-	end = ["\\end_inset "]
+        mid = lines[j0:j]
+        end = ["\\end_inset "]
 
-	lines[j0:j] = start+mid+end
-	i = i+1
+        lines[j0:j] = start+mid+end
+        i = i+1
 
 
 def is_empty(lines):
@@ -227,108 +227,108 @@ def remove_oldert(file):
     lines = file.body
     i = 0
     while 1:
-	i = find_tokens(lines, ["\\latex latex", "\\layout LaTeX"], i)
-	if i == -1:
-	    break
-	j = i+1
-	while 1:
+        i = find_tokens(lines, ["\\latex latex", "\\layout LaTeX"], i)
+        if i == -1:
+            break
+        j = i+1
+        while 1:
             # \end_inset is for ert inside a tabular cell. The other tokens
             # are obvious.
-	    j = find_tokens(lines, ["\\latex default", "\\layout", "\\begin_inset", "\\end_inset", "\\end_float", "\\the_end"],
-			    j)
-	    if check_token(lines[j], "\\begin_inset"):
-		j = find_end_of_inset(lines, j)+1
-	    else:
-		break
+            j = find_tokens(lines, ["\\latex default", "\\layout", "\\begin_inset", "\\end_inset", "\\end_float", "\\the_end"],
+                            j)
+            if check_token(lines[j], "\\begin_inset"):
+                j = find_end_of_inset(lines, j)+1
+            else:
+                break
 
-	if check_token(lines[j], "\\layout"):
-	    while j-1 >= 0 and check_token(lines[j-1], "\\begin_deeper"):
-		j = j-1
+        if check_token(lines[j], "\\layout"):
+            while j-1 >= 0 and check_token(lines[j-1], "\\begin_deeper"):
+                j = j-1
 
-	# We need to remove insets, special chars & font commands from ERT text
-	new = []
-	new2 = []
-	if check_token(lines[i], "\\layout LaTeX"):
-	    new = ['\layout %s' % file.default_layout, "", ""]
+        # We need to remove insets, special chars & font commands from ERT text
+        new = []
+        new2 = []
+        if check_token(lines[i], "\\layout LaTeX"):
+            new = ['\layout %s' % file.default_layout, "", ""]
 
-	k = i+1
-	while 1:
-	    k2 = find_re(lines, ert_rexp, k, j)
-	    inset = hfill = specialchar = 0
-	    if k2 == -1:
-		k2 = j
-	    elif check_token(lines[k2], "\\begin_inset"):
-		inset = 1
+        k = i+1
+        while 1:
+            k2 = find_re(lines, ert_rexp, k, j)
+            inset = hfill = specialchar = 0
+            if k2 == -1:
+                k2 = j
+            elif check_token(lines[k2], "\\begin_inset"):
+                inset = 1
             elif check_token(lines[k2], "\\hfill"):
                 hfill = 1
                 del lines[k2]
                 j = j-1
-	    else:
-		specialchar = 1
-		mo = spchar_rexp.match(lines[k2])
-		lines[k2] = mo.group(1)
-		specialchar_str = mo.group(2)
-		k2 = k2+1
+            else:
+                specialchar = 1
+                mo = spchar_rexp.match(lines[k2])
+                lines[k2] = mo.group(1)
+                specialchar_str = mo.group(2)
+                k2 = k2+1
 
-	    tmp = []
-	    for line in lines[k:k2]:
+            tmp = []
+            for line in lines[k:k2]:
                 # Move some lines outside the ERT inset:
-		if move_rexp.match(line):
-		    if new2 == []:
-			# This is not necessary, but we want the output to be
-			# as similar as posible to the lyx format
-			new2 = [""]
-		    new2.append(line)
-		elif not check_token(line, "\\latex"):
-		    tmp.append(line)
+                if move_rexp.match(line):
+                    if new2 == []:
+                        # This is not necessary, but we want the output to be
+                        # as similar as posible to the lyx format
+                        new2 = [""]
+                    new2.append(line)
+                elif not check_token(line, "\\latex"):
+                    tmp.append(line)
 
-	    if is_empty(tmp):
-		if filter(lambda x:x != "", tmp) != []:
-		    if new == []:
-			# This is not necessary, but we want the output to be
-			# as similar as posible to the lyx format
-			lines[i-1] = lines[i-1]+" "
-		    else:
-			new = new+[" "]
-	    else:
-		new = new+ert_begin+tmp+["\\end_inset ", ""]
+            if is_empty(tmp):
+                if filter(lambda x:x != "", tmp) != []:
+                    if new == []:
+                        # This is not necessary, but we want the output to be
+                        # as similar as posible to the lyx format
+                        lines[i-1] = lines[i-1]+" "
+                    else:
+                        new = new+[" "]
+            else:
+                new = new+ert_begin+tmp+["\\end_inset ", ""]
 
-	    if inset:
-		k3 = find_end_of_inset(lines, k2)
-		new = new+[""]+lines[k2:k3+1]+[""] # Put an empty line after \end_inset
-		k = k3+1
-		# Skip the empty line after \end_inset
-		if not is_nonempty_line(lines[k]):
-		    k = k+1
-		    new.append("")
+            if inset:
+                k3 = find_end_of_inset(lines, k2)
+                new = new+[""]+lines[k2:k3+1]+[""] # Put an empty line after \end_inset
+                k = k3+1
+                # Skip the empty line after \end_inset
+                if not is_nonempty_line(lines[k]):
+                    k = k+1
+                    new.append("")
             elif hfill:
                 new = new + ["\\hfill", ""]
                 k = k2
-	    elif specialchar:
-		if new == []:
-		    # This is not necessary, but we want the output to be
-		    # as similar as posible to the lyx format
-		    lines[i-1] = lines[i-1]+specialchar_str
-		    new = [""]
-		else:
-		    new = new+[specialchar_str, ""]
-		k = k2
-	    else:
-		break
+            elif specialchar:
+                if new == []:
+                    # This is not necessary, but we want the output to be
+                    # as similar as posible to the lyx format
+                    lines[i-1] = lines[i-1]+specialchar_str
+                    new = [""]
+                else:
+                    new = new+[specialchar_str, ""]
+                k = k2
+            else:
+                break
 
-	new = new+new2
-	if not check_token(lines[j], "\\latex "):
-	    new = new+[""]+[lines[j]]
-	lines[i:j+1] = new
-	i = i+1
+        new = new+new2
+        if not check_token(lines[j], "\\latex "):
+            new = new+[""]+[lines[j]]
+        lines[i:j+1] = new
+        i = i+1
 
     # Delete remaining "\latex xxx" tokens
     i = 0
     while 1:
-	i = find_token(lines, "\\latex ", i)
-	if i == -1:
-	    break
-	del lines[i]
+        i = find_token(lines, "\\latex ", i)
+        if i == -1:
+            break
+        del lines[i]
 
 
 # ERT insert are hidden feature of lyx 1.1.6. This might be removed in the future.
@@ -336,17 +336,17 @@ def remove_oldertinset(file):
     lines = file.body
     i = 0
     while 1:
-	i = find_token(lines, "\\begin_inset ERT", i)
-	if i == -1:
-	    break
-	j = find_end_of_inset(lines, i)
-	k = find_token(lines, "\\layout", i+1)
-	l = get_paragraph(lines, i, file.format + 1)
-	if lines[k] == lines[l]: # same layout
-	    k = k+1
-	new = lines[k:j]
-	lines[i:j+1] = new
-	i = i+1
+        i = find_token(lines, "\\begin_inset ERT", i)
+        if i == -1:
+            break
+        j = find_end_of_inset(lines, i)
+        k = find_token(lines, "\\layout", i+1)
+        l = get_paragraph(lines, i, file.format + 1)
+        if lines[k] == lines[l]: # same layout
+            k = k+1
+        new = lines[k:j]
+        lines[i:j+1] = new
+        i = i+1
 
 
 def is_ert_paragraph(file, i):
@@ -358,7 +358,7 @@ def is_ert_paragraph(file, i):
 
     i = find_nonempty_line(lines, i+1)
     if not check_token(lines[i], "\\begin_inset ERT"):
-	return 0
+        return 0
 
     j = find_end_of_inset(lines, i)
     k = find_nonempty_line(lines, j+1)
@@ -369,27 +369,27 @@ def combine_ert(file):
     lines = file.body
     i = 0
     while 1:
-	i = find_token(lines, "\\begin_inset ERT", i)
-	if i == -1:
-	    break
-	j = get_paragraph(lines, i, file.format + 1)
-	count = 0
-	text = []
-	while is_ert_paragraph(file, j):
+        i = find_token(lines, "\\begin_inset ERT", i)
+        if i == -1:
+            break
+        j = get_paragraph(lines, i, file.format + 1)
+        count = 0
+        text = []
+        while is_ert_paragraph(file, j):
 
-	    count = count+1
-	    i2 = find_token(lines, "\\layout", j+1)
-	    k = find_token(lines, "\\end_inset", i2+1)
-	    text = text+lines[i2:k]
-	    j = find_token(lines, "\\layout", k+1)
-	    if j == -1:
-		break
+            count = count+1
+            i2 = find_token(lines, "\\layout", j+1)
+            k = find_token(lines, "\\end_inset", i2+1)
+            text = text+lines[i2:k]
+            j = find_token(lines, "\\layout", k+1)
+            if j == -1:
+                break
 
-	if count >= 2:
-	    j = find_token(lines, "\\layout", i+1)
-	    lines[j:k] = text
+        if count >= 2:
+            j = find_token(lines, "\\layout", i+1)
+            lines[j:k] = text
 
-	i = i+1
+        i = i+1
 
 
 oldunits = ["pt", "cm", "in", "text%", "col%"]
@@ -397,83 +397,83 @@ oldunits = ["pt", "cm", "in", "text%", "col%"]
 def get_length(lines, name, start, end):
     i = find_token(lines, name, start, end)
     if i == -1:
-	return ""
+        return ""
     x = string.split(lines[i])
     return x[2]+oldunits[int(x[1])]
 
 
 def write_attribute(x, token, value):
     if value != "":
-	x.append("\t"+token+" "+value)
+        x.append("\t"+token+" "+value)
 
 
 def remove_figinset(file):
     lines = file.body
     i = 0
     while 1:
-	i = find_token(lines, "\\begin_inset Figure", i)
-	if i == -1:
-	    break
-	j = find_end_of_inset(lines, i)
+        i = find_token(lines, "\\begin_inset Figure", i)
+        if i == -1:
+            break
+        j = find_end_of_inset(lines, i)
 
-	if ( len(string.split(lines[i])) > 2 ):
-	    lyxwidth = string.split(lines[i])[3]+"pt"
-	    lyxheight = string.split(lines[i])[4]+"pt"
-	else:
-	    lyxwidth = ""
-	    lyxheight = ""
+        if ( len(string.split(lines[i])) > 2 ):
+            lyxwidth = string.split(lines[i])[3]+"pt"
+            lyxheight = string.split(lines[i])[4]+"pt"
+        else:
+            lyxwidth = ""
+            lyxheight = ""
 
-	filename = get_value(lines, "file", i+1, j)
+        filename = get_value(lines, "file", i+1, j)
 
-	width = get_length(lines, "width", i+1, j)
-	# what does width=5 mean ?
-	height = get_length(lines, "height", i+1, j)
-	rotateAngle = get_value(lines, "angle", i+1, j)
-	if width == "" and height == "":
-	    size_type = "0"
-	else:
-	    size_type = "1"
+        width = get_length(lines, "width", i+1, j)
+        # what does width=5 mean ?
+        height = get_length(lines, "height", i+1, j)
+        rotateAngle = get_value(lines, "angle", i+1, j)
+        if width == "" and height == "":
+            size_type = "0"
+        else:
+            size_type = "1"
 
-	flags = get_value(lines, "flags", i+1, j)
-	x = int(flags)%4
-	if x == 1:
-	    display = "monochrome"
-	elif x == 2:
-	    display = "gray"
-	else:
-	    display = "color"
+        flags = get_value(lines, "flags", i+1, j)
+        x = int(flags)%4
+        if x == 1:
+            display = "monochrome"
+        elif x == 2:
+            display = "gray"
+        else:
+            display = "color"
 
-	subcaptionText = ""
-	subcaptionLine = find_token(lines, "subcaption", i+1, j)
-	if subcaptionLine != -1:
+        subcaptionText = ""
+        subcaptionLine = find_token(lines, "subcaption", i+1, j)
+        if subcaptionLine != -1:
             subcaptionText = lines[subcaptionLine][11:]
-	    if subcaptionText != "":
-	        subcaptionText = '"'+subcaptionText+'"'
+            if subcaptionText != "":
+                subcaptionText = '"'+subcaptionText+'"'
 
-	k = find_token(lines, "subfigure", i+1,j)
-	if k == -1:
-	    subcaption = 0
-	else:
-	    subcaption = 1
+        k = find_token(lines, "subfigure", i+1,j)
+        if k == -1:
+            subcaption = 0
+        else:
+            subcaption = 1
 
-	new = ["\\begin_inset Graphics FormatVersion 1"]
-	write_attribute(new, "filename", filename)
-	write_attribute(new, "display", display)
-	if subcaption:
-	    new.append("\tsubcaption")
-	write_attribute(new, "subcaptionText", subcaptionText)
-	write_attribute(new, "size_type", size_type)
-	write_attribute(new, "width", width)
-	write_attribute(new, "height", height)
-	if rotateAngle != "":
-	    new.append("\trotate")
-	    write_attribute(new, "rotateAngle", rotateAngle)
-	write_attribute(new, "rotateOrigin", "leftBaseline")
-	write_attribute(new, "lyxsize_type", "1")
-	write_attribute(new, "lyxwidth", lyxwidth)
-	write_attribute(new, "lyxheight", lyxheight)
-	new = new + ["\\end_inset"]
-	lines[i:j+1] = new
+        new = ["\\begin_inset Graphics FormatVersion 1"]
+        write_attribute(new, "filename", filename)
+        write_attribute(new, "display", display)
+        if subcaption:
+            new.append("\tsubcaption")
+        write_attribute(new, "subcaptionText", subcaptionText)
+        write_attribute(new, "size_type", size_type)
+        write_attribute(new, "width", width)
+        write_attribute(new, "height", height)
+        if rotateAngle != "":
+            new.append("\trotate")
+            write_attribute(new, "rotateAngle", rotateAngle)
+        write_attribute(new, "rotateOrigin", "leftBaseline")
+        write_attribute(new, "lyxsize_type", "1")
+        write_attribute(new, "lyxwidth", lyxwidth)
+        write_attribute(new, "lyxheight", lyxheight)
+        new = new + ["\\end_inset"]
+        lines[i:j+1] = new
 
 
 ##
@@ -491,16 +491,16 @@ def update_tabular(file):
         if i == -1:
             break
 
-	for k in get_tabular_lines(lines, i):
-	    if check_token(lines[k], "<lyxtabular"):
-		lines[k] = string.replace(lines[k], 'version="2"', 'version="3"')
-	    elif check_token(lines[k], "<column"):
-		lines[k] = string.replace(lines[k], 'width=""', 'width="0pt"')
+        for k in get_tabular_lines(lines, i):
+            if check_token(lines[k], "<lyxtabular"):
+                lines[k] = string.replace(lines[k], 'version="2"', 'version="3"')
+            elif check_token(lines[k], "<column"):
+                lines[k] = string.replace(lines[k], 'width=""', 'width="0pt"')
 
-	    if line_re.match(lines[k]):
-		lines[k] = re.sub(attr_re, "", lines[k])
+            if line_re.match(lines[k]):
+                lines[k] = re.sub(attr_re, "", lines[k])
 
-	i = i+1
+        i = i+1
 
 
 ##
@@ -523,10 +523,10 @@ true = 1
 # simple data structure to deal with long table info
 class row:
     def __init__(self):
-        self.endhead = false		# header row
-        self.endfirsthead = false	# first header row
-        self.endfoot = false		# footer row
-        self.endlastfoot = false	# last footer row
+        self.endhead = false                # header row
+        self.endfirsthead = false        # first header row
+        self.endfoot = false                # footer row
+        self.endlastfoot = false        # last footer row
 
 
 def haveLTFoot(row_info):
@@ -663,8 +663,8 @@ def update_longtables(file):
         for j in range(rows):
             i = find_token(body, '<row', i)
 
-            self.endfoot = false		# footer row
-            self.endlastfoot = false	# last footer row
+            self.endfoot = false                # footer row
+            self.endlastfoot = false        # last footer row
             if row_info[j].endhead:
                 insert_attribute(body, i, 'endhead="true"')
 
@@ -685,9 +685,9 @@ def fix_oldfloatinset(file):
     lines = file.body
     i = 0
     while 1:
-	i = find_token(lines, "\\begin_inset Float ", i)
-	if i == -1:
-	    break
+        i = find_token(lines, "\\begin_inset Float ", i)
+        if i == -1:
+            break
         j = find_token(lines, "collapsed", i)
         if j != -1:
             lines[j:j] = ["wide false"]
@@ -698,9 +698,9 @@ def change_listof(file):
     lines = file.body
     i = 0
     while 1:
-	i = find_token(lines, "\\begin_inset LatexCommand \\listof", i)
-	if i == -1:
-	    break
+        i = find_token(lines, "\\begin_inset LatexCommand \\listof", i)
+        if i == -1:
+            break
         type = re.search(r"listof(\w*)", lines[i]).group(1)[:-1]
         lines[i] = "\\begin_inset FloatList "+type
         i = i+1
@@ -737,9 +737,9 @@ def change_header(file):
     lines = file.header
     i = find_token(lines, "\\use_amsmath", 0)
     if i == -1:
-	return
+        return
     lines[i+1:i+1] = ["\\use_natbib 0",
-		      "\use_numerical_citations 0"]
+                      "\use_numerical_citations 0"]
 
 
 convert = [[220, [change_header, change_listof, fix_oldfloatinset,

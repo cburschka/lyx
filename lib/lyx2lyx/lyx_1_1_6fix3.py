@@ -55,7 +55,7 @@ def update_tabular(file):
             break
 
         new_table = table_update(lines[i:j])
-	lines[i:j] = new_table
+        lines[i:j] = new_table
         i = i + len(new_table)
 
 
