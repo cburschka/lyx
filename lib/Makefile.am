@@ -847,11 +847,11 @@ scriptsdir = $(pkgdatadir)/scripts
 dist_scripts_DATA = \
 	scripts/TeXFiles.py \
 	scripts/clean_dvi.py \
-	scripts/convertDefault.sh \
+	scripts/convertDefault.py \
 	scripts/fen2ascii.py \
 	scripts/fig2pdftex.sh \
 	scripts/fig2pstex.sh \
-	scripts/fig_copy.sh \
+	scripts/fig_copy.py \
 	scripts/layout2layout.py \
 	scripts/legacy_lyxpreview2ppm.py \
 	scripts/listerrors \
