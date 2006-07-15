@@ -33,6 +33,7 @@ namespace support = lyx::support;
 using support::changeExtension;
 using support::Forkedcall;
 using support::ForkedCallQueue;
+using support::getExtension;
 using support::libFileSearch;
 using support::libScriptSearch;
 using support::onlyPath;
@@ -265,7 +266,6 @@ string const move_file(string const & from_file, string const & to_file)
 		<< "try:\n"
 		<< "  os.rename(fromfile, tofile)\n"
 		<< "except:\n"
-		<< "  import shutil\n"
 		<< "  try:\n"
 		<< "    shutil.copy(fromfile, tofile)\n"
 		<< "  except:\n"
@@ -276,50 +276,6 @@ string const move_file(string const & from_file, string const & to_file)
 }
 
 
-/*
-A typical script looks like:
-
-#!/usr/bin/env python -tt
-import os, sys
-
-def unlinkNoThrow(file):
-  ''' remove a file, do not throw if error occurs '''
-  try:
-    os.unlink(file)
-  except:
-    pass
-
-infile = '/home/username/Figure3a.eps'
-infile_base = '/home/username/Figure3a'
-outfile = '/tmp/lyx_tmpdir12992hUwBqt/gconvert0129929eUBPm.pdf'
-
-if os.system(r'epstopdf ' + '"' + infile + '"' + ' --output ' + '"' + outfile + '"' + '') != 0:
-  unlinkNoThrow(outfile)
-  sys.exit(1)
-
-if not os.path.isfile(outfile):
-  if os.path.isfile(outfile + '.0'):
-    os.rename(outfile + '.0', outfile)
-    import glob
-    for file in glob.glob(outfile + '.?'):
-      unlinkNoThrow(file)
-  else:
-    sys.exit(1)
-
-fromfile = outfile
-tofile = '/tmp/lyx_tmpdir12992hUwBqt/Figure3a129927ByaCl.ppm'
-
-try:
-  os.rename(fromfile, tofile)
-except:
-  import shutil
-  try:
-    shutil.copy(fromfile, tofile)
-  except:
-    sys.exit(1)
-  unlinkNoThrow(fromfile)
-
-*/
 bool build_script(string const & from_file,
 		  string const & to_file_base,
 		  string const & from_format,
@@ -334,7 +290,7 @@ bool build_script(string const & from_file,
 		return false;
 
 	script << "#!/usr/bin/env python -tt\n"
-	          "import os, sys\n\n"
+	          "import os, shutil, sys\n\n"
 	          "def unlinkNoThrow(file):\n"
 	          "  ''' remove a file, do not throw if an error occurs '''\n"
 	          "  try:\n"
@@ -361,7 +317,15 @@ bool build_script(string const & from_file,
 	string const to_base = tempName(string(), tmp);
 	unlink(to_base);
 
-	string outfile = from_file;
+	// Create a copy of the file in case the original name contains
+	// problematic characters like ' or ". We can work around that problem
+	// in python, but the converters might be shell scripts and have more
+	// troubles with it.
+	string outfile = changeExtension(to_base, getExtension(from_file));
+	script << "infile = '"
+	       << subst(subst(from_file, "\\", "\\\\"), "'", "\\'") << "'\n"
+	          "outfile = " << quoteName(outfile) << "\n"
+	          "shutil.copy(infile, outfile)\n";
 
 	// The conversion commands may contain these tokens that need to be
 	// changed to infile, infile_base, outfile respectively.
@@ -413,9 +377,8 @@ bool build_script(string const & from_file,
 		          "  else:\n"
 		          "    sys.exit(1)\n\n";
 
-		// Delete the infile, if it isn't the original, from_file.
-		if (infile != from_file)
-			script << "unlinkNoThrow(infile)\n\n";
+		// Delete the infile
+		script << "unlinkNoThrow(infile)\n\n";
 	}
 
 	// Move the final outfile to to_file

@@ -426,12 +426,10 @@ void CacheItem::Impl::convertToDisplayFormat()
 	}
 
 	lyxerr[Debug::GRAPHICS] << "\tConverting it to " << to << " format." << endl;
-	// Take only the filename part of the file, without path or extension.
-	string const temp = changeExtension(onlyFilename(filename), string());
 
 	// Add some stuff to create a uniquely named temporary file.
 	// This file is deleted in loadImage after it is loaded into memory.
-	string const to_file_base = tempName(string(), temp);
+	string const to_file_base = tempName(string(), "CacheItem");
 	remove_loaded_file_ = true;
 
 	// Remove the temp file, we only want the name...
