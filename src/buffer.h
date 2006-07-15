@@ -12,6 +12,7 @@
 #ifndef BUFFER_H
 #define BUFFER_H
 
+#include "errorlist.h"
 #include "InsetList.h"
 
 #include "dociterator.h"
@@ -112,8 +113,8 @@ public:
 	/// do we have a paragraph with this id?
 	bool hasParWithID(int id) const;
 
-	/// This signal is emitted when a parsing error shows up.
-	boost::signal<void(ErrorItem)> error;
+	/// This signal is emitted when some parsing error shows up.
+	boost::signal<void(std::string)> errors;
 	/// This signal is emitted when some message shows up.
 	boost::signal<void(std::string)> message;
 	/// This signal is emitted when the buffer busy status change.
@@ -347,6 +348,21 @@ public:
 	/// get source code (latex/docbook/linuxdoc) for some paragraphs
 	void getSourceCode(std::ostream & os, lyx::pit_type par_begin, lyx::pit_type par_end);
 
+	/// errorList_ accessor.
+	ErrorList const & getErrorList() const;
+	/// replace the internal errorList_
+	/** FIXME: This method is const for now because the ErrorList GUI
+	* showing mechanism is used by other classes in order to show their
+	* own processing errors (ex: Converter.C).
+	*/
+	void setErrorList(ErrorList const &) const;
+	/// add an error to the errorList_
+	/** FIXME: This method is const for now because the ErrorList GUI
+	* showing mechanism is used by other classes in order to show their
+	* own processing errors (ex: Converter.C).
+	*/
+	void addError(ErrorItem const &) const;
+
 private:
 	/** Inserts a file into a document
 	    \return \c false if method fails.
@@ -368,6 +384,13 @@ private:
 	/// A cache for the bibfiles (including bibfiles of loaded child
 	/// documents), needed for appropriate update of natbib labels.
 	std::vector<std::string> bibfilesCache_;
+
+	/// An error list (replaces the error insets)
+	/** FIXME: This member is mutable for now because the ErrorList GUI
+	* showing mechanism is used by other classes in order to show their
+	* own processing errors (ex: Converter.C).
+	*/
+	mutable ErrorList errorList_;
 };
 
 #endif

@@ -230,15 +230,15 @@ void bufferErrors(Buffer const & buf, TeXErrors const & terr)
 							  pos_end);
 		} while (found && id_start == id_end && pos_start == pos_end);
 
-		buf.error(ErrorItem(cit->error_desc, cit->error_text,
-				    id_start, pos_start, pos_end));
+		buf.addError(ErrorItem(cit->error_desc,
+			cit->error_text, id_start, pos_start, pos_end));
 	}
 }
 
 
 void bufferErrors(Buffer const & buf, ErrorList const & el)
 {
-	for_each(el.begin(), el.end(), bind(ref(buf.error), _1));
+	buf.setErrorList(el);
 }
 
 

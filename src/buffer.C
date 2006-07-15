@@ -22,7 +22,6 @@
 #include "Chktex.h"
 #include "debug.h"
 #include "encoding.h"
-#include "errorlist.h"
 #include "exporter.h"
 #include "format.h"
 #include "funcrequest.h"
@@ -446,15 +445,17 @@ int Buffer::readHeader(LyXLex & lex)
 							   "%1$s %2$s\n"),
 							 token,
 							 lex.getString());
-				error(ErrorItem(_("Document header error"), s,
-						-1, 0, 0));
+				errorList_.push_back(ErrorItem(_("Document header error"),
+					s, -1, 0, 0));
 			}
 		}
 	}
 	if (begin_header_line) {
 		string const s = _("\\begin_header is missing");
-		error(ErrorItem(_("Document header error"), s, -1, 0, 0));
+		errorList_.push_back(ErrorItem(_("Document header error"),
+			s, -1, 0, 0));
 	}
+
 	return unknown_tokens;
 }
 
@@ -464,11 +465,14 @@ int Buffer::readHeader(LyXLex & lex)
 // Returns false if "\end_document" is not read (Asger)
 bool Buffer::readDocument(LyXLex & lex)
 {
+	errorList_.clear();
+
 	lex.next();
 	string const token = lex.getString();
 	if (token != "\\begin_document") {
 		string const s = _("\\begin_document is missing");
-		error(ErrorItem(_("Document header error"), s, -1, 0, 0));
+		errorList_.push_back(ErrorItem(_("Document header error"),
+			s, -1, 0, 0));
 	}
 
 	// we are reading in a brand new document
@@ -488,6 +492,17 @@ bool Buffer::readDocument(LyXLex & lex)
 		 text().paragraphs().end(),
 		 bind(&Paragraph::setInsetOwner, _1, &inset()));
 	updateBibfilesCache();
+
+	// FIXME: the signal emission below is not needed for now because
+	// there is a manual call to "LyXView::showErrorList(_("Parse"))"
+	// in  BufferView::pimpl::loadLyXFile()
+	// Eventually, all manual call to "LyXView::showErrorList()" should
+	// be replace with this signal emission.
+	//
+	// Send the "errors" signal in case of parsing errors
+	//if (!errorList_.empty())
+	//	errors(_("Parse"));
+
 	return res;
 }
 
@@ -1657,3 +1672,20 @@ void Buffer::getSourceCode(ostream & os, lyx::pit_type par_begin, lyx::pit_type 
 		docbookParagraphs(paragraphs(), *this, os, runparams);
 }
 
+
+ErrorList const & Buffer::getErrorList() const
+{
+	return errorList_;
+}
+
+
+void Buffer::setErrorList(ErrorList const & errorList) const
+{
+	errorList_ = errorList;
+}
+
+
+void Buffer::addError(ErrorItem const & errorItem) const
+{
+	errorList_.push_back(errorItem);
+}

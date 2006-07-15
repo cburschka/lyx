@@ -28,7 +28,6 @@
 class Buffer;
 class Change;
 class DocIterator;
-class ErrorList;
 class FuncRequest;
 class FuncStatus;
 class Language;

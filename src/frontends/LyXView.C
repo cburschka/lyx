@@ -167,12 +167,17 @@ bool LyXView::loadLyXFile(string const & filename, bool tolastfiles)
 
 void LyXView::connectBuffer(Buffer & buf)
 {
-	if (errorConnection_.connected())
+	if (errorsConnection_.connected())
 		disconnectBuffer();
 
-	errorConnection_ =
-		buf.error.connect(
-			boost::bind(&LyXView::addError, this, _1));
+	// FIXME: (Abdel 15/07/2006) The connection below is not used for
+	// now.
+	// Nevertheless, it would be a very good idea to replace all manual
+	// calls of showErrorList to a call of the new modified
+	// "Buffer::errors" boost signal.
+	errorsConnection_ =
+		buf.errors.connect(
+			boost::bind(&LyXView::showErrorList, this, _1));
 
 	messageConnection_ =
 		buf.message.connect(
@@ -202,7 +207,6 @@ void LyXView::connectBuffer(Buffer & buf)
 
 void LyXView::disconnectBuffer()
 {
-	errorConnection_.disconnect();
 	messageConnection_.disconnect();
 	busyConnection_.disconnect();
 	titleConnection_.disconnect();
@@ -212,26 +216,14 @@ void LyXView::disconnectBuffer()
 }
 
 
-void LyXView::addError(ErrorItem const & ei)
-{
-	errorlist_.push_back(ei);
-}
-
-
 void LyXView::showErrorList(string const & action)
 {
-	if (errorlist_.size()) {
+	Buffer * b = work_area_->bufferView().buffer();
+	if (!b->getErrorList().empty()) {
 		string const title = bformat(_("%1$s Errors (%2$s)"),
 			action, buffer()->fileName());
 		getDialogs().show("errorlist", title);
-		errorlist_.clear();
 	}
-}
-
-
-ErrorList const & LyXView::getErrorList() const
-{
-	return errorlist_;
 }
 
 

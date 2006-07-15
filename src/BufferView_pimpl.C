@@ -787,7 +787,8 @@ void BufferView::Pimpl::menuInsertLyXFile(string const & filenm)
 
 	string res;
 	Buffer buf("", false);
-	buf.error.connect(boost::bind(&LyXView::addError, owner_, _1));
+	// FIXME: is there a need for something like that?
+	//buf.errors.connect(boost::bind(&LyXView::showErrorList, owner_, _1));
 	if (::loadLyXFile(&buf, makeAbsPath(filename))) {
 		lyx::cap::pasteParagraphList(cursor_, buf.paragraphs(),
 					     buf.params().textclass);

@@ -13,8 +13,6 @@
 #ifndef LYXVIEW_H
 #define LYXVIEW_H
 
-#include "errorlist.h"
-
 #include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/signal.hpp>
@@ -167,15 +165,8 @@ public:
 	/// This is needed for the qt3 and gtk frontend.
 	lyx::frontend::WorkArea * workArea();
 
-	/// get the stored error list
-	ErrorList const & getErrorList() const;
 	/// show the error list to the user
 	void showErrorList(std::string const &);
-	/// add an error to the list
-	/** FIXME: public method until the signal connection in
-	* BufferView::menuInsertLyXFile() is removed.
-	*/
-	void addError(ErrorItem const &);
 
 protected:
 	/// current work area (screen view of a BufferView).
@@ -210,11 +201,8 @@ private:
 	/// dialogs for this view
 	boost::scoped_ptr<Dialogs> dialogs_;
 
-	/// An error list (replaces the error insets)
-	ErrorList errorlist_;
-
 	/// buffer errors signal connection
-	boost::signals::connection errorConnection_;
+	boost::signals::connection errorsConnection_;
 	/// buffer messages signal connection
 	boost::signals::connection messageConnection_;
 	/// buffer busy status signal connection

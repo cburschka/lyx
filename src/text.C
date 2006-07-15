@@ -180,7 +180,7 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 		bool hasLayout = tclass.hasLayout(layoutname);
 
 		if (!hasLayout) {
-			buf.error(ErrorItem(_("Unknown layout"),
+			buf.addError(ErrorItem(_("Unknown layout"),
 			bformat(_("Layout '%1$s' does not exist in textclass '%2$s'\nTrying to use the default instead.\n"),
 				layoutname, tclass.name()), par.id(), 0, par.size()));
 			layoutname = tclass.defaultLayoutName();
@@ -212,7 +212,7 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 		else {
 			lex.eatLine();
 			string line = lex.getString();
-			buf.error(ErrorItem(_("Unknown Inset"), line,
+			buf.addError(ErrorItem(_("Unknown Inset"), line,
 					    par.id(), 0, par.size()));
 		}
 	} else if (token == "\\family") {
@@ -329,7 +329,7 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 		lyx::time_type ct;
 		is >> aid >> ct;
 		if (aid >= bp.author_map.size()) {
-			buf.error(ErrorItem(_("Change tracking error"),
+			buf.addError(ErrorItem(_("Change tracking error"),
 					    bformat(_("Unknown author index for insertion: %1$d\n"), aid),
 					    par.id(), 0, par.size()));
 
@@ -343,7 +343,7 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 		lyx::time_type ct;
 		is >> aid >> ct;
 		if (aid >= bp.author_map.size()) {
-			buf.error(ErrorItem(_("Change tracking error"),
+			buf.addError(ErrorItem(_("Change tracking error"),
 					    bformat(_("Unknown author index for deletion: %1$d\n"), aid),
 					    par.id(), 0, par.size()));
 
@@ -352,7 +352,7 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 			change = Change(Change::DELETED, bp.author_map[aid], ct);
 	} else {
 		lex.eatLine();
-		buf.error(ErrorItem(_("Unknown token"),
+		buf.addError(ErrorItem(_("Unknown token"),
 			bformat(_("Unknown token: %1$s %2$s\n"), token, lex.getString()),
 			par.id(), 0, par.size()));
 	}

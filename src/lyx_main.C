@@ -83,6 +83,7 @@ namespace fs = boost::filesystem;
 using std::endl;
 using std::string;
 using std::vector;
+using std::mem_fun_ref;
 
 #ifndef CXX_GLOBAL_CSTD
 using std::exit;
@@ -285,11 +286,21 @@ int LyX::exec2(int & argc, char * argv[])
 				last_loaded = newFile(*it, string(), true);
 			} else {
 				Buffer * buf = bufferlist.newBuffer(s, false);
-				buf->error.connect(boost::bind(&LyX::printError, this, _1));
 				if (loadLyXFile(buf, s))
 					last_loaded = buf;
 				else
 					bufferlist.release(buf);
+
+				ErrorList const & el = buf->getErrorList();
+				if (!el.empty()) {
+					// There should be a way to use the following but I (abdel) don't know
+					// how to make it compile on MSVC2005.
+					//for_each(el.begin(), el.end(), mem_fun_ref(&LyX::printError));
+					for (ErrorList::const_iterator it = el.begin();
+						it != el.end(); ++it) {
+							printError(*it);
+					}
+				}
 			}
 		}
 
