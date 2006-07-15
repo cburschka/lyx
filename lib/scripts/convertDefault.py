@@ -1,4 +1,4 @@
-#!/usr/bin/env python -tt
+#!/usr/bin/env python
 # -*- coding: iso-8859-15 -*-
 
 # file convertDefault.py

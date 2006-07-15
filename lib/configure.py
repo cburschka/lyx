@@ -169,7 +169,7 @@ def checkLatex():
       checkProg('DTL to DVI converter', ['dt2dv']) != ['', '']):
     # Windows only: DraftDVI
     converter_entry = r'''\converter latex      dvi2       "%%"	"latex"
-\converter dvi2       dvi        "python $$s/scripts/clean_dvi.py $$i $$o"	""'''
+\converter dvi2       dvi        "python -tt $$s/scripts/clean_dvi.py $$i $$o"	""'''
   else:
     converter_entry = r'\converter latex      dvi        "%%"	"latex"'
   path, LATEX = checkProg('a Latex2e program', ['pplatex $$i', 'latex $$i', 'latex2e $$i'],
@@ -329,7 +329,7 @@ def checkConverterEntries():
   #
   path, dvipng = checkProg('dvipng', ['dvipng'])
   if dvipng == "dvipng":
-    addToRC(r'\converter lyxpreview png        "python $$s/scripts/lyxpreview2bitmap.py"	""')
+    addToRC(r'\converter lyxpreview png        "python -tt $$s/scripts/lyxpreview2bitmap.py"	""')
   else:
     addToRC(r'\converter lyxpreview png        ""	""')
   #  
@@ -373,13 +373,13 @@ def checkConverterEntries():
   # checkProg('Image converter', ['convert $$i $$o'])
   #
   # Entried that do not need checkProg
-  addToRC(r'''\converter lyxpreview ppm        "python $$s/scripts/lyxpreview2bitmap.py"	""
+  addToRC(r'''\converter lyxpreview ppm        "python -tt $$s/scripts/lyxpreview2bitmap.py"	""
 \converter date       dateout    "date +%d-%m-%Y > $$o"	""
 \converter docbook    docbook-xml "cp $$i $$o"	"xml"
-\converter fen        asciichess "python $$s/scripts/fen2ascii.py $$i $$o"	""
-\converter fig        pdftex     "sh $$s/scripts/fig2pdftex.sh $$i $$o"	""
-\converter fig        pstex      "sh $$s/scripts/fig2pstex.sh $$i $$o"	""
-\converter lyx        lyx13x     "python $$s/lyx2lyx/lyx2lyx -t 221 $$i > $$o"	""
+\converter fen        asciichess "python -tt $$s/scripts/fen2ascii.py $$i $$o"	""
+\converter fig        pdftex     "python -tt $$s/scripts/fig2pdftex.py $$i $$o"	""
+\converter fig        pstex      "python -tt $$s/scripts/fig2pstex.py $$i $$o"	""
+\converter lyx        lyx13x     "python -tt $$s/lyx2lyx/lyx2lyx -t 221 $$i > $$o"	""
 ''')
 
 
@@ -442,9 +442,9 @@ def checkOtherEntries():
 \print_spool_command "lpr"''',
       ''])
   # Add the rest of the entries (no checkProg is required)
-  addToRC(r'''\copier    fig        "python $$s/scripts/fig_copy.py $$i $$o"
-\copier    pstex      "python $$s/scripts/tex_copy.py $$i $$o $$l"
-\copier    pdftex     "python $$s/scripts/tex_copy.py $$i $$o $$l"
+  addToRC(r'''\copier    fig        "python -tt $$s/scripts/fig_copy.py $$i $$o"
+\copier    pstex      "python -tt $$s/scripts/tex_copy.py $$i $$o $$l"
+\copier    pdftex     "python -tt $$s/scripts/tex_copy.py $$i $$o $$l"
 ''')
 
 

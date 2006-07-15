@@ -849,8 +849,8 @@ dist_scripts_DATA = \
 	scripts/clean_dvi.py \
 	scripts/convertDefault.py \
 	scripts/fen2ascii.py \
-	scripts/fig2pdftex.sh \
-	scripts/fig2pstex.sh \
+	scripts/fig2pdftex.py \
+	scripts/fig2pstex.py \
 	scripts/fig_copy.py \
 	scripts/layout2layout.py \
 	scripts/legacy_lyxpreview2ppm.py \
