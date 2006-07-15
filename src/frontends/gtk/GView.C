@@ -159,7 +159,9 @@ bool GView::onFocusIn(GdkEventFocus * /*event*/)
 
 void GView::prohibitInput() const
 {
-	workArea()->hideCursor();
+	// FIXME: Why is prohibitInput const?
+	// FIXME: hideCursor is protected
+	//const_cast<GView*>(this)->workArea()->hideCursor();
 	const_cast<GView*>(this)->set_sensitive(false);
 }
 
@@ -190,8 +192,10 @@ void GView::setWindowTitle(string const & t, string const & /*it*/)
 
 void GView::busy(bool yes) const
 {
-	if (yes ) {
-		workArea()->hideCursor();
+	// FIXME: Why is busy const?
+	if (yes) {
+		// FIXME: hideCursor is protected
+		//const_cast<GView*>(this)->workArea()->hideCursor();
 		Gdk::Cursor cursor(Gdk::WATCH);
 		const_cast<GView *>(this)->get_window()->set_cursor(cursor);
 		const_cast<GView *>(this)->set_sensitive(false);
