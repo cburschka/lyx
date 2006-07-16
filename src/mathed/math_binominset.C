@@ -68,6 +68,12 @@ void MathBinomInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
+bool MathBinomInset::extraBraces() const
+{
+	return choose_;
+}
+
+
 void MathBinomInset::write(WriteStream & os) const
 {
 	if (choose_)

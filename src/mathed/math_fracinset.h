@@ -42,6 +42,8 @@ public:
 	MathFracInset const * asFracInset() const;
 	///
 	std::string name() const;
+	///
+	bool extraBraces() const;
 
 	///
 	void write(WriteStream & os) const;

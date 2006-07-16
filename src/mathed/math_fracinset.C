@@ -141,6 +141,12 @@ string MathFracInset::name() const
 }
 
 
+bool MathFracInset::extraBraces() const
+{
+	return kind_ == ATOP;
+}
+
+
 void MathFracInset::maple(MapleStream & os) const
 {
 	os << '(' << cell(0) << ")/(" << cell(1) << ')';

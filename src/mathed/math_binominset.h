@@ -28,6 +28,8 @@ public:
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo &, int x, int y) const;
+	///
+	bool extraBraces() const;
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 	///
