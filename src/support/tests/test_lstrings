@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 regfile=`cat ${srcdir}/regfiles/lstrings`
 output=`./lstrings`
