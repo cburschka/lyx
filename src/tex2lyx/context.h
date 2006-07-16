@@ -133,6 +133,8 @@ public:
 	 * would not work.
 	 */
 	bool new_layout_allowed;
+	/// Did we output anything yet in any context?
+	static bool empty;
 
 	/// The textclass of the document. Could actually be a global variable
 	LyXTextClass const & textclass;

@@ -413,6 +413,9 @@ void tex2lyx(std::istream &is, std::ostream &os)
 	active_environments.push_back("document");
 	Context context(true, textclass);
 	parse_text(p, ss, FLAG_END, true, context);
+	if (Context::empty)
+		// Empty document body. LyX needs at least one paragraph.
+		context.check_layout(ss);
 	context.check_end_layout(ss);
 	ss << "\n\\end_body\n\\end_document\n";
 	active_environments.pop_back();
