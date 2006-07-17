@@ -24,6 +24,9 @@ What's new
 
 ** Bug fixes:
 
+- change the encoding of some python scripts from iso-8859-15 to
+  iso-8859-1. The former causes problems with embedded python.
+
 * Miscellaneous
 
 - Handle the Meta keyboard modifier as Alt (Qt only).
