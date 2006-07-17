@@ -39,7 +39,11 @@ bool ControlLog::initialiseParams(string const & data)
 	lex.setStream(is);
 
 	string logtype, logfile;
-	lex >> logtype >> logfile;
+	lex >> logtype;
+	if (lex.isOK()) {
+		lex.next(true);
+		logfile = lex.getString();
+	}
 	if (!lex)
 		// Parsing of the data failed.
 		return false;
