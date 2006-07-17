@@ -194,7 +194,8 @@ Buffer * newFile(string const & filename, string const & templatename,
 			string const file = makeDisplayPath(tname, 50);
 			string const text  = bformat(_("The specified document template\n%1$s\ncould not be read."), file);
 			Alert::error(_("Could not read template"), text);
-			// no template, start with empty buffer
+			bufferlist.release(b);
+			return 0;
 		}
 	}
 

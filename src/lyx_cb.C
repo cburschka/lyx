@@ -343,7 +343,9 @@ void newFile(BufferView * bv, string const & filename)
 			    << "\nName is " << name
 			    << "\nTemplate is " << tmpname << endl;
 
-	bv->setBuffer(newFile(name, tmpname));
+	Buffer * const b = newFile(name, tmpname);
+	if (b)
+		bv->setBuffer(b);
 }
 
 

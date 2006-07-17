@@ -189,9 +189,11 @@ bool BufferView::Pimpl::loadLyXFile(string const & filename, bool tolastfiles)
 		int const ret = Alert::prompt(_("Create new document?"),
 			 text, 0, 1, _("&Create"), _("Cancel"));
 
-		if (ret == 0)
+		if (ret == 0) {
 			b = newFile(s, string(), true);
-		else
+			if (!b)
+				return false;
+		} else
 			return false;
 	}
 
