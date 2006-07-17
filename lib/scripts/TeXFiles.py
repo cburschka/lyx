@@ -1,5 +1,5 @@
 #!/usr/bin/env python -tt
-# -*- coding: iso-8859-15 -*-
+# -*- coding: iso-8859-1 -*-
 
 # file TeXFiles.py
 # This file is part of LyX, the document processor.
