@@ -173,8 +173,7 @@ bool BufferList::close(Buffer * buf, bool const ask)
 {
 	BOOST_ASSERT(buf);
 
-	// FIXME: is the quitting check still necessary ?
-	if (!ask || buf->isClean() || quitting || buf->paragraphs().empty()) {
+	if (!ask || buf->isClean() || buf->paragraphs().empty()) {
 		release(buf);
 		return true;
 	}
@@ -195,14 +194,12 @@ bool BufferList::close(Buffer * buf, bool const ask)
 		if (buf->isUnnamed()) {
 			if (!writeAs(buf))
 				return false;
-		} else if (buf->save()) {
-			LyX::ref().session().addLastFile(buf->fileName());
-		} else {
+		} else if (!menuWrite(buf))
 			return false;
-		}
-	} else if (ret == 2) {
+		else
+			return false;
+	} else if (ret == 2)
 		return false;
-	}
 
 	if (buf->isUnnamed()) {
 		removeAutosaveFile(buf->fileName());
