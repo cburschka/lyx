@@ -2201,9 +2201,9 @@ if build_msvs_projects:
         else:
             res = []
         if rebuildTargetOnly:
-            cmds = 'faststart=yes rebuild='+target
+            cmds = 'fast_start=yes rebuild='+target
         else:
-            cmds = 'faststart=yes'
+            cmds = 'fast_start=yes'
         if type(dir) == type([]):
             src = []
             inc = []
