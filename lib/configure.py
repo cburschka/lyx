@@ -1,4 +1,4 @@
-#! /usr/bin/env python -tt
+#! /usr/bin/env python
 #
 # file configure.py
 # This file is part of LyX, the document processor.

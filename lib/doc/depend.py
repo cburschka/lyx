@@ -1,4 +1,4 @@
-#! /usr/bin/env python -tt
+#! /usr/bin/env python
 # -*- coding: iso-8859-1 -*-
 # This file is part of the LyX Documentation
 # Copyright (C) 2004 José Matos <jamatos@lyx.org>
