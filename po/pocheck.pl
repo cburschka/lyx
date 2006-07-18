@@ -81,9 +81,18 @@ foreach $pofilename ( @ARGV )
           $warn++;
         }
 
+        # Check for "|..." shortcuts
+        if ( ( $msgid =~ m/\|[^ ]/ ) != ( $msgstr =~ m/\|[^ ]/ ) ) {
+          print( "Missing or unexpected menu shortcut:\n" );
+          print( "  '$msgid' => '$msgstr'\n" );
+          $warn++;
+        }
+
         $msgid_clean  = lc($msgid);
         $msgstr_clean = lc($msgstr);
 
+        $msgid_clean  =~ s/(.*)\|.*?$/$1/;  # strip menu shortcuts
+        $msgstr_clean =~ s/(.*)\|.*?$/$1/;
         $msgid_clean  =~ s/&([^ ])/$1/;     # strip Qt shortcuts
         $msgstr_clean =~ s/&([^ ])/$1/;
 
