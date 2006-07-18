@@ -57,9 +57,9 @@ ones that come with gcc 2.95.x are too broken for us to use.
 
 * Qt frontend
 
-LyX has been tested with Qt 3.x, though Qt 2.x may happen to work too.
-The only special point to make is that you must ensure that both LyX
-and the Qt libraries are compiled with the same C++ compiler.
+LyX has been tested with Qt 3.x and 4.x. The only special point to 
+make is that you must ensure that both LyX and the Qt libraries are 
+compiled with the same C++ compiler.
 
 Note that if Qt is using Xft2/fontconfig, you may need to install the
 latex-xft-fonts package (at ftp://ftp.lyx.org/pub/lyx/contrib/) to get
