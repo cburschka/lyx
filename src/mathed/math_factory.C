@@ -320,8 +320,10 @@ MathAtom createMathInset(string const & s)
 		return MathAtom(new MathStackrelInset);
 	if (s == "binom" || s == "choose")
 		return MathAtom(new MathBinomInset(s == "choose"));
-	if (s == "over" || s == "frac")
+	if (s == "frac")
 		return MathAtom(new MathFracInset);
+	if (s == "over")
+		return MathAtom(new MathFracInset(MathFracInset::OVER));
 	if (s == "nicefrac")
 		return MathAtom(new MathFracInset(MathFracInset::NICEFRAC));
 	//if (s == "infer")

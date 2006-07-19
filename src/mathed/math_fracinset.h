@@ -22,6 +22,7 @@ public:
 	///
 	enum Kind {
 		FRAC,
+		OVER,
 		ATOP,
 		NICEFRAC
 	};

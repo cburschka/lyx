@@ -77,18 +77,17 @@ void MathFracInset::draw(PainterInfo & pi, int x, int y) const
 				y - cell(0).descent() - 5);
 		cell(1).draw(pi, x + cell(0).width() + 5,
 				y + cell(1).ascent() / 2);
+		pi.pain.line(x + cell(0).width(), 
+				y + dim_.des - 2, 
+				x + cell(0).width() + 5, 
+				y - dim_.asc + 2, LColor::math);
 	} else {
 		cell(0).draw(pi, m - cell(0).width() / 2, 
 				y - cell(0).descent() - 2 - 5);
 		cell(1).draw(pi, m - cell(1).width() / 2,
 				y + cell(1).ascent()  + 2 - 5);
 	}
-	if (kind_ == NICEFRAC)
-		pi.pain.line(x + cell(0).width(), 
-				y + dim_.des - 2, 
-				x + cell(0).width() + 5, 
-				y - dim_.asc + 2, LColor::math);
-	if (kind_ == FRAC)
+	if (kind_ == FRAC || kind_ == OVER)
 		pi.pain.line(x + 1, y - 5, 
 				x + dim_.wid - 2, y - 5, LColor::math);
 	drawMarkers(pi, x, y);
@@ -112,17 +111,26 @@ void MathFracInset::drawT(TextPainter & pain, int x, int y) const
 	cell(0).drawT(pain, m - cell(0).width() / 2, y - cell(0).descent() - 1);
 	cell(1).drawT(pain, m - cell(1).width() / 2, y + cell(1).ascent());
 	// ASCII art: ignore niceties
-	if (kind_ == FRAC || kind_ == NICEFRAC)
+	if (kind_ == FRAC || kind_ == OVER || kind_ == NICEFRAC)
 		pain.horizontalLine(x, y, dim_.width());
 }
 
 
 void MathFracInset::write(WriteStream & os) const
 {
-	if (kind_ == ATOP)
+	switch (kind_) {
+	case ATOP:
 		os << '{' << cell(0) << "\\atop " << cell(1) << '}';
-	else // it's \\frac
+		break;
+	case OVER:
+		// \\over is only for compatibility, normalize this to \\frac
+		os << "\\frac{" << cell(0) << "}{" << cell(1) << '}';
+		break;
+	case FRAC:
+	case NICEFRAC:
 		MathNestInset::write(os);
+		break;
+	}
 }
 
 
@@ -131,19 +139,19 @@ string MathFracInset::name() const
 	switch (kind_) {
 	case FRAC:
 		return "frac";
+	case OVER:
+		return "over";
 	case NICEFRAC:
 		return "nicefrac";
 	case ATOP:
 		return "atop";
-	default:
-		return string();
 	}
 }
 
 
 bool MathFracInset::extraBraces() const
 {
-	return kind_ == ATOP;
+	return kind_ == ATOP || kind_ == OVER;
 }
 
 
