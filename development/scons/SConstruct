@@ -2297,13 +2297,13 @@ if build_po:
     if env.has_key('languages'):
         languages = env.make_list(env['lanauges'])
     # use defulat msgfmt
+    gmo_files = []
     if not env['MSGFMT']:
         print 'msgfmt does not exist. Can not process po files'
     else:
         # create a builder
         env['BUILDERS']['Transfiles'] = Builder(action='$MSGFMT $SOURCE -o $TARGET',suffix='.gmo',src_suffix='.po')
         #
-        gmo_files = []
         for f in transfiles:
             # get filename
             fname = os.path.split(f)[1]
