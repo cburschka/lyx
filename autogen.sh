@@ -36,14 +36,14 @@ test "$autoversion" != "" && {
     echo "LyX requires autoconf >= 2.52"
     exit 1
 }
-	    
+
 case $autoversion in
-    *' '2.5[2-9])
+    *' '2.5[2-9] | *' '2.60)
 	EXTRA_ACINCLUDE_FILES="lyxinclude25x.m4"
 	;;
     *)
 	echo "This autoconf version is not supported by LyX."
-	echo "LyX only supports autoconf 2.5[2-9]."
+	echo "LyX only supports autoconf 2.5[2-9] | 2.60."
 	exit 1
 	;;
 esac
