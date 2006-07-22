@@ -26,7 +26,7 @@ case $automake_version in
         exit 1
         ;;
 esac
-							
+
 # Discover what version of autoconf we are using.
 autoversion=`$AUTOCONF --version 2>/dev/null | head -n 1`
 
@@ -38,12 +38,12 @@ test "$autoversion" != "" && {
 }
 
 case $autoversion in
-    *' '2.5[2-9] | *' '2.60)
+    *' '2.5[2-9])
 	EXTRA_ACINCLUDE_FILES="lyxinclude25x.m4"
 	;;
     *)
 	echo "This autoconf version is not supported by LyX."
-	echo "LyX only supports autoconf 2.5[2-9] | 2.60."
+	echo "LyX only supports autoconf 2.5[2-9]."
 	exit 1
 	;;
 esac
