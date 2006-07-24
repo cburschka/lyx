@@ -756,10 +756,17 @@ void LaTeX::deplog(DepTable & head)
 	static regex reg3("No file ([^ ]+)\\..*");
 	static regex reg4("\\\\openout[0-9]+.*=.*`([^ ]+)'\\..*");
 	// If an index should be created, MikTex does not write a line like
-	//    \openout# = 'sample,idx'.
-	// but intstead only a line like this into the log:
+	//    \openout# = 'sample.idx'.
+	// but instead only a line like this into the log:
 	//   Writing index file sample.idx
 	static regex reg5("Writing index file ([^ ]+).*");
+	// If a toc should be created, MikTex does not write a line like
+	//    \openout# = `sample.toc'.
+	// but only a line like this into the log:
+	//    \tf@toc=\write#
+	// This line is also written by tetex.
+	// This line is not present if no toc should be created.
+	static regex miktexTocReg("\\\\tf@toc=\\\\write.*");
 
 	ifstream ifs(logfile.c_str());
 	while (ifs) {
@@ -793,15 +800,16 @@ void LaTeX::deplog(DepTable & head)
 				first = what[0].second;
 				handleFoundFile(what.str(1), head);
 			}
-		} else if (regex_match(token, sub, reg2)) {
+		} else if (regex_match(token, sub, reg2))
 			handleFoundFile(sub.str(1), head);
-		} else if (regex_match(token, sub, reg3)) {
+		else if (regex_match(token, sub, reg3))
 			handleFoundFile(sub.str(1), head);
-		} else if (regex_match(token, sub, reg4)) {
+		else if (regex_match(token, sub, reg4))
 			handleFoundFile(sub.str(1), head);
-		} else if (regex_match(token, sub, reg5)) {
+		else if (regex_match(token, sub, reg5))
 			handleFoundFile(sub.str(1), head);
-		}
+		else if (regex_match(token, sub, miktexTocReg))
+			handleFoundFile(changeExtension(file, ".toc"), head);
 	}
 
 	// Make sure that the main .tex file is in the dependancy file.
