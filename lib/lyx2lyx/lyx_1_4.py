@@ -21,14 +21,69 @@
 import re
 from os import access, F_OK
 import os.path
-from parser_tools import find_token, find_end_of_inset, get_next_paragraph, \
-                         get_paragraph, get_value, del_token, is_nonempty_line,\
-                         find_tokens, find_end_of, find_token_exact, find_tokens_exact,\
-                         find_re, get_layout
+from parser_tools import check_token, find_token, \
+                         get_value, del_token, is_nonempty_line, \
+                         find_tokens, find_end_of, find_beginning_of, find_token_exact, find_tokens_exact, \
+                         find_re, find_tokens_backwards
 from sys import stdin
 from string import replace, split, find, strip, join
 
 from lyx_0_12 import update_latexaccents
+
+####################################################################
+# Private helper functions
+
+def get_layout(line, default_layout):
+    tokens = split(line)
+    if len(tokens) > 1:
+        return tokens[1]
+    return default_layout
+
+
+def get_paragraph(lines, i, format):
+    "Finds the paragraph that contains line i."
+
+    if format < 225:
+        begin_layout = "\\layout"
+    else:
+        begin_layout = "\\begin_layout"
+    while i != -1:
+        i = find_tokens_backwards(lines, ["\\end_inset", begin_layout], i)
+        if i == -1: return -1
+        if check_token(lines[i], begin_layout):
+            return i
+        i = find_beginning_of_inset(lines, i)
+    return -1
+
+
+def find_beginning_of_inset(lines, i):
+    return find_beginning_of(lines, i, "\\begin_inset", "\\end_inset")
+
+
+def get_next_paragraph(lines, i, format):
+    "Finds the paragraph after the paragraph that contains line i."
+
+    if format < 225:
+        tokens = ["\\begin_inset", "\\layout", "\\end_float", "\\the_end"]
+    elif format < 236:
+        tokens = ["\\begin_inset", "\\begin_layout", "\\end_float", "\\end_document"]
+    else:
+        tokens = ["\\begin_inset", "\\begin_layout", "\\end_float", "\\end_body", "\\end_document"]
+    while i != -1:
+        i = find_tokens(lines, tokens, i)
+        if not check_token(lines[i], "\\begin_inset"):
+            return i
+        i = find_end_of_inset(lines, i)
+    return -1
+
+
+def find_end_of_inset(lines, i):
+    "Finds the matching \end_inset"
+    return find_end_of(lines, i, "\\begin_inset", "\\end_inset")
+
+# End of helper functions
+####################################################################
+
 
 ##
 # Remove \color default

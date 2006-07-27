@@ -18,8 +18,19 @@
 
 import re
 import string
-from parser_tools import find_token, find_token_backwards, find_re, get_layout
+from parser_tools import find_token, find_token_backwards, find_re
 
+####################################################################
+# Private helper functions
+
+def get_layout(line, default_layout):
+    tokens = string.split(line)
+    if len(tokens) > 1:
+        return tokens[1]
+    return default_layout
+
+
+####################################################################
 
 math_env = ["\\[","\\begin{eqnarray*}","\\begin{eqnarray}","\\begin{equation}"]
 

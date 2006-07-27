@@ -111,13 +111,6 @@ def get_value(lines, token, start, end = 0):
         return ""
 
 
-def get_layout(line, default_layout):
-    tokens = string.split(line)
-    if len(tokens) > 1:
-        return tokens[1]
-    return default_layout
-
-
 def del_token(lines, token, start, end):
     k = find_token_exact(lines, token, start, end)
     if k == -1:
@@ -125,37 +118,6 @@ def del_token(lines, token, start, end):
     else:
         del lines[k]
         return end - 1
-
-
-# Finds the paragraph that contains line i.
-def get_paragraph(lines, i, format):
-    if format < 225:
-        begin_layout = "\\layout"
-    else:
-        begin_layout = "\\begin_layout"
-    while i != -1:
-        i = find_tokens_backwards(lines, ["\\end_inset", begin_layout], i)
-        if i == -1: return -1
-        if check_token(lines[i], begin_layout):
-            return i
-        i = find_beginning_of_inset(lines, i)
-    return -1
-
-
-# Finds the paragraph after the paragraph that contains line i.
-def get_next_paragraph(lines, i, format):
-    if format < 225:
-        tokens = ["\\begin_inset", "\\layout", "\\end_float", "\\the_end"]
-    elif format < 236:
-        tokens = ["\\begin_inset", "\\begin_layout", "\\end_float", "\\end_document"]
-    else:
-        tokens = ["\\begin_inset", "\\begin_layout", "\\end_float", "\\end_body", "\\end_document"]
-    while i != -1:
-        i = find_tokens(lines, tokens, i)
-        if not check_token(lines[i], "\\begin_inset"):
-            return i
-        i = find_end_of_inset(lines, i)
-    return -1
 
 
 def find_end_of(lines, i, start_token, end_token):
@@ -184,36 +146,6 @@ def find_beginning_of(lines, i, start_token, end_token):
         if count == 0:
             return i
     return -1
-
-
-# Finds the matching \end_inset
-def find_end_of_inset(lines, i):
-    return find_end_of(lines, i, "\\begin_inset", "\\end_inset")
-
-
-# Finds the matching \end_inset
-def find_beginning_of_inset(lines, i):
-    return find_beginning_of(lines, i, "\\begin_inset", "\\end_inset")
-
-
-def find_end_of_tabular(lines, i):
-    return find_end_of(lines, i, "<lyxtabular", "</lyxtabular")
-
-
-def get_tabular_lines(lines, i):
-    result = []
-    i = i+1
-    j = find_end_of_tabular(lines, i)
-    if j == -1:
-        return []
-
-    while i <= j:
-        if check_token(lines[i], "\\begin_inset"):
-            i = find_end_of_inset(lines, i)+1
-        else:
-            result.append(i)
-            i = i+1
-    return result
 
 
 def is_nonempty_line(line):

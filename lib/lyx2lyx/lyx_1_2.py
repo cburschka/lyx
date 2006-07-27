@@ -20,10 +20,77 @@
 import string
 import re
 
-from parser_tools import find_token, find_token_backwards, get_next_paragraph,\
-                         find_tokens, find_end_of_inset, find_re, \
-                         is_nonempty_line, get_paragraph, find_nonempty_line, \
-                         get_value, get_tabular_lines, check_token, get_layout
+from parser_tools import find_token, find_token_backwards, \
+                         find_tokens,  find_tokens_backwards, find_beginning_of, find_end_of, find_re, \
+                         is_nonempty_line, find_nonempty_line, \
+                         get_value, check_token
+
+####################################################################
+# Private helper functions
+
+def get_layout(line, default_layout):
+    tokens = string.split(line)
+    if len(tokens) > 1:
+        return tokens[1]
+    return default_layout
+
+
+# Finds the paragraph that contains line i.
+def get_paragraph(lines, i, format):
+    begin_layout = "\\layout"
+
+    while i != -1:
+        i = find_tokens_backwards(lines, ["\\end_inset", begin_layout], i)
+        if i == -1: return -1
+        if check_token(lines[i], begin_layout):
+            return i
+        i = find_beginning_of_inset(lines, i)
+    return -1
+
+
+# Finds the paragraph after the paragraph that contains line i.
+def get_next_paragraph(lines, i, format):
+    tokens = ["\\begin_inset", "\\layout", "\\end_float", "\\the_end"]
+
+    while i != -1:
+        i = find_tokens(lines, tokens, i)
+        if not check_token(lines[i], "\\begin_inset"):
+            return i
+        i = find_end_of_inset(lines, i)
+    return -1
+
+
+def find_beginning_of_inset(lines, i):
+    return find_beginning_of(lines, i, "\\begin_inset", "\\end_inset")
+
+
+# Finds the matching \end_inset
+def find_end_of_inset(lines, i):
+    return find_end_of(lines, i, "\\begin_inset", "\\end_inset")
+
+
+def find_end_of_tabular(lines, i):
+    return find_end_of(lines, i, "<lyxtabular", "</lyxtabular")
+
+
+def get_tabular_lines(lines, i):
+    result = []
+    i = i+1
+    j = find_end_of_tabular(lines, i)
+    if j == -1:
+        return []
+
+    while i <= j:
+        if check_token(lines[i], "\\begin_inset"):
+            i = find_end_of_inset(lines, i)+1
+        else:
+            result.append(i)
+            i = i+1
+    return result
+
+# End of helper functions
+####################################################################
+
 
 floats = {
     "footnote": ["\\begin_inset Foot",

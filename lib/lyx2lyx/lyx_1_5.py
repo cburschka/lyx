@@ -18,8 +18,18 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 import re
-from parser_tools import find_token, find_token_exact, find_tokens, find_end_of_inset, get_value
+from parser_tools import find_token, find_token_exact, find_tokens, find_end_of, get_value
 from string import replace
+
+
+####################################################################
+# Private helper functions
+
+def find_end_of_inset(lines, i):
+    return find_end_of(lines, i, "\\begin_inset", "\\end_inset")
+
+# End of helper functions
+####################################################################
 
 
 ##

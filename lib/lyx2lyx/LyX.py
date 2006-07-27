@@ -17,7 +17,7 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 from parser_tools import get_value, check_token, find_token,\
-     find_tokens, find_end_of, find_end_of_inset
+     find_tokens, find_end_of
 import os.path
 import gzip
 import sys
@@ -29,6 +29,16 @@ import lyx2lyx_version
 version_lyx2lyx = lyx2lyx_version.version
 
 default_debug_level = 2
+
+####################################################################
+# Private helper functions
+
+def find_end_of_inset(lines, i):
+    return find_end_of(lines, i, "\\begin_inset", "\\end_inset")
+
+# End of helper functions
+####################################################################
+
 
 # Regular expressions used
 format_re = re.compile(r"(\d)[\.,]?(\d\d)")
@@ -230,6 +240,7 @@ class LyX_Base:
             except:
                 self.input = open(input)
         else:
+            self.dir = ''
             self.input = sys.stdin
 
 

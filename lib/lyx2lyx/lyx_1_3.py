@@ -19,8 +19,19 @@
 
 import string
 import re
-from parser_tools import find_token, find_end_of_inset, get_value,\
+from parser_tools import find_token, find_end_of, get_value,\
                          find_token_exact, del_token
+
+####################################################################
+# Private helper functions
+
+def find_end_of_inset(lines, i):
+    "Finds the matching \end_inset"
+    return find_end_of(lines, i, "\\begin_inset", "\\end_inset")
+
+# End of helper functions
+####################################################################
+
 
 def change_insetgraphics(file):
     lines = file.body
