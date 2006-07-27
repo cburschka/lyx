@@ -140,8 +140,7 @@ void lyx_gui::parse_lyxrc()
 }
 
 
-int lyx_gui::start(string const & batch, std::vector<string> const & files,
-		   unsigned int width, unsigned int height,
+LyXView * lyx_gui::create_view(unsigned int width, unsigned int height,
 		   int /*posx*/, int /*posy*/, bool)
 {
 	int view_id = theApp->gui().newView(width, height);
@@ -153,18 +152,21 @@ int lyx_gui::start(string const & batch, std::vector<string> const & files,
 	view.show();
 	view.init();
 
+	return &view;
+}
+
+
+int lyx_gui::start(LyXView * view, string const & batch)
+{
 	// FIXME: server code below needs moving
 
-	lyxserver = new LyXServer(&view.getLyXFunc(), lyxrc.lyxpipes);
-	lyxsocket = new LyXServerSocket(&view.getLyXFunc(),
+	lyxserver = new LyXServer(&view->getLyXFunc(), lyxrc.lyxpipes);
+	lyxsocket = new LyXServerSocket(&view->getLyXFunc(),
 			  os::internal_path(package().temp_dir() + "/lyxsocket"));
-
-	for_each(files.begin(), files.end(),
-		 bind(&LyXView::loadLyXFile, &view, _1, true));
 
 	// handle the batch commands the user asked for
 	if (!batch.empty()) {
-		view.getLyXFunc().dispatch(lyxaction.lookupFunc(batch));
+		view->getLyXFunc().dispatch(lyxaction.lookupFunc(batch));
 	}
 
 	theApp->run();

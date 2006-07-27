@@ -233,8 +233,8 @@ void parse_lyxrc()
 {}
 
 
-int start(string const & batch, vector<string> const & files,
-          unsigned int width, unsigned int height, int posx, int posy, bool maximize)
+LyXView* create_view(unsigned int width, unsigned int height, int posx, int posy,
+	      bool maximize)
 {
 	// this can't be done before because it needs the Languages object
 	initEncodings();
@@ -258,18 +258,21 @@ int start(string const & batch, vector<string> const & files,
 	} else
 		view.show();
 
+	return &view;
+}
+
+
+int start(LyXView * view, string const & batch)
+{
 	// FIXME: some code below needs moving
 
-	lyxserver = new LyXServer(&view.getLyXFunc(), lyxrc.lyxpipes);
-	lyxsocket = new LyXServerSocket(&view.getLyXFunc(),
+	lyxserver = new LyXServer(&view->getLyXFunc(), lyxrc.lyxpipes);
+	lyxsocket = new LyXServerSocket(&view->getLyXFunc(),
 			  os::internal_path(package().temp_dir() + "/lyxsocket"));
-
-	for_each(files.begin(), files.end(),
-		 bind(&LyXView::loadLyXFile, &view, _1, true));
 
 	// handle the batch commands the user asked for
 	if (!batch.empty()) {
-		view.getLyXFunc().dispatch(lyxaction.lookupFunc(batch));
+		view->getLyXFunc().dispatch(lyxaction.lookupFunc(batch));
 	}
 
 	int const status = qApp->exec();

@@ -27,6 +27,7 @@ class LyXComm;
 class LyXDataSocket;
 class LyXServerSocket;
 class FuncRequest;
+class LyXView;
 namespace lyx {
 struct RGBColor;
 }
@@ -53,12 +54,16 @@ std::string const typewriter_font_name();
 void parse_lyxrc();
 
 /**
- * Start the main event loop, after executing the given
- * batch commands, and loading the given documents
+ * Create the main window with given geometry settings
  */
-int start(std::string const & batch, std::vector<std::string> const & files,
-          unsigned int width, unsigned int height, int posx, int posy,
-          bool maximize);
+LyXView * create_view(unsigned int width, unsigned int height, int posx, int posy,
+	      bool maximize);
+
+/**
+ * Start the main event loop, after executing the given
+ * batch commands
+ */
+int start(LyXView* view, std::string const & batch);
 
 /**
  * Enter the main event loop (\sa LyX::exec2)

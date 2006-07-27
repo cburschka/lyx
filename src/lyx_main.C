@@ -259,14 +259,6 @@ int LyX::exec2(int & argc, char * argv[])
 	if (first_start)
 		files.push_back(i18nLibFileSearch("examples", "splash.lyx"));
 
-	// if a file is specified, I assume that user wants to edit *that* file
-	if (files.empty() && lyxrc.load_session) {
-		vector<string> const & lastopened = session_->lastOpenedFiles();
-		files.insert(files.end(), lastopened.begin(), lastopened.end()  );
-	}
-	// clear this list to save a few bytes of RAM
-	session_->clearLastOpenedFiles();
-
 	// Execute batch commands if available
 	if (!batch_command.empty()) {
 
@@ -355,9 +347,26 @@ int LyX::exec2(int & argc, char * argv[])
 			width = 0;
 			height = 0;
 		}
+		// create the main window
+		LyXView * view = lyx_gui::create_view(width, height, posx, posy, maximize);
+		
+		// load files
+		for_each(files.begin(), files.end(),
+			bind(&LyXView::loadLyXFile, view, _1, true));
 
-		return lyx_gui::start(batch_command, files, width, height, posx, posy, maximize);
+		// if a file is specified, I assume that user wants to edit *that* file
+		if (files.empty() && lyxrc.load_session) {
+			vector<string> const & lastopened = session_->lastOpenedFiles();
+			// do not add to the lastfile list since these files are restored from
+			// last seesion, and should be already there (regular files), or should
+			// not be added at all (help files).
+			for_each(lastopened.begin(), lastopened.end(),
+				bind(&LyXView::loadLyXFile, view, _1, false));
+		}
+		// clear this list to save a few bytes of RAM
+		session_->clearLastOpenedFiles();
 
+		return lyx_gui::start(view, batch_command);
 	} else {
 		// Something went wrong above
 		quitLyX(false);
