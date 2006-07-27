@@ -118,13 +118,13 @@ def get_layout(line, default_layout):
     return default_layout
 
 
-def del_token(lines, token, i, j):
-    k = find_token_exact(lines, token, i, j)
+def del_token(lines, token, start, end):
+    k = find_token_exact(lines, token, start, end)
     if k == -1:
-        return j
+        return end
     else:
         del lines[k]
-        return j-1
+        return end - 1
 
 
 # Finds the paragraph that contains line i.
