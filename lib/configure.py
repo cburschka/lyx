@@ -553,9 +553,14 @@ def checkLatexConfig(check_config, bool_docbook, bool_linuxdoc):
         cl.close()
         #
         # we have chklayouts.tex, then process it
-        for line in cmdOutput(LATEX + ' wrap_chkconfig.ltx').splitlines():
+        fout = os.popen(LATEX + ' wrap_chkconfig.ltx')
+        while True:
+            line = fout.readline()
+            if not line:
+                break;
             if re.match('^\+', line):
-                print line
+                print line,
+        fout.close()
         #
         # currently, values in chhkconfig are only used to set
         # \font_encoding
