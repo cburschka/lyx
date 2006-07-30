@@ -142,6 +142,42 @@ EOF
 dnl start here
 AC_DEFUN([QT4_DO_IT_ALL],
 [
+        dnl Check if it possible to do a pgk-config
+        PKG_PROG_PKG_CONFIG
+        if test -n "$PKG_CONFIG" ; then
+                QT4_DO_PKG_CONFIG
+        else
+                QT4_DO_MANUAL_CONFIG
+        fi
+])
+
+AC_DEFUN([QT4_DO_PKG_CONFIG],
+[
+        PKG_CHECK_MODULES(QT4_FRONTEND, QtCore QtGui)
+        if test "$pkg_failed" == "no" ; then
+                QT4_INCLUDES=$QT4_FRONTEND_CFLAGS
+                dnl QT4_LDFLAGS=$QT4_FRONTEND_LIBS
+                QT4_LDFLAGS=`$PKG_CONFIG --libs-only-L QtCore QtGui`
+        	AC_SUBST(QT4_INCLUDES)
+	        AC_SUBST(QT4_LDFLAGS)
+                QT4_VERSION=`$PKG_CONFIG --modversion QtCore`
+        	AC_SUBST(QT4_VERSION)
+                QT4_LIB=`$PKG_CONFIG --libs-only-l QtCore QtGui`
+                AC_SUBST(QT4_LIB)
+        	QT4_CPPFLAGS="-DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR -DQT_NO_STL -DQT3_SUPPORT -DQT_NO_KEYWORDS"
+	        case ${host} in
+	                *mingw*) QT4_CPPFLAGS="-DQT_DLL $QT4_CPPFLAGS";;
+	        esac
+	        AC_SUBST(QT4_CPPFLAGS)
+                AC_CHECK_PROGS(MOC4, moc-qt4 moc)
+                AC_CHECK_PROGS(UIC4, uic-qt4 uic)
+        else
+                QT4_DO_MANUAL_CONFIG
+        fi
+])
+
+AC_DEFUN([QT4_DO_MANUAL_CONFIG],
+[
 	dnl this variable is precious
 	AC_ARG_VAR(QT4DIR, [the place where the Qt 4 files are, e.g. /usr/lib/qt4])
 
