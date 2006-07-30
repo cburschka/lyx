@@ -180,6 +180,14 @@ void QPrefs::apply()
 	rc.bind_file = internal_path(uimod->bindFileED->text());
 	rc.use_lastfilepos = uimod->restoreCursorCB->isChecked();
 	rc.load_session = uimod->loadSessionCB->isChecked();
+	if (uimod->loadWindowSizeCB->isChecked()) {
+		rc.geometry_width = 0;
+		rc.geometry_height = 0;
+	} else {
+		rc.geometry_width = uimod->windowWidthSB->value();
+		rc.geometry_height = uimod->windowHeightSB->value();
+	}
+	rc.geometry_xysaved = uimod->loadWindowLocationCB->isChecked();
 	rc.cursor_follows_scrollbar = uimod->cursorFollowsCB->isChecked();
 	rc.autosave = uimod->autoSaveSB->value() * 60;
 	rc.make_backup = uimod->autoSaveCB->isChecked();
@@ -508,6 +516,17 @@ void QPrefs::update_contents()
 	uimod->bindFileED->setText(external_path(rc.bind_file));
 	uimod->restoreCursorCB->setChecked(rc.use_lastfilepos);
 	uimod->loadSessionCB->setChecked(rc.load_session);
+	bool loadWindowSize = rc.geometry_width == 0 && rc.geometry_height == 0;
+	uimod->loadWindowSizeCB->setChecked(loadWindowSize);
+	uimod->windowWidthSB->setEnabled(!loadWindowSize);
+	uimod->windowHeightSB->setEnabled(!loadWindowSize);
+	uimod->windowWidthLA->setEnabled(!loadWindowSize);
+	uimod->windowHeightLA->setEnabled(!loadWindowSize);
+	if (!loadWindowSize) {
+		uimod->windowWidthSB->setValue(rc.geometry_width);
+		uimod->windowHeightSB->setValue(rc.geometry_height);
+	}
+	uimod->loadWindowLocationCB->setChecked(rc.geometry_xysaved);
 	uimod->cursorFollowsCB->setChecked(rc.cursor_follows_scrollbar);
 	// convert to minutes
 	int mins(rc.autosave / 60);

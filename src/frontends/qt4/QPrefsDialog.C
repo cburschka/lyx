@@ -1695,6 +1695,22 @@ PrefUserInterface::PrefUserInterface(QPrefs * form, QWidget * parent)
 		this, SIGNAL(changed()));
 	connect(loadSessionCB, SIGNAL(toggled(bool)),
 		this, SIGNAL(changed()));
+	connect(loadWindowSizeCB, SIGNAL(toggled(bool)), 
+		this, SIGNAL(changed()));
+	connect(loadWindowSizeCB, SIGNAL(toggled(bool)), 
+		windowWidthLA, SLOT(setDisabled(bool)));
+	connect(loadWindowSizeCB, SIGNAL(toggled(bool)), 
+		windowHeightLA, SLOT(setDisabled(bool)));
+	connect(loadWindowSizeCB, SIGNAL(toggled(bool)), 
+		windowWidthSB, SLOT(setDisabled(bool)));
+	connect(loadWindowSizeCB, SIGNAL(toggled(bool)), 
+		windowHeightSB, SLOT(setDisabled(bool)));
+	connect(loadWindowLocationCB, SIGNAL(toggled(bool)), 
+		this, SIGNAL(changed()));
+	connect(windowWidthSB, SIGNAL(valueChanged(int)), 
+		this, SIGNAL(changed()));
+	connect(windowHeightSB, SIGNAL(valueChanged(int)), 
+		this, SIGNAL(changed()));
 	connect(cursorFollowsCB, SIGNAL(toggled(bool)),
 		this, SIGNAL(changed()));
 	connect(autoSaveSB, SIGNAL(valueChanged(int)),
@@ -1713,6 +1729,14 @@ void PrefUserInterface::apply(LyXRC & rc) const
 	rc.bind_file = internal_path(bindFileED->text());
 	rc.use_lastfilepos = restoreCursorCB->isChecked();
 	rc.load_session = loadSessionCB->isChecked();
+	if (loadWindowSizeCB->isChecked()) {
+		rc.geometry_width = 0;
+		rc.geometry_height = 0;
+	} else {
+		rc.geometry_width = windowWidthSB->value();
+		rc.geometry_height = windowHeightSB->value();
+	}
+	rc.geometry_xysaved = loadWindowLocationCB->isChecked();
 	rc.cursor_follows_scrollbar = cursorFollowsCB->isChecked();
 	rc.autosave = autoSaveSB->value() * 60;
 	rc.make_backup = autoSaveCB->isChecked();
@@ -1726,6 +1750,17 @@ void PrefUserInterface::update(LyXRC const & rc)
 	bindFileED->setText(external_path(rc.bind_file));
 	restoreCursorCB->setChecked(rc.use_lastfilepos);
 	loadSessionCB->setChecked(rc.load_session);
+	bool loadWindowSize = rc.geometry_width == 0 && rc.geometry_height == 0;
+	loadWindowSizeCB->setChecked(loadWindowSize);
+	windowWidthSB->setEnabled(!loadWindowSize);
+	windowHeightSB->setEnabled(!loadWindowSize);
+	windowWidthLA->setEnabled(!loadWindowSize);
+	windowHeightLA->setEnabled(!loadWindowSize);
+	if (!loadWindowSize) {
+		windowWidthSB->setValue(rc.geometry_width);
+		windowHeightSB->setValue(rc.geometry_height);
+	}
+	loadWindowLocationCB->setChecked(rc.geometry_xysaved);
 	cursorFollowsCB->setChecked(rc.cursor_follows_scrollbar);
 	// convert to minutes
 	int mins(rc.autosave / 60);

@@ -233,6 +233,10 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	connect(uiModule->bindFileED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(uiModule->restoreCursorCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 	connect(uiModule->loadSessionCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(uiModule->loadWindowSizeCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(uiModule->loadWindowLocationCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(uiModule->windowWidthSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
+	connect(uiModule->windowHeightSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
 	connect(uiModule->cursorFollowsCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 	connect(uiModule->autoSaveSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
 	connect(uiModule->autoSaveCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
