@@ -377,6 +377,7 @@ void GWorkArea::onScroll()
 
 	double val = vscrollbar_.get_adjustment()->get_value();
 	view_.view()->scrollDocView(static_cast<int>(val));
+	view_.workArea()->redraw();
 	adjusting_ = false;
 }
 
@@ -422,7 +423,7 @@ bool GWorkArea::onButtonPress(GdkEventButton * event)
 	default:
 		break;
 	}
-	view_.view()->workAreaDispatch(FuncRequest(ka,
+	view_.workArea()->dispatch(FuncRequest(ka,
 			     static_cast<int>(event->x),
 			     static_cast<int>(event->y),
 			     gButtonToLyx(event->button)));
@@ -433,7 +434,7 @@ bool GWorkArea::onButtonPress(GdkEventButton * event)
 
 bool GWorkArea::onButtonRelease(GdkEventButton * event)
 {
-	view_.view()->workAreaDispatch(FuncRequest(LFUN_MOUSE_RELEASE,
+	view_.workArea()->dispatch(FuncRequest(LFUN_MOUSE_RELEASE,
 			     static_cast<int>(event->x),
 			     static_cast<int>(event->y),
 			     gButtonToLyx(event->button)));
@@ -458,7 +459,7 @@ bool GWorkArea::onMotionNotify(GdkEventMotion * event)
 		}
 		timeBefore = event->time;
 	}
-	view_.view()->workAreaDispatch(FuncRequest(LFUN_MOUSE_MOTION,
+	view_.workArea()->dispatch(FuncRequest(LFUN_MOUSE_MOTION,
 			     static_cast<int>(event->x),
 			     static_cast<int>(event->y),
 			     gtkButtonState(event->state)));

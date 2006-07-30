@@ -162,15 +162,17 @@ void QContentPane::generateSyntheticMouseEvent()
 		synthetic_mouse_event_.scrollbar_value_old = scrollbar_value;
 
 		// ... and dispatch the event to the LyX core.
-		wa_->view().view()->workAreaDispatch(synthetic_mouse_event_.cmd);
+		wa_->view().workArea()->dispatch(synthetic_mouse_event_.cmd);
 	}
 }
 
 
 void QContentPane::scrollBarChanged(int val)
 {
-	if (track_scrollbar_)
+	if (track_scrollbar_) {
 		wa_->view().view()->scrollDocView(val);
+		wa_->view().workArea()->redraw();
+	}
 }
 
 
@@ -181,13 +183,13 @@ void QContentPane::mousePressEvent(QMouseEvent * e)
 		FuncRequest cmd(LFUN_MOUSE_TRIPLE,
 			dc_event_.x, dc_event_.y,
 			q_button_state(dc_event_.state));
-		wa_->view().view()->workAreaDispatch(cmd);
+		wa_->view().workArea()->dispatch(cmd);
 		return;
 	}
 
 	FuncRequest const cmd(LFUN_MOUSE_PRESS, e->x(), e->y(),
 			      q_button_state(e->button()));
-	wa_->view().view()->workAreaDispatch(cmd);
+	wa_->view().workArea()->dispatch(cmd);
 }
 
 
@@ -198,7 +200,7 @@ void QContentPane::mouseReleaseEvent(QMouseEvent * e)
 
 	FuncRequest const cmd(LFUN_MOUSE_RELEASE, e->x(), e->y(),
 			      q_button_state(e->button()));
-	wa_->view().view()->workAreaDispatch(cmd);
+	wa_->view().workArea()->dispatch(cmd);
 }
 
 
@@ -258,7 +260,7 @@ void QContentPane::mouseMoveEvent(QMouseEvent * e)
 		synthetic_mouse_event_.scrollbar_value_old = scrollbar_value;
 
 		// ... and dispatch the event to the LyX core.
-		wa_->view().view()->workAreaDispatch(cmd);
+		wa_->view().workArea()->dispatch(cmd);
 	}
 }
 
@@ -317,7 +319,7 @@ void QContentPane::doubleClickTimeout()
 	FuncRequest cmd(LFUN_MOUSE_DOUBLE,
 		dc_event_.x, dc_event_.y,
 		q_button_state(dc_event_.state));
-	wa_->view().view()->workAreaDispatch(cmd);
+	wa_->view().workArea()->dispatch(cmd);
 }
 
 

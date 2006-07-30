@@ -105,9 +105,11 @@ protected:
 	/// cause the display of the given area of the work area
 	virtual void expose(int x, int y, int w, int h) = 0;
 
-	///
+public:
+	/// FIXME: This is public because of qt3 and gtk, should be protected
 	void dispatch(FuncRequest const & cmd0);
 
+protected:
 	///
 	void resizeBufferView();
 
