@@ -240,6 +240,9 @@ def checkFormatEntries():
 \Format linuxdoc   sgml    LinuxDoc               x  ""	"%%"	"document"
 \Format pdflatex   tex    "LaTeX (pdflatex)"      "" ""	"%%"	"document"
 \Format text       txt    "Plain text"            a  ""	"%%"	"document"
+\Format text2      txt    "Plain text (pstotext)" "" ""	"%%"	"document"
+\Format text3      txt    "Plain text (ps2ascii)" "" ""	"%%"	"document"
+\Format text4      txt    "Plain text (catdvi)"   "" ""	"%%"	"document"
 \Format textparagraph txt "Plain text (paragraphs)"    "" ""	"%%"	"document"''' ])
     #
     #checkProg('a Postscript interpreter', ['gs'],
@@ -324,6 +327,15 @@ def checkConverterEntries():
     #
     checkProg('a PS to PDF converter', ['ps2pdf13 $$i $$o'],
         rc_entry = [ r'\converter ps         pdf        "%%"	""' ])
+    #
+    checkProg('a PS to TXT converter', ['pstotext $$i > $$o'],
+        rc_entry = [ r'\converter ps         text2      "%%"	""' ])
+    #
+    checkProg('a PS to TXT converter', ['ps2ascii $$i $$o'],
+        rc_entry = [ r'\converter ps         text3      "%%"	""' ])
+    #
+    checkProg('a DVI to TXT converter', ['catdvi $$i > $$o'],
+        rc_entry = [ r'\converter dvi        text4      "%%"	""' ])
     #
     checkProg('a DVI to PS converter', ['dvips -o $$o $$i'],
         rc_entry = [ r'\converter dvi        ps         "%%"	""' ])

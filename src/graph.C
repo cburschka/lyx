@@ -77,9 +77,14 @@ Graph::getReachable(int from, bool only_viewable,
 		int const i = Q_.front();
 		Q_.pop();
 		Format const & format = formats.get(i);
-		if (!only_viewable || !format.viewer().empty() ||
-		    format.isChildFormat())
+		if (!only_viewable || !format.viewer().empty())
 			result.push_back(i);
+		else if (format.isChildFormat()) {
+			Format const * const parent =
+				formats.getFormat(format.parentFormat());
+			if (parent && !parent->viewer().empty())
+				result.push_back(i);
+		}
 
 		vector<int>::const_iterator cit =
 			vertices_[i].out_vertices.begin();
