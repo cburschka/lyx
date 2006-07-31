@@ -146,6 +146,8 @@ string MathFracInset::name() const
 	case ATOP:
 		return "atop";
 	}
+	// shut up stupid compiler
+	return string();
 }
 
 
