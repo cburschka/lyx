@@ -48,7 +48,8 @@ original_version = re.compile(r"\#LyX (\S*)")
 ##
 # file format information:
 #  file, supported formats, stable release versions
-format_relation = [("0_10",    [210], ["0.10.7","0.10"]),
+format_relation = [("0_08",    [210], ["0.8.%d" % i for i in range(7)] + ["0.8"]),
+                   ("0_10",    [210], ["0.10.7","0.10"]),
                    ("0_12",    [215], ["0.12","0.12.1","0.12"]),
                    ("1_0_0",   [215], ["1.0.0","1.0"]),
                    ("1_0_1",   [215], ["1.0.1","1.0.2","1.0.3","1.0.4", "1.1.2","1.1"]),
