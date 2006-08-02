@@ -266,8 +266,8 @@ def set_paragraph_properties(lines, prop_dict):
 
 
 def update_language(document):
-    " Update document language, if language is default convert it to
-    english."
+    """ Update document language, if language is default convert it to
+    english."""
     header = document.header
     i = find_token(header, "\\language", 0)
     if i == -1:

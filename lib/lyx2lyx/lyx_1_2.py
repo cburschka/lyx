@@ -23,7 +23,7 @@ import string
 import re
 
 from parser_tools import find_token, find_token_backwards, \
-                         find_tokens, find_tokens_backwards,
+                         find_tokens, find_tokens_backwards, \
                          find_beginning_of, find_end_of, find_re, \
                          is_nonempty_line, find_nonempty_line, \
                          get_value, check_token
