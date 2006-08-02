@@ -1,6 +1,6 @@
 # This file is part of lyx2lyx
-# -*- coding: iso-8859-1 -*-
-# Copyright (C) 2002-2004 Dekel Tsur <dekel@lyx.org>, José Matos <jamatos@lyx.org>
+# -*- coding: utf-8 -*-
+# Copyright (C) 2002-2004 Dekel Tsur <dekel@lyx.org>, JosÃ© Matos <jamatos@lyx.org>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -34,6 +34,7 @@ default_debug_level = 2
 # Private helper functions
 
 def find_end_of_inset(lines, i):
+    " Find beginning of inset, where lines[i] is included."
     return find_end_of(lines, i, "\\begin_inset", "\\end_inset")
 
 # End of helper functions
@@ -49,16 +50,16 @@ original_version = re.compile(r"\#LyX (\S*)")
 # file format information:
 #  file, supported formats, stable release versions
 format_relation = [("0_08",    [210], ["0.8.%d" % i for i in range(7)] + ["0.8"]),
-                   ("0_10",    [210], ["0.10.7","0.10"]),
-                   ("0_12",    [215], ["0.12","0.12.1","0.12"]),
+                   ("0_10",    [210], ["0.10.%d" % i for i in range(8)] + ["0.10"]),
+                   ("0_12",    [215], ["0.12.0","0.12.1","0.12"]),
                    ("1_0_0",   [215], ["1.0.0","1.0"]),
                    ("1_0_1",   [215], ["1.0.1","1.0.2","1.0.3","1.0.4", "1.1.2","1.1"]),
                    ("1_1_4",   [215], ["1.1.4","1.1"]),
                    ("1_1_5",   [216], ["1.1.5","1.1.5fix1","1.1.5fix2","1.1"]),
                    ("1_1_6_0", [217], ["1.1.6","1.1.6fix1","1.1.6fix2","1.1"]),
                    ("1_1_6_3", [218], ["1.1.6fix3","1.1.6fix4","1.1"]),
-                   ("1_2",     [220], ["1.2.0","1.2.1","1.2.3","1.2.4","1.2"]),
-                   ("1_3",     [221], ["1.3.0","1.3.1","1.3.2","1.3.3","1.3.4","1.3.5","1.3.6","1.3.7","1.3"]),
+                   ("1_2",     [220], ["1.2.%d" % i for i in range(5)] + ["1.2"]),
+                   ("1_3",     [221], ["1.3.%d" % i for i in range(8)] + ["1.3"]),
                    ("1_4", range(222,246), ["1.4.0", "1.4.1", "1.4.2","1.4.3svn"]),
                    ("1_5", range(246,249), ["1.5.0svn","1.5"])]
 
