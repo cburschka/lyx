@@ -28,7 +28,6 @@ from parser_tools import check_token, find_token, \
                          find_tokens, find_end_of, find_beginning_of, find_token_exact, find_tokens_exact, \
                          find_re, find_tokens_backwards
 from sys import stdin
-from string import replace, split, find, strip, join
 
 from lyx_0_12 import update_latexaccents
 
@@ -37,7 +36,7 @@ from lyx_0_12 import update_latexaccents
 
 def get_layout(line, default_layout):
     " Get layout, if empty return the default layout."
-    tokens = split(line)
+    tokens = line.split()
     if len(tokens) > 1:
         return tokens[1]
     return default_layout
@@ -95,8 +94,8 @@ def remove_color_default(document):
         i = find_token(document.body, "\\color default", i)
         if i == -1:
             return
-        document.body[i] = replace(document.body[i], "\\color default",
-                           "\\color inherit")
+        document.body[i] = document.body[i].replace("\\color default",
+                                                    "\\color inherit")
 
 
 def add_end_header(document):
@@ -118,7 +117,7 @@ def convert_amsmath(document):
     if i == -1:
         document.warning("Malformed LyX document: Missing '\\use_amsmath'.")
         return
-    tokens = split(document.header[i])
+    tokens = document.header[i].split()
     if len(tokens) != 2:
         document.warning("Malformed LyX document: Could not parse line '%s'." % document.header[i])
         use_amsmath = '0'
@@ -139,7 +138,7 @@ def revert_amsmath(document):
     if i == -1:
         document.warning("Malformed LyX document: Missing '\\use_amsmath'.")
         return
-    tokens = split(document.header[i])
+    tokens = document.header[i].split()
     if len(tokens) != 2:
         document.warning("Malformed LyX document: Could not parse line '%s'." % document.header[i])
         use_amsmath = '0'
@@ -157,7 +156,8 @@ def revert_amsmath(document):
 def convert_spaces(document):
     " \SpecialChar ~ -> \InsetSpace ~"
     for i in range(len(document.body)):
-        document.body[i] = replace(document.body[i],"\\SpecialChar ~","\\InsetSpace ~")
+        document.body[i] = document.body[i].replace("\\SpecialChar ~",
+                                                    "\\InsetSpace ~")
 
 
 def revert_spaces(document):
@@ -185,16 +185,20 @@ def rename_spaces(document):
     """ \InsetSpace \, -> \InsetSpace \thinspace{}
         \InsetSpace \space -> \InsetSpace \space{}"""
     for i in range(len(document.body)):
-        document.body[i] = replace(document.body[i],"\\InsetSpace \\space","\\InsetSpace \\space{}")
-        document.body[i] = replace(document.body[i],"\\InsetSpace \,","\\InsetSpace \\thinspace{}")
+        document.body[i] = document.body[i].replace("\\InsetSpace \\space",
+                                                    "\\InsetSpace \\space{}")
+        document.body[i] = document.body[i].replace("\\InsetSpace \,",
+                                                    "\\InsetSpace \\thinspace{}")
 
 
 def revert_space_names(document):
     """ \InsetSpace \thinspace{} -> \InsetSpace \,
          \InsetSpace \space{} -> \InsetSpace \space"""
     for i in range(len(document.body)):
-        document.body[i] = replace(document.body[i],"\\InsetSpace \\space{}","\\InsetSpace \\space")
-        document.body[i] = replace(document.body[i],"\\InsetSpace \\thinspace{}","\\InsetSpace \\,")
+        document.body[i] = document.body[i].replace("\\InsetSpace \\space{}",
+                                                    "\\InsetSpace \\space")
+        document.body[i] = document.body[i].replace("\\InsetSpace \\thinspace{}",
+                                                    "\\InsetSpace \\,")
 
 
 def lyx_support_escape(lab):
@@ -231,15 +235,15 @@ def revert_eqref(document):
 def convert_bibtex(document):
     " Convert BibTeX changes."
     for i in range(len(document.body)):
-        document.body[i] = replace(document.body[i],"\\begin_inset LatexCommand \\BibTeX",
-                                  "\\begin_inset LatexCommand \\bibtex")
+        document.body[i] = document.body[i].replace("\\begin_inset LatexCommand \\BibTeX",
+                                                    "\\begin_inset LatexCommand \\bibtex")
 
 
 def revert_bibtex(document):
     " Revert BibTeX changes."
     for i in range(len(document.body)):
-        document.body[i] = replace(document.body[i], "\\begin_inset LatexCommand \\bibtex",
-                                  "\\begin_inset LatexCommand \\BibTeX")
+        document.body[i] = document.body[i].replace("\\begin_inset LatexCommand \\bibtex",
+                                                    "\\begin_inset LatexCommand \\BibTeX")
 
 
 def remove_insetparent(document):
@@ -297,19 +301,19 @@ def revert_external_1(document):
         if i == -1:
             break
 
-        template = split(document.body[i+1])
+        template = document.body[i+1].split()
         template.reverse()
         del document.body[i+1]
 
-        filename = split(document.body[i+1])
+        filename = document.body[i+1].split()
         filename.reverse()
         del document.body[i+1]
 
-        params = split(document.body[i+1])
+        params = document.body[i+1].split()
         params.reverse()
         if document.body[i+1]: del document.body[i+1]
 
-        document.body[i] = document.body[i] + " " + template[0]+ ', "' + filename[0] + '", " '+ join(params[1:]) + '"'
+        document.body[i] = document.body[i] + " " + template[0]+ ', "' + filename[0] + '", " '+ "".join(params[1:]) + '"'
         i = i + 1
 
 
@@ -388,7 +392,7 @@ def convert_comment(document):
                         i = i + 1
                         continue
 
-                if find(document.body[i], comment) == -1:
+                if document.body[i].find(comment) == -1:
                     document.body[i:i] = ["\\end_inset"]
                     i = i + 1
                     break
@@ -423,7 +427,7 @@ def add_end_layout(document):
                                 "\\begin_deeper", "\\end_deeper", "\\the_end"], i)
 
         if i != -1:
-            token = split(document.body[i])[0]
+            token = document.body[i].split()[0]
         else:
             document.warning("Truncated document.")
             i = len(document.body)
@@ -529,7 +533,7 @@ def layout2begin_layout(document):
         if i == -1:
             return
 
-        document.body[i] = replace(document.body[i], '\\layout', '\\begin_layout')
+        document.body[i] = document.body[i].replace('\\layout', '\\begin_layout')
         i = i + 1
 
 
@@ -541,7 +545,7 @@ def begin_layout2layout(document):
         if i == -1:
             return
 
-        document.body[i] = replace(document.body[i], '\\begin_layout', '\\layout')
+        document.body[i] = document.body[i].replace('\\begin_layout', '\\layout')
         i = i + 1
 
 
@@ -549,7 +553,7 @@ def convert_valignment_middle(body, start, end):
     'valignment="center" -> valignment="middle"'
     for i in range(start, end):
         if re.search('^<(column|cell) .*valignment="center".*>$', body[i]):
-            body[i] = replace(body[i], 'valignment="center"', 'valignment="middle"')
+            body[i] = body[i].replace('valignment="center"', 'valignment="middle"')
 
 
 def convert_table_valignment_middle(document):
@@ -573,7 +577,7 @@ def revert_table_valignment_middle(body, start, end):
     " valignment, middle -> center"
     for i in range(start, end):
         if re.search('^<(column|cell) .*valignment="middle".*>$', body[i]):
-            body[i] = replace(body[i], 'valignment="middle"', 'valignment="center"')
+            body[i] = body[i].replace('valignment="middle"', 'valignment="center"')
 
 
 def revert_valignment_middle(document):
@@ -665,16 +669,16 @@ parskip}
         # Merge all paragraph parameters into a single line
         # We cannot check for '\\' only because paragraphs may start e.g.
         # with '\\backslash'
-        while document.body[i + 1][:1] == '\\' and split(document.body[i + 1][1:])[0] in par_params:
+        while document.body[i + 1][:1] == '\\' and document.body[i + 1][1:].split()[0] in par_params:
             document.body[i] = document.body[i + 1] + ' ' + document.body[i]
             del document.body[i+1]
 
-        line_top   = find(document.body[i],"\\line_top")
-        line_bot   = find(document.body[i],"\\line_bottom")
-        pb_top     = find(document.body[i],"\\pagebreak_top")
-        pb_bot     = find(document.body[i],"\\pagebreak_bottom")
-        vspace_top = find(document.body[i],"\\added_space_top")
-        vspace_bot = find(document.body[i],"\\added_space_bottom")
+        line_top   = document.body[i].find("\\line_top")
+        line_bot   = document.body[i].find("\\line_bottom")
+        pb_top     = document.body[i].find("\\pagebreak_top")
+        pb_bot     = document.body[i].find("\\pagebreak_bottom")
+        vspace_top = document.body[i].find("\\added_space_top")
+        vspace_bot = document.body[i].find("\\added_space_bottom")
 
         if line_top == -1 and line_bot == -1 and pb_bot == -1 and pb_top == -1 and vspace_top == -1 and vspace_bot == -1:
             continue
@@ -687,9 +691,9 @@ parskip}
         # inherit font sizes.
         nonstandard = 0
         if (not document.is_default_layout(layout) or
-            find(document.body[i],"\\align") != -1 or
-            find(document.body[i],"\\labelwidthstring") != -1 or
-            find(document.body[i],"\\noindent") != -1):
+            document.body[i].find("\\align") != -1 or
+            document.body[i].find("\\labelwidthstring") != -1 or
+            document.body[i].find("\\noindent") != -1):
             nonstandard = 1
 
         # get the font size of the beginning of this paragraph, since we need
@@ -698,29 +702,29 @@ parskip}
         while not is_nonempty_line(document.body[j]):
             j = j + 1
         size_top = ""
-        if find(document.body[j], "\\size") != -1:
-            size_top = split(document.body[j])[1]
+        if document.body[j].find("\\size") != -1:
+            size_top = document.body[j].split()[1]
 
         for tag in "\\line_top", "\\line_bottom", "\\pagebreak_top", "\\pagebreak_bottom":
-            document.body[i] = replace(document.body[i], tag, "")
+            document.body[i] = document.body[i].replace(tag, "")
 
         if vspace_top != -1:
             # the position could be change because of the removal of other
             # paragraph properties above
-            vspace_top = find(document.body[i],"\\added_space_top")
-            tmp_list = split(document.body[i][vspace_top:])
+            vspace_top = document.body[i].find("\\added_space_top")
+            tmp_list = document.body[i][vspace_top:].split()
             vspace_top_value = tmp_list[1]
-            document.body[i] = document.body[i][:vspace_top] + join(tmp_list[2:])
+            document.body[i] = document.body[i][:vspace_top] + "".join(tmp_list[2:])
 
         if vspace_bot != -1:
             # the position could be change because of the removal of other
             # paragraph properties above
-            vspace_bot = find(document.body[i],"\\added_space_bottom")
-            tmp_list = split(document.body[i][vspace_bot:])
+            vspace_bot = document.body[i].find("\\added_space_bottom")
+            tmp_list = document.body[i][vspace_bot:].split()
             vspace_bot_value = tmp_list[1]
-            document.body[i] = document.body[i][:vspace_bot] + join(tmp_list[2:])
+            document.body[i] = document.body[i][:vspace_bot] + "".join(tmp_list[2:])
 
-        document.body[i] = strip(document.body[i])
+        document.body[i] = document.body[i].strip()
         i = i + 1
 
         # Create an empty paragraph or paragraph fragment for line and
@@ -770,10 +774,10 @@ parskip}
             size_bot = size_top
             j = i + 1
             while j < k:
-                if find(document.body[j], "\\size") != -1:
-                    size_bot = split(document.body[j])[1]
+                if document.body[j].find("\\size") != -1:
+                    size_bot = document.body[j].split()[1]
                     j = j + 1
-                elif find(document.body[j], "\\begin_inset") != -1:
+                elif document.body[j].find("\\begin_inset") != -1:
                     # skip insets
                     j = find_end_of_inset(document.body, j)
                 else:
@@ -1139,10 +1143,10 @@ def get_par_params(lines, i):
     # We cannot check for '\\' only because paragraphs may start e.g.
     # with '\\backslash'
     params = ''
-    while lines[i][:1] == '\\' and split(lines[i][1:])[0] in par_params:
-        params = params + ' ' + strip(lines[i])
+    while lines[i][:1] == '\\' and lines[i][1:].split()[0] in par_params:
+        params = params + ' ' + lines[i].strip()
         i = i + 1
-    return strip(params)
+    return params.strip()
 
 
 def lyxsize2latexsize(lyxsize):
@@ -1165,7 +1169,7 @@ def revert_breaks(document):
     if i == -1:
         defskipamount = 'medskip'
     else:
-        defskipamount = split(document.header[i])[1]
+        defskipamount = document.header[i].split()[1]
 
     keys = {"\\begin_inset" : "vspace", "\\lyxline" : "lyxline",
             "\\newpage" : "newpage"}
@@ -1190,12 +1194,12 @@ def revert_breaks(document):
         size = "normal"
         # Paragraph parameters may be on one or more lines.
         # Find the start of the real paragraph text.
-        while document.body[start][:1] == '\\' and split(document.body[start])[0] in params:
+        while document.body[start][:1] == '\\' and document.body[start].split()[0] in params:
             start = start + 1
         for k in range(start, i):
-            if find(document.body[k], "\\size") != -1:
+            if document.body[k].find("\\size") != -1:
                 # store font size
-                size = split(document.body[k])[1]
+                size = document.body[k].split()[1]
             elif is_nonempty_line(document.body[k]):
                 paragraph_start = 0
                 break
@@ -1229,16 +1233,16 @@ def revert_breaks(document):
         while k < next_par:
             if find_tokens(document.body, tokens, k) == k:
                 # inset to convert
-                lines.append(split(document.body[k]))
+                lines.append(document.body[k].split())
                 insets.append(keys[lines[n][0]])
                 del_lines.append([k, k])
                 top.append(0)
                 sizes.append(size)
                 n = n + 1
                 inset_end = k
-            elif find(document.body[k], "\\size") != -1:
+            elif document.body[k].find("\\size") != -1:
                 # store font size
-                size = split(document.body[k])[1]
+                size = document.body[k].split()[1]
             elif find_token(document.body, "\\begin_inset ERT", k) == k:
                 ert_begin = find_token(document.body, "\\layout", k) + 1
                 if ert_begin == 0:
@@ -1320,13 +1324,13 @@ def revert_breaks(document):
                     # determine font size
                     prev_size = "normal"
                     k = prev_par + 1
-                    while document.body[k][:1] == '\\' and split(document.body[k])[0] in prev_params:
+                    while document.body[k][:1] == '\\' and document.body[k].split()[0] in prev_params:
                         k = k + 1
                     while k < this_par:
-                        if find(document.body[k], "\\size") != -1:
-                            prev_size = split(document.body[k])[1]
+                        if document.body[k].find("\\size") != -1:
+                            prev_size = document.body[k].split()[1]
                             break
-                        elif find(document.body[k], "\\begin_inset") != -1:
+                        elif document.body[k].find("\\begin_inset") != -1:
                             # skip insets
                             k = find_end_of_inset(document.body, k)
                         elif is_nonempty_line(document.body[k]):
@@ -1348,14 +1352,14 @@ def revert_breaks(document):
                 if next_par > 0 and not after:
                     next_params = get_par_params(document.body, next_par + 1)
                     ert = 0
-                    while document.body[k][:1] == '\\' and split(document.body[k])[0] in next_params:
+                    while document.body[k][:1] == '\\' and document.body[k].split()[0] in next_params:
                         k = k + 1
                     # determine font size
                     next_size = "normal"
                     k = next_par + 1
                     while k < this_par:
-                        if find(document.body[k], "\\size") != -1:
-                            next_size = split(document.body[k])[1]
+                        if document.body[k].find("\\size") != -1:
+                            next_size = document.body[k].split()[1]
                             break
                         elif is_nonempty_line(document.body[k]):
                             break
@@ -1474,7 +1478,7 @@ def convert_len(len, special):
 
     # Convert LyX units to LaTeX units
     for unit in units.keys():
-        if find(len, unit) != -1:
+        if len.find(unit) != -1:
             len = '%f' % (len2value(len) / 100) + units[unit]
             break
 
@@ -1550,7 +1554,7 @@ def convert_frameless_box(document):
                   'special':'none', 'height':'1in',
                   'height_special':'totalheight', 'collapsed':'false'}
         for key in params.keys():
-            value = replace(get_value(document.body, key, i, j), '"', '')
+            value = get_value(document.body, key, i, j).replace('"', '')
             if value != "":
                 if key == 'position':
                     # convert new to old position: 'position "t"' -> 0
@@ -1715,7 +1719,7 @@ def remove_branches(document):
         i = find_token(document.header, "\\branch", i)
         if i == -1:
             break
-        document.warning("Removing branch %s." % split(document.header[i])[1])
+        document.warning("Removing branch %s." % document.header[i].split()[1])
         j = find_token(document.header, "\\end_branch", i)
         if j == -1:
             document.warning("Malformed LyX document: Missing '\\end_branch'.")
@@ -1852,7 +1856,7 @@ def convert_graphics(document):
         if j == -1:
             return
         i = i + 1
-        filename = split(document.body[j])[1]
+        filename = document.body[j].split()[1]
         absname = os.path.normpath(os.path.join(document.dir, filename))
         if document.input == stdin and not os.path.isabs(filename):
             # We don't know the directory and cannot check the document.
@@ -1869,10 +1873,10 @@ def convert_graphics(document):
         if access(absname, F_OK):
             continue
         if access(absname + ".ps", F_OK):
-            document.body[j] = replace(document.body[j], filename, filename + ".ps")
+            document.body[j] = document.body[j].replace(filename, filename + ".ps")
             continue
         if access(absname + ".eps", F_OK):
-            document.body[j] = replace(document.body[j], filename, filename + ".eps")
+            document.body[j] = document.body[j].replace(filename, filename + ".eps")
 
 
 def convert_names(document):
@@ -1977,9 +1981,9 @@ def convert_cite_engine(document):
         document.warning("Malformed lyx document: Missing '\\use_jurabib'.")
         return
 
-    use_natbib = int(split(document.header[a])[1])
-    use_numerical_citations = int(split(document.header[b])[1])
-    use_jurabib = int(split(document.header[c])[1])
+    use_natbib = int(document.header[a].split()[1])
+    use_numerical_citations = int(document.header[b].split()[1])
+    use_jurabib = int(document.header[c].split()[1])
 
     cite_engine = "basic"
     if use_natbib:
@@ -2001,7 +2005,7 @@ def revert_cite_engine(document):
         document.warning("Malformed lyx document: Missing '\\cite_engine'.")
         return
 
-    cite_engine = split(document.header[i])[1]
+    cite_engine = document.header[i].split()[1]
 
     use_natbib = '0'
     use_numerical = '0'
@@ -2027,9 +2031,9 @@ def convert_paperpackage(document):
         return
 
     packages = {'default':'none','a4':'none', 'a4wide':'a4', 'widemarginsa4':'a4wide'}
-    if len(split(document.header[i])) > 1:
-        paperpackage = split(document.header[i])[1]
-        document.header[i] = replace(document.header[i], paperpackage, packages[paperpackage])
+    if len(document.header[i].split()) > 1:
+        paperpackage = document.header[i].split()[1]
+        document.header[i] = document.header[i].replace(paperpackage, packages[paperpackage])
     else:
         document.header[i] = document.header[i] + ' widemarginsa4'
 
@@ -2042,11 +2046,11 @@ def revert_paperpackage(document):
 
     packages = {'none':'a4', 'a4':'a4wide', 'a4wide':'widemarginsa4',
                 'widemarginsa4':'', 'default': 'default'}
-    if len(split(document.header[i])) > 1:
-        paperpackage = split(document.header[i])[1]
+    if len(document.header[i].split()) > 1:
+        paperpackage = document.header[i].split()[1]
     else:
         paperpackage = 'default'
-    document.header[i] = replace(document.header[i], paperpackage, packages[paperpackage])
+    document.header[i] = document.header[i].replace(paperpackage, packages[paperpackage])
 
 
 def convert_bullets(document):
@@ -2057,11 +2061,11 @@ def convert_bullets(document):
         if i == -1:
             return
         if document.header[i][:12] == '\\bulletLaTeX':
-            document.header[i] = document.header[i] + ' ' + strip(document.header[i+1])
+            document.header[i] = document.header[i] + ' ' + document.header[i+1].strip()
             n = 3
         else:
-            document.header[i] = document.header[i] + ' ' + strip(document.header[i+1]) +\
-                        ' ' + strip(document.header[i+2]) + ' ' + strip(document.header[i+3])
+            document.header[i] = document.header[i] + ' ' + document.header[i+1].strip() +\
+                        ' ' + document.header[i+2].strip() + ' ' + document.header[i+3].strip()
             n = 5
         del document.header[i+1:i + n]
         i = i + 1
@@ -2075,7 +2079,7 @@ def revert_bullets(document):
         if i == -1:
             return
         if document.header[i][:12] == '\\bulletLaTeX':
-            n = find(document.header[i], '"')
+            n = document.header[i].find('"')
             if n == -1:
                 document.warning("Malformed header.")
                 return
@@ -2083,7 +2087,7 @@ def revert_bullets(document):
                 document.header[i:i+1] = [document.header[i][:n-1],'\t' + document.header[i][n:], '\\end_bullet']
             i = i + 3
         else:
-            frag = split(document.header[i])
+            frag = document.header[i].split()
             if len(frag) != 5:
                 document.warning("Malformed header.")
                 return
@@ -2138,7 +2142,7 @@ def normalize_papersize(document):
     if i == -1:
         return
 
-    tmp = split(document.header[i])
+    tmp = document.header[i].split()
     if tmp[1] == "Default":
         document.header[i] = '\\papersize default'
         return
@@ -2152,7 +2156,7 @@ def denormalize_papersize(document):
     if i == -1:
         return
 
-    tmp = split(document.header[i])
+    tmp = document.header[i].split()
     if tmp[1] == "custom":
         document.header[i] = '\\papersize Custom'
 
@@ -2161,7 +2165,7 @@ def strip_end_space(document):
     " Strip spaces at end of command line. "
     for i in range(len(document.body)):
         if document.body[i][:1] == '\\':
-            document.body[i] = strip(document.body[i])
+            document.body[i] = document.body[i].strip()
 
 
 def use_x_boolean(document):
@@ -2171,7 +2175,7 @@ def use_x_boolean(document):
         i = find_token(document.header, use, 0)
         if i == -1:
             continue
-        decompose = split(document.header[i])
+        decompose = document.header[i].split()
         document.header[i] = decompose[0] + ' ' + bin2bool[decompose[1]]
 
 
@@ -2182,7 +2186,7 @@ def use_x_binary(document):
         i = find_token(document.header, use, 0)
         if i == -1:
             continue
-        decompose = split(document.header[i])
+        decompose = document.header[i].split()
         document.header[i] = decompose[0] + ' ' + bool2bin[decompose[1]]
 
 
@@ -2202,13 +2206,13 @@ def normalize_paragraph_params(document):
 
         i = i + 1
         while 1:
-            if strip(body[i]) and split(body[i])[0] not in allowed_parameters:
+            if body[i].strip() and body[i].split()[0] not in allowed_parameters:
                 break
 
-            j = find(body[i],'\\', 1)
+            j = body[i].find('\\', 1)
 
             if j != -1:
-                body[i:i+1] = [strip(body[i][:j]), body[i][j:]]
+                body[i:i+1] = [body[i][:j].strip(), body[i][j:]]
 
             i = i + 1
 
@@ -2264,8 +2268,8 @@ def convert_ert_paragraphs(document):
         # remove all paragraph parameters and font settings
         k = i
         while k < j:
-            if (strip(document.body[k]) and
-                split(document.body[k])[0] in forbidden_settings):
+            if (document.body[k].strip() and
+                document.body[k].split()[0] in forbidden_settings):
                 del document.body[k]
                 j = j - 1
             else:
@@ -2337,7 +2341,7 @@ def revert_ert_paragraphs(document):
             l = k + 1
             while document.body[l] == "":
                 l = l + 1
-            if strip(document.body[l]) and split(document.body[l])[0] == "\\newline":
+            if document.body[l].strip() and document.body[l].split()[0] == "\\newline":
                 document.body[k:l+1] = ["\\end_layout", "",
                                     '\\begin_layout %s' % document.default_layout]
                 j = j - l + k + 2
@@ -2377,7 +2381,7 @@ def remove_paperpackage(document):
     if i == -1:
         return
 
-    paperpackage = split(document.header[i])[1]
+    paperpackage = document.header[i].split()[1]
 
     del document.header[i]
 

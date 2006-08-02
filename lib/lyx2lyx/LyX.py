@@ -22,7 +22,6 @@ import os.path
 import gzip
 import sys
 import re
-import string
 import time
 
 import lyx2lyx_version
@@ -171,7 +170,7 @@ class LyX_Base:
                     if check_token(line, '\\end_preamble'):
                         break
                     
-                    if string.split(line)[:0] in ("\\layout", "\\begin_layout", "\\begin_body"):
+                    if line.split()[:0] in ("\\layout", "\\begin_layout", "\\begin_body"):
                         self.warning("Malformed LyX file: Missing '\\end_preamble'.")
                         self.warning("Adding it now and hoping for the best.")
 
@@ -180,11 +179,11 @@ class LyX_Base:
             if check_token(line, '\\end_preamble'):
                 continue
 
-            line = string.strip(line)
+            line = line.strip()
             if not line:
                 continue
 
-            if string.split(line)[0] in ("\\layout", "\\begin_layout", "\\begin_body"):
+            if line.split()[0] in ("\\layout", "\\begin_layout", "\\begin_body"):
                 self.body.append(line)
                 break
 
@@ -442,7 +441,7 @@ class LyX_Base:
                 self.warning('Incomplete file.', 0)
                 break
 
-            section = string.split(self.body[i])[1]
+            section = self.body[i].split()[1]
             if section[-1] == '*':
                 section = section[:-1]
 
@@ -450,12 +449,12 @@ class LyX_Base:
 
             k = i + 1
             # skip paragraph parameters
-            while not string.strip(self.body[k]) or string.split(self.body[k])[0] in allowed_parameters:
+            while not self.body[k].strip() or self.body[k].split()[0] in allowed_parameters:
                 k = k +1
 
             while k < j:
                 if check_token(self.body[k], '\\begin_inset'):
-                    inset = string.split(self.body[k])[1]
+                    inset = self.body[k].split()[1]
                     end = find_end_of_inset(self.body, k)
                     if end == -1 or end > j:
                         self.warning('Malformed file.', 0)
@@ -468,7 +467,7 @@ class LyX_Base:
                     k = k + 1
 
             # trim empty lines in the end.
-            while string.strip(par[-1]) == '' and par:
+            while par[-1].strip() == '' and par:
                 par.pop()
 
             toc_par.append(Paragraph(section, par))

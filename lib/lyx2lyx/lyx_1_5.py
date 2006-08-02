@@ -21,7 +21,6 @@
 
 import re
 from parser_tools import find_token, find_token_exact, find_tokens, find_end_of, get_value
-from string import replace
 
 
 ####################################################################
@@ -208,7 +207,7 @@ def revert_booktabs(document):
         for k in range(i, j):
             if re.search('^<features.* booktabs="true".*>$', document.body[k]):
                 document.warning("Converting 'booktabs' table to normal table.")
-                document.body[k] = replace(document.body[k], ' booktabs="true"', '')
+                document.body[k] = document.body[k].replace(' booktabs="true"', '')
             if re.search(re_row, document.body[k]):
                 document.warning("Removing extra row space.")
                 document.body[k] = re_tspace.sub('', document.body[k])
