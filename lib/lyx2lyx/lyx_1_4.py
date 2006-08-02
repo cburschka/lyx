@@ -313,7 +313,7 @@ def revert_external_1(document):
         params.reverse()
         if document.body[i+1]: del document.body[i+1]
 
-        document.body[i] = document.body[i] + " " + template[0]+ ', "' + filename[0] + '", " '+ "".join(params[1:]) + '"'
+        document.body[i] = document.body[i] + " " + template[0]+ ', "' + filename[0] + '", " '+ " ".join(params[1:]) + '"'
         i = i + 1
 
 
@@ -714,7 +714,7 @@ parskip}
             vspace_top = document.body[i].find("\\added_space_top")
             tmp_list = document.body[i][vspace_top:].split()
             vspace_top_value = tmp_list[1]
-            document.body[i] = document.body[i][:vspace_top] + "".join(tmp_list[2:])
+            document.body[i] = document.body[i][:vspace_top] + " ".join(tmp_list[2:])
 
         if vspace_bot != -1:
             # the position could be change because of the removal of other
@@ -722,7 +722,7 @@ parskip}
             vspace_bot = document.body[i].find("\\added_space_bottom")
             tmp_list = document.body[i][vspace_bot:].split()
             vspace_bot_value = tmp_list[1]
-            document.body[i] = document.body[i][:vspace_bot] + "".join(tmp_list[2:])
+            document.body[i] = document.body[i][:vspace_bot] + " ".join(tmp_list[2:])
 
         document.body[i] = document.body[i].strip()
         i = i + 1

@@ -99,7 +99,7 @@ def update_tabular(document):
             if len(col_info) == 3:
                 lines[i] = lines[i] + '"" ""'
             else:
-                lines[i] = "".join(col_info[:3]) + ' "%s" ""' % col_info[3]
+                lines[i] = " ".join(col_info[:3]) + ' "%s" ""' % col_info[3]
             i = i + 1
 
         while lines[i]:
@@ -187,7 +187,7 @@ def latexdel_getargs(document, i):
         document.warning("Unexpected end of inset.")
     j = find_token(lines, '\\begin_inset LatexDel }{', i)
 
-    ref = "".join(lines[i:j])
+    ref = " ".join(lines[i:j])
     del lines[i:j + 1]
 
     # play safe, clean empty lines
@@ -202,7 +202,7 @@ def latexdel_getargs(document, i):
     else:
         document.warning("Unexpected end of inset.")
     j = find_token(lines, '\\begin_inset LatexDel }', i)
-    label = "".join(lines[i:j])
+    label = " ".join(lines[i:j])
     del lines[i:j + 1]
 
     return ref, label
