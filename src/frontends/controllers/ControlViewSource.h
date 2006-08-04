@@ -39,8 +39,10 @@ public:
 	/// The title displayed by the dialog reflects source type. 
 	std::string const title() const;
 
-	/// get the source code of selected paragraphs
-	std::string const updateContent();
+	/** get the source code of selected paragraphs, or the whole document
+		\param fullSource get full source code
+	 */
+	std::string const updateContent(bool fullSource);
 };
 
 } // namespace frontend

@@ -35,6 +35,8 @@ public:
 private:
 	/// Apply changes
 	virtual void apply() {}
+	///
+	void update_source();
 	/// update
 	virtual void update_contents();
 	/// build the dialog

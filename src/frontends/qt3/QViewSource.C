@@ -22,6 +22,7 @@
 
 #include <qtextview.h>
 #include <qpushbutton.h>
+#include <qcheckbox.h>
 
 namespace lyx {
 namespace frontend {
@@ -48,10 +49,18 @@ void QViewSource::build_dialog()
 }
 
 
+void QViewSource::update_source()
+{
+	bool fullSource = dialog_->viewFullSourceCB->isChecked();
+	dialog_->viewSourceTV->setText(toqstr(controller().updateContent(fullSource)));
+}
+
+
 void QViewSource::update_contents()
 {
 	setTitle(controller().title());
-	dialog_->viewSourceTV->setText(toqstr(controller().updateContent()));
+	if (dialog_->autoUpdateCB->isChecked())
+		update_source();
 }
 
 } // namespace frontend

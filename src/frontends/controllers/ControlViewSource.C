@@ -36,7 +36,7 @@ bool ControlViewSource::initialiseParams(string const & /*source*/)
 	return true;
 }
 
-string const ControlViewSource::updateContent()
+string const ControlViewSource::updateContent(bool fullSource)
 {
 	// get the *top* level paragraphs that contain the cursor,
 	// or the selected text
@@ -54,7 +54,7 @@ string const ControlViewSource::updateContent()
 	if (par_begin > par_end)
 		std::swap(par_begin, par_end);
 	ostringstream ostr;
-	view->buffer()->getSourceCode(ostr, par_begin, par_end + 1);
+	view->buffer()->getSourceCode(ostr, par_begin, par_end + 1, fullSource);
 	return ostr.str();
 }
 

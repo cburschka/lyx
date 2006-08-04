@@ -98,11 +98,19 @@ void QViewSource::build_dialog()
 	dialog_->viewSourceTV->setWordWrapMode(QTextOption::NoWrap);
 }
 
+ 
+void QViewSource::update_source()
+{
+	bool fullSource = dialog_->viewFullSourceCB->isChecked();
+	dialog_->viewSourceTV->setText(toqstr(controller().updateContent(fullSource)));
+}
+
 
 void QViewSource::update_contents()
 {
 	setTitle(controller().title());
-	dialog_->viewSourceTV->setText(toqstr(controller().updateContent()));
+	if (dialog_->autoUpdateCB->isChecked())
+		update_source();
 }
 
 

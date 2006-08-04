@@ -827,7 +827,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 	if (!openFileWrite(ofs, fname))
 		return;
 
-	makeLaTeXFile(ofs, original_path,
+	writeLaTeXSource(ofs, original_path,
 		      runparams, output_preamble, output_body);
 
 	ofs.close();
@@ -836,7 +836,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 }
 
 
-void Buffer::makeLaTeXFile(ostream & os,
+void Buffer::writeLaTeXSource(ostream & os,
 			   string const & original_path,
 			   OutputParams const & runparams_in,
 			   bool const output_preamble, bool const output_body)
@@ -994,10 +994,24 @@ void Buffer::makeLinuxDocFile(string const & fname,
 			      OutputParams const & runparams,
 			      bool const body_only)
 {
+	lyxerr[Debug::LATEX] << "makeLinuxDocFile..." << endl;
+
 	ofstream ofs;
 	if (!openFileWrite(ofs, fname))
 		return;
 
+	writeLinuxDocSource(ofs, fname, runparams, body_only);
+
+	ofs.close();
+	if (ofs.fail())
+		lyxerr << "File '" << fname << "' was not closed properly." << endl;
+}
+
+
+void Buffer::writeLinuxDocSource(ostream &os, string const & fname,
+			      OutputParams const & runparams,
+			      bool const body_only)
+{
 	LaTeXFeatures features(*this, params(), runparams);
 	validate(features);
 
@@ -1008,7 +1022,7 @@ void Buffer::makeLinuxDocFile(string const & fname,
 	string const & top_element = tclass.latexname();
 
 	if (!body_only) {
-		ofs << tclass.class_header();
+		os << tclass.class_header();
 
 		string preamble = params().preamble;
 		string const name = runparams.nice ? changeExtension(pimpl_->filename, ".sgml")
@@ -1017,30 +1031,44 @@ void Buffer::makeLinuxDocFile(string const & fname,
 		preamble += features.getLyXSGMLEntities();
 
 		if (!preamble.empty()) {
-			ofs << " [ " << preamble << " ]";
+			os << " [ " << preamble << " ]";
 		}
-		ofs << ">\n\n";
+		os << ">\n\n";
 
 		if (params().options.empty())
-			sgml::openTag(ofs, top_element);
+			sgml::openTag(os, top_element);
 		else {
 			string top = top_element;
 			top += ' ';
 			top += params().options;
-			sgml::openTag(ofs, top);
+			sgml::openTag(os, top);
 		}
 	}
 
-	ofs << "<!-- LyX "  << lyx_version
+	os << "<!-- LyX "  << lyx_version
 	    << " created this file. For more info see http://www.lyx.org/"
 	    << " -->\n";
 
-	linuxdocParagraphs(*this, paragraphs(), ofs, runparams);
+	linuxdocParagraphs(*this, paragraphs(), os, runparams);
 
 	if (!body_only) {
-		ofs << "\n\n";
-		sgml::closeTag(ofs, top_element);
+		os << "\n\n";
+		sgml::closeTag(os, top_element);
 	}
+}
+
+
+void Buffer::makeDocBookFile(string const & fname,
+			      OutputParams const & runparams,
+			      bool const body_only)
+{
+	lyxerr[Debug::LATEX] << "makeDocBookFile..." << endl;
+
+	ofstream ofs;
+	if (!openFileWrite(ofs, fname))
+		return;
+
+	writeDocBookSource(ofs, fname, runparams, body_only);
 
 	ofs.close();
 	if (ofs.fail())
@@ -1048,14 +1076,10 @@ void Buffer::makeLinuxDocFile(string const & fname,
 }
 
 
-void Buffer::makeDocBookFile(string const & fname,
+void Buffer::writeDocBookSource(ostream & os, string const & fname,
 			     OutputParams const & runparams,
 			     bool const only_body)
 {
-	ofstream ofs;
-	if (!openFileWrite(ofs, fname))
-		return;
-
 	LaTeXFeatures features(*this, params(), runparams);
 	validate(features);
 
@@ -1066,17 +1090,17 @@ void Buffer::makeDocBookFile(string const & fname,
 
 	if (!only_body) {
 		if (runparams.flavor == OutputParams::XML)
-			ofs << "<?xml version=\"1.0\" encoding=\""
+			os << "<?xml version=\"1.0\" encoding=\""
 			    << params().language->encoding()->name() << "\"?>\n";
 
-		ofs << "<!DOCTYPE " << top_element << " ";
+		os << "<!DOCTYPE " << top_element << " ";
 
-		if (! tclass.class_header().empty()) ofs << tclass.class_header();
+		if (! tclass.class_header().empty()) os << tclass.class_header();
 		else if (runparams.flavor == OutputParams::XML)
-			ofs << "PUBLIC \"-//OASIS//DTD DocBook XML//EN\" "
+			os << "PUBLIC \"-//OASIS//DTD DocBook XML//EN\" "
 			    << "\"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd\"";
 		else
-			ofs << " PUBLIC \"-//OASIS//DTD DocBook V4.2//EN\"";
+			os << " PUBLIC \"-//OASIS//DTD DocBook V4.2//EN\"";
 
 		string preamble = params().preamble;
 		if (runparams.flavor != OutputParams::XML ) {
@@ -1092,9 +1116,9 @@ void Buffer::makeDocBookFile(string const & fname,
 		preamble += features.getLyXSGMLEntities();
 
 		if (!preamble.empty()) {
-			ofs << "\n [ " << preamble << " ]";
+			os << "\n [ " << preamble << " ]";
 		}
-		ofs << ">\n\n";
+		os << ">\n\n";
 	}
 
 	string top = top_element;
@@ -1110,20 +1134,16 @@ void Buffer::makeDocBookFile(string const & fname,
 		top += params().options;
 	}
 
-	ofs << "<!-- " << ((runparams.flavor == OutputParams::XML)? "XML" : "SGML")
+	os << "<!-- " << ((runparams.flavor == OutputParams::XML)? "XML" : "SGML")
 	    << " file was created by LyX " << lyx_version
 	    << "\n  See http://www.lyx.org/ for more information -->\n";
 
 	params().getLyXTextClass().counters().reset();
 
-	sgml::openTag(ofs, top);
-	ofs << '\n';
-	docbookParagraphs(paragraphs(), *this, ofs, runparams);
-	sgml::closeTag(ofs, top_element);
-
-	ofs.close();
-	if (ofs.fail())
-		lyxerr << "File '" << fname << "' was not closed properly." << endl;
+	sgml::openTag(os, top);
+	os << '\n';
+	docbookParagraphs(paragraphs(), *this, os, runparams);
+	sgml::closeTag(os, top_element);
 }
 
 
@@ -1647,29 +1667,39 @@ void Buffer::changeRefsIfUnique(string const & from, string const & to)
 }
 
 
-void Buffer::getSourceCode(ostream & os, lyx::pit_type par_begin, lyx::pit_type par_end)
+void Buffer::getSourceCode(ostream & os, lyx::pit_type par_begin, lyx::pit_type par_end, bool full_source)
 {
 	OutputParams runparams;
 	runparams.nice = true;
 	runparams.flavor = OutputParams::LATEX;
 	runparams.linelen = lyxrc.ascii_linelen;
-	runparams.par_begin = par_begin;
-	runparams.par_end = par_end;
 	// No side effect of file copying and image conversion
 	runparams.dryrun = true;
 
-	if (par_begin + 1 == par_end)
-		os << "% Preview source code for paragraph " << par_begin << "\n\n";
-	else
-		os << "% Preview source code from paragraph " << par_begin << " to " << par_end - 1 << "\n\n";
-	// output paragraphs
-	if (isLatex()) {
-		texrow().reset();
-		latexParagraphs(*this, paragraphs(), os, texrow(), runparams);
-	} else if (isLinuxDoc())
-		linuxdocParagraphs(*this, paragraphs(), os, runparams);
-	else // DocBook
-		docbookParagraphs(paragraphs(), *this, os, runparams);
+	if (full_source) {
+		os << "% Preview source code\n\n";
+		if (isLatex()) 
+			writeLaTeXSource(os, filePath(), runparams, true, true);
+		else if (isLinuxDoc())
+			writeLinuxDocSource(os, fileName(), runparams, false);
+		else 
+			writeDocBookSource(os, fileName(), runparams, false);
+	} else {
+		runparams.par_begin = par_begin;
+		runparams.par_end = par_end;
+		if (par_begin + 1 == par_end)
+			os << "% Preview source code for paragraph " << par_begin << "\n\n";
+		else
+			os << "% Preview source code from paragraph " << par_begin << " to " << par_end - 1 << "\n\n";
+		// output paragraphs
+		if (isLatex()) {
+			texrow().reset();
+			latexParagraphs(*this, paragraphs(), os, texrow(), runparams);
+		} else if (isLinuxDoc())
+			linuxdocParagraphs(*this, paragraphs(), os, runparams);
+		else // DocBook
+			docbookParagraphs(paragraphs(), *this, os, runparams);
+	}
 }
 
 

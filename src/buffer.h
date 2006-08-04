@@ -149,7 +149,7 @@ public:
 			   bool output_preamble = true,
 			   bool output_body = true);
 	///
-	void makeLaTeXFile(std::ostream & os,
+	void writeLaTeXSource(std::ostream & os,
 			   std::string const & original_path,
 			   OutputParams const &,
 			   bool output_preamble = true,
@@ -159,7 +159,15 @@ public:
 			      OutputParams const & runparams_in,
 			      bool only_body = false);
 	///
+	void writeLinuxDocSource(std::ostream & os, std::string const & filename,
+			      OutputParams const & runparams_in,
+			      bool only_body = false);
+	///
 	void makeDocBookFile(std::string const & filename,
+			     OutputParams const & runparams_in,
+			     bool only_body = false);
+	///
+	void writeDocBookSource(std::ostream & os, std::string const & filename,
 			     OutputParams const & runparams_in,
 			     bool only_body = false);
 	/// returns the main language for the buffer (document)
@@ -345,8 +353,9 @@ public:
 	StableDocIterator getAnchor() const { return anchor_; }
 	///
 	void changeRefsIfUnique(std::string const & from, std::string const & to);
-	/// get source code (latex/docbook/linuxdoc) for some paragraphs
-	void getSourceCode(std::ostream & os, lyx::pit_type par_begin, lyx::pit_type par_end);
+	/// get source code (latex/docbook/linuxdoc) for some paragraphs, or all paragraphs
+	/// including preamble
+	void getSourceCode(std::ostream & os, lyx::pit_type par_begin, lyx::pit_type par_end, bool full_source);
 
 	/// errorList_ accessor.
 	ErrorList const & getErrorList() const;

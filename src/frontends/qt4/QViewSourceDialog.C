@@ -26,6 +26,12 @@ QViewSourceDialog::QViewSourceDialog(QViewSource * form)
 	setupUi(this);
 
 	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
+	connect(viewFullSourceCB, SIGNAL(toggled(bool)),
+		this, SLOT(slotUpdate()));
+	connect(autoUpdateCB, SIGNAL(toggled(bool)),
+		updatePB, SLOT(setDisabled(bool)));
+	connect(updatePB, SIGNAL(clicked()),
+		this, SLOT(slotUpdate()));
 }
 
 
@@ -35,6 +41,11 @@ void QViewSourceDialog::closeEvent(QCloseEvent * e)
 	e->accept();
 }
 
+
+void QViewSourceDialog::slotUpdate()
+{
+	form_->update_source();
+}
 
 } // namespace frontend
 } // namespace lyx

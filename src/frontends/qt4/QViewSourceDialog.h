@@ -26,6 +26,9 @@ public:
 	QViewSourceDialog(QViewSource * form);
 protected:
 	virtual void closeEvent(QCloseEvent * e);
+private Q_SLOTS:
+	// update content
+	void slotUpdate();
 private:
 	QViewSource * form_;
 };
