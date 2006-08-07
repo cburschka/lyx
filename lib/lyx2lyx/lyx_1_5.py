@@ -216,14 +216,25 @@ def revert_booktabs(document):
         i = i + 1
 
 
+def convert_utf8(document):
+    i = find_token(document.header, "\\inputencoding", 0)
+    if i == -1:
+        document.header.append("\\inputencoding utf-8")
+    else:
+        document.header[i] = "\\inputencoding utf-8"
+    document.inputencoding = "utf-8"
+    document.encoding = "utf-8"
+
 ##
 # Conversion hub
 #
 
-supported_versions = ["1.5.0svn","1.5"]
+supported_versions = ["1.5.0","1.5"]
 convert = [[246, []],
            [247, [convert_font_settings]],
-           [248, []]]
+           [248, []]
+           # ,[xxx, [convert_utf8]] uncomment to support convertion to utf-8
+          ]
 
 revert =  [[247, [revert_booktabs]],
            [246, [revert_font_settings]],

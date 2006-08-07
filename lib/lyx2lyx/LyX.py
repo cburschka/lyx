@@ -1,6 +1,7 @@
 # This file is part of lyx2lyx
 # -*- coding: utf-8 -*-
-# Copyright (C) 2002-2004 Dekel Tsur <dekel@lyx.org>, José Matos <jamatos@lyx.org>
+# Copyright (C) 2002-2004 Dekel Tsur <dekel@lyx.org>
+# Copyright (C) 2002-2006 José Matos <jamatos@lyx.org>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -36,6 +37,18 @@ def find_end_of_inset(lines, i):
     " Find beginning of inset, where lines[i] is included."
     return find_end_of(lines, i, "\\begin_inset", "\\end_inset")
 
+def generate_minor_versions(major, last_minor_version):
+    """ Generate minor versions, using major as prefix and minor
+    versions from 0 until last_minor_version, plus the generic version.
+
+    Example:
+
+      generate_minor_versions("1.2", 4) ->
+      [ "1.2", "1.2.0", "1.2.1", "1.2.2", "1.2.3"]
+    """
+    return [major] + [major + ".%d" % i for i in range(last_minor_version + 1)]
+
+
 # End of helper functions
 ####################################################################
 
@@ -43,24 +56,24 @@ def find_end_of_inset(lines, i):
 # Regular expressions used
 format_re = re.compile(r"(\d)[\.,]?(\d\d)")
 fileformat = re.compile(r"\\lyxformat\s*(\S*)")
-original_version = re.compile(r"\#LyX (\S*)")
+original_version = re.compile(r".*?LyX ([\d.]*)")
 
 ##
 # file format information:
 #  file, supported formats, stable release versions
-format_relation = [("0_08",    [210], ["0.8.%d" % i for i in range(7)] + ["0.8"]),
-                   ("0_10",    [210], ["0.10.%d" % i for i in range(8)] + ["0.10"]),
-                   ("0_12",    [215], ["0.12.0","0.12.1","0.12"]),
-                   ("1_0_0",   [215], ["1.0.0","1.0"]),
-                   ("1_0_1",   [215], ["1.0.1","1.0.2","1.0.3","1.0.4", "1.1.2","1.1"]),
-                   ("1_1_4",   [215], ["1.1.4","1.1"]),
-                   ("1_1_5",   [216], ["1.1.5","1.1.5fix1","1.1.5fix2","1.1"]),
-                   ("1_1_6_0", [217], ["1.1.6","1.1.6fix1","1.1.6fix2","1.1"]),
-                   ("1_1_6_3", [218], ["1.1.6fix3","1.1.6fix4","1.1"]),
-                   ("1_2",     [220], ["1.2.%d" % i for i in range(5)] + ["1.2"]),
-                   ("1_3",     [221], ["1.3.%d" % i for i in range(8)] + ["1.3"]),
-                   ("1_4", range(222,246), ["1.4.0", "1.4.1", "1.4.2","1.4.3svn"]),
-                   ("1_5", range(246,249), ["1.5.0svn","1.5"])]
+format_relation = [("0_06",    [200], generate_minor_versions("0.6" , 4)),
+                   ("0_08",    [210], generate_minor_versions("0.8" , 6) + ["0.7"]),
+                   ("0_10",    [210], generate_minor_versions("0.10", 7) + ["0.9"]),
+                   ("0_12",    [215], generate_minor_versions("0.12", 1) + ["0.11"]),
+                   ("1_0",     [215], generate_minor_versions("1.0" , 4)),
+                   ("1_1",     [215], generate_minor_versions("1.1" , 4)),
+                   ("1_1_5",   [216], ["1.1.5","1.1.5.1","1.1.5.2","1.1"]),
+                   ("1_1_6_0", [217], ["1.1.6","1.1.6.1","1.1.6.2","1.1"]),
+                   ("1_1_6_3", [218], ["1.1.6.3","1.1.6.4","1.1"]),
+                   ("1_2",     [220], generate_minor_versions("1.2" , 4)),
+                   ("1_3",     [221], generate_minor_versions("1.3" , 7)),
+                   ("1_4", range(222,246), generate_minor_versions("1.4" , 3)),
+                   ("1_5", range(246,249), generate_minor_versions("1.5" , 0))]
 
 
 def formats_list():
@@ -94,6 +107,17 @@ def trim_eol(line):
     else:
         return line[:-1]
 
+
+def get_encoding(language, inputencoding):
+    from lyx2lyx_lang import lang
+    if inputencoding == "auto":        
+        return lang[language][3]
+    if inputencoding == "default" or inputencoding == "":
+        return "latin1"
+    # python does not know the alias latin9
+    if inputencoding == "latin9":
+        return "iso-8859-15"
+    return inputencoding
 
 ##
 # Class
@@ -189,19 +213,26 @@ class LyX_Base:
 
             self.header.append(line)
 
-        while 1:
-            line = self.input.readline()
-            if not line:
-                break
-            self.body.append(trim_eol(line))
-
         self.textclass = get_value(self.header, "\\textclass", 0)
         self.backend = get_backend(self.textclass)
         self.format  = self.read_format()
-        self.language = get_value(self.header, "\\language", 0)
-        if self.language == "":
-            self.language = "english"
+        self.language = get_value(self.header, "\\language", 0, default = "english")
+        self.inputencoding = get_value(self.header, "\\inputencoding", 0, default = "auto")
+        self.encoding = get_encoding(self.language, self.inputencoding)
         self.initial_version = self.read_version()
+
+        # Second pass over header and preamble, now we know the file encoding
+        for i in range(len(self.header)):
+            self.header[i] = self.header[i].decode(self.encoding)
+        for i in range(len(self.preamble)):
+            self.preamble[i] = self.preamble[i].decode(self.encoding)
+
+        # Read document body
+        while 1:
+            line = self.input.readline().decode(self.encoding)
+            if not line:
+                break
+            self.body.append(trim_eol(line))
 
 
     def write(self):
@@ -220,7 +251,7 @@ class LyX_Base:
             header = self.header
 
         for line in header + [''] + self.body:
-            self.output.write(line+"\n")
+            self.output.write(line.encode(self.encoding)+"\n")
 
 
     def choose_io(self, input, output):
@@ -250,6 +281,8 @@ class LyX_Base:
         result = format_re.match(format)
         if result:
             format = int(result.group(1) + result.group(2))
+        elif format == '2':
+            format = 200
         else:
             self.error(str(format) + ": " + "Invalid LyX file.")
 
@@ -267,9 +300,19 @@ class LyX_Base:
             if line[0] != "#":
                 return None
 
+            line = line.replace("fix",".")
             result = original_version.match(line)
             if result:
-                return result.group(1)
+                # Special know cases: reLyX and KLyX
+                if line.find("reLyX") != -1 or line.find("KLyX") != -1:
+                    return "0.12"
+
+                res = result.group(1)
+                if not res:
+                    self.warning(line)
+                #self.warning("Version %s" % result.group(1))
+                return res
+        self.warning(str(self.header[:2]))
         return None
 
 
@@ -374,7 +417,7 @@ class LyX_Base:
 
         if not correct_version:
             if format <= 215:
-                self.warning("Version does not match file format, discarding it.")
+                self.warning("Version does not match file format, discarding it. (Version %s, format %d)" %(self.initial_version, self.format))
             for rel in format_relation:
                 if format in rel[1]:
                     initial_step = rel[0]

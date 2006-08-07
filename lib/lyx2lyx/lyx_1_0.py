@@ -76,7 +76,7 @@ def update_tabular(document):
         lines[i] = lines[i].strip()
 
 
-supported_versions = ["1.0.0","1.0"]
+supported_versions = ["1.0.%d" % i for i in range(5)] + ["1.0"]
 convert = [[215, [obsolete_latex_title, update_tabular]]]
 revert  = []
 

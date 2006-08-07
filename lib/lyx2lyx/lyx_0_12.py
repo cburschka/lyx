@@ -308,6 +308,24 @@ def obsolete_latex_title(document):
         i = i + 1
 
 
+def remove_inset_latex(document):
+    "Replace inset latex with layout LaTeX"
+    body = document.body
+
+    i = 0
+    while 1:
+        i = find_token(body, '\\begin_inset Latex', i)
+        if i == -1:
+            return
+
+        body[i] = body[i].replace('\\begin_inset Latex', '\\layout LaTeX')
+        i = find_token(body, '\\end_inset', i)
+        if i == -1:
+            #this should not happen
+            return
+        del body[i]
+        
+    
 supported_versions = ["0.12.0","0.12.1","0.12"]
 convert = [[215, [header_update, add_end_document, remove_cursor,
                   final_dot, update_inset_label, update_latexdel,
@@ -315,7 +333,7 @@ convert = [[215, [header_update, add_end_document, remove_cursor,
                   formula_inset_space_eat, update_tabular,
                   update_vfill, remove_empty_insets,
                   remove_formula_latex, update_latexaccents,
-                  obsolete_latex_title]]]
+                  obsolete_latex_title, remove_inset_latex]]]
 revert  = []
 
 

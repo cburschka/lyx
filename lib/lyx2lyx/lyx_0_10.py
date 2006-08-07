@@ -118,6 +118,7 @@ def regularise_body(document):
                     j = l
                     continue
 
+                document.warning("unkown inset %s" % line)
                 assert(False)
 
             # We are inside a latex inset, pass the text verbatim
