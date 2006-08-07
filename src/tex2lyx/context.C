@@ -77,6 +77,7 @@ void output_font_change(ostream & os, Font const & oldfont,
 
 
 Font Context::normalfont;
+bool Context::empty = true;
 
 
 Context::Context(bool need_layout_,
@@ -145,6 +146,7 @@ void Context::check_layout(ostream & os)
 			extra_stuff.erase();
 		}
 		os << "\n";
+		empty = false;
 	}
 }
 

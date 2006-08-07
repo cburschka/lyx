@@ -19,16 +19,22 @@ What's new
 
 ** Updates:
 
-- all shell scripts are translated to python so sh.exe is no longer 
+- All shell scripts are translated to python so sh.exe is no longer 
   needed on windows.
 
 ** Bug fixes:
 
-- change the encoding of some python scripts from iso-8859-15 to
-  iso-8859-1. The former causes problems with embedded python.
+* Document Input/Output
+
+- Fix crash when importing LaTeX files with no text (bug 2667)
+
+* User Interface:
+
+- Handle the Meta keyboard modifier as Alt (Qt only).
 
 * Miscellaneous
 
-- Handle the Meta keyboard modifier as Alt (Qt only).
+- Change the encoding of some python scripts from iso-8859-15 to
+  iso-8859-1. The former causes problems with embedded python.
 
 - Display latex package checking results faster during configuration.
