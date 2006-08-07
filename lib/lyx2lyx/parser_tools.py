@@ -141,8 +141,8 @@ def find_tokens_backwards(lines, tokens, start):
     return -1
 
 
-def get_value(lines, token, start, end = 0):
-    """ get_value(lines, token, start[, end]) -> list of strings
+def get_value(lines, token, start, end = 0, default = ""):
+    """ get_value(lines, token, start[[, end], default]) -> list of strings
 
     Return tokens after token for the first line, in lines, where
     token is the first element."""
@@ -153,7 +153,7 @@ def get_value(lines, token, start, end = 0):
     if len(lines[i].split()) > 1:
         return lines[i].split()[1]
     else:
-        return ""
+        return default
 
 
 def del_token(lines, token, start, end):
