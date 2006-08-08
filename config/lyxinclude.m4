@@ -243,6 +243,8 @@ if test x$GXX = xyes; then
         CXXFLAGS="-pg $CXXFLAGS"
         LDFLAGS="-pg $LDFLAGS"
     fi
+  fi
+  if test "$ac_env_CPPFLAGS_set" != set; then
     if test x$enable_warnings = xyes ; then
         case $gxx_version in
             2.*|3.1*|3.2*|3.3*)

@@ -44,4 +44,7 @@ What's new
 - Change the encoding of some python scripts from iso-8859-15 to
   iso-8859-1. The former causes problems with embedded python.
 
-- fix 'check' make target for systems which do not have /bin/bash (bug 2524)
+- Fix 'check' make target for systems which do not have /bin/bash (bug 2524)
+
+- Set CPPFLAGS only if not already set by the user (and ignore CXXFLAGS for
+  setting CPPFLAGS).
