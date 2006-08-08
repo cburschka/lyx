@@ -35,6 +35,9 @@ What's new
   require the color package, since xfig generates LaTeX code with
   \color (bug 2716).
 
+- Make sure enough passes are made to update the table of contents
+  when running latex (bug 2616).
+
 * User Interface:
 
 - Show an error box when failing to update the TeX Information dalog data.
