@@ -21,7 +21,7 @@
 import os, sys
 
 if len(sys.argv) != 3:
-    print >> sys.stderr, "Usage: fig_copy.sh <from file> <to file>"
+    print >> sys.stderr, "Usage: fig_copy.py <from file> <to file>"
     sys.exit(1)
 
 if not os.path.isfile(sys.argv[1]):

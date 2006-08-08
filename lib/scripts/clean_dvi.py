@@ -4,7 +4,7 @@
 file clean_dvi.py
 This file is part of LyX, the document processor.
 Licence details can be found in the file COPYING
-or at http://www.lyx.org/about/licence.php3
+or at http://www.lyx.org/about/licence.php
 
 author Angus Leeming
 Full author contact details are available in the file CREDITS
