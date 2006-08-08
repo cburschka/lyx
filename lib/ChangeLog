@@ -1,11 +1,19 @@
+2006-08-08  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* external_templates (XFig): Require the color package, since xfig
+	generates LaTeX code with \color (bug 2716)
+
 2006-08-06  Bo Peng <ben.bob@gmail.com>
+
 	* lib/configure.py: display latex package checking result faster.
 
 2006-07-17  Bo Peng <ben.bob@gmail.com>
+
 	* Change the encoding of some python scripts from iso-8859-15
 	  to iso-8859-1.
 
 2006-07-15  Bo Peng <ben.bob@gmail.com>
+	
 	* replace all .sh scripts under scripts/ by their python version
 	  (changeset 14462-14465)
 

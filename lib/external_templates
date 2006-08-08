@@ -118,6 +118,7 @@ Template XFig
 		Product "$$RotateFront$$ResizeFront\\input{$$AbsOrRelPathMaster$$Basename.pstex_t}$$ResizeBack$$RotateBack"
 		UpdateFormat pstex
 		UpdateResult "$$AbsPath$$Basename.pstex_t"
+		Requirement "color"
 		Requirement "graphicx"
 		# Preamble WarnNotFound
 		# Preamble InputOrWarn
@@ -131,6 +132,7 @@ Template XFig
 		Product "$$RotateFront$$ResizeFront\\input{$$AbsOrRelPathMaster$$Basename.pdftex_t}$$ResizeBack$$RotateBack"
 		UpdateFormat pdftex
 		UpdateResult "$$AbsPath$$Basename.pdftex_t"
+		Requirement "color"
 		Requirement "graphicx"
 		# Preamble WarnNotFound
 		# Preamble InputOrWarn

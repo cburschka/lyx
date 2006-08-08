@@ -31,6 +31,10 @@ What's new
 - Ignore definition of lyxgreyout environment when re-importing a LyX
   generated LaTeX file (part of bug 2420)
 
+- When exporting to LaTeX an external inset with template XFig,
+  require the color package, since xfig generates LaTeX code with
+  \color (bug 2716).
+
 * User Interface:
 
 - Show an error box when failing to update the TeX Information dalog data.
