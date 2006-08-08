@@ -1,3 +1,4 @@
+# translation of it.po to italiano
 # translation of lyx-1.4.2_dev_it.po to italiano
 # This file is distributed under the same license as the PACKAGE package.
 # Grazie a Lele Gaifax e Meris Da Silva per tutti i loro suggerimenti e consigli
@@ -5,10 +6,10 @@
 # Kostantino <ciclope10ATalice.it>, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: lyx-1.4.2_dev_it\n"
+"Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2006-07-13 10:00+0200\n"
-"PO-Revision-Date: 2006-07-09 09:02+0200\n"
+"PO-Revision-Date: 2006-08-08 19:43+0200\n"
 "Last-Translator: Kostantino <ciclope10ATalice.it>\n"
 "Language-Team: italiano <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -860,7 +861,7 @@ msgstr "Qui, se possibile|#i"
 
 #: src/frontends/xforms/forms/form_float.fd:206
 msgid "Span columns|#S"
-msgstr "Dividi colonne|#D"
+msgstr "Attraversa colonne|#D"
 
 #: src/frontends/xforms/forms/form_float.fd:224
 msgid "Ignore internal LaTeX rules|#I"
@@ -889,7 +890,7 @@ msgstr "Output"
 
 #: src/frontends/xforms/forms/form_graphics.fd:212
 msgid "Edit|#E"
-msgstr "Modifica|#M"
+msgstr "Modifica|#o"
 
 #: src/frontends/xforms/forms/form_graphics.fd:230
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:255
@@ -1094,7 +1095,7 @@ msgstr "Commento|#o"
 
 #: src/frontends/xforms/forms/form_note.fd:116
 msgid "Greyed out|#G"
-msgstr "Ombreggiato grigio|#G"
+msgstr "In grigio|#G"
 
 #: src/frontends/xforms/forms/form_paragraph.fd:44
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:350
@@ -1279,7 +1280,7 @@ msgstr "Oggetti di LyX:|#L"
 #: src/frontends/xforms/FormPreferences.C:1495
 #: src/frontends/xforms/FormPreferences.C:1497
 msgid "Modify|#M"
-msgstr "Modifica|#M"
+msgstr "Modifica|#o"
 
 #: src/frontends/xforms/forms/form_preferences.fd:893
 msgid "Auto region delete|#A"
@@ -1660,7 +1661,6 @@ msgid "Index:|#I"
 msgstr "Indice:|#I"
 
 #: src/frontends/xforms/forms/form_preferences.fd:3134
-#, fuzzy
 msgid "Use Windows Paths for LaTeX|#s"
 msgstr "Usa Percorsi Windows per LaTex|#s"
 
@@ -3674,7 +3674,7 @@ msgstr "Esporta come LaTeX/Docbook ma non stampare"
 
 #: src/frontends/qt2/ui/QNoteDialogBase.ui:124
 msgid "&Greyed out"
-msgstr "&Ombreggiato grigio"
+msgstr "&In grigio"
 
 #: src/frontends/qt2/ui/QNoteDialogBase.ui:128
 #: src/frontends/xforms/FormNote.C:46
@@ -3796,13 +3796,11 @@ msgid "&Format:"
 msgstr "&Formato:"
 
 #: src/frontends/qt2/ui/QPrefCygwinPathModule.ui:66
-#, fuzzy
 msgid "&Use Windows-style paths in LaTeX files"
 msgstr "&Usa percorsi in stile Windows nei file LaTeX"
 
 #: src/frontends/qt2/ui/QPrefCygwinPathModule.ui:74
 #: src/frontends/xforms/FormPreferences.C:2145
-#, fuzzy
 msgid ""
 "Select if LyX should output Windows-style paths rather than Posix-style "
 "paths to LaTeX files. Useful if you're using the native Windows MikTeX "
@@ -4597,7 +4595,7 @@ msgstr "&Usa tabella lunga"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:808
 msgid "Select for tables that span multiple pages"
-msgstr "Seleziona per tabelle che dividano pagine multiple"
+msgstr "Seleziona per tabelle che attraversano pagine multiple"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:823
 msgid "Settings"
@@ -7524,7 +7522,7 @@ msgstr "\\Alph{chapter}"
 #: lib/layouts/scrlettr.layout:24 lib/layouts/scrlttr2.layout:25
 #: lib/layouts/scrclass.inc:32
 msgid "Labeling"
-msgstr "Etichettare"
+msgstr "Etichetta"
 
 #: lib/layouts/scrlettr.layout:52
 msgid "L"
@@ -8679,7 +8677,7 @@ msgstr "File|F"
 
 #: lib/ui/classic.ui:33 lib/ui/stdmenus.ui:20
 msgid "Edit|E"
-msgstr "Modifica|M"
+msgstr "Modifica|o"
 
 #: lib/ui/classic.ui:34 lib/ui/stdmenus.ui:22
 msgid "Insert|I"
@@ -8731,7 +8729,7 @@ msgstr "Salva come...|a"
 
 #: lib/ui/classic.ui:54 lib/ui/stdmenus.ui:43
 msgid "Revert|R"
-msgstr "Ripristina|r"
+msgstr "Ripristina|R"
 
 #: lib/ui/classic.ui:55 lib/ui/stdmenus.ui:44
 msgid "Version Control|V"
@@ -9020,7 +9018,7 @@ msgstr "Maple, evalf"
 #: lib/ui/classic.ui:199 lib/ui/classic.ui:260 lib/ui/stdmenus.ui:198
 #: lib/ui/stdmenus.ui:290
 msgid "Inline Formula|I"
-msgstr "Immergi formula|f"
+msgstr "Formula in linea|f"
 
 #: lib/ui/classic.ui:200 lib/ui/stdmenus.ui:199
 msgid "Displayed Formula|D"
@@ -9064,7 +9062,7 @@ msgstr "Citazione...|C"
 
 #: lib/ui/classic.ui:218 lib/ui/stdmenus.ui:250
 msgid "Cross-reference...|r"
-msgstr "Riferimento incrociato...|r"
+msgstr "Riferimento incrociato...|R"
 
 #: lib/ui/classic.ui:219 lib/ui/stdmenus.ui:251
 msgid "Label...|L"
@@ -9172,11 +9170,11 @@ msgstr "Interruzione di linea|l"
 
 #: lib/ui/classic.ui:250 lib/ui/stdmenus.ui:265
 msgid "Ellipsis|i"
-msgstr "Ellisse|i"
+msgstr "Ellissi|i"
 
 #: lib/ui/classic.ui:251 lib/ui/stdmenus.ui:266
 msgid "End of Sentence|E"
-msgstr "Fine della frase|f"
+msgstr "Punto di fine frase|f"
 
 #: lib/ui/classic.ui:252
 msgid "Single Quote|Q"
@@ -9200,7 +9198,7 @@ msgstr "Interruzione di pagina"
 
 #: lib/ui/classic.ui:261 lib/ui/stdmenus.ui:291
 msgid "Display Formula|D"
-msgstr "Mostra formula|m"
+msgstr "Formula centrata|m"
 
 #: lib/ui/classic.ui:262 lib/ui/stdmenus.ui:292
 msgid "Eqnarray Environment|E"
@@ -9380,7 +9378,7 @@ msgstr "Enfatizza lo stile|e"
 
 #: lib/ui/classic.ui:340
 msgid "Noun Style|N"
-msgstr "Stile nominativo|n"
+msgstr "Stile sostantivo|n"
 
 #: lib/ui/classic.ui:341
 msgid "Bold Style|B"
@@ -9697,7 +9695,7 @@ msgstr "Formattazione speciale|o"
 
 #: lib/ui/stdmenus.ui:240
 msgid "List / TOC|i"
-msgstr "Elenchi / Indice generale|O"
+msgstr "Elenco / Indice generale|O"
 
 #: lib/ui/stdmenus.ui:241
 msgid "Float|a"
@@ -9778,7 +9776,7 @@ msgstr "Commento|C"
 
 #: lib/ui/stdmenus.ui:360
 msgid "Greyed Out|G"
-msgstr "Ombreggiata|G"
+msgstr "In grigio|G"
 
 #: lib/ui/stdmenus.ui:376
 msgid "Change Tracking|C"
@@ -10355,11 +10353,11 @@ msgstr "sfondo commento"
 
 #: src/LColor.C:111
 msgid "greyedout inset"
-msgstr "ombreggia in grigio l'inserto"
+msgstr "inserto ingrigito"
 
 #: src/LColor.C:112
 msgid "greyedout inset background"
-msgstr "ombreggia in grigio l'inserto sfondo"
+msgstr "sfondo dell'inserto ingrigito"
 
 #: src/LColor.C:113
 msgid "depth bar"
@@ -11603,7 +11601,7 @@ msgstr "BibKey"
 #: src/frontends/gtk/GDocument.C:58 src/frontends/qt2/QDocument.C:68
 #: src/frontends/xforms/FormDocument.C:93
 msgid "Document Settings"
-msgstr "Impostazioni dei documenti"
+msgstr "Impostazioni documento"
 
 #: src/frontends/gtk/GDocument.C:104 src/frontends/qt2/QDocument.C:133
 #: src/frontends/xforms/FormDocument.C:169
@@ -12338,7 +12336,7 @@ msgstr "&Ignora le regole di LaTeX"
 
 #: src/frontends/qt2/floatplacement.C:84
 msgid "&Span columns"
-msgstr "&Dividi le colonne"
+msgstr "&Attraversa colonne"
 
 #: src/frontends/qt2/floatplacement.C:94
 msgid "&Rotate sideways"
@@ -12815,7 +12813,7 @@ msgstr "Ignora impostazioni interne: questo significa \"!\" in LaTeX."
 
 #: src/frontends/xforms/FormFloat.C:98
 msgid "Span float over the columns."
-msgstr "Dividi gli oggetti mobili sopra le colonne."
+msgstr "Attraversa gli oggetti mobili sopra le colonne."
 
 #: src/frontends/xforms/FormFloat.C:100
 msgid "Rotate the float sideways by 90 degs."
@@ -13801,7 +13799,7 @@ msgstr "Commento"
 
 #: src/insets/insetnote.C:59
 msgid "Greyed out"
-msgstr "Ombreggiato grigio"
+msgstr "In grigio"
 
 #: src/insets/insetnote.C:137
 msgid "Opened Note Inset"
