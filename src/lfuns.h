@@ -367,6 +367,7 @@ enum kb_action {
 	// 280
 	LFUN_MATH_BIGDELIM,
 	LFUN_CLIPBOARD_PASTE,
+	LFUN_INSET_DISSOLVE,                 // jspitzm 20060807
 
 	LFUN_LASTACTION                  // end of the table
 };

@@ -22,6 +22,7 @@
 #include "dispatchresult.h"
 #include "errorlist.h"
 #include "funcrequest.h"
+#include "FuncStatus.h"
 #include "gettext.h"
 #include "intl.h"
 #include "LColor.h"
@@ -263,16 +264,50 @@ void InsetText::forceParagraphsToDefault(LCursor & cur)
 void InsetText::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
 	lyxerr[Debug::DEBUG] << BOOST_CURRENT_FUNCTION
-    << " [ cmd.action = " << cmd.action << ']' << endl;
+			     << " [ cmd.action = "
+			     << cmd.action << ']' << endl;
 	setViewCache(&cur.bv());
-	text_.dispatch(cur, cmd);
+
+	switch (cmd.action) {
+
+	case LFUN_CHAR_DELETE_FORWARD: {
+		if (!cur.selection() && cur.depth() > 1
+		    && cur.pit() == cur.lastpit()
+		    && cur.pos() == cur.lastpos())
+			// Merge inset with owner
+			cmd = FuncRequest(LFUN_INSET_DISSOLVE);
+		text_.dispatch(cur, cmd);
+		break;
+	}
+
+	case LFUN_CHAR_DELETE_BACKWARD: {
+		if (cur.depth() > 1 && cur.pit() == 0 && cur.pos() == 0)
+			// Merge inset with owner
+			cmd = FuncRequest(LFUN_INSET_DISSOLVE);
+		text_.dispatch(cur, cmd);
+		break;
+	}
+	
+	default:
+		text_.dispatch(cur, cmd);
+		break;
+	}
 }
 
 
 bool InsetText::getStatus(LCursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
-	return text_.getStatus(cur, cmd, status);
+	switch (cmd.action) {
+
+	case LFUN_CHAR_DELETE_FORWARD:
+	case LFUN_CHAR_DELETE_BACKWARD:
+		status.enabled(true);
+		return true;
+
+	default:
+		return text_.getStatus(cur, cmd, status);
+	}
 }
 
 

@@ -705,6 +705,44 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 	}
 
+	case LFUN_INSET_DISSOLVE: {
+		recordUndo(cur);
+		cur.selHandle(false);
+		// save position
+		lyx::pos_type spos = cur.pos();
+		lyx::pit_type spit = cur.pit();
+		bool content = false;
+		if (cur.lastpit() != 0 || cur.lastpos() != 0) {
+			setCursor(cur, 0, 0);
+			cur.resetAnchor();
+			cur.pit() = cur.lastpit();
+			cur.pos() = cur.lastpos();
+			cur.setSelection();
+			copySelection(cur);
+			content = true;
+		}
+			cur.popLeft();
+			cur.resetAnchor();
+			// store cursor offset
+			if (spit == 0)
+				spos += cur.pos();
+			spit += cur.pit();
+			cur.pos()++;
+			cur.setSelection();
+		if (content) {
+			lyx::cap::replaceSelection(cur);
+			pasteSelection(cur, 0);
+			cur.clearSelection();
+			// restore position
+			cur.pit() = std::min(cur.lastpit(), spit);
+			cur.pos() = std::min(cur.lastpos(), spos);
+			cur.resetAnchor();
+		} else
+			cutSelection(cur, false, false);
+		needsUpdate = true;
+		break;
+	}
+
 	case LFUN_INSET_SETTINGS:
 		cur.inset().showInsetDialog(bv);
 		break;
@@ -1708,6 +1746,11 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 
 	case LFUN_PARAGRAPH_MOVE_DOWN: {
 		enable = cur.pit() < cur.lastpit() && !cur.selection();
+		break;
+	}
+
+	case LFUN_INSET_DISSOLVE: {
+		enable = &cur.inset() && cur.inTexted();
 		break;
 	}
 
