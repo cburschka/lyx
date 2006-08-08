@@ -262,7 +262,7 @@ if test x$GXX = xyes; then
       2.96*)  AM_CXXFLAGS="-fno-exceptions -ftemplate-depth-30 -Wno-non-template-friend";;
       3.1*)    AM_CXXFLAGS="-finline-limit=500 -fno-exceptions";;
       3.2*|3.3*)    AM_CXXFLAGS="-fno-exceptions";;
-      3.4*|4.0*)
+      3.4*|4.*)
           AM_CXXFLAGS="-fno-exceptions"
           test $enable_pch = yes && lyx_pch_comp=yes
           ;;
@@ -270,7 +270,7 @@ if test x$GXX = xyes; then
   esac
   if test x$enable_stdlib_debug = xyes ; then
     case $gxx_version in
-      3.4*|4.0*)
+      3.4*|4.*)
         lyx_flags="stdlib-debug $lyx_flags"
 	AC_DEFINE(_GLIBCXX_DEBUG, 1, [libstdc++ debug mode])
 	AC_DEFINE(_GLIBCXX_DEBUG_PEDANTIC, 1, [libstdc++ pedantic debug mode])
@@ -283,7 +283,7 @@ if test x$GXX = xyes; then
         lyx_flags="concept-checks $lyx_flags"
         AC_DEFINE(_GLIBCPP_CONCEPT_CHECKS, 1, [libstdc++ concept checking])
 	;;
-      3.4*|4.0*)
+      3.4*|4.*)
         lyx_flags="concept-checks $lyx_flags"
 	AC_DEFINE(_GLIBCXX_CONCEPT_CHECKS, 1, [libstdc++ concept checking])
 	;;

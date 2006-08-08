@@ -1,3 +1,7 @@
+2006-08-08  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* lyxinclude.m4: Let gcc 4.x be handled.
+
 2006-08-08  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* lyxinclude.m4 (LYX_PROG_CXX): Set CPPFLAGS only if not already

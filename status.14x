@@ -44,6 +44,15 @@ What's new
 
 - Handle the Meta keyboard modifier as Alt (Qt only).
 
+* Build/installation:
+
+- Fix 'check' make target for systems which do not have /bin/bash (bug 2524).
+
+- Set CPPFLAGS only if not already set by the user (and ignore CXXFLAGS for
+  setting CPPFLAGS).
+
+- Handle properly gcc 4.1 in configure.
+
 * Miscellaneous
 
 - Display latex package checking results faster during configuration.
@@ -51,7 +60,3 @@ What's new
 - Change the encoding of some python scripts from iso-8859-15 to
   iso-8859-1. The former causes problems with embedded python.
 
-- Fix 'check' make target for systems which do not have /bin/bash (bug 2524)
-
-- Set CPPFLAGS only if not already set by the user (and ignore CXXFLAGS for
-  setting CPPFLAGS).
