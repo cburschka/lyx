@@ -18,8 +18,9 @@
 namespace lyx {
 namespace frontend {
 
-// build filelists of all availabe bst/cls/sty-files. done through
-// kpsewhich and an external script, saved in *Files.lst
+/** Build filelists of all availabe bst/cls/sty-files. Done through
+ *  kpsewhich and an external script, saved in *Files.lst.
+ */
 void rescanTexStyles();
 
 /// rebuild the textree

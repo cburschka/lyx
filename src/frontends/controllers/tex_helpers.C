@@ -13,6 +13,9 @@
 #include "tex_helpers.h"
 
 #include "debug.h"
+#include "gettext.h"
+
+#include "frontends/Alert.h"
 
 #include "support/filetools.h"
 #include "support/lstrings.h"
@@ -29,6 +32,7 @@ using std::endl;
 
 namespace lyx {
 
+using support::bformat;
 using support::contains;
 using support::GetExtension;
 using support::GetFileContents;
@@ -44,16 +48,18 @@ using support::token;
 
 namespace frontend {
 
-// build filelists of all availabe bst/cls/sty-files. done through
-// kpsewhich and an external script, saved in *Files.lst
 void rescanTexStyles()
 {
 	// Run rescan in user lyx directory
 	Path p(package().user_support());
+	string const command = LibFileSearch("scripts", "TeXFiles.py");
 	Systemcall one;
-	one.startscript(Systemcall::Wait,
-			"python " +
-			QuoteName(LibFileSearch("scripts", "TeXFiles.py")));
+	int const status = one.startscript(Systemcall::Wait,
+			"python " + QuoteName(command));
+	if (status == 0)
+		return;
+	Alert::error(_("Could not update TeX information"),
+	             bformat(_("The script `%s' failed."), command));
 }
 
 
