@@ -26,6 +26,9 @@ What's new
 
 * Document Input/Output
 
+- Fix crash on save (including dataloss) when the backup directory 
+  was invalid or not writeable(bug 2740).
+
 - Fix crash when importing LaTeX files with no text (bug 2667)
 
 - Ignore definition of lyxgreyout environment when re-importing a LyX

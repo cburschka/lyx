@@ -701,7 +701,10 @@ bool Buffer::save() const
 		// good enough. (Lgb)
 		// But to use this we need fs::copy_file to actually do a copy,
 		// even when the target file exists. (Lgb)
-		if (fs::exists(fileName()) && fs::is_writable(fs::path(fileName()).branch_path())) {
+		if (fs::exists(fileName()) 
+		    && fs::is_writable(fs::path(fileName()).branch_path())
+		    && fs::exists(fs::path(s).branch_path()) 
+		    && fs::is_writable(fs::path(s).branch_path())) {
 		  //try {
 		    fs::copy_file(fileName(), s, false);
 		    //}
@@ -709,6 +712,11 @@ bool Buffer::save() const
 		    //lyxerr << "LyX was not able to make backup copy. Beware.\n"
 		    //	   << fe.what() << endl;
 		    //}
+		} else {
+			Alert::error(_("Backup failure"),
+			     bformat(_("LyX was not able to make a backup copy in %1$s.\n"
+				       "Please check if the directory exists and is writeable."),
+				       fs::path(s).branch_path().native_directory_string()));
 		}
 	}
 

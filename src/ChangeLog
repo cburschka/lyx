@@ -1,3 +1,9 @@
+2006-08-08  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* buffer.C (save): Check if the backup directory is valid and
+	writeable, and warn the user if not (instead of letting boost
+	assert) [bug 2740].
+
 2006-08-08  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
         * LaTeX.C (deplog): Add the toc file to the dependencies if a line
