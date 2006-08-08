@@ -1,3 +1,10 @@
+2006-08-08  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+        * LaTeX.C (deplog): Add the toc file to the dependencies if a line
+        \tf@toc=\write#
+        is present in the log file, since miktex does not write the line
+        \openout# = `sample.toc'.
+
 2006-07-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* text3.C (dispatch): merge the SEL and non-SEL cursor movement
