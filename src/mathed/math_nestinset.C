@@ -1338,7 +1338,7 @@ bool MathNestInset::script(LCursor & cur, bool up, string const &
 		save_selection)
 {
 	// Hack to get \^ and \_ working
-	lyxerr << "handling script: up: " << up << endl;
+	//lyxerr << "handling script: up: " << up << endl;
 	if (cur.inMacroMode() && cur.macroName() == "\\") {
 		if (up)
 			cur.niceInsert(createMathInset("mathcircumflex"));
@@ -1351,7 +1351,7 @@ bool MathNestInset::script(LCursor & cur, bool up, string const &
 	if (asScriptInset() && cur.idx() == 0) {
 		// we are in a nucleus of a script inset, move to _our_ script
 		MathScriptInset * inset = asScriptInset();
-		lyxerr << " going to cell " << inset->idxOfScript(up) << endl;
+		//lyxerr << " going to cell " << inset->idxOfScript(up) << endl;
 		inset->ensure(up);
 		cur.idx() = inset->idxOfScript(up);
 		cur.pos() = 0;

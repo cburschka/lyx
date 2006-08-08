@@ -589,7 +589,7 @@ void copySelection(LCursor & cur)
 	}
 
 	if (cur.inMathed()) {
-		lyxerr << "copySelection in mathed" << endl;
+		//lyxerr << "copySelection in mathed" << endl;
 		ParagraphList pars;
 		pars.push_back(Paragraph());
 		BufferParams const & bp = cur.buffer().params();
