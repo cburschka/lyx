@@ -53,7 +53,7 @@ def main(argv):
     # What are the languages available? And its documents?
     languages = {}
     srcdir = os.path.dirname(argv[0])
-    for file in glob(srcdir + '/*'):
+    for file in glob(srcdir + '/*.lyx'):
         file = os.path.basename(file)
         lang = lang_pattern.match(file)
         if lang:
