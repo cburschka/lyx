@@ -34,7 +34,9 @@ What's new
 
 * Miscellaneous
 
+- Display latex package checking results faster during configuration.
+
 - Change the encoding of some python scripts from iso-8859-15 to
   iso-8859-1. The former causes problems with embedded python.
 
-- Display latex package checking results faster during configuration.
+- fix 'check' make target for systems which do not have /bin/bash (bug 2524)
