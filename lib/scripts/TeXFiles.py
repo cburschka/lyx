@@ -1,13 +1,13 @@
 #!/usr/bin/env python
-# -*- coding: iso-8859-1 -*-
+# -*- coding: utf-8 -*-
 
 # file TeXFiles.py
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
 
-# \author Herbert Voß
+# \author Herbert VoÃŸ
 # \author Jean-Marc Lasgouttes
-# \author Jürgen Spitzmüller
+# \author JÃ¼rgen SpitzmÃ¼ller
 # \author Bo Peng
 
 # Full author contact details are available in file CREDITS.

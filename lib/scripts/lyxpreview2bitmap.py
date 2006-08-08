@@ -1,5 +1,5 @@
 #! /usr/bin/env python
-# -*- coding: iso-8859-1 -*-
+# -*- coding: utf-8 -*-
 
 # file lyxpreview2bitmap.py
 # This file is part of LyX, the document processor.
@@ -8,7 +8,7 @@
 # author Angus Leeming
 # with much advice from members of the preview-latex project:
 # David Kastrup, dak@gnu.org and
-# Jan-Åke Larsson, jalar@mai.liu.se.
+# Jan-Ã…ke Larsson, jalar@mai.liu.se.
 
 # Full author contact details are available in file CREDITS
 

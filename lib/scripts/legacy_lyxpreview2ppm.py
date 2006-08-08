@@ -1,5 +1,5 @@
 #! /usr/bin/env python
-# -*- coding: iso-8859-1 -*-
+# -*- coding: utf-8 -*-
 
 # file legacy_lyxpreview2ppm.py
 # This file is part of LyX, the document processor.
@@ -10,7 +10,7 @@
 
 # with much advice from members of the preview-latex project:
 #   David Kastrup, dak@gnu.org and
-#   Jan-Åke Larsson, jalar@mai.liu.se.
+#   Jan-Ã…ke Larsson, jalar@mai.liu.se.
 # and with much help testing the code under Windows from
 #   Paul A. Rubin, rubin@msu.edu.
 

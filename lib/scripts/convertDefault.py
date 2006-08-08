@@ -1,11 +1,11 @@
 #!/usr/bin/env python
-# -*- coding: iso-8859-1 -*-
+# -*- coding: utf-8 -*-
 
 # file convertDefault.py
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
 
-# \author Herbert Voﬂ
+# \author Herbert Vo√ü
 # \author Bo Peng
 
 # Full author contact details are available in file CREDITS.
