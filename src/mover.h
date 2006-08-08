@@ -105,7 +105,7 @@ public:
 
 	/** @c command should be of the form
 	 *  <code>
-	 *      sh $$s/scripts/fig_copy.sh $$i $$o $$l
+	 *      python $$s/scripts/fig_copy.py $$i $$o $$l
 	 *  </code>
 	 *  where $$s is a placeholder for the lyx support directory,
 	 *        $$i is a placeholder for the name of the file to be moved,
