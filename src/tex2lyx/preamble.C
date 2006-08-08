@@ -406,7 +406,8 @@ LyXTextClass const parse_preamble(Parser & p, ostream & os, string const & force
 			ss << '{' << p.verbatim_item() << '}';
 			ss << '{' << p.verbatim_item() << '}';
 			if (name != "lyxcode" && name != "lyxlist" &&
-			    name != "lyxrightadress" && name != "lyxaddress")
+			    name != "lyxrightadress" &&
+			    name != "lyxaddress" && name != "lyxgreyedout")
 				h_preamble << ss.str();
 		}
 
