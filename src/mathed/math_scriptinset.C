@@ -320,7 +320,6 @@ void MathScriptInset::removeScript(bool up)
 		}
 		cells_.pop_back();
 	}
-	lyxerr << "MathScriptInset::removeScript: 2 up: " << up << endl;
 }
 
 
