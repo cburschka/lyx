@@ -49,6 +49,8 @@ What's new
 
 - Handle the Meta keyboard modifier as Alt (Qt only).
 
+- Fix the C-x C-b binding in emacs mode (bug 2747).
+
 * Build/installation:
 
 - Fix 'check' make target for systems which do not have /bin/bash (bug 2524).
