@@ -308,12 +308,9 @@ bool MathScriptInset::hasLimits() const
 
 void MathScriptInset::removeScript(bool up)
 {
-	lyxerr << "MathScriptInset::removeScript: 1 up: " << up << endl;
 	if (nargs() == 2) {
-		lyxerr << "MathScriptInset::removeScript: a up: " << up << endl;
 		if (up == cell_1_is_up_)
 			cells_.pop_back();
-		lyxerr << "MathScriptInset::removeScript: b up: " << up << endl;
 	} else if (nargs() == 3) {
 		if (up == true) {
 			swap(cells_[1], cells_[2]);
