@@ -446,14 +446,6 @@ contributers = [
                  "30 March 2005",
                  u"Bug fixes"),
 
-     contributer(u"Claudio Coco",
-                 "lacocio () libero ! it",
-                 "GPL",
-                 "Agreement to GNU General Public licence",
-                 "m=113749629514591",
-                 "17 January 2006",
-                 u"Italian translation"),
-
      contributer(u"Jean-Pierre Chrétien",
                  "chretien () cert ! fr",
                  "GPL",
@@ -461,6 +453,14 @@ contributers = [
                  "m=111842518713710",
                  "10 June 2005",
                  u"French translation of the Windows installer"),
+
+     contributer(u"Claudio Coco",
+                 "lacocio () libero ! it",
+                 "GPL",
+                 "Agreement to GNU General Public licence",
+                 "m=113749629514591",
+                 "17 January 2006",
+                 u"Italian translation"),
 
      contributer(u"Matthias Kalle Dalheimer",
                  "kalle () kdab ! net",
@@ -669,6 +669,14 @@ contributers = [
                  "m=111054675600338",
                  "11 March 2005",
                  u"Gtk reference insertion dialog"),
+
+     contributer(u"Kostantino",
+                 "ciclope10 () alice ! it",
+                 "GPL",
+                 "Permission granted",
+                 "m=115513400621782",
+                 "9 August 2006",
+                 u"Italian localization of the interface"),
 
      contributer(u"Michael Koziarski",
                  "koziarski () gmail ! com",
