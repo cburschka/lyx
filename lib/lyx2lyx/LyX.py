@@ -157,6 +157,7 @@ class LyX_Base:
         self.preamble = []
         self.body = []
         self.status = 0
+        self.encoding = "auto"
 
 
     def warning(self, message, debug_level= default_debug_level):
