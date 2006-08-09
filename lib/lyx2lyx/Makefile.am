@@ -4,10 +4,9 @@ CLEANFILES += *.pyc *.pyo
 
 EXTRA_DIST = lyx2lyx_version.py.in
 
+CHMOD = chmod
+
 lyx2lyxdir = $(pkgdatadir)/lyx2lyx
-# We cannot use dist_lyx2lyx_SCRIPTS for lyx2lyx, since a possible
-# version-suffix would get appended to the names. So we use dist_scripts_DATA
-# and chmod manually in install-data-hook.
 dist_lyx2lyx_PYTHON = \
 	lyx2lyx \
 	lyx2lyx_version.py \
@@ -30,3 +29,6 @@ dist_lyx2lyx_PYTHON = \
 	lyx_1_5.py \
 	profiling.py \
 	test_parser_tools.py
+
+install-data-hook:
+	$(CHMOD) 755 $(DESTDIR)$(lyx2lyxdir)/lyx2lyx
