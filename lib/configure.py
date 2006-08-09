@@ -13,6 +13,24 @@
 import sys, os, re, shutil, glob
 
 
+class Tee:
+    ''' Writing to a Tee object will write to all file objects it keeps.
+        That is to say, writing to Tee(sys.stdout, open(logfile, 'w')) will
+        write to sys.stdout as well as a log file.
+    '''
+    def __init__(self, *args):
+        self.files = args
+
+    def write(self, data):
+        for f in self.files:
+            result = f.write(data)
+        return result
+
+    def writelines(self, seq):
+        for i in seq:
+            self.write(i)
+
+
 def writeToFile(filename, lines, append = False):
     " utility function: write or append lines to filename "
     if append:
@@ -662,6 +680,7 @@ if __name__ == '__main__':
     rc_entries = ''
     lyx_keep_temps = False
     version_suffix = ''
+    logfile = 'configure.log'
     ## Parse the command line
     for op in sys.argv[1:]:   # default shell/for list is $*, the options
         if op in [ '-help', '--help', '-h' ]:
@@ -682,7 +701,11 @@ Options:
         else:
             print "Unknown option", op
             sys.exit(1)
-    #    
+    #
+    # set up log file for stdout and stderr
+    log = open(logfile, 'w')
+    sys.stdout = Tee(sys.stdout, log)
+    sys.stderr = Tee(sys.stderr, log)
     # check if we run from the right directory
     srcdir = os.path.dirname(sys.argv[0])
     if srcdir == '':

@@ -64,6 +64,8 @@ What's new
 
 - Display latex package checking results faster during configuration.
 
+- Log the output of configure.py to a log file configure.log.
+
 - Change the encoding of some python scripts from iso-8859-15 to
   iso-8859-1. The former causes problems with embedded python.
 
