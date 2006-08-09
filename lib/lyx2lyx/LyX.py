@@ -124,7 +124,11 @@ def get_encoding(language, inputencoding):
 #
 class LyX_Base:
     """This class carries all the information of the LyX file."""
-    def __init__(self, end_format = 0, input = "", output = "", error = "", debug = default_debug_level, try_hard = 0):
+    
+    def __init__(self, end_format = 0, input = "", output = "", error
+                 = "", debug = default_debug_level, try_hard = 0, language = "english",
+                 encoding = "auto"):
+        
         """Arguments:
         end_format: final format that the file should be converted. (integer)
         input: the name of the input source, if empty resort to standard input.
@@ -157,7 +161,8 @@ class LyX_Base:
         self.preamble = []
         self.body = []
         self.status = 0
-        self.encoding = "auto"
+        self.encoding = encoding
+        self.language = language
 
 
     def warning(self, message, debug_level= default_debug_level):
@@ -240,6 +245,8 @@ class LyX_Base:
         " Writes the LyX file to self.output."
         self.set_version()
         self.set_format()
+        if self.encoding == "auto":
+            self.encoding = get_encoding(self.language, self.encoding)
 
         if self.preamble:
             i = find_token(self.header, '\\textclass', 0) + 1
