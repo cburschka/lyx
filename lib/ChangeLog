@@ -1,3 +1,9 @@
+2006-08-08  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* bind/emacs.bind: 
+	* bind/xemacs.bind: update the C-x C-b binding to open the "view"
+	menu (bug 2747).
+
 2006-08-08  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* external_templates (XFig): Require the color package, since xfig
