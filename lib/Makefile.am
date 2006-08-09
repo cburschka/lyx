@@ -2,16 +2,13 @@ include $(top_srcdir)/config/common.am
 
 SUBDIRS = doc lyx2lyx
 
-EXTRA_DIST = \
-	chkconfig.ltx
-
 CHMOD = chmod
 
-# We cannot use dist_pkgdata_SCRIPTS for configure, since a possible
-# version-suffix would get appended to the names. So we use dist_pkgdata_DATA
-# and chmod manually in install-data-hook.
-dist_pkgdata_DATA = lyxrc.example CREDITS chkconfig.ltx configure.py \
+dist_pkgdata_DATA = lyxrc.example CREDITS chkconfig.ltx \
 	       external_templates encodings languages symbols syntax.default
+
+# Note that we "chmod 755" manually this file in install-data-hook.
+dist_pkgdata_PYTHON = configure.py 
 
 binddir = $(pkgdatadir)/bind
 dist_bind_DATA = \
@@ -841,10 +838,8 @@ dist_layouts_DATA =\
 	layouts/svglobal.layout
 
 scriptsdir = $(pkgdatadir)/scripts
-# We cannot use dist_scripts_SCRIPTS, since a possible version-suffix would
-# get appended to the names. So we use dist_scripts_DATA and chmod manually
-# in install-data-hook.
-dist_scripts_DATA = \
+# Note that we "chmod 755" manually these files in install-data-hook.
+dist_scripts_PYTHON = \
 	scripts/TeXFiles.py \
 	scripts/clean_dvi.py \
 	scripts/convertDefault.py \
@@ -901,6 +896,6 @@ dist_ui_DATA = \
 
 install-data-hook:
 	$(CHMOD) 755 $(DESTDIR)$(pkgdatadir)/configure.py
-	for i in $(dist_scripts_DATA); do \
+	for i in $(dist_scripts_PYTHON); do \
 		$(CHMOD) 755 $(DESTDIR)$(pkgdatadir)/$$i; \
 	done

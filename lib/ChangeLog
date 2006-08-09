@@ -1,3 +1,11 @@
+2006-08-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* Makefile.am (dist_pkgdata_DATA): remove configure.py
+	(dist_pkgdata_PYTHON): and put it here
+	(dist_scripts_DATA): rename to dist_scripts_PYTHON; this invokes
+	automake's built-in python support.
+	(install-data-hook): adapt to above change.
+
 2006-08-08  Bo Peng <ben.bob@gmail.com>
 
 	* configure.py: Keep a copy of the output of configure.py to a log
