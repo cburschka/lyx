@@ -217,9 +217,6 @@
                         <property name="text">
                             <string>&amp;Rotate table 90 degrees</string>
                         </property>
-                        <property name="accel">
-                            <string>Alt+R</string>
-                        </property>
                         <property name="toolTip" stdset="0">
                             <string>Rotate the table by 90 degrees</string>
                         </property>
@@ -230,9 +227,6 @@
                         </property>
                         <property name="text">
                             <string>Rotate &amp;cell 90 degrees</string>
-                        </property>
-                        <property name="accel">
-                            <string>Alt+C</string>
                         </property>
                         <property name="toolTip" stdset="0">
                             <string>Rotate this cell by 90 degrees</string>
@@ -824,9 +818,6 @@
                                         <property name="text">
                                             <string>Fo&amp;rmal</string>
                                         </property>
-                                        <property name="accel">
-                                            <string>Alt+R</string>
-                                        </property>
                                         <property name="toolTip" stdset="0">
                                             <string>Use formal (a.k.a. booktabs) border style (no vertical borders)</string>
                                         </property>
@@ -837,9 +828,6 @@
                                         </property>
                                         <property name="text">
                                             <string>De&amp;fault</string>
-                                        </property>
-                                        <property name="accel">
-                                            <string>Alt+F</string>
                                         </property>
                                         <property name="toolTip" stdset="0">
                                             <string>Use default (grid-like) border style</string>
