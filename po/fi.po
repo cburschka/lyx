@@ -62,7 +62,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-07-13 10:00+0200\n"
+"POT-Creation-Date: 2006-08-10 10:50+0200\n"
 "PO-Revision-Date: 2005-03-30 23:49+0300\n"
 "Last-Translator: Pauli Virtanen <pauli.virtanen@hut.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -10164,18 +10164,18 @@ msgid "Redo|R"
 msgstr "Tee uudelleen|d"
 
 #: lib/ui/stdmenus.ui:84 lib/ui/stdtoolbars.ui:51
-#: src/mathed/math_nestinset.C:433 src/text3.C:759
+#: src/mathed/math_nestinset.C:433 src/text3.C:737
 msgid "Cut"
 msgstr "Leikkaa"
 
 #: lib/ui/stdmenus.ui:85 lib/ui/stdtoolbars.ui:52
-#: src/mathed/math_nestinset.C:441 src/text3.C:764
+#: src/mathed/math_nestinset.C:441 src/text3.C:742
 msgid "Copy"
 msgstr "Kopioi"
 
 #: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:644
 #: src/mathed/math_gridinset.C:1207 src/mathed/math_nestinset.C:417
-#: src/text3.C:746
+#: src/text3.C:724
 msgid "Paste"
 msgstr "Liit‰"
 
@@ -10504,11 +10504,11 @@ msgstr "Haluatko tallentaa asiakirjan?"
 msgid "Print document"
 msgstr "Tuo asiakirja"
 
-#: lib/ui/stdtoolbars.ui:49 src/BufferView_pimpl.C:1125
+#: lib/ui/stdtoolbars.ui:49 src/BufferView_pimpl.C:1126
 msgid "Undo"
 msgstr "Kumoa"
 
-#: lib/ui/stdtoolbars.ui:50 src/BufferView_pimpl.C:1136
+#: lib/ui/stdtoolbars.ui:50 src/BufferView_pimpl.C:1137
 msgid "Redo"
 msgstr "Tee uudelleen"
 
@@ -10917,51 +10917,51 @@ msgstr "Asiakirjaa %1$s ei voi lis‰t‰"
 msgid "Document insertion"
 msgstr "Asiakirjan asetukset"
 
-#: src/BufferView_pimpl.C:1128
+#: src/BufferView_pimpl.C:1129
 msgid "No further undo information"
 msgstr "Ei en‰‰ muuta kumottavaa"
 
-#: src/BufferView_pimpl.C:1139
+#: src/BufferView_pimpl.C:1140
 msgid "No further redo information"
 msgstr "Ei muuta uudelleen teht‰v‰‰"
 
-#: src/BufferView_pimpl.C:1269
+#: src/BufferView_pimpl.C:1270
 msgid "Mark off"
 msgstr "Merkint‰ pois p‰‰lt‰"
 
-#: src/BufferView_pimpl.C:1276
+#: src/BufferView_pimpl.C:1277
 msgid "Mark on"
 msgstr "Merkint‰ p‰‰lle"
 
-#: src/BufferView_pimpl.C:1283
+#: src/BufferView_pimpl.C:1284
 msgid "Mark removed"
 msgstr "Merkint‰ poistettu"
 
-#: src/BufferView_pimpl.C:1286
+#: src/BufferView_pimpl.C:1287
 msgid "Mark set"
 msgstr "Merkint‰ asetettu"
 
-#: src/BufferView_pimpl.C:1332
+#: src/BufferView_pimpl.C:1333
 #, fuzzy, c-format
 msgid "%1$d words in selection."
 msgstr "%1$d sanaa tarkastettu."
 
-#: src/BufferView_pimpl.C:1335
+#: src/BufferView_pimpl.C:1336
 #, fuzzy, c-format
 msgid "%1$d words in document."
 msgstr "%1$d sanaa tarkastettu."
 
-#: src/BufferView_pimpl.C:1340
+#: src/BufferView_pimpl.C:1341
 #, fuzzy
 msgid "One word in selection."
 msgstr "Yksi sana tarkastettu."
 
-#: src/BufferView_pimpl.C:1342
+#: src/BufferView_pimpl.C:1343
 #, fuzzy
 msgid "One word in document."
 msgstr "Lis‰t‰‰n asiakirja "
 
-#: src/BufferView_pimpl.C:1345
+#: src/BufferView_pimpl.C:1346
 #, fuzzy
 msgid "Count words"
 msgstr "Nykyinen sana"
@@ -11384,15 +11384,27 @@ msgstr ""
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr ""
 
-#: src/buffer.C:1125
+#: src/buffer.C:716
+#, fuzzy
+msgid "Backup failure"
+msgstr "Varmuuskopiot"
+
+#: src/buffer.C:717
+#, c-format
+msgid ""
+"LyX was not able to make a backup copy in %1$s.\n"
+"Please check if the directory exists and is writeable."
+msgstr ""
+
+#: src/buffer.C:1133
 msgid "Running chktex..."
 msgstr "chktex on k‰ynniss‰..."
 
-#: src/buffer.C:1138
+#: src/buffer.C:1146
 msgid "chktex failure"
 msgstr ""
 
-#: src/buffer.C:1139
+#: src/buffer.C:1147
 #, fuzzy
 msgid "Could not run chktex successfully."
 msgstr "Chktex-ajo onnistui"
@@ -14307,7 +14319,8 @@ msgid "Show full path or only file name."
 msgstr "N‰yt‰ koko polku tai vain tiedoston nimi"
 
 #: src/frontends/xforms/FormTexinfo.C:60
-msgid "Runs the script \"TexFiles.sh\" to rebuild the file lists."
+#, fuzzy
+msgid "Runs the script \"TexFiles.py\" to rebuild the file lists."
 msgstr "Ajaa komentojonon \"TexFiles.sh\" luodakseen uudet tiedostoluettelot."
 
 #: src/frontends/xforms/FormTexinfo.C:63
@@ -15336,7 +15349,7 @@ msgstr "K‰‰nnˆsloki"
 msgid "ChkTeX"
 msgstr "Tarkista TeX"
 
-#: src/lyxfunc.C:1020 src/text3.C:1165
+#: src/lyxfunc.C:1020 src/text3.C:1143
 msgid "Missing argument"
 msgstr "Argumentti puuttuu"
 
@@ -16010,11 +16023,11 @@ msgstr ""
 msgid "Math editor mode"
 msgstr "Matematiikkaeditoritila"
 
-#: src/mathed/math_nestinset.C:814
+#: src/mathed/math_nestinset.C:807
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/math_nestinset.C:817
+#: src/mathed/math_nestinset.C:810
 #, fuzzy
 msgid "entered math text mode (textrm)"
 msgstr "Tavallinen teksti\t\\textrm"
@@ -16220,23 +16233,23 @@ msgstr "Hakemistoon voi lis‰t‰ vain yhden kappaleen!"
 msgid "Unknown spacing argument: "
 msgstr "Tuntematon v‰liparametri: "
 
-#: src/text3.C:808
+#: src/text3.C:786
 msgid "LyX function 'layout' needs an argument."
 msgstr "LyXin funktio \"layout\" vaatii parametrin."
 
-#: src/text3.C:826
+#: src/text3.C:804
 msgid "Layout "
 msgstr "Muotoilu "
 
-#: src/text3.C:827
+#: src/text3.C:805
 msgid " not known"
 msgstr " tuntematon"
 
-#: src/text3.C:1269 src/text3.C:1281
+#: src/text3.C:1247 src/text3.C:1259
 msgid "Character set"
 msgstr "Merkistˆ"
 
-#: src/text3.C:1413
+#: src/text3.C:1391
 msgid "Paragraph layout set"
 msgstr "Kappaletyyli asetettu"
 

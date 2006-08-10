@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-07-13 10:00+0200\n"
+"POT-Creation-Date: 2006-08-10 10:50+0200\n"
 "PO-Revision-Date: 2004-01-02 23:55+0100\n"
 "Last-Translator:  Roman Maurer <roman@lugos.si>\n"
 "Language-Team: Slovenian <translation-team-sl@lists.sourceforge.net>\n"
@@ -10214,18 +10214,18 @@ msgid "Redo|R"
 msgstr "Ponovi|o"
 
 #: lib/ui/stdmenus.ui:84 lib/ui/stdtoolbars.ui:51
-#: src/mathed/math_nestinset.C:433 src/text3.C:759
+#: src/mathed/math_nestinset.C:433 src/text3.C:737
 msgid "Cut"
 msgstr "Izre¾i"
 
 #: lib/ui/stdmenus.ui:85 lib/ui/stdtoolbars.ui:52
-#: src/mathed/math_nestinset.C:441 src/text3.C:764
+#: src/mathed/math_nestinset.C:441 src/text3.C:742
 msgid "Copy"
 msgstr "Prepi¹i"
 
 #: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:644
 #: src/mathed/math_gridinset.C:1207 src/mathed/math_nestinset.C:417
-#: src/text3.C:746
+#: src/text3.C:724
 msgid "Paste"
 msgstr "Prilepi"
 
@@ -10554,11 +10554,11 @@ msgstr "®elite shraniti spis?"
 msgid "Print document"
 msgstr "Uvozi spis"
 
-#: lib/ui/stdtoolbars.ui:49 src/BufferView_pimpl.C:1125
+#: lib/ui/stdtoolbars.ui:49 src/BufferView_pimpl.C:1126
 msgid "Undo"
 msgstr "Razveljavi"
 
-#: lib/ui/stdtoolbars.ui:50 src/BufferView_pimpl.C:1136
+#: lib/ui/stdtoolbars.ui:50 src/BufferView_pimpl.C:1137
 msgid "Redo"
 msgstr "Ponovi"
 
@@ -10968,52 +10968,52 @@ msgstr "Spisa ni moè vstaviti"
 msgid "Document insertion"
 msgstr "Spisi"
 
-#: src/BufferView_pimpl.C:1128
+#: src/BufferView_pimpl.C:1129
 #, fuzzy
 msgid "No further undo information"
 msgstr "Ni nadaljnjih razveljavitvenih podatkov"
 
-#: src/BufferView_pimpl.C:1139
+#: src/BufferView_pimpl.C:1140
 msgid "No further redo information"
 msgstr "Ni nadaljnjih ponovitvenih podatkov"
 
-#: src/BufferView_pimpl.C:1269
+#: src/BufferView_pimpl.C:1270
 msgid "Mark off"
 msgstr "Znak izkljuèen"
 
-#: src/BufferView_pimpl.C:1276
+#: src/BufferView_pimpl.C:1277
 msgid "Mark on"
 msgstr "Znak vkljuèen"
 
-#: src/BufferView_pimpl.C:1283
+#: src/BufferView_pimpl.C:1284
 msgid "Mark removed"
 msgstr "Znak odstranjen"
 
-#: src/BufferView_pimpl.C:1286
+#: src/BufferView_pimpl.C:1287
 msgid "Mark set"
 msgstr "Znak postavljen"
 
-#: src/BufferView_pimpl.C:1332
+#: src/BufferView_pimpl.C:1333
 #, fuzzy, c-format
 msgid "%1$d words in selection."
 msgstr "%1$d words checked."
 
-#: src/BufferView_pimpl.C:1335
+#: src/BufferView_pimpl.C:1336
 #, fuzzy, c-format
 msgid "%1$d words in document."
 msgstr "%1$d words checked."
 
-#: src/BufferView_pimpl.C:1340
+#: src/BufferView_pimpl.C:1341
 #, fuzzy
 msgid "One word in selection."
 msgstr "Zaznana ena napaka"
 
-#: src/BufferView_pimpl.C:1342
+#: src/BufferView_pimpl.C:1343
 #, fuzzy
 msgid "One word in document."
 msgstr "Vstavlja se spis "
 
-#: src/BufferView_pimpl.C:1345
+#: src/BufferView_pimpl.C:1346
 #, fuzzy
 msgid "Count words"
 msgstr "Trenutna beseda"
@@ -11446,15 +11446,27 @@ msgstr ""
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr ""
 
-#: src/buffer.C:1125
+#: src/buffer.C:716
+#, fuzzy
+msgid "Backup failure"
+msgstr "Imenik za &varnostno kopiranje: "
+
+#: src/buffer.C:717
+#, c-format
+msgid ""
+"LyX was not able to make a backup copy in %1$s.\n"
+"Please check if the directory exists and is writeable."
+msgstr ""
+
+#: src/buffer.C:1133
 msgid "Running chktex..."
 msgstr "Izvaja se chktex..."
 
-#: src/buffer.C:1138
+#: src/buffer.C:1146
 msgid "chktex failure"
 msgstr ""
 
-#: src/buffer.C:1139
+#: src/buffer.C:1147
 #, fuzzy
 msgid "Could not run chktex successfully."
 msgstr "Chktex uspe¹no zagnan"
@@ -14427,7 +14439,7 @@ msgid "Show full path or only file name."
 msgstr ""
 
 #: src/frontends/xforms/FormTexinfo.C:60
-msgid "Runs the script \"TexFiles.sh\" to rebuild the file lists."
+msgid "Runs the script \"TexFiles.py\" to rebuild the file lists."
 msgstr ""
 
 #: src/frontends/xforms/FormTexinfo.C:63
@@ -15494,7 +15506,7 @@ msgstr "Zgradi program"
 msgid "ChkTeX"
 msgstr "Preveri TeX"
 
-#: src/lyxfunc.C:1020 src/text3.C:1165
+#: src/lyxfunc.C:1020 src/text3.C:1143
 msgid "Missing argument"
 msgstr "Manjkajoèi argument"
 
@@ -16075,11 +16087,11 @@ msgstr ""
 msgid "Math editor mode"
 msgstr "Naèin matematiènega urejanja"
 
-#: src/mathed/math_nestinset.C:814
+#: src/mathed/math_nestinset.C:807
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/math_nestinset.C:817
+#: src/mathed/math_nestinset.C:810
 msgid "entered math text mode (textrm)"
 msgstr ""
 
@@ -16279,24 +16291,24 @@ msgstr "Celica tabele ne more obsegati veè kot enega odstavka!"
 msgid "Unknown spacing argument: "
 msgstr "Manjkajoèi argument"
 
-#: src/text3.C:808
+#: src/text3.C:786
 msgid "LyX function 'layout' needs an argument."
 msgstr ""
 
-#: src/text3.C:826
+#: src/text3.C:804
 msgid "Layout "
 msgstr "Videz "
 
-#: src/text3.C:827
+#: src/text3.C:805
 msgid " not known"
 msgstr " ni znan"
 
-#: src/text3.C:1269 src/text3.C:1281
+#: src/text3.C:1247 src/text3.C:1259
 #, fuzzy
 msgid "Character set"
 msgstr "Znakovni nabor:|#Z"
 
-#: src/text3.C:1413
+#: src/text3.C:1391
 msgid "Paragraph layout set"
 msgstr "Nastavljen videz odstavka"
 

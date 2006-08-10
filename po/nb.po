@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.4.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-07-13 10:00+0200\n"
+"POT-Creation-Date: 2006-08-10 10:50+0200\n"
 "PO-Revision-Date: 2005-12-18 15:10+0100\n"
 "Last-Translator: Lars Gullik Bjønnes <larsbj@lyx.org>\n"
 "Language-Team: norsk <no@li.org>\n"
@@ -9595,18 +9595,18 @@ msgid "Redo|R"
 msgstr "Gjør om|G"
 
 #: lib/ui/stdmenus.ui:84 lib/ui/stdtoolbars.ui:51
-#: src/mathed/math_nestinset.C:433 src/text3.C:759
+#: src/mathed/math_nestinset.C:433 src/text3.C:737
 msgid "Cut"
 msgstr "Klipp"
 
 #: lib/ui/stdmenus.ui:85 lib/ui/stdtoolbars.ui:52
-#: src/mathed/math_nestinset.C:441 src/text3.C:764
+#: src/mathed/math_nestinset.C:441 src/text3.C:742
 msgid "Copy"
 msgstr "Kopier"
 
 #: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:644
 #: src/mathed/math_gridinset.C:1207 src/mathed/math_nestinset.C:417
-#: src/text3.C:746
+#: src/text3.C:724
 msgid "Paste"
 msgstr "Lim inn"
 
@@ -9880,11 +9880,11 @@ msgstr "Lagre dokumentet"
 msgid "Print document"
 msgstr "Skriv ut dokumentet"
 
-#: lib/ui/stdtoolbars.ui:49 src/BufferView_pimpl.C:1125
+#: lib/ui/stdtoolbars.ui:49 src/BufferView_pimpl.C:1126
 msgid "Undo"
 msgstr "Angre"
 
-#: lib/ui/stdtoolbars.ui:50 src/BufferView_pimpl.C:1136
+#: lib/ui/stdtoolbars.ui:50 src/BufferView_pimpl.C:1137
 msgid "Redo"
 msgstr "Gjør omigjen"
 
@@ -10241,49 +10241,49 @@ msgstr "Kunne ikke sette inn dokumentet %1$s"
 msgid "Document insertion"
 msgstr "Dokumentinnstillinger"
 
-#: src/BufferView_pimpl.C:1128
+#: src/BufferView_pimpl.C:1129
 msgid "No further undo information"
 msgstr "Ikke mer \"Angre\" informasjon"
 
-#: src/BufferView_pimpl.C:1139
+#: src/BufferView_pimpl.C:1140
 msgid "No further redo information"
 msgstr "Ikke mer \"Gjør om\" informasjon"
 
-#: src/BufferView_pimpl.C:1269
+#: src/BufferView_pimpl.C:1270
 msgid "Mark off"
 msgstr "Merke slått av"
 
-#: src/BufferView_pimpl.C:1276
+#: src/BufferView_pimpl.C:1277
 msgid "Mark on"
 msgstr "Merke på"
 
-#: src/BufferView_pimpl.C:1283
+#: src/BufferView_pimpl.C:1284
 msgid "Mark removed"
 msgstr "Fjernet merke"
 
-#: src/BufferView_pimpl.C:1286
+#: src/BufferView_pimpl.C:1287
 msgid "Mark set"
 msgstr "Merke satt"
 
-#: src/BufferView_pimpl.C:1332
+#: src/BufferView_pimpl.C:1333
 #, c-format
 msgid "%1$d words in selection."
 msgstr "Det er %1$d ord i utvalget"
 
-#: src/BufferView_pimpl.C:1335
+#: src/BufferView_pimpl.C:1336
 #, c-format
 msgid "%1$d words in document."
 msgstr "Det er %1$d ord i dokumentet."
 
-#: src/BufferView_pimpl.C:1340
+#: src/BufferView_pimpl.C:1341
 msgid "One word in selection."
 msgstr "Det er ett ord i utvalget."
 
-#: src/BufferView_pimpl.C:1342
+#: src/BufferView_pimpl.C:1343
 msgid "One word in document."
 msgstr "Ett ord i dokumentet."
 
-#: src/BufferView_pimpl.C:1345
+#: src/BufferView_pimpl.C:1346
 msgid "Count words"
 msgstr "Telle ord"
 
@@ -10682,15 +10682,27 @@ msgstr ""
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr ""
 
-#: src/buffer.C:1125
+#: src/buffer.C:716
+#, fuzzy
+msgid "Backup failure"
+msgstr "&Sikkerhetskopier:"
+
+#: src/buffer.C:717
+#, c-format
+msgid ""
+"LyX was not able to make a backup copy in %1$s.\n"
+"Please check if the directory exists and is writeable."
+msgstr ""
+
+#: src/buffer.C:1133
 msgid "Running chktex..."
 msgstr "Kjører chktex..."
 
-#: src/buffer.C:1138
+#: src/buffer.C:1146
 msgid "chktex failure"
 msgstr ""
 
-#: src/buffer.C:1139
+#: src/buffer.C:1147
 msgid "Could not run chktex successfully."
 msgstr "Mislyktes med chktex."
 
@@ -13431,7 +13443,7 @@ msgid "Show full path or only file name."
 msgstr ""
 
 #: src/frontends/xforms/FormTexinfo.C:60
-msgid "Runs the script \"TexFiles.sh\" to rebuild the file lists."
+msgid "Runs the script \"TexFiles.py\" to rebuild the file lists."
 msgstr ""
 
 #: src/frontends/xforms/FormTexinfo.C:63
@@ -14465,7 +14477,7 @@ msgstr "Bygge logg"
 msgid "ChkTeX"
 msgstr "Sjekk TeX"
 
-#: src/lyxfunc.C:1020 src/text3.C:1165
+#: src/lyxfunc.C:1020 src/text3.C:1143
 msgid "Missing argument"
 msgstr "Mangler argument"
 
@@ -15042,11 +15054,11 @@ msgstr ""
 msgid "Math editor mode"
 msgstr "Matte editerings modus"
 
-#: src/mathed/math_nestinset.C:814
+#: src/mathed/math_nestinset.C:807
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/math_nestinset.C:817
+#: src/mathed/math_nestinset.C:810
 #, fuzzy
 msgid "entered math text mode (textrm)"
 msgstr "Normal tekstmodus\t\\textrm"
@@ -15234,23 +15246,23 @@ msgstr ""
 msgid "Unknown spacing argument: "
 msgstr "Ukjent argument til linjeavstand: "
 
-#: src/text3.C:808
+#: src/text3.C:786
 msgid "LyX function 'layout' needs an argument."
 msgstr "LyX funksjonen 'layout' behøver et argument."
 
-#: src/text3.C:826
+#: src/text3.C:804
 msgid "Layout "
 msgstr "Stil "
 
-#: src/text3.C:827
+#: src/text3.C:805
 msgid " not known"
 msgstr " ukjent"
 
-#: src/text3.C:1269 src/text3.C:1281
+#: src/text3.C:1247 src/text3.C:1259
 msgid "Character set"
 msgstr "Tegnsett"
 
-#: src/text3.C:1413
+#: src/text3.C:1391
 msgid "Paragraph layout set"
 msgstr "Avsnittstil satt"
 

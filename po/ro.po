@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-07-13 10:00+0200\n"
+"POT-Creation-Date: 2006-08-10 10:50+0200\n"
 "PO-Revision-Date: 2004-01-08 21:46+0200\n"
 "Last-Translator: Claudiu Costin <claudiuc@kde.org>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
@@ -10130,18 +10130,18 @@ msgid "Redo|R"
 msgstr "Re-face|R"
 
 #: lib/ui/stdmenus.ui:84 lib/ui/stdtoolbars.ui:51
-#: src/mathed/math_nestinset.C:433 src/text3.C:759
+#: src/mathed/math_nestinset.C:433 src/text3.C:737
 msgid "Cut"
 msgstr "Taie"
 
 #: lib/ui/stdmenus.ui:85 lib/ui/stdtoolbars.ui:52
-#: src/mathed/math_nestinset.C:441 src/text3.C:764
+#: src/mathed/math_nestinset.C:441 src/text3.C:742
 msgid "Copy"
 msgstr "Copiazã"
 
 #: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:644
 #: src/mathed/math_gridinset.C:1207 src/mathed/math_nestinset.C:417
-#: src/text3.C:746
+#: src/text3.C:724
 msgid "Paste"
 msgstr "Lipeºte"
 
@@ -10470,11 +10470,11 @@ msgstr "Salvare &documente"
 msgid "Print document"
 msgstr "Importã document"
 
-#: lib/ui/stdtoolbars.ui:49 src/BufferView_pimpl.C:1125
+#: lib/ui/stdtoolbars.ui:49 src/BufferView_pimpl.C:1126
 msgid "Undo"
 msgstr "Des-face"
 
-#: lib/ui/stdtoolbars.ui:50 src/BufferView_pimpl.C:1136
+#: lib/ui/stdtoolbars.ui:50 src/BufferView_pimpl.C:1137
 msgid "Redo"
 msgstr "Re-face"
 
@@ -10885,50 +10885,50 @@ msgstr "Nu pot insera documentul %1$s"
 msgid "Document insertion"
 msgstr "Document LyX...|X"
 
-#: src/BufferView_pimpl.C:1128
+#: src/BufferView_pimpl.C:1129
 msgid "No further undo information"
 msgstr "Nu mai existã informaþii de des-facere"
 
-#: src/BufferView_pimpl.C:1139
+#: src/BufferView_pimpl.C:1140
 msgid "No further redo information"
 msgstr "Nu mai existã informaþii de re-facere"
 
-#: src/BufferView_pimpl.C:1269
+#: src/BufferView_pimpl.C:1270
 msgid "Mark off"
 msgstr "Marcaj inactiv"
 
-#: src/BufferView_pimpl.C:1276
+#: src/BufferView_pimpl.C:1277
 msgid "Mark on"
 msgstr "Marcaj activ"
 
-#: src/BufferView_pimpl.C:1283
+#: src/BufferView_pimpl.C:1284
 msgid "Mark removed"
 msgstr "Marcaj eliminat"
 
-#: src/BufferView_pimpl.C:1286
+#: src/BufferView_pimpl.C:1287
 msgid "Mark set"
 msgstr "Marcaj setat"
 
-#: src/BufferView_pimpl.C:1332
+#: src/BufferView_pimpl.C:1333
 #, c-format
 msgid "%1$d words in selection."
 msgstr ""
 
-#: src/BufferView_pimpl.C:1335
+#: src/BufferView_pimpl.C:1336
 #, fuzzy, c-format
 msgid "%1$d words in document."
 msgstr "Formatez documentul..."
 
-#: src/BufferView_pimpl.C:1340
+#: src/BufferView_pimpl.C:1341
 msgid "One word in selection."
 msgstr ""
 
-#: src/BufferView_pimpl.C:1342
+#: src/BufferView_pimpl.C:1343
 #, fuzzy
 msgid "One word in document."
 msgstr "Inserez documentul "
 
-#: src/BufferView_pimpl.C:1345
+#: src/BufferView_pimpl.C:1346
 #, fuzzy
 msgid "Count words"
 msgstr "Cuvîntul curent"
@@ -11350,16 +11350,28 @@ msgstr ""
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr ""
 
-#: src/buffer.C:1125
+#: src/buffer.C:716
+#, fuzzy
+msgid "Backup failure"
+msgstr "Cale fiºiere de rezervã:#B"
+
+#: src/buffer.C:717
+#, c-format
+msgid ""
+"LyX was not able to make a backup copy in %1$s.\n"
+"Please check if the directory exists and is writeable."
+msgstr ""
+
+#: src/buffer.C:1133
 #, fuzzy
 msgid "Running chktex..."
 msgstr "Running_LaTeX_Title"
 
-#: src/buffer.C:1138
+#: src/buffer.C:1146
 msgid "chktex failure"
 msgstr ""
 
-#: src/buffer.C:1139
+#: src/buffer.C:1147
 #, fuzzy
 msgid "Could not run chktex successfully."
 msgstr "Listã de slide-uri"
@@ -14289,7 +14301,7 @@ msgid "Show full path or only file name."
 msgstr ""
 
 #: src/frontends/xforms/FormTexinfo.C:60
-msgid "Runs the script \"TexFiles.sh\" to rebuild the file lists."
+msgid "Runs the script \"TexFiles.py\" to rebuild the file lists."
 msgstr ""
 
 #: src/frontends/xforms/FormTexinfo.C:63
@@ -15318,7 +15330,7 @@ msgstr "Construieºte programul|B"
 msgid "ChkTeX"
 msgstr "Verificare TeX"
 
-#: src/lyxfunc.C:1020 src/text3.C:1165
+#: src/lyxfunc.C:1020 src/text3.C:1143
 msgid "Missing argument"
 msgstr ""
 
@@ -15900,11 +15912,11 @@ msgstr ""
 msgid "Math editor mode"
 msgstr ""
 
-#: src/mathed/math_nestinset.C:814
+#: src/mathed/math_nestinset.C:807
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/math_nestinset.C:817
+#: src/mathed/math_nestinset.C:810
 msgid "entered math text mode (textrm)"
 msgstr ""
 
@@ -16098,26 +16110,26 @@ msgstr "Nu pot indexa mai mult de un paragraf!"
 msgid "Unknown spacing argument: "
 msgstr ""
 
-#: src/text3.C:808
+#: src/text3.C:786
 msgid "LyX function 'layout' needs an argument."
 msgstr "Funcþia LyX 'layout' cere un argument."
 
-#: src/text3.C:826
+#: src/text3.C:804
 #, fuzzy
 msgid "Layout "
 msgstr "Format|F"
 
-#: src/text3.C:827
+#: src/text3.C:805
 #, fuzzy
 msgid " not known"
 msgstr "necunoscut"
 
-#: src/text3.C:1269 src/text3.C:1281
+#: src/text3.C:1247 src/text3.C:1259
 #, fuzzy
 msgid "Character set"
 msgstr "Caracter"
 
-#: src/text3.C:1413
+#: src/text3.C:1391
 #, fuzzy
 msgid "Paragraph layout set"
 msgstr "Paragraf"
