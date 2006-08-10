@@ -846,6 +846,14 @@ contributers = [
                  "25 February 2005",
                  u"Support for kluwer and ijmpd document classes"),
 
+     contributer(u'Sanda Pavel',
+                 "ps () ucw !cz",
+                 "GPL",
+                 "Re: czech translation",
+                 "m=115522417204086",
+                 "10 august 2006",
+                 u"Czech translation"),
+
      contributer(u'Bo Peng',
                  "ben.bob () gmail ! com",
                  "GPL",
