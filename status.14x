@@ -77,6 +77,8 @@ What's new
 
 - Log the output of configure.py to a log file configure.log.
 
+- Do automatic reconfiguration even when running in batch mode (bug 2741).
+
 - Change the encoding of some python scripts from iso-8859-15 to
   iso-8859-1. The former causes problems with embedded python.
 
