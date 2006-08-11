@@ -70,6 +70,7 @@ dist_examples_DATA = \
 	examples/ca_splash.lyx \
 	examples/chess-article.lyx \
 	examples/chessgame.lyx \
+	examples/cs_splash.lyx \
 	examples/currency.lyx \
 	examples/cv.lyx \
 	examples/da_splash.lyx \

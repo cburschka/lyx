@@ -1,18 +1,11 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 248
+#LyX 1.4.3svn created this file. For more info see http://www.lyx.org/
+\lyxformat 245
 \begin_document
 \begin_header
 \textclass article
 \language czech
-\inputencoding latin2
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_default_family default
-\font_sc false
-\font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\inputencoding auto
+\fontscheme default
 \graphics default
 \paperfontsize default
 \spacing single
@@ -976,6 +969,45 @@ Jedno varování: Proto¾e je tento prùvodce z pochopitelnıch dùvod otevøen
  pouze pro ètení, spousta akcí typu vlo¾ení znaèky, zmìn stylù apod.
  vám nebude fungovat.
  Pro experimenty je lep¹í otevøít nové okno LyXu.
+\end_layout
+
+\begin_layout Subsection
+Èe¹tina
+\end_layout
+
+\begin_layout Standard
+Pokud bude vìt¹ina va¹ich textù psaná èesky, nastavte si Nástroje -> Nastavení
+ -> Jazyk -> Standardní\InsetSpace ~
+jazyk na 
+\begin_inset Quotes gld
+\end_inset
+
+Èe¹tina
+\begin_inset Quotes grd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Jazyk aktuálního dokumentu pak zmìníte pomocí Dokument -> Jazyk.
+ Pro èe¹tinu pak za¹krtnìte standardní kódování (nechcete-li jinak, samozøejmì).
+\end_layout
+
+\begin_layout Standard
+Pokud se vám nezobrazují správnì èeské háèky a èárky nebo je dokonce nemù¾ete
+ ani napsat, zkontrolujte tato nastavení.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+Pokud toto není pøíèina, zkuste nastavit jiné fonty na obrazovce, viz Nástroje
+ -> Nastavení.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
