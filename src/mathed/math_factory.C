@@ -315,12 +315,14 @@ MathAtom createMathInset(string const & s)
 		return MathAtom(new MathStackrelInset);
 	if (s == "binom" || s == "choose")
 		return MathAtom(new MathBinomInset(s == "choose"));
-	if (s == "over" || s == "frac")
+	if (s == "frac")
 		return MathAtom(new MathFracInset);
+	if (s == "over")
+		return MathAtom(new MathFracInset(MathFracInset::OVER));
 	//if (s == "infer")
 	//	return MathAtom(new MathInferInset);
 	if (s == "atop")
-		return MathAtom(new MathFracInset(true));
+		return MathAtom(new MathFracInset(MathFracInset::ATOP));
 	if (s == "lefteqn")
 		return MathAtom(new MathLefteqnInset);
 	if (s == "boldsymbol")

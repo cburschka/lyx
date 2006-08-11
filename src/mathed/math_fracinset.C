@@ -24,8 +24,8 @@ using std::max;
 using std::auto_ptr;
 
 
-MathFracInset::MathFracInset(bool atop)
-	: atop_(atop)
+MathFracInset::MathFracInset(Kind kind)
+	: kind_(kind)
 {}
 
 
@@ -37,13 +37,13 @@ auto_ptr<InsetBase> MathFracInset::doClone() const
 
 MathFracInset * MathFracInset::asFracInset()
 {
-	return atop_ ? 0 : this;
+	return kind_ == ATOP ? 0 : this;
 }
 
 
 MathFracInset const * MathFracInset::asFracInset() const
 {
-	return atop_ ? 0 : this;
+	return kind_ == ATOP ? 0 : this;
 }
 
 
@@ -67,7 +67,7 @@ void MathFracInset::draw(PainterInfo & pi, int x, int y) const
 	FracChanger dummy(pi.base);
 	cell(0).draw(pi, m - cell(0).width() / 2, y - cell(0).descent() - 2 - 5);
 	cell(1).draw(pi, m - cell(1).width() / 2, y + cell(1).ascent()  + 2 - 5);
-	if (!atop_)
+	if (kind_ == FRAC || kind_ == OVER)
 		pi.pain.line(x + 1, y - 5, x + dim_.wid - 2, y - 5, LColor::math);
 	drawMarkers(pi, x, y);
 }
@@ -89,23 +89,46 @@ void MathFracInset::drawT(TextPainter & pain, int x, int y) const
 	int m = x + dim_.width() / 2;
 	cell(0).drawT(pain, m - cell(0).width() / 2, y - cell(0).descent() - 1);
 	cell(1).drawT(pain, m - cell(1).width() / 2, y + cell(1).ascent());
-	if (!atop_)
+	if (kind_ == FRAC || kind_ == OVER)
 		pain.horizontalLine(x, y, dim_.width());
 }
 
 
 void MathFracInset::write(WriteStream & os) const
 {
-	if (atop_)
+	switch (kind_) {
+	case ATOP:
 		os << '{' << cell(0) << "\\atop " << cell(1) << '}';
-	else // it's \\frac
+		break;
+	case OVER:
+		// \\over is only for compatibility, normalize this to \\frac
+		os << "\\frac{" << cell(0) << "}{" << cell(1) << '}';
+		break;
+	case FRAC:
 		MathNestInset::write(os);
+		break;
+	}
 }
 
 
 string MathFracInset::name() const
 {
-	return atop_ ? "atop" : "frac";
+	switch (kind_) {
+	case FRAC:
+		return "frac";
+	case OVER:
+		return "over";
+	case ATOP:
+		return "atop";
+	}
+	// shut up stupid compiler
+	return string();
+}
+
+
+bool MathFracInset::extraBraces() const
+{
+	return kind_ == ATOP || kind_ == OVER;
 }
 
 

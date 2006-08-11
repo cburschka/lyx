@@ -20,7 +20,14 @@
 class MathFracInset : public MathFracbaseInset {
 public:
 	///
-	explicit MathFracInset(bool atop = false);
+	enum Kind {
+		FRAC,
+		OVER,
+		ATOP,
+	};
+
+	///
+	explicit MathFracInset(Kind kind = FRAC);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
@@ -35,6 +42,8 @@ public:
 	MathFracInset const * asFracInset() const;
 	///
 	std::string name() const;
+	///
+	bool extraBraces() const;
 
 	///
 	void write(WriteStream & os) const;
@@ -49,7 +58,7 @@ public:
 public:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 	///
-	bool const atop_;
+	Kind const kind_;
 };
 
 #endif

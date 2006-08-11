@@ -45,6 +45,9 @@ What's new
 - Make sure enough passes are made to update the table of contents
   when running latex (bug 2616).
 
+- Don't add extra braces when reading documents containing \choose, \atop or
+  \over (bug 2481).
+
 * User Interface:
 
 - Show an error box when failing to update the TeX Information dalog data.

@@ -24,7 +24,7 @@ using std::auto_ptr;
 
 
 MathDfracInset::MathDfracInset()
-	: MathFracInset(false)
+	: MathFracInset()
 {}
 
 
