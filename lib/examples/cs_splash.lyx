@@ -1,0 +1,140 @@
+#LyX 1.4.3svn created this file. For more info see http://www.lyx.org/
+\lyxformat 245
+\begin_document
+\begin_header
+\textclass article
+\language czech
+\inputencoding auto
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single
+\papersize default
+\use_geometry false
+\use_amsmath 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes true
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Vítejte v LyXu !
+\end_layout
+
+\begin_layout Section*
+Co byste mìli vìdìt pro pou¾ívání LyXu
+\end_layout
+
+\begin_layout Enumerate
+LyX pøichází s
+\family roman
+\series medium
+\shape up
+\size largest
+\emph off
+\bar no
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color default
+výbornou dokumentací---prosíme pou¾ívejte ji! Èeský úvod mù¾ete najít v
+ menu Nápovìda -> Prùvodce\InsetSpace ~
+LyXem.
+ 
+\end_layout
+
+\begin_layout Enumerate
+LyX nazýváme 
+\begin_inset Quotes eld
+\end_inset
+
+editorem dokumentù.
+\begin_inset Quotes erd
+\end_inset
+
+ Svým návrhem je odli¹ný od klasického textového editoru---zpùsobem, který
+ èiní psaní dokumentù mnohem jednodu¹¹í.
+ Ale nelekejte se, je odli¹ný jenom trochu.
+ Prùvodce vám v tom udìlá jasno
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+U¾ jsme se zmínili o tom, ¾e byste si mohli pøeèíst dokumnetaci?
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Výstup z LyXu vypadá skvìle! Zkuste vybrat v menu Prohlí¾et -> DVI, a» se
+ pøesvìdèíte na vlastní oèi.
+\end_layout
+
+\begin_layout Enumerate
+LyX umí napodobit (témìø) ve¹kerou funkcionalitu LaTeXu.
+ A ano, LyX umí importovat LaTeXové soubory.
+ Zku¹ení u¾ivatelé LaTeXu mohou jen zbe¾nì prolétnout zaèátek 
+\emph on
+Prùvodce
+\emph default
+, a pak si pøeèíst kapitolu 
+\begin_inset Quotes eld
+\end_inset
+
+LyX pro u¾ivatele LaTeXu
+\begin_inset Quotes erd
+\end_inset
+
+.
+ (Ostatní se nemusíte znepokojovat: nepotøebujete znát LaTeX pro pou¾ívání
+ LyXu.) 
+\end_layout
+
+\begin_layout Enumerate
+LyX nabízí mnoho mo¾ností lidem, kteøí ètou a pí¹í jiným jazykem, ne¾li
+ je angliètina.
+ Navíc jsou klávesové zkratky, nástrojová li¹ta a i dal¹í vlasnosti dobøe
+ konfigurovatelné.
+ Viz Nápovìda -> Pøizpùsobení LyXu.
+\end_layout
+
+\begin_layout Enumerate
+Domácí stránka LyXu je na 
+\family typewriter
+
+\begin_inset LatexCommand \url{http://www.lyx.org/}
+
+\end_inset
+
+
+\family default
+.
+ Mù¾ete zde najít dal¹í informace, pøihlásit se do konference, udìlat si
+ grafickou výpravu do Lyxu (Graphical Tour) a najít spousty rad a trikù
+ v rámci wiki.
+\end_layout
+
+\end_body
+\end_document
