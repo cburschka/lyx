@@ -649,15 +649,8 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_TOGGLE:
 		recordUndo(cur);
-		//lockToggle();
-		if (cur.pos() != cur.lastpos()) {
-			// toggle previous inset ...
-			cur.nextAtom().nucleus()->lock(!cur.nextAtom()->lock());
-		} else if (cur.popLeft() && cur.pos() != cur.lastpos()) {
-			// ... or enclosing inset if we are in the last inset position
-			cur.nextAtom().nucleus()->lock(!cur.nextAtom()->lock());
-			++cur.pos();
-		}
+		lock(!lock());
+		cur.popRight();
 		break;
 
 	case LFUN_SELFINSERT:

@@ -24,11 +24,15 @@ What's new
 
 - New Czech translation; update Italian localization.
 
-- Updated Czech translation of the Tutorial.
+- Updated Czech translation of the Tutorial; new Czech translation of
+  the splash document.
 
 ** Bug fixes:
 
 * Document Input/Output
+
+- Fix crash when using next-inset-toggle (Ctrl+I) inside mathed; make
+  inset locking in mathed generally work (bug 2756).
 
 - Fix crash on save (including dataloss) when the backup directory 
   was invalid or not writeable(bug 2740).

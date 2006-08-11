@@ -1,5 +1,10 @@
 2006-08-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	* math_nestinset.C (doDispatch/LFUN_INSET_TOGGLE): do not try to
+	do the work which belongs to LFUN_NEXT_INSET_TOGGLE (bug 2756).
+
+2006-08-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
 	* math_nestinset.C (script): 
 	* math_scriptinset.C (removeScript): remove annoying debug
 	messages. 
