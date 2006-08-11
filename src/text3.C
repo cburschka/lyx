@@ -747,28 +747,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		cur.inset().showInsetDialog(bv);
 		break;
 
-	case LFUN_NEXT_INSET_TOGGLE: {
-		InsetBase * inset = cur.nextInset();
-		// this is the real function we want to invoke
-		cmd = FuncRequest(LFUN_INSET_TOGGLE);
-		cur.undispatched();
-		// if there is an inset at cursor, see whether it
-		// wants to toggle.
-		if (inset) {
-			LCursor tmpcur = cur;
-			tmpcur.pushLeft(*inset);
-			inset->dispatch(tmpcur, cmd);
-			if (tmpcur.result().dispatched()) {
-				cur.clearSelection();
-				cur.dispatched();
-			}
-		}
-		// if it did not work, try the underlying inset.
-		if (!cur.result().dispatched())
-			cur.inset().dispatch(cur, cmd);
-		break;
-	}
-
 	case LFUN_SPACE_INSERT:
 		if (cur.paragraph().layout()->free_spacing)
 			insertChar(cur, ' ');
@@ -1792,7 +1770,6 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_BREAK_PARAGRAPH_SKIP:
 	case LFUN_PARAGRAPH_SPACING:
 	case LFUN_INSET_INSERT:
-	case LFUN_NEXT_INSET_TOGGLE:
 	case LFUN_WORD_UPCASE:
 	case LFUN_WORD_LOWCASE:
 	case LFUN_WORD_CAPITALIZE:

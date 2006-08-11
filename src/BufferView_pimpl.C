@@ -949,6 +949,7 @@ FuncStatus BufferView::Pimpl::getStatus(FuncRequest const & cmd)
 	case LFUN_BIBTEX_DATABASE_ADD:
 	case LFUN_BIBTEX_DATABASE_DEL:
 	case LFUN_WORDS_COUNT:
+	case LFUN_NEXT_INSET_TOGGLE:
 		flag.enabled(true);
 		break;
 
@@ -1264,6 +1265,30 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		// turn compression on/off
 		buffer_->params().compressed = !buffer_->params().compressed;
 		break;
+
+	case LFUN_NEXT_INSET_TOGGLE: {
+		// this is the real function we want to invoke
+		FuncRequest tmpcmd = FuncRequest(LFUN_INSET_TOGGLE, cmd.origin);
+		// if there is an inset at cursor, see whether it
+		// wants to toggle.
+		InsetBase * inset = cur.nextInset();
+		if (inset && inset->isActive()) {
+			LCursor tmpcur = cur;
+			tmpcur.pushLeft(*inset);
+			inset->dispatch(tmpcur, tmpcmd);
+			if (tmpcur.result().dispatched()) {
+				cur.dispatched();
+			}
+		}
+		// if it did not work, try the underlying inset.
+		if (!cur.result().dispatched())
+			cur.dispatch(tmpcmd);
+
+		if (cur.result().dispatched()) 
+			cur.clearSelection();
+		
+		break;
+	}
 
 	default:
 		return false;
