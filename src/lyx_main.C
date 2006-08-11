@@ -526,12 +526,12 @@ bool LyX::init()
 	if (!lyxrc.path_prefix.empty())
 		prependEnvPath("PATH", lyxrc.path_prefix);
 
-	// Check that user LyX directory is ok. We don't do that if
-	// running in batch mode.
-	if (lyx_gui::use_gui) {
-		if (queryUserLyXDir(package().explicit_user_support()))
-			reconfigureUserLyXDir();
-	} else {
+	// Check that user LyX directory is ok. 
+	if (queryUserLyXDir(package().explicit_user_support()))
+		reconfigureUserLyXDir();
+
+	// no need for a splash when there is no GUI
+	if (!lyx_gui::use_gui) {
 		first_start = false;
 	}
 
