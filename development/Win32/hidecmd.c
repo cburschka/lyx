@@ -47,9 +47,11 @@
 #pragma comment(linker,"/NODEFAULTLIB")
 // unite code and data section (make the program smaller)
 #pragma comment(linker,"/MERGE:.rdata=.text")
-// resolve record in section of code
+// open code section for writing
 #pragma comment(linker,"/SECTION:.text,EWR")
-// the new entry point (the WinMain entry point is big)
+// redefine an entry point of the executable
+// Must be used, if entry point 'void NewWinMain(void)' is used,
+// instead of the standart 'int WINAPI WinMain(HINSTANCE hInst, ...)'
 #pragma comment(linker,"/ENTRY:NewWinMain")
 
 void NewWinMain(void)
