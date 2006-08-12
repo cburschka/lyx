@@ -1366,6 +1366,8 @@ void Buffer::updateDocLang(Language const * nlang)
 	BOOST_ASSERT(nlang);
 
 	pimpl_->messages.reset(new Messages(nlang->code()));
+
+	updateCounters(*this);
 }
 
 
