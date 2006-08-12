@@ -199,15 +199,6 @@ Change::Type lookupChangeType(DocIterator const & dit, bool outer = false)
 	return Change::UNCHANGED;
 }
 
-
-/// quotes a string for use as an argument of the "log" dialog
-string const quoteArg(string const & arg)
-{
-	ostringstream os;
-	os << '"' << subst(subst(arg, "\\", "\\\\"), "\"", "\\\"") << '"';
-	return os.str();
-}
-
 }
 
 LyXFunc::LyXFunc(LyXView * lv)
@@ -1184,11 +1175,11 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 					data = "literate ";
 					break;
 				}
-				data += quoteArg(logfile.second);
+				data += LyXLex::quoteString(logfile.second);
 				owner->getDialogs().show("log", data);
 			} else if (name == "vclog") {
 				string const data = "vc " +
-					quoteArg(owner->buffer()->lyxvc().getLogFile());
+					LyXLex::quoteString(owner->buffer()->lyxvc().getLogFile());
 				owner->getDialogs().show("log", data);
 			} else
 				owner->getDialogs().show(name, data);
