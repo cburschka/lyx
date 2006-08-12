@@ -151,7 +151,7 @@ End
 
 
 # Address is exactly the same as Affiliation. We just put this in so
-# that reLyX will know what to do with it.
+# that tex2lyx will know what to do with it.
 Style Address
 	CopyStyle             Affiliation
 	LatexName             address
