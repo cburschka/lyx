@@ -73,8 +73,6 @@ int const statusbar_timer_value = 3000;
 GuiView::GuiView(Gui & owner)
 	: QMainWindow(), LyXView(owner), commandbuffer_(0)
 {
-	mainWidget_ = this;
-
 //	setToolButtonStyle(Qt::ToolButtonIconOnly);
 //	setIconSize(QSize(12,12));
 
@@ -248,15 +246,6 @@ void GuiView::busy(bool yes) const
 	else
 		QApplication::restoreOverrideCursor();
 }
-
-
-QMainWindow* GuiView::mainWidget()
-{
-	return mainWidget_;
-}
-
-QMainWindow* GuiView::mainWidget_ = 0;
-
 
 } // namespace frontend
 } // namespace lyx

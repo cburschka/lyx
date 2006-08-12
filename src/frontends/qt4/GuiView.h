@@ -78,9 +78,6 @@ public:
 	/// returns true if this view has the focus.
 	virtual bool hasFocus() const;
 
-	///
-	static QMainWindow* mainWidget();
-
 public Q_SLOTS:
 	/// idle timeout
 	void update_view_state_qt();
@@ -113,9 +110,6 @@ private:
 
 	/// command buffer
 	QCommandBuffer * commandbuffer_;
-
-	///
-	static QMainWindow* mainWidget_;
 
 	///
 	void updateFloatingGeometry();

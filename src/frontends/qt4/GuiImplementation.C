@@ -82,7 +82,7 @@ int GuiImplementation::newWorkArea(unsigned int w, unsigned int h, int view_id)
 	work_areas_[id]->setBufferView(buffer_views_[id].get());
 	view->setWorkArea(work_areas_[id].get());
 
-	view->mainWidget()->setCentralWidget(work_areas_[id].get());
+	view->setCentralWidget(work_areas_[id].get());
 
 	return id;
 }
