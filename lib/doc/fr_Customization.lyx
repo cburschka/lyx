@@ -1,4 +1,4 @@
-#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+#LyX 1.4.3svn created this file. For more info see http://www.lyx.org/
 \lyxformat 245
 \begin_document
 \begin_header
@@ -433,27 +433,6 @@ layouts/
 \end_inset
 
 .
-\end_layout
-
-\begin_layout List
-\labelwidthstring 00.00.0000
-
-\family typewriter
-reLyX/
-\family default
- contient les fichiers de 
-\family typewriter
-reLyX
-\family default
-, le traducteur de LaTeX 
-\begin_inset Quotes fld
-\end_inset
-
-correct
-\begin_inset Quotes frd
-\end_inset
-
- vers LyX.
 \end_layout
 
 \begin_layout List
@@ -2262,7 +2241,6 @@ fraction,
 \emph default
 \bar default
 \noun default
-\color default
 crochets
 \family roman
 \series medium
@@ -2271,7 +2249,6 @@ crochets
 \emph off
 \bar no
 \noun off
-\color none
 , etc.
 \end_layout
 
@@ -3286,6 +3263,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 b o
 \end_layout
@@ -3309,6 +3287,7 @@ underdot (underd)
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 d o
@@ -3342,6 +3321,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 t o
 \end_layout
@@ -3360,6 +3340,7 @@ breve (bre)
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 u o
@@ -3402,6 +3383,7 @@ dot (dot)
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 .s
@@ -5195,6 +5177,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 begin{sloppypar}
 \end_layout
@@ -5227,6 +5210,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 end{sloppypar}
 \end_layout
@@ -5249,6 +5233,7 @@ Voici les paramètres généraux qui décrivent l'aspect du document :
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 begin{sloppypar}
@@ -5720,6 +5705,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 end{sloppypar}
 \end_layout
@@ -5752,6 +5738,7 @@ ClassOptions
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 begin{sloppypar}
@@ -5842,6 +5829,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 end{sloppypar}
 \end_layout
@@ -5898,6 +5886,7 @@ dans lequel on peut mettre les commandes suivantes :
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 begin{sloppypar}
@@ -7098,6 +7087,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 end{sloppypar}
 \end_layout
@@ -7145,6 +7135,7 @@ N'oubliez pas de jeter aussi un
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 oe{}
@@ -7581,6 +7572,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 begin{sloppypar}
 \end_layout
@@ -7668,6 +7660,7 @@ Retenir ces Valeurs par Défaut
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 end{sloppypar}
@@ -8305,6 +8298,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 begin{sloppypar}
 \end_layout
@@ -8375,6 +8369,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 end{sloppypar}
 \end_layout
@@ -8431,6 +8426,33 @@ lyx -dbg 8192
 Attention : si LyX se plante, il peut ne pas avoir enlevé les tubes ; dans
  ce cas vous devez les enlever à la main.
  Si LyX démarre et que les tubes existent déjà, il ne démarrera pas de serveur.
+\end_layout
+
+\begin_layout Standard
+À part ça, il y a quelques points à savoir :
+\end_layout
+
+\begin_layout Itemize
+À la fois le client et le serveur doivent tourner sur des machines UNIX
+ ou OS/2.
+ Il n'est pour l'instant pas possible de communiquer entre LyX sur UNIX
+ et des clients sur OS/2 ou vice versa.
+\end_layout
+
+\begin_layout Itemize
+Sur OS/2, un seul client à la fois peut se connecter sur le serveur LyX.
+\end_layout
+
+\begin_layout Itemize
+Sur OS/2, les clients doivent ouvrir le tube d'entrée (
+\family typewriter
+.lyxpipe.in
+\family default
+) en mode 
+\family typewriter
+O_WRONLY
+\family default
+.
 \end_layout
 
 \begin_layout Standard

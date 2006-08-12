@@ -1,4 +1,4 @@
-#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+#LyX 1.4.3svn created this file. For more info see http://www.lyx.org/
 \lyxformat 245
 \begin_document
 \begin_header
@@ -4913,7 +4913,7 @@ ersonnalisation
 LyX sait lire les documents en LaTeX.
  Voir la section\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sec:relyx}
+\begin_inset LatexCommand \ref{sec:tex2lyx}
 
 \end_inset
 
@@ -5122,11 +5122,11 @@ usepackage{machin}
 \begin_layout Subsection
 Importer des documents LaTeX -- 
 \family typewriter
-reLyX
+tex2lyx
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{sec:relyx}
+\begin_inset LatexCommand \label{sec:tex2lyx}
 
 \end_inset
 
@@ -5148,9 +5148,9 @@ L
 aTeX.
 
 \family default
- Celle-ci appelle un script Perl appelé 
+ Celle-ci appelle 
 \family typewriter
-reLyX
+tex2lyx
 \family default
  -- qui crée un fichier 
 \family typewriter
@@ -5163,49 +5163,22 @@ machin.tex
  -- et ouvre ce nouveau fichier.
  Si la conversion ne fonctionne pas, vous pouvez essayer d'exécuter 
 \family typewriter
-reLyX
+tex2lyx
 \family default
- à la ligne de commande
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-À l'installation de LyX, un autre exécutable appelé 
-\family typewriter
-reLyX
-\family default
- est installé dans le même répertoire que 
-\family typewriter
-lyx
-\family default
- (par exemple, 
-\family typewriter
-usr/local/bin/reLyX
-\family default
-).
- 
-\family typewriter
-reLyX
-\family default
- a besoin de Perl (version 5.002 au moment de l'écriture de ce manuel).
-\end_layout
-
-\end_inset
-
-, avec des options plus élaborées.
+ à la ligne de commande, avec des options plus élaborées.
  
 \end_layout
 
 \begin_layout Standard
 
 \family typewriter
-reLyX
+tex2lyx
 \family default
  convertira la majorité du LaTeX conventionnel, mais pas tout.
  Il laissera en mode TeX ce qu'il ne comprend pas, et vous pourrez donc,
  après la conversion d'un fichier avec 
 \family typewriter
-reLyX,
+tex2lyx,
 \family default
  rechercher le texte en rouge et l'éditer à la main pour d'éventuelles correctio
 ns.
@@ -5215,7 +5188,7 @@ ns.
 \begin_layout Standard
 
 \family typewriter
-reLyX
+tex2lyx
 \family default
  possède sa propre page de man.
  Consultez-la pour savoir quels sont les commandes et environnements LaTeX
@@ -5584,6 +5557,7 @@ L'o e dans l'o s'obtient avec
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 oe{}

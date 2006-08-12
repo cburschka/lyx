@@ -1,4 +1,4 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.4.3svn created this file. For more info see http://www.lyx.org/
 \lyxformat 245
 \begin_document
 \begin_header
@@ -379,23 +379,6 @@ layouts/
 \end_inset
 
 .
-\end_layout
-
-\begin_layout List
-\labelwidthstring 00.00.0000
-
-\family typewriter
-reLyX/
-\family default
- contains lots of files that together make up reLyX, the translator of 
-\begin_inset Quotes eld
-\end_inset
-
-well behaved
-\begin_inset Quotes erd
-\end_inset
-
- LaTeX into LyX.
 \end_layout
 
 \begin_layout List
@@ -1863,45 +1846,6 @@ For example, the file may reference other files with relative filenames,
 .
  This is done by the Copier: It copies a file to (or from) the temporary
  directory and may modify it in the process.
-\end_layout
-
-\begin_layout Standard
-With the checkbox 
-\family sans
-Document Format
-\family default
- you can choose whether the format is a document format or not.
- The difference between document and non--document formats is that you can
- export your LyX document only to document formats.
- Non--document formats are used for included graphics.
- Examples for document formats are 
-\family typewriter
-dvi
-\family default
- or 
-\family typewriter
-ps.
- 
-\family default
-Examples for non--document formats are 
-\family typewriter
-png
-\family default
- or 
-\family typewriter
-jpeg
-\family default
-.
- Some formats like 
-\family typewriter
-pdf
-\family default
- are both document formats and non--document formats.
- The checkbox 
-\family sans
-Document Format
-\family default
- should be checked for these formats.
 \end_layout
 
 \begin_layout Section
@@ -10093,6 +10037,28 @@ lyx -dbg lyxserver.
 Warning: if LyX crashes, it may not manage to remove the pipes; in this
  case you must remove them manually.
  If LyX starts and the pipes exist already, it will not start any server.
+\end_layout
+
+\begin_layout Standard
+Other than this, there are a few points to consider:
+\end_layout
+
+\begin_layout Itemize
+Both server and clients must run on UNIX or OS/2 machines.
+ Communications between LyX on UNIX and clients on OS/2 or vice versa is
+ not possible right now.
+\end_layout
+
+\begin_layout Itemize
+On OS/2, only one client can connect to LyXServer at a time.
+\end_layout
+
+\begin_layout Itemize
+On OS/2, clients must open inpipe with 
+\family typewriter
+O_WRONLY
+\family default
+ mode.
 \end_layout
 
 \begin_layout Standard
