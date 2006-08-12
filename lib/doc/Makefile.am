@@ -2,7 +2,7 @@ include $(top_srcdir)/config/common.am
 
 DISTCLEANFILES += $(tocfiles)
 
-EXTRA_DIST = depend.py doc_toc.py LyXConfig.lyx.in README.Documentation $(DEPENDFILE) $(docfiles)
+EXTRA_DIST = depend.py doc_toc.py README.Documentation $(DEPENDFILE) $(docfiles)
 
 docfiles = \
 	cs_Tutorial.lyx \
