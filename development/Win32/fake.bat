@@ -1,1 +1,0 @@
-copy fakeconfig\*.* ..\..\lib\
