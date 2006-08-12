@@ -64,8 +64,6 @@ public:
 	///
 	void update(Update::flags flags = Update::Force);
 	///
-	void newFile(std::string const &, std::string const &, bool);
-	///
 	bool loadLyXFile(std::string const &, bool);
 	///
 	void workAreaResize();

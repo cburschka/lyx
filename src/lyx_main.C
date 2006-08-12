@@ -272,7 +272,9 @@ void LyX::exec2(int & argc, char * argv[])
 			// the filename if necessary
 			string s = FileSearch(string(), *it, "lyx");
 			if (s.empty()) {
-				last_loaded = newFile(*it, string(), true);
+				Buffer * const b = newFile(*it, string(), true);
+				if (b)
+					last_loaded = b;
 			} else {
 				Buffer * buf = bufferlist.newBuffer(s, false);
 				buf->error.connect(boost::bind(&LyX::printError, this, _1));

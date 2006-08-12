@@ -62,6 +62,9 @@ What's new
 
 - Fix the C-x C-b binding in emacs mode (bug 2747).
 
+- Fix a crash when a non-template file is selected in the
+  "New from Template" dialog (bug 2404)
+
 * Build/installation:
 
 - Fix 'check' make target for systems which do not have /bin/bash (bug 2524).

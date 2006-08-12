@@ -232,13 +232,6 @@ void BufferView::Pimpl::disconnectBuffer()
 }
 
 
-void BufferView::Pimpl::newFile(string const & filename, string const & tname,
-	bool isNamed)
-{
-	setBuffer(::newFile(filename, tname, isNamed));
-}
-
-
 bool BufferView::Pimpl::loadLyXFile(string const & filename, bool tolastfiles)
 {
 	// Get absolute path of file and add ".lyx"
@@ -285,9 +278,11 @@ bool BufferView::Pimpl::loadLyXFile(string const & filename, bool tolastfiles)
 		int const ret = Alert::prompt(_("Create new document?"),
 			 text, 0, 1, _("&Create"), _("Cancel"));
 
-		if (ret == 0)
-			b = ::newFile(s, string(), true);
-		else
+		if (ret == 0) {
+			b = newFile(s, string(), true);
+			if (!b)
+				return false;
+		} else
 			return false;
 	}
 

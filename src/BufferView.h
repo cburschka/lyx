@@ -92,9 +92,6 @@ public:
 
 	/// reload the contained buffer
 	void reload();
-	/// create a new buffer based on template
-	void newFile(std::string const & fname, std::string const & tname,
-		     bool named = true);
 	/// load a buffer into the view
 	bool loadLyXFile(std::string const & name, bool tolastfiles = true);
 

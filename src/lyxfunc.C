@@ -1724,7 +1724,9 @@ void LyXFunc::menuNew(string const & name, bool fromTemplate)
 		templname = result.second;
 	}
 
-	view()->newFile(filename, templname, !name.empty());
+	Buffer * const b = newFile(filename, templname, !name.empty());
+	if (b)
+		view()->setBuffer(b);
 }
 
 
@@ -1778,8 +1780,10 @@ void LyXFunc::open(string const & fname)
 
 	// if the file doesn't exist, let the user create one
 	if (!fs::exists(filename)) {
-		// the user specifically chose this name. Believe them.
-		view()->newFile(filename, "", true);
+		// the user specifically chose this name. Believe him.
+		Buffer * const b = newFile(filename, string(), true);
+		if (b)
+			view()->setBuffer(b);
 		return;
 	}
 
