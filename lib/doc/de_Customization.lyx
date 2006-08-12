@@ -1,4 +1,4 @@
-#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+#LyX 1.4.2 created this file. For more info see http://www.lyx.org/
 \lyxformat 245
 \begin_document
 \begin_header
@@ -45,7 +45,7 @@ Möglichkeiten für fortgeschrittene Nutzer
 \begin_layout Author
 vom LyX-Team
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Übersetzung: 
@@ -153,6 +153,7 @@ Ly
 status collapsed
 
 \begin_layout Standard
+
 {}
 \end_layout
 
@@ -278,6 +279,7 @@ aTe
 status collapsed
 
 \begin_layout Standard
+
 {}
 \end_layout
 
@@ -521,23 +523,6 @@ layouts/
 \labelwidthstring 00.00.0000
 
 \family typewriter
-reLyX/
-\family default
- Enthält eine große Anzahl von Dateien des reLyX Paketes, mit dem Sie 
-\begin_inset Quotes gld
-\end_inset
-
-gutartige
-\begin_inset Quotes grd
-\end_inset
-
- LaTeX-Dateien nach LyX konvertieren können.
-\end_layout
-
-\begin_layout List
-\labelwidthstring 00.00.0000
-
-\family typewriter
 tex/
 \family default
  Einige LyX-spezifische LaTeX-Textklassendateien (
@@ -704,6 +689,7 @@ Ly
 status collapsed
 
 \begin_layout Standard
+
 {}
 \end_layout
 
@@ -739,7 +725,7 @@ Um eine LyX Version älter als 1.1.6 umzukonfigurieren, mußte der Benutzer
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Standard
 HHa: wie bereits im Benutzerhandbuch erwähnt, ist URL eine einfache Möglichkeit,
@@ -775,18 +761,7 @@ nstellungen...
 preferences
 \family default
  gespeichert.
- Danach (d.
-\begin_inset ERT
-status inlined
-
-\begin_layout Standard
-
-\backslash
-,
-\end_layout
-
-\end_inset
-
+ Danach (d.\InsetSpace \thinspace{}
 h.\InsetSpace ~
 wenn 
 \family typewriter
@@ -882,18 +857,7 @@ vorausgesetzt, es gibt auch eine
 \end_layout
 
 \begin_layout Itemize
-Wenn Sie sich von einem LyX-FTP-Server eine aktuellere Version (oder z.
-\begin_inset ERT
-status inlined
-
-\begin_layout Standard
-
-\backslash
-,
-\end_layout
-
-\end_inset
-
+Wenn Sie sich von einem LyX-FTP-Server eine aktuellere Version (oder z.\InsetSpace \thinspace{}
 B.
  diese deutsche Version) der Dokumentation besorgt haben, sie aber nicht
  
@@ -931,18 +895,7 @@ LyX mit mehreren Konfigurationen
 \begin_layout Standard
 Die hochgradige Konfigurierbarkeit von LyX durch das lokale Verzeichnis
  wird für diejenigen nicht ausreichend sein, die parallel mehrere unterschiedlic
-he Konfigurationen verwenden wollen, z.
-\begin_inset ERT
-status inlined
-
-\begin_layout Standard
-
-\backslash
-,
-\end_layout
-
-\end_inset
-
+he Konfigurationen verwenden wollen, z.\InsetSpace \thinspace{}
 B.
  unterschiedliche Tastaturkürzel und/oder Druckerkonfigurationen.
  Sie können dies durch das Anlegen von mehreren Konfigurationsverzeichnissen
@@ -1132,18 +1085,7 @@ Wir hoffen daß der Dialog im großen und ganzen selbsterklärend ist.
 \bar default
 bernehmen
 \family default
- aktivieren, werden sofort umgesetzt (z.
-\begin_inset ERT
-status inlined
-
-\begin_layout Standard
-
-\backslash
-,
-\end_layout
-
-\end_inset
-
+ aktivieren, werden sofort umgesetzt (z.\InsetSpace \thinspace{}
 B.
  Bildschirmzeichensätze), andere (wie etwa das Ändern der bind-Datei) bedürfen
  eines Neustarts von LyX.
@@ -1306,30 +1248,12 @@ Courier
 \begin_layout Standard
 In den folgenden Abschnitten wird beschrieben, was Sie alles tun können,
  wenn Ihr Text in LyX nicht gut aussieht.
- Begonnen wird mit den wichtigsten Parametern: Auf
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-"|
-\end_layout
-
-\end_inset
-
+ Begonnen wird mit den wichtigsten Parametern: Auf\SpecialChar \textcompwordmark{}
 lösung und Vergrößerungsfaktor.
 \end_layout
 
 \begin_layout Subsection
-Auf
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-"|
-\end_layout
-
-\end_inset
-
+Auf\SpecialChar \textcompwordmark{}
 lösung und Vergrößerungsfaktor
 \end_layout
 
@@ -1350,16 +1274,7 @@ Dots per Inch
 \begin_inset Quotes grd
 \end_inset
 
-, Punkte je Zoll, und beschreibt die Auf
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-"|
-\end_layout
-
-\end_inset
-
+, Punkte je Zoll, und beschreibt die Auf\SpecialChar \textcompwordmark{}
 lösung der Bildschirmdarstellung.
  Diese Einstellung erfragt LyX automatisch beim X-Server.
  Welchen Wert LyX so feststellt, können Sie herausfinden, wenn Sie LyX folgender
@@ -1632,18 +1547,7 @@ ch sein sollten, davon nicht betroffen.
 \begin_layout Standard
 Noch ein letzter Hinweis zu dieser Option: Es besteht kein Grund, nicht
  gleichzeitig skalierbare und Bitmap-Zeichensätze zu verwenden.
- So ist es z.
-\begin_inset ERT
-status inlined
-
-\begin_layout Standard
-
-\backslash
-,
-\end_layout
-
-\end_inset
-
+ So ist es z.\InsetSpace \thinspace{}
 B.
  üblich, das skalierbare 
 \begin_inset Quotes gld
@@ -1702,18 +1606,7 @@ Standardmäßig verwendet LyX Zeichensätze, die zum Schreiben von Texten in
 Zeichensatzkodierung
 \emph default
  festgelegt.
- Wenn Sie nun LyX verwenden wollen, um einen Text z.
-\begin_inset ERT
-status inlined
-
-\begin_layout Standard
-
-\backslash
-,
-\end_layout
-
-\end_inset
-
+ Wenn Sie nun LyX verwenden wollen, um einen Text z.\InsetSpace \thinspace{}
 B.
  in osteuropäischen Sprachen oder Kyrillisch zu schreiben, deren Zeichen
  nicht durch die ISO-8859-1-Kodierung abgedeckt sind, können Sie im Feld
@@ -1751,18 +1644,7 @@ encdng
  Suchen Sie dann aus diesen einen Zeichensatz heraus, der die von Ihnen
  benötigten Zeichen enthält.
  Wenn Sie einen passenden gefunden haben, können Sie diesen im Dialogfeld
- eintragen, andernfalls müssen Sie sich zunächst (z.
-\begin_inset ERT
-status inlined
-
-\begin_layout Standard
-
-\backslash
-,
-\end_layout
-
-\end_inset
-
+ eintragen, andernfalls müssen Sie sich zunächst (z.\InsetSpace \thinspace{}
 B.
  via Internet) geeignete Zeichensätze besorgen.
 \end_layout
@@ -1815,31 +1697,11 @@ anti-aliasing
  unterstützt.
  Das bedeutet, daß jedes Zeichen aus mehreren Farbschattierungen zusammengesetzt
  werden kann, anstelle von nur zwei wie derzeit.
- Das erhöht scheinbar die Auf
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-"|
-\end_layout
-
-\end_inset
-
+ Das erhöht scheinbar die Auf\SpecialChar \textcompwordmark{}
 lösung.
  Dadurch wird der Text am Bildschirm nicht nur besser lesbar, LyX kann dadurch
  den Text noch genauer in der Größe anzeigen, die er auch später auf dem
- Ausdruck hat, da dann z.
-\begin_inset ERT
-status inlined
-
-\begin_layout Standard
-
-\backslash
-,
-\end_layout
-
-\end_inset
-
+ Ausdruck hat, da dann z.\InsetSpace \thinspace{}
 B.
  auch ein 14.4pt-Zeichensatz verwendet werden kann, wohingegen im Moment
  auf 14pt abgerundet werden muß.
@@ -1948,18 +1810,7 @@ xmodmap\InsetSpace ~
 \end_layout
 
 \begin_layout Standard
-irgendwo in Ihre Startdateien ein (z.
-\begin_inset ERT
-status inlined
-
-\begin_layout Standard
-
-\backslash
-,
-\end_layout
-
-\end_inset
-
+irgendwo in Ihre Startdateien ein (z.\InsetSpace \thinspace{}
 B.
  
 \family typewriter
@@ -2272,18 +2123,7 @@ Entf
 \family sans
 Rückschritt
 \family default
- an dieselbe Operation (z.
-\begin_inset ERT
-status inlined
-
-\begin_layout Standard
-
-\backslash
-,
-\end_layout
-
-\end_inset
-
+ an dieselbe Operation (z.\InsetSpace \thinspace{}
 B.
  Emacs), aber wenn 
 \family sans
@@ -2382,18 +2222,7 @@ $LANG_
 \family typewriter
 $LANG=de
 \family default
-, also z.
-\begin_inset ERT
-status inlined
-
-\begin_layout Standard
-
-\backslash
-,
-\end_layout
-
-\end_inset
-
+, also z.\InsetSpace \thinspace{}
 B.
 
 \family typewriter
@@ -2558,18 +2387,7 @@ Konverter, Formate und Druckvorschau
 \begin_layout Standard
 LyX besitzt einen neuen und mächtigen Mechanismus um mittels externer Programme
  zwischen beliebigen Dateiformaten zu konvertieren.
- Geben Sie ein Paar von Formaten an, z.
-\begin_inset ERT
-status inlined
-
-\begin_layout Standard
-
-\backslash
-,
-\end_layout
-
-\end_inset
-
+ Geben Sie ein Paar von Formaten an, z.\InsetSpace \thinspace{}
 B.
  
 \family typewriter
@@ -2823,6 +2641,7 @@ Ly
 status collapsed
 
 \begin_layout Standard
+
 {}
 \end_layout
 
@@ -2953,6 +2772,7 @@ LaT
 status collapsed
 
 \begin_layout Standard
+
 {}
 \end_layout
 
@@ -2976,6 +2796,7 @@ LaT
 status collapsed
 
 \begin_layout Standard
+
 {}
 \end_layout
 
@@ -3482,18 +3303,7 @@ Anmerkung des Übersetzers: Dieses Kapitel behandelt zwei Themenbereiche.
  Der überwiegende Rest des Kapitels erläutert, wie man LyX an eine neue
  Sprache anpaßt, d.
 \emph default
-
-\begin_inset ERT
-status inlined
-
-\begin_layout Standard
-
-\backslash
-,
-\end_layout
-
-\end_inset
-
+\InsetSpace \thinspace{}
 
 \emph on
 h.
@@ -3608,10 +3418,7 @@ Noch besser wäre es,
 \family typewriter
 LANG 
 \family default
-auf den Wert de_DE zu setzen, da andere Programme (z.
-\begin_inset Formula $\,$
-\end_inset
-
+auf den Wert de_DE zu setzen, da andere Programme (z.\InsetSpace \thinspace{}
 B.
  KDE) nach DE suchen, oder sogar den vollständigen Wert de_DE.iso88591
 \end_layout
@@ -3623,18 +3430,7 @@ B.
 
 \begin_layout Standard
 Normalerweise werden Sie den passenden Befehl in eine der Startdateien einfügen,
- also z.
-\begin_inset ERT
-status inlined
-
-\begin_layout Standard
-
-\backslash
-,
-\end_layout
-
-\end_inset
-
+ also z.\InsetSpace \thinspace{}
 B.
  in 
 \family typewriter
@@ -3725,18 +3521,7 @@ ichnis (
 ) kopieren und verändern.
  Diese wird anstelle der systemweiten Datei eingelesen.
  In diesem privaten Verzeichnis kann man die Definitionen einfach ändern,
- z.
-\begin_inset ERT
-status inlined
-
-\begin_layout Standard
-
-\backslash
-,
-\end_layout
-
-\end_inset
-
+ z.\InsetSpace \thinspace{}
 B.
  von 
 \family sans
@@ -4012,18 +3797,7 @@ locale
 \series bold
 xx
 \series default
-, z.
-\begin_inset ERT
-status inlined
-
-\begin_layout Standard
-
-\backslash
-,
-\end_layout
-
-\end_inset
-
+, z.\InsetSpace \thinspace{}
 B.: 
 \newline
 
@@ -4228,10 +4002,7 @@ status open
 
 \begin_layout Standard
 Alternativ können Sie auch lokal eine Kopie des (englischen) Ausgangstextes
- aufbewahren und diese dann mit der neuen Version vergleichen (z.
-\begin_inset Formula $\,$
-\end_inset
-
+ aufbewahren und diese dann mit der neuen Version vergleichen (z.\InsetSpace \thinspace{}
 B.
  mit dem Unix-Befehl 
 \family typewriter
@@ -4412,6 +4183,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 b o
 \end_layout
@@ -4435,6 +4207,7 @@ underdot (underd)
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
 d o
@@ -4468,6 +4241,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 t oo
 \end_layout
@@ -4486,6 +4260,7 @@ breve (bre)
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
 u o
@@ -4528,6 +4303,7 @@ dot (dot)
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
 .s
@@ -4641,18 +4417,7 @@ Ach so, zur Definition der Ausgabe: Der Backslash
 #
 \family default
  bezeichnet einen Kommentar, Anführungszeichen markieren den Anfang und
- das Ende eines Strings (d.
-\begin_inset ERT
-status inlined
-
-\begin_layout Standard
-
-\backslash
-,
-\end_layout
-
-\end_inset
-
+ das Ende eines Strings (d.\InsetSpace \thinspace{}
 h.\InsetSpace ~
 einer LaTeX-Befehlssequenz).
  Um diese Zeichen anzugeben, muß ein Backslash vorangestellt werden (also:
@@ -4717,6 +4482,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 begin{sloppypar}
 \end_layout
@@ -4727,18 +4493,7 @@ Auch sollte es die
 \family typewriter
 lyxrc
 \family default
--Datei nach Voreinstellungen durchsuchen (z.
-\begin_inset ERT
-status inlined
-
-\begin_layout Standard
-
-\backslash
-,
-\end_layout
-
-\end_inset
-
+-Datei nach Voreinstellungen durchsuchen (z.\InsetSpace \thinspace{}
 B.
  nach einer Option
 \family typewriter
@@ -4751,6 +4506,7 @@ kinclude
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
 end{sloppypar}
@@ -5423,6 +5179,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 '{
 \backslash
@@ -5464,6 +5221,7 @@ i
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
 'i
@@ -5596,18 +5354,7 @@ Ausgabe
 \family default
 Beachten Sie, daß es durchaus möglich ist, daß dasselbe Zeichen (sinnvoll)
  zwei verschiedene Strings repräsentieren kann.
- Z.
-\begin_inset ERT
-status inlined
-
-\begin_layout Standard
-
-\backslash
-,
-\end_layout
-
-\end_inset
-
+ Z.\InsetSpace \thinspace{}
 B.
  in 
 \family typewriter
@@ -5878,17 +5625,9 @@ Installieren neuer Textklassen, Layouts und Vorlagen
 
 \begin_layout Standard
 In diesem Abschnitt wird beschrieben, wie Sie beim Installieren neuer Layout-
- und Vorlagedateien vorgehen müssen, außerdem auch eine kleine Auf
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-"|
-\end_layout
-
-\end_inset
-
-frischung, wie man neue Dokumentenklassen für LaTeX korrekt installiert.
+ und Vorlagedateien vorgehen müssen, außerdem auch eine kleine Auf\SpecialChar \textcompwordmark{}
+frischung,
+ wie man neue Dokumentenklassen für LaTeX korrekt installiert.
  Zunächst ein paar Definitionen: Eine Dokumentenklasse ist eine LaTeX-Datei
  (normalerweise mit der Endung 
 \family typewriter
@@ -6046,18 +5785,7 @@ Setzen Sie die Umgebungsvariable
 \family typewriter
 TEXMFLOCAL
 \family default
- auf das gewählte Verzeichnis, z.
-\begin_inset ERT
-status inlined
-
-\begin_layout Standard
-
-\backslash
-,
-\end_layout
-
-\end_inset
-
+ auf das gewählte Verzeichnis, z.\InsetSpace \thinspace{}
 B.
 \newline
 
@@ -6224,18 +5952,7 @@ Wenn Sie vorhaben, eine neue Textklasse zu entwickeln, sollten Sie einen
 
 \begin_layout Standard
 Bei allen im folgenden angegebenen Optionen ist die Groß-/Kleinschreibung
- nicht relevant, d.
-\begin_inset ERT
-status inlined
-
-\begin_layout Standard
-
-\backslash
-,
-\end_layout
-
-\end_inset
-
+ nicht relevant, d.\InsetSpace \thinspace{}
 h.\InsetSpace ~
 Style, style und StYlE bezeichnen denselben Befehl.
  Die jeweils möglichen Werte sind in eckigen Klammern hinter dem Namen aufgeführ
@@ -6469,6 +6186,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 begin{sloppypar}
 \end_layout
@@ -6493,6 +6211,7 @@ documentclass
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
 end{sloppypar}
@@ -7578,6 +7297,7 @@ LatexUmge
 status collapsed
 
 \begin_layout Standard
+
 "-
 \end_layout
 
@@ -7595,6 +7315,7 @@ end
 status collapsed
 
 \begin_layout Standard
+
 ""
 \end_layout
 
@@ -7609,6 +7330,7 @@ La
 status collapsed
 
 \begin_layout Standard
+
 "-
 \end_layout
 
@@ -7623,6 +7345,7 @@ tex
 status collapsed
 
 \begin_layout Standard
+
 "-
 \end_layout
 
@@ -7735,20 +7458,10 @@ LatexName
  \InsetSpace ~
 
 \newline
-Der Name, den LaTeX für dieses Layout wählt, d.
-\begin_inset ERT
-status inlined
-
-\begin_layout Standard
-
-\backslash
-,
-\end_layout
-
-\end_inset
-
+Der Name, den LaTeX für dieses Layout wählt, d.\InsetSpace \thinspace{}
 h.\InsetSpace ~
-entweder der Name eines LaTeX-Befehls oder der einer LaTeX-Umgebung.
+entweder der Name eines
+ LaTeX-Befehls oder der einer LaTeX-Umgebung.
 \end_layout
 
 \begin_layout Description
@@ -9245,10 +8958,7 @@ Printing-HOWTO
 status open
 
 \begin_layout Standard
-z.
-\begin_inset Formula $\,$
-\end_inset
-
+z.\InsetSpace \thinspace{}
 B.
 
 \family typewriter
@@ -9330,17 +9040,9 @@ color
 \family typewriter
 draft
 \family default
--Drucker, der eine geringere Auf
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-"|
-\end_layout
-
-\end_inset
-
-lösung und einen ungenaueren Druckmodus benutzt.
+-Drucker, der eine geringere Auf\SpecialChar \textcompwordmark{}
+lösung und einen ungenaueren Druckmodus
+ benutzt.
  Sie sehen, man kann mit Printcaps viele Dinge tun.
 \end_layout
 
@@ -9958,20 +9660,10 @@ Die Drucker-Gerätedatei
 \end_layout
 
 \begin_layout Standard
-Der nächste Teil der Beispieleinträge legt das Gerät (d.
-\begin_inset ERT
-status inlined
-
-\begin_layout Standard
-
-\backslash
-,
-\end_layout
-
-\end_inset
-
+Der nächste Teil der Beispieleinträge legt das Gerät (d.\InsetSpace \thinspace{}
 h.\InsetSpace ~
-den Namen der Gerätedatei) fest, auf dem gedruckt werden soll.
+den Namen der Gerätedate
+i) fest, auf dem gedruckt werden soll.
  In allen Beispieleinträgen lautet diese Zeile:
 \end_layout
 
@@ -10766,6 +10458,7 @@ im hochauf
 status collapsed
 
 \begin_layout Standard
+
 "|
 \end_layout
 
@@ -10784,6 +10477,7 @@ m niedrigauf
 status collapsed
 
 \begin_layout Standard
+
 "|
 \end_layout
 
@@ -10909,16 +10603,7 @@ la70 LA70
 \size normal
 la70t LA70 
 \size default
-mit Textverbesserung bei niedriger Auf
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-"|
-\end_layout
-
-\end_inset
-
+mit Textverbesserung bei niedriger Auf\SpecialChar \textcompwordmark{}
 lösung
 \end_layout
 
@@ -11042,16 +10727,7 @@ Nadeldrucker
 \size normal
  
 \size default
-(und Kompatible) in mittlerer Auf
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-"|
-\end_layout
-
-\end_inset
-
+(und Kompatible) in mittlerer Auf\SpecialChar \textcompwordmark{}
 lösung
 \size normal
  
@@ -11066,16 +10742,7 @@ e
 \size normal
  9-
 \size default
-Nadeldrucker (und Kompatible) in dreifacher Auf
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-"|
-\end_layout
-
-\end_inset
-
+Nadeldrucker (und Kompatible) in dreifacher Auf\SpecialChar \textcompwordmark{}
 lösung
 \end_layout
 
@@ -11305,16 +10972,7 @@ mit Möglichkeit zu doppelseitigem Drucken
 \size normal
 ljet4 LaserJet 4 
 \size default
-(Voreinstellung für die Auf
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-"|
-\end_layout
-
-\end_inset
-
+(Voreinstellung für die Auf\SpecialChar \textcompwordmark{}
 lösung 
 \size normal
 600dpi
@@ -11549,16 +11207,7 @@ Drucker bei
 \size normal
  360 dpi 
 \size default
-Auf
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-"|
-\end_layout
-
-\end_inset
-
+Auf\SpecialChar \textcompwordmark{}
 lösung
 \end_layout
 
@@ -11717,7 +11366,14 @@ Druckertreiber
 \family roman
 \size default
 \emph on
-Auflösung
+Auf
+\family default
+\emph default
+\SpecialChar \textcompwordmark{}
+
+\family roman
+\emph on
+lösung
 \family default
 \size normal
 \emph default
@@ -11753,16 +11409,7 @@ Druckertreiber
 \emph on
 Auflösung
 \emph default
- ist die Auf
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-"|
-\end_layout
-
-\end_inset
-
+ ist die Auf\SpecialChar \textcompwordmark{}
 lösung, die Sie benutzen wollen; 
 \emph on
 Zusatzoptionen
@@ -11842,17 +11489,9 @@ Verschiedene Druckertreiber behandeln das Argument
 -r600
 \family default
 .
- Andere möchten die horizontale und die vertikale Auf
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-"|
-\end_layout
-
-\end_inset
-
-lösung einzeln eingegeben haben, zum Beispiel 
+ Andere möchten die horizontale und die vertikale Auf\SpecialChar \textcompwordmark{}
+lösung einzeln eingegeben
+ haben, zum Beispiel 
 \family typewriter
 -r360x360
 \family default
@@ -12224,16 +11863,7 @@ ps
 
 \size default
 -Drucker (siehe unten) arbeitet mit jedem Epson-kompatiblen Drucker (heutzutage
- ist fast jeder Nadeldrucker Epson-kompatibel) und benutzt die Standardauf
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-"|
-\end_layout
-
-\end_inset
-
+ ist fast jeder Nadeldrucker Epson-kompatibel) und benutzt die Standardauf\SpecialChar \textcompwordmark{}
 lösung.
 
 \size normal
@@ -13151,34 +12781,12 @@ ktualisieren
 t sind, daß sie eine Aktualisierung automatisch vornehmen, sobald sich die
  Originaldatei verändert hat.
  In einem solchen Fall ist eine erzwungene Aktualisierung nicht notwendig.
- Bei einigen Vorlagen ist dieser Automatismus aber abgeschaltet, z.
-\begin_inset ERT
-status inlined
-
-\begin_layout Standard
-
-\backslash
-,
-\end_layout
-
-\end_inset
-
+ Bei einigen Vorlagen ist dieser Automatismus aber abgeschaltet, z.\InsetSpace \thinspace{}
 B.
  wenn der Aufwand, die einzubindende Datei zu erstellen, unverhältnismäßig
  groß ist und deshalb die Entscheidung, wann eine Aktualisierung wirklich
  nötig ist, dem Nutzer überlassen bleibt.
- Allerdings sind in diesem Fall auch wirklich Sie dafür zuständig z.
-\begin_inset ERT
-status inlined
-
-\begin_layout Standard
-
-\backslash
-,
-\end_layout
-
-\end_inset
-
+ Allerdings sind in diesem Fall auch wirklich Sie dafür zuständig z.\InsetSpace \thinspace{}
 B.
  vor dem Ausdruck durch einen Klick auf den 
 \family sans
@@ -13430,6 +13038,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 begin{sloppypar}
 \end_layout
@@ -13467,6 +13076,7 @@ pic2ascii.py
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
 end{sloppypar}
@@ -13532,18 +13142,7 @@ Ermöglichen der eingebetteten Vorschau anstelle des einfachen Knopfes.
 \end_layout
 
 \begin_layout Itemize
-Eingebettete Bearbeitung, z.
-\begin_inset ERT
-status inlined
-
-\begin_layout Standard
-
-\backslash
-,
-\end_layout
-
-\end_inset
-
+Eingebettete Bearbeitung, z.\InsetSpace \thinspace{}
 B.
  über OpenParts oder ein ähnliches Protokoll.
 \end_layout
@@ -13624,18 +13223,7 @@ UserDir/preferences
 
 \begin_layout Standard
 Und als letztes sei der Hinweis angebracht daß einige Windowmanager (wie
- z.
-\begin_inset ERT
-status inlined
-
-\begin_layout Standard
-
-\backslash
-,
-\end_layout
-
-\end_inset
-
+ z.\InsetSpace \thinspace{}
 B.
  FVWM) einige der Funktionstasten abfangen und für die eigene Steuerung
  verwenden.
