@@ -9,6 +9,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
+#undef QT3_SUPPORT
+
 #include <config.h>
 
 
@@ -55,7 +57,7 @@ namespace os = lyx::support::os;
 namespace {
 
 /// return the LyX key state from Qt's
-key_modifier::state q_key_state(Qt::ButtonState state)
+key_modifier::state q_key_state(Qt::KeyboardModifiers state)
 {
 	key_modifier::state k = key_modifier::none;
 	if (state & Qt::ControlModifier)
@@ -69,7 +71,7 @@ key_modifier::state q_key_state(Qt::ButtonState state)
 
 
 /// return the LyX mouse button state from Qt's
-mouse_button::state q_button_state(Qt::ButtonState button)
+mouse_button::state q_button_state(Qt::MouseButton button)
 {
 	mouse_button::state b = mouse_button::none;
 	switch (button) {
@@ -90,7 +92,7 @@ mouse_button::state q_button_state(Qt::ButtonState button)
 
 
 /// return the LyX mouse button state from Qt's
-mouse_button::state q_motion_state(Qt::ButtonState state)
+mouse_button::state q_motion_state(Qt::MouseButton state)
 {
 	mouse_button::state b = mouse_button::none;
 	if (state & Qt::LeftButton)
@@ -167,7 +169,8 @@ GuiWorkArea::GuiWorkArea(int w, int h, QWidget * parent, BufferView * buffer_vie
 			lyxerr[Debug::GUI] << "ERROR: keyeventTimeout cannot connect!" << endl;
 
 		// Start the timer, one-shot.
-		step_timer_.start(50, true);
+		step_timer_.setSingleShot(true);
+		step_timer_.start(50);
 	}
 
 	// Enables input methods for asian languages.
@@ -188,7 +191,7 @@ void GuiWorkArea::setScrollbarParams(int h, int scroll_pos, int scroll_line_step
 
 	verticalScrollBar()->setRange(0, scroll_max_);
 	verticalScrollBar()->setSliderPosition(scroll_pos);
-	verticalScrollBar()->setLineStep(scroll_line_step);
+	verticalScrollBar()->setSingleStep(scroll_line_step);
 }
 
 
@@ -265,7 +268,7 @@ void GuiWorkArea::mouseReleaseEvent(QMouseEvent * e)
 void GuiWorkArea::mouseMoveEvent(QMouseEvent * e)
 {
 	FuncRequest cmd(LFUN_MOUSE_MOTION, e->x(), e->y(),
-			      q_motion_state(e->state()));
+			      q_motion_state(e->button()));
 
 	// If we're above or below the work area...
 	if (e->y() <= 20 || e->y() >= viewport()->height() - 20) {
@@ -329,7 +332,7 @@ void GuiWorkArea::wheelEvent(QWheelEvent * e)
 	// documentation of QWheelEvent)
 	int const lines = qApp->wheelScrollLines() * e->delta() / 120;
 	verticalScrollBar()->setValue(verticalScrollBar()->value() -
-			lines *  verticalScrollBar()->lineStep());
+			lines *  verticalScrollBar()->singleStep());
 	adjustViewWithScrollBar();
 }
 
@@ -357,7 +360,7 @@ void GuiWorkArea::keyPressEvent(QKeyEvent * e)
 {
 	lyxerr[Debug::KEY] << BOOST_CURRENT_FUNCTION
 		<< " count=" << e->count()
-		<< " text=" << (const char *) e->text()
+		<< " text=" << fromqstr(e->text())
 		<< " isAutoRepeat=" << e->isAutoRepeat()
 		<< " key=" << e->key()
 		<< endl;
@@ -368,7 +371,7 @@ void GuiWorkArea::keyPressEvent(QKeyEvent * e)
 	else {
 		boost::shared_ptr<QLyXKeySym> sym(new QLyXKeySym);
 		sym->set(e);
-		processKeySym(sym, q_key_state(e->state()));
+		processKeySym(sym, q_key_state(e->modifiers()));
 	}
 }
 
@@ -393,19 +396,20 @@ void GuiWorkArea::keyeventTimeout()
 
 		lyxerr[Debug::GUI] << BOOST_CURRENT_FUNCTION
 				   << " count=" << ev->count()
-				   << " text=" << (const char *) ev->text()
+				   << " text=" <<  fromqstr(ev->text())
 				   << " isAutoRepeat=" << ev->isAutoRepeat()
 				   << " key=" << ev->key()
 				   << endl;
 
-		processKeySym(sym, q_key_state(ev->state()));
+		processKeySym(sym, q_key_state(ev->modifiers()));
 		keyeventQueue_.pop();
 
 		handle_autos = false;
 	}
 
 	// Restart the timer.
-	step_timer_.start(25, true);
+	step_timer_.setSingleShot(true);
+	step_timer_.start(25);
 }
 
 
@@ -600,8 +604,8 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 	if (!text.isEmpty()) {
 
 		lyxerr[Debug::KEY] << BOOST_CURRENT_FUNCTION
-			<< " preeditString =" << (const char *) e->preeditString()
-			<< " commitString  =" << (const char *) e->commitString()
+			<< " preeditString =" << fromqstr(e->preeditString())
+			<< " commitString  =" << fromqstr(e->commitString())
 			<< endl;
 
 		int key = 0;
@@ -609,7 +613,7 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 		// ideally, such special coding should not be necessary
 		if (text == "^")
 			key = Qt::Key_AsciiCircum;
-		QKeyEvent ev(QEvent::KeyPress, key, *text.ascii(), 0, text);
+		QKeyEvent ev(QEvent::KeyPress, key, 0, text);
 		keyPressEvent(&ev);
 	}
 	e->accept();

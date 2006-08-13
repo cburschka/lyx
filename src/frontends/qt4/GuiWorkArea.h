@@ -54,7 +54,7 @@ class double_click {
 public:
 	int x;
 	int y;
-	Qt::ButtonState state;
+	Qt::MouseButton state;
 	bool active;
 
 	bool operator==(QMouseEvent const & e) {
