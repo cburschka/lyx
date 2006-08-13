@@ -161,6 +161,9 @@ void add_known_command(string const & command, string const & o1,
 }
 
 
+bool noweb_mode = false;
+
+
 namespace {
 
 
@@ -275,6 +278,7 @@ int parse_help(string const &, string const &)
 		"\t-userdir dir       try to set user directory to dir\n"
 		"\t-sysdir dir        try to set system directory to dir\n"
 		"\t-c textclass       declare the textclass\n"
+		"\t-n                 translate a noweb (aka literate programming) file.\n"
 		"\t-s syntaxfile      read additional syntax file" << endl;
 	exit(0);
 }
@@ -337,6 +341,13 @@ int parse_force(string const &, string const &)
 }
 
 
+int parse_noweb(string const &, string const &)
+{
+	noweb_mode = true;
+	return 0;
+}
+
+
 void easyParse(int & argc, char * argv[])
 {
 	map<string, cmd_helper> cmdmap;
@@ -346,6 +357,7 @@ void easyParse(int & argc, char * argv[])
 	cmdmap["-s"] = parse_syntaxfile;
 	cmdmap["-help"] = parse_help;
 	cmdmap["--help"] = parse_help;
+	cmdmap["-n"] = parse_noweb;
 	cmdmap["-sysdir"] = parse_sysdir;
 	cmdmap["-userdir"] = parse_userdir;
 

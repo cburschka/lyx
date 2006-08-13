@@ -18,6 +18,7 @@
 #include "lyxtextclass.h"
 #include "lyxlex.h"
 #include "support/filetools.h"
+#include "support/lstrings.h"
 
 #include <algorithm>
 #include <iostream>
@@ -483,9 +484,10 @@ LyXTextClass const parse_preamble(Parser & p, ostream & os, string const & force
 	p.skip_spaces();
 
 	// Force textclass if the user wanted it
-	if (!forceclass.empty()) {
+	if (!forceclass.empty())
 		h_textclass = forceclass;
-	}
+	if (noweb_mode && !lyx::support::prefixIs(h_textclass, "literate-"))
+		h_textclass.insert(0, "literate-");
 	string layoutfilename = libFileSearch("layouts", h_textclass, "layout");
 	if (layoutfilename.empty()) {
 		cerr << "Error: Could not find layout file for textclass \"" << h_textclass << "\"." << endl;

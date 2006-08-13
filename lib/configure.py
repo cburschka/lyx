@@ -315,15 +315,12 @@ def checkConverterEntries():
     os.environ["PATH"] = os.path.join('..', 'src', 'tex2lyx') + \
         os.pathsep + path_orig
 
-    checkProg('a LaTeX -> LyX converter', ['tex2lyx -f $$i $$o', \
-        'tex2lyx' +  version_suffix + ' -f $$i $$o' ],
-        rc_entry = [ r'\converter latex      lyx        "%%"	""' ])
+    checkProg('a LaTeX/Noweb -> LyX converter', ['tex2lyx', 'tex2lyx' + version_suffix],
+        rc_entry = [r'''\converter latex      lyx        "%% -f $$i $$o"	""
+\converter literate   lyx        "%% -n -f $$i $$o"	""'''])
 
     os.environ["PATH"] = path_orig
 
-    #
-    checkProg('a Noweb -> LyX converter', ['noweb2lyx' + version_suffix + ' $$i $$o'], path = ['./reLyX'],
-        rc_entry = [ r'\converter literate   lyx        "%%"	""' ])
     #
     checkProg('a Noweb -> LaTeX converter', ['noweave -delay -index $$i > $$o'],
         rc_entry = [ r'\converter literate   latex      "%%"	""' ])
@@ -340,7 +337,7 @@ def checkConverterEntries():
     checkProg('an OpenOffice.org -> LaTeX converter', ['w2l -clean $$i'],
         rc_entry = [ r'\converter sxw        latex      "%%"	""' ])
     #
-    checkProg('an LaTeX -> OpenOffice.org LaTeX converter', ['oolatex $$i', 'oolatex.sh $$i'],
+    checkProg('a LaTeX -> OpenOffice.org converter', ['oolatex $$i', 'oolatex.sh $$i'],
         rc_entry = [ r'\converter latex      sxw        "%%"	"latex"' ])
     #
     checkProg('a PS to PDF converter', ['ps2pdf13 $$i $$o'],
