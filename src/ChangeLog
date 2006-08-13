@@ -1,3 +1,8 @@
+2006-08-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* dociterator.C (forwardPosNoDescend): when at the end of the
+	inset, leave it, like forwardPos does (bug 2510).
+
 2006-08-12  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* buffer.C (updateDocLang): update labels when changing language.

@@ -58,6 +58,8 @@ What's new
 - Fix crash on save (including dataloss) when the backup directory 
   was invalid or not writeable(bug 2740).
 
+- Fix lockup when accepting a change in a text inset (bug 2510).
+
 - Update labels  on screen when changing language.
 
 - Show an error box when failing to update the TeX Information dalog data.

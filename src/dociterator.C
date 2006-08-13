@@ -398,7 +398,11 @@ void DocIterator::forwardPosNoDescend()
 	}
 	//lyxerr << "... no next idx" << endl;
 
-	// otherwise we can't move on
+	// otherwise leave inset and jump over inset as a whole
+	pop_back();
+	// 'top' is invalid now...
+	if (!empty())
+		++top().pos();
 }
 
 
