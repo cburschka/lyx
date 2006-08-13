@@ -37,10 +37,9 @@ Buffer * newFile(std::string const & filename, std::string const & templatename,
 
 ///return the format of the buffer on a string
 std::string const bufferFormat(Buffer const & buffer);
-///
-void bufferErrors(Buffer const &, TeXErrors const &);
-///
-void bufferErrors(Buffer const &, ErrorList const &);
+
+/// Fill in the ErrorList with the TeXErrors
+void bufferErrors(Buffer const &, TeXErrors const &, ErrorList &);
 
 /// Count the number of words in the text between these two iterators
 int countWords(DocIterator const & from, DocIterator const & to);

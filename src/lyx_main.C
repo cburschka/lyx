@@ -280,21 +280,21 @@ int LyX::exec2(int & argc, char * argv[])
 					last_loaded = b;
 			} else {
 				Buffer * buf = bufferlist.newBuffer(s, false);
-				if (loadLyXFile(buf, s))
+				if (loadLyXFile(buf, s)) {
 					last_loaded = buf;
-				else
-					bufferlist.release(buf);
-
-				ErrorList const & el = buf->getErrorList();
-				if (!el.empty()) {
-					// There should be a way to use the following but I (abdel) don't know
-					// how to make it compile on MSVC2005.
-					//for_each(el.begin(), el.end(), mem_fun_ref(&LyX::printError));
-					for (ErrorList::const_iterator it = el.begin();
-						it != el.end(); ++it) {
-							printError(*it);
+					ErrorList const & el = buf->errorList("Parse");
+					if (!el.empty()) {
+						// There should be a way to use the following but I (abdel) don't know
+						// how to make it compile on MSVC2005.
+						//for_each(el.begin(), el.end(), mem_fun_ref(&LyX::printError));
+						for (ErrorList::const_iterator it = el.begin();
+							it != el.end(); ++it) {
+								printError(*it);
+						}
 					}
 				}
+				else
+					bufferlist.release(buf);
 			}
 		}
 

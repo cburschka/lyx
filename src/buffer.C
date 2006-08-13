@@ -22,6 +22,7 @@
 #include "Chktex.h"
 #include "debug.h"
 #include "encoding.h"
+#include "errorlist.h"
 #include "exporter.h"
 #include "format.h"
 #include "funcrequest.h"
@@ -416,6 +417,8 @@ int Buffer::readHeader(LyXLex & lex)
 	params().headsep.erase();
 	params().footskip.erase();
 
+	ErrorList & errorList = errorLists_["Parse"];
+
 	while (lex.isOK()) {
 		lex.next();
 		string const token = lex.getString();
@@ -445,14 +448,14 @@ int Buffer::readHeader(LyXLex & lex)
 							   "%1$s %2$s\n"),
 							 token,
 							 lex.getString());
-				errorList_.push_back(ErrorItem(_("Document header error"),
+				errorList.push_back(ErrorItem(_("Document header error"),
 					s, -1, 0, 0));
 			}
 		}
 	}
 	if (begin_header_line) {
 		string const s = _("\\begin_header is missing");
-		errorList_.push_back(ErrorItem(_("Document header error"),
+		errorList.push_back(ErrorItem(_("Document header error"),
 			s, -1, 0, 0));
 	}
 
@@ -465,13 +468,14 @@ int Buffer::readHeader(LyXLex & lex)
 // Returns false if "\end_document" is not read (Asger)
 bool Buffer::readDocument(LyXLex & lex)
 {
-	errorList_.clear();
+	ErrorList & errorList = errorLists_["Parse"];
+	errorList.clear();
 
 	lex.next();
 	string const token = lex.getString();
 	if (token != "\\begin_document") {
 		string const s = _("\\begin_document is missing");
-		errorList_.push_back(ErrorItem(_("Document header error"),
+		errorList.push_back(ErrorItem(_("Document header error"),
 			s, -1, 0, 0));
 	}
 
@@ -487,21 +491,11 @@ bool Buffer::readDocument(LyXLex & lex)
 		params().textclass = 0;
 	}
 
-	bool const res = text().read(*this, lex);
+	bool const res = text().read(*this, lex, errorList);
 	for_each(text().paragraphs().begin(),
 		 text().paragraphs().end(),
 		 bind(&Paragraph::setInsetOwner, _1, &inset()));
 	updateBibfilesCache();
-
-	// FIXME: the signal emission below is not needed for now because
-	// there is a manual call to "LyXView::showErrorList(_("Parse"))"
-	// in  BufferView::pimpl::loadLyXFile()
-	// Eventually, all manual call to "LyXView::showErrorList()" should
-	// be replace with this signal emission.
-	//
-	// Send the "errors" signal in case of parsing errors
-	//if (!errorList_.empty())
-	//	errors(_("Parse"));
 
 	return res;
 }
@@ -1175,11 +1169,13 @@ int Buffer::runChktex()
 		Alert::error(_("chktex failure"),
 			     _("Could not run chktex successfully."));
 	} else if (res > 0) {
-		// Insert all errors as errors boxes
-		bufferErrors(*this, terr);
+		// Fill-in the error list with the TeX errors
+		bufferErrors(*this, terr, errorLists_["ChkTex"]);
 	}
 
 	busy(false);
+
+	errors("ChkTeX");
 
 	return res;
 }
@@ -1705,19 +1701,23 @@ void Buffer::getSourceCode(ostream & os, lyx::pit_type par_begin, lyx::pit_type 
 }
 
 
-ErrorList const & Buffer::getErrorList() const
+ErrorList const & Buffer::errorList(string const & type) const
 {
-	return errorList_;
+	std::map<std::string, ErrorList>::const_iterator I = errorLists_.find(type);
+	if (I == errorLists_.end())
+		return emptyErrorList_;
+
+	return I->second;
 }
 
 
-void Buffer::setErrorList(ErrorList const & errorList) const
+ErrorList & Buffer::errorList(string const & type)
 {
-	errorList_ = errorList;
-}
+	std::map<std::string, ErrorList>::iterator I = errorLists_.find(type);
+	if (I == errorLists_.end()) {
+		errorLists_[type] = emptyErrorList_;
+		return errorLists_[type];
+	}
 
-
-void Buffer::addError(ErrorItem const & errorItem) const
-{
-	errorList_.push_back(errorItem);
+	return I->second;
 }

@@ -28,6 +28,7 @@
 #include "CutAndPaste.h"
 #include "debug.h"
 #include "dispatchresult.h"
+#include "errorlist.h"
 #include "factory.h"
 #include "FloatList.h"
 #include "funcrequest.h"
@@ -198,7 +199,8 @@ bool BufferView::Pimpl::loadLyXFile(string const & filename, bool tolastfiles)
 	}
 
 	setBuffer(b);
-	owner_->showErrorList(_("Parse"));
+	// Send the "errors" signal in case of parsing errors
+	b->errors("Parse");
 
 	// scroll to the position when the file was last closed
 	if (lyxrc.use_lastfilepos) {
@@ -789,17 +791,18 @@ void BufferView::Pimpl::menuInsertLyXFile(string const & filenm)
 
 	string res;
 	Buffer buf("", false);
-	// FIXME: is there a need for something like that?
-	//buf.errors.connect(boost::bind(&LyXView::showErrorList, owner_, _1));
 	if (::loadLyXFile(&buf, makeAbsPath(filename))) {
+		ErrorList & el = buffer_->errorList("Parse");
+		// Copy the inserted document error list into the current buffer one.
+		el = buf.errorList("Parse");
 		lyx::cap::pasteParagraphList(cursor_, buf.paragraphs(),
-					     buf.params().textclass);
+					     buf.params().textclass, el);
 		res = _("Document %1$s inserted.");
 	} else
 		res = _("Could not insert document %1$s");
 
 	owner_->message(bformat(res, disp_fn));
-	owner_->showErrorList(_("Document insertion"));
+	buffer_->errors("Parse");
 	resizeCurrentBuffer();
 }
 

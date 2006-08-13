@@ -212,7 +212,8 @@ Buffer * newFile(string const & filename, string const & templatename,
 }
 
 
-void bufferErrors(Buffer const & buf, TeXErrors const & terr)
+void bufferErrors(Buffer const & buf, TeXErrors const & terr,
+				  ErrorList & errorList)
 {
 	TeXErrors::Errors::const_iterator cit = terr.begin();
 	TeXErrors::Errors::const_iterator end = terr.end();
@@ -231,15 +232,9 @@ void bufferErrors(Buffer const & buf, TeXErrors const & terr)
 							  pos_end);
 		} while (found && id_start == id_end && pos_start == pos_end);
 
-		buf.addError(ErrorItem(cit->error_desc,
+		errorList.push_back(ErrorItem(cit->error_desc,
 			cit->error_text, id_start, pos_start, pos_end));
 	}
-}
-
-
-void bufferErrors(Buffer const & buf, ErrorList const & el)
-{
-	buf.setErrorList(el);
 }
 
 

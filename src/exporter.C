@@ -215,8 +215,13 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 		buffer->makeLaTeXFile(filename, buffer->filePath(), runparams);
 	}
 
-	if (!converters.convert(buffer, filename, filename,
-				backend_format, format, result_file))
+	string const error_type = (format == "program")? "Build" : bufferFormat(*buffer);
+	bool const success = converters.convert(buffer, filename, filename,
+		backend_format, format, result_file,
+		buffer->errorList(error_type));
+	// Emit the signal to show the error list.
+	buffer->errors(error_type);
+	if (!success)
 		return false;
 
 	if (!put_in_tempdir) {

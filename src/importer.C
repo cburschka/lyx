@@ -39,7 +39,7 @@ extern BufferList bufferlist;
 
 
 bool Importer::Import(LyXView * lv, string const & filename,
-		      string const & format)
+		      string const & format, ErrorList & errorList)
 {
 	string const displaypath = makeDisplayPath(filename);
 	lv->message(bformat(_("Importing %1$s..."), displaypath));
@@ -53,7 +53,7 @@ bool Importer::Import(LyXView * lv, string const & filename,
 		     it != loaders.end(); ++it) {
 			if (converters.isReachable(format, *it)) {
 				if (!converters.convert(0, filename, filename,
-							format, *it))
+							format, *it, errorList))
 					return false;
 				loader_format = *it;
 				break;

@@ -720,7 +720,9 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 		<< "\tfile to convert = " << temp_file << '\n'
 		<< "\t from " << from << " to " << to << '\n';
 
-	if (converters.convert(&buf, temp_file, temp_file, from, to, true)) {
+	// FIXME (Abdel 12/08/06): Is there a need to show these errors?
+	ErrorList el;
+	if (converters.convert(&buf, temp_file, temp_file, from, to, el, true)) {
 		runparams.exportdata->addExternalFile(tex_format,
 				to_file, output_to_file);
 		runparams.exportdata->addExternalFile("dvi",

@@ -837,22 +837,18 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_BUFFER_UPDATE:
 			Exporter::Export(owner->buffer(), argument, true);
-			owner->showErrorList(bufferFormat(*owner->buffer()));
 			break;
 
 		case LFUN_BUFFER_VIEW:
 			Exporter::preview(owner->buffer(), argument);
-			owner->showErrorList(bufferFormat(*owner->buffer()));
 			break;
 
 		case LFUN_BUILD_PROGRAM:
 			Exporter::Export(owner->buffer(), "program", true);
-			owner->showErrorList(_("Build"));
 			break;
 
 		case LFUN_BUFFER_CHKTEX:
 			owner->buffer()->runChktex();
-			owner->showErrorList(_("ChkTeX"));
 			break;
 
 		case LFUN_BUFFER_EXPORT:
@@ -860,7 +856,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				owner->getDialogs().show("sendto");
 			else {
 				Exporter::Export(owner->buffer(), argument, false);
-				owner->showErrorList(bufferFormat(*owner->buffer()));
 			}
 			break;
 
@@ -892,8 +887,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 					break;
 
 			} else {
-				Exporter::Export(buffer, format_name, true,
-						 filename);
+				Exporter::Export(buffer, format_name, true, filename);
 			}
 
 			// Substitute $$FName for filename
@@ -1555,14 +1549,14 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			recordUndoFullDocument(view());
 			buffer->params().textclass = new_class;
 			StableDocIterator backcur(view()->cursor());
-			ErrorList el;
+			ErrorList & el = buffer->errorList("Class Switch");
 			lyx::cap::switchBetweenClasses(
 				old_class, new_class,
 				static_cast<InsetText &>(buffer->inset()), el);
 
 			view()->setCursor(backcur.asDocIterator(&(buffer->inset())));
-			bufferErrors(*buffer, el);
-			owner->showErrorList(_("Class switch"));
+
+			buffer->errors("Class Switch");
 			updateLabels(*buffer);
 			updateforce = true;
 			break;
@@ -1889,7 +1883,9 @@ void LyXFunc::doImport(string const & argument)
 		}
 	}
 
-	Importer::Import(owner, filename, format);
+	ErrorList errorList;
+	Importer::Import(owner, filename, format, errorList);
+	// FIXME (Abdel 12/08/06): Is there a need to display the error list here?
 }
 
 

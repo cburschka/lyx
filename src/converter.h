@@ -20,6 +20,7 @@
 
 
 class Buffer;
+class ErrorList;
 class Format;
 class Formats;
 class OutputParams;
@@ -107,12 +108,13 @@ public:
 	bool convert(Buffer const * buffer,
 		     std::string const & from_file, std::string const & to_file_base,
 		     std::string const & from_format, std::string const & to_format,
-		     std::string & to_file, bool try_default = false);
+		     std::string & to_file, ErrorList & errorList,
+			 bool try_default = false);
 	///
 	bool convert(Buffer const * buffer,
 		     std::string const & from_file, std::string const & to_file_base,
 		     std::string const & from_format, std::string const & to_format,
-		     bool try_default = false);
+			 ErrorList & errorList, bool try_default = false);
 	///
 	void update(Formats const & formats);
 	///
@@ -134,10 +136,10 @@ private:
 	intToFormat(std::vector<int> const & input);
 	///
 	bool scanLog(Buffer const & buffer, std::string const & command,
-		     std::string const & filename);
+		     std::string const & filename, ErrorList & errorList);
 	///
 	bool runLaTeX(Buffer const & buffer, std::string const & command,
-		      OutputParams const &);
+		      OutputParams const &, ErrorList & errorList);
 	///
 	ConverterList converterlist_;
 	///

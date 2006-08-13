@@ -19,6 +19,7 @@
 
 
 class LyXView;
+class ErrorList;
 class Format;
 
 class Importer {
@@ -26,7 +27,7 @@ public:
 	///
 	static
 	bool Import(LyXView * lv, std::string const & filename,
-		    std::string const & format);
+		    std::string const & format, ErrorList & errorList);
 
 	///
 	static

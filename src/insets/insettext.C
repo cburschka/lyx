@@ -163,7 +163,8 @@ void InsetText::read(Buffer const & buf, LyXLex & lex)
 	// delete the initial paragraph
 	Paragraph oldpar = *paragraphs().begin();
 	paragraphs().clear();
-	bool res = text_.read(buf, lex);
+	ErrorList errorList;
+	bool res = text_.read(buf, lex, errorList);
 	init();
 
 	if (!res) {

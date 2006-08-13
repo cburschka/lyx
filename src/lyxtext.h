@@ -30,6 +30,7 @@ class BufferParams;
 class BufferView;
 class CursorSlice;
 class Dimension;
+class ErrorList;
 class InsetBase;
 class InsetBase_code;
 class FuncRequest;
@@ -320,7 +321,7 @@ public:
 	///
 	void write(Buffer const & buf, std::ostream & os) const;
 	/// returns whether we've seen our usual 'end' marker
-	bool read(Buffer const & buf, LyXLex & lex);
+	bool read(Buffer const & buf, LyXLex & lex, ErrorList & errorList);
 
 	///
 	int ascent() const;

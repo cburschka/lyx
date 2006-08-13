@@ -29,6 +29,7 @@
 #include "CutAndPaste.h"
 #include "debug.h"
 #include "dispatchresult.h"
+#include "errorlist.h"
 #include "factory.h"
 #include "funcrequest.h"
 #include "gettext.h"
@@ -731,7 +732,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			cur.setSelection();
 		if (content) {
 			lyx::cap::replaceSelection(cur);
-			pasteSelection(cur, 0);
+			pasteSelection(cur, bv->buffer()->errorList("Paste"), 0);
 			cur.clearSelection();
 			// restore position
 			cur.pit() = std::min(cur.lastpit(), spit);
@@ -797,9 +798,12 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		cur.message(_("Paste"));
 		lyx::cap::replaceSelection(cur);
 		if (isStrUnsignedInt(cmd.argument))
-			pasteSelection(cur, convert<unsigned int>(cmd.argument));
+			pasteSelection(cur, bv->buffer()->errorList("Paste"),
+			convert<unsigned int>(cmd.argument));
 		else
-			pasteSelection(cur, 0);
+			pasteSelection(cur, bv->buffer()->errorList("Paste"),
+			0);
+		bv->buffer()->errors("Paste");
 		cur.clearSelection(); // bug 393
 		bv->switchKeyMap();
 		finishUndo();

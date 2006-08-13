@@ -56,11 +56,11 @@ void cutSelection(LCursor & cur, bool doclear = true, bool realcut = true);
 ///
 void copySelection(LCursor & cur);
 ///
-void pasteSelection(LCursor & cur, size_t sel_index = 0);
+void pasteSelection(LCursor & cur, ErrorList &, size_t sel_index = 0);
 
 ///
 void pasteParagraphList(LCursor & cur, ParagraphList const & parlist,
-			textclass_type textclass);
+			textclass_type textclass, ErrorList & errorList);
 
 
 /** Needed to switch between different classes. This works

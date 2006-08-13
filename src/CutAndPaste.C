@@ -612,7 +612,7 @@ std::string getSelection(Buffer const & buf, size_t sel_index)
 
 
 void pasteParagraphList(LCursor & cur, ParagraphList const & parlist,
-			textclass_type textclass)
+			textclass_type textclass, ErrorList & errorList)
 {
 	if (cur.inTexted()) {
 		LyXText * text = cur.text();
@@ -622,15 +622,13 @@ void pasteParagraphList(LCursor & cur, ParagraphList const & parlist,
 
 		pit_type endpit;
 		PitPosPair ppp;
-		ErrorList el;
 
 		boost::tie(ppp, endpit) =
 			pasteSelectionHelper(cur.buffer(),
 					     text->paragraphs(),
 					     cur.pit(), cur.pos(),
 					     parlist, textclass,
-					     el);
-		bufferErrors(cur.buffer(), el);
+					     errorList);
 		updateLabels(cur.buffer());
 		cur.clearSelection();
 		text->setCursor(cur, ppp.first, ppp.second);
@@ -641,15 +639,14 @@ void pasteParagraphList(LCursor & cur, ParagraphList const & parlist,
 }
 
 
-void pasteSelection(LCursor & cur, size_t sel_index)
+void pasteSelection(LCursor & cur, ErrorList & errorList, size_t sel_index)
 {
 	// this does not make sense, if there is nothing to paste
 	if (!checkPastePossible(sel_index))
 		return;
 
 	pasteParagraphList(cur, theCuts[sel_index].first,
-			   theCuts[sel_index].second);
-	cur.bv().owner()->showErrorList(_("Paste"));
+			   theCuts[sel_index].second, errorList);
 	cur.setSelection();
 }
 

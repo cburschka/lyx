@@ -313,9 +313,12 @@ void updateExternal(InsetExternalParams const & params,
 		return; // SUCCESS
 	string const to_file_base =
 		support::changeExtension(to_file, string());
+
+	// FIXME (Abdel 12/08/06): Is there a need to show these errors?
+	ErrorList el;
 	/* bool const success = */
 		converters.convert(&buffer, temp_file, to_file_base,
-				   from_format, to_format, true);
+				   from_format, to_format, el, true);
 	// return success
 }
 

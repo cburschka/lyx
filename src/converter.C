@@ -282,7 +282,7 @@ OutputParams::FLAVOR Converters::getFlavor(Graph::EdgePath const & path)
 bool Converters::convert(Buffer const * buffer,
 			 string const & from_file, string const & to_file_base,
 			 string const & from_format, string const & to_format,
-			 string & to_file, bool try_default)
+			 string & to_file, ErrorList & errorList, bool try_default)
 {
 	string const to_ext = formats.extension(to_format);
 	to_file = changeExtension(to_file_base, to_ext);
@@ -326,6 +326,8 @@ bool Converters::convert(Buffer const * buffer,
 	runparams.flavor = getFlavor(edgepath);
 	string path = onlyPath(from_file);
 	Path p(path);
+	// empty the error list before any new conversion takes place.
+	errorList.clear();
 
 	bool run_latex = false;
 	string from_base = changeExtension(from_file, "");
@@ -359,7 +361,7 @@ bool Converters::convert(Buffer const * buffer,
 			run_latex = true;
 			string const command = subst(conv.command, token_from, "");
 			lyxerr[Debug::FILES] << "Running " << command << endl;
-			if (!runLaTeX(*buffer, command, runparams))
+			if (!runLaTeX(*buffer, command, runparams, errorList))
 				return false;
 		} else {
 			if (conv.need_aux && !run_latex
@@ -367,7 +369,7 @@ bool Converters::convert(Buffer const * buffer,
 				lyxerr[Debug::FILES]
 					<< "Running " << latex_command_
 					<< " to update aux file"<<  endl;
-				runLaTeX(*buffer, latex_command_, runparams);
+				runLaTeX(*buffer, latex_command_, runparams, errorList);
 			}
 
 			string const infile2 = (conv.original_dir)
@@ -427,7 +429,7 @@ bool Converters::convert(Buffer const * buffer,
 					" < " + quoteName(infile2 + ".out") +
 					" > " + quoteName(logfile);
 				one.startscript(Systemcall::Wait, command2);
-				if (!scanLog(*buffer, command, logfile))
+				if (!scanLog(*buffer, command, logfile, errorList))
 					return false;
 			}
 
@@ -516,11 +518,11 @@ bool Converters::move(string const & fmt,
 bool Converters::convert(Buffer const * buffer,
 			 string const & from_file, string const & to_file_base,
 			 string const & from_format, string const & to_format,
-			 bool try_default)
+			 ErrorList & errorList, bool try_default)
 {
 	string to_file;
 	return convert(buffer, from_file, to_file_base, from_format, to_format,
-		       to_file, try_default);
+		       to_file, errorList, try_default);
 }
 
 
@@ -537,7 +539,7 @@ bool Converters::formatIsUsed(string const & format)
 
 
 bool Converters::scanLog(Buffer const & buffer, string const & /*command*/,
-			 string const & filename)
+			 string const & filename, ErrorList & errorList)
 {
 	OutputParams runparams;
 	runparams.flavor = OutputParams::LATEX;
@@ -546,7 +548,7 @@ bool Converters::scanLog(Buffer const & buffer, string const & /*command*/,
 	int const result = latex.scanLogFile(terr);
 
 	if (result & LaTeX::ERRORS)
-		bufferErrors(buffer, terr);
+		bufferErrors(buffer, terr, errorList);
 
 	return true;
 }
@@ -569,7 +571,7 @@ private:
 
 
 bool Converters::runLaTeX(Buffer const & buffer, string const & command,
-			  OutputParams const & runparams)
+			  OutputParams const & runparams, ErrorList & errorList)
 {
 	buffer.busy(true);
 	buffer.message(_("Running LaTeX..."));
@@ -585,7 +587,7 @@ bool Converters::runLaTeX(Buffer const & buffer, string const & command,
 	int const result = latex.run(terr);
 
 	if (result & LaTeX::ERRORS)
-		bufferErrors(buffer, terr);
+		bufferErrors(buffer, terr, errorList);
 
 	// check return value from latex.run().
 	if ((result & LaTeX::NO_LOGFILE)) {

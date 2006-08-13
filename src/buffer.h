@@ -357,20 +357,11 @@ public:
 	/// including preamble
 	void getSourceCode(std::ostream & os, lyx::pit_type par_begin, lyx::pit_type par_end, bool full_source);
 
-	/// errorList_ accessor.
-	ErrorList const & getErrorList() const;
-	/// replace the internal errorList_
-	/** FIXME: This method is const for now because the ErrorList GUI
-	* showing mechanism is used by other classes in order to show their
-	* own processing errors (ex: Converter.C).
-	*/
-	void setErrorList(ErrorList const &) const;
-	/// add an error to the errorList_
-	/** FIXME: This method is const for now because the ErrorList GUI
-	* showing mechanism is used by other classes in order to show their
-	* own processing errors (ex: Converter.C).
-	*/
-	void addError(ErrorItem const &) const;
+	/// errorLists_ accessors.
+	//@{
+	ErrorList const & errorList(std::string const & type) const;
+	ErrorList & errorList(std::string const & type);
+	//@}
 
 private:
 	/** Inserts a file into a document
@@ -394,12 +385,11 @@ private:
 	/// documents), needed for appropriate update of natbib labels.
 	std::vector<std::string> bibfilesCache_;
 
-	/// An error list (replaces the error insets)
-	/** FIXME: This member is mutable for now because the ErrorList GUI
-	* showing mechanism is used by other classes in order to show their
-	* own processing errors (ex: Converter.C).
-	*/
-	mutable ErrorList errorList_;
+	/// Container for all sort of Buffer dependant errors.
+	std::map<std::string, ErrorList> errorLists_;
+
+	/// Empty Error List
+	ErrorList const emptyErrorList_;
 };
 
 #endif

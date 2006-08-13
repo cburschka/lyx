@@ -156,7 +156,7 @@ int numberOfHfills(Paragraph const & par, Row const & row)
 
 
 void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
-	string const & token, LyXFont & font, Change & change)
+	string const & token, LyXFont & font, Change & change, ErrorList & errorList)
 {
 	BufferParams const & bp = buf.params();
 
@@ -180,7 +180,7 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 		bool hasLayout = tclass.hasLayout(layoutname);
 
 		if (!hasLayout) {
-			buf.addError(ErrorItem(_("Unknown layout"),
+			errorList.push_back(ErrorItem(_("Unknown layout"),
 			bformat(_("Layout '%1$s' does not exist in textclass '%2$s'\nTrying to use the default instead.\n"),
 				layoutname, tclass.name()), par.id(), 0, par.size()));
 			layoutname = tclass.defaultLayoutName();
@@ -212,7 +212,7 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 		else {
 			lex.eatLine();
 			string line = lex.getString();
-			buf.addError(ErrorItem(_("Unknown Inset"), line,
+			errorList.push_back(ErrorItem(_("Unknown Inset"), line,
 					    par.id(), 0, par.size()));
 		}
 	} else if (token == "\\family") {
@@ -329,7 +329,7 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 		lyx::time_type ct;
 		is >> aid >> ct;
 		if (aid >= bp.author_map.size()) {
-			buf.addError(ErrorItem(_("Change tracking error"),
+			errorList.push_back(ErrorItem(_("Change tracking error"),
 					    bformat(_("Unknown author index for insertion: %1$d\n"), aid),
 					    par.id(), 0, par.size()));
 
@@ -343,7 +343,7 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 		lyx::time_type ct;
 		is >> aid >> ct;
 		if (aid >= bp.author_map.size()) {
-			buf.addError(ErrorItem(_("Change tracking error"),
+			errorList.push_back(ErrorItem(_("Change tracking error"),
 					    bformat(_("Unknown author index for deletion: %1$d\n"), aid),
 					    par.id(), 0, par.size()));
 
@@ -352,14 +352,14 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 			change = Change(Change::DELETED, bp.author_map[aid], ct);
 	} else {
 		lex.eatLine();
-		buf.addError(ErrorItem(_("Unknown token"),
+		errorList.push_back(ErrorItem(_("Unknown token"),
 			bformat(_("Unknown token: %1$s %2$s\n"), token, lex.getString()),
 			par.id(), 0, par.size()));
 	}
 }
 
 
-void readParagraph(Buffer const & buf, Paragraph & par, LyXLex & lex)
+void readParagraph(Buffer const & buf, Paragraph & par, LyXLex & lex, ErrorList & errorList)
 {
 	lex.nextToken();
 	string token = lex.getString();
@@ -368,7 +368,7 @@ void readParagraph(Buffer const & buf, Paragraph & par, LyXLex & lex)
 
 	while (lex.isOK()) {
 
-		readParToken(buf, par, lex, token, font, change);
+		readParToken(buf, par, lex, token, font, change, errorList);
 
 		lex.nextToken();
 		token = lex.getString();
@@ -2083,7 +2083,7 @@ void LyXText::write(Buffer const & buf, std::ostream & os) const
 }
 
 
-bool LyXText::read(Buffer const & buf, LyXLex & lex)
+bool LyXText::read(Buffer const & buf, LyXLex & lex, ErrorList & errorList)
 {
 	Paragraph::depth_type depth = 0;
 
@@ -2122,7 +2122,7 @@ bool LyXText::read(Buffer const & buf, LyXLex & lex)
 
 			// FIXME: goddamn InsetTabular makes us pass a Buffer
 			// not BufferParams
-			::readParagraph(buf, pars_.back(), lex);
+			::readParagraph(buf, pars_.back(), lex, errorList);
 
 		} else if (token == "\\begin_deeper") {
 			++depth;

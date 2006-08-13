@@ -14,9 +14,14 @@
 #include "buffer.h"
 #include "BufferView.h"
 #include "debug.h"
+#include "gettext.h"
 #include "lyxtext.h"
 #include "paragraph.h"
 #include "pariterator.h"
+
+#include "support/lstrings.h"
+
+using lyx::support::bformat;
 
 using std::endl;
 using std::string;
@@ -39,10 +44,13 @@ ErrorList const & ControlErrorList::errorList() const
 }
 
 
-bool ControlErrorList::initialiseParams(string const & name)
+bool ControlErrorList::initialiseParams(string const & error_type)
 {
-	errorlist_ = kernel().bufferview()->buffer()->getErrorList();
-	name_ = name;
+	Buffer * buf = kernel().bufferview()->buffer();
+	string const title = bformat(_("%1$s Errors (%2$s)"),
+		_(error_type), buf->fileName());
+	errorlist_ = buf->errorList(error_type);
+	name_ = title;
 	return true;
 }
 

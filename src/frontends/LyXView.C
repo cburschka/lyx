@@ -25,6 +25,7 @@
 #include "bufferview_funcs.h"
 #include "cursor.h"
 #include "debug.h"
+#include "errorlist.h"
 #include "funcrequest.h"
 #include "gettext.h"
 #include "intl.h"
@@ -152,6 +153,8 @@ bool LyXView::loadLyXFile(string const & filename, bool tolastfiles)
 		disconnectBuffer();
 
 	bool loaded = work_area_->bufferView().loadLyXFile(filename, tolastfiles);
+	showErrorList("Parse");
+
 	updateMenubar();
 	updateToolbars();
 	updateLayoutChoice();
@@ -170,11 +173,6 @@ void LyXView::connectBuffer(Buffer & buf)
 	if (errorsConnection_.connected())
 		disconnectBuffer();
 
-	// FIXME: (Abdel 15/07/2006) The connection below is not used for
-	// now.
-	// Nevertheless, it would be a very good idea to replace all manual
-	// calls of showErrorList to a call of the new modified
-	// "Buffer::errors" boost signal.
 	errorsConnection_ =
 		buf.errors.connect(
 			boost::bind(&LyXView::showErrorList, this, _1));
@@ -216,13 +214,11 @@ void LyXView::disconnectBuffer()
 }
 
 
-void LyXView::showErrorList(string const & action)
+void LyXView::showErrorList(string const & error_type)
 {
-	Buffer * b = work_area_->bufferView().buffer();
-	if (!b->getErrorList().empty()) {
-		string const title = bformat(_("%1$s Errors (%2$s)"),
-			action, buffer()->fileName());
-		getDialogs().show("errorlist", title);
+	ErrorList & el = buffer()->errorList(error_type);
+	if (!el.empty()) {
+		getDialogs().show("errorlist", error_type);
 	}
 }
 
