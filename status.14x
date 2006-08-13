@@ -24,7 +24,7 @@ What's new
 
 - Some small updates to the documentation.
 
-- New Czech translation; update Italian localization.
+- New Czech translation; update Italian and German localization (fix #2718).
 
 - Updated Czech translation of the Tutorial; new Czech translation of
   the splash document.
@@ -89,3 +89,6 @@ What's new
 - Change the encoding of some python scripts from iso-8859-15 to
   iso-8859-1. The former causes problems with embedded python.
 
+- remove outdated development tools & outdated LyXConfig.lyx
+
+- remove references to reLyX which has been replaced by tex2lyx
