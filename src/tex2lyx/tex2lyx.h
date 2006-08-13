@@ -94,6 +94,8 @@ extern CommandMap known_commands;
 extern CommandMap known_environments;
 /// Known TeX math environments with arguments that get parsed into LyX mathed.
 extern CommandMap known_math_environments;
+///
+extern bool noweb_mode;
 
 /// path of the master .tex file
 extern std::string getMasterFilePath();

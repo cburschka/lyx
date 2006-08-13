@@ -433,7 +433,7 @@ private:
 LyXLayout_ptr findLayout(LyXTextClass const & textclass,
 			 string const & name)
 {
-	LyXTextClass::const_iterator beg  = textclass.begin();
+	LyXTextClass::const_iterator beg = textclass.begin();
 	LyXTextClass::const_iterator end = textclass.end();
 
 	LyXTextClass::const_iterator
@@ -1011,6 +1011,68 @@ void fix_relative_filename(string & name)
 	                   getParentFilePath());
 }
 
+
+/// Parse a NoWeb Scrap section. The initial "<<" is already parsed.
+void parse_noweb(Parser & p, ostream & os, Context & context)
+{
+	// assemble the rest of the keyword
+	string name("<<");
+	bool scrap = false;
+	while (p.good()) {
+		Token const & t = p.get_token();
+		if (t.asInput() == ">" && p.next_token().asInput() == ">") {
+			name += ">>";
+			p.get_token();
+			scrap = (p.good() && p.next_token().asInput() == "=");
+			if (scrap)
+				name += p.get_token().asInput();
+			break;
+		}
+		name += t.asInput();
+	}
+
+	if (!scrap || !context.new_layout_allowed ||
+	    !context.textclass.hasLayout("Scrap")) {
+		cerr << "Warning: Could not interpret '" << name
+		     << "'. Ignoring it." << endl;
+		return;
+	}
+
+	context.check_end_layout(os);
+	Context newcontext(true, context.textclass, context.textclass["Scrap"]);
+	newcontext.check_layout(os);
+	os << name;
+	while (p.good()) {
+		Token const & t = p.get_token();
+		// We abuse the parser a bit, because this is no TeX syntax
+		// at all.
+		if (t.cat() == catEscape)
+			os << subst(t.asInput(), "\\", "\n\\backslash\n");
+		else
+			os << subst(t.asInput(), "\n", "\n\\newline\n");
+		// The scrap chunk is ended by an @ at the beginning of a line.
+		// After the @ the line may contain a comment and/or
+		// whitespace, but nothing else.
+		if (t.asInput() == "@" && p.prev_token().cat() == catNewline &&
+		    (p.next_token().cat() == catSpace ||
+		     p.next_token().cat() == catNewline ||
+		     p.next_token().cat() == catComment)) {
+			while (p.good() && p.next_token().cat() == catSpace)
+				os << p.get_token().asInput();
+			if (p.next_token().cat() == catComment)
+				// The comment includes a final '\n'
+				os << p.get_token().asInput();
+			else {
+				if (p.next_token().cat() == catNewline)
+					p.get_token();
+				os << '\n';
+			}
+			break;
+		}
+	}
+	newcontext.check_end_layout(os);
+}
+
 } // anonymous namespace
 
 
@@ -1098,8 +1160,27 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			skip_braces(p);
 		}
 
+		else if (t.asInput() == "<"
+			 && p.next_token().asInput() == "<" && noweb_mode) {
+			p.get_token();
+			parse_noweb(p, os, context);
+		}
+
 		else if (t.cat() == catSpace || (t.cat() == catNewline && ! p.isParagraph()))
 			check_space(p, os, context);
+
+		else if (t.character() == '[' && noweb_mode &&
+		         p.next_token().character() == '[') {
+			// These can contain underscores
+			p.putback();
+			string const s = p.getFullOpt() + ']';
+			if (p.next_token().character() == ']')
+				p.get_token();
+			else
+				cerr << "Warning: Inserting missing ']' in '"
+				     << s << "'." << endl;
+			handle_ert(os, s, context);
+		}
 
 		else if (t.cat() == catLetter ||
 			       t.cat() == catOther ||
