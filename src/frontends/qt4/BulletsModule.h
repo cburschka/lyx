@@ -19,11 +19,6 @@
 
 #include <QWidget>
 
-// class QBrowseBox;
-class QPushButton;
-class QComboBox;
-class QPixmap;
-
 class BulletsModule : public QWidget, public Ui::BulletsUi {
 	Q_OBJECT
 public:
@@ -33,61 +28,32 @@ public:
 	~BulletsModule();
 
 	/// set a bullet
-	void setBullet(int level, const Bullet & bullet);
-
+	void setBullet(int level, Bullet const & bullet);
 	/// get bullet setting
 	Bullet const & getBullet(int level) const;
+	/// update 1st level
+	void init();
 
 Q_SIGNALS:
 	void changed();
 
 protected Q_SLOTS:
 
-	/// menu callbacks
-	void standard(int row, int col);
-	void maths(int row, int col);
-	void ding1(int row, int col);
-	void ding2(int row, int col);
-	void ding3(int row, int col);
-	void ding4(int row, int col);
-
-	void updateSizes();
-
-	void clicked1();
-	void clicked2();
-	void clicked3();
-	void clicked4();
-
-	void selected1();
-	void selected2();
-	void selected3();
-	void selected4();
-
-	/// set custom (text) bullet
-	void setCustom();
+	void on_bulletsizeCO_activated(int level);
+	void on_customCB_toggled(bool);
+	void on_customLE_textEdited(const QString &);
+	void bulletSelected(QListWidgetItem *, QListWidgetItem*);
+	void showLevel(int);
 
 private:
-	QPixmap getPixmap(int font, int character);
-
-	/// update GUI view
-	void setBullet(QPushButton * pb, QComboBox * co, Bullet const & b);
-
-	/// set from menu
-	void setCurrentBullet(int font, int character);
-
-	bool tmpbulletset;
-	Bullet tmpbullet;
+	void unselectPreviousItem();
+	void setupPanel(QListWidget * lw, QString panelname, std::string fname);
+	void selectBullet(int level);
 
 	/// store results
 	boost::array<Bullet, 4> bullets_;
-
-/*	QBrowseBox * standard_;
-	QBrowseBox * maths_;
-	QBrowseBox * ding1_;
-	QBrowseBox * ding2_;
-	QBrowseBox * ding3_;
-	QBrowseBox * ding4_;*/
-	Bullet * bullet_pressed_;
+	int current_font_;
+	QListWidgetItem * current_item_;
 };
 
 #endif // BULLETSMODULE_H

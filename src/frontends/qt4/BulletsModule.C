@@ -4,7 +4,6 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Edwin Leuven
- * \author John Levon
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -12,15 +11,10 @@
 #include <config.h>
 
 #include "BulletsModule.h"
-// #include "QBrowseBox.h"
 #include "qt_helpers.h"
 
 #include "support/filetools.h"
 
-#include <QInputDialog>
-#include <QMenu>
-#include <QPushButton>
-#include <QComboBox>
 #include <QPixmap>
 
 #include <boost/assert.hpp>
@@ -29,10 +23,7 @@ using lyx::support::libFileSearch;
 
 using std::string;
 
-
-BulletsModule::BulletsModule(QWidget * /*parent*/,
-			     char const * /*name*/, Qt::WFlags /*fl*/)
-	: bullet_pressed_(0)
+BulletsModule::BulletsModule(QWidget * , char const * , Qt::WFlags)
 {
 	setupUi(this);
 
@@ -40,107 +31,22 @@ BulletsModule::BulletsModule(QWidget * /*parent*/,
 		bullets_[iter] = ITEMIZE_DEFAULTS[iter];
 	}
 
-	QMenu * pm = new QMenu(this);
-
-	// FIXME: Need to verify that this does not leak memory.
-	/*QMenu * pm1 =*/ new QMenu(pm);
-	/*QMenu * pm2 =*/ new QMenu(pm);
-	/*QMenu * pm3 =*/ new QMenu(pm);
-	/*QMenu * pm4 =*/ new QMenu(pm);
-	/*QMenu * pm5 =*/ new QMenu(pm);
-	/*QMenu * pm6 =*/ new QMenu(pm);
-
-// FIXME: We need a Qt4 compatible browsebox type widget
-// which can act as a popup to a toolbutton
-/*
-	standard_ = new QBrowseBox(6, 6, pm1);
-	maths_ = new QBrowseBox(6, 6, pm2);
-	ding1_ = new QBrowseBox(6, 6, pm3);
-	ding2_ = new QBrowseBox(6, 6, pm4);
-	ding3_ = new QBrowseBox(6, 6, pm5);
-	ding4_ = new QBrowseBox(6, 6, pm6);
-
-	///\todo See how to insert those BrowseBox:
-	pm1->addMenu((QMenu*) standard_);
-	pm2->addMenu((QMenu*)maths_);
-	pm3->addMenu((QMenu*)ding1_);
-	pm4->addMenu((QMenu*)ding2_);
-	pm5->addMenu((QMenu*)ding3_);
-	pm6->addMenu((QMenu*)ding4_);
-
-	pm->insertItem(qt_("&Standard"), pm1, 0);
-	pm->insertItem(qt_("&Maths"), pm2, 1);
-	pm->insertItem(qt_("Dings &1"), pm3, 2);
-	pm->insertItem(qt_("Dings &2"), pm4, 3);
-	pm->insertItem(qt_("Dings &3"), pm5, 4);
-	pm->insertItem(qt_("Dings &4"), pm6, 5);
-	pm->insertSeparator();
-	// FIXME: make this checkable
-	pm->insertItem(qt_("&Custom..."), this, SLOT(setCustom()), 0, 6);
-
-	connect(bullet1PB, SIGNAL(pressed()), this, SLOT(clicked1()));
-	bullet1PB->setPopup(pm);
-
-	connect(bullet2PB, SIGNAL(pressed()), this, SLOT(clicked2()));
-	bullet2PB->setPopup(pm);
-
-	connect(bullet3PB, SIGNAL(pressed()), this, SLOT(clicked3()));
-	bullet3PB->setPopup(pm);
-
-	connect(bullet4PB, SIGNAL(pressed()), this, SLOT(clicked4()));
-	bullet4PB->setPopup(pm);
+	// add levels
+	levelLW->addItem("1");
+	levelLW->addItem("2");
+	levelLW->addItem("3");
+	levelLW->addItem("4");
 
 	// insert pixmaps
-	string bmfile;
-	bmfile = libFileSearch("images", "standard", "xpm");
-	standard_->insertItem(QPixmap(toqstr(bmfile)));
+	setupPanel(new QListWidget(bulletpaneSW), qt_("Standard"), "standard");
+	setupPanel(new QListWidget(bulletpaneSW), qt_("Maths"), "amssymb");
+	setupPanel(new QListWidget(bulletpaneSW), qt_("Dings 1"), "psnfss1");
+	setupPanel(new QListWidget(bulletpaneSW), qt_("Dings 2"), "psnfss2");
+	setupPanel(new QListWidget(bulletpaneSW), qt_("Dings 3"), "psnfss3");
+	setupPanel(new QListWidget(bulletpaneSW), qt_("Dings 4"), "psnfss4");
 
-	bmfile = libFileSearch("images", "amssymb", "xpm");
-	maths_->insertItem(QPixmap(toqstr(bmfile)));
-
-	bmfile = libFileSearch("images", "psnfss1", "xpm");
-	ding1_->insertItem(QPixmap(toqstr(bmfile)));
-
-	bmfile = libFileSearch("images", "psnfss2", "xpm");
-	ding2_->insertItem(QPixmap(toqstr(bmfile)));
-
-	bmfile = libFileSearch("images", "psnfss3", "xpm");
-	ding3_->insertItem(QPixmap(toqstr(bmfile)));
-
-	bmfile = libFileSearch("images", "psnfss4", "xpm");
-	ding4_->insertItem(QPixmap(toqstr(bmfile)));
-
-	connect(standard_, SIGNAL(selected(int, int)),
-		this, SLOT(standard(int, int)));
-
-	connect(maths_, SIGNAL(selected(int, int)),
-		this, SLOT(maths(int, int)));
-
-	connect(ding1_, SIGNAL(selected(int, int)),
-		this, SLOT(ding1(int, int)));
-
-	connect(ding2_, SIGNAL(selected(int, int)),
-		this, SLOT(ding2(int, int)));
-
-	connect(ding3_, SIGNAL(selected(int, int)),
-		this, SLOT(ding3(int, int)));
-
-	connect(ding4_, SIGNAL(selected(int, int)),
-		this, SLOT(ding4(int, int)));
-
-	connect(bullet1PB, SIGNAL(pressed()), this, SLOT(selected1()));
-	connect(bullet2PB, SIGNAL(pressed()), this, SLOT(selected2()));
-	connect(bullet3PB, SIGNAL(pressed()), this, SLOT(selected3()));
-	connect(bullet4PB, SIGNAL(pressed()), this, SLOT(selected4()));
-	connect(bulletsize1CO, SIGNAL(activated(int)), this, SLOT(updateSizes()));
-	connect(bulletsize2CO, SIGNAL(activated(int)), this, SLOT(updateSizes()));
-	connect(bulletsize3CO, SIGNAL(activated(int)), this, SLOT(updateSizes()));
-	connect(bulletsize4CO, SIGNAL(activated(int)), this, SLOT(updateSizes()));
-
-	// update the view
-	for (int i = 0; i < 4; ++i)
-		setBullet(bullet1PB, bulletsize1CO, bullets_[i]);
-*/
+	connect(levelLW, SIGNAL(currentRowChanged(int)), this, SLOT(showLevel(int)));
+	connect(bulletpaneCO, SIGNAL(activated(int)), bulletpaneSW, SLOT(setCurrentIndex(int)));
 }
 
 
@@ -149,152 +55,144 @@ BulletsModule::~BulletsModule()
 }
 
 
-void BulletsModule::updateSizes()
+void BulletsModule::setupPanel(QListWidget * lw, QString panelname, std::string fname)
 {
-	// emit signal
-	changed();
+	connect(lw, SIGNAL(currentItemChanged(QListWidgetItem*, QListWidgetItem*)),
+		this, SLOT(bulletSelected(QListWidgetItem *, QListWidgetItem*)));
 
-	// -1 apparently means default...
-	bullets_[0].setSize(bulletsize1CO->currentItem() - 1);
-	bullets_[1].setSize(bulletsize2CO->currentItem() - 1);
-	bullets_[2].setSize(bulletsize3CO->currentItem() - 1);
-	bullets_[3].setSize(bulletsize4CO->currentItem() - 1);
-}
+	// add panelname to combox
+	bulletpaneCO->addItem(panelname);
 
+	// get pixmap with bullets
+	QPixmap pixmap = QPixmap(toqstr(libFileSearch("images", fname, "xpm")));
+	int const w = pixmap.width() / 6;
+	int const h = pixmap.height() / 6;
 
-// These arrive before the menus are launched.
-void BulletsModule::clicked1()
-{
-	bullet_pressed_ = &bullets_[0];
-}
+	// apply setting to listwidget
+	lw->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+	lw->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+	lw->setViewMode(QListView::IconMode);
+	lw->setFlow(QListView::LeftToRight);
+	lw->setMovement(QListView::Static);
+	lw->setUniformItemSizes(true);
+	lw->setGridSize( QSize(w , h) );
+	lw->resize( 6 * w + 6 , 6* h);
+	bulletpaneSW->setMinimumSize( 6 * w + 6 , 6 * h);
 
-
-void BulletsModule::clicked2()
-{
-	bullet_pressed_ = &bullets_[1];
-}
-
-
-void BulletsModule::clicked3()
-{
-	bullet_pressed_ = &bullets_[2];
-}
-
-
-void BulletsModule::clicked4()
-{
-	bullet_pressed_ = &bullets_[3];
-}
-
-
-// These arrive *after* the menus have done their work
-void BulletsModule::selected1()
-{
-	if (!tmpbulletset)
-		return;
-	tmpbulletset = false;
-	bullets_[0] = tmpbullet;
-	setBullet(bullet1PB, bulletsize1CO, bullets_[0]);
-	// emit signal
-	changed();
-}
-
-
-void BulletsModule::selected2()
-{
-	if (!tmpbulletset)
-		return;
-	tmpbulletset = false;
-	bullets_[1] = tmpbullet;
-	setBullet(bullet2PB, bulletsize2CO, bullets_[1]);
-	// emit signal
-	changed();
-}
-
-
-void BulletsModule::selected3()
-{
-	if (!tmpbulletset)
-		return;
-	tmpbulletset = false;
-	bullets_[2] = tmpbullet;
-	setBullet(bullet3PB, bulletsize3CO, bullets_[2]);
-	// emit signal
-	changed();
-}
-
-
-void BulletsModule::selected4()
-{
-	if (!tmpbulletset)
-		return;
-	tmpbulletset = false;
-	bullets_[3] = tmpbullet;
-	setBullet(bullet4PB, bulletsize4CO, bullets_[3]);
-	// emit signal
-	changed();
-}
-
-
-QPixmap BulletsModule::getPixmap(int /*font*/, int /*character*/)
-{
-	//int col = character % 6;
-	//int row = (character - col) / 6;
-
-/*	switch (font) {
-	case 0:
-		return standard_->pixmap(row,col);
-	case 1:
-		return maths_->pixmap(row,col);
-	case 2:
-		return ding1_->pixmap(row,col);
-	case 3:
-		return ding2_->pixmap(row,col);
-	case 4:
-		return ding3_->pixmap(row,col);
-	case 5:
-		return ding4_->pixmap(row,col);
-	default:
-		return standard_->pixmap(row,col);
-	}*/
-	// make qt4 frontend at least compilable now.
-	return QPixmap();
-}
-
-
-void BulletsModule::setBullet(QPushButton * pb, QComboBox * co, Bullet const & b)
-{
-	if (b.getFont() == -1) {
-		pb->setPixmap(QPixmap());
-		pb->setText(toqstr(b.getText()));
-	} else {
-		pb->setPixmap(getPixmap(b.getFont(), b.getCharacter()));
+	// get individual bullets from pixmap
+	for (int row = 0; row < 6; ++row) {
+		for (int col = 0; col < 6; ++col) {
+			QPixmap small(w,h);
+			// FIXME: how to get the good color?
+			small.fill(QColor(Qt::white));
+			bitBlt(&small, 0, 0, &pixmap, col * w, row * h,	w, h);
+			new QListWidgetItem(QIcon(small), "" , lw, (6*row + col));
+		}
 	}
 
-	pb->setMinimumSize(QSize(50, 50));
-
-	co->setCurrentItem(b.getSize() + 1);
+	// add bulletpanel to stackedwidget
+	bulletpaneSW->addWidget(lw);
 }
 
 
-void BulletsModule::setBullet(int level, const Bullet & bullet)
+void BulletsModule::showLevel(int level)
+{
+	unselectPreviousItem();
+	current_font_ = bullets_[level].getFont();
+
+	if (bullets_[level].getFont()<0) {
+		customCB->setCheckState(Qt::Checked);
+		customLE->setText(toqstr(bullets_[level].getText()));
+	} else {
+		selectBullet(level);
+		customCB->setCheckState(Qt::Unchecked);
+		customLE->clear();
+		bulletpaneCO->setCurrentIndex(current_font_);
+		bulletpaneSW->setCurrentIndex(current_font_);
+	}
+	bulletsizeCO->setCurrentIndex(bullets_[level].getSize() + 1);
+}
+
+
+void BulletsModule::selectBullet(int level)
+{
+	int const bullet = bullets_[level].getCharacter();
+	QListWidget * lw = static_cast<QListWidget *>(bulletpaneSW->widget(current_font_));
+	// get all items (FIXME: is there a better way? this looks too complicated)
+	QList<QListWidgetItem *> items = lw->findItems("", Qt::MatchContains);
+	for (int i = 0 ; i < items.size() ; ++i) {
+		if (items.at(i)->type() == bullet) {
+			current_item_ = items.at(i);
+			lw->setItemSelected(current_item_, true);
+		}
+	}
+}
+
+
+void BulletsModule::init()
+{
+	levelLW->setCurrentRow(0);
+	showLevel(0);
+}
+
+
+void BulletsModule::bulletSelected(QListWidgetItem * item, QListWidgetItem *)
+{
+	unselectPreviousItem();
+	int const level = levelLW->currentRow();
+	bullets_[level].setCharacter(item->type());
+	bullets_[level].setFont(bulletpaneCO->currentIndex());
+	current_font_ = bulletpaneCO->currentIndex();
+	current_item_ = item;
+	changed();
+}
+
+
+void BulletsModule::unselectPreviousItem()
+{
+	if (current_font_<0)
+		return;
+
+	QListWidget * lw = static_cast<QListWidget *>(bulletpaneSW->widget(current_font_));
+	lw->setItemSelected(current_item_, false);
+}
+
+
+void BulletsModule::on_customCB_toggled(bool custom)
+{
+	if (!custom) {
+		if (current_font_<0)
+			current_font_ = bulletpaneCO->currentIndex();
+		return;
+	}
+		
+	unselectPreviousItem();
+	current_font_ = -1;
+	changed();
+}
+
+
+void BulletsModule::on_customLE_textEdited(const QString & text)
+{
+	if (customCB->checkState() == Qt::Unchecked)
+		return;
+
+	bullets_[levelLW->currentRow()].setFont(current_font_);
+	bullets_[levelLW->currentRow()].setText(fromqstr(text));
+	changed();
+}
+
+
+void BulletsModule::on_bulletsizeCO_activated(int size)
+{
+	// -1 apparently means default...
+	bullets_[levelLW->currentRow()].setSize(size - 1);
+}
+
+
+void BulletsModule::setBullet(int level, Bullet const & bullet)
 {
 	bullets_[level] = bullet;
-	// FIXME: backout until we fixed the browsebox
-	return;
-
-	QPushButton * pb = 0;
-	QComboBox * co = 0;
-
-	switch (level) {
-		case 0: pb = bullet1PB; co = bulletsize1CO; break;
-		case 1: pb = bullet2PB; co = bulletsize2CO; break;
-		case 2: pb = bullet3PB; co = bulletsize3CO; break;
-		case 3: pb = bullet4PB; co = bulletsize4CO; break;
-		default: BOOST_ASSERT(false); break;
-	}
-
-	setBullet(pb, co, bullet);
 }
 
 
@@ -303,69 +201,5 @@ Bullet const & BulletsModule::getBullet(int level) const
 	return bullets_[level];
 }
 
-
-void BulletsModule::setCurrentBullet(int font, int character)
-{
-	tmpbulletset = true;
-	tmpbullet.setFont(font);
-	tmpbullet.setCharacter(character);
-}
-
-
-void BulletsModule::standard(int row, int col)
-{
-	setCurrentBullet(0, 6 * row + col);
-}
-
-
-void BulletsModule::maths(int row, int col)
-{
-	setCurrentBullet(1, 6 * row + col);
-}
-
-
-void BulletsModule::ding1(int row, int col)
-{
-	setCurrentBullet(2, 6 * row + col);
-}
-
-
-void BulletsModule::ding2(int row, int col)
-{
-	setCurrentBullet(3, 6 * row + col);
-}
-
-
-void BulletsModule::ding3(int row, int col)
-{
-	setCurrentBullet(4, 6 * row + col);
-}
-
-
-void BulletsModule::ding4(int row, int col)
-{
-	setCurrentBullet(5, 6 * row + col);
-}
-
-
-void BulletsModule::setCustom()
-{
-	QString const input = bullet_pressed_ ?
-		toqstr(bullet_pressed_->getText()) : QString::null;
-
-	bool ok = false;
-	QString text = QInputDialog::getText(
-		qt_( "Bullets" ),
-		qt_( "Enter a custom bullet" ),
-		QLineEdit::Normal,
-		input, &ok, this );
-
-	if (!ok)
-		return;
-
-	tmpbulletset = true;
-	tmpbullet.setText(fromqstr(text));
-	tmpbullet.setFont(-1);
-}
 
 #include "BulletsModule_moc.cpp"

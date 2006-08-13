@@ -375,20 +375,18 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	connect(branchesModule, SIGNAL(changed()), this, SLOT(change_adaptor()));
 
 
-	preambleModule = new UiWidget<Ui::PreambleUi>;
 	// preamble
+	preambleModule = new UiWidget<Ui::PreambleUi>;
 	connect(preambleModule->preambleTE, SIGNAL(textChanged()), this, SLOT(change_adaptor()));
 
 
-	bulletsModule = new BulletsModule;
-	// FIXME: disable until we fix browsebox in BulletsModule.[Ch]
-	bulletsModule->setEnabled(false);
 	// bullets
+	bulletsModule = new BulletsModule;
 	connect(bulletsModule, SIGNAL(changed()), this, SLOT(change_adaptor()));
 
 
-	floatModule = new FloatPlacement;
 	// float
+	floatModule = new FloatPlacement;
 	connect(floatModule, SIGNAL(changed()), this, SLOT(change_adaptor()));
 
 	docPS->addPanel(latexModule, _("Document Class"));
@@ -970,10 +968,11 @@ void QDocumentDialog::update(BufferParams const & params)
 	}
 
 	// bullets
-	bulletsModule->setBullet(0,params.user_defined_bullet(0));
-	bulletsModule->setBullet(1,params.user_defined_bullet(1));
-	bulletsModule->setBullet(2,params.user_defined_bullet(2));
-	bulletsModule->setBullet(3,params.user_defined_bullet(3));
+	bulletsModule->setBullet(0, params.user_defined_bullet(0));
+	bulletsModule->setBullet(1, params.user_defined_bullet(1));
+	bulletsModule->setBullet(2, params.user_defined_bullet(2));
+	bulletsModule->setBullet(3, params.user_defined_bullet(3));
+	bulletsModule->init();
 
 	// packages
 	QString text = toqstr(params.graphicsDriver);

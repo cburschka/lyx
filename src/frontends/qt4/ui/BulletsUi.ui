@@ -8,785 +8,250 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>414</width>
-    <height>268</height>
+    <width>415</width>
+    <height>321</height>
    </rect>
   </property>
-  <property name="windowTitle" >
-   <string/>
-  </property>
-  <layout class="QVBoxLayout" >
+  <layout class="QGridLayout" >
    <property name="margin" >
-    <number>11</number>
+    <number>9</number>
    </property>
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item>
-    <layout class="QVBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
+   <item row="1" column="2" colspan="2" >
+    <widget class="QComboBox" name="bulletpaneCO" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>7</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item>
-      <layout class="QHBoxLayout" >
-       <property name="margin" >
-        <number>0</number>
-       </property>
-       <property name="spacing" >
-        <number>6</number>
-       </property>
-       <item>
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <widget class="QPushButton" name="bullet1PB" >
-           <property name="sizePolicy" >
-            <sizepolicy>
-             <hsizetype>5</hsizetype>
-             <vsizetype>5</vsizetype>
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize" >
-            <size>
-             <width>78</width>
-             <height>50</height>
-            </size>
-           </property>
-           <property name="maximumSize" >
-            <size>
-             <width>78</width>
-             <height>32767</height>
-            </size>
-           </property>
-           <property name="text" >
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="sadsa" >
-           <property name="text" >
-            <string>&amp;First level</string>
-           </property>
-           <property name="alignment" >
-            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-           </property>
-           <property name="buddy" >
-            <cstring>bullet1PB</cstring>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer>
-           <property name="orientation" >
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeType" >
-            <enum>QSizePolicy::MinimumExpanding</enum>
-           </property>
-           <property name="sizeHint" >
-            <size>
-             <width>20</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="TextLabel1" >
-           <property name="text" >
-            <string>Size:</string>
-           </property>
-           <property name="buddy" >
-            <cstring>bulletsizeCO</cstring>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="bulletsize1CO" >
-           <item>
-            <property name="text" >
-             <string>default</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Tiny</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Smallest</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Smaller</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Small</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Normal</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Large</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Larger</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Largest</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Huge</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Huger</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" >
-       <property name="margin" >
-        <number>0</number>
-       </property>
-       <property name="spacing" >
-        <number>6</number>
-       </property>
-       <item>
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <spacer>
-           <property name="orientation" >
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeType" >
-            <enum>QSizePolicy::Fixed</enum>
-           </property>
-           <property name="sizeHint" >
-            <size>
-             <width>16</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="bullet2PB" >
-           <property name="sizePolicy" >
-            <sizepolicy>
-             <hsizetype>5</hsizetype>
-             <vsizetype>5</vsizetype>
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize" >
-            <size>
-             <width>78</width>
-             <height>50</height>
-            </size>
-           </property>
-           <property name="maximumSize" >
-            <size>
-             <width>78</width>
-             <height>32767</height>
-            </size>
-           </property>
-           <property name="text" >
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="sadsa_2" >
-           <property name="text" >
-            <string>&amp;Second level</string>
-           </property>
-           <property name="alignment" >
-            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-           </property>
-           <property name="buddy" >
-            <cstring>bullet2PB</cstring>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer>
-           <property name="orientation" >
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeType" >
-            <enum>QSizePolicy::MinimumExpanding</enum>
-           </property>
-           <property name="sizeHint" >
-            <size>
-             <width>20</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="TextLabel1_2" >
-           <property name="text" >
-            <string>Size:</string>
-           </property>
-           <property name="buddy" >
-            <cstring>bulletsizeCO</cstring>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="bulletsize2CO" >
-           <item>
-            <property name="text" >
-             <string>default</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Tiny</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Smallest</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Smaller</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Small</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Normal</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Large</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Larger</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Largest</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Huge</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Huger</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" >
-       <property name="margin" >
-        <number>0</number>
-       </property>
-       <property name="spacing" >
-        <number>6</number>
-       </property>
-       <item>
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <spacer>
-           <property name="orientation" >
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeType" >
-            <enum>QSizePolicy::Fixed</enum>
-           </property>
-           <property name="sizeHint" >
-            <size>
-             <width>16</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <spacer>
-           <property name="orientation" >
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeType" >
-            <enum>QSizePolicy::Fixed</enum>
-           </property>
-           <property name="sizeHint" >
-            <size>
-             <width>16</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="bullet3PB" >
-           <property name="sizePolicy" >
-            <sizepolicy>
-             <hsizetype>5</hsizetype>
-             <vsizetype>5</vsizetype>
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize" >
-            <size>
-             <width>78</width>
-             <height>50</height>
-            </size>
-           </property>
-           <property name="maximumSize" >
-            <size>
-             <width>78</width>
-             <height>32767</height>
-            </size>
-           </property>
-           <property name="text" >
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="sadsa_3" >
-           <property name="text" >
-            <string>&amp;Third level</string>
-           </property>
-           <property name="alignment" >
-            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-           </property>
-           <property name="buddy" >
-            <cstring>bullet3PB</cstring>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer>
-           <property name="orientation" >
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeType" >
-            <enum>QSizePolicy::MinimumExpanding</enum>
-           </property>
-           <property name="sizeHint" >
-            <size>
-             <width>20</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="TextLabel1_3" >
-           <property name="text" >
-            <string>Size:</string>
-           </property>
-           <property name="buddy" >
-            <cstring>bulletsizeCO</cstring>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="bulletsize3CO" >
-           <item>
-            <property name="text" >
-             <string>default</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Tiny</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Smallest</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Smaller</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Small</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Normal</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Large</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Larger</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Largest</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Huge</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Huger</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" >
-       <property name="margin" >
-        <number>0</number>
-       </property>
-       <property name="spacing" >
-        <number>6</number>
-       </property>
-       <item>
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <layout class="QHBoxLayout" >
-           <property name="margin" >
-            <number>0</number>
-           </property>
-           <property name="spacing" >
-            <number>6</number>
-           </property>
-           <item>
-            <spacer>
-             <property name="orientation" >
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeType" >
-              <enum>QSizePolicy::Fixed</enum>
-             </property>
-             <property name="sizeHint" >
-              <size>
-               <width>16</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <spacer>
-             <property name="orientation" >
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeType" >
-              <enum>QSizePolicy::Fixed</enum>
-             </property>
-             <property name="sizeHint" >
-              <size>
-               <width>16</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <spacer>
-             <property name="orientation" >
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeType" >
-              <enum>QSizePolicy::Fixed</enum>
-             </property>
-             <property name="sizeHint" >
-              <size>
-               <width>16</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <widget class="QPushButton" name="bullet4PB" >
-             <property name="sizePolicy" >
-              <sizepolicy>
-               <hsizetype>5</hsizetype>
-               <vsizetype>5</vsizetype>
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="minimumSize" >
-              <size>
-               <width>78</width>
-               <height>50</height>
-              </size>
-             </property>
-             <property name="maximumSize" >
-              <size>
-               <width>78</width>
-               <height>32767</height>
-              </size>
-             </property>
-             <property name="text" >
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="sadsa_4" >
-             <property name="text" >
-              <string>Fou&amp;rth level</string>
-             </property>
-             <property name="alignment" >
-              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-             </property>
-             <property name="buddy" >
-              <cstring>bullet4PB</cstring>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <spacer>
-           <property name="orientation" >
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeType" >
-            <enum>QSizePolicy::MinimumExpanding</enum>
-           </property>
-           <property name="sizeHint" >
-            <size>
-             <width>20</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="TextLabel1_4" >
-           <property name="text" >
-            <string>Size:</string>
-           </property>
-           <property name="buddy" >
-            <cstring>bulletsizeCO</cstring>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="bulletsize4CO" >
-           <item>
-            <property name="text" >
-             <string>default</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Tiny</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Smallest</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Smaller</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Small</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Normal</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Large</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Larger</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Largest</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Huge</string>
-            </property>
-           </item>
-           <item>
-            <property name="text" >
-             <string>Huger</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </item>
-    </layout>
+    </widget>
    </item>
-   <item>
+   <item row="1" column="1" >
+    <widget class="QLabel" name="label_2" >
+     <property name="text" >
+      <string>&amp;Font:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>bulletpaneCO</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1" colspan="2" >
+    <widget class="QLabel" name="sizeL" >
+     <property name="text" >
+      <string>Si&amp;ze:</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+     <property name="buddy" >
+      <cstring>bulletsizeCO</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="3" >
+    <widget class="QComboBox" name="bulletsizeCO" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>7</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <item>
+      <property name="text" >
+       <string>Default</string>
+      </property>
+     </item>
+     <item>
+      <property name="text" >
+       <string>Tiny</string>
+      </property>
+     </item>
+     <item>
+      <property name="text" >
+       <string>Smallest</string>
+      </property>
+     </item>
+     <item>
+      <property name="text" >
+       <string>Smaller</string>
+      </property>
+     </item>
+     <item>
+      <property name="text" >
+       <string>Small</string>
+      </property>
+     </item>
+     <item>
+      <property name="text" >
+       <string>Normal</string>
+      </property>
+     </item>
+     <item>
+      <property name="text" >
+       <string>Large</string>
+      </property>
+     </item>
+     <item>
+      <property name="text" >
+       <string>Larger</string>
+      </property>
+     </item>
+     <item>
+      <property name="text" >
+       <string>Largest</string>
+      </property>
+     </item>
+     <item>
+      <property name="text" >
+       <string>Huge</string>
+      </property>
+     </item>
+     <item>
+      <property name="text" >
+       <string>Huger</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="5" column="3" >
     <spacer>
      <property name="orientation" >
       <enum>Qt::Vertical</enum>
      </property>
-     <property name="sizeType" >
-      <enum>QSizePolicy::Expanding</enum>
-     </property>
      <property name="sizeHint" >
       <size>
        <width>20</width>
-       <height>20</height>
+       <height>40</height>
       </size>
      </property>
     </spacer>
    </item>
+   <item row="3" column="3" >
+    <widget class="QLineEdit" name="customLE" >
+     <property name="enabled" >
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1" colspan="2" >
+    <widget class="QCheckBox" name="customCB" >
+     <property name="text" >
+      <string>Custom Bullet:</string>
+     </property>
+    </widget>
+   </item>
+   <item rowspan="5" row="1" column="0" >
+    <widget class="QListWidget" name="levelLW" >
+     <property name="maximumSize" >
+      <size>
+       <width>96</width>
+       <height>16777215</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item rowspan="5" row="1" column="4" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>16</width>
+       <height>271</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="0" >
+    <widget class="QLabel" name="label" >
+     <property name="text" >
+      <string>&amp;Level:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>levelLW</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1" colspan="3" >
+    <widget class="QStackedWidget" name="bulletpaneSW" />
+   </item>
   </layout>
  </widget>
  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
- <tabstops>
-  <tabstop>bullet1PB</tabstop>
-  <tabstop>bullet2PB</tabstop>
-  <tabstop>bullet3PB</tabstop>
-  <tabstop>bullet4PB</tabstop>
-  <tabstop>bulletsize1CO</tabstop>
-  <tabstop>bulletsize2CO</tabstop>
-  <tabstop>bulletsize3CO</tabstop>
-  <tabstop>bulletsize4CO</tabstop>
- </tabstops>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>customCB</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>customLE</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>203</x>
+     <y>148</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>319</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>customCB</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>label_2</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>203</x>
+     <y>148</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>273</x>
+     <y>19</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>customCB</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>bulletpaneCO</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>203</x>
+     <y>148</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>320</x>
+     <y>52</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>customCB</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>bulletpaneSW</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>203</x>
+     <y>148</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>320</x>
+     <y>106</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
