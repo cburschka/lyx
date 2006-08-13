@@ -319,22 +319,7 @@ To build lyx with msvc, you should
       - To use the msvc debugger, you have to use mode=debug (default).
 
 
-6. Other versions of lyx (1.4.x)
-================================
-
-The scons build system is not yet distributed with lyx1.4.x. Support for
-the qt2 frontend of lyx1.4.x is, however, added to the trunk (1.5.x). If
-you have checked out both 1.4.x and the trunk, you can build lyx 1.4.x
-using commands similar to
-
-  > cd lyx-1.4.x
-  > scons -f ../lyx-1.5.x/development/scons/SConstruct
-
-Note that lyx 1.4.x does not use the latest version of the boost library
-so option boost=included is recommended.
-
-
-7. Tips and hints
+6. Tips and hints
 =================
 
   * Using external boost libraries (install boost libraries and use
@@ -343,7 +328,7 @@ so option boost=included is recommended.
     not be included in the dependency tree.
 
 
-8. Troubleshooting
+7. Troubleshooting
 ==================
 
 When you get an error:

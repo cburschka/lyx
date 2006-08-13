@@ -17,6 +17,8 @@ import os, sys, copy, cPickle, glob
 # scons_utils.py defines a few utility function
 sys.path.append('config')
 import scons_utils as utils
+# import all file lists
+from scons_manifest import *
 
 #----------------------------------------------------------
 # Required runtime environment
@@ -51,14 +53,8 @@ else:
 
 # some global settings
 #
-# detect version of lyx
-# only 1.4.x has frontends/qt2
-if os.path.isdir(os.path.join(top_src_dir, 'src', 'frontends', 'qt2')):
-    package_version = '1.4.2svn'
-    boost_version = '1_32'
-else:
-    package_version = '1.5.0svn'
-    boost_version = '1_33_1'
+package_version = '1.5.0svn'
+boost_version = '1_33_1'
 
 devel_version = True
 default_build_mode = 'debug'
@@ -111,10 +107,6 @@ else:  # unsupported system, assume posix behavior
     default_with_x = True
     default_packaging_method = 'posix'
 
-# 1.4.2 only has qt2 frontend
-if package_version == '1.4.2svn':
-    default_frontend = 'qt2'
-
 #---------------------------------------------------------
 # Handling options
 #----------------------------------------------------------
@@ -128,7 +120,7 @@ opts = Options(['config.py'])
 opts.AddOptions(
     # frontend
     EnumOption('frontend', 'Main GUI', default_frontend,
-        allowed_values = ('qt2', 'qt3', 'qt4', 'gtk') ),
+        allowed_values = ('qt3', 'qt4', 'gtk') ),
     # debug or release build
     EnumOption('mode', 'Building method', default_build_mode,
         allowed_values = ('debug', 'release') ),
@@ -588,15 +580,13 @@ if env.has_key('QTDIR'):
         os.environ['PATH'] += os.pathsep + os.path.join(env['QTDIR'], 'bin')
         env.PrependENVPath('PATH', os.path.join(env['QTDIR'], 'bin'))
 
-# allow qt2 frontend to locate qt3 libs.
-frontend_lib = {'qt2':'qt3', 'qt3':'qt3', 'qt4':'qt4'}[frontend]
 if env.has_key('qt_lib_path') and env['qt_lib_path']:
     qt_lib_path = env.subst('$qt_lib_path')
 elif env.has_key('QTDIR') and os.path.isdir(os.path.join(env.subst('$QTDIR'), 'lib')):
     qt_lib_path = env.subst('$QTDIR/lib')
 # this is the path for cygwin.
-elif os.path.isdir(os.path.join('/usr/lib/', frontend_lib, 'lib')):
-    qt_lib_path = '/usr/lib/%s/lib' % frontend_lib
+elif os.path.isdir(os.path.join('/usr/lib/', frontend, 'lib')):
+    qt_lib_path = '/usr/lib/%s/lib' % frontend
 else:
     print "Qt library directory is not found. Please specify it using qt_lib_path"
     Exit(1)
@@ -609,8 +599,8 @@ if env.has_key('qt_inc_path') and env['qt_inc_path']:
 elif env.has_key('QTDIR') and os.path.isdir(os.path.join(env.subst('$QTDIR'), 'include')):
     qt_inc_path = '$QTDIR/include'
 # this is the path for cygwin.
-elif os.path.isdir('/usr/include/' + frontend_lib):
-    qt_inc_path = '/usr/include/' + frontend_lib
+elif os.path.isdir('/usr/include/' + frontend):
+    qt_inc_path = '/usr/include/' + frontend
 else:
     print "Qt include directory not found. Please specify it using qt_inc_path"
     Exit(1)
@@ -678,7 +668,7 @@ if not fast_start:
 if not fast_start:
     #
     # qt3 does not use pkg_config
-    if frontend in ['qt2', 'qt3']:
+    if frontend == 'qt3':
         if not conf.CheckLibWithHeader('qt-mt', 'qapp.h', 'c++', 'QApplication qapp();'):
             print 'Did not find qt libraries, exiting!'
             Exit(1)
@@ -1292,7 +1282,7 @@ env = conf.Finish()
 #
 # NOTE: Tool('qt') or Tool('qt4') will be loaded later
 # in their respective directory and specialized env.
-if frontend in ['qt2', 'qt3']:
+if frontend == 'qt3':
     # note: env.Tool('qt') my set QT_LIB to qt
     qt_libs = ['qt-mt']
     frontend_libs = ['qt-mt']
@@ -1422,7 +1412,7 @@ Frontend:
     frontend, packaging_method,
     prefix, env['LYX_DIR'])
 
-if frontend in ['qt2', 'qt3', 'qt4']:
+if frontend in ['qt3', 'qt4']:
     env['VERSION_INFO'] += '''  include dir:                    %s
   library dir:                    %s
   X11:                            %s
@@ -1509,7 +1499,6 @@ build_tex2lyx = True in ['tex2lyx' in x for x in targets] \
     or 'install' in targets or 'all' in targets
 build_lyxbase = build_lyx or 'lyxbase' in targets
 build_po = 'po' in targets or 'install' in targets or 'all' in targets
-build_qt2 = (build_lyx and frontend == 'qt2') or 'qt2' in targets
 build_qt3 = (build_lyx and frontend == 'qt3') or 'qt3' in targets
 build_qt4 = (build_lyx and frontend == 'qt4') or 'qt4' in targets
 build_msvs_projects = use_vc and 'msvs_projects' in targets
@@ -1537,7 +1526,6 @@ if rebuild_targets is not None:
     build_graphics = ifBuildLib('graphics', 'graphics', build_graphics)
     build_controllers = ifBuildLib('controllers', 'controllers', build_controllers)
     build_lyxbase = ifBuildLib('lyxbase', 'lyxbase_pre', build_lyxbase)
-    build_qt2 = ifBuildLib('qt2', 'qt2', build_qt2)
     build_qt3 = ifBuildLib('qt3', 'qt3', build_qt3)
     build_qt4 = ifBuildLib('qt4', 'qt4', build_qt4)
     #
@@ -1555,9 +1543,7 @@ if rebuild_targets is not None:
     build_client = ifBuildApp('client', 'lyxclient', build_client)
 
 # sync frontend and frontend (maybe build qt4 with frontend=qt3)
-if build_qt2:
-    frontend = 'qt2'
-elif build_qt3:
+if build_qt3:
     frontend = 'qt3'
 elif build_qt4:
     frontend = 'qt4'
@@ -1580,8 +1566,7 @@ if build_boost:
         print 'Processing files in boost/libs/%s/src...' % lib
         boostlib = boostenv.StaticLibrary(
             target = '$LOCALLIBPATH/included_boost_%s' % lib,
-            source = utils.globSource(dir = env.subst('$TOP_SRCDIR/boost/libs/%s/src' % lib),
-                pattern = '*.cpp', build_dir = '$BUILDDIR/boost/%s/src' % lib)
+            source = ['$BUILDDIR/boost/%s/src/%s' % (lib, x) for x in eval('boost_libs_%s_src_files' % lib)]
         )
         Alias('boost', boostlib)
 
@@ -1623,9 +1608,7 @@ if build_intl:
     intl = intlenv.StaticLibrary(
         target = '$LOCALLIBPATH/included_intl',
         LIBS = ['c'],
-        source = utils.globSource(dir = env.subst('$TOP_SRCDIR/intl'), pattern = '*.c',
-            exclude = ['vasnprintf.c', 'printf-parse.c', 'printf-args.c', 'os2compat.c'],
-            build_dir = '$BUILDDIR/intl')
+        source = ['$BUILDDIR/intl/%s' % x for x in intl_files]
     )
     Alias('intl', intl)
 
@@ -1646,9 +1629,7 @@ if build_support:
 
     support = env.StaticLibrary(
         target = '$LOCALLIBPATH/support',
-        source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/support'), pattern = lyx_ext,
-            exclude = ['os_win32.C', 'os_unix.C', 'os_cygwin.C', 'os_os2.C', 'atexit.c'],
-            include = ['package.C'], build_dir = '$BUILDDIR/common/support')
+        source = ['$BUILDDIR/common/support/%s' % x for x in src_support_files]
     )
     Alias('support', support)
 
@@ -1661,10 +1642,7 @@ if build_mathed:
     #
     mathed = env.StaticLibrary(
         target = '$LOCALLIBPATH/mathed',
-        source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/mathed'),
-            pattern = lyx_ext,
-            exclude = ['math_xyarrowinset.C', 'math_mboxinset.C', 'formulamacro.C'],
-            build_dir = '$BUILDDIR/common/mathed')
+        source = ['$BUILDDIR/common/mathed/%s' % x for x in src_mathed_files]
     )
     Alias('mathed', mathed)
 
@@ -1677,9 +1655,7 @@ if build_insets:
     #
     insets = env.StaticLibrary(
         target = '$LOCALLIBPATH/insets',
-        source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/insets'),
-            pattern = lyx_ext,
-            exclude = ['insettheorem.C'], build_dir = '$BUILDDIR/common/insets')
+        source = ['$BUILDDIR/common/insets/%s' % x for x in src_insets_files]
     )
     Alias('insets', insets)
 
@@ -1692,8 +1668,7 @@ if build_frontends:
 
     frontends = env.StaticLibrary(
         target = '$LOCALLIBPATH/frontends',
-        source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/frontends'), pattern = lyx_ext,
-            build_dir = '$BUILDDIR/common/frontends')
+        source = ['$BUILDDIR/common/frontends/%s' % x for x in src_frontends_files]
     )
     Alias('frontends', frontends)
 
@@ -1706,8 +1681,7 @@ if build_graphics:
 
     graphics = env.StaticLibrary(
         target = '$LOCALLIBPATH/graphics',
-        source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/graphics'), pattern = lyx_ext,
-            build_dir = '$BUILDDIR/common/graphics')
+        source = ['$BUILDDIR/common/graphics/%s' % x for x in src_graphics_files]
     )
     Alias('graphics', graphics)
 
@@ -1720,115 +1694,16 @@ if build_controllers:
 
     controllers = env.StaticLibrary(
         target = '$LOCALLIBPATH/controllers',
-        source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/frontends/controllers'), pattern = lyx_ext,
-            build_dir = '$BUILDDIR/common/frontends/controllers')
+        source = ['$BUILDDIR/common/frontends/controllers/%s' % x for x in src_frontends_controllers_files]
     )
     Alias('controllers', controllers)
 
 
 #
-# src/frontend/qt2/3/4
+# src/frontend/qt3/4
 #
-if build_qt2 or build_qt3 or build_qt4:
+if build_qt3 or build_qt4:
     env.BuildDir('$BUILDDIR/$frontend', '$TOP_SRCDIR/src/frontend/$frontend', duplicate = 0)
-
-
-if build_qt2:
-    print "Processing files in src/frontends/qt2..."
-
-    qt2env = env.Copy()
-    # disable auto scan to speed up non build time
-    qt2env['QT_AUTOSCAN'] = 0
-    qt2env['QT_MOCHPREFIX'] = ''
-
-    # load qt2 tools
-    qt2env.Tool('qt')
-
-    qt2env.AppendUnique(CPPPATH = [
-        '$BUILDDIR/common',
-        '$BUILDDIR/common/images',
-        '$BUILDDIR/common/frontends',
-        '$BUILDDIR/common/frontends/qt2',
-        '$BUILDDIR/common/frontends/controllers',
-        qt_inc_path]
-    )
-
-    qt2_moc_files = ["$BUILDDIR/common/frontends/qt2/%s" % x for x in Split('''
-        BulletsModule.C
-        emptytable.C
-        FileDialog_private.C
-        floatplacement.C
-        iconpalette.C
-        lengthcombo.C
-        panelstack.C
-        QAboutDialog.C
-        QBibitemDialog.C
-        QBibtexDialog.C
-        QBoxDialog.C
-        QBranchDialog.C
-        QBrowseBox.C
-        QChangesDialog.C
-        QCharacterDialog.C
-        QCitationDialog.C
-        QCommandBuffer.C
-        QCommandEdit.C
-        QContentPane.C
-        QDelimiterDialog.C
-        QDocumentDialog.C
-        QErrorListDialog.C
-        QERTDialog.C
-        QExternalDialog.C
-        QFloatDialog.C
-        QGraphicsDialog.C
-        QIncludeDialog.C
-        QIndexDialog.C
-        QLogDialog.C
-        QLPopupMenu.C
-        QLPrintDialog.C
-        QMathDialog.C
-        QMathMatrixDialog.C
-        QNoteDialog.C
-        QParagraphDialog.C
-        QPrefsDialog.C
-        QRefDialog.C
-        QSearchDialog.C
-        QSendtoDialog.C
-        qsetborder.C
-        QShowFileDialog.C
-        QSpellcheckerDialog.C
-        QDialogView.C
-        QTabularCreateDialog.C
-        QTabularDialog.C
-        QTexinfoDialog.C
-        QThesaurusDialog.C
-        QTocDialog.C
-        qttableview.C
-        QtView.C
-        QURLDialog.C
-        QVSpaceDialog.C
-        QWrapDialog.C
-        QLToolbar.C
-        socket_callback.C
-        validators.C
-    ''')]
-
-    # manually moc and uic files for better performance
-    qt2_moced_files = [qt2env.Moc(x.replace('.C', '_moc.cpp'), x.replace('.C', '.h')) for x in qt2_moc_files]
-
-    qt2_uiced_files = [qt2env.Uic('$BUILDDIR/common/frontends/qt2/ui/'+x) for x in \
-        utils.globSource(dir = env.subst('$TOP_SRCDIR/src/frontends/qt2/ui'), pattern = '*.ui')]
-
-    qt2_uiced_cc_files = []
-    for x in qt2_uiced_files:
-        qt2_uiced_cc_files.extend(x[1:])
-
-    qt2 = qt2env.StaticLibrary(
-        target = '$LOCALLIBPATH/qt2',
-        source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/frontends/qt2/'), pattern = lyx_ext,
-            build_dir = '$BUILDDIR/common/frontends/qt2') + qt2_moced_files + qt2_uiced_cc_files
-    )
-    Alias('qt2', qt2)
-
 
 if build_qt3:
     print "Processing files in src/frontends/qt3..."
@@ -1850,71 +1725,13 @@ if build_qt3:
         qt_inc_path]
     )
 
-    qt3_moc_files = ["$BUILDDIR/common/frontends/qt3/%s" % x for x in Split('''
-        BulletsModule.C
-        emptytable.C
-        FileDialog_private.C
-        floatplacement.C
-        iconpalette.C
-        lengthcombo.C
-        panelstack.C
-        QAboutDialog.C
-        QBibitemDialog.C
-        QBibtexDialog.C
-        QBoxDialog.C
-        QBranchDialog.C
-        QBrowseBox.C
-        QChangesDialog.C
-        QCharacterDialog.C
-        QCitationDialog.C
-        QCommandBuffer.C
-        QCommandEdit.C
-        QContentPane.C
-        QDelimiterDialog.C
-        QDocumentDialog.C
-        QErrorListDialog.C
-        QERTDialog.C
-        QExternalDialog.C
-        QFloatDialog.C
-        QGraphicsDialog.C
-        QIncludeDialog.C
-        QIndexDialog.C
-        QLogDialog.C
-        QViewSourceDialog.C
-        QLPopupMenu.C
-        QLPrintDialog.C
-        QMathDialog.C
-        QMathMatrixDialog.C
-        QNoteDialog.C
-        QParagraphDialog.C
-        QPrefsDialog.C
-        QRefDialog.C
-        QSearchDialog.C
-        QSendtoDialog.C
-        qsetborder.C
-        QShowFileDialog.C
-        QSpellcheckerDialog.C
-        QDialogView.C
-        QTabularCreateDialog.C
-        QTabularDialog.C
-        QTexinfoDialog.C
-        QThesaurusDialog.C
-        QTocDialog.C
-        qttableview.C
-        QtView.C
-        QURLDialog.C
-        QVSpaceDialog.C
-        QWrapDialog.C
-        QLToolbar.C
-        socket_callback.C
-        validators.C
-    ''')]
-
+    qt3_moc_files = ["$BUILDDIR/common/frontends/qt3/%s" % x for x in src_frontends_qt3_moc_files]
+    
     # manually moc and uic files for better performance
     qt3_moced_files = [qt3env.Moc(x.replace('.C', '_moc.cpp'), x.replace('.C', '.h')) for x in qt3_moc_files]
 
     qt3_uiced_files = [qt3env.Uic('$BUILDDIR/common/frontends/qt3/ui/'+x) for x in \
-        utils.globSource(dir = env.subst('$TOP_SRCDIR/src/frontends/qt3/ui'), pattern = '*.ui')]
+        src_frontends_qt3_ui_files]
 
     qt3_uiced_cc_files = []
     for x in qt3_uiced_files:
@@ -1922,8 +1739,8 @@ if build_qt3:
 
     qt3 = qt3env.StaticLibrary(
         target = '$LOCALLIBPATH/qt3',
-        source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/frontends/qt3/'), pattern = lyx_ext,
-            build_dir = '$BUILDDIR/common/frontends/qt3') + qt3_moced_files + qt3_uiced_cc_files
+        source = ['$BUILDDIR/common/frontends/qt3/%s' % x for x in src_frontends_qt3_files] \
+            + qt3_moced_files + qt3_uiced_cc_files
     )
     Alias('qt3', qt3)
 
@@ -1965,76 +1782,13 @@ if build_qt4:
     )
 
 
-    qt4_moc_files = ["$BUILDDIR/common/frontends/qt4/%s" % x for x in Split('''
-        BulletsModule.C
-        emptytable.C
-        FileDialog_private.C
-        floatplacement.C
-        iconpalette.C
-        lengthcombo.C
-        InsertTableWidget.C
-        panelstack.C
-        QAboutDialog.C
-        QBibitemDialog.C
-        QBibtexDialog.C
-        QBoxDialog.C
-        QBranchDialog.C
-        QBranches.C
-        QChangesDialog.C
-        QCharacterDialog.C
-        QCitationDialog.C
-        QCommandBuffer.C
-        QCommandEdit.C
-        QDelimiterDialog.C
-        QDocumentDialog.C
-        QErrorListDialog.C
-        QERTDialog.C
-        QExternalDialog.C
-        QFloatDialog.C
-        QGraphicsDialog.C
-        QIncludeDialog.C
-        QIndexDialog.C
-        Action.C
-        QLogDialog.C
-        QViewSourceDialog.C
-        QViewSource.C
-        QLMenubar.C
-        QLPopupMenu.C
-        QLPrintDialog.C
-        QMathDialog.C
-        QMathMatrixDialog.C
-        QNoteDialog.C
-        QParagraphDialog.C
-        QPrefsDialog.C
-        QRefDialog.C
-        QSearchDialog.C
-        QSendtoDialog.C
-        qsetborder.C
-        QShowFileDialog.C
-        QSpellcheckerDialog.C
-        QDialogView.C
-        QTabularCreateDialog.C
-        QTabularDialog.C
-        QTexinfoDialog.C
-        QThesaurusDialog.C
-        TocModel.C
-        QTocDialog.C
-        GuiView.C
-        QURLDialog.C
-        QVSpaceDialog.C
-        GuiWorkArea.C
-        QWrapDialog.C
-        QLToolbar.C
-        socket_callback.C
-        validators.C
-    ''') ]
+    qt4_moc_files = ["$BUILDDIR/common/frontends/qt4/%s" % x for x in src_frontends_qt4_moc_files]
 
     #
     # Compile resources
     #
     resources = [qt4env.Uic4(x.split('.')[0]) for x in \
-        utils.globSource(dir = env.subst('$TOP_SRCDIR/src/frontends/qt4/ui'), pattern = '*.ui',
-            build_dir = '$BUILDDIR/common/frontends/qt4/ui')]
+        src_frontends_qt4_ui_files]
 
     #
     # moc qt4_moc_files, the moced files are included in the original files
@@ -2043,8 +1797,7 @@ if build_qt4:
 
     qt4 = qt4env.StaticLibrary(
         target = '$LOCALLIBPATH/qt4',
-        source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/frontends/qt4'), pattern = lyx_ext,
-            exclude = ['QBrowseBox.C'], build_dir = '$BUILDDIR/common/frontends/qt4')
+        source = ['$BUILDDIR/common/frontends/qt4/%s' % x for x in src_frontends_qt4_files]
     )
     Alias('qt4', qt4)
 
@@ -2062,8 +1815,7 @@ if build_client:
             target = '$BUILDDIR/common/client/lyxclient',
             LIBS = ['support'] + intl_libs + system_libs +
                 socket_libs + boost_libraries,
-            source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/client'), pattern = lyx_ext,
-                build_dir = '$BUILDDIR/common/client')
+            source = ['$BUILDDIR/common/client/%s' % x for x in src_client_files]
         )
         Alias('client', env.Command(os.path.join('$BUILDDIR', os.path.split(str(client[0]))[1]),
             client, [Copy('$TARGET', '$SOURCE')]))
@@ -2097,10 +1849,7 @@ if build_tex2lyx:
     tex2lyx = tex2lyx_env.Program(
         target = '$BUILDDIR/common/tex2lyx/tex2lyx',
         LIBS = ['support'] + boost_libraries + system_libs,
-        source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src/tex2lyx'), pattern = lyx_ext,
-            include = ['FloatList.C', 'Floating.C', 'counters.C', 'lyxlayout.C',
-                'lyxtextclass.C', 'lyxlex.C', 'lyxlex_pimpl.C'],
-            build_dir = '$BUILDDIR/common/tex2lyx')
+        source = ['$BUILDDIR/common/tex2lyx/%s' % x for x in src_tex2lyx_files]
     )
     Alias('tex2lyx', env.Command(os.path.join('$BUILDDIR', os.path.split(str(tex2lyx[0]))[1]),
         tex2lyx, [Copy('$TARGET', '$SOURCE')]))
@@ -2118,15 +1867,6 @@ if build_lyxbase:
 
     env.substFile('$BUILDDIR/common/version.C', '$TOP_SRCDIR/src/version.C.in')
 
-    lyx_post_source = Split('''
-        tabular.C
-        dimension.C
-        PrinterParams.C
-        box.C
-        Thesaurus.C
-        SpellBase.C
-    ''')
-
     if env.has_key('USE_ASPELL') and env['USE_ASPELL']:
         lyx_post_source.append('aspell.C')
     elif env.has_key('USE_PSPELL') and env['USE_PSPELL']:
@@ -2138,14 +1878,11 @@ if build_lyxbase:
     # so I exclude main.C from lyxbase
     lyxbase_pre = env.StaticLibrary(
         target = '$LOCALLIBPATH/lyxbase_pre',
-        source = utils.globSource(dir = env.subst('$TOP_SRCDIR/src'), pattern = lyx_ext,
-            exclude = lyx_post_source + ['main.C', 'aspell.C', 'pspell.C',
-                'ispell.C', 'Variables.C', 'Sectioning.C'],
-            include = ['version.C'], build_dir = '$BUILDDIR/common')
+        source = ['$BUILDDIR/common/%s' % x for x in src_pre_files]
     )
     lyxbase_post = env.StaticLibrary(
         target = '$LOCALLIBPATH/lyxbase_post',
-        source = ["$BUILDDIR/common/%s" % x for x in lyx_post_source]
+        source = ["$BUILDDIR/common/%s" % x for x in src_post_files]
     )
     Alias('lyxbase', lyxbase_pre)
     Alias('lyxbase', lyxbase_post)
@@ -2186,47 +1923,24 @@ else:
 
 
 if build_msvs_projects:
-    def build_project(target, dir, full_target = None,
-        src_pattern = lyx_ext, include = [], resource = None, rebuildTargetOnly = True):
+    def build_project(target, full_target = None,
+        src = [], inc = [], res = [], rebuildTargetOnly = True):
         ''' build mavs project files
             target:      alias (correspond to directory name)
-            dir:         source directory or directories (a list)
             full_target: full path/filename of the target
-            src_pattern: glob pattern
-            include:     files to include into source
-            resource:    directory or directories with resource (.ui) files
+            src:         source files
+            inc:         include files
+            res:         resource files
             rebuildTargetOnly:     whether or not only rebuild this target
 
         For non-debug-able targets like static libraries, target (alias) is
         enough to build the target. For executable targets, msvs need to know
         the full path to start debug them.
         '''
-        if resource is not None:
-            res = utils.globSource(dir = env.subst('$TOP_SRCDIR/'+resource), pattern = '*.ui',
-                build_dir = env.subst('$TOP_SRCDIR/'+resource))
-        else:
-            res = []
         if rebuildTargetOnly:
             cmds = 'fast_start=yes rebuild='+target
         else:
             cmds = 'fast_start=yes'
-        if type(dir) == type([]):
-            src = []
-            inc = []
-            for d in dir:
-                src.extend(utils.globSource(dir = env.subst('$TOP_SRCDIR/' + d),
-                    pattern = src_pattern, include = include,
-                    build_dir = env.subst('$TOP_SRCDIR/' + d) ))
-                inc.extend(utils.globSource(dir = env.subst('$TOP_SRCDIR/' + d),
-                    pattern = '*.h',
-                    build_dir = env.subst('$TOP_SRCDIR/' + d) ))
-        else:
-            src = utils.globSource(dir = env.subst('$TOP_SRCDIR/' + dir),
-                pattern = src_pattern, include = include,
-                build_dir = env.subst('$TOP_SRCDIR/' + dir) )
-            inc = utils.globSource(dir = env.subst('$TOP_SRCDIR/' + dir),
-                pattern = '*.h',
-                build_dir = env.subst('$TOP_SRCDIR/' + dir) )
         if full_target is None:
             build_target = target
         else:
@@ -2234,55 +1948,104 @@ if build_msvs_projects:
         # project
         proj = env.MSVSProject(
             target = target + env['MSVSPROJECTSUFFIX'],
-            srcs = src,
+            # this allows easy access to header files (along with source)
+            srcs = [env.subst(x) for x in src + inc],
             incs = [env.subst('$TOP_SRCDIR/src/config.h')],
-            localincs = inc,
-            resources = res,
+            localincs = [env.subst(x) for x in inc],
+            resources = [env.subst(x) for x in res],
             buildtarget = build_target,
             cmdargs = cmds,
             variant = 'Debug'
         )
         Alias('msvs_projects', proj)
     #
-    build_project('boost', ['boost/libs/%s/src' % x for x in boost_libs],
-        src_pattern = '*.cpp')
+    boost_src = []
+    for lib in boost_libs:
+        boost_src += ['$TOP_SRCDIR/boost/libs/%s/src/%s' % (lib, x) for x in eval('boost_libs_%s_src_files' % lib)]
+    build_project('boost', src = boost_src)
     #
-    build_project('intl', 'intl', src_pattern = '*.c')
+    build_project('intl', src = ['$TOP_SRCDIR/intl/%s' % x for x in intl_files], 
+        inc = ['$TOP_SRCDIR/intl/%s' % x for x in intl_header_files])
     #
-    build_project('support', 'src/support', include=['package.C.in'])
+    build_project('support', src = ['$TOP_SRCDIR/src/support/%s' % x for x in src_support_files], 
+        inc = ['$TOP_SRCDIR/src/support/%s' % x for x in src_support_header_files])
     #
-    build_project('mathed', 'src/mathed')
+    build_project('mathed', src = ['$TOP_SRCDIR/src/support/%s' % x for x in src_support_files], 
+        inc = ['$TOP_SRCDIR/src/support/%s' % x for x in src_support_header_files])
     #
-    build_project('insets', 'src/insets')
+    build_project('insets', src = ['$TOP_SRCDIR/src/insets/%s' % x for x in src_insets_files], 
+        inc = ['$TOP_SRCDIR/src/insets/%s' % x for x in src_insets_header_files])
     #
-    build_project('frontends', 'src/frontends')
+    build_project('frontends', src = ['$TOP_SRCDIR/src/frontends/%s' % x for x in src_frontends_files], 
+        inc = ['$TOP_SRCDIR/src/frontends/%s' % x for x in src_frontends_header_files])
     #
-    build_project('graphics', 'src/graphics')
+    build_project('graphics', src = ['$TOP_SRCDIR/src/graphics/%s' % x for x in src_graphics_files], 
+        inc = ['$TOP_SRCDIR/src/graphics/%s' % x for x in src_graphics_header_files])
     #
-    build_project('controllers', 'src/frontends/controllers')
+    build_project('controllers', src = ['$TOP_SRCDIR/src/frontends/controllers/%s' % x for x in src_frontends_controllers_files], 
+        inc = ['$TOP_SRCDIR/src/frontends/controllers/%s' % x for x in src_frontends_controllers_header_files])
     #
-    build_project('qt3', 'src/frontends/qt3', resource = 'src/frontends/qt3/ui')
+    build_project('qt3', src = ['$TOP_SRCDIR/src/frontends/qt3/%s' % x for x in src_frontends_qt3_files + src_frontends_qt3_moc_files],
+        inc = ['$TOP_SRCDIR/src/frontends/qt3/%s' % x for x in src_frontends_qt3_header_files],
+        res = ['$TOP_SRCDIR/src/frontends/qt3/ui/%s' % x for x in src_frontends_qt3_ui_files])
     #
-    build_project('qt4', 'src/frontends/qt4', resource = 'src/frontends/qt4/ui')
+    build_project('qt4', src = ['$TOP_SRCDIR/src/frontends/qt4/%s' % x for x in src_frontends_qt4_files + src_frontends_qt4_moc_files],
+        inc = ['$TOP_SRCDIR/src/frontends/qt4/%s' % x for x in src_frontends_qt4_header_files],
+        res = ['$TOP_SRCDIR/src/frontends/qt4/ui/%s' % x for x in src_frontends_qt4_ui_files])
     #
-    build_project('client', 'src/client', rebuildTargetOnly = False,
+    build_project('client', src = ['$TOP_SRCDIR/src/client/%s' % x for x in src_client_files],
+        inc = ['$TOP_SRCDIR/src/client/%s' % x for x in src_client_header_files],
+        rebuildTargetOnly = False,
         full_target = File(env.subst('$BUILDDIR/common/client/lyxclient$PROGSUFFIX')).abspath)
     #
-    build_project('tex2lyx', 'src/tex2lyx', rebuildTargetOnly = False,
+    build_project('tex2lyx', src = ['$TOP_SRCDIR/src/tex2lyx/%s' % x for x in src_tex2lyx_files],
+        inc = ['$TOP_SRCDIR/src/tex2lyx/%s' % x for x in src_tex2lyx_header_files],
+        rebuildTargetOnly = False,
         full_target = File(env.subst('$BUILDDIR/common/tex2lyx/tex2lyx$PROGSUFFIX')).abspath)
     #
-    build_project('lyxbase', 'src')
+    build_project('lyxbase', src = ['$TOP_SRCDIR/src/%s' % x for x in src_pre_files + src_post_files],
+        inc = ['$TOP_SRCDIR/src/%s' % x for x in src_header_files])
     #
     if frontend == 'qt3':
-        build_project('lyx', ['src', 'src/support', 'src/mathed', 'src/insets',
-            'src/frontends', 'src/graphics', 'src/frontends/controllers',
-            'src/frontends/qt3'], resource = 'src/frontends/qt3/ui',
+        build_project('lyx', 
+            src = ['$TOP_SRCDIR/src/%s' % x for x in src_pre_files + src_post_files] + \
+                ['$TOP_SRCDIR/src/support/%s' % x for x in src_support_files] + \
+                ['$TOP_SRCDIR/src/mathed/%s' % x for x in src_mathed_files] + \
+                ['$TOP_SRCDIR/src/insets/%s' % x for x in src_insets_files] + \
+                ['$TOP_SRCDIR/src/frontends/%s' % x for x in src_frontends_files] + \
+                ['$TOP_SRCDIR/src/graphics/%s' % x for x in src_graphics_files] + \
+                ['$TOP_SRCDIR/src/frontends/controllers/%s' % x for x in src_frontends_controllers_files] + \
+                ['$TOP_SRCDIR/src/frontends/qt3/%s' % x for x in src_frontends_qt3_files + src_frontends_qt3_moc_files],
+            inc = ['$TOP_SRCDIR/src/%s' % x for x in src_header_files] + \
+                ['$TOP_SRCDIR/src/support/%s' % x for x in src_support_header_files] + \
+                ['$TOP_SRCDIR/src/mathed/%s' % x for x in src_mathed_header_files] + \
+                ['$TOP_SRCDIR/src/insets/%s' % x for x in src_insets_header_files] + \
+                ['$TOP_SRCDIR/src/frontends/%s' % x for x in src_frontends_header_files] + \
+                ['$TOP_SRCDIR/src/graphics/%s' % x for x in src_graphics_header_files] + \
+                ['$TOP_SRCDIR/src/frontends/controllers/%s' % x for x in src_frontends_controllers_header_files] + \
+                ['$TOP_SRCDIR/src/frontends/qt3/%s' % x for x in src_frontends_qt3_header_files],
+            res = ['$TOP_SRCDIR/src/frontends/qt3/ui/%s' % x for x in src_frontends_qt3_ui_files],
             rebuildTargetOnly = False,
             full_target = File(env.subst('$BUILDDIR/$frontend/lyx$PROGSUFFIX')).abspath)
     else:
-        build_project('lyx', ['src', 'src/support', 'src/mathed', 'src/insets',
-            'src/frontends', 'src/graphics', 'src/frontends/controllers',
-            'src/frontends/qt4'], resource = 'src/frontends/qt4/ui',
+        build_project('lyx', 
+            src = ['$TOP_SRCDIR/src/%s' % x for x in src_pre_files + src_post_files] + \
+                ['$TOP_SRCDIR/src/support/%s' % x for x in src_support_files] + \
+                ['$TOP_SRCDIR/src/mathed/%s' % x for x in src_mathed_files] + \
+                ['$TOP_SRCDIR/src/insets/%s' % x for x in src_insets_files] + \
+                ['$TOP_SRCDIR/src/frontends/%s' % x for x in src_frontends_files] + \
+                ['$TOP_SRCDIR/src/graphics/%s' % x for x in src_graphics_files] + \
+                ['$TOP_SRCDIR/src/frontends/controllers/%s' % x for x in src_frontends_controllers_files] + \
+                ['$TOP_SRCDIR/src/frontends/qt4/%s' % x for x in src_frontends_qt4_files + src_frontends_qt4_moc_files],
+            inc = ['$TOP_SRCDIR/src/%s' % x for x in src_header_files] + \
+                ['$TOP_SRCDIR/src/support/%s' % x for x in src_support_header_files] + \
+                ['$TOP_SRCDIR/src/mathed/%s' % x for x in src_mathed_header_files] + \
+                ['$TOP_SRCDIR/src/insets/%s' % x for x in src_insets_header_files] + \
+                ['$TOP_SRCDIR/src/frontends/%s' % x for x in src_frontends_header_files] + \
+                ['$TOP_SRCDIR/src/graphics/%s' % x for x in src_graphics_header_files] + \
+                ['$TOP_SRCDIR/src/frontends/controllers/%s' % x for x in src_frontends_controllers_header_files] + \
+                ['$TOP_SRCDIR/src/frontends/qt4/%s' % x for x in src_frontends_qt4_header_files],
+            res = ['$TOP_SRCDIR/src/frontends/qt4/ui/%s' % x for x in src_frontends_qt4_ui_files],
             rebuildTargetOnly = False,
             full_target = File(env.subst('$BUILDDIR/$frontend/lyx$PROGSUFFIX')).abspath)
 
@@ -2363,24 +2126,6 @@ if 'install' in targets:
     #
     import glob
     #
-    # do not install these files
-    exclude_list = ['Makefile.am', 'Makefile.in', 'Makefile',
-        'lyx2lyx_version.py.in']
-
-    def install(dest, src):
-        ''' recusive installation of src to dest '''
-        # separate file and directory
-        files = filter(lambda x: os.path.isfile(x) and not os.path.split(x)[1] in exclude_list, src)
-        dirs = filter(os.path.isdir, src)
-        # install file
-        env.Install(dest, files)
-        # install directory
-        ins_dir = [dest]
-        for dir in dirs:
-            ins_dir.extend(install(os.path.join(dest, os.path.basename(dir)),
-                glob.glob(os.path.join(dir, '*'))) )
-        return ins_dir
-    #
     # install executables (lyxclient may be None)
     #
     if add_suffix:
@@ -2413,12 +2158,25 @@ if 'install' in targets:
         Alias('install', target)
     #
     # share/lyx
-    dirs = install(share_dest_dir,
-        [env.subst('$TOP_SRCDIR/lib/') + file for file in ['configure.py', 'encodings',
-        'chkconfig.ltx', 'CREDITS', 'external_templates', 'symbols', 'languages',
-        'lyxrc.example', 'syntax.default', 'bind', 'images', 'layouts', 'scripts',
-        'templates', 'examples', 'kbd', 'lyx2lyx', 'tex', 'clipart', 'doc',  'ui']]
-    )
+    dirs = []
+    for (dir,files) in [
+            ('.', lib_files),  
+            ('clipart', lib_clipart_files),
+            ('examples', lib_examples_files),
+            ('images', lib_images_files),
+            ('images/math', lib_images_math_files),
+            ('bind', lib_bind_files),
+            ('kbd', lib_kbd_files),
+            ('layouts', lib_layouts_files),
+            ('scripts', lib_scripts_files),
+            ('templates', lib_templates_files),
+            ('tex', lib_tex_files),
+            ('ui', lib_ui_files),
+            ('doc', lib_doc_files),
+            ('lyx2lyx', lib_lyx2lyx_files)]:
+        dirs.append(env.Install(os.path.join(share_dest_dir, dir),
+            [env.subst('$TOP_SRCDIR/lib/%s/%s' % (dir, file)) for file in files]))
+    
     # lyx1.4.x does not have lyx2lyx_version.py.in
     if os.path.isfile(env.subst('$TOP_SRCDIR/lib/lyx2lyx/lyx2lyx_version.py.in')):
         # subst and install this file
