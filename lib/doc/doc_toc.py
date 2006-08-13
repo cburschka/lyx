@@ -36,7 +36,8 @@ import depend
 
 # Specific language information
 # info["isoname"] = (language, language_quotes, enconding, TOC_translated)
-info = { 'da' : ('danish', 'german', 'latin1', "Indholdsfortegnelse over LyX's dokumentation"),
+info = { 'cs' : ('czech', 'german', 'latin2', "Obsah dokumentace LyXu"),
+         'da' : ('danish', 'german', 'latin1', "Indholdsfortegnelse over LyX's dokumentation"),
          'de' : ('german', 'german', 'latin1', "Inhaltsverzeichnis LyX Dokumentation"),
          'fr' : ('french', 'french', 'latin1', "Plan de la documentation"),
          'ru' : ('russian', 'english', 'koi8-r', "LyX Documentation Table of Contents"),
