@@ -58,7 +58,6 @@ boost_version = '1_33_1'
 
 devel_version = True
 default_build_mode = 'debug'
-lyx_ext = '*.C'
 
 package = 'lyx'
 package_bugreport = 'lyx-devel@lists.lyx.org'
@@ -1868,11 +1867,11 @@ if build_lyxbase:
     env.substFile('$BUILDDIR/common/version.C', '$TOP_SRCDIR/src/version.C.in')
 
     if env.has_key('USE_ASPELL') and env['USE_ASPELL']:
-        lyx_post_source.append('aspell.C')
+        src_post_files.append('aspell.C')
     elif env.has_key('USE_PSPELL') and env['USE_PSPELL']:
-        lyx_post_source.append('pspell.C')
+        src_post_files.append('pspell.C')
     elif env.has_key('USE_ISPELL') and env['USE_ISPELL']:
-        lyx_post_source.append('ispell.C')
+        src_post_files.append('ispell.C')
 
     # msvc requires at least one source file with main()
     # so I exclude main.C from lyxbase
