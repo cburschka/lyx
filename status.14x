@@ -48,6 +48,8 @@ What's new
 - Don't add extra braces when reading documents containing \choose, \atop or
   \over (bug 2481).
 
+- Reenable import of noweb files (bug 2289)
+
 * User Interface:
 
 - Fix crash when using next-inset-toggle (Ctrl+I) inside mathed; make
