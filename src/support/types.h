@@ -16,15 +16,21 @@
 #ifndef LYX_TYPES_H
 #define LYX_TYPES_H
 
+#include "docstring.h"
+
+#include <boost/cstdint.hpp>
+
 #include <cstddef>
+#include <string>
 
 namespace lyx {
 
 	// The type used to hold characters in paragraphs
-	//typedef uint32_t char_type; // Possibly the ucs-4 type we will use
+	typedef boost::uint32_t char_type; // Possibly the ucs-4 type we will use
 	//typedef wchar_t char_type;  // The wide char type CJK-LyX uses
-	typedef char char_type;       // Current narrow char type in use
+	//typedef char char_type;       // Current narrow char type in use
 
+	//typedef std::wstring docstring;
 
 	/// a type for positions used in paragraphs
 	// needs to be signed for a while to hold the special value -1 that is

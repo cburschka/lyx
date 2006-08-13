@@ -27,6 +27,7 @@
 #include "support/std_ostream.h"
 #include "support/convert.h"
 
+using lyx::docstring;
 using lyx::support::prefixIs;
 
 using std::max;
@@ -143,9 +144,11 @@ string const bibitemWidest(Buffer const & buffer)
 
 	for (; it != end; ++it) {
 		if (it->bibitem()) {
+                        string const label = it->bibitem()->getBibLabel();
+                        docstring const dlab(label.begin(), label.end());
+                    
 			int const wx =
-				font_metrics::width(it->bibitem()->getBibLabel(),
-						    font);
+				font_metrics::width(dlab, font);
 			if (wx > w) {
 				w = wx;
 				bitem = it->bibitem();

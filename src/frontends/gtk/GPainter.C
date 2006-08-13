@@ -43,13 +43,6 @@
 
 using std::string;
 
-namespace font_metrics {
-
-int width(wchar_t const * s, size_t n, LyXFont const & f);
-
-} // namespace font_metrics
-
-
 namespace lyx {
 namespace frontend {
 
@@ -192,6 +185,7 @@ void GPainter::image(int x, int y, int w, int h,
 			     Gdk::RGB_DITHER_NONE, 0, 0);
 }
 
+namespace {
 
 inline XftFont * getXftFont(LyXFont const & f)
 {
@@ -199,34 +193,47 @@ inline XftFont * getXftFont(LyXFont const & f)
 		f.realShape(), f.size());
 }
 
+} // anon namespace
 
-// ENCODING: we assume we've got 8-bit string in whatever format Xft
-// wants.  We should be finding out what the backend's giving us and
-// then converting it before feeding it to Xft using XftDrawStringUtf8
-void GPainter::text(int x, int y, char const * s, size_t ls, LyXFont const & f)
+
+void GPainter::text(int x, int y,
+		    char_type const * s, size_t ls,
+		    LyXFont const & f)
 {
 	XftFont * font = getXftFont(f);
 	XftColor * xftClr = owner_.getColorHandler().
 		getXftColor(f.realColor());
 	XftDraw * draw = owner_.getXftDraw();
 	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
-		XftDrawString8(draw, xftClr, font, x, y,
-			reinterpret_cast<XftChar8 *>(const_cast<char *>(s)), ls);
+		XftDrawString32(draw,
+				xftClr,
+				font,
+				x, y,
+				reinterpret_cast<FcChar32 const *>(s),
+				ls);
 	} else {
 		LyXFont smallfont(f);
 		smallfont.decSize().decSize().setShape(LyXFont::UP_SHAPE);
 		XftFont * fontS = getXftFont(smallfont);
-		char c;
 		int tmpx = x;
 		for (unsigned int i = 0; i < ls; ++i) {
-			c = lyx::support::uppercase(s[i]);
+			// Ok, this looks quite ugly...
+			char_type c = gdk_keyval_to_unicode(gdk_keyval_to_upper(gdk_unicode_to_keyval(s[i])));
 			if (c != s[i]) {
-				XftDrawString8(draw, xftClr, fontS, tmpx, y,
-					reinterpret_cast<XftChar8 *>(const_cast<char *>(&c)), 1);
+				XftDrawString32(draw,
+						xftClr,
+						fontS,
+						tmpx, y,
+						reinterpret_cast<FcChar32 *>(&c),
+						1);
 				tmpx += font_metrics::width(c, smallfont);
 			} else {
-				XftDrawString8(draw, xftClr, font, tmpx, y,
-					reinterpret_cast<XftChar8 *>(const_cast<char *>(&c)), 1);
+				XftDrawString32(draw,
+						xftClr,
+						font,
+						tmpx, y,
+						reinterpret_cast<FcChar32 *>(&c),
+						1);
 				tmpx += font_metrics::width(c, f);
 			}
 		}
@@ -236,13 +243,13 @@ void GPainter::text(int x, int y, char const * s, size_t ls, LyXFont const & f)
 }
 
 
-void GPainter::text(int x, int y, std::string const & s, LyXFont const & f)
+void GPainter::text(int x, int y, docstring const & s, LyXFont const & f)
 {
-	text (x, y, s.c_str(), s.size(), f);
+	text (x, y, reinterpret_cast<char_type const *>(s.data()), s.size(), f);
 }
 
 
-void GPainter::text(int x, int y, char c, LyXFont const & f)
+void GPainter::text(int x, int y, char_type c, LyXFont const & f)
 {
 	text (x, y, &c, 1, f);
 }

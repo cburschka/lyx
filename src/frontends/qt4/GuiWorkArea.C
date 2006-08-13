@@ -339,7 +339,7 @@ void GuiWorkArea::wheelEvent(QWheelEvent * e)
 
 void GuiWorkArea::generateSyntheticMouseEvent()
 {
-	// Set things off to generate the _next_ 'pseudo' event.
+// Set things off to generate the _next_ 'pseudo' event.
 	if (synthetic_mouse_event_.restart_timeout)
 		synthetic_mouse_event_.timeout.start();
 

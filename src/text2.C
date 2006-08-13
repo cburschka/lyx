@@ -57,6 +57,7 @@
 
 #include <sstream>
 
+using lyx::docstring;
 using lyx::pit_type;
 using lyx::pos_type;
 
@@ -797,8 +798,10 @@ pos_type LyXText::getColumnNearX(pit_type const pit,
 		c = bidi.vis2log(vc);
 		last_tmpx = tmpx;
 		if (body_pos > 0 && c == body_pos - 1) {
+                        string lsep = layout->labelsep;
+                        docstring dlsep(lsep.begin(), lsep.end());
 			tmpx += r.label_hfill +
-				font_metrics::width(layout->labelsep, getLabelFont(par));
+				font_metrics::width(dlsep, getLabelFont(par));
 			if (par.isLineSeparator(body_pos - 1))
 				tmpx -= singleWidth(par, body_pos - 1);
 		}

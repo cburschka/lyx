@@ -30,6 +30,7 @@
 #include "support/lstrings.h"
 
 
+using lyx::docstring;
 using lyx::support::prefixIs;
 
 using std::endl;
@@ -237,7 +238,8 @@ void InsetQuotes::draw(PainterInfo & pi, int x, int y) const
 		int const t = font_metrics::width(',', pi.base.font);
 		pi.pain.text(x + t, y, text[0], pi.base.font);
 	} else {
-		pi.pain.text(x, y, text, pi.base.font);
+                docstring dtext(text.begin(), text.end());
+		pi.pain.text(x, y, dtext, pi.base.font);
 	}
 }
 

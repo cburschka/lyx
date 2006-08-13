@@ -55,7 +55,7 @@ namespace lyx {
 namespace frontend {
 
 QWorkArea::QWorkArea(LyXView & owner, int, int)
-        : QWidget(qApp->mainWidget()), owner_(owner), painter_(*this)
+	: QWidget(qApp->mainWidget()), owner_(owner), painter_(*this)
 {
 	scrollbar_ = new QScrollBar(QScrollBar::Vertical, this);
 	content_ = new QContentPane(this);

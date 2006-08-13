@@ -57,7 +57,8 @@ namespace font_metrics {
 	/// return the descent of the char in the font
 	int descent(lyx::char_type c, LyXFont const & f);
 	/// return the descent of the char in the font
-	inline int height(lyx::char_type c, LyXFont const & f) {
+	inline int height(lyx::char_type c, LyXFont const & f)
+	{
 		return ascent(c, f) + descent(c, f);
 	}
 	/// return the left bearing of the char in the font
@@ -69,22 +70,25 @@ namespace font_metrics {
 		return (rbearing(c, f) - lbearing(c, f)) / 2;
 	}
 	/// return the width of the string in the font
-	int width(char const * s, size_t n, LyXFont const & f);
+	int width(lyx::char_type const * s, size_t n, LyXFont const & f);
 	/// return the width of the char in the font
-	inline int width(lyx::char_type c, LyXFont const & f) {
-		return width(&c, 1, f);
+	inline int width(lyx::char_type c, LyXFont const & f)
+	{
+		lyx::char_type tmp[2] = { c, L'\0'};
+		return width(tmp, 1, f);
 	}
 	/// return the width of the string in the font
-	inline int width(std::string const & s, LyXFont const & f) {
-		return s.empty() ? 0 : width(s.data(), s.length(), f);
+	inline int width(lyx::docstring const & s, LyXFont const & f)
+	{
+	    return s.empty() ? 0 : width(s.data(), s.length(), f);
 	}
 	/// FIXME ??
-	int signedWidth(std::string const & s, LyXFont const & f);
+	int signedWidth(lyx::docstring const & s, LyXFont const & f);
 	/**
 	 * fill in width,ascent,descent with the values for the
 	 * given string in the font.
 	 */
-	void rectText(std::string const & str, LyXFont const & font,
+	void rectText(lyx::docstring const & str, LyXFont const & font,
 		int & width,
 		int & ascent,
 		int & descent);
@@ -92,7 +96,7 @@ namespace font_metrics {
 	 * fill in width,ascent,descent with the values for the
 	 * given string in the font for a button.
 	 */
-	void buttonText(std::string const & str, LyXFont const & font,
+	void buttonText(lyx::docstring const & str, LyXFont const & font,
 		int & width,
 		int & ascent,
 		int & descent);

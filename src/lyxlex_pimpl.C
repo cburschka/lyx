@@ -19,6 +19,8 @@
 #include "support/filetools.h"
 #include "support/lyxalgo.h"
 #include "support/lstrings.h"
+#include "support/types.h"
+#include "support/unicode.h"
 
 #include <functional>
 
@@ -66,6 +68,14 @@ LyXLex::Pimpl::Pimpl(keyword_item * tab, int num)
 string const LyXLex::Pimpl::getString() const
 {
 	return string(buff.begin(), buff.end());
+}
+
+
+lyx::docstring const LyXLex::Pimpl::getDocString() const
+{
+        std::vector<boost::uint32_t> res = utf8_to_ucs4(buff);
+        lyx::docstring dstr(res.begin(), res.end());
+        return dstr;
 }
 
 

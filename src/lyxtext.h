@@ -51,6 +51,8 @@ public:
 	///
 	typedef lyx::pos_type pos_type;
 	///
+	typedef lyx::char_type char_type;
+	///
 	typedef lyx::pit_type pit_type;
 
 	/// constructor
@@ -275,7 +277,7 @@ public:
 	int singleWidth(Paragraph const & par, pos_type pos) const;
 	///
 	int singleWidth(Paragraph const & par,
-		pos_type pos, char c, LyXFont const & Font) const;
+		pos_type pos, char_type c, LyXFont const & Font) const;
 
 	/// return the color of the canvas
 	LColor_color backgroundColor() const;

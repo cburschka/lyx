@@ -31,6 +31,7 @@
 
 namespace graphics = lyx::graphics;
 
+using lyx::docstring;
 using lyx::support::absolutePath;
 using lyx::support::onlyFilename;
 
@@ -143,16 +144,18 @@ void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 		msgFont.setFamily(LyXFont::SANS_FAMILY);
 
 		string const justname = onlyFilename(params_.filename);
+                docstring djust(justname.begin(), justname.end());
 		if (!justname.empty()) {
 			msgFont.setSize(LyXFont::SIZE_FOOTNOTE);
-			font_width = font_metrics::width(justname, msgFont);
+			font_width = font_metrics::width(djust, msgFont);
 		}
 
 		string const msg = statusMessage(params_, loader_.status());
 		if (!msg.empty()) {
+                        docstring dmsg(msg.begin(), msg.end());
 			msgFont.setSize(LyXFont::SIZE_TINY);
 			font_width = std::max(font_width,
-					      font_metrics::width(msg, msgFont));
+					      font_metrics::width(dmsg, msgFont));
 		}
 
 		dim.wid = std::max(50, font_width + 15);
@@ -194,18 +197,20 @@ void RenderGraphic::draw(PainterInfo & pi, int x, int y) const
 		string const justname = onlyFilename(params_.filename);
 
 		if (!justname.empty()) {
+                        docstring djust(justname.begin(), justname.end());
 			msgFont.setSize(LyXFont::SIZE_FOOTNOTE);
 			pi.pain.text(x + InsetOld::TEXT_TO_INSET_OFFSET + 6,
 				   y - font_metrics::maxAscent(msgFont) - 4,
-				   justname, msgFont);
+				   djust, msgFont);
 		}
 
 		// Print the message.
 		string const msg = statusMessage(params_, loader_.status());
 		if (!msg.empty()) {
+                        docstring dmsg(msg.begin(), msg.end());
 			msgFont.setSize(LyXFont::SIZE_TINY);
 			pi.pain.text(x + InsetOld::TEXT_TO_INSET_OFFSET + 6,
-				     y - 4, msg, msgFont);
+				     y - 4, dmsg, msgFont);
 		}
 	}
 }

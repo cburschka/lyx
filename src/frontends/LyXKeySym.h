@@ -40,17 +40,16 @@ public:
 	virtual bool isModifier() const = 0;
 
 	/// Is this normal insertable text ? (last ditch attempt only)
-	virtual bool isText() const { return false; }
+	virtual bool isText() const = 0;
 
 	/// What is the symbolic name of this key? F.ex. "Return" or "c"
 	virtual std::string getSymbolName() const = 0;
 
 	/**
-	 * Return the value of the keysym into the local ISO encoding.
-	 * This converts the LyXKeySym to a 8-bit encoded character.
-	 * This relies on user to use the right encoding.
+	 * Return the value of the keysym into the UCS-4 encoding.
+	 * This converts the LyXKeySym to a 32-bit encoded character.
 	 */
-	virtual char getISOEncoded(std::string const & encoding) const = 0;
+	virtual size_t getUCSEncoded() const = 0;
 
 	/**
 	 * Return a string describing the KeySym with modifier mod.

@@ -30,7 +30,7 @@
 #include "frontends/Painter.h"
 #include "frontends/LyXView.h"
 
-
+using lyx::docstring;
 using lyx::graphics::PreviewLoader;
 
 using std::endl;
@@ -122,7 +122,8 @@ void InsetCollapsable::read(Buffer const & buf, LyXLex & lex)
 Dimension InsetCollapsable::dimensionCollapsed() const
 {
 	Dimension dim;
-	font_metrics::buttonText(label, labelfont_, dim.wid, dim.asc, dim.des);
+        docstring dlab(label.begin(), label.end());
+	font_metrics::buttonText(dlab, labelfont_, dim.wid, dim.asc, dim.des);
 	return dim;
 }
 
@@ -174,7 +175,8 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		button_dim.y1 = top;
 		button_dim.y2 = top + dimc.height();
 
-		pi.pain.buttonText(xx, top + dimc.asc, label, labelfont_);
+                docstring dlab(label.begin(), label.end());
+		pi.pain.buttonText(xx, top + dimc.asc, dlab, labelfont_);
 
 		if (status() == Open) {
 			int textx, texty;

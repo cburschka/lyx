@@ -135,14 +135,14 @@ public:
 
 	/// draw a string at position x, y (y is the baseline)
 	virtual void text(int x, int y,
-		std::string const & str, LyXFont const & f) = 0;
+		lyx::docstring const & str, LyXFont const & f) = 0;
 
 	/**
 	 * Draw a string at position x, y (y is the baseline)
 	 * This is just for fast drawing
 	 */
 	virtual void text(int x, int y,
-		char const * str, size_t l,
+		lyx::char_type const * str, size_t l,
 		LyXFont const & f) = 0;
 
 	/// draw a char at position x, y (y is the baseline)
@@ -156,14 +156,14 @@ public:
 	 * around the text with the given color.
 	 */
 	virtual void rectText(int x, int baseline,
-		std::string const & str,
+		lyx::docstring const & str,
 		LyXFont const & font,
 		LColor_color back,
 		LColor_color frame);
 
 	/// draw a string and enclose it inside a button frame
 	virtual void buttonText(int x,
-		int baseline, std::string const & s,
+		int baseline, lyx::docstring const & s,
 		LyXFont const & font);
 
 protected:

@@ -64,6 +64,7 @@
 #include "support/lyxlib.h"
 #include "support/convert.h"
 #include "support/lyxtime.h"
+#include "support/unicode.h"
 
 #include "mathed/math_hullinset.h"
 #include "mathed/math_macrotemplate.h"
@@ -73,6 +74,7 @@
 #include <clocale>
 #include <sstream>
 
+using lyx::char_type;
 using lyx::pos_type;
 
 using lyx::cap::copySelection;
@@ -1100,11 +1102,20 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		cur.clearSelection();
 		LyXFont const old_font = real_current_font;
 
+#if 0
 		string::const_iterator cit = cmd.argument.begin();
 		string::const_iterator end = cmd.argument.end();
 		for (; cit != end; ++cit)
 			bv->owner()->getIntl().getTransManager().
 				translateAndInsert(*cit, this);
+#else
+		std::vector<char> in(cmd.argument.begin(), cmd.argument.end());
+		std::vector<boost::uint32_t> const res = utf8_to_ucs4(in);
+		std::vector<boost::uint32_t>::const_iterator cit = res.begin();
+		std::vector<boost::uint32_t>::const_iterator end = res.end();
+		for (; cit != end; ++cit)
+			insertChar(bv->cursor(), *cit);
+#endif
 
 		cur.resetAnchor();
 		moveCursor(cur, false);

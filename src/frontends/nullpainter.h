@@ -57,16 +57,18 @@ public:
 	///
 	void image(int, int, int, int, lyx::graphics::Image const &) {}
 	///
-	void text(int, int, std::string const &, LyXFont const &) {}
+	void text(int, int, lyx::docstring const &, LyXFont const &) {}
+// 	///
+// 	void text(int, int, char const *, size_t, LyXFont const &) {}
 	///
-	void text(int, int, char const *, size_t, LyXFont const &) {}
+	void text(int, int, lyx::char_type const *, size_t, LyXFont const &) {}
 	///
-	void text(int, int, char, LyXFont const &) {}
+	void text(int, int, lyx::char_type, LyXFont const &) {}
 	///
-	void rectText(int, int, std::string const &,
+	void rectText(int, int, lyx::docstring const &,
 		LyXFont const &, LColor_color, LColor_color) {}
 	///
-	void buttonText(int, int, std::string const &, LyXFont const &) {}
+	void buttonText(int, int, lyx::docstring const &, LyXFont const &) {}
 	///
 	void underline(LyXFont const &, int, int, int) {}
 	///

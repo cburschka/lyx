@@ -17,6 +17,8 @@
 #include "LColor.h"
 #include "lyxfont.h"
 
+using lyx::docstring;
+
 using std::max;
 using std::string;
 
@@ -48,7 +50,7 @@ void Painter::buttonFrame(int x, int y, int w, int h)
 
 
 void Painter::rectText(int x, int y,
-	string const & str,
+	docstring const & str,
 	LyXFont const & font,
 	LColor_color back,
 	LColor_color frame)
@@ -70,7 +72,7 @@ void Painter::rectText(int x, int y,
 }
 
 
-void Painter::buttonText(int x, int y, string const & str, LyXFont const & font)
+void Painter::buttonText(int x, int y, docstring const & str, LyXFont const & font)
 {
 	int width;
 	int ascent;

@@ -475,20 +475,20 @@ void GWorkArea::inputCommit(gchar * str)
 
 bool GWorkArea::onKeyPress(GdkEventKey * event)
 {
-#ifdef I18N
-	inputCache_ = "";
-	bool inputGet = gtk_im_context_filter_keypress(imContext_, event);
-	// cope with ascii
-	if ((inputGet && inputCache_.size() == 1 && inputCache_[0] < 128) ||
-	    !inputGet) {
-#endif
+// #ifdef I18N
+//	inputCache_ = "";
+//	bool inputGet = gtk_im_context_filter_keypress(imContext_, event);
+//	// cope with ascii
+//	if ((inputGet && inputCache_.size() == 1 && inputCache_[0] < 128) ||
+//	    !inputGet) {
+// #endif
 		GLyXKeySym *glk = new GLyXKeySym(event->keyval);
 		view_.workArea()->processKeySym(LyXKeySymPtr(glk),
 					    gtkKeyState(event->state));
-#ifdef I18N
-	} else if (!inputCache_.empty())
-		workAreaCJK_IMprocess(inputCache_.size(), inputCache_.data());
-#endif
+// #ifdef I18N
+//	} else if (!inputCache_.empty())
+//		workAreaCJK_IMprocess(inputCache_.size(), inputCache_.data());
+// #endif
 	return true;
 }
 

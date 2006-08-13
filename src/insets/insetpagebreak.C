@@ -21,6 +21,7 @@
 #include "frontends/Painter.h"
 #include "frontends/font_metrics.h"
 
+using lyx::docstring;
 using lyx::frontend::Painter;
 
 using std::endl;
@@ -59,12 +60,13 @@ void InsetPagebreak::draw(PainterInfo & pi, int x, int y) const
 	int w = 0;
 	int a = 0;
 	int d = 0;
-	font_metrics::rectText(label, font, w, a, d);
+        docstring dlab(label.begin(), label.end());
+	font_metrics::rectText(dlab, font, w, a, d);
 
 	int const text_start = int(x + (dim_.wid - w) / 2);
 	int const text_end = text_start + w;
 
-	pi.pain.rectText(text_start, y + d, label, font,
+	pi.pain.rectText(text_start, y + d, dlab, font,
 		LColor::none, LColor::none);
 
 	pi.pain.line(x, y, text_start, y,

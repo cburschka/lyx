@@ -16,6 +16,8 @@
 #ifndef LSTRINGS_H
 #define LSTRINGS_H
 
+#include "support/types.h"
+
 #include <vector>
 #include <string>
 

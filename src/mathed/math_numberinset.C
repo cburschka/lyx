@@ -15,6 +15,8 @@
 #include "math_streamstr.h"
 #include "math_support.h"
 
+using lyx::docstring;
+
 using std::string;
 using std::auto_ptr;
 
@@ -38,7 +40,8 @@ void MathNumberInset::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void MathNumberInset::draw(PainterInfo & pi, int x, int y) const
 {
-	pi.draw(x, y, str_);
+        docstring const dstr(str_.begin(), str_.end());
+	pi.draw(x, y, dstr);
 }
 
 

@@ -147,6 +147,12 @@ string const LyXLex::getString() const
 }
 
 
+lyx::docstring const LyXLex::getDocString() const
+{
+	return pimpl_->getDocString();
+}
+
+
 // I would prefer to give a tag number instead of an explicit token
 // here, but it is not possible because Buffer::readDocument uses
 // explicit tokens (JMarc)

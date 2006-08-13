@@ -92,6 +92,7 @@
 #include "support/systemcall.h"
 #include "support/convert.h"
 #include "support/os.h"
+#include "support/unicode.h"
 
 #include <boost/current_function.hpp>
 #include <boost/filesystem/operations.hpp>
@@ -248,7 +249,8 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 
 	Encoding const * encoding = view()->cursor().getEncoding();
 
-	encoded_last_key = keysym->getISOEncoded(encoding ? encoding->name() : "");
+	//encoded_last_key = keysym->getISOEncoded(encoding ? encoding->name() : "");
+	size_t encoded_last_key = keysym->getUCSEncoded();
 
 	// Do a one-deep top-level lookup for
 	// cancel and meta-fake keys. RVDK_PATCH_5
@@ -321,7 +323,8 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 
 	if (func.action == LFUN_SELF_INSERT) {
 		if (encoded_last_key != 0) {
-			string const arg(1, encoded_last_key);
+			std::vector<char> tmp = ucs4_to_utf8(encoded_last_key);
+			string const arg(tmp.begin(), tmp.end());
 			dispatch(FuncRequest(LFUN_SELF_INSERT, arg,
 					     FuncRequest::KEYBOARD));
 			lyxerr[Debug::KEY]

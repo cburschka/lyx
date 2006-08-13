@@ -13,6 +13,7 @@
 #define INSET_LATEX_ACCENT_H
 
 #include "inset.h"
+#include "support/types.h"
 
 class Dimension;
 
@@ -125,7 +126,7 @@ private:
 	/// Check if we know the modifier and can display it ok on screen.
 	void checkContents();
 	///
-	void drawAccent(PainterInfo const & pi, int x, int y, char accent) const;
+	void drawAccent(PainterInfo const & pi, int x, int y, lyx::char_type accent) const;
 	///
 	std::string contents;
 	/// can display as proper char

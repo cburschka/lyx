@@ -24,8 +24,9 @@ public:
 	virtual ~GLyXKeySym() {}
 	virtual bool isOK() const;
 	virtual bool isModifier() const;
+	virtual bool isText() const;
 	virtual std::string getSymbolName() const;
-	virtual char getISOEncoded(std::string const & encoding) const;
+	virtual size_t getUCSEncoded() const;
 	virtual std::string const print(key_modifier::state mod) const;
 private:
 	unsigned int keyval_;

@@ -24,6 +24,7 @@
 #include <map>
 #include "support/lstrings.h"
 #include "support/environment.h"
+#include "support/unicode.h"
 #include "encoding.h"
 #include "language.h"
 
@@ -75,6 +76,7 @@ char const encode(string const & encoding, QString const & str)
 
 void initEncodings()
 {
+#if 0
 	//const char * c = QTextCodec::locale();
 	//string s = c ? c : "";
 	// In this order, see support/filetools.C
@@ -131,7 +133,7 @@ void initEncodings()
 	encoding_map[""] = defaultCodec;
 
 	QTextCodec::setCodecForCStrings(defaultCodec);
-
+#endif
 }
 
 
@@ -152,7 +154,10 @@ void QLyXKeySym::set(QKeyEvent * ev)
 	}
 	text_ = ev->text();
 	if (lyxerr.debugging())
-		lyxerr[Debug::KEY] << "Setting key to " << key_ << ", " <<  fromqstr(text_) << endl;
+		lyxerr[Debug::KEY] << "Setting key to "
+				   << key_ << ", "
+				   <<  text_.utf8()
+				   << endl;
 }
 
 
@@ -195,14 +200,20 @@ string QLyXKeySym::getSymbolName() const
 }
 
 
-char QLyXKeySym::getISOEncoded(string const & encoding) const
+size_t QLyXKeySym::getUCSEncoded() const
 {
-	if (lyxerr.debugging())
-		lyxerr[Debug::KEY] << "encoding is " << encoding << endl;
-	unsigned char const c = encode(encoding, text_);
-	if (lyxerr.debugging())
-		lyxerr[Debug::KEY] << "ISOEncoded returning value " << int(c) << endl;
-	return c;
+    unsigned short const * ptr = text_.ucs2();
+    std::vector<unsigned short> tmp(ptr, ptr + text_.length());
+
+    //lyxerr << "Data is " << tmp << endl;
+    //lyxerr << "Length is " << text_.length() << endl;
+
+    if (text_.isEmpty())
+	return 0;
+
+    //size_t res = utf8_to_ucs4(tmp, tmp.length());
+    //lyxerr << "Res is " << res << endl;
+    return ucs2_to_ucs4(tmp)[0];
 }
 
 
@@ -235,11 +246,7 @@ bool QLyXKeySym::isText() const
 		return false;
 	}
 
-	QChar const c(text_[0]);
-	if (lyxerr.debugging())
-		lyxerr[Debug::KEY] << "isText for key " << key_
-			<< " isPrint is " << c.isPrint() << endl;
-	return c.isPrint();
+	return true;
 }
 
 

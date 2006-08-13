@@ -23,6 +23,7 @@
 #include "frontends/font_metrics.h"
 #include "frontends/Painter.h"
 
+using lyx::docstring;
 
 using std::string;
 using std::auto_ptr;
@@ -54,7 +55,8 @@ void InsetSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
 		case MENU_SEPARATOR:      s = " x ";   break;
 		case HYPHENATION:      s = "-";   break;
 	}
-	dim.wid = font_metrics::width(s, font);
+        docstring ds(s.begin(), s.end());
+	dim.wid = font_metrics::width(ds, font);
 	if (kind_ == HYPHENATION && dim.wid > 5)
 		dim.wid -= 2; // to make it look shorter
 	dim_ = dim;
@@ -69,33 +71,35 @@ void InsetSpecialChar::draw(PainterInfo & pi, int x, int y) const
 	case HYPHENATION:
 	{
 		font.setColor(LColor::special);
-		pi.pain.text(x, y, '-', font);
+		pi.pain.text(x, y, lyx::char_type('-'), font);
 		break;
 	}
 	case LIGATURE_BREAK:
 	{
 		font.setColor(LColor::special);
-		pi.pain.text(x, y, '|', font);
+		pi.pain.text(x, y, lyx::char_type('|'), font);
 		break;
 	}
 	case END_OF_SENTENCE:
 	{
 		font.setColor(LColor::special);
-		pi.pain.text(x, y, '.', font);
+		pi.pain.text(x, y, lyx::char_type('.'), font);
 		break;
 	}
 	case LDOTS:
 	{
 		font.setColor(LColor::special);
-		pi.pain.text(x, y, ". . .", font);
+                string ell = ". . . ";
+                docstring dell(ell.begin(), ell.end());
+		pi.pain.text(x, y, dell, font);
 		break;
 	}
 	case MENU_SEPARATOR:
 	{
 		// A triangle the width and height of an 'x'
-		int w = font_metrics::width('x', font);
-		int ox = font_metrics::width(' ', font) + x;
-		int h = font_metrics::ascent('x', font);
+                int w = font_metrics::width(lyx::char_type('x'), font);
+		int ox = font_metrics::width(lyx::char_type(' '), font) + x;
+		int h = font_metrics::ascent(lyx::char_type('x'), font);
 		int xp[4], yp[4];
 
 		xp[0] = ox;     yp[0] = y;

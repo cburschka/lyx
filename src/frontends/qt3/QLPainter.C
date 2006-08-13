@@ -21,6 +21,8 @@
 #include "language.h"
 #include "LColor.h"
 
+#include "support/unicode.h"
+
 #include "frontends/font_metrics.h"
 
 #include <qpainter.h>
@@ -157,15 +159,16 @@ void QLPainter::image(int x, int y, int w, int h,
 }
 
 
-void QLPainter::text(int x, int y, string const & s, LyXFont const & f)
+void QLPainter::text(int x, int y, docstring const & s, LyXFont const & f)
 {
-	return text(x, y, s.data(), s.length(), f);
+	lyxerr << "Drawing string" << endl;
+	return text(x, y, reinterpret_cast<lyx::char_type const *>(s.data()), s.length(), f);
 }
 
 
 void QLPainter::text(int x, int y, lyx::char_type c, LyXFont const & f)
 {
-	char s[2] = { c, '\0' };
+	char_type s[2] = { c, L'\0' };
 	return text(x, y, s, 1, f);
 }
 
@@ -199,23 +202,38 @@ void QLPainter::smallCapsText(int x, int y,
 }
 
 
-void QLPainter::text(int x, int y, char const * s, size_t ls,
+void QLPainter::text(int x, int y, lyx::char_type const * s, size_t ls,
 	LyXFont const & f)
 {
+	lyxerr << "Drawing lyx::char_type const * s" << endl;
 	setPen(f.realColor());
 
+#if 0
 	Encoding const * encoding = f.language()->encoding();
 	if (f.isSymbolFont())
 		encoding = encodings.symbol_encoding();
+#endif
 
+
+#if 0
 	QString str;
 	str.setLength(ls);
 	for (size_t i = 0; i < ls; ++i)
 		// Brain-dead MSVC wants at(i) rather than operator[]
 		str.at(i) = QChar(encoding->ucs(s[i]));
+#else
+	//std::vector<boost::uint32_t> in(s, s + ls);
+	//std::vector<unsigned short> ucs2 = ucs4_to_ucs2(in);
+	std::vector<unsigned short> ucs2 = ucs4_to_ucs2(s, ls);
+	ucs2.push_back(0);
+	QString str = QString::fromUcs2(&ucs2[0]);
+#endif
+
+#if 0
 	// HACK: QT3 refuses to show single compose characters
 	if (ls == 1 && str[0].unicode() >= 0x05b0 && str[0].unicode() <= 0x05c2)
 		str = ' ' + str;
+#endif
 
 	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
 		qp_->setFont(fontloader.get(f));
@@ -233,4 +251,3 @@ void QLPainter::text(int x, int y, char const * s, size_t ls,
 
 } // namespace frontend
 } // namespace lyx
-

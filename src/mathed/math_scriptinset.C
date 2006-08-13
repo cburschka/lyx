@@ -22,6 +22,8 @@
 
 #include <boost/assert.hpp>
 
+using lyx::char_type;
+
 using std::string;
 using std::max;
 using std::auto_ptr;
@@ -245,7 +247,7 @@ void MathScriptInset::draw(PainterInfo & pi, int x, int y) const
 	else {
 		nuc().setXY(x + dxx(), y);
 		if (editing(pi.base.bv))
-			pi.draw(x + dxx(), y, ".");
+                        pi.draw(x + dxx(), y, char_type('.'));
 	}
 	ScriptChanger dummy(pi.base);
 	if (hasUp())

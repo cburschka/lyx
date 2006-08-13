@@ -55,11 +55,11 @@ void InsetSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 	switch (kind_) {
 		case THIN:
 		case NEGTHIN:
-			dim.wid = font_metrics::width("x", font) / 3;
+                    dim.wid = font_metrics::width(lyx::char_type('x'), font) / 3;
 			break;
 		case PROTECTED:
 		case NORMAL:
-			dim.wid = font_metrics::width("x", font);
+                    dim.wid = font_metrics::width(lyx::char_type('x'), font);
 			break;
 		case QUAD:
 			dim.wid = 20;

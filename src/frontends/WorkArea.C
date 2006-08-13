@@ -269,7 +269,9 @@ void WorkArea::greyOut()
 		x += 260;
 		y += 265;
 
-		getPainter().text(x, y, splash.text(), splash.font());
+		string stext = splash.text();
+		docstring dstext(stext.begin(), stext.end());
+		getPainter().text(x, y, dstext, splash.font());
 	}
 	expose(0, 0, width(), height());
 	getPainter().end();

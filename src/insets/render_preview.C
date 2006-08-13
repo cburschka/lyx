@@ -32,6 +32,8 @@
 
 #include <boost/bind.hpp>
 
+using lyx::docstring;
+
 using std::string;
 using std::auto_ptr;
 
@@ -128,9 +130,9 @@ void RenderPreview::metrics(MetricsInfo & mi, Dimension & dim) const
 		LyXFont font(mi.base.font);
 		font.setFamily(LyXFont::SANS_FAMILY);
 		font.setSize(LyXFont::SIZE_FOOTNOTE);
-		dim.wid = 15 +
-			font_metrics::width(statusMessage(mi.base.bv, snippet_),
-					    font);
+                string stat = statusMessage(mi.base.bv, snippet_);
+                docstring dstat(stat.begin(), stat.end());
+		dim.wid = 15 + font_metrics::width(dstat, font);
 	}
 
 	dim_ = dim;
@@ -162,9 +164,11 @@ void RenderPreview::draw(PainterInfo & pi, int x, int y) const
 		font.setFamily(LyXFont::SANS_FAMILY);
 		font.setSize(LyXFont::SIZE_FOOTNOTE);
 
+                string stat = statusMessage(pi.base.bv, snippet_);
+                docstring dstat(stat.begin(), stat.end());
 		pi.pain.text(x + offset + 6,
 			     y - font_metrics::maxAscent(font) - 4,
-			     statusMessage(pi.base.bv, snippet_), font);
+			     dstat, font);
 	}
 }
 

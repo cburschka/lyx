@@ -74,6 +74,8 @@ libsupport_la_SOURCES = \
 	types.h \
 	userinfo.C \
 	userinfo.h \
+	unicode.C \
+	unicode.h \
 	unlink.C
 
 

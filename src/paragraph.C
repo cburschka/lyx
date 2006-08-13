@@ -44,6 +44,7 @@
 #include "support/lstrings.h"
 #include "support/textutils.h"
 #include "support/convert.h"
+#include "support/unicode.h"
 
 #include <boost/tuple/tuple.hpp>
 #include <boost/bind.hpp>
@@ -54,6 +55,7 @@
 #include <sstream>
 
 using lyx::pos_type;
+using lyx::char_type;
 
 using lyx::support::subst;
 
@@ -212,9 +214,11 @@ void Paragraph::write(Buffer const & buf, ostream & os,
 			}
 			// this check is to amend a bug. LyX sometimes
 			// inserts '\0' this could cause problems.
-			if (c != '\0')
-				os << c;
-			else
+			if (c != '\0') {
+				std::vector<char> tmp = ucs4_to_utf8(c);
+				tmp.push_back('\0');
+				os << &tmp[0];
+			} else
 				lyxerr << "ERROR (Paragraph::writeFile):"
 					" NULL char in structure." << endl;
 			++column;
@@ -1801,7 +1805,7 @@ size_t Paragraph::pos2row(pos_type pos) const
 }
 
 
-unsigned char Paragraph::transformChar(unsigned char c, pos_type pos) const
+char_type Paragraph::transformChar(char_type c, pos_type pos) const
 {
 	if (!Encodings::is_arabic(c))
 		if (lyxrc.font_norm_type == LyXRC::ISO_8859_6_8 && isDigit(c))

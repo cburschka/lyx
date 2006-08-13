@@ -26,10 +26,15 @@
 
 #include "frontends/font_metrics.h"
 
+#include "support/unicode.h"
+
 #include <QPainter>
 #include <QPicture>
 #include <QPixmap>
 #include <QImage>
+
+using lyx::char_type;
+using lyx::docstring;
 
 using std::endl;
 using std::string;
@@ -52,7 +57,7 @@ void QLPainter::start()
 {
 	qp_.reset(new QPainter(qwa_->paintDevice()));
 	// new QPainter has default QPen:
-	current_color_ = LColor::black;	
+	current_color_ = LColor::black;
 	current_ls_ = line_solid;
 	current_lw_ = line_thin;
 }
@@ -177,15 +182,15 @@ void QLPainter::image(int x, int y, int w, int h,
 }
 
 
-void QLPainter::text(int x, int y, string const & s, LyXFont const & f)
+void QLPainter::text(int x, int y, docstring const & s, LyXFont const & f)
 {
-	return text(x, y, s.data(), s.length(), f);
+    return text(x, y, reinterpret_cast<char_type const *>(s.data()), s.length(), f);
 }
 
 
-void QLPainter::text(int x, int y, char c, LyXFont const & f)
+void QLPainter::text(int x, int y, char_type c, LyXFont const & f)
 {
-	char s[2] = { c, '\0' };
+	char_type s[2] = { c, char_type('\0') };
 	return text(x, y, s, 1, f);
 }
 
@@ -219,22 +224,34 @@ void QLPainter::smallCapsText(int x, int y,
 }
 
 
-void QLPainter::text(int x, int y, char const * s, size_t ls,
+void QLPainter::text(int x, int y, char_type const * s, size_t ls,
 	LyXFont const & f)
 {
+#if 0
 	Encoding const * encoding = f.language()->encoding();
 	if (f.isSymbolFont())
 		encoding = encodings.symbol_encoding();
+#endif
 
+#if 0
 	QString str;
 	str.setLength(ls);
 	for (unsigned int i = 0; i < ls; ++i)
 		str[i] = QChar(encoding->ucs(s[i]));
+#else
+	//std::vector<boost::uint32_t> in(s, s + ls);
+	//std::vector<unsigned short> ucs2 = ucs4_to_ucs2(in);
+	std::vector<unsigned short> ucs2 = ucs4_to_ucs2(s, ls);
+	ucs2.push_back(0);
+	QString str = QString::fromUcs2(&ucs2[0]);
+#endif
 
+#if 0
 	// HACK: QT3 refuses to show single compose characters
 	//       Still needed with Qt4?
 	if (ls == 1 && str[0].unicode() >= 0x05b0 && str[0].unicode() <= 0x05c2)
 		str = ' ' + str;
+#endif
 
 	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
 		setQPainterPen(f.realColor());

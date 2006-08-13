@@ -69,8 +69,8 @@ public:
 		/// (returning 0) - if this was 0, then we'd
 		/// try getInset() and crash. We should fix
 		/// all these places.
-		META_INSET = 1
-		//META_INSET = 0x200001  // above 0x10ffff, for ucs-4
+		//META_INSET = 1 // as in trunk
+		META_INSET = 0x200001  // above 0x10ffff, for ucs-4
 	};
 	enum ChangeTracking
 	{
@@ -376,7 +376,7 @@ public:
 	/// return true if we allow this par to stay empty
 	bool allowEmpty() const;
 	///
-	unsigned char transformChar(unsigned char c, lyx::pos_type pos) const;
+	lyx::char_type transformChar(lyx::char_type c, lyx::pos_type pos) const;
 	///
 	ParagraphParameters & params();
 	///

@@ -36,6 +36,7 @@
 
 #include <sstream>
 
+using lyx::docstring;
 
 using std::string;
 using std::auto_ptr;
@@ -154,7 +155,8 @@ void InsetCharStyle::metrics(MetricsInfo & mi, Dimension & dim) const
 		string s(params_.type);
 		if (undefined())
 			s = _("Undef: ") + s;
-		font_metrics::rectText(s, font, w, a, d);
+                docstring ds(s.begin(), s.end());
+		font_metrics::rectText(ds, font, w, a, d);
 		dim.wid = max(dim.wid, w);
 	}
 	dim.asc += TEXT_TO_INSET_OFFSET;
@@ -200,9 +202,10 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 		string s(params_.type);
 		if (undefined())
 			s = _("Undef: ") + s;
-		font_metrics::rectText(s, font, w, a, d);
+                docstring ds(s.begin(), s.end());
+		font_metrics::rectText(ds, font, w, a, d);
 		pi.pain.rectText(x + (dim_.wid - w) / 2, y + desc + a,
-			s, font, LColor::none, LColor::none);
+			ds, font, LColor::none, LColor::none);
 	}
 
 	// a visual clue when the cursor is inside the inset

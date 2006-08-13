@@ -71,36 +71,9 @@ string GLyXKeySym::getSymbolName() const
 }
 
 
-char GLyXKeySym::getISOEncoded(string const & /*encoding*/) const
+size_t GLyXKeySym::getUCSEncoded() const
 {
-	if (keyval_ == GDK_VoidSymbol)
-		return 0;
-
-	unsigned int c = keyval_;
-
-	switch (c & 0x0000FF00) {
-		// latin 1 byte 3 = 0
-	case 0x00000000: break;
-		// latin 2 byte 3 = 1
-	case 0x00000100:
-		// latin 3 byte 3 = 2
-	case 0x00000200:
-		// latin 4 byte 3 = 3
-	case 0x00000300:
-		// cyrillic KOI8 & Co
-	case 0x00000600:
-		// greek
-	case 0x00000700:
-		// latin 8 byte 3 = 18 (0x12)
-	case 0x00001200:
-		// latin 9 byte 3 = 19 (0x13)
-	case 0x00001300:
-		c &= 0x000000FF;
-		break;
-	default:
-		c = 0;
-	}
-	return c;
+    return gdk_keyval_to_unicode(keyval_);
 }
 
 
@@ -125,6 +98,12 @@ string const GLyXKeySym::print(key_modifier::state mod) const
 	}
 
 	return buf;
+}
+
+
+bool GLyXKeySym::isText() const
+{
+	return getUCSEncoded() != 0;
 }
 
 

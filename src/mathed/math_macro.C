@@ -23,6 +23,8 @@
 #include "LaTeXFeatures.h"
 #include "frontends/Painter.h"
 
+using lyx::docstring;
+
 using std::string;
 using std::max;
 using std::auto_ptr;
@@ -89,7 +91,8 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 		LyXFont font = pi.base.font;
 		augmentFont(font, "lyxtex");
 		int h = y - dim_.ascent() + 2 + tmpl_.ascent();
-		pi.pain.text(x + 3, h, name(), font);
+		docstring dn(name().begin(), name().end());
+		pi.pain.text(x + 3, h, dn, font);
 		int const w = mathed_string_width(font, name());
 		tmpl_.draw(pi, x + w + 12, h);
 		h += tmpl_.descent();
@@ -99,8 +102,8 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 			MathArray const & c = cell(i);
 			h += max(c.ascent(), ldim.asc) + 5;
 			c.draw(pi, x + ldim.wid, h);
-			char str[] = "#1:";
-			str[1] += static_cast<char>(i);
+			lyx::char_type str[] = { '#', '1', ':', '\0' };
+			str[1] += static_cast<lyx::char_type>(i);
 			pi.pain.text(x + 3, h, str, font);
 			h += max(c.descent(), ldim.des) + 5;
 		}

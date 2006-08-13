@@ -18,6 +18,8 @@
 #include "kbsequence.h"
 #include "lfuns.h"
 
+#include "support/types.h"
+
 #include <boost/shared_ptr.hpp>
 #include <boost/signals/trackable.hpp>
 
@@ -75,7 +77,7 @@ private:
 	LyXView * owner;
 
 	/// the last character added to the key sequence, in ISO encoded form
-	char encoded_last_key;
+	lyx::char_type encoded_last_key;
 
 	///
 	kb_sequence keyseq;

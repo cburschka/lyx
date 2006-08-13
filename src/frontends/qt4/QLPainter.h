@@ -104,18 +104,18 @@ public:
 
 	/// draw a string at position x, y (y is the baseline)
 	virtual void text(int x, int y,
-		std::string const & str, LyXFont const & f);
+		lyx::docstring const & str, LyXFont const & f);
 
 	/** Draw a string at position x, y (y is the baseline)
 	 *  This is just for fast drawing
 	 */
 	virtual void text(int x, int y,
-		char const * str, size_t l,
+                lyx::char_type const * str, size_t l,
 		LyXFont const & f);
 
 	/// draw a char at position x, y (y is the baseline)
 	virtual void text(int x, int y,
-		char c, LyXFont const & f);
+                lyx::char_type c, LyXFont const & f);
 
 	/// draw a pixmap from the image cache
 	virtual void drawPixmap(int x, int y, QPixmap const & pixmap);

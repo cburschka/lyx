@@ -20,6 +20,9 @@
 
 #include <boost/assert.hpp>
 
+using lyx::char_type;
+using lyx::docstring;
+
 using std::string;
 
 
@@ -53,13 +56,13 @@ PainterInfo::PainterInfo(BufferView * bv, lyx::frontend::Painter & painter)
 }
 
 
-void PainterInfo::draw(int x, int y, char c)
+void PainterInfo::draw(int x, int y, char_type c)
 {
 	pain.text(x, y, c, base.font);
 }
 
 
-void PainterInfo::draw(int x, int y, std::string const & str)
+void PainterInfo::draw(int x, int y, docstring const & str)
 {
 	pain.text(x, y, str, base.font);
 }

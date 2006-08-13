@@ -54,6 +54,7 @@
 
 #include <sstream>
 
+using lyx::docstring;
 using lyx::cap::grabAndEraseSelection;
 using lyx::support::bformat;
 using lyx::support::subst;
@@ -326,7 +327,9 @@ void MathHullInset::draw(PainterInfo & pi, int x, int y) const
 		for (row_type row = 0; row < nrows(); ++row) {
 			int const yy = y + rowinfo_[row].offset_;
 			FontSetChanger dummy(pi.base, "mathrm");
-			pi.draw(xx, yy, nicelabel(row));
+                        string const nl = nicelabel(row);
+                        docstring const dnl(nl.begin(), nl.end());
+			pi.draw(xx, yy, dnl);
 		}
 	}
 	setPosCache(pi, x, y);

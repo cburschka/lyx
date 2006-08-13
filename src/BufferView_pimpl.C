@@ -619,7 +619,7 @@ bool BufferView::Pimpl::update(Update::flags flags)
 	bool const need_second_step =
 		(flags & (Update::Force | Update::FitCursor | Update::MultiParSel))
 		&& (fitCursor() || multiParSel());
-	
+
 	return need_second_step;
 }
 

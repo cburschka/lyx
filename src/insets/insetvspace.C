@@ -29,6 +29,8 @@
 
 #include <sstream>
 
+using lyx::docstring;
+
 using std::istringstream;
 using std::ostream;
 using std::ostringstream;
@@ -127,7 +129,9 @@ void InsetVSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 	int w = 0;
 	int a = 0;
 	int d = 0;
-	font_metrics::rectText(label(), font, w, a, d);
+        string lab = label();
+        docstring dlab(lab.begin(), lab.end());
+	font_metrics::rectText(dlab, font, w, a, d);
 
 	height = max(height, a + d);
 
@@ -177,11 +181,13 @@ void InsetVSpace::draw(PainterInfo & pi, int x, int y) const
 	font.setColor(LColor::added_space);
 	font.decSize();
 	font.decSize();
-	font_metrics::rectText(label(), font, w, a, d);
+        string lab = label();
+        docstring dlab(lab.begin(), lab.end());
+	font_metrics::rectText(dlab, font, w, a, d);
 
 	pi.pain.rectText(x + 2 * arrow_size + 5,
 			 start + (end - start) / 2 + (a - d) / 2,
-			 label(), font, LColor::none, LColor::none);
+			 dlab, font, LColor::none, LColor::none);
 
 	// top arrow
 	pi.pain.line(x, ty1, midx, ty2, LColor::added_space);

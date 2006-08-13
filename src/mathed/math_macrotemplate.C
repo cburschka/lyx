@@ -26,6 +26,7 @@
 
 #include "support/lstrings.h"
 
+using lyx::docstring;
 using lyx::support::bformat;
 
 using std::string;
@@ -111,8 +112,9 @@ void MathMacroTemplate::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi);
 	cell(1).metrics(mi);
+	docstring dp(prefix().begin(), prefix().end());
 	dim.wid = cell(0).width() + cell(1).width() + 20
-		+ font_metrics::width(prefix(), mi.base.font);
+		+ font_metrics::width(dp, mi.base.font);
 	dim.asc = std::max(cell(0).ascent(),  cell(1).ascent())  + 7;
 	dim.des = std::max(cell(0).descent(), cell(1).descent()) + 7;
 	dim_ = dim;
@@ -148,9 +150,9 @@ void MathMacroTemplate::draw(PainterInfo & p, int x, int y) const
 	if (cur.isInside(this))
 		cur.drawSelection(pi);
 #endif
-
-	pi.pain.text(x + 2, y, prefix(), font);
-	x += font_metrics::width(prefix(), pi.base.font) + 6;
+	docstring dp(prefix().begin(), prefix().end());
+	pi.pain.text(x + 2, y, dp, font);
+	x += font_metrics::width(dp, pi.base.font) + 6;
 
 	int const w0 = cell(0).width();
 	int const w1 = cell(1).width();

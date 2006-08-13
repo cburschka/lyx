@@ -20,6 +20,7 @@
 #include "LaTeXFeatures.h"
 #include "debug.h"
 
+using lyx::docstring;
 
 using std::string;
 using std::auto_ptr;
@@ -109,7 +110,9 @@ void MathSymbolInset::draw(PainterInfo & pi, int x, int y) const
 		x += static_cast<int>(0.0833*em+0.5);
 
 	FontSetChanger dummy(pi.base, sym_->inset.c_str());
-	pi.draw(x, y - h_, sym_->draw);
+        string const sym = sym_->draw;
+        docstring const dsym(sym.begin(), sym.end());
+	pi.draw(x, y - h_, dsym);
 }
 
 

@@ -15,6 +15,7 @@
 #include "math_streamstr.h"
 #include "math_support.h"
 
+using lyx::docstring;
 
 using std::string;
 using std::auto_ptr;
@@ -40,7 +41,8 @@ void MathStringInset::metrics(MetricsInfo & mi, Dimension & dim) const
 void MathStringInset::draw(PainterInfo & pi, int x, int y) const
 {
 	//lyxerr << "drawing '" << str_ << "' code: " << code_ << endl;
-	pi.draw(x, y, str_);
+        docstring dstr(str_.begin(), str_.end());
+	pi.draw(x, y, dstr);
 }
 
 

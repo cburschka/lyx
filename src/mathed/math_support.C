@@ -27,6 +27,7 @@
 #include <map>
 #include <sstream>
 
+using lyx::docstring;
 using lyx::frontend::Painter;
 
 using std::string;
@@ -403,13 +404,15 @@ void mathed_string_dim(LyXFont const & font, string const & s, Dimension & dim)
 	dim.asc = font_metrics::maxAscent(font);
 	dim.des = font_metrics::maxDescent(font);
 #endif
-	dim.wid = font_metrics::width(s, font);
+        docstring ds(s.begin(), s.end());
+	dim.wid = font_metrics::width(ds, font);
 }
 
 
 int mathed_string_width(LyXFont const & font, string const & s)
 {
-	return font_metrics::width(s, font);
+        docstring ds(s.begin(), s.end());
+	return font_metrics::width(ds, font);
 }
 
 
@@ -487,7 +490,8 @@ void drawStrRed(PainterInfo & pi, int x, int y, string const & str)
 {
 	LyXFont f = pi.base.font;
 	f.setColor(LColor::latex);
-	pi.pain.text(x, y, str, f);
+        docstring dstr(str.begin(), str.end());
+	pi.pain.text(x, y, dstr, f);
 }
 
 
@@ -495,7 +499,8 @@ void drawStrBlack(PainterInfo & pi, int x, int y, string const & str)
 {
 	LyXFont f = pi.base.font;
 	f.setColor(LColor::foreground);
-	pi.pain.text(x, y, str, f);
+        docstring dstr(str.begin(), str.end());
+	pi.pain.text(x, y, dstr, f);
 }
 
 

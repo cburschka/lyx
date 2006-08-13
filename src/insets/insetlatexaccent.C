@@ -24,6 +24,8 @@
 
 #include "support/lstrings.h"
 
+using lyx::char_type;
+using lyx::docstring;
 using lyx::support::contains;
 using lyx::support::trim;
 
@@ -265,7 +267,8 @@ void InsetLatexAccent::metrics(MetricsInfo & mi, Dimension & dim) const
 	} else {
 		dim.asc = font_metrics::maxAscent(font) + 4;
 		dim.des = font_metrics::maxDescent(font) + 4;
-		dim.wid = font_metrics::width(contents, font) + 4;
+		docstring dcon(contents.begin(), contents.end());
+		dim.wid = font_metrics::width(dcon, font) + 4;
 	}
 	dim_ = dim;
 }
@@ -332,7 +335,7 @@ bool InsetLatexAccent::displayISO8859_9(PainterInfo & pi, int x, int y) const
 
 
 void InsetLatexAccent::drawAccent(PainterInfo const & pi, int x, int y,
-	char accent) const
+	char_type accent) const
 {
 	LyXFont const & font = pi.base.font;
 	x -= font_metrics::center(accent, font);
@@ -407,15 +410,18 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 		// now the rest - draw within (x, y, x + wid, y + hg)
 		switch (modtype) {
 		case ACUTE:
-			drawAccent(pi, x2, baseline, '\xB4');
+			//drawAccent(pi, x2, baseline, '\xB4');
+			drawAccent(pi, x2, baseline, 0xB4);
 			break;
 
 		case GRAVE:
-			drawAccent(pi, x2, baseline, '\x60');
+			//drawAccent(pi, x2, baseline, '\x60');
+			drawAccent(pi, x2, baseline, 0x60);
 			break;
 
 		case MACRON:
-			drawAccent(pi, x2, baseline, '\xAF');
+			//drawAccent(pi, x2, baseline, '\xAF');
+			drawAccent(pi, x2, baseline, 0xAF);
 			break;
 
 		case TILDE:
@@ -423,14 +429,14 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 			break;
 
 		case UNDERBAR: {
-			char const underbar('\x5F');
+			char_type const underbar = 0x5F; //('\x5F');
 			pi.pain.text(x2 - font_metrics::center(underbar, font),
 				     baseline, underbar, font);
 			break;
 		}
 
 		case CEDILLA: {
-			char const cedilla('\xB8');
+			char_type const cedilla = 0xB8; //('\xB8');
 			pi.pain.text(x2  - font_metrics::center(cedilla, font),
 				     baseline, cedilla, font);
 			break;
@@ -447,7 +453,8 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 			break;
 
 		case CIRCLE:
-			drawAccent(pi, x2, baseline, '\xB0');
+			//drawAccent(pi, x2, baseline, '\xB0');
+			drawAccent(pi, x2, baseline, 0xB0);
 			break;
 
 		case TIE:
@@ -550,7 +557,8 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 		pi.pain.rectangle(x + 1, baseline - dim_.asc + 1,
 				  dim_.wid - 2, dim_.asc + dim_.des - 2,
 				  LColor::foreground);
-		pi.pain.text(x + 2, baseline, contents, font);
+		docstring dcon(contents.begin(), contents.end());
+		pi.pain.text(x + 2, baseline, dcon, font);
 	}
 }
 

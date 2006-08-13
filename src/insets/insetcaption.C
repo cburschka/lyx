@@ -34,7 +34,7 @@
 
 #include <sstream>
 
-
+using lyx::docstring;
 using lyx::support::bformat;
 
 using std::auto_ptr;
@@ -123,7 +123,8 @@ void InsetCaption::metrics(MetricsInfo & mi, Dimension & dim) const
 	mi.base.textwidth -= 2 * TEXT_TO_INSET_OFFSET;
 	LCursor cur = mi.base.bv->cursor();
 	setLabel(cur);
-	labelwidth_ = font_metrics::width(label, mi.base.font);
+        docstring dlab(label.begin(), label.end());
+	labelwidth_ = font_metrics::width(dlab, mi.base.font);
 	dim.wid = labelwidth_;
 	Dimension textdim;
 	InsetText::metrics(mi, textdim);
@@ -150,9 +151,9 @@ void InsetCaption::draw(PainterInfo & pi, int x, int y) const
 	// belongs to.
 	LCursor cur = pi.base.bv->cursor();
 	setLabel(cur);
-
-	labelwidth_ = font_metrics::width(label, pi.base.font);
-	pi.pain.text(x, y, label, pi.base.font);
+        docstring dlab(label.begin(), label.end());
+	labelwidth_ = font_metrics::width(dlab, pi.base.font);
+	pi.pain.text(x, y, dlab, pi.base.font);
 	InsetText::draw(pi, x + labelwidth_, y);
 	setPosCache(pi, x, y);
 }

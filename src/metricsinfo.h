@@ -87,9 +87,9 @@ public:
 	///
 	PainterInfo(BufferView * bv, lyx::frontend::Painter & pain);
 	///
-	void draw(int x, int y, char c);
+        void draw(int x, int y, lyx::char_type c);
 	///
-	void draw(int x, int y, std::string const & str);
+	void draw(int x, int y, lyx::docstring const & str);
 
 	///
 	MetricsBase base;

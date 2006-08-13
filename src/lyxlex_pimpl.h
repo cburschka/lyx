@@ -14,6 +14,8 @@
 
 #include "lyxlex.h"
 
+#include "support/types.h"
+
 # include <boost/iostreams/filtering_streambuf.hpp>
 # include <boost/iostreams/filter/gzip.hpp>
 # include <boost/iostreams/device/file.hpp>
@@ -33,6 +35,8 @@ public:
 	Pimpl(keyword_item * tab, int num);
 	///
 	std::string const getString() const;
+	///
+	lyx::docstring const getDocString() const;
 	///
 	void printError(std::string const & message) const;
 	///

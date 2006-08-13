@@ -18,6 +18,8 @@
 #include "frontends/font_metrics.h"
 #include "frontends/Painter.h"
 
+using lyx::docstring;
+
 using std::string;
 using std::auto_ptr;
 
@@ -45,10 +47,12 @@ void RenderButton::metrics(MetricsInfo &, Dimension & dim) const
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
 
+        docstring dtext(text_.begin(), text_.end());
+        
 	if (editable_)
-		font_metrics::buttonText(text_, font, dim.wid, dim.asc, dim.des);
+		font_metrics::buttonText(dtext, font, dim.wid, dim.asc, dim.des);
 	else
-		font_metrics::rectText(text_, font, dim.wid, dim.asc, dim.des);
+		font_metrics::rectText(dtext, font, dim.wid, dim.asc, dim.des);
 
 	dim.wid += 4;
 }
@@ -61,10 +65,12 @@ void RenderButton::draw(PainterInfo & pi, int x, int y) const
 	font.setColor(LColor::command);
 	font.decSize();
 
+        docstring dtext(text_.begin(), text_.end());
+        
 	if (editable_) {
-		pi.pain.buttonText(x + 2, y, text_, font);
+		pi.pain.buttonText(x + 2, y, dtext, font);
 	} else {
-		pi.pain.rectText(x + 2, y, text_, font,
+		pi.pain.rectText(x + 2, y, dtext, font,
 				 LColor::commandbg, LColor::commandframe);
 	}
 }

@@ -49,11 +49,10 @@ public:
 	virtual bool isText() const;
 
 	/**
-	 * Return the value of the keysym into the local ISO encoding.
-	 * This converts the LyXKeySym to a 8-bit encoded character.
-	 * This relies on user to use the right encoding.
+	 * Return the value of the keysym into the UCS-4 encoding.
+	 * This converts the LyXKeySym to a 32-bit encoded character.
 	 */
-	virtual char getISOEncoded(std::string const & encoding) const;
+	virtual size_t getUCSEncoded() const;
 
 	/// Return a human-readable version of a key+modifier pair.
 	virtual std::string const print(key_modifier::state mod) const;

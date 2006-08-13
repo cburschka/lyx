@@ -17,6 +17,8 @@
 #ifndef LYXLEX_H
 #define LYXLEX_H
 
+#include "support/types.h"
+
 #include <boost/utility.hpp>
 
 #include <iosfwd>
@@ -99,6 +101,9 @@ public:
 	double getFloat() const;
 	///
 	std::string const getString() const;
+
+	///
+	lyx::docstring const getDocString() const;
 
 	/** Get a long string, ended by the tag `endtag'.
 	    This string can span several lines. The first line
