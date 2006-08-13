@@ -1,0 +1,669 @@
+# vi:filetype=python:expandtab:tabstop=4:shiftwidth=4
+#
+# file scons_utils.py
+#
+# This file is part of LyX, the document processor.
+# Licence details can be found in the file COPYING.
+#
+# \author Bo Peng
+# Full author contact details are available in file CREDITS.
+#
+# This file defines all the utility functions for the
+# scons-based build system of lyx
+#
+
+import os, sys, re, shutil, glob
+from SCons.Util import WhereIs
+
+
+def writeToFile(filename, lines, append = False):
+    " utility function: write or append lines to filename "
+    # create directory if needed
+    dir = os.path.split(filename)[0]
+    if dir != '' and not os.path.isdir(dir):
+        os.makedirs(dir)
+    if append:
+        file = open(filename, 'a')
+    else:
+        file = open(filename, 'w')
+    file.write(lines)
+    file.close()
+
+
+def env_subst(target, source, env):
+    ''' subst variables in source by those in env, and output to target
+        source and target are scons File() objects
+
+        %key% (not key itself) is an indication of substitution
+    '''
+    assert len(target) == 1
+    assert len(source) == 1
+    target_file = file(str(target[0]), "w")
+    source_file = file(str(source[0]), "r")
+
+    contents = source_file.read()
+    for k, v in env.items():
+        try:
+            val = env.subst('$'+k)
+            # temporary fix for the \Resource backslash problem
+            val = val.replace('\\', '/')
+            # multi-line replacement
+            val = val.replace('\n',r'\\n\\\n')
+            contents = re.sub('@'+k+'@', val, contents)
+            contents = re.sub('%'+k+'%', val, contents)
+        except:
+            pass
+    target_file.write(contents + "\n")
+    target_file.close()
+    #st = os.stat(str(source[0]))
+    #os.chmod(str(target[0]), stat.S_IMODE(st[stat.ST_MODE]) | stat.S_IWRITE)
+
+#
+# autoconf tests
+#
+
+def checkPkgConfig(conf, version):
+    ''' Return false if pkg_config does not exist, or is too old '''
+    conf.Message('Checking for pkg-config...')
+    ret = conf.TryAction('pkg-config --atleast-pkgconfig-version=%s' % version)[0]
+    conf.Result(ret)
+    return ret
+
+
+def checkPackage(conf, pkg):
+    ''' check if pkg is under the control of conf '''
+    conf.Message('Checking for package %s...' % pkg)
+    ret = conf.TryAction("pkg-config --print-errors --exists %s" % pkg)[0]
+    conf.Result(ret)
+    return ret
+
+
+def checkMkdirOneArg(conf):
+    check_mkdir_one_arg_source = """
+#include <sys/stat.h>
+int main()
+{
+    mkdir("somedir");
+}
+"""
+    conf.Message('Checking for the number of args for mkdir... ')
+    ret = conf.TryLink(check_mkdir_one_arg_source, '.c') or \
+        conf.TryLink('#include <unistd.h>' + check_mkdir_one_arg_source, '.c') or \
+        conf.TryLink('#include <direct.h>' + check_mkdir_one_arg_source, '.c')
+    if ret:
+        conf.Result('one')
+    else:
+        conf.Result('two')
+    return ret
+
+
+def checkCXXGlobalCstd(conf):
+    ''' Check the use of std::tolower or tolower '''
+    check_global_cstd_source = '''
+#include <cctype>
+using std::tolower;
+int main()
+{
+    return 0;
+}
+'''
+    conf.Message('Check for the use of global cstd... ')
+    ret = conf.TryLink(check_global_cstd_source, '.c')
+    conf.Result(ret)
+    return ret
+
+
+def checkSelectArgType(conf):
+    ''' Adapted from autoconf '''
+    conf.Message('Checking for arg types for select... ')
+    for arg234 in ['fd_set *', 'int *', 'void *']:
+        for arg1 in ['int', 'size_t', 'unsigned long', 'unsigned']:
+            for arg5 in ['struct timeval *', 'const struct timeval *']:
+                check_select_source = '''
+#if HAVE_SYS_SELECT_H
+# include <sys/select.h>
+#endif
+#if HAVE_SYS_SOCKET_H
+# include <sys/socket.h>
+#endif
+extern int select (%s, %s, %s, %s, %s);
+int main()
+{
+    return(0);
+}
+''' % (arg1, arg234, arg234, arg234, arg5)
+                ret = conf.TryLink(check_select_source, '.c')
+                if ret:
+                    conf.Result(ret)
+                    return (arg1, arg234, arg5)
+    conf.Result('no (use default)')
+    return ('int', 'int *', 'struct timeval *')
+
+
+def checkBoostLibraries(conf, libs, lib_paths, inc_paths, version, isDebug):
+    ''' look for boost libraries
+      libs: library names
+      lib_paths: try these paths for boost libraries
+      inc_paths: try these paths for boost headers
+      version:   required boost version
+      isDebug:   if true, use debug libraries
+    '''
+    conf.Message('Checking for boost library %s... ' % ', '.join(libs))
+    found_lib = False
+    found_inc = False
+    lib_names = []
+    lib_path = None
+    inc_path = None
+    for path in lib_paths:
+        # direct form: e.g. libboost_iostreams.a
+        # ignore isDebug
+        if False not in [os.path.isfile(os.path.join(path, 'libboost_%s.a' % lib)) for lib in libs]:
+            conf.Result('yes')
+            found_lib = True
+            lib_path = path
+            lib_names = libs
+            break
+        for lib in libs:
+            # get all the libs, then filter for the right library
+            files = glob.glob(os.path.join(path, 'libboost_%s-*.a' % lib))
+            # check things like libboost_iostreams-gcc-mt-d-1_33_1.a
+            if len(files) > 0:
+                # runtime code includes s,g,y,d,p,n, where we should look for
+                # d,g,y for debug, s,p,n for release
+                if isDebug:
+                    lib_files = filter(lambda x: re.search('libboost_%s-\w+-mt-[^spn]+-%s.a' % (lib, version), x), files)
+                else:
+                    lib_files = filter(lambda x: re.search('libboost_%s-\w+-mt-([^dgy]+-)*%s.a' % (lib, version), x), files)
+                if len(lib_files) == 0:
+                    print 'Warning: Can not find an appropriate boost library in %s.' % path
+                    lib_files = filter(lambda x: re.search('libboost_%s-[\w-]+%s.a' % (lib, version), x), files)
+                    if len(lib_files) > 0:
+                        print 'Use library %s' % lib_files[0]
+                if len(lib_files) > 0:
+                    # get xxx-gcc-1_33_1 from /usr/local/lib/libboost_xxx-gcc-1_33_1.a
+                    lib_names.append(lib_files[0].split(os.sep)[-1][3:-2])
+        if len(lib_names) == len(libs):
+            found_lib = True
+            lib_path = path
+            break
+    if not found_lib:
+        conf.Result('no')
+        return (None, None, None)
+    # check version number in boost/version.hpp
+    def isValidBoostDir(dir):
+        file = os.path.join(dir, 'boost', 'version.hpp')
+        version_string = '#define BOOST_LIB_VERSION "%s"' % version
+        return os.path.isfile(file) and version_string in open(file).read()
+    # check for boost header file
+    for path in inc_paths:
+        if isValidBoostDir(path):
+            inc_path = path
+            found_inc = True
+        else:   # check path/boost_1_xx_x/boost
+            dirs = glob.glob(os.path.join(path, 'boost-*'))
+            if len(dirs) > 0 and isValidBoostDir(dirs[0]):
+                inc_path = dirs[0]
+                found_inc = True
+    # return result
+    if found_inc:
+        conf.Result('yes')
+        return (lib_names, lib_path, inc_path)
+    else:
+        conf.Result('no')
+        return (None, None, None)
+
+
+def checkCommand(conf, cmd):
+    ''' check the existence of a command
+        return full path to the command, or none
+    '''
+    conf.Message('Checking for command %s...' % cmd)
+    res = WhereIs(cmd)
+    conf.Result(res is not None)
+    return res
+
+
+def checkLC_MESSAGES(conf):
+    ''' check the definition of LC_MESSAGES '''
+    check_LC_MESSAGES = '''
+#include <locale.h>
+int main()
+{
+    return LC_MESSAGES;
+}
+'''
+    conf.Message('Check for LC_MESSAGES in locale.h... ')
+    ret = conf.TryLink(check_LC_MESSAGES, '.c')
+    conf.Result(ret)
+    return ret
+
+
+def checkIconvConst(conf):
+    ''' check the declaration of iconv '''
+    check_iconv_const = '''
+#include <stdlib.h>
+#include <iconv.h>
+extern
+#ifdef __cplusplus
+"C"
+#endif
+#if defined(__STDC__) || defined(__cplusplus)
+#ifndef LIBICONV_DLL_EXPORTED
+size_t iconv (iconv_t cd, char * *inbuf, size_t *inbytesleft, char * *outbuf, size_t *outbytesleft);
+#endif
+#else
+size_t iconv();
+#endif
+
+int main()
+{
+    return 1;
+}
+'''
+    conf.Message('Check if the declaration of iconv needs const... ')
+    ret = conf.TryLink(check_iconv_const, '.c')
+    conf.Result(ret)
+    return ret
+
+
+def createConfigFile(conf, config_file,
+    config_pre = '', config_post = '',
+    headers = [], functions = [], types = [], libs = [],
+    custom_tests = [], extra_items = []):
+    ''' create a configuration file, with options
+        config_file: which file to create
+        config_pre: first part of the config file
+        config_post: last part of the config file
+        headers: header files to check, in the form of a list of
+            ('file', 'HAVE_FILE', 'c'/'c++')
+        functions: functions to check, in the form of a list of
+            ('func', 'HAVE_func', 'include lines'/None)
+        types: types to check, in the form of a list of
+            ('type', 'HAVE_TYPE', 'includelines'/None)
+        libs: libraries to check, in the form of a list of
+            ('lib', 'HAVE_LIB', 'LIB_NAME'). HAVE_LIB will be set if 'lib' exists,
+            or any of the libs exists if 'lib' is a list of libs.
+            Optionally, user can provide another key LIB_NAME, that will
+            be set to the detected lib (or None otherwise).
+        custom_tests: extra tests to perform, in the form of a list of
+            (test (True/False), 'key', 'desc', 'true config line', 'false config line')
+            If the last two are ignored, '#define key 1' '/*#undef key */'
+            will be used.
+        extra_items: extra configuration lines, in the form of a list of
+            ('config', 'description')
+    Return:
+        The result of each test, as a dictioanry of
+            res['XXX'] = True/False
+        XXX are keys defined in each argument.
+    '''
+    cont = config_pre + '\n'
+    result = {}
+    # add to this string, in appropriate format
+    def configString(lines, desc=''):
+        text = ''
+        if lines.strip() != '':
+            if desc != '':
+                text += '/* ' + desc + ' */\n'
+            text += lines + '\n\n'
+        return text
+    #
+    # headers
+    for header in headers:
+        description = "Define to 1 if you have the <%s> header file." % header[0]
+        if (header[2] == 'c' and conf.CheckCHeader(header[0])) or \
+            (header[2] == 'cxx' and conf.CheckCXXHeader(header[0])):
+            result[header[1]] = True
+            cont += configString('#define %s 1' % header[1], desc = description)
+        else:
+            result[header[1]] = False
+            cont += configString('/* #undef %s */' % header[1], desc = description)
+    # functions
+    for func in functions:
+        description = "Define to 1 if you have the `%s' function." % func[0]
+        if conf.CheckFunc(func[0], header=func[2]):
+            result[func[1]] = True
+            cont += configString('#define %s 1' % func[1], desc = description)
+        else:
+            result[func[1]] = False
+            cont += configString('/* #undef %s */' % func[1], desc = description)
+    # types
+    for t in types:
+        description = "Define to 1 if you have the `%s' type." % t[0]
+        if conf.CheckType(t[0], includes=t[2]):
+            result[t[1]] = True
+            cont += configString('#define %s 1' % t[1], desc = description)
+        else:
+            result[t[1]] = False
+            cont += configString('/* #undef %s */' % t[1],  desc = description)
+    # libraries
+    for lib in libs:
+        description = "Define to 1 if you have the `%s' library (-l%s)." % (lib[0], lib[0])
+        if type(lib[0]) is type(''):
+            lib_list = [lib[0]]
+        else:
+            lib_list = lib[0]
+        # check if any of the lib exists
+        result[lib[1]] = False
+        # if user want the name of the lib detected
+        if len(lib) == 3:
+            result[lib[2]] = None
+        for ll in lib_list:
+            if conf.CheckLib(ll):
+                result[lib[1]] = True
+                if len(lib) == 3:
+                    result[lib[2]] = ll
+                cont += configString('#define %s 1' % lib[1], desc = description)
+                break
+        # if not found
+        if not result[lib[1]]:
+            cont += configString('/* #undef %s */' % lib[1], desc = description)
+    # custom tests
+    for test in custom_tests:
+        if test[0]:
+            result[test[1]] = True
+            if len(test) == 3:
+                cont += configString('#define %s 1' % test[1], desc = test[2])
+            else:
+                cont += configString(test[3], desc = test[2])
+        else:
+            result[test[1]] = False
+            if len(test) == 3:
+                cont += configString('/* #undef %s */' % test[1], desc = test[2])
+            else:
+                cont += configString(test[4], desc = test[2])
+    # extra items (no key is returned)
+    for item in extra_items:
+        cont += configString(item[0], desc = item[1])
+    # add the last part
+    cont += '\n' + config_post + '\n'
+    # write to file
+    writeToFile(config_file, cont)
+    return result
+
+
+def installCygwinLDScript(path):
+    ''' Install i386pe.x-no-rdata '''
+    ld_script = os.path.join(path, 'i386pe.x-no-rdata')
+    script = open(ld_script, 'w')
+    script.write('''/* specific linker script avoiding .rdata sections, for normal executables
+for a reference see
+http://www.cygwin.com/ml/cygwin/2004-09/msg01101.html
+http://www.cygwin.com/ml/cygwin-apps/2004-09/msg00309.html
+*/
+OUTPUT_FORMAT(pei-i386)
+SEARCH_DIR("/usr/i686-pc-cygwin/lib"); SEARCH_DIR("/usr/lib"); SEARCH_DIR("/usr/lib/w32api");
+ENTRY(_mainCRTStartup)
+SECTIONS
+{
+  .text  __image_base__ + __section_alignment__  :
+  {
+    *(.init)
+    *(.text)
+    *(SORT(.text$*))
+    *(.glue_7t)
+    *(.glue_7)
+    ___CTOR_LIST__ = .; __CTOR_LIST__ = . ;
+			LONG (-1);*(.ctors); *(.ctor); *(SORT(.ctors.*));  LONG (0);
+    ___DTOR_LIST__ = .; __DTOR_LIST__ = . ;
+			LONG (-1); *(.dtors); *(.dtor); *(SORT(.dtors.*));  LONG (0);
+    *(.fini)
+    /* ??? Why is .gcc_exc here?  */
+    *(.gcc_exc)
+    PROVIDE (etext = .);
+    *(.gcc_except_table)
+  }
+  /* The Cygwin32 library uses a section to avoid copying certain data
+    on fork.  This used to be named ".data".  The linker used
+    to include this between __data_start__ and __data_end__, but that
+    breaks building the cygwin32 dll.  Instead, we name the section
+    ".data_cygwin_nocopy" and explictly include it after __data_end__. */
+  .data BLOCK(__section_alignment__) :
+  {
+    __data_start__ = . ;
+    *(.data)
+    *(.data2)
+    *(SORT(.data$*))
+    *(.rdata)
+    *(SORT(.rdata$*))
+    *(.eh_frame)
+    ___RUNTIME_PSEUDO_RELOC_LIST__ = .;
+    __RUNTIME_PSEUDO_RELOC_LIST__ = .;
+    *(.rdata_runtime_pseudo_reloc)
+    ___RUNTIME_PSEUDO_RELOC_LIST_END__ = .;
+    __RUNTIME_PSEUDO_RELOC_LIST_END__ = .;
+    __data_end__ = . ;
+    *(.data_cygwin_nocopy)
+  }
+  .rdata BLOCK(__section_alignment__) :
+  {
+  }
+  .pdata BLOCK(__section_alignment__) :
+  {
+    *(.pdata)
+  }
+  .bss BLOCK(__section_alignment__) :
+  {
+    __bss_start__ = . ;
+    *(.bss)
+    *(COMMON)
+    __bss_end__ = . ;
+  }
+  .edata BLOCK(__section_alignment__) :
+  {
+    *(.edata)
+  }
+  /DISCARD/ :
+  {
+    *(.debug$S)
+    *(.debug$T)
+    *(.debug$F)
+    *(.drectve)
+  }
+  .idata BLOCK(__section_alignment__) :
+  {
+    /* This cannot currently be handled with grouped sections.
+	See pe.em:sort_sections.  */
+    SORT(*)(.idata$2)
+    SORT(*)(.idata$3)
+    /* These zeroes mark the end of the import list.  */
+    LONG (0); LONG (0); LONG (0); LONG (0); LONG (0);
+    SORT(*)(.idata$4)
+    SORT(*)(.idata$5)
+    SORT(*)(.idata$6)
+    SORT(*)(.idata$7)
+  }
+  .CRT BLOCK(__section_alignment__) :
+  {
+    ___crt_xc_start__ = . ;
+    *(SORT(.CRT$XC*))  /* C initialization */
+    ___crt_xc_end__ = . ;
+    ___crt_xi_start__ = . ;
+    *(SORT(.CRT$XI*))  /* C++ initialization */
+    ___crt_xi_end__ = . ;
+    ___crt_xl_start__ = . ;
+    *(SORT(.CRT$XL*))  /* TLS callbacks */
+    /* ___crt_xl_end__ is defined in the TLS Directory support code */
+    ___crt_xp_start__ = . ;
+    *(SORT(.CRT$XP*))  /* Pre-termination */
+    ___crt_xp_end__ = . ;
+    ___crt_xt_start__ = . ;
+    *(SORT(.CRT$XT*))  /* Termination */
+    ___crt_xt_end__ = . ;
+  }
+  .tls BLOCK(__section_alignment__) :
+  {
+    ___tls_start__ = . ;
+    *(.tls)
+    *(.tls$)
+    *(SORT(.tls$*))
+    ___tls_end__ = . ;
+  }
+  .endjunk BLOCK(__section_alignment__) :
+  {
+    /* end is deprecated, don't use it */
+    PROVIDE (end = .);
+    PROVIDE ( _end = .);
+    __end__ = .;
+  }
+  .rsrc BLOCK(__section_alignment__) :
+  {
+    *(.rsrc)
+    *(SORT(.rsrc$*))
+  }
+  .reloc BLOCK(__section_alignment__) :
+  {
+    *(.reloc)
+  }
+  .stab BLOCK(__section_alignment__) (NOLOAD) :
+  {
+    *(.stab)
+  }
+  .stabstr BLOCK(__section_alignment__) (NOLOAD) :
+  {
+    *(.stabstr)
+  }
+  /* DWARF debug sections.
+    Symbols in the DWARF debugging sections are relative to the beginning
+    of the section.  Unlike other targets that fake this by putting the
+    section VMA at 0, the PE format will not allow it.  */
+  /* DWARF 1.1 and DWARF 2.  */
+  .debug_aranges BLOCK(__section_alignment__) (NOLOAD) :
+  {
+    *(.debug_aranges)
+  }
+  .debug_pubnames BLOCK(__section_alignment__) (NOLOAD) :
+  {
+    *(.debug_pubnames)
+  }
+  /* DWARF 2.  */
+  .debug_info BLOCK(__section_alignment__) (NOLOAD) :
+  {
+    *(.debug_info) *(.gnu.linkonce.wi.*)
+  }
+  .debug_abbrev BLOCK(__section_alignment__) (NOLOAD) :
+  {
+    *(.debug_abbrev)
+  }
+  .debug_line BLOCK(__section_alignment__) (NOLOAD) :
+  {
+    *(.debug_line)
+  }
+  .debug_frame BLOCK(__section_alignment__) (NOLOAD) :
+  {
+    *(.debug_frame)
+  }
+  .debug_str BLOCK(__section_alignment__) (NOLOAD) :
+  {
+    *(.debug_str)
+  }
+  .debug_loc BLOCK(__section_alignment__) (NOLOAD) :
+  {
+    *(.debug_loc)
+  }
+  .debug_macinfo BLOCK(__section_alignment__) (NOLOAD) :
+  {
+    *(.debug_macinfo)
+  }
+  /* SGI/MIPS DWARF 2 extensions.  */
+  .debug_weaknames BLOCK(__section_alignment__) (NOLOAD) :
+  {
+    *(.debug_weaknames)
+  }
+  .debug_funcnames BLOCK(__section_alignment__) (NOLOAD) :
+  {
+    *(.debug_funcnames)
+  }
+  .debug_typenames BLOCK(__section_alignment__) (NOLOAD) :
+  {
+    *(.debug_typenames)
+  }
+  .debug_varnames BLOCK(__section_alignment__) (NOLOAD) :
+  {
+    *(.debug_varnames)
+  }
+  /* DWARF 3.  */
+  .debug_ranges BLOCK(__section_alignment__) (NOLOAD) :
+  {
+    *(.debug_ranges)
+  }
+}
+''')
+    script.close()
+    return(ld_script)
+
+
+try:
+    # these will be used under win32
+    import win32file
+    import win32event
+    import win32process
+    import win32security
+except:
+    # does not matter if it fails on other systems
+    pass
+
+
+class loggedSpawn:
+    def __init__(self, env, logfile, longarg, info):
+        # save the spawn system
+        self.env = env
+        self.logfile = logfile
+        # clear the logfile (it may not exist)
+        if logfile != '':
+            # this will overwrite existing content.
+            writeToFile(logfile, info, append=False)
+        #
+        self.longarg = longarg
+        # get hold of the old spawn? (necessary?)
+        self._spawn = env['SPAWN']
+
+    # define new SPAWN
+    def spawn(self, sh, escape, cmd, args, spawnenv):
+        # get command line
+        newargs = ' '.join(map(escape, args[1:]))
+        cmdline = cmd + " " + newargs
+        #
+        # if log is not empty, write to it
+        if self.logfile != '':
+            # this tend to be slow (?) but ensure correct output
+            # Note that cmdline may be long so I do not escape it
+            try:
+                # since this is not an essential operation, proceed if things go wrong here.
+                writeToFile(self.logfile, cmd + " " + ' '.join(args[1:]) + '\n', append=True)
+            except:
+                print "Warning: can not write to log file ", self.logfile
+        #
+        # if the command is not too long, use the old
+        if not self.longarg or len(cmdline) < 8000:
+            exit_code = self._spawn(sh, escape, cmd, args, spawnenv)
+        else:
+            sAttrs = win32security.SECURITY_ATTRIBUTES()
+            StartupInfo = win32process.STARTUPINFO()
+            for var in spawnenv:
+                spawnenv[var] = spawnenv[var].encode('ascii', 'replace')
+            # check for any special operating system commands
+            if cmd == 'del':
+                for arg in args[1:]:
+                    win32file.DeleteFile(arg)
+                exit_code = 0
+            else:
+                # otherwise execute the command.
+                hProcess, hThread, dwPid, dwTid = win32process.CreateProcess(None, cmdline, None, None, 1, 0, spawnenv, None, StartupInfo)
+                win32event.WaitForSingleObject(hProcess, win32event.INFINITE)
+                exit_code = win32process.GetExitCodeProcess(hProcess)
+                win32file.CloseHandle(hProcess);
+                win32file.CloseHandle(hThread);
+        return exit_code
+
+
+def setLoggedSpawn(env, logfile = '', longarg=False, info=''):
+    ''' This function modify env and allow logging of
+        commands to a logfile. If the argument is too long
+        a win32 spawn will be used instead of the system one
+    '''
+    #
+    # create a new spwn object
+    ls = loggedSpawn(env, logfile, longarg, info)
+    # replace the old SPAWN by the new function
+    env['SPAWN'] = ls.spawn
+
