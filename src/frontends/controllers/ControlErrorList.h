@@ -38,12 +38,17 @@ public:
 	/// return the parent document name
 	std::string const & name();
 	///
-	ErrorList const & errorList() const;
+	ErrorList const & errorList();
+	/// return true when the error list has been updated, but 
+	/// \c errorlist() has not been called.
+	bool hasUnreadList() const;
 private:
 	///
 	ErrorList errorlist_;
 	///
 	std::string name_;
+	/// 
+	bool unreadlist_;
 };
 
 } // namespace frontend

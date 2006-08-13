@@ -1,3 +1,11 @@
+2006-08-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* ControlErrorList.h (unreadlist_): new member, tells whether the
+	errorlist has been read by the dialog.
+
+	* ControlErrorList.C (errorList, initialiseParams): update
+	unreadlist_ as needed.
+
 2006-07-04  Bo Peng  <ben.bob@gmail.com>
 
 	* tex_helpers.C (rescanTexStyles): invoke the new TeXFiles.py

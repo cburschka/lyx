@@ -25,7 +25,7 @@ namespace lyx {
 namespace frontend {
 
 ControlErrorList::ControlErrorList(Dialog & d)
-	: Dialog::Controller(d)
+	: Dialog::Controller(d), unreadlist_(true)
 {}
 
 
@@ -33,8 +33,9 @@ void ControlErrorList::clearParams()
 {}
 
 
-ErrorList const & ControlErrorList::errorList() const
+ErrorList const & ControlErrorList::errorList()
 {
+	unreadlist_ = false;
 	return errorlist_;
 }
 
@@ -42,8 +43,15 @@ ErrorList const & ControlErrorList::errorList() const
 bool ControlErrorList::initialiseParams(string const & name)
 {
 	errorlist_ = kernel().bufferview()->getErrorList();
+	unreadlist_ = true;
 	name_ = name;
 	return true;
+}
+
+
+bool ControlErrorList::hasUnreadList() const
+{
+	return unreadlist_;
 }
 
 

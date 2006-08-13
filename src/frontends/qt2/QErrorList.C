@@ -47,6 +47,10 @@ void QErrorList::select(int item)
 
 void QErrorList::update_contents()
 {
+	// is there something to do?
+	if (!controller().hasUnreadList())
+		return;
+
 	setTitle(controller().name());
 	dialog_->errorsLB->clear();
 	dialog_->descriptionTB->setText(QString());

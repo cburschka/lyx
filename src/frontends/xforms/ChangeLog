@@ -1,3 +1,8 @@
+2006-08-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* FormErrorList.C (update): do not call updateContents if the
+	error list has not been updated (bug 2179).
+
 2006-06-27  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* FormSpellchecker.C (update): fix bug 2218: Spellchecker doesn't
