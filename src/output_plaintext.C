@@ -196,7 +196,7 @@ void asciiParagraph(Buffer const & buf,
 	string word;
 
 	for (pos_type i = 0; i < par.size(); ++i) {
-		char c = par.getUChar(buf.params(), i);
+		lyx::char_type c = par.getUChar(buf.params(), i);
 		switch (c) {
 		case Paragraph::META_INSET: {
 			InsetBase const * inset = par.getInset(i);
