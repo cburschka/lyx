@@ -144,6 +144,11 @@ AC_SUBST(AIKSAURUS_LIBS)
 LYX_USE_INCLUDED_BOOST
 
 ### Setup libtool
+dnl Dirty trick ahead: disable libtool checking for a fortran compiler
+dnl see http://permalink.gmane.org/gmane.comp.gnu.libtool.general/6699
+dnl Note that this will reportedly not be needed with libtool 2.0
+m4_undefine([AC_PROG_F77])
+m4_defun([AC_PROG_F77],[])
 AC_DISABLE_SHARED
 AC_LIBTOOL_WIN32_DLL
 #AM_PROG_LIBTOOL
@@ -232,6 +237,12 @@ if echo $prefix |grep ' ' >/dev/null 2>/dev/null ; then
    directory \"`pwd`/installprefix\" instead. Please move its contents to
    the right place after installation.])
   prefix=`pwd`/installprefix
+fi
+
+### We need iconv for unicode support
+AM_ICONV
+if test "$am_cv_func_iconv" = no; then
+  LYX_ERROR([Cannot find required library iconv])
 fi
 
 ### Setup GNU gettext
