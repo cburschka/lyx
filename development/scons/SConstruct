@@ -662,6 +662,18 @@ if not fast_start:
         or (use_vc and not conf.CheckLibWithHeader('zdll', 'zlib.h', 'C')):
         print 'Did not find zdll.lib or zlib.h, exiting!'
         Exit(1)
+    has_iconv = conf.CheckLib('iconv')
+    has_libiconv = conf.CheckLib('libiconv')
+    if has_iconv:
+        env['ICONV_LIB'] = 'iconv'
+    elif has_libiconv:
+        env['ICONV_LIB'] = 'libiconv'
+    else:
+        print 'Did not find iconv or libiconv, exiting!'
+        Exit(1)
+    env_cache['ICONV_LIB'] = env['ICONV_LIB']
+else:
+    env['ICONV_LIB'] = env_cache['ICONV_LIB']
 
 # qt libraries?
 if not fast_start:
@@ -1017,7 +1029,6 @@ int count()
         ],
         libs = [
             ('gdi32', 'HAVE_LIBGDI32'),
-            (('iconv', 'libiconv'), 'HAVE_ICONV', 'ICONV_LIB'),
             (('Aiksaurus', 'libAiksaurus'), 'HAVE_LIBAIKSAURUS', 'AIKSAURUS_LIB'),
         ],
         custom_tests = [
@@ -1034,6 +1045,12 @@ int count()
             (conf.CheckMkdirOneArg(),
                 'MKDIR_TAKES_ONE_ARG',
                 'Define if mkdir takes only one argument.'
+            ),
+            (conf.CheckIconvConst(),
+                'ICONV_CONST',
+                'Define as const if the declaration of iconv() needs const.',
+                '#define ICONV_CONST',
+                '#define ICONV_CONST const',
             ),
             (conf.CheckLC_MESSAGES(),
                 'HAVE_LC_MESSAGES',
@@ -1124,8 +1141,7 @@ int mkstemp(char*);
 
     # these keys are needed in env
     for key in ['USE_ASPELL', 'USE_PSPELL', 'USE_ISPELL', 'HAVE_FCNTL',\
-        'HAVE_ICONV', 'HAVE_LIBGDI32', 'HAVE_LIBAIKSAURUS',
-        'ICONV_LIB', 'AIKSAURUS_LIB']:
+        'HAVE_LIBGDI32', 'HAVE_LIBAIKSAURUS', 'AIKSAURUS_LIB']:
         # USE_ASPELL etc does not go through result
         if result.has_key(key):
             env[key] = result[key]
@@ -1206,7 +1222,6 @@ int mkstemp(char*);
                 ('uintmax_t', 'HAVE_STDINT_H_WITH_UINTMAX', '#include <stdint.h>'),
             ],
             libs = [
-                (('iconv', 'libiconv'), 'HAVE_ICONV', 'ICONV_LIB'),
                 ('c', 'HAVE_LIBC'),
             ],
             custom_tests = [
@@ -1230,12 +1245,15 @@ int mkstemp(char*);
                     "Define to 1 if translation of program messages to the user's native anguage is requested.",
                 ),
             ],
+            extra_items = [
+                ('#define HAVE_ICONV', 'Define if iconv or libiconv is found')
+            ],
             config_post = '#endif'
         )
 
         # these keys are needed in env
         for key in ['HAVE_ASPRINTF', 'HAVE_WPRINTF', 'HAVE_SNPRINTF', \
-            'HAVE_POSIX_PRINTF', 'HAVE_ICONV', 'HAVE_LIBC']:
+            'HAVE_POSIX_PRINTF', 'HAVE_LIBC']:
             # USE_ASPELL etc does not go through result
             if result.has_key(key):
                 env[key] = result[key]
@@ -1250,15 +1268,14 @@ else:
     conf.CheckCHeader('io.h')
     # only a few variables need to be rescanned
     for key in ['USE_ASPELL', 'USE_PSPELL', 'USE_ISPELL', 'HAVE_FCNTL',\
-        'HAVE_ICONV', 'HAVE_LIBGDI32', 'HAVE_LIBAIKSAURUS',
-        'ICONV_LIB', 'AIKSAURUS_LIB']:
+        'HAVE_LIBGDI32', 'HAVE_LIBAIKSAURUS', 'AIKSAURUS_LIB']:
         env[key] = env_cache[key]
     #
     # nls related keys
     if env['nls'] and included_gettext:
         # only a few variables need to be rescanned
         for key in ['HAVE_ASPRINTF', 'HAVE_WPRINTF', 'HAVE_SNPRINTF', \
-            'HAVE_POSIX_PRINTF', 'HAVE_ICONV', 'HAVE_LIBC']:
+            'HAVE_POSIX_PRINTF', 'HAVE_LIBC']:
             env[key] = env_cache[key]
 
 # this looks misplaced, but intl/libintl.h is needed by src/message.C
@@ -1305,18 +1322,17 @@ if platform_name in ['win32', 'cygwin']:
     # the final link step needs stdc++ to succeed under mingw
     # FIXME: shouldn't g++ automatically link to stdc++?
     if use_vc:
-        system_libs = ['shlwapi', 'shell32', 'advapi32', 'zdll']
+        system_libs = [env['ICONV_LIB'], 'shlwapi', 'shell32', 'advapi32', 'zdll']
     else:
-        system_libs = ['shlwapi', 'stdc++', 'z']
+        system_libs = [env['ICONV_LIB'], 'shlwapi', 'stdc++', 'z']
 elif platform_name == 'cygwin' and env['X11']:
-    system_libs = ['GL',  'Xmu', 'Xi', 'Xrender', 'Xrandr', 'Xcursor',
-        'Xft', 'freetype', 'fontconfig', 'Xext', 'X11', 'SM', 'ICE', 'resolv',
-        'pthread', 'z']
+    system_libs = [env['ICONV_LIB'], 'GL',  'Xmu', 'Xi', 'Xrender', 'Xrandr',
+        'Xcursor', 'Xft', 'freetype', 'fontconfig', 'Xext', 'X11', 'SM', 'ICE', 
+        'resolv', 'pthread', 'z']
 else:
-    system_libs = ['z']
+    system_libs = [env['ICONV_LIB'], 'z']
 
 libs = [
-    ('HAVE_ICONV', env['ICONV_LIB']),
     ('HAVE_LIBGDI32', 'gdi32'),
     ('HAVE_LIBAIKSAURUS', env['AIKSAURUS_LIB']),
     ('USE_ASPELL', aspell_lib),
