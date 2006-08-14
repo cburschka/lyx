@@ -407,6 +407,10 @@ bool changeDepthAllowed(LyXText::DEPTH_CHANGE type,
 bool LyXText::changeDepthAllowed(LCursor & cur, DEPTH_CHANGE type) const
 {
 	BOOST_ASSERT(this == cur.text());
+	// this happens when selecting several cells in tabular (bug 2630)
+	if (cur.selBegin().idx() != cur.selEnd().idx())
+		return false;
+
 	pit_type const beg = cur.selBegin().pit();
 	pit_type const end = cur.selEnd().pit() + 1;
 	int max_depth = (beg != 0 ? pars_[beg - 1].getMaxDepthAfter() : 0);
