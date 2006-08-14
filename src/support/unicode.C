@@ -16,6 +16,10 @@
 
 #include "debug.h"
 
+#include <boost/cstdint.hpp>
+
+#include <iconv.h>
+
 #include <cerrno>
 #include <iomanip>
 #include <string>
@@ -45,7 +49,7 @@ iconv_convert(std::string const & tocode, std::string const & fromcode,
 		}
 	}
 
-	char * inbuf = const_cast<char *>(&buf[0]);
+	char ICONV_CONST * inbuf = const_cast<char ICONV_CONST *>(&buf[0]);
 	size_t inbytesleft = buf.size();
 	char out[1000] = { 0 };
 	char * outbuf = out;
@@ -108,7 +112,7 @@ std::vector<boost::uint32_t> bytes_to_ucs4(std::vector<char> const & bytes)
 {
 	//lyxerr << "Outbuf =" << std::hex;
 
-	std::vector<uint32_t> ucs4;
+	std::vector<boost::uint32_t> ucs4;
 	for (size_t i = 0; i < bytes.size(); i += 4) {
 		unsigned char const b1 = bytes[i    ];
 		unsigned char const b2 = bytes[i + 1];
