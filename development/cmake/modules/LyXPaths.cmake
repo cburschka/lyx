@@ -1,10 +1,13 @@
 if(WIN32)
 
+find_package(GNUWIN32 REQUIRED)
+
 file(TO_CMAKE_PATH "$ENV{PROGRAMFILES}" _prog_path)
 
 set(_zlib_path ${_prog_path}/zlib)
 set(_iconv_path ${_prog_path}/iconv)
-set(_gnuwin32_dir ${_prog_path}/gnuwin32)
+
+set(_gnuwin32_dir ${GNUWIN32_DIR})
 
 set(CMAKE_INCLUDE_PATH ${CMAKE_INCLUDE_PATH} 
 	${_gnuwin32_dir}/include
