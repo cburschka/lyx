@@ -93,6 +93,12 @@
 #cmakedefine HAVE_ASPELL_ASPELL_H 1
 #cmakedefine HAVE_ASPELL_H 1
 
+#cmakedefine HAVE_ICONV_CONST 1
+#ifdef HAVE_ICONV_CONST
+#define ICONV_CONST const
+#else
+#define ICONV_CONST
+#endif
 
 #cmakedefine PACKAGE "${PACKAGE}"
 #cmakedefine PACKAGE_VERSION ${PACKAGE_VERSION}
