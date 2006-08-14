@@ -1,3 +1,8 @@
+2006-08-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* text2.C (changeDepthAllowed): exit early when selection spans
+	several cells (bug 2630)
+
 2006-08-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* dociterator.C (forwardPosNoDescend): when at the end of the

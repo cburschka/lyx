@@ -60,6 +60,8 @@ What's new
 - Fix crash on save (including dataloss) when the backup directory 
   was invalid or not writeable(bug 2740).
 
+- Fix crash when selecting several cells in a tabular (bug 2630).
+
 - Fix lockup when accepting a change in a text inset (bug 2510).
 
 - Fix editing of document while Error List dialog is open (bug 2179).
