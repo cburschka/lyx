@@ -73,16 +73,6 @@ LYX_ERROR([Cannot find $1. Please check that the $2 library
 dnl Usage: LYX_CHECK_ERRORS  Displays a warning message if a LYX_ERROR
 dnl   has occured previously.
 AC_DEFUN([LYX_CHECK_ERRORS],[
-if test x$lyx_error = xyes; then
-cat <<EOF
-**** The following problems have been detected by configure.
-**** Please check the messages below before running 'make'.
-**** (see the section 'Problems' in the INSTALL file)
-$lyx_error_txt
-$lyx_warning_txt
-EOF
-else
-
 if test x$lyx_warning = xyes; then
 cat <<EOF
 === The following minor problems have been detected by configure.
@@ -91,6 +81,17 @@ cat <<EOF
 $lyx_warning_txt
 EOF
 fi
+if test x$lyx_error = xyes; then
+cat <<EOF
+**** The following problems have been detected by configure.
+**** Please check the messages below before running 'make'.
+**** (see the section 'Problems' in the INSTALL file)
+$lyx_error_txt
+$lyx_warning_txt
+EOF
+exit 1
+else
+
 cat <<EOF
 Configuration of LyX was successful.
 Type 'make' to compile the program,
