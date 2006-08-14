@@ -96,6 +96,7 @@ src_support_header_files = Split('''
     copied_ptr.h
     cow_ptr.h
     debugstream.h
+    docstring.h
     environment.h
     filefilterlist.h
     filename.h
@@ -121,8 +122,8 @@ src_support_header_files = Split('''
     textutils.h
     translator.h
     types.h
-    userinfo.h
     unicode.h
+    userinfo.h
 ''')
 
 
@@ -153,9 +154,9 @@ src_support_files = Split('''
     socktools.C
     systemcall.C
     tempname.C
+    unicode.C
     unlink.C
     userinfo.C
-    unicode.C
 ''')
 
 
