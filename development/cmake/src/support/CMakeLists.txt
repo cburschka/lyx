@@ -14,7 +14,7 @@ list(REMOVE_ITEM support_sources
 	${TOP_SRC_DIR}/src/support/strerror.c)
 	
 
-include_directories(${TOP_SRC_DIR}/src/support)
+include_directories(${TOP_SRC_DIR}/src/support ${ICONV_INCLUDE_DIR})
 
 add_library(support STATIC 
 	${support_sources} 
