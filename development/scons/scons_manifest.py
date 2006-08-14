@@ -122,6 +122,7 @@ src_support_header_files = Split('''
     translator.h
     types.h
     userinfo.h
+    unicode.h
 ''')
 
 
@@ -154,6 +155,7 @@ src_support_files = Split('''
     tempname.C
     unlink.C
     userinfo.C
+    unicode.C
 ''')
 
 

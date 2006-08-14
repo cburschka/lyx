@@ -1787,7 +1787,7 @@ if build_qt4:
     # Compile resources
     #
     resources = [qt4env.Uic4(x.split('.')[0]) for x in \
-        src_frontends_qt4_ui_files]
+        ["$BUILDDIR/common/frontends/qt4/ui/%s" % x for x in src_frontends_qt4_ui_files]]
 
     #
     # moc qt4_moc_files, the moced files are included in the original files
