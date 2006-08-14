@@ -46,14 +46,13 @@ protected Q_SLOTS:
 	void showLevel(int);
 
 private:
-	void unselectPreviousItem();
+	void selectItem(int font, int character, bool select);
 	void setupPanel(QListWidget * lw, QString panelname, std::string fname);
-	void selectBullet(int level);
 
 	/// store results
 	boost::array<Bullet, 4> bullets_;
 	int current_font_;
-	QListWidgetItem * current_item_;
+	int current_char_;
 };
 
 #endif // BULLETSMODULE_H

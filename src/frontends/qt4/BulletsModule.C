@@ -30,6 +30,8 @@ BulletsModule::BulletsModule(QWidget * , char const * , Qt::WFlags)
 	for (int iter = 0; iter < 4; ++iter) {
 		bullets_[iter] = ITEMIZE_DEFAULTS[iter];
 	}
+	current_font_ = -1;
+	current_char_ = 0;
 
 	// add levels
 	levelLW->addItem("1");
@@ -83,8 +85,7 @@ void BulletsModule::setupPanel(QListWidget * lw, QString panelname, std::string 
 	for (int row = 0; row < 6; ++row) {
 		for (int col = 0; col < 6; ++col) {
 			QPixmap small(w,h);
-			// FIXME: how to get the good color?
-			small.fill(QColor(Qt::white));
+			small.fill();
 			bitBlt(&small, 0, 0, &pixmap, col * w, row * h,	w, h);
 			new QListWidgetItem(QIcon(small), "" , lw, (6*row + col));
 		}
@@ -97,35 +98,23 @@ void BulletsModule::setupPanel(QListWidget * lw, QString panelname, std::string 
 
 void BulletsModule::showLevel(int level)
 {
-	unselectPreviousItem();
+	// unselect previous item
+	selectItem(current_font_, current_char_, false);
+
 	current_font_ = bullets_[level].getFont();
 
 	if (bullets_[level].getFont()<0) {
 		customCB->setCheckState(Qt::Checked);
 		customLE->setText(toqstr(bullets_[level].getText()));
 	} else {
-		selectBullet(level);
 		customCB->setCheckState(Qt::Unchecked);
 		customLE->clear();
+		current_char_ = bullets_[level].getCharacter();
+		selectItem(current_font_, current_char_, true);
 		bulletpaneCO->setCurrentIndex(current_font_);
 		bulletpaneSW->setCurrentIndex(current_font_);
 	}
 	bulletsizeCO->setCurrentIndex(bullets_[level].getSize() + 1);
-}
-
-
-void BulletsModule::selectBullet(int level)
-{
-	int const bullet = bullets_[level].getCharacter();
-	QListWidget * lw = static_cast<QListWidget *>(bulletpaneSW->widget(current_font_));
-	// get all items (FIXME: is there a better way? this looks too complicated)
-	QList<QListWidgetItem *> items = lw->findItems("", Qt::MatchContains);
-	for (int i = 0 ; i < items.size() ; ++i) {
-		if (items.at(i)->type() == bullet) {
-			current_item_ = items.at(i);
-			lw->setItemSelected(current_item_, true);
-		}
-	}
 }
 
 
@@ -138,23 +127,15 @@ void BulletsModule::init()
 
 void BulletsModule::bulletSelected(QListWidgetItem * item, QListWidgetItem *)
 {
-	unselectPreviousItem();
+	// unselect previous item
+	selectItem(current_font_, current_char_, false);
+
 	int const level = levelLW->currentRow();
 	bullets_[level].setCharacter(item->type());
 	bullets_[level].setFont(bulletpaneCO->currentIndex());
 	current_font_ = bulletpaneCO->currentIndex();
-	current_item_ = item;
+	current_char_ = item->type();
 	changed();
-}
-
-
-void BulletsModule::unselectPreviousItem()
-{
-	if (current_font_<0)
-		return;
-
-	QListWidget * lw = static_cast<QListWidget *>(bulletpaneSW->widget(current_font_));
-	lw->setItemSelected(current_item_, false);
 }
 
 
@@ -166,9 +147,20 @@ void BulletsModule::on_customCB_toggled(bool custom)
 		return;
 	}
 		
-	unselectPreviousItem();
+	// unselect previous item
+	selectItem(current_font_, current_char_, false);
 	current_font_ = -1;
 	changed();
+}
+
+
+void BulletsModule::selectItem(int font, int character, bool select)
+{
+	if (font<0)
+		return;
+
+	QListWidget * lw = static_cast<QListWidget *>(bulletpaneSW->widget(font));
+	lw->setItemSelected(lw->item(character), select);
 }
 
 
