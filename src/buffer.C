@@ -1703,9 +1703,10 @@ void Buffer::getSourceCode(ostream & os, lyx::pit_type par_begin, lyx::pit_type 
 
 ErrorList const & Buffer::errorList(string const & type) const
 {
+	static ErrorList const emptyErrorList;
 	std::map<std::string, ErrorList>::const_iterator I = errorLists_.find(type);
 	if (I == errorLists_.end())
-		return emptyErrorList_;
+		return emptyErrorList;
 
 	return I->second;
 }
@@ -1713,11 +1714,5 @@ ErrorList const & Buffer::errorList(string const & type) const
 
 ErrorList & Buffer::errorList(string const & type)
 {
-	std::map<std::string, ErrorList>::iterator I = errorLists_.find(type);
-	if (I == errorLists_.end()) {
-		errorLists_[type] = emptyErrorList_;
-		return errorLists_[type];
-	}
-
-	return I->second;
+	return errorLists_[type];
 }

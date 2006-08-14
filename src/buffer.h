@@ -387,9 +387,6 @@ private:
 
 	/// Container for all sort of Buffer dependant errors.
 	std::map<std::string, ErrorList> errorLists_;
-
-	/// Empty Error List
-	ErrorList const emptyErrorList_;
 };
 
 #endif
