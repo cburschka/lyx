@@ -63,7 +63,6 @@
 #cmakedefine HAVE_STRCASECMP 1
 #cmakedefine HAVE_STRDUP 1
 #cmakedefine HAVE_STRTOUL 1
-#cmakedefine HAVE_ALLOCA 1
 #cmakedefine HAVE___FSETLOCKING 1
 #cmakedefine HAVE_MEMPCPY 1
 #cmakedefine HAVE___ARGZ_COUNT 1
@@ -84,6 +83,12 @@
 #cmakedefine HAVE_LC_MESSAGES 1    
 #cmakedefine HAVE_SSTREAM 1
 #cmakedefine HAVE_ARGZ_H 1
+
+#cmakedefine HAVE_ALLOCA 1
+#cmakedefine HAVE_SYMBOL_ALLOCA 1
+#if defined(HAVE_SYMBOL_ALLOCA) && !defined(HAVE_ALLOCA)
+#define HAVE_ALLOCA
+#endif
 
 #cmakedefine HAVE_ASPELL_ASPELL_H 1
 #cmakedefine HAVE_ASPELL_H 1
