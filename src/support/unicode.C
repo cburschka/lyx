@@ -16,8 +16,6 @@
 
 #include "debug.h"
 
-#include <boost/cstdint.hpp>
-
 #include <iconv.h>
 
 #include <cerrno>
