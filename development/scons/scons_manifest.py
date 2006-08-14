@@ -2633,7 +2633,7 @@ lib_doc_files = Split('''
 lib_lyx2lyx_files = Split('''
     lyx2lyx
     lyx2lyx_lang.py
-    generate_enconding_info.py
+    generate_encoding_info.py
     parser_tools.py
     LyX.py
     lyx_0_06.py
