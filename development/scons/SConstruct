@@ -1049,8 +1049,8 @@ int count()
             (conf.CheckIconvConst(),
                 'ICONV_CONST',
                 'Define as const if the declaration of iconv() needs const.',
-                '#define ICONV_CONST',
                 '#define ICONV_CONST const',
+                '#define ICONV_CONST',
             ),
             (conf.CheckLC_MESSAGES(),
                 'HAVE_LC_MESSAGES',
@@ -1232,8 +1232,8 @@ int mkstemp(char*);
                 (conf.CheckIconvConst(),
                     'ICONV_CONST',
                     'Define as const if the declaration of iconv() needs const.',
-                    '#define ICONV_CONST',
                     '#define ICONV_CONST const',
+                    '#define ICONV_CONST',
                 ),
                 (conf.CheckType('intmax_t', includes='#include <stdint.h>') or \
                 conf.CheckType('intmax_t', includes='#include <inttypes.h>'),
@@ -1246,7 +1246,7 @@ int mkstemp(char*);
                 ),
             ],
             extra_items = [
-                ('#define HAVE_ICONV', 'Define if iconv or libiconv is found')
+                ('#define HAVE_ICONV 1', 'Define if iconv or libiconv is found')
             ],
             config_post = '#endif'
         )

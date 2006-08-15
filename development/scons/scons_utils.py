@@ -241,23 +241,12 @@ int main()
 def checkIconvConst(conf):
     ''' check the declaration of iconv '''
     check_iconv_const = '''
-#include <stdlib.h>
 #include <iconv.h>
-extern
-#ifdef __cplusplus
-"C"
-#endif
-#if defined(__STDC__) || defined(__cplusplus)
-#ifndef LIBICONV_DLL_EXPORTED
-size_t iconv (iconv_t cd, char * *inbuf, size_t *inbytesleft, char * *outbuf, size_t *outbytesleft);
-#endif
-#else
-size_t iconv();
-#endif
-
-int main()
-{
-    return 1;
+// this declaration will fail when there already exists a non const char** 
+// version which returns size_t
+double iconv(iconv_t cd,  char **inbuf, size_t *inbytesleft, char **outbuf, size_t *outbytesleft);
+int main() {
+    return 0; 
 }
 '''
     conf.Message('Check if the declaration of iconv needs const... ')
