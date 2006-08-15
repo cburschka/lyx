@@ -73,7 +73,7 @@ format_relation = [("0_06",    [200], generate_minor_versions("0.6" , 4)),
                    ("1_2",     [220], generate_minor_versions("1.2" , 4)),
                    ("1_3",     [221], generate_minor_versions("1.3" , 7)),
                    ("1_4", range(222,246), generate_minor_versions("1.4" , 3)),
-                   ("1_5", range(246,249), generate_minor_versions("1.5" , 0))]
+                   ("1_5", range(246,250), generate_minor_versions("1.5" , 0))]
 
 
 def formats_list():
@@ -108,7 +108,9 @@ def trim_eol(line):
         return line[:-1]
 
 
-def get_encoding(language, inputencoding):
+def get_encoding(language, inputencoding, format):
+    if format > 248:
+        return "utf8"
     from lyx2lyx_lang import lang
     if inputencoding == "auto":        
         return lang[language][3]
@@ -224,7 +226,7 @@ class LyX_Base:
         self.format  = self.read_format()
         self.language = get_value(self.header, "\\language", 0, default = "english")
         self.inputencoding = get_value(self.header, "\\inputencoding", 0, default = "auto")
-        self.encoding = get_encoding(self.language, self.inputencoding)
+        self.encoding = get_encoding(self.language, self.inputencoding, self.format)
         self.initial_version = self.read_version()
 
         # Second pass over header and preamble, now we know the file encoding
@@ -246,7 +248,7 @@ class LyX_Base:
         self.set_version()
         self.set_format()
         if self.encoding == "auto":
-            self.encoding = get_encoding(self.language, self.encoding)
+            self.encoding = get_encoding(self.language, self.encoding, self.format)
 
         if self.preamble:
             i = find_token(self.header, '\\textclass', 0) + 1

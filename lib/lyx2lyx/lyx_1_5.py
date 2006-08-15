@@ -21,6 +21,7 @@
 
 import re
 from parser_tools import find_token, find_token_exact, find_tokens, find_end_of, get_value
+from LyX import get_encoding
 
 
 ####################################################################
@@ -217,13 +218,18 @@ def revert_booktabs(document):
 
 
 def convert_utf8(document):
+    document.encoding = "utf8"
+
+
+def revert_utf8(document):
     i = find_token(document.header, "\\inputencoding", 0)
     if i == -1:
-        document.header.append("\\inputencoding utf-8")
-    else:
-        document.header[i] = "\\inputencoding utf-8"
-    document.inputencoding = "utf-8"
-    document.encoding = "utf-8"
+        document.header.append("\\inputencoding auto")
+    elif get_value(document.header, "\\inputencoding", i) == "utf8":
+        document.header[i] = "\\inputencoding auto"
+    document.inputencoding = get_value(document.header, "\\inputencoding", 0)
+    document.encoding = get_encoding(document.language, document.inputencoding, 248)
+
 
 ##
 # Conversion hub
@@ -232,11 +238,11 @@ def convert_utf8(document):
 supported_versions = ["1.5.0","1.5"]
 convert = [[246, []],
            [247, [convert_font_settings]],
-           [248, []]
-           # ,[xxx, [convert_utf8]] uncomment to support convertion to utf-8
-          ]
+           [248, []],
+           [249, [convert_utf8]]]
 
-revert =  [[247, [revert_booktabs]],
+revert =  [[248, [revert_utf8]],
+           [247, [revert_booktabs]],
            [246, [revert_font_settings]],
            [245, [revert_framed]]]
 

@@ -1,6 +1,21 @@
 LyX file-format changes
 -----------------------
 
+2006-08-14  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* format incremented to 249: Unicode
+
+	LyX documents are now always encoded in utf8. The value of
+	\inputencoding does now only determine the encoding of the created
+	LaTeX file.
+	Up to format 248 the value of \inputencoding did also determine the
+	encoding of the LyX file:
+
+	\inputencoding       LyX file encoding
+	auto                 as determined by the document language
+	default              latin1
+	everything else      as determined by \inputencoding
+
 2006-07-03  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* format incremented to 248: Basic booktabs support

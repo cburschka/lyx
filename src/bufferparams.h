@@ -175,7 +175,15 @@ public:
 	/// BranchList:
 	BranchList & branchlist();
 	BranchList const & branchlist() const;
-	///
+	/**
+	 * The input encoding for LaTeX. This can be one of
+	 * - auto: find out the input encoding from the used languages
+	 * - default: Don't load the inputenc package and hope that it will
+	 *   work (unlikely)
+	 * - any encoding supported by the inputenc package
+	 * The encoding of the LyX file is always utf8 and has nothing to
+	 * do with this setting.
+	 */
 	std::string inputenc;
 	///
 	std::string preamble;
