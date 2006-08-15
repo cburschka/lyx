@@ -249,7 +249,20 @@ int InsetNote::latex(Buffer const & buf, ostream & os,
 	ostringstream ss;
 	ss << "%\n\\begin{" << type << "}\n";
 	InsetText::latex(buf, ss, runparams);
-	ss << "%\n\\end{" << type << "}\n";
+	ss << "\n\\end{" << type << "}\n";
+	// the space after the comment in 'a[comment] b' will be eaten by the
+	// comment environment since the space before b is ignored with the
+	// following latex output:
+	//
+	// a%
+	// \begin{comment}
+	// comment
+	// \end{comment}
+	//  b
+	//
+	// Adding {} before ' b' fixes this.
+	if (params_.type == InsetNoteParams::Comment)
+		ss << "{}";
 
 	string const str = ss.str();
 	os << str;
