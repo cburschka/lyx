@@ -41,7 +41,8 @@ QSetBorder::QSetBorder(QWidget * parent, char const * name, Qt::WFlags fl)
 void QSetBorder::paintEvent(QPaintEvent * e)
 {
 	QWidget::paintEvent(e);
-	bitBlt(this, 0, 0, &buffer, 0, 0, width(), height());
+	QPainter painter(this);
+	painter.drawPixmap(0, 0, buffer);
 }
 
 

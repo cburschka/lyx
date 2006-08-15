@@ -16,6 +16,7 @@
 #include "support/filetools.h"
 
 #include <QPixmap>
+#include <QPainter>
 
 #include <boost/assert.hpp>
 
@@ -86,7 +87,8 @@ void BulletsModule::setupPanel(QListWidget * lw, QString panelname, std::string 
 		for (int col = 0; col < 6; ++col) {
 			QPixmap small(w,h);
 			small.fill();
-			bitBlt(&small, 0, 0, &pixmap, col * w, row * h,	w, h);
+			QPainter painter(&small);
+			painter.drawPixmap(small.rect(), pixmap, QRect(col * w, row * h, w, h));
 			new QListWidgetItem(QIcon(small), "" , lw, (6*row + col));
 		}
 	}
