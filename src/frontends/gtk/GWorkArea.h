@@ -82,6 +82,12 @@ public:
 	/// a selection exists
 	virtual void haveSelection(bool);
 	void inputCommit(gchar * str);
+
+	LyXView & view()
+	{
+		return view_;
+	}
+
 private:
 	bool onExpose(GdkEventExpose * event);
 	bool onConfigure(GdkEventConfigure * event);

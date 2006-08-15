@@ -117,8 +117,8 @@ SyntheticMouseEvent::SyntheticMouseEvent()
 {}
 
 
-GuiWorkArea::GuiWorkArea(int w, int h, QWidget * parent, BufferView * buffer_view)
-: QAbstractScrollArea(parent), WorkArea(buffer_view), painter_(this)
+GuiWorkArea::GuiWorkArea(int w, int h, LyXView & lyx_view)
+: WorkArea(lyx_view), painter_(this)
 {
 	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -137,7 +137,6 @@ GuiWorkArea::GuiWorkArea(int w, int h, QWidget * parent, BufferView * buffer_vie
 	viewport()->setCursor(Qt::IBeamCursor);
 
 	resize(w, h);
-	show();
 	workWidth_ = w;
 	workHeight_ = h;
 
@@ -197,18 +196,7 @@ void GuiWorkArea::setScrollbarParams(int h, int scroll_pos, int scroll_line_step
 
 void GuiWorkArea::adjustViewWithScrollBar(int)
 {
-	/*
-	lyxerr[Debug::GUI] << BOOST_CURRENT_FUNCTION
-		<< " verticalScrollBar val=" << verticalScrollBar()->value()
-		<< " verticalScrollBar pos=" << verticalScrollBar()->sliderPosition()
-		<< " min=" << verticalScrollBar()->minimum()
-		<< " max=" << verticalScrollBar()->maximum()
-		<< " pagestep=" << verticalScrollBar()->pageStep()
-		<< " linestep=" << verticalScrollBar()->lineStep()
-		<< endl;
-	*/
-	buffer_view_->scrollDocView(verticalScrollBar()->sliderPosition());
-	redraw();
+	scrollBufferView(verticalScrollBar()->sliderPosition());
 }
 
 

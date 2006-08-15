@@ -37,6 +37,7 @@ int const CursorShape = CursorShape;
 
 class BufferView;
 class FuncRequest;
+class LyXView;
 
 namespace lyx {
 namespace frontend {
@@ -62,7 +63,7 @@ enum CursorShape {
  */
 class WorkArea {
 public:
-	WorkArea(BufferView * buffer_view = 0);
+	WorkArea(LyXView & lyx_view);
 
 	virtual ~WorkArea() {}
 
@@ -109,11 +110,13 @@ public:
 	/// FIXME: This is public because of qt3 and gtk, should be protected
 	void dispatch(FuncRequest const & cmd0);
 
-protected:
-	///
+	/// FIXME: This is public because of qt3 and gtk, should be protected
 	void resizeBufferView();
 
+	/// FIXME: This is public because of qt3 and gtk, should be protected
+	void scrollBufferView(int position);
 
+protected:
 	/// hide the visible cursor, if it is visible
 	void hideCursor();
 
@@ -131,6 +134,9 @@ protected:
 
 	///
 	BufferView * buffer_view_;
+
+	///
+	LyXView & lyx_view_;
 
 private:
 	///

@@ -182,9 +182,6 @@ public:
 	///
 	void workAreaResize(int width, int height);
 
-	/// Receive a keypress
-	void workAreaKeyPress(LyXKeySymPtr key, key_modifier::state state);
-
 	/// a function should be executed from the workarea
 	bool workAreaDispatch(FuncRequest const & ev);
 

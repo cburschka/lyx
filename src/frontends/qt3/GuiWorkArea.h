@@ -30,7 +30,7 @@ typedef QWorkArea FWorkArea;
 class GuiWorkArea: public lyx::frontend::WorkArea {
 public:
 	GuiWorkArea(FScreen * screen, FWorkArea * work_area)
-		: old_screen_(screen), old_work_area_(work_area)
+		: WorkArea(work_area->view()), old_screen_(screen), old_work_area_(work_area)
 	{
 	}
 

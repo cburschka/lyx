@@ -169,10 +169,8 @@ void QContentPane::generateSyntheticMouseEvent()
 
 void QContentPane::scrollBarChanged(int val)
 {
-	if (track_scrollbar_) {
-		wa_->view().view()->scrollDocView(val);
-		wa_->view().workArea()->redraw();
-	}
+	if (track_scrollbar_)
+		wa_->view().workArea()->scrollBufferView(val);
 }
 
 
@@ -340,7 +338,7 @@ void QContentPane::resizeEvent(QResizeEvent *)
 	}
 
 	pixmap_->resize(width(), height());
-	wa_->view().view()->workAreaResize(width(), height());
+	wa_->view().workArea()->resizeBufferView();
 }
 
 
@@ -350,7 +348,7 @@ void QContentPane::paintEvent(QPaintEvent * e)
 
 	if (!pixmap_.get()) {
 		pixmap_.reset(new QPixmap(width(), height()));
-		buffer_view_->workAreaResize(width(), height());
+		wa_->view().workArea()->resizeBufferView();
 		return;
 	}
 

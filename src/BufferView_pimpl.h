@@ -69,8 +69,6 @@ public:
 	/// Wheel mouse scroll, move by multiples of text->defaultRowHeight().
 	void scroll(int lines);
 	///
-	void workAreaKeyPress(LyXKeySymPtr key, key_modifier::state state);
-	///
 	void selectionRequested();
 	///
 	void selectionLost();
@@ -96,9 +94,6 @@ public:
 	FuncStatus getStatus(FuncRequest const & cmd);
 	/// a function should be executed
 	bool dispatch(FuncRequest const & ev);
-
-	/// the frontend
-	lyx::frontend::Gui & gui() const;
 
 	/// Width and height of the BufferView in Pixels
 	/**

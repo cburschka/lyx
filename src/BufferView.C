@@ -232,12 +232,6 @@ void BufferView::workAreaResize(int width, int height)
 }
 
 
-void BufferView::workAreaKeyPress(LyXKeySymPtr key, key_modifier::state state)
-{
-	pimpl_->workAreaKeyPress(key, state);
-}
-
-
 bool BufferView::workAreaDispatch(FuncRequest const & ev)
 {
 	return pimpl_->workAreaDispatch(ev);

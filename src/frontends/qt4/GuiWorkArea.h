@@ -101,7 +101,7 @@ class GuiWorkArea: public QAbstractScrollArea, public WorkArea {
 
 public:
 
-	GuiWorkArea(int width, int height, QWidget * parent, BufferView * buffer_view = 0);
+	GuiWorkArea(int width, int height, LyXView & lyx_view);
 
 	virtual ~GuiWorkArea();
 	/// return the width of the content pane

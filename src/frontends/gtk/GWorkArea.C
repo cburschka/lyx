@@ -376,8 +376,7 @@ void GWorkArea::onScroll()
 	adjusting_ = true;
 
 	double val = vscrollbar_.get_adjustment()->get_value();
-	view_.view()->scrollDocView(static_cast<int>(val));
-	view_.workArea()->redraw();
+	view_.workArea()->scrollBufferView(static_cast<int>(val));
 	adjusting_ = false;
 }
 

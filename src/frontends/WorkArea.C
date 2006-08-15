@@ -16,7 +16,9 @@
 #include "WorkArea.h"
 
 #include "font_metrics.h"
+#include "funcrequest.h"
 #include "lyx_gui.h"
+#include "lyxfunc.h"
 #include "Painter.h"
 
 #include "BufferView.h"
@@ -31,6 +33,7 @@
 #include "lyxrc.h"
 #include "lyxrow.h"
 #include "lyxtext.h"
+#include "LyXView.h"
 #include "metricsinfo.h"
 #include "paragraph.h"
 #include "rowpainter.h"
@@ -135,8 +138,8 @@ boost::signals::connection timecon;
 
 } // anon namespace
 
-WorkArea::WorkArea(BufferView * buffer_view)
-	:  buffer_view_(buffer_view), greyed_out_(true),
+WorkArea::WorkArea(LyXView & lyx_view)
+	:  buffer_view_(0), lyx_view_(lyx_view), greyed_out_(true),
 	cursor_visible_(false), cursor_timeout_(400)
 {
 	// Start loading the pixmap as soon as possible
@@ -211,7 +214,7 @@ void WorkArea::processKeySym(LyXKeySymPtr key,
 							 key_modifier::state state)
 {
 	hideCursor();
-	buffer_view_->workAreaKeyPress(key, state);
+	lyx_view_.getLyXFunc().processKeySym(key, state);
 
 	/* This is perhaps a bit of a hack. When we move
 	 * around, or type, it's nice to be able to see
@@ -222,7 +225,7 @@ void WorkArea::processKeySym(LyXKeySymPtr key,
 	 */
 //	if (buffer_view_->available())
 	toggleCursor();
-
+	
 	// uneeded "redraw()" call commented out for now.
 	// When/if the call to LyXView::redrawWorkArea() in "lyxfunc.C:1610"
 	// is not needed anymore, this line should be uncommented out
@@ -232,7 +235,25 @@ void WorkArea::processKeySym(LyXKeySymPtr key,
 
 void WorkArea::dispatch(FuncRequest const & cmd0)
 {
+	// Handle drag&drop
+	if (cmd0.action == LFUN_FILE_OPEN) {
+		lyx_view_.dispatch(cmd0);
+		return;
+	}
+
 	buffer_view_->workAreaDispatch(cmd0);
+
+	// Skip these when selecting
+	if (cmd0.action != LFUN_MOUSE_MOTION) {
+		lyx_view_.updateLayoutChoice();
+		lyx_view_.updateToolbars();
+	}
+
+	// Slight hack: this is only called currently when we
+	// clicked somewhere, so we force through the display
+	// of the new status here.
+	lyx_view_.clearMessage();
+
 	redraw();
 }
 
@@ -240,6 +261,15 @@ void WorkArea::dispatch(FuncRequest const & cmd0)
 void WorkArea::resizeBufferView()
 {
 	buffer_view_->workAreaResize(width(), height());
+	lyx_view_.updateLayoutChoice();
+	redraw();
+}
+
+
+void WorkArea::scrollBufferView(int position)
+{
+	buffer_view_->scrollDocView(position);
+	lyx_view_.updateLayoutChoice();
 	redraw();
 }
 
