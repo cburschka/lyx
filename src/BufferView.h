@@ -127,9 +127,6 @@ public:
 	/// return the lyxtext we are using
 	LyXText const * getLyXText() const;
 
-	/// simple replacing. Use the font of the first selected character
-	void replaceSelectionWithString(std::string const & str);
-
 	/// move cursor to the named label
 	void gotoLabel(std::string const & label);
 

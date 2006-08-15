@@ -20,7 +20,6 @@
 #include "bufferlist.h"
 #include "bufferparams.h"
 #include "BufferView_pimpl.h"
-#include "CutAndPaste.h"
 #include "coordcache.h"
 #include "debug.h"
 #include "funcrequest.h"
@@ -48,8 +47,6 @@
 #include "insets/insettext.h"
 
 using lyx::support::bformat;
-
-using lyx::cap::setSelectionRange;
 
 using std::distance;
 using std::find;
