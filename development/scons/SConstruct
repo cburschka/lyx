@@ -1191,8 +1191,8 @@ int mkstemp(char*);
                 (conf.CheckIconvConst(),
                     'ICONV_CONST',
                     'Define as const if the declaration of iconv() needs const.',
-                    '#define ICONV_CONST',
                     '#define ICONV_CONST const',
+                    '#define ICONV_CONST',
                 ),
                 (conf.CheckType('intmax_t', includes='#include <stdint.h>') or \
                 conf.CheckType('intmax_t', includes='#include <inttypes.h>'),
