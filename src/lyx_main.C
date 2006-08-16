@@ -943,7 +943,7 @@ int parse_help(string const &, string const &)
 int parse_version(string const &, string const &)
 {
 	lyxerr << "LyX " << lyx_version
-	       << " of " << lyx_release_date << endl;
+	       << " (" << lyx_release_date << ")" << endl;
 	lyxerr << "Built on " << __DATE__ << ", " << __TIME__ << endl;
 
 	lyxerr << lyx_version_info << endl;
