@@ -159,7 +159,9 @@ WorkArea::WorkArea(LyXView & lyx_view)
 
 void WorkArea::setBufferView(BufferView * buffer_view)
 {
+	hideCursor();
 	buffer_view_ = buffer_view;
+	toggleCursor();
 }
 
 
@@ -193,6 +195,9 @@ void WorkArea::redraw()
 	}
 
 	buffer_view_->updateMetrics(false);
+
+	updateScrollbar();
+
 	ViewMetricsInfo const & vi = buffer_view_->viewMetricsInfo();
 	greyed_out_ = false;
 	getPainter().start();
@@ -266,11 +271,25 @@ void WorkArea::resizeBufferView()
 }
 
 
+void WorkArea::updateScrollbar()
+{
+	buffer_view_->updateScrollbar(); 
+	ScrollbarParameters const & scroll_ = buffer_view_->scrollbarParameters();
+	setScrollbarParams(scroll_.height, scroll_.position,
+		scroll_.lineScrollHeight);
+}
+
+
 void WorkArea::scrollBufferView(int position)
 {
 	buffer_view_->scrollDocView(position);
-	lyx_view_.updateLayoutChoice();
 	redraw();
+	hideCursor();
+	if (lyxrc.cursor_follows_scrollbar) {
+		buffer_view_->setCursorFromScrollbar();
+		lyx_view_.updateLayoutChoice();
+	}
+	toggleCursor();
 }
 
 

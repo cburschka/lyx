@@ -140,6 +140,8 @@ protected:
 
 private:
 	///
+	void updateScrollbar();
+	///
 	void checkAndGreyOut();
 
 	///

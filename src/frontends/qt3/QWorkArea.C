@@ -88,6 +88,7 @@ QWorkArea::~QWorkArea()
 
 void QWorkArea::setScrollbarParams(int h, int pos, int line_h)
 {
+	scrollbar_->setTracking(false);
 	// do what cursor movement does (some grey)
 	h += height() / 4;
 
@@ -99,6 +100,8 @@ void QWorkArea::setScrollbarParams(int h, int pos, int line_h)
 	content_->trackScrollbar(true);
 	scrollbar_->setLineStep(line_h);
 	scrollbar_->setPageStep(height());
+
+	scrollbar_->setTracking(true);
 }
 
 } // namespace frontend

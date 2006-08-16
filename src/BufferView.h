@@ -160,6 +160,8 @@ public:
 	void scroll(int lines);
 	/// Scroll the view by a number of pixels
 	void scrollDocView(int pixels);
+	/// Set the cursor position based on the scrollbar one.
+	void setCursorFromScrollbar();
 
 	/// return the pixel width of the document view
 	int workWidth() const;

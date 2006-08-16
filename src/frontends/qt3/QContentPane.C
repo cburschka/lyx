@@ -357,14 +357,6 @@ void QContentPane::paintEvent(QPaintEvent * e)
 	QPainter q(this);
 	q.drawPixmap(QPoint(r.x(), r.y()),
 		*pixmap_.get(), r);
-
-	buffer_view_->updateScrollbar();
-	ScrollbarParameters const & scroll_ = buffer_view_->scrollbarParameters();
-
-	wa_->scrollbar_->setTracking(false);
-	wa_->setScrollbarParams(scroll_.height, scroll_.position,
-		scroll_.lineScrollHeight);
-	wa_->scrollbar_->setTracking(true);
 }
 
 

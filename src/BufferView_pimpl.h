@@ -66,6 +66,8 @@ public:
 	ScrollbarParameters const & scrollbarParameters() const;
 	///
 	void scrollDocView(int value);
+	///
+	void setCursorFromScrollbar();
 	/// Wheel mouse scroll, move by multiples of text->defaultRowHeight().
 	void scroll(int lines);
 	///

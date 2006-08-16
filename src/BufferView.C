@@ -150,6 +150,12 @@ void BufferView::scrollDocView(int value)
 }
 
 
+void BufferView::setCursorFromScrollbar()
+{
+	pimpl_->setCursorFromScrollbar();
+}
+
+
 bool BufferView::available() const
 {
 	return pimpl_->available();

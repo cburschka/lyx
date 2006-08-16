@@ -184,6 +184,8 @@ GuiWorkArea::~GuiWorkArea()
 
 void GuiWorkArea::setScrollbarParams(int h, int scroll_pos, int scroll_line_step)
 {
+	verticalScrollBar()->setTracking(false);
+
 	// do what cursor movement does (some grey)
 	h += height() / 4;
 	int scroll_max_ = std::max(0, h - height());
@@ -191,6 +193,8 @@ void GuiWorkArea::setScrollbarParams(int h, int scroll_pos, int scroll_line_step
 	verticalScrollBar()->setRange(0, scroll_max_);
 	verticalScrollBar()->setSliderPosition(scroll_pos);
 	verticalScrollBar()->setSingleStep(scroll_line_step);
+
+	verticalScrollBar()->setTracking(true);
 }
 
 
@@ -478,15 +482,6 @@ void GuiWorkArea::paintEvent(QPaintEvent * e)
 
 	if (show_hcursor_)
 		q.drawPixmap(cursor_x_, cursor_y_ + cursor_h_ - 1, hcursor_);
-
-	buffer_view_->updateScrollbar();
-
-	ScrollbarParameters const & scroll_ = buffer_view_->scrollbarParameters();
-
-	verticalScrollBar()->setTracking(false);
-	setScrollbarParams(scroll_.height, scroll_.position,
-		scroll_.lineScrollHeight);
-	verticalScrollBar()->setTracking(true);
 }
 
 

@@ -435,10 +435,12 @@ void BufferView::Pimpl::scrollDocView(int value)
 	t.redoParagraph(anchor_ref_);
 	int const h = t.getPar(anchor_ref_).height();
 	offset_ref_ = int((bar * t.paragraphs().size() - anchor_ref_) * h);
-	update();
+}
 
-	if (!lyxrc.cursor_follows_scrollbar)
-		return;
+
+void BufferView::Pimpl::setCursorFromScrollbar()
+{
+	LyXText & t = *bv_->text();
 
 	int const height = 2 * defaultRowHeight();
 	int const first = height;
