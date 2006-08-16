@@ -292,7 +292,12 @@ To build lyx with msvc, you should
     directories in VCProjectEngine.dll.express.config, as suggested in
     http://msdn.microsoft.com/vstudio/express/visualc/usingpsdk/.
 
-  * build qt4
+  * build qt3 
+    - download qt3 source from Q../Free sourceforge.net website (not from 
+      trolltech).
+    - compile qt3 as instructed
+
+    or qt4
     - download qt4 source from trolltech (not the binary version, which
       only works with mingw)
     - get q../free patch for qt4

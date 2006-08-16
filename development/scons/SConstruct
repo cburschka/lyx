@@ -680,7 +680,9 @@ if not fast_start:
     #
     # qt3 does not use pkg_config
     if frontend == 'qt3':
-        if not conf.CheckLibWithHeader('qt-mt', 'qapp.h', 'c++', 'QApplication qapp();'):
+        # windows lib name is qt-mt3
+        if not conf.CheckLibWithHeader('qt-mt', 'qapp.h', 'c++', 'QApplication qapp();') \
+            and not conf.CheckLibWithHeader('qt-mt3', 'qapp.h', 'c++', 'QApplication qapp();'):
             print 'Did not find qt libraries, exiting!'
             Exit(1)
     elif frontend == 'qt4':
@@ -714,10 +716,13 @@ if not fast_start:
 
 # now, if msvc2005 is used, we will need that QT_LIB_PATH/QT_LIB.manifest file
 if use_vc:
-    if mode == 'debug':
-        manifest = os.path.join(qt_lib_path, 'QtGuid4.dll.manifest')
-    else:
-        manifest = os.path.join(qt_lib_path, 'QtGui4.dll.manifest')
+    if frontend == 'qt3':
+        manifest = os.path.join(qt_lib_path, 'qt-mt3.dll.manifest')
+    elif frontend == 'qt4':
+        if mode == 'debug':
+            manifest = os.path.join(qt_lib_path, 'QtGuid4.dll.manifest')
+        else:
+            manifest = os.path.join(qt_lib_path, 'QtGui4.dll.manifest')
     if os.path.isfile(manifest):
         env['LINKCOM'] = [env['LINKCOM'], 'mt.exe /MANIFEST %s /outputresource:$TARGET;1' % manifest]
 
@@ -903,7 +908,6 @@ if not fast_start or not os.path.isfile(boost_config_h) \
 #define BOOST_ENABLE_ASSERT_HANDLER 1
 
 #define BOOST_DISABLE_THREADS 1
-#define BOOST_NO_WREGEX 1
 #define BOOST_NO_WSTRING 1
 
 #ifdef __CYGWIN__
@@ -1300,8 +1304,11 @@ env = conf.Finish()
 # in their respective directory and specialized env.
 if frontend == 'qt3':
     # note: env.Tool('qt') my set QT_LIB to qt
-    qt_libs = ['qt-mt']
-    frontend_libs = ['qt-mt']
+    if platform_name == 'win32':
+        qt_libs = ['qt-mt']
+    else:
+        qt_libs = ['qt-mt3']
+    frontend_libs = qt_libs
 elif frontend == 'qt4':
     qt_libs = ['QtCore', 'QtGui']
     # set the right lib names
