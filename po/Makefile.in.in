@@ -384,18 +384,25 @@ qt_l10n.pot: $(top_srcdir)/src/frontends/qt3/ui/*.ui
 		{\
 			return substr(FILENAME, length(top_srcdir "/") + 1);\
 		}\
-		/<string>/ { \
-			line=$$0; \
-			sub(/.*<string>/, "", line); \
-			sub(/<\/string>.*/, "", line); \
-			gsub(/&amp;/, "\\&", line); \
-			gsub(/&lt;/, "<", line); \
-			gsub(/&gt;/, ">", line); \
-			gsub(/"/, "\\\"", line); \
-			if (length(line) > 0) {\
-				printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n",\
+		BEGIN { \
+			previousline=""; \
+		} \
+		{ \
+			if (!(previousline ~ /^ *< *property  *name *= *"shortcut" *> *$$/) \
+			    && $$0 ~ /<string>/) { \
+				line=$$0; \
+				sub(/.*<string>/, "", line); \
+				sub(/<\/string>.*/, "", line); \
+				gsub(/&amp;/, "\\&", line); \
+				gsub(/&lt;/, "<", line); \
+				gsub(/&gt;/, ">", line); \
+				gsub(/"/, "\\\"", line); \
+				if (length(line) > 0) { \
+					printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
 					fixupfilename(), FNR, line); \
+				} \
 			} \
+			previousline=$$0; \
 		}' \
 	${top_srcdir}/src/frontends/qt3/ui/*.ui > $@
 

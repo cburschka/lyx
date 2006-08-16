@@ -1,5 +1,4 @@
 src/BranchList.h
-src/BufferView.C
 src/BufferView_pimpl.C
 src/Chktex.C
 src/CutAndPaste.C
@@ -23,6 +22,7 @@ src/frontends/controllers/ControlAboutlyx.C
 src/frontends/controllers/ControlBibtex.C
 src/frontends/controllers/ControlBox.C
 src/frontends/controllers/ControlDocument.C
+src/frontends/controllers/ControlErrorList.C
 src/frontends/controllers/ControlExternal.C
 src/frontends/controllers/ControlGraphics.C
 src/frontends/controllers/ControlInclude.C
@@ -35,6 +35,7 @@ src/frontends/controllers/biblio.C
 src/frontends/controllers/character.C
 src/frontends/controllers/frnt_lang.C
 src/frontends/controllers/helper_funcs.C
+src/frontends/controllers/tex_helpers.C
 src/frontends/gtk/Dialogs.C
 src/frontends/gtk/GAboutlyx.C
 src/frontends/gtk/GBC.h
