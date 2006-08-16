@@ -1,5 +1,9 @@
 2006-08-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	* lyxfind.C (find): comment out debug message.
+
+2006-08-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
 	* BufferView_pimpl.C (getStatus, dispatch): do not handle
 	LFUN_GOTOERROR.
 

@@ -73,6 +73,9 @@ What's new
 
 - Update labels  on screen when changing language.
 
+- Fix doubling of initial character when correcting a word with
+  ligatures in spellechecker (bug 2068)
+
 - Show an error box when failing to update the TeX Information dalog data.
 
 - Fix unexpected font change on maximize (bug 2664).

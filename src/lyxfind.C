@@ -274,7 +274,7 @@ void find(BufferView * bv, FuncRequest const & ev)
 	if (!bv || ev.action != LFUN_WORD_FIND)
 		return;
 
-	lyxerr << "find called, cmd: " << ev << std::endl;
+	//lyxerr << "find called, cmd: " << ev << std::endl;
 
 	// data is of the form
 	// "<search>
