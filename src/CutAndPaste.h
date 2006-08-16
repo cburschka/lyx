@@ -41,13 +41,12 @@ std::string getSelection(Buffer const & buffer, size_t sel_index);
 ///
 void cutSelection(LCursor & cur, bool doclear, bool realcut);
 
-/**
- * Sets the selection from the current cursor position to length
- * characters to the right. No safety checks.
+/* Replace using the font of the first selected character and select
+ * the new string. When \c backwards == false, set anchor before
+ * cursor; otherwise set cursor before anchor.
  */
-void setSelectionRange(LCursor & cur, lyx::pos_type length);
-/// simply replace using the font of the first selected character
-void replaceSelectionWithString(LCursor & cur, std::string const & str);
+void replaceSelectionWithString(LCursor & cur, std::string const & str, 
+				bool backwards);
 /// replace selection helper
 void replaceSelection(LCursor & cur);
 
@@ -70,9 +69,6 @@ void pasteParagraphList(LCursor & cur, ParagraphList const & parlist,
 void switchBetweenClasses(lyx::textclass_type c1,
                           lyx::textclass_type c2,
                           InsetText & in, ErrorList &);
-
-// only used by the spellchecker
-void replaceWord(LCursor & cur, std::string const & replacestring);
 
 ///
 std::string grabSelection(LCursor const & cur);

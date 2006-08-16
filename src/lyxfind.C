@@ -226,9 +226,7 @@ int replace(BufferView * bv, string const & searchstr,
 		return 0;
 
 	LCursor & cur = bv->cursor();
-	lyx::cap::replaceSelectionWithString(cur, replacestr);
-	lyx::cap::setSelectionRange(cur, replacestr.length());
-	cur.top() = fw ? cur.selEnd() : cur.selBegin();
+	lyx::cap::replaceSelectionWithString(cur, replacestr, fw);
 	bv->buffer()->markDirty();
 	find(bv, searchstr, cs, mw, fw);
 	bv->update();
@@ -274,7 +272,7 @@ void find(BufferView * bv, FuncRequest const & ev)
 	if (!bv || ev.action != LFUN_WORD_FIND)
 		return;
 
-	lyxerr << "find called, cmd: " << ev << std::endl;
+	//lyxerr << "find called, cmd: " << ev << std::endl;
 
 	// data is of the form
 	// "<search>

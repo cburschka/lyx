@@ -127,24 +127,25 @@ void ControlSpellchecker::clearParams()
 
 namespace {
 
-bool isLetter(DocIterator const & cur)
+bool isLetter(DocIterator const & dit)
 {
-	return cur.inTexted()
-		&& cur.inset().allowSpellCheck()
-		&& cur.pos() != cur.lastpos()
-		&& (cur.paragraph().isLetter(cur.pos())
+	return dit.inTexted()
+		&& dit.inset().allowSpellCheck()
+		&& dit.pos() != dit.lastpos()
+		&& (dit.paragraph().isLetter(dit.pos())
 		    // We want to pass the ' and escape chars to ispell
 		    || contains(lyxrc.isp_esc_chars + '\'',
-				cur.paragraph().getChar(cur.pos())))
-		&& !isDeletedText(cur.paragraph(), cur.pos());
+				dit.paragraph().getChar(dit.pos())))
+		&& !isDeletedText(dit.paragraph(), dit.pos());
 }
 
 
-WordLangTuple nextWord(DocIterator & cur, ptrdiff_t & progress,
-	BufferParams & bp)
+WordLangTuple nextWord(LCursor & cur, ptrdiff_t & progress)
 {
+	BufferParams const & bp = cur.bv().buffer()->params();
 	bool inword = false;
 	bool ignoreword = false;
+	cur.resetAnchor();
 	string word, lang_code;
 
 	while (cur.depth()) {
@@ -152,6 +153,7 @@ WordLangTuple nextWord(DocIterator & cur, ptrdiff_t & progress,
 			if (!inword) {
 				inword = true;
 				ignoreword = false;
+				cur.resetAnchor();
 				word.clear();
 				lang_code = cur.paragraph().getFontSettings(bp, cur.pos()).language()->code();
 			}
@@ -166,9 +168,10 @@ WordLangTuple nextWord(DocIterator & cur, ptrdiff_t & progress,
 			}
 		} else { // !isLetter(cur)
 			if (inword)
-				if (!word.empty() && !ignoreword)
+				if (!word.empty() && !ignoreword) {
+					cur.setSelection();
 					return WordLangTuple(word, lang_code);
-				else
+				} else
 					inword = false;
 		}
 
@@ -189,7 +192,7 @@ void ControlSpellchecker::check()
 
 	SpellBase::Result res = SpellBase::OK;
 
-	DocIterator cur = kernel().bufferview()->cursor();
+	LCursor cur = kernel().bufferview()->cursor();
 	while (cur && cur.pos() && isLetter(cur)) {
 		cur.backwardPos();
 	}
@@ -202,11 +205,10 @@ void ControlSpellchecker::check()
 	for (total = start; it; it.forwardPos())
 		++total;
 
-	BufferParams & bufferparams = kernel().buffer().params();
 	exitEarly_ = false;
 
 	while (res == SpellBase::OK || res == SpellBase::IGNORED_WORD) {
-		word_ = nextWord(cur, start, bufferparams);
+		word_ = nextWord(cur, start);
 
 		// end of document
 		if (getWord().empty()) {
@@ -240,7 +242,7 @@ void ControlSpellchecker::check()
 
 	lyxerr[Debug::GUI] << "Found word \"" << getWord() << "\"" << endl;
 
-	int const size = getWord().size();
+	int const size = cur.selEnd().pos() - cur.selBegin().pos();
 	cur.pos() -= size;
 	kernel().bufferview()->putSelectionAt(cur, size, false);
 	// if we used a lfun like in find/replace, dispatch would do
@@ -298,7 +300,7 @@ void ControlSpellchecker::replace(string const & replacement)
 	lyxerr[Debug::GUI] << "ControlSpellchecker::replace("
 			   << replacement << ")" << std::endl;
 	BufferView & bufferview = *kernel().bufferview();
-	cap::replaceWord(bufferview.cursor(), replacement);
+	cap::replaceSelectionWithString(bufferview.cursor(), replacement, true);
 	kernel().buffer().markDirty();
 	bufferview.update();
 	// fix up the count

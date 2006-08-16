@@ -651,33 +651,19 @@ void pasteSelection(LCursor & cur, ErrorList & errorList, size_t sel_index)
 }
 
 
-void setSelectionRange(LCursor & cur, pos_type length)
-{
-	LyXText * text = cur.text();
-	BOOST_ASSERT(text);
-	if (!length)
-		return;
-	cur.resetAnchor();
-	while (length--)
-		text->cursorRight(cur);
-	cur.setSelection();
-}
-
-
 // simple replacing. The font of the first selected character is used
-void replaceSelectionWithString(LCursor & cur, string const & str)
+void replaceSelectionWithString(LCursor & cur, string const & str, bool backwards)
 {
-	LyXText * text = cur.text();
-	BOOST_ASSERT(text);
 	recordUndo(cur);
+	DocIterator selbeg = cur.selectionBegin();
 
 	// Get font setting before we cut
-	pos_type pos = cur.selEnd().pos();
-	Paragraph & par = text->getPar(cur.selEnd().pit());
 	LyXFont const font =
-		par.getFontSettings(cur.buffer().params(), cur.selBegin().pos());
+		selbeg.paragraph().getFontSettings(cur.buffer().params(), selbeg.pos());
 
 	// Insert the new string
+	pos_type pos = cur.selEnd().pos();
+	Paragraph & par = cur.selEnd().paragraph();
 	string::const_iterator cit = str.begin();
 	string::const_iterator end = str.end();
 	for (; cit != end; ++cit, ++pos)
@@ -685,6 +671,13 @@ void replaceSelectionWithString(LCursor & cur, string const & str)
 
 	// Cut the selection
 	cutSelection(cur, true, false);
+
+	// select the replacement
+	if (backwards) {
+		selbeg.pos() += str.length();
+		cur.setSelection(selbeg, -str.length());
+	} else
+		cur.setSelection(selbeg, str.length());
 }
 
 
@@ -692,21 +685,6 @@ void replaceSelection(LCursor & cur)
 {
 	if (cur.selection())
 		cutSelection(cur, true, false);
-}
-
-
-// only used by the spellchecker
-void replaceWord(LCursor & cur, string const & replacestring)
-{
-	LyXText * text = cur.text();
-	BOOST_ASSERT(text);
-
-	replaceSelectionWithString(cur, replacestring);
-	setSelectionRange(cur, replacestring.length());
-
-	// Go back so that replacement string is also spellchecked
-	for (string::size_type i = 0; i < replacestring.length() + 1; ++i)
-		text->cursorLeft(cur);
 }
 
 
