@@ -295,8 +295,6 @@ public:
 		///
 		MATHMACRO_CODE, // 30
 		///
-		ERROR_CODE,
-		///
 		CITE_CODE,
 		///
 		FLOAT_LIST_CODE,

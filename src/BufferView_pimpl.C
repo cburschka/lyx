@@ -910,7 +910,6 @@ FuncStatus BufferView::Pimpl::getStatus(FuncRequest const & cmd)
 	case LFUN_OUTLINE_DOWN:
 	case LFUN_OUTLINE_IN:
 	case LFUN_OUTLINE_OUT:
-	case LFUN_ERROR_NEXT:
 	case LFUN_NOTE_NEXT:
 	case LFUN_REFERENCE_NEXT:
 	case LFUN_WORD_FIND:
@@ -1089,10 +1088,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 	case LFUN_OUTLINE_OUT:
 		lyx::toc::outline(lyx::toc::Out, cursor_);
 		updateLabels(*buffer_);
-		break;
-
-	case LFUN_ERROR_NEXT:
-		bv_funcs::gotoInset(bv_, InsetBase::ERROR_CODE, false);
 		break;
 
 	case LFUN_NOTE_NEXT:
