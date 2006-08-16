@@ -11,24 +11,23 @@
 #include <config.h>
 
 #include "QDelimiterDialog.h"
-
-#include "iconpalette.h"
 #include "QMath.h"
-#include "qt_helpers.h"
 
+#include "qt_helpers.h"
 #include "controllers/ControlMath.h"
 
-#include <qlabel.h>
-#include <qpixmap.h>
-#include <qcheckbox.h>
+#include "gettext.h"
 
+#include <QPixmap>
+#include <QCheckBox>
+
+
+#include <sstream>
 
 using std::string;
 
 namespace lyx {
 namespace frontend {
-
-// FIXME: Implement fixed size delimiters (see qt3 frontend)
 
 namespace {
 
@@ -38,6 +37,16 @@ char const * delim[] = {
 	"uparrow", "Uparrow", "downarrow", "Downarrow",
 	"|", "Vert", "slash", "backslash", ""
 };
+
+
+char const * const bigleft[]  = {"bigl", "Bigl", "biggl", "Biggl", ""};
+
+
+char const * const bigright[] = {"bigr", "Bigr", "biggr", "Biggr", ""};
+
+
+char const * const biggui[]   = {N_("big size"), N_("Big size"),
+	N_("bigg size"), N_("Bigg size"), ""};
 
 
 string do_match(const string & str)
@@ -61,7 +70,7 @@ string do_match(const string & str)
 }
 
 
-string fix_name(const string & str)
+string fix_name(const string & str, bool big)
 {
 	if (str == "slash")
 		return "/";
@@ -69,7 +78,10 @@ string fix_name(const string & str)
 		return "\\";
 	if (str == "empty")
 		return ".";
-	return str;
+	if (!big || str == "(" || str == ")" || str == "[" || str == "]")
+		return str;
+
+	return "\\" + str;
 }
 
 } // namespace anon
@@ -80,68 +92,80 @@ QDelimiterDialog::QDelimiterDialog(QMathDelimiter * form)
 {
 	setupUi(this);
 
-    connect( closePB, SIGNAL( clicked() ), this, SLOT( accept() ) );
-    connect( insertPB, SIGNAL( clicked() ), this, SLOT( insertClicked() ) );
+	connect(closePB, SIGNAL(clicked()), this, SLOT(accept()));
+	connect(insertPB, SIGNAL(clicked()), this, SLOT(insertClicked()));
 
 	setCaption(qt_("LyX: Delimiters"));
 
 	for (int i = 0; *delim[i]; ++i) {
-		string xpm(find_xpm(delim[i]));
-		leftIP->add(QPixmap(toqstr(xpm)), delim[i], delim[i]);
-		rightIP->add(QPixmap(toqstr(xpm)), delim[i], delim[i]);
+		QPixmap pm = QPixmap(toqstr(find_xpm(delim[i])));
+		leftCO->addItem(QIcon(pm), "");
+		rightCO->addItem(QIcon(pm), "");
 	}
 
 	string empty_xpm(find_xpm("empty"));
+	leftCO->addItem(QIcon(QPixmap(toqstr(empty_xpm))), qt_("(None)"));
+	rightCO->addItem(QIcon(QPixmap(toqstr(empty_xpm))), qt_("(None)"));
 
-	leftIP->add(QPixmap(toqstr(empty_xpm)), "empty", "empty");
-	rightIP->add(QPixmap(toqstr(empty_xpm)), "empty", "empty");
-	// Leave these std:: qualifications alone !
-	connect(leftIP, SIGNAL(button_clicked(const std::string &)),
-		this, SLOT(ldelim_clicked(const std::string &)));
-	connect(rightIP, SIGNAL(button_clicked(const std::string &)),
-		this, SLOT(rdelim_clicked(const std::string &)));
-	ldelim_clicked("(");
-	rdelim_clicked(")");
+	for (int i = 0; *biggui[i]; ++i)
+		sizeCO->addItem(qt_(biggui[i]));
+
+	on_leftCO_activated(0);
 }
 
 
 void QDelimiterDialog::insertClicked()
 {
-	form_->controller().dispatchDelim(fix_name(left_) + ' ' + fix_name(right_));
+	string const left_ = delim[leftCO->currentIndex()];
+	string const right_ = delim[rightCO->currentIndex()];
+	int const size_ = sizeCO->currentIndex();
+
+	if (size_ == 0) {
+		form_->controller().dispatchDelim(
+			fix_name(left_, false) + ' ' +
+			fix_name(right_, false));
+	} else {
+		std::ostringstream os;
+		os << '"' << bigleft[size_ - 1] << "\" \""
+		   << fix_name(left_, true) << "\" \""
+		   << bigright[size_ - 1] << "\" \""
+		   << fix_name(right_, true) << '"';
+		form_->controller().dispatchBigDelim(os.str());
+	}
+
 }
 
 
-void QDelimiterDialog::set_label(QLabel * label, const string & str)
+void QDelimiterDialog::on_leftCO_activated(int item)
 {
-	label->setUpdatesEnabled(false);
-	label->setPixmap(QPixmap(toqstr(find_xpm(str))));
-	label->setUpdatesEnabled(true);
-	label->update();
-}
-
-
-void QDelimiterDialog::ldelim_clicked(const string & str)
-{
-	left_ = str;
-
-	set_label(leftPI, left_);
 	if (matchCB->isChecked()) {
-		right_ = do_match(left_);
-		set_label(rightPI, right_);
+		string const match = do_match(delim[item]);
+		int k = 0;
+		while (delim[k] && delim[k] != match)
+			++k;
+		rightCO->setCurrentIndex(k);
 	}
 }
 
 
-void QDelimiterDialog::rdelim_clicked(const string & str)
+void QDelimiterDialog::on_rightCO_activated(int item)
 {
-	right_ = str;
-
-	set_label(rightPI, right_);
 	if (matchCB->isChecked()) {
-		left_ = do_match(right_);
-		set_label(leftPI, left_);
+		string const match = do_match(delim[item]);
+		int k = 0;
+		while (delim[k] && delim[k] != match)
+			++k;
+		leftCO->setCurrentIndex(k);
 	}
 }
+
+
+void QDelimiterDialog::on_matchCB_stateChanged(int state)
+{
+	if (state == Qt::Checked)
+		on_leftCO_activated(leftCO->currentIndex());
+}
+
 
 } // namespace frontend
 } // namespace lyx

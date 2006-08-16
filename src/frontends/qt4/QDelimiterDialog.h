@@ -15,12 +15,6 @@
 #include "ui/QDelimiterUi.h"
 #include <string>
 
-#include <QLabel>
-#include <QDialog>
-
-class IconPalette;
-class QLabel;
-
 namespace lyx {
 namespace frontend {
 
@@ -31,20 +25,11 @@ class QDelimiterDialog : public QDialog, public Ui::QDelimiterUi {
 public:
 	QDelimiterDialog(QMathDelimiter * form);
 public Q_SLOTS:
-	void ldelim_clicked(const std::string & str);
-	void rdelim_clicked(const std::string & str);
+	void on_leftCO_activated(int);
+	void on_rightCO_activated(int);
+	void on_matchCB_stateChanged(int);
 	void insertClicked();
-protected:
-	//needed ? virtual void closeEvent(QCloseEvent * e);
 private:
-	void set_label(QLabel * label, const std::string & str);
-
-	/// symbol of left delimiter
-	std::string left_;
-
-	/// symbol of right delimiter
-	std::string right_;
-
 	/// owning form
 	QMathDelimiter * form_;
 };
