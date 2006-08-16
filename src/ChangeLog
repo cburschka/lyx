@@ -1,5 +1,12 @@
 2006-08-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	* version.C.in: make lyx_release_date a placeholder.
+
+	* lyx_main.C (parse_version): change a bit the display of LyX
+	release date.
+
+2006-08-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
 	* lyxfind.C (find): comment out debug message.
 
 2006-08-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>

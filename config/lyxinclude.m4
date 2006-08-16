@@ -11,6 +11,7 @@ echo "configuring LyX version" AC_PACKAGE_VERSION
 if echo AC_PACKAGE_VERSION | grep 'svn' >/dev/null ; then
   lyx_devel_version=yes
   AC_DEFINE(DEVEL_VERSION, 1, [Define if you are building a development version of LyX])
+  LYX_DATE="not released yet"
   echo "WARNING: This is a development version. Expect bugs."
 else
   lyx_devel_version=no

@@ -1,5 +1,10 @@
 2006-08-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	* ControlAboutlyx.C (getVersion): change a bit the display of LyX
+	release date.
+
+2006-08-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
 	* ControlSpellchecker.C (nextWord): take a LCursor as parameter;
 	set the selection over the word that has been found.
 	(check): adapt to changes above (the length of the word is not

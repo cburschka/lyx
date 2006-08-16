@@ -85,9 +85,9 @@ string const ControlAboutlyx::getVersion() const
 
 	ss << _("LyX Version ")
 	   << lyx_version
-	   << _(" of ")
+	   << " ("
 	   << lyx_release_date
-	   << "\n"
+	   << ")\n"
 	   << _("Library directory: ")
 	   << MakeDisplayPath(package().system_support())
 	   << "\n"

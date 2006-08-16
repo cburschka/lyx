@@ -15,7 +15,7 @@
 ///
 char const * lyx_version = "@PACKAGE_VERSION@";
 ///
-char const * lyx_release_date = "Fri, Jul 13, 2006";
+char const * lyx_release_date = "@LYX_DATE@";
 
 /// This is the version information shown by 'lyx -version'
 char const * lyx_version_info = "@VERSION_INFO@";
