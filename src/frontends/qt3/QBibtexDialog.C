@@ -202,3 +202,5 @@ void QBibtexDialog::closeEvent(QCloseEvent *e)
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QBibtexDialog_moc.cpp"

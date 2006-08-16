@@ -80,3 +80,5 @@ void QLPrintDialog::pagerangeChanged()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QLPrintDialog_moc.cpp"

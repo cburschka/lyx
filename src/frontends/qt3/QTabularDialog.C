@@ -453,3 +453,5 @@ void QTabularDialog::booktabs_clicked()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QTabularDialog_moc.cpp"

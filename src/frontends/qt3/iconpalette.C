@@ -116,3 +116,5 @@ out:
 	setUpdatesEnabled(true);
 	update();
 }
+
+#include "iconpalette_moc.cpp"

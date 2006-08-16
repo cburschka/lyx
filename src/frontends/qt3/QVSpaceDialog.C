@@ -66,3 +66,5 @@ void QVSpaceDialog::enableCustom(int)
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QVSpaceDialog_moc.cpp"

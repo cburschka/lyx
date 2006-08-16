@@ -303,3 +303,5 @@ void QBrowseBox::moveDown()
 	updateCell(x, activecell_.y());
 	updateCell(activecell_.x(), activecell_.y());
 }
+
+#include "QBrowseBox_moc.cpp"

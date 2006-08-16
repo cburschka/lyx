@@ -58,3 +58,5 @@ void QFloatDialog::closeEvent(QCloseEvent * e)
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QFloatDialog_moc.cpp"

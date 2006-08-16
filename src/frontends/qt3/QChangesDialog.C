@@ -54,3 +54,5 @@ void QChangesDialog::closeEvent(QCloseEvent *e)
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QChangesDialog_moc.cpp"

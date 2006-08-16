@@ -994,3 +994,5 @@ void QPrefsDialog::select_typewriter(const QString& name)
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QPrefsDialog_moc.cpp"

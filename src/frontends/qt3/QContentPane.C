@@ -367,3 +367,5 @@ void QContentPane::trackScrollbar(bool track_on)
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QContentPane_moc.cpp"

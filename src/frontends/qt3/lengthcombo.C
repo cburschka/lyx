@@ -69,3 +69,5 @@ void LengthCombo::noPercents()
 		}
 	}
 }
+
+#include "lengthcombo_moc.cpp"

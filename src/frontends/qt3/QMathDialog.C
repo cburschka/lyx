@@ -335,3 +335,5 @@ void QMathDialog::insertFont(int id)
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QMathDialog_moc.cpp"

@@ -116,3 +116,5 @@ void QSearchDialog::replaceallClicked()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QSearchDialog_moc.cpp"

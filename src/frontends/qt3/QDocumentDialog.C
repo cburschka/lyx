@@ -565,3 +565,5 @@ void QDocumentDialog::toggleBranchColor()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QDocumentDialog_moc.cpp"

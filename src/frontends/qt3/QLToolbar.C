@@ -254,3 +254,5 @@ void QLToolbar::clicked()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QLToolbar_moc.cpp"

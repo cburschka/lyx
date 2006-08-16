@@ -50,3 +50,5 @@ void QViewSourceDialog::slotUpdate()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QViewSourceDialog_moc.cpp"

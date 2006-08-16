@@ -176,3 +176,5 @@ void QDelimiterDialog::size_selected(int index)
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QDelimiterDialog_moc.cpp"

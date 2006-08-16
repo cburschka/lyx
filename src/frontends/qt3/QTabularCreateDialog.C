@@ -49,3 +49,5 @@ void QTabularCreateDialog::rowsChanged(int)
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QTabularCreateDialog_moc.cpp"

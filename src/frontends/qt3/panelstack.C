@@ -132,3 +132,5 @@ void PanelStack::switchPanel(QListViewItem * item)
 
 	stack_->raiseWidget(cit->second);
 }
+
+#include "panelstack_moc.cpp"

@@ -354,3 +354,5 @@ void BulletsModule::setCustom()
 	tmpbullet.setText(fromqstr(text));
 	tmpbullet.setFont(-1);
 }
+
+#include "BulletsModule_moc.cpp"

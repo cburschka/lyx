@@ -123,3 +123,5 @@ void QGraphicsDialog::edit_clicked()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QGraphicsDialog_moc.cpp"

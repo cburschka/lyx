@@ -185,3 +185,5 @@ void QLPopupMenu::showing()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QLPopupMenu_moc.cpp"

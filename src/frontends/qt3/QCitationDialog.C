@@ -291,3 +291,5 @@ void QCitationDialog::find(biblio::Direction dir)
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QCitationDialog_moc.cpp"

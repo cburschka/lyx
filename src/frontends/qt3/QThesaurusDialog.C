@@ -114,3 +114,5 @@ void QThesaurusDialog::updateLists()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QThesaurusDialog_moc.cpp"

@@ -46,3 +46,5 @@ void QSendtoDialog::closeEvent(QCloseEvent * e)
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QSendtoDialog_moc.cpp"

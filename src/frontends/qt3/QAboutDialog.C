@@ -27,3 +27,5 @@ QAboutDialog::~QAboutDialog()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QAboutDialog_moc.cpp"

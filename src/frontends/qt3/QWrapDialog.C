@@ -48,3 +48,5 @@ void QWrapDialog::change_adaptor()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QWrapDialog_moc.cpp"

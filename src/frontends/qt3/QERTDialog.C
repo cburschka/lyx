@@ -43,3 +43,5 @@ void QERTDialog::change_adaptor()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QERTDialog_moc.cpp"

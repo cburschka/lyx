@@ -116,3 +116,5 @@ void QDialogView::slotRestore()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QDialogView_moc.cpp"

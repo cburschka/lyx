@@ -75,3 +75,5 @@ void QIndexDialog::closeEvent(QCloseEvent * e)
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QIndexDialog_moc.cpp"

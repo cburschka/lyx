@@ -115,3 +115,5 @@ void QTocDialog::closeEvent(QCloseEvent * e)
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QTocDialog_moc.cpp"

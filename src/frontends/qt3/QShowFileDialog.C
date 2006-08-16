@@ -35,3 +35,5 @@ void QShowFileDialog::closeEvent(QCloseEvent * e)
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QShowFileDialog_moc.cpp"

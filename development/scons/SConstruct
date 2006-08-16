@@ -1762,7 +1762,7 @@ if build_qt3:
     qt3 = qt3env.StaticLibrary(
         target = '$LOCALLIBPATH/qt3',
         source = ['$BUILDDIR/common/frontends/qt3/%s' % x for x in src_frontends_qt3_files] \
-            + qt3_moced_files + qt3_uiced_cc_files
+            + qt3_uiced_cc_files
     )
     Alias('qt3', qt3)
 

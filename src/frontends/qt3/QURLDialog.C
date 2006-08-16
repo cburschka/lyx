@@ -56,3 +56,5 @@ void QURLDialog::closeEvent(QCloseEvent * e)
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QURLDialog_moc.cpp"

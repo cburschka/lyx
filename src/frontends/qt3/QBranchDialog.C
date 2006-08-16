@@ -43,3 +43,5 @@ void QBranchDialog::change_adaptor()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QBranchDialog_moc.cpp"

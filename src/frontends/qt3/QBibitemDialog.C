@@ -43,3 +43,5 @@ void QBibitemDialog::closeEvent(QCloseEvent *e)
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QBibitemDialog_moc.cpp"

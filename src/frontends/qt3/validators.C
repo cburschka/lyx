@@ -167,3 +167,5 @@ PathValidator * getPathValidator(QLineEdit * ed)
 		return 0;
 	return dynamic_cast<PathValidator *>(validator);
 }
+
+#include "validators_moc.cpp"

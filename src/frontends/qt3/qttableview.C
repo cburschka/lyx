@@ -2284,3 +2284,5 @@ void QtTableView::updateTableSize()
 
 
 #endif
+
+#include "qttableview_moc.cpp"
