@@ -16,6 +16,10 @@
 #undef emit
 #endif
 
+// this is needed by the generated QContentPane_moc.cpp file
+// will be removed after _moc.cpp is merged to the .C file
+#include <config.h>
+
 #include "funcrequest.h"
 #include "frontends/Timeout.h"
 

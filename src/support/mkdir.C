@@ -22,6 +22,9 @@
 #ifdef HAVE_UNISTD_H
 # include <unistd.h>
 #endif
+#ifdef HAVE_DIRECT_H
+# include <direct.h>
+#endif
 #ifdef _WIN32
 # include <windows.h>
 #endif

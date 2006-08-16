@@ -357,8 +357,8 @@ string const get_temp_dir()
 {
 #if defined (USE_WINDOWS_PACKAGING)
 	// Typical example: C:/TEMP/.
-	char path[PATH_MAX];
-	GetTempPath(PATH_MAX, path);
+	char path[MAX_PATH];
+	GetTempPath(MAX_PATH, path);
 	return os::internal_path(path);
 #else // Posix-like.
 	return "/tmp";
