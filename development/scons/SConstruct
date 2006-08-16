@@ -1305,9 +1305,9 @@ env = conf.Finish()
 if frontend == 'qt3':
     # note: env.Tool('qt') my set QT_LIB to qt
     if platform_name == 'win32':
-        qt_libs = ['qt-mt']
-    else:
         qt_libs = ['qt-mt3']
+    else:
+        qt_libs = ['qt-mt']
     frontend_libs = qt_libs
 elif frontend == 'qt4':
     qt_libs = ['QtCore', 'QtGui']
