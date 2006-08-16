@@ -449,7 +449,6 @@ AC_CONFIG_FILES([Makefile  m4/Makefile \
        src/frontends/gtk/gimages/Makefile \
        src/frontends/gtk/glade/Makefile \
        src/frontends/qt3/Makefile \
-       src/frontends/qt3/moc/Makefile \
        src/frontends/qt3/ui/Makefile \
        src/frontends/qt3/ui/moc/Makefile \
        src/frontends/qt4/Makefile \

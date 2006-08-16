@@ -1,16 +1,23 @@
 include $(top_srcdir)/config/common.am
 include $(srcdir)/Makefile.dialogs
 
-SUBDIRS = ui moc
+SUBDIRS = ui
 
 EXTRA_DIST = pch.h Makefile.dialogs
 
-BUILT_SOURCES = $(PCH_FILE)
+libqt3_la_DEPENDENCIES = $(MOCEDFILES)
+
+MOCEDFILES = $(MOCFILES:.C=_moc.cpp)
+
+%_moc.cpp: %.h
+	$(MOC) -o $@ $<
+
+BUILT_SOURCES = $(PCH_FILE) $(MOCEDFILES)
 
 noinst_LTLIBRARIES = libqt3.la
 
 libqt3_la_LDFLAGS = $(QT_LDFLAGS)
-libqt3_la_LIBADD = $(QT_LIB) ui/*.lo moc/*.lo ui/moc/*.lo
+libqt3_la_LIBADD = $(QT_LIB) ui/*.lo ui/moc/*.lo
 
 AM_CPPFLAGS += \
 	$(QT_CPPFLAGS) \
