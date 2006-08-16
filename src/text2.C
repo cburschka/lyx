@@ -90,7 +90,6 @@ void LyXText::init(BufferView * bv)
 	for (pit_type pit = 0; pit != end; ++pit)
 		pars_[pit].rows().clear();
 
-	current_font = getFont(pars_[0], 0);
 	updateLabels(*bv->buffer());
 }
 
