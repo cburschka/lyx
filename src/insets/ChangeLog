@@ -1,3 +1,8 @@
+2006-08-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* insetbase.[Ch]: get rid of ERROR_CODE (we do not have an error
+	inset anymore).
+
 2006-03-11  Bo Peng  <ben.bob@gmail.com>
 
 	* insetnote.C: fix bug 2768 (comment/note eats space after it)

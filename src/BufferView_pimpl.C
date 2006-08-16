@@ -1037,7 +1037,6 @@ FuncStatus BufferView::Pimpl::getStatus(FuncRequest const & cmd)
 	case LFUN_FONT_STATE:
 	case LFUN_INSERT_LABEL:
 	case LFUN_GOTO_PARAGRAPH:
-	case LFUN_GOTOERROR:
 	case LFUN_GOTONOTE:
 	case LFUN_REFERENCE_GOTO:
 	case LFUN_WORD_FIND:
@@ -1198,10 +1197,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		switchKeyMap();
 		break;
 	}
-
-	case LFUN_GOTOERROR:
-		bv_funcs::gotoInset(bv_, InsetBase::ERROR_CODE, false);
-		break;
 
 	case LFUN_GOTONOTE:
 		bv_funcs::gotoInset(bv_, InsetBase::NOTE_CODE, false);

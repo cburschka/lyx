@@ -1,5 +1,13 @@
 2006-08-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	* BufferView_pimpl.C (getStatus, dispatch): do not handle
+	LFUN_GOTOERROR.
+
+	* bufferview_funcs.C (findInset): exit early when at end of
+	document (and avoid a crash).
+
+2006-08-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
 	* text2.C (init): do not reset curent font (bug 2664)
 
 2006-08-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>

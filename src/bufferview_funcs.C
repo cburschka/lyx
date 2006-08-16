@@ -259,6 +259,8 @@ bool findInset(DocIterator & dit, vector<InsetBase_code> const & codes,
 	string contents;
 	DocIterator tmpdit = dit;
 	tmpdit.forwardInset();
+	if (!tmpdit)
+		return false;
 
 	if (same_content) {
 		InsetBase const * inset = tmpdit.nextInset();

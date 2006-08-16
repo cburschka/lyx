@@ -65,6 +65,8 @@ What's new
 
 - Fix crash when selecting several cells in a tabular (bug 2630).
 
+- Fix crash when searching for an inset and none is present.
+
 - Fix lockup when accepting a change in a text inset (bug 2510).
 
 - Fix editing of document while Error List dialog is open (bug 2179).

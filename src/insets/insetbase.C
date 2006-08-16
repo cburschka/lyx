@@ -78,7 +78,6 @@ TranslatorMap const build_translator()
 		InsetName("external", InsetBase::EXTERNAL_CODE),
 		InsetName("caption", InsetBase::CAPTION_CODE),
 		InsetName("mathmacro", InsetBase::MATHMACRO_CODE),
-		InsetName("error", InsetBase::ERROR_CODE),
 		InsetName("cite", InsetBase::CITE_CODE),
 		InsetName("float_list", InsetBase::FLOAT_LIST_CODE),
 		InsetName("index_print", InsetBase::INDEX_PRINT_CODE),
