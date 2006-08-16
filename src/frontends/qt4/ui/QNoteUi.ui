@@ -87,6 +87,26 @@
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QRadioButton" name="framedRB" >
+        <property name="toolTip" >
+         <string>Framed in box</string>
+        </property>
+        <property name="text" >
+         <string>&amp;Framed</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="shadedRB" >
+        <property name="toolTip" >
+         <string>Box with shaded background</string>
+        </property>
+        <property name="text" >
+         <string>&amp;Shaded</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>

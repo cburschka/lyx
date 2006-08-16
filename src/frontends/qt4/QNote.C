@@ -46,18 +46,9 @@ void QNote::build_dialog()
 
 void QNote::update_contents()
 {
-	// FIXME: This needs fixing. Framed and Shaded is not working.
 	QRadioButton * rb = 0;
 
 	switch (controller().params().type) {
-	case InsetNoteParams::Framed:
-		//rb = dialog_->framedRB;
-		rb = dialog_->greyedoutRB;
-		break;
-	case InsetNoteParams::Shaded:
-		//rb = dialog_->shadedRB;
-		rb = dialog_->greyedoutRB;
-		break;
 	case InsetNoteParams::Note:
 		rb = dialog_->noteRB;
 		break;
@@ -66,6 +57,12 @@ void QNote::update_contents()
 		break;
 	case InsetNoteParams::Greyedout:
 		rb = dialog_->greyedoutRB;
+		break;
+	case InsetNoteParams::Framed:
+		rb = dialog_->framedRB;
+		break;
+	case InsetNoteParams::Shaded:
+		rb = dialog_->shadedRB;
 		break;
 	}
 
@@ -81,6 +78,10 @@ void QNote::apply()
 		type = InsetNoteParams::Greyedout;
 	else if (dialog_->commentRB->isChecked())
 		type = InsetNoteParams::Comment;
+	else if (dialog_->framedRB->isChecked())
+		type = InsetNoteParams::Framed;
+	else if (dialog_->shadedRB->isChecked())
+		type = InsetNoteParams::Shaded;
 	else
 		type = InsetNoteParams::Note;
 

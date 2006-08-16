@@ -33,6 +33,8 @@ QNoteDialog::QNoteDialog(QNote * form)
     connect( noteRB, SIGNAL( toggled(bool) ), this, SLOT( change_adaptor() ) );
     connect( greyedoutRB, SIGNAL( toggled(bool) ), this, SLOT( change_adaptor() ) );
     connect( commentRB, SIGNAL( toggled(bool) ), this, SLOT( change_adaptor() ) );
+    connect( framedRB, SIGNAL( toggled(bool) ), this, SLOT( change_adaptor() ) );
+    connect( shadedRB, SIGNAL( toggled(bool) ), this, SLOT( change_adaptor() ) );
 }
 
 
