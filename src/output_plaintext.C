@@ -23,6 +23,7 @@
 #include "ParagraphParameters.h"
 
 #include "support/lstrings.h"
+#include "support/unicode.h"
 
 #include <fstream>
 
@@ -232,8 +233,9 @@ void asciiParagraph(Buffer const & buf,
 				"writeAsciiFile: NULL char in structure." << endl;
 			break;
 
-		default:
-			word += c;
+		default: {
+			std::vector<char> const tmp = ucs4_to_utf8(c);
+			word.append(tmp.begin(), tmp.end());
 			if (runparams.linelen > 0 &&
 			    currlinelen + word.length() > runparams.linelen)
 			{
@@ -243,6 +245,7 @@ void asciiParagraph(Buffer const & buf,
 				currlinelen = p.first;
 			}
 			break;
+		}
 		}
 	}
 	os << word;
