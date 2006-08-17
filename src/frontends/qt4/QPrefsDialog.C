@@ -97,8 +97,8 @@ void setComboxFont(QComboBox * cb, string const & family, string const & foundry
 {
 	string const name = makeFontName(family, foundry);
 	for (int i = 0; i < cb->count(); ++i) {
-		if (fromqstr(cb->text(i)) == name) {
-			cb->setCurrentItem(i);
+		if (fromqstr(cb->itemText(i)) == name) {
+			cb->setCurrentIndex(i);
 			return;
 		}
 	}
@@ -107,9 +107,9 @@ void setComboxFont(QComboBox * cb, string const & family, string const & foundry
 
 	// We count in reverse in order to prefer the Xft foundry
 	for (int i = cb->count() - 1; i >= 0; --i) {
-		pair<string, string> tmp = parseFontName(fromqstr(cb->text(i)));
+		pair<string, string> tmp = parseFontName(fromqstr(cb->itemText(i)));
 		if (compare_no_case(tmp.first, family) == 0) {
-			cb->setCurrentItem(i);
+			cb->setCurrentIndex(i);
 			return;
 		}
 	}
@@ -119,9 +119,9 @@ void setComboxFont(QComboBox * cb, string const & family, string const & foundry
 
 	// We count in reverse in order to prefer the Xft foundry
 	for (int i = cb->count() - 1; i >= 0; --i) {
-		pair<string, string> tmp = parseFontName(fromqstr(cb->text(i)));
+		pair<string, string> tmp = parseFontName(fromqstr(cb->itemText(i)));
 		if (compare_no_case(tmp.first, tmpfam.first) == 0) {
-			cb->setCurrentItem(i);
+			cb->setCurrentIndex(i);
 			return;
 		}
 	}
@@ -152,10 +152,10 @@ void setComboxFont(QComboBox * cb, string const & family, string const & foundry
 	lyxerr << "Apparent font is " << default_font_name << endl;
 
 	for (int i = 0; i < cb->count(); ++i) {
-		lyxerr << "Looking at " << fromqstr(cb->text(i)) << endl;
-		if (compare_no_case(fromqstr(cb->text(i)),
+		lyxerr << "Looking at " << fromqstr(cb->itemText(i)) << endl;
+		if (compare_no_case(fromqstr(cb->itemText(i)),
 				    default_font_name) == 0) {
-			cb->setCurrentItem(i);
+			cb->setCurrentIndex(i);
 			return;
 		}
 	}
@@ -329,7 +329,7 @@ void PrefLatex::apply(LyXRC & rc) const
 	rc.auto_reset_options = latexAutoresetCB->isChecked();
 	rc.view_dvi_paper_option = fromqstr(latexDviPaperED->text());
 	rc.default_papersize =
-		form_->controller().toPaperSize(latexPaperSizeCO->currentItem());
+		form_->controller().toPaperSize(latexPaperSizeCO->currentIndex());
 }
 
 
@@ -361,9 +361,9 @@ PrefScreenFonts::PrefScreenFonts(QPrefs * form, QWidget * parent)
 	QFontDatabase fontdb;
 	QStringList families(fontdb.families());
 	for (QStringList::Iterator it = families.begin(); it != families.end(); ++it) {
-		screenRomanCO->insertItem(*it);
-		screenSansCO->insertItem(*it);
-		screenTypewriterCO->insertItem(*it);
+		screenRomanCO->addItem(*it);
+		screenSansCO->addItem(*it);
+		screenTypewriterCO->addItem(*it);
 	}
 	connect(screenRomanCO, SIGNAL(activated(const QString&)),
 		this, SIGNAL(changed()));
@@ -554,7 +554,7 @@ void PrefColors::change_color()
 	int const row = lyxObjectsLW->currentRow();
 	QString color = newcolors_[row];
 	QColor c(QColorDialog::getColor(QColor(color),
-		qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget()));
+		qApp->focusWidget()));
 
 	if (c.name()!=color) {
 		newcolors_[row] = c.name();
@@ -601,14 +601,14 @@ PrefDisplay::PrefDisplay(QWidget * parent)
 
 void PrefDisplay::apply(LyXRC & rc) const
 {
-	switch (instantPreviewCO->currentItem()) {
+	switch (instantPreviewCO->currentIndex()) {
 	case 0: rc.preview = LyXRC::PREVIEW_OFF; break;
 	case 1:	rc.preview = LyXRC::PREVIEW_NO_MATH; break;
 	case 2:	rc.preview = LyXRC::PREVIEW_ON;	break;
 	}
 
 	lyx::graphics::DisplayType dtype;
-	switch (displayGraphicsCO->currentItem()) {
+	switch (displayGraphicsCO->currentIndex()) {
 	case 3:	dtype = lyx::graphics::NoDisplay; break;
 	case 2:	dtype = lyx::graphics::ColorDisplay; break;
 	case 1: dtype = lyx::graphics::GrayscaleDisplay;	break;
@@ -767,14 +767,14 @@ PrefSpellchecker::PrefSpellchecker(QPrefs * form, QWidget * parent)
 	connect(inputEncodingCB, SIGNAL(toggled(bool)),
 		this, SIGNAL(changed()));
 
-	spellCommandCO->insertItem(qt_("ispell"));
-	spellCommandCO->insertItem(qt_("aspell"));
-	spellCommandCO->insertItem(qt_("hspell"));
+	spellCommandCO->addItem(qt_("ispell"));
+	spellCommandCO->addItem(qt_("aspell"));
+	spellCommandCO->addItem(qt_("hspell"));
 #ifdef USE_PSPELL
-	spellCommandCO->insertItem(qt_("pspell (library)"));
+	spellCommandCO->addItem(qt_("pspell (library)"));
 #else
 #ifdef USE_ASPELL
-	spellCommandCO->insertItem(qt_("aspell (library)"));
+	spellCommandCO->addItem(qt_("aspell (library)"));
 #endif
 #endif
 }
@@ -782,7 +782,7 @@ PrefSpellchecker::PrefSpellchecker(QPrefs * form, QWidget * parent)
 
 void PrefSpellchecker::apply(LyXRC & rc) const
 {
-	switch (spellCommandCO->currentItem()) {
+	switch (spellCommandCO->currentIndex()) {
 		case 0:
 		case 1:
 		case 2:
@@ -898,8 +898,8 @@ void PrefConverters::updateGui()
 	Formats::const_iterator cit = form_->formats().begin();
 	Formats::const_iterator end = form_->formats().end();
 	for (; cit != end; ++cit) {
-		converterFromCO->insertItem(toqstr(cit->prettyname()));
-		converterToCO->insertItem(toqstr(cit->prettyname()));
+		converterFromCO->addItem(toqstr(cit->prettyname()));
+		converterToCO->addItem(toqstr(cit->prettyname()));
 	}
 
 	convertersLW->clear();
@@ -954,9 +954,9 @@ void PrefConverters::converter_changed()
 void PrefConverters::updateButtons()
 {
 	Format const & from(form_->formats().get(
-		converterFromCO->currentItem()));
+		converterFromCO->currentIndex()));
 	Format const & to(form_->formats().get(
-		converterToCO->currentItem()));
+		converterToCO->currentIndex()));
 	int const sel = form_->converters().getNumber(from.name(), to.name());
 	bool const known = !(sel < 0);
 	bool const valid = !(converterED->text().isEmpty()
@@ -981,8 +981,8 @@ void PrefConverters::updateButtons()
 // specify unique from/to or it doesn't appear. This is really bad UI
 void PrefConverters::new_converter()
 {
-	Format const & from(form_->formats().get(converterFromCO->currentItem()));
-	Format const & to(form_->formats().get(converterToCO->currentItem()));
+	Format const & from(form_->formats().get(converterFromCO->currentIndex()));
+	Format const & to(form_->formats().get(converterToCO->currentIndex()));
 	string const command(fromqstr(converterED->text()));
 	string const flags(fromqstr(converterFlagED->text()));
 
@@ -1006,8 +1006,8 @@ void PrefConverters::modify_converter()
 	QString const current_text =
 		convertersLW->currentItem()->text();
 
-	Format const & from(form_->formats().get(converterFromCO->currentItem()));
-	Format const & to(form_->formats().get(converterToCO->currentItem()));
+	Format const & from(form_->formats().get(converterFromCO->currentIndex()));
+	Format const & to(form_->formats().get(converterToCO->currentIndex()));
 	string flags(fromqstr(converterFlagED->text()));
 	string name(fromqstr(converterED->text()));
 
@@ -1027,8 +1027,8 @@ void PrefConverters::modify_converter()
 
 void PrefConverters::remove_converter()
 {
-	Format const & from(form_->formats().get(converterFromCO->currentItem()));
-	Format const & to(form_->formats().get(converterToCO->currentItem()));
+	Format const & from(form_->formats().get(converterFromCO->currentIndex()));
+	Format const & to(form_->formats().get(converterToCO->currentIndex()));
 	form_->converters().erase(from.name(), to.name());
 	updateGui();
 }
@@ -1077,7 +1077,7 @@ void PrefCopiers::update()
 	for (Formats::const_iterator it = form_->formats().begin(),
 		     end = form_->formats().end();
 	     it != end; ++it) {
-		copierFormatCO->insertItem(toqstr(it->prettyname()));
+		copierFormatCO->addItem(toqstr(it->prettyname()));
 	}
 
 	// The browser widget
@@ -1150,7 +1150,7 @@ void PrefCopiers::switch_copierLB(int row)
 	copierED->clear();
 	int const combo_size = copierFormatCO->count();
 	for (int i = 0; i < combo_size; ++i) {
-		QString const text = copierFormatCO->text(i);
+		QString const text = copierFormatCO->itemText(i);
 		if (text == gui_name) {
 			copierFormatCO->setCurrentIndex(i);
 			copierED->setText(command);
@@ -1546,7 +1546,7 @@ PrefLanguage::PrefLanguage(QWidget * parent)
 	std::vector<LanguagePair>::const_iterator lit  = langs.begin();
 	std::vector<LanguagePair>::const_iterator lend = langs.end();
 	for (; lit != lend; ++lit) {
-		defaultLanguageCO->insertItem(toqstr(lit->first));
+		defaultLanguageCO->addItem(toqstr(lit->first));
 	}
 }
 
@@ -1563,7 +1563,7 @@ void PrefLanguage::apply(LyXRC & rc) const
 	rc.language_package = fromqstr(languagePackageED->text());
 	rc.language_command_begin = fromqstr(startCommandED->text());
 	rc.language_command_end = fromqstr(endCommandED->text());
-	rc.default_language = lang_[defaultLanguageCO->currentItem()];
+	rc.default_language = lang_[defaultLanguageCO->currentIndex()];
 }
 
 
@@ -1719,7 +1719,7 @@ PrefUserInterface::PrefUserInterface(QPrefs * form, QWidget * parent)
 		this, SIGNAL(changed()));
 	connect(lastfilesSB, SIGNAL(valueChanged(int)),
 		this, SIGNAL(changed()));
-	lastfilesSB->setMaxValue(maxlastfiles);
+	lastfilesSB->setMaximum(maxlastfiles);
 }
 
 
