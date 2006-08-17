@@ -95,7 +95,7 @@ QDelimiterDialog::QDelimiterDialog(QMathDelimiter * form)
 	connect(closePB, SIGNAL(clicked()), this, SLOT(accept()));
 	connect(insertPB, SIGNAL(clicked()), this, SLOT(insertClicked()));
 
-	setCaption(qt_("LyX: Delimiters"));
+	setWindowTitle(qt_("LyX: Delimiters"));
 
 	for (int i = 0; *delim[i]; ++i) {
 		QPixmap pm = QPixmap(toqstr(find_xpm(delim[i])));
