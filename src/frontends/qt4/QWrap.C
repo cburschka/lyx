@@ -67,7 +67,7 @@ void QWrap::apply()
 
 	params.width = LyXLength(value, unit);
 
-	switch (dialog_->valignCO->currentItem()) {
+	switch (dialog_->valignCO->currentIndex()) {
 	case 0:
 		params.placement.erase();
 		break;
@@ -115,7 +115,7 @@ void QWrap::update_contents()
 	else if (params.placement == "p")
 		item = 3;
 
-	dialog_->valignCO->setCurrentItem(item);
+	dialog_->valignCO->setCurrentIndex(item);
 }
 
 } // namespace frontend
