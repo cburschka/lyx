@@ -123,7 +123,7 @@ void QGraphicsDialog::change_bb()
 
 void QGraphicsDialog::change_WUnit()
 {
-	bool useHeight = (widthUnit->currentItem() > 0);
+	bool useHeight = (widthUnit->currentIndex() > 0);
 	Height->setEnabled(useHeight);
 	heightUnit->setEnabled(useHeight);
 	heightL->setEnabled(useHeight);
