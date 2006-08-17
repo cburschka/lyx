@@ -54,7 +54,7 @@ void QDialogView::show()
 	if (dialog().controller().exitEarly())
 		return;
 
-	form()->setCaption(toqstr("LyX: " + getTitle()));
+	form()->setWindowTitle(toqstr("LyX: " + getTitle()));
 
 	if (form()->isVisible()) {
 		form()->raise();
