@@ -20,8 +20,8 @@
 class QFontExample : public QWidget {
 
 public:
-	QFontExample(QWidget * parent, const char * name="")
-		: QWidget(parent, name) {}
+	QFontExample(QWidget * parent)
+		: QWidget(parent) {}
 
 	void set(QFont const & font, QString const & text);
 
