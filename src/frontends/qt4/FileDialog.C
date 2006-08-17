@@ -81,7 +81,7 @@ FileDialog::Result const FileDialog::save(string const & path,
 #ifdef USE_NATIVE_FILEDIALOG
 	string const startsWith = makeAbsPath(suggested, path);
 	result.second = fromqstr(QFileDialog::getSaveFileName(
-		qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(),
+		qApp->focusWidget(),
 		title_.c_str(), toqstr(startsWith), toqstr(filters.as_string()) ));
 #else
 	LyXFileDialog dlg(title_, path, filters, private_->b1, private_->b2);
@@ -95,7 +95,7 @@ FileDialog::Result const FileDialog::save(string const & path,
 	int res = dlg.exec();
 	lyxerr[Debug::GUI] << "result " << res << endl;
 	if (res == QDialog::Accepted)
-		result.second = fromqstr(dlg.selectedFile());
+		result.second = fromqstr(dlg.selectedFiles()[0]);
 	dlg.hide();
 #endif
 	return result;
@@ -115,7 +115,7 @@ FileDialog::Result const FileDialog::open(string const & path,
 #ifdef USE_NATIVE_FILEDIALOG
 	string const startsWith = makeAbsPath(suggested, path);
 	result.second = fromqstr(QFileDialog::getOpenFileName(
-		qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(), 
+		qApp->focusWidget(), 
 		title_.c_str(), toqstr(startsWith), toqstr(filters.as_string()) ));
 #else
 	LyXFileDialog dlg(title_, path, filters, private_->b1, private_->b2);
@@ -127,7 +127,7 @@ FileDialog::Result const FileDialog::open(string const & path,
 	int res = dlg.exec();
 	lyxerr[Debug::GUI] << "result " << res << endl;
 	if (res == QDialog::Accepted)
-		result.second = fromqstr(dlg.selectedFile());
+		result.second = fromqstr(dlg.selectedFiles()[0]);
 	dlg.hide();
 #endif
 	return result;
@@ -145,7 +145,7 @@ FileDialog::Result const FileDialog::opendir(string const & path,
 #ifdef USE_NATIVE_FILEDIALOG
 	string const startsWith = makeAbsPath(suggested, path);
 	result.second = fromqstr(QFileDialog::getExistingDirectory(
-		qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(),
+		qApp->focusWidget(),
 		title_.c_str(),toqstr(startsWith) ));
 #else
 	FileFilterList const filter(_("Directories"));
@@ -161,7 +161,7 @@ FileDialog::Result const FileDialog::opendir(string const & path,
 	int res = dlg.exec();
 	lyxerr[Debug::GUI] << "result " << res << endl;
 	if (res == QDialog::Accepted)
-		result.second = fromqstr(dlg.selectedFile());
+		result.second = fromqstr(dlg.selectedFiles()[0]);
 	dlg.hide();
 #endif
 	return result;

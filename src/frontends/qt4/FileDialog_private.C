@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "FileDialog_private.h"
+
 #include "qt_helpers.h"
 
 #include "support/filefilterlist.h"
@@ -48,11 +49,12 @@ LyXFileDialog::LyXFileDialog(string const & t,
 			     lyx::support::FileFilterList const & filters,
 			     FileDialog::Button const & b1,
 			     FileDialog::Button const & b2)
-	: QFileDialog(qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(),
+				 // FIXME replace that with theApp->gui()->currentView()
+	: QFileDialog(qApp->focusWidget(),
 		      toqstr(t), toqstr(p), toqstr(filters.as_string())),
 		      b1_(0), b2_(0)
 {
-	setCaption(toqstr(t));
+	setWindowTitle(toqstr(t));
 
 	QList<QHBoxLayout *> layout = findChildren<QHBoxLayout *>();
 
@@ -77,9 +79,9 @@ LyXFileDialog::LyXFileDialog(string const & t,
 void LyXFileDialog::buttonClicked()
 {
 	if (sender() == b1_)
-		setDir(toqstr(b1_dir_));
+		setDirectory(toqstr(b1_dir_));
 	else if (sender() == b2_)
-		setDir(toqstr(b2_dir_));
+		setDirectory(toqstr(b2_dir_));
 }
 
 #include "FileDialog_private_moc.cpp"

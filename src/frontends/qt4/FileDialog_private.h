@@ -12,8 +12,8 @@
 #ifndef FILEDIALOG_PRIVATE_H
 #define FILEDIALOG_PRIVATE_H
 
-
 #include "frontends/FileDialog.h"
+
 #include <QFileDialog>
 
 namespace lyx {
