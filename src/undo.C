@@ -168,6 +168,7 @@ bool textUndoOrRedo(BufferView & bv,
 		// We stored the full cell here as there is not much to be
 		// gained by storing just 'a few' paragraphs (most if not
 		// all math inset cells have just one paragraph!)
+		//lyxerr << "undo.array=" << undo.array <<endl;
 		asArray(undo.array, dit.cell());
 	} else {
 		// Some finer machinery is needed here.
@@ -251,7 +252,9 @@ void recordUndoInset(LCursor & cur, Undo::undo_kind kind)
 {
 	LCursor c = cur;
 	c.pop();
-	recordUndo(c, kind);
+	Buffer * buf = cur.bv().buffer();
+	doRecordUndo(kind, c, c.pit(), c.pit(),	cur,
+		     buf->params(), false, buf->undostack());
 }
 
 
