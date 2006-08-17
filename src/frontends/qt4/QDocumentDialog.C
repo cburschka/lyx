@@ -113,20 +113,20 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	textLayoutModule->skipLE->setValidator(unsignedLengthValidator(
 		textLayoutModule->skipLE));
 
-	textLayoutModule->skipCO->insertItem(qt_("SmallSkip"));
-	textLayoutModule->skipCO->insertItem(qt_("MedSkip"));
-	textLayoutModule->skipCO->insertItem(qt_("BigSkip"));
-	textLayoutModule->skipCO->insertItem(qt_("Length"));
+	textLayoutModule->skipCO->addItem(qt_("SmallSkip"));
+	textLayoutModule->skipCO->addItem(qt_("MedSkip"));
+	textLayoutModule->skipCO->addItem(qt_("BigSkip"));
+	textLayoutModule->skipCO->addItem(qt_("Length"));
 	// remove the %-items from the unit choice
 	textLayoutModule->skipLengthCO->noPercents();
 	textLayoutModule->lspacingCO->insertItem(
-		qt_("Single"), Spacing::Single);
+		Spacing::Single, qt_("Single"));
 	textLayoutModule->lspacingCO->insertItem(
-		qt_("OneHalf"), Spacing::Onehalf);
+		Spacing::Onehalf, qt_("OneHalf"));
 	textLayoutModule->lspacingCO->insertItem(
-		qt_("Double"), Spacing::Double);
+		Spacing::Double, qt_("Double"));
 	textLayoutModule->lspacingCO->insertItem(
-		qt_("Custom"), Spacing::Other);
+		Spacing::Other, qt_("Custom"));
 
 	// initialize the length validator
 	addCheckedLineEdit(form_->bcview(), textLayoutModule->skipLE);
@@ -153,28 +153,28 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 		QString font = toqstr(tex_fonts_roman_gui[n]);
 		if (!form_->controller().isFontAvailable(tex_fonts_roman[n]))
 			font += qt_(" (not installed)");
-		fontModule->fontsRomanCO->insertItem(font);
+		fontModule->fontsRomanCO->addItem(font);
 	}
 	for (int n = 0; tex_fonts_sans[n][0]; ++n) {
 		QString font = toqstr(tex_fonts_sans_gui[n]);
 		if (!form_->controller().isFontAvailable(tex_fonts_sans[n]))
 			font += qt_(" (not installed)");
-		fontModule->fontsSansCO->insertItem(font);
+		fontModule->fontsSansCO->addItem(font);
 	}
 	for (int n = 0; tex_fonts_monospaced[n][0]; ++n) {
 		QString font = toqstr(tex_fonts_monospaced_gui[n]);
 		if (!form_->controller().isFontAvailable(tex_fonts_monospaced[n]))
 			font += qt_(" (not installed)");
-		fontModule->fontsTypewriterCO->insertItem(font);
+		fontModule->fontsTypewriterCO->addItem(font);
 	}
 
-	fontModule->fontsizeCO->insertItem(qt_("default"));
-	fontModule->fontsizeCO->insertItem(qt_("10"));
-	fontModule->fontsizeCO->insertItem(qt_("11"));
-	fontModule->fontsizeCO->insertItem(qt_("12"));
+	fontModule->fontsizeCO->addItem(qt_("default"));
+	fontModule->fontsizeCO->addItem(qt_("10"));
+	fontModule->fontsizeCO->addItem(qt_("11"));
+	fontModule->fontsizeCO->addItem(qt_("12"));
 
 	for (int n = 0; ControlDocument::fontfamilies_gui[n][0]; ++n)
-		fontModule->fontsDefaultCO->insertItem(
+		fontModule->fontsDefaultCO->addItem(
 			qt_(ControlDocument::fontfamilies_gui[n]));
 
 
@@ -194,11 +194,11 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	connect(pageLayoutModule->landscapeRB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 	connect(pageLayoutModule->facingPagesCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 	connect(pageLayoutModule->pagestyleCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	pageLayoutModule->pagestyleCO->insertItem(qt_("default"));
-	pageLayoutModule->pagestyleCO->insertItem(qt_("empty"));
-	pageLayoutModule->pagestyleCO->insertItem(qt_("plain"));
-	pageLayoutModule->pagestyleCO->insertItem(qt_("headings"));
-	pageLayoutModule->pagestyleCO->insertItem(qt_("fancy"));
+	pageLayoutModule->pagestyleCO->addItem(qt_("default"));
+	pageLayoutModule->pagestyleCO->addItem(qt_("empty"));
+	pageLayoutModule->pagestyleCO->addItem(qt_("plain"));
+	pageLayoutModule->pagestyleCO->addItem(qt_("headings"));
+	pageLayoutModule->pagestyleCO->addItem(qt_("fancy"));
 	addCheckedLineEdit(form_->bcview(), pageLayoutModule->paperheightLE,
 		pageLayoutModule->paperheightL);
 	addCheckedLineEdit(form_->bcview(), pageLayoutModule->paperwidthLE,
@@ -206,17 +206,17 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 
 	// paper
 	QComboBox * cb = pageLayoutModule->papersizeCO;
-	cb->insertItem(qt_("Default"));
-	cb->insertItem(qt_("Custom"));
-	cb->insertItem(qt_("US letter"));
-	cb->insertItem(qt_("US legal"));
-	cb->insertItem(qt_("US executive"));
-	cb->insertItem(qt_("A3"));
-	cb->insertItem(qt_("A4"));
-	cb->insertItem(qt_("A5"));
-	cb->insertItem(qt_("B3"));
-	cb->insertItem(qt_("B4"));
-	cb->insertItem(qt_("B5"));
+	cb->addItem(qt_("Default"));
+	cb->addItem(qt_("Custom"));
+	cb->addItem(qt_("US letter"));
+	cb->addItem(qt_("US legal"));
+	cb->addItem(qt_("US executive"));
+	cb->addItem(qt_("A3"));
+	cb->addItem(qt_("A4"));
+	cb->addItem(qt_("A5"));
+	cb->addItem(qt_("B3"));
+	cb->addItem(qt_("B4"));
+	cb->addItem(qt_("B5"));
 	// remove the %-items from the unit choice
 	pageLayoutModule->paperwidthUnitCO->noPercents();
 	pageLayoutModule->paperheightUnitCO->noPercents();
@@ -293,21 +293,21 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	vector<LanguagePair>::const_iterator lit  = langs.begin();
 	vector<LanguagePair>::const_iterator lend = langs.end();
 	for (; lit != lend; ++lit) {
-		langModule->languageCO->insertItem(
+		langModule->languageCO->addItem(
 			toqstr(lit->first));
 	}
 
 	int k = 0;
 	while (encodings[k]) {
-		langModule->encodingCO->insertItem(qt_(encodings[k++]));
+		langModule->encodingCO->addItem(qt_(encodings[k++]));
 	}
 
-	langModule->quoteStyleCO->insertItem(qt_("``text''"));
-	langModule->quoteStyleCO->insertItem(qt_("''text''"));
-	langModule->quoteStyleCO->insertItem(qt_(",,text``"));
-	langModule->quoteStyleCO->insertItem(qt_(",,text''"));
-	langModule->quoteStyleCO->insertItem(qt_("<<text>>"));
-	langModule->quoteStyleCO->insertItem(qt_(">>text<<"));
+	langModule->quoteStyleCO->addItem(qt_("``text''"));
+	langModule->quoteStyleCO->addItem(qt_("''text''"));
+	langModule->quoteStyleCO->addItem(qt_(",,text``"));
+	langModule->quoteStyleCO->addItem(qt_(",,text''"));
+	langModule->quoteStyleCO->addItem(qt_("<<text>>"));
+	langModule->quoteStyleCO->addItem(qt_(">>text<<"));
 
 
 
@@ -333,9 +333,9 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	connect(biblioModule->citeJurabibRB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 	connect(biblioModule->bibtopicCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 	// biblio
-	biblioModule->citeStyleCO->insertItem(qt_("Author-year"));
-	biblioModule->citeStyleCO->insertItem(qt_("Numerical"));
-	biblioModule->citeStyleCO->setCurrentItem(0);
+	biblioModule->citeStyleCO->addItem(qt_("Author-year"));
+	biblioModule->citeStyleCO->addItem(qt_("Numerical"));
+	biblioModule->citeStyleCO->setCurrentIndex(0);
 
 
 
@@ -355,17 +355,17 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	// packages
 	for (int n = 0; tex_graphics[n][0]; ++n) {
 		QString enc = tex_graphics[n];
-		latexModule->psdriverCO->insertItem(enc);
+		latexModule->psdriverCO->addItem(enc);
 	}
 	// latex
 	for (LyXTextClassList::const_iterator cit = textclasslist.begin();
 	     cit != textclasslist.end(); ++cit) {
 		if (cit->isTeXClassAvailable()) {
-			latexModule->classCO->insertItem(toqstr(cit->description()));
+			latexModule->classCO->addItem(toqstr(cit->description()));
 		} else {
 			string item =
 				bformat(_("Unavailable: %1$s"), cit->description());
-			latexModule->classCO->insertItem(toqstr(item));
+			latexModule->classCO->addItem(toqstr(item));
 		}
 	}
 
@@ -462,12 +462,12 @@ void QDocumentDialog::enableSkip(bool skip)
 	textLayoutModule->skipLE->setEnabled(skip);
 	textLayoutModule->skipLengthCO->setEnabled(skip);
 	if (skip)
-		setSkip(textLayoutModule->skipCO->currentItem());
+		setSkip(textLayoutModule->skipCO->currentIndex());
 }
 
 void QDocumentDialog::portraitChanged()
 {
-	setMargins(pageLayoutModule->papersizeCO->currentItem());
+	setMargins(pageLayoutModule->papersizeCO->currentIndex());
 }
 
 void QDocumentDialog::setMargins(bool custom)
@@ -526,15 +526,15 @@ void QDocumentDialog::setCustomMargins(bool custom)
 void QDocumentDialog::updateFontsize(string const & items, string const & sel)
 {
 	fontModule->fontsizeCO->clear();
-	fontModule->fontsizeCO->insertItem(qt_("default"));
+	fontModule->fontsizeCO->addItem(qt_("default"));
 
 	for (int n = 0; !token(items,'|',n).empty(); ++n)
 		fontModule->fontsizeCO->
-			insertItem(toqstr(token(items,'|',n)));
+			addItem(toqstr(token(items,'|',n)));
 
 	for (int n = 0; n < fontModule->fontsizeCO->count(); ++n) {
-		if (fromqstr(fontModule->fontsizeCO->text(n)) == sel) {
-			fontModule->fontsizeCO->setCurrentItem(n);
+		if (fromqstr(fontModule->fontsizeCO->itemText(n)) == sel) {
+			fontModule->fontsizeCO->setCurrentIndex(n);
 			break;
 		}
 	}
@@ -573,15 +573,15 @@ void QDocumentDialog::ttChanged(int item)
 void QDocumentDialog::updatePagestyle(string const & items, string const & sel)
 {
 	pageLayoutModule->pagestyleCO->clear();
-	pageLayoutModule->pagestyleCO->insertItem("default");
+	pageLayoutModule->pagestyleCO->addItem("default");
 
 	for (int n=0; !token(items,'|',n).empty(); ++n)
 		pageLayoutModule->pagestyleCO->
-			insertItem(toqstr(token(items,'|',n)));
+			addItem(toqstr(token(items,'|',n)));
 
 	for (int n = 0; n<pageLayoutModule->pagestyleCO->count(); ++n) {
-		if (fromqstr(pageLayoutModule->pagestyleCO->text(n))==sel) {
-			pageLayoutModule->pagestyleCO->setCurrentItem(n);
+		if (fromqstr(pageLayoutModule->pagestyleCO->itemText(n))==sel) {
+			pageLayoutModule->pagestyleCO->setCurrentIndex(n);
 			break;
 		}
 	}
@@ -593,7 +593,7 @@ void QDocumentDialog::classChanged()
 	ControlDocument & cntrl = form_->controller();
 	BufferParams & params = cntrl.params();
 
-	lyx::textclass_type const tc = latexModule->classCO->currentItem();
+	lyx::textclass_type const tc = latexModule->classCO->currentIndex();
 
 	if (form_->controller().loadTextclass(tc)) {
 		params.textclass = tc;
@@ -601,7 +601,7 @@ void QDocumentDialog::classChanged()
 			params.useClassDefaults();
 		form_->update_contents();
 	} else {
-		latexModule->classCO->setCurrentItem(params.textclass);
+		latexModule->classCO->setCurrentIndex(params.textclass);
 	}
 }
 
@@ -646,7 +646,7 @@ void QDocumentDialog::apply(BufferParams & params)
 
 	if (biblioModule->citeNatbibRB->isChecked()) {
 		bool const use_numerical_citations =
-			biblioModule->citeStyleCO->currentItem();
+			biblioModule->citeStyleCO->currentIndex();
 		if (use_numerical_citations)
 			params.cite_engine = biblio::ENGINE_NATBIB_NUMERICAL;
 		else
@@ -662,7 +662,7 @@ void QDocumentDialog::apply(BufferParams & params)
 	if (langModule->defaultencodingCB->isChecked()) {
 		params.inputenc = "auto";
 	} else {
-		int i = langModule->encodingCO->currentItem();
+		int i = langModule->encodingCO->currentIndex();
 		if (i == 0) {
 			params.inputenc = "default";
 		} else {
@@ -671,7 +671,7 @@ void QDocumentDialog::apply(BufferParams & params)
 	}
 
 	InsetQuotes::quote_language lga = InsetQuotes::EnglishQ;
-	switch (langModule->quoteStyleCO->currentItem()) {
+	switch (langModule->quoteStyleCO->currentIndex()) {
 	case 0:
 		lga = InsetQuotes::EnglishQ;
 		break;
@@ -693,7 +693,7 @@ void QDocumentDialog::apply(BufferParams & params)
 	}
 	params.quotes_language = lga;
 
-	int const pos = langModule->languageCO->currentItem();
+	int const pos = langModule->languageCO->currentIndex();
 	params.language = languages.getLanguage(lang_[pos]);
 
 	// numbering
@@ -723,12 +723,12 @@ void QDocumentDialog::apply(BufferParams & params)
 
 	// text layout
 	params.textclass =
-		latexModule->classCO->currentItem();
+		latexModule->classCO->currentIndex();
 
 	params.pagestyle =
 		fromqstr(pageLayoutModule->pagestyleCO->currentText());
 
-	switch (textLayoutModule->lspacingCO->currentItem()) {
+	switch (textLayoutModule->lspacingCO->currentIndex()) {
 	case 0:
 		params.spacing().set(Spacing::Single);
 		break;
@@ -754,7 +754,7 @@ void QDocumentDialog::apply(BufferParams & params)
 	else
 		params.paragraph_separation = BufferParams::PARSEP_SKIP;
 
-	switch (textLayoutModule->skipCO->currentItem()) {
+	switch (textLayoutModule->skipCO->currentIndex()) {
 	case 0:
 		params.setDefSkip(VSpace(VSpace::SMALLSKIP));
 		break;
@@ -787,13 +787,13 @@ void QDocumentDialog::apply(BufferParams & params)
 
 	// fonts
 	params.fontsRoman =
-		tex_fonts_roman[fontModule->fontsRomanCO->currentItem()];
+		tex_fonts_roman[fontModule->fontsRomanCO->currentIndex()];
 
 	params.fontsSans =
-		tex_fonts_sans[fontModule->fontsSansCO->currentItem()];
+		tex_fonts_sans[fontModule->fontsSansCO->currentIndex()];
 
 	params.fontsTypewriter =
-		tex_fonts_monospaced[fontModule->fontsTypewriterCO->currentItem()];
+		tex_fonts_monospaced[fontModule->fontsTypewriterCO->currentIndex()];
 
 	params.fontsSansScale = fontModule->scaleSansSB->value();
 
@@ -804,9 +804,9 @@ void QDocumentDialog::apply(BufferParams & params)
 	params.fontsOSF = fontModule->fontOsfCB->isChecked();
 
 	params.fontsDefaultFamily = ControlDocument::fontfamilies[
-		fontModule->fontsDefaultCO->currentItem()];
+		fontModule->fontsDefaultCO->currentIndex()];
 
-	if (fontModule->fontsizeCO->currentItem() == 0)
+	if (fontModule->fontsizeCO->currentIndex() == 0)
 		params.fontsize = "default";
 	else
 		params.fontsize =
@@ -814,10 +814,10 @@ void QDocumentDialog::apply(BufferParams & params)
 
 	// paper
 	params.papersize = PAPER_SIZE(
-		pageLayoutModule->papersizeCO->currentItem());
+		pageLayoutModule->papersizeCO->currentIndex());
 
 	// custom, A3, B3 and B4 paper sizes need geometry
-	int psize = pageLayoutModule->papersizeCO->currentItem();
+	int psize = pageLayoutModule->papersizeCO->currentIndex();
 	bool geom_papersize = (psize == 1 || psize == 5 || psize == 8 || psize == 9);
 
 	params.paperwidth = widgetsToLength(pageLayoutModule->paperwidthLE,
@@ -917,7 +917,7 @@ void QDocumentDialog::update(BufferParams const & params)
 		params.cite_engine == biblio::ENGINE_NATBIB_NUMERICAL ||
 		params.cite_engine == biblio::ENGINE_NATBIB_AUTHORYEAR);
 
-	biblioModule->citeStyleCO->setCurrentItem(
+	biblioModule->citeStyleCO->setCurrentIndex(
 		params.cite_engine == biblio::ENGINE_NATBIB_NUMERICAL);
 
 	biblioModule->citeJurabibRB->setChecked(
@@ -929,9 +929,9 @@ void QDocumentDialog::update(BufferParams const & params)
 	// language & quotes
 	int const pos = int(findPos(lang_,
 				    params.language->lang()));
-	langModule->languageCO->setCurrentItem(pos);
+	langModule->languageCO->setCurrentIndex(pos);
 
-	langModule->quoteStyleCO->setCurrentItem(
+	langModule->quoteStyleCO->setCurrentIndex(
 		params.quotes_language);
 
 	langModule->defaultencodingCB->setChecked(true);
@@ -939,12 +939,12 @@ void QDocumentDialog::update(BufferParams const & params)
 	if (params.inputenc != "auto") {
 		langModule->defaultencodingCB->setChecked(false);
 		if (params.inputenc == "default") {
-			langModule->encodingCO->setCurrentItem(0);
+			langModule->encodingCO->setCurrentIndex(0);
 		} else {
 			int i = 0;
 			while (encodings[i]) {
 				if (encodings[i] == params.inputenc)
-					langModule->encodingCO->setCurrentItem(i);
+					langModule->encodingCO->setCurrentIndex(i);
 				++i;
 			}
 		}
@@ -955,11 +955,11 @@ void QDocumentDialog::update(BufferParams const & params)
 	int const max_toclevel = form_->controller().textClass().max_toclevel();
 	if (form_->controller().textClass().hasTocLevels()) {
 		numberingModule->setEnabled(true);
-		numberingModule->depthSL->setMinValue(min_toclevel - 1);
-		numberingModule->depthSL->setMaxValue(max_toclevel);
+		numberingModule->depthSL->setMinimum(min_toclevel - 1);
+		numberingModule->depthSL->setMaximum(max_toclevel);
 		numberingModule->depthSL->setValue(params.secnumdepth);
-		numberingModule->tocSL->setMinValue(min_toclevel - 1);
-		numberingModule->tocSL->setMaxValue(max_toclevel);
+		numberingModule->tocSL->setMaximum(min_toclevel - 1);
+		numberingModule->tocSL->setMaximum(max_toclevel);
 		numberingModule->tocSL->setValue(params.tocdepth);
 		updateNumbering();
 	} else {
@@ -980,7 +980,7 @@ void QDocumentDialog::update(BufferParams const & params)
 	for (int n = 0; n < nitem ; ++n) {
 		QString enc = tex_graphics[n];
 		if (enc == text) {
-			latexModule->psdriverCO->setCurrentItem(n);
+			latexModule->psdriverCO->setCurrentIndex(n);
 		}
 	}
 
@@ -998,12 +998,12 @@ void QDocumentDialog::update(BufferParams const & params)
 	}
 
 	// text layout
-	latexModule->classCO->setCurrentItem(params.textclass);
+	latexModule->classCO->setCurrentIndex(params.textclass);
 
 	updatePagestyle(form_->controller().textClass().opt_pagestyle(),
 				 params.pagestyle);
 
-	textLayoutModule->lspacingCO->setCurrentItem(nitem);
+	textLayoutModule->lspacingCO->setCurrentIndex(nitem);
 	if (params.spacing().getSpace() == Spacing::Other) {
 		textLayoutModule->lspacingLE->setText(
 			toqstr(params.spacing().getValueAsString()));
@@ -1041,7 +1041,7 @@ void QDocumentDialog::update(BufferParams const & params)
 		skip = 0;
 		break;
 	}
-	textLayoutModule->skipCO->setCurrentItem(skip);
+	textLayoutModule->skipCO->setCurrentIndex(skip);
 	setSkip(skip);
 
 	textLayoutModule->twoColumnCB->setChecked(
@@ -1062,15 +1062,15 @@ void QDocumentDialog::update(BufferParams const & params)
 
 	int n = findToken(tex_fonts_roman, params.fontsRoman);
 	if (n >= 0)
-		fontModule->fontsRomanCO->setCurrentItem(n);
+		fontModule->fontsRomanCO->setCurrentIndex(n);
 
 	n = findToken(tex_fonts_sans, params.fontsSans);
 	if (n >= 0)
-		fontModule->fontsSansCO->setCurrentItem(n);
+		fontModule->fontsSansCO->setCurrentIndex(n);
 
 	n = findToken(tex_fonts_monospaced, params.fontsTypewriter);
 	if (n >= 0)
-		fontModule->fontsTypewriterCO->setCurrentItem(n);
+		fontModule->fontsTypewriterCO->setCurrentIndex(n);
 
 	fontModule->fontScCB->setChecked(params.fontsSC);
 	fontModule->fontOsfCB->setChecked(params.fontsOSF);
@@ -1087,11 +1087,11 @@ void QDocumentDialog::update(BufferParams const & params)
 		form_->controller().providesScale(params.fontsTypewriter));
 	n = findToken(ControlDocument::fontfamilies, params.fontsDefaultFamily);
 	if (n >= 0)
-		fontModule->fontsDefaultCO->setCurrentItem(n);
+		fontModule->fontsDefaultCO->setCurrentIndex(n);
 
 	// paper
 	int const psize = params.papersize;
-	pageLayoutModule->papersizeCO->setCurrentItem(psize);
+	pageLayoutModule->papersizeCO->setCurrentIndex(psize);
 	setCustomPapersize(psize);
 
 	bool const landscape =

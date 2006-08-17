@@ -91,7 +91,7 @@ void QDocument::useClassDefaults()
 	BufferParams & params = controller().params();
 
 	///\todo verify the use of below with lyx-devel:
-	params.textclass = dialog_->latexModule->classCO->currentItem();
+	params.textclass = dialog_->latexModule->classCO->currentIndex();
 
 	params.useClassDefaults();
 	update_contents();
