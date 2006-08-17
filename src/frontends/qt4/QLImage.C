@@ -9,6 +9,10 @@
  * Full author contact details are available in file CREDITS.
  */
 
+#ifndef QT3_SUPPORT
+ #define QT3_SUPPORT
+#endif
+
 #include <config.h>
 
 #include "QLImage.h"
@@ -68,7 +72,7 @@ Image::FormatList QLImage::loadableFormats()
 
 //	lyxerr[Debug::GRAPHICS]
 //		<< "D:/msys/home/yns/src/lyx-devel/lib/images/banner.ppm is of format: "
-//		<< (const char*) Pic.pictureFormat("D:/msys/home/yns/src/lyx-devel/lib/images/banner.ppm")
+//		<< fromqstr(Pic.pictureFormat("D:/msys/home/yns/src/lyx-devel/lib/images/banner.ppm"))
 //		<< endl;
 //	if (Pic.pictureFormat("D:/msys/home/yns/src/lyx-devel/lib/images/banner.ppm"))
 //		lyxerr[Debug::GRAPHICS]
