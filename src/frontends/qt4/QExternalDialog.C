@@ -108,7 +108,7 @@ void QExternalDialog::show()
 
 bool QExternalDialog::activateAspectratio() const
 {
-	if (widthUnitCO->currentItem() == 0)
+	if (widthUnitCO->currentIndex() == 0)
 		return false;
 
 	string const wstr = fromqstr(widthED->text());
@@ -143,7 +143,7 @@ void QExternalDialog::bbChanged()
 
 void QExternalDialog::browseClicked()
 {
-	int const choice =  externalCO->currentItem();
+	int const choice =  externalCO->currentIndex();
 	string const template_name =
 		form_->controller().getTemplate(choice).lyxName;
 	string const str =
@@ -210,7 +210,7 @@ void QExternalDialog::templateChanged()
 
 void QExternalDialog::widthUnitChanged()
 {
-	bool useHeight = (widthUnitCO->currentItem() > 0);
+	bool useHeight = (widthUnitCO->currentIndex() > 0);
 
 	if (useHeight)
 		widthED->setValidator(unsignedLengthValidator(widthED));

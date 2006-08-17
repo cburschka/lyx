@@ -96,7 +96,7 @@ void setDisplay(QCheckBox & displayCB, QComboBox & showCO, QLineEdit & scaleED,
 		break;
 	}
 
-	showCO.setCurrentItem(item);
+	showCO.setCurrentIndex(item);
 	bool const no_display = display == external::NoDisplay;
 	showCO.setEnabled(!no_display && !read_only);
 	displayCB.setChecked(!no_display);
@@ -111,7 +111,7 @@ void getDisplay(external::DisplayType & display,
 		QComboBox const & showCO,
 		QLineEdit const & scaleED)
 {
-	switch (showCO.currentItem()) {
+	switch (showCO.currentIndex()) {
 	case 0:
 		display = external::DefaultDisplay;
 		break;
@@ -139,7 +139,7 @@ void getDisplay(external::DisplayType & display,
 void setRotation(QLineEdit & angleED, QComboBox & originCO,
 		 external::RotationData const & data)
 {
-	originCO.setCurrentItem(int(data.origin()));
+	originCO.setCurrentIndex(int(data.origin()));
 	angleED.setText(toqstr(data.angle));
 }
 
@@ -149,7 +149,7 @@ void getRotation(external::RotationData & data,
 {
 	typedef external::RotationData::OriginType OriginType;
 
-	data.origin(static_cast<OriginType>(originCO.currentItem()));
+	data.origin(static_cast<OriginType>(originCO.currentIndex()));
 	data.angle = fromqstr(angleED.text());
 }
 
@@ -169,13 +169,13 @@ void setSize(QLineEdit & widthED, QComboBox & widthUnitCO,
 
 	if (using_scale) {
 		widthED.setText(toqstr(scale));
-		widthUnitCO.setCurrentItem(0);
+		widthUnitCO.setCurrentIndex(0);
 	} else {
 		widthED.setText(toqstr(convert<string>(data.width.value())));
 		// Because 'Scale' is position 0...
 		// Note also that width cannot be zero here, so
 		// we don't need to worry about the default unit.
-		widthUnitCO.setCurrentItem(data.width.unit() + 1);
+		widthUnitCO.setCurrentIndex(data.width.unit() + 1);
 	}
 
 	string const h = data.height.zero() ? string() : data.height.asString();
@@ -201,9 +201,9 @@ void getSize(external::ResizeData & data,
 {
 	string const width = fromqstr(widthED.text());
 
-	if (widthUnitCO.currentItem() > 0) {
+	if (widthUnitCO.currentIndex() > 0) {
 		// Subtract one, because scale is 0.
-		int const unit = widthUnitCO.currentItem() - 1;
+		int const unit = widthUnitCO.currentIndex() - 1;
 
 		LyXLength w;
 		if (isValidLength(width, &w))
@@ -326,19 +326,19 @@ void QExternal::build_dialog()
 
 	for (std::vector<string>::const_iterator cit = templates.begin();
 		cit != templates.end(); ++cit) {
-		dialog_->externalCO->insertItem(toqstr(*cit), -1);
+		dialog_->externalCO->addItem(toqstr(*cit));
 	}
 
 	// Fill the origins combo
 	typedef vector<external::RotationDataType> Origins;
 	Origins const & all_origins = external::all_origins();
 	for (Origins::size_type i = 0; i != all_origins.size(); ++i)
-		dialog_->originCO->insertItem(toqstr(external::origin_gui_str(i)));
+		dialog_->originCO->addItem(toqstr(external::origin_gui_str(i)));
 
 	// Fill the width combo
-	dialog_->widthUnitCO->insertItem(qt_("Scale%"));
+	dialog_->widthUnitCO->addItem(qt_("Scale%"));
 	for (int i = 0; i < num_units; i++)
-		dialog_->widthUnitCO->insertItem(unit_name_gui[i], -1);
+		dialog_->widthUnitCO->addItem(unit_name_gui[i]);
 }
 
 
@@ -348,14 +348,14 @@ void QExternal::update_contents()
 	if (path_validator)
 		path_validator->setChecker(kernel().docType(), lyxrc);
 
-	dialog_->tab->setCurrentPage(0);
+	dialog_->tab->setCurrentIndex(0);
 	InsetExternalParams const & params = controller().params();
 
 	string const name =
 		params.filename.outputFilename(kernel().bufferFilepath());
 	dialog_->fileED->setText(toqstr(name));
 
-	dialog_->externalCO->setCurrentItem(
+	dialog_->externalCO->setCurrentIndex(
 		controller().getTemplateNumber(params.templatename()));
 	updateTemplate();
 
@@ -385,7 +385,7 @@ void QExternal::update_contents()
 void QExternal::updateTemplate()
 {
 	external::Template templ =
-		controller().getTemplate(dialog_->externalCO->currentItem());
+		controller().getTemplate(dialog_->externalCO->currentIndex());
 	dialog_->externalTB->setPlainText(toqstr(templ.helpText));
 
 	// Ascertain which (if any) transformations the template supports
@@ -396,16 +396,20 @@ void QExternal::updateTemplate()
 	TransformIDs::const_iterator const tr_end = transformIds.end();
 
 	bool found = find(tr_begin, tr_end, external::Rotate) != tr_end;
-	dialog_->tab->setTabEnabled(dialog_->rotatetab, found);
-
+	dialog_->tab->setTabEnabled(
+		dialog_->tab->indexOf(dialog_->rotatetab), found);
 	found = find(tr_begin, tr_end, external::Resize) != tr_end;
-	dialog_->tab->setTabEnabled(dialog_->scaletab, found);
+	dialog_->tab->setTabEnabled(
+		dialog_->tab->indexOf(dialog_->scaletab), found);
 
 	found = find(tr_begin, tr_end, external::Clip) != tr_end;
-	dialog_->tab->setTabEnabled(dialog_->croptab, found);
+	dialog_->tab->setTabEnabled(
+		dialog_->tab->indexOf(dialog_->croptab), found);
 
 	found = find(tr_begin, tr_end, external::Extra) != tr_end;
-	dialog_->tab->setTabEnabled(dialog_->optionstab, found);
+	dialog_->tab->setTabEnabled(
+		dialog_->tab->indexOf(dialog_->optionstab), found);
+
 	if (!found)
 		return;
 
@@ -426,18 +430,19 @@ void QExternal::updateTemplate()
 			continue;
 		string const format = it->first;
 		string const opt = controller().params().extradata.get(format);
-		extraCB->insertItem(toqstr(format));
+		extraCB->addItem(toqstr(format));
 		extra_[format] = toqstr(opt);
 	}
 
 	bool const enabled = extraCB->count()  > 0;
 
-	dialog_->tab->setTabEnabled(dialog_->optionstab, enabled);
+	dialog_->tab->setTabEnabled(
+		dialog_->tab->indexOf(dialog_->optionstab), enabled);
 	extraED->setEnabled(enabled && !kernel().isBufferReadonly());
 	extraCB->setEnabled(enabled);
 
 	if (enabled) {
-		extraCB->setCurrentItem(0);
+		extraCB->setCurrentIndex(0);
 		extraED->setText(extra_[fromqstr(extraCB->currentText())]);
 	}
 }
@@ -451,7 +456,7 @@ void QExternal::apply()
 			    kernel().bufferFilepath());
 
 	params.settemplate(controller().getTemplate(
-				   dialog_->externalCO->currentItem()).lyxName);
+				   dialog_->externalCO->currentIndex()).lyxName);
 
 	params.draft = dialog_->draftCB->isChecked();
 
@@ -459,24 +464,28 @@ void QExternal::apply()
 		   *dialog_->displayCB, *dialog_->showCO,
 		   *dialog_->displayscaleED);
 
-	if (dialog_->tab->isTabEnabled(dialog_->rotatetab))
+	if (dialog_->tab->isTabEnabled(
+		dialog_->tab->indexOf(dialog_->rotatetab)))
 		getRotation(params.rotationdata,
 			    *dialog_->angleED, *dialog_->originCO);
 
-	if (dialog_->tab->isTabEnabled(dialog_->scaletab))
+	if (dialog_->tab->isTabEnabled(
+		dialog_->tab->indexOf(dialog_->scaletab)))
 		getSize(params.resizedata,
 			*dialog_->widthED, *dialog_->widthUnitCO,
 			*dialog_->heightED, *dialog_->heightUnitCO,
 			*dialog_->aspectratioCB);
 
-	if (dialog_->tab->isTabEnabled(dialog_->croptab))
+	if (dialog_->tab->isTabEnabled(
+		dialog_->tab->indexOf(dialog_->croptab)))
 		getCrop(params.clipdata,
 			*dialog_->clipCB,
 			*dialog_->xlED, *dialog_->ybED,
 			*dialog_->xrED, *dialog_->ytED,
 			controller().bbChanged());
 
-	if (dialog_->tab->isTabEnabled(dialog_->optionstab))
+	if (dialog_->tab->isTabEnabled(
+		dialog_->tab->indexOf(dialog_->optionstab)))
 		getExtra(params.extradata, extra_);
 
 	controller().setParams(params);
