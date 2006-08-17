@@ -71,7 +71,7 @@ void setWidgetsFromVSpace(VSpace const & space,
 		item = 5;
 		break;
 	}
-	spacing->setCurrentItem(item);
+	spacing->setCurrentIndex(item);
 	keep->setChecked(space.keep());
 
 	LyXLength::UNIT default_unit =
@@ -162,12 +162,12 @@ void QVSpace::apply()
 	// spacing
 	// If a vspace choice is "Length" but there's no text in
 	// the input field, do not insert a vspace at all.
-	if (dialog_->spacingCO->currentItem() == 5
+	if (dialog_->spacingCO->currentIndex() == 5
 	    && dialog_->valueLE->text().isEmpty())
 		return;
 
 	VSpace const space =
-		setVSpaceFromWidgets(dialog_->spacingCO->currentItem(),
+		setVSpaceFromWidgets(dialog_->spacingCO->currentIndex(),
 				     dialog_->valueLE,
 				     dialog_->unitCO,
 				     dialog_->keepCB->isChecked());
