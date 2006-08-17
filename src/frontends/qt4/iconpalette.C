@@ -11,18 +11,19 @@
 #include <config.h>
 
 #include "iconpalette.h"
+
+#include "debug.h"
+
 #include "qt_helpers.h"
+
 #include <QVBoxLayout>
 #include <QPixmap>
 #include <QHBoxLayout>
 #include <QGridLayout>
 #include <QResizeEvent>
-
-#include "debug.h"
-
-#include <qlayout.h>
-#include <qpushbutton.h>
-#include <qtooltip.h>
+#include <QLayout>
+#include <QPushButton>
+#include <QToolTip>
 
 using std::endl;
 using std::make_pair;
@@ -34,12 +35,14 @@ using std::vector;
 int const button_size = 40;
 
 
-IconPalette::IconPalette(QWidget * parent, char const * name)
-	: QWidget(parent, name), maxcol_(-1)
+IconPalette::IconPalette(QWidget * parent)
+	: QWidget(parent), maxcol_(-1)
 {
 	QVBoxLayout * top = new QVBoxLayout(this);
-	QHBoxLayout * row = new QHBoxLayout(top);
-	layout_ = new QGridLayout(row);
+	QHBoxLayout * row = new QHBoxLayout(this);
+	layout_ = new QGridLayout(this);
+	top->insertLayout(-1, row);
+	row->insertLayout(-1, layout_);
 	row->addStretch(0);
 	top->addStretch(0);
 }
@@ -49,8 +52,8 @@ void IconPalette::add(QPixmap const & pixmap, string name, string tooltip)
 {
 	QPushButton * p = new QPushButton(this);
 	p->setFixedSize(button_size, button_size);
-	p->setPixmap(pixmap);
-	QToolTip::add(p, toqstr(tooltip));
+	p->setIcon(QIcon(pixmap));
+	p->setToolTip(toqstr(tooltip));
 	connect(p, SIGNAL(clicked()), this, SLOT(clicked()));
 	buttons_.push_back(make_pair(p, name));
 }
@@ -93,10 +96,12 @@ void IconPalette::resizeEvent(QResizeEvent * e)
 	setUpdatesEnabled(false);
 
 	// clear layout
-	QLayoutIterator lit = layout_->iterator();
-	while (lit.current()) {
-		lit.takeCurrent();
-	}
+	int i = 0;
+	QLayoutItem *child;
+	while ((child = layout_->itemAt(i)) != 0) {
+		layout_->takeAt(i);
+		++i;
+	} 
 
 	layout_->invalidate();
 
