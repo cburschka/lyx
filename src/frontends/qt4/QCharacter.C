@@ -50,32 +50,32 @@ void QCharacter::build_dialog()
 
 	for (vector<FamilyPair>::const_iterator cit = family.begin();
 		cit != family.end(); ++cit) {
-		dialog_->familyCO->insertItem(toqstr(cit->first), -1);
+		dialog_->familyCO->addItem(toqstr(cit->first));
 	}
 
 	for (vector<SeriesPair>::const_iterator cit = series.begin();
 		cit != series.end(); ++cit) {
-		dialog_->seriesCO->insertItem(toqstr(cit->first), -1);
+		dialog_->seriesCO->addItem(toqstr(cit->first));
 	}
 	for (vector<ShapePair>::const_iterator cit = shape.begin();
 		cit != shape.end(); ++cit) {
-		dialog_->shapeCO->insertItem(toqstr(cit->first), -1);
+		dialog_->shapeCO->addItem(toqstr(cit->first));
 	}
 	for (vector<SizePair>::const_iterator cit = size.begin();
 		cit != size.end(); ++cit) {
-		dialog_->sizeCO->insertItem(toqstr(cit->first), -1);
+		dialog_->sizeCO->addItem(toqstr(cit->first));
 	}
 	for (vector<BarPair>::const_iterator cit = bar.begin();
 		cit != bar.end(); ++cit) {
-		dialog_->miscCO->insertItem(toqstr(cit->first), -1);
+		dialog_->miscCO->addItem(toqstr(cit->first));
 	}
 	for (vector<ColorPair>::const_iterator cit = color.begin();
 		cit != color.end(); ++cit) {
-		dialog_->colorCO->insertItem(toqstr(cit->first), -1);
+		dialog_->colorCO->addItem(toqstr(cit->first));
 	}
 	for (vector<LanguagePair>::const_iterator cit = language.begin();
 		cit != language.end(); ++cit) {
-		dialog_->langCO->insertItem(toqstr(cit->first), -1);
+		dialog_->langCO->addItem(toqstr(cit->first));
 	}
 
 	bcview().setOK(dialog_->okPB);
@@ -116,15 +116,15 @@ void QCharacter::update_contents()
 {
 	ControlCharacter const & ctrl = controller();
 
-	dialog_->familyCO->setCurrentItem(findPos2nd(family,
+	dialog_->familyCO->setCurrentIndex(findPos2nd(family,
 						     ctrl.getFamily()));
-	dialog_->seriesCO->setCurrentItem(findPos2nd(series,
+	dialog_->seriesCO->setCurrentIndex(findPos2nd(series,
 						     ctrl.getSeries()));
-	dialog_->shapeCO->setCurrentItem(findPos2nd(shape, ctrl.getShape()));
-	dialog_->sizeCO->setCurrentItem(findPos2nd(size, ctrl.getSize()));
-	dialog_->miscCO->setCurrentItem(findPos2nd(bar, ctrl.getBar()));
-	dialog_->colorCO->setCurrentItem(findPos2nd(color, ctrl.getColor()));
-	dialog_->langCO->setCurrentItem(findPos2nd(language,
+	dialog_->shapeCO->setCurrentIndex(findPos2nd(shape, ctrl.getShape()));
+	dialog_->sizeCO->setCurrentIndex(findPos2nd(size, ctrl.getSize()));
+	dialog_->miscCO->setCurrentIndex(findPos2nd(bar, ctrl.getBar()));
+	dialog_->colorCO->setCurrentIndex(findPos2nd(color, ctrl.getColor()));
+	dialog_->langCO->setCurrentIndex(findPos2nd(language,
 						   ctrl.getLanguage()));
 
 	dialog_->toggleallCB->setChecked(ctrl.getToggleAll());
@@ -135,13 +135,13 @@ void QCharacter::apply()
 {
 	ControlCharacter & ctrl = controller();
 
-	ctrl.setFamily(family[dialog_->familyCO->currentItem()].second);
-	ctrl.setSeries(series[dialog_->seriesCO->currentItem()].second);
-	ctrl.setShape(shape[dialog_->shapeCO->currentItem()].second);
-	ctrl.setSize(size[dialog_->sizeCO->currentItem()].second);
-	ctrl.setBar(bar[dialog_->miscCO->currentItem()].second);
-	ctrl.setColor(color[dialog_->colorCO->currentItem()].second);
-	ctrl.setLanguage(language[dialog_->langCO->currentItem()].second);
+	ctrl.setFamily(family[dialog_->familyCO->currentIndex()].second);
+	ctrl.setSeries(series[dialog_->seriesCO->currentIndex()].second);
+	ctrl.setShape(shape[dialog_->shapeCO->currentIndex()].second);
+	ctrl.setSize(size[dialog_->sizeCO->currentIndex()].second);
+	ctrl.setBar(bar[dialog_->miscCO->currentIndex()].second);
+	ctrl.setColor(color[dialog_->colorCO->currentIndex()].second);
+	ctrl.setLanguage(language[dialog_->langCO->currentIndex()].second);
 
 	ctrl.setToggleAll(dialog_->toggleallCB->isChecked());
 }

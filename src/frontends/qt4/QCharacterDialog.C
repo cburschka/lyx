@@ -54,13 +54,13 @@ void QCharacterDialog::change_adaptor()
 	// stay the same between applys. Might be difficult though wrt to a
 	// moved cursor - jbl
 	form_->slotApply();
-	familyCO->setCurrentItem(0);
-	seriesCO->setCurrentItem(0);
-	sizeCO->setCurrentItem(0);
-	shapeCO->setCurrentItem(0);
-	miscCO->setCurrentItem(0);
-	langCO->setCurrentItem(0);
-	colorCO->setCurrentItem(0);
+	familyCO->setCurrentIndex(0);
+	seriesCO->setCurrentIndex(0);
+	sizeCO->setCurrentIndex(0);
+	shapeCO->setCurrentIndex(0);
+	miscCO->setCurrentIndex(0);
+	langCO->setCurrentIndex(0);
+	colorCO->setCurrentIndex(0);
 }
 
 
