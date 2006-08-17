@@ -1,15 +1,14 @@
-# translation of it.po to italiano
-# translation of lyx-1.4.2_dev_it.po to italiano
+# translation of lyx-1.42_dev_it.po to italiano
 # This file is distributed under the same license as the PACKAGE package.
 # Grazie a Lele Gaifax e Meris Da Silva per tutti i loro suggerimenti e consigli
 # Kostantino <ciclope10ATalice.it>, 2006.
 # Kostantino <ciclope10ATalice.it>, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: it\n"
+"Project-Id-Version: lyx-1.42_dev_it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2006-08-10 10:50+0200\n"
-"PO-Revision-Date: 2006-08-16 15:40+0200\n"
+"PO-Revision-Date: 2006-08-17 17:23+0200\n"
 "Last-Translator: Kostantino <ciclope10ATalice.it>\n"
 "Language-Team: italiano <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -2665,7 +2664,7 @@ msgstr "&Contenuto:"
 
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:360
 msgid "Add bibliography to &TOC"
-msgstr "Aggiungi bibliografia a ll'&Indice generale"
+msgstr "Aggiungi bibliografia all'&Indice generale"
 
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:364
 msgid "Add bibliography to the table of contents"
@@ -3516,7 +3515,7 @@ msgstr "Inserisci frazione"
 
 #: src/frontends/qt2/ui/QMathDialogBase.ui:239
 msgid "Toggle between display and inline mode"
-msgstr "Commuta tra modalità visualizza e in linea"
+msgstr "Commuta tra modalità centrata e in linea"
 
 #: src/frontends/qt2/ui/QMathDialogBase.ui:258 lib/ui/stdtoolbars.ui:136
 msgid "Insert matrix"
@@ -3532,7 +3531,7 @@ msgstr "Soprascritto"
 
 #: src/frontends/qt2/ui/QMathDialogBase.ui:315
 msgid "Show delimiter and bracket dialog"
-msgstr "Mostra delimitarore e parentesi di dialogo"
+msgstr "Mostra finestra delimitarore e parentesi"
 
 #: src/frontends/qt2/ui/QMathDialogBase.ui:381
 msgid "&Functions"
@@ -6160,7 +6159,7 @@ msgstr "Intestazione destra"
 #: lib/layouts/dinbrief.layout:13 lib/layouts/heb-letter.layout:10
 #: lib/layouts/stdletter.inc:24
 msgid "My Address"
-msgstr "Il mio indirizzo"
+msgstr "Mio indirizzo"
 
 #: lib/layouts/dinbrief.layout:17
 msgid "Briefkopf:"
@@ -6179,7 +6178,7 @@ msgstr "Adresse:"
 #: lib/layouts/g-brief2.layout:864 lib/layouts/scrlettr.layout:62
 #: lib/layouts/scrlttr2.layout:92 lib/layouts/stdletter.inc:50
 msgid "Opening"
-msgstr "Introduzione"
+msgstr "Apertura"
 
 #: lib/layouts/dinbrief.layout:48 lib/layouts/g-brief-de.layout:209
 msgid "Anrede:"
@@ -6900,7 +6899,7 @@ msgstr "Riferimento:"
 #: lib/layouts/g-brief-en.layout:209 lib/layouts/g-brief2.layout:876
 #: lib/layouts/scrlttr2.layout:104 lib/layouts/stdletter.inc:63
 msgid "Opening:"
-msgstr "Introduzione:"
+msgstr "Apertura:"
 
 #: lib/layouts/g-brief-en.layout:213 lib/layouts/g-brief2.layout:889
 msgid "Encl."
@@ -10639,9 +10638,8 @@ msgstr ""
 "corrotto."
 
 #: src/buffer.C:716
-#, fuzzy
 msgid "Backup failure"
-msgstr "chktex ha fallito"
+msgstr "Backup non riuscito"
 
 #: src/buffer.C:717
 #, c-format
@@ -10649,6 +10647,8 @@ msgid ""
 "LyX was not able to make a backup copy in %1$s.\n"
 "Please check if the directory exists and is writeable."
 msgstr ""
+"LyX non è stato in grado di fare una copia di backup in %1$s.\n"
+"Per favore, controlla se la cartella esiste e vi si può scrivere.."
 
 #: src/buffer.C:1133
 msgid "Running chktex..."
@@ -13478,9 +13478,8 @@ msgid "Show full path or only file name."
 msgstr "Mostra il percorso completo o solo il nome del file."
 
 #: src/frontends/xforms/FormTexinfo.C:60
-#, fuzzy
 msgid "Runs the script \"TexFiles.py\" to rebuild the file lists."
-msgstr "Esegue lo script \"TexFiles.sh\" per ricostruire gli elenchi dei file."
+msgstr "Esegue lo script \"TexFiles.py\" per ricostruire gli elenchi dei file."
 
 #: src/frontends/xforms/FormTexinfo.C:63
 msgid "Double click to view contents of file."
