@@ -12,9 +12,6 @@
 #ifndef ACTION_H
 #define ACTION_H
 
-// Must be here because of moc.
-#include <config.h>
-
 #include "frontends/LyXView.h"
 #include "funcrequest.h"
 

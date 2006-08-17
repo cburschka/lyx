@@ -10,21 +10,22 @@
 
 #include <config.h>
 
+#include "Action.h"
+
 #include "BufferView.h"
 #include "lyx_cb.h"
 #include "lyxfunc.h"
 #include "FuncStatus.h"
-
 #include "debug.h"
+
+#include "frontends/LyXView.h"
+
+#include "qt_helpers.h"
+
+#include "support/lstrings.h"
 
 #include <boost/bind.hpp>
 
-#include "frontends/LyXView.h"
-#include "qt_helpers.h"
-
-#include "Action.h"
-
-#include "support/lstrings.h"
 
 using std::string;
 using std::endl;
@@ -43,8 +44,8 @@ Action::Action(LyXView & lyxView, string const & text,
 		FuncRequest const & func, string const & tooltip)
 	: QAction(this), func_(func), lyxView_(lyxView)
 {
-	setText(tr(toqstr(text)));
-	setToolTip(tr(toqstr(tooltip)));
+	setText(toqstr(text));
+	setToolTip(toqstr(tooltip));
 	setStatusTip(toqstr(tooltip));
 	connect(this, SIGNAL(triggered()), this, SLOT(action()));
 	this->setCheckable(true);
@@ -55,8 +56,8 @@ Action::Action(LyXView & lyxView, string const & icon, string const & text,
 		: QAction(this), func_(func), lyxView_(lyxView)
 {
 	setIcon(QPixmap(icon.c_str()));
-	setText(tr(toqstr(text)));
-	setToolTip(tr(toqstr(tooltip)));
+	setText(toqstr(text));
+	setToolTip(toqstr(tooltip));
 	setStatusTip(toqstr(tooltip));
 	connect(this, SIGNAL(triggered()), this, SLOT(action()));
 	this->setCheckable(true);
