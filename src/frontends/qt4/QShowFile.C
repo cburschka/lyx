@@ -44,7 +44,7 @@ void QShowFile::build_dialog()
 
 void QShowFile::update_contents()
 {
-	dialog_->setName(toqstr(controller().getFileName()));
+	dialog_->setWindowTitle(toqstr(controller().getFileName()));
 
 	string contents = controller().getFileContents();
 	if (contents.empty()) {
