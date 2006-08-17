@@ -16,21 +16,11 @@
 #include "lengthcommon.h"
 
 
-LengthCombo::LengthCombo(QWidget * parent, char * name)
-	: QComboBox(parent, name)
-{
-	for (int i = 0; i < num_units; i++)
-		insertItem(unit_name_gui[i]);
-
-	connect(this, SIGNAL(activated(int)),
-		this, SLOT(has_activated(int)));
-}
-
 LengthCombo::LengthCombo(QWidget * parent)
 	: QComboBox(parent)
 {
 	for (int i = 0; i < num_units; i++)
-		insertItem(unit_name_gui[i]);
+		addItem(unit_name_gui[i]);
 
 	connect(this, SIGNAL(activated(int)),
 		this, SLOT(has_activated(int)));
@@ -38,7 +28,7 @@ LengthCombo::LengthCombo(QWidget * parent)
 
 LyXLength::UNIT LengthCombo::currentLengthItem() const
 {
-	return static_cast<LyXLength::UNIT>(currentItem());
+	return static_cast<LyXLength::UNIT>(currentIndex());
 }
 
 
@@ -51,13 +41,13 @@ void LengthCombo::has_activated(int)
 
 void LengthCombo::setCurrentItem(LyXLength::UNIT unit)
 {
-	QComboBox::setCurrentItem(int(unit));
+	QComboBox::setCurrentIndex(int(unit));
 }
 
 
 void LengthCombo::setCurrentItem(int item)
 {
-	QComboBox::setCurrentItem(item);
+	QComboBox::setCurrentIndex(item);
 }
 
 
@@ -71,7 +61,7 @@ void LengthCombo::noPercents()
 {
 	int num = QComboBox::count();
 	for (int i = 0; i < num; i++) {
-		if (QComboBox::text(i).contains('%') > 0) {
+		if (QComboBox::itemText(i).contains('%') > 0) {
 			QComboBox::removeItem(i);
 			i -= 1;
 			num -= 1;

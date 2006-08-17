@@ -23,8 +23,6 @@
 class LengthCombo : public QComboBox {
 	Q_OBJECT
 public:
-	LengthCombo(QWidget * parent, char * name);
-
 	LengthCombo(QWidget * parent);
 
 	/// set the current item from unit
