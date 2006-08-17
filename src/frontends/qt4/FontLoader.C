@@ -312,7 +312,7 @@ QLFontInfo::QLFontInfo(LyXFont const & f)
 		}
 	}
 
-	font.setPointSizeFloat(convert<double>(lyxrc.font_sizes[f.size()])
+	font.setPointSizeF(convert<double>(lyxrc.font_sizes[f.size()])
 			       * lyxrc.zoom / 100.0);
 
 	switch (f.series()) {
@@ -337,11 +337,11 @@ QLFontInfo::QLFontInfo(LyXFont const & f)
 
 	if (lyxerr.debugging(Debug::FONT)) {
 		lyxerr[Debug::FONT] << "Font '" << f.stateText(0)
-			<< "' matched by\n" << (const char *) font.rawName() << endl;
+			<< "' matched by\n" << fromqstr(font.rawName()) << endl;
 	}
 
 	lyxerr[Debug::FONT] << "The font has size: "
-			    << font.pointSizeFloat() << endl;
+			    << font.pointSizeF() << endl;
 
 	// Is this an exact match?
 	if (font.exactMatch())
@@ -350,7 +350,7 @@ QLFontInfo::QLFontInfo(LyXFont const & f)
 		lyxerr[Debug::FONT] << "This font is NOT an exact match"
 				    << endl;
 
-	lyxerr[Debug::FONT] << "XFLD: " << (const char *) font.rawName() << endl;
+	lyxerr[Debug::FONT] << "XFLD: " << fromqstr(font.rawName()) << endl;
 
 	metrics = QFontMetrics(font);
 }
