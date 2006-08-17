@@ -200,7 +200,7 @@ string QLyXKeySym::getSymbolName() const
 
 size_t QLyXKeySym::getUCSEncoded() const
 {
-    unsigned short const * ptr = text_.ucs2();
+    unsigned short const * ptr = text_.utf16();
     std::vector<unsigned short> tmp(ptr, ptr + text_.length());
 
     //lyxerr << "Data is " << tmp << endl;
