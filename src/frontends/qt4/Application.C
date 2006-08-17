@@ -12,12 +12,15 @@
 
 #include <config.h>
 
-#include "GuiWorkArea.h"
 #include "Application.h"
 
+#include "GuiWorkArea.h"
+
 #include "qt_helpers.h"
+
 #include "BufferView.h"
 #include "debug.h"
+
 #include "support/lstrings.h"
 
 #include <QApplication>
