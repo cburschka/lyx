@@ -14,7 +14,6 @@
 #define QT_FLOATPLACEMENT_H
 
 #include <QWidget>
-//#include <QVBoxLayout>
 
 #include <string>
 
@@ -26,8 +25,7 @@ class FloatPlacement : public QWidget {
 	Q_OBJECT
 
 public:
-	FloatPlacement(QWidget * parent=0, char * name="");
-
+	FloatPlacement(QWidget * parent=0);
 
 	void useWide();
 	void useSideways();

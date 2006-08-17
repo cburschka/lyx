@@ -9,6 +9,10 @@
  * Full author contact details are available in file CREDITS.
  */
 
+#ifndef QT3_SUPPORT
+ #define QT3_SUPPORT
+#endif
+
 #include <config.h>
 
 #include "floatplacement.h"
@@ -31,7 +35,7 @@ using std::string;
 
 // FIXME: set disabled doesn't work properly
 // should be fixed now (jspitzm)
-FloatPlacement::FloatPlacement(QWidget * parent, char * /*name*/)
+FloatPlacement::FloatPlacement(QWidget * parent)
 	: QWidget(parent)
 {
 	QHBoxLayout * toplayout = new QHBoxLayout(this, 11, 6);
