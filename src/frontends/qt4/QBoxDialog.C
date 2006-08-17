@@ -92,7 +92,7 @@ void QBoxDialog::typeChanged(int index)
 		heightUnitsLC->setEnabled(true);
 		form_->setSpecial(true);
 	}
-	int itype = innerBoxCO->currentItem();
+	int itype = innerBoxCO->currentIndex();
 	form_->setInnerType(frameless, itype);
 }
 
@@ -104,7 +104,7 @@ void QBoxDialog::restoreClicked()
 	widthUnitsLC->setCurrentItem(LyXLength::PCW);
 	heightED->setText("1");
 	for (int j = 0; j < heightUnitsLC->count(); j++) {
-		if (heightUnitsLC->text(j) == qt_("Total Height"))
+		if (heightUnitsLC->itemText(j) == qt_("Total Height"))
 			heightUnitsLC->setCurrentItem(j);
 	}
 }
