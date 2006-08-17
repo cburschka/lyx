@@ -72,7 +72,7 @@ void QSendto::update_contents()
 		dialog_->formatLW->addItem(toqstr(*it));
 	}
 
-	dialog_->commandCO->insertItem(toqstr(controller().getCommand()));
+	dialog_->commandCO->addItem(toqstr(controller().getCommand()));
 }
 
 
