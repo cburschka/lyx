@@ -46,7 +46,7 @@ void GuiSelection::haveSelection(bool own)
 string const GuiSelection::get() const
 {
 	QString const str = qApp->clipboard()->text(QClipboard::Selection);
-	lyxerr[Debug::ACTION] << "GuiSelection::get: " << (const char*) str
+	lyxerr[Debug::ACTION] << "GuiSelection::get: " << fromqstr(str)
 	                      << endl;
 	if (str.isNull())
 		return string();
