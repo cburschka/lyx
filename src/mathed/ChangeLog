@@ -1,5 +1,15 @@
 2006-08-17  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	Fix bug 2727.
+	
+	* math_scriptinset.C (notifyCursorLeaves): call recordUndoInset
+	before deleting a cell; if the nucleus does not have scripts
+	anymore, delete it and replace it by its contents at enclosing
+	level.
+	(write): output scripts even when they are empty.
+
+2006-08-17  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
 	* math_inset.C (cell): make debug message more explicit.
 
 2006-08-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
