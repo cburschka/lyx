@@ -68,7 +68,7 @@ void QRef::update_contents()
 {
 	InsetCommandParams const & params = controller().params();
 
-	int orig_type = dialog_->typeCO->currentItem();
+	int orig_type = dialog_->typeCO->currentIndex();
 
 	dialog_->referenceED->setText(toqstr(params.getContents()));
 
@@ -77,12 +77,12 @@ void QRef::update_contents()
 
 	// restore type settings for new insets
 	if (params.getContents().empty())
-		dialog_->typeCO->setCurrentItem(orig_type);
+		dialog_->typeCO->setCurrentIndex(orig_type);
 	else
-		dialog_->typeCO->setCurrentItem(InsetRef::getType(params.getCmdName()));
+		dialog_->typeCO->setCurrentIndex(InsetRef::getType(params.getCmdName()));
 	dialog_->typeCO->setEnabled(typeAllowed() && !readOnly());
 	if (!typeAllowed())
-		dialog_->typeCO->setCurrentItem(0);
+		dialog_->typeCO->setCurrentIndex(0);
 
 	dialog_->sortCB->setChecked(sort_);
 
@@ -91,14 +91,14 @@ void QRef::update_contents()
 	vector<string> const buffers = controller().getBufferList();
 	for (vector<string>::const_iterator it = buffers.begin();
 		it != buffers.end(); ++it) {
-		dialog_->bufferCO->insertItem(toqstr(*it));
+		dialog_->bufferCO->addItem(toqstr(*it));
 	}
 	// restore the buffer combo setting for new insets
 	if (params.getContents().empty() && restored_buffer_ != -1
 	&& restored_buffer_ < dialog_->bufferCO->count())
-		dialog_->bufferCO->setCurrentItem(restored_buffer_);
+		dialog_->bufferCO->setCurrentIndex(restored_buffer_);
 	else
-		dialog_->bufferCO->setCurrentItem(controller().getBufferNum());
+		dialog_->bufferCO->setCurrentIndex(controller().getBufferNum());
 
 	updateRefs();
 	bc().valid(false);
@@ -109,11 +109,11 @@ void QRef::apply()
 {
 	InsetCommandParams & params = controller().params();
 
-	params.setCmdName(InsetRef::getName(dialog_->typeCO->currentItem()));
+	params.setCmdName(InsetRef::getName(dialog_->typeCO->currentIndex()));
 	params.setContents(fromqstr(dialog_->referenceED->text()));
 	params.setOptions(fromqstr(dialog_->nameED->text()));
 
-	restored_buffer_ = dialog_->bufferCO->currentItem();
+	restored_buffer_ = dialog_->bufferCO->currentIndex();
 }
 
 
@@ -136,16 +136,16 @@ bool QRef::typeAllowed()
 void QRef::setGoBack()
 {
 	dialog_->gotoPB->setText(qt_("&Go Back"));
-	QToolTip::remove(dialog_->gotoPB);
-	QToolTip::add(dialog_->gotoPB, qt_("Jump back"));
+	dialog_->gotoPB->setToolTip("");
+	dialog_->gotoPB->setToolTip(qt_("Jump back"));
 }
 
 
 void QRef::setGotoRef()
 {
 	dialog_->gotoPB->setText(qt_("&Go to Label"));
-	QToolTip::remove(dialog_->gotoPB);
-	QToolTip::add(dialog_->gotoPB, qt_("Jump to label"));
+	dialog_->gotoPB->setToolTip("");
+	dialog_->gotoPB->setToolTip(qt_("Jump to label"));
 }
 
 
@@ -219,7 +219,7 @@ void QRef::updateRefs()
 	refs_.clear();
 	if (at_ref_)
 		gotoRef();
-	string const name = controller().getBufferName(dialog_->bufferCO->currentItem());
+	string const name = controller().getBufferName(dialog_->bufferCO->currentIndex());
 	refs_ = controller().getLabelList(name);
 	dialog_->sortCB->setEnabled(!refs_.empty());
 	dialog_->refsLW->setEnabled(!refs_.empty());
