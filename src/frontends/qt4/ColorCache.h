@@ -14,10 +14,9 @@
 
 #include "LColor.h"
 
-#include <map>
-
 #include <QColor>
 
+#include <map>
 
 namespace lyx {
 struct RGBColor;
