@@ -76,20 +76,20 @@ void QInclude::update_contents()
 		cmdname = "input";
 
 	if (cmdname == "input") {
-		dialog_->typeCO->setCurrentItem(0);
+		dialog_->typeCO->setCurrentIndex(0);
 		dialog_->previewCB->setEnabled(true);
 		dialog_->previewCB->setChecked(params.preview());
 
 	} else if (cmdname == "include") {
-		dialog_->typeCO->setCurrentItem(1);
+		dialog_->typeCO->setCurrentIndex(1);
 
 	} else if (cmdname == "verbatiminput*") {
-		dialog_->typeCO->setCurrentItem(2);
+		dialog_->typeCO->setCurrentIndex(2);
 		dialog_->visiblespaceCB->setEnabled(true);
 		dialog_->visiblespaceCB->setChecked(true);
 
 	} else if (cmdname == "verbatiminput") {
-		dialog_->typeCO->setCurrentItem(2);
+		dialog_->typeCO->setCurrentIndex(2);
 		dialog_->visiblespaceCB->setEnabled(true);
 	}
 }
@@ -102,7 +102,7 @@ void QInclude::apply()
 	params.setContents(fromqstr(dialog_->filenameED->text()));
 	params.preview(dialog_->previewCB->isChecked());
 
-	int const item = dialog_->typeCO->currentItem();
+	int const item = dialog_->typeCO->currentIndex();
 	if (item == 0)
 		params.setCmdName("input");
 	else if (item == 1)
@@ -121,7 +121,7 @@ void QInclude::browse()
 {
 	ControlInclude::Type type;
 
-	int const item = dialog_->typeCO->currentItem();
+	int const item = dialog_->typeCO->currentIndex();
 	if (item == 0)
 		type = ControlInclude::INPUT;
 	else if (item == 1)
