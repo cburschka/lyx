@@ -32,11 +32,11 @@ namespace {
 void uniqueInsert(QComboBox * box, QString const & text)
 {
 	for (int i = 0; i < box->count(); ++i) {
-		if (box->text(i) == text)
+		if (box->itemText(i) == text)
 			return;
 	}
 
-	box->insertItem(text);
+	box->addItem(text);
 }
 
 };
