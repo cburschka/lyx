@@ -195,56 +195,56 @@ void QTabular::update_contents()
 
 	if (tabular.row_info[row].top_space.empty()
 	    && !tabular.row_info[row].top_space_default) {
-		dialog_->topspaceCO->setCurrentItem(0);
+		dialog_->topspaceCO->setCurrentIndex(0);
 	} else if (tabular.row_info[row].top_space_default) {
-		dialog_->topspaceCO->setCurrentItem(1);
+		dialog_->topspaceCO->setCurrentIndex(1);
 	} else {
-		dialog_->topspaceCO->setCurrentItem(2);
+		dialog_->topspaceCO->setCurrentIndex(2);
 		lengthToWidgets(dialog_->topspaceED, 
 				dialog_->topspaceUnit,
 				tabular.row_info[row].top_space.asString(),
 				default_unit);
 	}
 	dialog_->topspaceED->setEnabled(!isReadonly 
-		&& (dialog_->topspaceCO->currentItem() == 2));
+		&& (dialog_->topspaceCO->currentIndex() == 2));
 	dialog_->topspaceUnit->setEnabled(!isReadonly 
-		&& (dialog_->topspaceCO->currentItem() == 2));
+		&& (dialog_->topspaceCO->currentIndex() == 2));
 	dialog_->topspaceCO->setEnabled(!isReadonly);
 
 	if (tabular.row_info[row].bottom_space.empty()
 	    && !tabular.row_info[row].bottom_space_default) {
-		dialog_->bottomspaceCO->setCurrentItem(0);
+		dialog_->bottomspaceCO->setCurrentIndex(0);
 	} else if (tabular.row_info[row].bottom_space_default) {
-		dialog_->bottomspaceCO->setCurrentItem(1);
+		dialog_->bottomspaceCO->setCurrentIndex(1);
 	} else {
-		dialog_->bottomspaceCO->setCurrentItem(2);
+		dialog_->bottomspaceCO->setCurrentIndex(2);
 		lengthToWidgets(dialog_->bottomspaceED, 
 				dialog_->bottomspaceUnit,
 				tabular.row_info[row].bottom_space.asString(),
 				default_unit);
 	}
 	dialog_->bottomspaceED->setEnabled(!isReadonly 
-		&& (dialog_->bottomspaceCO->currentItem() == 2));
+		&& (dialog_->bottomspaceCO->currentIndex() == 2));
 	dialog_->bottomspaceUnit->setEnabled(!isReadonly 
-		&& (dialog_->bottomspaceCO->currentItem() == 2));
+		&& (dialog_->bottomspaceCO->currentIndex() == 2));
 	dialog_->bottomspaceCO->setEnabled(!isReadonly);
 
 	if (tabular.row_info[row].interline_space.empty()
 	    && !tabular.row_info[row].interline_space_default) {
-		dialog_->interlinespaceCO->setCurrentItem(0);
+		dialog_->interlinespaceCO->setCurrentIndex(0);
 	} else if (tabular.row_info[row].interline_space_default) {
-		dialog_->interlinespaceCO->setCurrentItem(1);
+		dialog_->interlinespaceCO->setCurrentIndex(1);
 	} else {
-		dialog_->interlinespaceCO->setCurrentItem(2);
+		dialog_->interlinespaceCO->setCurrentIndex(2);
 		lengthToWidgets(dialog_->interlinespaceED, 
 				dialog_->interlinespaceUnit,
 				tabular.row_info[row].interline_space.asString(),
 				default_unit);
 	}
 	dialog_->interlinespaceED->setEnabled(!isReadonly 
-		&& (dialog_->interlinespaceCO->currentItem() == 2));
+		&& (dialog_->interlinespaceCO->currentIndex() == 2));
 	dialog_->interlinespaceUnit->setEnabled(!isReadonly 
-		&& (dialog_->interlinespaceCO->currentItem() == 2));
+		&& (dialog_->interlinespaceCO->currentIndex() == 2));
 	dialog_->interlinespaceCO->setEnabled(!isReadonly);
 
 	string colwidth;
@@ -257,11 +257,11 @@ void QTabular::update_contents()
 	dialog_->widthUnit->setEnabled(!isReadonly);
 
 	dialog_->hAlignCB->clear();
-	dialog_->hAlignCB->insertItem(qt_("Left"));
-	dialog_->hAlignCB->insertItem(qt_("Center"));
-	dialog_->hAlignCB->insertItem(qt_("Right"));
+	dialog_->hAlignCB->addItem(qt_("Left"));
+	dialog_->hAlignCB->addItem(qt_("Center"));
+	dialog_->hAlignCB->addItem(qt_("Right"));
 	if (!multicol && !pwidth.zero())
-		dialog_->hAlignCB->insertItem(qt_("Block"));
+		dialog_->hAlignCB->addItem(qt_("Block"));
 
 	int align = 0;
 	switch (tabular.getAlignment(cell)) {
@@ -284,7 +284,7 @@ void QTabular::update_contents()
 		align = 0;
 		break;
 	}
-	dialog_->hAlignCB->setCurrentItem(align);
+	dialog_->hAlignCB->setCurrentIndex(align);
 
 	int valign = 0;
 	switch (tabular.getVAlignment(cell)) {
@@ -303,7 +303,7 @@ void QTabular::update_contents()
 	}
 	if (pwidth.zero())
 		valign = 1;
-	dialog_->vAlignCB->setCurrentItem(valign);
+	dialog_->vAlignCB->setCurrentIndex(valign);
 
 	dialog_->hAlignCB->setEnabled(true);
 	dialog_->vAlignCB->setEnabled(!pwidth.zero());
@@ -447,7 +447,7 @@ void QTabular::closeGUI()
 	}
 
 	/* DO WE NEED THIS?
-	switch (dialog_->topspaceCO->currentItem()) {
+	switch (dialog_->topspaceCO->currentIndex()) {
 		case 0:
 			controller().set(LyXTabular::SET_TOP_SPACE, "");
 			break;
@@ -461,7 +461,7 @@ void QTabular::closeGUI()
 			break;
 	}
 
-	switch (dialog_->bottomspaceCO->currentItem()) {
+	switch (dialog_->bottomspaceCO->currentIndex()) {
 		case 0:
 			controller().set(LyXTabular::SET_BOTTOM_SPACE, "");
 			break;
@@ -475,7 +475,7 @@ void QTabular::closeGUI()
 			break;
 	}
 
-	switch (dialog_->interlinespaceCO->currentItem()) {
+	switch (dialog_->interlinespaceCO->currentIndex()) {
 		case 0:
 			controller().set(LyXTabular::SET_INTERLINE_SPACE, "");
 			break;
