@@ -24,8 +24,8 @@
 #include "support/lstrings.h"
 #include "support/std_ostream.h"
 
-#include <qlineedit.h>
-#include <qwidget.h>
+#include <QLineEdit>
+#include <QWidget>
 
 #include <sstream>
 
@@ -33,8 +33,8 @@ using lyx::support::isStrDbl;
 using std::string;
 
 
-LengthValidator::LengthValidator(QWidget * parent, const char * name)
-	: QValidator(parent, name),
+LengthValidator::LengthValidator(QWidget * parent)
+	: QValidator(parent),
 	  no_bottom_(true), glue_length_(false)
 {}
 
@@ -88,8 +88,8 @@ LengthValidator * unsignedLengthValidator(QLineEdit * ed)
 
 
 PathValidator::PathValidator(bool acceptable_if_empty,
-			     QWidget * parent, const char * name)
-	: QValidator(parent, name),
+			     QWidget * parent)
+	: QValidator(parent),
 	  acceptable_if_empty_(acceptable_if_empty),
 	  latex_doc_(false),
 	  tex_allows_spaces_(false)

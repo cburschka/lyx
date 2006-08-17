@@ -26,7 +26,8 @@
 
 #include "lyxlength.h"
 #include "lyxgluelength.h"
-#include <qvalidator.h>
+
+#include <QValidator>
 
 class QWidget;
 class QLineEdit;
@@ -40,7 +41,7 @@ class LengthValidator : public QValidator
 	Q_OBJECT
 public:
 	/// Define a validator for widget @c parent.
-	LengthValidator(QWidget * parent, const char *name = 0);
+	LengthValidator(QWidget * parent);
 
 	/** @returns QValidator::Acceptable if @c data is a LyXGlueLength.
 	 *  If not, returns QValidator::Intermediate.
@@ -98,8 +99,7 @@ public:
 	 *  If @c acceptable_if_empty is @c true then an empty path
 	 *  is regarded as acceptable.
 	 */
-	PathValidator(bool acceptable_if_empty,
-		      QWidget * parent, const char *name = 0);
+	PathValidator(bool acceptable_if_empty, QWidget * parent);
 
 	/** @returns QValidator::Acceptable if @c data is a valid path.
 	 *  If not, returns QValidator::Intermediate.
