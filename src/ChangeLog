@@ -1,3 +1,8 @@
+2006-08-17  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* undo.C (recordUndoInset): remember the cursor position inside
+	the inset.
+
 2006-08-17  Bo Peng <ben.bob@gmail.com>
 
 	* lyxsocket.C: fix crash when lyx is closed for msvc compiled lyx
