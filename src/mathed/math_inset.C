@@ -18,6 +18,8 @@
 
 #include "support/lstrings.h"
 
+#include <boost/current_function.hpp>
+
 using std::string;
 using std::ostream;
 using std::endl;
@@ -26,7 +28,7 @@ using std::endl;
 MathArray & MathInset::cell(idx_type)
 {
 	static MathArray dummyCell;
-	lyxerr << "I don't have a cell 1" << endl;
+	lyxerr << BOOST_CURRENT_FUNCTION << ": I don't have any cell" << endl;
 	return dummyCell;
 }
 
@@ -34,7 +36,7 @@ MathArray & MathInset::cell(idx_type)
 MathArray const & MathInset::cell(idx_type) const
 {
 	static MathArray dummyCell;
-	lyxerr << "I don't have a cell 2" << endl;
+	lyxerr << BOOST_CURRENT_FUNCTION << ": I don't have any cell" << endl;
 	return dummyCell;
 }
 
