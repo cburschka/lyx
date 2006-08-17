@@ -124,7 +124,7 @@ QMathDialog::QMathDialog(QMath * form)
 	connect(ma, SIGNAL(triggered()), this, SLOT(insertCubeRoot()));
 	m->addAction(ma);
 	addMenuItem(m, qt_("Other root	\\root"), "root");
-	sqrtPB->setPopup(m);
+	sqrtPB->setMenu(m);
 
 	m = new QMenu(stylePB);
 	m->setTitle(qt_("LyX: Math Styles"));
@@ -133,7 +133,7 @@ QMathDialog::QMathDialog(QMath * form)
 	addMenuItem(m, qt_("Normal text style	\\textstyle"), "textstyle");
 	addMenuItem(m, qt_("Script (small) style	\\scriptstyle"), "scriptstyle");
 	addMenuItem(m, qt_("Scriptscript (smaller) style	\\scriptscriptstyle"), "scriptscriptstyle");
-	stylePB->setPopup(m);
+	stylePB->setMenu(m);
 
 	m = new QMenu(fracPB);
 	m->setTitle(qt_("LyX: Fractions"));
@@ -144,7 +144,7 @@ QMathDialog::QMathDialog(QMath * form)
 	addMenuItem(m, qt_("Text frac (amsmath)	\\tfrac"), "tfrac");
 	addMenuItem(m, qt_("Display frac (amsmath)	\\dfrac"), "dfrac");
 	addMenuItem(m, qt_("Binomial	\\choose"),  "choose");
-	fracPB->setPopup(m);
+	fracPB->setMenu(m);
 
 	m = new QMenu(fontPB);
 	m->setTitle(qt_("LyX: Math Fonts"));
@@ -159,7 +159,7 @@ QMathDialog::QMathDialog(QMath * form)
 	addMenuItem(m, qt_("Fraktur	\\mathfrak"), "mathfrak");
 	addMenuItem(m, qt_("Calligraphic	\\mathcal"), "mathcal");
 	addMenuItem(m, qt_("Normal text mode	\\textrm"), "textrm");
-	fontPB->setPopup(m);
+	fontPB->setMenu(m);
 }
 
 void QMathDialog::addMenuItem(QMenu * menu, const QString & label, const std::string & action)
@@ -226,7 +226,7 @@ void QMathDialog::expandClicked()
 	IconPalette * p = makePanel(0, panels[id]);
 	string s = "LyX: ";
 	s += fromqstr(symbolsCO->currentText());
-	p->setCaption(toqstr(s));
+	p->setWindowTitle(toqstr(s));
 	p->resize(40 * 5, p->height());
 	p->show();
 	p->setMaximumSize(p->width(), p->height());
