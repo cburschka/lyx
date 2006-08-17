@@ -383,7 +383,7 @@ void MathHullInset::addPreview(lyx::graphics::PreviewLoader & ploader) const
 }
 
 
-void MathHullInset::notifyCursorLeaves(LCursor & cur)
+bool MathHullInset::notifyCursorLeaves(LCursor & cur)
 {
 	if (RenderPreview::status() == LyXRC::PREVIEW_ON) {
 		Buffer const & buffer = cur.buffer();
@@ -391,6 +391,7 @@ void MathHullInset::notifyCursorLeaves(LCursor & cur)
 		preview_->addPreview(snippet, buffer);
 		preview_->startLoading(buffer);
 	}
+	return false;
 }
 
 

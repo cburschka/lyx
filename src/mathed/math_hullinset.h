@@ -113,7 +113,7 @@ public:
 		OutputParams const &) const;
 
 	/// get notification when the cursor leaves this inset
-	void notifyCursorLeaves(LCursor & cur);
+	bool notifyCursorLeaves(LCursor & cur);
 	///
 	//bool insetAllowed(Code code) const;
 	///

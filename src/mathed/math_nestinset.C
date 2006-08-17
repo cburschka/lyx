@@ -344,7 +344,7 @@ int MathNestInset::latex(Buffer const &, std::ostream & os,
 }
 
 
-void MathNestInset::notifyCursorLeaves(LCursor & cur)
+bool MathNestInset::notifyCursorLeaves(LCursor & cur)
 {
 #ifdef WITH_WARNINGS
 #warning look here
@@ -373,6 +373,7 @@ void MathNestInset::notifyCursorLeaves(LCursor & cur)
 		}
 	}
 #endif
+	return false;
 }
 
 

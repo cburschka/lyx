@@ -1,5 +1,10 @@
 2006-08-17  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	* BufferView.C (mouseSetCursor): do not call dEPM when cursor is
+	invalidated by notifyCursorLeaves.
+
+2006-08-17  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
 	* undo.C (recordUndoInset): remember the cursor position inside
 	the inset.
 
