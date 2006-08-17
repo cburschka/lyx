@@ -20,8 +20,8 @@
 #include <QPaintEvent>
 
 
-QSetBorder::QSetBorder(QWidget * parent, char const * name, Qt::WFlags fl)
-	: QWidget(parent, name, fl), buffer(75, 75)
+QSetBorder::QSetBorder(QWidget * parent, Qt::WFlags fl)
+	: QWidget(parent, fl), buffer(75, 75)
 {
 	/* length of corner line */
 	l = buffer.width() / 10;

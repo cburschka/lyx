@@ -28,7 +28,7 @@ class QSetBorder : public QWidget
 {
 	Q_OBJECT
 public:
-	QSetBorder(QWidget * parent = 0, char const * name = 0, Qt::WFlags fl = 0);
+	QSetBorder(QWidget * parent = 0, Qt::WFlags fl = 0);
 
 	bool getLeft();
 	bool getRight();
