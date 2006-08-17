@@ -79,7 +79,7 @@ void QTexinfoDialog::viewClicked()
 
 void QTexinfoDialog::update()
 {
-	switch (whatStyle->currentItem()) {
+	switch (whatStyle->currentIndex()) {
 	case 0:
 		form_->updateStyles(ControlTexinfo::cls);
 		break;
