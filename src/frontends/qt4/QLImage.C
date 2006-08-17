@@ -10,7 +10,7 @@
  */
 
 #ifndef QT3_SUPPORT
- #define QT3_SUPPORT
+// #define QT3_SUPPORT
 #endif
 
 #include <config.h>
@@ -187,9 +187,14 @@ QImage & toGray(QImage & img)
 	int const pixels = img.depth() > 8 ?
 		img.width() * img.height() : img.numColors();
 
-	unsigned int * const data = img.depth() > 8 ?
-		(unsigned int *)img.bits() :
-		(unsigned int *)img.jumpTable();
+	// FIXME this code used to be like this:
+	//
+	//unsigned int * const data = img.depth() > 8 ?
+	//	(unsigned int *)img.bits() :
+	//	(unsigned int *)img.jumpTable();
+	// 
+	// But Qt doc just say use bits...
+	unsigned int * const data = (unsigned int *)img.bits();
 
 	for(int i = 0; i < pixels; ++i){
 		int const val = qGray(data[i]);
@@ -213,7 +218,7 @@ bool QLImage::setPixmap_impl(Params const & params)
 	}
 
 	case MonochromeDisplay: {
-		transformed_.convertDepth(transformed_.depth(), Qt::MonoOnly);
+		transformed_.convertToFormat(transformed_.format(), Qt::MonoOnly);
 		break;
 	}
 
@@ -221,7 +226,7 @@ bool QLImage::setPixmap_impl(Params const & params)
 		break;
 	}
 
-	transformed_pixmap_ = transformed_;
+	transformed_pixmap_ = QPixmap::fromImage(transformed_);
 	return true;
 }
 
@@ -268,8 +273,10 @@ void QLImage::rotate_impl(Params const & params)
 	QMatrix m;
 	m.rotate(-params.angle);
 
-	transformed_.setAlphaBuffer(true);
-	transformed_ = transformed_.xForm(m);
+	// FIXME: alpha chanel detection is automautic for monochrome
+	// and 8-bit images. For 32 bit, is something like still necessary?
+	//transformed_.setAlphaBuffer(true);
+	transformed_ = transformed_.transformed(m);
 }
 
 
@@ -287,7 +294,7 @@ void QLImage::scale_impl(Params const & params)
 
 	QMatrix m;
 	m.scale(double(width) / getWidth(), double(height) / getHeight());
-	transformed_ = transformed_.xForm(m);
+	transformed_ = transformed_.transformed(m);
 }
 
 } // namespace graphics
