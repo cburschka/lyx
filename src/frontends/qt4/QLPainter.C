@@ -210,7 +210,7 @@ void QLPainter::smallCapsText(int x, int y,
 	int tmpx = x;
 	size_t ls = s.length();
 	for (unsigned int i = 0; i < ls; ++i) {
-		QChar const c = s[i].upper();
+		QChar const c = s[i].toUpper();
 		if (c != s.at(i)) {
 			qp_->setFont(qsmallfont);
 			qp_->drawText(tmpx, y, c);
@@ -243,7 +243,7 @@ void QLPainter::text(int x, int y, char_type const * s, size_t ls,
 	//std::vector<unsigned short> ucs2 = ucs4_to_ucs2(in);
 	std::vector<unsigned short> ucs2 = ucs4_to_ucs2(s, ls);
 	ucs2.push_back(0);
-	QString str = QString::fromUcs2(&ucs2[0]);
+	QString str = QString::fromUtf16(&ucs2[0]);
 #endif
 
 #if 0
