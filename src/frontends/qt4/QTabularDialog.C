@@ -117,7 +117,7 @@ void QTabularDialog::on_booktabsRB_toggled()
 
 void QTabularDialog::topspace_changed()
 {
-	switch(topspaceCO->currentItem()) {
+	switch(topspaceCO->currentIndex()) {
 		case 0: {
 			form_->controller().set(LyXTabular::SET_TOP_SPACE, "");
 				topspaceED->setEnabled(false);
@@ -147,7 +147,7 @@ void QTabularDialog::topspace_changed()
 
 void QTabularDialog::bottomspace_changed()
 {
-	switch(bottomspaceCO->currentItem()) {
+	switch(bottomspaceCO->currentIndex()) {
 		case 0: {
 			form_->controller().set(LyXTabular::SET_BOTTOM_SPACE, "");
 				bottomspaceED->setEnabled(false);
@@ -177,7 +177,7 @@ void QTabularDialog::bottomspace_changed()
 
 void QTabularDialog::interlinespace_changed()
 {
-	switch(interlinespaceCO->currentItem()) {
+	switch(interlinespaceCO->currentIndex()) {
 		case 0: {
 			form_->controller().set(LyXTabular::SET_INTERLINE_SPACE, "");
 				interlinespaceED->setEnabled(false);
