@@ -125,16 +125,16 @@ void QBibtexDialog::browsePressed()
 		unsigned int pres = 0;
 
 		for (int i = 0; i != styleCB->count(); ++i) {
-			if (fromqstr(styleCB->text(i)) == filen) {
+			if (fromqstr(styleCB->itemText(i)) == filen) {
 				present = true;
 				pres = i;
 			}
 		}
 
 		if (!present)
-			styleCB->insertItem(toqstr(filen),0);
+			styleCB->insertItem(0, toqstr(filen));
 
-		styleCB->setCurrentItem(pres);
+		styleCB->setCurrentIndex(pres);
 		form_->changed();
 	}
 }
@@ -154,11 +154,11 @@ void QBibtexDialog::browseBibPressed()
 		}
 
 		if (!present) {
-			add_->bibLW->addItem(toqstr(f));
+			add_->bibLW->addItem(f);
 			form_->changed();
 		}
 
-		add_->bibED->setText(toqstr(f));
+		add_->bibED->setText(f);
 	}
 }
 
