@@ -34,7 +34,7 @@ namespace frontend {
 string const GuiClipboard::get() const
 {
 	QString const str = qApp->clipboard()->text(QClipboard::Clipboard);
-	lyxerr[Debug::ACTION] << "GuiClipboard::get: " << (const char*) str
+	lyxerr[Debug::ACTION] << "GuiClipboard::get: " << fromqstr(str)
 	                      << endl;
 	if (str.isNull())
 		return string();
