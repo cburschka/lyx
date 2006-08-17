@@ -134,7 +134,19 @@ void LyXView::setBuffer(Buffer * b)
 	if (work_area_->bufferView().buffer())
 		disconnectBuffer();
 
+	if (!b)
+		getDialogs().hideBufferDependent();
+
 	work_area_->bufferView().setBuffer(b);
+
+	if (work_area_->bufferView().buffer())
+	{
+		// Buffer-dependent dialogs should be updated or
+		// hidden. This should go here because some dialogs (eg ToC)
+		// require bv_->text.
+		getDialogs().updateBufferDependent(true);
+	}
+
 	updateMenubar();
 	updateToolbars();
 	updateLayoutChoice();

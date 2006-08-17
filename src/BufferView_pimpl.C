@@ -12,6 +12,7 @@
  * \author André Pönitz
  * \author Dekel Tsur
  * \author Jürgen Vigna
+ * \author Abdelrazak Younes
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -266,7 +267,6 @@ void BufferView::Pimpl::setBuffer(Buffer * b)
 				    << " No Buffer!" << endl;
 		// We are closing the buffer, use the first buffer as current
 		buffer_ = bufferlist.first();
-		owner_->getDialogs().hideBufferDependent();
 	} else {
 		// Set current buffer
 		buffer_ = b;
@@ -276,7 +276,6 @@ void BufferView::Pimpl::setBuffer(Buffer * b)
 	cursor_ = LCursor(*bv_);
 	anchor_ref_ = 0;
 	offset_ref_ = 0;
-
 
 	// If we're quitting lyx, don't bother updating stuff
 	if (quitting)
@@ -297,11 +296,6 @@ void BufferView::Pimpl::setBuffer(Buffer * b)
 			cursor_.setCursor(buffer_->getCursor().asDocIterator(&(buffer_->inset())));
 			cursor_.setSelection();
 		}
-
-		// Buffer-dependent dialogs should be updated or
-		// hidden. This should go here because some dialogs (eg ToC)
-		// require bv_->text.
-		owner_->getDialogs().updateBufferDependent(true);
 	}
 
 	update();
