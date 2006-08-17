@@ -9,10 +9,6 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QT3_SUPPORT
-// #define QT3_SUPPORT
-#endif
-
 #include <config.h>
 
 #include "QLImage.h"
