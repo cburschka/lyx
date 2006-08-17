@@ -45,7 +45,7 @@ int smallcapswidth(unsigned short const * s, size_t ls, LyXFont const & f)
 
 	for (size_t i = 0; i < ls; ++i) {
 		QChar const c = s[i];
-		QChar const uc = c.upper();
+		QChar const uc = c.toUpper();
 		if (c != uc)
 			w += qsmallm.width(uc);
 		else
