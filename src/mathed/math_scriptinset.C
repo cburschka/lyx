@@ -19,6 +19,7 @@
 #include "cursor.h"
 #include "debug.h"
 #include "funcrequest.h"
+#include "undo.h"
 
 #include <boost/assert.hpp>
 
@@ -434,10 +435,10 @@ void MathScriptInset::write(WriteStream & os) const
 			os << "{}";
 	}
 
-	if (hasDown() && down().size())
+	if (hasDown() /*&& down().size()*/)
 		os << "_{" << down() << '}';
 
-	if (hasUp() && up().size())
+	if (hasUp() /*&& up().size()*/)
 		os << "^{" << up() << '}';
 
 	if (lock_ && !os.latex())
@@ -565,14 +566,27 @@ void MathScriptInset::notifyCursorLeaves(LCursor & cur)
 		// Case of two scripts. In this case, 1 = super, 2 = sub
 		if (cur.idx() == 2 && cell(2).empty()) {
 			// must be a subscript...
+			recordUndoInset(cur);
 			removeScript(false);
 		} else if (cur.idx() == 1 && cell(1).empty()) {
 			// must be a superscript...
+			recordUndoInset(cur);
 			removeScript(true);
 		}
 	} else if (nargs() > 1 && cur.idx() == 1 && cell(1).empty()) {
 		// could be either subscript or super script
+		recordUndoInset(cur);
 		removeScript(cell_1_is_up_);
+		// Let the script inset commit suicide. This is
+		// modelled on LCursor.pullArg(), but tries not to
+		// invoke notifyCursorLeaves again and does not touch
+		// cur (since the top slice will be deleted
+		// afterwards))
+		MathArray ar = cell(0);
+		LCursor tmpcur = cur;
+		tmpcur.pop();
+		tmpcur.cell().erase(tmpcur.pos());
+		tmpcur.cell().insert(tmpcur.pos(), ar);
 	}
 
 	//lyxerr << "MathScriptInset::notifyCursorLeaves: 2 " << cur << endl;
