@@ -60,12 +60,12 @@ void QBranch::update_contents()
 	int count = 0;
 	for (const_iterator it = begin; it != end; ++it, ++count) {
 		string const & branch = it->getBranch();
-		dialog_->branchCO->insertItem(toqstr(branch));
+		dialog_->branchCO->addItem(toqstr(branch));
 
 		if (cur_branch == branch)
 			id = count;
 	}
-	dialog_->branchCO->setCurrentItem(id);
+	dialog_->branchCO->setCurrentIndex(id);
 }
 
 
