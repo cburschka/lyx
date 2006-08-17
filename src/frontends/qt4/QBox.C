@@ -57,13 +57,13 @@ void QBox::build_dialog()
 	// fill the box type choice
 	box_gui_tokens(ids_, gui_names_);
 	for (unsigned int i = 0; i < gui_names_.size(); ++i)
-		dialog_->typeCO->insertItem(toqstr(gui_names_[i]));
+		dialog_->typeCO->addItem(toqstr(gui_names_[i]));
 
 	// add the special units to the height choice
 	// width needs different handling
 	box_gui_tokens_special_length(ids_spec_, gui_names_spec_);
 	for (unsigned int i = 1; i < gui_names_spec_.size(); ++i) {
-		dialog_->heightUnitsLC->insertItem(toqstr(gui_names_spec_[i]));
+		dialog_->heightUnitsLC->addItem(toqstr(gui_names_spec_[i]));
 	}
 
 	bcview().addReadOnly(dialog_->typeCO);
@@ -92,7 +92,7 @@ void QBox::update_contents()
 	string type(controller().params().type);
 	for (unsigned int i = 0; i < gui_names_.size(); ++i) {
 		if (type == ids_[i])
-			dialog_->typeCO->setCurrentItem(i);
+			dialog_->typeCO->setCurrentIndex(i);
 	}
 
 	// default: minipage
@@ -107,11 +107,11 @@ void QBox::update_contents()
 	setInnerType(frameless, inner_type);
 
 	char c = controller().params().pos;
-	dialog_->valignCO->setCurrentItem(string("tcb").find(c, 0));
+	dialog_->valignCO->setCurrentIndex(string("tcb").find(c, 0));
 	c = controller().params().inner_pos;
-	dialog_->ialignCO->setCurrentItem(string("tcbs").find(c, 0));
+	dialog_->ialignCO->setCurrentIndex(string("tcbs").find(c, 0));
 	c = controller().params().hor_pos;
-	dialog_->halignCO->setCurrentItem(string("lcrs").find(c, 0));
+	dialog_->halignCO->setCurrentIndex(string("lcrs").find(c, 0));
 
 	bool ibox = controller().params().inner_box;
 	dialog_->valignCO->setEnabled(ibox);
@@ -133,8 +133,8 @@ void QBox::update_contents()
 				spc = toqstr(gui_names_spec_[i].c_str());
 		}
 		for (int j = 0; j < dialog_->widthUnitsLC->count(); j++) {
-			if (dialog_->widthUnitsLC->text(j) == spc)
-				dialog_->widthUnitsLC->setCurrentItem(j);
+			if (dialog_->widthUnitsLC->itemText(j) == spc)
+				dialog_->widthUnitsLC->setCurrentIndex(j);
 		}
 	}
 
@@ -150,8 +150,8 @@ void QBox::update_contents()
 			}
 		}
 		for (int j = 0; j < dialog_->heightUnitsLC->count(); j++) {
-			if (dialog_->heightUnitsLC->text(j) == hspc) {
-				dialog_->heightUnitsLC->setCurrentItem(j);
+			if (dialog_->heightUnitsLC->itemText(j) == hspc) {
+				dialog_->heightUnitsLC->setCurrentIndex(j);
 			}
 		}
 	}
@@ -164,7 +164,7 @@ void QBox::update_contents()
 void QBox::apply()
 {
 	controller().params().type =
-		ids_[dialog_->typeCO->currentItem()];
+		ids_[dialog_->typeCO->currentIndex()];
 
 	controller().params().inner_box =
 		dialog_->innerBoxCO->currentText() != qt_("None");
@@ -172,11 +172,11 @@ void QBox::apply()
 		dialog_->innerBoxCO->currentText() ==  qt_("Parbox");
 
 	controller().params().pos =
-		"tcb"[dialog_->valignCO->currentItem()];
+		"tcb"[dialog_->valignCO->currentIndex()];
 	controller().params().inner_pos =
-		"tcbs"[dialog_->ialignCO->currentItem()];
+		"tcbs"[dialog_->ialignCO->currentIndex()];
 	controller().params().hor_pos =
-		"lcrs"[dialog_->halignCO->currentItem()];
+		"lcrs"[dialog_->halignCO->currentIndex()];
 
 	int i = 0;
 	bool spec = false;
@@ -255,17 +255,17 @@ void QBox::setSpecial(bool ibox)
 	int count = dialog_->widthUnitsLC->count();
 	bool has_special = false;
 	for (int i = 0; i < count; i++)
-		if (dialog_->widthUnitsLC->text(i).contains(qt_("Total Height")) > 0)
+		if (dialog_->widthUnitsLC->itemText(i).contains(qt_("Total Height")) > 0)
 			has_special = true;
 	// insert 'em if needed...
 	if (!ibox && !has_special) {
 		for (unsigned int i = 1; i < gui_names_spec_.size(); i++)
-			dialog_->widthUnitsLC->insertItem(toqstr(gui_names_spec_[i]));
+			dialog_->widthUnitsLC->addItem(toqstr(gui_names_spec_[i]));
 	// ... or remove 'em if needed
 	} else if (ibox && has_special) {
 		dialog_->widthUnitsLC->clear();
 		for (int i = 0; i < num_units; i++)
-			dialog_->widthUnitsLC->insertItem(unit_name_gui[i]);
+			dialog_->widthUnitsLC->addItem(unit_name_gui[i]);
 	}
 }
 
@@ -276,17 +276,17 @@ void QBox::setInnerType(bool frameless, int i)
 	// we have to remove "none" then and adjust the combo
 	if (frameless) {
 		dialog_->innerBoxCO->clear();
-		dialog_->innerBoxCO->insertItem(qt_("Parbox"));
-		dialog_->innerBoxCO->insertItem(qt_("Minipage"));
-		dialog_->innerBoxCO->setCurrentItem(i - 1);
+		dialog_->innerBoxCO->addItem(qt_("Parbox"));
+		dialog_->innerBoxCO->addItem(qt_("Minipage"));
+		dialog_->innerBoxCO->setCurrentIndex(i - 1);
 	} else {
 		if (dialog_->innerBoxCO->count() == 2)
 			i += 1;
 		dialog_->innerBoxCO->clear();
-		dialog_->innerBoxCO->insertItem(qt_("None"));
-		dialog_->innerBoxCO->insertItem(qt_("Parbox"));
-		dialog_->innerBoxCO->insertItem(qt_("Minipage"));
-		dialog_->innerBoxCO->setCurrentItem(i);
+		dialog_->innerBoxCO->addItem(qt_("None"));
+		dialog_->innerBoxCO->addItem(qt_("Parbox"));
+		dialog_->innerBoxCO->addItem(qt_("Minipage"));
+		dialog_->innerBoxCO->setCurrentIndex(i);
 	}
 }
 
