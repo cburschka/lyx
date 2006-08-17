@@ -31,7 +31,7 @@ class QResizeEvent;
 class IconPalette : public QWidget {
 	Q_OBJECT
 public:
-	IconPalette(QWidget * parent, char const * name = 0);
+	IconPalette(QWidget * parent);
 
 	/// add a button
 	void add(QPixmap const & pixmap, std::string name, std::string tooltip);
