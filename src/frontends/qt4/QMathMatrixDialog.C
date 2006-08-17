@@ -43,12 +43,12 @@ QMathMatrixDialog::QMathMatrixDialog(QMathMatrix * form)
 {
 	setupUi(this);
 
-	setCaption(qt_("LyX: Insert Matrix"));
+	setWindowTitle(qt_("LyX: Insert Matrix"));
 
 	table->setMinimumSize(100, 100);
 	rowsSB->setValue(2);
 	columnsSB->setValue(2);
-	valignCO->setCurrentItem(1);
+	valignCO->setCurrentIndex(1);
 
 	connect(okPB, SIGNAL(clicked()),
 		this, SLOT(slotOK()));
@@ -92,7 +92,7 @@ void QMathMatrixDialog::change_adaptor()
 
 void QMathMatrixDialog::slotOK()
 {
-	char const c = v_align_c[valignCO->currentItem()];
+	char const c = v_align_c[valignCO->currentIndex()];
 	string const sh = fromqstr(halignED->text());
 	int const nx = int(columnsSB->value());
 	int const ny = int(rowsSB->value());
