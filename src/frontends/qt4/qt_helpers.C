@@ -128,9 +128,7 @@ QString const qt_(string const & str)
 
 string const fromqstr(QString const & str)
 {
-	//return str;
-
-	return str.ascii() ? str.ascii() : "";
+	return str.isEmpty()? string(): string(str.toAscii());
 }
 
 
