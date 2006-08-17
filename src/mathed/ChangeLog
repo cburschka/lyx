@@ -1,3 +1,7 @@
+2006-08-17  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* math_inset.C (cell): make debug message more explicit.
+
 2006-08-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* math_nestinset.C (doDispatch/LFUN_INSET_TOGGLE): do not try to
