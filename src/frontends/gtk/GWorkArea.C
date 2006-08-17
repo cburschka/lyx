@@ -333,7 +333,7 @@ bool GWorkArea::onConfigure(GdkEventConfigure * /*event*/)
 		gtk_im_context_set_client_window(
 			imContext_, workArea_.get_window()->gobj());
 	}
-	view_.view()->workAreaResize(workArea_.get_width(), workArea_.get_height());
+	view_.workArea()->resizeBufferView();
 	return true;
 }
 
