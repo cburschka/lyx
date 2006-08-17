@@ -41,7 +41,7 @@ QCitationDialog::QCitationDialog(Dialog & dialog, QCitation * form)
 {
 	setupUi(this);
 
-	setCaption(toqstr("LyX: " + getTitle()));
+	setWindowTitle(toqstr("LyX: " + getTitle()));
 
  	selectedLV->setModel(form_->selected());
 	availableLV->setModel(form_->available());
@@ -66,7 +66,7 @@ QCitationDialog::~QCitationDialog()
 
 void QCitationDialog::apply()
 {
-	int  const choice = std::max(0, citationStyleCO->currentItem());
+	int  const choice = std::max(0, citationStyleCO->currentIndex());
 	style_ = choice;
 	bool const full  = fulllistCB->isChecked();
 	bool const force = forceuppercaseCB->isChecked();
@@ -170,16 +170,16 @@ void QCitationDialog::updateStyle()
 
 	// restore the latest natbib style
 	if (style_ >= 0 && style_ < citationStyleCO->count())
-		citationStyleCO->setCurrentItem(style_);
+		citationStyleCO->setCurrentIndex(style_);
 	else
-		citationStyleCO->setCurrentItem(0);
+		citationStyleCO->setCurrentIndex(0);
 
 	fulllistCB->setChecked(false);
 	forceuppercaseCB->setChecked(false);
 
 	if (cit != styles.end()) {
 		int const i = int(cit - styles.begin());
-		citationStyleCO->setCurrentItem(i);
+		citationStyleCO->setCurrentIndex(i);
 		fulllistCB->setChecked(cs.full);
 		forceuppercaseCB->setChecked(cs.forceUCase);
 	}
@@ -188,7 +188,7 @@ void QCitationDialog::updateStyle()
 
 void QCitationDialog::fillStyles()
 {
-	int const orig = citationStyleCO->currentItem();
+	int const orig = citationStyleCO->currentIndex();
 
 	citationStyleCO->clear();
 
@@ -215,7 +215,7 @@ void QCitationDialog::fillStyles()
 	citationStyleCO->insertItems(0, sty);
 
 	if (orig != -1 && orig < citationStyleCO->count())
-		citationStyleCO->setCurrentItem(orig);
+		citationStyleCO->setCurrentIndex(orig);
 }
 
 
