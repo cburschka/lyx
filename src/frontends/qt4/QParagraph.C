@@ -58,7 +58,7 @@ void QParagraph::apply()
 
 	// alignment
 	LyXAlignment align;
-	switch (dialog_->align->currentItem()) {
+	switch (dialog_->align->currentIndex()) {
 	case 0:
 		align = LYX_ALIGN_BLOCK;
 		break;
@@ -79,7 +79,7 @@ void QParagraph::apply()
 	// get spacing
 	Spacing::Space linespacing = Spacing::Default;
 	string other;
-	switch (dialog_->linespacing->currentItem()) {
+	switch (dialog_->linespacing->currentIndex()) {
 	case 0:
 		linespacing = Spacing::Default;
 		break;
@@ -139,7 +139,7 @@ void QParagraph::update_contents()
 		i = 0;
 		break;
 	}
-	dialog_->align->setCurrentItem(i);
+	dialog_->align->setCurrentIndex(i);
 
 
 	//LyXAlignment alignpos = controller().alignPossible();
@@ -166,7 +166,7 @@ void QParagraph::update_contents()
 		linespacing = 0;
 		break;
 	}
-	dialog_->linespacing->setCurrentItem(linespacing);
+	dialog_->linespacing->setCurrentIndex(linespacing);
 	if (space.getSpace() == Spacing::Other) {
 		dialog_->linespacingValue->setText(toqstr(space.getValueAsString()));
 		dialog_->linespacingValue->setEnabled(true);

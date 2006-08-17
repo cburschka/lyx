@@ -80,7 +80,7 @@ void QParagraphDialog::change_adaptor()
 
 void QParagraphDialog::enableLinespacingValue(int)
 {
-	bool const enable = linespacing->currentItem() == 4;
+	bool const enable = linespacing->currentIndex() == 4;
 	linespacingValue->setEnabled(enable);
 }
 
