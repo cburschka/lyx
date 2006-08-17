@@ -12,7 +12,6 @@
 #ifndef EMPTYTABLE_H
 #define EMPTYTABLE_H
 
-//#include <QMouseEvent>
 #include <QTableWidget>
 
 class QMouseEvent;
