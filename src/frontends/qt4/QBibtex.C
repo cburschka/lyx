@@ -107,7 +107,7 @@ void QBibtex::update_contents()
 	else if (btprint == "btPrintAll")
 		btp = 2;
 
-	dialog_->btPrintCO->setCurrentItem(btp);
+	dialog_->btPrintCO->setCurrentIndex(btp);
 	dialog_->btPrintCO->setEnabled(bibtopic);
 
 	dialog_->styleCB->clear();
@@ -121,18 +121,18 @@ void QBibtex::update_contents()
 		string item(changeExtension(*it, ""));
 		if (item == bibstyle)
 			item_nr = int(it - str.begin());
-		dialog_->styleCB->insertItem(toqstr(item));
+		dialog_->styleCB->addItem(toqstr(item));
 	}
 
 	if (item_nr == -1 && !bibstyle.empty()) {
-		dialog_->styleCB->insertItem(toqstr(bibstyle));
+		dialog_->styleCB->addItem(toqstr(bibstyle));
 		item_nr = dialog_->styleCB->count() - 1;
 	}
 
 	if (item_nr != -1)
-		dialog_->styleCB->setCurrentItem(item_nr);
+		dialog_->styleCB->setCurrentIndex(item_nr);
 	else
-		dialog_->styleCB->clearEdit();
+		dialog_->styleCB->clearEditText();
 }
 
 
@@ -168,7 +168,7 @@ void QBibtex::apply()
 	// 1. sections that include all cited references of the database(s)
 	// 2. sections that include all uncited references of the database(s)
 	// 3. sections that include all references of the database(s), cited or not
-	int btp = dialog_->btPrintCO->currentItem();
+	int btp = dialog_->btPrintCO->currentIndex();
 
 	switch (btp) {
 	case 0:
