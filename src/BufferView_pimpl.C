@@ -330,8 +330,6 @@ string BufferView::Pimpl::firstLayout()
 void BufferView::Pimpl::resizeCurrentBuffer()
 {
 	lyxerr[Debug::DEBUG] << BOOST_CURRENT_FUNCTION << endl;
-	owner_->busy(true);
-	owner_->message(_("Formatting document..."));
 
 	LyXText * text = bv_->text();
 	if (!text)
@@ -339,12 +337,7 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 
 	text->init(bv_);
 	update();
-
 	switchKeyMap();
-	owner_->busy(false);
-
-	// Reset the "Formatting..." message
-	owner_->clearMessage();
 }
 
 
@@ -532,7 +525,7 @@ void BufferView::Pimpl::workAreaResize(int width, int height)
 	height_ = height;
 
 	if (buffer_ && widthChange) {
-		// The visible LyXView need a resize
+		// The WorkArea content needs a resize
 		resizeCurrentBuffer();
 	}
 

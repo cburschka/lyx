@@ -42,6 +42,7 @@
 #include "graphics/GraphicsImage.h"
 #include "graphics/GraphicsLoader.h"
 
+#include "gettext.h"
 #include "support/filetools.h" // LibFileSearch
 #include "support/forkedcontr.h"
 
@@ -265,9 +266,13 @@ void WorkArea::dispatch(FuncRequest const & cmd0)
 
 void WorkArea::resizeBufferView()
 {
+	lyx_view_.busy(true);
+	lyx_view_.message(_("Formatting document..."));
 	buffer_view_->workAreaResize(width(), height());
 	lyx_view_.updateLayoutChoice();
 	redraw();
+	lyx_view_.busy(false);
+	lyx_view_.clearMessage();
 }
 
 
