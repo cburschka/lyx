@@ -35,7 +35,7 @@ void setWarningColor(QWidget * widget)
 	// So copy the appropriate parts of the function here:
 	QPalette pal = widget->palette();
 	pal.setColor(QPalette::Active,
-		     QColorGroup::Foreground,
+		     QPalette::Foreground,
 		     QColor(255, 0, 0));
 	widget->setPalette(pal);
 }
@@ -44,7 +44,7 @@ void setWarningColor(QWidget * widget)
 void setWidget(bool valid, QLineEdit * input, QLabel * label)
 {
 	if (valid)
-		input->unsetPalette();
+		input->setPalette(QPalette());
 	else
 		setWarningColor(input);
 
@@ -52,7 +52,7 @@ void setWidget(bool valid, QLineEdit * input, QLabel * label)
 		return;
 
 	if (valid)
-		label->unsetPalette();
+		label->setPalette(QPalette());
 	else
 		setWarningColor(label);
 }

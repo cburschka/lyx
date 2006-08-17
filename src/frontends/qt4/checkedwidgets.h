@@ -13,7 +13,6 @@
 #define CHECKEDWIDGETS_H
 
 #include "BCView.h"
-//#include <QLabel>
 
 class QLabel;
 class QLineEdit;
