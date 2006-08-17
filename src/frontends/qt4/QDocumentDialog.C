@@ -25,7 +25,6 @@
 #include "qt_helpers.h"
 
 #include "bufferparams.h"
-#include "floatplacement.h"
 #include "gettext.h"
 #include "helper_funcs.h" // getSecond()
 #include "language.h"

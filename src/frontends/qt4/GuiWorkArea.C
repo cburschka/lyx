@@ -13,16 +13,17 @@
 
 #include "GuiWorkArea.h"
 
+#include "Application.h"
+#include "ColorCache.h"
 #include "QLPainter.h"
 #include "QLyXKeySym.h"
-
-#include "ColorCache.h"
 #include "qt_helpers.h"
-#include "Application.h"
+
 #include "BufferView.h"
 #include "debug.h"
 #include "funcrequest.h"
 #include "LColor.h"
+
 #include "support/os.h"
 
 #include <QLayout>
@@ -134,8 +135,6 @@ GuiWorkArea::GuiWorkArea(int w, int h, LyXView & lyx_view)
 	viewport()->setCursor(Qt::IBeamCursor);
 
 	resize(w, h);
-	workWidth_ = w;
-	workHeight_ = h;
 
 	synthetic_mouse_event_.timeout.timeout.connect(
 		boost::bind(&GuiWorkArea::generateSyntheticMouseEvent,
@@ -146,7 +145,7 @@ GuiWorkArea::GuiWorkArea(int w, int h, LyXView & lyx_view)
 		this, SLOT(adjustViewWithScrollBar(int)));
 
 	// PageStep only depends on the viewport height.
-	verticalScrollBar()->setPageStep(workHeight_);
+	verticalScrollBar()->setPageStep(viewport()->height());
 
 	lyxerr[Debug::GUI] << BOOST_CURRENT_FUNCTION
 		<< "\n Area width\t" << width()
@@ -173,6 +172,7 @@ GuiWorkArea::GuiWorkArea(int w, int h, LyXView & lyx_view)
 	// Must be set when creating custom text editing widgets.
 	setAttribute(Qt::WA_InputMethodEnabled, true);
 }
+
 
 GuiWorkArea::~GuiWorkArea()
 {
@@ -420,36 +420,14 @@ void GuiWorkArea::mouseDoubleClickEvent(QMouseEvent * e)
 
 void GuiWorkArea::resizeEvent(QResizeEvent *)
 {
-	workWidth_ = viewport()->width();
-	workHeight_ = viewport()->height();
-
 	verticalScrollBar()->setPageStep(viewport()->height());
-
-//	screen_device_ = QPixmap(viewport()->width(), viewport()->height());
-//	paint_device_ = QImage(viewport()->width(), viewport()->height(), QImage::Format_RGB32);
 	paint_device_ = QPixmap(viewport()->width(), viewport()->height());
-
 	resizeBufferView();
-
-	/*
-	lyxerr[Debug::GUI] << BOOST_CURRENT_FUNCTION
-		<< "\n QWidget width\t" << this->QWidget::width()
-		<< "\n QWidget height\t" << this->QWidget::height()
-		<< "\n viewport width\t" << viewport()->width()
-		<< "\n viewport height\t" << viewport()->height()
-		<< "\n QResizeEvent rect left\t" << rect().left()
-		<< "\n QResizeEvent rect right\t" << rect().right()
-		<< endl;
-		*/
 }
 
 
 void GuiWorkArea::update(int x, int y, int w, int h)
 {
-	//screen_device_.fromImage(paint_device_);
-	//QPainter q(&screen_device_);
-	//q.drawImage(x, y, paint_device_.copy(x, y, w, h));
-
 	viewport()->update(x, y, w, h);
 }
 
@@ -599,7 +577,6 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 	}
 	e->accept();
 }
-
 
 } // namespace frontend
 } // namespace lyx

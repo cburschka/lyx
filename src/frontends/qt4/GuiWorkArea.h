@@ -4,7 +4,6 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author unknown
  * \author John Levon
  * \author Abdelrazak Younes
  *
@@ -13,10 +12,6 @@
 
 #ifndef WORKAREA_H
 #define WORKAREA_H
-
-#ifdef emit
-#undef emit
-#endif
 
 #include "frontends/WorkArea.h"
 
@@ -95,8 +90,8 @@ public:
  * Qt-specific implementation of the work area
  * (buffer view GUI)
 */
-class GuiWorkArea: public QAbstractScrollArea, public WorkArea {
-
+class GuiWorkArea: public QAbstractScrollArea, public WorkArea
+{
 	Q_OBJECT
 
 public:
@@ -105,10 +100,10 @@ public:
 
 	virtual ~GuiWorkArea();
 	/// return the width of the content pane
-	virtual int width() const { return workWidth_; }
+	virtual int width() const { return viewport()->width(); }
 
 	/// return the height of the content pane
-	virtual int height() const { return workHeight_; }
+	virtual int height() const { return viewport()->height(); }
 	///
 	virtual void setScrollbarParams(int height, int pos, int line_height);
 
@@ -163,8 +158,6 @@ protected:
 	void wheelEvent(QWheelEvent * e);
 	/// key press
 	void keyPressEvent(QKeyEvent * e);
-
-protected:
 	/// IM events
 	void inputMethodEvent(QInputMethodEvent * e);
 
@@ -183,11 +176,6 @@ public Q_SLOTS:
 	void adjustViewWithScrollBar(int action = 0);
 
 private:
-	/// Buffer view width.
-	int workWidth_;
-
-	/// Buffer view height.
-	int workHeight_;
 
 	/// Our painter.
 	QLPainter painter_;
@@ -199,11 +187,7 @@ private:
 	SyntheticMouseEvent synthetic_mouse_event_;
 
 	/// Our client side painting device.
-	//QImage paint_device_;
 	QPixmap paint_device_;
-
-	/// Our server side painting device.
-	//QPixmap screen_device_;
 
 	/// \todo remove
 	QTimer step_timer_;
