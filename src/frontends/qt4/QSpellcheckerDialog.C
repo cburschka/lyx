@@ -68,11 +68,11 @@ void QSpellcheckerDialog::ignoreClicked()
 void QSpellcheckerDialog::suggestionChanged(QListWidgetItem * item)
 {
 	if (replaceCO->count() != 0)
-		replaceCO->changeItem(item->text(), 0);
+		replaceCO->setItemText(0, item->text());
 	else
-		replaceCO->insertItem(item->text());
+		replaceCO->addItem(item->text());
 
-	replaceCO->setCurrentItem(0);
+	replaceCO->setCurrentIndex(0);
 }
 
 void QSpellcheckerDialog::replaceChanged(const QString & str)
