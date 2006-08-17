@@ -165,7 +165,7 @@ void QBranches::on_colorPB_clicked()
 			return;
 
 		QColor const initial = rgb2qcolor(branch->getColor());
-		QColor ncol(QColorDialog::getColor(initial, qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget()));
+		QColor ncol(QColorDialog::getColor(initial, qApp->focusWidget()));
 		if (ncol.isValid()){
 			// add the color to the branchlist
 			branch->setColor(fromqstr(ncol.name()));
