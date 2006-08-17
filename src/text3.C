@@ -79,6 +79,7 @@ using lyx::pos_type;
 
 using lyx::cap::copySelection;
 using lyx::cap::cutSelection;
+using lyx::cap::pasteParagraphList;
 using lyx::cap::pasteSelection;
 using lyx::cap::replaceSelection;
 
@@ -709,39 +710,30 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_INSET_DISSOLVE: {
-		recordUndo(cur);
+		recordUndoInset(cur);
 		cur.selHandle(false);
 		// save position
 		lyx::pos_type spos = cur.pos();
 		lyx::pit_type spit = cur.pit();
-		bool content = false;
-		if (cur.lastpit() != 0 || cur.lastpos() != 0) {
-			setCursor(cur, 0, 0);
-			cur.resetAnchor();
-			cur.pit() = cur.lastpit();
-			cur.pos() = cur.lastpos();
-			cur.setSelection();
-			copySelection(cur);
-			content = true;
-		}
-			cur.popLeft();
-			cur.resetAnchor();
-			// store cursor offset
-			if (spit == 0)
-				spos += cur.pos();
-			spit += cur.pit();
-			cur.pos()++;
-			cur.setSelection();
-		if (content) {
-			lyx::cap::replaceSelection(cur);
-			pasteSelection(cur, bv->buffer()->errorList("Paste"), 0);
-			cur.clearSelection();
+		ParagraphList plist;
+		if (cur.lastpit() != 0 || cur.lastpos() != 0) 
+			plist = paragraphs();
+		cur.popLeft();
+		// store cursor offset
+		if (spit == 0)
+			spos += cur.pos();
+		spit += cur.pit();
+		cur.paragraph().erase(cur.pos());
+		if (!plist.empty()) {
+			Buffer * b = bv->buffer();
+			pasteParagraphList(cur, plist, b->params().textclass, 
+					   b->errorList("Paste"));
 			// restore position
 			cur.pit() = std::min(cur.lastpit(), spit);
 			cur.pos() = std::min(cur.lastpos(), spos);
-			cur.resetAnchor();
-		} else
-			cutSelection(cur, false, false);
+		}
+		cur.clearSelection();
+		cur.resetAnchor();
 		needsUpdate = true;
 		break;
 	}
