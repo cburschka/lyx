@@ -170,7 +170,8 @@ public:
 	/// number of columns in gridlike structures
 	virtual size_t ncols() const { return 0; }
 	/// is called when the cursor leaves this inset
-	virtual void notifyCursorLeaves(LCursor &) {}
+	//  returns true if cursor is now invalid.
+	virtual bool notifyCursorLeaves(LCursor &) { return false; }
 
 	/// request "external features"
 	virtual void validate(LaTeXFeatures &) const {}

@@ -322,11 +322,13 @@ void BufferView::mouseSetCursor(LCursor & cur)
 	BOOST_ASSERT(&cur.bv() == this);
 
 	// Has the cursor just left the inset?
+	bool badcursor = false;
 	if (&cursor().inset() != &cur.inset())
-		cursor().inset().notifyCursorLeaves(cursor());
+		badcursor = cursor().inset().notifyCursorLeaves(cursor());
 
 	// do the dEPM magic if needed
-	if (cursor().inTexted())
+	// FIXME: move this to InsetText::notifyCursorLeaves?
+	if (!badcursor && cursor().inTexted())
 		cursor().text()->deleteEmptyParagraphMechanism(cur, cursor());
 
 	cursor() = cur;

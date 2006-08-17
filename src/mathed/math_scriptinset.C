@@ -555,7 +555,7 @@ void MathScriptInset::infoize2(std::ostream & os) const
 }
 
 
-void MathScriptInset::notifyCursorLeaves(LCursor & cur)
+bool MathScriptInset::notifyCursorLeaves(LCursor & cur)
 {
 	MathNestInset::notifyCursorLeaves(cur);
 
@@ -568,10 +568,12 @@ void MathScriptInset::notifyCursorLeaves(LCursor & cur)
 			// must be a subscript...
 			recordUndoInset(cur);
 			removeScript(false);
+			return true;
 		} else if (cur.idx() == 1 && cell(1).empty()) {
 			// must be a superscript...
 			recordUndoInset(cur);
 			removeScript(true);
+			return true;
 		}
 	} else if (nargs() > 1 && cur.idx() == 1 && cell(1).empty()) {
 		// could be either subscript or super script
@@ -587,9 +589,11 @@ void MathScriptInset::notifyCursorLeaves(LCursor & cur)
 		tmpcur.pop();
 		tmpcur.cell().erase(tmpcur.pos());
 		tmpcur.cell().insert(tmpcur.pos(), ar);
+		return true;
 	}
 
 	//lyxerr << "MathScriptInset::notifyCursorLeaves: 2 " << cur << endl;
+	return false;
 }
 
 
