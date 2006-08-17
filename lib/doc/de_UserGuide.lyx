@@ -1,4 +1,4 @@
-#LyX 1.4.1 created this file. For more info see http://www.lyx.org/
+#LyX 1.4.2 created this file. For more info see http://www.lyx.org/
 \lyxformat 245
 \begin_document
 \begin_header
@@ -89,8 +89,8 @@ Uwe Stöhr
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 23.
- Juni 2006
+letzte Änderung: 15.
+ August 2006
 \end_layout
 
 \begin_layout Standard
@@ -21288,7 +21288,7 @@ style
 \begin_layout Enumerate
 Mit 
 \begin_inset Graphics
-	filename ../images/math-matrix.xpm
+	filename ../images/math/math-matrix.xpm
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -21307,7 +21307,7 @@ Mit
 
 \begin_layout Enumerate
 \begin_inset Graphics
-	filename ../images/math/math-subscript.xpm
+	filename ../images/math/sub.xpm
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -21337,7 +21337,7 @@ fgestellt
 
 \begin_layout Enumerate
 \begin_inset Graphics
-	filename ../images/equation.xpm
+	filename ../images/math/equation.xpm
 	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
@@ -21391,7 +21391,7 @@ abgesetzt
 
 \begin_layout Enumerate
 \begin_inset Graphics
-	filename ../images/math/math-superscript.xpm
+	filename ../images/math/super.xpm
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -22444,7 +22444,7 @@ y
 \family default
  den Knopf 
 \begin_inset Graphics
-	filename ../images/math-matrix.xpm
+	filename ../images/math/math-matrix.xpm
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -32150,6 +32150,20 @@ Inhaltsverzeichnis
 \family default
  können Sie mit dem Schieberegler die Tiefe der Darstellung bestimmen.
  Dieses Menüfenster können Sie auch für die Navigation benutzen.
+\end_layout
+
+\begin_layout Subsection
+Komprimiert
+\end_layout
+
+\begin_layout Standard
+Wenn Sie diesen Menüpunkt aktivieren -- links davon erscheint dann ein Häkchen
+ -- wird das Dokument in komprimierter Form gespeichert, bleibt aber trotzdem
+ eine .
+\family typewriter
+lyx
+\family default
+-Datei.
 \end_layout
 
 \begin_layout Section
