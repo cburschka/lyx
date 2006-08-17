@@ -88,7 +88,7 @@ void QViewSource::build_dialog()
 	highlighter = new latexHighlighter(dialog_->viewSourceTV->document());
 	//
 	dialog_->viewSourceTV->setReadOnly(true);
-	dialog_->viewSourceTV->setTextFormat(Qt::PlainText);
+	///dialog_->viewSourceTV->setAcceptRichText(false);
 	// this is personal. I think source code should be in fixed-size font
 	QFont font(toqstr(lyx_gui::typewriter_font_name()));
 	font.setFixedPitch(true);
@@ -102,7 +102,7 @@ void QViewSource::build_dialog()
 void QViewSource::update_source()
 {
 	bool fullSource = dialog_->viewFullSourceCB->isChecked();
-	dialog_->viewSourceTV->setText(toqstr(controller().updateContent(fullSource)));
+	dialog_->viewSourceTV->setPlainText(toqstr(controller().updateContent(fullSource)));
 }
 
 

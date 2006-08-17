@@ -14,7 +14,8 @@
 #include "QViewSourceDialog.h"
 #include "QViewSource.h"
 
-#include <qpushbutton.h>
+#include <QPushButton>
+#include <QCloseEvent>
 
 
 namespace lyx {
