@@ -41,10 +41,8 @@ int prompt_pimpl(string const & tit, string const & question,
 {
 	string const title = bformat(_("LyX: %1$s"), tit);
 
-	QWidget * const parent = qApp->focusWidget() ?
-		qApp->focusWidget() : qApp->mainWidget();
-
-	int res = QMessageBox::information(parent,
+	// FIXME replace that with theApp->gui()->currentView()
+	int res = QMessageBox::information(qApp->focusWidget(),
 					   toqstr(title),
 					   toqstr(formatted(question)),
 					   toqstr(b1),
@@ -61,11 +59,8 @@ int prompt_pimpl(string const & tit, string const & question,
 
 void warning_pimpl(string const & tit, string const & message)
 {
-	QWidget * const parent = qApp->focusWidget() ?
-		qApp->focusWidget() : qApp->mainWidget();
-
 	string const title = bformat(_("LyX: %1$s"), tit);
-	QMessageBox::warning(parent,
+	QMessageBox::warning(qApp->focusWidget(),
 			     toqstr(title),
 			     toqstr(formatted(message)));
 }
@@ -73,11 +68,8 @@ void warning_pimpl(string const & tit, string const & message)
 
 void error_pimpl(string const & tit, string const & message)
 {
-	QWidget * const parent = qApp->focusWidget() ?
-		qApp->focusWidget() : qApp->mainWidget();
-
 	string const title = bformat(_("LyX: %1$s"), tit);
-	QMessageBox::critical(parent,
+	QMessageBox::critical(qApp->focusWidget(),
 			      toqstr(title),
 			      toqstr(formatted(message)));
 }
@@ -85,11 +77,8 @@ void error_pimpl(string const & tit, string const & message)
 
 void information_pimpl(string const & tit, string const & message)
 {
-	QWidget * const parent = qApp->focusWidget() ?
-		qApp->focusWidget() : qApp->mainWidget();
-
 	string const title = bformat(_("LyX: %1$s"), tit);
-	QMessageBox::information(parent,
+	QMessageBox::information(qApp->focusWidget(),
 				 toqstr(title),
 				 toqstr(formatted(message)));
 }
@@ -98,13 +87,10 @@ void information_pimpl(string const & tit, string const & message)
 pair<bool, string> const
 askForText_pimpl(string const & msg, string const & dflt)
 {
-	QWidget * const parent = qApp->focusWidget() ?
-		qApp->focusWidget() : qApp->mainWidget();
-
 	string const title = bformat(_("LyX: %1$s"), msg);
 
 	bool ok;
-	QString text = QInputDialog::getText(parent,
+	QString text = QInputDialog::getText(qApp->focusWidget(),
 		toqstr(title),
 		toqstr('&' + msg),
 		QLineEdit::Normal,
