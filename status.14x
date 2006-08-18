@@ -74,6 +74,9 @@ What's new
 - Fix crash when cursor is in an empty script and the user clicks
   in the text.
 
+- Handle properly script insets which nucleus has more than one
+  element (like {a'}^{2}).
+
 - Fix editing of document while Error List dialog is open (bug 2179).
 
 - improve position of cursor after undo.
