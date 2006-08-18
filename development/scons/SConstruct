@@ -119,7 +119,7 @@ opts = Options(['config.py'])
 opts.AddOptions(
     # frontend
     EnumOption('frontend', 'Main GUI', default_frontend,
-        allowed_values = ('qt2') ),
+        allowed_values = ('qt2',) ),
     # debug or release build
     EnumOption('mode', 'Building method', default_build_mode,
         allowed_values = ('debug', 'release') ),
