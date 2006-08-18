@@ -1,3 +1,8 @@
+2006-08-18  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* insetcite.C (getNatbibLabel): prevent filesystem exception
+	if the bib file does not exist.
+
 2006-08-17  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* insetbase.h (notifyCursorLeaves): return a bool indicating

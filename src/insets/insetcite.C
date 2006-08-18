@@ -16,6 +16,7 @@
 #include "buffer.h"
 #include "bufferparams.h"
 #include "BufferView.h"
+#include "debug.h"
 #include "dispatchresult.h"
 #include "funcrequest.h"
 #include "LaTeXFeatures.h"
@@ -33,6 +34,7 @@ using lyx::support::ltrim;
 using lyx::support::rtrim;
 using lyx::support::split;
 
+using std::endl;
 using std::string;
 using std::ostream;
 using std::vector;
@@ -68,7 +70,10 @@ string const getNatbibLabel(Buffer const & buffer,
 	for (vector<string>::const_iterator it = bibfilesCache.begin();
 			it != bibfilesCache.end(); ++ it) {
 		string const f = *it;
-		if (bibfileStatus[f] != fs::last_write_time(f)) {
+		if (!fs::exists(f)) {
+			lyxerr << "Couldn't find bibtex file " << f << endl;
+			changed = true;
+		} else if (bibfileStatus[f] != fs::last_write_time(f)) {
 			changed = true;
 			bibfileStatus[f] = fs::last_write_time(f);
 		}
