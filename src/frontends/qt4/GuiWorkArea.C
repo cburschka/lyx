@@ -571,8 +571,10 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 		// ideally, such special coding should not be necessary
 		if (text == "^")
 			key = Qt::Key_AsciiCircum;
+		// FIXME: Needs for investigation, this key is not really used,
+		// the ctor below just check if key is different from 0.
 		QKeyEvent ev(QEvent::KeyPress, key,
-			Qt::KeyboardModifiers(Qt::NoModifier), text);
+			Qt::NoModifier, text);
 		keyPressEvent(&ev);
 	}
 	e->accept();
