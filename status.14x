@@ -80,11 +80,13 @@ What's new
 - Handle properly script insets which nucleus has more than one
   element (like {a'}^{2}).
 
+- Fix disabling of some toolbar icons after closing a dialog (bug 2423).
+
 - Fix editing of document while Error List dialog is open (bug 2179).
 
 - improve position of cursor after undo.
 
-- Update labels  on screen when changing language.
+- Update labels on screen when changing language.
 
 - Fix doubling of initial character when correcting a word with
   ligatures in spellechecker (bug 2068)

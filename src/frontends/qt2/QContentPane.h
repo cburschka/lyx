@@ -112,6 +112,10 @@ protected:
 	void wheelEvent(QWheelEvent * e);
 	/// key press
 	void keyPressEvent(QKeyEvent * e);
+	/// focus in
+	virtual void focusInEvent(QFocusEvent * ev);
+	/// focus out
+	virtual void focusOutEvent(QFocusEvent * ev);
 #if USE_INPUT_METHODS
 	/// IM events
 	void imStartEvent(QIMEvent *);

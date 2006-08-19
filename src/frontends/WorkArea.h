@@ -74,6 +74,8 @@ public:
 	boost::signal<void()> selectionRequested;
 	/// emitted when another X client has stolen our selection
 	boost::signal<void()> selectionLost;
+	/// emitted when workarea got/lost focus
+	boost::signal<void()> focusChange;
 };
 
 #endif // WORKAREA_H

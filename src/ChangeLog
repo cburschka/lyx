@@ -1,3 +1,9 @@
+2006-08-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* BufferView_pimpl.C (focusChange): new method; updates the
+	toolbars (bug 2423)
+	(Pimpl): connect the WorkArea::focusChange signal.
+
 2006-08-17  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* BufferView.C (mouseSetCursor): do not call dEPM when cursor is

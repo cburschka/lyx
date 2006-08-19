@@ -1,3 +1,8 @@
+2006-08-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QContentPane.C (focusInEvent, focusOutEvent): new methods;
+	invoke signal WorkArea::focusChange (bug 2423).
+
 2006-08-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* QErrorList.C (update_contents): do nothing if error list has not

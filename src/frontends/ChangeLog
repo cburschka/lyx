@@ -1,3 +1,7 @@
+2006-08-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* WorkArea.h: add signal focusChange.
+
 2006-03-01  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* Painter.C (buttonFrame): draw lines instead of trapezoids; it is
