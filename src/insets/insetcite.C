@@ -23,6 +23,7 @@
 
 #include "frontends/controllers/biblio.h"
 
+#include "support/fs_extras.h"
 #include "support/lstrings.h"
 
 #include <boost/filesystem/operations.hpp>
@@ -70,8 +71,8 @@ string const getNatbibLabel(Buffer const & buffer,
 	for (vector<string>::const_iterator it = bibfilesCache.begin();
 			it != bibfilesCache.end(); ++ it) {
 		string const f = *it;
-		if (!fs::exists(f)) {
-			lyxerr << "Couldn't find bibtex file " << f << endl;
+		if (!fs::exists(f) || !fs::is_readable(fs::path(f).branch_path())) {
+			lyxerr << "Couldn't find or read bibtex file " << f << endl;
 			changed = true;
 		} else if (bibfileStatus[f] != fs::last_write_time(f)) {
 			changed = true;
