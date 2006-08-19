@@ -36,7 +36,8 @@ What's new
 
 - Fix crash when importing LaTeX files with no text (bug 2667)
 
-- Fix crash when a used bibtex file does not exist.
+- Fix crash when a used bibtex file is in a non-readable directory
+  (bug 2782).
 
 - Ignore definition of lyxgreyout environment when re-importing a LyX
   generated LaTeX file (part of bug 2420)

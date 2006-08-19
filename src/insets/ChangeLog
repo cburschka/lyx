@@ -1,3 +1,8 @@
+2006-08-19  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* insetcite.C (getNatbibLabel): prevent filesystem exception
+	if the bib file is in a non-readable directory (bug 2782).
+
 2006-08-18  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* insetcite.C (getNatbibLabel): prevent filesystem exception
