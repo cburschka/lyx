@@ -19,6 +19,8 @@
 #include "QLyXKeySym.h"
 #include "qt_helpers.h"
 
+#include "LyXView.h"
+
 #include "BufferView.h"
 #include "debug.h"
 #include "funcrequest.h"
@@ -578,6 +580,20 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 		keyPressEvent(&ev);
 	}
 	e->accept();
+}
+
+
+void GuiWorkArea::focusInEvent(QFocusEvent * ev)
+{
+	QAbstractScrollArea::focusInEvent(ev);
+	lyx_view_.updateToolbars();
+}
+
+
+void GuiWorkArea::focusOutEvent(QFocusEvent * ev)
+{
+	QAbstractScrollArea::focusOutEvent(ev);
+	lyx_view_.updateToolbars();
 }
 
 } // namespace frontend
