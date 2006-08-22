@@ -80,6 +80,9 @@ What's new
 - Handle properly script insets which nucleus has more than one
   element (like {a'}^{2}).
 
+- On button 2 press in math inset, paste inner LyX selection if it
+  exists (bug 2779).
+
 - Fix disabling of some toolbar icons after closing a dialog (bug 2423).
 
 - Fix editing of document while Error List dialog is open (bug 2179).

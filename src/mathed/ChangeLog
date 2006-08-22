@@ -1,3 +1,8 @@
+2006-08-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* math_nestinset.C (lfunMousePress): on button 2 press, paste
+	inner LyX selection if it exists (bug 2779).
+
 2006-08-18  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* math_nestinset.C (script): when creating a script inset, handle
