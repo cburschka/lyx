@@ -1075,19 +1075,19 @@ InsetBase * MathNestInset::editXY(LCursor & cur, int x, int y)
 void MathNestInset::lfunMousePress(LCursor & cur, FuncRequest & cmd)
 {
 	//lyxerr << "## lfunMousePress: buttons: " << cmd.button() << endl;
+	BufferView & bv = cur.bv();
 	if (cmd.button() == mouse_button::button1) {
 		//lyxerr << "## lfunMousePress: setting cursor to: " << cur << endl;
-		cur.bv().mouseSetCursor(cur);
-	}
-
-	if (cmd.button() == mouse_button::button2) {
+		bv.mouseSetCursor(cur);
+	} else if (cmd.button() == mouse_button::button2) {
 		MathArray ar;
-		asArray(cur.bv().owner()->gui().selection().get(), ar);
-		cur.clearSelection();
-		editXY(cur, cmd.x, cmd.y);
+		if (cur.selection())
+			asArray(bv.cursor().selectionAsString(false), ar);
+		else
+			asArray(bv.owner()->gui().selection().get(), ar);
+
 		cur.insert(ar);
-		cur.bv().update();
-		return;
+		bv.mouseSetCursor(cur);
 	}
 }
 
