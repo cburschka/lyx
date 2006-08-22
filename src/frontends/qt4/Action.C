@@ -48,7 +48,7 @@ Action::Action(LyXView & lyxView, string const & text,
 	setToolTip(toqstr(tooltip));
 	setStatusTip(toqstr(tooltip));
 	connect(this, SIGNAL(triggered()), this, SLOT(action()));
-	this->setCheckable(true);
+	update();
 }
 
 Action::Action(LyXView & lyxView, string const & icon, string const & text,
@@ -60,7 +60,7 @@ Action::Action(LyXView & lyxView, string const & icon, string const & text,
 	setToolTip(toqstr(tooltip));
 	setStatusTip(toqstr(tooltip));
 	connect(this, SIGNAL(triggered()), this, SLOT(action()));
-	this->setCheckable(true);
+	update();
 }
 
 /*
@@ -74,8 +74,17 @@ void Action::update()
 {
 	FuncStatus const status = lyxView_.getLyXFunc().getStatus(func_);
 
-	this->setChecked(status.onoff(true));
-	this->setEnabled(status.enabled());
+	if (status.onoff(true)) {
+		setCheckable(true);
+		setChecked(true);
+	} else if (status.onoff(false)) {
+		setCheckable(true);
+		setChecked(false);
+	} else {
+		setCheckable(false);
+	}
+
+	setEnabled(status.enabled());
 }
 
 

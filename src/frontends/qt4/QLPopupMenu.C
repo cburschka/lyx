@@ -114,16 +114,13 @@ void QLPopupMenu::populate(QMenu* qMenu, Menu * menu)
 
 		} else { // we have a MenuItem::Command
 
-			FuncStatus status = m->status();
 			lyxerr[Debug::GUI] << "creating Menu Item " << m->label() << endl;
 
 			string label = getLabel(*m);
 			addBinding(label, *m);
 
-			Action * action = new Action(*(owner_->view()), label, m->func());
-			action->setEnabled(m->status().enabled());
-			action->setChecked(m->status().onoff(true));
-			// Actually insert the menu item
+			Action * action = new Action(*(owner_->view()), 
+						     label, m->func());
 			qMenu->addAction(action);
 		}
 	}
