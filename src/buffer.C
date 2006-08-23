@@ -968,14 +968,6 @@ bool Buffer::isDocBook() const
 }
 
 
-bool Buffer::isSGML() const
-{
-	LyXTextClass const & tclass = params().getLyXTextClass();
-
-	return tclass.outputType() == DOCBOOK;
-}
-
-
 void Buffer::makeDocBookFile(string const & fname,
 			      OutputParams const & runparams,
 			      bool const body_only)

@@ -155,14 +155,6 @@ public:
 			   bool output_preamble = true,
 			   bool output_body = true);
 	///
-	void makeLinuxDocFile(std::string const & filename,
-			      OutputParams const & runparams_in,
-			      bool only_body = false);
-	///
-	void writeLinuxDocSource(std::ostream & os, std::string const & filename,
-			      OutputParams const & runparams_in,
-			      bool only_body = false);
-	///
 	void makeDocBookFile(std::string const & filename,
 			     OutputParams const & runparams_in,
 			     bool only_body = false);
@@ -240,13 +232,8 @@ public:
 
 	/// returns \c true if the buffer contains a LaTeX document
 	bool isLatex() const;
-	/// returns \c true if the buffer contains a LinuxDoc document
-	bool isLinuxDoc() const;
 	/// returns \c true if the buffer contains a DocBook document
 	bool isDocBook() const;
-	/** returns \c true if the buffer contains either a LinuxDoc
-	    or DocBook document */
-	bool isSGML() const;
 	/// returns \c true if the buffer contains a Wed document
 	bool isLiterate() const;
 
@@ -353,7 +340,7 @@ public:
 	StableDocIterator getAnchor() const { return anchor_; }
 	///
 	void changeRefsIfUnique(std::string const & from, std::string const & to);
-	/// get source code (latex/docbook/linuxdoc) for some paragraphs, or all paragraphs
+	/// get source code (latex/docbook) for some paragraphs, or all paragraphs
 	/// including preamble
 	void getSourceCode(std::ostream & os, lyx::pit_type par_begin, lyx::pit_type par_end, bool full_source);
 

@@ -51,7 +51,7 @@ public:
 	std::string const getBabelOptions() const;
 	/// The definitions needed by the document's textclass
 	std::string const getTClassPreamble() const;
-	/// The sgml definitions needed by the document (dobook/linuxdoc)
+	/// The sgml definitions needed by the document (docbook)
 	std::string const getLyXSGMLEntities() const;
 	/// The SGML Required to include the files added with includeFile();
 	std::string const getIncludedFiles(std::string const & fname) const;

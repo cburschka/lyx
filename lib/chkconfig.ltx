@@ -99,14 +99,6 @@
            {\AddLayout[\firstelement]{\layoutname}{#2}{true}}
            {\AddLayout[\firstelement]{\layoutname}{#2}{false}}
 }
-\newcommand{\DeclareLinuxDocClass}[2][\default]{
-  \message{^^J\prefix checking for linuxdoc class \layoutname... }
-  \@ifundefined{haslinuxdoc}
-    {\message{no^^J}
-     \AddLayout[#1]{\layoutname}{#2}{false}}
-    {\message{yes^^J}
-     \AddLayout[#1]{\layoutname}{#2}{true}}
-}
 % Only for compatibility. Will be removed later.
 \let\DeclareSGMLClass=\DeclareDocBookClass
 

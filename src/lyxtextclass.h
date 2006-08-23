@@ -153,7 +153,7 @@ public:
 	///
 	int tocdepth() const;
 
-	/// Can be LaTeX, LinuxDoc, etc.
+	/// Can be LaTeX, DocBook, etc.
 	OutputType outputType() const;
 
 	///
@@ -213,7 +213,7 @@ private:
 	int secnumdepth_;
 	/// header depth to appear in table of contents
 	int tocdepth_;
-	/// Can be LaTeX, LinuxDoc, etc.
+	/// Can be LaTeX, DocBook, etc.
 	OutputType outputType_;
 	/** Base font. The paragraph and layout fonts are resolved against
 	    this font. This has to be fully instantiated. Attributes
