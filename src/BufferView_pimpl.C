@@ -260,6 +260,12 @@ void BufferView::Pimpl::setBuffer(Buffer * b)
 			boost::tie(cursor_.pit(), cursor_.pos()) );
 	}
 
+	// If we're quitting lyx, don't bother updating stuff
+	if (quitting) {
+		buffer_ = 0;
+		return;
+	}
+
 	// If we are closing current buffer, switch to the first in
 	// buffer list.
 	if (!b) {
@@ -276,10 +282,6 @@ void BufferView::Pimpl::setBuffer(Buffer * b)
 	cursor_ = LCursor(*bv_);
 	anchor_ref_ = 0;
 	offset_ref_ = 0;
-
-	// If we're quitting lyx, don't bother updating stuff
-	if (quitting)
-		return;
 
 	if (buffer_) {
 		lyxerr[Debug::INFO] << BOOST_CURRENT_FUNCTION

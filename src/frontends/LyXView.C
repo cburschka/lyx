@@ -139,22 +139,19 @@ void LyXView::setBuffer(Buffer * b)
 
 	work_area_->bufferView().setBuffer(b);
 
-	if (work_area_->bufferView().buffer())
-	{
+	if (work_area_->bufferView().buffer()) {
 		// Buffer-dependent dialogs should be updated or
 		// hidden. This should go here because some dialogs (eg ToC)
 		// require bv_->text.
 		getDialogs().updateBufferDependent(true);
+		connectBuffer(*work_area_->bufferView().buffer());
+		setLayout(work_area_->bufferView().firstLayout());
 	}
 
 	updateMenubar();
 	updateToolbars();
 	updateLayoutChoice();
 	updateWindowTitle();
-	if (b) {
-		connectBuffer(*b);
-		setLayout(work_area_->bufferView().firstLayout());
-	}
 	redrawWorkArea();
 }
 

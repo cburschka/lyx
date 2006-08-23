@@ -1611,13 +1611,14 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			    && !lyxaction.funcHasFlag(cmd.action, LyXAction::NoBuffer)
 			    && !lyxaction.funcHasFlag(cmd.action, LyXAction::ReadOnly))
 				view()->buffer()->markDirty();
-		}
 
-		if (view()->cursor().inTexted()) {
-			view()->owner()->updateLayoutChoice();
+			if (view()->cursor().inTexted()) {
+				view()->owner()->updateLayoutChoice();
+			}
 		}
 	}
-	sendDispatchMessage(_(getMessage()), cmd);
+	if (!quitting)
+		sendDispatchMessage(_(getMessage()), cmd);
 }
 
 

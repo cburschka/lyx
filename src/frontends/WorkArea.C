@@ -192,6 +192,7 @@ void WorkArea::redraw()
 
 	if (!buffer_view_->buffer()) {
 		greyOut();
+		updateScrollbar();
 		return;
 	}
 
