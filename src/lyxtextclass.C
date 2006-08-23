@@ -516,7 +516,6 @@ void LyXTextClass::readOutputType(LyXLex & lexrc)
 	keyword_item outputTypeTags[] = {
 		{ "docbook", DOCBOOK },
 		{ "latex", LATEX },
-		{ "linuxdoc", LINUXDOC },
 		{ "literate", LITERATE }
 	};
 
@@ -528,7 +527,6 @@ void LyXTextClass::readOutputType(LyXLex & lexrc)
 		lexrc.printError("Unknown output type `$$Token'");
 		return;
 	case LATEX:
-	case LINUXDOC:
 	case DOCBOOK:
 	case LITERATE:
 		outputType_ = static_cast<OutputType>(le);

@@ -177,8 +177,8 @@ void GRef::update()
 		nameentry_->set_sensitive(true);
 	}
 
-	// Format is irrelevant to LinuxDoc/DocBook.
-	if (doctype == Kernel::LINUXDOC || doctype == Kernel::DOCBOOK) {
+	// Format is irrelevant to DocBook.
+	if (doctype == Kernel::DOCBOOK) {
 		formatcombo_->set_active(0);
 		formatcombo_->set_sensitive(false);
 

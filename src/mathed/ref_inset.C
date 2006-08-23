@@ -157,14 +157,6 @@ int RefInset::plaintext(std::ostream & os, OutputParams const &) const
 }
 
 
-int RefInset::linuxdoc(std::ostream & os, OutputParams const &) const
-{
-	os << "<ref id=\"" << asString(cell(0))
-	   << "\" name=\"" << asString(cell(1)) << "\">";
-	return 0;
-}
-
-
 int RefInset::docbook(Buffer const & buf, std::ostream & os, OutputParams const & runparams) const
 {
 	if (cell(1).empty()) {

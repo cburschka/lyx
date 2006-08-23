@@ -65,8 +65,6 @@ vector<Format const *> const ControlSendto::allFormats() const
 
 	if (buffer.isLatex())
 		exports.push_back("latex");
-	else if (buffer.isLinuxDoc())
-		exports.push_back("linuxdoc");
 	else if (buffer.isDocBook())
 		exports.push_back("docbook");
 	else if (buffer.isLiterate())

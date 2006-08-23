@@ -240,9 +240,7 @@ void bufferErrors(Buffer const & buf, TeXErrors const & terr,
 
 string const bufferFormat(Buffer const & buffer)
 {
-	if (buffer.isLinuxDoc())
-		return "linuxdoc";
-	else if (buffer.isDocBook())
+	if (buffer.isDocBook())
 		return "docbook";
 	else if (buffer.isLiterate())
 		return "literate";

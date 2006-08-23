@@ -36,8 +36,6 @@ public:
 
 	/// plain ascii output
 	int plaintext(std::ostream & os, OutputParams const &) const;
-	/// linuxdoc output
-	int linuxdoc(std::ostream & os, OutputParams const &) const;
 	/// docbook output
 	int docbook(Buffer const & buf, std::ostream & os, OutputParams const &) const;
 

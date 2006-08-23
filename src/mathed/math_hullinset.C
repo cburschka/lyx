@@ -1427,13 +1427,6 @@ int MathHullInset::plaintext(Buffer const &, ostream & os,
 }
 
 
-int MathHullInset::linuxdoc(Buffer const & buf, ostream & os,
-			   OutputParams const & runparams) const
-{
-	return docbook(buf, os, runparams);
-}
-
-
 int MathHullInset::docbook(Buffer const & buf, ostream & os,
 			  OutputParams const & runparams) const
 {

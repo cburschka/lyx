@@ -41,7 +41,6 @@
 #include "output.h"
 #include "output_docbook.h"
 #include "output_latex.h"
-#include "output_linuxdoc.h"
 #include "paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
@@ -957,12 +956,6 @@ bool Buffer::isLatex() const
 }
 
 
-bool Buffer::isLinuxDoc() const
-{
-	return params().getLyXTextClass().outputType() == LINUXDOC;
-}
-
-
 bool Buffer::isLiterate() const
 {
 	return params().getLyXTextClass().outputType() == LITERATE;
@@ -979,76 +972,7 @@ bool Buffer::isSGML() const
 {
 	LyXTextClass const & tclass = params().getLyXTextClass();
 
-	return tclass.outputType() == LINUXDOC ||
-	       tclass.outputType() == DOCBOOK;
-}
-
-
-void Buffer::makeLinuxDocFile(string const & fname,
-			      OutputParams const & runparams,
-			      bool const body_only)
-{
-	lyxerr[Debug::LATEX] << "makeLinuxDocFile..." << endl;
-
-	ofstream ofs;
-	if (!openFileWrite(ofs, fname))
-		return;
-
-	writeLinuxDocSource(ofs, fname, runparams, body_only);
-
-	ofs.close();
-	if (ofs.fail())
-		lyxerr << "File '" << fname << "' was not closed properly." << endl;
-}
-
-
-void Buffer::writeLinuxDocSource(ostream &os, string const & fname,
-			      OutputParams const & runparams,
-			      bool const body_only)
-{
-	LaTeXFeatures features(*this, params(), runparams);
-	validate(features);
-
-	texrow().reset();
-
-	LyXTextClass const & tclass = params().getLyXTextClass();
-
-	string const & top_element = tclass.latexname();
-
-	if (!body_only) {
-		os << tclass.class_header();
-
-		string preamble = params().preamble;
-		string const name = runparams.nice ? changeExtension(pimpl_->filename, ".sgml")
-			 : fname;
-		preamble += features.getIncludedFiles(name);
-		preamble += features.getLyXSGMLEntities();
-
-		if (!preamble.empty()) {
-			os << " [ " << preamble << " ]";
-		}
-		os << ">\n\n";
-
-		if (params().options.empty())
-			sgml::openTag(os, top_element);
-		else {
-			string top = top_element;
-			top += ' ';
-			top += params().options;
-			sgml::openTag(os, top);
-		}
-	}
-
-	os << "<!-- LyX "  << lyx_version
-	    << " created this file. For more info see http://www.lyx.org/"
-	    << " -->\n";
-
-	linuxdocParagraphs(*this, paragraphs(), os, runparams);
-
-	if (!body_only) {
-		os << "\n\n";
-		sgml::closeTag(os, top_element);
-	}
+	return tclass.outputType() == DOCBOOK;
 }
 
 
@@ -1678,8 +1602,6 @@ void Buffer::getSourceCode(ostream & os, lyx::pit_type par_begin, lyx::pit_type 
 		os << "% Preview source code\n\n";
 		if (isLatex()) 
 			writeLaTeXSource(os, filePath(), runparams, true, true);
-		else if (isLinuxDoc())
-			writeLinuxDocSource(os, fileName(), runparams, false);
 		else 
 			writeDocBookSource(os, fileName(), runparams, false);
 	} else {
@@ -1693,9 +1615,7 @@ void Buffer::getSourceCode(ostream & os, lyx::pit_type par_begin, lyx::pit_type 
 		if (isLatex()) {
 			texrow().reset();
 			latexParagraphs(*this, paragraphs(), os, texrow(), runparams);
-		} else if (isLinuxDoc())
-			linuxdocParagraphs(*this, paragraphs(), os, runparams);
-		else // DocBook
+		} else // DocBook
 			docbookParagraphs(paragraphs(), *this, os, runparams);
 	}
 }

@@ -191,11 +191,6 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 	// no backend
 	else if (backend_format == "lyx")
 		buffer->writeFile(filename);
-	// Linuxdoc backend
-	else if (buffer->isLinuxDoc()) {
-		runparams.nice = !put_in_tempdir;
-		buffer->makeLinuxDocFile(filename, runparams);
-	}
 	// Docbook backend
 	else if (buffer->isDocBook()) {
 		runparams.nice = !put_in_tempdir;

@@ -75,8 +75,6 @@ Kernel::DocType Kernel::docType() const
 		return LATEX;
 	if (buffer().isLiterate())
 		return LITERATE;
-	if (buffer().isLinuxDoc())
-		return LINUXDOC;
 
 	return DOCBOOK;
 }

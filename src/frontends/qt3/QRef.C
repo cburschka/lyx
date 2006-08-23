@@ -127,8 +127,7 @@ bool QRef::nameAllowed()
 bool QRef::typeAllowed()
 {
 	Kernel::DocType const doc_type = kernel().docType();
-	return doc_type != Kernel::LINUXDOC &&
-		doc_type != Kernel::DOCBOOK;
+	return doc_type != Kernel::DOCBOOK;
 }
 
 

@@ -71,7 +71,6 @@ public:
 	enum DocType {
 		LATEX,
 		LITERATE,
-		LINUXDOC,
 		DOCBOOK
 	};
 	/// The type of the current buffer.

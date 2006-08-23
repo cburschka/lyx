@@ -94,13 +94,6 @@ int InsetFormulaMacro::plaintext(Buffer const &, ostream & os,
 }
 
 
-int InsetFormulaMacro::linuxdoc(Buffer const & buf, ostream & os,
-				OutputParams const & runparams) const
-{
-	return plaintext(buf, os, runparams);
-}
-
-
 int InsetFormulaMacro::docbook(Buffer const & buf, ostream & os,
 			       OutputParams const & runparams) const
 {

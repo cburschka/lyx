@@ -18,8 +18,6 @@ enum OutputType {
 	///
 	LATEX = 1,
 	///
-	LINUXDOC,
-	///
 	DOCBOOK,
 	///
 	LITERATE

@@ -73,9 +73,6 @@ string const ControlViewSource::title() const
 	case Kernel::LATEX:
 		source_type = "LaTeX";
 		break;
-	case Kernel::LINUXDOC:
-		source_type = "LinuxDoc";
-		break;
 	case Kernel::DOCBOOK:
 		source_type = "DocBook";
 		break;
