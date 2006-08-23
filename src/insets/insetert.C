@@ -177,28 +177,6 @@ int InsetERT::plaintext(Buffer const &, ostream &,
 }
 
 
-int InsetERT::linuxdoc(Buffer const &, ostream & os,
-		       OutputParams const &) const
-{
-	ParagraphList::const_iterator par = paragraphs().begin();
-	ParagraphList::const_iterator end = paragraphs().end();
-
-	int lines = 0;
-	while (par != end) {
-		pos_type siz = par->size();
-		for (pos_type i = 0; i < siz; ++i)
-			os << par->getChar(i);
-		++par;
-		if (par != end) {
-			os << "\n";
-			lines ++;
-		}
-	}
-
-	return lines;
-}
-
-
 int InsetERT::docbook(Buffer const &, ostream & os,
 		      OutputParams const &) const
 {

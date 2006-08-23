@@ -724,15 +724,6 @@ int InsetExternal::plaintext(Buffer const & buf, ostream & os,
 }
 
 
-int InsetExternal::linuxdoc(Buffer const & buf, ostream & os,
-			    OutputParams const & runparams) const
-{
-	return external::writeExternal(params_, "LinuxDoc", buf, os,
-				       *(runparams.exportdata), false,
-				       runparams.inComment);
-}
-
-
 int InsetExternal::docbook(Buffer const & buf, ostream & os,
 			   OutputParams const & runparams) const
 {

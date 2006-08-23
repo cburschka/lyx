@@ -816,21 +816,6 @@ int InsetGraphics::plaintext(Buffer const &, ostream & os,
 }
 
 
-int InsetGraphics::linuxdoc(Buffer const & buf, ostream & os,
-			    OutputParams const & runparams) const
-{
-	string const file_name = runparams.nice ?
-				params().filename.relFilename(buf.filePath()):
-				params().filename.absFilename();
-
-	runparams.exportdata->addExternalFile("linuxdoc",
-					      params().filename.absFilename());
-	os << "<eps file=\"" << file_name << "\">\n";
-	os << "<img src=\"" << file_name << "\">";
-	return 0;
-}
-
-
 namespace {
 
 int writeImageObject(char * format, ostream& os, OutputParams const & runparams,

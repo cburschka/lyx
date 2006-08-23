@@ -225,14 +225,6 @@ int InsetBranch::latex(Buffer const & buf, ostream & os,
 }
 
 
-int InsetBranch::linuxdoc(Buffer const & buf, std::ostream & os,
-			  OutputParams const & runparams) const
-{
-	return isBranchSelected(buf) ?
-		InsetText::linuxdoc(buf, os, runparams) : 0;
-}
-
-
 int InsetBranch::docbook(Buffer const & buf, std::ostream & os,
 			 OutputParams const & runparams) const
 {

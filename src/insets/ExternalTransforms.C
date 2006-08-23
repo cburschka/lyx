@@ -325,12 +325,6 @@ string const sanitizeLatexOption(string const & input)
 }
 
 
-string const sanitizeLinuxDocOption(string const & input)
-{
-	return input;
-}
-
-
 namespace {
 
 template <typename Factory, typename Data, typename Transformer>

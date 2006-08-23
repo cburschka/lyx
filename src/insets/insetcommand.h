@@ -53,9 +53,6 @@ public:
 	int plaintext(Buffer const &, std::ostream &,
 		  OutputParams const &) const;
 	///
-	virtual int linuxdoc(Buffer const &, std::ostream &,
-			     OutputParams const &) const;
-	///
 	virtual int docbook(Buffer const &, std::ostream &,
 			    OutputParams const & runparams) const;
 	///

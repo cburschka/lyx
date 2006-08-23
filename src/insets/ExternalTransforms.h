@@ -302,7 +302,6 @@ private:
  */
 std::string const sanitizeLatexOption(std::string const & input);
 std::string const sanitizeDocBookOption(std::string const & input);
-std::string const sanitizeLinuxDocOption(std::string const & input);
 
 
 enum TransformID {

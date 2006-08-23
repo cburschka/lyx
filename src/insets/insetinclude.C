@@ -466,50 +466,6 @@ int InsetInclude::plaintext(Buffer const & buffer, ostream & os,
 }
 
 
-int InsetInclude::linuxdoc(Buffer const & buffer, ostream & os,
-			   OutputParams const & runparams) const
-{
-	string incfile(params_.getContents());
-
-	// Do nothing if no file name has been specified
-	if (incfile.empty())
-		return 0;
-
-	string const included_file = includedFilename(buffer, params_);
-
-	// write it to a file (so far the complete file)
-	string const exportfile = changeExtension(incfile, ".sgml");
-	string writefile = changeExtension(included_file, ".sgml");
-
-	if (loadIfNeeded(buffer, params_)) {
-		Buffer * tmp = bufferlist.getBuffer(included_file);
-
-		writefile = makeAbsPath(FileName(writefile).mangledFilename(),
-					buffer.getMasterBuffer()->temppath());
-		if (!runparams.nice)
-			incfile = writefile;
-
-		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
-		lyxerr[Debug::LATEX] << "exportfile:" << exportfile << endl;
-		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
-
-		tmp->makeLinuxDocFile(writefile, runparams, true);
-	}
-
-	if (isVerbatim(params_)) {
-		os << "<![CDATA["
-		   << getFileContents(included_file)
-		   << "]]>";
-	} else {
-		runparams.exportdata->addExternalFile("linuxdoc", writefile,
-						      exportfile);
-		os << '&' << include_label << ';';
-	}
-
-	return 0;
-}
-
-
 int InsetInclude::docbook(Buffer const & buffer, ostream & os,
 			  OutputParams const & runparams) const
 {

@@ -227,13 +227,6 @@ int InsetBase::plaintext(Buffer const &,
 }
 
 
-int InsetBase::linuxdoc(Buffer const &,
-	std::ostream &, OutputParams const &) const
-{
-	return 0;
-}
-
-
 int InsetBase::docbook(Buffer const &,
 	std::ostream &, OutputParams const &) const
 {

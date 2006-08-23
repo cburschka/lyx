@@ -59,14 +59,6 @@ int InsetHFill::plaintext(Buffer const &, ostream & os,
 }
 
 
-int InsetHFill::linuxdoc(Buffer const &, std::ostream & os,
-			 OutputParams const &) const
-{
-	os << '\n';
-	return 0;
-}
-
-
 int InsetHFill::docbook(Buffer const &, std::ostream & os,
 			OutputParams const &) const
 {

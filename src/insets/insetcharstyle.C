@@ -285,18 +285,6 @@ int InsetCharStyle::latex(Buffer const & buf, ostream & os,
 }
 
 
-int InsetCharStyle::linuxdoc(Buffer const & buf, ostream & os,
-			     OutputParams const & runparams) const
-{
-	if (!undefined())
-		sgml::openTag(os, params_.latexname, params_.latexparam);
-	int i = InsetText::linuxdoc(buf, os, runparams);
-	if (!undefined())
-		sgml::closeTag(os, params_.latexname);
-	return i;
-}
-
-
 int InsetCharStyle::docbook(Buffer const & buf, ostream & os,
 			    OutputParams const & runparams) const
 {

@@ -85,13 +85,6 @@ int InsetCommand::plaintext(Buffer const &, ostream &,
 }
 
 
-int InsetCommand::linuxdoc(Buffer const &, ostream &,
-			   OutputParams const &) const
-{
-	return 0;
-}
-
-
 int InsetCommand::docbook(Buffer const &, ostream &,
 			  OutputParams const &) const
 {

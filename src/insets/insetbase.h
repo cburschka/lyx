@@ -187,9 +187,6 @@ public:
 	/// plain ascii output
 	virtual int plaintext(Buffer const &, std::ostream & os,
 		OutputParams const &) const;
-	/// linuxdoc output
-	virtual int linuxdoc(Buffer const &, std::ostream & os,
-		OutputParams const &) const;
 	/// docbook output
 	virtual int docbook(Buffer const &, std::ostream & os,
 		OutputParams const &) const;

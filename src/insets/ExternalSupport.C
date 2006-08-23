@@ -485,8 +485,6 @@ string const substituteOption(InsetExternalParams const & params,
 		return sanitizeLatexOption(opt);
 	if (format == "DocBook")
 		return sanitizeDocBookOption(opt);
-	if (format == "LinuxDoc")
-		return sanitizeLinuxDocOption(opt);
 	return opt;
 }
 

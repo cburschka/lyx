@@ -365,13 +365,6 @@ int InsetBox::latex(Buffer const & buf, ostream & os,
 }
 
 
-int InsetBox::linuxdoc(Buffer const & buf, std::ostream & os,
-		       OutputParams const & runparams) const
-{
-	return InsetText::linuxdoc(buf, os, runparams);
-}
-
-
 int InsetBox::docbook(Buffer const & buf, std::ostream & os,
 		      OutputParams const & runparams) const
 {
