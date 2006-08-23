@@ -813,10 +813,9 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 			MathScriptInset * p = cell->back().nucleus()->asScriptInset();
 			// special handling of {}-bases
 			// is this always correct?
-			// It appears that this is wrong (Dekel)
-			//if (p->nuc().size() == 1 && p->nuc().back()->asNestInset() &&
-			//    p->nuc().back()->extraBraces())
-			//	p->nuc() = p->nuc().back()->asNestInset()->cell(0);
+			if (p->nuc().size() == 1 
+			    && p->nuc().back()->asBraceInset())
+				p->nuc() = p->nuc().back()->asNestInset()->cell(0);
 			parse(p->cell(p->idxOfScript(up)), FLAG_ITEM, mode);
 			if (limits) {
 				p->limits(limits);
