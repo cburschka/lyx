@@ -9,10 +9,6 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QT3_SUPPORT
- #define QT3_SUPPORT
-#endif
-
 #include <config.h>
 
 #include "floatplacement.h"
@@ -38,8 +34,14 @@ using std::string;
 FloatPlacement::FloatPlacement(QWidget * parent)
 	: QWidget(parent)
 {
-	QHBoxLayout * toplayout = new QHBoxLayout(this, 11, 6);
-	layout = new QVBoxLayout(0, 0, 6);
+	QHBoxLayout * toplayout = new QHBoxLayout(this);
+	toplayout->setMargin(11);
+	toplayout->setSpacing(6);
+
+	layout = new QVBoxLayout(0);
+	layout->setMargin(0);
+	layout->setSpacing(6);
+
 	QGroupBox * options = new QGroupBox(qt_("Advanced Placement Options"), this);
 
 	defaultsCB = new QCheckBox(qt_("Use &default placement"), this);
@@ -54,7 +56,10 @@ FloatPlacement::FloatPlacement(QWidget * parent)
 
 	layout->addWidget(defaultsCB);
 
-	QVBoxLayout * optlay = new QVBoxLayout(options, 10, 6);
+	QVBoxLayout * optlay = new QVBoxLayout(options);
+	optlay->setMargin(10);
+	optlay->setSpacing(6);
+
 	optlay->addSpacing(6);
 	optlay->addWidget(topCB);
 	optlay->addWidget(bottomCB);
