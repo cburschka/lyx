@@ -288,7 +288,8 @@ void find(BufferView * bv, FuncRequest const & ev)
 				  casesensitive, matchword, forward);
 
 	if (!found)
-		bv->owner()->message(_("String not found!"));
+		// emit message signal.
+		bv->buffer()->message(_("String not found!"));
 }
 
 
@@ -311,21 +312,24 @@ void replace(BufferView * bv, FuncRequest const & ev)
 	bool all           = parse_bool(howto);
 	bool forward       = parse_bool(howto);
 
-	LyXView * lv = bv->owner();
+	Buffer * buf = bv->buffer();
 
 	int const replace_count = all
 		? ::replaceAll(bv, search, replace, casesensitive, matchword)
 		: ::replace(bv, search, replace, casesensitive, matchword, forward);
 
 	if (replace_count == 0) {
-		lv->message(_("String not found!"));
+		// emit message signal.
+		buf->message(_("String not found!"));
 	} else {
 		if (replace_count == 1) {
-			lv->message(_("String has been replaced."));
+			// emit message signal.
+			buf->message(_("String has been replaced."));
 		} else {
 			string str = convert<string>(replace_count);
 			str += _(" strings have been replaced.");
-			lv->message(str);
+			// emit message signal.
+			buf->message(str);
 		}
 	}
 }

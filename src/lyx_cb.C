@@ -285,7 +285,8 @@ int AutoSaveBuffer::generateChild()
 				// It is dangerous to do this in the child,
 				// but safe in the parent, so...
 				if (pid == -1)
-					bv_.owner()->message(_("Autosave failed!"));
+					// emit message signal.
+					bv_.buffer()->message(_("Autosave failed!"));
 			}
 		}
 		if (pid == 0) { // we are the child so...
@@ -311,7 +312,8 @@ void autoSave(BufferView * bv)
 		return;
 	}
 
-	bv->owner()->message(_("Autosaving current document..."));
+	// emit message signal.
+	bv->buffer()->message(_("Autosaving current document..."));
 
 	// create autosave filename
 	string fname = bv->buffer()->filePath();
@@ -436,7 +438,8 @@ string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagrap
 // reconfigure the automatic settings.
 void reconfigure(BufferView * bv)
 {
-	bv->owner()->message(_("Running configure..."));
+	// emit message signal.
+	bv->buffer()->message(_("Running configure..."));
 
 	// Run configure in user lyx directory
 	Path p(package().user_support());
@@ -444,7 +447,8 @@ void reconfigure(BufferView * bv)
 	Systemcall one;
 	one.startscript(Systemcall::Wait, configure_command);
 	p.pop();
-	bv->owner()->message(_("Reloading configuration..."));
+	// emit message signal.
+	bv->buffer()->message(_("Reloading configuration..."));
 	lyxrc.read(libFileSearch(string(), "lyxrc.defaults"));
 	// Re-read packages.lst
 	LaTeXFeatures::getAvailable();
