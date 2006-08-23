@@ -496,7 +496,7 @@ def processLayoutFile(file, bool_docbook, bool_linuxdoc):
     '''
     classname = file.split(os.sep)[-1].split('.')[0]
     # return ('LaTeX', '[a,b]', 'a', ',b,c', 'article') for \DeclearLaTeXClass[a,b,c]{article}
-    p = re.compile(r'\Declare(LaTeX|DocBook|LinuxDoc)Class\s*(\[([^,]*)(,.*)*\])*\s*{(.*)}')
+    p = re.compile(r'\Declare(LaTeX|DocBook)Class\s*(\[([^,]*)(,.*)*\])*\s*{(.*)}')
     for line in open(file).readlines():
         res = p.search(line)
         if res != None:
@@ -558,7 +558,7 @@ def checkLatexConfig(check_config, bool_docbook, bool_linuxdoc):
         # Construct the list of classes to test for.
         # build the list of available layout files and convert it to commands
         # for chkconfig.ltx
-        p1 = re.compile(r'\Declare(LaTeX|DocBook|LinuxDoc)Class')
+        p1 = re.compile(r'\Declare(LaTeX|DocBook)Class')
         testclasses = list()
         for file in glob.glob( os.path.join('layouts', '*.layout') ) + \
             glob.glob( os.path.join(srcdir, 'layouts', '*.layout' ) ) :

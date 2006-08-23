@@ -245,8 +245,7 @@
 ## Trying to incorporate the best of AucTeX and HM--HTML modes
 ##
 # "C-z" is used in HM--HTML-mode for paragraph styles so try to support
-#  similar here especially for LinuxDoc (although LinuxDoc isn't only for
-#  making HTML).
+#  similar here.
 ##
 \bind "C-c C-l"                 "dialog-show latexlog"        # show warning log
 \bind "C-c C-o"                 "error-next"

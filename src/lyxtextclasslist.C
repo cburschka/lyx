@@ -186,9 +186,9 @@ LyXTextClassList::addTextClass(std::string const & textclass, std::string const 
 		//
 		// This is a C++ version of function processLayoutFile in configure.py,
 		// which uses the following regex
-		//     \Declare(LaTeX|DocBook|LinuxDoc)Class\s*(\[([^,]*)(,.*)*\])*\s*{(.*)}
+		//     \Declare(LaTeX|DocBook)Class\s*(\[([^,]*)(,.*)*\])*\s*{(.*)}
 		ifstream ifs(layout_file.c_str());
-		static regex const reg("^#\\s*\\\\Declare(LaTeX|DocBook|LinuxDoc)Class\\s*"
+		static regex const reg("^#\\s*\\\\Declare(LaTeX|DocBook)Class\\s*"
 			"(?:\\[([^,]*)(?:,.*)*\\])*\\s*\\{(.*)\\}\\s*");
 		string line;
 		while (getline(ifs, line)) {
