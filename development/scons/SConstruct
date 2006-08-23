@@ -530,7 +530,7 @@ def setEnvVariable(env, name, required = None, default = None, split = True):
             default = default.split()
     # then use environment default
     elif os.environ.has_key(name):
-        print "Acquiring varaible %s from system environment: %s" % (name, os.environ[name])
+        print "Acquiring variable %s from system environment: %s" % (name, os.environ[name])
         default = os.environ[name]
         if split:
             default = default.split()
