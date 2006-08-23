@@ -92,14 +92,6 @@ int InsetPagebreak::plaintext(Buffer const &, ostream & os,
 }
 
 
-int InsetPagebreak::linuxdoc(Buffer const &, std::ostream & os,
-			     OutputParams const &) const
-{
-	os << '\n';
-	return 0;
-}
-
-
 int InsetPagebreak::docbook(Buffer const &, std::ostream & os,
 			    OutputParams const &) const
 {

@@ -80,17 +80,6 @@ int InsetUrl::plaintext(Buffer const &, ostream & os,
 }
 
 
-int InsetUrl::linuxdoc(Buffer const &, ostream & os,
-		       OutputParams const &) const
-{
-	os << '<' << getCmdName()
-	   << " url=\""  << getContents() << "\""
-	   << " name=\"" << getOptions() << "\">";
-
-	return 0;
-}
-
-
 int InsetUrl::docbook(Buffer const &, ostream & os,
 		      OutputParams const &) const
 {

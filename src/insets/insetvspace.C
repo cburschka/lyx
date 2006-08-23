@@ -218,14 +218,6 @@ int InsetVSpace::plaintext(Buffer const &, ostream & os,
 }
 
 
-int InsetVSpace::linuxdoc(Buffer const &, std::ostream & os,
-			  OutputParams const &) const
-{
-	os << '\n';
-	return 1;
-}
-
-
 int InsetVSpace::docbook(Buffer const &, std::ostream & os,
 			 OutputParams const &) const
 {

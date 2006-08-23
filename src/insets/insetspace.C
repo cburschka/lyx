@@ -212,27 +212,6 @@ int InsetSpace::plaintext(Buffer const &, ostream & os,
 }
 
 
-int InsetSpace::linuxdoc(Buffer const &, ostream & os,
-			 OutputParams const &) const
-{
-	switch (kind_) {
-	case NORMAL:
-	case QUAD:
-	case QQUAD:
-	case ENSKIP:
-		os << " ";
-		break;
-	case PROTECTED:
-	case ENSPACE:
-	case THIN:
-	case NEGTHIN:
-		os << "&nbsp;";
-		break;
-	}
-	return 0;
-}
-
-
 int InsetSpace::docbook(Buffer const &, ostream & os,
 			OutputParams const &) const
 {

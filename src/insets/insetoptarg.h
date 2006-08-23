@@ -35,9 +35,6 @@ public:
 	/// Standard DocBook output -- short-circuited
 	int docbook(Buffer const &, std::ostream &,
 		  OutputParams const &) const;
-	/// Standard LinuxDoc output -- short-circuited
-	int linuxdoc(Buffer const &, std::ostream &,
-		  OutputParams const &) const;
 
 	/// Standard plain text output -- short-circuited
 	int plaintext(Buffer const &, std::ostream &,

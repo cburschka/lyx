@@ -104,15 +104,6 @@ int InsetRef::plaintext(Buffer const &, ostream & os,
 }
 
 
-int InsetRef::linuxdoc(Buffer const & buf, ostream & os,
-		       OutputParams const & runparams) const
-{
-	os << "<ref id=\"" << sgml::cleanID(buf, runparams, getContents())
-	   << "\" name=\"" << getOptions() << "\" >";
-	return 0;
-}
-
-
 int InsetRef::docbook(Buffer const & buf, ostream & os,
 		      OutputParams const & runparams) const
 {

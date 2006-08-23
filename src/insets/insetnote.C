@@ -287,33 +287,6 @@ int InsetNote::latex(Buffer const & buf, ostream & os,
 }
 
 
-int InsetNote::linuxdoc(Buffer const & buf, std::ostream & os,
-			OutputParams const & runparams_in) const
-{
-	if (params_.type == InsetNoteParams::Note)
-		return 0;
-
-	OutputParams runparams(runparams_in);
-	ostringstream ss;
-	if (params_.type == InsetNoteParams::Comment) {
-		ss << "<comment>\n";
-		runparams.inComment = true;
-		// Ignore files that are exported inside a comment
-		runparams.exportdata.reset(new ExportData);
-	}
-
-	InsetText::linuxdoc(buf, ss, runparams);
-
-	if (params_.type == InsetNoteParams::Comment)
-		ss << "\n</comment>\n";
-
-	string const str = ss.str();
-	os << str;
-	// Return how many newlines we issued.
-	return int(lyx::count(str.begin(), str.end(),'\n'));
-}
-
-
 int InsetNote::docbook(Buffer const & buf, std::ostream & os,
 		       OutputParams const & runparams_in) const
 {

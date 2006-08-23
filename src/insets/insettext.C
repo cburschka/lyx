@@ -33,7 +33,6 @@
 #include "metricsinfo.h"
 #include "output_docbook.h"
 #include "output_latex.h"
-#include "output_linuxdoc.h"
 #include "output_plaintext.h"
 #include "paragraph.h"
 #include "paragraph_funcs.h"
@@ -333,14 +332,6 @@ int InsetText::plaintext(Buffer const & buf, ostream & os,
 
 	// FIXME: Give the total numbers of lines
 	return 1;
-}
-
-
-int InsetText::linuxdoc(Buffer const & buf, ostream & os,
-			OutputParams const & runparams) const
-{
-	linuxdocParagraphs(buf, paragraphs(), os, runparams);
-	return 0;
 }
 
 

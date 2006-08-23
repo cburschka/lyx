@@ -71,14 +71,6 @@ int InsetLine::plaintext(Buffer const &, ostream & os,
 }
 
 
-int InsetLine::linuxdoc(Buffer const &, std::ostream & os,
-			OutputParams const &) const
-{
-	os << '\n';
-	return 0;
-}
-
-
 int InsetLine::docbook(Buffer const &, std::ostream & os,
 		       OutputParams const &) const
 {

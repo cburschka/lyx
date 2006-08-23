@@ -90,9 +90,6 @@ public:
 	int plaintext(Buffer const &, std::ostream &,
 		  OutputParams const &) const;
 	///
-	int linuxdoc(Buffer const &, std::ostream &,
-		     OutputParams const &) const;
-	///
 	int docbook(Buffer const &, std::ostream &,
 		    OutputParams const &) const;
 	///

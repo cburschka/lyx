@@ -70,12 +70,6 @@ int InsetOptArg::latex(Buffer const &, ostream &,
 	return 0;
 }
 
-int InsetOptArg::linuxdoc(Buffer const &, ostream &,
-		       OutputParams const &) const
-{
-	return 0;
-}
-
 int InsetOptArg::docbook(Buffer const &, ostream &,
 		       OutputParams const &) const
 {

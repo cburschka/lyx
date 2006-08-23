@@ -593,14 +593,6 @@ int InsetLatexAccent::plaintext(Buffer const &, ostream & os,
 }
 
 
-int InsetLatexAccent::linuxdoc(Buffer const &, ostream & os,
-			       OutputParams const &) const
-{
-	os << contents;
-	return 0;
-}
-
-
 int InsetLatexAccent::docbook(Buffer const &, ostream & os,
 			      OutputParams const &) const
 {

@@ -99,14 +99,6 @@ int InsetLabel::plaintext(Buffer const &, ostream & os,
 }
 
 
-int InsetLabel::linuxdoc(Buffer const & buf, ostream & os,
-			 OutputParams const & runparams) const
-{
-	os << "<label id=\"" << sgml::cleanID(buf, runparams, getContents()) << "\" >";
-	return 0;
-}
-
-
 int InsetLabel::docbook(Buffer const & buf, ostream & os,
 			OutputParams const & runparams) const
 {

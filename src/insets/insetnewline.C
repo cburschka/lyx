@@ -65,14 +65,6 @@ int InsetNewline::plaintext(Buffer const &, ostream & os,
 }
 
 
-int InsetNewline::linuxdoc(Buffer const &, std::ostream & os,
-			   OutputParams const &) const
-{
-	os << '\n';
-	return 0;
-}
-
-
 int InsetNewline::docbook(Buffer const &, std::ostream & os,
 			  OutputParams const &) const
 {

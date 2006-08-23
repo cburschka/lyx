@@ -306,14 +306,6 @@ int InsetQuotes::plaintext(Buffer const &, ostream & os,
 }
 
 
-int InsetQuotes::linuxdoc(Buffer const &, ostream & os,
-			  OutputParams const &) const
-{
-	os << '"';
-	return 0;
-}
-
-
 int InsetQuotes::docbook(Buffer const &, ostream & os,
 			 OutputParams const &) const
 {

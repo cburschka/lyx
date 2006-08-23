@@ -1070,13 +1070,6 @@ int InsetTabular::plaintext(Buffer const & buf, ostream & os,
 }
 
 
-int InsetTabular::linuxdoc(Buffer const & buf, ostream & os,
-			   OutputParams const & runparams) const
-{
-	return tabular.linuxdoc(buf,os, runparams);
-}
-
-
 int InsetTabular::docbook(Buffer const & buf, ostream & os,
 			  OutputParams const & runparams) const
 {

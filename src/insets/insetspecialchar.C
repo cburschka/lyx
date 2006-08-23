@@ -205,27 +205,6 @@ int InsetSpecialChar::plaintext(Buffer const &, ostream & os,
 }
 
 
-int InsetSpecialChar::linuxdoc(Buffer const &, ostream & os,
-			       OutputParams const &) const
-{
-	switch (kind_) {
-	case HYPHENATION:
-	case LIGATURE_BREAK:
-		break;
-	case END_OF_SENTENCE:
-		os << '.';
-		break;
-	case LDOTS:
-		os << "...";
-		break;
-	case MENU_SEPARATOR:
-		os << "&lyxarrow;";
-		break;
-	}
-	return 0;
-}
-
-
 int InsetSpecialChar::docbook(Buffer const &, ostream & os,
 			      OutputParams const &) const
 {

@@ -64,15 +64,6 @@ int InsetTOC::plaintext(Buffer const & buffer, ostream & os,
 }
 
 
-int InsetTOC::linuxdoc(Buffer const &, ostream & os,
-		       OutputParams const &) const
-{
-	if (getCmdName() == "tableofcontents")
-		os << "<toc>";
-	return 0;
-}
-
-
 int InsetTOC::docbook(Buffer const &, ostream & os,
 		      OutputParams const &) const
 {
