@@ -305,9 +305,6 @@ public:
 	int latex(Buffer const &, std::ostream &,
 		  OutputParams const &) const;
 	//
-	int linuxdoc(Buffer const & buf, std::ostream & os,
-		     OutputParams const &) const;
-	///
 	int docbook(Buffer const & buf, std::ostream & os,
 		    OutputParams const &) const;
 	///

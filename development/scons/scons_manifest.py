@@ -1483,7 +1483,6 @@ src_header_files = Split('''
     output.h
     output_docbook.h
     output_latex.h
-    output_linuxdoc.h
     output_plaintext.h
     outputparams.h
     paper.h
@@ -1590,7 +1589,6 @@ src_pre_files = Split('''
     output.C
     output_docbook.C
     output_latex.C
-    output_linuxdoc.C
     output_plaintext.C
     outputparams.C
     paragraph.C
@@ -1747,7 +1745,6 @@ lib_examples_files = Split('''
     it_ItemizeBullets.lyx
     it_splash.lyx
     landslide.lyx
-    linuxdoc_manpage.lyx
     listerrors.lyx
     mathed.lyx
     multicol.lyx
@@ -2453,7 +2450,6 @@ lib_layouts_files = Split('''
     kluwer.layout
     latex8.layout
     letter.layout
-    linuxdoc.layout
     literate-article.layout
     literate-book.layout
     literate-report.layout
@@ -2540,7 +2536,6 @@ lib_templates_files = Split('''
     koma-letter2.lyx
     latex8.lyx
     letter.lyx
-    linuxdoc_article.lyx
     revtex.lyx
     revtex4.lyx
     slides.lyx

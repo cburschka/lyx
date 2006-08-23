@@ -116,7 +116,6 @@ dist_examples_DATA = \
 	examples/it_ItemizeBullets.lyx \
 	examples/it_splash.lyx \
 	examples/landslide.lyx \
-	examples/linuxdoc_manpage.lyx \
 	examples/listerrors.lyx \
 	examples/mathed.lyx \
 	examples/multicol.lyx \
@@ -818,7 +817,6 @@ dist_layouts_DATA =\
 	layouts/kluwer.layout \
 	layouts/latex8.layout \
 	layouts/letter.layout \
-	layouts/linuxdoc.layout \
 	layouts/literate-article.layout \
 	layouts/literate-book.layout \
 	layouts/literate-report.layout \
@@ -904,7 +902,6 @@ dist_templates_DATA = \
 	templates/koma-letter2.lyx \
 	templates/latex8.lyx \
 	templates/letter.lyx \
-	templates/linuxdoc_article.lyx \
 	templates/revtex.lyx \
 	templates/revtex4.lyx \
 	templates/slides.lyx \

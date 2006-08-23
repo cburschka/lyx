@@ -96,9 +96,6 @@ Template RasterImage
 		ReferencedFile docbook     "$$AbsPath$$Basename.eps"
 		ReferencedFile docbook-xml "$$AbsPath$$Basename.eps"
 	FormatEnd
-	Format LinuxDoc
-		Product "[Bitmap: $$FName]"
-	FormatEnd
 TemplateEnd
 
 
@@ -151,9 +148,6 @@ Template XFig
 		ReferencedFile docbook     "$$AbsPath$$Basename.eps"
 		ReferencedFile docbook-xml "$$AbsPath$$Basename.eps"
 	FormatEnd
-	Format LinuxDoc
-		Product "[XFig: $$FName]"
-	FormatEnd
 TemplateEnd
 
 
@@ -199,9 +193,6 @@ Template ChessDiagram
 	Format DocBook
 		Product "[Chess: $$AbsOrRelPathMaster$$Basename]"
 	FormatEnd
-	Format LinuxDoc
-		Product "[Chess: $$FName]"
-	FormatEnd
 TemplateEnd
 
 
@@ -230,11 +221,6 @@ Template Date
 		UpdateResult "$$Tempname"
 	FormatEnd
 	Format DocBook
-		Product "$$Contents(\"$$Tempname\")"
-		UpdateFormat dateout
-		UpdateResult "$$Tempname"
-	FormatEnd
-	Format LinuxDoc
 		Product "$$Contents(\"$$Tempname\")"
 		UpdateFormat dateout
 		UpdateResult "$$Tempname"
