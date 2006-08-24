@@ -58,6 +58,8 @@ What's new
 
 - Fix bug 2768 (inset comment/note eats space after it)
 
+- Do not convert known spaces to ERT on LaTeX import (bug 2786)
+
 * User Interface:
 
 - Fix crash when using next-inset-toggle (Ctrl+I) inside mathed; make
