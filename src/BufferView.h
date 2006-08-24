@@ -98,8 +98,6 @@ public:
 	void setBuffer(Buffer * b);
 	/// return the buffer being viewed
 	Buffer * buffer() const;
-	/// return the first layout of the Buffer.
-	std::string firstLayout();
 
 	/// return the owning main view
 	LyXView * owner() const;

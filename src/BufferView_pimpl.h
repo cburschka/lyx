@@ -46,8 +46,6 @@ public:
 	Pimpl(BufferView & bv, LyXView * owner);
 	///
 	void setBuffer(Buffer * buf);
-	/// return the first layout of the Buffer.
-	std::string firstLayout();
 	///
 	void resizeCurrentBuffer();
 	//

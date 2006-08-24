@@ -93,12 +93,6 @@ void BufferView::setBuffer(Buffer * b)
 }
 
 
-string BufferView::firstLayout()
-{
-	return pimpl_->firstLayout();
-}
-
-
 bool BufferView::loadLyXFile(string const & fn, bool tl)
 {
 	return pimpl_->loadLyXFile(fn, tl);

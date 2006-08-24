@@ -306,28 +306,6 @@ void BufferView::Pimpl::setBuffer(Buffer * b)
 		lyx::graphics::Previews::get().generateBufferPreviews(*buffer_);
 }
 
-string BufferView::Pimpl::firstLayout()
-{
-	string firstlayout;
-
-	// This is done after the layout combox has been populated
-	if (buffer_) {
-		size_t i = cursor_.depth() - 1;
-		// we know we'll eventually find a paragraph
-		while (true) {
-			CursorSlice const & slice = cursor_[i];
-			if (!slice.inset().inMathed()) {
-				LyXLayout_ptr const layout = slice.paragraph().layout();
-				firstlayout = layout->name();
-				break;
-			}
-			BOOST_ASSERT(i>0);
-			--i;
-		}
-	}
-	return firstlayout;
-}
-
 
 void BufferView::Pimpl::resizeCurrentBuffer()
 {
