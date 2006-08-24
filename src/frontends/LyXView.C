@@ -162,7 +162,6 @@ bool LyXView::loadLyXFile(string const & filename, bool tolastfiles)
 		disconnectBuffer();
 
 	bool loaded = work_area_->bufferView().loadLyXFile(filename, tolastfiles);
-	showErrorList("Parse");
 
 	updateMenubar();
 	updateToolbars();
@@ -171,6 +170,7 @@ bool LyXView::loadLyXFile(string const & filename, bool tolastfiles)
 	if (loaded) {
 		connectBuffer(*work_area_->bufferView().buffer());
 		setLayout(work_area_->bufferView().firstLayout());
+		showErrorList("Parse");
 	}
 	redrawWorkArea();
 	return loaded;

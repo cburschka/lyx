@@ -566,14 +566,15 @@ bool Buffer::readFile(string const & filename)
 	paragraphs().clear();
 	LyXLex lex(0, 0);
 	lex.setFile(filename);
-	bool ret = readFile(lex, filename);
+	if (!readFile(lex, filename))
+		return false;
 
 	// After we have read a file, we must ensure that the buffer
 	// language is set and used in the gui.
 	// If you know of a better place to put this, please tell me. (Lgb)
 	updateDocLang(params().language);
 
-	return ret;
+	return true;
 }
 
 
