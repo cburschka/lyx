@@ -198,6 +198,15 @@ char const * const known_pdftex_graphics_formats[] = {"png", "pdf", "jpg",
  */
 char const * const known_tex_extensions[] = {"tex", 0};
 
+/// spaces known by InsetSpace
+char const * const known_spaces[] = { " ", "space", ",", "thinspace", "quad",
+"qquad", "enspace", "enskip", "negthinspace", 0};
+
+/// the same as known_spaces with .lyx names
+char const * const known_coded_spaces[] = { "space{}", "space{}",
+"thinspace{}", "thinspace{}", "quad{}", "qquad{}", "enspace{}", "enskip{}",
+"negthinspace{}", 0};
+
 
 /// splits "x=z, y=b" into a map
 map<string, string> split_map(string const & s)
@@ -2182,6 +2191,25 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			os << t.cs();
 			end_inset(os);
 			skip_braces(p);
+		}
+
+		else if (is_known(t.cs(), known_spaces)) {
+			char const * const * where = is_known(t.cs(), known_spaces);
+			context.check_layout(os);
+			begin_inset(os, "InsetSpace ");
+			os << '\\' << known_coded_spaces[where - known_spaces]
+			   << '\n';
+			// LaTeX swallows whitespace after all spaces except
+			// "\\,". We have to do that here, too, because LyX
+			// adds "{}" which would make the spaces significant.
+			if (t.cs() !=  ",")
+				eat_whitespace(p, os, context, false);
+			// LyX adds "{}" after all spaces except "\\ " and
+			// "\\,", so we have to remove "{}".
+			// "\\,{}" is equivalent to "\\," in LaTeX, so we
+			// remove the braces after "\\,", too.
+			if (t.cs() != " ")
+				skip_braces(p);
 		}
 
 		else if (t.cs() == "newpage") {
