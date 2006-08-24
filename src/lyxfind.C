@@ -289,7 +289,7 @@ void find(BufferView * bv, FuncRequest const & ev)
 
 	if (!found)
 		// emit message signal.
-		bv->buffer()->message(_("String not found!"));
+		bv->message(_("String not found!"));
 }
 
 

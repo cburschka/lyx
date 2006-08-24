@@ -34,6 +34,7 @@ int const CursorShape = CursorShape;
 #include "frontends/LyXKeySym.h"
 #include "frontends/Timeout.h"
 
+#include <boost/signals/trackable.hpp>
 
 class BufferView;
 class FuncRequest;
@@ -61,7 +62,7 @@ enum CursorShape {
  * It works in concert with the BaseScreen class to update the
  * widget view of a document.
  */
-class WorkArea {
+class WorkArea : public boost::signals::trackable {
 public:
 	WorkArea(LyXView & lyx_view);
 
@@ -143,6 +144,10 @@ private:
 	void updateScrollbar();
 	///
 	void checkAndGreyOut();
+	///
+	void displayMessage(std::string const &);
+	/// buffer messages signal connection
+	boost::signals::connection message_connection_;
 
 	///
 	bool greyed_out_;

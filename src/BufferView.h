@@ -22,6 +22,7 @@
 #include "support/types.h"
 
 #include <boost/utility.hpp>
+#include <boost/signal.hpp>
 
 #include <string>
 
@@ -217,6 +218,9 @@ public:
 	ViewMetricsInfo const & viewMetricsInfo();
 	///
 	void updateMetrics(bool singlepar = false);
+
+	/// This signal is emitted when some message shows up.
+	boost::signal<void(std::string)> message;
 
 private:
 	///

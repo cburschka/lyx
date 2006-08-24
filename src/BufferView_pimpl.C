@@ -631,7 +631,7 @@ void BufferView::Pimpl::savePosition(unsigned int i)
 				      cursor_.pos());
 	if (i > 0)
 		// emit message signal.
-		buffer_->message(bformat(_("Saved bookmark %1$d"), i));
+		bv_->message(bformat(_("Saved bookmark %1$d"), i));
 }
 
 
@@ -665,7 +665,7 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 
 	if (i > 0)
 		// emit message signal.
-		buffer_->message(bformat(_("Moved to bookmark %1$d"), i));
+		bv_->message(bformat(_("Moved to bookmark %1$d"), i));
 }
 
 
@@ -755,7 +755,7 @@ void BufferView::Pimpl::menuInsertLyXFile(string const & filenm)
 		// check selected filename
 		if (filename.empty()) {
 			// emit message signal.
-			buffer_->message(_("Canceled."));
+			bv_->message(_("Canceled."));
 			return;
 		}
 	}
@@ -766,7 +766,7 @@ void BufferView::Pimpl::menuInsertLyXFile(string const & filenm)
 
 	string const disp_fn = makeDisplayPath(filename);
 	// emit message signal.
-	buffer_->message(bformat(_("Inserting document %1$s..."), disp_fn));
+	bv_->message(bformat(_("Inserting document %1$s..."), disp_fn));
 
 	string res;
 	Buffer buf("", false);
@@ -781,7 +781,7 @@ void BufferView::Pimpl::menuInsertLyXFile(string const & filenm)
 		res = _("Could not insert document %1$s");
 
 	// emit message signal.
-	buffer_->message(bformat(res, disp_fn));
+	bv_->message(bformat(res, disp_fn));
 	buffer_->errors("Parse");
 	resizeCurrentBuffer();
 }

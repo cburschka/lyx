@@ -49,7 +49,6 @@
 #include <boost/utility.hpp>
 #include <boost/bind.hpp>
 #include <boost/current_function.hpp>
-#include <boost/signals/trackable.hpp>
 
 using lyx::support::libFileSearch;
 using lyx::support::ForkedcallsController;
@@ -160,9 +159,15 @@ WorkArea::WorkArea(LyXView & lyx_view)
 
 void WorkArea::setBufferView(BufferView * buffer_view)
 {
+	if (buffer_view_)
+		message_connection_.disconnect();
+
 	hideCursor();
 	buffer_view_ = buffer_view;
 	toggleCursor();
+
+	message_connection_ = buffer_view_->message.connect(
+			boost::bind(&WorkArea::displayMessage, this, _1));
 }
 
 
@@ -404,6 +409,12 @@ void WorkArea::toggleCursor()
 	}
 
 	cursor_timeout_.restart();
+}
+
+
+void WorkArea::displayMessage(std::string const & message)
+{
+	lyx_view_.message(message);
 }
 
 } // namespace frontend
