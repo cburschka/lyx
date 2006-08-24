@@ -344,8 +344,6 @@ void QContentPane::resizeEvent(QResizeEvent *)
 
 void QContentPane::paintEvent(QPaintEvent * e)
 {
-	BufferView * buffer_view_ = wa_->view().view();
-
 	if (!pixmap_.get()) {
 		pixmap_.reset(new QPixmap(width(), height()));
 		wa_->view().workArea()->resizeBufferView();

@@ -38,10 +38,6 @@
 #include <Carbon/Carbon.h>
 #endif
 
-#include <support/lstrings.h>
-
-using lyx::support::internalLineEnding;
-using lyx::support::externalLineEnding;
 using std::endl;
 using std::string;
 

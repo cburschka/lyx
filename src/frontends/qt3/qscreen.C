@@ -10,8 +10,11 @@
 
 #include <config.h>
 
-#include "QWorkArea.h"
+// Dear Lord, deliver us from Evil, aka the Qt headers
+// Qt defines a macro 'signals' that clashes with a boost namespace.
+// All is well if the namespace is visible first.
 #include "qscreen.h"
+#include "QWorkArea.h"
 
 #include "debug.h"
 #include "lcolorcache.h"

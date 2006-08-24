@@ -39,6 +39,7 @@
 #include <boost/signal.hpp> // FIXME: Is this needed? (Lgb)
 #include <boost/bind.hpp>
 #include <boost/shared_ptr.hpp>
+#include "frontends/WorkArea.h"
 
 #include "GuiImplementation.h"
 #include "QtView.h"
