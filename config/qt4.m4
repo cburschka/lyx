@@ -1,67 +1,3 @@
-dnl find a binary in the path
-AC_DEFUN([QT4_FIND_PATH],
-[
-	AC_MSG_CHECKING([for $1])
-	AC_CACHE_VAL(qt4_cv_path_$1,
-	[
-		qt4_cv_path_$1="NONE"
-		if test -n "$$2"; then
-			qt4_cv_path_$1="$$2";
-		else
-			dirs="$3"
-			qt_save_IFS=$IFS
-			IFS=':'
-			for dir in $PATH; do
-				dirs="$dirs $dir"
-			done
-			IFS=$qt_save_IFS
-
-			for dir in $dirs; do
-				if test -x "$dir/$1"; then
-					if test -n "$5"; then
-						evalstr="$dir/$1 $5 2>&1 "
-						if eval $evalstr; then
-							qt4_cv_path_$1="$dir/$1"
-							break
-						fi
-					else
-						qt4_cv_path_$1="$dir/$1"
-						break
-					fi
-				fi
-			done
-		fi
-	])
-
-	if test -z "$qt4_cv_path_$1" || test "$qt4_cv_path_$1" = "NONE"; then
-		AC_MSG_RESULT(not found)
-		$4
-	else
-		AC_MSG_RESULT($qt4_cv_path_$1)
-		$2=$qt4_cv_path_$1
-	fi
-])
-
-dnl Find the uic compiler on the path or in qt_cv_dir
-AC_DEFUN([QT_FIND_UIC4],
-[
-	QT4_FIND_PATH(uic, ac_uic4, $qt4_cv_dir/bin)
-
-	if test -z "$ac_uic4" -a "$FATAL" = 1; then
-		AC_MSG_ERROR([uic 4 binary not found in \$PATH or $qt4_cv_dir/bin !])
-	fi
-])
-
-dnl Find the right moc in path/qt_cv_dir
-AC_DEFUN([QT_FIND_MOC4],
-[
-	QT4_FIND_PATH(moc, ac_moc4, $qt4_cv_dir/bin)
-
-	if test -z "$ac_moc4"  -a "$FATAL" = 1; then
-		AC_MSG_ERROR([moc 4 binary not found in \$PATH or $qt4_cv_dir/bin !])
-	fi
-])
-
 dnl check a particular libname
 AC_DEFUN([QT4_TRY_LINK],
 [
@@ -142,42 +78,6 @@ EOF
 dnl start here
 AC_DEFUN([QT4_DO_IT_ALL],
 [
-        dnl Check if it possible to do a pgk-config
-        PKG_PROG_PKG_CONFIG
-        if test -n "$PKG_CONFIG" ; then
-                QT4_DO_PKG_CONFIG
-        else
-                QT4_DO_MANUAL_CONFIG
-        fi
-])
-
-AC_DEFUN([QT4_DO_PKG_CONFIG],
-[
-        PKG_CHECK_MODULES(QT4_FRONTEND, QtCore QtGui)
-        if test "$pkg_failed" == "no" ; then
-                QT4_INCLUDES=$QT4_FRONTEND_CFLAGS
-                dnl QT4_LDFLAGS=$QT4_FRONTEND_LIBS
-                QT4_LDFLAGS=`$PKG_CONFIG --libs-only-L QtCore QtGui`
-        	AC_SUBST(QT4_INCLUDES)
-	        AC_SUBST(QT4_LDFLAGS)
-                QT4_VERSION=`$PKG_CONFIG --modversion QtCore`
-        	AC_SUBST(QT4_VERSION)
-                QT4_LIB=`$PKG_CONFIG --libs-only-l QtCore QtGui`
-                AC_SUBST(QT4_LIB)
-        	QT4_CPPFLAGS="-DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR -DQT_NO_STL -DQT_NO_KEYWORDS"
-	        case ${host} in
-	                *mingw*) QT4_CPPFLAGS="-DQT_DLL $QT4_CPPFLAGS";;
-	        esac
-	        AC_SUBST(QT4_CPPFLAGS)
-                AC_CHECK_PROGS(MOC4, moc-qt4 moc)
-                AC_CHECK_PROGS(UIC4, uic-qt4 uic)
-        else
-                QT4_DO_MANUAL_CONFIG
-        fi
-])
-
-AC_DEFUN([QT4_DO_MANUAL_CONFIG],
-[
 	dnl this variable is precious
 	AC_ARG_VAR(QT4DIR, [the place where the Qt 4 files are, e.g. /usr/lib/qt4])
 
@@ -209,6 +109,54 @@ AC_DEFUN([QT4_DO_MANUAL_CONFIG],
 		fi
 	fi
 
+	dnl compute the binary dir too
+	if test -n "$qt4_cv_dir"; then
+		qt4_cv_bin=$qt4_cv_dir/bin
+	fi
+
+	dnl Preprocessor flags
+	QT4_CPPFLAGS="-DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR -DQT_NO_STL -DQT_NO_KEYWORDS"
+	case ${host} in
+	*mingw*) QT4_CPPFLAGS="-DQT_DLL $QT4_CPPFLAGS";;
+	esac
+	AC_SUBST(QT4_CPPFLAGS)
+
+	dnl Check if it possible to do a pkg-config
+	QT4_DO_PKG_CONFIG
+	if test "$pkg_failed" != "no" ; then
+		QT4_DO_MANUAL_CONFIG
+	fi
+	AC_PATH_PROGS(MOC4, [moc-qt4 moc],[],$qt4_cv_bin:$PATH)
+	AC_PATH_PROGS(UIC4, [uic-qt4 uic],[],$qt4_cv_bin:$PATH)
+])
+
+AC_DEFUN([QT4_DO_PKG_CONFIG],
+[
+	PKG_PROG_PKG_CONFIG
+	save_PKG_CONFIG_PATH=$PKG_CONFIG_PATH
+	if test -n "$qt4_cv_dir" ; then
+	  PKG_CONFIG_PATH=$qt4_cv_dir/lib:$PKG_CONFIG_PATH
+	  export PKG_CONFIG_PATH
+	fi
+	PKG_CHECK_MODULES(QT4_FRONTEND, QtCore QtGui)
+	if test "$pkg_failed" == "no" ; then
+		QT4_INCLUDES=$QT4_FRONTEND_CFLAGS
+		dnl QT4_LDFLAGS=$QT4_FRONTEND_LIBS
+		QT4_LDFLAGS=`$PKG_CONFIG --libs-only-L QtCore QtGui`
+		AC_SUBST(QT4_INCLUDES)
+		AC_SUBST(QT4_LDFLAGS)
+		QT4_VERSION=`$PKG_CONFIG --modversion QtCore`
+		AC_SUBST(QT4_VERSION)
+		QT4_LIB=`$PKG_CONFIG --libs-only-l QtCore QtGui`
+		AC_SUBST(QT4_LIB)
+	else
+		QT4_DO_MANUAL_CONFIG
+	fi
+	PKG_CONFIG_PATH=$save_PKG_CONFIG_PATH
+])
+
+AC_DEFUN([QT4_DO_MANUAL_CONFIG],
+[
 	dnl flags for compilation
 	QT4_INCLUDES=
 	QT4_LDFLAGS=
@@ -223,24 +171,6 @@ AC_DEFUN([QT4_DO_MANUAL_CONFIG],
 	fi
 	AC_SUBST(QT4_INCLUDES)
 	AC_SUBST(QT4_LDFLAGS)
-
-	dnl Preprocessor flags
-	QT4_CPPFLAGS="-DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR -DQT_NO_STL -DQT_NO_KEYWORDS"
-	case ${host} in
-	*mingw*) QT4_CPPFLAGS="-DQT_DLL $QT4_CPPFLAGS";;
-	esac
-	AC_SUBST(QT4_CPPFLAGS)
-
-	if test -z "$MOC4"; then
-		QT_FIND_MOC4
-		MOC4=$ac_moc4
-	fi
-	AC_SUBST(MOC4)
-	if test -z "$UIC4"; then
-		QT_FIND_UIC4
-		UIC4=$ac_uic4
-	fi
-	AC_SUBST(UIC4)
 
 	QT4_CHECK_COMPILE
 
