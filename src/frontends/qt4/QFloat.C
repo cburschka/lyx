@@ -13,13 +13,13 @@
 #include "QFloat.h"
 #include "QFloatDialog.h"
 #include "Qt2BC.h"
-#include "floatplacement.h"
+#include "FloatPlacement.h"
 
 #include "controllers/ControlFloat.h"
 
 #include "insets/insetfloat.h"
 
-#include <qpushbutton.h>
+#include <QPushButton>
 
 namespace lyx {
 namespace frontend {

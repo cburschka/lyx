@@ -1,0 +1,125 @@
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>FloatPlacementUi</class>
+ <widget class="QWidget" name="FloatPlacementUi" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>211</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>9</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item>
+    <widget class="QCheckBox" name="defaultsCB" >
+     <property name="text" >
+      <string>Use &amp;default placement</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="options" >
+     <property name="title" >
+      <string>Advanced Placement Options</string>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="0" column="0" >
+       <widget class="QCheckBox" name="topCB" >
+        <property name="text" >
+         <string>&amp;Top of page</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0" >
+       <widget class="QCheckBox" name="ignoreCB" >
+        <property name="text" >
+         <string>&amp;Ignore LaTeX rules</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0" >
+       <widget class="QCheckBox" name="heredefinitelyCB" >
+        <property name="text" >
+         <string>Here de&amp;finitely</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" >
+       <widget class="QCheckBox" name="herepossiblyCB" >
+        <property name="text" >
+         <string>&amp;Here if possible</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" >
+       <widget class="QCheckBox" name="pageCB" >
+        <property name="text" >
+         <string>&amp;Page of floats</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QCheckBox" name="bottomCB" >
+        <property name="text" >
+         <string>&amp;Bottom of page</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="spanCB" >
+     <property name="text" >
+      <string>&amp;Span columns</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="sidewaysCB" >
+     <property name="text" >
+      <string>&amp;Rotate sideways</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <pixmapfunction></pixmapfunction>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>defaultsCB</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>options</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>51</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>201</x>
+     <y>47</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

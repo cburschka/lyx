@@ -12,11 +12,12 @@
 
 #include "QFloatDialog.h"
 #include "QFloat.h"
-//Added by qt3to4:
-#include <QCloseEvent>
-#include "floatplacement.h"
 
-#include <qpushbutton.h>
+#include <QCloseEvent>
+#include <QPushButton>
+
+#include "FloatPlacement.h"
+
 
 
 namespace lyx {

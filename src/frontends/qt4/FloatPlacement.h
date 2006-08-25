@@ -13,19 +13,18 @@
 #ifndef QT_FLOATPLACEMENT_H
 #define QT_FLOATPLACEMENT_H
 
+#include "ui/FloatPlacementUi.h"
 #include <QWidget>
 
 #include <string>
 
-class QCheckBox;
-class QVBoxLayout;
 class InsetFloatParams;
 
-class FloatPlacement : public QWidget {
+class FloatPlacement : public QWidget, public Ui::FloatPlacementUi {
 	Q_OBJECT
-
 public:
-	FloatPlacement(QWidget * parent=0);
+	FloatPlacement(QWidget * parent = 0);
+	~FloatPlacement();
 
 	void useWide();
 	void useSideways();
@@ -39,26 +38,14 @@ public:
 
 public Q_SLOTS:
 	void tbhpClicked();
-	void heredefinitelyClicked();
-	void spanClicked();
-	void sidewaysClicked();
 	void changedSlot();
+	void on_spanCB_clicked();
+	void on_heredefinitelyCB_clicked();
+	void on_sidewaysCB_clicked();
 
 Q_SIGNALS:
 	void changed();
 
-private:
-	QVBoxLayout * layout;
-
-	QCheckBox * defaultsCB;
-	QCheckBox * spanCB;
-	QCheckBox * sidewaysCB;
-	QCheckBox * ignoreCB;
-	QCheckBox * pageCB;
-	QCheckBox * heredefinitelyCB;
-	QCheckBox * herepossiblyCB;
-	QCheckBox * bottomCB;
-	QCheckBox * topCB;
 };
 
 #endif

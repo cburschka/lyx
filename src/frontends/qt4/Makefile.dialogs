@@ -4,6 +4,7 @@ UIFILES = \
 	BiblioUi.ui \
 	BranchesUi.ui \
 	BulletsUi.ui \
+	FloatPlacementUi.ui \
 	FontUi.ui \
 	TextLayoutUi.ui \
 	LanguageUi.ui \
@@ -76,7 +77,7 @@ MOCFILES = \
 	BulletsModule.C BulletsModule.h \
 	emptytable.C emptytable.h \
 	FileDialog_private.C FileDialog_private.h \
-	floatplacement.C floatplacement.h \
+	FloatPlacement.C FloatPlacement.h \
 	GuiView.C GuiView.h \
 	GuiWorkArea.C GuiWorkArea.h \
 	iconpalette.C iconpalette.h \

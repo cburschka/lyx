@@ -11,70 +11,19 @@
 
 #include <config.h>
 
-#include "floatplacement.h"
+#include "FloatPlacement.h"
 #include "qt_helpers.h"
-//Added by qt3to4:
-#include <QVBoxLayout>
-#include <QHBoxLayout>
 
 #include "insets/insetfloat.h"
 #include "support/lstrings.h"
 
-#include <QCheckBox>
-#include <QLayout>
-#include <QGroupBox>
-
 using lyx::support::contains;
-
 using std::string;
 
-
-// FIXME: set disabled doesn't work properly
-// should be fixed now (jspitzm)
-FloatPlacement::FloatPlacement(QWidget * parent)
-	: QWidget(parent)
+FloatPlacement::FloatPlacement(QWidget *)
 {
-	QHBoxLayout * toplayout = new QHBoxLayout(this);
-	toplayout->setMargin(11);
-	toplayout->setSpacing(6);
+	setupUi(this);
 
-	layout = new QVBoxLayout(0);
-	layout->setMargin(0);
-	layout->setSpacing(6);
-
-	QGroupBox * options = new QGroupBox(qt_("Advanced Placement Options"), this);
-
-	defaultsCB = new QCheckBox(qt_("Use &default placement"), this);
-	topCB = new QCheckBox(qt_("&Top of page"), options);
-	bottomCB = new QCheckBox(qt_("&Bottom of page"), options);
-	pageCB = new QCheckBox(qt_("&Page of floats"), options);
-	herepossiblyCB = new QCheckBox(qt_("&Here if possible"), options);
-	heredefinitelyCB = new QCheckBox(qt_("Here definitely"), options);
-	ignoreCB = new QCheckBox(qt_("&Ignore LaTeX rules"), options);
-	spanCB = 0;
-	sidewaysCB = 0;
-
-	layout->addWidget(defaultsCB);
-
-	QVBoxLayout * optlay = new QVBoxLayout(options);
-	optlay->setMargin(10);
-	optlay->setSpacing(6);
-
-	optlay->addSpacing(6);
-	optlay->addWidget(topCB);
-	optlay->addWidget(bottomCB);
-	optlay->addWidget(pageCB);
-	optlay->addWidget(herepossiblyCB);
-	optlay->addWidget(heredefinitelyCB);
-	optlay->addWidget(ignoreCB);
-
-	layout->addWidget(options);
-
-	toplayout->addLayout(layout);
-
-	connect(defaultsCB, SIGNAL(toggled(bool)), options, SLOT(setDisabled(bool)));
-
-	connect(heredefinitelyCB, SIGNAL(clicked()), this, SLOT(heredefinitelyClicked()));
 	connect(topCB, SIGNAL(clicked()), this, SLOT(tbhpClicked()));
 	connect(bottomCB, SIGNAL(clicked()), this, SLOT(tbhpClicked()));
 	connect(pageCB, SIGNAL(clicked()), this, SLOT(tbhpClicked()));
@@ -88,26 +37,26 @@ FloatPlacement::FloatPlacement(QWidget * parent)
 	connect(herepossiblyCB, SIGNAL(toggled(bool)), this, SLOT(changedSlot()));
 	connect(bottomCB, SIGNAL(toggled(bool)), this, SLOT(changedSlot()));
 	connect(topCB, SIGNAL(toggled(bool)), this, SLOT(changedSlot()));
+
+	spanCB->hide();
+	sidewaysCB->hide();
+}
+
+
+FloatPlacement::~FloatPlacement()
+{
 }
 
 
 void FloatPlacement::useWide()
 {
-	spanCB = new QCheckBox(qt_("&Span columns"), this);
-	layout->addWidget(spanCB);
-	setTabOrder(ignoreCB, spanCB);
-	connect(spanCB, SIGNAL(clicked()), this, SLOT(spanClicked()));
-	connect(spanCB, SIGNAL(toggled(bool)), this, SLOT(changedSlot()));
+	spanCB->show();
 }
 
 
 void FloatPlacement::useSideways()
 {
-	sidewaysCB = new QCheckBox(qt_("&Rotate sideways"), this);
-	layout->addWidget(sidewaysCB);
-	setTabOrder(spanCB, sidewaysCB);
-	connect(sidewaysCB, SIGNAL(clicked()), this, SLOT(sidewaysClicked()));
-	connect(sidewaysCB, SIGNAL(toggled(bool)), this, SLOT(changedSlot()));
+	sidewaysCB->show();
 }
 
 
@@ -226,7 +175,7 @@ void FloatPlacement::tbhpClicked()
 }
 
 
-void FloatPlacement::heredefinitelyClicked()
+void FloatPlacement::on_heredefinitelyCB_clicked()
 {
 	if (heredefinitelyCB->isChecked())
 		ignoreCB->setEnabled(false);
@@ -239,7 +188,7 @@ void FloatPlacement::heredefinitelyClicked()
 }
 
 
-void FloatPlacement::spanClicked()
+void FloatPlacement::on_spanCB_clicked()
 {
 	checkAllowed();
 
@@ -252,7 +201,7 @@ void FloatPlacement::spanClicked()
 }
 
 
-void FloatPlacement::sidewaysClicked()
+void FloatPlacement::on_sidewaysCB_clicked()
 {
 	checkAllowed();
 }
@@ -267,7 +216,7 @@ void FloatPlacement::checkAllowed()
 	ignore |= herepossiblyCB->isChecked();
 
 	// float or document dialog?
-	if (spanCB != 0) {
+	if (spanCB->isVisible()) {
 		bool const span(spanCB->isChecked());
 		bool const sideways(sidewaysCB->isChecked());
 		defaultsCB->setEnabled(!sideways);
@@ -288,4 +237,5 @@ void FloatPlacement::checkAllowed()
 	}
 }
 
-#include "floatplacement_moc.cpp"
+
+#include "FloatPlacement_moc.cpp"

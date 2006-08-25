@@ -669,7 +669,7 @@ src_frontends_qt3_moc_files = Split('''
     BulletsModule.C
     emptytable.C
     FileDialog_private.C
-    floatplacement.C
+    FloatPlacement.C
     iconpalette.C
     lengthcombo.C
     panelstack.C
@@ -824,7 +824,7 @@ src_frontends_qt3_header_files = Split('''
     QtView.h
     checkedwidgets.h
     emptytable.h
-    floatplacement.h
+    FloatPlacement.h
     iconpalette.h
     lcolorcache.h
     lengthcombo.h
@@ -942,7 +942,7 @@ src_frontends_qt3_files = Split('''
     QtView.C
     checkedwidgets.C
     emptytable.C
-    floatplacement.C
+    FloatPlacement.C
     iconpalette.C
     lcolorcache.C
     lengthcombo.C
@@ -1039,7 +1039,7 @@ src_frontends_qt4_moc_files = Split('''
     BulletsModule.C
     emptytable.C
     FileDialog_private.C
-    floatplacement.C
+    FloatPlacement.C
     iconpalette.C
     lengthcombo.C
     InsertTableWidget.C
@@ -1204,7 +1204,7 @@ src_frontends_qt4_header_files = Split('''
     UrlView.h
     checkedwidgets.h
     emptytable.h
-    floatplacement.h
+    FloatPlacement.h
     iconpalette.h
     lengthcombo.h
     panelstack.h
@@ -1323,7 +1323,7 @@ src_frontends_qt4_files = Split('''
     UrlView.C
     checkedwidgets.C
     emptytable.C
-    floatplacement.C
+    FloatPlacement.C
     iconpalette.C
     lengthcombo.C
     lyx_gui.C

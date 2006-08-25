@@ -16,7 +16,7 @@
 
 #include <QCloseEvent>
 
-#include "floatplacement.h"
+#include "FloatPlacement.h"
 #include "lengthcombo.h"
 #include "validators.h"
 #include "panelstack.h"
