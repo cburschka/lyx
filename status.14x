@@ -7,7 +7,7 @@ I'd be glad if some of you could take the time to check it out (or fix
 a bug or two if you are feeling adventurous). Let me recall that all
 these fixes have been checked into the BRANCH_1_4_X branch, which you
 can get with the command
-  svn co svn://svn.lyx.org/lyx/lyx-devel/branches/BRANCH_1_4_X lyx-1.4.x
+  svn co svn://svn.LyX.org/LyX/LyX-devel/branches/BRANCH_1_4_X LyX-1.4.x
 
 JMarc
 
@@ -19,12 +19,12 @@ What's new
 
 ** Updates:
 
-- All shell scripts are translated to python so sh.exe is no longer 
-  needed on windows.
+- All shell scripts have been translated to python so sh.exe is no
+  longer needed. That's a big plus for the Windows port.
 
 - Some small updates to the documentation.
 
-- Update Czech (new), Italian (bug 2774) and German (bug 2718)
+- Updated Czech (new), Italian (bug 2774) and German (bug 2718).
   localizations.
 
 - Updated Czech (Tutorial, new splash) and German (UserGuide,
@@ -34,100 +34,101 @@ What's new
 
 * Document Input/Output
 
-- Fix crash when importing LaTeX files with no text (bug 2667)
+- Fix a crash when importing LaTeX files with no text (bug 2667).
 
-- Fix crash when a used bibtex file is in a non-readable directory
+- Fix a crash when a used bibtex file is in a non-readable directory
   (bug 2782).
 
-- Ignore definition of lyxgreyout environment when re-importing a LyX
-  generated LaTeX file (part of bug 2420)
+- Ignore the definition of LyXgreyout environment when re-importing a
+  LyX-generated LaTeX file (part of bug 2420).
 
 - When exporting to LaTeX an external inset with template XFig,
-  require the color package, since xfig generates LaTeX code with
+  require the color package, since XFig generates LaTeX code with
   \color (bug 2716).
 
 - Make sure enough passes are made to update the table of contents
-  when running latex (bug 2616).
+  when running LaTeX (bug 2616).
 
-- Don't add extra braces when reading documents containing \choose, \atop or
-  \over (bug 2481).
+- Don't add extra braces when reading documents containing \choose,
+  \atop or \over (bug 2481).
 
-- Reenable import of noweb files (bug 2289)
+- Reenable import of noweb files (bug 2289).
 
-- Render greyed out notes correctly in output (bug 2723)
+- Render greyed out notes correctly in output (bug 2723).
 
-- Fix bug 2768 (inset comment/note eats space after it)
+- Fix bug 2768 (inset comment/note eats space after it).
 
-- Do not convert known spaces to ERT on LaTeX import (bug 2786)
+- Do not convert known spaces to ERT on LaTeX import (bug 2786).
 
 * User Interface:
 
-- Fix crash when using next-inset-toggle (Ctrl+I) inside mathed; make
+- Fix random crashes resulting of an incompatibility of the included
+  boost::bind library with gcc 4.1 (bug 2677, probably also 2662 and 2684).
+
+- Fix a crash when using next-inset-toggle (Ctrl+I) inside mathed;
   inset locking in mathed generally work (bug 2756).
 
-- Fix crash on save (including dataloss) when the backup directory 
-  was invalid or not writeable(bug 2740).
+- Fix a crash on save (including dataloss) when the backup directory 
+  creation failed or the directory is not writeable(bug 2740).
 
-- Fix crash when selecting several cells in a tabular (bug 2630).
+- Fix a crash when selecting several cells in a tabular (bug 2630).
 
-- Fix crash when searching for an inset and none is present.
+- Fix a crash when searching for an inset and none is present.
 
 - Fix lockup when accepting a change in a text inset (bug 2510).
 
-- Fix crash when undoing super/subscript deletion (bug 2727).
+- Fix a crash when undoing super/subscript deletion (bug 2727).
 
-- Fix crash when cursor is in an empty script and the user clicks
-  in the text.
+- Fix a crash when the cursor is in an empty script and the user
+  clicks in the text.
 
-- Handle properly script insets which nucleus has more than one
-  element (like {a'}^{2}).
+- Handle properly script insets which the nucleus has more than
+  one element (like {a'}^{2}).
 
-- On button 2 press in math inset, paste inner LyX selection if it
-  exists (bug 2779).
+- On pressing button 2 in a math inset, paste the inner LyX selection
+  if it exists (bug 2779).
 
-- Fix disabling of some toolbar icons after closing a dialog (bug 2423).
+- Fix the disabling of some toolbar icons after closing a dialog (bug 2423).
 
-- Fix editing of document while Error List dialog is open (bug 2179).
+- Fix the editing of a document while Error List dialog is open (bug 2179).
 
-- improve position of cursor after undo.
+- Improve the position of the cursor after undo.
 
 - Update labels on screen when changing language.
 
 - Fix doubling of initial character when correcting a word with
-  ligatures in spellechecker (bug 2068)
+  ligatures in spellechecker (bug 2068).
 
 - Show an error box when failing to update the TeX Information dalog data.
 
-- Fix unexpected font change on maximize (bug 2664).
+- Fix an unexpected font change on maximize (bug 2664).
 
 - Handle the Meta keyboard modifier as Alt (Qt only).
 
 - Fix the C-x C-b binding in emacs mode (bug 2747).
 
 - Fix a crash when a non-template file is selected in the
-  "New from Template" dialog (bug 2404)
-
-- Fix random crashes resulting of an incompatibility of the included
-  boost::bind library with gcc 4.1 (bug 2677, probably also 2662 and 2684)
+  "New from Template" dialog (bug 2404).
 
 * Build/installation:
 
-- Fix 'check' make target for systems which do not have /bin/bash (bug 2524).
+- Fix the 'check' make target for systems which do not have
+  /bin/bash (bug 2524).
 
-- Set CPPFLAGS only if not already set by the user (and ignore CXXFLAGS for
-  setting CPPFLAGS).
+- Set CPPFLAGS only if it not already set by the user
+  (and ignore CXXFLAGS when setting CPPFLAGS).
 
 - Handle properly gcc 4.1 in configure.
 
 - Install python files together with precompiled versions.
 
-- A scons build system is added, details please see INSTALL.scons.
+- A scons build system is added, for details please see INSTALL.scons.
 
-- Lyx can be compiled with MSVC using qt3 from Q../Free project and scons.
+- LyX can be compiled with MSVC using qt3 from the Q../Free project and scons.
 
 * Miscellaneous
 
-- Display latex package checking results faster during configuration.
+- Display LaTeX package checking results faster during configuration.
 
 - Log the output of configure.py to a log file configure.log.
 
@@ -136,6 +137,6 @@ What's new
 - Change the encoding of some python scripts from iso-8859-15 to
   iso-8859-1. The former causes problems with embedded python.
 
-- remove outdated development tools & outdated LyXConfig.lyx
+- remove outdated development tools & outdated LyXConfig.LyX.
 
-- remove references to reLyX which has been replaced by tex2lyx
+- remove all references to reLyX which has been replaced by tex2LyX.
