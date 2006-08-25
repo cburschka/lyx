@@ -110,6 +110,9 @@ What's new
 - Fix a crash when a non-template file is selected in the
   "New from Template" dialog (bug 2404).
 
+- The LaTeX log file can now also be viewed if the path of the temporary
+  directory contains spaces (bug 2687)
+
 * Build/installation:
 
 - Fix the 'check' make target for systems which do not have
