@@ -183,14 +183,9 @@ QImage & toGray(QImage & img)
 	int const pixels = img.depth() > 8 ?
 		img.width() * img.height() : img.numColors();
 
-	// FIXME this code used to be like this:
-	//
-	//unsigned int * const data = img.depth() > 8 ?
-	//	(unsigned int *)img.bits() :
-	//	(unsigned int *)img.jumpTable();
-	// 
-	// But Qt doc just say use bits...
-	unsigned int * const data = (unsigned int *)img.bits();
+	unsigned int *data = img.depth() > 8 ? 
+		reinterpret_cast<unsigned int *>(img.bits()) :
+		reinterpret_cast<unsigned int *>(&img.colorTable()[0]);
 
 	for(int i = 0; i < pixels; ++i){
 		int const val = qGray(data[i]);
@@ -269,9 +264,6 @@ void QLImage::rotate_impl(Params const & params)
 	QMatrix m;
 	m.rotate(-params.angle);
 
-	// FIXME: alpha chanel detection is automautic for monochrome
-	// and 8-bit images. For 32 bit, is something like still necessary?
-	//transformed_.setAlphaBuffer(true);
 	transformed_ = transformed_.transformed(m);
 }
 
