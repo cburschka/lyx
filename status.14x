@@ -107,6 +107,9 @@ What's new
 - Fix a crash when a non-template file is selected in the
   "New from Template" dialog (bug 2404)
 
+- Fix random crashes resulting of an incompatibility of the included
+  boost::bind library with gcc 4.1 (bug 2677, probably also 2662 and 2684)
+
 * Build/installation:
 
 - Fix 'check' make target for systems which do not have /bin/bash (bug 2524).
