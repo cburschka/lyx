@@ -21,6 +21,8 @@
 #include "support/convert.h"
 #include "support/lstrings.h"
 
+#include <sstream>
+
 using lyx::support::compare_ascii_no_case;
 using lyx::support::isStrDbl;
 using lyx::support::isStrInt;
@@ -292,4 +294,13 @@ LyXLex & LyXLex::operator>>(bool & s)
 		s = getBool();
 	}
 	return *this;
+}
+
+
+/// quotes a string, e.g. for use in preferences files or as an argument of the "log" dialog
+string const LyXLex::quoteString(string const & arg)
+{
+	std::ostringstream os;
+	os << '"' << subst(subst(arg, "\\", "\\\\"), "\"", "\\\"") << '"';
+	return os.str();
 }

@@ -1164,12 +1164,12 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 					data = "literate ";
 					break;
 				}
-				data += logfile.second;
+				data += LyXLex::quoteString(logfile.second);
 				owner->getDialogs().show("log", data);
 			}
 			else if (name == "vclog") {
 				string const data = "vc " +
-					owner->buffer()->lyxvc().getLogFile();
+					LyXLex::quoteString(owner->buffer()->lyxvc().getLogFile());
 				owner->getDialogs().show("log", data);
 			}
 			else

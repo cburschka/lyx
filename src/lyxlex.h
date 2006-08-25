@@ -140,6 +140,10 @@ public:
 	/// extract bool
 	LyXLex & operator>>(bool &);
 
+	/// Quotes a string so that reading it again with LyXLex::next(true)
+	/// gets the original string
+	static std::string const quoteString(std::string const &);
+
 private:
 	class Pimpl;
 	///
