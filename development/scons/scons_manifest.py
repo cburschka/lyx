@@ -668,8 +668,8 @@ src_frontends_qt3_ui_files = Split('''
 src_frontends_qt3_moc_files = Split('''
     BulletsModule.C
     emptytable.C
+    floatplacement.C
     FileDialog_private.C
-    FloatPlacement.C
     iconpalette.C
     lengthcombo.C
     panelstack.C
@@ -824,7 +824,7 @@ src_frontends_qt3_header_files = Split('''
     QtView.h
     checkedwidgets.h
     emptytable.h
-    FloatPlacement.h
+    floatplacement.h
     iconpalette.h
     lcolorcache.h
     lengthcombo.h
@@ -942,7 +942,7 @@ src_frontends_qt3_files = Split('''
     QtView.C
     checkedwidgets.C
     emptytable.C
-    FloatPlacement.C
+    floatplacement.C
     iconpalette.C
     lcolorcache.C
     lengthcombo.C
