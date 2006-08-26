@@ -966,6 +966,7 @@ src_frontends_qt4_ui_files = Split('''
     BiblioUi.ui
     BranchesUi.ui
     BulletsUi.ui
+    FloatPlacementUi.ui
     FontUi.ui
     LaTeXUi.ui
     LanguageUi.ui
