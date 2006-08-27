@@ -221,7 +221,7 @@ void GuiWorkArea::dropEvent(QDropEvent* event)
 
 	lyxerr[Debug::GUI] << "GuiWorkArea::dropEvent: got URIs!" << endl;
 	for (int i = 0; i!=files.size(); ++i) {
-		string const file = os::internal_path(fromqstr(files.at(i).toString()));
+		string const file = os::internal_path(fromqstr(files.at(i).toLocalFile()));
 		if (!file.empty())
 			dispatch(FuncRequest(LFUN_FILE_OPEN, file));
 	}
