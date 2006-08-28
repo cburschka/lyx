@@ -12,7 +12,12 @@ lyx_add_ui_files(frontends_qt4_sources ${frontend_qt4_UI})
 
 source_group("Uic files" FILES ${frontend_qt4_UI})
 
-add_definitions(-DQT_NO_STL)
+add_definitions(
+		-DQT_CLEAN_NAMESPACE
+		-DQT_GENUINE_STR
+		-DQT_NO_STL
+		-DQT_NO_KEYWORDS
+		)
 
 include_directories(	${TOP_SRC_DIR}/src/frontends/qt4 
 			${TOP_SRC_DIR}/src/frontends/controllers
