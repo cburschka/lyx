@@ -119,9 +119,9 @@ def main(argv):
 
     file = LyX.NewFile(output= pref + 'TOC.lyx')
     data = info[lang]
-    file.set_header(language = data[0], language_quotes = data[1], inputencoding = data[2])
+    file.set_header(language = data[0], language_quotes = data[1], inputencoding = "utf-8")
     file.language = data[0]
-    file.encoding = data[2]
+    file.encoding = "utf-8"
     body = [ LyX.Paragraph('Title', [data[3]])]
     body.extend(build_from_toc(toc_general))
     file.set_body(body)
