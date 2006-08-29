@@ -78,6 +78,7 @@ namespace io = boost::iostreams;
 #include "support/convert.h"
 
 #include <boost/bind.hpp>
+#include <boost/filesystem/exception.hpp>
 #include <boost/filesystem/operations.hpp>
 
 #if defined (HAVE_UTIME_H)
@@ -712,14 +713,16 @@ bool Buffer::save() const
 		// good enough. (Lgb)
 		// But to use this we need fs::copy_file to actually do a copy,
 		// even when the target file exists. (Lgb)
-		if (fs::exists(fileName()) && fs::is_writable(fs::path(fileName()).branch_path())) {
-		  //try {
+		try {
 		    fs::copy_file(fileName(), s, false);
-		    //}
-		    //catch (fs::filesystem_error const & fe) {
-		    //lyxerr << "LyX was not able to make backup copy. Beware.\n"
-		    //	   << fe.what() << endl;
-		    //}
+		}
+		catch (fs::filesystem_error const & fe) {
+			Alert::error(_("Backup failure"),
+				bformat(_("LyX was not able to make a backup copy in %1$s.\n"
+					  "Please check if the directory exists and is writeable."),
+					  fs::path(s).branch_path().native_directory_string()));
+			lyxerr[Debug::DEBUG] << "Fs error: "
+					     << fe.what() << endl;
 		}
 	}
 
