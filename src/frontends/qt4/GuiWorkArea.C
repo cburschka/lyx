@@ -129,9 +129,6 @@ GuiWorkArea::GuiWorkArea(int w, int h, LyXView & lyx_view)
 
 	viewport()->setAutoFillBackground(false);
 	viewport()->setAttribute(Qt::WA_OpaquePaintEvent);
-
-	viewport()->setFocusPolicy(Qt::WheelFocus);
-	viewport()->setFocus();
 	setFocusPolicy(Qt::WheelFocus);
 
 	viewport()->setCursor(Qt::IBeamCursor);
