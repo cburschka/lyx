@@ -6,6 +6,7 @@
 
 # author Jean-Marc Lasgouttes
 # author John Levon
+# author Michael Gerz
 
 # Full author contact details are available in file CREDITS.
 
@@ -88,6 +89,10 @@ Menuset
 		Submenu "Paste External Clipboard/Selection" "edit_paste"
 		Separator
 		Item "Find & Replace...|F" "dialog-show findreplace"
+		Separator
+		Item "Word in Small Capitals" "word-capitalize"
+		Item "Word in Uppercase" "word-upcase"
+		Item "Word in Lowercase" "word-lowcase"
 		Separator
 		Item "Text Style...|S" "dialog-show character"
 		Item "Paragraph Settings...|P" "layout-paragraph"
@@ -253,6 +258,7 @@ Menuset
 		Item "Cross-reference...|r" "dialog-show-new-inset ref"
 		Item "Label...|L" "label-insert"
 		Item "Index Entry|d" "index-insert"
+		Item "Date" "date-insert"
 # I'm going to kill this dumb dialog, but for now ...
 		Separator
 		Item "Table...|T" "tabular-insert"
@@ -270,6 +276,7 @@ Menuset
 		Item "Ordinary Quote|Q" "self-insert \""
 		Item "Single Quote|S" "quote-insert single"
 		Item "Menu Separator|M" "menu-separator-insert"
+		Item "Phonetic Symbols|y" "command-sequence math-mode on; math-insert \text\textipa ; char-forward ;"
 	End
 
 	Menu "insert_formatting"
@@ -383,14 +390,17 @@ Menuset
 		Item "Start Appendix Here|A" "appendix"
 		Separator
 		Item "Compressed|o" "buffer-toggle-compression"
+		Item "Read-Only|R" "buffer-toggle-read-only"
 		Item "Settings...|S" "dialog-show document"
 	End
 
 	Menu "edit_change"
 		Item "Track Changes|T" "changes-track"
 		Item "Merge Changes...|M" "changes-merge"
-		Item "Accept All Changes|A" "all-changes-accept"
-		Item "Reject All Changes|R" "all-changes-reject"
+		Item "Accept Change|A" "change-accept"
+		Item "Reject Change|R" "change-reject"
+		Item "Accept All Changes|c" "all-changes-accept"
+		Item "Reject All Changes|e" "all-changes-reject"
 		Item "Show Changes in Output|S" "changes-output"
 	End
 
