@@ -16,6 +16,7 @@
 
 #include "Application.h"
 #include "FontLoader.h"
+#include "qt_helpers.h"
 
 #include "language.h"
 
@@ -29,7 +30,7 @@ using std::string;
 
 namespace {
 
-int smallcapswidth(unsigned short const * s, size_t ls, LyXFont const & f)
+int smallcapswidth(QString const & s, LyXFont const & f)
 {
 	if (!lyx_gui::use_gui)
 		return 1;
@@ -43,8 +44,10 @@ int smallcapswidth(unsigned short const * s, size_t ls, LyXFont const & f)
 
 	int w = 0;
 
+	size_t const ls = s.size();
+
 	for (size_t i = 0; i < ls; ++i) {
-		QChar const c = s[i];
+		QChar const & c = s[i];
 		QChar const uc = c.toUpper();
 		if (c != uc)
 			w += qsmallm.width(uc);
@@ -80,7 +83,7 @@ int font_metrics::ascent(char_type c, LyXFont const & f)
 {
 	if (!lyx_gui::use_gui)
 		return 1;
-	QRect const & r = theApp->fontLoader().metrics(f).boundingRect(ucs4_to_ucs2(c));
+	QRect const & r = theApp->fontLoader().metrics(f).boundingRect(ucs4_to_qchar(c));
 	// Qt/Win 3.2.1nc (at least) corrects the GetGlyphOutlineA|W y
 	// value by the height: (x, -y-height, width, height).
 	// Other versions return: (x, -y, width, height)
@@ -96,7 +99,7 @@ int font_metrics::descent(char_type c, LyXFont const & f)
 {
 	if (!lyx_gui::use_gui)
 		return 1;
-	QRect const & r = theApp->fontLoader().metrics(f).boundingRect(ucs4_to_ucs2(c));
+	QRect const & r = theApp->fontLoader().metrics(f).boundingRect(ucs4_to_qchar(c));
 	// Qt/Win 3.2.1nc (at least) corrects the GetGlyphOutlineA|W y
 	// value by the height: (x, -y-height, width, height).
 	// Other versions return: (x, -y, width, height)
@@ -112,7 +115,7 @@ int font_metrics::lbearing(char_type c, LyXFont const & f)
 {
 	if (!lyx_gui::use_gui)
 		return 1;
-	return theApp->fontLoader().metrics(f).leftBearing(ucs4_to_ucs2(c));
+	return theApp->fontLoader().metrics(f).leftBearing(ucs4_to_qchar(c));
 }
 
 
@@ -123,7 +126,7 @@ int font_metrics::rbearing(char_type c, LyXFont const & f)
 	QFontMetrics const & m = theApp->fontLoader().metrics(f);
 
 	// Qt rbearing is from the right edge of the char's width().
-        unsigned short sc = ucs4_to_ucs2(c);
+	QChar sc = ucs4_to_qchar(c);
 	return m.width(sc) - m.rightBearing(sc);
 }
 
@@ -133,20 +136,19 @@ int font_metrics::width(char_type const * s, size_t ls, LyXFont const & f)
 	if (!lyx_gui::use_gui)
 		return ls;
 
-        std::vector<unsigned short> ucs2 = ucs4_to_ucs2(s, ls);
-        ucs2.push_back(0);
+	QString ucs2 = ucs4_to_qstring(s, ls);
 
 	if (f.realShape() == LyXFont::SMALLCAPS_SHAPE)
-		return smallcapswidth(&ucs2[0], ls, f);
+		return smallcapswidth(ucs2, f);
 
 	QLFontInfo & fi = theApp->fontLoader().fontinfo(f);
 
 	if (ls == 1)
-		return fi.width(ucs2[0]);
+		return fi.width(ucs2[0].unicode());
 
 	int w = 0;
 	for (size_t i = 0; i < ls; ++i)
-		w += fi.width(ucs2[i]);
+		w += fi.width(ucs2[i].unicode());
 
 	return w;
 }

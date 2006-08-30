@@ -19,6 +19,7 @@
 #include "FontLoader.h"
 
 #include "Application.h"
+#include "qt_helpers.h"
 
 #include "debug.h"
 #include "language.h"
@@ -239,11 +240,7 @@ void QLPainter::text(int x, int y, char_type const * s, size_t ls,
 	for (unsigned int i = 0; i < ls; ++i)
 		str[i] = QChar(encoding->ucs(s[i]));
 #else
-	//std::vector<boost::uint32_t> in(s, s + ls);
-	//std::vector<unsigned short> ucs2 = ucs4_to_ucs2(in);
-	std::vector<unsigned short> ucs2 = ucs4_to_ucs2(s, ls);
-	ucs2.push_back(0);
-	QString str = QString::fromUtf16(&ucs2[0]);
+	QString str = ucs4_to_qstring(s, ls);
 #endif
 
 #if 0

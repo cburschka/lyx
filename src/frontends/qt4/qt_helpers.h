@@ -17,10 +17,15 @@
 #include "lyxlength.h"
 //#include "lengthcombo.h"
 
+#include "support/types.h"
+
+#include <vector>
+
 class LengthCombo;
 class QComboBox;
 class QLineEdit;
 class QString;
+class QChar;
 
 std::string makeFontName(std::string const & family, std::string const & foundry);
 
@@ -54,6 +59,24 @@ QString const toqstr(char const * str);
  * for the locale (menus, dialogs etc.)
  */
 QString const toqstr(std::string const & str);
+
+
+/**
+ * toqstr - convert ucs4 into QString
+ *
+ * QString uses ucs2 (a.k.a utf16) internally.
+ */
+QString const ucs4_to_qstring(lyx::char_type const * str, size_t ls);
+
+QString const ucs4_to_qstring(std::vector<lyx::char_type> const & ucs4);
+
+std::vector<lyx::char_type> qstring_to_ucs4(QString const & qstr);
+
+void qstring_to_ucs4(QString const & qstr, std::vector<lyx::char_type> & ucs4);
+
+lyx::char_type const qchar_to_ucs4(QChar const & qchar);
+
+QChar const ucs4_to_qchar(lyx::char_type const & ucs4);
 
 
 /**

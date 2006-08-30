@@ -20,6 +20,8 @@
 #include "support/lstrings.h"
 #include "support/convert.h"
 
+#include "debug.h"
+
 #include <QComboBox>
 #include <qlineedit.h>
 #include <qtextcodec.h>
@@ -28,10 +30,13 @@
 
 
 using lyx::support::isStrDbl;
+using lyx::char_type;
 
+using std::vector;
 using std::make_pair;
 using std::string;
 using std::pair;
+using std::endl;
 
 
 string makeFontName(string const & family, string const & foundry)
@@ -111,6 +116,61 @@ QString const toqstr(char const * str)
 QString const toqstr(string const & str)
 {
 	return toqstr(str.c_str());
+}
+
+
+QString const ucs4_to_qstring(char_type const * str, size_t ls)
+{
+	QString s;
+
+	for (size_t i = 0; i < ls; ++i)
+		s.append(ucs4_to_qchar(str[i]));
+
+	return s;
+}
+
+
+QString const ucs4_to_qstring(vector<char_type> const & ucs4)
+{
+	QString s;
+	size_t const ls = ucs4.size();
+
+	for (size_t i = 0; i < ls; ++i)
+		s.append(ucs4_to_qchar(ucs4[i]));
+
+	return s;
+}
+
+
+vector<char_type> qstring_to_ucs4(QString const & qstr)
+{
+	size_t ls = qstr.size();
+	vector<char_type> ucs4;
+	for (size_t i = 0; i < ls; ++i)
+		ucs4.push_back(static_cast<boost::uint32_t>(qstr[i].unicode()));
+
+	return ucs4;
+}
+
+
+void qstring_to_ucs4(QString const & qstr, vector<char_type> & ucs4)
+{
+	size_t ls = qstr.size();
+	ucs4.clear();
+	for (size_t i = 0; i < ls; ++i)
+		ucs4.push_back(static_cast<boost::uint32_t>(qstr[i].unicode()));
+}
+
+
+char_type const qchar_to_ucs4(QChar const & qchar)
+{
+	return static_cast<boost::uint32_t>(qchar.unicode());
+}
+
+
+QChar const ucs4_to_qchar(char_type const & ucs4)
+{
+	return QChar(static_cast<unsigned short>(ucs4));
 }
 
 
