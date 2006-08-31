@@ -8,8 +8,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>188</width>
-    <height>192</height>
+    <width>202</width>
+    <height>208</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -113,6 +113,15 @@
   </layout>
  </widget>
  <pixmapfunction></pixmapfunction>
+ <tabstops>
+  <tabstop>noteRB</tabstop>
+  <tabstop>commentRB</tabstop>
+  <tabstop>greyedoutRB</tabstop>
+  <tabstop>framedRB</tabstop>
+  <tabstop>shadedRB</tabstop>
+  <tabstop>okPB</tabstop>
+  <tabstop>closePB</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

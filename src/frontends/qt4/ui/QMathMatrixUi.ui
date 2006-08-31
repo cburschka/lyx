@@ -277,12 +277,20 @@
  <customwidgets>
   <customwidget>
    <class>EmptyTable</class>
-   <extends></extends>
+   <extends>QWidget</extends>
    <header>emptytable.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>rowsSB</tabstop>
+  <tabstop>columnsSB</tabstop>
+  <tabstop>valignCO</tabstop>
+  <tabstop>halignED</tabstop>
+  <tabstop>okPB</tabstop>
+  <tabstop>closePB</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

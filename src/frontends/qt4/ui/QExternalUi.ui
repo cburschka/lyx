@@ -43,6 +43,9 @@
    </item>
    <item row="0" column="0" colspan="4" >
     <widget class="QTabWidget" name="tab" >
+     <property name="currentIndex" >
+      <number>0</number>
+     </property>
      <widget class="QWidget" name="filetab" >
       <attribute name="title" >
        <string>File</string>
@@ -715,13 +718,37 @@
  <customwidgets>
   <customwidget>
    <class>LengthCombo</class>
-   <extends></extends>
+   <extends>QWidget</extends>
    <header>lengthcombo.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
  </customwidgets>
  <tabstops>
+  <tabstop>tab</tabstop>
+  <tabstop>fileED</tabstop>
+  <tabstop>browsePB</tabstop>
+  <tabstop>editPB</tabstop>
+  <tabstop>externalCO</tabstop>
+  <tabstop>externalTB</tabstop>
+  <tabstop>draftCB</tabstop>
+  <tabstop>displayCB</tabstop>
+  <tabstop>showCO</tabstop>
+  <tabstop>displayscaleED</tabstop>
+  <tabstop>angleED</tabstop>
+  <tabstop>originCO</tabstop>
+  <tabstop>widthED</tabstop>
+  <tabstop>widthUnitCO</tabstop>
+  <tabstop>heightED</tabstop>
+  <tabstop>aspectratioCB</tabstop>
+  <tabstop>clipCB</tabstop>
+  <tabstop>getbbPB</tabstop>
+  <tabstop>xrED</tabstop>
+  <tabstop>ytED</tabstop>
+  <tabstop>xlED</tabstop>
+  <tabstop>ybED</tabstop>
+  <tabstop>extraFormatCO</tabstop>
+  <tabstop>extraED</tabstop>
   <tabstop>okPB</tabstop>
   <tabstop>applyPB</tabstop>
   <tabstop>closePB</tabstop>

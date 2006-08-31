@@ -215,13 +215,16 @@
  <customwidgets>
   <customwidget>
    <class>LengthCombo</class>
-   <extends></extends>
+   <extends>QWidget</extends>
    <header>lengthcombo.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
  </customwidgets>
  <tabstops>
+  <tabstop>spacingCO</tabstop>
+  <tabstop>valueLE</tabstop>
+  <tabstop>keepCB</tabstop>
   <tabstop>okPB</tabstop>
   <tabstop>applyPB</tabstop>
   <tabstop>closePB</tabstop>

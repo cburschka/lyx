@@ -8,8 +8,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>390</width>
-    <height>415</height>
+    <width>392</width>
+    <height>387</height>
    </rect>
   </property>
   <property name="sizePolicy" >
@@ -359,10 +359,14 @@
  </widget>
  <pixmapfunction></pixmapfunction>
  <tabstops>
-  <tabstop>upPB</tabstop>
-  <tabstop>downPB</tabstop>
+  <tabstop>availableLV</tabstop>
+  <tabstop>selectedLV</tabstop>
   <tabstop>addPB</tabstop>
   <tabstop>deletePB</tabstop>
+  <tabstop>upPB</tabstop>
+  <tabstop>downPB</tabstop>
+  <tabstop>findLE</tabstop>
+  <tabstop>infoML</tabstop>
   <tabstop>citationStyleCO</tabstop>
   <tabstop>textBeforeED</tabstop>
   <tabstop>textAfterED</tabstop>
