@@ -27,6 +27,7 @@
 #include "support/lstrings.h"
 
 #include <boost/filesystem/operations.hpp>
+#include <boost/filesystem/exception.hpp>
 
 using lyx::support::ascii_lowercase;
 using lyx::support::contains;
@@ -71,12 +72,19 @@ string const getNatbibLabel(Buffer const & buffer,
 	for (vector<string>::const_iterator it = bibfilesCache.begin();
 			it != bibfilesCache.end(); ++ it) {
 		string const f = *it;
-		if (!fs::exists(f) || !fs::is_readable(fs::path(f).branch_path())) {
-			lyxerr << "Couldn't find or read bibtex file " << f << endl;
+		try {
+			std::time_t lastw = fs::last_write_time(f);
+			if (lastw != bibfileStatus[f]) {
+				changed = true;
+				bibfileStatus[f] = lastw;
+			}
+		}
+		catch (fs::filesystem_error & fserr) {
 			changed = true;
-		} else if (bibfileStatus[f] != fs::last_write_time(f)) {
-			changed = true;
-			bibfileStatus[f] = fs::last_write_time(f);
+			lyxerr << "Couldn't find or read bibtex file "
+			       << f << endl;
+			lyxerr[Debug::DEBUG] << "Fs error: "
+					     << fserr.what() << endl;
 		}
 	}
 
