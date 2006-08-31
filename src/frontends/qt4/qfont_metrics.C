@@ -44,9 +44,9 @@ int smallcapswidth(QString const & s, LyXFont const & f)
 
 	int w = 0;
 
-	size_t const ls = s.size();
+	int const ls = s.size();
 
-	for (size_t i = 0; i < ls; ++i) {
+	for (int i = 0; i < ls; ++i) {
 		QChar const & c = s[i];
 		QChar const uc = c.toUpper();
 		if (c != uc)
@@ -147,7 +147,7 @@ int font_metrics::width(char_type const * s, size_t ls, LyXFont const & f)
 		return fi.width(ucs2[0].unicode());
 
 	int w = 0;
-	for (size_t i = 0; i < ls; ++i)
+	for (unsigned int i = 0; i < ls; ++i)
 		w += fi.width(ucs2[i].unicode());
 
 	return w;

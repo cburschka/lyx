@@ -144,9 +144,9 @@ QString const ucs4_to_qstring(vector<char_type> const & ucs4)
 
 vector<char_type> qstring_to_ucs4(QString const & qstr)
 {
-	size_t ls = qstr.size();
+	int ls = qstr.size();
 	vector<char_type> ucs4;
-	for (size_t i = 0; i < ls; ++i)
+	for (int i = 0; i < ls; ++i)
 		ucs4.push_back(static_cast<boost::uint32_t>(qstr[i].unicode()));
 
 	return ucs4;
@@ -155,9 +155,9 @@ vector<char_type> qstring_to_ucs4(QString const & qstr)
 
 void qstring_to_ucs4(QString const & qstr, vector<char_type> & ucs4)
 {
-	size_t ls = qstr.size();
+	int ls = qstr.size();
 	ucs4.clear();
-	for (size_t i = 0; i < ls; ++i)
+	for (int i = 0; i < ls; ++i)
 		ucs4.push_back(static_cast<boost::uint32_t>(qstr[i].unicode()));
 }
 
