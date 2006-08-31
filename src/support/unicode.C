@@ -49,7 +49,7 @@ iconv_convert(std::string const & tocode, std::string const & fromcode,
 
 	char ICONV_CONST * inbuf = const_cast<char ICONV_CONST *>(&buf[0]);
 	size_t inbytesleft = buf.size();
-	char out[1000] = { 0 };
+	static char out[1000];
 	char * outbuf = out;
 	size_t outbytesleft = 1000;
 
