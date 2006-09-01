@@ -122,7 +122,7 @@ void InsetBranch::doDispatch(LCursor & cur, FuncRequest & cmd)
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {
 		InsetBranchParams params;
-		InsetBranchMailer::string2params(cmd.argument, params);
+		InsetBranchMailer::string2params(lyx::to_utf8(cmd.argument()), params);
 		params_.branch = params.branch;
 		setButtonLabel();
 		break;
@@ -148,7 +148,7 @@ void InsetBranch::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 
 	case LFUN_INSET_TOGGLE:
-		if (cmd.argument == "assign" || cmd.argument.empty()) {
+		if (cmd.argument() == "assign" || cmd.argument().empty()) {
 			// The branch inset uses "assign".
 			if (isBranchSelected(cur.buffer())) {
 				if (status() != Open)
@@ -183,11 +183,11 @@ bool InsetBranch::getStatus(LCursor & cur, FuncRequest const & cmd,
 		break;
 
 	case LFUN_INSET_TOGGLE:
-		if (cmd.argument == "open" || cmd.argument == "close" ||
-		    cmd.argument == "toggle")
+		if (cmd.argument() == "open" || cmd.argument() == "close" ||
+		    cmd.argument() == "toggle")
 			flag.enabled(true);
-		else if (cmd.argument == "assign"
-			   || cmd.argument.empty()) {
+		else if (cmd.argument() == "assign"
+			   || cmd.argument().empty()) {
 			if (isBranchSelected(cur.buffer()))
 				flag.enabled(status() != Open);
 			else

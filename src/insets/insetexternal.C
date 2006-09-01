@@ -438,7 +438,7 @@ void InsetExternal::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_EXTERNAL_EDIT: {
 		Buffer const & buffer = cur.buffer();
 		InsetExternalParams p;
-		InsetExternalMailer::string2params(cmd.argument, buffer, p);
+		InsetExternalMailer::string2params(lyx::to_utf8(cmd.argument()), buffer, p);
 		external::editExternal(p, buffer);
 		break;
 	}
@@ -446,7 +446,7 @@ void InsetExternal::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_MODIFY: {
 		Buffer const & buffer = cur.buffer();
 		InsetExternalParams p;
-		InsetExternalMailer::string2params(cmd.argument, buffer, p);
+		InsetExternalMailer::string2params(lyx::to_utf8(cmd.argument()), buffer, p);
 		setParams(p, buffer);
 		break;
 	}

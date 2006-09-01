@@ -606,10 +606,10 @@ void MathScriptInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	//lyxerr << "MathScriptInset: request: " << cmd << std::endl;
 
 	if (cmd.action == LFUN_MATH_LIMITS) {
-		if (!cmd.argument.empty()) {
-			if (cmd.argument == "limits")
+		if (!cmd.argument().empty()) {
+			if (cmd.argument() == "limits")
 				limits_ = 1;
-			else if (cmd.argument == "nolimits")
+			else if (cmd.argument() == "nolimits")
 				limits_ = -1;
 			else
 				limits_ = 0;

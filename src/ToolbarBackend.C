@@ -219,19 +219,19 @@ string const ToolbarBackend::getIcon(FuncRequest const & f)
 
 	switch (f.action) {
 	case LFUN_MATH_INSERT:
-		if (!f.argument.empty())
-			fullname = find_xpm(f.argument.substr(1));
+		if (!f.argument().empty())
+			fullname = find_xpm(lyx::to_utf8(f.argument()).substr(1));
 		break;
 	case LFUN_MATH_DELIM:
 	case LFUN_MATH_BIGDELIM:
-		fullname = find_xpm(f.argument);
+		fullname = find_xpm(lyx::to_utf8(f.argument()));
 		break;
 	default:
 		string const name = lyxaction.getActionName(f.action);
 		string xpm_name(name);
 
-		if (!f.argument.empty())
-			xpm_name = subst(name + ' ' + f.argument, ' ', '_');
+		if (!f.argument().empty())
+			xpm_name = subst(name + ' ' + lyx::to_utf8(f.argument()), ' ', '_');
 
 		fullname = libFileSearch("images", xpm_name, "xpm");
 
@@ -249,6 +249,6 @@ string const ToolbarBackend::getIcon(FuncRequest const & f)
 
 	lyxerr[Debug::GUI] << "Cannot find icon for command \""
 			   << lyxaction.getActionName(f.action)
-			   << '(' << f.argument << ")\"" << endl;
+			   << '(' << lyx::to_utf8(f.argument()) << ")\"" << endl;
 	return libFileSearch("images", "unknown", "xpm");
 }

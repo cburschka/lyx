@@ -1275,7 +1275,7 @@ bool Buffer::dispatch(FuncRequest const & func, bool * result)
 
 	switch (func.action) {
 		case LFUN_BUFFER_EXPORT: {
-			bool const tmp = Exporter::Export(this, func.argument, false);
+			bool const tmp = Exporter::Export(this, lyx::to_utf8(func.argument()), false);
 			if (result)
 				*result = tmp;
 			break;

@@ -68,17 +68,17 @@ Gtk::BuiltinStockID getGTKStockIcon(FuncRequest const & func)
 		case LFUN_ALL_CHANGES_ACCEPT: return Gtk::Stock::APPLY;
 		case LFUN_ALL_CHANGES_REJECT: return Gtk::Stock::CANCEL;
 		case LFUN_DIALOG_SHOW:
-			if (func.argument == "findreplace")
+			if (func.argument() == "findreplace")
 				return Gtk::Stock::FIND_AND_REPLACE;
-			else if (func.argument == "print")
+			else if (func.argument() == "print")
 				return Gtk::Stock::PRINT;
-			else if (func.argument == "spellchecker")
+			else if (func.argument() == "spellchecker")
 				return Gtk::Stock::SPELL_CHECK;
-			else if (func.argument == "prefs")
+			else if (func.argument() == "prefs")
 				return Gtk::Stock::PREFERENCES;
-			else if (func.argument == "document")
+			else if (func.argument() == "document")
 				return Gtk::Stock::PROPERTIES;
-			else if (func.argument == "aboutlyx")
+			else if (func.argument() == "aboutlyx")
 				return Gtk::Stock::ABOUT;
 			else
 				return Gtk::Stock::MISSING_IMAGE;
@@ -95,48 +95,48 @@ Glib::ustring getGTKThemeIcon(FuncRequest const & func)
 		case LFUN_MATH_MODE: return "stock_insert-math-object";
 		case LFUN_FONT_EMPH: return "stock_text_italic";
 		case LFUN_DIALOG_SHOW_NEW_INSET:
-			if (func.argument == "graphics")
+			if (func.argument() == "graphics")
 				return "stock_placeholder-picture";
-			if (func.argument == "include")
+			if (func.argument() == "include")
 				return "stock_insert-file";
 			break;
 		case LFUN_DIALOG_SHOW:
-			if (func.argument == "spellchecker")
+			if (func.argument() == "spellchecker")
 				return "stock_spellcheck";
-			else if (func.argument == "character")
+			else if (func.argument() == "character")
 				return "stock_font";
 			break;
 		case LFUN_DEPTH_INCREMENT: return "format-indent-more";
 		case LFUN_DEPTH_DECREMENT: return "format-indent-less";
 		case LFUN_LAYOUT:
-			if (func.argument == "Enumerate")
+			if (func.argument() == "Enumerate")
 				return "stock_list_enum";
-			else if (func.argument == "Itemize")
+			else if (func.argument() == "Itemize")
 				return "stock_list_bullet";
 			break;
 		case LFUN_FONT_FREE_APPLY: return "stock_font-formatting-toggle";
 		case LFUN_THESAURUS_ENTRY: return "stock_thesaurus";
 		case LFUN_URL_INSERT: return "stock_insert-url";
 		case LFUN_TABULAR_FEATURE:
-			if (func.argument == "append-row")
+			if (func.argument() == "append-row")
 				return "stock_insert-rows";
-			else if (func.argument == "append-column")
+			else if (func.argument() == "append-column")
 				return "stock_insert-columns";
-			else if (func.argument == "delete-row")
+			else if (func.argument() == "delete-row")
 				return "stock_delete-row";
-			else if (func.argument == "delete-column")
+			else if (func.argument() == "delete-column")
 				return "stock_delete-column";
-			else if (func.argument == "valign-top")
+			else if (func.argument() == "valign-top")
 				return "stock_cell-align-top";
-			else if (func.argument == "valign-middle")
+			else if (func.argument() == "valign-middle")
 				return "stock_cell-align-center";
-			else if (func.argument == "valign-bottom")
+			else if (func.argument() == "valign-bottom")
 				return "stock_cell-align-bottom";
-			else if (func.argument == "align-left")
+			else if (func.argument() == "align-left")
 				return "gtk-justify-left";
-			else if (func.argument == "align-center")
+			else if (func.argument() == "align-center")
 				return "gtk-justify-center";
-			else if (func.argument == "align-right")
+			else if (func.argument() == "align-right")
 				return "gtk-justify-right";
 			break;
 

@@ -25,6 +25,8 @@
 #include "support/std_ostream.h"
 
 
+using lyx::docstring;
+
 using std::string;
 using std::auto_ptr;
 using lyx::support::bformat;
@@ -103,7 +105,7 @@ bool MathAMSArrayInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 {
 	switch (cmd.action) {
 	case LFUN_TABULAR_FEATURE: {
-		string const s = cmd.argument;
+		docstring const & s = cmd.argument();
 		if (s == "add-vline-left" || s == "add-vline-right") {
 			flag.message(bformat(
 			N_("Can't add vertical grid lines in '%1$s'"),

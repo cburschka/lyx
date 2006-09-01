@@ -147,7 +147,7 @@ string const MenuItem::binding() const
 		lyxerr[Debug::KBMAP]
 			<< "No binding for "
 			<< lyxaction.getActionName(func_.action)
-			<< '(' << func_.argument << ')' << endl;
+			<< '(' << lyx::to_utf8(func_.argument()) << ')' << endl;
 		return string();
 	}
 

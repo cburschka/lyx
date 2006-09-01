@@ -15,7 +15,8 @@
 #include "lfuns.h"
 #include "frontends/mouse_state.h"
 
-#include <string>
+#include "support/docstring.h"
+
 #include <iosfwd>
 
 
@@ -41,9 +42,15 @@ public:
 	FuncRequest(kb_action act, int x, int y, mouse_button::state button,
 		    Origin o = INTERNAL);
 	/// actions with extra argument
+	FuncRequest(kb_action act, lyx::docstring const & arg,
+		    Origin o = INTERNAL);
+	/// actions with extra argument. FIXME: remove this
 	FuncRequest(kb_action act, std::string const & arg,
 		    Origin o = INTERNAL);
 	/// for changing requests a bit
+	FuncRequest(FuncRequest const & cmd, lyx::docstring const & arg,
+		    Origin o = INTERNAL);
+	/// for changing requests a bit. FIXME: remove this
 	FuncRequest(FuncRequest const & cmd, std::string const & arg,
 		    Origin o = INTERNAL);
 
@@ -53,11 +60,16 @@ public:
 	/// argument parsing, extract argument i as std::string
 	std::string getArg(unsigned int i) const;
 
+	/// access the whole argument
+	lyx::docstring const & argument() const { return argument_; }
+
 public:  // should be private
 	/// the action
 	kb_action action;
-	/// the action's std::string argument
-	std::string argument;
+private:
+	/// the action's string argument
+	lyx::docstring argument_;
+public:  // should be private
 	/// who initiated the action
 	Origin origin;
 	/// the x coordinate of a mouse press

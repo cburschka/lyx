@@ -92,7 +92,6 @@
 #include "support/systemcall.h"
 #include "support/convert.h"
 #include "support/os.h"
-#include "support/unicode.h"
 
 #include <boost/current_function.hpp>
 #include <boost/filesystem/operations.hpp>
@@ -100,6 +99,8 @@
 #include <sstream>
 
 using bv_funcs::freefont2string;
+
+using lyx::docstring;
 
 using lyx::support::absolutePath;
 using lyx::support::addName;
@@ -323,12 +324,11 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 
 	if (func.action == LFUN_SELF_INSERT) {
 		if (encoded_last_key != 0) {
-			std::vector<char> tmp = ucs4_to_utf8(encoded_last_key);
-			string const arg(tmp.begin(), tmp.end());
+			docstring const arg(1, encoded_last_key);
 			dispatch(FuncRequest(LFUN_SELF_INSERT, arg,
 					     FuncRequest::KEYBOARD));
 			lyxerr[Debug::KEY]
-				<< "SelfInsert arg[`" << arg << "']" << endl;
+				<< "SelfInsert arg[`" << lyx::to_utf8(arg) << "']" << endl;
 		}
 	} else {
 		dispatch(func);
@@ -411,13 +411,13 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_BUFFER_SWITCH:
 		// toggle on the current buffer, but do not toggle off
 		// the other ones (is that a good idea?)
-		if (cmd.argument == buf->fileName())
+		if (lyx::to_utf8(cmd.argument()) == buf->fileName())
 			flag.setOnOff(true);
 		break;
 
 	case LFUN_BUFFER_EXPORT:
-		enable = cmd.argument == "custom"
-			|| Exporter::isExportable(*buf, cmd.argument);
+		enable = cmd.argument() == "custom"
+			|| Exporter::isExportable(*buf, lyx::to_utf8(cmd.argument()));
 		break;
 
 	case LFUN_BUFFER_CHKTEX:
@@ -461,25 +461,25 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		InsetBase::Code code = cur.inset().lyxCode();
 		switch (code) {
 			case InsetBase::TABULAR_CODE:
-				enable = cmd.argument == "tabular";
+				enable = cmd.argument() == "tabular";
 				break;
 			case InsetBase::ERT_CODE:
-				enable = cmd.argument == "ert";
+				enable = cmd.argument() == "ert";
 				break;
 			case InsetBase::FLOAT_CODE:
-				enable = cmd.argument == "float";
+				enable = cmd.argument() == "float";
 				break;
 			case InsetBase::WRAP_CODE:
-				enable = cmd.argument == "wrap";
+				enable = cmd.argument() == "wrap";
 				break;
 			case InsetBase::NOTE_CODE:
-				enable = cmd.argument == "note";
+				enable = cmd.argument() == "note";
 				break;
 			case InsetBase::BRANCH_CODE:
-				enable = cmd.argument == "branch";
+				enable = cmd.argument() == "branch";
 				break;
 			case InsetBase::BOX_CODE:
-				enable = cmd.argument == "box";
+				enable = cmd.argument() == "box";
 				break;
 			default:
 				break;
@@ -491,14 +491,14 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		string const name = cmd.getArg(0);
 		InsetBase * inset = owner->getDialogs().getOpenInset(name);
 		if (inset) {
-			FuncRequest fr(LFUN_INSET_MODIFY, cmd.argument);
+			FuncRequest fr(LFUN_INSET_MODIFY, cmd.argument());
 			FuncStatus fs;
 			bool const success = inset->getStatus(cur, fr, fs);
 			// Every inset is supposed to handle this
 			BOOST_ASSERT(success);
 			flag |= fs;
 		} else {
-			FuncRequest fr(LFUN_INSET_INSERT, cmd.argument);
+			FuncRequest fr(LFUN_INSET_INSERT, cmd.argument());
 			flag |= getStatus(fr);
 		}
 		enable = flag.enabled();
@@ -558,7 +558,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	// solution, we consider only the first action of the sequence
 	case LFUN_COMMAND_SEQUENCE: {
 		// argument contains ';'-terminated commands
-		string const firstcmd = token(cmd.argument, ';', 0);
+		string const firstcmd = token(lyx::to_utf8(cmd.argument()), ';', 0);
 		FuncRequest func(lyxaction.lookupFunc(firstcmd));
 		func.origin = cmd.origin;
 		flag = getStatus(func);
@@ -716,7 +716,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new);
 void LyXFunc::dispatch(FuncRequest const & cmd)
 {
 	BOOST_ASSERT(view());
-	string const argument = cmd.argument;
+	string const argument = lyx::to_utf8(cmd.argument());
 	kb_action const action = cmd.action;
 
 	lyxerr[Debug::ACTION] << "LyXFunc::dispatch: cmd: " << cmd << endl;
@@ -1155,7 +1155,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_DIALOG_SHOW: {
 			string const name = cmd.getArg(0);
-			string data = trim(cmd.argument.substr(name.size()));
+			string data = trim(lyx::to_utf8(cmd.argument()).substr(name.size()));
 
 			if (name == "character") {
 				data = freefont2string();
@@ -1185,7 +1185,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_DIALOG_SHOW_NEW_INSET: {
 			string const name = cmd.getArg(0);
-			string data = trim(cmd.argument.substr(name.size()));
+			string data = trim(lyx::to_utf8(cmd.argument()).substr(name.size()));
 			if (name == "bibitem" ||
 			    name == "bibtex" ||
 			    name == "index" ||
@@ -1243,7 +1243,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			// Can only update a dialog connected to an existing inset
 			InsetBase * inset = owner->getDialogs().getOpenInset(name);
 			if (inset) {
-				FuncRequest fr(LFUN_INSET_DIALOG_UPDATE, cmd.argument);
+				FuncRequest fr(LFUN_INSET_DIALOG_UPDATE, cmd.argument());
 				inset->dispatch(view()->cursor(), fr);
 			} else if (name == "paragraph") {
 				dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
@@ -1652,9 +1652,9 @@ void LyXFunc::sendDispatchMessage(string const & msg, FuncRequest const & cmd)
 
 	bool argsadded = false;
 
-	if (!cmd.argument.empty()) {
+	if (!cmd.argument().empty()) {
 		if (cmd.action != LFUN_UNKNOWN_ACTION) {
-			comname += ' ' + cmd.argument;
+			comname += ' ' + lyx::to_utf8(cmd.argument());
 			argsadded = true;
 		}
 	}
@@ -1663,8 +1663,8 @@ void LyXFunc::sendDispatchMessage(string const & msg, FuncRequest const & cmd)
 
 	if (!shortcuts.empty())
 		comname += ": " + shortcuts;
-	else if (!argsadded && !cmd.argument.empty())
-		comname += ' ' + cmd.argument;
+	else if (!argsadded && !cmd.argument().empty())
+		comname += ' ' + lyx::to_utf8(cmd.argument());
 
 	if (!comname.empty()) {
 		comname = rtrim(comname);

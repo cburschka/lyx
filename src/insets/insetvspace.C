@@ -67,7 +67,7 @@ void InsetVSpace::doDispatch(LCursor & cur, FuncRequest & cmd)
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY: {
-		InsetVSpaceMailer::string2params(cmd.argument, space_);
+		InsetVSpaceMailer::string2params(lyx::to_utf8(cmd.argument()), space_);
 		break;
 	}
 

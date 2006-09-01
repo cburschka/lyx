@@ -182,7 +182,7 @@ void InsetGraphics::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_GRAPHICS_EDIT: {
 		Buffer const & buffer = *cur.bv().buffer();
 		InsetGraphicsParams p;
-		InsetGraphicsMailer::string2params(cmd.argument, buffer, p);
+		InsetGraphicsMailer::string2params(lyx::to_utf8(cmd.argument()), buffer, p);
 		editGraphics(p, buffer);
 		break;
 	}
@@ -190,7 +190,7 @@ void InsetGraphics::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_MODIFY: {
 		Buffer const & buffer = cur.buffer();
 		InsetGraphicsParams p;
-		InsetGraphicsMailer::string2params(cmd.argument, buffer, p);
+		InsetGraphicsMailer::string2params(lyx::to_utf8(cmd.argument()), buffer, p);
 		if (!p.filename.empty())
 			setParams(p);
 		else

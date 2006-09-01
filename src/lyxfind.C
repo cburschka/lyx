@@ -278,7 +278,7 @@ void find(BufferView * bv, FuncRequest const & ev)
 	// "<search>
 	//  <casesensitive> <matchword> <forward>"
 	string search;
-	string howto = split(ev.argument, search, '\n');
+	string howto = split(lyx::to_utf8(ev.argument()), search, '\n');
 
 	bool casesensitive = parse_bool(howto);
 	bool matchword     = parse_bool(howto);
@@ -304,7 +304,7 @@ void replace(BufferView * bv, FuncRequest const & ev)
 	//  <casesensitive> <matchword> <all> <forward>"
 	string search;
 	string replace;
-	string howto = split(ev.argument, search, '\n');
+	string howto = split(lyx::to_utf8(ev.argument()), search, '\n');
 	howto = split(howto, replace, '\n');
 
 	bool casesensitive = parse_bool(howto);

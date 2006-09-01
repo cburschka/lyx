@@ -1112,8 +1112,8 @@ void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_TABULAR_FEATURE: {
 		recordUndoInset(cur);
-		//lyxerr << "handling tabular-feature " << cmd.argument << endl;
-		istringstream is(cmd.argument);
+		//lyxerr << "handling tabular-feature " << lyx::to_utf8(cmd.argument()) << endl;
+		istringstream is(lyx::to_utf8(cmd.argument()));
 		string s;
 		is >> s;
 		if (s == "valign-top")
@@ -1206,7 +1206,7 @@ void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_PASTE: {
 		cur.message(_("Paste"));
 		lyx::cap::replaceSelection(cur);
-		istringstream is(cmd.argument);
+		istringstream is(lyx::to_utf8(cmd.argument()));
 		int n = 0;
 		is >> n;
 		MathGridInset grid(1, 1);
@@ -1299,7 +1299,7 @@ bool MathGridInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 {
 	switch (cmd.action) {
 	case LFUN_TABULAR_FEATURE: {
-		string const s = cmd.argument;
+		string const s = lyx::to_utf8(cmd.argument());
 		if (nrows() <= 1 && (s == "delete-row" || s == "swap-row")) {
 			status.enabled(false);
 			status.message(N_("Only one row"));
@@ -1361,15 +1361,15 @@ bool MathGridInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 			status.enable(true);
 			break;
 		}
-		if (cmd.argument.empty()) {
+		if (cmd.argument().empty()) {
 			status.enable(false);
 			break;
 		}
-		if (!lyx::support::contains("tcb", cmd.argument[0])) {
+		if (!lyx::support::contains("tcb", cmd.argument()[0])) {
 			status.enable(false);
 			break;
 		}
-		status.setOnOff(cmd.argument[0] == v_align_);
+		status.setOnOff(cmd.argument()[0] == v_align_);
 		status.enabled(true);
 #endif
 		return true;

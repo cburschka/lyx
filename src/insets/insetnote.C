@@ -204,7 +204,7 @@ void InsetNote::doDispatch(LCursor & cur, FuncRequest & cmd)
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY:
-		InsetNoteMailer::string2params(cmd.argument, params_);
+		InsetNoteMailer::string2params(lyx::to_utf8(cmd.argument()), params_);
 		setButtonLabel();
 		break;
 

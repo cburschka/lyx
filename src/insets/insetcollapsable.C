@@ -344,11 +344,11 @@ void InsetCollapsable::doDispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_INSET_TOGGLE:
-		if (cmd.argument == "open")
+		if (cmd.argument() == "open")
 			setStatus(cur, Open);
-		else if (cmd.argument == "close")
+		else if (cmd.argument() == "close")
 			setStatus(cur, Collapsed);
-		else if (cmd.argument == "toggle" || cmd.argument.empty())
+		else if (cmd.argument() == "toggle" || cmd.argument().empty())
 			if (isOpen()) {
 				setStatus(cur, Collapsed);
 				cur.forwardPosNoDescend();
@@ -373,8 +373,8 @@ bool InsetCollapsable::getStatus(LCursor & cur, FuncRequest const & cmd,
 	switch (cmd.action) {
 
 	case LFUN_INSET_TOGGLE:
-		if (cmd.argument == "open" || cmd.argument == "close" ||
-		    cmd.argument == "toggle")
+		if (cmd.argument() == "open" || cmd.argument() == "close" ||
+		    cmd.argument() == "toggle")
 			flag.enabled(true);
 		else
 			flag.enabled(false);

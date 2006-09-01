@@ -25,6 +25,7 @@
 #include "support/lstrings.h"
 
 
+using lyx::docstring;
 using lyx::support::bformat;
 
 using std::endl;
@@ -69,7 +70,7 @@ void MathCasesInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	switch (cmd.action) {
 	case LFUN_TABULAR_FEATURE: {
 		recordUndo(cur);
-		string const s = cmd.argument;
+		docstring const & s = cmd.argument();
 		if (s == "add-vline-left" || s == "add-vline-right") {
 			cur.undispatched();
 			break;
@@ -86,11 +87,11 @@ bool MathCasesInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 {
 	switch (cmd.action) {
 	case LFUN_TABULAR_FEATURE: {
-		string const s = cmd.argument;
+		docstring const & s = cmd.argument();
 		if (s == "add-vline-left" || s == "add-vline-right") {
 			flag.enabled(false);
 			flag.message(bformat(
-				N_("No vertical grid lines in '%1$s'"), s));
+				N_("No vertical grid lines in '%1$s'"), lyx::to_utf8(s)));
 			return true;
 		}
 	}

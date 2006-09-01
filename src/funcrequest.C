@@ -16,6 +16,8 @@
 #include <sstream>
 #include <vector>
 
+using lyx::docstring;
+
 using std::getline;
 
 using std::istringstream;
@@ -34,8 +36,14 @@ FuncRequest::FuncRequest(kb_action act, Origin o)
 {}
 
 
+FuncRequest::FuncRequest(kb_action act, docstring const & arg, Origin o)
+	: action(act), argument_(arg), origin(o), x(0), y(0),
+	  button_(mouse_button::none)
+{}
+
+
 FuncRequest::FuncRequest(kb_action act, string const & arg, Origin o)
-	: action(act), argument(arg), origin(o), x(0), y(0),
+	: action(act), argument_(lyx::from_utf8(arg)), origin(o), x(0), y(0),
 	  button_(mouse_button::none)
 {}
 
@@ -46,8 +54,14 @@ FuncRequest::FuncRequest(kb_action act, int ax, int ay,
 {}
 
 
+FuncRequest::FuncRequest(FuncRequest const & cmd, docstring const & arg, Origin o)
+	: action(cmd.action), argument_(arg), origin(o),
+	  x(cmd.x), y(cmd.y), button_(cmd.button_)
+{}
+
+
 FuncRequest::FuncRequest(FuncRequest const & cmd, string const & arg, Origin o)
-	: action(cmd.action), argument(arg), origin(o),
+	: action(cmd.action), argument_(lyx::from_utf8(arg)), origin(o),
 	  x(cmd.x), y(cmd.y), button_(cmd.button_)
 {}
 
@@ -81,14 +95,14 @@ void split(vector<string> & args, string const & str)
 string FuncRequest::getArg(unsigned int i) const
 {
 	vector<string> args;
-	split(args, argument);
+	split(args, lyx::to_utf8(argument_));
 	return i < args.size() ? args[i] : string();
 }
 
 
 bool operator==(FuncRequest const & lhs, FuncRequest const & rhs)
 {
-	return lhs.action == rhs.action && lhs.argument == rhs.argument;
+	return lhs.action == rhs.action && lhs.argument() == rhs.argument();
 }
 
 
@@ -96,7 +110,7 @@ std::ostream & operator<<(std::ostream & os, FuncRequest const & cmd)
 {
 	return os
 		<< " action: " << cmd.action
-		<< " arg: '" << cmd.argument << "'"
+		<< " arg: '" << lyx::to_utf8(cmd.argument()) << "'"
 		<< " x: " << cmd.x
 		<< " y: " << cmd.y;
 }

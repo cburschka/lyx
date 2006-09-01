@@ -424,7 +424,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		cur.message(_("Paste"));
 		replaceSelection(cur);
 		size_t n = 0;
-		istringstream is(cmd.argument);
+		istringstream is(lyx::to_utf8(cmd.argument()));
 		is >> n;
 		string const selection = lyx::cap::getSelection(cur.buffer(), n);
 		cur.niceInsert(selection);
@@ -663,10 +663,11 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_SELF_INSERT:
-		if (cmd.argument.size() != 1) {
+		if (cmd.argument().size() != 1) {
 			recordUndo(cur);
-			if (!interpret(cur, cmd.argument))
-				cur.insert(cmd.argument);
+			string const arg = lyx::to_utf8(cmd.argument());
+			if (!interpret(cur, arg))
+				cur.insert(arg);
 			break;
 		}
 		// Don't record undo steps if we are in macro mode and
@@ -684,7 +685,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		// spacial handling of space. If we insert an inset
 		// via macro mode, we want to put the cursor inside it
 		// if relevant. Think typing "\frac<space>".
-		if (cmd.argument[0] == ' '
+		if (cmd.argument()[0] == ' '
 		    && cur.inMacroMode() && cur.macroName() != "\\"
 		    && cur.macroModeClose()) {
 			MathAtom const atom = cur.prevAtom();
@@ -692,7 +693,10 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 				cur.posLeft();
 				cur.pushLeft(*cur.nextInset());
 			}
-		} else if (!interpret(cur, cmd.argument[0])) {
+		// FIXME: Change to
+		// } else if (!interpret(cur, cmd.argument()[0])) {
+		// when interpret accepts UCS4 characters
+		} else if (!interpret(cur, lyx::to_utf8(cmd.argument()))) {
 			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 			cur.undispatched();
 		}
@@ -706,7 +710,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		lyxerr << "LFUN_SERVER_SET_XY broken!" << endl;
 		int x = 0;
 		int y = 0;
-		istringstream is(cmd.argument);
+		istringstream is(lyx::to_utf8(cmd.argument()));
 		is >> x >> y;
 		cur.setScreenPos(x, y);
 		break;
@@ -715,7 +719,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	// Special casing for superscript in case of LyX handling
 	// dead-keys:
 	case LFUN_ACCENT_CIRCUMFLEX:
-		if (cmd.argument.empty()) {
+		if (cmd.argument().empty()) {
 			// do superscript if LyX handles
 			// deadkeys
 			recordUndo(cur, Undo::ATOMIC);
@@ -742,66 +746,66 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	//  Math fonts
 	case LFUN_FONT_FREE_APPLY:
 	case LFUN_FONT_FREE_UPDATE:
-		handleFont2(cur, cmd.argument);
+		handleFont2(cur, lyx::to_utf8(cmd.argument()));
 		break;
 
 	case LFUN_FONT_BOLD:
 		if (currentMode() == TEXT_MODE)
-			handleFont(cur, cmd.argument, "textbf");
+			handleFont(cur, lyx::to_utf8(cmd.argument()), "textbf");
 		else
-			handleFont(cur, cmd.argument, "mathbf");
+			handleFont(cur, lyx::to_utf8(cmd.argument()), "mathbf");
 		break;
 	case LFUN_FONT_SANS:
 		if (currentMode() == TEXT_MODE)
-			handleFont(cur, cmd.argument, "textsf");
+			handleFont(cur, lyx::to_utf8(cmd.argument()), "textsf");
 		else
-			handleFont(cur, cmd.argument, "mathsf");
+			handleFont(cur, lyx::to_utf8(cmd.argument()), "mathsf");
 		break;
 	case LFUN_FONT_EMPH:
 		if (currentMode() == TEXT_MODE)
-			handleFont(cur, cmd.argument, "emph");
+			handleFont(cur, lyx::to_utf8(cmd.argument()), "emph");
 		else
-			handleFont(cur, cmd.argument, "mathcal");
+			handleFont(cur, lyx::to_utf8(cmd.argument()), "mathcal");
 		break;
 	case LFUN_FONT_ROMAN:
 		if (currentMode() == TEXT_MODE)
-			handleFont(cur, cmd.argument, "textrm");
+			handleFont(cur, lyx::to_utf8(cmd.argument()), "textrm");
 		else
-			handleFont(cur, cmd.argument, "mathrm");
+			handleFont(cur, lyx::to_utf8(cmd.argument()), "mathrm");
 		break;
 	case LFUN_FONT_CODE:
 		if (currentMode() == TEXT_MODE)
-			handleFont(cur, cmd.argument, "texttt");
+			handleFont(cur, lyx::to_utf8(cmd.argument()), "texttt");
 		else
-			handleFont(cur, cmd.argument, "mathtt");
+			handleFont(cur, lyx::to_utf8(cmd.argument()), "mathtt");
 		break;
 	case LFUN_FONT_FRAK:
-		handleFont(cur, cmd.argument, "mathfrak");
+		handleFont(cur, lyx::to_utf8(cmd.argument()), "mathfrak");
 		break;
 	case LFUN_FONT_ITAL:
 		if (currentMode() == TEXT_MODE)
-			handleFont(cur, cmd.argument, "textit");
+			handleFont(cur, lyx::to_utf8(cmd.argument()), "textit");
 		else
-			handleFont(cur, cmd.argument, "mathit");
+			handleFont(cur, lyx::to_utf8(cmd.argument()), "mathit");
 		break;
 	case LFUN_FONT_NOUN:
 		if (currentMode() == TEXT_MODE)
 			// FIXME: should be "noun"
-			handleFont(cur, cmd.argument, "textsc");
+			handleFont(cur, lyx::to_utf8(cmd.argument()), "textsc");
 		else
-			handleFont(cur, cmd.argument, "mathbb");
+			handleFont(cur, lyx::to_utf8(cmd.argument()), "mathbb");
 		break;
 	//case LFUN_FONT_FREE_APPLY:
-		handleFont(cur, cmd.argument, "textrm");
+		handleFont(cur, lyx::to_utf8(cmd.argument()), "textrm");
 		break;
 	case LFUN_FONT_DEFAULT:
-		handleFont(cur, cmd.argument, "textnormal");
+		handleFont(cur, lyx::to_utf8(cmd.argument()), "textnormal");
 		break;
 
 	case LFUN_MATH_MODE: {
 #if 1
 		// ignore math-mode on when already in math mode
-		if (currentMode() == InsetBase::MATH_MODE && cmd.argument == "on")
+		if (currentMode() == InsetBase::MATH_MODE && cmd.argument() == "on")
 			break;
 		cur.macroModeClose();
 		string const save_selection = grabAndEraseSelection(cur);
@@ -816,7 +820,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 			cur.niceInsert(MathAtom(new MathHullInset("simple")));
 			cur.message(_("create new math text environment ($...$)"));
 		} else {
-			handleFont(cur, cmd.argument, "textrm");
+			handleFont(cur, lyx::to_utf8(cmd.argument()), "textrm");
 			cur.message(_("entered math text mode (textrm)"));
 		}
 #endif
@@ -836,7 +840,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		unsigned int n = 1;
 		string v_align;
 		string h_align;
-		istringstream is(cmd.argument);
+		istringstream is(lyx::to_utf8(cmd.argument()));
 		is >> m >> n >> v_align >> h_align;
 		if (m < 1)
 			m = 1;
@@ -850,7 +854,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_MATH_DELIM: {
 		string ls;
-		string rs = lyx::support::split(cmd.argument, ls, ' ');
+		string rs = lyx::support::split(lyx::to_utf8(cmd.argument()), ls, ' ');
 		// Reasonable default values
 		if (ls.empty())
 			ls = '(';
@@ -920,15 +924,15 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 // math-insert only handles special math things like "matrix".
 	case LFUN_MATH_INSERT: {
 		recordUndo(cur, Undo::ATOMIC);
-		if (cmd.argument == "^" || cmd.argument == "_") {
-			interpret(cur, cmd.argument[0]);
-		} else
-			cur.niceInsert(cmd.argument);
+		if (cmd.argument() == "^" || cmd.argument() == "_")
+			interpret(cur, cmd.argument()[0]);
+		else
+			cur.niceInsert(lyx::to_utf8(cmd.argument()));
 		break;
 		}
 
 	case LFUN_DIALOG_SHOW_NEW_INSET: {
-		string const & name = cmd.argument;
+		string const & name = lyx::to_utf8(cmd.argument());
 		string data;
 		if (name == "ref") {
 			RefInset tmp(name);
@@ -951,7 +955,7 @@ bool MathNestInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 	// the font related toggles
 	//string tc = "mathnormal";
 	bool ret = true;
-	string const arg = cmd.argument;
+	string const arg = lyx::to_utf8(cmd.argument());
 	switch (cmd.action) {
 	case LFUN_TABULAR_FEATURE:
 		flag.enabled(false);
@@ -965,15 +969,15 @@ bool MathNestInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 			enable = false;
 			break;
 		}
-		if (cmd.argument.empty()) {
+		if (cmd.argument().empty()) {
 			flag.clear();
 			break;
 		}
-		if (!contains("tcb", cmd.argument[0])) {
+		if (!contains("tcb", cmd.argument()[0])) {
 			enable = false;
 			break;
 		}
-		flag.setOnOff(cmd.argument[0] == align);
+		flag.setOnOff(cmd.argument()[0] == align);
 		break;
 #endif
 	/// We have to handle them since 1.4 blocks all unhandled actions
@@ -988,7 +992,7 @@ bool MathNestInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 		flag.enabled(true);
 		break;
 	case LFUN_MATH_MUTATE:
-		//flag.setOnOff(mathcursor::formula()->hullType() == cmd.argument);
+		//flag.setOnOff(mathcursor::formula()->hullType() == lyx::to_utf8(cmd.argument()));
 		flag.setOnOff(false);
 		break;
 

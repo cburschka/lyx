@@ -913,7 +913,7 @@ void MathHullInset::doExtern(LCursor & cur, FuncRequest & func)
 {
 	string lang;
 	string extra;
-	istringstream iss(func.argument);
+	istringstream iss(lyx::to_utf8(func.argument()));
 	iss >> lang >> extra;
 	if (extra.empty())
 		extra = "noextra";
@@ -1052,15 +1052,15 @@ void MathHullInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 			(lyxrc.label_init_length >= 0) ? "eq:" : "";
 		if (old_label.empty())
 			old_label = default_label;
-		string const contents = cmd.argument.empty() ?
-			old_label : cmd.argument;
+		string const contents = cmd.argument().empty() ?
+			old_label : lyx::to_utf8(cmd.argument());
 
 		InsetCommandParams p("label", contents);
 		string const data = InsetCommandMailer::params2string("label", p);
 
-		if (cmd.argument.empty()) {
+		if (cmd.argument().empty())
 			cur.bv().owner()->getDialogs().show("label", data, 0);
-		} else {
+		else {
 			FuncRequest fr(LFUN_INSET_INSERT, data);
 			dispatch(cur, fr);
 		}
@@ -1068,11 +1068,11 @@ void MathHullInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_INSET_INSERT: {
-		//lyxerr << "arg: " << cmd.argument << endl;
+		//lyxerr << "arg: " << lyx::to_utf8(cmd.argument()) << endl;
 		string const name = cmd.getArg(0);
 		if (name == "label") {
 			InsetCommandParams p;
-			InsetCommandMailer::string2params(name, cmd.argument, p);
+			InsetCommandMailer::string2params(name, lyx::to_utf8(cmd.argument()), p);
 			string str = p.getContents();
 			recordUndoInset(cur);
 			row_type const r = (type_ == "multline") ? nrows() - 1 : cur.row();
@@ -1087,7 +1087,7 @@ void MathHullInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 			break;
 		}
 		MathArray ar;
-		if (createMathInset_fromDialogStr(cmd.argument, ar)) {
+		if (createMathInset_fromDialogStr(lyx::to_utf8(cmd.argument()), ar)) {
 			recordUndo(cur);
 			cur.insert(ar);
 		} else
@@ -1104,7 +1104,7 @@ void MathHullInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		recordUndoInset(cur);
 		row_type row = cur.row();
 		col_type col = cur.col();
-		mutate(cmd.argument);
+		mutate(lyx::to_utf8(cmd.argument()));
 		cur.idx() = row * ncols() + col;
 		if (cur.idx() > cur.lastidx()) {
 			cur.idx() = cur.lastidx();
@@ -1164,7 +1164,7 @@ bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 		break;
 	}
 	case LFUN_TABULAR_FEATURE: {
-		istringstream is(cmd.argument);
+		istringstream is(lyx::to_utf8(cmd.argument()));
 		string s;
 		is >> s;
 		if (!rowChangeOK()

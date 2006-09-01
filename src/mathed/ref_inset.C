@@ -63,7 +63,7 @@ void RefInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_MODIFY:
 		if (cmd.getArg(0) == "ref") {
 			MathArray ar;
-			if (createMathInset_fromDialogStr(cmd.argument, ar)) {
+			if (createMathInset_fromDialogStr(lyx::to_utf8(cmd.argument()), ar)) {
 				*this = *ar[0].nucleus()->asRefInset();
 				break;
 			}

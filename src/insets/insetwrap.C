@@ -80,7 +80,7 @@ void InsetWrap::doDispatch(LCursor & cur, FuncRequest & cmd)
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {
 		InsetWrapParams params;
-		InsetWrapMailer::string2params(cmd.argument, params);
+		InsetWrapMailer::string2params(lyx::to_utf8(cmd.argument()), params);
 		params_.placement = params.placement;
 		params_.width     = params.width;
 		break;

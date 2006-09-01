@@ -649,14 +649,15 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_TABULAR_FEATURE:
-		if (!tabularFeatures(cur, cmd.argument))
+		if (!tabularFeatures(cur, lyx::to_utf8(cmd.argument())))
 			cur.undispatched();
 		break;
 
 	// insert file functions
 	case LFUN_FILE_INSERT_ASCII_PARA:
 	case LFUN_FILE_INSERT_ASCII: {
-		string const tmpstr = getContentsOfAsciiFile(&cur.bv(), cmd.argument, false);
+		// FIXME: We don't know the encoding of filenames
+		string const tmpstr = getContentsOfAsciiFile(&cur.bv(), lyx::to_utf8(cmd.argument()), false);
 		if (!tmpstr.empty() && !insertAsciiString(cur.bv(), tmpstr, false))
 			cur.undispatched();
 		break;
@@ -801,7 +802,7 @@ bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
 		int i = 0;
 		for (; tabularFeature[i].action != LyXTabular::LAST_ACTION; ++i) {
 			string const tmp = tabularFeature[i].feature;
-			if (tmp == cmd.argument.substr(0, tmp.length())) {
+			if (tmp == lyx::to_utf8(cmd.argument()).substr(0, tmp.length())) {
 				action = tabularFeature[i].action;
 				break;
 			}
@@ -813,7 +814,7 @@ bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
 		}
 
 		string const argument
-			= ltrim(cmd.argument.substr(tabularFeature[i].feature.length()));
+			= ltrim(lyx::to_utf8(cmd.argument()).substr(tabularFeature[i].feature.length()));
 
 		row_type sel_row_start = 0;
 		row_type sel_row_end = 0;

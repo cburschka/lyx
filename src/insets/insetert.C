@@ -212,7 +212,7 @@ void InsetERT::doDispatch(LCursor & cur, FuncRequest & cmd)
 	}
 	case LFUN_INSET_MODIFY: {
 		InsetCollapsable::CollapseStatus st;
-		InsetERTMailer::string2params(cmd.argument, st);
+		InsetERTMailer::string2params(lyx::to_utf8(cmd.argument()), st);
 		setStatus(cur, st);
 		break;
 	}
@@ -368,7 +368,7 @@ bool InsetERT::getStatus(LCursor & cur, FuncRequest const & cmd,
 		// solution, we consider only the first action of the sequence
 		case LFUN_COMMAND_SEQUENCE: {
 			// argument contains ';'-terminated commands
-			string const firstcmd = token(cmd.argument, ';', 0);
+			string const firstcmd = token(lyx::to_utf8(cmd.argument()), ';', 0);
 			FuncRequest func(lyxaction.lookupFunc(firstcmd));
 			func.origin = cmd.origin;
 			return getStatus(cur, func, status);

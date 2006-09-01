@@ -154,7 +154,7 @@ void InsetFloat::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_MODIFY: {
 		InsetFloatParams params;
-		InsetFloatMailer::string2params(cmd.argument, params);
+		InsetFloatMailer::string2params(lyx::to_utf8(cmd.argument()), params);
 		params_.placement = params.placement;
 		params_.wide      = params.wide;
 		params_.sideways  = params.sideways;

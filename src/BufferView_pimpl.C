@@ -898,13 +898,13 @@ FuncStatus BufferView::Pimpl::getStatus(FuncRequest const & cmd)
 		break;
 
 	case LFUN_LABEL_GOTO: {
-		flag.enabled(!cmd.argument.empty()
+		flag.enabled(!cmd.argument().empty()
 		    || getInsetByCode<InsetRef>(cursor_, InsetBase::REF_CODE));
 		break;
 	}
 
 	case LFUN_BOOKMARK_GOTO:
-		flag.enabled(isSavedPosition(convert<unsigned int>(cmd.argument)));
+		flag.enabled(isSavedPosition(convert<unsigned int>(lyx::to_utf8(cmd.argument()))));
 		break;
 	case LFUN_CHANGES_TRACK:
 		flag.enabled(true);
@@ -950,7 +950,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 	// Make sure that the cached BufferView is correct.
 	lyxerr[Debug::ACTION] << BOOST_CURRENT_FUNCTION
 		<< " action[" << cmd.action << ']'
-		<< " arg[" << cmd.argument << ']'
+		<< " arg[" << lyx::to_utf8(cmd.argument()) << ']'
 		<< " x[" << cmd.x << ']'
 		<< " y[" << cmd.y << ']'
 		<< " button[" << cmd.button() << ']'
@@ -983,15 +983,18 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_FILE_INSERT:
-		menuInsertLyXFile(cmd.argument);
+		// FIXME: We don't know the encoding of filenames
+		menuInsertLyXFile(lyx::to_utf8(cmd.argument()));
 		break;
 
 	case LFUN_FILE_INSERT_ASCII_PARA:
-		insertAsciiFile(bv_, cmd.argument, true);
+		// FIXME: We don't know the encoding of filenames
+		insertAsciiFile(bv_, lyx::to_utf8(cmd.argument()), true);
 		break;
 
 	case LFUN_FILE_INSERT_ASCII:
-		insertAsciiFile(bv_, cmd.argument, false);
+		// FIXME: We don't know the encoding of filenames
+		insertAsciiFile(bv_, lyx::to_utf8(cmd.argument()), false);
 		break;
 
 	case LFUN_FONT_STATE:
@@ -999,15 +1002,15 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_BOOKMARK_SAVE:
-		savePosition(convert<unsigned int>(cmd.argument));
+		savePosition(convert<unsigned int>(lyx::to_utf8(cmd.argument())));
 		break;
 
 	case LFUN_BOOKMARK_GOTO:
-		restorePosition(convert<unsigned int>(cmd.argument));
+		restorePosition(convert<unsigned int>(lyx::to_utf8(cmd.argument())));
 		break;
 
 	case LFUN_LABEL_GOTO: {
-		string label = cmd.argument;
+		string label = lyx::to_utf8(cmd.argument());
 		if (label.empty()) {
 			InsetRef * inset =
 				getInsetByCode<InsetRef>(cursor_,
@@ -1024,7 +1027,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_PARAGRAPH_GOTO: {
-		int const id = convert<int>(cmd.argument);
+		int const id = convert<int>(lyx::to_utf8(cmd.argument()));
 		ParIterator par = buffer_->getParFromID(id);
 		if (par == buffer_->par_iterator_end()) {
 			lyxerr[Debug::INFO] << "No matching paragraph found! ["
@@ -1153,7 +1156,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		InsetBibtex * inset = getInsetByCode<InsetBibtex>(tmpcur,
 						InsetBase::BIBTEX_CODE);
 		if (inset) {
-			if (inset->addDatabase(cmd.argument))
+			if (inset->addDatabase(lyx::to_utf8(cmd.argument())))
 				buffer_->updateBibfilesCache();
 		}
 		break;
@@ -1165,7 +1168,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		InsetBibtex * inset = getInsetByCode<InsetBibtex>(tmpcur,
 						InsetBase::BIBTEX_CODE);
 		if (inset) {
-			if (inset->delDatabase(cmd.argument))
+			if (inset->delDatabase(lyx::to_utf8(cmd.argument())))
 				buffer_->updateBibfilesCache();
 		}
 		break;

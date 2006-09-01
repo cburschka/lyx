@@ -4,11 +4,8 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * Provide a set of typedefs for commonly used things like sizes and
- * indices wile trying to stay compatible with types used
- * by the standard containers.
- *
- * \author André Pönitz
+ * \author Lars Gullik Bjønnes
+ * \author Georg Baum
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -21,10 +18,34 @@
 
 namespace lyx {
 
+/// String type for storing the main text in UCS4 encoding
 typedef std::basic_string<boost::uint32_t> docstring;
+
+/// Creates a docstring from a C string of ASCII characters
+docstring const from_ascii(char const *);
+
+/// Creates a docstring from a std::string of ASCII characters
+docstring const from_ascii(std::string const &);
+
+/// Creates a docstring from a UTF8 string. This should go eventually.
+docstring const from_utf8(std::string const &);
+
+/// Creates a UTF8 string from a docstring. This should go eventually.
+std::string const to_utf8(docstring const &);
 
 }
 
+/// Compare a docstring with a C string of ASCII characters
+bool operator==(lyx::docstring const &, char const *);
+
+/// Compare a C string of ASCII characters with a docstring
+inline bool operator==(char const * l, lyx::docstring const & r) { return r == l; }
+
+/// Compare a docstring with a C string of ASCII characters
+inline bool operator!=(lyx::docstring const & l, char const * r) { return !(l == r); }
+
+/// Compare a C string of ASCII characters with a docstring
+inline bool operator!=(char const * l, lyx::docstring const & r) { return !(r == l); }
 
 #if defined(__GNUC__) && defined(__GNUC_MINOR__) && __GNUC__ == 3 && __GNUC_MINOR__ < 4
 // Missing char_traits methods in gcc 3.3 and older. Taken from gcc 4.2svn.

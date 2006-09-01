@@ -23,6 +23,7 @@
 #include "support/lstrings.h"
 
 
+using lyx::docstring;
 using lyx::support::bformat;
 using std::string;
 using std::auto_ptr;
@@ -63,7 +64,7 @@ bool MathSubstackInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 	switch (cmd.action) {
 	case LFUN_TABULAR_FEATURE: {
 		string const name("substack");
-		string const s = cmd.argument;
+		docstring const & s = cmd.argument();
 		if (s == "add-vline-left" || s == "add-vline-right") {
 			flag.message(bformat(
 			N_("Can't add vertical grid lines in '%1$s'"), name));

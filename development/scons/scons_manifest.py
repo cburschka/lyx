@@ -133,6 +133,7 @@ src_support_files = Split('''
     chdir.C
     convert.C
     copy.C
+    docstring.C
     environment.C
     filefilterlist.C
     filename.C

@@ -182,7 +182,7 @@ void InsetBox::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_MODIFY: {
 		lyxerr << "InsetBox::dispatch MODIFY" << endl;
-		InsetBoxMailer::string2params(cmd.argument, params_);
+		InsetBoxMailer::string2params(lyx::to_utf8(cmd.argument()), params_);
 		setButtonLabel();
 		break;
 	}

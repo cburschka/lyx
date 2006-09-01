@@ -64,7 +64,6 @@
 #include "support/lyxlib.h"
 #include "support/convert.h"
 #include "support/lyxtime.h"
-#include "support/unicode.h"
 
 #include "mathed/math_hullinset.h"
 #include "mathed/math_macrotemplate.h"
@@ -75,6 +74,7 @@
 #include <sstream>
 
 using lyx::char_type;
+using lyx::docstring;
 using lyx::pos_type;
 
 using lyx::cap::copySelection;
@@ -163,9 +163,9 @@ namespace {
 				cur.dispatch(FuncRequest(LFUN_MATH_DISPLAY));
 			// Avoid an unnecessary undo step if cmd.argument
 			// is empty
-			if (!cmd.argument.empty())
+			if (!cmd.argument().empty())
 				cur.dispatch(FuncRequest(LFUN_MATH_INSERT,
-							 cmd.argument));
+							 cmd.argument()));
 		} else {
 			// create a macro if we see "\\newcommand"
 			// somewhere, and an ordinary formula
@@ -667,7 +667,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		if (cur_spacing == Spacing::Other)
 			cur_value = par.params().spacing().getValueAsString();
 
-		istringstream is(cmd.argument);
+		istringstream is(lyx::to_utf8(cmd.argument()));
 		string tmp;
 		is >> tmp;
 		Spacing::Space new_spacing = cur_spacing;
@@ -692,7 +692,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			new_spacing = Spacing::Default;
 		} else {
 			lyxerr << _("Unknown spacing argument: ")
-			       << cmd.argument << endl;
+			       << lyx::to_utf8(cmd.argument()) << endl;
 		}
 		if (cur_spacing != new_spacing || cur_value != new_value)
 			par.params().spacing(Spacing(new_spacing, new_value));
@@ -791,9 +791,9 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_PASTE:
 		cur.message(_("Paste"));
 		lyx::cap::replaceSelection(cur);
-		if (isStrUnsignedInt(cmd.argument))
+		if (isStrUnsignedInt(lyx::to_utf8(cmd.argument())))
 			pasteSelection(cur, bv->buffer()->errorList("Paste"),
-			convert<unsigned int>(cmd.argument));
+			convert<unsigned int>(lyx::to_utf8(cmd.argument())));
 		else
 			pasteSelection(cur, bv->buffer()->errorList("Paste"),
 			0);
@@ -821,11 +821,11 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_SERVER_SET_XY: {
 		int x = 0;
 		int y = 0;
-		istringstream is(cmd.argument);
+		istringstream is(lyx::to_utf8(cmd.argument()));
 		is >> x >> y;
 		if (!is)
 			lyxerr << "SETXY: Could not parse coordinates in '"
-			       << cmd.argument << std::endl;
+			       << lyx::to_utf8(cmd.argument()) << std::endl;
 		else
 			setCursorFromCoordinates(cur, x, y);
 		break;
@@ -846,14 +846,14 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_LAYOUT: {
 		lyxerr[Debug::INFO] << "LFUN_LAYOUT: (arg) "
-		  << cmd.argument << endl;
+		  << lyx::to_utf8(cmd.argument()) << endl;
 
 		// This is not the good solution to the empty argument
 		// problem, but it will hopefully suffice for 1.2.0.
 		// The correct solution would be to augument the
 		// function list/array with information about what
 		// functions needs arguments and their type.
-		if (cmd.argument.empty()) {
+		if (cmd.argument().empty()) {
 			cur.errorMessage(_("LyX function 'layout' needs an argument."));
 			break;
 		}
@@ -861,8 +861,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		// Derive layout number from given argument (string)
 		// and current buffer's textclass (number)
 		LyXTextClass const & tclass = bv->buffer()->params().getLyXTextClass();
-		bool hasLayout = tclass.hasLayout(cmd.argument);
-		string layout = cmd.argument;
+		bool hasLayout = tclass.hasLayout(lyx::to_utf8(cmd.argument()));
+		string layout = lyx::to_utf8(cmd.argument());
 
 		// If the entry is obsolete, use the new one instead.
 		if (hasLayout) {
@@ -872,7 +872,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		}
 
 		if (!hasLayout) {
-			cur.errorMessage(string(N_("Layout ")) + cmd.argument +
+			cur.errorMessage(string(N_("Layout ")) + lyx::to_utf8(cmd.argument()) +
 				N_(" not known"));
 			break;
 		}
@@ -907,7 +907,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		string const clip = bv->owner()->gui().clipboard().get();
 		if (!clip.empty()) {
 			recordUndo(cur);
-			if (cmd.argument == "paragraph")
+			if (cmd.argument() == "paragraph")
 				insertStringAsParagraphs(cur, clip);
 			else
 				insertStringAsLines(cur, clip);
@@ -920,7 +920,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		string const clip = bv->owner()->gui().selection().get();
 		if (!clip.empty()) {
 			recordUndo(cur);
-			if (cmd.argument == "paragraph")
+			if (cmd.argument() == "paragraph")
 				insertStringAsParagraphs(cur, clip);
 			else
 				insertStringAsLines(cur, clip);
@@ -945,7 +945,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		BufferParams const & bufparams = bv->buffer()->params();
 		if (!style->pass_thru
 		    && par.getFontSettings(bufparams, pos).language()->lang() != "hebrew") {
-			string arg = cmd.argument;
+			string arg = lyx::to_utf8(cmd.argument());
 			if (arg == "single")
 				cur.insert(new InsetQuotes(c,
 				    bufparams.quotes_language,
@@ -962,12 +962,12 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_DATE_INSERT:
-		if (cmd.argument.empty())
+		if (cmd.argument().empty())
 			bv->owner()->dispatch(FuncRequest(LFUN_SELF_INSERT,
 				lyx::formatted_time(lyx::current_time())));
 		else
 			bv->owner()->dispatch(FuncRequest(LFUN_SELF_INSERT,
-				lyx::formatted_time(lyx::current_time(), cmd.argument)));
+				lyx::formatted_time(lyx::current_time(), lyx::to_utf8(cmd.argument()))));
 		break;
 
 	case LFUN_MOUSE_TRIPLE:
@@ -1076,7 +1076,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_SELF_INSERT: {
-		if (cmd.argument.empty())
+		if (cmd.argument().empty())
 			break;
 
 		// Automatically delete the currently selected
@@ -1094,18 +1094,13 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		cur.clearSelection();
 		LyXFont const old_font = real_current_font;
 
-#if 0
-		string::const_iterator cit = cmd.argument.begin();
-		string::const_iterator end = cmd.argument.end();
+		docstring::const_iterator cit = cmd.argument().begin();
+		docstring::const_iterator end = cmd.argument().end();
 		for (; cit != end; ++cit)
+#if 0
 			bv->owner()->getIntl().getTransManager().
 				translateAndInsert(*cit, this);
 #else
-		std::vector<char> in(cmd.argument.begin(), cmd.argument.end());
-		std::vector<boost::uint32_t> const res = utf8_to_ucs4(in);
-		std::vector<boost::uint32_t>::const_iterator cit = res.begin();
-		std::vector<boost::uint32_t>::const_iterator end = res.end();
-		for (; cit != end; ++cit)
 			insertChar(bv->cursor(), *cit);
 #endif
 
@@ -1130,13 +1125,13 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_LABEL_INSERT: {
 		// Try to generate a valid label
-		string const contents = cmd.argument.empty() ?
-			cur.getPossibleLabel() : cmd.argument;
+		string const contents = cmd.argument().empty() ?
+			cur.getPossibleLabel() : lyx::to_utf8(cmd.argument());
 
 		InsetCommandParams p("label", contents);
 		string const data = InsetCommandMailer::params2string("label", p);
 
-		if (cmd.argument.empty()) {
+		if (cmd.argument().empty()) {
 			bv->owner()->getDialogs().show("label", data, 0);
 		} else {
 			FuncRequest fr(LFUN_INSET_INSERT, data);
@@ -1223,7 +1218,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_MATH_IMPORT_SELECTION:
 	case LFUN_MATH_MODE:
-		if (cmd.argument == "on")
+		if (cmd.argument() == "on")
 			// don't pass "on" as argument
 			mathDispatch(cur, FuncRequest(LFUN_MATH_MODE), false);
 		else
@@ -1231,10 +1226,10 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_MATH_MACRO:
-		if (cmd.argument.empty())
+		if (cmd.argument().empty())
 			cur.errorMessage(N_("Missing argument"));
 		else {
-			string s = cmd.argument;
+			string s = lyx::to_utf8(cmd.argument());
 			string const s1 = token(s, ' ', 1);
 			int const nargs = s1.empty() ? 0 : convert<int>(s1);
 			string const s2 = token(s, ' ', 2);
@@ -1319,13 +1314,13 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_FONT_SIZE: {
 		LyXFont font(LyXFont::ALL_IGNORE);
-		font.setLyXSize(cmd.argument);
+		font.setLyXSize(lyx::to_utf8(cmd.argument()));
 		toggleAndShow(cur, this, font);
 		break;
 	}
 
 	case LFUN_LANGUAGE: {
-		Language const * lang = languages.getLanguage(cmd.argument);
+		Language const * lang = languages.getLanguage(lyx::to_utf8(cmd.argument()));
 		if (!lang)
 			break;
 		LyXFont font(LyXFont::ALL_IGNORE);
@@ -1345,7 +1340,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_FONT_FREE_UPDATE: {
 		LyXFont font;
 		bool toggle;
-		if (bv_funcs::string2font(cmd.argument, font, toggle)) {
+		if (bv_funcs::string2font(lyx::to_utf8(cmd.argument()), font, toggle)) {
 			freefont = font;
 			toggleall = toggle;
 			toggleAndShow(cur, this, freefont, toggleall);
@@ -1413,14 +1408,15 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_ACCENT_CIRCLE:
 	case LFUN_ACCENT_OGONEK:
 		bv->owner()->getLyXFunc().handleKeyFunc(cmd.action);
-		if (!cmd.argument.empty())
+		if (!cmd.argument().empty())
+			// FIXME: Are all these characters encoded in one byte in utf8?
 			bv->owner()->getIntl().getTransManager()
-				.translateAndInsert(cmd.argument[0], this);
+				.translateAndInsert(cmd.argument()[0], this);
 		break;
 
 	case LFUN_FLOAT_LIST: {
 		LyXTextClass const & tclass = bv->buffer()->params().getLyXTextClass();
-		if (tclass.floats().typeExist(cmd.argument)) {
+		if (tclass.floats().typeExist(lyx::to_utf8(cmd.argument()))) {
 			// not quite sure if we want this...
 			recordUndo(cur);
 			cur.clearSelection();
@@ -1433,11 +1429,11 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 			setLayout(cur, tclass.defaultLayoutName());
 			setParagraph(cur, Spacing(), LYX_ALIGN_LAYOUT, string(), 0);
-			insertInset(cur, new InsetFloatList(cmd.argument));
+			insertInset(cur, new InsetFloatList(lyx::to_utf8(cmd.argument())));
 			cur.posRight();
 		} else {
 			lyxerr << "Non-existent float type: "
-			       << cmd.argument << endl;
+			       << lyx::to_utf8(cmd.argument()) << endl;
 		}
 		break;
 	}
@@ -1453,7 +1449,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_THESAURUS_ENTRY: {
-		string arg = cmd.argument;
+		string arg = lyx::to_utf8(cmd.argument());
 		if (arg.empty()) {
 			arg = cur.selectionAsString(false);
 			// FIXME
@@ -1471,7 +1467,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		// Given data, an encoding of the ParagraphParameters
 		// generated in the Paragraph dialog, this function sets
 		// the current paragraph appropriately.
-		istringstream is(cmd.argument);
+		istringstream is(lyx::to_utf8(cmd.argument()));
 		LyXLex lex(0, 0);
 		lex.setStream(is);
 		ParagraphParameters params;
@@ -1554,41 +1550,41 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 		break;
 
 	case LFUN_DIALOG_SHOW_NEW_INSET:
-		if (cmd.argument == "bibitem")
+		if (cmd.argument() == "bibitem")
 			code = InsetBase::BIBITEM_CODE;
-		else if (cmd.argument == "bibtex")
+		else if (cmd.argument() == "bibtex")
 			code = InsetBase::BIBTEX_CODE;
-		else if (cmd.argument == "box")
+		else if (cmd.argument() == "box")
 			code = InsetBase::BOX_CODE;
-		else if (cmd.argument == "branch")
+		else if (cmd.argument() == "branch")
 			code = InsetBase::BRANCH_CODE;
-		else if (cmd.argument == "citation")
+		else if (cmd.argument() == "citation")
 			code = InsetBase::CITE_CODE;
-		else if (cmd.argument == "ert")
+		else if (cmd.argument() == "ert")
 			code = InsetBase::ERT_CODE;
-		else if (cmd.argument == "external")
+		else if (cmd.argument() == "external")
 			code = InsetBase::EXTERNAL_CODE;
-		else if (cmd.argument == "float")
+		else if (cmd.argument() == "float")
 			code = InsetBase::FLOAT_CODE;
-		else if (cmd.argument == "graphics")
+		else if (cmd.argument() == "graphics")
 			code = InsetBase::GRAPHICS_CODE;
-		else if (cmd.argument == "include")
+		else if (cmd.argument() == "include")
 			code = InsetBase::INCLUDE_CODE;
-		else if (cmd.argument == "index")
+		else if (cmd.argument() == "index")
 			code = InsetBase::INDEX_CODE;
-		else if (cmd.argument == "label")
+		else if (cmd.argument() == "label")
 			code = InsetBase::LABEL_CODE;
-		else if (cmd.argument == "note")
+		else if (cmd.argument() == "note")
 			code = InsetBase::NOTE_CODE;
-		else if (cmd.argument == "ref")
+		else if (cmd.argument() == "ref")
 			code = InsetBase::REF_CODE;
-		else if (cmd.argument == "toc")
+		else if (cmd.argument() == "toc")
 			code = InsetBase::TOC_CODE;
-		else if (cmd.argument == "url")
+		else if (cmd.argument() == "url")
 			code = InsetBase::URL_CODE;
-		else if (cmd.argument == "vspace")
+		else if (cmd.argument() == "vspace")
 			code = InsetBase::VSPACE_CODE;
-		else if (cmd.argument == "wrap")
+		else if (cmd.argument() == "wrap")
 			code = InsetBase::WRAP_CODE;
 		break;
 

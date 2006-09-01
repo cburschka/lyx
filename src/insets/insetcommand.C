@@ -101,7 +101,7 @@ void InsetCommand::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p;
-		InsetCommandMailer::string2params(mailer_name_, cmd.argument, p);
+		InsetCommandMailer::string2params(mailer_name_, lyx::to_utf8(cmd.argument()), p);
 		if (p.getCmdName().empty())
 			cur.noUpdate();
 		else
@@ -109,9 +109,11 @@ void InsetCommand::doDispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_INSET_DIALOG_UPDATE:
-		InsetCommandMailer(cmd.argument, *this).updateDialog(&cur.bv());
+	case LFUN_INSET_DIALOG_UPDATE: {
+		string const name = lyx::to_utf8(cmd.argument());
+		InsetCommandMailer(name, *this).updateDialog(&cur.bv());
 		break;
+	}
 
 	case LFUN_MOUSE_RELEASE: {
 		if (!mailer_name_.empty())

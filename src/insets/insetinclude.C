@@ -127,7 +127,7 @@ void InsetInclude::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p;
-		InsetIncludeMailer::string2params(cmd.argument, p);
+		InsetIncludeMailer::string2params(lyx::to_utf8(cmd.argument()), p);
 		if (!p.getCmdName().empty()) {
 			set(p, cur.buffer());
 			cur.buffer().updateBibfilesCache();

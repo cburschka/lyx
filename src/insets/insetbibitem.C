@@ -61,7 +61,7 @@ void InsetBibitem::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p;
-		InsetCommandMailer::string2params("bibitem", cmd.argument, p);
+		InsetCommandMailer::string2params("bibitem", lyx::to_utf8(cmd.argument()), p);
 		if (!p.getCmdName().empty())
 			setParams(p);
 		else
