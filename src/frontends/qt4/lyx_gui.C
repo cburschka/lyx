@@ -129,7 +129,7 @@ int exec(int & argc, char * argv[])
 	// Force adding of font path _before_ QApplication is initialized
 	FontLoader::initFontPath();
 
-#ifdef Q_WS_WIN
+#if defined(Q_WS_WIN) && !defined(Q_CYGWIN_WIN)
 	static Application app(argc, argv);
 #else
 	Application app(argc, argv);
