@@ -31,6 +31,9 @@ std::vector<char>
 iconv_convert(std::string const & tocode, std::string const & fromcode,
 	      std::vector<char> const & buf)
 {
+	if (buf.empty())
+		return std::vector<char>();
+
 	iconv_t cd = iconv_open(tocode.c_str(), fromcode.c_str());
 	if (cd == (iconv_t)(-1)) {
 		lyxerr << "Error returned from iconv_open" << endl;
