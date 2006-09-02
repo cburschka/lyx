@@ -464,7 +464,7 @@ if use_vc:
     #   in the current code page (number)
     # C4996: foo was decleared deprecated
     CCFLAGS_required.extend(['/TP', '/EHsc'])
-    CCFLAGS_default.extend(['/wd4819', '/wd4996', '/nologo'])
+    CCFLAGS_default.extend(['/wd4819', '/wd4996', '/nologo', '/MD'])
 else:
     if env.has_key('CXX') and env['CXX']:
         env['CC'] = env.subst('$CXX')
