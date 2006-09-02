@@ -15,6 +15,8 @@
 
 #include "inset.h"
 
+#include "support/types.h"
+
 class BufferParams;
 class Language;
 
@@ -66,9 +68,9 @@ public:
 	explicit
 	InsetQuotes(std::string const & str = "eld");
 	/// Create the right quote inset after character c
-	InsetQuotes(char c, BufferParams const & params);
+	InsetQuotes(lyx::char_type c, BufferParams const & params);
 	/// Direct access to inner/outer quotation marks
-	InsetQuotes(char c, quote_language l, quote_times t);
+	InsetQuotes(lyx::char_type c, quote_language l, quote_times t);
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
@@ -117,7 +119,7 @@ private:
 	 */
 	InsetQuotes(quote_language l, quote_side s, quote_times t);
 	/// Decide whether we need left or right quotation marks
-	void getPosition(char c);
+	void getPosition(lyx::char_type c);
 	///
 	void parseString(std::string const &);
 	///

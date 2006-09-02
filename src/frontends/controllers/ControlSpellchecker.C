@@ -134,7 +134,7 @@ bool isLetter(DocIterator const & dit)
 		&& dit.pos() != dit.lastpos()
 		&& (dit.paragraph().isLetter(dit.pos())
 		    // We want to pass the ' and escape chars to ispell
-		    || contains(lyxrc.isp_esc_chars + '\'',
+		    || contains(lyx::from_utf8(lyxrc.isp_esc_chars + '\''),
 				dit.paragraph().getChar(dit.pos())))
 		&& !isDeletedText(dit.paragraph(), dit.pos());
 }
@@ -146,7 +146,8 @@ WordLangTuple nextWord(LCursor & cur, ptrdiff_t & progress)
 	bool inword = false;
 	bool ignoreword = false;
 	cur.resetAnchor();
-	string word, lang_code;
+	docstring word;
+	string lang_code;
 
 	while (cur.depth()) {
 		if (isLetter(cur)) {
@@ -170,7 +171,7 @@ WordLangTuple nextWord(LCursor & cur, ptrdiff_t & progress)
 			if (inword)
 				if (!word.empty() && !ignoreword) {
 					cur.setSelection();
-					return WordLangTuple(word, lang_code);
+					return WordLangTuple(lyx::to_utf8(word), lang_code);
 				} else
 					inword = false;
 		}

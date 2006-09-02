@@ -92,21 +92,21 @@ InsetQuotes::InsetQuotes(quote_language l, quote_side s, quote_times t)
 {}
 
 
-InsetQuotes::InsetQuotes(char c, BufferParams const & params)
+InsetQuotes::InsetQuotes(lyx::char_type c, BufferParams const & params)
 	: language_(params.quotes_language), times_(params.quotes_times)
 {
 	getPosition(c);
 }
 
 
-InsetQuotes::InsetQuotes(char c, quote_language l, quote_times t)
+InsetQuotes::InsetQuotes(lyx::char_type c, quote_language l, quote_times t)
 	: language_(l), times_(t)
 {
 	getPosition(c);
 }
 
 
-void InsetQuotes::getPosition(char c)
+void InsetQuotes::getPosition(lyx::char_type c)
 {
 	// Decide whether left or right
 	switch (c) {

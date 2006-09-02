@@ -19,7 +19,6 @@
 #include "support/types.h"
 
 #include <vector>
-#include <string>
 
 
 namespace lyx {
@@ -94,6 +93,12 @@ template <typename B>
 bool contains(std::string const & a, B b)
 {
 	return a.find(b) != std::string::npos;
+}
+
+template <typename B>
+bool contains(lyx::docstring const & a, B b)
+{
+	return a.find(b) != lyx::docstring::npos;
 }
 
 ///
