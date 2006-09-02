@@ -1338,7 +1338,7 @@ if platform_name in ['win32', 'cygwin']:
     # the final link step needs stdc++ to succeed under mingw
     # FIXME: shouldn't g++ automatically link to stdc++?
     if use_vc:
-        system_libs = [env['ICONV_LIB'], 'shlwapi', 'shell32', 'advapi32', 'zdll']
+        system_libs = [env['ICONV_LIB'], 'ole32', 'shlwapi', 'shell32', 'advapi32', 'zdll']
     else:
         system_libs = [env['ICONV_LIB'], 'shlwapi', 'stdc++', 'z']
 elif platform_name == 'cygwin' and env['X11']:
@@ -2227,7 +2227,7 @@ if 'install' in targets:
     # ru.gmo ==> ru/LC_MESSAGES/lyxSUFFIX.mo
     for gmo in gmo_files:
         lan = os.path.split(str(gmo))[1].split('.')[0]
-        dest_file = os.path.join(locale_dest_dir, lan, 'LC_MESSAGES', 'lyx' + version_suffix + '.mo')
+        dest_file = os.path.join(locale_dest_dir, lan, 'LC_MESSAGES', 'lyx' + program_suffix + '.mo')
         env.InstallAs(dest_file, gmo)
         Alias('install', dest_file)
 
