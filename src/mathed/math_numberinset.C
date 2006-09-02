@@ -57,6 +57,12 @@ void MathNumberInset::maple(MapleStream & os) const
 }
 
 
+void MathNumberInset::mathematica(MathematicaStream & os) const
+{
+	os << str_;
+}
+
+
 void MathNumberInset::octave(OctaveStream & os) const
 {
 	os << str_;

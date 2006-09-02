@@ -31,6 +31,8 @@ public:
 	std::string str() const { return str_; }
 	///
 	MathStringInset * asStringInset() { return this; }
+	///
+	MathStringInset const * asStringInset() const { return this; }
 
 	///
 	void normalize(NormalStream &) const;

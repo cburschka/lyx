@@ -35,6 +35,8 @@ public:
 	///
 	void maxima(MaximaStream &) const;
 	///
+	void mathematica(MathematicaStream &) const;
+	///
 	void mathmlize(MathMLStream &) const;
 	///
 	void octave(OctaveStream &) const;

@@ -59,9 +59,15 @@ void MathLimInset::maple(MapleStream & os) const
 }
 
 
+void MathLimInset::maxima(MaximaStream & os) const
+{
+	os << "limit(" << cell(0) << ',' << cell(1) << ',' << cell(2) << ')';
+}
+
+
 void MathLimInset::mathematica(MathematicaStream & os) const
 {
-	os << "Lim[" << cell(0) << ',' << cell(1) << ',' << cell(2) << ']';
+	os << "Limit[" << cell(0) << ',' << cell(1) << "-> " << cell(2) << ']';
 }
 
 
