@@ -1193,9 +1193,9 @@ void LyXText::insertChar(LCursor & cur, char_type c)
 		par.isFreeSpacing();
 
 	if (lyxrc.auto_number) {
-		static string const number_operators = "+-/*";
-		static string const number_unary_operators = "+-";
-		static string const number_seperators = ".,:";
+		static docstring const number_operators = lyx::from_ascii("+-/*");
+		static docstring const number_unary_operators = lyx::from_ascii("+-");
+		static docstring const number_seperators = lyx::from_ascii(".,:");
 
 		if (current_font.number() == LyXFont::ON) {
 			if (!isDigit(c) && !contains(number_operators, c) &&
