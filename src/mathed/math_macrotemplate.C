@@ -102,9 +102,10 @@ string MathMacroTemplate::name() const
 }
 
 
-string MathMacroTemplate::prefix() const
+docstring MathMacroTemplate::prefix() const
 {
-	return bformat(_(" Macro: %1$s: "), name_);
+	// FIXME: delete the conversion when bformat() will return a docstring.
+	return lyx::from_utf8(bformat(_(" Macro: %1$s: "), name_));
 }
 
 
@@ -112,7 +113,7 @@ void MathMacroTemplate::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi);
 	cell(1).metrics(mi);
-	docstring dp(prefix().begin(), prefix().end());
+	docstring dp = prefix();
 	dim.wid = cell(0).width() + cell(1).width() + 20
 		+ font_metrics::width(dp, mi.base.font);
 	dim.asc = std::max(cell(0).ascent(),  cell(1).ascent())  + 7;
@@ -150,7 +151,7 @@ void MathMacroTemplate::draw(PainterInfo & p, int x, int y) const
 	if (cur.isInside(this))
 		cur.drawSelection(pi);
 #endif
-	docstring dp(prefix().begin(), prefix().end());
+	docstring dp = prefix();
 	pi.pain.text(x + 2, y, dp, font);
 	x += font_metrics::width(dp, pi.base.font) + 6;
 

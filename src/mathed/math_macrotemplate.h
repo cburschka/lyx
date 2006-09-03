@@ -17,6 +17,7 @@
 #include "math_macrotable.h"
 #include "math_nestinset.h"
 
+#include "support/types.h"
 
 /// This class contains the macro definition.
 class MathMacroTemplate : public MathNestInset {
@@ -62,7 +63,7 @@ public:
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 	/// prefix in inset
-	std::string prefix() const;
+	lyx::docstring prefix() const;
 
 	///
 	int numargs_;
