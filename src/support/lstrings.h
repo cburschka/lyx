@@ -70,6 +70,12 @@ char lowercase(char c);
 ///
 char uppercase(char c);
 
+/// changes the case only if c is a one-byte char
+char_type lowercase(char_type c);
+
+/// changes the case only if c is a one-byte char
+char_type uppercase(char_type c);
+
 /// same as lowercase(), but ignores locale
 std::string const ascii_lowercase(std::string const &);
 

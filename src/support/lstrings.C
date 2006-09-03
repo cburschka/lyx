@@ -198,6 +198,31 @@ char uppercase(char c)
 	return char(toupper(c));
 }
 
+// FIXME for lowercase() and uppercase() function below:
+// 1) std::tolower() and std::toupper() are templates that
+// compile fine with char_type. With the test (c >= 256) we
+// do not trust these function to do the right thing with
+// unicode char.
+// 2) these functions use the current locale, which is wrong
+// if it is not latin1 based (latin1 is a subset of UCS4).
+
+char_type lowercase(char_type c)
+{
+	if (c >= 256)
+		return c;
+	
+	return tolower(c);
+}
+
+
+char_type uppercase(char_type c)
+{
+	if (c >= 256)
+		return c;
+
+	return toupper(c);
+}
+
 
 namespace {
 
@@ -341,7 +366,8 @@ int tokenPos(string const & a, char delim, string const & tok)
 namespace {
 
 template<typename Ch> inline
-std::basic_string<Ch> const subst(std::basic_string<Ch> const & a, Ch oldchar, Ch newchar)
+std::basic_string<Ch> const subst_char(std::basic_string<Ch> const & a,
+		Ch oldchar, Ch newchar)
 {
 	typedef std::basic_string<Ch> String;
 	String tmp(a);
@@ -355,8 +381,8 @@ std::basic_string<Ch> const subst(std::basic_string<Ch> const & a, Ch oldchar, C
 
 
 template<typename String> inline
-String const subst(String const & a,
-		   String const & oldstr, String const & newstr)
+String const subst_string(String const & a,
+		String const & oldstr, String const & newstr)
 {
 	BOOST_ASSERT(!oldstr.empty());
 	String lstr = a;
@@ -375,28 +401,28 @@ String const subst(String const & a,
 
 string const subst(string const & a, char oldchar, char newchar)
 {
-	return subst<char>(a, oldchar, newchar);
+	return subst_char(a, oldchar, newchar);
 }
 
 
 docstring const subst(docstring const & a,
 		char_type oldchar, char_type newchar)
 {
-	return subst<char_type>(a, oldchar, newchar);
+	return subst_char(a, oldchar, newchar);
 }
 
 
 string const subst(string const & a,
 		string const & oldstr, string const & newstr)
 {
-	return subst<string>(a, oldstr, newstr);
+	return subst_string(a, oldstr, newstr);
 }
 
 
 docstring const subst(docstring const & a,
 		docstring const & oldstr, docstring const & newstr)
 {
-	return subst<docstring>(a, oldstr, newstr);
+	return subst_string(a, oldstr, newstr);
 }
 
 
