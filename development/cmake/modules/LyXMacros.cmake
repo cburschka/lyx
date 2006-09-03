@@ -99,3 +99,22 @@ MACRO (LYX_AUTOMOC)
    endforeach (_current_FILE)
 endmacro (LYX_AUTOMOC)
 
+
+
+# folders in the project
+# mode==flat  : no folders
+# mode==split : standart behavior of cmake, split heders and sources
+# mode== <other values" : code is in this folder
+macro(project_source_group mode sources headers)
+	#message(STATUS ${mode})
+	#message(STATUS ${sources} ${headers})
+	if(${mode} MATCHES "flat")
+		source_group("Source Files" Files)
+		source_group("Header Files" Files)
+	else(${mode} MATCHES "flat")
+		if(NOT ${mode} MATCHES "split")
+			source_group("${mode}" FILES ${${sources}} ${${headers}})
+			source_group("cmake" FILES CMakeLists.txt)
+		endif(NOT ${mode} MATCHES "split")
+	endif(${mode} MATCHES "flat")
+endmacro(project_source_group mode sources headers)

@@ -27,5 +27,5 @@ if(WIN32)
 	target_link_libraries(support shlwapi)
 endif(WIN32)
 
-source_group("${CODE_GROUP_NAME}" FILES ${support_sources} ${support_headers})
+project_source_group("${GROUP_CODE}" support_sources support_headers)
 

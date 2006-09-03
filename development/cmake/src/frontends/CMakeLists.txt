@@ -12,5 +12,5 @@ file(GLOB frontends_headers ${TOP_SRC_DIR}/src/frontends/*.h)
 
 add_library(frontends STATIC ${frontends_sources} ${frontends_headers})
 
-source_group("${CODE_GROUP_NAME}" FILES ${frontends_sources} ${frontends_headers})
+project_source_group("${GROUP_CODE}" frontends_sources frontends_headers)
 

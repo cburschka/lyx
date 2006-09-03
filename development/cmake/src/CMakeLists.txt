@@ -55,6 +55,6 @@ if(ASPELL_FOUND)
 	target_link_libraries(lyx-${qt_postfix} ${ASPELL_LIBRARY})
 endif(ASPELL_FOUND)
 
-source_group("${CODE_GROUP_NAME}" FILES ${lyx_sources} ${lyx_headers})
+project_source_group("${GROUP_CODE}" lyx_sources lyx_headers)
 
 

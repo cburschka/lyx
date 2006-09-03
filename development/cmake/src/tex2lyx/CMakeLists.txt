@@ -13,30 +13,33 @@ set(LINKED_FILES
 	../lyxlex_pimpl.C
 )
 
-set(tex2lyx_SRCS 
+set(tex2lyx_sources
    	${LINKED_FILES}
-	Spacing.h 
 	boost.C 
 	context.C 
-	context.h 
 	gettext.C 
-	gettext.h 
 	lengthcommon.C 
 	lyxfont.C 
-	lyxfont.h 
 	texparser.C 
-	texparser.h 
 	tex2lyx.C 
-	tex2lyx.h 
 	preamble.C 
 	math.C 
 	table.C 
 	text.C 
 )
 
+set(tex2lyx_headers
+	Spacing.h 
+	context.h 
+	gettext.h 
+	lyxfont.h 
+	texparser.h 
+	tex2lyx.h 
+)
+
 add_executable(tex2lyx ${tex2lyx_SRCS})
 
 target_link_libraries(tex2lyx  support )
 
-source_group("${CODE_GROUP_NAME}" FILES ${tex2lyx_SRCS})
+project_source_group("${GROUP_CODE}" tex2lyx_sources tex2lyx_headers)
 

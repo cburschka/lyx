@@ -29,6 +29,6 @@ if(WIN32)
 	target_link_libraries(frontend_qt4 Gdi32)
 endif(WIN32)
 
-source_group("${CODE_GROUP_NAME}" FILES ${frontends_qt4_sources} ${frontends_qt4_headers})
+project_source_group("${GROUP_CODE}" frontends_qt4_sources frontends_qt4_headers)
 source_group("Uic files" FILES ${frontend_qt4_UI})
 

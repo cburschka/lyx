@@ -78,5 +78,5 @@ if(ICONV_FOUND)
 	target_link_libraries(intl ${ICONV_LIBRARY})
 endif(ICONV_FOUND)
 
-source_group("${CODE_GROUP_NAME}" FILES ${intl_sources} ${intl_headers})
+project_source_group("${GROUP_CODE}" intl_sources intl_headers)
 
