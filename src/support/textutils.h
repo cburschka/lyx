@@ -15,6 +15,7 @@
 #ifndef TEXTUTILS_H
 #define TEXTUTILS_H
 
+#include "support/types.h"
 
 /// return true if the char is a line separator
 inline
@@ -26,17 +27,17 @@ bool isLineSeparatorChar(lyx::char_type c)
 
 /// return true if a char is alphabetical (including accented chars)
 inline
-bool isLetterChar(unsigned char c)
+bool isLetterChar(lyx::char_type c)
 {
 	return (c >= 'A' && c <= 'Z')
 		|| (c >= 'a' && c <= 'z')
-		|| (c >= 192); // in iso-8859-x these are accented chars
+		|| (c >= 192 && c < 256); // in iso-8859-x these are accented chars
 }
 
 
 /// return true if the char is printable (masked to 7-bit ASCII)
 inline
-bool isPrintable(unsigned char c)
+bool isPrintable(lyx::char_type c)
 {
 	return (c & 127) >= ' ';
 }
@@ -44,15 +45,14 @@ bool isPrintable(unsigned char c)
 
 /// return true if the char is printable and not a space (masked to 7-bit ASCII)
 inline
-bool isPrintableNonspace(unsigned char c)
+bool isPrintableNonspace(lyx::char_type c)
 {
 	return isPrintable(c) && c != ' ';
 }
 
-
-/// completely pointless FIXME
+/// return true if a unicode char is a digit.
 inline
-bool isDigit(unsigned char ch)
+bool isDigit(lyx::char_type ch)
 {
 	return ch >= '0' && ch <= '9';
 }
