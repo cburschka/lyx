@@ -152,7 +152,7 @@ namespace {
 
 		if (sel.empty()) {
 			const int old_pos = cur.pos();
-			cur.insert(new MathHullInset("simple"));
+			cur.insert(new MathHullInset(hullSimple));
 			BOOST_ASSERT(old_pos == cur.pos());
 			cur.nextInset()->edit(cur, true);
 			// don't do that also for LFUN_MATH_MODE
@@ -178,10 +178,10 @@ namespace {
 				LyXLex lex(0, 0);
 				lex.setStream(is);
 				formula->read(cur.buffer(), lex);
-				if (formula->getType() == "none")
+				if (formula->getType() == hullNone)
 					// Don't create pseudo formulas if
 					// delimiters are left out
-					formula->mutate("simple");
+					formula->mutate(hullSimple);
 				cur.insert(formula);
 			} else
 				cur.insert(new MathMacroTemplate(is));
@@ -1251,7 +1251,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_MATH_MATRIX:
 	case LFUN_MATH_DELIM:
 	case LFUN_MATH_BIGDELIM: {
-		cur.insert(new MathHullInset("simple"));
+		cur.insert(new MathHullInset(hullSimple));
 		cur.dispatch(FuncRequest(LFUN_CHAR_FORWARD));
 		cur.dispatch(cmd);
 		break;

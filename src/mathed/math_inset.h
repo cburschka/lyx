@@ -19,6 +19,23 @@
 
 #include <string>
 
+enum HullType {
+	hullNone,
+	hullSimple,
+	hullEquation,
+	hullEqnArray,
+	hullAlign,
+	hullAlignAt,
+	hullXAlignAt,
+	hullXXAlignAt,
+	hullFlAlign,
+	hullMultline,
+	hullGather
+};
+
+HullType hullType(std::string const & name);
+std::string hullName(HullType type);
+
 /**
 
 Abstract base class for all math objects.  A math insets is for use of the
@@ -171,9 +188,9 @@ public:
 	/// LyXInset stuff
 	virtual bool numberedType() const { return false; }
 	/// hull type
-	virtual std::string const & getType() const;
+	virtual HullType getType() const;
 	/// change type
-	virtual void mutate(std::string const &) {}
+	virtual void mutate(HullType /*newtype*/) {}
 	/// usually the latex name
 	virtual std::string name() const;
 

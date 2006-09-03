@@ -74,21 +74,20 @@ using std::vector;
 
 namespace {
 
-	int getCols(string const & type)
+	int getCols(HullType type)
 	{
-		if (type == "eqnarray")
-			return 3;
-		if (type == "align")
-			return 2;
-		if (type == "flalign")
-			return 2;
-		if (type == "alignat")
-			return 2;
-		if (type == "xalignat")
-			return 2;
-		if (type == "xxalignat")
-			return 2;
-		return 1;
+		switch (type) {
+			case hullEqnArray:
+				return 3;
+			case hullAlign:
+			case hullFlAlign:
+			case hullAlignAt:
+			case hullXAlignAt:
+			case hullXXAlignAt:
+				return 2;
+			default:
+				return 1;
+		}
 	}
 
 
@@ -109,35 +108,50 @@ namespace {
 	}
 
 
-	int typecode(string const & s)
-	{
-		if (s == "none")      return 0;
-		if (s == "simple")    return 1;
-		if (s == "equation")  return 2;
-		if (s == "eqnarray")  return 3;
-		if (s == "align")     return 4;
-		if (s == "alignat")   return 5;
-		if (s == "xalignat")  return 6;
-		if (s == "xxalignat") return 7;
-		if (s == "multline")  return 8;
-		if (s == "gather")    return 9;
-		if (s == "flalign")   return 10;
-		lyxerr << "unknown hull type '" << s << "'" << endl;
-		return -1;
-	}
-
-	bool smaller(string const & s, string const & t)
-	{
-		return typecode(s) < typecode(t);
-	}
-
-
 } // end anon namespace
 
 
+HullType hullType(std::string const & s)
+{
+	if (s == "none")      return hullNone;
+	if (s == "simple")    return hullSimple;
+	if (s == "equation")  return hullEquation;
+	if (s == "eqnarray")  return hullEqnArray;
+	if (s == "align")     return hullAlign;
+	if (s == "alignat")   return hullAlignAt;
+	if (s == "xalignat")  return hullXAlignAt;
+	if (s == "xxalignat") return hullXXAlignAt;
+	if (s == "multline")  return hullMultline;
+	if (s == "gather")    return hullGather;
+	if (s == "flalign")   return hullFlAlign;
+	lyxerr << "unknown hull type '" << s << "'" << endl;
+	return HullType(-1);
+}
+
+
+std::string hullName(HullType type)
+{
+	switch (type) {
+		case hullNone:       return "none";
+		case hullSimple:     return "simple";
+		case hullEquation:   return "equation";
+		case hullEqnArray:   return "eqnarray";
+		case hullAlign:      return "align";
+		case hullAlignAt:    return "alignat";
+		case hullXAlignAt:   return "xalignat";
+		case hullXXAlignAt:  return "xxalignat";
+		case hullMultline:   return "multline";
+		case hullGather:     return "gather";
+		case hullFlAlign:    return "flalign";
+		default:
+			lyxerr << "unknown hull type '" << type << "'" << endl;
+			return "none";
+	}
+}
+
 
 MathHullInset::MathHullInset()
-	: MathGridInset(1, 1), type_("none"), nonum_(1), label_(1),
+	: MathGridInset(1, 1), type_(hullNone), nonum_(1), label_(1),
 	  preview_(new RenderPreview(this))
 {
 	//lyxerr << "sizeof MathInset: " << sizeof(MathInset) << endl;
@@ -149,7 +163,7 @@ MathHullInset::MathHullInset()
 }
 
 
-MathHullInset::MathHullInset(string const & type)
+MathHullInset::MathHullInset(HullType type)
 	: MathGridInset(getCols(type), 1), type_(type), nonum_(1), label_(1),
 	  preview_(new RenderPreview(this))
 {
@@ -201,7 +215,7 @@ InsetBase * MathHullInset::editXY(LCursor & cur, int x, int y)
 
 MathInset::mode_type MathHullInset::currentMode() const
 {
-	if (type_ == "none")
+	if (type_ == hullNone)
 		return UNDECIDED_MODE;
 	// definitely math mode ...
 	return MATH_MODE;
@@ -226,9 +240,9 @@ bool MathHullInset::idxLast(LCursor & cur) const
 
 char MathHullInset::defaultColAlign(col_type col)
 {
-	if (type_ == "eqnarray")
+	if (type_ == hullEqnArray)
 		return "rcl"[col];
-	if (typecode(type_) >= typecode("align"))
+	if (type_ >= hullAlign)
 		return "rl"[col & 1];
 	return 'c';
 }
@@ -236,11 +250,11 @@ char MathHullInset::defaultColAlign(col_type col)
 
 int MathHullInset::defaultColSpace(col_type col)
 {
-	if (type_ == "align" || type_ == "alignat")
+	if (type_ == hullAlign || type_ == hullAlignAt)
 		return 0;
-	if (type_ == "xalignat")
+	if (type_ == hullXAlignAt)
 		return (col & 1) ? 20 : 0;
-	if (type_ == "xxalignat" || type_ == "flalign")
+	if (type_ == hullXXAlignAt || type_ == hullFlAlign)
 		return (col & 1) ? 40 : 0;
 	return 0;
 }
@@ -248,7 +262,7 @@ int MathHullInset::defaultColSpace(col_type col)
 
 char const * MathHullInset::standardFont() const
 {
-	return type_ == "none" ? "lyxnochange" : "mathnormal";
+	return type_ == hullNone ? "lyxnochange" : "mathnormal";
 }
 
 
@@ -427,19 +441,19 @@ bool MathHullInset::numbered(row_type row) const
 bool MathHullInset::ams() const
 {
 	return
-		type_ == "align" ||
-		type_ == "flalign" ||
-		type_ == "multline" ||
-		type_ == "gather" ||
-		type_ == "alignat" ||
-		type_ == "xalignat" ||
-		type_ == "xxalignat";
+		type_ == hullAlign ||
+		type_ == hullFlAlign ||
+		type_ == hullMultline ||
+		type_ == hullGather ||
+		type_ == hullAlignAt ||
+		type_ == hullXAlignAt ||
+		type_ == hullXXAlignAt;
 }
 
 
 bool MathHullInset::display() const
 {
-	return type_ != "simple" && type_ != "none";
+	return type_ != hullSimple && type_ != hullNone;
 }
 
 
@@ -453,11 +467,11 @@ void MathHullInset::getLabelList(Buffer const &, vector<string> & labels) const
 
 bool MathHullInset::numberedType() const
 {
-	if (type_ == "none")
+	if (type_ == hullNone)
 		return false;
-	if (type_ == "simple")
+	if (type_ == hullSimple)
 		return false;
-	if (type_ == "xxalignat")
+	if (type_ == hullXXAlignAt)
 		return false;
 	for (row_type row = 0; row < nrows(); ++row)
 		if (!nonum_[row])
@@ -488,31 +502,32 @@ void MathHullInset::header_write(WriteStream & os) const
 {
 	bool n = numberedType();
 
-	if (type_ == "none")
+	if (type_ == hullNone)
 		;
 
-	else if (type_ == "simple") {
+	else if (type_ == hullSimple) {
 		os << '$';
 		if (cell(0).empty())
 			os << ' ';
 	}
 
-	else if (type_ == "equation") {
+	else if (type_ == hullEquation) {
 		if (n)
 			os << "\\begin{equation" << star(n) << "}\n";
 		else
 			os << "\\[\n";
 	}
 
-	else if (type_ == "eqnarray" || type_ == "align" || type_ == "flalign"
-		 || type_ == "gather" || type_ == "multline")
+	else if (type_ == hullEqnArray || type_ == hullAlign || type_ ==
+hullFlAlign
+		 || type_ == hullGather || type_ == hullMultline)
 			os << "\\begin{" << type_ << star(n) << "}\n";
 
-	else if (type_ == "alignat" || type_ == "xalignat")
+	else if (type_ == hullAlignAt || type_ == hullXAlignAt)
 		os << "\\begin{" << type_ << star(n) << '}'
 		  << '{' << static_cast<unsigned int>((ncols() + 1)/2) << "}\n";
 
-	else if (type_ == "xxalignat")
+	else if (type_ == hullXXAlignAt)
 		os << "\\begin{" << type_ << '}'
 		  << '{' << static_cast<unsigned int>((ncols() + 1)/2) << "}\n";
 
@@ -525,24 +540,25 @@ void MathHullInset::footer_write(WriteStream & os) const
 {
 	bool n = numberedType();
 
-	if (type_ == "none")
+	if (type_ == hullNone)
 		os << "\n";
 
-	else if (type_ == "simple")
+	else if (type_ == hullSimple)
 		os << '$';
 
-	else if (type_ == "equation")
+	else if (type_ == hullEquation)
 		if (n)
 			os << "\\end{equation" << star(n) << "}\n";
 		else
 			os << "\\]\n";
 
-	else if (type_ == "eqnarray" || type_ == "align" || type_ == "flalign"
-		 || type_ == "alignat" || type_ == "xalignat"
-		 || type_ == "gather" || type_ == "multline")
+	else if (type_ == hullEqnArray || type_ == hullAlign || type_ ==
+hullFlAlign
+		 || type_ == hullAlignAt || type_ == hullXAlignAt
+		 || type_ == hullGather || type_ == hullMultline)
 		os << "\\end{" << type_ << star(n) << "}\n";
 
-	else if (type_ == "xxalignat")
+	else if (type_ == hullXXAlignAt)
 		os << "\\end{" << type_ << "}\n";
 
 	else
@@ -553,18 +569,18 @@ void MathHullInset::footer_write(WriteStream & os) const
 bool MathHullInset::rowChangeOK() const
 {
 	return
-		type_ == "eqnarray" || type_ == "align" ||
-		type_ == "flalign" || type_ == "alignat" ||
-		type_ == "xalignat" || type_ == "xxalignat" ||
-		type_ == "gather" || type_ == "multline";
+		type_ == hullEqnArray || type_ == hullAlign ||
+		type_ == hullFlAlign || type_ == hullAlignAt ||
+		type_ == hullXAlignAt || type_ == hullXXAlignAt ||
+		type_ == hullGather || type_ == hullMultline;
 }
 
 
 bool MathHullInset::colChangeOK() const
 {
 	return
-		type_ == "align" || type_ == "flalign" ||type_ == "alignat" ||
-		type_ == "xalignat" || type_ == "xxalignat";
+		type_ == hullAlign || type_ == hullFlAlign ||type_ == hullAlignAt ||
+		type_ == hullXAlignAt || type_ == hullXXAlignAt;
 }
 
 
@@ -635,7 +651,7 @@ void MathHullInset::glueall()
 	MathArray ar;
 	for (idx_type i = 0; i < nargs(); ++i)
 		ar.append(cell(i));
-	*this = MathHullInset("simple");
+	*this = MathHullInset(hullSimple);
 	cell(0) = ar;
 	setDefaults();
 }
@@ -700,21 +716,20 @@ void MathHullInset::changeCols(col_type cols)
 }
 
 
-string const & MathHullInset::getType() const
+HullType MathHullInset::getType() const
 {
 	return type_;
 }
 
 
-void MathHullInset::setType(string const & type)
+void MathHullInset::setType(HullType type)
 {
 	type_ = type;
 	setDefaults();
 }
 
 
-
-void MathHullInset::mutate(string const & newtype)
+void MathHullInset::mutate(HullType newtype)
 {
 	//lyxerr << "mutating from '" << type_ << "' to '" << newtype << "'" << endl;
 
@@ -726,56 +741,53 @@ void MathHullInset::mutate(string const & newtype)
 	// directly supported because it handles labels and numbering for
 	// "down mutation".
 
-	if (newtype == "dump") {
-		dump();
-	}
-
-	else if (newtype == type_) {
+	if (newtype == type_) {
 		// done
 	}
 
-	else if (typecode(newtype) < 0) {
+	else if (newtype < hullNone) {
 		// unknown type
+		dump();
 	}
 
-	else if (type_ == "none") {
-		setType("simple");
+	else if (type_ == hullNone) {
+		setType(hullSimple);
 		numbered(0, false);
 		mutate(newtype);
 	}
 
-	else if (type_ == "simple") {
-		if (newtype == "none") {
-			setType("none");
+	else if (type_ == hullSimple) {
+		if (newtype == hullNone) {
+			setType(hullNone);
 			numbered(0, false);
 		} else {
-			setType("equation");
+			setType(hullEquation);
 			numbered(0, false);
 			mutate(newtype);
 		}
 	}
 
-	else if (type_ == "equation") {
-		if (smaller(newtype, type_)) {
-			setType("simple");
+	else if (type_ == hullEquation) {
+		if (newtype < type_) {
+			setType(hullSimple);
 			numbered(0, false);
 			mutate(newtype);
-		} else if (newtype == "eqnarray") {
+		} else if (newtype == hullEqnArray) {
 			// split it "nicely" on the first relop
 			splitTo3Cols();
-			setType("eqnarray");
-		} else if (newtype == "multline" || newtype == "gather") {
+			setType(hullEqnArray);
+		} else if (newtype == hullMultline || newtype == hullGather) {
 			setType(newtype);
 		} else {
 			// split it "nicely"
 			splitTo2Cols();
-			setType("align");
+			setType(hullAlign);
 			mutate(newtype);
 		}
 	}
 
-	else if (type_ == "eqnarray") {
-		if (smaller(newtype, type_)) {
+	else if (type_ == hullEqnArray) {
+		if (newtype < type_) {
 			// set correct (no)numbering
 			bool allnonum = true;
 			for (row_type row = 0; row < nrows(); ++row)
@@ -797,21 +809,21 @@ void MathHullInset::mutate(string const & newtype)
 			mutate(newtype);
 		} else { // align & Co.
 			changeCols(2);
-			setType("align");
+			setType(hullAlign);
 			mutate(newtype);
 		}
 	}
 
-	else if (type_ ==  "align"   || type_ == "alignat" ||
-		 type_ == "xalignat" || type_ == "flalign") {
-		if (smaller(newtype, "align")) {
+	else if (type_ ==  hullAlign || type_ == hullAlignAt ||
+		 type_ == hullXAlignAt || type_ == hullFlAlign) {
+		if (newtype < hullAlign) {
 			changeCols(3);
-			setType("eqnarray");
+			setType(hullEqnArray);
 			mutate(newtype);
-		} else if (newtype == "gather" || newtype == "multline") {
+		} else if (newtype == hullGather || newtype == hullMultline) {
 			changeCols(1);
 			setType(newtype);
-		} else if (newtype ==   "xxalignat") {
+		} else if (newtype ==   hullXXAlignAt) {
 			for (row_type row = 0; row < nrows(); ++row)
 				numbered(row, false);
 			setType(newtype);
@@ -820,14 +832,14 @@ void MathHullInset::mutate(string const & newtype)
 		}
 	}
 
-	else if (type_ == "xxalignat") {
+	else if (type_ == hullXXAlignAt) {
 		for (row_type row = 0; row < nrows(); ++row)
 			numbered(row, false);
-		if (smaller(newtype, "align")) {
+		if (newtype < hullAlign) {
 			changeCols(3);
-			setType("eqnarray");
+			setType(hullEqnArray);
 			mutate(newtype);
-		} else if (newtype == "gather" || newtype == "multline") {
+		} else if (newtype == hullGather || newtype == hullMultline) {
 			changeCols(1);
 			setType(newtype);
 		} else {
@@ -835,21 +847,21 @@ void MathHullInset::mutate(string const & newtype)
 		}
 	}
 
-	else if (type_ == "multline" || type_ == "gather") {
-		if (newtype == "gather" || newtype == "multline")
+	else if (type_ == hullMultline || type_ == hullGather) {
+		if (newtype == hullGather || newtype == hullMultline)
 			setType(newtype);
-		else if (newtype ==   "align"   || newtype == "flalign"  ||
-			 newtype ==   "alignat" || newtype == "xalignat") {
+		else if (newtype == hullAlign || newtype == hullFlAlign  ||
+			 newtype == hullAlignAt || newtype == hullXAlignAt) {
 			splitTo2Cols();
 			setType(newtype);
-		} else if (newtype ==   "xxalignat") {
+		} else if (newtype ==   hullXXAlignAt) {
 			splitTo2Cols();
 			for (row_type row = 0; row < nrows(); ++row)
 				numbered(row, false);
 			setType(newtype);
 		} else {
 			splitTo3Cols();
-			setType("eqnarray");
+			setType(hullEqnArray);
 			mutate(newtype);
 		}
 	}
@@ -867,7 +879,7 @@ string MathHullInset::eolString(row_type row, bool emptyline, bool fragile) cons
 	if (numberedType()) {
 		if (!label_[row].empty() && !nonum_[row])
 			res += "\\label{" + label_[row] + '}';
-		if (nonum_[row] && (type_ != "multline"))
+		if (nonum_[row] && (type_ != hullMultline))
 			res += "\\nonumber ";
 	}
 	return res + MathGridInset::eolString(row, emptyline, fragile);
@@ -936,7 +948,7 @@ void MathHullInset::doExtern(LCursor & cur, FuncRequest & func)
 	cur.idx() -= cur.idx() % ncols();
 	cur.pos() = 0;
 
-	if (getType() == "simple") {
+	if (getType() == hullSimple) {
 		size_type pos = cur.cell().find_last(eq);
 		MathArray ar;
 		if (cur.inMathed() && cur.selection()) {
@@ -954,9 +966,9 @@ void MathHullInset::doExtern(LCursor & cur, FuncRequest & func)
 		return;
 	}
 
-	if (getType() == "equation") {
+	if (getType() == hullEquation) {
 		lyxerr << "use equation inset" << endl;
-		mutate("eqnarray");
+		mutate(hullEqnArray);
 		MathArray & ar = cur.cell();
 		lyxerr << "use cell: " << ar << endl;
 		++cur.idx();
@@ -1009,11 +1021,11 @@ void MathHullInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_BREAK_LINE:
 		// some magic for the common case
-		if (type_ == "simple" || type_ == "equation") {
+		if (type_ == hullSimple || type_ == hullEquation) {
 			recordUndoInset(cur);
 			bool const align =
 				cur.bv().buffer()->params().use_amsmath == BufferParams::AMS_ON;
-			mutate(align ? "align" : "eqnarray");
+			mutate(align ? hullAlign : hullEqnArray);
 			cur.idx() = 0;
 			cur.pos() = cur.lastpos();
 		}
@@ -1025,7 +1037,7 @@ void MathHullInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		if (display()) {
 			recordUndoInset(cur);
 			bool old = numberedType();
-			if (type_ == "multline")
+			if (type_ == hullMultline)
 				numbered(nrows() - 1, !old);
 			else
 				for (row_type row = 0; row < nrows(); ++row)
@@ -1037,7 +1049,7 @@ void MathHullInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_MATH_NONUMBER:
 		if (display()) {
 			recordUndoInset(cur);
-			row_type r = (type_ == "multline") ? nrows() - 1 : cur.row();
+			row_type r = (type_ == hullMultline) ? nrows() - 1 : cur.row();
 			bool old = numbered(r);
 			cur.message(old ? _("No number") : _("Number"));
 			numbered(r, !old);
@@ -1046,7 +1058,7 @@ void MathHullInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_LABEL_INSERT: {
 		recordUndoInset(cur);
-		row_type r = (type_ == "multline") ? nrows() - 1 : cur.row();
+		row_type r = (type_ == hullMultline) ? nrows() - 1 : cur.row();
 		string old_label = label(r);
 		string const default_label =
 			(lyxrc.label_init_length >= 0) ? "eq:" : "";
@@ -1075,7 +1087,7 @@ void MathHullInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 			InsetCommandMailer::string2params(name, lyx::to_utf8(cmd.argument()), p);
 			string str = p.getContents();
 			recordUndoInset(cur);
-			row_type const r = (type_ == "multline") ? nrows() - 1 : cur.row();
+			row_type const r = (type_ == hullMultline) ? nrows() - 1 : cur.row();
 			str = lyx::support::trim(str);
 			if (!str.empty())
 				numbered(r, true);
@@ -1104,7 +1116,7 @@ void MathHullInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		recordUndoInset(cur);
 		row_type row = cur.row();
 		col_type col = cur.col();
-		mutate(lyx::to_utf8(cmd.argument()));
+		mutate(hullType(lyx::to_utf8(cmd.argument())));
 		cur.idx() = row * ncols() + col;
 		if (cur.idx() > cur.lastidx()) {
 			cur.idx() = cur.lastidx();
@@ -1118,7 +1130,7 @@ void MathHullInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_MATH_DISPLAY: {
 		recordUndoInset(cur);
-		mutate(type_ == "simple" ? "equation" : "simple");
+		mutate(type_ == hullSimple ? hullEquation : hullSimple);
 		cur.idx() = 0;
 		cur.pos() = cur.lastpos();
 		//cur.dispatched(FINISHED);
@@ -1152,7 +1164,7 @@ bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 		status.enabled(true);
 		return true;
 	case LFUN_LABEL_INSERT:
-		status.enabled(type_ != "simple");
+		status.enabled(type_ != hullSimple);
 		return true;
 	case LFUN_INSET_INSERT: {
 		// Don't test createMathInset_fromDialogStr(), since
@@ -1160,7 +1172,7 @@ bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 		// dialog would not be applyable.
 		string const name = cmd.getArg(0);
 		status.enabled(name == "ref" ||
-			       (name == "label" && type_ != "simple"));
+			       (name == "label" && type_ != hullSimple));
 		break;
 	}
 	case LFUN_TABULAR_FEATURE: {
@@ -1173,7 +1185,7 @@ bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 			|| s == "copy-row")) {
 			status.message(bformat(
 				N_("Can't change number of rows in '%1$s'"),
-				type_));
+				   hullName(type_)));
 			status.enabled(false);
 			return true;
 		}
@@ -1183,24 +1195,24 @@ bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 			|| s == "copy-column")) {
 			status.message(bformat(
 				N_("Can't change number of columns in '%1$s'"),
-				type_));
+				   hullName(type_)));
 			status.enabled(false);
 			return true;
 		}
-		if ((type_ == "simple"
-		  || type_ == "equation"
-		  || type_ == "none") &&
+		if ((type_ == hullSimple
+		  || type_ == hullEquation
+		  || type_ == hullNone) &&
 		    (s == "add-hline-above" || s == "add-hline-below")) {
 			status.message(bformat(
 				N_("Can't add horizontal grid lines in '%1$s'"),
-				type_));
+				   hullName(type_)));
 			status.enabled(false);
 			return true;
 		}
 		if (s == "add-vline-left" || s == "add-vline-right") {
 			status.message(bformat(
 				N_("Can't add vertical grid lines in '%1$s'"),
-				type_));
+				   hullName(type_)));
 			status.enabled(false);
 			return true;
 		}
@@ -1433,8 +1445,8 @@ int MathHullInset::docbook(Buffer const & buf, ostream & os,
 	MathMLStream ms(os);
 	int res = 0;
 	string name;
-	if (getType() == "simple")
-		name= "inlineequation";
+	if (getType() == hullSimple)
+		name = "inlineequation";
 	else
 		name = "informalequation";
 

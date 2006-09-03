@@ -119,10 +119,9 @@ void MathInset::mathmlize(MathMLStream & os) const
 }
 
 
-string const & MathInset::getType() const
+HullType MathInset::getType() const
 {
-	static string const t = "none";
-	return t;
+	return hullNone;
 }
 
 

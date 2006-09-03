@@ -24,7 +24,7 @@ public:
 	///
 	MathHullInset();
 	///
-	explicit MathHullInset(std::string const & type);
+	explicit MathHullInset(HullType type);
 	///
 	~MathHullInset();
 	///
@@ -73,9 +73,9 @@ public:
 	void delCol(col_type col);
 
 	/// get type
-	std::string const & getType() const;
+	HullType getType() const;
 	/// change type
-	void mutate(std::string const &);
+	void mutate(HullType newtype);
 
 	///
 	int defaultColSpace(col_type col);
@@ -131,7 +131,7 @@ protected:
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 	///
-	void setType(std::string const & type);
+	void setType(HullType type);
 	///
 	void validate1(LaTeXFeatures & features);
 	///
@@ -170,7 +170,7 @@ private:
 	bool colChangeOK() const;
 
 	/// "none", "simple", "display", "eqnarray",...
-	std::string type_;
+	HullType type_;
 	///
 	std::vector<int> nonum_;
 	///
