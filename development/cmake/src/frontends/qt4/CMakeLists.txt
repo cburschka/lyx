@@ -10,8 +10,6 @@ lyx_automoc(${frontends_qt4_sources})
 
 lyx_add_ui_files(frontends_qt4_sources ${frontend_qt4_UI})
 
-source_group("Uic files" FILES ${frontend_qt4_UI})
-
 add_definitions(
 		-DQT_CLEAN_NAMESPACE
 		-DQT_GENUINE_STR
@@ -30,4 +28,7 @@ target_link_libraries(frontend_qt4 ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} cont
 if(WIN32)
 	target_link_libraries(frontend_qt4 Gdi32)
 endif(WIN32)
+
+source_group("${CODE_GROUP_NAME}" FILES ${frontends_qt4_sources} ${frontends_qt4_headers})
+source_group("Uic files" FILES ${frontend_qt4_UI})
 

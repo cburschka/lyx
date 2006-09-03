@@ -38,4 +38,5 @@ add_executable(tex2lyx ${tex2lyx_SRCS})
 
 target_link_libraries(tex2lyx  support )
 
+source_group("${CODE_GROUP_NAME}" FILES ${tex2lyx_SRCS})
 

@@ -35,3 +35,6 @@ if(WIN32)
 	target_link_libraries(frontend_qt3 Gdi32)
 endif(WIN32)
 
+source_group("${CODE_GROUP_NAME}" FILES ${frontends_qt3_sources} ${frontends_qt3_headers})
+source_group("Uic files" FILES ${frontend_qt3_UI})
+

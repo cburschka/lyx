@@ -1,6 +1,9 @@
 # where to look first for cmake modules, before ${CMAKE_ROOT}/Modules/ is checked
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/modules")
 
+
+set(CODE_GROUP_NAME "The Golden Code")
+
 include(LyXPaths)
 include(LyXMacros)
 

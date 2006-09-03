@@ -9,3 +9,5 @@ include_directories(${TOP_SRC_DIR}/src/insets)
 
 add_library(insets STATIC ${insets_sources} ${insets_headers})
 
+source_group("${CODE_GROUP_NAME}" FILES ${insets_sources} ${insets_headers})
+

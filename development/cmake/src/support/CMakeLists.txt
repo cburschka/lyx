@@ -14,12 +14,12 @@ list(REMOVE_ITEM support_sources
 	${TOP_SRC_DIR}/src/support/strerror.c)
 	
 
+set(support_sources ${support_sources} ${CMAKE_CURRENT_BINARY_DIR}/package.C)
+	
 include_directories(${TOP_SRC_DIR}/src/support ${ICONV_INCLUDE_DIR})
 
-add_library(support STATIC 
-	${support_sources} 
-	${support_headers} 
-	${CMAKE_CURRENT_BINARY_DIR}/package.C)
+
+add_library(support STATIC ${support_sources} ${support_headers})
 
 target_link_libraries(support boost_signals)
 
@@ -27,5 +27,5 @@ if(WIN32)
 	target_link_libraries(support shlwapi)
 endif(WIN32)
 
-
+source_group("${CODE_GROUP_NAME}" FILES ${support_sources} ${support_headers})
 

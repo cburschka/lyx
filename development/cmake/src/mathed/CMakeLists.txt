@@ -12,4 +12,5 @@ include_directories(${TOP_SRC_DIR}/src/mathed)
 
 add_library(mathed STATIC ${mathed_sources} ${mathed_headers})
 
+source_group("${CODE_GROUP_NAME}" FILES ${mathed_sources} ${mathed_headers})
 

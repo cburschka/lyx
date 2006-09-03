@@ -22,6 +22,8 @@ list(REMOVE_ITEM lyx_sources
 	${TOP_SRC_DIR}/src/Variables.C
 	${TOP_SRC_DIR}/src/Sectioning.C)
 
+set( lyx_sources ${lyx_sources} ${CMAKE_CURRENT_BINARY_DIR}/version.C )
+	
 if(ASPELL_FOUND)
 	include_directories(${ASPELL_INCLUDE_DIR})
 	set(lyx_sources ${lyx_sources} ${TOP_SRC_DIR}/src/aspell.C)
@@ -52,3 +54,7 @@ target_link_libraries(lyx-${qt_postfix}
 if(ASPELL_FOUND)
 	target_link_libraries(lyx-${qt_postfix} ${ASPELL_LIBRARY})
 endif(ASPELL_FOUND)
+
+source_group("${CODE_GROUP_NAME}" FILES ${lyx_sources} ${lyx_headers})
+
+
