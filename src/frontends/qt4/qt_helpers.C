@@ -31,6 +31,7 @@
 
 using lyx::support::isStrDbl;
 using lyx::char_type;
+using lyx::docstring;
 
 using std::vector;
 using std::make_pair;
@@ -130,7 +131,7 @@ QString const ucs4_to_qstring(char_type const * str, size_t ls)
 }
 
 
-QString const ucs4_to_qstring(vector<char_type> const & ucs4)
+QString const toqstr(docstring const & ucs4)
 {
 	QString s;
 	size_t const ls = ucs4.size();
@@ -142,12 +143,12 @@ QString const ucs4_to_qstring(vector<char_type> const & ucs4)
 }
 
 
-vector<char_type> qstring_to_ucs4(QString const & qstr)
+docstring const qstring_to_ucs4(QString const & qstr)
 {
 	int ls = qstr.size();
-	vector<char_type> ucs4;
+	docstring ucs4;
 	for (int i = 0; i < ls; ++i)
-		ucs4.push_back(static_cast<boost::uint32_t>(qstr[i].unicode()));
+		ucs4 += static_cast<char_type>(qstr[i].unicode());
 
 	return ucs4;
 }

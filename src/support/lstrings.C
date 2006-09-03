@@ -338,11 +338,15 @@ int tokenPos(string const & a, char delim, string const & tok)
 }
 
 
-string const subst(string const & a, char oldchar, char newchar)
+namespace {
+
+template<typename Ch> inline
+std::basic_string<Ch> const subst(std::basic_string<Ch> const & a, Ch oldchar, Ch newchar)
 {
-	string tmp(a);
-	string::iterator lit = tmp.begin();
-	string::iterator end = tmp.end();
+	typedef std::basic_string<Ch> String;
+	String tmp(a);
+	typename String::iterator lit = tmp.begin();
+	typename String::iterator end = tmp.end();
 	for (; lit != end; ++lit)
 		if ((*lit) == oldchar)
 			(*lit) = newchar;
@@ -350,19 +354,49 @@ string const subst(string const & a, char oldchar, char newchar)
 }
 
 
-string const subst(string const & a,
-		   string const & oldstr, string const & newstr)
+template<typename String> inline
+String const subst(String const & a,
+		   String const & oldstr, String const & newstr)
 {
 	BOOST_ASSERT(!oldstr.empty());
-	string lstr = a;
-	string::size_type i = 0;
-	string::size_type const olen = oldstr.length();
+	String lstr = a;
+	typename String::size_type i = 0;
+	typename String::size_type const olen = oldstr.length();
 	while ((i = lstr.find(oldstr, i)) != string::npos) {
 		lstr.replace(i, olen, newstr);
 		i += newstr.length(); // We need to be sure that we dont
 		// use the same i over and over again.
 	}
 	return lstr;
+}
+
+}
+
+
+string const subst(string const & a, char oldchar, char newchar)
+{
+	return subst<char>(a, oldchar, newchar);
+}
+
+
+docstring const subst(docstring const & a,
+		char_type oldchar, char_type newchar)
+{
+	return subst<char_type>(a, oldchar, newchar);
+}
+
+
+string const subst(string const & a,
+		string const & oldstr, string const & newstr)
+{
+	return subst<string>(a, oldstr, newstr);
+}
+
+
+docstring const subst(docstring const & a,
+		docstring const & oldstr, docstring const & newstr)
+{
+	return subst<docstring>(a, oldstr, newstr);
 }
 
 
@@ -546,23 +580,24 @@ int findToken(char const * const str[], string const & search_token)
 }
 
 
-string const externalLineEnding(string const & str)
+docstring const externalLineEnding(docstring const & str)
 {
 #if defined(__APPLE__)
 	// The MAC clipboard uses \r for lineendings, and we use \n
 	return subst(str, '\n', '\r');
 #elif defined (_WIN32) || (defined (__CYGWIN__) && defined (X_DISPLAY_MISSING))
 	// Windows clipboard uses \r\n for lineendings, and we use \n
-	return subst(str, "\n", "\r\n");
+	return subst(str, lyx::from_ascii("\n"), lyx::from_ascii("\r\n"));
 #else
 	return str;
 #endif
 }
 
 
-string const internalLineEnding(string const & str)
+docstring const internalLineEnding(docstring const & str)
 {
-	string s = subst(str, "\r\n", "\n");
+	docstring const s = subst(str,
+			lyx::from_ascii("\r\n"), lyx::from_ascii("\n"));
 	return subst(s, '\r', '\n');
 }
 

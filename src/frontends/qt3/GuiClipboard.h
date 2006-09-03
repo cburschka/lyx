@@ -29,9 +29,9 @@ public:
 	 */
 	//@{
 
-	std::string const get() const;
+	docstring const get() const;
 
-	void put(std::string const & str);
+	void put(docstring const & str);
 	//@}
 };
 

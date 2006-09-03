@@ -15,6 +15,7 @@
 #include <utility>
 
 #include "lyxlength.h"
+#include "support/docstring.h"
 
 class LengthCombo;
 class QComboBox;
@@ -56,6 +57,12 @@ QString const toqstr(std::string const & str);
 
 
 /**
+ * toqstr - convert UCS4 encoded docstring to QString
+ */
+QString const toqstr(lyx::docstring const & str);
+
+
+/**
  * qt_ - i18nize string and convert to unicode
  *
  * Use this in qt3/ instead of qt_()
@@ -77,5 +84,11 @@ QString const qt_(std::string const & str);
  * Return the QString encoded in the locale
  */
 std::string const fromqstr(QString const & str);
+
+
+/**
+ * qstring_to_ucs4 - convert QString to UCS4 encoded docstring
+ */
+lyx::docstring const qstring_to_ucs4(QString const & str);
 
 #endif // QTHELPERS_H

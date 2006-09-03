@@ -54,6 +54,7 @@
 #include <limits>
 
 using lyx::char_type;
+using lyx::docstring;
 using lyx::pit_type;
 
 using std::string;
@@ -1114,10 +1115,10 @@ void LCursor::errorMessage(string const & msg) const
 }
 
 
-string LCursor::selectionAsString(bool label) const
+docstring LCursor::selectionAsString(bool label) const
 {
 	if (!selection())
-		return string();
+		return docstring();
 
 	if (inTexted()) {
 		Buffer const & buffer = *bv().buffer();
@@ -1130,7 +1131,7 @@ string LCursor::selectionAsString(bool label) const
 		size_t const endpos = selEnd().pos();
 
 		if (startpit == endpit)
-			return pars[startpit].asString(buffer, startpos, endpos, label);
+			return lyx::from_utf8(pars[startpit].asString(buffer, startpos, endpos, label));
 
 		// First paragraph in selection
 		string result = pars[startpit].
@@ -1145,13 +1146,13 @@ string LCursor::selectionAsString(bool label) const
 		// Last paragraph in selection
 		result += pars[endpit].asString(buffer, 0, endpos, label);
 
-		return result;
+		return lyx::from_utf8(result);
 	}
 
 	if (inMathed())
-		return lyx::cap::grabSelection(*this);
+		return lyx::from_utf8(lyx::cap::grabSelection(*this));
 
-	return string();
+	return docstring();
 }
 
 

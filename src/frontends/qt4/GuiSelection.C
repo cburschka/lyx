@@ -26,7 +26,6 @@ using lyx::support::internalLineEnding;
 using lyx::support::externalLineEnding;
 
 using std::endl;
-using std::string;
 
 namespace lyx {
 namespace frontend {
@@ -43,21 +42,21 @@ void GuiSelection::haveSelection(bool own)
 }
 
 
-string const GuiSelection::get() const
+docstring const GuiSelection::get() const
 {
 	QString const str = qApp->clipboard()->text(QClipboard::Selection);
 	lyxerr[Debug::ACTION] << "GuiSelection::get: " << fromqstr(str)
 	                      << endl;
 	if (str.isNull())
-		return string();
+		return docstring();
 
-	return internalLineEnding(fromqstr(str));
+	return internalLineEnding(qstring_to_ucs4(str));
 }
 
 
-void GuiSelection::put(string const & str)
+void GuiSelection::put(docstring const & str)
 {
-	lyxerr[Debug::ACTION] << "GuiSelection::put: " << str << endl;
+	lyxerr[Debug::ACTION] << "GuiSelection::put: " << lyx::to_utf8(str) << endl;
 
 	qApp->clipboard()->setText(toqstr(externalLineEnding(str)),
 	                           QClipboard::Selection);

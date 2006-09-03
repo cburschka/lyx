@@ -31,29 +31,23 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-// ENCODING: Gtk::Clipboard returns UTF-8, we assume that the backend
-// wants ISO-8859-1 and convert it to that.
-// FIXME: Wrong!
-string const GuiSelection::get() const
+docstring const GuiSelection::get() const
 {
 	Glib::RefPtr<Gtk::Clipboard> clipboard =
 		Gtk::Clipboard::get(GDK_SELECTION_PRIMARY);
-	string const str = Glib::convert_with_fallback(
-			clipboard->wait_for_text(), "ISO-8859-1", "UTF-8");
+	string const str = clipboard->wait_for_text();
 	lyxerr[Debug::ACTION] << "GuiClipboard::get: " << str << endl;
-	return str;
+	return lyx::from_utf8(str);
 }
 
 
-// ENCODING: we assume that the backend passes us ISO-8859-1 and
-// convert from that to UTF-8 before passing to GTK
-// FIXME: Wrong!
-void GuiSelection::put(string const & str)
+void GuiSelection::put(docstring const & str)
 {
-	lyxerr[Debug::ACTION] << "GuiClipboard::put: " << str << endl;
+	string const utf8 = lyx::to_utf8(str);
+	lyxerr[Debug::ACTION] << "GuiClipboard::put: " << utf8 << endl;
 	Glib::RefPtr<Gtk::Clipboard> clipboard =
 		Gtk::Clipboard::get(GDK_SELECTION_PRIMARY);
-	clipboard->set_text(Glib::convert(str, "UTF-8", "ISO-8859-1"));
+	clipboard->set_text(utf8);
 }
 
 } // namespace frontend

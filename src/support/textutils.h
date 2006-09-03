@@ -18,7 +18,7 @@
 
 /// return true if the char is a line separator
 inline
-bool isLineSeparatorChar(char c)
+bool isLineSeparatorChar(lyx::char_type c)
 {
 	return c == ' ';
 }

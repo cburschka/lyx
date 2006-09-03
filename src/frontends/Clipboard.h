@@ -14,7 +14,7 @@
 #ifndef BASE_CLIPBOARD_H
 #define BASE_CLIPBOARD_H
 
-#include <string>
+#include "support/docstring.h"
 
 namespace lyx {
 namespace frontend {
@@ -32,13 +32,13 @@ public:
 	 * This should be called when the user requests to paste from the
 	 * clipboard.
 	 */
-	virtual std::string const get() const = 0;
+	virtual docstring const get() const = 0;
 	/**
 	 * Fill the window system clipboard.
 	 * This should be called when the user requests to cut or copy to
 	 * the clipboard.
 	 */
-	virtual void put(std::string const &) = 0;
+	virtual void put(docstring const &) = 0;
 };
 
 } // namespace frontend

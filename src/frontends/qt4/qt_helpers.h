@@ -66,11 +66,11 @@ QString const toqstr(std::string const & str);
  *
  * QString uses ucs2 (a.k.a utf16) internally.
  */
+QString const toqstr(lyx::docstring const & ucs4);
+
 QString const ucs4_to_qstring(lyx::char_type const * str, size_t ls);
 
-QString const ucs4_to_qstring(std::vector<lyx::char_type> const & ucs4);
-
-std::vector<lyx::char_type> qstring_to_ucs4(QString const & qstr);
+lyx::docstring const qstring_to_ucs4(QString const & qstr);
 
 void qstring_to_ucs4(QString const & qstr, std::vector<lyx::char_type> & ucs4);
 

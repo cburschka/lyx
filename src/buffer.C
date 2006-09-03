@@ -93,6 +93,7 @@ namespace io = boost::iostreams;
 #include <fstream>
 
 
+using lyx::docstring;
 using lyx::pos_type;
 using lyx::pit_type;
 
@@ -504,13 +505,13 @@ bool Buffer::readDocument(LyXLex & lex)
 // needed to insert the selection
 void Buffer::insertStringAsLines(ParagraphList & pars,
 	pit_type & pit, pos_type & pos,
-	LyXFont const & fn, string const & str, bool autobreakrows)
+	LyXFont const & fn, docstring const & str, bool autobreakrows)
 {
 	LyXFont font = fn;
 
 	// insert the string, don't insert doublespace
 	bool space_inserted = true;
-	for (string::const_iterator cit = str.begin();
+	for (docstring::const_iterator cit = str.begin();
 	    cit != str.end(); ++cit) {
 		Paragraph & par = pars[pit];
 		if (*cit == '\n') {
@@ -541,9 +542,11 @@ void Buffer::insertStringAsLines(ParagraphList & pars,
 				}
 				space_inserted = true;
 			}
+/* FIXME: not needed anymore?
 		} else if (!isPrintable(*cit)) {
 			// Ignore unprintables
 			continue;
+*/
 		} else {
 			// just insert the character
 			par.insertChar(pos, *cit, font);

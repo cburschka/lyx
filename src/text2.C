@@ -583,10 +583,10 @@ string LyXText::getStringToIndex(LCursor const & cur)
 {
 	BOOST_ASSERT(this == cur.text());
 
-	string idxstring;
-	if (cur.selection()) {
+	docstring idxstring;
+	if (cur.selection())
 		idxstring = cur.selectionAsString(false);
-	} else {
+	else {
 		// Try implicit word selection. If there is a change
 		// in the language the implicit word selection is
 		// disabled.
@@ -601,7 +601,7 @@ string LyXText::getStringToIndex(LCursor const & cur)
 			idxstring = tmpcur.selectionAsString(false);
 	}
 
-	return idxstring;
+	return lyx::to_utf8(idxstring);
 }
 
 
@@ -647,7 +647,7 @@ void LyXText::insertInset(LCursor & cur, InsetBase * inset)
 
 
 // needed to insert the selection
-void LyXText::insertStringAsLines(LCursor & cur, string const & str)
+void LyXText::insertStringAsLines(LCursor & cur, docstring const & str)
 {
 	cur.buffer().insertStringAsLines(pars_, cur.pit(), cur.pos(),
 					 current_font, str, autoBreakRows_);
@@ -656,9 +656,9 @@ void LyXText::insertStringAsLines(LCursor & cur, string const & str)
 
 // turn double CR to single CR, others are converted into one
 // blank. Then insertStringAsLines is called
-void LyXText::insertStringAsParagraphs(LCursor & cur, string const & str)
+void LyXText::insertStringAsParagraphs(LCursor & cur, docstring const & str)
 {
-	string linestr = str;
+	docstring linestr = str;
 	bool newline_inserted = false;
 
 	for (string::size_type i = 0, siz = linestr.size(); i < siz; ++i) {

@@ -144,7 +144,7 @@ namespace {
 	void mathDispatch(LCursor & cur, FuncRequest const & cmd, bool display)
 	{
 		recordUndo(cur);
-		string sel = cur.selectionAsString(false);
+		string sel = lyx::to_utf8(cur.selectionAsString(false));
 		//lyxerr << "selection is: '" << sel << "'" << endl;
 
 		// It may happen that sel is empty but there is a selection
@@ -904,7 +904,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_CLIPBOARD_PASTE: {
 		cur.clearSelection();
-		string const clip = bv->owner()->gui().clipboard().get();
+		docstring const clip = bv->owner()->gui().clipboard().get();
 		if (!clip.empty()) {
 			recordUndo(cur);
 			if (cmd.argument() == "paragraph")
@@ -917,7 +917,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_PRIMARY_SELECTION_PASTE: {
 		cur.clearSelection();
-		string const clip = bv->owner()->gui().selection().get();
+		docstring const clip = bv->owner()->gui().selection().get();
 		if (!clip.empty()) {
 			recordUndo(cur);
 			if (cmd.argument() == "paragraph")
@@ -1449,7 +1449,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_THESAURUS_ENTRY: {
-		string arg = lyx::to_utf8(cmd.argument());
+		docstring arg = cmd.argument();
 		if (arg.empty()) {
 			arg = cur.selectionAsString(false);
 			// FIXME
@@ -1459,7 +1459,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 				arg = cur.selectionAsString(false);
 			}
 		}
-		bv->owner()->getDialogs().show("thesaurus", arg);
+		bv->owner()->getDialogs().show("thesaurus", lyx::to_utf8(arg));
 		break;
 	}
 

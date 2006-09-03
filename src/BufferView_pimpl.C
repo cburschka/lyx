@@ -83,6 +83,7 @@
 using lyx::frontend::Clipboard;
 using lyx::frontend::Gui;
 
+using lyx::docstring;
 using lyx::pos_type;
 
 using lyx::support::addPath;
@@ -460,7 +461,7 @@ void BufferView::Pimpl::scroll(int /*lines*/)
 
 void BufferView::Pimpl::selectionRequested()
 {
-	static string sel;
+	static docstring sel;
 
 	if (!available())
 		return;

@@ -19,6 +19,7 @@
 
 #include "support/lstrings.h"
 #include "support/convert.h"
+#include "support/unicode.h"
 
 #include <qcombobox.h>
 #include <qlineedit.h>
@@ -28,6 +29,8 @@
 
 
 using lyx::support::isStrDbl;
+using lyx::char_type;
+using lyx::docstring;
 
 using std::make_pair;
 using std::string;
@@ -114,6 +117,15 @@ QString const toqstr(string const & str)
 }
 
 
+QString const toqstr(docstring const & str)
+{
+	std::vector<unsigned short> ucs2 =
+		ucs4_to_ucs2(str.c_str(), str.length());
+	ucs2.push_back('\0');
+	return QString::fromUcs2(&ucs2[0]);
+}
+
+
 QString const qt_(char const * str)
 {
 	return toqstr(_(str));
@@ -131,6 +143,15 @@ string const fromqstr(QString const & str)
 	//return str;
 
 	return str.ascii() ? str.ascii() : "";
+}
+
+
+docstring const qstring_to_ucs4(QString const & str)
+{
+	unsigned short const * const ucs2 = str.ucs2();
+	std::vector<char_type> const ucs4 = ucs2_to_ucs4(
+		std::vector<unsigned short>(ucs2, ucs2 + str.length()));
+	return docstring(ucs4.begin(), ucs4.end());
 }
 
 

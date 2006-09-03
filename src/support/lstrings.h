@@ -130,9 +130,17 @@ int tokenPos(std::string const & a, char delim, std::string const & tok);
 /// Substitute all \a oldchar with \a newchar
 std::string const subst(std::string const & a, char oldchar, char newchar);
 
+/// Substitute all \a oldchar with \a newchar
+docstring const subst(docstring const & a,
+		char_type oldchar, char_type newchar);
+
 /// substitutes all instances of \a oldstr with \a newstr
 std::string const subst(std::string const & a,
 		   std::string const & oldstr, std::string const & newstr);
+
+/// substitutes all instances of \a oldstr with \a newstr
+docstring const subst(docstring const & a,
+		docstring const & oldstr, docstring const & newstr);
 
 /** Trims characters off the end and beginning of a string.
     \code
@@ -188,10 +196,10 @@ std::string const getStringFromVector(std::vector<std::string> const & vec,
 int findToken(char const * const str[], std::string const & search_token);
 
 /// Convert internal line endings to line endings as expected by the OS
-std::string const externalLineEnding(std::string const & str);
+docstring const externalLineEnding(docstring const & str);
 
 /// Convert line endings in any formnat to internal line endings
-std::string const internalLineEnding(std::string const & str);
+docstring const internalLineEnding(docstring const & str);
 
 
 #ifdef I_AM_NOT_AFRAID_OF_HEADER_LIBRARIES

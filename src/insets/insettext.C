@@ -52,6 +52,7 @@
 #include <boost/bind.hpp>
 #include <boost/current_function.hpp>
 
+using lyx::docstring;
 using lyx::pos_type;
 
 using lyx::graphics::PreviewLoader;
@@ -377,7 +378,7 @@ void InsetText::markNew(bool track_changes)
 }
 
 
-void InsetText::setText(string const & data, LyXFont const & font)
+void InsetText::setText(docstring const & data, LyXFont const & font)
 {
 	clear();
 	Paragraph & first = paragraphs().front();

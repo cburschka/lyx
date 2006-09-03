@@ -77,7 +77,7 @@ public:
 	///
 	Code lyxCode() const { return TEXT_CODE; }
 	///
-	void setText(std::string const &, LyXFont const &);
+	void setText(lyx::docstring const &, LyXFont const &);
 	///
 	void setAutoBreakRows(bool);
 	///

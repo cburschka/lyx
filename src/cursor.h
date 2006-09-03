@@ -86,7 +86,7 @@ public:
 	///
 	void selHandle(bool selecting);
 	//
-	std::string selectionAsString(bool label) const;
+	lyx::docstring selectionAsString(bool label) const;
 	///
 	std::string currentState();
 

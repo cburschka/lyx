@@ -55,6 +55,7 @@
 #include <cerrno>
 #include <fstream>
 
+using lyx::docstring;
 using lyx::support::addName;
 using lyx::support::bformat;
 using lyx::support::destroyDir;
@@ -357,7 +358,8 @@ void insertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 	if (!bv->available())
 		return;
 
-	string const tmpstr = getContentsOfAsciiFile(bv, f, asParagraph);
+	// FIXME: We don't know the encoding of the file
+	docstring const tmpstr = lyx::from_utf8(getContentsOfAsciiFile(bv, f, asParagraph));
 	if (tmpstr.empty())
 		return;
 

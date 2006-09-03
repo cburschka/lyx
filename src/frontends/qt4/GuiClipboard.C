@@ -26,26 +26,25 @@ using lyx::support::internalLineEnding;
 using lyx::support::externalLineEnding;
 
 using std::endl;
-using std::string;
 
 namespace lyx {
 namespace frontend {
 
-string const GuiClipboard::get() const
+docstring const GuiClipboard::get() const
 {
 	QString const str = qApp->clipboard()->text(QClipboard::Clipboard);
 	lyxerr[Debug::ACTION] << "GuiClipboard::get: " << fromqstr(str)
 	                      << endl;
 	if (str.isNull())
-		return string();
+		return docstring();
 
-	return internalLineEnding(fromqstr(str));
+	return internalLineEnding(qstring_to_ucs4(str));
 }
 
 
-void GuiClipboard::put(string const & str)
+void GuiClipboard::put(docstring const & str)
 {
-	lyxerr[Debug::ACTION] << "GuiClipboard::put: " << str << endl;
+	lyxerr[Debug::ACTION] << "GuiClipboard::put: " << lyx::to_utf8(str) << endl;
 
 	qApp->clipboard()->setText(toqstr(externalLineEnding(str)),
 	                           QClipboard::Clipboard);

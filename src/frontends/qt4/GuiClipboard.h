@@ -30,8 +30,8 @@ public:
 	/** Clipboard overloaded methods
 	 */
 	//@{
-	std::string const get() const;
-	void put(std::string const & str);
+	docstring const get() const;
+	void put(docstring const & str);
 	//@}
 };
 

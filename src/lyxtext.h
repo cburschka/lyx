@@ -260,9 +260,9 @@ public:
 	/* these things are for search and replace */
 
 	/// needed to insert the selection
-	void insertStringAsLines(LCursor & cur, std::string const & str);
+	void insertStringAsLines(LCursor & cur, lyx::docstring const & str);
 	/// needed to insert the selection
-	void insertStringAsParagraphs(LCursor & cur, std::string const & str);
+	void insertStringAsParagraphs(LCursor & cur, lyx::docstring const & str);
 
 	/// current text width
 	int width() const;

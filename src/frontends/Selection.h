@@ -14,7 +14,7 @@
 #ifndef BASE_SELECTION_H
 #define BASE_SELECTION_H
 
-#include <string>
+#include "support/docstring.h"
 
 namespace lyx {
 namespace frontend {
@@ -36,13 +36,13 @@ public:
 	 * This should be called when the user presses the middle mouse
 	 * button.
 	 */
-	virtual std::string const get() const = 0;
+	virtual docstring const get() const = 0;
 	/**
 	 * Fill the X selection.
 	 * Does nothing on systems that don't have a selection.
 	 * This should be called whenever some text is highlighted.
 	 */
-	virtual void put(std::string const &) = 0;
+	virtual void put(docstring const &) = 0;
 };
 
 } // namespace frontend

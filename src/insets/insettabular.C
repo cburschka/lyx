@@ -49,6 +49,8 @@
 #include <iostream>
 #include <limits>
 
+using lyx::docstring;
+
 using lyx::cap::dirtyTabularStack;
 using lyx::cap::tabularStackDirty;
 
@@ -658,7 +660,8 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_FILE_INSERT_ASCII: {
 		// FIXME: We don't know the encoding of filenames
 		string const tmpstr = getContentsOfAsciiFile(&cur.bv(), lyx::to_utf8(cmd.argument()), false);
-		if (!tmpstr.empty() && !insertAsciiString(cur.bv(), tmpstr, false))
+		// FIXME: We don't know the encoding of the file
+		if (!tmpstr.empty() && !insertAsciiString(cur.bv(), lyx::from_utf8(tmpstr), false))
 			cur.undispatched();
 		break;
 	}
@@ -696,14 +699,14 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_CLIPBOARD_PASTE:
 	case LFUN_PRIMARY_SELECTION_PASTE: {
-		string const clip = (cmd.action == LFUN_CLIPBOARD_PASTE) ?
+		docstring const clip = (cmd.action == LFUN_CLIPBOARD_PASTE) ?
 			cur.bv().owner()->gui().clipboard().get() :
 			cur.bv().owner()->gui().selection().get();
 		if (clip.empty())
 			break;
 		// pass to InsertAsciiString, but
 		// only if we have multi-cell content
-		if (clip.find_first_of("\t\n") != string::npos) {
+		if (clip.find_first_of(lyx::from_ascii("\t\n")) != docstring::npos) {
 			if (insertAsciiString(cur.bv(), clip, false)) {
 				// content has been replaced,
 				// so cursor might be invalid
@@ -1784,7 +1787,7 @@ bool InsetTabular::copySelection(LCursor & cur)
 	ostringstream os;
 	OutputParams const runparams;
 	paste_tabular->plaintext(cur.buffer(), os, runparams, 0, true, '\t');
-	cur.bv().owner()->gui().clipboard().put(os.str());
+	cur.bv().owner()->gui().clipboard().put(lyx::from_utf8(os.str()));
 	// mark tabular stack dirty
 	// FIXME: this is a workaround for bug 1919. Should be removed for 1.5,
 	// when we (hopefully) have a one-for-all paste mechanism.
@@ -1903,7 +1906,7 @@ bool InsetTabular::forceDefaultParagraphs(idx_type cell) const
 }
 
 
-bool InsetTabular::insertAsciiString(BufferView & bv, string const & buf,
+bool InsetTabular::insertAsciiString(BufferView & bv, docstring const & buf,
 				     bool usePaste)
 {
 	if (buf.length() <= 0)
@@ -1912,10 +1915,11 @@ bool InsetTabular::insertAsciiString(BufferView & bv, string const & buf,
 	col_type cols = 1;
 	row_type rows = 1;
 	col_type maxCols = 1;
-	string::size_type const len = buf.length();
-	string::size_type p = 0;
+	docstring::size_type const len = buf.length();
+	docstring::size_type p = 0;
 
-	while (p < len && (p = buf.find_first_of("\t\n", p)) != string::npos) {
+	while (p < len &&
+	       (p = buf.find_first_of(lyx::from_ascii("\t\n"), p)) != docstring::npos) {
 		switch (buf[p]) {
 		case '\t':
 			++cols;
@@ -1947,7 +1951,7 @@ bool InsetTabular::insertAsciiString(BufferView & bv, string const & buf,
 		row = tabular.row_of_cell(cell);
 	}
 
-	string::size_type op = 0;
+	docstring::size_type op = 0;
 	idx_type const cells = loctab->getNumberOfCells();
 	p = 0;
 	cols = ocol;
@@ -1955,7 +1959,7 @@ bool InsetTabular::insertAsciiString(BufferView & bv, string const & buf,
 	col_type const columns = loctab->columns();
 
 	while (cell < cells && p < len && row < rows &&
-	       (p = buf.find_first_of("\t\n", p)) != string::npos)
+	       (p = buf.find_first_of(lyx::from_ascii("\t\n"), p)) != docstring::npos)
 	{
 		if (p >= len)
 			break;

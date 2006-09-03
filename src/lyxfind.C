@@ -206,7 +206,7 @@ bool stringSelected(BufferView * bv, string const & searchstr,
 	// if nothing selected or selection does not equal search
 	// string search and select next occurance and return
 	string const & str1 = searchstr;
-	string const str2 = bv->cursor().selectionAsString(false);
+	string const str2 = lyx::to_utf8(bv->cursor().selectionAsString(false));
 	if ((cs && str1 != str2) || lowercase(str1) != lowercase(str2)) {
 		find(bv, searchstr, cs, mw, fw);
 		return false;
