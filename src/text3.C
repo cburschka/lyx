@@ -1731,7 +1731,7 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 	}
 
 	case LFUN_INSET_DISSOLVE: {
-		enable = &cur.inset() && cur.inTexted();
+		enable = !isMainText() && cur.inTexted();
 		break;
 	}
 
