@@ -1,13 +1,14 @@
 # Czech translation of LyX
 # Copyright (C) 2006 LyX Developers
 # Pavel Sanda <ps@ucw.cz>, 2006.
-#
+# verze odvozena z 1.5.0svn; xforms frontend neprelozen
+
 msgid ""
 msgstr ""
-"Project-Id-Version: Lyx 1.5.0svn\n"
+"Project-Id-Version: Lyx 1.4.3svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2006-08-10 10:50+0200\n"
-"PO-Revision-Date: 2006-08-09 23:59+0200\n"
+"PO-Revision-Date: 2006-08-11 23:59+0200\n"
 "Last-Translator: Pavel Sanda <ps@ucw.cz>\n"
 "Language-Team: Czech <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -40,7 +41,6 @@ msgstr ""
 msgid "Key:|#K"
 msgstr "Klíè. slovo:|#K"
 
-# TODO
 #: src/frontends/xforms/forms/form_bibitem.fd:62
 #: src/frontends/xforms/forms/form_bibtex.fd:80
 #: src/frontends/xforms/forms/form_box.fd:80
@@ -2835,8 +2835,8 @@ msgstr "LyX: Vlo¾ text"
 #: src/frontends/qt2/ui/QAskForTextDialog.ui:66
 msgid "&Dummy"
 msgstr "&Dummy"
-
 # TODO
+
 #: src/frontends/qt2/ui/QAskForTextDialog.ui:124
 #: src/frontends/qt2/ui/QBibitemDialogBase.ui:189
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:107
@@ -3782,14 +3782,14 @@ msgstr "&Zpùsob zahrnutí:"
 #: src/insets/insetinclude.C:285
 msgid "Input"
 msgstr "Input"
-
 # TODO lze i rekurzivne
+
 #: src/frontends/qt2/ui/QIncludeDialogBase.ui:140
 #: src/insets/insetinclude.C:288
 msgid "Include"
 msgstr "Include"
-
 # TODO nova stranka; viz wiki
+
 #: src/frontends/qt2/ui/QIncludeDialogBase.ui:146
 #: lib/layouts/linuxdoc.layout:215 lib/layouts/manpage.layout:122
 msgid "Verbatim"
@@ -5200,19 +5200,16 @@ msgid "&Units:"
 msgstr "&Jednotky"
 
 #: src/frontends/qt2/ui/TextLayoutModuleBase.ui:56
-#, fuzzy
 msgid "Document Font"
-msgstr "Fonty Dokumentu"
+msgstr "Font Dokumentu"
 
 #: src/frontends/qt2/ui/TextLayoutModuleBase.ui:75
-#, fuzzy
 msgid "&Font:"
-msgstr "Fonty"
+msgstr "&Font:"
 
 #: src/frontends/qt2/ui/TextLayoutModuleBase.ui:118
-#, fuzzy
 msgid "&Size:"
-msgstr "Velikost:"
+msgstr "&Velikost:"
 
 #: src/frontends/qt2/ui/TextLayoutModuleBase.ui:137
 msgid "Separate Paragraphs With"
@@ -8618,7 +8615,7 @@ msgstr "Scrap"
 
 #: lib/layouts/numarticle.inc:8
 msgid "Part \\Roman{part}"
-msgstr "Part \\Roman{part}"
+msgstr "Èást \\Roman{part}"
 
 #: lib/layouts/numarticle.inc:17
 msgid "\\Alph{section}"
@@ -8642,11 +8639,11 @@ msgstr "@Paragraph@.\\arabic{subparagraph}"
 
 #: lib/layouts/numreport.inc:15
 msgid "Chapter \\arabic{chapter}"
-msgstr "Chapter \\arabic{chapter}"
+msgstr "Kapitola \\arabic{chapter}"
 
 #: lib/layouts/numreport.inc:16
 msgid "Appendix \\Alph{chapter}"
-msgstr "Appendix \\Alph{chapter}"
+msgstr "Pøíloha \\Alph{chapter}"
 
 #: lib/layouts/numreport.inc:22
 msgid "\\arabic{chapter}.\\arabic{section}"
@@ -8662,7 +8659,7 @@ msgstr "\\Roman{section}."
 
 #: lib/layouts/numrevtex.inc:10
 msgid "Appendix \\Alph{section}:"
-msgstr "Appendix \\Alph{section}:"
+msgstr "Pøíloha \\Alph{section}:"
 
 #: lib/layouts/numrevtex.inc:18
 msgid "\\Alph{subsection}."
@@ -9635,7 +9632,7 @@ msgstr "Text. øez sklonìné (slanted)"
 
 #: lib/ui/classic.ui:301 lib/ui/stdmenus.ui:332
 msgid "Text Upright Shape"
-msgstr "Text. øez vzpøímené"
+msgstr "Text. øez stojatý"
 
 #: lib/ui/classic.ui:306
 msgid "Floatflt Figure"
@@ -10961,9 +10958,8 @@ msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr "%1$s skonèil neoèekávanì, co¾ znamená, ¾e je pravdìpodobnì po¹kozen."
 
 #: src/buffer.C:716
-#, fuzzy
 msgid "Backup failure"
-msgstr "chktex selhal"
+msgstr "Zálohování selhalo"
 
 #: src/buffer.C:717
 #, c-format
@@ -11779,7 +11775,7 @@ msgstr "Tuèný"
 
 #: src/frontends/controllers/character.C:89 src/lyxfont.C:60
 msgid "Upright"
-msgstr "Vzpøímený"
+msgstr "Stojatý"
 
 #: src/frontends/controllers/character.C:93 src/lyxfont.C:60
 msgid "Italic"
@@ -11869,9 +11865,8 @@ msgstr "Znaèka"
 
 #: src/frontends/gtk/GAboutlyx.C:200
 msgid "C_redits"
-msgstr "Podìkování"
+msgstr "Spolupracovali"
 
-# TODO spolupracovali ?
 #: src/frontends/gtk/GBibItem.C:33 src/frontends/qt2/QBibitem.C:31
 #: src/frontends/xforms/FormBibitem.C:38
 msgid "Bibliography Entry Settings"
