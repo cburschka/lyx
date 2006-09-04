@@ -113,6 +113,8 @@ What's new
 - The LaTeX log file can now also be viewed if the path of the temporary
   directory contains spaces (bug 2687)
 
+- Graphics files with ' in the name can now be previewed (bug 2637)
+
 * Build/installation:
 
 - Fix the 'check' make target for systems which do not have

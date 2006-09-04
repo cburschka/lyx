@@ -32,6 +32,7 @@ namespace support = lyx::support;
 using support::ChangeExtension;
 using support::Forkedcall;
 using support::ForkedCallQueue;
+using support::GetExtension;
 using support::LibFileSearch;
 using support::LibScriptSearch;
 using support::OnlyPath;
@@ -131,10 +132,10 @@ string const & Converter::convertedFile() const
 
 namespace {
 
-/** Build the conversion script, returning true if able to build it.
- *  The script is output to the ostringstream 'script'.
+/** Build the conversion script.
+ *  The script is output to the stream \p script.
  */
-bool build_script(string const & from_file, string const & to_file_base,
+void build_script(string const & from_file, string const & to_file_base,
 		  string const & from_format, string const & to_format,
 		  ostream & script);
 
@@ -161,54 +162,37 @@ Converter::Impl::Impl(string const & from_file,   string const & to_file_base,
 
 	// The conversion commands are stored in a stringstream
 	ostringstream script;
-	bool const success = build_script(from_file, to_file_base,
-					  from_format, to_format, script);
+	build_script(from_file, to_file_base, from_format, to_format, script);
+	lyxerr[Debug::GRAPHICS] << "\tConversion script:"
+		<< "\n--------------------------------------\n"
+		<< script.str()
+		<< "\n--------------------------------------\n";
 
-	if (!success) {
-		script_command_ =
-			"python " +
-			QuoteName(LibFileSearch("scripts", "convertDefault.py")) +
-			' ' + 
-			QuoteName((from_format.empty() ? "" : from_format + ':') + from_file) +
-			' ' +
-			QuoteName(to_format + ':' + to_file_);
+	// Output the script to file.
+	static int counter = 0;
+	script_file_ = OnlyPath(to_file_base) + "lyxconvert" +
+		convert<string>(counter++) + ".py";
 
-		lyxerr[Debug::GRAPHICS]
-			<< "\tNo converter defined! I use convertDefault.py\n\t"
-			<< script_command_ << endl;
-
-	} else {
-
-		lyxerr[Debug::GRAPHICS] << "\tConversion script:"
-			<< "\n--------------------------------------\n"
-			<< script.str()
-			<< "\n--------------------------------------\n";
-
-		// Output the script to file.
-		static int counter = 0;
-		script_file_ = OnlyPath(to_file_base) + "lyxconvert" +
-			convert<string>(counter++) + ".py";
-
-		std::ofstream fs(script_file_.c_str());
-		if (!fs.good()) {
-			lyxerr << "Unable to write the conversion script to \""
-			       << script_file_ << '\n'
-			       << "Please check your directory permissions."
-			       << std::endl;
-			return;
-		}
-
-		fs << script.str();
-		fs.close();
-
-		// The command needed to run the conversion process
-		// We create a dummy command for ease of understanding of the
-		// list of forked processes.
-		// Note: 'sh ' is absolutely essential, or execvp will fail.
-		script_command_ = "python " + QuoteName(script_file_) + ' ' +
-			QuoteName(OnlyFilename(from_file)) + ' ' +
-			QuoteName(to_format);
+	std::ofstream fs(script_file_.c_str());
+	if (!fs.good()) {
+		lyxerr << "Unable to write the conversion script to \""
+		       << script_file_ << '\n'
+		       << "Please check your directory permissions."
+		       << std::endl;
+		return;
 	}
+
+	fs << script.str();
+	fs.close();
+
+	// The command needed to run the conversion process
+	// We create a dummy command for ease of understanding of the
+	// list of forked processes.
+	// Note: 'python ' is absolutely essential, or execvp will fail.
+	script_command_ = "python " +
+		QuoteName(script_file_) + ' ' +
+		QuoteName(OnlyFilename(from_file)) + ' ' +
+		QuoteName(to_format);
 	// All is ready to go
 	valid_process_ = true;
 }
@@ -263,7 +247,6 @@ string const move_file(string const & from_file, string const & to_file)
 		<< "try:\n"
 		<< "  os.rename(fromfile, tofile)\n"
 		<< "except:\n"
-		<< "  import shutil\n"
 		<< "  try:\n"
 		<< "    shutil.copy(fromfile, tofile)\n"
 		<< "  except:\n"
@@ -274,51 +257,36 @@ string const move_file(string const & from_file, string const & to_file)
 }
 
 
-/*
-A typical script looks like:
+void build_conversion_command(string const & command, ostream & script)
+{
+	// Store in the python script
+	script << "\nif os.system(r'" << command << "') != 0:\n";
 
-#!/usr/bin/env python
-import os, sys
+	// Test that this was successful. If not, remove
+	// ${outfile} and exit the python script
+	script << "  unlinkNoThrow(outfile)\n"
+	       << "  sys.exit(1)\n\n";
 
-def unlinkNoThrow(file):
-  ''' remove a file, do not throw if error occurs '''
-  try:
-    os.unlink(file)
-  except:
-    pass
+	// Test that the outfile exists.
+	// ImageMagick's convert will often create ${outfile}.0,
+	// ${outfile}.1.
+	// If this occurs, move ${outfile}.0 to ${outfile}
+	// and delete ${outfile}.? (ignore errors)
+	script << "if not os.path.isfile(outfile):\n"
+	          "  if os.path.isfile(outfile + '.0'):\n"
+	          "    os.rename(outfile + '.0', outfile)\n"
+	          "    import glob\n"
+	          "    for file in glob.glob(outfile + '.?'):\n"
+	          "      unlinkNoThrow(file)\n"
+	          "  else:\n"
+	          "    sys.exit(1)\n\n";
 
-infile = '/home/username/Figure3a.eps'
-infile_base = '/home/username/Figure3a'
-outfile = '/tmp/lyx_tmpdir12992hUwBqt/gconvert0129929eUBPm.pdf'
+	// Delete the infile
+	script << "unlinkNoThrow(infile)\n\n";
+}
 
-if os.system(r'epstopdf ' + '"' + infile + '"' + ' --output ' + '"' + outfile + '"' + '') != 0:
-  unlinkNoThrow(outfile)
-  sys.exit(1)
 
-if not os.path.isfile(outfile):
-  if os.path.isfile(outfile + '.0'):
-    os.rename(outfile + '.0', outfile)
-    import glob
-    for file in glob.glob(outfile + '.?'):
-      unlinkNoThrow(file)
-  else:
-    sys.exit(1)
-
-fromfile = outfile
-tofile = '/tmp/lyx_tmpdir12992hUwBqt/Figure3a129927ByaCl.ppm'
-
-try:
-  os.rename(fromfile, tofile)
-except:
-  import shutil
-  try:
-    shutil.copy(fromfile, tofile)
-  except:
-    sys.exit(1)
-  unlinkNoThrow(fromfile)
-
-*/
-bool build_script(string const & from_file,
+void build_script(string const & from_file,
 		  string const & to_file_base,
 		  string const & from_format,
 		  string const & to_format,
@@ -327,35 +295,23 @@ bool build_script(string const & from_file,
 	lyxerr[Debug::GRAPHICS] << "build_script ... ";
 	typedef Converters::EdgePath EdgePath;
 
-	if (from_format.empty())
-		return false;
-
 	script << "#!/usr/bin/env python\n"
-		   << "import os, sys\n\n"
-		   << "def unlinkNoThrow(file):\n"
-		   << "  ''' remove a file, do not throw if an error occurs '''\n"
-		   << "  try:\n"
-		   << "    os.unlink(file)\n"
-		   << "  except:\n"
-		   << "    pass\n\n";
+	          "import os, shutil, sys\n\n"
+	          "def unlinkNoThrow(file):\n"
+	          "  ''' remove a file, do not throw if an error occurs '''\n"
+	          "  try:\n"
+	          "    os.unlink(file)\n"
+	          "  except:\n"
+	          "    pass\n\n";
 
 	// we do not use ChangeExtension because this is a basename
 	// which may nevertheless contain a '.'
 	string const to_file = to_file_base + '.'
 		+ formats.extension(to_format);
 
-	if (from_format == to_format) {
-		script << move_file(QuoteName(from_file), QuoteName(to_file));
-		lyxerr[Debug::GRAPHICS] << "ready (from == to)" << endl;
-		return true;
-	}
-
-	EdgePath edgepath = converters.getPath(from_format, to_format);
-
-	if (edgepath.empty()) {
-		lyxerr[Debug::GRAPHICS] << "ready (edgepath.empty())" << endl;
-		return false;
-	}
+	EdgePath const edgepath = from_format.empty() ?
+		EdgePath() :
+		converters.getPath(from_format, to_format);
 
 	// Create a temporary base file-name for all intermediate steps.
 	// Remember to remove the temp file because we only want the name...
@@ -364,7 +320,38 @@ bool build_script(string const & from_file,
 	string const to_base = tempName(string(), tmp);
 	unlink(to_base);
 
-	string outfile = from_file;
+	// Create a copy of the file in case the original name contains
+	// problematic characters like ' or ". We can work around that problem
+	// in python, but the converters might be shell scripts and have more
+	// troubles with it.
+	string outfile = ChangeExtension(to_base, GetExtension(from_file));
+	script << "infile = '"
+	       << subst(subst(from_file, "\\", "\\\\"), "'", "\\'") << "'\n"
+	          "outfile = " << QuoteName(outfile) << "\n"
+	          "shutil.copy(infile, outfile)\n";
+
+	if (edgepath.empty()) {
+		// Either from_format is unknown or we don't have a
+		// converter path from from_format to to_format, so we use
+		// the default converter.
+		script << "infile = outfile\n"
+		       << "outfile = " << QuoteName(to_file) << '\n';
+
+		ostringstream os;
+		os << "python \""
+		   << LibFileSearch("scripts", "convertDefault.py") << "\" ";
+		if (!from_format.empty())
+			os << from_format << ':';
+		os << "' + '\"' + infile + '\"' + ' "
+		   << to_format << ":' + '\"' + outfile + '\"' + '";
+		string const command = os.str();
+
+		lyxerr[Debug::GRAPHICS]
+			<< "\tNo converter defined! I use convertDefault.py\n\t"
+			<< command << endl;
+
+		build_conversion_command(command, script);
+	}
 
 	// The conversion commands may contain these tokens that need to be
 	// changed to infile, infile_base, outfile respectively.
@@ -383,7 +370,7 @@ bool build_script(string const & from_file,
 		string const infile_base = ChangeExtension(infile, string());
 		outfile = ChangeExtension(to_base, conv.To->extension());
 
-		// Store these names in the shell script
+		// Store these names in the python script
 		script << "infile = "      << QuoteName(infile) << '\n'
 		       << "infile_base = " << QuoteName(infile_base) << '\n'
 		       << "outfile = "     << QuoteName(outfile) << '\n';
@@ -394,39 +381,12 @@ bool build_script(string const & from_file,
 		command = subst(command, token_to,   "' + '\"' + outfile + '\"' + '");
 		command = LibScriptSearch(command);
 
-		// Store in the shell script
-		script << "\nif os.system(r'" << command << "') != 0:\n";
-
-		// Test that this was successful. If not, remove
-		// ${outfile} and exit the shell script
-		script << "  unlinkNoThrow(outfile)\n"
-		       << "  sys.exit(1)\n\n";
-
-		// Test that the outfile exists.
-		// ImageMagick's convert will often create ${outfile}.0,
-		// ${outfile}.1.
-		// If this occurs, move ${outfile}.0 to ${outfile}
-		// and delete ${outfile}.? (ignore errors)
-		script << "if not os.path.isfile(outfile):\n"
-		       << "  if os.path.isfile(outfile + '.0'):\n"
-		       << "    os.rename(outfile + '.0', outfile)\n"
-			   << "    import glob\n"
-		       << "    for file in glob.glob(outfile + '.?'):\n"
-			   << "      unlinkNoThrow(file)\n"
-		       << "  else:\n"
-		       << "    sys.exit(1)\n\n";
-
-		// Delete the infile, if it isn't the original, from_file.
-		if (infile != from_file) {
-			script << "unlinkNoThrow(infile)\n\n";
-		}
+		build_conversion_command(command, script);
 	}
 
 	// Move the final outfile to to_file
 	script << move_file("outfile", QuoteName(to_file));
 	lyxerr[Debug::GRAPHICS] << "ready!" << endl;
-
-	return true;
 }
 
 } // namespace anon
