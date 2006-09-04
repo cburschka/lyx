@@ -157,7 +157,8 @@ void Dialogs::disconnect(string const & name)
 	if (!isValidName(name))
 		return;
 
-	open_insets_[name] = 0;
+	if (open_insets_.find(name) != open_insets_.end())
+		open_insets_[name] = 0;
 }
 
 
