@@ -122,10 +122,17 @@ std::vector<boost::uint32_t> bytes_to_ucs4(std::vector<char> const & bytes)
 
 		boost::uint32_t c;
 		char * cc = reinterpret_cast<char *>(&c);
+#ifdef WORDS_BIGENDIAN
+		cc[0] = b1;
+		cc[1] = b2;
+		cc[2] = b3;
+		cc[3] = b4;
+#else
 		cc[3] = b1;
 		cc[2] = b2;
 		cc[1] = b3;
 		cc[0] = b4;
+#endif
 
 		if (c > 0xffff) {
 			lyxerr << "Strange ucs4 value encountered\n";
@@ -158,8 +165,13 @@ std::vector<unsigned short> bytes_to_ucs2(std::vector<char> const & bytes)
 
 		unsigned short c;
 		char * cc = reinterpret_cast<char *>(&c);
+#ifdef WORDS_BIGENDIAN
 		cc[0] = b1;
 		cc[1] = b2;
+#else
+		cc[1] = b1;
+		cc[0] = b2;
+#endif
 
 		//lyxerr << "0x"
 		//       << std::setw(2) << std::setfill('0') << int(b2)
@@ -185,7 +197,7 @@ std::vector<boost::uint32_t> utf8_to_ucs4(std::vector<char> const & utf8str)
 	//lyxerr << "Res = " << string(res.begin(), res.end())
 	//       << " (" << res.size() << ")" << endl;
 
-	std::vector<char> res = iconv_convert("UCS-4", "UTF-8", utf8str);
+	std::vector<char> res = iconv_convert("UCS-4BE", "UTF-8", utf8str);
 	return bytes_to_ucs4(res);
 }
 
@@ -200,13 +212,13 @@ ucs2_to_ucs4(std::vector<unsigned short> const & ucs2str)
 	//lyxerr << std::hex;
 	for (; cit != end; ++cit) {
 		unsigned short s = *cit;
-		in.push_back(static_cast<char>(s & 0x00ff));
 		in.push_back(static_cast<char>((s & 0xff00) >> 8));
-		lyxerr << std::setw(2) << std::setfill('0') << (s & 0x00ff) << endl;
+		in.push_back(static_cast<char>(s & 0x00ff));
 		lyxerr << std::setw(2) << std::setfill('0') << ((s & 0xff00) >> 8) << endl;
+		lyxerr << std::setw(2) << std::setfill('0') << (s & 0x00ff) << endl;
 	}
 
-	std::vector<char> res = iconv_convert("UCS-4", "UCS-2", in);
+	std::vector<char> res = iconv_convert("UCS-4BE", "UCS-2BE", in);
 	return bytes_to_ucs4(res);
 }
 
@@ -224,7 +236,7 @@ ucs4_to_ucs2(std::vector<boost::uint32_t> const & ucs4str)
 		in.push_back(static_cast<char>((s & 0x0000ff00) >> 8));
 		in.push_back(static_cast<char>(s & 0x000000ff));
 	}
-	std::vector<char> res = iconv_convert("UCS-2", "UCS-4", in);
+	std::vector<char> res = iconv_convert("UCS-2BE", "UCS-4BE", in);
 	return bytes_to_ucs2(res);
 }
 
@@ -239,7 +251,7 @@ ucs4_to_ucs2(boost::uint32_t const * s, size_t ls)
 		in.push_back(static_cast<char>((s[i] & 0x0000ff00) >> 8));
 		in.push_back(static_cast<char>(s[i] & 0x000000ff));
 	}
-	std::vector<char> res = iconv_convert("UCS-2", "UCS-4", in);
+	std::vector<char> res = iconv_convert("UCS-2BE", "UCS-4BE", in);
 	return bytes_to_ucs2(res);
 }
 
@@ -252,7 +264,7 @@ ucs4_to_ucs2(boost::uint32_t c)
 	in.push_back(static_cast<char>((c & 0x00ff0000) >> 16));
 	in.push_back(static_cast<char>((c & 0x0000ff00) >> 8));
 	in.push_back(static_cast<char>(c & 0x000000ff));
-	std::vector<char> res = iconv_convert("UCS-2", "UCS-4", in);
+	std::vector<char> res = iconv_convert("UCS-2BE", "UCS-4BE", in);
 	std::vector<unsigned short> us = bytes_to_ucs2(res);
 	if (!us.empty())
 		return us[0];
@@ -273,7 +285,7 @@ std::vector<char> ucs4_to_utf8(std::vector<boost::uint32_t> const & ucs4str)
 		in.push_back(static_cast<char>((s & 0x0000ff00) >> 8));
 		in.push_back(static_cast<char>(s & 0x000000ff));
 	}
-	std::vector<char> res = iconv_convert("UTF-8", "UCS-4", in);
+	std::vector<char> res = iconv_convert("UTF-8", "UCS-4BE", in);
 	return res;
 }
 
@@ -285,6 +297,6 @@ std::vector<char> ucs4_to_utf8(boost::uint32_t c)
 	in.push_back(static_cast<char>((c & 0x00ff0000) >> 16));
 	in.push_back(static_cast<char>((c & 0x0000ff00) >> 8));
 	in.push_back(static_cast<char>(c & 0x000000ff));
-	std::vector<char> res = iconv_convert("UTF-8", "UCS-4", in);
+	std::vector<char> res = iconv_convert("UTF-8", "UCS-4BE", in);
 	return res;
 }

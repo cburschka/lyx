@@ -1100,6 +1100,10 @@ int count()
             (spell_engine is not None, spell_engine,
                 'Spell engine to use'
             ),
+            # we need to know the byte order for unicode conversions
+            (sys.byteorder == 'big', 'WORDS_BIGENDIAN'
+                'Define to 1 if your processor stores words with the most significant byte first (like Motorola and SPARC, unlike Intel and VAX).'
+            ),
         ],
         extra_items = [
             ('#define PACKAGE "%s%s"' % (package, program_suffix),

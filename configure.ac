@@ -64,6 +64,9 @@ AC_PROG_CC
 AC_ISC_POSIX
 AC_AIX
 
+### we need to know the byte order for unicode conversions
+AC_C_BIGENDIAN
+
 ### check which frontend we want to use
 LYX_USE_FRONTENDS
 
