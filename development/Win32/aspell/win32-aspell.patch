@@ -1,0 +1,205 @@
+Index: common/config.cpp
+===================================================================
+RCS file: /sources/aspell/aspell/common/config.cpp,v
+retrieving revision 1.78
+diff -u -b -B -p -r1.78 config.cpp
+--- common/config.cpp	21 Oct 2005 12:16:03 -0000	1.78
++++ common/config.cpp	30 Aug 2006 22:05:30 -0000
+@@ -1581,3 +1581,61 @@ namespace aspell {
+   }
+   
+ }
++
++
++#ifdef WIN32PORT
++
++#include "string.hpp"
++
++using namespace aspell;
++namespace acommon {
++
++  String ReadRegString(HKEY hive, String key, String name)
++  {
++  
++    // Reads a string from the Windows registry (used to get paths)  
++	
++    HKEY hKey;
++    unsigned long lType;
++    DWORD dwSize;
++    unsigned char* szValue = NULL;
++	
++    if (::RegOpenKeyEx(hive, key.c_str(), 0, KEY_READ, &hKey) == ERROR_SUCCESS)
++    {
++      if(::RegQueryValueEx(hKey, name.c_str(), NULL, &lType, NULL, &dwSize) == ERROR_SUCCESS)
++      {
++        szValue = new unsigned char[dwSize + 1];
++        ::RegQueryValueEx(hKey, name.c_str(), NULL, &lType, szValue, &dwSize);
++        String RegistryReturn((char*)szValue);
++        delete[] szValue;
++        return RegistryReturn;
++	  } else {
++	    return "";
++      }
++    } else {
++	  return "";
++	}
++  
++  }
++  
++  HKEY GetRegHive()
++  {
++    
++    // Check whether Aspell is installed for the current user or for all users
++	
++    String value;
++	
++    if (ReadRegString(HKEY_LOCAL_MACHINE, "Software\\Aspell", "Dictionary Path") == "")
++    {
++      return HKEY_CURRENT_USER;
++    } else {
++      return HKEY_LOCAL_MACHINE;
++    }
++	
++  }
++
++}  
++
++#endif //WIN32PORT
++
++
+Index: common/config.hpp
+===================================================================
+RCS file: /sources/aspell/aspell/common/config.hpp,v
+retrieving revision 1.27
+diff -u -b -B -p -r1.27 config.hpp
+--- common/config.hpp	3 May 2005 05:08:19 -0000	1.27
++++ common/config.hpp	30 Aug 2006 22:05:30 -0000
+@@ -277,5 +277,21 @@ namespace aspell {
+ 
+ }
+ 
++#ifdef WIN32PORT
++
++#include "minwin.h"
++
++namespace aspell {
++	class String;
++}
++
++namespace acommon {
++
++  extern HKEY GetRegHive();
++  extern aspell::String ReadRegString(HKEY type, aspell::String key, aspell::String name);
++
++}
++
++#endif
+ #endif
+ 
+Index: common/gettext_init.cpp
+===================================================================
+RCS file: /sources/aspell/aspell/common/gettext_init.cpp,v
+retrieving revision 1.5
+diff -u -b -B -p -r1.5 gettext_init.cpp
+--- common/gettext_init.cpp	3 May 2005 05:08:19 -0000	1.5
++++ common/gettext_init.cpp	30 Aug 2006 22:05:30 -0000
+@@ -16,7 +15,21 @@ extern "C" void aspell_gettext_init()
+     if (did_init) return;
+     did_init = true;
+   }
++#ifdef WIN32PORT
++  // Registry key for Locale Path
++  
++  aspell::String value;
++  HKEY hive;
++  
++  hive = acommon::GetRegHive();
++  value = acommon::ReadRegString(hive, "Software\\Aspell", "Locale Path");
++  if (value == "") value = LOCALEDIR;
++ 
++  bindtextdomain("aspell", value.c_str());
++#else
+   bindtextdomain("aspell", LOCALEDIR);
++#endif
++
+ }
+ 
+ #else
+Index: common/info.cpp
+===================================================================
+RCS file: /sources/aspell/aspell/common/info.cpp,v
+retrieving revision 1.39
+diff -u -b -B -p -r1.39 info.cpp
+--- common/info.cpp	3 May 2005 05:08:19 -0000	1.39
++++ common/info.cpp	30 Aug 2006 22:05:30 -0000
+@@ -17,9 +17,6 @@
+  /* BSDi defines u_intXX_t types in machine/types.h */
+ #include <machine/types.h>
+ #endif
+-#if defined(WIN32) || defined(_WIN32)
+-#include "minwin.h" //minimum windows declarations.
+-#endif
+ 
+ #include "iostream.hpp"
+ 
+@@ -574,7 +571,17 @@ namespace aspell {
+ 		      StringList & lst)
+   {
+     lst.clear();
+-    lst.add(config->retrieve("data-dir"));
++	String dictpath;
++
++#ifdef WIN32PORT
++	HKEY hive = acommon::GetRegHive();
++    // Registry key for dictionary path
++	dictpath =acommon::ReadRegString(hive, "Software\\Aspell", "Dictionary Path");;
++    if (dictpath == "") dictpath = config->retrieve("data-dir");
++#else
++    dictpath = config->retrieve("data-dir");
++#endif
++	lst.add(dictpath);
+     lst.add(config->retrieve("dict-dir"));
+   }
+ 
+Index: common/vector.hpp
+===================================================================
+RCS file: /sources/aspell/aspell/common/vector.hpp,v
+retrieving revision 1.15
+diff -u -b -B -p -r1.15 vector.hpp
+--- common/vector.hpp	3 May 2005 05:08:19 -0000	1.15
++++ common/vector.hpp	30 Aug 2006 22:05:30 -0000
+@@ -47,13 +47,13 @@ namespace aspell
+     }
+     T * data() {return &*this->begin();}
+     T * data(int pos) {return &*this->begin() + pos;}
+-    T * data_end() {return &*this->end();}
++    T * data_end() {return &this->back()+1;}
+ 
+     T * pbegin() {return &*this->begin();}
+-    T * pend()   {return &*this->end();}
++    T * pend()   {return &this->back()+1;}
+ 
+     const T * pbegin() const {return &*this->begin();}
+-    const T * pend()   const {return &*this->end();}
++    const T * pend()   const {return &this->back()+1;}
+ 
+     template <typename U>
+     U * datap() { 
+Index: win32/settings.h
+===================================================================
+RCS file: /sources/aspell/aspell/win32/settings.h,v
+retrieving revision 1.5
+diff -u -b -B -p -r1.5 settings.h
+--- win32/settings.h	15 Feb 2005 08:52:58 -0000	1.5
++++ win32/settings.h	30 Aug 2006 22:05:30 -0000
+@@ -106,7 +106,7 @@
+ // declaring a template param.  The other supporte compilers (Borlands
+ // BCB5.5 and GNU C++) require or allow it anywhere in the template
+ // decl. The macro TYPENAME is defines to whatever works.
+-#ifdef _MSC_VER
++#if defined(_MSC_VER) && (_MSC_VER<1300)
+ #define TYPENAME
+ #else
+ #define TYPENAME typename
+
+
