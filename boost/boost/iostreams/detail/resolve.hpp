@@ -47,7 +47,10 @@ template<typename Mode, typename Ch, typename T>
 struct resolve_traits {
     typedef typename 
             mpl::if_<
-                boost::detail::is_incrementable<T>,
+                mpl::and_<
+                    boost::detail::is_incrementable<T>, // Must come first
+                    is_dereferenceable<T>               // for CW 9.[0-4]
+                >,
                 output_iterator_adapter<Mode, Ch, T>,
                 const T&
             >::type type;
@@ -160,7 +163,10 @@ struct resolve_traits {
                 mode_adapter<Mode, T>,
                 is_iterator_range<T>,
                 range_adapter<Mode, T>,
-                is_dereferenceable<T>,
+                mpl::and_<
+                    is_dereferenceable<T>,
+                    boost::detail::is_incrementable<T>
+                >,
                 output_iterator_adapter<Mode, Ch, T>,
                 is_array<T>,
                 array_adapter<Mode, T>,

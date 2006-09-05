@@ -93,7 +93,7 @@ vector<fs::path> lyxSockets(string const & dir, string const & pid)
 
 	for (; beg != end; ++beg) {
 		if (prefixIs(beg->leaf(), "lyx_tmpdir" + pid)) {
-			fs::path lyxsocket = *beg / "lyxsocket";
+			fs::path lyxsocket = beg->path() / "lyxsocket";
 			if (fs::exists(lyxsocket)) {
 				dirlist.push_back(lyxsocket);
 			}

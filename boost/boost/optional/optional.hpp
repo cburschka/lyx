@@ -66,7 +66,7 @@
 #endif
 
 #if !defined(BOOST_OPTIONAL_NO_INPLACE_FACTORY_SUPPORT) \
-    && BOOST_WORKAROUND(__BORLANDC__, <= 0x564)
+    && BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x581) )
 // BCB (up to 5.64) has the following bug:
 //   If there is a member function/operator template of the form
 //     template<class Expr> mfunc( Expr expr ) ;
@@ -133,7 +133,11 @@ class optional_base : public optional_tag
 {
   private :
 
-    typedef BOOST_DEDUCED_TYPENAME detail::make_reference_content<T>::type internal_type ;
+    typedef
+#if !BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x564))
+    BOOST_DEDUCED_TYPENAME
+#endif 
+    ::boost::detail::make_reference_content<T>::type internal_type ;
 
     typedef aligned_storage<internal_type> storage_type ;
 
@@ -401,7 +405,7 @@ class optional_base : public optional_tag
     reference_const_type dereference( internal_type const* p, is_reference_tag     ) const { return p->get() ; }
     reference_type       dereference( internal_type*       p, is_reference_tag     )       { return p->get() ; }
 
-#if BOOST_WORKAROUND(__BORLANDC__, <= 0x564)
+#if BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x581))
     void destroy_impl ( is_not_reference_tag ) { get_ptr_impl()->internal_type::~internal_type() ; m_initialized = false ; }
 #else
     void destroy_impl ( is_not_reference_tag ) { get_ptr_impl()->T::~T() ; m_initialized = false ; }

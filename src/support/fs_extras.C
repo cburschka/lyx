@@ -96,33 +96,35 @@ void copy_file(path const & source, path const & target, bool noclobber)
 	int const infile = ::open(source.string().c_str(), O_RDONLY);
 	if (infile == -1) {
 		boost::throw_exception(
-			filesystem_error(
+			filesystem_path_error(
 				"boost::filesystem::copy_file",
 				source, target,
-				fs::detail::system_error_code()));
+				fs::lookup_errno(errno)));
 	}
 
-	struct stat source_stat;
-	int const ret = ::fstat(infile, &source_stat);
-	if (ret == -1) {
-		::close(infile);
+        struct stat source_stat;
+        int const ret = ::fstat(infile, &source_stat);
+        if (ret == -1) {
+		int err = errno;
+                ::close(infile);
 		boost::throw_exception(
-			filesystem_error(
-				"boost::filesystem::copy_file",
-				source, target,
-				fs::detail::system_error_code()));
+			filesystem_path_error(
+                                "boost::filesystem::copy_file",
+                                source, target,
+                                fs::lookup_errno(err)));
 	}
 
 	int const flags = O_WRONLY | O_CREAT | (noclobber ? O_EXCL : O_TRUNC);
 
-	int const outfile = ::open(target.string().c_str(), flags, source_stat.st_mode);
-	if (outfile == -1) {
-		::close(infile);
+        int const outfile = ::open(target.string().c_str(), flags, source_stat.st_mode);
+        if (outfile == -1) {
+		int err = errno;
+                ::close(infile);
 		boost::throw_exception(
-			filesystem_error(
+			filesystem_path_error(
 				"boost::filesystem::copy_file",
 				source, target,
-				fs::detail::system_error_code()));
+				fs::lookup_errno(err)));
 	}
 
 	std::size_t const buf_sz = 32768;
@@ -144,23 +146,27 @@ void copy_file(path const & source, path const & target, bool noclobber)
 		}
 	}
 
-	::close(infile);
-	::close(outfile);
+	int err = errno;
+
+        ::close(infile);
+        ::close(outfile);
 
 	if (in == -1 || out == -1)
 		boost::throw_exception(
-			filesystem_error(
+			filesystem_path_error(
 				"boost::filesystem::copy_file",
 				source, target,
-				fs::detail::system_error_code()));
+				fs::lookup_errno(err)));
 #endif
 #ifdef BOOST_WINDOWS
 	if (::CopyFile(source.string().c_str(), target.string().c_str(), noclobber) == 0) {
+		// CopyFile is probably not setting errno so this is most
+		// likely wrong.
 		boost::throw_exception(
-			filesystem_error(
+			filesystem_path_error(
 				"boost::filesystem::copy_file",
 				source, target,
-				fs::detail::system_error_code()));
+				fs::detail::system_error_code(errno)));
 	}
 #endif
 }

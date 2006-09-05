@@ -33,11 +33,11 @@
 
 #include <vector>
 #include <stdexcept>
-#include <cassert>
 #include <string>
 #include <cctype>
 #include <algorithm> // for find_if
 #include <boost/config.hpp>
+#include <boost/assert.hpp>
 #include <boost/detail/workaround.hpp>
 #include <boost/mpl/if.hpp>
 
@@ -212,7 +212,7 @@ namespace boost{
     template<class Iterator, class Token>
     static void assign(Iterator b, Iterator e, Token &t) {
 
-#if BOOST_WORKAROUND(BOOST_MSVC, == 1200) &&\
+#if BOOST_WORKAROUND(BOOST_MSVC, < 1300) &&\
     BOOST_WORKAROUND(__SGI_STL_PORT, < 0x500) &&\
     defined(_STLP_DEBUG) &&\
     (defined(_STLP_USE_DYNAMIC_LIB) || defined(_DLL))
@@ -327,7 +327,7 @@ namespace boost{
         InputIterator>::iterator_category> assigner;
 
 
-      assert(!offsets_.empty());
+      BOOST_ASSERT(!offsets_.empty());
     
       assigner::clear(tok);
       InputIterator start(next);

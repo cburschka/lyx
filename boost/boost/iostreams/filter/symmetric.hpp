@@ -231,7 +231,7 @@ private:
 
     void close();
 
-    enum flag_type {
+    enum {
         f_read   = 1,
         f_write  = f_read << 1,
         f_eof    = f_write << 1,

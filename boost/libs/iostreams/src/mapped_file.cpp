@@ -181,9 +181,7 @@ void mapped_file_source::open_impl(mapped_file_params p)
                        (p.new_file_size != 0 && !readonly) ? 
                            CREATE_ALWAYS : 
                            OPEN_EXISTING,
-                       readonly ?
-                           FILE_ATTRIBUTE_READONLY :
-                           FILE_ATTRIBUTE_TEMPORARY,
+                       FILE_ATTRIBUTE_TEMPORARY,
                        NULL );
 
     if (pimpl_->handle_ == INVALID_HANDLE_VALUE)
@@ -291,7 +289,7 @@ void cleanup_and_throw(detail::mapped_file_impl& impl, const char* msg)
     if (impl.handle_ != 0)
         ::close(impl.handle_);
     impl.clear(true);
-    throw_system_failure(msg);
+    throw_system_failure( msg );
 }
 
 } // End namespace detail.

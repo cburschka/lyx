@@ -8,8 +8,8 @@
 // http://www.boost.org/LICENSE_1_0.txt)
 
 // $Source: /cvsroot/boost/boost/boost/type_traits/detail/bool_trait_def.hpp,v $
-// $Date: 2005/03/16 12:22:22 $
-// $Revision: 1.18 $
+// $Date: 2005/08/25 16:27:26 $
+// $Revision: 1.19 $
 
 #include <boost/type_traits/detail/template_arity_spec.hpp>
 #include <boost/type_traits/integral_constant.hpp>
@@ -24,7 +24,7 @@
     /**/
 #   define BOOST_TT_AUX_BOOL_C_BASE(C)
 
-#elif defined(BOOST_MSVC) && BOOST_MSVC <= 1200
+#elif defined(BOOST_MSVC) && BOOST_MSVC < 1300
 
 #   define BOOST_TT_AUX_BOOL_TRAIT_VALUE_DECL(C) \
     typedef ::boost::integral_constant<bool,C> base_; \

@@ -175,14 +175,17 @@ std::streamsize file_descriptor::write(const char_type* s, std::streamsize n)
     return n;
 }
 
-std::streampos file_descriptor::seek
+stream_offset file_descriptor::seek
     (stream_offset off, BOOST_IOS::seekdir way)
 {
     using namespace std;
 #ifdef BOOST_IOSTREAMS_WINDOWS
     if (pimpl_->flags_ & impl::has_handle) {
         LONG lDistanceToMove = static_cast<LONG>(off & 0xffffffff);
-        LONG lDistanceToMoveHigh = static_cast<LONG>(off >> 32);
+        LONG lDistanceToMoveHigh =
+            off < 0xffffffff ?
+                static_cast<LONG>(off >> 32) :
+                0;
         DWORD dwResultLow =
             ::SetFilePointer( pimpl_->handle_,
                               lDistanceToMove,
@@ -195,7 +198,8 @@ std::streampos file_descriptor::seek
         if (::GetLastError() != NO_ERROR) {
             throw detail::bad_seek();
         } else {
-           return offset_to_position((lDistanceToMoveHigh << 32) + dwResultLow);
+            return (static_cast<boost::intmax_t>(lDistanceToMoveHigh) << 32) +
+                   dwResultLow;
         }
     }
 #endif // #ifdef BOOST_IOSTREAMS_WINDOWS
@@ -227,7 +231,7 @@ std::streampos file_descriptor::seek
                           SEEK_END );
     if (result == -1)
         throw detail::bad_seek();
-    return offset_to_position(result);
+    return result;
 }
 
 void file_descriptor::close() { close_impl(*pimpl_); }

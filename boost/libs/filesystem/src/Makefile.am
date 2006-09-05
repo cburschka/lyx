@@ -12,8 +12,7 @@ AM_CPPFLAGS += \
 	$(BOOST_INCLUDES)
 
 libboost_filesystem_la_SOURCES = \
-	convenience.cpp \
 	exception.cpp \
-	Makefile.am \
-	operations_posix_windows.cpp \
-	path_posix_windows.cpp
+	operations.cpp \
+	path.cpp \
+	portability.cpp
