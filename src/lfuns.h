@@ -146,7 +146,7 @@ enum kb_action {
 	LFUN_SERVER_NOTIFY,
 	LFUN_SERVER_GOTO_FILE_ROW,
 	LFUN_NOTE_INSERT,
-	LFUN_ENVIRONMENT_INSERT,
+	LFUN_ENVIRONMENT_INSERT,        // unused as of 20060905
 	LFUN_KEYMAP_OFF,
 	// 100
 	LFUN_KEYMAP_PRIMARY,
@@ -177,7 +177,7 @@ enum kb_action {
 	LFUN_MARK_ON,
 	LFUN_LAYOUT,
 	LFUN_LAYOUT_PARAGRAPH,
-	LFUN_DROP_LAYOUTS_CHOICE,
+	LFUN_DROP_LAYOUTS_CHOICE,       // used in bindings as of 20060905
 	// 125
 	LFUN_FONT_CODE,
 	LFUN_FONT_SANS,
@@ -193,7 +193,7 @@ enum kb_action {
 	// 135
 	LFUN_DEPTH_DECREMENT,
 	LFUN_DEPTH_INCREMENT,
-	LFUN_MENU_OPEN,
+	LFUN_MENU_OPEN,                 // used in bindings as of 20060905
 	LFUN_CANCEL,
 	LFUN_META_PREFIX,
 	// 140
@@ -201,7 +201,7 @@ enum kb_action {
 	LFUN_FILE_INSERT,
 	LFUN_FILE_INSERT_ASCII,         // CFO-G 1997-11-19
 	LFUN_FILE_INSERT_ASCII_PARA,    // Levon 2001-02-14
-	LFUN_FILE_NEW,
+	LFUN_FILE_NEW,                  // for scripting purposes
 	// 145
 	LFUN_FILE_OPEN,
 	LFUN_PARAGRAPH_UP,              // Asger 1996-10-01
@@ -236,7 +236,7 @@ enum kb_action {
 	LFUN_END_OF_SENTENCE_PERIOD_INSERT,           // Asger 970929
 	LFUN_TOGGLE_CURSOR_FOLLOWS_SCROLLBAR,        // ARRae 971202
 	LFUN_BUFFER_CHKTEX,                 // Asger 971030
-	LFUN_HTML_INSERT,                   // CFO-G 971121
+	LFUN_HTML_INSERT,                   // CFO-G 971121; must co-exist with URL_INSERT as of 20060905
 	LFUN_URL_INSERT,                       // CFO-G 971121
 	// 175
 	LFUN_WORD_FIND_FORWARD,           // Etienne 980216
@@ -264,7 +264,7 @@ enum kb_action {
 	LFUN_FLOAT_INSERT,               // Lgb 20000627
 	// 195
 	LFUN_FLOAT_WIDE_INSERT,          // Lgb 20010531
-	LFUN_CAPTION_INSERT,             // Lgb 20000718
+	LFUN_CAPTION_INSERT,             // Lgb 20000718; inactive as of 20060905
 	LFUN_BUFFER_SWITCH,
 	LFUN_TABULAR_FEATURE,           // Jug 20000728
 	LFUN_LAYOUT_TABULAR,            // Jug 20000731
@@ -278,7 +278,7 @@ enum kb_action {
 	LFUN_BOOKMARK_SAVE,             // Dekel 20010127
 	LFUN_BOOKMARK_GOTO,             // Dekel 20010127
 	LFUN_SELECT_FILE_SYNC,          // Levon 20010214
-	LFUN_MESSAGE,                   // Lgb 20010408
+	LFUN_MESSAGE,                   // Lgb 20010408; for scripting purposes, output in minibuffer
 	LFUN_CHARS_TRANSPOSE,           // Lgb 20010425
 	// 210
 	LFUN_ESCAPE,                    // Lgb 20010517
