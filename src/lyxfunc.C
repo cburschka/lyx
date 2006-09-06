@@ -589,7 +589,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_SERVER_GET_NAME:
 	case LFUN_SERVER_NOTIFY:
 	case LFUN_SERVER_GOTO_FILE_ROW:
-	case LFUN_DIALOG_SHOW_NEXT_INSET:
 	case LFUN_DIALOG_HIDE:
 	case LFUN_DIALOG_DISCONNECT_INSET:
 	case LFUN_BUFFER_CHILD_OPEN:
@@ -1234,9 +1233,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			owner->getDialogs().show(name, data, 0);
 			break;
 		}
-
-		case LFUN_DIALOG_SHOW_NEXT_INSET:
-			break;
 
 		case LFUN_DIALOG_UPDATE: {
 			string const & name = argument;
