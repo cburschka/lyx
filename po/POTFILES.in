@@ -18,6 +18,7 @@ src/debug.C
 src/exporter.C
 src/format.C
 src/frontends/LyXView.C
+src/frontends/WorkArea.C
 src/frontends/controllers/ControlAboutlyx.C
 src/frontends/controllers/ControlBibtex.C
 src/frontends/controllers/ControlBox.C
@@ -164,7 +165,6 @@ src/frontends/qt4/QVSpace.C
 src/frontends/qt4/QWrap.C
 src/frontends/qt4/Qt2BC.h
 src/frontends/qt4/UrlView.C
-src/frontends/qt4/floatplacement.C
 src/frontends/qt4/validators.C
 src/gettext.h
 src/importer.C
