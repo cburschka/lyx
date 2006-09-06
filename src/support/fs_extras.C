@@ -14,7 +14,6 @@
 #include "fs_extras.h"
 
 #include <boost/filesystem/config.hpp>
-#include <boost/filesystem/exception.hpp>
 #include <boost/detail/workaround.hpp>
 #include <boost/throw_exception.hpp>
 
@@ -166,7 +165,7 @@ void copy_file(path const & source, path const & target, bool noclobber)
 			filesystem_path_error(
 				"boost::filesystem::copy_file",
 				source, target,
-				fs::detail::system_error_code(errno)));
+				fs::lookup_error_code(errno)));
 	}
 #endif
 }
