@@ -35,8 +35,7 @@ Menuset
 		Item "New|N" "buffer-new"
 		Item "New from Template...|m" "buffer-new-template"
 		Item "Open...|O" "file-open"
-# This seems a much more sensible place to me
-		Submenu "Open recent|t" "lastfiles"
+		Submenu "Open recent|t" "file_lastfiles"
 		Separator
 		Item "Close|C" "buffer-close"
 		Item "Save|S" "buffer-write"
@@ -52,7 +51,7 @@ Menuset
 		Item "Exit|x" "lyx-quit"
 	End
 
-	Menu "lastfiles"
+	Menu "file_lastfiles"
 		Lastfiles
 	End
 
@@ -85,7 +84,7 @@ Menuset
 		Item "Cut" "cut"
 		Item "Copy" "copy"
 		Item "Paste" "paste"
-		Submenu "Paste Recent" "pasterecent"
+		Submenu "Paste Recent" "edit_pasterecent"
 		Submenu "Paste External Clipboard/Selection" "edit_paste"
 		Separator
 		Item "Find & Replace...|F" "dialog-show findreplace"
@@ -103,7 +102,7 @@ Menuset
 # Mathed b0rkage means these don't work properly
 		OptSubmenu "Table|T" "edit_tabular"
 		OptSubmenu "Math|M" "edit_math"
-		OptSubmenu "Rows & Columns|C" "tabular_features"
+		OptSubmenu "Rows & Columns|C" "edit_tabular_features"
 		Separator
 		OptItem "Increase List Depth|I" "depth-increment"
 		OptItem "Decrease List Depth|D" "depth-decrement"
@@ -133,7 +132,7 @@ Menuset
 		Item "Selection as Paragraphs|P" "primary-selection-paste paragraph"
 	End
 
-	Menu "pasterecent"
+	Menu "edit_pasterecent"
 		PasteRecent
 	End
 
@@ -148,7 +147,7 @@ Menuset
 		Separator
 	End
 
-	Menu "tabular_features"
+	Menu "edit_tabular_features"
 		Item "Left|L" "tabular-feature align-left"
 		Item "Center|C" "tabular-feature align-center"
 		Item "Right|R" "tabular-feature align-right"
@@ -229,13 +228,13 @@ Menuset
 		Item "Display Tooltips|i" "tooltips-toggle"
 		Separator
 		Item "View source|s" "dialog-show view-source"
-		Submenu "Update|U" "document_update"
+		Submenu "Update|U" "view_update"
 		ViewFormats
 		Separator
 	    Documents
 	End
 
-	Menu "document_update"
+	Menu "view_update"
 		UpdateFormats
 	End
 
@@ -253,8 +252,8 @@ Menuset
 		Submenu "Float|a" "insert_float"
 # YUCK
 		Submenu "Note|N" "insert_note"
-		OptSubmenu "Branch|B" "branches"
-		OptSubmenu "Character Style|y" "charstyle"
+		OptSubmenu "Branch|B" "insert_branches"
+		OptSubmenu "Character Style|y" "insert_charstyles"
 		Submenu "File|e" "insert_file"
 		Item "Box" "box-insert Frameless"
 		Separator
@@ -374,11 +373,11 @@ Menuset
 		Item "Greyed Out|G" "note-insert Greyedout"
 	End
 
-	Menu "branches"
+	Menu "insert_branches"
 		Branches
 	End
 
-	Menu "charstyle"
+	Menu "insert_charstyles"
 		CharStyles
 	End
 
@@ -387,18 +386,17 @@ Menuset
 #
 
 	Menu "document"
-		Submenu "Change Tracking|C" "edit_change"
+		Submenu "Change Tracking|C" "document_change"
 		OptItem "Build Program|B" "build-program"
 		Item "LaTeX Log|L" "dialog-show latexlog"
 		Item "Table of Contents|T" "toc-view"
 		Item "Start Appendix Here|A" "appendix"
 		Separator
 		Item "Compressed|o" "buffer-toggle-compression"
-		Item "Read-Only|R" "buffer-toggle-read-only"
 		Item "Settings...|S" "dialog-show document"
 	End
 
-	Menu "edit_change"
+	Menu "document_change"
 		Item "Track Changes|T" "changes-track"
 		Item "Merge Changes...|M" "changes-merge"
 		Item "Accept Change|A" "change-accept"
