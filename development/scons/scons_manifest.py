@@ -75,10 +75,10 @@ boost_libs_regex_src_files = Split('''
 
 
 boost_libs_filesystem_src_files = Split('''
-    convenience.cpp
     exception.cpp
-    operations_posix_windows.cpp
-    path_posix_windows.cpp
+    operations.cpp
+    path.cpp
+    portability.cpp
 ''')
 
 
