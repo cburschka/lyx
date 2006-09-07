@@ -1,18 +1,20 @@
 Aspell on Windows
 
-You need cmake and cygwin.
+You need cmake and cygwin (with Unix line endings!!).
 
 - check out the latest CVS version: 
   http://savannah.gnu.org/cvs/?group=aspell
 
-- copy the files from the LyX SVN to the other 
-  files in the win32 folder of aspell
+- first build with cygwin to autogenerate 
+  all required  files:
+  ./autogen
+  ./configure
+  ./make
+  
+- copy the files from the LyX SVN aspell/win32
 
 - with cygwin patch aspell, call in aspell/:
     patch -p0 -i win32/win32-aspell.patch
-
-- generate missing source files with cygwin:
-    ./autogen
   
 - make a separate build directory and run 
   on a standard Windows command promp

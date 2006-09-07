@@ -1,6 +1,17 @@
 project(aspell)
 
 
+if(${LINK} MATCHES "shared" OR ASPELL_LINK)
+	set(ASPELL_SHARED_LIB 1)
+	set(ASPELL_LINK SHARED CACHE TYPE STRING)
+else(${LINK} MATCHES "shared" OR ASPELL_LINK)
+	MESSAGE(STATUS)
+	MESSAGE(STATUS "Use -DLINK=shared to build the libraries as shared")
+	MESSAGE(STATUS)
+	set(ASPELL_LINK STATIC)
+endif(${LINK} MATCHES "shared" OR ASPELL_LINK)
+
+
 ########################################################################
 #
 # Aspell Library
@@ -82,9 +93,6 @@ set(libaspell_sources
   ../modules/filter/url.cpp
   ../modules/filter/genconv.cpp
  
-	
-### msvc win32 support
-     ../win32/libstub.cpp
 )
 
 file(GLOB commons_headers ../common/*.hpp)
@@ -134,9 +142,18 @@ if(MSVC)
 	SET(CMAKE_C_FLAGS_RELEASE ${CMAKE_CXX_FLAGS_RELEASE})
 endif(MSVC)
 
-add_definitions(-DWIN32PORT)
-add_library(aspell STATIC ${libaspell_sources} ${commons_headers})
+if(WIN32)
+	### msvc win32 support
+	set(libaspell_sources ${libaspell_sources} ../win32/libstub.cpp)
+	add_definitions(-DWIN32PORT)
+endif(WIN32)
 
+add_library(aspell ${ASPELL_LINK} ${libaspell_sources} ${commons_headers})
+
+
+if(WIN32)
+	target_link_libraries(aspell ole32)
+endif(WIN32)
 
 
 ########################################################################
@@ -152,8 +169,9 @@ set(aspell_SOURCES
   
 add_executable(aspellexe ${aspell_SOURCES})
 
-target_link_libraries(aspellexe aspell ole32)
-
+if(WIN32)
+	target_link_libraries(aspellexe aspell ole32)
+endif(WIN32)
 
 
 ########################################################################
