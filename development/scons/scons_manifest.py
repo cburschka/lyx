@@ -1483,6 +1483,18 @@ lib_images_files = Split('''
 
 
 lib_images_math_files = Split('''
+    style.xbm
+    font.xpm
+    delim.xpm
+    equation.xpm
+    matrix.xpm
+    space.xpm
+    sqrt-square.xpm
+    style.xpm
+    sub.xpm
+    super.xpm
+    Bbbk.xpm
+    Finv.xpm
     Game.xpm
     Im.xpm
     Lleftarrow.xpm

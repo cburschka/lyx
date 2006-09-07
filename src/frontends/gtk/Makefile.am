@@ -10,7 +10,7 @@ noinst_LTLIBRARIES = libgtk.la
 
 AM_CPPFLAGS += \
 	$(PCH_FLAGS) \
-	-I$(top_srcdir)/images \
+	-I$(top_srcdir)/lib/images/math \
 	-I$(top_srcdir)/src \
 	-I$(top_srcdir)/src/frontends \
 	-I$(top_srcdir)/src/frontends/controllers \

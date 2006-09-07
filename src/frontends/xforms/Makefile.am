@@ -9,7 +9,7 @@ BUILT_SOURCES = $(PCH_FILE) lyx_forms.h lyx_xpm.h
 EXTRA_DIST = pch.h lyx_forms.h.in lyx_xpm.h.in
 
 AM_CPPFLAGS += \
-	-I$(top_srcdir)/images \
+	-I$(top_srcdir)/lib/images/math \
 	-I$(top_srcdir)/src \
 	-I$(top_srcdir)/src/frontends \
 	-I$(top_srcdir)/src/frontends/controllers \

@@ -10,6 +10,29 @@ dist_pkgdata_DATA = lyxrc.example CREDITS chkconfig.ltx \
 # Note that we "chmod 755" manually this file in install-data-hook.
 dist_pkgdata_PYTHON = configure.py 
 
+dist_noinst_DATA = \
+	images/README \
+	images/font-smallcaps.xpm \
+	images/math/ams_arrows.xbm \
+	images/math/ams_misc.xbm \
+	images/math/ams_nrel.xbm \
+	images/math/ams_ops.xbm \
+	images/math/ams_rel.xbm \
+	images/math/arrows.xbm \
+	images/math/bop.xbm \
+	images/math/brel.xbm \
+	images/math/deco.xbm \
+	images/math/deco.xpm \
+	images/math/delim0.xpm \
+	images/math/delim1.xpm \
+	images/math/delim.xbm \
+	images/math/dots.xbm \
+	images/math/font.xbm \
+	images/math/frac-square.xpm \
+	images/math/greek.xbm \
+	images/math/misc.xbm \
+	images/math/varsz.xbm
+
 binddir = $(pkgdatadir)/bind
 dist_bind_DATA = \
 	bind/broadway.bind \
@@ -217,6 +240,16 @@ dist_images_DATA = \
 
 imagesmathdir = $(imagesdir)/math
 dist_imagesmath_DATA = \
+	images/math/style.xbm \
+	images/math/font.xpm \
+	images/math/delim.xpm \
+	images/math/equation.xpm \
+	images/math/matrix.xpm \
+	images/math/space.xpm \
+	images/math/sqrt-square.xpm \
+	images/math/style.xpm \
+	images/math/sub.xpm \
+	images/math/super.xpm \
 	images/math/Bbbk.xpm \
 	images/math/Finv.xpm \
 	images/math/Game.xpm \
