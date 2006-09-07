@@ -1642,6 +1642,7 @@ lib_images_math_files = Split('''
     infty.xpm
     int.xpm
     intercal.xpm
+    intop.xpm
     iota.xpm
     jmath.xpm
     kappa.xpm
@@ -1766,6 +1767,7 @@ lib_images_math_files = Split('''
     nwarrow.xpm
     odot.xpm
     oint.xpm
+    ointop.xpm
     omega.xpm
     omega2.xpm
     ominus.xpm
