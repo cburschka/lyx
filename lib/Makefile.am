@@ -410,6 +410,7 @@ dist_imagesmath_DATA = \
 	images/math/infty.xpm \
 	images/math/int.xpm \
 	images/math/intercal.xpm \
+	images/math/intop.xpm \
 	images/math/iota.xpm \
 	images/math/jmath.xpm \
 	images/math/kappa.xpm \
@@ -534,6 +535,7 @@ dist_imagesmath_DATA = \
 	images/math/nwarrow.xpm \
 	images/math/odot.xpm \
 	images/math/oint.xpm \
+	images/math/ointop.xpm \
 	images/math/omega.xpm \
 	images/math/omega2.xpm \
 	images/math/ominus.xpm \
