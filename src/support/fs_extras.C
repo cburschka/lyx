@@ -23,7 +23,7 @@
 #ifdef HAVE_SYS_STAT_H
 # include <sys/stat.h>
 #endif
-#include <errno.h>
+#include <cerrno>
 #include <fcntl.h>
 
 // BOOST_POSIX or BOOST_WINDOWS specify which API to use.

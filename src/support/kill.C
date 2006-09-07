@@ -22,7 +22,7 @@
 #include "os.h"
 
 #include <windows.h>
-#include <errno.h>
+#include <cerrno>
 
 using std::endl;
 #endif //_WIN32
