@@ -188,7 +188,7 @@ char const * latex_misc[] = {
 int const nr_latex_misc = sizeof(latex_misc) / sizeof(char const *);
 
 char const * latex_varsz[] = {
-	"sum", "int", "oint",
+	"sum", "int", "intop", "oint", "ointop",
 	"prod", "coprod", "bigsqcup",
 	"bigotimes", "bigodot", "bigoplus",
 	"bigcap", "bigcup", "biguplus",
