@@ -12,7 +12,7 @@
 # to INSTALL.scons for detailed instructions.
 #
 
-import os, sys, copy, cPickle, glob
+import os, sys, copy, cPickle, glob, time
 
 # scons_utils.py defines a few utility function
 sys.path.append('config')
@@ -384,13 +384,14 @@ env.AppendUnique(LIBPATH = ['$LOCALLIBPATH'])
 #     lib/lyx2lyx/lyx2lyx_version.py.in
 #       PACKAGE_VERSION
 #     src/version.C.in
-#       PACKAGE_VERSION, VERSION_INFO
+#       PACKAGE_VERSION, LYX_DATE, VERSION_INFO
 
 # full path name is used to build msvs project files
 # and to replace TOP_SRCDIR in package.C
 env['TOP_SRCDIR'] = Dir(top_src_dir).abspath
 # needed by src/version.C.in => src/version.C
 env['PACKAGE_VERSION'] = package_version
+env['LYX_DATE'] = time.asctime()
 
 # determine share_dir etc
 packaging_method = env.get('packaging')
