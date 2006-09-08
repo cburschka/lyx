@@ -125,10 +125,10 @@ public:
 #endif
 		// setlocale fails (returns NULL) if the corresponding locale
 		// is not installed.
-		// On windows (mingw) it always returns NULL.
+		// On windows (mingw and cygwin) it always returns NULL.
 		// Since this method gets called for every translatable
 		// buffer string like e.g. "Figure:" we warn only once.
-#ifndef _WIN32
+#if !defined(_WIN32) && !defined(__CYGWIN__)
 		static bool warned = false;
 		if (!warned && !lc_msgs) {
 			warned = true;
