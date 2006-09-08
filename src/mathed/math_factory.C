@@ -37,6 +37,7 @@
 #include "math_makeboxinset.h"
 #include "math_oversetinset.h"
 #include "math_parser.h"
+#include "math_phantominset.h"
 #include "math_rootinset.h"
 #include "math_sizeinset.h"
 #include "math_spaceinset.h"
@@ -335,6 +336,12 @@ MathAtom createMathInset(string const & s)
 		return MathAtom(new MathDfracInset);
 	if (s == "tfrac")
 		return MathAtom(new MathTfracInset);
+	if (s == "hphantom")
+		return MathAtom(new MathPhantomInset(MathPhantomInset::hphantom));
+	if (s == "phantom")
+		return MathAtom(new MathPhantomInset(MathPhantomInset::phantom));
+	if (s == "vphantom")
+		return MathAtom(new MathPhantomInset(MathPhantomInset::vphantom));
 
 	if (MacroTable::globalMacros().has(s))
 		return MathAtom(new MathMacro(s,
