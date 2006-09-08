@@ -214,6 +214,7 @@ src_mathed_header_files = Split('''
     math_oversetinset.h
     math_parinset.h
     math_parser.h
+    math_phantominset.h
     math_replace.h
     math_rootinset.h
     math_scriptinset.h
@@ -291,6 +292,7 @@ src_mathed_files = Split('''
     math_oversetinset.C
     math_parinset.C
     math_parser.C
+    math_phantominset.C
     math_rootinset.C
     math_scriptinset.C
     math_sizeinset.C
