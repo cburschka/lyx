@@ -204,7 +204,11 @@ string internal_path(string const & p)
 
 string external_path_list(string const & p)
 {
+#ifdef X_DISPLAY_MISSING
 	return convert_path_list(p, PathStyle(windows));
+#else
+	return convert_path_list(p, PathStyle(posix));
+#endif
 }
 
 
