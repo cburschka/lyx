@@ -69,7 +69,6 @@ using lyx::support::onlyFilename;
 using lyx::support::onlyPath;
 using lyx::support::Path;
 using lyx::support::package;
-using lyx::support::quoteName;
 using lyx::support::removeAutosaveFile;
 using lyx::support::rename;
 using lyx::support::split;

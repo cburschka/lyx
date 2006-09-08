@@ -73,7 +73,6 @@ using lyx::support::libFileSearch;
 using lyx::support::package;
 using lyx::support::Path;
 using lyx::support::prependEnvPath;
-using lyx::support::quoteName;
 using lyx::support::rtrim;
 using lyx::support::Systemcall;
 

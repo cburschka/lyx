@@ -37,7 +37,6 @@
 using lyx::support::contains;
 using lyx::support::libFileSearch;
 using lyx::support::onlyPath;
-using lyx::support::quoteName;
 using lyx::support::Systemcall;
 
 using std::endl;
