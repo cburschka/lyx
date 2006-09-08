@@ -133,6 +133,8 @@ What's new
 
 - LyX can be compiled with MSVC using qt3 from the Q../Free project and scons.
 
+- 'scons install' now produces a cygwin-compatible binary package under cygwin.
+
 * Miscellaneous
 
 - Display LaTeX package checking results faster during configuration.
