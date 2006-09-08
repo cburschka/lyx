@@ -1,3 +1,11 @@
+2006-09-07  Enrico Forestieri  <[EMAIL PROTECTED]>
+	* os_cygwin.C (is_windows_path): avoid unnecessary conversion
+		when path is relative
+		(convert_path_list): avoid unnecessary conversion when path
+		list is empty
+		(external_path, external_path_list): for an X11 build it is not
+		necessary that the output path style is windows
+
 2006-06-27  Enrico Forestieri  <forenr@tlc.unipr.it>
 
 	* os.h: rename cygwin_path_fix as windows_style_tex_paths.

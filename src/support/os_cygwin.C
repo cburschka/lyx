@@ -55,8 +55,7 @@ bool is_posix_path(string const & p)
 
 bool is_windows_path(string const & p)
 {
-	return p.empty() ||
-		(!contains(p, '\\') && (p.length() <= 1 || p[1] == ':'));
+	return p.empty() || (!contains(p, '\\') && p[0] != '/');
 }
 
 
@@ -87,6 +86,9 @@ string convert_path(string const & p, PathStyle const & target)
 
 string convert_path_list(string const & p, PathStyle const & target)
 {
+	if (p.empty())
+		return p;
+
 	char const * const pc = p.c_str();
 	PathStyle const actual = cygwin_posix_path_list_p(pc) ? posix : windows;
 
@@ -186,7 +188,11 @@ string::size_type common_path(string const & p1, string const & p2)
 
 string external_path(string const & p)
 {
+#ifdef X_DISPLAY_MISSING
 	return convert_path(p, PathStyle(windows));
+#else
+	return convert_path(p, PathStyle(posix));
+#endif
 }
 
 
@@ -198,7 +204,11 @@ string internal_path(string const & p)
 
 string external_path_list(string const & p)
 {
+#ifdef X_DISPLAY_MISSING
 	return convert_path_list(p, PathStyle(windows));
+#else
+	return convert_path_list(p, PathStyle(posix));
+#endif
 }
 
 

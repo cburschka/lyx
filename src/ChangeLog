@@ -1,3 +1,8 @@
+1006-09-07  Enrico Forestieri <[EMAIL PROTECTED]>
+
+	* messages.C (Messages::get): don't warn about locale on cygwin
+		as it is not supported.
+
 2006-09-08  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* BufferView_pimpl.C (getCurrentChange): do not assume that
