@@ -232,6 +232,8 @@ public:
 	bool backspacePos0(LCursor & cur);
 	/// Delete character before cursor. Honour CT
 	bool backspace(LCursor & cur);
+	// Dissolve the inset under cursor
+	bool dissolveInset(LCursor & cur);
 	///
 	bool selectWordWhenUnderCursor(LCursor & cur, lyx::word_location);
 	///

@@ -88,6 +88,7 @@ using lyx::support::split;
 using lyx::support::uppercase;
 
 using lyx::cap::cutSelection;
+using lyx::cap::pasteParagraphList;
 
 using std::auto_ptr;
 using std::advance;
@@ -1671,7 +1672,9 @@ bool LyXText::erase(LCursor & cur)
 		} else {
 			setCursorIntern(scur, scur.pit(), scur.pos(), false, scur.boundary());
 		}
-	}
+	} else
+		needsUpdate = dissolveInset(cur);
+	
 	return needsUpdate;
 }
 
@@ -1757,6 +1760,9 @@ bool LyXText::backspace(LCursor & cur)
 	BOOST_ASSERT(this == cur.text());
 	bool needsUpdate = false;
 	if (cur.pos() == 0) {
+		if (cur.pit() == 0)
+			return dissolveInset(cur);
+
 		// The cursor is at the beginning of a paragraph, so
 		// the the backspace will collapse two paragraphs into
 		// one.
@@ -1794,6 +1800,40 @@ bool LyXText::backspace(LCursor & cur)
 	setCursor(cur, cur.pit(), cur.pos(), false, cur.boundary());
 
 	return needsUpdate;
+}
+
+
+bool LyXText::dissolveInset(LCursor & cur) {
+	BOOST_ASSERT(this == cur.text());
+
+	if (isMainText() || cur.inset().nargs() != 1) 
+		return false;
+
+	recordUndoInset(cur);
+	cur.selHandle(false);
+	// save position
+	lyx::pos_type spos = cur.pos();
+	lyx::pit_type spit = cur.pit();
+	ParagraphList plist;
+	if (cur.lastpit() != 0 || cur.lastpos() != 0) 
+		plist = paragraphs();
+	cur.popLeft();
+	// store cursor offset
+	if (spit == 0)
+		spos += cur.pos();
+	spit += cur.pit();
+	cur.paragraph().erase(cur.pos());
+	if (!plist.empty()) {
+		Buffer & b = cur.buffer();
+		pasteParagraphList(cur, plist, b.params().textclass, 
+				   b.errorList("Paste"));
+		// restore position
+		cur.pit() = std::min(cur.lastpit(), spit);
+		cur.pos() = std::min(cur.lastpos(), spos);
+	}
+	cur.clearSelection();
+	cur.resetAnchor();
+	return true;
 }
 
 

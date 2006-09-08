@@ -79,7 +79,6 @@ using lyx::pos_type;
 
 using lyx::cap::copySelection;
 using lyx::cap::cutSelection;
-using lyx::cap::pasteParagraphList;
 using lyx::cap::pasteSelection;
 using lyx::cap::replaceSelection;
 
@@ -709,34 +708,9 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_INSET_DISSOLVE: {
-		recordUndoInset(cur);
-		cur.selHandle(false);
-		// save position
-		lyx::pos_type spos = cur.pos();
-		lyx::pit_type spit = cur.pit();
-		ParagraphList plist;
-		if (cur.lastpit() != 0 || cur.lastpos() != 0) 
-			plist = paragraphs();
-		cur.popLeft();
-		// store cursor offset
-		if (spit == 0)
-			spos += cur.pos();
-		spit += cur.pit();
-		cur.paragraph().erase(cur.pos());
-		if (!plist.empty()) {
-			Buffer * b = bv->buffer();
-			pasteParagraphList(cur, plist, b->params().textclass, 
-					   b->errorList("Paste"));
-			// restore position
-			cur.pit() = std::min(cur.lastpit(), spit);
-			cur.pos() = std::min(cur.lastpos(), spos);
-		}
-		cur.clearSelection();
-		cur.resetAnchor();
-		needsUpdate = true;
+	case LFUN_INSET_DISSOLVE:
+		needsUpdate = dissolveInset(cur);
 		break;
-	}
 
 	case LFUN_INSET_SETTINGS:
 		cur.inset().showInsetDialog(bv);
@@ -1720,20 +1694,17 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 		enable = lyx::cap::numberOfSelections() > 0;
 		break;
 
-	case LFUN_PARAGRAPH_MOVE_UP: {
+	case LFUN_PARAGRAPH_MOVE_UP:
 		enable = cur.pit() > 0 && !cur.selection();
 		break;
-	}
 
-	case LFUN_PARAGRAPH_MOVE_DOWN: {
+	case LFUN_PARAGRAPH_MOVE_DOWN:
 		enable = cur.pit() < cur.lastpit() && !cur.selection();
 		break;
-	}
 
-	case LFUN_INSET_DISSOLVE: {
-		enable = !isMainText() && cur.inTexted();
+	case LFUN_INSET_DISSOLVE:
+		enable = !isMainText() && cur.inset().nargs() == 1;
 		break;
-	}
 
 	case LFUN_WORD_DELETE_FORWARD:
 	case LFUN_WORD_DELETE_BACKWARD:

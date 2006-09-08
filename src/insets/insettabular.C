@@ -1045,28 +1045,6 @@ bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
 			return true;
 		}
 
-	case LFUN_INSET_DISSOLVE: {
-		status.enabled(false);
-		return true;
-	}
-
-	// because of the dissolve handling in insettext:
-	case LFUN_CHAR_DELETE_FORWARD:
-		if (!cur.selection() && cur.depth() > 1
-		    && cur.pit() == cur.lastpit()
-		    && cur.pos() == cur.lastpos()) {
-		status.enabled(false);
-		return true;
-		}
-		// Fall through
-
-	case LFUN_CHAR_DELETE_BACKWARD:
-		if (cur.depth() > 1 && cur.pit() == 0 && cur.pos() == 0) {
-		status.enabled(false);
-		return true;
-		}
-		// Fall through
-
 	case LFUN_INSET_MODIFY:
 		if (translate(cmd.getArg(0)) == TABULAR_CODE) {
 			status.enabled(true);
