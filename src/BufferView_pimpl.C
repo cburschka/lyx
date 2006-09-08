@@ -586,17 +586,11 @@ bool BufferView::Pimpl::available() const
 
 Change const BufferView::Pimpl::getCurrentChange()
 {
-	if (!buffer_->params().tracking_changes)
+	if (!buffer_->params().tracking_changes || !cursor_.selection())
 		return Change(Change::UNCHANGED);
 
-	LyXText * text = bv_->getLyXText();
-	LCursor & cur = cursor_;
-
-	if (!cur.selection())
-		return Change(Change::UNCHANGED);
-
-	return text->getPar(cur.selBegin().pit()).
-			lookupChange(cur.selBegin().pos());
+	DocIterator dit = cursor_.selectionBegin();
+	return dit.paragraph().lookupChange(dit.pos());
 }
 
 
