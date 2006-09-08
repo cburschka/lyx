@@ -51,6 +51,8 @@
 
 #include "insets/insetenv.h"
 
+#include "mathed/math_hullinset.h"
+
 #include "support/textutils.h"
 
 #include <boost/current_function.hpp>
@@ -1078,7 +1080,10 @@ bool LyXText::cursorUp(LCursor & cur)
 	if (!cur.selection()) {
 		int const y = bv_funcs::getPos(cur, cur.boundary()).y_;
 		LCursor old = cur;
-		editXY(cur, x, y - par.rows()[row].ascent() - 1);
+		// Go to middle of previous row. 16 found to work OK;
+		// 12 = top/bottom margin of display math
+		int const margin = 3 * MathHullInset::displayMargin() / 2;
+		editXY(cur, x, y - par.rows()[row].ascent() - margin);
 		cur.clearSelection();
 
 		// This happens when you move out of an inset.
@@ -1124,7 +1129,9 @@ bool LyXText::cursorDown(LCursor & cur)
 	if (!cur.selection()) {
 		int const y = bv_funcs::getPos(cur, cur.boundary()).y_;
 		LCursor old = cur;
-		editXY(cur, x, y + par.rows()[row].descent() + 1);
+		// To middle of next row
+		int const margin = 3 * MathHullInset::displayMargin() / 2;
+		editXY(cur, x, y + par.rows()[row].descent() + margin);
 		cur.clearSelection();
 
 		// This happens when you move out of an inset.

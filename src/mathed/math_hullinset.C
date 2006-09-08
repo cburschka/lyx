@@ -284,7 +284,7 @@ void MathHullInset::metrics(MetricsInfo & mi, Dimension & dim) const
 		// insert a one pixel gap in front of the formula
 		dim.wid += 1;
 		if (display())
-			dim.des += 12;
+			dim.des += displayMargin();
 		dim_ = dim;
 		return;
 	}
@@ -296,8 +296,8 @@ void MathHullInset::metrics(MetricsInfo & mi, Dimension & dim) const
 	MathGridInset::metrics(mi, dim);
 
 	if (display()) {
-		dim.asc += 12;
-		dim.des += 12;
+		dim.asc += displayMargin();
+		dim.des += displayMargin();
 	}
 
 	if (numberedType()) {

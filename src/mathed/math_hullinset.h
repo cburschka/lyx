@@ -116,6 +116,8 @@ public:
 	///
 	void addPreview(lyx::graphics::PreviewLoader &) const;
 
+	///
+	static int displayMargin() { return 12; }
 
 protected:
 	MathHullInset(MathHullInset const &);
