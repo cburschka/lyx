@@ -1,47 +1,40 @@
 LyX/Cygwin
+==========
+
 Ruurd Reitsma  <R.A.Reitsma@wbmt.tudelft.nl>
+Bo Peng <ben.bob#gmail.com>
 
-There are two ways to run LyX on Windows:
-* as a native Windows application, using the Qt/Win Free clone of
-  Trolltech's cross-platform Qt toolkit.
-* as a POSIX application running under the Cygwin environment.
 
-This README describes what is needed for the latter of these two
-options. Please refer to README.Win32 if you'd like to run LyX
-as a native Windows application.
+Building Lyx under cygwin
+=========================
 
-The Cygwin port consists of a few small tweaks to the original
-Unix sources to deal with DOS-style pathnames, so that LyX can use
-Win32 TeX distros like fptex and MiKTeX. There's also a cygwin TeTeX port,
-but the native Win32 ports have a definite speed advantage. Besides that,
-nothing fancy.
+Two building systems are supported to build lyx under cygwin: the traditional
+autotools (autoconf, automake, make etc), and a scons build system. The latter
+is easier to use and is the preferred method. If you prefer using autotools, 
+you can find detailed instructions at lyx/wiki.
 
-The prerequisites are (obviously?):
+To build lyx, you will need to install the following cygwin packages
 
-* cygwin installation (http://www.cygwin.com/).
-* decent X server; eXceed, X-Win32 or Cygwin/XFree86.
-* working TeX installation; fpTex, MikTex.
+    aspell        gzip       libiconv     qt3-bin
+    aspell-dev    jpeg       libpng       qt3-devel
+    gcc           libintl    libpng2
+    gettext       libintl1   jpeg
+    gettext-devel libintl2   python
 
-It should compile out of the box, but there might be some libraries
-missing in the final link step. You'll have to add them to the Makefile
-by hand. Be sure to include -lregex, because cygwin's builtin regex is
-sortof weird (filedialogs will turn up empty...)
+Then, build lyx with command
 
-If you want to run LyX with no console windows open, there's a small
-program in development/Win32 that will set the proper environment vars
-and start LyX.
+    > python scons.py -f development/scons/SConstruct mode=release install
 
-Compile with:
+Optionally, you can install to a DESTDIR using a command similar to 
 
-gcc lyxwin32.C -O2 -o lyxwin32 -static -Wall -Wno-format \
--Wstrict-prototypes -Wmissing-prototypes -mwindows -e _mainCRTStartup
+    > python scons.py -f development/scons/SConstruct mode=release DESTDIR=./test install
 
-Also make sure the latex binaries are in your Windows path. Windvi and
-Yap are auto detected, and you might want to make a symlink to Adobe
-Acrobat so it's detected too:
+For more details about the use of scons, please refer to INSTALL.scons.
 
-ln -s //c/Program\ Files/adobe/Acrobat\ 4.0/Reader/AcroRd32.exe \
-/usr/bin/acroread
 
-Many thanks to Steven van Dijk, Claus Hentschel and Miyata Shigeru for
-starting the porting business.
+Acknowledgements
+================
+
+Many thanks to Steven van Dijk, Claus Hentschel and Miyata Shigeru for 
+starting the porting business, and Enrico Forestieri for many cygwin-related
+improvements.

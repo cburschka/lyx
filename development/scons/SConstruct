@@ -54,6 +54,7 @@ else:
 # some global settings
 #
 package_version = '1.5.0svn'
+package_cygwin_version = '1.5.0svn-1'
 boost_version = '1_33_1'
 
 devel_version = True
@@ -397,14 +398,14 @@ if packaging_method == 'windows':
     share_dir = 'Resources'
     man_dir = 'Resources/man/man1'
     locale_dir = 'Resources/locale'
-    default_prefix = 'c:/program files/lyx'
 else:
     share_dir = 'share/lyx'
-    man_dir = 'man/man1'
     locale_dir = 'share/locale'
-    default_prefix = '/usr/local/'
+    if platform_name == 'cygwin':
+        man_dir = 'share/man/man1'
+    else:
+        man_dir = 'man/man1'
 
-# install to default_prefix by default
 # program suffix: can be yes, or a string
 if env.has_key('version_suffix'):
     if env['version_suffix'] in true_strings:
@@ -841,6 +842,14 @@ if not fast_start:
     env_cache['MSGFMT'] = env['MSGFMT']
 else:
     env['MSGFMT'] = env_cache['MSGFMT']
+
+# cygwin packaging requires the binaries to be stripped
+if platform_name == 'cygwin':
+    if not fast_start:
+        env['STRIP'] = conf.CheckCommand('strip')
+        env_cache['STRIP'] = env['STRIP']
+    else:
+        env['STRIP'] = env_cache['STRIP']
 
 # check uic and moc commands for qt frontends
 if not fast_start:
@@ -1403,7 +1412,7 @@ env['CPPPATH'].remove(qt_inc_path)
 # for details
 #
 if platform_name == 'cygwin':
-    ld_script_path = '/usr/lib/qt3/mkspecs/cygwin-g++'
+    ld_script_path = '/tmp'
     ld_script = utils.installCygwinLDScript(ld_script_path)
     env.AppendUnique(LINKFLAGS = ['-Wl,--enable-runtime-pseudo-reloc',
         '-Wl,--script,%s' % ld_script, '-Wl,-s'])
@@ -2167,30 +2176,23 @@ if 'install' in targets:
     else:
         version_suffix = ''
     #
-    # install lyx
-    target_name = os.path.split(str(lyx[0]))[1].replace('lyx', 'lyx%s' % version_suffix)
-    target = os.path.join(bin_dest_dir, target_name)
-    env.InstallAs(target, lyx)
-    Alias('install', target)
-    # install lyx as lyx-qt3
-    target_name = os.path.split(str(lyx[0]))[1].replace('lyx', 'lyx-%s%s' % (frontend, version_suffix))
-    target = os.path.join(bin_dest_dir, target_name)
-    env.InstallAs(target, lyx)
-    Alias('install', target)
-    #
-    # install tex2lyx
-    target_name = os.path.split(str(tex2lyx[0]))[1].replace('tex2lyx', 'tex2lyx%s' % version_suffix)
-    target = os.path.join(bin_dest_dir, target_name)
-    env.InstallAs(target, tex2lyx)
-    Alias('install', target)
-    #
-    # install lyxclient, may not exist
-    if client != None:
-        target_name = os.path.split(str(client[0]))[1].replace('client', 'client%s' % version_suffix)
+    # install lyx, if in release mode, try to strip the binary
+    if env.has_key('STRIP') and env['STRIP'] is not None and mode != 'debug':
+        # create a builder to strip and install
+        env['BUILDERS']['StripInstallAs'] = Builder(action='$STRIP $SOURCE -o $TARGET')
+
+    # install executables
+    for (name, obj) in (('lyx', lyx), ('tex2lyx', tex2lyx), ('client', client)):
+        if obj is None:
+            continue
+        target_name = os.path.split(str(obj[0]))[1].replace(name, '%s%s' % (name, version_suffix))
         target = os.path.join(bin_dest_dir, target_name)
-        env.InstallAs(target, client)
+        if env['BUILDERS'].has_key('StripInstallAs'):
+            env.StripInstallAs(target, obj)
+        else:
+            env.InstallAs(target, obj)
         Alias('install', target)
-    #
+
     # share/lyx
     dirs = []
     for (dir,files) in [
@@ -2210,14 +2212,27 @@ if 'install' in targets:
             ('lyx2lyx', lib_lyx2lyx_files)]:
         dirs.append(env.Install(os.path.join(share_dest_dir, dir),
             [env.subst('$TOP_SRCDIR/lib/%s/%s' % (dir, file)) for file in files]))
+    Alias('install', dirs)
     
+    if platform_name == 'cygwin':
+        # cygwin packaging requires a file /usr/share/doc/Cygwin/foot-vendor-suffix.README
+        Cygwin_README = os.path.join(dest_prefix_dir, 'doc', 'Cygwin', 
+            '%s%s.README' % (package, package_cygwin_version))
+        env.InstallAs(Cygwin_README,
+            os.path.join(env.subst('$TOP_SRCDIR'), 'README.cygwin'))
+        Alias('install', Cygwin_README)
+        # also a directory /usr/share/doc/lyx for README etc
+        Cygwin_Doc = os.path.join(dest_prefix_dir, 'doc', package)
+        env.Install(Cygwin_Doc, [os.path.join(env.subst('$TOP_SRCDIR'), x) for x in \
+            ['INSTALL', 'README', 'README.Cygwin', 'RELEASE-NOTES', 'COPYING', 'ANNOUNCE']])
+        Alias('install', Cygwin_Doc)
+
     # lyx1.4.x does not have lyx2lyx_version.py.in
     if os.path.isfile(env.subst('$TOP_SRCDIR/lib/lyx2lyx/lyx2lyx_version.py.in')):
         # subst and install this file
         env.substFile(share_dest_dir + '/lyx2lyx/lyx2lyx_version.py',
             '$TOP_SRCDIR/lib/lyx2lyx/lyx2lyx_version.py.in')
         Alias('install', share_dest_dir + '/lyx2lyx/lyx2lyx_version.py')
-    Alias('install', dirs)
     # man
     env.InstallAs(os.path.join(man_dest_dir, 'lyx' + version_suffix + '.1'),
         env.subst('$TOP_SRCDIR/lyx.man'))
