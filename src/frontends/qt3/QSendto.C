@@ -33,7 +33,7 @@ typedef QController<ControlSendto, QView<QSendtoDialog> > base_class;
 
 
 QSendto::QSendto(Dialog & parent)
-	: base_class(parent, _("Send Document to Command"))
+	: base_class(parent, lyx::to_utf8(_("Send Document to Command")))
 {
 }
 

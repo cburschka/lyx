@@ -219,11 +219,13 @@ string const getAbbreviatedAuthor(InfoMap const & map, string const & key)
 		return author;
 
 	if (authors.size() == 2)
-		return bformat(_("%1$s and %2$s"),
+		// FIXME UNICODE
+		return bformat(lyx::to_utf8(_("%1$s and %2$s")),
 			familyName(authors[0]), familyName(authors[1]));
 
 	if (authors.size() > 2)
-		return bformat(_("%1$s et al."), familyName(authors[0]));
+		// FIXME UNICODE
+		return bformat(lyx::to_utf8(_("%1$s et al.")), familyName(authors[0]));
 
 	return familyName(authors[0]);
 }
@@ -260,7 +262,7 @@ string const getYear(InfoMap const & map, string const & key)
 
 	string year = parseBibTeX(data, "year");
 	if (year.empty())
-		year = _("No year");
+		year = lyx::to_utf8(_("No year"));
 
 	return year;
 }
@@ -797,7 +799,7 @@ getAuthorYearStrings(string const & key,
 		case CITE:
 			// jurabib only: Author/Annotator
 			// (i.e. the "before" field, 2nd opt arg)
-			str = author + "/<" + _("before") + '>';
+			str = author + "/<" + lyx::to_utf8(_("before")) + '>';
 			break;
 
 		case CITET:

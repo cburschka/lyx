@@ -50,22 +50,24 @@ ControlBibtex::ControlBibtex(Dialog & d)
 
 string const ControlBibtex::browseBib(string const & in_name) const
 {
-	pair<string, string> dir1(_("Documents|#o#O"),
+	// FIXME UNICODE
+	pair<string, string> dir1(lyx::to_utf8(_("Documents|#o#O")),
 				  string(lyxrc.document_path));
-	FileFilterList const filter(_("BibTeX Databases (*.bib)"));
+	FileFilterList const filter(lyx::to_utf8(_("BibTeX Databases (*.bib)")));
 	return browseRelFile(in_name, kernel().bufferFilepath(),
-			     _("Select a BibTeX database to add"),
+			     lyx::to_utf8(_("Select a BibTeX database to add")),
 			     filter, false, dir1);
 }
 
 
 string const ControlBibtex::browseBst(string const & in_name) const
 {
-	pair<string, string> dir1(_("Documents|#o#O"),
+	// FIXME UNICODE
+	pair<string, string> dir1(lyx::to_utf8(_("Documents|#o#O")),
 				  string(lyxrc.document_path));
-	FileFilterList const filter(_("BibTeX Styles (*.bst)"));
+	FileFilterList const filter(lyx::to_utf8(_("BibTeX Styles (*.bst)")));
 	return browseRelFile(in_name, kernel().bufferFilepath(),
-			     _("Select a BibTeX style"), filter, false, dir1);
+			     lyx::to_utf8(_("Select a BibTeX style")), filter, false, dir1);
 }
 
 

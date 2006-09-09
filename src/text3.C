@@ -690,7 +690,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		} else if (tmp == "default") {
 			new_spacing = Spacing::Default;
 		} else {
-			lyxerr << _("Unknown spacing argument: ")
+			lyxerr << lyx::to_utf8(_("Unknown spacing argument: "))
 			       << lyx::to_utf8(cmd.argument()) << endl;
 		}
 		if (cur_spacing != new_spacing || cur_value != new_value)
@@ -763,7 +763,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_PASTE:
-		cur.message(_("Paste"));
+		cur.message(lyx::to_utf8(_("Paste")));
 		lyx::cap::replaceSelection(cur);
 		if (isStrUnsignedInt(lyx::to_utf8(cmd.argument())))
 			pasteSelection(cur, bv->buffer()->errorList("Paste"),
@@ -779,12 +779,12 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_CUT:
 		cutSelection(cur, true, true);
-		cur.message(_("Cut"));
+		cur.message(lyx::to_utf8(_("Cut")));
 		break;
 
 	case LFUN_COPY:
 		copySelection(cur);
-		cur.message(_("Copy"));
+		cur.message(lyx::to_utf8(_("Copy")));
 		break;
 
 	case LFUN_SERVER_GET_XY:
@@ -828,7 +828,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		// function list/array with information about what
 		// functions needs arguments and their type.
 		if (cmd.argument().empty()) {
-			cur.errorMessage(_("LyX function 'layout' needs an argument."));
+			cur.errorMessage(lyx::to_utf8(_("LyX function 'layout' needs an argument.")));
 			break;
 		}
 
@@ -1306,7 +1306,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_FONT_FREE_APPLY:
 		toggleAndShow(cur, this, freefont, toggleall);
-		cur.message(_("Character set"));
+		cur.message(lyx::to_utf8(_("Character set")));
 		break;
 
 	// Set the freefont using the contents of \param data dispatched from
@@ -1318,7 +1318,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			freefont = font;
 			toggleall = toggle;
 			toggleAndShow(cur, this, freefont, toggleall);
-			cur.message(_("Character set"));
+			cur.message(lyx::to_utf8(_("Character set")));
 		}
 		break;
 	}
@@ -1451,7 +1451,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 					 params.align(),
 					 params.labelWidthString(),
 					 params.noindent());
-		cur.message(_("Paragraph layout set"));
+		cur.message(lyx::to_utf8(_("Paragraph layout set")));
 		break;
 	}
 

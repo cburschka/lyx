@@ -20,8 +20,10 @@
 #  include <locale.h>
 #endif
 
-using std::string;
 using lyx::support::setEnv;
+using lyx::docstring;
+
+using std::string;
 
 
 namespace {
@@ -36,9 +38,9 @@ Messages & getLyXMessages()
 } // anon namespace
 
 
-string const _(string const & str)
+docstring const _(string const & str)
 {
-	return lyx::to_utf8(getLyXMessages().get(str));
+	return getLyXMessages().get(str);
 }
 
 

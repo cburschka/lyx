@@ -97,10 +97,11 @@ string const browseLibFile(string const & dir,
 			   string const & title,
 			   FileFilterList const & filters)
 {
-	pair<string,string> const dir1(_("System files|#S#s"),
+	// FIXME UNICODE
+	pair<string,string> const dir1(lyx::to_utf8(_("System files|#S#s")),
 				       addName(package().system_support(), dir));
 
-	pair<string,string> const dir2(_("User files|#U#u"),
+	pair<string,string> const dir2(lyx::to_utf8(_("User files|#U#u")),
 				       addName(package().user_support(), dir));
 
 	string const result = browseFile(libFileSearch(dir, name, ext), title,

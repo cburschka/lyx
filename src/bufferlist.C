@@ -78,10 +78,10 @@ bool BufferList::quitWriteBuffer(Buffer * buf)
 		file = makeDisplayPath(buf->fileName(), 30);
 
 	string const text =
-		bformat(_("The document %1$s has unsaved changes.\n\n"
-			  "Do you want to save the document or discard the changes?"), file);
-	int const ret = Alert::prompt(_("Save changed document?"),
-		text, 0, 2, _("&Save"), _("&Discard"), _("&Cancel"));
+		bformat(lyx::to_utf8(_("The document %1$s has unsaved changes.\n\n"
+				       "Do you want to save the document or discard the changes?")), file);
+	int const ret = Alert::prompt(lyx::to_utf8(_("Save changed document?")),
+		text, 0, 2, lyx::to_utf8(_("&Save")), lyx::to_utf8(_("&Discard")), lyx::to_utf8(_("&Cancel")));
 
 	if (ret == 0) {
 		// FIXME: WriteAs can be asynch !
@@ -126,7 +126,7 @@ bool BufferList::quitWriteAll()
 	// save file names to .lyx/session
 	it = bstore.begin();
 	for (; it != end; ++it) {
-		// if master/slave are both open, do not save slave since it 
+		// if master/slave are both open, do not save slave since it
 		// will be automatically loaded when the master is loaded
 		if ((*it)->getMasterBuffer() == (*it))
 			LyX::ref().session().addLastOpenedFile((*it)->fileName());
@@ -185,10 +185,10 @@ bool BufferList::close(Buffer * buf, bool const ask)
 		fname = makeDisplayPath(buf->fileName(), 30);
 
 	string const text =
-		bformat(_("The document %1$s has unsaved changes.\n\n"
-			  "Do you want to save the document or discard the changes?"), fname);
-	int const ret = Alert::prompt(_("Save changed document?"),
-		text, 0, 2, _("&Save"), _("&Discard"), _("&Cancel"));
+		bformat(lyx::to_utf8(_("The document %1$s has unsaved changes.\n\n"
+				       "Do you want to save the document or discard the changes?")), fname);
+	int const ret = Alert::prompt(lyx::to_utf8(_("Save changed document?")),
+		text, 0, 2, lyx::to_utf8(_("&Save")), lyx::to_utf8(_("&Discard")), lyx::to_utf8(_("&Cancel")));
 
 	if (ret == 0) {
 		if (buf->isUnnamed()) {
@@ -307,7 +307,7 @@ void BufferList::emergencyWrite(Buffer * buf)
 	string const doc = buf->isUnnamed()
 		? onlyFilename(buf->fileName()) : buf->fileName();
 
-	lyxerr << bformat(_("LyX: Attempting to save document %1$s"), doc) << endl;
+	lyxerr << bformat(lyx::to_utf8(_("LyX: Attempting to save document %1$s")), doc) << endl;
 
 	// We try to save three places:
 	// 1) Same place as document. Unless it is an unnamed doc.
@@ -317,10 +317,10 @@ void BufferList::emergencyWrite(Buffer * buf)
 		lyxerr << "  " << s << endl;
 		if (buf->writeFile(s)) {
 			buf->markClean();
-			lyxerr << _("  Save seems successful. Phew.") << endl;
+			lyxerr << lyx::to_utf8(_("  Save seems successful. Phew.")) << endl;
 			return;
 		} else {
-			lyxerr << _("  Save failed! Trying...") << endl;
+			lyxerr << lyx::to_utf8(_("  Save failed! Trying...")) << endl;
 		}
 	}
 
@@ -330,11 +330,11 @@ void BufferList::emergencyWrite(Buffer * buf)
 	lyxerr << ' ' << s << endl;
 	if (buf->writeFile(s)) {
 		buf->markClean();
-		lyxerr << _("  Save seems successful. Phew.") << endl;
+		lyxerr << lyx::to_utf8(_("  Save seems successful. Phew.")) << endl;
 		return;
 	}
 
-	lyxerr << _("  Save failed! Trying...") << endl;
+	lyxerr << lyx::to_utf8(_("  Save failed! Trying...")) << endl;
 
 	// 3) In "/tmp" directory.
 	// MakeAbsPath to prepend the current
@@ -344,10 +344,10 @@ void BufferList::emergencyWrite(Buffer * buf)
 	lyxerr << ' ' << s << endl;
 	if (buf->writeFile(s)) {
 		buf->markClean();
-		lyxerr << _("  Save seems successful. Phew.") << endl;
+		lyxerr << lyx::to_utf8(_("  Save seems successful. Phew.")) << endl;
 		return;
 	}
-	lyxerr << _("  Save failed! Bummer. Document is lost.") << endl;
+	lyxerr << lyx::to_utf8(_("  Save failed! Bummer. Document is lost.")) << endl;
 }
 
 

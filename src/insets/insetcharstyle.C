@@ -116,7 +116,8 @@ void InsetCharStyle::setDefined(CharStyles::iterator cs)
 
 string const InsetCharStyle::editMessage() const
 {
-	return _("Opened CharStyle Inset");
+	// FIXME UNICODE
+	return lyx::to_utf8(_("Opened CharStyle Inset"));
 }
 
 
@@ -154,8 +155,9 @@ void InsetCharStyle::metrics(MetricsInfo & mi, Dimension & dim) const
 		int d = 0;
 		string s(params_.type);
 		if (undefined())
-			s = _("Undef: ") + s;
-                docstring ds(s.begin(), s.end());
+			// FIXME UNICODE
+			s = lyx::to_utf8(_("Undef: ")) + s;
+		docstring ds(s.begin(), s.end());
 		font_metrics::rectText(ds, font, w, a, d);
 		dim.wid = max(dim.wid, w);
 	}
@@ -201,8 +203,9 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 		int d = 0;
 		string s(params_.type);
 		if (undefined())
-			s = _("Undef: ") + s;
-                docstring ds(s.begin(), s.end());
+			// FIXME UNICODE
+			s = lyx::to_utf8(_("Undef: ")) + s;
+		docstring ds(s.begin(), s.end());
 		font_metrics::rectText(ds, font, w, a, d);
 		pi.pain.rectText(x + (dim_.wid - w) / 2, y + desc + a,
 			ds, font, LColor::none, LColor::none);

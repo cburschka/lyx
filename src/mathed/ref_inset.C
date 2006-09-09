@@ -128,7 +128,8 @@ string const RefInset::screenLabel() const
 	string str;
 	for (int i = 0; !types[i].latex_name.empty(); ++i)
 		if (commandname() == types[i].latex_name) {
-			str = _(types[i].short_gui_name);
+			// FIXME UNICODE
+			str = lyx::to_utf8(_(types[i].short_gui_name));
 			break;
 		}
 	str += asString(cell(0));

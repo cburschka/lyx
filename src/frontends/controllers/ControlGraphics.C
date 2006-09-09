@@ -83,15 +83,16 @@ void ControlGraphics::dispatchParams()
 
 string const ControlGraphics::browse(string const & in_name) const
 {
-	string const title = _("Select graphics file");
+	// FIXME UNICODE
+	string const title = lyx::to_utf8(_("Select graphics file"));
 
 	// Does user clipart directory exist?
 	string clipdir = addName(package().user_support(), "clipart");
 	if (!(fs::exists(clipdir) && fs::is_directory(clipdir)))
 		// No - bail out to system clipart directory
 		clipdir = addName(package().system_support(), "clipart");
-	pair<string, string> dir1(_("Clipart|#C#c"), clipdir);
-	pair<string, string> dir2(_("Documents|#o#O"), string(lyxrc.document_path));
+	pair<string, string> dir1(lyx::to_utf8(_("Clipart|#C#c")), clipdir);
+	pair<string, string> dir2(lyx::to_utf8(_("Documents|#o#O")), string(lyxrc.document_path));
 	// Show the file browser dialog
 	return browseRelFile(in_name, kernel().bufferFilepath(),
 			     title,
@@ -190,7 +191,8 @@ vector<RotationOriginPair> getRotationOriginData()
 
 	data.resize(rorigin_size);
 	for (size_type i = 0; i < rorigin_size; ++i) {
-		data[i] = make_pair(_(rorigin_gui_strs[i]),
+		// FIXME UNICODE
+		data[i] = make_pair(lyx::to_utf8(_(rorigin_gui_strs[i])),
 				    rorigin_lyx_strs[i]);
 	}
 

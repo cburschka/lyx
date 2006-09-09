@@ -50,7 +50,7 @@ string defaultUnit("cm");
 } // namespace anon
 
 GGraphics::GGraphics(Dialog & parent)
-	: GViewCB<ControlGraphics, GViewGladeB>(parent, _("Graphics"), false)
+	: GViewCB<ControlGraphics, GViewGladeB>(parent, lyx::to_utf8(_("Graphics")), false)
 {}
 
 
@@ -437,7 +437,7 @@ void GGraphics::updateBB(string const & filename, string const & bb_inset)
 			righttopyspin_->set_text("");
 		}
 		unitsComboFromLength(bbunitscombo_, stringcol_,
-		                     LyXLength("bp"), defaultUnit);
+				     LyXLength("bp"), defaultUnit);
 	} else {
 		// get the values from the inset
 		lyxerr[Debug::GRAPHICS]
@@ -501,7 +501,7 @@ void GGraphics::onBBFromFileClicked()
 			righttopxspin_->set_text(token(bb, ' ', 2));
 			righttopyspin_->set_text(token(bb, ' ', 3));
 			unitsComboFromLength(bbunitscombo_, stringcol_,
-			                     LyXLength("bp"), defaultUnit);
+					     LyXLength("bp"), defaultUnit);
 		}
 		controller().bbChanged = false;
 	} else {
@@ -510,7 +510,7 @@ void GGraphics::onBBFromFileClicked()
 		righttopxspin_->set_text("");
 		righttopyspin_->set_text("");
 		unitsComboFromLength(bbunitscombo_, stringcol_,
-		                     LyXLength("bp"), defaultUnit);
+				     LyXLength("bp"), defaultUnit);
 	}
 	bc().input(ButtonPolicy::SMI_VALID);
 }

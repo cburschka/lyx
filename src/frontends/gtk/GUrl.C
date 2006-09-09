@@ -34,7 +34,7 @@ namespace frontend {
 
 
 GUrl::GUrl(Dialog & parent)
-	: GViewCB<ControlCommand, GViewGladeB>(parent, _("URL"))
+	: GViewCB<ControlCommand, GViewGladeB>(parent, lyx::to_utf8(_("URL")))
 {
 }
 

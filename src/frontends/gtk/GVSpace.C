@@ -31,7 +31,7 @@ namespace lyx {
 namespace frontend {
 
 GVSpace::GVSpace(Dialog & parent)
-	: GViewCB<ControlVSpace, GViewGladeB>(parent, _("VSpace Settings"), false)
+	: GViewCB<ControlVSpace, GViewGladeB>(parent, lyx::to_utf8(_("VSpace Settings")), false)
 {}
 
 

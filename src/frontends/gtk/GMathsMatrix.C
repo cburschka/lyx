@@ -35,7 +35,7 @@ namespace frontend {
 
 
 GMathsMatrix::GMathsMatrix(Dialog & parent)
-	: GViewCB<ControlMath, GViewGladeB>(parent, _("Math Matrix"), false)
+	: GViewCB<ControlMath, GViewGladeB>(parent, lyx::to_utf8(_("Math Matrix")), false)
 {}
 
 

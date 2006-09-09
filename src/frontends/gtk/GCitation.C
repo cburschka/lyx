@@ -67,8 +67,9 @@ bool GCitation::bib_visible(const Gtk::TreeModel::const_iterator& iter)
 styleModelColumns styleColumns;
 
 
+// FIXME UNICODE
 GCitation::GCitation(Dialog & parent)
-	: GViewCB<ControlCitation, GViewGladeB>(parent, _("Citation"), false)
+	: GViewCB<ControlCitation, GViewGladeB>(parent, lyx::to_utf8(_("Citation")), false)
 {}
 
 
@@ -117,13 +118,15 @@ void GCitation::doBuild()
 
 	Gtk::TreeModel::Path rootpath; //required for gtkmm < 2.6
 
-	citekeysview_->append_column(_("CiteKeys"), bibColumns.name);
+	// FIXME UNICODE
+	citekeysview_->append_column(lyx::to_utf8(_("CiteKeys")), bibColumns.name);
 	citeFilter_ = Gtk::TreeModelFilter::create(allListStore_, rootpath);
 	citeFilter_->set_visible_column(bibColumns.cite);
 	citekeysview_->set_model(citeFilter_);
 	citeselection_ = citekeysview_->get_selection();
 
-	bibkeysview_->append_column(_("BibKeys"), bibColumns.name);
+	// FIXME UNICODE
+	bibkeysview_->append_column(lyx::to_utf8(_("BibKeys")), bibColumns.name);
 	bibSort_ = Gtk::TreeModelSort::create(allListStore_);
 	bibSort_->set_sort_column(bibColumns.bib_order, Gtk::SORT_ASCENDING );
 	bibFilter_ = Gtk::TreeModelFilter::create(bibSort_, rootpath);
@@ -154,7 +157,7 @@ void GCitation::doBuild()
 		sigc::mem_fun(*this, &GCitation::bibkeysview_activated));
 	bibselection_->signal_changed().connect(
 		sigc::mem_fun(*this, &GCitation::bib_selected));
-	
+
 	citeselection_->signal_changed().connect(
 		sigc::mem_fun(*this, &GCitation::cite_selected));
 
@@ -208,8 +211,8 @@ void GCitation::fill_styles()
 
 	styleStore_->clear();
 	for (; it != end; ++it) {
-	 	Gtk::TreeModel::iterator iter2 = styleStore_->append();
-	 	(*iter2)[styleColumns.name] = Glib::locale_to_utf8(*it);
+		Gtk::TreeModel::iterator iter2 = styleStore_->append();
+		(*iter2)[styleColumns.name] = Glib::locale_to_utf8(*it);
 	}
 
 	if(orig)
@@ -301,7 +304,7 @@ void GCitation::update_contents()
 			}
 		}
 		if (!found) {
-			// It wasn't in the list of keys, but to support 
+			// It wasn't in the list of keys, but to support
 			// working on a document away from the bibtex file
 			// we should keep it anyway.
 			Gtk::TreeModel::iterator iter = allListStore_->append();

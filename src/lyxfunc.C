@@ -317,7 +317,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 					   FuncRequest::KEYBOARD);
 		} else {
 			lyxerr[Debug::KEY] << "Unknown, !isText() - giving up" << endl;
-			owner->message(_("Unknown function."));
+			owner->message(lyx::to_utf8(_("Unknown function.")));
 			return;
 		}
 	}
@@ -661,12 +661,12 @@ bool ensureBufferClean(BufferView * bv)
 		return true;
 
 	string const file = makeDisplayPath(buf.fileName(), 30);
-	string text = bformat(_("The document %1$s has unsaved "
-				"changes.\n\nDo you want to save "
-				"the document?"), file);
-	int const ret = Alert::prompt(_("Save changed document?"),
-				      text, 0, 1, _("&Save"),
-				      _("&Cancel"));
+	string text = bformat(lyx::to_utf8(_("The document %1$s has unsaved "
+					     "changes.\n\nDo you want to save "
+					     "the document?")), file);
+	int const ret = Alert::prompt(lyx::to_utf8(_("Save changed document?")),
+				      text, 0, 1, lyx::to_utf8(_("&Save")),
+				      lyx::to_utf8(_("&Cancel")));
 
 	if (ret == 0)
 		bv->owner()->dispatch(FuncRequest(LFUN_BUFFER_WRITE));
@@ -677,10 +677,10 @@ bool ensureBufferClean(BufferView * bv)
 
 void showPrintError(string const & name)
 {
-	string str = bformat(_("Could not print the document %1$s.\n"
-			       "Check that your printer is set up correctly."),
+	string str = bformat(lyx::to_utf8(_("Could not print the document %1$s.\n"
+					    "Check that your printer is set up correctly.")),
 			     makeDisplayPath(name, 50));
-	Alert::error(_("Print document failed"), str);
+	Alert::error(lyx::to_utf8(_("Print document failed")), str);
 }
 
 
@@ -699,10 +699,10 @@ void loadTextclass(string const & name)
 	lyx::textclass_type const tc = tc_pair.second;
 
 	if (!textclasslist[tc].load()) {
-		string s = bformat(_("The document could not be converted\n"
-				     "into the document class %1$s."),
+		string s = bformat(lyx::to_utf8(_("The document could not be converted\n"
+						  "into the document class %1$s.")),
 				   textclasslist[tc].name());
-		Alert::error(_("Could not change class"), s);
+		Alert::error(lyx::to_utf8(_("Could not change class")), s);
 	}
 }
 
@@ -810,11 +810,11 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_BUFFER_WRITE:
 			if (!owner->buffer()->isUnnamed()) {
-				string const str = bformat(_("Saving document %1$s..."),
+				string const str = bformat(lyx::to_utf8(_("Saving document %1$s...")),
 					 makeDisplayPath(owner->buffer()->fileName()));
 				owner->message(str);
 				menuWrite(owner->buffer());
-				owner->message(str + _(" done."));
+				owner->message(str + lyx::to_utf8(_(" done.")));
 			} else
 				writeAs(owner->buffer());
 			update = false;
@@ -827,10 +827,10 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_BUFFER_RELOAD: {
 			string const file = makeDisplayPath(view()->buffer()->fileName(), 20);
-			string text = bformat(_("Any changes will be lost. Are you sure "
-				"you want to revert to the saved version of the document %1$s?"), file);
-			int const ret = Alert::prompt(_("Revert to saved document?"),
-				text, 0, 1, _("&Revert"), _("&Cancel"));
+			string text = bformat(lyx::to_utf8(_("Any changes will be lost. Are you sure "
+							     "you want to revert to the saved version of the document %1$s?")), file);
+			int const ret = Alert::prompt(lyx::to_utf8(_("Revert to saved document?")),
+				text, 0, 1, lyx::to_utf8(_("&Revert")), lyx::to_utf8(_("&Cancel")));
 
 			if (ret == 0)
 				view()->reload();
@@ -1036,7 +1036,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 							 << arg << "'. Bad installation?" << endl;
 				break;
 			}
-			owner->message(bformat(_("Opening help file %1$s..."),
+			owner->message(bformat(lyx::to_utf8(_("Opening help file %1$s...")),
 				makeDisplayPath(fname)));
 			owner->loadLyXFile(fname, false);
 			break;
@@ -1374,9 +1374,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 			if (!lcolor.setColor(lyx_name, x11_name)) {
 				setErrorMessage(
-					bformat(_("Set-color \"%1$s\" failed "
-								"- color is undefined or "
-								"may not be redefined"), lyx_name));
+						bformat(lyx::to_utf8(_("Set-color \"%1$s\" failed "
+								       "- color is undefined or "
+								       "may not be redefined")), lyx_name));
 				break;
 			}
 
@@ -1487,10 +1487,10 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			}
 
 			if (defaults.writeFile(defaults.fileName()))
-				setMessage(_("Document defaults saved in ")
+				setMessage(lyx::to_utf8(_("Document defaults saved in "))
 					   + makeDisplayPath(fname));
 			else
-				setErrorMessage(_("Unable to save document defaults"));
+				setErrorMessage(lyx::to_utf8(_("Unable to save document defaults")));
 			break;
 		}
 
@@ -1544,7 +1544,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				// nothing to do
 				break;
 
-			owner->message(_("Converting document to new document class..."));
+			owner->message(lyx::to_utf8(_("Converting document to new document class...")));
 			recordUndoFullDocument(view());
 			buffer->params().textclass = new_class;
 			StableDocIterator backcur(view()->cursor());
@@ -1614,7 +1614,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 	}
 	if (!quitting)
-		sendDispatchMessage(_(getMessage()), cmd);
+		sendDispatchMessage(lyx::to_utf8(_(getMessage())), cmd);
 }
 
 
@@ -1710,16 +1710,16 @@ void LyXFunc::menuNew(string const & name, bool fromTemplate)
 	// The template stuff
 	string templname;
 	if (fromTemplate) {
-		FileDialog fileDlg(_("Select template file"),
+		FileDialog fileDlg(lyx::to_utf8(_("Select template file")),
 			LFUN_SELECT_FILE_SYNC,
-			make_pair(string(_("Documents|#o#O")),
+			make_pair(string(lyx::to_utf8(_("Documents|#o#O"))),
 				  string(lyxrc.document_path)),
-			make_pair(string(_("Templates|#T#t")),
+			make_pair(string(lyx::to_utf8(_("Templates|#T#t"))),
 				  string(lyxrc.template_path)));
 
 		FileDialog::Result result =
 			fileDlg.open(lyxrc.template_path,
-				     FileFilterList(_("LyX Documents (*.lyx)")),
+				     FileFilterList(lyx::to_utf8(_("LyX Documents (*.lyx)"))),
 				     string());
 
 		if (result.first == FileDialog::Later)
@@ -1749,16 +1749,16 @@ void LyXFunc::open(string const & fname)
 	string filename;
 
 	if (fname.empty()) {
-		FileDialog fileDlg(_("Select document to open"),
+		FileDialog fileDlg(lyx::to_utf8(_("Select document to open")),
 			LFUN_FILE_OPEN,
-			make_pair(string(_("Documents|#o#O")),
+			make_pair(string(lyx::to_utf8(_("Documents|#o#O"))),
 				  string(lyxrc.document_path)),
-			make_pair(string(_("Examples|#E#e")),
+			make_pair(string(lyx::to_utf8(_("Examples|#E#e"))),
 				  string(addPath(package().system_support(), "examples"))));
 
 		FileDialog::Result result =
 			fileDlg.open(initpath,
-				     FileFilterList(_("LyX Documents (*.lyx)")),
+				     FileFilterList(lyx::to_utf8(_("LyX Documents (*.lyx)"))),
 				     string());
 
 		if (result.first == FileDialog::Later)
@@ -1768,7 +1768,7 @@ void LyXFunc::open(string const & fname)
 
 		// check selected filename
 		if (filename.empty()) {
-			owner->message(_("Canceled."));
+			owner->message(lyx::to_utf8(_("Canceled.")));
 			return;
 		}
 	} else
@@ -1792,13 +1792,13 @@ void LyXFunc::open(string const & fname)
 		return;
 	}
 
-	owner->message(bformat(_("Opening document %1$s..."), disp_fn));
+	owner->message(bformat(lyx::to_utf8(_("Opening document %1$s...")), disp_fn));
 
 	string str2;
 	if (owner->loadLyXFile(filename)) {
-		str2 = bformat(_("Document %1$s opened."), disp_fn);
+		str2 = bformat(lyx::to_utf8(_("Document %1$s opened.")), disp_fn);
 	} else {
-		str2 = bformat(_("Could not open document %1$s"), disp_fn);
+		str2 = bformat(lyx::to_utf8(_("Could not open document %1$s")), disp_fn);
 	}
 	owner->message(str2);
 }
@@ -1823,14 +1823,14 @@ void LyXFunc::doImport(string const & argument)
 				initpath = trypath;
 		}
 
-		string const text = bformat(_("Select %1$s file to import"),
+		string const text = bformat(lyx::to_utf8(_("Select %1$s file to import")),
 			formats.prettyName(format));
 
 		FileDialog fileDlg(text,
 			LFUN_BUFFER_IMPORT,
-			make_pair(string(_("Documents|#o#O")),
+			make_pair(string(lyx::to_utf8(_("Documents|#o#O"))),
 				  string(lyxrc.document_path)),
-			make_pair(string(_("Examples|#E#e")),
+			make_pair(string(lyx::to_utf8(_("Examples|#E#e"))),
 				  string(addPath(package().system_support(), "examples"))));
 
 		string const filter = formats.prettyName(format)
@@ -1848,7 +1848,7 @@ void LyXFunc::doImport(string const & argument)
 
 		// check selected filename
 		if (filename.empty())
-			owner->message(_("Canceled."));
+			owner->message(lyx::to_utf8(_("Canceled.")));
 	}
 
 	if (filename.empty())
@@ -1862,7 +1862,7 @@ void LyXFunc::doImport(string const & argument)
 	// Check if the document already is open
 	if (lyx_gui::use_gui && bufferlist.exists(lyxfile)) {
 		if (!bufferlist.close(bufferlist.getBuffer(lyxfile), true)) {
-			owner->message(_("Canceled."));
+			owner->message(lyx::to_utf8(_("Canceled.")));
 			return;
 		}
 	}
@@ -1872,13 +1872,13 @@ void LyXFunc::doImport(string const & argument)
 	if (fs::exists(lyxfile) && filename != lyxfile) {
 		string const file = makeDisplayPath(lyxfile, 30);
 
-		string text = bformat(_("The document %1$s already exists.\n\n"
-			"Do you want to over-write that document?"), file);
-		int const ret = Alert::prompt(_("Over-write document?"),
-			text, 0, 1, _("&Over-write"), _("&Cancel"));
+		string text = bformat(lyx::to_utf8(_("The document %1$s already exists.\n\n"
+						     "Do you want to over-write that document?")), file);
+		int const ret = Alert::prompt(lyx::to_utf8(_("Over-write document?")),
+			text, 0, 1, lyx::to_utf8(_("&Over-write")), lyx::to_utf8(_("&Cancel")));
 
 		if (ret == 1) {
-			owner->message(_("Canceled."));
+			owner->message(lyx::to_utf8(_("Canceled.")));
 			return;
 		}
 	}
@@ -1938,7 +1938,7 @@ string const LyXFunc::viewStatusMessage()
 		return keyseq.printOptions();
 
 	if (!view()->available())
-		return _("Welcome to LyX!");
+		return lyx::to_utf8(_("Welcome to LyX!"));
 
 	return view()->cursor().currentState();
 }

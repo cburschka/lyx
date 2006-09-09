@@ -33,7 +33,7 @@ typedef QController<ControlChanges, QView<QChangesDialog> > base_class;
 
 
 QChanges::QChanges(Dialog & parent)
-	: base_class(parent, _("Merge Changes"))
+	: base_class(parent, lyx::to_utf8(_("Merge Changes")))
 {
 }
 
@@ -63,9 +63,9 @@ void QChanges::next()
 	string date(controller().getChangeDate());
 
 	if (!author.empty())
-		text += bformat(_("Change by %1$s\n\n"), author);
+		text += bformat(lyx::to_utf8(_("Change by %1$s\n\n")), author);
 	if (!date.empty())
-		text += bformat(_("Change made at %1$s\n"), date);
+		text += bformat(lyx::to_utf8(_("Change made at %1$s\n")), date);
 
 	dialog_->changeTB->setPlainText(toqstr(text));
 }

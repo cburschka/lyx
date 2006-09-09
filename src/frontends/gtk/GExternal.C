@@ -114,27 +114,27 @@ std::vector<Gtk::FileFilter* > get_filters(const std::string & filterstring, con
 		std::string description = ff.description();
 
 		if (description.empty())
-			filters[i]->set_name(Glib::locale_to_utf8(alttitle) + 
-					     " " + _("files"));
-		else 
+			filters[i]->set_name(Glib::locale_to_utf8(alttitle) +
+					     " " + lyx::to_utf8(_("files")));
+		else
 			filters[i]->set_name(Glib::locale_to_utf8(description));
 
 		for (FileFilterList::Filter::glob_iterator git = ff.begin();
-			git!=ff.end(); ++git) 
+			git!=ff.end(); ++git)
 			filters[i]->add_pattern(Glib::locale_to_utf8(*git));
 	}
 	return filters;
 }
 
 
-void set_display(Gtk::CheckButton * show_check, Gtk::ComboBox * display_combo, 
+void set_display(Gtk::CheckButton * show_check, Gtk::ComboBox * display_combo,
 		 Gtk::Label * display_label, GtkLengthEntry * scale_length,
 		 Gtk::Label * scale_label,
 		 external::DisplayType display, unsigned int scale)
 {
 
 	typedef Gtk::TreeModel::const_iterator gcit;
-	Glib::RefPtr<const Gtk::TreeModel> const display_store = 
+	Glib::RefPtr<const Gtk::TreeModel> const display_store =
 		display_combo->get_model();
 	bool const no_display = display == external::NoDisplay;
 
@@ -142,7 +142,7 @@ void set_display(Gtk::CheckButton * show_check, Gtk::ComboBox * display_combo,
 		display_combo->set_active(
 			*(display_store->children().begin())); //Default
 	else
-		for (gcit it = display_store->children().begin(); 
+		for (gcit it = display_store->children().begin();
 		     it != display_store->children().end(); ++it) {
 			if ((*it)[displayColumns().type] == display) {
 				display_combo->set_active(*it);
@@ -182,7 +182,7 @@ void set_rotation(Gtk::Entry * angle_entry, Gtk::ComboBox * origin_combo,
 
 
 void get_rotation(external::RotationData & data,
-		  Gtk::Entry const * angle_entry, 
+		  Gtk::Entry const * angle_entry,
 		  Gtk::ComboBox const * origin_combo)
 {
 	typedef external::RotationData::OriginType OriginType;
@@ -209,13 +209,13 @@ void set_size(GtkLengthEntry * width_length,
 	if (using_scale) {
 		width_length->get_spin()->set_value(scale);
 		width_length->get_combo()->set_active_text(
-			Glib::locale_to_utf8(_("Scale%")));
+							   lyx::to_utf8(_("Scale%")));
 	} else {
 		width_length->set_length(data.width);
 	}
 
 	height_length->set_length(data.height);
-	if (!data.width.zero()) 
+	if (!data.width.zero())
 		height_length->get_combo()->set_active(data.width.unit());
 
 	height_length->set_sensitive(!using_scale);
@@ -233,8 +233,8 @@ void get_size(external::ResizeData & data,
 	      GtkLengthEntry * height_length,
 	      Gtk::CheckButton * ar_check)
 {
-	if (width_length->get_combo()->get_active_text() != 
-		Glib::locale_to_utf8(_("Scale%"))) {
+	if (width_length->get_combo()->get_active_text() !=
+	    lyx::to_utf8(_("Scale%"))) {
 
 		data.width = width_length->get_length();
 		data.scale = string();
@@ -289,7 +289,7 @@ void get_extra(external::ExtraData & data,
 	Gtk::TreeModel::iterator it  = format_store->children().begin();
 	Gtk::TreeModel::iterator end = format_store->children().end();
 	for (; it != end; ++it)
-		data.set(Glib::locale_from_utf8((*it)[formatColumns.name]), 
+		data.set(Glib::locale_from_utf8((*it)[formatColumns.name]),
 		trim(Glib::locale_from_utf8((*it)[formatColumns.extra])));
 }
 
@@ -297,7 +297,7 @@ void get_extra(external::ExtraData & data,
 
 
 GExternal::GExternal(Dialog & parent)
-	: GViewCB<ControlExternal, GViewGladeB>(parent, _("External Settings"), false)
+	: GViewCB<ControlExternal, GViewGladeB>(parent, lyx::to_utf8(_("External Settings")), false)
 {}
 
 
@@ -327,9 +327,9 @@ void GExternal::doBuild()
 		cit != templates.end(); ++cit, ++count) {
 		external::Template templ = controller().getTemplate(count);
 
-	 	Gtk::TreeModel::iterator iter = templatestore_->append();
-	 	(*iter)[templateColumns().name] = Glib::locale_to_utf8(*cit);
-	 	(*iter)[templateColumns().info] = 
+		Gtk::TreeModel::iterator iter = templatestore_->append();
+		(*iter)[templateColumns().name] = Glib::locale_to_utf8(*cit);
+		(*iter)[templateColumns().info] =
 			Glib::locale_to_utf8(templ.helpText);
 		(*iter)[templateColumns().filters] = get_filters(
 			controller().getTemplateFilters(*cit),*cit);
@@ -349,7 +349,7 @@ void GExternal::doBuild()
 
 	// *** Start "File" Page ***
 	xml_->get_widget("TemplateFile", templatefcbutton_);
-	templatefcbutton_->set_title(_("Select external file"));
+	templatefcbutton_->set_title(lyx::to_utf8(_("Select external file")));
 	templatefcbutton_->signal_file_activated().connect(
 		sigc::mem_fun(*this, &GExternal::file_changed));
 
@@ -373,19 +373,19 @@ void GExternal::doBuild()
 
 	// Fill the display combo
 	Gtk::TreeModel::iterator iter = displaystore_->append();
-	(*iter)[displayColumns().name] = Glib::locale_to_utf8(_("Default"));
+	(*iter)[displayColumns().name] = lyx::to_utf8(_("Default"));
 	(*iter)[displayColumns().type] = external::DefaultDisplay;
 	iter = displaystore_->append();
-	(*iter)[displayColumns().name] = Glib::locale_to_utf8(_("Monochrome"));
+	(*iter)[displayColumns().name] = lyx::to_utf8(_("Monochrome"));
 	(*iter)[displayColumns().type] = external::MonochromeDisplay;
 	iter = displaystore_->append();
-	(*iter)[displayColumns().name] = Glib::locale_to_utf8(_("Grayscale"));
+	(*iter)[displayColumns().name] = lyx::to_utf8(_("Grayscale"));
 	(*iter)[displayColumns().type] = external::GrayscaleDisplay;
 	iter = displaystore_->append();
-	(*iter)[displayColumns().name] = Glib::locale_to_utf8(_("Color"));
+	(*iter)[displayColumns().name] = lyx::to_utf8(_("Color"));
 	(*iter)[displayColumns().type] = external::ColorDisplay;
 	iter = displaystore_->append();
-	(*iter)[displayColumns().name] = Glib::locale_to_utf8(_("Preview"));
+	(*iter)[displayColumns().name] = lyx::to_utf8(_("Preview"));
 	(*iter)[displayColumns().type] = external::PreviewDisplay;
 
 	xml_->get_widget("Display", displaycombo_);
@@ -399,8 +399,8 @@ void GExternal::doBuild()
 	scalespin_->set_increments(1,10);
 	scalecombo_ = scalelength_->get_combo();
 	scalecombo_->clear();
-	scalecombo_->append_text(Glib::locale_to_utf8(_("Scale%")));
-	scalecombo_->set_active_text(Glib::locale_to_utf8(_("Scale%")));
+	scalecombo_->append_text(lyx::to_utf8(_("Scale%")));
+	scalecombo_->set_active_text(lyx::to_utf8(_("Scale%")));
 
 	xml_->get_widget("ScaleLabel", scalelabel_);
 	scalelabel_->set_mnemonic_widget(*scalespin_);
@@ -419,7 +419,7 @@ void GExternal::doBuild()
 	Origins const & all_origins = external::all_origins();
 	for (Origins::size_type i = 0; i != all_origins.size(); ++i)
 		origincombo_.append_text(
-			Glib::locale_to_utf8(external::origin_gui_str(i)));
+					 external::origin_gui_str(i));
 
 	xml_->get_widget("OriginLabel", originlabel_);
 	originlabel_->set_mnemonic_widget(origincombo_);
@@ -428,8 +428,8 @@ void GExternal::doBuild()
 	// *** Start "Scale" Page ***
 	xml_->get_widget_derived ("Width", widthlength_);
 	widthcombo_ = widthlength_->get_combo();
-	widthcombo_->prepend_text(Glib::locale_to_utf8(_("Scale%")));
-	widthcombo_->set_active_text(Glib::locale_to_utf8(_("Scale%")));
+	widthcombo_->prepend_text(lyx::to_utf8(_("Scale%")));
+	widthcombo_->set_active_text(lyx::to_utf8(_("Scale%")));
 
 	xml_->get_widget("WidthLabel", widthlabel_);
 	widthlabel_->set_mnemonic_widget(*(widthlength_->get_spin()));
@@ -440,7 +440,7 @@ void GExternal::doBuild()
 		sigc::mem_fun(*this, &GExternal::size_changed));
 	heightlength_->signal_changed().connect(
 		sigc::mem_fun(*this, &GExternal::size_changed));
-	
+
 	xml_->get_widget("HeightLabel", heightlabel_);
 	heightlabel_->set_mnemonic_widget(*(heightlength_->get_spin()));
 
@@ -485,8 +485,8 @@ void GExternal::doBuild()
 
 	xml_->get_widget("Options", optionsview_);
 	optionsview_->set_model(formatstore_);
-	optionsview_->append_column(_("Forma_t"), formatColumns.name);
-	optionsview_->append_column_editable(_("O_ption"), formatColumns.extra);
+	optionsview_->append_column(lyx::to_utf8(_("Forma_t")), formatColumns.name);
+	optionsview_->append_column_editable(lyx::to_utf8(_("O_ption")), formatColumns.extra);
 	// *** End "Options" Page ***
 }
 
@@ -505,7 +505,7 @@ void GExternal::update()
 	}
 	else {
 		editfilebutton_->set_sensitive(false);
-		bbfromfilebutton_->set_sensitive(false);		
+		bbfromfilebutton_->set_sensitive(false);
 	}
 
 	templatecombo_->set_active(
@@ -547,7 +547,7 @@ void GExternal::update_template()
 		templatefilters =
 			(*currenttemplate_)[templateColumns().filters];
 
-		for (ffit it = templatefilters.begin(); 
+		for (ffit it = templatefilters.begin();
 			 it != templatefilters.end(); ++it)
 			templatefcbutton_->remove_filter(**it);
 	}
@@ -567,7 +567,7 @@ void GExternal::update_template()
 	Gtk::Widget * widget = notebook_->get_nth_page(2);
 	widget->set_sensitive(found);
 	notebook_->get_tab_label(*widget)->set_sensitive(found);
-	
+
 	found = find(tr_begin, tr_end, external::Resize) != tr_end;
 	widget = notebook_->get_nth_page(3);
 	widget->set_sensitive(found);
@@ -600,7 +600,7 @@ void GExternal::update_template()
 
 	// Ascertain whether the template has any formats supporting
 	// the 'Extra' option
-	Glib::ustring templatename = 
+	Glib::ustring templatename =
 			(*currenttemplate_)[templateColumns().name];
 	formatstore_->clear();
 	external::Template::Formats::const_iterator it = templ.formats.begin();
@@ -615,13 +615,13 @@ void GExternal::update_template()
 		string const format = it->first;
 		string const opt = controller().params().extradata.get(format);
 
-	 	Gtk::TreeModel::iterator iter = formatstore_->append();
-	 	(*iter)[formatColumns.name] = Glib::locale_to_utf8(format);
-	 	(*iter)[formatColumns.extra] = Glib::locale_to_utf8(opt);
+		Gtk::TreeModel::iterator iter = formatstore_->append();
+		(*iter)[formatColumns.name] = Glib::locale_to_utf8(format);
+		(*iter)[formatColumns.extra] = Glib::locale_to_utf8(opt);
 	}
 
 	// widget is still the 'Options' tab
-	notebook_->get_tab_label(*widget)->set_sensitive(enabled); 
+	notebook_->get_tab_label(*widget)->set_sensitive(enabled);
 }
 
 
@@ -645,7 +645,7 @@ void GExternal::apply()
 			    angleentry_, &origincombo_);
 
 	if (notebook_->get_nth_page(3)->is_sensitive())
-		get_size(params.resizedata, 
+		get_size(params.resizedata,
 			 widthlength_, heightlength_, archeck_);
 
 	if (notebook_->get_nth_page(4)->is_sensitive())
@@ -689,8 +689,8 @@ void GExternal::get_bb()
 
 bool GExternal::activate_ar() const
 {
-	if (widthlength_->get_combo()->get_active_text() == 
-		Glib::locale_to_utf8(_("Scale%")))
+	if (widthlength_->get_combo()->get_active_text() ==
+	    lyx::to_utf8(_("Scale%")))
 		return false;
 
 	if (widthlength_->get_spin()->get_value() < 0.05)
@@ -720,8 +720,8 @@ void GExternal::size_changed()
 {
 	archeck_->set_sensitive(activate_ar());
 
-	bool useHeight = widthlength_->get_combo()->get_active_text() != 
-		Glib::locale_to_utf8(_("Scale%"));
+	bool useHeight = widthlength_->get_combo()->get_active_text() !=
+		lyx::to_utf8(_("Scale%"));
 
 	heightlength_->set_sensitive(useHeight);
 }
@@ -773,7 +773,7 @@ void GExternal::file_changed()
 	}
 	else {
 		editfilebutton_->set_sensitive(false);
-		bbfromfilebutton_->set_sensitive(false);		
+		bbfromfilebutton_->set_sensitive(false);
 	}
 	bc().valid(true);
 }

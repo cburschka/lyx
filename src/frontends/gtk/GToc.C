@@ -30,7 +30,7 @@ namespace lyx {
 namespace frontend {
 
 GToc::GToc(Dialog & parent)
-	: GViewCB<ControlToc, GViewGladeB>(parent, _("Table of Contents"), false)
+	: GViewCB<ControlToc, GViewGladeB>(parent, lyx::to_utf8(_("Table of Contents")), false)
 {}
 
 
@@ -119,7 +119,7 @@ void GToc::updateContents()
 {
 	if (typestore_->children().empty()) {
 		tocstore_->clear();
-		(*tocstore_->append())[listCol_] = _("*** No Lists ***");
+		(*tocstore_->append())[listCol_] = lyx::to_utf8(_("*** No Lists ***"));
 		tocview_->set_sensitive(false);
 		return;
 	}
@@ -142,7 +142,7 @@ void GToc::updateContents()
 
 	if (contents.empty()) {
 		tocstore_->clear();
-		(*tocstore_->append())[listCol_] = _("*** No Items ***");
+		(*tocstore_->append())[listCol_] = lyx::to_utf8(_("*** No Items ***"));
 		tocview_->set_sensitive(false);
 		return;
 	}

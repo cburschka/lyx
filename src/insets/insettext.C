@@ -208,7 +208,7 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 		int const w = text_.width() + 2 * border_;
 		int const a = text_.ascent() + border_;
 		int const h = a + text_.descent() + border_;
-		pi.pain.rectangle(x, y - a, (Wide() ? text_.maxwidth_ : w), h, 
+		pi.pain.rectangle(x, y - a, (Wide() ? text_.maxwidth_ : w), h,
 			frameColor());
 	}
 }
@@ -219,7 +219,7 @@ void InsetText::drawSelection(PainterInfo & pi, int x, int y) const
 	int const w = text_.width() + 2 * border_;
 	int const a = text_.ascent() + border_;
 	int const h = a + text_.descent() + border_;
-	pi.pain.fillRectangle(x, y - a, (Wide() ? text_.maxwidth_ : w), h, 
+	pi.pain.fillRectangle(x, y - a, (Wide() ? text_.maxwidth_ : w), h,
 		backgroundColor());
 	text_.drawSelection(pi, x, y);
 }
@@ -227,7 +227,8 @@ void InsetText::drawSelection(PainterInfo & pi, int x, int y) const
 
 string const InsetText::editMessage() const
 {
-	return _("Opened Text Inset");
+	// FIXME UNICODE
+	return lyx::to_utf8(_("Opened Text Inset"));
 }
 
 

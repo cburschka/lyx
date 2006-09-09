@@ -64,9 +64,9 @@ int Chktex::scanLogFile(TeXErrors & terr)
 	string const tmp = onlyFilename(changeExtension(file, ".log"));
 
 #if USE_BOOST_FORMAT
-	boost::format msg(_("ChkTeX warning id # %1$d"));
+	boost::format msg(lyx::to_utf8(_("ChkTeX warning id # %1$d")));
 #else
-	string const msg(_("ChkTeX warning id # "));
+	string const msg(lyx::to_utf8(_("ChkTeX warning id # ")));
 #endif
 	ifstream ifs(tmp.c_str());
 	while (getline(ifs, token)) {

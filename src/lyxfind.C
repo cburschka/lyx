@@ -138,7 +138,7 @@ bool findChange(DocIterator & cur)
 bool searchAllowed(BufferView * bv, string const & str)
 {
 	if (str.empty()) {
-		Alert::error(_("Search error"), _("Search string is empty"));
+		Alert::error(lyx::to_utf8(_("Search error")), lyx::to_utf8(_("Search string is empty")));
 		return false;
 	}
 	return bv->available();
@@ -289,7 +289,7 @@ void find(BufferView * bv, FuncRequest const & ev)
 
 	if (!found)
 		// emit message signal.
-		bv->message(_("String not found!"));
+		bv->message(lyx::to_utf8(_("String not found!")));
 }
 
 
@@ -320,14 +320,14 @@ void replace(BufferView * bv, FuncRequest const & ev)
 
 	if (replace_count == 0) {
 		// emit message signal.
-		buf->message(_("String not found!"));
+		buf->message(lyx::to_utf8(_("String not found!")));
 	} else {
 		if (replace_count == 1) {
 			// emit message signal.
-			buf->message(_("String has been replaced."));
+			buf->message(lyx::to_utf8(_("String has been replaced.")));
 		} else {
 			string str = convert<string>(replace_count);
-			str += _(" strings have been replaced.");
+			str += lyx::to_utf8(_(" strings have been replaced."));
 			// emit message signal.
 			buf->message(str);
 		}

@@ -165,8 +165,8 @@ void layoutSelected(LyXView & lv, string const & name)
 	LyXTextClass::const_iterator const end = tc.end();
 	for (; it != end; ++it) {
 		string const & itname = (*it)->name();
-		// Yes, the _() is correct
-		if (_(itname) == name) {
+		// Yes, the lyx::to_utf8(_()) is correct
+		if (lyx::to_utf8(_(itname)) == name) {
 			FuncRequest const func(LFUN_LAYOUT, itname,
 					       FuncRequest::UI);
 			lv.getLyXFunc().dispatch(func);

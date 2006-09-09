@@ -104,8 +104,10 @@ string MathMacroTemplate::name() const
 
 docstring MathMacroTemplate::prefix() const
 {
-	// FIXME: delete the conversion when bformat() will return a docstring.
-	return lyx::from_utf8(bformat(_(" Macro: %1$s: "), name_));
+	// FIXME UNICODE
+	// delete the conversion when bformat() will return a docstring.
+	// delete the conversion when bformat() takes a docstring arg.
+	return lyx::from_utf8(bformat(lyx::to_utf8(_(" Macro: %1$s: ")), name_));
 }
 
 

@@ -196,8 +196,9 @@ void GAboutlyx::doBuild()
 			button->hide();
 	}
 
+	// FIXME UNICODE
 	Gtk::Button &authorbutton = *Gtk::manage(
-		new Gtk::Button(_("C_redits"), true));
+		new Gtk::Button(lyx::to_utf8(_("C_redits")), true));
 	authorbutton.set_image(*Gtk::manage(
 		new Gtk::Image(Gtk::Stock::ABOUT, Gtk::ICON_SIZE_BUTTON)));
 	dialog->get_action_area()->pack_end(authorbutton);

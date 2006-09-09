@@ -269,7 +269,7 @@ Menu & Menu::read(LyXLex & lex)
 			// fallback to md_item
 		case md_item: {
 			lex.next(true);
-			string const name = _(lex.getString());
+			string const name = lyx::to_utf8(_(lex.getString()));
 			lex.next(true);
 			string const command = lex.getString();
 			FuncRequest func = lyxaction.lookupFunc(command);
@@ -335,7 +335,7 @@ Menu & Menu::read(LyXLex & lex)
 			// fallback to md_submenu
 		case md_submenu: {
 			lex.next(true);
-			string const mlabel = _(lex.getString());
+			string const mlabel = lyx::to_utf8(_(lex.getString()));
 			lex.next(true);
 			string const mname = lex.getString();
 			add(MenuItem(MenuItem::Submenu, mlabel, mname,
@@ -448,7 +448,7 @@ void expandDocuments(Menu & tomenu, LyXView const * view)
 	Strings const names = bufferlist.getFileNames();
 
 	if (names.empty()) {
-		tomenu.add(MenuItem(MenuItem::Command, _("No Documents Open!"),
+		tomenu.add(MenuItem(MenuItem::Command, lyx::to_utf8(_("No Documents Open!")),
 				    FuncRequest(LFUN_NOACTION)), view);
 		return;
 	}
@@ -469,7 +469,7 @@ void expandFormats(MenuItem::Kind kind, Menu & tomenu, LyXView const * view)
 {
 	if (!view->buffer() && kind != MenuItem::ImportFormats) {
 		tomenu.add(MenuItem(MenuItem::Command,
-				    _("No Documents Open!"),
+				    lyx::to_utf8(_("No Documents Open!")),
 				    FuncRequest(LFUN_NOACTION)),
 				    view);
 		return;
@@ -508,9 +508,9 @@ void expandFormats(MenuItem::Kind kind, Menu & tomenu, LyXView const * view)
 		switch (kind) {
 		case MenuItem::ImportFormats:
 			if ((*fit)->name() == "text")
-				label = _("Plain Text as Lines");
+				label = lyx::to_utf8(_("Plain Text as Lines"));
 			else if ((*fit)->name() == "textparagraph")
-				label = _("Plain Text as Paragraphs");
+				label = lyx::to_utf8(_("Plain Text as Paragraphs"));
 			label += "...";
 			break;
 		case MenuItem::ViewFormats:
@@ -537,7 +537,7 @@ void expandFloatListInsert(Menu & tomenu, LyXView const * view)
 {
 	if (!view->buffer()) {
 		tomenu.add(MenuItem(MenuItem::Command,
-				    _("No Documents Open!"),
+				    lyx::to_utf8(_("No Documents Open!")),
 				    FuncRequest(LFUN_NOACTION)),
 			   view);
 		return;
@@ -549,7 +549,7 @@ void expandFloatListInsert(Menu & tomenu, LyXView const * view)
 	FloatList::const_iterator end = floats.end();
 	for (; cit != end; ++cit) {
 		tomenu.add(MenuItem(MenuItem::Command,
-				    _(cit->second.listName()),
+				    lyx::to_utf8(_(cit->second.listName())),
 				    FuncRequest(LFUN_FLOAT_LIST,
 						cit->second.type())),
 			   view);
@@ -561,7 +561,7 @@ void expandFloatInsert(Menu & tomenu, LyXView const * view)
 {
 	if (!view->buffer()) {
 		tomenu.add(MenuItem(MenuItem::Command,
-				    _("No Documents Open!"),
+				    lyx::to_utf8(_("No Documents Open!")),
 				    FuncRequest(LFUN_NOACTION)),
 			   view);
 		return;
@@ -573,7 +573,7 @@ void expandFloatInsert(Menu & tomenu, LyXView const * view)
 	FloatList::const_iterator end = floats.end();
 	for (; cit != end; ++cit) {
 		// normal float
-		string const label = _(cit->second.name());
+		string const label = lyx::to_utf8(_(cit->second.name()));
 		tomenu.add(MenuItem(MenuItem::Command, label,
 				    FuncRequest(LFUN_FLOAT_INSERT,
 						cit->second.type())),
@@ -586,7 +586,7 @@ void expandCharStyleInsert(Menu & tomenu, LyXView const * view)
 {
 	if (!view->buffer()) {
 		tomenu.add(MenuItem(MenuItem::Command,
-				    _("No Documents Open!"),
+				    lyx::to_utf8(_("No Documents Open!")),
 				    FuncRequest(LFUN_NOACTION)),
 			   view);
 		return;
@@ -675,7 +675,7 @@ void expandToc(Menu & tomenu, LyXView const * view)
 	Buffer const * buf = view->buffer();
 	if (!buf) {
 		tomenu.add(MenuItem(MenuItem::Command,
-				    _("No Documents Open!"),
+				    lyx::to_utf8(_("No Documents Open!")),
 				    FuncRequest(LFUN_NOACTION)),
 			   view);
 		return;
@@ -701,7 +701,7 @@ void expandToc(Menu & tomenu, LyXView const * view)
 					   FuncRequest(ccit->action())));
 		}
 		string const & floatName = floatlist.getType(cit->first).listName();
-		MenuItem item(MenuItem::Submenu, _(floatName));
+		MenuItem item(MenuItem::Submenu, lyx::to_utf8(_(floatName)));
 		item.submenu(menu.release());
 		tomenu.add(item);
 	}
@@ -710,7 +710,7 @@ void expandToc(Menu & tomenu, LyXView const * view)
 	cit = toc_list.find("TOC");
 	if (cit == end) {
 		tomenu.add(MenuItem(MenuItem::Command,
-				    _("No Table of contents"),
+				    lyx::to_utf8(_("No Table of contents")),
 				    FuncRequest()),
 			   view);
 	} else {

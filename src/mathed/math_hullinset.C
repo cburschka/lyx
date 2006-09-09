@@ -341,8 +341,8 @@ void MathHullInset::draw(PainterInfo & pi, int x, int y) const
 		for (row_type row = 0; row < nrows(); ++row) {
 			int const yy = y + rowinfo_[row].offset_;
 			FontSetChanger dummy(pi.base, "mathrm");
-                        string const nl = nicelabel(row);
-                        docstring const dnl(nl.begin(), nl.end());
+			string const nl = nicelabel(row);
+			docstring const dnl(nl.begin(), nl.end());
 			pi.draw(xx, yy, dnl);
 		}
 	}
@@ -1042,7 +1042,8 @@ void MathHullInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 			else
 				for (row_type row = 0; row < nrows(); ++row)
 					numbered(row, !old);
-			cur.message(old ? _("No number") : _("Number"));
+			// FIXME UNICODE
+			cur.message(old ? lyx::to_utf8(_("No number")) : lyx::to_utf8(_("Number")));
 		}
 		break;
 
@@ -1051,7 +1052,8 @@ void MathHullInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 			recordUndoInset(cur);
 			row_type r = (type_ == hullMultline) ? nrows() - 1 : cur.row();
 			bool old = numbered(r);
-			cur.message(old ? _("No number") : _("Number"));
+			// FIXME UNICODE
+			cur.message(old ? lyx::to_utf8(_("No number")) : lyx::to_utf8(_("Number")));
 			numbered(r, !old);
 		}
 		break;
@@ -1310,7 +1312,8 @@ void MathHullInset::edit(LCursor & cur, bool left)
 
 string const MathHullInset::editMessage() const
 {
-	return _("Math editor mode");
+	// FIXME UNICODE
+	return lyx::to_utf8(_("Math editor mode"));
 }
 
 

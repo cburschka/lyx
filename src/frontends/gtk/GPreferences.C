@@ -35,7 +35,7 @@ namespace lyx {
 namespace frontend {
 
 GPreferences::GPreferences(Dialog & parent)
-	: GViewCB<ControlPrefs, GViewGladeB>(parent, _("Preferences"), false)
+	: GViewCB<ControlPrefs, GViewGladeB>(parent, lyx::to_utf8(_("Preferences")), false)
 {}
 
 
@@ -69,13 +69,13 @@ void GPreferences::doBuild()
 	dpiadj_ = spin->get_adjustment();
 	xml_->get_widget("Zoom", spin);
 	zoomadj_ = spin->get_adjustment();
-	
+
 	// *** Graphics ***
 	xml_->get_widget("GraphicsColor", graphicscolorradio_);
 	xml_->get_widget("GraphicsGrayscale", graphicsgrayscaleradio_);
 	xml_->get_widget("GraphicsMonochrome", graphicsmonoradio_);
 	xml_->get_widget("GraphicsDoNotDisplay", graphicsnoneradio_);
-	
+
 	xml_->get_widget("InstantPreviewOn", instprevonradio_);
 	xml_->get_widget("InstantPreviewOff", instprevoffradio_);
 	xml_->get_widget("InstantPreviewNoMath", instprevnomathradio_);
@@ -84,7 +84,7 @@ void GPreferences::doBuild()
 	xml_->get_widget("UseKeyboardMap", keyboardmapcheck_);
 	xml_->get_widget("FirstKeyboardMap", keyboardmap1fcbutton_);
 	xml_->get_widget("SecondKeyboardMap", keyboardmap2fcbutton_);
-	
+
 	Gtk::FileFilter kmapfilter;
 	kmapfilter.set_name ("LyX keyboard maps");
 	kmapfilter.add_pattern ("*.kmap");
@@ -98,12 +98,12 @@ void GPreferences::doBuild()
 	keyboardmap2fcbutton_->add_filter (kmapfilter);
 	keyboardmap2fcbutton_->add_filter (allfilter);
 	keyboardmap2fcbutton_->set_filter (kmapfilter);
-	
+
 	keyboardmapcheck_->signal_toggled().connect(
 		sigc::mem_fun(*this, &GPreferences::keyboard_sensitivity));
-		
+
 	// *** Language ***
-	
+
 	xml_->get_widget("DefaultLanguage", box);
 	box->pack_start (defaultlanguagecombo_);
 	defaultlanguagecombo_.show();
@@ -116,7 +116,7 @@ void GPreferences::doBuild()
 	xml_->get_widget("RTLSupport", RTLsupportcheck_);
 	xml_->get_widget("AutoBegin", autobegincheck_);
 	xml_->get_widget("AutoEnd", autoendcheck_);
-	
+
 	// Store the lang identifiers for later
 	vector<LanguagePair> const langs = getLanguageData(false);
 	lang_ = getSecond(langs);
@@ -140,7 +140,7 @@ void GPreferences::doBuild()
 	Gtk::FileFilter ispellfilter;
 	ispellfilter.set_name ("iSpell Dictionary Files");
 	ispellfilter.add_pattern ("*.ispell");
-	
+
 	personaldictionaryfcbutton_->add_filter (ispellfilter);
 	personaldictionaryfcbutton_->add_filter (allfilter);
 	personaldictionaryfcbutton_->set_filter (ispellfilter);
@@ -155,7 +155,7 @@ void GPreferences::doBuild()
 	spellcheckercombo_.append_text (_("aspell (library)"));
 #endif
 #endif
-	
+
 
 }
 
@@ -208,7 +208,7 @@ void GPreferences::update()
 			instprevoffradio_->set_active();
 		break;
 	}
-	
+
 	// *** Keyboard ***
 	keyboardmapcheck_->set_active (rc.use_kbmap);
 	keyboardmap1fcbutton_->set_filename (rc.primary_kbmap);
@@ -219,7 +219,7 @@ void GPreferences::update()
 	// *** Language ***
 	int const pos = int(findPos(lang_, rc.default_language));
 	defaultlanguagecombo_.set_active(pos);
-	
+
 	languagepackageentry_->set_text(rc.language_package);
 	commandstartentry_->set_text(rc.language_command_begin);
 	commandendentry_->set_text(rc.language_command_end);
@@ -247,7 +247,7 @@ void GPreferences::update()
 		spellcheckercombo_.set_active (3);
 #endif
 	}
-	
+
 	// FIXME: remove isp_use_alt_lang
 	alternativelanguageentry_->set_text(rc.isp_alt_lang);
 	// FIXME: remove isp_use_esc_chars
@@ -316,7 +316,7 @@ void GPreferences::apply()
 		rc.primary_kbmap = keyboardmap1fcbutton_->get_filename();
 		rc.secondary_kbmap = keyboardmap2fcbutton_->get_filename();
 	}
-	
+
 	// *** Language ***
 	rc.default_language = lang_[
 		defaultlanguagecombo_.get_active_row_number()];

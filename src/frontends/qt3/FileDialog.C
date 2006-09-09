@@ -152,7 +152,7 @@ FileDialog::Result const FileDialog::opendir(string const & path,
 						  qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(),
 						  title_.c_str()));
 #else
-	FileFilterList const filter(_("Directories"));
+	FileFilterList const filter(lyx::to_utf8(_("Directories")));
 
 	LyXFileDialog dlg(path, filter, title_, private_->b1, private_->b2);
 

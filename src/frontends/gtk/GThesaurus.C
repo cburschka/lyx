@@ -44,7 +44,7 @@ synModelColumns synColumns;
 
 
 GThesaurus::GThesaurus(Dialog & parent)
-	: GViewCB<ControlThesaurus, GViewGladeB>(parent, _("Thesaurus"), false)
+	: GViewCB<ControlThesaurus, GViewGladeB>(parent, lyx::to_utf8(_("Thesaurus")), false)
 {}
 
 
@@ -63,7 +63,7 @@ void GThesaurus::doBuild()
 	xml_->get_widget("Keyword", keywordentry_);
 	xml_->get_widget("Meanings", meaningsview_);
 
-	meaningsview_->append_column(_("Synonym"), synColumns.name);
+	meaningsview_->append_column(lyx::to_utf8(_("Synonym")), synColumns.name);
 
 
 	// Keyword entry changed
@@ -146,14 +146,14 @@ void GThesaurus::update_lists()
 
 			for (std::vector<string>::const_iterator cit2 = cit->second.begin();
 				cit2 != cit->second.end(); ++cit2) {
-  				Gtk::TreeModel::Row childrow = *(synTreeStore_->append(row.children()));
+				Gtk::TreeModel::Row childrow = *(synTreeStore_->append(row.children()));
 				childrow[synColumns.name] = *cit2;
 				}
 		}
 		meaningsview_->set_sensitive(true);
 	} else {
 		Gtk::TreeModel::Row row = *(synTreeStore_->append());
-		row[synColumns.name] = _("No synonyms found");
+		row[synColumns.name] = lyx::to_utf8(_("No synonyms found"));
 		meaningsview_->set_sensitive(false);
 	}
 	meaningsview_->set_model(synTreeStore_);

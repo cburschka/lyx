@@ -484,26 +484,26 @@ string const VSpace::asGUIName() const
 	string result;
 	switch (kind_) {
 	case DEFSKIP:
-		result = _("Default skip");
+		result = lyx::to_utf8(_("Default skip"));
 		break;
 	case SMALLSKIP:
-		result = _("Small skip");
+		result = lyx::to_utf8(_("Small skip"));
 		break;
 	case MEDSKIP:
-		result = _("Medium skip");
+		result = lyx::to_utf8(_("Medium skip"));
 		break;
 	case BIGSKIP:
-		result = _("Big skip");
+		result = lyx::to_utf8(_("Big skip"));
 		break;
 	case VFILL:
-		result = _("Vertical fill");
+		result = lyx::to_utf8(_("Vertical fill"));
 		break;
 	case LENGTH:
 		result = len_.asString();
 		break;
 	}
 	if (keep_)
-		result += ", " + _("protected");
+		result += ", " + lyx::to_utf8(_("protected"));
 	return result;
 }
 

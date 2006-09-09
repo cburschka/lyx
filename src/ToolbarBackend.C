@@ -94,7 +94,7 @@ void ToolbarBackend::read(LyXLex & lex)
 		switch (lex.lex()) {
 		case TO_ADD:
 			if (lex.next(true)) {
-				string const tooltip = _(lex.getString());
+				string const tooltip = lyx::to_utf8(_(lex.getString()));
 				lex.next(true);
 				string const func_arg = lex.getString();
 				lyxerr[Debug::PARSER]

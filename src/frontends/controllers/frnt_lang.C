@@ -49,16 +49,16 @@ vector<LanguagePair> const getLanguageData(bool character_dlg)
 	vector<LanguagePair> langs(size);
 
 	if (character_dlg) {
-		langs[0].first = _("No change");
+		langs[0].first = lyx::to_utf8(_("No change"));
 		langs[0].second = "ignore";
-		langs[1].first = _("Reset");
+		langs[1].first = lyx::to_utf8(_("Reset"));
 		langs[1].second = "reset";
 	}
 
 	vector<string>::size_type i = character_dlg ? 2 : 0;
 	for (Languages::const_iterator cit = languages.begin();
 	     cit != languages.end(); ++cit) {
-		langs[i].first  = _(cit->second.display());
+		langs[i].first  = lyx::to_utf8(_(cit->second.display()));
 		langs[i].second = cit->second.lang();
 		++i;
 	}

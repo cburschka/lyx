@@ -62,7 +62,7 @@ bufferModelColumns bufferColumns;
 
 
 GRef::GRef(Dialog & parent)
-	: GViewCB<ControlRef, GViewGladeB>(parent, _("Cross-reference"), false)
+	: GViewCB<ControlRef, GViewGladeB>(parent, lyx::to_utf8(_("Cross-reference")), false)
 {}
 
 
@@ -86,7 +86,7 @@ void GRef::doBuild()
 	xml_->get_widget("Back", backbutton_);
 	xml_->get_widget("Refresh", refreshbutton_);
 
-	refview_->append_column(_("Label"), refColumns.name);
+	refview_->append_column(lyx::to_utf8(_("Label")), refColumns.name);
 
 	buffercombo_->signal_changed().connect(
 		sigc::mem_fun(*this, &GRef::buffer_changed));
@@ -194,8 +194,8 @@ void GRef::update()
 	vector<string>::const_iterator it = buffers.begin();
 	vector<string>::const_iterator const end = buffers.end();
 	for (; it != end; ++it) {
-	 	Gtk::TreeModel::iterator iter = bufferstore_->append();
-	 	(*iter)[bufferColumns.name]  = *it;
+		Gtk::TreeModel::iterator iter = bufferstore_->append();
+		(*iter)[bufferColumns.name]  = *it;
 	}
 
 	buffercombo_->set_active(controller().getBufferNum());
@@ -226,7 +226,7 @@ void GRef::update_labels()
 		refview_->set_sensitive(true);
 	} else {
 		Gtk::TreeModel::iterator iter =refListStore_->append();
-		(*iter)[refColumns.name] = _("No labels found.");
+		(*iter)[refColumns.name] = lyx::to_utf8(_("No labels found."));
 		refview_->set_sensitive(false);
 	}
 	refview_->set_model(refListStore_);

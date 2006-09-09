@@ -104,7 +104,7 @@ inline int indexToCol(int index)
 
 
 GMathDelim::GMathDelim(Dialog & parent) :
-	GViewCB<ControlMath, GViewGladeB>(parent, _("Math Delimiters")),
+	GViewCB<ControlMath, GViewGladeB>(parent, lyx::to_utf8(_("Math Delimiters"))),
 	delimTbl_(delimTblRows, delimTblCols, xbm)
 {
 }

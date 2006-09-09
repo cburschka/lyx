@@ -421,7 +421,8 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_PASTE: {
 		recordUndo(cur);
-		cur.message(_("Paste"));
+		// FIXME UNICODE
+		cur.message(lyx::to_utf8(_("Paste")));
 		replaceSelection(cur);
 		size_t n = 0;
 		istringstream is(lyx::to_utf8(cmd.argument()));
@@ -437,7 +438,8 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_CUT:
 		recordUndo(cur);
 		cutSelection(cur, true, true);
-		cur.message(_("Cut"));
+		// FIXME UNICODE
+		cur.message(lyx::to_utf8(_("Cut")));
 		// Prevent stale position >= size crash
 		// Probably not necessary anymore, see eraseSelection (gb 2005-10-09)
 		cur.normalize();
@@ -445,7 +447,8 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_COPY:
 		copySelection(cur);
-		cur.message(_("Copy"));
+		// FIXME UNICODE
+		cur.message(lyx::to_utf8(_("Copy")));
 		break;
 
 	case LFUN_MOUSE_PRESS:
@@ -1374,10 +1377,10 @@ bool MathNestInset::script(LCursor & cur, bool up, string const &
 		MathScriptInset * inset = cur.nextAtom().nucleus()->asScriptInset();
 		// special handling of {}-bases
 		// is this always correct?
-		if (inset->nuc().size() == 1 
+		if (inset->nuc().size() == 1
 		    && inset->nuc().back()->asBraceInset())
 			inset->nuc() = inset->nuc().back()->asNestInset()->cell(0);
-		
+
 		cur.push(*inset);
 		cur.idx() = 1;
 		cur.pos() = 0;

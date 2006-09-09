@@ -29,8 +29,9 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
+// FIXME UNICODE
 GBibItem::GBibItem(Dialog & parent)
-	: GViewCB<ControlCommand, GViewGladeB>(parent, _("Bibliography Entry Settings"), false)
+	: GViewCB<ControlCommand, GViewGladeB>(parent, lyx::to_utf8(_("Bibliography Entry Settings")), false)
 {}
 
 
@@ -69,8 +70,8 @@ void GBibItem::update()
 
 void GBibItem::apply()
 {
-        controller().params().setContents(keyentry_->get_text());
-        controller().params().setOptions(labelentry_->get_text());
+	controller().params().setContents(keyentry_->get_text());
+	controller().params().setOptions(labelentry_->get_text());
 }
 
 void GBibItem::changed()

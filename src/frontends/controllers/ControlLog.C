@@ -75,16 +75,16 @@ string const ControlLog::title() const
 	string t;
 	switch (type_) {
 	case LatexLog:
-		t = _("LaTeX Log");
+		t = lyx::to_utf8(_("LaTeX Log"));
 		break;
 	case LiterateLog:
-		t = _("Literate Programming Build Log");
+		t = lyx::to_utf8(_("Literate Programming Build Log"));
 		break;
 	case Lyx2lyxLog:
-		t = _("lyx2lyx Error Log");
+		t = lyx::to_utf8(_("lyx2lyx Error Log"));
 		break;
 	case VCLog:
-		t = _("Version Control Log");
+		t = lyx::to_utf8(_("Version Control Log"));
 		break;
 	}
 	return t;
@@ -107,16 +107,16 @@ void ControlLog::getContents(std::ostream & ss) const
 
 	switch (type_) {
 	case LatexLog:
-		ss << _("No LaTeX log file found.");
+		ss << lyx::to_utf8(_("No LaTeX log file found."));
 		break;
 	case LiterateLog:
-		ss << _("No literate programming build log file found.");
+		ss << lyx::to_utf8(_("No literate programming build log file found."));
 		break;
 	case Lyx2lyxLog:
-		ss << _("No lyx2lyx error log file found.");
+		ss << lyx::to_utf8(_("No lyx2lyx error log file found."));
 		break;
 	case VCLog:
-		ss << _("No version control log file found.");
+		ss << lyx::to_utf8(_("No version control log file found."));
 		break;
 	}
 }

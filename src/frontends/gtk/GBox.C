@@ -38,8 +38,9 @@ namespace {
 string defaultUnit("cm");
 } // namespace anon
 
+// FIXME UNICODE
 GBox::GBox(Dialog & parent)
-	: GViewCB<ControlBox, GViewGladeB>(parent, _("Box Settings"), false)
+	: GViewCB<ControlBox, GViewGladeB>(parent, lyx::to_utf8(_("Box Settings")), false)
 {}
 
 
@@ -172,7 +173,7 @@ void GBox::update()
 
 	widthspin_->get_adjustment()->set_value(controller().params().width.value());
 	unitsComboFromLength(widthunitscombo_, stringcol_,
-	                     controller().params().width, defaultUnit);
+			     controller().params().width, defaultUnit);
 
 	string const special(controller().params().special);
 	if (!special.empty() && special != "none") {
@@ -190,7 +191,7 @@ void GBox::update()
 
 	heightspin_->get_adjustment()->set_value(controller().params().height.value());
 	unitsComboFromLength(heightunitscombo_, stringcol_,
-	                     controller().params().height, defaultUnit);
+			     controller().params().height, defaultUnit);
 
 	string const height_special(controller().params().height_special);
 	if (!height_special.empty() && height_special != "none") {
@@ -276,8 +277,8 @@ void GBox::updateInnerBoxCombo()
 
 	if (frameless && oldsize != 2) {
 		innerboxstore_->clear();
-		(*innerboxstore_->append())[stringcol_] = _("Parbox");
-		(*innerboxstore_->append())[stringcol_] = _("Minipage");
+		(*innerboxstore_->append())[stringcol_] = lyx::to_utf8(_("Parbox"));
+		(*innerboxstore_->append())[stringcol_] = lyx::to_utf8(_("Minipage"));
 		// Cope when the backend asks for no inner box in
 		// a frameless box
 		if (i == 0) {
@@ -288,9 +289,9 @@ void GBox::updateInnerBoxCombo()
 			innerboxcombo_->set_active(i - 1);
 	} else if (!frameless && oldsize != 3) {
 		innerboxstore_->clear();
-		(*innerboxstore_->append())[stringcol_] = _("None");
-		(*innerboxstore_->append())[stringcol_] = _("Parbox");
-		(*innerboxstore_->append())[stringcol_] = _("Minipage");
+		(*innerboxstore_->append())[stringcol_] = lyx::to_utf8(_("None"));
+		(*innerboxstore_->append())[stringcol_] = lyx::to_utf8(_("Parbox"));
+		(*innerboxstore_->append())[stringcol_] = lyx::to_utf8(_("Minipage"));
 		innerboxcombo_->set_active(i);
 	} else {
 		// we're not changing the liststore, just selecting i
@@ -314,9 +315,9 @@ void GBox::onInnerBoxComboChanged()
 		return;
 
 	controller().params().use_parbox =
-		(*innerboxcombo_->get_active())[stringcol_] ==  _("Parbox");
+		(*innerboxcombo_->get_active())[stringcol_] ==  lyx::to_utf8(_("Parbox"));
 
-	bool const ibox = (*innerboxcombo_->get_active())[stringcol_] != _("None");
+	bool const ibox = (*innerboxcombo_->get_active())[stringcol_] != lyx::to_utf8(_("None"));
 	controller().params().inner_box = ibox;
 	setSpecial(ibox);
 

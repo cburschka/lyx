@@ -122,7 +122,8 @@ string floatname(string const & type, BufferParams const & bp)
 	if (it == floats.end())
 		return type;
 
-	return _(it->second.name());
+	// FIXME UNICODE
+	return lyx::to_utf8(_(it->second.name()));
 }
 
 } // namespace anon
@@ -131,7 +132,8 @@ string floatname(string const & type, BufferParams const & bp)
 InsetFloat::InsetFloat(BufferParams const & bp, string const & type)
 	: InsetCollapsable(bp)
 {
-	setLabel(_("float: ") + floatname(type, bp));
+	// FIXME UNICODE
+	setLabel(lyx::to_utf8(_("float: ")) + floatname(type, bp));
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
 	font.decSize();
@@ -288,7 +290,8 @@ auto_ptr<InsetBase> InsetFloat::doClone() const
 
 string const InsetFloat::editMessage() const
 {
-	return _("Opened Float Inset");
+	// FIXME UNICODE
+	return lyx::to_utf8(_("Opened Float Inset"));
 }
 
 
@@ -371,7 +374,8 @@ bool InsetFloat::showInsetDialog(BufferView * bv) const
 void InsetFloat::wide(bool w, BufferParams const & bp)
 {
 	params_.wide = w;
-	string lab = _("float: ") + floatname(params_.type, bp);
+	// FIXME UNICODE
+	string lab = lyx::to_utf8(_("float: ")) + floatname(params_.type, bp);
 	if (params_.wide)
 		lab += '*';
 	setLabel(lab);
@@ -381,9 +385,10 @@ void InsetFloat::wide(bool w, BufferParams const & bp)
 void InsetFloat::sideways(bool s, BufferParams const & bp)
 {
 	params_.sideways = s;
-	string lab = _("float: ") + floatname(params_.type, bp);
+	// FIXME UNICODE
+	string lab = lyx::to_utf8(_("float: ")) + floatname(params_.type, bp);
 	if (params_.sideways)
-		lab += _(" (sideways)");
+		lab += lyx::to_utf8(_(" (sideways)"));
 	setLabel(lab);
 }
 

@@ -1204,7 +1204,8 @@ void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_PASTE: {
-		cur.message(_("Paste"));
+		// FIXME UNICODE
+		cur.message(lyx::to_utf8(_("Paste")));
 		lyx::cap::replaceSelection(cur);
 		istringstream is(lyx::to_utf8(cmd.argument()));
 		int n = 0;

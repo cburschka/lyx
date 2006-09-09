@@ -31,7 +31,7 @@ namespace lyx {
 namespace frontend {
 
 GLog::GLog(Dialog & parent)
-	: GViewCB<ControlLog, GViewGladeB>(parent, _("Log Viewer"), false)
+	: GViewCB<ControlLog, GViewGladeB>(parent, lyx::to_utf8(_("Log Viewer")), false)
 {}
 
 
@@ -67,7 +67,7 @@ void GLog::update()
 	if (!contents.str().empty())
 		contentbuffer_->set_text(contents.str());
 	else
-		contentbuffer_->set_text(_("Error reading file!"));
+		contentbuffer_->set_text(lyx::to_utf8(_("Error reading file!")));
 }
 
 } // namespace frontend

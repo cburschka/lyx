@@ -47,8 +47,10 @@ ErrorList const & ControlErrorList::errorList() const
 bool ControlErrorList::initialiseParams(string const & error_type)
 {
 	Buffer * buf = kernel().bufferview()->buffer();
-	string const title = bformat(_("%1$s Errors (%2$s)"),
-		_(error_type), buf->fileName());
+	// FIXME UNICODE
+	string const title = bformat(lyx::to_utf8(_("%1$s Errors (%2$s)")),
+				     lyx::to_utf8(_(error_type)),
+				     buf->fileName());
 	errorlist_ = buf->errorList(error_type);
 	name_ = title;
 	return true;

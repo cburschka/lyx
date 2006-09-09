@@ -77,20 +77,20 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	branchesModule = new BranchesModuleBase(this);
 	preambleModule = new PreambleModuleBase(this);
 
-	docPS->addPanel(latexModule, _("Document Class"));
-	docPS->addPanel(fontModule, _("Fonts"));
-	docPS->addPanel(textLayoutModule, _("Text Layout"));
-	docPS->addPanel(pageLayoutModule, _("Page Layout"));
-	docPS->addPanel(marginsModule, _("Page Margins"));
-	docPS->addPanel(langModule, _("Language"));
-	docPS->addPanel(numberingModule, _("Numbering & TOC"));
-	docPS->addPanel(biblioModule, _("Bibliography"));
-	docPS->addPanel(mathsModule, _("Math Options"));
-	docPS->addPanel(floatModule, _("Float Placement"));
-	docPS->addPanel(bulletsModule, _("Bullets"));
-	docPS->addPanel(branchesModule, _("Branches"));
-	docPS->addPanel(preambleModule, _("LaTeX Preamble"));
-	docPS->setCurrentPanel(_("Document Class"));
+	docPS->addPanel(latexModule, lyx::to_utf8(_("Document Class")));
+	docPS->addPanel(fontModule, lyx::to_utf8(_("Fonts")));
+	docPS->addPanel(textLayoutModule, lyx::to_utf8(_("Text Layout")));
+	docPS->addPanel(pageLayoutModule, lyx::to_utf8(_("Page Layout")));
+	docPS->addPanel(marginsModule, lyx::to_utf8(_("Page Margins")));
+	docPS->addPanel(langModule, lyx::to_utf8(_("Language")));
+	docPS->addPanel(numberingModule, lyx::to_utf8(_("Numbering & TOC")));
+	docPS->addPanel(biblioModule, lyx::to_utf8(_("Bibliography")));
+	docPS->addPanel(mathsModule, lyx::to_utf8(_("Math Options")));
+	docPS->addPanel(floatModule, lyx::to_utf8(_("Float Placement")));
+	docPS->addPanel(bulletsModule, lyx::to_utf8(_("Bullets")));
+	docPS->addPanel(branchesModule, lyx::to_utf8(_("Branches")));
+	docPS->addPanel(preambleModule, lyx::to_utf8(_("LaTeX Preamble")));
+	docPS->setCurrentPanel(lyx::to_utf8(_("Document Class")));
 
 	// preamble
 	connect(preambleModule->preambleMLE, SIGNAL(textChanged()), this, SLOT(change_adaptor()));
@@ -225,7 +225,7 @@ QDocumentDialog::~QDocumentDialog()
 
 void QDocumentDialog::showPreamble()
 {
-	docPS->setCurrentPanel(_("LaTeX Preamble"));
+	docPS->setCurrentPanel(lyx::to_utf8(_("LaTeX Preamble")));
 }
 
 
@@ -356,7 +356,7 @@ void QDocumentDialog::updateFontsize(string const & items, string const & sel)
 void QDocumentDialog::romanChanged(int item)
 {
 	string const font = tex_fonts_roman[item];
-	
+
 	fontModule->fontScCB->setEnabled(
 		form_->controller().providesSC(font));
 	fontModule->fontOsfCB->setEnabled(
@@ -367,7 +367,7 @@ void QDocumentDialog::romanChanged(int item)
 void QDocumentDialog::sansChanged(int item)
 {
 	string const font = tex_fonts_sans[item];
-	
+
 	fontModule->scaleSansSB->setEnabled(
 		form_->controller().providesScale(font));
 }
@@ -376,7 +376,7 @@ void QDocumentDialog::sansChanged(int item)
 void QDocumentDialog::ttChanged(int item)
 {
 	string const font = tex_fonts_monospaced[item];
-	
+
 	fontModule->scaleTypewriterSB->setEnabled(
 		form_->controller().providesScale(font));
 }

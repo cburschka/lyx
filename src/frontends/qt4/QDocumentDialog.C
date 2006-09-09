@@ -363,7 +363,7 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 			latexModule->classCO->addItem(toqstr(cit->description()));
 		} else {
 			string item =
-				bformat(_("Unavailable: %1$s"), cit->description());
+				bformat(lyx::to_utf8(_("Unavailable: %1$s")), cit->description());
 			latexModule->classCO->addItem(toqstr(item));
 		}
 	}
@@ -388,20 +388,20 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	floatModule = new FloatPlacement;
 	connect(floatModule, SIGNAL(changed()), this, SLOT(change_adaptor()));
 
-	docPS->addPanel(latexModule, _("Document Class"));
-	docPS->addPanel(fontModule, _("Fonts"));
-	docPS->addPanel(textLayoutModule, _("Text Layout"));
-	docPS->addPanel(pageLayoutModule, _("Page Layout"));
-	docPS->addPanel(marginsModule, _("Page Margins"));
-	docPS->addPanel(langModule, _("Language"));
-	docPS->addPanel(numberingModule, _("Numbering & TOC"));
-	docPS->addPanel(biblioModule, _("Bibliography"));
-	docPS->addPanel(mathsModule, _("Math Options"));
-	docPS->addPanel(floatModule, _("Float Placement"));
-	docPS->addPanel(bulletsModule, _("Bullets"));
-	docPS->addPanel(branchesModule, _("Branches"));
-	docPS->addPanel(preambleModule, _("LaTeX Preamble"));
-	docPS->setCurrentPanel(_("Document Class"));
+	docPS->addPanel(latexModule, lyx::to_utf8(_("Document Class")));
+	docPS->addPanel(fontModule, lyx::to_utf8(_("Fonts")));
+	docPS->addPanel(textLayoutModule, lyx::to_utf8(_("Text Layout")));
+	docPS->addPanel(pageLayoutModule, lyx::to_utf8(_("Page Layout")));
+	docPS->addPanel(marginsModule, lyx::to_utf8(_("Page Margins")));
+	docPS->addPanel(langModule, lyx::to_utf8(_("Language")));
+	docPS->addPanel(numberingModule, lyx::to_utf8(_("Numbering & TOC")));
+	docPS->addPanel(biblioModule, lyx::to_utf8(_("Bibliography")));
+	docPS->addPanel(mathsModule, lyx::to_utf8(_("Math Options")));
+	docPS->addPanel(floatModule, lyx::to_utf8(_("Float Placement")));
+	docPS->addPanel(bulletsModule, lyx::to_utf8(_("Bullets")));
+	docPS->addPanel(branchesModule, lyx::to_utf8(_("Branches")));
+	docPS->addPanel(preambleModule, lyx::to_utf8(_("LaTeX Preamble")));
+	docPS->setCurrentPanel(lyx::to_utf8(_("Document Class")));
 }
 
 
@@ -412,7 +412,7 @@ QDocumentDialog::~QDocumentDialog()
 
 void QDocumentDialog::showPreamble()
 {
-	docPS->setCurrentPanel(_("LaTeX Preamble"));
+	docPS->setCurrentPanel(lyx::to_utf8(_("LaTeX Preamble")));
 }
 
 

@@ -31,7 +31,7 @@ namespace lyx {
 namespace frontend {
 
 GInclude::GInclude(Dialog & parent)
-	: GViewCB<ControlInclude, GViewGladeB>(parent, _("Child Document"), false)
+	: GViewCB<ControlInclude, GViewGladeB>(parent, lyx::to_utf8(_("Child Document")), false)
 {}
 
 

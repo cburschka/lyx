@@ -45,7 +45,8 @@ namespace {
 
 typedef Translator<std::string, InsetNoteParams::Type> NoteTranslator;
 
-NoteTranslator const init_notetranslator() {
+NoteTranslator const init_notetranslator()
+{
 	NoteTranslator translator("Note", InsetNoteParams::Note);
 	translator.addPair("Comment", InsetNoteParams::Comment);
 	translator.addPair("Greyedout", InsetNoteParams::Greyedout);
@@ -55,23 +56,27 @@ NoteTranslator const init_notetranslator() {
 }
 
 
-NoteTranslator const init_notetranslator_loc() {
-	NoteTranslator translator(_("Note"), InsetNoteParams::Note);
-	translator.addPair(_("Comment"), InsetNoteParams::Comment);
-	translator.addPair(_("Greyed out"), InsetNoteParams::Greyedout);
-	translator.addPair(_("Framed"), InsetNoteParams::Framed);
-	translator.addPair(_("Shaded"), InsetNoteParams::Shaded);
+NoteTranslator const init_notetranslator_loc()
+{
+	// FIXME UNICODE
+	NoteTranslator translator(lyx::to_utf8(_("Note")), InsetNoteParams::Note);
+	translator.addPair(lyx::to_utf8(_("Comment")), InsetNoteParams::Comment);
+	translator.addPair(lyx::to_utf8(_("Greyed out")), InsetNoteParams::Greyedout);
+	translator.addPair(lyx::to_utf8(_("Framed")), InsetNoteParams::Framed);
+	translator.addPair(lyx::to_utf8(_("Shaded")), InsetNoteParams::Shaded);
 	return translator;
 }
 
 
-NoteTranslator const & notetranslator() {
+NoteTranslator const & notetranslator()
+{
 	static NoteTranslator translator = init_notetranslator();
 	return translator;
 }
 
 
-NoteTranslator const & notetranslator_loc() {
+NoteTranslator const & notetranslator_loc()
+{
 	static NoteTranslator translator = init_notetranslator_loc();
 	return translator;
 }
@@ -138,7 +143,8 @@ auto_ptr<InsetBase> InsetNote::doClone() const
 
 string const InsetNote::editMessage() const
 {
-	return _("Opened Note Inset");
+	// FIXME UNICODE
+	return lyx::to_utf8(_("Opened Note Inset"));
 }
 
 
@@ -349,7 +355,7 @@ void InsetNote::validate(LaTeXFeatures & features) const
 	if (params_.type == InsetNoteParams::Shaded) {
 		features.require("color");
 		features.require("framed");
-	}		
+	}
 	if (params_.type == InsetNoteParams::Framed)
 		features.require("framed");
 	InsetText::validate(features);

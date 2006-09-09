@@ -554,8 +554,8 @@ void LyXText::toggleFree(LCursor & cur, LyXFont const & font, bool toggleall)
 	// If the mask is completely neutral, tell user
 	if (font == LyXFont(LyXFont::ALL_IGNORE)) {
 		// Could only happen with user style
-		cur.message(_("No font change defined. "
-			      "Use Character under the Layout menu to define font change."));
+		cur.message(lyx::to_utf8(_("No font change defined. "
+					   "Use Character under the Layout menu to define font change.")));
 		return;
 	}
 
@@ -596,9 +596,9 @@ string LyXText::getStringToIndex(LCursor const & cur)
 		selectWord(tmpcur, lyx::PREVIOUS_WORD);
 
 		if (!tmpcur.selection())
-			cur.message(_("Nothing to index!"));
+			cur.message(lyx::to_utf8(_("Nothing to index!")));
 		else if (tmpcur.selBegin().pit() != tmpcur.selEnd().pit())
-			cur.message(_("Cannot index more than one paragraph!"));
+			cur.message(lyx::to_utf8(_("Cannot index more than one paragraph!")));
 		else
 			idxstring = tmpcur.selectionAsString(false);
 	}
@@ -803,8 +803,8 @@ pos_type LyXText::getColumnNearX(pit_type const pit,
 		c = bidi.vis2log(vc);
 		last_tmpx = tmpx;
 		if (body_pos > 0 && c == body_pos - 1) {
-                        string lsep = layout->labelsep;
-                        docstring dlsep(lsep.begin(), lsep.end());
+			string lsep = layout->labelsep;
+			docstring dlsep(lsep.begin(), lsep.end());
 			tmpx += r.label_hfill +
 				font_metrics::width(dlsep, getLabelFont(par));
 			if (par.isLineSeparator(body_pos - 1))

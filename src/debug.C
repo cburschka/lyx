@@ -107,9 +107,9 @@ void lyx_debug_trait::showLevel(ostream & os, lyx_debug_trait::type level)
 		if (errorTags[i].level != Debug::ANY
 		    && errorTags[i].level != Debug::NONE
 		    && errorTags[i].level & level) {
-			// avoid _(...) re-entrance problem
-			string const s = _(errorTags[i].desc);
-			os << bformat(_("Debugging `%1$s' (%2$s)"),
+			// avoid lyx::to_utf8(_(...)) re-entrance problem
+			string const s = lyx::to_utf8(_(errorTags[i].desc));
+			os << bformat(lyx::to_utf8(_("Debugging `%1$s' (%2$s)")),
 					errorTags[i].name, s)
 			   << '\n';
 		}
@@ -123,7 +123,7 @@ void lyx_debug_trait::showTags(ostream & os)
 	for (int i = 0; i < numErrorTags ; ++i)
 		os << setw(7) << static_cast<unsigned int>(errorTags[i].level)
 		   << setw(10) << errorTags[i].name
-		   << "  " << _(errorTags[i].desc) << '\n';
+		   << "  " << lyx::to_utf8(_(errorTags[i].desc)) << '\n';
 	os.flush();
 }
 

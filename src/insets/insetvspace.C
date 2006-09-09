@@ -106,7 +106,8 @@ void InsetVSpace::write(Buffer const &, ostream & os) const
 
 string const InsetVSpace::label() const
 {
-	static string const label = _("Vertical Space");
+	// FIXME UNICODE
+	static string const label = lyx::to_utf8(_("Vertical Space"));
 	return label + " (" + space_.asGUIName() + ')';
 }
 
@@ -129,8 +130,8 @@ void InsetVSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 	int w = 0;
 	int a = 0;
 	int d = 0;
-        string lab = label();
-        docstring dlab(lab.begin(), lab.end());
+	string lab = label();
+	docstring dlab(lab.begin(), lab.end());
 	font_metrics::rectText(dlab, font, w, a, d);
 
 	height = max(height, a + d);
@@ -181,8 +182,8 @@ void InsetVSpace::draw(PainterInfo & pi, int x, int y) const
 	font.setColor(LColor::added_space);
 	font.decSize();
 	font.decSize();
-        string lab = label();
-        docstring dlab(lab.begin(), lab.end());
+	string lab = label();
+	docstring dlab(lab.begin(), lab.end());
 	font_metrics::rectText(dlab, font, w, a, d);
 
 	pi.pain.rectText(x + 2 * arrow_size + 5,

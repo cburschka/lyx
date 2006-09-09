@@ -36,10 +36,11 @@ InsetUrl::InsetUrl(InsetCommandParams const & p)
 string const InsetUrl::getScreenLabel(Buffer const &) const
 {
 	string temp;
+	// FIXME UNICODE
 	if (getCmdName() == "url")
-		temp = _("Url: ");
+		temp = lyx::to_utf8(_("Url: "));
 	else
-		temp = _("HtmlUrl: ");
+		temp = lyx::to_utf8(_("HtmlUrl: "));
 
 	string url;
 

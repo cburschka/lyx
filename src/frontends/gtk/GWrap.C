@@ -32,7 +32,7 @@ namespace lyx {
 namespace frontend {
 
 GWrap::GWrap(Dialog & parent)
-	: GViewCB<ControlWrap, GViewGladeB>(parent, _("Text Wrap Settings"), false)
+	: GViewCB<ControlWrap, GViewGladeB>(parent, lyx::to_utf8(_("Text Wrap Settings")), false)
 {}
 
 

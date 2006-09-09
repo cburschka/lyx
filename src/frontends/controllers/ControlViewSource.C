@@ -81,7 +81,7 @@ string const ControlViewSource::title() const
 	default:
 		BOOST_ASSERT(false);
 	}
-	return _(source_type + " Source");
+	return lyx::to_utf8(_(source_type + " Source"));
 }
 
 } // namespace frontend

@@ -93,36 +93,36 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	uiModule = new QPrefUIModule(this);
 	identityModule = new QPrefIdentityModule(this);
 
-	string const laf = _("Look and feel");
+	string const laf = lyx::to_utf8(_("Look and feel"));
 	prefsPS->addCategory(laf);
-	prefsPS->addPanel(uiModule, _("User interface"), laf);
-	prefsPS->addPanel(screenfontsModule, _("Screen fonts"), laf);
-	prefsPS->addPanel(colorsModule, _("Colors"), laf);
-	prefsPS->addPanel(displayModule, _("Graphics"), laf);
-	prefsPS->addPanel(keyboardModule, _("Keyboard"), laf);
+	prefsPS->addPanel(uiModule, lyx::to_utf8(_("User interface")), laf);
+	prefsPS->addPanel(screenfontsModule, lyx::to_utf8(_("Screen fonts")), laf);
+	prefsPS->addPanel(colorsModule, lyx::to_utf8(_("Colors")), laf);
+	prefsPS->addPanel(displayModule, lyx::to_utf8(_("Graphics")), laf);
+	prefsPS->addPanel(keyboardModule, lyx::to_utf8(_("Keyboard")), laf);
 
-	string const ls = _("Language settings");
+	string const ls = lyx::to_utf8(_("Language settings"));
 	prefsPS->addCategory(ls);
-	prefsPS->addPanel(languageModule, _("Language"), ls);
-	prefsPS->addPanel(spellcheckerModule, _("Spellchecker"), ls);
+	prefsPS->addPanel(languageModule, lyx::to_utf8(_("Language")), ls);
+	prefsPS->addPanel(spellcheckerModule, lyx::to_utf8(_("Spellchecker")), ls);
 
-	string const op = _("Outputs");
+	string const op = lyx::to_utf8(_("Outputs"));
 	prefsPS->addCategory(op);
-	prefsPS->addPanel(asciiModule, _("Plain text"), op);
-	prefsPS->addPanel(dateModule, _("Date format"), op);
-	prefsPS->addPanel(latexModule, _("LaTeX"), op);
+	prefsPS->addPanel(asciiModule, lyx::to_utf8(_("Plain text")), op);
+	prefsPS->addPanel(dateModule, lyx::to_utf8(_("Date format")), op);
+	prefsPS->addPanel(latexModule, lyx::to_utf8(_("LaTeX")), op);
 #if defined(__CYGWIN__) || defined(_WIN32)
-	prefsPS->addPanel(cygwinpathModule, _("Paths"), op);
+	prefsPS->addPanel(cygwinpathModule, lyx::to_utf8(_("Paths")), op);
 #endif
-	prefsPS->addPanel(printerModule, _("Printer"), op);
+	prefsPS->addPanel(printerModule, lyx::to_utf8(_("Printer")), op);
 
-	prefsPS->addPanel(identityModule, _("Identity"));
-	prefsPS->addPanel(pathsModule, _("Paths"));
-	prefsPS->addPanel(fileformatsModule, _("File formats"));
-	prefsPS->addPanel(convertersModule, _("Converters"));
-	prefsPS->addPanel(copiersModule, _("Copiers"));
+	prefsPS->addPanel(identityModule, lyx::to_utf8(_("Identity")));
+	prefsPS->addPanel(pathsModule, lyx::to_utf8(_("Paths")));
+	prefsPS->addPanel(fileformatsModule, lyx::to_utf8(_("File formats")));
+	prefsPS->addPanel(convertersModule, lyx::to_utf8(_("Converters")));
+	prefsPS->addPanel(copiersModule, lyx::to_utf8(_("Copiers")));
 
-	prefsPS->setCurrentPanel(_("User interface"));
+	prefsPS->setCurrentPanel(lyx::to_utf8(_("User interface")));
 
 	// FIXME: put in controller
 	for (int i = 0; i < LColor::ignore; ++i) {
@@ -807,7 +807,7 @@ void QPrefsDialog::new_format()
 	bool const document = fileformatsModule->documentCB->isChecked();
 
 	form_->formats().add(name, extension, prettyname, shortcut, viewer,
-	                     editor, document);
+			     editor, document);
 	form_->formats().sort();
 	updateFormats();
 	fileformatsModule->formatsLB->setCurrentItem(form_->formats().getNumber(name));
@@ -838,7 +838,7 @@ void QPrefsDialog::modify_format()
 	bool const document = fileformatsModule->documentCB->isChecked();
 
 	form_->formats().add(name, extension, prettyname, shortcut, viewer,
-	                     editor, document);
+			     editor, document);
 	form_->formats().sort();
 
 	fileformatsModule->formatsLB->setUpdatesEnabled(false);
@@ -863,9 +863,9 @@ void QPrefsDialog::remove_format()
 		return;
 	string const current_text = form_->formats().get(nr).name();
 	if (form_->converters().formatIsUsed(current_text)) {
-		Alert::error(_("Format in use"),
-				_("Cannot remove a Format used by a Converter. "
-				      "Remove the converter first."));
+		Alert::error(lyx::to_utf8(_("Format in use")),
+			     lyx::to_utf8(_("Cannot remove a Format used by a Converter. "
+					    "Remove the converter first.")));
 		return;
 	}
 	form_->formats().erase(current_text);
@@ -933,11 +933,11 @@ void QPrefsDialog::select_dict()
 }
 
 
-// NB: the _() is OK here because it gets passed back and we toqstr() them
+// NB: the lyx::to_utf8(_() is OK here because it gets passed back and we toqstr()) them
 
 void QPrefsDialog::select_templatedir()
 {
-	string file(form_->controller().browsedir(fromqstr(pathsModule->templateDirED->text()), _("Select a document templates directory")));
+	string file(form_->controller().browsedir(fromqstr(pathsModule->templateDirED->text()), lyx::to_utf8(_("Select a document templates directory"))));
 	if (!file.empty())
 		pathsModule->templateDirED->setText(toqstr(file));
 }
@@ -945,7 +945,7 @@ void QPrefsDialog::select_templatedir()
 
 void QPrefsDialog::select_tempdir()
 {
-	string file(form_->controller().browsedir(fromqstr(pathsModule->tempDirED->text()), _("Select a temporary directory")));
+	string file(form_->controller().browsedir(fromqstr(pathsModule->tempDirED->text()), lyx::to_utf8(_("Select a temporary directory"))));
 	if (!file.empty())
 		pathsModule->tempDirED->setText(toqstr(file));
 }
@@ -953,7 +953,7 @@ void QPrefsDialog::select_tempdir()
 
 void QPrefsDialog::select_backupdir()
 {
-	string file(form_->controller().browsedir(fromqstr(pathsModule->backupDirED->text()), _("Select a backups directory")));
+	string file(form_->controller().browsedir(fromqstr(pathsModule->backupDirED->text()), lyx::to_utf8(_("Select a backups directory"))));
 	if (!file.empty())
 		pathsModule->backupDirED->setText(toqstr(file));
 }
@@ -961,7 +961,7 @@ void QPrefsDialog::select_backupdir()
 
 void QPrefsDialog::select_workingdir()
 {
-	string file(form_->controller().browsedir(fromqstr(pathsModule->workingDirED->text()), _("Select a document directory")));
+	string file(form_->controller().browsedir(fromqstr(pathsModule->workingDirED->text()), lyx::to_utf8(_("Select a document directory"))));
 	if (!file.empty())
 		pathsModule->workingDirED->setText(toqstr(file));
 }
@@ -969,7 +969,7 @@ void QPrefsDialog::select_workingdir()
 
 void QPrefsDialog::select_lyxpipe()
 {
-	string file(form_->controller().browse(fromqstr(pathsModule->lyxserverDirED->text()), _("Give a filename for the LyX server pipe")));
+	string file(form_->controller().browse(fromqstr(pathsModule->lyxserverDirED->text()), lyx::to_utf8(_("Give a filename for the LyX server pipe"))));
 	if (!file.empty())
 		pathsModule->lyxserverDirED->setText(toqstr(file));
 }

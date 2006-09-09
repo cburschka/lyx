@@ -59,12 +59,13 @@ void box_gui_tokens(vector<string> & ids, vector<string> & gui_names)
 	size_t const ids_size = sizeof(ids_) / sizeof(char *);
 	ids = vector<string>(ids_, ids_ + ids_size);
 	gui_names.clear();
-	gui_names.push_back(_("No frame drawn"));
-	gui_names.push_back(_("Rectangular box"));
-	gui_names.push_back(_("Oval box, thin"));
-	gui_names.push_back(_("Oval box, thick"));
-	gui_names.push_back(_("Shadow box"));
-	gui_names.push_back(_("Double box"));
+	// FIXME UNICODE
+	gui_names.push_back(lyx::to_utf8(_("No frame drawn")));
+	gui_names.push_back(lyx::to_utf8(_("Rectangular box")));
+	gui_names.push_back(lyx::to_utf8(_("Oval box, thin")));
+	gui_names.push_back(lyx::to_utf8(_("Oval box, thick")));
+	gui_names.push_back(lyx::to_utf8(_("Shadow box")));
+	gui_names.push_back(lyx::to_utf8(_("Double box")));
 }
 
 void box_gui_tokens_special_length(vector<string> & ids,
@@ -76,11 +77,12 @@ void box_gui_tokens_special_length(vector<string> & ids,
 	size_t const ids_size = sizeof(ids_) / sizeof(char *);
 	ids = vector<string>(ids_, ids_ + ids_size);
 	gui_names.clear();
-	gui_names.push_back(_("None"));
-	gui_names.push_back(_("Height"));
-	gui_names.push_back(_("Depth"));
-	gui_names.push_back(_("Total Height"));
-	gui_names.push_back(_("Width"));
+	// FIXME UNICODE
+	gui_names.push_back(lyx::to_utf8(_("None")));
+	gui_names.push_back(lyx::to_utf8(_("Height")));
+	gui_names.push_back(lyx::to_utf8(_("Depth")));
+	gui_names.push_back(lyx::to_utf8(_("Total Height")));
+	gui_names.push_back(lyx::to_utf8(_("Width")));
 }
 
 } // namespace frontend

@@ -35,9 +35,9 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-
+// FIXME UNICODE
 GCharacter::GCharacter(Dialog & parent)
-	: GViewCB<ControlCharacter, GViewGladeB>(parent, _("Text Style"), false)
+	: GViewCB<ControlCharacter, GViewGladeB>(parent, lyx::to_utf8(_("Text Style")), false)
 {}
 
 

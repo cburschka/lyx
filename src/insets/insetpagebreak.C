@@ -51,7 +51,7 @@ void InsetPagebreak::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetPagebreak::draw(PainterInfo & pi, int x, int y) const
 {
-	static std::string const label = _("Page Break");
+	static docstring const label = _("Page Break");
 
 	LyXFont font;
 	font.setColor(LColor::pagebreak);
@@ -60,13 +60,12 @@ void InsetPagebreak::draw(PainterInfo & pi, int x, int y) const
 	int w = 0;
 	int a = 0;
 	int d = 0;
-        docstring dlab(label.begin(), label.end());
-	font_metrics::rectText(dlab, font, w, a, d);
+	font_metrics::rectText(label, font, w, a, d);
 
 	int const text_start = int(x + (dim_.wid - w) / 2);
 	int const text_end = text_start + w;
 
-	pi.pain.rectText(text_start, y + d, dlab, font,
+	pi.pain.rectText(text_start, y + d, label, font,
 		LColor::none, LColor::none);
 
 	pi.pain.line(x, y, text_start, y,

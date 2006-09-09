@@ -31,8 +31,7 @@ namespace lyx {
 namespace frontend {
 
 GSpellchecker::GSpellchecker(Dialog & parent)
-	: GViewCB<ControlSpellchecker, GViewGladeB>
-		(parent, _("Spellchecker"), false)
+	: GViewCB<ControlSpellchecker, GViewGladeB>(parent, lyx::to_utf8(_("Spellchecker")), false)
 {}
 
 
@@ -133,7 +132,7 @@ void GSpellchecker::partialUpdate(int s)
 	int const progress = controller().getProgress();
 	if (progress != 0) {
 		progress_->set_fraction(float(progress)/100.0f);
-		progress_->set_text(convert<string>(progress) + "% " + _("checked"));
+		progress_->set_text(convert<string>(progress) + "% " + lyx::to_utf8(_("checked")));
 	}
 }
 

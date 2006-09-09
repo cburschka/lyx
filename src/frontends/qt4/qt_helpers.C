@@ -177,13 +177,13 @@ QChar const ucs4_to_qchar(char_type const & ucs4)
 
 QString const qt_(char const * str)
 {
-	return toqstr(_(str));
+	return toqstr(lyx::to_utf8(_(str)));
 }
 
 
 QString const qt_(string const & str)
 {
-	return toqstr(_(str));
+	return toqstr(lyx::to_utf8(_(str)));
 }
 
 

@@ -418,20 +418,20 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 			pp = textclasslist.addTextClass(classname, filepath);
 			if (pp.first) {
 				textclass = pp.second;
-			} else {	
+			} else {
 				textclass = 0;
 				return classname;
-			}	
+			}
 		}
 		// FIXME: isTeXClassAvailable will try to load the layout file, but will
 		// fail because of the lack of path info. Warnings will be given although
 		// the layout file will be correctly loaded later.
 		if (!getLyXTextClass().isTeXClassAvailable()) {
 			string const msg =
-				bformat(_("The document uses a missing "
-				"TeX class \"%1$s\".\n"), classname);
-			Alert::warning(_("Document class not available"),
-				       msg + _("LyX will not be able to produce output."));
+				bformat(lyx::to_utf8(_("The document uses a missing "
+						       "TeX class \"%1$s\".\n")), classname);
+			Alert::warning(lyx::to_utf8(_("Document class not available")),
+				       msg + lyx::to_utf8(_("LyX will not be able to produce output.")));
 		}
 	} else if (token == "\\begin_preamble") {
 		readPreamble(lex);
@@ -815,7 +815,7 @@ bool BufferParams::writeLaTeX(ostream & os, LaTeXFeatures & features,
 	// end of \documentclass defs
 
 	// font selection must be done before loading fontenc.sty
-	string const fonts = 
+	string const fonts =
 		loadFonts(features, fontsRoman, fontsSans,
 			  fontsTypewriter, fontsSC, fontsOSF,
 			  fontsSansScale, fontsTypewriterScale);
@@ -824,7 +824,7 @@ bool BufferParams::writeLaTeX(ostream & os, LaTeXFeatures & features,
 		texrow.newline();
 	}
 	if (fontsDefaultFamily != "default")
-		os << "\\renewcommand{\\familydefault}{\\" 
+		os << "\\renewcommand{\\familydefault}{\\"
 		   << fontsDefaultFamily << "}\n";
 	// this one is not per buffer
 	if (lyxrc.fontenc != "default") {

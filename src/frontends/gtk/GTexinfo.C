@@ -34,7 +34,7 @@ namespace frontend {
 
 
 GTexinfo::GTexinfo(Dialog & parent)
-	: GViewCB<ControlTexinfo, GViewGladeB>(parent, _("TeX Information"), false),
+	: GViewCB<ControlTexinfo, GViewGladeB>(parent, lyx::to_utf8(_("TeX Information")), false),
 	  activeStyle(ControlTexinfo::cls)
 {}
 
@@ -80,18 +80,18 @@ void GTexinfo::doBuild() {
 		sigc::mem_fun(*this, &GTexinfo::onTypeComboChanged));
 
 	Gtk::TreeModel::iterator row = typestore_->append();
-	(*row)[listCol_] = _("LaTeX classes");
+	(*row)[listCol_] = lyx::to_utf8(_("LaTeX classes"));
 	(*row)[listColIndex_] = ControlTexinfo::cls;
 	// This is the default selection
 	typecombo_->set_active(row);
 	activeStyle = ControlTexinfo::cls;
 
 	row = typestore_->append();
-	(*row)[listCol_] = _("LaTeX styles");
+	(*row)[listCol_] = lyx::to_utf8(_("LaTeX styles"));
 	(*row)[listColIndex_] = ControlTexinfo::sty;
 
 	row = typestore_->append();
-	(*row)[listCol_] = _("BibTeX styles");
+	(*row)[listCol_] = lyx::to_utf8(_("BibTeX styles"));
 	(*row)[listColIndex_] = ControlTexinfo::bst;
 
 	updateStyles();

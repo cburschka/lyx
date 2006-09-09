@@ -109,29 +109,37 @@ void ControlPrefs::updateScreenFonts()
 
 string const ControlPrefs::browsebind(string const & file) const
 {
-	return browseLibFile("bind", file, "bind", _("Choose bind file"),
-			  FileFilterList(_("LyX bind files (*.bind)")));
+	// FIXME UNICODE
+	return browseLibFile("bind", file, "bind",
+			     lyx::to_utf8(_("Choose bind file")),
+			     FileFilterList(lyx::to_utf8(_("LyX bind files (*.bind)"))));
 }
 
 
 string const ControlPrefs::browseUI(string const & file) const
 {
-	return browseLibFile("ui", file, "ui", _("Choose UI file"),
-			  FileFilterList(_("LyX UI files (*.ui)")));
+	// FIXME UNICODE
+	return browseLibFile("ui", file, "ui",
+			     lyx::to_utf8(_("Choose UI file")),
+			     FileFilterList(lyx::to_utf8(_("LyX UI files (*.ui)"))));
 }
 
 
 string const ControlPrefs::browsekbmap(string const & file) const
 {
-	return browseLibFile("kbd", file, "kmap", _("Choose keyboard map"),
-			  FileFilterList(_("LyX keyboard maps (*.kmap)")));
+	// FIXME UNICODE
+	return browseLibFile("kbd", file, "kmap",
+			     lyx::to_utf8(_("Choose keyboard map")),
+			     FileFilterList(lyx::to_utf8(_("LyX keyboard maps (*.kmap)"))));
 }
 
 
 string const ControlPrefs::browsedict(string const & file) const
 {
-	return browseFile(file, _("Choose personal dictionary"),
-			  FileFilterList(_("*.ispell")));
+	// FIXME UNICODE
+	return browseFile(file,
+			  lyx::to_utf8(_("Choose personal dictionary")),
+			  FileFilterList(lyx::to_utf8(_("*.ispell"))));
 }
 
 

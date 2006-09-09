@@ -93,7 +93,7 @@ bool operator<(Format const & a, Format const & b)
 
 Format::Format(string const & n, string const & e, string const & p,
 	       string const & s, string const & v, string const & ed,
-               bool d)
+	       bool d)
 	: name_(n), extension_(e), prettyname_(p), shortcut_(s), viewer_(v),
 	  editor_(ed), document_(d)
 {}
@@ -162,7 +162,7 @@ string Formats::getFormatFromFile(string const & filename) const
 
 namespace {
 
-string fixCommand(string const & cmd, string const & ext, 
+string fixCommand(string const & cmd, string const & ext,
 		  os::auto_open_mode mode)
 {
 	// configure.py says we do not want a viewer/editor
@@ -223,10 +223,10 @@ void Formats::add(string const & name, string const & extension,
 	if (it == formatlist.end())
 		formatlist.push_back(Format(name, extension, prettyname,
 					    shortcut, viewer, editor,
-		                            document));
+					    document));
 	else
 		*it = Format(name, extension, prettyname, shortcut, viewer,
-		             editor, document);
+			     editor, document);
 }
 
 
@@ -262,8 +262,8 @@ bool Formats::view(Buffer const & buffer, string const & filename,
 {
 	BOOST_ASSERT(absolutePath(filename));
 	if (filename.empty() || !fs::exists(filename)) {
-		Alert::error(_("Cannot view file"),
-			bformat(_("File does not exist: %1$s"),
+		Alert::error(lyx::to_utf8(_("Cannot view file")),
+			bformat(lyx::to_utf8(_("File does not exist: %1$s")),
 				filename));
 		return false;
 	}
@@ -275,8 +275,8 @@ bool Formats::view(Buffer const & buffer, string const & filename,
 	if (!format || format->viewer().empty()) {
 // FIXME: I believe this is the wrong place to show alerts, it should be done
 // by the caller (this should be "utility" code)
-		Alert::error(_("Cannot view file"),
-			bformat(_("No information for viewing %1$s"),
+		Alert::error(lyx::to_utf8(_("Cannot view file")),
+			bformat(lyx::to_utf8(_("No information for viewing %1$s")),
 				prettyName(format_name)));
 		return false;
 	}
@@ -285,8 +285,8 @@ bool Formats::view(Buffer const & buffer, string const & filename,
 		if (os::autoOpenFile(filename, os::VIEW))
 			return true;
 		else {
-			Alert::error(_("Cannot view file"),
-				bformat(_("Auto-view file %1$s failed"),
+			Alert::error(lyx::to_utf8(_("Cannot view file")),
+				bformat(lyx::to_utf8(_("Auto-view file %1$s failed")),
 					filename));
 			return false;
 		}
@@ -312,14 +312,14 @@ bool Formats::view(Buffer const & buffer, string const & filename,
 	command = subst(command, token_path, quoteName(onlyPath(filename)));
 	command = subst(command, token_socket, quoteName(lyxsocket->address()));
 	lyxerr[Debug::FILES] << "Executing command: " << command << std::endl;
-	buffer.message(_("Executing command: ") + command);
+	buffer.message(lyx::to_utf8(_("Executing command: ")) + command);
 
 	Systemcall one;
 	int const res = one.startscript(Systemcall::DontWait, command);
 
 	if (res) {
-		Alert::error(_("Cannot view file"),
-			     bformat(_("An error occurred whilst running %1$s"),
+		Alert::error(lyx::to_utf8(_("Cannot view file")),
+			     bformat(lyx::to_utf8(_("An error occurred whilst running %1$s")),
 			       makeDisplayPath(command, 50)));
 		return false;
 	}
@@ -332,8 +332,8 @@ bool Formats::edit(Buffer const & buffer, string const & filename,
 {
 	BOOST_ASSERT(absolutePath(filename));
 	if (filename.empty() || !fs::exists(filename)) {
-		Alert::error(_("Cannot edit file"),
-			bformat(_("File does not exist: %1$s"),
+		Alert::error(lyx::to_utf8(_("Cannot edit file")),
+			bformat(lyx::to_utf8(_("File does not exist: %1$s")),
 				filename));
 		return false;
 	}
@@ -345,8 +345,8 @@ bool Formats::edit(Buffer const & buffer, string const & filename,
 	if (!format || format->editor().empty()) {
 // FIXME: I believe this is the wrong place to show alerts, it should
 // be done by the caller (this should be "utility" code)
-		Alert::error(_("Cannot edit file"),
-			bformat(_("No information for editing %1$s"),
+		Alert::error(lyx::to_utf8(_("Cannot edit file")),
+			bformat(lyx::to_utf8(_("No information for editing %1$s")),
 				prettyName(format_name)));
 		return false;
 	}
@@ -355,8 +355,8 @@ bool Formats::edit(Buffer const & buffer, string const & filename,
 		if (os::autoOpenFile(filename, os::EDIT))
 			return true;
 		else {
-			Alert::error(_("Cannot edit file"),
-				bformat(_("Auto-edit file %1$s failed"),
+			Alert::error(lyx::to_utf8(_("Cannot edit file")),
+				bformat(lyx::to_utf8(_("Auto-edit file %1$s failed")),
 					filename));
 			return false;
 		}
@@ -371,14 +371,14 @@ bool Formats::edit(Buffer const & buffer, string const & filename,
 	command = subst(command, token_path, quoteName(onlyPath(filename)));
 	command = subst(command, token_socket, quoteName(lyxsocket->address()));
 	lyxerr[Debug::FILES] << "Executing command: " << command << std::endl;
-	buffer.message(_("Executing command: ") + command);
+	buffer.message(lyx::to_utf8(_("Executing command: ")) + command);
 
 	Systemcall one;
 	int const res = one.startscript(Systemcall::DontWait, command);
 
 	if (res) {
-		Alert::error(_("Cannot edit file"),
-			     bformat(_("An error occurred whilst running %1$s"),
+		Alert::error(lyx::to_utf8(_("Cannot edit file")),
+			     bformat(lyx::to_utf8(_("An error occurred whilst running %1$s")),
 			       makeDisplayPath(command, 50)));
 		return false;
 	}

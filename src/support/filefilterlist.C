@@ -101,9 +101,10 @@ FileFilterList::Filter::Filter(std::string const & description,
 
 FileFilterList::FileFilterList(string const & qt_style_filter)
 {
+	// FIXME UNICODE
 	string const filter = qt_style_filter
 		+ (qt_style_filter.empty() ? string() : ";;")
-		+ _("All files (*)");
+		+ lyx::to_utf8(_("All files (*)"));
 
 	// Split data such as "TeX documents (*.tex);;LyX Documents (*.lyx)"
 	// into individual filters.

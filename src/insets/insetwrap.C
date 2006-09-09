@@ -48,7 +48,8 @@ string floatname(string const & type, BufferParams const & bp)
 {
 	FloatList const & floats = bp.getLyXTextClass().floats();
 	FloatList::const_iterator it = floats[type];
-	return (it == floats.end()) ? type : _(it->second.name());
+	// FIXME UNICODE
+	return (it == floats.end()) ? type : lyx::to_utf8(_(it->second.name()));
 }
 
 } // namespace anon
@@ -57,7 +58,8 @@ string floatname(string const & type, BufferParams const & bp)
 InsetWrap::InsetWrap(BufferParams const & bp, string const & type)
 	: InsetCollapsable(bp)
 {
-	setLabel(_("wrap: ") + floatname(type, bp));
+	// FIXME UNICODE
+	setLabel(lyx::to_utf8(_("wrap: ")) + floatname(type, bp));
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
 	font.decSize();
@@ -186,7 +188,8 @@ auto_ptr<InsetBase> InsetWrap::doClone() const
 
 string const InsetWrap::editMessage() const
 {
-	return _("Opened Wrap Inset");
+	// FIXME UNICODE
+	return lyx::to_utf8(_("Opened Wrap Inset"));
 }
 
 

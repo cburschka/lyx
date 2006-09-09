@@ -31,7 +31,7 @@ namespace frontend {
 typedef QController<ControlSpellchecker, QView<QSpellcheckerDialog> > base_class;
 
 QSpellchecker::QSpellchecker(Dialog & parent)
-	: base_class(parent, _("Spellchecker"))
+	: base_class(parent, lyx::to_utf8(_("Spellchecker")))
 {}
 
 

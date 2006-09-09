@@ -159,7 +159,7 @@ ControlExternal::getTemplateFilters(string const & template_name) const
 string const ControlExternal::browse(string const & input,
 				     string const & template_name) const
 {
-	string const title =  _("Select external file");
+	string const title =  lyx::to_utf8(_("Select external file"));
 
 	string const bufpath = kernel().bufferFilepath();
 	FileFilterList const filter = 
@@ -247,7 +247,7 @@ vector<RotationDataType> const & all_origins()
 
 string const origin_gui_str(size_type i)
 {
-	return _(origin_gui_strs[i]);
+	return lyx::to_utf8(_(origin_gui_strs[i]));
 }
 
 } // namespace external

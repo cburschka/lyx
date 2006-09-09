@@ -30,7 +30,7 @@ namespace lyx {
 namespace frontend {
 
 GERT::GERT(Dialog & parent)
-	: GViewCB<ControlERT, GViewGladeB>(parent, _("TeX Settings"), false)
+	: GViewCB<ControlERT, GViewGladeB>(parent, lyx::to_utf8(_("TeX Settings")), false)
 {}
 
 

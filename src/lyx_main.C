@@ -120,9 +120,9 @@ void lyx_exit(int status)
 
 void showFileError(string const & error)
 {
-	Alert::warning(_("Could not read configuration file"),
-		   bformat(_("Error while reading the configuration file\n%1$s.\n"
-		     "Please check your installation."), error));
+	Alert::warning(lyx::to_utf8(_("Could not read configuration file")),
+		       bformat(lyx::to_utf8(_("Error while reading the configuration file\n%1$s.\n"
+					      "Please check your installation.")), error));
 }
 
 
@@ -130,11 +130,11 @@ void reconfigureUserLyXDir()
 {
 	string const configure_command = package().configure_command();
 
-	lyxerr << _("LyX: reconfiguring user directory") << endl;
+	lyxerr << lyx::to_utf8(_("LyX: reconfiguring user directory")) << endl;
 	Path p(package().user_support());
 	Systemcall one;
 	one.startscript(Systemcall::Wait, configure_command);
-	lyxerr << "LyX: " << _("Done!") << endl;
+	lyxerr << "LyX: " << lyx::to_utf8(_("Done!")) << endl;
 }
 
 } // namespace anon
@@ -233,7 +233,7 @@ int LyX::exec2(int & argc, char * argv[])
 	// other than documents
 	for (int argi = 1; argi < argc ; ++argi) {
 		if (argv[argi][0] == '-') {
-			lyxerr << bformat(_("Wrong command line option `%1$s'. Exiting."),
+			lyxerr << bformat(lyx::to_utf8(_("Wrong command line option `%1$s'. Exiting.")),
 				argv[argi]) << endl;
 			return EXIT_FAILURE;
 		}
@@ -341,7 +341,7 @@ int LyX::exec2(int & argc, char * argv[])
 		}
 		// create the main window
 		LyXView * view = lyx_gui::create_view(width, height, posx, posy, maximize);
-		
+
 		// load files
 		for_each(files.begin(), files.end(),
 			bind(&LyXView::loadLyXFile, view, _1, true));
@@ -468,7 +468,7 @@ static void error_handler(int err_sig)
 
 void LyX::printError(ErrorItem const & ei)
 {
-	std::cerr << _("LyX: ") << ei.error
+	std::cerr << lyx::to_utf8(_("LyX: ")) << ei.error
 		  << ':' << ei.description << std::endl;
 
 }
@@ -518,7 +518,7 @@ bool LyX::init()
 	if (!lyxrc.path_prefix.empty())
 		prependEnvPath("PATH", lyxrc.path_prefix);
 
-	// Check that user LyX directory is ok. 
+	// Check that user LyX directory is ok.
 	if (queryUserLyXDir(package().explicit_user_support()))
 		reconfigureUserLyXDir();
 
@@ -578,10 +578,10 @@ bool LyX::init()
 
 	package().temp_dir() = createLyXTmpDir(lyxrc.tempdir_path);
 	if (package().temp_dir().empty()) {
-		Alert::error(_("Could not create temporary directory"),
-			     bformat(_("Could not create a temporary directory in\n"
-				       "%1$s. Make sure that this\n"
-				       "path exists and is writable and try again."),
+		Alert::error(lyx::to_utf8(_("Could not create temporary directory")),
+			     bformat(lyx::to_utf8(_("Could not create a temporary directory in\n"
+						    "%1$s. Make sure that this\n"
+						    "path exists and is writable and try again.")),
 				     lyxrc.tempdir_path));
 		// createLyXTmpDir() tries sufficiently hard to create a
 		// usable temp dir, so the probability to come here is
@@ -703,7 +703,7 @@ bool needsUpdate(string const & file)
 		addName(package().user_support(), file);
 
 	return (! fs::exists(absfile))
-		|| (fs::last_write_time(configure_script) 
+		|| (fs::last_write_time(configure_script)
 		    > fs::last_write_time(absfile));
 }
 
@@ -716,9 +716,9 @@ bool LyX::queryUserLyXDir(bool explicit_userdir)
 	if (fs::exists(package().user_support()) &&
 	    fs::is_directory(package().user_support())) {
 		first_start = false;
-		
-		return needsUpdate("lyxrc.defaults") 
-			|| needsUpdate("textclass.lst") 
+
+		return needsUpdate("lyxrc.defaults")
+			|| needsUpdate("textclass.lst")
 			|| needsUpdate("packages.lst");
 	}
 
@@ -728,25 +728,25 @@ bool LyX::queryUserLyXDir(bool explicit_userdir)
 	// to create it. If the user says "no", then exit.
 	if (explicit_userdir &&
 	    Alert::prompt(
-		    _("Missing user LyX directory"),
-		    bformat(_("You have specified a non-existent user "
-			      "LyX directory, %1$s.\n"
-			      "It is needed to keep your own configuration."),
+		    lyx::to_utf8(_("Missing user LyX directory")),
+		    bformat(lyx::to_utf8(_("You have specified a non-existent user "
+					   "LyX directory, %1$s.\n"
+					   "It is needed to keep your own configuration.")),
 			    package().user_support()),
 		    1, 0,
-		    _("&Create directory"),
-		    _("&Exit LyX"))) {
-		lyxerr << _("No user LyX directory. Exiting.") << endl;
+		    lyx::to_utf8(_("&Create directory")),
+		    lyx::to_utf8(_("&Exit LyX")))) {
+		lyxerr << lyx::to_utf8(_("No user LyX directory. Exiting.")) << endl;
 		lyx_exit(EXIT_FAILURE);
 	}
 
-	lyxerr << bformat(_("LyX: Creating directory %1$s"),
+	lyxerr << bformat(lyx::to_utf8(_("LyX: Creating directory %1$s")),
 			  package().user_support())
 	       << endl;
 
 	if (!createDirectory(package().user_support(), 0755)) {
 		// Failed, so let's exit.
-		lyxerr << _("Failed to create directory. Exiting.")
+		lyxerr << lyx::to_utf8(_("Failed to create directory. Exiting."))
 		       << endl;
 		lyx_exit(EXIT_FAILURE);
 	}
@@ -902,11 +902,11 @@ typedef boost::function<int(string const &, string const &)> cmd_helper;
 int parse_dbg(string const & arg, string const &)
 {
 	if (arg.empty()) {
-		lyxerr << _("List of supported debug flags:") << endl;
+		lyxerr << lyx::to_utf8(_("List of supported debug flags:")) << endl;
 		Debug::showTags(lyxerr);
 		exit(0);
 	}
-	lyxerr << bformat(_("Setting debug level to %1$s"), arg) << endl;
+	lyxerr << bformat(lyx::to_utf8(_("Setting debug level to %1$s")), arg) << endl;
 
 	lyxerr.level(Debug::value(arg));
 	Debug::showLevel(lyxerr, lyxerr.level());
@@ -917,7 +917,7 @@ int parse_dbg(string const & arg, string const &)
 int parse_help(string const &, string const &)
 {
 	lyxerr <<
-		_("Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
+		lyx::to_utf8(_("Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 		  "Command line switches (case sensitive):\n"
 		  "\t-help              summarize LyX usage\n"
 		  "\t-userdir dir       set user directory to dir\n"
@@ -934,7 +934,7 @@ int parse_help(string const &, string const &)
 		  "                  where fmt is the import format of choice\n"
 		  "                  and file.xxx is the file to be imported.\n"
 		  "\t-version        summarize version and build info\n"
-		  "Check the LyX man page for more details.") << endl;
+			       "Check the LyX man page for more details.")) << endl;
 	exit(0);
 	return 0;
 }
@@ -953,7 +953,7 @@ int parse_version(string const &, string const &)
 int parse_sysdir(string const & arg, string const &)
 {
 	if (arg.empty()) {
-		lyxerr << _("Missing directory for -sysdir switch") << endl;
+		lyxerr << lyx::to_utf8(_("Missing directory for -sysdir switch")) << endl;
 		exit(1);
 	}
 	cl_system_support = arg;
@@ -963,7 +963,7 @@ int parse_sysdir(string const & arg, string const &)
 int parse_userdir(string const & arg, string const &)
 {
 	if (arg.empty()) {
-		lyxerr << _("Missing directory for -userdir switch") << endl;
+		lyxerr << lyx::to_utf8(_("Missing directory for -userdir switch")) << endl;
 		exit(1);
 	}
 	cl_user_support = arg;
@@ -973,7 +973,7 @@ int parse_userdir(string const & arg, string const &)
 int parse_execute(string const & arg, string const &)
 {
 	if (arg.empty()) {
-		lyxerr << _("Missing command string after --execute switch") << endl;
+		lyxerr << lyx::to_utf8(_("Missing command string after --execute switch")) << endl;
 		exit(1);
 	}
 	batch = arg;
@@ -983,8 +983,8 @@ int parse_execute(string const & arg, string const &)
 int parse_export(string const & type, string const &)
 {
 	if (type.empty()) {
-		lyxerr << _("Missing file type [eg latex, ps...] after "
-			"--export switch") << endl;
+		lyxerr << lyx::to_utf8(_("Missing file type [eg latex, ps...] after "
+					 "--export switch")) << endl;
 		exit(1);
 	}
 	batch = "buffer-export " + type;
@@ -995,12 +995,12 @@ int parse_export(string const & type, string const &)
 int parse_import(string const & type, string const & file)
 {
 	if (type.empty()) {
-		lyxerr << _("Missing file type [eg latex, ps...] after "
-			"--import switch") << endl;
+		lyxerr << lyx::to_utf8(_("Missing file type [eg latex, ps...] after "
+					 "--import switch")) << endl;
 		exit(1);
 	}
 	if (file.empty()) {
-		lyxerr << _("Missing filename for --import") << endl;
+		lyxerr << lyx::to_utf8(_("Missing filename for --import")) << endl;
 		exit(1);
 	}
 

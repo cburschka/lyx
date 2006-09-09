@@ -41,7 +41,7 @@ namespace {
 
 
 GParagraph::GParagraph(Dialog & parent)
-	: GViewCB<ControlParagraph, GViewGladeB>(parent, _("Paragraph Settings"), false)
+	: GViewCB<ControlParagraph, GViewGladeB>(parent, lyx::to_utf8(_("Paragraph Settings")), false)
 {}
 
 void GParagraph::doBuild()
@@ -96,7 +96,7 @@ void GParagraph::update()
 	string const labelwidth = controller().params().labelWidthString();
 	maxlabelwidthentry_->set_text(labelwidth);
 	maxlabelwidthentry_->set_sensitive(
-		labelwidth != _("Senseless with this layout!"));
+		labelwidth != lyx::to_utf8(_("Senseless with this layout!")));
 
 	// alignment
 	LyXAlignment const current_alignment = controller().params().align();

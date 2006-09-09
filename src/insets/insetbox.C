@@ -42,7 +42,8 @@ namespace {
 
 typedef Translator<std::string, InsetBox::BoxType> BoxTranslator;
 
-BoxTranslator const init_boxtranslator() {
+BoxTranslator const init_boxtranslator()
+{
 	BoxTranslator translator("Boxed", InsetBox::Boxed);
 	translator.addPair("Frameless", InsetBox::Frameless);
 	translator.addPair("ovalbox", InsetBox::ovalbox);
@@ -53,24 +54,28 @@ BoxTranslator const init_boxtranslator() {
 }
 
 
-BoxTranslator const init_boxtranslator_loc() {
-	BoxTranslator translator(_("Boxed"), InsetBox::Boxed);
-	translator.addPair(_("Frameless"), InsetBox::Frameless);
-	translator.addPair(_("ovalbox"), InsetBox::ovalbox);
-	translator.addPair(_("Ovalbox"), InsetBox::Ovalbox);
-	translator.addPair(_("Shadowbox"), InsetBox::Shadowbox);
-	translator.addPair(_("Doublebox"), InsetBox::Doublebox);
+BoxTranslator const init_boxtranslator_loc()
+{
+	// FIXME UNICODE
+	BoxTranslator translator(lyx::to_utf8(_("Boxed")), InsetBox::Boxed);
+	translator.addPair(lyx::to_utf8(_("Frameless")), InsetBox::Frameless);
+	translator.addPair(lyx::to_utf8(_("ovalbox")), InsetBox::ovalbox);
+	translator.addPair(lyx::to_utf8(_("Ovalbox")), InsetBox::Ovalbox);
+	translator.addPair(lyx::to_utf8(_("Shadowbox")), InsetBox::Shadowbox);
+	translator.addPair(lyx::to_utf8(_("Doublebox")), InsetBox::Doublebox);
 	return translator;
 }
 
 
-BoxTranslator const & boxtranslator() {
+BoxTranslator const & boxtranslator()
+{
 	static BoxTranslator translator = init_boxtranslator();
 	return translator;
 }
 
 
-BoxTranslator const & boxtranslator_loc() {
+BoxTranslator const & boxtranslator_loc()
+{
 	static BoxTranslator translator = init_boxtranslator_loc();
 	return translator;
 }
@@ -113,7 +118,7 @@ auto_ptr<InsetBase> InsetBox::doClone() const
 
 string const InsetBox::editMessage() const
 {
-	return _("Opened Box Inset");
+	return lyx::to_utf8(_("Opened Box Inset"));
 }
 
 
@@ -139,13 +144,21 @@ void InsetBox::setButtonLabel()
 	font.decSize();
 
 	BoxType btype = boxtranslator().find(params_.type);
+
+	string label;
+	// FIXME UNICODE
+	label += lyx::to_utf8(_("Box"));
+	label += " (";
 	if (btype == Frameless) {
 		if (params_.use_parbox)
-			setLabel(_("Box") + " (" + _("Parbox") + ")");
+			label += lyx::to_utf8(_("Parbox"));
 		else
-			setLabel(_("Box") + " (" + _("Minipage") + ")");
+			label += lyx::to_utf8(_("Minipage"));
 	} else
-		setLabel(_("Box") + " (" + boxtranslator_loc().find(btype) + ")");
+		label += boxtranslator_loc().find(btype);
+	label += ")";
+
+	setLabel(label);
 
 	font.setColor(LColor::foreground);
 	setBackgroundColor(LColor::background);

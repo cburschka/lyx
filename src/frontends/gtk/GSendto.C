@@ -33,7 +33,7 @@ namespace lyx {
 namespace frontend {
 
 GSendto::GSendto(Dialog & parent)
-	: GViewCB<ControlSendto, GViewGladeB>(parent, _("Send document to command"), false)
+	: GViewCB<ControlSendto, GViewGladeB>(parent, lyx::to_utf8(_("Send document to command")), false)
 {}
 
 

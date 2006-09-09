@@ -32,7 +32,8 @@ using std::ostream;
 InsetFoot::InsetFoot(BufferParams const & bp)
 	: InsetFootlike(bp)
 {
-	setLabel(_("foot"));
+	// FIXME UNICODE
+	setLabel(lyx::to_utf8(_("foot")));
 	setInsetName("Foot");
 }
 
@@ -40,7 +41,8 @@ InsetFoot::InsetFoot(BufferParams const & bp)
 InsetFoot::InsetFoot(InsetFoot const & in)
 	: InsetFootlike(in)
 {
-	setLabel(_("foot"));
+	// FIXME UNICODE
+	setLabel(lyx::to_utf8(_("foot")));
 	setInsetName("Foot");
 }
 
@@ -53,7 +55,8 @@ auto_ptr<InsetBase> InsetFoot::doClone() const
 
 string const InsetFoot::editMessage() const
 {
-	return _("Opened Footnote Inset");
+	// FIXME UNICODE
+	return lyx::to_utf8(_("Opened Footnote Inset"));
 }
 
 

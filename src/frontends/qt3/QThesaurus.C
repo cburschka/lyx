@@ -26,7 +26,7 @@ namespace frontend {
 typedef QController<ControlThesaurus, QView<QThesaurusDialog> > base_class;
 
 QThesaurus::QThesaurus(Dialog & parent)
-	: base_class(parent, _("Thesaurus"))
+	: base_class(parent, lyx::to_utf8(_("Thesaurus")))
 {
 }
 

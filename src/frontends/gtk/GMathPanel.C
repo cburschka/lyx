@@ -104,7 +104,7 @@ GXpmBtnTbl::XpmData xpmDown[] =
 
 
 GMathPanel::GMathPanel(Dialog & parent)
-	: GViewCB<ControlMath, GViewGladeB>(parent, _("Math Panel")),
+	: GViewCB<ControlMath, GViewGladeB>(parent, lyx::to_utf8(_("Math Panel"))),
 	  tableUp_(2, 5, xpmUp), tableDown_(4, 3, xpmDown)
 {
 }

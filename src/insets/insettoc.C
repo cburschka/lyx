@@ -38,9 +38,10 @@ std::auto_ptr<InsetBase> InsetTOC::doClone() const
 
 string const InsetTOC::getScreenLabel(Buffer const &) const
 {
+	// FIXME UNICODE
 	if (getCmdName() == "tableofcontents")
-		return _("Table of Contents");
-	return _("Unknown toc list");
+		return lyx::to_utf8(_("Table of Contents"));
+	return lyx::to_utf8(_("Unknown toc list"));
 }
 
 

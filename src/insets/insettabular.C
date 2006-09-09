@@ -279,7 +279,7 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 			tabular.setWidthOfCell(cell, dim.wid);
 			if (p_width.zero()) {
 				m.base.textwidth = dim.wid + 2 * ADD_TO_TABULAR_WIDTH;
-				// FIXME there must be a way to get rid of 
+				// FIXME there must be a way to get rid of
 				// the second metrics call
 				tabular.getCellInset(cell)->metrics(m, dim);
 			}
@@ -451,7 +451,8 @@ void InsetTabular::drawCellLines(Painter & pain, int x, int y,
 
 string const InsetTabular::editMessage() const
 {
-	return _("Opened table");
+	// FIXME UNICODE
+	return lyx::to_utf8(_("Opened table"));
 }
 
 
@@ -494,7 +495,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_MOUSE_PRESS:
 		//lyxerr << "# InsetTabular::MousePress\n" << cur.bv().cursor() << endl;
 
-		if (cmd.button() == mouse_button::button1 
+		if (cmd.button() == mouse_button::button1
 		    || cmd.button() == mouse_button::button3) {
 			cur.selection() = false;
 			setCursorFromCoordinates(cur, cmd.x, cmd.y);
@@ -979,11 +980,11 @@ bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
 		case LyXTabular::SET_LTNEWPAGE:
 			status.setOnOff(tabular.getLTNewPage(sel_row_start));
 			break;
-			
+
 		case LyXTabular::SET_BOOKTABS:
 			status.setOnOff(tabular.useBookTabs());
 			break;
-			
+
 		case LyXTabular::UNSET_BOOKTABS:
 			status.setOnOff(!tabular.useBookTabs());
 			break;
@@ -1163,7 +1164,7 @@ int InsetTabular::dist(idx_type const cell, int x, int y) const
 	int const xend = xbeg + tabular.getWidthOfColumn(cell);
 	row_type const row = tabular.row_of_cell(cell);
 	int const ybeg = o.y_ - tabular.getAscentOfRow(row) -
-	                 tabular.getAdditionalHeight(row);
+			 tabular.getAdditionalHeight(row);
 	int const yend = o.y_ + tabular.getDescentOfRow(row);
 
 	if (x < xbeg)
@@ -1557,8 +1558,9 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 #ifdef WITH_WARNINGS
 #warning Need I say it ? This is horrible.
 #endif
-			Alert::error(_("Error setting multicolumn"),
-				   _("You cannot set multicolumn vertically."));
+			// FIXME UNICODE
+			Alert::error(lyx::to_utf8(_("Error setting multicolumn")),
+				     lyx::to_utf8(_("You cannot set multicolumn vertically.")));
 			return;
 		}
 		if (!cur.selection()) {

@@ -60,8 +60,9 @@ void rescanTexStyles()
 			quoteName(command));
 	if (status == 0)
 		return;
-	Alert::error(_("Could not update TeX information"),
-	             bformat(_("The script `%s' failed."), command));
+	// FIXME UNICODE
+	Alert::error(lyx::to_utf8(_("Could not update TeX information")),
+		     bformat(lyx::to_utf8(_("The script `%s' failed.")), command));
 }
 
 

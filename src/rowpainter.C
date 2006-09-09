@@ -457,7 +457,7 @@ int RowPainter::paintAppendixStart(int y)
 	pb_font.setColor(LColor::appendix);
 	pb_font.decSize();
 
-	string const label = _("Appendix");
+	string const label = lyx::to_utf8(_("Appendix"));
 	int w = 0;
 	int a = 0;
 	int d = 0;

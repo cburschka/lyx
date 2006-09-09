@@ -38,7 +38,7 @@ using support::contains;
 namespace frontend {
 
 GFloat::GFloat(Dialog & parent)
-	: GViewCB<ControlFloat, GViewGladeB>(parent, _("Float Settings"), false)
+	: GViewCB<ControlFloat, GViewGladeB>(parent, lyx::to_utf8(_("Float Settings")), false)
 {}
 
 

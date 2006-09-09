@@ -203,14 +203,14 @@ ISpell::ISpell(BufferParams const & params, string const & lang)
 	// This is what happens when goto gets banned.
 
 	if (pipe(pipein) == -1) {
-		error_ = _("Can't create pipe for spellchecker.");
+		error_ = lyx::to_utf8(_("Can't create pipe for spellchecker."));
 		return;
 	}
 
 	if (pipe(pipeout) == -1) {
 		close(pipein[0]);
 		close(pipein[1]);
-		error_ = _("Can't create pipe for spellchecker.");
+		error_ = lyx::to_utf8(_("Can't create pipe for spellchecker."));
 		return;
 	}
 
@@ -219,22 +219,22 @@ ISpell::ISpell(BufferParams const & params, string const & lang)
 		close(pipein[1]);
 		close(pipeout[0]);
 		close(pipeout[1]);
-		error_ = _("Can't create pipe for spellchecker.");
+		error_ = lyx::to_utf8(_("Can't create pipe for spellchecker."));
 		return;
 	}
 
 	if ((out = fdopen(pipein[1], "w")) == 0) {
-		error_ = _("Can't open pipe for spellchecker.");
+		error_ = lyx::to_utf8(_("Can't open pipe for spellchecker."));
 		return;
 	}
 
 	if ((in = fdopen(pipeout[0], "r")) == 0) {
-		error_ = _("Can't open pipe for spellchecker.");
+		error_ = lyx::to_utf8(_("Can't open pipe for spellchecker."));
 		return;
 	}
 
 	if ((inerr = fdopen(pipeerr[0], "r")) == 0) {
-		error_ = _("Can't open pipe for spellchecker.");
+		error_ = lyx::to_utf8(_("Can't open pipe for spellchecker."));
 		return;
 	}
 
@@ -243,8 +243,8 @@ ISpell::ISpell(BufferParams const & params, string const & lang)
 	LaunchIspell * li = new LaunchIspell(params, lang, pipein, pipeout, pipeerr);
 	child_.reset(li);
 	if (li->start() == -1) {
-		error_ = _("Could not create an ispell process.\nYou may not have "
-			"the right languages installed.");
+		error_ = lyx::to_utf8(_("Could not create an ispell process.\nYou may not have "
+					"the right languages installed."));
 		child_.reset(0);
 		return;
 	}
@@ -265,8 +265,8 @@ ISpell::ISpell(BufferParams const & params, string const & lang)
 		error_ = buf;
 	} else {
 		// select returned error
-		error_ = _("The ispell process returned an error.\nPerhaps "
-				"it has been configured wrongly ?");
+		error_ = lyx::to_utf8(_("The ispell process returned an error.\nPerhaps "
+					"it has been configured wrongly ?"));
 	}
 
 	close(pipein[0]);
@@ -374,7 +374,7 @@ enum ISpell::Result ISpell::check(WordLangTuple const & word)
 	bool error = select(err_read);
 
 	if (error) {
-		error_ = _("Could not communicate with the ispell spellchecker process.");
+		error_ = lyx::to_utf8(_("Could not communicate with the ispell spellchecker process."));
 		return UNKNOWN_WORD;
 	}
 

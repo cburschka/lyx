@@ -110,10 +110,10 @@ bool menuWrite(Buffer * buffer)
 
 	string const file = makeDisplayPath(buffer->fileName(), 30);
 
-	string text = bformat(_("The document %1$s could not be saved.\n\n"
-		"Do you want to rename the document and try again?"), file);
-	int const ret = Alert::prompt(_("Rename and save?"),
-		text, 0, 1, _("&Rename"), _("&Cancel"));
+	string text = bformat(lyx::to_utf8(_("The document %1$s could not be saved.\n\n"
+					     "Do you want to rename the document and try again?")), file);
+	int const ret = Alert::prompt(lyx::to_utf8(_("Rename and save?")),
+		text, 0, 1, lyx::to_utf8(_("&Rename")), lyx::to_utf8(_("&Cancel")));
 
 	if (ret == 0)
 		return writeAs(buffer);
@@ -129,17 +129,17 @@ bool writeAs(Buffer * buffer, string const & filename)
 
 	if (filename.empty()) {
 
-		FileDialog fileDlg(_("Choose a filename to save document as"),
+		FileDialog fileDlg(lyx::to_utf8(_("Choose a filename to save document as")),
 			LFUN_BUFFER_WRITE_AS,
-			make_pair(string(_("Documents|#o#O")),
+			make_pair(string(lyx::to_utf8(_("Documents|#o#O"))),
 				  string(lyxrc.document_path)),
-			make_pair(string(_("Templates|#T#t")),
+			make_pair(string(lyx::to_utf8(_("Templates|#T#t"))),
 				  string(lyxrc.template_path)));
 
 		if (!isLyXFilename(fname))
 			fname += ".lyx";
 
-		FileFilterList const filter (_("LyX Documents (*.lyx)"));
+		FileFilterList const filter (lyx::to_utf8(_("LyX Documents (*.lyx)")));
 
 		FileDialog::Result result =
 			fileDlg.save(onlyPath(fname),
@@ -163,10 +163,10 @@ bool writeAs(Buffer * buffer, string const & filename)
 
 	if (fs::exists(fname)) {
 		string const file = makeDisplayPath(fname, 30);
-		string text = bformat(_("The document %1$s already exists.\n\n"
-			"Do you want to over-write that document?"), file);
-		int const ret = Alert::prompt(_("Over-write document?"),
-			text, 0, 1, _("&Over-write"), _("&Cancel"));
+		string text = bformat(lyx::to_utf8(_("The document %1$s already exists.\n\n"
+						     "Do you want to over-write that document?")), file);
+		int const ret = Alert::prompt(lyx::to_utf8(_("Over-write document?")),
+			text, 0, 1, lyx::to_utf8(_("&Over-write")), lyx::to_utf8(_("&Cancel")));
 
 		if (ret == 1)
 			return false;
@@ -212,9 +212,9 @@ void quitLyX(bool noask)
 
 	if (!destroyDir(package().temp_dir())) {
 		string const msg =
-			bformat(_("Unable to remove the temporary directory %1$s"),
+			bformat(lyx::to_utf8(_("Unable to remove the temporary directory %1$s")),
 			package().temp_dir());
-		Alert::warning(_("Unable to remove temporary directory"), msg);
+		Alert::warning(lyx::to_utf8(_("Unable to remove temporary directory")), msg);
 	}
 
 	lyx_gui::exit(0);
@@ -246,7 +246,7 @@ private:
 
 int AutoSaveBuffer::start()
 {
-	command_ = bformat(_("Auto-saving %1$s"), fname_);
+	command_ = bformat(lyx::to_utf8(_("Auto-saving %1$s")), fname_);
 	return run(DontWait);
 }
 
@@ -286,7 +286,7 @@ int AutoSaveBuffer::generateChild()
 				// but safe in the parent, so...
 				if (pid == -1)
 					// emit message signal.
-					bv_.buffer()->message(_("Autosave failed!"));
+					bv_.buffer()->message(lyx::to_utf8(_("Autosave failed!")));
 			}
 		}
 		if (pid == 0) { // we are the child so...
@@ -313,7 +313,7 @@ void autoSave(BufferView * bv)
 	}
 
 	// emit message signal.
-	bv->buffer()->message(_("Autosaving current document..."));
+	bv->buffer()->message(lyx::to_utf8(_("Autosaving current document...")));
 
 	// create autosave filename
 	string fname = bv->buffer()->filePath();
@@ -379,7 +379,7 @@ string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagrap
 	string fname = f;
 
 	if (fname.empty()) {
-		FileDialog fileDlg(_("Select file to insert"),
+		FileDialog fileDlg(lyx::to_utf8(_("Select file to insert")),
 			(asParagraph) ? LFUN_FILE_INSERT_ASCII_PARA : LFUN_FILE_INSERT_ASCII);
 
 		FileDialog::Result result =
@@ -398,9 +398,9 @@ string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagrap
 	if (!fs::is_readable(fname)) {
 		string const error = strerror(errno);
 		string const file = makeDisplayPath(fname, 50);
-		string const text = bformat(_("Could not read the specified document\n"
-			"%1$s\ndue to the error: %2$s"), file, error);
-		Alert::error(_("Could not read file"), text);
+		string const text = bformat(lyx::to_utf8(_("Could not read the specified document\n"
+							   "%1$s\ndue to the error: %2$s")), file, error);
+		Alert::error(lyx::to_utf8(_("Could not read file")), text);
 		return string();
 	}
 
@@ -408,9 +408,9 @@ string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagrap
 	if (!ifs) {
 		string const error = strerror(errno);
 		string const file = makeDisplayPath(fname, 50);
-		string const text = bformat(_("Could not open the specified document\n"
-			"%1$s\ndue to the error: %2$s"), file, error);
-		Alert::error(_("Could not open file"), text);
+		string const text = bformat(lyx::to_utf8(_("Could not open the specified document\n"
+							   "%1$s\ndue to the error: %2$s")), file, error);
+		Alert::error(lyx::to_utf8(_("Could not open file")), text);
 		return string();
 	}
 
@@ -440,7 +440,7 @@ string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagrap
 void reconfigure(BufferView * bv)
 {
 	// emit message signal.
-	bv->buffer()->message(_("Running configure..."));
+	bv->buffer()->message(lyx::to_utf8(_("Running configure...")));
 
 	// Run configure in user lyx directory
 	Path p(package().user_support());
@@ -449,13 +449,13 @@ void reconfigure(BufferView * bv)
 	one.startscript(Systemcall::Wait, configure_command);
 	p.pop();
 	// emit message signal.
-	bv->buffer()->message(_("Reloading configuration..."));
+	bv->buffer()->message(lyx::to_utf8(_("Reloading configuration...")));
 	lyxrc.read(libFileSearch(string(), "lyxrc.defaults"));
 	// Re-read packages.lst
 	LaTeXFeatures::getAvailable();
 
-	Alert::information(_("System reconfigured"),
-		_("The system has been reconfigured.\n"
-		"You need to restart LyX to make use of any\n"
-		"updated document class specifications."));
+	Alert::information(lyx::to_utf8(_("System reconfigured")),
+			   lyx::to_utf8(_("The system has been reconfigured.\n"
+					  "You need to restart LyX to make use of any\n"
+					  "updated document class specifications.")));
 }

@@ -53,6 +53,7 @@
 
 #include <sstream>
 
+using lyx::docstring;
 using lyx::support::addName;
 using lyx::support::absolutePath;
 using lyx::support::bformat;
@@ -277,23 +278,32 @@ void InsetInclude::read(LyXLex & lex)
 
 string const InsetInclude::getScreenLabel(Buffer const &) const
 {
-	string temp;
+	docstring temp;
 
 	switch (type(params_)) {
-		case INPUT: temp += _("Input"); break;
-		case VERB: temp += _("Verbatim Input"); break;
-		case VERBAST: temp += _("Verbatim Input*"); break;
-		case INCLUDE: temp += _("Include"); break;
+		case INPUT:
+			temp += _("Input");
+			break;
+		case VERB:
+			temp += _("Verbatim Input");
+			break;
+		case VERBAST:
+			temp += _("Verbatim Input*");
+			break;
+		case INCLUDE:
+			temp += _("Include");
+			break;
 	}
 
-	temp += ": ";
+	temp += lyx::from_ascii(": ");
 
 	if (params_.getContents().empty())
-		temp += "???";
+		temp += lyx::from_ascii("???");
 	else
-		temp += onlyFilename(params_.getContents());
+		temp += lyx::from_ascii(onlyFilename(params_.getContents()));
 
-	return temp;
+	// FIXME UNICODE
+	return lyx::to_utf8(temp);
 }
 
 
@@ -379,13 +389,14 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 		Buffer * tmp = bufferlist.getBuffer(included_file);
 
 		if (tmp->params().textclass != m_buffer->params().textclass) {
-			string text = bformat(_("Included file `%1$s'\n"
+			// FIXME UNICODE
+			string text = bformat(lyx::to_utf8(_("Included file `%1$s'\n"
 						"has textclass `%2$s'\n"
-						"while parent file has textclass `%3$s'."),
+							     "while parent file has textclass `%3$s'.")),
 					      makeDisplayPath(included_file),
 					      tmp->params().getLyXTextClass().name(),
 					      m_buffer->params().getLyXTextClass().name());
-			Alert::warning(_("Different textclasses"), text);
+			Alert::warning(lyx::to_utf8(_("Different textclasses")), text);
 			//return 0;
 		}
 
@@ -410,9 +421,10 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 
 		if (checksum_in != checksum_out) {
 			if (!copy(included_file, writefile)) {
+				// FIXME UNICODE
 				lyxerr[Debug::LATEX]
-					<< bformat(_("Could not copy the file\n%1$s\n"
-						     "into the temporary directory."),
+					<< bformat(lyx::to_utf8(_("Could not copy the file\n%1$s\n"
+								  "into the temporary directory.")),
 						   included_file)
 					<< endl;
 				return 0;

@@ -152,10 +152,10 @@ void asciiParagraph(Buffer const & buf,
 
 	case 6: // Abstract
 		if (runparams.linelen > 0) {
-			os << _("Abstract") << "\n\n";
+			os << lyx::to_utf8(_("Abstract")) << "\n\n";
 			currlinelen = 0;
 		} else {
-			string const abst = _("Abstract: ");
+			string const abst = lyx::to_utf8(_("Abstract: "));
 			os << abst;
 			currlinelen += abst.length();
 		}
@@ -164,10 +164,10 @@ void asciiParagraph(Buffer const & buf,
 	case 7: // Bibliography
 		if (!ref_printed) {
 			if (runparams.linelen > 0) {
-				os << _("References") << "\n\n";
+				os << lyx::to_utf8(_("References")) << "\n\n";
 				currlinelen = 0;
 			} else {
-				string const refs = _("References: ");
+				string const refs = lyx::to_utf8(_("References: "));
 				os << refs;
 				currlinelen += refs.length();
 			}

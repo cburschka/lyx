@@ -323,11 +323,11 @@ void LyXView::updateWindowTitle()
 			maximize_title += ": " + makeDisplayPath(cur_title, 30);
 			minimize_title = onlyFilename(cur_title);
 			if (!buffer()->isClean()) {
-				maximize_title += _(" (changed)");
+				maximize_title += lyx::to_utf8(_(" (changed)"));
 				minimize_title += '*';
 			}
 			if (buffer()->isReadonly())
-				maximize_title += _(" (read only)");
+				maximize_title += lyx::to_utf8(_(" (read only)"));
 		}
 	}
 

@@ -77,7 +77,8 @@ void InsetCaption::read(Buffer const & buf, LyXLex & lex)
 
 string const InsetCaption::editMessage() const
 {
-	return _("Opened Caption Inset");
+	// FIXME UNICODE
+	return lyx::to_utf8(_("Opened Caption Inset"));
 }
 
 
@@ -93,7 +94,7 @@ void InsetCaption::setLabel(LCursor & cur) const
 {
 	// Set caption label _only_ if the cursor is in _this_ float:
 	if (cur.top().text() == &text_) {
-		string s; 
+		string s;
 		size_t i = cur.depth();
 			while (i > 0) {
 				--i;
@@ -109,11 +110,11 @@ void InsetCaption::setLabel(LCursor & cur) const
 		string num;
 		if (s.empty())
 			s = "Senseless";
-		else 
+		else
 			num = convert<string>(counter_);
 
 		// Generate the label
-		label = bformat("%1$s %2$s:", _(s), num);
+		label = bformat("%1$s %2$s:", lyx::to_utf8(_(s)), num);
 	}
 }
 
@@ -123,7 +124,7 @@ void InsetCaption::metrics(MetricsInfo & mi, Dimension & dim) const
 	mi.base.textwidth -= 2 * TEXT_TO_INSET_OFFSET;
 	LCursor cur = mi.base.bv->cursor();
 	setLabel(cur);
-        docstring dlab(label.begin(), label.end());
+	docstring dlab(label.begin(), label.end());
 	labelwidth_ = font_metrics::width(dlab, mi.base.font);
 	dim.wid = labelwidth_;
 	Dimension textdim;
@@ -151,7 +152,7 @@ void InsetCaption::draw(PainterInfo & pi, int x, int y) const
 	// belongs to.
 	LCursor cur = pi.base.bv->cursor();
 	setLabel(cur);
-        docstring dlab(label.begin(), label.end());
+	docstring dlab(label.begin(), label.end());
 	labelwidth_ = font_metrics::width(dlab, pi.base.font);
 	pi.pain.text(x, y, dlab, pi.base.font);
 	InsetText::draw(pi, x + labelwidth_, y);

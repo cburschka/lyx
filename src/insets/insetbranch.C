@@ -69,7 +69,8 @@ auto_ptr<InsetBase> InsetBranch::doClone() const
 
 string const InsetBranch::editMessage() const
 {
-	return _("Opened Branch Inset");
+	// FIXME UNICODE
+	return lyx::to_utf8(_("Opened Branch Inset"));
 }
 
 
@@ -94,13 +95,15 @@ void InsetBranch::setButtonLabel()
 	font.decSize();
 	font.decSize();
 
-	string s = _("Branch: ") + params_.branch;
+	// FIXME UNICODE
+	string s = lyx::to_utf8(_("Branch: ")) + params_.branch;
 	font.setColor(LColor::foreground);
 	if (!params_.branch.empty()) {
 		LColor_color c = lcolor.getFromLyXName(params_.branch);
 		if (c == LColor::none) {
 			c = LColor::error;
-			s = _("Undef: ") + s;
+			// FIXME UNICODE
+			s = lyx::to_utf8(_("Undef: ")) + s;
 		}
 		setBackgroundColor(c);
 	} else

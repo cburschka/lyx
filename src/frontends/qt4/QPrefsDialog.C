@@ -180,7 +180,7 @@ string const internal_path(QString const & input)
 
 
 PrefAscii::PrefAscii(QWidget * parent)
-: PrefModule(_(Outputs), _("Plain text"), 0, parent)
+: PrefModule(lyx::to_utf8(_(Outputs)), lyx::to_utf8(_("Plain text")), 0, parent)
 {
 	setupUi(this);
 	connect(asciiLinelengthSB, SIGNAL(valueChanged(int)),
@@ -205,7 +205,7 @@ void PrefAscii::update(LyXRC const & rc)
 
 
 PrefDate::PrefDate(QWidget * parent)
-: PrefModule(_(Outputs), _("Date format"), 0, parent)
+: PrefModule(lyx::to_utf8(_(Outputs)), lyx::to_utf8(_("Date format")), 0, parent)
 {
 	setupUi(this);
 	connect(DateED, SIGNAL(textChanged(const QString&)),
@@ -226,7 +226,7 @@ void PrefDate::update(LyXRC const & rc)
 
 
 PrefKeyboard::PrefKeyboard(QPrefs * form, QWidget * parent)
-: PrefModule(_(LookAndFeel), _("Keyboard"), form, parent)
+: PrefModule(lyx::to_utf8(_(LookAndFeel)), lyx::to_utf8(_("Keyboard")), form, parent)
 {
 	setupUi(this);
 
@@ -300,7 +300,7 @@ void PrefKeyboard::on_secondKeymapPB_clicked(bool)
 
 
 PrefLatex::PrefLatex(QPrefs * form, QWidget * parent)
-: PrefModule(_(Outputs), _("LaTeX"), form, parent)
+: PrefModule(lyx::to_utf8(_(Outputs)), lyx::to_utf8(_("LaTeX")), form, parent)
 {
 	setupUi(this);
 	connect(latexEncodingED, SIGNAL(textChanged(const QString&)),
@@ -347,7 +347,7 @@ void PrefLatex::update(LyXRC const & rc)
 
 
 PrefScreenFonts::PrefScreenFonts(QPrefs * form, QWidget * parent)
-: PrefModule(_(LookAndFeel), _("Screen fonts"), form, parent)
+: PrefModule(lyx::to_utf8(_(LookAndFeel)), lyx::to_utf8(_("Screen fonts")), form, parent)
 {
 	setupUi(this);
 
@@ -499,7 +499,7 @@ void PrefScreenFonts::select_typewriter(const QString& name)
 
 
 PrefColors::PrefColors(QPrefs * form, QWidget * parent)
-: PrefModule(_(LookAndFeel), _("Colors"), form, parent)
+: PrefModule(lyx::to_utf8(_(LookAndFeel)), lyx::to_utf8(_("Colors")), form, parent)
 {
 	setupUi(this);
 
@@ -568,7 +568,7 @@ void PrefColors::change_color()
 
 
 PrefCygwinPath::PrefCygwinPath(QWidget * parent)
-: PrefModule(_(Outputs), _("Paths"), 0, parent)
+: PrefModule(lyx::to_utf8(_(Outputs)), lyx::to_utf8(_("Paths")), 0, parent)
 {
 	setupUi(this);
 	connect(pathCB, SIGNAL(toggled(bool)),
@@ -589,7 +589,7 @@ void PrefCygwinPath::update(LyXRC const & rc)
 
 
 PrefDisplay::PrefDisplay(QWidget * parent)
-: PrefModule(_(LookAndFeel), _("Graphics"), 0, parent)
+: PrefModule(lyx::to_utf8(_(LookAndFeel)), lyx::to_utf8(_("Graphics")), 0, parent)
 {
 	setupUi(this);
 	connect(instantPreviewCO, SIGNAL(activated(int)),
@@ -656,7 +656,7 @@ void PrefDisplay::update(LyXRC const & rc)
 
 
 PrefPaths::PrefPaths(QPrefs * form, QWidget * parent)
-: PrefModule(string(), _("Paths"), form, parent)
+: PrefModule(string(), lyx::to_utf8(_("Paths")), form, parent)
 {
 	setupUi(this);
 	connect(templateDirPB, SIGNAL(clicked()), this, SLOT(select_templatedir()));
@@ -702,11 +702,11 @@ void PrefPaths::update(LyXRC const & rc)
 	lyxserverDirED->setText(external_path(rc.lyxpipes));
 }
 
-// NB: the _() is OK here because it gets passed back and we toqstr() them
+// NB: the lyx::to_utf8(_() is OK here because it gets passed back and we toqstr()) them
 
 void PrefPaths::select_templatedir()
 {
-	string file(form_->controller().browsedir(fromqstr(templateDirED->text()), _("Select a document templates directory")));
+	string file(form_->controller().browsedir(fromqstr(templateDirED->text()), lyx::to_utf8(_("Select a document templates directory"))));
 	if (!file.empty())
 		templateDirED->setText(toqstr(file));
 }
@@ -714,7 +714,7 @@ void PrefPaths::select_templatedir()
 
 void PrefPaths::select_tempdir()
 {
-	string file(form_->controller().browsedir(fromqstr(tempDirED->text()), _("Select a temporary directory")));
+	string file(form_->controller().browsedir(fromqstr(tempDirED->text()), lyx::to_utf8(_("Select a temporary directory"))));
 	if (!file.empty())
 		tempDirED->setText(toqstr(file));
 }
@@ -722,7 +722,7 @@ void PrefPaths::select_tempdir()
 
 void PrefPaths::select_backupdir()
 {
-	string file(form_->controller().browsedir(fromqstr(backupDirED->text()), _("Select a backups directory")));
+	string file(form_->controller().browsedir(fromqstr(backupDirED->text()), lyx::to_utf8(_("Select a backups directory"))));
 	if (!file.empty())
 		backupDirED->setText(toqstr(file));
 }
@@ -730,7 +730,7 @@ void PrefPaths::select_backupdir()
 
 void PrefPaths::select_workingdir()
 {
-	string file(form_->controller().browsedir(fromqstr(workingDirED->text()), _("Select a document directory")));
+	string file(form_->controller().browsedir(fromqstr(workingDirED->text()), lyx::to_utf8(_("Select a document directory"))));
 	if (!file.empty())
 		workingDirED->setText(toqstr(file));
 }
@@ -738,14 +738,14 @@ void PrefPaths::select_workingdir()
 
 void PrefPaths::select_lyxpipe()
 {
-	string file(form_->controller().browse(fromqstr(lyxserverDirED->text()), _("Give a filename for the LyX server pipe")));
+	string file(form_->controller().browse(fromqstr(lyxserverDirED->text()), lyx::to_utf8(_("Give a filename for the LyX server pipe"))));
 	if (!file.empty())
 		lyxserverDirED->setText(toqstr(file));
 }
 
 
 PrefSpellchecker::PrefSpellchecker(QPrefs * form, QWidget * parent)
-: PrefModule(_(LanguageSettings), _("Spellchecker"), form, parent)
+: PrefModule(lyx::to_utf8(_(LanguageSettings)), lyx::to_utf8(_("Spellchecker")), form, parent)
 {
 	setupUi(this);
 
@@ -846,7 +846,7 @@ void PrefSpellchecker::select_dict()
 
 
 PrefConverters::PrefConverters(QPrefs * form, QWidget * parent)
-: PrefModule(string(), _("Converters"), form, parent)
+: PrefModule(string(), lyx::to_utf8(_("Converters")), form, parent)
 {
 	setupUi(this);
 
@@ -1035,7 +1035,7 @@ void PrefConverters::remove_converter()
 
 
 PrefCopiers::PrefCopiers(QPrefs * form, QWidget * parent)
-: PrefModule(string(), _("Copiers"), form, parent)
+: PrefModule(string(), lyx::to_utf8(_("Copiers")), form, parent)
 {
 	setupUi(this);
 
@@ -1278,7 +1278,7 @@ void PrefCopiers::remove_copier()
 
 
 PrefFileformats::PrefFileformats(QPrefs * form, QWidget * parent)
-: PrefModule(string(), _("File formats"), form, parent)
+: PrefModule(string(), lyx::to_utf8(_("File formats")), form, parent)
 {
 	setupUi(this);
 
@@ -1493,9 +1493,9 @@ void PrefFileformats::remove_format()
 		return;
 	string const current_text = form_->formats().get(nr).name();
 	if (form_->converters().formatIsUsed(current_text)) {
-		Alert::error(_("Format in use"),
-				_("Cannot remove a Format used by a Converter. "
-				      "Remove the converter first."));
+		Alert::error(lyx::to_utf8(_("Format in use")),
+			     lyx::to_utf8(_("Cannot remove a Format used by a Converter. "
+					    "Remove the converter first.")));
 		return;
 	}
 
@@ -1510,7 +1510,7 @@ void PrefFileformats::remove_format()
 
 
 PrefLanguage::PrefLanguage(QWidget * parent)
-: PrefModule(string(), _("Language"), 0, parent)
+: PrefModule(string(), lyx::to_utf8(_("Language")), 0, parent)
 {
 	setupUi(this);
 
@@ -1586,7 +1586,7 @@ void PrefLanguage::update(LyXRC const & rc)
 
 
 PrefPrinter::PrefPrinter(QWidget * parent)
-: PrefModule(_(Outputs), _("Printer"), 0, parent)
+: PrefModule(lyx::to_utf8(_(Outputs)), lyx::to_utf8(_("Printer")), 0, parent)
 {
 	setupUi(this);
 
@@ -1678,7 +1678,7 @@ void PrefPrinter::update(LyXRC const & rc)
 
 
 PrefUserInterface::PrefUserInterface(QPrefs * form, QWidget * parent)
-: PrefModule(_(LookAndFeel), _("User interface"), form, parent)
+: PrefModule(lyx::to_utf8(_(LookAndFeel)), lyx::to_utf8(_("User interface")), form, parent)
 {
 	setupUi(this);
 
@@ -1695,21 +1695,21 @@ PrefUserInterface::PrefUserInterface(QPrefs * form, QWidget * parent)
 		this, SIGNAL(changed()));
 	connect(loadSessionCB, SIGNAL(toggled(bool)),
 		this, SIGNAL(changed()));
-	connect(loadWindowSizeCB, SIGNAL(toggled(bool)), 
+	connect(loadWindowSizeCB, SIGNAL(toggled(bool)),
 		this, SIGNAL(changed()));
-	connect(loadWindowSizeCB, SIGNAL(toggled(bool)), 
+	connect(loadWindowSizeCB, SIGNAL(toggled(bool)),
 		windowWidthLA, SLOT(setDisabled(bool)));
-	connect(loadWindowSizeCB, SIGNAL(toggled(bool)), 
+	connect(loadWindowSizeCB, SIGNAL(toggled(bool)),
 		windowHeightLA, SLOT(setDisabled(bool)));
-	connect(loadWindowSizeCB, SIGNAL(toggled(bool)), 
+	connect(loadWindowSizeCB, SIGNAL(toggled(bool)),
 		windowWidthSB, SLOT(setDisabled(bool)));
-	connect(loadWindowSizeCB, SIGNAL(toggled(bool)), 
+	connect(loadWindowSizeCB, SIGNAL(toggled(bool)),
 		windowHeightSB, SLOT(setDisabled(bool)));
-	connect(loadWindowLocationCB, SIGNAL(toggled(bool)), 
+	connect(loadWindowLocationCB, SIGNAL(toggled(bool)),
 		this, SIGNAL(changed()));
-	connect(windowWidthSB, SIGNAL(valueChanged(int)), 
+	connect(windowWidthSB, SIGNAL(valueChanged(int)),
 		this, SIGNAL(changed()));
-	connect(windowHeightSB, SIGNAL(valueChanged(int)), 
+	connect(windowHeightSB, SIGNAL(valueChanged(int)),
 		this, SIGNAL(changed()));
 	connect(cursorFollowsCB, SIGNAL(toggled(bool)),
 		this, SIGNAL(changed()));
@@ -1790,7 +1790,7 @@ void PrefUserInterface::select_bind()
 
 
 PrefIdentity::PrefIdentity(QWidget * parent)
-: PrefModule(string(), _("Identity"), 0, parent)
+: PrefModule(string(), lyx::to_utf8(_("Identity")), 0, parent)
 {
 	setupUi(this);
 
@@ -1859,7 +1859,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	add(new PrefUserInterface(form_));
 	add(new PrefIdentity);
 
-	prefsPS->setCurrentPanel(_("User interface"));
+	prefsPS->setCurrentPanel(lyx::to_utf8(_("User interface")));
 
 	form_->bcview().setOK(savePB);
 	form_->bcview().setApply(applyPB);

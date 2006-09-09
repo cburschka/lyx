@@ -497,27 +497,31 @@ string const LyXFont::stateText(BufferParams * params) const
 {
 	ostringstream os;
 	if (family() != INHERIT_FAMILY)
-		os << _(GUIFamilyNames[family()]) << ", ";
+		os << lyx::to_utf8(_(GUIFamilyNames[family()])) << ", ";
 	if (series() != INHERIT_SERIES)
-		os << _(GUISeriesNames[series()]) << ", ";
+		os << lyx::to_utf8(_(GUISeriesNames[series()])) << ", ";
 	if (shape() != INHERIT_SHAPE)
-		os << _(GUIShapeNames[shape()]) << ", ";
+		os << lyx::to_utf8(_(GUIShapeNames[shape()])) << ", ";
 	if (size() != INHERIT_SIZE)
-		os << _(GUISizeNames[size()]) << ", ";
+		os << lyx::to_utf8(_(GUISizeNames[size()])) << ", ";
 	if (color() != LColor::inherit)
 		os << lcolor.getGUIName(color()) << ", ";
 	if (emph() != INHERIT)
-		os << bformat(_("Emphasis %1$s, "), _(GUIMiscNames[emph()]));
+		os << bformat(lyx::to_utf8(_("Emphasis %1$s, ")),
+			      lyx::to_utf8(_(GUIMiscNames[emph()])));
 	if (underbar() != INHERIT)
-		os << bformat(_("Underline %1$s, "), _(GUIMiscNames[underbar()]));
+		os << bformat(lyx::to_utf8(_("Underline %1$s, ")),
+			      lyx::to_utf8(_(GUIMiscNames[underbar()])));
 	if (noun() != INHERIT)
-		os << bformat(_("Noun %1$s, "), _(GUIMiscNames[noun()]));
+		os << bformat(lyx::to_utf8(_("Noun %1$s, ")),
+			      lyx::to_utf8(_(GUIMiscNames[noun()])));
 	if (bits == inherit)
-		os << _("Default") << ", ";
+		os << lyx::to_utf8(_("Default")) << ", ";
 	if (!params || (language() != params->language))
-		os << bformat(_("Language: %1$s, "), _(language()->display()));
+		os << bformat(lyx::to_utf8(_("Language: %1$s, ")),
+			      lyx::to_utf8(_(language()->display())));
 	if (number() != OFF)
-		os << bformat(_("  Number %1$s"), _(GUIMiscNames[number()]));
+		os << bformat(lyx::to_utf8(_("  Number %1$s")), lyx::to_utf8(_(GUIMiscNames[number()])));
 	return rtrim(os.str(), ", ");
 }
 

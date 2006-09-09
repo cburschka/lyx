@@ -36,7 +36,7 @@ int prompt_pimpl(string const & tit, string const & question,
 		 int default_button, int cancel_button,
 		 string const & b1, string const & b2, string const & b3)
 {
-	string const title = bformat(_("LyX: %1$s"), tit);
+	string const title = bformat(lyx::to_utf8(_("LyX: %1$s")), tit);
 
 	QWidget * const parent = qApp->focusWidget() ?
 		qApp->focusWidget() : qApp->mainWidget();
@@ -61,7 +61,7 @@ void warning_pimpl(string const & tit, string const & message)
 	QWidget * const parent = qApp->focusWidget() ?
 		qApp->focusWidget() : qApp->mainWidget();
 
-	string const title = bformat(_("LyX: %1$s"), tit);
+	string const title = bformat(lyx::to_utf8(_("LyX: %1$s")), tit);
 	QMessageBox::warning(parent,
 			     toqstr(title),
 			     toqstr(formatted(message)));
@@ -73,7 +73,7 @@ void error_pimpl(string const & tit, string const & message)
 	QWidget * const parent = qApp->focusWidget() ?
 		qApp->focusWidget() : qApp->mainWidget();
 
-	string const title = bformat(_("LyX: %1$s"), tit);
+	string const title = bformat(lyx::to_utf8(_("LyX: %1$s")), tit);
 	QMessageBox::critical(parent,
 			      toqstr(title),
 			      toqstr(formatted(message)));
@@ -85,7 +85,7 @@ void information_pimpl(string const & tit, string const & message)
 	QWidget * const parent = qApp->focusWidget() ?
 		qApp->focusWidget() : qApp->mainWidget();
 
-	string const title = bformat(_("LyX: %1$s"), tit);
+	string const title = bformat(lyx::to_utf8(_("LyX: %1$s")), tit);
 	QMessageBox::information(parent,
 				 toqstr(title),
 				 toqstr(formatted(message)));
@@ -98,7 +98,7 @@ askForText_pimpl(string const & msg, string const & dflt)
 	QWidget * const parent = qApp->focusWidget() ?
 		qApp->focusWidget() : qApp->mainWidget();
 
-	string const title = bformat(_("LyX: %1$s"), msg);
+	string const title = bformat(lyx::to_utf8(_("LyX: %1$s")), msg);
 	QAskForTextDialog d(parent, toqstr(title), true);
 	// less than ideal !
 	d.askLA->setText(toqstr('&' + msg));

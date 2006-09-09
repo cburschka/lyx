@@ -69,7 +69,8 @@ string const InsetRef::getScreenLabel(Buffer const &) const
 	string temp;
 	for (int i = 0; !types[i].latex_name.empty(); ++i) {
 		if (getCmdName() == types[i].latex_name) {
-			temp = _(types[i].short_gui_name);
+			// FIXME UNIOCDE
+			temp = lyx::to_utf8(_(types[i].short_gui_name));
 			break;
 		}
 	}

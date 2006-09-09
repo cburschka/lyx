@@ -28,9 +28,9 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-
+// FIXME UNICODE
 GChanges::GChanges(Dialog & parent)
-	: GViewCB<ControlChanges, GViewGladeB>(parent, _("Merge Changes"), false)
+	: GViewCB<ControlChanges, GViewGladeB>(parent, lyx::to_utf8(_("Merge Changes")), false)
 {}
 
 
@@ -102,17 +102,17 @@ void GChanges::onNext()
 
 void GChanges::promptChange()
 {
-	string const header = _("Accept highlighted change?");
+	string const header = lyx::to_utf8(_("Accept highlighted change?"));
 	string author = controller().getChangeAuthor();
 	string date = controller().getChangeDate();
 	if(author.empty())
-		author = _("unknown author");
+		author = lyx::to_utf8(_("unknown author"));
 	if(date.empty())
-		date = _("unknown date");
+		date = lyx::to_utf8(_("unknown date"));
 
 	messagelabel_->set_markup("<big><b>" + header +
-	                        "</b></big>\n\nChanged by <b>" + author
-	                        + "</b> on <b>" + date + "</b>");
+				"</b></big>\n\nChanged by <b>" + author
+				+ "</b> on <b>" + date + "</b>");
 
 	acceptbutton_->set_sensitive(true && !readOnly());
 	rejectbutton_->set_sensitive(true && !readOnly());
@@ -122,10 +122,10 @@ void GChanges::promptChange()
 
 void GChanges::promptDismiss()
 {
-	string const header = _("Done merging changes");
+	string const header = lyx::to_utf8(_("Done merging changes"));
 
 	messagelabel_->set_markup("<big><b>" + header +
-	                        "</b></big>");
+				"</b></big>");
 
 	// Disable all buttons but close.
 	acceptbutton_->set_sensitive(false);

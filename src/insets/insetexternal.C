@@ -576,7 +576,8 @@ string const getScreenLabel(InsetExternalParams const & params,
 	external::Template const * const ptr =
 		external::getTemplatePtr(params);
 	if (!ptr)
-		return support::bformat(_("External template %1$s is not installed"),
+		// FIXME UNICODE
+		return support::bformat(lyx::to_utf8(_("External template %1$s is not installed")),
 					params.templatename());
 	return external::doSubstitution(params, buffer, ptr->guiName, false);
 }

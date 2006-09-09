@@ -103,7 +103,8 @@ void InsetBibtex::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 string const InsetBibtex::getScreenLabel(Buffer const &) const
 {
-	return _("BibTeX Generated Bibliography");
+	// FIXME UNICODE
+	return lyx::to_utf8(_("BibTeX Generated Bibliography"));
 }
 
 
@@ -190,9 +191,10 @@ int InsetBibtex::latex(Buffer const & buffer, ostream & os,
 	    runparams.nice && db_out.find(' ') != string::npos) {
 		warned_about_spaces = true;
 
-		Alert::warning(_("Export Warning!"),
-			       _("There are spaces in the paths to your BibTeX databases.\n"
-				 "BibTeX will be unable to find them."));
+		// FIXME UNICODE
+		Alert::warning(lyx::to_utf8(_("Export Warning!")),
+			       lyx::to_utf8(_("There are spaces in the paths to your BibTeX databases.\n"
+					      "BibTeX will be unable to find them.")));
 
 	}
 
@@ -241,9 +243,10 @@ int InsetBibtex::latex(Buffer const & buffer, ostream & os,
 	static bool warned_about_bst_spaces = false;
 	if (!warned_about_bst_spaces && runparams.nice && contains(style, ' ')) {
 		warned_about_bst_spaces = true;
-		Alert::warning(_("Export Warning!"),
-			       _("There are spaces in the path to your BibTeX style file.\n"
-				 "BibTeX will be unable to find it."));
+		// FIXME UNICODE
+		Alert::warning(lyx::to_utf8(_("Export Warning!")),
+			       lyx::to_utf8(_("There are spaces in the path to your BibTeX style file.\n"
+					      "BibTeX will be unable to find it.")));
 	}
 
 	if (!db_out.empty() && buffer.params().use_bibtopic){

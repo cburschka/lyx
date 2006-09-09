@@ -45,7 +45,7 @@ namespace frontend {
 typedef QController<ControlBibtex, QView<QBibtexDialog> > base_class;
 
 QBibtex::QBibtex(Dialog & parent)
-	: base_class(parent, _("BibTeX Bibliography"))
+	: base_class(parent, lyx::to_utf8(_("BibTeX Bibliography")))
 {
 }
 

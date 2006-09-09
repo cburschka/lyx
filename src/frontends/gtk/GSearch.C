@@ -33,7 +33,7 @@ typedef GViewCB<ControlSearch, GViewGladeB> base_class;
 
 
 GSearch::GSearch(Dialog & parent)
-	: base_class(parent, _("Find and Replace"), false)
+	: base_class(parent, lyx::to_utf8(_("Find and Replace")), false)
 {}
 
 
@@ -81,31 +81,31 @@ void GSearch::update()
 void GSearch::onFindNext()
 {
 	controller().find(findentry->get_text(),
-	                  casecheck->get_active(),
-	                  matchwordcheck->get_active(),
-	                  !backwardscheck->get_active());
+			  casecheck->get_active(),
+			  matchwordcheck->get_active(),
+			  !backwardscheck->get_active());
 }
 
 
 void GSearch::onReplace()
 {
 	controller().replace(findentry->get_text(),
-	                     replaceentry->get_text(),
-	                     casecheck->get_active(),
-	                     matchwordcheck->get_active(),
-	                     !backwardscheck->get_active(),
-	                     false);
+			     replaceentry->get_text(),
+			     casecheck->get_active(),
+			     matchwordcheck->get_active(),
+			     !backwardscheck->get_active(),
+			     false);
 }
 
 
 void GSearch::onReplaceAll()
 {
 	controller().replace(findentry->get_text(),
-	                     replaceentry->get_text(),
-	                     casecheck->get_active(),
-	                     matchwordcheck->get_active(),
-	                     !backwardscheck->get_active(),
-	                     true);
+			     replaceentry->get_text(),
+			     casecheck->get_active(),
+			     matchwordcheck->get_active(),
+			     !backwardscheck->get_active(),
+			     true);
 }
 
 

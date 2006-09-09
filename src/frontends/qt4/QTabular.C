@@ -39,7 +39,7 @@ namespace frontend {
 typedef QController<ControlTabular, QView<QTabularDialog> > base_class;
 
 QTabular::QTabular(Dialog & parent)
-	: base_class(parent, _("Table Settings"))
+	: base_class(parent, lyx::to_utf8(_("Table Settings")))
 {
 }
 

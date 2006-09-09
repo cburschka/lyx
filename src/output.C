@@ -31,9 +31,9 @@ bool openFileWrite(ofstream & ofs, string const & fname)
 	ofs.open(fname.c_str());
 	if (!ofs) {
 		string const file = makeDisplayPath(fname, 50);
-		string text = bformat(_("Could not open the specified "
-					"document\n%1$s."), file);
-		Alert::error(_("Could not open file"), text);
+		string text = bformat(lyx::to_utf8(_("Could not open the specified "
+						     "document\n%1$s.")), file);
+		Alert::error(lyx::to_utf8(_("Could not open file")), text);
 		return false;
 	}
 	return true;

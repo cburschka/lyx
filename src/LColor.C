@@ -177,7 +177,7 @@ string const LColor::getGUIName(LColor::color c) const
 {
 	Pimpl::InfoTab::const_iterator it = pimpl_->infotab.find(c);
 	if (it != pimpl_->infotab.end())
-		return _(it->second.guiname);
+		return lyx::to_utf8(_(it->second.guiname));
 	return "none";
 }
 
@@ -254,7 +254,7 @@ LColor::color LColor::getFromGUIName(string const & guiname) const
 	Pimpl::InfoTab::const_iterator it = pimpl_->infotab.begin();
 	Pimpl::InfoTab::const_iterator end = pimpl_->infotab.end();
 	for (; it != end; ++it) {
-		if (!compare_ascii_no_case(_(it->second.guiname), guiname))
+		if (!compare_ascii_no_case(lyx::to_utf8(_(it->second.guiname)), guiname))
 			return it->first;
 	}
 	return LColor::inherit;

@@ -261,14 +261,18 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 	} else if (name == "index") {
 		dialog->bc().view(new GBC(dialog->bc()));
 		dialog->setController(new ControlCommand(*dialog, name));
+		// FIXME UNICODE
 		dialog->setView(new GText(*dialog,
-					  _("Index Entry"), _("Keyword:|#K")));
+					  lyx::to_utf8(_("Index Entry")),
+					  lyx::to_utf8(_("Keyword:|#K"))));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "label") {
 		dialog->bc().view(new GBC(dialog->bc()));
 		dialog->setController(new ControlCommand(*dialog, name));
+		// FIXME UNICODE
 		dialog->setView(new GText(*dialog,
-					  _("Label"), _("Label:|#L")));
+					  lyx::to_utf8(_("Label")),
+					  lyx::to_utf8(_("Label:|#L"))));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "log") {
 		dialog->bc().view(new GBC(dialog->bc()));
@@ -284,7 +288,7 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 
 	} else if (name == "mathaccents") {
 //		FormMathsBitmap * bitmap =
-//			createFormBitmap(*dialog, _("Maths Decorations & Accents"),
+//			createFormBitmap(*dialog, lyx::to_utf8(_("Maths Decorations & Accents")),
 //					 latex_deco, nr_latex_deco);
 //		bitmap->addBitmap(
 //			BitmapStore(12, 3, 4, deco1_width, deco1_height, deco1_bits, true));
@@ -298,7 +302,7 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 
 	} else if (name == "matharrows") {
 //		FormMathsBitmap * bitmap =
-//			createFormBitmap(*dialog, _("Arrows"), latex_arrow, nr_latex_arrow);
+//			createFormBitmap(*dialog, lyx::to_utf8(_("Arrows"), latex_arrow, nr_latex_arrow));
 //		bitmap->addBitmap(
 //			BitmapStore(20, 5, 4, arrow_width,  arrow_height,  arrow_bits, true));
 //		bitmap->addBitmap(
@@ -313,7 +317,7 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 
 	} else if (name == "mathoperators") {
 //		FormMathsBitmap * bitmap =
-//			createFormBitmap(*dialog, _("Binary Ops"),
+//			createFormBitmap(*dialog, lyx::to_utf8(_("Binary Ops")),
 //					 latex_bop, nr_latex_bop);
 //		bitmap->addBitmap(
 //			BitmapStore(31, 4, 8, bop_width, bop_height, bop_bits, true));
@@ -325,7 +329,7 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 
 	} else if (name == "mathrelations") {
 //		FormMathsBitmap * bitmap =
-//			createFormBitmap(*dialog, _("Binary Relations"),
+//			createFormBitmap(*dialog, lyx::to_utf8(_("Binary Relations")),
 //					 latex_brel, nr_latex_brel);
 //		bitmap->addBitmap(
 //			BitmapStore(35, 4, 9, brel_width, brel_height, brel_bits, true));
@@ -337,7 +341,7 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 
 	} else if (name == "mathgreek") {
 //		FormMathsBitmap * bitmap =
-//			createFormBitmap(*dialog, _("Greek"),
+//			createFormBitmap(*dialog, lyx::to_utf8(_("Greek")),
 //					 latex_greek, nr_latex_greek);
 //		bitmap->addBitmap(
 //			BitmapStore(11, 6, 2, Greek_width, Greek_height, Greek_bits, true));
@@ -351,7 +355,7 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 
 	} else if (name == "mathmisc") {
 //		FormMathsBitmap * bitmap =
-//			createFormBitmap(*dialog, _("Misc"),
+//			createFormBitmap(*dialog, lyx::to_utf8(_("Misc")),
 //					 latex_misc, nr_latex_misc);
 //		bitmap->addBitmap(
 //			BitmapStore(29, 5, 6, misc_width, misc_height, misc_bits, true));
@@ -369,7 +373,7 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 
 	} else if (name == "mathdots") {
 //		FormMathsBitmap * bitmap =
-//			createFormBitmap(*dialog, _("Dots"),
+//			createFormBitmap(*dialog, lyx::to_utf8(_("Dots")),
 //					 latex_dots, nr_latex_dots);
 //		bitmap->addBitmap(
 //			BitmapStore(4, 4, 1, dots_width, dots_height, dots_bits, true));
@@ -381,7 +385,7 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 
 	} else if (name == "mathbigoperators") {
 //		FormMathsBitmap * bitmap =
-//			createFormBitmap(*dialog, _("Big Operators"),
+//			createFormBitmap(*dialog, lyx::to_utf8(_("Big Operators")),
 //					 latex_varsz, nr_latex_varsz);
 //		bitmap->addBitmap(
 //			BitmapStore(14, 3, 5, varsz_width, varsz_height, varsz_bits, true));
@@ -393,7 +397,7 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 
 	} else if (name == "mathamsmisc") {
 //		FormMathsBitmap * bitmap =
-//			createFormBitmap(*dialog, _("AMS Misc"),
+//			createFormBitmap(*dialog, lyx::to_utf8(_("AMS Misc")),
 //					 latex_ams_misc, nr_latex_ams_misc);
 //		bitmap->addBitmap(
 //			BitmapStore(9, 5, 2, ams1_width, ams1_height, ams1_bits, true));
@@ -407,7 +411,7 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 
 	} else if (name == "mathamsarrows") {
 //		FormMathsBitmap * bitmap =
-//			createFormBitmap(*dialog, _("AMS Arrows"),
+//			createFormBitmap(*dialog, lyx::to_utf8(_("AMS Arrows")),
 //					 latex_ams_arrows, nr_latex_ams_arrows);
 //		bitmap->addBitmap(
 //			BitmapStore(32, 3, 11, ams2_width, ams2_height, ams2_bits, true));
@@ -421,7 +425,7 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 
 	} else if (name == "mathamsrelations") {
 //		FormMathsBitmap * bitmap =
-//			createFormBitmap(*dialog, _("AMS Relations"),
+//			createFormBitmap(*dialog, lyx::to_utf8(_("AMS Relations")),
 //					 latex_ams_rel, nr_latex_ams_rel);
 //		bitmap->addBitmap(
 //			BitmapStore(66, 6, 11, ams_rel_width, ams_rel_height, ams_rel_bits, true));
@@ -433,7 +437,7 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 
 	} else if (name == "mathamsnegatedrelations") {
 //		FormMathsBitmap * bitmap =
-//			createFormBitmap(*dialog, _("AMS Negated Rel"),
+//			createFormBitmap(*dialog, lyx::to_utf8(_("AMS Negated Rel")),
 //					 latex_ams_nrel, nr_latex_ams_nrel);
 //		bitmap->addBitmap(
 //			BitmapStore(51, 6, 9, ams_nrel_width, ams_nrel_height, ams_nrel_bits, true));
@@ -445,7 +449,7 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 
 	} else if (name == "mathamsoperators") {
 //		FormMathsBitmap * bitmap =
-//			createFormBitmap(*dialog, _("AMS Operators"),
+//			createFormBitmap(*dialog, lyx::to_utf8(_("AMS Operators")),
 //					 latex_ams_ops, nr_latex_ams_ops);
 //		bitmap->addBitmap(
 //			BitmapStore(23, 3, 8, ams_ops_width, ams_ops_height, ams_ops_bits, true));

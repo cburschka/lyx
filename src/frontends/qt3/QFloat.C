@@ -28,7 +28,7 @@ typedef QController<ControlFloat, QView<QFloatDialog> > base_class;
 
 
 QFloat::QFloat(Dialog & parent)
-	: base_class(parent, _("Float Settings"))
+	: base_class(parent, lyx::to_utf8(_("Float Settings")))
 {
 }
 

@@ -42,6 +42,7 @@
 
 namespace os = lyx::support::os;
 
+using lyx::docstring;
 using lyx::support::ascii_lowercase;
 using lyx::support::bformat;
 using lyx::support::expandPath;
@@ -1104,7 +1105,7 @@ int LyXRC::read(LyXLex & lexrc)
 				(tokenPos(flags, ',', "document") >= 0);
 			if (!flags.empty() && flags != "document")
 				lyxerr << "Ignoring flags other than "
-				          "`document' in `" << flags
+					  "`document' in `" << flags
 				       << "' for format `" << format << "'."
 				       << endl;
 			if (prettyname.empty()) {
@@ -2119,7 +2120,7 @@ void LyXRC::set_font_norm_type()
 
 string const LyXRC::getDescription(LyXRCTags tag)
 {
-	string str;
+	docstring str;
 
 	switch (tag) {
 	case RC_ACCEPT_COMPOUND:
@@ -2293,7 +2294,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 
 	case RC_NUMLASTFILES:
-		str = bformat(_("Maximal number of lastfiles. Up to %1$d can appear in the file menu."), maxlastfiles);
+		str = lyx::from_utf8(bformat(lyx::to_utf8(_("Maximal number of lastfiles. Up to %1$d can appear in the file menu.")), maxlastfiles));
 		break;
 
 	case RC_PATH_PREFIX:
@@ -2368,7 +2369,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 
 	case RC_PRINTPAPERDIMENSIONFLAG:
-		str = _("Option to specify the dimensions of the print paper.");
+				   str = _("Option to specify the dimensions of the print paper.");
 		break;
 
 	case RC_PRINTPAPERFLAG:
@@ -2498,7 +2499,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 
 	case RC_VIEWDVI_PAPEROPTION:
-		str = _("Specify the paper command to DVI viewer (leave empty or use \"-paper\")");
+		_("Specify the paper command to DVI viewer (leave empty or use \"-paper\")");
 		break;
 
 	case RC_VIEWER:
@@ -2508,7 +2509,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 	}
 
-	return str;
+				   return lyx::to_utf8(str);
 }
 
 // The global instance

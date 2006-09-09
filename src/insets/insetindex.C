@@ -36,7 +36,8 @@ InsetIndex::InsetIndex(InsetCommandParams const & p)
 
 string const InsetIndex::getScreenLabel(Buffer const &) const
 {
-	return _("Idx");
+	// FIXME UNICODE
+	return lyx::to_utf8(_("Idx"));
 }
 
 
@@ -68,7 +69,8 @@ InsetPrintIndex::InsetPrintIndex(InsetCommandParams const & p)
 
 string const InsetPrintIndex::getScreenLabel(Buffer const &) const
 {
-	return _("Index");
+	// FIXME UNICODE
+	return lyx::to_utf8(_("Index"));
 }
 
 

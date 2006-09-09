@@ -45,5 +45,5 @@ string const SpellBase::nextMiss()
 
 string const SpellBase::error()
 {
-	return _("Native OS API not yet supported.");
+	return lyx::to_utf8(_("Native OS API not yet supported."));
 }

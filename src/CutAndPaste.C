@@ -91,7 +91,7 @@ public:
 		// to the buffer language.
 		if (p.ownerCode() == InsetBase::ERT_CODE) {
 			p.changeLanguage(buffer_.params(), latex_language,
-			                 buffer_.getLanguage());
+					 buffer_.getLanguage());
 		}
 		p.setInsetOwner(0);
 	}
@@ -403,11 +403,11 @@ void switchBetweenClasses(textclass_type c1, textclass_type c2,
 
 		if (!hasLayout && name != tclass1.defaultLayoutName()) {
 			string const s = bformat(
-				_("Layout had to be changed from\n%1$s to %2$s\n"
-				"because of class conversion from\n%3$s to %4$s"),
+						 lyx::to_utf8(_("Layout had to be changed from\n%1$s to %2$s\n"
+								"because of class conversion from\n%3$s to %4$s")),
 			 name, it->layout()->name(), tclass1.name(), tclass2.name());
 			// To warn the user that something had to be done.
-			errorlist.push_back(ErrorItem(_("Changed Layout"), s,
+			errorlist.push_back(ErrorItem(lyx::to_utf8(_("Changed Layout")), s,
 						      it->id(), 0,
 						      it->size()));
 		}
@@ -425,14 +425,14 @@ void switchBetweenClasses(textclass_type c1, textclass_type c2,
 			if (found_cs == tclass2.charstyles().end()) {
 				// The character style is undefined in tclass2
 				inset.setUndefined();
-				string const s = bformat(_(
+				string const s = bformat(lyx::to_utf8(_(
 					"Character style %1$s is "
 					"undefined because of class "
-					"conversion from\n%2$s to %3$s"),
+					"conversion from\n%2$s to %3$s")),
 					 name, tclass1.name(), tclass2.name());
 				// To warn the user that something had to be done.
 				errorlist.push_back(ErrorItem(
-						_("Undefined character style"),
+							      lyx::to_utf8(_("Undefined character style")),
 						s, it.paragraph().id(),
 						it.pos(), it.pos() + 1));
 			} else if (inset.undefined()) {
@@ -500,7 +500,7 @@ void cutSelection(LCursor & cur, bool doclear, bool realcut)
 		// faster we need to be more clever and probably also have more
 		// calls to cur.bv().owner()->gui().selection().put. (Lgb)
 //		cur.bv().owner()->gui().selection().put(cur.selectionAsString(true));
-	
+
 
 		// make sure that the depth behind the selection are restored, too
 		recordUndoSelection(cur);

@@ -29,7 +29,7 @@ namespace lyx {
 namespace frontend {
 
 GShowFile::GShowFile(Dialog & parent)
-	: GViewCB<ControlShowFile, GViewGladeB>(parent, _("Show File"), false)
+	: GViewCB<ControlShowFile, GViewGladeB>(parent, lyx::to_utf8(_("Show File")), false)
 {}
 
 
@@ -60,7 +60,7 @@ void GShowFile::update()
 	if (!contents.empty())
 		contentbuffer_->set_text(contents);
 	else
-		contentbuffer_->set_text(_("Error reading file!"));
+		contentbuffer_->set_text(lyx::to_utf8(_("Error reading file!")));
 }
 
 } // namespace frontend

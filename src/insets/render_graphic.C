@@ -86,34 +86,50 @@ bool displayGraphic(graphics::Params const & params)
 string const statusMessage(graphics::Params const & params,
 			   graphics::ImageStatus status)
 {
-	if (!displayGraphic(params))
-		return _("Not shown.");
+	docstring ret;
 
-	switch (status) {
-	case graphics::WaitingToLoad:
-		return _("Not shown.");
-	case graphics::Loading:
-		return _("Loading...");
-	case graphics::Converting:
-		return _("Converting to loadable format...");
-	case graphics::Loaded:
-		return _("Loaded into memory. Generating pixmap...");
-	case graphics::ScalingEtc:
-		return _("Scaling etc...");
-	case graphics::Ready:
-		return _("Ready to display");
-	case graphics::ErrorNoFile:
-		return _("No file found!");
-	case graphics::ErrorConverting:
-		return _("Error converting to loadable format");
-	case graphics::ErrorLoading:
-		return _("Error loading file into memory");
-	case graphics::ErrorGeneratingPixmap:
-		return _("Error generating the pixmap");
-	case graphics::ErrorUnknown:
-		return _("No image");
+	if (!displayGraphic(params))
+		ret = _("Not shown.");
+	else {
+		switch (status) {
+		case graphics::WaitingToLoad:
+			ret = _("Not shown.");
+			break;
+		case graphics::Loading:
+			ret = _("Loading...");
+			break;
+		case graphics::Converting:
+			ret = _("Converting to loadable format...");
+			break;
+		case graphics::Loaded:
+			ret = _("Loaded into memory. Generating pixmap...");
+			break;
+		case graphics::ScalingEtc:
+			ret = _("Scaling etc...");
+			break;
+		case graphics::Ready:
+			ret = _("Ready to display");
+			break;
+		case graphics::ErrorNoFile:
+			ret = _("No file found!");
+			break;
+		case graphics::ErrorConverting:
+			ret = _("Error converting to loadable format");
+			break;
+		case graphics::ErrorLoading:
+			ret = _("Error loading file into memory");
+			break;
+		case graphics::ErrorGeneratingPixmap:
+			ret = _("Error generating the pixmap");
+			break;
+		case graphics::ErrorUnknown:
+			ret = _("No image");
+			break;
+		}
 	}
-	return string();
+
+	// FIXME UNICODE
+	return lyx::to_utf8(ret);
 }
 
 
@@ -144,7 +160,7 @@ void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 		msgFont.setFamily(LyXFont::SANS_FAMILY);
 
 		string const justname = onlyFilename(params_.filename);
-                docstring djust(justname.begin(), justname.end());
+		docstring djust(justname.begin(), justname.end());
 		if (!justname.empty()) {
 			msgFont.setSize(LyXFont::SIZE_FOOTNOTE);
 			font_width = font_metrics::width(djust, msgFont);
@@ -152,7 +168,7 @@ void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 
 		string const msg = statusMessage(params_, loader_.status());
 		if (!msg.empty()) {
-                        docstring dmsg(msg.begin(), msg.end());
+			docstring dmsg(msg.begin(), msg.end());
 			msgFont.setSize(LyXFont::SIZE_TINY);
 			font_width = std::max(font_width,
 					      font_metrics::width(dmsg, msgFont));
@@ -197,7 +213,7 @@ void RenderGraphic::draw(PainterInfo & pi, int x, int y) const
 		string const justname = onlyFilename(params_.filename);
 
 		if (!justname.empty()) {
-                        docstring djust(justname.begin(), justname.end());
+			docstring djust(justname.begin(), justname.end());
 			msgFont.setSize(LyXFont::SIZE_FOOTNOTE);
 			pi.pain.text(x + InsetOld::TEXT_TO_INSET_OFFSET + 6,
 				   y - font_metrics::maxAscent(msgFont) - 4,
@@ -207,7 +223,7 @@ void RenderGraphic::draw(PainterInfo & pi, int x, int y) const
 		// Print the message.
 		string const msg = statusMessage(params_, loader_.status());
 		if (!msg.empty()) {
-                        docstring dmsg(msg.begin(), msg.end());
+			docstring dmsg(msg.begin(), msg.end());
 			msgFont.setSize(LyXFont::SIZE_TINY);
 			pi.pain.text(x + InsetOld::TEXT_TO_INSET_OFFSET + 6,
 				     y - 4, dmsg, msgFont);

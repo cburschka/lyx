@@ -13,6 +13,8 @@
 #ifndef GETTEXT_H
 #define GETTEXT_H
 
+#include "support/docstring.h"
+
 #include <string>
 
 /*
@@ -47,7 +49,7 @@
 //#ifdef ENABLE_NLS
 
 ///
-std::string const _(std::string const &);
+lyx::docstring const _(std::string const &);
 
 //#else // ENABLE_NLS
 

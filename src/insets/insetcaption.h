@@ -29,13 +29,13 @@ public:
 	///
 	virtual bool display() const;
 	///
-	virtual bool neverIndent() const { return true; }	
+	virtual bool neverIndent() const { return true; }
 	///
 	virtual InsetBase::Code lyxCode() const;
 	///
 	virtual std::string const editMessage() const;
 	///
-	virtual void cursorPos 
+	virtual void cursorPos
 		(CursorSlice const & sl, bool boundary, int & x, int & y) const;
 	///
 	bool descendable() const { return true; }

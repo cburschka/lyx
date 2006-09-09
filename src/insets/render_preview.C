@@ -84,7 +84,7 @@ string const statusMessage(BufferView const * bv, string const & snippet)
 	graphics::PreviewLoader const & loader = getPreviewLoader(buffer);
 	graphics::PreviewLoader::Status const status = loader.status(snippet);
 
-	string message;
+	docstring message;
 	switch (status) {
 	case graphics::PreviewLoader::InQueue:
 	case graphics::PreviewLoader::Processing:
@@ -98,7 +98,8 @@ string const statusMessage(BufferView const * bv, string const & snippet)
 		break;
 	}
 
-	return message;
+	// FIXME UNICODE
+	return lyx::to_utf8(message);
 }
 
 } // namespace anon
@@ -130,8 +131,8 @@ void RenderPreview::metrics(MetricsInfo & mi, Dimension & dim) const
 		LyXFont font(mi.base.font);
 		font.setFamily(LyXFont::SANS_FAMILY);
 		font.setSize(LyXFont::SIZE_FOOTNOTE);
-                string stat = statusMessage(mi.base.bv, snippet_);
-                docstring dstat(stat.begin(), stat.end());
+		string stat = statusMessage(mi.base.bv, snippet_);
+		docstring dstat(stat.begin(), stat.end());
 		dim.wid = 15 + font_metrics::width(dstat, font);
 	}
 
@@ -164,8 +165,8 @@ void RenderPreview::draw(PainterInfo & pi, int x, int y) const
 		font.setFamily(LyXFont::SANS_FAMILY);
 		font.setSize(LyXFont::SIZE_FOOTNOTE);
 
-                string stat = statusMessage(pi.base.bv, snippet_);
-                docstring dstat(stat.begin(), stat.end());
+		string stat = statusMessage(pi.base.bv, snippet_);
+		docstring dstat(stat.begin(), stat.end());
 		pi.pain.text(x + offset + 6,
 			     y - font_metrics::maxAscent(font) - 4,
 			     dstat, font);

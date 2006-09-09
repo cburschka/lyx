@@ -39,7 +39,7 @@ namespace lyx {
 namespace frontend {
 
 GTabular::GTabular(Dialog & parent)
-	: GViewCB<ControlTabular, GViewGladeB>(parent, _("Table Settings"), false)
+	: GViewCB<ControlTabular, GViewGladeB>(parent, lyx::to_utf8(_("Table Settings")), false)
 {}
 
 
@@ -354,11 +354,11 @@ void GTabular::updateHorzAlignCombo(bool extraoption)
 	// Deprecated in favor of clear_items in gtkmm >= 2.8
 	unsigned int const oldselection = horzaligncombo_->get_active_row_number();
 	horzaligncombo_->clear();
-	horzaligncombo_->append_text(_("Left"));
-	horzaligncombo_->append_text(_("Center"));
-	horzaligncombo_->append_text(_("Right"));
+	horzaligncombo_->append_text(lyx::to_utf8(_("Left")));
+	horzaligncombo_->append_text(lyx::to_utf8(_("Center")));
+	horzaligncombo_->append_text(lyx::to_utf8(_("Right")));
 	if (extraoption)
-		horzaligncombo_->append_text(_("Block"));
+		horzaligncombo_->append_text(lyx::to_utf8(_("Block")));
 	if (oldselection < horzaligncombo_->get_model()->children().size())
 		horzaligncombo_->set_active(oldselection);
 	else

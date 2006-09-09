@@ -471,9 +471,10 @@ copyFileIfNeeded(string const & file_in, string const & file_out)
 	Mover const & mover = movers(formats.getFormatFromFile(file_in));
 	bool const success = mover.copy(file_in, file_out);
 	if (!success) {
+		// FIXME UNICODE
 		lyxerr[Debug::GRAPHICS]
-			<< support::bformat(_("Could not copy the file\n%1$s\n"
-					      "into the temporary directory."),
+			<< support::bformat(lyx::to_utf8(_("Could not copy the file\n%1$s\n"
+							   "into the temporary directory.")),
 					    file_in)
 			<< std::endl;
 	}
@@ -558,7 +559,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	string const orig_file = params().filename.absFilename();
 	string const rel_file = params().filename.relFilename(buf.filePath());
 
-	// previewing source code, no file copying or file format conversion 
+	// previewing source code, no file copying or file format conversion
 	if (runparams.dryrun)
 		return stripExtensionIfPossible(rel_file);
 
@@ -703,8 +704,9 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	// Do we need to perform the conversion?
 	// Yes if to_file does not exist or if temp_file is newer than to_file
 	if (compare_timestamps(temp_file, to_file) < 0) {
+		// FIXME UNICODE
 		lyxerr[Debug::GRAPHICS]
-			<< bformat(_("No conversion of %1$s is needed after all"),
+			<< bformat(lyx::to_utf8(_("No conversion of %1$s is needed after all")),
 				   rel_file)
 			<< std::endl;
 		runparams.exportdata->addExternalFile(tex_format, to_file,
@@ -810,7 +812,8 @@ int InsetGraphics::plaintext(Buffer const &, ostream & os,
 	// 1. Convert file to ascii using gifscii
 	// 2. Read ascii output file and add it to the output stream.
 	// at least we send the filename
-	os << '<' << bformat(_("Graphics file: %1$s"),
+	// FIXME UNICODE
+	os << '<' << bformat(lyx::to_utf8(_("Graphics file: %1$s")),
 			     params().filename.absFilename()) << ">\n";
 	return 0;
 }

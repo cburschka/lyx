@@ -67,7 +67,7 @@ char const * encodings[] = { "LaTeX default", "latin1", "latin2",
 
 
 QDocument::QDocument(Dialog & parent)
-	: base_class(parent, _("Document Settings")),
+	: base_class(parent, lyx::to_utf8(_("Document Settings"))),
 		lang_(getSecond(getLanguageData(false)))
 {}
 
@@ -132,7 +132,7 @@ void QDocument::build_dialog()
 			dialog_->latexModule->classCO->insertItem(toqstr(cit->description()));
 		} else {
 			string item =
-				bformat(_("Unavailable: %1$s"), cit->description());
+				bformat(lyx::to_utf8(_("Unavailable: %1$s")), cit->description());
 			dialog_->latexModule->classCO->insertItem(toqstr(item));
 		}
 	}

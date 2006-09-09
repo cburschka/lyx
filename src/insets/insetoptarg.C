@@ -31,7 +31,8 @@ InsetOptArg::InsetOptArg(BufferParams const & ins)
 	LyXFont font(LyXFont::ALL_SANE);
 	font.setColor(LColor::collapsable);
 	setLabelFont(font);
-	setLabel(_("opt"));
+	// FIXME UNICODE
+	setLabel(lyx::to_utf8(_("opt")));
 }
 
 
@@ -41,7 +42,8 @@ InsetOptArg::InsetOptArg(InsetOptArg const & in)
 	LyXFont font(LyXFont::ALL_SANE);
 	font.setColor(LColor::collapsable);
 	setLabelFont(font);
-	setLabel(_("opt"));
+	// FIXME UNICODE
+	setLabel(lyx::to_utf8(_("opt")));
 }
 
 
@@ -53,7 +55,8 @@ auto_ptr<InsetBase> InsetOptArg::doClone() const
 
 string const InsetOptArg::editMessage() const
 {
-	return _("Opened Optional Argument Inset");
+	// FIXME UNICODE
+	return lyx::to_utf8(_("Opened Optional Argument Inset"));
 }
 
 

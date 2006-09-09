@@ -62,7 +62,8 @@ void InsetEnvironment::read(Buffer const & buf, LyXLex & lex)
 
 string const InsetEnvironment::editMessage() const
 {
-	return _("Opened Environment Inset: ") + getInsetName();
+	// FIXME UNICODE
+	return lyx::to_utf8(_("Opened Environment Inset: ")) + getInsetName();
 }
 
 

@@ -55,8 +55,9 @@ char const * const encodings[] = { "Language Default", "LaTeX default",
 }
 
 
+// FIXME UNICODE
 GDocument::GDocument(Dialog & parent)
-	: GViewCB<ControlDocument, GViewGladeB>(parent, _("Document Settings"), false),
+	: GViewCB<ControlDocument, GViewGladeB>(parent, lyx::to_utf8(_("Document Settings")), false),
 	lang_(getSecond(getLanguageData(false)))
 {}
 
@@ -101,8 +102,9 @@ void GDocument::doBuild()
 		if (cit->isTeXClassAvailable()) {
 			classcombo_.append_text(cit->description());
 		} else {
+			// FIXME UNICODE
 			string item =
-				bformat(_("Unavailable: %1$s"), cit->description());
+				bformat(lyx::to_utf8(_("Unavailable: %1$s")), cit->description());
 			classcombo_.append_text(item);
 		}
 	}
@@ -124,9 +126,10 @@ void GDocument::doBuild()
 
 	// Populate sans font combo
 	for (int i = 0; tex_fonts_sans_gui[i][0]; ++i) {
-		string font = _(tex_fonts_sans_gui[i]);
+		string font = lyx::to_utf8(_(tex_fonts_sans_gui[i]));
 		if (!controller().isFontAvailable(tex_fonts_sans[i]))
-			font += _(" (not installed)");
+			// FIXME UNICODE
+			font += lyx::to_utf8(_(" (not installed)"));
 		fontsanscombo_.append_text(font);
 	}
 
@@ -136,9 +139,9 @@ void GDocument::doBuild()
 
 	// Populate roman font combo
 	for (int i = 0; tex_fonts_roman_gui[i][0]; ++i) {
-		string font = _(tex_fonts_roman_gui[i]);
+		string font = lyx::to_utf8(_(tex_fonts_roman_gui[i]));
 		if (!controller().isFontAvailable(tex_fonts_roman[i]))
-			font += _(" (not installed)");
+			font += lyx::to_utf8(_(" (not installed)"));
 		fontsanscombo_.append_text(font);
 	}
 
@@ -148,9 +151,9 @@ void GDocument::doBuild()
 
 	// Populate typewriter font combo
 	for (int i = 0; tex_fonts_monospaced_gui[i][0]; ++i) {
-		string font = _(tex_fonts_monospaced_gui[i]);
+		string font = lyx::to_utf8(_(tex_fonts_monospaced_gui[i]));
 		if (!controller().isFontAvailable(tex_fonts_monospaced[i]))
-			font += _(" (not installed)");
+			font += lyx::to_utf8(_(" (not installed)"));
 		fontsanscombo_.append_text(font);
 	}
 
@@ -160,7 +163,7 @@ void GDocument::doBuild()
 
 	// Populate font default family combo
 	for (int i = 0; ControlDocument::fontfamilies_gui[i][0]; ++i)
-		fontdefaultfamilycombo_.append_text(_(ControlDocument::fontfamilies_gui[i]));
+		fontdefaultfamilycombo_.append_text(lyx::to_utf8(_(ControlDocument::fontfamilies_gui[i])));
 
 	xml_->get_widget("FontSize", box);
 	box->pack_start(fontsizecombo_, true, true, 0);
@@ -192,10 +195,10 @@ void GDocument::doBuild()
 	box->pack_start(vspacesizecombo_, true, true, 0);
 	box->show_all();
 	// The order of these items is magic
-	vspacesizecombo_.append_text(_("Small Skip"));
-	vspacesizecombo_.append_text(_("Medium Skip"));
-	vspacesizecombo_.append_text(_("Big Skip"));
-	vspacesizecombo_.append_text(_("Custom"));
+	vspacesizecombo_.append_text(lyx::to_utf8(_("Small Skip")));
+	vspacesizecombo_.append_text(lyx::to_utf8(_("Medium Skip")));
+	vspacesizecombo_.append_text(lyx::to_utf8(_("Big Skip")));
+	vspacesizecombo_.append_text(lyx::to_utf8(_("Custom")));
 	vspacesizemap_[0] = VSpace::SMALLSKIP;
 	vspacesizemap_[1] = VSpace::MEDSKIP;
 	vspacesizemap_[2] = VSpace::BIGSKIP;
@@ -215,17 +218,17 @@ void GDocument::doBuild()
 	xml_->get_widget("PageSize", box);
 	box->pack_start(pagesizecombo_, true, true, 0);
 	box->show_all();
-	pagesizecombo_.append_text(_("Default"));
-	pagesizecombo_.append_text(_("Custom"));
-	pagesizecombo_.append_text(_("US letter"));
-	pagesizecombo_.append_text(_("US legal"));
-	pagesizecombo_.append_text(_("US executive"));
-	pagesizecombo_.append_text(_("A3"));
-	pagesizecombo_.append_text(_("A4"));
-	pagesizecombo_.append_text(_("A5"));
-	pagesizecombo_.append_text(_("B3"));
-	pagesizecombo_.append_text(_("B4"));
-	pagesizecombo_.append_text(_("B5"));
+	pagesizecombo_.append_text(lyx::to_utf8(_("Default")));
+	pagesizecombo_.append_text(lyx::to_utf8(_("Custom")));
+	pagesizecombo_.append_text(lyx::to_utf8(_("US letter")));
+	pagesizecombo_.append_text(lyx::to_utf8(_("US legal")));
+	pagesizecombo_.append_text(lyx::to_utf8(_("US executive")));
+	pagesizecombo_.append_text(lyx::to_utf8(_("A3")));
+	pagesizecombo_.append_text(lyx::to_utf8(_("A4")));
+	pagesizecombo_.append_text(lyx::to_utf8(_("A5")));
+	pagesizecombo_.append_text(lyx::to_utf8(_("B3")));
+	pagesizecombo_.append_text(lyx::to_utf8(_("B4")));
+	pagesizecombo_.append_text(lyx::to_utf8(_("B5")));
 	pagesizecombo_.signal_changed().connect(
 		sigc::mem_fun(*this, &GDocument::pageSizeChanged));
 
@@ -348,9 +351,9 @@ void GDocument::doBuild()
 
 	branchliststore_ = Gtk::ListStore::create(branchCols_);
 	branchesview_->set_model(branchliststore_);
-	branchesview_->append_column_editable(_("Name"), branchColName_);
-	branchesview_->append_column_editable(_("Activated"), branchColActivated_);
-	branchesview_->append_column_editable(_("Color"), branchColColor_);
+	branchesview_->append_column_editable(lyx::to_utf8(_("Name")), branchColName_);
+	branchesview_->append_column_editable(lyx::to_utf8(_("Activated")), branchColActivated_);
+	branchesview_->append_column_editable(lyx::to_utf8(_("Color")), branchColColor_);
 	branchsel_ = branchesview_->get_selection();
 
 	branchsel_->signal_changed().connect(
@@ -402,17 +405,17 @@ void GDocument::update()
 	// Font & Size
 	int i = findToken(tex_fonts_sans, params.fontsSans);
 	if (i >= 0)
-		fontsanscombo_.set_active_text(_(tex_fonts_sans_gui[i]));
+		fontsanscombo_.set_active_text(lyx::to_utf8(_(tex_fonts_sans_gui[i])));
 	i = findToken(tex_fonts_sans, params.fontsRoman);
 	if (i >= 0)
-		fontromancombo_.set_active_text(_(tex_fonts_roman_gui[i]));
+		fontromancombo_.set_active_text(lyx::to_utf8(_(tex_fonts_roman_gui[i])));
 	i = findToken(tex_fonts_monospaced, params.fontsTypewriter);
 	if (i >= 0)
 		fonttypewritercombo_.set_active_text(tex_fonts_monospaced_gui[i]);
 	i = findToken(ControlDocument::fontfamilies, params.fontsDefaultFamily);
 	if (i >= 0)
 		fontdefaultfamilycombo_.set_active_text(
-				_(ControlDocument::fontfamilies_gui[i]));
+							lyx::to_utf8(_(ControlDocument::fontfamilies_gui[i])));
 	fontsizecombo_.set_active_text (params.fontsize);
 	scaleSansSB_->set_value(params.fontsSansScale);
 	scaleTypewriterSB_->set_value(params.fontsTypewriterScale);
@@ -904,7 +907,7 @@ void GDocument::marginsChanged()
 
 void GDocument::numberingChanged()
 {
-	string const numberinglabels[] = {
+	docstring const numberinglabels[] = {
 		_("No headings numbered"),
 		_("Only parts numbered"),
 		_("Chapters and above numbered"),
@@ -916,13 +919,14 @@ void GDocument::numberingChanged()
 	};
 
 	int const value = (int)(numberingadj_->get_value());
-	numberinglabel_->set_label("<i>" + numberinglabels[value] + "</i>");
+	// FIXME UNICODE
+	numberinglabel_->set_label("<i>" + lyx::to_utf8(numberinglabels[value]) + "</i>");
 }
 
 
 void GDocument::TOCChanged()
 {
-	string const TOClabels[] = {
+	docstring const TOClabels[] = {
 		_("Only Parts appear in TOC"),
 		_("Chapters and above appear in TOC"),
 		_("Sections and above appear in TOC"),
@@ -933,7 +937,8 @@ void GDocument::TOCChanged()
 	};
 
 	int const value = (int)(TOCadj_->get_value());
-	TOClabel_->set_label("<i>" + TOClabels[value] + "</i>");
+	// FIXME UNICODE
+	TOClabel_->set_label("<i>" + lyx::to_utf8(TOClabels[value]) + "</i>");
 }
 
 

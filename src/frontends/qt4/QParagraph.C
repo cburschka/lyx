@@ -35,7 +35,7 @@ typedef QController<ControlParagraph, QView<QParagraphDialog> > base_class;
 
 
 QParagraph::QParagraph(Dialog & parent)
-	: base_class(parent, _("Paragraph Settings"))
+	: base_class(parent, lyx::to_utf8(_("Paragraph Settings")))
 {}
 
 
@@ -114,8 +114,8 @@ void QParagraph::update_contents()
 
 	// label width
 	string const & labelwidth = params.labelWidthString();
-	// _() is correct here (this is stupid though !)
-	if (labelwidth != _("Senseless with this layout!")) {
+	// lyx::to_utf8(_() is correct here (this is stupid though !))
+	if (labelwidth != lyx::to_utf8(_("Senseless with this layout!"))) {
 		dialog_->labelwidthGB->setEnabled(true);
 		dialog_->labelWidth->setText(toqstr(labelwidth));
 	} else {

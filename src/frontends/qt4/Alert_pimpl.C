@@ -39,7 +39,7 @@ int prompt_pimpl(string const & tit, string const & question,
 		 int default_button, int cancel_button,
 		 string const & b1, string const & b2, string const & b3)
 {
-	string const title = bformat(_("LyX: %1$s"), tit);
+	string const title = bformat(lyx::to_utf8(_("LyX: %1$s")), tit);
 
 	// FIXME replace that with theApp->gui()->currentView()
 	int res = QMessageBox::information(qApp->focusWidget(),
@@ -59,7 +59,7 @@ int prompt_pimpl(string const & tit, string const & question,
 
 void warning_pimpl(string const & tit, string const & message)
 {
-	string const title = bformat(_("LyX: %1$s"), tit);
+	string const title = bformat(lyx::to_utf8(_("LyX: %1$s")), tit);
 	QMessageBox::warning(qApp->focusWidget(),
 			     toqstr(title),
 			     toqstr(formatted(message)));
@@ -68,7 +68,7 @@ void warning_pimpl(string const & tit, string const & message)
 
 void error_pimpl(string const & tit, string const & message)
 {
-	string const title = bformat(_("LyX: %1$s"), tit);
+	string const title = bformat(lyx::to_utf8(_("LyX: %1$s")), tit);
 	QMessageBox::critical(qApp->focusWidget(),
 			      toqstr(title),
 			      toqstr(formatted(message)));
@@ -77,7 +77,7 @@ void error_pimpl(string const & tit, string const & message)
 
 void information_pimpl(string const & tit, string const & message)
 {
-	string const title = bformat(_("LyX: %1$s"), tit);
+	string const title = bformat(lyx::to_utf8(_("LyX: %1$s")), tit);
 	QMessageBox::information(qApp->focusWidget(),
 				 toqstr(title),
 				 toqstr(formatted(message)));
@@ -87,7 +87,7 @@ void information_pimpl(string const & tit, string const & message)
 pair<bool, string> const
 askForText_pimpl(string const & msg, string const & dflt)
 {
-	string const title = bformat(_("LyX: %1$s"), msg);
+	string const title = bformat(lyx::to_utf8(_("LyX: %1$s")), msg);
 
 	bool ok;
 	QString text = QInputDialog::getText(qApp->focusWidget(),

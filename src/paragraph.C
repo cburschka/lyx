@@ -612,7 +612,7 @@ string const Paragraph::getLabelWidthString() const
 	if (!params().labelWidthString().empty())
 		return params().labelWidthString();
 	else
-		return _("Senseless with this layout!");
+		return lyx::to_utf8(_("Senseless with this layout!"));
 }
 
 

@@ -139,7 +139,8 @@ void InsetERT::read(Buffer const & buf, LyXLex & lex)
 
 string const InsetERT::editMessage() const
 {
-	return _("Opened ERT Inset");
+	// FIXME UNICODE
+	return lyx::to_utf8(_("Opened ERT Inset"));
 }
 
 
@@ -382,7 +383,8 @@ bool InsetERT::getStatus(LCursor & cur, FuncRequest const & cmd,
 
 void InsetERT::setButtonLabel()
 {
-	setLabel(isOpen() ?  _("ERT") : getNewLabel(_("ERT")));
+	// FIXME UNICODE
+	setLabel(isOpen() ?  lyx::to_utf8(_("ERT")) : getNewLabel(lyx::to_utf8(_("ERT"))));
 }
 
 

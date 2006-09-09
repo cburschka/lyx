@@ -109,7 +109,7 @@ string const printable_list(string const & invalid_chars)
 		if (it != begin)
 			ss << ", ";
 		if (*it == ' ')
-			ss << _("space");
+			ss << lyx::to_utf8(_("space"));
 		else
 			ss << *it;
 	}
@@ -138,8 +138,8 @@ QValidator::State PathValidator::validate(QString & qtext, int &) const
 
 		static int counter = 0;
 		if (counter == 0) {
-			Alert::error(_("Invalid filename"),
-				     _("LyX does not provide LateX support for file names containing any of these characters:\n") +
+			Alert::error(lyx::to_utf8(_("Invalid filename")),
+				     lyx::to_utf8(_("LyX does not provide LateX support for file names containing any of these characters:\n")) +
 				     printable_list(invalid_chars));
 		}
 		++counter;

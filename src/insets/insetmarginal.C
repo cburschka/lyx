@@ -27,7 +27,8 @@ using std::ostream;
 InsetMarginal::InsetMarginal(BufferParams const & bp)
 	: InsetFootlike(bp)
 {
-	setLabel(_("margin"));
+	// FIXME UNICODE
+	setLabel(lyx::to_utf8(_("margin")));
 	setInsetName("Marginal");
 }
 
@@ -35,7 +36,8 @@ InsetMarginal::InsetMarginal(BufferParams const & bp)
 InsetMarginal::InsetMarginal(InsetMarginal const & in)
 	: InsetFootlike(in)
 {
-	setLabel(_("margin"));
+	// FIXME UNICODE
+	setLabel(lyx::to_utf8(_("margin")));
 	setInsetName("Marginal");
 }
 
@@ -48,7 +50,8 @@ auto_ptr<InsetBase> InsetMarginal::doClone() const
 
 string const InsetMarginal::editMessage() const
 {
-	return _("Opened Marginal Note Inset");
+	// FIXME UNICODE
+	return lyx::to_utf8(_("Opened Marginal Note Inset"));
 }
 
 

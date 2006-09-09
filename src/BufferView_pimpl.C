@@ -161,11 +161,11 @@ bool BufferView::Pimpl::loadLyXFile(string const & filename, bool tolastfiles)
 	// File already open?
 	if (bufferlist.exists(s)) {
 		string const file = makeDisplayPath(s, 20);
-		string text = bformat(_("The document %1$s is already "
-					"loaded.\n\nDo you want to revert "
-					"to the saved version?"), file);
-		int const ret = Alert::prompt(_("Revert to saved document?"),
-			text, 0, 1,  _("&Revert"), _("&Switch to document"));
+		string text = bformat(lyx::to_utf8(_("The document %1$s is already "
+						     "loaded.\n\nDo you want to revert "
+						     "to the saved version?")), file);
+		int const ret = Alert::prompt(lyx::to_utf8(_("Revert to saved document?")),
+			text, 0, 1,  lyx::to_utf8(_("&Revert")), lyx::to_utf8(_("&Switch to document")));
 
 		if (ret != 0) {
 			setBuffer(bufferlist.getBuffer(s));
@@ -186,11 +186,11 @@ bool BufferView::Pimpl::loadLyXFile(string const & filename, bool tolastfiles)
 			return false;
 		}
 	} else {
-		string text = bformat(_("The document %1$s does not yet "
-					"exist.\n\nDo you want to create "
-					"a new document?"), s);
-		int const ret = Alert::prompt(_("Create new document?"),
-			 text, 0, 1, _("&Create"), _("Cancel"));
+		string text = bformat(lyx::to_utf8(_("The document %1$s does not yet "
+						     "exist.\n\nDo you want to create "
+						     "a new document?")), s);
+		int const ret = Alert::prompt(lyx::to_utf8(_("Create new document?")),
+			 text, 0, 1, lyx::to_utf8(_("&Create")), lyx::to_utf8(_("Cancel")));
 
 		if (ret == 0) {
 			b = newFile(s, string(), true);
@@ -604,7 +604,7 @@ void BufferView::Pimpl::savePosition(unsigned int i)
 				      cursor_.pos());
 	if (i > 0)
 		// emit message signal.
-		bv_->message(bformat(_("Saved bookmark %1$d"), i));
+		bv_->message(bformat(lyx::to_utf8(_("Saved bookmark %1$d")), i));
 }
 
 
@@ -638,7 +638,7 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 
 	if (i > 0)
 		// emit message signal.
-		bv_->message(bformat(_("Moved to bookmark %1$d"), i));
+		bv_->message(bformat(lyx::to_utf8(_("Moved to bookmark %1$d")), i));
 }
 
 
@@ -708,16 +708,16 @@ void BufferView::Pimpl::menuInsertLyXFile(string const & filenm)
 				initpath = trypath;
 		}
 
-		FileDialog fileDlg(_("Select LyX document to insert"),
+		FileDialog fileDlg(lyx::to_utf8(_("Select LyX document to insert")),
 			LFUN_FILE_INSERT,
-			make_pair(string(_("Documents|#o#O")),
+			make_pair(string(lyx::to_utf8(_("Documents|#o#O"))),
 				  string(lyxrc.document_path)),
-			make_pair(string(_("Examples|#E#e")),
+			make_pair(string(lyx::to_utf8(_("Examples|#E#e"))),
 				  string(addPath(package().system_support(), "examples"))));
 
 		FileDialog::Result result =
 			fileDlg.open(initpath,
-				     FileFilterList(_("LyX Documents (*.lyx)")),
+				     FileFilterList(lyx::to_utf8(_("LyX Documents (*.lyx)"))),
 				     string());
 
 		if (result.first == FileDialog::Later)
@@ -728,7 +728,7 @@ void BufferView::Pimpl::menuInsertLyXFile(string const & filenm)
 		// check selected filename
 		if (filename.empty()) {
 			// emit message signal.
-			bv_->message(_("Canceled."));
+			bv_->message(lyx::to_utf8(_("Canceled.")));
 			return;
 		}
 	}
@@ -739,7 +739,7 @@ void BufferView::Pimpl::menuInsertLyXFile(string const & filenm)
 
 	string const disp_fn = makeDisplayPath(filename);
 	// emit message signal.
-	bv_->message(bformat(_("Inserting document %1$s..."), disp_fn));
+	bv_->message(bformat(lyx::to_utf8(_("Inserting document %1$s...")), disp_fn));
 
 	string res;
 	Buffer buf("", false);
@@ -749,9 +749,9 @@ void BufferView::Pimpl::menuInsertLyXFile(string const & filenm)
 		el = buf.errorList("Parse");
 		lyx::cap::pasteParagraphList(cursor_, buf.paragraphs(),
 					     buf.params().textclass, el);
-		res = _("Document %1$s inserted.");
+		res = lyx::to_utf8(_("Document %1$s inserted."));
 	} else
-		res = _("Could not insert document %1$s");
+		res = lyx::to_utf8(_("Could not insert document %1$s"));
 
 	// emit message signal.
 	bv_->message(bformat(res, disp_fn));
@@ -957,10 +957,10 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 
 	case LFUN_UNDO:
 		if (available()) {
-			cur.message(_("Undo"));
+			cur.message(lyx::to_utf8(_("Undo")));
 			cur.clearSelection();
 			if (!textUndo(*bv_))
-				cur.message(_("No further undo information"));
+				cur.message(lyx::to_utf8(_("No further undo information")));
 			update();
 			switchKeyMap();
 		}
@@ -968,10 +968,10 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 
 	case LFUN_REDO:
 		if (available()) {
-			cur.message(_("Redo"));
+			cur.message(lyx::to_utf8(_("Redo")));
 			cur.clearSelection();
 			if (!textRedo(*bv_))
-				cur.message(_("No further redo information"));
+				cur.message(lyx::to_utf8(_("No further redo information")));
 			update();
 			switchKeyMap();
 		}
@@ -1182,20 +1182,20 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		string message;
 		if (count != 1) {
 			if (cur.selection())
-				message = bformat(_("%1$d words in selection."),
+				message = bformat(lyx::to_utf8(_("%1$d words in selection.")),
 					  count);
 				else
-					message = bformat(_("%1$d words in document."),
+					message = bformat(lyx::to_utf8(_("%1$d words in document.")),
 							  count);
 		}
 		else {
 			if (cur.selection())
-				message = _("One word in selection.");
+				message = lyx::to_utf8(_("One word in selection."));
 			else
-				message = _("One word in document.");
+				message = lyx::to_utf8(_("One word in document."));
 		}
 
-		Alert::information(_("Count words"), message);
+		Alert::information(lyx::to_utf8(_("Count words")), message);
 	}
 		break;
 
@@ -1222,9 +1222,9 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		if (!cur.result().dispatched())
 			cur.dispatch(tmpcmd);
 
-		if (cur.result().dispatched()) 
+		if (cur.result().dispatched())
 			cur.clearSelection();
-		
+
 		break;
 	}
 

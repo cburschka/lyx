@@ -33,7 +33,8 @@ class Qt2BC : public GuiBC<QButton, QWidget> {
 public:
 	///
 	Qt2BC(ButtonController const &,
-	      std::string const & = _("Cancel"), std::string const & = _("Close"));
+	      std::string const & = lyx::to_utf8(_("Cancel")),
+	      std::string const & = lyx::to_utf8(_("Close")));
 private:
 	/// Updates the button sensitivity (enabled/disabled)
 	void setButtonEnabled(QButton *, bool enabled) const;

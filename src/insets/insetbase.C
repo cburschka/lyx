@@ -254,7 +254,8 @@ bool InsetBase::autoDelete() const
 
 std::string const InsetBase::editMessage() const
 {
-	return _("Opened inset");
+	// FIXME UNICODE
+	return lyx::to_utf8(_("Opened inset"));
 }
 
 

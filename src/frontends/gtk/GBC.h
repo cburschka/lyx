@@ -24,8 +24,8 @@ namespace frontend {
 class GBC : public GuiBC<Gtk::Button, Gtk::Widget> {
 public:
 	GBC(ButtonController const & parent,
-	    std::string const & cancel = _("Cancel"),
-	    std::string const & close = _("Close"));
+	    std::string const & cancel = lyx::to_utf8(_("Cancel")),
+	    std::string const & close = lyx::to_utf8(_("Close")));
 private:
 	/// Updates the button sensitivity (enabled/disabled)
 	void setButtonEnabled(Gtk::Button *, bool enabled) const;

@@ -54,7 +54,8 @@ string const InsetFloatList::getScreenLabel(Buffer const & buf) const
 		// FIXME UNICODE
 		return lyx::to_utf8(buf.B_(it->second.listName()));
 	else
-		return _("ERROR: Nonexistent float type!");
+		// FIXME UNICODE
+		return lyx::to_utf8(_("ERROR: Nonexistent float type!"));
 }
 
 
@@ -118,8 +119,9 @@ int InsetFloatList::latex(Buffer const & buf, ostream & os,
 			   << lyx::to_utf8(buf.B_(cit->second.listName())) << "}\n";
 		}
 	} else {
+		// FIXME UNICODE
 		os << "%%\\listof{" << getCmdName() << "}{"
-		   << bformat(_("List of %1$s"), cit->second.name())
+		   << bformat(lyx::to_utf8(_("List of %1$s")), cit->second.name())
 		   << "}\n";
 	}
 	return 1;

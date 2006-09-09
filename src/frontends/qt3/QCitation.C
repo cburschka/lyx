@@ -47,7 +47,7 @@ namespace frontend {
 typedef QController<ControlCitation, QView<QCitationDialog> > base_class;
 
 QCitation::QCitation(Dialog & parent)
-	: base_class(parent, _("Citation"))
+	: base_class(parent, lyx::to_utf8(_("Citation")))
 {}
 
 

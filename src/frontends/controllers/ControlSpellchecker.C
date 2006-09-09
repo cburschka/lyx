@@ -108,8 +108,9 @@ bool ControlSpellchecker::initialiseParams(std::string const &)
 	bool const success = speller_->error().empty();
 
 	if (!success) {
-		Alert::error(_("Spellchecker error"),
-			     _("The spellchecker could not be started\n")
+		// FIXME UNICODE
+		Alert::error(lyx::to_utf8(_("Spellchecker error")),
+			     lyx::to_utf8(_("The spellchecker could not be started\n"))
 			     + speller_->error());
 		speller_.reset(0);
 	}
@@ -264,16 +265,17 @@ bool ControlSpellchecker::checkAlive()
 		return true;
 
 	string message;
+	// FIXME UNICODE
 	if (speller_->error().empty())
-		message = _("The spellchecker has died for some reason.\n"
-			    "Maybe it has been killed.");
+		message = lyx::to_utf8(_("The spellchecker has died for some reason.\n"
+					 "Maybe it has been killed."));
 	else
-		message = _("The spellchecker has failed.\n")
+		message = lyx::to_utf8(_("The spellchecker has failed.\n"))
 			+ speller_->error();
 
 	dialog().CancelButton();
 
-	Alert::error(_("The spellchecker has failed"), message);
+	Alert::error(lyx::to_utf8(_("The spellchecker has failed")), message);
 	return false;
 }
 
@@ -286,13 +288,14 @@ void ControlSpellchecker::showSummary()
 	}
 
 	string message;
+	// FIXME UNICODE
 	if (count_ != 1)
-		message = bformat(_("%1$d words checked."), count_);
+		message = bformat(lyx::to_utf8(_("%1$d words checked.")), count_);
 	else
-		message = _("One word checked.");
+		message = lyx::to_utf8(_("One word checked."));
 
 	dialog().CancelButton();
-	Alert::information(_("Spelling check completed"), message);
+	Alert::information(lyx::to_utf8(_("Spelling check completed")), message);
 }
 
 

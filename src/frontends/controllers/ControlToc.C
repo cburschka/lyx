@@ -88,9 +88,9 @@ toc::TocIterator const ControlToc::getCurrentTocItem(
 string const ControlToc::getGuiName(string const & type) const
 {
 	if (type == "TOC")
-		return _("Table of Contents");
+		return lyx::to_utf8(_("Table of Contents"));
 	else
-		return _(toc::getGuiName(type, kernel().buffer()));
+		return lyx::to_utf8(_(toc::getGuiName(type, kernel().buffer())));
 }
 
 

@@ -74,17 +74,19 @@ void ControlInclude::setParams(InsetCommandParams const & params)
 
 string const ControlInclude::browse(string const & in_name, Type in_type) const
 {
-	string const title = _("Select document to include");
+	// FIXME UNICODE
+	string const title = lyx::to_utf8(_("Select document to include"));
 
 	// input TeX, verbatim, or LyX file ?
 	FileFilterList filters;
 	switch (in_type) {
 	case INCLUDE:
 	case INPUT:
-	    filters = FileFilterList(_("LaTeX/LyX Documents (*.tex *.lyx)"));
-	    break;
+		// FIXME UNICODE
+		filters = FileFilterList(lyx::to_utf8(_("LaTeX/LyX Documents (*.tex *.lyx)")));
+		break;
 	case VERBATIM:
-	    break;
+		break;
 	}
 
 	pair<string, string> dir1(N_("Documents|#o#O"),
