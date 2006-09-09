@@ -36,6 +36,7 @@
 
 #include <sstream>
 
+using lyx::docstring;
 using lyx::support::contains;
 
 using std::endl;
@@ -288,10 +289,9 @@ auto_ptr<InsetBase> InsetFloat::doClone() const
 }
 
 
-string const InsetFloat::editMessage() const
+docstring const InsetFloat::editMessage() const
 {
-	// FIXME UNICODE
-	return lyx::to_utf8(_("Opened Float Inset"));
+	return _("Opened Float Inset");
 }
 
 

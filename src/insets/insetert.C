@@ -36,6 +36,7 @@
 
 #include <sstream>
 
+using lyx::docstring;
 using lyx::pos_type;
 using lyx::support::token;
 
@@ -137,10 +138,9 @@ void InsetERT::read(Buffer const & buf, LyXLex & lex)
 }
 
 
-string const InsetERT::editMessage() const
+docstring const InsetERT::editMessage() const
 {
-	// FIXME UNICODE
-	return lyx::to_utf8(_("Opened ERT Inset"));
+	return _("Opened ERT Inset");
 }
 
 

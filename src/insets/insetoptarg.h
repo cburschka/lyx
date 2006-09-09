@@ -27,7 +27,7 @@ public:
 	/// code of the inset
 	InsetBase::Code lyxCode() const { return InsetBase::OPTARG_CODE; }
 	/// return an message upon editing
-	std::string const editMessage() const;
+	virtual lyx::docstring const editMessage() const;
 
 	/// Standard LaTeX output -- short-circuited
 	int latex(Buffer const &, std::ostream &,

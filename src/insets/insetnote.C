@@ -34,6 +34,8 @@
 
 #include <sstream>
 
+using lyx::docstring;
+
 using std::string;
 using std::auto_ptr;
 using std::istringstream;
@@ -141,10 +143,9 @@ auto_ptr<InsetBase> InsetNote::doClone() const
 }
 
 
-string const InsetNote::editMessage() const
+docstring const InsetNote::editMessage() const
 {
-	// FIXME UNICODE
-	return lyx::to_utf8(_("Opened Note Inset"));
+	return _("Opened Note Inset");
 }
 
 

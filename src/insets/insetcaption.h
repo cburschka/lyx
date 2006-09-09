@@ -33,7 +33,7 @@ public:
 	///
 	virtual InsetBase::Code lyxCode() const;
 	///
-	virtual std::string const editMessage() const;
+	virtual lyx::docstring const editMessage() const;
 	///
 	virtual void cursorPos
 		(CursorSlice const & sl, bool boundary, int & x, int & y) const;

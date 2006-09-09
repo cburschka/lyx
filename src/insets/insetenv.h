@@ -30,7 +30,7 @@ public:
 	int latex(Buffer const &, std::ostream &,
 		  OutputParams const &) const;
 	///
-	std::string const editMessage() const;
+	virtual lyx::docstring const editMessage() const;
 	///
 	InsetBase::EDITABLE editable() const { return HIGHLY_EDITABLE; }
 	///

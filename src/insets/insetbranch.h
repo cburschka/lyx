@@ -41,7 +41,7 @@ public:
 	///
 	~InsetBranch();
 	///
-	std::string const editMessage() const;
+	virtual lyx::docstring const editMessage() const;
 	///
 	InsetBase::Code lyxCode() const { return InsetBase::BRANCH_CODE; }
 	///

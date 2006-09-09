@@ -75,10 +75,9 @@ void InsetCaption::read(Buffer const & buf, LyXLex & lex)
 }
 
 
-string const InsetCaption::editMessage() const
+docstring const InsetCaption::editMessage() const
 {
-	// FIXME UNICODE
-	return lyx::to_utf8(_("Opened Caption Inset"));
+	return _("Opened Caption Inset");
 }
 
 

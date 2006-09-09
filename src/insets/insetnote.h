@@ -45,7 +45,7 @@ public:
 	///
 	~InsetNote();
 	///
-	std::string const editMessage() const;
+	virtual lyx::docstring const editMessage() const;
 	///
 	InsetBase::Code lyxCode() const { return InsetBase::NOTE_CODE; }
 	///

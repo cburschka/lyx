@@ -26,6 +26,8 @@
 
 #include <sstream>
 
+using lyx::docstring;
+
 using std::string;
 using std::auto_ptr;
 using std::istringstream;
@@ -67,10 +69,9 @@ auto_ptr<InsetBase> InsetBranch::doClone() const
 }
 
 
-string const InsetBranch::editMessage() const
+docstring const InsetBranch::editMessage() const
 {
-	// FIXME UNICODE
-	return lyx::to_utf8(_("Opened Branch Inset"));
+	return _("Opened Branch Inset");
 }
 
 

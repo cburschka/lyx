@@ -55,7 +55,7 @@ public:
 	/// (Re-)set the character style parameters from \p cs
 	void setDefined(CharStyles::iterator cs);
 	///
-	std::string const editMessage() const;
+	virtual lyx::docstring const editMessage() const;
 	///
 	InsetBase::Code lyxCode() const { return InsetBase::CHARSTYLE_CODE; }
 	///

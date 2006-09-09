@@ -23,6 +23,7 @@
 
 #include "support/std_ostream.h"
 
+using lyx::docstring;
 
 using std::string;
 using std::auto_ptr;
@@ -53,10 +54,9 @@ auto_ptr<InsetBase> InsetFoot::doClone() const
 }
 
 
-string const InsetFoot::editMessage() const
+docstring const InsetFoot::editMessage() const
 {
-	// FIXME UNICODE
-	return lyx::to_utf8(_("Opened Footnote Inset"));
+	return _("Opened Footnote Inset");
 }
 
 

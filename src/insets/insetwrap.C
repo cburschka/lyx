@@ -34,6 +34,8 @@
 
 #include <sstream>
 
+using lyx::docstring;
+
 using std::string;
 using std::endl;
 using std::auto_ptr;
@@ -186,10 +188,9 @@ auto_ptr<InsetBase> InsetWrap::doClone() const
 }
 
 
-string const InsetWrap::editMessage() const
+docstring const InsetWrap::editMessage() const
 {
-	// FIXME UNICODE
-	return lyx::to_utf8(_("Opened Wrap Inset"));
+	return _("Opened Wrap Inset");
 }
 
 

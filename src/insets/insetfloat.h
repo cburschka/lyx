@@ -60,7 +60,7 @@ public:
 	int docbook(Buffer const &, std::ostream &,
 		    OutputParams const &) const;
 	///
-	std::string const editMessage() const;
+	virtual lyx::docstring const editMessage() const;
 	///
 	bool insetAllowed(InsetBase::Code) const;
 	/** returns true if, when outputing LaTeX, font changes should

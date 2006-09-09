@@ -34,7 +34,7 @@ public:
 	int latex(Buffer const &, std::ostream &,
 		  OutputParams const &) const;
 	///
-	string const editMessage() const;
+	virtual lyx::docstring const editMessage() const;
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 

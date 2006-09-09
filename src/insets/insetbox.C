@@ -30,6 +30,8 @@
 
 #include <sstream>
 
+using lyx::docstring;
+
 using std::auto_ptr;
 using std::string;
 using std::istringstream;
@@ -116,9 +118,9 @@ auto_ptr<InsetBase> InsetBox::doClone() const
 }
 
 
-string const InsetBox::editMessage() const
+docstring const InsetBox::editMessage() const
 {
-	return lyx::to_utf8(_("Opened Box Inset"));
+	return _("Opened Box Inset");
 }
 
 

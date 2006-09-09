@@ -19,6 +19,8 @@
 
 #include <sstream>
 
+using lyx::docstring;
+
 using std::string;
 using std::auto_ptr;
 using std::ostream;
@@ -53,10 +55,9 @@ auto_ptr<InsetBase> InsetOptArg::doClone() const
 }
 
 
-string const InsetOptArg::editMessage() const
+docstring const InsetOptArg::editMessage() const
 {
-	// FIXME UNICODE
-	return lyx::to_utf8(_("Opened Optional Argument Inset"));
+	return _("Opened Optional Argument Inset");
 }
 
 

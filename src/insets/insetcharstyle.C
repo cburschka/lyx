@@ -114,10 +114,9 @@ void InsetCharStyle::setDefined(CharStyles::iterator cs)
 }
 
 
-string const InsetCharStyle::editMessage() const
+docstring const InsetCharStyle::editMessage() const
 {
-	// FIXME UNICODE
-	return lyx::to_utf8(_("Opened CharStyle Inset"));
+	return _("Opened CharStyle Inset");
 }
 
 

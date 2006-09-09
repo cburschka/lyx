@@ -53,7 +53,7 @@ public:
 	/// draw inset selection
 	void drawSelection(PainterInfo & pi, int x, int y) const;
 	///
-	std::string const editMessage() const;
+	virtual lyx::docstring const editMessage() const;
 	///
 	EDITABLE editable() const { return HIGHLY_EDITABLE; }
 	///

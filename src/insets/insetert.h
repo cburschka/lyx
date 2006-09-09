@@ -45,7 +45,7 @@ public:
 	///
 	void read(Buffer const & buf, LyXLex & lex);
 	///
-	std::string const editMessage() const;
+	virtual lyx::docstring const editMessage() const;
 	///
 	bool insetAllowed(InsetBase::Code code) const;
 	///

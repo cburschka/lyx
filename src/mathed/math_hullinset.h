@@ -186,7 +186,7 @@ private:
 //
 public:
 	/// what appears in the minibuffer when opening
-	virtual std::string const editMessage() const;
+	virtual lyx::docstring const editMessage() const;
 	///
 	virtual void mutateToText();
 	///

@@ -12,6 +12,8 @@
 #ifndef INSETBASE_H
 #define INSETBASE_H
 
+#include "support/docstring.h"
+
 #include <memory>
 #include <string>
 #include <vector>
@@ -210,7 +212,7 @@ public:
 		HIGHLY_EDITABLE
 	};
 	/// what appears in the minibuffer when opening
-	virtual std::string const editMessage() const;
+	virtual lyx::docstring const editMessage() const;
 	///
 	virtual EDITABLE editable() const;
 	/// can we go further down on mouse click?

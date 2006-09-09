@@ -1310,10 +1310,9 @@ void MathHullInset::edit(LCursor & cur, bool left)
 }
 
 
-string const MathHullInset::editMessage() const
+docstring const MathHullInset::editMessage() const
 {
-	// FIXME UNICODE
-	return lyx::to_utf8(_("Math editor mode"));
+	return _("Math editor mode");
 }
 
 

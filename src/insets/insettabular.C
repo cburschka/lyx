@@ -449,10 +449,9 @@ void InsetTabular::drawCellLines(Painter & pain, int x, int y,
 }
 
 
-string const InsetTabular::editMessage() const
+docstring const InsetTabular::editMessage() const
 {
-	// FIXME UNICODE
-	return lyx::to_utf8(_("Opened table"));
+	return _("Opened table");
 }
 
 

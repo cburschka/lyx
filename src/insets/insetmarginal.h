@@ -32,7 +32,7 @@ public:
 	int docbook(Buffer const &, std::ostream &,
 		    OutputParams const & runparams) const;
 	///
-	std::string const editMessage() const;
+	virtual lyx::docstring const editMessage() const;
 protected:
 	InsetMarginal(InsetMarginal const &);
 private:

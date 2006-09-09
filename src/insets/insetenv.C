@@ -21,6 +21,8 @@
 #include "support/std_ostream.h"
 
 
+using lyx::docstring;
+
 using std::string;
 using std::auto_ptr;
 using std::ostream;
@@ -60,10 +62,10 @@ void InsetEnvironment::read(Buffer const & buf, LyXLex & lex)
 }
 
 
-string const InsetEnvironment::editMessage() const
+docstring const InsetEnvironment::editMessage() const
 {
 	// FIXME UNICODE
-	return lyx::to_utf8(_("Opened Environment Inset: ")) + getInsetName();
+	return _("Opened Environment Inset: ") + lyx::from_utf8(getInsetName());
 }
 
 

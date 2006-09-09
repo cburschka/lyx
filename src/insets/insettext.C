@@ -225,10 +225,9 @@ void InsetText::drawSelection(PainterInfo & pi, int x, int y) const
 }
 
 
-string const InsetText::editMessage() const
+docstring const InsetText::editMessage() const
 {
-	// FIXME UNICODE
-	return lyx::to_utf8(_("Opened Text Inset"));
+	return _("Opened Text Inset");
 }
 
 
