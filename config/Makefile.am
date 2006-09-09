@@ -2,9 +2,6 @@ include $(top_srcdir)/config/common.am
 
 EXTRA_DIST = \
 	common.am \
-	gnome--.m4 \
-	gnome.m4 \
-	gtk--.m4 \
 	libtool.m4 \
 	lyxinclude25x.m4 \
 	lyxinclude.m4 \
