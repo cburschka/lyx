@@ -42,7 +42,7 @@ public:
 	///
 	void setInsetName(std::string const & s) { name_ = s; }
 	///
-	std::string const & getInsetName() const { return name_; }
+	virtual std::string const & getInsetName() const { return name_; }
 	///
 	virtual void setBackgroundColor(LColor_color);
 	///
