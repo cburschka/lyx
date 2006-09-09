@@ -34,7 +34,7 @@ Include "stdtoolbars.ui"
 Toolbars
 	"standard" "on,top"
 	"extra" "on,top"
-	"table" "off,bottom"
-	"math" "off,bottom"
+	"table" "table,bottom"
+	"math" "math,bottom"
 	"minibuffer" "off,bottom"
 End
