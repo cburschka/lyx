@@ -11,6 +11,8 @@
 #ifndef MESSAGES_H
 #define MESSAGES_H
 
+#include "support/docstring.h"
+
 #include <boost/scoped_ptr.hpp>
 #include <string>
 
@@ -24,7 +26,7 @@ public:
 	///
 	~Messages();
 	///
-	std::string const get(std::string const & msg) const;
+	lyx::docstring const get(std::string const & msg) const;
 private:
 	class Pimpl;
 	boost::scoped_ptr<Pimpl> pimpl_;

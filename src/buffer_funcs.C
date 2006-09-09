@@ -459,13 +459,15 @@ void setLabel(Buffer const & buf, ParIterator & it)
 			break;
 		}
 
-		par.params().labelString(counters.counterLabel(buf.B_(format)));
+		// FIXME UNICODE
+		par.params().labelString(counters.counterLabel(lyx::to_utf8(buf.B_(format))));
 	} else if (layout->labeltype == LABEL_BIBLIO) {// ale970302
 		counters.step("bibitem");
 		int number = counters.value("bibitem");
 		if (par.bibitem())
 			par.bibitem()->setCounter(number);
-		par.params().labelString(buf.B_(layout->labelstring()));
+		// FIXME UNICODE
+		par.params().labelString(lyx::to_utf8(buf.B_(layout->labelstring())));
 		// In biblio should't be following counters but...
 	} else if (layout->labeltype == LABEL_SENSITIVE) {
 		// Search for the first float or wrap inset in the iterator
@@ -488,33 +490,36 @@ void setLabel(Buffer const & buf, ParIterator & it)
 			counters.step(fl.type());
 
 			// Doesn't work... yet.
-			s = bformat(_("%1$s #:"), buf.B_(fl.name()));
+			// FIXME UNICODE
+			s = bformat(_("%1$s #:"), lyx::to_utf8(buf.B_(fl.name())));
 		} else {
 			// par->SetLayout(0);
-			s = buf.B_(layout->labelstring());
+			// FIXME UNICODE
+			s = lyx::to_utf8(buf.B_(layout->labelstring()));
 		}
 
 		par.params().labelString(s);
 	} else if (layout->labeltype == LABEL_NO_LABEL)
 		par.params().labelString(string());
 	else
-		par.params().labelString(buf.B_(layout->labelstring()));
+		// FIXME UNICODE
+		par.params().labelString(lyx::to_utf8(buf.B_(layout->labelstring())));
 }
 
 } // anon namespace
 
 
-bool updateCurrentLabel(Buffer const & buf, 
-	ParIterator & it)	
+bool updateCurrentLabel(Buffer const & buf,
+	ParIterator & it)
 {
     if (it == par_iterator_end(buf.inset()))
-        return false;
+	return false;
 
 //	if (it.lastpit == 0 && LyXText::isMainText())
 //		return false;
 
 	switch (it->layout()->labeltype) {
-		
+
 	case LABEL_NO_LABEL:
 	case LABEL_MANUAL:
 	case LABEL_BIBLIO:
@@ -537,7 +542,7 @@ bool updateCurrentLabel(Buffer const & buf,
 }
 
 
-void updateLabels(Buffer const & buf, 
+void updateLabels(Buffer const & buf,
 	ParIterator & from, ParIterator & to)
 {
 	for (ParIterator it = from; it != to; ++it) {
@@ -551,7 +556,7 @@ void updateLabels(Buffer const & buf,
 }
 
 
-void updateLabels(Buffer const & buf, 
+void updateLabels(Buffer const & buf,
 	ParIterator & iter)
 {
 	if (updateCurrentLabel(buf, iter))
@@ -565,7 +570,7 @@ void updateLabels(Buffer const & buf)
 {
 	// start over the counters
 	buf.params().getLyXTextClass().counters().reset();
-	
+
 	ParIterator const end = par_iterator_end(buf.inset());
 
 	for (ParIterator it = par_iterator_begin(buf.inset()); it != end; ++it) {
@@ -590,8 +595,9 @@ string expandLabel(Buffer const & buf,
 {
 	LyXTextClass const & tclass = buf.params().getLyXTextClass();
 
-	string fmt = buf.B_(appendix ? layout->labelstring_appendix()
-			    : layout->labelstring());
+	// FIXME UNICODE
+	string fmt = lyx::to_utf8(buf.B_(appendix ? layout->labelstring_appendix()
+				  : layout->labelstring()));
 
 	// handle 'inherited level parts' in 'fmt',
 	// i.e. the stuff between '@' in   '@Section@.\arabic{subsection}'

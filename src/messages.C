@@ -14,6 +14,8 @@
 #include "support/filetools.h"
 #include "support/environment.h"
 #include "support/package.h"
+#include "support/docstring.h"
+#include "support/types.h"
 
 #include <boost/current_function.hpp>
 #include <boost/regex.hpp>
@@ -24,8 +26,12 @@ using lyx::support::package;
 using lyx::support::getEnv;
 using lyx::support::setEnv;
 
-using std::string;
+using lyx::char_type;
+using lyx::docstring;
+using lyx::from_ascii;
 
+using std::string;
+using std::endl;
 
 #ifdef ENABLE_NLS
 
@@ -46,7 +52,7 @@ public:
 		  mssg_gl(std::use_facet<std::messages<char> >(loc_gl))
 	{
 		//lyxerr << "Messages: language(" << l
-		//       << ") in dir(" << dir << ")" << std::endl;
+		//       << ") in dir(" << dir << ")" << endl;
 
 		cat_gl = mssg_gl.open(PACKAGE, loc_gl, package().locale_dir().c_str());
 
@@ -57,7 +63,7 @@ public:
 		mssg_gl.close(cat_gl);
 	}
 
-	string const get(string const & msg) const
+	docstring const get(string const & msg) const
 	{
 		return mssg_gl.get(cat_gl, 0, 0, msg);
 	}
@@ -100,15 +106,15 @@ public:
 		string::size_type i = lang_.find(".");
 		lang_ = lang_.substr(0, i);
 		lyxerr[Debug::DEBUG] << BOOST_CURRENT_FUNCTION
-				     << ": language(" << lang_ << ")" << std::endl;
+				     << ": language(" << lang_ << ")" << endl;
 	}
 
 	~Pimpl() {}
 
-	string const get(string const & m) const
+	docstring const get(string const & m) const
 	{
 		if (m.empty())
-			return m;
+			return lyx::from_ascii(m);
 
 		// In this order, see support/filetools.C:
 		string lang = getEnv("LC_ALL");
@@ -132,7 +138,7 @@ public:
 		static bool warned = false;
 		if (!warned && !lc_msgs) {
 			warned = true;
-			lyxerr << "Locale " << lang_ << " could not be set" << std::endl;
+			lyxerr << "Locale " << lang_ << " could not be set" << endl;
 		}
 #endif
 		// CTYPE controls what getmessage thinks what encoding the po file uses
@@ -149,9 +155,23 @@ public:
 				<< "Error code: " << errno << '\n'
 				<< "Lang, mess: " << lang_ << " " << m << '\n'
 				<< "Directory : " << package().locale_dir() << '\n'
-				<< "Rtn value : " << c << std::endl;
+				<< "Rtn value : " << c << endl;
 		}
+#ifdef WORDS_BIGENDIAN
+		static const char * codeset = "UCS-4BE";
+#else
+		static const char * codeset = "UCS-4LE";
+#endif
+		if (!bind_textdomain_codeset(PACKAGE, codeset)) {
+			lyxerr[Debug::DEBUG]
+				<< BOOST_CURRENT_FUNCTION << '\n'
+				<< "Error code: " << errno << '\n'
+				<< "Codeset   : " << codeset << '\n'
+				<< endl;
+		}
+
 		textdomain(PACKAGE);
+#if 0
 		const char* msg = gettext(m.c_str());
 		string translated(msg ? msg : m);
 		// Some english words have different translations, depending
@@ -168,6 +188,22 @@ public:
 		boost::smatch sub;
 		if (regex_match(translated, sub, reg))
 			translated = sub.str(1);
+#else
+		char const * tmp = m.c_str();
+		char const * msg = gettext(tmp);
+		docstring translated;
+		if (!msg) {
+			lyxerr << "Undefined result from gettext" << endl;
+			translated = from_ascii(tmp);
+		} else if (msg == tmp) {
+			lyxerr << "Same as entered returned" << endl;
+			translated = from_ascii(tmp);
+		} else {
+			lyxerr << "We got a translation" << endl;
+			lyx::char_type const * ucs4 = reinterpret_cast<lyx::char_type const *>(msg);
+			translated = ucs4;
+		}
+#endif
 #ifdef HAVE_LC_MESSAGES
 		setlocale(LC_MESSAGES, lang.c_str());
 #endif
@@ -211,7 +247,7 @@ Messages::~Messages()
 {}
 
 
-string const Messages::get(string const & msg) const
+docstring const Messages::get(string const & msg) const
 {
 	return pimpl_->get(msg);
 }

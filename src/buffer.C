@@ -1385,13 +1385,15 @@ Language const * Buffer::getLanguage() const
 }
 
 
-string const Buffer::B_(string const & l10n) const
+docstring const Buffer::B_(string const & l10n) const
 {
 	if (pimpl_->messages.get()) {
 		return pimpl_->messages->get(l10n);
 	}
 
-	return _(l10n);
+	// FIXME UNICODE When _() is changed to return a docstring
+	// the from_utf8 can be removed
+	return lyx::from_utf8(_(l10n));
 }
 
 
@@ -1599,9 +1601,9 @@ void Buffer::getSourceCode(ostream & os, lyx::pit_type par_begin, lyx::pit_type 
 
 	if (full_source) {
 		os << "% Preview source code\n\n";
-		if (isLatex()) 
+		if (isLatex())
 			writeLaTeXSource(os, filePath(), runparams, true, true);
-		else 
+		else
 			writeDocBookSource(os, fileName(), runparams, false);
 	} else {
 		runparams.par_begin = par_begin;

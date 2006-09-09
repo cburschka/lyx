@@ -14,6 +14,7 @@
 #include "gettext.h"
 #include "messages.h"
 #include "support/environment.h"
+#include "support/docstring.h"
 
 #ifdef HAVE_LOCALE_H
 #  include <locale.h>
@@ -37,7 +38,7 @@ Messages & getLyXMessages()
 
 string const _(string const & str)
 {
-	return getLyXMessages().get(str);
+	return lyx::to_utf8(getLyXMessages().get(str));
 }
 
 

@@ -20,6 +20,7 @@
 
 #include "support/limited_stack.h"
 #include "support/types.h"
+#include "support/docstring.h"
 
 #include <boost/scoped_ptr.hpp>
 #include <boost/signal.hpp>
@@ -165,7 +166,7 @@ public:
 	/// returns the main language for the buffer (document)
 	Language const * getLanguage() const;
 	/// get l10n translated to the buffers language
-	std::string const B_(std::string const & l10n) const;
+	lyx::docstring const B_(std::string const & l10n) const;
 
 	///
 	int runChktex();
