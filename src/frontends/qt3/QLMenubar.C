@@ -22,6 +22,8 @@
 #include <qmenubar.h>
 #include <qcursor.h>
 
+using lyx::docstring;
+
 using std::pair;
 using std::string;
 
@@ -50,7 +52,7 @@ QLMenubar::QLMenubar(LyXView * view, MenuBackend & mbe)
 #endif
 }
 
-void QLMenubar::openByName(string const & name)
+void QLMenubar::openByName(docstring const & name)
 {
 	NameMap::const_iterator const cit = name_map_.find(name);
 	if (cit == name_map_.end())

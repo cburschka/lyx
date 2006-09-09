@@ -13,7 +13,7 @@
 #ifndef MENUBAR_H
 #define MENUBAR_H
 
-#include <string>
+#include "support/docstring.h"
 
 /**
  * The LyX GUI independent menubar class
@@ -24,7 +24,7 @@ public:
 	///
 	virtual ~Menubar() {}
 	/// Opens a top-level submenu given its name
-	virtual void openByName(std::string const &) = 0;
+	virtual void openByName(lyx::docstring const &) = 0;
 	/// update the state of the menuitems
 	virtual void update() = 0;
 };

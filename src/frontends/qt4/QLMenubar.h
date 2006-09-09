@@ -41,7 +41,7 @@ public:
 	QLMenubar(LyXView *, MenuBackend &);
 
 	/// opens a top-level submenu given its name
-	void openByName(std::string const &);
+	void openByName(lyx::docstring const &);
 
 	/// return the owning view
 	GuiView * view();
@@ -69,7 +69,7 @@ private:
 	/// menu controller
 	MenuBackend & menubackend_;
 
-	typedef std::map<std::string, QLPopupMenu *> NameMap;
+	typedef std::map<lyx::docstring, QLPopupMenu *> NameMap;
 
 	/// name to menu for openByName
 	NameMap name_map_;

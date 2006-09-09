@@ -17,9 +17,6 @@
 #include "funcrequest.h"
 #include "MenuBackend.h"
 
-#include <utility>
-#include <string>
-
 namespace lyx {
 namespace frontend {
 
@@ -46,15 +43,15 @@ private:
 	QLMenubar * owner_;
 
 	/// the name of this menu
-	std::string name_;
+	lyx::docstring name_;
 
 private:
 	/// Get a Menu item label from the menu backend
-	std::string const getLabel(MenuItem const & mi);
+	lyx::docstring const getLabel(MenuItem const & mi);
 
 	/// add binding keys a the menu item label.
 	/// \todo Mac specific binding handling.
-	void addBinding(std::string & label, MenuItem const & mi);
+	void addBinding(lyx::docstring & label, MenuItem const & mi);
 
 	/// Top Level Menu
 	Menu topLevelMenu_;

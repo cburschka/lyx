@@ -68,6 +68,28 @@ int compare_no_case(string const & s, string const & s2)
 }
 
 
+int compare_no_case(docstring const & s, docstring const & s2)
+{
+	docstring::const_iterator p = s.begin();
+	docstring::const_iterator p2 = s2.begin();
+
+	while (p != s.end() && p2 != s2.end()) {
+		int const lc1 = tolower(*p);
+		int const lc2 = tolower(*p2);
+		if (lc1 != lc2)
+			return (lc1 < lc2) ? -1 : 1;
+		++p;
+		++p2;
+	}
+
+	if (s.size() == s2.size())
+		return 0;
+	if (s.size() < s2.size())
+		return -1;
+	return 1;
+}
+
+
 namespace {
 	int ascii_tolower(int c) {
 		if (c >= 'A' && c <= 'Z')
@@ -210,7 +232,7 @@ char_type lowercase(char_type c)
 {
 	if (c >= 256)
 		return c;
-	
+
 	return tolower(c);
 }
 
@@ -338,6 +360,28 @@ string const token(string const & a, char delim, int n)
 			++i; // step delim
 	// i is now the n'th delim (or string::npos)
 	if (i == string::npos) return string();
+	k = a.find(delim, i);
+	// k is now the n'th + 1 delim (or string::npos)
+
+	return a.substr(i, k - i);
+}
+
+
+docstring const token(docstring const & a, char_type delim, int n)
+{
+	if (a.empty()) return docstring();
+
+	string::size_type k = 0;
+	string::size_type i = 0;
+
+	// Find delimiter or end of string
+	for (; n--;)
+		if ((i = a.find(delim, i)) == docstring::npos)
+			break;
+		else
+			++i; // step delim
+	// i is now the n'th delim (or string::npos)
+	if (i == docstring::npos) return docstring();
 	k = a.find(delim, i);
 	// k is now the n'th + 1 delim (or string::npos)
 

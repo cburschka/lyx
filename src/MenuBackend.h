@@ -74,23 +74,23 @@ public:
 	explicit MenuItem(Kind kind);
 
 	MenuItem(Kind kind,
-		 std::string const & label,
-		 std::string const & command = std::string(),
+		 lyx::docstring const & label,
+		 lyx::docstring const & submenu = lyx::docstring(),
 		 bool optional = false);
 
 	MenuItem(Kind kind,
-		 std::string const & label,
+		 lyx::docstring const & label,
 		 FuncRequest const & func,
 		 bool optional = false);
 
 	/// This one is just to please boost::shared_ptr<>
 	~MenuItem();
 	/// The label of a given menuitem
-	std::string const label() const;
+	lyx::docstring const label() const;
 	/// The keyboard shortcut (usually underlined in the entry)
-	std::string const shortcut() const;
+	lyx::docstring const shortcut() const;
 	/// The complete label, with label and shortcut separated by a '|'
-	std::string const fulllabel() const { return label_;}
+	lyx::docstring const fulllabel() const { return label_;}
 	/// The kind of entry
 	Kind kind() const { return kind_; }
 	/// the action (if relevant)
@@ -104,11 +104,11 @@ public:
 	/// returns the status of the lfun associated with this entry
 	void status(FuncStatus const & status) { status_ = status; }
 	/// returns the binding associated to this action
-	std::string const binding() const;
+	lyx::docstring const binding() const;
 	/// the description of the  submenu (if relevant)
-	std::string const & submenuname() const { return submenuname_; }
+	lyx::docstring const & submenuname() const { return submenuname_; }
 	/// set the description of the  submenu
-	void submenuname(std::string const & name) { submenuname_ = name; }
+	void submenuname(lyx::docstring const & name) { submenuname_ = name; }
 	///
 	Menu * submenu() const { return submenu_.get(); }
 	///
@@ -119,11 +119,11 @@ private:
 	///
 	Kind kind_;
 	///
-	std::string label_;
+	lyx::docstring label_;
 	///
 	FuncRequest func_;
 	///
-	std::string submenuname_;
+	lyx::docstring submenuname_;
 	///
 	bool optional_;
 	///
@@ -143,14 +143,14 @@ public:
 	///
 	typedef ItemList::size_type size_type;
 	///
-	explicit Menu(std::string const & name = std::string())
+	explicit Menu(lyx::docstring const & name = lyx::docstring())
 		: name_(name) {}
 	///
 	Menu & add(MenuItem const &, LyXView const * view = 0);
 	///
 	Menu & read(LyXLex &);
 	///
-	std::string const & name() const { return name_; }
+	lyx::docstring const & name() const { return name_; }
 	///
 	bool empty() const { return items_.empty(); }
 	/// Clear the menu content.
@@ -178,7 +178,7 @@ private:
 	///
 	ItemList items_;
 	///
-	std::string name_;
+	lyx::docstring name_;
 };
 
 
@@ -198,11 +198,11 @@ public:
 	///
 	void add(Menu const &);
 	///
-	bool hasMenu(std::string const &) const;
+	bool hasMenu(lyx::docstring const &) const;
 	///
-	Menu & getMenu(std::string const &);
+	Menu & getMenu(lyx::docstring const &);
 	///
-	Menu const & getMenu(std::string const &) const;
+	Menu const & getMenu(lyx::docstring const &) const;
 	///
 	Menu const & getMenubar() const;
 	///
@@ -211,7 +211,7 @@ public:
 	    will be removed by expand() in other menus. This is used by
 	    the Qt/Mac code
 	*/
-	void specialMenu(std::string const &);
+	void specialMenu(lyx::docstring const &);
 	/// Expands some special entries of the menu
 	/** The entries with the following kind are expanded to a
 	    sequence of Command MenuItems: Lastfiles, Documents,

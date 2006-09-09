@@ -40,7 +40,7 @@ class QLPopupMenu : public QPopupMenu {
 	Q_OBJECT
 public:
 	QLPopupMenu(QLMenubar * owner,
-		    std::string const & name, bool toplevel);
+		    lyx::docstring const & name, bool toplevel);
 
 	/// populate the menu
 	void populate(Menu * menu);
@@ -54,7 +54,7 @@ private:
 	QLMenubar * owner_;
 
 	/// the name of this menu
-	std::string name_;
+	lyx::docstring name_;
 
 	///
 	typedef std::vector<FuncRequest> Funcs;

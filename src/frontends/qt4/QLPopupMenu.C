@@ -67,7 +67,7 @@ QLPopupMenu::QLPopupMenu(QLMenubar * owner,
 void QLPopupMenu::update()
 {
 	lyxerr[Debug::GUI] << BOOST_CURRENT_FUNCTION << endl;
-	lyxerr[Debug::GUI] << "\tTriggered menu: " << name_ << endl;
+	lyxerr[Debug::GUI] << "\tTriggered menu: " << lyx::to_utf8(name_) << endl;
 
 	clear();
 
@@ -78,7 +78,7 @@ void QLPopupMenu::update()
 	owner_->backend().expand(fromLyxMenu, topLevelMenu_, owner_->view());
 
 	if (!owner_->backend().hasMenu(topLevelMenu_.name())) {
-		lyxerr[Debug::GUI] << "\tWARNING: menu seems empty" << topLevelMenu_.name() << endl;
+		lyxerr[Debug::GUI] << "\tWARNING: menu seems empty" << lyx::to_utf8(topLevelMenu_.name()) << endl;
 	}
 	populate(this, &topLevelMenu_);
 
@@ -87,9 +87,9 @@ void QLPopupMenu::update()
 
 void QLPopupMenu::populate(QMenu* qMenu, Menu * menu)
 {
-	lyxerr[Debug::GUI] << "populating menu " << menu->name() ;
+	lyxerr[Debug::GUI] << "populating menu " << lyx::to_utf8(menu->name()) ;
 	if (menu->size() == 0) {
-		lyxerr[Debug::GUI] << "\tERROR: empty menu " << menu->name() << endl;
+		lyxerr[Debug::GUI] << "\tERROR: empty menu " << lyx::to_utf8(menu->name()) << endl;
 		return;
 	}
 	else {
@@ -108,46 +108,48 @@ void QLPopupMenu::populate(QMenu* qMenu, Menu * menu)
 
 		} else if (m->kind() == MenuItem::Submenu) {
 
-			lyxerr[Debug::GUI] << "** creating New Sub-Menu " << getLabel(*m) << endl;
+			lyxerr[Debug::GUI] << "** creating New Sub-Menu " << lyx::to_utf8(getLabel(*m)) << endl;
 			QMenu * subMenu = qMenu->addMenu(toqstr(getLabel(*m)));
 			populate(subMenu, m->submenu());
 
 		} else { // we have a MenuItem::Command
 
-			lyxerr[Debug::GUI] << "creating Menu Item " << m->label() << endl;
+			lyxerr[Debug::GUI] << "creating Menu Item " << lyx::to_utf8(m->label()) << endl;
 
-			string label = getLabel(*m);
+			docstring label = getLabel(*m);
 			addBinding(label, *m);
 
-			Action * action = new Action(*(owner_->view()), 
-						     label, m->func());
+			Action * action = new Action(*(owner_->view()),
+						     lyx::to_utf8(label), m->func());
 			qMenu->addAction(action);
 		}
 	}
 }
 
-string const QLPopupMenu::getLabel(MenuItem const & mi)
+docstring const QLPopupMenu::getLabel(MenuItem const & mi)
 {
-	string const shortcut = mi.shortcut();
-	string label = support::subst(mi.label(), "&", "&&");
+	docstring const shortcut = mi.shortcut();
+	docstring label = support::subst(mi.label(),
+				      lyx::from_ascii("&"),
+				      lyx::from_ascii("&&"));
 
 	if (!shortcut.empty()) {
-		string::size_type pos = label.find(shortcut);
-		if (pos != string::npos)
-			label.insert(pos, 1, '&');
+		docstring::size_type pos = label.find(shortcut);
+		if (pos != docstring::npos)
+			label.insert(pos, 1, char_type('&'));
 	}
 
 	return label;
 }
 
 /// \todo Mac specific binding handling.
-void QLPopupMenu::addBinding(string & label, MenuItem const & mi)
+void QLPopupMenu::addBinding(docstring & label, MenuItem const & mi)
 {
 #ifndef Q_WS_MACX
 
-		string const binding(mi.binding());
+		docstring const binding(mi.binding());
 		if (!binding.empty()) {
-			label += '\t' + binding;
+			label += char_type('\t') + binding;
 		}
 
 #else

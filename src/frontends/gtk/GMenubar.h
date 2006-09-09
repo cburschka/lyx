@@ -29,7 +29,7 @@ public:
 	GMenubar(LyXView *, MenuBackend const &);
 	~GMenubar();
 	void update();
-	void openByName(std::string const &);
+	void openByName(lyx::docstring const &);
 private:
 	void onCommandActivate(MenuItem const * item, Gtk::MenuItem * gitem);
 	void onSubMenuActivate(MenuItem const * item, Gtk::MenuItem * gitem);

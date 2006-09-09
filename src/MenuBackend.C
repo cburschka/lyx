@@ -47,6 +47,9 @@
 
 #include <algorithm>
 
+using lyx::char_type;
+using lyx::docstring;
+using lyx::support::compare_no_case;
 using lyx::support::compare_ascii_no_case;
 using lyx::support::contains;
 using lyx::support::makeDisplayPath;
@@ -71,14 +74,14 @@ namespace {
 
 class MenuNamesEqual : public std::unary_function<Menu, bool> {
 public:
-	MenuNamesEqual(string const & name)
+	MenuNamesEqual(docstring const & name)
 		: name_(name) {}
 	bool operator()(Menu const & menu) const
 	{
 		return menu.name() == name_;
 	}
 private:
-	string name_;
+	docstring name_;
 };
 
 } // namespace anon
@@ -93,8 +96,8 @@ MenuItem::MenuItem(Kind kind)
 {}
 
 
-MenuItem::MenuItem(Kind kind, string const & label,
-		   string const & submenu, bool optional)
+MenuItem::MenuItem(Kind kind, docstring const & label,
+		   docstring const & submenu, bool optional)
 	: kind_(kind), label_(label),
 	  submenuname_(submenu), optional_(optional)
 {
@@ -102,7 +105,7 @@ MenuItem::MenuItem(Kind kind, string const & label,
 }
 
 
-MenuItem::MenuItem(Kind kind, string const & label,
+MenuItem::MenuItem(Kind kind, docstring const & label,
 		   FuncRequest const & func, bool optional)
 	: kind_(kind), label_(label), func_(func), optional_(optional)
 {
@@ -120,35 +123,35 @@ void MenuItem::submenu(Menu * menu)
 }
 
 
-string const MenuItem::label() const
+docstring const MenuItem::label() const
 {
-	return token(label_, '|', 0);
+	return token(label_, char_type('|'), 0);
 }
 
 
-string const MenuItem::shortcut() const
+docstring const MenuItem::shortcut() const
 {
-	return token(label_, '|', 1);
+	return token(label_, char_type('|'), 1);
 }
 
 
-string const MenuItem::binding() const
+docstring const MenuItem::binding() const
 {
 	if (kind_ != Command)
-		return string();
+		return docstring();
 
 	// Get the keys bound to this action, but keep only the
 	// first one later
 	kb_keymap::Bindings bindings = toplevel_keymap->findbindings(func_);
 
 	if (bindings.size()) {
-		return bindings.begin()->print();
+		return lyx::from_utf8(bindings.begin()->print());
 	} else {
 		lyxerr[Debug::KBMAP]
 			<< "No binding for "
 			<< lyxaction.getActionName(func_.action)
 			<< '(' << lyx::to_utf8(func_.argument()) << ')' << endl;
-		return string();
+		return docstring();
 	}
 
 }
@@ -269,7 +272,7 @@ Menu & Menu::read(LyXLex & lex)
 			// fallback to md_item
 		case md_item: {
 			lex.next(true);
-			string const name = lyx::to_utf8(_(lex.getString()));
+			docstring const name = _(lex.getString());
 			lex.next(true);
 			string const command = lex.getString();
 			FuncRequest func = lyxaction.lookupFunc(command);
@@ -335,9 +338,9 @@ Menu & Menu::read(LyXLex & lex)
 			// fallback to md_submenu
 		case md_submenu: {
 			lex.next(true);
-			string const mlabel = lyx::to_utf8(_(lex.getString()));
+			docstring const mlabel = _(lex.getString());
 			lex.next(true);
-			string const mname = lex.getString();
+			docstring const mname = lyx::from_utf8(lex.getString());
 			add(MenuItem(MenuItem::Submenu, mlabel, mname,
 				     optional));
 			optional = false;
@@ -378,19 +381,19 @@ void Menu::checkShortcuts() const
 	// This is a quadratic algorithm, but we do not care because
 	// menus are short enough
 	for (const_iterator it1 = begin(); it1 != end(); ++it1) {
-		string shortcut = it1->shortcut();
+		docstring shortcut = it1->shortcut();
 		if (shortcut.empty())
 			continue;
 		if (!contains(it1->label(), shortcut))
 			lyxerr << "Menu warning: menu entry \""
-			       << it1->label()
+			       << lyx::to_utf8(it1->label())
 			       << "\" does not contain shortcut `"
-			       << shortcut << "'." << endl;
+			       << lyx::to_utf8(shortcut) << "'." << endl;
 		for (const_iterator it2 = begin(); it2 != it1 ; ++it2) {
-			if (!compare_ascii_no_case(it2->shortcut(), shortcut)) {
+			if (!compare_no_case(it2->shortcut(), shortcut)) {
 				lyxerr << "Menu warning: menu entries "
-				       << '"' << it1->fulllabel()
-				       << "\" and \"" << it2->fulllabel()
+				       << '"' << lyx::to_utf8(it1->fulllabel())
+				       << "\" and \"" << lyx::to_utf8(it2->fulllabel())
 				       << "\" share the same shortcut."
 				       << endl;
 			}
@@ -399,7 +402,7 @@ void Menu::checkShortcuts() const
 }
 
 
-void MenuBackend::specialMenu(string const &name)
+void MenuBackend::specialMenu(docstring const &name)
 {
 	if (hasMenu(name))
 		specialmenu_ = &getMenu(name);
@@ -434,9 +437,9 @@ void expandLastfiles(Menu & tomenu, LyXView const * view)
 	int ii = 1;
 
 	for (; lfit != lf.end() && ii < 10; ++lfit, ++ii) {
-		string const label = convert<string>(ii) + ". "
-			+ makeDisplayPath((*lfit), 30)
-			+ '|' + convert<string>(ii);
+		docstring const label = convert<docstring>(ii) + lyx::from_ascii(". ")
+			+ lyx::from_utf8(makeDisplayPath((*lfit), 30))
+			+ char_type('|') + convert<docstring>(ii);
 		tomenu.add(MenuItem(MenuItem::Command, label, FuncRequest(LFUN_FILE_OPEN, (*lfit))), view);
 	}
 }
@@ -448,7 +451,7 @@ void expandDocuments(Menu & tomenu, LyXView const * view)
 	Strings const names = bufferlist.getFileNames();
 
 	if (names.empty()) {
-		tomenu.add(MenuItem(MenuItem::Command, lyx::to_utf8(_("No Documents Open!")),
+		tomenu.add(MenuItem(MenuItem::Command, _("No Documents Open!"),
 				    FuncRequest(LFUN_NOACTION)), view);
 		return;
 	}
@@ -457,9 +460,9 @@ void expandDocuments(Menu & tomenu, LyXView const * view)
 	Strings::const_iterator docit = names.begin();
 	Strings::const_iterator end = names.end();
 	for (; docit != end; ++docit, ++ii) {
-		string label = makeDisplayPath(*docit, 20);
+		docstring label = lyx::from_utf8(makeDisplayPath(*docit, 20));
 		if (ii < 10)
-			label = convert<string>(ii) + ". " + label + '|' + convert<string>(ii);
+			label = convert<docstring>(ii) + lyx::from_ascii(". ") + label + char_type('|') + convert<docstring>(ii);
 		tomenu.add(MenuItem(MenuItem::Command, label, FuncRequest(LFUN_BUFFER_SWITCH, *docit)), view);
 	}
 }
@@ -469,7 +472,7 @@ void expandFormats(MenuItem::Kind kind, Menu & tomenu, LyXView const * view)
 {
 	if (!view->buffer() && kind != MenuItem::ImportFormats) {
 		tomenu.add(MenuItem(MenuItem::Command,
-				    lyx::to_utf8(_("No Documents Open!")),
+				    _("No Documents Open!"),
 				    FuncRequest(LFUN_NOACTION)),
 				    view);
 		return;
@@ -503,15 +506,15 @@ void expandFormats(MenuItem::Kind kind, Menu & tomenu, LyXView const * view)
 	for (; fit != end ; ++fit) {
 		if ((*fit)->dummy())
 			continue;
-		string label = (*fit)->prettyname();
+		docstring label = lyx::from_utf8((*fit)->prettyname());
 
 		switch (kind) {
 		case MenuItem::ImportFormats:
 			if ((*fit)->name() == "text")
-				label = lyx::to_utf8(_("Plain Text as Lines"));
+				label = _("Plain Text as Lines");
 			else if ((*fit)->name() == "textparagraph")
-				label = lyx::to_utf8(_("Plain Text as Paragraphs"));
-			label += "...";
+				label = _("Plain Text as Paragraphs");
+			label += lyx::from_ascii("...");
 			break;
 		case MenuItem::ViewFormats:
 		case MenuItem::ExportFormats:
@@ -524,7 +527,7 @@ void expandFormats(MenuItem::Kind kind, Menu & tomenu, LyXView const * view)
 			break;
 		}
 		if (!(*fit)->shortcut().empty())
-			label += '|' + (*fit)->shortcut();
+			label += char_type('|') + lyx::from_utf8((*fit)->shortcut());
 
 		tomenu.add(MenuItem(MenuItem::Command, label,
 				    FuncRequest(action, (*fit)->name())),
@@ -537,7 +540,7 @@ void expandFloatListInsert(Menu & tomenu, LyXView const * view)
 {
 	if (!view->buffer()) {
 		tomenu.add(MenuItem(MenuItem::Command,
-				    lyx::to_utf8(_("No Documents Open!")),
+				    _("No Documents Open!"),
 				    FuncRequest(LFUN_NOACTION)),
 			   view);
 		return;
@@ -549,7 +552,7 @@ void expandFloatListInsert(Menu & tomenu, LyXView const * view)
 	FloatList::const_iterator end = floats.end();
 	for (; cit != end; ++cit) {
 		tomenu.add(MenuItem(MenuItem::Command,
-				    lyx::to_utf8(_(cit->second.listName())),
+				    _(cit->second.listName()),
 				    FuncRequest(LFUN_FLOAT_LIST,
 						cit->second.type())),
 			   view);
@@ -561,7 +564,7 @@ void expandFloatInsert(Menu & tomenu, LyXView const * view)
 {
 	if (!view->buffer()) {
 		tomenu.add(MenuItem(MenuItem::Command,
-				    lyx::to_utf8(_("No Documents Open!")),
+				    _("No Documents Open!"),
 				    FuncRequest(LFUN_NOACTION)),
 			   view);
 		return;
@@ -573,7 +576,7 @@ void expandFloatInsert(Menu & tomenu, LyXView const * view)
 	FloatList::const_iterator end = floats.end();
 	for (; cit != end; ++cit) {
 		// normal float
-		string const label = lyx::to_utf8(_(cit->second.name()));
+		docstring const label = _(cit->second.name());
 		tomenu.add(MenuItem(MenuItem::Command, label,
 				    FuncRequest(LFUN_FLOAT_INSERT,
 						cit->second.type())),
@@ -586,7 +589,7 @@ void expandCharStyleInsert(Menu & tomenu, LyXView const * view)
 {
 	if (!view->buffer()) {
 		tomenu.add(MenuItem(MenuItem::Command,
-				    lyx::to_utf8(_("No Documents Open!")),
+				    _("No Documents Open!"),
 				    FuncRequest(LFUN_NOACTION)),
 			   view);
 		return;
@@ -596,7 +599,7 @@ void expandCharStyleInsert(Menu & tomenu, LyXView const * view)
 	CharStyles::iterator cit = charstyles.begin();
 	CharStyles::iterator end = charstyles.end();
 	for (; cit != end; ++cit) {
-		string const label = cit->name;
+		docstring const label = lyx::from_utf8(cit->name);
 		tomenu.add(MenuItem(MenuItem::Command, label,
 				    FuncRequest(LFUN_CHARSTYLE_INSERT,
 						cit->name)), view);
@@ -623,12 +626,12 @@ void expandToc2(Menu & tomenu,
 
 	if (to - from <= max_number_of_items) {
 		for (lyx::toc::Toc::size_type i = from; i < to; ++i) {
-			string label(4 * max(0, toc_list[i].depth() - depth),' ');
-			label += limit_string_length(toc_list[i].str());
+			docstring label(4 * max(0, toc_list[i].depth() - depth), char_type(' '));
+			label += lyx::from_utf8(limit_string_length(toc_list[i].str()));
 			if (toc_list[i].depth() == depth
 			    && shortcut_count < 9) {
-				if (label.find(convert<string>(shortcut_count + 1)) != string::npos)
-					label += '|' + convert<string>(++shortcut_count);
+				if (label.find(convert<docstring>(shortcut_count + 1)) != docstring::npos)
+					label += char_type('|') + convert<docstring>(++shortcut_count);
 			}
 			tomenu.add(MenuItem(MenuItem::Command, label,
 					    FuncRequest(toc_list[i].action())));
@@ -641,12 +644,12 @@ void expandToc2(Menu & tomenu,
 			       toc_list[new_pos].depth() > depth)
 				++new_pos;
 
-			string label(4 * max(0, toc_list[pos].depth() - depth), ' ');
-			label += limit_string_length(toc_list[pos].str());
+			docstring label(4 * max(0, toc_list[pos].depth() - depth), ' ');
+			label += lyx::from_utf8(limit_string_length(toc_list[pos].str()));
 			if (toc_list[pos].depth() == depth &&
 			    shortcut_count < 9) {
-				if (label.find(convert<string>(shortcut_count + 1)) != string::npos)
-					label += '|' + convert<string>(++shortcut_count);
+				if (label.find(convert<docstring>(shortcut_count + 1)) != docstring::npos)
+					label += char_type('|') + convert<docstring>(++shortcut_count);
 				}
 			if (new_pos == pos + 1) {
 				tomenu.add(MenuItem(MenuItem::Command,
@@ -675,7 +678,7 @@ void expandToc(Menu & tomenu, LyXView const * view)
 	Buffer const * buf = view->buffer();
 	if (!buf) {
 		tomenu.add(MenuItem(MenuItem::Command,
-				    lyx::to_utf8(_("No Documents Open!")),
+				    _("No Documents Open!"),
 				    FuncRequest(LFUN_NOACTION)),
 			   view);
 		return;
@@ -695,13 +698,13 @@ void expandToc(Menu & tomenu, LyXView const * view)
 		lyx::toc::Toc::const_iterator ccit = cit->second.begin();
 		lyx::toc::Toc::const_iterator eend = cit->second.end();
 		for (; ccit != eend; ++ccit) {
-			string const label = limit_string_length(ccit->str());
+			docstring const label = lyx::from_utf8(limit_string_length(ccit->str()));
 			menu->add(MenuItem(MenuItem::Command,
 					   label,
 					   FuncRequest(ccit->action())));
 		}
 		string const & floatName = floatlist.getType(cit->first).listName();
-		MenuItem item(MenuItem::Submenu, lyx::to_utf8(_(floatName)));
+		MenuItem item(MenuItem::Submenu, _(floatName));
 		item.submenu(menu.release());
 		tomenu.add(item);
 	}
@@ -710,7 +713,7 @@ void expandToc(Menu & tomenu, LyXView const * view)
 	cit = toc_list.find("TOC");
 	if (cit == end) {
 		tomenu.add(MenuItem(MenuItem::Command,
-				    lyx::to_utf8(_("No Table of contents")),
+				    _("No Table of contents"),
 				    FuncRequest()),
 			   view);
 	} else {
@@ -731,7 +734,7 @@ void expandPasteRecent(Menu & tomenu, LyXView const * view)
 	vector<string>::const_iterator end = sel.end();
 
 	for (unsigned int index = 0; cit != end; ++cit, ++index) {
-		tomenu.add(MenuItem(MenuItem::Command, *cit,
+		tomenu.add(MenuItem(MenuItem::Command, lyx::from_utf8(*cit),
 				    FuncRequest(LFUN_PASTE, convert<string>(index))));
 	}
 }
@@ -748,9 +751,9 @@ void expandBranches(Menu & tomenu, LyXView const * view)
 	BranchList::const_iterator end = params.branchlist().end();
 
 	for (int ii = 1; cit != end; ++cit, ++ii) {
-		string label = cit->getBranch();
+		docstring label = lyx::from_utf8(cit->getBranch());
 		if (ii < 10)
-			label = convert<string>(ii) + ". " + label + "|" + convert<string>(ii);
+			label = convert<docstring>(ii) + lyx::from_ascii(". ") + label + char_type('|') + convert<docstring>(ii);
 		tomenu.add(MenuItem(MenuItem::Command, label,
 				    FuncRequest(LFUN_BRANCH_INSERT,
 						cit->getBranch())), view);
@@ -873,7 +876,7 @@ void MenuBackend::read(LyXLex & lex)
 			break;
 		case md_menu: {
 			lex.next(true);
-			string const name = lex.getString();
+			docstring const name = lyx::from_utf8(lex.getString());
 			if (hasMenu(name)) {
 				getMenu(name).read(lex);
 			} else {
@@ -902,27 +905,27 @@ void MenuBackend::add(Menu const & menu)
 }
 
 
-bool MenuBackend::hasMenu(string const & name) const
+bool MenuBackend::hasMenu(docstring const & name) const
 {
 	return find_if(begin(), end(), MenuNamesEqual(name)) != end();
 }
 
 
-Menu const & MenuBackend::getMenu(string const & name) const
+Menu const & MenuBackend::getMenu(docstring const & name) const
 {
 	const_iterator cit = find_if(begin(), end(), MenuNamesEqual(name));
 	if (cit == end())
-		lyxerr << "No submenu named " << name << endl;
+		lyxerr << "No submenu named " << lyx::to_utf8(name) << endl;
 	BOOST_ASSERT(cit != end());
 	return (*cit);
 }
 
 
-Menu & MenuBackend::getMenu(string const & name)
+Menu & MenuBackend::getMenu(docstring const & name)
 {
 	iterator it = find_if(begin(), end(), MenuNamesEqual(name));
 	if (it == end())
-		lyxerr << "No submenu named " << name << endl;
+		lyxerr << "No submenu named " << lyx::to_utf8(name) << endl;
 	BOOST_ASSERT(it != end());
 	return (*it);
 }

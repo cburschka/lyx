@@ -48,7 +48,7 @@ string makeFontName(string const & family, string const & foundry)
 }
 
 
-pair<string,string> parseFontName(string const & name)
+pair<string, string> parseFontName(string const & name)
 {
 	string::size_type const idx = name.find('[');
 	if (idx == string::npos || idx == 0)
@@ -60,15 +60,15 @@ pair<string,string> parseFontName(string const & name)
 
 string widgetsToLength(QLineEdit const * input, LengthCombo const * combo)
 {
-	QString length = input->text();
+	QString const length = input->text();
 	if (length.isEmpty())
 		return string();
 
-	// don't return unit-from-choice if the input(field) contains a unit
+	// Don't return unit-from-choice if the input(field) contains a unit
 	if (isValidGlueLength(fromqstr(length)))
 		return fromqstr(length);
 
-	LyXLength::UNIT unit = combo->currentLengthItem();
+	LyXLength::UNIT const unit = combo->currentLengthItem();
 
 	return LyXLength(length.toDouble(), unit).asString();
 }
@@ -76,7 +76,7 @@ string widgetsToLength(QLineEdit const * input, LengthCombo const * combo)
 
 LyXLength widgetsToLength(QLineEdit const * input, QComboBox const * combo)
 {
-	QString length = input->text();
+	QString const length = input->text();
 	if (length.isEmpty())
 		return LyXLength();
 
@@ -84,7 +84,7 @@ LyXLength widgetsToLength(QLineEdit const * input, QComboBox const * combo)
 	if (isValidGlueLength(fromqstr(length)))
 		return LyXLength(fromqstr(length));
 
-	LyXLength::UNIT unit = unitFromString(fromqstr(combo->currentText()));
+	LyXLength::UNIT const unit = unitFromString(fromqstr(combo->currentText()));
 
 	return LyXLength(length.toDouble(), unit);
 }
@@ -110,7 +110,7 @@ void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
 
 QString const toqstr(char const * str)
 {
-	return QString::fromAscii(str);
+	return QString::fromUtf8(str);
 }
 
 
@@ -145,7 +145,7 @@ QString const toqstr(docstring const & ucs4)
 
 docstring const qstring_to_ucs4(QString const & qstr)
 {
-	int ls = qstr.size();
+	int const ls = qstr.size();
 	docstring ucs4;
 	for (int i = 0; i < ls; ++i)
 		ucs4 += static_cast<char_type>(qstr[i].unicode());
@@ -156,7 +156,7 @@ docstring const qstring_to_ucs4(QString const & qstr)
 
 void qstring_to_ucs4(QString const & qstr, vector<char_type> & ucs4)
 {
-	int ls = qstr.size();
+	int const ls = qstr.size();
 	ucs4.clear();
 	for (int i = 0; i < ls; ++i)
 		ucs4.push_back(static_cast<boost::uint32_t>(qstr[i].unicode()));
@@ -177,13 +177,13 @@ QChar const ucs4_to_qchar(char_type const & ucs4)
 
 QString const qt_(char const * str)
 {
-	return toqstr(lyx::to_utf8(_(str)));
+	return toqstr(_(str));
 }
 
 
 QString const qt_(string const & str)
 {
-	return toqstr(lyx::to_utf8(_(str)));
+	return toqstr(_(str));
 }
 
 
@@ -208,8 +208,10 @@ string const formatted(string const & text, int w)
 		string::size_type const nxtpos2 = text.find('\n', curpos);
 		string::size_type const nxtpos = std::min(nxtpos1, nxtpos2);
 
-		string const word = nxtpos == string::npos ?
-			text.substr(curpos) : text.substr(curpos, nxtpos-curpos);
+		string const word =
+			nxtpos == string::npos ?
+			text.substr(curpos) :
+			text.substr(curpos, nxtpos - curpos);
 
 		bool const newline = (nxtpos2 != string::npos &&
 				      nxtpos2 < nxtpos1);

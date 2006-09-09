@@ -26,6 +26,7 @@ namespace support {
 
 ///
 int compare_no_case(std::string const & s, std::string const & s2);
+int compare_no_case(lyx::docstring const & s, lyx::docstring const & s2);
 
 ///
 int compare_ascii_no_case(std::string const & s, std::string const & s2);
@@ -120,6 +121,8 @@ bool containsOnly(std::string const &, std::string const &);
 */
 std::string const token(std::string const & a, char delim, int n);
 
+lyx::docstring const token(lyx::docstring const & a,
+			   lyx::char_type delim, int n);
 
 /** Search a token in this string using the delim.
     Doesn't modify the original string. Returns -1 in case of

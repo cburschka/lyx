@@ -1108,7 +1108,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_MENU_OPEN:
-			owner->getMenubar().openByName(argument);
+			owner->getMenubar().openByName(lyx::from_utf8(argument));
 			break;
 
 		// --- lyxserver commands ----------------------------

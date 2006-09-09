@@ -27,7 +27,11 @@
 
 #include "debug.h"
 #include "support/lstrings.h"
+#include "support/docstring.h"
 #include "lyxfunc.h"
+
+using lyx::char_type;
+using lyx::docstring;
 
 using std::string;
 
@@ -52,15 +56,17 @@ private:
 };
 
 
-// ENCODING: assume that the backend will give us a locale string
-Glib::ustring labelTrans(string const & label_src, string const & shortcut)
+Glib::ustring labelTrans(docstring const & label_src,
+			 docstring const & shortcut)
 {
-	string label = subst(label_src, "_", "__");
-	string::size_type i = label.find(shortcut);
-	if (i == string::npos)
-		return Glib::locale_to_utf8 (label);
-	label.insert(i, "_");
-	return Glib::locale_to_utf8 (label);
+	docstring label = subst(label_src,
+				lyx::from_ascii("_"),
+				lyx::from_ascii("__"));
+	docstring::size_type i = label.find(shortcut);
+	if (i == docstring::npos)
+		return lyx::to_utf8(label);
+	label.insert(i, lyx::from_ascii("_"));
+	return lyx::to_utf8(label);
 }
 
 
@@ -104,7 +110,7 @@ GMenubar::GMenubar(LyXView * lyxView, MenuBackend const & /*menuBackend*/) :
 		menubar_.items().back().signal_activate().connect(
 			sigc::bind(sigc::mem_fun(*this, &GMenubar::onSubMenuActivate), &(*i),
 				   &menubar_.items().back()));
-		mainMenuNames_.push_back(i->submenuname());
+		mainMenuNames_.push_back(lyx::to_utf8(i->submenuname()));
 	}
 	menubar_.show();
 	gview->getBox(GView::Top).children().push_back(
@@ -123,9 +129,9 @@ void GMenubar::update()
 }
 
 
-void GMenubar::openByName(string const & name)
+void GMenubar::openByName(docstring const & name)
 {
-	Glib::ustring uname = Glib::convert(name, "UTF-8", "ISO-8859-1");
+	Glib::ustring uname = lyx::to_utf8(name);
 	std::vector<Glib::ustring>::iterator it =
 		std::find(mainMenuNames_.begin(), mainMenuNames_.end(),
 			  uname);
@@ -136,7 +142,7 @@ void GMenubar::openByName(string const & name)
 		return;
 	}
 	lyxerr << "GMenubar::openByName: menu "
-	       << name << " not found" << std::endl;
+	       << lyx::to_utf8(name) << " not found" << std::endl;
 }
 
 
@@ -202,8 +208,8 @@ void GMenubar::onSubMenuActivate(MenuItem const * item,
 				// Choose an icon from the funcrequest
 				Gtk::Image * image = getGTKIcon(i->func(), Gtk::ICON_SIZE_MENU);
 				if (!image) {
-					// ENCODING, FIXME: does Pixbuf::create_from_file really 
-					// want UTF-8, or does it want filename encoding?  Is 
+					// ENCODING, FIXME: does Pixbuf::create_from_file really
+					// want UTF-8, or does it want filename encoding?  Is
 					// the backend string really in locale encoding?
 					// This shouldn't break as long as filenames are ASCII
 					Glib::ustring xpmName =
@@ -228,8 +234,9 @@ void GMenubar::onSubMenuActivate(MenuItem const * item,
 				Gtk::HBox * hbox = Gtk::manage(new Gtk::HBox);
 				Gtk::Label * label1 = Gtk::manage(new Gtk::Label(
 					labelTrans(i->label(), i->shortcut()), true));
-				Gtk::Label * label2 = Gtk::manage(new Gtk::Label(
-					"   " + i->binding(), false));
+				Gtk::Label * label2 =
+					Gtk::manage(new Gtk::Label(
+								   "   " + lyx::to_utf8(i->binding()), false));
 				hbox->pack_start(*label1, false, false, 0);
 				hbox->pack_end(*label2, false, false, 0);
 				imgitem->add(*hbox);

@@ -45,15 +45,17 @@ namespace frontend {
 
 namespace {
 
-string const getLabel(MenuItem const & mi)
+docstring const getLabel(MenuItem const & mi)
 {
-	string const shortcut = mi.shortcut();
-	string label = subst(mi.label(), "&", "&&");
+	docstring const shortcut = mi.shortcut();
+	docstring label = subst(mi.label(),
+				lyx::from_ascii("&"),
+				lyx::from_ascii("&&"));
 
 	if (!shortcut.empty()) {
-		string::size_type pos = label.find(shortcut);
-		if (pos != string::npos)
-			label.insert(pos, 1, '&');
+		docstring::size_type pos = label.find(shortcut);
+		if (pos != docstring::npos)
+			label.insert(pos, 1, char_type('&'));
 	}
 
 	return label;
@@ -78,7 +80,7 @@ createMenu(QMenuData * parent, MenuItem const * item, QLMenubar * owner,
 
 
 QLPopupMenu::QLPopupMenu(QLMenubar * owner,
-			 string const & name, bool toplevel)
+			 docstring const & name, bool toplevel)
 	: owner_(owner), name_(name)
 {
 	if (toplevel)
@@ -141,9 +143,9 @@ void QLPopupMenu::populate(Menu * menu)
 				label += '\t' + key->qprint(binding.second);
 			}
 #else
-			string const binding(m->binding());
+			docstring const binding(m->binding());
 			if (!binding.empty()) {
-				label += '\t' + toqstr(binding);
+				label += char_type('\t') + toqstr(binding);
 			}
 #endif
 

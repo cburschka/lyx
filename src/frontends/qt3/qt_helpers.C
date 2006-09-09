@@ -107,7 +107,7 @@ void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
 
 QString const toqstr(char const * str)
 {
-	return QString::fromAscii(str);
+	return QString::fromUtf8(str);
 }
 
 

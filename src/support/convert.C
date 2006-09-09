@@ -13,9 +13,13 @@
 
 #include "convert.h"
 
+#include "support/docstring.h"
+
 #include <boost/lexical_cast.hpp>
 
 #include <string>
+
+using lyx::docstring;
 
 using boost::lexical_cast;
 
@@ -49,6 +53,11 @@ string convert<string>(int i)
 	return lexical_cast<string>(i);
 }
 
+template<>
+docstring convert<docstring>(int i)
+{
+	return lyx::from_ascii(lexical_cast<string>(i));
+}
 
 template<>
 string convert<string>(unsigned int ui)
