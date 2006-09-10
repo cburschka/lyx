@@ -36,7 +36,7 @@ docstring const GuiSelection::get() const
 	Glib::RefPtr<Gtk::Clipboard> clipboard =
 		Gtk::Clipboard::get(GDK_SELECTION_PRIMARY);
 	string const str = clipboard->wait_for_text();
-	lyxerr[Debug::ACTION] << "GuiClipboard::get: " << str << endl;
+	lyxerr[Debug::ACTION] << "GuiSelection::get: " << str << endl;
 	return lyx::from_utf8(str);
 }
 
@@ -44,7 +44,7 @@ docstring const GuiSelection::get() const
 void GuiSelection::put(docstring const & str)
 {
 	string const utf8 = lyx::to_utf8(str);
-	lyxerr[Debug::ACTION] << "GuiClipboard::put: " << utf8 << endl;
+	lyxerr[Debug::ACTION] << "GuiSelection::put: " << utf8 << endl;
 	Glib::RefPtr<Gtk::Clipboard> clipboard =
 		Gtk::Clipboard::get(GDK_SELECTION_PRIMARY);
 	clipboard->set_text(utf8);
