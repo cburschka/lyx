@@ -40,6 +40,7 @@
 
 #include "insets/render_preview.h"
 
+#include "support/lyxalgo.h"
 #include "support/filename.h"
 #include "support/filetools.h"
 #include "support/lstrings.h" // contains
@@ -472,8 +473,13 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 int InsetInclude::plaintext(Buffer const & buffer, ostream & os,
 			OutputParams const &) const
 {
-	if (isVerbatim(params_))
-		os << getFileContents(includedFilename(buffer, params_));
+	if (isVerbatim(params_)) {
+		string const str =
+			getFileContents(includedFilename(buffer, params_));
+		os << str;
+		// Return how many newlines we issued.
+		return int(lyx::count(str.begin(), str.end(), '\n'));
+	}
 	return 0;
 }
 
