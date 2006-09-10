@@ -294,11 +294,14 @@ int InsetText::plaintext(Buffer const & buf, ostream & os,
 	ParagraphList::const_iterator end = paragraphs().end();
 	ParagraphList::const_iterator it = beg;
 	bool ref_printed = false;
+	std::ostringstream oss;
 	for (; it != end; ++it)
-		asciiParagraph(buf, *it, os, runparams, ref_printed);
+		asciiParagraph(buf, *it, oss, runparams, ref_printed);
 
-	// FIXME: Give the total numbers of lines
-	return 1;
+	string const str = oss.str();
+	os << str;
+	// Return how many newlines we issued.
+	return int(lyx::count(str.begin(), str.end(), '\n'));
 }
 
 

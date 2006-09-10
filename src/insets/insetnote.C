@@ -333,15 +333,12 @@ int InsetNote::plaintext(Buffer const & buf, std::ostream & os,
 		// Ignore files that are exported inside a comment
 		runparams.exportdata.reset(new ExportData);
 	}
-	ostringstream ss;
-	ss << "[";
-	InsetText::plaintext(buf, ss, runparams);
-	ss << "]";
+	os << "[";
+	int const nlines = InsetText::plaintext(buf, os, runparams);
+	os << "]";
 
-	string const str = ss.str();
-	os << str;
 	// Return how many newlines we issued.
-	return int(lyx::count(str.begin(), str.end(),'\n'));
+	return nlines;
 }
 
 
