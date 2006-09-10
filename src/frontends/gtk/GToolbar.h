@@ -81,4 +81,7 @@ private:
 } // namespace frontend
 } // namespace lyx
 
+Toolbars::ToolbarPtr make_toolbar(ToolbarBackend::Toolbar const & tbb,
+				  LyXView & owner);
+
 #endif // NOT GTOOLBAR_H
