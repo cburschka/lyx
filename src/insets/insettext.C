@@ -51,6 +51,8 @@
 #include <boost/bind.hpp>
 #include <boost/current_function.hpp>
 
+#include <sstream>
+
 using lyx::docstring;
 using lyx::pos_type;
 
