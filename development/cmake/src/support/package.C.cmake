@@ -148,8 +148,8 @@ Package::Package(string const & command_line_arg0,
 				     command_line_user_support_dir);
 
 	string const configure_script = addName(system_support(), "configure.py");
-	configure_command_ = "python " + quoteName(configure_script)
-	                               + with_version_suffix();
+	configure_command_ = os::python() + ' ' + quoteName(configure_script)
+				       + with_version_suffix();
 
 	lyxerr[Debug::INIT]
 		<< "<package>\n"
@@ -357,8 +357,8 @@ string const get_temp_dir()
 {
 #if defined (USE_WINDOWS_PACKAGING)
 	// Typical example: C:/TEMP/.
-	char path[PATH_MAX];
-	GetTempPath(PATH_MAX, path);
+	char path[MAX_PATH];
+	GetTempPath(MAX_PATH, path);
 	return os::internal_path(path);
 #else // Posix-like.
 	return "/tmp";
@@ -436,8 +436,9 @@ string const abs_path_from_binary_name(string const & exe)
 {
 	string const abs_binary = get_binary_path(exe);
 	if (abs_binary.empty()) {
-		lyxerr << bformat(_("Unable to determine the path to the "
-				    "LyX binary from the command line %1$s"),
+		// FIXME UNICODE
+		lyxerr << bformat(lyx::to_utf8(_("Unable to determine the path to the "
+						 "LyX binary from the command line %1$s")),
 				  exe)
 		       << std::endl;
 		bail_out();
@@ -557,13 +558,14 @@ get_system_support_dir(string const & abs_binary,
 		searched_dirs_str += *it;
 	}
 
-	lyxerr << bformat(_("Unable to determine the system directory "
-			    "having searched\n"
-			    "\t%1$s\n"
-			    "Use the '-sysdir' command line parameter or "
-			    "set the environment variable LYX_DIR_14x to "
-			    "the LyX system directory containing the file "
-			    "`chkconfig.ltx'."),
+	// FIXME UNICODE
+	lyxerr << bformat(lyx::to_utf8(_("Unable to determine the system directory "
+					 "having searched\n"
+					 "\t%1$s\n"
+					 "Use the '-sysdir' command line parameter or "
+					 "set the environment variable LYX_DIR_14x to "
+					 "the LyX system directory containing the file "
+					 "`chkconfig.ltx'.")),
 			  searched_dirs_str)
 	       << std::endl;
 
@@ -642,8 +644,9 @@ bool check_command_line_dir(string const & dir,
 {
 	string const abs_path = fileSearch(dir, file);
 	if (abs_path.empty()) {
-		lyxerr << bformat(_("Invalid %1$s switch.\n"
-				    "Directory %2$s does not contain %3$s."),
+		// FIXME UNICODE
+		lyxerr << bformat(lyx::to_utf8(_("Invalid %1$s switch.\n"
+						 "Directory %2$s does not contain %3$s.")),
 				  command_line_switch, dir, file)
 		       << std::endl;
 	}
@@ -668,8 +671,9 @@ bool check_env_var_dir(string const & dir,
 {
 	string const abs_path = fileSearch(dir, file);
 	if (abs_path.empty()) {
-		lyxerr << bformat(_("Invalid %1$s environment variable.\n"
-				    "Directory %2$s does not contain %3$s."),
+		// FIXME UNICODE
+		lyxerr << bformat(lyx::to_utf8(_("Invalid %1$s environment variable.\n"
+						 "Directory %2$s does not contain %3$s.")),
 				  env_var, dir, file)
 		       << std::endl;
 	}
@@ -690,8 +694,9 @@ bool check_env_var_dir(string const & dir,
 		// search mechanism in po/Makefile.in.in will register
 		// package.C.in as a file containing strings that need
 		// translation.
+		// FIXME UNICODE
 		string const fmt =
-		_("Invalid %1$s environment variable.\n%2$s is not a directory.");
+			lyx::to_utf8(_("Invalid %1$s environment variable.\n%2$s is not a directory."));
 
 		lyxerr << bformat(fmt, env_var, dir)
 		       << std::endl;
