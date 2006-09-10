@@ -24,7 +24,6 @@
 
 #include "debug.h"
 
-#include "frontends/Toolbars.h"
 #include "frontends/WorkArea.h"
 #include "support/filetools.h"
 #include "support/convert.h"
@@ -36,6 +35,7 @@
 
 #include "GuiView.h"
 #include "QLMenubar.h"
+#include "QLToolbar.h"
 #include "FontLoader.h"
 #include "QCommandBuffer.h"
 #include "qt_helpers.h"
@@ -243,6 +243,32 @@ void GuiView::busy(bool yes) const
 		QApplication::setOverrideCursor(Qt::WaitCursor);
 	else
 		QApplication::restoreOverrideCursor();
+}
+
+
+Toolbars::ToolbarPtr GuiView::makeToolbar(ToolbarBackend::Toolbar const & tbb)
+{
+	QLToolbar * Tb = new QLToolbar(tbb, *this);
+	static QLToolbar * lastTb = 0;
+
+	if (tbb.flags & ToolbarBackend::TOP) {
+			addToolBar(Qt::TopToolBarArea, Tb);
+			addToolBarBreak(Qt::TopToolBarArea);
+	}
+	if (tbb.flags & ToolbarBackend::BOTTOM) {
+		addToolBar(Qt::BottomToolBarArea, Tb);
+		if (lastTb)
+			insertToolBarBreak(lastTb);
+		lastTb = Tb;
+	}
+	if (tbb.flags & ToolbarBackend::LEFT) {
+		addToolBar(Qt::LeftToolBarArea, Tb);
+	}
+	if (tbb.flags & ToolbarBackend::RIGHT) {
+		addToolBar(Qt::RightToolBarArea, Tb);
+	}
+
+	return Toolbars::ToolbarPtr(Tb);
 }
 
 } // namespace frontend

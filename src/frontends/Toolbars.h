@@ -131,8 +131,4 @@ private:
 /// Set the layout in the kernel when an entry has been selected
 void layoutSelected(LyXView & lv, std::string const & name);
 
-/** Each GUI frontend should provide its own version of this.
- */
-Toolbars::ToolbarPtr make_toolbar(ToolbarBackend::Toolbar const &, LyXView &);
-
 #endif // NOT TOOLBARS_H

@@ -50,6 +50,10 @@ public:
 
 	/// show busy cursor
 	virtual void busy(bool) const;
+
+	///
+	Toolbars::ToolbarPtr makeToolbar(ToolbarBackend::Toolbar const & tbb);
+
 	/// clear any temporary message and replace with current status
 	virtual void clearMessage();
 

@@ -116,7 +116,7 @@ void Toolbars::clearLayoutList()
 
 void Toolbars::add(ToolbarBackend::Toolbar const & tbb)
 {
-	ToolbarPtr tb_ptr = make_toolbar(tbb, owner_);
+	ToolbarPtr tb_ptr = owner_.makeToolbar(tbb);
 	toolbars_[tbb.name] = tb_ptr;
 
 	if (tbb.flags & ToolbarBackend::ON)

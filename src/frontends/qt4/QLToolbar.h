@@ -19,11 +19,10 @@
 #include "frontends/Toolbars.h"
 #include <boost/scoped_ptr.hpp>
 
-#include <QObject>
+#include <QToolBar>
 #include <vector>
 
 class QComboBox;
-class QToolBar;
 
 namespace lyx {
 namespace frontend {
@@ -58,10 +57,10 @@ private:
 };
 
 
-class QLToolbar : public QObject, public Toolbar {
+class QLToolbar : public QToolBar, public Toolbar {
 	Q_OBJECT
 public:
-	QLToolbar(ToolbarBackend::Toolbar const &, LyXView &);
+	QLToolbar(ToolbarBackend::Toolbar const &, GuiView &);
 
 	//~QLToolbar();
 
@@ -71,6 +70,8 @@ public:
 	void update();
 	LayoutBox * layout() const { return layout_.get(); }
 
+
+
 Q_SIGNALS:
 	void updated();
 
@@ -78,11 +79,8 @@ private:
 
 	std::vector<Action *> ActionVector;
 	GuiView & owner_;
-	QToolBar * toolbar_;
 
 	boost::scoped_ptr<QLayoutBox> layout_;
-
-	Qt::ToolBarArea tba;
 };
 
 } // namespace frontend

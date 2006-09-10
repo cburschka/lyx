@@ -49,6 +49,9 @@ public:
 	/// show busy cursor
 	virtual void busy(bool) const;
 
+	///
+	Toolbars::ToolbarPtr makeToolbar(ToolbarBackend::Toolbar const & tbb);
+
 	/// display a status message
 	virtual void message(std::string const & str);
 

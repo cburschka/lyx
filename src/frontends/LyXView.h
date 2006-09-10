@@ -13,6 +13,8 @@
 #ifndef LYXVIEW_H
 #define LYXVIEW_H
 
+#include "frontends/Toolbars.h"
+
 #include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/signal.hpp>
@@ -20,7 +22,6 @@
 #include <boost/utility.hpp>
 
 class Buffer;
-class Toolbars;
 class InsetBase;
 class Intl;
 class Menubar;
@@ -72,6 +73,8 @@ public:
 
 	/// show busy cursor
 	virtual void busy(bool) const = 0;
+
+	virtual Toolbars::ToolbarPtr makeToolbar(ToolbarBackend::Toolbar const & tbb) = 0;
 
 	//@{ generic accessor functions
 

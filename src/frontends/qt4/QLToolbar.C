@@ -47,34 +47,6 @@ LyXTextClass const & getTextClass(LyXView const & lv)
 	return lv.buffer()->params().getLyXTextClass();
 }
 
-/*
-/// \todo Remove Qt::Dock getPosition(ToolbarBackend::Flags const & flags) if not needed anymore
-Qt::Dock getPosition(ToolbarBackend::Flags const & flags)
-{
-	if (flags & ToolbarBackend::TOP)
-		return Qt::DockTop;
-	if (flags & ToolbarBackend::BOTTOM)
-		return Qt::DockBottom;
-	if (flags & ToolbarBackend::LEFT)
-		return Qt::DockLeft;
-	if (flags & ToolbarBackend::RIGHT)
-		return Qt::DockRight;
-	return Qt::DockTop;
-}
-*/
-
-Qt::ToolBarArea getToolBarPosition(ToolbarBackend::Flags const & flags)
-{
-	if (flags & ToolbarBackend::TOP)
-		return Qt::TopToolBarArea;
-	if (flags & ToolbarBackend::BOTTOM)
-		return Qt::BottomToolBarArea;
-	if (flags & ToolbarBackend::LEFT)
-		return Qt::LeftToolBarArea;
-	if (flags & ToolbarBackend::RIGHT)
-		return Qt::RightToolBarArea;
-	return Qt::TopToolBarArea;
-}
 
 } // namespace anon
 
@@ -173,48 +145,17 @@ void QLayoutBox::selected(const QString & str)
 	layoutSelected(owner_, sel);
 }
 
-} // namespace frontend
-} // namespace lyx
 
-Toolbars::ToolbarPtr make_toolbar(ToolbarBackend::Toolbar const & tbb,
-				  LyXView & owner)
+QLToolbar::QLToolbar(ToolbarBackend::Toolbar const & tbb, GuiView & owner)
+	: owner_(owner),
+	  QToolBar(qt_(tbb.gui_name), &owner)
 {
-	using lyx::frontend::QLToolbar;
-	return Toolbars::ToolbarPtr(new QLToolbar(tbb, owner));
-}
-
-namespace lyx {
-namespace frontend {
-
-QLToolbar::QLToolbar(ToolbarBackend::Toolbar const & tbb, LyXView & owner)
-	: owner_(dynamic_cast<GuiView &>(owner)),
-	  toolbar_(new QToolBar(qt_(tbb.gui_name), (QWidget*) &owner_)) //, getPosition(tbb.flags)))
-{
-	/// \toto Move \a addToolBar call into QView because, in Qt4,
-	/// the ToolBars placement is the duty of QMainWindow (aka QView)
-	Qt::ToolBarArea tba = getToolBarPosition(tbb.flags);
-	switch(tba) {
-	case Qt::TopToolBarArea:
-		owner_.addToolBar(tba, toolbar_);
-		owner_.addToolBarBreak(tba);
-		break;
-//	case Qt::BottomToolBarArea:
-		//bottomToolbarVector.push_back(toolbar_);
-//		owner_.addToolBar(tba, toolbar_);
-//		//if owner_.insertToolBarBreak(toolbar_);
-		break;
-	default:
-		owner_.addToolBar(Qt::TopToolBarArea, toolbar_);
-		owner_.addToolBarBreak(Qt::TopToolBarArea);
-		break;
-	}
-
 	// give visual separation between adjacent toolbars
-	toolbar_->addSeparator();
+	addSeparator();
 
 	// allowing the toolbars to tear off is too easily done,
 	// and we don't save their orientation anyway. Disable the handle.
-	toolbar_->setMovable(false);
+	setMovable(false);
 
 	ToolbarBackend::item_iterator it = tbb.items.begin();
 	ToolbarBackend::item_iterator end = tbb.items.end();
@@ -227,15 +168,15 @@ void QLToolbar::add(FuncRequest const & func, string const & tooltip)
 {
 	switch (func.action) {
 	case ToolbarBackend::SEPARATOR:
-		toolbar_->addSeparator();
+		addSeparator();
 		break;
 	case ToolbarBackend::LAYOUTS:
-		layout_.reset(new QLayoutBox(toolbar_, owner_));
+		layout_.reset(new QLayoutBox(this, owner_));
 		break;
 	case ToolbarBackend::MINIBUFFER:
-		owner_.addCommandBuffer(toolbar_);
+		owner_.addCommandBuffer(this);
 		/// \todo find a Qt4 equivalent to setHorizontalStretchable(true);
-		//toolbar_->setHorizontalStretchable(true);
+		//setHorizontalStretchable(true);
 		break;
 	case LFUN_TABULAR_INSERT: {
 		QToolButton * tb = new QToolButton;
@@ -247,7 +188,7 @@ void QLToolbar::add(FuncRequest const & func, string const & tooltip)
 		connect(tb, SIGNAL(toggled(bool)), iv, SLOT(show(bool)));
 		connect(iv, SIGNAL(visible(bool)), tb, SLOT(setChecked(bool)));
 		connect(this, SIGNAL(updated()), iv, SLOT(updateParent()));
-		toolbar_->addWidget(tb);
+		addWidget(tb);
 		break;
 		}
 	default: {
@@ -255,7 +196,7 @@ void QLToolbar::add(FuncRequest const & func, string const & tooltip)
 			break;
 
 		Action * action = new Action(owner_, toolbarbackend.getIcon(func), "", func, tooltip);
-		toolbar_->addAction(action);
+		addAction(action);
 		ActionVector.push_back(action);
 		break;
 		}
@@ -265,13 +206,13 @@ void QLToolbar::add(FuncRequest const & func, string const & tooltip)
 
 void QLToolbar::hide(bool)
 {
-	toolbar_->hide();
+	QToolBar::hide();
 }
 
 
 void QLToolbar::show(bool)
 {
-	toolbar_->show();
+	QToolBar::show();
 }
 
 

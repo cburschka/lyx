@@ -20,6 +20,7 @@
 
 #include "GView.h"
 #include "GMenubar.h"
+#include "GToolbar.h"
 #include "GMiniBuffer.h"
 
 #include "BufferView.h"
@@ -218,6 +219,11 @@ bool GView::hasFocus() const
 	return true;
 }
 
+
+Toolbars::ToolbarPtr GView::makeToolbar(ToolbarBackend::Toolbar const & tbb)
+{
+	return make_toolbar(tbb, *this);
+}
 
 } // namespace frontend
 } // namespace lyx

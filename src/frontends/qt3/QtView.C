@@ -29,6 +29,7 @@
 
 #include "QtView.h"
 #include "QLMenubar.h"
+#include "QLToolbar.h"
 #include "qfont_loader.h"
 #include "QCommandBuffer.h"
 #include "qt_helpers.h"
@@ -220,6 +221,12 @@ void QtView::busy(bool yes) const
 		QApplication::setOverrideCursor(Qt::waitCursor);
 	else
 		QApplication::restoreOverrideCursor();
+}
+
+
+Toolbars::ToolbarPtr QtView::makeToolbar(ToolbarBackend::Toolbar const & tbb)
+{
+	return make_toolbar(tbb, *this);
 }
 
 } // namespace frontend
