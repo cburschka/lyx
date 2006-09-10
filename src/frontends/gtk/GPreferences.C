@@ -149,10 +149,10 @@ void GPreferences::doBuild()
 	spellcheckercombo_.append_text ("aspell");
 	spellcheckercombo_.append_text ("hspell");
 #ifdef USE_PSPELL
-	spellcheckercombo_.append_text (_("pspell (library)"));
+	spellcheckercombo_.append_text(lyx::to_utf8(_("pspell (library)")));
 #else
 #ifdef USE_ASPELL
-	spellcheckercombo_.append_text (_("aspell (library)"));
+	spellcheckercombo_.append_text(lyx::to_utf8(_("aspell (library)")));
 #endif
 #endif
 
