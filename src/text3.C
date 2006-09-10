@@ -85,9 +85,6 @@ using lyx::cap::replaceSelection;
 using lyx::support::isStrUnsignedInt;
 using lyx::support::token;
 
-using lyx::frontend::Gui;
-using lyx::frontend::Clipboard;
-
 using std::endl;
 using std::string;
 using std::istringstream;
