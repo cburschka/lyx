@@ -41,7 +41,7 @@ docstring const from_ascii(std::string const & ascii)
 docstring const from_utf8(std::string const & utf8)
 {
 	std::vector<boost::uint32_t> const ucs4 =
-		utf8_to_ucs4(std::vector<char>(utf8.begin(), utf8.end()));
+		utf8_to_ucs4(utf8.data(), utf8.size());
 	return docstring(ucs4.begin(), ucs4.end());
 }
 
@@ -49,7 +49,7 @@ docstring const from_utf8(std::string const & utf8)
 std::string const to_utf8(docstring const & ucs4)
 {
 	std::vector<char> const utf8 =
-		ucs4_to_utf8(std::vector<boost::uint32_t>(ucs4.begin(), ucs4.end()));
+		ucs4_to_utf8(ucs4.data(), ucs4.size());
 	return std::string(utf8.begin(), utf8.end());
 }
 

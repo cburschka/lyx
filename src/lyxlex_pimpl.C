@@ -73,9 +73,9 @@ string const LyXLex::Pimpl::getString() const
 
 lyx::docstring const LyXLex::Pimpl::getDocString() const
 {
-        std::vector<boost::uint32_t> res = utf8_to_ucs4(buff);
-        lyx::docstring dstr(res.begin(), res.end());
-        return dstr;
+	std::vector<boost::uint32_t> res = utf8_to_ucs4(buff);
+	lyx::docstring dstr(res.begin(), res.end());
+	return dstr;
 }
 
 

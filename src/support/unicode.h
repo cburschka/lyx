@@ -16,11 +16,32 @@
 #include <boost/cstdint.hpp>
 #include <vector>
 
+// utf8_to_ucs4
+
+// A single codepoint conversion for utf8_to_ucs4 does not make
+// sense, so that function is left out.
+
 std::vector<boost::uint32_t>
 utf8_to_ucs4(std::vector<char> const & utf8str);
 
 std::vector<boost::uint32_t>
+utf8_to_ucs4(char const * utf8str, size_t ls);
+
+// ucs2_to_ucs4
+
+boost::uint32_t
+ucs2_to_ucs4(unsigned short c);
+
+std::vector<boost::uint32_t>
 ucs2_to_ucs4(std::vector<unsigned short> const & ucs2str);
+
+std::vector<boost::uint32_t>
+ucs2_to_ucs4(unsigned short const * ucs2str, size_t ls);
+
+// ucs4_to_ucs2
+
+unsigned short
+ucs4_to_ucs2(boost::uint32_t c);
 
 std::vector<unsigned short>
 ucs4_to_ucs2(std::vector<boost::uint32_t> const & ucs4str);
@@ -28,13 +49,15 @@ ucs4_to_ucs2(std::vector<boost::uint32_t> const & ucs4str);
 std::vector<unsigned short>
 ucs4_to_ucs2(boost::uint32_t const * s, size_t ls);
 
-unsigned short
-ucs4_to_ucs2(boost::uint32_t c);
+// ucs4_to_utf8
+
+std::vector<char>
+ucs4_to_utf8(boost::uint32_t c);
 
 std::vector<char>
 ucs4_to_utf8(std::vector<boost::uint32_t> const & ucs4str);
 
 std::vector<char>
-ucs4_to_utf8(boost::uint32_t c);
+ucs4_to_utf8(boost::uint32_t const * ucs4str, size_t ls);
 
 #endif

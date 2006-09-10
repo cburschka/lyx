@@ -120,7 +120,7 @@ QString const toqstr(string const & str)
 QString const toqstr(docstring const & str)
 {
 	std::vector<unsigned short> ucs2 =
-		ucs4_to_ucs2(str.c_str(), str.length());
+		ucs4_to_ucs2(str.data(), str.length());
 	ucs2.push_back('\0');
 	return QString::fromUcs2(&ucs2[0]);
 }
@@ -149,8 +149,7 @@ string const fromqstr(QString const & str)
 docstring const qstring_to_ucs4(QString const & str)
 {
 	unsigned short const * const ucs2 = str.ucs2();
-	std::vector<char_type> const ucs4 = ucs2_to_ucs4(
-		std::vector<unsigned short>(ucs2, ucs2 + str.length()));
+	std::vector<char_type> const ucs4 = ucs2_to_ucs4(ucs2, str.length());
 	return docstring(ucs4.begin(), ucs4.end());
 }
 

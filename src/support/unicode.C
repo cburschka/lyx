@@ -126,18 +126,46 @@ iconv_convert(iconv_t * cd,
 
 std::vector<boost::uint32_t> utf8_to_ucs4(std::vector<char> const & utf8str)
 {
+	return utf8_to_ucs4(&utf8str[0], utf8str.size());
+}
+
+
+std::vector<boost::uint32_t>
+utf8_to_ucs4(char const * utf8str, size_t ls)
+{
 	static iconv_t cd = (iconv_t)(-1);
 	return iconv_convert<boost::uint32_t>(&cd, ucs4_codeset, "UTF-8",
-					      &utf8str[0], utf8str.size());
+					      utf8str, ls);
+}
+
+
+boost::uint32_t
+ucs2_to_ucs4(unsigned short c)
+{
+	return ucs2_to_ucs4(&c, 1)[0];
 }
 
 
 std::vector<boost::uint32_t>
 ucs2_to_ucs4(std::vector<unsigned short> const & ucs2str)
 {
+	return ucs2_to_ucs4(&ucs2str[0], ucs2str.size());
+}
+
+
+std::vector<boost::uint32_t>
+ucs2_to_ucs4(unsigned short const * ucs2str, size_t ls)
+{
 	static iconv_t cd = (iconv_t)(-1);
 	return iconv_convert<boost::uint32_t>(&cd, ucs4_codeset, ucs2_codeset,
-					      &ucs2str[0], ucs2str.size());
+					      ucs2str, ls);
+}
+
+
+unsigned short
+ucs4_to_ucs2(boost::uint32_t c)
+{
+	return ucs4_to_ucs2(&c, 1)[0];
 }
 
 
@@ -157,24 +185,25 @@ ucs4_to_ucs2(boost::uint32_t const * s, size_t ls)
 }
 
 
-unsigned short
-ucs4_to_ucs2(boost::uint32_t c)
-{
-	boost::uint32_t tmp[] = { c, 0 };
-	return ucs4_to_ucs2(tmp, 1)[0];
-}
-
-
-std::vector<char> ucs4_to_utf8(std::vector<boost::uint32_t> const & ucs4str)
-{
-	static iconv_t cd = (iconv_t)(-1);
-	return iconv_convert<char>(&cd, "UTF-8", ucs4_codeset,
-				   &ucs4str[0], ucs4str.size());
-}
-
-
-std::vector<char> ucs4_to_utf8(boost::uint32_t c)
+std::vector<char>
+ucs4_to_utf8(boost::uint32_t c)
 {
 	static iconv_t cd = (iconv_t)(-1);
 	return iconv_convert<char>(&cd, "UTF-8", ucs4_codeset, &c, 1);
+}
+
+
+std::vector<char>
+ucs4_to_utf8(std::vector<boost::uint32_t> const & ucs4str)
+{
+	return ucs4_to_utf8(&ucs4str[0], ucs4str.size());
+}
+
+
+std::vector<char>
+ucs4_to_utf8(boost::uint32_t const * ucs4str, size_t ls)
+{
+	static iconv_t cd = (iconv_t)(-1);
+	return iconv_convert<char>(&cd, "UTF-8", ucs4_codeset,
+				   ucs4str, ls);
 }

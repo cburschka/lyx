@@ -202,18 +202,18 @@ string QLyXKeySym::getSymbolName() const
 
 size_t QLyXKeySym::getUCSEncoded() const
 {
-    unsigned short const * ptr = text_.ucs2();
-    std::vector<unsigned short> tmp(ptr, ptr + text_.length());
+    if (text_.isEmpty())
+	return 0;
+
+    //unsigned short const * ptr = text_.ucs2();
+    //std::vector<unsigned short> tmp(ptr, ptr + text_.length());
 
     //lyxerr << "Data is " << tmp << endl;
     //lyxerr << "Length is " << text_.length() << endl;
 
-    if (text_.isEmpty())
-	return 0;
-
     //size_t res = utf8_to_ucs4(tmp, tmp.length());
     //lyxerr << "Res is " << res << endl;
-    return ucs2_to_ucs4(tmp)[0];
+    return ucs2_to_ucs4(text_.ucs2(), text_.length())[0];
 }
 
 
