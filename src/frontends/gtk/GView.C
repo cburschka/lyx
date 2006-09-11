@@ -175,19 +175,19 @@ void GView::allowInput() const
 
 void GView::message(docstring const & msg)
 {
-	minibuffer_->message(msg);
+	minibuffer_->message(lyx::to_utf8(msg));
 }
 
 
 void GView::updateStatusBar()
 {
-	message(getLyXFunc().viewStatusMessage());
+	message(lyx::from_utf8(getLyXFunc().viewStatusMessage()));
 }
 
 
 void GView::setWindowTitle(docstring const & t, docstring const & /*it*/)
 {
-	set_title(Glib::locale_to_utf8(t));
+	set_title(lyx::to_utf8(t));
 }
 
 
@@ -209,7 +209,7 @@ void GView::busy(bool yes) const
 
 void GView::clearMessage()
 {
-	message(getLyXFunc().viewStatusMessage());
+	message(lyx::from_utf8(getLyXFunc().viewStatusMessage()));
 }
 
 

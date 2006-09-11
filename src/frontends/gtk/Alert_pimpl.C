@@ -23,18 +23,20 @@
 
 #include <gtkmm.h>
 
+using lyx::docstring;
+
 using std::string;
 
 
 namespace {
 
 
-string translateShortcut(string const & str)
+docstring translateShortcut(docstring const & str)
 {
-	string::size_type i = str.find_first_of("&");
-	if (i == string::npos || i == str.length() - 1)
+	docstring::size_type i = str.find_first_of(lyx::from_ascii("&"));
+	if (i == docstring::npos || i == str.length() - 1)
 		return str;
-	string tstr = str;
+	docstring tstr = str;
 	tstr[i] = '_';
 	return tstr;
 }
@@ -45,30 +47,30 @@ string translateShortcut(string const & str)
 
 void warning_pimpl(docstring const & title, docstring const & message)
 {
-	Gtk::MessageDialog dlg(Glib::Markup::escape_text(Glib::locale_to_utf8(message)),
+	Gtk::MessageDialog dlg(Glib::Markup::escape_text(lyx::to_utf8(message)),
 			       true, Gtk::MESSAGE_WARNING,
 			       Gtk::BUTTONS_CLOSE, true);
-	dlg.set_title(title);
+	dlg.set_title(lyx::to_utf8(title));
 	dlg.run();
 }
 
 
 void error_pimpl(docstring const & title, docstring const & message)
 {
-	Gtk::MessageDialog dlg(Glib::Markup::escape_text(Glib::locale_to_utf8(message)),
+	Gtk::MessageDialog dlg(Glib::Markup::escape_text(lyx::to_utf8(message)),
 			       true, Gtk::MESSAGE_ERROR,
 			       Gtk::BUTTONS_CLOSE, true);
-	dlg.set_title(title);
+	dlg.set_title(lyx::to_utf8(title));
 	dlg.run();
 }
 
 
 void information_pimpl(docstring const & title, docstring const & message)
 {
-	Gtk::MessageDialog dlg(Glib::Markup::escape_text(Glib::locale_to_utf8(message)),
+	Gtk::MessageDialog dlg(Glib::Markup::escape_text(lyx::to_utf8(message)),
 			       true, Gtk::MESSAGE_INFO,
 			       Gtk::BUTTONS_CLOSE, true);
-	dlg.set_title(title);
+	dlg.set_title(lyx::to_utf8(title));
 	dlg.run();
 }
 
@@ -77,15 +79,15 @@ int prompt_pimpl(docstring const & title, docstring const & question,
 		 int defaultButton, int /*escapeButton*/,
 		 docstring const & b1, docstring const & b2, docstring const & b3)
 {
-	Glib::ustring gb1 = Glib::locale_to_utf8(translateShortcut(b1));
-	Glib::ustring gb2 = Glib::locale_to_utf8(translateShortcut(b2));
+	Glib::ustring gb1 = lyx::to_utf8(translateShortcut(b1));
+	Glib::ustring gb2 = lyx::to_utf8(translateShortcut(b2));
 	Glib::ustring gb3;
 	if (!b3.empty())
-		gb3 = Glib::locale_to_utf8(translateShortcut(b3));
-	Gtk::MessageDialog dlg(Glib::Markup::escape_text(Glib::locale_to_utf8(question)),
+		gb3 = lyx::to_utf8(translateShortcut(b3));
+	Gtk::MessageDialog dlg(Glib::Markup::escape_text(lyx::to_utf8(question)),
 			       true, Gtk::MESSAGE_QUESTION,
 			       Gtk::BUTTONS_NONE, true);
-	dlg.set_title(title);
+	dlg.set_title(lyx::to_utf8(title));
 	dlg.add_button(gb1, 0);
 	dlg.add_button(gb2, 1);
 	if (!b3.empty())

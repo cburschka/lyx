@@ -105,7 +105,7 @@ void GDocument::doBuild()
 			// FIXME UNICODE
 			docstring item =
 				bformat(_("Unavailable: %1$s"), lyx::from_utf8(cit->description()));
-			classcombo_.append_text(item);
+			classcombo_.append_text(lyx::to_utf8(item));
 		}
 	}
 

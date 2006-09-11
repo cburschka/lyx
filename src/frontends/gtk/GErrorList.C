@@ -70,7 +70,7 @@ void GErrorList::onErrListSelection()
 		(*errlistsel_->get_selected())[listColIndex_];
 
 	ErrorList const & errors = controller().errorList();
-	errdescview_->get_buffer()->set_text(errors[choice].description);
+	errdescview_->get_buffer()->set_text(lyx::to_utf8(errors[choice].description));
 }
 
 
@@ -93,7 +93,7 @@ void GErrorList::updateContents()
 		if (rowindex == 0)
 			errlistsel_->select(*row);
 
-		(*row)[listCol_] = cit->error;
+		(*row)[listCol_] = lyx::to_utf8(cit->error);
 		(*row)[listColIndex_] = rowindex;
 	}
 }
