@@ -224,9 +224,9 @@ public:
 
 	~Pimpl() {}
 
-	string const get(string const & m) const
+	docstring const get(string const & m) const
 	{
-		return m;
+		return lyx::from_ascii(m);
 	}
 };
 #endif
