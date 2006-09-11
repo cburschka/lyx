@@ -100,13 +100,28 @@ i18nLibFileSearch(std::string const & dir,
 		  std::string const & name,
 		  std::string const & ext = std::string());
 
+/// How to quote a filename
+enum quote_style {
+	/** Quote for the (OS dependant) shell. This is needed for command
+	    line arguments of subprocesses. */
+	quote_shell,
+	/** Quote for python. Use this if you want to store a filename in a
+	    python script. Example: \code
+	    os << "infile = " << quoteName(filename) << '\\n';
+	    \endcode This uses double quotes, so that you can also use this
+	    to quote filenames as part of a string if the string is quoted
+	    with single quotes. */
+	quote_python
+};
+
 /** Takes a command such as "python $$s/scripts/convertDefault.py file.in file.out"
  *  and replaces "$$s/" with the path to the LyX support directory containing
  *  this script. If the script is not found, "$$s/" is removed. Executing the
  *  command will still fail, but the error message will make some sort of
  *  sense ;-)
  */
-std::string const libScriptSearch(std::string const & command);
+std::string const libScriptSearch(std::string const & command,
+		quote_style style = quote_shell);
 
 enum latex_path_extension {
 	PROTECT_EXTENSION,
@@ -144,8 +159,9 @@ std::string const latex_path(std::string const & path,
 /// Substitutes active latex characters with underscores in filename
 std::string const makeLatexName(std::string const & file);
 
-/// Put the name in quotes suitable for the current shell
-std::string const quoteName(std::string const & file);
+/** Put the name in quotes suitable for the current shell or python,
+    depending on \p style. */
+std::string const quoteName(std::string const & file, quote_style style = quote_shell);
 
 /// Add a filename to a path. Any path from filename is stripped first.
 std::string const addName(std::string const & path, std::string const & fname);
