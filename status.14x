@@ -22,6 +22,15 @@ What's new
 - All shell scripts have been translated to python so sh.exe is no
   longer needed. That's a big plus for the Windows port.
 
+- implement inset-dissolve feature; this can be accessed (like in
+  mathed) by pressing Backspace at the start of an inset, or Delete at
+  the end (bug 2201).
+
+- Add buttons for \intop and \ointop to the math panel (bug 2698)
+
+- Native support for \phantom, \hphantom and \vphantom in mathed (bug 1473).
+  There is no Menu/Toolbar/Math panel entry yet, only display on screen.
+
 - Some small updates to the documentation.
 
 - Updated Czech (new), Italian (bug 2774) and German (bug 2718).
@@ -29,11 +38,6 @@ What's new
 
 - Updated Czech (Tutorial, new splash) and German (UserGuide,
   Extended) documentation.
-
-- Add buttons for \intop and \ointop to the math panel (bug 2698)
-
-- Native support for \phantom, \hphantom and \vphantom in mathed (bug 1473).
-  There is no Menu/Toolbar/Math panel entry yet, only display on screen.
 
 ** Bug fixes:
 

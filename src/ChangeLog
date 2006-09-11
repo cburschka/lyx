@@ -1,7 +1,20 @@
-1006-09-07  Enrico Forestieri <[EMAIL PROTECTED]>
+2006-09-11  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lfuns.h:
+	* LyXAction.C: new LFUN inset-dissolve (bug 2201).
+	
+	* text.C (dissolveInset): new method.
+	(erase, backspace): use dissolveInset.
+
+	* text3.C (dispatch): implement LFUN_INSET_DISSOLVE using
+	dissolveInset.
+	(getStatus): disable LFUN_INSET_DISSOLVE if the inset has more
+	than one cell. 
+
+2006-09-07  Enrico Forestieri <forenr@tlc.unipr.it>
 
 	* messages.C (Messages::get): don't warn about locale on cygwin
-		as it is not supported.
+	as it is not supported.
 
 2006-09-08  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
