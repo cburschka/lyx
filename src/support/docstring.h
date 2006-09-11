@@ -47,6 +47,19 @@ inline bool operator!=(lyx::docstring const & l, char const * r) { return !(l ==
 /// Compare a C string of ASCII characters with a docstring
 inline bool operator!=(char const * l, lyx::docstring const & r) { return !(r == l); }
 
+/// Concatenate a docstring and a C string of ASCII characters
+lyx::docstring operator+(lyx::docstring const &, char const *);
+
+/// Concatenate a C string of ASCII characters and a docstring
+lyx::docstring operator+(char const *, lyx::docstring const &);
+
+/// Concatenate a docstring and a single ASCII character
+lyx::docstring operator+(lyx::docstring const & l, char r);
+
+/// Concatenate a single ASCII character and a docstring
+lyx::docstring operator+(char l, lyx::docstring const & r);
+
+
 #if defined(__GNUC__) && defined(__GNUC_MINOR__) && __GNUC__ == 3 && __GNUC_MINOR__ < 4
 // Missing char_traits methods in gcc 3.3 and older. Taken from gcc 4.2svn.
 namespace std {

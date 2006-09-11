@@ -68,3 +68,40 @@ bool operator==(lyx::docstring const & l, char const * r)
 	}
 	return r[len] == '\0';
 }
+
+
+lyx::docstring operator+(lyx::docstring const & l, char const * r)
+{
+	lyx::docstring s(l);
+	for (char const * c = r; *c; ++c) {
+		BOOST_ASSERT(static_cast<unsigned char>(*c) < 0x80);
+		s.push_back(*c);
+	}
+	return s;
+}
+
+
+lyx::docstring operator+(char const * l, lyx::docstring const & r)
+{
+	lyx::docstring s;
+	for (char const * c = l; *c; ++c) {
+		BOOST_ASSERT(static_cast<unsigned char>(*c) < 0x80);
+		s.push_back(*c);
+	}
+	s += r;
+	return s;
+}
+
+
+lyx::docstring operator+(lyx::docstring const & l, char r)
+{
+	BOOST_ASSERT(static_cast<unsigned char>(r) < 0x80);
+	return l + lyx::docstring::value_type(r);
+}
+
+
+lyx::docstring operator+(char l, lyx::docstring const & r)
+{
+	BOOST_ASSERT(static_cast<unsigned char>(l) < 0x80);
+	return lyx::docstring::value_type(l) + r;
+}
