@@ -97,24 +97,24 @@ int prompt_pimpl(docstring const & title, docstring const & question,
 }
 
 
-std::pair<bool, string> const askForText_pimpl(string const & msg,
-					       string const & dflt)
+std::pair<bool, docstring> const askForText_pimpl(docstring const & msg,
+					       docstring const & dflt)
 {
-	Gtk::MessageDialog dlg(Glib::Markup::escape_text(Glib::locale_to_utf8(msg)),
+	Gtk::MessageDialog dlg(Glib::Markup::escape_text(lyx::to_utf8(msg)),
 			       true, Gtk::MESSAGE_QUESTION,
 			       Gtk::BUTTONS_OK_CANCEL,
 			       true);
 	Gtk::Entry entry;
-	entry.set_text(Glib::locale_to_utf8(dflt));
+	entry.set_text(lyx::to_utf8(dflt));
 	entry.set_position(-1);
 	entry.show();
 	dlg.get_vbox()->children().push_back(
 		Gtk::Box_Helpers::Element(entry));
 	int response = dlg.run();
 	if (response == Gtk::RESPONSE_OK) {
-		string str = Glib::locale_from_utf8(entry.get_text());
-		return std::make_pair<bool, string>(true, str);
+		docstring str = lyx::from_utf8(entry.get_text());
+		return std::make_pair<bool, docstring>(true, str);
 	}
 	else
-		return std::make_pair<bool, string>(false, string());
+		return std::make_pair<bool, docstring>(false, docstring());
 }
