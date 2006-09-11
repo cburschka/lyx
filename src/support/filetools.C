@@ -133,11 +133,26 @@ string const MakeLatexName(string const & file)
 }
 
 
-string const QuoteName(string const & name)
+string const QuoteName(string const & name, quote_style style)
 {
-	return (os::shell() == os::UNIX) ?
-		'\'' + name + '\'':
-		'"' + name + '"';
+	switch(style) {
+	case quote_shell:
+		// This does not work for filenames containing " (windows)
+		// or ' (all other OSes). This can't be changed easily, since
+		// we would need to adapt the command line parser in
+		// Forkedcall::generateChild. Therefore we don't pass user
+		// filenames to child processes if possible. We store them in
+		// a python script instead, where we don't have these
+		// limitations.
+		return (os::shell() == os::UNIX) ?
+			'\'' + name + '\'':
+			'"' + name + '"';
+	case quote_python:
+		return "\"" + subst(subst(name, "\\", "\\\\"), "\"", "\\\"")
+		     + "\"";
+	}
+	// shut up stupid compiler
+	return string();
 }
 
 
@@ -319,7 +334,7 @@ string const i18nLibFileSearch(string const & dir, string const & name,
 }
 
 
-string const LibScriptSearch(string const & command_in)
+string const LibScriptSearch(string const & command_in, quote_style style)
 {
 	static string const token_scriptpath = "$$s/";
 
@@ -345,7 +360,7 @@ string const LibScriptSearch(string const & command_in)
 	} else {
 		// Replace "$$s/foo/some_script" with "<path to>/some_script".
 		string::size_type const size_replace = size_script + 4;
-		command.replace(pos1, size_replace, QuoteName(script));
+		command.replace(pos1, size_replace, QuoteName(script, style));
 	}
 
 	return command;

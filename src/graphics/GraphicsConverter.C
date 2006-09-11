@@ -38,6 +38,7 @@ using support::LibScriptSearch;
 using support::OnlyPath;
 using support::OnlyFilename;
 using support::QuoteName;
+using support::quote_python;
 using support::subst;
 using support::tempName;
 using support::unlink;
@@ -325,9 +326,8 @@ void build_script(string const & from_file,
 	// in python, but the converters might be shell scripts and have more
 	// troubles with it.
 	string outfile = ChangeExtension(to_base, GetExtension(from_file));
-	script << "infile = '"
-	       << subst(subst(from_file, "\\", "\\\\"), "'", "\\'") << "'\n"
-	          "outfile = " << QuoteName(outfile) << "\n"
+	script << "infile = " << QuoteName(from_file, quote_python) << "\n"
+	          "outfile = " << QuoteName(outfile, quote_python) << "\n"
 	          "shutil.copy(infile, outfile)\n";
 
 	if (edgepath.empty()) {
@@ -335,13 +335,18 @@ void build_script(string const & from_file,
 		// converter path from from_format to to_format, so we use
 		// the default converter.
 		script << "infile = outfile\n"
-		       << "outfile = " << QuoteName(to_file) << '\n';
+		       << "outfile = " << QuoteName(to_file, quote_python)
+		       << '\n';
 
 		ostringstream os;
-		os << "python \""
-		   << LibFileSearch("scripts", "convertDefault.py") << "\" ";
+		os << "python "
+		   << LibScriptSearch("$$s/scripts/convertDefault.py",
+		                      quote_python) << ' ';
 		if (!from_format.empty())
 			os << from_format << ':';
+		// The extra " quotes around infile and outfile are needed
+		// because the filename may contain spaces and it is used
+		// as argument of os.system().
 		os << "' + '\"' + infile + '\"' + ' "
 		   << to_format << ":' + '\"' + outfile + '\"' + '";
 		string const command = os.str();
@@ -371,21 +376,23 @@ void build_script(string const & from_file,
 		outfile = ChangeExtension(to_base, conv.To->extension());
 
 		// Store these names in the python script
-		script << "infile = "      << QuoteName(infile) << '\n'
-		       << "infile_base = " << QuoteName(infile_base) << '\n'
-		       << "outfile = "     << QuoteName(outfile) << '\n';
+		script << "infile = "      << QuoteName(infile, quote_python) << "\n"
+		          "infile_base = " << QuoteName(infile_base, quote_python) << "\n"
+		          "outfile = "     << QuoteName(outfile, quote_python) << '\n';
 
+		// See comment about extra " quotes above (although that
+		// applies only for the first loop run here).
 		string command = conv.command;
 		command = subst(command, token_from, "' + '\"' + infile + '\"' + '");
 		command = subst(command, token_base, "' + '\"' + infile_base + '\"' + '");
 		command = subst(command, token_to,   "' + '\"' + outfile + '\"' + '");
-		command = LibScriptSearch(command);
+		command = LibScriptSearch(command, quote_python);
 
 		build_conversion_command(command, script);
 	}
 
 	// Move the final outfile to to_file
-	script << move_file("outfile", QuoteName(to_file));
+	script << move_file("outfile", QuoteName(to_file, quote_python));
 	lyxerr[Debug::GRAPHICS] << "ready!" << endl;
 }
 
