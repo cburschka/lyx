@@ -126,7 +126,7 @@ public:
 	};
 
 	/// This signal emits an informative message
-	boost::signal<void(std::string)> message;
+	boost::signal<void(lyx::docstring)> message;
 
 
 	/**

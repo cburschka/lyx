@@ -117,7 +117,7 @@ public:
 	/// This signal is emitted when some parsing error shows up.
 	boost::signal<void(std::string)> errors;
 	/// This signal is emitted when some message shows up.
-	boost::signal<void(std::string)> message;
+	boost::signal<void(lyx::docstring)> message;
 	/// This signal is emitted when the buffer busy status change.
 	boost::signal<void(bool)> busy;
 	/// This signal is emitted when the buffer readonly status change.

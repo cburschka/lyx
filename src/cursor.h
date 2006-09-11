@@ -283,9 +283,9 @@ public:
 	void handleFont(std::string const & font);
 
 	/// display a message
-	void message(std::string const & msg) const;
+	void message(lyx::docstring const & msg) const;
 	/// display an error message
-	void errorMessage(std::string const & msg) const;
+	void errorMessage(lyx::docstring const & msg) const;
 	///
 	std::string getPossibleLabel();
 

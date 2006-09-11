@@ -1204,8 +1204,7 @@ void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_PASTE: {
-		// FIXME UNICODE
-		cur.message(lyx::to_utf8(_("Paste")));
+		cur.message(_("Paste"));
 		lyx::cap::replaceSelection(cur);
 		istringstream is(lyx::to_utf8(cmd.argument()));
 		int n = 0;
@@ -1303,13 +1302,13 @@ bool MathGridInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 		string const s = lyx::to_utf8(cmd.argument());
 		if (nrows() <= 1 && (s == "delete-row" || s == "swap-row")) {
 			status.enabled(false);
-			status.message(N_("Only one row"));
+			status.message(lyx::from_utf8(N_("Only one row")));
 			return true;
 		}
 		if (ncols() <= 1 &&
 		    (s == "delete-column" || s == "swap-column")) {
 			status.enabled(false);
-			status.message(N_("Only one column"));
+			status.message(lyx::from_utf8(N_("Only one column")));
 			return true;
 		}
 		if ((rowinfo_[cur.row()].lines_ == 0 &&
@@ -1317,7 +1316,7 @@ bool MathGridInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 		    (rowinfo_[cur.row() + 1].lines_ == 0 &&
 		     s == "delete-hline-below")) {
 			status.enabled(false);
-			status.message(N_("No hline to delete"));
+			status.message(lyx::from_utf8(N_("No hline to delete")));
 			return true;
 		}
 
@@ -1326,7 +1325,7 @@ bool MathGridInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 		    (colinfo_[cur.col() + 1].lines_ == 0 &&
 		     s == "delete-vline-right")) {
 			status.enabled(false);
-			status.message(N_("No vline to delete"));
+			status.message(lyx::from_utf8(N_("No vline to delete")));
 			return true;
 		}
 		if (s == "valign-top" || s == "valign-middle" ||
@@ -1344,7 +1343,7 @@ bool MathGridInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 		else {
 			status.enabled(false);
 			status.message(bformat(
-				N_("Unknown tabular feature '%1$s'"), s));
+				lyx::from_utf8(N_("Unknown tabular feature '%1$s'")), lyx::from_ascii(s)));
 		}
 
 		status.setOnOff(s == "align-left"    && halign(cur.col()) == 'l'

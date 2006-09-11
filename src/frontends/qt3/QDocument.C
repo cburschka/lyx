@@ -131,8 +131,8 @@ void QDocument::build_dialog()
 		if (cit->isTeXClassAvailable()) {
 			dialog_->latexModule->classCO->insertItem(toqstr(cit->description()));
 		} else {
-			string item =
-				bformat(lyx::to_utf8(_("Unavailable: %1$s")), cit->description());
+			docstring item =
+				bformat(_("Unavailable: %1$s"), lyx::from_utf8(cit->description()));
 			dialog_->latexModule->classCO->insertItem(toqstr(item));
 		}
 	}

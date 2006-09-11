@@ -14,6 +14,8 @@
 #include "SpellBase.h"
 #include "gettext.h"
 
+using lyx::docstring;
+
 using std::string;
 
 
@@ -43,7 +45,7 @@ string const SpellBase::nextMiss()
 }
 
 
-string const SpellBase::error()
+docstring const SpellBase::error()
 {
-	return lyx::to_utf8(_("Native OS API not yet supported."));
+	return _("Native OS API not yet supported.");
 }

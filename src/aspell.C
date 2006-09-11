@@ -20,6 +20,8 @@
 
 #include <boost/assert.hpp>
 
+using lyx::docstring;
+
 using std::string;
 
 
@@ -132,13 +134,13 @@ string const ASpell::nextMiss()
 }
 
 
-string const ASpell::error()
+docstring const ASpell::error()
 {
 	char const * err = 0;
-
+	
 	if (spell_error_object && aspell_error_number(spell_error_object) != 0) {
 		err = aspell_error_message(spell_error_object);
 	}
 
-	return (err ? err : "");
+	return (err ? lyx::from_utf8(err) : docstring());
 }

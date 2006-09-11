@@ -32,6 +32,8 @@
 #include <algorithm>
 #include <sstream>
 
+using lyx::docstring;
+
 using std::transform;
 using std::string;
 using std::vector;
@@ -676,179 +678,178 @@ docstring const internalLineEnding(docstring const & str)
 #if USE_BOOST_FORMAT
 
 template<>
-string bformat(string const & fmt, int arg1)
+docstring bformat(docstring const & fmt, int arg1)
 {
-	return (boost::format(fmt) % arg1).str();
+	return (boost::basic_format<char_type>(fmt) % arg1).str();
 }
 
 
 template<>
-string bformat(string const & fmt, long arg1)
+docstring bformat(docstring const & fmt, long arg1)
 {
-	return (boost::format(fmt) % arg1).str();
+	return (boost::basic_format<char_type>(fmt) % arg1).str();
 }
 
 
 template<>
-string bformat(string const & fmt, unsigned int arg1)
+docstring bformat(docstring const & fmt, unsigned int arg1)
 {
-	return (boost::format(fmt) % arg1).str();
+	return (boost::basic_format<char_type>(fmt) % arg1).str();
 }
 
 
 template<>
-string bformat<string>(string const & fmt, string arg1)
+docstring bformat<docstring>(docstring const & fmt, docstring arg1)
 {
-	return (boost::format(fmt) % arg1).str();
+	return (boost::basic_format<char_type>(fmt) % arg1).str();
+}
+
+
+docstring bformat(docstring const & fmt, char * arg1)
+{
+	return (boost::basic_format<char_type>(fmt) % arg1).str();
 }
 
 
 template<>
-string bformat(string const & fmt, char * arg1)
+docstring bformat(docstring const & fmt, int arg1, int arg2)
 {
-	return (boost::format(fmt) % arg1).str();
+	return (boost::basic_format<char_type>(fmt) % arg1 % arg2).str();
 }
 
 
 template<>
-string bformat(string const & fmt, int arg1, int arg2)
+docstring bformat(docstring const & fmt, docstring arg1, docstring arg2)
 {
-	return (boost::format(fmt) % arg1 % arg2).str();
+	return (boost::basic_format<char_type>(fmt) % arg1 % arg2).str();
 }
 
 
 template<>
-string bformat(string const & fmt, string arg1, string arg2)
+docstring bformat(docstring const & fmt, char const * arg1, docstring arg2)
 {
-	return (boost::format(fmt) % arg1 % arg2).str();
+	return (boost::basic_format<char_type>(fmt) % arg1 % arg2).str();
 }
 
 
 template<>
-string bformat(string const & fmt, char const * arg1, string arg2)
+docstring bformat(docstring const & fmt, docstring arg1, docstring arg2, docstring arg3)
 {
-	return (boost::format(fmt) % arg1 % arg2).str();
+	return (boost::basic_format<char_type>(fmt) % arg1 % arg2 % arg3).str();
 }
 
 
 template<>
-string bformat(string const & fmt, string arg1, string arg2, string arg3)
+docstring bformat(docstring const & fmt,
+	       docstring arg1, docstring arg2, docstring arg3, docstring arg4)
 {
-	return (boost::format(fmt) % arg1 % arg2 % arg3).str();
-}
-
-
-template<>
-string bformat(string const & fmt,
-	       string arg1, string arg2, string arg3, string arg4)
-{
-	return (boost::format(fmt) % arg1 % arg2 % arg3 % arg4).str();
+	return (boost::basic_format<char_type>(fmt) % arg1 % arg2 % arg3 % arg4).str();
 }
 
 #else
 
 template<>
-string bformat(string const & fmt, int arg1)
+docstring bformat(docstring const & fmt, int arg1)
 {
-	BOOST_ASSERT(contains(fmt, "%1$d"));
-	string const str = subst(fmt, "%1$d", convert<string>(arg1));
-	return subst(str, "%%", "%");
+	BOOST_ASSERT(contains(fmt, lyx::from_ascii("%1$d")));
+	docstring const str = subst(fmt, lyx::from_ascii("%1$d"), convert<docstring>(arg1));
+	return subst(str, lyx::from_ascii("%%"), lyx::from_ascii("%"));
 }
 
 
 template<>
-string bformat(string const & fmt, long arg1)
+docstring bformat(docstring const & fmt, long arg1)
 {
-	BOOST_ASSERT(contains(fmt, "%1$d"));
-	string const str = subst(fmt, "%1$d", convert<string>(arg1));
-	return subst(str, "%%", "%");
+	BOOST_ASSERT(contains(fmt, lyx::from_ascii("%1$d")));
+	docstring const str = subst(fmt, lyx::from_ascii("%1$d"), convert<docstring>(arg1));
+	return subst(str, lyx::from_ascii("%%"), lyx::from_ascii("%"));
 }
 
 
 template<>
-string bformat(string const & fmt, unsigned int arg1)
+docstring bformat(docstring const & fmt, unsigned int arg1)
 {
-	BOOST_ASSERT(contains(fmt, "%1$d"));
-	string const str = subst(fmt, "%1$d", convert<string>(arg1));
-	return subst(str, "%%", "%");
+	BOOST_ASSERT(contains(fmt, lyx::from_ascii("%1$d")));
+	docstring const str = subst(fmt, lyx::from_ascii("%1$d"), convert<docstring>(arg1));
+	return subst(str, lyx::from_ascii("%%"), lyx::from_ascii("%"));
 }
 
 
 template<>
-string bformat(string const & fmt, string arg1)
+docstring bformat(docstring const & fmt, docstring arg1)
 {
-	BOOST_ASSERT(contains(fmt, "%1$s"));
-	string const str = subst(fmt, "%1$s", arg1);
-	return subst(str, "%%", "%");
+	BOOST_ASSERT(contains(fmt, lyx::from_ascii("%1$s")));
+	docstring const str = subst(fmt, lyx::from_ascii("%1$s"), arg1);
+	return subst(str, lyx::from_ascii("%%"), lyx::from_ascii("%"));
 }
 
 
 template<>
-string bformat(string const & fmt, char * arg1)
+docstring bformat(docstring const & fmt, char * arg1)
 {
-	BOOST_ASSERT(contains(fmt, "%1$s"));
-	string const str = subst(fmt, "%1$s", arg1);
-	return subst(str, "%%", "%");
+	BOOST_ASSERT(contains(fmt, lyx::from_ascii("%1$s")));
+	docstring const str = subst(fmt, lyx::from_ascii("%1$s"), arg1);
+	return subst(str, lyx::from_ascii("%%"), lyx::from_ascii("%"));
 }
 template<>
-string bformat(string const & fmt, string arg1, string arg2)
+docstring bformat(docstring const & fmt, docstring arg1, docstring arg2)
 {
-	BOOST_ASSERT(contains(fmt, "%1$s"));
-	BOOST_ASSERT(contains(fmt, "%2$s"));
-	string str = subst(fmt, "%1$s", arg1);
-	str = subst(str, "%2$s", arg2);
-	return subst(str, "%%", "%");
-}
-
-
-template<>
-string bformat(string const & fmt, char const * arg1, string arg2)
-{
-	BOOST_ASSERT(contains(fmt, "%1$s"));
-	BOOST_ASSERT(contains(fmt, "%2$s"));
-	string str = subst(fmt, "%1$s", arg1);
-	str = subst(fmt, "%2$s", arg2);
-	return subst(str, "%%", "%");
+	BOOST_ASSERT(contains(fmt, lyx::from_ascii("%1$s")));
+	BOOST_ASSERT(contains(fmt, lyx::from_ascii("%2$s")));
+	docstring str = subst(fmt, lyx::from_ascii("%1$s"), arg1);
+	str = subst(str, lyx::from_ascii("%2$s"), arg2);
+	return subst(str, lyx::from_ascii("%%"), lyx::from_ascii("%"));
 }
 
 
 template<>
-string bformat(string const & fmt, int arg1, int arg2)
+docstring bformat(docstring const & fmt, char const * arg1, docstring arg2)
 {
-	BOOST_ASSERT(contains(fmt, "%1$d"));
-	BOOST_ASSERT(contains(fmt, "%2$d"));
-	string str = subst(fmt, "%1$d", convert<string>(arg1));
-	str = subst(str, "%2$d", convert<string>(arg2));
-	return subst(str, "%%", "%");
+	BOOST_ASSERT(contains(fmt, lyx::from_ascii("%1$s")));
+	BOOST_ASSERT(contains(fmt, lyx::from_ascii("%2$s")));
+	docstring str = subst(fmt, lyx::from_ascii("%1$s"), arg1);
+	str = subst(fmt, lyx::from_ascii("%2$s"), arg2);
+	return subst(str, lyx::from_ascii("%%"), lyx::from_ascii("%"));
 }
 
 
 template<>
-string bformat(string const & fmt, string arg1, string arg2, string arg3)
+docstring bformat(docstring const & fmt, int arg1, int arg2)
 {
-	BOOST_ASSERT(contains(fmt, "%1$s"));
-	BOOST_ASSERT(contains(fmt, "%2$s"));
-	BOOST_ASSERT(contains(fmt, "%3$s"));
-	string str = subst(fmt, "%1$s", arg1);
-	str = subst(str, "%2$s", arg2);
-	str = subst(str, "%3$s", arg3);
-	return subst(str, "%%", "%");
+	BOOST_ASSERT(contains(fmt, lyx::from_ascii("%1$d")));
+	BOOST_ASSERT(contains(fmt, lyx::from_ascii("%2$d")));
+	docstring str = subst(fmt, lyx::from_ascii("%1$d"), convert<docstring>(arg1));
+	str = subst(str, lyx::from_ascii("%2$d"), convert<docstring>(arg2));
+	return subst(str, lyx::from_ascii("%%"), lyx::from_ascii("%"));
 }
 
 
 template<>
-string bformat(string const & fmt,
-	       string arg1, string arg2, string arg3, string arg4)
+docstring bformat(docstring const & fmt, docstring arg1, docstring arg2, docstring arg3)
 {
-	BOOST_ASSERT(contains(fmt, "%1$s"));
-	BOOST_ASSERT(contains(fmt, "%2$s"));
-	BOOST_ASSERT(contains(fmt, "%3$s"));
-	BOOST_ASSERT(contains(fmt, "%4$s"));
-	string str = subst(fmt, "%1$s", arg1);
-	str = subst(str, "%2$s", arg2);
-	str = subst(str, "%3$s", arg3);
-	str = subst(str, "%4$s", arg4);
-	return subst(str, "%%", "%");
+	BOOST_ASSERT(contains(fmt, lyx::from_ascii("%1$s")));
+	BOOST_ASSERT(contains(fmt, lyx::from_ascii("%2$s")));
+	BOOST_ASSERT(contains(fmt, lyx::from_ascii("%3$s")));
+	docstring str = subst(fmt, lyx::from_ascii("%1$s"), arg1);
+	str = subst(str, lyx::from_ascii("%2$s"), arg2);
+	str = subst(str, lyx::from_ascii("%3$s"), arg3);
+	return subst(str, lyx::from_ascii("%%"), lyx::from_ascii("%"));
+}
+
+
+template<>
+docstring bformat(docstring const & fmt,
+	       docstring arg1, docstring arg2, docstring arg3, docstring arg4)
+{
+	BOOST_ASSERT(contains(fmt, lyx::from_ascii("%1$s")));
+	BOOST_ASSERT(contains(fmt, lyx::from_ascii("%2$s")));
+	BOOST_ASSERT(contains(fmt, lyx::from_ascii("%3$s")));
+	BOOST_ASSERT(contains(fmt, lyx::from_ascii("%4$s")));
+	docstring str = subst(fmt, lyx::from_ascii("%1$s"), arg1);
+	str = subst(str, lyx::from_ascii("%2$s"), arg2);
+	str = subst(str, lyx::from_ascii("%3$s"), arg3);
+	str = subst(str, lyx::from_ascii("%4$s"), arg4);
+	return subst(str, lyx::from_ascii("%%"), lyx::from_ascii("%"));
 }
 
 #endif

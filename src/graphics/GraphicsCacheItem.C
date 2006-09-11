@@ -401,10 +401,10 @@ void CacheItem::Impl::convertToDisplayFormat()
 	} else
 		filename = filename_;
 
-	string const displayed_filename = makeDisplayPath(filename_);
+	docstring const displayed_filename = makeDisplayPath(filename_);
 	lyxerr[Debug::GRAPHICS] << "[GrahicsCacheItem::convertToDisplayFormat]\n"
 		<< "\tAttempting to convert image file: " << filename
-		<< "\n\twith displayed filename: " << displayed_filename
+		<< "\n\twith displayed filename: " << lyx::to_utf8(displayed_filename)
 		<< endl;
 
 	string const from = formats.getFormatFromFile(filename);

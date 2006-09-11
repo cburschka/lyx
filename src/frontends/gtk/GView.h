@@ -42,7 +42,7 @@ public:
 
 	virtual void prohibitInput() const;
 	virtual void allowInput() const;
-	virtual void message(std::string const &);
+	virtual void message(lyx::docstring const &);
 
 	bool on_delete_event(GdkEventAny * event);
 	void focusWorkArea() { workArea_->grab_focus(); }
@@ -64,7 +64,7 @@ public:
 
 private:
 	bool onFocusIn(GdkEventFocus * event);
-	virtual void setWindowTitle(std::string const & t, std::string const & it);
+	virtual void setWindowTitle(lyx::docstring const & t, lyx::docstring const & it);
 
 	// The top-most box containing all other boxes.
 	Gtk::VBox top_box_;

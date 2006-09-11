@@ -14,6 +14,7 @@
 #define LYXDEBUG_H
 
 #include "support/debugstream.h"
+#include "support/docstring.h"
 
 /** Ideally this should have been a namespace, but since we try to be
  *  compilable on older C++ compilators too, we use a struct instead.

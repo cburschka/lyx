@@ -514,7 +514,7 @@ void QPrefsDialog::updateCopiers()
 		if (command.empty())
 			continue;
 		std::string const & fmt = it->first;
-		std::string const & pretty = form_->formats().prettyName(fmt);
+		lyx::docstring const pretty = form_->formats().prettyName(fmt);
 
 		copiersModule->AllCopiersLB->insertItem(toqstr(pretty));
 	}

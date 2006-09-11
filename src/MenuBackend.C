@@ -438,7 +438,7 @@ void expandLastfiles(Menu & tomenu, LyXView const * view)
 
 	for (; lfit != lf.end() && ii < 10; ++lfit, ++ii) {
 		docstring const label = convert<docstring>(ii) + lyx::from_ascii(". ")
-			+ lyx::from_utf8(makeDisplayPath((*lfit), 30))
+			+ makeDisplayPath((*lfit), 30)
 			+ char_type('|') + convert<docstring>(ii);
 		tomenu.add(MenuItem(MenuItem::Command, label, FuncRequest(LFUN_FILE_OPEN, (*lfit))), view);
 	}
@@ -460,7 +460,7 @@ void expandDocuments(Menu & tomenu, LyXView const * view)
 	Strings::const_iterator docit = names.begin();
 	Strings::const_iterator end = names.end();
 	for (; docit != end; ++docit, ++ii) {
-		docstring label = lyx::from_utf8(makeDisplayPath(*docit, 20));
+		docstring label = makeDisplayPath(*docit, 20);
 		if (ii < 10)
 			label = convert<docstring>(ii) + lyx::from_ascii(". ") + label + char_type('|') + convert<docstring>(ii);
 		tomenu.add(MenuItem(MenuItem::Command, label, FuncRequest(LFUN_BUFFER_SWITCH, *docit)), view);

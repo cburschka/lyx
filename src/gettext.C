@@ -44,6 +44,12 @@ docstring const _(string const & str)
 }
 
 
+docstring const _(docstring const & str)
+{
+	return getLyXMessages().get(lyx::to_utf8(str));
+}
+
+
 #ifdef ENABLE_NLS
 
 void locale_init()

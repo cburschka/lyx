@@ -437,9 +437,9 @@ string const abs_path_from_binary_name(string const & exe)
 	string const abs_binary = get_binary_path(exe);
 	if (abs_binary.empty()) {
 		// FIXME UNICODE
-		lyxerr << bformat(lyx::to_utf8(_("Unable to determine the path to the "
-						 "LyX binary from the command line %1$s")),
-				  exe)
+		lyxerr << lyx::to_utf8(bformat(_("Unable to determine the path to the "
+						 "LyX binary from the command line %1$s"),
+						 lyx::from_utf8(exe)))
 		       << std::endl;
 		bail_out();
 	}
@@ -559,14 +559,14 @@ get_system_support_dir(string const & abs_binary,
 	}
 
 	// FIXME UNICODE
-	lyxerr << bformat(lyx::to_utf8(_("Unable to determine the system directory "
+	lyxerr << lyx::to_utf8(bformat(_("Unable to determine the system directory "
 					 "having searched\n"
 					 "\t%1$s\n"
 					 "Use the '-sysdir' command line parameter or "
 					 "set the environment variable LYX_DIR_14x to "
 					 "the LyX system directory containing the file "
-					 "`chkconfig.ltx'.")),
-			  searched_dirs_str)
+					 "`chkconfig.ltx'."),
+			  lyx::from_utf8(searched_dirs_str)))
 	       << std::endl;
 
 	bail_out();
@@ -645,9 +645,10 @@ bool check_command_line_dir(string const & dir,
 	string const abs_path = fileSearch(dir, file);
 	if (abs_path.empty()) {
 		// FIXME UNICODE
-		lyxerr << bformat(lyx::to_utf8(_("Invalid %1$s switch.\n"
-						 "Directory %2$s does not contain %3$s.")),
-				  command_line_switch, dir, file)
+		lyxerr << lyx::to_utf8(bformat(_("Invalid %1$s switch.\n"
+						 "Directory %2$s does not contain %3$s."),
+				  lyx::from_utf8(command_line_switch), lyx::from_utf8(dir),
+				  lyx::from_utf8(file)))
 		       << std::endl;
 	}
 
@@ -672,9 +673,9 @@ bool check_env_var_dir(string const & dir,
 	string const abs_path = fileSearch(dir, file);
 	if (abs_path.empty()) {
 		// FIXME UNICODE
-		lyxerr << bformat(lyx::to_utf8(_("Invalid %1$s environment variable.\n"
-						 "Directory %2$s does not contain %3$s.")),
-				  env_var, dir, file)
+		lyxerr << lyx::to_utf8(bformat(_("Invalid %1$s environment variable.\n"
+						 "Directory %2$s does not contain %3$s."),
+				  lyx::from_utf8(env_var), lyx::from_utf8(dir), lyx::from_utf8(file)))
 		       << std::endl;
 	}
 
@@ -695,10 +696,10 @@ bool check_env_var_dir(string const & dir,
 		// package.C.in as a file containing strings that need
 		// translation.
 		// FIXME UNICODE
-		string const fmt =
-			lyx::to_utf8(_("Invalid %1$s environment variable.\n%2$s is not a directory."));
+		docstring const fmt =
+			_("Invalid %1$s environment variable.\n%2$s is not a directory.");
 
-		lyxerr << bformat(fmt, env_var, dir)
+		lyxerr << lyx::to_utf8(bformat(fmt, lyx::from_utf8(env_var), lyx::from_utf8(dir)))
 		       << std::endl;
 	}
 

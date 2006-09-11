@@ -12,11 +12,13 @@
 
 #include "errorlist.h"
 
+using lyx::docstring;
 using lyx::pos_type;
 using std::string;
 
 
-ErrorItem::ErrorItem(string const & error_, string const & description_,
+
+ErrorItem::ErrorItem(docstring const & error_, docstring const & description_,
 		     int par_id_, pos_type pos_start_, pos_type pos_end_)
 	: error(error_), description(description_), par_id(par_id_),
 	  pos_start(pos_start_),  pos_end(pos_end_)

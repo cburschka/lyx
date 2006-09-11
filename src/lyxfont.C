@@ -507,21 +507,22 @@ string const LyXFont::stateText(BufferParams * params) const
 	if (color() != LColor::inherit)
 		os << lcolor.getGUIName(color()) << ", ";
 	if (emph() != INHERIT)
-		os << bformat(lyx::to_utf8(_("Emphasis %1$s, ")),
-			      lyx::to_utf8(_(GUIMiscNames[emph()])));
+		os << lyx::to_utf8(bformat(_("Emphasis %1$s, "),
+			      _(GUIMiscNames[emph()])));
 	if (underbar() != INHERIT)
-		os << bformat(lyx::to_utf8(_("Underline %1$s, ")),
-			      lyx::to_utf8(_(GUIMiscNames[underbar()])));
+		os << lyx::to_utf8(bformat(_("Underline %1$s, "),
+			      _(GUIMiscNames[underbar()])));
 	if (noun() != INHERIT)
-		os << bformat(lyx::to_utf8(_("Noun %1$s, ")),
-			      lyx::to_utf8(_(GUIMiscNames[noun()])));
+		os << lyx::to_utf8(bformat(_("Noun %1$s, "),
+			      _(GUIMiscNames[noun()])));
 	if (bits == inherit)
 		os << lyx::to_utf8(_("Default")) << ", ";
 	if (!params || (language() != params->language))
-		os << bformat(lyx::to_utf8(_("Language: %1$s, ")),
-			      lyx::to_utf8(_(language()->display())));
+		os << lyx::to_utf8(bformat(_("Language: %1$s, "),
+			      _(language()->display())));
 	if (number() != OFF)
-		os << bformat(lyx::to_utf8(_("  Number %1$s")), lyx::to_utf8(_(GUIMiscNames[number()])));
+		os << lyx::to_utf8(bformat(_("  Number %1$s"),
+				_(GUIMiscNames[number()])));
 	return rtrim(os.str(), ", ");
 }
 

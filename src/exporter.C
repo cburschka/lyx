@@ -47,6 +47,8 @@ using lyx::support::onlyPath;
 using lyx::support::package;
 using lyx::support::prefixIs;
 
+using lyx::docstring;
+
 using std::find;
 using std::string;
 using std::vector;
@@ -74,13 +76,13 @@ vector<string> const Backends(Buffer const & buffer)
 int checkOverwrite(string const & filename)
 {
 	if (fs::exists(filename)) {
-		string text = bformat(lyx::to_utf8(_("The file %1$s already exists.\n\n"
-						     "Do you want to over-write that file?")),
+		docstring text = bformat(_("The file %1$s already exists.\n\n"
+						     "Do you want to over-write that file?"),
 				      makeDisplayPath(filename));
-		return Alert::prompt(lyx::to_utf8(_("Over-write file?")),
+		return Alert::prompt(_("Over-write file?"),
 				     text, 0, 2,
-				     lyx::to_utf8(_("&Over-write")), lyx::to_utf8(_("Over-write &all")),
-				     lyx::to_utf8(_("&Cancel export")));
+				     _("&Over-write"), _("Over-write &all"),
+				     _("&Cancel export"));
 	}
 	return 0;
 }
@@ -129,8 +131,8 @@ CopyStatus copyFile(string const & format,
 
 	Mover const & mover = movers(format);
 	if (!mover.copy(sourceFile, destFile, latexFile))
-		Alert::error(lyx::to_utf8(_("Couldn't copy file")),
-			     bformat(lyx::to_utf8(_("Copying %1$s to %2$s failed.")),
+		Alert::error(_("Couldn't copy file"),
+			     bformat(_("Copying %1$s to %2$s failed."),
 				     makeDisplayPath(sourceFile),
 				     makeDisplayPath(destFile)));
 
@@ -168,8 +170,8 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 			}
 		}
 		if (backend_format.empty()) {
-			Alert::error(lyx::to_utf8(_("Couldn't export file")),
-				bformat(lyx::to_utf8(_("No information for exporting the format %1$s.")),
+			Alert::error(_("Couldn't export file"),
+				bformat(_("No information for exporting the format %1$s."),
 				   formats.prettyName(format)));
 			return false;
 		}
@@ -202,8 +204,8 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 		buffer->makeLaTeXFile(filename, string(), runparams);
 	} else if (!lyxrc.tex_allows_spaces
 		   && contains(buffer->filePath(), ' ')) {
-		Alert::error(lyx::to_utf8(_("File name error")),
-			   lyx::to_utf8(_("The directory path to the document cannot contain spaces.")));
+		Alert::error(_("File name error"),
+			   _("The directory path to the document cannot contain spaces."));
 		return false;
 	} else {
 		runparams.nice = false;
@@ -238,19 +240,19 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 					  it->exportName, status == FORCE);
 		}
 		if (status == CANCEL) {
-			buffer->message(lyx::to_utf8(_("Document export cancelled.")));
+			buffer->message(_("Document export cancelled."));
 		} else if (fs::exists(tmp_result_file)) {
 			// Finally copy the main file
 			status = copyFile(format, tmp_result_file,
 					  result_file, result_file,
 					  status == FORCE);
-			buffer->message(bformat(lyx::to_utf8(_("Document exported as %1$s "
-							       "to file `%2$s'")),
+			buffer->message(bformat(_("Document exported as %1$s "
+							       "to file `%2$s'"),
 						formats.prettyName(format),
 						makeDisplayPath(result_file)));
 		} else {
 			// This must be a dummy converter like fax (bug 1888)
-			buffer->message(bformat(lyx::to_utf8(_("Document exported as %1$s")),
+			buffer->message(bformat(_("Document exported as %1$s"),
 						formats.prettyName(format)));
 		}
 	}

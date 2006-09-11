@@ -456,7 +456,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 
 
 			serv->func->dispatch(FuncRequest(lyxaction.lookupFunc(cmd), arg));
-			string const rval = serv->func->getMessage();
+			string const rval = lyx::to_utf8(serv->func->getMessage());
 
 			//modified june 1999 stefano@zool.su.se:
 			//all commands produce an INFO or ERROR message

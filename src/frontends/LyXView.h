@@ -136,7 +136,7 @@ public:
 	boost::signal<void()> focus_command_buffer;
 
 	/// display a message in the view
-	virtual void message(std::string const &) = 0;
+	virtual void message(lyx::docstring const &) = 0;
 
 	/// clear any temporary message and replace with current status
 	virtual void clearMessage() = 0;
@@ -188,7 +188,7 @@ private:
 	 * @param t main window title
 	 * @param it iconified (short) title
 	 */
-	virtual void setWindowTitle(std::string const & t, std::string const & it) = 0;
+	virtual void setWindowTitle(lyx::docstring const & t, lyx::docstring const & it) = 0;
 
 	/// called on timeout
 	void autoSave();

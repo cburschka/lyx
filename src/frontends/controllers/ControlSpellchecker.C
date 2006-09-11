@@ -37,6 +37,7 @@
 
 #include "support/textutils.h"
 #include "support/convert.h"
+#include "support/docstring.h"
 
 #include "frontends/Alert.h"
 
@@ -56,7 +57,8 @@ namespace frontend {
 ControlSpellchecker::ControlSpellchecker(Dialog & parent)
 	: Dialog::Controller(parent), exitEarly_(false),
 	  oldval_(0), newvalue_(0), count_(0)
-{}
+{
+}
 
 
 ControlSpellchecker::~ControlSpellchecker()
@@ -109,8 +111,8 @@ bool ControlSpellchecker::initialiseParams(std::string const &)
 
 	if (!success) {
 		// FIXME UNICODE
-		Alert::error(lyx::to_utf8(_("Spellchecker error")),
-			     lyx::to_utf8(_("The spellchecker could not be started\n"))
+		Alert::error(_("Spellchecker error"),
+			     _("The spellchecker could not be started\n")
 			     + speller_->error());
 		speller_.reset(0);
 	}
@@ -264,18 +266,16 @@ bool ControlSpellchecker::checkAlive()
 	if (speller_->alive() && speller_->error().empty())
 		return true;
 
-	string message;
-	// FIXME UNICODE
+	docstring message;
 	if (speller_->error().empty())
-		message = lyx::to_utf8(_("The spellchecker has died for some reason.\n"
-					 "Maybe it has been killed."));
+		message = _("The spellchecker has died for some reason.\n"
+					 "Maybe it has been killed.");
 	else
-		message = lyx::to_utf8(_("The spellchecker has failed.\n"))
-			+ speller_->error();
+		message = _("The spellchecker has failed.\n") + speller_->error();
 
 	dialog().CancelButton();
 
-	Alert::error(lyx::to_utf8(_("The spellchecker has failed")), message);
+	Alert::error(_("The spellchecker has failed"), message);
 	return false;
 }
 
@@ -287,15 +287,15 @@ void ControlSpellchecker::showSummary()
 		return;
 	}
 
-	string message;
+	docstring message;
 	// FIXME UNICODE
 	if (count_ != 1)
-		message = bformat(lyx::to_utf8(_("%1$d words checked.")), count_);
+		message = bformat(_("%1$d words checked."), count_);
 	else
-		message = lyx::to_utf8(_("One word checked."));
+		message = _("One word checked.");
 
 	dialog().CancelButton();
-	Alert::information(lyx::to_utf8(_("Spelling check completed")), message);
+	Alert::information(_("Spelling check completed"), message);
 }
 
 

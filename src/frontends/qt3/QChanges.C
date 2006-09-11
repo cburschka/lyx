@@ -50,14 +50,14 @@ void QChanges::build_dialog()
 
 void QChanges::update_contents()
 {
-	string text;
-	string author(controller().getChangeAuthor());
-	string date(controller().getChangeDate());
+	docstring text;
+	docstring author = lyx::from_utf8(controller().getChangeAuthor());
+	docstring date = lyx::from_utf8(controller().getChangeDate());
 
 	if (!author.empty())
-		text += bformat(lyx::to_utf8(_("Change by %1$s\n\n")), author);
+		text += bformat(_("Change by %1$s\n\n"), author);
 	if (!date.empty())
-		text += bformat(lyx::to_utf8(_("Change made at %1$s\n")), date);
+		text += bformat(_("Change made at %1$s\n"), date);
 
 	dialog_->changeTV->setText(toqstr(text));
 }

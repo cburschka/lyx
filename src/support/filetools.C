@@ -955,7 +955,7 @@ string const unzipFile(string const & zipped_file, string const & unzipped_file)
 }
 
 
-string const makeDisplayPath(string const & path, unsigned int threshold)
+docstring const makeDisplayPath(string const & path, unsigned int threshold)
 {
 	string str = path;
 	string const home = package().home_dir();
@@ -965,7 +965,7 @@ string const makeDisplayPath(string const & path, unsigned int threshold)
 		str = subst(str, home, "~");
 
 	if (str.length() <= threshold)
-		return os::external_path(str);
+		return lyx::from_utf8(os::external_path(str));
 
 	string const prefix = ".../";
 	string temp;
@@ -986,7 +986,7 @@ string const makeDisplayPath(string const & path, unsigned int threshold)
 		str = head + "..." + tail;
 	}
 
-	return os::external_path(prefix + str);
+	return lyx::from_utf8(os::external_path(prefix + str));
 }
 
 

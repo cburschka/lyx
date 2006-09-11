@@ -26,6 +26,7 @@
 #include "BufferView.h"
 #include "buffer_funcs.h"
 
+using lyx::docstring;
 using lyx::support::bformat;
 using lyx::support::changeExtension;
 using lyx::support::makeDisplayPath;
@@ -41,8 +42,8 @@ extern BufferList bufferlist;
 bool Importer::Import(LyXView * lv, string const & filename,
 		      string const & format, ErrorList & errorList)
 {
-	string const displaypath = makeDisplayPath(filename);
-	lv->message(bformat(lyx::to_utf8(_("Importing %1$s...")), displaypath));
+	docstring const displaypath = makeDisplayPath(filename);
+	lv->message(bformat(_("Importing %1$s..."), displaypath));
 
 	string const lyxfile = changeExtension(filename, ".lyx");
 
@@ -60,8 +61,8 @@ bool Importer::Import(LyXView * lv, string const & filename,
 			}
 		}
 		if (loader_format.empty()) {
-			Alert::error(lyx::to_utf8(_("Couldn't import file")),
-				     bformat(lyx::to_utf8(_("No information for importing the format %1$s.")),
+			Alert::error(_("Couldn't import file"),
+				     bformat(_("No information for importing the format %1$s."),
 					 formats.prettyName(format)));
 			return false;
 		}
@@ -86,7 +87,7 @@ bool Importer::Import(LyXView * lv, string const & filename,
 	}
 
 	// we are done
-	lv->message(lyx::to_utf8(_("imported.")));
+	lv->message(_("imported."));
 	return true;
 }
 

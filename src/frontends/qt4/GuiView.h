@@ -63,7 +63,7 @@ public:
 	Toolbars::ToolbarPtr makeToolbar(ToolbarBackend::Toolbar const & tbb);
 
 	/// display a status message
-	virtual void message(std::string const & str);
+	virtual void message(lyx::docstring const & str);
 
 	/// clear status message
 	virtual void clearMessage();
@@ -106,7 +106,7 @@ private:
 	 * @param t main window title
 	 * @param it iconified (short) title
 	 */
-	virtual void setWindowTitle(std::string const & t, std::string const & it);
+	virtual void setWindowTitle(lyx::docstring const & t, lyx::docstring const & it);
 
 	QTimer statusbar_timer_;
 

@@ -11,18 +11,20 @@
 
 // GUI-specific implementations
 
+#include "support/docstring.h"
+
 #include <utility>
 #include <string>
 
 
-int prompt_pimpl(std::string const & title, std::string const & question,
+int prompt_pimpl(lyx::docstring const & title, lyx::docstring const & question,
 		 int default_button, int escape_button,
-		 std::string const & b1,
-		 std::string const & b2,
-		 std::string const & b3);
+		 lyx::docstring const & b1,
+		 lyx::docstring const & b2,
+		 lyx::docstring const & b3);
 
-void warning_pimpl(std::string const & title, std::string const & warning);
-void error_pimpl(std::string const & title, std::string const & warning);
-void information_pimpl(std::string const & title, std::string const & warning);
+void warning_pimpl(lyx::docstring const & title, lyx::docstring const & warning);
+void error_pimpl(lyx::docstring const & title, lyx::docstring const & warning);
+void information_pimpl(lyx::docstring const & title, lyx::docstring const & warning);
 
-std::pair<bool, std::string> const askForText_pimpl(std::string const & msg, std::string const & dflt);
+std::pair<bool, lyx::docstring> const askForText_pimpl(lyx::docstring const & msg, lyx::docstring const & dflt);

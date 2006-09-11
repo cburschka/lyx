@@ -113,7 +113,8 @@ void InsetCaption::setLabel(LCursor & cur) const
 			num = convert<string>(counter_);
 
 		// Generate the label
-		label = bformat("%1$s %2$s:", lyx::to_utf8(_(s)), num);
+		label = lyx::to_utf8(
+			bformat(lyx::from_ascii("%1$s %2$s:"), _(s), lyx::from_ascii(num)));
 	}
 }
 

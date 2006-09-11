@@ -12,7 +12,7 @@
 #ifndef FUNC_STATUS_H
 #define FUNC_STATUS_H
 
-#include <string>
+#include "support/docstring.h"
 
 /// The status of a function.
 
@@ -41,7 +41,7 @@ private:
 
 	unsigned int v_;
 
-	std::string message_;
+	lyx::docstring message_;
 
 public:
 	///
@@ -67,9 +67,9 @@ public:
 	bool onoff(bool b) const;
 
 	///
-	void message(std::string const & m);
+	void message(lyx::docstring const & m);
 	///
-	std::string const & message() const;
+	lyx::docstring const & message() const;
 };
 
 #endif

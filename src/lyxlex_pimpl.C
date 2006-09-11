@@ -83,7 +83,7 @@ void LyXLex::Pimpl::printError(string const & message) const
 {
 	string const tmpmsg = subst(message, "$$Token", getString());
 	lyxerr << "LyX: " << tmpmsg << " [around line " << lineno
-	       << " of file " << makeDisplayPath(name) << ']' << endl;
+		<< " of file " << lyx::to_utf8(makeDisplayPath(name)) << ']' << endl;
 }
 
 

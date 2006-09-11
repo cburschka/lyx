@@ -182,7 +182,7 @@ namespace {
 			} else
 				cur.insert(new MathMacroTemplate(is));
 		}
-		cur.message(N_("Math editor mode"));
+		cur.message(lyx::from_utf8(N_("Math editor mode")));
 	}
 
 } // namespace anon
@@ -760,7 +760,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_PASTE:
-		cur.message(lyx::to_utf8(_("Paste")));
+		cur.message(_("Paste"));
 		lyx::cap::replaceSelection(cur);
 		if (isStrUnsignedInt(lyx::to_utf8(cmd.argument())))
 			pasteSelection(cur, bv->buffer()->errorList("Paste"),
@@ -776,17 +776,18 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_CUT:
 		cutSelection(cur, true, true);
-		cur.message(lyx::to_utf8(_("Cut")));
+		cur.message(_("Cut"));
 		break;
 
 	case LFUN_COPY:
 		copySelection(cur);
-		cur.message(lyx::to_utf8(_("Copy")));
+		cur.message(_("Copy"));
 		break;
 
 	case LFUN_SERVER_GET_XY:
-		cur.message(convert<string>(cursorX(cur.top(), cur.boundary())) + ' '
-			  + convert<string>(cursorY(cur.top(), cur.boundary())));
+		cur.message(lyx::from_utf8(
+			convert<string>(cursorX(cur.top(), cur.boundary())) + ' '
+			  + convert<string>(cursorY(cur.top(), cur.boundary()))));
 		break;
 
 	case LFUN_SERVER_SET_XY: {
@@ -804,15 +805,15 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_SERVER_GET_FONT:
 		if (current_font.shape() == LyXFont::ITALIC_SHAPE)
-			cur.message("E");
+			cur.message(lyx::from_utf8("E"));
 		else if (current_font.shape() == LyXFont::SMALLCAPS_SHAPE)
-			cur.message("N");
+			cur.message(lyx::from_utf8("N"));
 		else
-			cur.message("0");
+			cur.message(lyx::from_utf8("0"));
 		break;
 
 	case LFUN_SERVER_GET_LAYOUT:
-		cur.message(cur.paragraph().layout()->name());
+		cur.message(lyx::from_utf8(cur.paragraph().layout()->name()));
 		break;
 
 	case LFUN_LAYOUT: {
@@ -825,7 +826,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		// function list/array with information about what
 		// functions needs arguments and their type.
 		if (cmd.argument().empty()) {
-			cur.errorMessage(lyx::to_utf8(_("LyX function 'layout' needs an argument.")));
+			cur.errorMessage(_("LyX function 'layout' needs an argument."));
 			break;
 		}
 
@@ -843,8 +844,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		}
 
 		if (!hasLayout) {
-			cur.errorMessage(string(N_("Layout ")) + lyx::to_utf8(cmd.argument()) +
-				N_(" not known"));
+			cur.errorMessage(lyx::from_utf8(N_("Layout ")) + cmd.argument() +
+				lyx::from_utf8(N_(" not known")));
 			break;
 		}
 
@@ -1198,7 +1199,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_MATH_MACRO:
 		if (cmd.argument().empty())
-			cur.errorMessage(N_("Missing argument"));
+			cur.errorMessage(lyx::from_utf8(N_("Missing argument")));
 		else {
 			string s = lyx::to_utf8(cmd.argument());
 			string const s1 = token(s, ' ', 1);
@@ -1303,7 +1304,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_FONT_FREE_APPLY:
 		toggleAndShow(cur, this, freefont, toggleall);
-		cur.message(lyx::to_utf8(_("Character set")));
+		cur.message(_("Character set"));
 		break;
 
 	// Set the freefont using the contents of \param data dispatched from
@@ -1315,7 +1316,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			freefont = font;
 			toggleall = toggle;
 			toggleAndShow(cur, this, freefont, toggleall);
-			cur.message(lyx::to_utf8(_("Character set")));
+			cur.message(_("Character set"));
 		}
 		break;
 	}
@@ -1448,7 +1449,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 					 params.align(),
 					 params.labelWidthString(),
 					 params.noindent());
-		cur.message(lyx::to_utf8(_("Paragraph layout set")));
+		cur.message(_("Paragraph layout set"));
 		break;
 	}
 

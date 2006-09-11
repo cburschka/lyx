@@ -2294,7 +2294,8 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 
 	case RC_NUMLASTFILES:
-		str = lyx::from_utf8(bformat(lyx::to_utf8(_("Maximal number of lastfiles. Up to %1$d can appear in the file menu.")), maxlastfiles));
+		str = bformat(_("Maximal number of lastfiles. Up to %1$d can appear in the file menu."),
+			maxlastfiles);
 		break;
 
 	case RC_PATH_PREFIX:

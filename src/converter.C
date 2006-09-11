@@ -50,6 +50,8 @@ using lyx::support::split;
 using lyx::support::subst;
 using lyx::support::Systemcall;
 
+using lyx::docstring;
+
 using std::endl;
 using std::find_if;
 using std::string;
@@ -315,11 +317,11 @@ bool Converters::convert(Buffer const * buffer,
 				return true;
 			}
 		}
-		Alert::error(lyx::to_utf8(_("Cannot convert file")),
-			     bformat(lyx::to_utf8(_("No information for converting %1$s "
+		Alert::error(_("Cannot convert file"),
+			     bformat(_("No information for converting %1$s "
 						    "format files to %2$s.\n"
-						    "Define a convertor in the preferences.")),
-			from_format, to_format));
+						    "Define a convertor in the preferences."),
+							lyx::from_ascii(from_format), lyx::from_ascii(to_format)));
 		return false;
 	}
 	OutputParams runparams;
@@ -395,8 +397,8 @@ bool Converters::convert(Buffer const * buffer,
 
 			lyxerr[Debug::FILES] << "Calling " << command << endl;
 			if (buffer)
-				buffer->message(lyx::to_utf8(_("Executing command: "))
-					+ command);
+				buffer->message(_("Executing command: ")
+				+ lyx::from_utf8(command));
 
 			Systemcall::Starttype const type = (dummy)
 				? Systemcall::DontWait : Systemcall::Wait;
@@ -435,14 +437,14 @@ bool Converters::convert(Buffer const * buffer,
 
 			if (res) {
 				if (conv.to == "program") {
-					Alert::error(lyx::to_utf8(_("Build errors")),
-						lyx::to_utf8(_("There were errors during the build process.")));
+					Alert::error(_("Build errors"),
+						_("There were errors during the build process."));
 				} else {
 // FIXME: this should go out of here. For example, here we cannot say if
 // it is a document (.lyx) or something else. Same goes for elsewhere.
-				Alert::error(lyx::to_utf8(_("Cannot convert file")),
-					bformat(lyx::to_utf8(_("An error occurred whilst running %1$s")),
-						command.substr(0, 50)));
+				Alert::error(_("Cannot convert file"),
+					bformat(_("An error occurred whilst running %1$s"),
+					lyx::from_ascii(command.substr(0, 50))));
 				}
 				return false;
 			}
@@ -464,9 +466,9 @@ bool Converters::convert(Buffer const * buffer,
 					  token_base, to_base);
 			Mover const & mover = movers(conv.from);
 			if (!mover.rename(from, to)) {
-				Alert::error(lyx::to_utf8(_("Cannot convert file")),
-					bformat(lyx::to_utf8(_("Could not move a temporary file from %1$s to %2$s.")),
-						from, to));
+				Alert::error(_("Cannot convert file"),
+					bformat(_("Could not move a temporary file from %1$s to %2$s."),
+						lyx::from_ascii(from), lyx::from_ascii(to)));
 				return false;
 			}
 		}
@@ -503,11 +505,11 @@ bool Converters::move(string const & fmt,
 				? mover.copy(from2, to2)
 				: mover.rename(from2, to2);
 			if (!moved && no_errors) {
-				Alert::error(lyx::to_utf8(_("Cannot convert file")),
+				Alert::error(_("Cannot convert file"),
 					bformat(copy ?
-						lyx::to_utf8(_("Could not copy a temporary file from %1$s to %2$s.")) :
-						lyx::to_utf8(_("Could not move a temporary file from %1$s to %2$s.")),
-						from2, to2));
+						_("Could not copy a temporary file from %1$s to %2$s.") :
+						_("Could not move a temporary file from %1$s to %2$s."),
+						lyx::from_ascii(from2), lyx::from_ascii(to2)));
 				no_errors = false;
 			}
 		}
@@ -556,10 +558,10 @@ bool Converters::scanLog(Buffer const & buffer, string const & /*command*/,
 
 namespace {
 
-class showMessage : public std::unary_function<string, void>, public boost::signals::trackable {
+class showMessage : public std::unary_function<docstring, void>, public boost::signals::trackable {
 public:
 	showMessage(Buffer const & b) : buffer_(b) {};
-	void operator()(string const & m) const
+	void operator()(docstring const & m) const
 	{
 		buffer_.message(m);
 	}
@@ -574,7 +576,7 @@ bool Converters::runLaTeX(Buffer const & buffer, string const & command,
 			  OutputParams const & runparams, ErrorList & errorList)
 {
 	buffer.busy(true);
-	buffer.message(lyx::to_utf8(_("Running LaTeX...")));
+	buffer.message(_("Running LaTeX..."));
 
 	runparams.document_language = buffer.params().language->babel();
 
@@ -591,14 +593,14 @@ bool Converters::runLaTeX(Buffer const & buffer, string const & command,
 
 	// check return value from latex.run().
 	if ((result & LaTeX::NO_LOGFILE)) {
-		string const str =
-			bformat(lyx::to_utf8(_("LaTeX did not run successfully. "
+		docstring const str =
+			bformat(_("LaTeX did not run successfully. "
 					       "Additionally, LyX could not locate "
-					       "the LaTeX log %1$s.")), name);
-		Alert::error(lyx::to_utf8(_("LaTeX failed")), str);
+					       "the LaTeX log %1$s."), lyx::from_utf8(name));
+		Alert::error(_("LaTeX failed"), str);
 	} else if (result & LaTeX::NO_OUTPUT) {
-		Alert::warning(lyx::to_utf8(_("Output is empty")),
-			       lyx::to_utf8(_("An empty output file was generated.")));
+		Alert::warning(_("Output is empty"),
+			       _("An empty output file was generated."));
 	}
 
 

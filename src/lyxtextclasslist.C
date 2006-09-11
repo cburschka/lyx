@@ -104,7 +104,7 @@ bool LyXTextClassList::read()
 
 	if (real_file.empty()) {
 		lyxerr << "LyXTextClassList::Read: unable to find "
-			"textclass file  `" << makeDisplayPath(real_file, 1000)
+			"textclass file  `" << lyx::to_utf8(makeDisplayPath(real_file, 1000))
 		       << "'. Exiting." << endl;
 		return false;
 		// This causes LyX to end... Not a desirable behaviour. Lgb
@@ -122,7 +122,7 @@ bool LyXTextClassList::read()
 
 	if (!lex.isOK()) {
 		lyxerr << "LyXTextClassList::Read: unable to open "
-			"textclass file  `" << makeDisplayPath(real_file, 1000)
+			"textclass file  `" << lyx::to_utf8(makeDisplayPath(real_file, 1000))
 		       << "'\nCheck your installation. LyX can't continue."
 		       << endl;
 		return false;

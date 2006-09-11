@@ -220,12 +220,12 @@ string const getAbbreviatedAuthor(InfoMap const & map, string const & key)
 
 	if (authors.size() == 2)
 		// FIXME UNICODE
-		return bformat(lyx::to_utf8(_("%1$s and %2$s")),
-			familyName(authors[0]), familyName(authors[1]));
+		return lyx::to_utf8(bformat(_("%1$s and %2$s"),
+			lyx::from_utf8(familyName(authors[0])), lyx::from_utf8(familyName(authors[1]))));
 
 	if (authors.size() > 2)
 		// FIXME UNICODE
-		return bformat(lyx::to_utf8(_("%1$s et al.")), familyName(authors[0]));
+		return lyx::to_utf8(bformat(_("%1$s et al."), lyx::from_utf8(familyName(authors[0]))));
 
 	return familyName(authors[0]);
 }

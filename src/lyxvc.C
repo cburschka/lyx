@@ -31,6 +31,8 @@ using lyx::support::isFileReadable;
 using lyx::support::makeDisplayPath;
 using lyx::support::tempName;
 
+using lyx::docstring;
+
 using std::endl;
 using std::string;
 using std::pair;
@@ -90,9 +92,9 @@ void LyXVC::registrer()
 
 	// there must be a file to save
 	if (!isFileReadable(filename)) {
-		Alert::error(lyx::to_utf8(_("Document not saved")),
-			     lyx::to_utf8(_("You must save the document "
-					    "before it can be registered.")));
+		Alert::error(_("Document not saved"),
+			     _("You must save the document "
+					    "before it can be registered."));
 		return;
 	}
 
@@ -103,14 +105,14 @@ void LyXVC::registrer()
 		if (isFileReadable(cvs_entries)) {
 			lyxerr[Debug::LYXVC]
 				<< "LyXVC: registering "
-				<< makeDisplayPath(filename)
+				<< lyx::to_utf8(makeDisplayPath(filename))
 				<< " with CVS" << endl;
 			vcs.reset(new CVS(cvs_entries, filename));
 
 		} else {
 			lyxerr[Debug::LYXVC]
 				<< "LyXVC: registering "
-				<< makeDisplayPath(filename)
+				<< lyx::to_utf8(makeDisplayPath(filename))
 				<< " with RCS" << endl;
 			vcs.reset(new RCS(filename));
 		}
@@ -119,16 +121,16 @@ void LyXVC::registrer()
 	}
 
 	lyxerr[Debug::LYXVC] << "LyXVC: registrer" << endl;
-	pair<bool, string> tmp =
-		Alert::askForText(lyx::to_utf8(_("LyX VC: Initial description")),
-			   lyx::to_utf8(_("(no initial description)")));
+	pair<bool, docstring> tmp =
+		Alert::askForText(_("LyX VC: Initial description"),
+			   _("(no initial description)"));
 	if (!tmp.first || tmp.second.empty()) {
 		// should we insist on checking tmp.second.empty()?
 		lyxerr[Debug::LYXVC] << "LyXVC: user cancelled" << endl;
 		return;
 	}
 
-	vcs->registrer(tmp.second);
+	vcs->registrer(lyx::to_utf8(tmp.second));
 }
 
 
@@ -136,12 +138,12 @@ void LyXVC::checkIn()
 {
 
 	lyxerr[Debug::LYXVC] << "LyXVC: checkIn" << endl;
-	pair<bool, string> tmp = Alert::askForText(lyx::to_utf8(_("LyX VC: Log Message")));
+	pair<bool, docstring> tmp = Alert::askForText(_("LyX VC: Log Message"));
 	if (tmp.first) {
 		if (tmp.second.empty()) {
-			tmp.second = lyx::to_utf8(_("(no log message)"));
+			tmp.second = _("(no log message)");
 		}
-		vcs->checkIn(tmp.second);
+		vcs->checkIn(lyx::to_utf8(tmp.second));
 	} else {
 		lyxerr[Debug::LYXVC] << "LyXVC: user cancelled" << endl;
 	}
@@ -160,12 +162,12 @@ void LyXVC::revert()
 {
 	lyxerr[Debug::LYXVC] << "LyXVC: revert" << endl;
 
-	string const file = makeDisplayPath(owner_->fileName(), 20);
-	string text = bformat(lyx::to_utf8(_("Reverting to the stored version of the "
+	docstring const file = makeDisplayPath(owner_->fileName(), 20);
+	docstring text = bformat(_("Reverting to the stored version of the "
 		"document %1$s will lose all current changes.\n\n"
-					     "Do you want to revert to the saved version?")), file);
-	int const ret = Alert::prompt(lyx::to_utf8(_("Revert to stored version of document?")),
-		text, 0, 1, lyx::to_utf8(_("&Revert")), lyx::to_utf8(_("&Cancel")));
+					     "Do you want to revert to the saved version?"), file);
+	int const ret = Alert::prompt(_("Revert to stored version of document?"),
+		text, 0, 1, _("&Revert"), _("&Cancel"));
 
 	if (ret == 0)
 		vcs->revert();

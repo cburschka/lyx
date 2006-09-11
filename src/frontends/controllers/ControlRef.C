@@ -63,7 +63,7 @@ vector<string> const ControlRef::getBufferList() const
 	vector<string> buffers = bufferlist.getFileNames();
 	for (vector<string>::iterator it = buffers.begin();
 	     it != buffers.end(); ++it) {
-		*it = makeDisplayPath(*it);
+		*it = lyx::to_utf8(makeDisplayPath(*it));
 	}
 
 	return buffers;

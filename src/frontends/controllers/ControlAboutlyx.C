@@ -89,10 +89,10 @@ string const ControlAboutlyx::getVersion() const
 	   << lyx_release_date
 	   << ")\n"
 	   << lyx::to_utf8(_("Library directory: "))
-	   << makeDisplayPath(package().system_support())
+	   << lyx::to_utf8(makeDisplayPath(package().system_support()))
 	   << "\n"
 	   << lyx::to_utf8(_("User directory: "))
-	   << makeDisplayPath(package().user_support());
+	   << lyx::to_utf8(makeDisplayPath(package().user_support()));
 
 	return ss.str();
 }

@@ -554,8 +554,8 @@ void LyXText::toggleFree(LCursor & cur, LyXFont const & font, bool toggleall)
 	// If the mask is completely neutral, tell user
 	if (font == LyXFont(LyXFont::ALL_IGNORE)) {
 		// Could only happen with user style
-		cur.message(lyx::to_utf8(_("No font change defined. "
-					   "Use Character under the Layout menu to define font change.")));
+		cur.message(_("No font change defined. "
+					   "Use Character under the Layout menu to define font change."));
 		return;
 	}
 
@@ -596,9 +596,9 @@ string LyXText::getStringToIndex(LCursor const & cur)
 		selectWord(tmpcur, lyx::PREVIOUS_WORD);
 
 		if (!tmpcur.selection())
-			cur.message(lyx::to_utf8(_("Nothing to index!")));
+			cur.message(_("Nothing to index!"));
 		else if (tmpcur.selBegin().pit() != tmpcur.selEnd().pit())
-			cur.message(lyx::to_utf8(_("Cannot index more than one paragraph!")));
+			cur.message(_("Cannot index more than one paragraph!"));
 		else
 			idxstring = tmpcur.selectionAsString(false);
 	}

@@ -24,6 +24,8 @@ extern "C" {
 
 #include <boost/assert.hpp>
 
+using lyx::docstring;
+
 using std::endl;
 using std::string;
 
@@ -141,7 +143,7 @@ string const PSpell::nextMiss()
 }
 
 
-string const PSpell::error()
+docstring const PSpell::error()
 {
 	char const * err = 0;
 

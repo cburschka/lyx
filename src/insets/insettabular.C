@@ -1558,8 +1558,8 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 #warning Need I say it ? This is horrible.
 #endif
 			// FIXME UNICODE
-			Alert::error(lyx::to_utf8(_("Error setting multicolumn")),
-				     lyx::to_utf8(_("You cannot set multicolumn vertically.")));
+			Alert::error(_("Error setting multicolumn"),
+				     _("You cannot set multicolumn vertically."));
 			return;
 		}
 		if (!cur.selection()) {

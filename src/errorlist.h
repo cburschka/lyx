@@ -22,12 +22,12 @@ class Buffer;
 /// A class to hold an error item
 class ErrorItem {
 public:
-	std::string error;
-	std::string description;
+	lyx::docstring error;
+	lyx::docstring description;
 	int par_id;
 	lyx::pos_type pos_start;
 	lyx::pos_type pos_end;
-	ErrorItem(std::string const & error, std::string const & description,
+	ErrorItem(lyx::docstring const & error, lyx::docstring const & description,
 		  int parid, lyx::pos_type posstart, lyx::pos_type posend);
 	ErrorItem();
 };

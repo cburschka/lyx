@@ -16,26 +16,28 @@
 #include "debug.h"
 #include "lyx_gui.h"
 
+using lyx::docstring;
+
 using std::endl;
 using std::make_pair;
 using std::pair;
 using std::string;
 
 
-int Alert::prompt(string const & title, string const & question,
+int Alert::prompt(docstring const & title, docstring const & question,
 		  int default_button, int escape_button,
-		  string const & b1, string const & b2, string const & b3)
+		  docstring const & b1, docstring const & b2, docstring const & b3)
 {
 	if (!lyx_gui::use_gui || lyxerr.debugging()) {
-		lyxerr << title << '\n'
+		lyxerr << lyx::to_utf8(title) << '\n'
 		       << "----------------------------------------\n"
-		       << question << endl;
+		       << lyx::to_utf8(question) << endl;
 
 		lyxerr << "Assuming answer is ";
 		switch (default_button) {
-		case 0: lyxerr << b1 << endl;
-		case 1: lyxerr << b2 << endl;
-		case 2: lyxerr << b3 << endl;
+		case 0: lyxerr << lyx::to_utf8(b1) << endl;
+		case 1: lyxerr << lyx::to_utf8(b2) << endl;
+		case 2: lyxerr << lyx::to_utf8(b3) << endl;
 		}
 		if (!lyx_gui::use_gui)
 			return default_button;
@@ -47,51 +49,51 @@ int Alert::prompt(string const & title, string const & question,
 }
 
 
-void Alert::warning(string const & title, string const & message)
+void Alert::warning(docstring const & title, docstring const & message)
 {
 	if (!lyx_gui::use_gui || lyxerr.debugging())
-		lyxerr << "Warning: " << title << '\n'
+		lyxerr << "Warning: " << lyx::to_utf8(title) << '\n'
 		       << "----------------------------------------\n"
-		       << message << endl;
+		       << lyx::to_utf8(message) << endl;
 	if (lyx_gui::use_gui)
 		warning_pimpl(title, message);
 }
 
 
-void Alert::error(string const & title, string const & message)
+void Alert::error(docstring const & title, docstring const & message)
 {
 	if (!lyx_gui::use_gui || lyxerr.debugging())
-		lyxerr << "Error: " << title << '\n'
+		lyxerr << "Error: " << lyx::to_utf8(title) << '\n'
 		       << "----------------------------------------\n"
-		       << message << endl;
+		       << lyx::to_utf8(message) << endl;
 
 	if (lyx_gui::use_gui)
 		error_pimpl(title, message);
 }
 
 
-void Alert::information(string const & title, string const & message)
+void Alert::information(docstring const & title, docstring const & message)
 {
 	if (!lyx_gui::use_gui || lyxerr.debugging())
-		lyxerr << title << '\n'
+		lyxerr << lyx::to_utf8(title) << '\n'
 		       << "----------------------------------------\n"
-		       << message << endl;
+		       << lyx::to_utf8(message) << endl;
 
 	if (lyx_gui::use_gui)
 		information_pimpl(title, message);
 }
 
 
-pair<bool, string> const Alert::askForText(string const & msg,
-					   string const & dflt)
+pair<bool, docstring> const Alert::askForText(docstring const & msg,
+					   docstring const & dflt)
 {
 	if (!lyx_gui::use_gui || lyxerr.debugging()) {
 		lyxerr << "----------------------------------------\n"
-		       << msg << '\n'
-		       << "Assuming answer is " << dflt << '\n'
+		       << lyx::to_utf8(msg) << '\n'
+		       << "Assuming answer is " << lyx::to_utf8(dflt) << '\n'
 		       << "----------------------------------------" << endl;
 		if (!lyx_gui::use_gui)
-			return make_pair<bool, string>(true, dflt);
+			return make_pair<bool, docstring>(true, dflt);
 	}
 
 	return askForText_pimpl(msg, dflt);

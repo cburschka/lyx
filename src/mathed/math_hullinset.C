@@ -1042,8 +1042,8 @@ void MathHullInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 			else
 				for (row_type row = 0; row < nrows(); ++row)
 					numbered(row, !old);
-			// FIXME UNICODE
-			cur.message(old ? lyx::to_utf8(_("No number")) : lyx::to_utf8(_("Number")));
+
+			cur.message(old ? _("No number") : _("Number"));
 		}
 		break;
 
@@ -1052,8 +1052,7 @@ void MathHullInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 			recordUndoInset(cur);
 			row_type r = (type_ == hullMultline) ? nrows() - 1 : cur.row();
 			bool old = numbered(r);
-			// FIXME UNICODE
-			cur.message(old ? lyx::to_utf8(_("No number")) : lyx::to_utf8(_("Number")));
+			cur.message(old ? _("No number") : _("Number"));
 			numbered(r, !old);
 		}
 		break;
@@ -1186,8 +1185,8 @@ bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 			|| s == "delete-row"
 			|| s == "copy-row")) {
 			status.message(bformat(
-				N_("Can't change number of rows in '%1$s'"),
-				   hullName(type_)));
+				lyx::from_utf8(N_("Can't change number of rows in '%1$s'")),
+				lyx::from_utf8(hullName(type_))));
 			status.enabled(false);
 			return true;
 		}
@@ -1196,8 +1195,8 @@ bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 			|| s == "delete-column"
 			|| s == "copy-column")) {
 			status.message(bformat(
-				N_("Can't change number of columns in '%1$s'"),
-				   hullName(type_)));
+				lyx::from_utf8(N_("Can't change number of columns in '%1$s'")),
+				lyx::from_utf8(hullName(type_))));
 			status.enabled(false);
 			return true;
 		}
@@ -1206,15 +1205,15 @@ bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 		  || type_ == hullNone) &&
 		    (s == "add-hline-above" || s == "add-hline-below")) {
 			status.message(bformat(
-				N_("Can't add horizontal grid lines in '%1$s'"),
-				   hullName(type_)));
+				lyx::from_utf8(N_("Can't add horizontal grid lines in '%1$s'")),
+				lyx::from_utf8(hullName(type_))));
 			status.enabled(false);
 			return true;
 		}
 		if (s == "add-vline-left" || s == "add-vline-right") {
 			status.message(bformat(
-				N_("Can't add vertical grid lines in '%1$s'"),
-				   hullName(type_)));
+				lyx::from_utf8(N_("Can't add vertical grid lines in '%1$s'")),
+				lyx::from_utf8(hullName(type_))));
 			status.enabled(false);
 			return true;
 		}
@@ -1322,7 +1321,7 @@ void MathHullInset::revealCodes(LCursor & cur) const
 		return;
 	ostringstream os;
 	cur.info(os);
-	cur.message(os.str());
+	cur.message(lyx::from_utf8(os.str()));
 /*
 	// write something to the minibuffer
 	// translate to latex

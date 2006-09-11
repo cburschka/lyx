@@ -108,12 +108,12 @@ bool menuWrite(Buffer * buffer)
 
 	// FIXME: we don't tell the user *WHY* the save failed !!
 
-	string const file = makeDisplayPath(buffer->fileName(), 30);
+	docstring const file = makeDisplayPath(buffer->fileName(), 30);
 
-	string text = bformat(lyx::to_utf8(_("The document %1$s could not be saved.\n\n"
-					     "Do you want to rename the document and try again?")), file);
-	int const ret = Alert::prompt(lyx::to_utf8(_("Rename and save?")),
-		text, 0, 1, lyx::to_utf8(_("&Rename")), lyx::to_utf8(_("&Cancel")));
+	docstring text = bformat(_("The document %1$s could not be saved.\n\n"
+					     "Do you want to rename the document and try again?"), file);
+	int const ret = Alert::prompt(_("Rename and save?"),
+		text, 0, 1, _("&Rename"), _("&Cancel"));
 
 	if (ret == 0)
 		return writeAs(buffer);
@@ -162,11 +162,11 @@ bool writeAs(Buffer * buffer, string const & filename)
 		fname = filename;
 
 	if (fs::exists(fname)) {
-		string const file = makeDisplayPath(fname, 30);
-		string text = bformat(lyx::to_utf8(_("The document %1$s already exists.\n\n"
-						     "Do you want to over-write that document?")), file);
-		int const ret = Alert::prompt(lyx::to_utf8(_("Over-write document?")),
-			text, 0, 1, lyx::to_utf8(_("&Over-write")), lyx::to_utf8(_("&Cancel")));
+		docstring const file = makeDisplayPath(fname, 30);
+		docstring text = bformat(_("The document %1$s already exists.\n\n"
+						     "Do you want to over-write that document?"), file);
+		int const ret = Alert::prompt(_("Over-write document?"),
+			text, 0, 1, _("&Over-write"), _("&Cancel"));
 
 		if (ret == 1)
 			return false;
@@ -211,10 +211,10 @@ void quitLyX(bool noask)
 	lyxerr[Debug::INFO] << "Deleting tmp dir " << package().temp_dir() << endl;
 
 	if (!destroyDir(package().temp_dir())) {
-		string const msg =
-			bformat(lyx::to_utf8(_("Unable to remove the temporary directory %1$s")),
-			package().temp_dir());
-		Alert::warning(lyx::to_utf8(_("Unable to remove temporary directory")), msg);
+		docstring const msg =
+			bformat(_("Unable to remove the temporary directory %1$s"),
+			lyx::from_utf8(package().temp_dir()));
+		Alert::warning(_("Unable to remove temporary directory"), msg);
 	}
 
 	lyx_gui::exit(0);
@@ -246,7 +246,7 @@ private:
 
 int AutoSaveBuffer::start()
 {
-	command_ = bformat(lyx::to_utf8(_("Auto-saving %1$s")), fname_);
+	command_ = lyx::to_utf8(bformat(_("Auto-saving %1$s"), lyx::from_utf8(fname_)));
 	return run(DontWait);
 }
 
@@ -286,7 +286,7 @@ int AutoSaveBuffer::generateChild()
 				// but safe in the parent, so...
 				if (pid == -1)
 					// emit message signal.
-					bv_.buffer()->message(lyx::to_utf8(_("Autosave failed!")));
+					bv_.buffer()->message(_("Autosave failed!"));
 			}
 		}
 		if (pid == 0) { // we are the child so...
@@ -313,7 +313,7 @@ void autoSave(BufferView * bv)
 	}
 
 	// emit message signal.
-	bv->buffer()->message(lyx::to_utf8(_("Autosaving current document...")));
+	bv->buffer()->message(_("Autosaving current document..."));
 
 	// create autosave filename
 	string fname = bv->buffer()->filePath();
@@ -396,21 +396,21 @@ string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagrap
 	}
 
 	if (!fs::is_readable(fname)) {
-		string const error = strerror(errno);
-		string const file = makeDisplayPath(fname, 50);
-		string const text = bformat(lyx::to_utf8(_("Could not read the specified document\n"
-							   "%1$s\ndue to the error: %2$s")), file, error);
-		Alert::error(lyx::to_utf8(_("Could not read file")), text);
+		docstring const error = lyx::from_ascii(strerror(errno));
+		docstring const file = makeDisplayPath(fname, 50);
+		docstring const text = bformat(_("Could not read the specified document\n"
+							   "%1$s\ndue to the error: %2$s"), file, error);
+		Alert::error(_("Could not read file"), text);
 		return string();
 	}
 
 	ifstream ifs(fname.c_str());
 	if (!ifs) {
-		string const error = strerror(errno);
-		string const file = makeDisplayPath(fname, 50);
-		string const text = bformat(lyx::to_utf8(_("Could not open the specified document\n"
-							   "%1$s\ndue to the error: %2$s")), file, error);
-		Alert::error(lyx::to_utf8(_("Could not open file")), text);
+		docstring const error = lyx::from_ascii(strerror(errno));
+		docstring const file = makeDisplayPath(fname, 50);
+		docstring const text = bformat(_("Could not open the specified document\n"
+							   "%1$s\ndue to the error: %2$s"), file, error);
+		Alert::error(_("Could not open file"), text);
 		return string();
 	}
 
@@ -440,7 +440,7 @@ string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagrap
 void reconfigure(BufferView * bv)
 {
 	// emit message signal.
-	bv->buffer()->message(lyx::to_utf8(_("Running configure...")));
+	bv->buffer()->message(_("Running configure..."));
 
 	// Run configure in user lyx directory
 	Path p(package().user_support());
@@ -449,13 +449,13 @@ void reconfigure(BufferView * bv)
 	one.startscript(Systemcall::Wait, configure_command);
 	p.pop();
 	// emit message signal.
-	bv->buffer()->message(lyx::to_utf8(_("Reloading configuration...")));
+	bv->buffer()->message(_("Reloading configuration..."));
 	lyxrc.read(libFileSearch(string(), "lyxrc.defaults"));
 	// Re-read packages.lst
 	LaTeXFeatures::getAvailable();
 
-	Alert::information(lyx::to_utf8(_("System reconfigured")),
-			   lyx::to_utf8(_("The system has been reconfigured.\n"
+	Alert::information(_("System reconfigured"),
+			   _("The system has been reconfigured.\n"
 					  "You need to restart LyX to make use of any\n"
-					  "updated document class specifications.")));
+					  "updated document class specifications."));
 }

@@ -173,7 +173,7 @@ void GView::allowInput() const
 }
 
 
-void GView::message(string const & msg)
+void GView::message(docstring const & msg)
 {
 	minibuffer_->message(msg);
 }
@@ -185,7 +185,7 @@ void GView::updateStatusBar()
 }
 
 
-void GView::setWindowTitle(string const & t, string const & /*it*/)
+void GView::setWindowTitle(docstring const & t, docstring const & /*it*/)
 {
 	set_title(Glib::locale_to_utf8(t));
 }

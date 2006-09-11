@@ -61,11 +61,11 @@ public:
 	/// True if lyxfunc reports an error
 	bool errorStat() const { return errorstat; }
 	/// Buffer to store result messages
-	void setMessage(std::string const & m) const;
+	void setMessage(lyx::docstring const & m) const;
 	/// Buffer to store result messages
-	void setErrorMessage(std::string const &) const;
+	void setErrorMessage(lyx::docstring const &) const;
 	/// Buffer to store result messages
-	std::string const getMessage() const { return dispatch_buffer; }
+	lyx::docstring const getMessage() const { return dispatch_buffer; }
 	/// Handle a accented char key sequence
 	void handleKeyFunc(kb_action action);
 
@@ -93,10 +93,10 @@ private:
 	/** Buffer to store messages and result data. Is there a
 	    good reason to have this one as static in Dispatch? (Ale)
 	*/
-	mutable std::string dispatch_buffer;
+	mutable lyx::docstring dispatch_buffer;
 
 	/// send a post-dispatch status message
-	void sendDispatchMessage(std::string const & msg,
+	void sendDispatchMessage(lyx::docstring const & msg,
 		FuncRequest const & ev);
 
 	// I think the following should be moved to BufferView. (Asger)

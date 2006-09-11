@@ -20,6 +20,7 @@
 #include <iostream>
 #include <iomanip>
 
+using lyx::docstring;
 using lyx::support::ascii_lowercase;
 using lyx::support::bformat;
 using lyx::support::isStrInt;
@@ -108,9 +109,9 @@ void lyx_debug_trait::showLevel(ostream & os, lyx_debug_trait::type level)
 		    && errorTags[i].level != Debug::NONE
 		    && errorTags[i].level & level) {
 			// avoid lyx::to_utf8(_(...)) re-entrance problem
-			string const s = lyx::to_utf8(_(errorTags[i].desc));
-			os << bformat(lyx::to_utf8(_("Debugging `%1$s' (%2$s)")),
-					errorTags[i].name, s)
+			docstring const s = _(errorTags[i].desc);
+			os << lyx::to_utf8(bformat(_("Debugging `%1$s' (%2$s)"),
+					lyx::from_utf8(errorTags[i].name), s))
 			   << '\n';
 		}
 	}
@@ -126,5 +127,6 @@ void lyx_debug_trait::showTags(ostream & os)
 		   << "  " << lyx::to_utf8(_(errorTags[i].desc)) << '\n';
 	os.flush();
 }
+
 
 LyXErr lyxerr;

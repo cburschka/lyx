@@ -13,6 +13,8 @@
 #ifndef SPELL_BASE_H
 #define SPELL_BASE_H
 
+#include "support/docstring.h"
+
 #include <string>
 
 class BufferParams;
@@ -59,7 +61,7 @@ public:
 	virtual std::string const nextMiss();
 
 	/// give an error message on messy exit
-	virtual std::string const error();
+	virtual lyx::docstring const error();
 };
 
 #endif // SPELL_BASE_H

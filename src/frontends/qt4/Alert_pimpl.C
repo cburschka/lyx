@@ -29,17 +29,17 @@
 #include <algorithm>
 
 using lyx::support::bformat;
+using lyx::docstring;
 
 using std::pair;
 using std::make_pair;
-using std::string;
 
 
-int prompt_pimpl(string const & tit, string const & question,
+int prompt_pimpl(docstring const & tit, docstring const & question,
 		 int default_button, int cancel_button,
-		 string const & b1, string const & b2, string const & b3)
+		 docstring const & b1, docstring const & b2, docstring const & b3)
 {
-	string const title = bformat(lyx::to_utf8(_("LyX: %1$s")), tit);
+	docstring const title = bformat(_("LyX: %1$s"), tit);
 
 	// FIXME replace that with theApp->gui()->currentView()
 	int res = QMessageBox::information(qApp->focusWidget(),
@@ -57,47 +57,47 @@ int prompt_pimpl(string const & tit, string const & question,
 }
 
 
-void warning_pimpl(string const & tit, string const & message)
+void warning_pimpl(docstring const & tit, docstring const & message)
 {
-	string const title = bformat(lyx::to_utf8(_("LyX: %1$s")), tit);
+	docstring const title = bformat(_("LyX: %1$s"), tit);
 	QMessageBox::warning(qApp->focusWidget(),
 			     toqstr(title),
 			     toqstr(formatted(message)));
 }
 
 
-void error_pimpl(string const & tit, string const & message)
+void error_pimpl(docstring const & tit, docstring const & message)
 {
-	string const title = bformat(lyx::to_utf8(_("LyX: %1$s")), tit);
+	docstring const title = bformat(_("LyX: %1$s"), tit);
 	QMessageBox::critical(qApp->focusWidget(),
 			      toqstr(title),
 			      toqstr(formatted(message)));
 }
 
 
-void information_pimpl(string const & tit, string const & message)
+void information_pimpl(docstring const & tit, docstring const & message)
 {
-	string const title = bformat(lyx::to_utf8(_("LyX: %1$s")), tit);
+	docstring const title = bformat(_("LyX: %1$s"), tit);
 	QMessageBox::information(qApp->focusWidget(),
 				 toqstr(title),
 				 toqstr(formatted(message)));
 }
 
 
-pair<bool, string> const
-askForText_pimpl(string const & msg, string const & dflt)
+pair<bool, docstring> const
+askForText_pimpl(docstring const & msg, docstring const & dflt)
 {
-	string const title = bformat(lyx::to_utf8(_("LyX: %1$s")), msg);
+	docstring const title = bformat(_("LyX: %1$s"), msg);
 
 	bool ok;
 	QString text = QInputDialog::getText(qApp->focusWidget(),
 		toqstr(title),
-		toqstr('&' + msg),
+		toqstr(lyx::char_type('&') + msg),
 		QLineEdit::Normal,
 		toqstr(dflt), &ok);
 
 	if (ok && !text.isEmpty())
-		return make_pair<bool, string>(true, fromqstr(text));
+		return make_pair<bool, docstring>(true, qstring_to_ucs4(text));
 	else
-		return make_pair<bool, string>(false, string());
+		return make_pair<bool, docstring>(false, docstring());
 }

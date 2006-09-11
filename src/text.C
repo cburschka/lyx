@@ -190,9 +190,9 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 		bool hasLayout = tclass.hasLayout(layoutname);
 
 		if (!hasLayout) {
-			errorList.push_back(ErrorItem(lyx::to_utf8(_("Unknown layout")),
-			bformat(lyx::to_utf8(_("Layout '%1$s' does not exist in textclass '%2$s'\nTrying to use the default instead.\n")),
-				layoutname, tclass.name()), par.id(), 0, par.size()));
+			errorList.push_back(ErrorItem(_("Unknown layout"),
+			bformat(_("Layout '%1$s' does not exist in textclass '%2$s'\nTrying to use the default instead.\n"),
+			lyx::from_utf8(layoutname), lyx::from_utf8(tclass.name())), par.id(), 0, par.size()));
 			layoutname = tclass.defaultLayoutName();
 		}
 
@@ -221,8 +221,8 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 			par.insertInset(par.size(), inset, font, change);
 		else {
 			lex.eatLine();
-			string line = lex.getString();
-			errorList.push_back(ErrorItem(lyx::to_utf8(_("Unknown Inset")), line,
+			docstring line = lyx::from_utf8(lex.getString());
+			errorList.push_back(ErrorItem(_("Unknown Inset"), line,
 					    par.id(), 0, par.size()));
 		}
 	} else if (token == "\\family") {
@@ -339,8 +339,8 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 		lyx::time_type ct;
 		is >> aid >> ct;
 		if (aid >= bp.author_map.size()) {
-			errorList.push_back(ErrorItem(lyx::to_utf8(_("Change tracking error")),
-					    bformat(lyx::to_utf8(_("Unknown author index for insertion: %1$d\n")), aid),
+			errorList.push_back(ErrorItem(_("Change tracking error"),
+					    bformat(_("Unknown author index for insertion: %1$d\n"), aid),
 					    par.id(), 0, par.size()));
 
 			change = Change(Change::UNCHANGED);
@@ -353,8 +353,8 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 		lyx::time_type ct;
 		is >> aid >> ct;
 		if (aid >= bp.author_map.size()) {
-			errorList.push_back(ErrorItem(lyx::to_utf8(_("Change tracking error")),
-					    bformat(lyx::to_utf8(_("Unknown author index for deletion: %1$d\n")), aid),
+			errorList.push_back(ErrorItem(_("Change tracking error"),
+					    bformat(_("Unknown author index for deletion: %1$d\n"), aid),
 					    par.id(), 0, par.size()));
 
 			change = Change(Change::UNCHANGED);
@@ -362,8 +362,9 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 			change = Change(Change::DELETED, bp.author_map[aid], ct);
 	} else {
 		lex.eatLine();
-		errorList.push_back(ErrorItem(lyx::to_utf8(_("Unknown token")),
-			bformat(lyx::to_utf8(_("Unknown token: %1$s %2$s\n")), token, lex.getString()),
+		errorList.push_back(ErrorItem(_("Unknown token"),
+			bformat(_("Unknown token: %1$s %2$s\n"), lyx::from_utf8(token),
+			lyx::from_utf8(lex.getString())),
 			par.id(), 0, par.size()));
 	}
 }
@@ -1240,8 +1241,8 @@ void LyXText::insertChar(LCursor & cur, char_type c)
 		if (cur.pos() == 0) {
 			static bool sent_space_message = false;
 			if (!sent_space_message) {
-				cur.message(lyx::to_utf8(_("You cannot insert a space at the "
-							   "beginning of a paragraph. Please read the Tutorial.")));
+				cur.message(_("You cannot insert a space at the "
+							   "beginning of a paragraph. Please read the Tutorial."));
 				sent_space_message = true;
 			}
 			return;
@@ -1252,8 +1253,8 @@ void LyXText::insertChar(LCursor & cur, char_type c)
 		    && par.lookupChange(cur.pos() - 1) != Change::DELETED) {
 			static bool sent_space_message = false;
 			if (!sent_space_message) {
-				cur.message(lyx::to_utf8(_("You cannot type two spaces this way. "
-							   "Please read the Tutorial.")));
+				cur.message(_("You cannot type two spaces this way. "
+							   "Please read the Tutorial."));
 				sent_space_message = true;
 			}
 			return;
@@ -2390,14 +2391,14 @@ string LyXText::currentState(LCursor & cur)
 
 	// avoid lyx::to_utf8(_(...)) re-entrance problem
 	string const s = font.stateText(&buf.params());
-	os << bformat(lyx::to_utf8(_("Font: %1$s")), s);
+	os << lyx::to_utf8(bformat(_("Font: %1$s"), lyx::from_utf8(s)));
 
-	// os << bformat(lyx::to_utf8(_("Font: %1$s")), font.stateText(&buf.params));
+	// os << lyx::to_utf8(bformat(_("Font: %1$s"), font.stateText(&buf.params)));
 
 	// The paragraph depth
 	int depth = cur.paragraph().getDepth();
 	if (depth > 0)
-		os << bformat(lyx::to_utf8(_(", Depth: %1$d")), depth);
+		os << lyx::to_utf8(bformat(_(", Depth: %1$d"), depth));
 
 	// The paragraph spacing, but only if different from
 	// buffer spacing.

@@ -51,6 +51,7 @@
 using namespace std;
 
 using lyx::pit_type;
+using lyx::docstring;
 using lyx::support::bformat;
 using lyx::support::libFileSearch;
 using lyx::support::makeDisplayPath;
@@ -73,10 +74,10 @@ bool readFile(Buffer * const b, string const & s)
 
 	// File information about normal file
 	if (!fs::exists(s)) {
-		string const file = makeDisplayPath(s, 50);
-		string text = bformat(lyx::to_utf8(_("The specified document\n%1$s"
-						     "\ncould not be read.")), file);
-		Alert::error(lyx::to_utf8(_("Could not read document")), text);
+		docstring const file = makeDisplayPath(s, 50);
+		docstring text = bformat(_("The specified document\n%1$s"
+						     "\ncould not be read."), file);
+		Alert::error(_("Could not read document"), text);
 		return false;
 	}
 
@@ -86,14 +87,14 @@ bool readFile(Buffer * const b, string const & s)
 	if (fs::exists(e) && fs::exists(s)
 	    && fs::last_write_time(e) > fs::last_write_time(s))
 	{
-		string const file = makeDisplayPath(s, 20);
-		string const text =
-			bformat(lyx::to_utf8(_("An emergency save of the document "
+		docstring const file = makeDisplayPath(s, 20);
+		docstring const text =
+			bformat(_("An emergency save of the document "
 				  "%1$s exists.\n\n"
-					       "Recover emergency save?")), file);
-		switch (Alert::prompt(lyx::to_utf8(_("Load emergency save?")), text, 0, 2,
-				      lyx::to_utf8(_("&Recover")),  lyx::to_utf8(_("&Load Original")),
-				      lyx::to_utf8(_("&Cancel"))))
+					       "Recover emergency save?"), file);
+		switch (Alert::prompt(_("Load emergency save?"), text, 0, 2,
+				      _("&Recover"),  _("&Load Original"),
+				      _("&Cancel")))
 		{
 		case 0:
 			// the file is not saved if we load the emergency file.
@@ -112,14 +113,14 @@ bool readFile(Buffer * const b, string const & s)
 	if (fs::exists(a) && fs::exists(s)
 	    && fs::last_write_time(a) > fs::last_write_time(s))
 	{
-		string const file = makeDisplayPath(s, 20);
-		string const text =
-			bformat(lyx::to_utf8(_("The backup of the document "
+		docstring const file = makeDisplayPath(s, 20);
+		docstring const text =
+			bformat(_("The backup of the document "
 				  "%1$s is newer.\n\nLoad the "
-					       "backup instead?")), file);
-		switch (Alert::prompt(lyx::to_utf8(_("Load backup?")), text, 0, 2,
-				      lyx::to_utf8(_("&Load backup")), lyx::to_utf8(_("Load &original")),
-				      lyx::to_utf8(_("&Cancel") )))
+					       "backup instead?"), file);
+		switch (Alert::prompt(_("Load backup?"), text, 0, 2,
+				      _("&Load backup"), _("Load &original"),
+				      _("&Cancel") ))
 		{
 		case 0:
 			// the file is not saved if we load the autosave file.
@@ -153,14 +154,14 @@ bool loadLyXFile(Buffer * b, string const & s)
 			return true;
 		}
 	} else {
-		string const file = makeDisplayPath(s, 20);
+		docstring const file = makeDisplayPath(s, 20);
 		// Here we probably should run
 		if (LyXVC::file_not_found_hook(s)) {
-			string const text =
-				bformat(lyx::to_utf8(_("Do you want to retrieve the document"
-						       " %1$s from version control?")), file);
-			int const ret = Alert::prompt(lyx::to_utf8(_("Retrieve from version control?")),
-				text, 0, 1, lyx::to_utf8(_("&Retrieve")), lyx::to_utf8(_("&Cancel")));
+			docstring const text =
+				bformat(_("Do you want to retrieve the document"
+						       " %1$s from version control?"), file);
+			int const ret = Alert::prompt(_("Retrieve from version control?"),
+				text, 0, 1, _("&Retrieve"), _("&Cancel"));
 
 			if (ret == 0) {
 				// How can we know _how_ to do the checkout?
@@ -191,9 +192,11 @@ Buffer * newFile(string const & filename, string const & templatename,
 
 	if (!tname.empty()) {
 		if (!b->readFile(tname)) {
-			string const file = makeDisplayPath(tname, 50);
-			string const text  = bformat(lyx::to_utf8(_("The specified document template\n%1$s\ncould not be read.")), file);
-			Alert::error(lyx::to_utf8(_("Could not read template")), text);
+			docstring const file = makeDisplayPath(tname, 50);
+			docstring const text  = bformat(
+				_("The specified document template\n%1$s\ncould not be read."),
+				file);
+			Alert::error(_("Could not read template"), text);
 			bufferlist.release(b);
 			return 0;
 		}
@@ -232,8 +235,8 @@ void bufferErrors(Buffer const & buf, TeXErrors const & terr,
 							  pos_end);
 		} while (found && id_start == id_end && pos_start == pos_end);
 
-		errorList.push_back(ErrorItem(cit->error_desc,
-			cit->error_text, id_start, pos_start, pos_end));
+		errorList.push_back(ErrorItem(lyx::from_utf8(cit->error_desc),
+			lyx::from_utf8(cit->error_text), id_start, pos_start, pos_end));
 	}
 }
 
@@ -483,7 +486,7 @@ void setLabel(Buffer const & buf, ParIterator & it)
 			}
 		}
 
-		string s;
+		docstring s;
 		if (!type.empty()) {
 			Floating const & fl = textclass.floats().getType(type);
 
@@ -491,14 +494,14 @@ void setLabel(Buffer const & buf, ParIterator & it)
 
 			// Doesn't work... yet.
 			// FIXME UNICODE
-			s = bformat(lyx::to_utf8(_("%1$s #:")), lyx::to_utf8(buf.B_(fl.name())));
+			s = bformat(_("%1$s #:"), buf.B_(fl.name()));
 		} else {
 			// par->SetLayout(0);
 			// FIXME UNICODE
-			s = lyx::to_utf8(buf.B_(layout->labelstring()));
+			s = buf.B_(layout->labelstring());
 		}
 
-		par.params().labelString(s);
+		par.params().labelString(lyx::to_utf8(s));
 	} else if (layout->labeltype == LABEL_NO_LABEL)
 		par.params().labelString(string());
 	else

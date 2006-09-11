@@ -91,7 +91,8 @@ bool MathCasesInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 		if (s == "add-vline-left" || s == "add-vline-right") {
 			flag.enabled(false);
 			flag.message(bformat(
-				N_("No vertical grid lines in '%1$s'"), lyx::to_utf8(s)));
+				lyx::from_utf8(N_("No vertical grid lines in '%1$s'")),
+				s));
 			return true;
 		}
 	}

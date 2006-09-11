@@ -15,6 +15,8 @@
 
 #include "SpellBase.h"
 
+#include "support/docstring.h"
+
 #include <boost/scoped_ptr.hpp>
 
 #include <cstdio>
@@ -49,7 +51,7 @@ public:
 	virtual std::string const nextMiss();
 
 	/// give an error message on messy exit
-	virtual std::string const error();
+	virtual lyx::docstring const error();
 
 private:
 	/// read some data. Returns true on an error. Sets err_read
@@ -72,7 +74,7 @@ private:
 	char buf[BUFSIZ];
 
 	/// spell error
-	std::string error_;
+	lyx::docstring error_;
 
 	boost::scoped_ptr<lyx::support::ForkedProcess> child_;
 

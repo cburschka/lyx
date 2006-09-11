@@ -12,6 +12,8 @@
 #ifndef LYX_FILETOOL_H
 #define LYX_FILETOOL_H
 
+#include "support/docstring.h"
+
 #include <vector>
 #include <utility>
 #include <string>
@@ -202,7 +204,7 @@ std::string const makeAbsPath(std::string const & RelPath = std::string(),
 /** Creates a nice compact path for displaying. The parameter
   threshold, if given, specifies the maximal length of the path.
   */
-std::string const
+lyx::docstring const
 makeDisplayPath(std::string const & path, unsigned int threshold = 1000);
 
 /** Makes relative path out of absolute path.

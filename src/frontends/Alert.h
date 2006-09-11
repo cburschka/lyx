@@ -28,21 +28,21 @@ namespace Alert {
  * "Yes" or "No", I will personally come around to your house and
  * slap you with fish, and not in an enjoyable way either.
  */
-int prompt(std::string const & title, std::string const & question,
+int prompt(lyx::docstring const & title, lyx::docstring const & question,
 	   int default_button, int cancel_button,
-	   std::string const & b1, std::string const & b2, std::string const & b3 = std::string());
+	   lyx::docstring const & b1, lyx::docstring const & b2, lyx::docstring const & b3 = lyx::docstring());
 
 /**
  * Display a warning to the user. Title should be a short (general) summary.
  * Only use this if the user cannot perform some remedial action.
  */
-void warning(std::string const & title, std::string const & message);
+void warning(lyx::docstring const & title, lyx::docstring const & message);
 
 /**
  * Display a warning to the user. Title should be a short (general) summary.
  * Only use this if the user cannot perform some remedial action.
  */
-void error(std::string const & title, std::string const & message);
+void error(lyx::docstring const & title, lyx::docstring const & message);
 
 /**
  * Informational message. Use very very sparingly. That is, you must
@@ -50,12 +50,12 @@ void error(std::string const & title, std::string const & message);
  * and reciting the Nicene Creed, whilst running uphill and also
  * eating.
  */
-void information(std::string const & title, std::string const & message);
+void information(lyx::docstring const & title, lyx::docstring const & message);
 
 /// Asks for a text. DO NOT USE !!
-std::pair<bool, std::string> const
-askForText(std::string const & msg,
-	   std::string const & dflt = std::string());
+std::pair<bool, lyx::docstring> const
+askForText(lyx::docstring const & msg,
+	   lyx::docstring const & dflt = lyx::docstring());
 
 }
 

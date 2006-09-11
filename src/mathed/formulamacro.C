@@ -117,7 +117,7 @@ void InsetFormulaMacro::read(std::istream & is)
 
 string InsetFormulaMacro::prefix() const
 {
-	return bformat(_(" Macro: %1$s: "), name_);
+	return lyx::to_utf8(bformat(_(" Macro: %1$s: "), lyx::from_utf8(name_)));
 }
 
 

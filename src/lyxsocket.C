@@ -140,7 +140,7 @@ void LyXServerSocket::dataCallback(int fd)
 		if (key == "LYXCMD") {
 			string const cmd = line.substr(pos + 1);
 			func->dispatch(lyxaction.lookupFunc(cmd));
-			string const rval = func->getMessage();
+			string const rval = lyx::to_utf8(func->getMessage());
 			if (func->errorStat()) {
 				client->writeln("ERROR:" + cmd + ':' + rval);
 			} else {

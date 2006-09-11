@@ -273,7 +273,7 @@ void WorkArea::dispatch(FuncRequest const & cmd0)
 void WorkArea::resizeBufferView()
 {
 	lyx_view_.busy(true);
-	lyx_view_.message(lyx::to_utf8(_("Formatting document...")));
+	lyx_view_.message(_("Formatting document..."));
 	buffer_view_->workAreaResize(width(), height());
 	lyx_view_.updateLayoutChoice();
 	redraw();
@@ -412,7 +412,7 @@ void WorkArea::toggleCursor()
 }
 
 
-void WorkArea::displayMessage(std::string const & message)
+void WorkArea::displayMessage(lyx::docstring const & message)
 {
 	lyx_view_.message(message);
 }

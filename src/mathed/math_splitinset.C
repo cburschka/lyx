@@ -72,8 +72,8 @@ bool MathSplitInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 		docstring const & s = cmd.argument();
 		if (s == "add-vline-left" || s == "add-vline-right") {
 			flag.message(bformat(
-			N_("Can't add vertical grid lines in '%1$s'"),
-				name_));
+			lyx::from_utf8(N_("Can't add vertical grid lines in '%1$s'")),
+			lyx::from_utf8(name_)));
 			flag.enabled(false);
 			return true;
 		}

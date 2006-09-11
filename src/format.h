@@ -12,6 +12,8 @@
 #ifndef FORMAT_H
 #define FORMAT_H
 
+#include "support/docstring.h"
+
 #include <vector>
 #include <string>
 
@@ -138,7 +140,7 @@ public:
 	bool edit(Buffer const & buffer, std::string const & filename,
 		  std::string const & format_name) const;
 	///
-	std::string const prettyName(std::string const & name) const;
+	lyx::docstring const prettyName(std::string const & name) const;
 	///
 	std::string const extension(std::string const & name) const;
 	///

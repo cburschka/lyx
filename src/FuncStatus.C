@@ -12,7 +12,7 @@
 
 #include "FuncStatus.h"
 
-using std::string;
+using lyx::docstring;
 
 FuncStatus::FuncStatus() : v_(OK)
 {
@@ -80,13 +80,13 @@ bool FuncStatus::onoff(bool b) const
 }
 
 
-void FuncStatus::message(string const & m)
+void FuncStatus::message(docstring const & m)
 {
 	message_ = m;
 }
 
 
-string const & FuncStatus::message() const
+docstring const & FuncStatus::message() const
 {
 	return message_;
 }

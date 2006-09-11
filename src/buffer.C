@@ -231,8 +231,9 @@ Buffer::~Buffer()
 	closing();
 
 	if (!temppath().empty() && !destroyDir(temppath())) {
-		Alert::warning(lyx::to_utf8(_("Could not remove temporary directory")),
-			bformat(lyx::to_utf8(_("Could not remove the temporary directory %1$s")), temppath()));
+		Alert::warning(_("Could not remove temporary directory"),
+			bformat(_("Could not remove the temporary directory %1$s"),
+			lyx::from_utf8(temppath())));
 	}
 
 	// Remove any previewed LaTeX snippets associated with this buffer.
@@ -389,9 +390,9 @@ namespace {
 
 void unknownClass(string const & unknown)
 {
-	Alert::warning(lyx::to_utf8(_("Unknown document class")),
-		       bformat(lyx::to_utf8(_("Using the default document class, because the "
-					      "class %1$s is unknown.")), unknown));
+	Alert::warning(_("Unknown document class"),
+		       bformat(_("Using the default document class, because the "
+					      "class %1$s is unknown."), lyx::from_utf8(unknown)));
 }
 
 } // anon
@@ -445,18 +446,18 @@ int Buffer::readHeader(LyXLex & lex)
 				unknownClass(unknown);
 			} else {
 				++unknown_tokens;
-				string const s = bformat(lyx::to_utf8(_("Unknown token: "
-									"%1$s %2$s\n")),
-							 token,
-							 lex.getString());
-				errorList.push_back(ErrorItem(lyx::to_utf8(_("Document header error")),
+				docstring const s = bformat(_("Unknown token: "
+									"%1$s %2$s\n"),
+							 lyx::from_utf8(token),
+							 lyx::from_utf8(lex.getString()));
+				errorList.push_back(ErrorItem(_("Document header error"),
 					s, -1, 0, 0));
 			}
 		}
 	}
 	if (begin_header_line) {
-		string const s = lyx::to_utf8(_("\\begin_header is missing"));
-		errorList.push_back(ErrorItem(lyx::to_utf8(_("Document header error")),
+		docstring const s = _("\\begin_header is missing");
+		errorList.push_back(ErrorItem(_("Document header error"),
 			s, -1, 0, 0));
 	}
 
@@ -475,8 +476,8 @@ bool Buffer::readDocument(LyXLex & lex)
 	lex.next();
 	string const token = lex.getString();
 	if (token != "\\begin_document") {
-		string const s = lyx::to_utf8(_("\\begin_document is missing"));
-		errorList.push_back(ErrorItem(lyx::to_utf8(_("Document header error")),
+		docstring const s = _("\\begin_document is missing");
+		errorList.push_back(ErrorItem(_("Document header error"),
 			s, -1, 0, 0));
 	}
 
@@ -486,9 +487,9 @@ bool Buffer::readDocument(LyXLex & lex)
 	readHeader(lex);
 	if (!params().getLyXTextClass().load(filePath())) {
 		string theclass = params().getLyXTextClass().name();
-		Alert::error(lyx::to_utf8(_("Can't load document class")), bformat(
-				     "Using the default document class, because the "
-				     " class %1$s could not be loaded.", theclass));
+		Alert::error(_("Can't load document class"), bformat(
+			_("Using the default document class, because the "
+				     " class %1$s could not be loaded."), lyx::from_utf8(theclass)));
 		params().textclass = 0;
 	}
 
@@ -599,8 +600,8 @@ bool Buffer::readFile(LyXLex & lex, string const & filename)
 	BOOST_ASSERT(!filename.empty());
 
 	if (!lex.isOK()) {
-		Alert::error(lyx::to_utf8(_("Document could not be read")),
-			     bformat(lyx::to_utf8(_("%1$s could not be read.")), filename));
+		Alert::error(_("Document could not be read"),
+			     bformat(_("%1$s could not be read."), lyx::from_utf8(filename)));
 		return false;
 	}
 
@@ -608,8 +609,8 @@ bool Buffer::readFile(LyXLex & lex, string const & filename)
 	string const token(lex.getString());
 
 	if (!lex.isOK()) {
-		Alert::error(lyx::to_utf8(_("Document could not be read")),
-			     bformat(lyx::to_utf8(_("%1$s could not be read.")), filename));
+		Alert::error(_("Document could not be read"),
+			     bformat(_("%1$s could not be read."), lyx::from_utf8(filename)));
 		return false;
 	}
 
@@ -617,9 +618,9 @@ bool Buffer::readFile(LyXLex & lex, string const & filename)
 	if (token != "\\lyxformat") {
 		lyxerr << "Token: " << token << endl;
 
-		Alert::error(lyx::to_utf8(_("Document format failure")),
-			     bformat(lyx::to_utf8(_("%1$s is not a LyX document.")),
-				       filename));
+		Alert::error(_("Document format failure"),
+			     bformat(_("%1$s is not a LyX document."),
+				       lyx::from_utf8(filename)));
 		return false;
 	}
 
@@ -637,22 +638,22 @@ bool Buffer::readFile(LyXLex & lex, string const & filename)
 	if (file_format != LYX_FORMAT) {
 		string const tmpfile = tempName();
 		if (tmpfile.empty()) {
-			Alert::error(lyx::to_utf8(_("Conversion failed")),
-				     bformat(lyx::to_utf8(_("%1$s is from an earlier"
+			Alert::error(_("Conversion failed"),
+				     bformat(_("%1$s is from an earlier"
 					      " version of LyX, but a temporary"
 					      " file for converting it could"
-							    " not be created.")),
-					      filename));
+							    " not be created."),
+					      lyx::from_utf8(filename)));
 			return false;
 		}
 		string const lyx2lyx = libFileSearch("lyx2lyx", "lyx2lyx");
 		if (lyx2lyx.empty()) {
-			Alert::error(lyx::to_utf8(_("Conversion script not found")),
-				     bformat(lyx::to_utf8(_("%1$s is from an earlier"
+			Alert::error(_("Conversion script not found"),
+				     bformat(_("%1$s is from an earlier"
 					       " version of LyX, but the"
 					       " conversion script lyx2lyx"
-							    " could not be found.")),
-					       filename));
+							    " could not be found."),
+					       lyx::from_utf8(filename)));
 			return false;
 		}
 		ostringstream command;
@@ -668,11 +669,11 @@ bool Buffer::readFile(LyXLex & lex, string const & filename)
 
 		cmd_ret const ret = runCommand(command_str);
 		if (ret.first != 0) {
-			Alert::error(lyx::to_utf8(_("Conversion script failed")),
-				     bformat(lyx::to_utf8(_("%1$s is from an earlier version"
+			Alert::error(_("Conversion script failed"),
+				     bformat(_("%1$s is from an earlier version"
 					      " of LyX, but the lyx2lyx script"
-							    " failed to convert it.")),
-					      filename));
+							    " failed to convert it."),
+					      lyx::from_utf8(filename)));
 			return false;
 		} else {
 			bool const ret = readFile(tmpfile);
@@ -683,10 +684,10 @@ bool Buffer::readFile(LyXLex & lex, string const & filename)
 	}
 
 	if (readDocument(lex)) {
-		Alert::error(lyx::to_utf8(_("Document format failure")),
-			     bformat(lyx::to_utf8(_("%1$s ended unexpectedly, which means"
-						    " that it is probably corrupted.")),
-				       filename));
+		Alert::error(_("Document format failure"),
+			     bformat(_("%1$s ended unexpectedly, which means"
+						    " that it is probably corrupted."),
+				       lyx::from_utf8(filename)));
 	}
 
 	//lyxerr << "removing " << MacroTable::localMacros().size()
@@ -720,10 +721,10 @@ bool Buffer::save() const
 		    fs::copy_file(fileName(), s, false);
 		}
 		catch (fs::filesystem_error const & fe) {
-			Alert::error(lyx::to_utf8(_("Backup failure")),
-				     bformat(lyx::to_utf8(_("LyX was not able to make a backup copy in %1$s.\n"
-							    "Please check if the directory exists and is writeable.")),
-					  fs::path(s).branch_path().native_directory_string()));
+			Alert::error(_("Backup failure"),
+				     bformat(_("LyX was not able to make a backup copy in %1$s.\n"
+							    "Please check if the directory exists and is writeable."),
+					  lyx::from_utf8(fs::path(s).branch_path().native_directory_string())));
 			lyxerr[Debug::DEBUG] << "Fs error: "
 					     << fe.what() << endl;
 		}
@@ -1076,7 +1077,7 @@ int Buffer::runChktex()
 	string const org_path = filePath();
 
 	Path p(path); // path to LaTeX file
-	message(lyx::to_utf8(_("Running chktex...")));
+	message(_("Running chktex..."));
 
 	// Generate the LaTeX file if neccessary
 	OutputParams runparams;
@@ -1089,8 +1090,8 @@ int Buffer::runChktex()
 	int const res = chktex.run(terr); // run chktex
 
 	if (res == -1) {
-		Alert::error(lyx::to_utf8(_("chktex failure")),
-			     lyx::to_utf8(_("Could not run chktex successfully.")));
+		Alert::error(_("chktex failure"),
+			     _("Could not run chktex successfully."));
 	} else if (res > 0) {
 		// Fill-in the error list with the TeX errors
 		bufferErrors(*this, terr, errorLists_["ChkTex"]);

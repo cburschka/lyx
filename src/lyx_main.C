@@ -76,6 +76,8 @@ using lyx::support::prependEnvPath;
 using lyx::support::rtrim;
 using lyx::support::Systemcall;
 
+using lyx::docstring;
+
 namespace os = lyx::support::os;
 namespace fs = boost::filesystem;
 
@@ -120,9 +122,9 @@ void lyx_exit(int status)
 
 void showFileError(string const & error)
 {
-	Alert::warning(lyx::to_utf8(_("Could not read configuration file")),
-		       bformat(lyx::to_utf8(_("Error while reading the configuration file\n%1$s.\n"
-					      "Please check your installation.")), error));
+	Alert::warning(_("Could not read configuration file"),
+		       bformat(_("Error while reading the configuration file\n%1$s.\n"
+			   "Please check your installation."), lyx::from_utf8(error)));
 }
 
 
@@ -233,8 +235,9 @@ int LyX::exec2(int & argc, char * argv[])
 	// other than documents
 	for (int argi = 1; argi < argc ; ++argi) {
 		if (argv[argi][0] == '-') {
-			lyxerr << bformat(lyx::to_utf8(_("Wrong command line option `%1$s'. Exiting.")),
-				argv[argi]) << endl;
+			lyxerr << lyx::to_utf8(
+				bformat(_("Wrong command line option `%1$s'. Exiting."),
+				lyx::from_utf8(argv[argi]))) << endl;
 			return EXIT_FAILURE;
 		}
 	}
@@ -468,9 +471,9 @@ static void error_handler(int err_sig)
 
 void LyX::printError(ErrorItem const & ei)
 {
-	std::cerr << lyx::to_utf8(_("LyX: ")) << ei.error
-		  << ':' << ei.description << std::endl;
-
+	docstring tmp = _("LyX: ") + ei.error + lyx::char_type(':')
+		+ ei.description;
+	std::cerr << lyx::to_utf8(tmp) << std::endl;
 }
 
 
@@ -578,11 +581,11 @@ bool LyX::init()
 
 	package().temp_dir() = createLyXTmpDir(lyxrc.tempdir_path);
 	if (package().temp_dir().empty()) {
-		Alert::error(lyx::to_utf8(_("Could not create temporary directory")),
-			     bformat(lyx::to_utf8(_("Could not create a temporary directory in\n"
+		Alert::error(_("Could not create temporary directory"),
+			     bformat(_("Could not create a temporary directory in\n"
 						    "%1$s. Make sure that this\n"
-						    "path exists and is writable and try again.")),
-				     lyxrc.tempdir_path));
+						    "path exists and is writable and try again."),
+				     lyx::from_utf8(lyxrc.tempdir_path)));
 		// createLyXTmpDir() tries sufficiently hard to create a
 		// usable temp dir, so the probability to come here is
 		// close to zero. We therefore don't try to overcome this
@@ -728,20 +731,20 @@ bool LyX::queryUserLyXDir(bool explicit_userdir)
 	// to create it. If the user says "no", then exit.
 	if (explicit_userdir &&
 	    Alert::prompt(
-		    lyx::to_utf8(_("Missing user LyX directory")),
-		    bformat(lyx::to_utf8(_("You have specified a non-existent user "
+		    _("Missing user LyX directory"),
+		    bformat(_("You have specified a non-existent user "
 					   "LyX directory, %1$s.\n"
-					   "It is needed to keep your own configuration.")),
-			    package().user_support()),
+					   "It is needed to keep your own configuration."),
+			    lyx::from_utf8(package().user_support())),
 		    1, 0,
-		    lyx::to_utf8(_("&Create directory")),
-		    lyx::to_utf8(_("&Exit LyX")))) {
+		    _("&Create directory"),
+		    _("&Exit LyX"))) {
 		lyxerr << lyx::to_utf8(_("No user LyX directory. Exiting.")) << endl;
 		lyx_exit(EXIT_FAILURE);
 	}
 
-	lyxerr << bformat(lyx::to_utf8(_("LyX: Creating directory %1$s")),
-			  package().user_support())
+	lyxerr << lyx::to_utf8(bformat(_("LyX: Creating directory %1$s"),
+			  lyx::from_utf8(package().user_support())))
 	       << endl;
 
 	if (!createDirectory(package().user_support(), 0755)) {
@@ -906,7 +909,7 @@ int parse_dbg(string const & arg, string const &)
 		Debug::showTags(lyxerr);
 		exit(0);
 	}
-	lyxerr << bformat(lyx::to_utf8(_("Setting debug level to %1$s")), arg) << endl;
+	lyxerr << lyx::to_utf8(bformat(_("Setting debug level to %1$s"), lyx::from_utf8(arg))) << endl;
 
 	lyxerr.level(Debug::value(arg));
 	Debug::showLevel(lyxerr, lyxerr.level());

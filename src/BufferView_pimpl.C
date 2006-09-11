@@ -160,12 +160,12 @@ bool BufferView::Pimpl::loadLyXFile(string const & filename, bool tolastfiles)
 
 	// File already open?
 	if (bufferlist.exists(s)) {
-		string const file = makeDisplayPath(s, 20);
-		string text = bformat(lyx::to_utf8(_("The document %1$s is already "
+		docstring const file = makeDisplayPath(s, 20);
+		docstring text = bformat(_("The document %1$s is already "
 						     "loaded.\n\nDo you want to revert "
-						     "to the saved version?")), file);
-		int const ret = Alert::prompt(lyx::to_utf8(_("Revert to saved document?")),
-			text, 0, 1,  lyx::to_utf8(_("&Revert")), lyx::to_utf8(_("&Switch to document")));
+						     "to the saved version?"), file);
+		int const ret = Alert::prompt(_("Revert to saved document?"),
+			text, 0, 1,  _("&Revert"), _("&Switch to document"));
 
 		if (ret != 0) {
 			setBuffer(bufferlist.getBuffer(s));
@@ -186,11 +186,11 @@ bool BufferView::Pimpl::loadLyXFile(string const & filename, bool tolastfiles)
 			return false;
 		}
 	} else {
-		string text = bformat(lyx::to_utf8(_("The document %1$s does not yet "
+		docstring text = bformat(_("The document %1$s does not yet "
 						     "exist.\n\nDo you want to create "
-						     "a new document?")), s);
-		int const ret = Alert::prompt(lyx::to_utf8(_("Create new document?")),
-			 text, 0, 1, lyx::to_utf8(_("&Create")), lyx::to_utf8(_("Cancel")));
+						     "a new document?"), lyx::from_utf8(s));
+		int const ret = Alert::prompt(_("Create new document?"),
+			 text, 0, 1, _("&Create"), _("Cancel"));
 
 		if (ret == 0) {
 			b = newFile(s, string(), true);
@@ -604,7 +604,7 @@ void BufferView::Pimpl::savePosition(unsigned int i)
 				      cursor_.pos());
 	if (i > 0)
 		// emit message signal.
-		bv_->message(bformat(lyx::to_utf8(_("Saved bookmark %1$d")), i));
+		bv_->message(bformat(_("Saved bookmark %1$d"), i));
 }
 
 
@@ -638,7 +638,7 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 
 	if (i > 0)
 		// emit message signal.
-		bv_->message(bformat(lyx::to_utf8(_("Moved to bookmark %1$d")), i));
+		bv_->message(bformat(_("Moved to bookmark %1$d"), i));
 }
 
 
@@ -728,7 +728,7 @@ void BufferView::Pimpl::menuInsertLyXFile(string const & filenm)
 		// check selected filename
 		if (filename.empty()) {
 			// emit message signal.
-			bv_->message(lyx::to_utf8(_("Canceled.")));
+			bv_->message(_("Canceled."));
 			return;
 		}
 	}
@@ -737,11 +737,11 @@ void BufferView::Pimpl::menuInsertLyXFile(string const & filenm)
 	// to the filename if necessary
 	filename = fileSearch(string(), filename, "lyx");
 
-	string const disp_fn = makeDisplayPath(filename);
+	docstring const disp_fn = makeDisplayPath(filename);
 	// emit message signal.
-	bv_->message(bformat(lyx::to_utf8(_("Inserting document %1$s...")), disp_fn));
+	bv_->message(bformat(_("Inserting document %1$s..."), disp_fn));
 
-	string res;
+	docstring res;
 	Buffer buf("", false);
 	if (::loadLyXFile(&buf, makeAbsPath(filename))) {
 		ErrorList & el = buffer_->errorList("Parse");
@@ -749,9 +749,9 @@ void BufferView::Pimpl::menuInsertLyXFile(string const & filenm)
 		el = buf.errorList("Parse");
 		lyx::cap::pasteParagraphList(cursor_, buf.paragraphs(),
 					     buf.params().textclass, el);
-		res = lyx::to_utf8(_("Document %1$s inserted."));
+		res = _("Document %1$s inserted.");
 	} else
-		res = lyx::to_utf8(_("Could not insert document %1$s"));
+		res = _("Could not insert document %1$s");
 
 	// emit message signal.
 	bv_->message(bformat(res, disp_fn));
@@ -957,10 +957,10 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 
 	case LFUN_UNDO:
 		if (available()) {
-			cur.message(lyx::to_utf8(_("Undo")));
+			cur.message(_("Undo"));
 			cur.clearSelection();
 			if (!textUndo(*bv_))
-				cur.message(lyx::to_utf8(_("No further undo information")));
+				cur.message(_("No further undo information"));
 			update();
 			switchKeyMap();
 		}
@@ -968,10 +968,10 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 
 	case LFUN_REDO:
 		if (available()) {
-			cur.message(lyx::to_utf8(_("Redo")));
+			cur.message(_("Redo"));
 			cur.clearSelection();
 			if (!textRedo(*bv_))
-				cur.message(lyx::to_utf8(_("No further redo information")));
+				cur.message(_("No further redo information"));
 			update();
 			switchKeyMap();
 		}
@@ -993,7 +993,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_FONT_STATE:
-		cur.message(cur.currentState());
+		cur.message(lyx::from_utf8(cur.currentState()));
 		break;
 
 	case LFUN_BOOKMARK_SAVE:
@@ -1119,24 +1119,24 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 	case LFUN_MARK_OFF:
 		cur.clearSelection();
 		cur.resetAnchor();
-		cur.message(N_("Mark off"));
+		cur.message(lyx::from_utf8(N_("Mark off")));
 		break;
 
 	case LFUN_MARK_ON:
 		cur.clearSelection();
 		cur.mark() = true;
 		cur.resetAnchor();
-		cur.message(N_("Mark on"));
+		cur.message(lyx::from_utf8(N_("Mark on")));
 		break;
 
 	case LFUN_MARK_TOGGLE:
 		cur.clearSelection();
 		if (cur.mark()) {
 			cur.mark() = false;
-			cur.message(N_("Mark removed"));
+			cur.message(lyx::from_utf8(N_("Mark removed")));
 		} else {
 			cur.mark() = true;
-			cur.message(N_("Mark set"));
+			cur.message(lyx::from_utf8(N_("Mark set")));
 		}
 		cur.resetAnchor();
 		break;
@@ -1179,23 +1179,23 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 			to = doc_iterator_end(buffer_->inset());
 		}
 		int const count = countWords(from, to);
-		string message;
+		docstring message;
 		if (count != 1) {
 			if (cur.selection())
-				message = bformat(lyx::to_utf8(_("%1$d words in selection.")),
+				message = bformat(_("%1$d words in selection."),
 					  count);
 				else
-					message = bformat(lyx::to_utf8(_("%1$d words in document.")),
+					message = bformat(_("%1$d words in document."),
 							  count);
 		}
 		else {
 			if (cur.selection())
-				message = lyx::to_utf8(_("One word in selection."));
+				message = _("One word in selection.");
 			else
-				message = lyx::to_utf8(_("One word in document."));
+				message = _("One word in document.");
 		}
 
-		Alert::information(lyx::to_utf8(_("Count words")), message);
+		Alert::information(_("Count words"), message);
 	}
 		break;
 

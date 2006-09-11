@@ -121,7 +121,7 @@ int InsetFloatList::latex(Buffer const & buf, ostream & os,
 	} else {
 		// FIXME UNICODE
 		os << "%%\\listof{" << getCmdName() << "}{"
-		   << bformat(lyx::to_utf8(_("List of %1$s")), cit->second.name())
+		   << lyx::to_utf8(bformat(_("List of %1$s"), lyx::from_utf8(cit->second.name())))
 		   << "}\n";
 	}
 	return 1;

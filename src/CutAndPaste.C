@@ -402,12 +402,13 @@ void switchBetweenClasses(textclass_type c1, textclass_type c2,
 			it->layout(tclass2.defaultLayout());
 
 		if (!hasLayout && name != tclass1.defaultLayoutName()) {
-			string const s = bformat(
-						 lyx::to_utf8(_("Layout had to be changed from\n%1$s to %2$s\n"
-								"because of class conversion from\n%3$s to %4$s")),
-			 name, it->layout()->name(), tclass1.name(), tclass2.name());
+			docstring const s = bformat(
+						 _("Layout had to be changed from\n%1$s to %2$s\n"
+						"because of class conversion from\n%3$s to %4$s"),
+			 lyx::from_utf8(name), lyx::from_utf8(it->layout()->name()),
+			 lyx::from_utf8(tclass1.name()), lyx::from_utf8(tclass2.name()));
 			// To warn the user that something had to be done.
-			errorlist.push_back(ErrorItem(lyx::to_utf8(_("Changed Layout")), s,
+			errorlist.push_back(ErrorItem(_("Changed Layout"), s,
 						      it->id(), 0,
 						      it->size()));
 		}
@@ -425,16 +426,16 @@ void switchBetweenClasses(textclass_type c1, textclass_type c2,
 			if (found_cs == tclass2.charstyles().end()) {
 				// The character style is undefined in tclass2
 				inset.setUndefined();
-				string const s = bformat(lyx::to_utf8(_(
+				docstring const s = bformat(_(
 					"Character style %1$s is "
 					"undefined because of class "
-					"conversion from\n%2$s to %3$s")),
-					 name, tclass1.name(), tclass2.name());
+					"conversion from\n%2$s to %3$s"),
+					 lyx::from_utf8(name), lyx::from_utf8(tclass1.name()),
+					 lyx::from_utf8(tclass2.name()));
 				// To warn the user that something had to be done.
 				errorlist.push_back(ErrorItem(
-							      lyx::to_utf8(_("Undefined character style")),
-						s, it.paragraph().id(),
-						it.pos(), it.pos() + 1));
+					_("Undefined character style"),
+					s, it.paragraph().id(),	it.pos(), it.pos() + 1));
 			} else if (inset.undefined()) {
 				// The character style is undefined in
 				// tclass1 and is defined in tclass2

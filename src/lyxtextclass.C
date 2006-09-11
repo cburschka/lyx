@@ -31,6 +31,7 @@ namespace fs = boost::filesystem;
 
 #include <sstream>
 
+using lyx::docstring;
 using lyx::support::libFileSearch;
 using lyx::support::makeDisplayPath;
 using lyx::support::quoteName;
@@ -210,11 +211,11 @@ bool LyXTextClass::read(string const & filename, bool merge)
 
 	if (!merge)
 		lyxerr[Debug::TCLASS] << "Reading textclass "
-				      << makeDisplayPath(filename)
-				      << endl;
+					<< lyx::to_utf8(makeDisplayPath(filename))
+					<< endl;
 	else
 		lyxerr[Debug::TCLASS] << "Reading input file "
-				     << makeDisplayPath(filename)
+				     << lyx::to_utf8(makeDisplayPath(filename))
 				     << endl;
 
 	LyXLex lexrc(textClassTags,
@@ -447,7 +448,7 @@ bool LyXTextClass::read(string const & filename, bool merge)
 
 	if (!merge) { // we are at top level here.
 		lyxerr[Debug::TCLASS] << "Finished reading textclass "
-				      << makeDisplayPath(filename)
+				      << lyx::to_utf8(makeDisplayPath(filename))
 				      << endl;
 		if (defaultlayout_.empty()) {
 			lyxerr << "Error: Textclass '" << name_
@@ -477,7 +478,7 @@ bool LyXTextClass::read(string const & filename, bool merge)
 
 	} else
 		lyxerr[Debug::TCLASS] << "Finished reading input file "
-				      << makeDisplayPath(filename)
+				      << lyx::to_utf8(makeDisplayPath(filename))
 				      << endl;
 
 	return error;
@@ -928,7 +929,7 @@ bool LyXTextClass::load(string const & path) const
 
 	if (!loaded_) {
 		lyxerr << "Error reading `"
-		       << makeDisplayPath(layout_file)
+		       << lyx::to_utf8(makeDisplayPath(layout_file))
 		       << "'\n(Check `" << name_
 		       << "')\nCheck your installation and "
 			"try Options/Reconfigure..." << endl;

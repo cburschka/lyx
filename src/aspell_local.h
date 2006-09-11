@@ -53,7 +53,7 @@ public:
 	virtual std::string const nextMiss();
 
 	/// give an error message on messy exit
-	virtual std::string const error();
+	virtual lyx::docstring const error();
 
 private:
 	/// add a speller of the given language

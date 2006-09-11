@@ -391,13 +391,13 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 
 		if (tmp->params().textclass != m_buffer->params().textclass) {
 			// FIXME UNICODE
-			string text = bformat(lyx::to_utf8(_("Included file `%1$s'\n"
+			docstring text = bformat(_("Included file `%1$s'\n"
 						"has textclass `%2$s'\n"
-							     "while parent file has textclass `%3$s'.")),
+							     "while parent file has textclass `%3$s'."),
 					      makeDisplayPath(included_file),
-					      tmp->params().getLyXTextClass().name(),
-					      m_buffer->params().getLyXTextClass().name());
-			Alert::warning(lyx::to_utf8(_("Different textclasses")), text);
+					      lyx::from_utf8(tmp->params().getLyXTextClass().name()),
+					      lyx::from_utf8(m_buffer->params().getLyXTextClass().name()));
+			Alert::warning(_("Different textclasses"), text);
 			//return 0;
 		}
 
@@ -424,9 +424,9 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 			if (!copy(included_file, writefile)) {
 				// FIXME UNICODE
 				lyxerr[Debug::LATEX]
-					<< bformat(lyx::to_utf8(_("Could not copy the file\n%1$s\n"
-								  "into the temporary directory.")),
-						   included_file)
+					<< lyx::to_utf8(bformat(_("Could not copy the file\n%1$s\n"
+								  "into the temporary directory."),
+						   lyx::from_utf8(included_file)))
 					<< endl;
 				return 0;
 			}

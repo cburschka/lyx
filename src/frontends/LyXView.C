@@ -53,6 +53,7 @@
 using lyx::frontend::Gui;
 using lyx::frontend::WorkArea;
 
+using lyx::docstring;
 using lyx::support::bformat;
 using lyx::support::makeDisplayPath;
 using lyx::support::onlyFilename;
@@ -313,21 +314,21 @@ void LyXView::updateLayoutChoice()
 
 void LyXView::updateWindowTitle()
 {
-	static string last_title = "LyX";
-	string maximize_title = "LyX";
-	string minimize_title = "LyX";
+	static docstring last_title = lyx::from_ascii("LyX");
+	docstring maximize_title = lyx::from_ascii("LyX");
+	docstring minimize_title = lyx::from_ascii("LyX");
 
 	if (view()->available()) {
 		string const cur_title = buffer()->fileName();
 		if (!cur_title.empty()) {
-			maximize_title += ": " + makeDisplayPath(cur_title, 30);
-			minimize_title = onlyFilename(cur_title);
+			maximize_title += lyx::from_ascii(": ") + makeDisplayPath(cur_title, 30);
+			minimize_title = lyx::from_utf8(onlyFilename(cur_title));
 			if (!buffer()->isClean()) {
-				maximize_title += lyx::to_utf8(_(" (changed)"));
-				minimize_title += '*';
+				maximize_title += _(" (changed)");
+				minimize_title += lyx::char_type('*');
 			}
 			if (buffer()->isReadonly())
-				maximize_title += lyx::to_utf8(_(" (read only)"));
+				maximize_title += _(" (read only)");
 		}
 	}
 

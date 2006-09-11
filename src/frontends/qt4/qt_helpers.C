@@ -193,53 +193,53 @@ string const fromqstr(QString const & str)
 }
 
 
-string const formatted(string const & text, int w)
+docstring const formatted(docstring const & text, int w)
 {
-	string sout;
+	docstring sout;
 
 	if (text.empty())
 		return sout;
 
-	string::size_type curpos = 0;
-	string line;
+	docstring::size_type curpos = 0;
+	docstring line;
 
 	for (;;) {
-		string::size_type const nxtpos1 = text.find(' ',  curpos);
-		string::size_type const nxtpos2 = text.find('\n', curpos);
-		string::size_type const nxtpos = std::min(nxtpos1, nxtpos2);
+		docstring::size_type const nxtpos1 = text.find(' ',  curpos);
+		docstring::size_type const nxtpos2 = text.find('\n', curpos);
+		docstring::size_type const nxtpos = std::min(nxtpos1, nxtpos2);
 
-		string const word =
-			nxtpos == string::npos ?
+		docstring const word =
+			nxtpos == docstring::npos ?
 			text.substr(curpos) :
 			text.substr(curpos, nxtpos - curpos);
 
-		bool const newline = (nxtpos2 != string::npos &&
+		bool const newline = (nxtpos2 != docstring::npos &&
 				      nxtpos2 < nxtpos1);
 
-		string const line_plus_word =
-			line.empty() ? word : line + ' ' + word;
+		docstring const line_plus_word =
+			line.empty() ? word : line + lyx::char_type(' ') + word;
 
 		// FIXME: make w be size_t
 		if (int(line_plus_word.length()) >= w) {
-			sout += line + '\n';
+			sout += line + lyx::char_type('\n');
 			if (newline) {
-				sout += word + '\n';
+				sout += word + lyx::char_type('\n');
 				line.erase();
 			} else {
 				line = word;
 			}
 
 		} else if (newline) {
-			sout += line_plus_word + '\n';
+			sout += line_plus_word + lyx::char_type('\n');
 			line.erase();
 
 		} else {
 			if (!line.empty())
-				line += ' ';
+				line += lyx::char_type(' ');
 			line += word;
 		}
 
-		if (nxtpos == string::npos) {
+		if (nxtpos == docstring::npos) {
 			if (!line.empty())
 				sout += line;
 			break;

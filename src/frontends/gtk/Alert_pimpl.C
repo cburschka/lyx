@@ -43,7 +43,7 @@ string translateShortcut(string const & str)
 }
 
 
-void warning_pimpl(string const & title, string const & message)
+void warning_pimpl(docstring const & title, docstring const & message)
 {
 	Gtk::MessageDialog dlg(Glib::Markup::escape_text(Glib::locale_to_utf8(message)),
 			       true, Gtk::MESSAGE_WARNING,
@@ -53,7 +53,7 @@ void warning_pimpl(string const & title, string const & message)
 }
 
 
-void error_pimpl(string const & title, string const & message)
+void error_pimpl(docstring const & title, docstring const & message)
 {
 	Gtk::MessageDialog dlg(Glib::Markup::escape_text(Glib::locale_to_utf8(message)),
 			       true, Gtk::MESSAGE_ERROR,
@@ -63,7 +63,7 @@ void error_pimpl(string const & title, string const & message)
 }
 
 
-void information_pimpl(string const & title, string const & message)
+void information_pimpl(docstring const & title, docstring const & message)
 {
 	Gtk::MessageDialog dlg(Glib::Markup::escape_text(Glib::locale_to_utf8(message)),
 			       true, Gtk::MESSAGE_INFO,
@@ -73,9 +73,9 @@ void information_pimpl(string const & title, string const & message)
 }
 
 
-int prompt_pimpl(string const & title, string const & question,
+int prompt_pimpl(docstring const & title, docstring const & question,
 		 int defaultButton, int /*escapeButton*/,
-		 string const & b1, string const & b2, string const & b3)
+		 docstring const & b1, docstring const & b2, docstring const & b3)
 {
 	Glib::ustring gb1 = Glib::locale_to_utf8(translateShortcut(b1));
 	Glib::ustring gb2 = Glib::locale_to_utf8(translateShortcut(b2));

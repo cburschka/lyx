@@ -95,7 +95,7 @@ void QtView::init()
 }
 
 
-void QtView::setWindowTitle(string const & t, string const & it)
+void QtView::setWindowTitle(docstring const & t, docstring const & it)
 {
 	setCaption(toqstr(t));
 	setIconText(toqstr(it));
@@ -109,7 +109,7 @@ void QtView::addCommandBuffer(QWidget * parent)
 }
 
 
-void QtView::message(string const & str)
+void QtView::message(docstring const & str)
 {
 	statusBar()->message(toqstr(str));
 	statusbar_timer_.stop();

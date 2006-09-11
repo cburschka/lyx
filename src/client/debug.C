@@ -86,7 +86,7 @@ void lyx_debug_trait::showLevel(ostream & os, lyx_debug_trait::type level)
 			// avoid _(...) re-entrance problem
 			string const s = _(errorTags[i].desc);
 			os << bformat(_("Debugging `%1$s' (%2$s)"),
-					errorTags[i].name, s)
+					lyx::from_utf8(errorTags[i].name), lyx::from_utf8(s))
 			   << '\n';
 		}
 	}

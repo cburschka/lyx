@@ -1493,9 +1493,9 @@ void PrefFileformats::remove_format()
 		return;
 	string const current_text = form_->formats().get(nr).name();
 	if (form_->converters().formatIsUsed(current_text)) {
-		Alert::error(lyx::to_utf8(_("Format in use")),
-			     lyx::to_utf8(_("Cannot remove a Format used by a Converter. "
-					    "Remove the converter first.")));
+		Alert::error(_("Format in use"),
+			     _("Cannot remove a Format used by a Converter. "
+					    "Remove the converter first."));
 		return;
 	}
 

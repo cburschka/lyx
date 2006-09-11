@@ -421,8 +421,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_PASTE: {
 		recordUndo(cur);
-		// FIXME UNICODE
-		cur.message(lyx::to_utf8(_("Paste")));
+		cur.message(_("Paste"));
 		replaceSelection(cur);
 		size_t n = 0;
 		istringstream is(lyx::to_utf8(cmd.argument()));
@@ -438,8 +437,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_CUT:
 		recordUndo(cur);
 		cutSelection(cur, true, true);
-		// FIXME UNICODE
-		cur.message(lyx::to_utf8(_("Cut")));
+		cur.message(_("Cut"));
 		// Prevent stale position >= size crash
 		// Probably not necessary anymore, see eraseSelection (gb 2005-10-09)
 		cur.normalize();
@@ -448,7 +446,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_COPY:
 		copySelection(cur);
 		// FIXME UNICODE
-		cur.message(lyx::to_utf8(_("Copy")));
+		cur.message(_("Copy"));
 		break;
 
 	case LFUN_MOUSE_PRESS:

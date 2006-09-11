@@ -61,8 +61,8 @@ void rescanTexStyles()
 	if (status == 0)
 		return;
 	// FIXME UNICODE
-	Alert::error(lyx::to_utf8(_("Could not update TeX information")),
-		     bformat(lyx::to_utf8(_("The script `%s' failed.")), command));
+	Alert::error(_("Could not update TeX information"),
+		     bformat(_("The script `%s' failed."), lyx::from_utf8(command)));
 }
 
 

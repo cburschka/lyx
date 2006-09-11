@@ -473,9 +473,9 @@ copyFileIfNeeded(string const & file_in, string const & file_out)
 	if (!success) {
 		// FIXME UNICODE
 		lyxerr[Debug::GRAPHICS]
-			<< support::bformat(lyx::to_utf8(_("Could not copy the file\n%1$s\n"
-							   "into the temporary directory.")),
-					    file_in)
+			<< lyx::to_utf8(support::bformat(_("Could not copy the file\n%1$s\n"
+							   "into the temporary directory."),
+					    lyx::from_utf8(file_in)))
 			<< std::endl;
 	}
 
@@ -706,8 +706,8 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	if (compare_timestamps(temp_file, to_file) < 0) {
 		// FIXME UNICODE
 		lyxerr[Debug::GRAPHICS]
-			<< bformat(lyx::to_utf8(_("No conversion of %1$s is needed after all")),
-				   rel_file)
+			<< lyx::to_utf8(bformat(_("No conversion of %1$s is needed after all"),
+				   lyx::from_utf8(rel_file)))
 			<< std::endl;
 		runparams.exportdata->addExternalFile(tex_format, to_file,
 						      output_to_file);
@@ -813,8 +813,8 @@ int InsetGraphics::plaintext(Buffer const &, ostream & os,
 	// 2. Read ascii output file and add it to the output stream.
 	// at least we send the filename
 	// FIXME UNICODE
-	os << '<' << bformat(lyx::to_utf8(_("Graphics file: %1$s")),
-			     params().filename.absFilename()) << ">\n";
+	os << '<' << lyx::to_utf8(bformat(_("Graphics file: %1$s"),
+			     lyx::from_utf8(params().filename.absFilename()))) << ">\n";
 	return 0;
 }
 

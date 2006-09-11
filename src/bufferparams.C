@@ -47,6 +47,8 @@
 #include <sstream>
 
 namespace support = lyx::support;
+
+using lyx::docstring;
 using lyx::support::bformat;
 using lyx::support::rtrim;
 using lyx::support::tokenPos;
@@ -427,11 +429,11 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 		// fail because of the lack of path info. Warnings will be given although
 		// the layout file will be correctly loaded later.
 		if (!getLyXTextClass().isTeXClassAvailable()) {
-			string const msg =
-				bformat(lyx::to_utf8(_("The document uses a missing "
-						       "TeX class \"%1$s\".\n")), classname);
-			Alert::warning(lyx::to_utf8(_("Document class not available")),
-				       msg + lyx::to_utf8(_("LyX will not be able to produce output.")));
+			docstring const msg =
+				bformat(_("The document uses a missing "
+						       "TeX class \"%1$s\".\n"), lyx::from_utf8(classname));
+			Alert::warning(_("Document class not available"),
+				       msg + _("LyX will not be able to produce output."));
 		}
 	} else if (token == "\\begin_preamble") {
 		readPreamble(lex);

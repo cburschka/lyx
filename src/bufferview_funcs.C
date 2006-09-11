@@ -300,7 +300,7 @@ void gotoInset(BufferView * bv, vector<InsetBase_code> const & codes,
 {
 	LCursor tmpcur = bv->cursor();
 	if (!findInset(tmpcur, codes, same_content)) {
-		bv->cursor().message(lyx::to_utf8(_("No more insets")));
+		bv->cursor().message(_("No more insets"));
 		return;
 	}
 

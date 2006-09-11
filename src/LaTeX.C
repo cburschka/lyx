@@ -49,6 +49,8 @@ using lyx::support::Systemcall;
 using lyx::support::unlink;
 using lyx::support::trim;
 
+using lyx::docstring;
+
 namespace os = lyx::support::os;
 namespace fs = boost::filesystem;
 
@@ -82,9 +84,9 @@ extern BufferList bufferlist;
 
 namespace {
 
-string runMessage(unsigned int count)
+docstring runMessage(unsigned int count)
 {
-	return bformat(lyx::to_utf8(_("Waiting for LaTeX run number %1$d")), count);
+	return bformat(_("Waiting for LaTeX run number %1$d"), count);
 }
 
 } // anon namespace
@@ -278,7 +280,7 @@ int LaTeX::run(TeXErrors & terr)
 	if (head.haschanged(onlyFilename(changeExtension(file, ".idx")))) {
 		// no checks for now
 		lyxerr[Debug::LATEX] << "Running MakeIndex." << endl;
-		message(lyx::to_utf8(_("Running MakeIndex.")));
+		message(_("Running MakeIndex."));
 		rerun |= runMakeIndex(onlyFilename(changeExtension(file, ".idx")), runparams);
 	}
 
@@ -290,7 +292,7 @@ int LaTeX::run(TeXErrors & terr)
 		// tags is found -> run bibtex and set rerun = true;
 		// no checks for now
 		lyxerr[Debug::LATEX] << "Running BibTeX." << endl;
-		message(lyx::to_utf8(_("Running BibTeX.")));
+		message(_("Running BibTeX."));
 		updateBibtexDependencies(head, bibtex_info);
 		rerun |= runBibTeX(bibtex_info);
 	} else if (!had_depfile) {
@@ -346,7 +348,7 @@ int LaTeX::run(TeXErrors & terr)
 	if (head.haschanged(onlyFilename(changeExtension(file, ".idx")))) {
 		// no checks for now
 		lyxerr[Debug::LATEX] << "Running MakeIndex." << endl;
-		message(lyx::to_utf8(_("Running MakeIndex.")));
+		message(_("Running MakeIndex."));
 		rerun = runMakeIndex(onlyFilename(changeExtension(file, ".idx")), runparams);
 	}
 

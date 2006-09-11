@@ -218,7 +218,7 @@ public:
 	void updateMetrics(bool singlepar = false);
 
 	/// This signal is emitted when some message shows up.
-	boost::signal<void(std::string)> message;
+	boost::signal<void(lyx::docstring)> message;
 
 private:
 	///

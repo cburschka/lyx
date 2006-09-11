@@ -192,9 +192,9 @@ int InsetBibtex::latex(Buffer const & buffer, ostream & os,
 		warned_about_spaces = true;
 
 		// FIXME UNICODE
-		Alert::warning(lyx::to_utf8(_("Export Warning!")),
-			       lyx::to_utf8(_("There are spaces in the paths to your BibTeX databases.\n"
-					      "BibTeX will be unable to find them.")));
+		Alert::warning(_("Export Warning!"),
+			       _("There are spaces in the paths to your BibTeX databases.\n"
+					      "BibTeX will be unable to find them."));
 
 	}
 
@@ -244,9 +244,9 @@ int InsetBibtex::latex(Buffer const & buffer, ostream & os,
 	if (!warned_about_bst_spaces && runparams.nice && contains(style, ' ')) {
 		warned_about_bst_spaces = true;
 		// FIXME UNICODE
-		Alert::warning(lyx::to_utf8(_("Export Warning!")),
-			       lyx::to_utf8(_("There are spaces in the path to your BibTeX style file.\n"
-					      "BibTeX will be unable to find it.")));
+		Alert::warning(_("Export Warning!"),
+			       _("There are spaces in the path to your BibTeX style file.\n"
+					      "BibTeX will be unable to find it."));
 	}
 
 	if (!db_out.empty() && buffer.params().use_bibtopic){

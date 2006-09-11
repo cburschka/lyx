@@ -34,6 +34,8 @@ int const CursorShape = CursorShape;
 #include "frontends/LyXKeySym.h"
 #include "frontends/Timeout.h"
 
+#include "support/docstring.h"
+
 #include <boost/signals/trackable.hpp>
 
 class BufferView;
@@ -145,7 +147,7 @@ private:
 	///
 	void checkAndGreyOut();
 	///
-	void displayMessage(std::string const &);
+	void displayMessage(lyx::docstring const &);
 	/// buffer messages signal connection
 	boost::signals::connection message_connection_;
 

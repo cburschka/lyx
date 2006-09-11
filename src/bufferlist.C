@@ -34,6 +34,7 @@
 #include <algorithm>
 #include <functional>
 
+using lyx::docstring;
 using lyx::support::addName;
 using lyx::support::bformat;
 using lyx::support::makeAbsPath;
@@ -71,17 +72,18 @@ bool BufferList::quitWriteBuffer(Buffer * buf)
 {
 	BOOST_ASSERT(buf);
 
-	string file;
+	docstring file;
 	if (buf->isUnnamed())
-		file = onlyFilename(buf->fileName());
+		file = lyx::from_utf8(onlyFilename(buf->fileName()));
 	else
 		file = makeDisplayPath(buf->fileName(), 30);
 
-	string const text =
-		bformat(lyx::to_utf8(_("The document %1$s has unsaved changes.\n\n"
-				       "Do you want to save the document or discard the changes?")), file);
-	int const ret = Alert::prompt(lyx::to_utf8(_("Save changed document?")),
-		text, 0, 2, lyx::to_utf8(_("&Save")), lyx::to_utf8(_("&Discard")), lyx::to_utf8(_("&Cancel")));
+	docstring const text =
+		bformat(_("The document %1$s has unsaved changes.\n\n"
+				       "Do you want to save the document or discard the changes?"),
+					   file);
+	int const ret = Alert::prompt(_("Save changed document?"),
+		text, 0, 2, _("&Save"), _("&Discard"), _("&Cancel"));
 
 	if (ret == 0) {
 		// FIXME: WriteAs can be asynch !
@@ -178,17 +180,18 @@ bool BufferList::close(Buffer * buf, bool const ask)
 		return true;
 	}
 
-	string fname;
+	docstring fname;
 	if (buf->isUnnamed())
-		fname = onlyFilename(buf->fileName());
+		fname = lyx::from_utf8(onlyFilename(buf->fileName()));
 	else
 		fname = makeDisplayPath(buf->fileName(), 30);
 
-	string const text =
-		bformat(lyx::to_utf8(_("The document %1$s has unsaved changes.\n\n"
-				       "Do you want to save the document or discard the changes?")), fname);
-	int const ret = Alert::prompt(lyx::to_utf8(_("Save changed document?")),
-		text, 0, 2, lyx::to_utf8(_("&Save")), lyx::to_utf8(_("&Discard")), lyx::to_utf8(_("&Cancel")));
+	docstring const text =
+		bformat(_("The document %1$s has unsaved changes.\n\n"
+				       "Do you want to save the document or discard the changes?"),
+					   fname);
+	int const ret = Alert::prompt(_("Save changed document?"),
+		text, 0, 2, _("&Save"), _("&Discard"), _("&Cancel"));
 
 	if (ret == 0) {
 		if (buf->isUnnamed()) {
@@ -307,7 +310,9 @@ void BufferList::emergencyWrite(Buffer * buf)
 	string const doc = buf->isUnnamed()
 		? onlyFilename(buf->fileName()) : buf->fileName();
 
-	lyxerr << bformat(lyx::to_utf8(_("LyX: Attempting to save document %1$s")), doc) << endl;
+	lyxerr << lyx::to_utf8(
+		bformat(_("LyX: Attempting to save document %1$s"), lyx::from_utf8(doc)))
+		<< endl;
 
 	// We try to save three places:
 	// 1) Same place as document. Unless it is an unnamed doc.

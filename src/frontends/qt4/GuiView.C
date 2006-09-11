@@ -114,7 +114,7 @@ void GuiView::updateMenu(QAction * /*action*/)
 }
 
 
-void GuiView::setWindowTitle(string const & t, string const & it)
+void GuiView::setWindowTitle(docstring const & t, docstring const & it)
 {
 	QMainWindow::setWindowTitle(toqstr(t));
 	QMainWindow::setWindowIconText(toqstr(it));
@@ -129,7 +129,7 @@ void GuiView::addCommandBuffer(QToolBar * toolbar)
 }
 
 
-void GuiView::message(string const & str)
+void GuiView::message(docstring const & str)
 {
 	statusBar()->showMessage(toqstr(str));
 	statusbar_timer_.stop();

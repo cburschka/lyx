@@ -46,8 +46,8 @@ void QSpellchecker::build_dialog()
 
 void QSpellchecker::update_contents()
 {
-	if (isVisible() || controller().exitEarly()) {
-		controller().check();
+	if (isVisible()) {
+//		controller().check();
 	}
 }
 
