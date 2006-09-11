@@ -36,7 +36,7 @@ void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
 	std::string const & len, LyXLength::UNIT default_unit);
 
 /// format a string to the given width
-std::string const formatted(std::string const & text, int w = 80);
+lyx::docstring const formatted(lyx::docstring const & text, int w = 80);
 
 /**
  * toqstr - convert char * into unicode

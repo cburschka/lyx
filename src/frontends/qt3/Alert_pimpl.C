@@ -25,6 +25,7 @@
 
 #include <algorithm>
 
+using lyx::docstring;
 using lyx::support::bformat;
 
 using std::pair;
