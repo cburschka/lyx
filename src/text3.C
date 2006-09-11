@@ -670,6 +670,10 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 	}
 
+	case LFUN_INSET_DISSOLVE:
+		needsUpdate = dissolveInset(cur);
+		break;
+
 	case LFUN_INSET_SETTINGS:
 		cur.inset().showInsetDialog(bv);
 		break;
@@ -1657,6 +1661,10 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 
 	case LFUN_PASTE:
 		enable = lyx::cap::numberOfSelections() > 0;
+		break;
+
+	case LFUN_INSET_DISSOLVE:
+		enable = !isMainText() && cur.inset().nargs() == 1;
 		break;
 
 	case LFUN_DELETE_WORD_FORWARD:

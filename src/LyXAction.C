@@ -323,6 +323,7 @@ void LyXAction::init()
 		{ LFUN_DIALOG_DISCONNECT_INSET, "dialog-disconnect-inset", Noop },
 		{ LFUN_INSET_APPLY, "inset-apply", Noop },
 		{ LFUN_INSET_INSERT, "inset-insert", Noop },
+		{ LFUN_INSET_DISSOLVE, "inset-dissolve", Noop },
 		{ LFUN_INSET_MODIFY, "", Noop },
 		{ LFUN_INSET_DIALOG_UPDATE, "", Noop },
 		{ LFUN_INSET_SETTINGS, "inset-settings", ReadOnly },
