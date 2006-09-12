@@ -113,7 +113,6 @@ using lyx::support::makeDisplayPath;
 using lyx::support::makeLatexName;
 using lyx::support::onlyFilename;
 using lyx::support::onlyPath;
-using lyx::support::Path;
 using lyx::support::quoteName;
 using lyx::support::removeAutosaveFile;
 using lyx::support::rename;
@@ -1076,7 +1075,7 @@ int Buffer::runChktex()
 	string const path = temppath();
 	string const org_path = filePath();
 
-	Path p(path); // path to LaTeX file
+	lyx::support::Path p(path); // path to LaTeX file
 	message(_("Running chktex..."));
 
 	// Generate the LaTeX file if neccessary

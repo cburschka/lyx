@@ -71,7 +71,6 @@ using lyx::support::getEnv;
 using lyx::support::i18nLibFileSearch;
 using lyx::support::libFileSearch;
 using lyx::support::package;
-using lyx::support::Path;
 using lyx::support::prependEnvPath;
 using lyx::support::rtrim;
 using lyx::support::Systemcall;
@@ -133,7 +132,7 @@ void reconfigureUserLyXDir()
 	string const configure_command = package().configure_command();
 
 	lyxerr << lyx::to_utf8(_("LyX: reconfiguring user directory")) << endl;
-	Path p(package().user_support());
+	lyx::support::Path p(package().user_support());
 	Systemcall one;
 	one.startscript(Systemcall::Wait, configure_command);
 	lyxerr << "LyX: " << lyx::to_utf8(_("Done!")) << endl;

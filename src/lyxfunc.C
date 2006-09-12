@@ -118,7 +118,6 @@ using lyx::support::isStrInt;
 using lyx::support::makeAbsPath;
 using lyx::support::makeDisplayPath;
 using lyx::support::package;
-using lyx::support::Path;
 using lyx::support::quoteName;
 using lyx::support::rtrim;
 using lyx::support::split;
@@ -931,7 +930,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 			// Push directory path.
 			string const path = buffer->temppath();
-			Path p(path);
+			lyx::support::Path p(path);
 
 			// there are three cases here:
 			// 1. we print to a file
@@ -1346,7 +1345,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_PREFERENCES_SAVE: {
-			Path p(package().user_support());
+			lyx::support::Path p(package().user_support());
 			lyxrc.write("preferences", false);
 			break;
 		}

@@ -30,7 +30,6 @@ using lyx::support::addPath;
 using lyx::support::contains;
 using lyx::support::onlyFilename;
 using lyx::support::onlyPath;
-using lyx::support::Path;
 using lyx::support::quoteName;
 using lyx::support::rtrim;
 using lyx::support::split;
@@ -57,7 +56,7 @@ int VCS::doVCCommand(string const & cmd, string const & path)
 {
 	lyxerr[Debug::LYXVC] << "doVCCommand: " << cmd << endl;
 	Systemcall one;
-	Path p(path);
+	lyx::support::Path p(path);
 	int const ret = one.startscript(Systemcall::Wait, cmd);
 	return ret;
 }

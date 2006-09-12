@@ -67,7 +67,6 @@ using lyx::support::makeAbsPath;
 using lyx::support::makeDisplayPath;
 using lyx::support::onlyFilename;
 using lyx::support::onlyPath;
-using lyx::support::Path;
 using lyx::support::package;
 using lyx::support::removeAutosaveFile;
 using lyx::support::rename;
@@ -443,7 +442,7 @@ void reconfigure(BufferView * bv)
 	bv->buffer()->message(_("Running configure..."));
 
 	// Run configure in user lyx directory
-	Path p(package().user_support());
+	lyx::support::Path p(package().user_support());
 	string const configure_command = package().configure_command();
 	Systemcall one;
 	one.startscript(Systemcall::Wait, configure_command);
