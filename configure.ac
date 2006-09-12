@@ -404,6 +404,8 @@ int mkstemp(char*);
 
 #ifdef __CYGWIN__
 #  define BOOST_POSIX 1
+#  define BOOST_POSIX_API 1
+#  define BOOST_POSIX_PATH 1
 #endif
 
 #if defined(HAVE_NEWAPIS_H)

@@ -931,6 +931,8 @@ if not fast_start or not os.path.isfile(boost_config_h) \
 
 #ifdef __CYGWIN__
 #  define BOOST_POSIX 1
+#  define BOOST_POSIX_API 1
+#  define BOOST_POSIX_PATH 1
 #endif
 
 #define BOOST_ALL_NO_LIB 1
@@ -1105,7 +1107,13 @@ int count()
                 'libstdc++ pedantic debug mode'
             ),
             (os.name != 'nt', 'BOOST_POSIX',
-                'Indicates to boost which API to use (posix or windows).'
+                'Indicates to boost < 1.34 which API to use (posix or windows).'
+            ),
+            (os.name != 'nt', 'BOOST_POSIX_API',
+                'Indicates to boost 1.34 which API to use (posix or windows).'
+            ),
+            (os.name != 'nt', 'BOOST_POSIX_PATH',
+                'Indicates to boost 1.34 which path style to use (posix or windows).'
             ),
             (spell_engine is not None, spell_engine,
                 'Spell engine to use'
