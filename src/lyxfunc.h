@@ -18,7 +18,7 @@
 #include "kbsequence.h"
 #include "lfuns.h"
 
-#include "support/types.h"
+#include "support/docstring.h"
 
 #include <boost/shared_ptr.hpp>
 #include <boost/signals/trackable.hpp>

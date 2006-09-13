@@ -13,9 +13,7 @@
 #ifndef FONT_METRICS_H
 #define FONT_METRICS_H
 
-#include "support/types.h"
-
-#include <string>
+#include "support/docstring.h"
 
 
 class LyXFont;

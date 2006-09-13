@@ -13,13 +13,14 @@
 #ifndef LYX_DOCSTRING_H
 #define LYX_DOCSTRING_H
 
-#include <boost/cstdint.hpp>
+#include "support/types.h"
+
 #include <string>
 
 namespace lyx {
 
 /// String type for storing the main text in UCS4 encoding
-typedef std::basic_string<boost::uint32_t> docstring;
+typedef std::basic_string<char_type> docstring;
 
 /// Creates a docstring from a C string of ASCII characters
 docstring const from_ascii(char const *);
@@ -60,7 +61,7 @@ lyx::docstring operator+(lyx::docstring const & l, char r);
 lyx::docstring operator+(char l, lyx::docstring const & r);
 
 
-#if defined(__GNUC__) && defined(__GNUC_MINOR__) && __GNUC__ == 3 && __GNUC_MINOR__ < 4
+#if SIZEOF_WCHAR_T != 4 && defined(__GNUC__) && defined(__GNUC_MINOR__) && __GNUC__ == 3 && __GNUC_MINOR__ < 4
 // Missing char_traits methods in gcc 3.3 and older. Taken from gcc 4.2svn.
 namespace std {
 

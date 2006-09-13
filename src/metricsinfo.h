@@ -13,9 +13,7 @@
 #define METRICSINFO_H
 
 #include "lyxfont.h"
-#include "support/types.h"
-
-#include <string>
+#include "support/docstring.h"
 
 class BufferView;
 

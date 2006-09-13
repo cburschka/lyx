@@ -17,12 +17,11 @@
 #ifndef LYXLEX_H
 #define LYXLEX_H
 
-#include "support/types.h"
+#include "support/docstring.h"
 
 #include <boost/utility.hpp>
 
 #include <iosfwd>
-#include <string>
 
 
 ///

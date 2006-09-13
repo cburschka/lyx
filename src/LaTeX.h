@@ -16,6 +16,8 @@
 
 #include "outputparams.h"
 
+#include "support/docstring.h"
+
 #include <boost/utility.hpp>
 #include <boost/signal.hpp>
 

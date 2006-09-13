@@ -15,9 +15,7 @@
 
 #include "LColor.h"
 
-#include "support/types.h"
-
-#include <string>
+#include "support/docstring.h"
 
 
 class LyXFont;

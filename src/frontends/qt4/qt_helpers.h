@@ -17,7 +17,7 @@
 #include "lyxlength.h"
 //#include "lengthcombo.h"
 
-#include "support/types.h"
+#include "support/docstring.h"
 
 #include <vector>
 

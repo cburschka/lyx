@@ -147,6 +147,9 @@ AC_SUBST(AIKSAURUS_LIBS)
 
 LYX_USE_INCLUDED_BOOST
 
+# Needed for our char_type
+AC_CHECK_SIZEOF(wchar_t)
+
 ### Setup libtool
 dnl Dirty trick ahead: disable libtool checking for a fortran compiler
 dnl see http://permalink.gmane.org/gmane.comp.gnu.libtool.general/6699

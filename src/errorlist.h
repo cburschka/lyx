@@ -12,7 +12,7 @@
 #ifndef ERRORLIST_H
 #define ERRORLIST_H
 
-#include "support/types.h"
+#include "support/docstring.h"
 
 #include <vector>
 #include <string>
