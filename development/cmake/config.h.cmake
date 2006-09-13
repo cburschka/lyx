@@ -83,6 +83,16 @@
 #cmakedefine HAVE_LC_MESSAGES 1    
 #cmakedefine HAVE_SSTREAM 1
 #cmakedefine HAVE_ARGZ_H 1
+#cmakedefine SIZEOF_WCHAR_T_IS_2 1
+#cmakedefine SIZEOF_WCHAR_T_IS_4 1
+
+#ifdef SIZEOF_WCHAR_T_IS_2
+#  define SIZEOF_WCHAR_T 2
+#else
+#  ifdef SIZEOF_WCHAR_T_IS_4
+#    define SIZEOF_WCHAR_T 4
+#  endif
+#endif
 
 #cmakedefine HAVE_ALLOCA 1
 #cmakedefine HAVE_SYMBOL_ALLOCA 1

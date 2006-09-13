@@ -124,6 +124,20 @@ check_cxx_source_compiles(
 	"
 HAVE_ICONV_CONST)
 
+check_cxx_source_compiles(
+	"
+	int i[ ( sizeof(wchar_t)==2 ? 1 : -1 ) ];
+	int main(){return 0;}
+	"
+SIZEOF_WCHAR_T_IS_2)
+
+check_cxx_source_compiles(
+	"
+	int i[ ( sizeof(wchar_t)==4 ? 1 : -1 ) ];
+	int main(){return 0;}
+	"
+SIZEOF_WCHAR_T_IS_4)
+
 set(PACKAGE lyx)
 set(PACKAGE_VERSION 1.5.0svn)
 
