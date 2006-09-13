@@ -124,60 +124,60 @@ iconv_convert(iconv_t * cd,
 } // anon namespace
 
 
-std::vector<boost::uint32_t> utf8_to_ucs4(std::vector<char> const & utf8str)
+std::vector<lyx::char_type> utf8_to_ucs4(std::vector<char> const & utf8str)
 {
 	return utf8_to_ucs4(&utf8str[0], utf8str.size());
 }
 
 
-std::vector<boost::uint32_t>
+std::vector<lyx::char_type>
 utf8_to_ucs4(char const * utf8str, size_t ls)
 {
 	static iconv_t cd = (iconv_t)(-1);
-	return iconv_convert<boost::uint32_t>(&cd, ucs4_codeset, "UTF-8",
+	return iconv_convert<lyx::char_type>(&cd, ucs4_codeset, "UTF-8",
 					      utf8str, ls);
 }
 
 
-boost::uint32_t
+lyx::char_type
 ucs2_to_ucs4(unsigned short c)
 {
 	return ucs2_to_ucs4(&c, 1)[0];
 }
 
 
-std::vector<boost::uint32_t>
+std::vector<lyx::char_type>
 ucs2_to_ucs4(std::vector<unsigned short> const & ucs2str)
 {
 	return ucs2_to_ucs4(&ucs2str[0], ucs2str.size());
 }
 
 
-std::vector<boost::uint32_t>
+std::vector<lyx::char_type>
 ucs2_to_ucs4(unsigned short const * ucs2str, size_t ls)
 {
 	static iconv_t cd = (iconv_t)(-1);
-	return iconv_convert<boost::uint32_t>(&cd, ucs4_codeset, ucs2_codeset,
+	return iconv_convert<lyx::char_type>(&cd, ucs4_codeset, ucs2_codeset,
 					      ucs2str, ls);
 }
 
 
 unsigned short
-ucs4_to_ucs2(boost::uint32_t c)
+ucs4_to_ucs2(lyx::char_type c)
 {
 	return ucs4_to_ucs2(&c, 1)[0];
 }
 
 
 std::vector<unsigned short>
-ucs4_to_ucs2(std::vector<boost::uint32_t> const & ucs4str)
+ucs4_to_ucs2(std::vector<lyx::char_type> const & ucs4str)
 {
 	return ucs4_to_ucs2(&ucs4str[0], ucs4str.size());
 }
 
 
 std::vector<unsigned short>
-ucs4_to_ucs2(boost::uint32_t const * s, size_t ls)
+ucs4_to_ucs2(lyx::char_type const * s, size_t ls)
 {
 	static iconv_t cd = (iconv_t)(-1);
 	return iconv_convert<unsigned short>(&cd, ucs2_codeset, ucs4_codeset,
@@ -186,7 +186,7 @@ ucs4_to_ucs2(boost::uint32_t const * s, size_t ls)
 
 
 std::vector<char>
-ucs4_to_utf8(boost::uint32_t c)
+ucs4_to_utf8(lyx::char_type c)
 {
 	static iconv_t cd = (iconv_t)(-1);
 	return iconv_convert<char>(&cd, "UTF-8", ucs4_codeset, &c, 1);
@@ -194,14 +194,14 @@ ucs4_to_utf8(boost::uint32_t c)
 
 
 std::vector<char>
-ucs4_to_utf8(std::vector<boost::uint32_t> const & ucs4str)
+ucs4_to_utf8(std::vector<lyx::char_type> const & ucs4str)
 {
 	return ucs4_to_utf8(&ucs4str[0], ucs4str.size());
 }
 
 
 std::vector<char>
-ucs4_to_utf8(boost::uint32_t const * ucs4str, size_t ls)
+ucs4_to_utf8(lyx::char_type const * ucs4str, size_t ls)
 {
 	static iconv_t cd = (iconv_t)(-1);
 	return iconv_convert<char>(&cd, "UTF-8", ucs4_codeset,

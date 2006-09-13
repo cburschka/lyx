@@ -222,7 +222,7 @@ void QLPainter::text(int x, int y, lyx::char_type const * s, size_t ls,
 		// Brain-dead MSVC wants at(i) rather than operator[]
 		str.at(i) = QChar(encoding->ucs(s[i]));
 #else
-	//std::vector<boost::uint32_t> in(s, s + ls);
+	//std::vector<lyx::char_type> in(s, s + ls);
 	//std::vector<unsigned short> ucs2 = ucs4_to_ucs2(in);
 	std::vector<unsigned short> ucs2 = ucs4_to_ucs2(s, ls);
 	ucs2.push_back(0);

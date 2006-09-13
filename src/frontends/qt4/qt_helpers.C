@@ -159,13 +159,13 @@ void qstring_to_ucs4(QString const & qstr, vector<char_type> & ucs4)
 	int const ls = qstr.size();
 	ucs4.clear();
 	for (int i = 0; i < ls; ++i)
-		ucs4.push_back(static_cast<boost::uint32_t>(qstr[i].unicode()));
+		ucs4.push_back(static_cast<lyx::char_type>(qstr[i].unicode()));
 }
 
 
 char_type const qchar_to_ucs4(QChar const & qchar)
 {
-	return static_cast<boost::uint32_t>(qchar.unicode());
+	return static_cast<lyx::char_type>(qchar.unicode());
 }
 
 

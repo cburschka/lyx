@@ -40,7 +40,7 @@ docstring const from_ascii(std::string const & ascii)
 
 docstring const from_utf8(std::string const & utf8)
 {
-	std::vector<boost::uint32_t> const ucs4 =
+	std::vector<lyx::char_type> const ucs4 =
 		utf8_to_ucs4(utf8.data(), utf8.size());
 	return docstring(ucs4.begin(), ucs4.end());
 }
