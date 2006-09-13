@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-08-10 10:50+0200\n"
+"POT-Creation-Date: 2006-09-13 15:17+0200\n"
 "PO-Revision-Date: 2004-01-08 21:46+0200\n"
 "Last-Translator: Claudiu Costin <claudiuc@kde.org>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
@@ -2027,7 +2027,7 @@ msgstr "Rupere de paginã la linia curentã|#R"
 #: src/frontends/xforms/forms/form_tabular.fd:1638
 #: src/frontends/xforms/forms/form_tabular.fd:1656
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:60
-#: src/frontends/qt2/QDocument.C:166 src/text.C:2308
+#: src/frontends/qt2/QDocument.C:166 src/text.C:2347
 msgid "Double"
 msgstr "Dublu"
 
@@ -2622,8 +2622,8 @@ msgstr "&OK"
 #: src/frontends/qt2/ui/QAskForTextDialog.ui:139
 #: src/frontends/qt2/ui/QDocumentDialogBase.ui:214 src/buffer_funcs.C:91
 #: src/buffer_funcs.C:117 src/buffer_funcs.C:158 src/bufferlist.C:84
-#: src/bufferlist.C:183 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:662
-#: src/lyxfunc.C:824 src/lyxfunc.C:1869 src/lyxvc.C:168
+#: src/bufferlist.C:183 src/lyx_cb.C:116 src/lyx_cb.C:169 src/lyxfunc.C:662
+#: src/lyxfunc.C:824 src/lyxfunc.C:1873 src/lyxvc.C:168
 msgid "&Cancel"
 msgstr "&Renunþã"
 
@@ -2690,7 +2690,7 @@ msgstr "Baze de date BibTeX disponibile"
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:323
 #: src/frontends/qt2/ui/QCitationFindDialogBase.ui:149
 #: src/frontends/qt2/ui/QIndexDialogBase.ui:143
-#: src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/BufferView_pimpl.C:286
+#: src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/BufferView_pimpl.C:282
 #: src/frontends/gtk/GBC.h:27 src/frontends/qt2/Qt2BC.h:36
 #: src/frontends/xforms/xformsBC.h:29 src/lyxfunc.C:775
 msgid "Cancel"
@@ -3834,7 +3834,7 @@ msgid "Print as grey text"
 msgstr "Tipãreºte toate paginiile"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:48
-#: src/frontends/qt2/QDocument.C:162 src/text.C:2302
+#: src/frontends/qt2/QDocument.C:162 src/text.C:2341
 msgid "Single"
 msgstr "Simplu"
 
@@ -6222,7 +6222,7 @@ msgid "Seriate"
 msgstr "Seriate"
 
 #: lib/layouts/apa.layout:346 lib/layouts/apa.layout:347
-#: src/buffer_funcs.C:450
+#: src/buffer_funcs.C:451
 msgid "(\\alph{enumii})"
 msgstr ""
 
@@ -10130,18 +10130,18 @@ msgid "Redo|R"
 msgstr "Re-face|R"
 
 #: lib/ui/stdmenus.ui:84 lib/ui/stdtoolbars.ui:51
-#: src/mathed/math_nestinset.C:433 src/text3.C:737
+#: src/mathed/math_nestinset.C:434 src/text3.C:748
 msgid "Cut"
 msgstr "Taie"
 
 #: lib/ui/stdmenus.ui:85 lib/ui/stdtoolbars.ui:52
-#: src/mathed/math_nestinset.C:441 src/text3.C:742
+#: src/mathed/math_nestinset.C:442 src/text3.C:753
 msgid "Copy"
 msgstr "Copiazã"
 
 #: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:644
-#: src/mathed/math_gridinset.C:1207 src/mathed/math_nestinset.C:417
-#: src/text3.C:724
+#: src/mathed/math_gridinset.C:1207 src/mathed/math_nestinset.C:418
+#: src/text3.C:735
 msgid "Paste"
 msgstr "Lipeºte"
 
@@ -10470,11 +10470,11 @@ msgstr "Salvare &documente"
 msgid "Print document"
 msgstr "Importã document"
 
-#: lib/ui/stdtoolbars.ui:49 src/BufferView_pimpl.C:1126
+#: lib/ui/stdtoolbars.ui:49 src/BufferView_pimpl.C:1123
 msgid "Undo"
 msgstr "Des-face"
 
-#: lib/ui/stdtoolbars.ui:50 src/BufferView_pimpl.C:1137
+#: lib/ui/stdtoolbars.ui:50 src/BufferView_pimpl.C:1134
 msgid "Redo"
 msgstr "Re-face"
 
@@ -10772,12 +10772,12 @@ msgstr "Mediu \"Cases\"|C"
 msgid "minibuffer"
 msgstr ""
 
-#: src/BufferView.C:242
+#: src/BufferView.C:233
 #, c-format
 msgid "%1$s Errors (%2$s)"
 msgstr ""
 
-#: src/BufferView_pimpl.C:256
+#: src/BufferView_pimpl.C:252
 #, c-format
 msgid ""
 "The document %1$s is already loaded.\n"
@@ -10785,22 +10785,22 @@ msgid ""
 "Do you want to revert to the saved version?"
 msgstr ""
 
-#: src/BufferView_pimpl.C:259 src/lyxfunc.C:823
+#: src/BufferView_pimpl.C:255 src/lyxfunc.C:823
 #, fuzzy
 msgid "Revert to saved document?"
 msgstr "Revine la ultima versiune salvatã"
 
-#: src/BufferView_pimpl.C:260 src/lyxfunc.C:824 src/lyxvc.C:168
+#: src/BufferView_pimpl.C:256 src/lyxfunc.C:824 src/lyxvc.C:168
 #, fuzzy
 msgid "&Revert"
 msgstr "Reface documentul original|r"
 
-#: src/BufferView_pimpl.C:260
+#: src/BufferView_pimpl.C:256
 #, fuzzy
 msgid "&Switch to document"
 msgstr "Trece la alt document deschis"
 
-#: src/BufferView_pimpl.C:282
+#: src/BufferView_pimpl.C:278
 #, c-format
 msgid ""
 "The document %1$s does not yet exist.\n"
@@ -10808,127 +10808,127 @@ msgid ""
 "Do you want to create a new document?"
 msgstr ""
 
-#: src/BufferView_pimpl.C:285
+#: src/BufferView_pimpl.C:281
 #, fuzzy
 msgid "Create new document?"
 msgstr "Salvare &documente"
 
-#: src/BufferView_pimpl.C:286
+#: src/BufferView_pimpl.C:282
 #, fuzzy
 msgid "&Create"
 msgstr "&Colaþioneazã"
 
-#: src/BufferView_pimpl.C:295
+#: src/BufferView_pimpl.C:293
 #, fuzzy
 msgid "Parse"
 msgstr "Lipeºte"
 
-#: src/BufferView_pimpl.C:414
+#: src/BufferView_pimpl.C:412
 msgid "Formatting document..."
 msgstr "Formatez documentul..."
 
-#: src/BufferView_pimpl.C:771
+#: src/BufferView_pimpl.C:769
 #, c-format
 msgid "Saved bookmark %1$d"
 msgstr "Am salvat semnul de carte %1$d"
 
-#: src/BufferView_pimpl.C:804
+#: src/BufferView_pimpl.C:802
 #, c-format
 msgid "Moved to bookmark %1$d"
 msgstr "Am sãrit la semnul de carte %1$d"
 
-#: src/BufferView_pimpl.C:864
+#: src/BufferView_pimpl.C:862
 msgid "Select LyX document to insert"
 msgstr "Selectaþi documentul LyX de inserat"
 
-#: src/BufferView_pimpl.C:866 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView_pimpl.C:864 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:65
 #: src/frontends/controllers/ControlExternal.C:160
 #: src/frontends/controllers/ControlGraphics.C:94
-#: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:133
-#: src/lyxfunc.C:1710 src/lyxfunc.C:1747 src/lyxfunc.C:1822
+#: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:134
+#: src/lyxfunc.C:1710 src/lyxfunc.C:1749 src/lyxfunc.C:1826
 msgid "Documents|#o#O"
 msgstr "Documente|#o#O"
 
-#: src/BufferView_pimpl.C:868 src/lyxfunc.C:1749 src/lyxfunc.C:1824
+#: src/BufferView_pimpl.C:866 src/lyxfunc.C:1751 src/lyxfunc.C:1828
 msgid "Examples|#E#e"
 msgstr "Exemple|#E#e"
 
-#: src/BufferView_pimpl.C:873 src/lyx_cb.C:141 src/lyxfunc.C:1717
-#: src/lyxfunc.C:1754
+#: src/BufferView_pimpl.C:871 src/lyx_cb.C:142 src/lyxfunc.C:1717
+#: src/lyxfunc.C:1756
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "*.lyx| Documente LyX (*.lyx)"
 
-#: src/BufferView_pimpl.C:883 src/lyxfunc.C:1764 src/lyxfunc.C:1842
-#: src/lyxfunc.C:1856 src/lyxfunc.C:1872
+#: src/BufferView_pimpl.C:881 src/lyxfunc.C:1766 src/lyxfunc.C:1846
+#: src/lyxfunc.C:1860 src/lyxfunc.C:1876
 msgid "Canceled."
 msgstr "Anulat."
 
-#: src/BufferView_pimpl.C:893
+#: src/BufferView_pimpl.C:891
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Inserez documentul %1$s..."
 
-#: src/BufferView_pimpl.C:901
+#: src/BufferView_pimpl.C:899
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Am inserat documentul %1$s."
 
-#: src/BufferView_pimpl.C:903
+#: src/BufferView_pimpl.C:901
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Nu pot insera documentul %1$s"
 
-#: src/BufferView_pimpl.C:906
+#: src/BufferView_pimpl.C:904
 #, fuzzy
 msgid "Document insertion"
 msgstr "Document LyX...|X"
 
-#: src/BufferView_pimpl.C:1129
+#: src/BufferView_pimpl.C:1126
 msgid "No further undo information"
 msgstr "Nu mai existã informaþii de des-facere"
 
-#: src/BufferView_pimpl.C:1140
+#: src/BufferView_pimpl.C:1137
 msgid "No further redo information"
 msgstr "Nu mai existã informaþii de re-facere"
 
-#: src/BufferView_pimpl.C:1270
+#: src/BufferView_pimpl.C:1263
 msgid "Mark off"
 msgstr "Marcaj inactiv"
 
-#: src/BufferView_pimpl.C:1277
+#: src/BufferView_pimpl.C:1270
 msgid "Mark on"
 msgstr "Marcaj activ"
 
-#: src/BufferView_pimpl.C:1284
+#: src/BufferView_pimpl.C:1277
 msgid "Mark removed"
 msgstr "Marcaj eliminat"
 
-#: src/BufferView_pimpl.C:1287
+#: src/BufferView_pimpl.C:1280
 msgid "Mark set"
 msgstr "Marcaj setat"
 
-#: src/BufferView_pimpl.C:1333
+#: src/BufferView_pimpl.C:1326
 #, c-format
 msgid "%1$d words in selection."
 msgstr ""
 
-#: src/BufferView_pimpl.C:1336
+#: src/BufferView_pimpl.C:1329
 #, fuzzy, c-format
 msgid "%1$d words in document."
 msgstr "Formatez documentul..."
 
-#: src/BufferView_pimpl.C:1341
+#: src/BufferView_pimpl.C:1334
 msgid "One word in selection."
 msgstr ""
 
-#: src/BufferView_pimpl.C:1343
+#: src/BufferView_pimpl.C:1336
 #, fuzzy
 msgid "One word in document."
 msgstr "Inserez documentul "
 
-#: src/BufferView_pimpl.C:1346
+#: src/BufferView_pimpl.C:1339
 #, fuzzy
 msgid "Count words"
 msgstr "Cuvîntul curent"
@@ -11267,7 +11267,7 @@ msgstr "Clasã document necunoscutã"
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 
-#: src/buffer.C:443 src/text.C:354
+#: src/buffer.C:443 src/text.C:355
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr ""
@@ -11362,16 +11362,16 @@ msgid ""
 "Please check if the directory exists and is writeable."
 msgstr ""
 
-#: src/buffer.C:1133
+#: src/buffer.C:1134
 #, fuzzy
 msgid "Running chktex..."
 msgstr "Running_LaTeX_Title"
 
-#: src/buffer.C:1146
+#: src/buffer.C:1147
 msgid "chktex failure"
 msgstr ""
 
-#: src/buffer.C:1147
+#: src/buffer.C:1148
 #, fuzzy
 msgid "Could not run chktex successfully."
 msgstr "Listã de slide-uri"
@@ -11460,19 +11460,19 @@ msgstr ""
 msgid "Could not read template"
 msgstr "Nu pot ºterge director temporar"
 
-#: src/buffer_funcs.C:447
+#: src/buffer_funcs.C:448
 msgid "\\arabic{enumi}."
 msgstr ""
 
-#: src/buffer_funcs.C:453
+#: src/buffer_funcs.C:454
 msgid "\\roman{enumiii}."
 msgstr ""
 
-#: src/buffer_funcs.C:456
+#: src/buffer_funcs.C:457
 msgid "\\Alph{enumiv}."
 msgstr ""
 
-#: src/buffer_funcs.C:492
+#: src/buffer_funcs.C:493
 #, c-format
 msgid "%1$s #:"
 msgstr "%1$s #:"
@@ -11525,7 +11525,7 @@ msgstr "Documentul nu poate fi citit"
 msgid "LyX will not be able to produce output."
 msgstr "LyX nu va putea produce un rezultat."
 
-#: src/bufferview_funcs.C:297
+#: src/bufferview_funcs.C:299
 msgid "No more insets"
 msgstr "Nu mai existã inset-uri"
 
@@ -11735,7 +11735,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Vizualizeazã fiºierul"
 
-#: src/exporter.C:82 src/lyx_cb.C:168 src/lyxfunc.C:1869
+#: src/exporter.C:82 src/lyx_cb.C:169 src/lyxfunc.C:1873
 #, fuzzy
 msgid "&Over-write"
 msgstr "&Maºinã de scris:"
@@ -11876,10 +11876,6 @@ msgstr ""
 #, fuzzy
 msgid "LyX Version "
 msgstr "Versiune...|V"
-
-#: src/frontends/controllers/ControlAboutlyx.C:88
-msgid " of "
-msgstr ""
 
 #: src/frontends/controllers/ControlAboutlyx.C:91
 #, fuzzy
@@ -12026,40 +12022,40 @@ msgstr "Numele de fiºier de inclus"
 msgid "LaTeX/LyX Documents (*.tex *.lyx)"
 msgstr "*.lyx| Documente LyX (*.lyx)"
 
-#: src/frontends/controllers/ControlLog.C:74
+#: src/frontends/controllers/ControlLog.C:78
 #, fuzzy
 msgid "LaTeX Log"
 msgstr "Jurnal LaTeX|J"
 
-#: src/frontends/controllers/ControlLog.C:77
+#: src/frontends/controllers/ControlLog.C:81
 msgid "Literate Programming Build Log"
 msgstr ""
 
-#: src/frontends/controllers/ControlLog.C:80
+#: src/frontends/controllers/ControlLog.C:84
 msgid "lyx2lyx Error Log"
 msgstr ""
 
-#: src/frontends/controllers/ControlLog.C:83
+#: src/frontends/controllers/ControlLog.C:87
 #, fuzzy
 msgid "Version Control Log"
 msgstr "Controlul versiunii|v"
 
-#: src/frontends/controllers/ControlLog.C:106
+#: src/frontends/controllers/ControlLog.C:110
 #, fuzzy
 msgid "No LaTeX log file found."
 msgstr "Jurnal LaTeX|J"
 
-#: src/frontends/controllers/ControlLog.C:109
+#: src/frontends/controllers/ControlLog.C:113
 #, fuzzy
 msgid "No literate programming build log file found."
 msgstr "Controlul versiunii|v"
 
-#: src/frontends/controllers/ControlLog.C:112
+#: src/frontends/controllers/ControlLog.C:116
 #, fuzzy
 msgid "No lyx2lyx error log file found."
 msgstr "Jurnal LaTeX|J"
 
-#: src/frontends/controllers/ControlLog.C:115
+#: src/frontends/controllers/ControlLog.C:119
 #, fuzzy
 msgid "No version control log file found."
 msgstr "Controlul versiunii|v"
@@ -12122,30 +12118,30 @@ msgstr "Verificator ortografic"
 msgid "The spellchecker could not be started\n"
 msgstr "Documentul nu poate fi citit"
 
-#: src/frontends/controllers/ControlSpellchecker.C:265
+#: src/frontends/controllers/ControlSpellchecker.C:267
 msgid ""
 "The spellchecker has died for some reason.\n"
 "Maybe it has been killed."
 msgstr ""
 
-#: src/frontends/controllers/ControlSpellchecker.C:268
+#: src/frontends/controllers/ControlSpellchecker.C:270
 msgid "The spellchecker has failed.\n"
 msgstr ""
 
-#: src/frontends/controllers/ControlSpellchecker.C:273
+#: src/frontends/controllers/ControlSpellchecker.C:275
 msgid "The spellchecker has failed"
 msgstr ""
 
-#: src/frontends/controllers/ControlSpellchecker.C:287
+#: src/frontends/controllers/ControlSpellchecker.C:289
 #, c-format
 msgid "%1$d words checked."
 msgstr ""
 
-#: src/frontends/controllers/ControlSpellchecker.C:289
+#: src/frontends/controllers/ControlSpellchecker.C:291
 msgid "One word checked."
 msgstr ""
 
-#: src/frontends/controllers/ControlSpellchecker.C:292
+#: src/frontends/controllers/ControlSpellchecker.C:294
 #, fuzzy
 msgid "Spelling check completed"
 msgstr "Verificã ortografia|#S"
@@ -12306,6 +12302,16 @@ msgstr ""
 #, fuzzy
 msgid "User files|#U#u"
 msgstr "Ghidul utilizatorului|G"
+
+#: src/frontends/controllers/tex_helpers.C:61
+#, fuzzy
+msgid "Could not update TeX information"
+msgstr "Nu mai existã informaþii de re-facere"
+
+#: src/frontends/controllers/tex_helpers.C:62
+#, c-format
+msgid "The script `%s' failed."
+msgstr ""
 
 #: src/frontends/gtk/Dialogs.C:265 src/frontends/qt2/Dialogs.C:232
 #: src/frontends/xforms/Dialogs.C:246
@@ -12635,7 +12641,7 @@ msgstr ""
 msgid "No synonyms found"
 msgstr ""
 
-#: src/frontends/gtk/GToc.C:122 src/frontends/xforms/FormErrorList.C:83
+#: src/frontends/gtk/GToc.C:122 src/frontends/xforms/FormErrorList.C:84
 #: src/frontends/xforms/FormToc.C:109 src/frontends/xforms/FormToc.C:127
 msgid "*** No Lists ***"
 msgstr ""
@@ -12812,7 +12818,7 @@ msgstr "Secþiune"
 msgid "fancy"
 msgstr ""
 
-#: src/frontends/qt2/QDocument.C:164 src/text.C:2305
+#: src/frontends/qt2/QDocument.C:164 src/text.C:2344
 msgid "OneHalf"
 msgstr ""
 
@@ -14422,26 +14428,26 @@ msgstr ""
 msgid "Cannot read from this file."
 msgstr ""
 
-#: src/importer.C:44
+#: src/importer.C:45
 #, c-format
 msgid "Importing %1$s..."
 msgstr ""
 
-#: src/importer.C:62
+#: src/importer.C:63
 #, fuzzy
 msgid "Couldn't import file"
 msgstr "Înlocuieºte"
 
-#: src/importer.C:63
+#: src/importer.C:64
 #, fuzzy, c-format
 msgid "No information for importing the format %1$s."
 msgstr "Nu decomprimã imaginea înainte de exportare în LaTeX"
 
-#: src/importer.C:84
+#: src/importer.C:89
 msgid "imported."
 msgstr ""
 
-#: src/insets/insetbase.C:265
+#: src/insets/insetbase.C:264
 #, fuzzy
 msgid "Opened inset"
 msgstr "Deschidere"
@@ -14917,7 +14923,7 @@ msgstr "Î&nãlþime"
 msgid "pheight%"
 msgstr "Î&nãlþime"
 
-#: src/lyx_cb.C:112
+#: src/lyx_cb.C:113
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -14925,25 +14931,25 @@ msgid ""
 "Do you want to rename the document and try again?"
 msgstr ""
 
-#: src/lyx_cb.C:114
+#: src/lyx_cb.C:115
 msgid "Rename and save?"
 msgstr ""
 
-#: src/lyx_cb.C:115
+#: src/lyx_cb.C:116
 #, fuzzy
 msgid "&Rename"
 msgstr "&Eliminã"
 
-#: src/lyx_cb.C:131
+#: src/lyx_cb.C:132
 msgid "Choose a filename to save document as"
 msgstr ""
 
-#: src/lyx_cb.C:135 src/lyxfunc.C:1712
+#: src/lyx_cb.C:136 src/lyxfunc.C:1712
 #, fuzzy
 msgid "Templates|#T#t"
 msgstr "Modele"
 
-#: src/lyx_cb.C:165 src/lyxfunc.C:1866
+#: src/lyx_cb.C:166 src/lyxfunc.C:1870
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -14951,41 +14957,41 @@ msgid ""
 "Do you want to over-write that document?"
 msgstr ""
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:1868
+#: src/lyx_cb.C:168 src/lyxfunc.C:1872
 #, fuzzy
 msgid "Over-write document?"
 msgstr "Salvare &documente"
 
-#: src/lyx_cb.C:214
+#: src/lyx_cb.C:215
 #, fuzzy, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Nu pot ºterge director temporar"
 
-#: src/lyx_cb.C:216
+#: src/lyx_cb.C:217
 #, fuzzy
 msgid "Unable to remove temporary directory"
 msgstr "&Utilizeazã director temporar"
 
-#: src/lyx_cb.C:248
+#: src/lyx_cb.C:249
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr ""
 
-#: src/lyx_cb.C:287
+#: src/lyx_cb.C:288
 #, fuzzy
 msgid "Autosave failed!"
 msgstr "Interval de salvare automatã:"
 
-#: src/lyx_cb.C:313
+#: src/lyx_cb.C:314
 msgid "Autosaving current document..."
 msgstr ""
 
-#: src/lyx_cb.C:385
+#: src/lyx_cb.C:388
 #, fuzzy
 msgid "Select file to insert"
 msgstr "Selecteazã document fiu"
 
-#: src/lyx_cb.C:404
+#: src/lyx_cb.C:407
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -14993,12 +14999,12 @@ msgid ""
 "due to the error: %2$s"
 msgstr ""
 
-#: src/lyx_cb.C:406
+#: src/lyx_cb.C:409
 #, fuzzy
 msgid "Could not read file"
 msgstr "Listã de slide-uri"
 
-#: src/lyx_cb.C:414
+#: src/lyx_cb.C:417
 #, c-format
 msgid ""
 "Could not open the specified document\n"
@@ -15006,26 +15012,26 @@ msgid ""
 "due to the error: %2$s"
 msgstr ""
 
-#: src/lyx_cb.C:416 src/output.C:36
+#: src/lyx_cb.C:419 src/output.C:36
 #, fuzzy
 msgid "Could not open file"
 msgstr "Nu pot deschide fiºierul"
 
-#: src/lyx_cb.C:445
+#: src/lyx_cb.C:448
 #, fuzzy
 msgid "Running configure..."
 msgstr "Reconfigureazã|R"
 
-#: src/lyx_cb.C:453
+#: src/lyx_cb.C:456
 msgid "Reloading configuration..."
 msgstr ""
 
-#: src/lyx_cb.C:458
+#: src/lyx_cb.C:461
 #, fuzzy
 msgid "System reconfigured"
 msgstr "Reconfigureazã|R"
 
-#: src/lyx_cb.C:459
+#: src/lyx_cb.C:462
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -15059,17 +15065,17 @@ msgstr "Nimic"
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:408
+#: src/lyx_main.C:410
 #, fuzzy
 msgid "LyX: "
 msgstr "Vizualizeazã DVI"
 
-#: src/lyx_main.C:515
+#: src/lyx_main.C:517
 #, fuzzy
 msgid "Could not create temporary directory"
 msgstr "Nu pot ºterge director temporar"
 
-#: src/lyx_main.C:516
+#: src/lyx_main.C:518
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -15077,51 +15083,51 @@ msgid ""
 "path exists and is writable and try again."
 msgstr ""
 
-#: src/lyx_main.C:667
+#: src/lyx_main.C:669
 #, fuzzy
 msgid "Missing user LyX directory"
 msgstr "Adaugã cuvîntul la dicþionarul personal"
 
-#: src/lyx_main.C:668
+#: src/lyx_main.C:670
 #, fuzzy, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr "Documentul specificat nu este un document LyX."
 
-#: src/lyx_main.C:673
+#: src/lyx_main.C:675
 #, fuzzy
 msgid "&Create directory"
 msgstr "&Director de lucru:"
 
-#: src/lyx_main.C:674
+#: src/lyx_main.C:676
 #, fuzzy
 msgid "&Exit LyX"
 msgstr "Ieºire"
 
-#: src/lyx_main.C:675
+#: src/lyx_main.C:677
 msgid "No user LyX directory. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:679
+#: src/lyx_main.C:681
 #, fuzzy, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "&Director de lucru:"
 
-#: src/lyx_main.C:685
+#: src/lyx_main.C:687
 msgid "Failed to create directory. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:834
+#: src/lyx_main.C:836
 msgid "List of supported debug flags:"
 msgstr ""
 
-#: src/lyx_main.C:838
+#: src/lyx_main.C:840
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr ""
 
-#: src/lyx_main.C:849
+#: src/lyx_main.C:851
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -15143,27 +15149,27 @@ msgid ""
 "Check the LyX man page for more details."
 msgstr ""
 
-#: src/lyx_main.C:885
+#: src/lyx_main.C:887
 msgid "Missing directory for -sysdir switch"
 msgstr ""
 
-#: src/lyx_main.C:895
+#: src/lyx_main.C:897
 msgid "Missing directory for -userdir switch"
 msgstr ""
 
-#: src/lyx_main.C:905
+#: src/lyx_main.C:907
 msgid "Missing command string after --execute switch"
 msgstr ""
 
-#: src/lyx_main.C:915
+#: src/lyx_main.C:917
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr ""
 
-#: src/lyx_main.C:927
+#: src/lyx_main.C:929
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr ""
 
-#: src/lyx_main.C:932
+#: src/lyx_main.C:934
 msgid "Missing filename for --import"
 msgstr ""
 
@@ -15330,7 +15336,7 @@ msgstr "Construieºte programul|B"
 msgid "ChkTeX"
 msgstr "Verificare TeX"
 
-#: src/lyxfunc.C:1020 src/text3.C:1143
+#: src/lyxfunc.C:1020 src/text3.C:1154
 msgid "Missing argument"
 msgstr ""
 
@@ -15375,31 +15381,31 @@ msgstr ""
 msgid "Select template file"
 msgstr "Selectaþi fiºierul de ieºire"
 
-#: src/lyxfunc.C:1745
+#: src/lyxfunc.C:1747
 msgid "Select document to open"
 msgstr ""
 
-#: src/lyxfunc.C:1786
+#: src/lyxfunc.C:1790
 #, c-format
 msgid "Opening document %1$s..."
 msgstr ""
 
-#: src/lyxfunc.C:1790
+#: src/lyxfunc.C:1794
 #, fuzzy, c-format
 msgid "Document %1$s opened."
 msgstr "Documente"
 
-#: src/lyxfunc.C:1792
+#: src/lyxfunc.C:1796
 #, c-format
 msgid "Could not open document %1$s"
 msgstr ""
 
-#: src/lyxfunc.C:1817
+#: src/lyxfunc.C:1821
 #, fuzzy, c-format
 msgid "Select %1$s file to import"
 msgstr "Selectaþi fiºierul de ieºire"
 
-#: src/lyxfunc.C:1927
+#: src/lyxfunc.C:1931
 msgid "Welcome to LyX!"
 msgstr ""
 
@@ -15850,7 +15856,7 @@ msgstr "Selecteazã pînã la sfîrºitul documentului"
 msgid " Macro: %1$s: "
 msgstr " Macro: %s: "
 
-#: src/mathed/math_amsarrayinset.C:109 src/mathed/math_hullinset.C:1198
+#: src/mathed/math_amsarrayinset.C:109 src/mathed/math_hullinset.C:1199
 #: src/mathed/math_splitinset.C:74 src/mathed/math_substackinset.C:69
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -15883,40 +15889,40 @@ msgstr ""
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Caracteristici tabular"
 
-#: src/mathed/math_hullinset.C:1029 src/mathed/math_hullinset.C:1038
+#: src/mathed/math_hullinset.C:1030 src/mathed/math_hullinset.C:1039
 #, fuzzy
 msgid "No number"
 msgstr "msnumber"
 
-#: src/mathed/math_hullinset.C:1029 src/mathed/math_hullinset.C:1038
+#: src/mathed/math_hullinset.C:1030 src/mathed/math_hullinset.C:1039
 #, fuzzy
 msgid "Number"
 msgstr "&Numerotare"
 
-#: src/mathed/math_hullinset.C:1171
+#: src/mathed/math_hullinset.C:1172
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_hullinset.C:1181
+#: src/mathed/math_hullinset.C:1182
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_hullinset.C:1191
+#: src/mathed/math_hullinset.C:1192
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_hullinset.C:1297 src/text3.C:177
+#: src/mathed/math_hullinset.C:1298 src/text3.C:177
 msgid "Math editor mode"
 msgstr ""
 
-#: src/mathed/math_nestinset.C:807
+#: src/mathed/math_nestinset.C:808
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/math_nestinset.C:810
+#: src/mathed/math_nestinset.C:811
 msgid "entered math text mode (textrm)"
 msgstr ""
 
@@ -15991,145 +15997,145 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Cuvînt necunoscut:"
 
-#: src/text.C:181
+#: src/text.C:182
 #, fuzzy
 msgid "Unknown layout"
 msgstr "necunoscut"
 
-#: src/text.C:182
+#: src/text.C:183
 #, c-format
 msgid ""
 "Layout '%1$s' does not exist in textclass '%2$s'\n"
 "Trying to use the default instead.\n"
 msgstr ""
 
-#: src/text.C:213
+#: src/text.C:214
 #, fuzzy
 msgid "Unknown Inset"
 msgstr "necunoscut"
 
-#: src/text.C:330 src/text.C:344
+#: src/text.C:331 src/text.C:345
 #, fuzzy
 msgid "Change tracking error"
 msgstr "Modificã limbajul"
 
-#: src/text.C:331
+#: src/text.C:332
 #, c-format
 msgid "Unknown author index for insertion: %1$d\n"
 msgstr ""
 
-#: src/text.C:345
+#: src/text.C:346
 #, c-format
 msgid "Unknown author index for deletion: %1$d\n"
 msgstr ""
 
-#: src/text.C:353
+#: src/text.C:354
 #, fuzzy
 msgid "Unknown token"
 msgstr "necunoscut"
 
-#: src/text.C:1184
+#: src/text.C:1185
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
 msgstr ""
 "Nu puteþi introduce un spaþiu la începutul unui paragraf. Citiþi tutorialul."
 
-#: src/text.C:1196
+#: src/text.C:1197
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "Nu puteþi introduce douã spaþii în acest fel. Citiþi tutorialul."
 
-#: src/text.C:2270
+#: src/text.C:2309
 #, fuzzy
 msgid "Change: "
 msgstr "Pagini"
 
-#: src/text.C:2274
+#: src/text.C:2313
 #, fuzzy
 msgid " at "
 msgstr " la "
 
-#: src/text.C:2286
+#: src/text.C:2325
 #, fuzzy, c-format
 msgid "Font: %1$s"
 msgstr "Mãrime font"
 
-#: src/text.C:2293
+#: src/text.C:2332
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ""
 
-#: src/text.C:2299
+#: src/text.C:2338
 #, fuzzy
 msgid ", Spacing: "
 msgstr ", Spaþiere: "
 
-#: src/text.C:2311
+#: src/text.C:2350
 #, fuzzy
 msgid "Other ("
 msgstr "Altul ("
 
-#: src/text.C:2320
+#: src/text.C:2359
 #, fuzzy
 msgid ", Inset: "
 msgstr "Insereazã URL"
 
-#: src/text.C:2321
+#: src/text.C:2360
 #, fuzzy
 msgid ", Paragraph: "
 msgstr "Paragraf"
 
-#: src/text.C:2322
+#: src/text.C:2361
 msgid ", Id: "
 msgstr ""
 
-#: src/text.C:2323
+#: src/text.C:2362
 #, fuzzy
 msgid ", Position: "
 msgstr "Afirmaþie"
 
-#: src/text.C:2324
+#: src/text.C:2363
 msgid ", Boundary: "
 msgstr ""
 
-#: src/text2.C:530
+#: src/text2.C:533
 msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
 msgstr ""
 
-#: src/text2.C:572
+#: src/text2.C:575
 msgid "Nothing to index!"
 msgstr "Nimic de indexat"
 
-#: src/text2.C:574
+#: src/text2.C:577
 msgid "Cannot index more than one paragraph!"
 msgstr "Nu pot indexa mai mult de un paragraf!"
 
-#: src/text3.C:655
+#: src/text3.C:662
 msgid "Unknown spacing argument: "
 msgstr ""
 
-#: src/text3.C:786
+#: src/text3.C:797
 msgid "LyX function 'layout' needs an argument."
 msgstr "Funcþia LyX 'layout' cere un argument."
 
-#: src/text3.C:804
+#: src/text3.C:815
 #, fuzzy
 msgid "Layout "
 msgstr "Format|F"
 
-#: src/text3.C:805
+#: src/text3.C:816
 #, fuzzy
 msgid " not known"
 msgstr "necunoscut"
 
-#: src/text3.C:1247 src/text3.C:1259
+#: src/text3.C:1258 src/text3.C:1270
 #, fuzzy
 msgid "Character set"
 msgstr "Caracter"
 
-#: src/text3.C:1391
+#: src/text3.C:1402
 #, fuzzy
 msgid "Paragraph layout set"
 msgstr "Paragraf"

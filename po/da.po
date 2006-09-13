@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: da\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-08-10 10:50+0200\n"
+"POT-Creation-Date: 2006-09-13 15:17+0200\n"
 "PO-Revision-Date: 2005-12-18 15:13+0100\n"
 "Last-Translator: Claus Hindsgaul <claus_h@image.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -1981,7 +1981,7 @@ msgstr "Sideskift på den aktuelle linje|#S"
 #: src/frontends/xforms/forms/form_tabular.fd:1638
 #: src/frontends/xforms/forms/form_tabular.fd:1656
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:60
-#: src/frontends/qt2/QDocument.C:166 src/text.C:2308
+#: src/frontends/qt2/QDocument.C:166 src/text.C:2347
 msgid "Double"
 msgstr "Dobbelt"
 
@@ -2552,8 +2552,8 @@ msgstr "&O.k."
 #: src/frontends/qt2/ui/QAskForTextDialog.ui:139
 #: src/frontends/qt2/ui/QDocumentDialogBase.ui:214 src/buffer_funcs.C:91
 #: src/buffer_funcs.C:117 src/buffer_funcs.C:158 src/bufferlist.C:84
-#: src/bufferlist.C:183 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:662
-#: src/lyxfunc.C:824 src/lyxfunc.C:1869 src/lyxvc.C:168
+#: src/bufferlist.C:183 src/lyx_cb.C:116 src/lyx_cb.C:169 src/lyxfunc.C:662
+#: src/lyxfunc.C:824 src/lyxfunc.C:1873 src/lyxvc.C:168
 msgid "&Cancel"
 msgstr "&Anullér"
 
@@ -2620,7 +2620,7 @@ msgstr "Valgte BibTeX-database"
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:323
 #: src/frontends/qt2/ui/QCitationFindDialogBase.ui:149
 #: src/frontends/qt2/ui/QIndexDialogBase.ui:143
-#: src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/BufferView_pimpl.C:286
+#: src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/BufferView_pimpl.C:282
 #: src/frontends/gtk/GBC.h:27 src/frontends/qt2/Qt2BC.h:36
 #: src/frontends/xforms/xformsBC.h:29 src/lyxfunc.C:775
 msgid "Cancel"
@@ -3720,7 +3720,7 @@ msgid "Print as grey text"
 msgstr "Udskriv som grå tekst"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:48
-#: src/frontends/qt2/QDocument.C:162 src/text.C:2302
+#: src/frontends/qt2/QDocument.C:162 src/text.C:2341
 msgid "Single"
 msgstr "Enkelt"
 
@@ -6096,7 +6096,7 @@ msgid "Seriate"
 msgstr "Seriate"
 
 #: lib/layouts/apa.layout:346 lib/layouts/apa.layout:347
-#: src/buffer_funcs.C:450
+#: src/buffer_funcs.C:451
 msgid "(\\alph{enumii})"
 msgstr ""
 
@@ -9985,18 +9985,18 @@ msgid "Redo|R"
 msgstr "Gendan|G"
 
 #: lib/ui/stdmenus.ui:84 lib/ui/stdtoolbars.ui:51
-#: src/mathed/math_nestinset.C:433 src/text3.C:737
+#: src/mathed/math_nestinset.C:434 src/text3.C:748
 msgid "Cut"
 msgstr "Klip"
 
 #: lib/ui/stdmenus.ui:85 lib/ui/stdtoolbars.ui:52
-#: src/mathed/math_nestinset.C:441 src/text3.C:742
+#: src/mathed/math_nestinset.C:442 src/text3.C:753
 msgid "Copy"
 msgstr "Kopiér"
 
 #: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:644
-#: src/mathed/math_gridinset.C:1207 src/mathed/math_nestinset.C:417
-#: src/text3.C:724
+#: src/mathed/math_gridinset.C:1207 src/mathed/math_nestinset.C:418
+#: src/text3.C:735
 msgid "Paste"
 msgstr "Indsæt"
 
@@ -10291,11 +10291,11 @@ msgstr "Gem dokument"
 msgid "Print document"
 msgstr "Udskriv dokument"
 
-#: lib/ui/stdtoolbars.ui:49 src/BufferView_pimpl.C:1126
+#: lib/ui/stdtoolbars.ui:49 src/BufferView_pimpl.C:1123
 msgid "Undo"
 msgstr "Fortryd"
 
-#: lib/ui/stdtoolbars.ui:50 src/BufferView_pimpl.C:1137
+#: lib/ui/stdtoolbars.ui:50 src/BufferView_pimpl.C:1134
 msgid "Redo"
 msgstr "Gendan"
 
@@ -10546,12 +10546,12 @@ msgstr "Cases-miljø|C"
 msgid "minibuffer"
 msgstr ""
 
-#: src/BufferView.C:242
+#: src/BufferView.C:233
 #, fuzzy, c-format
 msgid "%1$s Errors (%2$s)"
 msgstr "LyX: %1$s fejl (%2$s)"
 
-#: src/BufferView_pimpl.C:256
+#: src/BufferView_pimpl.C:252
 #, c-format
 msgid ""
 "The document %1$s is already loaded.\n"
@@ -10562,20 +10562,20 @@ msgstr ""
 "\n"
 "Vil du gå tilbage til den gemte udgave?"
 
-#: src/BufferView_pimpl.C:259 src/lyxfunc.C:823
+#: src/BufferView_pimpl.C:255 src/lyxfunc.C:823
 msgid "Revert to saved document?"
 msgstr "Gendan gemte dokument?"
 
 # , c-format
-#: src/BufferView_pimpl.C:260 src/lyxfunc.C:824 src/lyxvc.C:168
+#: src/BufferView_pimpl.C:256 src/lyxfunc.C:824 src/lyxvc.C:168
 msgid "&Revert"
 msgstr "&Gendan"
 
-#: src/BufferView_pimpl.C:260
+#: src/BufferView_pimpl.C:256
 msgid "&Switch to document"
 msgstr "&Skift til dokument"
 
-#: src/BufferView_pimpl.C:282
+#: src/BufferView_pimpl.C:278
 #, c-format
 msgid ""
 "The document %1$s does not yet exist.\n"
@@ -10586,15 +10586,15 @@ msgstr ""
 "\n"
 "Vil du oprette et nyt dokument?"
 
-#: src/BufferView_pimpl.C:285
+#: src/BufferView_pimpl.C:281
 msgid "Create new document?"
 msgstr "Opret nyt dokument?"
 
-#: src/BufferView_pimpl.C:286
+#: src/BufferView_pimpl.C:282
 msgid "&Create"
 msgstr "&Opret"
 
-#: src/BufferView_pimpl.C:295
+#: src/BufferView_pimpl.C:293
 msgid "Parse"
 msgstr "Tolk"
 
@@ -10614,112 +10614,112 @@ msgstr "Tolk"
 # Paper layout = papirindstillinger
 # Layout = layout
 # Minipage = miniside
-#: src/BufferView_pimpl.C:414
+#: src/BufferView_pimpl.C:412
 msgid "Formatting document..."
 msgstr "Formaterer dokument..."
 
-#: src/BufferView_pimpl.C:771
+#: src/BufferView_pimpl.C:769
 #, fuzzy, c-format
 msgid "Saved bookmark %1$d"
 msgstr "Gemt bogmærke %1$s"
 
-#: src/BufferView_pimpl.C:804
+#: src/BufferView_pimpl.C:802
 #, fuzzy, c-format
 msgid "Moved to bookmark %1$d"
 msgstr "Flyttet til bogmærke %1$s"
 
-#: src/BufferView_pimpl.C:864
+#: src/BufferView_pimpl.C:862
 msgid "Select LyX document to insert"
 msgstr "Vælg LyX-dokument at indsætte"
 
-#: src/BufferView_pimpl.C:866 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView_pimpl.C:864 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:65
 #: src/frontends/controllers/ControlExternal.C:160
 #: src/frontends/controllers/ControlGraphics.C:94
-#: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:133
-#: src/lyxfunc.C:1710 src/lyxfunc.C:1747 src/lyxfunc.C:1822
+#: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:134
+#: src/lyxfunc.C:1710 src/lyxfunc.C:1749 src/lyxfunc.C:1826
 msgid "Documents|#o#O"
 msgstr "Dokumenter|#d#D"
 
-#: src/BufferView_pimpl.C:868 src/lyxfunc.C:1749 src/lyxfunc.C:1824
+#: src/BufferView_pimpl.C:866 src/lyxfunc.C:1751 src/lyxfunc.C:1828
 msgid "Examples|#E#e"
 msgstr "Eksempler|#E#e"
 
-#: src/BufferView_pimpl.C:873 src/lyx_cb.C:141 src/lyxfunc.C:1717
-#: src/lyxfunc.C:1754
+#: src/BufferView_pimpl.C:871 src/lyx_cb.C:142 src/lyxfunc.C:1717
+#: src/lyxfunc.C:1756
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX-dokumenter (*.lyx)"
 
-#: src/BufferView_pimpl.C:883 src/lyxfunc.C:1764 src/lyxfunc.C:1842
-#: src/lyxfunc.C:1856 src/lyxfunc.C:1872
+#: src/BufferView_pimpl.C:881 src/lyxfunc.C:1766 src/lyxfunc.C:1846
+#: src/lyxfunc.C:1860 src/lyxfunc.C:1876
 msgid "Canceled."
 msgstr "Annulleret."
 
-#: src/BufferView_pimpl.C:893
+#: src/BufferView_pimpl.C:891
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Indsætter dokumentet %1$s..."
 
-#: src/BufferView_pimpl.C:901
+#: src/BufferView_pimpl.C:899
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokumentet %1$s blev indsat."
 
-#: src/BufferView_pimpl.C:903
+#: src/BufferView_pimpl.C:901
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Kunne ikke indsætte dokumentet %1$s"
 
-#: src/BufferView_pimpl.C:906
+#: src/BufferView_pimpl.C:904
 #, fuzzy
 msgid "Document insertion"
 msgstr "Dokumentindstillinger"
 
-#: src/BufferView_pimpl.C:1129
+#: src/BufferView_pimpl.C:1126
 msgid "No further undo information"
 msgstr "Ikke flere fortrydelsesoplysninger"
 
-#: src/BufferView_pimpl.C:1140
+#: src/BufferView_pimpl.C:1137
 msgid "No further redo information"
 msgstr "Kan ikke gendanne mere"
 
-#: src/BufferView_pimpl.C:1270
+#: src/BufferView_pimpl.C:1263
 msgid "Mark off"
 msgstr "Mærke slået fra"
 
-#: src/BufferView_pimpl.C:1277
+#: src/BufferView_pimpl.C:1270
 msgid "Mark on"
 msgstr "Mærke slået til"
 
-#: src/BufferView_pimpl.C:1284
+#: src/BufferView_pimpl.C:1277
 msgid "Mark removed"
 msgstr "Mærke fjernet"
 
-#: src/BufferView_pimpl.C:1287
+#: src/BufferView_pimpl.C:1280
 msgid "Mark set"
 msgstr "Mærke sat"
 
-#: src/BufferView_pimpl.C:1333
+#: src/BufferView_pimpl.C:1326
 #, fuzzy, c-format
 msgid "%1$d words in selection."
 msgstr "%1$s ord tjekket."
 
-#: src/BufferView_pimpl.C:1336
+#: src/BufferView_pimpl.C:1329
 #, fuzzy, c-format
 msgid "%1$d words in document."
 msgstr "%1$s er ikke et LyX-document."
 
-#: src/BufferView_pimpl.C:1341
+#: src/BufferView_pimpl.C:1334
 #, fuzzy
 msgid "One word in selection."
 msgstr "Èt ord tjekket."
 
-#: src/BufferView_pimpl.C:1343
+#: src/BufferView_pimpl.C:1336
 #, fuzzy
 msgid "One word in document."
 msgstr "Åbn dokument"
 
-#: src/BufferView_pimpl.C:1346
+#: src/BufferView_pimpl.C:1339
 #, fuzzy
 msgid "Count words"
 msgstr "Nuværende ord"
@@ -11045,7 +11045,7 @@ msgstr "Ukendt dokumentklasse"
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr "Bruger standard-dokumentklassen, da %1$s-klassen er ukendt."
 
-#: src/buffer.C:443 src/text.C:354
+#: src/buffer.C:443 src/text.C:355
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Ukendt symbol: %1$s %2$s\n"
@@ -11141,15 +11141,15 @@ msgid ""
 "Please check if the directory exists and is writeable."
 msgstr ""
 
-#: src/buffer.C:1133
+#: src/buffer.C:1134
 msgid "Running chktex..."
 msgstr "Kører chktex..."
 
-#: src/buffer.C:1146
+#: src/buffer.C:1147
 msgid "chktex failure"
 msgstr "chktex-fejl"
 
-#: src/buffer.C:1147
+#: src/buffer.C:1148
 msgid "Could not run chktex successfully."
 msgstr "Kunne ikke køre chktex."
 
@@ -11242,21 +11242,21 @@ msgstr ""
 msgid "Could not read template"
 msgstr "Kunne ikke læse skabelon"
 
-#: src/buffer_funcs.C:447
+#: src/buffer_funcs.C:448
 #, fuzzy
 msgid "\\arabic{enumi}."
 msgstr "Undersektion"
 
-#: src/buffer_funcs.C:453
+#: src/buffer_funcs.C:454
 msgid "\\roman{enumiii}."
 msgstr ""
 
-#: src/buffer_funcs.C:456
+#: src/buffer_funcs.C:457
 #, fuzzy
 msgid "\\Alph{enumiv}."
 msgstr "markeret"
 
-#: src/buffer_funcs.C:492
+#: src/buffer_funcs.C:493
 #, c-format
 msgid "%1$s #:"
 msgstr "%1$s #:"
@@ -11310,7 +11310,7 @@ msgstr "Dokumentklasse ikke tilgængelig"
 msgid "LyX will not be able to produce output."
 msgstr "LyX vil ikke kunne producere et korrekt resultat."
 
-#: src/bufferview_funcs.C:297
+#: src/bufferview_funcs.C:299
 msgid "No more insets"
 msgstr "Ikke flere indstik"
 
@@ -11514,7 +11514,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "&Overskriv"
 
-#: src/exporter.C:82 src/lyx_cb.C:168 src/lyxfunc.C:1869
+#: src/exporter.C:82 src/lyx_cb.C:169 src/lyxfunc.C:1873
 msgid "&Over-write"
 msgstr "&Overskriv"
 
@@ -11665,10 +11665,6 @@ msgstr ""
 msgid "LyX Version "
 msgstr "LyX-version "
 
-#: src/frontends/controllers/ControlAboutlyx.C:88
-msgid " of "
-msgstr " fra "
-
 #: src/frontends/controllers/ControlAboutlyx.C:91
 msgid "Library directory: "
 msgstr "Brugermappe: "
@@ -11795,38 +11791,38 @@ msgstr "Vælg dokument som skal inkluderes"
 msgid "LaTeX/LyX Documents (*.tex *.lyx)"
 msgstr "LaTeX/LyX-dokumenter (*.tex *.lyx)"
 
-#: src/frontends/controllers/ControlLog.C:74
+#: src/frontends/controllers/ControlLog.C:78
 #, fuzzy
 msgid "LaTeX Log"
 msgstr "LaTeX-log"
 
-#: src/frontends/controllers/ControlLog.C:77
+#: src/frontends/controllers/ControlLog.C:81
 #, fuzzy
 msgid "Literate Programming Build Log"
 msgstr "LyX: Dokumentprogrammerings-oversætterlog"
 
-#: src/frontends/controllers/ControlLog.C:80
+#: src/frontends/controllers/ControlLog.C:84
 #, fuzzy
 msgid "lyx2lyx Error Log"
 msgstr "LyX: lyx2lyx-fejllog"
 
-#: src/frontends/controllers/ControlLog.C:83
+#: src/frontends/controllers/ControlLog.C:87
 msgid "Version Control Log"
 msgstr "Versionsstyringslog"
 
-#: src/frontends/controllers/ControlLog.C:106
+#: src/frontends/controllers/ControlLog.C:110
 msgid "No LaTeX log file found."
 msgstr "Ingen LaTeX-logfil fundet."
 
-#: src/frontends/controllers/ControlLog.C:109
+#: src/frontends/controllers/ControlLog.C:113
 msgid "No literate programming build log file found."
 msgstr "Der blev ikke fundet nogen literate-programming opbygnings-logfil."
 
-#: src/frontends/controllers/ControlLog.C:112
+#: src/frontends/controllers/ControlLog.C:116
 msgid "No lyx2lyx error log file found."
 msgstr "Fandt ingen lyx2lyx-fejllogfil."
 
-#: src/frontends/controllers/ControlLog.C:115
+#: src/frontends/controllers/ControlLog.C:119
 msgid "No version control log file found."
 msgstr "Fandt ingen versionskontrollogfil."
 
@@ -11886,7 +11882,7 @@ msgstr ""
 "Stavekontrollen kunne ikke startes.\n"
 "Måske er den sat forkert op."
 
-#: src/frontends/controllers/ControlSpellchecker.C:265
+#: src/frontends/controllers/ControlSpellchecker.C:267
 #, fuzzy
 msgid ""
 "The spellchecker has died for some reason.\n"
@@ -11895,26 +11891,26 @@ msgstr ""
 "Stavekontrollen døde af en eller anden grund.\n"
 "Måske blev den dræbt."
 
-#: src/frontends/controllers/ControlSpellchecker.C:268
+#: src/frontends/controllers/ControlSpellchecker.C:270
 #, fuzzy
 msgid "The spellchecker has failed.\n"
 msgstr "Stavekontrollen mislykkedes"
 
-#: src/frontends/controllers/ControlSpellchecker.C:273
+#: src/frontends/controllers/ControlSpellchecker.C:275
 #, fuzzy
 msgid "The spellchecker has failed"
 msgstr "Stavekontrollen mislykkedes"
 
-#: src/frontends/controllers/ControlSpellchecker.C:287
+#: src/frontends/controllers/ControlSpellchecker.C:289
 #, fuzzy, c-format
 msgid "%1$d words checked."
 msgstr "%1$s ord tjekket."
 
-#: src/frontends/controllers/ControlSpellchecker.C:289
+#: src/frontends/controllers/ControlSpellchecker.C:291
 msgid "One word checked."
 msgstr "Èt ord tjekket."
 
-#: src/frontends/controllers/ControlSpellchecker.C:292
+#: src/frontends/controllers/ControlSpellchecker.C:294
 #, fuzzy
 msgid "Spelling check completed"
 msgstr "Stavekontrol fuldført"
@@ -12054,6 +12050,16 @@ msgstr "System-bind|#S#s"
 #, fuzzy
 msgid "User files|#U#u"
 msgstr "Bruger-bind|#U#u"
+
+#: src/frontends/controllers/tex_helpers.C:61
+#, fuzzy
+msgid "Could not update TeX information"
+msgstr "Kan ikke gendanne mere"
+
+#: src/frontends/controllers/tex_helpers.C:62
+#, fuzzy, c-format
+msgid "The script `%s' failed."
+msgstr "Stavekontrollen mislykkedes"
 
 #: src/frontends/gtk/Dialogs.C:265 src/frontends/qt2/Dialogs.C:232
 #: src/frontends/xforms/Dialogs.C:246
@@ -12371,7 +12377,7 @@ msgstr ""
 msgid "No synonyms found"
 msgstr "Fandt ingen fil!"
 
-#: src/frontends/gtk/GToc.C:122 src/frontends/xforms/FormErrorList.C:83
+#: src/frontends/gtk/GToc.C:122 src/frontends/xforms/FormErrorList.C:84
 #: src/frontends/xforms/FormToc.C:109 src/frontends/xforms/FormToc.C:127
 msgid "*** No Lists ***"
 msgstr "*** Ingen lister ***"
@@ -12527,7 +12533,7 @@ msgstr "hoveder"
 msgid "fancy"
 msgstr "fancy"
 
-#: src/frontends/qt2/QDocument.C:164 src/text.C:2305
+#: src/frontends/qt2/QDocument.C:164 src/text.C:2344
 msgid "OneHalf"
 msgstr "Halvanden"
 
@@ -14153,25 +14159,25 @@ msgid "Cannot read from this file."
 msgstr "Kan ikke læse fra denne fil."
 
 # , c-format
-#: src/importer.C:44
+#: src/importer.C:45
 #, c-format
 msgid "Importing %1$s..."
 msgstr "Importerer %1$s..."
 
-#: src/importer.C:62
+#: src/importer.C:63
 msgid "Couldn't import file"
 msgstr "Kunne ikke importere fil"
 
-#: src/importer.C:63
+#: src/importer.C:64
 #, c-format
 msgid "No information for importing the format %1$s."
 msgstr "Ingen oplysninger om import af formatet %1$s."
 
-#: src/importer.C:84
+#: src/importer.C:89
 msgid "imported."
 msgstr "importeret."
 
-#: src/insets/insetbase.C:265
+#: src/insets/insetbase.C:264
 msgid "Opened inset"
 msgstr "Indstik åbnet"
 
@@ -14625,7 +14631,7 @@ msgstr "thøjde%"
 msgid "pheight%"
 msgstr "shøjde%"
 
-#: src/lyx_cb.C:112
+#: src/lyx_cb.C:113
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -14636,23 +14642,23 @@ msgstr ""
 "\n"
 "Vil du omdøbe dokumentet og prøve igen?"
 
-#: src/lyx_cb.C:114
+#: src/lyx_cb.C:115
 msgid "Rename and save?"
 msgstr "Omdøb og gem?"
 
-#: src/lyx_cb.C:115
+#: src/lyx_cb.C:116
 msgid "&Rename"
 msgstr "&Omdøb"
 
-#: src/lyx_cb.C:131
+#: src/lyx_cb.C:132
 msgid "Choose a filename to save document as"
 msgstr "Vælg filnavnet, som dokumentet skal gemmes under"
 
-#: src/lyx_cb.C:135 src/lyxfunc.C:1712
+#: src/lyx_cb.C:136 src/lyxfunc.C:1712
 msgid "Templates|#T#t"
 msgstr "Skabeloner|#S#s"
 
-#: src/lyx_cb.C:165 src/lyxfunc.C:1866
+#: src/lyx_cb.C:166 src/lyxfunc.C:1870
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -14663,38 +14669,38 @@ msgstr ""
 "\n"
 "Vil du overskrive dette dokument?"
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:1868
+#: src/lyx_cb.C:168 src/lyxfunc.C:1872
 msgid "Over-write document?"
 msgstr "Overskriv dokument?"
 
-#: src/lyx_cb.C:214
+#: src/lyx_cb.C:215
 #, fuzzy, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Kunne ikke fjerne den midlertidige mappe %1$s"
 
-#: src/lyx_cb.C:216
+#: src/lyx_cb.C:217
 #, fuzzy
 msgid "Unable to remove temporary directory"
 msgstr "Kunne ikke fjerne midlertidig mappe"
 
-#: src/lyx_cb.C:248
+#: src/lyx_cb.C:249
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Autogemmer %1$s"
 
-#: src/lyx_cb.C:287
+#: src/lyx_cb.C:288
 msgid "Autosave failed!"
 msgstr "Automatisk gemning mislykkedes!"
 
-#: src/lyx_cb.C:313
+#: src/lyx_cb.C:314
 msgid "Autosaving current document..."
 msgstr "Gemmer automatisk aktuelle dokument..."
 
-#: src/lyx_cb.C:385
+#: src/lyx_cb.C:388
 msgid "Select file to insert"
 msgstr "Vælg fil som skal indsættes"
 
-#: src/lyx_cb.C:404
+#: src/lyx_cb.C:407
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -14705,11 +14711,11 @@ msgstr ""
 "%1$s\n"
 "på grund af fejl: %2$s"
 
-#: src/lyx_cb.C:406
+#: src/lyx_cb.C:409
 msgid "Could not read file"
 msgstr "Kunne ikke læse fil"
 
-#: src/lyx_cb.C:414
+#: src/lyx_cb.C:417
 #, c-format
 msgid ""
 "Could not open the specified document\n"
@@ -14720,23 +14726,23 @@ msgstr ""
 "%1$s\n"
 "på grund af fejlen: %2$s"
 
-#: src/lyx_cb.C:416 src/output.C:36
+#: src/lyx_cb.C:419 src/output.C:36
 msgid "Could not open file"
 msgstr "Kunne ikke åbne fil"
 
-#: src/lyx_cb.C:445
+#: src/lyx_cb.C:448
 msgid "Running configure..."
 msgstr "Kører \"configure\"..."
 
-#: src/lyx_cb.C:453
+#: src/lyx_cb.C:456
 msgid "Reloading configuration..."
 msgstr "Indlæser konfiguration igen..."
 
-#: src/lyx_cb.C:458
+#: src/lyx_cb.C:461
 msgid "System reconfigured"
 msgstr "Systemet blev genkonfigureret"
 
-#: src/lyx_cb.C:459
+#: src/lyx_cb.C:462
 #, fuzzy
 msgid ""
 "The system has been reconfigured.\n"
@@ -14775,15 +14781,15 @@ msgstr "Færdig!"
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Forkert kommandolinjetilvalg '%1$s'. Afslutter."
 
-#: src/lyx_main.C:408
+#: src/lyx_main.C:410
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/lyx_main.C:515
+#: src/lyx_main.C:517
 msgid "Could not create temporary directory"
 msgstr "Kunne ikke oprette midlertidig mappe"
 
-#: src/lyx_main.C:516
+#: src/lyx_main.C:518
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -14794,51 +14800,51 @@ msgstr ""
 "%1$s. Sørg for at denne\n"
 "sti eksisterer og at der kan skrives i den, og prøv igen."
 
-#: src/lyx_main.C:667
+#: src/lyx_main.C:669
 #, fuzzy
 msgid "Missing user LyX directory"
 msgstr "LyX: genkonfigurerer brugermappe"
 
-#: src/lyx_main.C:668
+#: src/lyx_main.C:670
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr ""
 
-#: src/lyx_main.C:673
+#: src/lyx_main.C:675
 #, fuzzy
 msgid "&Create directory"
 msgstr "Kan ikke læse denne mappe."
 
-#: src/lyx_main.C:674
+#: src/lyx_main.C:676
 #, fuzzy
 msgid "&Exit LyX"
 msgstr "Om LyX"
 
-#: src/lyx_main.C:675
+#: src/lyx_main.C:677
 msgid "No user LyX directory. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:679
+#: src/lyx_main.C:681
 #, fuzzy, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Opretter mappen %1$s og kører \"configure\"..."
 
-#: src/lyx_main.C:685
+#: src/lyx_main.C:687
 msgid "Failed to create directory. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:834
+#: src/lyx_main.C:836
 msgid "List of supported debug flags:"
 msgstr "Liste over understøttede aflusningsflag:"
 
-#: src/lyx_main.C:838
+#: src/lyx_main.C:840
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Sætter fejlretnings-niveau til %1$s"
 
-#: src/lyx_main.C:849
+#: src/lyx_main.C:851
 #, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -14877,27 +14883,27 @@ msgstr ""
 "\t-version        opsummér versions- og oversættelsesoplysninger\n"
 "Se LyX's manualside for flere detaljer."
 
-#: src/lyx_main.C:885
+#: src/lyx_main.C:887
 msgid "Missing directory for -sysdir switch"
 msgstr "Manglende mappe for tilvalget '-sysdir'"
 
-#: src/lyx_main.C:895
+#: src/lyx_main.C:897
 msgid "Missing directory for -userdir switch"
 msgstr "Manglende mappe for tilvalget '-userdir'"
 
-#: src/lyx_main.C:905
+#: src/lyx_main.C:907
 msgid "Missing command string after --execute switch"
 msgstr "Manglende kommandostreng efter tilvalget '-execute'"
 
-#: src/lyx_main.C:915
+#: src/lyx_main.C:917
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Manglende filtype [f.eks. latex, ps...] efter tilvalget '-export'"
 
-#: src/lyx_main.C:927
+#: src/lyx_main.C:929
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Manglende filtype [f.eks. latex, ps...] efter tilvalget '-import'"
 
-#: src/lyx_main.C:932
+#: src/lyx_main.C:934
 msgid "Missing filename for --import"
 msgstr "Manglende filnavn for '-import'"
 
@@ -15059,7 +15065,7 @@ msgstr "Opbyg"
 msgid "ChkTeX"
 msgstr "ChkTeX"
 
-#: src/lyxfunc.C:1020 src/text3.C:1143
+#: src/lyxfunc.C:1020 src/text3.C:1154
 msgid "Missing argument"
 msgstr "Mangler parameter"
 
@@ -15105,31 +15111,31 @@ msgstr "Klasseskift"
 msgid "Select template file"
 msgstr "Vælg skabelonfil"
 
-#: src/lyxfunc.C:1745
+#: src/lyxfunc.C:1747
 msgid "Select document to open"
 msgstr "Vælg dokument, som skal åbnes"
 
-#: src/lyxfunc.C:1786
+#: src/lyxfunc.C:1790
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Åbner dokument %1$s..."
 
-#: src/lyxfunc.C:1790
+#: src/lyxfunc.C:1794
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokumentet %1$s blev åbnet."
 
-#: src/lyxfunc.C:1792
+#: src/lyxfunc.C:1796
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Kunne ikke åbne dokumentet %1$s"
 
-#: src/lyxfunc.C:1817
+#: src/lyxfunc.C:1821
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Vælg %1$s-fil at importere"
 
-#: src/lyxfunc.C:1927
+#: src/lyxfunc.C:1931
 msgid "Welcome to LyX!"
 msgstr "Velkommen til LyX!"
 
@@ -15656,7 +15662,7 @@ msgstr "Gendan den gemte udgave af dokumentet?"
 msgid " Macro: %1$s: "
 msgstr " Makro: %1$s: "
 
-#: src/mathed/math_amsarrayinset.C:109 src/mathed/math_hullinset.C:1198
+#: src/mathed/math_amsarrayinset.C:109 src/mathed/math_hullinset.C:1199
 #: src/mathed/math_splitinset.C:74 src/mathed/math_substackinset.C:69
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -15690,38 +15696,38 @@ msgstr ""
 msgid "Unknown tabular feature '%1$s'"
 msgstr ""
 
-#: src/mathed/math_hullinset.C:1029 src/mathed/math_hullinset.C:1038
+#: src/mathed/math_hullinset.C:1030 src/mathed/math_hullinset.C:1039
 msgid "No number"
 msgstr "Uden nummer"
 
-#: src/mathed/math_hullinset.C:1029 src/mathed/math_hullinset.C:1038
+#: src/mathed/math_hullinset.C:1030 src/mathed/math_hullinset.C:1039
 msgid "Number"
 msgstr "Nummer"
 
-#: src/mathed/math_hullinset.C:1171
+#: src/mathed/math_hullinset.C:1172
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_hullinset.C:1181
+#: src/mathed/math_hullinset.C:1182
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_hullinset.C:1191
+#: src/mathed/math_hullinset.C:1192
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_hullinset.C:1297 src/text3.C:177
+#: src/mathed/math_hullinset.C:1298 src/text3.C:177
 msgid "Math editor mode"
 msgstr "Matematikredigering"
 
-#: src/mathed/math_nestinset.C:807
+#: src/mathed/math_nestinset.C:808
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/math_nestinset.C:810
+#: src/mathed/math_nestinset.C:811
 #, fuzzy
 msgid "entered math text mode (textrm)"
 msgstr "Normal teksttilstand\t\\textrm"
@@ -15796,42 +15802,42 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Ukendt indstik"
 
-#: src/text.C:181
+#: src/text.C:182
 #, fuzzy
 msgid "Unknown layout"
 msgstr "Ukendt funktion"
 
-#: src/text.C:182
+#: src/text.C:183
 #, c-format
 msgid ""
 "Layout '%1$s' does not exist in textclass '%2$s'\n"
 "Trying to use the default instead.\n"
 msgstr ""
 
-#: src/text.C:213
+#: src/text.C:214
 msgid "Unknown Inset"
 msgstr "Ukendt indstik"
 
-#: src/text.C:330 src/text.C:344
+#: src/text.C:331 src/text.C:345
 #, fuzzy
 msgid "Change tracking error"
 msgstr "Skift sporing"
 
-#: src/text.C:331
+#: src/text.C:332
 #, c-format
 msgid "Unknown author index for insertion: %1$d\n"
 msgstr ""
 
-#: src/text.C:345
+#: src/text.C:346
 #, c-format
 msgid "Unknown author index for deletion: %1$d\n"
 msgstr ""
 
-#: src/text.C:353
+#: src/text.C:354
 msgid "Unknown token"
 msgstr "Ukendt symbol"
 
-#: src/text.C:1184
+#: src/text.C:1185
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
@@ -15839,59 +15845,59 @@ msgstr ""
 "Du kan ikke indsætte et mellemrum i begyndelsen af et afsnit. Læs venligst "
 "Selvstudium."
 
-#: src/text.C:1196
+#: src/text.C:1197
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Du kan ikke indtaste to mellemrum på denne måde. Læs venligst Selvstudium."
 
-#: src/text.C:2270
+#: src/text.C:2309
 msgid "Change: "
 msgstr "Ændring: "
 
-#: src/text.C:2274
+#: src/text.C:2313
 msgid " at "
 msgstr " på "
 
-#: src/text.C:2286
+#: src/text.C:2325
 #, c-format
 msgid "Font: %1$s"
 msgstr "Skrift: %1$s"
 
-#: src/text.C:2293
+#: src/text.C:2332
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr ", Dybde: %1$s"
 
-#: src/text.C:2299
+#: src/text.C:2338
 msgid ", Spacing: "
 msgstr ", mellemrum: "
 
-#: src/text.C:2311
+#: src/text.C:2350
 msgid "Other ("
 msgstr "Andet ("
 
-#: src/text.C:2320
+#: src/text.C:2359
 msgid ", Inset: "
 msgstr ", Indstik: "
 
-#: src/text.C:2321
+#: src/text.C:2360
 msgid ", Paragraph: "
 msgstr ", Afsnit: "
 
-#: src/text.C:2322
+#: src/text.C:2361
 #, fuzzy
 msgid ", Id: "
 msgstr ", Indstik: "
 
-#: src/text.C:2323
+#: src/text.C:2362
 msgid ", Position: "
 msgstr ", Placering: "
 
-#: src/text.C:2324
+#: src/text.C:2363
 msgid ", Boundary: "
 msgstr ""
 
-#: src/text2.C:530
+#: src/text2.C:533
 msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
@@ -15899,35 +15905,35 @@ msgstr ""
 "Ingen skriftændring er defineret. Brug Tegn under Layout-menuen til at "
 "definere skriftændring."
 
-#: src/text2.C:572
+#: src/text2.C:575
 msgid "Nothing to index!"
 msgstr "Intet at indeksere!"
 
-#: src/text2.C:574
+#: src/text2.C:577
 msgid "Cannot index more than one paragraph!"
 msgstr "Kan ikke indeksere flere end ét afsnit!"
 
-#: src/text3.C:655
+#: src/text3.C:662
 msgid "Unknown spacing argument: "
 msgstr "Ukendt linjeafstandsparameter: "
 
-#: src/text3.C:786
+#: src/text3.C:797
 msgid "LyX function 'layout' needs an argument."
 msgstr "LyX-funktionen 'layout' skal bruge et parameter."
 
-#: src/text3.C:804
+#: src/text3.C:815
 msgid "Layout "
 msgstr "Layout "
 
-#: src/text3.C:805
+#: src/text3.C:816
 msgid " not known"
 msgstr " ukendt"
 
-#: src/text3.C:1247 src/text3.C:1259
+#: src/text3.C:1258 src/text3.C:1270
 msgid "Character set"
 msgstr "Tegnsæt"
 
-#: src/text3.C:1391
+#: src/text3.C:1402
 msgid "Paragraph layout set"
 msgstr "Afsnitslayout ændret"
 
@@ -15960,6 +15966,9 @@ msgstr "&Lodret:"
 #, fuzzy
 msgid "protected"
 msgstr "&Beskyt:"
+
+#~ msgid " of "
+#~ msgstr " fra "
 
 #, fuzzy
 #~ msgid "Theorem:"

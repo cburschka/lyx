@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-08-10 10:50+0200\n"
+"POT-Creation-Date: 2006-09-13 15:17+0200\n"
 "PO-Revision-Date: 2004-01-02 23:55+0100\n"
 "Last-Translator:  Roman Maurer <roman@lugos.si>\n"
 "Language-Team: Slovenian <translation-team-sl@lists.sourceforge.net>\n"
@@ -2055,7 +2055,7 @@ msgstr "Ni moè tiskati"
 #: src/frontends/xforms/forms/form_tabular.fd:1638
 #: src/frontends/xforms/forms/form_tabular.fd:1656
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:60
-#: src/frontends/qt2/QDocument.C:166 src/text.C:2308
+#: src/frontends/qt2/QDocument.C:166 src/text.C:2347
 msgid "Double"
 msgstr "Dvojni"
 
@@ -2652,8 +2652,8 @@ msgstr "&V redu"
 #: src/frontends/qt2/ui/QAskForTextDialog.ui:139
 #: src/frontends/qt2/ui/QDocumentDialogBase.ui:214 src/buffer_funcs.C:91
 #: src/buffer_funcs.C:117 src/buffer_funcs.C:158 src/bufferlist.C:84
-#: src/bufferlist.C:183 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:662
-#: src/lyxfunc.C:824 src/lyxfunc.C:1869 src/lyxvc.C:168
+#: src/bufferlist.C:183 src/lyx_cb.C:116 src/lyx_cb.C:169 src/lyxfunc.C:662
+#: src/lyxfunc.C:824 src/lyxfunc.C:1873 src/lyxvc.C:168
 msgid "&Cancel"
 msgstr "&Preklièi"
 
@@ -2721,7 +2721,7 @@ msgstr "Dostopne zbirke podatkov BibTeX"
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:323
 #: src/frontends/qt2/ui/QCitationFindDialogBase.ui:149
 #: src/frontends/qt2/ui/QIndexDialogBase.ui:143
-#: src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/BufferView_pimpl.C:286
+#: src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/BufferView_pimpl.C:282
 #: src/frontends/gtk/GBC.h:27 src/frontends/qt2/Qt2BC.h:36
 #: src/frontends/xforms/xformsBC.h:29 src/lyxfunc.C:775
 msgid "Cancel"
@@ -3867,7 +3867,7 @@ msgid "Print as grey text"
 msgstr "Natisni vse strani"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:48
-#: src/frontends/qt2/QDocument.C:162 src/text.C:2302
+#: src/frontends/qt2/QDocument.C:162 src/text.C:2341
 msgid "Single"
 msgstr "Enojni"
 
@@ -6271,7 +6271,7 @@ msgid "Seriate"
 msgstr "Uredi v zaporedja"
 
 #: lib/layouts/apa.layout:346 lib/layouts/apa.layout:347
-#: src/buffer_funcs.C:450
+#: src/buffer_funcs.C:451
 msgid "(\\alph{enumii})"
 msgstr ""
 
@@ -10214,18 +10214,18 @@ msgid "Redo|R"
 msgstr "Ponovi|o"
 
 #: lib/ui/stdmenus.ui:84 lib/ui/stdtoolbars.ui:51
-#: src/mathed/math_nestinset.C:433 src/text3.C:737
+#: src/mathed/math_nestinset.C:434 src/text3.C:748
 msgid "Cut"
 msgstr "Izre¾i"
 
 #: lib/ui/stdmenus.ui:85 lib/ui/stdtoolbars.ui:52
-#: src/mathed/math_nestinset.C:441 src/text3.C:742
+#: src/mathed/math_nestinset.C:442 src/text3.C:753
 msgid "Copy"
 msgstr "Prepi¹i"
 
 #: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:644
-#: src/mathed/math_gridinset.C:1207 src/mathed/math_nestinset.C:417
-#: src/text3.C:724
+#: src/mathed/math_gridinset.C:1207 src/mathed/math_nestinset.C:418
+#: src/text3.C:735
 msgid "Paste"
 msgstr "Prilepi"
 
@@ -10554,11 +10554,11 @@ msgstr "®elite shraniti spis?"
 msgid "Print document"
 msgstr "Uvozi spis"
 
-#: lib/ui/stdtoolbars.ui:49 src/BufferView_pimpl.C:1126
+#: lib/ui/stdtoolbars.ui:49 src/BufferView_pimpl.C:1123
 msgid "Undo"
 msgstr "Razveljavi"
 
-#: lib/ui/stdtoolbars.ui:50 src/BufferView_pimpl.C:1137
+#: lib/ui/stdtoolbars.ui:50 src/BufferView_pimpl.C:1134
 msgid "Redo"
 msgstr "Ponovi"
 
@@ -10855,12 +10855,12 @@ msgstr "Okolje Cases|C"
 msgid "minibuffer"
 msgstr ""
 
-#: src/BufferView.C:242
+#: src/BufferView.C:233
 #, c-format
 msgid "%1$s Errors (%2$s)"
 msgstr ""
 
-#: src/BufferView_pimpl.C:256
+#: src/BufferView_pimpl.C:252
 #, c-format
 msgid ""
 "The document %1$s is already loaded.\n"
@@ -10868,22 +10868,22 @@ msgid ""
 "Do you want to revert to the saved version?"
 msgstr ""
 
-#: src/BufferView_pimpl.C:259 src/lyxfunc.C:823
+#: src/BufferView_pimpl.C:255 src/lyxfunc.C:823
 #, fuzzy
 msgid "Revert to saved document?"
 msgstr "Vrni se k shranjenemu"
 
-#: src/BufferView_pimpl.C:260 src/lyxfunc.C:824 src/lyxvc.C:168
+#: src/BufferView_pimpl.C:256 src/lyxfunc.C:824 src/lyxvc.C:168
 #, fuzzy
 msgid "&Revert"
 msgstr "Obnovi|O"
 
-#: src/BufferView_pimpl.C:260
+#: src/BufferView_pimpl.C:256
 #, fuzzy
 msgid "&Switch to document"
 msgstr "Zamenjaj s prej¹njim spisom"
 
-#: src/BufferView_pimpl.C:282
+#: src/BufferView_pimpl.C:278
 #, c-format
 msgid ""
 "The document %1$s does not yet exist.\n"
@@ -10891,129 +10891,129 @@ msgid ""
 "Do you want to create a new document?"
 msgstr ""
 
-#: src/BufferView_pimpl.C:285
+#: src/BufferView_pimpl.C:281
 #, fuzzy
 msgid "Create new document?"
 msgstr "®elite ustvariti nov spis s tem imenom?"
 
-#: src/BufferView_pimpl.C:286
+#: src/BufferView_pimpl.C:282
 #, fuzzy
 msgid "&Create"
 msgstr "primerjano"
 
-#: src/BufferView_pimpl.C:295
+#: src/BufferView_pimpl.C:293
 #, fuzzy
 msgid "Parse"
 msgstr "Prilepi"
 
-#: src/BufferView_pimpl.C:414
+#: src/BufferView_pimpl.C:412
 msgid "Formatting document..."
 msgstr "Urejanje spisa..."
 
-#: src/BufferView_pimpl.C:771
+#: src/BufferView_pimpl.C:769
 #, c-format
 msgid "Saved bookmark %1$d"
 msgstr "Shranjen zaznamek %1$d"
 
-#: src/BufferView_pimpl.C:804
+#: src/BufferView_pimpl.C:802
 #, c-format
 msgid "Moved to bookmark %1$d"
 msgstr "Premaknjen v zaznamek %1$d"
 
-#: src/BufferView_pimpl.C:864
+#: src/BufferView_pimpl.C:862
 msgid "Select LyX document to insert"
 msgstr "Izberite spis LyXa za vstavitev"
 
-#: src/BufferView_pimpl.C:866 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView_pimpl.C:864 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:65
 #: src/frontends/controllers/ControlExternal.C:160
 #: src/frontends/controllers/ControlGraphics.C:94
-#: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:133
-#: src/lyxfunc.C:1710 src/lyxfunc.C:1747 src/lyxfunc.C:1822
+#: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:134
+#: src/lyxfunc.C:1710 src/lyxfunc.C:1749 src/lyxfunc.C:1826
 msgid "Documents|#o#O"
 msgstr "Spisi|#s#S"
 
-#: src/BufferView_pimpl.C:868 src/lyxfunc.C:1749 src/lyxfunc.C:1824
+#: src/BufferView_pimpl.C:866 src/lyxfunc.C:1751 src/lyxfunc.C:1828
 msgid "Examples|#E#e"
 msgstr "Zgledi|#Z#z"
 
-#: src/BufferView_pimpl.C:873 src/lyx_cb.C:141 src/lyxfunc.C:1717
-#: src/lyxfunc.C:1754
+#: src/BufferView_pimpl.C:871 src/lyx_cb.C:142 src/lyxfunc.C:1717
+#: src/lyxfunc.C:1756
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "*.lyx| Dokumenti za LyX (*.lyx)"
 
-#: src/BufferView_pimpl.C:883 src/lyxfunc.C:1764 src/lyxfunc.C:1842
-#: src/lyxfunc.C:1856 src/lyxfunc.C:1872
+#: src/BufferView_pimpl.C:881 src/lyxfunc.C:1766 src/lyxfunc.C:1846
+#: src/lyxfunc.C:1860 src/lyxfunc.C:1876
 msgid "Canceled."
 msgstr "Preklicano."
 
-#: src/BufferView_pimpl.C:893
+#: src/BufferView_pimpl.C:891
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Vstavlja se spis %1$s..."
 
-#: src/BufferView_pimpl.C:901
+#: src/BufferView_pimpl.C:899
 #, fuzzy, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument izvo¾en kot "
 
-#: src/BufferView_pimpl.C:903
+#: src/BufferView_pimpl.C:901
 #, fuzzy, c-format
 msgid "Could not insert document %1$s"
 msgstr "Spisa ni moè vstaviti"
 
-#: src/BufferView_pimpl.C:906
+#: src/BufferView_pimpl.C:904
 #, fuzzy
 msgid "Document insertion"
 msgstr "Spisi"
 
-#: src/BufferView_pimpl.C:1129
+#: src/BufferView_pimpl.C:1126
 #, fuzzy
 msgid "No further undo information"
 msgstr "Ni nadaljnjih razveljavitvenih podatkov"
 
-#: src/BufferView_pimpl.C:1140
+#: src/BufferView_pimpl.C:1137
 msgid "No further redo information"
 msgstr "Ni nadaljnjih ponovitvenih podatkov"
 
-#: src/BufferView_pimpl.C:1270
+#: src/BufferView_pimpl.C:1263
 msgid "Mark off"
 msgstr "Znak izkljuèen"
 
-#: src/BufferView_pimpl.C:1277
+#: src/BufferView_pimpl.C:1270
 msgid "Mark on"
 msgstr "Znak vkljuèen"
 
-#: src/BufferView_pimpl.C:1284
+#: src/BufferView_pimpl.C:1277
 msgid "Mark removed"
 msgstr "Znak odstranjen"
 
-#: src/BufferView_pimpl.C:1287
+#: src/BufferView_pimpl.C:1280
 msgid "Mark set"
 msgstr "Znak postavljen"
 
-#: src/BufferView_pimpl.C:1333
+#: src/BufferView_pimpl.C:1326
 #, fuzzy, c-format
 msgid "%1$d words in selection."
 msgstr "%1$d words checked."
 
-#: src/BufferView_pimpl.C:1336
+#: src/BufferView_pimpl.C:1329
 #, fuzzy, c-format
 msgid "%1$d words in document."
 msgstr "%1$d words checked."
 
-#: src/BufferView_pimpl.C:1341
+#: src/BufferView_pimpl.C:1334
 #, fuzzy
 msgid "One word in selection."
 msgstr "Zaznana ena napaka"
 
-#: src/BufferView_pimpl.C:1343
+#: src/BufferView_pimpl.C:1336
 #, fuzzy
 msgid "One word in document."
 msgstr "Vstavlja se spis "
 
-#: src/BufferView_pimpl.C:1346
+#: src/BufferView_pimpl.C:1339
 #, fuzzy
 msgid "Count words"
 msgstr "Trenutna beseda"
@@ -11363,7 +11363,7 @@ msgstr "v izbrani razred spisa"
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 
-#: src/buffer.C:443 src/text.C:354
+#: src/buffer.C:443 src/text.C:355
 #, fuzzy, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Neznana akcija"
@@ -11458,15 +11458,15 @@ msgid ""
 "Please check if the directory exists and is writeable."
 msgstr ""
 
-#: src/buffer.C:1133
+#: src/buffer.C:1134
 msgid "Running chktex..."
 msgstr "Izvaja se chktex..."
 
-#: src/buffer.C:1146
+#: src/buffer.C:1147
 msgid "chktex failure"
 msgstr ""
 
-#: src/buffer.C:1147
+#: src/buffer.C:1148
 #, fuzzy
 msgid "Could not run chktex successfully."
 msgstr "Chktex uspe¹no zagnan"
@@ -11555,19 +11555,19 @@ msgstr ""
 msgid "Could not read template"
 msgstr "Napaka! Zaèasnega imenika ni moè ustvariti:"
 
-#: src/buffer_funcs.C:447
+#: src/buffer_funcs.C:448
 msgid "\\arabic{enumi}."
 msgstr ""
 
-#: src/buffer_funcs.C:453
+#: src/buffer_funcs.C:454
 msgid "\\roman{enumiii}."
 msgstr ""
 
-#: src/buffer_funcs.C:456
+#: src/buffer_funcs.C:457
 msgid "\\Alph{enumiv}."
 msgstr ""
 
-#: src/buffer_funcs.C:492
+#: src/buffer_funcs.C:493
 #, c-format
 msgid "%1$s #:"
 msgstr "%1$s #:"
@@ -11620,7 +11620,7 @@ msgstr "Nastavitev videza spisa"
 msgid "LyX will not be able to produce output."
 msgstr ""
 
-#: src/bufferview_funcs.C:297
+#: src/bufferview_funcs.C:299
 #, fuzzy
 msgid "No more insets"
 msgstr "Ni veè opomb"
@@ -11825,7 +11825,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Poglej datoteko"
 
-#: src/exporter.C:82 src/lyx_cb.C:168 src/lyxfunc.C:1869
+#: src/exporter.C:82 src/lyx_cb.C:169 src/lyxfunc.C:1873
 #, fuzzy
 msgid "&Over-write"
 msgstr "&pisalni stroj:"
@@ -11984,11 +11984,6 @@ msgstr ""
 msgid "LyX Version "
 msgstr "Razlièica LyXa "
 
-#: src/frontends/controllers/ControlAboutlyx.C:88
-#, fuzzy
-msgid " of "
-msgstr " za "
-
 #: src/frontends/controllers/ControlAboutlyx.C:91
 #, fuzzy
 msgid "Library directory: "
@@ -12133,40 +12128,40 @@ msgstr "Izberite spis za vstavitev"
 msgid "LaTeX/LyX Documents (*.tex *.lyx)"
 msgstr "*.lyx| Dokumenti za LyX (*.lyx)"
 
-#: src/frontends/controllers/ControlLog.C:74
+#: src/frontends/controllers/ControlLog.C:78
 msgid "LaTeX Log"
 msgstr "Dnevnik LaTeXa"
 
-#: src/frontends/controllers/ControlLog.C:77
+#: src/frontends/controllers/ControlLog.C:81
 #, fuzzy
 msgid "Literate Programming Build Log"
 msgstr "Nobenih odkritih opozoril."
 
-#: src/frontends/controllers/ControlLog.C:80
+#: src/frontends/controllers/ControlLog.C:84
 msgid "lyx2lyx Error Log"
 msgstr ""
 
-#: src/frontends/controllers/ControlLog.C:83
+#: src/frontends/controllers/ControlLog.C:87
 #, fuzzy
 msgid "Version Control Log"
 msgstr "Nadzor razlièic|r"
 
-#: src/frontends/controllers/ControlLog.C:106
+#: src/frontends/controllers/ControlLog.C:110
 #, fuzzy
 msgid "No LaTeX log file found."
 msgstr "Nobenih odkritih opozoril."
 
-#: src/frontends/controllers/ControlLog.C:109
+#: src/frontends/controllers/ControlLog.C:113
 #, fuzzy
 msgid "No literate programming build log file found."
 msgstr "Nobenih odkritih opozoril."
 
-#: src/frontends/controllers/ControlLog.C:112
+#: src/frontends/controllers/ControlLog.C:116
 #, fuzzy
 msgid "No lyx2lyx error log file found."
 msgstr "Nobenih odkritih opozoril."
 
-#: src/frontends/controllers/ControlLog.C:115
+#: src/frontends/controllers/ControlLog.C:119
 #, fuzzy
 msgid "No version control log file found."
 msgstr "Nobenih odkritih opozoril."
@@ -12232,7 +12227,7 @@ msgstr ""
 "Èrkovalnika ni bilo moè zagnati.\n"
 "Morda je napaèno prikrojen."
 
-#: src/frontends/controllers/ControlSpellchecker.C:265
+#: src/frontends/controllers/ControlSpellchecker.C:267
 #, fuzzy
 msgid ""
 "The spellchecker has died for some reason.\n"
@@ -12241,27 +12236,27 @@ msgstr ""
 "Èrkovalnik je iz neznanega razloga umrl.\n"
 "Morda je bil pobit."
 
-#: src/frontends/controllers/ControlSpellchecker.C:268
+#: src/frontends/controllers/ControlSpellchecker.C:270
 #, fuzzy
 msgid "The spellchecker has failed.\n"
 msgstr "Èrkovalniku je spodletelo."
 
-#: src/frontends/controllers/ControlSpellchecker.C:273
+#: src/frontends/controllers/ControlSpellchecker.C:275
 #, fuzzy
 msgid "The spellchecker has failed"
 msgstr "Èrkovalniku je spodletelo."
 
-#: src/frontends/controllers/ControlSpellchecker.C:287
+#: src/frontends/controllers/ControlSpellchecker.C:289
 #, fuzzy, c-format
 msgid "%1$d words checked."
 msgstr "%1$d words checked."
 
-#: src/frontends/controllers/ControlSpellchecker.C:289
+#: src/frontends/controllers/ControlSpellchecker.C:291
 #, fuzzy
 msgid "One word checked."
 msgstr "Zaznana ena napaka"
 
-#: src/frontends/controllers/ControlSpellchecker.C:292
+#: src/frontends/controllers/ControlSpellchecker.C:294
 #, fuzzy
 msgid "Spelling check completed"
 msgstr "Èrkovanje konèano!"
@@ -12415,6 +12410,16 @@ msgstr "Uporabi vkljuèitev|#U"
 #, fuzzy
 msgid "User files|#U#u"
 msgstr "Uporabi vkljuèitev|#U"
+
+#: src/frontends/controllers/tex_helpers.C:61
+#, fuzzy
+msgid "Could not update TeX information"
+msgstr "Ni nadaljnjih ponovitvenih podatkov"
+
+#: src/frontends/controllers/tex_helpers.C:62
+#, fuzzy, c-format
+msgid "The script `%s' failed."
+msgstr "Èrkovalniku je spodletelo."
 
 #: src/frontends/gtk/Dialogs.C:265 src/frontends/qt2/Dialogs.C:232
 #: src/frontends/xforms/Dialogs.C:246
@@ -12745,7 +12750,7 @@ msgstr ""
 msgid "No synonyms found"
 msgstr "Nobenih odkritih opozoril."
 
-#: src/frontends/gtk/GToc.C:122 src/frontends/xforms/FormErrorList.C:83
+#: src/frontends/gtk/GToc.C:122 src/frontends/xforms/FormErrorList.C:84
 #: src/frontends/xforms/FormToc.C:109 src/frontends/xforms/FormToc.C:127
 #, fuzzy
 msgid "*** No Lists ***"
@@ -12916,7 +12921,7 @@ msgstr "GlavaProsojnice"
 msgid "fancy"
 msgstr ""
 
-#: src/frontends/qt2/QDocument.C:164 src/text.C:2305
+#: src/frontends/qt2/QDocument.C:164 src/text.C:2344
 #, fuzzy
 msgid "OneHalf"
 msgstr "Polovièni"
@@ -14566,26 +14571,26 @@ msgstr "Datoteka ¾e obstaja:"
 msgid "Cannot read from this file."
 msgstr "Ni moè zapisati datoteke"
 
-#: src/importer.C:44
+#: src/importer.C:45
 #, fuzzy, c-format
 msgid "Importing %1$s..."
 msgstr "Uvoz%m"
 
-#: src/importer.C:62
+#: src/importer.C:63
 #, fuzzy
 msgid "Couldn't import file"
 msgstr "Datoteke ni moè pretvoriti"
 
-#: src/importer.C:63
+#: src/importer.C:64
 #, fuzzy, c-format
 msgid "No information for importing the format %1$s."
 msgstr "Ni podatkov za pretvarjanje iz "
 
-#: src/importer.C:84
+#: src/importer.C:89
 msgid "imported."
 msgstr "uvo¾ena."
 
-#: src/insets/insetbase.C:265
+#: src/insets/insetbase.C:264
 msgid "Opened inset"
 msgstr "Odprt vstavek"
 
@@ -15076,7 +15081,7 @@ msgstr "Vi¹ina"
 msgid "pheight%"
 msgstr "Vi¹ina"
 
-#: src/lyx_cb.C:112
+#: src/lyx_cb.C:113
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -15084,24 +15089,24 @@ msgid ""
 "Do you want to rename the document and try again?"
 msgstr ""
 
-#: src/lyx_cb.C:114
+#: src/lyx_cb.C:115
 msgid "Rename and save?"
 msgstr ""
 
-#: src/lyx_cb.C:115
+#: src/lyx_cb.C:116
 #, fuzzy
 msgid "&Rename"
 msgstr "&Odstrani"
 
-#: src/lyx_cb.C:131
+#: src/lyx_cb.C:132
 msgid "Choose a filename to save document as"
 msgstr "Vnesite ime datoteke, pod katerim naj se shrani spis"
 
-#: src/lyx_cb.C:135 src/lyxfunc.C:1712
+#: src/lyx_cb.C:136 src/lyxfunc.C:1712
 msgid "Templates|#T#t"
 msgstr "Vzorci|#V#v"
 
-#: src/lyx_cb.C:165 src/lyxfunc.C:1866
+#: src/lyx_cb.C:166 src/lyxfunc.C:1870
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -15109,41 +15114,41 @@ msgid ""
 "Do you want to over-write that document?"
 msgstr ""
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:1868
+#: src/lyx_cb.C:168 src/lyxfunc.C:1872
 #, fuzzy
 msgid "Over-write document?"
 msgstr "®elite shraniti spis?"
 
-#: src/lyx_cb.C:214
+#: src/lyx_cb.C:215
 #, fuzzy, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Napaka! Zaèasnega imenika ni moè ustvariti:"
 
-#: src/lyx_cb.C:216
+#: src/lyx_cb.C:217
 #, fuzzy
 msgid "Unable to remove temporary directory"
 msgstr "Napaka! Zaèasnega imenika ni moè ustvariti:"
 
-#: src/lyx_cb.C:248
+#: src/lyx_cb.C:249
 #, fuzzy, c-format
 msgid "Auto-saving %1$s"
 msgstr "Sámoshranjevanje"
 
-#: src/lyx_cb.C:287
+#: src/lyx_cb.C:288
 #, fuzzy
 msgid "Autosave failed!"
 msgstr "Sámoshranjevanje spodletelo!"
 
-#: src/lyx_cb.C:313
+#: src/lyx_cb.C:314
 msgid "Autosaving current document..."
 msgstr "Trenutni spis se samodejno shranjuje..."
 
-#: src/lyx_cb.C:385
+#: src/lyx_cb.C:388
 #, fuzzy
 msgid "Select file to insert"
 msgstr "Izberite spis za vstavitev"
 
-#: src/lyx_cb.C:404
+#: src/lyx_cb.C:407
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -15151,12 +15156,12 @@ msgid ""
 "due to the error: %2$s"
 msgstr ""
 
-#: src/lyx_cb.C:406
+#: src/lyx_cb.C:409
 #, fuzzy
 msgid "Could not read file"
 msgstr "Ni moè pognati z datoteko:"
 
-#: src/lyx_cb.C:414
+#: src/lyx_cb.C:417
 #, c-format
 msgid ""
 "Could not open the specified document\n"
@@ -15164,25 +15169,25 @@ msgid ""
 "due to the error: %2$s"
 msgstr ""
 
-#: src/lyx_cb.C:416 src/output.C:36
+#: src/lyx_cb.C:419 src/output.C:36
 #, fuzzy
 msgid "Could not open file"
 msgstr "Ni moè pogledati datoteke"
 
-#: src/lyx_cb.C:445
+#: src/lyx_cb.C:448
 msgid "Running configure..."
 msgstr "Zaganjanje prikrojitve..."
 
-#: src/lyx_cb.C:453
+#: src/lyx_cb.C:456
 msgid "Reloading configuration..."
 msgstr "Vnoviè nalagamo prikrojitev..."
 
-#: src/lyx_cb.C:458
+#: src/lyx_cb.C:461
 #, fuzzy
 msgid "System reconfigured"
 msgstr "Sistem se je vnoviè prikrojil."
 
-#: src/lyx_cb.C:459
+#: src/lyx_cb.C:462
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -15216,17 +15221,17 @@ msgstr "Opravljeno!"
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:408
+#: src/lyx_main.C:410
 #, fuzzy
 msgid "LyX: "
 msgstr "LyX: Url"
 
-#: src/lyx_main.C:515
+#: src/lyx_main.C:517
 #, fuzzy
 msgid "Could not create temporary directory"
 msgstr "Napaka! Zaèasnega imenika ni moè ustvariti:"
 
-#: src/lyx_main.C:516
+#: src/lyx_main.C:518
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -15234,52 +15239,52 @@ msgid ""
 "path exists and is writable and try again."
 msgstr ""
 
-#: src/lyx_main.C:667
+#: src/lyx_main.C:669
 #, fuzzy
 msgid "Missing user LyX directory"
 msgstr "Izvajamo brez osebnega imenika za LyX."
 
-#: src/lyx_main.C:668
+#: src/lyx_main.C:670
 #, fuzzy, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr "Nimate osebnega imenika za LyX."
 
-#: src/lyx_main.C:673
+#: src/lyx_main.C:675
 #, fuzzy
 msgid "&Create directory"
 msgstr "LyX: Ustvarja se imenik "
 
-#: src/lyx_main.C:674
+#: src/lyx_main.C:676
 #, fuzzy
 msgid "&Exit LyX"
 msgstr "Izhod"
 
-#: src/lyx_main.C:675
+#: src/lyx_main.C:677
 msgid "No user LyX directory. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:679
+#: src/lyx_main.C:681
 #, fuzzy, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Ustvarja se imenik "
 
-#: src/lyx_main.C:685
+#: src/lyx_main.C:687
 #, fuzzy
 msgid "Failed to create directory. Exiting."
 msgstr "Klic funkcije ,createDirectory` z napaènim imenom"
 
-#: src/lyx_main.C:834
+#: src/lyx_main.C:836
 msgid "List of supported debug flags:"
 msgstr "Seznam podprtih zastavic za razhro¹èevanje:"
 
-#: src/lyx_main.C:838
+#: src/lyx_main.C:840
 #, fuzzy, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Nastavljamo stopnjo razhro¹èevanja na "
 
-#: src/lyx_main.C:849
+#: src/lyx_main.C:851
 #, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -15318,32 +15323,32 @@ msgstr ""
 "\n"
 "Veè izbir najdete  v referenènem priroèniku za LyX (man lyx)."
 
-#: src/lyx_main.C:885
+#: src/lyx_main.C:887
 #, fuzzy
 msgid "Missing directory for -sysdir switch"
 msgstr "Manjka imenik za stikalo -sysdir!"
 
-#: src/lyx_main.C:895
+#: src/lyx_main.C:897
 #, fuzzy
 msgid "Missing directory for -userdir switch"
 msgstr "Manjka imenik za stikalo -sysdir!"
 
-#: src/lyx_main.C:905
+#: src/lyx_main.C:907
 #, fuzzy
 msgid "Missing command string after --execute switch"
 msgstr "Manjka ukazni niz za stikalom -x!"
 
-#: src/lyx_main.C:915
+#: src/lyx_main.C:917
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Manjkajoèa vrsta datoteke [npr. latex, ps...] po "
 
-#: src/lyx_main.C:927
+#: src/lyx_main.C:929
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Manjkajoèa vrsta datoteke [npr. latex, ps...] po "
 
-#: src/lyx_main.C:932
+#: src/lyx_main.C:934
 #, fuzzy
 msgid "Missing filename for --import"
 msgstr "Izberite datoteko LaTeX za uvoz"
@@ -15506,7 +15511,7 @@ msgstr "Zgradi program"
 msgid "ChkTeX"
 msgstr "Preveri TeX"
 
-#: src/lyxfunc.C:1020 src/text3.C:1143
+#: src/lyxfunc.C:1020 src/text3.C:1154
 msgid "Missing argument"
 msgstr "Manjkajoèi argument"
 
@@ -15550,31 +15555,31 @@ msgstr ""
 msgid "Select template file"
 msgstr "Izberite vzorèno datoteko"
 
-#: src/lyxfunc.C:1745
+#: src/lyxfunc.C:1747
 msgid "Select document to open"
 msgstr "Izberite spis za odprtje"
 
-#: src/lyxfunc.C:1786
+#: src/lyxfunc.C:1790
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Odpira se spis %1$s..."
 
-#: src/lyxfunc.C:1790
+#: src/lyxfunc.C:1794
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokument %1$s je odprt."
 
-#: src/lyxfunc.C:1792
+#: src/lyxfunc.C:1796
 #, fuzzy, c-format
 msgid "Could not open document %1$s"
 msgstr "Spisa ni moè odpreti"
 
-#: src/lyxfunc.C:1817
+#: src/lyxfunc.C:1821
 #, fuzzy, c-format
 msgid "Select %1$s file to import"
 msgstr "Izberite spis za vstavitev"
 
-#: src/lyxfunc.C:1927
+#: src/lyxfunc.C:1931
 msgid "Welcome to LyX!"
 msgstr "Dobrodo¹li v LyXu!"
 
@@ -16025,7 +16030,7 @@ msgstr "Izberi do konca spisa"
 msgid " Macro: %1$s: "
 msgstr " Makroukaz: %s: "
 
-#: src/mathed/math_amsarrayinset.C:109 src/mathed/math_hullinset.C:1198
+#: src/mathed/math_amsarrayinset.C:109 src/mathed/math_hullinset.C:1199
 #: src/mathed/math_splitinset.C:74 src/mathed/math_substackinset.C:69
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -16058,40 +16063,40 @@ msgstr ""
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Naèrt tabele"
 
-#: src/mathed/math_hullinset.C:1029 src/mathed/math_hullinset.C:1038
+#: src/mathed/math_hullinset.C:1030 src/mathed/math_hullinset.C:1039
 #, fuzzy
 msgid "No number"
 msgstr "msnumber"
 
-#: src/mathed/math_hullinset.C:1029 src/mathed/math_hullinset.C:1038
+#: src/mathed/math_hullinset.C:1030 src/mathed/math_hullinset.C:1039
 #, fuzzy
 msgid "Number"
 msgstr "©tevilèenje"
 
-#: src/mathed/math_hullinset.C:1171
+#: src/mathed/math_hullinset.C:1172
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_hullinset.C:1181
+#: src/mathed/math_hullinset.C:1182
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_hullinset.C:1191
+#: src/mathed/math_hullinset.C:1192
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_hullinset.C:1297 src/text3.C:177
+#: src/mathed/math_hullinset.C:1298 src/text3.C:177
 msgid "Math editor mode"
 msgstr "Naèin matematiènega urejanja"
 
-#: src/mathed/math_nestinset.C:807
+#: src/mathed/math_nestinset.C:808
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/math_nestinset.C:810
+#: src/mathed/math_nestinset.C:811
 msgid "entered math text mode (textrm)"
 msgstr ""
 
@@ -16167,44 +16172,44 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznana beseda:"
 
-#: src/text.C:181
+#: src/text.C:182
 #, fuzzy
 msgid "Unknown layout"
 msgstr "Neznana akcija"
 
-#: src/text.C:182
+#: src/text.C:183
 #, c-format
 msgid ""
 "Layout '%1$s' does not exist in textclass '%2$s'\n"
 "Trying to use the default instead.\n"
 msgstr ""
 
-#: src/text.C:213
+#: src/text.C:214
 #, fuzzy
 msgid "Unknown Inset"
 msgstr "Neznana akcija"
 
-#: src/text.C:330 src/text.C:344
+#: src/text.C:331 src/text.C:345
 #, fuzzy
 msgid "Change tracking error"
 msgstr "Jezik"
 
-#: src/text.C:331
+#: src/text.C:332
 #, c-format
 msgid "Unknown author index for insertion: %1$d\n"
 msgstr ""
 
-#: src/text.C:345
+#: src/text.C:346
 #, c-format
 msgid "Unknown author index for deletion: %1$d\n"
 msgstr ""
 
-#: src/text.C:353
+#: src/text.C:354
 #, fuzzy
 msgid "Unknown token"
 msgstr "Neznana akcija"
 
-#: src/text.C:1184
+#: src/text.C:1185
 #, fuzzy
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
@@ -16212,63 +16217,63 @@ msgid ""
 msgstr ""
 "Presledka na zaèetek odstavka ni moè vstaviti.  Prosimo, preberite Uèbenik."
 
-#: src/text.C:1196
+#: src/text.C:1197
 #, fuzzy
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "Tako ni mogoèe vstaviti dveh presledkov.  Prosimo, preberite Uèbenik."
 
-#: src/text.C:2270
+#: src/text.C:2309
 #, fuzzy
 msgid "Change: "
 msgstr "Strani:"
 
-#: src/text.C:2274
+#: src/text.C:2313
 #, fuzzy
 msgid " at "
 msgstr " za "
 
-#: src/text.C:2286
+#: src/text.C:2325
 #, fuzzy, c-format
 msgid "Font: %1$s"
 msgstr "Pisava: "
 
-#: src/text.C:2293
+#: src/text.C:2332
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr ", globina: "
 
-#: src/text.C:2299
+#: src/text.C:2338
 msgid ", Spacing: "
 msgstr ", Presledki: "
 
-#: src/text.C:2311
+#: src/text.C:2350
 msgid "Other ("
 msgstr "Drugi ("
 
-#: src/text.C:2320
+#: src/text.C:2359
 #, fuzzy
 msgid ", Inset: "
 msgstr ", globina: "
 
-#: src/text.C:2321
+#: src/text.C:2360
 #, fuzzy
 msgid ", Paragraph: "
 msgstr "Odstavek"
 
-#: src/text.C:2322
+#: src/text.C:2361
 msgid ", Id: "
 msgstr ""
 
-#: src/text.C:2323
+#: src/text.C:2362
 #, fuzzy
 msgid ", Position: "
 msgstr "Podmena"
 
-#: src/text.C:2324
+#: src/text.C:2363
 msgid ", Boundary: "
 msgstr ""
 
-#: src/text2.C:530
+#: src/text2.C:533
 msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
@@ -16276,39 +16281,39 @@ msgstr ""
 "Ni doloèena sprememba pisave. Uporabite Znak pod menujem Videz za doloèitev "
 "spremembe pisave."
 
-#: src/text2.C:572
+#: src/text2.C:575
 #, fuzzy
 msgid "Nothing to index!"
 msgstr "Nièesar ni moè storiti"
 
-#: src/text2.C:574
+#: src/text2.C:577
 #, fuzzy
 msgid "Cannot index more than one paragraph!"
 msgstr "Celica tabele ne more obsegati veè kot enega odstavka!"
 
-#: src/text3.C:655
+#: src/text3.C:662
 #, fuzzy
 msgid "Unknown spacing argument: "
 msgstr "Manjkajoèi argument"
 
-#: src/text3.C:786
+#: src/text3.C:797
 msgid "LyX function 'layout' needs an argument."
 msgstr ""
 
-#: src/text3.C:804
+#: src/text3.C:815
 msgid "Layout "
 msgstr "Videz "
 
-#: src/text3.C:805
+#: src/text3.C:816
 msgid " not known"
 msgstr " ni znan"
 
-#: src/text3.C:1247 src/text3.C:1259
+#: src/text3.C:1258 src/text3.C:1270
 #, fuzzy
 msgid "Character set"
 msgstr "Znakovni nabor:|#Z"
 
-#: src/text3.C:1391
+#: src/text3.C:1402
 msgid "Paragraph layout set"
 msgstr "Nastavljen videz odstavka"
 
@@ -16341,6 +16346,10 @@ msgstr "&Navpièno:"
 #, fuzzy
 msgid "protected"
 msgstr "Za¹èiten presledek|Z"
+
+#, fuzzy
+#~ msgid " of "
+#~ msgstr " za "
 
 #, fuzzy
 #~ msgid "Theorem:"
