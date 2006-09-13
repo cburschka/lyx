@@ -89,14 +89,10 @@ Menuset
 		Separator
 		Item "Find & Replace...|F" "dialog-show findreplace"
 		Separator
-		Item "Word in Small Capitals" "word-capitalize"
-		Item "Word in Uppercase" "word-upcase"
-		Item "Word in Lowercase" "word-lowcase"
-		Separator
 		Item "Move Paragraph Up|o" "paragraph-move-up"
 		Item "Move Paragraph Down|v" "paragraph-move-down"
 		Separator
-		Item "Text Style...|S" "dialog-show character"
+		Submenu "Text Style|S" "edit_textstyles"
 		Item "Paragraph Settings...|P" "layout-paragraph"
 		Separator
 # Mathed b0rkage means these don't work properly
@@ -134,6 +130,16 @@ Menuset
 
 	Menu "edit_pasterecent"
 		PasteRecent
+	End
+
+	Menu "edit_textstyles"
+		CharStyles
+		Separator
+		Item "Customized...|C" "dialog-show character"
+		Separator
+		Item "Capitalize" "word-capitalize"
+		Item "Uppercase" "word-upcase"
+		Item "Lowercase" "word-lowcase"
 	End
 
 # not much we can do to help here
@@ -253,7 +259,6 @@ Menuset
 # YUCK
 		Submenu "Note|N" "insert_note"
 		OptSubmenu "Branch|B" "insert_branches"
-		OptSubmenu "Character Style|y" "insert_charstyles"
 		Submenu "File|e" "insert_file"
 		Item "Box" "box-insert Frameless"
 		Separator
@@ -375,10 +380,6 @@ Menuset
 
 	Menu "insert_branches"
 		Branches
-	End
-
-	Menu "insert_charstyles"
-		CharStyles
 	End
 
 #
