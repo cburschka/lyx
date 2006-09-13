@@ -145,7 +145,7 @@ void QLPopupMenu::populate(Menu * menu)
 #else
 			docstring const binding(m->binding());
 			if (!binding.empty()) {
-				label += char_type('\t') + toqstr(binding);
+				label += '\t' + toqstr(binding);
 			}
 #endif
 
