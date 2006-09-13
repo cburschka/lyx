@@ -147,8 +147,7 @@ void QLayoutBox::selected(const QString & str)
 
 
 QLToolbar::QLToolbar(ToolbarBackend::Toolbar const & tbb, GuiView & owner)
-	: owner_(owner),
-	  QToolBar(qt_(tbb.gui_name), &owner)
+	: QToolBar(qt_(tbb.gui_name), &owner), owner_(owner)
 {
 	// give visual separation between adjacent toolbars
 	addSeparator();
