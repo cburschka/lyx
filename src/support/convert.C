@@ -53,16 +53,25 @@ string convert<string>(int i)
 	return lexical_cast<string>(i);
 }
 
+
 template<>
 docstring convert<docstring>(int i)
 {
 	return lyx::from_ascii(lexical_cast<string>(i));
 }
 
+
 template<>
 string convert<string>(unsigned int ui)
 {
 	return lexical_cast<string>(ui);
+}
+
+
+template<>
+docstring convert<docstring>(unsigned int ui)
+{
+	return lyx::from_ascii(lexical_cast<string>(ui));
 }
 
 
@@ -77,6 +86,13 @@ template<>
 string convert<string>(long l)
 {
 	return lexical_cast<string>(l);
+}
+
+
+template<>
+docstring convert<docstring>(long l)
+{
+	return lyx::from_ascii(lexical_cast<string>(l));
 }
 
 
