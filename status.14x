@@ -99,6 +99,9 @@ What's new
 - On pressing button 2 in a math inset, paste the inner LyX selection
   if it exists (bug 2779).
 
+- When inserting an inset (footnote etc.) over an existing selection,
+  don't copy the layout of the source paragraph to the inset (bug 2802).
+
 - Fix the disabling of some toolbar icons after closing a dialog (bug 2423).
 
 - Fix the editing of a document while Error List dialog is open (bug 2179).

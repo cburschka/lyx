@@ -268,8 +268,15 @@ bool doInsertInset(LCursor & cur, LyXText * text,
 	if (edit)
 		inset->edit(cur, true);
 
-	if (gotsel && pastesel)
+	if (gotsel && pastesel) {
 		cur.bv().owner()->dispatch(FuncRequest(LFUN_PASTE));
+		// reset first par to default
+		if (cur.lastpit() != 0 || cur.lastpos() != 0) {
+			LyXLayout_ptr const layout =
+				cur.buffer().params().getLyXTextClass().defaultLayout();
+			cur.text()->paragraphs().begin()->layout(layout);
+		}
+	}
 	return true;
 }
 
