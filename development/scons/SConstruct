@@ -914,6 +914,9 @@ if not fast_start or not os.path.isfile(boost_config_h) \
                 'Define if you want assertions to be enabled in the code'
             ),
         ],
+        types = [
+            ('wchar_t', 'HAVE_WCHAR_T', None),
+        ],
         config_post = '''
 
 #if defined(HAVE_OSTREAM) && defined(HAVE_LOCALE) && defined(HAVE_SSTREAM)
@@ -1058,7 +1061,8 @@ int count()
         ],
         types = [
             ('std::istreambuf_iterator<std::istream>', 'HAVE_DECL_ISTREAMBUF_ITERATOR',
-                '#include <streambuf>\n#include <istream>')
+                '#include <streambuf>\n#include <istream>'),
+            ('wchar_t', 'HAVE_WCHAR_T', None),
         ],
         libs = [
             ('gdi32', 'HAVE_LIBGDI32'),
