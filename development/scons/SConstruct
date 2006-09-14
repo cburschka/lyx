@@ -653,6 +653,7 @@ conf = Configure(env,
         'CheckCXXGlobalCstd' : utils.checkCXXGlobalCstd,
         'CheckLC_MESSAGES' : utils.checkLC_MESSAGES,
         'CheckIconvConst' : utils.checkIconvConst,
+        'CheckSizeOfWChar' : utils.checkSizeOfWChar,
     }
 )
 
@@ -981,6 +982,13 @@ if not fast_start or not os.path.isfile(boost_config_h) \
     # check arg types of select function
     (select_arg1, select_arg234, select_arg5) = conf.CheckSelectArgType()
 
+    # check the size of wchar_t
+    sizeof_wchar_t = conf.CheckSizeOfWChar()
+    # something wrong
+    if sizeof_wchar_t == 0:
+        print 'Error: Can not determine the size of wchar_t.'
+        Exit(1)
+
     #
     # create config.h
     result = utils.createConfigFile(conf,
@@ -1148,6 +1156,8 @@ int count()
                 "Define to the type of arg 2, 3, 4 for `select'."),
             ('#define SELECT_TYPE_ARG5 %s' % select_arg5,
                 "Define to the type of arg 5 for `select'."),
+            ('#define SIZEOF_WCHAR_T %d' % sizeof_wchar_t,
+                'Define to be the size of type wchar_t'),
         ],
         config_post = '''/************************************************************
 ** You should not need to change anything beyond this point */
@@ -1281,7 +1291,9 @@ int mkstemp(char*);
                 ),
             ],
             extra_items = [
-                ('#define HAVE_ICONV 1', 'Define if iconv or libiconv is found')
+                ('#define HAVE_ICONV 1', 'Define if iconv or libiconv is found'),
+                ('#define SIZEOF_WCHAR_T %d' % sizeof_wchar_t,
+                    'Define to be the size of type wchar_t'),
             ],
             config_post = '#endif'
         )

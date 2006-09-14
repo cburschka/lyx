@@ -255,6 +255,26 @@ int main() {
     return ret
 
 
+def checkSizeOfWChar(conf):
+    ''' check the size of wchar '''
+    check_sizeof_wchar = '''
+int i[ ( sizeof(wchar_t)==%d ? 1 : -1 ) ];
+int main()
+{
+    return 0;
+}
+'''
+    conf.Message('Check the size of wchar_t... ')
+    if conf.TryLink(check_sizeof_wchar % 2, '.cpp'):
+        ret = 2
+    elif conf.TryLink(check_sizeof_wchar % 4, '.cpp'):
+        ret = 4
+    else:
+        ret = 0
+    conf.Result(str(ret))
+    return ret
+
+
 def createConfigFile(conf, config_file,
     config_pre = '', config_post = '',
     headers = [], functions = [], types = [], libs = [],
