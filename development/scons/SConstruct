@@ -926,6 +926,20 @@ if not fast_start or not os.path.isfile(boost_config_h) \
             print "Warning: Can not locate specified spell checker:", spell_opt
             Exit(1)
 
+    # check for iconv function/lib
+    if conf.CheckLib('iconv'):
+        env['ICONV_LIB'] = 'iconv'
+        env['HAVE_ICONV'] = True
+    elif conf.CheckLib('libiconv'):
+        env['ICONV_LIB'] = 'libiconv'
+        env['HAVE_ICONV'] = True
+    elif conf.CheckFunc('iconv_open'):
+        env['ICONV_LIB'] = None
+        env['HAVE_ICONV'] = True
+    else:
+        env['ICONV_LIB'] = None
+        env['HAVE_ICONV'] = False
+
     # check arg types of select function
     (select_arg1, select_arg234, select_arg5) = conf.CheckSelectArgType()
 
@@ -1002,7 +1016,6 @@ int count()
         ],
         libs = [
             ('gdi32', 'HAVE_LIBGDI32'),
-            (('iconv', 'libiconv'), 'HAVE_ICONV', 'ICONV_LIB'),
             (('Aiksaurus', 'libAiksaurus'), 'HAVE_LIBAIKSAURUS', 'AIKSAURUS_LIB'),
         ],
         custom_tests = [
@@ -1025,6 +1038,10 @@ int count()
                 'Define if your <locale.h> file defines LC_MESSAGES.'
             ),
             (devel_version, 'DEVEL_VERSION', 'Whether or not a development version'),
+            (env['HAVE_ICONV'],
+                'HAVE_ICONV',
+                'Define to 1 if function iconv exists'
+            ),
             (env['nls'],
                 'ENABLE_NLS',
                 "Define to 1 if translation of program messages to the user's native anguage is requested.",
@@ -1191,7 +1208,6 @@ int mkstemp(char*);
                 ('uintmax_t', 'HAVE_STDINT_H_WITH_UINTMAX', '#include <stdint.h>'),
             ],
             libs = [
-                (('iconv', 'libiconv'), 'HAVE_ICONV', 'ICONV_LIB'),
                 ('c', 'HAVE_LIBC'),
             ],
             custom_tests = [
@@ -1213,6 +1229,10 @@ int mkstemp(char*);
                 (env.has_key('nls') and env['nls'],
                     'ENABLE_NLS',
                     "Define to 1 if translation of program messages to the user's native anguage is requested.",
+                ),
+                (env['HAVE_ICONV'],
+                    'HAVE_ICONV',
+                    'Define to 1 if function iconv exists',
                 ),
             ],
             config_post = '#endif'
@@ -1299,7 +1319,7 @@ libs = [
 ]
 
 for lib in libs:
-    if env[lib[0]]:
+    if env[lib[0]] and lib[1] is not None:
         system_libs.append(lib[1])
 
 #
