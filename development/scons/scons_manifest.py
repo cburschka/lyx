@@ -1650,6 +1650,7 @@ lib_images_math_files = Split('''
     heartsuit.xpm
     hookleftarrow.xpm
     hookrightarrow.xpm
+    hphantom.xpm
     hslash.xpm
     imath.xpm
     in.xpm
@@ -1797,6 +1798,7 @@ lib_images_math_files = Split('''
     parallel.xpm
     partial.xpm
     perp.xpm
+    phantom.xpm
     phi.xpm
     phi2.xpm
     pi.xpm
@@ -1943,6 +1945,7 @@ lib_images_math_files = Split('''
     vec.xpm
     vee.xpm
     veebar.xpm
+    vphantom.xpm
     wedge.xpm
     widehat.xpm
     widetilde.xpm

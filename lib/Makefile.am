@@ -405,6 +405,7 @@ dist_imagesmath_DATA = \
 	images/math/heartsuit.xpm \
 	images/math/hookleftarrow.xpm \
 	images/math/hookrightarrow.xpm \
+	images/math/hphantom.xpm \
 	images/math/hslash.xpm \
 	images/math/imath.xpm \
 	images/math/in.xpm \
@@ -552,6 +553,7 @@ dist_imagesmath_DATA = \
 	images/math/parallel.xpm \
 	images/math/partial.xpm \
 	images/math/perp.xpm \
+	images/math/phantom.xpm \
 	images/math/phi.xpm \
 	images/math/phi2.xpm \
 	images/math/pi.xpm \
@@ -698,6 +700,7 @@ dist_imagesmath_DATA = \
 	images/math/vec.xpm \
 	images/math/vee.xpm \
 	images/math/veebar.xpm \
+	images/math/vphantom.xpm \
 	images/math/wedge.xpm \
 	images/math/widehat.xpm \
 	images/math/widetilde.xpm \

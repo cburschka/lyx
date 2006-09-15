@@ -182,7 +182,8 @@ char const * latex_misc[] = {
 	"mathbb N", "mathbb Z", "mathbb Q",
 	"mathbb R", "mathbb C", "mathbb H",
 	"mathcal F", "mathcal L",
-	"mathcal H", "mathcal O", ""
+	"mathcal H", "mathcal O",
+	"phantom", "vphantom", "hphantom", ""
 };
 
 int const nr_latex_misc = sizeof(latex_misc) / sizeof(char const *);
