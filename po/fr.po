@@ -1825,9 +1825,8 @@ msgid "Index:|#I"
 msgstr "Index :|#I"
 
 #: src/frontends/xforms/forms/form_preferences.fd:3134
-#, fuzzy
 msgid "Use Windows Paths for LaTeX|#s"
-msgstr "Utiliser les chemins Cygwin|#C"
+msgstr "Utiliser les chemins Windows pour LaTeX|#W"
 
 #: src/frontends/xforms/forms/form_print.fd:44
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:45
@@ -2469,9 +2468,8 @@ msgid "Postscript &driver:"
 msgstr "&Pilote PostScript :"
 
 #: src/frontends/qt2/ui/LanguageModuleBase.ui:22
-#, fuzzy
 msgid "LanguageModuleBase"
-msgstr "Langue"
+msgstr "LanguageModuleBase"
 
 #: src/frontends/qt2/ui/LanguageModuleBase.ui:56
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:209
@@ -3960,22 +3958,19 @@ msgid "&Format:"
 msgstr "&Format :"
 
 #: src/frontends/qt2/ui/QPrefCygwinPathModule.ui:66
-#, fuzzy
 msgid "&Use Windows-style paths in LaTeX files"
-msgstr "&Chemins du type Cygwin"
+msgstr "&Chemins Windows dans les fichiers LaTeX"
 
 #: src/frontends/qt2/ui/QPrefCygwinPathModule.ui:74
 #: src/frontends/xforms/FormPreferences.C:2145
-#, fuzzy
 msgid ""
 "Select if LyX should output Windows-style paths rather than Posix-style "
 "paths to LaTeX files. Useful if you're using the native Windows MikTeX "
 "rather than the Cygwin teTeX."
 msgstr ""
-"Pour que LyX utilise des chemins du type Cygwin et non du type Windows. Ça "
-"sert si vous utilisez le teTeX de Cygwin au lieu du MikTeX spécifique à "
-"Windows. Notez cependant que vous devrez écrire des scripts shell pour "
-"chacun de vos convertisseurs."
+"Pour que LyX utilise des chemins du type Windows et non du type Posix pour "
+"les fichiers LaTeX. Ça sert si vous utilisez le MikTeX spécifique à Windows "
+"au lieu du teTeX de Cygwin."
 
 #: src/frontends/qt2/ui/QPrefDateModule.ui:56
 msgid "&Date format:"
@@ -4380,7 +4375,7 @@ msgstr "Utiliser l'&encodage d'entrée"
 
 #: src/frontends/qt2/ui/QPrefUIModule.ui:29
 msgid "QPrefUIModule"
-msgstr ""
+msgstr "QPrefUIModule"
 
 #: src/frontends/qt2/ui/QPrefUIModule.ui:63
 msgid "B&rowse..."
@@ -5481,9 +5476,8 @@ msgid "Biography"
 msgstr "Biographie"
 
 #: lib/layouts/IEEEtran.layout:421
-#, fuzzy
 msgid "BiographyNoPhoto"
-msgstr "Biographie"
+msgstr "BiographieSansPhoto"
 
 #: lib/layouts/IEEEtran.layout:439 lib/layouts/aa.layout:58
 #: lib/layouts/aa.layout:217 lib/layouts/aa.layout:228
@@ -5982,7 +5976,6 @@ msgid "Problem \\arabic{problem}."
 msgstr "Problème \\arabic{problem}."
 
 #: lib/layouts/amsart-seq.layout:217
-#, fuzzy
 msgid "Exercise \\arabic{exercise}."
 msgstr "Exercice \\arabic{exercise}."
 
@@ -7413,27 +7406,23 @@ msgstr "Mots-Clés :"
 
 #: lib/layouts/ijmpc.layout:95
 msgid "Classification Codes"
-msgstr ""
+msgstr "Codes de classification"
 
 #: lib/layouts/ijmpc.layout:164 lib/layouts/ijmpd.layout:161
-#, fuzzy
 msgid "Step"
-msgstr "État"
+msgstr "Étape"
 
 #: lib/layouts/ijmpc.layout:168 lib/layouts/ijmpd.layout:165
-#, fuzzy
 msgid "Step \\arabic{step}."
-msgstr "Note \\arabic{note}."
+msgstr "Étape \\arabic{step}."
 
 #: lib/layouts/ijmpc.layout:280 lib/layouts/ijmpd.layout:287
-#, fuzzy
 msgid "Prop"
-msgstr "Rogner"
+msgstr "Prop"
 
 #: lib/layouts/ijmpc.layout:284
-#, fuzzy
 msgid "Prop \\arabic{prop}."
-msgstr "Problème \\arabic{problem}."
+msgstr "Prop \\arabic{prop}."
 
 #: lib/layouts/ijmpc.layout:290 lib/layouts/ijmpd.layout:298
 #: lib/layouts/llncs.layout:395 lib/layouts/svjour.inc:458
@@ -7441,88 +7430,72 @@ msgid "Question"
 msgstr "Question"
 
 #: lib/layouts/ijmpc.layout:294
-#, fuzzy
 msgid "Question \\arabic{question}."
-msgstr "Définition \\arabic{definition}."
+msgstr "Question \\arabic{question}."
 
 #: lib/layouts/ijmpc.layout:310 lib/layouts/ijmpd.layout:320
-#, fuzzy
 msgid "Conjecture "
-msgstr "Conjecture"
+msgstr "Conjecture "
 
 #: lib/layouts/ijmpc.layout:317 lib/layouts/ijmpd.layout:327
-#, fuzzy
 msgid "Appendices Section"
-msgstr "Appendices"
+msgstr "Section d'appendices"
 
 #: lib/layouts/ijmpc.layout:327 lib/layouts/ijmpd.layout:337
-#, fuzzy
 msgid "--- Appendices ---"
-msgstr "Appendices"
+msgstr "--- Appendices ---"
 
 #: lib/layouts/ijmpc.layout:349 lib/layouts/ijmpd.layout:360
-#, fuzzy
 msgid "Appendix \\Alph{appendix}."
-msgstr "Appendice \\Alph{chapter}"
+msgstr "Appendice \\Alph{appendix}."
 
 #: lib/layouts/ijmpd.layout:150
-#, fuzzy
 msgid "Definition @Section@.\\arabic{definition}."
-msgstr "Définition \\arabic{definition}."
+msgstr "Définition @Section@.\\arabic{definition}."
 
 #: lib/layouts/ijmpd.layout:179
-#, fuzzy
 msgid "Example @Section@.\\arabic{example}."
-msgstr "Exemple @Section@.\\arabic{theorem}."
+msgstr "Exemple @Section@.\\arabic{example}."
 
 #: lib/layouts/ijmpd.layout:190
-#, fuzzy
 msgid "Remark @Section@.\\arabic{remark}."
-msgstr "Remarque @Section@.\\arabic{theorem}."
+msgstr "Remarque @Section@.\\arabic{remark}."
 
 #: lib/layouts/ijmpd.layout:201
-#, fuzzy
 msgid "Notation @Section@.\\arabic{notation}."
-msgstr "Notation @Section@.\\arabic{theorem}."
+msgstr "Notation @Section@.\\arabic{notation}."
 
 #: lib/layouts/ijmpd.layout:222 lib/layouts/amsmaths.inc:79
 msgid "Theorem @Section@.\\arabic{theorem}."
 msgstr "Théorème @Section@.\\arabic{theorem}."
 
 #: lib/layouts/ijmpd.layout:255
-#, fuzzy
 msgid "Corollary @Section@.\\arabic{corollary}."
-msgstr "Corollaire \\arabic{corollary}."
+msgstr "Corollaire @Section@.\\arabic{corollary}."
 
 #: lib/layouts/ijmpd.layout:269
-#, fuzzy
 msgid "Lemma @Section@.\\arabic{lemma}."
-msgstr "Lemme @Section@.\\arabic{theorem}."
+msgstr "Lemme @Section@.\\arabic{lemma}."
 
 #: lib/layouts/ijmpd.layout:280
-#, fuzzy
 msgid "Proposition @Section@.\\arabic{proposition}."
-msgstr "Proposition \\arabic{proposition}."
+msgstr "Proposition @Section@.\\arabic{proposition}."
 
 #: lib/layouts/ijmpd.layout:291
-#, fuzzy
 msgid "Prop @Section@.\\arabic{prop}."
-msgstr "Problème @Section@.\\arabic{theorem}."
+msgstr "Prop @Section@.\\arabic{prop}."
 
 #: lib/layouts/ijmpd.layout:302
-#, fuzzy
 msgid "Question @Section@.\\arabic{question}."
-msgstr "@Section@.\\arabic{subsection}"
+msgstr "Question @Section@.\\arabic{question}."
 
 #: lib/layouts/ijmpd.layout:313
-#, fuzzy
 msgid "Claim @Section@.\\arabic{claim}."
-msgstr "Affirmation @Section@.\\arabic{theorem}."
+msgstr "Affirmation @Section@.\\arabic{claim}."
 
 #: lib/layouts/ijmpd.layout:324
-#, fuzzy
 msgid "Conjecture @Section@.\\arabic{conjecture}."
-msgstr "Conjecture \\arabic{conjecture}."
+msgstr "Conjecture @Section@.\\arabic{conjecture}."
 
 #: lib/layouts/kluwer.layout:195
 msgid "AddressForOffprints"
@@ -8667,9 +8640,8 @@ msgid "Austrian"
 msgstr "Autrichien"
 
 #: lib/languages:6
-#, fuzzy
 msgid "Austrian (new spelling)"
-msgstr "Allemand (nouvelle orthographe)"
+msgstr "Autrichien (nouvelle orthographe)"
 
 #: lib/languages:7
 msgid "Bahasa"
@@ -9770,7 +9742,6 @@ msgid "Table|T"
 msgstr "Tableau|T"
 
 #: lib/ui/stdmenus.ui:98
-#, fuzzy
 msgid "Rows & Columns|C"
 msgstr "Lignes & Colonnes|L"
 
@@ -9985,7 +9956,7 @@ msgstr "Appendice|A"
 
 #: lib/ui/stdmenus.ui:383
 msgid "Compressed|o"
-msgstr ""
+msgstr "Comprimé|o"
 
 #: lib/ui/stdmenus.ui:384
 msgid "Settings...|S"
@@ -10260,9 +10231,8 @@ msgid "Insert { }"
 msgstr "Insérer des accolades"
 
 #: lib/ui/stdtoolbars.ui:137
-#, fuzzy
 msgid "Insert cases environment"
-msgstr "Environnement Cas|C"
+msgstr "Insérer un environnement cas"
 
 #: lib/ui/stdtoolbars.ui:144
 msgid "minibuffer"
@@ -10376,9 +10346,8 @@ msgid "Could not insert document %1$s"
 msgstr "Impossible d'insérer le document %1$s"
 
 #: src/BufferView_pimpl.C:904
-#, fuzzy
 msgid "Document insertion"
-msgstr "Paramètres du Document"
+msgstr "Insertion du document"
 
 #: src/BufferView_pimpl.C:1126
 msgid "No further undo information"
@@ -10831,9 +10800,8 @@ msgstr ""
 "corrompu."
 
 #: src/buffer.C:716
-#, fuzzy
 msgid "Backup failure"
-msgstr "échec de chktex"
+msgstr "Échec de la copie de sauvegarde"
 
 #: src/buffer.C:717
 #, c-format
@@ -10841,6 +10809,8 @@ msgid ""
 "LyX was not able to make a backup copy in %1$s.\n"
 "Please check if the directory exists and is writeable."
 msgstr ""
+"LyX n'a pas pu faire de copie de sauvegarde dans %1$s.\n"
+"Veuillez vérifier l'existence du répertoire et ses droits d'écriture."
 
 #: src/buffer.C:1134
 msgid "Running chktex..."
@@ -11040,14 +11010,14 @@ msgid "Cannot convert file"
 msgstr "Impossible de convertir le fichier"
 
 #: src/converter.C:318
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "No information for converting %1$s format files to %2$s.\n"
 "Define a convertor in the preferences."
 msgstr ""
 "Pas d'information pour convertir les fichiers\n"
 "du format %1$s vers le format %2$s.\n"
-"Essayez de définir un convertisseur dans les préférences."
+"Définissez un convertisseur dans les préférences."
 
 #: src/converter.C:395 src/format.C:312 src/format.C:372
 msgid "Executing command: "
@@ -11195,7 +11165,7 @@ msgstr "Messages des modèles/inserts externes"
 
 #: src/debug.C:66
 msgid "RowPainter profiling"
-msgstr ""
+msgstr "Profilage de RowPainter"
 
 #: src/exporter.C:77
 #, c-format
@@ -11255,23 +11225,23 @@ msgid "Document export cancelled."
 msgstr "Export du document annulé."
 
 #: src/exporter.C:247
-#, fuzzy, c-format
+#, c-format
 msgid "Document exported as %1$s to file `%2$s'"
-msgstr "Document exporté en tant que %1$s vers le fichier '%2$s'"
+msgstr "Document exporté en tant que %1$s vers le fichier `%2$s'"
 
 #: src/exporter.C:253
-#, fuzzy, c-format
+#, c-format
 msgid "Document exported as %1$s"
-msgstr "Document exporté en tant que %1$s vers le fichier '%2$s'"
+msgstr "Document exporté en tant que %1$s"
 
 #: src/format.C:261 src/format.C:274 src/format.C:284 src/format.C:319
 msgid "Cannot view file"
 msgstr "Impossible de visualiser le fichier"
 
 #: src/format.C:262 src/format.C:333
-#, fuzzy, c-format
+#, c-format
 msgid "File does not exist: %1$s"
-msgstr "Fichier inexistant."
+msgstr "Fichier inexistant : %1$s"
 
 #: src/format.C:275
 #, c-format
@@ -11279,9 +11249,9 @@ msgid "No information for viewing %1$s"
 msgstr "Pas d´information pour visualiser %1$s"
 
 #: src/format.C:285
-#, fuzzy, c-format
+#, c-format
 msgid "Auto-view file %1$s failed"
-msgstr "La sauvegarde automatique a échoué !"
+msgstr "Échec de l'auto-visualisation du fichier %1$s"
 
 #: src/format.C:332 src/format.C:345 src/format.C:355 src/format.C:379
 msgid "Cannot edit file"
@@ -11295,7 +11265,7 @@ msgstr "Pas d´information pour éditer %1$s"
 #: src/format.C:356
 #, c-format
 msgid "Auto-edit file %1$s failed"
-msgstr ""
+msgstr "Échec de l'auto-édition du fichier %1$s"
 
 #: src/frontends/LyXView.C:185
 msgid " (changed)"
@@ -11727,14 +11697,13 @@ msgid "User files|#U#u"
 msgstr "Fichiers utilisateur|#U#u"
 
 #: src/frontends/controllers/tex_helpers.C:61
-#, fuzzy
 msgid "Could not update TeX information"
-msgstr "Pas d'information pour Refaire"
+msgstr "Impossible de mettre à jour l'information TeX"
 
 #: src/frontends/controllers/tex_helpers.C:62
-#, fuzzy, c-format
+#, c-format
 msgid "The script `%s' failed."
-msgstr "Le correcteur orthographique a échoué.\n"
+msgstr "Le script `%s' a échoué."
 
 #: src/frontends/gtk/Dialogs.C:265 src/frontends/qt2/Dialogs.C:232
 #: src/frontends/xforms/Dialogs.C:246
@@ -11747,9 +11716,8 @@ msgid "Label"
 msgstr "Étiquette"
 
 #: src/frontends/gtk/GAboutlyx.C:200
-#, fuzzy
 msgid "C_redits"
-msgstr "Crédits"
+msgstr "C_rédits"
 
 #: src/frontends/gtk/GBibItem.C:33 src/frontends/qt2/QBibitem.C:31
 #: src/frontends/xforms/FormBibitem.C:38
@@ -11799,11 +11767,11 @@ msgstr "Style de Texte"
 
 #: src/frontends/gtk/GCitation.C:122
 msgid "CiteKeys"
-msgstr ""
+msgstr "Clés de Citation"
 
 #: src/frontends/gtk/GCitation.C:128
 msgid "BibKeys"
-msgstr ""
+msgstr "Clés de Biblio"
 
 #: src/frontends/gtk/GDocument.C:58 src/frontends/qt2/QDocument.C:68
 #: src/frontends/xforms/FormDocument.C:93
@@ -11837,67 +11805,64 @@ msgid "B4"
 msgstr "B4"
 
 #: src/frontends/gtk/GDocument.C:832
-#, fuzzy
 msgid "No headings numbered"
-msgstr "Pas de numéro"
+msgstr "Pas de numérotation des titres"
 
 #: src/frontends/gtk/GDocument.C:833
 msgid "Only parts numbered"
-msgstr ""
+msgstr "Numérotation des parties seulement"
 
 #: src/frontends/gtk/GDocument.C:834
 msgid "Chapters and above numbered"
-msgstr ""
+msgstr "Numérotation jusqu'aux chapitres"
 
 #: src/frontends/gtk/GDocument.C:835
-#, fuzzy
 msgid "Sections and above numbered"
-msgstr "Prof. de la numérotation :"
+msgstr "Numérotation jusqu'aux sections"
 
 #: src/frontends/gtk/GDocument.C:836
 msgid "Subsections and above numbered"
-msgstr ""
+msgstr "Numérotation jusqu'aux sous-sections"
 
 #: src/frontends/gtk/GDocument.C:837
 msgid "Subsubsections and above numbered"
-msgstr ""
+msgstr "Numérotation jusqu'aux sous-sous-sections"
 
 #: src/frontends/gtk/GDocument.C:838
 msgid "Paragraphs and above numbered"
-msgstr ""
+msgstr "Numérotation jusqu'aux paragraphes"
 
 #: src/frontends/gtk/GDocument.C:839
 msgid "All headings numbered"
-msgstr ""
+msgstr "Numérotation de tous les titres"
 
 #: src/frontends/gtk/GDocument.C:850
-#, fuzzy
 msgid "Only Parts appear in TOC"
-msgstr "Apparaît dans la TdM"
+msgstr "La TdM ne contient que les parties"
 
 #: src/frontends/gtk/GDocument.C:851
 msgid "Chapters and above appear in TOC"
-msgstr ""
+msgstr "La TdM contient jusqu'aux chapitres"
 
 #: src/frontends/gtk/GDocument.C:852
 msgid "Sections and above appear in TOC"
-msgstr ""
+msgstr "La TdM contient jusqu'aux sections"
 
 #: src/frontends/gtk/GDocument.C:853
 msgid "Subsections and above appear in TOC"
-msgstr ""
+msgstr "La TdM contient jusqu'aux sous-sections"
 
 #: src/frontends/gtk/GDocument.C:854
 msgid "Subsubsections and above appear in TOC"
-msgstr ""
+msgstr "La TdM contient jusqu'aux sous-sous-sections"
 
 #: src/frontends/gtk/GDocument.C:855
 msgid "Paragraphs and above appear in TOC"
-msgstr ""
+msgstr "La TdM contient jusqu'aux paragraphes"
 
 #: src/frontends/gtk/GDocument.C:856
 msgid "TOC contains all headings"
-msgstr ""
+msgstr "La TdM contient tous les titres"
 
 #: src/frontends/gtk/GERT.C:33
 msgid "TeX Settings"
@@ -12106,7 +12071,7 @@ msgid ""
 "Change by %1$s\n"
 "\n"
 msgstr ""
-"en-têtesModifié par %1$s\n"
+"Modifié par %1$s\n"
 "\n"
 
 #: src/frontends/qt2/QChanges.C:60
@@ -12453,9 +12418,8 @@ msgid "Copiers"
 msgstr "Copieurs"
 
 #: src/frontends/qt2/QPrefsDialog.C:852
-#, fuzzy
 msgid "Format in use"
-msgstr "Formats"
+msgstr "Format utilisé"
 
 #: src/frontends/qt2/QPrefsDialog.C:853
 #: src/frontends/xforms/FormPreferences.C:1466
@@ -13663,10 +13627,9 @@ msgid "Show full path or only file name."
 msgstr "Affiche le chemin complet ou juste le nom du fichier."
 
 #: src/frontends/xforms/FormTexinfo.C:60
-#, fuzzy
 msgid "Runs the script \"TexFiles.py\" to rebuild the file lists."
 msgstr ""
-"Lance le script « TexFiles.sh » pour reconstruire la liste des fichiers."
+"Lance le script « TexFiles.py » pour reconstruire la liste des fichiers."
 
 #: src/frontends/xforms/FormTexinfo.C:63
 msgid "Double click to view contents of file."
@@ -14448,14 +14411,12 @@ msgstr ""
 "Ce répertoire est nécessaire pour conserver votre configuration."
 
 #: src/lyx_main.C:675
-#, fuzzy
 msgid "&Create directory"
-msgstr "&Créer un répertoire."
+msgstr "&Créer un répertoire"
 
 #: src/lyx_main.C:676
-#, fuzzy
 msgid "&Exit LyX"
-msgstr "&Quitter LyX."
+msgstr "&Quitter LyX"
 
 #: src/lyx_main.C:677
 msgid "No user LyX directory. Exiting."
@@ -14480,7 +14441,6 @@ msgid "Setting debug level to %1$s"
 msgstr "Niveau de débogage %1$s"
 
 #: src/lyx_main.C:851
-#, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -14504,16 +14464,16 @@ msgstr ""
 "Usage: lyx [ options ] [ nom.lyx ... ]\n"
 "Options (sensibles à la casse) :\n"
 "\t-help              message d'aide\n"
-"\t-userdir rep       positionner le répertoire utilisateur sur rep\n"
-"\t-sysdir rep        positionner le répertoire système sur rep\n"
+"\t-userdir rep       positionne le répertoire utilisateur sur rep\n"
+"\t-sysdir rep        positionne le répertoire système sur rep\n"
 "\t-geometry WxH+X+Y  géométrie de la fenêtre principale\n"
 "\t-dbg fonction[,fonction] ...\n"
-"                     sélectionne les fonctions à déboguer.\n"
-"                     Tapez `lyx -dbg' pour voir la liste des fonctions.\n"
+"                     sélectionne les fonctions à déboguer\n"
+"                     Tapez `lyx -dbg' pour voir la liste des fonctions\n"
 "\t-x [--execute] commande\n"
-"                     où commande est une commande LyX.\n"
+"                     où commande est une commande LyX\n"
 "\t-e [--export] fmt\n"
-"                     où fmt est le format d'exportation choisi.\n"
+"                     où fmt est le format d'exportation choisi\n"
 "\t-i [--import] fmt fichier.xxx\n"
 "                     où fmt est le format d'importation choisi\n"
 "                     et fichier.xxx le fichier à importer.\n"
@@ -14792,15 +14752,14 @@ msgid ""
 msgstr "Spécifie une autre langue. La langue par défaut est celle du document."
 
 #: src/lyxrc.C:2075
-#, fuzzy
 msgid ""
 "Use to define an external program to render tables in plain text output. E."
 "g. \"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"\" is "
 "specified, an internal routine is used."
 msgstr ""
 "Sert à désigner un programme externe pour sortir les tableaux au format "
-"texte brut. Par ex. « groff -t -Tlatin1 $$FName » où $$FName est lefichier "
-"d'entrée. Si vous mettez « none », LyX utilise une fonction interne."
+"texte brut. Par ex. « groff -t -Tlatin1 $$FName » où $$FName est le fichier "
+"d'entrée. Si vous ne mettez rien, LyX utilise une fonction interne."
 
 #: src/lyxrc.C:2079
 msgid ""
@@ -15437,7 +15396,7 @@ msgstr ""
 "commande %1$s"
 
 #: src/support/package.C.in:560
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Unable to determine the system directory having searched\n"
 "\t%1$s\n"
@@ -15446,7 +15405,7 @@ msgid ""
 msgstr ""
 "N'a pas pu déterminer le répertoire système, après avoir cherché\n"
 "\t%1$s\n"
-"Essayez l'option de ligne de commande '-sysdir' ou réglez la variable "
+"Utilisez l'option de ligne de commande '-sysdir' ou réglez la variable "
 "d'environnement LYX_DIR_14x sur le répertoire système LyX qui contient le "
 "fichier 'chkconfig.ltx'."
 
@@ -15499,19 +15458,18 @@ msgid "Unknown Inset"
 msgstr "Insert inconnu"
 
 #: src/text.C:331 src/text.C:345
-#, fuzzy
 msgid "Change tracking error"
-msgstr "Suivi des modifications"
+msgstr "Erreur dans le suivi des modifications"
 
 #: src/text.C:332
 #, c-format
 msgid "Unknown author index for insertion: %1$d\n"
-msgstr ""
+msgstr "Index d'auteur inconnu pour l'insertion : %1$d\n"
 
 #: src/text.C:346
 #, c-format
 msgid "Unknown author index for deletion: %1$d\n"
-msgstr ""
+msgstr "Index d'auteur inconnu pour la suppression : %1$d\n"
 
 #: src/text.C:354
 msgid "Unknown token"
