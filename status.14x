@@ -93,6 +93,8 @@ What's new
 - Fix a crash when the cursor is in an empty script and the user
   clicks in the text.
 
+- Do not reset environment depth when breaking a paragraph (bug 2445).
+
 - Handle properly script insets which the nucleus has more than
   one element (like {a'}^{2}).
 

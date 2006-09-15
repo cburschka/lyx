@@ -120,6 +120,13 @@ void breakParagraph(BufferParams const & bparams,
 	if (flag) {
 		tmp->layout(par.layout());
 		tmp->setLabelWidthString(par.params().labelWidthString());
+		tmp->params().depth(par.params().depth());
+	} else if (par.params().depth() > 0) {
+		Paragraph const & hook = pars[outerHook(par_offset, pars)];
+		tmp->layout(hook.layout());
+		// not sure the line below is useful
+		tmp->setLabelWidthString(par.params().labelWidthString());
+		tmp->params().depth(hook.params().depth());
 	}
 
 	bool const isempty = (par.allowEmpty() && par.empty());

@@ -1,3 +1,8 @@
+2006-09-15  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* paragraph_funcs.C (breakParagraph): make sure to respect nesting
+	when depth > 0 (bug 2445)/
+
 2006-09-14  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* src/text3.C (doInsertInset): reset first paragraph to default 
