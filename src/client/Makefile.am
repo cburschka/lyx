@@ -16,7 +16,7 @@ BOOST_LIBS = $(BOOST_REGEX) $(BOOST_FILESYSTEM)
 
 lyxclient_LDADD = \
 	$(top_builddir)/src/support/libsupport.la \
-	$(BOOST_LIBS) $(INTLLIBS) $(SOCKET_LIBS)
+	$(BOOST_LIBS) $(LIBICONV) $(INTLLIBS) $(SOCKET_LIBS)
 
 lyxclient_SOURCES = \
 	boost.C \
