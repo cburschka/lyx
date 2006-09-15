@@ -719,6 +719,7 @@ void LyXText::setCursor(CursorSlice & cur, pit_type par, pos_type pos)
 void LyXText::setCursorIntern(LCursor & cur,
 			      pit_type par, pos_type pos, bool setfont, bool boundary)
 {
+	BOOST_ASSERT(this == cur.text());
 	cur.boundary(boundary);
 	setCursor(cur.top(), par, pos);
 	cur.setTargetX();
