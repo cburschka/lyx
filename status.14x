@@ -84,6 +84,9 @@ What's new
 
 - Fix a crash when searching for an inset and none is present.
 
+- Fix a crash when scrolling the document and the cursor is inside an
+  inset (bug 2830).
+
 - Fix lockup when accepting a change in a text inset (bug 2510).
 
 - Fix a crash with change tracking in tables (bug 2600).

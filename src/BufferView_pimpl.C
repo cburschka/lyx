@@ -519,10 +519,12 @@ void BufferView::Pimpl::scrollDocView(int value)
 
 	switch (st) {
 	case bv_funcs::CUR_ABOVE:
+		cur.reset(buffer_->inset());
 		t.setCursorFromCoordinates(cur, 0, first);
 		cur.clearSelection();
 		break;
 	case bv_funcs::CUR_BELOW:
+		cur.reset(buffer_->inset());
 		t.setCursorFromCoordinates(cur, 0, last);
 		cur.clearSelection();
 		break;

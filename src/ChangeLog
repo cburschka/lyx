@@ -1,7 +1,15 @@
 2006-09-15  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	* text.C (setCursorFromCoordinates): 
+	* text2.C (setCursorIntern): add an assertion.
+
+	* BufferView_pimpl.C (scrollDocView): reset cursor before setting
+	it from coordinates (bug 2830).
+
+2006-09-15  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
 	* paragraph_funcs.C (breakParagraph): make sure to respect nesting
-	when depth > 0 (bug 2445)/
+	when depth > 0 (bug 2445).
 
 2006-09-14  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
