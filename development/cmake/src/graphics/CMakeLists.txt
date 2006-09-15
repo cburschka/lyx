@@ -1,3 +1,9 @@
+# This file is part of LyX, the document processor.
+# Licence details can be found in the file COPYING.
+#
+# Copyright (c) 2006, Peter Kümmel, <syntheticpp@gmx.net>
+#
+
 project(graphics)
 
 file(GLOB graphics_sources ${TOP_SRC_DIR}/src/graphics/*.C)

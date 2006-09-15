@@ -1,3 +1,9 @@
+# This file is part of LyX, the document processor.
+# Licence details can be found in the file COPYING.
+#
+# Copyright (c) 2006, Peter Kümmel, <syntheticpp@gmx.net>
+#
+
 # where to look first for cmake modules, before ${CMAKE_ROOT}/Modules/ is checked
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/modules")
 

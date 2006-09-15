@@ -1,3 +1,9 @@
+# This file is part of LyX, the document processor.
+# Licence details can be found in the file COPYING.
+#
+# Copyright (c) 2006, Peter Kümmel, <syntheticpp@gmx.net>
+#
+
 project(lyx-${qt_postfix})
 
 include_directories(${TOP_SRC_DIR}/src)

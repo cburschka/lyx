@@ -1,3 +1,6 @@
+#
+#  kdelibs file
+#
 # - Find QT 4
 # This module can be used to find Qt4.
 # The most important issue is that the Qt4 qmake is available via the system path.

@@ -1,3 +1,6 @@
+#
+#  based on cmake file
+#
 if (ZLIB_INCLUDE_DIR)
   # Already in cache, be silent
   set(ZLIB_FIND_QUIETLY TRUE)

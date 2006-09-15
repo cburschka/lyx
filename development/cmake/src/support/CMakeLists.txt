@@ -1,3 +1,9 @@
+# This file is part of LyX, the document processor.
+# Licence details can be found in the file COPYING.
+#
+# Copyright (c) 2006, Peter Kümmel, <syntheticpp@gmx.net>
+#
+
 project(support)
 
 configure_file(package.C.cmake ${CMAKE_CURRENT_BINARY_DIR}/package.C)

@@ -1,3 +1,7 @@
+#
+#  from kdelibs
+#
+
 if (WIN32)
 
 # check if GNUWIN32_DIR is already set 
