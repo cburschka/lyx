@@ -1,3 +1,10 @@
+2006-09-15  Enrico Forestieri  <forenr@tlc.unipr.it>
+
+	* qt_helpers.C (toqstr): use fromAscii only with Qt 3.1 and higher.
+
+	* QLyXKeySym.C (initEncodings): use setCodecForCStrings only with
+	Qt 3.1 and higher.
+
 2006-08-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* QContentPane.C (focusInEvent, focusOutEvent): new methods;

@@ -130,7 +130,9 @@ void initEncodings()
 	QTextCodec * defaultCodec = encoding_map[s];
 	encoding_map[""] = defaultCodec;
 
+#if QT_VERSION >= 0x030100
 	QTextCodec::setCodecForCStrings(defaultCodec);
+#endif
 
 }
 

@@ -116,7 +116,11 @@ void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
 
 QString const toqstr(char const * str)
 {
+#if QT_VERSION >= 0x030100
 	return QString::fromAscii(str);
+#else
+	return QString::fromLatin1(str);
+#endif
 }
 
 
